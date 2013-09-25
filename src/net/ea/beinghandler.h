@@ -31,11 +31,11 @@ namespace Ea
 class BeingHandler : public Net::BeingHandler
 {
     public:
-        explicit BeingHandler(const bool enableSync);
-
         A_DELETE_COPY(BeingHandler)
 
     protected:
+        explicit BeingHandler(const bool enableSync);
+
         virtual Being *createBeing(int id, int16_t job) const A_WARN_UNUSED;
 
         virtual void setSprite(Being *const being, const unsigned int slot,
@@ -94,7 +94,6 @@ class BeingHandler : public Net::BeingHandler
 
         virtual void processPvpSet(Net::MessageIn &msg) const;
 
-    protected:
         // Should we honor server "Stop Walking" packets
         bool mSync;
         int mSpawnId;

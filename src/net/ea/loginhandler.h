@@ -38,8 +38,6 @@ namespace Ea
 class LoginHandler : public Net::LoginHandler
 {
     public:
-        LoginHandler();
-
         A_DELETE_COPY(LoginHandler)
 
         ~LoginHandler();
@@ -92,6 +90,8 @@ class LoginHandler : public Net::LoginHandler
         virtual void processServerVersion(Net::MessageIn &msg) = 0;
 
     protected:
+        LoginHandler();
+
         virtual void sendLoginRegister(const std::string &username,
                                        const std::string &password,
                                        const std::string &email) const = 0;

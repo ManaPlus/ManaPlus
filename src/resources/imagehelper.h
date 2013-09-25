@@ -43,9 +43,6 @@ class ImageHelper
     friend class Image;
 
     public:
-        ImageHelper()
-        { }
-
         A_DELETE_COPY(ImageHelper)
 
         virtual ~ImageHelper()
@@ -102,6 +99,9 @@ class ImageHelper
         { return mUseOpenGL; }
 
     protected:
+        ImageHelper()
+        { }
+
         static bool mEnableAlpha;
         static RenderType mUseOpenGL;
 };

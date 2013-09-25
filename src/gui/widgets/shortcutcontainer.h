@@ -43,11 +43,6 @@ class ShortcutContainer : public gcn::Widget,
                           public gcn::MouseListener
 {
     public:
-        /**
-         * Constructor. Initializes the shortcut container.
-         */
-        ShortcutContainer();
-
         A_DELETE_COPY(ShortcutContainer)
 
         /**
@@ -98,6 +93,11 @@ class ShortcutContainer : public gcn::Widget,
         { mRedraw = b; }
 
     protected:
+        /**
+         * Constructor. Initializes the shortcut container.
+         */
+        ShortcutContainer();
+
         /**
          * Gets the index from the grid provided the point is in an item box.
          *

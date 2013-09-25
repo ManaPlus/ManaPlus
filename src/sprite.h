@@ -32,11 +32,6 @@ class Image;
 class Sprite
 {
     public:
-        Sprite() :
-            mAlpha()
-        {
-        }
-
         virtual ~Sprite()
         { }
 
@@ -122,6 +117,11 @@ class Sprite
         virtual bool updateNumber(const unsigned num) = 0;
 
     protected:
+        Sprite() :
+            mAlpha()
+        {
+        }
+
         float mAlpha;                  /**< The alpha opacity used to draw */
 };
 

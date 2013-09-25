@@ -38,8 +38,6 @@ typedef Actors::const_iterator ActorsCIter;
 class Actor
 {
 public:
-    Actor();
-
     A_DELETE_COPY(Actor)
 
     virtual ~Actor();
@@ -130,6 +128,8 @@ public:
     { return mMap; }
 
 protected:
+    Actor();
+
     Map *mMap;
     Vector mPos;                /**< Position in pixels relative to map. */
     int mYDiff;

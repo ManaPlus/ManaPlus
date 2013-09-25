@@ -34,8 +34,6 @@ namespace Ea
 class NpcHandler : public Net::NpcHandler
 {
     public:
-        NpcHandler();
-
         A_DELETE_COPY(NpcHandler)
 
         void sendLetter(int npcId, const std::string &recipient,
@@ -61,6 +59,8 @@ class NpcHandler : public Net::NpcHandler
         void processNpcStrInput(Net::MessageIn &msg);
 
     protected:
+        NpcHandler();
+
         NpcDialog *mDialog;
 };
 

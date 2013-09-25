@@ -33,15 +33,6 @@ class CharacterViewBase : public Container,
                           public gcn::ActionListener
 {
     public:
-        CharacterViewBase(CharSelectDialog *const widget, const int padding) :
-            Container(widget),
-            gcn::ActionListener(),
-            mParent(widget),
-            mPadding(padding),
-            mSelected(0)
-        {
-        }
-
         A_DELETE_COPY(CharacterViewBase)
 
         virtual ~CharacterViewBase()
@@ -57,6 +48,15 @@ class CharacterViewBase : public Container,
         }
 
     protected:
+        CharacterViewBase(CharSelectDialog *const widget, const int padding) :
+            Container(widget),
+            gcn::ActionListener(),
+            mParent(widget),
+            mPadding(padding),
+            mSelected(0)
+        {
+        }
+
         CharSelectDialog *mParent;
         int mPadding;
         int mSelected;

@@ -49,7 +49,7 @@ enum DragDropSource
     DRAGDROP_SOURCE_EQUIPMENT
 };
 
-class DragDrop
+class DragDrop final
 {
     public:
         DragDrop(Item *const item, const DragDropSource source) :

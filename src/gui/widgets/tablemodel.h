@@ -57,10 +57,6 @@ public:
 class TableModel
 {
 public:
-    TableModel() :
-        listeners()
-    {
-    }
     virtual ~TableModel()
     { }
 
@@ -95,6 +91,11 @@ public:
     virtual void removeListener(TableModelListener *const listener);
 
 protected:
+    TableModel() :
+        listeners()
+    {
+    }
+
     /**
      * Tells all listeners that the table is about to see an update
      */

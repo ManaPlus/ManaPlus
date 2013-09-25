@@ -173,22 +173,6 @@ class LayoutCell
             FILL
         };
 
-        LayoutCell():
-            mWidget(nullptr),
-            mHPadding(0),
-            mVPadding(0),
-            mType(NONE)
-        {
-            mExtent[0] = 0;
-            mExtent[1] = 0;
-            mAlign[0] = 0;
-            mAlign[1] = 0;
-            mNbFill[0] = 0;
-            mNbFill[1] = 0;
-            mSize[0] = 0;
-            mSize[1] = 0;
-        }
-
         virtual ~LayoutCell();
 
         /**
@@ -286,6 +270,22 @@ class LayoutCell
         };
 
     private:
+        LayoutCell():
+            mWidget(nullptr),
+            mHPadding(0),
+            mVPadding(0),
+            mType(NONE)
+        {
+            mExtent[0] = 0;
+            mExtent[1] = 0;
+            mAlign[0] = 0;
+            mAlign[1] = 0;
+            mNbFill[0] = 0;
+            mNbFill[1] = 0;
+            mSize[0] = 0;
+            mSize[1] = 0;
+        }
+
         // Copy not allowed, as the cell may own an array.
         explicit LayoutCell(LayoutCell const &);
         LayoutCell &operator=(LayoutCell const &);

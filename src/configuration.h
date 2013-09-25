@@ -83,8 +83,6 @@ class ConfigurationObject
     friend class Configuration;
 
     public:
-        ConfigurationObject();
-
         virtual ~ConfigurationObject();
 
         /**
@@ -208,6 +206,8 @@ class ConfigurationObject
 #endif
 
     protected:
+        ConfigurationObject();
+
         virtual void initFromXML(const XmlNodePtr parent_node);
         virtual void writeToXML(const XmlTextWriterPtr writer);
 

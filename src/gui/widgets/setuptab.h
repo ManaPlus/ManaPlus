@@ -40,8 +40,6 @@ class SetupTab : public Container,
                  public gcn::WidgetListener
 {
     public:
-        explicit SetupTab(const Widget2 *const widget);
-
         A_DELETE_COPY(SetupTab)
 
         const std::string &getName() const A_WARN_UNUSED
@@ -60,6 +58,8 @@ class SetupTab : public Container,
         virtual void externalUpdated();
 
     protected:
+        explicit SetupTab(const Widget2 *const widget);
+
         /**
          * Sets the name displayed on the tab. Should be set in the
          * constructor of a subclass.

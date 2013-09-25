@@ -97,10 +97,6 @@ class ImageRect final
 class Graphics : public gcn::Graphics
 {
     public:
-        /**
-         * Constructor.
-         */
-        Graphics();
 
         A_DELETE_COPY(Graphics)
 
@@ -379,6 +375,11 @@ class Graphics : public gcn::Graphics
         int mHeight;
 
     protected:
+        /**
+         * Constructor.
+         */
+        Graphics();
+
         /**
          * Blits an image onto the screen.
          *

@@ -33,10 +33,6 @@ class WidgetGroup : public Container,
                     public gcn::ActionListener
 {
     public:
-        WidgetGroup(const Widget2 *const widget,
-                    const std::string &group, const int height,
-                    const int spacing);
-
         A_DELETE_COPY(WidgetGroup)
 
         virtual void addButton(const std::string &tag);
@@ -57,6 +53,10 @@ class WidgetGroup : public Container,
                                      const A_WARN_UNUSED = 0;
 
     protected:
+        WidgetGroup(const Widget2 *const widget,
+                    const std::string &group, const int height,
+                    const int spacing);
+
         int mSpacing;
         int mCount;
         std::string mGroup;

@@ -57,15 +57,6 @@ class SetupItem : public gcn::ActionListener,
             VNONE
         };
 
-        SetupItem(const std::string &text, const std::string &description,
-                  const std::string &keyName, SetupTabScroll *const parent,
-                  const std::string &eventName, const bool mainConfig);
-
-        SetupItem(const std::string &text, const std::string &description,
-                  const std::string &keyName, SetupTabScroll *const parent,
-                  const std::string &eventName, const std::string &def,
-                  const bool mainConfig);
-
         A_DELETE_COPY(SetupItem)
 
         ~SetupItem();
@@ -106,6 +97,15 @@ class SetupItem : public gcn::ActionListener,
         void rereadValue();
 
     protected:
+        SetupItem(const std::string &text, const std::string &description,
+                  const std::string &keyName, SetupTabScroll *const parent,
+                  const std::string &eventName, const bool mainConfig);
+
+        SetupItem(const std::string &text, const std::string &description,
+                  const std::string &keyName, SetupTabScroll *const parent,
+                  const std::string &eventName, const std::string &def,
+                  const bool mainConfig);
+
         std::string mText;
 
         std::string mDescription;
@@ -427,6 +427,23 @@ class SetupItemSlider2 final : public SetupItem
 class SetupItemSliderList : public SetupItem
 {
     public:
+        A_DELETE_COPY(SetupItemSliderList)
+
+        ~SetupItemSliderList();
+
+        void createControls();
+
+        void fromWidget() override;
+
+        void toWidget() override;
+
+        virtual void action(const gcn::ActionEvent &event) override;
+
+        void apply(const std::string &eventName) override;
+
+        virtual void addMoreControls() = 0;
+
+    protected:
         SetupItemSliderList(const std::string &text,
                             const std::string &description,
                             const std::string &keyName,
@@ -446,23 +463,6 @@ class SetupItemSliderList : public SetupItem
                             const bool onTheFly = false,
                             const bool mainConfig = true);
 
-        A_DELETE_COPY(SetupItemSliderList)
-
-        ~SetupItemSliderList();
-
-        void createControls();
-
-        void fromWidget() override;
-
-        void toWidget() override;
-
-        virtual void action(const gcn::ActionEvent &event) override;
-
-        void apply(const std::string &eventName) override;
-
-        virtual void addMoreControls() = 0;
-
-    protected:
         HorizontContainer *mHorizont;
         Label *mLabel;
         SliderList *mSlider;

@@ -34,10 +34,6 @@ class DebugTab : public Container
     friend class DebugWindow;
 
     public:
-        explicit DebugTab(const Widget2 *const widget) :
-            Container(widget)
-        { }
-
         A_DELETE_COPY(DebugTab)
 
         void logic() override = 0;
@@ -45,7 +41,10 @@ class DebugTab : public Container
         void resize(const int x, const int y)
         { setDimension(gcn::Rectangle(0, 0, x, y)); }
 
-    private:
+    protected:
+        explicit DebugTab(const Widget2 *const widget) :
+            Container(widget)
+        { }
 };
 
 class MapDebugTab final : public DebugTab

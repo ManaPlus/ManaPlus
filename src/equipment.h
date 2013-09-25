@@ -29,7 +29,7 @@ static const int EQUIPMENT_SIZE = 13;
 
 class Item;
 
-class Equipment
+class Equipment final
 {
     public:
         /**

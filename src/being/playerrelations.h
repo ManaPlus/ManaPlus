@@ -79,12 +79,6 @@ class PlayerIgnoreStrategy
         std::string mDescription;
         std::string mShortName;
 
-        PlayerIgnoreStrategy() :
-            mDescription(),
-            mShortName()
-        {
-        }
-
         A_DELETE_COPY(PlayerIgnoreStrategy)
 
         virtual ~PlayerIgnoreStrategy()
@@ -95,13 +89,17 @@ class PlayerIgnoreStrategy
          */
         virtual void ignore(Being *const being,
                             const unsigned int flags) const = 0;
+    protected:
+        PlayerIgnoreStrategy() :
+            mDescription(),
+            mShortName()
+        {
+        }
 };
 
 class PlayerRelationsListener
 {
     public:
-        PlayerRelationsListener()
-        { }
 
         virtual ~PlayerRelationsListener()
         { }
@@ -109,6 +107,10 @@ class PlayerRelationsListener
         virtual void updatedPlayer(const std::string &name) = 0;
 
         virtual void updateAll() = 0;
+
+    protected:
+        PlayerRelationsListener()
+        { }
 };
 
 /**

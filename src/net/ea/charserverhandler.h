@@ -38,8 +38,6 @@ class Network;
 class CharServerHandler : public Net::CharServerHandler
 {
     public:
-        CharServerHandler();
-
         A_DELETE_COPY(CharServerHandler)
 
         virtual void setCharSelectDialog(CharSelectDialog *const window)
@@ -85,6 +83,8 @@ class CharServerHandler : public Net::CharServerHandler
         virtual void clear() override;
 
     protected:
+        CharServerHandler();
+
         virtual void readPlayerData(Net::MessageIn &msg,
                                     Net::Character *const character,
                                     const bool withColors) const = 0;

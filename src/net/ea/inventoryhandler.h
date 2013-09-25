@@ -146,8 +146,6 @@ class InventoryHandler : public Net::InventoryHandler
             CART
         };
 
-        InventoryHandler();
-
         A_DELETE_COPY(InventoryHandler)
 
         ~InventoryHandler();
@@ -208,6 +206,8 @@ class InventoryHandler : public Net::InventoryHandler
         { return mStorage; }
 
     protected:
+        InventoryHandler();
+
         EquipBackend mEquips;
         InventoryItems mInventoryItems;
         Inventory *mStorage;
