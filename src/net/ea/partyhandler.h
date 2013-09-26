@@ -39,7 +39,7 @@ class PartyHandler : public Net::PartyHandler
 
         A_DELETE_COPY(PartyHandler)
 
-        ~PartyHandler();
+        virtual ~PartyHandler();
 
         void join(const int partyId) const override;
 

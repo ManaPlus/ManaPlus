@@ -30,7 +30,7 @@
 
 #include "localconsts.h"
 
-class TestLauncher
+class TestLauncher final
 {
     public:
         explicit TestLauncher(std::string test);

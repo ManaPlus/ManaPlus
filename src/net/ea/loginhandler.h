@@ -40,7 +40,7 @@ class LoginHandler : public Net::LoginHandler
     public:
         A_DELETE_COPY(LoginHandler)
 
-        ~LoginHandler();
+        virtual ~LoginHandler();
 
         int supportedOptionalActions() const override A_WARN_UNUSED
         { return SetGenderOnRegister; }

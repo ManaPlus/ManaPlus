@@ -39,7 +39,7 @@ class SetupTabScroll : public SetupTab
 
         A_DELETE_COPY(SetupTabScroll)
 
-        ~SetupTabScroll();
+        virtual ~SetupTabScroll();
 
         void addControl(SetupItem *const widget);
 

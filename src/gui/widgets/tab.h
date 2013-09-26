@@ -49,7 +49,7 @@ class Tab : public gcn::BasicContainer,
 
         A_DELETE_COPY(Tab)
 
-        ~Tab();
+        virtual ~Tab();
 
         /**
          * Update the alpha value to the graphic components.

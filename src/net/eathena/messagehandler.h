@@ -42,7 +42,7 @@ class MessageHandler : public Net::MessageHandler
 
         A_DELETE_COPY(MessageHandler)
 
-        ~MessageHandler();
+        virtual ~MessageHandler();
 
         void setNetwork(Network *const network);
 

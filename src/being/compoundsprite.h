@@ -57,7 +57,7 @@ public:
 
     A_DELETE_COPY(CompoundSprite)
 
-    ~CompoundSprite();
+    virtual ~CompoundSprite();
 
     virtual bool reset() override;
 

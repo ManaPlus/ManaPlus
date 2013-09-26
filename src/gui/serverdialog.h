@@ -89,10 +89,10 @@ class ServersListModel final : public gcn::ListModel
  *
  * \ingroup Interface
  */
-class ServerDialog : public Window,
-                     public gcn::ActionListener,
-                     public gcn::KeyListener,
-                     public gcn::SelectionListener
+class ServerDialog final : public Window,
+                           public gcn::ActionListener,
+                           public gcn::KeyListener,
+                           public gcn::SelectionListener
 {
     public:
         /**

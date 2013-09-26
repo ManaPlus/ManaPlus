@@ -31,7 +31,7 @@
 
 #include <string>
 
-class TestMain
+class TestMain final
 {
     public:
         TestMain();

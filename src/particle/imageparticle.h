@@ -49,7 +49,7 @@ class ImageParticle : public Particle
         /**
          * Destructor.
          */
-        ~ImageParticle();
+        virtual ~ImageParticle();
 
         /**
          * Draws the particle image

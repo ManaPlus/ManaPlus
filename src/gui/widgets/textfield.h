@@ -54,7 +54,7 @@ class TextField : public gcn::TextField,
 
         A_DELETE_COPY(TextField)
 
-        ~TextField();
+        virtual ~TextField();
 
         /**
          * Draws the text field.

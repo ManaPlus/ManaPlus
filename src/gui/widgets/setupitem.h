@@ -59,7 +59,7 @@ class SetupItem : public gcn::ActionListener,
 
         A_DELETE_COPY(SetupItem)
 
-        ~SetupItem();
+        virtual ~SetupItem();
 
         void load();
 
@@ -429,7 +429,7 @@ class SetupItemSliderList : public SetupItem
     public:
         A_DELETE_COPY(SetupItemSliderList)
 
-        ~SetupItemSliderList();
+        virtual ~SetupItemSliderList();
 
         void createControls();
 

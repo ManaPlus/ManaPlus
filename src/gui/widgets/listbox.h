@@ -51,7 +51,7 @@ class ListBox : public gcn::ListBox,
 
         A_DELETE_COPY(ListBox)
 
-        ~ListBox();
+        virtual ~ListBox();
 
         /**
          * Draws the list box.

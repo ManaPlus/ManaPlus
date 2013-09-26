@@ -74,7 +74,7 @@ public:
 
     A_DELETE_COPY(ActorSprite)
 
-    ~ActorSprite();
+    virtual ~ActorSprite();
 
     int getId() const A_WARN_UNUSED
     { return mId; }

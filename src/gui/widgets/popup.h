@@ -65,7 +65,7 @@ class Popup : public Container, public gcn::MouseListener,
         /**
          * Destructor. Deletes all the added widgets.
          */
-        ~Popup();
+        virtual ~Popup();
 
         /**
          * Sets the window container to be used by new popups.

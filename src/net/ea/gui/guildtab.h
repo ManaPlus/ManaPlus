@@ -38,7 +38,7 @@ class GuildTab : public ChatTab, public ConfigListener
 
         A_DELETE_COPY(GuildTab)
 
-        ~GuildTab();
+        virtual ~GuildTab();
 
         bool handleCommand(const std::string &type,
                            const std::string &args) override;

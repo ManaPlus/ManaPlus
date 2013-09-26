@@ -47,7 +47,7 @@ namespace Perfomance
 
     void blockEnd(const std::string &name);
 
-    class Func
+    class Func final
     {
         public:
             explicit Func(const std::string &str) :

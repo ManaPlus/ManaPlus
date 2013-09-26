@@ -31,7 +31,7 @@
  * A mutex provides mutual exclusion of access to certain data that is
  * accessed by multiple threads.
  */
-class Mutex
+class Mutex final
 {
     public:
         Mutex();
@@ -54,7 +54,7 @@ class Mutex
 /**
  * A convenience class for locking a mutex.
  */
-class MutexLocker
+class MutexLocker final
 {
     public:
         explicit MutexLocker(Mutex *mutex);

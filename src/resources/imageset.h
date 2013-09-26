@@ -48,7 +48,7 @@ class ImageSet : public Resource
         /**
          * Destructor.
          */
-        ~ImageSet();
+        virtual ~ImageSet();
 
         /**
          * Returns the width of the images in the image set.

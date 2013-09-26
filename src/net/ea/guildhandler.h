@@ -37,7 +37,7 @@ class GuildHandler : public Net::GuildHandler
 
         A_DELETE_COPY(GuildHandler)
 
-        ~GuildHandler();
+        virtual ~GuildHandler();
 
         void requestAlliance(const int guildId,
                              const int otherGuildId) const override;

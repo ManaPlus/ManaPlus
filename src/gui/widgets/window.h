@@ -70,7 +70,7 @@ class Window : public gcn::Window,
         /**
          * Destructor. Deletes all the added widgets.
          */
-        ~Window();
+        virtual ~Window();
 
         /**
          * Sets the window container to be used by new windows.

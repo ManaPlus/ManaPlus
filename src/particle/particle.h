@@ -84,7 +84,7 @@ class Particle : public Actor
         /**
          * Destructor.
          */
-        ~Particle();
+        virtual ~Particle();
 
         /**
          * Deletes all child particles and emitters.

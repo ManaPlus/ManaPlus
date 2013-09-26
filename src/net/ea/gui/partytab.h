@@ -38,7 +38,7 @@ class PartyTab : public ChatTab, public ConfigListener
 
         A_DELETE_COPY(PartyTab)
 
-        ~PartyTab();
+        virtual ~PartyTab();
 
         void showHelp() override;
 

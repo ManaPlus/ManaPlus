@@ -63,7 +63,7 @@ class ChatTab : public Tab
 
         A_DELETE_COPY(ChatTab)
 
-        ~ChatTab();
+        virtual ~ChatTab();
 
         /**
          * Adds a line of text to our message list. Parameters:

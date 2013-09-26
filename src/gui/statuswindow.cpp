@@ -65,7 +65,7 @@ class AttrDisplay : public Container
 
         A_DELETE_COPY(AttrDisplay)
 
-        ~AttrDisplay();
+        virtual ~AttrDisplay();
 
         virtual std::string update();
 

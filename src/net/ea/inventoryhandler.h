@@ -148,7 +148,7 @@ class InventoryHandler : public Net::InventoryHandler
 
         A_DELETE_COPY(InventoryHandler)
 
-        ~InventoryHandler();
+        virtual ~InventoryHandler();
 
         void clear();
 
