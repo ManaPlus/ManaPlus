@@ -494,7 +494,7 @@ class Window : public gcn::Window,
         ImageCollection *mVertexes;
         int mCaptionOffsetX;
         int mCaptionOffsetY;
-        int mCaptionAlign;
+        gcn::Graphics::Alignment mCaptionAlign;
         int mTitlePadding;
         int mGripPadding;
         int mResizeHandles;

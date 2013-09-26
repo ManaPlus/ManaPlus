@@ -128,7 +128,8 @@ Window::Window(const std::string &caption, const bool modal,
             mCaptionOffsetY = getOption("captionoffsety");
             if (!mCaptionOffsetY)
                 mCaptionOffsetY = 5;
-            mCaptionAlign = getOption("captionalign");
+            mCaptionAlign = static_cast<gcn::Graphics::Alignment>(
+                getOption("captionalign"));
             if (mCaptionAlign < gcn::Graphics::LEFT
                 || mCaptionAlign > gcn::Graphics::RIGHT)
             {
@@ -289,7 +290,7 @@ void Window::draw(gcn::Graphics *graphics)
     {
         g->setColorAll(mForegroundColor, mForegroundColor2);
         int x;
-        switch (static_cast<gcn::Graphics::Alignment>(mCaptionAlign))
+        switch (mCaptionAlign)
         {
             case Graphics::LEFT:
             default:
