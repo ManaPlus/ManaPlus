@@ -66,27 +66,27 @@ public:
 
     A_DELETE_COPY(UsersTableModel)
 
-    virtual ~UsersTableModel()
+    ~UsersTableModel()
     {
         freeWidgets();
     }
 
-    virtual int getRows() const
+    int getRows() const
     {
         return static_cast<int>(mPlayers.size());
     }
 
-    virtual int getColumns() const
+    int getColumns() const
     {
         return COLUMNS_NR;
     }
 
-    virtual int getRowHeight() const
+    int getRowHeight() const
     {
         return ROW_HEIGHT;
     }
 
-    virtual int getColumnWidth(const int index) const
+    int getColumnWidth(const int index) const
     {
         if (index == NAME_COLUMN)
             return NAME_COLUMN_WIDTH;
@@ -231,11 +231,11 @@ public:
         signalAfterUpdate();
     }
 
-    virtual void updateModelInRow(const int row A_UNUSED) const
+    void updateModelInRow(const int row A_UNUSED) const
     {
     }
 
-    virtual gcn::Widget *getElementAt(const int row, const int column) const
+    gcn::Widget *getElementAt(const int row, const int column) const
     {
         return mWidgets[WIDGET_AT(row, column)];
     }

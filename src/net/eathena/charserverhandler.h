@@ -41,7 +41,7 @@ class CharServerHandler final : public MessageHandler,
 
         A_DELETE_COPY(CharServerHandler)
 
-        virtual void handleMessage(Net::MessageIn &msg) override;
+        void handleMessage(Net::MessageIn &msg) override;
 
         void chooseCharacter(Net::Character *const character) override;
 

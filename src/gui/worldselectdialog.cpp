@@ -54,7 +54,7 @@ class WorldListModel final : public gcn::ListModel
 
         A_DELETE_COPY(WorldListModel)
 
-        virtual ~WorldListModel()
+        ~WorldListModel()
         { }
 
         int getNumberOfElements() override

@@ -60,7 +60,7 @@ public:
         Theme::fillSkinsList(mNames);
     }
 
-    virtual ~ThemesModel()
+    ~ThemesModel()
     { }
 };
 
@@ -71,7 +71,7 @@ public:
         NamesModel()
     { Theme::fillFontsList(mNames); }
 
-    virtual ~FontsModel()
+    ~FontsModel()
     { }
 };
 
@@ -116,13 +116,13 @@ const char *SIZE_NAME[maxFontSizes] =
 class FontSizeChoiceListModel final : public gcn::ListModel
 {
 public:
-    virtual ~FontSizeChoiceListModel()
+    ~FontSizeChoiceListModel()
     { }
 
-    virtual int getNumberOfElements() override A_WARN_UNUSED
+    int getNumberOfElements() override A_WARN_UNUSED
     { return maxFontSizes; }
 
-    virtual std::string getElementAt(int i) override A_WARN_UNUSED
+    std::string getElementAt(int i) override A_WARN_UNUSED
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";
@@ -193,7 +193,7 @@ public:
 
     A_DELETE_COPY(LangListModel)
 
-    virtual ~LangListModel()
+    ~LangListModel()
     {
         for (int f = 0; f < langs_count; f ++)
         {

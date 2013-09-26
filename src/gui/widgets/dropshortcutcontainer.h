@@ -45,7 +45,7 @@ class DropShortcutContainer final : public ShortcutContainer
         /**
          * Destructor.
          */
-        virtual ~DropShortcutContainer();
+        ~DropShortcutContainer();
 
         /**
          * Draws the items.

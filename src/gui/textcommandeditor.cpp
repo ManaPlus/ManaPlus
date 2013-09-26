@@ -73,15 +73,15 @@ public:
 
     A_DELETE_COPY(IconsModal)
 
-    virtual ~IconsModal()
+    ~IconsModal()
     { }
 
-    virtual int getNumberOfElements() override
+    int getNumberOfElements() override
     {
         return static_cast<int>(mStrings.size());
     }
 
-    virtual std::string getElementAt(int i) override
+    std::string getElementAt(int i) override
     {
         if (i < 0 || i >= getNumberOfElements())
             return "???";
@@ -121,15 +121,15 @@ const char *MAGIC_SCHOOL_TEXT[6] =
 class TargetTypeModel final : public gcn::ListModel
 {
 public:
-    virtual ~TargetTypeModel()
+    ~TargetTypeModel()
     { }
 
-    virtual int getNumberOfElements() override
+    int getNumberOfElements() override
     {
         return 3;
     }
 
-    virtual std::string getElementAt(int i) override
+    std::string getElementAt(int i) override
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";
@@ -140,22 +140,21 @@ public:
 class MagicSchoolModel final : public gcn::ListModel
 {
 public:
-    virtual ~MagicSchoolModel()
+    ~MagicSchoolModel()
     { }
 
-    virtual int getNumberOfElements() override
+    int getNumberOfElements() override
     {
         return 6;
     }
 
-    virtual std::string getElementAt(int i) override
+    std::string getElementAt(int i) override
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";
         return MAGIC_SCHOOL_TEXT[i];
     }
 };
-
 
 TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor name

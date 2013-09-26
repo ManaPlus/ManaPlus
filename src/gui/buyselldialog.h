@@ -49,7 +49,7 @@ class BuySellDialog final : public Window, public gcn::ActionListener
 
         A_DELETE_COPY(BuySellDialog)
 
-        virtual ~BuySellDialog();
+        ~BuySellDialog();
 
         void init();
 

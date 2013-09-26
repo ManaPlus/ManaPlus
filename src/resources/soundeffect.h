@@ -40,7 +40,7 @@ class SoundEffect final : public Resource
         /**
          * Destructor.
          */
-        virtual ~SoundEffect();
+        ~SoundEffect();
 
         /**
          * Loads a sample from a buffer in memory.

@@ -173,7 +173,7 @@ class LayoutCell
             FILL
         };
 
-        virtual ~LayoutCell();
+        ~LayoutCell();
 
         /**
          * Sets the padding around the cell content.

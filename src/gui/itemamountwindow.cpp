@@ -79,15 +79,15 @@ public:
 
     A_DELETE_COPY(ItemsModal)
 
-    virtual ~ItemsModal()
+    ~ItemsModal()
     { }
 
-    virtual int getNumberOfElements() override
+    int getNumberOfElements() override
     {
         return static_cast<int>(mStrings.size());
     }
 
-    virtual std::string getElementAt(int i) override
+    std::string getElementAt(int i) override
     {
         if (i < 0 || i >= getNumberOfElements())
             return "???";

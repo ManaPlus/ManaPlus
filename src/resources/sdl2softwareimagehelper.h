@@ -47,7 +47,7 @@ class SDL2SoftwareImageHelper final : public ImageHelper
 
         A_DELETE_COPY(SDL2SoftwareImageHelper)
 
-        virtual ~SDL2SoftwareImageHelper()
+        ~SDL2SoftwareImageHelper()
         { }
 
         /**

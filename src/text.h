@@ -99,7 +99,7 @@ class FlashText final : public Text
         /**
          * Remove the text from the screen
          */
-        virtual ~FlashText()
+        ~FlashText()
         { }
 
         /**
@@ -111,8 +111,8 @@ class FlashText final : public Text
         /**
          * Draws the text.
          */
-        virtual void draw(Graphics *const graphics,
-                          const int xOff, const int yOff) override;
+        void draw(Graphics *const graphics,
+                  const int xOff, const int yOff) override;
 
     private:
         int mTime;             /**< Time left for flashing */

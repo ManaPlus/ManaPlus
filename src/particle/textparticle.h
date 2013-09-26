@@ -40,15 +40,15 @@ class TextParticle final : public Particle
         /**
          * Draws the particle image.
          */
-        virtual bool draw(Graphics *const graphics,
-                          const int offsetX, const int offsetY) const override;
+        bool draw(Graphics *const graphics,
+                  const int offsetX, const int offsetY) const override;
 
         // hack to improve text visibility
-        virtual int getPixelY() const override A_WARN_UNUSED
+        int getPixelY() const override A_WARN_UNUSED
         { return static_cast<int>(mPos.y + mPos.z); }
 
         // hack to improve text visibility (for sorting only)
-        virtual int getSortPixelY() const override A_WARN_UNUSED
+        int getSortPixelY() const override A_WARN_UNUSED
         { return static_cast<int>(mPos.y + mPos.z); }
 
     private:

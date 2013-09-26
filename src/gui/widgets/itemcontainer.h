@@ -73,7 +73,7 @@ class ItemContainer final : public gcn::Widget,
         /**
          * Destructor.
          */
-        virtual ~ItemContainer();
+        ~ItemContainer();
 
         void hidePopup();
 

@@ -71,7 +71,7 @@ class PlayerConfSerialiser final :
         std::map<std::string, PlayerRelation *> *>
 {
 public:
-    virtual ConfigurationObject *writeConfigItem(
+    ConfigurationObject *writeConfigItem(
         const std::pair<std::string, PlayerRelation *> &value,
         ConfigurationObject *const cobj) const override
     {
@@ -84,7 +84,7 @@ public:
         return cobj;
     }
 
-    virtual std::map<std::string, PlayerRelation *> *
+    std::map<std::string, PlayerRelation *> *
     readConfigItem(const ConfigurationObject *const cobj,
                    std::map<std::string, PlayerRelation *>
                    *const container) const override
@@ -467,8 +467,8 @@ public:
         mShortName = PLAYER_IGNORE_STRATEGY_NOP;
     }
 
-    virtual void ignore(Being *const being A_UNUSED,
-                        const unsigned int flags A_UNUSED) const override
+    void ignore(Being *const being A_UNUSED,
+                const unsigned int flags A_UNUSED) const override
     {
     }
 };
@@ -484,8 +484,8 @@ public:
         mShortName = "dotdotdot";
     }
 
-    virtual void ignore(Being *const being,
-                        const unsigned int flags A_UNUSED) const override
+    void ignore(Being *const being,
+                const unsigned int flags A_UNUSED) const override
     {
         if (!being)
             return;
@@ -507,8 +507,8 @@ public:
         mShortName = "blinkname";
     }
 
-    virtual void ignore(Being *const being,
-                        const unsigned int flags A_UNUSED) const override
+    void ignore(Being *const being,
+                const unsigned int flags A_UNUSED) const override
     {
         if (!being)
             return;
@@ -530,8 +530,8 @@ public:
         mShortName = shortname;
     }
 
-    virtual void ignore(Being *const being,
-                        const unsigned int flags A_UNUSED) const override
+    void ignore(Being *const being,
+                const unsigned int flags A_UNUSED) const override
     {
         if (!being)
             return;

@@ -61,7 +61,7 @@ class ModeListModel final : public gcn::ListModel
 
         A_DELETE_COPY(ModeListModel)
 
-        virtual ~ModeListModel()
+        ~ModeListModel()
         { }
 
         /**
@@ -158,13 +158,13 @@ int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
 class OpenGLListModel final : public gcn::ListModel
 {
 public:
-    virtual ~OpenGLListModel()
+    ~OpenGLListModel()
     { }
 
-    virtual int getNumberOfElements() override
+    int getNumberOfElements() override
     { return renderModesListSize; }
 
-    virtual std::string getElementAt(int i) override
+    std::string getElementAt(int i) override
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";

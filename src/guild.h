@@ -69,7 +69,7 @@ class Guild final : public AvatarListModel
 public:
     A_DELETE_COPY(Guild)
 
-    virtual ~Guild();
+    ~Guild();
 
     /**
      * Set the guild's name.

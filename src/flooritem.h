@@ -74,10 +74,10 @@ class FloorItem final : public ActorSprite
 
         std::string getName() const A_WARN_UNUSED;
 
-        virtual int getTileX() const override A_WARN_UNUSED
+        int getTileX() const override A_WARN_UNUSED
         { return mX; }
 
-        virtual int getTileY() const override A_WARN_UNUSED
+        int getTileY() const override A_WARN_UNUSED
         { return mY; }
 
         void incrementPickup()

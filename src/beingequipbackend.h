@@ -34,7 +34,7 @@ class BeingEquipBackend final : public Equipment::Backend
 
         A_DELETE_COPY(BeingEquipBackend)
 
-        virtual ~BeingEquipBackend();
+        ~BeingEquipBackend();
 
         Item *getEquipment(const int index) const A_WARN_UNUSED;
 

@@ -58,8 +58,8 @@ public:
     const Image* getImage() const A_WARN_UNUSED
     { return mImage; }
 
-    virtual bool setSpriteDirection(const SpriteDirection
-                                    direction A_UNUSED) override
+    bool setSpriteDirection(const SpriteDirection
+                            direction A_UNUSED) override
     { return false; }
 
     int getNumberOfLayers() const A_WARN_UNUSED

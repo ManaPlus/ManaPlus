@@ -81,12 +81,12 @@ class LocalPlayer final : public Being,
          */
         ~LocalPlayer();
 
-        virtual void logic() override;
+        void logic() override;
 
         void slowLogic();
 
-        virtual void setAction(const Action &action,
-                               const int attackType = 0) override;
+        void setAction(const Action &action,
+                       const int attackType = 0) override;
 
         /**
          * Compute the next pathnode location when walking using keyboard.
@@ -101,10 +101,10 @@ class LocalPlayer final : public Being,
          * Also, when specified, it picks up an item at the end of a path
          * or attack target.
          */
-        virtual void nextTile() override
+        void nextTile() override
         { nextTile(0); }
 
-        virtual void nextTile(unsigned char dir);
+        void nextTile(unsigned char dir);
 
         bool pickUp(FloorItem *const item);
 
@@ -150,7 +150,7 @@ class LocalPlayer final : public Being,
         /**
          * Sets a new destination for this being to walk to.
          */
-        virtual void setDestination(const int x, const int y);
+        void setDestination(const int x, const int y);
 
         /**
          * Sets a new direction to keep walking in.
@@ -503,9 +503,8 @@ class LocalPlayer final : public Being,
     protected:
         void updateCoords() override;
 
-
-        virtual void handleStatusEffect(StatusEffect *const effect,
-                                        const int effectId);
+        void handleStatusEffect(StatusEffect *const effect,
+                                const int effectId);
 
         void startWalking(const unsigned char dir);
 

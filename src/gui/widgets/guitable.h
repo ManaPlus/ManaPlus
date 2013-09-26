@@ -61,7 +61,7 @@ public:
 
     A_DELETE_COPY(GuiTable)
 
-    virtual ~GuiTable();
+    ~GuiTable();
 
     /**
      * Retrieves the active table model

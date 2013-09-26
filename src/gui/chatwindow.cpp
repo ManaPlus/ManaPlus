@@ -172,15 +172,15 @@ const char *COLOR_NAME[14] =
 class ColorListModel final : public gcn::ListModel
 {
 public:
-    virtual ~ColorListModel()
+    ~ColorListModel()
     { }
 
-    virtual int getNumberOfElements()
+    int getNumberOfElements()
     {
         return 14;
     }
 
-    virtual std::string getElementAt(int i)
+    std::string getElementAt(int i)
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";

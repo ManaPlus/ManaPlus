@@ -88,15 +88,15 @@ class UpdateTypeModel final : public gcn::ListModel
 
         A_DELETE_COPY(UpdateTypeModel)
 
-        virtual ~UpdateTypeModel()
+        ~UpdateTypeModel()
         { }
 
-        virtual int getNumberOfElements() override
+        int getNumberOfElements() override
         {
             return 3;
         }
 
-        virtual std::string getElementAt(int i) override
+        std::string getElementAt(int i) override
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";
@@ -115,17 +115,17 @@ class UpdateListModel final : public gcn::ListModel
 
         A_DELETE_COPY(UpdateListModel)
 
-        virtual ~UpdateListModel()
+        ~UpdateListModel()
         { }
 
-        virtual int getNumberOfElements() override
+        int getNumberOfElements() override
         {
             if (!mLoginData)
                 return 0;
             return static_cast<int>(mLoginData->updateHosts.size());
         }
 
-        virtual std::string getElementAt(int i) override
+        std::string getElementAt(int i) override
         {
             if (!mLoginData || i >= getNumberOfElements() || i < 0)
                 return "???";

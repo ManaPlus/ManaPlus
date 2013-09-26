@@ -37,22 +37,22 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         A_DELETE_COPY(BeingHandler)
 
-        virtual void handleMessage(Net::MessageIn &msg) override;
+        void handleMessage(Net::MessageIn &msg) override;
 
-        virtual void requestNameById(const int id) const override;
+        void requestNameById(const int id) const override;
 
-        virtual void undress(Being *const being) const override;
+        void undress(Being *const being) const override;
 
     protected:
-        virtual void processBeingChangeLook(Net::MessageIn &msg,
-                                            const bool look2) const;
+        void processBeingChangeLook(Net::MessageIn &msg,
+                                    const bool look2) const;
 
         void processNameResponse2(Net::MessageIn &msg) const;
 
-        virtual void processPlayerMoveUpdate(Net::MessageIn &msg,
-                                             const int type) const;
+        void processPlayerMoveUpdate(Net::MessageIn &msg,
+                                     const int type) const;
 
-        virtual void processBeingMove3(Net::MessageIn &msg) const;
+        void processBeingMove3(Net::MessageIn &msg) const;
 };
 
 }  // namespace TmwAthena

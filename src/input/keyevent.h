@@ -43,7 +43,7 @@ class KeyEvent final : public gcn::KeyEvent
 
         A_DELETE_COPY(KeyEvent)
 
-        virtual ~KeyEvent();
+        ~KeyEvent();
 
         int getActionId() const A_WARN_UNUSED
         { return mActionId; }

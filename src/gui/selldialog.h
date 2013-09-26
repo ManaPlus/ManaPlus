@@ -63,7 +63,7 @@ class SellDialog final : public Window,
         /**
          * Destructor
          */
-        virtual ~SellDialog();
+        ~SellDialog();
 
         void init();
 

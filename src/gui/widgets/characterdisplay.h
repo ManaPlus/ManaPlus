@@ -47,7 +47,7 @@ class CharacterDisplay final : public Container,
 
         A_DELETE_COPY(CharacterDisplay)
 
-        virtual ~CharacterDisplay();
+        ~CharacterDisplay();
 
         void setCharacter(Net::Character *const character);
 

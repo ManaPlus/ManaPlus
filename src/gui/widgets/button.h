@@ -96,7 +96,7 @@ class Button final : public gcn::Button,
          */
         void updateAlpha();
 
-        virtual void mouseReleased(gcn::MouseEvent& mouseEvent) override;
+        void mouseReleased(gcn::MouseEvent& mouseEvent) override;
 
         void setDescription(std::string text)
         { mDescription = text; }

@@ -118,15 +118,14 @@ public:
 
     A_DELETE_COPY(StaticTableModel)
 
-    virtual ~StaticTableModel();
+    ~StaticTableModel();
 
     /**
      * Inserts a widget into the table model.
      * The model is resized to accomodate the widget's width and height,
      * unless column width / row height have been fixed.
      */
-    virtual void set(const int row, const int column,
-                     gcn::Widget *const widget);
+    void set(const int row, const int column, gcn::Widget *const widget);
 
     /**
      * Fixes the column width for a given column; this overrides dynamic width
@@ -134,28 +133,28 @@ public:
      *
      * Semantics are undefined for width 0.
      */
-    virtual void fixColumnWidth(const int column, const int width);
+    void fixColumnWidth(const int column, const int width);
 
     /**
      * Fixes the row height; this overrides dynamic height inference.
      *
      * Semantics are undefined for width 0.
      */
-    virtual void fixRowHeight(const int height);
+    void fixRowHeight(const int height);
 
     /**
      * Resizes the table model
      */
-    virtual void resize();
+    void resize();
 
-    virtual int getRows() const override A_WARN_UNUSED;
-    virtual int getColumns() const override A_WARN_UNUSED;
-    virtual int getRowHeight() const override A_WARN_UNUSED;
-    virtual int getWidth() const A_WARN_UNUSED;
-    virtual int getHeight() const A_WARN_UNUSED;
-    virtual int getColumnWidth(const int index) const override A_WARN_UNUSED;
-    virtual gcn::Widget *getElementAt(const int row, const int column)
-                                      const override A_WARN_UNUSED;
+    int getRows() const override A_WARN_UNUSED;
+    int getColumns() const override A_WARN_UNUSED;
+    int getRowHeight() const override A_WARN_UNUSED;
+    int getWidth() const A_WARN_UNUSED;
+    int getHeight() const A_WARN_UNUSED;
+    int getColumnWidth(const int index) const override A_WARN_UNUSED;
+    gcn::Widget *getElementAt(const int row, const int column)
+                              const override A_WARN_UNUSED;
 
 protected:
     int mRows, mColumns;

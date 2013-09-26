@@ -44,12 +44,12 @@ class VertContainer final : public Container, public gcn::WidgetListener
 
         A_DELETE_COPY(VertContainer)
 
-        virtual void add2(gcn::Widget *const widget, const bool resizable,
-                          const int spacing = -1);
+        void add2(gcn::Widget *const widget, const bool resizable,
+                  const int spacing = -1);
 
-        virtual void add1(gcn::Widget *const widget, const int spacing = -1);
+        void add1(gcn::Widget *const widget, const int spacing = -1);
 
-        virtual void clear();
+        void clear();
 
         void widgetResized(const gcn::Event &event) override;
 

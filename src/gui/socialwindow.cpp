@@ -513,7 +513,7 @@ public:
         return &mMembers;
     }
 
-    virtual Avatar *getAvatarAt(int index) override
+    Avatar *getAvatarAt(int index) override
     {
         return mMembers[index];
     }

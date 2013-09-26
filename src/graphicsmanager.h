@@ -74,7 +74,7 @@ class GraphicsManager final
 
         A_DELETE_COPY(GraphicsManager)
 
-        virtual ~GraphicsManager();
+        ~GraphicsManager();
 
         void initGraphics(const bool noOpenGL);
 

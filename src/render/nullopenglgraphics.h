@@ -190,7 +190,7 @@ class NullOpenGLGraphics final : public Graphics
         void updateTextureFormat();
 
 #ifdef DEBUG_DRAW_CALLS
-        virtual unsigned int getDrawCalls() const
+        unsigned int getDrawCalls() const
         { return mLastDrawCalls; }
 
         static unsigned int mDrawCalls;

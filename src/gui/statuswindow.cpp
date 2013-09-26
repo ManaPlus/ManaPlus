@@ -106,7 +106,7 @@ class DerDisplay final : public AttrDisplay
 
         A_DELETE_COPY(DerDisplay)
 
-        virtual Type getType() const override
+        Type getType() const override
         { return DERIVED; }
 };
 
@@ -121,7 +121,7 @@ class ChangeDisplay final : public AttrDisplay, gcn::ActionListener
 
         std::string update() override;
 
-        virtual Type getType() const override
+        Type getType() const override
         { return CHANGEABLE; }
 
         void setPointsNeeded(int needed);

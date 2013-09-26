@@ -82,13 +82,13 @@ static const char *const SORT_NAME_INVENTORY[6] =
 class SortListModelInv final : public gcn::ListModel
 {
 public:
-    virtual ~SortListModelInv()
+    ~SortListModelInv()
     { }
 
-    virtual int getNumberOfElements() override
+    int getNumberOfElements() override
     { return 6; }
 
-    virtual std::string getElementAt(int i) override
+    std::string getElementAt(int i) override
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";

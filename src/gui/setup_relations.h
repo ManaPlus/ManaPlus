@@ -48,7 +48,7 @@ public:
 
     A_DELETE_COPY(Setup_Relations)
 
-    virtual ~Setup_Relations();
+    ~Setup_Relations();
 
     void apply() override;
 
@@ -58,11 +58,11 @@ public:
 
     void action(const gcn::ActionEvent &event) override;
 
-    virtual void updatedPlayer(const std::string &name);
+    void updatedPlayer(const std::string &name);
 
-    virtual void updateAll();
+    void updateAll();
 
-    virtual void externalUpdated() override;
+    void externalUpdated() override;
 
 private:
     StaticTableModel *mPlayerTableTitleModel;

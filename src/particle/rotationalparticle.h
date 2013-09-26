@@ -43,7 +43,7 @@ class RotationalParticle final : public ImageParticle
 
         ~RotationalParticle();
 
-        virtual bool update() override;
+        bool update() override;
 
     private:
         SimpleAnimation *mAnimation; /**< Used animation for this particle */

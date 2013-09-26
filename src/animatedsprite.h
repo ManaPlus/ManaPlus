@@ -61,7 +61,7 @@ class AnimatedSprite final : public Sprite
 
         static AnimatedSprite *clone(const AnimatedSprite *const anim);
 
-        virtual ~AnimatedSprite();
+        ~AnimatedSprite();
 
         bool reset() override;
 
@@ -89,9 +89,9 @@ class AnimatedSprite final : public Sprite
 
         unsigned int getFrameCount() const A_WARN_UNUSED;
 
-        virtual void setAlpha(float alpha) override;
+        void setAlpha(float alpha) override;
 
-        virtual void *getHash() override A_WARN_UNUSED;
+        void *getHash() override A_WARN_UNUSED;
 
         bool updateNumber(const unsigned num);
 

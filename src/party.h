@@ -167,7 +167,7 @@ private:
      */
     explicit Party(const int16_t id);
 
-    virtual ~Party();
+    ~Party();
 
     MemberList mMembers;
     std::string mName;

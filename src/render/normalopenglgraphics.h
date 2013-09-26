@@ -190,7 +190,7 @@ class NormalOpenGLGraphics final : public Graphics
         void updateTextureFormat();
 
 #ifdef DEBUG_DRAW_CALLS
-        virtual unsigned int getDrawCalls() const
+        unsigned int getDrawCalls() const
         { return mLastDrawCalls; }
 
         static unsigned int mDrawCalls;
@@ -198,7 +198,7 @@ class NormalOpenGLGraphics final : public Graphics
         static unsigned int mLastDrawCalls;
 #endif
 #ifdef DEBUG_BIND_TEXTURE
-        virtual unsigned int getBinds() const
+        unsigned int getBinds() const
         { return mLastBinds; }
 #endif
         static void bindTexture(const GLenum target, const GLuint texture);

@@ -48,7 +48,7 @@ public:
         Theme::fillSoundsList(mNames);
     }
 
-    virtual ~SoundsModel()
+    ~SoundsModel()
     { }
 };
 

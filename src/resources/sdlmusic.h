@@ -46,7 +46,7 @@ class SDLMusic final : public Resource
         /**
          * Destructor.
          */
-        virtual ~SDLMusic();
+        ~SDLMusic();
 
         /**
          * Loads a music from a buffer in memory.

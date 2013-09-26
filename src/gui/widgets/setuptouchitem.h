@@ -31,7 +31,7 @@ class TouchActionsModel final : public NamesModel
 
         A_DELETE_COPY(TouchActionsModel)
 
-        virtual ~TouchActionsModel()
+        ~TouchActionsModel()
         { }
 
         int getActionFromSelection(const int sel) const;

@@ -48,7 +48,7 @@ class EmoteShortcutContainer final : public ShortcutContainer
         /**
          * Destructor.
          */
-        virtual ~EmoteShortcutContainer();
+        ~EmoteShortcutContainer();
 
         /**
          * Draws the items.

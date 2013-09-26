@@ -71,13 +71,13 @@ static const char *const SORT_NAME_BUY[7] =
 class SortListModelBuy final : public gcn::ListModel
 {
 public:
-    virtual ~SortListModelBuy()
+    ~SortListModelBuy()
     { }
 
-    virtual int getNumberOfElements()
+    int getNumberOfElements()
     { return 7; }
 
-    virtual std::string getElementAt(int i)
+    std::string getElementAt(int i)
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";

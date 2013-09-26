@@ -50,7 +50,7 @@ class SurfaceImageHelper final : public ImageHelper
 
         A_DELETE_COPY(SurfaceImageHelper)
 
-        virtual ~SurfaceImageHelper()
+        ~SurfaceImageHelper()
         { }
 
         /**

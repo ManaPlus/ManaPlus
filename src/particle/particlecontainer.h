@@ -83,7 +83,7 @@ public:
 
     A_DELETE_COPY(ParticleList)
 
-    virtual ~ParticleList();
+    ~ParticleList();
 
     /**
      * Takes control of and adds a particle
@@ -95,9 +95,9 @@ public:
      */
     void removeLocally(const Particle *const particle);
 
-    virtual void clearLocally() override;
+    void clearLocally() override;
 
-    virtual void moveTo(const float x, const float y) override;
+    void moveTo(const float x, const float y) override;
 
 protected:
     std::list<Particle *> mElements;    /**< Contained particle effects */
@@ -114,22 +114,22 @@ public:
 
     A_DELETE_COPY(ParticleVector)
 
-    virtual ~ParticleVector();
+    ~ParticleVector();
 
     /**
      * Sets a particle at a specified index.  Kills the previous particle
      * there, if needed.
      */
-    virtual void setLocally(const int index, Particle *const particle);
+    void setLocally(const int index, Particle *const particle);
 
     /**
      * Removes a particle at a specified index
      */
-    virtual void delLocally(const int index);
+    void delLocally(const int index);
 
-    virtual void clearLocally() override;
+    void clearLocally() override;
 
-    virtual void moveTo(const float x, const float y) override;
+    void moveTo(const float x, const float y) override;
 
 protected:
     std::vector<Particle *> mIndexedElements;

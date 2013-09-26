@@ -45,9 +45,9 @@ public:
 
     A_DELETE_COPY(GuiTableActionListener)
 
-    virtual ~GuiTableActionListener();
+    ~GuiTableActionListener();
 
-    virtual void action(const gcn::ActionEvent& actionEvent) override;
+    void action(const gcn::ActionEvent& actionEvent) override;
 
 protected:
     GuiTable *mTable;

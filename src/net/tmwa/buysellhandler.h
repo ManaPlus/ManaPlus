@@ -37,11 +37,11 @@ class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
 
         A_DELETE_COPY(BuySellHandler)
 
-        virtual void handleMessage(Net::MessageIn &msg);
+        void handleMessage(Net::MessageIn &msg);
 
-        virtual void processNpcBuy(Net::MessageIn &msg);
+        void processNpcBuy(Net::MessageIn &msg);
 
-        virtual void processNpcSellResponse(Net::MessageIn &msg) const;
+        void processNpcSellResponse(Net::MessageIn &msg) const;
 };
 
 }  // namespace TmwAthena
