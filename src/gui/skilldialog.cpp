@@ -629,14 +629,20 @@ void SkillDialog::addSkill(const int id, const int level, const int range,
     }
 }
 
-SkillInfo* SkillDialog::getSkill(const int id)
+SkillInfo* SkillDialog::getSkill(const int id) const
 {
-    return mSkills[id];
+    SkillMap::const_iterator it = mSkills.find(id);
+    if (it != mSkills.end())
+        return (*it).second;
+    return nullptr;
 }
 
-SkillInfo* SkillDialog::getSkillByItem(const int itemId)
+SkillInfo* SkillDialog::getSkillByItem(const int itemId) const
 {
-    return mSkills[itemId - SKILL_MIN_ID];
+    SkillMap::const_iterator it = mSkills.find(itemId - SKILL_MIN_ID);
+    if (it != mSkills.end())
+        return (*it).second;
+    return nullptr;
 }
 
 void SkillDialog::widgetResized(const gcn::Event &event)

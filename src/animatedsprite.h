@@ -91,7 +91,7 @@ class AnimatedSprite final : public Sprite
 
         void setAlpha(float alpha) override;
 
-        void *getHash() override A_WARN_UNUSED;
+        const void *getHash() const override A_WARN_UNUSED;
 
         bool updateNumber(const unsigned num);
 
@@ -135,7 +135,7 @@ class AnimatedSprite final : public Sprite
         unsigned int mFrameTime;       /**< The time since start of frame. */
 
         SpriteDef *mSprite;            /**< The sprite definition. */
-        Action *mAction;               /**< The currently active action. */
+        const Action *mAction;               /**< The currently active action. */
         Animation *mAnimation;         /**< The currently active animation. */
         Frame *mFrame;                 /**< The currently active frame. */
         unsigned mNumber;

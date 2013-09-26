@@ -125,7 +125,7 @@ class SDLFont final : public gcn::Font
 
         int getHeight() const override  A_WARN_UNUSED;
 
-        TextChunkList *getCache() const A_WARN_UNUSED;
+        const TextChunkList *getCache() const A_WARN_UNUSED;
 
         /**
          * @see Font::drawString

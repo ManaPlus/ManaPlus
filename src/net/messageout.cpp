@@ -110,7 +110,7 @@ void MessageOut::writeStringNoLog(const std::string &string, int length)
     PacketCounters::incOutBytes(length);
 }
 
-char *MessageOut::getData() const
+const char *MessageOut::getData() const
 {
     return mData;
 }

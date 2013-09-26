@@ -870,7 +870,7 @@ void Being::removeGuild(const int id)
     mGuilds.erase(id);
 }
 
-Guild *Being::getGuild(const std::string &guildName) const
+const Guild *Being::getGuild(const std::string &guildName) const
 {
     FOR_EACH (GuildsMapCIter, itr, mGuilds)
     {
@@ -882,7 +882,7 @@ Guild *Being::getGuild(const std::string &guildName) const
     return nullptr;
 }
 
-Guild *Being::getGuild(const int id) const
+const Guild *Being::getGuild(const int id) const
 {
     const std::map<int, Guild*>::const_iterator itr = mGuilds.find(id);
     if (itr != mGuilds.end())

@@ -116,13 +116,13 @@ class Dye final
         /**
          * Return special dye palete (S)
          */
-        DyePalette *getSPalete() const A_WARN_UNUSED
+        const DyePalette *getSPalete() const A_WARN_UNUSED
         { return mDyePalettes[sPaleteIndex]; }
 
         /**
          * Return special dye palete (A)
          */
-        DyePalette *getAPalete() const A_WARN_UNUSED
+        const DyePalette *getAPalete() const A_WARN_UNUSED
         { return mDyePalettes[aPaleteIndex]; }
 
         /**

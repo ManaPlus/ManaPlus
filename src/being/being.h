@@ -322,12 +322,12 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Returns a pointer to the specified guild that the being is in.
          */
-        Guild *getGuild(const std::string &guildName) const A_WARN_UNUSED;
+        const Guild *getGuild(const std::string &guildName) const A_WARN_UNUSED;
 
         /**
          * Returns a pointer to the specified guild that the being is in.
          */
-        Guild *getGuild(const int id) const A_WARN_UNUSED;
+        const Guild *getGuild(const int id) const A_WARN_UNUSED;
 
         /**
          * Returns a pointer to the specified guild that the being is in.
@@ -425,7 +425,7 @@ class Being : public ActorSprite, public ConfigListener
         const BeingInfo *getInfo() const A_WARN_UNUSED
         { return mInfo; }
 
-        TargetCursorSize getTargetCursorSize() const A_WARN_UNUSED;
+        TargetCursorSize getTargetCursorSize() const override A_WARN_UNUSED;
 
         int getTargetOffsetX() const A_WARN_UNUSED
         {

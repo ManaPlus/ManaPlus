@@ -194,7 +194,7 @@ void Download::cancel()
     mThread = nullptr;
 }
 
-char *Download::getError() const
+const char *Download::getError() const
 {
     return mError;
 }

@@ -647,7 +647,7 @@ void Map::drawAmbientLayers(Graphics *const graphics, const LayerType type,
     BLOCK_END("Map::drawAmbientLayers")
 }
 
-Tileset *Map::getTilesetWithGid(const int gid) const
+const Tileset *Map::getTilesetWithGid(const int gid) const
 {
     if (gid >= 0 && gid < mIndexedTilesetsSize)
         return mIndexedTilesets[gid];
@@ -727,7 +727,7 @@ bool Map::contains(const int x, const int y) const
     return x >= 0 && y >= 0 && x < mWidth && y < mHeight;
 }
 
-MetaTile *Map::getMetaTile(const int x, const int y) const
+const MetaTile *Map::getMetaTile(const int x, const int y) const
 {
     return &mMetaTiles[x + y * mWidth];
 }
@@ -1322,7 +1322,7 @@ MapItem *Map::findPortalXY(const int x, const int y) const
     return nullptr;
 }
 
-TileAnimation *Map::getAnimationForGid(const int gid) const
+const TileAnimation *Map::getAnimationForGid(const int gid) const
 {
     if (mTileAnimations.empty())
         return nullptr;

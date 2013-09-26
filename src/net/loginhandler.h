@@ -52,7 +52,7 @@ class LoginHandler
         void setServer(const ServerInfo &server)
         { mServer = server; }
 
-        ServerInfo getServer() const A_WARN_UNUSED
+        const ServerInfo &getServer() const A_WARN_UNUSED
         { return mServer; }
 
         virtual void connect() = 0;
@@ -99,7 +99,7 @@ class LoginHandler
         virtual void unregisterAccount(const std::string &username,
                                        const std::string &password) const = 0;
 
-        virtual Worlds getWorlds() const A_WARN_UNUSED = 0;
+        virtual const Worlds &getWorlds() const A_WARN_UNUSED = 0;
 
         virtual void clearWorlds() = 0;
 

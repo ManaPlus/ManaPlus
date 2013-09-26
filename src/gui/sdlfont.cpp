@@ -599,7 +599,7 @@ void SDLFont::doClean()
     }
 }
 
-TextChunkList *SDLFont::getCache() const
+const TextChunkList *SDLFont::getCache() const
 {
     return mCache;
 }

@@ -137,7 +137,7 @@ bool AnimatedSprite::play(const std::string &spriteAction)
         return true;
     }
 
-    Action *const action = mSprite->getAction(spriteAction, mNumber);
+    const Action *const action = mSprite->getAction(spriteAction, mNumber);
     if (!action)
         return false;
 
@@ -374,7 +374,7 @@ void AnimatedSprite::setAlpha(float alpha)
     }
 }
 
-void *AnimatedSprite::getHash()
+const void *AnimatedSprite::getHash() const
 {
     if (mFrame)
         return mFrame;

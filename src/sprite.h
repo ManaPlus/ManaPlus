@@ -108,10 +108,10 @@ class Sprite
          */
         virtual unsigned int getFrameCount() const A_WARN_UNUSED = 0;
 
-        virtual void *getHash() A_WARN_UNUSED
+        virtual const void *getHash() const A_WARN_UNUSED
         { return nullptr; }
 
-        virtual void *getHash2() A_WARN_UNUSED
+        virtual const void *getHash2() const A_WARN_UNUSED
         { return this; }
 
         virtual bool updateNumber(const unsigned num) = 0;

@@ -37,8 +37,8 @@
 SpriteReference *SpriteReference::Empty = nullptr;
 extern int serverVersion;
 
-Action *SpriteDef::getAction(const std::string &action,
-                             const unsigned num) const
+const Action *SpriteDef::getAction(const std::string &action,
+                                   const unsigned num) const
 {
     Actions::const_iterator i = mActions.find(num);
     if (i == mActions.end() && num != 100)

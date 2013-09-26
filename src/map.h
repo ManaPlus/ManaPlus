@@ -214,12 +214,12 @@ class Map final : public Properties, public ConfigListener
         /**
          * Finds the tile set that a tile with the given global id is part of.
          */
-        Tileset *getTilesetWithGid(const int gid) const A_WARN_UNUSED;
+        const Tileset *getTilesetWithGid(const int gid) const A_WARN_UNUSED;
 
         /**
          * Get tile reference.
          */
-        MetaTile *getMetaTile(const int x, const int y) const A_WARN_UNUSED;
+        const MetaTile *getMetaTile(const int x, const int y) const A_WARN_UNUSED;
 
         /**
          * Marks a tile as occupied.
@@ -363,7 +363,8 @@ class Map final : public Properties, public ConfigListener
         /**
          * Gets the tile animation for a specific gid
          */
-        TileAnimation *getAnimationForGid(const int gid) const A_WARN_UNUSED;
+        const TileAnimation *getAnimationForGid(const int gid)
+                                                const A_WARN_UNUSED;
 
         void optionChanged(const std::string &value) override;
 
@@ -374,7 +375,7 @@ class Map final : public Properties, public ConfigListener
 
         void setPvpMode(const int mode);
 
-        ObjectsLayer* getObjectsLayer() const A_WARN_UNUSED
+        const ObjectsLayer* getObjectsLayer() const A_WARN_UNUSED
         { return mObjects; }
 
         std::string getObjectData(const unsigned x, const unsigned y,

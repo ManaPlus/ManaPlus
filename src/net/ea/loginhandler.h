@@ -60,7 +60,7 @@ class LoginHandler : public Net::LoginHandler
         virtual void registerAccount(LoginData *const loginData)
                                      const override;
 
-        virtual Worlds getWorlds() const override A_WARN_UNUSED;
+        virtual const Worlds &getWorlds() const override A_WARN_UNUSED;
 
         virtual void clearWorlds() override;
 

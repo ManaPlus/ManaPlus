@@ -45,13 +45,14 @@ class SpellManager final
 
         TextCommand *getSpell(const int spellId) const A_WARN_UNUSED;
 
-        TextCommand* getSpellByItem(const int itemId) const A_WARN_UNUSED;
+        const TextCommand* getSpellByItem(const int itemId)
+                                          const A_WARN_UNUSED;
 
         bool addSpell(TextCommand *const spell);
 
         TextCommand *createNewSpell() const A_WARN_UNUSED;
 
-        std::vector<TextCommand*> getAll() const A_WARN_UNUSED;
+        const std::vector<TextCommand*> &getAll() const A_WARN_UNUSED;
 
         void useItem(const int itemId) const;
 

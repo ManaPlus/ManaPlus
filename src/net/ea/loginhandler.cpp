@@ -121,7 +121,7 @@ void LoginHandler::registerAccount(LoginData *const loginData1) const
     sendLoginRegister(username, loginData1->password, loginData1->email);
 }
 
-Worlds LoginHandler::getWorlds() const
+const Worlds &LoginHandler::getWorlds() const
 {
     return mWorlds;
 }

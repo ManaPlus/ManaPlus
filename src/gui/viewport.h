@@ -229,12 +229,6 @@ class Viewport final : public WindowContainer,
         void scrollBy(const int x, const int y)
         { mPixelViewX += x; mPixelViewY += y; }
 
-        /**
-         * Returns the current map object.
-         */
-        Map *getCurrentMap() const A_WARN_UNUSED
-        { return mMap; }
-
         int getDebugPath() const A_WARN_UNUSED
         { return mShowDebugPath; }
 

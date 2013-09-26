@@ -629,7 +629,7 @@ void Game::slowLogic()
 
         if (viewport && !errorMessage.empty())
         {
-            const Map *const map = viewport->getCurrentMap();
+            const Map *const map = viewport->getMap();
             if (map)
             {
                 logger->log("state: %d", client->getState());

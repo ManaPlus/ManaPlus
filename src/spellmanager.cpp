@@ -61,7 +61,7 @@ TextCommand* SpellManager::getSpell(const int spellId) const
     return it != mSpells.end() ? (*it).second : nullptr;
 }
 
-TextCommand* SpellManager::getSpellByItem(const int itemId) const
+const TextCommand* SpellManager::getSpellByItem(const int itemId) const
 {
     return getSpell(itemId - SPELL_MIN_ID);
 }
@@ -116,7 +116,7 @@ bool SpellManager::addSpell(TextCommand *const spell)
     return false;
 }
 
-std::vector<TextCommand*> SpellManager::getAll() const
+const std::vector<TextCommand*> &SpellManager::getAll() const
 {
     return mSpellsVector;
 }

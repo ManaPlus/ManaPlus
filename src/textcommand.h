@@ -159,7 +159,7 @@ class TextCommand final
         { mCommandType = commandType; }
 
         bool isEmpty() const A_WARN_UNUSED
-        { return mCommand == "" && mSymbol == ""; }
+        { return mCommand.empty() && mSymbol.empty(); }
 
         Image *getImage() const A_WARN_UNUSED
         { return mImage; }

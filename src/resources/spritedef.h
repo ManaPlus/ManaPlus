@@ -145,8 +145,8 @@ class SpriteDef final : public Resource
         /**
          * Returns the specified action.
          */
-        Action *getAction(const std::string &action,
-                          const unsigned num) const A_WARN_UNUSED;
+        const Action *getAction(const std::string &action,
+                                const unsigned num) const A_WARN_UNUSED;
 
         unsigned findNumber(const unsigned num) const A_WARN_UNUSED;
 

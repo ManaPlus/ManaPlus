@@ -1239,7 +1239,7 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (viewport)
         {
-            const Map *const map = viewport->getCurrentMap();
+            const Map *const map = viewport->getMap();
             if (map)
             {
                 SpecialLayer *const specialLayer = map->getSpecialLayer();

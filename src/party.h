@@ -37,7 +37,7 @@ class PartyMember final : public Avatar
 public:
     A_DELETE_COPY(PartyMember)
 
-    Party *getParty() const A_WARN_UNUSED
+    const Party *getParty() const A_WARN_UNUSED
     { return mParty; }
 
     bool getLeader() const A_WARN_UNUSED

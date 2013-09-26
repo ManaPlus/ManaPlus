@@ -87,7 +87,7 @@ class Download final
          */
         void cancel();
 
-        char *getError() const A_WARN_UNUSED;
+        const char *getError() const A_WARN_UNUSED;
 
         void setIgnoreError(const bool n)
         { mIgnoreError = n; }

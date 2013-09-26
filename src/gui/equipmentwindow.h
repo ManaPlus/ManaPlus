@@ -85,7 +85,7 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
 
         void mousePressed(gcn::MouseEvent& mouseEvent) override;
 
-        Item* getEquipment(int i) const A_WARN_UNUSED
+        const Item* getEquipment(const int i) const A_WARN_UNUSED
         { return mEquipment ? mEquipment->getEquipment(i) : nullptr; }
 
         void setBeing(Being *const being);

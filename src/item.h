@@ -163,7 +163,7 @@ class Item
         unsigned char getColor() const A_WARN_UNUSED
         { return mColor; }
 
-        std::string &getDescription() A_WARN_UNUSED
+        const std::string &getDescription() const A_WARN_UNUSED
         { return mDescription; }
 
         int mId;              /**< Item type id. */

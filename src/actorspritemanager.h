@@ -281,10 +281,10 @@ class ActorSpriteManager final: public ConfigListener
         defList(Pickup, Items)
         defList(IgnorePickup, Items)
 
-        std::map<std::string, int> getAttackMobsMap() const A_WARN_UNUSED
+        const std::map<std::string, int> &getAttackMobsMap() const A_WARN_UNUSED
         { return mAttackMobsMap; }
 
-        std::map<std::string, int> getPriorityAttackMobsMap()
+        const std::map<std::string, int> &getPriorityAttackMobsMap()
                                    const A_WARN_UNUSED
         { return mPriorityAttackMobsMap; }
 

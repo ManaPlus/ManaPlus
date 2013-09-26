@@ -319,7 +319,7 @@ class Configuration final : public ConfigurationObject
 
         bool resetBoolValue(const std::string &key);
 
-        const std::string getConfigPath() const A_WARN_UNUSED
+        const std::string &getConfigPath() const A_WARN_UNUSED
         { return mConfigPath; }
 
         /**
