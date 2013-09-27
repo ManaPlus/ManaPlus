@@ -133,23 +133,23 @@ TEST(stringuntils, compareStrI1)
 {
     std::string str1 = "";
     std::string str2 = "";
-    EXPECT_TRUE(compareStrI(str1, str2) == 0);
+    EXPECT_EQ(0, compareStrI(str1, str2));
 
     str1 = "test";
     str2 = "test";
-    EXPECT_TRUE(compareStrI(str1, str2) == 0);
+    EXPECT_EQ(0, compareStrI(str1, str2));
 
     str1 = "test";
     str2 = "test1";
-    EXPECT_TRUE(compareStrI(str1, str2) < 0);
+    EXPECT_GT(0, compareStrI(str1, str2));
 
     str1 = "test";
     str2 = "aest1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-    EXPECT_TRUE(compareStrI(str1, str2) > 0);
+    EXPECT_LT(0, compareStrI(str1, str2));
 
     str1 = "testaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
     str2 = "testaa";
-    EXPECT_TRUE(compareStrI(str1, str2) > 0);
+    EXPECT_LT(0, compareStrI(str1, str2));
 }
 
 TEST(stringuntils, isWordSeparator1)

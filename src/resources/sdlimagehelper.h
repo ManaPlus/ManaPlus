@@ -43,7 +43,8 @@ class SDLImageHelper final : public ImageHelper
     friend class Image;
 
     public:
-        SDLImageHelper()
+        SDLImageHelper() :
+            ImageHelper()
         { }
 
         A_DELETE_COPY(SDLImageHelper)

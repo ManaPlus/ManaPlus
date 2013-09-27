@@ -97,7 +97,6 @@ class ImageRect final
 class Graphics : public gcn::Graphics
 {
     public:
-
         A_DELETE_COPY(Graphics)
 
         /**

@@ -43,6 +43,7 @@ bool SDL::getAllVideoModes(StringVect &modeList)
        .append(toString(static_cast<int>(modes[0]->h)));
     logger->log("support mode: " + modeString);
     modeList.push_back(modeString);
+    return true;
 #else
     /* Check which modes are available */
     if (modes == static_cast<SDL_Rect **>(nullptr))

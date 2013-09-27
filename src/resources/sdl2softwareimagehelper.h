@@ -42,7 +42,8 @@ class SDL2SoftwareImageHelper final : public ImageHelper
     friend class Image;
 
     public:
-        SDL2SoftwareImageHelper()
+        SDL2SoftwareImageHelper() :
+            ImageHelper()
         { }
 
         A_DELETE_COPY(SDL2SoftwareImageHelper)

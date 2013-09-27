@@ -513,7 +513,7 @@ void SetupItemLabel::createControls()
 {
     if (mIsSeparator)
     {
-        const std::string str (" \342\200\225\342\200\225\342\200\225"
+        const std::string str(" \342\200\225\342\200\225\342\200\225"
             "\342\200\225\342\200\225 ");
         mLabel = new Label(this, std::string(str).append(mText).append(str));
     }

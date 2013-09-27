@@ -100,7 +100,6 @@ class PlayerIgnoreStrategy
 class PlayerRelationsListener
 {
     public:
-
         virtual ~PlayerRelationsListener()
         { }
 
