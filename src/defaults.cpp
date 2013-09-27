@@ -267,7 +267,7 @@ DefaultsData* getConfigDefaults()
 #if defined(WIN32) || defined(__APPLE__)
     AddDEF("centerwindow", true);
 #endif
-    AddDEF("audioFrequency", 22010);
+    AddDEF("audioFrequency", 44100);
     AddDEF("audioChannels", 2);
 #ifdef USE_SDL2
     AddDEF("repeateDelay", 500);
