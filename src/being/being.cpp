@@ -3076,7 +3076,7 @@ void Being::setTileCoords(const int x, const int y)
 
 void Being::setMap(Map *const map)
 {
-    Actor::setMap(map);
+    ActorSprite::setMap(map);
     if (mMap)
         mOffsetY = mMap->getHeightOffset(mX, mY);
 }
