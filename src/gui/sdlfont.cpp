@@ -31,6 +31,9 @@
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
+#ifdef WIN32
+#include "resources/resourcemanager.h"
+#endif
 #include "resources/surfaceimagehelper.h"
 
 #include "utils/paths.h"
@@ -395,11 +398,15 @@ SDLFont::~SDLFont()
 
 TTF_Font *SDLFont::openFont(const char *const name, const int size)
 {
-    logger->log("font to open: %s", name);
+#ifdef WIN32
+    return TTF_OpenFontIndex(ResourceManager::getInstance()->getPath(
+        name).c_str(), size, 0);
+#else
     SDL_RWops *const rw = MPHYSFSRWOPS_openRead(name);
     if (!rw)
         return nullptr;
     return TTF_OpenFontIndexRW(rw, 1, size, 0);
+#endif
 }
 
 void SDLFont::loadFont(std::string filename,
