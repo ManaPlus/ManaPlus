@@ -3125,8 +3125,12 @@ void Client::checkConfigVersion()
         if (config.getIntValue("screenJoystickSize") == 1)
             config.deleteKey("screenJoystickSize");
     }
+    if (version < 3)
+    {
+        config.setValue("audioFrequency", 44100);
+    }
 
-    config.setValue("cfgver", 2);
+    config.setValue("cfgver", 3);
 }
 
 Window *Client::openErrorDialog(const std::string &header,
