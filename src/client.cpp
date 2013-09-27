@@ -3128,6 +3128,9 @@ void Client::checkConfigVersion()
     if (version < 3)
     {
         config.setValue("audioFrequency", 44100);
+#ifdef ANDROID
+        config.setValue("customcursor", false);
+#endif
     }
 
     config.setValue("cfgver", 3);

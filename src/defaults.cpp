@@ -152,7 +152,11 @@ DefaultsData* getConfigDefaults()
     AddDEF("ChatLogLength", 0);
     AddDEF("enableChatLog", true);
     AddDEF("whispertab", true);
+#ifdef ANDROID
+    AddDEF("customcursor", false);
+#else
     AddDEF("customcursor", true);
+#endif
     AddDEF("showownname", true);
     AddDEF("showpickupparticle", true);
     AddDEF("showpickupchat", true);
@@ -324,7 +328,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("uselonglivesprites", false);
     AddDEF("uselonglivesounds", true);
     AddDEF("screenDensity", 0);
-    AddDEF("cfgver", 0);
+    AddDEF("cfgver", 3);
     AddDEF("enableDebugLog", false);
     AddDEF("doubleClick", true);
     AddDEF("useDiagonalSpeed", true);
