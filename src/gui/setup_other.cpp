@@ -399,5 +399,6 @@ void Setup_Other::externalUpdated()
 {
     reread("showJob");
     reread("enableGuildBot");
+    reread("enableAuctionBot");
     reread("enableBuggyServers");
 }
