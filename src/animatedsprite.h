@@ -136,8 +136,8 @@ class AnimatedSprite final : public Sprite
 
         SpriteDef *mSprite;            /**< The sprite definition. */
         const Action *mAction;               /**< The currently active action. */
-        Animation *mAnimation;         /**< The currently active animation. */
-        Frame *mFrame;                 /**< The currently active frame. */
+        const Animation *mAnimation;   /**< The currently active animation. */
+        const Frame *mFrame;           /**< The currently active frame. */
         unsigned mNumber;
         unsigned mNumber1;
         AnimationDelayLoad *mDelayLoad;

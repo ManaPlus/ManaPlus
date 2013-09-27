@@ -238,7 +238,7 @@ class ItemInfo final
         void setSpriteOrder(int *const ptr, const int direction,
                             const int n, const int def = -1) const;
 
-        std::map<int, int> getTags() const A_WARN_UNUSED
+        const std::map<int, int> &getTags() const A_WARN_UNUSED
         { return mTags; }
 
         void addTag(const int tag)
@@ -272,8 +272,8 @@ class ItemInfo final
         std::map<int, int> *addReplaceSprite(const int sprite,
                                              const int direction);
 
-        SpriteToItemMap *getSpriteToItemReplaceMap(const int directions)
-                                                   const A_WARN_UNUSED;
+        const SpriteToItemMap *getSpriteToItemReplaceMap(const int directions)
+                                                         const A_WARN_UNUSED;
 
         std::string getDyeColorsString(const int color) const A_WARN_UNUSED;
 

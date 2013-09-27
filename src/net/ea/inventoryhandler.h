@@ -51,7 +51,7 @@ class EquipBackend : public Equipment::Backend
 
         A_DELETE_COPY(EquipBackend)
 
-        Item *getEquipment(const int index) const A_WARN_UNUSED
+        Item *getEquipment(const int index) const override A_WARN_UNUSED
         {
             int invyIndex = mEquipment[index];
             if (invyIndex == -1)

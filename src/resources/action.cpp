@@ -40,7 +40,7 @@ Action::~Action()
     delete_all(mAnimations);
 }
 
-Animation *Action::getAnimation(int direction) const
+const Animation *Action::getAnimation(int direction) const
 {
     Animations::const_iterator i = mAnimations.find(direction);
 

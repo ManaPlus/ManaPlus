@@ -142,7 +142,7 @@ bool AnimatedSprite::play(const std::string &spriteAction)
         return false;
 
     mAction = action;
-    Animation *const animation = mAction->getAnimation(mDirection);
+    const Animation *const animation = mAction->getAnimation(mDirection);
 
     if (animation && animation != mAnimation && animation->getLength() > 0)
     {
@@ -307,7 +307,7 @@ bool AnimatedSprite::setSpriteDirection(const SpriteDirection direction)
         if (!mAction)
             return false;
 
-        Animation *const animation = mAction->getAnimation(mDirection);
+        const Animation *const animation = mAction->getAnimation(mDirection);
 
         if (animation && animation != mAnimation && animation->getLength() > 0)
         {

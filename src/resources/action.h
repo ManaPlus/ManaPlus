@@ -43,7 +43,7 @@ class Action final
 
         void setAnimation(const int direction, Animation *const animation);
 
-        Animation *getAnimation(int direction) const A_WARN_UNUSED;
+        const Animation *getAnimation(int direction) const A_WARN_UNUSED;
 
         unsigned getNumber() const A_WARN_UNUSED
         { return mNumber; }

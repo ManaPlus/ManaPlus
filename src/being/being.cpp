@@ -2467,7 +2467,7 @@ void Being::recalcSpritesOrder()
 
         if (info.isRemoveSprites())
         {
-            SpriteToItemMap *const spriteToItems
+            const SpriteToItemMap *const spriteToItems
                 = info.getSpriteToItemReplaceMap(dir);
 
             if (spriteToItems)

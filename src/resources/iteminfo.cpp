@@ -236,7 +236,8 @@ const std::string ItemInfo::replaceColors(std::string str,
     return replaceAll(str, "%Color%", name);
 }
 
-SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(const int direction) const
+const SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(const int direction)
+                                                           const
 {
     if (direction < 0 || direction >= 10)
         return nullptr;
