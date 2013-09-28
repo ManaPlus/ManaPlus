@@ -350,7 +350,7 @@ void LoginDialog::prepareUpdate()
     int updateType = mUpdateTypeDropDown->getSelected();
 
     if (mCustomUpdateHost->isSelected()
-        && mUpdateHostText->getText().empty())
+        && !mUpdateHostText->getText().empty())
     {
         updateType |= LoginData::Upd_Custom;
         serverConfig.setValue("customUpdateHost",
