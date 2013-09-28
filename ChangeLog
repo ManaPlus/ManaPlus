@@ -1,3 +1,17 @@
+2013-09-29 New release 1.3.9.29
+fix: closing equipment window.
+fix: possible memory leaks.
+fix: sound memory leaks.
+fix: best mode detection.
+fix: auction bot integration loading.
+add: ability to heal nearest player (by left shift + C)
+add: map heights.
+add: online/offline messages in party tab.
+add: android make file (Android.mk)
+add: allow use only actual window size on Android.
+add: set frequesnce to 44100.
+add: hide mouse cursor on Android.
+
 2013-09-15 New release 1.3.9.15
 fix: compilation on some systems.
 fix: windows resize in SDL2.
