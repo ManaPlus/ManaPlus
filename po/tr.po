@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-09-19 12:56+0300\n"
-"PO-Revision-Date: 2013-09-12 08:56+0000\n"
+"POT-Creation-Date: 2013-09-28 13:03+0300\n"
+"PO-Revision-Date: 2013-09-20 08:56+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/manaplus/"
 "language/tr/)\n"
@@ -22,12 +22,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. TRANSLATORS: disable trades message
-#: src/actionmanager.cpp:855
+#: src/actionmanager.cpp:857
 msgid "Ignoring incoming trade requests"
 msgstr "Gelen takas istekleri görmezden geliniyor."
 
 #. TRANSLATORS: enable trades message
-#: src/actionmanager.cpp:865
+#: src/actionmanager.cpp:867
 msgid "Accepting incoming trade requests"
 msgstr "Gelen takas istekleri kabul ediliyor"
 
@@ -525,25 +525,25 @@ msgstr ""
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: setup window name
 #. TRANSLATORS: full button name
-#: src/client.cpp:1170 src/gui/setup.cpp:57 src/gui/windowmenu.cpp:162
+#: src/client.cpp:1205 src/gui/setup.cpp:57 src/gui/windowmenu.cpp:162
 msgid "Setup"
 msgstr "Ayarlar"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1174 src/gui/setup_perfomance.cpp:50
+#: src/client.cpp:1209 src/gui/setup_perfomance.cpp:50
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1177 src/gui/setup_video.cpp:219
+#: src/client.cpp:1212 src/gui/setup_video.cpp:219
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1180 src/gui/setup_theme.cpp:280
+#: src/client.cpp:1215 src/gui/setup_theme.cpp:280
 msgid "Theme"
 msgstr "Tema"
 
@@ -554,7 +554,7 @@ msgstr "Tema"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1184 src/gui/didyouknowwindow.cpp:77
+#: src/client.cpp:1219 src/gui/didyouknowwindow.cpp:77
 #: src/gui/inventorywindow.cpp:238 src/gui/npcdialog.cpp:69
 #: src/gui/npcdialog.cpp:106 src/gui/popupmenu.cpp:563
 #: src/gui/questswindow.cpp:135 src/gui/shopwindow.cpp:77
@@ -562,32 +562,32 @@ msgid "Close"
 msgstr "Kapat"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1302
+#: src/client.cpp:1337
 msgid "Connecting to server"
 msgstr "Bağlanılıyor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1345
+#: src/client.cpp:1380
 msgid "Logging in"
 msgstr "Bağlanılıyor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1384
+#: src/client.cpp:1419
 msgid "Entering game world"
 msgstr "Oyun dünyasına giriliyor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1505
+#: src/client.cpp:1540
 msgid "Requesting characters"
 msgstr "Karakterler isteniliyor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1544
+#: src/client.cpp:1579
 msgid "Connecting to the game server"
 msgstr "Oyun sunucusuna bağlanılıyor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1557
+#: src/client.cpp:1592
 msgid "Changing game servers"
 msgstr "Oyun sunucusu değiştiriliyor"
 
@@ -602,7 +602,7 @@ msgstr "Oyun sunucusu değiştiriliyor"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1614 src/client.cpp:1625 src/client.cpp:1801
+#: src/client.cpp:1649 src/client.cpp:1660 src/client.cpp:1836
 #: src/gui/changeemaildialog.cpp:168 src/gui/changepassworddialog.cpp:158
 #: src/gui/charcreatedialog.cpp:358 src/gui/charselectdialog.cpp:292
 #: src/gui/editserverdialog.cpp:214 src/gui/registerdialog.cpp:255
@@ -612,65 +612,65 @@ msgid "Error"
 msgstr "Hata"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1638
+#: src/client.cpp:1673
 msgid "Requesting registration details"
 msgstr "Kayıt detayları isteniyor"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1675
+#: src/client.cpp:1710
 msgid "Password Change"
 msgstr "Şifre Değiştir"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1677
+#: src/client.cpp:1712
 msgid "Password changed successfully!"
 msgstr "Şifreniz başarı ile değiştirildi!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1698
+#: src/client.cpp:1733
 msgid "Email Change"
 msgstr "E-posta Değiştir"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1700
+#: src/client.cpp:1735
 msgid "Email changed successfully!"
 msgstr "E-posta başarı ile değiştirildi!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1722
+#: src/client.cpp:1757
 msgid "Unregister Successful"
 msgstr "Hesap kapatma başarılı"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1724
+#: src/client.cpp:1759
 msgid "Farewell, come back any time..."
 msgstr "Hoşçakal, tekrar bekleriz..."
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1986 src/client.cpp:2001 src/client.cpp:2044
-#: src/client.cpp:2060 src/client.cpp:2501 src/client.cpp:2509
+#: src/client.cpp:2021 src/client.cpp:2036 src/client.cpp:2079
+#: src/client.cpp:2095 src/client.cpp:2536 src/client.cpp:2544
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s yok ve yaratılamıyor! Çıkış yapılıyor."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2201
+#: src/client.cpp:2236
 #, c-format
 msgid "Invalid update host: %s."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2242 src/client.cpp:2249
+#: src/client.cpp:2277 src/client.cpp:2284
 msgid "Error creating updates directory!"
 msgstr "Hata! Güncelleme klasörü oluşturulamadı!"
 
-#: src/client.cpp:2271 src/client.cpp:2284
+#: src/client.cpp:2306 src/client.cpp:2319
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Hata: %s bulunamadı ve yaratılamıyor! Çıkış yapılıyor."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:3069
+#: src/client.cpp:3151
 msgid "Do you want to open support page?"
 msgstr ""
 
@@ -1183,7 +1183,7 @@ msgstr "Sat"
 #: src/gui/popupmenu.cpp:2664 src/gui/quitdialog.cpp:69
 #: src/gui/registerdialog.cpp:76 src/gui/setupactiondata.h:1797
 #: src/gui/setup.cpp:85 src/gui/socialwindow.cpp:1219
-#: src/gui/textcommandeditor.cpp:201 src/gui/textdialog.cpp:53
+#: src/gui/textcommandeditor.cpp:200 src/gui/textdialog.cpp:53
 #: src/gui/unregisterdialog.cpp:54 src/gui/updaterwindow.cpp:179
 msgid "Cancel"
 msgstr "İptal"
@@ -1415,7 +1415,7 @@ msgstr "Bilgi"
 #: src/gui/charselectdialog.cpp:106 src/gui/serverdialog.cpp:262
 #: src/gui/setupactiondata.h:1803 src/gui/setup_relations.cpp:259
 #: src/gui/shopwindow.cpp:93 src/gui/shopwindow.cpp:100
-#: src/gui/textcommandeditor.cpp:205
+#: src/gui/textcommandeditor.cpp:204
 msgid "Delete"
 msgstr "Sil"
 
@@ -1561,7 +1561,7 @@ msgid "Present: %s; %d players are present."
 msgstr "Mevcut: %s; %d oyuncu mevcut."
 
 #. TRANSLATORS: chat message
-#: src/gui/chatwindow.cpp:1094
+#: src/gui/chatwindow.cpp:1095
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "%s 'e fısıldanıyor: %s"
@@ -1674,9 +1674,9 @@ msgstr "%d FPS (Yazılım)"
 
 #. TRANSLATORS: debug window label
 #: src/gui/debugwindow.cpp:211
-#, fuzzy, c-format
+#, c-format
 msgid "%d FPS (normal OpenGL)"
-msgstr "%d FPS (mobil OpenGL)"
+msgstr ""
 
 #. TRANSLATORS: debug window label
 #: src/gui/debugwindow.cpp:215
@@ -3889,9 +3889,8 @@ msgstr "Sohbet geçmişini göster"
 
 #. TRANSLATORS: settings option
 #: src/gui/setup_chat.cpp:108
-#, fuzzy
 msgid "Show party online messages"
-msgstr "İş tecrübe mesajlarını göster"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/setup_chat.cpp:112
@@ -5782,67 +5781,67 @@ msgid "Astral Magic"
 msgstr "Astral Büyü"
 
 #. TRANSLATORS: command editor name
-#: src/gui/textcommandeditor.cpp:162
+#: src/gui/textcommandeditor.cpp:161
 msgid "Command Editor"
 msgstr "Komut Editörü"
 
 #. TRANSLATORS: command editor button
-#: src/gui/textcommandeditor.cpp:167
+#: src/gui/textcommandeditor.cpp:166
 msgid "magic"
 msgstr "büyü"
 
 #. TRANSLATORS: command editor button
-#: src/gui/textcommandeditor.cpp:169
+#: src/gui/textcommandeditor.cpp:168
 msgid "other"
 msgstr "diğer"
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:171
+#: src/gui/textcommandeditor.cpp:170
 msgid "Symbol:"
 msgstr "Sembol:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:174
+#: src/gui/textcommandeditor.cpp:173
 msgid "Command:"
 msgstr "Komut:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:177
+#: src/gui/textcommandeditor.cpp:176
 msgid "Comment:"
 msgstr ""
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:181
+#: src/gui/textcommandeditor.cpp:180
 msgid "Target Type:"
 msgstr "Hedef Tipi:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:185
+#: src/gui/textcommandeditor.cpp:184
 msgid "Icon:"
 msgstr "İkon:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:188
+#: src/gui/textcommandeditor.cpp:187
 msgid "Mana:"
 msgstr "Mana:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:191
+#: src/gui/textcommandeditor.cpp:190
 msgid "Magic level:"
 msgstr "Büyü Leveli:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:195
+#: src/gui/textcommandeditor.cpp:194
 msgid "Magic School:"
 msgstr "Büyü Okulu:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:198
+#: src/gui/textcommandeditor.cpp:197
 msgid "School level:"
 msgstr "Okul leveli:"
 
 #. TRANSLATORS: command editor button
-#: src/gui/textcommandeditor.cpp:203
+#: src/gui/textcommandeditor.cpp:202
 msgid "Save"
 msgstr "Kayıt"
 
@@ -7715,6 +7714,3 @@ msgstr ""
 #: src/resources/itemdb.cpp:183
 msgid "Unknown item"
 msgstr "Bilinmeyen nesne"
-
-#~ msgid "%d FPS (fast OpenGL)"
-#~ msgstr "%d FPS (hızlı OpenGL)"

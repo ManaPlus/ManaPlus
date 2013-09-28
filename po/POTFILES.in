@@ -113,4 +113,5 @@ src/resources/itemdb.cpp
 src/resources/mapreader.cpp
 src/resources/monsterdb.cpp
 src/utils/gettext.h
+src/utils/gettext.h_
 src/utils/stringutils.h

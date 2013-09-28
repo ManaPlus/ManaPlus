@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-09-19 12:56+0300\n"
-"PO-Revision-Date: 2013-09-12 08:56+0000\n"
+"POT-Creation-Date: 2013-09-28 13:03+0300\n"
+"PO-Revision-Date: 2013-09-20 08:56+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/manaplus/"
 "language/zh_CN/)\n"
@@ -23,12 +23,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. TRANSLATORS: disable trades message
-#: src/actionmanager.cpp:855
+#: src/actionmanager.cpp:857
 msgid "Ignoring incoming trade requests"
 msgstr "忽略新进的交易请求"
 
 #. TRANSLATORS: enable trades message
-#: src/actionmanager.cpp:865
+#: src/actionmanager.cpp:867
 msgid "Accepting incoming trade requests"
 msgstr "接受传入的交易请求"
 
@@ -525,25 +525,25 @@ msgstr "流动的泡沫"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: setup window name
 #. TRANSLATORS: full button name
-#: src/client.cpp:1170 src/gui/setup.cpp:57 src/gui/windowmenu.cpp:162
+#: src/client.cpp:1205 src/gui/setup.cpp:57 src/gui/windowmenu.cpp:162
 msgid "Setup"
 msgstr "设置"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1174 src/gui/setup_perfomance.cpp:50
+#: src/client.cpp:1209 src/gui/setup_perfomance.cpp:50
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1177 src/gui/setup_video.cpp:219
+#: src/client.cpp:1212 src/gui/setup_video.cpp:219
 msgid "Video"
 msgstr "视频"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1180 src/gui/setup_theme.cpp:280
+#: src/client.cpp:1215 src/gui/setup_theme.cpp:280
 msgid "Theme"
 msgstr "主题"
 
@@ -554,7 +554,7 @@ msgstr "主题"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1184 src/gui/didyouknowwindow.cpp:77
+#: src/client.cpp:1219 src/gui/didyouknowwindow.cpp:77
 #: src/gui/inventorywindow.cpp:238 src/gui/npcdialog.cpp:69
 #: src/gui/npcdialog.cpp:106 src/gui/popupmenu.cpp:563
 #: src/gui/questswindow.cpp:135 src/gui/shopwindow.cpp:77
@@ -562,32 +562,32 @@ msgid "Close"
 msgstr "关闭"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1302
+#: src/client.cpp:1337
 msgid "Connecting to server"
 msgstr "正在连接服务器"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1345
+#: src/client.cpp:1380
 msgid "Logging in"
 msgstr "登录中"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1384
+#: src/client.cpp:1419
 msgid "Entering game world"
 msgstr "进入游戏世界"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1505
+#: src/client.cpp:1540
 msgid "Requesting characters"
 msgstr "请求角色"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1544
+#: src/client.cpp:1579
 msgid "Connecting to the game server"
 msgstr "正在连接游戏服务器"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1557
+#: src/client.cpp:1592
 msgid "Changing game servers"
 msgstr "正在更改游戏服务器"
 
@@ -602,7 +602,7 @@ msgstr "正在更改游戏服务器"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1614 src/client.cpp:1625 src/client.cpp:1801
+#: src/client.cpp:1649 src/client.cpp:1660 src/client.cpp:1836
 #: src/gui/changeemaildialog.cpp:168 src/gui/changepassworddialog.cpp:158
 #: src/gui/charcreatedialog.cpp:358 src/gui/charselectdialog.cpp:292
 #: src/gui/editserverdialog.cpp:214 src/gui/registerdialog.cpp:255
@@ -612,65 +612,65 @@ msgid "Error"
 msgstr "错误"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1638
+#: src/client.cpp:1673
 msgid "Requesting registration details"
 msgstr "正在请求详细注册信息"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1675
+#: src/client.cpp:1710
 msgid "Password Change"
 msgstr "更改密码"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1677
+#: src/client.cpp:1712
 msgid "Password changed successfully!"
 msgstr "密码更改成功！"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1698
+#: src/client.cpp:1733
 msgid "Email Change"
 msgstr "更改电子邮箱地址"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1700
+#: src/client.cpp:1735
 msgid "Email changed successfully!"
 msgstr "电子邮箱地址更改成功！"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1722
+#: src/client.cpp:1757
 msgid "Unregister Successful"
 msgstr "取消注册成功"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1724
+#: src/client.cpp:1759
 msgid "Farewell, come back any time..."
 msgstr "再见，欢迎随时回来... ..."
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1986 src/client.cpp:2001 src/client.cpp:2044
-#: src/client.cpp:2060 src/client.cpp:2501 src/client.cpp:2509
+#: src/client.cpp:2021 src/client.cpp:2036 src/client.cpp:2079
+#: src/client.cpp:2095 src/client.cpp:2536 src/client.cpp:2544
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s 不存在，且无法创建！正在退出。"
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2201
+#: src/client.cpp:2236
 #, c-format
 msgid "Invalid update host: %s."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2242 src/client.cpp:2249
+#: src/client.cpp:2277 src/client.cpp:2284
 msgid "Error creating updates directory!"
 msgstr "创建更新目录错误！"
 
-#: src/client.cpp:2271 src/client.cpp:2284
+#: src/client.cpp:2306 src/client.cpp:2319
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "错误：%s 不存在且无法创建！正在退出。"
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:3069
+#: src/client.cpp:3151
 msgid "Do you want to open support page?"
 msgstr ""
 
@@ -1180,7 +1180,7 @@ msgstr "出售"
 #: src/gui/popupmenu.cpp:2664 src/gui/quitdialog.cpp:69
 #: src/gui/registerdialog.cpp:76 src/gui/setupactiondata.h:1797
 #: src/gui/setup.cpp:85 src/gui/socialwindow.cpp:1219
-#: src/gui/textcommandeditor.cpp:201 src/gui/textdialog.cpp:53
+#: src/gui/textcommandeditor.cpp:200 src/gui/textdialog.cpp:53
 #: src/gui/unregisterdialog.cpp:54 src/gui/updaterwindow.cpp:179
 msgid "Cancel"
 msgstr "取消"
@@ -1412,7 +1412,7 @@ msgstr "信息"
 #: src/gui/charselectdialog.cpp:106 src/gui/serverdialog.cpp:262
 #: src/gui/setupactiondata.h:1803 src/gui/setup_relations.cpp:259
 #: src/gui/shopwindow.cpp:93 src/gui/shopwindow.cpp:100
-#: src/gui/textcommandeditor.cpp:205
+#: src/gui/textcommandeditor.cpp:204
 msgid "Delete"
 msgstr "删除"
 
@@ -1558,7 +1558,7 @@ msgid "Present: %s; %d players are present."
 msgstr ""
 
 #. TRANSLATORS: chat message
-#: src/gui/chatwindow.cpp:1094
+#: src/gui/chatwindow.cpp:1095
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "对%s密语到：%s"
@@ -1671,9 +1671,9 @@ msgstr "%d FPS (软件)"
 
 #. TRANSLATORS: debug window label
 #: src/gui/debugwindow.cpp:211
-#, fuzzy, c-format
+#, c-format
 msgid "%d FPS (normal OpenGL)"
-msgstr "%d的FPS (快速 OpenGL)"
+msgstr ""
 
 #. TRANSLATORS: debug window label
 #: src/gui/debugwindow.cpp:215
@@ -3883,9 +3883,8 @@ msgstr "显示聊天记录"
 
 #. TRANSLATORS: settings option
 #: src/gui/setup_chat.cpp:108
-#, fuzzy
 msgid "Show party online messages"
-msgstr "显示工作EXP消息"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/setup_chat.cpp:112
@@ -5774,67 +5773,67 @@ msgid "Astral Magic"
 msgstr "星芒魔术"
 
 #. TRANSLATORS: command editor name
-#: src/gui/textcommandeditor.cpp:162
+#: src/gui/textcommandeditor.cpp:161
 msgid "Command Editor"
 msgstr "命令编辑器"
 
 #. TRANSLATORS: command editor button
-#: src/gui/textcommandeditor.cpp:167
+#: src/gui/textcommandeditor.cpp:166
 msgid "magic"
 msgstr "魔术"
 
 #. TRANSLATORS: command editor button
-#: src/gui/textcommandeditor.cpp:169
+#: src/gui/textcommandeditor.cpp:168
 msgid "other"
 msgstr "其他"
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:171
+#: src/gui/textcommandeditor.cpp:170
 msgid "Symbol:"
 msgstr "符号："
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:174
+#: src/gui/textcommandeditor.cpp:173
 msgid "Command:"
 msgstr "命令："
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:177
+#: src/gui/textcommandeditor.cpp:176
 msgid "Comment:"
 msgstr ""
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:181
+#: src/gui/textcommandeditor.cpp:180
 msgid "Target Type:"
 msgstr "目标类型："
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:185
+#: src/gui/textcommandeditor.cpp:184
 msgid "Icon:"
 msgstr "图示："
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:188
+#: src/gui/textcommandeditor.cpp:187
 msgid "Mana:"
 msgstr "法力："
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:191
+#: src/gui/textcommandeditor.cpp:190
 msgid "Magic level:"
 msgstr "魔法等级："
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:195
+#: src/gui/textcommandeditor.cpp:194
 msgid "Magic School:"
 msgstr "魔法学院："
 
 #. TRANSLATORS: command editor label
-#: src/gui/textcommandeditor.cpp:198
+#: src/gui/textcommandeditor.cpp:197
 msgid "School level:"
 msgstr "学校层次："
 
 #. TRANSLATORS: command editor button
-#: src/gui/textcommandeditor.cpp:203
+#: src/gui/textcommandeditor.cpp:202
 msgid "Save"
 msgstr "保存"
 
