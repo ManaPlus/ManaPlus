@@ -50,6 +50,21 @@
 
 #include <SDL_image.h>
 #include <SDL_mixer.h>
+#include <SDL_version.h>
+
+#define SDL_IMAGE_COMPILEDVERSION \
+    SDL_VERSIONNUM(SDL_IMAGE_MAJOR_VERSION, \
+    SDL_IMAGE_MINOR_VERSION, SDL_IMAGE_PATCHLEVEL)
+
+#define SDL_IMAGE_VERSION_ATLEAST(X, Y, Z) \
+    (SDL_IMAGE_COMPILEDVERSION >= SDL_VERSIONNUM(X, Y, Z))
+
+#define SDL_MIXER_COMPILEDVERSION \
+    SDL_VERSIONNUM(SDL_MIXER_MAJOR_VERSION, \
+    SDL_MIXER_MINOR_VERSION, SDL_MIXER_PATCHLEVEL)
+
+#define SDL_MIXER_VERSION_ATLEAST(X, Y, Z) \
+    (SDL_MIXER_COMPILEDVERSION >= SDL_VERSIONNUM(X, Y, Z))
 
 #include "debug.h"
 
@@ -295,8 +310,12 @@ int main(int argc, char *argv[])
     atexit((void(*)()) PHYSFS_deinit);
 
     XML::initXML();
+#if SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
     IMG_Init(IMG_INIT_PNG);
+#endif
+#if SDL_MIXER_VERSION_ATLEAST(1, 2, 11)
     Mix_Init(MIX_INIT_OGG);
+#endif
 
 #ifdef WIN32
     SetCurrentDirectory(PhysFs::getBaseDir());
@@ -317,8 +336,12 @@ int main(int argc, char *argv[])
     delete client;
     client = nullptr;
 
+#if SDL_MIXER_VERSION_ATLEAST(1, 2, 11)
     Mix_Quit();
+#endif
+#if SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
     IMG_Quit();
+#endif
 
 #ifdef DUMP_LEAKED_RESOURCES
     reportRWops();
