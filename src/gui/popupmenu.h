@@ -56,14 +56,14 @@ class RenameListener final : public gcn::ActionListener
 
         void action(const gcn::ActionEvent &event) override;
 
-        void setMapItem(MapItem* mapItem)
-        { mMapItem = mapItem; }
+        void setMapItem(MapItem *const mapItem);
 
         void setDialog(TextDialog *dialog)
         { mDialog = dialog; }
 
     private:
-        MapItem *mMapItem;
+        int mMapItemX;
+        int mMapItemY;
         TextDialog *mDialog;
 };
 

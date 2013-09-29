@@ -2668,14 +2668,29 @@ void PopupMenu::showGMPopup()
 
 RenameListener::RenameListener() :
     gcn::ActionListener(),
-    mMapItem(nullptr),
+    mMapItemX(0),
+    mMapItemY(0),
     mDialog(nullptr)
 {
 }
 
+void RenameListener::setMapItem(MapItem *const mapItem)
+{
+    if (mapItem)
+    {
+        mMapItemX = mapItem->getX();
+        mMapItemY = mapItem->getY();
+    }
+    else
+    {
+        mMapItemX = 0;
+        mMapItemY = 0;
+    }
+}
+
 void RenameListener::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "ok" && mMapItem && viewport && mDialog)
+    if (event.getId() == "ok" && viewport && mDialog)
     {
         Map *const map = viewport->getMap();
         if (!map)
@@ -2685,16 +2700,11 @@ void RenameListener::action(const gcn::ActionEvent &event)
         MapItem *item = nullptr;
         if (sl)
         {
-            item = sl->getTile(mMapItem->getX(), mMapItem->getY());
-            if (!item)
-            {
-                sl->setTile(mMapItem->getX(), mMapItem->getY(),
-                            mMapItem->getType());
-                item = sl->getTile(mMapItem->getX(), mMapItem->getY());
-            }
-            item->setComment(mDialog->getText());
+            item = sl->getTile(mMapItemX, mMapItemY);
+            if (item)
+                item->setComment(mDialog->getText());
         }
-        item = map->findPortalXY(mMapItem->getX(), mMapItem->getY());
+        item = map->findPortalXY(mMapItemX, mMapItemY);
         if (item)
             item->setComment(mDialog->getText());
 
