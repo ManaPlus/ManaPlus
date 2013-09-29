@@ -461,7 +461,7 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
 
     gcn::Color col = g->getColor();
     const gcn::Color &col2 = g->getColor2();
-    const float alpha = static_cast<float>(col.a) / 255.0f;
+    const float alpha = static_cast<float>(col.a) / 255.0F;
 
     /* The alpha value is ignored at string generation so avoid caching the
      * same text with different alpha values.

@@ -138,7 +138,7 @@ LocalPlayer::LocalPlayer(const int id, const int subtype) :
     mTestParticle(nullptr),
     mTestParticleName(),
     mTestParticleTime(0),
-    mTestParticleHash(0l),
+    mTestParticleHash(0L),
     mWalkingDir(0),
     mUpdateName(true),
     mBlockAdvert(false),

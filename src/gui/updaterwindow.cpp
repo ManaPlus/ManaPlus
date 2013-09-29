@@ -158,7 +158,7 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     mUpdatesDirReal(updatesDir),
     mCurrentFile("news.txt"),
     mNewLabelCaption(),
-    mDownloadProgress(0.0f),
+    mDownloadProgress(0.0F),
     mDownloadMutex(),
     mCurrentChecksum(0),
     mStoreInMemory(true),
@@ -451,12 +451,12 @@ int UpdaterWindow::updateProgress(void *ptr, DownloadStatus status,
                      static_cast<float>(dt);
 
     if (progress != progress)
-        progress = 0.0f;  // check for NaN
-    if (progress < 0.0f)
-        progress = 0.0f;  // no idea how this could ever happen,
+        progress = 0.0F;  // check for NaN
+    if (progress < 0.0F)
+        progress = 0.0F;  // no idea how this could ever happen,
                           // but why not check for it anyway.
-    if (progress > 1.0f)
-        progress = 1.0f;
+    if (progress > 1.0F)
+        progress = 1.0F;
 
     uw->setLabel(std::string(uw->mCurrentFile).append(" (")
         .append(toString(static_cast<int>(progress * 100))).append("%)"));

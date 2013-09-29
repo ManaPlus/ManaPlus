@@ -539,7 +539,7 @@ class Being : public ActorSprite, public ConfigListener
          * @see setPosition(const Vector &pos)
          */
         inline void setPosition(const float x, const float y,
-                                const float z = 0.0f)
+                                const float z = 0.0F)
         { setPosition(Vector(x, y, z)); }
 
         /**

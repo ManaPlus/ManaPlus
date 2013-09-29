@@ -46,7 +46,7 @@ Image::Image(SDL_Texture *const image, const int width, const int height) :
     mTexHeight(0),
 #endif
     mBounds(),
-    mAlpha(1.0f),
+    mAlpha(1.0F),
     mSDLSurface(nullptr),
     mTexture(image),
     mAlphaChannel(nullptr),
@@ -90,7 +90,7 @@ Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
     mTexHeight(0),
 #endif
     mBounds(),
-    mAlpha(1.0f),
+    mAlpha(1.0F),
     mSDLSurface(image),
 #ifdef USE_SDL2
     mTexture(nullptr),
@@ -134,7 +134,7 @@ Image::Image(const GLuint glimage, const int width, const int height,
     mTexWidth(texWidth),
     mTexHeight(texHeight),
     mBounds(),
-    mAlpha(1.0f),
+    mAlpha(1.0F),
     mSDLSurface(nullptr),
 #ifdef USE_SDL2
     mTexture(nullptr),
@@ -254,7 +254,7 @@ void Image::setAlpha(const float alpha)
     if (mAlpha == alpha || !ImageHelper::mEnableAlpha)
         return;
 
-    if (alpha < 0.0f || alpha > 1.0f)
+    if (alpha < 0.0F || alpha > 1.0F)
         return;
 
     if (mSDLSurface)

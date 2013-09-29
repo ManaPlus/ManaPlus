@@ -246,7 +246,7 @@ class Particle : public Actor
          * particle has been set using setDestination.
          */
         void setDieDistance(const float dist)
-        { mInvDieDistance = 1.0f / dist; }
+        { mInvDieDistance = 1.0F / dist; }
 
         /**
          * Changes the size of the emitters so that the effect fills a
@@ -284,7 +284,7 @@ class Particle : public Actor
         { return 1; }
 
         virtual float getAlpha() const
-        { return 1.0f; }
+        { return 1.0F; }
 
         virtual void setAlpha(const float alpha A_UNUSED) override
         { }

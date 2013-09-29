@@ -52,7 +52,7 @@ MobileOpenGLGraphics::MobileOpenGLGraphics():
     mTexture(false),
     mIsByteColor(false),
     mByteColor(),
-    mFloatColor(1.0f),
+    mFloatColor(1.0F),
     mMaxVertices(500),
     mColorAlpha(false),
 #ifdef DEBUG_BIND_TEXTURE
@@ -276,7 +276,7 @@ bool MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
 
     if (smooth)  // A basic smooth effect...
     {
-        setColorAlpha(0.2f);
+        setColorAlpha(0.2F);
         drawRescaledQuad(image, srcX, srcY, dstX - 1, dstY - 1, width, height,
                          desiredWidth + 1, desiredHeight + 1);
         drawRescaledQuad(image, srcX, srcY, dstX + 1, dstY + 1, width, height,
@@ -873,7 +873,7 @@ void MobileOpenGLGraphics::_beginDraw()
 #endif
 #endif
 
-//    glScalef(0.5f, 0.5f, 0.5f);
+//    glScalef(0.5F, 0.5F, 0.5F);
 
     pushClipArea(gcn::Rectangle(0, 0, mRect.w, mRect.h));
 }
@@ -1242,7 +1242,7 @@ void MobileOpenGLGraphics::setColorAlpha(const float alpha)
     if (!mIsByteColor && mFloatColor == alpha)
         return;
 
-    glColor4f(1.0f, 1.0f, 1.0f, alpha);
+    glColor4f(1.0F, 1.0F, 1.0F, alpha);
     mIsByteColor = false;
     mFloatColor = alpha;
 }

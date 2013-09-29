@@ -63,7 +63,7 @@ CompoundSprite::CompoundSprite() :
     mDisableAdvBeingCaching(config.getBoolValue("disableAdvBeingCaching")),
     mDisableBeingCaching(config.getBoolValue("disableBeingCaching"))
 {
-    mAlpha = 1.0f;
+    mAlpha = 1.0F;
 }
 
 CompoundSprite::~CompoundSprite()
@@ -119,7 +119,7 @@ bool CompoundSprite::draw(Graphics *const graphics,
     if (mSprites.empty())  // Nothing to draw
         return false;
 
-    if (mAlpha == 1.0f && mImage)
+    if (mAlpha == 1.0F && mImage)
     {
         return graphics->drawImage(mImage, posX + mOffsetX, posY + mOffsetY);
     }

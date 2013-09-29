@@ -58,7 +58,7 @@ void TestMain::initConfig()
     mConfig.setValue("hwaccel", false);
     mConfig.setValue("screen", false);
     mConfig.setValue("sound", false);
-    mConfig.setValue("guialpha", 0.8f);
+    mConfig.setValue("guialpha", 0.8F);
 //    mConfig.setValue("remember", true);
     mConfig.setValue("sfxVolume", 50);
     mConfig.setValue("musicVolume", 60);

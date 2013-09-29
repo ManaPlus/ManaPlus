@@ -225,7 +225,7 @@ void DropDown::draw(gcn::Graphics* graphics)
 
     updateAlpha();
 
-    const int alpha = static_cast<int>(mAlpha * 255.0f);
+    const int alpha = static_cast<int>(mAlpha * 255.0F);
     const int pad = 2 * mPadding;
     mHighlightColor.a = alpha;
     mShadowColor.a = alpha;

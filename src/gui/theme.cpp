@@ -177,7 +177,7 @@ int Skin::getMinHeight() const
 Theme::Theme() :
     Palette(THEME_COLORS_END * THEME_PALETTES),
     mSkins(),
-    mMinimumOpacity(-1.0f),
+    mMinimumOpacity(-1.0F),
     mProgressColors(ProgressColors(THEME_PROG_END))
 {
     initDefaultThemePath();
@@ -361,7 +361,7 @@ void Theme::unload(Skin *const skin)
 
 void Theme::setMinimumOpacity(const float minimumOpacity)
 {
-    if (minimumOpacity > 1.0f)
+    if (minimumOpacity > 1.0F)
         return;
 
     mMinimumOpacity = minimumOpacity;

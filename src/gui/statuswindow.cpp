@@ -238,7 +238,7 @@ StatusWindow::StatusWindow() :
         mJobLvlLabel = new Label(this, strprintf(_("Job: %d"), 0));
         // TRANSLATORS: status window label
         mJobLabel = new Label(this, _("Job:"));
-        mJobBar = new ProgressBar(this, 0.0f, 80, 0, Theme::PROG_JOB);
+        mJobBar = new ProgressBar(this, 0.0F, 80, 0, Theme::PROG_JOB);
 
         place(3, 0, mJobLvlLabel, 3);
         place(5, 2, mJobLabel).setPadding(3);
@@ -512,7 +512,7 @@ void StatusWindow::updateMPBar(ProgressBar *const bar, const bool showMax)
     else
         bar->setText(toString(mp));
 
-    float prog = 1.0f;
+    float prog = 1.0F;
     if (maxMp > 0)
         prog = static_cast<float>(mp) / static_cast<float>(maxMp);
 

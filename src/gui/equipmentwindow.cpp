@@ -224,7 +224,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
             Image *const image = item->getImage();
             if (image)
             {
-                image->setAlpha(1.0f);  // Ensure the image is drawn
+                image->setAlpha(1.0F);  // Ensure the image is drawn
                                         // with maximum opacity
                 g->drawImage(image, box->x + mItemPadding,
                     box->y + mItemPadding);

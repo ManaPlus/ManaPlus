@@ -40,7 +40,7 @@
 
 #include "debug.h"
 
-static const float SIN45 = 0.707106781f;
+static const float SIN45 = 0.707106781F;
 
 class Graphics;
 class Image;
@@ -50,11 +50,11 @@ int Particle::maxCount = 0;
 int Particle::fastPhysics = 0;
 int Particle::emitterSkip = 1;
 bool Particle::enabled = true;
-const float Particle::PARTICLE_SKY = 800.0f;
+const float Particle::PARTICLE_SKY = 800.0F;
 
 Particle::Particle(Map *const map) :
     Actor(),
-    mAlpha(1.0f),
+    mAlpha(1.0F),
     mLifetimeLeft(-1),
     mLifetimePast(0),
     mFadeOut(0),
@@ -64,11 +64,11 @@ Particle::Particle(Map *const map) :
     mChildEmitters(),
     mChildParticles(),
     mDeathEffect(),
-    mGravity(0.0f),
-    mBounce(0.0f),
-    mAcceleration(0.0f),
-    mInvDieDistance(-1.0f),
-    mMomentum(1.0f),
+    mGravity(0.0F),
+    mBounce(0.0F),
+    mAcceleration(0.0F),
+    mInvDieDistance(-1.0F),
+    mMomentum(1.0F),
     mTarget(nullptr),
     mRandomness(0),
     mDeathEffectConditions(0x00),
@@ -117,10 +117,10 @@ bool Particle::update()
     if (mAlive == ALIVE)
     {
         // calculate particle movement
-        if (mMomentum != 1.0f)
+        if (mMomentum != 1.0F)
             mVelocity *= mMomentum;
 
-        if (mTarget && mAcceleration != 0.0f)
+        if (mTarget && mAcceleration != 0.0F)
         {
             Vector dist = mPos - mTarget->mPos;
             dist.x *= SIN45;
@@ -139,19 +139,19 @@ bool Particle::update()
                         break;
                     }
 
-                    invHypotenuse = 2.0f / (static_cast<float>(fabs(dist.x))
+                    invHypotenuse = 2.0F / (static_cast<float>(fabs(dist.x))
                                     + static_cast<float>(fabs(dist.y))
                                     + static_cast<float>(fabs(dist.z)));
                     break;
                 default:
-                    invHypotenuse = 1.0f / static_cast<float>(sqrt(
+                    invHypotenuse = 1.0F / static_cast<float>(sqrt(
                         dist.x * dist.x + dist.y * dist.y + dist.z * dist.z));
                     break;
             }
 
             if (invHypotenuse)
             {
-                if (mInvDieDistance > 0.0f && invHypotenuse > mInvDieDistance)
+                if (mInvDieDistance > 0.0F && invHypotenuse > mInvDieDistance)
                     mAlive = DEAD_IMPACT;
                 const float accFactor = invHypotenuse * mAcceleration;
                 mVelocity -= dist * accFactor;
@@ -161,11 +161,11 @@ bool Particle::update()
         if (mRandomness > 0)
         {
             mVelocity.x += static_cast<float>((rand() % mRandomness - rand()
-                           % mRandomness)) / 1000.0f;
+                           % mRandomness)) / 1000.0F;
             mVelocity.y += static_cast<float>((rand() % mRandomness - rand()
-                           % mRandomness)) / 1000.0f;
+                           % mRandomness)) / 1000.0F;
             mVelocity.z += static_cast<float>((rand() % mRandomness - rand()
-                           % mRandomness)) / 1000.0f;
+                           % mRandomness)) / 1000.0F;
         }
 
         mVelocity.z -= mGravity;
@@ -181,9 +181,9 @@ bool Particle::update()
 
         mLifetimePast++;
 
-        if (mPos.z < 0.0f)
+        if (mPos.z < 0.0F)
         {
-            if (mBounce > 0.0f)
+            if (mBounce > 0.0F)
             {
                 mPos.z *= -mBounce;
                 mVelocity *= mBounce;
@@ -419,12 +419,12 @@ Particle *Particle::addTextSplashEffect(const std::string &text,
         mMap, text, color, font, outline);
     newParticle->moveTo(static_cast<float>(x), static_cast<float>(y));
     newParticle->setVelocity(
-        static_cast<float>((rand() % 100) - 50) / 200.0f,       // X
-        static_cast<float>((rand() % 100) - 50) / 200.0f,       // Y
-        (static_cast<float>((rand() % 100)) / 200.0f) + 4.0f);  // Z
+        static_cast<float>((rand() % 100) - 50) / 200.0F,       // X
+        static_cast<float>((rand() % 100) - 50) / 200.0F,       // Y
+        (static_cast<float>((rand() % 100)) / 200.0F) + 4.0F);  // Z
 
-    newParticle->setGravity(0.1f);
-    newParticle->setBounce(0.5f);
+    newParticle->setGravity(0.1F);
+    newParticle->setBounce(0.5F);
     newParticle->setLifetime(200);
     newParticle->setFadeOut(100);
 
@@ -442,8 +442,8 @@ Particle *Particle::addTextRiseFadeOutEffect(const std::string &text,
     Particle *const newParticle = new TextParticle(
         mMap, text, color, font, outline);
     newParticle->moveTo(static_cast<float>(x), static_cast<float>(y));
-    newParticle->setVelocity(0.0f, 0.0f, 0.5f);
-    newParticle->setGravity(0.0015f);
+    newParticle->setVelocity(0.0F, 0.0F, 0.5F);
+    newParticle->setGravity(0.0015F);
     newParticle->setLifetime(300);
     newParticle->setFadeOut(100);
     newParticle->setFadeIn(0);

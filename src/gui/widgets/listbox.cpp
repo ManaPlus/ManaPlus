@@ -92,7 +92,7 @@ void ListBox::draw(gcn::Graphics *graphics)
     updateAlpha();
     Graphics *const g = static_cast<Graphics*>(graphics);
 
-    mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+    mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
     graphics->setColor(mHighlightColor);
     gcn::Font *const font = getFont();
     const int rowHeight = getRowHeight();

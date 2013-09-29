@@ -93,7 +93,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
     if (client->getGuiAlpha() != mAlpha)
         mAlpha = client->getGuiAlpha();
 
-    const int alpha = static_cast<int>(mAlpha * 255.0f);
+    const int alpha = static_cast<int>(mAlpha * 255.0F);
     Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
     gcn::Font *const font = getFont();
 
@@ -153,7 +153,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
             Image *const icon = item->getImage();
             if (icon)
             {
-                icon->setAlpha(1.0f);
+                icon->setAlpha(1.0F);
                 graphics->drawImage(icon, mPadding, y + mPadding);
             }
         }

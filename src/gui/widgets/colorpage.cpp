@@ -52,7 +52,7 @@ void ColorPage::draw(gcn::Graphics *graphics)
         mListModel);
     Graphics *const g = static_cast<Graphics *const>(graphics);
 
-    mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+    mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
     graphics->setColor(mHighlightColor);
     updateAlpha();
     gcn::Font *const font = getFont();

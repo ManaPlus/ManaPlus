@@ -508,7 +508,7 @@ void Setup_Theme::apply()
             if (size >= 0)
                 mNpcFontSizeDropDown->setSelected(size);
         }
-        if (mInfo->guiAlpha > 0.01f)
+        if (mInfo->guiAlpha > 0.01F)
             config.setValue("guialpha", mInfo->guiAlpha);
     }
     config.setValue("theme", mTheme);

@@ -49,7 +49,7 @@ class ProgressBar final : public gcn::Widget,
         /**
          * Constructor, initializes the progress with the given value.
          */
-        ProgressBar(const Widget2 *const widget, float progress = 0.0f,
+        ProgressBar(const Widget2 *const widget, float progress = 0.0F,
                     const int width = 40, const int height = 7,
                     const int color = -1);
 

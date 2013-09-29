@@ -76,11 +76,11 @@ uint16_t MumbleManager::getMapId(std::string mapName) const
 
 void MumbleManager::setMapBase(uint16_t mapid)
 {
-    mMapBase[0] = 10000.0f * (mapid & 0x1f);
+    mMapBase[0] = 10000.0F * (mapid & 0x1F);
     mapid >>= 5;
-    mMapBase[1] = 1000.0f * (mapid & 0x3f);
+    mMapBase[1] = 1000.0F * (mapid & 0x3F);
     mapid >>= 6;
-    mMapBase[2] = 10000.0f * (mapid & 0x1f);
+    mMapBase[2] = 10000.0F * (mapid & 0x1F);
 }
 
 void MumbleManager::init()
@@ -151,22 +151,22 @@ void MumbleManager::init()
     // Unit vector pointing out of the avatars eyes
     // (here Front looks into scene).
     /* no way to look "up", 2d */
-    mLinkedMemCache.fAvatarFront[1] = 0.0f;
+    mLinkedMemCache.fAvatarFront[1] = 0.0F;
 
     // Unit vector pointing out of the top of the avatars head
     // (here Top looks straight up).
     /* no way to change this in tmw */
-    mLinkedMemCache.fAvatarTop[0] = 0.0f;
-    mLinkedMemCache.fAvatarTop[1] = 1.0f;
-    mLinkedMemCache.fAvatarTop[2] = 0.0f;
+    mLinkedMemCache.fAvatarTop[0] = 0.0F;
+    mLinkedMemCache.fAvatarTop[1] = 1.0F;
+    mLinkedMemCache.fAvatarTop[2] = 0.0F;
 
-    mLinkedMemCache.fCameraFront[0] = 0.0f;
-    mLinkedMemCache.fCameraFront[1] = 0.0f;
-    mLinkedMemCache.fCameraFront[2] = 1.0f;
+    mLinkedMemCache.fCameraFront[0] = 0.0F;
+    mLinkedMemCache.fCameraFront[1] = 0.0F;
+    mLinkedMemCache.fCameraFront[2] = 1.0F;
 
-    mLinkedMemCache.fCameraTop[0] = 0.0f;
-    mLinkedMemCache.fCameraTop[1] = 1.0f;
-    mLinkedMemCache.fCameraTop[2] = 0.0f;
+    mLinkedMemCache.fCameraTop[0] = 0.0F;
+    mLinkedMemCache.fCameraTop[1] = 1.0F;
+    mLinkedMemCache.fCameraTop[2] = 0.0F;
 
     mLinkedMemCache.uiTick++;
 }
@@ -194,14 +194,14 @@ void MumbleManager::setAction(const int action)
         case 1: /* WALK */
         case 2: /* ATTACK */
         case 5: /* HURT */
-            mLinkedMemCache.fAvatarPosition[1] = 1.5f;
+            mLinkedMemCache.fAvatarPosition[1] = 1.5F;
             break;
         case 3: /* SIT */
-            mLinkedMemCache.fAvatarPosition[1] = 1.0f;
+            mLinkedMemCache.fAvatarPosition[1] = 1.0F;
             break;
         case 4: /* DEAD */
         default:
-            mLinkedMemCache.fAvatarPosition[1] = 0.0f;
+            mLinkedMemCache.fAvatarPosition[1] = 0.0F;
             break;
     }
     mLinkedMemCache.fAvatarPosition[1] += mMapBase[1];
@@ -238,20 +238,20 @@ void MumbleManager::setPos(const int tileX, const int tileY,
     switch (direction)
     {
         case 4: /* UP */
-            mLinkedMemCache.fAvatarFront[0] = 0.0f;
-            mLinkedMemCache.fAvatarFront[2] = 1.0f;
+            mLinkedMemCache.fAvatarFront[0] = 0.0F;
+            mLinkedMemCache.fAvatarFront[2] = 1.0F;
             break;
         case 1: /* DOWN */
-            mLinkedMemCache.fAvatarFront[0] = 0.0f;
-            mLinkedMemCache.fAvatarFront[2] = -1.0f;
+            mLinkedMemCache.fAvatarFront[0] = 0.0F;
+            mLinkedMemCache.fAvatarFront[2] = -1.0F;
             break;
         case 2: /* LEFT */
-            mLinkedMemCache.fAvatarFront[0] = 1.0f;
-            mLinkedMemCache.fAvatarFront[2] = 0.0f;
+            mLinkedMemCache.fAvatarFront[0] = 1.0F;
+            mLinkedMemCache.fAvatarFront[2] = 0.0F;
             break;
         case 8: /* RIGHT */
-            mLinkedMemCache.fAvatarFront[0] = -1.0f;
-            mLinkedMemCache.fAvatarFront[2] = 0.0f;
+            mLinkedMemCache.fAvatarFront[0] = -1.0F;
+            mLinkedMemCache.fAvatarFront[2] = 0.0F;
             break;
         default:
             break;

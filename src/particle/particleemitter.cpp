@@ -36,8 +36,8 @@
 
 #include "debug.h"
 
-static const float SIN45 = 0.707106781f;
-static const float DEG_RAD_FACTOR = 0.017453293f;
+static const float SIN45 = 0.707106781F;
+static const float DEG_RAD_FACTOR = 0.017453293F;
 
 typedef std::vector<ImageSet*>::const_iterator ImageSetVectorCIter;
 typedef std::list<ParticleEmitter>::const_iterator ParticleEmitterListCIter;
@@ -54,24 +54,24 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
     mParticleFollow(false)
 {
     // Initializing default values
-    mParticlePosX.set(0.0f);
-    mParticlePosY.set(0.0f);
-    mParticlePosZ.set(0.0f);
-    mParticleAngleHorizontal.set(0.0f);
-    mParticleAngleVertical.set(0.0f);
-    mParticlePower.set(0.0f);
-    mParticleGravity.set(0.0f);
+    mParticlePosX.set(0.0F);
+    mParticlePosY.set(0.0F);
+    mParticlePosZ.set(0.0F);
+    mParticleAngleHorizontal.set(0.0F);
+    mParticleAngleVertical.set(0.0F);
+    mParticlePower.set(0.0F);
+    mParticleGravity.set(0.0F);
     mParticleRandomness.set(0);
-    mParticleBounce.set(0.0f);
-    mParticleAcceleration.set(0.0f);
-    mParticleDieDistance.set(-1.0f);
-    mParticleMomentum.set(1.0f);
+    mParticleBounce.set(0.0F);
+    mParticleAcceleration.set(0.0F);
+    mParticleDieDistance.set(-1.0F);
+    mParticleMomentum.set(1.0F);
     mParticleLifetime.set(-1);
     mParticleFadeOut.set(0);
     mParticleFadeIn.set(0);
     mOutput.set(1);
     mOutputPause.set(0);
-    mParticleAlpha.set(1.0f);
+    mParticleAlpha.set(1.0F);
 
     for_each_xml_child_node(propertyNode, emitterNode)
     {
@@ -82,18 +82,18 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
 
             if (name == "position-x")
             {
-                mParticlePosX = readParticleEmitterProp(propertyNode, 0.0f);
+                mParticlePosX = readParticleEmitterProp(propertyNode, 0.0F);
             }
             else if (name == "position-y")
             {
-                mParticlePosY = readParticleEmitterProp(propertyNode, 0.0f);
+                mParticlePosY = readParticleEmitterProp(propertyNode, 0.0F);
                 mParticlePosY.minVal *= SIN45;
                 mParticlePosY.maxVal *= SIN45;
                 mParticlePosY.changeAmplitude *= SIN45;
             }
             else if (name == "position-z")
             {
-                mParticlePosZ = readParticleEmitterProp(propertyNode, 0.0f);
+                mParticlePosZ = readParticleEmitterProp(propertyNode, 0.0F);
                 mParticlePosZ.minVal *= SIN45;
                 mParticlePosZ.maxVal *= SIN45;
                 mParticlePosZ.changeAmplitude *= SIN45;
@@ -144,7 +144,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
             else if (name == "horizontal-angle")
             {
                 mParticleAngleHorizontal =
-                    readParticleEmitterProp(propertyNode, 0.0f);
+                    readParticleEmitterProp(propertyNode, 0.0F);
                 mParticleAngleHorizontal.minVal
                     += static_cast<float>(rotation);
                 mParticleAngleHorizontal.minVal *= DEG_RAD_FACTOR;
@@ -156,18 +156,18 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
             else if (name == "vertical-angle")
             {
                 mParticleAngleVertical =
-                    readParticleEmitterProp(propertyNode, 0.0f);
+                    readParticleEmitterProp(propertyNode, 0.0F);
                 mParticleAngleVertical.minVal *= DEG_RAD_FACTOR;
                 mParticleAngleVertical.maxVal *= DEG_RAD_FACTOR;
                 mParticleAngleVertical.changeAmplitude *= DEG_RAD_FACTOR;
             }
             else if (name == "power")
             {
-                mParticlePower = readParticleEmitterProp(propertyNode, 0.0f);
+                mParticlePower = readParticleEmitterProp(propertyNode, 0.0F);
             }
             else if (name == "gravity")
             {
-                mParticleGravity = readParticleEmitterProp(propertyNode, 0.0f);
+                mParticleGravity = readParticleEmitterProp(propertyNode, 0.0F);
             }
             else if (name == "randomnes"
                      || name == "randomness")  // legacy bug
@@ -176,7 +176,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
             }
             else if (name == "bounce")
             {
-                mParticleBounce = readParticleEmitterProp(propertyNode, 0.0f);
+                mParticleBounce = readParticleEmitterProp(propertyNode, 0.0F);
             }
             else if (name == "lifetime")
             {
@@ -196,17 +196,17 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
             else if (name == "acceleration")
             {
                 mParticleAcceleration = readParticleEmitterProp(
-                    propertyNode, 0.0f);
+                    propertyNode, 0.0F);
             }
             else if (name == "die-distance")
             {
                 mParticleDieDistance = readParticleEmitterProp(
-                    propertyNode, 0.0f);
+                    propertyNode, 0.0F);
             }
             else if (name == "momentum")
             {
                 mParticleMomentum = readParticleEmitterProp(
-                    propertyNode, 1.0f);
+                    propertyNode, 1.0F);
             }
             else if (name == "fade-out")
             {
@@ -218,7 +218,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
             }
             else if (name == "alpha")
             {
-                mParticleAlpha = readParticleEmitterProp(propertyNode, 1.0f);
+                mParticleAlpha = readParticleEmitterProp(propertyNode, 1.0F);
             }
             else if (name == "follow-parent")
             {

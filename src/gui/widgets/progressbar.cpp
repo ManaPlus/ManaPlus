@@ -57,8 +57,8 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     mRedraw(true)
 {
     // The progress value is directly set at load time:
-    if (mProgress > 1.0f || mProgress < 0.0f)
-        mProgress = 1.0f;
+    if (mProgress > 1.0F || mProgress < 0.0F)
+        mProgress = 1.0F;
 
     mForegroundColor = getThemeColor(Theme::PROGRESS_BAR);
     addWidgetListener(this);
@@ -120,9 +120,9 @@ void ProgressBar::logic()
     {
         // Smoothly showing the progressbar changes.
         if (mProgressToGo > mProgress)
-            mProgress = std::min(1.0f, mProgress + 0.005f);
+            mProgress = std::min(1.0F, mProgress + 0.005F);
         if (mProgressToGo < mProgress)
-            mProgress = std::max(0.0f, mProgress - 0.005f);
+            mProgress = std::max(0.0F, mProgress - 0.005F);
     }
     BLOCK_END("ProgressBar::logic")
 }
@@ -145,7 +145,7 @@ void ProgressBar::draw(gcn::Graphics *graphics)
 
 void ProgressBar::setProgress(const float progress)
 {
-    const float p = std::min(1.0f, std::max(0.0f, progress));
+    const float p = std::min(1.0F, std::max(0.0F, progress));
     mProgressToGo = p;
 
     if (!mSmoothProgress)

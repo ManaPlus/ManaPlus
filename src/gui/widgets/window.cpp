@@ -1114,7 +1114,7 @@ int Window::getGuiAlpha() const
 {
     const float alpha = std::max(client->getGuiAlpha(),
         Theme::instance()->getMinimumOpacity());
-    return static_cast<int>(alpha * 255.0f);
+    return static_cast<int>(alpha * 255.0F);
 }
 
 Layout &Window::getLayout()

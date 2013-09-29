@@ -86,7 +86,7 @@ void TextPreview::draw(gcn::Graphics* graphics)
         mAlpha = client->getGuiAlpha();
     Graphics *const g = static_cast<Graphics*>(graphics);
 
-    const int intAlpha = static_cast<int>(mAlpha * 255.0f);
+    const int intAlpha = static_cast<int>(mAlpha * 255.0F);
     const int alpha = mTextAlpha ? intAlpha : 255;
 
     if (mOpaque)
@@ -94,7 +94,7 @@ void TextPreview::draw(gcn::Graphics* graphics)
         g->setColor(gcn::Color(static_cast<int>(mBGColor->r),
                     static_cast<int>(mBGColor->g),
                     static_cast<int>(mBGColor->b),
-                    static_cast<int>(mAlpha * 255.0f)));
+                    static_cast<int>(mAlpha * 255.0F)));
         g->fillRectangle(gcn::Rectangle(0, 0,
             mDimension.width, mDimension.height));
     }

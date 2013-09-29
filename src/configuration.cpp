@@ -514,7 +514,7 @@ std::string Configuration::getStringValue(const std::string &key) const
 float Configuration::getFloatValue(const std::string &key) const
 {
     GETLOG();
-    float defaultValue = 0.0f;
+    float defaultValue = 0.0F;
     const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {

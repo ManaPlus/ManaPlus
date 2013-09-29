@@ -49,7 +49,7 @@ AnimatedSprite::AnimatedSprite(SpriteDef *const sprite):
     mDelayLoad(nullptr),
     mTerminated(false)
 {
-    mAlpha = 1.0f;
+    mAlpha = 1.0F;
 
     // Take possession of the sprite
     if (mSprite)

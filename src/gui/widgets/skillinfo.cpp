@@ -37,7 +37,7 @@
 SkillInfo::SkillInfo() :
     skillLevel(),
     skillExp(),
-    progress(0.0f),
+    progress(0.0F),
     color(),
     dataMap(),
     model(nullptr),
@@ -101,7 +101,7 @@ void SkillInfo::update()
     else
     {
         skillExp.clear();
-        progress = 0.0f;
+        progress = 0.0F;
     }
 
     color = Theme::getProgressColor(Theme::PROG_EXP, progress);

@@ -169,7 +169,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                     else if (item->isEquipped())
                     caption = "Eq.";
 
-                    image->setAlpha(1.0f);
+                    image->setAlpha(1.0F);
                     g->drawImage(image, itemX, itemY);
                     if (item->isEquipped())
                         g->setColorAll(mEquipedColor, mEquipedColor2);
@@ -193,7 +193,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
 
                     if (image)
                     {
-                        image->setAlpha(1.0f);
+                        image->setAlpha(1.0F);
                         g->drawImage(image, itemX, itemY);
                     }
                 }
@@ -212,7 +212,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
 
                 if (image)
                 {
-                    image->setAlpha(1.0f);
+                    image->setAlpha(1.0F);
                     g->drawImage(image, itemX, itemY);
                 }
 

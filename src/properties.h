@@ -66,12 +66,12 @@ class Properties
          * Gets a map property as a float.
          *
          * @param name The name of the property.
-         * @param def  Default value, 0.0f by default.
+         * @param def  Default value, 0.0F by default.
          * @return the value of the given property or the given default when it
          *         doesn't exist.
          */
         float getFloatProperty(const std::string &name,
-                               const float def = 0.0f) const A_WARN_UNUSED
+                               const float def = 0.0F) const A_WARN_UNUSED
         {
             const PropertyMap::const_iterator i = mProperties.find(name);
             float ret = def;

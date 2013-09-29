@@ -70,7 +70,7 @@ DefaultsData* getConfigDefaults()
 {
     DefaultsData *const configData = new DefaultsData;
     AddDEF("OverlayDetail", 2);
-    AddDEF("speechBubbleAlpha", 1.0f);
+    AddDEF("speechBubbleAlpha", 1.0F);
     AddDEF("MostUsedServerName0", "server.themanaworld.org");
     AddDEF("visiblenames", true);
     AddDEF("speech", static_cast<int>(Being::TEXT_OVERHEAD));
@@ -148,7 +148,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("rightTolerance", 100);
     AddDEF("logNpcInGui", true);
     AddDEF("download-music", false);
-    AddDEF("guialpha", 0.8f);
+    AddDEF("guialpha", 0.8F);
     AddDEF("ChatLogLength", 0);
     AddDEF("enableChatLog", true);
     AddDEF("whispertab", true);

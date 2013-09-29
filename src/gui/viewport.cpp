@@ -296,7 +296,7 @@ void Viewport::_drawDebugPath(Graphics *const graphics)
     SDL_GetMouseState(&mMouseX, &mMouseY);
 
     static Path debugPath;
-    static Vector lastMouseDestination = Vector(0.0f, 0.0f);
+    static Vector lastMouseDestination = Vector(0.0F, 0.0F);
     const int mousePosX = mMouseX + mPixelViewX;
     const int mousePosY = mMouseY + mPixelViewY;
     Vector mouseDestination(mousePosX, mousePosY);

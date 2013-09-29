@@ -100,23 +100,23 @@ inline uint16_t getCrc16(const std::string &str)
 inline float fastInvSqrt(float x)
 {
     union { int i; float x; } tmp;
-    const float xhalf = 0.5f * x;
+    const float xhalf = 0.5F * x;
     tmp.x = x;
     tmp.i = 0x5f375a86 - (tmp.i >> 1);
     x = tmp.x;
-    x = x * (1.5f - xhalf * x * x);
+    x = x * (1.5F - xhalf * x * x);
     return x;
 }
 
 inline float fastSqrt(const float x)
 {
-    return 1.0f / fastInvSqrt(x);
+    return 1.0F / fastInvSqrt(x);
 }
 
 constexpr inline float weightedAverage(const float n1, const float n2,
                                        const float w)
 {
-    return w < 0.0f ? n1 : (w > 1.0f ? n2 : w * n2 + (1.0f - w) * n1);
+    return w < 0.0F ? n1 : (w > 1.0F ? n2 : w * n2 + (1.0F - w) * n1);
 }
 
 constexpr inline int roundDouble(const double v)

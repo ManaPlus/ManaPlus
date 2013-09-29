@@ -141,8 +141,8 @@ Map::Map(const int width, const int height,
     mOnOpenList(2),
     mBackgrounds(),
     mForegrounds(),
-    mLastAScrollX(0.0f),
-    mLastAScrollY(0.0f),
+    mLastAScrollX(0.0F),
+    mLastAScrollY(0.0F),
     mParticleEffects(),
     mMapPortals(),
     mTileAnimations(),
@@ -189,7 +189,7 @@ Map::Map(const int width, const int height,
     config.addListener("guialpha", this);
     config.addListener("beingopacity", this);
 
-    if (mOpacity != 1.0f)
+    if (mOpacity != 1.0F)
         mBeingOpacity = config.getBoolValue("beingopacity");
     else
         mBeingOpacity = false;
@@ -240,14 +240,14 @@ void Map::optionChanged(const std::string &value)
     else if (value == "guialpha")
     {
         mOpacity = config.getFloatValue("guialpha");
-        if (mOpacity != 1.0f)
+        if (mOpacity != 1.0F)
             mBeingOpacity = config.getBoolValue("beingopacity");
         else
             mBeingOpacity = false;
     }
     else if (value == "beingopacity")
     {
-        if (mOpacity != 1.0f)
+        if (mOpacity != 1.0F)
             mBeingOpacity = config.getBoolValue("beingopacity");
         else
             mBeingOpacity = false;
@@ -474,7 +474,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     }
 
     // Don't draw if gui opacity == 1
-    if (mBeingOpacity && mOpacity != 1.0f)
+    if (mBeingOpacity && mOpacity != 1.0F)
     {
         // Draws beings with a lower opacity to make them visible
         // even when covered by a wall or some other elements...
@@ -497,9 +497,9 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                 // For now, just draw actors with only one layer.
                 if (actor->getNumberOfLayers() == 1)
                 {
-                    actor->setAlpha(0.3f);
+                    actor->setAlpha(0.3F);
                     actor->draw(graphics, -scrollX, -scrollY);
-                    actor->setAlpha(1.0f);
+                    actor->setAlpha(1.0F);
                 }
             }
             ++ai;
@@ -585,7 +585,7 @@ void Map::updateAmbientLayers(const float scrollX, const float scrollY)
     BLOCK_START("Map::updateAmbientLayers")
     static int lastTick = tick_time;
 
-    if (mLastAScrollX == 0.0f && mLastAScrollY == 0.0f)
+    if (mLastAScrollX == 0.0F && mLastAScrollY == 0.0F)
     {
         // First call - initialisation
         mLastAScrollX = scrollX;

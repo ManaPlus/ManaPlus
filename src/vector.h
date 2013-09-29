@@ -40,15 +40,15 @@ class Vector final
          * Constructor.
          */
         Vector():
-            x(0.0f),
-            y(0.0f),
-            z(0.0f)
+            x(0.0F),
+            y(0.0F),
+            z(0.0F)
         {}
 
         /**
          * Constructor.
          */
-        Vector(const float x0, const float y0, const float z0 = 0.0f) :
+        Vector(const float x0, const float y0, const float z0 = 0.0F) :
             x(x0),
             y(y0),
             z(z0)
@@ -69,7 +69,7 @@ class Vector final
          */
         bool isNull() const A_WARN_UNUSED
         {
-            return x == 0.0f && y == 0.0f && z == 0.0f;
+            return x == 0.0F && y == 0.0F && z == 0.0F;
         }
 
         /**

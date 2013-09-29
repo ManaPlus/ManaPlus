@@ -125,7 +125,7 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
 
     if (minY != -1)
     {
-        mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+        mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
         graphics->setColor(mHighlightColor);
         graphics->fillRectangle(gcn::Rectangle(mPadding, minY + mPadding,
             width - pad2, maxY - minY + height));

@@ -308,7 +308,7 @@ void GuiTable::draw(gcn::Graphics* graphics)
     const int y = rect.y;
     if (mOpaque)
     {
-        mBackgroundColor.a = static_cast<int>(mAlpha * 255.0f);
+        mBackgroundColor.a = static_cast<int>(mAlpha * 255.0F);
         graphics->setColor(mBackgroundColor);
         graphics->fillRectangle(gcn::Rectangle(0, 0, width, height));
     }
@@ -359,7 +359,7 @@ void GuiTable::draw(gcn::Graphics* graphics)
 
                 if (mSelectedRow > 0)
                 {
-                    mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+                    mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
                     graphics->setColor(mHighlightColor);
 
                     if (mLinewiseMode && r == static_cast<unsigned>(

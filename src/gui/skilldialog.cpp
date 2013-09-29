@@ -104,7 +104,7 @@ class SkillListBox final : public ListBox
             Graphics *const graphics = static_cast<Graphics *const>(
                 gcnGraphics);
 
-            mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+            mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
             graphics->setColor(mHighlightColor);
 
             // Draw filled rectangle around the selected list element

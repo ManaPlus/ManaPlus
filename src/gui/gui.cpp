@@ -91,7 +91,7 @@ Gui::Gui(Graphics *const graphics) :
     mSecureFont(),
     mNpcFont(),
     mMouseCursors(nullptr),
-    mMouseCursorAlpha(1.0f),
+    mMouseCursorAlpha(1.0F),
     mMouseInactivityTimer(0),
     mCursorType(Cursor::CURSOR_POINTER),
 #ifdef ANDROID
@@ -309,11 +309,11 @@ void Gui::slowLogic()
     if (mMouseInactivityTimer < 100 * 15)
     {
         ++mMouseInactivityTimer;
-        mMouseCursorAlpha = std::min(1.0f, mMouseCursorAlpha + 0.05f);
+        mMouseCursorAlpha = std::min(1.0F, mMouseCursorAlpha + 0.05F);
     }
     else
     {
-        mMouseCursorAlpha = std::max(0.0f, mMouseCursorAlpha - 0.005f);
+        mMouseCursorAlpha = std::max(0.0F, mMouseCursorAlpha - 0.005F);
     }
     if (mGuiFont)
         mGuiFont->slowLogic(0);
@@ -450,7 +450,7 @@ void Gui::draw()
     const uint8_t button = SDL_GetMouseState(&mouseX, &mouseY);
 
     if ((client->getMouseFocused() || button & SDL_BUTTON(1))
-        && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0f)
+        && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0F)
     {
         Graphics *g2 = static_cast<Graphics*>(mGraphics);
         const Image *const image = dragDrop.getItemImage();

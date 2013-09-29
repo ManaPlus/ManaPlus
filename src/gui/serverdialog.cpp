@@ -168,11 +168,11 @@ public:
 
         updateAlpha();
 
-        mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+        mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
         g->setColor(mHighlightColor);
 
         const int height = getRowHeight();
-        mNotSupportedColor.a = static_cast<int>(mAlpha * 255.0f);
+        mNotSupportedColor.a = static_cast<int>(mAlpha * 255.0F);
 
         // Draw filled rectangle around the selected list element
         if (mSelected >= 0)
@@ -268,7 +268,7 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     mDir(dir),
     mDownloadStatus(DOWNLOADING_UNKNOWN),
     mDownload(nullptr),
-    mDownloadProgress(-1.0f),
+    mDownloadProgress(-1.0F),
     mServerInfo(serverInfo),
     mPersistentIPCheckBox(nullptr)
 {
@@ -821,10 +821,10 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
         if (total)
             progress /= static_cast<float>(total);
 
-        if (progress != progress || progress < 0.0f)
+        if (progress != progress || progress < 0.0F)
             progress = 0.0f;
-        else if (progress > 1.0f)
-            progress = 1.0f;
+        else if (progress > 1.0F)
+            progress = 1.0F;
 
         MutexLocker lock1(&sd->mMutex);
         sd->mDownloadStatus = DOWNLOADING_IN_PROGRESS;

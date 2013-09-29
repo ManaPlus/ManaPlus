@@ -60,7 +60,7 @@ bool TextParticle::draw(Graphics *const graphics,
     const int screenY = static_cast<int>(mPos.y) - static_cast<int>(mPos.z)
         + offsetY;
 
-    float alpha = mAlpha * 255.0f;
+    float alpha = mAlpha * 255.0F;
 
     if (mFadeOut && mLifetimeLeft > -1 && mLifetimeLeft < mFadeOut)
     {

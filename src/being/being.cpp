@@ -1004,7 +1004,7 @@ void Being::fireMissile(Being *const victim, const std::string &particle) const
 
     if (missile)
     {
-        target->moveBy(Vector(0.0f, 0.0f, 32.0f));
+        target->moveBy(Vector(0.0F, 0.0F, 32.0F));
         target->setLifetime(1000);
         victim->controlParticle(target);
 
@@ -1415,7 +1415,7 @@ void Being::logic()
         const float nominalLength = dir.length();
 
         // When we've not reached our destination, move to it.
-        if (nominalLength > 0.0f && !mWalkSpeed.isNull())
+        if (nominalLength > 0.0F && !mWalkSpeed.isNull())
         {
             // The deplacement of a point along a vector is calculated
             // using the Unit Vector (â) multiplied by the point speed.
@@ -1446,7 +1446,7 @@ void Being::logic()
 
             // Update the player sprite direction.
             // N.B.: We only change this if the distance is more than one pixel.
-            if (nominalLength > 1.0f)
+            if (nominalLength > 1.0F)
             {
                 int direction = 0;
                 const float dx = std::abs(dir.x);

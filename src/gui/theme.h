@@ -56,7 +56,7 @@ struct ThemeInfo final
         japanFont(),
         fontSize(0),
         npcfontSize(0),
-        guiAlpha(0.0f)
+        guiAlpha(0.0F)
     {
     }
     std::string name;
@@ -129,7 +129,7 @@ class Skin final
         /**
          * Updates the alpha value of the skin
          */
-        void updateAlpha(const float minimumOpacityAllowed = 0.0f);
+        void updateAlpha(const float minimumOpacityAllowed = 0.0F);
 
         int getPadding() const A_WARN_UNUSED
         { return mPadding; }

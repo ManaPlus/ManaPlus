@@ -41,7 +41,7 @@ SafeOpenGLGraphics::SafeOpenGLGraphics():
     mTexture(false),
     mIsByteColor(false),
     mByteColor(),
-    mFloatColor(1.0f),
+    mFloatColor(1.0F),
     mColorAlpha(false),
     mFbo()
 {
@@ -220,7 +220,7 @@ bool SafeOpenGLGraphics::drawRescaledImage(const Image *const image, int srcX,
 
     if (smooth)  // A basic smooth effect...
     {
-        setColorAlpha(0.2f);
+        setColorAlpha(0.2F);
         drawRescaledQuad(image, srcX, srcY, dstX - 1, dstY - 1, width, height,
                         desiredWidth + 1, desiredHeight + 1);
         drawRescaledQuad(image, srcX, srcY, dstX + 1, dstY + 1, width, height,
@@ -531,12 +531,12 @@ void SafeOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
     restoreColor();
 
     glBegin(GL_LINES);
-    glVertex2f(static_cast<float>(x1) + 0.5f, static_cast<float>(y1) + 0.5f);
-    glVertex2f(static_cast<float>(x2) + 0.5f, static_cast<float>(y2) + 0.5f);
+    glVertex2f(static_cast<float>(x1) + 0.5F, static_cast<float>(y1) + 0.5F);
+    glVertex2f(static_cast<float>(x2) + 0.5F, static_cast<float>(y2) + 0.5F);
     glEnd();
 
     glBegin(GL_POINTS);
-    glVertex2f(static_cast<float>(x2) + 0.5f, static_cast<float>(y2) + 0.5f);
+    glVertex2f(static_cast<float>(x2) + 0.5F, static_cast<float>(y2) + 0.5F);
     glEnd();
 }
 
@@ -597,7 +597,7 @@ void SafeOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
                                        const bool filled)
 {
     BLOCK_START("Graphics::drawRectangle")
-    const float offset = filled ? 0 : 0.5f;
+    const float offset = filled ? 0 : 0.5F;
 
     setTexturingAndBlending(false);
     restoreColor();
@@ -629,7 +629,7 @@ void SafeOpenGLGraphics::setColorAlpha(const float alpha)
     if (!mIsByteColor && mFloatColor == alpha)
         return;
 
-    glColor4f(1.0f, 1.0f, 1.0f, alpha);
+    glColor4f(1.0F, 1.0F, 1.0F, alpha);
     mIsByteColor = false;
     mFloatColor = alpha;
 }

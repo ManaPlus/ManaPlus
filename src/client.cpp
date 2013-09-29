@@ -313,7 +313,7 @@ Client::Client(const Options &options) :
     mButtonSpacing(3),
     mKeyboardHeight(0),
     mOldUpdates(),
-    mGuiAlpha(1.0f),
+    mGuiAlpha(1.0F),
     mLimitFps(false),
     mConfigAutoSaved(false),
     mIsMinimized(false),
@@ -601,12 +601,12 @@ void Client::gameInit()
     OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
     SurfaceImageHelper::SDLSetEnableAlphaCache(
         config.getBoolValue("alphaCache") && !openGLMode);
-    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f
+    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F
         || openGLMode);
 #else
     SurfaceImageHelper::SDLSetEnableAlphaCache(
         config.getBoolValue("alphaCache"));
-    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
+    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F);
 #endif
     logVars();
     Cpu::detect();
@@ -1310,7 +1310,7 @@ int Client::gameExec()
                     {
                         // Don't allow an alpha opacity
                         // lower than the default value
-                        Theme::instance()->setMinimumOpacity(0.8f);
+                        Theme::instance()->setMinimumOpacity(0.8F);
 
                         mCurrentDialog = new ServerDialog(&mCurrentServer,
                                                           mConfigDir);
@@ -1350,7 +1350,7 @@ int Client::gameExec()
                     logger->log1("State: LOGIN");
                     // Don't allow an alpha opacity
                     // lower than the default value
-                    Theme::instance()->setMinimumOpacity(0.8f);
+                    Theme::instance()->setMinimumOpacity(0.8F);
 
                     loginData.updateType
                         = serverConfig.getValue("updateType", 1);
@@ -1547,7 +1547,7 @@ int Client::gameExec()
                     logger->log1("State: CHAR SELECT");
                     // Don't allow an alpha opacity
                     // lower than the default value
-                    Theme::instance()->setMinimumOpacity(0.8f);
+                    Theme::instance()->setMinimumOpacity(0.8F);
 
                     mCurrentDialog = new CharSelectDialog(&loginData);
 
@@ -1613,7 +1613,7 @@ int Client::gameExec()
                     soundManager.fadeOutMusic(1000);
 
                     // Allow any alpha opacity
-                    Theme::instance()->setMinimumOpacity(-1.0f);
+                    Theme::instance()->setMinimumOpacity(-1.0F);
 
                     if (chatLogger)
                         chatLogger->setServerName(mServerName);
@@ -1870,7 +1870,7 @@ void Client::optionChanged(const std::string &name)
     {
         const float alpha = config.getFloatValue("guialpha");
         setGuiAlpha(alpha);
-        ImageHelper::setEnableAlpha(alpha != 1.0f);
+        ImageHelper::setEnableAlpha(alpha != 1.0F);
     }
     else if (name == "gamma" || name == "enableGamma")
     {
@@ -2157,7 +2157,7 @@ void Client::initConfiguration() const
 #endif
     config.setValue("screen", false);
     config.setValue("sound", true);
-    config.setValue("guialpha", 0.8f);
+    config.setValue("guialpha", 0.8F);
 //    config.setValue("remember", true);
     config.setValue("sfxVolume", 100);
     config.setValue("musicVolume", 60);
