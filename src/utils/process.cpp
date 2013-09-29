@@ -28,6 +28,12 @@
 
 #include "localconsts.h"
 
+#ifdef USE_SDL2
+#ifdef ANDROID
+#include <SDL_system.h>
+#endif
+#endif
+
 #include "debug.h"
 
 const int timeOut = 10;
@@ -244,7 +250,7 @@ bool openBrowser(std::string url)
 bool openBrowser(std::string url)
 {
 #ifdef USE_SDL2
-    // +++ need add support
+    SDL_OpenBrowser(replaceAll(url, " ", "").c_str());
 #else
     SDL_ANDROID_OpenBrowser(replaceAll(url, " ", "").c_str());
 #endif
