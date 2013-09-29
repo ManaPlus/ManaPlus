@@ -2466,6 +2466,7 @@ void Client::storeSafeParameters() const
         return;
     }
 
+    config.setValue("safemode", false);
     if (!tmpOpengl)
     {
         config.setValue("hwaccel", tmpHwaccel);
@@ -2473,7 +2474,6 @@ void Client::storeSafeParameters() const
         config.setValue("fpslimit", tmpFpslimit);
         config.setValue("altfpslimit", tmpAltFpslimit);
         config.setValue("sound", tmpSound);
-        config.setValue("safemode", false);
         config.setValue("screenwidth", width);
         config.setValue("screenheight", height);
         config.setValue("font", font);
