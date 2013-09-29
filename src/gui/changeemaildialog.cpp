@@ -141,7 +141,7 @@ void ChangeEmailDialog::action(const gcn::ActionEvent &event)
                 "least %u characters long."), min);
             error = 1;
         }
-        else if (newFirstEmail.length() > max - 1 )
+        else if (newFirstEmail.length() > max)
         {
             // First email address too long
             // TRANSLATORS: change email error

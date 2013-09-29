@@ -219,7 +219,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
                  minPass);
             error = 2;
         }
-        else if (mPasswordField->getText().length() > maxPass - 1 )
+        else if (mPasswordField->getText().length() > maxPass)
         {
             // Pass too long
             errorMsg = strprintf

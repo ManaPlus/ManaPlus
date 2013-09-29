@@ -129,7 +129,7 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
                 " %u characters long."), min);
             error = 2;
         }
-        else if (newFirstPass.length() > max - 1 )
+        else if (newFirstPass.length() > max)
         {
             // First password too long
             // TRANSLATORS: change password error

@@ -51,7 +51,7 @@ class LoginHandler : public Net::LoginHandler
 
         virtual unsigned int getMaxPasswordLength() const
             override A_WARN_UNUSED
-        { return 25; }
+        { return 24; }
 
         virtual void loginAccount(LoginData *const loginData) const override;
 

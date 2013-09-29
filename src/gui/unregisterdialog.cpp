@@ -126,7 +126,7 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
                 "characters long."), min);
             error = true;
         }
-        else if (password.length() > max - 1)
+        else if (password.length() > max)
         {
             // TRANSLATORS: unregister dialog. error message.
             errorMsg << strprintf(_("The password needs to be less than "
