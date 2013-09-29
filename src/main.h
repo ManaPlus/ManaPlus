@@ -89,11 +89,16 @@
 // define DEBUG_ALPHA_CACHE 1
 // define DEBUG_OPENGL_LEAKS 1
 
+#ifdef USE_SDL2
+#define SDL_NAME "SDL2"
+#else
+#define SDL_NAME "SDL1.2"
+#endif
 #define PACKAGE_EXTENDED_VERSION "ManaPlus (" PACKAGE_OS \
-"; %s; 4144 v" SMALL_VERSION ")"
+"; %s; " SDL_NAME "; 4144 v" SMALL_VERSION ")"
 #define PACKAGE_VERSION_4144 "ManaPlus 4144-" SMALL_VERSION ""
 
-#define FULL_VERSION "ManaPlus " SMALL_VERSION " " PACKAGE_OS
+#define FULL_VERSION "ManaPlus " SMALL_VERSION " " PACKAGE_OS ", " SDL_NAME
 
 #ifdef ANDROID
 #ifdef PKG_DATADIR
