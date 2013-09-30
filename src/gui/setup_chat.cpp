@@ -22,7 +22,7 @@
 
 #include "gui/setup_chat.h"
 
-#include "gui/chatwindow.h"
+#include "gui/windows/chatwindow.h"
 
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"

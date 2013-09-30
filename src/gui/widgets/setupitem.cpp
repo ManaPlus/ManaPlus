@@ -24,9 +24,10 @@
 #include "main.h"
 #include "soundmanager.h"
 
-#include "gui/editdialog.h"
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
+
+#include "gui/windows/editdialog.h"
 
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/dropdown.h"

@@ -33,11 +33,12 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/inventorywindow.h"
 #include "gui/itempopup.h"
-#include "gui/skilldialog.h"
 #include "gui/spellpopup.h"
 #include "gui/viewport.h"
+
+#include "gui/windows/inventorywindow.h"
+#include "gui/windows/skilldialog.h"
 
 #include "gui/widgets/skillinfo.h"
 

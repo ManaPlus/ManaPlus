@@ -23,7 +23,8 @@
 #include "gui/setup_theme.h"
 
 #include "gui/gui.h"
-#include "gui/okdialog.h"
+
+#include "gui/windows/okdialog.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/dropdown.h"

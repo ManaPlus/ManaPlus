@@ -29,7 +29,7 @@
 
 #include "being/localplayer.h"
 
-#include "gui/okdialog.h"
+#include "gui/windows/okdialog.h"
 
 #include "debug.h"
 

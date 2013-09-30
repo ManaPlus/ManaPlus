@@ -27,10 +27,11 @@
 #include "itemshortcut.h"
 #include "spellshortcut.h"
 
-#include "gui/inventorywindow.h"
-#include "gui/shortcutwindow.h"
 #include "gui/spellpopup.h"
 #include "gui/viewport.h"
+
+#include "gui/windows/inventorywindow.h"
+#include "gui/windows/shortcutwindow.h"
 
 #include "resources/image.h"
 

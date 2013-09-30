@@ -38,11 +38,12 @@
 
 #include "particle/particle.h"
 
-#include "gui/equipmentwindow.h"
-#include "gui/socialwindow.h"
 #include "gui/speechbubble.h"
 #include "gui/sdlfont.h"
-#include "gui/skilldialog.h"
+
+#include "gui/windows/equipmentwindow.h"
+#include "gui/windows/skilldialog.h"
+#include "gui/windows/socialwindow.h"
 
 #include "net/charserverhandler.h"
 #include "net/gamehandler.h"

@@ -31,12 +31,13 @@
 
 #include "being/localplayer.h"
 
-#include "gui/ministatuswindow.h"
-#include "gui/okdialog.h"
-#include "gui/npcdialog.h"
-#include "gui/skilldialog.h"
-#include "gui/statuswindow.h"
 #include "gui/viewport.h"
+
+#include "gui/windows/ministatuswindow.h"
+#include "gui/windows/okdialog.h"
+#include "gui/windows/npcdialog.h"
+#include "gui/windows/skilldialog.h"
+#include "gui/windows/statuswindow.h"
 
 #include "resources/deaddb.h"
 

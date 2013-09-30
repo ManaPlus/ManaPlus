@@ -27,8 +27,8 @@
 
 #include "graphicsmanager.h"
 
-#include "gui/okdialog.h"
-#include "gui/textdialog.h"
+#include "gui/windows/okdialog.h"
+#include "gui/windows/textdialog.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"

@@ -26,9 +26,9 @@
 #include "depricatedevent.h"
 #include "inventory.h"
 
-#include "gui/inventorywindow.h"
-#include "gui/npcdialog.h"
-#include "gui/npcpostdialog.h"
+#include "gui/windows/inventorywindow.h"
+#include "gui/windows/npcdialog.h"
+#include "gui/windows/npcpostdialog.h"
 
 #include "resources/iteminfo.h"
 

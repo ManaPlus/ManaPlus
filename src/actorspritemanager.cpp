@@ -30,12 +30,12 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "gui/chatwindow.h"
-#include "gui/equipmentwindow.h"
-#include "gui/socialwindow.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/chattab.h"
+#include "gui/windows/chatwindow.h"
+#include "gui/windows/equipmentwindow.h"
+#include "gui/windows/socialwindow.h"
 
 #include "utils/checkutils.h"
 #include "utils/gettext.h"

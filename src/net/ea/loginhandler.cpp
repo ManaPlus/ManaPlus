@@ -26,7 +26,7 @@
 #include "configuration.h"
 #include "logger.h"
 
-#include "gui/logindialog.h"
+#include "gui/windows/logindialog.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"

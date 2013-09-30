@@ -22,10 +22,11 @@
 
 #include "gui/widgets/itemlinkhandler.h"
 
-#include "gui/confirmdialog.h"
-#include "gui/helpwindow.h"
 #include "gui/itempopup.h"
 #include "gui/viewport.h"
+
+#include "gui/windows/confirmdialog.h"
+#include "gui/windows/helpwindow.h"
 
 #include "utils/gettext.h"
 #include "utils/process.h"

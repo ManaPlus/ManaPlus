@@ -34,14 +34,15 @@
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
 
-#include "gui/buydialog.h"
-#include "gui/chatwindow.h"
-#include "gui/helpwindow.h"
 #include "gui/gui.h"
-#include "gui/outfitwindow.h"
-#include "gui/shopwindow.h"
-#include "gui/socialwindow.h"
-#include "gui/tradewindow.h"
+
+#include "gui/windows/buydialog.h"
+#include "gui/windows/chatwindow.h"
+#include "gui/windows/helpwindow.h"
+#include "gui/windows/outfitwindow.h"
+#include "gui/windows/shopwindow.h"
+#include "gui/windows/socialwindow.h"
+#include "gui/windows/tradewindow.h"
 
 #include "gui/widgets/whispertab.h"
 

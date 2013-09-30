@@ -29,7 +29,7 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "gui/skilldialog.h"
+#include "gui/windows/skilldialog.h"
 
 #include "utils/stringutils.h"
 

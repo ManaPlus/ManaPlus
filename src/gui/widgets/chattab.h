@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_CHATTAB_H
 #define GUI_WIDGETS_CHATTAB_H
 
-#include "gui/chatwindow.h"
+#include "gui/windows/chatwindow.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/tab.h"

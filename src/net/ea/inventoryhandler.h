@@ -30,7 +30,7 @@
 
 #include "being/playerinfo.h"
 
-#include "gui/inventorywindow.h"
+#include "gui/windows/inventorywindow.h"
 
 #include "net/inventoryhandler.h"
 #include "net/messagein.h"

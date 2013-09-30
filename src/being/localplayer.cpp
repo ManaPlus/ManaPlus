@@ -42,17 +42,18 @@
 
 #include "input/keyboardconfig.h"
 
-#include "gui/chatwindow.h"
 #include "gui/gui.h"
-#include "gui/ministatuswindow.h"
-#include "gui/okdialog.h"
-#include "gui/outfitwindow.h"
-#include "gui/shopwindow.h"
 #include "gui/sdlfont.h"
-#include "gui/skilldialog.h"
-#include "gui/socialwindow.h"
-#include "gui/updaterwindow.h"
 #include "gui/viewport.h"
+
+#include "gui/windows/chatwindow.h"
+#include "gui/windows/ministatuswindow.h"
+#include "gui/windows/okdialog.h"
+#include "gui/windows/outfitwindow.h"
+#include "gui/windows/shopwindow.h"
+#include "gui/windows/skilldialog.h"
+#include "gui/windows/socialwindow.h"
+#include "gui/windows/updaterwindow.h"
 
 #include "gui/widgets/gmtab.h"
 #include "gui/widgets/whispertab.h"

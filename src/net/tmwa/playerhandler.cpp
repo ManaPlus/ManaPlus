@@ -31,7 +31,7 @@
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
-#include "gui/whoisonline.h"
+#include "gui/windows/whoisonline.h"
 
 #include "debug.h"
 

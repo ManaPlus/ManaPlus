@@ -27,7 +27,7 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "gui/chatwindow.h"
+#include "gui/windows/chatwindow.h"
 
 #include "net/net.h"
 #include "net/playerhandler.h"

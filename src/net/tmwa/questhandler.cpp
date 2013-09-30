@@ -20,8 +20,8 @@
 
 #include "net/tmwa/questhandler.h"
 
-#include "gui/skilldialog.h"
-#include "gui/questswindow.h"
+#include "gui/windows/skilldialog.h"
+#include "gui/windows/questswindow.h"
 
 #include "net/tmwa/protocol.h"
 

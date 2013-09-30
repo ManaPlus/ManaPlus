@@ -36,9 +36,10 @@
 
 #include "gui/beingpopup.h"
 #include "gui/gui.h"
-#include "gui/ministatuswindow.h"
 #include "gui/popupmenu.h"
 #include "gui/textpopup.h"
+
+#include "gui/windows/ministatuswindow.h"
 
 #include <guichan/font.hpp>
 

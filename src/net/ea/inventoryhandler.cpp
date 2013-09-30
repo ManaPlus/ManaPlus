@@ -27,7 +27,7 @@
 
 #include "being/localplayer.h"
 
-#include "gui/ministatuswindow.h"
+#include "gui/windows/ministatuswindow.h"
 
 #include "net/ea/eaprotocol.h"
 

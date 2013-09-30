@@ -24,7 +24,8 @@
 
 #include "units.h"
 
-#include "gui/charselectdialog.h"
+#include "gui/windows/charselectdialog.h"
+
 #include "gui/textpopup.h"
 
 #include "gui/widgets/label.h"

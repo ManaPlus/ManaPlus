@@ -26,10 +26,10 @@
 #include "configuration.h"
 #include "logger.h"
 
-#include "gui/inventorywindow.h"
-#include "gui/skilldialog.h"
-#include "gui/socialwindow.h"
-#include "gui/statuswindow.h"
+#include "gui/windows/inventorywindow.h"
+#include "gui/windows/skilldialog.h"
+#include "gui/windows/socialwindow.h"
+#include "gui/windows/statuswindow.h"
 
 #include "net/ea/guildhandler.h"
 

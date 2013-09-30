@@ -25,8 +25,8 @@
 #include "client.h"
 #include "configuration.h"
 
-#include "gui/charcreatedialog.h"
-#include "gui/okdialog.h"
+#include "gui/windows/charcreatedialog.h"
+#include "gui/windows/okdialog.h"
 
 #include "net/ea/loginhandler.h"
 #include "net/ea/eaprotocol.h"

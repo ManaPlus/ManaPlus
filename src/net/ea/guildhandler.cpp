@@ -28,7 +28,7 @@
 
 #include "being/localplayer.h"
 
-#include "gui/socialwindow.h"
+#include "gui/windows/socialwindow.h"
 
 #include "debug.h"
 

@@ -30,11 +30,12 @@
 
 #include "being/playerinfo.h"
 
-#include "gui/buydialog.h"
-#include "gui/chatwindow.h"
-#include "gui/buyselldialog.h"
-#include "gui/selldialog.h"
-#include "gui/shopwindow.h"
+#include "gui/windows/chatwindow.h"
+#include "gui/windows/buyselldialog.h"
+#include "gui/windows/selldialog.h"
+
+#include "gui/windows/buydialog.h"
+#include "gui/windows/shopwindow.h"
 
 #include "net/chathandler.h"
 #include "net/net.h"

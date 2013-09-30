@@ -30,7 +30,7 @@
 
 #include "being/playerinfo.h"
 
-#include "gui/skilldialog.h"
+#include "gui/windows/skilldialog.h"
 
 #include "net/inventoryhandler.h"
 #include "net/net.h"

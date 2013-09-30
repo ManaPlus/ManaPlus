@@ -32,9 +32,10 @@
 
 #include "input/keyboardconfig.h"
 
-#include "gui/outfitwindow.h"
-#include "gui/socialwindow.h"
-#include "gui/killstats.h"
+#include "gui/windows/socialwindow.h"
+#include "gui/windows/killstats.h"
+
+#include "gui/windows/outfitwindow.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"

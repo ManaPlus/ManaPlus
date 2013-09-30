@@ -31,8 +31,8 @@
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
 
-#include "gui/chatwindow.h"
-#include "gui/shopwindow.h"
+#include "gui/windows/chatwindow.h"
+#include "gui/windows/shopwindow.h"
 
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/gmtab.h"

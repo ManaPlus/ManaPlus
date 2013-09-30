@@ -22,7 +22,7 @@
 
 #include "net/ea/npchandler.h"
 
-#include "gui/npcdialog.h"
+#include "gui/windows/npcdialog.h"
 
 #include "debug.h"
 

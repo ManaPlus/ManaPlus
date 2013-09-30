@@ -28,10 +28,11 @@
 
 #include "being/localplayer.h"
 
-#include "gui/chatwindow.h"
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
 #include "gui/viewport.h"
+
+#include "gui/windows/chatwindow.h"
 
 #include "resources/image.h"
 

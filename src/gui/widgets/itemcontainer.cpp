@@ -29,12 +29,13 @@
 
 #include "being/playerinfo.h"
 
-#include "gui/chatwindow.h"
 #include "gui/gui.h"
 #include "gui/itempopup.h"
-#include "gui/shopwindow.h"
-#include "gui/shortcutwindow.h"
 #include "gui/viewport.h"
+
+#include "gui/windows/chatwindow.h"
+#include "gui/windows/shopwindow.h"
+#include "gui/windows/shortcutwindow.h"
 
 #include "net/net.h"
 #include "net/inventoryhandler.h"

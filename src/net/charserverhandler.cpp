@@ -21,7 +21,7 @@
 
 #include "net/charserverhandler.h"
 
-#include "gui/charselectdialog.h"
+#include "gui/windows/charselectdialog.h"
 
 #include "debug.h"
 

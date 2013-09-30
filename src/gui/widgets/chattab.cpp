@@ -31,7 +31,7 @@
 
 #include "being/localplayer.h"
 
-#include "gui/helpwindow.h"
+#include "gui/windows/helpwindow.h"
 
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/itemlinkhandler.h"

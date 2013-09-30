@@ -27,7 +27,7 @@
 
 #include "being/playerinfo.h"
 
-#include "gui/buydialog.h"
+#include "gui/windows/buydialog.h"
 
 #include "net/ea/eaprotocol.h"
 

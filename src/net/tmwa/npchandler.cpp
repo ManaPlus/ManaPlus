@@ -24,8 +24,9 @@
 
 #include "being/localplayer.h"
 
-#include "gui/npcdialog.h"
 #include "gui/viewport.h"
+
+#include "gui/windows/npcdialog.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"

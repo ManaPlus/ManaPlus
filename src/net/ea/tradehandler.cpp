@@ -31,8 +31,8 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "gui/confirmdialog.h"
-#include "gui/tradewindow.h"
+#include "gui/windows/confirmdialog.h"
+#include "gui/windows/tradewindow.h"
 
 #include "net/inventoryhandler.h"
 #include "net/net.h"

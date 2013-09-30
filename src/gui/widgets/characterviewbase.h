@@ -21,7 +21,7 @@
 #ifndef GUI_WIDGETS_CHARACTERVIEWBASE_H
 #define GUI_WIDGETS_CHARACTERVIEWBASE_H
 
-#include "gui/charselectdialog.h"
+#include "gui/windows/charselectdialog.h"
 
 #include "gui/widgets/container.h"
 

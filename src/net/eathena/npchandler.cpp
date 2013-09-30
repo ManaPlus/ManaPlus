@@ -24,7 +24,7 @@
 
 #include "being/localplayer.h"
 
-#include "gui/npcdialog.h"
+#include "gui/windows/npcdialog.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"

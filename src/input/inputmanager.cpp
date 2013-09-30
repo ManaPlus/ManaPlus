@@ -31,16 +31,18 @@
 #include "input/keyboardconfig.h"
 #include "input/keyboarddata.h"
 
-#include "gui/chatwindow.h"
 #include "gui/gui.h"
-#include "gui/inventorywindow.h"
-#include "gui/npcdialog.h"
-#include "gui/npcpostdialog.h"
 #include "gui/sdlinput.h"
-#include "gui/setup.h"
 #include "gui/setup_input.h"
-#include "gui/textdialog.h"
-#include "gui/tradewindow.h"
+
+#include "gui/windows/inventorywindow.h"
+#include "gui/windows/npcdialog.h"
+#include "gui/windows/npcpostdialog.h"
+#include "gui/windows/setup.h"
+#include "gui/windows/textdialog.h"
+#include "gui/windows/tradewindow.h"
+
+#include "gui/windows/chatwindow.h"
 
 #include <guichan/exception.hpp>
 #include <guichan/focushandler.hpp>

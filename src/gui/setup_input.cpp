@@ -28,8 +28,9 @@
 #include "input/inputmanager.h"
 #include "input/keyboardconfig.h"
 
-#include "gui/okdialog.h"
 #include "gui/setupactiondata.h"
+
+#include "gui/windows/okdialog.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/layouthelper.h"

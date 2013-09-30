@@ -26,12 +26,13 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/skilldialog.h"
+#include "gui/textpopup.h"
+#include "gui/viewport.h"
+
+#include "gui/windows/skilldialog.h"
 #ifdef MANASERV_SUPPORT
 #include "gui/specialswindow.h"
 #endif
-#include "gui/textpopup.h"
-#include "gui/viewport.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"

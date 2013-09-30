@@ -39,11 +39,13 @@
 
 #include "input/keyboardconfig.h"
 
-#include "gui/botcheckerwindow.h"
-#include "gui/outfitwindow.h"
-#include "gui/socialwindow.h"
-#include "gui/killstats.h"
-#include "gui/questswindow.h"
+#include "gui/windows/socialwindow.h"
+#include "gui/windows/killstats.h"
+#include "gui/windows/questswindow.h"
+
+#include "gui/windows/botcheckerwindow.h"
+
+#include "gui/windows/outfitwindow.h"
 
 #include "resources/itemdb.h"
 #include "resources/iteminfo.h"

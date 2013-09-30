@@ -253,90 +253,90 @@ SET(SRCS
     gui/widgets/windowcontainer.h
     gui/beingpopup.cpp
     gui/beingpopup.h
-    gui/buydialog.cpp
-    gui/buydialog.h
-    gui/buyselldialog.cpp
-    gui/buyselldialog.h
-    gui/changeemaildialog.cpp
-    gui/changeemaildialog.h
-    gui/changepassworddialog.cpp
-    gui/changepassworddialog.h
-    gui/charselectdialog.cpp
-    gui/charselectdialog.h
-    gui/charcreatedialog.cpp
-    gui/charcreatedialog.h
-    gui/chatwindow.cpp
-    gui/chatwindow.h
-    gui/confirmdialog.cpp
-    gui/confirmdialog.h
-    gui/connectiondialog.cpp
-    gui/connectiondialog.h
-    gui/debugwindow.cpp
-    gui/debugwindow.h
-    gui/didyouknowwindow.cpp
-    gui/didyouknowwindow.h
-    gui/editserverdialog.cpp
-    gui/editserverdialog.h
-    gui/emotewindow.cpp
-    gui/emotewindow.h
-    gui/equipmentwindow.cpp
-    gui/equipmentwindow.h
+    gui/windows/buydialog.cpp
+    gui/windows/buydialog.h
+    gui/windows/buyselldialog.cpp
+    gui/windows/buyselldialog.h
+    gui/windows/changeemaildialog.cpp
+    gui/windows/changeemaildialog.h
+    gui/windows/changepassworddialog.cpp
+    gui/windows/changepassworddialog.h
+    gui/windows/charselectdialog.cpp
+    gui/windows/charselectdialog.h
+    gui/windows/charcreatedialog.cpp
+    gui/windows/charcreatedialog.h
+    gui/windows/chatwindow.cpp
+    gui/windows/chatwindow.h
+    gui/windows/confirmdialog.cpp
+    gui/windows/confirmdialog.h
+    gui/windows/connectiondialog.cpp
+    gui/windows/connectiondialog.h
+    gui/windows/debugwindow.cpp
+    gui/windows/debugwindow.h
+    gui/windows/didyouknowwindow.cpp
+    gui/windows/didyouknowwindow.h
+    gui/windows/editdialog.cpp
+    gui/windows/editdialog.h
+    gui/windows/editserverdialog.cpp
+    gui/windows/editserverdialog.h
+    gui/windows/emotewindow.cpp
+    gui/windows/emotewindow.h
+    gui/windows/equipmentwindow.cpp
+    gui/windows/equipmentwindow.h
     gui/focushandler.cpp
     gui/focushandler.h
     gui/gui.cpp
     gui/gui.h
-    gui/helpwindow.cpp
-    gui/helpwindow.h
-    gui/inventorywindow.cpp
-    gui/inventorywindow.h
+    gui/windows/helpwindow.cpp
+    gui/windows/helpwindow.h
+    gui/windows/inventorywindow.cpp
+    gui/windows/inventorywindow.h
+    gui/windows/itemamountwindow.cpp
+    gui/windows/itemamountwindow.h
     gui/itempopup.cpp
     gui/itempopup.h
     gui/spellpopup.cpp
     gui/spellpopup.h
     gui/statuspopup.cpp
     gui/statuspopup.h
-    gui/killstats.cpp
-    gui/killstats.h
-    gui/itemamountwindow.cpp
-    gui/itemamountwindow.h
-    gui/logindialog.cpp
-    gui/logindialog.h
-    gui/minimap.cpp
-    gui/minimap.h
-    gui/ministatuswindow.cpp
-    gui/ministatuswindow.h
-    gui/npcdialog.cpp
-    gui/npcdialog.h
-    gui/npcpostdialog.cpp
-    gui/npcpostdialog.h
-    gui/okdialog.cpp
-    gui/okdialog.h
-    gui/editdialog.cpp
-    gui/editdialog.h
-    gui/outfitwindow.cpp
-    gui/outfitwindow.h
-    gui/botcheckerwindow.cpp
-    gui/botcheckerwindow.h
-    gui/textcommandeditor.cpp
-    gui/textcommandeditor.h
+    gui/windows/killstats.cpp
+    gui/windows/killstats.h
+    gui/windows/logindialog.cpp
+    gui/windows/logindialog.h
+    gui/windows/minimap.cpp
+    gui/windows/minimap.h
+    gui/windows/ministatuswindow.cpp
+    gui/windows/ministatuswindow.h
+    gui/windows/npcdialog.cpp
+    gui/windows/npcdialog.h
+    gui/windows/npcpostdialog.cpp
+    gui/windows/npcpostdialog.h
+    gui/windows/okdialog.cpp
+    gui/windows/okdialog.h
+    gui/windows/outfitwindow.cpp
+    gui/windows/outfitwindow.h
+    gui/windows/botcheckerwindow.cpp
+    gui/windows/botcheckerwindow.h
+    gui/windows/textcommandeditor.cpp
+    gui/windows/textcommandeditor.h
     gui/palette.cpp
     gui/palette.h
     gui/popupmenu.cpp
     gui/popupmenu.h
-    gui/questswindow.cpp
-    gui/questswindow.h
-    gui/quitdialog.cpp
-    gui/quitdialog.h
-    gui/registerdialog.cpp
-    gui/registerdialog.h
+    gui/windows/questswindow.cpp
+    gui/windows/questswindow.h
+    gui/windows/quitdialog.cpp
+    gui/windows/quitdialog.h
+    gui/windows/registerdialog.cpp
+    gui/windows/registerdialog.h
     gui/sdlinput.cpp
     gui/sdlinput.h
-    gui/selldialog.cpp
-    gui/selldialog.h
-    gui/serverdialog.cpp
-    gui/serverdialog.h
-    gui/setup.cpp
-    gui/setup.h
+    gui/windows/selldialog.cpp
+    gui/windows/selldialog.h
+    gui/windows/serverdialog.cpp
+    gui/windows/serverdialog.h
+    gui/windows/setup.cpp
+    gui/windows/setup.h
     gui/setup_audio.cpp
     gui/setup_audio.h
     gui/setup_colors.cpp
@@ -366,40 +366,40 @@ SET(SRCS
     gui/setupactiondata.h
     gui/sdlfont.cpp
     gui/sdlfont.h
-    gui/shopwindow.cpp
-    gui/shopwindow.h
-    gui/shortcutwindow.cpp
-    gui/shortcutwindow.h
-    gui/skilldialog.cpp
-    gui/skilldialog.h
-    gui/socialwindow.cpp
-    gui/socialwindow.h
+    gui/windows/shopwindow.cpp
+    gui/windows/shopwindow.h
+    gui/windows/shortcutwindow.cpp
+    gui/windows/shortcutwindow.h
+    gui/windows/skilldialog.cpp
+    gui/windows/skilldialog.h
+    gui/windows/socialwindow.cpp
+    gui/windows/socialwindow.h
     gui/speechbubble.cpp
     gui/speechbubble.h
-    gui/statuswindow.cpp
-    gui/statuswindow.h
-    gui/textdialog.cpp
-    gui/textdialog.h
+    gui/windows/statuswindow.cpp
+    gui/windows/statuswindow.h
+    gui/windows/textdialog.cpp
+    gui/windows/textdialog.h
     gui/textpopup.cpp
     gui/textpopup.h
     gui/theme.cpp
     gui/theme.h
-    gui/tradewindow.cpp
-    gui/tradewindow.h
-    gui/unregisterdialog.cpp
-    gui/unregisterdialog.h
-    gui/updaterwindow.cpp
-    gui/updaterwindow.h
+    gui/windows/tradewindow.cpp
+    gui/windows/tradewindow.h
+    gui/windows/unregisterdialog.cpp
+    gui/windows/unregisterdialog.h
+    gui/windows/updaterwindow.cpp
+    gui/windows/updaterwindow.h
     gui/userpalette.cpp
     gui/userpalette.h
     gui/viewport.cpp
     gui/viewport.h
-    gui/whoisonline.cpp
-    gui/whoisonline.h
+    gui/windows/whoisonline.cpp
+    gui/windows/whoisonline.h
     gui/windowmenu.cpp
     gui/windowmenu.h
-    gui/worldselectdialog.cpp
-    gui/worldselectdialog.h
+    gui/windows/worldselectdialog.cpp
+    gui/windows/worldselectdialog.h
     net/adminhandler.h
     net/charserverhandler.cpp
     net/charserverhandler.h
