@@ -374,35 +374,131 @@ void TouchManager::loadButtons()
         const int x = skin->getOption("x", 10);
         const int y = skin->getOption("y", 10);
         const int pad = skin->getPadding();
-        const int pad2 = 2 * pad;
-        const int skipWidth = pad2 + sz + x;
-        const int skipHeight = pad2 + sz + y;
+        const int pad2 = 2 * pad + sz;
+        const int skipWidth = pad2 + x;
+        const int skipHeight = pad2 + y;
 
-        // 2x1
-        if (mButtonsFormat == 0)
+        switch (mButtonsFormat)
         {
-            loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
-                x, y, sz, sz, RIGHT, "screenActionButton1", "");
-
-            loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
-                skipWidth, y, sz, sz, RIGHT, "screenActionButton0", "");
-        }
-        // 2x2
-        else if (mButtonsFormat == 1)
-        {
-            loadTouchItem(&mButtons[3], "dbutton.xml", "dbutton_image.xml",
-                x, y, sz, sz, RIGHT, "screenActionButton3", "");
-
-            loadTouchItem(&mButtons[2], "dbutton.xml", "dbutton_image.xml",
-                skipWidth, y, sz, sz, RIGHT, "screenActionButton2", "");
-
-            loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
-                x, skipHeight, sz, sz, RIGHT, "screenActionButton1", "");
-
-            loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
-                skipWidth, skipHeight, sz, sz, RIGHT,
-                "screenActionButton0", "");
-        }
+            // 2x1
+            case 0:
+            {
+                loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
+                    x, y, sz, sz, RIGHT, "screenActionButton1", "");
+                loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth, y, sz, sz, RIGHT, "screenActionButton0", "");
+                break;
+            }
+            // 2x2
+            case 1:
+            {
+                loadTouchItem(&mButtons[3], "dbutton.xml", "dbutton_image.xml",
+                    x, y, sz, sz, RIGHT, "screenActionButton3", "");
+                loadTouchItem(&mButtons[2], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth, y, sz, sz, RIGHT, "screenActionButton2", "");
+                loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
+                    x, skipHeight, sz, sz, RIGHT, "screenActionButton1", "");
+                loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton0", "");
+                break;
+            }
+            // 3x3
+            case 2:
+            {
+                const int pad4 = pad2 * 2;
+                const int skipWidth2 = pad4 + x;
+                const int skipHeight2 = pad4 + y;
+                loadTouchItem(&mButtons[8], "dbutton.xml", "dbutton_image.xml",
+                    x, y, sz, sz, RIGHT, "screenActionButton8", "");
+                loadTouchItem(&mButtons[7], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth, y, sz, sz, RIGHT, "screenActionButton7", "");
+                loadTouchItem(&mButtons[6], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth2, y, sz, sz, RIGHT, "screenActionButton6", "");
+                loadTouchItem(&mButtons[5], "dbutton.xml", "dbutton_image.xml",
+                    x, skipHeight, sz, sz, RIGHT, "screenActionButton5", "");
+                loadTouchItem(&mButtons[4], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton4", "");
+                loadTouchItem(&mButtons[3], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth2, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton3", "");
+                loadTouchItem(&mButtons[2], "dbutton.xml", "dbutton_image.xml",
+                    x, skipHeight2, sz, sz, RIGHT, "screenActionButton2", "");
+                loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth, skipHeight2, sz, sz, RIGHT,
+                    "screenActionButton1", "");
+                loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth2, skipHeight2, sz, sz, RIGHT,
+                    "screenActionButton0", "");
+                break;
+            }
+            // 4x2
+            case 3:
+            {
+                const int skipWidth2 = pad2 * 2 + x;
+                const int skipWidth3 = pad2 * 3 + x;
+                loadTouchItem(&mButtons[7], "dbutton.xml", "dbutton_image.xml",
+                    x, y, sz, sz, RIGHT, "screenActionButton7", "");
+                loadTouchItem(&mButtons[6], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth, y, sz, sz, RIGHT, "screenActionButton6", "");
+                loadTouchItem(&mButtons[5], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth2, y, sz, sz, RIGHT, "screenActionButton5", "");
+                loadTouchItem(&mButtons[4], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth3, y, sz, sz, RIGHT, "screenActionButton4", "");
+                loadTouchItem(&mButtons[3], "dbutton.xml", "dbutton_image.xml",
+                    x, skipHeight, sz, sz, RIGHT, "screenActionButton3", "");
+                loadTouchItem(&mButtons[2], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton2", "");
+                loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth2, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton1", "");
+                loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth3, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton0", "");
+                break;
+            }
+            // 4x3
+            case 4:
+            {
+                const int skipWidth2 = pad2 * 2 + x;
+                const int skipWidth3 = pad2 * 3 + x;
+                const int skipHeight2 = pad2 * 2 + y;
+                loadTouchItem(&mButtons[11], "dbutton.xml",
+                    "dbutton_image.xml", x, y, sz, sz, RIGHT,
+                    "screenActionButton11", "");
+                loadTouchItem(&mButtons[10], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth, y, sz, sz, RIGHT, "screenActionButton10", "");
+                loadTouchItem(&mButtons[9], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth2, y, sz, sz, RIGHT, "screenActionButton9", "");
+                loadTouchItem(&mButtons[8], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth3, y, sz, sz, RIGHT, "screenActionButton8", "");
+                loadTouchItem(&mButtons[7], "dbutton.xml", "dbutton_image.xml",
+                    x, skipHeight, sz, sz, RIGHT, "screenActionButton7", "");
+                loadTouchItem(&mButtons[6], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton6", "");
+                loadTouchItem(&mButtons[5], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth2, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton5", "");
+                loadTouchItem(&mButtons[4], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth3, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton4", "");
+                loadTouchItem(&mButtons[3], "dbutton.xml", "dbutton_image.xml",
+                    x, skipHeight2, sz, sz, RIGHT, "screenActionButton3", "");
+                loadTouchItem(&mButtons[2], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth, skipHeight2, sz, sz, RIGHT,
+                    "screenActionButton2", "");
+                loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth2, skipHeight2, sz, sz, RIGHT,
+                    "screenActionButton1", "");
+                loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
+                    skipWidth3, skipHeight2, sz, sz, RIGHT,
+                    "screenActionButton0", "");
+                break;
+            }
+        };
         theme->unload(skin);
     }
 }
@@ -482,7 +578,7 @@ void TouchManager::optionChanged(const std::string &value)
         if (mButtonsFormat == config.getIntValue("screenButtonsFormat"))
             return;
         mButtonsFormat = config.getIntValue("screenButtonsFormat");
-        if (mButtonsFormat)
+        if (mShowButtons)
         {
             for (int f = 0; f < buttonsCount; f ++)
                 unloadTouchItem(&mButtons[f]);

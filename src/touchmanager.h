@@ -41,7 +41,7 @@ class MouseInput;
 typedef void (*TouchFuncPtr) (const MouseInput &mouseInput);
 
 const int actionsSize = Input::KEY_TOTAL;
-const int buttonsCount = 4;
+const int buttonsCount = 12;
 
 struct TouchItem final
 {

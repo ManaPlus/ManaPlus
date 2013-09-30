@@ -42,12 +42,15 @@ static const char *const sizeList[] =
     N_("Large")
 };
 
-static const int formatListSize = 2;
+static const int formatListSize = 5;
 
 static const char *const formatList[] =
 {
     "2x1",
     "2x2",
+    "3x3",
+    "4x2",
+    "4x3"
 };
 
 Setup_Touch::Setup_Touch(const Widget2 *const widget) :
@@ -105,25 +108,14 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     new SetupItemDropDown(_("Buttons size"), "", "screenButtonsSize", this,
         "screenButtonsSizeEvent", mSizeList, 100);
 
-    // TRANSLATORS: settings option
-    new SetupActionDropDown(strprintf(_("Button %u action"), 1U), "",
-        "screenActionButton0", this, "screenActionButton0Event",
-        mActionsList, 250);
-
-    // TRANSLATORS: settings option
-    new SetupActionDropDown(strprintf(_("Button %u action"), 2U), "",
-        "screenActionButton1", this, "screenActionButton1Event",
-        mActionsList, 250);
-
-    // TRANSLATORS: settings option
-    new SetupActionDropDown(strprintf(_("Button %u action"), 3U), "",
-        "screenActionButton2", this, "screenActionButton2Event",
-        mActionsList, 250);
-
-    // TRANSLATORS: settings option
-    new SetupActionDropDown(strprintf(_("Button %u action"), 4U), "",
-        "screenActionButton3", this, "screenActionButton3Event",
-        mActionsList, 250);
+    for (unsigned int f = 0; f < 12; f ++)
+    {
+        std::string key = strprintf("screenActionButton%u", f);
+        std::string event = strprintf("screenActionButton%uEvent", f);
+        // TRANSLATORS: settings option
+        new SetupActionDropDown(strprintf(_("Button %u action"), f + 1), "",
+            key, this, event, mActionsList, 250);
+    }
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }

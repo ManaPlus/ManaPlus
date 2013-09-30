@@ -314,6 +314,14 @@ DefaultsData* getConfigDefaults()
     AddDEF("screenActionButton1", Input::KEY_TARGET_ATTACK);
     AddDEF("screenActionButton2", Input::KEY_PICKUP);
     AddDEF("screenActionButton3", Input::KEY_PATHFIND);
+    AddDEF("screenActionButton4", Input::KEY_STOP_ATTACK);
+    AddDEF("screenActionButton5", Input::KEY_TALK);
+    AddDEF("screenActionButton6", Input::KEY_TARGET_NPC);
+    AddDEF("screenActionButton7", Input::KEY_TARGET_MONSTER);
+    AddDEF("screenActionButton8", Input::KEY_WINDOW_CHAT);
+    AddDEF("screenActionButton9", Input::KEY_WINDOW_DEBUG);
+    AddDEF("screenActionButton10", Input::KEY_TRADE);
+    AddDEF("screenActionButton11", Input::KEY_DIRECT_DOWN);
     AddDEF("screenButtonsFormat", 0);
     AddDEF("autoresizeminimaps", false);
     AddDEF("showGuildOnline", false);
