@@ -26,7 +26,7 @@
 
 #include "being/localplayer.h"
 
-#include "gui/widgets/chattab.h"
+#include "gui/widgets/tabs/chattab.h"
 
 #include "net/guildhandler.h"
 #include "net/net.h"

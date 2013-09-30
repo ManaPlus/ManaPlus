@@ -41,7 +41,7 @@
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/skillmodel.h"
-#include "gui/widgets/tab.h"
+#include "gui/widgets/tabs/tab.h"
 #include "gui/widgets/tabbedarea.h"
 
 #include "net/net.h"

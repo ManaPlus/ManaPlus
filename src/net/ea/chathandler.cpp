@@ -34,8 +34,9 @@
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/shopwindow.h"
 
-#include "gui/widgets/chattab.h"
-#include "gui/widgets/gmtab.h"
+#include "gui/widgets/tabs/gmtab.h"
+
+#include "gui/widgets/tabs/chattab.h"
 
 #include <string>
 

@@ -47,14 +47,16 @@
 #include "gui/windows/setup.h"
 #include "gui/windows/whoisonline.h"
 
-#include "gui/widgets/battletab.h"
+#include "gui/widgets/tabs/battletab.h"
+
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemlinkhandler.h"
-#include "gui/widgets/langtab.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
-#include "gui/widgets/tradetab.h"
-#include "gui/widgets/whispertab.h"
+
+#include "gui/widgets/tabs/langtab.h"
+#include "gui/widgets/tabs/tradetab.h"
+#include "gui/widgets/tabs/whispertab.h"
 
 #include "net/chathandler.h"
 #include "net/playerhandler.h"

@@ -33,7 +33,8 @@
 
 #include "gui/gui.h"
 #include "gui/sdlinput.h"
-#include "gui/setup_input.h"
+
+#include "gui/widgets/tabs/setup_input.h"
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/npcdialog.h"

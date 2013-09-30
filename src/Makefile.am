@@ -117,8 +117,8 @@ endif
 
 manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/avatarlistbox.h \
-	      gui/widgets/battletab.cpp \
-	      gui/widgets/battletab.h \
+	      gui/widgets/tabs/battletab.cpp \
+	      gui/widgets/tabs/battletab.h \
 	      gui/widgets/browserbox.cpp \
 	      gui/widgets/browserbox.h \
 	      gui/widgets/button.cpp \
@@ -130,8 +130,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/characterviewnormal.h \
 	      gui/widgets/characterviewsmall.cpp \
 	      gui/widgets/characterviewsmall.h \
-	      gui/widgets/chattab.cpp \
-	      gui/widgets/chattab.h \
+	      gui/widgets/tabs/chattab.cpp \
+	      gui/widgets/tabs/chattab.h \
 	      gui/widgets/checkbox.cpp \
 	      gui/widgets/checkbox.h \
 	      gui/widgets/colormodel.cpp \
@@ -153,10 +153,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/extendednamesmodel.h \
 	      gui/widgets/flowcontainer.cpp \
 	      gui/widgets/flowcontainer.h \
-	      gui/widgets/gmtab.cpp \
-	      gui/widgets/gmtab.h \
-	      gui/widgets/guildchattab.cpp \
-	      gui/widgets/guildchattab.h \
+	      gui/widgets/tabs/gmtab.cpp \
+	      gui/widgets/tabs/gmtab.h \
+	      gui/widgets/tabs/guildchattab.cpp \
+	      gui/widgets/tabs/guildchattab.h \
 	      gui/widgets/guitable.cpp \
 	      gui/widgets/guitable.h \
 	      gui/widgets/horizontcontainer.cpp \
@@ -179,8 +179,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/spellshortcutcontainer.h \
 	      gui/widgets/label.cpp \
 	      gui/widgets/label.h \
-	      gui/widgets/langtab.cpp \
-	      gui/widgets/langtab.h \
+	      gui/widgets/tabs/langtab.cpp \
+	      gui/widgets/tabs/langtab.h \
 	      gui/widgets/layout.cpp \
 	      gui/widgets/layout.h \
 	      gui/widgets/layouthelper.cpp \
@@ -211,10 +211,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/scrollarea.h \
 	      gui/widgets/setupitem.cpp \
 	      gui/widgets/setupitem.h \
-	      gui/widgets/setuptab.cpp \
-	      gui/widgets/setuptab.h \
-	      gui/widgets/setuptabscroll.cpp \
-	      gui/widgets/setuptabscroll.h \
+	      gui/widgets/tabs/setuptab.cpp \
+	      gui/widgets/tabs/setuptab.h \
+	      gui/widgets/tabs/setuptabscroll.cpp \
+	      gui/widgets/tabs/setuptabscroll.h \
 	      gui/widgets/setuptouchitem.cpp \
 	      gui/widgets/setuptouchitem.h \
 	      gui/widgets/shopitems.cpp \
@@ -233,8 +233,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/slider.h \
 	      gui/widgets/sliderlist.cpp \
 	      gui/widgets/sliderlist.h \
-	      gui/widgets/tab.cpp \
-	      gui/widgets/tab.h \
+	      gui/widgets/tabs/tab.cpp \
+	      gui/widgets/tabs/tab.h \
 	      gui/widgets/tabbedarea.cpp \
 	      gui/widgets/tabbedarea.h \
 	      gui/widgets/tablemodel.cpp \
@@ -247,12 +247,12 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/textfield.h \
 	      gui/widgets/textpreview.cpp \
 	      gui/widgets/textpreview.h \
-	      gui/widgets/tradetab.cpp \
-	      gui/widgets/tradetab.h \
+	      gui/widgets/tabs/tradetab.cpp \
+	      gui/widgets/tabs/tradetab.h \
 	      gui/widgets/vertcontainer.cpp \
 	      gui/widgets/vertcontainer.h \
-	      gui/widgets/whispertab.cpp \
-	      gui/widgets/whispertab.h \
+	      gui/widgets/tabs/whispertab.cpp \
+	      gui/widgets/tabs/whispertab.h \
 	      gui/widgets/widget2.h \
 	      gui/widgets/widgetgroup.cpp \
 	      gui/widgets/widgetgroup.h \
@@ -346,32 +346,32 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/windows/serverdialog.h \
 	      gui/windows/setup.cpp \
 	      gui/windows/setup.h \
-	      gui/setup_audio.cpp \
-	      gui/setup_audio.h \
-	      gui/setup_colors.cpp \
-	      gui/setup_colors.h \
-	      gui/setup_joystick.cpp \
-	      gui/setup_joystick.h \
-	      gui/setup_other.cpp \
-	      gui/setup_other.h \
-	      gui/setup_theme.cpp \
-	      gui/setup_theme.h \
-	      gui/setup_touch.cpp \
-	      gui/setup_touch.h \
-	      gui/setup_chat.cpp \
-	      gui/setup_chat.h \
-	      gui/setup_input.cpp \
-	      gui/setup_input.h \
-	      gui/setup_perfomance.cpp \
-	      gui/setup_perfomance.h \
-	      gui/setup_players.cpp \
-	      gui/setup_players.h \
-	      gui/setup_relations.cpp \
-	      gui/setup_relations.h \
-	      gui/setup_video.cpp \
-	      gui/setup_video.h \
-	      gui/setup_visual.cpp \
-	      gui/setup_visual.h \
+	      gui/widgets/tabs/setup_audio.cpp \
+	      gui/widgets/tabs/setup_audio.h \
+	      gui/widgets/tabs/setup_colors.cpp \
+	      gui/widgets/tabs/setup_colors.h \
+	      gui/widgets/tabs/setup_joystick.cpp \
+	      gui/widgets/tabs/setup_joystick.h \
+	      gui/widgets/tabs/setup_other.cpp \
+	      gui/widgets/tabs/setup_other.h \
+	      gui/widgets/tabs/setup_theme.cpp \
+	      gui/widgets/tabs/setup_theme.h \
+	      gui/widgets/tabs/setup_touch.cpp \
+	      gui/widgets/tabs/setup_touch.h \
+	      gui/widgets/tabs/setup_chat.cpp \
+	      gui/widgets/tabs/setup_chat.h \
+	      gui/widgets/tabs/setup_input.cpp \
+	      gui/widgets/tabs/setup_input.h \
+	      gui/widgets/tabs/setup_perfomance.cpp \
+	      gui/widgets/tabs/setup_perfomance.h \
+	      gui/widgets/tabs/setup_players.cpp \
+	      gui/widgets/tabs/setup_players.h \
+	      gui/widgets/tabs/setup_relations.cpp \
+	      gui/widgets/tabs/setup_relations.h \
+	      gui/widgets/tabs/setup_video.cpp \
+	      gui/widgets/tabs/setup_video.h \
+	      gui/widgets/tabs/setup_visual.cpp \
+	      gui/widgets/tabs/setup_visual.h \
 	      gui/setupactiondata.h \
 	      gui/sdlfont.cpp \
 	      gui/sdlfont.h \

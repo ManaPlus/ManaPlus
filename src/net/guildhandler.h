@@ -25,7 +25,7 @@
 
 #include "guild.h"
 
-#include "gui/widgets/chattab.h"
+#include "gui/widgets/tabs/chattab.h"
 
 #include <iosfwd>
 

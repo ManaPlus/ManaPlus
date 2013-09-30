@@ -31,7 +31,7 @@
 
 #include "gui/windows/socialwindow.h"
 
-#include "gui/widgets/guildchattab.h"
+#include "gui/widgets/tabs/guildchattab.h"
 
 #include "net/chathandler.h"
 #include "net/net.h"

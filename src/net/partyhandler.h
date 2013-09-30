@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-#include "gui/widgets/chattab.h"
+#include "gui/widgets/tabs/chattab.h"
 
 #include <string>
 

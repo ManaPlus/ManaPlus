@@ -22,7 +22,7 @@
 #define GUI_WIDGETS_SETUPITEM_H
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/setuptabscroll.h"
+#include "gui/widgets/tabs/setuptabscroll.h"
 
 #include <guichan/actionlistener.hpp>
 

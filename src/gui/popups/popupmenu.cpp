@@ -57,11 +57,11 @@
 #include "gui/viewport.h"
 
 #include "gui/widgets/browserbox.h"
-#include "gui/widgets/chattab.h"
+#include "gui/widgets/tabs/chattab.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
-#include "gui/widgets/whispertab.h"
+#include "gui/widgets/tabs/whispertab.h"
 
 #include "net/adminhandler.h"
 #include "net/beinghandler.h"

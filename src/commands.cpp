@@ -44,7 +44,7 @@
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/tradewindow.h"
 
-#include "gui/widgets/whispertab.h"
+#include "gui/widgets/tabs/whispertab.h"
 
 #if defined USE_OPENGL
 #include "render/normalopenglgraphics.h"

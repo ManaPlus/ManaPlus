@@ -27,7 +27,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/tab.h"
+#include "gui/widgets/tabs/tab.h"
 
 #include <guichan/widgets/container.hpp>
 

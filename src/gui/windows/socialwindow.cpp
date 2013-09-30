@@ -43,10 +43,11 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"
-#include "gui/widgets/chattab.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/popup.h"
 #include "gui/widgets/scrollarea.h"
+
+#include "gui/widgets/tabs/chattab.h"
 
 #include "net/net.h"
 #include "net/guildhandler.h"

@@ -60,7 +60,7 @@
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
 
-#include "gui/widgets/chattab.h"
+#include "gui/widgets/tabs/chattab.h"
 
 #include "render/graphics.h"
 

@@ -24,7 +24,7 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/widgets/chattab.h"
+#include "gui/widgets/tabs/chattab.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"

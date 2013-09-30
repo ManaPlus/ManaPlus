@@ -76,14 +76,16 @@
 #include "gui/windows/questswindow.h"
 #include "gui/windows/whoisonline.h"
 
-#include "gui/widgets/battletab.h"
+#include "gui/widgets/tabs/battletab.h"
+
 #include "gui/widgets/dropshortcutcontainer.h"
 #include "gui/widgets/emoteshortcutcontainer.h"
-#include "gui/widgets/gmtab.h"
 #include "gui/widgets/itemshortcutcontainer.h"
-#include "gui/widgets/langtab.h"
 #include "gui/widgets/spellshortcutcontainer.h"
-#include "gui/widgets/tradetab.h"
+
+#include "gui/widgets/tabs/gmtab.h"
+#include "gui/widgets/tabs/langtab.h"
+#include "gui/widgets/tabs/tradetab.h"
 
 #include "net/generalhandler.h"
 #include "net/gamehandler.h"

@@ -25,7 +25,7 @@
 #include "logger.h"
 #include "soundmanager.h"
 
-#include "gui/widgets/chattab.h"
+#include "gui/widgets/tabs/chattab.h"
 
 #include "configuration.h"
 

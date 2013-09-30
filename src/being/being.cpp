@@ -61,9 +61,10 @@
 #include "resources/petdb.h"
 #include "resources/resourcemanager.h"
 
-#include "gui/widgets/langtab.h"
 #include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"
+
+#include "gui/widgets/tabs/langtab.h"
 
 #include "utils/gettext.h"
 

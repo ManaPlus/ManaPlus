@@ -25,7 +25,7 @@
 #include <iostream>
 #include <sstream>
 
-#include "gui/widgets/chattab.h"
+#include "gui/widgets/tabs/chattab.h"
 
 #ifdef WIN32
 #include <windows.h>
