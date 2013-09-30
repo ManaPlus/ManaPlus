@@ -585,7 +585,7 @@ void Game::slowLogic()
     if (player_node)
         player_node->slowLogic();
     const int time = cur_time;
-    if (mTime <= time)
+    if (mTime != time)
     {
         mTime = time + 1;
         if (botCheckerWindow)
