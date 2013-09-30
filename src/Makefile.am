@@ -684,8 +684,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      mapheights.h \
 	      maplayer.cpp \
 	      maplayer.h \
-	      mgl.cpp \
-	      mgl.h \
+	      render/mgl.cpp \
+	      render/mgl.h \
 	      render/mobileopenglgraphics.cpp \
 	      render/mobileopenglgraphics.h \
 	      mouseinput.cpp \

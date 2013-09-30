@@ -26,8 +26,8 @@
 
 #include "graphicsmanager.h"
 #include "logger.h"
-#include "mgl.h"
 
+#include "render/mgl.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/normalopenglgraphics.h"
 #include "render/renderers.h"

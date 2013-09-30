@@ -40,9 +40,9 @@
 
 #include "configuration.h"
 #include "logger.h"
-#include "mgl.h"
 
 #include "render/graphics.h"
+#include "render/mgl.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/normalopenglgraphics.h"
 #include "render/renderers.h"
