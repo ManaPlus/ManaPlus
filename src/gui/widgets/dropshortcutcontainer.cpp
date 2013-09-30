@@ -28,8 +28,9 @@
 
 #include "being/playerinfo.h"
 
-#include "gui/itempopup.h"
 #include "gui/viewport.h"
+
+#include "gui/popups/itempopup.h"
 
 #include "gui/windows/inventorywindow.h"
 

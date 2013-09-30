@@ -26,8 +26,9 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/textpopup.h"
 #include "gui/viewport.h"
+
+#include "gui/popups/textpopup.h"
 
 #include "gui/windows/skilldialog.h"
 #ifdef MANASERV_SUPPORT

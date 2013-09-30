@@ -28,9 +28,10 @@
 #include "input/keyboardconfig.h"
 
 #include "net/inventoryhandler.h"
-#include "gui/itempopup.h"
 #include "net/net.h"
 #include "gui/viewport.h"
+
+#include "gui/popups/itempopup.h"
 
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/tradewindow.h"

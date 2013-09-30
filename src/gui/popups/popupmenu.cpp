@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/popupmenu.h"
+#include "gui/popups/popupmenu.h"
 
 #include "actorspritemanager.h"
 #include "commandhandler.h"

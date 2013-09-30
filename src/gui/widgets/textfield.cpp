@@ -31,9 +31,10 @@
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
-#include "gui/popupmenu.h"
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"
+
+#include "gui/popups/popupmenu.h"
 
 #include "resources/image.h"
 

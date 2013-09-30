@@ -33,9 +33,10 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/itempopup.h"
-#include "gui/spellpopup.h"
 #include "gui/viewport.h"
+
+#include "gui/popups/itempopup.h"
+#include "gui/popups/spellpopup.h"
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/skilldialog.h"

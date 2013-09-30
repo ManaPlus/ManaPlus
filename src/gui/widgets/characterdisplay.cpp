@@ -26,7 +26,7 @@
 
 #include "gui/windows/charselectdialog.h"
 
-#include "gui/textpopup.h"
+#include "gui/popups/textpopup.h"
 
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"

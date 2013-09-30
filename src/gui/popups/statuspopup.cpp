@@ -21,9 +21,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/statuspopup.h"
-
 #include "gui/viewport.h"
+
+#include "gui/popups/statuspopup.h"
 
 #include "gui/widgets/label.h"
 

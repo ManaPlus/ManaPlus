@@ -28,9 +28,11 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "gui/statuspopup.h"
-#include "gui/textpopup.h"
 #include "gui/viewport.h"
+
+#include "gui/popups/textpopup.h"
+
+#include "gui/popups/statuspopup.h"
 
 #include "gui/windows/statuswindow.h"
 

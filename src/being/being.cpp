@@ -38,8 +38,9 @@
 
 #include "particle/particle.h"
 
-#include "gui/speechbubble.h"
 #include "gui/sdlfont.h"
+
+#include "gui/popups/speechbubble.h"
 
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/skilldialog.h"

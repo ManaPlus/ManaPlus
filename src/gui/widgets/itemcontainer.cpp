@@ -30,8 +30,9 @@
 #include "being/playerinfo.h"
 
 #include "gui/gui.h"
-#include "gui/itempopup.h"
 #include "gui/viewport.h"
+
+#include "gui/popups/itempopup.h"
 
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/shopwindow.h"

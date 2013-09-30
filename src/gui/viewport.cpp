@@ -34,10 +34,11 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/beingpopup.h"
 #include "gui/gui.h"
-#include "gui/popupmenu.h"
-#include "gui/textpopup.h"
+
+#include "gui/popups/beingpopup.h"
+#include "gui/popups/popupmenu.h"
+#include "gui/popups/textpopup.h"
 
 #include "gui/windows/ministatuswindow.h"
 

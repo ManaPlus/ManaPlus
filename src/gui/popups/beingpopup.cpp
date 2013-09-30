@@ -19,7 +19,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/beingpopup.h"
+#include "gui/popups/beingpopup.h"
 
 #include "being/being.h"
 #include "being/playerrelations.h"

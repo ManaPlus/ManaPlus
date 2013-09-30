@@ -29,8 +29,9 @@
 
 #include "being/localplayer.h"
 
-#include "gui/textpopup.h"
 #include "gui/viewport.h"
+
+#include "gui/popups/textpopup.h"
 
 #include "gui/windows/setup.h"
 #include "gui/windows/shortcutwindow.h"

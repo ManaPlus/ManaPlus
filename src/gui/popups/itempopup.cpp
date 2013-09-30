@@ -21,7 +21,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/itempopup.h"
+#include "gui/popups/itempopup.h"
 
 #include "client.h"
 #include "configuration.h"

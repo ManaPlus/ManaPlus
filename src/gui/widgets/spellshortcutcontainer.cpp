@@ -27,8 +27,9 @@
 #include "itemshortcut.h"
 #include "spellshortcut.h"
 
-#include "gui/spellpopup.h"
 #include "gui/viewport.h"
+
+#include "gui/popups/spellpopup.h"
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/shortcutwindow.h"

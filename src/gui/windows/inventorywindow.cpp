@@ -32,8 +32,9 @@
 #include "input/keyevent.h"
 
 #include "gui/gui.h"
-#include "gui/textpopup.h"
 #include "gui/viewport.h"
+
+#include "gui/popups/textpopup.h"
 
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/itemamountwindow.h"

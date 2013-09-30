@@ -260,8 +260,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/window.h \
 	      gui/widgets/windowcontainer.cpp \
 	      gui/widgets/windowcontainer.h \
-	      gui/beingpopup.cpp \
-	      gui/beingpopup.h \
+	      gui/popups/beingpopup.cpp \
+	      gui/popups/beingpopup.h \
 	      gui/windows/buydialog.cpp \
 	      gui/windows/buydialog.h \
 	      gui/windows/buyselldialog.cpp \
@@ -302,12 +302,12 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/windows/inventorywindow.h \
 	      gui/windows/itemamountwindow.cpp \
 	      gui/windows/itemamountwindow.h \
-	      gui/itempopup.cpp \
-	      gui/itempopup.h \
-	      gui/spellpopup.cpp \
-	      gui/spellpopup.h \
-	      gui/statuspopup.cpp \
-	      gui/statuspopup.h \
+	      gui/popups/itempopup.cpp \
+	      gui/popups/itempopup.h \
+	      gui/popups/spellpopup.cpp \
+	      gui/popups/spellpopup.h \
+	      gui/popups/statuspopup.cpp \
+	      gui/popups/statuspopup.h \
 	      gui/windows/killstats.cpp \
 	      gui/windows/killstats.h \
 	      gui/windows/logindialog.cpp \
@@ -330,8 +330,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/windows/textcommandeditor.h \
 	      gui/palette.cpp \
 	      gui/palette.h \
-	      gui/popupmenu.cpp \
-	      gui/popupmenu.h \
+	      gui/popups/popupmenu.cpp \
+	      gui/popups/popupmenu.h \
 	      gui/windows/questswindow.cpp \
 	      gui/windows/questswindow.h \
 	      gui/windows/quitdialog.cpp \
@@ -383,14 +383,14 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/windows/skilldialog.h \
 	      gui/windows/socialwindow.cpp \
 	      gui/windows/socialwindow.h \
-	      gui/speechbubble.cpp \
-	      gui/speechbubble.h \
+	      gui/popups/speechbubble.cpp \
+	      gui/popups/speechbubble.h \
 	      gui/windows/statuswindow.cpp \
 	      gui/windows/statuswindow.h \
 	      gui/windows/textdialog.cpp \
 	      gui/windows/textdialog.h \
-	      gui/textpopup.cpp \
-	      gui/textpopup.h \
+	      gui/popups/textpopup.cpp \
+	      gui/popups/textpopup.h \
 	      gui/theme.cpp \
 	      gui/theme.h \
 	      gui/windows/tradewindow.cpp \

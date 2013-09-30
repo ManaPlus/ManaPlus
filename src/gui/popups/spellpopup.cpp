@@ -21,7 +21,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/spellpopup.h"
+#include "gui/popups/spellpopup.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
