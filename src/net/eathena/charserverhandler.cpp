@@ -33,8 +33,9 @@
 #include "net/eathena/network.h"
 #include "net/eathena/protocol.h"
 
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
+
+#include "resources/db/itemdb.h"
 
 #include "utils/dtor.h"
 

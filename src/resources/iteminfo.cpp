@@ -22,7 +22,7 @@
 
 #include "resources/iteminfo.h"
 
-#include "resources/itemdb.h"
+#include "resources/db/itemdb.h"
 
 #include "configuration.h"
 

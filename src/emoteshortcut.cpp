@@ -25,7 +25,7 @@
 
 #include "being/localplayer.h"
 
-#include "resources/emotedb.h"
+#include "resources/db/emotedb.h"
 
 #include "debug.h"
 

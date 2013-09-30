@@ -36,8 +36,9 @@
 
 #include "utils/gettext.h"
 
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
+
+#include "resources/db/itemdb.h"
 
 #include "debug.h"
 

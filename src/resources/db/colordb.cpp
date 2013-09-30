@@ -19,7 +19,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/colordb.h"
+#include "resources/db/colordb.h"
 
 #include "client.h"
 #include "configuration.h"

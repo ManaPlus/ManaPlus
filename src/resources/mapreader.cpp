@@ -31,8 +31,9 @@
 
 #include "resources/animation.h"
 #include "resources/image.h"
-#include "resources/mapdb.h"
 #include "resources/resourcemanager.h"
+
+#include "resources/db/mapdb.h"
 
 #include "utils/base64.h"
 

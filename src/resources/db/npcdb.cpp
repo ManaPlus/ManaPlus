@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/npcdb.h"
+#include "resources/db/npcdb.h"
 
 #include "logger.h"
 

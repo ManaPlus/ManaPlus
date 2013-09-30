@@ -38,7 +38,7 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
-#include "resources/chardb.h"
+#include "resources/db/chardb.h"
 
 #include "debug.h"
 

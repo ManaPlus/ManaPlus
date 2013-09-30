@@ -48,9 +48,10 @@
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/scrollarea.h"
 
-#include "resources/avatardb.h"
-#include "resources/npcdb.h"
 #include "resources/resourcemanager.h"
+
+#include "resources/db/avatardb.h"
+#include "resources/db/npcdb.h"
 
 #include "net/net.h"
 #include "net/npchandler.h"

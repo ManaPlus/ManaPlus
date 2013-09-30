@@ -449,25 +449,25 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/animation.h \
 	      resources/atlasmanager.cpp \
 	      resources/atlasmanager.h \
-	      resources/avatardb.cpp \
-	      resources/avatardb.h \
+	      resources/db/avatardb.cpp \
+	      resources/db/avatardb.h \
 	      resources/beingcommon.cpp \
 	      resources/beingcommon.h \
 	      resources/beinginfo.cpp \
 	      resources/beinginfo.h \
-	      resources/chardb.cpp \
-	      resources/chardb.h \
-	      resources/colordb.cpp \
-	      resources/colordb.h \
+	      resources/db/chardb.cpp \
+	      resources/db/chardb.h \
+	      resources/db/colordb.cpp \
+	      resources/db/colordb.h \
 	      resources/cursor.cpp \
 	      resources/cursor.h \
-	      resources/deaddb.cpp \
-	      resources/deaddb.h \
+	      resources/db/deaddb.cpp \
+	      resources/db/deaddb.h \
 	      resources/dye.cpp \
 	      resources/dye.h \
 	      resources/dyecolor.h \
-	      resources/emotedb.cpp \
-	      resources/emotedb.h \
+	      resources/db/emotedb.cpp \
+	      resources/db/emotedb.h \
 	      resources/fboinfo.h \
 	      resources/image.cpp \
 	      resources/image.h \
@@ -477,24 +477,24 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/imageset.cpp \
 	      resources/imagewriter.cpp \
 	      resources/imagewriter.h \
-	      resources/itemdb.cpp \
-	      resources/itemdb.h \
+	      resources/db/itemdb.cpp \
+	      resources/db/itemdb.h \
 	      resources/iteminfo.h \
 	      resources/iteminfo.cpp \
-	      resources/mapdb.cpp \
-	      resources/mapdb.h \
+	      resources/db/mapdb.cpp \
+	      resources/db/mapdb.h \
 	      resources/mapreader.cpp \
 	      resources/mapreader.h \
-	      resources/monsterdb.cpp \
-	      resources/monsterdb.h \
-	      resources/npcdb.cpp \
-	      resources/npcdb.h \
+	      resources/db/monsterdb.cpp \
+	      resources/db/monsterdb.h \
+	      resources/db/npcdb.cpp \
+	      resources/db/npcdb.h \
 	      resources/openglimagehelper.cpp \
 	      resources/openglimagehelper.h \
-	      resources/palettedb.cpp \
-	      resources/palettedb.h \
-	      resources/petdb.cpp \
-	      resources/petdb.h \
+	      resources/db/palettedb.cpp \
+	      resources/db/palettedb.h \
+	      resources/db/petdb.cpp \
+	      resources/db/petdb.h \
 	      resources/resource.cpp \
 	      resources/resource.h \
 	      resources/resourcemanager.cpp \
@@ -507,8 +507,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/sdlimagehelper.h \
 	      resources/sdlmusic.cpp \
 	      resources/sdlmusic.h \
-	      resources/sounddb.cpp \
-	      resources/sounddb.h \
+	      resources/db/sounddb.cpp \
+	      resources/db/sounddb.h \
 	      resources/soundeffect.cpp \
 	      resources/soundeffect.h \
 	      resources/soundinfo.h \

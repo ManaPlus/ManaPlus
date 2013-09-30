@@ -23,7 +23,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include "resources/itemdb.h"
+#include "resources/db/itemdb.h"
 
 #include <map>
 

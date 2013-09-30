@@ -25,9 +25,10 @@
 
 #include "being/actorsprite.h"
 
-#include "resources/colordb.h"
 #include "resources/cursor.h"
 #include "resources/soundinfo.h"
+
+#include "resources/db/colordb.h"
 
 #include <map>
 

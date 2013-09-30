@@ -48,6 +48,7 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/particle/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/render/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/resources/db/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/test/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/utils/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/utils/translation/*.cpp) \

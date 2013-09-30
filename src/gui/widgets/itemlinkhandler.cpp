@@ -33,7 +33,7 @@
 #include "utils/process.h"
 #include "utils/stringutils.h"
 
-#include "resources/itemdb.h"
+#include "resources/db/itemdb.h"
 
 #include <string>
 

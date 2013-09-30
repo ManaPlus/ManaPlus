@@ -93,9 +93,10 @@
 #include "net/packetcounters.h"
 
 #include "resources/imagewriter.h"
-#include "resources/mapdb.h"
 #include "resources/mapreader.h"
 #include "resources/resourcemanager.h"
+
+#include "resources/db/mapdb.h"
 
 #include "utils/gettext.h"
 #include "utils/langs.h"

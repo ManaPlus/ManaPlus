@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/avatardb.h"
+#include "resources/db/avatardb.h"
 
 #include "logger.h"
 

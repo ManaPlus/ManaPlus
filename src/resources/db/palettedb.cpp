@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/palettedb.h"
+#include "resources/db/palettedb.h"
 
 #include "logger.h"
 

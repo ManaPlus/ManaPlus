@@ -40,8 +40,9 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
+
+#include "resources/db/itemdb.h"
 
 #include "debug.h"
 

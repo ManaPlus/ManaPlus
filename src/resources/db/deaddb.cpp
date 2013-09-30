@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/deaddb.h"
+#include "resources/db/deaddb.h"
 
 #include "configuration.h"
 #include "logger.h"

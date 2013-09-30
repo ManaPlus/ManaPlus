@@ -41,7 +41,8 @@
 #include "net/net.h"
 
 #include "resources/iteminfo.h"
-#include "resources/itemdb.h"
+
+#include "resources/db/itemdb.h"
 
 #include "utils/gettext.h"
 

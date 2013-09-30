@@ -25,7 +25,7 @@
 
 #include "being/being.h"
 
-#include "resources/colordb.h"
+#include "resources/db/colordb.h"
 
 #include <map>
 

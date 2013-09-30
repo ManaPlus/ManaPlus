@@ -82,25 +82,26 @@
 #include "net/net.h"
 #include "net/partyhandler.h"
 
-#include "resources/avatardb.h"
-#include "resources/chardb.h"
-#include "resources/colordb.h"
-#include "resources/deaddb.h"
-#include "resources/emotedb.h"
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
-#include "resources/palettedb.h"
 #include "resources/surfaceimagehelper.h"
-#include "resources/sounddb.h"
-#include "resources/itemdb.h"
-#include "resources/mapdb.h"
-#include "resources/monsterdb.h"
-#ifdef MANASERV_SUPPORT
-#include "resources/specialdb.h"
-#endif
-#include "resources/npcdb.h"
-#include "resources/petdb.h"
 #include "resources/resourcemanager.h"
+
+#include "resources/db/avatardb.h"
+#include "resources/db/chardb.h"
+#include "resources/db/colordb.h"
+#include "resources/db/deaddb.h"
+#include "resources/db/emotedb.h"
+#include "resources/db/sounddb.h"
+#include "resources/db/itemdb.h"
+#include "resources/db/mapdb.h"
+#include "resources/db/monsterdb.h"
+#include "resources/db/npcdb.h"
+#ifdef MANASERV_SUPPORT
+#include "resources/db/specialdb.h"
+#endif
+#include "resources/db/palettedb.h"
+#include "resources/db/petdb.h"
 
 #include "utils/cpu.h"
 #include "utils/files.h"

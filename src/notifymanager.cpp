@@ -32,7 +32,7 @@
 #include "net/net.h"
 #include "net/partyhandler.h"
 
-#include "resources/sounddb.h"
+#include "resources/db/sounddb.h"
 
 namespace NotifyManager
 {

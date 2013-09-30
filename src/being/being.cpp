@@ -52,14 +52,15 @@
 #include "net/npchandler.h"
 #include "net/playerhandler.h"
 
-#include "resources/avatardb.h"
-#include "resources/emotedb.h"
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
-#include "resources/monsterdb.h"
-#include "resources/npcdb.h"
-#include "resources/petdb.h"
 #include "resources/resourcemanager.h"
+
+#include "resources/db/avatardb.h"
+#include "resources/db/emotedb.h"
+#include "resources/db/itemdb.h"
+#include "resources/db/monsterdb.h"
+#include "resources/db/npcdb.h"
+#include "resources/db/petdb.h"
 
 #include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"

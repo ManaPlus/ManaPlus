@@ -39,7 +39,7 @@
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/statuswindow.h"
 
-#include "resources/deaddb.h"
+#include "resources/db/deaddb.h"
 
 #include "net/net.h"
 

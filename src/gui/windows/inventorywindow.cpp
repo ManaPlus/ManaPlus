@@ -56,7 +56,7 @@
 #include "net/inventoryhandler.h"
 #include "net/net.h"
 
-#include "resources/itemdb.h"
+#include "resources/db/itemdb.h"
 
 #include "utils/gettext.h"
 

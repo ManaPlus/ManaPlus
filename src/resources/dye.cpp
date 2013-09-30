@@ -24,7 +24,7 @@
 
 #include "logger.h"
 
-#include "resources/palettedb.h"
+#include "resources/db/palettedb.h"
 
 #include <math.h>
 #include <sstream>

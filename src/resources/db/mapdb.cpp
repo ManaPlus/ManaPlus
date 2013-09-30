@@ -19,7 +19,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/mapdb.h"
+#include "resources/db/mapdb.h"
 
 #include "configuration.h"
 #include "logger.h"

@@ -19,7 +19,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/emotedb.h"
+#include "resources/db/emotedb.h"
 
 #include "animatedsprite.h"
 #include "client.h"

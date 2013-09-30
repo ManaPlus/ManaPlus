@@ -24,7 +24,7 @@
 
 #include "gui/widgets/shortcutcontainer.h"
 
-#include "resources/emotedb.h"
+#include "resources/db/emotedb.h"
 
 #include <vector>
 

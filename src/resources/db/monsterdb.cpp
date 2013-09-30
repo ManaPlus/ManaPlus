@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/monsterdb.h"
+#include "resources/db/monsterdb.h"
 
 #include "logger.h"
 

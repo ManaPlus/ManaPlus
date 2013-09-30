@@ -38,10 +38,11 @@
 
 #include "net/net.h"
 
-#include "resources/chardb.h"
-#include "resources/colordb.h"
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
+
+#include "resources/db/chardb.h"
+#include "resources/db/colordb.h"
+#include "resources/db/itemdb.h"
 
 #include "utils/gettext.h"
 

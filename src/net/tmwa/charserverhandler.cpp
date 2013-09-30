@@ -33,8 +33,9 @@
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
 
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
+
+#include "resources/db/itemdb.h"
 
 #include "utils/dtor.h"
 

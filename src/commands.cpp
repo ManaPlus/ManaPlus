@@ -69,9 +69,10 @@
 #include "resources/subimage.h"
 #endif
 
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
+
+#include "resources/db/itemdb.h"
 
 #include "utils/gettext.h"
 #include "utils/process.h"

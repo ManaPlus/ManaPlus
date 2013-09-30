@@ -31,8 +31,9 @@
 #include "gui/sdlfont.h"
 #include "gui/userpalette.h"
 
-#include "resources/itemdb.h"
 #include "resources/iteminfo.h"
+
+#include "resources/db/itemdb.h"
 
 #include "debug.h"
 

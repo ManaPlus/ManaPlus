@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/sounddb.h"
+#include "resources/db/sounddb.h"
 
 #include "configuration.h"
 #include "notifications.h"

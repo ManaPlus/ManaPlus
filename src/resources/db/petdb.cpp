@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/petdb.h"
+#include "resources/db/petdb.h"
 
 #include "logger.h"
 
