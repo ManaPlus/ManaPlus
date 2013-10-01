@@ -486,8 +486,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                 }
                 else if (!wTop && !wRight)
                 {
-                    return Position(tileX * 32 + 32 - radius,
-                        tileY * 32 + getCollisionRadius());
+                    return Position(tileX * mapTileSize + mapTileSize - radius,
+                        tileY * mapTileSize + getCollisionRadius());
                 }
                 else  // Both straight direction are walkable
                 {
@@ -507,7 +507,7 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
             else  // The diagonal is walkable
             {
                 return mMap->checkNodeOffsets(radius,
-                    walkMask, Position(posX + 32, posY - 32));
+                    walkMask, Position(posX + mapTileSize, posY - mapTileSize));
             }
         }
 
@@ -527,8 +527,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                 }
                 else if (!wTop && !wLeft)
                 {
-                    return Position(tileX * 32 + radius,
-                                    tileY * 32 + radius);
+                    return Position(tileX * mapTileSize + radius,
+                                    tileY * mapTileSize + radius);
                 }
                 else  // Both straight direction are walkable
                 {
@@ -546,8 +546,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
             }
             else  // The diagonal is walkable
             {
-                return mMap->checkNodeOffsets(radius,
-                    walkMask, Position(posX - 32, posY - 32));
+                return mMap->checkNodeOffsets(radius, walkMask,
+                    Position(posX - mapTileSize, posY - mapTileSize));
             }
         }
 
@@ -567,8 +567,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                 }
                 else if (!wBottom && !wLeft)
                 {
-                    return Position(tileX * 32 + radius,
-                                    tileY * 32 + 32 - radius);
+                    return Position(tileX * mapTileSize + radius,
+                        tileY * mapTileSize + mapTileSize - radius);
                 }
                 else  // Both straight direction are walkable
                 {
@@ -587,8 +587,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
             }
             else  // The diagonal is walkable
             {
-                return mMap->checkNodeOffsets(radius,
-                    walkMask, Position(posX - 32, posY + 32));
+                return mMap->checkNodeOffsets(radius, walkMask,
+                    Position(posX - mapTileSize, posY + mapTileSize));
             }
         }
 
@@ -608,8 +608,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                 }
                 else if (!wBottom && !wRight)
                 {
-                    return Position(tileX * 32 + 32 - radius,
-                                    tileY * 32 + 32 - radius);
+                    return Position(tileX * mapTileSize + mapTileSize - radius,
+                        tileY * mapTileSize + mapTileSize - radius);
                 }
                 else  // Both straight direction are walkable
                 {
@@ -627,8 +627,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
             }
             else  // The diagonal is walkable
             {
-                return mMap->checkNodeOffsets(radius,
-                    walkMask, Position(posX + 32, posY + 32));
+                return mMap->checkNodeOffsets(radius, walkMask,
+                    Position(posX + mapTileSize, posY + mapTileSize));
             }
         }
     }  // End of diagonal cases
@@ -641,7 +641,7 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
         // Make the player go the closest possible.
         if (!wRight)
         {
-            return Position(tileX * 32 + 32 - radius, posY);
+            return Position(tileX * mapTileSize + mapTileSize - radius, posY);
         }
         else
         {
@@ -652,25 +652,25 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + 32 - radius,
-                                    tileY * 32 + radius);
+                    return Position(tileX * mapTileSize + mapTileSize - radius,
+                        tileY * mapTileSize + radius);
                 }
             }
 
             if (!wBottomRight)
             {
                 // If we're going to collide with the bottom-right corner
-                if (offsetY + radius > 32)
+                if (offsetY + radius > mapTileSize)
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + 32 - radius,
-                                    tileY * 32 + 32 - radius);
+                    return Position(tileX * mapTileSize + mapTileSize - radius,
+                        tileY * mapTileSize + mapTileSize - radius);
                 }
             }
             // If the way is clear, step up one checked tile ahead.
-            return mMap->checkNodeOffsets(radius,
-                walkMask, Position(posX + 32, posY));
+            return mMap->checkNodeOffsets(radius, walkMask,
+                Position(posX + mapTileSize, posY));
         }
     }
 
@@ -681,7 +681,7 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
         // Make the player go the closest possible.
         if (!wLeft)
         {
-            return Position(tileX * 32 + radius, posY);
+            return Position(tileX * mapTileSize + radius, posY);
         }
         else
         {
@@ -692,25 +692,25 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + radius,
-                                    tileY * 32 + radius);
+                    return Position(tileX * mapTileSize + radius,
+                        tileY * mapTileSize + radius);
                 }
             }
 
             if (!wBottomLeft)
             {
                 // If we're going to collide with the bottom-left corner
-                if (offsetY + radius > 32)
+                if (offsetY + radius > mapTileSize)
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + radius,
-                                    tileY * 32 + 32 - radius);
+                    return Position(tileX * mapTileSize + radius,
+                        tileY * mapTileSize + mapTileSize - radius);
                 }
             }
             // If the way is clear, step up one checked tile ahead.
-            return mMap->checkNodeOffsets(radius,
-                walkMask, Position(posX - 32, posY));
+            return mMap->checkNodeOffsets(radius, walkMask,
+                Position(posX - mapTileSize, posY));
         }
     }
 
@@ -721,7 +721,7 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
         // Make the player go the closest possible.
         if (!wTop)
         {
-            return Position(posX, tileY * 32 + radius);
+            return Position(posX, tileY * mapTileSize + radius);
         }
         else
         {
@@ -732,25 +732,25 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + radius,
-                                    tileY * 32 + radius);
+                    return Position(tileX * mapTileSize + radius,
+                        tileY * mapTileSize + radius);
                 }
             }
 
             if (!wTopRight)
             {
                 // If we're going to collide with the top-right corner
-                if (offsetX + radius > 32)
+                if (offsetX + radius > mapTileSize)
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + 32 - radius,
-                                    tileY * 32 + radius);
+                    return Position(tileX * mapTileSize + mapTileSize - radius,
+                        tileY * mapTileSize + radius);
                 }
             }
             // If the way is clear, step up one checked tile ahead.
             return mMap->checkNodeOffsets(radius,
-                walkMask, Position(posX, posY - 32));
+                walkMask, Position(posX, posY - mapTileSize));
         }
     }
 
@@ -761,7 +761,7 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
         // Make the player go the closest possible.
         if (!wBottom)
         {
-            return Position(posX, tileY * 32 + 32 - radius);
+            return Position(posX, tileY * mapTileSize + mapTileSize - radius);
         }
         else
         {
@@ -772,25 +772,25 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + radius,
-                                    tileY * 32 + 32 - radius);
+                    return Position(tileX * mapTileSize + radius,
+                        tileY * mapTileSize + mapTileSize - radius);
                 }
             }
 
             if (!wBottomRight)
             {
                 // If we're going to collide with the bottom-right corner
-                if (offsetX + radius > 32)
+                if (offsetX + radius > mapTileSize)
                 {
                     // We make the player corrects its offset
                     // before going further
-                    return Position(tileX * 32 + 32 - radius,
-                                    tileY * 32 + 32 - radius);
+                    return Position(tileX * mapTileSize + mapTileSize - radius,
+                        tileY * mapTileSize + mapTileSize - radius);
                 }
             }
             // If the way is clear, step up one checked tile ahead.
             return mMap->checkNodeOffsets(radius,
-                walkMask, Position(posX, posY + 32));
+                walkMask, Position(posX, posY + mapTileSize));
         }
     }
 
@@ -916,9 +916,9 @@ bool LocalPlayer::pickUp(FloorItem *const item)
         {
             const Vector &playerPos = getPosition();
             const Path debugPath = mMap->findPath(
-                    static_cast<int>(playerPos.x - 16) / 32,
-                    static_cast<int>(playerPos.y - 32) / 32,
-                    item->getTileX(), item->getTileY(), getWalkMask(), 0);
+                static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
+                static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
+                item->getTileX(), item->getTileY(), getWalkMask(), 0);
             if (!debugPath.empty())
                 navigateTo(item->getTileX(), item->getTileY());
             else
@@ -1747,8 +1747,9 @@ void LocalPlayer::moveToTarget(int dist)
     {
         if (mMap)
         {
-            debugPath = mMap->findPath(static_cast<int>(playerPos.x - 16) / 32,
-                static_cast<int>(playerPos.y - 32) / 32,
+            debugPath = mMap->findPath(static_cast<int>(
+                playerPos.x - mapTileSize / 2) / mapTileSize,
+                static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
                 mTarget->getTileX(), mTarget->getTileY(), getWalkMask(), 0);
         }
 
@@ -3029,8 +3030,8 @@ bool LocalPlayer::isReachable(Being *const being,
     const Vector &playerPos = getPosition();
 
     const Path debugPath = mMap->findPath(
-        static_cast<int>(playerPos.x - 16) / 32,
-        static_cast<int>(playerPos.y - 32) / 32,
+        static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
+        static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
         being->getTileX(), being->getTileY(), getWalkMask(), maxCost);
 
     being->setDistance(static_cast<int>(debugPath.size()));
@@ -3161,13 +3162,13 @@ void LocalPlayer::moveByDirection(const unsigned char dir)
     int dx = 0, dy = 0;
 #ifdef MANASERV_SUPPORT
     if (dir & UP)
-        dy -= 32;
+        dy -= mapTileSize;
     if (dir & DOWN)
-        dy += 32;
+        dy += mapTileSize;
     if (dir & LEFT)
-        dx -= 32;
+        dx -= mapTileSize;
     if (dir & RIGHT)
-        dx += 32;
+        dx += mapTileSize;
 #else
     if (dir & UP)
         dy--;
@@ -3571,8 +3572,8 @@ bool LocalPlayer::navigateTo(const int x, const int y)
     mNavigateId = 0;
 
     mNavigatePath = mMap->findPath(
-        static_cast<int>(playerPos.x - 16) / 32,
-        static_cast<int>(playerPos.y - 32) / 32,
+        static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
+        static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
         x, y, getWalkMask(), 0);
 
     if (mDrawPath)
@@ -3599,8 +3600,8 @@ void LocalPlayer::navigateTo(const Being *const being)
     mNavigateY = being->getTileY();
 
     mNavigatePath = mMap->findPath(
-        static_cast<int>(playerPos.x - 16) / 32,
-        static_cast<int>(playerPos.y - 32) / 32,
+        static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
+        static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
         being->getTileX(), being->getTileY(),
         getWalkMask(), 0);
 
@@ -3670,8 +3671,10 @@ void LocalPlayer::updateCoords()
             if (!tmpLayer)
                 return;
 
-            const int x = static_cast<int>(playerPos.x - 16) / 32;
-            const int y = static_cast<int>(playerPos.y - 32) / 32;
+            const int x = static_cast<int>(playerPos.x - mapTileSize / 2)
+                / mapTileSize;
+            const int y = static_cast<int>(playerPos.y - mapTileSize)
+                / mapTileSize;
             if (mNavigateId)
             {
                 if (!actorSpriteManager)
@@ -3758,8 +3761,8 @@ int LocalPlayer::getPathLength(const Being *const being) const
     if (mTargetOnlyReachable)
     {
         const Path debugPath = mMap->findPath(
-            static_cast<int>(playerPos.x - 16) / 32,
-            static_cast<int>(playerPos.y - 32) / 32,
+            static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
+            static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
             being->getTileX(), being->getTileY(),
             getWalkMask(), 0);
         return static_cast<int>(debugPath.size());
@@ -4130,8 +4133,8 @@ void LocalPlayer::fixAttackTarget()
 
     const Vector &playerPos = getPosition();
     const Path debugPath = mMap->findPath(
-        static_cast<int>(playerPos.x - 16) / 32,
-        static_cast<int>(playerPos.y - 32) / 32,
+        static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
+        static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
         mTarget->getTileX(), mTarget->getTileY(),
         getWalkMask(), 0);
 

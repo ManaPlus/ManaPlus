@@ -78,13 +78,13 @@ bool ActorSprite::draw(Graphics *const graphics,
                        const int offsetX, const int offsetY) const
 {
     FUNC_BLOCK("ActorSprite::draw", 1)
-    const int px = getPixelX() + offsetX - 16;
+    const int px = getPixelX() + offsetX - mapTileSize / 2;
     // Temporary fix to the Y offset.
 #ifdef MANASERV_SUPPORT
     const int py = getPixelY() + offsetY -
-        ((Net::getNetworkType() == ServerInfo::MANASERV) ? 15 : 32);
+        ((Net::getNetworkType() == ServerInfo::MANASERV) ? 15 : mapTileSize);
 #else
-    const int py = getPixelY() + offsetY - 32;
+    const int py = getPixelY() + offsetY - mapTileSize;
 #endif
 
     if (mUsedTargetCursor)
@@ -149,7 +149,8 @@ void ActorSprite::controlParticle(Particle *const particle)
 void ActorSprite::setTargetType(const TargetCursorType type)
 {
     static const int targetWidths[ActorSprite::NUM_TC] = {0, 0, 0};
-    static const int targetHeights[ActorSprite::NUM_TC] = {-16, -16, -32};
+    static const int targetHeights[ActorSprite::NUM_TC]
+        = {-mapTileSize / 2, -mapTileSize / 2, -mapTileSize};
 
     if (type == TCT_NONE)
     {

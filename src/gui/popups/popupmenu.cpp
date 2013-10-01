@@ -1119,7 +1119,7 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "movecamera" && (mX || mY))
     {
         if (viewport)
-            viewport->moveCameraToPosition(mX * 32, mY * 32);
+            viewport->moveCameraToPosition(mX * mapTileSize, mY * mapTileSize);
     }
     else if (link == "split" && mItem)
     {

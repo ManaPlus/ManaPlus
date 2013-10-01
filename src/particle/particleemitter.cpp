@@ -23,6 +23,7 @@
 #include "particle/particleemitter.h"
 
 #include "logger.h"
+#include "map.h"
 
 #include "particle/animationparticle.h"
 #include "particle/rotationalparticle.h"
@@ -253,9 +254,9 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
                 const int delay = XML::getIntProperty(
                     frameNode, "delay", 0, 0, 100000);
                 const int offsetX = XML::getProperty(frameNode, "offsetX", 0)
-                    - imageset->getWidth() / 2 + 16;
+                    - imageset->getWidth() / 2 + mapTileSize / 2;
                 const int offsetY = XML::getProperty(frameNode, "offsetY", 0)
-                    - imageset->getHeight() + 32;
+                    - imageset->getHeight() + mapTileSize;
                 const int rand = XML::getIntProperty(
                     frameNode, "rand", 100, 0, 100);
 
@@ -327,9 +328,9 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
                 const int delay = XML::getIntProperty(
                     frameNode, "delay", 0, 0, 100000);
                 const int offsetX = XML::getProperty(frameNode, "offsetX", 0)
-                    - imageset->getWidth() / 2 + 16;
+                    - imageset->getWidth() / 2 + mapTileSize / 2;
                 const int offsetY = XML::getProperty(frameNode, "offsetY", 0)
-                    - imageset->getHeight() + 32;
+                    - imageset->getHeight() + mapTileSize;
                 const int rand = XML::getIntProperty(
                     frameNode, "rand", 100, 0, 100);
 

@@ -934,7 +934,7 @@ Map *MapReader::createEmptyMap(const std::string &filename,
                                const std::string &realFilename)
 {
     logger->log1("Creating empty map");
-    Map *const map = new Map(300, 300, 32, 32);
+    Map *const map = new Map(300, 300, mapTileSize, mapTileSize);
     map->setProperty("_filename", realFilename);
     map->setProperty("_realfilename", filename);
     updateMusic(map);

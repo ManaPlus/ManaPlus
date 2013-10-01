@@ -66,8 +66,10 @@ FloorItem::FloorItem(const int id, const int itemId, const int x, const int y,
             subY = max;
         else if (subY < -max)
             subY = -max;
-        mPos.x = static_cast<float>(x * map->getTileWidth() + subX + 16 - 8);
-        mPos.y = static_cast<float>(y * map->getTileHeight() + subY + 32 - 8);
+        mPos.x = static_cast<float>(x * map->getTileWidth()
+            + subX + mapTileSize / 2 - 8);
+        mPos.y = static_cast<float>(y * map->getTileHeight()
+            + subY + mapTileSize - 8);
     }
     else
     {
@@ -112,8 +114,8 @@ bool FloorItem::draw(Graphics *const graphics,
         font = gui->getFont();
         if (mDropTime < curTime)
         {
-            const int dx = 32;
-            const int dy = 32;
+            const int dx = mapTileSize;
+            const int dy = mapTileSize;
 
             if (curTime > mDropTime + 28 && curTime < mDropTime + 50)
             {

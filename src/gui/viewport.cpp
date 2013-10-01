@@ -147,7 +147,7 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         int cnt = 0;
 
         // Apply lazy scrolling
-        while (lastTick < tick_time && cnt < 32)
+        while (lastTick < tick_time && cnt < mapTileSize)
         {
             if (player_x > mPixelViewX + mScrollRadius)
             {
@@ -309,9 +309,9 @@ void Viewport::_drawDebugPath(Graphics *const graphics)
         const Vector &playerPos = player_node->getPosition();
 
         debugPath = mMap->findPath(
-            static_cast<int>(playerPos.x - 16) / 32,
-            static_cast<int>(playerPos.y - 32) / 32,
-            mousePosX / 32, mousePosY / 32,
+            static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
+            static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
+            mousePosX / mapTileSize, mousePosY / mapTileSize,
             player_node->getWalkMask(),
             500);
         lastMouseDestination = mouseDestination;
@@ -345,8 +345,8 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
         int cnt = 1;
         FOR_EACH (Path::const_iterator, i, path)
         {
-            const int squareX = i->x * 32 - mPixelViewX + 12;
-            const int squareY = i->y * 32 - mPixelViewY + 12;
+            const int squareX = i->x * mapTileSize - mPixelViewX + 12;
+            const int squareY = i->y * mapTileSize - mPixelViewY + 12;
 
             graphics->fillRectangle(gcn::Rectangle(squareX, squareY, 8, 8));
             if (mMap)
@@ -371,7 +371,7 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
             if (mMap)
             {
                 const std::string str = toString(mMap->getMetaTile(
-                    i->x / 32, i->y / 32)->Gcost);
+                    i->x / mapTileSize, i->y / mapTileSize)->Gcost);
                 font->drawString(graphics, str,
                     squareX + 4 - font->getWidth(text) / 2, squareY + 12);
             }

@@ -287,9 +287,8 @@ impHandler2(where)
 {
     std::ostringstream where;
     where << Game::instance()->getCurrentMapName() << ", coordinates: "
-          << ((player_node->getPixelX() - 16) / 32) << ", "
-          << ((player_node->getPixelY() - 32) / 32);
-
+        << ((player_node->getPixelX() - mapTileSize / 2) / mapTileSize)
+        << ", " << ((player_node->getPixelY() - mapTileSize) / mapTileSize);
     tab->chatLog(where.str(), BY_SERVER);
 }
 

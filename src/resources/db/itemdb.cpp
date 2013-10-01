@@ -244,7 +244,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
         const int pet = XML::getProperty(node, "pet", 0);
         const int maxFloorOffset = XML::getIntProperty(
-            node, "maxFloorOffset", 32, 0, 32);
+            node, "maxFloorOffset", mapTileSize, 0, mapTileSize);
         std::string colors;
         if (serverVersion >= 1)
         {

@@ -40,8 +40,8 @@ PlayerBox::PlayerBox(Being *const being, const std::string &skin,
     mSelectedBackground(),
     mSkin(nullptr),
     mSelectedSkin(nullptr),
-    mOffsetX(-16),
-    mOffsetY(-32),
+    mOffsetX(-mapTileSize / 2),
+    mOffsetY(-mapTileSize),
     mDrawBackground(false),
     mSelected(false)
 {
@@ -57,8 +57,8 @@ PlayerBox::PlayerBox(const std::string &skin,
     mSelectedBackground(),
     mSkin(nullptr),
     mSelectedSkin(nullptr),
-    mOffsetX(-16),
-    mOffsetY(-32),
+    mOffsetX(-mapTileSize / 2),
+    mOffsetY(-mapTileSize),
     mDrawBackground(false),
     mSelected(false)
 {
@@ -94,8 +94,8 @@ void PlayerBox::init(std::string name, std::string selectedName)
         if (mSkin)
         {
             mDrawBackground = (mSkin->getOption("drawbackground") != 0);
-            mOffsetX = mSkin->getOption("offsetX", -16);
-            mOffsetY = mSkin->getOption("offsetY", -32);
+            mOffsetX = mSkin->getOption("offsetX", -mapTileSize / 2);
+            mOffsetY = mSkin->getOption("offsetY", -mapTileSize);
             mFrameSize = mSkin->getOption("frameSize", 2);
         }
         if (selectedName.empty())

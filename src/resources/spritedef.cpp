@@ -23,6 +23,7 @@
 #include "resources/spritedef.h"
 
 #include "logger.h"
+#include "map.h"
 
 #include "resources/action.h"
 #include "resources/animation.h"
@@ -293,10 +294,11 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
     {
         const int delay = XML::getIntProperty(
             frameNode, "delay", 0, 0, 100000);
-        const int offsetX = XML::getProperty(frameNode, "offsetX", 0) +
-            imageSet->getOffsetX() - imageSet->getWidth() / 2 + 16;
-        const int offsetY = XML::getProperty(frameNode, "offsetY", 0) +
-            imageSet->getOffsetY() - imageSet->getHeight() + 32;
+        const int offsetX = XML::getProperty(frameNode, "offsetX", 0)
+            + imageSet->getOffsetX() - imageSet->getWidth() / 2
+            + mapTileSize / 2;
+        const int offsetY = XML::getProperty(frameNode, "offsetY", 0)
+            + imageSet->getOffsetY() - imageSet->getHeight() + mapTileSize;
         const int rand = XML::getIntProperty(frameNode, "rand", 100, 0, 100);
 
         if (xmlNameEqual(frameNode, "frame"))

@@ -23,6 +23,7 @@
 #include "simpleanimation.h"
 
 #include "logger.h"
+#include "map.h"
 
 #include "render/graphics.h"
 
@@ -163,8 +164,8 @@ void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
     if (!imageset)
         return;
 
-    const int x1 = imageset->getWidth() / 2 - 16;
-    const int y1 = imageset->getHeight() - 32;
+    const int x1 = imageset->getWidth() / 2 - mapTileSize / 2;
+    const int y1 = imageset->getHeight() - mapTileSize;
 
     // Get animation frames
     for (XmlNodePtr frameNode = animationNode->xmlChildrenNode;

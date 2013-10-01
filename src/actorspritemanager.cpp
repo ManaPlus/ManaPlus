@@ -67,9 +67,9 @@ class FindBeingFunctor final
             const unsigned other_y = y + ((b->getType()
                 == ActorSprite::NPC) ? 1 : 0);
             const Vector &pos = b->getPosition();
-            return (static_cast<unsigned>(pos.x) / 32 == x &&
-                (static_cast<unsigned>(pos.y) / 32 == y
-                || static_cast<unsigned>(pos.y) / 32 == other_y) &&
+            return (static_cast<unsigned>(pos.x) / mapTileSize == x &&
+                (static_cast<unsigned>(pos.y) / mapTileSize == y
+                || static_cast<unsigned>(pos.y) / mapTileSize == other_y) &&
                 b->isAlive() && (type == ActorSprite::UNKNOWN
                 || b->getType() == type));
         }
@@ -343,10 +343,10 @@ Being *ActorSpriteManager::findBeingByPixel(const int x, const int y,
                 {
                     const FloorItem *const floor
                         = static_cast<FloorItem*>(*it);
-                    if ((floor->getPixelX() - 32 <= x) &&
-                        (floor->getPixelX() + 32 > x) &&
-                        (floor->getPixelY() - 64 <= y) &&
-                        (floor->getPixelY() + 16 > y))
+                    if ((floor->getPixelX() - mapTileSize <= x) &&
+                        (floor->getPixelX() + mapTileSize > x) &&
+                        (floor->getPixelY() - mapTileSize * 2 <= y) &&
+                        (floor->getPixelY() + mapTileSize / 2 > y))
                     {
                         noBeing = true;
                     }
@@ -363,17 +363,17 @@ Being *ActorSpriteManager::findBeingByPixel(const int x, const int y,
                 || (targetDead && being->getType() == Being::PLAYER))
                 && (allPlayers ||  being != player_node))
             {
-                if ((being->getPixelX() - 16 <= x) &&
-                    (being->getPixelX() + 16 > x) &&
-                    (being->getPixelY() - 32 <= y) &&
+                if ((being->getPixelX() - mapTileSize / 2 <= x) &&
+                    (being->getPixelX() + mapTileSize / 2 > x) &&
+                    (being->getPixelY() - mapTileSize <= y) &&
                     (being->getPixelY() > y))
                 {
                     return being;
                 }
-                else if (!noBeing && (being->getPixelX() - 32 <= x) &&
-                         (being->getPixelX() + 32 > x) &&
-                         (being->getPixelY() - 64 <= y) &&
-                         (being->getPixelY() + 16 > y))
+                else if (!noBeing && (being->getPixelX() - mapTileSize <= x) &&
+                         (being->getPixelX() + mapTileSize > x) &&
+                         (being->getPixelY() - mapTileSize * 2 <= y) &&
+                         (being->getPixelY() + mapTileSize / 2 > y))
                 {
                     if (tempBeing)
                         noBeing = true;
@@ -405,9 +405,9 @@ Being *ActorSpriteManager::findBeingByPixel(const int x, const int y,
             if (being->getInfo() && !being->getInfo()->isTargetSelection())
                 continue;
 
-            if ((being->getPixelX() - 16 <= x) &&
-                (being->getPixelX() + 16 > x) &&
-                (being->getPixelY() - 32 <= y) &&
+            if ((being->getPixelX() - mapTileSize / 2 <= x) &&
+                (being->getPixelX() + mapTileSize / 2 > x) &&
+                (being->getPixelY() - mapTileSize <= y) &&
                 (being->getPixelY() > y))
             {
                 return being;
@@ -424,8 +424,8 @@ void ActorSpriteManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
     if (!mMap)
         return;
 
-    const int xtol = 16;
-    const int uptol = 32;
+    const int xtol = mapTileSize / 2;
+    const int uptol = mapTileSize;
 
     for_actors
     {
@@ -826,7 +826,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(const int x, const int y,
                                                   const Being *const
                                                   excluded) const
 {
-    const int maxDist = maxTileDist * 32;
+    const int maxDist = maxTileDist * mapTileSize;
 
     return findNearestLivingBeing(nullptr, maxDist, type, x, y, excluded);
 }

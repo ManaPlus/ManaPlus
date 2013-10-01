@@ -338,8 +338,8 @@ void CompoundSprite::redraw() const
     graphics->setTarget(surface);
     graphics->_beginDraw();
 
-    int tileX = 32 / 2;
-    int tileY = 32;
+    int tileX = mapTileSize / 2;
+    int tileY = mapTileSize;
 
     const Game *const game = Game::instance();
     if (game)

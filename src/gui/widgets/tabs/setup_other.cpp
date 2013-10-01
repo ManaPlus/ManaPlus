@@ -28,6 +28,7 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "configuration.h"
+#include "map.h"
 
 #include "utils/gettext.h"
 
@@ -161,7 +162,7 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Scroll radius"), "", "ScrollRadius",
-        this, "ScrollRadiusEvent", 0, 32);
+        this, "ScrollRadiusEvent", 0, mapTileSize);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Auto resize minimaps"), "", "autoresizeminimaps",

@@ -133,8 +133,9 @@ void DebugWindow::draw(gcn::Graphics *g)
         if (target)
         {
             Graphics *const g2 = static_cast<Graphics*>(g);
-            target->draw(g2, -target->getPixelX() + 16 + mDimension.width / 2,
-                -target->getPixelY() + 32 + mDimension.height / 2);
+            target->draw(g2, -target->getPixelX() + mapTileSize / 2
+                + mDimension.width / 2, -target->getPixelY() + mapTileSize
+                + mDimension.height / 2);
         }
     }
     BLOCK_END("DebugWindow::draw")

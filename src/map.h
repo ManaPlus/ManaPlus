@@ -58,6 +58,8 @@ typedef TilePairVector::const_iterator TilePairVectorCIter;
 typedef std::vector<AmbientLayer*> AmbientLayerVector;
 typedef AmbientLayerVector::const_iterator AmbientLayerVectorCIter;
 
+static const int mapTileSize = 32;
+
 /**
  * A meta tile stores additional information about a location on a tile map.
  * This is information that doesn't need to be repeated for each tile in each

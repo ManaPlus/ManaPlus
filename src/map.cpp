@@ -513,12 +513,12 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
 #define fillCollision(collision, color) \
     if (x < endX && mMetaTiles[tilePtr].blockmask & collision)\
     {\
-        width = 32;\
+        width = mapTileSize;\
         for (int x2 = tilePtr + 1; x < endX; x2 ++)\
         {\
             if (!(mMetaTiles[x2].blockmask & collision))\
                 break;\
-            width += 32;\
+            width += mapTileSize;\
             x ++;\
             tilePtr ++;\
         }\
@@ -529,7 +529,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
             graphics->fillRectangle(gcn::Rectangle(\
                 x0 * mTileWidth - scrollX, \
                 y * mTileHeight - scrollY, \
-                width, 32));\
+                width, mapTileSize));\
         }\
     }\
 
@@ -560,7 +560,7 @@ void Map::drawCollision(Graphics *const graphics,
             startY * mTileHeight - scrollY,
             endX * mTileWidth - scrollX,
             endY * mTileHeight - scrollY,
-            32, 32);
+            mapTileSize, mapTileSize);
     }
 
     for (int y = startY; y < endY; y++)
@@ -770,22 +770,22 @@ Position Map::checkNodeOffsets(int radius, const unsigned char walkMask,
                                const Position &position) const
 {
     // Pre-computing character's position in tiles
-    const int tx = position.x / 32;
-    const int ty = position.y / 32;
+    const int tx = position.x / mapTileSize;
+    const int ty = position.y / mapTileSize;
 
     // Pre-computing character's position offsets.
-    int fx = position.x % 32;
-    int fy = position.y % 32;
+    int fx = position.x % mapTileSize;
+    int fy = position.y % mapTileSize;
 
     // Compute the being radius:
     // FIXME: Hande beings with more than 1/2 tile radius by not letting them
     // go or spawn in too narrow places. The server will have to be aware
     // of being's radius value (in tiles) to handle this gracefully.
-    if (radius > 32 / 2)
-        radius = 32 / 2;
+    if (radius > mapTileSize / 2)
+        radius = mapTileSize / 2;
     // set a default value if no value returned.
     if (radius < 1)
-        radius = 32 / 3;
+        radius = mapTileSize / 3;
 
     // We check diagonal first as they are more restrictive.
     // Top-left border check
@@ -797,37 +797,37 @@ Position Map::checkNodeOffsets(int radius, const unsigned char walkMask,
     }
     // Top-right border check
     if (!getWalk(tx + 1, ty - 1, walkMask)
-        && (fy < radius) && fx > (32 - radius))
+        && (fy < radius) && fx > (mapTileSize - radius))
     {
-        fx = 32 - radius;
+        fx = mapTileSize - radius;
         fy = radius;
     }
     // Bottom-left border check
     if (!getWalk(tx - 1, ty + 1, walkMask)
-        && fy > (32 - radius) && fx < radius)
+        && fy > (mapTileSize - radius) && fx < radius)
     {
         fx = radius;
-        fy = 32 - radius;
+        fy = mapTileSize - radius;
     }
     // Bottom-right border check
     if (!getWalk(tx + 1, ty + 1, walkMask)
-        && fy > (32 - radius) && fx > (32 - radius))
+        && fy > (mapTileSize - radius) && fx > (mapTileSize - radius))
     {
-        fx = 32 - radius;
+        fx = mapTileSize - radius;
         fy = fx;
     }
 
     // Fix coordinates so that the player does not seem to dig into walls.
-    if (fx > (32 - radius) && !getWalk(tx + 1, ty, walkMask))
-        fx = 32 - radius;
+    if (fx > (mapTileSize - radius) && !getWalk(tx + 1, ty, walkMask))
+        fx = mapTileSize - radius;
     else if (fx < radius && !getWalk(tx - 1, ty, walkMask))
         fx = radius;
-    else if (fy > (32 - radius) && !getWalk(tx, ty + 1, walkMask))
-        fy = 32 - radius;
+    else if (fy > (mapTileSize - radius) && !getWalk(tx, ty + 1, walkMask))
+        fy = mapTileSize - radius;
     else if (fy < radius && !getWalk(tx, ty - 1, walkMask))
         fy = radius;
 
-    return Position(tx * 32 + fx, ty * 32 + fy);
+    return Position(tx * mapTileSize + fx, ty * mapTileSize + fy);
 }
 
 Path Map::findPixelPath(const int startPixelX, const int startPixelY,
@@ -835,20 +835,23 @@ Path Map::findPixelPath(const int startPixelX, const int startPixelY,
                         const int radius, const unsigned char walkMask,
                         const int maxCost)
 {
-    Path myPath = findPath(startPixelX / 32, startPixelY / 32,
-                           endPixelX / 32, endPixelY / 32, walkMask, maxCost);
+    Path myPath = findPath(startPixelX / mapTileSize,
+        startPixelY / mapTileSize,
+        endPixelX / mapTileSize,
+        endPixelY / mapTileSize,
+        walkMask, maxCost);
 
     // Don't compute empty coordinates.
     if (myPath.empty())
         return myPath;
 
     // Find the starting offset
-    const float startOffsetX = static_cast<float>(startPixelX % 32);
-    const float startOffsetY = static_cast<float>(startPixelY % 32);
+    const float startOffsetX = static_cast<float>(startPixelX % mapTileSize);
+    const float startOffsetY = static_cast<float>(startPixelY % mapTileSize);
 
     // Find the ending offset
-    const float endOffsetX = static_cast<float>(endPixelX % 32);
-    const float endOffsetY = static_cast<float>(endPixelY % 32);
+    const float endOffsetX = static_cast<float>(endPixelX % mapTileSize);
+    const float endOffsetY = static_cast<float>(endPixelY % mapTileSize);
 
     const int sz = static_cast<int>(myPath.size());
     // Find the distance, and divide it by the number of steps
@@ -867,8 +870,10 @@ Path Map::findPixelPath(const int startPixelX, const int startPixelY,
         // A position that is valid on the start and end tile is not
         // necessarily valid on all the tiles in between, so check the offsets.
         *it = checkNodeOffsets(radius, walkMask,
-            it->x * 32 + startOffsetX + static_cast<float>(changeX * i),
-            it->y * 32 + startOffsetY + static_cast<float>(changeY * i));
+            it->x * mapTileSize + startOffsetX
+            + static_cast<float>(changeX * i),
+            it->y * mapTileSize + startOffsetY
+            + static_cast<float>(changeY * i));
         i++;
         ++it;
     }
@@ -1268,13 +1273,15 @@ void Map::addRange(const std::string &name, const int type,
     if (!mObjects)
         return;
 
-    mObjects->addObject(name, type, x / 32, y / 32, dx / 32, dy / 32);
+    mObjects->addObject(name, type, x / mapTileSize, y / mapTileSize,
+        dx / mapTileSize, dy / mapTileSize);
 }
 
 void Map::addPortal(const std::string &name, const int type,
                     const int x, const int y, const int dx, const int dy)
 {
-    addPortalTile(name, type, (x / 32) + (dx / 64), (y / 32) + (dy / 64));
+    addPortalTile(name, type, (x / mapTileSize) + (dx / mapTileSize / 2),
+        (y / mapTileSize) + (dy / mapTileSize / 2));
 }
 
 void Map::addPortalTile(const std::string &name, const int type,
@@ -1479,7 +1486,8 @@ void Map::reduce()
                             img->setAlphaVisible(false);
                         }
                     }
-                    else if (img->mBounds.w > 32 || img->mBounds.h > 32)
+                    else if (img->mBounds.w > mapTileSize
+                             || img->mBounds.h > mapTileSize)
                     {
                         correct = false;
                         img->setAlphaVisible(true);

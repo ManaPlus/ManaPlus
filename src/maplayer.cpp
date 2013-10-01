@@ -105,14 +105,14 @@ void MapLayer::draw(Graphics *const graphics,
     if (endY > mHeight)
         endY = mHeight;
 
-    const int dx = (mX * 32) - scrollX;
-    const int dy = (mY * 32) - scrollY + 32;
+    const int dx = (mX * mapTileSize) - scrollX;
+    const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
     const bool flag = (debugFlags != Map::MAP_SPECIAL
         && debugFlags != Map::MAP_SPECIAL2);
 
     for (int y = startY; y < endY; y++)
     {
-        const int y32 = y * 32;
+        const int y32 = y * mapTileSize;
         const int yWidth = y * mWidth;
 
         const int py0 = y32 + dy;
@@ -121,7 +121,7 @@ void MapLayer::draw(Graphics *const graphics,
 
         for (int x = startX; x < endX; x++, tilePtr++)
         {
-            const int x32 = x * 32;
+            const int x32 = x * mapTileSize;
 
             int c = 0;
             const Image *const img = *tilePtr;
@@ -129,7 +129,7 @@ void MapLayer::draw(Graphics *const graphics,
             {
                 const int px = x32 + dx;
                 const int py = py0 - img->mBounds.h;
-                if (flag || img->mBounds.h <= 32)
+                if (flag || img->mBounds.h <= mapTileSize)
                 {
                     int width = 0;
                     // here need not draw over player position
@@ -197,8 +197,8 @@ void MapLayer::updateSDL(Graphics *const graphics, int startX, int startY,
     if (endY > mHeight)
         endY = mHeight;
 
-    const int dx = (mX * 32) - scrollX;
-    const int dy = (mY * 32) - scrollY + 32;
+    const int dx = (mX * mapTileSize) - scrollX;
+    const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
     const bool flag = (debugFlags != Map::MAP_SPECIAL
         && debugFlags != Map::MAP_SPECIAL2);
 
@@ -211,7 +211,7 @@ void MapLayer::updateSDL(Graphics *const graphics, int startX, int startY,
         ImageVertexes *imgVert = nullptr;
 
         const int yWidth = y * mWidth;
-        const int py0 = y * 32 + dy;
+        const int py0 = y * mapTileSize + dy;
         Image **tilePtr = mTiles + startX + yWidth;
 
         for (int x = startX; x < endX; x++, tilePtr++)
@@ -219,9 +219,9 @@ void MapLayer::updateSDL(Graphics *const graphics, int startX, int startY,
             Image *const img = *tilePtr;
             if (img)
             {
-                const int px = x * 32 + dx;
+                const int px = x * mapTileSize + dx;
                 const int py = py0 - img->mBounds.h;
-                if (flag || img->mBounds.h <= 32)
+                if (flag || img->mBounds.h <= mapTileSize)
                 {
                     if (lastImage != img)
                     {
@@ -261,8 +261,8 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
     if (endY > mHeight)
         endY = mHeight;
 
-    const int dx = (mX * 32) - scrollX;
-    const int dy = (mY * 32) - scrollY + 32;
+    const int dx = (mX * mapTileSize) - scrollX;
+    const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
     const bool flag = (debugFlags != Map::MAP_SPECIAL
         && debugFlags != Map::MAP_SPECIAL2);
 
@@ -275,21 +275,21 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
     for (int y = startY; y < endY; y++)
     {
         const int yWidth = y * mWidth;
-        const int py0 = y * 32 + dy;
+        const int py0 = y * mapTileSize + dy;
         Image **tilePtr = mTiles + startX + yWidth;
         for (int x = startX; x < endX; x++, tilePtr++)
         {
             Image *const img = *tilePtr;
             if (img)
             {
-                const int px = x * 32 + dx;
+                const int px = x * mapTileSize + dx;
                 const int py = py0 - img->mBounds.h;
                 const GLuint imgGlImage = img->mGLImage;
-                if (flag || img->mBounds.h <= 32)
+                if (flag || img->mBounds.h <= mapTileSize)
                 {
                     if (!lastImage || lastImage->mGLImage != imgGlImage)
                     {
-                        if (img->mBounds.w > 32)
+                        if (img->mBounds.w > mapTileSize)
                             imgSet.clear();
 
                         if (imgSet.find(imgGlImage) != imgSet.end())
@@ -371,16 +371,16 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
     ActorsCIter ai = actors->begin();
     const ActorsCIter ai_end = actors->end();
 
-    const int dx = (mX * 32) - scrollX;
-    const int dy = (mY * 32) - scrollY + 32;
+    const int dx = (mX * mapTileSize) - scrollX;
+    const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
 
     const int specialWidth = mSpecialLayer->mWidth;
     const int specialHeight = mSpecialLayer->mHeight;
 
     for (int y = startY; y < endY; y++)
     {
-        const int y32 = y * 32;
-        const int y32s = (y + yFix) * 32;
+        const int y32 = y * mapTileSize;
+        const int y32s = (y + yFix) * mapTileSize;
         const int yWidth = y * mWidth;
 
         BLOCK_START("MapLayer::drawFringe drawmobs")
@@ -408,15 +408,21 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
 
                 for (int x = startX; x < endX1; x++)
                 {
-                    const int px1 = x * 32 - scrollX;
+                    const int px1 = x * mapTileSize - scrollX;
 
                     const MapItem *item = mSpecialLayer->mTiles[ptr + x];
                     if (item)
-                        item->draw(graphics, px1, py1, 32, 32);
+                    {
+                        item->draw(graphics, px1, py1,
+                            mapTileSize, mapTileSize);
+                    }
 
                     item = mTempLayer->mTiles[ptr + x];
                     if (item)
-                        item->draw(graphics, px1, py1, 32, 32);
+                    {
+                        item->draw(graphics, px1, py1,
+                            mapTileSize, mapTileSize);
+                    }
                 }
             }
         }
@@ -428,7 +434,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             Image **tilePtr = mTiles + startX + yWidth;
             for (int x = startX; x < endX; x++, tilePtr++)
             {
-                const int x32 = x * 32;
+                const int x32 = x * mapTileSize;
 
                 const int px1 = x32 - scrollX;
                 int c = 0;
@@ -439,7 +445,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                     const int py = py0 - img->mBounds.h;
                     if ((debugFlags != Map::MAP_SPECIAL
                         && debugFlags != Map::MAP_SPECIAL2)
-                        || img->mBounds.h <= 32)
+                        || img->mBounds.h <= mapTileSize)
                     {
                         int width = 0;
                         // here need not draw over player position
@@ -475,12 +481,18 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                             = mTempLayer->mTiles[ptr + x1];
                         if (item1 || item2)
                         {
-                            const int px2 = px1 + (x1 * 32);
+                            const int px2 = px1 + (x1 * mapTileSize);
                             if (item1 && item1->mType != MapItem::EMPTY)
-                                item1->draw(graphics, px2, py1, 32, 32);
+                            {
+                                item1->draw(graphics, px2, py1,
+                                    mapTileSize, mapTileSize);
+                            }
 
                             if (item2 && item2->mType != MapItem::EMPTY)
-                                item2->draw(graphics, px2, py1, 32, 32);
+                            {
+                                item2->draw(graphics, px2, py1,
+                                    mapTileSize, mapTileSize);
+                            }
                         }
                     }
                 }
@@ -501,20 +513,22 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
         BLOCK_END("MapLayer::drawFringe drawmobs")
         if (mHighlightAttackRange && player_node)
         {
-            const int px = player_node->getPixelX() - scrollX - 16;
-            const int py = player_node->getPixelY() - scrollY - 32;
-            const int attackRange = player_node->getAttackRange() * 32;
+            const int px = player_node->getPixelX()
+                - scrollX - mapTileSize / 2;
+            const int py = player_node->getPixelY() - scrollY - mapTileSize;
+            const int attackRange = player_node->getAttackRange()
+                * mapTileSize;
 
             int x = px - attackRange;
             int y = py - attackRange;
-            int w = 2 * attackRange + 32;
+            int w = 2 * attackRange + mapTileSize;
             int h = w;
-            if (attackRange <= 32)
+            if (attackRange <= mapTileSize)
             {
-                x -= 16;
-                y -= 16;
-                w += 32;
-                h += 32;
+                x -= mapTileSize / 2;
+                y -= mapTileSize / 2;
+                w += mapTileSize;
+                h += mapTileSize;
             }
 
             if (userPalette)
@@ -666,13 +680,16 @@ void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
 
     for (int y = startY; y < endY; y ++)
     {
-        const int py = y * 32 - scrollY;
+        const int py = y * mapTileSize - scrollY;
         const int y2 = y * mWidth;
         for (int x = startX; x < endX; x ++)
         {
             const MapItem *const item = mTiles[x + y2];
             if (item)
-                item->draw(graphics, x * 32 - scrollX, py, 32, 32);
+            {
+                item->draw(graphics, x * mapTileSize - scrollX, py,
+                    mapTileSize, mapTileSize);
+            }
         }
     }
     BLOCK_END("SpecialLayer::draw")

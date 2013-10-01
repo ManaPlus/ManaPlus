@@ -349,7 +349,7 @@ void Being::setDestination(const int dstX, const int dstY)
         return;
 
     // If the destination is unwalkable, don't bother trying to get there
-    if (!mMap->getWalk(dstX / 32, dstY / 32))
+    if (!mMap->getWalk(dstX / mapTileSize, dstY / mapTileSize))
         return;
 
     Position dest = mMap->checkNodeOffsets(getCollisionRadius(), getWalkMask(),
@@ -363,8 +363,8 @@ void Being::setDestination(const int dstX, const int dstY)
     {
         // If there is no path but the destination is on the same walkable tile,
         // we accept it.
-        if (static_cast<int>(mPos.x) / 32 == dest.x / 32
-            && static_cast<int>(mPos.y) / 32 == dest.y / 32)
+        if (static_cast<int>(mPos.x) / mapTileSize == dest.x / mapTileSize
+            && static_cast<int>(mPos.y) / mapTileSize == dest.y / mapTileSize)
         {
             mDest.x = static_cast<float>(dest.x);
             mDest.y = static_cast<float>(dest.y);
@@ -1534,18 +1534,20 @@ void Being::logic()
             if (!offset)
                 offset = yOffset;
 
-            mSortOffsetY = (mOldHeight * 16) + (mOffsetY * 16)
-                * (32 - abs(offset)) / 32;
+            mSortOffsetY = (mOldHeight * mapTileSize / 2)
+                + (mOffsetY * mapTileSize / 2)
+                * (mapTileSize - abs(offset)) / mapTileSize;
             const int yOffset2 = yOffset - mSortOffsetY;
 
             // Update pixel coordinates
-            setPosition(static_cast<float>(mX * 32 + 16 + xOffset),
-                static_cast<float>(mY * 32 + 32 + yOffset2));
+            setPosition(static_cast<float>(mX * mapTileSize
+                + mapTileSize / 2 + xOffset), static_cast<float>(
+                mY * mapTileSize + mapTileSize + yOffset2));
         }
         else
         {
-            setPosition(static_cast<float>(mX * 32 + 16),
-                static_cast<float>(mY * 32 + 32));
+            setPosition(static_cast<float>(mX * mapTileSize + mapTileSize / 2),
+                static_cast<float>(mY * mapTileSize + mapTileSize));
         }
     }
 
@@ -1591,8 +1593,8 @@ void Being::logic()
 void Being::drawEmotion(Graphics *const graphics, const int offsetX,
                         const int offsetY) const
 {
-    const int px = getPixelX() - offsetX - 16;
-    const int py = getPixelY() - offsetY - 64 - 32;
+    const int px = getPixelX() - offsetX - mapTileSize / 2;
+    const int py = getPixelY() - offsetY - mapTileSize * 2 - mapTileSize;
     if (mEmotionSprite)
         mEmotionSprite->draw(graphics, px, py);
     if (mAnimationEffect)
@@ -1668,7 +1670,7 @@ int Being::getOffset(const signed char pos, const signed char neg) const
     }
 
     // We calculate the offset _from_ the _target_ location
-    offset -= 32;
+    offset -= mapTileSize;
     if (offset > 0)
         offset = 0;
 
@@ -1676,10 +1678,10 @@ int Being::getOffset(const signed char pos, const signed char neg) const
     if (mDirection & pos)
         offset = -offset;
 
-    if (offset > 32)
-        offset = 32;
-    if (offset < -32)
-        offset = -32;
+    if (offset > mapTileSize)
+        offset = mapTileSize;
+    if (offset < -mapTileSize)
+        offset = -mapTileSize;
 
     return offset;
 }
@@ -2270,7 +2272,7 @@ bool Being::drawSpriteAt(Graphics *const graphics,
         graphics->setColor(userPalette->
                 getColorWithAlpha(UserPalette::PORTAL_HIGHLIGHT));
 
-        graphics->fillRectangle(gcn::Rectangle(x, y, 32, 32));
+        graphics->fillRectangle(gcn::Rectangle(x, y, mapTileSize, mapTileSize));
 
         if (mDrawHotKeys && !mName.empty())
         {
@@ -2288,16 +2290,16 @@ bool Being::drawSpriteAt(Graphics *const graphics,
     {
         int attackRange;
         if (mAttackRange)
-            attackRange = 32 * mAttackRange;
+            attackRange = mapTileSize * mAttackRange;
         else
-            attackRange = 32;
+            attackRange = mapTileSize;
 
         graphics->setColor(userPalette->getColorWithAlpha(
             UserPalette::MONSTER_ATTACK_RANGE));
 
         graphics->fillRectangle(gcn::Rectangle(
             x - attackRange, y - attackRange,
-            2 * attackRange + 32, 2 * attackRange + 32));
+            2 * attackRange + mapTileSize, 2 * attackRange + mapTileSize));
     }
 
     if (mShowMobHP && mInfo && player_node && player_node->getTarget() == this
@@ -2310,8 +2312,8 @@ bool Being::drawSpriteAt(Graphics *const graphics,
 
         drawHpBar(graphics, maxHP, mHP, mDamageTaken,
                   UserPalette::MONSTER_HP, UserPalette::MONSTER_HP2,
-                  x - 50 + 16 + mInfo->getHpBarOffsetX(),
-                  y + 32 - 6 + mInfo->getHpBarOffsetY(),
+                  x - 50 + mapTileSize / 2 + mInfo->getHpBarOffsetX(),
+                  y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
                   2 * 50, 4);
     }
     if (mShowOwnHP && mInfo && player_node == this && mAction != DEAD)
@@ -2319,8 +2321,8 @@ bool Being::drawSpriteAt(Graphics *const graphics,
         drawHpBar(graphics, PlayerInfo::getAttribute(PlayerInfo::MAX_HP),
                   PlayerInfo::getAttribute(PlayerInfo::HP), 0,
                   UserPalette::PLAYER_HP, UserPalette::PLAYER_HP2,
-                  x - 50 + 16 + mInfo->getHpBarOffsetX(),
-                  y + 32 - 6 + mInfo->getHpBarOffsetY(),
+                  x - 50 + mapTileSize / 2 + mInfo->getHpBarOffsetX(),
+                  y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
                   2 * 50, 4);
     }
     return res;
