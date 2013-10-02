@@ -418,7 +418,7 @@ void ChatWindow::prevTab()
         tab = mChatTabs->getNumberOfTabs();
     tab--;
 
-    mChatTabs->setSelectedTabByPos(tab);
+    mChatTabs->setSelectedTabByIndex(tab);
 }
 
 void ChatWindow::nextTab()
@@ -432,7 +432,7 @@ void ChatWindow::nextTab()
     if (tab == mChatTabs->getNumberOfTabs())
         tab = 0;
 
-    mChatTabs->setSelectedTabByPos(tab);
+    mChatTabs->setSelectedTabByIndex(tab);
 }
 
 void ChatWindow::closeTab() const
@@ -454,7 +454,7 @@ void ChatWindow::closeTab() const
 void ChatWindow::defaultTab()
 {
     if (mChatTabs)
-        mChatTabs->setSelectedTabByPos(static_cast<unsigned>(0));
+        mChatTabs->setSelectedTabByIndex(static_cast<unsigned>(0));
 }
 
 void ChatWindow::action(const gcn::ActionEvent &event)

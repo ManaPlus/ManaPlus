@@ -119,7 +119,7 @@ class TabbedArea final : public Widget2,
 
         void setSelectedTab(Tab *const tab);
 
-        void setSelectedTab(const unsigned int index);
+        void setSelectedTabByIndex(const unsigned int index);
 
         int getSelectedTabIndex() const A_WARN_UNUSED;
 
@@ -133,8 +133,6 @@ class TabbedArea final : public Widget2,
         { return mOpaque; }
 
         void adjustSize();
-
-        void setSelectedTabByPos(const int tab);
 
         void setSelectedTabByName(const std::string &name);
 

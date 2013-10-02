@@ -235,7 +235,7 @@ bool TabbedArea::isTabSelected(const Tab *const tab) const
     return mSelectedTab == tab;
 }
 
-void TabbedArea::setSelectedTab(const unsigned int index)
+void TabbedArea::setSelectedTabByIndex(const unsigned int index)
 {
     if (index >= mTabs.size())
         return;
@@ -292,7 +292,7 @@ void TabbedArea::removeTab(Tab *const tab)
     }
     else
     {
-        setSelectedTabByPos(tabIndexToBeSelected);
+        setSelectedTabByIndex(tabIndexToBeSelected);
     }
 
     adjustSize();
@@ -374,11 +374,6 @@ void TabbedArea::setSelectedTabByName(const std::string &name)
             return;
         }
     }
-}
-
-void TabbedArea::setSelectedTabByPos(const int tab)
-{
-    setSelectedTab(tab);
 }
 
 void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
@@ -631,7 +626,7 @@ void TabbedArea::removeAll(const bool del)
 {
     if (getSelectedTabIndex() != -1)
     {
-        setSelectedTabByPos(static_cast<unsigned int>(0));
+        setSelectedTabByIndex(static_cast<unsigned int>(0));
     }
     while (getNumberOfTabs() > 0)
     {
