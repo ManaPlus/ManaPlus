@@ -330,6 +330,8 @@ class LocalPlayer final : public Being,
 
         void afkRespond(ChatTab *const tab, const std::string &nick);
 
+        void setAfkMessage(std::string message);
+
         bool navigateTo(const int x, const int y);
 
         void navigateTo(const Being *const being);

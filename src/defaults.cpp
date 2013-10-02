@@ -98,6 +98,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("disableGameModifiers", false);
     AddDEF("targetDeadPlayers", false);
     AddDEF("afkMessage", "I am away from keyboard.");
+    AddDEF("afkFormat", 0);
     AddDEF("particleMaxCount", 3000);
     AddDEF("particleFastPhysics", 1);
     AddDEF("particleEmitterSkip", 1);

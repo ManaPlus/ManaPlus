@@ -3507,16 +3507,31 @@ void LocalPlayer::tryPingRequest()
 
 void LocalPlayer::setAway(const std::string &message)
 {
-    if (!message.empty())
-        config.setValue("afkMessage", message);
+    setAfkMessage(message);
     changeAwayMode();
     updateStatus();
 }
 
-void LocalPlayer::setPseudoAway(const std::string &message)
+void LocalPlayer::setAfkMessage(std::string message)
 {
     if (!message.empty())
+    {
+        if (message.size() > 4 && message.substr(0, 4) == "/me ")
+        {
+            message = message.substr(4);
+            config.setValue("afkFormat", 1);
+        }
+        else
+        {
+            config.setValue("afkFormat", 0);
+        }
         config.setValue("afkMessage", message);
+    }
+}
+
+void LocalPlayer::setPseudoAway(const std::string &message)
+{
+    setAfkMessage(message);
     mPseudoAwayMode = !mPseudoAwayMode;
 }
 
@@ -3528,8 +3543,11 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
         if (mAfkTime == 0 || time < mAfkTime
             || time - mAfkTime > awayLimitTimer)
         {
-            const std::string msg("*AFK*: "
+            std::string msg("*AFK*: "
                 + config.getStringValue("afkMessage"));
+
+            if (config.getIntValue("afkFormat") == 1)
+                msg = "*" + msg + "*";
 
             if (!tab)
             {
