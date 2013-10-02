@@ -153,6 +153,9 @@ class GraphicsManager final
         static std::string errorToString(const GLenum error) A_WARN_UNUSED;
 
         void updateDebugLog() const;
+
+        std::string getGLVersion()
+        { return mGlVersionString; }
 #endif
 
     private:

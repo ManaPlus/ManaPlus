@@ -27,6 +27,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "game.h"
+#include "graphicsmanager.h"
 #include "guildmanager.h"
 #include "main.h"
 #include "party.h"
@@ -1286,6 +1287,18 @@ impHandler0(testsdlfont)
         debugChatTab->chatLog("sdlfont time: " + toString(diff));
 #endif
 }
+
+#ifdef USE_OPENGL
+impHandler2(dumpGL)
+{
+    std::string str = graphicsManager.getGLVersion();
+    outStringNormal(tab, str, str);
+}
+#else
+impHandler0(dumpGL)
+{
+}
+#endif
 
 #ifdef DEBUG_DUMP_LEAKS1
 void showRes(std::string str, ResourceManager::Resources *res);
