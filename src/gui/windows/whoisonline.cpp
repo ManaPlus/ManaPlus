@@ -343,6 +343,7 @@ void WhoIsOnline::loadWebList()
     // Tokenize and add each line separately
     char *line = strtok(mMemoryBuffer, "\n");
     const std::string gmText("(GM)");
+    const std::string gmText2("(gm)");
 
     FOR_EACH (std::set<OnlinePlayer*>::iterator, itd, mOnlinePlayers)
         delete *itd;
@@ -379,6 +380,15 @@ void WhoIsOnline::loadWebList()
                 {
                     lineStr = lineStr.substr(pos + gmText.length());
                     isGM = true;
+                }
+                else
+                {
+                    pos = lineStr.find(gmText2, 0);
+                    if (pos != std::string::npos)
+                    {
+                        lineStr = lineStr.substr(pos + gmText.length());
+                        isGM = true;
+                    }
                 }
 
                 trim(lineStr);
