@@ -42,8 +42,8 @@ class OnlinePlayer final
 {
     public:
         OnlinePlayer(const std::string &nick, const unsigned char status,
-                     const char level, const unsigned char gender,
-                     const char version) :
+                     const signed char level, const unsigned char gender,
+                     const signed char version) :
             mNick(nick),
             mText(""),
             mStatus(status),
@@ -86,9 +86,9 @@ class OnlinePlayer final
 
         unsigned char mStatus;
 
-        char mLevel;
+        signed char mLevel;
 
-        char mVersion;
+        signed char mVersion;
 
         unsigned char mGender;
 
