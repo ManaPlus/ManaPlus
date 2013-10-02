@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Author: Alige
+Copyright (C) 2013 Evol Online -->
+<sprite>
+    <imageset name="target-small"
+              src="themes/mana/target-cursor-normal-s.png"
+              width="44"
+              height="35"/>
+
+    <action name="default" imageset="target-small">
+        <animation direction="default">
+            <sequence start="0" end="7" delay="100"/>
+        </animation>
+    </action>
+</sprite>

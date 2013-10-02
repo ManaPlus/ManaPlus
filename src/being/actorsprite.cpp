@@ -362,7 +362,7 @@ static const char *cursorSize(const int size)
 void ActorSprite::initTargetCursor()
 {
     static const std::string targetCursorFile("%s/target-cursor-%s-%s.xml");
-    const std::string path(branding.getStringValue("guiPath"));
+    const std::string path(Theme::getThemePath());
 
     // Load target cursors
     for (int size = TC_SMALL; size < NUM_TC; size++)
