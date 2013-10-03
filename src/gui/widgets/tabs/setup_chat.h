@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SETUP_CHAT_H
-#define GUI_SETUP_CHAT_H
+#ifndef GUI_WIDGETS_TABS_SETUP_CHAT_H
+#define GUI_WIDGETS_TABS_SETUP_CHAT_H
 
 #include "gui/widgets/tabs/setuptabscroll.h"
 
@@ -37,4 +37,4 @@ class Setup_Chat final : public SetupTabScroll
         void externalUpdated() override;
 };
 
-#endif  // GUI_SETUP_CHAT_H
+#endif  // GUI_WIDGETS_TABS_SETUP_CHAT_H

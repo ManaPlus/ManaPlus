@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_NPCDB_H
-#define RESOURCES_NPCDB_H
+#ifndef RESOURCES_DB_NPCDB_H
+#define RESOURCES_DB_NPCDB_H
 
 #include <stdint.h>
 
@@ -47,4 +47,4 @@ namespace NPCDB
     void loadXmlFile(const std::string &fileName);
 }  // namespace NPCDB
 
-#endif  // RESOURCES_NPCDB_H
+#endif  // RESOURCES_DB_NPCDB_H

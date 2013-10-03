@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_CHARDB_H
-#define RESOURCES_CHARDB_H
+#ifndef RESOURCES_DB_CHARDB_H
+#define RESOURCES_DB_CHARDB_H
 
 #include "utils/xml.h"
 
@@ -65,4 +65,4 @@ namespace CharDB
     const std::vector<int> &getDefaultItems() A_WARN_UNUSED;
 }  // namespace CharDB
 
-#endif  // RESOURCES_CHARDB_H
+#endif  // RESOURCES_DB_CHARDB_H

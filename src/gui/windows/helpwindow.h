@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_HELPWINDOW_H
-#define GUI_HELPWINDOW_H
+#ifndef GUI_WINDOWS_HELPWINDOW_H
+#define GUI_WINDOWS_HELPWINDOW_H
 
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
@@ -90,4 +90,4 @@ class HelpWindow final : public Window, public LinkHandler,
 
 extern HelpWindow *helpWindow;
 
-#endif  // GUI_HELPWINDOW_H
+#endif  // GUI_WINDOWS_HELPWINDOW_H

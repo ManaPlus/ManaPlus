@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_EDITDIALOG_H
-#define GUI_EDITDIALOG_H
+#ifndef GUI_WINDOWS_EDITDIALOG_H
+#define GUI_WINDOWS_EDITDIALOG_H
 
 #include "localconsts.h"
 
@@ -66,4 +66,4 @@ class EditDialog final : public Window, public gcn::ActionListener
         TextField *mTextField;
 };
 
-#endif  // GUI_EDITDIALOG_H
+#endif  // GUI_WINDOWS_EDITDIALOG_H

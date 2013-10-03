@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_EMOTEDB_H
-#define RESOURCES_EMOTEDB_H
+#ifndef RESOURCES_DB_EMOTEDB_H
+#define RESOURCES_DB_EMOTEDB_H
 
 #include "utils/stringvector.h"
 
@@ -84,4 +84,4 @@ namespace EmoteDB
     typedef EmoteInfos::iterator EmoteInfosIterator;
 }  // namespace EmoteDB
 
-#endif  // RESOURCES_EMOTEDB_H
+#endif  // RESOURCES_DB_EMOTEDB_H

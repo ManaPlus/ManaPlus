@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SKILLDIALOG_H
-#define GUI_SKILLDIALOG_H
+#ifndef GUI_WINDOWS_SKILLDIALOG_H
+#define GUI_WINDOWS_SKILLDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -106,4 +106,4 @@ class SkillDialog final : public Window, public gcn::ActionListener
 
 extern SkillDialog *skillDialog;
 
-#endif  // GUI_SKILLDIALOG_H
+#endif  // GUI_WINDOWS_SKILLDIALOG_H

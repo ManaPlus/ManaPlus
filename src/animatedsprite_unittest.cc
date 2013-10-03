@@ -84,7 +84,8 @@ TEST(AnimatedSprite, basic2)
         "graphics/sprites/test.xml", 0);
     sprite->play(SpriteAction::STAND);
 
-    EXPECT_EQ(10, sprite->getAnimation()->getFrames().size());
+    EXPECT_EQ(10, const_cast<Animation*>(sprite->getAnimation())
+        ->getFrames().size());
 
     EXPECT_NE(nullptr, sprite);
 
@@ -141,7 +142,8 @@ TEST(AnimatedSprite, basic2)
     sprite2->play(SpriteAction::SIT);
 
     EXPECT_EQ(false, sprite2->update(1));
-    EXPECT_EQ(2, sprite2->getAnimation()->getFrames().size());
+    EXPECT_EQ(2, const_cast<Animation*>(sprite2->getAnimation())
+        ->getFrames().size());
     EXPECT_EQ(0, sprite2->getFrameTime());
     EXPECT_EQ(85, sprite2->getFrame()->delay);
 

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SHORTCUTWINDOW_H
-#define GUI_SHORTCUTWINDOW_H
+#ifndef GUI_WINDOWS_SHORTCUTWINDOW_H
+#define GUI_WINDOWS_SHORTCUTWINDOW_H
 
 #include "gui/widgets/window.h"
 
@@ -87,4 +87,4 @@ extern ShortcutWindow *itemShortcutWindow;
 extern ShortcutWindow *emoteShortcutWindow;
 extern ShortcutWindow *dropShortcutWindow;
 
-#endif  // GUI_SHORTCUTWINDOW_H
+#endif  // GUI_WINDOWS_SHORTCUTWINDOW_H

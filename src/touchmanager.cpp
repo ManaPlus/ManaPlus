@@ -382,6 +382,7 @@ void TouchManager::loadButtons()
         {
             // 2x1
             case 0:
+            default:
             {
                 loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
                     x, y, sz, sz, RIGHT, "screenActionButton1", "");
@@ -468,8 +469,9 @@ void TouchManager::loadButtons()
                 loadTouchItem(&mButtons[11], "dbutton.xml",
                     "dbutton_image.xml", x, y, sz, sz, RIGHT,
                     "screenActionButton11", "");
-                loadTouchItem(&mButtons[10], "dbutton.xml", "dbutton_image.xml",
-                    skipWidth, y, sz, sz, RIGHT, "screenActionButton10", "");
+                loadTouchItem(&mButtons[10], "dbutton.xml",
+                    "dbutton_image.xml", skipWidth, y, sz, sz, RIGHT,
+                    "screenActionButton10", "");
                 loadTouchItem(&mButtons[9], "dbutton.xml", "dbutton_image.xml",
                     skipWidth2, y, sz, sz, RIGHT, "screenActionButton9", "");
                 loadTouchItem(&mButtons[8], "dbutton.xml", "dbutton_image.xml",

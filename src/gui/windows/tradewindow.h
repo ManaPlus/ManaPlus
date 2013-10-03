@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_TRADEWINDOW_H
-#define GUI_TRADEWINDOW_H
+#ifndef GUI_WINDOWS_TRADEWINDOW_H
+#define GUI_WINDOWS_TRADEWINDOW_H
 
 #include "gui/widgets/window.h"
 
@@ -184,4 +184,4 @@ class TradeWindow final : public Window,
 
 extern TradeWindow *tradeWindow;
 
-#endif  // GUI_TRADEWINDOW_H
+#endif  // GUI_WINDOWS_TRADEWINDOW_H

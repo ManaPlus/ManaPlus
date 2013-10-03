@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SETUP_H
-#define GUI_SETUP_H
+#ifndef GUI_WINDOWS_SETUP_H
+#define GUI_WINDOWS_SETUP_H
 
 #include "gui/widgets/tabbedarea.h"
 
@@ -79,4 +79,4 @@ class Setup final : public Window, public gcn::ActionListener
 
 extern Setup* setupWindow;
 
-#endif  // GUI_SETUP_H
+#endif  // GUI_WINDOWS_SETUP_H

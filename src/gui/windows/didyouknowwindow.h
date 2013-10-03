@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_DIDYOUKNOWWINDOW_H
-#define GUI_DIDYOUKNOWWINDOW_H
+#ifndef GUI_WINDOWS_DIDYOUKNOWWINDOW_H
+#define GUI_WINDOWS_DIDYOUKNOWWINDOW_H
 
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
@@ -75,4 +75,4 @@ class DidYouKnowWindow final : public Window,
 
 extern DidYouKnowWindow *didYouKnowWindow;
 
-#endif  // GUI_DIDYOUKNOWWINDOW_H
+#endif  // GUI_WINDOWS_DIDYOUKNOWWINDOW_H

@@ -34,7 +34,6 @@
 
 #include "gui/widgets/tabs/chattab.h"
 
-#include "gui/windows/chatwindow.h"
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/socialwindow.h"
 

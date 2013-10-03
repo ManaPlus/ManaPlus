@@ -23,7 +23,6 @@
 
 #include "gui/popups/spellpopup.h"
 
-#include "gui/gui.h"
 #include "gui/sdlfont.h"
 
 #include "gui/widgets/label.h"

@@ -38,7 +38,6 @@
 #include "input/inputmanager.h"
 #include "input/keyevent.h"
 
-#include "gui/gui.h"
 #include "gui/sdlfont.h"
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"

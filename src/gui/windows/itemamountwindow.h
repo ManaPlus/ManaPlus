@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_ITEMAMOUNTWINDOW_H
-#define GUI_ITEMAMOUNTWINDOW_H
+#ifndef GUI_WINDOWS_ITEMAMOUNTWINDOW_H
+#define GUI_WINDOWS_ITEMAMOUNTWINDOW_H
 
 #include "gui/widgets/window.h"
 
@@ -123,4 +123,4 @@ class ItemAmountWindow final : public Window,
         bool mEnabledKeyboard;
 };
 
-#endif  // GUI_ITEMAMOUNTWINDOW_H
+#endif  // GUI_WINDOWS_ITEMAMOUNTWINDOW_H

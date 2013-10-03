@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_NPCPOSTDIALOG_H
-#define GUI_NPCPOSTDIALOG_H
+#ifndef GUI_WINDOWS_NPCPOSTDIALOG_H
+#define GUI_WINDOWS_NPCPOSTDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -71,4 +71,4 @@ class NpcPostDialog final : public Window,
         TextField *mSender;
 };
 
-#endif  // GUI_NPCPOSTDIALOG_H
+#endif  // GUI_WINDOWS_NPCPOSTDIALOG_H

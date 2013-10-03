@@ -31,7 +31,6 @@
 #include "input/inputmanager.h"
 #include "input/keyevent.h"
 
-#include "gui/gui.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/textpopup.h"
@@ -55,8 +54,6 @@
 
 #include "net/inventoryhandler.h"
 #include "net/net.h"
-
-#include "resources/db/itemdb.h"
 
 #include "utils/gettext.h"
 

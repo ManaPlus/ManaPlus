@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_BUYDIALOG_H
-#define GUI_BUYDIALOG_H
+#ifndef GUI_WINDOWS_BUYDIALOG_H
+#define GUI_WINDOWS_BUYDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -160,4 +160,4 @@ class BuyDialog final : public Window,
         DropDown *mSortDropDown;
 };
 
-#endif  // GUI_BUYDIALOG_H
+#endif  // GUI_WINDOWS_BUYDIALOG_H

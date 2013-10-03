@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_OKDIALOG_H
-#define GUI_OKDIALOG_H
+#ifndef GUI_WINDOWS_OKDIALOG_H
+#define GUI_WINDOWS_OKDIALOG_H
 
 #include "localconsts.h"
 
@@ -68,4 +68,4 @@ class OkDialog final : public Window,
         TextBox *mTextBox;
 };
 
-#endif  // GUI_OKDIALOG_H
+#endif  // GUI_WINDOWS_OKDIALOG_H

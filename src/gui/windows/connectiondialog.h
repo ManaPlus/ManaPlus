@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_CONNECTIONDIALOG_H
-#define GUI_CONNECTIONDIALOG_H
+#ifndef GUI_WINDOWS_CONNECTIONDIALOG_H
+#define GUI_WINDOWS_CONNECTIONDIALOG_H
 
 #include "client.h"
 
@@ -61,4 +61,4 @@ class ConnectionDialog final : public Window, private gcn::ActionListener
         State mCancelState;
 };
 
-#endif  // GUI_CONNECTIONDIALOG_H
+#endif  // GUI_WINDOWS_CONNECTIONDIALOG_H

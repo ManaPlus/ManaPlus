@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_DEADDB_H
-#define RESOURCES_DEADDB_H
+#ifndef RESOURCES_DB_DEADDB_H
+#define RESOURCES_DB_DEADDB_H
 
 #include <string>
 
@@ -41,4 +41,4 @@ namespace DeadDB
     std::string getRandomString();
 }  // namespace DeadDB
 
-#endif  // RESOURCES_DEADDB_H
+#endif  // RESOURCES_DB_DEADDB_H

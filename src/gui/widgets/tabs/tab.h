@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TAB_H
-#define GUI_WIDGETS_TAB_H
+#ifndef GUI_WIDGETS_TABS_TAB_H
+#define GUI_WIDGETS_TABS_TAB_H
 
 #include "gui/widgets/widget2.h"
 
@@ -184,4 +184,4 @@ class Tab : public gcn::BasicContainer,
         bool mHasMouse;
 };
 
-#endif  // GUI_WIDGETS_TAB_H
+#endif  // GUI_WIDGETS_TABS_TAB_H

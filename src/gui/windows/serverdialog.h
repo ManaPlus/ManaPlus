@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SERVERDIALOG_H
-#define GUI_SERVERDIALOG_H
+#ifndef GUI_WINDOWS_SERVERDIALOG_H
+#define GUI_WINDOWS_SERVERDIALOG_H
 
 #include "gui/widgets/window.h"
 #include "gui/widgets/checkbox.h"
@@ -191,4 +191,4 @@ class ServerDialog final : public Window,
         CheckBox *mPersistentIPCheckBox;
 };
 
-#endif  // GUI_SERVERDIALOG_H
+#endif  // GUI_WINDOWS_SERVERDIALOG_H

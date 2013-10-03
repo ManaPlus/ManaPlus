@@ -24,7 +24,6 @@
 #include "main.h"
 #include "soundmanager.h"
 
-#include "gui/gui.h"
 #include "gui/sdlfont.h"
 
 #include "gui/windows/editdialog.h"

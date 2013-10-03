@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_SOUNDDB_H
-#define RESOURCES_SOUNDDB_H
+#ifndef RESOURCES_DB_SOUNDDB_H
+#define RESOURCES_DB_SOUNDDB_H
 
 #include <string>
 
@@ -34,4 +34,4 @@ namespace SoundDB
     std::string &getSound(const int id);
 }
 
-#endif  // RESOURCES_SOUNDDB_H
+#endif  // RESOURCES_DB_SOUNDDB_H

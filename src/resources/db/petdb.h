@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_PETDB_H
-#define RESOURCES_PETDB_H
+#ifndef RESOURCES_DB_PETDB_H
+#define RESOURCES_DB_PETDB_H
 
 #include "localconsts.h"
 
@@ -36,4 +36,4 @@ namespace PETDB
     BeingInfo *get(const int id) A_WARN_UNUSED;
 }
 
-#endif  // RESOURCES_PETDB_H
+#endif  // RESOURCES_DB_PETDB_H

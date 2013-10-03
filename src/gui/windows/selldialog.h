@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SELLDIALOG_H
-#define GUI_SELLDIALOG_H
+#ifndef GUI_WINDOWS_SELLDIALOG_H
+#define GUI_WINDOWS_SELLDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -144,4 +144,4 @@ class SellDialog final : public Window,
         std::string mNick;
 };
 
-#endif  // GUI_SELLDIALOG_H
+#endif  // GUI_WINDOWS_SELLDIALOG_H

@@ -221,7 +221,8 @@ class Map final : public Properties, public ConfigListener
         /**
          * Get tile reference.
          */
-        const MetaTile *getMetaTile(const int x, const int y) const A_WARN_UNUSED;
+        const MetaTile *getMetaTile(const int x,
+                                    const int y) const A_WARN_UNUSED;
 
         /**
          * Marks a tile as occupied.

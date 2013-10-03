@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_CHANGEEMAILDIALOG_H
-#define GUI_CHANGEEMAILDIALOG_H
+#ifndef GUI_WINDOWS_CHANGEEMAILDIALOG_H
+#define GUI_WINDOWS_CHANGEEMAILDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -77,4 +77,4 @@ class ChangeEmailDialog final : public Window, public gcn::ActionListener
         LoginData *mLoginData;
 };
 
-#endif  // GUI_CHANGEEMAILDIALOG_H
+#endif  // GUI_WINDOWS_CHANGEEMAILDIALOG_H

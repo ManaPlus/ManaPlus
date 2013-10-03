@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_QUESTSWINDOW_H
-#define GUI_QUESTSWINDOW_H
+#ifndef GUI_WINDOWS_QUESTSWINDOW_H
+#define GUI_WINDOWS_QUESTSWINDOW_H
 
 #include "localconsts.h"
 
@@ -103,4 +103,4 @@ class QuestsWindow final : public Window,
 
 extern QuestsWindow *questsWindow;
 
-#endif  // GUI_QUESTSWINDOW_H
+#endif  // GUI_WINDOWS_QUESTSWINDOW_H

@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SETUP_VISUAL_H
-#define GUI_SETUP_VISUAL_H
+#ifndef GUI_WIDGETS_TABS_SETUP_VISUAL_H
+#define GUI_WIDGETS_TABS_SETUP_VISUAL_H
 
 #include "gui/widgets/setupitem.h"
 
@@ -45,4 +45,4 @@ class Setup_Visual final : public SetupTabScroll
         NamesModel *mVSyncList;
 };
 
-#endif  // GUI_SETUP_VISUAL_H
+#endif  // GUI_WIDGETS_TABS_SETUP_VISUAL_H

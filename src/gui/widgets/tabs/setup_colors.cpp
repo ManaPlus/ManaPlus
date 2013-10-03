@@ -21,7 +21,6 @@
 
 #include "gui/widgets/tabs/setup_colors.h"
 
-#include "gui/gui.h"
 #include "gui/sdlfont.h"
 #include "gui/userpalette.h"
 

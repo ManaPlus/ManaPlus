@@ -41,7 +41,6 @@
 #include "resources/iteminfo.h"
 
 #include "resources/db/chardb.h"
-#include "resources/db/colordb.h"
 #include "resources/db/itemdb.h"
 
 #include "utils/gettext.h"

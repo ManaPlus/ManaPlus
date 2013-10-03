@@ -506,8 +506,8 @@ Position LocalPlayer::getNextWalkPosition(const unsigned char dir) const
             }
             else  // The diagonal is walkable
             {
-                return mMap->checkNodeOffsets(radius,
-                    walkMask, Position(posX + mapTileSize, posY - mapTileSize));
+                return mMap->checkNodeOffsets(radius, walkMask,
+                    Position(posX + mapTileSize, posY - mapTileSize));
             }
         }
 

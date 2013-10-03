@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SOCIALWINDOW_H
-#define GUI_SOCIALWINDOW_H
+#ifndef GUI_WINDOWS_SOCIALWINDOW_H
+#define GUI_WINDOWS_SOCIALWINDOW_H
 
 #include "gui/widgets/window.h"
 
@@ -167,4 +167,4 @@ protected:
 
 extern SocialWindow *socialWindow;
 
-#endif  // GUI_SOCIALWINDOW_H
+#endif  // GUI_WINDOWS_SOCIALWINDOW_H

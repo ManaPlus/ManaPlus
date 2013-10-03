@@ -22,8 +22,6 @@
 
 #include "gui/widgets/tabs/setup_theme.h"
 
-#include "gui/gui.h"
-
 #include "gui/windows/okdialog.h"
 
 #include "gui/widgets/button.h"

@@ -24,7 +24,6 @@
 #include "being/being.h"
 #include "being/playerrelations.h"
 
-#include "gui/gui.h"
 #include "gui/sdlfont.h"
 
 #include "gui/widgets/label.h"

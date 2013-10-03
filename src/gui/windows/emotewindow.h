@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_EMOTEWINDOW_H
-#define GUI_EMOTEWINDOW_H
+#ifndef GUI_WINDOWS_EMOTEWINDOW_H
+#define GUI_WINDOWS_EMOTEWINDOW_H
 
 #include "gui/widgets/window.h"
 
@@ -77,4 +77,4 @@ class EmoteWindow final : public Window
 
 extern EmoteWindow *emoteWindow;
 
-#endif  // GUI_EMOTEWINDOW_H
+#endif  // GUI_WINDOWS_EMOTEWINDOW_H

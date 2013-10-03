@@ -322,7 +322,8 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Returns a pointer to the specified guild that the being is in.
          */
-        const Guild *getGuild(const std::string &guildName) const A_WARN_UNUSED;
+        const Guild *getGuild(const std::string &guildName)
+                              const A_WARN_UNUSED;
 
         /**
          * Returns a pointer to the specified guild that the being is in.

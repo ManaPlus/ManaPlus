@@ -26,7 +26,6 @@
 
 #include "being/localplayer.h"
 
-#include "gui/gui.h"
 #include "gui/sdlfont.h"
 
 #include "gui/widgets/browserbox.h"

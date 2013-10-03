@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_TEXTCOMMANDEDITOR_H
-#define GUI_TEXTCOMMANDEDITOR_H
+#ifndef GUI_WINDOWS_TEXTCOMMANDEDITOR_H
+#define GUI_WINDOWS_TEXTCOMMANDEDITOR_H
 
 #include "gui/widgets/window.h"
 
@@ -100,4 +100,4 @@ class TextCommandEditor final : public Window, public gcn::ActionListener
         bool mEnabledKeyboard;
 };
 
-#endif  // GUI_TEXTCOMMANDEDITOR_H
+#endif  // GUI_WINDOWS_TEXTCOMMANDEDITOR_H

@@ -21,8 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_ITEMPOPUP_H
-#define GUI_ITEMPOPUP_H
+#ifndef GUI_POPUPS_ITEMPOPUP_H
+#define GUI_POPUPS_ITEMPOPUP_H
 
 #include "gui/widgets/popup.h"
 
@@ -73,4 +73,4 @@ class ItemPopup final : public Popup
         void setLabelColor(Label *label, const ItemType type) const;
 };
 
-#endif  // GUI_ITEMPOPUP_H
+#endif  // GUI_POPUPS_ITEMPOPUP_H

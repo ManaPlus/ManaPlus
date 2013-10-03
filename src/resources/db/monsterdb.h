@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_MONSTERDB_H
-#define RESOURCES_MONSTERDB_H
+#ifndef RESOURCES_DB_MONSTERDB_H
+#define RESOURCES_DB_MONSTERDB_H
 
 #include "localconsts.h"
 
@@ -43,4 +43,4 @@ namespace MonsterDB
     BeingInfo *get(const int id) A_WARN_UNUSED;
 }
 
-#endif  // RESOURCES_MONSTERDB_H
+#endif  // RESOURCES_DB_MONSTERDB_H

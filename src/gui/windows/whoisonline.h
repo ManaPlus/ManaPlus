@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WHOISONLINE_H
-#define GUI_WHOISONLINE_H
+#ifndef GUI_WINDOWS_WHOISONLINE_H
+#define GUI_WINDOWS_WHOISONLINE_H
 
 #include "configlistener.h"
 
@@ -220,4 +220,4 @@ private:
 
 extern WhoIsOnline *whoIsOnline;
 
-#endif  // GUI_WHOISONLINE_H
+#endif  // GUI_WINDOWS_WHOISONLINE_H

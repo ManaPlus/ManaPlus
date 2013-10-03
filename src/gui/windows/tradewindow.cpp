@@ -31,7 +31,6 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "gui/gui.h"
 #include "gui/sdlfont.h"
 
 #include "gui/windows/inventorywindow.h"

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_TEXTDIALOG_H
-#define GUI_TEXTDIALOG_H
+#ifndef GUI_WINDOWS_TEXTDIALOG_H
+#define GUI_WINDOWS_TEXTDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -77,4 +77,4 @@ private:
     bool mEnabledKeyboard;
 };
 
-#endif  // GUI_TEXTDIALOG_H
+#endif  // GUI_WINDOWS_TEXTDIALOG_H

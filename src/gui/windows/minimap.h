@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_MINIMAP_H
-#define GUI_MINIMAP_H
+#ifndef GUI_WINDOWS_MINIMAP_H
+#define GUI_WINDOWS_MINIMAP_H
 
 #include "gui/widgets/window.h"
 
@@ -86,4 +86,4 @@ class Minimap final : public Window, public ConfigListener
 
 extern Minimap *minimap;
 
-#endif  // GUI_MINIMAP_H
+#endif  // GUI_WINDOWS_MINIMAP_H

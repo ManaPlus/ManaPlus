@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_MAPDB_H
-#define RESOURCES_MAPDB_H
+#ifndef RESOURCES_DB_MAPDB_H
+#define RESOURCES_DB_MAPDB_H
 
 #include "utils/stringvector.h"
 
@@ -75,4 +75,4 @@ namespace MapDB
     typedef Atlases::const_iterator AtlasCIter;
 }  // namespace MapDB
 
-#endif  // RESOURCES_MAPDB_H
+#endif  // RESOURCES_DB_MAPDB_H

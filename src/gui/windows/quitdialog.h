@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_QUITDIALOG_H
-#define GUI_QUITDIALOG_H
+#ifndef GUI_WINDOWS_QUITDIALOG_H
+#define GUI_WINDOWS_QUITDIALOG_H
 
 #include "gui/widgets/window.h"
 
@@ -80,4 +80,4 @@ class QuitDialog final : public Window, public gcn::ActionListener,
         bool mNeedForceQuit;
 };
 
-#endif  // GUI_QUITDIALOG_H
+#endif  // GUI_WINDOWS_QUITDIALOG_H

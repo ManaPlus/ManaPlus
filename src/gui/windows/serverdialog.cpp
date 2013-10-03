@@ -30,7 +30,6 @@
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
-#include "gui/gui.h"
 #include "gui/sdlfont.h"
 
 #include "gui/windows/editserverdialog.h"

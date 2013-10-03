@@ -110,16 +110,16 @@ class AnimatedSprite final : public Sprite
         SpriteDef *getSprite()
         { return mSprite; }
 
-        Frame *getFrame()
+        const Frame *getFrame() const
         { return mFrame; }
 
-        Animation *getAnimation()
+        const Animation *getAnimation() const
         { return mAnimation; }
 
-        unsigned int getFrameIndex()
+        unsigned int getFrameIndex() const
         { return mFrameIndex; }
 
-        unsigned int getFrameTime()
+        unsigned int getFrameTime() const
         { return mFrameTime; }
 #endif
 
@@ -135,7 +135,7 @@ class AnimatedSprite final : public Sprite
         unsigned int mFrameTime;       /**< The time since start of frame. */
 
         SpriteDef *mSprite;            /**< The sprite definition. */
-        const Action *mAction;               /**< The currently active action. */
+        const Action *mAction;         /**< The currently active action. */
         const Animation *mAnimation;   /**< The currently active animation. */
         const Frame *mFrame;           /**< The currently active frame. */
         unsigned mNumber;

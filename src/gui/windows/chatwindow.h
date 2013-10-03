@@ -20,14 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_CHATWINDOW_H
-#define GUI_CHATWINDOW_H
+#ifndef GUI_WINDOWS_CHATWINDOW_H
+#define GUI_WINDOWS_CHATWINDOW_H
 
 #include "depricatedlistener.h"
 
 #include "configlistener.h"
-
-#include "utils/stringvector.h"
 
 #include "gui/widgets/window.h"
 
@@ -375,4 +373,4 @@ class ChatWindow final : public Window,
 
 extern ChatWindow *chatWindow;
 
-#endif  // GUI_CHATWINDOW_H
+#endif  // GUI_WINDOWS_CHATWINDOW_H

@@ -2272,7 +2272,8 @@ bool Being::drawSpriteAt(Graphics *const graphics,
         graphics->setColor(userPalette->
                 getColorWithAlpha(UserPalette::PORTAL_HIGHLIGHT));
 
-        graphics->fillRectangle(gcn::Rectangle(x, y, mapTileSize, mapTileSize));
+        graphics->fillRectangle(gcn::Rectangle(x, y,
+            mapTileSize, mapTileSize));
 
         if (mDrawHotKeys && !mName.empty())
         {

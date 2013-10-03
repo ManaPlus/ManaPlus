@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_DEBUGWINDOW_H
-#define GUI_DEBUGWINDOW_H
+#ifndef GUI_WINDOWS_DEBUGWINDOW_H
+#define GUI_WINDOWS_DEBUGWINDOW_H
 
 #include "gui/widgets/container.h"
 #include "gui/widgets/window.h"
@@ -162,4 +162,4 @@ class DebugWindow final : public Window
 
 extern DebugWindow *debugWindow;
 
-#endif  // GUI_DEBUGWINDOW_H
+#endif  // GUI_WINDOWS_DEBUGWINDOW_H

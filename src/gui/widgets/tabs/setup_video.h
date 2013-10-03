@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SETUP_VIDEO_H
-#define GUI_SETUP_VIDEO_H
+#ifndef GUI_WIDGETS_TABS_SETUP_VIDEO_H
+#define GUI_WIDGETS_TABS_SETUP_VIDEO_H
 
 #include "gui/widgets/tabs/setuptab.h"
 
@@ -79,4 +79,4 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
         CheckBox *mNoFrameCheckBox;
 };
 
-#endif  // GUI_SETUP_VIDEO_H
+#endif  // GUI_WIDGETS_TABS_SETUP_VIDEO_H

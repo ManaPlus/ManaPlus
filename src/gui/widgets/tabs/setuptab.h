@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_SETUPTAB_H
-#define GUI_WIDGETS_SETUPTAB_H
+#ifndef GUI_WIDGETS_TABS_SETUPTAB_H
+#define GUI_WIDGETS_TABS_SETUPTAB_H
 
 #include "gui/widgets/container.h"
 
@@ -71,4 +71,4 @@ class SetupTab : public Container,
         std::string mName;
 };
 
-#endif  // GUI_WIDGETS_SETUPTAB_H
+#endif  // GUI_WIDGETS_TABS_SETUPTAB_H

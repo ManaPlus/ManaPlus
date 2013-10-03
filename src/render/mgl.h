@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MGL_H
-#define MGL_H
+#ifndef RENDER_MGL_H
+#define RENDER_MGL_H
 
 #include "main.h"
 #ifdef USE_OPENGL
@@ -133,4 +133,4 @@ defNameE(wglGetExtensionsString);
 #endif
 
 #endif
-#endif  // MGL_H
+#endif  // RENDER_MGL_H

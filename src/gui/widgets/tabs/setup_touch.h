@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SETUP_TOUCH_H
-#define GUI_SETUP_TOUCH_H
+#ifndef GUI_WIDGETS_TABS_SETUP_TOUCH_H
+#define GUI_WIDGETS_TABS_SETUP_TOUCH_H
 
 #include "gui/widgets/setuptouchitem.h"
 
@@ -38,4 +38,4 @@ class Setup_Touch final : public SetupTabScroll
         TouchActionsModel *mActionsList;
 };
 
-#endif  // GUI_SETUP_TOUCH_H
+#endif  // GUI_WIDGETS_TABS_SETUP_TOUCH_H

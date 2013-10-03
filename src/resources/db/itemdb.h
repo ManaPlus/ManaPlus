@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_ITEMDB_H
-#define RESOURCES_ITEMDB_H
+#ifndef RESOURCES_DB_ITEMDB_H
+#define RESOURCES_DB_ITEMDB_H
 
 #include "utils/stringvector.h"
 
@@ -72,4 +72,4 @@ namespace ItemDB
     void setStatsList(const std::vector<Stat> &stats);
 }  // namespace ItemDB
 
-#endif  // RESOURCES_ITEMDB_H
+#endif  // RESOURCES_DB_ITEMDB_H
