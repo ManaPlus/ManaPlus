@@ -39,9 +39,11 @@ namespace
     ItemDB::NamedItemInfos mNamedItemInfos;
     ItemInfo *mUnknown;
     bool mLoaded = false;
+    bool mConstructed = false;
     StringVect mTagNames;
     std::map<std::string, int> mTags;
-}
+    std::map<std::string, SoundEvent> mSoundNames;
+}  // namespace
 
 // Forward declarations
 static void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node);
@@ -159,13 +161,25 @@ static ItemType itemTypeFromString(const std::string &name)
     }
 }
 
+static void initStatic()
+{
+    mConstructed = true;
+    mSoundNames["hit"] = SOUND_EVENT_HIT;
+    mSoundNames["strike"] = SOUND_EVENT_MISS;
+    mSoundNames["miss"] = SOUND_EVENT_MISS;
+}
+
 void ItemDB::load()
 {
     if (mLoaded)
         unload();
 
-    int tagNum = 0;
     logger->log1("Initializing item database...");
+
+    if (!mConstructed)
+        initStatic();
+
+    int tagNum = 0;
 
     mTags.clear();
     mTagNames.clear();
@@ -718,13 +732,11 @@ void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
         node->xmlChildrenNode->content);
     const int delay = XML::getProperty(node, "delay", 0);
 
-    if (event == "hit")
+    const std::map<std::string, SoundEvent>::const_iterator
+        it = mSoundNames.find(event);
+    if (it != mSoundNames.end())
     {
-        itemInfo->addSound(SOUND_EVENT_HIT, filename, delay);
-    }
-    else if (event == "strike" || event == "miss")
-    {
-        itemInfo->addSound(SOUND_EVENT_MISS, filename, delay);
+        itemInfo->addSound((*it).second, filename, delay);
     }
     else
     {
