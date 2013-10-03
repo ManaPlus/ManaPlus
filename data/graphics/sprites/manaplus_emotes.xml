@@ -13,7 +13,7 @@
     <emote id="105"><sprite name="Sleepy" variant="5">manaplus_emote.xml</sprite></emote>
     <emote id="106"><sprite name="u.u" variant="6">manaplus_emote.xml</sprite></emote>
     <emote id="107"><sprite name="-.-'" variant="7">manaplus_emote.xml</sprite></emote>
-    <emote id="108"><sprite name="Suprised" variant="8">manaplus_emote.xml</sprite></emote>
+    <emote id="108"><sprite name="Surprised" variant="8">manaplus_emote.xml</sprite></emote>
     <emote id="109"><sprite name="Dead" variant="9">manaplus_emote.xml</sprite></emote>
     <emote id="110"><sprite name="Look away" variant="10">manaplus_emote.xml</sprite></emote>
     <emote id="111"><sprite name="Sad" variant="11">manaplus_emote.xml</sprite></emote>
