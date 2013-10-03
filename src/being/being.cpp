@@ -1153,7 +1153,7 @@ void Being::setAction(const Action &action, const int attackId)
             currentAction = getSitAction();
             if (mInfo)
             {
-                SoundEvent event;
+                ItemSoundEvent event;
                 if (currentAction == SpriteAction::SITTOP)
                     event = SOUND_EVENT_SITTOP;
                 else

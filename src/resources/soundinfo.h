@@ -21,6 +21,7 @@
 #ifndef RESOURCES_SOUNDINFO_H
 #define RESOURCES_SOUNDINFO_H
 
+#include <map>
 #include <string>
 #include <vector>
 
@@ -39,5 +40,25 @@ struct SoundInfo final
 };
 
 typedef std::vector<SoundInfo> SoundInfoVect;
+
+enum ItemSoundEvent
+{
+    SOUND_EVENT_HIT = 0,
+    SOUND_EVENT_MISS,
+    SOUND_EVENT_HURT,
+    SOUND_EVENT_DIE,
+    SOUND_EVENT_MOVE,
+    SOUND_EVENT_SIT,
+    SOUND_EVENT_SITTOP,
+    SOUND_EVENT_SPAWN,
+    SOUND_EVENT_DROP,
+    SOUND_EVENT_PICKUP,
+    SOUND_EVENT_TAKE,   // take from container
+    SOUND_EVENT_PUT,    // put into container
+    SOUND_EVENT_EQUIP,
+    SOUND_EVENT_UNEQUIP
+};
+
+typedef std::map<ItemSoundEvent, SoundInfoVect*> ItemSoundEvents;
 
 #endif  // RESOURCES_SOUNDINFO_H

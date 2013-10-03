@@ -129,17 +129,17 @@ void ItemInfo::setWaterAttackAction(const std::string &attackAction)
         mWaterAttackAction = attackAction;
 }
 
-void ItemInfo::addSound(const SoundEvent event,
+void ItemInfo::addSound(const ItemSoundEvent event,
                         const std::string &filename, const int delay)
 {
     mSounds[event].push_back(SoundInfo(
         paths.getStringValue("sfx").append(filename), delay));
 }
 
-const SoundInfo &ItemInfo::getSound(const SoundEvent event) const
+const SoundInfo &ItemInfo::getSound(const ItemSoundEvent event) const
 {
     static const SoundInfo empty("", 0);
-    std::map<SoundEvent, SoundInfoVect>::const_iterator i;
+    std::map<ItemSoundEvent, SoundInfoVect>::const_iterator i;
 
     i = mSounds.find(event);
 

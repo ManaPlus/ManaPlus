@@ -104,7 +104,8 @@ void BeingInfo::setTargetCursorSize(const std::string &size)
     }
 }
 
-void BeingInfo::addSound(const SoundEvent event, const std::string &filename,
+void BeingInfo::addSound(const ItemSoundEvent event,
+                         const std::string &filename,
                          const int delay)
 {
     if (mSounds.find(event) == mSounds.end())
@@ -114,11 +115,11 @@ void BeingInfo::addSound(const SoundEvent event, const std::string &filename,
         mSounds[event]->push_back(SoundInfo("sfx/" + filename, delay));
 }
 
-const SoundInfo &BeingInfo::getSound(const SoundEvent event) const
+const SoundInfo &BeingInfo::getSound(const ItemSoundEvent event) const
 {
     static SoundInfo emptySound("", 0);
 
-    const SoundEvents::const_iterator i = mSounds.find(event);
+    const ItemSoundEvents::const_iterator i = mSounds.find(event);
 
     if (i == mSounds.end())
         return emptySound;

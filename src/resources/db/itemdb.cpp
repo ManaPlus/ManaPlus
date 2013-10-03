@@ -42,7 +42,7 @@ namespace
     bool mConstructed = false;
     StringVect mTagNames;
     std::map<std::string, int> mTags;
-    std::map<std::string, SoundEvent> mSoundNames;
+    std::map<std::string, ItemSoundEvent> mSoundNames;
 }  // namespace
 
 // Forward declarations
@@ -732,7 +732,7 @@ void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
         node->xmlChildrenNode->content);
     const int delay = XML::getProperty(node, "delay", 0);
 
-    const std::map<std::string, SoundEvent>::const_iterator
+    const std::map<std::string, ItemSoundEvent>::const_iterator
         it = mSoundNames.find(event);
     if (it != mSoundNames.end())
     {

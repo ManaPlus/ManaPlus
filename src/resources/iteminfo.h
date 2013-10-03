@@ -216,11 +216,11 @@ class ItemInfo final
         void setAttackRange(const int r)
         { mAttackRange = r; }
 
-        void addSound(const SoundEvent event,
+        void addSound(const ItemSoundEvent event,
                       const std::string &filename,
                       const int delay);
 
-        const SoundInfo &getSound(const SoundEvent event)
+        const SoundInfo &getSound(const ItemSoundEvent event)
                                   const A_WARN_UNUSED;
 
         int getDrawBefore(const int direction) const A_WARN_UNUSED;
@@ -345,7 +345,7 @@ class ItemInfo final
         std::map <int, std::string> mAnimationFiles;
 
         /** Stores the names of sounds to be played at certain event. */
-        std::map <SoundEvent, SoundInfoVect> mSounds;
+        std::map <ItemSoundEvent, SoundInfoVect> mSounds;
         std::map <int, int> mTags;
         const std::map <int, ColorDB::ItemColor> *mColors;
         std::string mColorList;

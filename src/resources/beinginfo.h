@@ -63,20 +63,6 @@ struct Attack final
 
 typedef std::map<int, Attack*> Attacks;
 
-enum SoundEvent
-{
-    SOUND_EVENT_HIT = 0,
-    SOUND_EVENT_MISS,
-    SOUND_EVENT_HURT,
-    SOUND_EVENT_DIE,
-    SOUND_EVENT_MOVE,
-    SOUND_EVENT_SIT,
-    SOUND_EVENT_SITTOP,
-    SOUND_EVENT_SPAWN
-};
-
-typedef std::map<SoundEvent, SoundInfoVect*> SoundEvents;
-
 /**
  * Holds information about a certain type of monster. This includes the name
  * of the monster, the sprite to display and the sounds the monster makes.
@@ -125,10 +111,10 @@ class BeingInfo final
         ActorSprite::TargetCursorSize getTargetCursorSize() const A_WARN_UNUSED
         { return mTargetCursorSize; }
 
-        void addSound(const SoundEvent event, const std::string &filename,
+        void addSound(const ItemSoundEvent event, const std::string &filename,
                       const int delay);
 
-        const SoundInfo &getSound(const SoundEvent event)
+        const SoundInfo &getSound(const ItemSoundEvent event)
                                   const A_WARN_UNUSED;
 
         void addAttack(const int id, std::string action, std::string skyAttack,
@@ -251,7 +237,7 @@ class BeingInfo final
         std::string mName;
         ActorSprite::TargetCursorSize mTargetCursorSize;
         Cursor::Cursor mHoverCursor;
-        SoundEvents mSounds;
+        ItemSoundEvents mSounds;
         Attacks mAttacks;
         unsigned char mWalkMask;
         Map::BlockType mBlockType;
