@@ -358,35 +358,11 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
 
     if (eventId == "use")
     {
-        if (item->isEquipment())
-        {
-            if (item->isEquipped())
-                Net::getInventoryHandler()->unequipItem(item);
-            else
-                Net::getInventoryHandler()->equipItem(item);
-        }
-        else
-        {
-            if (PlayerInfo::isItemProtected(item->getId()))
-                return;
-            Net::getInventoryHandler()->useItem(item);
-        }
+        PlayerInfo::useEquipItem(item);
     }
     if (eventId == "equip")
     {
-        if (!item->isEquipment())
-        {
-            if (item->isEquipped())
-                Net::getInventoryHandler()->unequipItem(item);
-            else
-                Net::getInventoryHandler()->equipItem(item);
-        }
-        else
-        {
-            if (PlayerInfo::isItemProtected(item->getId()))
-                return;
-            Net::getInventoryHandler()->useItem(item);
-        }
+        PlayerInfo::useEquipItem2(item);
     }
     else if (eventId == "drop")
     {
@@ -551,15 +527,15 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
                     if (item->isEquipment())
                     {
                         if (item->isEquipped())
-                            Net::getInventoryHandler()->unequipItem(item);
+                            PlayerInfo::unequipItem(item);
                         else
-                            Net::getInventoryHandler()->equipItem(item);
+                            PlayerInfo::equipItem(item);
                     }
                     else
                     {
                         if (PlayerInfo::isItemProtected(item->getId()))
                             return;
-                        Net::getInventoryHandler()->useItem(item);
+                        PlayerInfo::useItem(item);
                     }
                 }
             }

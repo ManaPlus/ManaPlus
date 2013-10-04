@@ -245,6 +245,59 @@ void setEquipmentBackend(Equipment::Backend *const backend)
         mEquipment->setBackend(backend);
 }
 
+void equipItem(const Item *const item)
+{
+    Net::getInventoryHandler()->equipItem(item);
+}
+
+void unequipItem(const Item *const item)
+{
+    Net::getInventoryHandler()->unequipItem(item);
+}
+
+void useItem(const Item *const item)
+{
+    Net::getInventoryHandler()->useItem(item);
+}
+
+void useEquipItem(const Item *const item)
+{
+    if (item)
+    {
+        if (item->isEquipment())
+        {
+            if (item->isEquipped())
+                Net::getInventoryHandler()->unequipItem(item);
+            else
+                Net::getInventoryHandler()->equipItem(item);
+        }
+        else
+        {
+            if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
+                Net::getInventoryHandler()->useItem(item);
+        }
+    }
+}
+
+void useEquipItem2(const Item *const item)
+{
+    if (item)
+    {
+        if (!item->isEquipment())
+        {
+            if (item->isEquipped())
+                Net::getInventoryHandler()->unequipItem(item);
+            else
+                Net::getInventoryHandler()->equipItem(item);
+        }
+        else
+        {
+            if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
+                Net::getInventoryHandler()->useItem(item);
+        }
+    }
+}
+
 // --- Misc -------------------------------------------------------------------
 
 void setBackend(const PlayerInfoBackend &backend)

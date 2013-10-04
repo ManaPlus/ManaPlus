@@ -1012,21 +1012,7 @@ void PopupMenu::handleLink(const std::string &link,
             if (inv)
             {
                 const Item *const item = inv->findItem(mItemId, mItemColor);
-                if (item)
-                {
-                    if (item->isEquipment())
-                    {
-                        if (item->isEquipped())
-                            Net::getInventoryHandler()->unequipItem(item);
-                        else
-                            Net::getInventoryHandler()->equipItem(item);
-                    }
-                    else
-                    {
-                        if (!PlayerInfo::isItemProtected(item->getId()))
-                            Net::getInventoryHandler()->useItem(item);
-                    }
-                }
+                PlayerInfo::useEquipItem(item);
             }
         }
         else if (mItemId < SKILL_MIN_ID && spellManager)

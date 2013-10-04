@@ -226,9 +226,6 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg) const
     {
         case 0:
             // Successfully added item
-            if (item->isEquipment() && item->isEquipped())
-                Net::getInventoryHandler()->unequipItem(item);
-
             if (tradeWindow)
             {
                 tradeWindow->addItem2(item->getId(), true,

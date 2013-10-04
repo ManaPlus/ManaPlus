@@ -133,20 +133,7 @@ void ItemShortcut::useItem(const int index) const
         {
             const Item *const item = inv->findItem(itemId, itemColor);
             if (item && item->getQuantity())
-            {
-                if (item->isEquipment())
-                {
-                    if (item->isEquipped())
-                        Net::getInventoryHandler()->unequipItem(item);
-                    else
-                        Net::getInventoryHandler()->equipItem(item);
-                }
-                else
-                {
-                    if (!PlayerInfo::isItemProtected(item->getId()))
-                        Net::getInventoryHandler()->useItem(item);
-                }
-            }
+                PlayerInfo::useEquipItem(item);
         }
         else if (itemId < SKILL_MIN_ID && spellManager)
         {
@@ -174,7 +161,7 @@ void ItemShortcut::equipItem(const int index) const
             if (item->isEquipment())
             {
                 if (!item->isEquipped())
-                    Net::getInventoryHandler()->equipItem(item);
+                    PlayerInfo::equipItem(item);
             }
         }
     }
@@ -194,7 +181,7 @@ void ItemShortcut::unequipItem(const int index) const
             if (item->isEquipment())
             {
                 if (item->isEquipped())
-                    Net::getInventoryHandler()->unequipItem(item);
+                    PlayerInfo::unequipItem(item);
             }
         }
     }

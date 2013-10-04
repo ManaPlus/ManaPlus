@@ -257,7 +257,7 @@ void EquipmentWindow::action(const gcn::ActionEvent &event)
     if (event.getId() == "unequip" && mSelected > -1)
     {
         const Item *const item = mEquipment->getEquipment(mSelected);
-        Net::getInventoryHandler()->unequipItem(item);
+        PlayerInfo::unequipItem(item);
         setSelected(-1);
     }
 }
@@ -377,7 +377,7 @@ void EquipmentWindow::mouseReleased(gcn::MouseEvent &mouseEvent)
         if (item->isEquipment())
         {
             if (!item->isEquipped())
-                Net::getInventoryHandler()->equipItem(item);
+                PlayerInfo::equipItem(item);
         }
     }
     else if (dragDrop.getSource() == DRAGDROP_SOURCE_EQUIPMENT)
@@ -401,7 +401,7 @@ void EquipmentWindow::mouseReleased(gcn::MouseEvent &mouseEvent)
             }
 
             if (item->isEquipped())
-                Net::getInventoryHandler()->unequipItem(item);
+                PlayerInfo::unequipItem(item);
         }
     }
     dragDrop.clear();

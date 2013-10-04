@@ -255,6 +255,16 @@ namespace PlayerInfo
 
     void setEquipmentBackend(Equipment::Backend *const backend);
 
+    void equipItem(const Item *const item);
+
+    void unequipItem(const Item *const item);
+
+    void useItem(const Item *const item);
+
+    void useEquipItem(const Item *const item);
+
+    void useEquipItem2(const Item *const item);
+
     void protectItem(const int id);
 
     void unprotectItem(const int id);

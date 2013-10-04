@@ -279,7 +279,7 @@ void OutfitWindow::wearOutfit(const int outfit, const bool unwearEmpty,
         {
             if (item->isEquipment())
             {
-                Net::getInventoryHandler()->equipItem(item);
+                PlayerInfo::equipItem(item);
                 isEmpty = false;
             }
         }
@@ -522,7 +522,7 @@ void OutfitWindow::unequipNotInOutfit(const int outfit) const
                 }
             }
             if (!found)
-                Net::getInventoryHandler()->unequipItem(item);
+                PlayerInfo::unequipItem(item);
         }
     }
 }
