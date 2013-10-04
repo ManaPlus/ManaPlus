@@ -258,19 +258,19 @@ namespace PlayerInfo
 
     void setEquipmentBackend(Equipment::Backend *const backend);
 
-    void equipItem(const Item *const item, bool sfx);
+    void equipItem(const Item *const item, const bool sfx);
 
-    void unequipItem(const Item *const item, bool sfx);
+    void unequipItem(const Item *const item, const bool sfx);
 
-    void useItem(const Item *const item, bool sfx);
+    void useItem(const Item *const item, const bool sfx);
 
-    void useEquipItem(const Item *const item, bool sfx);
+    void useEquipItem(const Item *const item, const bool sfx);
 
-    void useEquipItem2(const Item *const item, bool sfx);
+    void useEquipItem2(const Item *const item, const bool sfx);
 
-    void dropItem(const Item *const item, const int amount, bool sfx);
+    void dropItem(const Item *const item, const int amount, const bool sfx);
 
-    void pickUpItem(const FloorItem *const item, bool sfx);
+    void pickUpItem(const FloorItem *const item, const bool sfx);
 
     void protectItem(const int id);
 

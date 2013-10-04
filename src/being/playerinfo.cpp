@@ -247,28 +247,28 @@ void setEquipmentBackend(Equipment::Backend *const backend)
         mEquipment->setBackend(backend);
 }
 
-void equipItem(const Item *const item, bool sfx)
+void equipItem(const Item *const item, const bool sfx)
 {
     if (sfx)
         ItemSoundManager::playSfx(item, SOUND_EVENT_EQUIP);
     Net::getInventoryHandler()->equipItem(item);
 }
 
-void unequipItem(const Item *const item, bool sfx)
+void unequipItem(const Item *const item, const bool sfx)
 {
     if (sfx)
         ItemSoundManager::playSfx(item, SOUND_EVENT_UNEQUIP);
     Net::getInventoryHandler()->unequipItem(item);
 }
 
-void useItem(const Item *const item, bool sfx)
+void useItem(const Item *const item, const bool sfx)
 {
     if (sfx)
         ItemSoundManager::playSfx(item, SOUND_EVENT_USE);
     Net::getInventoryHandler()->useItem(item);
 }
 
-void useEquipItem(const Item *const item, bool sfx)
+void useEquipItem(const Item *const item, const bool sfx)
 {
     if (item)
     {
@@ -299,7 +299,7 @@ void useEquipItem(const Item *const item, bool sfx)
     }
 }
 
-void useEquipItem2(const Item *const item, bool sfx)
+void useEquipItem2(const Item *const item, const bool sfx)
 {
     if (item)
     {
@@ -330,7 +330,7 @@ void useEquipItem2(const Item *const item, bool sfx)
     }
 }
 
-void dropItem(const Item *const item, const int amount, bool sfx)
+void dropItem(const Item *const item, const int amount, const bool sfx)
 {
     if (item && mProtectedItems.find(item->getId()) == mProtectedItems.end())
     {
@@ -340,7 +340,7 @@ void dropItem(const Item *const item, const int amount, bool sfx)
     }
 }
 
-void pickUpItem(const FloorItem *const item, bool sfx)
+void pickUpItem(const FloorItem *const item, const bool sfx)
 {
     if (sfx)
         ItemSoundManager::playSfx(item, SOUND_EVENT_PICKUP);
