@@ -528,6 +528,7 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
         }
         int srcContainer = -1;
         int dstContainer = -1;
+        bool checkProtection(false);
         Inventory *inventory = nullptr;
         if (src == DRAGDROP_SOURCE_INVENTORY
             && dst == DRAGDROP_SOURCE_STORAGE)
@@ -546,6 +547,7 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
         if (src == DRAGDROP_SOURCE_INVENTORY
             && dst == DRAGDROP_SOURCE_TRADE)
         {
+            checkProtection = true;
             inventory = PlayerInfo::getInventory();
         }
         else if (src == DRAGDROP_SOURCE_INVENTORY
@@ -553,7 +555,7 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
         {
             inventory = PlayerInfo::getInventory();
             const Item *const item = inventory->getItem(dragDrop.getTag());
-            if (item)
+            if (item && !PlayerInfo::isItemProtected(item->getId()))
                 mInventory->addItem(item->getId(), 1, 1, item->getColor());
             return;
         }
@@ -579,7 +581,12 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
                 }
                 else
                 {   // inventory --> trade
-                    Net::getTradeHandler()->addItem(item, item->getQuantity());
+                    if (!checkProtection || !PlayerInfo::isItemProtected(
+                        item->getId()))
+                    {
+                        Net::getTradeHandler()->addItem(item,
+                            item->getQuantity());
+                    }
                 }
             }
         }
