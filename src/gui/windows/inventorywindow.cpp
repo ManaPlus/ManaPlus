@@ -366,9 +366,6 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "drop")
     {
-        if (PlayerInfo::isItemProtected(item->getId()))
-            return;
-
         if (isStorageActive())
         {
             Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
@@ -377,6 +374,9 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
         }
         else
         {
+            if (PlayerInfo::isItemProtected(item->getId()))
+                return;
+
             if (inputManager.isActionActive(static_cast<int>(Input::KEY_MOD)))
             {
                 PlayerInfo::dropItem(item, item->getQuantity(), true);
