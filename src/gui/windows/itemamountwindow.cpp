@@ -25,6 +25,8 @@
 #include "inventory.h"
 #include "item.h"
 
+#include "being/playerinfo.h"
+
 #include "input/keyboardconfig.h"
 
 #include "net/inventoryhandler.h"
@@ -109,7 +111,7 @@ void ItemAmountWindow::finish(Item *const item, const int amount,
                 tradeWindow->tradeItem(item, amount);
             break;
         case ItemDrop:
-            Net::getInventoryHandler()->dropItem(item, amount);
+            PlayerInfo::dropItem(item, amount, true);
             break;
         case ItemSplit:
             Net::getInventoryHandler()->splitItem(item, amount);

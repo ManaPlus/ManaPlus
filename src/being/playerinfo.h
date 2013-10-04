@@ -61,6 +61,7 @@ struct PlayerInfoBackend final
     IntMap mSkills;
 };
 
+class FloorItem;
 class Inventory;
 class Item;
 
@@ -266,6 +267,10 @@ namespace PlayerInfo
     void useEquipItem(const Item *const item, bool sfx);
 
     void useEquipItem2(const Item *const item, bool sfx);
+
+    void dropItem(const Item *const item, const int amount, bool sfx);
+
+    void pickUpItem(const FloorItem *const item, bool sfx);
 
     void protectItem(const int id);
 

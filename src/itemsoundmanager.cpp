@@ -20,6 +20,7 @@
 
 #include "itemsoundmanager.h"
 
+#include "flooritem.h"
 #include "item.h"
 #include "logger.h"
 #include "soundmanager.h"
@@ -38,6 +39,23 @@ void ItemSoundManager::playSfx(const Item *const item,
     if (!item)
         return;
     const ItemInfo &info = ItemDB::get(item->getId());
+    std::string sfx = info.getSound(sound).sound;
+    if (sfx.empty())
+    {
+        // fallback to player race sound if no item sound.
+        const int id = -100 - player_node->getSubType();
+        const ItemInfo &info2 = ItemDB::get(id);
+        sfx = info2.getSound(sound).sound;
+    }
+    soundManager.playGuiSfx(sfx);
+}
+
+void ItemSoundManager::playSfx(const FloorItem *const item,
+                               const ItemSoundEvent sound)
+{
+    if (!item)
+        return;
+    const ItemInfo &info = ItemDB::get(item->getItemId());
     std::string sfx = info.getSound(sound).sound;
     if (sfx.empty())
     {

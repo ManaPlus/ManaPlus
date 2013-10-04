@@ -25,6 +25,7 @@
 
 #include "localconsts.h"
 
+class FloorItem;
 class Item;
 
 class ItemSoundManager final
@@ -33,6 +34,9 @@ class ItemSoundManager final
         A_DELETE_COPY(ItemSoundManager)
 
         static void playSfx(const Item *const item,
+                            const ItemSoundEvent sound);
+
+        static void playSfx(const FloorItem *const item,
                             const ItemSoundEvent sound);
 };
 

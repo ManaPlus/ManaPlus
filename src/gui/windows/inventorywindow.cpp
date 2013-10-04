@@ -379,8 +379,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
         {
             if (inputManager.isActionActive(static_cast<int>(Input::KEY_MOD)))
             {
-                Net::getInventoryHandler()->dropItem(
-                    item, item->getQuantity());
+                PlayerInfo::dropItem(item, item->getQuantity(), true);
             }
             else
             {

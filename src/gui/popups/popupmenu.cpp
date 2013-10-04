@@ -1122,8 +1122,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "drop all" && mItem)
     {
-        if (!PlayerInfo::isItemProtected(mItem->getId()))
-            Net::getInventoryHandler()->dropItem(mItem, mItem->getQuantity());
+        PlayerInfo::dropItem(mItem, mItem->getQuantity(), true);
     }
     else if (link == "store" && mItem)
     {

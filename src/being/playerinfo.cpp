@@ -24,6 +24,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "depricatedevent.h"
+#include "flooritem.h"
 #include "inventory.h"
 #include "itemsoundmanager.h"
 
@@ -321,12 +322,29 @@ void useEquipItem2(const Item *const item, bool sfx)
         {
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
             {
-                Net::getInventoryHandler()->useItem(item);
                 if (sfx)
                     ItemSoundManager::playSfx(item, SOUND_EVENT_USE);
+                Net::getInventoryHandler()->useItem(item);
             }
         }
     }
+}
+
+void dropItem(const Item *const item, const int amount, bool sfx)
+{
+    if (item && mProtectedItems.find(item->getId()) == mProtectedItems.end())
+    {
+        if (sfx)
+            ItemSoundManager::playSfx(item, SOUND_EVENT_DROP);
+        Net::getInventoryHandler()->dropItem(item, amount);
+    }
+}
+
+void pickUpItem(const FloorItem *const item, bool sfx)
+{
+    if (sfx)
+        ItemSoundManager::playSfx(item, SOUND_EVENT_PICKUP);
+    Net::getPlayerHandler()->pickUp(item);
 }
 
 // --- Misc -------------------------------------------------------------------

@@ -898,7 +898,7 @@ bool LocalPlayer::pickUp(FloorItem *const item)
     {
         if (actorSpriteManager && actorSpriteManager->checkForPickup(item))
         {
-            Net::getPlayerHandler()->pickUp(item);
+            PlayerInfo::pickUpItem(item, true);
             mPickUpTarget = nullptr;
         }
     }
