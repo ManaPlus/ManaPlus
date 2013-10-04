@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "depricatedevent.h"
 #include "inventory.h"
+#include "itemsoundmanager.h"
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/npcdialog.h"
@@ -245,55 +246,85 @@ void setEquipmentBackend(Equipment::Backend *const backend)
         mEquipment->setBackend(backend);
 }
 
-void equipItem(const Item *const item)
+void equipItem(const Item *const item, bool sfx)
 {
+    if (sfx)
+        ItemSoundManager::playSfx(item, SOUND_EVENT_EQUIP);
     Net::getInventoryHandler()->equipItem(item);
 }
 
-void unequipItem(const Item *const item)
+void unequipItem(const Item *const item, bool sfx)
 {
+    if (sfx)
+        ItemSoundManager::playSfx(item, SOUND_EVENT_UNEQUIP);
     Net::getInventoryHandler()->unequipItem(item);
 }
 
-void useItem(const Item *const item)
+void useItem(const Item *const item, bool sfx)
 {
+    if (sfx)
+        ItemSoundManager::playSfx(item, SOUND_EVENT_USE);
     Net::getInventoryHandler()->useItem(item);
 }
 
-void useEquipItem(const Item *const item)
+void useEquipItem(const Item *const item, bool sfx)
 {
     if (item)
     {
         if (item->isEquipment())
         {
             if (item->isEquipped())
+            {
+                if (sfx)
+                    ItemSoundManager::playSfx(item, SOUND_EVENT_UNEQUIP);
                 Net::getInventoryHandler()->unequipItem(item);
+            }
             else
+            {
+                if (sfx)
+                    ItemSoundManager::playSfx(item, SOUND_EVENT_EQUIP);
                 Net::getInventoryHandler()->equipItem(item);
+            }
         }
         else
         {
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
+            {
                 Net::getInventoryHandler()->useItem(item);
+                if (sfx)
+                    ItemSoundManager::playSfx(item, SOUND_EVENT_USE);
+            }
         }
     }
 }
 
-void useEquipItem2(const Item *const item)
+void useEquipItem2(const Item *const item, bool sfx)
 {
     if (item)
     {
         if (!item->isEquipment())
         {
             if (item->isEquipped())
+            {
+                if (sfx)
+                    ItemSoundManager::playSfx(item, SOUND_EVENT_UNEQUIP);
                 Net::getInventoryHandler()->unequipItem(item);
+            }
             else
+            {
+                if (sfx)
+                    ItemSoundManager::playSfx(item, SOUND_EVENT_EQUIP);
                 Net::getInventoryHandler()->equipItem(item);
+            }
         }
         else
         {
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
+            {
                 Net::getInventoryHandler()->useItem(item);
+                if (sfx)
+                    ItemSoundManager::playSfx(item, SOUND_EVENT_USE);
+            }
         }
     }
 }

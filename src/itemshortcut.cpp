@@ -133,7 +133,7 @@ void ItemShortcut::useItem(const int index) const
         {
             const Item *const item = inv->findItem(itemId, itemColor);
             if (item && item->getQuantity())
-                PlayerInfo::useEquipItem(item);
+                PlayerInfo::useEquipItem(item, true);
         }
         else if (itemId < SKILL_MIN_ID && spellManager)
         {
@@ -161,7 +161,7 @@ void ItemShortcut::equipItem(const int index) const
             if (item->isEquipment())
             {
                 if (!item->isEquipped())
-                    PlayerInfo::equipItem(item);
+                    PlayerInfo::equipItem(item, true);
             }
         }
     }
@@ -181,7 +181,7 @@ void ItemShortcut::unequipItem(const int index) const
             if (item->isEquipment())
             {
                 if (item->isEquipped())
-                    PlayerInfo::unequipItem(item);
+                    PlayerInfo::unequipItem(item, true);
             }
         }
     }

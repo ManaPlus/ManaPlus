@@ -622,6 +622,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      depricatedlistener.cpp \
 	      depricatedlistener.h \
 	      dragdrop.h \
+	      dropshortcut.cpp \
+	      dropshortcut.h \
 	      effectmanager.cpp \
 	      effectmanager.h \
 	      emoteshortcut.cpp \
@@ -651,8 +653,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      item.h \
 	      itemshortcut.cpp \
 	      itemshortcut.h \
-	      dropshortcut.cpp \
-	      dropshortcut.h \
+	      itemsoundmanager.cpp \
+	      itemsoundmanager.h \
 	      spellshortcut.cpp \
 	      spellshortcut.h \
 	      textcommand.cpp \

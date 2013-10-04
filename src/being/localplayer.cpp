@@ -2349,7 +2349,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
 
         // if sword not equiped
         if (!item->isEquipped())
-            PlayerInfo::equipItem(item);
+            PlayerInfo::equipItem(item, true);
 
         // if need equip shield too
         if (mAttackWeaponType == 3)
@@ -2359,7 +2359,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
             if (!item)
                 item = inv->findItem(602, 0);
             if (item && !item->isEquipped())
-                PlayerInfo::equipItem(item);
+                PlayerInfo::equipItem(item, true);
         }
     }
     // big distance. allowed only bow
@@ -2376,7 +2376,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
             return;
 
         if (!item->isEquipped())
-            PlayerInfo::equipItem(item);
+            PlayerInfo::equipItem(item, true);
     }
 }
 
@@ -3981,7 +3981,7 @@ void LocalPlayer::imitateOutfit(Being *const player, const int sprite) const
             const Item *const item = inv->findItemBySprite(path,
                 player->getGender(), player->getSubType());
             if (item && !item->isEquipped())
-                PlayerInfo::equipItem(item);
+                PlayerInfo::equipItem(item, false);
         }
         else
         {
@@ -3996,7 +3996,7 @@ void LocalPlayer::imitateOutfit(Being *const player, const int sprite) const
             if (item)
             {
 //                logger->log("unequiping");
-                PlayerInfo::unequipItem(item);
+                PlayerInfo::unequipItem(item, false);
             }
         }
     }

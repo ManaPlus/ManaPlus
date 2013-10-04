@@ -1012,7 +1012,7 @@ void PopupMenu::handleLink(const std::string &link,
             if (inv)
             {
                 const Item *const item = inv->findItem(mItemId, mItemColor);
-                PlayerInfo::useEquipItem(item);
+                PlayerInfo::useEquipItem(item, true);
             }
         }
         else if (mItemId < SKILL_MIN_ID && spellManager)

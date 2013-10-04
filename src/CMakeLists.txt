@@ -638,6 +638,8 @@ SET(SRCS
     item.h
     itemshortcut.cpp
     itemshortcut.h
+    itemsoundmanager.cpp
+    itemsoundmanager.h
     dropshortcut.cpp
     dropshortcut.h
     spellshortcut.cpp

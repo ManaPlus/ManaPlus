@@ -56,7 +56,8 @@ enum ItemSoundEvent
     SOUND_EVENT_TAKE,   // take from container
     SOUND_EVENT_PUT,    // put into container
     SOUND_EVENT_EQUIP,
-    SOUND_EVENT_UNEQUIP
+    SOUND_EVENT_UNEQUIP,
+    SOUND_EVENT_USE
 };
 
 typedef std::map<ItemSoundEvent, SoundInfoVect*> ItemSoundEvents;

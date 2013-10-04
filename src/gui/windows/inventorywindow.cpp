@@ -358,11 +358,11 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
 
     if (eventId == "use")
     {
-        PlayerInfo::useEquipItem(item);
+        PlayerInfo::useEquipItem(item, true);
     }
     if (eventId == "equip")
     {
-        PlayerInfo::useEquipItem2(item);
+        PlayerInfo::useEquipItem2(item, true);
     }
     else if (eventId == "drop")
     {
@@ -524,19 +524,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
                 }
                 else
                 {
-                    if (item->isEquipment())
-                    {
-                        if (item->isEquipped())
-                            PlayerInfo::unequipItem(item);
-                        else
-                            PlayerInfo::equipItem(item);
-                    }
-                    else
-                    {
-                        if (PlayerInfo::isItemProtected(item->getId()))
-                            return;
-                        PlayerInfo::useItem(item);
-                    }
+                    PlayerInfo::useEquipItem(item, true);
                 }
             }
             else
