@@ -347,6 +347,7 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
                     viewport->showUndressPopup(mx, my, mBeing, item);
                 else
                     viewport->showPopup(this, mx, my, item, true);
+                return;
             }
         }
     }
