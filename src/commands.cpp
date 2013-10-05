@@ -1243,6 +1243,7 @@ impHandler0(createItems)
             }
         }
     }
+    dialog->sort();
 }
 
 impHandler0(testsdlfont)

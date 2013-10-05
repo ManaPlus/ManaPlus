@@ -120,6 +120,8 @@ class BuyDialog final : public Window,
          */
         void setVisible(bool visible);
 
+        void sort();
+
         /**
          * Returns true if any instances exist.
          */

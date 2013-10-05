@@ -22,6 +22,7 @@
 
 #include "gui/windows/buydialog.h"
 
+#include "configuration.h"
 #include "shopitem.h"
 #include "units.h"
 
@@ -314,6 +315,9 @@ void BuyDialog::init()
 
     instances.push_back(this);
     setVisible(true);
+
+    if (mSortDropDown)
+        mSortDropDown->setSelected(config.getIntValue("buySortOrder"));
 }
 
 BuyDialog::~BuyDialog()
@@ -351,6 +355,38 @@ void BuyDialog::addItem(const int id, const unsigned char color,
     mShopItemList->adjustSize();
 }
 
+void BuyDialog::sort()
+{
+    if (mSortDropDown && mShopItems)
+    {
+        std::vector<ShopItem*> &items = mShopItems->items();
+        switch (mSortDropDown->getSelected())
+        {
+            case 1:
+                std::sort(items.begin(), items.end(), itemPriceBuySorter);
+            break;
+            case 2:
+                std::sort(items.begin(), items.end(), itemNameBuySorter);
+                break;
+            case 3:
+                std::sort(items.begin(), items.end(), itemIdBuySorter);
+                break;
+            case 4:
+                std::sort(items.begin(), items.end(), itemWeightBuySorter);
+                break;
+            case 5:
+                std::sort(items.begin(), items.end(), itemAmountBuySorter);
+                break;
+            case 6:
+                std::sort(items.begin(), items.end(), itemTypeBuySorter);
+                break;
+            case 0:
+            default:
+                break;
+        }
+    }
+}
+
 void BuyDialog::action(const gcn::ActionEvent &event)
 {
     const std::string &eventId = event.getId();
@@ -361,34 +397,9 @@ void BuyDialog::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "sort")
     {
-        if (mSortDropDown && mShopItems)
-        {
-            std::vector<ShopItem*> &items = mShopItems->items();
-            switch (mSortDropDown->getSelected())
-            {
-                case 1:
-                    std::sort(items.begin(), items.end(), itemPriceBuySorter);
-                    break;
-                case 2:
-                    std::sort(items.begin(), items.end(), itemNameBuySorter);
-                    break;
-                case 3:
-                    std::sort(items.begin(), items.end(), itemIdBuySorter);
-                    break;
-                case 4:
-                    std::sort(items.begin(), items.end(), itemWeightBuySorter);
-                    break;
-                case 5:
-                    std::sort(items.begin(), items.end(), itemAmountBuySorter);
-                    break;
-                case 6:
-                    std::sort(items.begin(), items.end(), itemTypeBuySorter);
-                    break;
-                case 0:
-                default:
-                    break;
-            }
-        }
+        sort();
+        if (mSortDropDown)
+            config.setValue("buySortOrder", mSortDropDown->getSelected());
         return;
     }
 

@@ -344,6 +344,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("protectedItems", "");
     AddDEF("inventorySortOrder", 0);
     AddDEF("storageSortOrder", 0);
+    AddDEF("buySortOrder", 0);
     return configData;
 }
 

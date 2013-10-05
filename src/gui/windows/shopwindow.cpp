@@ -680,6 +680,8 @@ void ShopWindow::showList(const std::string &nick, std::string data) const
             }
         }
     }
+    if (buyDialog)
+        buyDialog->sort();
 }
 
 void ShopWindow::processRequest(const std::string &nick, std::string data,

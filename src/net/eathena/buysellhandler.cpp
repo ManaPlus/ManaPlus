@@ -104,6 +104,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
         const unsigned char color = 1;
         mBuyDialog->addItem(itemId, color, 0, value);
     }
+    mBuyDialog->sort();
 }
 
 void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg) const
