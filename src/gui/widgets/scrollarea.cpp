@@ -734,10 +734,10 @@ void ScrollArea::mouseReleased(gcn::MouseEvent& event)
             int dx = event.getX() - mClickX;
             int dy = event.getY() - mClickY;
 
-            if ((dx < 10 && dx > 0) || (dx > -10 && dx < 0))
+            if ((dx < 20 && dx > 0) || (dx > -20 && dx < 0))
                 dx = 0;
 
-            if ((dy < 10 && dy > 0) || (dy > -10 && dy < 0))
+            if ((dy < 20 && dy > 0) || (dy > -20 && dy < 0))
                 dy = 0;
 
             if (dx)
@@ -774,7 +774,8 @@ void ScrollArea::mouseReleased(gcn::MouseEvent& event)
             }
             mClickX = 0;
             mClickY = 0;
-            event.consume();
+            if (dx || dy)
+                event.consume();
         }
     }
     gcn::ScrollArea::mouseReleased(event);
