@@ -72,7 +72,7 @@ class ShopListBox final : public ListBox
         /**
          * Adjust List draw size
          */
-        void adjustSize();
+        void adjustSize() override;
 
         /**
          * Set on/off the disabling of too expensive items.

@@ -176,8 +176,13 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
 
 void ShopListBox::adjustSize()
 {
+    BLOCK_START("ShopListBox::adjustSize")
     if (mListModel)
-        setHeight(mRowHeight * mListModel->getNumberOfElements());
+    {
+        setHeight(mRowHeight * mListModel->getNumberOfElements()
+            + 2 * mPadding);
+    }
+    BLOCK_END("ShopListBox::adjustSize")
 }
 
 void ShopListBox::setPriceCheck(const bool check)
