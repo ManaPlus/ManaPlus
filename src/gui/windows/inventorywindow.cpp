@@ -136,12 +136,28 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     {
         setCaption(gettext(inventory->getName().c_str()));
         setWindowName(inventory->getName());
+        switch (inventory->getType())
+        {
+            case Inventory::INVENTORY:
+            case Inventory::CART:
+            case Inventory::TRADE:
+            case Inventory::NPC:
+            default:
+                mSortDropDown->setSelected(config.getIntValue(
+                    "inventorySortOrder"));
+                break;
+            case Inventory::STORAGE:
+                mSortDropDown->setSelected(config.getIntValue(
+                    "storageSortOrder"));
+                break;
+        };
     }
     else
     {
         // TRANSLATORS: inventory window name
         setCaption(_("Inventory"));
         setWindowName("Inventory");
+        mSortDropDown->setSelected(0);
     }
 
     listen(CHANNEL_ATTRIBUTES);
@@ -172,8 +188,6 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mFilter = new TabStrip(this, "filter_" + getWindowName(), size + 16);
     mFilter->addActionListener(this);
     mFilter->setActionEventId("tag_");
-
-    mSortDropDown->setSelected(0);
 
     StringVect tags = ItemDB::getTags();
     const size_t sz = tags.size();
@@ -270,6 +284,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     enableVisibleSound(true);
     slotsChanged(mInventory);
 
+    mItems->setSortType(mSortDropDown->getSelected());
     widgetResized(gcn::Event(nullptr));
     if (!isMainInventory())
         setVisible(true);
@@ -286,6 +301,28 @@ InventoryWindow::~InventoryWindow()
     delete mSortModel;
     mSortModel = nullptr;
     mTextPopup = nullptr;
+}
+
+void InventoryWindow::storeSortOrder()
+{
+    if (mInventory)
+    {
+        switch (mInventory->getType())
+        {
+            case Inventory::INVENTORY:
+            case Inventory::CART:
+            case Inventory::TRADE:
+            case Inventory::NPC:
+            default:
+                config.setValue("inventorySortOrder",
+                    mSortDropDown->getSelected());
+                break;
+            case Inventory::STORAGE:
+                config.setValue("storageSortOrder",
+                    mSortDropDown->getSelected());
+                break;
+        };
+    }
 }
 
 void InventoryWindow::action(const gcn::ActionEvent &event)
@@ -337,6 +374,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     else if (eventId == "sort")
     {
         mItems->setSortType(mSortDropDown->getSelected());
+        storeSortOrder();
         return;
     }
     else if (eventId == "namefilter")

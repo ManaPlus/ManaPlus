@@ -69,6 +69,8 @@ class InventoryWindow final : public Window,
          */
         ~InventoryWindow();
 
+        void storeSortOrder();
+
         /**
          * Called when receiving actions from the widgets.
          */

@@ -342,6 +342,8 @@ DefaultsData* getConfigDefaults()
     AddDEF("doubleClick", true);
     AddDEF("useDiagonalSpeed", true);
     AddDEF("protectedItems", "");
+    AddDEF("inventorySortOrder", 0);
+    AddDEF("storageSortOrder", 0);
     return configData;
 }
 
