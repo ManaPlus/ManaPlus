@@ -127,3 +127,37 @@ void Label::setForegroundColorAll(const gcn::Color &color1,
     mForegroundColor = color1;
     mForegroundColor2 = color2;
 }
+
+void Label::resizeTo(const int sz)
+{
+    const gcn::Font *const font = getFont();
+    const int pad2 = 2 * mPadding;
+    setHeight(font->getHeight() + pad2);
+
+    if (font->getWidth(mCaption) + pad2 > sz)
+    {
+        const int dots = font->getWidth("...");
+        if (dots > sz)
+        {
+            setWidth(sz);
+            return;
+        }
+        const size_t szChars = mCaption.size();
+        for (size_t f = 1; f < szChars - 1; f ++)
+        {
+            const std::string text = mCaption.substr(0, szChars - f);
+            const int width = font->getWidth(text) + dots + pad2;
+            if (width <= sz)
+            {
+                setCaption(text + "...");
+                setWidth(width);
+                return;
+            }
+        }
+        setWidth(sz);
+    }
+    else
+    {
+        setWidth(font->getWidth(mCaption) + pad2);
+    }
+}
