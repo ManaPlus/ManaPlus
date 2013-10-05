@@ -68,7 +68,7 @@ class Label final : public gcn::Label, public Widget2
         void setForegroundColorAll(const gcn::Color &color1,
                                    const gcn::Color &color2);
 
-        void resizeTo(const int sz);
+        void resizeTo(const int maxSize, const int minSize);
 
         static Skin *mSkin;
 

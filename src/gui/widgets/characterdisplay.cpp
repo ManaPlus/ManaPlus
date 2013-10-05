@@ -102,6 +102,8 @@ void CharacterDisplay::update()
         mName->setCaption(mCharacter->dummy->getName());
     else
         mName->setCaption("");
+    const int width = mPlayerBox->getWidth();
+    mName->resizeTo(width, width);
 
     distributeResizedEvent();
 }

@@ -587,7 +587,7 @@ void CharCreateDialog::updateHair()
     }
     const ItemInfo &item = ItemDB::get(-mHairStyle);
     mHairStyleNameLabel->setCaption(item.getName());
-    mHairStyleNameLabel->resizeTo(150);
+    mHairStyleNameLabel->resizeTo(150, 150);
 
     if (ColorDB::getHairSize())
         mHairColor %= ColorDB::getHairSize();
@@ -601,8 +601,7 @@ void CharCreateDialog::updateHair()
         mHairColor = minHairColor;
     }
     mHairColorNameLabel->setCaption(ColorDB::getHairColorName(mHairColor));
-    mHairColorNameLabel->adjustSize();
-    mHairColorNameLabel->resizeTo(150);
+    mHairColorNameLabel->resizeTo(150, 150);
 
     mPlayer->setSprite(Net::getCharServerHandler()->hairSprite(),
         mHairStyle * -1, item.getDyeColorsString(mHairColor));
@@ -639,12 +638,12 @@ void CharCreateDialog::updateLook()
     if (mRaceNameLabel)
     {
         mRaceNameLabel->setCaption(item.getName());
-        mRaceNameLabel->resizeTo(150);
+        mRaceNameLabel->resizeTo(150, 150);
     }
     if (mLookNameLabel)
     {
         mLookNameLabel->setCaption(item.getColorName(mLook));
-        mLookNameLabel->resizeTo(150);
+        mLookNameLabel->resizeTo(150, 150);
     }
 }
 

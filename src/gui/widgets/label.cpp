@@ -128,18 +128,18 @@ void Label::setForegroundColorAll(const gcn::Color &color1,
     mForegroundColor2 = color2;
 }
 
-void Label::resizeTo(const int sz)
+void Label::resizeTo(const int maxSize, const int minSize)
 {
     const gcn::Font *const font = getFont();
     const int pad2 = 2 * mPadding;
     setHeight(font->getHeight() + pad2);
 
-    if (font->getWidth(mCaption) + pad2 > sz)
+    if (font->getWidth(mCaption) + pad2 > maxSize)
     {
         const int dots = font->getWidth("...");
-        if (dots > sz)
+        if (dots > maxSize)
         {
-            setWidth(sz);
+            setWidth(maxSize);
             return;
         }
         const size_t szChars = mCaption.size();
@@ -147,17 +147,20 @@ void Label::resizeTo(const int sz)
         {
             const std::string text = mCaption.substr(0, szChars - f);
             const int width = font->getWidth(text) + dots + pad2;
-            if (width <= sz)
+            if (width <= maxSize)
             {
                 setCaption(text + "...");
                 setWidth(width);
                 return;
             }
         }
-        setWidth(sz);
+        setWidth(maxSize);
     }
     else
     {
-        setWidth(font->getWidth(mCaption) + pad2);
+        int sz = font->getWidth(mCaption) + pad2;
+        if (sz < minSize)
+            sz = minSize;
+        setWidth(sz);
     }
 }
