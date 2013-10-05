@@ -48,6 +48,7 @@ ListBox::ListBox(const Widget2 *const widget,
     mForegroundSelectedColor2(getThemeColor(Theme::LISTBOX_SELECTED_OUTLINE)),
     mOldSelected(-1),
     mPadding(0),
+    mPressedIndex(-2),
     mSkin(nullptr),
     mDistributeMousePressed(true),
     mCenterText(false)
@@ -204,8 +205,16 @@ void ListBox::mouseWheelMovedDown(gcn::MouseEvent &mouseEvent A_UNUSED)
 {
 }
 
+void ListBox::mousePressed(gcn::MouseEvent &event)
+{
+    mPressedIndex = getSelectionByMouse(event.getY());
+}
+
 void ListBox::mouseReleased(gcn::MouseEvent &event)
 {
+    if (mPressedIndex != getSelectionByMouse(event.getY()))
+        return;
+
     if (mDistributeMousePressed)
     {
         mouseReleased1(event);
@@ -233,6 +242,7 @@ void ListBox::mouseReleased(gcn::MouseEvent &event)
                 break;
         }
     }
+    mPressedIndex = -2;
 }
 
 void ListBox::mouseReleased1(gcn::MouseEvent &mouseEvent)
@@ -281,5 +291,7 @@ void ListBox::logic()
 
 int ListBox::getSelectionByMouse(const int y) const
 {
+    if (y < mPadding)
+        return -1;
     return (y - mPadding) / getRowHeight();
 }

@@ -39,6 +39,7 @@ PopupList::PopupList(DropDown *const widget,
         new ListBox(widget, listModel, "popuplistbox.xml")),
     mScrollArea(new ScrollArea(mListBox, false)),
     mDropDown(widget),
+    mPressedIndex(-2),
     mModal(modal)
 {
     setFocusable(true);
@@ -122,8 +123,22 @@ void PopupList::adjustSize()
     mListBox->setWidth(width);
 }
 
+void PopupList::mousePressed(gcn::MouseEvent& mouseEvent)
+{
+    mPressedIndex = mListBox->getSelectionByMouse(
+        mouseEvent.getY() + mPadding);
+}
+
 void PopupList::mouseReleased(gcn::MouseEvent& mouseEvent)
 {
+    if (mPressedIndex != mListBox->getSelectionByMouse(
+        mouseEvent.getY() + mPadding))
+    {
+        mPressedIndex = -2;
+        return;
+    }
+
+    mPressedIndex = -2;
     if (mouseEvent.getSource() == mScrollArea)
         return;
     if (mDropDown)

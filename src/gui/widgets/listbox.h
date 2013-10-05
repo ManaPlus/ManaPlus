@@ -73,6 +73,8 @@ class ListBox : public gcn::ListBox,
 
         void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override;
 
+        void mousePressed(gcn::MouseEvent &event) override;
+
         void mouseReleased(gcn::MouseEvent &event) override;
 
         void mouseReleased1(gcn::MouseEvent &event);
@@ -93,12 +95,16 @@ class ListBox : public gcn::ListBox,
         void setCenter(const bool b)
         { mCenterText = b; }
 
+        int getPressedIndex()
+        { return mPressedIndex; }
+
     protected:
         gcn::Color mHighlightColor;
         gcn::Color mForegroundSelectedColor;
         gcn::Color mForegroundSelectedColor2;
         int mOldSelected;
         int mPadding;
+        int mPressedIndex;
         Skin *mSkin;
         static float mAlpha;
         bool mDistributeMousePressed;
