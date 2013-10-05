@@ -419,6 +419,10 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
     }
 }
 
+void AvatarListBox::mouseReleased(gcn::MouseEvent &event A_UNUSED)
+{
+}
+
 void AvatarListBox::optionChanged(const std::string &value)
 {
     if (value == "showgender")

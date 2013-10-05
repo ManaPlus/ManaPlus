@@ -63,7 +63,7 @@ class PopupList final : public Popup,
 
         void focusLost(const gcn::Event& event A_UNUSED) override;
 
-        void mousePressed(gcn::MouseEvent& mouseEvent) override;
+        void mouseReleased(gcn::MouseEvent& mouseEvent) override;
 
     private:
         gcn::ListModel *mListModel;

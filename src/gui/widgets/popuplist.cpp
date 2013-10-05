@@ -122,7 +122,7 @@ void PopupList::adjustSize()
     mListBox->setWidth(width);
 }
 
-void PopupList::mousePressed(gcn::MouseEvent& mouseEvent)
+void PopupList::mouseReleased(gcn::MouseEvent& mouseEvent)
 {
     if (mouseEvent.getSource() == mScrollArea)
         return;

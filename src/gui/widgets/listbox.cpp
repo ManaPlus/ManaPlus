@@ -204,11 +204,11 @@ void ListBox::mouseWheelMovedDown(gcn::MouseEvent &mouseEvent A_UNUSED)
 {
 }
 
-void ListBox::mousePressed(gcn::MouseEvent &event)
+void ListBox::mouseReleased(gcn::MouseEvent &event)
 {
     if (mDistributeMousePressed)
     {
-        mousePressed1(event);
+        mouseReleased1(event);
     }
     else
     {
@@ -222,7 +222,7 @@ void ListBox::mousePressed(gcn::MouseEvent &event)
                 if (gui)
                     gui->resetClickCount();
                 if (mOldSelected == mSelected)
-                    mousePressed1(event);
+                    mouseReleased1(event);
                 else
                     mouseDragged(event);
                 mOldSelected = mSelected;
@@ -235,7 +235,7 @@ void ListBox::mousePressed(gcn::MouseEvent &event)
     }
 }
 
-void ListBox::mousePressed1(gcn::MouseEvent &mouseEvent)
+void ListBox::mouseReleased1(gcn::MouseEvent &mouseEvent)
 {
     if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
     {

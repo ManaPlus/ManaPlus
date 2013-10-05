@@ -73,9 +73,9 @@ class ListBox : public gcn::ListBox,
 
         void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override;
 
-        void mousePressed(gcn::MouseEvent &event) override;
+        void mouseReleased(gcn::MouseEvent &event) override;
 
-        void mousePressed1(gcn::MouseEvent &event);
+        void mouseReleased1(gcn::MouseEvent &event);
 
         void mouseDragged(gcn::MouseEvent &event) override;
 

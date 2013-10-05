@@ -57,6 +57,8 @@ public:
 
     void mousePressed(gcn::MouseEvent &event) override;
 
+    void mouseReleased(gcn::MouseEvent &event A_UNUSED) override;
+
     void optionChanged(const std::string &value) override;
 
 private:
