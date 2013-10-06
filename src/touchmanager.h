@@ -45,13 +45,15 @@ const int buttonsCount = 12;
 
 struct TouchItem final
 {
-    TouchItem(const gcn::Rectangle &rect0, const int type0,
+    TouchItem(const std::string &text0,
+              const gcn::Rectangle &rect0, const int type0,
               const std::string &eventPressed0,
               const std::string &eventReleased0,
               ImageRect *const images0, Image *const icon0,
               const int x0, const int y0, const int width0, const int height0,
               const TouchFuncPtr ptrAll, const TouchFuncPtr ptrPressed,
               const TouchFuncPtr ptrReleased, const TouchFuncPtr ptrOut) :
+        text(text0),
         rect(rect0),
         type(type0),
         eventPressed(eventPressed0),
@@ -71,6 +73,7 @@ struct TouchItem final
 
     A_DELETE_COPY(TouchItem)
 
+    std::string text;
     gcn::Rectangle rect;
     int type;
     std::string eventPressed;
@@ -111,6 +114,7 @@ class TouchManager final : public ConfigListener
 
         void loadTouchItem(TouchItem **item, const std::string &name,
                            const std::string &imageName,
+                           const std::string &text,
                            int x, int y, const int width, const int height,
                            int type, const std::string &eventPressed,
                            const std::string &eventReleased,
