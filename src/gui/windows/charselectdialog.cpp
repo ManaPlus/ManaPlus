@@ -198,6 +198,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
 
 CharSelectDialog::~CharSelectDialog()
 {
+    Net::getCharServerHandler()->clear();
 }
 
 void CharSelectDialog::action(const gcn::ActionEvent &event)
