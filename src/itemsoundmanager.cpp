@@ -22,14 +22,11 @@
 
 #include "flooritem.h"
 #include "item.h"
-#include "logger.h"
 #include "soundmanager.h"
 
 #include "being/localplayer.h"
 
 #include "resources/iteminfo.h"
-
-#include "resources/db/itemdb.h"
 
 #include "debug.h"
 

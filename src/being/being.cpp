@@ -742,7 +742,7 @@ void Being::handleAttack(Being *const victim, const int damage,
             setDirection(dir);
     }
     if (damage && victim->mType == PLAYER && victim->mAction == SIT)
-        victim->setAction(STAND);
+        victim->setAction(STAND, 0);
 
     if (mType == PLAYER)
     {
@@ -795,7 +795,7 @@ void Being::handleSkill(Being *const victim, const int damage,
             setDirection(dir);
     }
     if (damage && victim->mType == PLAYER && victim->mAction == SIT)
-        victim->setAction(STAND);
+        victim->setAction(STAND, 0);
     if (data)
     {
         if (damage > 0)
@@ -1337,7 +1337,7 @@ void Being::nextTile()
 {
     if (mPath.empty())
     {
-        setAction(STAND);
+        setAction(STAND, 0);
         return;
     }
 
@@ -1350,7 +1350,7 @@ void Being::nextTile()
 
     if (!mMap || !mMap->getWalk(pos.x, pos.y, getWalkMask()))
     {
-        setAction(STAND);
+        setAction(STAND, 0);
         return;
     }
 
@@ -1366,7 +1366,7 @@ void Being::nextTile()
     mY = pos.y;
     const uint8_t height = mMap->getHeightOffset(mX, mY);
     mOffsetY = height - mOldHeight;
-    setAction(MOVE);
+    setAction(MOVE, 0);
 }
 
 void Being::logic()
@@ -1446,7 +1446,7 @@ void Being::logic()
             }
 
             if (mAction != MOVE)
-                setAction(MOVE);
+                setAction(MOVE, 0);
 
             // Update the player sprite direction.
             // N.B.: We only change this if the distance is more than one pixel.
@@ -1480,7 +1480,7 @@ void Being::logic()
         }
         else if (mAction == MOVE)
         {
-            setAction(STAND);
+            setAction(STAND, 0);
         }
     }
     else
@@ -1962,7 +1962,7 @@ void Being::setSprite(const unsigned int slot, const int id,
         if (isWeapon)
             mEquippedWeapon = &ItemDB::get(id);
 
-        setAction(mAction);
+        setAction(mAction, 0);
     }
 
     if (!isTempSprite)
@@ -2899,7 +2899,7 @@ void Being::updatePercentHP()
         {
             mNumber = num;
             if (updateNumber(mNumber))
-                setAction(mAction);
+                setAction(mAction, 0);
         }
     }
 }

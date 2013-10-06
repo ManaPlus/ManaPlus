@@ -198,7 +198,7 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg) const
             }
         }
 
-        player_node->setAction(Being::STAND);
+        player_node->setAction(Being::STAND, 0);
         player_node->setTileCoords(x, y);
         player_node->updatePets();
         player_node->navigateClean();
@@ -398,7 +398,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg) const
         deathNotice->addActionListener(&deathListener);
         if (player_node->getCurrentAction() != Being::DEAD)
         {
-            player_node->setAction(Being::DEAD);
+            player_node->setAction(Being::DEAD, 0);
             player_node->recalcSpritesOrder();
         }
     }

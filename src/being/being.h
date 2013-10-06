@@ -495,7 +495,7 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Sets the current action.
          */
-        virtual void setAction(const Action &action, const int attackType = 0);
+        virtual void setAction(const Action &action, const int attackType);
 
         /**
          * Get the being's action currently performed.

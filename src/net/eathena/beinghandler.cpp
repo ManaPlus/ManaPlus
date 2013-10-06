@@ -569,20 +569,20 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
         switch (type)
         {
             case 0:
-                dstBeing->setAction(Being::STAND);
+                dstBeing->setAction(Being::STAND, 0);
                 player_node->imitateAction(dstBeing, Being::STAND);
                 break;
 
             case 1:
                 if (dstBeing->getCurrentAction() != Being::DEAD)
                 {
-                    dstBeing->setAction(Being::DEAD);
+                    dstBeing->setAction(Being::DEAD, 0);
                     dstBeing->recalcSpritesOrder();
                 }
                 break;
 
             case 2:
-                dstBeing->setAction(Being::SIT);
+                dstBeing->setAction(Being::SIT, 0);
                 player_node->imitateAction(dstBeing, Being::SIT);
                 break;
 
@@ -685,13 +685,13 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
 
     if (spawnId)
     {
-        dstBeing->setAction(Being::SPAWN);
+        dstBeing->setAction(Being::SPAWN, 0);
     }
     else if (visible)
     {
         dstBeing->clearPath();
         dstBeing->setActionTime(tick_time);
-        dstBeing->setAction(Being::STAND);
+        dstBeing->setAction(Being::STAND, 0);
     }
 
     // Prevent division by 0 when calculating frame
@@ -771,7 +771,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     {
         uint16_t srcX, srcY, dstX, dstY;
         msg.readCoordinatePair(srcX, srcY, dstX, dstY);
-        dstBeing->setAction(Being::STAND);
+        dstBeing->setAction(Being::STAND, 0);
         dstBeing->setTileCoords(srcX, srcY);
         dstBeing->setDestination(dstX, dstY);
     }

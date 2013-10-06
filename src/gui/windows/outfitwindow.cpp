@@ -44,9 +44,6 @@
 
 #include "utils/gettext.h"
 
-#include "net/inventoryhandler.h"
-#include "net/net.h"
-
 #include <vector>
 
 #include "debug.h"

@@ -658,7 +658,7 @@ void CharCreateDialog::updatePlayer()
     if (mPlayer)
     {
         mPlayer->setDirection(directions[mDirection]);
-        mPlayer->setAction(actions[mAction]);
+        mPlayer->setAction(actions[mAction], 0);
     }
 }
 

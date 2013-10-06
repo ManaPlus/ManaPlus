@@ -24,7 +24,6 @@
 #include "client.h"
 #include "configuration.h"
 #include "depricatedevent.h"
-#include "flooritem.h"
 #include "inventory.h"
 #include "itemsoundmanager.h"
 

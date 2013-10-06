@@ -30,9 +30,6 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "net/inventoryhandler.h"
-#include "net/net.h"
-
 #include "debug.h"
 
 DropShortcut *dropShortcut;

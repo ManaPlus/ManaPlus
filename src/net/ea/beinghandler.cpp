@@ -179,13 +179,13 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
 
     if (spawnId)
     {
-        dstBeing->setAction(Being::SPAWN);
+        dstBeing->setAction(Being::SPAWN, 0);
     }
     else if (visible)
     {
         dstBeing->clearPath();
         dstBeing->setActionTime(tick_time);
-        dstBeing->setAction(Being::STAND);
+        dstBeing->setAction(Being::STAND, 0);
     }
 
     // Prevent division by 0 when calculating frame
@@ -298,7 +298,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
         msg.readCoordinatePair(srcX, srcY, dstX, dstY);
         if (!disguiseId)
         {
-            dstBeing->setAction(Being::STAND);
+            dstBeing->setAction(Being::STAND, 0);
             dstBeing->setTileCoords(srcX, srcY);
             if (serverVersion < 10)
                 dstBeing->setDestination(dstX, dstY);
@@ -364,7 +364,7 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
     msg.readCoordinatePair(srcX, srcY, dstX, dstY);
     msg.readInt32();  // Server tick
 
-    dstBeing->setAction(Being::STAND);
+    dstBeing->setAction(Being::STAND, 0);
     dstBeing->setTileCoords(srcX, srcY);
     dstBeing->setDestination(dstX, dstY);
     if (dstBeing->getType() == Being::PLAYER)
@@ -405,7 +405,7 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
     {
         if (dstBeing->getCurrentAction() != Being::DEAD)
         {
-            dstBeing->setAction(Being::DEAD);
+            dstBeing->setAction(Being::DEAD, 0);
             dstBeing->recalcSpritesOrder();
         }
         if (dstBeing->getName() == "Jack O" && killStats)
@@ -441,7 +441,7 @@ void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
         player_node->stopAttack();
 
     if (msg.readInt8() == 1)
-        dstBeing->setAction(Being::STAND);
+        dstBeing->setAction(Being::STAND, 0);
 }
 
 
@@ -509,12 +509,12 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
             break;
             // tmw server can send here garbage?
 //            if (srcBeing)
-//                srcBeing->setAction(Being::DEAD);
+//                srcBeing->setAction(Being::DEAD, 0);
 
         case 0x02:  // Sit
             if (srcBeing)
             {
-                srcBeing->setAction(Being::SIT);
+                srcBeing->setAction(Being::SIT, 0);
                 if (srcBeing->getType() == Being::PLAYER)
                 {
                     srcBeing->setMoveTime();
@@ -527,7 +527,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
         case 0x03:  // Stand up
             if (srcBeing)
             {
-                srcBeing->setAction(Being::STAND);
+                srcBeing->setAction(Being::STAND, 0);
                 if (srcBeing->getType() == Being::PLAYER)
                 {
                     srcBeing->setMoveTime();
@@ -712,7 +712,7 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
             const uint16_t y = msg.readInt16();
             dstBeing->setTileCoords(x, y);
             if (dstBeing->getCurrentAction() == Being::MOVE)
-                dstBeing->setAction(Being::STAND);
+                dstBeing->setAction(Being::STAND, 0);
         }
     }
 }

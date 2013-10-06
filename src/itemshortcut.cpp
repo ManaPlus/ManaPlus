@@ -32,9 +32,6 @@
 
 #include "gui/windows/skilldialog.h"
 
-#include "net/inventoryhandler.h"
-#include "net/net.h"
-
 #include "debug.h"
 
 ItemShortcut *itemShortcut[SHORTCUT_TABS];

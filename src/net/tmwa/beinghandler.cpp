@@ -594,20 +594,20 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
         switch (type)
         {
             case 0:
-                dstBeing->setAction(Being::STAND);
+                dstBeing->setAction(Being::STAND, 0);
                 player_node->imitateAction(dstBeing, Being::STAND);
                 break;
 
             case 1:
                 if (dstBeing->getCurrentAction() != Being::DEAD)
                 {
-                    dstBeing->setAction(Being::DEAD);
+                    dstBeing->setAction(Being::DEAD, 0);
                     dstBeing->recalcSpritesOrder();
                 }
                 break;
 
             case 2:
-                dstBeing->setAction(Being::SIT);
+                dstBeing->setAction(Being::SIT, 0);
                 player_node->imitateAction(dstBeing, Being::SIT);
                 break;
 

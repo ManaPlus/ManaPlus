@@ -24,8 +24,6 @@
 
 #include "equipment.h"
 
-#include "resources/soundinfo.h"
-
 #include <map>
 #include <string>
 

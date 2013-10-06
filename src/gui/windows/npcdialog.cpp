@@ -895,7 +895,7 @@ void NpcDialog::setAvatarAction(const int actionId)
 {
     Being *const being = mPlayerBox->getBeing();
     if (being)
-        being->setAction(static_cast<Being::Action>(actionId));
+        being->setAction(static_cast<Being::Action>(actionId), 0);
 }
 
 void NpcDialog::logic()

@@ -41,9 +41,6 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/playerbox.h"
 
-#include "net/inventoryhandler.h"
-#include "net/net.h"
-
 #include "resources/imageset.h"
 
 #include "utils/dtor.h"
