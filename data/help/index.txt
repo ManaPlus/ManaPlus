@@ -1,6 +1,7 @@
 ##3                             === <<INDEX>> ===
 
  ##1-> @@about|<<About>>@@
+ -> @@download|<<Download>>@@
  -> @@team|<<Manaplus Developers>>@@
 
  -> @@commands|<<Commands>>@@

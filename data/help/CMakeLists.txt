@@ -1,7 +1,8 @@
 SET(FILES
     about.txt
-    commands.txt
     chatcommands.txt
+    commands.txt
+    download.txt
     footer.txt
     header.txt
     index.txt
