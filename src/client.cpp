@@ -3134,8 +3134,14 @@ void Client::checkConfigVersion()
         config.setValue("customcursor", false);
 #endif
     }
+    if (version < 4)
+    {
+#ifdef ANDROID
+        config.setValue("showDidYouKnow", false);
+#endif
+    }
 
-    config.setValue("cfgver", 3);
+    config.setValue("cfgver", 4);
 }
 
 Window *Client::openErrorDialog(const std::string &header,

@@ -116,6 +116,8 @@ DefaultsData* getConfigDefaults()
     AddDEF("fpslimit", 100);
     AddDEF("theme", "jewelry");
     AddDEF("showChatColorsList", false);
+    AddDEF("customcursor", false);
+    AddDEF("showDidYouKnow", false);
 #else
     AddDEF("screenwidth", defaultScreenWidth);
     AddDEF("screenheight", defaultScreenHeight);
@@ -127,6 +129,8 @@ DefaultsData* getConfigDefaults()
     AddDEF("fpslimit", 60);
     AddDEF("theme", "");
     AddDEF("showChatColorsList", true);
+    AddDEF("customcursor", true);
+    AddDEF("showDidYouKnow", true);
 #endif
     AddDEF("screen", false);
     AddDEF("hwaccel", false);
@@ -153,11 +157,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("ChatLogLength", 0);
     AddDEF("enableChatLog", true);
     AddDEF("whispertab", true);
-#ifdef ANDROID
-    AddDEF("customcursor", false);
-#else
-    AddDEF("customcursor", true);
-#endif
     AddDEF("showownname", true);
     AddDEF("showpickupparticle", true);
     AddDEF("showpickupchat", true);
@@ -225,7 +224,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("securetrades", true);
     AddDEF("unsecureChars", "IO0@#$");
     AddDEF("currentTip", 0);
-    AddDEF("showDidYouKnow", true);
     AddDEF("useLocalTime", false);
     AddDEF("enableAdvert", true);
     AddDEF("enableMapReduce", true);
@@ -337,7 +335,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("uselonglivesprites", false);
     AddDEF("uselonglivesounds", true);
     AddDEF("screenDensity", 0);
-    AddDEF("cfgver", 3);
+    AddDEF("cfgver", 4);
     AddDEF("enableDebugLog", false);
     AddDEF("doubleClick", true);
     AddDEF("useDiagonalSpeed", true);
