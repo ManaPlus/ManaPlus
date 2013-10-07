@@ -2922,65 +2922,6 @@ bool Client::isKeyboardVisible() const
 #endif
 }
 
-#ifdef USE_SDL2
-void Client::handleSDL2WindowEvent(const SDL_Event &event)
-{
-    switch (event.window.event)
-    {
-        case SDL_WINDOWEVENT_RESIZED:
-            resizeVideo(event.window.data1, event.window.data2, false);
-            break;
-        case SDL_WINDOWEVENT_ENTER:
-            setMouseFocused(true);
-            break;
-        case SDL_WINDOWEVENT_LEAVE:
-            setMouseFocused(false);
-            break;
-        case SDL_WINDOWEVENT_FOCUS_GAINED:
-            setInputFocused(true);
-            break;
-        case SDL_WINDOWEVENT_FOCUS_LOST:
-            setInputFocused(false);
-            break;
-        case SDL_WINDOWEVENT_MINIMIZED:
-            setIsMinimized(true);
-            break;
-        case SDL_WINDOWEVENT_RESTORED:
-        case SDL_WINDOWEVENT_MAXIMIZED:
-            setIsMinimized(false);
-            break;
-        default:
-            break;
-    }
-}
-#else
-void Client::handleActive(const SDL_Event &event)
-{
-    if (event.active.state & SDL_APPACTIVE)
-    {
-        if (event.active.gain)
-        {   // window restore
-            setIsMinimized(false);
-            setPriority(true);
-        }
-        else
-        {   // window minimization
-#if defined(ANDROID) && !defined(USE_SDL2)
-            setState(STATE_EXIT);
-#else
-            setIsMinimized(true);
-            setPriority(false);
-#endif
-        }
-    }
-
-    if (event.active.state & SDL_APPINPUTFOCUS)
-        setInputFocused(event.active.gain);
-    if (event.active.state & SDL_APPMOUSEFOCUS)
-        setMouseFocused(event.active.gain);
-}
-#endif
-
 #ifdef ANDROID
 #ifdef USE_SDL2
 void Client::extractAssets()

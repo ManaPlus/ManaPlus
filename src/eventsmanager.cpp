@@ -30,6 +30,8 @@
 
 #include "input/inputmanager.h"
 
+#include "utils/process.h"
+
 #include "debug.h"
 
 EventsManager eventsManager;
@@ -56,9 +58,16 @@ bool EventsManager::handleCommonEvents(const SDL_Event &event)
             client->setState(STATE_EXIT);
             logger->log1("force exit");
             return true;
-#ifndef USE_SDL2
+#ifdef USE_SDL2
+        case SDL_WINDOWEVENT:
+            handleSDL2WindowEvent(event);
+            return true;
+#else
         case SDL_VIDEORESIZE:
             client->resizeVideo(event.resize.w, event.resize.h);
+            return true;
+        case SDL_ACTIVEEVENT:
+            handleActive(event);
             return true;
 #ifdef ANDROID
         case SDL_KEYBOARDSHOW:
@@ -112,20 +121,12 @@ bool EventsManager::handleEvents()
                         break;
 
 #endif
+#else
+#ifndef USE_SDL2
+#endif
 #endif
                     default:
                         break;
-#ifdef USE_SDL2
-                    case SDL_WINDOWEVENT:
-                        client->handleSDL2WindowEvent(event);
-                        break;
-#else
-#ifndef ANDROID
-                    case SDL_ACTIVEEVENT:
-                        client->handleActive(event);
-                        break;
-#endif
-#endif
                 }
             }
 
@@ -161,24 +162,6 @@ void EventsManager::handleGameEvents()
 
         if (handleCommonEvents(event))
             break;
-
-        switch (event.type)
-        {
-#ifdef USE_SDL2
-            case SDL_WINDOWEVENT:
-            {
-                game->handleSDL2WindowEvent(event);
-                break;
-            }
-#else
-            // Active event
-            case SDL_ACTIVEEVENT:
-                game->handleActive(event);
-                break;
-#endif
-            default:
-                break;
-        }
         BLOCK_END("Game::handleInput 2")
     }  // End while
 }
@@ -392,3 +375,118 @@ void EventsManager::logEvent(const SDL_Event &event)
             break;
     };
 }
+
+#ifdef USE_SDL2
+void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
+{
+    int fpsLimit = 0;
+    const int eventType = event.window.event;
+    const bool inGame = (client->getState() == STATE_GAME);
+    switch (eventType)
+    {
+        case SDL_WINDOWEVENT_RESIZED:
+            client->resizeVideo(event.window.data1, event.window.data2, false);
+            break;
+        case SDL_WINDOWEVENT_ENTER:
+            client->setMouseFocused(true);
+            break;
+        case SDL_WINDOWEVENT_LEAVE:
+            client->setMouseFocused(false);
+            break;
+        case SDL_WINDOWEVENT_FOCUS_GAINED:
+            client->setInputFocused(true);
+            break;
+        case SDL_WINDOWEVENT_FOCUS_LOST:
+            client->setInputFocused(false);
+            break;
+        case SDL_WINDOWEVENT_MINIMIZED:
+            client->setIsMinimized(true);
+            if (inGame)
+            {
+                if (player_node && !player_node->getAway())
+                {
+                    fpsLimit = config.getIntValue("altfpslimit");
+                    player_node->setHalfAway(true);
+                }
+            }
+            setPriority(false);
+            break;
+        case SDL_WINDOWEVENT_RESTORED:
+        case SDL_WINDOWEVENT_MAXIMIZED:
+            client->setIsMinimized(false);
+            if (inGame)
+            {
+                if (player_node)
+                {
+                    if (!player_node->getAway())
+                        fpsLimit = config.getIntValue("fpslimit");
+                    player_node->setHalfAway(false);
+                }
+            }
+            setPriority(true);
+            break;
+        default:
+            break;
+    }
+
+    if (!inGame)
+        return;
+
+    if (eventType == SDL_WINDOWEVENT_MINIMIZED
+        || eventType == SDL_WINDOWEVENT_RESTORED
+        || eventType == SDL_WINDOWEVENT_MAXIMIZED)
+    {
+        if (player_node)
+        {
+            player_node->updateStatus();
+            player_node->updateName();
+        }
+        updateFrameRate(fpsLimit);
+    }
+}
+#else
+void EventsManager::handleActive(const SDL_Event &event)
+{
+    int fpsLimit = 0;
+    const bool inGame = (client->getState() == STATE_GAME);
+    if (event.active.state & SDL_APPACTIVE)
+    {
+        if (event.active.gain)
+        {   // window restore
+            client->setIsMinimized(false);
+            if (inGame && player_node)
+            {
+                if (!player_node->getAway())
+                    fpsLimit = config.getIntValue("fpslimit");
+                player_node->setHalfAway(false);
+            }
+            setPriority(true);
+        }
+        else
+        {   // window minimization
+#ifdef ANDROID
+            client->setState(STATE_EXIT);
+#else
+            client->setIsMinimized(true);
+            if (inGame && player_node && !player_node->getAway())
+            {
+                fpsLimit = config.getIntValue("altfpslimit");
+                player_node->setHalfAway(true);
+            }
+            setPriority(false);
+#endif
+        }
+        if (inGame && player_node)
+            player_node->updateStatus();
+    }
+    if (inGame && player_node)
+        player_node->updateName();
+
+    if (event.active.state & SDL_APPINPUTFOCUS)
+        client->setInputFocused(event.active.gain);
+    if (event.active.state & SDL_APPMOUSEFOCUS)
+        client->setMouseFocused(event.active.gain);
+    if (inGame)
+        Game::instance()->updateFrameRate(fpsLimit);
+}
+#endif
