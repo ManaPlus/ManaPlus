@@ -23,6 +23,9 @@
 #include "configuration.h"
 #include "client.h"
 #include "game.h"
+#ifdef USE_SDL2
+#include "render/graphics.h"
+#endif
 #include "logger.h"
 #include "mumblemanager.h"
 
@@ -441,7 +444,7 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
             player_node->updateStatus();
             player_node->updateName();
         }
-        updateFrameRate(fpsLimit);
+        Game::instance()->updateFrameRate(fpsLimit);
     }
 }
 #else
