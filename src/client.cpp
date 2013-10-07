@@ -2943,25 +2943,43 @@ void Client::logEvent(const SDL_Event &event)
         case SDL_FINGERDOWN:
         {
             const SDL_TouchFingerEvent &touch = event.tfinger;
+            const int w = mainGraphics->mWidth;
+            const int h = mainGraphics->mHeight;
             logger->log("event: SDL_FINGERDOWN: %lld,%lld (%f,%f) (%f,%f)",
-                touch.touchId, touch.fingerId, touch.x, touch.y,
-                touch.dx, touch.dy);
+                touch.touchId, touch.fingerId, touch.x * w, touch.y * w,
+                touch.dx * w, touch.dy * h);
             break;
         }
         case SDL_FINGERUP:
         {
             const SDL_TouchFingerEvent &touch = event.tfinger;
+            const int w = mainGraphics->mWidth;
+            const int h = mainGraphics->mHeight;
             logger->log("event: SDL_FINGERUP: %lld,%lld (%f,%f) (%f,%f)",
-                touch.touchId, touch.fingerId, touch.x, touch.y,
-                touch.dx, touch.dy);
+                touch.touchId, touch.fingerId, touch.x * w, touch.y * h,
+                touch.dx * w, touch.dy * h);
             break;
         }
         case SDL_FINGERMOTION:
         {
             const SDL_TouchFingerEvent &touch = event.tfinger;
+            const int w = mainGraphics->mWidth;
+            const int h = mainGraphics->mHeight;
             logger->log("event: SDL_FINGERMOTION: %lld,%lld (%f,%f) (%f,%f)",
-                touch.touchId, touch.fingerId, touch.x, touch.y,
-                touch.dx, touch.dy);
+                touch.touchId, touch.fingerId,
+                touch.x * w, touch.y * h,
+                touch.dx * w, touch.dy * h);
+            break;
+        }
+        case SDL_MULTIGESTURE:
+        {
+            const SDL_MultiGestureEvent &gesture = event.mgesture;
+            const int w = mainGraphics->mWidth;
+            const int h = mainGraphics->mHeight;
+            logger->log("event: SDL_MULTIGESTURE: %lld %f,%f (%f,%f) %d,%d",
+                gesture.touchId, gesture.dTheta, gesture.dDist,
+                gesture.x * w, gesture.y * h, (int)gesture.numFingers,
+                (int)gesture.padding);
             break;
         }
         case SDL_KEYDOWN:
@@ -3011,8 +3029,14 @@ void Client::logEvent(const SDL_Event &event)
             break;
         }
         case SDL_TEXTINPUT:
-            logger->log("event: SDL_TEXTINPUT: %s", event.text.text);
+        {
+            const char *const text = event.text.text;
+            logger->log("event: SDL_TEXTINPUT: %s", text);
+            const int sz = strlen(event.text.text);
+            for (int f = 0; f < sz; f ++)
+                logger->log("dec: %d", text[f]);
             break;
+        }
         case SDL_APP_TERMINATING:
             logger->log("SDL_APP_TERMINATING");
             break;
@@ -3027,6 +3051,9 @@ void Client::logEvent(const SDL_Event &event)
             break;
         case SDL_APP_DIDENTERFOREGROUND:
             logger->log("SDL_APP_DIDENTERFOREGROUND");
+            break;
+        case SDL_APP_DIDENTERBACKGROUND:
+            logger->log("SDL_APP_DIDENTERBACKGROUND");
             break;
 #else
         case SDL_KEYDOWN:
