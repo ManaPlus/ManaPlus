@@ -959,8 +959,6 @@ int Client::gameExec()
         mumbleManager = new MumbleManager();
 #endif
 
-    SDL_Event event;
-
     if (Theme::instance())
         mSkin = Theme::instance()->load("windowmenu.xml", "");
     if (mSkin)
@@ -973,113 +971,10 @@ int Client::gameExec()
     {
         PROFILER_START();
         BLOCK_START("Client::gameExec 1")
-        if (mGame)
-        {
-            // Let the game handle the events while it is active
-            mGame->handleInput();
-        }
-        else
-        {
-            BLOCK_START("Client::gameExec 2")
-            // Handle SDL events
-#ifdef USE_SDL2
-            while (SDL_WaitEventTimeout(&event, 0))
-#else
-            while (SDL_PollEvent(&event))
-#endif
-            {
-                if (eventsManager.handleEvent(event))
-                    continue;
+        if (eventsManager.handleEvents())
+            continue;
 
-                switch (event.type)
-                {
-                    case SDL_QUIT:
-                        mState = STATE_EXIT;
-                        logger->log1("force exit");
-                        break;
-
-                    case SDL_KEYDOWN:
-                        if (inputManager.handleAssignKey(
-                            event, INPUT_KEYBOARD))
-                        {
-                            continue;
-                        }
-                        inputManager.updateConditionMask();
-                        break;
-
-                    case SDL_KEYUP:
-                        if (inputManager.handleAssignKey(
-                            event, INPUT_KEYBOARD))
-                        {
-                            continue;
-                        }
-                        inputManager.updateConditionMask();
-                        break;
-
-                    case SDL_JOYBUTTONDOWN:
-                        inputManager.handleAssignKey(event, INPUT_JOYSTICK);
-                        break;
-
-                    case SDL_MOUSEMOTION:
-                        break;
-
-#ifdef ANDROID
-#ifdef USE_SDL2
-                    // +++ need add support
-#else
-                    case SDL_ACTIVEEVENT:
-                        if ((event.active.state & SDL_APPACTIVE)
-                            && !event.active.gain)
-                        {
-                            mState = STATE_EXIT;
-                            logger->log1("exit on lost focus");
-                        }
-                        break;
-
-                    case SDL_KEYBOARDSHOW:
-                        updateScreenKeyboard(event.user.code);
-                        break;
-
-                    case SDL_ACCELEROMETER:
-                        break;
-#endif
-#endif
-
-                    default:
-//                        logger->log("unknown event: %d", event.type);
-                        break;
-
-#ifdef USE_SDL2
-                    case SDL_WINDOWEVENT:
-                        handleSDL2WindowEvent(event);
-                        break;
-#else
-#ifndef ANDROID
-                    case SDL_ACTIVEEVENT:
-                        handleActive(event);
-                        break;
-#endif
-                    case SDL_VIDEORESIZE:
-                        resizeVideo(event.resize.w, event.resize.h, false);
-                        break;
-#endif
-                }
-
-                if (inputManager.handleEvent(event))
-                    continue;
-
-#ifdef USE_MUMBLE
-                if (player_node && mumbleManager)
-                {
-                    mumbleManager->setPos(player_node->getTileX(),
-                        player_node->getTileY(), player_node->getDirection());
-                }
-#endif
-            }
-            if (mState == STATE_EXIT)
-                continue;
-            BLOCK_END("Client::gameExec 2")
-        }
+        BLOCK_END("Client::gameExec 1")
 
         BLOCK_START("Client::gameExec 3")
         if (Net::getGeneralHandler())

@@ -21,7 +21,14 @@
 #include "eventsmanager.h"
 
 #include "configuration.h"
+#include "client.h"
+#include "game.h"
 #include "logger.h"
+#include "mumblemanager.h"
+
+#include "being/localplayer.h"
+
+#include "input/inputmanager.h"
 
 #include "debug.h"
 
@@ -38,14 +45,111 @@ void EventsManager::init()
     config.addListener("logInput", this);
 }
 
-bool EventsManager::handleEvent(const SDL_Event &event)
+bool EventsManager::handleEvents()
 {
-    if (mLogInput)
-        logEvent(event);
-    switch (event.type)
+    if (Game::instance())
     {
+        // Let the game handle the events while it is active
+        Game::instance()->handleInput();
     }
+    else
+    {
+        SDL_Event event;
 
+        // Handle SDL events
+#ifdef USE_SDL2
+        while (SDL_WaitEventTimeout(&event, 0))
+#else
+        while (SDL_PollEvent(&event))
+#endif
+        {
+            if (mLogInput)
+                logEvent(event);
+
+            switch (event.type)
+            {
+                case SDL_QUIT:
+                    client->setState(STATE_EXIT);
+                    logger->log1("force exit");
+                    break;
+
+                case SDL_KEYDOWN:
+                    if (inputManager.handleAssignKey(
+                        event, INPUT_KEYBOARD))
+                    {
+                        continue;
+                    }
+                    inputManager.updateConditionMask();
+                    break;
+
+                case SDL_KEYUP:
+                    if (inputManager.handleAssignKey(
+                        event, INPUT_KEYBOARD))
+                    {
+                        continue;
+                    }
+                    inputManager.updateConditionMask();
+                    break;
+
+                case SDL_JOYBUTTONDOWN:
+                    inputManager.handleAssignKey(event, INPUT_JOYSTICK);
+                    break;
+
+                case SDL_MOUSEMOTION:
+                    break;
+
+#ifdef ANDROID
+#ifndef USE_SDL2
+                case SDL_ACTIVEEVENT:
+                    if ((event.active.state & SDL_APPACTIVE)
+                        && !event.active.gain)
+                    {
+                        client->setState(STATE_EXIT);
+                        logger->log1("exit on lost focus");
+                    }
+                    break;
+
+                case SDL_KEYBOARDSHOW:
+                    client->updateScreenKeyboard(event.user.code);
+                    break;
+
+                case SDL_ACCELEROMETER:
+                    break;
+#endif
+#endif
+                default:
+                    break;
+
+#ifdef USE_SDL2
+                case SDL_WINDOWEVENT:
+                    client->handleSDL2WindowEvent(event);
+                    break;
+#else
+#ifndef ANDROID
+                case SDL_ACTIVEEVENT:
+                    client->handleActive(event);
+                    break;
+#endif
+                case SDL_VIDEORESIZE:
+                    client->resizeVideo(event.resize.w, event.resize.h, false);
+                    break;
+#endif
+            }
+
+            if (inputManager.handleEvent(event))
+                continue;
+
+#ifdef USE_MUMBLE
+            if (player_node && mumbleManager)
+            {
+                mumbleManager->setPos(player_node->getTileX(),
+                    player_node->getTileY(), player_node->getDirection());
+            }
+#endif
+        }
+        if (client->getState() == STATE_EXIT)
+            return true;
+    }
     return false;
 }
 

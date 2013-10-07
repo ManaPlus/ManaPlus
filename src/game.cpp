@@ -1018,8 +1018,8 @@ void Game::handleInput()
 #endif
     {
         BLOCK_START("Game::handleInput 2")
-        if (eventsManager.handleEvent(event))
-            continue;
+//        if (eventsManager.handleEvent(event))
+//            continue;
 
         if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
             updateHistory(event);

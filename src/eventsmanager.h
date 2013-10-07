@@ -39,7 +39,7 @@ class EventsManager final : public ConfigListener
 
         void init();
 
-        bool handleEvent(const SDL_Event &event);
+        bool handleEvents();
 
         void optionChanged(const std::string &name);
 
