@@ -30,6 +30,7 @@
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
 #include "input/keyboarddata.h"
+#include "input/multitouchmanager.h"
 
 #include "gui/gui.h"
 #include "gui/sdlinput.h"
@@ -565,8 +566,15 @@ bool InputManager::handleEvent(const SDL_Event &event)
 //            joystick.handleDeActicateButton(event);
             break;
         }
+#ifdef USE_SDL2
+        case SDL_FINGERDOWN:
+            multiTouchManager.handleFingerDown(event);
+            break;
+        case SDL_FINGERUP:
+            multiTouchManager.handleFingerUp(event);
+            break;
+#else
 #ifdef ANDROID
-#ifndef USE_SDL2
         case SDL_ACCELEROMETER:
         {
             break;

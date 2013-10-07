@@ -170,6 +170,9 @@ public:
 
     MouseInput dequeueMouseInput2() A_WARN_UNUSED;
 
+    void simulateMouseClick(const int x, const int y,
+                            const unsigned int button);
+
 protected:
     /**
      * Converts a mouse button from SDL to a Guichan mouse button

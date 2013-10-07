@@ -662,6 +662,8 @@ SET(SRCS
     input/keyevent.h
     input/keyinput.cpp
     input/keyinput.h
+    input/multitouchmanager.cpp
+    input/multitouchmanager.h
     localconsts.h
     being/localplayer.cpp
     being/localplayer.h

@@ -529,3 +529,19 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
     }
     return value;
 }
+
+void SDLInput::simulateMouseClick(const int x, const int y,
+                                  const unsigned int button)
+{
+    MouseInput mouseInput;
+    mouseInput.setX(x);
+    mouseInput.setY(y);
+    mouseInput.setReal(x, y);
+    mouseInput.setButton(button);
+    mouseInput.setType(gcn::MouseInput::PRESSED);
+    mouseInput.setTimeStamp(SDL_GetTicks());
+    mMouseInputQueue.push(mouseInput);
+    mouseInput.setType(gcn::MouseInput::RELEASED);
+    mouseInput.setTimeStamp(SDL_GetTicks());
+    mMouseInputQueue.push(mouseInput);
+}

@@ -675,6 +675,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      input/keyevent.h \
 	      input/keyinput.cpp \
 	      input/keyinput.h \
+	      input/multitouchmanager.cpp \
+	      input/multitouchmanager.h \
 	      localconsts.h \
 	      being/localplayer.cpp \
 	      being/localplayer.h \
