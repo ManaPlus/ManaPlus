@@ -1,14 +1,16 @@
 # en#
 # Translators:
 # Maria <mtorres2022@gmail.com>, 2012
+# Maria <mtorres2022@gmail.com>, 2012
 # Mr Pirate <salahbubuli44@gmail.com>, 2012
 # Nelson Martell <nelson6e65-manaplus@yahoo.es>, 2012-2013
+# osuka <owen942009@gmail.com>, 2013
 # osuka <owen942009@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-09-02 12:30+0000\n"
-"Last-Translator: osuka <owen942009@gmail.com>\n"
+"PO-Revision-Date: 2013-10-01 20:13+0000\n"
+"Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "\"Outfit shortcut 12\""
-msgstr "\"Atajo para conjunto 12\""
+msgstr "\"Atajo para vestimenta 12\""
 
 msgid ""
 " - ##2allow trading##P: Do you wish to allow trade requests from arbitrary\n"
@@ -54,16 +56,16 @@ msgid ""
 " the item. To reorder items within the shortcut-window simply click and drag\n"
 " them between the boxes. To remove items you simply drag them outside of the\n"
 " window and drop them."
-msgstr " Para añadir un objeto a la barra de atajos clickea en la ventana del inventario\n sobre el artículo, luego dale click en la casilla de de la ventana Atajos donde\n quieras asociar el elemento. Para reordenar los elementos dentro de la ventana de\n atajos simplemente muévalo entre las casillas. Para removerlos, simplemente arrás-\n tralos fuera de la ventana de atajos."
+msgstr " Para añadir un objeto a la barra de atajos clickea en la ventana del inventario\n sobre el artículo, luego dale click en la casilla de de la ventana Atajos donde\n quieras asociar el elemento. Para reordenar los elementos dentro de la ventana de\n atajos simplemente muévalo entre las casillas. Para removerlos, simplemente\n arrástralos fuera de la ventana de atajos."
 
 msgid "\"Ignore input 1\""
-msgstr ""
+msgstr "\"Ignorar input 1\""
 
 msgid "/cacheinfo - show text cache info."
 msgstr "/cacheinfo - muestra un texto con información de la caché."
 
 msgid "\"Outfits window\""
-msgstr "\"Ventana de Conjuntos\""
+msgstr "\"Ventana de Vestimentas\""
 
 msgid ""
 "You can imitate other players by selecting \"imitation\" in player context menu\n"
@@ -80,7 +82,7 @@ msgid "\"Emote shortcut 9\""
 msgstr "\"Atajo para emoticono 9\""
 
 msgid "\"Set direction down\""
-msgstr ""
+msgstr "\"Voltear hacia abajo\""
 
 msgid "\"Target NPC\""
 msgstr "\"Seleccionar NPC\""
@@ -98,7 +100,7 @@ msgid "/neutral NICK - add nick to neutral relation list."
 msgstr "/neutral NICK - agregar nick a la lista de relación neutral."
 
 msgid "\"Outfit shortcut 7\""
-msgstr "\"Atajo para conjunto 7\""
+msgstr "\"Atajo para vestimenta 7\""
 
 msgid "/addpriorityattack NAME - add monster to priority attack list."
 msgstr "/addpriorityattack NOMBRE - agregar monstruo a la lista de ataque prioritario."
@@ -134,7 +136,7 @@ msgid "Support"
 msgstr "Apoyo"
 
 msgid "\"Quick drop window\""
-msgstr ""
+msgstr "\"Ventana de Quick drop\""
 
 msgid "\"Screenshot\""
 msgstr "\"Captura de Pantalla\""
@@ -146,7 +148,7 @@ msgid "\"Emote shortcut 1\""
 msgstr "\"Atajo para emoticono 1\""
 
 msgid "\"Outfit shortcut 13\""
-msgstr "\"Atajo para conjunto 13\""
+msgstr "\"Atajo para vestimenta 13\""
 
 msgid "##2Party level2:##P enables a char to create a party."
 msgstr "##2Grupo, Nivel 2:##P le permite a un personaje crear un grupo."
@@ -154,7 +156,7 @@ msgstr "##2Grupo, Nivel 2:##P le permite a un personaje crear un grupo."
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
 " gives you 1 point to spend on basic skills."
-msgstr " Puedes mejorar tus habilidades incrementando el nivel de trabajo. Cada\n nivel de trabajo te da un punto para gastarlo en habilidades básicas."
+msgstr " Puedes mejorar tus habilidades incrementando el nivel de trabajo. Cada nivel de \n trabajo te da un punto para gastarlo en habilidades básicas."
 
 msgid "/me text - send text to chat as /me command in irc."
 msgstr "/me texto - envía un texto al chat tal como el comando /me en el irc."
@@ -169,7 +171,7 @@ msgid "Mana Contributors"
 msgstr "Mana: Contribuyentes"
 
 msgid "\"Change map view mode\""
-msgstr ""
+msgstr "\"Cambiar modo de vista del mapa\""
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr "/query NICK, /q NICK - abrir nueva pestaña de susurro para el nick indicado."
@@ -199,7 +201,7 @@ msgid "\"Emote shortcut 2\""
 msgstr "\"Atajo para emoticono 2\""
 
 msgid "\"Outfit shortcut 6\""
-msgstr "\"Atajo para conjunto 6\""
+msgstr "\"Atajo para vestimenta 6\""
 
 msgid "/setdrop N - set drop counter to requested value."
 msgstr "/setdrop N - establecer el contador de caída de objetos al valor pedido."
@@ -208,7 +210,7 @@ msgid "\"Quit\""
 msgstr "\"Salir\""
 
 msgid "/outfit N - wear outfit number N."
-msgstr "/outfit N - ponerse el equipamiento número N."
+msgstr "/outfit N - ponerse el vestimenta número N."
 
 msgid "Visit IRC channel:"
 msgstr "Visita el canal IRC:"
@@ -235,7 +237,7 @@ msgid "/removeattack NAME - remove monster from attack list."
 msgstr "/removeattack NOMBRE - remover monstruo de la lista de ataque."
 
 msgid "\"Set direction up\""
-msgstr ""
+msgstr "\"Voltear hacia arriba\""
 
 msgid "/where - print current player position to chat."
 msgstr "/where - muestra en el chat la posición actual del jugador."
@@ -248,7 +250,7 @@ msgstr " - ##2ignorado##P:  Deseas ignorar completamente a este jugador. Nunca m
 msgid ""
 "If client working very slow, you can improve speed\n"
 "by reading this: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
-msgstr "Si el cliente está funcionando muy lento, puedes mejorar la velocidad leyendo esto: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
+msgstr "Si el cliente está funcionando muy lento, puedes mejorar la velocidad aplicando \n los siguientes consejos: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
 
 msgid ""
 " - ##2save player list##P: Should your acquaintance list be saved when you\n"
@@ -273,7 +275,7 @@ msgid "\"Enable/disable trading\""
 msgstr "\"Habilitar/Deshabilitar Intercambios\""
 
 msgid "\"Toggle camera mode\""
-msgstr ""
+msgstr "\"Activar el modo de cámara\""
 
 msgid "/unignore NICK - Remove nick from ignore list."
 msgstr "/unignore NICK - remover a NICK de la lista de ignorados."
@@ -288,7 +290,7 @@ msgid "SUPPORT"
 msgstr "SOPORTE"
 
 msgid "\"Outfit shortcut 10\""
-msgstr "\"Atajo para conjunto 10\""
+msgstr "\"Atajo para vestimenta 10\""
 
 msgid "Look this page for help and downloads:"
 msgstr "Mira esta página para ayuda y descargas:"
@@ -325,7 +327,7 @@ msgstr " - ##2desatendido##P:  Deseas desatender a este jugador. lo que implica 
 msgid ""
 "You can restore yellow bar settings,\n"
 "by right click on it and select in context menu \"Reset yellow bar\"."
-msgstr "Puedes restaurar las configuraciones de la barra amarilla,\nhaciendo clic derecho en ésta y seleccionar \"Reestablecer la barra amarilla\""
+msgstr "Puedes restaurar las configuraciones de la barra amarilla, haciendo clic \nderecho en ésta y seleccionar \"Reestablecer la barra amarilla\""
 
 msgid "/who - print online players number to chat."
 msgstr "/who - mostrar en el chat el número de jugadores conectados."
@@ -343,7 +345,7 @@ msgid "/dumpg - dump graphics and some other settings to chat."
 msgstr "/dumpg - vaciar configuraciones gráficas y algunas otras al chat."
 
 msgid "\"Deactivate chat input\""
-msgstr ""
+msgstr "\"Desactivar entrada del chat\""
 
 msgid "/trade NICK - start trade with nick."
 msgstr "/trade NICK - iniciar un intercambio con NICK."
@@ -352,23 +354,23 @@ msgid "/imitation NICK - start imitation mode."
 msgstr "/imitation NICK - iniciar modo de imitación."
 
 msgid "\"Outfit shortcut 5\""
-msgstr "\"Atajo para conjunto 5\""
+msgstr "\"Atajo para vestimenta 5\""
 
 msgid "KEYBOARD:"
 msgstr "TECLADO:"
 
 msgid ""
 "You can hide/show bars and buttons by right click and select menu item."
-msgstr "Puedes ocultar/mostrar barras y botones haciéndole clic derecho y\n seleccionarlo en el menú."
+msgstr "Puedes ocultar/mostrar barras y botones haciéndole clic derecho y seleccionarlo \nen el menú."
 
 msgid "\"Scroll chat down\""
-msgstr ""
+msgstr "\"Desplazar el chat hacia abajo\""
 
 msgid "Server news"
 msgstr "Noticias del servidor"
 
 msgid "\"Outfit shortcut 11\""
-msgstr "\"Atajo para conjunto 11\""
+msgstr "\"Atajo para vestimenta 11\""
 
 msgid "\"Item shortcut 11\""
 msgstr "\"Atajo para objeto 11\"  "
@@ -388,7 +390,7 @@ msgstr "Portabilidad MacOSX"
 msgid ""
 "About yellow bar you can read here:\n"
 "@@http://manaplus.org/yellowbar|http://manaplus.org/yellowbar@@"
-msgstr "Puedes leer acerca de la barra amarilla aquí: @@http://manaplus.org/yellowbar|http://manaplus.org/yellowbar@@"
+msgstr "Puedes leer acerca de la barra amarilla aquí:\n@@http://manaplus.org/yellowbar|http://manaplus.org/yellowbar@@"
 
 msgid "\"Move to target\""
 msgstr "\"Mover hacia el objetivo\""
@@ -397,13 +399,13 @@ msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr "/pseudoaway, /pseudoaway MSG - fijar/desfijar modo pseudo away."
 
 msgid "\"Enable / disable away mode\""
-msgstr ""
+msgstr "\"Habilitar / deshabilitar modo AFK (lejos del teclado)\""
 
 msgid "INDEX"
 msgstr "ÍNDICE"
 
 msgid "\"Chat auto complete\""
-msgstr ""
+msgstr "\"Auto-completar chat\""
 
 msgid "\"Commands window\""
 msgstr "\"Ventana de Comandos\""
@@ -412,7 +414,7 @@ msgid "/ignoreall - add all whispers to ignore list."
 msgstr "/ignoreall - agregar todos los susurros a la lista de ignorados."
 
 msgid "\"Copy outfit\""
-msgstr ""
+msgstr "\"Copiar vestimenta\""
 
 msgid "/ignore NICK - add nick to ignore list."
 msgstr "/ignore NICK - agregar a NICK a la lista de ignorados."
@@ -421,7 +423,7 @@ msgid "\"Item shortcuts Key\""
 msgstr "\"Tecla de atajos para objetos\""
 
 msgid "\"Disable / enable game modifier keys\""
-msgstr ""
+msgstr "\"Habilitar/Deshabilitar teclas modificadoras del juego\""
 
 msgid "Other contributors"
 msgstr "Otros contribuyentes"
@@ -453,7 +455,7 @@ msgid "\"Item shortcut 3\""
 msgstr "\"Atajo para objeto 3\"  "
 
 msgid "\"Change move type\""
-msgstr ""
+msgstr "\"Cambiar tipo de movimiento\""
 
 msgid "Magic skills:"
 msgstr "Habilidades mágicas:"
@@ -474,7 +476,7 @@ msgid "\"Hide windows\""
 msgstr "\"Esconder ventanas\""
 
 msgid "\"Outfit shortcut 4\""
-msgstr "\"Atajo para conjunto 4\""
+msgstr "\"Atajo para vestimenta 4\""
 
 msgid "Chat commands"
 msgstr "Comandos del chat"
@@ -489,7 +491,7 @@ msgid "/blacklist NICK - add nick to blacklist relation list."
 msgstr "/blacklist NICK - agregar nick a la lista negra."
 
 msgid "\"Close chat tab\""
-msgstr ""
+msgstr "\"Cerrar pestaña del chat\""
 
 msgid "\"Item shortcut 6\""
 msgstr "\"Atajo para objeto 6\"  "
@@ -510,13 +512,13 @@ msgid "ManaPlus Contributors"
 msgstr "ManaPlus: Contribuyentes"
 
 msgid "\"Copy equiped to Outfit\""
-msgstr ""
+msgstr "\"Copiar lo equipado a Vestimenta\""
 
 msgid "Basic skills:"
 msgstr "Habilidades básicas:"
 
 msgid "\"Change move to target type\""
-msgstr ""
+msgstr "\"Cambiar tipo de movimiento al objetivo\""
 
 msgid "/erase NICK - add nick to erased list."
 msgstr "/erase NICK - agregar nick a la lista de borrados."
@@ -525,7 +527,7 @@ msgid "/pricesave - save shop price to disc."
 msgstr "/pricesave - guarda el precio de la tienda en el disco."
 
 msgid "\"Pickup\""
-msgstr ""
+msgstr "\"Recoger\""
 
 msgid "\"Status window\""
 msgstr "\"Ventana de estado\""
@@ -540,10 +542,10 @@ msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend NICK, /befriend NICK - agregar nick a la lista de amigos."
 
 msgid "\"Change follow mode\""
-msgstr ""
+msgstr "\"Cambiar modo de seguir\""
 
 msgid "\"Scroll chat up\""
-msgstr ""
+msgstr "\"Desplazar el chat hacia arriba\""
 
 msgid ""
 "##2ManaPlus##P is extended client based on old code from ##2Mana##P client.\n"
@@ -573,7 +575,7 @@ msgid "\"Quick heal target or self\""
 msgstr "\"Curar rápidamente al objetivo o a sí mismo\""
 
 msgid "\"Change pickup type\""
-msgstr ""
+msgstr "\"Cambiar tipo de recogida\""
 
 msgid "\"Use #itenplz spell\""
 msgstr "\"Usar el hechizo #itenplz\""
@@ -594,7 +596,7 @@ msgid "##2Version:##6%VER%"
 msgstr "##2Versión:##6%VER%"
 
 msgid "\"Outfit shortcut 3\""
-msgstr "\"Atajo para conjunto 3\""
+msgstr "\"Atajo para vestimenta 3\""
 
 msgid "\"Quick drop N items\""
 msgstr "\"Soltar N objetos rápidamente\""
@@ -617,13 +619,13 @@ msgid "Commands"
 msgstr "Comandos"
 
 msgid "\"Outfit shortcut 9\""
-msgstr "\"Atajo para conjunto 9\""
+msgstr "\"Atajo para vestimenta 9\""
 
 msgid "\"Emote shortcut 4\""
 msgstr "\"Atajo para emoticono 4\""
 
 msgid "\"Stop Attack\""
-msgstr ""
+msgstr "\"Detener el ataque\""
 
 msgid ""
 " The player list lists all of your acquaintances.  They are categorised as one\n"
@@ -655,13 +657,13 @@ msgid "MOUSE:"
 msgstr "RATÓN:"
 
 msgid "\"Next chat tab line\""
-msgstr ""
+msgstr "\"Línea del chat siguiente\""
 
 msgid "\"Set direction right\""
-msgstr ""
+msgstr "\"Voltear a la derecha\""
 
 msgid "\"Move to home location\""
-msgstr ""
+msgstr "\"Mover a la posición home\""
 
 msgid "Player relations"
 msgstr "Relaciones del jugador"
@@ -681,7 +683,7 @@ msgid "COMMANDS"
 msgstr "COMANDOS"
 
 msgid "\"Previous chat tab\""
-msgstr ""
+msgstr "\"Pestaña previa del chat\""
 
 msgid "/serverunignoreall - unignore all whispers on server side."
 msgstr "/serverunignoreall - des-ignorar todos los susurros, del lado del servidor."
@@ -690,13 +692,13 @@ msgid "\"Skill window\""
 msgstr "\"Ventana de habilidades\""
 
 msgid "\"Kills stats window\""
-msgstr ""
+msgstr "\"Ventana de estadisticas de matanzas\""
 
 msgid "\"Toggle chat\""
-msgstr ""
+msgstr "\"Activar chat\""
 
 msgid "##POther skills can be obtain by doing quests and missions in game."
-msgstr "##POtras habilidades pueden ser obtenidas realizando búsquedas y misiones en el juego."
+msgstr "##POtras habilidades pueden ser obtenidas realizando búsquedas y misiones en \nel juego."
 
 msgid "\"Change attack type\""
 msgstr "\"Cambiar tipo de ataque\""
@@ -711,7 +713,7 @@ msgid "\"Emote shortcut 6\""
 msgstr "\"Atajo para emoticono 6\""
 
 msgid "\"Outfit shortcut 2\""
-msgstr "\"Atajo para conjunto 2\""
+msgstr "\"Atajo para vestimenta 2\""
 
 msgid "You can change any key in keyboard settings."
 msgstr "Puedes cambiar cualquier tecla en las configuraciones del teclado."
@@ -726,10 +728,10 @@ msgid "/disconnect - quick disconnect from server."
 msgstr "/disconnect - desconectarse rápidamente del servidor."
 
 msgid "\"Switch quick drop counter\""
-msgstr ""
+msgstr "\"Alternar contador de elementos para soltar rápido\""
 
 msgid "\"Previous chat tab line\""
-msgstr ""
+msgstr "\"Línea del chat previa\""
 
 msgid "\"Emote shortcut 13\""
 msgstr "\"Atajo para emoticono 13\""
@@ -738,16 +740,16 @@ msgid "/disregard NICK - add nick to disregarded list."
 msgstr "/disregard NICK - agregar nick a la lista de desatendidos."
 
 msgid "\"Change crazy Move mode\""
-msgstr ""
+msgstr "\"Cambiar modo de Movimientos alocados\""
 
 msgid "\"Outfit shortcut 8\""
-msgstr "\"Atajo para conjunto 8\""
+msgstr "\"Atajo para vestimenta 8\""
 
 msgid "\"Change imitation mode\""
-msgstr ""
+msgstr "\"Cambiar modo de imitación\""
 
 msgid "\"Reset video mode to safe value\""
-msgstr ""
+msgstr "\"Reestablecer modo de video a valor seguro\""
 
 msgid "/undress NICK - remove all clothes from nick. Local effect only."
 msgstr "/undress NICK - quitar toda la ropa de un nick (efecto local sólamente)."
@@ -755,22 +757,22 @@ msgstr "/undress NICK - quitar toda la ropa de un nick (efecto local sólamente)
 msgid ""
 " Otherwise see the @@team|Development Team@@ section to have a list of\n"
 " developers and how to contact them."
-msgstr " Por otro lado, visita la sección @@team|Equipo de Desarrollo@@ para tener\n una lista con los desarrolladores y cómo contactarlos."
+msgstr " Por otro lado, visita la sección @@team|Equipo de Desarrollo@@ para tener una\n lista con los desarrolladores y cómo contactarlos."
 
 msgid "\"Outfit shortcut 14\""
-msgstr "\"Atajo para conjunto 14\""
+msgstr "\"Atajo para vestimenta 14\""
 
 msgid "\"Quick drop N items from 0 slot\""
-msgstr ""
+msgstr "\"Dejar caer rápidamente N artículos del la ranura 0\""
 
 msgid "\"Switch pvp attack\""
-msgstr ""
+msgstr "\"Alternar ataque pvp\""
 
 msgid "\"Emote shortcut window\""
 msgstr "\"Ventana para Emoticonos\""
 
 msgid "\"Bot checker window\""
-msgstr ""
+msgstr "\"Ventana de chequeo de bot\""
 
 msgid ""
 "/mail NICK MSG - send offline message to NICK. Working only in tmw server."
@@ -786,7 +788,7 @@ msgid "\"Emote shortcut 5\""
 msgstr "\"Atajo para emoticono 5\""
 
 msgid "\"Smilie\""
-msgstr ""
+msgstr "\"Sonrreír\""
 
 msgid "Whispers commands"
 msgstr "Comandos de susurros"
@@ -811,7 +813,7 @@ msgid "Search string not found."
 msgstr "Cadena de busqueda no encontrada."
 
 msgid "\"Wear outfit\""
-msgstr ""
+msgstr "\"Ponerse la vestimenta\""
 
 msgid "emote key"
 msgstr "tecla de emoticon"
@@ -840,7 +842,7 @@ msgid "/attack - attack target."
 msgstr "/attack - atacar al objetivo."
 
 msgid "\"Outfit shortcut 1\""
-msgstr "\"Atajo para conjunto 1\""
+msgstr "\"Atajo para vestimenta 1\""
 
 msgid ""
 " You may find that not all communication is to your liking.  While most people\n"
@@ -855,22 +857,22 @@ msgid "\"Emote shortcut 12\""
 msgstr "\"Atajo para emoticono 12\""
 
 msgid "\"Outfit shortcut 15\""
-msgstr "\"Atajo para conjunto 15\""
+msgstr "\"Atajo para vestimenta 15\""
 
 msgid "Windows"
 msgstr "Ventanas"
 
 msgid "\"Ignore input 2\""
-msgstr ""
+msgstr "\"Ignorar entrada 2\""
 
 msgid "\"Emulate right click from keyboard\""
-msgstr ""
+msgstr "\"Emular clic derecho desde el teclado\""
 
 msgid "\"Set home location/set arrow\""
-msgstr ""
+msgstr "\"Establecer posición home / colocar flecha\""
 
 msgid "\"Set direction left\""
-msgstr ""
+msgstr "\"Voltear a la izquierda\""
 
 msgid "\"Move left\""
 msgstr "\"Izquierda\""
@@ -912,7 +914,7 @@ msgid ""
 " `Disregard' (see below).  You can fine-tune your player relations in the\n"
 " `Setup' menu, which lists all the players you have added to it.  To open this\n"
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
-msgstr " Sin embargo, tú puedes protegerte de esos jugadores ignorándolos. Haz clic\n derecho sobre ellos y, en el menú contextual, selecciona \"Ignorar\" o\n \"Desatender\" (ver abajo). Puedes ver tus relaciones con los jugadores\n en el menú \"Configuración\", donde se enlistan todos los jugadores que has añadido.\n Para abrir este menú, selecciona \"Configuración\" en esquina superior de la ventana\n del cliente y después en \"Relaciones\"."
+msgstr " Sin embargo, tú puedes protegerte de esos jugadores ignorándolos. Haz clic\n derecho sobre ellos y, en el menú contextual, selecciona \"Ignorar\" o\n \"Desatender\" (ver abajo). Puedes ver tus relaciones con los jugadores en el\n menú \"Configuración\", donde se enlistan todos los jugadores que has añadido.\n Para abrir este menú, selecciona \"Configuración\" en esquina superior de la \n ventana del cliente y después en \"Relaciones\"."
 
 msgid ""
 "##P This file lists all contributors up to the current release. Check the wiki\n"
@@ -938,7 +940,7 @@ msgid "\"Item shortcut 12\""
 msgstr "\"Atajo para objeto 12\"  "
 
 msgid "\"Move to navigation point\""
-msgstr ""
+msgstr "\"Mover al punto de navegación\""
 
 msgid "Sound effects"
 msgstr "Efectos de sonido"
