@@ -336,8 +336,6 @@ public:
 
     bool checkPackets(const int type) const A_WARN_UNUSED;
 
-    static void logEvent(const SDL_Event &event);
-
     PacketLimit mPacketLimits[PACKET_SIZE + 1];
 
     void windowRemoved(const Window *const window);
@@ -448,7 +446,6 @@ private:
     bool mInputFocused;
     bool mMouseFocused;
     bool mNewMessageFlag;
-    bool mLogInput;
 };
 
 extern Client *client;

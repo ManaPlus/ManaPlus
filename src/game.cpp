@@ -32,6 +32,7 @@
 #include "configuration.h"
 #include "effectmanager.h"
 #include "emoteshortcut.h"
+#include "eventsmanager.h"
 #include "guildmanager.h"
 #include "itemshortcut.h"
 #include "soundmanager.h"
@@ -390,7 +391,6 @@ Game::Game():
     mAdjustPerfomance(config.getBoolValue("adjustPerfomance")),
     mLowerCounter(0),
     mPing(0),
-    mLogInput(config.getBoolValue("logInput")),
     mTime(cur_time + 1)
 {
     touchManager.setInGame(true);
@@ -1018,8 +1018,9 @@ void Game::handleInput()
 #endif
     {
         BLOCK_START("Game::handleInput 2")
-        if (mLogInput)
-            Client::logEvent(event);
+        if (eventsManager.handleEvent(event))
+            continue;
+
         if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
             updateHistory(event);
         checkKeys();

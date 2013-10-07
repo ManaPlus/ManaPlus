@@ -629,6 +629,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      emoteshortcut.cpp \
 	      emoteshortcut.h \
 	      equipment.h \
+	      eventsmanager.cpp \
+	      eventsmanager.h \
 	      flooritem.cpp \
 	      flooritem.h \
 	      game.cpp \
