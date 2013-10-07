@@ -45,6 +45,39 @@ void EventsManager::init()
     config.addListener("logInput", this);
 }
 
+bool EventsManager::handleCommonEvents(const SDL_Event &event)
+{
+    if (mLogInput)
+        logEvent(event);
+
+    switch (event.type)
+    {
+        case SDL_QUIT:
+            client->setState(STATE_EXIT);
+            logger->log1("force exit");
+            return true;
+#ifndef USE_SDL2
+        case SDL_VIDEORESIZE:
+            client->resizeVideo(event.resize.w, event.resize.h);
+            return true;
+#ifdef ANDROID
+        case SDL_KEYBOARDSHOW:
+            client->updateScreenKeyboard(event.user.code);
+            return true;
+        case SDL_ACCELEROMETER:
+            break;
+#endif
+#endif
+        default:
+            break;
+    }
+
+    if (inputManager.handleEvent(event))
+        return true;
+
+    return false;
+}
+
 bool EventsManager::handleEvents()
 {
     if (Game::instance())
@@ -63,81 +96,38 @@ bool EventsManager::handleEvents()
         while (SDL_PollEvent(&event))
 #endif
         {
-            if (mLogInput)
-                logEvent(event);
-
-            switch (event.type)
+            if (!handleCommonEvents(event))
             {
-                case SDL_QUIT:
-                    client->setState(STATE_EXIT);
-                    logger->log1("force exit");
-                    break;
-
-                case SDL_KEYDOWN:
-                    if (inputManager.handleAssignKey(
-                        event, INPUT_KEYBOARD))
-                    {
-                        continue;
-                    }
-                    inputManager.updateConditionMask();
-                    break;
-
-                case SDL_KEYUP:
-                    if (inputManager.handleAssignKey(
-                        event, INPUT_KEYBOARD))
-                    {
-                        continue;
-                    }
-                    inputManager.updateConditionMask();
-                    break;
-
-                case SDL_JOYBUTTONDOWN:
-                    inputManager.handleAssignKey(event, INPUT_JOYSTICK);
-                    break;
-
-                case SDL_MOUSEMOTION:
-                    break;
-
+                switch (event.type)
+                {
 #ifdef ANDROID
 #ifndef USE_SDL2
-                case SDL_ACTIVEEVENT:
-                    if ((event.active.state & SDL_APPACTIVE)
-                        && !event.active.gain)
-                    {
-                        client->setState(STATE_EXIT);
-                        logger->log1("exit on lost focus");
-                    }
-                    break;
+                    case SDL_ACTIVEEVENT:
+                        if ((event.active.state & SDL_APPACTIVE)
+                            && !event.active.gain)
+                        {
+                            client->setState(STATE_EXIT);
+                            logger->log1("exit on lost focus");
+                        }
+                        break;
 
-                case SDL_KEYBOARDSHOW:
-                    client->updateScreenKeyboard(event.user.code);
-                    break;
-
-                case SDL_ACCELEROMETER:
-                    break;
 #endif
 #endif
-                default:
-                    break;
-
+                    default:
+                        break;
 #ifdef USE_SDL2
-                case SDL_WINDOWEVENT:
-                    client->handleSDL2WindowEvent(event);
-                    break;
+                    case SDL_WINDOWEVENT:
+                        client->handleSDL2WindowEvent(event);
+                        break;
 #else
 #ifndef ANDROID
-                case SDL_ACTIVEEVENT:
-                    client->handleActive(event);
-                    break;
+                    case SDL_ACTIVEEVENT:
+                        client->handleActive(event);
+                        break;
 #endif
-                case SDL_VIDEORESIZE:
-                    client->resizeVideo(event.resize.w, event.resize.h, false);
-                    break;
 #endif
+                }
             }
-
-            if (inputManager.handleEvent(event))
-                continue;
 
 #ifdef USE_MUMBLE
             if (player_node && mumbleManager)
@@ -165,20 +155,12 @@ void EventsManager::handleGameEvents()
     while (SDL_PollEvent(&event))
 #endif
     {
-        BLOCK_START("Game::handleInput 2")
-        if (mLogInput)
-            logEvent(event);
-
         if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
             game->updateHistory(event);
         game->checkKeys();
 
-        if (inputManager.handleEvent(event))
-        {
-            BLOCK_END("Game::handleInput 2")
-            BLOCK_END("Game::handleInput 1")
-            return;
-        }
+        if (handleCommonEvents(event))
+            break;
 
         switch (event.type)
         {
@@ -189,24 +171,10 @@ void EventsManager::handleGameEvents()
                 break;
             }
 #else
-            case SDL_VIDEORESIZE:
-                client->resizeVideo(event.resize.w, event.resize.h);
-                break;
             // Active event
             case SDL_ACTIVEEVENT:
                 game->handleActive(event);
                 break;
-#endif
-            // Quit event
-            case SDL_QUIT:
-                client->setState(STATE_EXIT);
-                break;
-#ifdef ANDROID
-#ifndef USE_SDL2
-            case SDL_KEYBOARDSHOW:
-                client->updateScreenKeyboard(event.user.code);
-                break;
-#endif
 #endif
             default:
                 break;
