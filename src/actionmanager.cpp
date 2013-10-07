@@ -34,6 +34,7 @@
 #include "input/inputevent.h"
 #include "input/inputmanager.h"
 
+#include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
 #include "gui/windows/skilldialog.h"
@@ -195,16 +196,12 @@ impHandler(outfit)
 
 impHandler0(mouseClick)
 {
-    if (!viewport)
+    if (!guiInput)
         return false;
 
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);
-
-    gcn::MouseEvent event2(viewport, false, false, false, false,
-        0, gcn::MouseEvent::RIGHT, mouseX, mouseY, 1);
-
-    viewport->mousePressed(event2);
+    guiInput->simulateMouseClick(mouseX, mouseY, gcn::MouseEvent::RIGHT);
     return true;
 }
 
