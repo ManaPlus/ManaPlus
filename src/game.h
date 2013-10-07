@@ -124,11 +124,11 @@ class Game final
 
         static bool saveScreenshot(SDL_Surface *const screenshot);
 
-    private:
         void updateHistory(const SDL_Event &event);
 
         void checkKeys();
 
+    private:
         void clearKeysArray();
 
         Map *mCurrentMap;

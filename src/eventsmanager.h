@@ -41,6 +41,8 @@ class EventsManager final : public ConfigListener
 
         bool handleEvents();
 
+        void handleGameEvents();
+
         void optionChanged(const std::string &name);
 
         void logEvent(const SDL_Event &event);

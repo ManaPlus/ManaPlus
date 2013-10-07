@@ -1009,62 +1009,7 @@ void Game::handleInput()
     if (joystick)
         joystick->logic();
 
-    // Events
-    SDL_Event event;
-#ifdef USE_SDL2
-    while (SDL_WaitEventTimeout(&event, 0))
-#else
-    while (SDL_PollEvent(&event))
-#endif
-    {
-        BLOCK_START("Game::handleInput 2")
-//        if (eventsManager.handleEvent(event))
-//            continue;
-
-        if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
-            updateHistory(event);
-        checkKeys();
-
-        if (inputManager.handleEvent(event))
-        {
-            BLOCK_END("Game::handleInput 2")
-            BLOCK_END("Game::handleInput 1")
-            return;
-        }
-
-        switch (event.type)
-        {
-#ifdef USE_SDL2
-            case SDL_WINDOWEVENT:
-            {
-                handleSDL2WindowEvent(event);
-                break;
-            }
-#else
-            case SDL_VIDEORESIZE:
-                client->resizeVideo(event.resize.w, event.resize.h);
-                break;
-            // Active event
-            case SDL_ACTIVEEVENT:
-                handleActive(event);
-                break;
-#endif
-            // Quit event
-            case SDL_QUIT:
-                client->setState(STATE_EXIT);
-                break;
-#ifdef ANDROID
-#ifndef USE_SDL2
-            case SDL_KEYBOARDSHOW:
-                client->updateScreenKeyboard(event.user.code);
-                break;
-#endif
-#endif
-            default:
-                break;
-        }
-        BLOCK_END("Game::handleInput 2")
-    }  // End while
+    eventsManager.handleGameEvents();
 
     // If the user is configuring the keys then don't respond.
     if (!player_node || !keyboard.isEnabled() || player_node->getAway())
