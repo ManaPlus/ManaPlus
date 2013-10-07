@@ -2168,7 +2168,6 @@ void Client::initConfiguration() const
     if (!checkPath(defaultUpdateHost))
         defaultUpdateHost.clear();
     config.setValue("updatehost", defaultUpdateHost);
-    config.setValue("customcursor", true);
     config.setValue("useScreenshotDirectorySuffix", true);
     config.setValue("ChatLogLength", 128);
 
