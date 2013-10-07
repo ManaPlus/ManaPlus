@@ -2943,7 +2943,7 @@ void Client::logEvent(const SDL_Event &event)
         case SDL_FINGERDOWN:
         {
             const SDL_TouchFingerEvent &touch = event.tfinger;
-            logger->log("event: SDL_FINGERDOWN: %ld,%ld (%f,%f) (%f,%f)",
+            logger->log("event: SDL_FINGERDOWN: %lld,%lld (%f,%f) (%f,%f)",
                 touch.touchId, touch.fingerId, touch.x, touch.y,
                 touch.dx, touch.dy);
             break;
@@ -2951,7 +2951,7 @@ void Client::logEvent(const SDL_Event &event)
         case SDL_FINGERUP:
         {
             const SDL_TouchFingerEvent &touch = event.tfinger;
-            logger->log("event: SDL_FINGERUP: %ld,%ld (%f,%f) (%f,%f)",
+            logger->log("event: SDL_FINGERUP: %lld,%lld (%f,%f) (%f,%f)",
                 touch.touchId, touch.fingerId, touch.x, touch.y,
                 touch.dx, touch.dy);
             break;
@@ -2959,7 +2959,7 @@ void Client::logEvent(const SDL_Event &event)
         case SDL_FINGERMOTION:
         {
             const SDL_TouchFingerEvent &touch = event.tfinger;
-            logger->log("event: SDL_FINGERMOTION: %ld,%ld (%f,%f) (%f,%f)",
+            logger->log("event: SDL_FINGERMOTION: %lld,%lld (%f,%f) (%f,%f)",
                 touch.touchId, touch.fingerId, touch.x, touch.y,
                 touch.dx, touch.dy);
             break;
