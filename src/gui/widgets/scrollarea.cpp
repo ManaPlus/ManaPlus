@@ -731,9 +731,13 @@ void ScrollArea::mouseReleased(gcn::MouseEvent& event)
     {
         if (!event.isConsumed())
         {
+#ifdef ANDROID
+            int dx = mClickX - event.getX();
+            int dy = mClickY - event.getY();
+#else
             int dx = event.getX() - mClickX;
             int dy = event.getY() - mClickY;
-
+#endif
             if ((dx < 20 && dx > 0) || (dx > -20 && dx < 0))
                 dx = 0;
 
