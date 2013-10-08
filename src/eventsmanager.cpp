@@ -165,7 +165,6 @@ void EventsManager::handleGameEvents()
 
         if (handleCommonEvents(event))
             break;
-        BLOCK_END("Game::handleInput 2")
     }  // End while
 }
 

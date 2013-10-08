@@ -970,11 +970,8 @@ int Client::gameExec()
     while (mState != STATE_EXIT)
     {
         PROFILER_START();
-        BLOCK_START("Client::gameExec 1")
         if (eventsManager.handleEvents())
             continue;
-
-        BLOCK_END("Client::gameExec 1")
 
         BLOCK_START("Client::gameExec 3")
         if (Net::getGeneralHandler())
@@ -1751,7 +1748,6 @@ int Client::gameExec()
             }
             BLOCK_END("Client::gameExec 8")
         }
-        BLOCK_END("Client::gameExec 1")
     }
 
     return 0;
