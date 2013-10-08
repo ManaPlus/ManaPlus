@@ -23,8 +23,6 @@
 #ifndef RESOURCES_DB_NPCDB_H
 #define RESOURCES_DB_NPCDB_H
 
-#include <stdint.h>
-
 #include <string>
 
 #include "localconsts.h"

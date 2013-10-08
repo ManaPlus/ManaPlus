@@ -30,13 +30,11 @@
 
 #include "resources/resourcemanager.h"
 
-#include <stdlib.h>
-
 #ifdef WIN32
 #include "utils/specialfolder.h"
 #define realpath(N, R) _fullpath((R), (N), _MAX_PATH)
 #elif defined __OpenBSD__
-#include <limits.h>
+#include <limits>
 #endif
 
 #ifdef ANDROID

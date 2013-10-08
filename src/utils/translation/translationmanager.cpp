@@ -28,8 +28,6 @@
 
 #include "resources/resourcemanager.h"
 
-#include <stdlib.h>
-
 #include "logger.h"
 
 #include "debug.h"

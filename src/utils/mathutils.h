@@ -24,7 +24,6 @@
 #define UTILS_MATHUTILS_H
 
 #include <string>
-#include <stdint.h>
 #include <cstring>
 
 #include "localconsts.h"

@@ -23,7 +23,6 @@
 #ifndef NET_DOWNLOAD_H
 #define NET_DOWNLOAD_H
 
-#include <stdio.h>
 #include <string>
 
 #include "localconsts.h"

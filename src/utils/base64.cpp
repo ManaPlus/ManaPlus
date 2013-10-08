@@ -29,8 +29,7 @@
 
 #include "utils/base64.h"
 
-#include <stdlib.h>
-#include <string.h>
+#include <string>
 
 #include "debug.h"
 

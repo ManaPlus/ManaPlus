@@ -27,8 +27,6 @@
 
 #include "utils/paths.h"
 
-#include <stdlib.h>
-
 #include "debug.h"
 
 #ifdef DEBUG_CONFIG

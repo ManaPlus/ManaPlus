@@ -28,7 +28,6 @@
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 
-#include <assert.h>
 #include <sstream>
 
 #include "debug.h"

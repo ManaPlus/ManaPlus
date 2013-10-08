@@ -18,7 +18,6 @@
 #if defined (__FreeBSD__) || (defined __DragonFly__)
 #include <sys/stat.h>
 #endif
-#include <stdint.h>
 
 #include "localconsts.h"
 

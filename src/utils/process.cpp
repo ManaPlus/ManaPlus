@@ -23,7 +23,6 @@
 #include <cstdarg>
 #include <cstdio>
 
-#include <stdlib.h>
 #include <unistd.h>
 
 #include "localconsts.h"

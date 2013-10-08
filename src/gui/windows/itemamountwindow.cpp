@@ -48,8 +48,6 @@
 
 #include "utils/gettext.h"
 
-#include <math.h>
-
 #include "debug.h"
 
 class ItemsModal final : public gcn::ListModel

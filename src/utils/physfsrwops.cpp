@@ -29,8 +29,6 @@
 #include "utils/fuzzer.h"
 #include "utils/physfscheckutils.h"
 
-#include <stdio.h>
-
 #include "debug.h"
 
 #ifdef USE_SDL2

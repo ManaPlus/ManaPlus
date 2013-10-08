@@ -30,7 +30,7 @@
 
 #include <algorithm>
 #include <cstring>
-#include <time.h>
+#include <ctime>
 
 #include "debug.h"
 

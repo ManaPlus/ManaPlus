@@ -92,7 +92,6 @@
 # endif
 
 # ifdef _DEBUG
-#   include <stdio.h>
 #   include <stdlib.h>
 /** Macro for fast_mutex assertions.  Real version (for debug mode). */
 #   define _FAST_MUTEX_ASSERT(_Expr, _Msg) \

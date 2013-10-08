@@ -26,7 +26,7 @@
 
 #include "resources/db/palettedb.h"
 
-#include <math.h>
+#include <cmath>
 #include <sstream>
 
 #include <SDL_endian.h>

@@ -26,8 +26,6 @@
 
 #include "logger.h"
 
-#include <stdlib.h>
-
 #include "debug.h"
 
 PoParser::PoParser() :

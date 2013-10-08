@@ -31,8 +31,6 @@
 #include <windows.h>
 #elif defined __APPLE__
 #include <Carbon/Carbon.h>
-#elif defined(__linux__) || defined(__linux)
-#include <stdlib.h>
 #endif
 
 #include <sys/time.h>

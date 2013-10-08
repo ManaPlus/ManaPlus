@@ -24,7 +24,7 @@
 
 #include "simpleanimation.h"
 
-#include <math.h>
+#include <cmath>
 
 #include "debug.h"
 
