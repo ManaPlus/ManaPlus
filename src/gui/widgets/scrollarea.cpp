@@ -744,7 +744,7 @@ void ScrollArea::mouseReleased(gcn::MouseEvent& event)
             if ((dy < 20 && dy > 0) || (dy > -20 && dy < 0))
                 dy = 0;
 
-            if (dx)
+            if (abs(dx) > abs(dy))
             {
                 int s = mHScroll + dx;
                 if (s < 0)
@@ -760,7 +760,7 @@ void ScrollArea::mouseReleased(gcn::MouseEvent& event)
 
                 setHorizontalScrollAmount(s);
             }
-            if (dy)
+            else if (dy)
             {
                 int s = mVScroll + dy;
                 if (s < 0)
