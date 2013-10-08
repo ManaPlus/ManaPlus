@@ -27,6 +27,10 @@ SET (FILES
     equipment_background.xml
     equipmentbox.png
     extendedlistbox.xml
+    extendedlistbox_high.xml
+    extendedlistbox_medium.xml
+    extendedlistbox_xhigh.xml
+    extendedlistbox_xxhigh.xml
     help.xml
     incomplete_icon.xml
     info.xml
@@ -42,6 +46,10 @@ SET (FILES
     keyboard_icon_xxhigh.xml
     LICENSE.txt
     listbox.xml
+    listbox_high.xml
+    listbox_medium.xml
+    listbox_xhigh.xml
+    listbox_xxhigh.xml
     login.xml
     map.xml
     ministatus.xml

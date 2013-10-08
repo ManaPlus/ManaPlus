@@ -98,6 +98,12 @@ class ListBox : public gcn::ListBox,
         int getPressedIndex()
         { return mPressedIndex; }
 
+        unsigned int getRowHeight() const override A_WARN_UNUSED
+        { return mRowHeight; }
+
+        void setRowHeight(unsigned int n)
+        { mRowHeight = n; }
+
     protected:
         gcn::Color mHighlightColor;
         gcn::Color mForegroundSelectedColor;
@@ -105,6 +111,8 @@ class ListBox : public gcn::ListBox,
         int mOldSelected;
         int mPadding;
         int mPressedIndex;
+        unsigned int mRowHeight;
+        int mItemPadding;
         Skin *mSkin;
         static float mAlpha;
         bool mDistributeMousePressed;

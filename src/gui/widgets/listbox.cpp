@@ -49,6 +49,8 @@ ListBox::ListBox(const Widget2 *const widget,
     mOldSelected(-1),
     mPadding(0),
     mPressedIndex(-2),
+    mRowHeight(0),
+    mItemPadding(1),
     mSkin(nullptr),
     mDistributeMousePressed(true),
     mCenterText(false)
@@ -61,7 +63,16 @@ ListBox::ListBox(const Widget2 *const widget,
         mSkin = theme->load(skin, "listbox.xml");
 
     if (mSkin)
+    {
         mPadding = mSkin->getPadding();
+        mItemPadding = mSkin->getOption("itemPadding");
+    }
+
+    const gcn::Font *font = getFont();
+    if (font)
+        mRowHeight = font->getHeight() + 2 * mItemPadding;
+    else
+        mRowHeight = 13;
 
     adjustSize();
 }
@@ -113,12 +124,13 @@ void ListBox::draw(gcn::Graphics *graphics)
             const std::string str = mListModel->getElementAt(mSelected);
             font->drawString(graphics, str,
                 (width - font->getWidth(str)) / 2,
-                mSelected * rowHeight + mPadding);
+                mSelected * rowHeight + mPadding + mItemPadding);
         }
         // Draw the list elements
         g->setColorAll(mForegroundColor, mForegroundColor2);
         const int sz = mListModel->getNumberOfElements();
-        for (int i = 0, y = mPadding; i < sz; ++i, y += rowHeight)
+        for (int i = 0, y = mPadding + mItemPadding;
+             i < sz; ++i, y += rowHeight)
         {
             if (i != mSelected)
             {
@@ -141,12 +153,13 @@ void ListBox::draw(gcn::Graphics *graphics)
                 mForegroundSelectedColor2);
             const std::string str = mListModel->getElementAt(mSelected);
             font->drawString(graphics, str, mPadding,
-                mSelected * rowHeight + mPadding);
+                mSelected * rowHeight + mPadding + mItemPadding);
         }
         // Draw the list elements
         g->setColorAll(mForegroundColor, mForegroundColor2);
         const int sz = mListModel->getNumberOfElements();
-        for (int i = 0, y = mPadding; i < sz; ++i, y += rowHeight)
+        for (int i = 0, y = mPadding + mItemPadding; i < sz;
+             ++i, y += rowHeight)
         {
             if (i != mSelected)
             {

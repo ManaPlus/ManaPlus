@@ -61,21 +61,13 @@ class ExtendedListBox final : public ListBox
          */
         void draw(gcn::Graphics *graphics) override;
 
-        unsigned int getRowHeight() const override A_WARN_UNUSED
-        { return mRowHeight; }
-
-        void setRowHeight(unsigned int n)
-        { mRowHeight = n; }
-
         void adjustSize() override;
 
         int getSelectionByMouse(const int y) const override;
 
     protected:
-        unsigned int mRowHeight;
         int mImagePadding;
         int mSpacing;
-        int mItemPadding;
         int mHeight;
         std::vector<ExtendedListBoxItem> mListItems;
         std::vector<ExtendedListBoxItem> mSelectedItems;
