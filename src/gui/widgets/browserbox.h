@@ -111,8 +111,8 @@ class BrowserBox final : public gcn::Widget,
          * Constructor.
          */
         BrowserBox(const Widget2 *const widget,
-                   const unsigned int mode = AUTO_SIZE,
-                   const bool opaque = true);
+                   const unsigned int mode,
+                   const bool opaque);
 
         A_DELETE_COPY(BrowserBox)
 
@@ -253,6 +253,7 @@ class BrowserBox final : public gcn::Widget,
         Links mLinks;
 
         LinkHandler *mLinkHandler;
+        Skin *mSkin;
         unsigned int mMode;
         unsigned int mHighMode;
         int mSelectedLink;
@@ -277,7 +278,6 @@ class BrowserBox final : public gcn::Widget,
         bool mEnableKeys;
         bool mEnableTabs;
 
-        static Skin *mSkin;
         static ImageSet *mEmotes;
         static int mInstances;
 };

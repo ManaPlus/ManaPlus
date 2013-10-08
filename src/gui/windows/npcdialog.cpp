@@ -84,7 +84,7 @@ NpcDialog::NpcDialog(const int npcId) :
     mNpcId(npcId),
     mDefaultInt(0),
     mDefaultString(),
-    mTextBox(new BrowserBox(this, BrowserBox::AUTO_WRAP)),
+    mTextBox(new BrowserBox(this, BrowserBox::AUTO_WRAP, true)),
     mScrollArea(new ScrollArea(mTextBox,
         getOptionBool("showtextbackground"), "npc_textbackground.xml")),
     mText(),

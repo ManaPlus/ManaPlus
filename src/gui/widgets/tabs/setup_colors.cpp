@@ -50,7 +50,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     gcn::SelectionListener(),
     mColorBox(new ListBox(this, userPalette, "")),
     mScroll(new ScrollArea(mColorBox, true, "setup_colors_background.xml")),
-    mPreview(new BrowserBox(this, BrowserBox::AUTO_WRAP)),
+    mPreview(new BrowserBox(this, BrowserBox::AUTO_WRAP, true)),
     mTextPreview(new TextPreview(this, gettext(rawmsg))),
     mPreviewBox(new ScrollArea(mPreview, true,
         "setup_colors_preview_background.xml")),

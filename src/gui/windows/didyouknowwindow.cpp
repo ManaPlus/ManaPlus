@@ -49,7 +49,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
     // TRANSLATORS: did you know window name
     Window(_("Did You Know?"), false, nullptr, "didyouknow.xml"),
     gcn::ActionListener(),
-    mBrowserBox(new BrowserBox(this)),
+    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true)),
     mScrollArea(new ScrollArea(mBrowserBox,
         true, "didyouknow_background.xml")),
     // TRANSLATORS: did you know window button

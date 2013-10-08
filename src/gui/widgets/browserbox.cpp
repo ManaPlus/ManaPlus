@@ -44,7 +44,6 @@
 
 #include "debug.h"
 
-Skin *BrowserBox::mSkin = nullptr;
 ImageSet *BrowserBox::mEmotes = nullptr;
 int BrowserBox::mInstances = 0;
 
@@ -58,6 +57,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
     mLineParts(),
     mLinks(),
     mLinkHandler(nullptr),
+    mSkin(nullptr),
     mMode(mode),
     mHighMode(UNDERLINE | BACKGROUND),
     mSelectedLink(-1),
@@ -84,10 +84,11 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
 
     mBackgroundColor = getThemeColor(Theme::BACKGROUND);
 
+    Theme *const theme = Theme::instance();
+    if (theme)
+        mSkin = theme->load("browserbox.xml", "");
     if (mInstances == 0)
     {
-        if (Theme::instance())
-            mSkin = Theme::instance()->load("browserbox.xml", "");
         mEmotes = ResourceManager::getInstance()->getImageSet(
             "graphics/sprites/chatemotes.png", 17, 18);
     }
@@ -130,11 +131,16 @@ BrowserBox::~BrowserBox()
     if (gui)
         gui->removeDragged(this);
 
+    Theme *const theme = Theme::instance();
+    if (theme)
+    {
+        theme->unload(mSkin);
+        mSkin = nullptr;
+    }
+
     mInstances --;
     if (mInstances == 0)
     {
-        if (Theme::instance())
-            Theme::instance()->unload(mSkin);
         if (mEmotes)
         {
             mEmotes->decRef();
