@@ -361,17 +361,18 @@ static const char *cursorSize(const int size)
 
 void ActorSprite::initTargetCursor()
 {
-    static const std::string targetCursorFile("%s/target-cursor-%s-%s.xml");
-    const std::string path(Theme::getThemePath());
+    static const std::string targetCursorFile("target-cursor-%s-%s.xml");
 
     // Load target cursors
     for (int size = TC_SMALL; size < NUM_TC; size++)
     {
         for (int type = TCT_NORMAL; type < NUM_TCT; type++)
         {
-            targetCursor[type][size] = AnimatedSprite::load(strprintf(
-                targetCursorFile.c_str(), path.c_str(), cursorType(type),
-                cursorSize(size)));
+            targetCursor[type][size] = AnimatedSprite::load(
+                Theme::resolveThemePath(strprintf(
+                targetCursorFile.c_str(),
+                cursorType(type),
+                cursorSize(size))));
         }
     }
 }
