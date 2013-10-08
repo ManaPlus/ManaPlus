@@ -22,6 +22,7 @@
 #define DRAGDROP_H
 
 #include "item.h"
+#include "itemsoundmanager.h"
 #include "textcommand.h"
 
 #include "gui/widgets/skilldata.h"
@@ -103,6 +104,7 @@ class DragDrop final
                     mItemImage->incRef();
                 mSource = source;
                 mTag = tag;
+                ItemSoundManager::playSfx(item, SOUND_EVENT_TAKE);
             }
             else
             {
@@ -180,6 +182,8 @@ class DragDrop final
         {
             if (mItemImage)
                 mItemImage->decRef();
+            if (mItem)
+                ItemSoundManager::playSfx(mItem, SOUND_EVENT_PUT);
             mItem = 0;
             mItemColor = 1;
             mItemImage = nullptr;

@@ -33,6 +33,9 @@ class ItemSoundManager final
     public:
         A_DELETE_COPY(ItemSoundManager)
 
+        static void playSfx(const int item,
+                            const ItemSoundEvent sound);
+
         static void playSfx(const Item *const item,
                             const ItemSoundEvent sound);
 

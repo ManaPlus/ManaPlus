@@ -35,7 +35,13 @@ void ItemSoundManager::playSfx(const Item *const item,
 {
     if (!item)
         return;
-    const ItemInfo &info = ItemDB::get(item->getId());
+    playSfx(item->getId(), sound);
+}
+
+void ItemSoundManager::playSfx(const int itemId,
+                               const ItemSoundEvent sound)
+{
+    const ItemInfo &info = ItemDB::get(itemId);
     std::string sfx = info.getSound(sound).sound;
     if (sfx.empty())
     {

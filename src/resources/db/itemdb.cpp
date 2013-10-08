@@ -172,6 +172,8 @@ static void initStatic()
     mSoundNames["unequip"] = SOUND_EVENT_UNEQUIP;
     mSoundNames["drop"] = SOUND_EVENT_DROP;
     mSoundNames["pickup"] = SOUND_EVENT_PICKUP;
+    mSoundNames["take"] = SOUND_EVENT_TAKE;
+    mSoundNames["put"] = SOUND_EVENT_PUT;
 }
 
 void ItemDB::load()
