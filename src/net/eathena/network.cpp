@@ -162,7 +162,7 @@ void Network::dispatchMessages()
 {
     while (messageReady())
     {
-        SDL_mutexP(mMutex);
+        SDL_mutexP(mMutexIn);
         const int msgId = readWord(0);
         int len = -1;
         if (msgId == SMSG_SERVER_VERSION_RESPONSE)
@@ -183,7 +183,7 @@ void Network::dispatchMessages()
             len = readWord(2);
 
         MessageIn msg(mInBuffer, len);
-        SDL_mutexV(mMutex);
+        SDL_mutexV(mMutexIn);
 
         if (len == 0)
         {
@@ -210,7 +210,7 @@ bool Network::messageReady()
 {
     int len = -1;
 
-    SDL_mutexP(mMutex);
+    SDL_mutexP(mMutexIn);
     if (mInSize >= 2)
     {
         const int msgId = readWord(0);
@@ -226,7 +226,7 @@ bool Network::messageReady()
     }
 
     const bool ret = (mInSize >= static_cast<unsigned int>(len));
-    SDL_mutexV(mMutex);
+    SDL_mutexV(mMutexIn);
 
     return ret;
 }

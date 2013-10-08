@@ -141,7 +141,7 @@ void Network::dispatchMessages()
     BLOCK_START("Network::dispatchMessages 1")
     while (messageReady())
     {
-        SDL_mutexP(mMutex);
+        SDL_mutexP(mMutexIn);
         BLOCK_START("Network::dispatchMessages 2")
         const int msgId = readWord(0);
         int len;
@@ -156,7 +156,7 @@ void Network::dispatchMessages()
             len = readWord(2);
 
         MessageIn msg(mInBuffer, len);
-        SDL_mutexV(mMutex);
+        SDL_mutexV(mMutexIn);
         BLOCK_END("Network::dispatchMessages 2")
         BLOCK_START("Network::dispatchMessages 3")
 
@@ -187,7 +187,7 @@ bool Network::messageReady()
 {
     int len = -1;
 
-    SDL_mutexP(mMutex);
+    SDL_mutexP(mMutexIn);
     if (mInSize >= 2)
     {
         const int msgId = readWord(0);
@@ -210,7 +210,7 @@ bool Network::messageReady()
     }
 
     const bool ret = (mInSize >= static_cast<unsigned int>(len));
-    SDL_mutexV(mMutex);
+    SDL_mutexV(mMutexIn);
 
     return ret;
 }

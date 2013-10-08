@@ -104,7 +104,8 @@ class Network
         std::string mError;
 
         SDL_Thread *mWorkerThread;
-        SDL_mutex *mMutex;
+        SDL_mutex *mMutexIn;
+        SDL_mutex *mMutexOut;
         int mSleep;
 };
 

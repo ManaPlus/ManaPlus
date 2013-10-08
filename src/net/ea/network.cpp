@@ -61,7 +61,8 @@ Network::Network() :
     mState(IDLE),
     mError(),
     mWorkerThread(nullptr),
-    mMutex(SDL_CreateMutex()),
+    mMutexIn(SDL_CreateMutex()),
+    mMutexOut(SDL_CreateMutex()),
     mSleep(config.getIntValue("networksleep"))
 {
     TcpNet::init();
@@ -72,8 +73,10 @@ Network::~Network()
     if (mState != IDLE && mState != NET_ERROR)
         disconnect();
 
-    SDL_DestroyMutex(mMutex);
-    mMutex = nullptr;
+    SDL_DestroyMutex(mMutexIn);
+    mMutexIn = nullptr;
+    SDL_DestroyMutex(mMutexOut);
+    mMutexOut = nullptr;
 
     delete []mInBuffer;
     delete []mOutBuffer;
@@ -146,25 +149,26 @@ void Network::flush()
     if (!mOutSize || mState != CONNECTED)
         return;
 
-    SDL_mutexP(mMutex);
+    SDL_mutexP(mMutexOut);
     const int ret = TcpNet::send(mSocket, mOutBuffer, mOutSize);
     DEBUGLOG(std::string("Send ").append(toString(mOutSize)).append(" bytes"));
     if (ret < static_cast<int>(mOutSize))
     {
+        SDL_mutexV(mMutexOut);
         setError("Error in TcpNet::send(): " +
             std::string(TcpNet::getError()));
     }
     mOutSize = 0;
-    SDL_mutexV(mMutex);
+    SDL_mutexV(mMutexOut);
 }
 
 void Network::skip(const int len)
 {
-    SDL_mutexP(mMutex);
+    SDL_mutexP(mMutexIn);
     mToSkip += len;
     if (!mInSize)
     {
-        SDL_mutexV(mMutex);
+        SDL_mutexV(mMutexIn);
         return;
     }
 
@@ -179,7 +183,7 @@ void Network::skip(const int len)
         mToSkip -= mInSize;
         mInSize = 0;
     }
-    SDL_mutexV(mMutex);
+    SDL_mutexV(mMutexIn);
 }
 
 bool Network::realConnect()
@@ -252,10 +256,10 @@ void Network::receive()
             case 1:
             {
                 // Receive data from the socket
-                SDL_mutexP(mMutex);
+                SDL_mutexP(mMutexIn);
                 if (mInSize > BUFFER_LIMIT)
                 {
-                    SDL_mutexV(mMutex);
+                    SDL_mutexV(mMutexIn);
                     SDL_Delay(100);
                     continue;
                 }
@@ -294,7 +298,7 @@ void Network::receive()
                         }
                     }
                 }
-                SDL_mutexV(mMutex);
+                SDL_mutexV(mMutexIn);
                 break;
             }
 
