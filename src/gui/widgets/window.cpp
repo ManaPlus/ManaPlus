@@ -1229,6 +1229,8 @@ bool Window::getOptionBool(const std::string &name) const
 #ifdef USE_PROFILER
 void Window::logic()
 {
+    BLOCK_START("Window::logic")
     logicChildren();
+    BLOCK_END("Window::logic")
 }
 #endif

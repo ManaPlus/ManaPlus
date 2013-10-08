@@ -266,6 +266,7 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
 
 void MapDebugTab::logic()
 {
+    BLOCK_START("MapDebugTab::logic")
     if (player_node)
     {
         // TRANSLATORS: debug window label
@@ -359,6 +360,7 @@ void MapDebugTab::logic()
     mFPSLabel->setCaption(strprintf(mFPSText.c_str(), fps));
     // TRANSLATORS: debug window label, logic per second
     mLPSLabel->setCaption(strprintf(_("%d LPS"), lps));
+    BLOCK_END("MapDebugTab::logic")
 }
 
 TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
@@ -409,6 +411,7 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
 
 void TargetDebugTab::logic()
 {
+    BLOCK_START("TargetDebugTab::logic")
     if (player_node && player_node->getTarget())
     {
         const Being *const target = player_node->getTarget();
@@ -504,6 +507,7 @@ void TargetDebugTab::logic()
     mTargetPartyLabel->adjustSize();
     mTargetGuildLabel->adjustSize();
     mAttackDelayLabel->adjustSize();
+    BLOCK_END("TargetDebugTab::logic")
 }
 
 NetDebugTab::NetDebugTab(const Widget2 *const widget) :
@@ -526,6 +530,7 @@ NetDebugTab::NetDebugTab(const Widget2 *const widget) :
 
 void NetDebugTab::logic()
 {
+    BLOCK_START("NetDebugTab::logic")
     // TRANSLATORS: debug window label
     mPingLabel->setCaption(strprintf(_("Ping: %s ms"),
         player_node->getPingTime().c_str()));
@@ -535,4 +540,5 @@ void NetDebugTab::logic()
     // TRANSLATORS: debug window label
     mOutPackets1Label->setCaption(strprintf(_("Out: %d bytes/s"),
         PacketCounters::getOutBytes()));
+    BLOCK_END("NetDebugTab::logic")
 }

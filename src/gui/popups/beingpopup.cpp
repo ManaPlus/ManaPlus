@@ -205,6 +205,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
 #ifdef USE_PROFILER
 void BeingPopup::logic()
 {
+    BLOCK_START("BeingPopup::logic")
     logicChildren();
+    BLOCK_END("BeingPopup::logic")
 }
 #endif

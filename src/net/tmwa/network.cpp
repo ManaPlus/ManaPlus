@@ -138,10 +138,11 @@ void Network::clearHandlers()
 
 void Network::dispatchMessages()
 {
-    BLOCK_START("Network::dispatchMessages")
+    BLOCK_START("Network::dispatchMessages 1")
     while (messageReady())
     {
         SDL_mutexP(mMutex);
+        BLOCK_START("Network::dispatchMessages 2")
         const int msgId = readWord(0);
         int len;
         if (msgId == SMSG_SERVER_VERSION_RESPONSE)
@@ -156,6 +157,8 @@ void Network::dispatchMessages()
 
         MessageIn msg(mInBuffer, len);
         SDL_mutexV(mMutex);
+        BLOCK_END("Network::dispatchMessages 2")
+        BLOCK_START("Network::dispatchMessages 3")
 
         if (len == 0)
         {
@@ -175,8 +178,9 @@ void Network::dispatchMessages()
         }
 
         skip(len);
+        BLOCK_END("Network::dispatchMessages 3")
     }
-    BLOCK_END("Network::dispatchMessages")
+    BLOCK_END("Network::dispatchMessages 1")
 }
 
 bool Network::messageReady()

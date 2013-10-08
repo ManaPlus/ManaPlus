@@ -649,8 +649,10 @@ void CharCreateDialog::updateLook()
 
 void CharCreateDialog::logic()
 {
+    BLOCK_START("CharCreateDialog::logic")
     if (mPlayer)
         mPlayer->logic();
+    BLOCK_END("CharCreateDialog::logic")
 }
 
 void CharCreateDialog::updatePlayer()

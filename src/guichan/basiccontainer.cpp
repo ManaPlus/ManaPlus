@@ -194,7 +194,9 @@ namespace gcn
 
     void BasicContainer::logic()
     {
+        BLOCK_START("BasicContainer::logic")
         logicChildren();
+        BLOCK_END("BasicContainer::logic")
     }
 
     void BasicContainer::_setFocusHandler(FocusHandler* focusHandler)

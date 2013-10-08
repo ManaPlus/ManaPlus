@@ -299,7 +299,9 @@ void ListBox::adjustSize()
 
 void ListBox::logic()
 {
+    BLOCK_START("ListBox::logic")
     adjustSize();
+    BLOCK_END("ListBox::logic")
 }
 
 int ListBox::getSelectionByMouse(const int y) const
