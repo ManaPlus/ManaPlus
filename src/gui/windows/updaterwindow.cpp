@@ -180,7 +180,8 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     // TRANSLATORS: updater window button
     mPlayButton(new Button(this, _("Play"), "play", this)),
     mProgressBar(new ProgressBar(this, 0.0, 310, 0)),
-    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true)),
+    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
+        "browserbox.xml")),
     mScrollArea(new ScrollArea(mBrowserBox, true, "update_background.xml")),
     mUpdateServerPath(mUpdateHost)
 {

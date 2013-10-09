@@ -51,7 +51,8 @@ HelpWindow::HelpWindow() :
     gcn::ActionListener(),
     // TRANSLATORS: help window. button.
     mDYKButton(new Button(this, _("Did you know..."), "DYK", this)),
-    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true)),
+    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
+        "browserbox.xml")),
     mScrollArea(new ScrollArea(mBrowserBox, true, "help_background.xml")),
     mTagFileMap()
 {

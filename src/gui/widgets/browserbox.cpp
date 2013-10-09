@@ -47,8 +47,10 @@
 ImageSet *BrowserBox::mEmotes = nullptr;
 int BrowserBox::mInstances = 0;
 
-BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
-                       const bool opaque) :
+BrowserBox::BrowserBox(const Widget2 *const widget,
+                       const unsigned int mode,
+                       const bool opaque,
+                       const std::string &skin) :
     gcn::Widget(),
     Widget2(widget),
     gcn::MouseListener(),
@@ -86,7 +88,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget, const unsigned int mode,
 
     Theme *const theme = Theme::instance();
     if (theme)
-        mSkin = theme->load("browserbox.xml", "");
+        mSkin = theme->load(skin, "browserbox.xml");
     if (mInstances == 0)
     {
         mEmotes = ResourceManager::getInstance()->getImageSet(

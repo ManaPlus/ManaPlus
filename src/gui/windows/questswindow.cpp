@@ -127,7 +127,7 @@ QuestsWindow::QuestsWindow() :
     mQuestScrollArea(new ScrollArea(mQuestsListBox,
         getOptionBool("showlistbackground"), "quests_list_background.xml")),
     mItemLinkHandler(new ItemLinkHandler),
-    mText(new BrowserBox(this, BrowserBox::AUTO_WRAP, true)),
+    mText(new BrowserBox(this, BrowserBox::AUTO_WRAP, true, "browserbox.xml")),
     mTextScrollArea(new ScrollArea(mText,
         getOptionBool("showtextbackground"), "quests_text_background.xml")),
     // TRANSLATORS: quests window button

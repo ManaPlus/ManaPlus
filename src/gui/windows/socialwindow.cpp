@@ -1207,7 +1207,8 @@ public:
     CreatePopup() :
         Popup("SocialCreatePopup"),
         LinkHandler(),
-        mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true))
+        mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
+            "browserbox.xml"))
     {
         mBrowserBox->setPosition(4, 4);
         mBrowserBox->setHighlightMode(BrowserBox::BACKGROUND);
