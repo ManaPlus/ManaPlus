@@ -133,11 +133,6 @@ class BrowserBox final : public gcn::Widget,
         void setOpaque(bool opaque);
 
         /**
-         * Sets the Highlight mode for links.
-         */
-        void setHighlightMode(const unsigned int highMode);
-
-        /**
          * Sets the maximum numbers of rows in the browser box. 0 = no limit.
          */
         void setMaxRow(unsigned max)

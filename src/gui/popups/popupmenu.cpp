@@ -111,7 +111,6 @@ PopupMenu::PopupMenu() :
     mX(0),
     mY(0)
 {
-    mBrowserBox->setHighlightMode(BrowserBox::BACKGROUND);
     mBrowserBox->setOpaque(false);
     mBrowserBox->setLinkHandler(this);
     mRenameListener.setMapItem(nullptr);

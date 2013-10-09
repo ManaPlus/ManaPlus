@@ -61,7 +61,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     mLinkHandler(nullptr),
     mSkin(nullptr),
     mMode(mode),
-    mHighMode(UNDERLINE | BACKGROUND),
+    mHighMode(0),
     mSelectedLink(-1),
     mMaxRows(0),
     mHeight(0),
@@ -102,6 +102,10 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
         mPadding = mSkin->getPadding();
         mNewLinePadding = mSkin->getOption("newLinePadding", 15);
         mItemPadding = mSkin->getOption("itemPadding");
+        if (mSkin->getOption("highlightBackground"))
+            mHighMode |= BACKGROUND;
+        if (mSkin->getOption("highlightUnderline"))
+            mHighMode |= UNDERLINE;
     }
 
     mColors[0][BLACK] = getThemeColor(Theme::BLACK);
@@ -161,11 +165,6 @@ void BrowserBox::setLinkHandler(LinkHandler* linkHandler)
 void BrowserBox::setOpaque(bool opaque)
 {
     mOpaque = opaque;
-}
-
-void BrowserBox::setHighlightMode(const unsigned int highMode)
-{
-    mHighMode = highMode;
 }
 
 void BrowserBox::addRow(const std::string &row, const bool atTop)

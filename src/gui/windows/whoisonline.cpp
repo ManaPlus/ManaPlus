@@ -115,7 +115,6 @@ WhoIsOnline::WhoIsOnline() :
     mUpdateButton->setDimension(gcn::Rectangle(5, 5, w - 10, 20 + 5));
 
     mBrowserBox->setOpaque(false);
-    mBrowserBox->setHighlightMode(BrowserBox::BACKGROUND);
     mScrollArea->setDimension(gcn::Rectangle(5, 20 + 10, w - 10, h - 10 - 30));
     mScrollArea->setSize(w - 10, h - 10 - 30);
     mBrowserBox->setLinkHandler(this);

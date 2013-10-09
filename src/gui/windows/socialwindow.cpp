@@ -1211,7 +1211,6 @@ public:
             "popupbrowserbox.xml"))
     {
         mBrowserBox->setPosition(4, 4);
-        mBrowserBox->setHighlightMode(BrowserBox::BACKGROUND);
         mBrowserBox->setOpaque(false);
         mBrowserBox->setLinkHandler(this);
 
