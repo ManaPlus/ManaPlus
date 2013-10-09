@@ -70,6 +70,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     mUpdateTime(-1),
     mPadding(0),
     mNewLinePadding(15),
+    mItemPadding(0),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mHyperLinkColor(getThemeColor(Theme::HYPERLINK)),
     mOpaque(opaque),
@@ -100,6 +101,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     {
         mPadding = mSkin->getPadding();
         mNewLinePadding = mSkin->getOption("newLinePadding", 15);
+        mItemPadding = mSkin->getOption("itemPadding");
     }
 
     mColors[0][BLACK] = getThemeColor(Theme::BLACK);
@@ -525,7 +527,7 @@ int BrowserBox::calcHeight()
         return 1;
 
     const gcn::Font *const font = getFont();
-    const int fontHeight = font->getHeight();
+    const int fontHeight = font->getHeight() + 2 * mItemPadding;
     const int fontWidthMinus = font->getWidth("-");
     const char *const hyphen = "~";
     const int hyphenWidth = font->getWidth(hyphen);
@@ -549,7 +551,7 @@ int BrowserBox::calcHeight()
             const int dashWidth = fontWidthMinus;
             for (x = mPadding; x < wWidth; x ++)
             {
-                mLineParts.push_back(LinePart(x, y,
+                mLineParts.push_back(LinePart(x, y + mItemPadding,
                     selColor[0], selColor[1], "-", false));
                 x += dashWidth - 2;
             }
@@ -567,7 +569,7 @@ int BrowserBox::calcHeight()
             if (img)
             {
                 img->incRef();
-                mLineParts.push_back(LinePart(x, y,
+                mLineParts.push_back(LinePart(x, y + mItemPadding,
                     selColor[0], selColor[1], img));
                 y += img->getHeight() + 2;
                 moreHeight += img->getHeight();
@@ -735,7 +737,8 @@ int BrowserBox::calcHeight()
                                     Image *const img = mEmotes->get(cid);
                                     if (img)
                                     {
-                                        mLineParts.push_back(LinePart(x, y,
+                                        mLineParts.push_back(LinePart(
+                                            x, y + mItemPadding,
                                             selColor[0], selColor[1], img));
                                         x += 18;
                                     }
@@ -803,8 +806,9 @@ int BrowserBox::calcHeight()
                 if (forced)
                 {
                     x -= hyphenWidth;  // Remove the wrap-notifier accounting
-                    mLineParts.push_back(LinePart(wWidth - hyphenWidth,
-                        y, selColor[0], selColor[1], hyphen, bold));
+                    mLineParts.push_back(LinePart(
+                        wWidth - hyphenWidth, y + mItemPadding,
+                        selColor[0], selColor[1], hyphen, bold));
                     end++;  // Skip to the next character
                 }
                 else
@@ -816,8 +820,8 @@ int BrowserBox::calcHeight()
                 wrappedLines++;
             }
 
-            mLineParts.push_back(LinePart(x, y, selColor[0], selColor[1],
-                part.c_str(), bold));
+            mLineParts.push_back(LinePart(x, y + mItemPadding,
+                selColor[0], selColor[1], part.c_str(), bold));
 
             if (bold)
                 width = boldFont->getWidth(part);

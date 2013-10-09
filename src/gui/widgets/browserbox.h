@@ -265,6 +265,7 @@ class BrowserBox final : public gcn::Widget,
         int mUpdateTime;
         int mPadding;
         int mNewLinePadding;
+        int mItemPadding;
 
         gcn::Color mHighlightColor;
         gcn::Color mHyperLinkColor;
