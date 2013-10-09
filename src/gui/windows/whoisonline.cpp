@@ -86,7 +86,7 @@ WhoIsOnline::WhoIsOnline() :
     mMemoryBuffer(nullptr),
     mCurlError(new char[CURL_ERROR_SIZE]),
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
-        "browserbox.xml")),
+        "onlinebrowserbox.xml")),
     mScrollArea(new ScrollArea(mBrowserBox, false)),
     mUpdateTimer(0),
     mOnlinePlayers(),

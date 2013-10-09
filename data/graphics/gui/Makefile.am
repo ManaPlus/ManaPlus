@@ -44,6 +44,7 @@ gui_DATA =				\
 	mouse.png			\
 	npc.xml			\
 	ok.xml			\
+	onlinebrowserbox.xml			\
 	outfits.xml			\
 	playerbox.xml	\
 	playerboxselected.xml	\
