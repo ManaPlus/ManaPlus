@@ -48,6 +48,7 @@ gui_DATA =				\
 	playerbox.xml	\
 	playerboxselected.xml	\
 	popup.xml			\
+	popupbrowserbox.xml			\
 	progress-indicator.png		\
 	progressbar.xml			\
 	quests.xml			\

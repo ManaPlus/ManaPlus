@@ -90,7 +90,7 @@ std::string tradePartnerName;
 PopupMenu::PopupMenu() :
     Popup("PopupMenu", "popupmenu.xml"),
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
-        "browserbox.xml")),
+        "popupbrowserbox.xml")),
     mScrollArea(nullptr),
     mBeingId(0),
     mFloorItemId(0),
