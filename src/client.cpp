@@ -1109,6 +1109,9 @@ int Client::gameExec()
             ADDBUTTON(mThemesButton, new Button(mDesktop,
                 // TRANSLATORS: theme tab quick button
                 _("Theme"), "Themes", this))
+            ADDBUTTON(mThemesButton, new Button(mDesktop,
+                // TRANSLATORS: theme tab quick button
+                _("Help"), "help", this))
 #ifdef ANDROID
             ADDBUTTON(mCloseButton, new Button(mDesktop,
                 // TRANSLATORS: close quick button
@@ -1796,15 +1799,30 @@ void Client::action(const gcn::ActionEvent &event)
         return;
     }
     if (eventId == "Setup")
+    {
         tab.clear();
-    else if (eventId == "Video")
-        tab = "Video";
-    else if (eventId == "Themes")
-        tab = "Theme";
-    else if (eventId == "Perfomance")
-        tab = "Perfomance";
-    else
+    }
+    else if (eventId == "help")
+    {
+        inputManager.executeAction(Input::KEY_WINDOW_HELP);
         return;
+    }
+    else if (eventId == "Video")
+    {
+        tab = "Video";
+    }
+    else if (eventId == "Themes")
+    {
+        tab = "Theme";
+    }
+    else if (eventId == "Perfomance")
+    {
+        tab = "Perfomance";
+    }
+    else
+    {
+        return;
+    }
 
     if (setupWindow)
     {
