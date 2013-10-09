@@ -24,6 +24,7 @@
 #include <cstring>
 
 #if defined WIN32
+#include <limits.h>
 #include <windows.h>
 #endif
 
