@@ -53,7 +53,7 @@ TEST(browserbox, test1)
     Theme *theme = Theme::instance();
     gcn::Widget::setGlobalFont(new SDLFont("/usr/share/fonts/truetype/"
         "ttf-dejavu/DejaVuSans-Oblique.ttf", 18));
-    BrowserBox *box = new BrowserBox(nullptr, BrowserBox::AUTO_WRAP);
+    BrowserBox *box = new BrowserBox(nullptr, BrowserBox::AUTO_WRAP, "");
     box->setWidth(100);
     std::string row = "test";
     box->addRow(row);

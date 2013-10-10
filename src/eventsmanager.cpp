@@ -232,8 +232,9 @@ void EventsManager::logEvent(const SDL_Event &event)
             logger->log("event: SDL_MULTIGESTURE: %u %f,%f (%f,%f) %d,%d",
                 static_cast<unsigned int>(gesture.touchId),
                 gesture.dTheta, gesture.dDist,
-                gesture.x * w, gesture.y * h, (int)gesture.numFingers,
-                (int)gesture.padding);
+                gesture.x * w, gesture.y * h,
+                static_cast<int>(gesture.numFingers),
+                static_cast<int>(gesture.padding));
             break;
         }
         case SDL_KEYDOWN:

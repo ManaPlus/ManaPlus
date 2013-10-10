@@ -93,7 +93,7 @@ Graphics::~Graphics()
     if (mGLContext)
     {
         SDL_GL_DeleteContext(mGLContext);
-        mGLContext = 0;
+        mGLContext = nullptr;
     }
 #endif
 #endif

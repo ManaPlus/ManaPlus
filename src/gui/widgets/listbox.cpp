@@ -68,7 +68,7 @@ ListBox::ListBox(const Widget2 *const widget,
         mItemPadding = mSkin->getOption("itemPadding");
     }
 
-    const gcn::Font *font = getFont();
+    const gcn::Font *const font = getFont();
     if (font)
         mRowHeight = font->getHeight() + 2 * mItemPadding;
     else
@@ -258,7 +258,7 @@ void ListBox::mouseReleased(gcn::MouseEvent &event)
     mPressedIndex = -2;
 }
 
-void ListBox::mouseReleased1(gcn::MouseEvent &mouseEvent)
+void ListBox::mouseReleased1(const gcn::MouseEvent &mouseEvent)
 {
     if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
     {

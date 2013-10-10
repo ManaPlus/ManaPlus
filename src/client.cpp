@@ -294,6 +294,7 @@ Client::Client(const Options &options) :
     mDesktop(nullptr),
     mSetupButton(nullptr),
     mVideoButton(nullptr),
+    mHelpButton(nullptr),
     mThemesButton(nullptr),
     mPerfomanceButton(nullptr),
 #ifdef ANDROID

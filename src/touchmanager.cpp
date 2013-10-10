@@ -410,7 +410,8 @@ void TouchManager::loadButtons()
                 loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
                     "2", x, y, sz, sz, RIGHT, "screenActionButton1", "");
                 loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
-                    "1", skipWidth, y, sz, sz, RIGHT, "screenActionButton0", "");
+                    "1", skipWidth, y, sz, sz, RIGHT,
+                    "screenActionButton0", "");
                 break;
             }
             // 2x2
@@ -419,9 +420,11 @@ void TouchManager::loadButtons()
                 loadTouchItem(&mButtons[3], "dbutton.xml", "dbutton_image.xml",
                     "4", x, y, sz, sz, RIGHT, "screenActionButton3", "");
                 loadTouchItem(&mButtons[2], "dbutton.xml", "dbutton_image.xml",
-                    "3", skipWidth, y, sz, sz, RIGHT, "screenActionButton2", "");
+                    "3", skipWidth, y, sz, sz, RIGHT,
+                    "screenActionButton2", "");
                 loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
-                    "2", x, skipHeight, sz, sz, RIGHT, "screenActionButton1", "");
+                    "2", x, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton1", "");
                 loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
                     "1", skipWidth, skipHeight, sz, sz, RIGHT,
                     "screenActionButton0", "");
@@ -436,11 +439,14 @@ void TouchManager::loadButtons()
                 loadTouchItem(&mButtons[8], "dbutton.xml", "dbutton_image.xml",
                     "9", x, y, sz, sz, RIGHT, "screenActionButton8", "");
                 loadTouchItem(&mButtons[7], "dbutton.xml", "dbutton_image.xml",
-                    "8", skipWidth, y, sz, sz, RIGHT, "screenActionButton7", "");
+                    "8", skipWidth, y, sz, sz, RIGHT,
+                    "screenActionButton7", "");
                 loadTouchItem(&mButtons[6], "dbutton.xml", "dbutton_image.xml",
-                    "7", skipWidth2, y, sz, sz, RIGHT, "screenActionButton6", "");
+                    "7", skipWidth2, y, sz, sz, RIGHT,
+                    "screenActionButton6", "");
                 loadTouchItem(&mButtons[5], "dbutton.xml", "dbutton_image.xml",
-                    "6", x, skipHeight, sz, sz, RIGHT, "screenActionButton5", "");
+                    "6", x, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton5", "");
                 loadTouchItem(&mButtons[4], "dbutton.xml", "dbutton_image.xml",
                     "5", skipWidth, skipHeight, sz, sz, RIGHT,
                     "screenActionButton4", "");
@@ -448,7 +454,8 @@ void TouchManager::loadButtons()
                     "4", skipWidth2, skipHeight, sz, sz, RIGHT,
                     "screenActionButton3", "");
                 loadTouchItem(&mButtons[2], "dbutton.xml", "dbutton_image.xml",
-                    "3", x, skipHeight2, sz, sz, RIGHT, "screenActionButton2", "");
+                    "3", x, skipHeight2, sz, sz, RIGHT,
+                    "screenActionButton2", "");
                 loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
                     "2", skipWidth, skipHeight2, sz, sz, RIGHT,
                     "screenActionButton1", "");
@@ -465,13 +472,17 @@ void TouchManager::loadButtons()
                 loadTouchItem(&mButtons[7], "dbutton.xml", "dbutton_image.xml",
                     "8", x, y, sz, sz, RIGHT, "screenActionButton7", "");
                 loadTouchItem(&mButtons[6], "dbutton.xml", "dbutton_image.xml",
-                    "7", skipWidth, y, sz, sz, RIGHT, "screenActionButton6", "");
+                    "7", skipWidth, y, sz, sz, RIGHT,
+                    "screenActionButton6", "");
                 loadTouchItem(&mButtons[5], "dbutton.xml", "dbutton_image.xml",
-                    "6", skipWidth2, y, sz, sz, RIGHT, "screenActionButton5", "");
+                    "6", skipWidth2, y, sz, sz, RIGHT,
+                    "screenActionButton5", "");
                 loadTouchItem(&mButtons[4], "dbutton.xml", "dbutton_image.xml",
-                    "5", skipWidth3, y, sz, sz, RIGHT, "screenActionButton4", "");
+                    "5", skipWidth3, y, sz, sz, RIGHT,
+                    "screenActionButton4", "");
                 loadTouchItem(&mButtons[3], "dbutton.xml", "dbutton_image.xml",
-                    "4", x, skipHeight, sz, sz, RIGHT, "screenActionButton3", "");
+                    "4", x, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton3", "");
                 loadTouchItem(&mButtons[2], "dbutton.xml", "dbutton_image.xml",
                     "3", skipWidth, skipHeight, sz, sz, RIGHT,
                     "screenActionButton2", "");
@@ -496,11 +507,14 @@ void TouchManager::loadButtons()
                     "dbutton_image.xml", "11", skipWidth, y, sz, sz, RIGHT,
                     "screenActionButton10", "");
                 loadTouchItem(&mButtons[9], "dbutton.xml", "dbutton_image.xml",
-                    "10", skipWidth2, y, sz, sz, RIGHT, "screenActionButton9", "");
+                    "10", skipWidth2, y, sz, sz, RIGHT,
+                    "screenActionButton9", "");
                 loadTouchItem(&mButtons[8], "dbutton.xml", "dbutton_image.xml",
-                    "9", skipWidth3, y, sz, sz, RIGHT, "screenActionButton8", "");
+                    "9", skipWidth3, y, sz, sz, RIGHT,
+                    "screenActionButton8", "");
                 loadTouchItem(&mButtons[7], "dbutton.xml", "dbutton_image.xml",
-                    "8", x, skipHeight, sz, sz, RIGHT, "screenActionButton7", "");
+                    "8", x, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton7", "");
                 loadTouchItem(&mButtons[6], "dbutton.xml", "dbutton_image.xml",
                     "7", skipWidth, skipHeight, sz, sz, RIGHT,
                     "screenActionButton6", "");
@@ -511,7 +525,8 @@ void TouchManager::loadButtons()
                     "5", skipWidth3, skipHeight, sz, sz, RIGHT,
                     "screenActionButton4", "");
                 loadTouchItem(&mButtons[3], "dbutton.xml", "dbutton_image.xml",
-                    "4", x, skipHeight2, sz, sz, RIGHT, "screenActionButton3", "");
+                    "4", x, skipHeight2, sz, sz, RIGHT,
+                    "screenActionButton3", "");
                 loadTouchItem(&mButtons[2], "dbutton.xml", "dbutton_image.xml",
                     "3", skipWidth, skipHeight2, sz, sz, RIGHT,
                     "screenActionButton2", "");

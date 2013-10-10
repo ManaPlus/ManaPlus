@@ -24,7 +24,6 @@
 #include "configlistener.h"
 
 #include <string>
-#include <map>
 
 #include <SDL_events.h>
 
@@ -46,14 +45,14 @@ class EventsManager final : public ConfigListener
         void handleGameEvents();
 
 #ifdef USE_SDL2
-        void handleSDL2WindowEvent(const SDL_Event &event);
+        static void handleSDL2WindowEvent(const SDL_Event &event);
 #else
-        void handleActive(const SDL_Event &event);
+        static void handleActive(const SDL_Event &event);
 #endif
 
         void optionChanged(const std::string &name);
 
-        void logEvent(const SDL_Event &event);
+        static void logEvent(const SDL_Event &event);
 
     protected:
         bool mLogInput;

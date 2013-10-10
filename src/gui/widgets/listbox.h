@@ -77,7 +77,7 @@ class ListBox : public gcn::ListBox,
 
         void mouseReleased(gcn::MouseEvent &event) override;
 
-        void mouseReleased1(gcn::MouseEvent &event);
+        void mouseReleased1(const gcn::MouseEvent &event);
 
         void mouseDragged(gcn::MouseEvent &event) override;
 

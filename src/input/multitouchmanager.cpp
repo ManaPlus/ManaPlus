@@ -30,8 +30,8 @@
 
 MultiTouchManager multiTouchManager;
 
-
-MultiTouchManager::MultiTouchManager()
+MultiTouchManager::MultiTouchManager() :
+    mEvents()
 {
 }
 

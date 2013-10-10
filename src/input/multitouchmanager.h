@@ -21,11 +21,11 @@
 #ifndef INPUT_MULTITOUCHMANAGER_H
 #define INPUT_MULTITOUCHMANAGER_H
 
-#include <SDL_events.h>
-
 #include <map>
 
 #include "localconsts.h"
+
+union SDL_Event;
 
 struct MultiTouchEvent
 {
