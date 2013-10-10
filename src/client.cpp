@@ -1109,7 +1109,7 @@ int Client::gameExec()
             ADDBUTTON(mThemesButton, new Button(mDesktop,
                 // TRANSLATORS: theme tab quick button
                 _("Theme"), "Themes", this))
-            ADDBUTTON(mThemesButton, new Button(mDesktop,
+            ADDBUTTON(mHelpButton, new Button(mDesktop,
                 // TRANSLATORS: theme tab quick button
                 _("Help"), "help", this))
 #ifdef ANDROID
@@ -1527,6 +1527,8 @@ int Client::gameExec()
                     mVideoButton = nullptr;
                     delete mThemesButton;
                     mThemesButton = nullptr;
+                    delete mHelpButton;
+                    mHelpButton = nullptr;
                     delete mPerfomanceButton;
                     mPerfomanceButton = nullptr;
                     delete mDesktop;
@@ -2756,6 +2758,9 @@ void Client::resizeVideo(int width, int height, const bool always)
 
             x -= mThemesButton->getWidth() + mButtonSpacing;
             mThemesButton->setPosition(x, mButtonPadding);
+
+            x -= mHelpButton->getWidth() + mButtonSpacing;
+            mHelpButton->setPosition(x, mButtonPadding);
 #ifdef ANDROID
             x -= mCloseButton->getWidth() + mButtonSpacing;
             mCloseButton->setPosition(x, mButtonPadding);

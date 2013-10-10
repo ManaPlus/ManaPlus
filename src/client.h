@@ -412,6 +412,7 @@ private:
     Desktop *mDesktop;
     Button *mSetupButton;
     Button *mVideoButton;
+    Button *mHelpButton;
     Button *mThemesButton;
     Button *mPerfomanceButton;
 #ifdef ANDROID
