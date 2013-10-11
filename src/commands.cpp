@@ -1243,6 +1243,11 @@ impHandler0(createItems)
     dialog->sort();
 }
 
+impHandler1(talkRaw)
+{
+    Net::getChatHandler()->talkRaw(args);
+}
+
 impHandler0(testsdlfont)
 {
 #if defined USE_OPENGL && defined DEBUG_SDLFONT

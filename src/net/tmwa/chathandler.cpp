@@ -141,9 +141,8 @@ void ChatHandler::talk(const std::string &text,
 void ChatHandler::talkRaw(const std::string &mes) const
 {
     MessageOut outMsg(CMSG_CHAT_MESSAGE);
-    // Added + 1 in order to let eAthena parse admin commands correctly
-    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1));
-    outMsg.writeString(mes, static_cast<int>(mes.length() + 1));
+    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4));
+    outMsg.writeString(mes, static_cast<int>(mes.length()));
 }
 
 void ChatHandler::privateMessage(const std::string &recipient,
