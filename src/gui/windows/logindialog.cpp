@@ -51,24 +51,27 @@
 std::string LoginDialog::savedPassword("");
 std::string LoginDialog::savedPasswordKey("");
 
-struct OpenUrlListener : public gcn::ActionListener
+namespace
 {
-    OpenUrlListener() :
-        gcn::ActionListener(),
-        url()
+    struct OpenUrlListener : public gcn::ActionListener
     {
-    }
+        OpenUrlListener() :
+            gcn::ActionListener(),
+            url()
+        {
+        }
 
-    A_DELETE_COPY(OpenUrlListener)
+        A_DELETE_COPY(OpenUrlListener)
 
-    void action(const gcn::ActionEvent &event) override
-    {
-        if (event.getId() == "yes")
-            openBrowser(url);
-    }
+        void action(const gcn::ActionEvent &event) override
+        {
+            if (event.getId() == "yes")
+                openBrowser(url);
+        }
 
-    std::string url;
-} urlListener;
+        std::string url;
+    } urlListener;
+}  // namespace
 
 const char *UPDATE_TYPE_TEXT[3] =
 {

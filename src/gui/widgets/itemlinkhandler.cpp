@@ -42,23 +42,26 @@
 
 #include "debug.h"
 
-struct OpenUrlListener : public gcn::ActionListener
+namespace
 {
-    OpenUrlListener() :
-        url()
+    struct OpenUrlListener : public gcn::ActionListener
     {
-    }
+        OpenUrlListener() :
+            url()
+        {
+        }
 
-    A_DELETE_COPY(OpenUrlListener)
+        A_DELETE_COPY(OpenUrlListener)
 
-    void action(const gcn::ActionEvent &event) override
-    {
-        if (event.getId() == "yes")
-            openBrowser(url);
-    }
+        void action(const gcn::ActionEvent &event) override
+        {
+            if (event.getId() == "yes")
+                openBrowser(url);
+        }
 
-    std::string url;
-} listener;
+        std::string url;
+    } listener;
+}  // namespace
 
 ItemLinkHandler::ItemLinkHandler() :
     mItemPopup(new ItemPopup)
