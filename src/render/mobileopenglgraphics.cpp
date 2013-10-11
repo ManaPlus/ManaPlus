@@ -905,15 +905,17 @@ SDL_Surface* MobileOpenGLGraphics::getScreenshot()
     if (SDL_MUSTLOCK(screenshot))
         SDL_LockSurface(screenshot);
 
+    const unsigned int lineSize = 3 * w;
+    GLubyte *const buf = static_cast<GLubyte*>(malloc(lineSize));
+    if (!buf)
+        return nullptr;
+
     // Grap the pixel buffer and write it to the SDL surface
     glGetIntegerv(GL_PACK_ALIGNMENT, &pack);
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
     glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, screenshot->pixels);
 
     // Flip the screenshot, as OpenGL has 0,0 in bottom left
-    const unsigned int lineSize = 3 * w;
-    GLubyte *const buf = static_cast<GLubyte*>(malloc(lineSize));
-
     const int h2 = h / 2;
     for (int i = 0; i < h2; i++)
     {

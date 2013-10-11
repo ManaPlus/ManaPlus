@@ -244,11 +244,12 @@ namespace gcn
     {
         checkPolicies();
 
-        if (!getContent())
+        const Widget *const content = getContent();
+        if (!content)
             return 0;
 
-        const int value = getContent()->getWidth() - getChildrenArea().width +
-            2 * getContent()->getFrameSize();
+        const int value = content->getWidth() - getChildrenArea().width +
+            2 * content->getFrameSize();
 
         if (value < 0)
             return 0;
@@ -260,13 +261,14 @@ namespace gcn
     {
         checkPolicies();
 
-        if (!getContent())
+        const Widget *const content = getContent();
+        if (!content)
             return 0;
 
         int value;
 
-        value = getContent()->getHeight() - getChildrenArea().height +
-            2 * getContent()->getFrameSize();
+        value = content->getHeight() - getChildrenArea().height +
+            2 * content->getFrameSize();
 
         if (value < 0)
             return 0;
@@ -347,11 +349,12 @@ namespace gcn
         setVerticalScrollAmount(getVerticalScrollAmount());
         setHorizontalScrollAmount(getHorizontalScrollAmount());
 
-        if (getContent())
+        Widget *const content = getContent();
+        if (content)
         {
-            getContent()->setPosition(-mHScroll + getContent()->getFrameSize(),
-                -mVScroll + getContent()->getFrameSize());
-            getContent()->logic();
+            const int frameSize = content->getFrameSize();
+            content->setPosition(-mHScroll + frameSize, -mVScroll + frameSize);
+            content->logic();
         }
         BLOCK_END("ScrollArea::logic")
     }
@@ -364,7 +367,8 @@ namespace gcn
         mHBarVisible = false;
         mVBarVisible = false;
 
-        if (!getContent())
+        const Widget *const content = getContent();
+        if (!content)
         {
             mHBarVisible = (mHPolicy == SHOW_ALWAYS);
             mVBarVisible = (mVPolicy == SHOW_ALWAYS);
@@ -374,26 +378,26 @@ namespace gcn
         if (mHPolicy == SHOW_AUTO &&
             mVPolicy == SHOW_AUTO)
         {
-            if (getContent()->getWidth() <= w
-                && getContent()->getHeight() <= h)
+            if (content->getWidth() <= w
+                && content->getHeight() <= h)
             {
                 mHBarVisible = false;
                 mVBarVisible = false;
             }
 
-            if (getContent()->getWidth() > w)
+            if (content->getWidth() > w)
             {
                 mHBarVisible = true;
             }
 
-            if ((getContent()->getHeight() > h)
-                || (mHBarVisible && getContent()->getHeight()
+            if ((content->getHeight() > h)
+                || (mHBarVisible && content->getHeight()
                 > h - mScrollbarWidth))
             {
                 mVBarVisible = true;
             }
 
-            if (mVBarVisible && getContent()->getWidth() > w - mScrollbarWidth)
+            if (mVBarVisible && content->getWidth() > w - mScrollbarWidth)
                 mHBarVisible = true;
 
             return;
@@ -412,11 +416,11 @@ namespace gcn
             case SHOW_AUTO:
                 if (mVPolicy == SHOW_NEVER)
                 {
-                    mHBarVisible = (getContent()->getWidth() > w);
+                    mHBarVisible = (content->getWidth() > w);
                 }
                 else  // (mVPolicy == SHOW_ALWAYS)
                 {
-                    mHBarVisible = (getContent()->getWidth()
+                    mHBarVisible = (content->getWidth()
                         > w - mScrollbarWidth);
                 }
                 break;
@@ -438,11 +442,11 @@ namespace gcn
             case SHOW_AUTO:
                 if (mHPolicy == SHOW_NEVER)
                 {
-                    mVBarVisible = (getContent()->getHeight() > h);
+                    mVBarVisible = (content->getHeight() > h);
                 }
                 else  // (mHPolicy == SHOW_ALWAYS)
                 {
-                    mVBarVisible = (getContent()->getHeight()
+                    mVBarVisible = (content->getHeight()
                         > h - mScrollbarWidth);
                 }
                 break;
@@ -465,15 +469,16 @@ namespace gcn
 
     void ScrollArea::showWidgetPart(Widget* widget, Rectangle area)
     {
-        if (widget != getContent())
+        const Widget *const content = getContent();
+        if (widget != content)
             throw GCN_EXCEPTION("Widget not content widget");
 
         BasicContainer::showWidgetPart(widget, area);
 
-        setHorizontalScrollAmount(getContent()->getFrameSize()
-            - getContent()->getX());
-        setVerticalScrollAmount(getContent()->getFrameSize()
-            - getContent()->getY());
+        setHorizontalScrollAmount(content->getFrameSize()
+            - content->getX());
+        setVerticalScrollAmount(content->getFrameSize()
+            - content->getY());
     }
 
     Widget *ScrollArea::getWidgetAt(int x, int y)

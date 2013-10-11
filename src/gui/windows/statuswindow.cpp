@@ -598,8 +598,12 @@ void StatusWindow::updateWeightBar(ProgressBar *const bar)
         const int totalWeight = PlayerInfo::getAttribute(
             PlayerInfo::TOTAL_WEIGHT);
         const int maxWeight = PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT);
-        const float progress = static_cast<float>(totalWeight)
-            / static_cast<float>(maxWeight);
+        float progress = 1.0F;
+        if (maxWeight)
+        {
+            progress = static_cast<float>(totalWeight)
+                / static_cast<float>(maxWeight);
+        }
         bar->setText(strprintf("%s/%s", Units::formatWeight(
             totalWeight).c_str(), Units::formatWeight(maxWeight).c_str()));
         bar->setProgress(progress);

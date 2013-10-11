@@ -1849,7 +1849,8 @@ void Being::updateColors()
             {
                 mNameColor = &userPalette->getColor(UserPalette::MONSTER);
             }
-            else if (mParty && mParty == player_node->getParty())
+            else if (mParty && player_node
+                     && mParty == player_node->getParty())
             {
                 mNameColor = &userPalette->getColor(UserPalette::PARTY);
             }

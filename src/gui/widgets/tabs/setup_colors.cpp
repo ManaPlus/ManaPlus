@@ -279,7 +279,8 @@ void Setup_Colors::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
             break;
         case UserPalette::ATTACK_RANGE_BORDER:
         case UserPalette::HOME_PLACE_BORDER:
-            mTextPreview->setFont(gui->getFont());
+            if (gui)
+                mTextPreview->setFont(gui->getFont());
             mTextPreview->setTextColor(col);
             mTextPreview->setOutline(false);
             mTextPreview->setShadow(false);

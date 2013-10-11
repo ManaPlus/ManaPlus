@@ -1445,16 +1445,8 @@ void ChatWindow::resortChatLog(std::string line, Own own,
         }
         else if (mShowAllLang)
         {
-            if (langChatTab)
-            {
-                langChatTab->chatLog(prefix + line, own,
-                    ignoreRecord, tryRemoveColors);
-            }
-            else if (localChatTab)
-            {
-                localChatTab->chatLog(prefix + line, own,
-                    ignoreRecord, tryRemoveColors);
-            }
+            langChatTab->chatLog(prefix + line, own,
+                ignoreRecord, tryRemoveColors);
         }
     }
     else if (localChatTab && channel.empty())

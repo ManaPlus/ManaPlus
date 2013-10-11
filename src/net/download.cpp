@@ -69,7 +69,8 @@ Download::Download(void *const ptr, const std::string &url,
     mError(static_cast<char*>(calloc(CURL_ERROR_SIZE + 1, 1))),
     mIgnoreError(ignoreError)
 {
-    mError[0] = 0;
+    if (mError)
+        mError[0] = 0;
 
     mOptions.cancel = 0;
     mOptions.memoryWrite = 0;
@@ -117,6 +118,8 @@ unsigned long Download::fadler32(FILE *const file)
 
     // Calculate Adler-32 checksum
     char *const buffer = static_cast<char*>(malloc(fileSize));
+    if (!buffer)
+        return 0;
     const uInt read = static_cast<uInt>(fread(buffer, 1, fileSize, file));
     unsigned long adler = adler32(0L, Z_NULL, 0);
     adler = adler32(static_cast<uInt>(adler),
@@ -174,7 +177,8 @@ bool Download::start()
     if (!mThread)
     {
         logger->log1(DOWNLOAD_ERROR_MESSAGE_THREAD);
-        strcpy(mError, DOWNLOAD_ERROR_MESSAGE_THREAD);
+        if (mError)
+            strcpy(mError, DOWNLOAD_ERROR_MESSAGE_THREAD);
         mUpdateFunction(mPtr, DOWNLOAD_STATUS_THREAD_ERROR, 0, 0);
         if (!mIgnoreError)
             return false;
@@ -290,9 +294,14 @@ int Download::downloadThread(void *ptr)
                         break;
                     case CURLE_COULDNT_CONNECT:
                     default:
-                        logger->log("curl error %d: %s host: %s",
-                            res, d->mError, d->mUrl.c_str());
+                    {
+                        if (d->mError)
+                        {
+                            logger->log("curl error %d: %s host: %s",
+                                res, d->mError, d->mUrl.c_str());
+                        }
                         break;
+                    }
                 }
 
                 if (d->mOptions.cancel)

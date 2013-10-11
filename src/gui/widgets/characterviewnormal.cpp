@@ -45,9 +45,9 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
             character->setVisible(true);
         }
         show(0);
+        const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
+        setWidth(firtChar->getWidth() * 5 + mPadding * 2);
     }
-    const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
-    setWidth(firtChar->getWidth() * 5 + mPadding * 2);
     setHeight(210 + config.getIntValue("fontSize") * 2);
 }
 

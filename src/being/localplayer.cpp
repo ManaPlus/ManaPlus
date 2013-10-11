@@ -258,7 +258,7 @@ void LocalPlayer::logic()
         {
             MessagePair info = mMessages.front();
 
-            if (particleEngine)
+            if (particleEngine && gui)
             {
                 particleEngine->addTextRiseFadeOutEffect(
                     info.first,

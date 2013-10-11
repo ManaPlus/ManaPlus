@@ -639,8 +639,12 @@ void ScrollArea::widgetResized(const gcn::Event &event A_UNUSED)
 {
     mRedraw = true;
     const unsigned int frameSize = 2 * mFrameSize;
-    getContent()->setSize(mDimension.width - frameSize,
-        mDimension.height - frameSize);
+    gcn::Widget *const content = getContent();
+    if (content)
+    {
+        content->setSize(mDimension.width - frameSize,
+            mDimension.height - frameSize);
+    }
 }
 
 void ScrollArea::widgetMoved(const gcn::Event& event A_UNUSED)
@@ -915,15 +919,11 @@ gcn::Rectangle ScrollArea::getVerticalMarkerDimension()
         if (length > height)
             length = height;
 
-        if (getVerticalMaxScroll() != 0)
-        {
-            pos = ((height - length) * mVScroll)
-                / getVerticalMaxScroll();
-        }
+        const int maxScroll = getVerticalMaxScroll();
+        if (maxScroll != 0)
+            pos = ((height - length) * mVScroll) / maxScroll;
         else
-        {
             pos = 0;
-        }
     }
 
     return gcn::Rectangle(mDimension.width - mScrollbarWidth, h2 + pos,

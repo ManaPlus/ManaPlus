@@ -329,6 +329,9 @@ void WhoIsOnline::loadWebList()
     // Reallocate and include terminating 0 character
     mMemoryBuffer = static_cast<char*>(
         realloc(mMemoryBuffer, mDownloadedBytes + 1));
+    if (!mMemoryBuffer)
+        return;
+
     mMemoryBuffer[mDownloadedBytes] = '\0';
 
     mBrowserBox->clearRows();

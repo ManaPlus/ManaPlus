@@ -43,8 +43,9 @@ SkillInfo *SkillModel::getSkillAt(const int i) const
 
 std::string SkillModel::getElementAt(int i)
 {
-    if (getSkillAt(i))
-        return getSkillAt(i)->data->name;
+    const SkillInfo *const info = getSkillAt(i);
+    if (info)
+        return info->data->name;
     else
         return std::string();
 }

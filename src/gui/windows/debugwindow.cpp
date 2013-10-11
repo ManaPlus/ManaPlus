@@ -531,9 +531,17 @@ NetDebugTab::NetDebugTab(const Widget2 *const widget) :
 void NetDebugTab::logic()
 {
     BLOCK_START("NetDebugTab::logic")
-    // TRANSLATORS: debug window label
-    mPingLabel->setCaption(strprintf(_("Ping: %s ms"),
-        player_node->getPingTime().c_str()));
+    if (player_node)
+    {
+        // TRANSLATORS: debug window label
+        mPingLabel->setCaption(strprintf(_("Ping: %s ms"),
+            player_node->getPingTime().c_str()));
+    }
+    else
+    {
+        // TRANSLATORS: debug window label
+        mPingLabel->setCaption(strprintf(_("Ping: %s ms"), "0"));
+    }
     // TRANSLATORS: debug window label
     mInPackets1Label->setCaption(strprintf(_("In: %d bytes/s"),
         PacketCounters::getInBytes()));

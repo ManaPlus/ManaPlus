@@ -677,13 +677,10 @@ int SDLGraphics::SDL_FakeUpperBlit(const SDL_Surface *const src,
 
     if (w > 0 && h > 0)
     {
-        if (srcrect)
-        {
-            srcrect->x = static_cast<int16_t>(srcx);
-            srcrect->y = static_cast<int16_t>(srcy);
-            srcrect->w = static_cast<int16_t>(w);
-            srcrect->h = static_cast<int16_t>(h);
-        }
+        srcrect->x = static_cast<int16_t>(srcx);
+        srcrect->y = static_cast<int16_t>(srcy);
+        srcrect->w = static_cast<int16_t>(w);
+        srcrect->h = static_cast<int16_t>(h);
         dstrect->w = static_cast<int16_t>(w);
         dstrect->h = static_cast<int16_t>(h);
 

@@ -121,13 +121,21 @@ void MessageIn::readCoordinates(uint16_t &x, uint16_t &y, uint8_t &direction)
 
         serverDir = static_cast<uint8_t>(data[2] & 0x000f);
         direction = fromServerDirection(serverDir);
+
+        DEBUGLOG(std::string("readCoordinates: ").append(toString(
+            static_cast<int>(x))).append(",").append(toString(
+            static_cast<int>(y))).append(",").append(toString(
+            static_cast<int>(serverDir))));
+    }
+    else
+    {
+        x = 0;
+        y = 0;
+        direction = 0;
+        logger->log("error: wrong readCoordinates packet");
     }
     mPos += 3;
     PacketCounters::incInBytes(3);
-    DEBUGLOG(std::string("readCoordinates: ").append(toString(
-        static_cast<int>(x))).append(",").append(toString(
-        static_cast<int>(y))).append(",").append(toString(
-        static_cast<int>(serverDir))));
 }
 
 void MessageIn::readCoordinatePair(uint16_t &srcX, uint16_t &srcY,
@@ -146,13 +154,22 @@ void MessageIn::readCoordinatePair(uint16_t &srcX, uint16_t &srcY,
 
         temp = MAKEWORD(data[2], data[1] & 0x003f);
         srcY = static_cast<uint16_t>(temp >> 4);
+
+        DEBUGLOG(std::string("readCoordinatePair: ").append(toString(
+            static_cast<int>(srcX))).append(",").append(toString(
+            static_cast<int>(srcY))).append(" ").append(toString(
+            static_cast<int>(dstX))).append(",").append(toString(
+            static_cast<int>(dstY))));
+    }
+    else
+    {
+        srcX = 0;
+        srcY = 0;
+        dstX = 0;
+        dstY = 0;
+        logger->log("error: wrong readCoordinatePair packet");
     }
     mPos += 5;
-    DEBUGLOG(std::string("readCoordinatePair: ").append(toString(
-        static_cast<int>(srcX))).append(",").append(toString(
-        static_cast<int>(srcY))).append(" ").append(toString(
-        static_cast<int>(dstX))).append(",").append(toString(
-        static_cast<int>(dstY))));
     PacketCounters::incInBytes(5);
 }
 

@@ -331,6 +331,9 @@ void ChatTab::chatLog(std::string line, Own own,
 
 void ChatTab::chatLog(const std::string &nick, std::string msg)
 {
+    if (!player_node)
+        return;
+
     const Own byWho = (nick == player_node->getName() ? BY_PLAYER : BY_OTHER);
     if (byWho == BY_OTHER && config.getBoolValue("removeColors"))
         msg = removeColors(msg);

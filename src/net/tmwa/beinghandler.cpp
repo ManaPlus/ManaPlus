@@ -667,22 +667,24 @@ void BeingHandler::processBeingMove3(Net::MessageIn &msg) const
     int16_t y = msg.readInt16();
     const unsigned char *moves = msg.readBytes(len);
     Path path;
-    for (int f = 0; f < len; f ++)
+    if (moves)
     {
-        const unsigned char dir = moves[f];
-        if (dir <= 7)
+        for (int f = 0; f < len; f ++)
         {
-            x += dirx[dir];
-            y += diry[dir];
-            path.push_back(Position(x, y));
+            const unsigned char dir = moves[f];
+            if (dir <= 7)
+            {
+                x += dirx[dir];
+                y += diry[dir];
+                path.push_back(Position(x, y));
+            }
+            else
+            {
+                logger->log("bad move packet: %d", dir);
+            }
         }
-        else
-        {
-            logger->log("bad move packet: %d", dir);
-        }
+        delete [] moves;
     }
-
-    delete [] moves;
     dstBeing->setPath(path);
 }
 
