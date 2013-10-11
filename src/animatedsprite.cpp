@@ -210,7 +210,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
             fail = true;
         }
         else if ((mFrame->type == Frame::LABEL
-            && !mFrame->nextAction.empty()))
+                 && !mFrame->nextAction.empty()))
         {
             fail = false;
         }

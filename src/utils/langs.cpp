@@ -24,7 +24,7 @@
 
 #include "debug.h"
 
-static char *getLangName()
+static const char *getLangName()
 {
     const char *const lang = getenv("LANG");
     if (lang && strlen(lang) > 1000)
