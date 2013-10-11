@@ -146,11 +146,8 @@ static void changeRelation(const std::string &args,
 
     if (args.empty())
     {
-        if (tab)
-        {
-            // TRANSLATORS: change relation
-            tab->chatLog(_("Please specify a name."), BY_SERVER);
-        }
+        // TRANSLATORS: change relation
+        tab->chatLog(_("Please specify a name."), BY_SERVER);
         return;
     }
 

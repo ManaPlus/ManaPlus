@@ -235,13 +235,10 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
             {
                 const int oldIndex = dragDrop.getTag();
                 const int idx = mNumber * SPELL_SHORTCUT_ITEMS;
-                if (spellManager)
-                {
-                    spellManager->swap(idx + index, idx + oldIndex);
-                    spellManager->save();
-                    dragDrop.clear();
-                    dragDrop.deselect();
-                }
+                spellManager->swap(idx + index, idx + oldIndex);
+                spellManager->save();
+                dragDrop.clear();
+                dragDrop.deselect();
             }
         }
         else

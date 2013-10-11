@@ -161,7 +161,7 @@ void ChangeEmailDialog::action(const gcn::ActionEvent &event)
         {
             if (error == 1)
                 mWrongDataNoticeListener->setTarget(this->mFirstEmailField);
-            else if (error == 2)
+            else  // if (error == 2)
                 mWrongDataNoticeListener->setTarget(this->mSecondEmailField);
 
             // TRANSLATORS: change email error header

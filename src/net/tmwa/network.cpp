@@ -144,12 +144,12 @@ void Network::dispatchMessages()
         SDL_mutexP(mMutexIn);
         BLOCK_START("Network::dispatchMessages 2")
         const int msgId = readWord(0);
-        int len;
+        int len = -1;
         if (msgId == SMSG_SERVER_VERSION_RESPONSE)
             len = 10;
         else if (msgId == SMSG_UPDATE_HOST2)
             len = -1;
-        else
+        else if (msgId >= 0 && msgId < messagesSize)
             len = packet_lengths[msgId];
 
         if (len == -1)

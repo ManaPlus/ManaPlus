@@ -857,7 +857,7 @@ gcn::Rectangle ScrollArea::getHorizontalBarDimension() const
     if (!mHBarVisible)
         return gcn::Rectangle(0, 0, 0, 0);
 
-    const int width = (mHBarVisible && mShowButtons) ? mScrollbarWidth : 0;
+    const int width = mShowButtons ? mScrollbarWidth : 0;
     if (mVBarVisible)
     {
         return gcn::Rectangle(width,
@@ -879,7 +879,7 @@ gcn::Rectangle ScrollArea::getVerticalMarkerDimension()
 
     int length, pos;
     int height;
-    const int h2 = (mVBarVisible && mShowButtons)
+    const int h2 = mShowButtons
         ? mScrollbarWidth : mMarkerSize / 2;
     const gcn::Widget *content;
     if (!mWidgets.empty())
@@ -937,7 +937,7 @@ gcn::Rectangle ScrollArea::getHorizontalMarkerDimension()
 
     int length, pos;
     int width;
-    const int w2 = (mHBarVisible && mShowButtons)
+    const int w2 = mShowButtons
         ? mScrollbarWidth : mMarkerSize / 2;
     const gcn::Widget *content;
     if (!mWidgets.empty())

@@ -474,11 +474,8 @@ void BuyDialog::action(const gcn::ActionEvent &event)
             {
                 Net::getBuySellHandler()->sendBuyRequest(mNick,
                     item, mAmountItems);
-                if (tradeWindow)
-                {
-                    tradeWindow->addAutoMoney(mNick,
-                        item->getPrice() * mAmountItems);
-                }
+                tradeWindow->addAutoMoney(mNick,
+                    item->getPrice() * mAmountItems);
             }
         }
     }

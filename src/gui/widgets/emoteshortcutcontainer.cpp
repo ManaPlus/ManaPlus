@@ -103,9 +103,12 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         return;
 
     BLOCK_START("EmoteShortcutContainer::draw")
-    mAlpha = client->getGuiAlpha();
-    if (client->getGuiAlpha() != mAlpha && mBackgroundImg)
-        mBackgroundImg->setAlpha(mAlpha);
+    if (client->getGuiAlpha() != mAlpha)
+    {
+        if (mBackgroundImg)
+            mBackgroundImg->setAlpha(mAlpha);
+        mAlpha = client->getGuiAlpha();
+    }
 
     Graphics *const g = static_cast<Graphics *const>(graphics);
     gcn::Font *const font = getFont();

@@ -215,45 +215,42 @@ void Tab::draw(gcn::Graphics *graphics)
 
     Graphics *const g = static_cast<Graphics*>(graphics);
 
-    if (skin)
+    // draw tab
+    if (openGLMode != RENDER_SAFE_OPENGL)
     {
-        // draw tab
-        if (openGLMode != RENDER_SAFE_OPENGL)
+        const ImageRect &rect = skin->getBorder();
+        if (mRedraw || mode != mMode || g->getRedraw())
         {
-            const ImageRect &rect = skin->getBorder();
-            if (mRedraw || mode != mMode || g->getRedraw())
-            {
-                mMode = mode;
-                mRedraw = false;
-                mVertexes->clear();
-                g->calcWindow(mVertexes, 0, 0,
-                    mDimension.width, mDimension.height, rect);
+            mMode = mode;
+            mRedraw = false;
+            mVertexes->clear();
+            g->calcWindow(mVertexes, 0, 0,
+                mDimension.width, mDimension.height, rect);
 
-                if (mImage)
-                {
-                    const Skin *const skin1 = tabImg[TAB_STANDARD];
-                    if (skin1)
-                    {
-                        const int padding = skin1->getPadding();
-                        g->calcTile(mVertexes, mImage, padding, padding);
-                    }
-                }
-            }
-
-            g->drawTile(mVertexes);
-        }
-        else
-        {
-            g->drawImageRect(0, 0,
-                mDimension.width, mDimension.height, skin->getBorder());
             if (mImage)
             {
                 const Skin *const skin1 = tabImg[TAB_STANDARD];
                 if (skin1)
                 {
                     const int padding = skin1->getPadding();
-                    g->drawImage(mImage, padding, padding);
+                    g->calcTile(mVertexes, mImage, padding, padding);
                 }
+            }
+        }
+
+        g->drawTile(mVertexes);
+    }
+    else
+    {
+        g->drawImageRect(0, 0,
+            mDimension.width, mDimension.height, skin->getBorder());
+        if (mImage)
+        {
+            const Skin *const skin1 = tabImg[TAB_STANDARD];
+            if (skin1)
+            {
+                const int padding = skin1->getPadding();
+                g->drawImage(mImage, padding, padding);
             }
         }
     }

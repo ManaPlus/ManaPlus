@@ -203,20 +203,20 @@ std::string SpellManager::parseCommand(std::string command,
 
     bool found = false;
 
-    int idx = static_cast<int>(command.find("<TARGET>"));
-    if (idx >= 0)
+    size_t idx = command.find("<TARGET>");
+    if (idx != std::string::npos)
     {
         found = true;
         command = replaceAll(command, "<TARGET>", name);
     }
-    idx = static_cast<int>(command.find("<TARGETID>"));
-    if (idx >= 0)
+    idx = command.find("<TARGETID>");
+    if (idx != std::string::npos)
     {
         found = true;
         command = replaceAll(command, "<TARGETID>", id);
     }
-    idx = static_cast<int>(command.find("<TARGETORSELF>"));
-    if (idx >= 0)
+    idx = command.find("<TARGETORSELF>");
+    if (idx != std::string::npos)
     {
         found = true;
         command = replaceAll(command, "<TARGETORSELF>", name2);

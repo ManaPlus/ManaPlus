@@ -1060,7 +1060,7 @@ void PopupMenu::handleLink(const std::string &link,
             }
         }
     }
-    else if (link == "whisper" && !mNick.empty() && chatWindow)
+    else if (link == "whisper" && !mNick.empty())
     {
         if (chatWindow)
         {

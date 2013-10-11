@@ -24,17 +24,28 @@
 
 #include "debug.h"
 
+static char *getLangName()
+{
+    const char *const lang = getenv("LANG");
+    if (lang && strlen(lang) > 1000)
+        return nullptr;
+    return lang;
+}
+
 LangVect getLang()
 {
     LangVect langs;
-
     std::string lang = config.getStringValue("lang").c_str();
     if (lang.empty())
     {
-        const char *const lng = getenv("LANG");
+        const char *const lng = getLangName();
         if (!lng)
             return langs;
         lang = lng;
+    }
+    else if (lang.size() > 1000)
+    {
+        return langs;
     }
 
     size_t dot = lang.find(".");
@@ -52,10 +63,14 @@ std::string getLangSimple()
     const std::string lang = config.getStringValue("lang").c_str();
     if (lang.empty())
     {
-        const char *const lng = getenv("LANG");
+        const char *const lng = getLangName();
         if (!lng)
             return "";
         return lng;
+    }
+    else if (lang.size() > 1000)
+    {
+        return "";
     }
     return lang;
 }
@@ -65,10 +80,14 @@ std::string getLangShort()
     std::string lang = config.getStringValue("lang").c_str();
     if (lang.empty())
     {
-        const char *const lng = getenv("LANG");
+        const char *const lng = getLangName();
         if (!lng)
             return "";
         lang = lng;
+    }
+    else if (lang.size() > 1000)
+    {
+        return "";
     }
 
     size_t dot = lang.find(".");

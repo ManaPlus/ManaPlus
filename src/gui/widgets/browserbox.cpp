@@ -610,8 +610,7 @@ int BrowserBox::calcHeight()
             else
                 end = idx2;
 
-            if (mUseLinksAndUserColors ||
-                (!mUseLinksAndUserColors && (start == 0)))
+            if (start == 0 || mUseLinksAndUserColors)
             {
                 // Check for color change in format "##x", x = [L,P,0..9]
                 if (row.find("##", start) == start && row.size() > start + 2)

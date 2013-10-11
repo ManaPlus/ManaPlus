@@ -178,10 +178,8 @@ void Setup_Joystick::apply()
     if (!joystick)
         return;
 
-    config.setValue("joystickEnabled",
-        joystick ? joystick->isEnabled() : false);
+    config.setValue("joystickEnabled", joystick->isEnabled());
 
     config.setValue("useInactiveJoystick", mUseInactiveCheckBox->isSelected());
-    if (joystick)
-        joystick->setUseInactive(mUseInactiveCheckBox->isSelected());
+    joystick->setUseInactive(mUseInactiveCheckBox->isSelected());
 }

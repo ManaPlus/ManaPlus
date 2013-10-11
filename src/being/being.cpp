@@ -1197,7 +1197,7 @@ void Being::setAction(const Action &action, const int attackId)
                             rotation = 270;
                             break;
                     }
-                    if (Particle::enabled && effectManager && effectId >= 0)
+                    if (effectManager && effectId >= 0)
                         effectManager->trigger(effectId, this, rotation);
                 }
             }

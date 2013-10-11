@@ -192,7 +192,7 @@ void ShopListBox::setPriceCheck(const bool check)
 
 void ShopListBox::mouseMoved(gcn::MouseEvent &event)
 {
-    if (!mItemPopup)
+    if (!mItemPopup || !mRowHeight)
         return;
 
     if (!mShopItems)

@@ -119,11 +119,11 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         return;
     }
 
-    mAlpha = client->getGuiAlpha();
     if (client->getGuiAlpha() != mAlpha)
     {
         if (mBackgroundImg)
             mBackgroundImg->setAlpha(mAlpha);
+        mAlpha = client->getGuiAlpha();
     }
 
     Graphics *const g = static_cast<Graphics*>(graphics);

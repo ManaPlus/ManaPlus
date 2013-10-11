@@ -573,7 +573,7 @@ void NullOpenGLGraphics::calcImagePattern(ImageVertexes* const vert,
                                           const int x, const int y,
                                           const int w, const int h) const
 {
-    if (!image)
+    if (!image || !vert)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;

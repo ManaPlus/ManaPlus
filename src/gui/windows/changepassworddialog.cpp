@@ -151,7 +151,7 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
                 mWrongDataNoticeListener->setTarget(this->mOldPassField);
             else if (error == 2)
                 mWrongDataNoticeListener->setTarget(this->mFirstPassField);
-            else if (error == 3)
+            else  // if (error == 3)
                 mWrongDataNoticeListener->setTarget(this->mSecondPassField);
 
             // TRANSLATORS: change password error header
