@@ -46,7 +46,7 @@
 #include "utils/mkdir.h"
 #include "utils/physfstools.h"
 
-#include <limits>
+#include <climits>
 #include <queue>
 
 #include <sys/stat.h>
