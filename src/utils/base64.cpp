@@ -50,6 +50,8 @@ unsigned char *php3_base64_encode(const unsigned char *const string,
     int i = 0;
     unsigned char *const result = static_cast<unsigned char *>(calloc(
         ((length + 3 - length % 3) * 4 / 3 + 1) * sizeof(unsigned char), 1));
+    if (!result)
+        return nullptr;
 
     while (length > 2)
     { /* keep going until we have less than 24 bits */
