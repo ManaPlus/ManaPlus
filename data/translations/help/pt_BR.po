@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-08-09 20:26+0000\n"
-"Last-Translator: Luciano Zago <lcnzg7@gmail.com>\n"
+"PO-Revision-Date: 2013-10-07 21:17+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/manaplus/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -104,6 +104,9 @@ msgstr "/addpriorityattack NAME - adiciona um monstro na lista de prioridades"
 
 msgid "Back to Index"
 msgstr "Voltar ao inicio"
+
+msgid "DOWNLOADS"
+msgstr ""
 
 msgid "THE PLAYER LIST"
 msgstr "A LISTA DE JOGADORES"
@@ -276,6 +279,9 @@ msgstr ""
 
 msgid "/unignore NICK - Remove nick from ignore list."
 msgstr "/unignore NICK - Remove o NICK da lista de ignorados."
+
+msgid "Instructions"
+msgstr ""
 
 msgid "IGNORING COMMUNICATION"
 msgstr "IGNORANDO COMUNICAÇÃO"
@@ -493,10 +499,16 @@ msgstr ""
 msgid "\"Item shortcut 6\""
 msgstr ""
 
+msgid "Download"
+msgstr ""
+
 msgid "Art or images contributors"
 msgstr ""
 
 msgid "\"Target player\""
+msgstr ""
+
+msgid "##2ManaPlus version: ##6%VER%"
 msgstr ""
 
 msgid "\"Debug window\""
@@ -588,9 +600,6 @@ msgstr "Habilidades"
 
 msgid "##2Party Level1:##P enables a char to join a party."
 msgstr "##2Nivel de Grupo1:##P habilita um jogador a entrar no grupo."
-
-msgid "##2Version:##6%VER%"
-msgstr "##2Versão:##6%VER%"
 
 msgid "\"Outfit shortcut 3\""
 msgstr ""

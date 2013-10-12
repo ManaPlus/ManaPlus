@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-07-14 11:23+0000\n"
+"PO-Revision-Date: 2013-10-07 21:17+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -107,6 +107,9 @@ msgstr "/addpriorityattack МОНСТР - добавить монстра в п�
 
 msgid "Back to Index"
 msgstr "Назад к содержанию"
+
+msgid "DOWNLOADS"
+msgstr ""
 
 msgid "THE PLAYER LIST"
 msgstr "СПИСОК ИГРОКОВ"
@@ -279,6 +282,9 @@ msgstr ""
 
 msgid "/unignore NICK - Remove nick from ignore list."
 msgstr "/unignore ИГРОК - убрать игрока из списка игнорирования."
+
+msgid "Instructions"
+msgstr ""
 
 msgid "IGNORING COMMUNICATION"
 msgstr "ИГНОРИРОВАНИЕ"
@@ -496,10 +502,16 @@ msgstr ""
 msgid "\"Item shortcut 6\""
 msgstr ""
 
+msgid "Download"
+msgstr ""
+
 msgid "Art or images contributors"
 msgstr "Художники"
 
 msgid "\"Target player\""
+msgstr ""
+
+msgid "##2ManaPlus version: ##6%VER%"
 msgstr ""
 
 msgid "\"Debug window\""
@@ -591,9 +603,6 @@ msgstr "Умения"
 
 msgid "##2Party Level1:##P enables a char to join a party."
 msgstr "##2Группа Уровень1:##P Включает возможность вступать в группу."
-
-msgid "##2Version:##6%VER%"
-msgstr "##2Версия:##6%VER%"
 
 msgid "\"Outfit shortcut 3\""
 msgstr ""

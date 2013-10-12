@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-10-08 00:08+0300\n"
+"POT-Creation-Date: 2013-10-12 12:18+0300\n"
 "PO-Revision-Date: 2013-09-23 20:25+0000\n"
 "Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/"
@@ -57,12 +57,12 @@ msgid "miss"
 msgstr "falla"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1746 src/gui/windows/whoisonline.cpp:854
+#: src/being/being.cpp:1746 src/gui/windows/whoisonline.cpp:857
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1751 src/gui/windows/whoisonline.cpp:859
+#: src/being/being.cpp:1751 src/gui/windows/whoisonline.cpp:862
 msgid "I"
 msgstr "I"
 
@@ -535,27 +535,34 @@ msgstr "Burbuja Flotante"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1104 src/gui/windowmenu.cpp:164 src/gui/windows/setup.cpp:58
+#: src/client.cpp:1102 src/gui/windowmenu.cpp:164 src/gui/windows/setup.cpp:58
 msgid "Setup"
 msgstr "Configuración"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1108 src/gui/widgets/tabs/setup_perfomance.cpp:50
+#: src/client.cpp:1106 src/gui/widgets/tabs/setup_perfomance.cpp:50
 msgid "Performance"
 msgstr "Desempeño"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1111 src/gui/widgets/tabs/setup_video.cpp:219
+#: src/client.cpp:1109 src/gui/widgets/tabs/setup_video.cpp:219
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1114 src/gui/widgets/tabs/setup_theme.cpp:279
+#: src/client.cpp:1112 src/gui/widgets/tabs/setup_theme.cpp:279
 msgid "Theme"
 msgstr "Tema"
+
+#. TRANSLATORS: theme tab quick button
+#. TRANSLATORS: help window name
+#: src/client.cpp:1115 src/gui/windowmenu.cpp:71
+#: src/gui/windows/helpwindow.cpp:50
+msgid "Help"
+msgstr "Ayuda"
 
 #. TRANSLATORS: close quick button
 #. TRANSLATORS: popup menu item
@@ -565,41 +572,41 @@ msgstr "Tema"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1118 src/gui/popups/popupmenu.cpp:614
-#: src/gui/windows/didyouknowwindow.cpp:77
+#: src/client.cpp:1119 src/gui/popups/popupmenu.cpp:614
+#: src/gui/windows/didyouknowwindow.cpp:78
 #: src/gui/windows/inventorywindow.cpp:252 src/gui/windows/npcdialog.cpp:71
-#: src/gui/windows/npcdialog.cpp:108 src/gui/windows/questswindow.cpp:134
+#: src/gui/windows/npcdialog.cpp:109 src/gui/windows/questswindow.cpp:134
 #: src/gui/windows/shopwindow.cpp:77
 msgid "Close"
 msgstr "Cerrar"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1236
+#: src/client.cpp:1237
 msgid "Connecting to server"
 msgstr "Conectando al servidor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1279
+#: src/client.cpp:1280
 msgid "Logging in"
 msgstr "Accediendo a la cuenta"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1318
+#: src/client.cpp:1319
 msgid "Entering game world"
 msgstr "Entrando al mundo del juego"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1439
+#: src/client.cpp:1440
 msgid "Requesting characters"
 msgstr "Cargando personajes"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1478
+#: src/client.cpp:1479
 msgid "Connecting to the game server"
 msgstr "Conectando al servidor del juego"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1491
+#: src/client.cpp:1492
 msgid "Changing game servers"
 msgstr "Cambiando servidores del juego"
 
@@ -614,7 +621,7 @@ msgstr "Cambiando servidores del juego"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1548 src/client.cpp:1559 src/client.cpp:1735
+#: src/client.cpp:1551 src/client.cpp:1562 src/client.cpp:1738
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:158
 #: src/gui/windows/charcreatedialog.cpp:358
@@ -627,65 +634,65 @@ msgid "Error"
 msgstr "Error"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1572
+#: src/client.cpp:1575
 msgid "Requesting registration details"
 msgstr "Solicitando detalles de registro"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1609
+#: src/client.cpp:1612
 msgid "Password Change"
 msgstr "Cambio de contraseña"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1611
+#: src/client.cpp:1614
 msgid "Password changed successfully!"
 msgstr "¡Contraseña cambiada exitosamente!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1632
+#: src/client.cpp:1635
 msgid "Email Change"
 msgstr "Cambio de Email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1634
+#: src/client.cpp:1637
 msgid "Email changed successfully!"
 msgstr "¡Email modificado exitosamente!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1656
+#: src/client.cpp:1659
 msgid "Unregister Successful"
 msgstr "Registro cancelado"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1658
+#: src/client.cpp:1661
 msgid "Farewell, come back any time..."
 msgstr "Adiós, vuelve cuando quieras..."
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1916 src/client.cpp:1931 src/client.cpp:1974
-#: src/client.cpp:1990 src/client.cpp:2430 src/client.cpp:2438
+#: src/client.cpp:1933 src/client.cpp:1948 src/client.cpp:1991
+#: src/client.cpp:2007 src/client.cpp:2447 src/client.cpp:2455
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "¡%s no existe y no puede ser creado! Saliendo."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2130
+#: src/client.cpp:2147
 #, c-format
 msgid "Invalid update host: %s."
 msgstr "Servidor de actualización inválido: %s."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2171 src/client.cpp:2178
+#: src/client.cpp:2188 src/client.cpp:2195
 msgid "Error creating updates directory!"
 msgstr "¡Error al crear la carpeta de actualizaciones!"
 
-#: src/client.cpp:2200 src/client.cpp:2213
+#: src/client.cpp:2217 src/client.cpp:2230
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Error: ¡%s no existe y no puede ser creado! Saliendo."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2874
+#: src/client.cpp:2894
 msgid "Do you want to open support page?"
 msgstr "¿Quieres abrir la página de soporte?"
 
@@ -698,36 +705,36 @@ msgstr "Comando desconocido."
 #. TRANSLATORS: party invite message
 #. TRANSLATORS: unignore command
 #. TRANSLATORS: erase command
-#: src/commands.cpp:152 src/commands.cpp:446 src/commands.cpp:533
-#: src/commands.cpp:587
+#: src/commands.cpp:150 src/commands.cpp:443 src/commands.cpp:530
+#: src/commands.cpp:584
 msgid "Please specify a name."
 msgstr "Por favor, especifique un nombre."
 
 #. TRANSLATORS: change relation
-#: src/commands.cpp:160
+#: src/commands.cpp:157
 #, c-format
 msgid "Player already %s!"
 msgstr "¡Jugador ya es %s!"
 
 #. TRANSLATORS: change relation
-#: src/commands.cpp:172
+#: src/commands.cpp:169
 #, c-format
 msgid "Player successfully %s!"
 msgstr "¡Jugador %s exitosamente!"
 
 #. TRANSLATORS: change relation
-#: src/commands.cpp:178
+#: src/commands.cpp:175
 #, c-format
 msgid "Player could not be %s!"
 msgstr "¡Jugador no pudo ser %s!"
 
 #. TRANSLATORS: whisper send
-#: src/commands.cpp:350
+#: src/commands.cpp:347
 msgid "Cannot send empty whispers!"
 msgstr "¡No se pueden enviar susurros vacíos!"
 
 #. TRANSLATORS: new whisper query
-#: src/commands.cpp:368
+#: src/commands.cpp:365
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
@@ -738,167 +745,167 @@ msgstr ""
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
-#: src/commands.cpp:387 src/commands.cpp:398
+#: src/commands.cpp:384 src/commands.cpp:395
 msgid "Cache cleaned"
 msgstr "Caché limpiada"
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
-#: src/commands.cpp:410 src/net/ea/gui/partytab.cpp:152
+#: src/commands.cpp:407 src/net/ea/gui/partytab.cpp:152
 msgid "Party name is missing."
 msgstr "Falta el nombre del grupo."
 
 #. TRANSLATORS: create guild message
-#: src/commands.cpp:426
+#: src/commands.cpp:423
 msgid "Guild name is missing."
 msgstr "Falta el nombre del Clan."
 
-#: src/commands.cpp:463
+#: src/commands.cpp:460
 msgid "Return toggles chat."
 msgstr "Volver a alternar el chat."
 
-#: src/commands.cpp:463
+#: src/commands.cpp:460
 msgid "Message closes chat."
 msgstr "Mensaje cierra la charla."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/commands.cpp:474
+#: src/commands.cpp:471
 msgid "Return now toggles chat."
 msgstr "Volver ahora a cambiar de chat."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/commands.cpp:483
+#: src/commands.cpp:480
 msgid "Message now closes chat."
 msgstr "Mensaje ahora cierra el chat."
 
 #. TRANSLATORS: adding friend command
-#: src/commands.cpp:511
+#: src/commands.cpp:508
 msgid "friend"
 msgstr "amigo"
 
 #. TRANSLATORS: disregard command
-#: src/commands.cpp:517
+#: src/commands.cpp:514
 msgid "disregarded"
 msgstr "desatendido"
 
 #. TRANSLATORS: neutral command
-#: src/commands.cpp:523
+#: src/commands.cpp:520
 msgid "neutral"
 msgstr "neutral"
 
 #. TRANSLATORS: unignore command
-#: src/commands.cpp:548
+#: src/commands.cpp:545
 msgid "Player wasn't ignored!"
 msgstr "El jugador no estaba ignorado!"
 
 #. TRANSLATORS: unignore command
-#: src/commands.cpp:558
+#: src/commands.cpp:555
 msgid "Player no longer ignored!"
 msgstr "¡El jugador ya no es ignorado!"
 
 #. TRANSLATORS: unignore command
-#: src/commands.cpp:563
+#: src/commands.cpp:560
 msgid "Player could not be unignored!"
 msgstr "¡Al jugador no se le puede dejar de ignorar!"
 
 #. TRANSLATORS: blacklist command
-#: src/commands.cpp:571
+#: src/commands.cpp:568
 msgid "blacklisted"
 msgstr "en la lista negra"
 
 #. TRANSLATORS: enemy command
-#: src/commands.cpp:577
+#: src/commands.cpp:574
 msgid "enemy"
 msgstr "enemigo"
 
 #. TRANSLATORS: erase command
-#: src/commands.cpp:597
+#: src/commands.cpp:594
 msgid "Player already erased!"
 msgstr "¡Jugador ya borrado!"
 
 #. TRANSLATORS: erase command
-#: src/commands.cpp:611
+#: src/commands.cpp:608
 msgid "Player successfully erased!"
 msgstr "¡Jugador borrado con éxito!"
 
 #. TRANSLATORS: erase command
-#: src/commands.cpp:616
+#: src/commands.cpp:613
 msgid "Player could not be erased!"
 msgstr "¡Jugador no pudo ser borrado!"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:898 src/commands.cpp:954
+#: src/commands.cpp:895 src/commands.cpp:951
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Tiempo de actividad del cliente: %s"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:909
+#: src/commands.cpp:906
 #, c-format
 msgid "%d week"
 msgstr "%d semanas"
 
-#: src/commands.cpp:909
+#: src/commands.cpp:906
 #, c-format
 msgid "%d weeks"
 msgstr "%d semanas"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:920
+#: src/commands.cpp:917
 #, c-format
 msgid "%d day"
 msgstr "%d días"
 
-#: src/commands.cpp:920
+#: src/commands.cpp:917
 #, c-format
 msgid "%d days"
 msgstr "%d días"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:930
+#: src/commands.cpp:927
 #, c-format
 msgid "%d hour"
 msgstr "%d horas"
 
-#: src/commands.cpp:930
+#: src/commands.cpp:927
 #, c-format
 msgid "%d hours"
 msgstr "%d horas"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:940
+#: src/commands.cpp:937
 #, c-format
 msgid "%d minute"
 msgstr "%d minutos"
 
-#: src/commands.cpp:940
+#: src/commands.cpp:937
 #, c-format
 msgid "%d minutes"
 msgstr "%d minutos"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:950
+#: src/commands.cpp:947
 #, c-format
 msgid "%d second"
 msgstr "%d segundos"
 
-#: src/commands.cpp:950
+#: src/commands.cpp:947
 #, c-format
 msgid "%d seconds"
 msgstr "%d segundos"
 
 #. TRANSLATORS: dump environment command
-#: src/commands.cpp:1108
+#: src/commands.cpp:1105
 msgid "Environment variables dumped"
 msgstr "Variables de entorno vaciadas"
 
 #. TRANSLATORS: dump command
-#: src/commands.cpp:1358 src/commands.cpp:1367
+#: src/commands.cpp:1360 src/commands.cpp:1369
 msgid "Resource images:"
 msgstr "Imágenes de recurso:"
 
 #. TRANSLATORS: dump command
-#: src/commands.cpp:1361 src/commands.cpp:1370
+#: src/commands.cpp:1363 src/commands.cpp:1372
 msgid "Resource orphaned images:"
 msgstr "Imágenes de recurso huérfano:"
 
@@ -910,14 +917,14 @@ msgstr ""
 "Opciones para /%s son \"yes\" | \"no\", \"true\" | \"false\", \"1\" | \"0\"."
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:262 src/gui/widgets/tabs/chattab.cpp:466
+#: src/game.cpp:262 src/gui/widgets/tabs/chattab.cpp:470
 msgid "General"
 msgstr "General"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: full button name
 #. TRANSLATORS: debug window name
-#: src/game.cpp:278 src/gui/widgets/tabs/chattab.cpp:468
+#: src/game.cpp:278 src/gui/widgets/tabs/chattab.cpp:472
 #: src/gui/windowmenu.cpp:151 src/gui/windows/debugwindow.cpp:51
 msgid "Debug"
 msgstr "Depurador"
@@ -1172,7 +1179,7 @@ msgstr "Agregar nombre al chat"
 #: src/gui/windows/charcreatedialog.cpp:119
 #: src/gui/windows/connectiondialog.cpp:48
 #: src/gui/windows/editserverdialog.cpp:78
-#: src/gui/windows/itemamountwindow.cpp:211
+#: src/gui/windows/itemamountwindow.cpp:209
 #: src/gui/windows/npcpostdialog.cpp:65 src/gui/windows/quitdialog.cpp:69
 #: src/gui/windows/registerdialog.cpp:76 src/gui/windows/setup.cpp:86
 #: src/gui/windows/socialwindow.cpp:1221
@@ -1274,7 +1281,7 @@ msgstr "Editar hechizo"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove all text from chat tab
 #. TRANSLATORS: npc dialog button
-#: src/gui/popups/popupmenu.cpp:619 src/gui/windows/npcdialog.cpp:105
+#: src/gui/popups/popupmenu.cpp:619 src/gui/windows/npcdialog.cpp:106
 msgid "Clear"
 msgstr "Limpiar"
 
@@ -2767,7 +2774,7 @@ msgid "Eq."
 msgstr "Eq."
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:89
+#: src/gui/widgets/itemlinkhandler.cpp:92
 msgid "Open url"
 msgstr "Abrir url"
 
@@ -2790,30 +2797,30 @@ msgid "Battle"
 msgstr "Batalla"
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chattab.cpp:153
+#: src/gui/widgets/tabs/chattab.cpp:154
 msgid "Global announcement:"
 msgstr "Anuncio global:"
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chattab.cpp:159
+#: src/gui/widgets/tabs/chattab.cpp:160
 #, c-format
 msgid "Global announcement from %s:"
 msgstr "Anuncio global de  %s:"
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chattab.cpp:185
+#: src/gui/widgets/tabs/chattab.cpp:186
 #, c-format
 msgid "%s whispers: %s"
 msgstr "%s envía mensaje privado: %s"
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chattab.cpp:541
+#: src/gui/widgets/tabs/chattab.cpp:545
 #, c-format
 msgid "%s is now Online."
 msgstr "%s ahora está Conectado."
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chattab.cpp:546
+#: src/gui/widgets/tabs/chattab.cpp:550
 #, c-format
 msgid "%s is now Offline."
 msgstr "%s ahora está Desconectado."
@@ -3062,7 +3069,7 @@ msgstr "Proteger foco del chat"
 #. TRANSLATORS: settings colors tab name
 #. TRANSLATORS: emotes tab name
 #: src/gui/widgets/tabs/setup_chat.cpp:61
-#: src/gui/widgets/tabs/setup_colors.cpp:80
+#: src/gui/widgets/tabs/setup_colors.cpp:81
 #: src/gui/windows/emotewindow.cpp:102
 msgid "Colors"
 msgstr "Colores"
@@ -3229,60 +3236,60 @@ msgid "This is what the color looks like"
 msgstr "Así es como luce este color"
 
 #. TRANSLATORS: colors tab. label.
-#: src/gui/widgets/tabs/setup_colors.cpp:59
+#: src/gui/widgets/tabs/setup_colors.cpp:60
 msgid "Type:"
 msgstr "Tipo:"
 
 #. TRANSLATORS: colors tab. label.
-#: src/gui/widgets/tabs/setup_colors.cpp:63
-#: src/gui/widgets/tabs/setup_colors.cpp:331
+#: src/gui/widgets/tabs/setup_colors.cpp:64
+#: src/gui/widgets/tabs/setup_colors.cpp:333
 msgid "Delay:"
 msgstr "Atraso:"
 
 #. TRANSLATORS: colors tab. label.
-#: src/gui/widgets/tabs/setup_colors.cpp:67
+#: src/gui/widgets/tabs/setup_colors.cpp:68
 msgid "Red:"
 msgstr "Rojo:"
 
 #. TRANSLATORS: colors tab. label.
-#: src/gui/widgets/tabs/setup_colors.cpp:71
+#: src/gui/widgets/tabs/setup_colors.cpp:72
 msgid "Green:"
 msgstr "Verde:"
 
 #. TRANSLATORS: colors tab. label.
-#: src/gui/widgets/tabs/setup_colors.cpp:75
+#: src/gui/widgets/tabs/setup_colors.cpp:76
 msgid "Blue:"
 msgstr "Azul:"
 
 #. TRANSLATORS: color type
-#: src/gui/widgets/tabs/setup_colors.cpp:99
-#: src/gui/widgets/tabs/setup_colors.cpp:398
+#: src/gui/widgets/tabs/setup_colors.cpp:100
+#: src/gui/widgets/tabs/setup_colors.cpp:400
 msgid "Static"
 msgstr "Estático"
 
 #. TRANSLATORS: color type
-#: src/gui/widgets/tabs/setup_colors.cpp:102
-#: src/gui/widgets/tabs/setup_colors.cpp:105
-#: src/gui/widgets/tabs/setup_colors.cpp:400
+#: src/gui/widgets/tabs/setup_colors.cpp:103
+#: src/gui/widgets/tabs/setup_colors.cpp:106
+#: src/gui/widgets/tabs/setup_colors.cpp:402
 msgid "Pulse"
 msgstr "Pulso"
 
 #. TRANSLATORS: color type
-#: src/gui/widgets/tabs/setup_colors.cpp:107
-#: src/gui/widgets/tabs/setup_colors.cpp:110
-#: src/gui/widgets/tabs/setup_colors.cpp:402
+#: src/gui/widgets/tabs/setup_colors.cpp:108
+#: src/gui/widgets/tabs/setup_colors.cpp:111
+#: src/gui/widgets/tabs/setup_colors.cpp:404
 msgid "Rainbow"
 msgstr "Arco iris"
 
 #. TRANSLATORS: color type
-#: src/gui/widgets/tabs/setup_colors.cpp:112
-#: src/gui/widgets/tabs/setup_colors.cpp:115
-#: src/gui/widgets/tabs/setup_colors.cpp:402
+#: src/gui/widgets/tabs/setup_colors.cpp:113
+#: src/gui/widgets/tabs/setup_colors.cpp:116
+#: src/gui/widgets/tabs/setup_colors.cpp:404
 msgid "Spectrum"
 msgstr "Espectro"
 
 #. TRANSLATORS: colors tab. label.
-#: src/gui/widgets/tabs/setup_colors.cpp:325
+#: src/gui/widgets/tabs/setup_colors.cpp:327
 msgid "Alpha:"
 msgstr "Alfa:"
 
@@ -4316,7 +4323,7 @@ msgstr "Pequeño"
 
 #. TRANSLATORS: onscreen button size
 #. TRANSLATORS: update type
-#: src/gui/widgets/tabs/setup_touch.cpp:38 src/gui/windows/logindialog.cpp:76
+#: src/gui/widgets/tabs/setup_touch.cpp:38 src/gui/windows/logindialog.cpp:79
 msgid "Normal"
 msgstr "Normal"
 
@@ -4697,11 +4704,6 @@ msgstr "Quién está conectado"
 msgid "HLP"
 msgstr "HLP"
 
-#. TRANSLATORS: help window name
-#: src/gui/windowmenu.cpp:71 src/gui/windows/helpwindow.cpp:50
-msgid "Help"
-msgstr "Ayuda"
-
 #. TRANSLATORS: short button name for quests window.
 #: src/gui/windowmenu.cpp:73
 msgid "QE"
@@ -4873,7 +4875,7 @@ msgstr "Inspector de Bot"
 
 #. TRANSLATORS: bot checker window button
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/botcheckerwindow.cpp:271 src/gui/windows/npcdialog.cpp:112
+#: src/gui/windows/botcheckerwindow.cpp:271 src/gui/windows/npcdialog.cpp:113
 msgid "Reset"
 msgstr "Restablecer"
 
@@ -4929,7 +4931,7 @@ msgstr "Crear artículos"
 
 #. TRANSLATORS: buy dialog label
 #. TRANSLATORS: sell dialog label
-#: src/gui/windows/buydialog.cpp:252 src/gui/windows/buydialog.cpp:542
+#: src/gui/windows/buydialog.cpp:252 src/gui/windows/buydialog.cpp:539
 #: src/gui/windows/selldialog.cpp:98 src/gui/windows/selldialog.cpp:363
 #, c-format
 msgid "Price: %s / Total: %s"
@@ -4946,9 +4948,9 @@ msgstr "Cantidad:"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (plus sign)
-#: src/gui/windows/buydialog.cpp:266 src/gui/windows/itemamountwindow.cpp:207
-#: src/gui/windows/itemamountwindow.cpp:242 src/gui/windows/npcdialog.cpp:101
-#: src/gui/windows/selldialog.cpp:102 src/gui/windows/statuswindow.cpp:797
+#: src/gui/windows/buydialog.cpp:266 src/gui/windows/itemamountwindow.cpp:205
+#: src/gui/windows/itemamountwindow.cpp:240 src/gui/windows/npcdialog.cpp:102
+#: src/gui/windows/selldialog.cpp:102 src/gui/windows/statuswindow.cpp:801
 msgid "+"
 msgstr "+"
 
@@ -4958,9 +4960,9 @@ msgstr "+"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (minus sign)
-#: src/gui/windows/buydialog.cpp:269 src/gui/windows/itemamountwindow.cpp:205
-#: src/gui/windows/itemamountwindow.cpp:239 src/gui/windows/npcdialog.cpp:103
-#: src/gui/windows/selldialog.cpp:104 src/gui/windows/statuswindow.cpp:810
+#: src/gui/windows/buydialog.cpp:269 src/gui/windows/itemamountwindow.cpp:203
+#: src/gui/windows/itemamountwindow.cpp:237 src/gui/windows/npcdialog.cpp:104
+#: src/gui/windows/selldialog.cpp:104 src/gui/windows/statuswindow.cpp:814
 msgid "-"
 msgstr "-"
 
@@ -4980,7 +4982,7 @@ msgstr "Crear"
 #. TRANSLATORS: status bar label
 #: src/gui/windows/buydialog.cpp:276 src/gui/windows/selldialog.cpp:110
 #: src/gui/windows/statuswindow.cpp:538 src/gui/windows/statuswindow.cpp:593
-#: src/gui/windows/statuswindow.cpp:794 src/gui/windows/statuswindow.cpp:828
+#: src/gui/windows/statuswindow.cpp:798 src/gui/windows/statuswindow.cpp:832
 msgid "Max"
 msgstr "Máx"
 
@@ -5039,7 +5041,7 @@ msgstr "Cambiar contraseña"
 #. TRANSLATORS: register dialog. label.
 #. TRANSLATORS: unregister dialog. label.
 #: src/gui/windows/changepassworddialog.cpp:67
-#: src/gui/windows/logindialog.cpp:183 src/gui/windows/registerdialog.cpp:90
+#: src/gui/windows/logindialog.cpp:186 src/gui/windows/registerdialog.cpp:90
 #: src/gui/windows/unregisterdialog.cpp:61
 msgid "Password:"
 msgstr "Contraseña:"
@@ -5081,7 +5083,7 @@ msgstr "Nuevo Personaje"
 #. TRANSLATORS: login dialog label
 #. TRANSLATORS: register dialog. label.
 #: src/gui/windows/charcreatedialog.cpp:71
-#: src/gui/windows/editserverdialog.cpp:88 src/gui/windows/logindialog.cpp:181
+#: src/gui/windows/editserverdialog.cpp:88 src/gui/windows/logindialog.cpp:184
 #: src/gui/windows/registerdialog.cpp:88
 msgid "Name:"
 msgstr "Nombre:"
@@ -5301,26 +5303,26 @@ msgid "Net"
 msgstr "Red"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:164 src/gui/windows/debugwindow.cpp:294
-#: src/gui/windows/debugwindow.cpp:345
+#: src/gui/windows/debugwindow.cpp:164 src/gui/windows/debugwindow.cpp:295
+#: src/gui/windows/debugwindow.cpp:346
 msgid "Music:"
 msgstr "Música:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:166 src/gui/windows/debugwindow.cpp:300
-#: src/gui/windows/debugwindow.cpp:349
+#: src/gui/windows/debugwindow.cpp:166 src/gui/windows/debugwindow.cpp:301
+#: src/gui/windows/debugwindow.cpp:350
 msgid "Map:"
 msgstr "Mapa:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:168 src/gui/windows/debugwindow.cpp:297
-#: src/gui/windows/debugwindow.cpp:347
+#: src/gui/windows/debugwindow.cpp:168 src/gui/windows/debugwindow.cpp:298
+#: src/gui/windows/debugwindow.cpp:348
 msgid "Minimap:"
 msgstr "Minimapa:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:171 src/gui/windows/debugwindow.cpp:291
-#: src/gui/windows/debugwindow.cpp:343
+#: src/gui/windows/debugwindow.cpp:171 src/gui/windows/debugwindow.cpp:292
+#: src/gui/windows/debugwindow.cpp:344
 msgid "Cursor:"
 msgstr "Cursor:"
 
@@ -5330,24 +5332,24 @@ msgid "Particle count:"
 msgstr "Recuento de partículas:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:177 src/gui/windows/debugwindow.cpp:313
-#: src/gui/windows/debugwindow.cpp:353
+#: src/gui/windows/debugwindow.cpp:177 src/gui/windows/debugwindow.cpp:314
+#: src/gui/windows/debugwindow.cpp:354
 msgid "Map actors count:"
 msgstr "Numero de agentes en el mapa:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:179 src/gui/windows/debugwindow.cpp:272
-#: src/gui/windows/debugwindow.cpp:278
+#: src/gui/windows/debugwindow.cpp:179 src/gui/windows/debugwindow.cpp:273
+#: src/gui/windows/debugwindow.cpp:279
 msgid "Player Position:"
 msgstr "Posición del jugador:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:185 src/gui/windows/debugwindow.cpp:326
+#: src/gui/windows/debugwindow.cpp:185 src/gui/windows/debugwindow.cpp:327
 msgid "Draw calls:"
 msgstr "Dibujar llamadas:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:190 src/gui/windows/debugwindow.cpp:334
+#: src/gui/windows/debugwindow.cpp:190 src/gui/windows/debugwindow.cpp:335
 msgid "Texture binds:"
 msgstr "Enlaces de texturas:"
 
@@ -5358,7 +5360,7 @@ msgid "%d FPS"
 msgstr "%d FPS"
 
 #. TRANSLATORS: debug window label, logic per second
-#: src/gui/windows/debugwindow.cpp:195 src/gui/windows/debugwindow.cpp:361
+#: src/gui/windows/debugwindow.cpp:195 src/gui/windows/debugwindow.cpp:362
 #, c-format
 msgid "%d LPS"
 msgstr "%d LPS"
@@ -5394,108 +5396,108 @@ msgid "%d FPS (SDL2 default)"
 msgstr "%d FPS (SDL2 predeterminado)"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:250 src/gui/windows/debugwindow.cpp:319
+#: src/gui/windows/debugwindow.cpp:250 src/gui/windows/debugwindow.cpp:320
 msgid "Textures count:"
 msgstr "Contador de Texturas:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:308
+#: src/gui/windows/debugwindow.cpp:309
 #, c-format
 msgid "Particle count: %d"
 msgstr "Recuento de partículas: %d"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:367 src/gui/windows/debugwindow.cpp:417
-#: src/gui/windows/debugwindow.cpp:479
+#: src/gui/windows/debugwindow.cpp:369 src/gui/windows/debugwindow.cpp:420
+#: src/gui/windows/debugwindow.cpp:482
 msgid "Target:"
 msgstr "Objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:369 src/gui/windows/debugwindow.cpp:423
-#: src/gui/windows/debugwindow.cpp:481
+#: src/gui/windows/debugwindow.cpp:371 src/gui/windows/debugwindow.cpp:426
+#: src/gui/windows/debugwindow.cpp:484
 msgid "Target Id:"
 msgstr "Id de Objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:372 src/gui/windows/debugwindow.cpp:426
-#: src/gui/windows/debugwindow.cpp:483
+#: src/gui/windows/debugwindow.cpp:374 src/gui/windows/debugwindow.cpp:429
+#: src/gui/windows/debugwindow.cpp:486
 msgid "Target type:"
 msgstr "Tipo de objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:374
+#: src/gui/windows/debugwindow.cpp:376
 msgid "Target level:"
 msgstr "Nivel del objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:376 src/gui/windows/debugwindow.cpp:442
+#: src/gui/windows/debugwindow.cpp:378 src/gui/windows/debugwindow.cpp:445
 msgid "Target race:"
 msgstr "Raza del objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:378
+#: src/gui/windows/debugwindow.cpp:380
 msgid "Target party:"
 msgstr "Grupo de objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:380
+#: src/gui/windows/debugwindow.cpp:382
 msgid "Target guild:"
 msgstr "Gremio del objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:382 src/gui/windows/debugwindow.cpp:467
-#: src/gui/windows/debugwindow.cpp:473 src/gui/windows/debugwindow.cpp:491
+#: src/gui/windows/debugwindow.cpp:384 src/gui/windows/debugwindow.cpp:470
+#: src/gui/windows/debugwindow.cpp:476 src/gui/windows/debugwindow.cpp:494
 msgid "Attack delay:"
 msgstr "Retraso de ataque:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:384 src/gui/windows/debugwindow.cpp:454
-#: src/gui/windows/debugwindow.cpp:493
+#: src/gui/windows/debugwindow.cpp:386 src/gui/windows/debugwindow.cpp:457
+#: src/gui/windows/debugwindow.cpp:496
 msgid "Minimal hit:"
 msgstr "Golpe mínimo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:386 src/gui/windows/debugwindow.cpp:457
-#: src/gui/windows/debugwindow.cpp:495
+#: src/gui/windows/debugwindow.cpp:388 src/gui/windows/debugwindow.cpp:460
+#: src/gui/windows/debugwindow.cpp:498
 msgid "Maximum hit:"
 msgstr "Golpe máximo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:388 src/gui/windows/debugwindow.cpp:460
-#: src/gui/windows/debugwindow.cpp:497
+#: src/gui/windows/debugwindow.cpp:390 src/gui/windows/debugwindow.cpp:463
+#: src/gui/windows/debugwindow.cpp:500
 msgid "Critical hit:"
 msgstr "Golpe crítico:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:431 src/gui/windows/debugwindow.cpp:437
-#: src/gui/windows/debugwindow.cpp:485
+#: src/gui/windows/debugwindow.cpp:434 src/gui/windows/debugwindow.cpp:440
+#: src/gui/windows/debugwindow.cpp:488
 msgid "Target Level:"
 msgstr "Nivel del Objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:445 src/gui/windows/debugwindow.cpp:487
+#: src/gui/windows/debugwindow.cpp:448 src/gui/windows/debugwindow.cpp:490
 msgid "Target Party:"
 msgstr "Grupo del Objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:449 src/gui/windows/debugwindow.cpp:489
+#: src/gui/windows/debugwindow.cpp:452 src/gui/windows/debugwindow.cpp:492
 msgid "Target Guild:"
 msgstr "Clan del Objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:530
+#: src/gui/windows/debugwindow.cpp:537 src/gui/windows/debugwindow.cpp:543
 #, c-format
 msgid "Ping: %s ms"
 msgstr "Ping: %s ms"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:533
+#: src/gui/windows/debugwindow.cpp:546
 #, c-format
 msgid "In: %d bytes/s"
 msgstr "Recibiendo: %d bytes/s"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:536
+#: src/gui/windows/debugwindow.cpp:549
 #, c-format
 msgid "Out: %d bytes/s"
 msgstr "Enviando: %d bytes/s"
@@ -5506,17 +5508,17 @@ msgid "Did You Know?"
 msgstr "¿Sabías que...?"
 
 #. TRANSLATORS: did you know window button
-#: src/gui/windows/didyouknowwindow.cpp:56
+#: src/gui/windows/didyouknowwindow.cpp:57
 msgid "< Previous"
 msgstr "< Previo"
 
 #. TRANSLATORS: did you know window button
-#: src/gui/windows/didyouknowwindow.cpp:58
+#: src/gui/windows/didyouknowwindow.cpp:59
 msgid "Next >"
 msgstr "Siguiente >"
 
 #. TRANSLATORS: did you know window checkbox
-#: src/gui/windows/didyouknowwindow.cpp:60
+#: src/gui/windows/didyouknowwindow.cpp:61
 msgid "Auto open this window"
 msgstr "Abrir automáticamente esta ventana"
 
@@ -5527,7 +5529,7 @@ msgstr "Abrir automáticamente esta ventana"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #: src/gui/windows/editdialog.cpp:43 src/gui/windows/editserverdialog.cpp:76
-#: src/gui/windows/itemamountwindow.cpp:209 src/gui/windows/okdialog.cpp:50
+#: src/gui/windows/itemamountwindow.cpp:207 src/gui/windows/okdialog.cpp:50
 #: src/gui/windows/quitdialog.cpp:67 src/gui/windows/textdialog.cpp:46
 msgid "OK"
 msgstr "OK"
@@ -5591,47 +5593,47 @@ msgid "Did you know..."
 msgstr "¿Sabías que..."
 
 #. TRANSLATORS: item amount window button
-#: src/gui/windows/itemamountwindow.cpp:213
+#: src/gui/windows/itemamountwindow.cpp:211
 msgid "All"
 msgstr "Todo"
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:269
+#: src/gui/windows/itemamountwindow.cpp:267
 msgid "Select amount of items to trade."
 msgstr "Seleccione la cantidad de objetos a intercambiar."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:273
+#: src/gui/windows/itemamountwindow.cpp:271
 msgid "Select amount of items to drop."
 msgstr "Seleccione la cantidad de objetos a tirar."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:277
+#: src/gui/windows/itemamountwindow.cpp:275
 msgid "Select amount of items to store."
 msgstr "Seleccione la cantidad de objetos a almacenar."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:281
+#: src/gui/windows/itemamountwindow.cpp:279
 msgid "Select amount of items to retrieve."
 msgstr "Seleccione la cantidad de artículos a recuperar."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:285
+#: src/gui/windows/itemamountwindow.cpp:283
 msgid "Select amount of items to split."
 msgstr "Seleccione la cantidad de objetos para dividir."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:289
+#: src/gui/windows/itemamountwindow.cpp:287
 msgid "Add to buy shop."
 msgstr "Agregar a las compras de la tienda."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:293
+#: src/gui/windows/itemamountwindow.cpp:291
 msgid "Add to sell shop."
 msgstr "Agregar a las ventas de la tienda."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:297
+#: src/gui/windows/itemamountwindow.cpp:295
 msgid "Unknown."
 msgstr "Desconocido."
 
@@ -5743,61 +5745,61 @@ msgid "jacko spawning"
 msgstr "jacko apareciendo"
 
 #. TRANSLATORS: update type
-#: src/gui/windows/logindialog.cpp:78
+#: src/gui/windows/logindialog.cpp:81
 msgid "Auto Close"
 msgstr "Cerrar automáticamente"
 
 #. TRANSLATORS: update type
-#: src/gui/windows/logindialog.cpp:80
+#: src/gui/windows/logindialog.cpp:83
 msgid "Skip"
 msgstr "Saltar"
 
 #. TRANSLATORS: login dialog name
 #. TRANSLATORS: login dialog button
-#: src/gui/windows/logindialog.cpp:142 src/gui/windows/logindialog.cpp:159
+#: src/gui/windows/logindialog.cpp:145 src/gui/windows/logindialog.cpp:162
 msgid "Login"
 msgstr "Inicio de sesión"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:149
+#: src/gui/windows/logindialog.cpp:152
 msgid "Remember username"
 msgstr "Recordar nombre de usuario"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:152
+#: src/gui/windows/logindialog.cpp:155
 msgid "Update:"
 msgstr "Actualizar:"
 
 #. TRANSLATORS: login dialog button
-#: src/gui/windows/logindialog.cpp:157
+#: src/gui/windows/logindialog.cpp:160
 msgid "Change Server"
 msgstr "Cambiar de servidor"
 
 #. TRANSLATORS: login dialog button
 #. TRANSLATORS: register dialog name
 #. TRANSLATORS: register dialog. button.
-#: src/gui/windows/logindialog.cpp:161 src/gui/windows/registerdialog.cpp:65
+#: src/gui/windows/logindialog.cpp:164 src/gui/windows/registerdialog.cpp:65
 #: src/gui/windows/registerdialog.cpp:74
 msgid "Register"
 msgstr "Registrar"
 
 #. TRANSLATORS: login dialog checkbox
-#: src/gui/windows/logindialog.cpp:163
+#: src/gui/windows/logindialog.cpp:166
 msgid "Custom update host"
 msgstr "Host de actualización personalizado"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:177
+#: src/gui/windows/logindialog.cpp:180
 msgid "Server:"
 msgstr "Servidor:"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:187
+#: src/gui/windows/logindialog.cpp:190
 #, c-format
 msgid "Update host: %s"
 msgstr "Host de actualización: %s"
 
-#: src/gui/windows/logindialog.cpp:298
+#: src/gui/windows/logindialog.cpp:301
 msgid "Open register url"
 msgstr "Abrir registro de url"
 
@@ -5895,7 +5897,7 @@ msgstr "Enviar"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: trade window button
-#: src/gui/windows/npcdialog.cpp:110 src/gui/windows/serverdialog.cpp:258
+#: src/gui/windows/npcdialog.cpp:111 src/gui/windows/serverdialog.cpp:258
 #: src/gui/windows/shopwindow.cpp:91 src/gui/windows/shopwindow.cpp:98
 #: src/gui/windows/tradewindow.cpp:79
 msgid "Add"
@@ -6628,32 +6630,32 @@ msgid "Connecting..."
 msgstr "Conectando..."
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:722
+#: src/gui/windows/updaterwindow.cpp:723
 msgid "##1  The update process is incomplete."
 msgstr "##1  El proceso de actualización esta incompleto."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:724
+#: src/gui/windows/updaterwindow.cpp:725
 msgid "##1  It is strongly recommended that"
 msgstr "##1  Es altamente recomendado que"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:726
+#: src/gui/windows/updaterwindow.cpp:727
 msgid "##1  you try again later."
 msgstr "##1  lo intentes de nuevo más tarde."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:904
+#: src/gui/windows/updaterwindow.cpp:905
 msgid "Completed"
 msgstr "Completado"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:81 src/gui/windows/whoisonline.cpp:633
+#: src/gui/windows/whoisonline.cpp:81 src/gui/windows/whoisonline.cpp:636
 msgid "Who Is Online - Updating"
 msgstr "Quién está conectado - Actualizando"
 
 #. TRANSLATORS: who is online. button.
-#: src/gui/windows/whoisonline.cpp:94
+#: src/gui/windows/whoisonline.cpp:95
 msgid "Update"
 msgstr "Actualizar"
 
@@ -6663,12 +6665,12 @@ msgid "Who Is Online - "
 msgstr "Quienes están conectados - "
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:648
+#: src/gui/windows/whoisonline.cpp:651
 msgid "Who Is Online - error"
 msgstr "Quienes están conectados - error"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:690
+#: src/gui/windows/whoisonline.cpp:693
 msgid "Who Is Online - Update"
 msgstr "Quienes están conectados - Actualizar"
 
@@ -7243,17 +7245,17 @@ msgid "Username permanently erased."
 msgstr "Nombre de usuario borrado permanentemente."
 
 #. TRANSLATORS: error message
-#: src/net/ea/network.cpp:97
+#: src/net/ea/network.cpp:99
 msgid "Empty address given to Network::connect()!"
 msgstr "¡Dirección vacía enviada a Network::connect()!"
 
 #. TRANSLATORS: error message
-#: src/net/ea/network.cpp:198
+#: src/net/ea/network.cpp:201
 msgid "Unable to resolve host \""
 msgstr "No es posible determinar el host \""
 
 #. TRANSLATORS: error message
-#: src/net/ea/network.cpp:276
+#: src/net/ea/network.cpp:279
 msgid "Connection to server terminated. "
 msgstr "Conexión al servidor terminada. "
 
@@ -7911,7 +7913,7 @@ msgstr "OpenGL Seguro"
 #. TRANSLATORS: item info name
 #. TRANSLATORS: unknown info name
 #: src/resources/beinginfo.cpp:41 src/resources/db/avatardb.cpp:67
-#: src/resources/db/itemdb.cpp:313 src/resources/db/monsterdb.cpp:98
+#: src/resources/db/itemdb.cpp:315 src/resources/db/monsterdb.cpp:98
 msgid "unnamed"
 msgstr "anónimo"
 
@@ -7946,6 +7948,6 @@ msgid "Level %s"
 msgstr "Nivel %s"
 
 #. TRANSLATORS: item name
-#: src/resources/db/itemdb.cpp:202
+#: src/resources/db/itemdb.cpp:204
 msgid "Unknown item"
 msgstr "Objeto desconocido"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-07-14 11:23+0000\n"
+"PO-Revision-Date: 2013-10-07 21:17+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/manaplus/language/nl_BE/)\n"
 "MIME-Version: 1.0\n"
@@ -103,6 +103,9 @@ msgstr ""
 
 msgid "Back to Index"
 msgstr "Terug naar de Opgavetabel"
+
+msgid "DOWNLOADS"
+msgstr ""
 
 msgid "THE PLAYER LIST"
 msgstr ""
@@ -274,6 +277,9 @@ msgid "\"Toggle camera mode\""
 msgstr ""
 
 msgid "/unignore NICK - Remove nick from ignore list."
+msgstr ""
+
+msgid "Instructions"
 msgstr ""
 
 msgid "IGNORING COMMUNICATION"
@@ -492,10 +498,16 @@ msgstr ""
 msgid "\"Item shortcut 6\""
 msgstr ""
 
+msgid "Download"
+msgstr ""
+
 msgid "Art or images contributors"
 msgstr ""
 
 msgid "\"Target player\""
+msgstr ""
+
+msgid "##2ManaPlus version: ##6%VER%"
 msgstr ""
 
 msgid "\"Debug window\""
@@ -587,9 +599,6 @@ msgstr ""
 
 msgid "##2Party Level1:##P enables a char to join a party."
 msgstr ""
-
-msgid "##2Version:##6%VER%"
-msgstr "##2versie:##6%VER%"
 
 msgid "\"Outfit shortcut 3\""
 msgstr ""

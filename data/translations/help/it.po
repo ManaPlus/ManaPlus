@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-07-14 11:23+0000\n"
+"PO-Revision-Date: 2013-10-07 21:17+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -104,6 +104,9 @@ msgstr "/addpriorityattack NAME - aggiungi nemico alla lista Attacco (Priorità)
 
 msgid "Back to Index"
 msgstr "Torna all'Indice"
+
+msgid "DOWNLOADS"
+msgstr ""
 
 msgid "THE PLAYER LIST"
 msgstr "LISTA GIOCATORI"
@@ -276,6 +279,9 @@ msgstr ""
 
 msgid "/unignore NICK - Remove nick from ignore list."
 msgstr "/unignore NICK - rimuovi personaggio dalla lista Ignora."
+
+msgid "Instructions"
+msgstr ""
 
 msgid "IGNORING COMMUNICATION"
 msgstr "IGNORA COMUNICAZIONI"
@@ -493,10 +499,16 @@ msgstr ""
 msgid "\"Item shortcut 6\""
 msgstr ""
 
+msgid "Download"
+msgstr ""
+
 msgid "Art or images contributors"
 msgstr "Collaboratori grafica"
 
 msgid "\"Target player\""
+msgstr ""
+
+msgid "##2ManaPlus version: ##6%VER%"
 msgstr ""
 
 msgid "\"Debug window\""
@@ -588,9 +600,6 @@ msgstr "Abilità"
 
 msgid "##2Party Level1:##P enables a char to join a party."
 msgstr "##2Party Livello 1:##P permette al personaggio di entrare nei Party."
-
-msgid "##2Version:##6%VER%"
-msgstr "##2Versione:##6%VER%"
 
 msgid "\"Outfit shortcut 3\""
 msgstr ""
