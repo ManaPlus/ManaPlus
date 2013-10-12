@@ -38,12 +38,13 @@
 
 #include "debug.h"
 
-struct SlotUsed final : public std::unary_function<Item*, bool>
+struct SlotUsed final
 {
     bool operator()(const Item *const item) const
     {
         return item && item->mId >= 0 && item->mQuantity > 0;
     }
+    typedef Item *argument_type;
 };
 
 Inventory::Inventory(const int type, const int size1) :
