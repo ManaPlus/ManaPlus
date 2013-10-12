@@ -1,3 +1,33 @@
+2013-10-12 New release 1.3.10.12
+fix: custom update server selection.
+fix: crash with rename map object.
+fix: crash if close game with opened select char dialog.
+fix: players version in online list in ARM systems.
+fix: store button if item was protected.
+fix: not allow drag and drop protected items.
+fix: equipment menu draw order.
+fix: code::blocks project file for windows.
+add: show SDL version in client version.
+add: browser opening with SDL2 on Android.
+add: onscreen buttons 3x3, 4x2, 4x3
+add: legacy target selection images in mana theme.
+add: gm detection in online list on "new" tmw server.
+add: command to dump OpenGL vendor: /dumpgl
+add: support for /me command inside /away command.
+add: sound effect for equip, unequip, use, pickup, drop, take, put events.
+add: allow scrolling listboxes by hold and move mouse/finger.
+add: remember sort order in inventory, storage, buy dialog.
+add: label string cutting in player selection and creation dialogs.
+add: hide "did you know" window on Android by default.
+add: emulate right click on Android and SDL2 by hold two fingers.
+add: invert scrolling on Android.
+add: show numbers on onscreen buttons.
+add: improve header and footer in help window.
+add: improve network performance a bit.
+add: extend browserbox theming.
+add: update liberation font.
+add: help button before connecting to server.
+
 2013-09-29 New release 1.3.9.29
 fix: closing equipment window.
 fix: possible memory leaks.
