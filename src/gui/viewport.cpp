@@ -78,6 +78,8 @@ Viewport::Viewport() :
     mCameraRelativeX(0),
     mCameraRelativeY(0)
 {
+    mBeingPopup->postInit();
+
     setOpaque(false);
     addMouseListener(this);
 

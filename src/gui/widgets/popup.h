@@ -170,6 +170,10 @@ class Popup : public Container, public gcn::MouseListener,
         bool isPopupVisible() const
         { return mVisible; }
 
+        virtual void postInit()
+        {
+        }
+
     protected:
         int mPadding;                 /**< Holds the padding of the popup. */
         Skin *mSkin;                  /**< Skin in use by this popup */

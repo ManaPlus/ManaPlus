@@ -65,15 +65,19 @@ BeingPopup::BeingPopup() :
     mBeingComment->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
 
+}
+
+BeingPopup::~BeingPopup()
+{
+}
+
+void BeingPopup::postInit()
+{
     add(mBeingName);
     add(mBeingParty);
     add(mBeingGuild);
     add(mBeingRank);
     add(mBeingComment);
-}
-
-BeingPopup::~BeingPopup()
-{
 }
 
 void BeingPopup::show(const int x, const int y, Being *const b)
