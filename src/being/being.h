@@ -888,7 +888,7 @@ class Being : public ActorSprite, public ConfigListener
 
         static uint8_t genderToInt(const Gender sex) A_WARN_UNUSED;
 
-        static Gender intToGender(uint8_t sex) A_WARN_UNUSED;
+        static Gender intToGender(const uint8_t sex) A_WARN_UNUSED;
 
         NextSoundInfo mNextSound;
 

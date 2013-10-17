@@ -2223,7 +2223,7 @@ bool Being::draw(Graphics *const graphics,
 }
 
 void Being::drawSprites(Graphics *const graphics,
-                        const int posX, const int posY) const
+                        int posX, int posY) const
 {
     const int sz = getNumberOfLayers();
     for (int f = 0; f < sz; f ++)
@@ -2242,7 +2242,7 @@ void Being::drawSprites(Graphics *const graphics,
 }
 
 void Being::drawSpritesSDL(Graphics *const graphics,
-                           const int posX, const int posY) const
+                           int posX, int posY) const
 {
     const size_t sz = size();
     for (unsigned f = 0; f < sz; f ++)
