@@ -32,7 +32,7 @@
 
 #include "debug.h"
 
-DropShortcut *dropShortcut;
+DropShortcut *dropShortcut = nullptr;
 
 DropShortcut::DropShortcut() :
     mItemSelected(-1),
