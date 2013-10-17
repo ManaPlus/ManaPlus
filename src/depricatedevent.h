@@ -63,7 +63,7 @@ class DepricatedEvent final
         { return mDepricatedEventName; }
 
         // Sets or gets a interger with a key to identify
-        void setInt(const std::string &key, int value);
+        void setInt(const std::string &key, const int value);
 
         int getInt(const std::string &key) const A_WARN_UNUSED;
 
@@ -75,7 +75,7 @@ class DepricatedEvent final
                                     const A_WARN_UNUSED;
 
         // Sets or gets a floating point number with key to identify
-        void setFloat(const std::string &key, double value);
+        void setFloat(const std::string &key, const double value);
 
         double getFloat(const std::string &key) const A_WARN_UNUSED;
 
