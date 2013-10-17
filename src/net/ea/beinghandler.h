@@ -36,7 +36,8 @@ class BeingHandler : public Net::BeingHandler
     protected:
         explicit BeingHandler(const bool enableSync);
 
-        virtual Being *createBeing(int id, int16_t job) const A_WARN_UNUSED;
+        Being *createBeing(const int id,
+                           const int16_t job) const A_WARN_UNUSED;
 
         virtual void setSprite(Being *const being, const unsigned int slot,
                                const int id,
