@@ -92,7 +92,7 @@ CheckBox::~CheckBox()
     }
 }
 
-void CheckBox::draw(gcn::Graphics* graphics)
+void CheckBox::draw(gcn::Graphics *const graphics)
 {
     BLOCK_START("CheckBox::draw")
     drawBox(graphics);

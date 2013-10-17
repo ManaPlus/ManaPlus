@@ -44,7 +44,7 @@ class CheckBox final : public gcn::CheckBox,
          * Constructor.
          */
         CheckBox(const Widget2 *const widget,
-                 const std::string &caption, bool selected = false,
+                 const std::string &caption, const bool selected = false,
                  gcn::ActionListener *const listener = nullptr,
                  const std::string &eventId = "");
 
@@ -68,7 +68,7 @@ class CheckBox final : public gcn::CheckBox,
         /**
          * Draws the check box, not the caption.
          */
-        void drawBox(gcn::Graphics* graphics);
+        void drawBox(gcn::Graphics *const graphics);
 
         /**
          * Called when the mouse enteres the widget area.
