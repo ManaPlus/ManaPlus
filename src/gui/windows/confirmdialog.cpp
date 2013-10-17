@@ -38,17 +38,22 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
                              const bool modal, Window *const parent):
     Window(title, modal, parent, "confirm.xml"),
     gcn::ActionListener(),
-    mTextBox(new TextBox(this))
+    mTextBox(new TextBox(this)),
+    mIgnore(ignore)
 {
     mTextBox->setEditable(false);
     mTextBox->setOpaque(false);
     mTextBox->setTextWrapped(msg, 260);
+    soundManager.playGuiSound(soundEvent);
+}
 
+void ConfirmDialog::postInit()
+{
     // TRANSLATORS: confirm dialog button
     Button *const yesButton = new Button(this, _("Yes"), "yes", this);
     // TRANSLATORS: confirm dialog button
     Button *const noButton = new Button(this, _("No"), "no", this);
-    Button *const ignoreButton = ignore ? new Button(
+    Button *const ignoreButton = mIgnore ? new Button(
         // TRANSLATORS: confirm dialog button
         this, _("Ignore"), "ignore", this) : nullptr;
 
@@ -61,7 +66,7 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
 
     const int fontHeight = getFont()->getHeight();
     const int height = numRows * fontHeight;
-    int width = getFont()->getWidth(title);
+    int width = getFont()->getWidth(getCaption());
 
     if (width < mTextBox->getMinWidth())
         width = mTextBox->getMinWidth();
@@ -88,7 +93,7 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
     add(yesButton);
     add(noButton);
 
-    if (ignore && ignoreButton)
+    if (mIgnore && ignoreButton)
         add(ignoreButton);
 
     if (getParent())
@@ -98,7 +103,6 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
     }
     setVisible(true);
     yesButton->requestFocus();
-    soundManager.playGuiSound(soundEvent);
 }
 
 void ConfirmDialog::action(const gcn::ActionEvent &event)

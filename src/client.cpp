@@ -2892,10 +2892,13 @@ Window *Client::openErrorDialog(const std::string &header,
     }
     else
     {
-        return new ConfirmDialog(header, strprintf("%s %s", message.c_str(),
+        ConfirmDialog *const dialog = new ConfirmDialog(
+            header, strprintf("%s %s", message.c_str(),
             // TRANSLATORS: error message question
             _("Do you want to open support page?")),
             SOUND_ERROR, false, modal);
+        dialog->postInit();
+        return dialog;
     }
 }
 

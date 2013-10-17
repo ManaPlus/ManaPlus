@@ -777,6 +777,7 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
             (_("Request for Trade"), strprintf(_("%s wants to %s %s do you "
             "accept?"), nick.c_str(), msg.c_str(),
             mTradeItem->getInfo().getName().c_str()), SOUND_REQUEST, true);
+        confirmDlg->postInit();
         confirmDlg->addActionListener(this);
     }
 }

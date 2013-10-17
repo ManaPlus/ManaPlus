@@ -90,6 +90,7 @@ void ItemLinkHandler::handleLink(const std::string &link,
             ConfirmDialog *const confirmDlg = new ConfirmDialog(
                 // TRANSLATORS: dialog message
                 _("Open url"), url, SOUND_REQUEST, false, true);
+            confirmDlg->postInit();
             confirmDlg->addActionListener(&listener);
         }
         else if (button == gcn::MouseInput::RIGHT)

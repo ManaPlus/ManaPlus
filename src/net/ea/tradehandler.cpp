@@ -107,6 +107,7 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg) const
                     strprintf(_("%s wants to trade with you, do"
                     " you accept?"), tradePartnerName.c_str()),
                     SOUND_REQUEST, true);
+                confirmDlg->postInit();
                 confirmDlg->addActionListener(&listener);
             }
             else
