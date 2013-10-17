@@ -27,5 +27,5 @@ autoreconf -i
             --bindir=$dir/run/bin \
             --mandir=$dir/run/share/man
 
-make -j5 2>build/make.log
+make -j8 2>build/make.log
 
