@@ -676,7 +676,7 @@ void ChatWindow::doPresent() const
     std::string response;
     int playercount = 0;
 
-    FOR_EACH (ActorSpritesConstIterator, it, actors)
+    FOR_EACH (ActorSpritesIterator, it, actors)
     {
         if ((*it)->getType() == ActorSprite::PLAYER)
         {
