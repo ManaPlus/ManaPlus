@@ -696,6 +696,7 @@ int BrowserBox::calcHeight()
                             default:
                                 selColor[0] = textColor[0];
                                 selColor[1] = textColor[1];
+                                break;
                         }
                     }
 
