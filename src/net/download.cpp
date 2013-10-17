@@ -173,7 +173,7 @@ bool Download::start()
 {
     logger->log("Starting download: %s", mUrl.c_str());
 
-    mThread = SDL::createThread(downloadThread, "download", this);
+    mThread = SDL::createThread(&downloadThread, "download", this);
     if (!mThread)
     {
         logger->log1(DOWNLOAD_ERROR_MESSAGE_THREAD);
@@ -266,7 +266,8 @@ int Download::downloadThread(void *ptr)
             else
             {
                 file = fopen(outFilename.c_str(), "w+b");
-                curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA, file);
+                if (file)
+                    curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA, file);
             }
 
             curl_easy_setopt(d->mCurl, CURLOPT_USERAGENT,
@@ -276,7 +277,7 @@ int Download::downloadThread(void *ptr)
             curl_easy_setopt(d->mCurl, CURLOPT_URL, d->mUrl.c_str());
             curl_easy_setopt(d->mCurl, CURLOPT_NOPROGRESS, 0);
             curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSFUNCTION,
-                             downloadProgress);
+                             &downloadProgress);
             curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSDATA, ptr);
             curl_easy_setopt(d->mCurl, CURLOPT_NOSIGNAL, 1);
             curl_easy_setopt(d->mCurl, CURLOPT_CONNECTTIMEOUT, 30);
