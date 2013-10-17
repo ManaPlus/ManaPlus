@@ -223,8 +223,7 @@ void ChatTab::chatLog(std::string line, Own own,
 
     if (config.getBoolValue("useLocalTime"))
     {
-        const struct tm *timeInfo;
-        timeInfo = localtime(&t);
+        const tm *const timeInfo = localtime(&t);
         if (timeInfo)
         {
             line = strprintf("%s[%02d:%02d] %s%s", lineColor.c_str(),
