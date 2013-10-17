@@ -135,11 +135,20 @@ class Button final : public gcn::Button,
 
         bool isPressed2() const A_WARN_UNUSED;
 
+        enum
+        {
+            BUTTON_STANDARD = 0,  // 0
+            BUTTON_HIGHLIGHTED,   // 1
+            BUTTON_PRESSED,       // 2
+            BUTTON_DISABLED,      // 3
+            BUTTON_COUNT          // 4 - Must be last.
+        };
+
     private:
         void init();
 
-        static Skin *button[4];    /**< Button state graphics */
-        static int mInstances;     /**< Number of button instances */
+        static Skin *button[BUTTON_COUNT];  /**< Button state graphics */
+        static int mInstances;              /**< Number of button instances */
         static float mAlpha;
 
         std::string mDescription;
