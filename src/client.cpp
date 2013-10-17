@@ -1592,6 +1592,7 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_CHANGEPASSWORD")
                     logger->log1("State: CHANGE PASSWORD");
                     mCurrentDialog = new ChangePasswordDialog(&loginData);
+                    mCurrentDialog->setVisible(true);
                     BLOCK_END("Client::gameExec STATE_CHANGEPASSWORD")
                     break;
 

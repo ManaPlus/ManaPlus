@@ -75,7 +75,6 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData *const data):
     reflowLayout(200);
 
     center();
-    setVisible(true);
     mOldPassField->requestFocus();
 
     mOldPassField->setActionEventId("change_password");
