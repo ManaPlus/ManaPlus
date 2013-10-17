@@ -260,6 +260,7 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
 #endif
                     default:
                         mServer.type = ServerInfo::UNKNOWN;
+                        break;
                 }
             }
             else
