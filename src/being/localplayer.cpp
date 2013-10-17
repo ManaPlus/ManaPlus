@@ -206,6 +206,12 @@ LocalPlayer::~LocalPlayer()
     config.removeListeners(this);
     serverConfig.removeListener("enableBuggyServers", this);
 
+    navigateClean();
+    mCrossX = 0;
+    mCrossY = 0;
+
+    updateNavigateList();
+
     if (mAwayDialog)
     {
         soundManager.volumeRestore();

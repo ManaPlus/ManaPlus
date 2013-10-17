@@ -35,7 +35,11 @@ Actor::Actor():
 
 Actor::~Actor()
 {
-    setMap(nullptr);
+    if (mMap)
+    {
+        mMap->removeActor(mMapActor);
+        mMap = nullptr;
+    }
 }
 
 void Actor::setMap(Map *const map)

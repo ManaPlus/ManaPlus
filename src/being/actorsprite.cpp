@@ -59,7 +59,8 @@ ActorSprite::ActorSprite(const int id) :
 
 ActorSprite::~ActorSprite()
 {
-    setMap(nullptr);
+    mChildParticleEffects.clear();
+    mMustResetParticles = true;
 
     mUsedTargetCursor = nullptr;
 
