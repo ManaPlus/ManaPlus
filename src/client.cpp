@@ -1235,6 +1235,7 @@ int Client::gameExec()
                     mCurrentDialog = new ConnectionDialog(
                         // TRANSLATORS: connection dialog header
                         _("Connecting to server"), STATE_SWITCH_SERVER);
+                    mCurrentDialog->postInit();
                     TranslationManager::loadCurrentLang();
                     BLOCK_END("Client::gameExec STATE_CONNECT_SERVER")
                     break;
@@ -1278,6 +1279,7 @@ int Client::gameExec()
                     mCurrentDialog = new ConnectionDialog(
                         // TRANSLATORS: connection dialog header
                         _("Logging in"), STATE_SWITCH_SERVER);
+                    mCurrentDialog->postInit();
                     BLOCK_END("Client::gameExec STATE_LOGIN_ATTEMPT")
                     break;
 
@@ -1317,6 +1319,7 @@ int Client::gameExec()
                     mCurrentDialog = new ConnectionDialog(
                         // TRANSLATORS: connection dialog header
                         _("Entering game world"), STATE_WORLD_SELECT);
+                    mCurrentDialog->postInit();
                     BLOCK_END("Client::gameExec STATE_WORLD_SELECT_ATTEMPT")
                     break;
 
@@ -1439,6 +1442,7 @@ int Client::gameExec()
                         // TRANSLATORS: connection dialog header
                         _("Requesting characters"),
                         STATE_SWITCH_SERVER);
+                    mCurrentDialog->postInit();
                     BLOCK_END("Client::gameExec STATE_GET_CHARACTERS")
                     break;
 
@@ -1480,6 +1484,7 @@ int Client::gameExec()
                         _("Connecting to the game server"),
                         Net::getNetworkType() != ServerInfo::MANASERV ?
                         STATE_CHOOSE_SERVER : STATE_SWITCH_CHARACTER);
+                    mCurrentDialog->postInit();
                     BLOCK_END("Client::gameExec STATE_CONNECT_GAME")
                     break;
 
@@ -1492,6 +1497,7 @@ int Client::gameExec()
                         // TRANSLATORS: connection dialog header
                         _("Changing game servers"),
                         STATE_SWITCH_CHARACTER);
+                    mCurrentDialog->postInit();
                     BLOCK_END("Client::gameExec STATE_CHANGE_MAP")
                     break;
 
@@ -1574,6 +1580,7 @@ int Client::gameExec()
                     mCurrentDialog = new ConnectionDialog(
                         // TRANSLATORS: connection dialog header
                         _("Requesting registration details"), STATE_LOGIN);
+                    mCurrentDialog->postInit();
                     BLOCK_END("Client::gameExec STATE_REGISTER_PREP")
                     break;
 

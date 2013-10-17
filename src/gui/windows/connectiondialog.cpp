@@ -53,6 +53,10 @@ ConnectionDialog::ConnectionDialog(const std::string &text,
     reflowLayout();
 
     center();
+}
+
+void ConnectionDialog::postInit()
+{
     setVisible(true);
 }
 
