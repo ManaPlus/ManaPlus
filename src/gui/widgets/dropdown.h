@@ -67,7 +67,7 @@ class DropDown final : public gcn::ActionListener,
          * @see ListModel, ScrollArea, ListBox.
          */
         DropDown(const Widget2 *const widget,
-                 gcn::ListModel *const listModel = nullptr,
+                 gcn::ListModel *const listModel,
                  bool extended = false,
                  bool modal = false,
                  gcn::ActionListener *const listener = nullptr,
