@@ -36,7 +36,9 @@ class DebugTab : public Container
     public:
         A_DELETE_COPY(DebugTab)
 
-        void logic() override = 0;
+        void logic() override
+        {
+        }
 
         void resize(const int x, const int y)
         { setDimension(gcn::Rectangle(0, 0, x, y)); }
