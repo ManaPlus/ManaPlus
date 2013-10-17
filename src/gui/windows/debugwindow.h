@@ -138,6 +138,7 @@ class DebugWindow final : public Window
 
         ~DebugWindow();
 
+        void postInit();
         /**
          * Logic (updates components' size and infos)
          */

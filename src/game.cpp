@@ -220,6 +220,7 @@ static void createGuiWindows()
     skillDialog = new SkillDialog;
     minimap = new Minimap;
     debugWindow = new DebugWindow;
+    debugWindow->postInit();
     itemShortcutWindow = new ShortcutWindow(
         "ItemShortcut", "items.xml", 83, 460);
 

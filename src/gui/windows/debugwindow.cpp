@@ -73,7 +73,6 @@ DebugWindow::DebugWindow() :
     mTabs->addTab(std::string(_("Net")), mNetWidget);
 
     mTabs->setDimension(gcn::Rectangle(0, 0, 600, 300));
-    add(mTabs);
 
     const int w = mDimension.width;
     const int h = mDimension.height;
@@ -92,6 +91,11 @@ DebugWindow::~DebugWindow()
     mTargetWidget = nullptr;
     delete mNetWidget;
     mNetWidget = nullptr;
+}
+
+void DebugWindow::postInit()
+{
+    add(mTabs);
 }
 
 void DebugWindow::slowLogic()
