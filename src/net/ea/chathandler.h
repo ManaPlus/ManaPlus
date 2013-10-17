@@ -48,7 +48,7 @@ class ChatHandler : public Net::ChatHandler
         virtual void processBeingChat(Net::MessageIn &msg,
                                       const bool channels) const;
 
-        virtual void processChat(Net::MessageIn &msg, bool normalChat,
+        virtual void processChat(Net::MessageIn &msg, const bool normalChat,
                                  const bool channels) const;
 
         virtual void processMVP(Net::MessageIn &msg) const;
