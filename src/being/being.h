@@ -712,7 +712,7 @@ class Being : public ActorSprite, public ConfigListener
 
         void resetCounters();
 
-        virtual void updateColors();
+        void updateColors();
 
         void setEnemy(const bool n)
         { mEnemy = n; }
