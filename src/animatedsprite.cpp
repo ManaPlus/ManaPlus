@@ -54,9 +54,6 @@ AnimatedSprite::AnimatedSprite(SpriteDef *const sprite):
     // Take possession of the sprite
     if (mSprite)
         mSprite->incRef();
-
-    // Play the stand animation by default
-    play(SpriteAction::STAND);
 }
 
 AnimatedSprite *AnimatedSprite::load(const std::string &filename,
@@ -67,6 +64,7 @@ AnimatedSprite *AnimatedSprite::load(const std::string &filename,
     if (!s)
         return nullptr;
     AnimatedSprite *const as = new AnimatedSprite(s);
+    as->play(SpriteAction::STAND);
     s->decRef();
     return as;
 }
@@ -85,6 +83,7 @@ AnimatedSprite *AnimatedSprite::delayedLoad(const std::string &filename,
     }
 
     AnimatedSprite *const as = new AnimatedSprite(nullptr);
+    as->play(SpriteAction::STAND);
     as->setDelayLoad(filename, variant);
     return as;
 }
@@ -93,7 +92,9 @@ AnimatedSprite *AnimatedSprite::clone(const AnimatedSprite *const anim)
 {
     if (!anim)
         return nullptr;
-    return new AnimatedSprite(anim->mSprite);
+    AnimatedSprite *const sprite = new AnimatedSprite(anim->mSprite);
+    sprite->play(SpriteAction::STAND);
+    return sprite;
 }
 
 AnimatedSprite::~AnimatedSprite()
