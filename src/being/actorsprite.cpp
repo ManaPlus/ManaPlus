@@ -37,7 +37,7 @@
 
 #include "debug.h"
 
-AnimatedSprite *ActorSprite::targetCursor[2][NUM_TC];
+AnimatedSprite *ActorSprite::targetCursor[NUM_TCT][NUM_TC];
 bool ActorSprite::loaded = false;
 
 ActorSprite::ActorSprite(const int id) :
