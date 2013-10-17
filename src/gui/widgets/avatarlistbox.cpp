@@ -353,7 +353,8 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
     {
         switch (ava->getType())
         {
-            case AVATAR_PLAYER:
+            // AVATAR_PLAYER
+            case MapItem::EMPTY:
             {
                 const Avatar *const avatar = model->getAvatarAt(selected);
                 if (avatar)
