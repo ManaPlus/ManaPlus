@@ -104,6 +104,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
                 logger->log("QQQ SMSG_WHISPER_RESPONSE:"
                             + toString(type));
             }
+            break;
     }
     BLOCK_END("ChatHandler::processWhisperResponse")
 }
