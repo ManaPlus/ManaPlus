@@ -33,11 +33,14 @@ ColorPage::ColorPage(const Widget2 *const widget,
     mItemPadding(mSkin ? mSkin->getOption("itemPadding") : 1),
     mRowHeight(13)
 {
-//    addMouseListener(this);
     const gcn::Font *const font = getFont();
     if (font)
         mRowHeight = font->getHeight() + 2 * mItemPadding;
-    adjustSize();
+    if (mListModel)
+    {
+        setHeight(getRowHeight() * mListModel->getNumberOfElements()
+            + 2 * mPadding + 20);
+    }
 }
 
 ColorPage::~ColorPage()
