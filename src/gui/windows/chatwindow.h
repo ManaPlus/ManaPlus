@@ -288,6 +288,8 @@ class ChatWindow final : public Window,
 
         void addGlobalMessage(const std::string &line);
 
+        void postInit() override;
+
 #ifdef USE_PROFILER
         void logicChildren();
 #endif

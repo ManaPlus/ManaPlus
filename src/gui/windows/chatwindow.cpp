@@ -271,10 +271,6 @@ ChatWindow::ChatWindow():
     mColorPicker->addActionListener(this);
     mColorPicker->setSelected(mChatColor);
 
-    add(mChatTabs);
-    add(mChatInput);
-    add(mColorPicker);
-
     loadWindowState();
 
     mColorPicker->setPosition(this->getWidth() - mColorPicker->getWidth()
@@ -312,6 +308,14 @@ ChatWindow::~ChatWindow()
     mColorPicker = nullptr;
     delete mColorListModel;
     mColorListModel = nullptr;
+}
+
+void ChatWindow::postInit()
+{
+    add(mChatTabs);
+    add(mChatInput);
+    add(mColorPicker);
+    updateVisibility();
 }
 
 void ChatWindow::loadCommandsFile(const std::string &name)
@@ -1120,7 +1124,7 @@ WhisperTab *ChatWindow::addWhisperTab(const std::string &nick,
     toLower(tempNick);
 
     const TabMap::const_iterator i = mWhispers.find(tempNick);
-    WhisperTab *ret;
+    WhisperTab *ret = nullptr;
 
     if (tempNick.compare(playerName) == 0)
         return nullptr;

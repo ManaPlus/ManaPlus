@@ -207,7 +207,7 @@ static void createGuiWindows()
     // Create dialogs
     emoteWindow = new EmoteWindow;
     chatWindow = new ChatWindow;
-    chatWindow->updateVisibility();
+    chatWindow->postInit();
     tradeWindow = new TradeWindow;
     equipmentWindow = new EquipmentWindow(PlayerInfo::getEquipment(),
         player_node);
