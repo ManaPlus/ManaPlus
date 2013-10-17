@@ -29,7 +29,7 @@
 
 #include "debug.h"
 
-EmoteShortcut *emoteShortcut;
+EmoteShortcut *emoteShortcut = nullptr;
 
 EmoteShortcut::EmoteShortcut():
     mEmoteSelected(0)
