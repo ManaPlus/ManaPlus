@@ -188,8 +188,6 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     }
     addKeyListener(this);
     center();
-    setVisible(true);
-    requestFocus();
 
     Net::getCharServerHandler()->setCharSelectDialog(this);
     mCharacterView->show(0);
@@ -199,6 +197,12 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
 CharSelectDialog::~CharSelectDialog()
 {
     Net::getCharServerHandler()->clear();
+}
+
+void CharSelectDialog::postInit()
+{
+    setVisible(true);
+    requestFocus();
 }
 
 void CharSelectDialog::action(const gcn::ActionEvent &event)

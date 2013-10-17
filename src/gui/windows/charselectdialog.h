@@ -90,6 +90,8 @@ class CharSelectDialog final : public Window,
 
         void updateState();
 
+        void postInit();
+
     private:
         void attemptCharacterDelete(const int index);
 

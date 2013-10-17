@@ -1450,6 +1450,7 @@ int Client::gameExec()
                     Theme::instance()->setMinimumOpacity(0.8F);
 
                     mCurrentDialog = new CharSelectDialog(&loginData);
+                    mCurrentDialog->postInit();
 
                     if (!(static_cast<CharSelectDialog*>(mCurrentDialog))
                         ->selectByName(mOptions.character,

@@ -236,6 +236,10 @@ class Window : public gcn::Window,
         void setSaveVisible(const bool save)
         { mSaveVisible = save; }
 
+        virtual void postInit()
+        {
+        }
+
         /**
          * Returns the parent window.
          *
