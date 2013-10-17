@@ -123,7 +123,7 @@ class ConfigurationObject
         /**
          * Re-sets all data in the configuration
          */
-        virtual void clear();
+        void clear();
 
         /**
          * Serialises a container into a list of configuration options
