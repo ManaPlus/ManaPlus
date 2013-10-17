@@ -1095,6 +1095,7 @@ int Client::gameExec()
                 break;
 
             mDesktop = new Desktop(nullptr);
+            mDesktop->postInit();
             top->add(mDesktop);
             int x = top->getWidth() - mButtonPadding;
             ADDBUTTON(mSetupButton, new Button(mDesktop,

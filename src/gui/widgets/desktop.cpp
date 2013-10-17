@@ -57,7 +57,6 @@ Desktop::Desktop(const Widget2 *const widget) :
     }
 
     mVersionLabel->setBackgroundColor(getThemeColor(Theme::BACKGROUND, 128));
-    add(mVersionLabel, 25, 2);
 }
 
 Desktop::~Desktop()
@@ -67,6 +66,11 @@ Desktop::~Desktop()
         mWallpaper->decRef();
         mWallpaper = nullptr;
     }
+}
+
+void Desktop::postInit()
+{
+    add(mVersionLabel, 25, 2);
 }
 
 void Desktop::reloadWallpaper()

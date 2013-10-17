@@ -62,6 +62,8 @@ class Desktop final : public Container, private gcn::WidgetListener
 
         void draw(gcn::Graphics *graphics) override;
 
+        void postInit();
+
     private:
         void setBestFittingWallpaper();
 
