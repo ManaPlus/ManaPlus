@@ -44,7 +44,11 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
             add(character);
             character->setVisible(true);
         }
-        show(0);
+        if (mSelected >= 0)
+            (*mCharacterEntries)[mSelected]->setSelect(false);
+        mSelected = 0;
+        (*mCharacterEntries)[0]->setSelect(true);
+
         const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
         setWidth(firtChar->getWidth() * 5 + mPadding * 2);
     }

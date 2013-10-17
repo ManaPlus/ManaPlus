@@ -45,7 +45,12 @@ CharacterViewSmall::CharacterViewSmall(CharSelectDialog *const widget,
         {
             add(*it);
         }
-        show(0);
+        const int sz = static_cast<signed>(mCharacterEntries->size());
+        mSelected = 0;
+        mSelectedEntry = (*mCharacterEntries)[mSelected];
+        mSelectedEntry->setVisible(true);
+        mNumber->setCaption(strprintf("%d / %d", mSelected + 1, sz));
+        mNumber->adjustSize();
     }
     add(mPrevious);
     add(mNext);
