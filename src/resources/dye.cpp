@@ -206,10 +206,8 @@ void DyePalette::replaceSColor(uint32_t *pixels, const int bufSize) const
     if (sz % 2)
         -- it_end;
 
-    int c = 0;
     for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++pixels)
     {
-        c ++;
         uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         const int alpha = *pixels & 0xff000000;
