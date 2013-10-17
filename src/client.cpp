@@ -670,6 +670,7 @@ void Client::gameInit()
     setupWindow = new Setup;
     helpWindow = new HelpWindow;
     didYouKnowWindow = new DidYouKnowWindow;
+    didYouKnowWindow->postInit();
 
     soundManager.playMusic(branding.getValue(
         "loginMusic", "Magick - Real.ogg"));

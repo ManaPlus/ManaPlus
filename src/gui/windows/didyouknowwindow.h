@@ -48,6 +48,8 @@ class DidYouKnowWindow final : public Window,
 
         A_DELETE_COPY(DidYouKnowWindow)
 
+        void postInit() override;
+
         /**
          * Called when receiving actions from the widgets.
          */

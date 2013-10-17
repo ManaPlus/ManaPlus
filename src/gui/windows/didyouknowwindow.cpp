@@ -95,6 +95,10 @@ DidYouKnowWindow::DidYouKnowWindow() :
 
     loadWindowState();
     enableVisibleSound(true);
+}
+
+void DidYouKnowWindow::postInit()
+{
     widgetResized(gcn::Event(nullptr));
 }
 
