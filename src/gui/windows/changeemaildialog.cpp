@@ -97,7 +97,6 @@ ChangeEmailDialog::ChangeEmailDialog(LoginData *const data):
     add(mCancelButton);
 
     center();
-    setVisible(true);
     mFirstEmailField->requestFocus();
 
     mFirstEmailField->setActionEventId("change_email");

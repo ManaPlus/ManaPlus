@@ -1622,6 +1622,7 @@ int Client::gameExec()
                 case STATE_CHANGEEMAIL:
                     logger->log1("State: CHANGE EMAIL");
                     mCurrentDialog = new ChangeEmailDialog(&loginData);
+                    mCurrentDialog->setVisible(true);
                     break;
 
                 case STATE_CHANGEEMAIL_ATTEMPT:
