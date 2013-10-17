@@ -185,14 +185,17 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     }
 
     setLocationRelativeTo(getParentWindow());
-    setVisible(true);
-
-    mNameField->requestFocus();
 }
 
 EditServerDialog::~EditServerDialog()
 {
     delete mTypeListModel;
+}
+
+void EditServerDialog::postInit()
+{
+    setVisible(true);
+    mNameField->requestFocus();
 }
 
 void EditServerDialog::action(const gcn::ActionEvent &event)

@@ -85,6 +85,8 @@ class EditServerDialog final : public Window,
 
         ~EditServerDialog();
 
+        void postInit() override;
+
         /**
          * Called when receiving actions from the widgets.
          */

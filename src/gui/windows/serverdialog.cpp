@@ -414,13 +414,16 @@ void ServerDialog::action(const gcn::ActionEvent &event)
     }
     else if (eventId == "addEntry")
     {
-        new EditServerDialog(this, ServerInfo(), -1);
+        (new EditServerDialog(this, ServerInfo(), -1))->postInit();
     }
     else if (eventId == "editEntry")
     {
         const int index = mServersList->getSelected();
         if (index >= 0)
-            new EditServerDialog(this, mServers.at(index), index);
+        {
+            (new EditServerDialog(this, mServers.at(index),
+                index))->postInit();
+        }
     }
     else if (eventId == "remove")
     {
@@ -451,7 +454,7 @@ void ServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
             return;
 
         case Input::KEY_GUI_INSERT:
-            new EditServerDialog(this, ServerInfo(), -1);
+            (new EditServerDialog(this, ServerInfo(), -1))->postInit();
             return;
 
         case Input::KEY_GUI_DELETE:
@@ -470,7 +473,10 @@ void ServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
         {
             const int index = mServersList->getSelected();
             if (index >= 0)
-                new EditServerDialog(this, mServers.at(index), index);
+            {
+                (new EditServerDialog(this, mServers.at(index),
+                    index))->postInit();
+            }
             return;
         }
 
