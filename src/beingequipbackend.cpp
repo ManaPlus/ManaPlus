@@ -50,7 +50,11 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
 
 BeingEquipBackend::~BeingEquipBackend()
 {
-    clear();
+    for (int i = 0; i < EQUIPMENT_SIZE; i++)
+    {
+        delete mEquipment[i];
+        mEquipment[i] = nullptr;
+    }
 }
 
 void BeingEquipBackend::clear()
