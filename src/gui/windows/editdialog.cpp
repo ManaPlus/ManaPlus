@@ -36,21 +36,27 @@ EditDialog::EditDialog(const std::string &title, const std::string &msg,
     Window(title, modal, parent, "edit.xml"),
     gcn::ActionListener(),
     mEventOk(eventOk),
-    mTextField(new TextField(this))
+    mTextField(new TextField(this)),
+    mDefaultWidth(width)
 {
     mTextField->setText(msg);
+}
+
+void EditDialog::postInit()
+{
     // TRANSLATORS: edit dialog label
     Button *const okButton = new Button(this, _("OK"), mEventOk, this);
 
     const int numRows = 1;
     const int fontHeight = getFont()->getHeight();
     const int height = numRows * fontHeight;
+    const int pad = getPadding();
 
-    setContentSize(width, height + fontHeight + okButton->getHeight());
-    mTextField->setPosition(getPadding(), getPadding());
-    mTextField->setWidth(width - (2 * getPadding()));
+    setContentSize(mDefaultWidth, height + fontHeight + okButton->getHeight());
+    mTextField->setPosition(pad, pad);
+    mTextField->setWidth(mDefaultWidth - 2 * pad);
 
-    okButton->setPosition((width - okButton->getWidth()) / 2,
+    okButton->setPosition((mDefaultWidth - okButton->getWidth()) / 2,
         height + getOption("buttonPadding", 8));
 
     add(mTextField);

@@ -52,6 +52,8 @@ class EditDialog final : public Window, public gcn::ActionListener
 
         A_DELETE_COPY(EditDialog)
 
+        void postInit() override;
+
         /**
          * Called when receiving actions from the widgets.
          */
@@ -62,8 +64,8 @@ class EditDialog final : public Window, public gcn::ActionListener
 
     private:
         std::string mEventOk;
-
         TextField *mTextField;
+        int mDefaultWidth;
 };
 
 #endif  // GUI_WINDOWS_EDITDIALOG_H

@@ -345,6 +345,7 @@ void SetupItemTextField::action(const gcn::ActionEvent &event)
     {
         mEditDialog =  new EditDialog(mText, mTextField->getText(),
             mEventName + "_EDIT_OK");
+        mEditDialog->postInit();
         mEditDialog->addActionListener(this);
     }
     else if (eventId == mEventName + "_EDIT_OK")
@@ -472,6 +473,7 @@ void SetupItemIntTextField::action(const gcn::ActionEvent &event)
     {
         mEditDialog =  new EditDialog(mText, mTextField->getText(),
             mEventName + "_EDIT_OK");
+        mEditDialog->postInit();
         mEditDialog->addActionListener(this);
     }
     else if (eventId == mEventName + "_EDIT_OK")
