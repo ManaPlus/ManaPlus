@@ -51,6 +51,9 @@
 #define for_actors for (ActorSpritesConstIterator it = mActors.begin(), \
     it_end = mActors.end() ; it != it_end; ++it)
 
+#define for_actorsm for (ActorSpritesIterator it = mActors.begin(), \
+    it_end = mActors.end() ; it != it_end; ++it)
+
 class FindBeingFunctor final
 {
     public:
@@ -328,7 +331,7 @@ Being *ActorSpriteManager::findBeingByPixel(const int x, const int y,
         Being *tempBeing = nullptr;
         bool noBeing(false);
 
-        for_actors
+        for_actorsm
         {
             if (!*it)
                 continue;
@@ -341,7 +344,7 @@ Being *ActorSpriteManager::findBeingByPixel(const int x, const int y,
                 if (!noBeing)
                 {
                     const FloorItem *const floor
-                        = static_cast<FloorItem*>(*it);
+                        = static_cast<const FloorItem*>(*it);
                     if ((floor->getPixelX() - mapTileSize <= x) &&
                         (floor->getPixelX() + mapTileSize > x) &&
                         (floor->getPixelY() - mapTileSize * 2 <= y) &&
@@ -388,7 +391,7 @@ Being *ActorSpriteManager::findBeingByPixel(const int x, const int y,
     }
     else
     {
-        for_actors
+        for_actorsm
         {
             if (!*it)
                 continue;
@@ -434,7 +437,7 @@ void ActorSpriteManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
         if ((*it)->getType() == ActorSprite::PORTAL)
             continue;
 
-        const Being *const being = dynamic_cast<Being*>(*it);
+        const Being *const being = dynamic_cast<const Being*>(*it);
 
         if (being && being->getInfo()
             && !being->getInfo()->isTargetSelection())
@@ -465,7 +468,7 @@ Being *ActorSpriteManager::findPortalByTile(const int x, const int y) const
     if (!mMap)
         return nullptr;
 
-    for_actors
+    for_actorsm
     {
         if (!*it)
             continue;
@@ -484,7 +487,7 @@ Being *ActorSpriteManager::findPortalByTile(const int x, const int y) const
 
 FloorItem *ActorSpriteManager::findItem(const int id) const
 {
-    for_actors
+    for_actorsm
     {
         if (!*it)
             continue;
@@ -501,7 +504,7 @@ FloorItem *ActorSpriteManager::findItem(const int id) const
 
 FloorItem *ActorSpriteManager::findItem(const int x, const int y) const
 {
-    for_actors
+    for_actorsm
     {
         if (!*it)
             continue;
@@ -527,7 +530,7 @@ bool ActorSpriteManager::pickUpAll(const int x1, const int y1,
     const bool allowAll = mPickupItemsSet.find("") != mPickupItemsSet.end();
     if (!serverBuggy)
     {
-        for_actors
+        for_actorsm
         {
             if (!*it)
                 continue;
@@ -562,7 +565,7 @@ bool ActorSpriteManager::pickUpAll(const int x1, const int y1,
     {
         FloorItem *item = nullptr;
         unsigned cnt = 65535;
-        for_actors
+        for_actorsm
         {
             if (!*it)
                 continue;
@@ -624,7 +627,7 @@ bool ActorSpriteManager::pickUpNearest(const int x, const int y,
     int dist = 0;
     const bool allowAll = mPickupItemsSet.find("") != mPickupItemsSet.end();
 
-    for_actors
+    for_actorsm
     {
         if (!*it)
             continue;
@@ -670,7 +673,7 @@ bool ActorSpriteManager::pickUpNearest(const int x, const int y,
 Being *ActorSpriteManager::findBeingByName(const std::string &name,
                                            const ActorSprite::Type type) const
 {
-    for_actors
+    for_actorsm
     {
         if (!*it)
             continue;
@@ -704,7 +707,7 @@ Being *ActorSpriteManager::findNearestByName(const std::string &name,
     x = player_node->getTileX();
     y = player_node->getTileY();
 
-    for_actors
+    for_actorsm
     {
         if (reportTrue(!*it))
             continue;
@@ -769,7 +772,7 @@ void ActorSpriteManager::logic()
 
         if ((*it) && (*it)->getType() == Being::PLAYER)
         {
-            const Being *const being = static_cast<Being*>(*it);
+            const Being *const being = static_cast<const Being*>(*it);
             being->addToCache();
             if (beingEquipmentWindow)
                 beingEquipmentWindow->resetBeing(being);
@@ -904,7 +907,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
     {
         std::vector<Being*> sortedBeings;
 
-        FOR_EACH (ActorSprites::const_iterator, i, mActors)
+        FOR_EACH (ActorSprites::iterator, i, mActors)
         {
             if (!*i)
                 continue;
@@ -999,7 +1002,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
         int index = defaultPriorityIndex;
         Being *closestBeing = nullptr;
 
-        FOR_EACH (ActorSprites::const_iterator, i, mActors)
+        FOR_EACH (ActorSprites::iterator, i, mActors)
         {
             if (!*i)
                 continue;
@@ -1264,7 +1267,7 @@ void ActorSpriteManager::printBeingsToChat(const ActorSprites &beings,
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM)
             continue;
 
-        const Being *const being = static_cast<Being*>(*it);
+        const Being *const being = static_cast<const Being*>(*it);
 
         debugChatTab->chatLog(strprintf("%s (%d,%d) %d",
             being->getName().c_str(), being->getTileX(), being->getTileY(),
@@ -1312,7 +1315,7 @@ void ActorSpriteManager::getPlayerNames(StringVect &names,
             continue;
         }
 
-        const Being *const being = static_cast<Being*>(*it);
+        const Being *const being = static_cast<const Being*>(*it);
         if ((being->getType() == ActorSprite::PLAYER
             || (being->getType() == ActorSprite::NPC && npcNames))
             && being->getName() != "")
@@ -1337,7 +1340,7 @@ void ActorSpriteManager::getMobNames(StringVect &names) const
             continue;
         }
 
-        const Being *const being = static_cast<Being*>(*it);
+        const Being *const being = static_cast<const Being*>(*it);
         if (being->getType() == ActorSprite::MONSTER && being->getName() != "")
             names.push_back(being->getName());
     }
@@ -1345,7 +1348,7 @@ void ActorSpriteManager::getMobNames(StringVect &names) const
 
 void ActorSpriteManager::updatePlayerNames() const
 {
-    for_actors
+    for_actorsm
     {
         if (!*it)
             continue;
@@ -1365,7 +1368,7 @@ void ActorSpriteManager::updatePlayerNames() const
 
 void ActorSpriteManager::updatePlayerColors() const
 {
-    for_actors
+    for_actorsm
     {
         if (!*it)
             continue;
@@ -1384,7 +1387,7 @@ void ActorSpriteManager::updatePlayerColors() const
 
 void ActorSpriteManager::updatePlayerGuild() const
 {
-    for_actors
+    for_actorsm
     {
         if (!*it)
             continue;
@@ -1657,7 +1660,7 @@ void ActorSpriteManager::updateEffects(const std::map<int, int> &addEffects,
                                        const std::set<int> &removeEffects)
                                        const
 {
-    for_actors
+    for_actorsm
     {
         if (!*it || (*it)->getType() != ActorSprite::NPC)
             continue;
