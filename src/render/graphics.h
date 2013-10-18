@@ -392,8 +392,9 @@ class Graphics : public gcn::Graphics
                                 const bool useColor) = 0;
 
 
-        void setMainFlags(int w, int h, int bpp, bool fs,
-                          bool hwaccel, bool resize, bool noFrame);
+        void setMainFlags(const int w, const int h, const int bpp,
+                          const bool fs, const bool hwaccel,
+                          const bool resize, const bool noFrame);
 
         int getOpenGLFlags() const A_WARN_UNUSED;
 
