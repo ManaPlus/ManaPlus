@@ -36,8 +36,8 @@ class PasswordField final : public TextField
         /**
          * Constructor, initializes the password field with the given string.
          */
-        PasswordField(const Widget2 *const widget,
-                      const std::string &text = "");
+        explicit PasswordField(const Widget2 *const widget,
+                               const std::string &text = "");
 
         A_DELETE_COPY(PasswordField)
 
