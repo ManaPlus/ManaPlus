@@ -117,7 +117,6 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
     if (!tmpImage)
         return nullptr;
 
-    Image *img;
     bool hasAlpha = false;
     const int sz = tmpImage->w * tmpImage->h;
 
@@ -173,7 +172,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
         return nullptr;
     }
 
-    img = new Image(image, hasAlpha, alphaChannel);
+    Image *const img = new Image(image, hasAlpha, alphaChannel);
     img->mAlpha = alpha;
     return img;
 }
