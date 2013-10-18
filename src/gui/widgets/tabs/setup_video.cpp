@@ -125,7 +125,7 @@ ModeListModel::ModeListModel() :
     addCustomMode(toString(mainGraphics->mWidth).append("x")
         .append(toString(mainGraphics->mHeight)));
 
-    std::sort(mVideoModes.begin(), mVideoModes.end(), modeSorter);
+    std::sort(mVideoModes.begin(), mVideoModes.end(), &modeSorter);
     mVideoModes.push_back("custom");
 #endif
 }
