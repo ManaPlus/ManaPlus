@@ -206,6 +206,7 @@ static void createGuiWindows()
 
     // Create dialogs
     emoteWindow = new EmoteWindow;
+    emoteWindow->postInit();
     chatWindow = new ChatWindow;
     chatWindow->postInit();
     tradeWindow = new TradeWindow;

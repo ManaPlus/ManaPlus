@@ -61,6 +61,10 @@ EmoteWindow::EmoteWindow() :
     setResizable(true);
 
     addMouseListener(this);
+}
+
+void EmoteWindow::postInit()
+{
     const int pad2 = mPadding * 2;
     const int width = 200;
     const int height = 150;

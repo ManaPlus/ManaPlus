@@ -41,6 +41,8 @@ class EmoteWindow final : public Window
 
         ~EmoteWindow();
 
+        void postInit() override;
+
         void show();
 
         void hide();
