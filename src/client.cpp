@@ -669,6 +669,7 @@ void Client::gameInit()
 
     userPalette = new UserPalette;
     setupWindow = new Setup;
+    setupWindow->postInit();
     helpWindow = new HelpWindow;
     didYouKnowWindow = new DidYouKnowWindow;
     didYouKnowWindow->postInit();

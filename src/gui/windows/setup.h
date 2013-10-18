@@ -49,6 +49,8 @@ class Setup final : public Window, public gcn::ActionListener
 
         ~Setup();
 
+        void postInit();
+
         void action(const gcn::ActionEvent &event) override;
 
         void setInGame(const bool inGame);

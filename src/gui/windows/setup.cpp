@@ -67,7 +67,10 @@ Setup::Setup() :
     setCloseButton(true);
     setResizable(true);
     setStickyButtonLock(true);
+}
 
+void Setup::postInit()
+{
     int width = 620;
     const int height = 450;
 
