@@ -48,7 +48,7 @@ KeyboardConfig::KeyboardConfig() :
 void KeyboardConfig::init()
 {
     mEnabled = true;
-    delete mActiveKeys2;
+    delete [] mActiveKeys2;
     mActiveKeys2 = new uint8_t[500];
     mRepeatTime = config.getIntValue("repeateInterval2") / 10;
 }
