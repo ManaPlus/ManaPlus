@@ -167,7 +167,7 @@ class SafeOpenGLGraphics final : public Graphics
         void setTexturingAndBlending(const bool enable);
 
     private:
-        void inline setColorAlpha(float alpha);
+        void inline setColorAlpha(const float alpha);
 
         void inline restoreColor();
 
