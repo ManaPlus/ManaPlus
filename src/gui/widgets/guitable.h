@@ -56,7 +56,7 @@ class GuiTable final : public gcn::Widget,
 
 public:
     GuiTable(const Widget2 *const widget,
-             TableModel *const initial_model = nullptr,
+             TableModel *const initial_model,
              const bool opacity = true);
 
     A_DELETE_COPY(GuiTable)

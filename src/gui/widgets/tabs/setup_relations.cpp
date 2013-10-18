@@ -247,7 +247,7 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     PlayerRelationsListener(),
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
     mPlayerTableModel(new PlayerTableModel(this)),
-    mPlayerTable(new GuiTable(mPlayerTableModel)),
+    mPlayerTable(new GuiTable(this, mPlayerTableModel)),
     mPlayerTitleTable(new GuiTable(this, mPlayerTableTitleModel)),
     mPlayerScrollArea(new ScrollArea(mPlayerTable)),
     // TRANSLATORS: relation dialog button
