@@ -153,7 +153,6 @@ class ProgressBar final : public gcn::Widget,
 
         static int mInstances;
         static float mAlpha;
-        static const gcn::Color TEXT_COLOR;
 
         bool mSmoothProgress;
         bool mSmoothColorChange;
