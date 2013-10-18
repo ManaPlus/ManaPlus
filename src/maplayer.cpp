@@ -571,12 +571,10 @@ int MapLayer::getTileDrawWidth(const Image *img,
     return c;
 }
 
-SpecialLayer::SpecialLayer(const int width, const int height,
-                           const bool drawSprites) :
+SpecialLayer::SpecialLayer(const int width, const int height) :
     mWidth(width),
     mHeight(height),
-    mTiles(new MapItem*[mWidth * mHeight]),
-    mDrawSprites(drawSprites)
+    mTiles(new MapItem*[mWidth * mHeight])
 {
     std::fill_n(mTiles, mWidth * mHeight, static_cast<MapItem*>(nullptr));
 }

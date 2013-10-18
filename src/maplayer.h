@@ -200,8 +200,7 @@ class SpecialLayer final
         friend class Map;
         friend class MapLayer;
 
-        SpecialLayer(const int width, const int height,
-                     const bool drawSprites = false);
+        SpecialLayer(const int width, const int height);
 
         A_DELETE_COPY(SpecialLayer)
 
@@ -225,7 +224,6 @@ class SpecialLayer final
         int mWidth;
         int mHeight;
         MapItem **mTiles;
-        bool mDrawSprites;
 };
 
 class MapItem final
