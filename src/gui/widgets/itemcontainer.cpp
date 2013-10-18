@@ -195,6 +195,7 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mSwapItems(false),
     mDescItems(false)
 {
+    mItemPopup->postInit();
     setFocusable(true);
     addKeyListener(this);
     addMouseListener(this);

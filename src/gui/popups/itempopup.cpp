@@ -77,7 +77,10 @@ ItemPopup::ItemPopup() :
     mItemWeight->setPosition(0, 3 * fontHeight);
     mItemWeight->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
+}
 
+void ItemPopup::postInit()
+{
     add(mItemName);
     add(mItemDesc);
     add(mItemEffect);

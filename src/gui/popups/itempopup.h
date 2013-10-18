@@ -50,6 +50,8 @@ class ItemPopup final : public Popup
          */
         ~ItemPopup();
 
+        void postInit() override;
+
         /**
          * Sets the info to be displayed given a particular item.
          */

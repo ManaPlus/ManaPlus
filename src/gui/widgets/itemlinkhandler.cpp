@@ -66,6 +66,7 @@ namespace
 ItemLinkHandler::ItemLinkHandler() :
     mItemPopup(new ItemPopup)
 {
+    mItemPopup->postInit();
 }
 
 ItemLinkHandler::~ItemLinkHandler()

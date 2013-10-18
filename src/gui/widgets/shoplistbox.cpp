@@ -56,6 +56,7 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
     mPriceCheck(true),
     mProtectItems(false)
 {
+    mItemPopup->postInit();
     mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 }
@@ -73,6 +74,7 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
     mPriceCheck(true),
     mProtectItems(false)
 {
+    mItemPopup->postInit();
     mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 }

@@ -86,6 +86,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mMaxX(0),
     mMaxY(0)
 {
+    mItemPopup->postInit();
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 

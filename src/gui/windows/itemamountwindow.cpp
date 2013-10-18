@@ -155,6 +155,8 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     mPrice(0),
     mEnabledKeyboard(keyboard.isEnabled())
 {
+    mItemPopup->postInit();
+
     if (!mItem)
         return;
 
