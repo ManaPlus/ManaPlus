@@ -77,8 +77,8 @@ Party::~Party()
 
 PartyMember *Party::addMember(const int id, const std::string &name)
 {
-    PartyMember *m;
-    if ((m = getMember(id)))
+    PartyMember *m = getMember(id);
+    if (m)
         return m;
 
     m = new PartyMember(this, id, name);
