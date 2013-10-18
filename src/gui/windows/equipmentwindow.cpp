@@ -387,10 +387,9 @@ void EquipmentWindow::mouseReleased(gcn::MouseEvent &mouseEvent)
         {
             const int x = mouseEvent.getX();
             const int y = mouseEvent.getY();
-            int i = 0;
             for (std::vector<EquipmentBox*>::const_iterator
                  it = mBoxes.begin(), it_end = mBoxes.end();
-                 it != it_end; ++ it, ++ i)
+                 it != it_end; ++ it)
             {
                 const EquipmentBox *const box = *it;
                 if (!box)
