@@ -203,10 +203,10 @@ class MobileOpenGLGraphics final : public Graphics
 
         void setTexturingAndBlending(const bool enable);
 
-        void debugBindTexture(const Image *image);
+        void debugBindTexture(const Image *const image);
 
     private:
-        void inline setColorAlpha(float alpha);
+        void inline setColorAlpha(const float alpha);
 
         void inline restoreColor();
 
