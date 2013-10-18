@@ -36,12 +36,12 @@ class NpcHandler : public Net::NpcHandler
     public:
         A_DELETE_COPY(NpcHandler)
 
-        void sendLetter(int npcId, const std::string &recipient,
+        void sendLetter(const int npcId, const std::string &recipient,
                         const std::string &text) const override;
 
-        void startShopping(int beingId) const override;
+        void startShopping(const int beingId) const override;
 
-        void endShopping(int beingId) const override;
+        void endShopping(const int beingId) const override;
 
         virtual int getNpc(Net::MessageIn &msg,
                            bool haveLength) A_WARN_UNUSED = 0;
