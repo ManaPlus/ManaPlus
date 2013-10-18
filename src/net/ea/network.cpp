@@ -113,7 +113,7 @@ bool Network::connect(ServerInfo server)
     mToSkip = 0;
 
     mState = CONNECTING;
-    mWorkerThread = SDL::createThread(networkThread, "network", this);
+    mWorkerThread = SDL::createThread(&networkThread, "network", this);
     if (!mWorkerThread)
     {
         setError("Unable to create network worker thread");
@@ -249,6 +249,7 @@ void Network::receive()
         {
             case -1:
                 logger->log1("Error: TcpNet::checkSockets");
+                break;
                 // FALLTHROUGH
             case 0:
                 break;
