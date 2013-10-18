@@ -85,7 +85,7 @@ class Image : public Resource
         /**
          * Frees the resources created by SDL.
          */
-        virtual void unload();
+        void unload();
 
         /**
          * Tells is the image is loaded
