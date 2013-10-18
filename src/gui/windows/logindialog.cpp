@@ -252,6 +252,10 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
 
     reflowLayout();
     center();
+}
+
+void LoginDialog::postInit()
+{
     setVisible(true);
 
     if (mUserField->getText().empty())

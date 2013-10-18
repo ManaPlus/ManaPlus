@@ -60,6 +60,8 @@ class LoginDialog final : public Window, public gcn::ActionListener,
 
         ~LoginDialog();
 
+        void postInit() override;
+
         /**
          * Called when receiving actions from the widgets.
          */

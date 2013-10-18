@@ -1264,6 +1264,7 @@ int Client::gameExec()
                     {
                         mCurrentDialog = new LoginDialog(&loginData,
                             mCurrentServer.hostname, &mOptions.updateHost);
+                        mCurrentDialog->postInit();
                     }
                     else
                     {
