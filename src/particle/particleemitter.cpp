@@ -571,7 +571,7 @@ std::list<Particle *> ParticleEmitter::createParticles(const int tick)
         if (Particle::particleCount > Particle::maxCount)
             break;
 
-        Particle *newParticle;
+        Particle *newParticle = nullptr;
         if (mParticleImage)
         {
             const std::string name = mParticleImage->getIdPath();
