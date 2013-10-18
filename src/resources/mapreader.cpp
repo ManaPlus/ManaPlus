@@ -193,7 +193,7 @@ Map *MapReader::readMap(const std::string &filename,
         return createEmptyMap(filename, realFilename);
     }
 
-    unsigned char *inflated;
+    unsigned char *inflated = nullptr;
     unsigned int inflatedSize;
 
     if (realFilename.find(".gz", realFilename.length() - 3)
@@ -563,7 +563,7 @@ bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
         if (compression == "gzip" || compression == "zlib")
         {
             // Inflate the gzipped layer data
-            unsigned char *inflated;
+            unsigned char *inflated = nullptr;
             const unsigned int inflatedSize =
                 inflateMemory(binData, binLen, inflated);
 
