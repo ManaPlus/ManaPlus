@@ -65,7 +65,6 @@ ImageParticle::~ImageParticle()
         mImage->decRef();
         mImage = nullptr;
     }
-    setMap(nullptr);
 }
 
 bool ImageParticle::draw(Graphics *const graphics,
