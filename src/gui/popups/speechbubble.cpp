@@ -47,7 +47,10 @@ SpeechBubble::SpeechBubble() :
     mSpeechBox->setOpaque(false);
     mSpeechBox->setForegroundColorAll(getThemeColor(Theme::BUBBLE_TEXT),
         getThemeColor(Theme::BUBBLE_TEXT_OUTLINE));
+}
 
+void SpeechBubble::postInit()
+{
     add(mCaption);
     add(mSpeechBox);
 }

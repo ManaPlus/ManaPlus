@@ -182,6 +182,8 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mAway(false),
     mInactive(false)
 {
+    mSpeechBubble->postInit();
+
     for (int f = 0; f < 20; f ++)
     {
         mSpriteRemap[f] = f;

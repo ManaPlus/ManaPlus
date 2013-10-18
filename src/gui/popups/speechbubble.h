@@ -41,6 +41,8 @@ class SpeechBubble final : public Popup
 
         A_DELETE_COPY(SpeechBubble)
 
+        void postInit();
+
         /**
          * Sets the name displayed for the speech bubble, and in what color.
          */
