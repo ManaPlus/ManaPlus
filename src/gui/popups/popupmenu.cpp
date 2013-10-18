@@ -319,7 +319,7 @@ void PopupMenu::showPopup(const int x, const int y,
     mBrowserBox->addRow(_("Players"));
     FOR_EACH (std::vector<ActorSprite*>::const_iterator, it, beings)
     {
-        const Being *const being = dynamic_cast<Being*>(*it);
+        const Being *const being = dynamic_cast<const Being*>(*it);
         const ActorSprite *const actor = *it;
         if (being && !being->getName().empty())
         {
@@ -2098,7 +2098,7 @@ void PopupMenu::showPopup(const int x, const int y, Button *const button)
     for (std::vector<Button *>::const_iterator it = names.begin(),
          it_end = names.end(); it != it_end; ++ it)
     {
-        const Button *const btn = dynamic_cast<Button*>(*it);
+        const Button *const btn = dynamic_cast<const Button*>(*it);
         if (!btn || btn->getActionEventId() == "SET")
             continue;
 
