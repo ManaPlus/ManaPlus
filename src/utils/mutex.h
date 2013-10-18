@@ -57,7 +57,7 @@ class Mutex final
 class MutexLocker final
 {
     public:
-        explicit MutexLocker(Mutex *mutex);
+        explicit MutexLocker(Mutex *const mutex);
 
         ~MutexLocker();
 
