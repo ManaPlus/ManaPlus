@@ -48,8 +48,6 @@
 
 #include "debug.h"
 
-float OutfitWindow::mAlpha = 1.0;
-
 OutfitWindow::OutfitWindow():
     // TRANSLATORS: outfits window name
     Window(_("Outfits"), false, nullptr, "outfits.xml"),

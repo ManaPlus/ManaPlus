@@ -120,8 +120,6 @@ class OutfitWindow final : public Window,
         unsigned char mItemColors[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
         bool mItemClicked;
         bool mItemsUnequip[OUTFITS_COUNT];
-
-        static float mAlpha;
 };
 
 extern OutfitWindow *outfitWindow;
