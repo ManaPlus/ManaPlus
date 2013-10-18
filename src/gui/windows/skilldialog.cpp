@@ -306,7 +306,10 @@ SkillDialog::SkillDialog() :
     place(0, 5, mPointsLabel, 4);
     place(3, 5, mUseButton);
     place(4, 5, mIncreaseButton);
+}
 
+void SkillDialog::postInit()
+{
     setLocationRelativeTo(getParent());
     loadWindowState();
     enableVisibleSound(true);

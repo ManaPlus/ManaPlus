@@ -52,6 +52,8 @@ class SkillDialog final : public Window, public gcn::ActionListener
 
         ~SkillDialog();
 
+        void postInit();
+
         /**
          * Called when receiving actions from widget.
          */

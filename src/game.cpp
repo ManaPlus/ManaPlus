@@ -224,6 +224,7 @@ static void createGuiWindows()
     shopWindow = new ShopWindow;
     shopWindow->postInit();
     skillDialog = new SkillDialog;
+    skillDialog->postInit();
     minimap = new Minimap;
     debugWindow = new DebugWindow;
     debugWindow->postInit();
