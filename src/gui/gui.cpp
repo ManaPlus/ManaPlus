@@ -82,7 +82,7 @@ class GuiConfigListener final : public ConfigListener
         Gui *mGui;
 };
 
-Gui::Gui(Graphics *const graphics) :
+Gui::Gui() :
     gcn::Gui(),
     mConfigListener(new GuiConfigListener(this)),
     mGuiFont(),
@@ -103,6 +103,10 @@ Gui::Gui(Graphics *const graphics) :
     mForegroundColor2(Theme::getThemeColor(Theme::TEXT_OUTLINE)),
     mCustomCursor(false),
     mDoubleClick(true)
+{
+}
+
+void Gui::postInit(Graphics *const graphics)
 {
     logger->log1("Initializing GUI...");
     // Set graphics

@@ -637,7 +637,8 @@ void Client::gameInit()
     emoteShortcut = new EmoteShortcut;
     dropShortcut = new DropShortcut;
 
-    gui = new Gui(mainGraphics);
+    gui = new Gui();
+    gui->postInit(mainGraphics);
 
     // Initialize sound engine
     try

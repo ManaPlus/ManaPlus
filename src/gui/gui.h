@@ -56,7 +56,7 @@ class Gui final : public gcn::Gui
         /**
          * Constructor.
          */
-        explicit Gui(Graphics *const screen);
+        Gui();
 
         A_DELETE_COPY(Gui)
 
@@ -64,6 +64,8 @@ class Gui final : public gcn::Gui
          * Destructor.
          */
         ~Gui();
+
+        void postInit(Graphics *const graphics);
 
         /**
          * Performs logic of the GUI. Overridden to track mouse pointer
