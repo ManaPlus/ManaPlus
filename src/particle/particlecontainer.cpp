@@ -37,6 +37,7 @@ ParticleContainer::ParticleContainer(ParticleContainer *const parent,
 
 ParticleContainer::~ParticleContainer()
 {
+    // +++ call virtul method in destructor
     clearLocally();
     if (mDelParent)
     {
