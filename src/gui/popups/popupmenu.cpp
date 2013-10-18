@@ -2271,7 +2271,8 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
     showPopup(x, y);
 }
 
-void PopupMenu::showPickupItemPopup(const int x, const int y, std::string name)
+void PopupMenu::showPickupItemPopup(const int x, const int y,
+                                    const std::string &name)
 {
     if (!player_node || !actorSpriteManager)
         return;

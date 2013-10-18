@@ -151,10 +151,12 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showSpellPopup(const int x, const int y, TextCommand *const cmd);
 
-        void showAttackMonsterPopup(int x, int y, const std::string &name,
-                                    int type);
+        void showAttackMonsterPopup(const int x, const int y,
+                                    const std::string &name,
+                                    const int type);
 
-        void showPickupItemPopup(int x, int y, std::string name);
+        void showPickupItemPopup(const int x, const int y,
+                                 const std::string &name);
 
         void showUndressPopup(const int x, const int y,
                               const Being *const being,
