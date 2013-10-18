@@ -330,7 +330,10 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     addKeyListener(this);
 
     loadWindowState();
+}
 
+void ServerDialog::postInit()
+{
     setVisible(true);
 
     mConnectButton->requestFocus();

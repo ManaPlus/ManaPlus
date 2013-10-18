@@ -104,6 +104,8 @@ class ServerDialog final : public Window,
 
         A_DELETE_COPY(ServerDialog)
 
+        void postInit() override;
+
         /**
          * Destructor
          */

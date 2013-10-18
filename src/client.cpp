@@ -1217,6 +1217,7 @@ int Client::gameExec()
 
                         mCurrentDialog = new ServerDialog(&mCurrentServer,
                                                           mConfigDir);
+                        mCurrentDialog->postInit();
                     }
                     else
                     {
