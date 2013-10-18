@@ -547,7 +547,7 @@ public:
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
 
-        updateList();
+        getPlayersAvatars();
         setCaption(name);
     }
 
@@ -881,7 +881,7 @@ public:
 
         const Map *const map = socialWindow->getMap();
         if (!map)
-            return 01;
+            return -1;
 
         std::vector<Avatar*>::const_iterator i = avatars->begin();
         const std::vector<Avatar*>::const_iterator i_end = avatars->end();
@@ -1021,7 +1021,7 @@ private:
         ++ ia;\
     }\
     avatars->clear();\
-    Avatar *ava;\
+    Avatar *ava = nullptr;\
     std::list<std::string> mobs;\
     std::list<std::string>::const_iterator i;\
     std::list<std::string>::const_iterator i_end;
@@ -1135,7 +1135,7 @@ public:
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
 
-        updateList();
+        getPlayersAvatars();
         setCaption(name);
     }
 
@@ -1227,9 +1227,11 @@ public:
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: party popup item
         mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
+    }
 
+    void postInit()
+    {
         add(mBrowserBox);
-
         setContentSize(mBrowserBox->getWidth() + 8,
                        mBrowserBox->getHeight() + 8);
     }
@@ -1303,6 +1305,11 @@ SocialWindow::SocialWindow() :
     mLastUpdateTime(0),
     mNeedUpdate(false),
     mProcessedPortals(false)
+{
+    mCreatePopup->postInit();
+}
+
+void SocialWindow::postInit()
 {
     setWindowName("Social");
     setVisible(false);

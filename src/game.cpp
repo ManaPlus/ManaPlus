@@ -263,6 +263,7 @@ static void createGuiWindows()
     whoIsOnline = new WhoIsOnline;
     killStats = new KillStats;
     socialWindow = new SocialWindow;
+    socialWindow->postInit();
     if (serverVersion >= 6)
         questsWindow = new QuestsWindow;
 

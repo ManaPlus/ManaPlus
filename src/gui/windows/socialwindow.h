@@ -54,6 +54,8 @@ public:
 
     ~SocialWindow();
 
+    void postInit();
+
     bool addTab(Guild *const guild);
 
     bool removeTab(Guild *const guild);
