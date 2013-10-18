@@ -60,8 +60,6 @@ ResourceManager::ResourceManager() :
     mOrphanedResources(),
     mDeletedResources(),
     mOldestOrphan(0),
-    mSelectedSkin(),
-    mSkinName(),
     mDestruction(0),
     mUseLongLiveSprites(config.getBoolValue("uselonglivesprites"))
 {

@@ -346,8 +346,6 @@ class ResourceManager final
         Resources mOrphanedResources;
         std::set<Resource*> mDeletedResources;
         time_t mOldestOrphan;
-        std::string mSelectedSkin;
-        std::string mSkinName;
         bool mDestruction;
         bool mUseLongLiveSprites;
         static DelayedAnim mDelayedAnimations;
