@@ -66,7 +66,7 @@ SoundManager::SoundManager():
     // This set up our callback function used to
     // handle fade outs endings.
     sFadingOutEnded = false;
-    Mix_HookMusicFinished(fadeOutCallBack);
+    Mix_HookMusicFinished(&fadeOutCallBack);
 }
 
 SoundManager::~SoundManager()
