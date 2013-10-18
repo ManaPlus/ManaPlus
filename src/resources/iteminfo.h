@@ -229,7 +229,7 @@ class ItemInfo final
 
         int getDrawAfter(const int direction) const A_WARN_UNUSED;
 
-        void setDrawAfter(const int direction, int n);
+        void setDrawAfter(const int direction, const int n);
 
         int getDrawPriority(const int direction) const A_WARN_UNUSED;
 
