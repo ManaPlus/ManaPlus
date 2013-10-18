@@ -250,8 +250,9 @@ FloorItem *ActorSpriteManager::createItem(const int id, const int itemId,
                                           const unsigned char color,
                                           const int subX, const int subY)
 {
-    FloorItem *const floorItem = new FloorItem(id, itemId, x, y,
-        mMap, amount, color, subX, subY);
+    FloorItem *const floorItem = new FloorItem(id, itemId,
+        x, y, amount, color);
+    floorItem->postInit(mMap, subX, subY);
 
     if (!checkForPickup(floorItem))
         floorItem->disableHightlight();

@@ -42,17 +42,15 @@ class FloorItem final : public ActorSprite
          * @param itemId the item ID
          * @param x      the x position in tiles
          * @param y      the y position in tiles
-         * @param map    the map this item is on
          * @param amount the item amount
          * @param color  the item color
-         * @param subX   the x pixel relative position
-         * @param subY   the y pixel relative position
          */
         FloorItem(const int id, const int itemId, const int x, const int y,
-                  Map *const map, const int amount, const unsigned char color,
-                  int subX, int subY);
+                  const int amount, const unsigned char color);
 
         A_DELETE_COPY(FloorItem)
+
+        void postInit(Map *const map, int subX, int subY);
 
         Type getType() const override A_WARN_UNUSED
         { return FLOOR_ITEM; }

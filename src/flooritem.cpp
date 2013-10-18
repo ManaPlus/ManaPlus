@@ -38,9 +38,7 @@
 #include "debug.h"
 
 FloorItem::FloorItem(const int id, const int itemId, const int x, const int y,
-                     Map *const map, const int amount,
-                     const unsigned char color,
-                     int subX, int subY):
+                     const int amount, const unsigned char color) :
     ActorSprite(id),
     mItemId(itemId),
     mX(x),
@@ -53,8 +51,12 @@ FloorItem::FloorItem(const int id, const int itemId, const int x, const int y,
     mShowMsg(true),
     mHighlight(config.getBoolValue("floorItemsHighlight"))
 {
+}
+
+void FloorItem::postInit(Map *const map, int subX, int subY)
+{
     setMap(map);
-    const ItemInfo &info = ItemDB::get(itemId);
+    const ItemInfo &info = ItemDB::get(mItemId);
     if (map)
     {
         const int max = info.getMaxFloorOffset();
@@ -66,9 +68,9 @@ FloorItem::FloorItem(const int id, const int itemId, const int x, const int y,
             subY = max;
         else if (subY < -max)
             subY = -max;
-        mPos.x = static_cast<float>(x * map->getTileWidth()
+        mPos.x = static_cast<float>(mX * map->getTileWidth()
             + subX + mapTileSize / 2 - 8);
-        mPos.y = static_cast<float>(y * map->getTileHeight()
+        mPos.y = static_cast<float>(mY * map->getTileHeight()
             + subY + mapTileSize - 8);
     }
     else
