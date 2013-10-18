@@ -174,7 +174,7 @@ public:
 
     void sort();
 
-    std::string getPos(int id) const A_WARN_UNUSED;
+    std::string getPos(const int id) const A_WARN_UNUSED;
 
     static Guild *getGuild(const int16_t id) A_WARN_UNUSED;
 
