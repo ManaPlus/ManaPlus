@@ -107,7 +107,10 @@ public:
      *
      * \param linewise: Whether to enable linewise selection mode
      */
-    void setLinewiseSelection(bool linewise);
+    void setLinewiseSelection(bool linewise)
+    {
+        mLinewiseMode = linewise;
+    }
 
     // Inherited from Widget
     void draw(gcn::Graphics* graphics) override;

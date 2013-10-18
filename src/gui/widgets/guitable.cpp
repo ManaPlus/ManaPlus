@@ -186,11 +186,6 @@ int GuiTable::getSelectedColumn() const
     return mSelectedColumn;
 }
 
-void GuiTable::setLinewiseSelection(const bool linewise)
-{
-    mLinewiseMode = linewise;
-}
-
 int GuiTable::getRowHeight() const
 {
     if (mModel)
