@@ -34,9 +34,9 @@ class SimpleAnimation;
 class AnimationParticle final : public ImageParticle
 {
     public:
-        AnimationParticle(Map *const map, Animation *const animation);
+        AnimationParticle(Animation *const animation);
 
-        AnimationParticle(Map *const map, XmlNodePtr const animationNode,
+        AnimationParticle(XmlNodePtr const animationNode,
                           const std::string& dyePalettes = std::string());
 
         A_DELETE_COPY(AnimationParticle)

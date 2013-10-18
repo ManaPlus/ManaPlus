@@ -31,10 +31,10 @@
 
 #include "debug.h"
 
-TextParticle::TextParticle(Map *const map, const std::string &text,
+TextParticle::TextParticle(const std::string &text,
                            const gcn::Color *const color,
                            gcn::Font *const font, const bool outline) :
-    Particle(map),
+    Particle(),
     mText(text),
     mTextFont(font),
     mColor(color),

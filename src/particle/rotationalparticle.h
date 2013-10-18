@@ -34,9 +34,9 @@ class SimpleAnimation;
 class RotationalParticle final : public ImageParticle
 {
     public:
-        RotationalParticle(Map *const map, Animation *const animation);
+        RotationalParticle(Animation *const animation);
 
-        RotationalParticle(Map *const map, const XmlNodePtr animationNode,
+        RotationalParticle(const XmlNodePtr animationNode,
                            const std::string& dyePalettes = std::string());
 
         A_DELETE_COPY(RotationalParticle)

@@ -182,7 +182,8 @@ static void initEngines()
     AuctionManager::init();
     GuildManager::init();
 
-    particleEngine = new Particle(nullptr);
+    particleEngine = new Particle();
+    particleEngine->setMap(nullptr);
     particleEngine->setupEngine();
     BeingInfo::init();
 

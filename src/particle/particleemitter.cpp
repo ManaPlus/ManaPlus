@@ -584,21 +584,25 @@ std::list<Particle *> ParticleEmitter::createParticles(const int tick)
             if (ImageParticle::imageParticleCountByName[name] > 200)
                 break;
 
-            newParticle = new ImageParticle(mMap, mParticleImage);
+            newParticle = new ImageParticle(mParticleImage);
+            newParticle->setMap(mMap);
         }
         else if (!mParticleRotation.mFrames.empty())
         {
             Animation *const newAnimation = new Animation(mParticleRotation);
-            newParticle = new RotationalParticle(mMap, newAnimation);
+            newParticle = new RotationalParticle(newAnimation);
+            newParticle->setMap(mMap);
         }
         else if (!mParticleAnimation.mFrames.empty())
         {
             Animation *const newAnimation = new Animation(mParticleAnimation);
-            newParticle = new AnimationParticle(mMap, newAnimation);
+            newParticle = new AnimationParticle(newAnimation);
+            newParticle->setMap(mMap);
         }
         else
         {
-            newParticle = new Particle(mMap);
+            newParticle = new Particle();
+            newParticle->setMap(mMap);
         }
 
         const Vector position(mParticlePosX.value(tick),

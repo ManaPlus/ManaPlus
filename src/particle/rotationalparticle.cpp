@@ -31,17 +31,15 @@
 static const double PI = M_PI;
 static const float PI2 = 2 * M_PI;
 
-RotationalParticle::RotationalParticle(Map *const map,
-                                       Animation *const animation) :
-    ImageParticle(map, nullptr),
+RotationalParticle::RotationalParticle(Animation *const animation) :
+    ImageParticle(nullptr),
     mAnimation(new SimpleAnimation(animation))
 {
 }
 
-RotationalParticle::RotationalParticle(Map *const map,
-                                       const XmlNodePtr animationNode,
+RotationalParticle::RotationalParticle(const XmlNodePtr animationNode,
                                        const std::string& dyePalettes):
-    ImageParticle(map, nullptr),
+    ImageParticle(nullptr),
     mAnimation(new SimpleAnimation(animationNode, dyePalettes))
 {
 }

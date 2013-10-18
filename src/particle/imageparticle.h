@@ -42,7 +42,7 @@ class ImageParticle : public Particle
          * @param map   the map this particle appears on
          * @param image an Image instance, may not be NULL
          */
-        ImageParticle(Map *const map, Image *const image);
+        ImageParticle(Image *const image);
 
         A_DELETE_COPY(ImageParticle)
 

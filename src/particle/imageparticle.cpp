@@ -30,8 +30,8 @@
 
 std::map<std::string, int> ImageParticle::imageParticleCountByName;
 
-ImageParticle::ImageParticle(Map *const map, Image *const image):
-    Particle(map),
+ImageParticle::ImageParticle(Image *const image):
+    Particle(),
     mImage(image)
 {
     if (mImage)

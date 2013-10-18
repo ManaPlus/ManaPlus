@@ -72,12 +72,7 @@ class Particle : public Actor
         static bool enabled;  // true when non-crucial particle effects
                               // are disabled
 
-        /**
-         * Constructor.
-         *
-         * @param map the map this particle will add itself to, may be nullptr
-         */
-        explicit Particle(Map *const map);
+        Particle();
 
         A_DELETE_COPY(Particle)
 

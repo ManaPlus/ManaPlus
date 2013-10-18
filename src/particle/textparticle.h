@@ -31,7 +31,7 @@ class TextParticle final : public Particle
         /**
          * Constructor.
          */
-        TextParticle(Map *const map, const std::string &text,
+        TextParticle(const std::string &text,
                      const gcn::Color *const color,
                      gcn::Font *const font, const bool outline = false);
 

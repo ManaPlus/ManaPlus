@@ -52,7 +52,7 @@ int Particle::emitterSkip = 1;
 bool Particle::enabled = true;
 const float Particle::PARTICLE_SKY = 800.0F;
 
-Particle::Particle(Map *const map) :
+Particle::Particle() :
     Actor(),
     mAlpha(1.0F),
     mLifetimeLeft(-1),
@@ -76,7 +76,6 @@ Particle::Particle(Map *const map) :
     mAllowSizeAdjust(false),
     mFollow(false)
 {
-    setMap(map);
     Particle::particleCount++;
 }
 
@@ -276,7 +275,8 @@ void Particle::moveTo(const float x, const float y)
 
 Particle *Particle::createChild()
 {
-    Particle *const newParticle = new Particle(mMap);
+    Particle *const newParticle = new Particle();
+    newParticle->setMap(mMap);
     mChildParticles.push_back(newParticle);
     return newParticle;
 }
@@ -314,13 +314,15 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         // Animation
         if ((node = XML::findFirstChildByName(effectChildNode, "animation")))
         {
-            newParticle = new AnimationParticle(mMap, node, dyePalettes);
+            newParticle = new AnimationParticle(node, dyePalettes);
+            newParticle->setMap(mMap);
         }
         // Rotational
         else if ((node = XML::findFirstChildByName(
                  effectChildNode, "rotation")))
         {
-            newParticle = new RotationalParticle(mMap, node, dyePalettes);
+            newParticle = new RotationalParticle(node, dyePalettes);
+            newParticle->setMap(mMap);
         }
         // Image
         else if ((node = XML::findFirstChildByName(effectChildNode, "image")))
@@ -331,12 +333,14 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
                 Dye::instantiate(imageSrc, dyePalettes);
             Image *const img = resman->getImage(imageSrc);
 
-            newParticle = new ImageParticle(mMap, img);
+            newParticle = new ImageParticle(img);
+            newParticle->setMap(mMap);
         }
         // Other
         else
         {
-            newParticle = new Particle(mMap);
+            newParticle = new Particle();
+            newParticle->setMap(mMap);
         }
 
         // Read and set the basic properties of the particle
@@ -415,8 +419,8 @@ Particle *Particle::addTextSplashEffect(const std::string &text,
                                         gcn::Font *const font,
                                         const bool outline)
 {
-    Particle *const newParticle = new TextParticle(
-        mMap, text, color, font, outline);
+    Particle *const newParticle = new TextParticle(text, color, font, outline);
+    newParticle->setMap(mMap);
     newParticle->moveTo(static_cast<float>(x), static_cast<float>(y));
     newParticle->setVelocity(
         static_cast<float>((rand() % 100) - 50) / 200.0F,       // X
@@ -439,8 +443,8 @@ Particle *Particle::addTextRiseFadeOutEffect(const std::string &text,
                                              gcn::Font *const font,
                                              const bool outline)
 {
-    Particle *const newParticle = new TextParticle(
-        mMap, text, color, font, outline);
+    Particle *const newParticle = new TextParticle(text, color, font, outline);
+    newParticle->setMap(mMap);
     newParticle->moveTo(static_cast<float>(x), static_cast<float>(y));
     newParticle->setVelocity(0.0F, 0.0F, 0.5F);
     newParticle->setGravity(0.0015F);
