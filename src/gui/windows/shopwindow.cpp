@@ -183,9 +183,12 @@ ShopWindow::ShopWindow():
     loadWindowState();
 
     instances.push_back(this);
+}
+
+void ShopWindow::postInit()
+{
     setVisible(false);
     enableVisibleSound(true);
-
     updateButtonsAndLabels();
 }
 

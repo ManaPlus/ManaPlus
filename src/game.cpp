@@ -222,6 +222,7 @@ static void createGuiWindows()
     inventoryWindow = new InventoryWindow(PlayerInfo::getInventory());
     inventoryWindow->postInit();
     shopWindow = new ShopWindow;
+    shopWindow->postInit();
     skillDialog = new SkillDialog;
     minimap = new Minimap;
     debugWindow = new DebugWindow;
