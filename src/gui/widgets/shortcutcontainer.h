@@ -66,17 +66,23 @@ class ShortcutContainer : public gcn::Widget,
         /**
          * Handles mouse when dragged.
          */
-        virtual void mouseDragged(gcn::MouseEvent &event) override = 0;
+        virtual void mouseDragged(gcn::MouseEvent &event) override
+        {
+        }
 
         /**
          * Handles mouse when pressed.
          */
-        virtual void mousePressed(gcn::MouseEvent &event) override = 0;
+        virtual void mousePressed(gcn::MouseEvent &event) override
+        {
+        }
 
         /**
          * Handles mouse release.
          */
-        virtual void mouseReleased(gcn::MouseEvent &event) override = 0;
+        virtual void mouseReleased(gcn::MouseEvent &event) override
+        {
+        }
 
         int getMaxItems() const A_WARN_UNUSED
         { return mMaxItems; }
