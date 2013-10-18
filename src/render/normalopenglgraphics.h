@@ -217,7 +217,7 @@ class NormalOpenGLGraphics final : public Graphics
         void debugBindTexture(const Image *const image);
 
     private:
-        void inline setColorAlpha(float alpha);
+        void inline setColorAlpha(const float alpha);
 
         void inline restoreColor();
 
