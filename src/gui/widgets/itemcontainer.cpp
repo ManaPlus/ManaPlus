@@ -428,6 +428,7 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
                 break;
             case Inventory::NPC:
                 src = DRAGDROP_SOURCE_NPC;
+                break;
             default:
                 break;
         }
