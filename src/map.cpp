@@ -621,7 +621,7 @@ void Map::drawAmbientLayers(Graphics *const graphics, const LayerType type,
     }
 
     // find out which layer list to draw
-    AmbientLayerVector *layers;
+    AmbientLayerVector *layers = nullptr;
     switch (type)
     {
         case FOREGROUND_LAYERS:
