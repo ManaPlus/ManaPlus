@@ -99,7 +99,7 @@ class Inventory final
          * Adds a new item in a free slot.
          */
         void addItem(const int id, const int quantity, const int refine,
-                     const unsigned char color, bool equipment = false);
+                     const unsigned char color, const bool equipment = false);
 
         /**
          * Sets the item at the given position.
