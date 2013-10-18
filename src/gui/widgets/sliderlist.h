@@ -38,7 +38,7 @@ class SliderList final : public Container,
 {
     public:
         SliderList(const Widget2 *const widget,
-                   gcn::ListModel *const listModel = nullptr);
+                   gcn::ListModel *const listModel);
 
         A_DELETE_COPY(SliderList)
 
