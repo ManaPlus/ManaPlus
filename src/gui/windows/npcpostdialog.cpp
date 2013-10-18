@@ -49,6 +49,10 @@ NpcPostDialog::NpcPostDialog(const int npcId):
 {
     setContentSize(400, 180);
 
+}
+
+void NpcPostDialog::postInit()
+{
     // create text field for receiver
     // TRANSLATORS: label in npc post dialog
     Label *const senderText = new Label(this, _("To:"));
