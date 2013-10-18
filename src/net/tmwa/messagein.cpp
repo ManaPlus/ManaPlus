@@ -38,6 +38,10 @@ namespace TmwAthena
 MessageIn::MessageIn(const char *const data, const unsigned int length) :
     Net::MessageIn(data, length)
 {
+}
+
+void MessageIn::postInit()
+{
     // Read the message ID
     mId = readInt16();
 }

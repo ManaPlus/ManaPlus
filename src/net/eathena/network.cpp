@@ -183,6 +183,7 @@ void Network::dispatchMessages()
             len = readWord(2);
 
         MessageIn msg(mInBuffer, len);
+        msg.postInit();
         SDL_mutexV(mMutexIn);
 
         if (len == 0)

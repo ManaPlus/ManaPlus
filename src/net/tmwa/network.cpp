@@ -156,6 +156,7 @@ void Network::dispatchMessages()
             len = readWord(2);
 
         MessageIn msg(mInBuffer, len);
+        msg.postInit();
         SDL_mutexV(mMutexIn);
         BLOCK_END("Network::dispatchMessages 2")
         BLOCK_START("Network::dispatchMessages 3")

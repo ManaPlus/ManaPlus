@@ -45,6 +45,8 @@ class MessageIn final : public Net::MessageIn
 
         A_DELETE_COPY(MessageIn)
 
+        void postInit();
+
         int16_t readInt16();            /**< Reads a short. */
         int32_t readInt32();            /**< Reads a long. */
 };
