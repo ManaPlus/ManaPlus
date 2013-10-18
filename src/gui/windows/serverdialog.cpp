@@ -272,6 +272,8 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     mServerInfo(serverInfo),
     mPersistentIPCheckBox(nullptr)
 {
+    mServersList->postInit();
+
     if (isSafeMode)
     {
         // TRANSLATORS: servers dialog name

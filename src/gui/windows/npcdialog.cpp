@@ -126,6 +126,7 @@ NpcDialog::NpcDialog(const int npcId) :
     mShowAvatar(false),
     mLogInteraction(config.getBoolValue("logNpcInGui"))
 {
+    mItemList->postInit();
     // Basic Window Setup
     setWindowName("NpcText");
     setResizable(true);

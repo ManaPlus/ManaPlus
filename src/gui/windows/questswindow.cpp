@@ -144,6 +144,8 @@ QuestsWindow::QuestsWindow() :
     mCompleteQuestEffectId(paths.getIntValue("completeQuestEffectId")),
     mMap(nullptr)
 {
+    mQuestsListBox->postInit();
+
     setWindowName("Quests");
     setResizable(true);
     setCloseButton(true);

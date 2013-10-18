@@ -469,6 +469,7 @@ void SkillDialog::loadSkills()
             model->updateVisibilities();
 
             listbox = new SkillListBox(this, model);
+            listbox->postInit();
             listbox->setActionEventId("sel");
             listbox->addActionListener(this);
             scroll = new ScrollArea(listbox, false);

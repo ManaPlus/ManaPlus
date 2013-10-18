@@ -115,6 +115,9 @@ ShopWindow::ShopWindow():
     mTradeNick(""),
     mTradeMoney(0)
 {
+    mBuyShopItemList->postInit();
+    mSellShopItemList->postInit();
+
     setWindowName("Personal Shop");
     setResizable(true);
     setCloseButton(true);

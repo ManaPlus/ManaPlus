@@ -42,6 +42,8 @@ PopupList::PopupList(DropDown *const widget,
     mPressedIndex(-2),
     mModal(modal)
 {
+    mListBox->postInit();
+
     setFocusable(true);
 
     mListBox->setDistributeMousePressed(true);

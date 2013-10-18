@@ -73,7 +73,10 @@ ListBox::ListBox(const Widget2 *const widget,
         mRowHeight = font->getHeight() + 2 * mItemPadding;
     else
         mRowHeight = 13;
+}
 
+void ListBox::postInit()
+{
     adjustSize();
 }
 

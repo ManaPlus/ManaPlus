@@ -77,6 +77,8 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mBlueSlider(new Slider(0, 255)),
     mBlueText(new TextField(this))
 {
+    mColorBox->postInit();
+
     // TRANSLATORS: settings colors tab name
     setName(_("Colors"));
     mColorBox->addSelectionListener(this);

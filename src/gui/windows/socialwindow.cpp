@@ -189,6 +189,7 @@ public:
             &getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
 
         mList = new AvatarListBox(this, guild);
+        mList->postInit();
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -322,6 +323,7 @@ public:
             &getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
 
         mList = new AvatarListBox(this, guild);
+        mList->postInit();
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -389,6 +391,7 @@ public:
             &getThemeColor(Theme::PARTY_SOCIAL_TAB_SELECTED_OUTLINE));
 
         mList = new AvatarListBox(this, party);
+        mList->postInit();
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -537,6 +540,7 @@ public:
         mBeings(new BeingsListModal)
     {
         mList = new AvatarListBox(this, mBeings);
+        mList->postInit();
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -702,6 +706,7 @@ public:
         mBeings(new BeingsListModal)
     {
         mList = new AvatarListBox(this, mBeings);
+        mList->postInit();
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -1030,6 +1035,7 @@ public:
         mBeings(new BeingsListModal)
     {
         mList = new AvatarListBox(this, mBeings);
+        mList->postInit();
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -1076,6 +1082,7 @@ public:
         mBeings(new BeingsListModal)
     {
         mList = new AvatarListBox(this, mBeings);
+        mList->postInit();
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 
@@ -1121,6 +1128,7 @@ public:
         mBeings(new BeingsListModal)
     {
         mList = new AvatarListBox(this, mBeings);
+        mList->postInit();
         mScroll = new ScrollArea(mList, showBackground,
             "social_background.xml");
 

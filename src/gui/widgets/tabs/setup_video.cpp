@@ -215,6 +215,8 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     // TRANSLATORS: video settings checkbox
     mNoFrameCheckBox(new CheckBox(this, _("No frame"), mNoFrame))
 {
+    mModeList->postInit();
+
     // TRANSLATORS: video settings tab name
     setName(_("Video"));
 

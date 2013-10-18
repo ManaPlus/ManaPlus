@@ -107,6 +107,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     mKeySetting(false),
     mActionDataSize(new int [9])
 {
+    mKeyList->postInit();
     inputManager.setSetupInput(this);
     // TRANSLATORS: setting tab name
     setName(_("Input"));

@@ -53,6 +53,8 @@ class ListBox : public gcn::ListBox,
 
         virtual ~ListBox();
 
+        void postInit();
+
         /**
          * Draws the list box.
          */

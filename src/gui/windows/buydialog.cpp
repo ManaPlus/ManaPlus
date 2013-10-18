@@ -239,6 +239,7 @@ void BuyDialog::init()
     mShopItems = new ShopItems;
 
     mShopItemList = new ShopListBox(this, mShopItems, mShopItems);
+    mShopItemList->postInit();
     mScrollArea = new ScrollArea(mShopItemList,
         getOptionBool("showbackground"), "buy_background.xml");
     mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);

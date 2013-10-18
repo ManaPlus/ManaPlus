@@ -91,6 +91,7 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds):
     // TRANSLATORS: world dialog button
     mChooseWorld(new Button(this, _("Choose World"), "world", this))
 {
+    mWorldList->postInit();
     ScrollArea *const worldsScroll = new ScrollArea(mWorldList,
         getOptionBool("showbackground"), "world_background.xml");
 
