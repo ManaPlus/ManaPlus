@@ -51,7 +51,7 @@
 #include "debug.h"
 
 extern Window *statusWindow;
-Setup *setupWindow;
+Setup *setupWindow = nullptr;
 
 Setup::Setup() :
     // TRANSLATORS: setup window name
