@@ -45,6 +45,7 @@ MessageOut::MessageOut(const int16_t id):
     mNetwork->fixSendBuffer();
     mData = mNetwork->mOutBuffer + mNetwork->mOutSize;
 
+    // +++ can be issue. call to virtual member
     writeInt16(id);
 }
 
