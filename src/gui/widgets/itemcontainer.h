@@ -156,18 +156,6 @@ class ItemContainer final : public gcn::Widget,
         };
 
         /**
-         * Execute all the functionality associated with the action key.
-         */
-        void keyAction();
-
-        /**
-         * Moves the highlight in the direction specified.
-         *
-         * @param direction The move direction of the highlighter.
-         */
-        void moveHighlight(const Direction direction);
-
-        /**
          * Sets the currently selected item.
          */
         void setSelectedIndex(const int index);
