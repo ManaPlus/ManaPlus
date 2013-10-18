@@ -99,9 +99,13 @@ void NormalOpenGLGraphicsVertexes::clear()
     {
         ptr = 0;
         delete []mFloatTexArray;
+        mFloatTexArray = nullptr;
         delete []mIntTexArray;
+        mIntTexArray = nullptr;
         delete []mIntVertArray;
+        mIntVertArray = nullptr;
         delete []mShortVertArray;
+        mShortVertArray = nullptr;
     }
 }
 
