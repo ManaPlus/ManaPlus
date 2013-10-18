@@ -189,12 +189,12 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
         if (retval)
         {
 #ifdef USE_SDL2
-            retval->size  = physfsrwops_size;
+            retval->size  = &physfsrwops_size;
 #endif
-            retval->seek  = physfsrwops_seek;
-            retval->read  = physfsrwops_read;
-            retval->write = physfsrwops_write;
-            retval->close = physfsrwops_close;
+            retval->seek  = &physfsrwops_seek;
+            retval->read  = &physfsrwops_read;
+            retval->write = &physfsrwops_write;
+            retval->close = &physfsrwops_close;
             retval->hidden.unknown.data1 = handle;
         } /* if */
 #ifdef DUMP_LEAKED_RESOURCES
