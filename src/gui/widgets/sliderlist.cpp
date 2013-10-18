@@ -34,16 +34,14 @@ static const int buttonSpace = 30;
 static const int sliderHeight = 30;
 
 SliderList::SliderList(const Widget2 *const widget,
-                       gcn::ListModel *const listModel,
-                       gcn::ActionListener *const listener,
-                       const std::string &eventId) :
+                       gcn::ListModel *const listModel) :
     Container(widget),
     gcn::ActionListener(),
     gcn::MouseListener(),
     mLabel(new Label(this)),
     mListModel(listModel),
-    mPrevEventId(eventId + "_prev"),
-    mNextEventId(eventId + "_next"),
+    mPrevEventId(),
+    mNextEventId(),
     mOldWidth(0),
     mSelectedIndex(0)
 {
@@ -51,6 +49,14 @@ SliderList::SliderList(const Widget2 *const widget,
 
     mButtons[0] = new Button(this, "<", mPrevEventId, this);
     mButtons[1] = new Button(this, ">", mNextEventId, this);
+}
+
+void SliderList::postInit(gcn::ActionListener *const listener,
+                          const std::string &eventId)
+{
+    mPrevEventId = eventId + "_prev";
+    mNextEventId = eventId + "_next";
+
     add(mButtons[0]);
     add(mLabel);
     add(mButtons[1]);

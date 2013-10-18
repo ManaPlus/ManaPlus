@@ -979,7 +979,8 @@ void SetupItemSliderList::createControls()
     mHorizont = new HorizontContainer(this, 32, 2);
 
     mLabel = new Label(this, mText);
-    mSlider = new SliderList(this, mModel, mParent, mEventName);
+    mSlider = new SliderList(this, mModel);
+    mSlider->postInit(mParent, mEventName);
     mSlider->setSelectedString(mValue);
     mSlider->adjustSize();
 

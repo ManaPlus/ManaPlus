@@ -38,13 +38,14 @@ class SliderList final : public Container,
 {
     public:
         SliderList(const Widget2 *const widget,
-                   gcn::ListModel *const listModel = nullptr,
-                   gcn::ActionListener *const listener = nullptr,
-                   const std::string &eventId = "");
+                   gcn::ListModel *const listModel = nullptr);
 
         A_DELETE_COPY(SliderList)
 
         ~SliderList();
+
+        void postInit(gcn::ActionListener *const listener,
+                      const std::string &eventId);
 
         void updateAlpha();
 
