@@ -139,6 +139,7 @@ void MessageOut::writeCoordinates(const uint16_t x,
         default:
             // OOPSIE! Impossible or unknown
             direction = static_cast<unsigned char>(-1);
+            break;
     }
     data[2] |= direction;
     PacketCounters::incOutBytes(3);
