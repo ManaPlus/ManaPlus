@@ -37,7 +37,7 @@ namespace
 {
     ItemDB::ItemInfos mItemInfos;
     ItemDB::NamedItemInfos mNamedItemInfos;
-    ItemInfo *mUnknown;
+    ItemInfo *mUnknown = nullptr;
     bool mLoaded = false;
     bool mConstructed = false;
     StringVect mTagNames;
