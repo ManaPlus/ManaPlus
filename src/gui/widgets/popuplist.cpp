@@ -48,6 +48,10 @@ PopupList::PopupList(DropDown *const widget,
 
     mListBox->setDistributeMousePressed(true);
     mScrollArea->setPosition(mPadding, mPadding);
+}
+
+void PopupList::postInit()
+{
     add(mScrollArea);
 
     if (gui)
@@ -60,8 +64,8 @@ PopupList::PopupList(DropDown *const widget,
 
 PopupList::~PopupList()
 {
-    if (getParent())
-        getParent()->removeFocusListener(this);
+    if (mParent)
+        mParent->removeFocusListener(this);
     if (gui)
         gui->removeGlobalFocusListener(this);
     removeKeyListener(mDropDown);

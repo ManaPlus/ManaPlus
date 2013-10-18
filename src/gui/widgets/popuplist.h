@@ -44,6 +44,8 @@ class PopupList final : public Popup,
 
         A_DELETE_COPY(PopupList)
 
+        void postInit() override;
+
         void show(int x, int y);
 
         void widgetResized(const gcn::Event &event) override;

@@ -76,6 +76,7 @@ DropDown::DropDown(const Widget2 *const widget,
     mPushed(false),
     mIsDragged(false)
 {
+    mPopup->postInit();
     mFrameSize = 2;
     mForegroundColor2 = getThemeColor(Theme::DROPDOWN_OUTLINE);
 
