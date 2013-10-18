@@ -212,7 +212,9 @@ static void createGuiWindows()
     tradeWindow = new TradeWindow;
     equipmentWindow = new EquipmentWindow(PlayerInfo::getEquipment(),
         player_node);
+    equipmentWindow->postInit();
     beingEquipmentWindow = new EquipmentWindow(nullptr, nullptr, true);
+    beingEquipmentWindow->postInit();
     beingEquipmentWindow->setVisible(false);
     statusWindow = new StatusWindow;
     miniStatusWindow = new MiniStatusWindow;
