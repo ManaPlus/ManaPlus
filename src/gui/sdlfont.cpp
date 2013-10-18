@@ -53,7 +53,7 @@ const int OUTLINE_SIZE = 1;
 
 bool SDLFont::mSoftMode(false);
 
-char *strBuf;
+char *strBuf = nullptr;
 
 #ifdef UNITTESTS
 int sdlTextChunkCnt = 0;
