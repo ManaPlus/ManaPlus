@@ -51,15 +51,16 @@ class ScrollArea final : public gcn::ScrollArea,
          * Constructor that takes no content. Needed for use with the DropDown
          * class.
          */
-        ScrollArea(const bool opaque = true, const std::string &skin = "");
+        explicit ScrollArea(const bool opaque = true,
+                            const std::string &skin = "");
 
         /**
          * Constructor.
          *
          * @param content the initial content to show in the scroll area
          */
-        ScrollArea(gcn::Widget *const widget, const bool opaque = true,
-                   const std::string &skin = "");
+        explicit ScrollArea(gcn::Widget *const widget, const bool opaque = true,
+                            const std::string &skin = "");
 
         A_DELETE_COPY(ScrollArea)
 
