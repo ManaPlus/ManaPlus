@@ -156,10 +156,8 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     mEnabledKeyboard(keyboard.isEnabled())
 {
     if (!mItem)
-    {
-        setVisible(false);
         return;
-    }
+
     if (usage == ShopBuyAdd)
         mMax = 10000;
     else if (!mMax)
@@ -297,9 +295,13 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     }
 
     setLocationRelativeTo(getParentWindow());
-    setVisible(true);
 
     mItemIcon->addMouseListener(this);
+}
+
+void ItemAmountWindow::postInit()
+{
+    setVisible(mItem);
 }
 
 ItemAmountWindow::~ItemAmountWindow()
@@ -448,5 +450,5 @@ void ItemAmountWindow::showWindow(const Usage usage, Window *const parent,
     if (usage != ShopBuyAdd && usage != ShopSellAdd && maxRange <= 1)
         finish(item, maxRange, 0, usage);
     else
-        new ItemAmountWindow(usage, parent, item, maxRange);
+        (new ItemAmountWindow(usage, parent, item, maxRange))->postInit();
 }

@@ -60,6 +60,8 @@ class ItemAmountWindow final : public Window,
 
         A_DELETE_COPY(ItemAmountWindow)
 
+        void postInit();
+
         /**
          * Called when receiving actions from widget.
          */
