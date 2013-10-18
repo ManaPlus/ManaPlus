@@ -65,6 +65,7 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
     okButton->setPosition((width - okButton->getWidth()) / 2,
         mTextBox->getHeight() + getOption("buttonPadding", 8));
 
+    // +++ virtual method call
     add(mTextBox);
     add(okButton);
 
@@ -72,6 +73,7 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
         center();
     else
         centerHorisontally();
+    // +++ virtual method call
     setVisible(true);
     okButton->requestFocus();
 
