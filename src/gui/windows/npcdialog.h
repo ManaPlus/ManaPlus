@@ -72,6 +72,8 @@ class NpcDialog final : public Window,
 
         ~NpcDialog();
 
+        void postInit();
+
         /**
          * Called when receiving actions from the widgets.
          */

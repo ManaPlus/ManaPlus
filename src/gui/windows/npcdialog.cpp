@@ -184,6 +184,10 @@ NpcDialog::NpcDialog(const int npcId) :
     loadWindowState();
 
     instances.push_back(this);
+}
+
+void NpcDialog::postInit()
+{
     setVisible(true);
     requestFocus();
     enableVisibleSound(true);
