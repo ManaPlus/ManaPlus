@@ -114,8 +114,11 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     placer = getPlacer(0, 1);
     placer(1, 0, mOkButton, 1);
     placer(2, 0, mCancelButton, 1);
-
     reflowLayout(200, 0);
+}
+
+void QuitDialog::postInit()
+{
     setLocationRelativeTo(getParent());
     setVisible(true);
     soundManager.playGuiSound(SOUND_SHOW_WINDOW);

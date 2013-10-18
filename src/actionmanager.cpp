@@ -332,6 +332,7 @@ impHandler0(quit)
     else if (!quitDialog)
     {
         quitDialog = new QuitDialog(&quitDialog);
+        quitDialog->postInit();
         quitDialog->requestMoveToTop();
         return true;
     }
