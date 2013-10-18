@@ -200,7 +200,7 @@ class Image : public Resource
         // -----------------------
 
         /** SDL Constructor */
-        Image(SDL_Surface *const image, const bool hasAlphaChannel = false,
+        Image(SDL_Surface *const image, const bool hasAlphaChannel,
               uint8_t *const alphaChannel = nullptr);
 
 #ifdef USE_SDL2

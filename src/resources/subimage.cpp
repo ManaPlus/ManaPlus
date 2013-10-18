@@ -84,7 +84,7 @@ SubImage::SubImage(Image *const parent, SDL_Texture *const image,
 SubImage::SubImage(Image *const parent, SDL_Surface *const image,
                    const int x, const int y,
                    const int width, const int height) :
-    Image(image),
+    Image(image, false),
     mInternalBounds(),
     mParent(parent)
 {
