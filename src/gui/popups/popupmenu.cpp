@@ -120,6 +120,10 @@ PopupMenu::PopupMenu() :
     mPlayerListener.setType(static_cast<int>(Being::UNKNOWN));
     mScrollArea = new ScrollArea(mBrowserBox, false);
     mScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
+}
+
+void PopupMenu::postInit()
+{
     add(mScrollArea);
 }
 

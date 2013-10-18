@@ -104,6 +104,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         A_DELETE_COPY(PopupMenu)
 
+        void postInit();
+
         /**
          * Shows the being related popup menu at the specified mouse coords.
          */
