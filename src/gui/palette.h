@@ -139,7 +139,7 @@ class Palette
 
     protected:
         /** Colors used for the rainbow gradient */
-        static const gcn::Color RAINBOW_COLORS[];
+        static const gcn::Color RAINBOW_COLORS[7];
         static const int RAINBOW_COLOR_COUNT;
 
         /** Time tick, that gradient-type colors were updated the last time. */
