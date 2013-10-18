@@ -152,8 +152,7 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
                     spriteNode, "event", "");
                 const int delay = XML::getProperty(
                     spriteNode, "delay", 0);
-                const char *filename;
-                filename = reinterpret_cast<const char*>(
+                const char *filename = reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content);
 
                 if (event == "hit")
