@@ -135,7 +135,8 @@ size_t InventoryHandler::getSize(const int type) const
             return 0;  // Comes from server after items
         case Inventory::TRADE:
             return 12;
-        case GUILD_STORAGE:
+        // GUILD_STORAGE
+        case Inventory::TYPE_END:
             return 0;  // Comes from server after items
         default:
             return 0;
