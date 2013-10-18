@@ -1364,7 +1364,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
                 item->setShowMsg(false);
             }
         }
-        const char* msg;
+        const char* msg = nullptr;
         switch (fail)
         {
             case PICKUP_BAD_ITEM:
