@@ -53,7 +53,7 @@ namespace ItemDB
     typedef std::map<int, ItemInfo*> ItemInfos;
     typedef std::map<std::string, ItemInfo*> NamedItemInfos;
 
-    const std::map<int, ItemInfo*> &getItemInfos();
+    const ItemDB::ItemInfos &getItemInfos();
 
     int getTagId(const std::string &tagName) A_WARN_UNUSED;
 
