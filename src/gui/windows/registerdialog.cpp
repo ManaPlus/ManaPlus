@@ -154,6 +154,10 @@ RegisterDialog::RegisterDialog(LoginData *const data) :
     mConfirmField->addActionListener(this);
 
     center();
+}
+
+void RegisterDialog::postInit()
+{
     setVisible(true);
     mUserField->requestFocus();
     mUserField->setCaretPosition(static_cast<unsigned>(

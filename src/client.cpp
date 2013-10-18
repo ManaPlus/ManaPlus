@@ -1591,6 +1591,7 @@ int Client::gameExec()
                 case STATE_REGISTER:
                     logger->log1("State: REGISTER");
                     mCurrentDialog = new RegisterDialog(&loginData);
+                    mCurrentDialog->postInit();
                     break;
 
                 case STATE_REGISTER_ATTEMPT:
