@@ -166,9 +166,6 @@ class InventoryWindow final : public Window,
         Inventory *mInventory;
         ItemContainer *mItems;
 
-        std::string mWeight;
-        std::string mSlots;
-
         Button *mUseButton;
         Button *mDropButton;
         Button *mSplitButton;

@@ -107,8 +107,6 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     InventoryListener(),
     mInventory(inventory),
     mItems(new ItemContainer(this, mInventory)),
-    mWeight(),
-    mSlots(),
     mUseButton(nullptr),
     mDropButton(nullptr),
     mSplitButton(nullptr),
