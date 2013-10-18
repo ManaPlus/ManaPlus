@@ -428,7 +428,10 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
     mInventoryItems.clear();
 
     if (!mStorageWindow)
+    {
         mStorageWindow = new InventoryWindow(mStorage);
+        mStorageWindow->postInit();
+    }
 }
 
 void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)

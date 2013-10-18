@@ -282,6 +282,10 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
 
     loadWindowState();
     enableVisibleSound(true);
+}
+
+void InventoryWindow::postInit()
+{
     slotsChanged(mInventory);
 
     mItems->setSortType(mSortDropDown->getSelected());

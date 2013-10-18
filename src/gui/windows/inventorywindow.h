@@ -69,6 +69,8 @@ class InventoryWindow final : public Window,
          */
         ~InventoryWindow();
 
+        void postInit() override;
+
         void storeSortOrder();
 
         /**
