@@ -55,13 +55,13 @@ std::string &trim(std::string &str)
 
 std::string &toLower(std::string &str)
 {
-    std::transform(str.begin(), str.end(), str.begin(), tolower);
+    std::transform(str.begin(), str.end(), str.begin(), &tolower);
     return str;
 }
 
 std::string &toUpper(std::string &str)
 {
-    std::transform(str.begin(), str.end(), str.begin(), toupper);
+    std::transform(str.begin(), str.end(), str.begin(), &toupper);
     return str;
 }
 
