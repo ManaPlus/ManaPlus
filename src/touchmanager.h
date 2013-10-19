@@ -116,7 +116,7 @@ class TouchManager final : public ConfigListener
                            const std::string &imageName,
                            const std::string &text,
                            int x, int y, const int width, const int height,
-                           int type, const std::string &eventPressed,
+                           const int type, const std::string &eventPressed,
                            const std::string &eventReleased,
                            const TouchFuncPtr fAll = nullptr,
                            const TouchFuncPtr fPressed = nullptr,
