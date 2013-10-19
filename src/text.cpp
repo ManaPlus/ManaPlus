@@ -41,7 +41,7 @@ ImageRect Text::mBubble;
 
 Text::Text(const std::string &text, const int x, const int y,
            const gcn::Graphics::Alignment alignment,
-           const gcn::Color* color, const bool isSpeech,
+           const gcn::Color *const color, const bool isSpeech,
            gcn::Font *const font) :
     mFont(font ? font : (gui ? gui->getFont() : nullptr)),
     mX(x),
