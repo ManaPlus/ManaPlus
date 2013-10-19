@@ -213,6 +213,10 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     addKeyListener(this);
 
     loadWindowState();
+}
+
+void UpdaterWindow::postInit()
+{
     setVisible(true);
     mCancelButton->requestFocus();
     removeProtocol(mUpdateServerPath);

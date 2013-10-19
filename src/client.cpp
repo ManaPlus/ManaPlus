@@ -1362,6 +1362,7 @@ int Client::gameExec()
                             mOldUpdates,
                             mOptions.dataPath.empty(),
                             loginData.updateType);
+                        mCurrentDialog->postInit();
                     }
                     BLOCK_END("Client::gameExec STATE_UPDATE")
                     break;

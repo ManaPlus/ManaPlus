@@ -92,6 +92,8 @@ class UpdaterWindow final : public Window,
      */
     ~UpdaterWindow();
 
+    void postInit() override;
+
     /**
      * Set's progress bar status
      */
