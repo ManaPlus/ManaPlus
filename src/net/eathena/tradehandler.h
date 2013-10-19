@@ -43,7 +43,7 @@ class TradeHandler final : public MessageHandler, public Ea::TradeHandler
 
         void respond(const bool accept) const override;
 
-        void addItem(const Item *const item, int amount) const override;
+        void addItem(const Item *const item, const int amount) const override;
 
         void setMoney(const int amount) const override;
 
