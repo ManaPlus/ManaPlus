@@ -52,6 +52,8 @@ class WorldSelectDialog final : public Window, public gcn::ActionListener,
 
         A_DELETE_COPY(WorldSelectDialog)
 
+        void postInit() override;
+
         /**
          * Destructor.
          */

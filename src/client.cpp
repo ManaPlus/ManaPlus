@@ -1309,6 +1309,7 @@ int Client::gameExec()
                         else
                         {
                             mCurrentDialog = new WorldSelectDialog(worlds);
+                            mCurrentDialog->postInit();
                             if (mOptions.chooseDefault)
                             {
                                 static_cast<WorldSelectDialog*>(mCurrentDialog)

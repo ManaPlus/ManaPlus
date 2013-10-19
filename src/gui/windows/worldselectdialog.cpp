@@ -120,6 +120,10 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds):
     addKeyListener(this);
 
     center();
+}
+
+void WorldSelectDialog::postInit()
+{
     setVisible(true);
     mChooseWorld->requestFocus();
 }
