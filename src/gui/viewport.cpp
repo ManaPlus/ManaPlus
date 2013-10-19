@@ -246,7 +246,7 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
 
     // Draw player names, speech, and emotion sprite as needed
     const ActorSprites &actors = actorSpriteManager->getAll();
-    FOR_EACH (ActorSpritesConstIterator, it, actors)
+    FOR_EACH (ActorSpritesIterator, it, actors)
     {
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM)
             continue;
@@ -326,7 +326,7 @@ void Viewport::_drawDebugPath(Graphics *const graphics)
     const ActorSprites &actors = actorSpriteManager->getAll();
     FOR_EACH (ActorSpritesConstIterator, it, actors)
     {
-        const Being *const being = dynamic_cast<Being*>(*it);
+        const Being *const being = dynamic_cast<const Being*>(*it);
         if (being && being != player_node)
         {
             const Path &beingPath = being->getPath();
