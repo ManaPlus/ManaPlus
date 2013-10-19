@@ -49,7 +49,7 @@ class ConnectionDialog final : public Window, private gcn::ActionListener
 
         A_DELETE_COPY(ConnectionDialog)
 
-        void postInit();
+        void postInit() override;
 
         /**
          * Called when the user presses Cancel. Restores the global state to

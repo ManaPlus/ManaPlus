@@ -56,7 +56,7 @@ class QuitDialog final : public Window, public gcn::ActionListener,
          */
         ~QuitDialog();
 
-        void postInit();
+        void postInit() override;
 
         /**
          * Called when receiving actions from the widgets.

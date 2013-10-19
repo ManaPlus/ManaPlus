@@ -77,7 +77,7 @@ class RegisterDialog final : public Window,
          */
         ~RegisterDialog();
 
-        void postInit();
+        void postInit() override;
 
         /**
          * Called when receiving actions from the widgets.

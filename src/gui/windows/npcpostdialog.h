@@ -43,7 +43,7 @@ class NpcPostDialog final : public Window,
 
         ~NpcPostDialog();
 
-        void postInit();
+        void postInit() override;
 
         /**
          * Called when receiving actions from the widgets.

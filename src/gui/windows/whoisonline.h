@@ -118,7 +118,7 @@ public:
      */
     ~WhoIsOnline();
 
-    void postInit();
+    void postInit() override;
 
     /**
      * Loads and display online list from the memory buffer.

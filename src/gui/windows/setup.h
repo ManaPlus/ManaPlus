@@ -49,7 +49,7 @@ class Setup final : public Window, public gcn::ActionListener
 
         ~Setup();
 
-        void postInit();
+        void postInit() override;
 
         void action(const gcn::ActionEvent &event) override;
 

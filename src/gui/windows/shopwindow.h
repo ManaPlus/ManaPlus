@@ -67,7 +67,7 @@ class ShopWindow final : public Window,
          */
         ~ShopWindow();
 
-        void postInit();
+        void postInit() override;
 
         /**
          * Called when receiving actions from the widgets.

@@ -76,7 +76,7 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
          */
         ~EquipmentWindow();
 
-        void postInit();
+        void postInit() override;
 
         /**
          * Draws the equipment window.

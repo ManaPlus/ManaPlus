@@ -52,7 +52,7 @@ class SkillDialog final : public Window, public gcn::ActionListener
 
         ~SkillDialog();
 
-        void postInit();
+        void postInit() override;
 
         /**
          * Called when receiving actions from widget.

@@ -54,7 +54,7 @@ public:
 
     ~SocialWindow();
 
-    void postInit();
+    void postInit() override;
 
     bool addTab(Guild *const guild);
 
