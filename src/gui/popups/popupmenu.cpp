@@ -1341,7 +1341,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "edit spell" && mSpell)
     {
-        new TextCommandEditor(mSpell);
+        (new TextCommandEditor(mSpell))->postInit();
     }
     else if (link == "undress" && being)
     {

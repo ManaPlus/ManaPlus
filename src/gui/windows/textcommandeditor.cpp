@@ -296,7 +296,10 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     reflowLayout(w);
 
     center();
+}
 
+void TextCommandEditor::postInit()
+{
     enableVisibleSound(true);
     setVisible(true);
 }
