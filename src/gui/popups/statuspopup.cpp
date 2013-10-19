@@ -50,12 +50,14 @@
 StatusPopup::StatusPopup() :
     Popup("StatusPopup", "statuspopup.xml")
 {
-    const int fontHeight = getFont()->getHeight();
-
     for (int f = 0; f < STATUSPOPUP_NUM_LABELS; f ++)
         mLabels[f] = new Label(this);
-    int y = 0;
+}
 
+void StatusPopup::postInit()
+{
+    const int fontHeight = getFont()->getHeight();
+    int y = 0;
     addLabel(0);
     addLabel(1);
     addLabel(2);
