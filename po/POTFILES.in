@@ -1,5 +1,5 @@
 src/actionmanager.cpp
-src/actorspritemanager.cpp
+src/actormanager.cpp
 src/being/being.cpp
 src/being/localplayer.cpp
 src/being/playerrelations.cpp
