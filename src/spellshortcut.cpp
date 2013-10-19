@@ -24,7 +24,7 @@
 
 #include "debug.h"
 
-SpellShortcut *spellShortcut;
+SpellShortcut *spellShortcut = nullptr;
 
 SpellShortcut::SpellShortcut() :
     mItemSelected(-1)
