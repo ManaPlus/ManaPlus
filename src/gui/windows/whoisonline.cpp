@@ -529,7 +529,7 @@ int WhoIsOnline::downloadThread(void *ptr)
             wio->mDownloadedBytes = 0;
             curl_easy_setopt(curl, CURLOPT_FAILONERROR, 1);
             curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION,
-                                   WhoIsOnline::memoryWrite);
+                                   &WhoIsOnline::memoryWrite);
             curl_easy_setopt(curl, CURLOPT_WRITEDATA, ptr);
 
             curl_easy_setopt(curl, CURLOPT_USERAGENT,
@@ -600,7 +600,7 @@ void WhoIsOnline::download()
             SDL_WaitThread(mThread, nullptr);
 
         mDownloadComplete = false;
-        mThread = SDL::createThread(WhoIsOnline::downloadThread,
+        mThread = SDL::createThread(&WhoIsOnline::downloadThread,
             "whoisonline", this);
         if (mThread == nullptr)
             mDownloadStatus = UPDATE_ERROR;
