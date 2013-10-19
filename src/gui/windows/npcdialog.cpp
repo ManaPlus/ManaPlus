@@ -22,7 +22,7 @@
 
 #include "gui/windows/npcdialog.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "configuration.h"
 #include "client.h"
 #include "inventory.h"
@@ -193,9 +193,9 @@ void NpcDialog::postInit()
     enableVisibleSound(true);
     soundManager.playGuiSound(SOUND_SHOW_WINDOW);
 
-    if (actorSpriteManager)
+    if (actorManager)
     {
-        const Being *const being = actorSpriteManager->findBeing(mNpcId);
+        const Being *const being = actorManager->findBeing(mNpcId);
         if (being)
         {
             showAvatar(NPCDB::getAvatarFor(being->getSubType()));

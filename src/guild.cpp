@@ -22,7 +22,7 @@
 
 #include "guild.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 
 #include "utils/stringutils.h"
 
@@ -233,7 +233,7 @@ void Guild::removeMember(const std::string &name)
 
 void Guild::removeFromMembers()
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     MemberList::const_iterator itr = mMembers.begin();
@@ -242,7 +242,7 @@ void Guild::removeFromMembers()
     {
         if (*itr)
         {
-            Being *const b = actorSpriteManager->findBeing((*itr)->getID());
+            Being *const b = actorManager->findBeing((*itr)->getID());
             if (b)
                 b->removeGuild(mId);
         }

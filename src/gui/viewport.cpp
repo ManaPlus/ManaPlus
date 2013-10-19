@@ -22,7 +22,7 @@
 
 #include "gui/viewport.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "configuration.h"
 #include "game.h"
 #include "maplayer.h"
@@ -245,7 +245,7 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         textManager->draw(graphics, mPixelViewX, mPixelViewY);
 
     // Draw player names, speech, and emotion sprite as needed
-    const ActorSprites &actors = actorSpriteManager->getAll();
+    const ActorSprites &actors = actorManager->getAll();
     FOR_EACH (ActorSpritesIterator, it, actors)
     {
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM)
@@ -296,7 +296,7 @@ void Viewport::_followMouse()
 
 void Viewport::_drawDebugPath(Graphics *const graphics)
 {
-    if (!player_node || !userPalette || !actorSpriteManager || !mMap)
+    if (!player_node || !userPalette || !actorManager || !mMap)
         return;
 
     SDL_GetMouseState(&mMouseX, &mMouseY);
@@ -323,7 +323,7 @@ void Viewport::_drawDebugPath(Graphics *const graphics)
     _drawPath(graphics, debugPath, userPalette->getColorWithAlpha(
         UserPalette::ROAD_POINT));
 
-    const ActorSprites &actors = actorSpriteManager->getAll();
+    const ActorSprites &actors = actorManager->getAll();
     FOR_EACH (ActorSpritesConstIterator, it, actors)
     {
         const Being *const being = dynamic_cast<const Being*>(*it);
@@ -411,12 +411,12 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
         if (mHoverBeing)
         {
             validateSpeed();
-            if (actorSpriteManager)
+            if (actorManager)
             {
                 std::vector<ActorSprite*> beings;
                 const int x = mMouseX + mPixelViewX;
                 const int y = mMouseY + mPixelViewY;
-                actorSpriteManager->findBeingsByPixel(beings, x, y, true);
+                actorManager->findBeingsByPixel(beings, x, y, true);
                 if (beings.size() > 1)
                 {
                     mPopupMenu->showPopup(eventX, eventY, beings);
@@ -478,10 +478,10 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                 if (mHoverBeing->getType() == ActorSprite::PLAYER)
                 {
                     validateSpeed();
-                    if (actorSpriteManager)
+                    if (actorManager)
                     {
                         if (player_node != mHoverBeing || mSelfMouseHeal)
-                            actorSpriteManager->heal(mHoverBeing);
+                            actorManager->heal(mHoverBeing);
                         if (player_node == mHoverBeing && mHoverItem)
                             player_node->pickUp(mHoverItem);
                         return;
@@ -536,9 +536,9 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
         mPlayerFollowMouse = false;
         validateSpeed();
         // Find the being nearest to the clicked position
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            Being *const target = actorSpriteManager->findNearestLivingBeing(
+            Being *const target = actorManager->findNearestLivingBeing(
                 pixelX, pixelY, 20, ActorSprite::MONSTER);
 
             if (target)
@@ -840,13 +840,13 @@ void Viewport::optionChanged(const std::string &name)
 void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
 {
     // Check if we are on the map
-    if (!mMap || !player_node || !actorSpriteManager)
+    if (!mMap || !player_node || !actorManager)
         return;
 
     const int x = mMouseX + mPixelViewX;
     const int y = mMouseY + mPixelViewY;
 
-    mHoverBeing = actorSpriteManager->findBeingByPixel(x, y, true);
+    mHoverBeing = actorManager->findBeingByPixel(x, y, true);
     if (mHoverBeing && (mHoverBeing->getType() == Being::PLAYER
         || mHoverBeing->getType() == Being::NPC))
     {
@@ -859,7 +859,7 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
         mBeingPopup->setVisible(false);
     }
 
-    mHoverItem = actorSpriteManager->findItem(x / mMap->getTileWidth(),
+    mHoverItem = actorManager->findItem(x / mMap->getTileWidth(),
         y / mMap->getTileHeight());
 
     if (!mHoverBeing && !mHoverItem)
@@ -991,10 +991,10 @@ bool Viewport::isPopupMenuVisible() const
 
 void Viewport::moveCameraToActor(const int actorId, const int x, const int y)
 {
-    if (!player_node || !actorSpriteManager)
+    if (!player_node || !actorManager)
         return;
 
-    const Actor *const actor = actorSpriteManager->findBeing(actorId);
+    const Actor *const actor = actorManager->findBeing(actorId);
     if (!actor)
         return;
     const Vector &actorPos = actor->getPosition();

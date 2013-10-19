@@ -20,7 +20,7 @@
 
 #include "gui/windows/questswindow.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "configuration.h"
 #include "effectmanager.h"
 
@@ -509,7 +509,7 @@ void QuestsWindow::updateEffects()
             }
         }
     }
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     std::set<int> removeEffects;
@@ -549,7 +549,7 @@ void QuestsWindow::updateEffects()
             addEffects[id] = effect->effectId;
     }
     if (!removeEffects.empty() || !addEffects.empty())
-        actorSpriteManager->updateEffects(addEffects, removeEffects);
+        actorManager->updateEffects(addEffects, removeEffects);
 }
 
 void QuestsWindow::addEffect(Being *const being)

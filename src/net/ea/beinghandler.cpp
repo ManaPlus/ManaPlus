@@ -24,7 +24,7 @@
 
 #include "net/ea/eaprotocol.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "client.h"
 #include "configuration.h"
 #include "effectmanager.h"
@@ -64,7 +64,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
 
 Being *BeingHandler::createBeing(const int id, const int16_t job) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return nullptr;
 
     ActorSprite::Type type = ActorSprite::UNKNOWN;
@@ -77,7 +77,7 @@ Being *BeingHandler::createBeing(const int id, const int16_t job) const
     else if (job == 45)
         type = ActorSprite::PORTAL;
 
-    Being *const being = actorSpriteManager->createBeing(id, type, job);
+    Being *const being = actorManager->createBeing(id, type, job);
 
     if (type == ActorSprite::PLAYER || type == ActorSprite::NPC)
     {
@@ -115,7 +115,7 @@ void BeingHandler::setSprite(Being *const being, const unsigned int slot,
 void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
                                              const bool visible)
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     int spawnId;
@@ -136,13 +136,13 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     if (id == player_node->getId() && job >= 1000)
         disguiseId = job;
 
-    Being *dstBeing = actorSpriteManager->findBeing(id);
+    Being *dstBeing = actorManager->findBeing(id);
 
     if (dstBeing && dstBeing->getType() == Being::MONSTER
         && !dstBeing->isAlive())
     {
-        actorSpriteManager->destroy(dstBeing);
-        actorSpriteManager->erase(dstBeing);
+        actorManager->destroy(dstBeing);
+        actorManager->erase(dstBeing);
         dstBeing = nullptr;
     }
 
@@ -153,7 +153,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
         if (job == 0 && id >= 110000000)
             return;
 
-        if (actorSpriteManager->isBlocked(id) == true)
+        if (actorManager->isBlocked(id) == true)
             return;
 
         dstBeing = createBeing(id, job);
@@ -168,7 +168,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     {
         if (dstBeing->getType() == Being::NPC)
         {
-            actorSpriteManager->undelete(dstBeing);
+            actorManager->undelete(dstBeing);
             if (serverVersion < 1)
                 requestNameById(id);
         }
@@ -341,7 +341,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
 
 void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     /*
@@ -349,7 +349,7 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
       * later versions of eAthena for both mobs and
       * players
       */
-    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *const dstBeing = actorManager->findBeing(msg.readInt32());
 
     /*
       * This packet doesn't have enough info to actually
@@ -384,13 +384,13 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
 
 void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
 {
-    if (!actorSpriteManager || !player_node)
+    if (!actorManager || !player_node)
         return;
 
     // A being should be removed or has died
 
     const int id = msg.readInt32();
-    Being *const dstBeing = actorSpriteManager->findBeing(id);
+    Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
         return;
 
@@ -420,19 +420,19 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
             if (socialWindow)
                 socialWindow->updateActiveList();
         }
-        actorSpriteManager->destroy(dstBeing);
+        actorManager->destroy(dstBeing);
     }
 }
 
 void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
 {
-    if (!actorSpriteManager || !player_node)
+    if (!actorManager || !player_node)
         return;
 
     // A being changed mortality status
 
     const int id = msg.readInt32();
-    Being *const dstBeing = actorSpriteManager->findBeing(id);
+    Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
         return;
 
@@ -447,12 +447,12 @@ void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
 
 void BeingHandler::processSkillDamage(Net::MessageIn &msg) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     const int id = msg.readInt16();  // Skill Id
-    Being *const srcBeing = actorSpriteManager->findBeing(msg.readInt32());
-    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *const srcBeing = actorManager->findBeing(msg.readInt32());
+    Being *const dstBeing = actorManager->findBeing(msg.readInt32());
     msg.readInt32();  // Server tick
     msg.readInt32();  // src speed
     msg.readInt32();  // dst speed
@@ -468,11 +468,11 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg) const
 
 void BeingHandler::processBeingAction(Net::MessageIn &msg) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
-    Being *const srcBeing = actorSpriteManager->findBeing(msg.readInt32());
-    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *const srcBeing = actorManager->findBeing(msg.readInt32());
+    Being *const dstBeing = actorManager->findBeing(msg.readInt32());
 
     msg.readInt32();   // server tick
     const int srcSpeed = msg.readInt32();   // src speed
@@ -549,11 +549,11 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
 
 void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg) const
 {
-    if (!effectManager || !actorSpriteManager)
+    if (!effectManager || !actorManager)
         return;
 
     const int id = static_cast<uint32_t>(msg.readInt32());
-    Being *const being = actorSpriteManager->findBeing(id);
+    Being *const being = actorManager->findBeing(id);
     if (!being)
         return;
 
@@ -572,10 +572,10 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg) const
 
 void BeingHandler::processBeingEmotion(Net::MessageIn &msg) const
 {
-    if (!player_node || !actorSpriteManager)
+    if (!player_node || !actorManager)
         return;
 
-    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *const dstBeing = actorManager->findBeing(msg.readInt32());
     if (!dstBeing)
         return;
 
@@ -594,11 +594,11 @@ void BeingHandler::processBeingEmotion(Net::MessageIn &msg) const
 
 void BeingHandler::processNameResponse(Net::MessageIn &msg) const
 {
-    if (!player_node || !actorSpriteManager)
+    if (!player_node || !actorManager)
         return;
 
     const int beingId = msg.readInt32();
-    Being *const dstBeing = actorSpriteManager->findBeing(beingId);
+    Being *const dstBeing = actorManager->findBeing(beingId);
 
     if (dstBeing)
     {
@@ -634,20 +634,20 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg) const
 
 void BeingHandler::processIpResponse(Net::MessageIn &msg) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
-    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *const dstBeing = actorManager->findBeing(msg.readInt32());
     if (dstBeing)
         dstBeing->setIp(ipToString(msg.readInt32()));
 }
 
 void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
-    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *const dstBeing = actorManager->findBeing(msg.readInt32());
 
     if (dstBeing)
     {
@@ -668,10 +668,10 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg) const
 
 void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
-    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *const dstBeing = actorManager->findBeing(msg.readInt32());
 
     if (!dstBeing)
         return;
@@ -686,7 +686,7 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg) const
 
 void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
 {
-    if (!actorSpriteManager || !player_node)
+    if (!actorManager || !player_node)
         return;
 
     /*
@@ -705,7 +705,7 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
 
     if (mSync || id != player_node->getId())
     {
-        Being *const dstBeing = actorSpriteManager->findBeing(id);
+        Being *const dstBeing = actorManager->findBeing(id);
         if (dstBeing)
         {
             const uint16_t x = msg.readInt16();
@@ -732,12 +732,12 @@ void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg A_UNUSED)
 
 void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     // Change in players' flags
     const int id = msg.readInt32();
-    Being *const dstBeing = actorSpriteManager->findBeing(id);
+    Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
         return;
 
@@ -755,7 +755,7 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
 
 void BeingHandler::processBeingStatusChange(Net::MessageIn &msg) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     // Status change
@@ -763,7 +763,7 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg) const
     const int id = msg.readInt32();
     const int flag = msg.readInt8();  // 0: stop, 1: start
 
-    Being *const dstBeing = actorSpriteManager->findBeing(id);
+    Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
         dstBeing->setStatusEffect(status, flag);
 }
@@ -804,9 +804,9 @@ void BeingHandler::processPvpSet(Net::MessageIn &msg) const
     const int id = msg.readInt32();    // id
     const int rank = msg.readInt32();  // rank
     msg.readInt32();             // num
-    if (actorSpriteManager)
+    if (actorManager)
     {
-        Being *const dstBeing = actorSpriteManager->findBeing(id);
+        Being *const dstBeing = actorManager->findBeing(id);
         if (dstBeing)
             dstBeing->setPvpRank(rank);
     }

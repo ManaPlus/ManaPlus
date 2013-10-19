@@ -26,7 +26,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "game.h"
 
 #include "being/localplayer.h"
@@ -453,7 +453,7 @@ void KillStats::jackoAlive(const int id)
 
 void KillStats::validateJacko()
 {
-    if (!actorSpriteManager || !player_node)
+    if (!actorManager || !player_node)
         return;
 
     const Map *const currentMap = Game::instance()->getCurrentMap();
@@ -468,7 +468,7 @@ void KillStats::validateJacko()
                 && player_node->getTileY() <= 46)
             {
                 const Being *const dstBeing
-                    = actorSpriteManager->findBeingByName(
+                    = actorManager->findBeingByName(
                     "Jack O", Being::MONSTER);
                 if (mIsJackoAlive && !dstBeing)
                 {

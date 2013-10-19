@@ -279,7 +279,7 @@ class Viewport final : public WindowContainer,
         void clearPopup();
 
     protected:
-        friend class ActorSpriteManager;
+        friend class ActorManager;
 
         /// Clears any matching hovers
         void clearHover(const ActorSprite *const actor);

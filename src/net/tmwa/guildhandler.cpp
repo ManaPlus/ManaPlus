@@ -21,7 +21,7 @@
 
 #include "net/tmwa/guildhandler.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -208,10 +208,10 @@ void GuildHandler::create(const std::string &name) const
 void GuildHandler::invite(const int guildId A_UNUSED,
                           const std::string &name) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
-    const Being *const being = actorSpriteManager->findBeingByName(
+    const Being *const being = actorManager->findBeingByName(
         name, Being::PLAYER);
     if (being)
     {

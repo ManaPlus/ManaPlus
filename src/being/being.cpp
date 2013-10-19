@@ -22,7 +22,7 @@
 
 #include "being/being.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "animatedsprite.h"
 #include "beingequipbackend.h"
 #include "client.h"
@@ -1572,8 +1572,8 @@ void Being::logic()
         && static_cast<int> ((static_cast<float>(get_elapsed_time(mActionTime))
         / mSpeed)) >= frameCount)
     {
-        if (mType != PLAYER && actorSpriteManager)
-            actorSpriteManager->destroy(this);
+        if (mType != PLAYER && actorManager)
+            actorManager->destroy(this);
     }
 
     const SoundInfo *const sound = mNextSound.sound;
@@ -2991,11 +2991,11 @@ void Being::addEffect(const std::string &name)
 
 void Being::addPet(const int id)
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     removePet();
-    Being *const being = actorSpriteManager->createBeing(
+    Being *const being = actorManager->createBeing(
         id, ActorSprite::PET, 0);
     if (being)
     {
@@ -3008,14 +3008,14 @@ void Being::addPet(const int id)
 
 void Being::removePet()
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     mPetId = 0;
     if (mPet)
     {
         mPet->setOwner(nullptr);
-        actorSpriteManager->destroy(mPet);
+        actorManager->destroy(mPet);
         mPet = nullptr;
     }
 }

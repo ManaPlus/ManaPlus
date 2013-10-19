@@ -21,7 +21,7 @@
 
 #include "net/ea/partyhandler.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "configuration.h"
 #include "notifications.h"
 #include "notifymanager.h"
@@ -211,9 +211,9 @@ void PartyHandler::processPartyInvited(Net::MessageIn &msg) const
     const std::string partyName = msg.readString(24);
     std::string nick;
 
-    if (actorSpriteManager)
+    if (actorManager)
     {
-        const Being *const being = actorSpriteManager->findBeing(id);
+        const Being *const being = actorManager->findBeing(id);
         if (being)
         {
             if (being->getType() == Being::PLAYER)
@@ -352,9 +352,9 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
     else
     {
         NotifyManager::notify(NotifyManager::PARTY_USER_LEFT, nick);
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            Being *const b = actorSpriteManager->findBeing(id);
+            Being *const b = actorManager->findBeing(id);
             if (b && b->getType() == Being::PLAYER)
             {
                 b->setParty(nullptr);
@@ -382,9 +382,9 @@ void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg) const
 
     // The server only sends this when the member is in range, so
     // lets make sure they get the party hilight.
-    if (actorSpriteManager && Ea::taParty)
+    if (actorManager && Ea::taParty)
     {
-        if (Being *const b = actorSpriteManager->findBeing(id))
+        if (Being *const b = actorManager->findBeing(id))
             b->setParty(Ea::taParty);
     }
 }

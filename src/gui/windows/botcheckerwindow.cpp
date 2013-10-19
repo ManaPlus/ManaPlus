@@ -27,7 +27,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/guitable.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "configuration.h"
 
 #include "being/localplayer.h"
@@ -100,10 +100,10 @@ public:
 
         freeWidgets();
         mPlayers.clear();
-        if (actorSpriteManager && botCheckerWindow
+        if (actorManager && botCheckerWindow
             && botCheckerWindow->mEnabled)
         {
-            std::set<ActorSprite*> beings = actorSpriteManager->getAll();
+            std::set<ActorSprite*> beings = actorManager->getAll();
             FOR_EACH (ActorSprites::iterator, i, beings)
             {
                 Being *const being = dynamic_cast<Being*>(*i);
@@ -389,9 +389,9 @@ void BotCheckerWindow::updateList()
 
 void BotCheckerWindow::reset()
 {
-    if (actorSpriteManager)
+    if (actorManager)
     {
-        std::set<ActorSprite*> beings = actorSpriteManager->getAll();
+        std::set<ActorSprite*> beings = actorManager->getAll();
         FOR_EACH (ActorSprites::iterator, i, beings)
         {
             Being *const being = dynamic_cast<Being*>(*i);

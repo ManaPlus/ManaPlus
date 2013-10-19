@@ -22,7 +22,7 @@
 
 #include "gui/windows/chatwindow.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "client.h"
 #include "commandhandler.h"
 #include "configuration.h"
@@ -671,10 +671,10 @@ void ChatWindow::localChatInput(const std::string &msg) const
 
 void ChatWindow::doPresent() const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
-    const ActorSprites &actors = actorSpriteManager->getAll();
+    const ActorSprites &actors = actorManager->getAll();
     std::string response;
     int playercount = 0;
 
@@ -1255,9 +1255,9 @@ void ChatWindow::autoComplete()
     if (!newName.empty())
         needSecure = true;
 
-    if (newName.empty() && actorSpriteManager)
+    if (newName.empty() && actorManager)
     {
-        actorSpriteManager->getPlayerNames(nameList, true);
+        actorManager->getPlayerNames(nameList, true);
         newName = autoComplete(nameList, name);
         if (!newName.empty())
             needSecure = true;
@@ -1268,9 +1268,9 @@ void ChatWindow::autoComplete()
         newName = spellManager->autoComplete(name);
     if (newName.empty())
         newName = autoComplete(name, &mCommands);
-    if (newName.empty() && actorSpriteManager)
+    if (newName.empty() && actorManager)
     {
-        actorSpriteManager->getMobNames(nameList);
+        actorManager->getMobNames(nameList);
         newName = autoComplete(nameList, name);
     }
     if (newName.empty())
@@ -1523,9 +1523,9 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers) const
         else
         {
             const std::string nick = tab->getNick();
-            if (actorSpriteManager)
+            if (actorManager)
             {
-                const Being *const being = actorSpriteManager->findBeingByName(
+                const Being *const being = actorManager->findBeingByName(
                     nick, ActorSprite::PLAYER);
                 if (being)
                 {

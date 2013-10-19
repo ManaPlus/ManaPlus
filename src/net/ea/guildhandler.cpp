@@ -21,7 +21,7 @@
 
 #include "net/ea/guildhandler.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "configuration.h"
 #include "notifications.h"
 #include "notifymanager.h"
@@ -266,9 +266,9 @@ void GuildHandler::processGuildMemberList(Net::MessageIn &msg) const
             m->setExp(exp);
             m->setPos(pos);
             m->setRace(race);
-            if (actorSpriteManager)
+            if (actorManager)
             {
-                Being *const being = actorSpriteManager->findBeingByName(
+                Being *const being = actorManager->findBeingByName(
                     name, Being::PLAYER);
                 if (being)
                 {
@@ -286,10 +286,10 @@ void GuildHandler::processGuildMemberList(Net::MessageIn &msg) const
         }
     }
     taGuild->sort();
-    if (actorSpriteManager)
+    if (actorManager)
     {
-        actorSpriteManager->updatePlayerGuild();
-        actorSpriteManager->updatePlayerColors();
+        actorManager->updatePlayerGuild();
+        actorManager->updatePlayerColors();
     }
     if (socialWindow)
         socialWindow->updateGuildCounter(onlineNum, totalNum);
@@ -463,15 +463,15 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg) const
 
         if (socialWindow && taGuild)
             socialWindow->removeTab(taGuild);
-        if (actorSpriteManager)
-            actorSpriteManager->updatePlayerColors();
+        if (actorManager)
+            actorManager->updatePlayerColors();
     }
     else
     {
         NotifyManager::notify(NotifyManager::GUILD_USER_LEFT, nick);
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            Being *const b = actorSpriteManager->findBeingByName(
+            Being *const b = actorManager->findBeingByName(
                 nick, Being::PLAYER);
 
             if (b)
@@ -507,15 +507,15 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
 
         if (socialWindow && taGuild)
             socialWindow->removeTab(taGuild);
-        if (actorSpriteManager)
-            actorSpriteManager->updatePlayerColors();
+        if (actorManager)
+            actorManager->updatePlayerColors();
     }
     else
     {
         NotifyManager::notify(NotifyManager::GUILD_USER_KICKED, nick);
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            Being *const b = actorSpriteManager->findBeingByName(
+            Being *const b = actorManager->findBeingByName(
                 nick, Being::PLAYER);
 
             if (b)

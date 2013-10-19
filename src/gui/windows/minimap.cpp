@@ -22,7 +22,7 @@
 
 #include "gui/windows/minimap.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "client.h"
 #include "configuration.h"
 #include "party.h"
@@ -249,7 +249,7 @@ void Minimap::draw(gcn::Graphics *graphics)
 
     graphics->pushClipArea(a);
 
-    if (!actorSpriteManager)
+    if (!actorManager)
     {
         BLOCK_END("Minimap::draw")
         return;
@@ -288,7 +288,7 @@ void Minimap::draw(gcn::Graphics *graphics)
         graph->drawImage(mMapImage, mMapOriginX, mMapOriginY);
     }
 
-    const ActorSprites &actors = actorSpriteManager->getAll();
+    const ActorSprites &actors = actorManager->getAll();
     FOR_EACH (ActorSpritesConstIterator, it, actors)
     {
         if (!(*it) || (*it)->getType() == ActorSprite::FLOOR_ITEM)

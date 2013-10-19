@@ -24,7 +24,7 @@
 
 #include "main.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "auctionmanager.h"
 #include "animatedsprite.h"
 #include "client.h"
@@ -150,7 +150,7 @@ SocialWindow *socialWindow = nullptr;
 QuestsWindow *questsWindow = nullptr;
 WindowMenu *windowMenu = nullptr;
 
-ActorSpriteManager *actorSpriteManager = nullptr;
+ActorManager *actorManager = nullptr;
 CommandHandler *commandHandler = nullptr;
 #ifdef USE_MUMBLE
 MumbleManager *mumbleManager = nullptr;
@@ -176,7 +176,7 @@ const unsigned adjustDelay = 10;
  */
 static void initEngines()
 {
-    actorSpriteManager = new ActorSpriteManager;
+    actorManager = new ActorManager;
     commandHandler = new CommandHandler;
     effectManager = new EffectManager;
     AuctionManager::init();
@@ -441,8 +441,8 @@ Game::Game():
     initEngines();
 
     // Initialize beings
-    if (actorSpriteManager)
-        actorSpriteManager->setPlayer(player_node);
+    if (actorManager)
+        actorManager->setPlayer(player_node);
 
     Net::getGameHandler()->ping(tick_time);
 
@@ -467,7 +467,7 @@ Game::~Game()
 
     AnimatedSprite::setEnableCache(false);
 
-    del_0(actorSpriteManager)
+    del_0(actorManager)
     if (client->getState() != STATE_CHANGE_MAP)
         del_0(player_node)
     del_0(commandHandler)
@@ -578,8 +578,8 @@ void Game::logic()
 
     // Handle all necessary game logic
     ActorSprite::actorLogic();
-    if (actorSpriteManager)
-        actorSpriteManager->logic();
+    if (actorManager)
+        actorManager->logic();
     if (particleEngine)
         particleEngine->update();
     if (mCurrentMap)
@@ -955,8 +955,8 @@ void Game::changeMap(const std::string &mapPath)
         viewport->clearPopup();
 
     // Clean up floor items, beings and particles
-    if (actorSpriteManager)
-        actorSpriteManager->clear();
+    if (actorManager)
+        actorManager->clear();
 
     // Close the popup menu on map change so that invalid options can't be
     // executed.
@@ -996,11 +996,11 @@ void Game::changeMap(const std::string &mapPath)
     if (socialWindow)
         socialWindow->setMap(newMap);
 
-    // Notify the minimap and actorSpriteManager about the map change
+    // Notify the minimap and actorManager about the map change
     if (minimap)
         minimap->setMap(newMap);
-    if (actorSpriteManager)
-        actorSpriteManager->setMap(newMap);
+    if (actorManager)
+        actorManager->setMap(newMap);
     if (particleEngine)
         particleEngine->setMap(newMap);
     if (viewport)

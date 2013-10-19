@@ -34,7 +34,7 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/scrollarea.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "client.h"
 #include "configuration.h"
 #include "main.h"
@@ -183,10 +183,10 @@ void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
 
         if (viewport)
         {
-            if (actorSpriteManager)
+            if (actorManager)
             {
                 const std::string text = decodeLinkText(link);
-                Being *const being = actorSpriteManager->findBeingByName(
+                Being *const being = actorManager->findBeingByName(
                     text, Being::PLAYER);
 
                 if (being && viewport)
@@ -408,9 +408,9 @@ void WhoIsOnline::loadWebList()
                 if (!lineStr.empty())
                     level = atoi(lineStr.c_str());
 
-                if (actorSpriteManager)
+                if (actorManager)
                 {
-                    Being *const being = actorSpriteManager->findBeingByName(
+                    Being *const being = actorManager->findBeingByName(
                         nick, Being::PLAYER);
                     if (being)
                     {
@@ -762,7 +762,7 @@ void WhoIsOnline::setNeutralColor(OnlinePlayer *const player)
     if (!player)
         return;
 
-    if (actorSpriteManager && player_node)
+    if (actorManager && player_node)
     {
         const std::string &nick = player->getNick();
         if (nick == player_node->getName())
@@ -783,7 +783,7 @@ void WhoIsOnline::setNeutralColor(OnlinePlayer *const player)
             }
         }
 
-        const Being *const being = actorSpriteManager->findBeingByName(nick);
+        const Being *const being = actorManager->findBeingByName(nick);
         if (being)
         {
             const Guild *const guild2 = player_node->getGuild();
@@ -827,9 +827,9 @@ void OnlinePlayer::setText(std::string color)
 {
     mText.clear();
 
-    if (mStatus != 255 && actorSpriteManager)
+    if (mStatus != 255 && actorManager)
     {
-        Being *const being = actorSpriteManager->findBeingByName(
+        Being *const being = actorManager->findBeingByName(
             mNick, Being::PLAYER);
         if (being)
         {

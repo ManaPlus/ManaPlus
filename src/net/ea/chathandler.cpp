@@ -22,7 +22,7 @@
 
 #include "net/ea/chathandler.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "configuration.h"
 #include "guildmanager.h"
 #include "notifications.h"
@@ -243,12 +243,12 @@ void ChatHandler::processWhisper(Net::MessageIn &msg) const
 void ChatHandler::processBeingChat(Net::MessageIn &msg,
                                    const bool channels) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     BLOCK_START("ChatHandler::processBeingChat")
     int chatMsgLength = msg.readInt16() - 8;
-    Being *const being = actorSpriteManager->findBeing(msg.readInt32());
+    Being *const being = actorManager->findBeing(msg.readInt32());
     if (!being)
     {
         BLOCK_END("ChatHandler::processBeingChat")
@@ -342,9 +342,9 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
         if (channel.empty())
         {
             const std::string senseStr("You sense the following: ");
-            if (actorSpriteManager && !chatMsg.find(senseStr))
+            if (actorManager && !chatMsg.find(senseStr))
             {
-                actorSpriteManager->parseLevels(
+                actorManager->parseLevels(
                     chatMsg.substr(senseStr.size()));
             }
         }
@@ -370,9 +370,9 @@ void ChatHandler::processMVP(Net::MessageIn &msg) const
     BLOCK_START("ChatHandler::processMVP")
     // Display MVP player
     const int id = msg.readInt32();  // id
-    if (localChatTab && actorSpriteManager && config.getBoolValue("showMVP"))
+    if (localChatTab && actorManager && config.getBoolValue("showMVP"))
     {
-        const Being *const being = actorSpriteManager->findBeing(id);
+        const Being *const being = actorManager->findBeing(id);
         if (!being)
             NotifyManager::notify(NotifyManager::MVP_PLAYER, "");
         else

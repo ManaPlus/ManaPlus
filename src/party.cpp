@@ -21,7 +21,7 @@
 
 #include "party.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 
 #include "utils/stringutils.h"
 
@@ -192,7 +192,7 @@ void Party::removeMember(const std::string &name)
 
 void Party::removeFromMembers()
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     MemberList::const_iterator itr = mMembers.begin();
@@ -200,7 +200,7 @@ void Party::removeFromMembers()
 
     while (itr != itr_end)
     {
-        Being *const b = actorSpriteManager->findBeing((*itr)->getID());
+        Being *const b = actorManager->findBeing((*itr)->getID());
         if (b)
             b->setParty(nullptr);
         ++itr;

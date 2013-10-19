@@ -22,7 +22,7 @@
 
 #include "being/playerrelations.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "configuration.h"
 
 #include "being/localplayer.h"
@@ -244,9 +244,9 @@ void PlayerRelationsManager::signalUpdate(const std::string &name)
     FOR_EACH (PlayerRelationListenersCIter, it, mListeners)
         (*it)->updatedPlayer(name);
 
-    if (actorSpriteManager)
+    if (actorManager)
     {
-        Being *const being = actorSpriteManager->findBeingByName(
+        Being *const being = actorManager->findBeingByName(
             name, Being::PLAYER);
 
         if (being && being->getType() == Being::PLAYER)
@@ -306,7 +306,7 @@ bool PlayerRelationsManager::hasPermission(const Being *const being,
 bool PlayerRelationsManager::hasPermission(const std::string &name,
                                            const unsigned int flags) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return false;
 
     const unsigned int rejections = flags
@@ -318,7 +318,7 @@ bool PlayerRelationsManager::hasPermission(const std::string &name,
         // execute `ignore' strategy, if possible
         if (mIgnoreStrategy)
         {
-            Being *const b = actorSpriteManager->findBeingByName(
+            Being *const b = actorManager->findBeingByName(
                 name, ActorSprite::PLAYER);
 
             if (b && b->getType() == ActorSprite::PLAYER)

@@ -22,7 +22,7 @@
 
 #include "net/tmwa/beinghandler.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "client.h"
 #include "guild.h"
 #include "guildmanager.h"
@@ -245,7 +245,7 @@ void BeingHandler::undress(Being *const being) const
 void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
                                           const bool look2) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     /*
@@ -260,7 +260,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
       * 16 bit value will be 0.
       */
 
-    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *const dstBeing = actorManager->findBeing(msg.readInt32());
     if (!dstBeing)
         return;
 
@@ -387,14 +387,14 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
 
 void BeingHandler::processNameResponse2(Net::MessageIn &msg) const
 {
-    if (!actorSpriteManager || !player_node)
+    if (!actorManager || !player_node)
         return;
 
 
     const int len = msg.readInt16();
     const int beingId = msg.readInt32();
     const std::string str = msg.readString(len - 8);
-    Being *const dstBeing = actorSpriteManager->findBeing(beingId);
+    Being *const dstBeing = actorManager->findBeing(beingId);
     if (dstBeing)
     {
         if (beingId == player_node->getId())
@@ -430,7 +430,7 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg) const
 void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
                                            const int msgType) const
 {
-    if (!actorSpriteManager || !player_node)
+    if (!actorManager || !player_node)
         return;
 
     // An update about a player, potentially including movement.
@@ -445,10 +445,10 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     if (id < 110000000 && job >= 1000)
         disguiseId = job;
 
-    Being *dstBeing = actorSpriteManager->findBeing(id);
+    Being *dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
     {
-        if (actorSpriteManager->isBlocked(id) == true)
+        if (actorManager->isBlocked(id) == true)
             return;
 
         dstBeing = createBeing(id, job);
@@ -458,7 +458,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     }
     else if (disguiseId)
     {
-        actorSpriteManager->undelete(dstBeing);
+        actorManager->undelete(dstBeing);
         if (serverVersion < 1)
             requestNameById(id);
     }
@@ -658,7 +658,7 @@ void BeingHandler::processBeingMove3(Net::MessageIn &msg) const
     static const int diry[8] = {1,  1,  0, -1, -1, -1, 0, 1};
 
     const int len = msg.readInt16() - 14;
-    Being *const dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *const dstBeing = actorManager->findBeing(msg.readInt32());
     if (!dstBeing)
         return;
     const int16_t speed = msg.readInt16();

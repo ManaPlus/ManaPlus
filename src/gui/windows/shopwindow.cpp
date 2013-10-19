@@ -37,7 +37,7 @@
 
 #include "gui/widgets/tabs/chattab.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "auctionmanager.h"
 #include "client.h"
 #include "configuration.h"
@@ -287,10 +287,10 @@ void ShopWindow::action(const gcn::ActionEvent &event)
 
 void ShopWindow::startTrade()
 {
-    if (!actorSpriteManager || !tradeWindow)
+    if (!actorManager || !tradeWindow)
         return;
 
-    const Being *const being = actorSpriteManager->findBeingByName(
+    const Being *const being = actorManager->findBeingByName(
         mTradeNick, Being::PLAYER);
     tradeWindow->clear();
     if (mTradeMoney)
@@ -694,8 +694,8 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
                                 const int mode)
 {
     if (!player_node || !mTradeNick.empty() || PlayerInfo::isTrading()
-        || !actorSpriteManager
-        || !actorSpriteManager->findBeingByName(nick, Being::PLAYER))
+        || !actorManager
+        || !actorManager->findBeingByName(nick, Being::PLAYER))
     {
         return;
     }

@@ -21,7 +21,7 @@
 
 #include "gui/widgets/avatarlistbox.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "configuration.h"
 #include "graphicsvertexes.h"
 #include "maplayer.h"
@@ -313,7 +313,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
 void AvatarListBox::mousePressed(gcn::MouseEvent &event)
 {
-    if (!actorSpriteManager || !player_node || !viewport
+    if (!actorManager || !player_node || !viewport
         || !getFont()->getHeight())
     {
         return;
@@ -339,10 +339,10 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
     {
         if (ava->getType() == AVATAR_PLAYER)
         {
-            const Being *const being = actorSpriteManager->findBeingByName(
+            const Being *const being = actorManager->findBeingByName(
                 ava->getName(), Being::PLAYER);
             if (being)
-                actorSpriteManager->heal(being);
+                actorManager->heal(being);
         }
         else
         {
@@ -359,7 +359,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
                 const Avatar *const avatar = model->getAvatarAt(selected);
                 if (avatar)
                 {
-                    const Being *const being = actorSpriteManager
+                    const Being *const being = actorManager
                         ->findBeingByName(avatar->getName(), Being::PLAYER);
                     if (being)
                         viewport->showPopup(being);

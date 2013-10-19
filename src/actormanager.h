@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ACTORSPRITEMANAGER_H
-#define ACTORSPRITEMANAGER_H
+#ifndef ACTORMANAGER_H
+#define ACTORMANAGER_H
 
 #include "flooritem.h"
 
@@ -36,14 +36,14 @@ typedef std::set<ActorSprite*> ActorSprites;
 typedef ActorSprites::iterator ActorSpritesIterator;
 typedef ActorSprites::const_iterator ActorSpritesConstIterator;
 
-class ActorSpriteManager final: public ConfigListener
+class ActorManager final: public ConfigListener
 {
     public:
-        ActorSpriteManager();
+        ActorManager();
 
-        A_DELETE_COPY(ActorSpriteManager)
+        A_DELETE_COPY(ActorManager)
 
-        ~ActorSpriteManager();
+        ~ActorManager();
 
         /**
          * Sets the map on which ActorSprites are created.
@@ -71,7 +71,7 @@ class ActorSpriteManager final: public ConfigListener
 
         /**
          * Destroys the given ActorSprite at the end of
-         * ActorSpriteManager::logic.
+         * ActorManager::logic.
          */
         void destroy(ActorSprite *const actor);
 
@@ -352,6 +352,6 @@ class ActorSpriteManager final: public ConfigListener
         defVars(PickupItems)
 };
 
-extern ActorSpriteManager *actorSpriteManager;
+extern ActorManager *actorManager;
 
-#endif  // ACTORSPRITEMANAGER_H
+#endif  // ACTORMANAGER_H

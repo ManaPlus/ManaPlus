@@ -20,7 +20,7 @@
 
 #include "guildmanager.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "client.h"
 #include "configuration.h"
 #include "guild.h"
@@ -208,10 +208,10 @@ void GuildManager::updateList()
         }
         guild->sort();
         createTab(guild);
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            actorSpriteManager->updatePlayerGuild();
-            actorSpriteManager->updatePlayerColors();
+            actorManager->updatePlayerGuild();
+            actorManager->updatePlayerColors();
         }
         if (socialWindow)
             socialWindow->updateGuildCounter();
@@ -405,9 +405,9 @@ bool GuildManager::process(std::string msg)
         if (msg[0] == '#' && msg[1] == '#')
             msg = msg.substr(3);
 
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            Being *const b = actorSpriteManager->findBeingByName(
+            Being *const b = actorManager->findBeingByName(
                 msg, Being::PLAYER);
 
             if (b)
@@ -523,10 +523,10 @@ bool GuildManager::afterRemove()
 
     if (socialWindow)
         socialWindow->removeTab(guild);
-    if (actorSpriteManager)
+    if (actorManager)
     {
-        actorSpriteManager->updatePlayerGuild();
-        actorSpriteManager->updatePlayerColors();
+        actorManager->updatePlayerGuild();
+        actorManager->updatePlayerColors();
     }
     reload();
     return true;

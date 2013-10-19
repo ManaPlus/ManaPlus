@@ -22,7 +22,7 @@
 
 #include "being/localplayer.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "client.h"
 #include "configuration.h"
 #include "dropshortcut.h"
@@ -902,7 +902,7 @@ bool LocalPlayer::pickUp(FloorItem *const item)
 
     if (dx * dx + dy * dy < dist)
     {
-        if (actorSpriteManager && actorSpriteManager->checkForPickup(item))
+        if (actorManager && actorManager->checkForPickup(item))
         {
             PlayerInfo::pickUpItem(item, true);
             mPickUpTarget = nullptr;
@@ -1354,9 +1354,9 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
 {
     if (fail)
     {
-        if (actorSpriteManager && floorItemId)
+        if (actorManager && floorItemId)
         {
-            FloorItem *const item = actorSpriteManager->findItem(floorItemId);
+            FloorItem *const item = actorManager->findItem(floorItemId);
             if (item)
             {
                 if (!item->getShowMsg())
@@ -3068,7 +3068,7 @@ bool LocalPlayer::isReachable(const int x, const int y,
 
 bool LocalPlayer::pickUpItems(int pickUpType)
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return false;
 
     bool status = false;
@@ -3077,7 +3077,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
 
     // first pick up item on player position
     FloorItem *item =
-        actorSpriteManager->findItem(x, y);
+        actorManager->findItem(x, y);
     if (item)
         status = pickUp(item);
 
@@ -3099,7 +3099,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
                 case RIGHT: ++x; break;
                 default: break;
             }
-            item = actorSpriteManager->findItem(x, y);
+            item = actorManager->findItem(x, y);
             if (item)
                 status = pickUp(item);
             break;
@@ -3112,18 +3112,18 @@ bool LocalPlayer::pickUpItems(int pickUpType)
                 case RIGHT: x1 = x; y1 = y - 1; x2 = x + 1; y2 = y + 1; break;
                 default: x1 = x; x2 = x; y1 = y; y2 = y; break;
             }
-            if (actorSpriteManager->pickUpAll(x1, y1, x2, y2))
+            if (actorManager->pickUpAll(x1, y1, x2, y2))
                 status = true;
             break;
         case 3:
-            if (actorSpriteManager->pickUpAll(x - 1, y - 1, x + 1, y + 1))
+            if (actorManager->pickUpAll(x - 1, y - 1, x + 1, y + 1))
                 status = true;
             break;
 
         case 4:
-            if (!actorSpriteManager->pickUpAll(x - 1, y - 1, x + 1, y + 1))
+            if (!actorManager->pickUpAll(x - 1, y - 1, x + 1, y + 1))
             {
-                if (actorSpriteManager->pickUpNearest(x, y, 4))
+                if (actorManager->pickUpNearest(x, y, 4))
                     status = true;
             }
             else
@@ -3133,9 +3133,9 @@ bool LocalPlayer::pickUpItems(int pickUpType)
             break;
 
         case 5:
-            if (!actorSpriteManager->pickUpAll(x - 1, y - 1, x + 1, y + 1))
+            if (!actorManager->pickUpAll(x - 1, y - 1, x + 1, y + 1))
             {
-                if (actorSpriteManager->pickUpNearest(x, y, 8))
+                if (actorManager->pickUpNearest(x, y, 8))
                     status = true;
             }
             else
@@ -3145,9 +3145,9 @@ bool LocalPlayer::pickUpItems(int pickUpType)
             break;
 
         case 6:
-            if (!actorSpriteManager->pickUpAll(x - 1, y - 1, x + 1, y + 1))
+            if (!actorManager->pickUpAll(x - 1, y - 1, x + 1, y + 1))
             {
-                if (actorSpriteManager->pickUpNearest(x, y, 90))
+                if (actorManager->pickUpNearest(x, y, 90))
                     status = true;
             }
             else
@@ -3701,13 +3701,13 @@ void LocalPlayer::updateCoords()
                 / mapTileSize;
             if (mNavigateId)
             {
-                if (!actorSpriteManager)
+                if (!actorManager)
                 {
                     navigateClean();
                     return;
                 }
 
-                const Being *const being = actorSpriteManager
+                const Being *const being = actorManager
                     ->findBeing(mNavigateId);
                 if (!being)
                 {
@@ -4052,9 +4052,9 @@ void LocalPlayer::followMoveTo(const Being *const being,
             case 3:
                 if (!mTarget || mTarget->getName() != mPlayerFollowed)
                 {
-                    if (actorSpriteManager)
+                    if (actorManager)
                     {
-                        Being *const b = actorSpriteManager->findBeingByName(
+                        Being *const b = actorManager->findBeingByName(
                             mPlayerFollowed, Being::PLAYER);
                         setTarget(b);
                     }

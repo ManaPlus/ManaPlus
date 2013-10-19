@@ -22,7 +22,7 @@
 
 #include "gui/widgets/tabs/setup_relations.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 
 #include "being/localplayer.h"
 
@@ -358,8 +358,8 @@ void Setup_Relations::apply()
         | (mDefaultTrading->isSelected() ? PlayerRelation::TRADE : 0)
         | (mDefaultWhisper->isSelected() ? PlayerRelation::WHISPER : 0));
 
-    if (actorSpriteManager)
-        actorSpriteManager->updatePlayerNames();
+    if (actorManager)
+        actorManager->updatePlayerNames();
 
     if (player_node)
         player_node->setCheckNameSetting(true);

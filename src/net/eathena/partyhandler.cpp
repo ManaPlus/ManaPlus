@@ -21,7 +21,7 @@
 
 #include "net/eathena/partyhandler.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "notifications.h"
 #include "notifymanager.h"
 
@@ -120,10 +120,10 @@ void PartyHandler::invite(Being *const being) const
 
 void PartyHandler::invite(const std::string &name) const
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
-    const Being *const being = actorSpriteManager->findBeingByName(
+    const Being *const being = actorManager->findBeingByName(
         name, Being::PLAYER);
     if (being)
     {

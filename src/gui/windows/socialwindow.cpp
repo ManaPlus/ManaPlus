@@ -21,7 +21,7 @@
 
 #include "gui/windows/socialwindow.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "configuration.h"
 #include "guild.h"
 #include "guildmanager.h"
@@ -572,7 +572,7 @@ public:
 
     void updateAvatar(const std::string &name) override
     {
-        if (!actorSpriteManager)
+        if (!actorManager)
             return;
 
         Avatar *const avatar = findAvatarbyName(name);
@@ -587,7 +587,7 @@ public:
                 avatar->setHp(pm->getHp());
             }
         }
-        const Being *const being = actorSpriteManager->findBeingByName(
+        const Being *const being = actorManager->findBeingByName(
             name, Being::PLAYER);
         if (being)
         {
@@ -600,14 +600,14 @@ public:
 
     void resetDamage(const std::string &name) override
     {
-        if (!actorSpriteManager)
+        if (!actorManager)
             return;
 
         Avatar *const avatar = findAvatarbyName(name);
         if (!avatar)
             return;
         avatar->setDamageHp(0);
-        Being *const being = actorSpriteManager->findBeingByName(
+        Being *const being = actorManager->findBeingByName(
             name, Being::PLAYER);
 
         if (being)
@@ -642,10 +642,10 @@ public:
         if (!avatars)
             return;
 
-        if (actorSpriteManager)
+        if (actorManager)
         {
             StringVect names;
-            actorSpriteManager->getPlayerNames(names, false);
+            actorManager->getPlayerNames(names, false);
 
             std::vector<Avatar*>::iterator ai = avatars->begin();
             while (ai != avatars->end())
@@ -792,7 +792,7 @@ public:
 
             if (config.getBoolValue("drawHotKeys") && idx < 80 && outfitWindow)
             {
-                Being *const being = actorSpriteManager
+                Being *const being = actorManager
                     ->findPortalByTile(x, y);
                 if (being)
                 {
@@ -985,7 +985,7 @@ private:
     ava->setX(0);\
     ava->setY(0);\
     avatars->push_back(ava);\
-    mobs = actorSpriteManager->get##mob##s();\
+    mobs = actorManager->get##mob##s();\
     i = mobs.begin();\
     i_end = mobs.end();\
     while (i != i_end)\
@@ -1013,7 +1013,7 @@ private:
 }
 
 #define updateAtkListStart() \
-    if (!socialWindow || !player_node || !actorSpriteManager)\
+    if (!socialWindow || !player_node || !actorManager)\
         return;\
     std::vector<Avatar*> *const avatars = mBeings->getMembers();\
     std::vector<Avatar*>::iterator ia = avatars->begin();\
@@ -1160,7 +1160,7 @@ public:
 
     void getPlayersAvatars()
     {
-        if (!actorSpriteManager)
+        if (!actorManager)
             return;
 
         std::vector<Avatar*> *const avatars = mBeings->getMembers();
@@ -1189,7 +1189,7 @@ public:
         FOR_EACHP (StringVectCIter, it, players)
         {
             Avatar *const ava = new Avatar(*it);
-            if (actorSpriteManager->findBeingByName(*it, Being::PLAYER)
+            if (actorManager->findBeingByName(*it, Being::PLAYER)
                 || players2.find(*it) != players2.end())
             {
                 ava->setOnline(true);

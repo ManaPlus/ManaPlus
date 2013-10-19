@@ -23,7 +23,7 @@
 #include "commands.h"
 
 #include "auctionmanager.h"
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "client.h"
 #include "configuration.h"
 #include "game.h"
@@ -622,8 +622,8 @@ impHandler0(quit)
 
 impHandler0(showAll)
 {
-    if (actorSpriteManager)
-        actorSpriteManager->printAllToChat();
+    if (actorManager)
+        actorManager->printAllToChat();
 }
 
 impHandler1(move)
@@ -651,20 +651,20 @@ impHandler1(navigate)
 
 impHandler1(target)
 {
-    if (!actorSpriteManager || !player_node)
+    if (!actorManager || !player_node)
         return;
 
-    Being *const target = actorSpriteManager->findNearestByName(args);
+    Being *const target = actorManager->findNearestByName(args);
     if (target)
         player_node->setTarget(target);
 }
 
 impHandler0(attackHuman)
 {
-    if (!actorSpriteManager || !player_node)
+    if (!actorManager || !player_node)
         return;
 
-    Being *const target = actorSpriteManager->findNearestLivingBeing(
+    Being *const target = actorManager->findNearestLivingBeing(
         player_node, 10, ActorSprite::PLAYER);
     if (target)
     {
@@ -763,19 +763,19 @@ impHandler(imitation)
 
 impHandler1(heal)
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
     if (!args.empty())
     {
-        const Being *const being = actorSpriteManager->findBeingByName(
+        const Being *const being = actorManager->findBeingByName(
             args, Being::PLAYER);
         if (being)
-            actorSpriteManager->heal(being);
+            actorManager->heal(being);
     }
     else
     {
-        actorSpriteManager->heal(player_node);
+        actorManager->heal(player_node);
     }
 }
 
@@ -809,20 +809,20 @@ impHandler0(disconnect)
 
 impHandler1(undress)
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
-    Being *const target = actorSpriteManager->findNearestByName(args);
+    Being *const target = actorManager->findNearestByName(args);
     if (target)
         Net::getBeingHandler()->undress(target);
 }
 
 impHandler1(attack)
 {
-    if (!player_node || !actorSpriteManager)
+    if (!player_node || !actorManager)
         return;
 
-    Being *const target = actorSpriteManager->findNearestByName(args);
+    Being *const target = actorManager->findNearestByName(args);
     if (target)
         player_node->setTarget(target);
     player_node->attack2(player_node->getTarget(), true);
@@ -830,10 +830,10 @@ impHandler1(attack)
 
 impHandler1(trade)
 {
-    if (!actorSpriteManager)
+    if (!actorManager)
         return;
 
-    const Being *const being = actorSpriteManager->findBeingByName(
+    const Being *const being = actorManager->findBeingByName(
         args, Being::PLAYER);
     if (being)
     {
@@ -954,14 +954,14 @@ impHandler0(uptime)
 
 impHandler1(addPriorityAttack)
 {
-    if (!actorSpriteManager
-        || actorSpriteManager->isInPriorityAttackList(args))
+    if (!actorManager
+        || actorManager->isInPriorityAttackList(args))
     {
         return;
     }
 
-    actorSpriteManager->removeAttackMob(args);
-    actorSpriteManager->addPriorityAttackMob(args);
+    actorManager->removeAttackMob(args);
+    actorManager->addPriorityAttackMob(args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();
@@ -969,11 +969,11 @@ impHandler1(addPriorityAttack)
 
 impHandler1(addAttack)
 {
-    if (!actorSpriteManager || actorSpriteManager->isInAttackList(args))
+    if (!actorManager || actorManager->isInAttackList(args))
         return;
 
-    actorSpriteManager->removeAttackMob(args);
-    actorSpriteManager->addAttackMob(args);
+    actorManager->removeAttackMob(args);
+    actorManager->addAttackMob(args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();
@@ -981,13 +981,13 @@ impHandler1(addAttack)
 
 impHandler1(removeAttack)
 {
-    if (!actorSpriteManager || args.empty()
-        || !actorSpriteManager->isInAttackList(args))
+    if (!actorManager || args.empty()
+        || !actorManager->isInAttackList(args))
     {
         return;
     }
 
-    actorSpriteManager->removeAttackMob(args);
+    actorManager->removeAttackMob(args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();
@@ -995,11 +995,11 @@ impHandler1(removeAttack)
 
 impHandler1(addIgnoreAttack)
 {
-    if (!actorSpriteManager || actorSpriteManager->isInIgnoreAttackList(args))
+    if (!actorManager || actorManager->isInIgnoreAttackList(args))
         return;
 
-    actorSpriteManager->removeAttackMob(args);
-    actorSpriteManager->addIgnoreAttackMob(args);
+    actorManager->removeAttackMob(args);
+    actorManager->addIgnoreAttackMob(args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();
@@ -1395,7 +1395,7 @@ impHandler0(dumpOGL)
 
 void replaceVars(std::string &str)
 {
-    if (!player_node || !actorSpriteManager)
+    if (!player_node || !actorManager)
         return;
 
     if (str.find("<PLAYER>") != std::string::npos)
@@ -1403,7 +1403,7 @@ void replaceVars(std::string &str)
         const Being *target = player_node->getTarget();
         if (!target || target->getType() != ActorSprite::PLAYER)
         {
-            target = actorSpriteManager->findNearestLivingBeing(
+            target = actorManager->findNearestLivingBeing(
                 player_node, 20, ActorSprite::PLAYER);
         }
         if (target)
@@ -1416,7 +1416,7 @@ void replaceVars(std::string &str)
         const Being *target = player_node->getTarget();
         if (!target || target->getType() != ActorSprite::MONSTER)
         {
-            target = actorSpriteManager->findNearestLivingBeing(
+            target = actorManager->findNearestLivingBeing(
                 player_node, 20, ActorSprite::MONSTER);
         }
         if (target)
@@ -1428,7 +1428,7 @@ void replaceVars(std::string &str)
     {
         StringVect names;
         std::string newStr;
-        actorSpriteManager->getPlayerNames(names, false);
+        actorManager->getPlayerNames(names, false);
         FOR_EACH (StringVectCIter, it, names)
         {
             if (*it != player_node->getName())

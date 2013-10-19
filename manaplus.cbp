@@ -88,7 +88,7 @@
 		<Linker>
 		</Linker>
 		<Unit filename="src/actionmanager.cpp" />
-		<Unit filename="src/actorspritemanager.cpp" />
+		<Unit filename="src/actormanager.cpp" />
 		<Unit filename="src/animatedsprite.cpp" />
 		<Unit filename="src/animationdelayload.cpp" />
 		<Unit filename="src/auctionmanager.cpp" />

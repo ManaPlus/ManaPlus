@@ -569,8 +569,8 @@ SET(SRCS
     being/actorsprite.cpp
     being/actorsprite.h
     being/actorspritelistener.h
-    actorspritemanager.cpp
-    actorspritemanager.h
+    actormanager.cpp
+    actormanager.h
     animatedsprite.cpp
     animatedsprite.h
     animationdelayload.cpp

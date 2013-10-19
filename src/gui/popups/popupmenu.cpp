@@ -22,7 +22,7 @@
 
 #include "gui/popups/popupmenu.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "commandhandler.h"
 #include "configuration.h"
 #include "dropshortcut.h"
@@ -129,7 +129,7 @@ void PopupMenu::postInit()
 
 void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 {
-    if (!being || !player_node || !actorSpriteManager)
+    if (!being || !player_node || !actorManager)
         return;
 
     mBeingId = being->getId();
@@ -260,9 +260,9 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             if (config.getBoolValue("enableAttackFilter"))
             {
                 mBrowserBox->addRow("##3---");
-                if (actorSpriteManager->isInAttackList(name)
-                    || actorSpriteManager->isInIgnoreAttackList(name)
-                    || actorSpriteManager->isInPriorityAttackList(name))
+                if (actorManager->isInAttackList(name)
+                    || actorManager->isInIgnoreAttackList(name)
+                    || actorManager->isInPriorityAttackList(name))
                 {
                     mBrowserBox->addRow("remove attack",
                         // TRANSLATORS: remove monster from attack list
@@ -460,9 +460,9 @@ void PopupMenu::showPopup(const int x, const int y,
 
     if (config.getBoolValue("enablePickupFilter"))
     {
-        if (actorSpriteManager->isInPickupList(name)
-            || (actorSpriteManager->isInPickupList("")
-            && !actorSpriteManager->isInIgnorePickupList(name)))
+        if (actorManager->isInPickupList(name)
+            || (actorManager->isInPickupList("")
+            && !actorManager->isInIgnorePickupList(name)))
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: pickup item from ground
@@ -602,7 +602,7 @@ void PopupMenu::showSpellPopup(const int x, const int y,
 
 void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
 {
-    if (!tab || !actorSpriteManager || !player_node)
+    if (!tab || !actorManager || !player_node)
         return;
 
     mTab = tab;
@@ -677,7 +677,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
         const WhisperTab *const wTab = static_cast<WhisperTab*>(tab);
         std::string name = wTab->getNick();
 
-        const Being* const being  = actorSpriteManager->findBeingByName(
+        const Being* const being  = actorManager->findBeingByName(
             name, Being::PLAYER);
 
         if (being)
@@ -843,8 +843,8 @@ void PopupMenu::handleLink(const std::string &link,
                            gcn::MouseEvent *event A_UNUSED)
 {
     Being *being = nullptr;
-    if (actorSpriteManager)
-        being = actorSpriteManager->findBeing(mBeingId);
+    if (actorManager)
+        being = actorManager->findBeing(mBeingId);
 
     // Talk To action
     if (link == "talk" && being && being->canTalk())
@@ -889,8 +889,8 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "heal" && being && being->getType() != Being::MONSTER)
     {
-        if (actorSpriteManager)
-            actorSpriteManager->heal(being);
+        if (actorManager)
+            actorManager->heal(being);
     }
     else if (link == "unignore" && being &&
              being->getType() == ActorSprite::PLAYER)
@@ -979,11 +979,11 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "nuke" && being)
     {
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            actorSpriteManager->addBlock(static_cast<uint32_t>(
+            actorManager->addBlock(static_cast<uint32_t>(
                 being->getId()));
-            actorSpriteManager->destroy(being);
+            actorManager->destroy(being);
         }
     }
     // Follow Player action
@@ -1000,9 +1000,9 @@ void PopupMenu::handleLink(const std::string &link,
     // Pick Up Floor Item action
     else if ((link == "pickup") && mFloorItemId)
     {
-        if (player_node && actorSpriteManager)
+        if (player_node && actorManager)
         {
-            FloorItem *const item = actorSpriteManager->findItem(
+            FloorItem *const item = actorManager->findItem(
                 mFloorItemId);
             if (item)
                 player_node->pickUp(item);
@@ -1044,9 +1044,9 @@ void PopupMenu::handleLink(const std::string &link,
                     chatWindow->addItemText(mItem->getInfo().getName());
                 }
             }
-            else if (mFloorItemId && actorSpriteManager)
+            else if (mFloorItemId && actorManager)
             {
-                const FloorItem *const item = actorSpriteManager->findItem(
+                const FloorItem *const item = actorManager->findItem(
                     mFloorItemId);
 
                 if (item)
@@ -1427,76 +1427,76 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "remove attack" && being)
     {
-        if (actorSpriteManager && being->getType() == Being::MONSTER)
+        if (actorManager && being->getType() == Being::MONSTER)
         {
-            actorSpriteManager->removeAttackMob(being->getName());
+            actorManager->removeAttackMob(being->getName());
             if (socialWindow)
                 socialWindow->updateAttackFilter();
         }
     }
     else if (link == "add attack" && being)
     {
-        if (actorSpriteManager && being->getType() == Being::MONSTER)
+        if (actorManager && being->getType() == Being::MONSTER)
         {
-            actorSpriteManager->addAttackMob(being->getName());
+            actorManager->addAttackMob(being->getName());
             if (socialWindow)
                 socialWindow->updateAttackFilter();
         }
     }
     else if (link == "add attack priority" && being)
     {
-        if (actorSpriteManager && being->getType() == Being::MONSTER)
+        if (actorManager && being->getType() == Being::MONSTER)
         {
-            actorSpriteManager->addPriorityAttackMob(being->getName());
+            actorManager->addPriorityAttackMob(being->getName());
             if (socialWindow)
                 socialWindow->updateAttackFilter();
         }
     }
     else if (link == "add attack ignore" && being)
     {
-        if (actorSpriteManager && being->getType() == Being::MONSTER)
+        if (actorManager && being->getType() == Being::MONSTER)
         {
-            actorSpriteManager->addIgnoreAttackMob(being->getName());
+            actorManager->addIgnoreAttackMob(being->getName());
             if (socialWindow)
                 socialWindow->updateAttackFilter();
         }
     }
     else if (link == "remove pickup" && !mNick.empty())
     {
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            actorSpriteManager->removePickupItem(mNick);
+            actorManager->removePickupItem(mNick);
             if (socialWindow)
                 socialWindow->updatePickupFilter();
         }
     }
     else if (link == "add pickup" && !mNick.empty())
     {
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            actorSpriteManager->addPickupItem(mNick);
+            actorManager->addPickupItem(mNick);
             if (socialWindow)
                 socialWindow->updatePickupFilter();
         }
     }
     else if (link == "add pickup ignore" && !mNick.empty())
     {
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            actorSpriteManager->addIgnorePickupItem(mNick);
+            actorManager->addIgnorePickupItem(mNick);
             if (socialWindow)
                 socialWindow->updatePickupFilter();
         }
     }
     else if (link == "attack moveup")
     {
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            const int idx = actorSpriteManager->getAttackMobIndex(mNick);
+            const int idx = actorManager->getAttackMobIndex(mNick);
             if (idx > 0)
             {
                 std::list<std::string> mobs
-                    = actorSpriteManager->getAttackMobs();
+                    = actorManager->getAttackMobs();
                 std::list<std::string>::iterator it = mobs.begin();
                 std::list<std::string>::iterator it2 = mobs.begin();
                 while (it != mobs.end())
@@ -1505,8 +1505,8 @@ void PopupMenu::handleLink(const std::string &link,
                     {
                         -- it2;
                         mobs.splice(it2, mobs, it);
-                        actorSpriteManager->setAttackMobs(mobs);
-                        actorSpriteManager->rebuildAttackMobs();
+                        actorManager->setAttackMobs(mobs);
+                        actorManager->rebuildAttackMobs();
                         break;
                     }
                     ++ it;
@@ -1520,14 +1520,14 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "priority moveup")
     {
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            const int idx = actorSpriteManager->
+            const int idx = actorManager->
                 getPriorityAttackMobIndex(mNick);
             if (idx > 0)
             {
                 std::list<std::string> mobs
-                    = actorSpriteManager->getPriorityAttackMobs();
+                    = actorManager->getPriorityAttackMobs();
                 std::list<std::string>::iterator it = mobs.begin();
                 std::list<std::string>::iterator it2 = mobs.begin();
                 while (it != mobs.end())
@@ -1536,8 +1536,8 @@ void PopupMenu::handleLink(const std::string &link,
                     {
                         -- it2;
                         mobs.splice(it2, mobs, it);
-                        actorSpriteManager->setPriorityAttackMobs(mobs);
-                        actorSpriteManager->rebuildPriorityAttackMobs();
+                        actorManager->setPriorityAttackMobs(mobs);
+                        actorManager->rebuildPriorityAttackMobs();
                         break;
                     }
                     ++ it;
@@ -1551,14 +1551,14 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "attack movedown")
     {
-        if (actorSpriteManager)
+        if (actorManager)
         {
-            const int idx = actorSpriteManager->getAttackMobIndex(mNick);
-            const int size = actorSpriteManager->getAttackMobsSize();
+            const int idx = actorManager->getAttackMobIndex(mNick);
+            const int size = actorManager->getAttackMobsSize();
             if (idx + 1 < size)
             {
                 std::list<std::string> mobs
-                    = actorSpriteManager->getAttackMobs();
+                    = actorManager->getAttackMobs();
                 std::list<std::string>::iterator it = mobs.begin();
                 std::list<std::string>::iterator it2 = mobs.begin();
                 while (it != mobs.end())
@@ -1570,8 +1570,8 @@ void PopupMenu::handleLink(const std::string &link,
                             break;
 
                         mobs.splice(it, mobs, it2);
-                        actorSpriteManager->setAttackMobs(mobs);
-                        actorSpriteManager->rebuildAttackMobs();
+                        actorManager->setAttackMobs(mobs);
+                        actorManager->rebuildAttackMobs();
                         break;
                     }
                     ++ it;
@@ -1587,13 +1587,13 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (player_node)
         {
-            const int idx = actorSpriteManager
+            const int idx = actorManager
                 ->getPriorityAttackMobIndex(mNick);
-            const int size = actorSpriteManager->getPriorityAttackMobsSize();
+            const int size = actorManager->getPriorityAttackMobsSize();
             if (idx + 1 < size)
             {
                 std::list<std::string> mobs
-                    = actorSpriteManager->getPriorityAttackMobs();
+                    = actorManager->getPriorityAttackMobs();
                 std::list<std::string>::iterator it = mobs.begin();
                 std::list<std::string>::iterator it2 = mobs.begin();
                 while (it != mobs.end())
@@ -1605,8 +1605,8 @@ void PopupMenu::handleLink(const std::string &link,
                             break;
 
                         mobs.splice(it, mobs, it2);
-                        actorSpriteManager->setPriorityAttackMobs(mobs);
-                        actorSpriteManager->rebuildPriorityAttackMobs();
+                        actorManager->setPriorityAttackMobs(mobs);
+                        actorManager->rebuildPriorityAttackMobs();
                         break;
                     }
                     ++ it;
@@ -1620,24 +1620,24 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "attack remove")
     {
-        if (actorSpriteManager)
+        if (actorManager)
         {
             if (mNick.empty())
             {
-                if (actorSpriteManager->isInAttackList(mNick))
+                if (actorManager->isInAttackList(mNick))
                 {
-                    actorSpriteManager->removeAttackMob(mNick);
-                    actorSpriteManager->addIgnoreAttackMob(mNick);
+                    actorManager->removeAttackMob(mNick);
+                    actorManager->addIgnoreAttackMob(mNick);
                 }
                 else
                 {
-                    actorSpriteManager->removeAttackMob(mNick);
-                    actorSpriteManager->addAttackMob(mNick);
+                    actorManager->removeAttackMob(mNick);
+                    actorManager->addAttackMob(mNick);
                 }
             }
             else
             {
-                actorSpriteManager->removeAttackMob(mNick);
+                actorManager->removeAttackMob(mNick);
             }
             if (socialWindow)
                 socialWindow->updateAttackFilter();
@@ -1645,24 +1645,24 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "pickup remove")
     {
-        if (actorSpriteManager)
+        if (actorManager)
         {
             if (mNick.empty())
             {
-                if (actorSpriteManager->isInPickupList(mNick))
+                if (actorManager->isInPickupList(mNick))
                 {
-                    actorSpriteManager->removePickupItem(mNick);
-                    actorSpriteManager->addIgnorePickupItem(mNick);
+                    actorManager->removePickupItem(mNick);
+                    actorManager->addIgnorePickupItem(mNick);
                 }
                 else
                 {
-                    actorSpriteManager->removePickupItem(mNick);
-                    actorSpriteManager->addPickupItem(mNick);
+                    actorManager->removePickupItem(mNick);
+                    actorManager->addPickupItem(mNick);
                 }
             }
             else
             {
-                actorSpriteManager->removePickupItem(mNick);
+                actorManager->removePickupItem(mNick);
             }
             if (socialWindow)
                 socialWindow->updatePickupFilter();
@@ -1762,10 +1762,10 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (!link.compare(0, 7, "player_"))
     {
-        if (actorSpriteManager)
+        if (actorManager)
         {
             mBeingId = atoi(link.substr(7).c_str());
-            being = actorSpriteManager->findBeing(mBeingId);
+            being = actorManager->findBeing(mBeingId);
             if (being)
             {
                 showPopup(getX(), getY(), being);
@@ -1775,12 +1775,12 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (!link.compare(0, 10, "flooritem_"))
     {
-        if (actorSpriteManager)
+        if (actorManager)
         {
             const int id = atoi(link.substr(10).c_str());
             if (id)
             {
-                const FloorItem *const item = actorSpriteManager->findItem(id);
+                const FloorItem *const item = actorManager->findItem(id);
                 if (item)
                 {
                     mFloorItemId = item->getId();
@@ -2198,7 +2198,7 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
 void PopupMenu::showAttackMonsterPopup(const int x, const int y,
                                        const std::string &name, const int type)
 {
-    if (!player_node || !actorSpriteManager)
+    if (!player_node || !actorManager)
         return;
 
     mNick = name;
@@ -2221,8 +2221,8 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
     {
         case MapItem::ATTACK:
         {
-            const int idx = actorSpriteManager->getAttackMobIndex(name);
-            const int size = actorSpriteManager->getAttackMobsSize();
+            const int idx = actorManager->getAttackMobIndex(name);
+            const int size = actorManager->getAttackMobsSize();
             if (idx > 0)
             {
                 // TRANSLATORS: popup menu item
@@ -2239,9 +2239,9 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
         }
         case MapItem::PRIORITY:
         {
-            const int idx = actorSpriteManager->
+            const int idx = actorManager->
                 getPriorityAttackMobIndex(name);
-            const int size = actorSpriteManager->getPriorityAttackMobsSize();
+            const int size = actorManager->getPriorityAttackMobsSize();
             if (idx > 0)
             {
                 // TRANSLATORS: popup menu item
@@ -2276,7 +2276,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
 void PopupMenu::showPickupItemPopup(const int x, const int y,
                                     const std::string &name)
 {
-    if (!player_node || !actorSpriteManager)
+    if (!player_node || !actorManager)
         return;
 
     mNick = name;
@@ -2661,8 +2661,8 @@ void PopupMenu::addPlayerMisc()
 
 void PopupMenu::addPickupFilter(const std::string &name)
 {
-    if (actorSpriteManager->isInPickupList(name)
-        || actorSpriteManager->isInIgnorePickupList(name))
+    if (actorManager->isInPickupList(name)
+        || actorManager->isInIgnorePickupList(name))
     {
         mBrowserBox->addRow("remove pickup",
             // TRANSLATORS: popup menu item
@@ -2896,7 +2896,7 @@ void PlayerListener::action(const gcn::ActionEvent &event)
     if (event.getId() == "ok" && !mNick.empty() && mDialog)
     {
         std::string comment = mDialog->getText();
-        Being *const being  = actorSpriteManager->findBeingByName(
+        Being *const being  = actorManager->findBeingByName(
             mNick, static_cast<ActorSprite::Type>(mType));
         if (being)
             being->setComment(comment);

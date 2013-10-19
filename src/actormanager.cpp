@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 
 #include "client.h"
 #include "configuration.h"
@@ -184,7 +184,7 @@ class SortBeingFunctor final
         bool specialDistance;
 } beingActorSorter;
 
-ActorSpriteManager::ActorSpriteManager() :
+ActorManager::ActorManager() :
     mActors(),
     mDeleteActors(),
     mBlockedBeings(),
@@ -209,14 +209,14 @@ ActorSpriteManager::ActorSpriteManager() :
     loadAttackList();
 }
 
-ActorSpriteManager::~ActorSpriteManager()
+ActorManager::~ActorManager()
 {
     config.removeListeners(this);
     storeAttackList();
     clear();
 }
 
-void ActorSpriteManager::setMap(Map *const map)
+void ActorManager::setMap(Map *const map)
 {
     mMap = map;
 
@@ -224,7 +224,7 @@ void ActorSpriteManager::setMap(Map *const map)
         player_node->setMap(map);
 }
 
-void ActorSpriteManager::setPlayer(LocalPlayer *const player)
+void ActorManager::setPlayer(LocalPlayer *const player)
 {
     player_node = player;
     mActors.insert(player);
@@ -234,9 +234,9 @@ void ActorSpriteManager::setPlayer(LocalPlayer *const player)
         socialWindow->updatePickupFilter();
 }
 
-Being *ActorSpriteManager::createBeing(const int id,
-                                       const ActorSprite::Type type,
-                                       const uint16_t subtype)
+Being *ActorManager::createBeing(const int id,
+                                 const ActorSprite::Type type,
+                                 const uint16_t subtype)
 {
     Being *const being = new Being(id, type, subtype, mMap);
 
@@ -244,11 +244,11 @@ Being *ActorSpriteManager::createBeing(const int id,
     return being;
 }
 
-FloorItem *ActorSpriteManager::createItem(const int id, const int itemId,
-                                          const int x, const int y,
-                                          const int amount,
-                                          const unsigned char color,
-                                          const int subX, const int subY)
+FloorItem *ActorManager::createItem(const int id, const int itemId,
+                                    const int x, const int y,
+                                    const int amount,
+                                    const unsigned char color,
+                                    const int subX, const int subY)
 {
     FloorItem *const floorItem = new FloorItem(id, itemId,
         x, y, amount, color);
@@ -260,7 +260,7 @@ FloorItem *ActorSpriteManager::createItem(const int id, const int itemId,
     return floorItem;
 }
 
-void ActorSpriteManager::destroy(ActorSprite *const actor)
+void ActorManager::destroy(ActorSprite *const actor)
 {
     if (!actor || actor == player_node)
         return;
@@ -268,7 +268,7 @@ void ActorSpriteManager::destroy(ActorSprite *const actor)
     mDeleteActors.insert(actor);
 }
 
-void ActorSpriteManager::erase(ActorSprite *const actor)
+void ActorManager::erase(ActorSprite *const actor)
 {
     if (!actor || actor == player_node)
         return;
@@ -276,7 +276,7 @@ void ActorSpriteManager::erase(ActorSprite *const actor)
     mActors.erase(actor);
 }
 
-void ActorSpriteManager::undelete(const ActorSprite *const actor)
+void ActorManager::undelete(const ActorSprite *const actor)
 {
     if (!actor || actor == player_node)
         return;
@@ -291,7 +291,7 @@ void ActorSpriteManager::undelete(const ActorSprite *const actor)
     }
 }
 
-Being *ActorSpriteManager::findBeing(const int id) const
+Being *ActorManager::findBeing(const int id) const
 {
     for_actors
     {
@@ -306,8 +306,8 @@ Being *ActorSpriteManager::findBeing(const int id) const
     return nullptr;
 }
 
-Being *ActorSpriteManager::findBeing(const int x, const int y,
-                                     const ActorSprite::Type type) const
+Being *ActorManager::findBeing(const int x, const int y,
+                               const ActorSprite::Type type) const
 {
     beingActorFinder.x = static_cast<uint16_t>(x);
     beingActorFinder.y = static_cast<uint16_t>(y);
@@ -319,8 +319,8 @@ Being *ActorSpriteManager::findBeing(const int x, const int y,
     return (it == mActors.end()) ? nullptr : static_cast<Being*>(*it);
 }
 
-Being *ActorSpriteManager::findBeingByPixel(const int x, const int y,
-                                            const bool allPlayers) const
+Being *ActorManager::findBeingByPixel(const int x, const int y,
+                                      const bool allPlayers) const
 {
     if (!mMap)
         return nullptr;
@@ -420,9 +420,9 @@ Being *ActorSpriteManager::findBeingByPixel(const int x, const int y,
     }
 }
 
-void ActorSpriteManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
-                                           const int x, const int y,
-                                           const bool allPlayers) const
+void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
+                                     const int x, const int y,
+                                     const bool allPlayers) const
 {
     if (!mMap)
         return;
@@ -464,7 +464,7 @@ void ActorSpriteManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
     }
 }
 
-Being *ActorSpriteManager::findPortalByTile(const int x, const int y) const
+Being *ActorManager::findPortalByTile(const int x, const int y) const
 {
     if (!mMap)
         return nullptr;
@@ -486,7 +486,7 @@ Being *ActorSpriteManager::findPortalByTile(const int x, const int y) const
     return nullptr;
 }
 
-FloorItem *ActorSpriteManager::findItem(const int id) const
+FloorItem *ActorManager::findItem(const int id) const
 {
     for_actorsm
     {
@@ -503,7 +503,7 @@ FloorItem *ActorSpriteManager::findItem(const int id) const
     return nullptr;
 }
 
-FloorItem *ActorSpriteManager::findItem(const int x, const int y) const
+FloorItem *ActorManager::findItem(const int x, const int y) const
 {
     for_actorsm
     {
@@ -520,9 +520,9 @@ FloorItem *ActorSpriteManager::findItem(const int x, const int y) const
     return nullptr;
 }
 
-bool ActorSpriteManager::pickUpAll(const int x1, const int y1,
-                                   const int x2, const int y2,
-                                   const bool serverBuggy)
+bool ActorManager::pickUpAll(const int x1, const int y1,
+                             const int x2, const int y2,
+                             const bool serverBuggy)
 {
     if (!player_node)
         return false;
@@ -617,8 +617,8 @@ bool ActorSpriteManager::pickUpAll(const int x1, const int y1,
     return finded;
 }
 
-bool ActorSpriteManager::pickUpNearest(const int x, const int y,
-                                       int maxdist) const
+bool ActorManager::pickUpNearest(const int x, const int y,
+                                 int maxdist) const
 {
     if (!player_node)
         return false;
@@ -671,8 +671,8 @@ bool ActorSpriteManager::pickUpNearest(const int x, const int y,
     return false;
 }
 
-Being *ActorSpriteManager::findBeingByName(const std::string &name,
-                                           const ActorSprite::Type type) const
+Being *ActorManager::findBeingByName(const std::string &name,
+                                     const ActorSprite::Type type) const
 {
     for_actorsm
     {
@@ -695,8 +695,8 @@ Being *ActorSpriteManager::findBeingByName(const std::string &name,
     return nullptr;
 }
 
-Being *ActorSpriteManager::findNearestByName(const std::string &name,
-                                             const Being::Type &type) const
+Being *ActorManager::findNearestByName(const std::string &name,
+                                       const Being::Type &type) const
 {
     if (!player_node)
         return nullptr;
@@ -745,14 +745,14 @@ Being *ActorSpriteManager::findNearestByName(const std::string &name,
     return closestBeing;
 }
 
-const ActorSprites &ActorSpriteManager::getAll() const
+const ActorSprites &ActorManager::getAll() const
 {
     return mActors;
 }
 
-void ActorSpriteManager::logic()
+void ActorManager::logic()
 {
-    BLOCK_START("ActorSpriteManager::logic")
+    BLOCK_START("ActorManager::logic")
     for_actors
     {
         if (*it)
@@ -761,11 +761,11 @@ void ActorSpriteManager::logic()
 
     if (mDeleteActors.empty())
     {
-        BLOCK_END("ActorSpriteManager::logic")
+        BLOCK_END("ActorManager::logic")
         return;
     }
 
-    BLOCK_START("ActorSpriteManager::logic 1")
+    BLOCK_START("ActorManager::logic 1")
     FOR_EACH (ActorSpritesConstIterator, it, mDeleteActors)
     {
         if (!*it)
@@ -796,11 +796,11 @@ void ActorSpriteManager::logic()
     }
 
     mDeleteActors.clear();
-    BLOCK_END("ActorSpriteManager::logic 1")
-    BLOCK_END("ActorSpriteManager::logic")
+    BLOCK_END("ActorManager::logic 1")
+    BLOCK_END("ActorManager::logic")
 }
 
-void ActorSpriteManager::clear()
+void ActorManager::clear()
 {
     if (beingEquipmentWindow)
         beingEquipmentWindow->setBeing(nullptr);
@@ -823,21 +823,19 @@ void ActorSpriteManager::clear()
         mActors.insert(player_node);
 }
 
-Being *ActorSpriteManager::findNearestLivingBeing(const int x, const int y,
-                                                  const int maxTileDist,
-                                                  const ActorSprite::Type type,
-                                                  const Being *const
-                                                  excluded) const
+Being *ActorManager::findNearestLivingBeing(const int x, const int y,
+                                            const int maxTileDist,
+                                            const ActorSprite::Type type,
+                                            const Being *const excluded) const
 {
     const int maxDist = maxTileDist * mapTileSize;
 
     return findNearestLivingBeing(nullptr, maxDist, type, x, y, excluded);
 }
 
-Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
-                                                  aroundBeing,
-                                                  const int maxDist,
-                                                  const Being::Type type) const
+Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
+                                            const int maxDist,
+                                            const Being::Type type) const
 {
     if (!aroundBeing)
         return nullptr;
@@ -846,12 +844,11 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
         aroundBeing->getTileX(), aroundBeing->getTileY(), aroundBeing);
 }
 
-Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
-                                                  aroundBeing, int maxDist,
-                                                  const Being::Type &type,
-                                                  const int x, const int y,
-                                                  const Being *const
-                                                  excluded) const
+Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
+                                            int maxDist,
+                                            const Being::Type &type,
+                                            const int x, const int y,
+                                            const Being *const excluded) const
 {
     if (!aroundBeing || !player_node)
         return nullptr;
@@ -1103,11 +1100,11 @@ Being *ActorSpriteManager::findNearestLivingBeing(const Being *const
     }
 }
 
-bool ActorSpriteManager::validateBeing(const Being *const aroundBeing,
-                                       Being *const being,
-                                       const Being::Type &type,
-                                       const Being* const excluded,
-                                       const int maxCost) const
+bool ActorManager::validateBeing(const Being *const aroundBeing,
+                                 Being *const being,
+                                 const Being::Type &type,
+                                 const Being* const excluded,
+                                 const int maxCost) const
 {
     if (!player_node)
         return false;
@@ -1119,7 +1116,7 @@ bool ActorSpriteManager::validateBeing(const Being *const aroundBeing,
         || player_node->isReachable(being, maxCost));
 }
 
-void ActorSpriteManager::healTarget() const
+void ActorManager::healTarget() const
 {
     if (!player_node)
         return;
@@ -1127,7 +1124,7 @@ void ActorSpriteManager::healTarget() const
     heal(player_node->getTarget());
 }
 
-void ActorSpriteManager::heal(const Being *const target) const
+void ActorManager::heal(const Being *const target) const
 {
     if (!player_node || !chatWindow || !player_node->isAlive()
         || !Net::getPlayerHandler()->canUseMagic())
@@ -1206,7 +1203,7 @@ void ActorSpriteManager::heal(const Being *const target) const
     }
 }
 
-void ActorSpriteManager::itenplz() const
+void ActorManager::itenplz() const
 {
     if (!player_node || !chatWindow || !player_node->isAlive()
         || !Net::getPlayerHandler()->canUseMagic())
@@ -1220,7 +1217,7 @@ void ActorSpriteManager::itenplz() const
     chatWindow->localChatInput(mSpellItenplz);
 }
 
-bool ActorSpriteManager::hasActorSprite(const ActorSprite *const actor) const
+bool ActorManager::hasActorSprite(const ActorSprite *const actor) const
 {
     for_actors
     {
@@ -1231,29 +1228,29 @@ bool ActorSpriteManager::hasActorSprite(const ActorSprite *const actor) const
     return false;
 }
 
-void ActorSpriteManager::addBlock(const uint32_t id)
+void ActorManager::addBlock(const uint32_t id)
 {
     mBlockedBeings.insert(id);
 }
 
-void ActorSpriteManager::deleteBlock(const uint32_t id)
+void ActorManager::deleteBlock(const uint32_t id)
 {
     mBlockedBeings.erase(id);
 }
 
-bool ActorSpriteManager::isBlocked(const uint32_t id) const
+bool ActorManager::isBlocked(const uint32_t id) const
 {
     return mBlockedBeings.find(id) != mBlockedBeings.end();
 }
 
-void ActorSpriteManager::printAllToChat() const
+void ActorManager::printAllToChat() const
 {
     // TRANSLATORS: visible beings on map
     printBeingsToChat(getAll(), _("Visible on map"));
 }
 
-void ActorSpriteManager::printBeingsToChat(const ActorSprites &beings,
-                                           const std::string &header) const
+void ActorManager::printBeingsToChat(const ActorSprites &beings,
+                                     const std::string &header) const
 {
     if (!debugChatTab)
         return;
@@ -1277,8 +1274,8 @@ void ActorSpriteManager::printBeingsToChat(const ActorSprites &beings,
     debugChatTab->chatLog("---------------------------------------");
 }
 
-void ActorSpriteManager::printBeingsToChat(const std::vector<Being*> &beings,
-                                           const std::string &header) const
+void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,
+                                     const std::string &header) const
 {
     if (!debugChatTab)
         return;
@@ -1300,8 +1297,8 @@ void ActorSpriteManager::printBeingsToChat(const std::vector<Being*> &beings,
     debugChatTab->chatLog("---------------------------------------");
 }
 
-void ActorSpriteManager::getPlayerNames(StringVect &names,
-                                        const bool npcNames) const
+void ActorManager::getPlayerNames(StringVect &names,
+                                  const bool npcNames) const
 {
     names.clear();
 
@@ -1326,7 +1323,7 @@ void ActorSpriteManager::getPlayerNames(StringVect &names,
     }
 }
 
-void ActorSpriteManager::getMobNames(StringVect &names) const
+void ActorManager::getMobNames(StringVect &names) const
 {
     names.clear();
 
@@ -1347,7 +1344,7 @@ void ActorSpriteManager::getMobNames(StringVect &names) const
     }
 }
 
-void ActorSpriteManager::updatePlayerNames() const
+void ActorManager::updatePlayerNames() const
 {
     for_actorsm
     {
@@ -1367,7 +1364,7 @@ void ActorSpriteManager::updatePlayerNames() const
     }
 }
 
-void ActorSpriteManager::updatePlayerColors() const
+void ActorManager::updatePlayerColors() const
 {
     for_actorsm
     {
@@ -1386,7 +1383,7 @@ void ActorSpriteManager::updatePlayerColors() const
     }
 }
 
-void ActorSpriteManager::updatePlayerGuild() const
+void ActorManager::updatePlayerGuild() const
 {
     for_actorsm
     {
@@ -1405,7 +1402,7 @@ void ActorSpriteManager::updatePlayerGuild() const
     }
 }
 
-void ActorSpriteManager::parseLevels(std::string levels) const
+void ActorManager::parseLevels(std::string levels) const
 {
     levels.append(", ");
     size_t f = 0;
@@ -1434,7 +1431,7 @@ void ActorSpriteManager::parseLevels(std::string levels) const
     updatePlayerNames();
 }
 
-void ActorSpriteManager::optionChanged(const std::string &name)
+void ActorManager::optionChanged(const std::string &name)
 {
     if (name == "targetDeadPlayers")
         mTargetDeadPlayers = config.getBoolValue("targetDeadPlayers");
@@ -1450,7 +1447,7 @@ void ActorSpriteManager::optionChanged(const std::string &name)
         mExtMouseTargeting = config.getBoolValue("extMouseTargeting");
 }
 
-void ActorSpriteManager::removeAttackMob(const std::string &name)
+void ActorManager::removeAttackMob(const std::string &name)
 {
     mPriorityAttackMobs.remove(name);
     mAttackMobs.remove(name);
@@ -1462,7 +1459,7 @@ void ActorSpriteManager::removeAttackMob(const std::string &name)
     rebuildPriorityAttackMobs();
 }
 
-void ActorSpriteManager::removePickupItem(const std::string &name)
+void ActorManager::removePickupItem(const std::string &name)
 {
     mPickupItems.remove(name);
     mPickupItemsSet.erase(name);
@@ -1509,18 +1506,18 @@ void ActorSpriteManager::removePickupItem(const std::string &name)
     }\
 }
 
-void ActorSpriteManager::addAttackMob(const std::string &name)
+void ActorManager::addAttackMob(const std::string &name)
 {
     addMobToList(name, AttackMob);
     rebuildPriorityAttackMobs();
 }
 
-void ActorSpriteManager::addPriorityAttackMob(const std::string &name)
+void ActorManager::addPriorityAttackMob(const std::string &name)
 {
     addMobToList(name, PriorityAttackMob);
 }
 
-void ActorSpriteManager::addIgnoreAttackMob(const std::string &name)
+void ActorManager::addIgnoreAttackMob(const std::string &name)
 {
     mIgnoreAttackMobs.push_back(name);
     mIgnoreAttackMobsSet.insert(name);
@@ -1528,37 +1525,36 @@ void ActorSpriteManager::addIgnoreAttackMob(const std::string &name)
     rebuildPriorityAttackMobs();
 }
 
-void ActorSpriteManager::addPickupItem(const std::string &name)
+void ActorManager::addPickupItem(const std::string &name)
 {
     addMobToList(name, PickupItem);
     rebuildPickupItems();
 }
 
-void ActorSpriteManager::addIgnorePickupItem(const std::string &name)
+void ActorManager::addIgnorePickupItem(const std::string &name)
 {
     mIgnorePickupItems.push_back(name);
     mIgnorePickupItemsSet.insert(name);
     rebuildPickupItems();
 }
 
-void ActorSpriteManager::rebuildPriorityAttackMobs()
+void ActorManager::rebuildPriorityAttackMobs()
 {
     rebuildMobsList(PriorityAttackMob);
 }
 
-void ActorSpriteManager::rebuildAttackMobs()
+void ActorManager::rebuildAttackMobs()
 {
     rebuildMobsList(AttackMob);
 }
 
-void ActorSpriteManager::rebuildPickupItems()
+void ActorManager::rebuildPickupItems()
 {
     rebuildMobsList(PickupItem);
 }
 
-int ActorSpriteManager::getIndexByName(const std::string &name,
-                                       const std::map<std::string, int> &map)
-                                       const
+int ActorManager::getIndexByName(const std::string &name,
+                                 const std::map<std::string, int> &map) const
 {
     const std::map<std::string, int>::const_iterator
         i = map.find(name);
@@ -1568,18 +1564,17 @@ int ActorSpriteManager::getIndexByName(const std::string &name,
     return (*i).second;
 }
 
-int ActorSpriteManager::getPriorityAttackMobIndex(const std::string &name)
-                                                  const
+int ActorManager::getPriorityAttackMobIndex(const std::string &name) const
 {
     return getIndexByName(name, mPriorityAttackMobsMap);
 }
 
-int ActorSpriteManager::getAttackMobIndex(const std::string &name) const
+int ActorManager::getAttackMobIndex(const std::string &name) const
 {
     return getIndexByName(name, mAttackMobsMap);
 }
 
-int ActorSpriteManager::getPickupItemIndex(const std::string &name) const
+int ActorManager::getPickupItemIndex(const std::string &name) const
 {
     return getIndexByName(name, mPickupItemsMap);
 }
@@ -1599,7 +1594,7 @@ int ActorSpriteManager::getPickupItemIndex(const std::string &name) const
     }\
 }
 
-void ActorSpriteManager::loadAttackList()
+void ActorManager::loadAttackList()
 {
     bool empty = false;
     std::list<std::string> list;
@@ -1629,7 +1624,7 @@ void ActorSpriteManager::loadAttackList()
     rebuildPickupItems();
 }
 
-void ActorSpriteManager::storeAttackList() const
+void ActorManager::storeAttackList() const
 {
     serverConfig.setValue("attackPriorityMobs", packList(mPriorityAttackMobs));
     serverConfig.setValue("attackMobs", packList(mAttackMobs));
@@ -1639,7 +1634,7 @@ void ActorSpriteManager::storeAttackList() const
     serverConfig.setValue("ignorePickupItems", packList(mIgnorePickupItems));
 }
 
-bool ActorSpriteManager::checkForPickup(const FloorItem *const item) const
+bool ActorManager::checkForPickup(const FloorItem *const item) const
 {
     if (mPickupItemsSet.find("") != mPickupItemsSet.end())
     {
@@ -1657,9 +1652,8 @@ bool ActorSpriteManager::checkForPickup(const FloorItem *const item) const
     return false;
 }
 
-void ActorSpriteManager::updateEffects(const std::map<int, int> &addEffects,
-                                       const std::set<int> &removeEffects)
-                                       const
+void ActorManager::updateEffects(const std::map<int, int> &addEffects,
+                                 const std::set<int> &removeEffects) const
 {
     for_actorsm
     {

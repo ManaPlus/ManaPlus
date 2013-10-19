@@ -22,7 +22,7 @@
 
 #include "net/ea/itemhandler.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 
 #include "debug.h"
 
@@ -48,9 +48,9 @@ void ItemHandler::processItemVisible(Net::MessageIn &msg) const
     const int subX = msg.readInt8();
     const int subY = msg.readInt8();
 
-    if (actorSpriteManager)
+    if (actorManager)
     {
-        actorSpriteManager->createItem(id, itemId,
+        actorManager->createItem(id, itemId,
             x, y, amount, identify, subX, subY);
     }
 }
@@ -66,21 +66,21 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg) const
     const int subY = msg.readInt8();
     const int amount = msg.readInt16();
 
-    if (actorSpriteManager)
+    if (actorManager)
     {
-        actorSpriteManager->createItem(id, itemId,
+        actorManager->createItem(id, itemId,
             x, y, amount, identify, subX, subY);
     }
 }
 
 void ItemHandler::processItemRemove(Net::MessageIn &msg) const
 {
-    if (actorSpriteManager)
+    if (actorManager)
     {
-        if (FloorItem *const item = actorSpriteManager
+        if (FloorItem *const item = actorManager
             ->findItem(msg.readInt32()))
         {
-            actorSpriteManager->destroy(item);
+            actorManager->destroy(item);
         }
     }
 }

@@ -20,7 +20,7 @@
 
 #include "actionmanager.h"
 
-#include "actorspritemanager.h"
+#include "actormanager.h"
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
@@ -371,21 +371,21 @@ impHandler0(switchQuickDrop)
 
 impHandler0(heal)
 {
-    if (actorSpriteManager)
+    if (actorManager)
     {
         if (inputManager.isActionActive(Input::KEY_MOD))
         {
             Being *target = player_node->getTarget();
             if (!target || target->getType() != ActorSprite::PLAYER)
             {
-                target = actorSpriteManager->findNearestLivingBeing(
+                target = actorManager->findNearestLivingBeing(
                     player_node, 10, ActorSprite::PLAYER);
                 if (target)
                     player_node->setTarget(target);
             }
         }
 
-        actorSpriteManager->healTarget();
+        actorManager->healTarget();
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
@@ -405,12 +405,12 @@ impHandler0(crazyMoves)
 
 impHandler0(itenplz)
 {
-    if (actorSpriteManager)
+    if (actorManager)
     {
         if (Net::getPlayerHandler() && Net::getPlayerHandler()->canUseMagic()
             && PlayerInfo::getAttribute(PlayerInfo::MP) >= 3)
         {
-            actorSpriteManager->itenplz();
+            actorManager->itenplz();
         }
         return true;
     }
@@ -962,9 +962,9 @@ impHandler0(talk)
     if (player_node)
     {
         Being *target = player_node->getTarget();
-        if (!target && actorSpriteManager)
+        if (!target && actorManager)
         {
-            target = actorSpriteManager->findNearestLivingBeing(
+            target = actorManager->findNearestLivingBeing(
                 player_node, 1, ActorSprite::NPC);
             // ignore closest target if distance in each direction more than 1
             if (target)
@@ -1025,7 +1025,7 @@ impHandler0(attack)
 
 impHandler0(targetAttack)
 {
-    if (player_node && actorSpriteManager)
+    if (player_node && actorManager)
     {
         Being *target = nullptr;
 
@@ -1035,7 +1035,7 @@ impHandler0(targetAttack)
         if (!player_node->getTarget())
         {
             // Only auto target Monsters
-            target = actorSpriteManager->findNearestLivingBeing(
+            target = actorManager->findNearestLivingBeing(
                 player_node, 90, ActorSprite::MONSTER);
         }
         else
@@ -1051,9 +1051,9 @@ impHandler0(targetAttack)
 
 static bool setTarget(const ActorSprite::Type type)
 {
-    if (actorSpriteManager && player_node)
+    if (actorManager && player_node)
     {
-        Being *const target = actorSpriteManager->findNearestLivingBeing(
+        Being *const target = actorManager->findNearestLivingBeing(
             player_node, 20, type);
 
         if (target && target != player_node->getTarget())
