@@ -41,7 +41,7 @@
 #include "debug.h"
 
 extern std::string tradePartnerName;
-ConfirmDialog *confirmDlg;
+ConfirmDialog *confirmDlg = nullptr;
 
 /**
  * Listener for request trade dialogs
