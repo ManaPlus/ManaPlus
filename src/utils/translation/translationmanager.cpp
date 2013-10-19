@@ -20,7 +20,6 @@
 
 #include "utils/translation/translationmanager.h"
 
-#include "utils/langs.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"

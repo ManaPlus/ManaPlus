@@ -23,6 +23,7 @@
 
 #include "localconsts.h"
 
+#include "utils/langs.h"
 #include "utils/stringvector.h"
 
 class PoDict;
@@ -30,7 +31,7 @@ class PoDict;
 class TranslationManager final
 {
     public:
-        static PoDict *loadLang(const StringVect &lang,
+        static PoDict *loadLang(const LangVect &lang,
                                 const std::string &subName,
                                 PoDict *const dict = nullptr);
 
