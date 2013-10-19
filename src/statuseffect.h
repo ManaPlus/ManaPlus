@@ -90,7 +90,8 @@ public:
      * \param enabling Whether to retrieve the activating effect (true) or
      *    the deactivating effect (false).
      */
-    static StatusEffect *getStunEffect(int index, bool enabling) A_WARN_UNUSED;
+    static StatusEffect *getStunEffect(const int index,
+                                       const bool enabling) A_WARN_UNUSED;
 
     /**
      * Maps a block effect index to its corresponding effect index.  Block
