@@ -126,7 +126,7 @@ class ChangeDisplay final : public AttrDisplay, gcn::ActionListener
         Type getType() const override
         { return CHANGEABLE; }
 
-        void setPointsNeeded(int needed);
+        void setPointsNeeded(const int needed);
 
         void action(const gcn::ActionEvent &event) override;
 

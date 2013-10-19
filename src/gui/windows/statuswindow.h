@@ -67,7 +67,7 @@ class StatusWindow final : public Window,
 
         static void updateHPBar(ProgressBar *const bar,
                                 const bool showMax = false);
-        static void updateMPBar(ProgressBar *bar, bool showMax = false);
+        static void updateMPBar(ProgressBar *bar, const bool showMax = false);
         static void updateJobBar(ProgressBar *const bar,
                                  const bool percent = true);
         static void updateXPBar(ProgressBar *const bar,
