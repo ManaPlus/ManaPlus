@@ -222,6 +222,8 @@ ChatWindow::ChatWindow():
     mShowAllLang(serverConfig.getValue("showAllLang", 0)),
     mTmpVisible(false)
 {
+    mChatTabs->postInit();
+
     listen(CHANNEL_ATTRIBUTES);
 
     setWindowName("Chat");

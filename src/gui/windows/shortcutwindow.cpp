@@ -113,6 +113,7 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
     mTabs(new TabbedArea(this)),
     mPages()
 {
+    mTabs->postInit();
     setWindowName(title);
     setTitleBarHeight(getPadding() + getTitlePadding());
     setShowTitle(false);

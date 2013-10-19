@@ -54,6 +54,7 @@ DebugWindow::DebugWindow() :
     mTargetWidget(new TargetDebugTab(this)),
     mNetWidget(new NetDebugTab(this))
 {
+    mTabs->postInit();
     setWindowName("Debug");
     if (setupWindow)
         setupWindow->registerWindowForReset(this);

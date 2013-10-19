@@ -57,6 +57,7 @@ EmoteWindow::EmoteWindow() :
     mScrollFontPage(new ScrollArea(mFontPage, false, "fontpage.xml")),
     mImageSet(Theme::getImageSetFromThemeXml("emotetabs.xml", "", 17, 16))
 {
+    mTabs->postInit();
     mColorPage->postInit();
     mFontPage->postInit();
     setShowTitle(false);

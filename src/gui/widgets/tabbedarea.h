@@ -55,6 +55,8 @@ class TabbedArea final : public Widget2,
 
         ~TabbedArea();
 
+        void postInit();
+
         /**
          * Draw the tabbed area.
          */

@@ -68,7 +68,10 @@ TabbedArea::TabbedArea(const Widget2 *const widget) :
 
     mArrowButton[0] = new Button(this, "<", "shift_left", this);
     mArrowButton[1] = new Button(this, ">", "shift_right", this);
+}
 
+void TabbedArea::postInit()
+{
     widgetResized(gcn::Event(nullptr));
 }
 
@@ -77,6 +80,7 @@ TabbedArea::~TabbedArea()
     if (gui)
         gui->removeDragged(this);
 
+    // +++ virtual method calls
     remove(mTabContainer);
     remove(mWidgetContainer);
 

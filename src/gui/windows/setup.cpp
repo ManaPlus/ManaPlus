@@ -64,6 +64,7 @@ Setup::Setup() :
     mPanel(new TabbedArea(this)),
     mVersion(new Label(this, FULL_VERSION))
 {
+    mPanel->postInit();
     setCloseButton(true);
     setResizable(true);
     setStickyButtonLock(true);

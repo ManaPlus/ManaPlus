@@ -1307,6 +1307,7 @@ SocialWindow::SocialWindow() :
     mProcessedPortals(false)
 {
     mCreatePopup->postInit();
+    mTabs->postInit();
 }
 
 void SocialWindow::postInit()

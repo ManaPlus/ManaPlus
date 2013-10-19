@@ -290,6 +290,7 @@ SkillDialog::SkillDialog() :
     mIncreaseButton(new Button(this, _("Up"), "inc", this)),
     mDefaultModel(nullptr)
 {
+    mTabs->postInit();
     setWindowName("Skills");
     setCloseButton(true);
     setResizable(true);
