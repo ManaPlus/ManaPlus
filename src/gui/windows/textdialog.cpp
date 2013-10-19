@@ -78,7 +78,10 @@ TextDialog::TextDialog(const std::string &title, const std::string &msg,
     {
         reflowLayout(static_cast<int>(textLabel->getWidth() + 20));
     }
+}
 
+void TextDialog::postInit()
+{
     if (getParent())
     {
         setLocationRelativeTo(getParent());
@@ -86,9 +89,9 @@ TextDialog::TextDialog(const std::string &title, const std::string &msg,
     }
     setVisible(true);
     requestModalFocus();
-    if (isPassword)
+    if (mPasswordField)
         mPasswordField->requestFocus();
-    else
+    else if (mTextField)
         mTextField->requestFocus();
 
     instances++;

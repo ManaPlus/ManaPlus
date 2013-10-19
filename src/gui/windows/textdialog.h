@@ -51,6 +51,8 @@ public:
 
     ~TextDialog();
 
+    void postInit() override;
+
     /**
      * Called when receiving actions from the widgets.
      */

@@ -252,6 +252,7 @@ public:
             // TRANSLATORS: guild invite message
             strprintf(_("Who would you like to invite to guild %s?"),
             mGuild->getName().c_str()), socialWindow);
+        mInviteDialog->postInit();
         mInviteDialog->setActionEventId("do invite");
         mInviteDialog->addActionListener(this);
     }
@@ -453,6 +454,7 @@ public:
             // TRANSLATORS: party invite message
             strprintf(_("Who would you like to invite to party %s?"),
             mParty->getName().c_str()), socialWindow);
+        mInviteDialog->postInit();
         mInviteDialog->setActionEventId("do invite");
         mInviteDialog->addActionListener(this);
     }
@@ -1609,6 +1611,7 @@ void SocialWindow::showGuildCreate()
     mGuildCreateDialog = new TextDialog(_("Guild Name"),
         // TRANSLATORS: guild creation message
         _("Choose your guild's name."), this);
+    mGuildCreateDialog->postInit();
     mGuildCreateDialog->setActionEventId("create guild");
     mGuildCreateDialog->addActionListener(this);
 }
@@ -1721,6 +1724,7 @@ void SocialWindow::showPartyCreate()
     mPartyCreateDialog = new TextDialog(_("Party Name"),
         // TRANSLATORS: party creation message
         _("Choose your party's name."), this);
+    mPartyCreateDialog->postInit();
     mPartyCreateDialog->setActionEventId("create party");
     mPartyCreateDialog->addActionListener(this);
 }
