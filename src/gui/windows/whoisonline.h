@@ -118,6 +118,8 @@ public:
      */
     ~WhoIsOnline();
 
+    void postInit();
+
     /**
      * Loads and display online list from the memory buffer.
      */

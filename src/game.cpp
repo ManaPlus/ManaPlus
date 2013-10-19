@@ -261,6 +261,7 @@ static void createGuiWindows()
 
     botCheckerWindow = new BotCheckerWindow;
     whoIsOnline = new WhoIsOnline;
+    whoIsOnline->postInit();
     killStats = new KillStats;
     socialWindow = new SocialWindow;
     socialWindow->postInit();

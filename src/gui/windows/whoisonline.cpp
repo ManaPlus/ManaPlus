@@ -101,10 +101,14 @@ WhoIsOnline::WhoIsOnline() :
 {
     mCurlError[0] = 0;
     setWindowName("WhoIsOnline");
+}
 
+void WhoIsOnline::postInit()
+{
     const int h = 350;
     const int w = 200;
     setDefaultSize(w, h, ImageRect::CENTER);
+
     setVisible(false);
     setCloseButton(true);
     setResizable(true);
