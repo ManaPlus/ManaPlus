@@ -131,7 +131,7 @@ void Wallpaper::loadWallpapers()
     }
 
     PhysFs::freeList(imgs);
-    std::sort(wallpaperData.begin(), wallpaperData.end(), wallpaperCompare);
+    std::sort(wallpaperData.begin(), wallpaperData.end(), &wallpaperCompare);
 }
 
 std::string Wallpaper::getWallpaper(const int width, const int height)
