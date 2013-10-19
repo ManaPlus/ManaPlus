@@ -465,11 +465,13 @@ void StatusWindow::addAttribute(const int id, const std::string &name,
     if (modifiable)
     {
         disp = new ChangeDisplay(this, id, name, shortName);
+        disp->update();
         mAttrCont->add1(disp);
     }
     else
     {
         disp = new DerDisplay(this, id, name, shortName);
+        disp->update();
         mDAttrCont->add1(disp);
     }
     mAttrs[id] = disp;
@@ -784,8 +786,6 @@ DerDisplay::DerDisplay(const Widget2 *const widget,
 
     place(0, 0, mLabel, 3);
     place(3, 0, mValue, 2);
-
-    update();
 }
 
 ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
@@ -816,8 +816,6 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
 
         place(3, 0, mDec);
     }
-
-    update();
 }
 
 std::string ChangeDisplay::update()
