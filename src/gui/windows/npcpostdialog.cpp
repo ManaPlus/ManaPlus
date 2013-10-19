@@ -48,7 +48,6 @@ NpcPostDialog::NpcPostDialog(const int npcId):
     mSender(new TextField(this))
 {
     setContentSize(400, 180);
-
 }
 
 void NpcPostDialog::postInit()

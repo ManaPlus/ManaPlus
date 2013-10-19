@@ -28,16 +28,16 @@
 #include "utils/xml.h"
 
 class Animation;
-class Map;
 class SimpleAnimation;
 
 class RotationalParticle final : public ImageParticle
 {
     public:
-        RotationalParticle(Animation *const animation);
+        explicit RotationalParticle(Animation *const animation);
 
-        RotationalParticle(const XmlNodePtr animationNode,
-                           const std::string& dyePalettes = std::string());
+        explicit RotationalParticle(const XmlNodePtr animationNode,
+                                    const std::string& dyePalettes
+                                    = std::string());
 
         A_DELETE_COPY(RotationalParticle)
 

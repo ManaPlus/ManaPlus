@@ -64,7 +64,6 @@ BeingPopup::BeingPopup() :
         getThemeColor(Theme::POPUP_OUTLINE));
     mBeingComment->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
-
 }
 
 BeingPopup::~BeingPopup()

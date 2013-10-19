@@ -30,7 +30,6 @@
 #include <list>
 #include <string>
 
-class Map;
 class Particle;
 class ParticleEmitter;
 

@@ -28,7 +28,6 @@
 #include <map>
 
 class Image;
-class Map;
 
 /**
  * A particle that uses an image for its visualization.
@@ -42,7 +41,7 @@ class ImageParticle : public Particle
          * @param map   the map this particle appears on
          * @param image an Image instance, may not be NULL
          */
-        ImageParticle(Image *const image);
+        explicit ImageParticle(Image *const image);
 
         A_DELETE_COPY(ImageParticle)
 

@@ -59,7 +59,8 @@ class ScrollArea final : public gcn::ScrollArea,
          *
          * @param content the initial content to show in the scroll area
          */
-        explicit ScrollArea(gcn::Widget *const widget, const bool opaque = true,
+        explicit ScrollArea(gcn::Widget *const widget,
+                            const bool opaque = true,
                             const std::string &skin = "");
 
         A_DELETE_COPY(ScrollArea)
