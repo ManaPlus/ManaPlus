@@ -51,6 +51,15 @@ class Tab : public gcn::BasicContainer,
 
         virtual ~Tab();
 
+        enum
+        {
+            TAB_STANDARD    = 0,
+            TAB_HIGHLIGHTED = 1,
+            TAB_SELECTED    = 2,
+            TAB_UNUSED      = 3,
+            TAB_COUNT       = 4  // Must be last
+        };
+
         /**
          * Update the alpha value to the graphic components.
          */
@@ -160,8 +169,8 @@ class Tab : public gcn::BasicContainer,
         /** Load images if no other instances exist yet */
         void init();
 
-        static Skin *tabImg[4];    /**< Tab state graphics */
-        static int mInstances;     /**< Number of tab instances */
+        static Skin *tabImg[TAB_COUNT];  /**< Tab state graphics */
+        static int mInstances;           /**< Number of tab instances */
         static float mAlpha;
 
         const gcn::Color *mTabColor;

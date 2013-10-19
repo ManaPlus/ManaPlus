@@ -33,16 +33,7 @@
 int Tab::mInstances = 0;
 float Tab::mAlpha = 1.0;
 
-enum
-{
-    TAB_STANDARD = 0,  // 0
-    TAB_HIGHLIGHTED,   // 1
-    TAB_SELECTED,      // 2
-    TAB_UNUSED,        // 3
-    TAB_COUNT          // 4 - Must be last.
-};
-
-static std::string const data[TAB_COUNT] =
+static std::string const data[Tab::TAB_COUNT] =
 {
     "tab.xml",
     "tab_highlighted.xml",
@@ -50,7 +41,7 @@ static std::string const data[TAB_COUNT] =
     "tab_unused.xml"
 };
 
-Skin *Tab::tabImg[TAB_COUNT];
+Skin *Tab::tabImg[Tab::TAB_COUNT];
 
 Tab::Tab(const Widget2 *const widget) :
     gcn::BasicContainer(),
