@@ -48,6 +48,8 @@ class SpellPopup final : public Popup
          */
         ~SpellPopup();
 
+        void postInit() override;
+
         /**
          * Sets the info to be displayed given a particular item.
          */

@@ -39,7 +39,10 @@ SpellPopup::SpellPopup():
         getThemeColor(Theme::POPUP_OUTLINE));
     mItemComment->setForegroundColorAll(getThemeColor(Theme::POPUP),
         getThemeColor(Theme::POPUP_OUTLINE));
+}
 
+void SpellPopup::postInit()
+{
     add(mItemName);
     add(mItemComment);
 

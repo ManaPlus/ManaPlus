@@ -46,6 +46,8 @@ SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
     mNumber(number),
     mSpellClicked(false)
 {
+    mSpellPopup->postInit();
+
     addMouseListener(this);
     addWidgetListener(this);
 

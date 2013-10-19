@@ -61,6 +61,7 @@ ItemShortcutContainer::ItemShortcutContainer(const unsigned number) :
     mUnEquipedColor2(getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE))
 {
     mItemPopup->postInit();
+    mSpellPopup->postInit();
 
     addMouseListener(this);
     addWidgetListener(this);
