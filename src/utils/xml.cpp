@@ -213,7 +213,7 @@ namespace XML
         LIBXML_TEST_VERSION;
 
         // Suppress libxml2 error messages
-        xmlSetGenericErrorFunc(nullptr, xmlNullLogger);
+        xmlSetGenericErrorFunc(nullptr, &xmlNullLogger);
     }
 
     // Shutdown libxml
