@@ -46,6 +46,8 @@ EmoteShortcutContainer::EmoteShortcutContainer():
     mEmoteClicked(false),
     mEmoteMoved(0)
 {
+    mEmotePopup->postInit();
+
     addMouseListener(this);
     addWidgetListener(this);
 

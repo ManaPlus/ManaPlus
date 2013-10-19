@@ -130,6 +130,8 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mSplit(false),
     mCompactMode(false)
 {
+    mTextPopup->postInit();
+
     if (inventory)
     {
         setCaption(gettext(inventory->getName().c_str()));

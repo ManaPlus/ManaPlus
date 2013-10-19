@@ -33,6 +33,10 @@ TextPopup::TextPopup():
     Popup("TextPopup", "textpopup.xml"),
     mText()
 {
+}
+
+void TextPopup::postInit()
+{
     const int fontHeight = getFont()->getHeight();
     int y = 0;
     for (int f = 0; f < TEXTPOPUPCOUNT; f ++)

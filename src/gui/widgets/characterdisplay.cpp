@@ -47,6 +47,8 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
     mName(new Label(this, "wwwwwwwwwwwwwwwwwwwwwwww")),
     mPopup(new TextPopup)
 {
+    mPopup->postInit();
+
     mPlayerBox->setActionEventId("select");
     mPlayerBox->addActionListener(charSelectDialog);
     setActionEventId("use");

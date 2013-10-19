@@ -80,6 +80,7 @@ Viewport::Viewport() :
 {
     mBeingPopup->postInit();
     mPopupMenu->postInit();
+    mTextPopup->postInit();
 
     setOpaque(false);
     addMouseListener(this);

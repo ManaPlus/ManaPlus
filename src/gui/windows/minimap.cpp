@@ -58,6 +58,8 @@ Minimap::Minimap() :
     mCustomMapImage(false),
     mAutoResize(config.getBoolValue("autoresizeminimaps"))
 {
+    mTextPopup->postInit();
+
     setWindowName("Minimap");
     mShow = config.getValueBool(getWindowName() + "Show", true);
 

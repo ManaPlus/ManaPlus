@@ -59,6 +59,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     mAutoHide(1),
     mSmallWindow(mainGraphics->getWidth() < 600)
 {
+    mTextPopup->postInit();
     int x = mPadding;
     int h = 0;
 

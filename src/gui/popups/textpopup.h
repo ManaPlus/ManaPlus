@@ -48,6 +48,8 @@ class TextPopup final : public Popup
          */
         ~TextPopup();
 
+        void postInit() override;
+
         /**
          * Sets the text to be displayed.
          */

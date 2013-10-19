@@ -91,7 +91,9 @@ MiniStatusWindow::MiniStatusWindow() :
     mTextPopup(new TextPopup),
     mStatusPopup(new StatusPopup)
 {
+    mTextPopup->postInit();
     mStatusPopup->postInit();
+
     listen(CHANNEL_ATTRIBUTES);
 
     StatusWindow::updateHPBar(mHpBar);

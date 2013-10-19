@@ -70,6 +70,8 @@ class SkillListBox final : public ListBox
             mRowHeight(getFont()->getHeight() * 2 + mSpacing + 2 * mPadding),
             mSkillClicked(false)
         {
+            mPopup->postInit();
+
             if (mRowHeight < 34)
                 mRowHeight = 34;
         }
