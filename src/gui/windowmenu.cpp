@@ -332,7 +332,7 @@ void WindowMenu::updateButtons()
     FOR_EACH (std::vector <Button*>::const_iterator, it, mButtons)
         safeRemove(*it);
     const int pad2 = 2 * mPadding;
-    FOR_EACH (std::vector <Button*>::const_iterator, it, mButtons)
+    FOR_EACH (std::vector <Button*>::iterator, it, mButtons)
     {
         Button *const btn = dynamic_cast<Button *const>(*it);
         if (!btn)
