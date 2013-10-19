@@ -51,6 +51,8 @@ class UnRegisterDialog final : public Window, public gcn::ActionListener
 
         ~UnRegisterDialog();
 
+        void postInit() override;
+
         /**
          * Called when receiving actions from the widgets.
          */

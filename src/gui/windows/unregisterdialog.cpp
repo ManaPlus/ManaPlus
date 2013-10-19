@@ -54,6 +54,10 @@ UnRegisterDialog::UnRegisterDialog(LoginData *const data) :
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener)
 {
+}
+
+void UnRegisterDialog::postInit()
+{
     // TRANSLATORS: unregister dialog. label.
     Label *const userLabel = new Label(this, strprintf(_("Name: %s"),
         mLoginData->username.c_str()));

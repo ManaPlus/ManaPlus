@@ -1659,6 +1659,7 @@ int Client::gameExec()
                 case STATE_UNREGISTER:
                     logger->log1("State: UNREGISTER");
                     mCurrentDialog = new UnRegisterDialog(&loginData);
+                    mCurrentDialog->postInit();
                     break;
 
                 case STATE_UNREGISTER_ATTEMPT:
