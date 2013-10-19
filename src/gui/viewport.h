@@ -123,7 +123,7 @@ class Viewport final : public WindowContainer,
          * Shows a popup for an item.
          * TODO Find some way to get rid of Item here
          */
-        void showPopup(Window *parent, const int x, const int y,
+        void showPopup(Window *const parent, const int x, const int y,
                        Item *const item, const bool isInventory = true);
 
         /**
