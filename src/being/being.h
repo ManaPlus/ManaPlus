@@ -155,10 +155,8 @@ class Being : public ActorSprite, public ConfigListener
          *
          * @param id      a unique being id
          * @param subtype partly determines the type of the being
-         * @param map     the map the being is on
          */
-        Being(const int id, const Type type, const uint16_t subtype,
-              Map *const map);
+        Being(const int id, const Type type, const uint16_t subtype);
 
         A_DELETE_COPY(Being)
 
