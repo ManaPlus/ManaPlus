@@ -147,7 +147,7 @@ Button::Button(const Widget2 *const widget,
     mPressed(false)
 {
     init();
-    loadImage(imageName);
+    loadImageSet(imageName);
     adjustSize();
     setActionEventId(actionEventId);
 
@@ -181,6 +181,46 @@ Button::Button(const Widget2 *const widget, const std::string &imageName,
     mYOffset(0),
     mImageWidth(imageWidth),
     mImageHeight(imageHeight),
+    mRedraw(true),
+    mStick(false),
+    mPressed(false)
+{
+    init();
+    loadImageSet(imageName);
+    adjustSize();
+    setActionEventId(actionEventId);
+
+    if (listener)
+        addActionListener(listener);
+}
+
+Button::Button(const Widget2 *const widget,
+               const std::string &caption,
+               const std::string &imageName,
+               const std::string &actionEventId,
+               gcn::ActionListener *const listener) :
+    gcn::Button(caption),
+    Widget2(widget),
+    gcn::WidgetListener(),
+    mDescription(),
+    mVertexes2(new ImageCollection),
+    mEnabledColor(getThemeColor(Theme::BUTTON)),
+    mEnabledColor2(getThemeColor(Theme::BUTTON_OUTLINE)),
+    mDisabledColor(getThemeColor(Theme::BUTTON_DISABLED)),
+    mDisabledColor2(getThemeColor(Theme::BUTTON_DISABLED_OUTLINE)),
+    mHighlightedColor(getThemeColor(Theme::BUTTON_HIGHLIGHTED)),
+    mHighlightedColor2(getThemeColor(Theme::BUTTON_HIGHLIGHTED_OUTLINE)),
+    mPressedColor(getThemeColor(Theme::BUTTON_PRESSED)),
+    mPressedColor2(getThemeColor(Theme::BUTTON_PRESSED_OUTLINE)),
+    mImages(nullptr),
+    mImageSet(nullptr),
+    mClickCount(0),
+    mTag(0),
+    mMode(0),
+    mXOffset(0),
+    mYOffset(0),
+    mImageWidth(0),
+    mImageHeight(0),
     mRedraw(true),
     mStick(false),
     mPressed(false)
@@ -247,6 +287,19 @@ Button::~Button()
 }
 
 void Button::loadImage(const std::string &imageName)
+{
+    if (mImageSet)
+    {
+        mImageSet->decRef();
+        mImageSet = nullptr;
+    }
+    Image *const image = Theme::getImageFromThemeXml(imageName, "");
+    mImages = new Image*[BUTTON_COUNT];
+    for (int f = 0; f < BUTTON_COUNT; f ++)
+        mImages[f] = image;
+}
+
+void Button::loadImageSet(const std::string &imageName)
 {
     if (mImageSet)
     {
