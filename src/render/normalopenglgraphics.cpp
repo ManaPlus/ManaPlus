@@ -1170,7 +1170,6 @@ bool NormalOpenGLGraphics::pushClipArea(gcn::Rectangle area)
     transX += clipArea.xOffset;
     transY += clipArea.yOffset;
 
-    glPushMatrix();
     if (transX || transY)
     {
         glTranslatef(static_cast<GLfloat>(transX),
@@ -1184,13 +1183,26 @@ bool NormalOpenGLGraphics::pushClipArea(gcn::Rectangle area)
 
 void NormalOpenGLGraphics::popClipArea()
 {
+    if (mClipStack.empty())
+        return;
+
+    const gcn::ClipRectangle &clipArea1 = mClipStack.top();
+    int transX = -clipArea1.xOffset;
+    int transY = -clipArea1.yOffset;
+
     gcn::Graphics::popClipArea();
 
     if (mClipStack.empty())
         return;
 
-    glPopMatrix();
     const gcn::ClipRectangle &clipArea = mClipStack.top();
+    transX += clipArea.xOffset;
+    transY += clipArea.yOffset;
+    if (transX || transY)
+    {
+        glTranslatef(static_cast<GLfloat>(transX),
+                     static_cast<GLfloat>(transY), 0);
+    }
     glScissor(clipArea.x, mRect.h - clipArea.y - clipArea.height,
         clipArea.width, clipArea.height);
 }
