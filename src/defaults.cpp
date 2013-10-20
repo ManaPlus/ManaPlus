@@ -132,6 +132,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("customcursor", true);
     AddDEF("showDidYouKnow", true);
 #endif
+    AddDEF("showEmotesButton", true);
     AddDEF("screen", false);
     AddDEF("hwaccel", false);
     AddDEF("sound", false);

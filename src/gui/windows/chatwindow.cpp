@@ -48,6 +48,7 @@
 
 #include "gui/widgets/tabs/battletab.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/scrollarea.h"
@@ -119,10 +120,15 @@ class ChatInput final : public TextField
             if (!n)
                 mFocusGaining = true;
             setVisible(n);
-            if (config.getBoolValue("hideChatInput"))
+            if (config.getBoolValue("hideChatInput")
+                || config.getBoolValue("showEmotesButton"))
+            {
                 mWindow->adjustTabSize();
+            }
             if (emoteWindow)
+            {
                 emoteWindow->hide();
+            }
         }
 
         void unprotectFocus()
@@ -210,6 +216,7 @@ ChatWindow::ChatWindow():
     mTradeFilter(),
     mColorListModel(new ColorListModel),
     mColorPicker(new DropDown(this, mColorListModel)),
+    mChatButton(new Button(this, ":)", "openemote", this)),
     mChatColor(config.getIntValue("chatColor")),
     mChatHistoryIndex(0),
     mAwayLog(),
@@ -261,6 +268,8 @@ ChatWindow::ChatWindow():
 
     if (emoteWindow)
         emoteWindow->addListeners(this);
+
+    mChatButton->adjustSize();
 
     mChatTabs->enableScrollButtons(true);
     mChatTabs->setFollowDownScroll(true);
@@ -317,6 +326,7 @@ void ChatWindow::postInit()
     add(mChatTabs);
     add(mChatInput);
     add(mColorPicker);
+    add(mChatButton);
     updateVisibility();
 }
 
@@ -361,14 +371,27 @@ void ChatWindow::adjustTabSize()
     const int inputHeight = mChatInput->getHeight();
     const int frame2 = 2 * frame;
     const int awFrame2 = aw - frame2;
-    mChatInput->setPosition(frame, ah - inputHeight - frame);
-    mChatInput->setWidth(awFrame2);
+    const bool showEmotes = config.getBoolValue("showEmotesButton");
+    const int chatButtonSize = showEmotes ? 20 : 0;
+    const int y = ah - inputHeight - frame;
+    mChatInput->setPosition(frame, y);
+    mChatInput->setWidth(awFrame2 - chatButtonSize);
     mChatTabs->setWidth(awFrame2);
     const int height = ah - frame2 - (inputHeight + frame2);
     if (mChatInput->isVisible() || !config.getBoolValue("hideChatInput"))
         mChatTabs->setHeight(height);
     else
         mChatTabs->setHeight(height + inputHeight);
+
+    if (showEmotes)
+    {
+        mChatButton->setVisible(mChatInput->isVisible());
+        mChatButton->setPosition(aw - frame - chatButtonSize, y);
+    }
+    else
+    {
+        mChatButton->setVisible(false);
+    }
 
     const ChatTab *const tab = getFocused();
     if (tab)
@@ -508,6 +531,16 @@ void ChatWindow::action(const gcn::ActionEvent &event)
                 addInputText(str, false);
                 emoteWindow->clearEmote();
             }
+        }
+    }
+    else if (eventId == "openemote")
+    {
+        if (emoteWindow)
+        {
+            if (emoteWindow->isVisible())
+                emoteWindow->hide();
+            else
+                emoteWindow->show();
         }
     }
     else if (eventId == "color")

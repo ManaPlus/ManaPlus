@@ -36,6 +36,7 @@
 #include <map>
 #include <set>
 
+class Button;
 class ChatTab;
 class ChatInput;
 class ColorListModel;
@@ -360,6 +361,7 @@ class ChatWindow final : public Window,
 
         ColorListModel *mColorListModel;
         DropDown *mColorPicker;
+        Button *mChatButton;
         int mChatColor;
         unsigned int mChatHistoryIndex;
         std::list<std::string> mAwayLog;

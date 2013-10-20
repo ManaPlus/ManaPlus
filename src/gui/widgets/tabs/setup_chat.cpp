@@ -120,6 +120,10 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Hide shop messages"), "",
         "hideShopMessages", this, "hideShopMessagesEvent");
 
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Show MVP messages"), "",
+        "showMVP", this, "showMVPEvent");
+
 
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Tabs"), "", this);
@@ -184,8 +188,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "globalsFilter", this, "globalsFilterEvent");
 
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Show MVP messages"), "",
-        "showMVP", this, "showMVPEvent");
+    new SetupItemCheckBox(_("Show emotes button in chat"), "",
+        "showEmotesButton", this, "showEmotesButtonEvent");
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
