@@ -372,7 +372,6 @@ void ChatWindow::adjustTabSize()
     const int frame2 = 2 * frame;
     const int awFrame2 = aw - frame2;
     const bool showEmotes = config.getBoolValue("showEmotesButton");
-    const int chatButtonSize = 20;
     int y = ah - inputHeight - frame;
     mChatInput->setPosition(frame, y);
     mChatTabs->setWidth(awFrame2);
@@ -384,6 +383,7 @@ void ChatWindow::adjustTabSize()
 
     if (showEmotes)
     {
+        const int chatButtonSize = 20;
         int w = awFrame2 - chatButtonSize;
         int x = aw - frame - chatButtonSize;
         if (mSkin)
