@@ -905,7 +905,12 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
     {
         case Key::F1:
             if (emoteWindow)
-                emoteWindow->show();
+            {
+                if (emoteWindow->isVisible())
+                    emoteWindow->hide();
+                else
+                    emoteWindow->show();
+            }
             break;
         caseKey(Key::F2, "\u2318");
         caseKey(Key::F3, "\u263A");
