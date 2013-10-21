@@ -276,7 +276,7 @@ int TestMain::readValue(const int ver, int def)
 
 int TestMain::invokeTest(std::string test)
 {
-    mConfig.setValue("opengl", 0);
+    mConfig.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
 
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test);
@@ -294,7 +294,7 @@ int TestMain::invokeTest4()
 
 int TestMain::invokeSoftwareRenderTest(std::string test)
 {
-    mConfig.setValue("opengl", 0);
+    mConfig.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
@@ -303,7 +303,7 @@ int TestMain::invokeSoftwareRenderTest(std::string test)
 
 int TestMain::invokeFastOpenGLRenderTest(std::string test)
 {
-    mConfig.setValue("opengl", 1);
+    mConfig.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
@@ -312,7 +312,7 @@ int TestMain::invokeFastOpenGLRenderTest(std::string test)
 
 int TestMain::invokeFastOpenBatchTest(std::string test)
 {
-    mConfig.setValue("opengl", 1);
+    mConfig.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
 //    log->log("%s: %d", test.c_str(), ret);
@@ -321,7 +321,7 @@ int TestMain::invokeFastOpenBatchTest(std::string test)
 
 int TestMain::invokeSafeOpenGLRenderTest(std::string test)
 {
-    mConfig.setValue("opengl", 2);
+    mConfig.setValue("opengl", static_cast<int>(RENDER_SAFE_OPENGL));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);

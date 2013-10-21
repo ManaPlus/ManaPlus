@@ -2076,16 +2076,16 @@ void Client::initConfiguration() const
     config.setValue("hwaccel", false);
 #ifdef USE_OPENGL
 #if (defined __APPLE__)
-    config.setValue("opengl", 1);
+    config.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
 #elif (defined ANDROID)
-    config.setValue("opengl", 3);
+    config.setValue("opengl", static_cast<int>(RENDER_GLES_OPENGL));
 #elif (defined WIN32)
-    config.setValue("opengl", 2);
+    config.setValue("opengl", static_cast<int>(RENDER_SAFE_OPENGL));
 #else
-    config.setValue("opengl", 0);
+    config.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
 #endif
 #else
-    config.setValue("opengl", 0);
+    config.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
 #endif
     config.setValue("screen", false);
     config.setValue("sound", true);
@@ -2350,11 +2350,11 @@ void Client::storeSafeParameters() const
         config.setValue("hwaccel", false);
 
 #if defined(ANDROID)
-        config.setValue("opengl", 2);
+        config.setValue("opengl", static_cast<int>(RENDER_GLES_OPENGL));
 #elif defined(__APPLE__)
-        config.setValue("opengl", 1);
+        config.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
 #else
-        config.setValue("opengl", 0);
+        config.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
 #endif
         config.setValue("altfpslimit", 3);
         config.setValue("sound", false);
@@ -2379,13 +2379,14 @@ void Client::storeSafeParameters() const
     else
     {
         // if video mode not configured reset only video mode to safe
-        config.setValue("opengl", 0);
 #ifdef ANDROID
         config.setValue("screenwidth", 0);
         config.setValue("screenheight", 0);
+        config.setValue("opengl", static_cast<int>(RENDER_GLES_OPENGL));
 #else
         config.setValue("screenwidth", 640);
         config.setValue("screenheight", 480);
+        config.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
 #endif
     }
 

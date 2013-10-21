@@ -162,7 +162,7 @@ int GraphicsManager::detectGraphics()
     initOpenGL();
     logVersion();
 
-    int mode = 1;
+    RenderType mode = RENDER_NORMAL_OPENGL;
 
     // detecting features by known renderers or vendors
     if (findI(mGlRenderer, "gdi generic") != std::string::npos)
@@ -170,35 +170,35 @@ int GraphicsManager::detectGraphics()
         // windows gdi OpenGL emulation
         logger->log("detected gdi drawing");
         logger->log("disable OpenGL");
-        mode = 0;
+        mode = RENDER_SOFTWARE;
     }
     else if (findI(mGlRenderer, "Software Rasterizer") != std::string::npos)
     {
         // software OpenGL emulation
         logger->log("detected software drawing");
         logger->log("disable OpenGL");
-        mode = 0;
+        mode = RENDER_SOFTWARE;
     }
     else if (findI(mGlRenderer, "Indirect") != std::string::npos)
     {
         // indirect OpenGL drawing
         logger->log("detected indirect drawing");
         logger->log("disable OpenGL");
-        mode = 0;
+        mode = RENDER_SOFTWARE;
     }
     else if (findI(mGlVendor, "VMWARE") != std::string::npos)
     {
         // vmware emulation
         logger->log("detected VMWARE driver");
         logger->log("disable OpenGL");
-        mode = 0;
+        mode = RENDER_SOFTWARE;
     }
     else if (findI(mGlRenderer, "LLVM") != std::string::npos)
     {
         // llvm opengl emulation
         logger->log("detected llvm driver");
         logger->log("disable OpenGL");
-        mode = 0;
+        mode = RENDER_SOFTWARE;
     }
     else if (findI(mGlVendor, "NVIDIA") != std::string::npos)
     {
@@ -206,7 +206,7 @@ int GraphicsManager::detectGraphics()
         logger->log("detected NVIDIA driver");
         config.setValue("useTextureSampler", true);
         textureSampler = 1;
-        mode = 1;
+        mode = RENDER_NORMAL_OPENGL;
     }
 
     // detecting feature based on OpenGL version
@@ -214,7 +214,7 @@ int GraphicsManager::detectGraphics()
     {
         // very old OpenGL version
         logger->log("OpenGL version too old");
-        mode = 0;
+        mode = RENDER_SOFTWARE;
     }
 
     if (mode > 0 && findI(mGlVersionString, "Mesa") != std::string::npos)
@@ -224,7 +224,7 @@ int GraphicsManager::detectGraphics()
         compressTextures = 0;
     }
 
-    config.setValue("opengl", mode);
+    config.setValue("opengl", static_cast<int>(mode));
     config.setValue("videoconfigured", true);
     config.write();
 
