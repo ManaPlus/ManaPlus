@@ -545,8 +545,9 @@ void Client::gameInit()
 #ifdef USE_SDL2
     if (getenv("APPDIR"))
     {
-        resman->addToSearchPath(std::string(getenv("APPDIR"))
-            + "/data", false);
+        const std::string appDir = getenv("APPDIR");
+        resman->addToSearchPath(appDir + "/data", false);
+        resman->addToSearchPath(appDir + "/data/perserver/default", false);
     }
 #endif
 #endif
