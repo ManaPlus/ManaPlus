@@ -224,6 +224,21 @@ void ShopListBox::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
+void ShopListBox::mouseReleased(gcn::MouseEvent& mouseEvent)
+{
+    ListBox::mousePressed(mouseEvent);
+    if (mouseEvent.getButton() == gcn::MouseEvent::RIGHT)
+    {
+        setSelected(std::max(0, getSelectionByMouse(mouseEvent.getY())));
+
+        if (mSelected < 0 || mSelected >= mShopItems->getNumberOfElements())
+            return;
+
+        Item *const item = mShopItems->at(mSelected);
+        viewport->showItemPopup(item);
+    }
+}
+
 void ShopListBox::mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED)
 {
     if (!mItemPopup)

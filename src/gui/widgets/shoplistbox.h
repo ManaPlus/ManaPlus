@@ -82,6 +82,8 @@ class ShopListBox final : public ListBox
 
         void mouseMoved(gcn::MouseEvent &event) override;
 
+        void mouseReleased(gcn::MouseEvent& mouseEvent) override;
+
         void mouseExited(gcn::MouseEvent& mouseEvent) override;
 
         void setProtectItems(bool p)
