@@ -376,7 +376,9 @@ void Client::gameInit()
 
     config.incValue("runcount");
 
+#ifndef ANDROID
     storeSafeParameters();
+#endif
 
     const ResourceManager *const resman = ResourceManager::getInstance();
     if (!resman->setWriteDir(mLocalDataDir))
@@ -2348,24 +2350,11 @@ void Client::storeSafeParameters() const
     {
         // if video mode configured reset most settings to safe
         config.setValue("hwaccel", false);
-
-#if defined(ANDROID)
-        config.setValue("opengl", static_cast<int>(RENDER_GLES_OPENGL));
-#elif defined(__APPLE__)
-        config.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
-#else
-        config.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
-#endif
         config.setValue("altfpslimit", 3);
         config.setValue("sound", false);
         config.setValue("safemode", true);
-#ifdef ANDROID
-        config.setValue("screenwidth", 0);
-        config.setValue("screenheight", 0);
-#else
         config.setValue("screenwidth", 640);
         config.setValue("screenheight", 480);
-#endif
         config.setValue("font", "fonts/dejavusans.ttf");
         config.setValue("boldFont", "fonts/dejavusans-bold.ttf");
         config.setValue("particleFont", "fonts/dejavusans.ttf");
@@ -2379,16 +2368,14 @@ void Client::storeSafeParameters() const
     else
     {
         // if video mode not configured reset only video mode to safe
-#ifdef ANDROID
-        config.setValue("screenwidth", 0);
-        config.setValue("screenheight", 0);
-        config.setValue("opengl", static_cast<int>(RENDER_GLES_OPENGL));
-#else
         config.setValue("screenwidth", 640);
         config.setValue("screenheight", 480);
-        config.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
-#endif
     }
+#if defined(__APPLE__)
+    config.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
+#else
+    config.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
+#endif
 
     config.write();
 
