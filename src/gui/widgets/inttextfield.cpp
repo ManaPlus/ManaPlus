@@ -22,6 +22,10 @@
 
 #include "gui/widgets/inttextfield.h"
 
+#ifdef USE_SDL2
+#include "gui/sdlinput.h"
+#endif
+
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
@@ -58,8 +62,25 @@ void IntTextField::keyPressed(gcn::KeyEvent &event)
         event.consume();
     }
 
+#ifdef USE_SDL2
+    const int val = event.getKey().getValue();
+    if (val != Key::TEXTINPUT)
+        return;
+
+    const std::string str = static_cast<KeyEvent*>(&event)->getText();
+    if (str.empty())
+        return;
+    const size_t sz = str.size();
+    for (size_t f = 0; f < sz; f ++)
+    {
+        const char chr = str[f];
+        if (chr < '0' || chr > '9')
+            return;
+    }
+#else
     if (!event.getKey().isNumber())
         return;
+#endif
 
     TextField::keyPressed(event);
 
