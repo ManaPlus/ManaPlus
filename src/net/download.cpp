@@ -117,15 +117,14 @@ unsigned long Download::fadler32(FILE *const file)
     rewind(file);
 
     // Calculate Adler-32 checksum
-    char *const buffer = static_cast<char*>(malloc(fileSize));
+    char *const buffer = new char[fileSize];
     if (!buffer)
         return 0;
     const uInt read = static_cast<uInt>(fread(buffer, 1, fileSize, file));
     unsigned long adler = adler32(0L, Z_NULL, 0);
     adler = adler32(static_cast<uInt>(adler),
         reinterpret_cast<Bytef*>(buffer), read);
-    free(buffer);
-
+    delete [] buffer;
     return adler;
 }
 

@@ -449,7 +449,7 @@ SDL_Surface* SafeOpenGLGraphics::getScreenshot()
 
     // Flip the screenshot, as OpenGL has 0,0 in bottom left
     unsigned int lineSize = 3 * w;
-    GLubyte* buf = static_cast<GLubyte*>(malloc(lineSize));
+    GLubyte* buf = new GLubyte[lineSize];
 
     const int h2 = h / 2;
     for (int i = 0; i < h2; i++)
@@ -464,7 +464,7 @@ SDL_Surface* SafeOpenGLGraphics::getScreenshot()
         memcpy(bot, buf, lineSize);
     }
 
-    free(buf);
+    delete [] buf;
 
     if (config.getBoolValue("usefbo"))
         graphicsManager.deleteFBO(&mFbo);

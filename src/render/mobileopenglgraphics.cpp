@@ -906,7 +906,7 @@ SDL_Surface* MobileOpenGLGraphics::getScreenshot()
         SDL_LockSurface(screenshot);
 
     const unsigned int lineSize = 3 * w;
-    GLubyte *const buf = static_cast<GLubyte*>(malloc(lineSize));
+    GLubyte *const buf = new GLubyte[lineSize];
     if (!buf)
         return nullptr;
 
@@ -929,7 +929,7 @@ SDL_Surface* MobileOpenGLGraphics::getScreenshot()
         memcpy(bot, buf, lineSize);
     }
 
-    free(buf);
+    delete [] buf;
 
     if (config.getBoolValue("usefbo"))
         graphicsManager.deleteFBO(&mFbo);

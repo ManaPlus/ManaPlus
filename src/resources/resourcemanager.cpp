@@ -968,13 +968,13 @@ bool ResourceManager::copyFile(const std::string &src,
     }
 
     const int fileSize = static_cast<const int>(PHYSFS_fileLength(srcFile));
-    void *buf = malloc(fileSize);
+    void *buf = new char[fileSize];
     PHYSFS_read(srcFile, buf, 1, fileSize);
     PHYSFS_write(dstFile, buf, 1, fileSize);
 
     PHYSFS_close(srcFile);
     PHYSFS_close(dstFile);
-    free(buf);
+    delete [] buf;
     return true;
 }
 
