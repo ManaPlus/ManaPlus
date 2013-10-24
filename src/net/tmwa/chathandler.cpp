@@ -62,9 +62,6 @@ ChatHandler::ChatHandler() :
 
 void ChatHandler::handleMessage(Net::MessageIn &msg)
 {
-    if (!localChatTab)
-        return;
-
     BLOCK_START("ChatHandler::handleMessage")
     switch (msg.getId())
     {

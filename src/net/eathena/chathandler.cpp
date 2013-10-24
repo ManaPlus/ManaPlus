@@ -58,9 +58,6 @@ ChatHandler::ChatHandler() :
 
 void ChatHandler::handleMessage(Net::MessageIn &msg)
 {
-    if (!localChatTab)
-        return;
-
     switch (msg.getId())
     {
         case SMSG_WHISPER_RESPONSE:

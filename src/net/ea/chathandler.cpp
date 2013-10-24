@@ -47,7 +47,8 @@ namespace Ea
 
 ChatHandler::ChatHandler() :
     mSentWhispers(),
-    mShowAllLang(serverConfig.getValue("showAllLang", 0))
+    mShowAllLang(serverConfig.getValue("showAllLang", 0)),
+    mShowMotd(config.getBoolValue("showmotd"))
 {
 }
 
@@ -355,7 +356,10 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
         trim(chatMsg);
 
         if (player_node)
-            player_node->setSpeech(chatMsg, channel);
+        {
+            if (chatWindow || mShowMotd)
+                player_node->setSpeech(chatMsg, channel);
+        }
     }
     else if (localChatTab)
     {

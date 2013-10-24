@@ -191,6 +191,10 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Show emotes button in chat"), "",
         "showEmotesButton", this, "showEmotesButtonEvent");
 
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Show motd server message on start"), "",
+        "showmotd", this, "showmotdEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 

@@ -344,6 +344,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("inventorySortOrder", 0);
     AddDEF("storageSortOrder", 0);
     AddDEF("buySortOrder", 0);
+    AddDEF("showmotd", false);
     return configData;
 }
 
