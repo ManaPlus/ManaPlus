@@ -58,7 +58,7 @@ class NormalOpenGLGraphics final : public Graphics
 
         bool setVideoMode(const int w, const int h, const int bpp,
                           const bool fs, const bool hwaccel,
-                          const bool resize, const bool noFrame) override;
+                          const bool resize, const bool noFrame) override final;
 
 
         /**
@@ -68,7 +68,7 @@ class NormalOpenGLGraphics final : public Graphics
                                int dstX, int dstY,
                                const int width, const int height,
                                const int desiredWidth, const int desiredHeight,
-                               const bool useColor) override;
+                               const bool useColor) override final;
 
         /**
          * Used to get the smooth rescale option over the standard function.
@@ -81,7 +81,7 @@ class NormalOpenGLGraphics final : public Graphics
 
         void drawImagePattern(const Image *const image,
                               const int x, const int y,
-                              const int w, const int h) override;
+                              const int w, const int h) override final;
 
         /**
          * Draw a pattern based on a rescaled version of the given image...
@@ -90,44 +90,44 @@ class NormalOpenGLGraphics final : public Graphics
                                       const int x, const int y,
                                       const int w, const int h,
                                       const int scaledWidth,
-                                      const int scaledHeight) override;
+                                      const int scaledHeight) override final;
 
         void calcImagePattern(ImageVertexes* const vert,
                               const Image *const image,
                               const int x, const int y,
-                              const int w, const int h) const override;
+                              const int w, const int h) const override final;
 
         void calcImagePattern(ImageCollection* const vert,
                               const Image *const image,
                               const int x, const int y,
-                              const int w, const int h) const override;
+                              const int w, const int h) const override final;
 
         void calcTile(ImageVertexes *const vert, const Image *const image,
-                      int x, int y) const override;
+                      int x, int y) const override final;
 
         void calcTile(ImageCollection *const vertCol,
-                      const Image *const image, int x, int y) override;
+                      const Image *const image, int x, int y) override final;
 
-        void drawTile(const ImageCollection *const vertCol) override;
+        void drawTile(const ImageCollection *const vertCol) override final;
 
-        void drawTile(const ImageVertexes *const vert) override;
+        void drawTile(const ImageVertexes *const vert) override final;
 
         bool calcWindow(ImageCollection *const vertCol,
                         const int x, const int y,
                         const int w, const int h,
-                        const ImageRect &imgRect) override;
+                        const ImageRect &imgRect) override final;
 
-        void updateScreen() override;
+        void updateScreen() override final;
 
-        void _beginDraw();
+        void _beginDraw() override final;
 
-        void _endDraw();
+        void _endDraw() override final;
 
-        bool pushClipArea(gcn::Rectangle area);
+        bool pushClipArea(gcn::Rectangle area) override final;
 
-        void popClipArea();
+        void popClipArea() override final;
 
-        void setColor(const gcn::Color &color)
+        void setColor(const gcn::Color &color) override final
         {
             mColor = color;
             mColor2 = color;
@@ -141,15 +141,16 @@ class NormalOpenGLGraphics final : public Graphics
             mColorAlpha = (color.a != 255);
         }
 
-        void drawPoint(int x, int y);
+        void drawPoint(int x, int y) override final;
 
-        void drawLine(int x1, int y1, int x2, int y2);
+        void drawLine(int x1, int y1, int x2, int y2) override final;
 
-        void drawRectangle(const gcn::Rectangle &rect, const bool filled);
+        void drawRectangle(const gcn::Rectangle &rect,
+                           const bool filled);
 
-        void drawRectangle(const gcn::Rectangle &rect);
+        void drawRectangle(const gcn::Rectangle &rect) override final;
 
-        void fillRectangle(const gcn::Rectangle &rect);
+        void fillRectangle(const gcn::Rectangle &rect) override final;
 
         void setTargetPlane(int width, int height);
 
@@ -171,19 +172,19 @@ class NormalOpenGLGraphics final : public Graphics
 
         inline void drawVertexes(const NormalOpenGLGraphicsVertexes &ogl);
 
-        void initArrays() override;
+        void initArrays() override final;
 
         static void dumpSettings();
 
         /**
          * Takes a screenshot and returns it as SDL surface.
          */
-        SDL_Surface *getScreenshot() override A_WARN_UNUSED;
+        SDL_Surface *getScreenshot() override final A_WARN_UNUSED;
 
-        void prepareScreenshot() override;
+        void prepareScreenshot() override final;
 
         bool drawNet(const int x1, const int y1, const int x2, const int y2,
-                     const int width, const int height) override;
+                     const int width, const int height) override final;
 
         int getMemoryUsage() A_WARN_UNUSED;
 
@@ -210,7 +211,7 @@ class NormalOpenGLGraphics final : public Graphics
                         int srcX, int srcY,
                         int dstX, int dstY,
                         const int width, const int height,
-                        const bool useColor) override;
+                        const bool useColor) override final;
 
         void setTexturingAndBlending(const bool enable);
 

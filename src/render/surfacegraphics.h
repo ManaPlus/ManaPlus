@@ -57,16 +57,16 @@ class SurfaceGraphics : public Graphics
         SDL_Surface *getTarget() const
         { return mTarget; }
 
-        void _beginDraw()
+        void _beginDraw() override final
         { }
 
-        void _endDraw()
+        void _endDraw() override final
         { }
 
-        bool pushClipArea(gcn::Rectangle rect A_UNUSED)
+        bool pushClipArea(gcn::Rectangle rect A_UNUSED) override final
         { return true; }
 
-        void popClipArea()
+        void popClipArea() override final
         { }
 
         bool drawRescaledImage(const Image *const image A_UNUSED,
@@ -77,11 +77,14 @@ class SurfaceGraphics : public Graphics
                                const int desiredWidth A_UNUSED,
                                const int desiredHeight A_UNUSED,
                                const bool useColor A_UNUSED = false)
+                               override final
         { return false; }
 
         void drawImagePattern(const Image *const image A_UNUSED,
-                              const int x A_UNUSED, const int y A_UNUSED,
-                              const int w A_UNUSED, const int h A_UNUSED)
+                              const int x A_UNUSED,
+                              const int y A_UNUSED,
+                              const int w A_UNUSED,
+                              const int h A_UNUSED) override final
         { }
 
         void drawRescaledImagePattern(const Image *const image A_UNUSED,
@@ -91,6 +94,7 @@ class SurfaceGraphics : public Graphics
                                       const int h A_UNUSED,
                                       const int scaledWidth A_UNUSED,
                                       const int scaledHeight A_UNUSED)
+                                      override final
         { }
 
         void calcImagePattern(ImageVertexes *const vert A_UNUSED,
@@ -98,50 +102,56 @@ class SurfaceGraphics : public Graphics
                               const int x A_UNUSED,
                               const int y A_UNUSED,
                               const int w A_UNUSED,
-                              const int h A_UNUSED) const
+                              const int h A_UNUSED) const override final
         { }
 
         void calcImagePattern(ImageCollection *const vert A_UNUSED,
                               const Image *const image A_UNUSED,
-                              const int x A_UNUSED, const int y A_UNUSED,
-                              const int w A_UNUSED, const int h A_UNUSED) const
+                              const int x A_UNUSED,
+                              const int y A_UNUSED,
+                              const int w A_UNUSED,
+                              const int h A_UNUSED) const override final
         { }
 
         void calcTile(ImageVertexes *const vert A_UNUSED,
                       const Image *const image A_UNUSED,
-                      int x A_UNUSED, int y A_UNUSED) const
+                      int x A_UNUSED, int y A_UNUSED) const override final
         { }
 
         void calcTileSDL(ImageVertexes *const vert A_UNUSED,
-                         int x A_UNUSED, int y A_UNUSED) const
+                         int x A_UNUSED, int y A_UNUSED) const override final
         { }
 
         void calcTile(ImageCollection *const vertCol A_UNUSED,
                       const Image *const image A_UNUSED,
-                      int x A_UNUSED, int y A_UNUSED)
+                      int x A_UNUSED, int y A_UNUSED) override final
         { }
 
-        void drawTile(const ImageVertexes *const vert A_UNUSED)
+        void drawTile(const ImageVertexes *const vert A_UNUSED) override final
         { }
 
         void drawTile(const ImageCollection *const vertCol A_UNUSED)
+                      override final
         { }
 
         void updateScreen()
         { }
 
-        SDL_Surface *getScreenshot() A_WARN_UNUSED
+        SDL_Surface *getScreenshot() override final A_WARN_UNUSED
         { return nullptr; }
 
-        bool drawNet(const int x1 A_UNUSED, const int y1 A_UNUSED,
-                     const int x2 A_UNUSED, const int y2 A_UNUSED,
-                     const int width A_UNUSED, const int height A_UNUSED)
+        bool drawNet(const int x1 A_UNUSED,
+                     const int y1 A_UNUSED,
+                     const int x2 A_UNUSED,
+                     const int y2 A_UNUSED,
+                     const int width A_UNUSED,
+                     const int height A_UNUSED) override final
         { return false; }
 
         bool calcWindow(ImageCollection *const vertCol A_UNUSED,
                         const int x A_UNUSED, const int y A_UNUSED,
                         const int w A_UNUSED, const int h A_UNUSED,
-                        const ImageRect &imgRect A_UNUSED)
+                        const ImageRect &imgRect A_UNUSED) override final
         { return false; }
 
         void setBlitMode(const BlitMode mode)
@@ -150,24 +160,24 @@ class SurfaceGraphics : public Graphics
         BlitMode getBlitMode() const A_WARN_UNUSED
         { return mBlitMode; }
 
-        void fillRectangle(const gcn::Rectangle &rect A_UNUSED) override
+        void fillRectangle(const gcn::Rectangle &rect A_UNUSED) override final
         { }
 
-        void drawRectangle(const gcn::Rectangle &rect A_UNUSED) override
+        void drawRectangle(const gcn::Rectangle &rect A_UNUSED) override final
         { }
 
-        void drawPoint(int x A_UNUSED, int y A_UNUSED) override
+        void drawPoint(int x A_UNUSED, int y A_UNUSED) override final
         { }
 
         void drawLine(int x1 A_UNUSED, int y1 A_UNUSED,
-                      int x2 A_UNUSED, int y2 A_UNUSED) override
+                      int x2 A_UNUSED, int y2 A_UNUSED) override final
         { }
 
         bool setVideoMode(const int w A_UNUSED, const int h A_UNUSED,
                           const int bpp A_UNUSED,
                           const bool fs A_UNUSED, const bool hwaccel A_UNUSED,
                           const bool resize A_UNUSED,
-                          const bool noFrame A_UNUSED)
+                          const bool noFrame A_UNUSED) override final
         { return false; }
 
     protected:
@@ -175,7 +185,7 @@ class SurfaceGraphics : public Graphics
                         int srcX, int srcY,
                         int dstX, int dstY,
                         const int width, const int height,
-                        const bool useColor);
+                        const bool useColor) override final;
 
         BlitMode mBlitMode;
         SDL_Surface *mTarget;

@@ -332,7 +332,7 @@ class Graphics : public gcn::Graphics
         virtual void initArrays()
         { }
 
-        void setColor(const gcn::Color &color)
+        void setColor(const gcn::Color &color) override
         {
             mColor = color;
             mColor2 = color;
