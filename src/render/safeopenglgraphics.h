@@ -144,8 +144,6 @@ class SafeOpenGLGraphics final : public Graphics
 
         void fillRectangle(const gcn::Rectangle &rect) override final;
 
-        void setTargetPlane(int width, int height);
-
         /**
          * Takes a screenshot and returns it as SDL surface.
          */

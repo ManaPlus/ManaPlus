@@ -152,8 +152,6 @@ class NormalOpenGLGraphics final : public Graphics
 
         void fillRectangle(const gcn::Rectangle &rect) override final;
 
-        void setTargetPlane(int width, int height);
-
         inline void drawQuadArrayfi(const int size);
 
         inline void drawQuadArrayfi(const GLint *const intVertArray,

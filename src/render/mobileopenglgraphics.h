@@ -156,8 +156,6 @@ class MobileOpenGLGraphics final : public Graphics
 
         void fillRectangle(const gcn::Rectangle &rect) override final;
 
-        void setTargetPlane(int width, int height);
-
         inline void drawTriangleArrayfs(const GLshort *const shortVertArray,
                                         const GLfloat *const floatTexArray,
                                         const int size);

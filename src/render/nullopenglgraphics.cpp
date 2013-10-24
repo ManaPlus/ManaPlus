@@ -1004,11 +1004,6 @@ void NullOpenGLGraphics::fillRectangle(const gcn::Rectangle& rect)
     drawRectangle(rect, true);
 }
 
-void NullOpenGLGraphics::setTargetPlane(int width A_UNUSED,
-                                        int height A_UNUSED)
-{
-}
-
 void NullOpenGLGraphics::setTexturingAndBlending(const bool enable)
 {
     if (enable)

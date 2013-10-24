@@ -550,11 +550,6 @@ void SafeOpenGLGraphics::fillRectangle(const gcn::Rectangle& rect)
     drawRectangle(rect, true);
 }
 
-void SafeOpenGLGraphics::setTargetPlane(int width A_UNUSED,
-                                        int height A_UNUSED)
-{
-}
-
 void SafeOpenGLGraphics::setTexturingAndBlending(const bool enable)
 {
     if (enable)

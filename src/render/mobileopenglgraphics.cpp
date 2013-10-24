@@ -1038,11 +1038,6 @@ void MobileOpenGLGraphics::fillRectangle(const gcn::Rectangle& rect)
     drawRectangle(rect, true);
 }
 
-void MobileOpenGLGraphics::setTargetPlane(int width A_UNUSED,
-                                          int height A_UNUSED)
-{
-}
-
 void MobileOpenGLGraphics::setTexturingAndBlending(const bool enable)
 {
     if (enable)
