@@ -41,14 +41,14 @@ class TextParticle final : public Particle
          * Draws the particle image.
          */
         bool draw(Graphics *const graphics,
-                  const int offsetX, const int offsetY) const override;
+                  const int offsetX, const int offsetY) const override final;
 
         // hack to improve text visibility
-        int getPixelY() const override A_WARN_UNUSED
+        int getPixelY() const override final A_WARN_UNUSED
         { return static_cast<int>(mPos.y + mPos.z); }
 
         // hack to improve text visibility (for sorting only)
-        int getSortPixelY() const override A_WARN_UNUSED
+        int getSortPixelY() const override final A_WARN_UNUSED
         { return static_cast<int>(mPos.y + mPos.z); }
 
     private:

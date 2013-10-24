@@ -95,9 +95,9 @@ public:
      */
     void removeLocally(const Particle *const particle);
 
-    void clearLocally() override;
+    void clearLocally() override final;
 
-    void moveTo(const float x, const float y) override;
+    void moveTo(const float x, const float y) override final;
 
 protected:
     std::list<Particle *> mElements;    /**< Contained particle effects */
@@ -127,9 +127,9 @@ public:
      */
     void delLocally(const int index);
 
-    void clearLocally() override;
+    void clearLocally() override final;
 
-    void moveTo(const float x, const float y) override;
+    void moveTo(const float x, const float y) override final;
 
 protected:
     std::vector<Particle *> mIndexedElements;
