@@ -118,7 +118,7 @@ public:
      */
     ~WhoIsOnline();
 
-    void postInit() override;
+    void postInit() override final;
 
     /**
      * Loads and display online list from the memory buffer.
@@ -127,15 +127,16 @@ public:
 
     void loadList(std::vector<OnlinePlayer*> &list);
 
-    void handleLink(const std::string& link, gcn::MouseEvent *event) override;
+    void handleLink(const std::string& link,
+                    gcn::MouseEvent *event) override final;
 
-    void logic() override;
+    void logic() override final;
 
     void slowLogic();
 
-    void action(const gcn::ActionEvent &event) override;
+    void action(const gcn::ActionEvent &event) override final;
 
-    void widgetResized(const gcn::Event &event) override;
+    void widgetResized(const gcn::Event &event) override final;
 
     const std::set<OnlinePlayer*> &getOnlinePlayers() const A_WARN_UNUSED
     { return mOnlinePlayers; }
@@ -146,7 +147,7 @@ public:
     void setAllowUpdate(const bool n)
     { mAllowUpdate = n; }
 
-    void optionChanged(const std::string &name) override;
+    void optionChanged(const std::string &name) override final;
 
     void updateList(StringVect &list);
 

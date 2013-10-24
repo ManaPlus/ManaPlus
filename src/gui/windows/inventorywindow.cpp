@@ -85,10 +85,10 @@ public:
     ~SortListModelInv()
     { }
 
-    int getNumberOfElements() override
+    int getNumberOfElements() override final
     { return 6; }
 
-    std::string getElementAt(int i) override
+    std::string getElementAt(int i) override final
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";

@@ -50,15 +50,15 @@ class OutfitWindow final : public Window,
          */
         ~OutfitWindow();
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
-        void mousePressed(gcn::MouseEvent &event) override;
+        void mousePressed(gcn::MouseEvent &event) override final;
 
-        void mouseDragged(gcn::MouseEvent &event) override;
+        void mouseDragged(gcn::MouseEvent &event) override final;
 
-        void mouseReleased(gcn::MouseEvent &event) override;
+        void mouseReleased(gcn::MouseEvent &event) override final;
 
         void load(const bool oldConfig = false);
 

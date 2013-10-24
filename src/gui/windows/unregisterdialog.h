@@ -51,12 +51,12 @@ class UnRegisterDialog final : public Window, public gcn::ActionListener
 
         ~UnRegisterDialog();
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
     private:
         LoginData *mLoginData;

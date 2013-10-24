@@ -51,12 +51,12 @@ public:
 
     ~TextDialog();
 
-    void postInit() override;
+    void postInit() override final;
 
     /**
      * Called when receiving actions from the widgets.
      */
-    void action(const gcn::ActionEvent &event) override;
+    void action(const gcn::ActionEvent &event) override final;
 
     /**
      * Get the text in the textfield
@@ -68,7 +68,7 @@ public:
     static bool isActive() A_WARN_UNUSED
     { return instances; }
 
-    void close() override;
+    void close() override final;
 
 private:
     static int instances;

@@ -63,7 +63,7 @@ namespace
 
         A_DELETE_COPY(OpenUrlListener)
 
-        void action(const gcn::ActionEvent &event) override
+        void action(const gcn::ActionEvent &event) override final
         {
             if (event.getId() == "yes")
                 openBrowser(url);
@@ -94,12 +94,12 @@ class UpdateTypeModel final : public gcn::ListModel
         ~UpdateTypeModel()
         { }
 
-        int getNumberOfElements() override
+        int getNumberOfElements() override final
         {
             return 3;
         }
 
-        std::string getElementAt(int i) override
+        std::string getElementAt(int i) override final
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";
@@ -121,14 +121,14 @@ class UpdateListModel final : public gcn::ListModel
         ~UpdateListModel()
         { }
 
-        int getNumberOfElements() override
+        int getNumberOfElements() override final
         {
             if (!mLoginData)
                 return 0;
             return static_cast<int>(mLoginData->updateHosts.size());
         }
 
-        std::string getElementAt(int i) override
+        std::string getElementAt(int i) override final
         {
             if (!mLoginData || i >= getNumberOfElements() || i < 0)
                 return "???";

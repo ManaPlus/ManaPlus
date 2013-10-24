@@ -52,7 +52,7 @@ class WorldSelectDialog final : public Window, public gcn::ActionListener,
 
         A_DELETE_COPY(WorldSelectDialog)
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Destructor.
@@ -62,9 +62,9 @@ class WorldSelectDialog final : public Window, public gcn::ActionListener,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void keyPressed(gcn::KeyEvent &keyEvent) override;
+        void keyPressed(gcn::KeyEvent &keyEvent) override final;
 
     private:
         WorldListModel *mWorldListModel;

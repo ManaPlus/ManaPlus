@@ -139,7 +139,7 @@ class ChatWindow final : public Window,
         /**
          * Performs action.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         /**
          * Request focus for typing chat message.
@@ -169,7 +169,7 @@ class ChatWindow final : public Window,
         void localChatInput(const std::string &msg) const;
 
         /** Called when key is pressed */
-        void keyPressed(gcn::KeyEvent &event) override;
+        void keyPressed(gcn::KeyEvent &event) override final;
 
         /** Set the chat input as the given text. */
         void setInputText(const std::string &text);
@@ -186,15 +186,15 @@ class ChatWindow final : public Window,
         /**
          * Handles mouse when dragged.
          */
-        void mouseDragged(gcn::MouseEvent &event) override;
+        void mouseDragged(gcn::MouseEvent &event) override final;
 
         /**
          * Handles mouse when pressed.
          */
-        void mousePressed(gcn::MouseEvent &event) override;
+        void mousePressed(gcn::MouseEvent &event) override final;
 
         void processEvent(const Channels channel,
-                          const DepricatedEvent &event) override;
+                          const DepricatedEvent &event) override final;
 
         /**
          * Scrolls the chat window
@@ -271,25 +271,25 @@ class ChatWindow final : public Window,
 
         void copyToClipboard(const int x, const int y) const;
 
-        void optionChanged(const std::string &name) override;
+        void optionChanged(const std::string &name) override final;
 
-        void mouseEntered(gcn::MouseEvent& mouseEvent) override;
+        void mouseEntered(gcn::MouseEvent& mouseEvent) override final;
 
-        void mouseMoved(gcn::MouseEvent &event) override;
+        void mouseMoved(gcn::MouseEvent &event) override final;
 
-        void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED) override;
+        void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED) override final;
 
-        void draw(gcn::Graphics* graphics) override;
+        void draw(gcn::Graphics* graphics) override final;
 
         void updateVisibility();
 
         void unHideWindow();
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
         void addGlobalMessage(const std::string &line);
 
-        void postInit() override;
+        void postInit() override final;
 
 #ifdef USE_PROFILER
         void logicChildren();

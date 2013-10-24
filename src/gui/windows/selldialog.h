@@ -80,14 +80,14 @@ class SellDialog final : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         /**
          * Updates labels according to selected item.
          *
          * @see SelectionListener::selectionChanged
          */
-        void valueChanged(const gcn::SelectionEvent &event) override;
+        void valueChanged(const gcn::SelectionEvent &event) override final;
 
         /**
          * Gives Player's Money amount
@@ -97,7 +97,7 @@ class SellDialog final : public Window,
         /**
          * Sets the visibility of this window.
          */
-        void setVisible(bool visible) override;
+        void setVisible(bool visible) override final;
 
         void addItem(const int id, const unsigned char color,
                      const int amount, const int price);

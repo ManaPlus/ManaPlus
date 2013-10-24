@@ -61,7 +61,7 @@ class BotCheckerWindow final : public Window,
          */
         ~BotCheckerWindow();
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         void update();
 
@@ -71,7 +71,7 @@ class BotCheckerWindow final : public Window,
 
         void reset();
 
-        void optionChanged(const std::string &name) override;
+        void optionChanged(const std::string &name) override final;
 
 #ifdef USE_PROFILER
         void logicChildren();

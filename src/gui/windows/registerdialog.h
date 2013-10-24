@@ -47,7 +47,7 @@ class WrongDataNoticeListener final : public gcn::ActionListener
 
         void setTarget(TextField *const textField);
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
     private:
         TextField *mTarget;
 };

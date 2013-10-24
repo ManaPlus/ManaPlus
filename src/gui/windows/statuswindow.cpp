@@ -108,7 +108,7 @@ class DerDisplay final : public AttrDisplay
 
         A_DELETE_COPY(DerDisplay)
 
-        Type getType() const override
+        Type getType() const override final
         { return DERIVED; }
 };
 
@@ -121,14 +121,14 @@ class ChangeDisplay final : public AttrDisplay, gcn::ActionListener
 
         A_DELETE_COPY(ChangeDisplay)
 
-        std::string update() override;
+        std::string update() override final;
 
-        Type getType() const override
+        Type getType() const override final
         { return CHANGEABLE; }
 
         void setPointsNeeded(const int needed);
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
     private:
         int mNeeded;

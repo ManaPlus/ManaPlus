@@ -76,16 +76,16 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
          */
         ~EquipmentWindow();
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Draws the equipment window.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void mousePressed(gcn::MouseEvent& mouseEvent) override;
+        void mousePressed(gcn::MouseEvent& mouseEvent) override final;
 
         const Item* getEquipment(const int i) const A_WARN_UNUSED
         { return mEquipment ? mEquipment->getEquipment(i) : nullptr; }
@@ -96,11 +96,11 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
 
         void resetBeing(const Being *const being);
 
-        void mouseExited(gcn::MouseEvent &event) override;
+        void mouseExited(gcn::MouseEvent &event) override final;
 
-        void mouseMoved(gcn::MouseEvent &event) override;
+        void mouseMoved(gcn::MouseEvent &event) override final;
 
-        void mouseReleased(gcn::MouseEvent &event) override;
+        void mouseReleased(gcn::MouseEvent &event) override final;
 
         void recalcSize();
 

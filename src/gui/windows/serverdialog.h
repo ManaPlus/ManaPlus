@@ -60,12 +60,13 @@ class ServersListModel final : public gcn::ListModel
         /**
          * Used to get number of line in the list
          */
-        int getNumberOfElements() override A_WARN_UNUSED;
+        int getNumberOfElements() override final A_WARN_UNUSED;
 
         /**
          * Used to get an element from the list
          */
-        std::string getElementAt(int elementIndex) override A_WARN_UNUSED;
+        std::string getElementAt(int elementIndex)
+                                 override final A_WARN_UNUSED;
 
         /**
          * Used to get the corresponding Server struct
@@ -104,7 +105,7 @@ class ServerDialog final : public Window,
 
         A_DELETE_COPY(ServerDialog)
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Destructor
@@ -114,24 +115,24 @@ class ServerDialog final : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void keyPressed(gcn::KeyEvent &keyEvent) override;
+        void keyPressed(gcn::KeyEvent &keyEvent) override final;
 
         /**
          * Called when the selected value changed in the servers list box.
          */
-        void valueChanged(const gcn::SelectionEvent &event) override;
+        void valueChanged(const gcn::SelectionEvent &event) override final;
 
-        void mouseClicked(gcn::MouseEvent &mouseEvent) override;
+        void mouseClicked(gcn::MouseEvent &mouseEvent) override final;
 
-        void logic() override;
+        void logic() override final;
 
         void updateServer(const ServerInfo &server, const int index);
 
         void connectToSelectedServer();
 
-        void close() override;
+        void close() override final;
 
     protected:
         friend class ServersListModel;

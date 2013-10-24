@@ -60,13 +60,13 @@ class ShortcutWindow final : public Window
 
         int getTabIndex() const A_WARN_UNUSED;
 
-        void widgetHidden(const gcn::Event &event) override;
+        void widgetHidden(const gcn::Event &event) override final;
 
-        void widgetMoved(const gcn::Event& event) override;
+        void widgetMoved(const gcn::Event& event) override final;
 
-        void mousePressed(gcn::MouseEvent &event) override;
+        void mousePressed(gcn::MouseEvent &event) override final;
 
-        void mouseDragged(gcn::MouseEvent &event) override;
+        void mouseDragged(gcn::MouseEvent &event) override final;
 
 #ifdef USE_PROFILER
         void logicChildren();

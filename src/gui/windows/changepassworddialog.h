@@ -57,7 +57,7 @@ class ChangePasswordDialog final : public Window, public gcn::ActionListener
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
     private:
         TextField *mOldPassField;

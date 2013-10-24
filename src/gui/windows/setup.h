@@ -49,9 +49,9 @@ class Setup final : public Window, public gcn::ActionListener
 
         ~Setup();
 
-        void postInit() override;
+        void postInit() override final;
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         void setInGame(const bool inGame);
 
@@ -66,9 +66,9 @@ class Setup final : public Window, public gcn::ActionListener
 
         void activateTab(const std::string &name);
 
-        void setVisible(bool visible) override;
+        void setVisible(bool visible) override final;
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
     private:
         std::list<SetupTab*> mTabs;

@@ -60,13 +60,13 @@ class Minimap final : public Window, public ConfigListener
         /**
          * Draws the minimap.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
-        void mouseMoved(gcn::MouseEvent &event) override;
+        void mouseMoved(gcn::MouseEvent &event) override final;
 
-        void mouseReleased(gcn::MouseEvent &event) override;
+        void mouseReleased(gcn::MouseEvent &event) override final;
 
-        void mouseExited(gcn::MouseEvent &event) override;
+        void mouseExited(gcn::MouseEvent &event) override final;
 
         void screenToMap(int &x, int &y);
 

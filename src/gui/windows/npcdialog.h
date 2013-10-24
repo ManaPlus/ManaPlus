@@ -72,12 +72,12 @@ class NpcDialog final : public Window,
 
         ~NpcDialog();
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         /**
         * Sets the text shows in the dialog.
@@ -118,17 +118,17 @@ class NpcDialog final : public Window,
         /**
          * Returns the number of items in the choices list.
          */
-        int getNumberOfElements() override A_WARN_UNUSED;
+        int getNumberOfElements() override final A_WARN_UNUSED;
 
         /**
          * Returns the name of item number i of the choices list.
          */
-        std::string getElementAt(int i) override A_WARN_UNUSED;
+        std::string getElementAt(int i) override final A_WARN_UNUSED;
 
         /**
          * Returns the image of item number i of the choices list.
          */
-        const Image *getImageAt(int i) override A_WARN_UNUSED;
+        const Image *getImageAt(int i) override final A_WARN_UNUSED;
 
         /**
          * Makes this dialog request a choice selection from the user.
@@ -168,9 +168,9 @@ class NpcDialog final : public Window,
 
         void move(const int amount);
 
-        void setVisible(bool visible) override;
+        void setVisible(bool visible) override final;
 
-        void optionChanged(const std::string &name) override;
+        void optionChanged(const std::string &name) override final;
 
         /**
          * Returns true if any instances exist.
@@ -206,7 +206,7 @@ class NpcDialog final : public Window,
 
         void setAvatarAction(const int actionId);
 
-        void logic() override;
+        void logic() override final;
 
         void clearRows();
 

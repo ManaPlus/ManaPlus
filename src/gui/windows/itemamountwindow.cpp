@@ -84,12 +84,12 @@ public:
     ~ItemsModal()
     { }
 
-    int getNumberOfElements() override
+    int getNumberOfElements() override final
     {
         return static_cast<int>(mStrings.size());
     }
 
-    std::string getElementAt(int i) override
+    std::string getElementAt(int i) override final
     {
         if (i < 0 || i >= getNumberOfElements())
             return "???";

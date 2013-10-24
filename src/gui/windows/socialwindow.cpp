@@ -145,7 +145,7 @@ protected:
         }
     }
 
-    void setCurrent() override
+    void setCurrent() override final
     {
         updateCounter();
     }
@@ -207,7 +207,7 @@ public:
         mScroll = nullptr;
     }
 
-    void action(const gcn::ActionEvent &event) override
+    void action(const gcn::ActionEvent &event) override final
     {
         const std::string &eventId = event.getId();
         if (eventId == "do invite")
@@ -245,7 +245,7 @@ public:
         }
     }
 
-    void invite() override
+    void invite() override final
     {
         // TRANSLATORS: guild invite message
         mInviteDialog = new TextDialog(_("Member Invite to Guild"),
@@ -257,7 +257,7 @@ public:
         mInviteDialog->addActionListener(this);
     }
 
-    void leave() override
+    void leave() override final
     {
         // TRANSLATORS: guild leave message
         mConfirmDialog = new ConfirmDialog(_("Leave Guild?"),
@@ -342,7 +342,7 @@ public:
         mScroll = nullptr;
     }
 
-    void action(const gcn::ActionEvent &event A_UNUSED) override
+    void action(const gcn::ActionEvent &event A_UNUSED) override final
     {
     }
 
@@ -410,7 +410,7 @@ public:
         mScroll = nullptr;
     }
 
-    void action(const gcn::ActionEvent &event) override
+    void action(const gcn::ActionEvent &event) override final
     {
         const std::string &eventId = event.getId();
         if (eventId == "do invite")
@@ -447,7 +447,7 @@ public:
         }
     }
 
-    void invite() override
+    void invite() override final
     {
         // TRANSLATORS: party invite message
         mInviteDialog = new TextDialog(_("Member Invite to Party"),
@@ -459,7 +459,7 @@ public:
         mInviteDialog->addActionListener(this);
     }
 
-    void leave() override
+    void leave() override final
     {
         // TRANSLATORS: party leave message
         mConfirmDialog = new ConfirmDialog(_("Leave Party?"),
@@ -520,12 +520,12 @@ public:
         return &mMembers;
     }
 
-    Avatar *getAvatarAt(int index) override
+    Avatar *getAvatarAt(int index) override final
     {
         return mMembers[index];
     }
 
-    int getNumberOfElements() override
+    int getNumberOfElements() override final
     {
         return static_cast<int>(mMembers.size());
     }
@@ -565,12 +565,12 @@ public:
         mBeings = nullptr;
     }
 
-    void updateList() override
+    void updateList() override final
     {
         getPlayersAvatars();
     }
 
-    void updateAvatar(const std::string &name) override
+    void updateAvatar(const std::string &name) override final
     {
         if (!actorManager)
             return;
@@ -598,7 +598,7 @@ public:
         }
     }
 
-    void resetDamage(const std::string &name) override
+    void resetDamage(const std::string &name) override final
     {
         if (!actorManager)
             return;
@@ -731,7 +731,7 @@ public:
         mBeings = nullptr;
     }
 
-    void updateList() override
+    void updateList() override final
     {
         if (!socialWindow || !player_node)
             return;
@@ -823,7 +823,7 @@ public:
     }
 
 
-    void selectIndex(const unsigned num) override
+    void selectIndex(const unsigned num) override final
     {
         if (!player_node)
             return;
@@ -1060,7 +1060,7 @@ public:
         mBeings = nullptr;
     }
 
-    void updateList() override
+    void updateList() override final
     {
         updateAtkListStart();
         // TRANSLATORS: mobs group name in social window
@@ -1107,7 +1107,7 @@ public:
         mBeings = nullptr;
     }
 
-    void updateList() override
+    void updateList() override final
     {
         updateAtkListStart();
         // TRANSLATORS: items group name in social window
@@ -1153,7 +1153,7 @@ public:
         mBeings = nullptr;
     }
 
-    void updateList() override
+    void updateList() override final
     {
         getPlayersAvatars();
     }
@@ -1241,7 +1241,7 @@ public:
     A_DELETE_COPY(CreatePopup)
 
     void handleLink(const std::string &link,
-                    gcn::MouseEvent *event A_UNUSED) override
+                    gcn::MouseEvent *event A_UNUSED) override final
     {
         if (link == "guild" && socialWindow)
         {

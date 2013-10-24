@@ -43,14 +43,14 @@ class NpcPostDialog final : public Window,
 
         ~NpcPostDialog();
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void setVisible(bool visible) override;
+        void setVisible(bool visible) override final;
 
         /**
          * Returns true if any instances exist.

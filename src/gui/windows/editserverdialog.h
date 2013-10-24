@@ -47,7 +47,7 @@ class TypeListModel : public gcn::ListModel
         /**
          * Used to get number of line in the list
          */
-        int getNumberOfElements() override A_WARN_UNUSED
+        int getNumberOfElements() override final A_WARN_UNUSED
 #ifdef EATHENA_SUPPORT
 #ifdef MANASERV_SUPPORT
         { return 4; }
@@ -65,7 +65,7 @@ class TypeListModel : public gcn::ListModel
         /**
          * Used to get an element from the list
          */
-        std::string getElementAt(int elementIndex) override A_WARN_UNUSED;
+        std::string getElementAt(int elementIndex) override final A_WARN_UNUSED;
 };
 
 /**
@@ -85,14 +85,14 @@ class EditServerDialog final : public Window,
 
         ~EditServerDialog();
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void keyPressed(gcn::KeyEvent &keyEvent) override;
+        void keyPressed(gcn::KeyEvent &keyEvent) override final;
 
     private:
         TextField *mServerAddressField;

@@ -98,7 +98,7 @@ class BuyDialog final : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         /**
          * Returns the number of items in the shop inventory.
@@ -108,7 +108,7 @@ class BuyDialog final : public Window,
         /**
          * Updates the labels according to the selected item.
          */
-        void valueChanged(const gcn::SelectionEvent &event) override;
+        void valueChanged(const gcn::SelectionEvent &event) override final;
 
         /**
          * Updates the state of buttons and labels.

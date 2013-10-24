@@ -69,14 +69,14 @@ class InventoryWindow final : public Window,
          */
         ~InventoryWindow();
 
-        void postInit() override;
+        void postInit() override final;
 
         void storeSortOrder();
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         /**
          * Returns the selected item.
@@ -91,27 +91,27 @@ class InventoryWindow final : public Window,
         /**
          * Handles closing of the window
          */
-        void widgetHidden(const gcn::Event &event) override;
+        void widgetHidden(const gcn::Event &event) override final;
 
         /**
          * Handles the mouse clicks.
          */
-        void mouseClicked(gcn::MouseEvent &event) override;
+        void mouseClicked(gcn::MouseEvent &event) override final;
 
         /**
          * Handles the key presses.
          */
-        void keyPressed(gcn::KeyEvent &event) override;
+        void keyPressed(gcn::KeyEvent &event) override final;
 
         /**
          * Handles the key releases.
          */
-        void keyReleased(gcn::KeyEvent &event) override;
+        void keyReleased(gcn::KeyEvent &event) override final;
 
         /**
          * Updates labels to currently selected item.
          */
-        void valueChanged(const gcn::SelectionEvent &event) override;
+        void valueChanged(const gcn::SelectionEvent &event) override final;
 
         /**
          * Sets whether the split button should be shown.
@@ -138,19 +138,19 @@ class InventoryWindow final : public Window,
         void updateDropButton();
 
         void processEvent(const Channels channel,
-                          const DepricatedEvent &event) override;
+                          const DepricatedEvent &event) override final;
 
         void updateButtons(const Item *item = nullptr);
 
         bool isInputFocused() const A_WARN_UNUSED;
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
-        void mouseMoved(gcn::MouseEvent &event) override;
+        void mouseMoved(gcn::MouseEvent &event) override final;
 
-        void mouseExited(gcn::MouseEvent &event) override;
+        void mouseExited(gcn::MouseEvent &event) override final;
 
-        void setVisible(bool visible) override;
+        void setVisible(bool visible) override final;
 
         static bool isAnyInputFocused();
 

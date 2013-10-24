@@ -54,7 +54,7 @@ public:
 
     ~SocialWindow();
 
-    void postInit() override;
+    void postInit() override final;
 
     bool addTab(Guild *const guild);
 
@@ -64,7 +64,7 @@ public:
 
     bool removeTab(Party *const party);
 
-    void action(const gcn::ActionEvent &event) override;
+    void action(const gcn::ActionEvent &event) override final;
 
     void showGuildInvite(const std::string &guildName, const int guildId,
                          const std::string &inviterName);
@@ -118,7 +118,7 @@ public:
 
     void updatePickupFilter();
 
-    void widgetResized(const gcn::Event &event) override;
+    void widgetResized(const gcn::Event &event) override final;
 
     void setCounter(const SocialTab *const tab, const std::string &str);
 

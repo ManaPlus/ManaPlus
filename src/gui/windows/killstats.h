@@ -52,7 +52,7 @@ class KillStats final : public Window,
         /**
          * Stuff.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         void gainXp(int Xp);
 

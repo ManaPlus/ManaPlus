@@ -53,11 +53,11 @@ class TextCommandEditor final : public Window, public gcn::ActionListener
          */
         ~TextCommandEditor();
 
-        void postInit() override;
+        void postInit() override final;
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void scheduleDelete() override;
+        void scheduleDelete() override final;
 
     private:
         void showControls(const bool show);

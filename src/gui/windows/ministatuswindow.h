@@ -62,19 +62,19 @@ class MiniStatusWindow final : public Popup,
         void drawIcons(Graphics *const graphics);
 
         void processEvent(const Channels channel,
-                          const DepricatedEvent &event) override;
+                          const DepricatedEvent &event) override final;
 
         void updateStatus();
 
-        void logic() override;
+        void logic() override final;
 
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
-        void mouseMoved(gcn::MouseEvent &mouseEvent) override;
+        void mouseMoved(gcn::MouseEvent &mouseEvent) override final;
 
-        void mousePressed(gcn::MouseEvent &event) override;
+        void mousePressed(gcn::MouseEvent &event) override final;
 
-        void mouseExited(gcn::MouseEvent &event) override;
+        void mouseExited(gcn::MouseEvent &event) override final;
 
         void showBar(const std::string &name, const bool visible);
 
@@ -82,12 +82,12 @@ class MiniStatusWindow final : public Popup,
 
         void updateArrows();
 
-        void slotsChanged(Inventory *const inventory) override;
+        void slotsChanged(Inventory *const inventory) override final;
 
         std::vector <ProgressBar*> &getBars() A_WARN_UNUSED
         { return mBars; }
 
-        gcn::Rectangle getChildrenArea() override A_WARN_UNUSED;
+        gcn::Rectangle getChildrenArea() override final A_WARN_UNUSED;
 
 #ifdef USE_PROFILER
         void logicChildren();

@@ -57,12 +57,12 @@ class WorldListModel final : public gcn::ListModel
         ~WorldListModel()
         { }
 
-        int getNumberOfElements() override
+        int getNumberOfElements() override final
         {
             return static_cast<int>(mWorlds.size());
         }
 
-        std::string getElementAt(int i) override
+        std::string getElementAt(int i) override final
         {
             const WorldInfo *const si = mWorlds[i];
             if (si)

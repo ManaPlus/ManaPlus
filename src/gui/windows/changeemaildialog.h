@@ -57,7 +57,7 @@ class ChangeEmailDialog final : public Window, public gcn::ActionListener
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         /**
          * This is used to pass the pointer to where the new email should be

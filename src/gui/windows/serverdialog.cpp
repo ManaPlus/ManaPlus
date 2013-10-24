@@ -157,7 +157,7 @@ public:
         mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     }
 
-    void draw(gcn::Graphics *graphics) override
+    void draw(gcn::Graphics *graphics) override final
     {
         if (!mListModel)
             return;
@@ -231,7 +231,7 @@ public:
         }
     }
 
-    unsigned int getRowHeight() const override
+    unsigned int getRowHeight() const override final
     {
         return 2 * getFont()->getHeight() + 5;
     }

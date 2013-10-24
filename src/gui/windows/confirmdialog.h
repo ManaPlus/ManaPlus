@@ -58,7 +58,7 @@ class ConfirmDialog : public Window, public gcn::ActionListener
          */
         void action(const gcn::ActionEvent &event) override;
 
-        void postInit() override;
+        void postInit() override final;
 
     private:
         TextBox *mTextBox;

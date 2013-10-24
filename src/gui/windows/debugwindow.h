@@ -58,7 +58,7 @@ class MapDebugTab final : public DebugTab
 
         A_DELETE_COPY(MapDebugTab)
 
-        void logic() override;
+        void logic() override final;
 
     private:
         Label *mMusicFileLabel;
@@ -90,7 +90,7 @@ class TargetDebugTab final : public DebugTab
 
         A_DELETE_COPY(TargetDebugTab)
 
-        void logic() override;
+        void logic() override final;
 
     private:
         Label *mTargetLabel;
@@ -115,7 +115,7 @@ class NetDebugTab final : public DebugTab
 
         A_DELETE_COPY(NetDebugTab)
 
-        void logic() override;
+        void logic() override final;
 
     private:
         Label *mPingLabel;
@@ -140,18 +140,18 @@ class DebugWindow final : public Window
 
         ~DebugWindow();
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Logic (updates components' size and infos)
          */
         void slowLogic();
 
-        void draw(gcn::Graphics *g) override;
+        void draw(gcn::Graphics *g) override final;
 
         void setPing(int pingTime);
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
 #ifdef USE_PROFILER
         void logicChildren();

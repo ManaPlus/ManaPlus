@@ -41,7 +41,7 @@ class EmoteWindow final : public Window
 
         ~EmoteWindow();
 
-        void postInit() override;
+        void postInit() override final;
 
         void show();
 
@@ -61,9 +61,9 @@ class EmoteWindow final : public Window
 
         void addListeners(gcn::ActionListener *const listener);
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
-        void widgetMoved(const gcn::Event &event) override;
+        void widgetMoved(const gcn::Event &event) override final;
 
     private:
         TabbedArea *mTabs;

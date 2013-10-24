@@ -56,14 +56,14 @@ class QuitDialog final : public Window, public gcn::ActionListener,
          */
         ~QuitDialog();
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void keyPressed(gcn::KeyEvent &keyEvent) override;
+        void keyPressed(gcn::KeyEvent &keyEvent) override final;
 
     private:
         void placeOption(ContainerPlacer &placer,

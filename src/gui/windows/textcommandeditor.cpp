@@ -77,12 +77,12 @@ public:
     ~IconsModal()
     { }
 
-    int getNumberOfElements() override
+    int getNumberOfElements() override final
     {
         return static_cast<int>(mStrings.size());
     }
 
-    std::string getElementAt(int i) override
+    std::string getElementAt(int i) override final
     {
         if (i < 0 || i >= getNumberOfElements())
             return "???";
@@ -125,12 +125,12 @@ public:
     ~TargetTypeModel()
     { }
 
-    int getNumberOfElements() override
+    int getNumberOfElements() override final
     {
         return 3;
     }
 
-    std::string getElementAt(int i) override
+    std::string getElementAt(int i) override final
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";
@@ -144,12 +144,12 @@ public:
     ~MagicSchoolModel()
     { }
 
-    int getNumberOfElements() override
+    int getNumberOfElements() override final
     {
         return 6;
     }
 
-    std::string getElementAt(int i) override
+    std::string getElementAt(int i) override final
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";

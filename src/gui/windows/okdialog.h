@@ -62,7 +62,7 @@ class OkDialog final : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
     private:
         TextBox *mTextBox;
