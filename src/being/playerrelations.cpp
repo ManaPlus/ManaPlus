@@ -73,7 +73,7 @@ class PlayerConfSerialiser final :
 public:
     ConfigurationObject *writeConfigItem(
         const std::pair<std::string, PlayerRelation *> &value,
-        ConfigurationObject *const cobj) const override
+        ConfigurationObject *const cobj) const override final
     {
         if (!cobj || !value.second)
             return nullptr;
@@ -87,7 +87,7 @@ public:
     std::map<std::string, PlayerRelation *> *
     readConfigItem(const ConfigurationObject *const cobj,
                    std::map<std::string, PlayerRelation *>
-                   *const container) const override
+                   *const container) const override final
     {
         if (!cobj)
             return container;
@@ -468,7 +468,7 @@ public:
     }
 
     void ignore(Being *const being A_UNUSED,
-                const unsigned int flags A_UNUSED) const override
+                const unsigned int flags A_UNUSED) const override final
     {
     }
 };
@@ -485,7 +485,7 @@ public:
     }
 
     void ignore(Being *const being,
-                const unsigned int flags A_UNUSED) const override
+                const unsigned int flags A_UNUSED) const override final
     {
         if (!being)
             return;
@@ -508,7 +508,7 @@ public:
     }
 
     void ignore(Being *const being,
-                const unsigned int flags A_UNUSED) const override
+                const unsigned int flags A_UNUSED) const override final
     {
         if (!being)
             return;
@@ -531,7 +531,7 @@ public:
     }
 
     void ignore(Being *const being,
-                const unsigned int flags A_UNUSED) const override
+                const unsigned int flags A_UNUSED) const override final
     {
         if (!being)
             return;

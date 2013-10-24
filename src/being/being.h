@@ -424,7 +424,8 @@ class Being : public ActorSprite, public ConfigListener
         const BeingInfo *getInfo() const A_WARN_UNUSED
         { return mInfo; }
 
-        TargetCursorSize getTargetCursorSize() const override A_WARN_UNUSED;
+        TargetCursorSize getTargetCursorSize() const override final
+                                             A_WARN_UNUSED;
 
         int getTargetOffsetX() const A_WARN_UNUSED
         {
@@ -544,13 +545,13 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Returns the horizontal size of the current base sprite of the being.
          */
-        virtual int getWidth() const override A_WARN_UNUSED
+        virtual int getWidth() const override final A_WARN_UNUSED
         { return std::max(CompoundSprite::getWidth(), DEFAULT_BEING_WIDTH); }
 
         /**
          * Returns the vertical size of the current base sprite of the being.
          */
-        virtual int getHeight() const override A_WARN_UNUSED
+        virtual int getHeight() const override final A_WARN_UNUSED
         { return std::max(CompoundSprite::getHeight(), DEFAULT_BEING_HEIGHT); }
 
         /**
@@ -587,10 +588,10 @@ class Being : public ActorSprite, public ConfigListener
         void setState(const uint8_t state);
 
         virtual void drawSprites(Graphics *const  graphics,
-                                 int posX, int posY) const override;
+                                 int posX, int posY) const override final;
 
         virtual void drawSpritesSDL(Graphics *const graphics,
-                                    int posX, int posY) const override;
+                                    int posX, int posY) const override final;
 
         void drawHpBar(Graphics *const graphics, const int x, const int y,
                        const int maxHP, const int hp, const int damage,
@@ -673,7 +674,7 @@ class Being : public ActorSprite, public ConfigListener
         void talkTo() const;
 
         bool draw(Graphics *const graphics,
-                  const int offsetX, const int offsetY) const override;
+                  const int offsetX, const int offsetY) const override final;
 
         bool drawSpriteAt(Graphics *const graphics,
                           const int x, const int y) const;

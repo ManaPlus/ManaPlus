@@ -89,7 +89,8 @@ public:
     { return UNKNOWN; }
 
     virtual bool draw(Graphics *const graphics,
-                      const int offsetX, const int offsetY) const override;
+                      const int offsetX,
+                      const int offsetY) const override;
 
     virtual bool drawSpriteAt(Graphics *const graphics,
                               const int x, const int y) const;
@@ -155,10 +156,10 @@ public:
      */
     void setStatusEffectBlock(const int offset, const uint16_t flags);
 
-    virtual void setAlpha(const float alpha) override
+    virtual void setAlpha(const float alpha) override final
     { CompoundSprite::setAlpha(alpha); }
 
-    virtual float getAlpha() const override A_WARN_UNUSED
+    virtual float getAlpha() const override final A_WARN_UNUSED
     { return CompoundSprite::getAlpha(); }
 
     virtual int getWidth() const override A_WARN_UNUSED

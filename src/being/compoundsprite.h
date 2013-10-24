@@ -59,11 +59,11 @@ public:
 
     virtual ~CompoundSprite();
 
-    virtual bool reset() override;
+    virtual bool reset() override final;
 
-    virtual bool play(const std::string &action) override;
+    virtual bool play(const std::string &action) override final;
 
-    virtual bool update(const int time) override;
+    virtual bool update(const int time) override final;
 
     virtual bool draw(Graphics *const graphics,
                       const int posX, const int posY) const override;
@@ -78,15 +78,16 @@ public:
      */
     virtual int getHeight() const override A_WARN_UNUSED;
 
-    virtual const Image *getImage() const override A_WARN_UNUSED;
+    virtual const Image *getImage() const override final A_WARN_UNUSED;
 
-    virtual bool setSpriteDirection(const SpriteDirection direction) override;
+    virtual bool setSpriteDirection(const SpriteDirection direction)
+                                    override final;
 
     int getNumberOfLayers() const A_WARN_UNUSED;
 
-    unsigned int getCurrentFrame() const override A_WARN_UNUSED;
+    unsigned int getCurrentFrame() const override final A_WARN_UNUSED;
 
-    unsigned int getFrameCount() const override A_WARN_UNUSED;
+    unsigned int getFrameCount() const override final A_WARN_UNUSED;
 
     size_t size() const A_WARN_UNUSED
     { return mSprites.size(); }
@@ -126,7 +127,7 @@ public:
 
     virtual void setAlpha(float alpha) override;
 
-    bool updateNumber(const unsigned num) override;
+    bool updateNumber(const unsigned num) override final;
 
     static void setEnableDelay(bool b)
     { mEnableDelay = b; }

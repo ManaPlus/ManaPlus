@@ -44,7 +44,7 @@ class OkDialog;
 class AwayListener final : public gcn::ActionListener
 {
     public:
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 };
 
 /**
@@ -81,12 +81,12 @@ class LocalPlayer final : public Being,
          */
         ~LocalPlayer();
 
-        void logic() override;
+        void logic() override final;
 
         void slowLogic();
 
         void setAction(const Action &action,
-                       const int attackType = 0) override;
+                       const int attackType = 0) override final;
 
         /**
          * Compute the next pathnode location when walking using keyboard.
@@ -101,7 +101,7 @@ class LocalPlayer final : public Being,
          * Also, when specified, it picks up an item at the end of a path
          * or attack target.
          */
-        void nextTile() override
+        void nextTile() override final
         { nextTile(0); }
 
         void nextTile(unsigned char dir);
@@ -112,7 +112,8 @@ class LocalPlayer final : public Being,
          * Called when an ActorSprite has been destroyed.
          * @param actorSprite the ActorSprite being destroyed.
          */
-        void actorSpriteDestroyed(const ActorSprite &actorSprite) override;
+        void actorSpriteDestroyed(const ActorSprite &actorSprite)
+                                  override final;
 
         /**
          * Gets the attack range.
@@ -193,7 +194,7 @@ class LocalPlayer final : public Being,
                       const unsigned char color, const int floorItemId,
                       const unsigned char fail);
 
-        int getLevel() const override A_WARN_UNUSED;
+        int getLevel() const override final A_WARN_UNUSED;
 
         /** Tells that the path has been set by mouse. */
         void pathSetByMouse()
@@ -374,10 +375,10 @@ class LocalPlayer final : public Being,
         /**
          * Called when a option (set with config.addListener()) is changed
          */
-        void optionChanged(const std::string &value) override;
+        void optionChanged(const std::string &value) override final;
 
         void processEvent(const Channels channel,
-                          const DepricatedEvent &event) override;
+                          const DepricatedEvent &event) override final;
 
         /**
          * set a following player.
@@ -456,7 +457,7 @@ class LocalPlayer final : public Being,
 
         void resetYellowBar();
 
-        unsigned char getWalkMask() const override A_WARN_UNUSED;
+        unsigned char getWalkMask() const override final A_WARN_UNUSED;
 
         void saveHomes();
 
@@ -503,7 +504,7 @@ class LocalPlayer final : public Being,
         std::string getGameModifiersString();
 
     protected:
-        void updateCoords() override;
+        void updateCoords() override final;
 
         void handleStatusEffect(StatusEffect *const effect,
                                 const int effectId);
