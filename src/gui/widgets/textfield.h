@@ -69,7 +69,7 @@ class TextField : public gcn::TextField,
         /**
          * Draws the background and border.
          */
-        void drawFrame(gcn::Graphics *graphics) override;
+        void drawFrame(gcn::Graphics *graphics) override final;
 
         /**
          * Determine whether the field should be numeric or not
@@ -116,18 +116,18 @@ class TextField : public gcn::TextField,
 
         void setCaretPosition(unsigned int position);
 
-        void mousePressed(gcn::MouseEvent &mouseEvent) override;
+        void mousePressed(gcn::MouseEvent &mouseEvent) override final;
 
         void handlePaste();
 
         void handleCopy() const;
 
-        void focusGained(const gcn::Event &event) override;
+        void focusGained(const gcn::Event &event) override final;
 
         void focusLost(const gcn::Event &event) override;
 
     protected:
-        void drawCaret(gcn::Graphics* graphics, int x) override;
+        void drawCaret(gcn::Graphics* graphics, int x) override final;
 
         void fixScroll();
 

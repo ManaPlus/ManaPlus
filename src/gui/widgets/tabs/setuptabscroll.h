@@ -50,17 +50,18 @@ class SetupTabScroll : public SetupTab
 
         virtual void apply() override;
 
-        virtual void cancel() override;
+        virtual void cancel() override final;
 
         virtual void externalUpdated() override;
 
-        virtual void action(const gcn::ActionEvent &event A_UNUSED) override
+        virtual void action(const gcn::ActionEvent &event A_UNUSED)
+                            override final
         { }
 
         int getPreferredFirstItemSize() A_WARN_UNUSED
         { return mPreferredFirstItemSize; }
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
         void reread(const std::string &name);
 

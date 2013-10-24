@@ -37,7 +37,7 @@ class AvatarListModel : public gcn::ListModel
 public:
     virtual Avatar *getAvatarAt(const int i) A_WARN_UNUSED = 0;
 
-    std::string getElementAt(int i) override A_WARN_UNUSED
+    std::string getElementAt(int i) override final A_WARN_UNUSED
     { return getAvatarAt(i)->getName(); }
 };
 
@@ -53,13 +53,13 @@ public:
     /**
      * Draws the list box.
      */
-    void draw(gcn::Graphics *gcnGraphics) override;
+    void draw(gcn::Graphics *gcnGraphics) override final;
 
-    void mousePressed(gcn::MouseEvent &event) override;
+    void mousePressed(gcn::MouseEvent &event) override final;
 
-    void mouseReleased(gcn::MouseEvent &event A_UNUSED) override;
+    void mouseReleased(gcn::MouseEvent &event A_UNUSED) override final;
 
-    void optionChanged(const std::string &value) override;
+    void optionChanged(const std::string &value) override final;
 
 private:
     int mImagePadding;

@@ -71,12 +71,12 @@ class PlayerBox final : public Widget2,
         /**
          * Draws the scroll area.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         /**
          * Draws the background and border of the scroll area.
          */
-        void drawFrame(gcn::Graphics *graphics) override;
+        void drawFrame(gcn::Graphics *graphics) override final;
 
         Being *getBeing() A_WARN_UNUSED
         { return mBeing; }
@@ -84,7 +84,7 @@ class PlayerBox final : public Widget2,
         void setSelected(bool b)
         { mSelected = b; }
 
-        void mouseReleased(gcn::MouseEvent& event) override;
+        void mouseReleased(gcn::MouseEvent& event) override final;
 
     private:
         Being *mBeing;

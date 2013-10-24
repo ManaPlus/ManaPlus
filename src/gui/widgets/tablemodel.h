@@ -147,14 +147,15 @@ public:
      */
     void resize();
 
-    int getRows() const override A_WARN_UNUSED;
-    int getColumns() const override A_WARN_UNUSED;
-    int getRowHeight() const override A_WARN_UNUSED;
+    int getRows() const override final A_WARN_UNUSED;
+    int getColumns() const override final A_WARN_UNUSED;
+    int getRowHeight() const override final A_WARN_UNUSED;
     int getWidth() const A_WARN_UNUSED;
     int getHeight() const A_WARN_UNUSED;
-    int getColumnWidth(const int index) const override A_WARN_UNUSED;
-    gcn::Widget *getElementAt(const int row, const int column)
-                              const override A_WARN_UNUSED;
+    int getColumnWidth(const int index) const override final A_WARN_UNUSED;
+    gcn::Widget *getElementAt(const int row,
+                              const int column) const
+                              override final A_WARN_UNUSED;
 
 protected:
     int mRows, mColumns;

@@ -58,9 +58,9 @@ class Desktop final : public Container, private gcn::WidgetListener
          */
         void reloadWallpaper();
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         void postInit();
 

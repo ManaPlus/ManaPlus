@@ -32,9 +32,9 @@ class Setup_Chat final : public SetupTabScroll
 
         A_DELETE_COPY(Setup_Chat)
 
-        void apply() override;
+        void apply() override final;
 
-        void externalUpdated() override;
+        void externalUpdated() override final;
 };
 
 #endif  // GUI_WIDGETS_TABS_SETUP_CHAT_H

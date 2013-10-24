@@ -50,19 +50,19 @@ public:
 
     ~Setup_Relations();
 
-    void apply() override;
+    void apply() override final;
 
-    void cancel() override;
+    void cancel() override final;
 
     void reset();
 
-    void action(const gcn::ActionEvent &event) override;
+    void action(const gcn::ActionEvent &event) override final;
 
     void updatedPlayer(const std::string &name);
 
     void updateAll();
 
-    void externalUpdated() override;
+    void externalUpdated() override final;
 
 private:
     StaticTableModel *mPlayerTableTitleModel;

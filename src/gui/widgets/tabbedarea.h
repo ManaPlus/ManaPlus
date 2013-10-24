@@ -60,7 +60,7 @@ class TabbedArea final : public Widget2,
         /**
          * Draw the tabbed area.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         /**
          * Return how many tabs have been created.
@@ -114,7 +114,7 @@ class TabbedArea final : public Widget2,
         /**
          * Overload the logic function since it's broken in guichan 0.8.
          */
-        void logic() override;
+        void logic() override final;
 
         int getContainerHeight() const A_WARN_UNUSED
         { return mWidgetContainer->getHeight(); }
@@ -138,7 +138,7 @@ class TabbedArea final : public Widget2,
 
         void setSelectedTabByName(const std::string &name);
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
 /*
         void moveLeft(Tab *tab);
@@ -147,11 +147,11 @@ class TabbedArea final : public Widget2,
 */
         void adjustTabPositions();
 
-        void action(const gcn::ActionEvent& actionEvent) override;
+        void action(const gcn::ActionEvent& actionEvent) override final;
 
         // Inherited from MouseListener
 
-        void mousePressed(gcn::MouseEvent &mouseEvent) override;
+        void mousePressed(gcn::MouseEvent &mouseEvent) override final;
 
         void enableScrollButtons(const bool enable);
 
@@ -167,7 +167,7 @@ class TabbedArea final : public Widget2,
         bool getFollowDownScroll() const A_WARN_UNUSED
         { return mFollowDownScroll; }
 
-        void keyPressed(gcn::KeyEvent& keyEvent) override;
+        void keyPressed(gcn::KeyEvent& keyEvent) override final;
 
         void setBlockSwitching(const bool b)
         { mBlockSwitching = b; }

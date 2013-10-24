@@ -64,13 +64,13 @@ class KeyListModel final : public gcn::ListModel
         /**
          * Returns the number of elements in container.
          */
-        int getNumberOfElements() override
+        int getNumberOfElements() override final
         { return mSize; }
 
         /**
          * Returns element from container.
          */
-        std::string getElementAt(int i) override
+        std::string getElementAt(int i) override final
         { return setupActionData[selectedData][i].text; }
 
         /**

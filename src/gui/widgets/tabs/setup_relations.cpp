@@ -84,12 +84,12 @@ public:
     ~PlayerRelationListModel()
     { }
 
-    int getNumberOfElements() override
+    int getNumberOfElements() override final
     {
         return PlayerRelation::RELATIONS_NR;
     }
 
-    std::string getElementAt(int i) override
+    std::string getElementAt(int i) override final
     {
         if (i >= getNumberOfElements() || i < 0)
             return "";
@@ -121,7 +121,7 @@ public:
         mPlayers = nullptr;
     }
 
-    int getRows() const override
+    int getRows() const override final
     {
         if (mPlayers)
             return static_cast<int>(mPlayers->size());
@@ -129,17 +129,17 @@ public:
             return 0;
     }
 
-    int getColumns() const override
+    int getColumns() const override final
     {
         return COLUMNS_NR;
     }
 
-    int getRowHeight() const override
+    int getRowHeight() const override final
     {
         return ROW_HEIGHT;
     }
 
-    int getColumnWidth(const int index) const override
+    int getColumnWidth(const int index) const override final
     {
         if (index == NAME_COLUMN)
             return NAME_COLUMN_WIDTH;
@@ -186,7 +186,7 @@ public:
     }
 
 
-    gcn::Widget *getElementAt(int row, int column) const override
+    gcn::Widget *getElementAt(int row, int column) const override final
     {
         return mWidgets[WIDGET_AT(row, column)];
     }
@@ -222,13 +222,13 @@ public:
     ~IgnoreChoicesListModel()
     { }
 
-    int getNumberOfElements() override
+    int getNumberOfElements() override final
     {
         return static_cast<int>(player_relations.getPlayerIgnoreStrategies()
                                 ->size());
     }
 
-    std::string getElementAt(int i) override
+    std::string getElementAt(int i) override final
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";

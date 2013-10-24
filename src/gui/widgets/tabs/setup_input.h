@@ -51,11 +51,11 @@ class Setup_Input final : public SetupTab
          */
         ~Setup_Input();
 
-        void apply() override;
+        void apply() override final;
 
-        void cancel() override;
+        void cancel() override final;
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         /**
          * Get an update on the assigned key.

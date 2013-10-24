@@ -58,7 +58,7 @@ class CheckBox final : public gcn::CheckBox,
         /**
          * Draws the caption, then calls drawBox to draw the check box.
          */
-        void draw(gcn::Graphics *const graphics) override;
+        void draw(gcn::Graphics *const graphics) override final;
 
         /**
          * Update the alpha value to the checkbox components.
@@ -73,14 +73,14 @@ class CheckBox final : public gcn::CheckBox,
         /**
          * Called when the mouse enteres the widget area.
          */
-        void mouseEntered(gcn::MouseEvent& event) override;
+        void mouseEntered(gcn::MouseEvent& event) override final;
 
         /**
          * Called when the mouse leaves the widget area.
          */
-        void mouseExited(gcn::MouseEvent& event) override;
+        void mouseExited(gcn::MouseEvent& event) override final;
 
-        void keyPressed(gcn::KeyEvent& keyEvent) override;
+        void keyPressed(gcn::KeyEvent& keyEvent) override final;
 
         void adjustSize();
 

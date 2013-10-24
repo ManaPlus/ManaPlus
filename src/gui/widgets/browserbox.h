@@ -158,14 +158,14 @@ class BrowserBox final : public gcn::Widget,
         /**
          * Handles mouse actions.
          */
-        void mousePressed(gcn::MouseEvent &event) override;
+        void mousePressed(gcn::MouseEvent &event) override final;
 
-        void mouseMoved(gcn::MouseEvent &event) override;
+        void mouseMoved(gcn::MouseEvent &event) override final;
 
         /**
          * Draws the browser box.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         void updateHeight();
 

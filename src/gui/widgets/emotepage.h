@@ -41,15 +41,15 @@ class EmotePage final : public gcn::Widget,
 
         ~EmotePage();
 
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
-        void mousePressed(gcn::MouseEvent &mouseEvent) override;
+        void mousePressed(gcn::MouseEvent &mouseEvent) override final;
 
         int getIndexFromGrid(const int x, const int y) const;
 
-        void widgetResized(const gcn::Event &event A_UNUSED);
+        void widgetResized(const gcn::Event &event A_UNUSED) override final;
 
-        void widgetMoved(const gcn::Event &event A_UNUSED);
+        void widgetMoved(const gcn::Event &event A_UNUSED) override final;
 
         void resetAction();
 

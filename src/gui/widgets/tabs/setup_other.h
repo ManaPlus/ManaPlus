@@ -36,9 +36,9 @@ class Setup_Other final : public SetupTabScroll
 
         ~Setup_Other();
 
-        void apply() override;
+        void apply() override final;
 
-        void externalUpdated() override;
+        void externalUpdated() override final;
 
     protected:
         NamesModel *mProxyTypeList;

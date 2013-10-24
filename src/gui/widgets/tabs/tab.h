@@ -68,7 +68,7 @@ class Tab : public gcn::BasicContainer,
         /**
          * Draw the tabbed area.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         /**
          * Set the normal color for the tab's text.
@@ -129,9 +129,9 @@ class Tab : public gcn::BasicContainer,
         int getFlash() const A_WARN_UNUSED
         { return mFlash; }
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
-        void widgetMoved(const gcn::Event &event) override;
+        void widgetMoved(const gcn::Event &event) override final;
 
         void setLabelFont(gcn::Font *const font);
 
@@ -148,9 +148,9 @@ class Tab : public gcn::BasicContainer,
 
         const std::string &getCaption() const A_WARN_UNUSED;
 
-        void mouseEntered(gcn::MouseEvent &mouseEvent) override;
+        void mouseEntered(gcn::MouseEvent &mouseEvent) override final;
 
-        void mouseExited(gcn::MouseEvent &mouseEvent) override;
+        void mouseExited(gcn::MouseEvent &mouseEvent) override final;
 
         void setImage(Image *const image);
 

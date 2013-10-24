@@ -59,7 +59,7 @@ class Label final : public gcn::Label, public Widget2
         /**
          * Draws the label.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         void adjustSize();
 

@@ -37,9 +37,9 @@ class SkillModel final : public gcn::ListModel
 
         SkillInfo *getSkillAt(const int i) const;
 
-        std::string getElementAt(int i) override;
+        std::string getElementAt(int i) override final;
 
-        int getNumberOfElements() override
+        int getNumberOfElements() override final
         { return static_cast<int>(mVisibleSkills.size()); }
 
         void addSkill(SkillInfo *const info)

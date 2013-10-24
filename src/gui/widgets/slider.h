@@ -63,7 +63,7 @@ class Slider final : public gcn::Slider,
         /**
          * Draws the slider.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         /**
          * Draws the marker.
@@ -73,14 +73,14 @@ class Slider final : public gcn::Slider,
         /**
          * Called when the mouse enteres the widget area.
          */
-        void mouseEntered(gcn::MouseEvent& event) override;
+        void mouseEntered(gcn::MouseEvent& event) override final;
 
         /**
          * Called when the mouse leaves the widget area.
          */
-        void mouseExited(gcn::MouseEvent& event) override;
+        void mouseExited(gcn::MouseEvent& event) override final;
 
-        void keyPressed(gcn::KeyEvent& keyEvent) override;
+        void keyPressed(gcn::KeyEvent& keyEvent) override final;
 
         enum SLIDER_ENUM
         {

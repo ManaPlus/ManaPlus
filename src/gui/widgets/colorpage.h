@@ -36,11 +36,11 @@ class ColorPage final : public ListBox
 
         ~ColorPage();
 
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         void resetAction();
 
-        void adjustSize() override;
+        void adjustSize() override final;
 
     private:
         int mItemPadding;

@@ -47,7 +47,7 @@ class WidgetGroup : public Container,
 
         virtual void clear();
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
         virtual Widget *createWidget(const std::string &name)
                                      const A_WARN_UNUSED = 0;

@@ -38,9 +38,9 @@ class TabStrip final : public WidgetGroup
         A_DELETE_COPY(TabStrip)
 
         gcn::Widget *createWidget(const std::string &name)
-                                  const override A_WARN_UNUSED;
+                                  const override final A_WARN_UNUSED;
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 };
 
 #endif  // GUI_WIDGETS_TABSTRIP_H

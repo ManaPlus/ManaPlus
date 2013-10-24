@@ -67,7 +67,7 @@ class ModeListModel final : public gcn::ListModel
         /**
          * Returns the number of elements in container.
          */
-        int getNumberOfElements() override
+        int getNumberOfElements() override final
         { return static_cast<int>(mVideoModes.size()); }
 
         /**
@@ -161,10 +161,10 @@ public:
     ~OpenGLListModel()
     { }
 
-    int getNumberOfElements() override
+    int getNumberOfElements() override final
     { return renderModesListSize; }
 
-    std::string getElementAt(int i) override
+    std::string getElementAt(int i) override final
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";

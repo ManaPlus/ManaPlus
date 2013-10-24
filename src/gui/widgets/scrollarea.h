@@ -74,7 +74,7 @@ class ScrollArea final : public gcn::ScrollArea,
          * Logic function optionally adapts width or height of contents. This
          * depends on the scrollbar settings.
          */
-        void logic() override;
+        void logic() override final;
 
         /**
          * Update the alpha value to the graphic components.
@@ -84,12 +84,12 @@ class ScrollArea final : public gcn::ScrollArea,
         /**
          * Draws the scroll area.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         /**
          * Draws the background and border of the scroll area.
          */
-        void drawFrame(gcn::Graphics *graphics) override;
+        void drawFrame(gcn::Graphics *graphics) override final;
 
         /**
          * Sets whether the widget should draw its background or not.
@@ -105,27 +105,27 @@ class ScrollArea final : public gcn::ScrollArea,
         /**
          * Called when the mouse moves in the widget area.
          */
-        void mouseMoved(gcn::MouseEvent& event) override;
+        void mouseMoved(gcn::MouseEvent& event) override final;
 
         /**
          * Called when the mouse enteres the widget area.
          */
-        void mouseEntered(gcn::MouseEvent& event) override;
+        void mouseEntered(gcn::MouseEvent& event) override final;
 
         /**
          * Called when the mouse leaves the widget area.
          */
-        void mouseExited(gcn::MouseEvent& event) override;
+        void mouseExited(gcn::MouseEvent& event) override final;
 
-        void mousePressed(gcn::MouseEvent& event) override;
+        void mousePressed(gcn::MouseEvent& event) override final;
 
-        void mouseReleased(gcn::MouseEvent& event) override;
+        void mouseReleased(gcn::MouseEvent& event) override final;
 
-        void mouseDragged(gcn::MouseEvent &event) override;
+        void mouseDragged(gcn::MouseEvent &event) override final;
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
-        void widgetMoved(const gcn::Event &event) override;
+        void widgetMoved(const gcn::Event &event) override final;
 
         gcn::Rectangle getVerticalBarDimension() const;
 
@@ -160,10 +160,10 @@ class ScrollArea final : public gcn::ScrollArea,
 
         void drawButton(gcn::Graphics *const graphics, const BUTTON_DIR dir);
         void calcButton(gcn::Graphics *const graphics, const BUTTON_DIR dir);
-        void drawVBar(gcn::Graphics *const graphics) override;
-        void drawHBar(gcn::Graphics *const graphics) override;
-        void drawVMarker(gcn::Graphics *const graphics) override;
-        void drawHMarker(gcn::Graphics *const graphics) override;
+        void drawVBar(gcn::Graphics *const graphics) override final;
+        void drawHBar(gcn::Graphics *const graphics) override final;
+        void drawVMarker(gcn::Graphics *const graphics) override final;
+        void drawHMarker(gcn::Graphics *const graphics) override final;
 
         void calcVBar(gcn::Graphics *const graphics);
         void calcHBar(gcn::Graphics *const graphics);

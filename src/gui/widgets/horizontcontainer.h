@@ -41,13 +41,13 @@ class HorizontContainer final : public Container, public gcn::WidgetListener
 
         A_DELETE_COPY(HorizontContainer)
 
-        void add(gcn::Widget *widget) override;
+        void add(gcn::Widget *widget) override final;
 
         void add(gcn::Widget *const widget, const int spacing);
 
         void clear() override;
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
     protected:
         int mSpacing;

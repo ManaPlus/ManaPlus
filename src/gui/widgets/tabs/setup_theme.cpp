@@ -118,10 +118,10 @@ public:
     ~FontSizeChoiceListModel()
     { }
 
-    int getNumberOfElements() override A_WARN_UNUSED
+    int getNumberOfElements() override final A_WARN_UNUSED
     { return maxFontSizes; }
 
-    std::string getElementAt(int i) override A_WARN_UNUSED
+    std::string getElementAt(int i) override final A_WARN_UNUSED
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";
@@ -202,10 +202,10 @@ public:
         }
     }
 
-    int getNumberOfElements() override A_WARN_UNUSED
+    int getNumberOfElements() override final A_WARN_UNUSED
     { return langs_count; }
 
-    std::string getElementAt(int i) override A_WARN_UNUSED
+    std::string getElementAt(int i) override final A_WARN_UNUSED
     {
         if (i >= getNumberOfElements() || i < 0)
             return "???";
@@ -213,7 +213,7 @@ public:
         return gettext(LANG_NAME[i].name.c_str());
     }
 
-    const Image *getImageAt(int i) override A_WARN_UNUSED
+    const Image *getImageAt(int i) override final A_WARN_UNUSED
     {
         if (i >= getNumberOfElements() || i < 0)
             return nullptr;

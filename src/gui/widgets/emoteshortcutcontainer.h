@@ -53,30 +53,30 @@ class EmoteShortcutContainer final : public ShortcutContainer
         /**
          * Draws the items.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         /**
          * Handles mouse when dragged.
          */
-        void mouseDragged(gcn::MouseEvent &event) override;
+        void mouseDragged(gcn::MouseEvent &event) override final;
 
         /**
          * Handles mouse when pressed.
          */
-        void mousePressed(gcn::MouseEvent &event) override;
+        void mousePressed(gcn::MouseEvent &event) override final;
 
         /**
          * Handles mouse release.
          */
-        void mouseReleased(gcn::MouseEvent &event) override;
+        void mouseReleased(gcn::MouseEvent &event) override final;
 
-        void mouseMoved(gcn::MouseEvent &event) override;
+        void mouseMoved(gcn::MouseEvent &event) override final;
 
-        void mouseExited(gcn::MouseEvent &event) override;
+        void mouseExited(gcn::MouseEvent &event) override final;
 
-        void widgetHidden(const gcn::Event &event) override;
+        void widgetHidden(const gcn::Event &event) override final;
 
-        void setWidget2(const Widget2 *const widget) override;
+        void setWidget2(const Widget2 *const widget) override final;
 
     private:
         std::vector<const EmoteSprite*> mEmoteImg;

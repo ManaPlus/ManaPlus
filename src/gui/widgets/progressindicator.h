@@ -44,9 +44,9 @@ class ProgressIndicator final : public gcn::Widget,
 
         ~ProgressIndicator();
 
-        void logic() override;
+        void logic() override final;
 
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
     private:
         SimpleAnimation *mIndicator;

@@ -55,7 +55,7 @@ class FlowContainer final : public Container,
          * Invoked when a widget changes its size. This is used to determine
          * the new height of the container.
          */
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
         int getBoxWidth() const A_WARN_UNUSED
         { return mBoxWidth; }
@@ -63,7 +63,7 @@ class FlowContainer final : public Container,
         int getBoxHeight() const A_WARN_UNUSED
         { return mBoxHeight; }
 
-        void add(gcn::Widget *widget) override;
+        void add(gcn::Widget *widget) override final;
 
     private:
         int mBoxWidth;

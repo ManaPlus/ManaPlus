@@ -46,11 +46,11 @@ class Setup_Video final : public SetupTab, public gcn::KeyListener
 
         ~Setup_Video();
 
-        void apply() override;
+        void apply() override final;
 
-        void cancel() override;
+        void cancel() override final;
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
     private:
         bool mFullScreenEnabled;

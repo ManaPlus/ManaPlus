@@ -80,26 +80,26 @@ class ItemContainer final : public gcn::Widget,
         /**
          * Necessary for checking how full the inventory is.
          */
-        void logic() override;
+        void logic() override final;
 
         /**
          * Draws the items.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         // KeyListener
-        void keyPressed(gcn::KeyEvent &event) override;
-        void keyReleased(gcn::KeyEvent &event) override;
+        void keyPressed(gcn::KeyEvent &event) override final;
+        void keyReleased(gcn::KeyEvent &event) override final;
 
         // MouseListener
-        void mousePressed(gcn::MouseEvent &event) override;
-        void mouseDragged(gcn::MouseEvent &event) override;
-        void mouseReleased(gcn::MouseEvent &event) override;
-        void mouseMoved(gcn::MouseEvent &event) override;
-        void mouseExited(gcn::MouseEvent &event) override;
+        void mousePressed(gcn::MouseEvent &event) override final;
+        void mouseDragged(gcn::MouseEvent &event) override final;
+        void mouseReleased(gcn::MouseEvent &event) override final;
+        void mouseMoved(gcn::MouseEvent &event) override final;
+        void mouseExited(gcn::MouseEvent &event) override final;
 
         // WidgetListener
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
         /**
          * Returns the selected item.

@@ -51,7 +51,7 @@ class VertContainer final : public Container, public gcn::WidgetListener
 
         void clear();
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
     private:
         std::vector<gcn::Widget*> mResizableWidgets;

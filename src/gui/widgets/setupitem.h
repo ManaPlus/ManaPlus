@@ -155,9 +155,9 @@ class SetupItemCheckBox final : public SetupItem
 
         void createControls();
 
-        void fromWidget() override;
+        void fromWidget() override final;
 
-        void toWidget() override;
+        void toWidget() override final;
 
     protected:
         CheckBox *mCheckBox;
@@ -187,13 +187,13 @@ class SetupItemTextField final : public SetupItem
 
         void createControls();
 
-        void fromWidget() override;
+        void fromWidget() override final;
 
-        void toWidget() override;
+        void toWidget() override final;
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void apply(const std::string &eventName) override;
+        void apply(const std::string &eventName) override final;
 
     protected:
         HorizontContainer *mHorizont;
@@ -229,13 +229,13 @@ class SetupItemIntTextField final : public SetupItem
 
         void createControls();
 
-        void fromWidget() override;
+        void fromWidget() override final;
 
-        void toWidget() override;
+        void toWidget() override final;
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void apply(const std::string &eventName) override;
+        void apply(const std::string &eventName) override final;
 
     protected:
         HorizontContainer *mHorizont;
@@ -261,13 +261,13 @@ class SetupItemLabel final : public SetupItem
 
         void createControls();
 
-        void fromWidget() override;
+        void fromWidget() override final;
 
-        void toWidget() override;
+        void toWidget() override final;
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void apply(const std::string &eventName) override;
+        void apply(const std::string &eventName) override final;
 
     protected:
         Label *mLabel;
@@ -300,9 +300,9 @@ class SetupItemDropDown final : public SetupItem
 
         void createControls();
 
-        void fromWidget() override;
+        void fromWidget() override final;
 
-        void toWidget() override;
+        void toWidget() override final;
 
     protected:
         HorizontContainer *mHorizont;
@@ -340,13 +340,13 @@ class SetupItemSlider final : public SetupItem
 
         void createControls();
 
-        void fromWidget() override;
+        void fromWidget() override final;
 
-        void toWidget() override;
+        void toWidget() override final;
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void apply(const std::string &eventName) override;
+        void apply(const std::string &eventName) override final;
 
         void updateLabel();
 
@@ -396,13 +396,13 @@ class SetupItemSlider2 final : public SetupItem
 
         void createControls();
 
-        void fromWidget() override;
+        void fromWidget() override final;
 
-        void toWidget() override;
+        void toWidget() override final;
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void apply(const std::string &eventName) override;
+        void apply(const std::string &eventName) override final;
 
         void setInvertValue(const int v);
 
@@ -433,13 +433,13 @@ class SetupItemSliderList : public SetupItem
 
         void createControls();
 
-        void fromWidget() override;
+        void fromWidget() override final;
 
-        void toWidget() override;
+        void toWidget() override final;
 
         virtual void action(const gcn::ActionEvent &event) override;
 
-        void apply(const std::string &eventName) override;
+        void apply(const std::string &eventName) override final;
 
         virtual void addMoreControls() = 0;
 
@@ -486,9 +486,9 @@ class SetupItemSound final : public SetupItemSliderList
 
         A_DELETE_COPY(SetupItemSound)
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void addMoreControls() override;
+        void addMoreControls() override final;
 
     protected:
         Button *mButton;

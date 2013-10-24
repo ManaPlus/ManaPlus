@@ -67,13 +67,13 @@ class ListBox : public gcn::ListBox,
 
         // Inherited from KeyListener
 
-        void keyPressed(gcn::KeyEvent& keyEvent) override;
+        void keyPressed(gcn::KeyEvent& keyEvent) override final;
 
         // Inherited from MouseListener
 
-        void mouseWheelMovedUp(gcn::MouseEvent& mouseEvent) override;
+        void mouseWheelMovedUp(gcn::MouseEvent& mouseEvent) override final;
 
-        void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override;
+        void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override final;
 
         void mousePressed(gcn::MouseEvent &event) override;
 
@@ -90,7 +90,7 @@ class ListBox : public gcn::ListBox,
 
         virtual void adjustSize();
 
-        void logic() override;
+        void logic() override final;
 
         virtual int getSelectionByMouse(const int y) const;
 

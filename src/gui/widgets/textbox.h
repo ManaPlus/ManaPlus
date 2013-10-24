@@ -60,9 +60,9 @@ class TextBox final : public gcn::TextBox,
         int getMinWidth() const A_WARN_UNUSED
         { return mMinWidth; }
 
-        void keyPressed(gcn::KeyEvent& keyEvent) override;
+        void keyPressed(gcn::KeyEvent& keyEvent) override final;
 
-        void draw(gcn::Graphics* graphics) override;
+        void draw(gcn::Graphics* graphics) override final;
 
         void setForegroundColor(const gcn::Color &color);
 

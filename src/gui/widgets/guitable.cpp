@@ -47,7 +47,7 @@ public:
 
     ~GuiTableActionListener();
 
-    void action(const gcn::ActionEvent& actionEvent) override;
+    void action(const gcn::ActionEvent& actionEvent) override final;
 
 protected:
     GuiTable *mTable;

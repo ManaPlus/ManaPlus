@@ -36,9 +36,9 @@ class NamesModel : public gcn::ListModel
 
         virtual ~NamesModel();
 
-        virtual int getNumberOfElements() override A_WARN_UNUSED;
+        virtual int getNumberOfElements() override final A_WARN_UNUSED;
 
-        virtual std::string getElementAt(int i) override A_WARN_UNUSED;
+        virtual std::string getElementAt(int i) override final A_WARN_UNUSED;
 
         StringVect &getNames() A_WARN_UNUSED
         { return mNames; }

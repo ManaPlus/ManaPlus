@@ -97,14 +97,14 @@ class Button final : public gcn::Button,
         /**
          * Draws the button.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         /**
          * Update the alpha value to the button components.
          */
         void updateAlpha();
 
-        void mouseReleased(gcn::MouseEvent& mouseEvent) override;
+        void mouseReleased(gcn::MouseEvent& mouseEvent) override final;
 
         void setDescription(std::string text)
         { mDescription = text; }
@@ -127,9 +127,9 @@ class Button final : public gcn::Button,
         void setPressed(bool b)
         { mPressed = b; }
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const gcn::Event &event) override final;
 
-        void widgetMoved(const gcn::Event &event) override;
+        void widgetMoved(const gcn::Event &event) override final;
 
         void loadImage(const std::string &imageName);
 
@@ -139,9 +139,9 @@ class Button final : public gcn::Button,
 
         void setCaption(const std::string& caption);
 
-        void keyPressed(gcn::KeyEvent &keyEvent) override;
+        void keyPressed(gcn::KeyEvent &keyEvent) override final;
 
-        void keyReleased(gcn::KeyEvent &keyEvent) override;
+        void keyReleased(gcn::KeyEvent &keyEvent) override final;
 
         bool isPressed2() const A_WARN_UNUSED;
 

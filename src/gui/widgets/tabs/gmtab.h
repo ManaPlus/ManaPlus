@@ -35,17 +35,17 @@ class GmTab final : public ChatTab
 
         ~GmTab();
 
-        int getType() const override A_WARN_UNUSED
+        int getType() const override final A_WARN_UNUSED
         { return ChatTab::TAB_GM; }
 
-        void saveToLogFile(const std::string &msg) const override;
+        void saveToLogFile(const std::string &msg) const override final;
 
     protected:
-        void getAutoCompleteList(StringVect &names) const override;
+        void getAutoCompleteList(StringVect &names) const override final;
 
-        void handleInput(const std::string &msg) override;
+        void handleInput(const std::string &msg) override final;
 
-        void handleCommand(const std::string &msg) override;
+        void handleCommand(const std::string &msg) override final;
 };
 
 extern GmTab *gmChatTab;

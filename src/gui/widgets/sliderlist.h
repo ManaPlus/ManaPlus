@@ -49,15 +49,15 @@ class SliderList final : public Container,
 
         void updateAlpha();
 
-        void mouseWheelMovedUp(gcn::MouseEvent& mouseEvent) override;
+        void mouseWheelMovedUp(gcn::MouseEvent& mouseEvent) override final;
 
-        void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override;
+        void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override final;
 
         void resize();
 
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         void setSelectedString(const std::string &str);
 

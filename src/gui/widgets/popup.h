@@ -165,7 +165,7 @@ class Popup : public Container, public gcn::MouseListener,
 
         void widgetResized(const gcn::Event &event) override;
 
-        void widgetMoved(const gcn::Event &event) override;
+        void widgetMoved(const gcn::Event &event) override final;
 
         bool isPopupVisible() const
         { return mVisible; }

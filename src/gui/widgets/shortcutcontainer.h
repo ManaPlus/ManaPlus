@@ -59,9 +59,9 @@ class ShortcutContainer : public gcn::Widget,
          * Invoked when a widget changes its size. This is used to determine
          * the new height of the container.
          */
-        virtual void widgetResized(const gcn::Event &event) override;
+        virtual void widgetResized(const gcn::Event &event) override final;
 
-        virtual void widgetMoved(const gcn::Event& event) override;
+        virtual void widgetMoved(const gcn::Event& event) override final;
 
         /**
          * Handles mouse when dragged.

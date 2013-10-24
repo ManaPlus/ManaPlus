@@ -94,7 +94,7 @@ public:
     void setWrappingEnabled(bool wrappingEnabled)
     { mWrappingEnabled = wrappingEnabled; }
 
-    gcn::Rectangle getChildrenArea() override A_WARN_UNUSED;
+    gcn::Rectangle getChildrenArea() override final A_WARN_UNUSED;
 
     /**
      * Toggle whether to use linewise selection mode, in which the table selects
@@ -113,18 +113,18 @@ public:
     }
 
     // Inherited from Widget
-    void draw(gcn::Graphics* graphics) override;
+    void draw(gcn::Graphics* graphics) override final;
 
-    gcn::Widget *getWidgetAt(int x, int y) override A_WARN_UNUSED;
+    gcn::Widget *getWidgetAt(int x, int y) override final A_WARN_UNUSED;
 
-    void moveToTop(gcn::Widget *child) override;
+    void moveToTop(gcn::Widget *child) override final;
 
-    void moveToBottom(gcn::Widget *child) override;
+    void moveToBottom(gcn::Widget *child) override final;
 
-    void _setFocusHandler(gcn::FocusHandler* focusHandler) override;
+    void _setFocusHandler(gcn::FocusHandler* focusHandler) override final;
 
     // Inherited from KeyListener
-    void keyPressed(gcn::KeyEvent& keyEvent) override;
+    void keyPressed(gcn::KeyEvent& keyEvent) override final;
 
     /**
      * Sets the table to be opaque, that is sets the table
@@ -145,16 +145,16 @@ public:
     { return mOpaque; }
 
     // Inherited from MouseListener
-    void mousePressed(gcn::MouseEvent& mouseEvent) override;
+    void mousePressed(gcn::MouseEvent& mouseEvent) override final;
 
-    void mouseWheelMovedUp(gcn::MouseEvent& mouseEvent) override;
+    void mouseWheelMovedUp(gcn::MouseEvent& mouseEvent) override final;
 
-    void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override;
+    void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override final;
 
-    void mouseDragged(gcn::MouseEvent& mouseEvent) override;
+    void mouseDragged(gcn::MouseEvent& mouseEvent) override final;
 
     // Constraints inherited from TableModelListener
-    void modelUpdated(const bool completed) override;
+    void modelUpdated(const bool completed) override final;
 
     void requestFocus();
 

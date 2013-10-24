@@ -81,7 +81,7 @@ class ShopItems final : public gcn::ListModel
         /**
          * Returns the number of items in the shop.
          */
-        int getNumberOfElements() override A_WARN_UNUSED
+        int getNumberOfElements() override final A_WARN_UNUSED
         { return static_cast<int>(mShopItems.size()); }
 
         bool empty() const A_WARN_UNUSED
@@ -92,7 +92,7 @@ class ShopItems final : public gcn::ListModel
          *
          * @param i the index to retrieve
          */
-        std::string getElementAt(int i) override A_WARN_UNUSED;
+        std::string getElementAt(int i) override final A_WARN_UNUSED;
 
         /**
          * Returns the item number i in the shop.

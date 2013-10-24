@@ -56,12 +56,12 @@ class ShopListBox final : public ListBox
         /**
          * Draws the list box.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         /**
          * Returns the height of a row.
          */
-        unsigned int getRowHeight() const override A_WARN_UNUSED
+        unsigned int getRowHeight() const override final A_WARN_UNUSED
         { return mRowHeight; }
 
         /**
@@ -72,7 +72,7 @@ class ShopListBox final : public ListBox
         /**
          * Adjust List draw size
          */
-        void adjustSize() override;
+        void adjustSize() override final;
 
         /**
          * Set on/off the disabling of too expensive items.
@@ -80,11 +80,11 @@ class ShopListBox final : public ListBox
          */
         void setPriceCheck(const bool check);
 
-        void mouseMoved(gcn::MouseEvent &event) override;
+        void mouseMoved(gcn::MouseEvent &event) override final;
 
-        void mouseReleased(gcn::MouseEvent& mouseEvent) override;
+        void mouseReleased(gcn::MouseEvent& mouseEvent) override final;
 
-        void mouseExited(gcn::MouseEvent& mouseEvent) override;
+        void mouseExited(gcn::MouseEvent& mouseEvent) override final;
 
         void setProtectItems(bool p)
         { mProtectItems = p; }
