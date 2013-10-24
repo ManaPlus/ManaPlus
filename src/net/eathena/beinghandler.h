@@ -37,14 +37,14 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         A_DELETE_COPY(BeingHandler)
 
-        void handleMessage(Net::MessageIn &msg) override;
+        void handleMessage(Net::MessageIn &msg) override final;
 
-        void requestNameById(const int id) const override;
+        void requestNameById(const int id) const override final;
 
-        void undress(Being *const being) const override;
+        void undress(Being *const being) const override final;
 
         void processBeingVisibleOrMove(Net::MessageIn &msg,
-                                       const bool visible) override;
+                                       const bool visible) override final;
 
     protected:
         void processBeingChangeLook(Net::MessageIn &msg,

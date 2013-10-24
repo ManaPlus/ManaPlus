@@ -41,24 +41,25 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
         ~LoginHandler();
 
-        void handleMessage(Net::MessageIn &msg) override;
+        void handleMessage(Net::MessageIn &msg) override final;
 
-        void connect() override;
+        void connect() override final;
 
-        bool isConnected() const override A_WARN_UNUSED;
+        bool isConnected() const override final A_WARN_UNUSED;
 
-        void disconnect() override;
+        void disconnect() override final;
 
-        int supportedOptionalActions() const override A_WARN_UNUSED;
+        int supportedOptionalActions() const override final A_WARN_UNUSED;
 
-        unsigned int getMaxPasswordLength() const override A_WARN_UNUSED
+        unsigned int getMaxPasswordLength() const override final A_WARN_UNUSED
         { return 24; }
 
         void changePassword(const std::string &username,
                             const std::string &oldPassword,
-                            const std::string &newPassword) const override;
+                            const std::string &newPassword)
+                            const override final;
 
-        ServerInfo *getCharServer() const override A_WARN_UNUSED;
+        ServerInfo *getCharServer() const override final A_WARN_UNUSED;
 
         void processServerVersion(Net::MessageIn &msg);
 
@@ -69,7 +70,7 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
     private:
         void sendLoginRegister(const std::string &username,
                                const std::string &password,
-                               const std::string &email) const override;
+                               const std::string &email) const override final;
 };
 
 }  // namespace TmwAthena

@@ -41,19 +41,19 @@ class PartyHandler : public Net::PartyHandler
 
         virtual ~PartyHandler();
 
-        void join(const int partyId) const override;
+        void join(const int partyId) const override final;
 
-        PartyShare getShareExperience() const override A_WARN_UNUSED
+        PartyShare getShareExperience() const override final A_WARN_UNUSED
         { return mShareExp; }
 
-        PartyShare getShareItems() const override A_WARN_UNUSED
+        PartyShare getShareItems() const override final A_WARN_UNUSED
         { return mShareItems; }
 
         void reload() const;
 
-        void clear() const override;
+        void clear() const override final;
 
-        ChatTab *getTab() const override;
+        ChatTab *getTab() const override final;
 
         virtual void processPartyCreate(Net::MessageIn &msg) const;
 

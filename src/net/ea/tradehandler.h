@@ -36,7 +36,8 @@ class TradeHandler : public Net::TradeHandler
 
         A_DELETE_COPY(TradeHandler)
 
-        void removeItem(const int slotNum, const int amount) const override;
+        void removeItem(const int slotNum,
+                        const int amount) const override final;
 
         void processTradeRequest(Net::MessageIn &msg) const;
 

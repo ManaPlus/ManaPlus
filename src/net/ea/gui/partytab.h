@@ -40,24 +40,24 @@ class PartyTab : public ChatTab, public ConfigListener
 
         virtual ~PartyTab();
 
-        void showHelp() override;
+        void showHelp() override final;
 
         bool handleCommand(const std::string &type,
-                           const std::string &args) override;
+                           const std::string &args) override final;
 
-        int getType() const override A_WARN_UNUSED
+        int getType() const override final A_WARN_UNUSED
         { return ChatTab::TAB_PARTY; }
 
-        void saveToLogFile(const std::string &msg) const override;
+        void saveToLogFile(const std::string &msg) const override final;
 
-        void playNewMessageSound() const override;
+        void playNewMessageSound() const override final;
 
         void optionChanged(const std::string &value);
 
     protected:
-        void handleInput(const std::string &msg) override;
+        void handleInput(const std::string &msg) override final;
 
-        virtual void getAutoCompleteList(StringVect&) const override;
+        virtual void getAutoCompleteList(StringVect&) const override final;
 };
 
 extern PartyTab *partyTab;

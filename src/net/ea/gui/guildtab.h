@@ -41,23 +41,23 @@ class GuildTab : public ChatTab, public ConfigListener
         virtual ~GuildTab();
 
         bool handleCommand(const std::string &type,
-                           const std::string &args) override;
+                           const std::string &args) override final;
 
         void showHelp() override;
 
-        void saveToLogFile(const std::string &msg) const override;
+        void saveToLogFile(const std::string &msg) const override final;
 
-        int getType() const override A_WARN_UNUSED
+        int getType() const override final A_WARN_UNUSED
         { return ChatTab::TAB_GUILD; }
 
-        void playNewMessageSound() const override;
+        void playNewMessageSound() const override final;
 
-        void optionChanged(const std::string &value) override;
+        void optionChanged(const std::string &value) override final;
 
     protected:
-        void handleInput(const std::string &msg) override;
+        void handleInput(const std::string &msg) override final;
 
-        void getAutoCompleteList(StringVect &names) const override;
+        void getAutoCompleteList(StringVect &names) const override final;
 };
 
 }  // namespace Ea

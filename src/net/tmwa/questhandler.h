@@ -33,7 +33,7 @@ class QuestHandler final : public MessageHandler
 
         A_DELETE_COPY(QuestHandler)
 
-        void handleMessage(Net::MessageIn &msg) override;
+        void handleMessage(Net::MessageIn &msg) override final;
 
         void processSetQuestVar(Net::MessageIn &msg) const;
 

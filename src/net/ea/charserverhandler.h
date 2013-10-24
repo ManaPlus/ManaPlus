@@ -41,7 +41,7 @@ class CharServerHandler : public Net::CharServerHandler
         A_DELETE_COPY(CharServerHandler)
 
         virtual void setCharSelectDialog(CharSelectDialog *const window)
-                                         override;
+                                         override final;
 
         /**
          * Sets the character create dialog. The handler will clean up this
@@ -49,15 +49,15 @@ class CharServerHandler : public Net::CharServerHandler
          * the dialog when a new character failed to be created.
          */
         virtual void setCharCreateDialog(CharCreateDialog *const window)
-                                         override;
+                                         override final;
 
-        virtual void requestCharacters() override;
+        virtual void requestCharacters() override final;
 
-        virtual unsigned int baseSprite() const override A_WARN_UNUSED;
+        virtual unsigned int baseSprite() const override final A_WARN_UNUSED;
 
-        virtual unsigned int hairSprite() const override A_WARN_UNUSED;
+        virtual unsigned int hairSprite() const override final A_WARN_UNUSED;
 
-        virtual unsigned int maxSprite() const override A_WARN_UNUSED;
+        virtual unsigned int maxSprite() const override final A_WARN_UNUSED;
 
         virtual void connect() = 0;
 
@@ -80,7 +80,7 @@ class CharServerHandler : public Net::CharServerHandler
                                             Network *const network,
                                             ServerInfo &mapServer) const;
 
-        virtual void clear() override;
+        virtual void clear() override final;
 
     protected:
         CharServerHandler();

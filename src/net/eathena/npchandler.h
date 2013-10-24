@@ -37,34 +37,35 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         A_DELETE_COPY(NpcHandler)
 
-        void handleMessage(Net::MessageIn &msg) override;
+        void handleMessage(Net::MessageIn &msg) override final;
 
-        void talk(const int npcId) const override;
+        void talk(const int npcId) const override final;
 
-        void nextDialog(const int npcId) const override;
+        void nextDialog(const int npcId) const override final;
 
-        void closeDialog(const int npcId) override;
+        void closeDialog(const int npcId) override final;
 
         void listInput(const int npcId,
-                       const unsigned char value) const override;
+                       const unsigned char value) const override final;
 
-        void integerInput(const int npcId, const int value) const override;
+        void integerInput(const int npcId,
+                          const int value) const override final;
 
         void stringInput(const int npcId,
-                         const std::string &value) const override;
+                         const std::string &value) const override final;
 
-        void buy(const int beingId) const override;
+        void buy(const int beingId) const override final;
 
-        void sell(const int beingId) const override;
+        void sell(const int beingId) const override final;
 
         void buyItem(const int beingId, const int itemId,
                      const unsigned char color,
-                     const int amount) const override;
+                     const int amount) const override final;
 
         void sellItem(const int beingId, const int itemId,
-                      const int amount) const override;
+                      const int amount) const override final;
 
-        int getNpc(Net::MessageIn &msg, const bool haveLength) override;
+        int getNpc(Net::MessageIn &msg, const bool haveLength) override final;
 
         void processNpcCutin(Net::MessageIn &msg, const int npcId) const;
 

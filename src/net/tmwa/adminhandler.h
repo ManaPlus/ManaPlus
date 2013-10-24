@@ -37,15 +37,15 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
         A_DELETE_COPY(AdminHandler)
 
-        void handleMessage(Net::MessageIn &msg) override;
+        void handleMessage(Net::MessageIn &msg) override final;
 
-        void announce(const std::string &text) const override;
+        void announce(const std::string &text) const override final;
 
-        void localAnnounce(const std::string &text) const override;
+        void localAnnounce(const std::string &text) const override final;
 
-        void hide(const bool h) const override;
+        void hide(const bool h) const override final;
 
-        void kick(const int playerId) const override;
+        void kick(const int playerId) const override final;
 };
 
 }  // namespace TmwAthena

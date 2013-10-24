@@ -40,13 +40,13 @@ class GuildHandler : public Net::GuildHandler
         virtual ~GuildHandler();
 
         void requestAlliance(const int guildId,
-                             const int otherGuildId) const override;
+                             const int otherGuildId) const override final;
 
         void requestAllianceResponse(const int guildId, const int otherGuildId,
-                                     const bool response) const override;
+                                     const bool response) const override final;
 
         void endAlliance(const int guildId,
-                         const int otherGuildId) const override;
+                         const int otherGuildId) const override final;
 
         virtual void processGuildCreateResponse(Net::MessageIn &msg) const;
 
@@ -100,9 +100,9 @@ class GuildHandler : public Net::GuildHandler
 
         virtual void processGuildBroken(Net::MessageIn &msg) const;
 
-        void clear() const override;
+        void clear() const override final;
 
-        ChatTab *getTab() const override;
+        ChatTab *getTab() const override final;
 
     protected:
         bool showBasicInfo;

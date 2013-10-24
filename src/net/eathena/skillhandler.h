@@ -37,15 +37,15 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
 
         A_DELETE_COPY(SkillHandler)
 
-        void handleMessage(Net::MessageIn &msg) override;
+        void handleMessage(Net::MessageIn &msg) override final;
 
         void useBeing(const int id, const int level,
-                      const int beingId) const override;
+                      const int beingId) const override final;
 
         void usePos(const int id, const int level,
-                    const int x, const int y) const override;
+                    const int x, const int y) const override final;
 
-        void useMap(const int id, const std::string &map) const override;
+        void useMap(const int id, const std::string &map) const override final;
 };
 
 }  // namespace EAthena

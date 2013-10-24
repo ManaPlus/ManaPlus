@@ -45,37 +45,39 @@ class LoginHandler : public Net::LoginHandler
         int supportedOptionalActions() const override A_WARN_UNUSED
         { return SetGenderOnRegister; }
 
-        virtual bool isRegistrationEnabled() const override A_WARN_UNUSED;
+        virtual bool isRegistrationEnabled() const override final A_WARN_UNUSED;
 
-        virtual void getRegistrationDetails() const override;
+        virtual void getRegistrationDetails() const override final;
 
         virtual unsigned int getMaxPasswordLength() const
-            override A_WARN_UNUSED
+                                                  override A_WARN_UNUSED
         { return 24; }
 
-        virtual void loginAccount(LoginData *const loginData) const override;
+        virtual void loginAccount(LoginData *const loginData)
+                                  const override final;
 
         virtual void chooseServer(const unsigned int server) const override;
 
         virtual void registerAccount(LoginData *const loginData)
-                                     const override;
+                                     const override final;
 
-        virtual const Worlds &getWorlds() const override A_WARN_UNUSED;
+        virtual const Worlds &getWorlds() const override final A_WARN_UNUSED;
 
-        virtual void clearWorlds() override;
+        virtual void clearWorlds() override final;
 
         virtual ServerInfo *getCharServer() const A_WARN_UNUSED = 0;
 
         const Token &getToken() const A_WARN_UNUSED
         { return mToken; }
 
-        virtual void logout() const override;
+        virtual void logout() const override final;
 
-        virtual void changeEmail(const std::string &email) const override;
+        virtual void changeEmail(const std::string &email)
+                                 const override final;
 
         virtual void unregisterAccount(const std::string &username,
                                        const std::string &password)
-                                       const override;
+                                       const override final;
 
         virtual void procecessCharPasswordResponse(Net::MessageIn &msg) const;
 

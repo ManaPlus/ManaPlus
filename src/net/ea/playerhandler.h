@@ -36,22 +36,22 @@ class PlayerHandler : public Net::PlayerHandler
 
         A_DELETE_COPY(PlayerHandler)
 
-        void decreaseAttribute(const int attr) const override;
+        void decreaseAttribute(const int attr) const override final;
 
         void ignorePlayer(const std::string &player,
-                          const bool ignore) const override;
+                          const bool ignore) const override final;
 
-        void ignoreAll(const bool ignore) const override;
+        void ignoreAll(const bool ignore) const override final;
 
-        bool canUseMagic() const override;
+        bool canUseMagic() const override final;
 
-        bool canCorrectAttributes() const override;
+        bool canCorrectAttributes() const override final;
 
-        Vector getDefaultWalkSpeed() const override A_WARN_UNUSED;
+        Vector getDefaultWalkSpeed() const override final A_WARN_UNUSED;
 
-        int getJobLocation() const override A_WARN_UNUSED;
+        int getJobLocation() const override final A_WARN_UNUSED;
 
-        int getAttackLocation() const override A_WARN_UNUSED;
+        int getAttackLocation() const override final A_WARN_UNUSED;
 
         void processWalkResponse(Net::MessageIn &msg) const;
 

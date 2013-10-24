@@ -41,28 +41,28 @@ class CharServerHandler final : public MessageHandler,
 
         A_DELETE_COPY(CharServerHandler)
 
-        void handleMessage(Net::MessageIn &msg) override;
+        void handleMessage(Net::MessageIn &msg) override final;
 
-        void chooseCharacter(Net::Character *const character) override;
+        void chooseCharacter(Net::Character *const character) override final;
 
         void newCharacter(const std::string &name, const int slot,
                           const bool gender, const int hairstyle,
                           const int hairColor, const unsigned char race,
                           const unsigned char look,
-                          const std::vector<int> &stats) const override;
+                          const std::vector<int> &stats) const override final;
 
-        void deleteCharacter(Net::Character *const character) override;
+        void deleteCharacter(Net::Character *const character) override final;
 
-        void switchCharacter() const override;
+        void switchCharacter() const override final;
 
-        void connect() override;
+        void connect() override final;
 
         void processCharLogin(Net::MessageIn &msg);
 
     protected:
         void readPlayerData(Net::MessageIn &msg,
                             Net::Character *const character,
-                            const bool withColors) const override;
+                            const bool withColors) const override final;
 };
 
 }  // namespace TmwAthena

@@ -40,23 +40,23 @@ class GeneralHandler final : public MessageHandler,
 
         ~GeneralHandler();
 
-        void handleMessage(Net::MessageIn &msg) override;
+        void handleMessage(Net::MessageIn &msg) override final;
 
-        void load() override;
+        void load() override final;
 
-        void reload() override;
+        void reload() override final;
 
-        void unload() override;
+        void unload() override final;
 
-        void flushNetwork() override;
+        void flushNetwork() override final;
 
-        void clearHandlers() override;
+        void clearHandlers() override final;
 
-        void reloadPartially() const override;
+        void reloadPartially() const override final;
 
-        void gameStarted() const override;
+        void gameStarted() const override final;
 
-        void gameEnded() const override;
+        void gameEnded() const override final;
 
     protected:
         MessageHandlerPtr mAdminHandler;

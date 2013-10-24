@@ -39,7 +39,7 @@ class ChatHandler : public Net::ChatHandler
         A_DELETE_COPY(ChatHandler)
 
         void me(const std::string &text,
-                const std::string &channel) const override;
+                const std::string &channel) const override final;
 
         virtual void processWhisperResponse(Net::MessageIn &msg);
 

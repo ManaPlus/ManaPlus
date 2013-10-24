@@ -51,7 +51,7 @@ class EquipBackend : public Equipment::Backend
 
         A_DELETE_COPY(EquipBackend)
 
-        Item *getEquipment(const int index) const override A_WARN_UNUSED
+        Item *getEquipment(const int index) const override final A_WARN_UNUSED
         {
             int invyIndex = mEquipment[index];
             if (invyIndex == -1)
@@ -152,19 +152,20 @@ class InventoryHandler : public Net::InventoryHandler
 
         void clear();
 
-        bool canSplit(const Item *const item) const override A_WARN_UNUSED;
+        bool canSplit(const Item *const item) const override final A_WARN_UNUSED;
 
         void splitItem(const Item *const item,
-                       const int amount) const override;
+                       const int amount) const override final;
 
-        void moveItem(const int oldIndex, const int newIndex) const override;
+        void moveItem(const int oldIndex,
+                      const int newIndex) const override final;
 
-        void openStorage(const int type) const override;
+        void openStorage(const int type) const override final;
 
-        size_t getSize(const int type) const override A_WARN_UNUSED;
+        size_t getSize(const int type) const override final A_WARN_UNUSED;
 
         int convertFromServerSlot(const int serverSlot)
-                                  const override A_WARN_UNUSED;
+                                  const override final A_WARN_UNUSED;
 
         void pushPickup(const int floorId)
         { mSentPickups.push(floorId); }

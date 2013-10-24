@@ -41,32 +41,32 @@ class AdminHandler : public Net::AdminHandler
         virtual ~AdminHandler()
         { }
 
-        virtual void kickName(const std::string &name) const override;
+        virtual void kickName(const std::string &name) const override final;
 
-        virtual void ban(const int playerId) const override;
+        virtual void ban(const int playerId) const override final;
 
-        virtual void banName(const std::string &name) const override;
+        virtual void banName(const std::string &name) const override final;
 
-        virtual void unban(const int playerId) const override;
+        virtual void unban(const int playerId) const override final;
 
-        virtual void unbanName(const std::string &name) const override;
+        virtual void unbanName(const std::string &name) const override final;
 
         virtual void mute(const int playerId, const int type,
-                          const int limit) const override;
+                          const int limit) const override final;
 
         virtual void warp(const std::string &map,
-                          const int x, const int y) const override;
+                          const int x, const int y) const override final;
 
         void gotoName(const std::string &name) const;
 
-        void recallName(const std::string &name) const override;
+        void recallName(const std::string &name) const override final;
 
-        void reviveName(const std::string &name) const override;
+        void reviveName(const std::string &name) const override final;
 
-        void ipcheckName(const std::string &name) const override;
+        void ipcheckName(const std::string &name) const override final;
 
         void createItems(const int id, const int color,
-                         const int amount) const override;
+                         const int amount) const override final;
 };
 
 }  // namespace Ea

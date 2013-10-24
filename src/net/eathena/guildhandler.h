@@ -38,34 +38,36 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
 
         ~GuildHandler();
 
-        void handleMessage(Net::MessageIn &msg) override;
+        void handleMessage(Net::MessageIn &msg) override final;
 
-        void create(const std::string &name) const override;
-
-        void invite(const int guildId, const std::string &name) const override;
+        void create(const std::string &name) const override final;
 
         void invite(const int guildId,
-                    const Being *const being) const override;
+                    const std::string &name) const override final;
+
+        void invite(const int guildId,
+                    const Being *const being) const override final;
 
         void inviteResponse(const int guildId,
-                            const bool response) const override;
+                            const bool response) const override final;
 
-        void leave(const int guildId) const override;
+        void leave(const int guildId) const override final;
 
         void kick(const GuildMember *const member,
-                  const std::string &reason) const override;
+                  const std::string &reason) const override final;
 
-        void chat(const int guildId, const std::string &text) const override;
+        void chat(const int guildId,
+                  const std::string &text) const override final;
 
-        void memberList(const int guildId) const override;
+        void memberList(const int guildId) const override final;
 
-        void info(const int guildId) override;
+        void info(const int guildId) override final;
 
         void changeMemberPostion(const GuildMember *const member,
-                                 const int level) const override;
+                                 const int level) const override final;
 
         void changeNotice(const int guildId, const std::string &msg1,
-                          const std::string &msg2) const override;
+                          const std::string &msg2) const override final;
 };
 
     extern Ea::GuildTab *guildTab;

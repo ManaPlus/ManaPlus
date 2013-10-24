@@ -40,28 +40,28 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
         ~PartyHandler();
 
-        void handleMessage(Net::MessageIn &msg) override;
+        void handleMessage(Net::MessageIn &msg) override final;
 
-        void create(const std::string &name) const override;
+        void create(const std::string &name) const override final;
 
-        void invite(Being *const being) const override;
+        void invite(Being *const being) const override final;
 
-        void invite(const std::string &name) const override;
+        void invite(const std::string &name) const override final;
 
         void inviteResponse(const std::string &inviter,
-                            const bool accept) const override;
+                            const bool accept) const override final;
 
-        void leave() const override;
+        void leave() const override final;
 
-        void kick(Being *const being) const override;
+        void kick(Being *const being) const override final;
 
-        void kick(const std::string &name) const override;
+        void kick(const std::string &name) const override final;
 
-        void chat(const std::string &text) const override;
+        void chat(const std::string &text) const override final;
 
-        void setShareExperience(const PartyShare share) const override;
+        void setShareExperience(const PartyShare share) const override final;
 
-        void setShareItems(const PartyShare share) const override;
+        void setShareItems(const PartyShare share) const override final;
 };
 
 }  // namespace EAthena
