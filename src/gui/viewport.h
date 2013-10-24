@@ -83,12 +83,12 @@ class Viewport final : public WindowContainer,
         /**
          * Draws the viewport.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(gcn::Graphics *graphics) override final;
 
         /**
          * Implements player to keep following mouse.
          */
-        void logic() override;
+        void logic() override final;
 
         /**
          * Toggles whether the path debug graphics are shown. normal,
@@ -102,22 +102,22 @@ class Viewport final : public WindowContainer,
         /**
          * Handles mouse press on map.
          */
-        void mousePressed(gcn::MouseEvent &event) override;
+        void mousePressed(gcn::MouseEvent &event) override final;
 
         /**
          * Handles mouse move on map
          */
-        void mouseDragged(gcn::MouseEvent &event) override;
+        void mouseDragged(gcn::MouseEvent &event) override final;
 
         /**
          * Handles mouse button release on map.
          */
-        void mouseReleased(gcn::MouseEvent &event) override;
+        void mouseReleased(gcn::MouseEvent &event) override final;
 
         /**
          * Handles mouse move on map.
          */
-        void mouseMoved(gcn::MouseEvent &event) override;
+        void mouseMoved(gcn::MouseEvent &event) override final;
 
         /**
          * Shows a popup for an item.
@@ -197,7 +197,7 @@ class Viewport final : public WindowContainer,
         /**
          * A relevant config option changed.
          */
-        void optionChanged(const std::string &name) override;
+        void optionChanged(const std::string &name) override final;
 
         /**
          * Returns camera x offset in pixels.

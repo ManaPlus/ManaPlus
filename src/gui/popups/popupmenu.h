@@ -54,7 +54,7 @@ class RenameListener final : public gcn::ActionListener
 
         A_DELETE_COPY(RenameListener)
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         void setMapItem(MapItem *const mapItem);
 
@@ -74,7 +74,7 @@ class PlayerListener : public gcn::ActionListener
 
         A_DELETE_COPY(PlayerListener)
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
         void setNick(std::string name)
         { mNick = name; }
@@ -104,7 +104,7 @@ class PopupMenu final : public Popup, public LinkHandler
 
         A_DELETE_COPY(PopupMenu)
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Shows the being related popup menu at the specified mouse coords.
@@ -187,7 +187,7 @@ class PopupMenu final : public Popup, public LinkHandler
          * Handles link action.
          */
         void handleLink(const std::string &link,
-                        gcn::MouseEvent *event A_UNUSED) override;
+                        gcn::MouseEvent *event A_UNUSED) override final;
 
         void clear();
 

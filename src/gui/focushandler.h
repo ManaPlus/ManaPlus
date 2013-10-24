@@ -48,30 +48,31 @@ class FocusHandler final : public gcn::FocusHandler
          * then that widget loses modal focus and will regain it after this
          * widget releases his modal focus.
          */
-        void requestModalFocus(gcn::Widget *widget) override;
+        void requestModalFocus(gcn::Widget *widget) override final;
 
         /**
          * Releases modal focus of a widget. When this widget had modal focus
          * and there are other widgets that had also requested modal focus,
          * then modal focus will be transfered to the last of those.
          */
-        void releaseModalFocus(gcn::Widget *widget) override;
+        void releaseModalFocus(gcn::Widget *widget) override final;
 
         /**
          * Removes a widget from the focus handler. Also makes sure no dangling
          * pointers remain in modal focus stack.
          */
-        void remove(gcn::Widget *widget) override;
+        void remove(gcn::Widget *widget) override final;
 
         /**
          * Overloaded to allow windows to move to the top when one of their
          * widgets is tabbed to when tabbing through focusable elements.
          */
-        void tabNext() override;
+        void tabNext() override final;
 
-        void tabPrevious() override;
+        void tabPrevious() override final;
 
-        void distributeFocusGainedEvent(const gcn::Event &focusEvent) override;
+        void distributeFocusGainedEvent(const gcn::Event &focusEvent)
+                                        override final;
 
     private:
         /**

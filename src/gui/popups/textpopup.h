@@ -48,7 +48,7 @@ class TextPopup final : public Popup
          */
         ~TextPopup();
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Sets the text to be displayed.
@@ -72,7 +72,7 @@ class TextPopup final : public Popup
         void show(const int x, const int y, const std::string &str1,
                   const std::string &str2, const std::string &str3);
 
-        void mouseMoved(gcn::MouseEvent &mouseEvent) override;
+        void mouseMoved(gcn::MouseEvent &mouseEvent) override final;
 
     private:
         Label *mText[TEXTPOPUPCOUNT];

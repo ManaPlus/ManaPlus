@@ -88,13 +88,13 @@ class WindowMenu final : public Container,
 
         ~WindowMenu();
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 
-        void mousePressed(gcn::MouseEvent &event) override;
+        void mousePressed(gcn::MouseEvent &event) override final;
 
-        void mouseMoved(gcn::MouseEvent &event) override;
+        void mouseMoved(gcn::MouseEvent &event) override final;
 
-        void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED) override;
+        void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED) override final;
 
         std::map <std::string, ButtonInfo*> &getButtonNames() A_WARN_UNUSED
         { return mButtonNames; }
@@ -111,14 +111,14 @@ class WindowMenu final : public Container,
 
         void saveButtons() const;
 
-        void optionChanged(const std::string &name) override;
+        void optionChanged(const std::string &name) override final;
 
 #ifdef USE_PROFILER
         void logicChildren();
 #endif
 
     protected:
-        void drawChildren(gcn::Graphics* graphics) override;
+        void drawChildren(gcn::Graphics* graphics) override final;
 
     private:
         inline void addButton(const char *const text,

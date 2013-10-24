@@ -48,7 +48,7 @@ class SpellPopup final : public Popup
          */
         ~SpellPopup();
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Sets the info to be displayed given a particular item.
@@ -60,7 +60,7 @@ class SpellPopup final : public Popup
          */
         void view(const int x, const int y);
 
-        void mouseMoved(gcn::MouseEvent &mouseEvent) override;
+        void mouseMoved(gcn::MouseEvent &mouseEvent) override final;
 
     private:
         Label *mItemName;

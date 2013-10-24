@@ -121,9 +121,10 @@ class SDLFont final : public gcn::Font
                       const int size,
                       const int style = 0);
 
-        int getWidth(const std::string &text) const override A_WARN_UNUSED;
+        int getWidth(const std::string &text) const override
+                     final A_WARN_UNUSED;
 
-        int getHeight() const override  A_WARN_UNUSED;
+        int getHeight() const override final A_WARN_UNUSED;
 
         const TextChunkList *getCache() const A_WARN_UNUSED;
 
@@ -132,7 +133,7 @@ class SDLFont final : public gcn::Font
          */
         void drawString(gcn::Graphics *const graphics,
                         const std::string &text,
-                        const int x, const int y) override;
+                        const int x, const int y) override final;
 
         void clear();
 

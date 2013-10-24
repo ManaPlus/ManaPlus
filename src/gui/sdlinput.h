@@ -152,21 +152,21 @@ public:
      * only use SDL and plan sticking with SDL you can safely ignore this
      * function as it in the SDL case does nothing.
      */
-    void _pollInput() override
+    void _pollInput() override final
     { }
 
     KeyInput dequeueKeyInput2() A_WARN_UNUSED;
 
-    gcn::KeyInput dequeueKeyInput() override A_WARN_UNUSED
+    gcn::KeyInput dequeueKeyInput() override final A_WARN_UNUSED
     { return gcn::KeyInput(); }
 
     // Inherited from Input
 
-    bool isKeyQueueEmpty() override A_WARN_UNUSED;
+    bool isKeyQueueEmpty() override final A_WARN_UNUSED;
 
-    bool isMouseQueueEmpty() override A_WARN_UNUSED;
+    bool isMouseQueueEmpty() override final A_WARN_UNUSED;
 
-    gcn::MouseInput dequeueMouseInput() override A_WARN_UNUSED;
+    gcn::MouseInput dequeueMouseInput() override final A_WARN_UNUSED;
 
     MouseInput dequeueMouseInput2() A_WARN_UNUSED;
 

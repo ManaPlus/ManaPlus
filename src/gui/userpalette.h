@@ -155,7 +155,7 @@ class UserPalette final : public Palette, public gcn::ListModel
          *
          * @return the number of colors known
          */
-        inline int getNumberOfElements() override A_WARN_UNUSED
+        inline int getNumberOfElements() override final A_WARN_UNUSED
         { return static_cast<int>(mColors.size()); }
 
         /**
@@ -165,7 +165,7 @@ class UserPalette final : public Palette, public gcn::ListModel
          *
          * @return the name of the color
          */
-        std::string getElementAt(int i) override A_WARN_UNUSED;
+        std::string getElementAt(int i) override final A_WARN_UNUSED;
 
         /**
          * Commit the colors

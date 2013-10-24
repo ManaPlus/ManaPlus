@@ -50,7 +50,7 @@ class ItemPopup final : public Popup
          */
         ~ItemPopup();
 
-        void postInit() override;
+        void postInit() override final;
 
         /**
          * Sets the info to be displayed given a particular item.
@@ -60,7 +60,7 @@ class ItemPopup final : public Popup
 
         void setItem(const Item *const item, const bool showImage = false);
 
-        void mouseMoved(gcn::MouseEvent &mouseEvent) override;
+        void mouseMoved(gcn::MouseEvent &mouseEvent) override final;
 
     private:
         Label *mItemName;
