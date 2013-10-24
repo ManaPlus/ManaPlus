@@ -77,7 +77,7 @@ class SubImage final : public Image
          */
         Image *getSubImage(const int x, const int y,
                            const int width,
-                           const int height) override A_WARN_UNUSED;
+                           const int height) override final A_WARN_UNUSED;
 
         SDL_Rect mInternalBounds;
 
