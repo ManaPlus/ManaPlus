@@ -66,7 +66,7 @@ extern int textures_count;
 class ErrorListener : public gcn::ActionListener
 {
     public:
-        void action(const gcn::ActionEvent &event) override;
+        void action(const gcn::ActionEvent &event) override final;
 };
 
 extern std::string errorMessage;
@@ -312,9 +312,9 @@ public:
 
     static void applyKeyRepeat();
 
-    void optionChanged(const std::string &name) override;
+    void optionChanged(const std::string &name) override final;
 
-    void action(const gcn::ActionEvent &event) override;
+    void action(const gcn::ActionEvent &event) override final;
 
     void initTradeFilter() const;
 

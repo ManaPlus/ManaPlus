@@ -63,14 +63,14 @@ class AnimatedSprite final : public Sprite
 
         ~AnimatedSprite();
 
-        bool reset() override;
+        bool reset() override final;
 
-        bool play(const std::string &action) override;
+        bool play(const std::string &action) override final;
 
-        bool update(const int time) override;
+        bool update(const int time) override final;
 
         bool draw(Graphics *const graphics,
-                  const int posX, const int posY) const override;
+                  const int posX, const int posY) const override final;
 
         int getWidth() const A_WARN_UNUSED;
 
@@ -89,9 +89,9 @@ class AnimatedSprite final : public Sprite
 
         unsigned int getFrameCount() const A_WARN_UNUSED;
 
-        void setAlpha(float alpha) override;
+        void setAlpha(float alpha) override final;
 
-        const void *getHash() const override A_WARN_UNUSED;
+        const void *getHash() const override final A_WARN_UNUSED;
 
         bool updateNumber(const unsigned num);
 

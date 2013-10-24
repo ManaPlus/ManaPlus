@@ -37,41 +37,41 @@ public:
 
     ~ImageSprite();
 
-    bool reset() override
+    bool reset() override final
     { return false; }
 
-    bool play(const std::string &action A_UNUSED) override
+    bool play(const std::string &action A_UNUSED) override final
     { return false; }
 
-    bool update(const int time A_UNUSED) override
+    bool update(const int time A_UNUSED) override final
     { return false; }
 
     bool draw(Graphics *const graphics,
-              const int posX, const int posY) const override;
+              const int posX, const int posY) const override final;
 
-    int getWidth() const override A_WARN_UNUSED
+    int getWidth() const override final A_WARN_UNUSED
     { return mImage ? mImage->getWidth() : 0; }
 
-    int getHeight() const override A_WARN_UNUSED
+    int getHeight() const override final A_WARN_UNUSED
     { return mImage ? mImage->getHeight() : 0; }
 
     const Image* getImage() const A_WARN_UNUSED
     { return mImage; }
 
     bool setSpriteDirection(const SpriteDirection
-                            direction A_UNUSED) override
+                            direction A_UNUSED) override final
     { return false; }
 
     int getNumberOfLayers() const A_WARN_UNUSED
     { return 1; }
 
-    unsigned int getCurrentFrame() const override A_WARN_UNUSED
+    unsigned int getCurrentFrame() const override final A_WARN_UNUSED
     { return 0; }
 
-    unsigned int getFrameCount() const override A_WARN_UNUSED
+    unsigned int getFrameCount() const override final A_WARN_UNUSED
     { return 1; }
 
-    bool updateNumber(const unsigned num A_UNUSED) override
+    bool updateNumber(const unsigned num A_UNUSED) override final
     { return false; }
 
 private:

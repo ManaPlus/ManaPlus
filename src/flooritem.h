@@ -52,11 +52,11 @@ class FloorItem final : public ActorSprite
 
         void postInit(Map *const map, int subX, int subY);
 
-        Type getType() const override A_WARN_UNUSED
+        Type getType() const override final A_WARN_UNUSED
         { return FLOOR_ITEM; }
 
         bool draw(Graphics *const graphics,
-                  const int offsetX, const int offsetY) const override;
+                  const int offsetX, const int offsetY) const override final;
 
         /**
          * Returns the item ID.
@@ -72,10 +72,10 @@ class FloorItem final : public ActorSprite
 
         std::string getName() const A_WARN_UNUSED;
 
-        int getTileX() const override A_WARN_UNUSED
+        int getTileX() const override final A_WARN_UNUSED
         { return mX; }
 
-        int getTileY() const override A_WARN_UNUSED
+        int getTileY() const override final A_WARN_UNUSED
         { return mY; }
 
         void incrementPickup()

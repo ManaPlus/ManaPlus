@@ -235,7 +235,7 @@ class ActorManager final: public ConfigListener
 
         bool pickUpNearest(const int x, const int y, int maxdist) const;
 
-        void optionChanged(const std::string &name) override;
+        void optionChanged(const std::string &name) override final;
 
         void removeAttackMob(const std::string &name);
 
@@ -319,6 +319,7 @@ class ActorManager final: public ConfigListener
                                       excluded = nullptr) const A_WARN_UNUSED;
 
         void loadAttackList();
+
         void storeAttackList() const;
 
         ActorSprites mActors;

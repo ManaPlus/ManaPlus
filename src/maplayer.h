@@ -175,7 +175,7 @@ class MapLayer final: public ConfigListener
         int getHeight() const A_WARN_UNUSED
         { return mHeight; }
 
-        void optionChanged(const std::string &value) override;
+        void optionChanged(const std::string &value) override final;
 
         int getTileDrawWidth(const Image *img,
                              const int endX, int &width) const A_WARN_UNUSED;
