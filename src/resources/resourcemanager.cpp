@@ -968,7 +968,7 @@ bool ResourceManager::copyFile(const std::string &src,
     }
 
     const int fileSize = static_cast<const int>(PHYSFS_fileLength(srcFile));
-    void *buf = new char[fileSize];
+    char *buf = new char[fileSize];
     PHYSFS_read(srcFile, buf, 1, fileSize);
     PHYSFS_write(dstFile, buf, 1, fileSize);
 
