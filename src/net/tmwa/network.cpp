@@ -149,7 +149,7 @@ void Network::dispatchMessages()
             len = 10;
         else if (msgId == SMSG_UPDATE_HOST2)
             len = -1;
-        else if (msgId >= 0 && msgId < messagesSize)
+        else if (msgId >= 0 && msgId < packet_lengths_size)
             len = packet_lengths[msgId];
 
         if (len == -1)
