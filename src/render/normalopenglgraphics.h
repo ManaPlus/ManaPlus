@@ -56,9 +56,12 @@ class NormalOpenGLGraphics final : public Graphics
 
         ~NormalOpenGLGraphics();
 
-        bool setVideoMode(const int w, const int h, const int bpp,
-                          const bool fs, const bool hwaccel,
-                          const bool resize, const bool noFrame) override final;
+        bool setVideoMode(const int w, const int h,
+                          const int bpp,
+                          const bool fs,
+                          const bool hwaccel,
+                          const bool resize,
+                          const bool noFrame) override final;
 
 
         /**

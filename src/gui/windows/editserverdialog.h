@@ -65,7 +65,8 @@ class TypeListModel : public gcn::ListModel
         /**
          * Used to get an element from the list
          */
-        std::string getElementAt(int elementIndex) override final A_WARN_UNUSED;
+        std::string getElementAt(int elementIndex)
+                                 override final A_WARN_UNUSED;
 };
 
 /**

@@ -50,9 +50,12 @@ class SafeOpenGLGraphics final : public Graphics
 
         ~SafeOpenGLGraphics();
 
-        bool setVideoMode(const int w, const int h, const int bpp,
-                          const bool fs, const bool hwaccel,
-                          const bool resize, const bool noFrame) override final;
+        bool setVideoMode(const int w, const int h,
+                          const int bpp,
+                          const bool fs,
+                          const bool hwaccel,
+                          const bool resize,
+                          const bool noFrame) override final;
 
         /**
          * Draws a resclaled version of the image

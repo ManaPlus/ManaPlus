@@ -67,7 +67,8 @@ class SDLGraphics : public Graphics
                                        const int width, const int height,
                                        const int desiredWidth,
                                        const int desiredHeight,
-                                       const bool useColor = false) override final;
+                                       const bool useColor = false)
+                                       override final;
 
         virtual void drawImagePattern(const Image *const image,
                                       const int x, const int y,

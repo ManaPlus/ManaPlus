@@ -45,7 +45,8 @@ class LoginHandler : public Net::LoginHandler
         int supportedOptionalActions() const override A_WARN_UNUSED
         { return SetGenderOnRegister; }
 
-        virtual bool isRegistrationEnabled() const override final A_WARN_UNUSED;
+        virtual bool isRegistrationEnabled() const
+                                           override final A_WARN_UNUSED;
 
         virtual void getRegistrationDetails() const override final;
 
