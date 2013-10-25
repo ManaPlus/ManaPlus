@@ -129,7 +129,7 @@ class SDL2SoftwareGraphics : public Graphics
 
         void drawRectangle(const gcn::Rectangle &rect) override final;
 
-        void drawPoint(int x, int y) override final override final;
+        void drawPoint(int x, int y) override final;
 
         void drawLine(int x1, int y1, int x2, int y2) override final;
 
@@ -155,7 +155,7 @@ class SDL2SoftwareGraphics : public Graphics
         int SDL_FakeUpperBlit(const SDL_Surface *const src,
                               SDL_Rect *const srcrect,
                               const SDL_Surface *const dst,
-                              SDL_Rect *dstrect) const override final;
+                              SDL_Rect *dstrect) const;
 
         void drawHLine(int x1, int y, int x2);
 
