@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-10-19 16:54+0300\n"
+"POT-Creation-Date: 2013-10-25 16:34+0300\n"
 "PO-Revision-Date: 2013-09-20 11:00+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
@@ -42,25 +42,25 @@ msgid "Visible on map"
 msgstr "Видимые на карте"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:296
+#: src/being/being.cpp:294
 msgid "Human"
 msgstr "Человек"
 
-#: src/being/being.cpp:504
+#: src/being/being.cpp:502
 msgid "dodge"
 msgstr "уворот"
 
-#: src/being/being.cpp:504
+#: src/being/being.cpp:502
 msgid "miss"
 msgstr "промах"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1748 src/gui/windows/whoisonline.cpp:861
+#: src/being/being.cpp:1746 src/gui/windows/whoisonline.cpp:861
 msgid "A"
 msgstr "О"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1753 src/gui/windows/whoisonline.cpp:866
+#: src/being/being.cpp:1751 src/gui/windows/whoisonline.cpp:866
 msgid "I"
 msgstr "Б"
 
@@ -534,31 +534,31 @@ msgstr "Плавающий пузырек"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1106 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:58
+#: src/client.cpp:1109 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:58
 msgid "Setup"
 msgstr "Настройка"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1110 src/gui/widgets/tabs/setup_perfomance.cpp:50
+#: src/client.cpp:1113 src/gui/widgets/tabs/setup_perfomance.cpp:50
 msgid "Performance"
 msgstr "Производительность"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1113 src/gui/widgets/tabs/setup_video.cpp:221
+#: src/client.cpp:1116 src/gui/widgets/tabs/setup_video.cpp:221
 msgid "Video"
 msgstr "Видео"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1116 src/gui/widgets/tabs/setup_theme.cpp:279
+#: src/client.cpp:1119 src/gui/widgets/tabs/setup_theme.cpp:279
 msgid "Theme"
 msgstr "Тема"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:1119 src/gui/windowmenu.cpp:72
+#: src/client.cpp:1122 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:50
 msgid "Help"
 msgstr "Помощь"
@@ -571,7 +571,7 @@ msgstr "Помощь"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1123 src/gui/popups/popupmenu.cpp:618
+#: src/client.cpp:1126 src/gui/popups/popupmenu.cpp:618
 #: src/gui/windows/didyouknowwindow.cpp:78
 #: src/gui/windows/inventorywindow.cpp:252 src/gui/windows/npcdialog.cpp:71
 #: src/gui/windows/npcdialog.cpp:109 src/gui/windows/questswindow.cpp:134
@@ -580,32 +580,32 @@ msgid "Close"
 msgstr "Закрыть"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1242
+#: src/client.cpp:1245
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1287
+#: src/client.cpp:1290
 msgid "Logging in"
 msgstr "Авторизация"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1328
+#: src/client.cpp:1331
 msgid "Entering game world"
 msgstr "Входим в игровой мир"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1451
+#: src/client.cpp:1454
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1492
+#: src/client.cpp:1495
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1506
+#: src/client.cpp:1509
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
@@ -620,10 +620,10 @@ msgstr "Смена игрового сервера"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1566 src/client.cpp:1577 src/client.cpp:1758
+#: src/client.cpp:1569 src/client.cpp:1580 src/client.cpp:1761
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
-#: src/gui/windows/charcreatedialog.cpp:358
+#: src/gui/windows/charcreatedialog.cpp:357
 #: src/gui/windows/charselectdialog.cpp:297
 #: src/gui/windows/editserverdialog.cpp:217
 #: src/gui/windows/registerdialog.cpp:259
@@ -633,65 +633,65 @@ msgid "Error"
 msgstr "Ошибка"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1590
+#: src/client.cpp:1593
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1630
+#: src/client.cpp:1633
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1632
+#: src/client.cpp:1635
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1654
+#: src/client.cpp:1657
 msgid "Email Change"
 msgstr "Сменить Email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1656
+#: src/client.cpp:1659
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1679
+#: src/client.cpp:1682
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1681
+#: src/client.cpp:1684
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1953 src/client.cpp:1968 src/client.cpp:2011
-#: src/client.cpp:2027 src/client.cpp:2467 src/client.cpp:2475
+#: src/client.cpp:1956 src/client.cpp:1971 src/client.cpp:2014
+#: src/client.cpp:2030 src/client.cpp:2456 src/client.cpp:2464
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s не существует, и не может быть создано! Выход."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2167
+#: src/client.cpp:2170
 #, c-format
 msgid "Invalid update host: %s."
 msgstr "Некорректный сервер обновленмй: %s."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2208 src/client.cpp:2215
+#: src/client.cpp:2211 src/client.cpp:2218
 msgid "Error creating updates directory!"
 msgstr "Ошибка создания директории для обновлений!"
 
-#: src/client.cpp:2237 src/client.cpp:2250
+#: src/client.cpp:2240 src/client.cpp:2253
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Ошибка: %s не существует, и не может быть создан! Выход."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2915
+#: src/client.cpp:2904
 msgid "Do you want to open support page?"
 msgstr "Открыть страницу поддержки?"
 
@@ -951,25 +951,25 @@ msgid "Network Error"
 msgstr "Ошибка сети"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:133
+#: src/gui/popups/beingpopup.cpp:132
 #, c-format
 msgid "Party: %s"
 msgstr "Группа: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:148
+#: src/gui/popups/beingpopup.cpp:147
 #, c-format
 msgid "Guild: %s"
 msgstr "Гильдия: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:162
+#: src/gui/popups/beingpopup.cpp:161
 #, c-format
 msgid "Pvp rank: %u"
 msgstr "PvP ранг: %u"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:174
+#: src/gui/popups/beingpopup.cpp:173
 #, c-format
 msgid "Comment: %s"
 msgstr "Комментарий: %s"
@@ -1180,7 +1180,7 @@ msgstr "Добавить имя в чат"
 #: src/gui/windows/connectiondialog.cpp:48
 #: src/gui/windows/editserverdialog.cpp:78
 #: src/gui/windows/itemamountwindow.cpp:209
-#: src/gui/windows/npcpostdialog.cpp:69 src/gui/windows/quitdialog.cpp:69
+#: src/gui/windows/npcpostdialog.cpp:68 src/gui/windows/quitdialog.cpp:69
 #: src/gui/windows/registerdialog.cpp:76 src/gui/windows/setup.cpp:90
 #: src/gui/windows/socialwindow.cpp:1231
 #: src/gui/windows/textcommandeditor.cpp:201 src/gui/windows/textdialog.cpp:53
@@ -2400,7 +2400,7 @@ msgstr "Страница вниз"
 #. TRANSLATORS: register dialog. button.
 #: src/gui/setupactiondata.h:1779 src/gui/setupactiondata.h:1868
 #: src/gui/widgets/tabs/setup_audio.cpp:159
-#: src/gui/widgets/tabs/setup_chat.cpp:176
+#: src/gui/widgets/tabs/setup_chat.cpp:180
 #: src/gui/widgets/tabs/setup_other.cpp:321
 #: src/gui/widgets/tabs/setup_visual.cpp:175
 #: src/gui/windows/charcreatedialog.cpp:107
@@ -2483,7 +2483,7 @@ msgstr "Смайлы"
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
 #: src/gui/setupactiondata.h:1866 src/gui/widgets/tabs/setup_chat.cpp:41
-#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:197
+#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:203
 msgid "Chat"
 msgstr "Чат"
 
@@ -2710,61 +2710,61 @@ msgstr "Деньги: %s"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:146
+#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:152
 msgid "black"
 msgstr "черный"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:148
+#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:154
 msgid "red"
 msgstr "красный"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:150
+#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:156
 msgid "green"
 msgstr "зеленый"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:152
+#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:158
 msgid "blue"
 msgstr "синий"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:154
+#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:160
 msgid "gold"
 msgstr "золотой"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:156
+#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:162
 msgid "yellow"
 msgstr "желтый"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:158
+#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:164
 msgid "pink"
 msgstr "розовый"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:160
+#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:166
 msgid "purple"
 msgstr "фиолетовый"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:162
+#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:168
 msgid "grey"
 msgstr "серый"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:164
+#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:170
 msgid "brown"
 msgstr "коричневый"
 
@@ -3149,85 +3149,97 @@ msgstr "Сообщения"
 msgid "Hide shop messages"
 msgstr "Скрыть сообщения магазина"
 
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_chat.cpp:124
+msgid "Show MVP messages"
+msgstr "Показывать MVP сообщения"
+
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_chat.cpp:125
+#: src/gui/widgets/tabs/setup_chat.cpp:129
 msgid "Tabs"
 msgstr "Страницы"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:128
+#: src/gui/widgets/tabs/setup_chat.cpp:132
 msgid "Put all whispers in tabs"
 msgstr "Личные сообщения во вкладках"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:132
+#: src/gui/widgets/tabs/setup_chat.cpp:136
 msgid "Log magic messages in debug tab"
 msgstr "Оставлять сообщения магии на вкладке отладки"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:136
+#: src/gui/widgets/tabs/setup_chat.cpp:140
 msgid "Show server messages in debug tab"
 msgstr "Показывать сообщения сервера на вкладке отладки"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:140
+#: src/gui/widgets/tabs/setup_chat.cpp:144
 msgid "Enable trade tab"
 msgstr "Включить вкладки торговли"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:144
+#: src/gui/widgets/tabs/setup_chat.cpp:148
 msgid "Enable gm tab"
 msgstr "Включить страницу чата для гм"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:148
+#: src/gui/widgets/tabs/setup_chat.cpp:152
 msgid "Enable language tab"
 msgstr "Включить в чате закладку для языка"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:152
+#: src/gui/widgets/tabs/setup_chat.cpp:156
 msgid "Show all languages messages"
 msgstr "Показывать сообщения на всех языках"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:156
+#: src/gui/widgets/tabs/setup_chat.cpp:160
 msgid "Enable battle tab"
 msgstr "Включить вкладку боя"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:160
+#: src/gui/widgets/tabs/setup_chat.cpp:164
 msgid "Show battle events"
 msgstr "Показать сообщения боя"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:164
+#: src/gui/widgets/tabs/setup_chat.cpp:168
 msgid "Resize chat tabs if need"
 msgstr "Подгонять размер чата"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_chat.cpp:169
+#: src/gui/widgets/tabs/setup_chat.cpp:173
 msgid "Time"
 msgstr "Время"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:172
+#: src/gui/widgets/tabs/setup_chat.cpp:176
 msgid "Use local time"
 msgstr "Использовать местное время"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:179
+#: src/gui/widgets/tabs/setup_chat.cpp:183
 msgid "Highlight words (separated by comma)"
 msgstr "Подсвечиваемые слова (разделенные запятыми)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:183
+#: src/gui/widgets/tabs/setup_chat.cpp:187
 msgid "Globals ignore names (separated by comma)"
 msgstr "Игнорировать глобальные сообщения с именами (разделенные запятой)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:187
-msgid "Show MVP messages"
-msgstr "Показывать MVP сообщения"
+#: src/gui/widgets/tabs/setup_chat.cpp:191
+#, fuzzy
+msgid "Show emotes button in chat"
+msgstr "Показывать в чате сообщения о поднятых предметах"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_chat.cpp:195
+#, fuzzy
+msgid "Show motd server message on start"
+msgstr "Показывать сообщения сервера на вкладке отладки"
 
 #: src/gui/widgets/tabs/setup_colors.cpp:46
 msgid "This is what the color looks like"
@@ -3415,7 +3427,7 @@ msgstr "SOCKS5 хост"
 #. TRANSLATORS: chat color
 #. TRANSLATORS: inventory sort mode
 #: src/gui/widgets/tabs/setup_other.cpp:71
-#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:144
+#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:150
 #: src/gui/windows/inventorywindow.cpp:69
 msgid "default"
 msgstr "По умолчанию"
@@ -5090,8 +5102,8 @@ msgstr "Имя:"
 #: src/gui/windows/charcreatedialog.cpp:75
 #: src/gui/windows/charcreatedialog.cpp:84
 #: src/gui/windows/charcreatedialog.cpp:101
-#: src/gui/windows/charcreatedialog.cpp:171
-#: src/gui/windows/charcreatedialog.cpp:181
+#: src/gui/windows/charcreatedialog.cpp:170
+#: src/gui/windows/charcreatedialog.cpp:180
 #: src/gui/windows/outfitwindow.cpp:58
 msgid ">"
 msgstr ">"
@@ -5102,8 +5114,8 @@ msgstr ">"
 #. TRANSLATORS: outfits window button
 #: src/gui/windows/charcreatedialog.cpp:79
 #: src/gui/windows/charcreatedialog.cpp:86
-#: src/gui/windows/charcreatedialog.cpp:173
-#: src/gui/windows/charcreatedialog.cpp:183
+#: src/gui/windows/charcreatedialog.cpp:172
+#: src/gui/windows/charcreatedialog.cpp:182
 #: src/gui/windows/outfitwindow.cpp:56
 msgid "<"
 msgstr "<"
@@ -5139,33 +5151,33 @@ msgstr "Женщина"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:113
-#: src/gui/windows/charcreatedialog.cpp:467
+#: src/gui/windows/charcreatedialog.cpp:466
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Распределите очки (%d)"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:175
+#: src/gui/windows/charcreatedialog.cpp:174
 msgid "Race:"
 msgstr "Раса:"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:185
+#: src/gui/windows/charcreatedialog.cpp:184
 msgid "Look:"
 msgstr "Внешность:"
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:360
+#: src/gui/windows/charcreatedialog.cpp:359
 msgid "Your name needs to be at least 4 characters."
 msgstr "Имя должно содержать не менее четырех символов."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:457
+#: src/gui/windows/charcreatedialog.cpp:456
 msgid "Character stats OK"
 msgstr "Данные персонажа в порядке"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:473
+#: src/gui/windows/charcreatedialog.cpp:472
 #, c-format
 msgid "Please remove %d points"
 msgstr "Снимите очки (%d)"
@@ -5256,28 +5268,28 @@ msgid "Enter password:"
 msgstr "Введите пароль:"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:166
+#: src/gui/windows/chatwindow.cpp:172
 msgid "rainbow 1"
 msgstr "радуга 1"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:168
+#: src/gui/windows/chatwindow.cpp:174
 msgid "rainbow 2"
 msgstr "радуга 2"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:170
+#: src/gui/windows/chatwindow.cpp:176
 msgid "rainbow 3"
 msgstr "радуга 3"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:694
+#: src/gui/windows/chatwindow.cpp:740
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Присутствуют: %s; Всего %d игроков."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1103
+#: src/gui/windows/chatwindow.cpp:1154
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Вы прошептали %s: %s"
@@ -5900,17 +5912,17 @@ msgid "Add"
 msgstr "Добавить"
 
 #. TRANSLATORS: label in npc post dialog
-#: src/gui/windows/npcpostdialog.cpp:58
+#: src/gui/windows/npcpostdialog.cpp:57
 msgid "To:"
 msgstr "Для:"
 
 #. TRANSLATORS: button in npc post dialog
-#: src/gui/windows/npcpostdialog.cpp:65
+#: src/gui/windows/npcpostdialog.cpp:64
 msgid "Send"
 msgstr "Отправить"
 
 #. TRANSLATORS: npc post message error
-#: src/gui/windows/npcpostdialog.cpp:112
+#: src/gui/windows/npcpostdialog.cpp:111
 msgid "Failed to send as sender or letter invalid."
 msgstr "Невозможно послать ибо отправитель либо сообщение неверны."
 
@@ -6939,13 +6951,13 @@ msgid "Failed to delete character."
 msgstr "Невозможно удалить персонажа."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/chathandler.cpp:87
+#: src/net/ea/chathandler.cpp:88
 #, c-format
 msgid "Whisper could not be sent, %s is offline."
 msgstr "Сообщение не может быть отправлено, %s оффлайн."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/chathandler.cpp:96
+#: src/net/ea/chathandler.cpp:97
 #, c-format
 msgid "Whisper could not be sent, ignored by %s."
 msgstr "Приватное сообщение не может быть послано: %s игнорирует его."

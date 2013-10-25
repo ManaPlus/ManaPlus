@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-10-19 16:54+0300\n"
+"POT-Creation-Date: 2013-10-25 16:34+0300\n"
 "PO-Revision-Date: 2013-09-20 08:56+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/"
@@ -38,25 +38,25 @@ msgid "Visible on map"
 msgstr "Viditelný na mapě"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:296
+#: src/being/being.cpp:294
 msgid "Human"
 msgstr ""
 
-#: src/being/being.cpp:504
+#: src/being/being.cpp:502
 msgid "dodge"
 msgstr "uskočil"
 
-#: src/being/being.cpp:504
+#: src/being/being.cpp:502
 msgid "miss"
 msgstr "minul"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1748 src/gui/windows/whoisonline.cpp:861
+#: src/being/being.cpp:1746 src/gui/windows/whoisonline.cpp:861
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1753 src/gui/windows/whoisonline.cpp:866
+#: src/being/being.cpp:1751 src/gui/windows/whoisonline.cpp:866
 msgid "I"
 msgstr ""
 
@@ -530,31 +530,31 @@ msgstr ""
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1106 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:58
+#: src/client.cpp:1109 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:58
 msgid "Setup"
 msgstr "Nastavení"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1110 src/gui/widgets/tabs/setup_perfomance.cpp:50
+#: src/client.cpp:1113 src/gui/widgets/tabs/setup_perfomance.cpp:50
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1113 src/gui/widgets/tabs/setup_video.cpp:221
+#: src/client.cpp:1116 src/gui/widgets/tabs/setup_video.cpp:221
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1116 src/gui/widgets/tabs/setup_theme.cpp:279
+#: src/client.cpp:1119 src/gui/widgets/tabs/setup_theme.cpp:279
 msgid "Theme"
 msgstr "Téma"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:1119 src/gui/windowmenu.cpp:72
+#: src/client.cpp:1122 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:50
 msgid "Help"
 msgstr "Nápověda"
@@ -567,7 +567,7 @@ msgstr "Nápověda"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1123 src/gui/popups/popupmenu.cpp:618
+#: src/client.cpp:1126 src/gui/popups/popupmenu.cpp:618
 #: src/gui/windows/didyouknowwindow.cpp:78
 #: src/gui/windows/inventorywindow.cpp:252 src/gui/windows/npcdialog.cpp:71
 #: src/gui/windows/npcdialog.cpp:109 src/gui/windows/questswindow.cpp:134
@@ -576,32 +576,32 @@ msgid "Close"
 msgstr "Zavřít"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1242
+#: src/client.cpp:1245
 msgid "Connecting to server"
 msgstr "Připojuji se k serveru"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1287
+#: src/client.cpp:1290
 msgid "Logging in"
 msgstr "Přihlašuji se"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1328
+#: src/client.cpp:1331
 msgid "Entering game world"
 msgstr "Vstupuji do herního světa"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1451
+#: src/client.cpp:1454
 msgid "Requesting characters"
 msgstr "Požaduji postavy"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1492
+#: src/client.cpp:1495
 msgid "Connecting to the game server"
 msgstr "Připojuji se k hernímu serveru"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1506
+#: src/client.cpp:1509
 msgid "Changing game servers"
 msgstr "Zaměňuji herní servery"
 
@@ -616,10 +616,10 @@ msgstr "Zaměňuji herní servery"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1566 src/client.cpp:1577 src/client.cpp:1758
+#: src/client.cpp:1569 src/client.cpp:1580 src/client.cpp:1761
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
-#: src/gui/windows/charcreatedialog.cpp:358
+#: src/gui/windows/charcreatedialog.cpp:357
 #: src/gui/windows/charselectdialog.cpp:297
 #: src/gui/windows/editserverdialog.cpp:217
 #: src/gui/windows/registerdialog.cpp:259
@@ -629,65 +629,65 @@ msgid "Error"
 msgstr "Chyba"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1590
+#: src/client.cpp:1593
 msgid "Requesting registration details"
 msgstr "Požaduji registrační detaily"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1630
+#: src/client.cpp:1633
 msgid "Password Change"
 msgstr "Změna hesla"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1632
+#: src/client.cpp:1635
 msgid "Password changed successfully!"
 msgstr "Heslo úspěšně změněno!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1654
+#: src/client.cpp:1657
 msgid "Email Change"
 msgstr "Změna emailu"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1656
+#: src/client.cpp:1659
 msgid "Email changed successfully!"
 msgstr "Email úspěšně změněn!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1679
+#: src/client.cpp:1682
 msgid "Unregister Successful"
 msgstr "Zrušení registrace úspěšné"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1681
+#: src/client.cpp:1684
 msgid "Farewell, come back any time..."
 msgstr "Nashledanou, vraťte se kdykoli..."
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1953 src/client.cpp:1968 src/client.cpp:2011
-#: src/client.cpp:2027 src/client.cpp:2467 src/client.cpp:2475
+#: src/client.cpp:1956 src/client.cpp:1971 src/client.cpp:2014
+#: src/client.cpp:2030 src/client.cpp:2456 src/client.cpp:2464
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s neexistuje a vytvoření selhalo. Končím."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2167
+#: src/client.cpp:2170
 #, c-format
 msgid "Invalid update host: %s."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2208 src/client.cpp:2215
+#: src/client.cpp:2211 src/client.cpp:2218
 msgid "Error creating updates directory!"
 msgstr "Chyba při vytváření adresáře s updaty!"
 
-#: src/client.cpp:2237 src/client.cpp:2250
+#: src/client.cpp:2240 src/client.cpp:2253
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Chyba: %s neexistuje a nelze ho vytvořit. Ukončuji."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2915
+#: src/client.cpp:2904
 msgid "Do you want to open support page?"
 msgstr ""
 
@@ -945,25 +945,25 @@ msgid "Network Error"
 msgstr "Chyba sítě"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:133
+#: src/gui/popups/beingpopup.cpp:132
 #, c-format
 msgid "Party: %s"
 msgstr "Parta: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:148
+#: src/gui/popups/beingpopup.cpp:147
 #, c-format
 msgid "Guild: %s"
 msgstr "Guilda: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:162
+#: src/gui/popups/beingpopup.cpp:161
 #, c-format
 msgid "Pvp rank: %u"
 msgstr "PVP hodnost: %u"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:174
+#: src/gui/popups/beingpopup.cpp:173
 #, c-format
 msgid "Comment: %s"
 msgstr "Komentář: %s"
@@ -1174,7 +1174,7 @@ msgstr "Vložit jméno do chatu"
 #: src/gui/windows/connectiondialog.cpp:48
 #: src/gui/windows/editserverdialog.cpp:78
 #: src/gui/windows/itemamountwindow.cpp:209
-#: src/gui/windows/npcpostdialog.cpp:69 src/gui/windows/quitdialog.cpp:69
+#: src/gui/windows/npcpostdialog.cpp:68 src/gui/windows/quitdialog.cpp:69
 #: src/gui/windows/registerdialog.cpp:76 src/gui/windows/setup.cpp:90
 #: src/gui/windows/socialwindow.cpp:1231
 #: src/gui/windows/textcommandeditor.cpp:201 src/gui/windows/textdialog.cpp:53
@@ -2394,7 +2394,7 @@ msgstr ""
 #. TRANSLATORS: register dialog. button.
 #: src/gui/setupactiondata.h:1779 src/gui/setupactiondata.h:1868
 #: src/gui/widgets/tabs/setup_audio.cpp:159
-#: src/gui/widgets/tabs/setup_chat.cpp:176
+#: src/gui/widgets/tabs/setup_chat.cpp:180
 #: src/gui/widgets/tabs/setup_other.cpp:321
 #: src/gui/widgets/tabs/setup_visual.cpp:175
 #: src/gui/windows/charcreatedialog.cpp:107
@@ -2477,7 +2477,7 @@ msgstr ""
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
 #: src/gui/setupactiondata.h:1866 src/gui/widgets/tabs/setup_chat.cpp:41
-#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:197
+#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:203
 msgid "Chat"
 msgstr "Chat"
 
@@ -2704,61 +2704,61 @@ msgstr "Peníze: %s"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:146
+#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:152
 msgid "black"
 msgstr "černá"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:148
+#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:154
 msgid "red"
 msgstr "červená"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:150
+#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:156
 msgid "green"
 msgstr "zelená"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:152
+#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:158
 msgid "blue"
 msgstr "modrá"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:154
+#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:160
 msgid "gold"
 msgstr "zlatá"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:156
+#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:162
 msgid "yellow"
 msgstr "žlutá"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:158
+#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:164
 msgid "pink"
 msgstr "růžová"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:160
+#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:166
 msgid "purple"
 msgstr "fialová"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:162
+#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:168
 msgid "grey"
 msgstr "šedá"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:164
+#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:170
 msgid "brown"
 msgstr "hnědá"
 
@@ -3143,85 +3143,96 @@ msgstr "Zprávy"
 msgid "Hide shop messages"
 msgstr "Skrýt obchodní zprávy"
 
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_chat.cpp:124
+msgid "Show MVP messages"
+msgstr ""
+
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_chat.cpp:125
+#: src/gui/widgets/tabs/setup_chat.cpp:129
 msgid "Tabs"
 msgstr "Záložky"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:128
+#: src/gui/widgets/tabs/setup_chat.cpp:132
 msgid "Put all whispers in tabs"
 msgstr "Všechy šeptání jako záložky"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:132
+#: src/gui/widgets/tabs/setup_chat.cpp:136
 msgid "Log magic messages in debug tab"
 msgstr "Zaznamenávat zprávy o magii v debug záložce"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:136
+#: src/gui/widgets/tabs/setup_chat.cpp:140
 msgid "Show server messages in debug tab"
 msgstr "Zobrazovat serverové zprávy v debug záložce"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:140
+#: src/gui/widgets/tabs/setup_chat.cpp:144
 msgid "Enable trade tab"
 msgstr "Zapnout obchodní záložku"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:144
+#: src/gui/widgets/tabs/setup_chat.cpp:148
 msgid "Enable gm tab"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:148
+#: src/gui/widgets/tabs/setup_chat.cpp:152
 msgid "Enable language tab"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:152
+#: src/gui/widgets/tabs/setup_chat.cpp:156
 msgid "Show all languages messages"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:156
+#: src/gui/widgets/tabs/setup_chat.cpp:160
 msgid "Enable battle tab"
 msgstr "Zapnout bitevní záložku"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:160
+#: src/gui/widgets/tabs/setup_chat.cpp:164
 msgid "Show battle events"
 msgstr "Zobrazovat bitevní události"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:164
+#: src/gui/widgets/tabs/setup_chat.cpp:168
 msgid "Resize chat tabs if need"
 msgstr "Změnit velikost záložek pokud nutno"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_chat.cpp:169
+#: src/gui/widgets/tabs/setup_chat.cpp:173
 msgid "Time"
 msgstr "Čas"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:172
+#: src/gui/widgets/tabs/setup_chat.cpp:176
 msgid "Use local time"
 msgstr "Použít místní čas"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:179
+#: src/gui/widgets/tabs/setup_chat.cpp:183
 msgid "Highlight words (separated by comma)"
 msgstr "Zvýrazňovaná slova (oddělená čárkou)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:183
+#: src/gui/widgets/tabs/setup_chat.cpp:187
 msgid "Globals ignore names (separated by comma)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_chat.cpp:187
-msgid "Show MVP messages"
+#: src/gui/widgets/tabs/setup_chat.cpp:191
+msgid "Show emotes button in chat"
 msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_chat.cpp:195
+#, fuzzy
+msgid "Show motd server message on start"
+msgstr "Zobrazovat serverové zprávy v debug záložce"
 
 #: src/gui/widgets/tabs/setup_colors.cpp:46
 msgid "This is what the color looks like"
@@ -3409,7 +3420,7 @@ msgstr ""
 #. TRANSLATORS: chat color
 #. TRANSLATORS: inventory sort mode
 #: src/gui/widgets/tabs/setup_other.cpp:71
-#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:144
+#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:150
 #: src/gui/windows/inventorywindow.cpp:69
 msgid "default"
 msgstr "výchozí"
@@ -5075,8 +5086,8 @@ msgstr "Jméno:"
 #: src/gui/windows/charcreatedialog.cpp:75
 #: src/gui/windows/charcreatedialog.cpp:84
 #: src/gui/windows/charcreatedialog.cpp:101
-#: src/gui/windows/charcreatedialog.cpp:171
-#: src/gui/windows/charcreatedialog.cpp:181
+#: src/gui/windows/charcreatedialog.cpp:170
+#: src/gui/windows/charcreatedialog.cpp:180
 #: src/gui/windows/outfitwindow.cpp:58
 msgid ">"
 msgstr ">"
@@ -5087,8 +5098,8 @@ msgstr ">"
 #. TRANSLATORS: outfits window button
 #: src/gui/windows/charcreatedialog.cpp:79
 #: src/gui/windows/charcreatedialog.cpp:86
-#: src/gui/windows/charcreatedialog.cpp:173
-#: src/gui/windows/charcreatedialog.cpp:183
+#: src/gui/windows/charcreatedialog.cpp:172
+#: src/gui/windows/charcreatedialog.cpp:182
 #: src/gui/windows/outfitwindow.cpp:56
 msgid "<"
 msgstr "<"
@@ -5124,33 +5135,33 @@ msgstr "Žena"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:113
-#: src/gui/windows/charcreatedialog.cpp:467
+#: src/gui/windows/charcreatedialog.cpp:466
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Rozdělte prosím %d bodů"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:175
+#: src/gui/windows/charcreatedialog.cpp:174
 msgid "Race:"
 msgstr "Rasa:"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:185
+#: src/gui/windows/charcreatedialog.cpp:184
 msgid "Look:"
 msgstr ""
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:360
+#: src/gui/windows/charcreatedialog.cpp:359
 msgid "Your name needs to be at least 4 characters."
 msgstr "Vaše jméno musí mít nejméně 4 znaky."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:457
+#: src/gui/windows/charcreatedialog.cpp:456
 msgid "Character stats OK"
 msgstr "Stav postavy je OK"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:473
+#: src/gui/windows/charcreatedialog.cpp:472
 #, c-format
 msgid "Please remove %d points"
 msgstr "Odstraňte prosím %d bodů"
@@ -5236,28 +5247,28 @@ msgid "Enter password:"
 msgstr "Zadej heslo:"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:166
+#: src/gui/windows/chatwindow.cpp:172
 msgid "rainbow 1"
 msgstr "duhová 1"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:168
+#: src/gui/windows/chatwindow.cpp:174
 msgid "rainbow 2"
 msgstr "duhová 2"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:170
+#: src/gui/windows/chatwindow.cpp:176
 msgid "rainbow 3"
 msgstr "duhová 3"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:694
+#: src/gui/windows/chatwindow.cpp:740
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Přítomni: %s; %d hráčů je přítomno."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1103
+#: src/gui/windows/chatwindow.cpp:1154
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Šeptání pro %s: %s"
@@ -5880,17 +5891,17 @@ msgid "Add"
 msgstr "Přidat"
 
 #. TRANSLATORS: label in npc post dialog
-#: src/gui/windows/npcpostdialog.cpp:58
+#: src/gui/windows/npcpostdialog.cpp:57
 msgid "To:"
 msgstr "Komu:"
 
 #. TRANSLATORS: button in npc post dialog
-#: src/gui/windows/npcpostdialog.cpp:65
+#: src/gui/windows/npcpostdialog.cpp:64
 msgid "Send"
 msgstr "Odeslat"
 
 #. TRANSLATORS: npc post message error
-#: src/gui/windows/npcpostdialog.cpp:112
+#: src/gui/windows/npcpostdialog.cpp:111
 msgid "Failed to send as sender or letter invalid."
 msgstr "Odeslání se nezdařilo. Odesílatel nebo dopis není platný."
 
@@ -6915,13 +6926,13 @@ msgid "Failed to delete character."
 msgstr "Nepodařilo se odstranit postavu."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/chathandler.cpp:87
+#: src/net/ea/chathandler.cpp:88
 #, c-format
 msgid "Whisper could not be sent, %s is offline."
 msgstr "Nelze odeslat šeptání, %s není připojen."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/chathandler.cpp:96
+#: src/net/ea/chathandler.cpp:97
 #, c-format
 msgid "Whisper could not be sent, ignored by %s."
 msgstr "Nelze odeslat šeptání, %s vás ignoruje."

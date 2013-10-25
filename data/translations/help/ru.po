@@ -3,14 +3,14 @@
 # Alexandr Uspensky <AlexandrUSP@yandex.com>, 2012
 # Andrei Karas <akaras@inbox.ru>, 2012-2013
 # BoBaH <BoBaH4spam@ukr.net>, 2012
-# Dan Sagunov <danilka.pro@gmail.com>, 2012
+# Dan Sagunov <danilka.pro@gmail.com>, 2012-2013
 # RatreX <ratrex@mail.ru>, 2013
 # RatreX <ratrex@mail.ru>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-10-07 21:17+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2013-10-24 13:33+0000\n"
+"Last-Translator: Dan Sagunov <danilka.pro@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 msgid "\"Outfit shortcut 12\""
-msgstr ""
+msgstr "\"Наряд 12\""
 
 msgid ""
 " - ##2allow trading##P: Do you wish to allow trade requests from arbitrary\n"
@@ -39,7 +39,7 @@ msgid ""
 msgstr "Вы можете выбрать другое оформление.\n Откройте окно настроек, выберите вкладку \"темы\"\n и смените \"тему интерфейса\""
 
 msgid "\"Target & attack\""
-msgstr ""
+msgstr "\"Прицел и атака\""
 
 msgid ""
 "Most commands working in whispers.\n"
@@ -65,7 +65,7 @@ msgid "/cacheinfo - show text cache info."
 msgstr "/cacheinfo - показать содержимое текстового буфера."
 
 msgid "\"Outfits window\""
-msgstr ""
+msgstr "\"Окно нарядов\""
 
 msgid ""
 "You can imitate other players by selecting \"imitation\" in player context menu\n"
@@ -100,7 +100,7 @@ msgid "/neutral NICK - add nick to neutral relation list."
 msgstr "/neutral ИГРОК - добавить игрока в нейтральный список."
 
 msgid "\"Outfit shortcut 7\""
-msgstr ""
+msgstr "\"Наряд 7\""
 
 msgid "/addpriorityattack NAME - add monster to priority attack list."
 msgstr "/addpriorityattack МОНСТР - добавить монстра в приоритетный список атаки."
@@ -151,7 +151,7 @@ msgid "\"Emote shortcut 1\""
 msgstr ""
 
 msgid "\"Outfit shortcut 13\""
-msgstr ""
+msgstr "\"Наряд 13\""
 
 msgid "##2Party level2:##P enables a char to create a party."
 msgstr "##2Группа уровень2:##P включает возможность создавать группу."
@@ -204,7 +204,7 @@ msgid "\"Emote shortcut 2\""
 msgstr ""
 
 msgid "\"Outfit shortcut 6\""
-msgstr ""
+msgstr "\"Наряд 6\""
 
 msgid "/setdrop N - set drop counter to requested value."
 msgstr "/setdrop N - задать счетчику дропов нужное значение."
@@ -296,7 +296,7 @@ msgid "SUPPORT"
 msgstr "ПОДДЕРЖКА"
 
 msgid "\"Outfit shortcut 10\""
-msgstr ""
+msgstr "\"Наряд 10\""
 
 msgid "Look this page for help and downloads:"
 msgstr "Посетите эту страницу для ознакомления\nи скачивания новыой версии:"
@@ -360,7 +360,7 @@ msgid "/imitation NICK - start imitation mode."
 msgstr "/imitation ИГРОК - начать режим имитации."
 
 msgid "\"Outfit shortcut 5\""
-msgstr ""
+msgstr "\"Наряд 5\""
 
 msgid "KEYBOARD:"
 msgstr "КЛАВИАТУРА:"
@@ -376,7 +376,7 @@ msgid "Server news"
 msgstr "Новости сервера"
 
 msgid "\"Outfit shortcut 11\""
-msgstr ""
+msgstr "\"Наряд 11\""
 
 msgid "\"Item shortcut 11\""
 msgstr ""
@@ -385,7 +385,7 @@ msgid "\"Item shortcut 10\""
 msgstr ""
 
 msgid "ABOUT MANAPLUS"
-msgstr "Об игре MANAPLUS"
+msgstr "О MANAPLUS"
 
 msgid "\"Select OK\""
 msgstr ""
@@ -420,7 +420,7 @@ msgid "/ignoreall - add all whispers to ignore list."
 msgstr "/ignoreall - добавить всех в список игнорирования."
 
 msgid "\"Copy outfit\""
-msgstr ""
+msgstr "\"Копировать наряд\""
 
 msgid "/ignore NICK - add nick to ignore list."
 msgstr "/ignore ИГРОК - добавить игрока в список игнорирования."
@@ -482,7 +482,7 @@ msgid "\"Hide windows\""
 msgstr ""
 
 msgid "\"Outfit shortcut 4\""
-msgstr ""
+msgstr "\"Наряд 4\""
 
 msgid "Chat commands"
 msgstr "Команды чата"
@@ -524,7 +524,7 @@ msgid "ManaPlus Contributors"
 msgstr "Разработчики ManaPlus"
 
 msgid "\"Copy equiped to Outfit\""
-msgstr ""
+msgstr "\"Надетое в наряд\""
 
 msgid "Basic skills:"
 msgstr "Основные умения:"
@@ -605,7 +605,7 @@ msgid "##2Party Level1:##P enables a char to join a party."
 msgstr "##2Группа Уровень1:##P Включает возможность вступать в группу."
 
 msgid "\"Outfit shortcut 3\""
-msgstr ""
+msgstr "\"Наряд 3\""
 
 msgid "\"Quick drop N items\""
 msgstr ""
@@ -628,7 +628,7 @@ msgid "Commands"
 msgstr "Команды"
 
 msgid "\"Outfit shortcut 9\""
-msgstr ""
+msgstr "\"Наряд 9\""
 
 msgid "\"Emote shortcut 4\""
 msgstr ""
@@ -722,7 +722,7 @@ msgid "\"Emote shortcut 6\""
 msgstr ""
 
 msgid "\"Outfit shortcut 2\""
-msgstr ""
+msgstr "\"Наряд 2\""
 
 msgid "You can change any key in keyboard settings."
 msgstr "Вы можете изменить любую клавишу в настройках"
@@ -752,7 +752,7 @@ msgid "\"Change crazy Move mode\""
 msgstr ""
 
 msgid "\"Outfit shortcut 8\""
-msgstr ""
+msgstr "\"Наряд 8\""
 
 msgid "\"Change imitation mode\""
 msgstr ""
@@ -769,7 +769,7 @@ msgid ""
 msgstr " В противном случае смотрите секцию @@команда|Команда Разработчиков@@, чтобы получить список\n разработчиков и информацию, как с ними связаться."
 
 msgid "\"Outfit shortcut 14\""
-msgstr ""
+msgstr "\"Наряд 14\""
 
 msgid "\"Quick drop N items from 0 slot\""
 msgstr ""
@@ -822,7 +822,7 @@ msgid "Search string not found."
 msgstr "Искомоя строка не найдена"
 
 msgid "\"Wear outfit\""
-msgstr ""
+msgstr "\"Надеть наряд\""
 
 msgid "emote key"
 msgstr ""
@@ -851,7 +851,7 @@ msgid "/attack - attack target."
 msgstr "/attack - атаковать цель."
 
 msgid "\"Outfit shortcut 1\""
-msgstr ""
+msgstr "\"Наряд 1\""
 
 msgid ""
 " You may find that not all communication is to your liking.  While most people\n"
@@ -866,7 +866,7 @@ msgid "\"Emote shortcut 12\""
 msgstr ""
 
 msgid "\"Outfit shortcut 15\""
-msgstr ""
+msgstr "Наряд 15"
 
 msgid "Windows"
 msgstr "Окна"
