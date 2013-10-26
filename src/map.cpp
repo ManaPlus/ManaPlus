@@ -1600,3 +1600,7 @@ uint8_t Map::getHeightOffset(const int x, const int y) const
         return 0;
     return mHeights->getHeight(x, y);
 }
+
+void Map::setMask(const int mask)
+{
+}

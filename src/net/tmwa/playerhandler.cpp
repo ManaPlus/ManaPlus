@@ -24,6 +24,7 @@
 
 #include "configuration.h"
 #include "client.h"
+#include "game.h"
 
 #include "net/net.h"
 
@@ -56,6 +57,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_STAT_UPDATE_6,
         SMSG_PLAYER_ARROW_MESSAGE,
         SMSG_ONLINE_LIST,
+        SMSG_MAP_MASK,
         0
     };
     handledMessages = _messages;
@@ -106,6 +108,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_ONLINE_LIST:
             processOnlineList(msg);
+            break;
+
+        case SMSG_MAP_MASK:
+            processMapMask(msg);
             break;
 
         default:
@@ -293,6 +299,15 @@ void PlayerHandler::updateStatus(const uint8_t status) const
     MessageOut outMsg(CMSG_SET_STATUS);
     outMsg.writeInt8(status);
     outMsg.writeInt8(0);
+}
+
+void PlayerHandler::processMapMask(Net::MessageIn &msg) const
+{
+    const int mask = msg.readInt32();
+    msg.readInt32();  // unused
+    Map *const map = Game::instance()->getCurrentMap();
+    if (map)
+        map->setMask(mask);
 }
 
 }  // namespace TmwAthena

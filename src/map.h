@@ -430,6 +430,8 @@ class Map final : public Properties, public ConfigListener
 
         uint8_t getHeightOffset(const int x, const int y) const;
 
+        void setMask(const int mask);
+
     protected:
         friend class Actor;
         friend class Minimap;
