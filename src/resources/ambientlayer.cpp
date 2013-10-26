@@ -21,6 +21,8 @@
 
 #include "resources/ambientlayer.h"
 
+#include "map.h"
+
 #include "render/graphics.h"
 
 #include "resources/image.h"
@@ -31,10 +33,14 @@
 
 AmbientLayer::AmbientLayer(Image *const img, const float parallax,
                            const float speedX, const float speedY,
-                           const bool keepRatio) :
-    mImage(img), mParallax(parallax),
-    mPosX(0), mPosY(0),
-    mSpeedX(speedX), mSpeedY(speedY),
+                           const bool keepRatio, int mask) :
+    mImage(img),
+    mParallax(parallax),
+    mPosX(0),
+    mPosY(0),
+    mSpeedX(speedX),
+    mSpeedY(speedY),
+    mMask(mask),
     mKeepRatio(keepRatio)
 {
     if (!mImage)

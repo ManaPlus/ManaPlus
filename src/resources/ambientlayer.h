@@ -26,10 +26,13 @@
 
 class Graphics;
 class Image;
+class Map;
 
 class AmbientLayer final
 {
     public:
+        friend Map;
+
         /**
          * Constructor.
          *
@@ -42,7 +45,7 @@ class AmbientLayer final
          */
         AmbientLayer(Image *const img, const float parallax,
                      const float speedX, const float speedY,
-                     const bool keepRatio = false);
+                     const bool keepRatio, int mask);
 
         A_DELETE_COPY(AmbientLayer)
 
@@ -59,6 +62,7 @@ class AmbientLayer final
         float mPosY;             /**< Current layer Y position. */
         float mSpeedX;           /**< Scrolling speed in X direction. */
         float mSpeedY;           /**< Scrolling speed in Y direction. */
+        int mMask;
         bool mKeepRatio;         /**< Keep overlay ratio on every resolution */
 };
 

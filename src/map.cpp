@@ -281,11 +281,15 @@ void Map::initializeAmbientLayers()
         Image *const img = resman->getImage(getProperty(name + "image"));
         if (img)
         {
+            int mask = atoi(getProperty(name + "mask").c_str());
+            if (!mask)
+                mask = 1;
             mForegrounds.push_back(new AmbientLayer(img,
                 getFloatProperty(name + "parallax"),
                 getFloatProperty(name + "scrollX"),
                 getFloatProperty(name + "scrollY"),
-                getBoolProperty(name + "keepratio")));
+                getBoolProperty(name + "keepratio"),
+                mask));
 
             // The AmbientLayer takes control over the image.
             img->decRef();
@@ -301,11 +305,15 @@ void Map::initializeAmbientLayers()
 
         if (img)
         {
+            int mask = atoi(getProperty(name + "mask").c_str());
+            if (!mask)
+                mask = 1;
             mBackgrounds.push_back(new AmbientLayer(img,
                 getFloatProperty(name + "parallax"),
                 getFloatProperty(name + "scrollX"),
                 getFloatProperty(name + "scrollY"),
-                getBoolProperty(name + "keepratio")));
+                getBoolProperty(name + "keepratio"),
+                mask));
 
             // The AmbientLayer takes control over the image.
             img->decRef();
@@ -603,11 +611,19 @@ void Map::updateAmbientLayers(const float scrollX, const float scrollY)
 
     // need check mask to update or not to update
 
-    FOR_EACH (AmbientLayerVectorCIter, i, mBackgrounds)
-        (*i)->update(timePassed, dx, dy);
+    FOR_EACH (AmbientLayerVectorIter, i, mBackgrounds)
+    {
+        AmbientLayer *const layer = *i;
+        if (layer && (layer->mMask & mMask))
+            layer->update(timePassed, dx, dy);
+    }
 
-    FOR_EACH (AmbientLayerVectorCIter, i, mForegrounds)
-        (*i)->update(timePassed, dx, dy);
+    FOR_EACH (AmbientLayerVectorIter, i, mForegrounds)
+    {
+        AmbientLayer *const layer = *i;
+        if (layer && (layer->mMask & mMask))
+            layer->update(timePassed, dx, dy);
+    }
 
     mLastAScrollX = scrollX;
     mLastAScrollY = scrollY;
@@ -643,9 +659,10 @@ void Map::drawAmbientLayers(Graphics *const graphics, const LayerType type,
     // Draw overlays
     FOR_EACHP (AmbientLayerVectorCIter, i, layers)
     {
+        const AmbientLayer *const layer = *i;
         // need check mask to draw or not to draw
-        if (*i)
-            (*i)->draw(graphics, graphics->mWidth, graphics->mHeight);
+        if (layer && (layer->mMask & mMask))
+            (layer)->draw(graphics, graphics->mWidth, graphics->mHeight);
 
         // Detail 1: only one overlay, higher: all overlays
         if (detail == 1)
