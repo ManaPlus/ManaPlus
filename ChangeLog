@@ -1,3 +1,13 @@
+2013-10-27 New release 1.3.10.27
+fix: drawing complex gui in Android.
+fix: text fields on SDL2.
+fix: input on Android on SDL2.
+add: new in chat emotes.
+add: emotes button near chat input line.
+add: extend chat window theming.
+add: context menu for buy/sell items.
+add: option to show/hide server motd.
+
 2013-10-12 New release 1.3.10.12
 fix: custom update server selection.
 fix: crash with rename map object.
