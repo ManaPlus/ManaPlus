@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2013-10-25 16:34+0300\n"
-"PO-Revision-Date: 2013-09-20 08:56+0000\n"
+"PO-Revision-Date: 2013-10-26 08:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/"
 "language/it/)\n"
@@ -3229,15 +3229,13 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:191
-#, fuzzy
 msgid "Show emotes button in chat"
-msgstr "Notifica oggetti raccolti nella chat."
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:195
-#, fuzzy
 msgid "Show motd server message on start"
-msgstr "Mostra i messaggi del server nella chat di debug"
+msgstr ""
 
 #: src/gui/widgets/tabs/setup_colors.cpp:46
 msgid "This is what the color looks like"

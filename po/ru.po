@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2013-10-25 16:34+0300\n"
-"PO-Revision-Date: 2013-09-20 11:00+0000\n"
+"PO-Revision-Date: 2013-10-26 09:12+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
 "language/ru/)\n"
@@ -3231,15 +3231,13 @@ msgstr "Игнорировать глобальные сообщения с им
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:191
-#, fuzzy
 msgid "Show emotes button in chat"
-msgstr "Показывать в чате сообщения о поднятых предметах"
+msgstr "Показывать кнопку эмоций в чате"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:195
-#, fuzzy
 msgid "Show motd server message on start"
-msgstr "Показывать сообщения сервера на вкладке отладки"
+msgstr "Показывать motd сообщение сервера"
 
 #: src/gui/widgets/tabs/setup_colors.cpp:46
 msgid "This is what the color looks like"

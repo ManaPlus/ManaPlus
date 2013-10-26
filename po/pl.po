@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2013-10-25 16:34+0300\n"
-"PO-Revision-Date: 2013-09-20 08:56+0000\n"
+"PO-Revision-Date: 2013-10-26 08:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/manaplus/language/"
 "pl/)\n"
@@ -3226,15 +3226,13 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:191
-#, fuzzy
 msgid "Show emotes button in chat"
-msgstr "Pokazuj wiadomości o podnoszeniu w czacie"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:195
-#, fuzzy
 msgid "Show motd server message on start"
-msgstr "Pokazuj wiadomości serwera w zakładce Debug"
+msgstr ""
 
 #: src/gui/widgets/tabs/setup_colors.cpp:46
 msgid "This is what the color looks like"
