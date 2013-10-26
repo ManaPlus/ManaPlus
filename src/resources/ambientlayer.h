@@ -31,7 +31,7 @@ class Map;
 class AmbientLayer final
 {
     public:
-        friend Map;
+        friend class Map;
 
         /**
          * Constructor.
