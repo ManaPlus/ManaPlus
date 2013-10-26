@@ -547,6 +547,7 @@ class Map final : public Properties, public ConfigListener
         int mDrawY;
         int mDrawScrollX;
         int mDrawScrollY;
+        int mMask;
         Resource *mAtlas;
         MapHeights *mHeights;
         bool mRedrawMap;

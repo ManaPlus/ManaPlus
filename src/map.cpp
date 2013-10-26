@@ -172,6 +172,7 @@ Map::Map(const int width, const int height,
     mDrawY(-1),
     mDrawScrollX(-1),
     mDrawScrollY(-1),
+    mMask(1),
     mAtlas(nullptr),
     mHeights(nullptr),
     mRedrawMap(true),
@@ -430,6 +431,9 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
              layeri != layeri_end && !overFringe; ++ layeri)
         {
             MapLayer *const layer = *layeri;
+            if (!(layer->mMask & mMask))
+                continue;
+
             if (layer->isFringeLayer())
             {
                 layer->setSpecialLayer(mSpecialLayer);
@@ -597,6 +601,8 @@ void Map::updateAmbientLayers(const float scrollX, const float scrollY)
     const float dy = scrollY - mLastAScrollY;
     const int timePassed = get_elapsed_time(lastTick);
 
+    // need check mask to update or not to update
+
     FOR_EACH (AmbientLayerVectorCIter, i, mBackgrounds)
         (*i)->update(timePassed, dx, dy);
 
@@ -637,6 +643,7 @@ void Map::drawAmbientLayers(Graphics *const graphics, const LayerType type,
     // Draw overlays
     FOR_EACHP (AmbientLayerVectorCIter, i, layers)
     {
+        // need check mask to draw or not to draw
         if (*i)
             (*i)->draw(graphics, graphics->mWidth, graphics->mHeight);
 
@@ -1603,4 +1610,7 @@ uint8_t Map::getHeightOffset(const int x, const int y) const
 
 void Map::setMask(const int mask)
 {
+    if (mask != mMask)
+        mRedrawMap = true;
+    mMask = mask;
 }
