@@ -102,7 +102,7 @@ class MapLayer final: public ConfigListener
          * There can be only one fringe layer per map.
          */
         MapLayer(const int x, const int y, const int width, const int height,
-                 const bool isFringeLayer);
+                 const bool isFringeLayer, const int mask);
 
         A_DELETE_COPY(MapLayer)
 
@@ -190,6 +190,7 @@ class MapLayer final: public ConfigListener
         SpecialLayer *mTempLayer;
         typedef std::vector<MapRowVertexes*> MapRows;
         MapRows mTempRows;
+        int mMask;
         bool mIsFringeLayer;    /**< Whether the actors are drawn. */
         bool mHighlightAttackRange;
 };

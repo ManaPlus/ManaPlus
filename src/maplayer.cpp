@@ -43,7 +43,7 @@
 #include "debug.h"
 
 MapLayer::MapLayer(const int x, const int y, const int width, const int height,
-                   const bool fringeLayer):
+                   const bool fringeLayer, const int mask):
     mX(x),
     mY(y),
     mWidth(width),
@@ -52,6 +52,7 @@ MapLayer::MapLayer(const int x, const int y, const int width, const int height,
     mSpecialLayer(nullptr),
     mTempLayer(nullptr),
     mTempRows(),
+    mMask(mask),
     mIsFringeLayer(fringeLayer),
     mHighlightAttackRange(config.getBoolValue("highlightAttackRange"))
 {

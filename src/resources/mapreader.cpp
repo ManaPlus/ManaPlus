@@ -666,6 +666,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
     const bool isFringeLayer = (name.substr(0, 6) == "fringe");
     const bool isCollisionLayer = (name.substr(0, 9) == "collision");
     const bool isHeightLayer = (name.substr(0, 7) == "heights");
+    int mask = 1;
 
     MapLayer::Type layerType = MapLayer::TILES;
     if (isCollisionLayer)
@@ -694,12 +695,25 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
                 const std::string pname = XML::getProperty(prop, "name", "");
                 const std::string value = XML::getProperty(prop, "value", "");
                 // ignoring any layer if property Hidden is 1
-                if (pname == "Hidden" && value == "1")
-                    return;
-                if (pname == "Version" && value > CHECK_VERSION)
-                    return;
-                if (pname == "NotVersion" && value <= CHECK_VERSION)
-                    return;
+                if (pname == "Hidden")
+                {
+                    if (value == "1")
+                        return;
+                }
+                else if (pname == "Version")
+                {
+                    if (value > CHECK_VERSION)
+                        return;
+                }
+                else if (pname == "NotVersion")
+                {
+                    if (value <= CHECK_VERSION)
+                        return;
+                }
+                else if (pname == "Mask")
+                {
+                    mask = atoi(value.c_str());
+                }
             }
         }
 
@@ -708,7 +722,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
 
         if (layerType == MapLayer::TILES)
         {
-            layer = new MapLayer(offsetX, offsetY, w, h, isFringeLayer);
+            layer = new MapLayer(offsetX, offsetY, w, h, isFringeLayer, mask);
             map->addLayer(layer);
         }
         else if (layerType == MapLayer::HEIGHTS)
@@ -939,9 +953,9 @@ Map *MapReader::createEmptyMap(const std::string &filename,
     map->setProperty("_realfilename", filename);
     updateMusic(map);
     map->setCustom(true);
-    MapLayer *layer = new MapLayer(0, 0, 300, 300, false);
+    MapLayer *layer = new MapLayer(0, 0, 300, 300, false, 1);
     map->addLayer(layer);
-    layer = new MapLayer(0, 0, 300, 300, true);
+    layer = new MapLayer(0, 0, 300, 300, true, 1);
     map->addLayer(layer);
 
     return map;
