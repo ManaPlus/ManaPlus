@@ -307,6 +307,7 @@ void OutfitWindow::copyOutfit(const int src, const int dst)
 
     for (unsigned int i = 0; i < OUTFIT_ITEM_COUNT; i++)
         mItems[dst][i] = mItems[src][i];
+    save();
 }
 
 void OutfitWindow::draw(gcn::Graphics *graphics)
@@ -440,6 +441,7 @@ void OutfitWindow::mousePressed(gcn::MouseEvent &event)
             mItems[mCurrentOutfit][index] = dragDrop.getSelected();
             mItemColors[mCurrentOutfit][index] = dragDrop.getSelectedColor();
             dragDrop.deselect();
+            save();
         }
     }
 
@@ -472,6 +474,7 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
                 mItemColors[mCurrentOutfit][index] = dragDrop.getItemColor();
                 dragDrop.clear();
                 dragDrop.deselect();
+                save();
             }
         }
         if (mItemClicked)
@@ -629,6 +632,7 @@ void OutfitWindow::copyFromEquiped(const int dst)
                 break;
         }
     }
+    save();
 }
 
 void OutfitWindow::wearAwayOutfit()
@@ -654,4 +658,5 @@ void OutfitWindow::clearCurrentOutfit()
         mItems[mCurrentOutfit][f] = -1;
         mItemColors[mCurrentOutfit][f] = 1;
     }
+    save();
 }
