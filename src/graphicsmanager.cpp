@@ -445,9 +445,11 @@ void GraphicsManager::updateExtensions()
     {   // get extensions in old way
         char const *extensions = reinterpret_cast<char const *>(
             glGetString(GL_EXTENSIONS));
-        logger->log1(extensions);
-
-        splitToStringSet(mExtensions, extensions, ' ');
+        if (extensions)
+        {
+            logger->log1(extensions);
+            splitToStringSet(mExtensions, extensions, ' ');
+        }
     }
 }
 
