@@ -238,8 +238,8 @@ Being *ActorManager::createBeing(const int id,
                                  const ActorSprite::Type type,
                                  const uint16_t subtype)
 {
-    Being *const being = new Being(id, type, subtype);
-    being->setMap(mMap);
+    Being *const being = new Being(id, type, subtype, mMap);
+
     mActors.insert(being);
     return being;
 }

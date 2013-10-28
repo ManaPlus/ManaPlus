@@ -88,7 +88,7 @@ extern MiniStatusWindow *miniStatusWindow;
 extern SkillDialog *skillDialog;
 
 LocalPlayer::LocalPlayer(const int id, const int subtype) :
-    Being(id, PLAYER, subtype),
+    Being(id, PLAYER, subtype, nullptr),
     mGMLevel(0),
     mInvertDirection(0),
     mCrazyMoveType(config.getIntValue("crazyMoveType")),

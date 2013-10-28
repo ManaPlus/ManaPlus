@@ -99,7 +99,8 @@ std::list<BeingCacheEntry*> beingInfoCache;
 typedef std::map<int, Guild*>::const_iterator GuildsMapCIter;
 typedef std::map<int, int>::const_iterator IntMapCIter;
 
-Being::Being(const int id, const Type type, const uint16_t subtype) :
+Being::Being(const int id, const Type type, const uint16_t subtype,
+             Map *const map) :
     ActorSprite(id),
     mNextSound(),
     mInfo(BeingInfo::unknown),
@@ -189,6 +190,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype) :
         mSpriteHide[f] = 0;
     }
 
+    setMap(map);
     setSubtype(subtype, 0);
 
     if (mType == PLAYER)
