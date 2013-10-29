@@ -428,6 +428,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/messagein.h \
 	      net/messageout.cpp \
 	      net/messageout.h \
+	      net/nacltcpnet.cpp \
+	      net/nacltcpnet.h \
 	      net/net.cpp \
 	      net/net.h \
 	      net/npchandler.h \

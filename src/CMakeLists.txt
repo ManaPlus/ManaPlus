@@ -418,6 +418,8 @@ SET(SRCS
     net/messageout.cpp
     net/messageout.h
     net/npchandler.h
+    net/nacltcpnet.cpp
+    net/nacltcpnet.h
     net/net.cpp
     net/net.h
     net/partyhandler.h

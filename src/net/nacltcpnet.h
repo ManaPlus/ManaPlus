@@ -18,14 +18,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_SDLTCPNET_H
-#define NET_SDLTCPNET_H
+#ifndef NET_NACLTCPNET_H
+#define NET_NACLTCPNET_H
 
-#if !defined __native_client__
+#if defined __native_client__
 
-#include <SDL_net.h>
-
+#include <SDL.h>
 #include "localconsts.h"
+
+typedef struct {
+    Uint32 host;            /* 32-bit IPv4 host address */
+    Uint16 port;            /* 16-bit protocol port */
+} IPaddress;
+
+typedef struct _SDLNet_SocketSet *SDLNet_SocketSet;
+typedef struct _TCPsocket *TCPsocket;
 
 namespace TcpNet
 {
@@ -61,4 +68,4 @@ namespace TcpNet
 }  // namespace TcpNet
 
 #endif  // __native_client__
-#endif  // NET_SDLTCPNET_H
+#endif  // NET_NACLTCPNET_H

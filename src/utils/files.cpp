@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef ANDROID
+#if defined(ANDROID) || defined(__native_client__)
 #include "utils/files.h"
 
 #include "logger.h"
@@ -30,6 +30,7 @@
 
 #include "localconsts.h"
 
+#ifdef ANDROID
 void Files::extractLocale()
 {
     // in future need also remove all locales in local dir
@@ -60,6 +61,7 @@ void Files::extractLocale()
     resman->removeFromSearchPath(fileName2);
     remove(fileName2.c_str());
 }
+#endif // ANDROID
 
 void Files::copyPhysFsFile(const std::string &inFile,
                            const std::string &outFile)
@@ -98,4 +100,4 @@ void Files::extractZip(const std::string &zipName, const std::string &inDir,
     remove(zipName.c_str());
 }
 
-#endif  // ANDROID
+#endif  // ANDROID __native_client__

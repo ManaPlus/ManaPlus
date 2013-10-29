@@ -36,6 +36,8 @@
 #include <cstdlib>
 #endif
 
+#include <errno.h>
+
 #include "debug.h"
 
 #if defined WIN32
@@ -112,6 +114,7 @@ int mkdir_r(const char *const pathname)
     return 0;
 }
 #else
+
 /// Create a directory, making leading components first if necessary
 int mkdir_r(const char *const pathname)
 {

@@ -28,7 +28,12 @@
 
 #include <guichan/color.hpp>
 
+#if defined __native_client__
+#include <stdlib.h>
+#else
 #include <cstdlib>
+#endif
+
 #include <map>
 #include <string>
 #include <set>

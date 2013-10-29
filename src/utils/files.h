@@ -21,13 +21,14 @@
 #ifndef UTILS_FILES_H
 #define UTILS_FILES_H
 
-#ifdef ANDROID
+#if defined(ANDROID) || defined(__native_client__)
 #include <string>
 
 namespace Files
 {
+#ifdef ANDROID
     void extractLocale();
-
+#endif
     void copyPhysFsFile(const std::string &inFile, const std::string &outFile);
 
     void copyPhysFsDir(const std::string &inDir, const std::string &outDir);
@@ -36,5 +37,5 @@ namespace Files
                     const std::string &outDir);
 }  // namespace Files
 
-#endif  // ANDROID
+#endif  // ANDROID __native_client__
 #endif  // UTILS_FILES_H

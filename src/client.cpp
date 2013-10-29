@@ -140,11 +140,16 @@
 #include <sys/stat.h>
 
 #include <climits>
+#include <errno.h>
 #include <fstream>
 
 #include "mumblemanager.h"
 
 #include "debug.h"
+
+#if defined __native_client__
+#define _nacl_dir std::string("/persistent/manaplus")
+#endif
 
 /**
  * Tells the max tick value,
@@ -400,6 +405,12 @@ void Client::gameInit()
 #endif
 #endif
 
+#if defined __native_client__
+
+    const std::string dirName = _nacl_dir.append("/data");
+    Files::extractZip("/http/data.zip", "data", dirName);
+#endif
+
 #ifdef ENABLE_NLS
     std::string lang = config.getStringValue("lang");
 #ifdef WIN32
@@ -551,6 +562,11 @@ void Client::gameInit()
     }
 #endif
 #endif
+
+#if defined __native_client__
+    resman->addToSearchPath(_nacl_dir.append("/data"), false);
+#endif
+
     // Add branding/data to PhysFS search path
     if (!mOptions.brandingPath.empty())
     {
@@ -756,11 +772,13 @@ Client::~Client()
 
 void Client::bindTextDomain(const char *const name, const char *const path)
 {
+#ifdef ENABLE_NLS
     const char *const dir = bindtextdomain(name, path);
     if (dir)
         logger->log("bindtextdomain: %s", dir);
     else
         logger->log("bindtextdomain failed");
+#endif
 }
 
 void Client::setEnv(const char *const name, const char *const value)
@@ -1944,6 +1962,8 @@ void Client::initLocalDataDir()
 #elif defined __ANDROID__
         mLocalDataDir = getSdStoragePath() + branding.getValue(
             "appShort", "ManaPlus") + "/local";
+#elif defined __native_client__
+        mLocalDataDir = _nacl_dir.append("/local");
 #else
         mLocalDataDir = std::string(PhysFs::getUserDir()) +
             ".local/share/mana";
@@ -2001,6 +2021,8 @@ void Client::initConfigDir()
 #elif defined __ANDROID__
         mConfigDir = getSdStoragePath() + branding.getValue(
             "appShort", "ManaPlus").append("/config");
+#elif defined __native_client__
+        mConfigDir = _nacl_dir.append("/config");
 #else
         mConfigDir = std::string(PhysFs::getUserDir()).append(
             "/.config/mana/").append(branding.getValue("appShort", "mana"));

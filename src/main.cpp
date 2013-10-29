@@ -48,6 +48,10 @@
 #include <windows.h>
 #endif
 
+#ifdef __native_client__
+#include <sys/mount.h>
+#endif
+
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <SDL_version.h>
@@ -274,6 +278,15 @@ int main(int argc, char *argv[])
     LoadLibrary("exchndl.dll");
 #endif
 
+#if defined __native_client__
+    // for now for debug hardcoded path
+    umount("/");
+    mount("", "/", "memfs", 0, "");
+    mount("", "/persistent", "html5fs", 0,
+        "type=PERSISTENT,expected_size=104857600");
+    mount("http://localhost:5103/my/manaplus", "/http", "httpfs", 0, "");
+#endif
+
     selfName = argv[0];
 
     // Parse command line options
@@ -292,7 +305,9 @@ int main(int argc, char *argv[])
     }
 
     // Initialize PhysicsFS
-#ifdef ANDROID
+#if defined(__native_client__)
+    if (!PHYSFS_init("/fakebinary"))
+#elif defined(ANDROID)
     mkdir_r(getSdStoragePath().c_str());
 
     if (!PHYSFS_init((getRealPath(".").append("/fakebinary")).c_str()))

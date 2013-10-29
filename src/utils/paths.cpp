@@ -30,11 +30,18 @@
 
 #include "resources/resourcemanager.h"
 
+#ifdef __native_client__
+#include <limits.h>
+#define realpath(N, R) strcpy(R, N)
+#endif
+
 #ifdef WIN32
 #include "utils/specialfolder.h"
 #define realpath(N, R) _fullpath((R), (N), _MAX_PATH)
 #elif defined __OpenBSD__
 #include <limits>
+#elif defined __native_client__
+#include <limits.h>
 #endif
 
 #ifdef ANDROID
@@ -47,7 +54,7 @@
 
 std::string getRealPath(const std::string &str)
 {
-#if defined(__OpenBSD__) || defined(__ANDROID__)
+#if defined(__OpenBSD__) || defined(__ANDROID__) || defined(__native_client__)
     char *realPath = reinterpret_cast<char*>(calloc(PATH_MAX, sizeof(char)));
     realpath(str.c_str(), realPath);
 #else
