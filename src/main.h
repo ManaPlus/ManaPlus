@@ -76,6 +76,8 @@
     || defined WIN64 || defined _WIN64 || defined __WIN64__ \
     || defined __MINGW32__ || defined _MSC_VER
 #define PACKAGE_OS "Windows"
+#elif defined __native_client__
+#define PACKAGE_OS "nacl"
 #else
 #define PACKAGE_OS "Other"
 #endif
