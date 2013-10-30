@@ -1631,3 +1631,8 @@ void Map::setMask(const int mask)
         mRedrawMap = true;
     mMask = mask;
 }
+
+void Map::setMusicFile(const std::string &file)
+{
+    setProperty("music", file);
+}

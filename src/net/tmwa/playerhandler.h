@@ -55,6 +55,7 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         void requestOnlineList() const override final;
         void updateStatus(const uint8_t status) const override final;
         void processMapMask(Net::MessageIn &msg) const;
+        void processMapMusic(Net::MessageIn &msg) const;
 
         void respawn() const override final;
 };

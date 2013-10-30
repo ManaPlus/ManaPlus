@@ -268,6 +268,8 @@ class Map final : public Properties, public ConfigListener
 
         const std::string getMusicFile() const A_WARN_UNUSED;
 
+        void setMusicFile(const std::string &file);
+
         const std::string getName() const A_WARN_UNUSED;
 
         /**

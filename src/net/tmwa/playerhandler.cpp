@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "client.h"
 #include "game.h"
+#include "soundmanager.h"
 
 #include "net/net.h"
 
@@ -33,6 +34,8 @@
 #include "net/tmwa/protocol.h"
 
 #include "gui/windows/whoisonline.h"
+
+#include "gui/viewport.h"
 
 #include "debug.h"
 
@@ -58,6 +61,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_ARROW_MESSAGE,
         SMSG_ONLINE_LIST,
         SMSG_MAP_MASK,
+        SMSG_MAP_MUSIC,
         0
     };
     handledMessages = _messages;
@@ -112,6 +116,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_MAP_MASK:
             processMapMask(msg);
+            break;
+
+        case SMSG_MAP_MUSIC:
+            processMapMusic(msg);
             break;
 
         default:
@@ -308,6 +316,17 @@ void PlayerHandler::processMapMask(Net::MessageIn &msg) const
     Map *const map = Game::instance()->getCurrentMap();
     if (map)
         map->setMask(mask);
+}
+
+void PlayerHandler::processMapMusic(Net::MessageIn &msg) const
+{
+    const int size = msg.readInt16() - 5;
+    const std::string music = msg.readString(size);
+    soundManager.playMusic(music);
+
+    Map *const map = viewport->getMap();
+    if (map)
+        map->setMusicFile(music);
 }
 
 }  // namespace TmwAthena
