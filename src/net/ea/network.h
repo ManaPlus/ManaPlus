@@ -25,7 +25,11 @@
 
 #include "net/serverinfo.h"
 
+#if defined __native_client__
+#include "net/nacltcpnet.h"
+#else
 #include "net/sdltcpnet.h"
+#endif
 
 #include <SDL_thread.h>
 

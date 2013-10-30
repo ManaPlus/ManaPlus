@@ -5,7 +5,6 @@ AC_CONFIG_HEADERS([config.h:config.h.in])
 AC_LANG_CPLUSPLUS
 
 # Checks for android.
-# Enable mac build
 AC_ARG_ENABLE(androidbuild,
 [  --enable-androidbuild    Turn on android building],
 [case "${enableval}" in
@@ -15,6 +14,17 @@ AC_ARG_ENABLE(androidbuild,
  ;;
   *) AC_MSG_ERROR(bad value ${enableval} for --enable-androidbuild) ;;
 esac],[androidbuild_enabled=false])
+
+# Enable nacl build
+AC_ARG_ENABLE(naclbuild,
+[  --enable-naclbuild    Turn on nacl building],
+[case "${enableval}" in
+  yes) naclbuild_enabled=true
+ ;;
+  no)  naclbuild_enabled=false
+ ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-naclbuild) ;;
+esac],[anaclbuild_enabled=false])
 
 # Checks for programs.
 AC_PROG_CXX
@@ -28,8 +38,10 @@ AC_HEADER_TIME
 AC_FUNC_ERROR_AT_LINE
 
 if test "x$androidbuild_enabled" == "xfalse"; then
-    AC_FUNC_MALLOC
-    AC_FUNC_REALLOC
+    if test "x$naclbuild_enabled" == "xfalse"; then
+        AC_FUNC_MALLOC
+        AC_FUNC_REALLOC
+    fi
 fi
 
 AC_C_INLINE
@@ -95,26 +107,30 @@ else
         LIBS="$LIBS `$SDL_CONFIG --libs`"
         CPPFLAGS="$CPPFLAGS `$SDL_CONFIG --cflags`"
     fi
-    AC_CHECK_LIB([SDL], [SDL_Init], ,
-    AC_MSG_ERROR([ *** Unable to find SDL library (http://www.libsdl.org/)]))
 
-    AC_CHECK_LIB(SDL_image, IMG_LoadPNG_RW, ,
-    AC_MSG_ERROR([ *** Unable to find SDL_image library with PNG support
+    if test "x$naclbuild_enabled" == "xfalse"; then
+        AC_CHECK_LIB([SDL], [SDL_Init], ,
+        AC_MSG_ERROR([ *** Unable to find SDL library (http://www.libsdl.org/)]))
+
+
+        AC_CHECK_LIB(SDL_image, IMG_LoadPNG_RW, ,
+        AC_MSG_ERROR([ *** Unable to find SDL_image library with PNG support
     (http://www.libsdl.org/projects/SDL_image/)]))
 
-    AC_CHECK_LIB(SDL_ttf, TTF_Quit, ,
-    AC_MSG_ERROR([ *** Unable to find SDL_ttf library (http://www.libsdl.org/projects/SDL_ttf/)]))
+        AC_CHECK_LIB(SDL_ttf, TTF_Quit, ,
+        AC_MSG_ERROR([ *** Unable to find SDL_ttf library (http://www.libsdl.org/projects/SDL_ttf/)]))
 
-    AC_CHECK_LIB([SDL_mixer], [Mix_OpenAudio], ,
-    AC_MSG_ERROR([ *** Unable to find SDL_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
+        AC_CHECK_LIB([SDL_mixer], [Mix_OpenAudio], ,
+        AC_MSG_ERROR([ *** Unable to find SDL_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
 
 
-    AC_CHECK_LIB(SDL_gfx, rotozoomSurfaceXY, ,
-    AC_MSG_ERROR([ *** Unable to find SDL_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
-    AC_CHECK_HEADERS(SDL_rotozoom.h, ,)
+        AC_CHECK_LIB(SDL_gfx, rotozoomSurfaceXY, ,
+        AC_MSG_ERROR([ *** Unable to find SDL_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
+        AC_CHECK_HEADERS(SDL_rotozoom.h, ,)
 
-    AC_CHECK_LIB(SDL_net, SDLNet_Init, ,
-    AC_MSG_ERROR([ *** Unable to find SDL_net library]))
+        AC_CHECK_LIB(SDL_net, SDLNet_Init, ,
+        AC_MSG_ERROR([ *** Unable to find SDL_net library]))
+    fi
 
     with_sdl2=no
 fi

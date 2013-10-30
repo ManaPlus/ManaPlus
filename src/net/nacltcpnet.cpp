@@ -20,7 +20,7 @@
 
 #if defined __native_client__
 
-#include "net/sdltcpnet.h"
+#include "net/nacltcpnet.h"
 
 #if defined __linux__ || defined __linux
 #include "logger.h"
