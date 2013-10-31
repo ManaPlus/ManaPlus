@@ -29,6 +29,10 @@ if USE_MUMBLE
 manaplus_CXXFLAGS += -DUSE_MUMBLE
 endif
 
+if ENABLE_CHECKS
+manaplus_CXXFLAGS += -DENABLE_CHECKS
+endif
+
 if USE_SDL2
 manaplus_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
 manaplus_SOURCES += sdl2gfx/SDL_framerate.c \

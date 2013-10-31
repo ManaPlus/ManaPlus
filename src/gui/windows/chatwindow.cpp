@@ -310,6 +310,7 @@ ChatWindow::ChatWindow():
 ChatWindow::~ChatWindow()
 {
     config.removeListeners(this);
+    CHECKLISTENERS
     saveState();
     config.setValue("ReturnToggles", mReturnToggles);
     removeAllWhispers();

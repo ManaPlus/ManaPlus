@@ -344,6 +344,7 @@ BotCheckerWindow::BotCheckerWindow():
 BotCheckerWindow::~BotCheckerWindow()
 {
     config.removeListener("enableBotCheker", this);
+    CHECKLISTENERS
 }
 
 void BotCheckerWindow::slowLogic()

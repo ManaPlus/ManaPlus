@@ -64,6 +64,7 @@ MapLayer::MapLayer(const int x, const int y, const int width, const int height,
 MapLayer::~MapLayer()
 {
     config.removeListener("highlightAttackRange", this);
+    CHECKLISTENERS
     delete [] mTiles;
     delete_all(mTempRows);
     mTempRows.clear();

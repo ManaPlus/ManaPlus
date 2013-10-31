@@ -209,6 +209,7 @@ void NpcDialog::postInit()
 NpcDialog::~NpcDialog()
 {
     config.removeListeners(this);
+    CHECKLISTENERS
     clearLayout();
 
     if (mPlayerBox)

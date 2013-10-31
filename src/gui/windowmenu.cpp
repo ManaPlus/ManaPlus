@@ -180,6 +180,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 WindowMenu::~WindowMenu()
 {
     config.removeListener("autohideButtons", this);
+    CHECKLISTENERS
 
     delete mTextPopup;
     mTextPopup = nullptr;

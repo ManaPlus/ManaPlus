@@ -234,6 +234,7 @@ Theme::~Theme()
 {
     delete_all(mSkins);
     config.removeListener("guialpha", this);
+    CHECKLISTENERS
     delete_all(mProgressColors);
 }
 

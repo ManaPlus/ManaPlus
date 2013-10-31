@@ -312,6 +312,17 @@ esac],[with_eathena=false])
 
 AM_CONDITIONAL(ENABLE_EATHENA, test x$with_eathena = xtrue)
 
+# Enable checks
+AC_ARG_ENABLE(checks,
+[  --enable-checks    Turn on internal checks (can be slow)],
+[case "${enableval}" in
+  yes) with_checks=true ;;
+  no)  with_checks=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-checks) ;;
+esac],[with_checks=false])
+
+AM_CONDITIONAL(ENABLE_CHECKS, test x$with_checks = xtrue)
+
 # Enable portable
 AC_ARG_ENABLE(portable,
 [  --enable-portable    Turn on portable mode for linux],

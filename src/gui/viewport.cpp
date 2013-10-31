@@ -98,6 +98,7 @@ Viewport::Viewport() :
 Viewport::~Viewport()
 {
     config.removeListeners(this);
+    CHECKLISTENERS
     delete mPopupMenu;
     mPopupMenu = nullptr;
     delete mBeingPopup;

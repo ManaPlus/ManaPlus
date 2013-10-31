@@ -44,10 +44,20 @@ EventsManager::EventsManager() :
 {
 }
 
+EventsManager::~EventsManager()
+{
+    CHECKLISTENERS
+}
+
 void EventsManager::init()
 {
     mLogInput = config.getBoolValue("logInput");
     config.addListener("logInput", this);
+}
+
+void EventsManager::shutdown()
+{
+   config.removeListeners(this);
 }
 
 bool EventsManager::handleCommonEvents(const SDL_Event &event)

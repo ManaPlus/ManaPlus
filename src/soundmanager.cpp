@@ -71,6 +71,7 @@ SoundManager::SoundManager():
 
 SoundManager::~SoundManager()
 {
+    CHECKLISTENERS
 }
 
 void SoundManager::shutdown()

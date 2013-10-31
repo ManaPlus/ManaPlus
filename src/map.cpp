@@ -199,6 +199,7 @@ Map::Map(const int width, const int height,
 Map::~Map()
 {
     config.removeListeners(this);
+    CHECKLISTENERS
 
     // delete metadata, layers, tilesets and overlays
     delete [] mMetaTiles;

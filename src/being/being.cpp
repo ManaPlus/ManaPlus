@@ -214,6 +214,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
 Being::~Being()
 {
     config.removeListener("visiblenames", this);
+    CHECKLISTENERS
 
     delete [] mSpriteRemap;
     mSpriteRemap = nullptr;

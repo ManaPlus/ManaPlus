@@ -46,7 +46,8 @@ autoreconf -i
 --with-internalguichan=yes \
 --enable-tcmalloc=no \
 --enable-googleprofiler=no \
---enable-eathena=yes
+--enable-eathena=yes \
+--enable-checks=yes
 
 cd po
 make -j8 update-gmo 2>../build/make1.log

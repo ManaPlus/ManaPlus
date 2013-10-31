@@ -768,6 +768,7 @@ Client::~Client()
         gameClear();
     else
         testsClear();
+    CHECKLISTENERS
 }
 
 void Client::bindTextDomain(const char *const name, const char *const path)
@@ -809,6 +810,8 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting1");
     config.removeListeners(this);
+
+    eventsManager.shutdown();
 
     delete setupWindow;
     setupWindow = nullptr;

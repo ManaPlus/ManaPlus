@@ -67,6 +67,7 @@ TouchManager::~TouchManager()
     clear();
     delete mVertexes;
     mVertexes = nullptr;
+    CHECKLISTENERS
 }
 
 void TouchManager::shutdown()

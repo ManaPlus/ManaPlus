@@ -87,6 +87,7 @@ Minimap::~Minimap()
 {
     config.setValue(getWindowName() + "Show", mShow);
     config.removeListeners(this);
+    CHECKLISTENERS
 
     if (mMapImage)
     {

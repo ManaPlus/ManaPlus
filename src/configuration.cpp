@@ -842,6 +842,27 @@ void Configuration::removeListener(const std::string &key,
     mListenerMap[key].remove(listener);
 }
 
+#ifdef ENABLE_CHECKS
+void Configuration::checkListeners(ConfigListener *const listener,
+                                   const char *const file,
+                                   const unsigned line)
+{
+    FOR_EACH (ListenerMapIterator, it, mListenerMap)
+    {
+        Listeners listeners = it->second;
+        FOR_EACH (ListenerIterator, it2, listeners)
+        {
+            if (*it2 == listener)
+            {
+                logger->log("detected not cleaned listener: %p, %s:%u",
+                    static_cast<void*>(listener), file, line);
+                exit(1);
+            }
+        }
+    }
+}
+#endif
+
 void Configuration::removeListeners(ConfigListener *const listener)
 {
     FOR_EACH (ListenerMapIterator, it, mListenerMap)

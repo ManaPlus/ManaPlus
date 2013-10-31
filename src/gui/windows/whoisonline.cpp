@@ -142,6 +142,7 @@ void WhoIsOnline::postInit()
 WhoIsOnline::~WhoIsOnline()
 {
     config.removeListeners(this);
+    CHECKLISTENERS
 
     if (mThread && SDL_GetThreadID(mThread))
         SDL_WaitThread(mThread, nullptr);

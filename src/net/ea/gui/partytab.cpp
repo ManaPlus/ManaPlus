@@ -58,6 +58,8 @@ PartyTab::PartyTab(const Widget2 *const widget) :
 
 PartyTab::~PartyTab()
 {
+    config.removeListeners(this);
+    CHECKLISTENERS
 }
 
 void PartyTab::handleInput(const std::string &msg)

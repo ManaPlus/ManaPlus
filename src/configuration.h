@@ -282,6 +282,12 @@ class Configuration final : public ConfigurationObject
 
         void removeListeners(ConfigListener *const listener);
 
+#ifdef ENABLE_CHECKS
+        void checkListeners(ConfigListener *const listener,
+                            const char *const file,
+                            const unsigned line);
+#endif
+
         void setValue(const std::string &key, const std::string &value);
 
         void incValue(const std::string &key);

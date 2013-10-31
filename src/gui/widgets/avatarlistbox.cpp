@@ -71,6 +71,7 @@ AvatarListBox::AvatarListBox(const Widget2 *const widget,
 AvatarListBox::~AvatarListBox()
 {
     config.removeListeners(this);
+    CHECKLISTENERS
 
     instances--;
 

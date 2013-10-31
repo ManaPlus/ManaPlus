@@ -212,6 +212,7 @@ ActorManager::ActorManager() :
 ActorManager::~ActorManager()
 {
     config.removeListeners(this);
+    CHECKLISTENERS
     storeAttackList();
     clear();
 }

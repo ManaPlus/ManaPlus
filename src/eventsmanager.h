@@ -36,7 +36,11 @@ class EventsManager final : public ConfigListener
 
         A_DELETE_COPY(EventsManager)
 
+        virtual ~EventsManager();
+
         void init();
+
+        void shutdown();
 
         bool handleEvents();
 

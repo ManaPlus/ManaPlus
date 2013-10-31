@@ -49,6 +49,7 @@ GuildChatTab::GuildChatTab(const Widget2 *const widget) :
 GuildChatTab::~GuildChatTab()
 {
     config.removeListeners(this);
+    CHECKLISTENERS
 }
 
 bool GuildChatTab::handleCommand(const std::string &type,

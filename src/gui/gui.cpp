@@ -69,6 +69,11 @@ class GuiConfigListener final : public ConfigListener
 
         A_DELETE_COPY(GuiConfigListener)
 
+        virtual ~GuiConfigListener()
+        {
+            CHECKLISTENERS
+        }
+
         void optionChanged(const std::string &name)
         {
             if (!mGui)
