@@ -24,7 +24,7 @@ AC_ARG_ENABLE(naclbuild,
   no)  naclbuild_enabled=false
  ;;
   *) AC_MSG_ERROR(bad value ${enableval} for --enable-naclbuild) ;;
-esac],[anaclbuild_enabled=false])
+esac],[naclbuild_enabled=false])
 
 # Checks for programs.
 AC_PROG_CXX
