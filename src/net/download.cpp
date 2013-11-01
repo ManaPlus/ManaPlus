@@ -39,6 +39,10 @@
     ((LIBCURL_VERSION_MAJOR == (a)) && (LIBCURL_VERSION_MINOR == (b)) && \
     (LIBCURL_VERSION_PATCH >= (c))))
 
+#if defined __native_client__
+#include "utils/files.h"
+#endif
+
 #include "debug.h"
 
 const char *DOWNLOAD_ERROR_MESSAGE_THREAD
@@ -360,7 +364,12 @@ int Download::downloadThread(void *ptr)
                 if (!d->mOptions.cancel)
                 {
                     ::remove(d->mFileName.c_str());
-                    ::rename(outFilename.c_str(), d->mFileName.c_str());
+#if defined __native_client__
+                    Files::renameFile(
+#else
+                    ::rename(
+#endif
+                    outFilename.c_str(), d->mFileName.c_str());
 
                     // Check if we can open it and no errors were encountered
                     // during renaming

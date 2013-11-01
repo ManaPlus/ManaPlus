@@ -100,4 +100,33 @@ void Files::extractZip(const std::string &zipName, const std::string &inDir,
     remove(zipName.c_str());
 }
 
+int Files::renameFile(const std::string &pFrom, const std::string &pTo)
+{
+    FILE *file = fopen(pFrom.c_str(), "rb");
+    if (file == NULL)
+        return -1;
+
+    fseek(file, 0, SEEK_END);
+    size_t sz = ftell(file);
+    fseek(file, 0, SEEK_SET);
+
+    char *buf = (char *)malloc(sz + 1);
+    if (fread(buf, 1, sz, file) != sz)
+        return -1;
+    fclose(file);
+    buf[sz] = 0;
+
+    file = fopen(pTo.c_str(), "w+b");
+    if (file == NULL)
+        return -1;
+
+    if (fwrite(buf, 1, sz, file) != sz)
+        return -1;
+    fclose(file);
+
+    free(buf);
+
+    return 0;
+}
+
 #endif  // ANDROID __native_client__

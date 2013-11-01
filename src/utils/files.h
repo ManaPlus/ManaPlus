@@ -35,6 +35,8 @@ namespace Files
 
     void extractZip(const std::string &zipName, const std::string &inDir,
                     const std::string &outDir);
+
+    int renameFile(const std::string &pFrom, const std::string &pTo);
 }  // namespace Files
 
 #endif  // ANDROID __native_client__
