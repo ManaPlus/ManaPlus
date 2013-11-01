@@ -236,7 +236,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
         else if (eventId == "delete"
                  && mCharacterEntries[selected]->getCharacter())
         {
-            new CharDeleteConfirm(this, selected);
+            (new CharDeleteConfirm(this, selected))->postInit();
             return;
         }
         else if (eventId == "info")
@@ -393,7 +393,7 @@ void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
             if (idx >= 0 && mCharacterEntries[idx]
                 && mCharacterEntries[idx]->getCharacter())
             {
-                new CharDeleteConfirm(this, idx);
+                (new CharDeleteConfirm(this, idx))->postInit();
             }
             break;
         }
