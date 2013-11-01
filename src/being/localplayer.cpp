@@ -67,6 +67,7 @@
 #include "resources/iteminfo.h"
 
 #include "utils/gettext.h"
+#include "utils/timer.h"
 
 #include "mumblemanager.h"
 

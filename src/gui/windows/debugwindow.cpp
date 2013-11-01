@@ -22,7 +22,6 @@
 
 #include "gui/windows/debugwindow.h"
 
-#include "client.h"
 #include "game.h"
 #include "main.h"
 
@@ -43,6 +42,8 @@
 #include "net/packetcounters.h"
 
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
+#include "utils/timer.h"
 
 #include "debug.h"
 

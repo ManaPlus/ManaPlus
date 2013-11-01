@@ -105,6 +105,7 @@
 #include "utils/physfstools.h"
 #include "utils/process.h"
 #include "utils/sdlcheckutils.h"
+#include "utils/timer.h"
 
 #include <sstream>
 #include <string>

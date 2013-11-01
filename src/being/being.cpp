@@ -68,6 +68,7 @@
 #include "gui/widgets/tabs/langtab.h"
 
 #include "utils/gettext.h"
+#include "utils/timer.h"
 
 #include "debug.h"
 

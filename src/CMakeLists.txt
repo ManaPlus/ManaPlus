@@ -553,6 +553,8 @@ SET(SRCS
     utils/stringutils.cpp
     utils/stringutils.h
     utils/stringvector.h
+    utils/timer.cpp
+    utils/timer.h
     utils/mutex.h
     utils/mkdir.cpp
     utils/mkdir.h

@@ -23,7 +23,7 @@
 
 #include "gui/palette.h"
 
-#include "client.h"
+#include "utils/timer.h"
 
 #include <cmath>
 

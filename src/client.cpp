@@ -114,6 +114,7 @@
 #include "utils/process.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
+#include "utils/timer.h"
 
 #include "utils/translation/translationmanager.h"
 
@@ -151,12 +152,6 @@
 #define _nacl_dir std::string("/persistent/manaplus")
 #endif
 
-/**
- * Tells the max tick value,
- * setting it back to zero (and start again).
- */
-static const int MAX_TICK_VALUE = INT_MAX / 2;
-
 std::string errorMessage;
 ErrorListener errorListener;
 LoginData loginData;
@@ -175,9 +170,6 @@ Graphics *mainGraphics = nullptr;
 SoundManager soundManager;
 RenderType openGLMode = RENDER_SOFTWARE;
 
-static uint32_t nextTick(uint32_t interval, void *param A_UNUSED);
-static uint32_t nextSecond(uint32_t interval, void *param A_UNUSED);
-
 void ErrorListener::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "yes")
@@ -185,12 +177,6 @@ void ErrorListener::action(const gcn::ActionEvent &event)
     client->setState(STATE_CHOOSE_SERVER);
 }
 
-volatile int tick_time;       /**< Tick counter */
-volatile int fps = 0;         /**< Frames counted in the last second */
-volatile int lps = 0;         /**< Logic processed per second */
-volatile int frame_count = 0; /**< Counts the frames during one second */
-volatile int logic_count = 0; /**< Counts the logic during one second */
-volatile int cur_time;
 volatile bool runCounters;
 bool isSafeMode = false;
 int serverVersion = 0;
@@ -202,60 +188,6 @@ int textures_count = 0;
 #ifdef WIN32
 extern "C" char const *_nl_locale_name_default(void);
 #endif
-
-/**
- * Advances game logic counter.
- * Called every 10 milliseconds by SDL_AddTimer()
- * @see MILLISECONDS_IN_A_TICK value
- */
-static uint32_t nextTick(uint32_t interval, void *param A_UNUSED)
-{
-    tick_time++;
-    if (tick_time == MAX_TICK_VALUE)
-        tick_time = 0;
-    return interval;
-}
-
-/**
- * Updates fps.
- * Called every seconds by SDL_AddTimer()
- */
-static uint32_t nextSecond(uint32_t interval, void *param A_UNUSED)
-{
-    fps = frame_count;
-    lps = logic_count;
-    frame_count = 0;
-    logic_count = 0;
-
-    return interval;
-}
-
-/**
- * @return the elapsed time in milliseconds
- * between two tick values.
- */
-int get_elapsed_time(const int startTime)
-{
-    const int time = tick_time;
-    if (startTime <= time)
-    {
-        return (time - startTime) * MILLISECONDS_IN_A_TICK;
-    }
-    else
-    {
-        return (time + (MAX_TICK_VALUE - startTime))
-            * MILLISECONDS_IN_A_TICK;
-    }
-}
-
-int get_elapsed_time1(const int startTime)
-{
-    const int time = tick_time;
-    if (startTime <= time)
-        return time - startTime;
-    else
-        return time + (MAX_TICK_VALUE - startTime);
-}
 
 class AccountListener final : public gcn::ActionListener
 {
@@ -306,13 +238,6 @@ Client::Client(const Options &options) :
     mState(STATE_CHOOSE_SERVER),
     mOldState(STATE_START),
     mIcon(nullptr),
-#ifdef USE_SDL2
-    mLogicCounterId(0),
-    mSecondsCounterId(0),
-#else
-    mLogicCounterId(nullptr),
-    mSecondsCounterId(nullptr),
-#endif
     mCaption(),
     mFpsManager(),
     mSkin(nullptr),
@@ -727,10 +652,7 @@ void Client::gameInit()
     if (mState != STATE_ERROR)
         mState = STATE_CHOOSE_SERVER;
 
-    // Initialize logic and seconds counters
-    tick_time = 0;
-    mLogicCounterId = SDL_AddTimer(MILLISECONDS_IN_A_TICK, nextTick, nullptr);
-    mSecondsCounterId = SDL_AddTimer(1000, nextSecond, nullptr);
+    startTimers();
 
     const int fpsLimit = config.getIntValue("fpslimit");
     mLimitFps = fpsLimit > 0;
@@ -818,8 +740,7 @@ void Client::gameClear()
     delete didYouKnowWindow;
     didYouKnowWindow = nullptr;
 
-    SDL_RemoveTimer(mLogicCounterId);
-    SDL_RemoveTimer(mSecondsCounterId);
+    stopTimers();
 
     // Unload XML databases
     CharDB::unload();

@@ -45,6 +45,7 @@
 #include "utils/dtor.h"
 #include "utils/mkdir.h"
 #include "utils/physfstools.h"
+#include "utils/timer.h"
 
 #include <climits>
 #include <queue>

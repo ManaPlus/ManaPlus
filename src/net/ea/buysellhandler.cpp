@@ -22,7 +22,6 @@
 
 #include "net/ea/buysellhandler.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "inventory.h"
 #include "notifications.h"
@@ -41,6 +40,8 @@
 #include "net/net.h"
 
 #include "net/ea/eaprotocol.h"
+
+#include "utils/timer.h"
 
 #include "debug.h"
 

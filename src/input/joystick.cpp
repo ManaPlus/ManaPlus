@@ -29,6 +29,8 @@
 
 #include "input/inputmanager.h"
 
+#include "utils/timer.h"
+
 #include "debug.h"
 
 int Joystick::joystickCount = 0;

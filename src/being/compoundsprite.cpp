@@ -21,7 +21,6 @@
 
 #include "being/compoundsprite.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "game.h"
 
@@ -39,6 +38,9 @@
 
 #include "utils/dtor.h"
 #include "utils/sdlcheckutils.h"
+#include "utils/timer.h"
+
+#include <SDL_endian.h>
 
 #include "debug.h"
 

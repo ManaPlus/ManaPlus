@@ -23,8 +23,6 @@
 
 #include "gui/widgets/browserbox.h"
 
-#include "client.h"
-
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
@@ -35,6 +33,9 @@
 #include "resources/image.h"
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
+
+#include "utils/stringutils.h"
+#include "utils/timer.h"
 
 #include <guichan/graphics.hpp>
 #include <guichan/font.hpp>

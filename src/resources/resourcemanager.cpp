@@ -23,7 +23,6 @@
 #include "resources/resourcemanager.h"
 
 #include "animationdelayload.h"
-#include "client.h"
 #include "configuration.h"
 #include "logger.h"
 #include "navigationmanager.h"
@@ -43,6 +42,7 @@
 #include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
+#include "utils/timer.h"
 
 #include <SDL_image.h>
 #include <dirent.h>

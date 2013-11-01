@@ -23,7 +23,6 @@
 #include "net/eathena/beinghandler.h"
 
 #include "actormanager.h"
-#include "client.h"
 #include "guild.h"
 #include "guildmanager.h"
 #include "party.h"
@@ -44,9 +43,13 @@
 
 #include "resources/db/itemdb.h"
 
+#include "utils/stringutils.h"
+#include "utils/timer.h"
+
 #include "debug.h"
 
 extern Net::BeingHandler *beingHandler;
+extern int serverVersion;
 
 namespace EAthena
 {

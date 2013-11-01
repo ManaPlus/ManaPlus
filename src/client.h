@@ -46,17 +46,8 @@ class Skin;
 class Window;
 class QuitDialog;
 
-/**
- * Set the milliseconds value of a tick time.
- */
-static const int MILLISECONDS_IN_A_TICK = 10;
-
 static const uint16_t DEFAULT_PORT = 6901;
 
-extern volatile int fps;
-extern volatile int lps;
-extern volatile int tick_time;
-extern volatile int cur_time;
 extern bool isSafeMode;
 extern int serverVersion;
 extern unsigned int tmwServerVersion;
@@ -72,13 +63,6 @@ class ErrorListener : public gcn::ActionListener
 extern std::string errorMessage;
 extern ErrorListener errorListener;
 extern LoginData loginData;
-
-/**
- * Returns elapsed time. (Warning: supposes the delay is always < 100 seconds)
- */
-int get_elapsed_time(const int startTime) A_WARN_UNUSED;
-
-int get_elapsed_time1(const int startTime) A_WARN_UNUSED;
 
 /**
  * All client states.
@@ -419,9 +403,6 @@ private:
     State mOldState;
 
     SDL_Surface *mIcon;
-
-    SDL_TimerID mLogicCounterId;
-    SDL_TimerID mSecondsCounterId;
 
     std::string mCaption;
     FPSmanager mFpsManager;

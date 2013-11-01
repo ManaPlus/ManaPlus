@@ -23,7 +23,6 @@
 
 #include "gui/sdlfont.h"
 
-#include "client.h"
 #include "logger.h"
 #include "main.h"
 
@@ -39,6 +38,8 @@
 #include "utils/paths.h"
 #include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
+#include "utils/stringutils.h"
+#include "utils/timer.h"
 
 #include <guichan/exception.hpp>
 

@@ -21,7 +21,6 @@
 
 #include "being/actorsprite.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "imagesprite.h"
 #include "statuseffect.h"
@@ -34,6 +33,7 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/checkutils.h"
+#include "utils/timer.h"
 
 #include "debug.h"
 

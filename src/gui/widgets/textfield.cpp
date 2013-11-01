@@ -39,6 +39,7 @@
 #include "resources/image.h"
 
 #include "utils/copynpaste.h"
+#include "utils/timer.h"
 
 #include <guichan/font.hpp>
 

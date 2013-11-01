@@ -36,6 +36,8 @@
 #include "net/chathandler.h"
 #include "net/net.h"
 
+#include "utils/timer.h"
+
 #include "debug.h"
 
 static const int requestTimeout = 5;

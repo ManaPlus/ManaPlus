@@ -77,6 +77,7 @@
 
 #include "utils/gettext.h"
 #include "utils/process.h"
+#include "utils/timer.h"
 
 #include "debug.h"
 
