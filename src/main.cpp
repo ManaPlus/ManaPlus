@@ -304,26 +304,11 @@ int main(int argc, char *argv[])
         _exit(0);
     }
 
-    // Initialize PhysicsFS
-#if defined(__native_client__)
-    if (!PHYSFS_init("/fakebinary"))
-#elif defined(ANDROID)
+#ifdef ANDROID
     mkdir_r(getSdStoragePath().c_str());
-
-    if (!PHYSFS_init((getRealPath(".").append("/fakebinary")).c_str()))
-#else
-    if (!PHYSFS_init(argv[0]))
 #endif
-    {
-        std::cout << "Error while initializing PhysFS: "
-                  << PHYSFS_getLastError() << std::endl;
-        return 1;
-    }
 
-    PhysFs::updateDirSeparator();
-
-    atexit((void(*)()) PHYSFS_deinit);
-
+    PhysFs::init(argv[0]);
     XML::initXML();
 #if SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
     IMG_Init(IMG_INIT_PNG);

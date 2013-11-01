@@ -20,12 +20,33 @@
 
 #include "utils/physfstools.h"
 
+#include <iostream>
+#include <unistd.h>
+
 #include "localconsts.h"
 
 const char *dirSeparator = nullptr;
 
 namespace PhysFs
 {
+    void init(const char *const name)
+    {
+#if defined(__native_client__)
+        if (!PHYSFS_init("/fakebinary"))
+#elif defined(ANDROID)
+        if (!PHYSFS_init((getRealPath(".").append("/fakebinary")).c_str()))
+#else
+        if (!PHYSFS_init(name))
+#endif
+        {
+            std::cout << "Error while initializing PhysFS: "
+                << PHYSFS_getLastError() << std::endl;
+            _exit(1);
+        }
+        updateDirSeparator();
+        atexit((void(*)()) PHYSFS_deinit);
+    }
+
     void updateDirSeparator()
     {
         dirSeparator = PHYSFS_getDirSeparator();

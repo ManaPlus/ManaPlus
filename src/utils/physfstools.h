@@ -25,6 +25,7 @@
 
 namespace PhysFs
 {
+    void init(const char *const name);
     void updateDirSeparator();
     const char *getDirSeparator();
     const char *getBaseDir();
