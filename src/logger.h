@@ -94,10 +94,12 @@ class Logger final
          */
         void log(const std::string &str);
 
+#ifdef ENABLEDEBUGLOG
         /**
          * Enters debug message in the log. The message will be timestamped.
          */
         void dlog(const std::string &str);
+#endif
 
         void setDebugLog(const bool n)
         { mDebugLog = n; }

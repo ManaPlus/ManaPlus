@@ -25,7 +25,9 @@
 #include <iostream>
 #include <sstream>
 
+#ifdef ENABLEDEBUGLOG
 #include "gui/widgets/tabs/chattab.h"
+#endif
 
 #ifdef WIN32
 #include <windows.h>
@@ -95,6 +97,7 @@ void Logger::log(const std::string &str)
     log("%s", str.c_str());
 }
 
+#ifdef ENABLEDEBUGLOG
 void Logger::dlog(const std::string &str)
 {
     if (!mDebugLog)
@@ -118,6 +121,7 @@ void Logger::dlog(const std::string &str)
     if (mChatWindow && debugChatTab)
         debugChatTab->chatLog(str, BY_LOGGER);
 }
+#endif
 
 void Logger::log1(const char *const buf)
 {
