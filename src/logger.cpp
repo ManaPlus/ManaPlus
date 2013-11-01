@@ -60,6 +60,8 @@
         << static_cast<int>((tv.tv_usec / 10000) % 100) \
         << "] ";
 
+Logger *logger = nullptr;          // Log object
+
 Logger::Logger() :
     mLogFile(),
     mLogToStandardOut(true),

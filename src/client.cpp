@@ -167,7 +167,6 @@ Configuration features;            // XML file features
 Configuration branding;            // XML branding information reader
 Configuration paths;               // XML default paths information reader
 Client *client = nullptr;
-Logger *logger = nullptr;          // Log object
 ChatLogger *chatLogger = nullptr;  // Chat log object
 KeyboardConfig keyboard;
 UserPalette *userPalette = nullptr;
