@@ -37,6 +37,12 @@ std::map<std::string, int> optionsCount;
 #define GETLOG()
 #endif
 
+Configuration config;              // XML file configuration reader
+Configuration serverConfig;        // XML file server configuration reader
+Configuration features;            // XML file features
+Configuration branding;            // XML branding information reader
+Configuration paths;               // XML default paths information reader
+
 const std::string unusedKeys[] =
 {
     "AttackRange",

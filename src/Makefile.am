@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = subdir-objects
 
-bin_PROGRAMS = manaplus
+bin_PROGRAMS = manaplus dyecmd
 
 manaplus_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 		-DLOCALEDIR=\""$(localedir)"\"           \
@@ -24,6 +24,94 @@ manaplus_SOURCES = debug/debug_new.cpp \
 else
 manaplus_SOURCES =
 endif
+
+if USE_INTERNALGUICHAN
+dyecmd_CXXFLAGS = -I$(srcdir)/guichan/include -DUSE_INTERNALGUICHAN
+dyecmd_SOURCES = guichan/actionevent.cpp \
+	      guichan/cliprectangle.cpp \
+	      guichan/color.cpp \
+	      guichan/event.cpp \
+	      guichan/exception.cpp \
+	      guichan/font.cpp \
+	      guichan/graphics.cpp \
+	      guichan/rectangle.cpp \
+	      guichan/widget.cpp \
+	      guichan/include/guichan/actionevent.hpp \
+	      guichan/include/guichan/cliprectangle.hpp \
+	      guichan/include/guichan/color.hpp \
+	      guichan/include/guichan/event.hpp \
+	      guichan/include/guichan/exception.hpp \
+	      guichan/include/guichan/font.hpp \
+	      guichan/include/guichan/graphics.hpp \
+	      guichan/include/guichan/rectangle.hpp \
+	      guichan/include/guichan/widget.hpp
+else
+dyecmd_SOURCES = 
+endif
+
+dyecmd_SOURCES += dyetool/dyemain.cpp \
+	      animatedsprite.cpp \
+	      animatedsprite.h \
+	      animationdelayload.cpp \
+	      animationdelayload.h \
+	      configuration.cpp \
+	      configuration.h \
+	      logger.cpp \
+	      logger.h \
+	      navigationmanager.cpp \
+	      navigationmanager.h \
+	      walklayer.cpp \
+	      walklayer.h \
+	      render/graphics.cpp \
+	      render/graphics.h \
+	      resources/action.cpp \
+	      resources/action.h \
+	      resources/animation.cpp \
+	      resources/animation.h \
+	      resources/db/palettedb.cpp \
+	      resources/db/palettedb.h \
+	      resources/dye.cpp \
+	      resources/dye.h \
+	      resources/image.cpp \
+	      resources/image.h \
+	      resources/imagehelper.cpp \
+	      resources/imagehelper.h \
+	      resources/imageset.cpp \
+	      resources/imageset.h \
+	      resources/imagewriter.cpp \
+	      resources/imagewriter.h \
+	      resources/resource.cpp \
+	      resources/resource.h \
+	      resources/resourcemanager.cpp \
+	      resources/resourcemanager.h \
+	      resources/sdlimagehelper.cpp \
+	      resources/sdlimagehelper.h \
+	      resources/sdlmusic.cpp \
+	      resources/sdlmusic.h \
+	      resources/soundeffect.cpp \
+	      resources/soundeffect.h \
+	      resources/subimage.cpp \
+	      resources/subimage.h \
+	      resources/surfaceimagehelper.cpp \
+	      resources/surfaceimagehelper.h \
+	      resources/spritedef.cpp \
+	      resources/spritedef.h \
+	      utils/mkdir.cpp \
+	      utils/mkdir.h \
+	      utils/paths.cpp \
+	      utils/paths.h \
+	      utils/physfsrwops.cpp \
+	      utils/physfsrwops.h \
+	      utils/physfstools.cpp \
+	      utils/physfstools.h \
+	      utils/stringutils.cpp \
+	      utils/stringutils.h \
+	      utils/timer.cpp \
+	      utils/timer.h \
+	      utils/xml.cpp \
+	      utils/xml.h \
+	      utils/translation/podict.cpp \
+	      utils/translation/podict.h
 
 if USE_MUMBLE
 manaplus_CXXFLAGS += -DUSE_MUMBLE
@@ -477,8 +565,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/image.h \
 	      resources/imagehelper.cpp \
 	      resources/imagehelper.h \
-	      resources/imageset.h \
 	      resources/imageset.cpp \
+	      resources/imageset.h \
 	      resources/imagewriter.cpp \
 	      resources/imagewriter.h \
 	      resources/db/itemdb.cpp \

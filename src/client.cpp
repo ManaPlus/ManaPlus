@@ -156,11 +156,6 @@ std::string errorMessage;
 ErrorListener errorListener;
 LoginData loginData;
 
-Configuration config;              // XML file configuration reader
-Configuration serverConfig;        // XML file server configuration reader
-Configuration features;            // XML file features
-Configuration branding;            // XML branding information reader
-Configuration paths;               // XML default paths information reader
 Client *client = nullptr;
 ChatLogger *chatLogger = nullptr;  // Chat log object
 KeyboardConfig keyboard;

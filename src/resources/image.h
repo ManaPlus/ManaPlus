@@ -186,6 +186,9 @@ class Image : public Resource
         void setAlphaCalculated(const bool b)
         { mIsAlphaCalculated = b; }
 
+        SDL_Surface* getSDLSurface()
+        { return mSDLSurface; }
+
         SDL_Rect mBounds;
 
     protected:
