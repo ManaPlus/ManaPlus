@@ -18,8 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if !defined __native_client__
-
 #include "net/sdltcpnet.h"
 
 #if defined __linux__ || defined __linux
