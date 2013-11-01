@@ -233,9 +233,6 @@ public:
     State getState() const A_WARN_UNUSED
     { return mState; }
 
-    const std::string &getPackageDirectory() const A_WARN_UNUSED
-    { return mPackageDir; }
-
     const std::string &getConfigDirectory() const A_WARN_UNUSED
     { return mConfigDir; }
 
@@ -390,7 +387,6 @@ private:
 
     Options mOptions;
 
-    std::string mPackageDir;
     std::string mConfigDir;
     std::string mServerConfigDir;
     std::string mLocalDataDir;

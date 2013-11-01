@@ -39,6 +39,7 @@
 #include "resources/spritedef.h"
 
 #include "utils/mkdir.h"
+#include "utils/paths.h"
 #include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
@@ -427,8 +428,7 @@ std::string ResourceManager::getPath(const std::string &file) const
     else
     {
         // if not found in search path return the default path
-        path = std::string(client->getPackageDirectory()).append(
-            dirSeparator).append(file);
+        path = getPackageDir().append(dirSeparator).append(file);
     }
 
     return path;

@@ -43,4 +43,8 @@ std::string getDesktopDir() A_WARN_UNUSED;
 std::string getSdStoragePath() A_WARN_UNUSED;
 #endif
 
+std::string getPackageDir() A_WARN_UNUSED;
+
+void setPackageDir(const std::string &dir);
+
 #endif  // UTILS_PATHS_H

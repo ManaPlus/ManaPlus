@@ -278,7 +278,6 @@ class LoginListener final : public gcn::ActionListener
 Client::Client(const Options &options) :
     gcn::ActionListener(),
     mOptions(options),
-    mPackageDir(),
     mConfigDir(),
     mServerConfigDir(),
     mLocalDataDir(),
@@ -548,7 +547,7 @@ void Client::gameInit()
 //    mPackageDir = path;
 #endif
     resman->addToSearchPath(PKG_DATADIR "data", false);
-    mPackageDir = PKG_DATADIR "data";
+    setPackageDir(PKG_DATADIR "data");
     resman->addToSearchPath("data", false);
 
 #ifdef ANDROID

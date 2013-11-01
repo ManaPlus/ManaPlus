@@ -52,6 +52,11 @@
 
 #include "debug.h"
 
+namespace
+{
+    std::string mPackageDir;
+}  // namespace
+
 std::string getRealPath(const std::string &str)
 {
 #if defined(__OpenBSD__) || defined(__ANDROID__) || defined(__native_client__)
@@ -193,3 +198,13 @@ std::string getSdStoragePath()
     return getenv("DATADIR2");
 }
 #endif
+
+std::string getPackageDir()
+{
+    return mPackageDir;
+}
+
+void setPackageDir(const std::string &dir)
+{
+    mPackageDir = dir;
+}
