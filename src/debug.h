@@ -44,6 +44,7 @@
 #ifdef DEBUG_SDL_SURFACES
 
 #define MIMG_LoadPNG_RW(src)  FakeIMG_LoadPNG_RW(src, __FILE__, __LINE__)
+#define MIMG_LoadJPG_RW(src)  FakeIMG_LoadJPG_RW(src, __FILE__, __LINE__)
 #define MSDL_FreeSurface(s) FakeSDL_FreeSurface(s, __FILE__, __LINE__)
 #define MSDL_CreateRGBSurface(flags, w, h, d, r, g, b, a) \
     FakeSDL_CreateRGBSurface(flags, w, h, d, r, g, b, a, __FILE__, __LINE__)
@@ -60,6 +61,7 @@
 #else  // ENABLE_SDL_DEBUG
 
 #define MIMG_LoadPNG_RW(src)  IMG_LoadPNG_RW(src)
+#define MIMG_LoadJPG_RW(src)  IMG_LoadJPG_RW(src)
 #define MSDL_FreeSurface(surface) SDL_FreeSurface(surface)
 #define MSDL_CreateRGBSurface(flags, w, h, d, r, g, b, a) \
     SDL_CreateRGBSurface(flags, w, h, d, r, g, b, a)

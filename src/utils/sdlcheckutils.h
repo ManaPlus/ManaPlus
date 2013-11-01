@@ -35,6 +35,9 @@ struct SDL_Surface;
 SDL_Surface *FakeIMG_LoadPNG_RW(SDL_RWops *const src, const char *const file,
                                 const unsigned line);
 
+SDL_Surface *FakeIMG_LoadJPG_RW(SDL_RWops *const src, const char *const file,
+                                const unsigned line);
+
 void FakeSDL_FreeSurface(SDL_Surface *const surface, const char *const file,
                          const unsigned line);
 

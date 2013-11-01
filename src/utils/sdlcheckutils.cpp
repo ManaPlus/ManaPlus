@@ -138,6 +138,12 @@ SDL_Surface *FakeIMG_LoadPNG_RW(SDL_RWops *const src, const char *const file,
     return addSurface("IMG_LoadPNG_RW", IMG_LoadPNG_RW(src), file, line);
 }
 
+SDL_Surface *FakeIMG_LoadJPG_RW(SDL_RWops *const src, const char *const file,
+                                const unsigned line)
+{
+    return addSurface("IMG_LoadJPG_RW", IMG_LoadJPG_RW(src), file, line);
+}
+
 SDL_Surface *FakeIMG_Load(const char *name, const char *const file,
                           const unsigned line)
 {
