@@ -152,5 +152,3 @@ void TcpNet::freeSocketSet(const TcpNet::SocketSet set)
 {
     SDLNet_FreeSocketSet(set);
 }
-
-#endif  // __native_client__

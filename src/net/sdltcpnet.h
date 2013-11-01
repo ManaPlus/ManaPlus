@@ -21,8 +21,6 @@
 #ifndef NET_SDLTCPNET_H
 #define NET_SDLTCPNET_H
 
-#if !defined __native_client__
-
 #include <SDL_net.h>
 
 #include "localconsts.h"
@@ -60,5 +58,4 @@ namespace TcpNet
     void freeSocketSet(const TcpNet::SocketSet set);
 }  // namespace TcpNet
 
-#endif  // __native_client__
 #endif  // NET_SDLTCPNET_H
