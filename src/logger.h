@@ -66,12 +66,6 @@ class Logger final
         { mLogToStandardOut = value; }
 
         /**
-         * Enables logging to chat window
-         */
-        void setChatWindow(ChatWindow *const window)
-        { mChatWindow = window; }
-
-        /**
          * Enters a message in the log. The message will be timestamped.
          */
         void log(const char *const log_text, ...)
@@ -120,7 +114,6 @@ class Logger final
     private:
         std::ofstream mLogFile;
         bool mLogToStandardOut;
-        ChatWindow *mChatWindow;
         bool mDebugLog;
 };
 

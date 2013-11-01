@@ -182,7 +182,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("npcFont", "fonts/dejavusans.ttf");
     AddDEF("showBackground", true);
     AddDEF("enableTradeTab", true);
-    AddDEF("logToChat", false);
     AddDEF("cyclePlayers", true);
     AddDEF("cycleMonsters", true);
     AddDEF("cycleNPC", true);

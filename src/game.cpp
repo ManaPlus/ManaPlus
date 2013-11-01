@@ -314,9 +314,6 @@ static void createGuiWindows()
         gmChatTab = new GmTab(chatWindow);
     }
 
-    if (config.getBoolValue("logToChat"))
-        logger->setChatWindow(chatWindow);
-
     if (!isSafeMode && chatWindow)
         chatWindow->loadState();
 
@@ -338,7 +335,6 @@ static void destroyGuiWindows()
 {
     Net::getGeneralHandler()->gameEnded();
 
-    logger->setChatWindow(nullptr);
     if (whoIsOnline)
         whoIsOnline->setAllowUpdate(false);
 
