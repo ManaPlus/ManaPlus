@@ -20,6 +20,9 @@
 
 #include "logger.h"
 
+#include "graphicsmanager.h"
+#include "sdlshared.h"
+
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/imagewriter.h"
@@ -31,8 +34,11 @@
 #endif
 
 #include "utils/gettext.h"
+#include "utils/physfstools.h"
 
 #include <iostream>
+
+#include <SDL.h>
 
 #include "debug.h"
 
@@ -50,6 +56,12 @@ int main(int argc, char **argv)
         printHelp();
 
     logger = new Logger;
+    logger->setLogToStandardOut(false);
+
+    PhysFs::init(argv[0]);
+    SDL_Init(SDL_INIT_VIDEO);
+
+    graphicsManager.createWindow(10, 10, 0, SDL_ANYFORMAT);
 
 #ifdef USE_SDL2
     imageHelper = new SurfaceImageHelper;
@@ -58,6 +70,9 @@ int main(int argc, char **argv)
 #endif
 
     ResourceManager *resman = new ResourceManager;
+    resman->setWriteDir(".");
+    resman->addToSearchPath(".", false);
+    resman->addToSearchPath("/", false);
     Image *image = resman->getImage(std::string(
         argv[1]).append("|").append(argv[2]));
     if (!image)

@@ -56,6 +56,10 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      animationdelayload.h \
 	      configuration.cpp \
 	      configuration.h \
+	      graphicsmanager.cpp \
+	      graphicsmanager.h \
+	      graphicsvertexes.cpp \
+	      graphicsvertexes.h \
 	      logger.cpp \
 	      logger.h \
 	      navigationmanager.cpp \
@@ -64,6 +68,10 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      walklayer.h \
 	      render/graphics.cpp \
 	      render/graphics.h \
+	      render/renderers.cpp \
+	      render/renderers.h \
+	      render/sdlgraphics.cpp \
+	      render/sdlgraphics.h \
 	      resources/action.cpp \
 	      resources/action.h \
 	      resources/animation.cpp \
@@ -104,6 +112,10 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      utils/physfsrwops.h \
 	      utils/physfstools.cpp \
 	      utils/physfstools.h \
+	      utils/sdl2helper.cpp \
+	      utils/sdl2helper.h \
+	      utils/sdlhelper.cpp \
+	      utils/sdlhelper.h \
 	      utils/stringutils.cpp \
 	      utils/stringutils.h \
 	      utils/timer.cpp \

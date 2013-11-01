@@ -46,6 +46,8 @@
 #endif
 #endif
 
+Graphics *mainGraphics = nullptr;
+
 Graphics::Graphics() :
     gcn::Graphics(),
     mWidth(0),

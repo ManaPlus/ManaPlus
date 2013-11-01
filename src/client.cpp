@@ -160,7 +160,6 @@ Client *client = nullptr;
 ChatLogger *chatLogger = nullptr;  // Chat log object
 KeyboardConfig keyboard;
 UserPalette *userPalette = nullptr;
-Graphics *mainGraphics = nullptr;
 
 SoundManager soundManager;
 RenderType openGLMode = RENDER_SOFTWARE;
