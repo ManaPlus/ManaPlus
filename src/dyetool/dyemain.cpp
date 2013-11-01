@@ -46,13 +46,14 @@ int serverVersion = 0;
 
 static void printHelp()
 {
-    std::cout << _("dyecmd srcfile dyestring dstfile")
-        << std::endl << std::endl;
+    std::cout << _("dyecmd srcfile dyestring dstfile") << std::endl;
+    std::cout << _("or") << std::endl;
+    std::cout << _("dyecmd srcdyestring dstfile") << std::endl;
 }
 
 int main(int argc, char **argv)
 {
-    if (argc != 4)
+    if (argc < 3 || argc > 4)
         printHelp();
 
     logger = new Logger;
@@ -73,13 +74,24 @@ int main(int argc, char **argv)
     resman->setWriteDir(".");
     resman->addToSearchPath(".", false);
     resman->addToSearchPath("/", false);
-    Image *image = resman->getImage(std::string(
-        argv[1]).append("|").append(argv[2]));
+    std::string src = argv[1];
+    std::string dst;
+    if (argc == 4)
+    {
+        src.append("|").append(argv[2]);
+        dst = argv[3];
+    }
+    else
+    {
+        dst = argv[2];
+    }
+
+    Image *image = resman->getImage(src);
     if (!image)
     {
         printf("Error loading image\n");
         return 1;
     }
-    ImageWriter::writePNG(image->getSDLSurface(), argv[3]);
+    ImageWriter::writePNG(image->getSDLSurface(), dst);
     return 0;
 }
