@@ -46,7 +46,8 @@ dyecmd_SOURCES = guichan/actionevent.cpp \
 	      guichan/include/guichan/rectangle.hpp \
 	      guichan/include/guichan/widget.hpp
 else
-dyecmd_SOURCES = 
+dyecmd_CXXFLAGS =
+dyecmd_SOURCES =
 endif
 
 dyecmd_SOURCES += dyetool/dyemain.cpp \
@@ -70,6 +71,10 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      render/graphics.h \
 	      render/renderers.cpp \
 	      render/renderers.h \
+	      render/sdl2softwaregraphics.cpp \
+	      render/sdl2softwaregraphics.h \
+	      render/sdl2graphics.cpp \
+	      render/sdl2graphics.h \
 	      render/sdlgraphics.cpp \
 	      render/sdlgraphics.h \
 	      resources/action.cpp \
@@ -92,6 +97,10 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      resources/resource.h \
 	      resources/resourcemanager.cpp \
 	      resources/resourcemanager.h \
+	      resources/sdl2softwareimagehelper.cpp \
+	      resources/sdl2softwareimagehelper.h \
+	      resources/sdl2imagehelper.cpp \
+	      resources/sdl2imagehelper.h \
 	      resources/sdlimagehelper.cpp \
 	      resources/sdlimagehelper.h \
 	      resources/sdlmusic.cpp \
@@ -134,6 +143,12 @@ manaplus_CXXFLAGS += -DENABLE_CHECKS
 endif
 
 if USE_SDL2
+dyecmd_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
+dyecmd_SOURCES += sdl2gfx/SDL_framerate.c \
+	      sdl2gfx/SDL_framerate.h \
+	      sdl2gfx/SDL_rotozoom.c \
+	      sdl2gfx/SDL_rotozoom.h
+
 manaplus_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
 manaplus_SOURCES += sdl2gfx/SDL_framerate.c \
 	      sdl2gfx/SDL_framerate.h \
