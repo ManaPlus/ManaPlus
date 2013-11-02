@@ -23,6 +23,10 @@
 #include <iostream>
 #include <unistd.h>
 
+#ifdef ANDROID
+#include "utils/paths.h"
+#endif
+
 #include "localconsts.h"
 
 const char *dirSeparator = nullptr;
