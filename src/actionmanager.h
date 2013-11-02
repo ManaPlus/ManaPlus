@@ -31,6 +31,7 @@ namespace ActionManager
     decHandler(moveDown);
     decHandler(moveLeft);
     decHandler(moveRight);
+    decHandler(moveForward);
     decHandler(emote);
     decHandler(outfit);
     decHandler(moveToPoint);

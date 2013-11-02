@@ -851,6 +851,12 @@ void Game::handleMove()
             setValidSpeed();
             player_node->cancelFollow();
         }
+        else if (inputManager.isActionActive(Input::KEY_MOVE_FORWARD))
+        {
+            direction = player_node->getDirection();
+            setValidSpeed();
+            player_node->cancelFollow();
+        }
 
         if (!inputManager.isActionActive(Input::KEY_EMOTE) || direction == 0)
             moveInDirection(direction);

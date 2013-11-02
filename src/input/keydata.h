@@ -71,6 +71,7 @@ namespace Input
         KEY_MOVE_DOWN,
         KEY_MOVE_LEFT,
         KEY_MOVE_RIGHT,
+        KEY_MOVE_FORWARD,
         KEY_ATTACK,
         KEY_TARGET_ATTACK,
         KEY_MOVE_TO_TARGET,

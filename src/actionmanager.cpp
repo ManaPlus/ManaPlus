@@ -139,6 +139,13 @@ impHandler(moveRight)
     return false;
 }
 
+impHandler(moveForward)
+{
+    if (inputManager.isActionActive(Input::KEY_EMOTE))
+        return directRight(event);
+    return false;
+}
+
 impHandler(emote)
 {
     const int emotion = 1 + event.action - Input::KEY_EMOTE_1;

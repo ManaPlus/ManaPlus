@@ -1419,6 +1419,12 @@ static SetupActionData setupActionData7[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Move Forward"),
+        Input::KEY_MOVE_FORWARD,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Move to navigation point shortcuts"),
         Input::KEY_NO_VALUE,
         ""
