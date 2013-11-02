@@ -29,7 +29,9 @@
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
 #include "input/keyboarddata.h"
+#ifdef USE_SDL2
 #include "input/multitouchmanager.h"
+#endif
 
 #include "gui/gui.h"
 #include "gui/sdlinput.h"
