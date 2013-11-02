@@ -54,7 +54,10 @@ static void printHelp()
 int main(int argc, char **argv)
 {
     if (argc < 3 || argc > 4)
+    {
         printHelp();
+        return 1;
+    }
 
     logger = new Logger;
     logger->setLogToStandardOut(false);
