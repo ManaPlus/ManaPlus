@@ -77,7 +77,7 @@ const char *OPENGL_NAME[] =
     // TRANSLATORS: draw backend
     N_("Software"),
     // TRANSLATORS: draw backend
-    N_("Fast OpenGL"),
+    N_("Normal OpenGL"),
     // TRANSLATORS: draw backend
     N_("Safe OpenGL"),
     // TRANSLATORS: draw backend
