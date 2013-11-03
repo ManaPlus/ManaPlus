@@ -62,13 +62,6 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         &ActionManager::moveRight,
         Input::KEY_NO_VALUE, 50,
         COND_GAME},
-    {"keyMoveForward",
-        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
-        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
-        Input::GRP_DEFAULT,
-        &ActionManager::moveForward,
-        Input::KEY_NO_VALUE, 50,
-        COND_GAME},
     {"keyAttack",
         INPUT_KEYBOARD, SDLK_LCTRL,
         INPUT_UNKNOWN, Input::KEY_NO_VALUE,
@@ -1974,7 +1967,14 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         Input::GRP_CHAT,
         nullptr,
         Input::KEY_NO_VALUE, 50,
-        COND_DEFAULT | COND_INGAME}
+        COND_DEFAULT | COND_INGAME},
+    {"keyMoveForward",
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        Input::GRP_DEFAULT,
+        &ActionManager::moveForward,
+        Input::KEY_NO_VALUE, 50,
+        COND_GAME}
 };
 
 #endif  // INPUT_KEYBOARDDATA_H
