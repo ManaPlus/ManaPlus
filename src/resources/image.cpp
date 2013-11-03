@@ -320,30 +320,63 @@ void Image::setAlpha(const float alpha)
             if (SDL_MUSTLOCK(mSDLSurface))
                 SDL_LockSurface(mSDLSurface);
 
-            // Precompute as much as possible
-            const int maxHeight = std::min((mBounds.y + mBounds.h),
-                mSDLSurface->h);
-            const int maxWidth = std::min((mBounds.x + mBounds.w),
-                mSDLSurface->w);
-            const int i1 = mBounds.y * mSDLSurface->w + mBounds.x;
-            const int i2 = (maxHeight - 1) * mSDLSurface->w + maxWidth - 1;
-
+            const int bx = mBounds.x;
+            const int by = mBounds.y;
+            const int bw = mBounds.w;
+            const int bh = mBounds.h;
+            const int bxw = bx + bw;
+            const int sw = mSDLSurface->w;
+            const int maxHeight = std::min(by + bh, mSDLSurface->h);
+            const int maxWidth = std::min(bxw, sw);
+            const int i1 = by * sw + bx;
             const SDL_PixelFormat * const fmt = mSDLSurface->format;
+            const uint32_t amask = fmt->Amask;
+            const uint32_t invMask = ~fmt->Amask;
+            const uint8_t aloss = fmt->Aloss;
+            const uint8_t ashift = fmt->Ashift;
 
-            for (int i = i1; i <= i2; i++)
+            if (!bx && bxw == sw)
             {
-                // Only change the pixel if it was visible at load time...
-                const uint8_t sourceAlpha = mAlphaChannel[i];
-                if (sourceAlpha > 0)
+                const int i2 = (maxHeight - 1) * sw + maxWidth - 1;
+                for (int i = i1; i <= i2; i++)
                 {
-                    const uint8_t a = static_cast<uint8_t>(
-                        static_cast<float>(sourceAlpha) * mAlpha);
+                    const uint8_t sourceAlpha = mAlphaChannel[i];
+                    if (sourceAlpha > 0)
+                    {
+                        const uint8_t a = static_cast<uint8_t>(
+                            static_cast<float>(sourceAlpha) * mAlpha);
 
-                    uint32_t c = (static_cast<uint32_t*>(
-                        mSDLSurface->pixels))[i];
-                    c &= ~fmt->Amask;
-                    c |= ((a >> fmt->Aloss) << fmt->Ashift & fmt->Amask);
-                    (static_cast<uint32_t*>(mSDLSurface->pixels))[i] = c;
+                        uint32_t c = (static_cast<uint32_t*>(
+                            mSDLSurface->pixels))[i];
+                        c &= invMask;
+                        c |= ((a >> aloss) << ashift & amask);
+                        (static_cast<uint32_t*>(mSDLSurface->pixels))[i] = c;
+                    }
+                }
+            }
+            else
+            {
+                for (int y = by; y < maxHeight; y ++)
+                {
+                    const int i1 = y * sw;
+                    const int x1 = i1 + bx;
+                    const int x2 = i1 + maxWidth;
+                    for (int i = x1; i < x2; i ++)
+                    {
+                        const uint8_t sourceAlpha = mAlphaChannel[i];
+                        if (sourceAlpha > 0)
+                        {
+                            const uint8_t a = static_cast<uint8_t>(
+                                static_cast<float>(sourceAlpha) * mAlpha);
+
+                            uint32_t c = (static_cast<uint32_t*>(
+                                mSDLSurface->pixels))[i];
+                            c &= invMask;
+                            c |= ((a >> aloss) << ashift & amask);
+                            (static_cast<uint32_t*>(
+                                mSDLSurface->pixels))[i] = c;
+                        }
+                    }
                 }
             }
 
