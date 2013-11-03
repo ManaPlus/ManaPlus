@@ -335,15 +335,6 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
 
     if (normalChat)
     {
-        if (chatMsg.find(": ") == std::string::npos && !mShowMotd
-            && mSkipping && channel.empty())
-        {
-            // skip motd from "new" tmw server
-            return;
-        }
-
-        mSkipping = true;
-
         if (chatWindow)
         {
             chatWindow->resortChatLog(chatMsg, BY_PLAYER,
@@ -359,6 +350,15 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
                     chatMsg.substr(senseStr.size()));
             }
         }
+
+        if (chatMsg.find(": ") == std::string::npos && !mShowMotd
+            && mSkipping && channel.empty())
+        {
+            // skip motd from "new" tmw server
+            return;
+        }
+
+        mSkipping = false;
 
         if (pos != std::string::npos)
             chatMsg.erase(0, pos + 3);
