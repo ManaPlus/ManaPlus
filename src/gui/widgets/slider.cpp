@@ -138,7 +138,7 @@ void Slider::draw(gcn::Graphics *graphics)
 
     updateAlpha();
 
-    if (openGLMode != RENDER_SAFE_OPENGL)
+    if (isBatchDrawRenders(openGLMode))
     {
         if (mRedraw || g->getRedraw())
         {

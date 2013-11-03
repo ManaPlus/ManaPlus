@@ -34,4 +34,6 @@ enum RenderType
 
 RenderType intToRenderType(const int mode);
 
+#define isBatchDrawRenders(val) (val) != RENDER_SAFE_OPENGL
+
 #endif  // RENDER_RENDERERS_H

@@ -186,7 +186,7 @@ void TouchManager::clear()
 
 void TouchManager::draw()
 {
-    if (openGLMode != RENDER_SAFE_OPENGL)
+    if (isBatchDrawRenders(openGLMode))
     {
         if (mRedraw)
         {

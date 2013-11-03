@@ -90,7 +90,7 @@ void ShortcutContainer::drawBackground(Graphics *g)
 {
     if (mBackgroundImg)
     {
-        if (openGLMode != RENDER_SAFE_OPENGL)
+        if (isBatchDrawRenders(openGLMode))
         {
             if (mRedraw)
             {

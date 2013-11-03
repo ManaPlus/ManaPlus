@@ -73,7 +73,7 @@ void EmotePage::draw(gcn::Graphics *graphics)
     unsigned int x = 0;
     unsigned int y = 0;
 
-    if (openGLMode != RENDER_SAFE_OPENGL)
+    if (isBatchDrawRenders(openGLMode))
     {
         if (mRedraw)
         {

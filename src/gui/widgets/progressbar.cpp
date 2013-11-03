@@ -177,7 +177,7 @@ void ProgressBar::render(Graphics *graphics)
     if (!mSkin)
         return;
 
-    if (openGLMode != RENDER_SAFE_OPENGL)
+    if (isBatchDrawRenders(openGLMode))
     {
         if (mRedraw || graphics->getRedraw())
         {

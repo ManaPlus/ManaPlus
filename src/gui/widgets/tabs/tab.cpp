@@ -207,7 +207,7 @@ void Tab::draw(gcn::Graphics *graphics)
     Graphics *const g = static_cast<Graphics*>(graphics);
 
     // draw tab
-    if (openGLMode != RENDER_SAFE_OPENGL)
+    if (isBatchDrawRenders(openGLMode))
     {
         const ImageRect &rect = skin->getBorder();
         if (mRedraw || mode != mMode || g->getRedraw())

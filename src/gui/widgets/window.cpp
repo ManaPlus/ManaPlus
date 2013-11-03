@@ -216,7 +216,7 @@ void Window::draw(gcn::Graphics *graphics)
     Graphics *const g = static_cast<Graphics*>(graphics);
     bool update = false;
 
-    if (openGLMode != RENDER_SAFE_OPENGL)
+    if (isBatchDrawRenders(openGLMode))
     {
         if (mResizeHandles != mOldResizeHandles)
         {

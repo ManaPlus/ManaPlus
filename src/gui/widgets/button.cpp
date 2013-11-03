@@ -471,7 +471,7 @@ void Button::draw(gcn::Graphics *graphics)
         }
     }
 
-    if (openGLMode != RENDER_SAFE_OPENGL)
+    if (isBatchDrawRenders(openGLMode))
     {
         if (recalc)
         {

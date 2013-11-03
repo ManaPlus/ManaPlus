@@ -101,7 +101,7 @@ void Popup::draw(gcn::Graphics *graphics)
 
     if (mSkin)
     {
-        if (openGLMode != RENDER_SAFE_OPENGL)
+        if (isBatchDrawRenders(openGLMode))
         {
             if (mRedraw)
             {
