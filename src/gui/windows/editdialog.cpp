@@ -51,13 +51,15 @@ void EditDialog::postInit()
     const int fontHeight = getFont()->getHeight();
     const int height = numRows * fontHeight;
     const int pad = getPadding();
-
-    setContentSize(mDefaultWidth, height + fontHeight + okButton->getHeight());
+    const int pad2 = pad * 2;
     mTextField->setPosition(pad, pad);
-    mTextField->setWidth(mDefaultWidth - 2 * pad);
-
+    mTextField->setWidth(mDefaultWidth - pad2);
+    const int buttonPadding = getOption("buttonPadding", 8)
+        + mTextField->getHeight();
+    setContentSize(mDefaultWidth, okButton->getHeight()
+        + buttonPadding + pad2);
     okButton->setPosition((mDefaultWidth - okButton->getWidth()) / 2,
-        height + getOption("buttonPadding", 8));
+        buttonPadding + pad);
 
     add(mTextField);
     add(okButton);

@@ -21,6 +21,7 @@ SET (FILES
     dropdown_background.xml
     dropdown_pressed.xml
     drops.xml
+    edit.xml
     emotes.xml
     emotetabs.xml
     equipment.xml
