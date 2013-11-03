@@ -448,6 +448,12 @@
 		2B6F7E6D17D62CEE00ECB041 /* sdlgraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6F7E4A17D62CEE00ECB041 /* sdlgraphics.cpp */; };
 		2B6F7E6E17D62CEE00ECB041 /* surfacegraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6F7E4C17D62CEE00ECB041 /* surfacegraphics.cpp */; };
 		2B6F7E6F17D62CEE00ECB041 /* surfacegraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6F7E4C17D62CEE00ECB041 /* surfacegraphics.cpp */; };
+		2B74788717F5647600EEC1E5 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B74788317F5647600EEC1E5 /* files.cpp */; };
+		2B74788817F5647600EEC1E5 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B74788317F5647600EEC1E5 /* files.cpp */; };
+		2B74788917F5647600EEC1E5 /* physfscheckutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B74788517F5647600EEC1E5 /* physfscheckutils.cpp */; };
+		2B74788A17F5647600EEC1E5 /* physfscheckutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B74788517F5647600EEC1E5 /* physfscheckutils.cpp */; };
+		2B74788E17F5661100EEC1E5 /* mapheights.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B74788C17F5661100EEC1E5 /* mapheights.cpp */; };
+		2B74788F17F5661100EEC1E5 /* mapheights.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B74788C17F5661100EEC1E5 /* mapheights.cpp */; };
 		2B7A5E5D16D82A3E0020A1C1 /* physfstools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */; };
 		2B7A5E5E16D82A3E0020A1C1 /* physfstools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */; };
 		2B7A5E6116D82C010020A1C1 /* gmtab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5F16D82C010020A1C1 /* gmtab.cpp */; };
@@ -1322,6 +1328,12 @@
 		2B6F7E4B17D62CEE00ECB041 /* sdlgraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdlgraphics.h; sourceTree = "<group>"; };
 		2B6F7E4C17D62CEE00ECB041 /* surfacegraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surfacegraphics.cpp; sourceTree = "<group>"; };
 		2B6F7E4D17D62CEE00ECB041 /* surfacegraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surfacegraphics.h; sourceTree = "<group>"; };
+		2B74788317F5647600EEC1E5 /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = files.cpp; sourceTree = "<group>"; };
+		2B74788417F5647600EEC1E5 /* files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = files.h; sourceTree = "<group>"; };
+		2B74788517F5647600EEC1E5 /* physfscheckutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = physfscheckutils.cpp; sourceTree = "<group>"; };
+		2B74788617F5647600EEC1E5 /* physfscheckutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = physfscheckutils.h; sourceTree = "<group>"; };
+		2B74788C17F5661100EEC1E5 /* mapheights.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mapheights.cpp; path = ../../src/mapheights.cpp; sourceTree = "<group>"; };
+		2B74788D17F5661100EEC1E5 /* mapheights.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mapheights.h; path = ../../src/mapheights.h; sourceTree = "<group>"; };
 		2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = physfstools.cpp; sourceTree = "<group>"; };
 		2B7A5E5C16D82A3E0020A1C1 /* physfstools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = physfstools.h; sourceTree = "<group>"; };
 		2B7A5E5F16D82C010020A1C1 /* gmtab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gmtab.cpp; sourceTree = "<group>"; };
@@ -2312,6 +2324,8 @@
 		2BDF45C9166D5AEC0054E77F /* ManaPlus */ = {
 			isa = PBXGroup;
 			children = (
+				2B74788C17F5661100EEC1E5 /* mapheights.cpp */,
+				2B74788D17F5661100EEC1E5 /* mapheights.h */,
 				2BDF4755166D5B680054E77F /* actionmanager.cpp */,
 				2BDF4756166D5B680054E77F /* actionmanager.h */,
 				2BDF475C166D5B680054E77F /* actorspritemanager.cpp */,
@@ -3248,6 +3262,10 @@
 		2BDF4A4A166D5B680054E77F /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				2B74788317F5647600EEC1E5 /* files.cpp */,
+				2B74788417F5647600EEC1E5 /* files.h */,
+				2B74788517F5647600EEC1E5 /* physfscheckutils.cpp */,
+				2B74788617F5647600EEC1E5 /* physfscheckutils.h */,
 				2B9044DD17D53CD9006130CF /* fuzzer.cpp */,
 				2B9044DE17D53CD9006130CF /* fuzzer.h */,
 				2B9044DF17D53CD9006130CF /* sdl2helper.cpp */,
@@ -3607,6 +3625,7 @@
 				2B1711FB1686A98C002E9493 /* browserbox.cpp in Sources */,
 				2B1711FC1686A98C002E9493 /* button.cpp in Sources */,
 				2B1711FE1686A98C002E9493 /* chattab.cpp in Sources */,
+				2B74788817F5647600EEC1E5 /* files.cpp in Sources */,
 				2B1711FF1686A98C002E9493 /* checkbox.cpp in Sources */,
 				2B1712001686A98C002E9493 /* container.cpp in Sources */,
 				2B1712011686A98C002E9493 /* desktop.cpp in Sources */,
@@ -3853,6 +3872,7 @@
 				2B6B0E52176BDD3000930985 /* cpu.cpp in Sources */,
 				2B6B0E57176BDD7B00930985 /* avatardb.cpp in Sources */,
 				2B6B0E5F176BDDC100930985 /* skilldata.cpp in Sources */,
+				2B74788A17F5647600EEC1E5 /* physfscheckutils.cpp in Sources */,
 				2B6B0E61176BDDC100930985 /* skillinfo.cpp in Sources */,
 				2B6B0E63176BDDC100930985 /* skillmodel.cpp in Sources */,
 				2B6B0E67176BDDE100930985 /* depricatedlistener.cpp in Sources */,
@@ -3867,6 +3887,7 @@
 				2B9044F717D53D03006130CF /* sdl2imagehelper.cpp in Sources */,
 				2B9044F917D53D03006130CF /* surfaceimagehelper.cpp in Sources */,
 				2B9044FB17D53D03006130CF /* beingcommon.cpp in Sources */,
+				2B74788F17F5661100EEC1E5 /* mapheights.cpp in Sources */,
 				2B9044FD17D53D03006130CF /* deaddb.cpp in Sources */,
 				2B90451017D53D39006130CF /* SDL_framerate.c in Sources */,
 				2B90451817D53D90006130CF /* emotepage.cpp in Sources */,
@@ -4006,6 +4027,7 @@
 				2BDF4B46166D5B690054E77F /* browserbox.cpp in Sources */,
 				2BDF4B4A166D5B690054E77F /* button.cpp in Sources */,
 				2BDF4B4E166D5B690054E77F /* chattab.cpp in Sources */,
+				2B74788717F5647600EEC1E5 /* files.cpp in Sources */,
 				2BDF4B50166D5B690054E77F /* checkbox.cpp in Sources */,
 				2BDF4B52166D5B690054E77F /* container.cpp in Sources */,
 				2BDF4B54166D5B690054E77F /* desktop.cpp in Sources */,
@@ -4252,6 +4274,7 @@
 				2B6B0E51176BDD3000930985 /* cpu.cpp in Sources */,
 				2B6B0E56176BDD7B00930985 /* avatardb.cpp in Sources */,
 				2B6B0E5E176BDDC100930985 /* skilldata.cpp in Sources */,
+				2B74788917F5647600EEC1E5 /* physfscheckutils.cpp in Sources */,
 				2B6B0E60176BDDC100930985 /* skillinfo.cpp in Sources */,
 				2B6B0E62176BDDC100930985 /* skillmodel.cpp in Sources */,
 				2B6B0E66176BDDE100930985 /* depricatedlistener.cpp in Sources */,
@@ -4266,6 +4289,7 @@
 				2B9044F617D53D03006130CF /* sdl2imagehelper.cpp in Sources */,
 				2B9044F817D53D03006130CF /* surfaceimagehelper.cpp in Sources */,
 				2B9044FA17D53D03006130CF /* beingcommon.cpp in Sources */,
+				2B74788E17F5661100EEC1E5 /* mapheights.cpp in Sources */,
 				2B9044FC17D53D03006130CF /* deaddb.cpp in Sources */,
 				2B90450F17D53D39006130CF /* SDL_framerate.c in Sources */,
 				2B90451717D53D90006130CF /* emotepage.cpp in Sources */,
