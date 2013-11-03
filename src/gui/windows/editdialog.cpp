@@ -49,7 +49,6 @@ void EditDialog::postInit()
 
     const int numRows = 1;
     const int fontHeight = getFont()->getHeight();
-    const int height = numRows * fontHeight;
     const int pad = getPadding();
     const int pad2 = pad * 2;
     mTextField->setPosition(pad, pad);
