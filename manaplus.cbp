@@ -480,6 +480,7 @@
 		<Unit filename="src/utils/sdlhelper.cpp" />
 		<Unit filename="src/utils/specialfolder.cpp" />
 		<Unit filename="src/utils/stringutils.cpp" />
+		<Unit filename="src/utils/timer.cpp" />
 		<Unit filename="src/utils/translation/podict.cpp" />
 		<Unit filename="src/utils/translation/poparser.cpp" />
 		<Unit filename="src/utils/translation/translationmanager.cpp" />
