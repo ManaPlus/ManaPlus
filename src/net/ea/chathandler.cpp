@@ -48,7 +48,8 @@ namespace Ea
 ChatHandler::ChatHandler() :
     mSentWhispers(),
     mShowAllLang(serverConfig.getValue("showAllLang", 0)),
-    mShowMotd(config.getBoolValue("showmotd"))
+    mShowMotd(config.getBoolValue("showmotd")),
+    mSkipping(true)
 {
 }
 
@@ -311,7 +312,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg,
 }
 
 void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
-                              const bool channels) const
+                              const bool channels)
 {
     BLOCK_START("ChatHandler::processChat")
     int chatMsgLength = msg.readInt16() - 4;
@@ -334,6 +335,15 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
 
     if (normalChat)
     {
+        if (chatMsg.find(": ") == std::string::npos && !mShowMotd
+            && mSkipping && channel.empty())
+        {
+            // skip motd from "new" tmw server
+            return;
+        }
+
+        mSkipping = true;
+
         if (chatWindow)
         {
             chatWindow->resortChatLog(chatMsg, BY_PLAYER,
