@@ -62,6 +62,9 @@ src/dyecmd
 .objs
 *.dll
 *.exe
+manaplis.depend
+manaplis.layout
+stdout.txt
 
 # files copied in on Windows
 include/*
