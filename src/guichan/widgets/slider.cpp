@@ -120,47 +120,6 @@ namespace gcn
         mScaleEnd = scaleEnd;
     }
 
-    void Slider::mousePressed(MouseEvent& mouseEvent)
-    {
-        if (mouseEvent.getButton() == gcn::MouseEvent::LEFT
-            && mouseEvent.getX() >= 0
-            && mouseEvent.getX() <= getWidth()
-            && mouseEvent.getY() >= 0
-            && mouseEvent.getY() <= getHeight())
-        {
-            if (getOrientation() == HORIZONTAL)
-            {
-                setValue(markerPositionToValue(
-                    mouseEvent.getX() - getMarkerLength() / 2));
-            }
-            else
-            {
-                setValue(markerPositionToValue(getHeight()
-                    - mouseEvent.getY() - getMarkerLength() / 2));
-            }
-
-            distributeActionEvent();
-        }
-    }
-
-    void Slider::mouseDragged(MouseEvent& mouseEvent)
-    {
-        if (getOrientation() == HORIZONTAL)
-        {
-            setValue(markerPositionToValue(mouseEvent.getX()
-                - getMarkerLength() / 2));
-        }
-        else
-        {
-            setValue(markerPositionToValue(getHeight()
-                - mouseEvent.getY() - getMarkerLength() / 2));
-        }
-
-        distributeActionEvent();
-
-        mouseEvent.consume();
-    }
-
     void Slider::setValue(double value)
     {
         if (value > getScaleEnd())
@@ -191,10 +150,6 @@ namespace gcn
     void Slider::setMarkerLength(int length)
     {
         mMarkerLength = length;
-    }
-
-    void Slider::keyPressed(KeyEvent& keyEvent A_UNUSED)
-    {
     }
 
     void Slider::setOrientation(Slider::Orientation orientation)
@@ -253,21 +208,5 @@ namespace gcn
     int Slider::getMarkerPosition() const
     {
         return valueToMarkerPosition(getValue());
-    }
-
-    void Slider::mouseWheelMovedUp(MouseEvent& mouseEvent)
-    {
-        setValue(getValue() + getStepLength());
-        distributeActionEvent();
-
-        mouseEvent.consume();
-    }
-
-    void Slider::mouseWheelMovedDown(MouseEvent& mouseEvent)
-    {
-        setValue(getValue() - getStepLength());
-        distributeActionEvent();
-
-        mouseEvent.consume();
     }
 }  // namespace gcn

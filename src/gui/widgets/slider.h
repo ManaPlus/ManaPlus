@@ -29,6 +29,8 @@
 
 #include "localconsts.h"
 
+class ImageCollection;
+
 /**
  * Slider widget. Same as the Guichan slider but with custom look.
  *
@@ -66,11 +68,6 @@ class Slider final : public gcn::Slider,
         void draw(gcn::Graphics *graphics) override final;
 
         /**
-         * Draws the marker.
-         */
-        void drawMarker(gcn::Graphics *const graphics) const;
-
-        /**
          * Called when the mouse enteres the widget area.
          */
         void mouseEntered(gcn::MouseEvent& event) override final;
@@ -80,7 +77,17 @@ class Slider final : public gcn::Slider,
          */
         void mouseExited(gcn::MouseEvent& event) override final;
 
+        void mousePressed(gcn::MouseEvent &mouseEvent) override final;
+
+        void mouseDragged(gcn::MouseEvent &mouseEvent) override final;
+
+        void mouseWheelMovedUp(gcn::MouseEvent &mouseEvent) override final;
+
+        void mouseWheelMovedDown(gcn::MouseEvent &mouseEvent) override final;
+
         void keyPressed(gcn::KeyEvent& keyEvent) override final;
+
+        void setValue2(const double value);
 
         enum SLIDER_ENUM
         {
@@ -104,7 +111,9 @@ class Slider final : public gcn::Slider,
         static ImageRect buttons[2];
         static float mAlpha;
         static int mInstances;
+        ImageCollection *mVertexes;
         bool mHasMouse;
+        bool mRedraw;
 };
 
 #endif  // GUI_WIDGETS_SLIDER_H

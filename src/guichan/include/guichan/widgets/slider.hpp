@@ -207,21 +207,6 @@ namespace gcn
          */
         double getStepLength() const;
 
-        // Inherited from MouseListener.
-
-        virtual void mousePressed(MouseEvent& mouseEvent) override;
-
-        virtual void mouseDragged(MouseEvent& mouseEvent) override;
-
-        virtual void mouseWheelMovedUp(MouseEvent& mouseEvent) override;
-
-        virtual void mouseWheelMovedDown(MouseEvent& mouseEvent) override;
-
-
-        // Inherited from KeyListener
-
-        virtual void keyPressed(KeyEvent& keyEvent) override;
-
     protected:
         /**
          * Converts a marker position to a value in the scale.
