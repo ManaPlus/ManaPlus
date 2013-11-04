@@ -495,6 +495,7 @@ DefaultsData* getFeaturesDefaults()
 {
     DefaultsData *const configData = new DefaultsData;
     AddDEF("languageTab", false);
+    AddDEF("allowFollow", true);
     return configData;
 }
 

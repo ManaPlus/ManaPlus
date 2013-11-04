@@ -2574,8 +2574,11 @@ void PopupMenu::addPlayerRelation(const std::string &name)
 
 void PopupMenu::addFollow()
 {
-    // TRANSLATORS: popup menu item
-    mBrowserBox->addRow("follow", _("Follow"));
+    if (features.getBoolValue("allowFollow"))
+    {
+        // TRANSLATORS: popup menu item
+        mBrowserBox->addRow("follow", _("Follow"));
+    }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: imitate player
     mBrowserBox->addRow("imitation", _("Imitation"));

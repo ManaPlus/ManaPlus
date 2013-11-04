@@ -1346,6 +1346,7 @@ int Client::gameExec()
                     if (!BeingInfo::unknown)
                         BeingInfo::unknown = new BeingInfo;
 
+                    initFeatures();
                     TranslationManager::loadCurrentLang();
                     PlayerInfo::stateChange(mState);
 
