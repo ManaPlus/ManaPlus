@@ -146,7 +146,11 @@ gmon.out
 .DS_Store
 Xcode/ManaPlus.xcodeproj/xcuserdata
 Xcode/ManaPlus.xcodeproj/project.xcworkspace/xcuserdata
+Xcode/ManaPlus.xcodeproj/project.xcworkspace/xcshareddata
+Xcode/Release/Debug*
 Xcode/Release/ManaPlus.dmg
 Xcode/Release/*.dmg
 Xcode/Release/Manaplus_ssh.txt
+Xcode/Build
+Xcode/DerivedData
 
