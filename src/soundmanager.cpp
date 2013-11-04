@@ -71,7 +71,6 @@ SoundManager::SoundManager():
 
 SoundManager::~SoundManager()
 {
-    CHECKLISTENERS
 }
 
 void SoundManager::shutdown()
@@ -80,6 +79,8 @@ void SoundManager::shutdown()
 
     // Unlink the callback function.
     Mix_HookMusicFinished(nullptr);
+
+    CHECKLISTENERS
 }
 
 void SoundManager::optionChanged(const std::string &value)
