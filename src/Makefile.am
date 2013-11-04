@@ -656,7 +656,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/dtor.h \
 	      utils/files.cpp \
 	      utils/files.h \
-	      utils/files_unittest.cpp \
 	      utils/fuzzer.cpp \
 	      utils/fuzzer.h \
 	      utils/gettext.h \
@@ -1036,6 +1035,7 @@ manaplus_SOURCES += \
 	      animatedsprite_unittest.cc \
 	      gui/sdlfont_unittest.cc \
 	      gui/widgets/browserbox_unittest.cc \
+	      utils/files_unittest.cpp \
 	      utils/stringutils_unittest.cc \
 	      resources/dye_unittest.cc
 endif
