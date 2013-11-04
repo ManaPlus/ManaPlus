@@ -36,8 +36,6 @@
 #include <cstdlib>
 #endif
 
-#include <errno.h>
-
 #include "debug.h"
 
 #if defined WIN32

@@ -141,7 +141,6 @@
 #include <sys/stat.h>
 
 #include <climits>
-#include <errno.h>
 #include <fstream>
 
 #include "mumblemanager.h"
