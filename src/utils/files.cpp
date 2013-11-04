@@ -18,7 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if defined(ANDROID) || defined(__native_client__)
 #include "utils/files.h"
 
 #include "logger.h"
@@ -63,6 +62,7 @@ void Files::extractLocale()
 }
 #endif // ANDROID
 
+#if defined(ANDROID) || defined(__native_client__)
 void Files::copyPhysFsFile(const std::string &inFile,
                            const std::string &outFile)
 {
@@ -100,33 +100,39 @@ void Files::extractZip(const std::string &zipName, const std::string &inDir,
     remove(zipName.c_str());
 }
 
-int Files::renameFile(const std::string &pFrom, const std::string &pTo)
+#endif  // ANDROID __native_client__
+
+int Files::renameFile(const std::string &srcName, const std::string &dstName)
 {
-    FILE *file = fopen(pFrom.c_str(), "rb");
-    if (file == NULL)
+    FILE *srcFile = fopen(srcName.c_str(), "rb");
+    if (srcFile == nullptr)
         return -1;
-
-    fseek(file, 0, SEEK_END);
-    size_t sz = ftell(file);
-    fseek(file, 0, SEEK_SET);
-
-    char *buf = (char *)malloc(sz + 1);
-    if (fread(buf, 1, sz, file) != sz)
+    FILE *dstFile = fopen(dstName.c_str(), "w+b");
+    if (dstFile == nullptr)
+    {
+        fclose(srcFile);
         return -1;
-    fclose(file);
-    buf[sz] = 0;
+    }
 
-    file = fopen(pTo.c_str(), "w+b");
-    if (file == NULL)
-        return -1;
+    const int chunkSize = 500000;
+    char *buf = new char[chunkSize];
+    size_t sz = 0;
+    while ((sz = fread(buf, 1, chunkSize, srcFile)))
+    {
+        if (fwrite(buf, 1, sz, dstFile) != sz)
+        {
+            delete [] buf;
+            fclose(srcFile);
+            fclose(dstFile);
+            ::remove(dstName.c_str());
+            return -1;
+        }
+    }
 
-    if (fwrite(buf, 1, sz, file) != sz)
-        return -1;
-    fclose(file);
-
-    free(buf);
+    delete [] buf;
+    fclose(srcFile);
+    fclose(dstFile);
+    ::remove(srcName.c_str());
 
     return 0;
 }
-
-#endif  // ANDROID __native_client__
