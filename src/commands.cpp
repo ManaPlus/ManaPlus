@@ -743,6 +743,9 @@ impHandler(follow)
     if (!player_node)
         return;
 
+    if (!features.getBoolValue("allowFollow"))
+        return;
+
     if (!args.empty())
         player_node->setFollow(args);
     else if (tab && tab->getType() == ChatTab::TAB_WHISPER)
