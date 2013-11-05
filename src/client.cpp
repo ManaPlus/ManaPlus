@@ -2654,6 +2654,8 @@ void Client::closeDialogs()
     BuySellDialog::closeAll();
     NpcDialog::closeAll();
     SellDialog::closeAll();
+    if (Net::getInventoryHandler())
+        Net::getInventoryHandler()->closeStorage();
 }
 
 bool Client::isTmw() const

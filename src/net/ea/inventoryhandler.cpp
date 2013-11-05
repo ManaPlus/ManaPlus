@@ -587,4 +587,13 @@ void InventoryHandler::processPlayerArrowEquip(Net::MessageIn &msg)
         miniStatusWindow->updateArrows();
 }
 
+void InventoryHandler::closeStorage()
+{
+    if (mStorageWindow)
+    {
+        mStorageWindow->close();
+        mStorageWindow = nullptr;
+    }
+}
+
 }  // namespace Ea
