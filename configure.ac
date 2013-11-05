@@ -90,12 +90,6 @@ if test "x$with_sdl2" == "xyes"; then
     AC_MSG_ERROR([ *** Unable to find SDL2_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
 
 
-#    disabled for now
-#    AC_CHECK_LIB(SDL2_gfx, rotozoomSurfaceXY, ,
-#    AC_MSG_ERROR([ *** Unable to find SDL2_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
-#    AC_CHECK_HEADERS(SDL_rotozoom.h, ,)
-
-#   using embedded sdl2gfx
 
     AC_CHECK_LIB(SDL2_net, SDLNet_Init, ,
     AC_MSG_ERROR([ *** Unable to find SDL2_net library]))
@@ -136,6 +130,20 @@ else
 fi
 
 AM_CONDITIONAL(USE_SDL2, test x$with_sdl2 = xyes)
+
+# Option to enable internal sdl-gfx for SDL2 (for now it enabled by default)
+AC_ARG_WITH(internalsdlgfx,[  --without-internalsdlgfx        don't use internal sdlgfx (for SDL2 only) ] )
+if test "x$with_internalsdlgfx" == "xno"; then
+    with_internalsdlgfx=no
+
+    AC_CHECK_LIB(SDL2_gfx, rotozoomSurfaceXY, ,
+    AC_MSG_ERROR([ *** Unable to find SDL2_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
+    AC_CHECK_HEADERS(SDL_rotozoom.h, ,)
+else
+    with_internalsdlgfx=yes
+    AC_DEFINE(USE_INTERNALSDLGFX, 1, [Defines if ManaPlus should use internal sdlgfx2])
+fi
+AM_CONDITIONAL(USE_INTERNALSDLGFX, test x$with_internalsdlgfx = xyes)
 
 # Search for *-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config)

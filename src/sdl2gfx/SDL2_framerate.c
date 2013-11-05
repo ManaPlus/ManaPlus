@@ -28,7 +28,7 @@ Andreas Schiffler -- aschiffler at ferzkopp dot net
 Changed for ManaPlus (C) 2013  ManaPlus developers
 */
 
-#include "SDL_framerate.h"
+#include "SDL2_framerate.h"
 
 /*!
 \brief Internal wrapper to SDL_GetTicks that ensures a non-zero return value.

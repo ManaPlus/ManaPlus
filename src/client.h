@@ -30,7 +30,12 @@
 #include <guichan/actionlistener.hpp>
 
 #include <SDL.h>
+
+#ifdef USE_SDL2
+#include <SDL2_framerate.h>
+#else
 #include <SDL_framerate.h>
+#endif
 
 #include <string>
 

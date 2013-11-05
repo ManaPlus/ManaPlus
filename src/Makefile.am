@@ -143,17 +143,19 @@ manaplus_CXXFLAGS += -DENABLE_CHECKS
 endif
 
 if USE_SDL2
+if USE_INTERNALSDLGFX
 dyecmd_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
-dyecmd_SOURCES += sdl2gfx/SDL_framerate.c \
-	      sdl2gfx/SDL_framerate.h \
-	      sdl2gfx/SDL_rotozoom.c \
-	      sdl2gfx/SDL_rotozoom.h
+dyecmd_SOURCES += sdl2gfx/SDL2_framerate.c \
+	      sdl2gfx/SDL2_framerate.h \
+	      sdl2gfx/SDL2_rotozoom.c \
+	      sdl2gfx/SDL2_rotozoom.h
 
 manaplus_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
-manaplus_SOURCES += sdl2gfx/SDL_framerate.c \
-	      sdl2gfx/SDL_framerate.h \
-	      sdl2gfx/SDL_rotozoom.c \
-	      sdl2gfx/SDL_rotozoom.h
+manaplus_SOURCES += sdl2gfx/SDL2_framerate.c \
+	      sdl2gfx/SDL2_framerate.h \
+	      sdl2gfx/SDL2_rotozoom.c \
+	      sdl2gfx/SDL2_rotozoom.h
+endif
 endif
 
 if USE_INTERNALGUICHAN

@@ -33,7 +33,11 @@
 
 #include "utils/sdlcheckutils.h"
 
+#ifdef USE_SDL2
+#include <SDL2_rotozoom.h>
+#else
 #include <SDL_rotozoom.h>
+#endif
 
 #include "debug.h"
 
