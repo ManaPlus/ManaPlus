@@ -47,8 +47,6 @@ void EditDialog::postInit()
     // TRANSLATORS: edit dialog label
     Button *const okButton = new Button(this, _("OK"), mEventOk, this);
 
-    const int numRows = 1;
-    const int fontHeight = getFont()->getHeight();
     const int pad = getPadding();
     const int pad2 = pad * 2;
     mTextField->setPosition(pad, pad);

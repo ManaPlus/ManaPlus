@@ -358,9 +358,9 @@ void Image::setAlpha(const float alpha)
             {
                 for (int y = by; y < maxHeight; y ++)
                 {
-                    const int i1 = y * sw;
-                    const int x1 = i1 + bx;
-                    const int x2 = i1 + maxWidth;
+                    const int idx = y * sw;
+                    const int x1 = idx + bx;
+                    const int x2 = idx + maxWidth;
                     for (int i = x1; i < x2; i ++)
                     {
                         const uint8_t sourceAlpha = mAlphaChannel[i];
