@@ -34,9 +34,39 @@
 
 #include "debug.h"
 
-static void xmlNullLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
+static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
+#ifdef __GNUC__
+#ifdef __OpenBSD__
+    __attribute__((__format__(printf, 2, 3)))
+#else
+    __attribute__((__format__(gnu_printf, 2, 3)))
+#endif
+#endif
+;
+
+static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
 {
-    // Does nothing, that's the whole point of it
+    unsigned size = 1024;
+    const unsigned msgSize = strlen(msg);
+    if (msgSize * 3 > size)
+        size = static_cast<unsigned>(msgSize * 3);
+
+    char* buf = new char[size + 1];
+    va_list ap;
+
+    // Use a temporary buffer to fill in the variables
+    va_start(ap, msg);
+    vsnprintf(buf, size, msg, ap);
+    buf[size] = 0;
+    va_end(ap);
+
+    if (logger)
+        logger->log(buf);
+    else
+        puts(buf);
+
+    // Delete temporary buffer
+    delete [] buf;
 }
 
 namespace XML
@@ -213,7 +243,7 @@ namespace XML
         LIBXML_TEST_VERSION;
 
         // Suppress libxml2 error messages
-        xmlSetGenericErrorFunc(nullptr, &xmlNullLogger);
+        xmlSetGenericErrorFunc(nullptr, &xmlErrorLogger);
     }
 
     // Shutdown libxml
