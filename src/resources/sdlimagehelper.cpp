@@ -213,12 +213,15 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
         const SDL_PixelFormat *const fmt = tmpImage->format;
         if (fmt->Amask)
         {
+            const uint32_t amask = fmt->Amask;
+            const uint8_t ashift = fmt->Ashift;
+            const uint8_t aloss = fmt->Aloss;
+            const uint32_t *pixels = static_cast<uint32_t*>(tmpImage->pixels);
             for (int i = 0; i < sz; ++ i)
             {
-                const unsigned v = ((static_cast<uint32_t*>(
-                    tmpImage->pixels))[i] & fmt->Amask) >> fmt->Ashift;
-                const uint8_t a = static_cast<const uint8_t>((v << fmt->Aloss)
-                    + (v >> (8 - (fmt->Aloss << 1))));
+                const unsigned v = (pixels[i] & amask) >> ashift;
+                const uint8_t a = static_cast<const uint8_t>((v << aloss)
+                    + (v >> (8 - (aloss << 1))));
 
                 if (a != 255)
                     hasAlpha = true;
