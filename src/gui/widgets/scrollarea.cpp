@@ -315,7 +315,19 @@ void ScrollArea::draw(gcn::Graphics *graphics)
     }
 
     updateAlpha();
-    drawChildren(graphics);
+
+    if (mRedraw)
+    {
+        Graphics *g = static_cast<Graphics *const>(graphics);
+        const bool redraw = g->getRedraw();
+        g->setRedraw(true);
+        drawChildren(graphics);
+        g->setRedraw(redraw);
+    }
+    else
+    {
+        drawChildren(graphics);
+    }
     mRedraw = false;
     BLOCK_END("ScrollArea::draw")
 }
@@ -787,6 +799,7 @@ void ScrollArea::mouseReleased(gcn::MouseEvent& event)
         }
     }
     gcn::ScrollArea::mouseReleased(event);
+    mRedraw = true;
 }
 
 void ScrollArea::mouseDragged(gcn::MouseEvent &event)
@@ -830,6 +843,7 @@ void ScrollArea::mouseDragged(gcn::MouseEvent &event)
     }
 
     event.consume();
+    mRedraw = true;
 }
 
 gcn::Rectangle ScrollArea::getVerticalBarDimension() const
