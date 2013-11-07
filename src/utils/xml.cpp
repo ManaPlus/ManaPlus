@@ -61,7 +61,7 @@ static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
     va_end(ap);
 
     if (logger)
-        logger->log(buf);
+        logger->log1(buf);
     else
         puts(buf);
 
