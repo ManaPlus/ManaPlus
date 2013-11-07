@@ -326,6 +326,22 @@ public:
                             const bool modal);
 
 private:
+    void createWindows();
+
+    void initLang();
+
+    void initSoundManager();
+
+    void initConfigListeners();
+
+    void initGraphics();
+
+    void initTitle();
+
+    void extractDataDir();
+
+    void mountDataDir();
+
     void initRootDir();
 
     void initHomeDir();
@@ -362,7 +378,7 @@ private:
 
     static Client *mInstance;
 
-    static void bindTextDomain(const char *const name, const char *const path);
+    static void bindTextDomain(const char *const path);
 
     static void setEnv(const char *const name, const char *const value);
 

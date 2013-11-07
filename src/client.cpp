@@ -309,92 +309,8 @@ void Client::gameInit()
                                 "Exiting.", mLocalDataDir.c_str()));
     }
 
-#ifdef ANDROID
-#ifdef USE_SDL2
-    extractAssets();
-
-    const std::string zipName = std::string(getenv(
-        "APPDIR")).append("/data.zip");
-    const std::string dirName = std::string(getenv(
-        "APPDIR")).append("/data");
-    Files::extractZip(zipName, "data", dirName);
-    Files::extractLocale();
-#endif
-#endif
-
-#if defined __native_client__
-
-    const std::string dirName = _nacl_dir.append("/data");
-    Files::extractZip("/http/data.zip", "data", dirName);
-#endif
-
-#ifdef ENABLE_NLS
-    std::string lang = config.getStringValue("lang");
-#ifdef WIN32
-    if (lang.empty())
-        lang = std::string(_nl_locale_name_default());
-
-    putenv(const_cast<char*>(("LANG=" + lang).c_str()));
-    putenv(const_cast<char*>(("LANGUAGE=" + lang).c_str()));
-    // mingw doesn't like LOCALEDIR to be defined for some reason
-    if (lang != "C")
-        bindTextDomain("manaplus", "translations/");
-#else
-    if (!lang.empty())
-    {
-        setEnv("LANG", lang.c_str());
-        setEnv("LANGUAGE", lang.c_str());
-    }
-#ifdef ANDROID
-#ifdef USE_SDL2
-    bindTextDomain("manaplus", (std::string(getenv("APPDIR")).append(
-        "/locale")).c_str());
-#else
-    bindTextDomain("manaplus", (std::string(PhysFs::getBaseDir())
-        .append("/locale")).c_str());
-#endif
-#else
-#ifdef ENABLE_PORTABLE
-    bindTextDomain("manaplus", (std::string(PhysFs::getBaseDir())
-        .append("../locale/")).c_str());
-#else
-#ifdef __APPLE__
-    bindTextDomain("manaplus", (std::string(PhysFs::getBaseDir())
-        .append("ManaPlus.app/Contents/Resources/locale/")).c_str());
-#else
-    bindTextDomain("manaplus", LOCALEDIR);
-#endif
-#endif
-#endif
-#endif
-    char *locale = setlocale(LC_MESSAGES, lang.c_str());
-    if (locale)
-    {
-        logger->log("locale: %s", locale);
-    }
-    else
-    {
-        locale = setlocale(LC_MESSAGES, (lang + ".utf8").c_str());
-        if (locale)
-            logger->log("locale: %s", locale);
-        else
-            logger->log("locale empty");
-    }
-    bind_textdomain_codeset("manaplus", "UTF-8");
-    textdomain("manaplus");
-#endif
-
-#if defined(WIN32) || defined(__APPLE__)
-    if (config.getBoolValue("centerwindow"))
-        setEnv("SDL_VIDEO_CENTERED", "1");
-    else
-        setEnv("SDL_VIDEO_CENTERED", "0");
-#endif
-
-    if (config.getBoolValue("allowscreensaver"))
-        setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "1");
-    else
-        setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "0");
+    extractDataDir();
+    initLang();
 
     chatLogger = new ChatLogger;
     if (mOptions.chatLogDir.empty())
@@ -432,6 +348,220 @@ void Client::gameInit()
     SDL_EventState(SDL_SYSWMEVENT, SDL_IGNORE);
     SDL_EventState(SDL_USEREVENT, SDL_IGNORE);
 
+    mountDataDir();
+
+    if (mOptions.dataPath.empty()
+        && !branding.getStringValue("dataPath").empty())
+    {
+        if (isRealPath(branding.getStringValue("dataPath")))
+        {
+            mOptions.dataPath = branding.getStringValue("dataPath");
+        }
+        else
+        {
+            mOptions.dataPath = branding.getDirectory().append(dirSeparator)
+                + branding.getStringValue("dataPath");
+        }
+        mOptions.skipUpdate = true;
+    }
+
+    // Add the main data directories to our PhysicsFS search path
+    if (!mOptions.dataPath.empty())
+        resman->addToSearchPath(mOptions.dataPath, false);
+
+    // Add the local data directory to PhysicsFS search path
+    resman->addToSearchPath(mLocalDataDir, false);
+    TranslationManager::loadCurrentLang();
+
+    initGraphics();
+    initTitle();
+
+    Theme::selectSkin();
+    touchManager.init();
+
+    // Initialize the item and emote shortcuts.
+    for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
+        itemShortcut[f] = new ItemShortcut(f);
+    emoteShortcut = new EmoteShortcut;
+    dropShortcut = new DropShortcut;
+
+    gui = new Gui();
+    gui->postInit(mainGraphics);
+
+    initSoundManager();
+    eventsManager.init();
+
+    // Initialize keyboard
+    keyboard.init();
+    inputManager.init();
+
+    // Initialise player relations
+    player_relations.init();
+    Joystick::init();
+    createWindows();
+
+    // Initialize default server
+    mCurrentServer.hostname = mOptions.serverName;
+    mCurrentServer.port = mOptions.serverPort;
+
+    loginData.username = mOptions.username;
+    loginData.password = mOptions.password;
+    loginData.remember = serverConfig.getValue("remember", 1);
+    loginData.registerLogin = false;
+
+    if (mCurrentServer.hostname.empty())
+    {
+        mCurrentServer.hostname =
+            branding.getValue("defaultServer", "").c_str();
+        mOptions.serverName = mCurrentServer.hostname;
+    }
+
+    if (mCurrentServer.port == 0)
+    {
+        mCurrentServer.port = static_cast<uint16_t>(branding.getValue(
+            "defaultPort", static_cast<int>(DEFAULT_PORT)));
+        mCurrentServer.type = ServerInfo::parseType(
+            branding.getValue("defaultServerType", "tmwathena"));
+    }
+
+    if (chatLogger)
+        chatLogger->setServerName(mCurrentServer.hostname);
+
+    if (loginData.username.empty() && loginData.remember)
+        loginData.username = serverConfig.getValue("username", "");
+
+    if (mState != STATE_ERROR)
+        mState = STATE_CHOOSE_SERVER;
+
+    startTimers();
+
+    const int fpsLimit = config.getIntValue("fpslimit");
+    mLimitFps = fpsLimit > 0;
+
+    SDL_initFramerate(&mFpsManager);
+    setFramerate(fpsLimit);
+    initConfigListeners();
+
+    setGuiAlpha(config.getFloatValue("guialpha"));
+    optionChanged("fpslimit");
+
+    start_time = static_cast<int>(time(nullptr));
+
+    PlayerInfo::init();
+
+#ifdef ANDROID
+#ifndef USE_SDL2
+    updateScreenKeyboard(SDL_GetScreenKeyboardHeight(nullptr));
+#endif
+#endif
+}
+
+Client::~Client()
+{
+    if (!mOptions.testMode)
+        gameClear();
+    else
+        testsClear();
+    CHECKLISTENERS
+}
+
+void Client::initConfigListeners()
+{
+    config.addListener("fpslimit", this);
+    config.addListener("guialpha", this);
+    config.addListener("gamma", this);
+    config.addListener("enableGamma", this);
+    config.addListener("particleEmitterSkip", this);
+    config.addListener("vsync", this);
+    config.addListener("repeateDelay", this);
+    config.addListener("repeateInterval", this);
+    config.addListener("logInput", this);
+}
+
+void Client::initSoundManager()
+{
+    // Initialize sound engine
+    try
+    {
+        if (config.getBoolValue("sound"))
+            soundManager.init();
+
+        soundManager.setSfxVolume(config.getIntValue("sfxVolume"));
+        soundManager.setMusicVolume(config.getIntValue("musicVolume"));
+    }
+    catch (const char *const err)
+    {
+        mState = STATE_ERROR;
+        errorMessage = err;
+        logger->log("Warning: %s", err);
+    }
+    soundManager.playMusic(branding.getValue(
+        "loginMusic", "Magick - Real.ogg"));
+}
+
+void Client::createWindows()
+{
+    userPalette = new UserPalette;
+    setupWindow = new Setup;
+    setupWindow->postInit();
+    helpWindow = new HelpWindow;
+    didYouKnowWindow = new DidYouKnowWindow;
+    didYouKnowWindow->postInit();
+}
+
+void Client::initGraphics()
+{
+#if defined(USE_OPENGL) 
+#if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
+    if (!mOptions.safeMode && mOptions.test.empty()
+        && !config.getBoolValue("videodetected"))
+    {
+        graphicsManager.detectVideoSettings();
+    }
+#endif
+#endif
+
+#if defined(WIN32) || defined(__APPLE__)
+    if (config.getBoolValue("centerwindow"))
+        setEnv("SDL_VIDEO_CENTERED", "1");
+    else
+        setEnv("SDL_VIDEO_CENTERED", "0");
+#endif
+
+    if (config.getBoolValue("allowscreensaver"))
+        setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "1");
+    else
+        setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "0");
+
+    openGLMode = intToRenderType(config.getIntValue("opengl"));
+#ifdef USE_OPENGL
+    OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
+    SurfaceImageHelper::SDLSetEnableAlphaCache(
+        config.getBoolValue("alphaCache") && !openGLMode);
+    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F
+        || openGLMode);
+#else
+    SurfaceImageHelper::SDLSetEnableAlphaCache(
+        config.getBoolValue("alphaCache"));
+    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F);
+#endif
+    logVars();
+    Cpu::detect();
+    graphicsManager.initGraphics(mOptions.noOpenGL);
+    graphicsManager.detectPixelSize();
+    runCounters = config.getBoolValue("packetcounters");
+    applyVSync();
+    graphicsManager.setVideoMode();
+    checkConfigVersion();
+    getConfigDefaults2(config.getDefaultValues());
+    applyGrabMode();
+    applyGamma();
+
+    mainGraphics->_beginDraw();
+}
+
+void Client::initTitle()
+{
     if (mOptions.test.empty())
     {
         mCaption = strprintf("%s %s",
@@ -446,6 +576,34 @@ void Client::gameInit()
             SMALL_VERSION);
     }
 
+    SDL::SetWindowTitle(mainGraphics->getWindow(), mCaption.c_str());
+    setIcon();
+}
+
+void Client::extractDataDir()
+{
+#ifdef ANDROID
+#ifdef USE_SDL2
+    extractAssets();
+
+    const std::string zipName = std::string(getenv(
+        "APPDIR")).append("/data.zip");
+    const std::string dirName = std::string(getenv(
+        "APPDIR")).append("/data");
+    Files::extractZip(zipName, "data", dirName);
+    Files::extractLocale();
+#endif
+#endif
+
+#if defined __native_client__
+    const std::string dirName = _nacl_dir.append("/data");
+    Files::extractZip("/http/data.zip", "data", dirName);
+#endif
+}
+
+void Client::mountDataDir()
+{
+    const ResourceManager *const resman = ResourceManager::getInstance();
     resman->addToSearchPath(PKG_DATADIR "data/perserver/default", false);
     resman->addToSearchPath("data/perserver/default", false);
 
@@ -489,7 +647,7 @@ void Client::gameInit()
     {
         std::string path = mOptions.brandingPath;
 
-        // Strip blah.mana from the path
+        // Strip blah.manaplus from the path
 #ifdef WIN32
         const int loc1 = path.find_last_of('/');
         const int loc2 = path.find_last_of('\\');
@@ -503,192 +661,75 @@ void Client::gameInit()
                 0, loc + 1).append("data"), false);
         }
     }
-
-    if (mOptions.dataPath.empty()
-        && !branding.getStringValue("dataPath").empty())
-    {
-        if (isRealPath(branding.getStringValue("dataPath")))
-        {
-            mOptions.dataPath = branding.getStringValue("dataPath");
-        }
-        else
-        {
-            mOptions.dataPath = branding.getDirectory().append(dirSeparator)
-                + branding.getStringValue("dataPath");
-        }
-        mOptions.skipUpdate = true;
-    }
-
-    // Add the main data directories to our PhysicsFS search path
-    if (!mOptions.dataPath.empty())
-        resman->addToSearchPath(mOptions.dataPath, false);
-
-    // Add the local data directory to PhysicsFS search path
-    resman->addToSearchPath(mLocalDataDir, false);
-    TranslationManager::loadCurrentLang();
-
-#if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__APPLE__)
-    if (!mOptions.safeMode && mOptions.test.empty()
-        && !config.getBoolValue("videodetected"))
-    {
-        graphicsManager.detectVideoSettings();
-    }
-#endif
-
-    openGLMode = intToRenderType(config.getIntValue("opengl"));
-#ifdef USE_OPENGL
-    OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
-    SurfaceImageHelper::SDLSetEnableAlphaCache(
-        config.getBoolValue("alphaCache") && !openGLMode);
-    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F
-        || openGLMode);
-#else
-    SurfaceImageHelper::SDLSetEnableAlphaCache(
-        config.getBoolValue("alphaCache"));
-    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F);
-#endif
-    logVars();
-    Cpu::detect();
-    graphicsManager.initGraphics(mOptions.noOpenGL);
-    graphicsManager.detectPixelSize();
-    runCounters = config.getBoolValue("packetcounters");
-    applyVSync();
-    graphicsManager.setVideoMode();
-    checkConfigVersion();
-    getConfigDefaults2(config.getDefaultValues());
-    applyGrabMode();
-    applyGamma();
-
-    SDL::SetWindowTitle(mainGraphics->getWindow(), mCaption.c_str());
-    setIcon();
-
-    mainGraphics->_beginDraw();
-
-    Theme::selectSkin();
-    touchManager.init();
-
-    // Initialize the item and emote shortcuts.
-    for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
-        itemShortcut[f] = new ItemShortcut(f);
-    emoteShortcut = new EmoteShortcut;
-    dropShortcut = new DropShortcut;
-
-    gui = new Gui();
-    gui->postInit(mainGraphics);
-
-    // Initialize sound engine
-    try
-    {
-        if (config.getBoolValue("sound"))
-            soundManager.init();
-
-        soundManager.setSfxVolume(config.getIntValue("sfxVolume"));
-        soundManager.setMusicVolume(config.getIntValue("musicVolume"));
-    }
-    catch (const char *const err)
-    {
-        mState = STATE_ERROR;
-        errorMessage = err;
-        logger->log("Warning: %s", err);
-    }
-
-    eventsManager.init();
-
-    // Initialize keyboard
-    keyboard.init();
-    inputManager.init();
-
-    // Initialise player relations
-    player_relations.init();
-
-    Joystick::init();
-
-    userPalette = new UserPalette;
-    setupWindow = new Setup;
-    setupWindow->postInit();
-    helpWindow = new HelpWindow;
-    didYouKnowWindow = new DidYouKnowWindow;
-    didYouKnowWindow->postInit();
-
-    soundManager.playMusic(branding.getValue(
-        "loginMusic", "Magick - Real.ogg"));
-
-    // Initialize default server
-    mCurrentServer.hostname = mOptions.serverName;
-    mCurrentServer.port = mOptions.serverPort;
-
-    loginData.username = mOptions.username;
-    loginData.password = mOptions.password;
-    loginData.remember = serverConfig.getValue("remember", 1);
-    loginData.registerLogin = false;
-
-    if (mCurrentServer.hostname.empty())
-    {
-        mCurrentServer.hostname =
-            branding.getValue("defaultServer", "").c_str();
-        mOptions.serverName = mCurrentServer.hostname;
-    }
-
-    if (mCurrentServer.port == 0)
-    {
-        mCurrentServer.port = static_cast<uint16_t>(branding.getValue(
-            "defaultPort", static_cast<int>(DEFAULT_PORT)));
-        mCurrentServer.type = ServerInfo::parseType(
-            branding.getValue("defaultServerType", "tmwathena"));
-    }
-
-    if (chatLogger)
-        chatLogger->setServerName(mCurrentServer.hostname);
-
-    if (loginData.username.empty() && loginData.remember)
-        loginData.username = serverConfig.getValue("username", "");
-
-    if (mState != STATE_ERROR)
-        mState = STATE_CHOOSE_SERVER;
-
-    startTimers();
-
-    const int fpsLimit = config.getIntValue("fpslimit");
-    mLimitFps = fpsLimit > 0;
-
-    SDL_initFramerate(&mFpsManager);
-    setFramerate(fpsLimit);
-    config.addListener("fpslimit", this);
-    config.addListener("guialpha", this);
-    config.addListener("gamma", this);
-    config.addListener("enableGamma", this);
-    config.addListener("particleEmitterSkip", this);
-    config.addListener("vsync", this);
-    config.addListener("repeateDelay", this);
-    config.addListener("repeateInterval", this);
-    config.addListener("logInput", this);
-    setGuiAlpha(config.getFloatValue("guialpha"));
-    optionChanged("fpslimit");
-
-    start_time = static_cast<int>(time(nullptr));
-
-    PlayerInfo::init();
-
-#ifdef ANDROID
-#ifndef USE_SDL2
-    updateScreenKeyboard(SDL_GetScreenKeyboardHeight(nullptr));
-#endif
-#endif
 }
 
-Client::~Client()
-{
-    if (!mOptions.testMode)
-        gameClear();
-    else
-        testsClear();
-    CHECKLISTENERS
-}
-
-void Client::bindTextDomain(const char *const name, const char *const path)
+void Client::initLang()
 {
 #ifdef ENABLE_NLS
-    const char *const dir = bindtextdomain(name, path);
+    std::string lang = config.getStringValue("lang");
+#ifdef WIN32
+    if (lang.empty())
+        lang = std::string(_nl_locale_name_default());
+
+    putenv(const_cast<char*>(("LANG=" + lang).c_str()));
+    putenv(const_cast<char*>(("LANGUAGE=" + lang).c_str()));
+    // mingw doesn't like LOCALEDIR to be defined for some reason
+    if (lang != "C")
+        bindTextDomain("translations/");
+#else  // WIN32
+
+    if (!lang.empty())
+    {
+        setEnv("LANG", lang.c_str());
+        setEnv("LANGUAGE", lang.c_str());
+    }
+#ifdef ANDROID
+#ifdef USE_SDL2
+    bindTextDomain((std::string(getenv("APPDIR")).append("/locale")).c_str());
+#else  // USE_SDL2
+
+    bindTextDomain((std::string(PhysFs::getBaseDir()).append(
+        "/locale")).c_str());
+#endif  // USE_SDL2
+#else  // ANDROID
+#ifdef ENABLE_PORTABLE
+    bindTextDomain((std::string(PhysFs::getBaseDir()).append(
+        "../locale/")).c_str());
+#else  // ENABLE_PORTABLE
+#ifdef __APPLE__
+    bindTextDomain((std::string(PhysFs::getBaseDir())
+        .append("ManaPlus.app/Contents/Resources/locale/")).c_str());
+#else  // __APPLE__
+
+    bindTextDomain(LOCALEDIR);
+#endif  // __APPLE__
+#endif  // ENABLE_PORTABLE
+#endif  // ANDROID
+#endif  // WIN32
+
+    char *locale = setlocale(LC_MESSAGES, lang.c_str());
+    if (locale)
+    {
+        logger->log("locale: %s", locale);
+    }
+    else
+    {
+        locale = setlocale(LC_MESSAGES, (lang + ".utf8").c_str());
+        if (locale)
+            logger->log("locale: %s", locale);
+        else
+            logger->log("locale empty");
+    }
+    bind_textdomain_codeset("manaplus", "UTF-8");
+    textdomain("manaplus");
+#endif  // ENABLE_NLS
+
+}
+
+void Client::bindTextDomain(const char *const path)
+{
+#ifdef ENABLE_NLS
+    const char *const dir = bindtextdomain("manaplus", path);
     if (dir)
         logger->log("bindtextdomain: %s", dir);
     else
