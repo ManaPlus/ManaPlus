@@ -551,6 +551,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/messageout.h \
 	      net/net.cpp \
 	      net/net.h \
+	      net/netconsts.h \
 	      net/npchandler.h \
 	      net/partyhandler.h \
 	      net/playerhandler.h \

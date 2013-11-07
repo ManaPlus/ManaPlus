@@ -420,6 +420,7 @@ SET(SRCS
     net/npchandler.h
     net/net.cpp
     net/net.h
+    net/netconsts.h
     net/partyhandler.h
     net/playerhandler.h
     net/sdltcpnet.cpp
