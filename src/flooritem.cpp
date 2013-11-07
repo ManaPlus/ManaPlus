@@ -22,7 +22,6 @@
 
 #include "flooritem.h"
 
-#include "client.h"
 #include "configuration.h"
 
 #include "render/graphics.h"
@@ -36,6 +35,8 @@
 #include "resources/db/itemdb.h"
 
 #include "debug.h"
+
+extern int serverVersion;
 
 FloorItem::FloorItem(const int id, const int itemId, const int x, const int y,
                      const int amount, const unsigned char color) :

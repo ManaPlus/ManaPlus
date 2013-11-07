@@ -22,12 +22,15 @@
 
 #include "shopitem.h"
 
-#include "client.h"
 #include "units.h"
 
 #include "resources/iteminfo.h"
 
+#include "utils/stringutils.h"
+
 #include "debug.h"
+
+extern int serverVersion;
 
 ShopItem::ShopItem(const int inventoryIndex, const int id,
                    const unsigned char color,

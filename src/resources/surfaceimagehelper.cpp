@@ -27,7 +27,6 @@
 #include "resources/dye.h"
 #include "resources/resourcemanager.h"
 
-#include "client.h"
 #include "logger.h"
 #include "main.h"
 

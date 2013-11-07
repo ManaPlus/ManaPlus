@@ -21,7 +21,6 @@
 
 #include "resources/db/colordb.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "logger.h"
 
@@ -36,6 +35,8 @@ namespace
     std::string mFail("#ffffff");
     ColorDB::ColorLists mColorLists;
 }
+
+extern int serverVersion;
 
 void ColorDB::load()
 {

@@ -22,7 +22,6 @@
 
 #include "resources/db/itemdb.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "logger.h"
 
@@ -44,6 +43,8 @@ namespace
     std::map<std::string, int> mTags;
     std::map<std::string, ItemSoundEvent> mSoundNames;
 }  // namespace
+
+extern int serverVersion;
 
 // Forward declarations
 static void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node);

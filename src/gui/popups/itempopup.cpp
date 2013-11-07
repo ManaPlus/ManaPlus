@@ -23,7 +23,6 @@
 
 #include "gui/popups/itempopup.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "item.h"
 #include "units.h"
@@ -42,6 +41,8 @@
 #include <guichan/font.hpp>
 
 #include "debug.h"
+
+extern int serverVersion;
 
 ItemPopup::ItemPopup() :
     Popup("ItemPopup", "itempopup.xml"),

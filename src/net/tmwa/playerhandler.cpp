@@ -23,7 +23,6 @@
 #include "net/tmwa/playerhandler.h"
 
 #include "configuration.h"
-#include "client.h"
 #include "game.h"
 #include "soundmanager.h"
 
@@ -40,6 +39,7 @@
 #include "debug.h"
 
 extern Net::PlayerHandler *playerHandler;
+extern int serverVersion;
 
 namespace TmwAthena
 {

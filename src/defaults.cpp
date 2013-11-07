@@ -21,7 +21,6 @@
 
 #include "defaults.h"
 
-#include "client.h"
 #include "graphicsmanager.h"
 
 #include "being/being.h"
@@ -29,6 +28,12 @@
 #include "input/keydata.h"
 
 #include "render/graphics.h"
+
+#include "net/netconsts.h"
+
+#ifndef USE_SDL2
+#include <SDL_keyboard.h>
+#endif
 
 #include "debug.h"
 

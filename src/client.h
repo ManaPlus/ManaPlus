@@ -51,8 +51,6 @@ class Skin;
 class Window;
 class QuitDialog;
 
-static const uint16_t DEFAULT_PORT = 6901;
-
 extern bool isSafeMode;
 extern int serverVersion;
 extern unsigned int tmwServerVersion;

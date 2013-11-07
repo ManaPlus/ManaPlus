@@ -81,6 +81,7 @@
 #include "net/inventoryhandler.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
+#include "net/netconsts.h"
 #include "net/partyhandler.h"
 
 #include "resources/imagehelper.h"
