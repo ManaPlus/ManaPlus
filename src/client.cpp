@@ -152,6 +152,12 @@
 #define _nacl_dir std::string("/persistent/manaplus")
 #endif
 
+#ifdef ANDROID
+#ifdef USE_SDL2
+int loadingProgressCounter = 1;
+#endif
+#endif
+
 std::string errorMessage;
 ErrorListener errorListener;
 LoginData loginData;
@@ -309,7 +315,6 @@ void Client::gameInit()
                                 "Exiting.", mLocalDataDir.c_str()));
     }
 
-    extractDataDir();
     initLang();
 
     chatLogger = new ChatLogger;
@@ -348,6 +353,8 @@ void Client::gameInit()
     SDL_EventState(SDL_SYSWMEVENT, SDL_IGNORE);
     SDL_EventState(SDL_USEREVENT, SDL_IGNORE);
 
+    initGraphics();
+    extractDataDir();
     mountDataDir();
 
     if (mOptions.dataPath.empty()
@@ -373,7 +380,6 @@ void Client::gameInit()
     resman->addToSearchPath(mLocalDataDir, false);
     TranslationManager::loadCurrentLang();
 
-    initGraphics();
     initTitle();
 
     Theme::selectSkin();
@@ -580,10 +586,33 @@ void Client::initTitle()
     setIcon();
 }
 
+#ifdef ANDROID
+#ifdef USE_SDL2
+static void updateProgress(int cnt)
+{
+    const int progress = cnt + loadingProgressCounter;
+    const int h = mainGraphics->mHeight;
+    mainGraphics->setColor(gcn::Color(255, 255, 255));
+    const int maxSize = mainGraphics->mWidth - 100;
+    const int width = maxSize * progress / 450;
+    mainGraphics->fillRectangle(gcn::Rectangle(50, h - 100, width, 50));
+    mainGraphics->updateScreen();
+}
+
+static void setProgress(const int val)
+{
+    loadingProgressCounter = val;
+    updateProgress(loadingProgressCounter);
+}
+#endif
+#endif
+
 void Client::extractDataDir()
 {
 #ifdef ANDROID
 #ifdef USE_SDL2
+    Files::setCopyCallBack(&updateProgress);
+    setProgress(0);
     extractAssets();
 
     const std::string zipName = std::string(getenv(
@@ -2965,6 +2994,7 @@ void Client::extractAssets()
             logger->log("asset size: %d", size2);
             fwrite(buf, 1, size2, file);
             SDL_RWclose(rw);
+            setProgress(loadingProgressCounter + 1);
         }
         else
         {
@@ -2983,6 +3013,7 @@ void Client::extractAssets()
         int size2 = SDL_RWread(rw, buf, 1, size);
         fwrite(buf, 1, size2, file2);
         SDL_RWclose(rw);
+        setProgress(loadingProgressCounter + 1);
     }
     fclose(file2);
 

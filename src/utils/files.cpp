@@ -63,6 +63,18 @@ void Files::extractLocale()
 #endif // ANDROID
 
 #if defined(ANDROID) || defined(__native_client__)
+
+namespace
+{
+    int mFilesCount = 0;
+    Files::CopyFileCallbackPtr mCallbackPtr = nullptr;
+}  // namespace
+
+void Files::setCopyCallBack(Files::CopyFileCallbackPtr callback)
+{
+    mCallbackPtr = callback;
+}
+
 void Files::copyPhysFsFile(const std::string &inFile,
                            const std::string &outFile)
 {
@@ -72,6 +84,13 @@ void Files::copyPhysFsFile(const std::string &inFile,
     fwrite(buf, 1, size, file);
     fclose(file);
     free(buf);
+#ifdef ANDROID
+    if (mCallbackPtr)
+    {
+        mCallbackPtr(mFilesCount);
+        mFilesCount ++;
+    }
+#endif
 }
 
 void Files::copyPhysFsDir(const std::string &inDir, const std::string &outDir)

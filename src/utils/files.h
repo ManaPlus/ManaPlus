@@ -30,6 +30,10 @@ namespace Files
 #endif
 
 #if defined(ANDROID) || defined(__native_client__)
+    typedef void (*CopyFileCallbackPtr) (int cnt);
+
+    void setCopyCallBack(CopyFileCallbackPtr callback);
+
     void copyPhysFsFile(const std::string &inFile, const std::string &outFile);
 
     void copyPhysFsDir(const std::string &inDir, const std::string &outDir);
