@@ -115,3 +115,4 @@ src/resources/db/monsterdb.cpp
 src/resources/mapreader.cpp
 src/utils/gettext.h
 src/utils/stringutils.h
+src/utils/xml.cpp
