@@ -18,9 +18,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_DEFAULTS_H
-#define NET_DEFAULTS_H
+#ifndef NET_NETCONSTS_H
+#define NET_NETCONSTS_H
 
+#include <cstdint>
 static const uint16_t DEFAULT_PORT = 6901;
 
-#endif  // NET_DEFAULTS_H
+#endif  // NET_NETCONSTS_H

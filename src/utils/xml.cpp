@@ -44,7 +44,7 @@ static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
 #endif
 ;
 
-static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
+static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg, ...)
 {
     unsigned size = 1024;
     const unsigned msgSize = strlen(msg);

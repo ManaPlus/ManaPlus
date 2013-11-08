@@ -365,9 +365,13 @@ void GraphicsManager::setVideoMode()
     int width = res[0];
     int height = res[1];
 #elif defined __native_client__
-   const SDL_VideoInfo* info = SDL_GetVideoInfo();
-   int width = info->current_w;
-   int height = info->current_h; 
+#ifdef USE_SDL2
+    // not implimented
+#else
+    const SDL_VideoInfo* info = SDL_GetVideoInfo();
+    int width = info->current_w;
+    int height = info->current_h;
+#endif
 #else
     int width = config.getIntValue("screenwidth");
     int height = config.getIntValue("screenheight");

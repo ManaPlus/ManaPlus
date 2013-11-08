@@ -20,12 +20,12 @@
 
 #include "utils/files.h"
 
-#include "logger.h"
-
+#if defined(ANDROID) || defined(__native_client__)
 #include "resources/resourcemanager.h"
+#include "utils/physfstools.h"
+#endif
 
 #include "utils/mkdir.h"
-#include "utils/physfstools.h"
 
 #include "localconsts.h"
 
