@@ -21,7 +21,12 @@
 #ifndef NET_NETCONSTS_H
 #define NET_NETCONSTS_H
 
+#if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <cstdint>
+#else
+#include <stdint.h>
+#endif
+
 static const uint16_t DEFAULT_PORT = 6901;
 
 #endif  // NET_NETCONSTS_H
