@@ -151,7 +151,8 @@ int Files::renameFile(const std::string &srcName, const std::string &dstName)
     delete [] buf;
     fclose(srcFile);
     fclose(dstFile);
-    ::remove(srcName.c_str());
+    if (!::remove(srcName.c_str()))
+        return 0;
 
-    return 0;
+    return -1;
 }
