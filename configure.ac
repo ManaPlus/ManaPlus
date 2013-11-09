@@ -69,7 +69,7 @@ AM_GNU_GETTEXT([external],[need-ngettext])
 AM_GNU_GETTEXT_VERSION([0.16.1])
 
 # Enable sdl2
-AC_ARG_WITH(sdl2,[  --with-sdl2        enable experimental SDL 2 support] )
+AC_ARG_WITH(sdl2,[  --with-sdl2        enable SDL 2 support] )
 if test "x$with_sdl2" == "xyes"; then
     AC_PATH_PROG(SDL_CONFIG, sdl2-config)
     if test -n "$SDL_CONFIG"; then
@@ -109,7 +109,7 @@ else
 
         AC_CHECK_LIB(SDL_image, IMG_LoadPNG_RW, ,
         AC_MSG_ERROR([ *** Unable to find SDL_image library with PNG support
-    (http://www.libsdl.org/projects/SDL_image/)]))
+        (http://www.libsdl.org/projects/SDL_image/)]))
 
         AC_CHECK_LIB(SDL_ttf, TTF_Quit, ,
         AC_MSG_ERROR([ *** Unable to find SDL_ttf library (http://www.libsdl.org/projects/SDL_ttf/)]))
@@ -138,7 +138,7 @@ if test "x$with_internalsdlgfx" == "xno"; then
 
     AC_CHECK_LIB(SDL2_gfx, rotozoomSurfaceXY, ,
     AC_MSG_ERROR([ *** Unable to find SDL2_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
-    AC_CHECK_HEADERS(SDL_rotozoom.h, ,)
+    AC_CHECK_HEADERS(SDL2_rotozoom.h, ,)
 else
     with_internalsdlgfx=yes
     AC_DEFINE(USE_INTERNALSDLGFX, 1, [Defines if ManaPlus should use internal sdlgfx2])
