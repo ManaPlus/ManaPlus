@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-11-08 14:53+0300\n"
+"POT-Creation-Date: 2013-11-09 14:08+0300\n"
 "PO-Revision-Date: 2013-11-04 08:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
@@ -535,31 +535,31 @@ msgstr "Bolha Flutuante"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1113 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:58
+#: src/client.cpp:1117 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:58
 msgid "Setup"
 msgstr "Configurar"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1117 src/gui/widgets/tabs/setup_perfomance.cpp:50
+#: src/client.cpp:1121 src/gui/widgets/tabs/setup_perfomance.cpp:50
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1120 src/gui/widgets/tabs/setup_video.cpp:221
+#: src/client.cpp:1124 src/gui/widgets/tabs/setup_video.cpp:221
 msgid "Video"
 msgstr "Vídeo"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1123 src/gui/widgets/tabs/setup_theme.cpp:279
+#: src/client.cpp:1127 src/gui/widgets/tabs/setup_theme.cpp:279
 msgid "Theme"
 msgstr "Tema"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:1126 src/gui/windowmenu.cpp:72
+#: src/client.cpp:1130 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:50
 msgid "Help"
 msgstr "Ajuda"
@@ -572,7 +572,7 @@ msgstr "Ajuda"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1130 src/gui/popups/popupmenu.cpp:618
+#: src/client.cpp:1134 src/gui/popups/popupmenu.cpp:618
 #: src/gui/windows/didyouknowwindow.cpp:78
 #: src/gui/windows/inventorywindow.cpp:252 src/gui/windows/npcdialog.cpp:71
 #: src/gui/windows/npcdialog.cpp:109 src/gui/windows/questswindow.cpp:134
@@ -581,32 +581,32 @@ msgid "Close"
 msgstr "Fechar"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1249
+#: src/client.cpp:1253
 msgid "Connecting to server"
 msgstr "Conectando-se ao servidor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1294
+#: src/client.cpp:1298
 msgid "Logging in"
 msgstr "Fazendo login"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1335
+#: src/client.cpp:1339
 msgid "Entering game world"
 msgstr "Entrando no mundo do jogo"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1459
+#: src/client.cpp:1463
 msgid "Requesting characters"
 msgstr "Requerindo personagens"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1500
+#: src/client.cpp:1504
 msgid "Connecting to the game server"
 msgstr "Conectando ao servidor do jogo"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1514
+#: src/client.cpp:1518
 msgid "Changing game servers"
 msgstr "Mudando de servidor do jogo"
 
@@ -621,7 +621,7 @@ msgstr "Mudando de servidor do jogo"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1574 src/client.cpp:1585 src/client.cpp:1766
+#: src/client.cpp:1578 src/client.cpp:1589 src/client.cpp:1770
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
 #: src/gui/windows/charcreatedialog.cpp:358
@@ -634,65 +634,65 @@ msgid "Error"
 msgstr "Erro"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1598
+#: src/client.cpp:1602
 msgid "Requesting registration details"
 msgstr "Requisitando detalhes do registro"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1638
+#: src/client.cpp:1642
 msgid "Password Change"
 msgstr "Mudar senha"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1640
+#: src/client.cpp:1644
 msgid "Password changed successfully!"
 msgstr "Senha modificada com sucesso!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1662
+#: src/client.cpp:1666
 msgid "Email Change"
 msgstr "Mudar email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1664
+#: src/client.cpp:1668
 msgid "Email changed successfully!"
 msgstr "Email modificado com sucesso!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1687
+#: src/client.cpp:1691
 msgid "Unregister Successful"
 msgstr "Registro cancelado com sucesso"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1689
+#: src/client.cpp:1693
 msgid "Farewell, come back any time..."
 msgstr "Adeus, volte sempre..."
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1963 src/client.cpp:1978 src/client.cpp:2023
-#: src/client.cpp:2039 src/client.cpp:2465 src/client.cpp:2473
+#: src/client.cpp:1967 src/client.cpp:1982 src/client.cpp:2027
+#: src/client.cpp:2043 src/client.cpp:2469 src/client.cpp:2477
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s não existe e não pode ser criado! Saindo."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2179
+#: src/client.cpp:2183
 #, c-format
 msgid "Invalid update host: %s."
 msgstr "Host de atualização inválido: %s."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2220 src/client.cpp:2227
+#: src/client.cpp:2224 src/client.cpp:2231
 msgid "Error creating updates directory!"
 msgstr "Erro ao criar pasta de atualizações!"
 
-#: src/client.cpp:2249 src/client.cpp:2262
+#: src/client.cpp:2253 src/client.cpp:2266
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Erro: %s não existe e não pode se criado! Saindo."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2915
+#: src/client.cpp:2919
 msgid "Do you want to open support page?"
 msgstr "Você quer abrir a página de suporte?"
 
@@ -6955,13 +6955,13 @@ msgid "Failed to delete character."
 msgstr "Falha ao deletar personagem."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/chathandler.cpp:89
+#: src/net/ea/chathandler.cpp:95
 #, c-format
 msgid "Whisper could not be sent, %s is offline."
 msgstr "Mensagem privada não pode ser enviada, %s está offline."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/chathandler.cpp:98
+#: src/net/ea/chathandler.cpp:104
 #, c-format
 msgid "Whisper could not be sent, ignored by %s."
 msgstr "Mensagem privada não pode ser enviada, ignorado por %s."
