@@ -155,6 +155,9 @@ manaplus_SOURCES += sdl2gfx/SDL2_framerate.c \
 	      sdl2gfx/SDL2_framerate.h \
 	      sdl2gfx/SDL2_rotozoom.c \
 	      sdl2gfx/SDL2_rotozoom.h
+else
+dyecmd_CXXFLAGS += -DUSE_SDL2
+manaplus_CXXFLAGS += -DUSE_SDL2
 endif
 endif
 
