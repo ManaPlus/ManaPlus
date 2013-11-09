@@ -53,6 +53,12 @@ ChatHandler::ChatHandler() :
 {
 }
 
+void ChatHandler::clear()
+{
+    mShowMotd = config.getBoolValue("showmotd");
+    mSkipping = true;
+}
+
 void ChatHandler::me(const std::string &text, const std::string &channel) const
 {
     // here need string duplication

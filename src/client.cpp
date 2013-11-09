@@ -75,6 +75,7 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/desktop.h"
 
+#include "net/chathandler.h"
 #include "net/gamehandler.h"
 #include "net/generalhandler.h"
 #include "net/guildhandler.h"
@@ -822,6 +823,9 @@ void Client::gameClear()
 
     if (Net::getLoginHandler())
         Net::getLoginHandler()->clearWorlds();
+
+    if (Net::getChatHandler())
+        Net::getChatHandler()->clear();
 
 #ifdef USE_MUMBLE
     delete mumbleManager;
