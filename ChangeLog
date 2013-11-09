@@ -1,3 +1,26 @@
+2013-11-10 New release 1.3.11.10
+fix: crash with broken OpenGL functions.
+fix: item amount in trade in selling into personal shop.
+fix: char replacment for sender in whispers.
+fix: char deletion.
+fix: images in did you know dialog.
+fix: motd show/hide option in "new" tmw server.
+fix: edit dialog theming.
+fix: renadomly wrong windows background in software renderer.
+fix: storage between changing chars.
+add: map layers mask support.
+add: save outfits into config after each change.
+add: initial porting to nacl.
+add: temporaty background music given by server. (evol only).
+add: dyecmd tool for content developers.
+add: action "move forward".
+add: improve slider draw speed.
+add: option into features file to enable/disable follow.
+add: improve libxml2 error logging.
+add: configure option --without-internalsdlgfx to disable emdedded sdl2gfx (SDL2 only).
+add: basic porting to nacl.
+add: progress bar while loading in SDL2 on Android and nacl.
+
 2013-10-27 New release 1.3.10.27
 fix: drawing complex gui in Android.
 fix: text fields on SDL2.
