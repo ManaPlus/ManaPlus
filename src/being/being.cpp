@@ -1920,6 +1920,10 @@ void Being::setSprite(const unsigned int slot, const int id,
     if (slot >= mSpriteColorsIds.size())
         mSpriteColorsIds.resize(slot + 1, 1);
 
+    // here probably need more complex condition
+    if (slot && mSpriteIDs[slot] == id)
+        return;
+
     // id = 0 means unequip
     if (id == 0)
     {
