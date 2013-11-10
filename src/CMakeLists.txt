@@ -708,6 +708,7 @@ SET(SRCS
     particle/particleemitter.cpp
     particle/particleemitter.h
     particle/particleemitterprop.h
+    particle/particleinfo.h
     party.cpp
     party.h
     being/playerinfo.cpp

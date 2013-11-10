@@ -1013,6 +1013,7 @@ void Game::changeMap(const std::string &mapPath)
     if (newMap)
         newMap->initializeParticleEffects(particleEngine);
 
+
     // Start playing new music file when necessary
     const std::string oldMusic = mCurrentMap
         ? mCurrentMap->getMusicFile() : "";
@@ -1038,6 +1039,10 @@ void Game::changeMap(const std::string &mapPath)
     if (mumbleManager)
         mumbleManager->setMap(mapPath);
 #endif
+
+    if (player_node)
+        player_node->recreateItemParticles();
+
     Net::getGameHandler()->mapLoadedEvent();
     BLOCK_END("Game::changeMap")
 }

@@ -37,6 +37,7 @@
 #include "being/playerrelations.h"
 
 #include "particle/particle.h"
+#include "particle/particleinfo.h"
 
 #include "gui/sdlfont.h"
 
@@ -238,6 +239,8 @@ Being::~Being()
         mOwner->setPet(nullptr);
     if (mPet)
         mPet->setOwner(nullptr);
+
+    removeAllItemsParticles();
 }
 
 void Being::setSubtype(const uint16_t subtype, const uint8_t look)
@@ -1934,6 +1937,7 @@ void Being::setSprite(const unsigned int slot, const int id,
                 if (pet)
                     removePet();
             }
+            removeItemParticles(id1);
         }
     }
     else
@@ -1963,6 +1967,8 @@ void Being::setSprite(const unsigned int slot, const int id,
             equipmentSprite->setSpriteDirection(getSpriteDirection());
 
         CompoundSprite::setSprite(slot, equipmentSprite);
+
+        addItemParticles(id, info.getDisplay());
 
         if (isWeapon)
             mEquippedWeapon = &ItemDB::get(id);
@@ -3091,4 +3097,83 @@ void Being::setMap(Map *const map)
     ActorSprite::setMap(map);
     if (mMap)
         mOffsetY = mMap->getHeightOffset(mX, mY);
+}
+
+void Being::removeAllItemsParticles()
+{
+    FOR_EACH (SpriteParticleInfoIter, it, mSpriteParticles)
+    {
+        delete (*it).second;
+    }
+    mSpriteParticles.clear();
+}
+
+void Being::addItemParticles(const int id, const SpriteDisplay &display)
+{
+    SpriteParticleInfoIter it = mSpriteParticles.find(id);
+    ParticleInfo *pi = nullptr;
+    if (it == mSpriteParticles.end())
+    {
+        pi = new ParticleInfo();
+        mSpriteParticles[id] = pi;
+    }
+    else
+    {
+        pi = (*it).second;
+    }
+
+    if (!pi->particles.empty())
+        return;
+
+    // setup particle effects
+    if (Particle::enabled && particleEngine)
+    {
+        FOR_EACH (StringVectCIter, itr, display.particles)
+        {
+            Particle *const p = particleEngine->addEffect(*itr, 0, 0);
+            controlParticle(p);
+            pi->files.push_back(*itr);
+            pi->particles.push_back(p);
+        }
+    }
+    else
+    {
+        FOR_EACH (StringVectCIter, itr, display.particles)
+            pi->files.push_back(*itr);
+    }
+}
+
+void Being::removeItemParticles(const int id)
+{
+    SpriteParticleInfoIter it = mSpriteParticles.find(id);
+    if (it == mSpriteParticles.end())
+        return;
+    ParticleInfo *const pi = (*it).second;
+    if (pi)
+    {
+        FOR_EACH (std::vector<Particle*>::const_iterator, itp, pi->particles)
+            mChildParticleEffects.removeLocally(*itp);
+        delete pi;
+    }
+    mSpriteParticles.erase(it);
+}
+
+void Being::recreateItemParticles()
+{
+    FOR_EACH (SpriteParticleInfoIter, it, mSpriteParticles)
+    {
+        ParticleInfo *const pi = (*it).second;
+        if (pi && !pi->files.empty())
+        {
+            FOR_EACH (std::vector<Particle*>::const_iterator, itp, pi->particles)
+                mChildParticleEffects.removeLocally(*itp);
+
+            FOR_EACH (std::vector<std::string>::const_iterator, str, pi->files)
+            {
+                Particle *const p = particleEngine->addEffect(*str, 0, 0);
+                controlParticle(p);
+                pi->particles.push_back(p);
+            }
+        }
+    }
 }

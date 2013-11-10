@@ -419,6 +419,11 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
 
                 loadSpriteRef(itemInfo, itemChild);
             }
+            else if (xmlNameEqual(itemChild, "particlefx"))
+            {
+                display.particles.push_back(reinterpret_cast<const char*>(
+                    itemChild->xmlChildrenNode->content));
+            }
             else if (xmlNameEqual(itemChild, "sound"))
             {
                 loadSoundRef(itemInfo, itemChild);

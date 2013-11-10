@@ -53,6 +53,8 @@ class Party;
 class SpeechBubble;
 class Text;
 
+struct ParticleInfo;
+
 extern volatile int cur_time;
 
 enum Gender
@@ -903,6 +905,8 @@ class Being : public ActorSprite, public ConfigListener
 
         void setMap(Map *const map);
 
+        void recreateItemParticles();
+
     protected:
         /**
          * Updates name's location.
@@ -910,6 +914,12 @@ class Being : public ActorSprite, public ConfigListener
         virtual void updateCoords();
 
         void showName();
+
+        void addItemParticles(const int id, const SpriteDisplay &display);
+
+        void removeAllItemsParticles();
+
+        void removeItemParticles(const int id);
 
         static int getDefaultEffectId(const int type);
 
@@ -942,9 +952,13 @@ class Being : public ActorSprite, public ConfigListener
 
         Vector mDest;  /**< destination coordinates. */
 
+        typedef std::map<int, ParticleInfo*> SpriteParticleInfo;
+        typedef SpriteParticleInfo::iterator SpriteParticleInfoIter;
+
         StringVect mSpriteColors;
         std::vector<int> mSpriteIDs;
         std::vector<int> mSpriteColorsIds;
+        SpriteParticleInfo mSpriteParticles;
 
         // Character guild information
         std::map<int, Guild*> mGuilds;
