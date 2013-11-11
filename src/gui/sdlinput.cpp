@@ -58,7 +58,6 @@
 
 #include "gui/sdlinput.h"
 
-#include "mouseinput.h"
 #include "sdlshared.h"
 
 #include "input/inputmanager.h"

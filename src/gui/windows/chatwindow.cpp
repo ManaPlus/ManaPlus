@@ -28,6 +28,7 @@
 #include "configuration.h"
 #include "game.h"
 #include "guild.h"
+#include "mouseinput.h"
 #include "party.h"
 #include "spellshortcut.h"
 

@@ -23,6 +23,7 @@
 #include "gui/widgets/textfield.h"
 
 #include "client.h"
+#include "mouseinput.h"
 
 #ifdef ANDROID
 #include "input/inputmanager.h"

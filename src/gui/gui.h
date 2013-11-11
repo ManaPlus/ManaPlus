@@ -33,6 +33,7 @@ class Graphics;
 class GuiConfigListener;
 class ImageSet;
 class MouseEvent;
+class MouseInput;
 class SDLFont;
 class SDLInput;
 class Window;
