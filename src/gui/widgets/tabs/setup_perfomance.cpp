@@ -149,7 +149,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
         "uselonglivespritesEvent");
 
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Cache all sounds (can use additinal memory)"),
+    new SetupItemCheckBox(_("Cache all sounds (can use additional memory)"),
         "", "uselonglivesounds", this,
         "uselonglivesoundsEvent");
 
