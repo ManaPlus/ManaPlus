@@ -89,6 +89,7 @@ int TcpNet::resolveHost(IPaddress *const address, const char *const host,
 TcpNet::Socket TcpNet::open(IPaddress *const ip)
 {
     const TcpNet::Socket sock = SDLNet_TCP_Open(ip);
+#ifndef __native_client__
     if (sock && ip)
     {
         const TCPsocketHack *const hack
@@ -118,6 +119,7 @@ TcpNet::Socket TcpNet::open(IPaddress *const ip)
             }
         }
     }
+#endif
     return sock;
 }
 
