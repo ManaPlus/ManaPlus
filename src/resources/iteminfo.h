@@ -118,12 +118,6 @@ class ItemInfo final
         const std::string getName(const unsigned char color)
                                   const A_WARN_UNUSED;
 
-        void setParticleEffect(const std::string &particleEffect)
-        { mParticle = particleEffect; }
-
-        std::string getParticleEffect() const A_WARN_UNUSED
-        { return mParticle; }
-
         void setDisplay(const SpriteDisplay &display)
         { mDisplay = display; }
 
@@ -318,7 +312,6 @@ class ItemInfo final
         std::string mDescription;   /**< Short description. */
         std::string mEffect;        /**< Description of effects. */
         ItemType mType;             /**< Item type. */
-        std::string mParticle;      /**< Particle effect used with this item */
         int mWeight;                /**< Weight in grams. */
         int mView;                  /**< Item ID of how this item looks. */
         int mId;                    /**< Item ID */

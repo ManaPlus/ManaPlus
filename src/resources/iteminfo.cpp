@@ -41,7 +41,6 @@ ItemInfo::ItemInfo() :
     mDescription(),
     mEffect(),
     mType(ITEM_UNUSABLE),
-    mParticle(),
     mWeight(0),
     mView(0),
     mId(0),
