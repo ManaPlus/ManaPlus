@@ -342,6 +342,17 @@ namespace Input
         KEY_SHOW_WINDOWS,
         KEY_CHAT_MOD,
         KEY_MOVE_FORWARD,
+        KEY_GUI_CTRL,
+        KEY_GUI_B,
+        KEY_GUI_C,
+        KEY_GUI_D,
+        KEY_GUI_E,
+        KEY_GUI_F,
+        KEY_GUI_H,
+        KEY_GUI_K,
+        KEY_GUI_U,
+        KEY_GUI_V,
+        KEY_GUI_W,
         KEY_TOTAL
     };
 }  // namespace Input
