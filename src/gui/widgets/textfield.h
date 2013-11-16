@@ -126,6 +126,16 @@ class TextField : public gcn::TextField,
 
         void focusLost(const gcn::Event &event) override;
 
+        void moveCaretBack();
+
+        void moveCaretForward();
+
+        void caretDelete();
+
+        void caretDeleteToStart();
+
+        void caretDeleteWord();
+
     protected:
         void drawCaret(gcn::Graphics* graphics, int x) override final;
 
