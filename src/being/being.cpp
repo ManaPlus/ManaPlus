@@ -417,7 +417,7 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
     if (!userPalette)
         return;
 
-    if (!channel.empty() && (langChatTab && langChatTab->getChannelName()
+    if (!channel.empty() && (!langChatTab || langChatTab->getChannelName()
         != channel))
     {
         return;
