@@ -126,7 +126,7 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
         return false;
 
     const gcn::ClipRectangle &top = mClipStack.top();
-    if (!top.height)
+    if (!top.width || !top.height)
         return false;
 
     const SDL_Rect &bounds = image->mBounds;
@@ -161,7 +161,7 @@ void SDLGraphics::drawImagePattern(const Image *const image,
         return;
 
     const gcn::ClipRectangle &top = mClipStack.top();
-    if (!top.height)
+    if (!top.width || !top.height)
         return;
 
     const SDL_Rect &bounds = image->mBounds;
@@ -212,7 +212,7 @@ void SDLGraphics::drawRescaledImagePattern(const Image *const image,
         return;
 
     const gcn::ClipRectangle &top = mClipStack.top();
-    if (!top.height)
+    if (!top.width || !top.height)
         return;
 
     Image *const tmpImage = image->SDLgetScaledImage(
@@ -264,7 +264,7 @@ void SDLGraphics::calcImagePattern(ImageVertexes* const vert,
         return;
 
     const gcn::ClipRectangle &top = mClipStack.top();
-    if (!top.height)
+    if (!top.width || !top.height)
         return;
 
     const SDL_Rect &bounds = image->mBounds;
@@ -341,7 +341,7 @@ void SDLGraphics::calcTileSDL(ImageVertexes *const vert, int x, int y) const
         return;
 
     const gcn::ClipRectangle &top = mClipStack.top();
-    if (!top.height)
+    if (!top.width || !top.height)
         return;
 
     const Image *const image = vert->image;
