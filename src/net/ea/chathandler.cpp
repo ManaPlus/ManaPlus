@@ -42,6 +42,8 @@
 
 #include "debug.h"
 
+extern unsigned int tmwServerVersion;
+
 namespace Ea
 {
 
@@ -287,7 +289,15 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg,
     std::string sender_name = ((pos == std::string::npos)
         ? "" : chatMsg.substr(0, pos));
 
-    if (sender_name != being->getName() && being->getType() == Being::PLAYER)
+    if (tmwServerVersion > 0)
+    {
+        // work around for "new" tmw server
+        sender_name = being->getName();
+        if (sender_name.empty())
+            sender_name = "?";
+    }
+    else if (sender_name != being->getName()
+             && being->getType() == Being::PLAYER)
     {
         if (!being->getName().empty())
             sender_name = being->getName();
