@@ -900,7 +900,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                 }
 
                 // create animation
-                if (!set)
+                if (!set || !config.getBoolValue("playMapAnimations"))
                     continue;
 
                 Animation *ani = new Animation;

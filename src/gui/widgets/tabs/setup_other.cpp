@@ -168,6 +168,10 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Auto resize minimaps"), "", "autoresizeminimaps",
         this, "autoresizeminimapsEvent");
 
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Play map animations"), "", "playMapAnimations",
+        this, "playMapAnimationsEvent");
+
 
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Moving"), "", this);
