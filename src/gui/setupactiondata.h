@@ -1835,6 +1835,62 @@ static SetupActionData setupActionData8[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Ctrl"),
+        Input::KEY_GUI_CTRL,
+        "",
+    },
+    {
+        "B",
+        Input::KEY_GUI_B,
+        "",
+    },
+    {
+        "C",
+        Input::KEY_GUI_C,
+        "",
+    },
+    {
+        "D",
+        Input::KEY_GUI_D,
+        "",
+    },
+    {
+        "E",
+        Input::KEY_GUI_E,
+        "",
+    },
+    {
+        "F",
+        Input::KEY_GUI_F,
+        "",
+    },
+    {
+        "H",
+        Input::KEY_GUI_H,
+        "",
+    },
+    {
+        "K",
+        Input::KEY_GUI_K,
+        "",
+    },
+    {
+        "U",
+        Input::KEY_GUI_U,
+        "",
+    },
+    {
+        "V",
+        Input::KEY_GUI_V,
+        "",
+    },
+    {
+        "W",
+        Input::KEY_GUI_W,
+        "",
+    },
+    {
         "",
         Input::KEY_NO_VALUE,
         ""
