@@ -4,15 +4,15 @@
 #
 # Translators:
 # Jeroen De Meerleer <jeroen.de.meerleer@telenet.be>, 2011
-# Maarten Vanraes <maarten.vanraes@gmail.com>, 2011
+# Maarten Vanraes <maarten.vanraes@gmail.com>, 2011,2013
 # elvano <prd.studio@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-11-09 14:08+0300\n"
-"PO-Revision-Date: 2013-11-04 08:14+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2013-11-22 12:13+0300\n"
+"PO-Revision-Date: 2013-11-20 09:23+0000\n"
+"Last-Translator: Maarten Vanraes <maarten.vanraes@gmail.com>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/manaplus/"
 "language/nl_BE/)\n"
 "Language: nl_BE\n"
@@ -37,25 +37,25 @@ msgid "Visible on map"
 msgstr "Zichtbaar op de map"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:298
+#: src/being/being.cpp:301
 msgid "Human"
 msgstr ""
 
-#: src/being/being.cpp:506
+#: src/being/being.cpp:509
 msgid "dodge"
 msgstr "ontwijkt"
 
-#: src/being/being.cpp:506
+#: src/being/being.cpp:509
 msgid "miss"
 msgstr "mist"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1750 src/gui/windows/whoisonline.cpp:862
+#: src/being/being.cpp:1753 src/gui/windows/whoisonline.cpp:862
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1755 src/gui/windows/whoisonline.cpp:867
+#: src/being/being.cpp:1758 src/gui/windows/whoisonline.cpp:867
 msgid "I"
 msgstr "I"
 
@@ -83,7 +83,7 @@ msgstr "Voorwerp is te ver weg."
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:1385
 msgid "Inventory is full."
-msgstr ""
+msgstr "Inventaris is vol."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:1389
@@ -809,7 +809,7 @@ msgstr ""
 #. TRANSLATORS: enemy command
 #: src/commands.cpp:575
 msgid "enemy"
-msgstr ""
+msgstr "vijand"
 
 #. TRANSLATORS: erase command
 #: src/commands.cpp:595
@@ -915,7 +915,7 @@ msgstr ""
 
 #: src/dyetool/dyemain.cpp:50
 msgid "or"
-msgstr ""
+msgstr "of"
 
 #: src/dyetool/dyemain.cpp:51
 msgid "dyecmd srcdyestring dstfile"
@@ -1065,7 +1065,7 @@ msgstr "Nuke"
 #: src/gui/popups/popupmenu.cpp:226 src/gui/popups/popupmenu.cpp:247
 #: src/gui/popups/popupmenu.cpp:395 src/gui/popups/popupmenu.cpp:546
 #: src/gui/popups/popupmenu.cpp:705 src/gui/popups/popupmenu.cpp:786
-#: src/gui/setupactiondata.h:1862 src/gui/windows/botcheckerwindow.cpp:304
+#: src/gui/setupactiondata.h:1918 src/gui/windows/botcheckerwindow.cpp:304
 msgid "Move"
 msgstr "Beweeg"
 
@@ -1259,7 +1259,7 @@ msgstr ""
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
-#: src/gui/popups/popupmenu.cpp:566 src/gui/setupactiondata.h:1870
+#: src/gui/popups/popupmenu.cpp:566 src/gui/setupactiondata.h:1926
 #: src/gui/windowmenu.cpp:148 src/gui/windows/inventorywindow.cpp:221
 #: src/gui/windows/outfitwindow.cpp:53
 msgid "Outfits"
@@ -1540,13 +1540,13 @@ msgstr "ontkleed"
 #. TRANSLATORS: copy text to clipboard
 #: src/gui/popups/popupmenu.cpp:2346
 msgid "Copy"
-msgstr ""
+msgstr "Kopiëren"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: paste text from clipboard
 #: src/gui/popups/popupmenu.cpp:2349
 msgid "Paste"
-msgstr ""
+msgstr "Plakken"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: open link in browser
@@ -1733,7 +1733,7 @@ msgstr ""
 #. TRANSLATORS: go to player position
 #: src/gui/popups/popupmenu.cpp:2818
 msgid "Goto"
-msgstr ""
+msgstr "Ga naar"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: recall player to current position
@@ -1869,7 +1869,7 @@ msgstr "Afsluiten"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:183
 msgid "Stop or sit"
-msgstr ""
+msgstr "Stop of zit"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:189
@@ -1929,7 +1929,7 @@ msgstr "Statusvenster"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:375
 msgid "Inventory Window"
-msgstr "Voorraadvenster"
+msgstr "Inventarisvenster"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:381
@@ -2187,22 +2187,22 @@ msgstr "Ingave 2 negeren"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1227
 msgid "Direct Up"
-msgstr ""
+msgstr "Juist Boven"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1233
 msgid "Direct Down"
-msgstr ""
+msgstr "Juist Onder"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1239
 msgid "Direct Left"
-msgstr ""
+msgstr "Juist Links"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1245
 msgid "Direct Right"
-msgstr ""
+msgstr "Juist Rechts"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1251
@@ -2257,7 +2257,7 @@ msgstr ""
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1311
 msgid "Change move type"
-msgstr ""
+msgstr "Verander het bewegingstype"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1317
@@ -2292,7 +2292,7 @@ msgstr "Aan / Uit audio"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1353
 msgid "Enable / Disable away mode"
-msgstr ""
+msgstr "Afwezigheidsmodus inschakelen/uitschakelen"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1359
@@ -2408,10 +2408,10 @@ msgstr ""
 #. TRANSLATORS: settings group
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
-#: src/gui/setupactiondata.h:1785 src/gui/setupactiondata.h:1874
+#: src/gui/setupactiondata.h:1785 src/gui/setupactiondata.h:1930
 #: src/gui/widgets/tabs/setup_audio.cpp:159
 #: src/gui/widgets/tabs/setup_chat.cpp:180
-#: src/gui/widgets/tabs/setup_other.cpp:321
+#: src/gui/widgets/tabs/setup_other.cpp:325
 #: src/gui/widgets/tabs/setup_visual.cpp:175
 #: src/gui/windows/charcreatedialog.cpp:107
 #: src/gui/windows/registerdialog.cpp:115
@@ -2462,21 +2462,26 @@ msgstr ""
 msgid "Mod"
 msgstr ""
 
+#. TRANSLATORS: input action name
+#: src/gui/setupactiondata.h:1839
+msgid "Ctrl"
+msgstr ""
+
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:1860
+#: src/gui/setupactiondata.h:1916
 msgid "Basic"
 msgstr ""
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:1864 src/gui/windowmenu.cpp:128
+#: src/gui/setupactiondata.h:1920 src/gui/windowmenu.cpp:128
 msgid "Shortcuts"
 msgstr "Snelkoppeling"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings group
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:1866 src/gui/widgets/tabs/setup_other.cpp:299
+#: src/gui/setupactiondata.h:1922 src/gui/widgets/tabs/setup_other.cpp:303
 #: src/gui/windowmenu.cpp:161
 msgid "Windows"
 msgstr ""
@@ -2484,7 +2489,7 @@ msgstr ""
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: emotes window name
 #. TRANSLATORS: emotes tab name
-#: src/gui/setupactiondata.h:1868 src/gui/windows/emotewindow.cpp:49
+#: src/gui/setupactiondata.h:1924 src/gui/windows/emotewindow.cpp:49
 #: src/gui/windows/emotewindow.cpp:107
 msgid "Emotes"
 msgstr ""
@@ -2492,13 +2497,13 @@ msgstr ""
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
-#: src/gui/setupactiondata.h:1872 src/gui/widgets/tabs/setup_chat.cpp:41
-#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:203
+#: src/gui/setupactiondata.h:1928 src/gui/widgets/tabs/setup_chat.cpp:41
+#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:204
 msgid "Chat"
 msgstr "Chat"
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:1876
+#: src/gui/setupactiondata.h:1932
 msgid "Gui"
 msgstr ""
 
@@ -2540,7 +2545,7 @@ msgstr ""
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:124
 msgid "GM names"
-msgstr ""
+msgstr "GM namen"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:126
@@ -2566,12 +2571,12 @@ msgstr "Monster Levenspuntenbalk(tweede kleur)"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:135
 msgid "Party members"
-msgstr ""
+msgstr "Groep leden"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:137
 msgid "Guild members"
-msgstr ""
+msgstr "Guild leden"
 
 #. TRANSLATORS: palette color
 #. TRANSLATORS: settings option
@@ -2582,12 +2587,12 @@ msgstr "Deeltjes effecten"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:141
 msgid "Pickup notification"
-msgstr ""
+msgstr "Notificatie bij opnemen"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:143
 msgid "Exp notification"
-msgstr ""
+msgstr "Ervaring notificatie"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:145
@@ -2602,17 +2607,17 @@ msgstr "Speler Levenspuntenbalk"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:151
 msgid "Player hits monster"
-msgstr ""
+msgstr "Speler raakt monster"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:153
 msgid "Monster hits player"
-msgstr ""
+msgstr "Monster raakt speler"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:157
 msgid "Other player hits local player"
-msgstr ""
+msgstr "Andere speler raakt lokale speler"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:159
@@ -2622,17 +2627,17 @@ msgstr "Kritieke aanval"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:163
 msgid "Local player hits monster"
-msgstr ""
+msgstr "Lokale speler raakt monster"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:166
 msgid "Local player critical hit"
-msgstr ""
+msgstr "Lokale speler kritieke slag"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:169
 msgid "Local player miss"
-msgstr ""
+msgstr "Lokale speler mis"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:171
@@ -2642,7 +2647,7 @@ msgstr "Missers"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:173
 msgid "Portal highlight"
-msgstr ""
+msgstr "Poortmarkering"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:176
@@ -2667,22 +2672,22 @@ msgstr ""
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:188
 msgid "Walkable highlight"
-msgstr ""
+msgstr "Bewandelbare markering"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:191
 msgid "Local player attack range"
-msgstr ""
+msgstr "Aanvalsbereik van speler"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:194
 msgid "Local player attack range border"
-msgstr ""
+msgstr "Aanvalsbereikrand van speler"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:197
 msgid "Monster attack range"
-msgstr ""
+msgstr "Aanvalsbereik van monster"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:201
@@ -2692,17 +2697,17 @@ msgstr ""
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:204
 msgid "Home place"
-msgstr ""
+msgstr "Thuisplaats"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:207
 msgid "Home place border"
-msgstr ""
+msgstr "Thuisplaatsgrens"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:210
 msgid "Road point"
-msgstr ""
+msgstr "Wegpunt"
 
 #: src/gui/widgets/characterdisplay.cpp:131
 #, c-format
@@ -2720,61 +2725,61 @@ msgstr "Geld: %s"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:152
+#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:153
 msgid "black"
 msgstr "zwart"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:154
+#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:155
 msgid "red"
 msgstr "rood"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:156
+#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:157
 msgid "green"
 msgstr "groen"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:158
+#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:159
 msgid "blue"
 msgstr "blauw"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:160
+#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:161
 msgid "gold"
 msgstr "goud"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:162
+#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:163
 msgid "yellow"
 msgstr "geel"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:164
+#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:165
 msgid "pink"
 msgstr "roze"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:166
+#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:167
 msgid "purple"
 msgstr "paars"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:168
+#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:169
 msgid "grey"
 msgstr "grijs"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:170
+#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:171
 msgid "brown"
 msgstr "bruin"
 
@@ -2916,7 +2921,7 @@ msgstr ""
 #. TRANSLATORS: lang chat tab name
 #: src/gui/widgets/tabs/langtab.cpp:31
 msgid "Lang"
-msgstr ""
+msgstr "Taal"
 
 #: src/gui/widgets/tabs/setup_audio.cpp:47
 msgid "(no sound)"
@@ -3199,12 +3204,12 @@ msgstr ""
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:152
 msgid "Enable language tab"
-msgstr ""
+msgstr "Taal tab aanzetten"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:156
 msgid "Show all languages messages"
-msgstr ""
+msgstr "Toon alle taal berichten"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:160
@@ -3435,7 +3440,7 @@ msgstr ""
 #. TRANSLATORS: chat color
 #. TRANSLATORS: inventory sort mode
 #: src/gui/widgets/tabs/setup_other.cpp:71
-#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:150
+#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:151
 #: src/gui/windows/inventorywindow.cpp:69
 msgid "default"
 msgstr "standaard"
@@ -3574,96 +3579,101 @@ msgstr ""
 msgid "Auto resize minimaps"
 msgstr ""
 
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_other.cpp:172
+msgid "Play map animations"
+msgstr ""
+
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:173
+#: src/gui/widgets/tabs/setup_other.cpp:177
 msgid "Moving"
 msgstr "Bewegen"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:176
+#: src/gui/widgets/tabs/setup_other.cpp:180
 msgid "Auto fix position"
 msgstr "Automatische positieverbetering"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:180
+#: src/gui/widgets/tabs/setup_other.cpp:184
 msgid "Attack while moving"
 msgstr "Aanvallen tijdens verplaatsen"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:184
+#: src/gui/widgets/tabs/setup_other.cpp:188
 msgid "Attack next target"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:188
+#: src/gui/widgets/tabs/setup_other.cpp:192
 msgid "Sync player move"
 msgstr "Syncroniseer spelerbeweging"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:192
+#: src/gui/widgets/tabs/setup_other.cpp:196
 msgid "Crazy move A program"
 msgstr "Gestoorde beweging Een programma"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:196
+#: src/gui/widgets/tabs/setup_other.cpp:200
 msgid "Mouse relative moves (good for touch interfaces)"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:201
+#: src/gui/widgets/tabs/setup_other.cpp:205
 msgid "Player"
 msgstr "Speler"
 
-#: src/gui/widgets/tabs/setup_other.cpp:203
+#: src/gui/widgets/tabs/setup_other.cpp:207
 msgid "Show own hp bar"
 msgstr "Toon hp statusbalk van jezelf"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:207
+#: src/gui/widgets/tabs/setup_other.cpp:211
 msgid "Enable quick stats"
 msgstr "Zet snelle statistieken aan"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:211
+#: src/gui/widgets/tabs/setup_other.cpp:215
 msgid "Cycle player targets"
 msgstr "Doorloop spelerdoelwitten"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:215
+#: src/gui/widgets/tabs/setup_other.cpp:219
 msgid "Show job exp messages"
 msgstr "Geef de job ervarings berichten weer"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:219
+#: src/gui/widgets/tabs/setup_other.cpp:223
 msgid "Show players popups"
 msgstr "Geef de spelers popups weer"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:223
+#: src/gui/widgets/tabs/setup_other.cpp:227
 msgid "Afk message"
 msgstr "'Weg van het toetsenbord'-bericht"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:227
+#: src/gui/widgets/tabs/setup_other.cpp:231
 msgid "Show job"
 msgstr "Geef je beroep weer"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:231
+#: src/gui/widgets/tabs/setup_other.cpp:235
 msgid "Enable attack filter"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:235
+#: src/gui/widgets/tabs/setup_other.cpp:239
 msgid "Enable pickup filter"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:239
+#: src/gui/widgets/tabs/setup_other.cpp:243
 msgid "Enable advert protocol"
 msgstr ""
 
-#: src/gui/widgets/tabs/setup_other.cpp:242
+#: src/gui/widgets/tabs/setup_other.cpp:246
 msgid "Enable weight notifications"
 msgstr ""
 
@@ -3671,157 +3681,157 @@ msgstr ""
 #. TRANSLATORS: full button name
 #. TRANSLATORS: shop window name
 #. TRANSLATORS: inventory button
-#: src/gui/widgets/tabs/setup_other.cpp:247 src/gui/windowmenu.cpp:144
+#: src/gui/widgets/tabs/setup_other.cpp:251 src/gui/windowmenu.cpp:144
 #: src/gui/windows/buyselldialog.cpp:39 src/gui/windows/buyselldialog.cpp:50
 #: src/gui/windows/inventorywindow.cpp:223
 msgid "Shop"
 msgstr "Winkel"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:250
+#: src/gui/widgets/tabs/setup_other.cpp:254
 msgid "Accept sell/buy requests"
 msgstr "Accepteer koop/verkoop aanvragen"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:254
+#: src/gui/widgets/tabs/setup_other.cpp:258
 msgid "Enable shop mode"
 msgstr "shop modus aanzetten"
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: npc dialog name
 #. TRANSLATORS: npc post dialog caption
-#: src/gui/widgets/tabs/setup_other.cpp:259 src/gui/windows/npcdialog.cpp:82
+#: src/gui/widgets/tabs/setup_other.cpp:263 src/gui/windows/npcdialog.cpp:82
 #: src/gui/windows/npcpostdialog.cpp:44
 msgid "NPC"
 msgstr "NPC"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:262
+#: src/gui/widgets/tabs/setup_other.cpp:266
 msgid "Cycle npc targets"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:266
+#: src/gui/widgets/tabs/setup_other.cpp:270
 msgid "Log NPC dialogue"
 msgstr "Houd de NPC dialogen bij"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:271
+#: src/gui/widgets/tabs/setup_other.cpp:275
 msgid "Bots support"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:274
+#: src/gui/widgets/tabs/setup_other.cpp:278
 msgid "Enable auction bot support"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:278
+#: src/gui/widgets/tabs/setup_other.cpp:282
 msgid "Enable guild bot support and disable native guild support"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:284
+#: src/gui/widgets/tabs/setup_other.cpp:288
 msgid "Keyboard"
-msgstr ""
+msgstr "Toetsenbord"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:287
+#: src/gui/widgets/tabs/setup_other.cpp:291
 msgid "Repeat delay"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:291
+#: src/gui/widgets/tabs/setup_other.cpp:295
 msgid "Repeat interval"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:295
+#: src/gui/widgets/tabs/setup_other.cpp:299
 msgid "Custom repeat interval"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:303
+#: src/gui/widgets/tabs/setup_other.cpp:307
 msgid "Shortcut buttons"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:308
+#: src/gui/widgets/tabs/setup_other.cpp:312
 msgid "Proxy server"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:312
+#: src/gui/widgets/tabs/setup_other.cpp:316
 msgid "Proxy type"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:316
+#: src/gui/widgets/tabs/setup_other.cpp:320
 msgid "Proxy address:port"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:324
+#: src/gui/widgets/tabs/setup_other.cpp:328
 msgid "Enable server side attack"
 msgstr "Aanval gecontroleerd door server aanzetten"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:328
+#: src/gui/widgets/tabs/setup_other.cpp:332
 msgid "Enable double clicks"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:332
+#: src/gui/widgets/tabs/setup_other.cpp:336
 msgid "Enable bot checker"
 msgstr "Bot controle aanzetten"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:336
+#: src/gui/widgets/tabs/setup_other.cpp:340
 msgid "Enable buggy servers protection (do not disable)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:341
+#: src/gui/widgets/tabs/setup_other.cpp:345
 msgid "Enable debug log"
 msgstr "Zet debug log aan"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:345
+#: src/gui/widgets/tabs/setup_other.cpp:349
 msgid "Enable OpenGL log"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:349
+#: src/gui/widgets/tabs/setup_other.cpp:353
 msgid "Enable input log"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:353
+#: src/gui/widgets/tabs/setup_other.cpp:357
 msgid "Low traffic mode"
 msgstr "Laag verkeer modus"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:357
+#: src/gui/widgets/tabs/setup_other.cpp:361
 msgid "Hide shield sprite"
 msgstr "Verberg het schild"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:362
+#: src/gui/widgets/tabs/setup_other.cpp:366
 msgid "Use FBO for screenshots (only for opengl)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:367
+#: src/gui/widgets/tabs/setup_other.cpp:371
 msgid "Network delay between sub servers"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:371
+#: src/gui/widgets/tabs/setup_other.cpp:375
 msgid "Show background"
 msgstr "Toon achtergrond"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:376
+#: src/gui/widgets/tabs/setup_other.cpp:380
 msgid "Screen density override"
 msgstr ""
 
@@ -3939,7 +3949,7 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:152
-msgid "Cache all sounds (can use additinal memory)"
+msgid "Cache all sounds (can use additional memory)"
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4112,12 +4122,12 @@ msgstr "Middelmatig (12)"
 #. TRANSLATORS: font size
 #: src/gui/widgets/tabs/setup_theme.cpp:92
 msgid "Normal (13)"
-msgstr ""
+msgstr "Normaal (13)"
 
 #. TRANSLATORS: font size
 #: src/gui/widgets/tabs/setup_theme.cpp:94
 msgid "Large (14)"
-msgstr ""
+msgstr "Groot (14)"
 
 #. TRANSLATORS: font size
 #: src/gui/widgets/tabs/setup_theme.cpp:96
@@ -4257,7 +4267,7 @@ msgstr "Standaard Lettertype"
 #. TRANSLATORS: theme settings label
 #: src/gui/widgets/tabs/setup_theme.cpp:241
 msgid "Language"
-msgstr ""
+msgstr "Taal"
 
 #. TRANSLATORS: theme settings label
 #. TRANSLATORS: font size
@@ -4298,7 +4308,7 @@ msgstr ""
 #. TRANSLATORS: button name with information about selected theme
 #: src/gui/widgets/tabs/setup_theme.cpp:275
 msgid "i"
-msgstr ""
+msgstr "i"
 
 #. TRANSLATORS: theme info dialog
 #: src/gui/widgets/tabs/setup_theme.cpp:402
@@ -4312,7 +4322,7 @@ msgstr ""
 #. TRANSLATORS: theme info dialog header
 #: src/gui/widgets/tabs/setup_theme.cpp:460
 msgid "Theme info"
-msgstr ""
+msgstr "Thema info"
 
 #. TRANSLATORS: theme message dialog
 #: src/gui/widgets/tabs/setup_theme.cpp:485
@@ -4329,7 +4339,7 @@ msgstr "Herstart de client om de wijzigingen in werking te doen treden."
 #. TRANSLATORS: onscreen button size
 #: src/gui/widgets/tabs/setup_touch.cpp:36
 msgid "Small"
-msgstr ""
+msgstr "Klein"
 
 #. TRANSLATORS: onscreen button size
 #. TRANSLATORS: update type
@@ -4340,12 +4350,12 @@ msgstr "Normaal"
 #. TRANSLATORS: onscreen button size
 #: src/gui/widgets/tabs/setup_touch.cpp:40
 msgid "Medium"
-msgstr ""
+msgstr "Middelmatig"
 
 #. TRANSLATORS: onscreen button size
 #: src/gui/widgets/tabs/setup_touch.cpp:42
 msgid "Large"
-msgstr ""
+msgstr "Groot"
 
 #. TRANSLATORS: touch settings tab
 #: src/gui/widgets/tabs/setup_touch.cpp:63
@@ -4400,7 +4410,7 @@ msgstr ""
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_touch.cpp:108
 msgid "Buttons size"
-msgstr ""
+msgstr "Grootte van knoppen"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_touch.cpp:116
@@ -4716,7 +4726,7 @@ msgstr "Wie is online"
 #. TRANSLATORS: short button name for help window.
 #: src/gui/windowmenu.cpp:71
 msgid "HLP"
-msgstr ""
+msgstr "HLP"
 
 #. TRANSLATORS: short button name for quests window.
 #: src/gui/windowmenu.cpp:74
@@ -4754,7 +4764,7 @@ msgstr "Smilies"
 #. TRANSLATORS: short button name for chat window.
 #: src/gui/windowmenu.cpp:85
 msgid "CH"
-msgstr ""
+msgstr "CH"
 
 #. TRANSLATORS: short button name for status window.
 #: src/gui/windowmenu.cpp:93
@@ -4780,7 +4790,7 @@ msgstr "Uitrusting"
 #. TRANSLATORS: short button name for inventory window.
 #: src/gui/windowmenu.cpp:99
 msgid "INV"
-msgstr "VOOR"
+msgstr "INV"
 
 #. TRANSLATORS: inventory window name
 #. TRANSLATORS: inventory type name
@@ -4792,7 +4802,7 @@ msgstr "Inventaris"
 #. TRANSLATORS: short button name for map window.
 #: src/gui/windowmenu.cpp:102
 msgid "MAP"
-msgstr ""
+msgstr "MAP"
 
 #. TRANSLATORS: short button name for skills window.
 #: src/gui/windowmenu.cpp:108
@@ -4827,17 +4837,17 @@ msgstr "Sociaal"
 #. TRANSLATORS: short button name for shortcuts window.
 #: src/gui/windowmenu.cpp:126
 msgid "SH"
-msgstr ""
+msgstr "SK"
 
 #. TRANSLATORS: short button name for spells window.
 #: src/gui/windowmenu.cpp:130
 msgid "SP"
-msgstr ""
+msgstr "SP"
 
 #. TRANSLATORS: short button name for drops window.
 #: src/gui/windowmenu.cpp:134
 msgid "DR"
-msgstr ""
+msgstr "NL"
 
 #. TRANSLATORS: short button name for did you know window.
 #: src/gui/windowmenu.cpp:138
@@ -4852,17 +4862,17 @@ msgstr "Weet u"
 #. TRANSLATORS: short button name for shop window.
 #: src/gui/windowmenu.cpp:142
 msgid "SHP"
-msgstr ""
+msgstr "WINKEL"
 
 #. TRANSLATORS: short button name for outfits window.
 #: src/gui/windowmenu.cpp:146
 msgid "OU"
-msgstr ""
+msgstr "KL"
 
 #. TRANSLATORS: short button name for debug window.
 #: src/gui/windowmenu.cpp:150
 msgid "DBG"
-msgstr ""
+msgstr "DBG"
 
 #. TRANSLATORS: short button name for windows list menu.
 #: src/gui/windowmenu.cpp:159
@@ -4872,7 +4882,7 @@ msgstr ""
 #. TRANSLATORS: short button name for setup window.
 #: src/gui/windowmenu.cpp:163
 msgid "SET"
-msgstr "OPT"
+msgstr "CONF"
 
 #. TRANSLATORS: short key name
 #. TRANSLATORS: outfits window label
@@ -4880,7 +4890,7 @@ msgstr "OPT"
 #: src/gui/windows/outfitwindow.cpp:563
 #, c-format
 msgid "Key: %s"
-msgstr "Sleutel: %s"
+msgstr "Toets: %s"
 
 #. TRANSLATORS: bot checker window header
 #: src/gui/windows/botcheckerwindow.cpp:262
@@ -5136,7 +5146,7 @@ msgstr "Haarstijl:"
 #. TRANSLATORS: char create dialog button
 #: src/gui/windows/charcreatedialog.cpp:99
 msgid "^"
-msgstr ""
+msgstr "^"
 
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
@@ -5266,28 +5276,28 @@ msgid "Enter password:"
 msgstr "Geef wachtwoord:"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:172
+#: src/gui/windows/chatwindow.cpp:173
 msgid "rainbow 1"
 msgstr "regenboog 1"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:174
+#: src/gui/windows/chatwindow.cpp:175
 msgid "rainbow 2"
 msgstr "regenboog 2"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:176
+#: src/gui/windows/chatwindow.cpp:177
 msgid "rainbow 3"
 msgstr "regenboog 3"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:741
+#: src/gui/windows/chatwindow.cpp:742
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Aanwezig: %s; %d speler zijn aanwezig."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1155
+#: src/gui/windows/chatwindow.cpp:1156
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Fluisteren naar %s: %s"
@@ -5368,7 +5378,7 @@ msgstr "%d beelden/sec"
 #: src/gui/windows/debugwindow.cpp:201 src/gui/windows/debugwindow.cpp:368
 #, c-format
 msgid "%d LPS"
-msgstr ""
+msgstr "%d LPS"
 
 #. TRANSLATORS: debug window label
 #: src/gui/windows/debugwindow.cpp:212 src/gui/windows/debugwindow.cpp:236
@@ -5380,13 +5390,13 @@ msgstr "%d beelden/sec (Software)"
 #: src/gui/windows/debugwindow.cpp:219
 #, c-format
 msgid "%d FPS (normal OpenGL)"
-msgstr ""
+msgstr "%d beelden/sec (normale OpenGL)"
 
 #. TRANSLATORS: debug window label
 #: src/gui/windows/debugwindow.cpp:223
 #, c-format
 msgid "%d FPS (safe OpenGL)"
-msgstr ""
+msgstr "%d beelden/sec (veilige OpenGL)"
 
 #. TRANSLATORS: debug window label
 #: src/gui/windows/debugwindow.cpp:227
@@ -5398,7 +5408,7 @@ msgstr ""
 #: src/gui/windows/debugwindow.cpp:231
 #, c-format
 msgid "%d FPS (SDL2 default)"
-msgstr ""
+msgstr "%d beelden/sec (SDL2 standaard)"
 
 #. TRANSLATORS: debug window label
 #: src/gui/windows/debugwindow.cpp:256 src/gui/windows/debugwindow.cpp:326
@@ -5994,7 +6004,7 @@ msgstr "Wachtwoorden komen niet overeen."
 #. TRANSLATORS: sell confirmation header
 #: src/gui/windows/selldialog.cpp:245
 msgid "sell item"
-msgstr ""
+msgstr "verkoop voorwerp"
 
 #. TRANSLATORS: sell confirmation message
 #: src/gui/windows/selldialog.cpp:247
@@ -6293,12 +6303,12 @@ msgstr "Groep aanmaken"
 #. TRANSLATORS: here P is title for visible players tab in social window
 #: src/gui/windows/socialwindow.cpp:1290
 msgid "P"
-msgstr ""
+msgstr "S"
 
 #. TRANSLATORS: here F is title for friends tab in social window
 #: src/gui/windows/socialwindow.cpp:1295
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #. TRANSLATORS: social window button
 #: src/gui/windows/socialwindow.cpp:1301
@@ -6722,7 +6732,7 @@ msgstr ""
 #. TRANSLATORS: This string must be maximum 5 chars
 #: src/input/inputmanager.cpp:433 src/input/keyboardconfig.cpp:145
 msgid "u key"
-msgstr ""
+msgstr "u key"
 
 #. TRANSLATORS: inventory type name
 #: src/inventory.cpp:262
@@ -6732,12 +6742,12 @@ msgstr ""
 #. TRANSLATORS: inventory type name
 #: src/inventory.cpp:267
 msgid "Cart"
-msgstr ""
+msgstr "Winkelkar"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:77
 msgid "manaplus [options] [manaplus-file]"
-msgstr ""
+msgstr "manaplus [opties] [mana-bestand]"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:79
@@ -6747,12 +6757,12 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/main.cpp:82
 msgid "                  used to set custom parameters"
-msgstr ""
+msgstr "              om manuele parameters te gebruiken"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:84
 msgid "                  to the manaplus client."
-msgstr ""
+msgstr "              aan de manaplus client."
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:87
@@ -6945,13 +6955,13 @@ msgid "Failed to delete character."
 msgstr "Kon personage niet verwijderen."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/chathandler.cpp:95
+#: src/net/ea/chathandler.cpp:97
 #, c-format
 msgid "Whisper could not be sent, %s is offline."
 msgstr ""
 
 #. TRANSLATORS: chat message
-#: src/net/ea/chathandler.cpp:104
+#: src/net/ea/chathandler.cpp:106
 #, c-format
 msgid "Whisper could not be sent, ignored by %s."
 msgstr ""
@@ -7887,7 +7897,7 @@ msgstr "Software"
 #: src/render/rendererslistsdl2.h:47 src/render/rendererslistsdl2.h:81
 #: src/render/rendererslistsdl2.h:118
 msgid "SDL2 default"
-msgstr ""
+msgstr "SDL2 standaard"
 
 #. TRANSLATORS: draw backend
 #: src/render/rendererslistsdl2.h:49 src/render/rendererslistsdl2.h:87

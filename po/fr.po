@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-11-09 14:08+0300\n"
-"PO-Revision-Date: 2013-11-04 08:14+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2013-11-22 12:13+0300\n"
+"PO-Revision-Date: 2013-11-20 09:23+0000\n"
+"Last-Translator: Alige <aligetmw@hotmail.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
 "fr/)\n"
 "Language: fr\n"
@@ -43,25 +43,25 @@ msgid "Visible on map"
 msgstr "Visible sur la carte"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:298
+#: src/being/being.cpp:301
 msgid "Human"
 msgstr "Humain"
 
-#: src/being/being.cpp:506
+#: src/being/being.cpp:509
 msgid "dodge"
 msgstr "esquive"
 
-#: src/being/being.cpp:506
+#: src/being/being.cpp:509
 msgid "miss"
 msgstr "raté"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1750 src/gui/windows/whoisonline.cpp:862
+#: src/being/being.cpp:1753 src/gui/windows/whoisonline.cpp:862
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1755 src/gui/windows/whoisonline.cpp:867
+#: src/being/being.cpp:1758 src/gui/windows/whoisonline.cpp:867
 msgid "I"
 msgstr "I"
 
@@ -919,15 +919,15 @@ msgstr ""
 
 #: src/dyetool/dyemain.cpp:49
 msgid "dyecmd srcfile dyestring dstfile"
-msgstr ""
+msgstr "dyecmd srcfile dyestring dstfile"
 
 #: src/dyetool/dyemain.cpp:50
 msgid "or"
-msgstr ""
+msgstr "ou"
 
 #: src/dyetool/dyemain.cpp:51
 msgid "dyecmd srcdyestring dstfile"
-msgstr ""
+msgstr "dyecmd srcdyestring dstfile"
 
 #. TRANSLATORS: chat tab header
 #: src/game.cpp:273 src/gui/widgets/tabs/chattab.cpp:469
@@ -1074,7 +1074,7 @@ msgstr "Annihiler"
 #: src/gui/popups/popupmenu.cpp:226 src/gui/popups/popupmenu.cpp:247
 #: src/gui/popups/popupmenu.cpp:395 src/gui/popups/popupmenu.cpp:546
 #: src/gui/popups/popupmenu.cpp:705 src/gui/popups/popupmenu.cpp:786
-#: src/gui/setupactiondata.h:1862 src/gui/windows/botcheckerwindow.cpp:304
+#: src/gui/setupactiondata.h:1918 src/gui/windows/botcheckerwindow.cpp:304
 msgid "Move"
 msgstr "Déplacement"
 
@@ -1268,7 +1268,7 @@ msgstr "Bouger la caméra"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
-#: src/gui/popups/popupmenu.cpp:566 src/gui/setupactiondata.h:1870
+#: src/gui/popups/popupmenu.cpp:566 src/gui/setupactiondata.h:1926
 #: src/gui/windowmenu.cpp:148 src/gui/windows/inventorywindow.cpp:221
 #: src/gui/windows/outfitwindow.cpp:53
 msgid "Outfits"
@@ -2351,7 +2351,7 @@ msgstr "Aller à droite"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1422
 msgid "Move Forward"
-msgstr ""
+msgstr "Aller devant"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1428
@@ -2417,10 +2417,10 @@ msgstr "Page suivante"
 #. TRANSLATORS: settings group
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
-#: src/gui/setupactiondata.h:1785 src/gui/setupactiondata.h:1874
+#: src/gui/setupactiondata.h:1785 src/gui/setupactiondata.h:1930
 #: src/gui/widgets/tabs/setup_audio.cpp:159
 #: src/gui/widgets/tabs/setup_chat.cpp:180
-#: src/gui/widgets/tabs/setup_other.cpp:321
+#: src/gui/widgets/tabs/setup_other.cpp:325
 #: src/gui/widgets/tabs/setup_visual.cpp:175
 #: src/gui/windows/charcreatedialog.cpp:107
 #: src/gui/windows/registerdialog.cpp:115
@@ -2471,21 +2471,26 @@ msgstr "Tab"
 msgid "Mod"
 msgstr "Modif."
 
+#. TRANSLATORS: input action name
+#: src/gui/setupactiondata.h:1839
+msgid "Ctrl"
+msgstr ""
+
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:1860
+#: src/gui/setupactiondata.h:1916
 msgid "Basic"
 msgstr "Basique"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:1864 src/gui/windowmenu.cpp:128
+#: src/gui/setupactiondata.h:1920 src/gui/windowmenu.cpp:128
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings group
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:1866 src/gui/widgets/tabs/setup_other.cpp:299
+#: src/gui/setupactiondata.h:1922 src/gui/widgets/tabs/setup_other.cpp:303
 #: src/gui/windowmenu.cpp:161
 msgid "Windows"
 msgstr "Fenêtres"
@@ -2493,7 +2498,7 @@ msgstr "Fenêtres"
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: emotes window name
 #. TRANSLATORS: emotes tab name
-#: src/gui/setupactiondata.h:1868 src/gui/windows/emotewindow.cpp:49
+#: src/gui/setupactiondata.h:1924 src/gui/windows/emotewindow.cpp:49
 #: src/gui/windows/emotewindow.cpp:107
 msgid "Emotes"
 msgstr "Emoticônes"
@@ -2501,13 +2506,13 @@ msgstr "Emoticônes"
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
-#: src/gui/setupactiondata.h:1872 src/gui/widgets/tabs/setup_chat.cpp:41
-#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:203
+#: src/gui/setupactiondata.h:1928 src/gui/widgets/tabs/setup_chat.cpp:41
+#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:204
 msgid "Chat"
 msgstr "Conversation"
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:1876
+#: src/gui/setupactiondata.h:1932
 msgid "Gui"
 msgstr "Interface utilisateur (IU)"
 
@@ -2729,61 +2734,61 @@ msgstr "Argent : %s"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:152
+#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:153
 msgid "black"
 msgstr "noir"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:154
+#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:155
 msgid "red"
 msgstr "rouge"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:156
+#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:157
 msgid "green"
 msgstr "vert"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:158
+#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:159
 msgid "blue"
 msgstr "bleu"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:160
+#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:161
 msgid "gold"
 msgstr "or"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:162
+#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:163
 msgid "yellow"
 msgstr "jaune"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:164
+#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:165
 msgid "pink"
 msgstr "rose"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:166
+#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:167
 msgid "purple"
 msgstr "violet"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:168
+#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:169
 msgid "grey"
 msgstr "gris"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:170
+#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:171
 msgid "brown"
 msgstr "marron"
 
@@ -3253,12 +3258,12 @@ msgstr "Ignorer de multiples noms (séparés par une virgule)"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:191
 msgid "Show emotes button in chat"
-msgstr ""
+msgstr "Afficher le bouton des émoticônes dans le chat"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:195
 msgid "Show motd server message on start"
-msgstr ""
+msgstr "Afficher le message du serveur motd au démarrage"
 
 #: src/gui/widgets/tabs/setup_colors.cpp:46
 msgid "This is what the color looks like"
@@ -3446,7 +3451,7 @@ msgstr "Nom d'hôte SOCKS5"
 #. TRANSLATORS: chat color
 #. TRANSLATORS: inventory sort mode
 #: src/gui/widgets/tabs/setup_other.cpp:71
-#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:150
+#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:151
 #: src/gui/windows/inventorywindow.cpp:69
 msgid "default"
 msgstr "défaut"
@@ -3585,96 +3590,101 @@ msgstr "Rayon de défilement"
 msgid "Auto resize minimaps"
 msgstr "Redimensionnement automatique des mini-cartes"
 
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_other.cpp:172
+msgid "Play map animations"
+msgstr ""
+
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:173
+#: src/gui/widgets/tabs/setup_other.cpp:177
 msgid "Moving"
 msgstr "En mouvement"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:176
+#: src/gui/widgets/tabs/setup_other.cpp:180
 msgid "Auto fix position"
 msgstr "Auto-correction de position"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:180
+#: src/gui/widgets/tabs/setup_other.cpp:184
 msgid "Attack while moving"
 msgstr "Attaquer en bougeant"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:184
+#: src/gui/widgets/tabs/setup_other.cpp:188
 msgid "Attack next target"
 msgstr "Attaquer la prochaine cible"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:188
+#: src/gui/widgets/tabs/setup_other.cpp:192
 msgid "Sync player move"
 msgstr "Synchroniser les mouvements du joueur"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:192
+#: src/gui/widgets/tabs/setup_other.cpp:196
 msgid "Crazy move A program"
 msgstr "Programme de mouvement de fou A"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:196
+#: src/gui/widgets/tabs/setup_other.cpp:200
 msgid "Mouse relative moves (good for touch interfaces)"
 msgstr "Mouvements relatifs à la souris (bon pour les interfaces tactiles)"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:201
+#: src/gui/widgets/tabs/setup_other.cpp:205
 msgid "Player"
 msgstr "Joueur"
 
-#: src/gui/widgets/tabs/setup_other.cpp:203
+#: src/gui/widgets/tabs/setup_other.cpp:207
 msgid "Show own hp bar"
 msgstr "Afficher ta propre barre de vie "
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:207
+#: src/gui/widgets/tabs/setup_other.cpp:211
 msgid "Enable quick stats"
 msgstr "Activer les statistiques instantanées"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:211
+#: src/gui/widgets/tabs/setup_other.cpp:215
 msgid "Cycle player targets"
 msgstr "Sélectionner les joueurs par ordre de distance"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:215
+#: src/gui/widgets/tabs/setup_other.cpp:219
 msgid "Show job exp messages"
 msgstr "Afficher les expériences de compétences"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:219
+#: src/gui/widgets/tabs/setup_other.cpp:223
 msgid "Show players popups"
 msgstr "Afficher les pop-ups des joueurs"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:223
+#: src/gui/widgets/tabs/setup_other.cpp:227
 msgid "Afk message"
 msgstr "Message d'absence"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:227
+#: src/gui/widgets/tabs/setup_other.cpp:231
 msgid "Show job"
 msgstr "Afficher les compétences"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:231
+#: src/gui/widgets/tabs/setup_other.cpp:235
 msgid "Enable attack filter"
 msgstr "Activer le mode attaque"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:235
+#: src/gui/widgets/tabs/setup_other.cpp:239
 msgid "Enable pickup filter"
 msgstr "Activer le filtre de ramassage"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:239
+#: src/gui/widgets/tabs/setup_other.cpp:243
 msgid "Enable advert protocol"
 msgstr "Lancer le protocole d'avertissements"
 
-#: src/gui/widgets/tabs/setup_other.cpp:242
+#: src/gui/widgets/tabs/setup_other.cpp:246
 msgid "Enable weight notifications"
 msgstr "Activer les notifications de poids"
 
@@ -3682,158 +3692,158 @@ msgstr "Activer les notifications de poids"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: shop window name
 #. TRANSLATORS: inventory button
-#: src/gui/widgets/tabs/setup_other.cpp:247 src/gui/windowmenu.cpp:144
+#: src/gui/widgets/tabs/setup_other.cpp:251 src/gui/windowmenu.cpp:144
 #: src/gui/windows/buyselldialog.cpp:39 src/gui/windows/buyselldialog.cpp:50
 #: src/gui/windows/inventorywindow.cpp:223
 msgid "Shop"
 msgstr "Boutique"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:250
+#: src/gui/widgets/tabs/setup_other.cpp:254
 msgid "Accept sell/buy requests"
 msgstr "Accepter les requêtes d'achat / de vente"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:254
+#: src/gui/widgets/tabs/setup_other.cpp:258
 msgid "Enable shop mode"
 msgstr "Activer le mode boutique"
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: npc dialog name
 #. TRANSLATORS: npc post dialog caption
-#: src/gui/widgets/tabs/setup_other.cpp:259 src/gui/windows/npcdialog.cpp:82
+#: src/gui/widgets/tabs/setup_other.cpp:263 src/gui/windows/npcdialog.cpp:82
 #: src/gui/windows/npcpostdialog.cpp:44
 msgid "NPC"
 msgstr "PNJ"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:262
+#: src/gui/widgets/tabs/setup_other.cpp:266
 msgid "Cycle npc targets"
 msgstr "Boucler les cibles PNJ"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:266
+#: src/gui/widgets/tabs/setup_other.cpp:270
 msgid "Log NPC dialogue"
 msgstr "Enregistrer les conversations des PNJ"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:271
+#: src/gui/widgets/tabs/setup_other.cpp:275
 msgid "Bots support"
 msgstr "Support des bots"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:274
+#: src/gui/widgets/tabs/setup_other.cpp:278
 msgid "Enable auction bot support"
 msgstr "Activer support pour le Bot aux Enchères"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:278
+#: src/gui/widgets/tabs/setup_other.cpp:282
 msgid "Enable guild bot support and disable native guild support"
 msgstr ""
 "Activer le support du bot de guilde et désactiver le support par défault"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:284
+#: src/gui/widgets/tabs/setup_other.cpp:288
 msgid "Keyboard"
 msgstr "Clavier"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:287
+#: src/gui/widgets/tabs/setup_other.cpp:291
 msgid "Repeat delay"
 msgstr "Délai de répétition"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:291
+#: src/gui/widgets/tabs/setup_other.cpp:295
 msgid "Repeat interval"
 msgstr "Intervalle de répétition"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:295
+#: src/gui/widgets/tabs/setup_other.cpp:299
 msgid "Custom repeat interval"
 msgstr "Intervalle de répétition personnalisé"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:303
+#: src/gui/widgets/tabs/setup_other.cpp:307
 msgid "Shortcut buttons"
 msgstr "Boutons de raccourcis"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:308
+#: src/gui/widgets/tabs/setup_other.cpp:312
 msgid "Proxy server"
 msgstr "Serveur proxy"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:312
+#: src/gui/widgets/tabs/setup_other.cpp:316
 msgid "Proxy type"
 msgstr "Type de proxy"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:316
+#: src/gui/widgets/tabs/setup_other.cpp:320
 msgid "Proxy address:port"
 msgstr "Adresse du proxy:port"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:324
+#: src/gui/widgets/tabs/setup_other.cpp:328
 msgid "Enable server side attack"
 msgstr "Activer l'attaque de la part du serveur"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:328
+#: src/gui/widgets/tabs/setup_other.cpp:332
 msgid "Enable double clicks"
 msgstr "Activer double-cliques"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:332
+#: src/gui/widgets/tabs/setup_other.cpp:336
 msgid "Enable bot checker"
 msgstr "Activer le testeur de robots"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:336
+#: src/gui/widgets/tabs/setup_other.cpp:340
 msgid "Enable buggy servers protection (do not disable)"
 msgstr "Activer la protection pour serveurs defaillant (ne pas désactiver)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:341
+#: src/gui/widgets/tabs/setup_other.cpp:345
 msgid "Enable debug log"
 msgstr "Activer l'enregistrement des informations de débogage"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:345
+#: src/gui/widgets/tabs/setup_other.cpp:349
 msgid "Enable OpenGL log"
 msgstr "Activer historique OpenGL"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:349
+#: src/gui/widgets/tabs/setup_other.cpp:353
 msgid "Enable input log"
 msgstr "Activer l'historique d'entrées"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:353
+#: src/gui/widgets/tabs/setup_other.cpp:357
 msgid "Low traffic mode"
 msgstr "Mode traffic faible"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:357
+#: src/gui/widgets/tabs/setup_other.cpp:361
 msgid "Hide shield sprite"
 msgstr "Cacher le bouclier"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:362
+#: src/gui/widgets/tabs/setup_other.cpp:366
 msgid "Use FBO for screenshots (only for opengl)"
 msgstr "Utiliser FBO pour les captures d'écran (seulement pour OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:367
+#: src/gui/widgets/tabs/setup_other.cpp:371
 msgid "Network delay between sub servers"
 msgstr "Retard du réseau entre les sous-serveurs"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:371
+#: src/gui/widgets/tabs/setup_other.cpp:375
 msgid "Show background"
 msgstr "Montrer le fond"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:376
+#: src/gui/widgets/tabs/setup_other.cpp:380
 msgid "Screen density override"
 msgstr "Écrasement de la densité de l'écran"
 
@@ -3955,7 +3965,8 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:152
-msgid "Cache all sounds (can use additinal memory)"
+#, fuzzy
+msgid "Cache all sounds (can use additional memory)"
 msgstr ""
 "Mettre en cache tous les sons (peu utiliser de la mémoire supplémentaire)"
 
@@ -5290,28 +5301,28 @@ msgid "Enter password:"
 msgstr "Entrer le mot de passe :"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:172
+#: src/gui/windows/chatwindow.cpp:173
 msgid "rainbow 1"
 msgstr "arc en ciel 1"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:174
+#: src/gui/windows/chatwindow.cpp:175
 msgid "rainbow 2"
 msgstr "arc en ciel 2"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:176
+#: src/gui/windows/chatwindow.cpp:177
 msgid "rainbow 3"
 msgstr "arc en ciel 3"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:741
+#: src/gui/windows/chatwindow.cpp:742
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Présents : %s ; %d joueurs sont présents."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1155
+#: src/gui/windows/chatwindow.cpp:1156
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Message envoyé à %s : %s"
@@ -6979,13 +6990,13 @@ msgid "Failed to delete character."
 msgstr "La suppression du personnage n'a pu s'effectuer."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/chathandler.cpp:95
+#: src/net/ea/chathandler.cpp:97
 #, c-format
 msgid "Whisper could not be sent, %s is offline."
 msgstr "Le message n'a pu être envoyé, %s n'est pas en ligne."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/chathandler.cpp:104
+#: src/net/ea/chathandler.cpp:106
 #, c-format
 msgid "Whisper could not be sent, ignored by %s."
 msgstr "Le message privé n'a pu être envoyé, tu es ignoré par %s."
@@ -7937,7 +7948,7 @@ msgstr "OpenGL pour Mobile"
 #. TRANSLATORS: draw backend
 #: src/render/rendererslistsdl2.h:83 src/render/rendererslistsdl.h:80
 msgid "Normal OpenGL"
-msgstr ""
+msgstr "OpenGL Normal"
 
 #. TRANSLATORS: draw backend
 #: src/render/rendererslistsdl2.h:85 src/render/rendererslistsdl.h:82
