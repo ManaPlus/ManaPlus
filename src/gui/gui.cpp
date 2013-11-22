@@ -37,7 +37,6 @@
 #include "client.h"
 #include "configuration.h"
 #include "dragdrop.h"
-#include "mouseinput.h"
 #include "touchmanager.h"
 
 #include "input/keydata.h"

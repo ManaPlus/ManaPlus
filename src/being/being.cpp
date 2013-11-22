@@ -124,6 +124,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mSpriteColors(),
     mSpriteIDs(),
     mSpriteColorsIds(),
+    mSpriteParticles(),
     mGuilds(),
     mParty(nullptr),
     mActionTime(0),
@@ -3169,8 +3170,11 @@ void Being::recreateItemParticles()
         ParticleInfo *const pi = (*it).second;
         if (pi && !pi->files.empty())
         {
-            FOR_EACH (std::vector<Particle*>::const_iterator, itp, pi->particles)
+            FOR_EACH (std::vector<Particle*>::const_iterator,
+                      itp, pi->particles)
+            {
                 mChildParticleEffects.removeLocally(*itp);
+            }
 
             FOR_EACH (std::vector<std::string>::const_iterator, str, pi->files)
             {

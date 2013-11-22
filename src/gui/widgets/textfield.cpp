@@ -23,7 +23,6 @@
 #include "gui/widgets/textfield.h"
 
 #include "client.h"
-#include "mouseinput.h"
 
 #if defined ANDROID || defined USE_SDL2
 #include "input/inputmanager.h"
@@ -32,7 +31,6 @@
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
-#include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/popupmenu.h"
@@ -539,13 +537,13 @@ void TextField::moveCaretForward()
 
 void TextField::caretDelete()
 {
-     unsigned sz = static_cast<unsigned>(mText.size());
-     while (mCaretPosition < sz)
-     {
-         --sz;
-         mText.erase(mCaretPosition, 1);
-         if (mCaretPosition == sz || (mText[mCaretPosition] & 192) != 128)
-             break;
+    unsigned sz = static_cast<unsigned>(mText.size());
+    while (mCaretPosition < sz)
+    {
+        --sz;
+        mText.erase(mCaretPosition, 1);
+        if (mCaretPosition == sz || (mText[mCaretPosition] & 192) != 128)
+            break;
     }
 }
 

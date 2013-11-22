@@ -24,9 +24,16 @@
 #include "particle/particle.h"
 
 #include <string>
+#include <vector>
 
 struct ParticleInfo
 {
+    ParticleInfo() :
+        files(),
+        particles()
+    {
+    }
+
     std::vector<std::string> files;
     std::vector<Particle*> particles;
 };
