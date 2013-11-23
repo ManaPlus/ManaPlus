@@ -1,3 +1,15 @@
+2013-11-24 New release 1.3.11.24
+fix: compilation with SDL2.
+fix: compilation with libc++.
+fix: language tab (evol only).
+fix: shortcuts in input fields in SDL2.
+fix: SDL2 default renderer.
+fix: possible fix to incomplete chat messages in "new" tmw server.
+add: item particles.
+add: update mplus fonts.
+add: option to enable/disable tile animations.
+add: improve sprites update speed.
+
 2013-11-10 New release 1.3.11.10
 fix: crash with broken OpenGL functions.
 fix: item amount in trade in selling into personal shop.
