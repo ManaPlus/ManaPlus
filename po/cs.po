@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-11-22 12:13+0300\n"
-"PO-Revision-Date: 2013-11-20 09:23+0000\n"
+"POT-Creation-Date: 2013-11-23 12:25+0300\n"
+"PO-Revision-Date: 2013-11-23 08:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/"
 "cs/)\n"
@@ -38,25 +38,25 @@ msgid "Visible on map"
 msgstr "Viditelný na mapě"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:301
+#: src/being/being.cpp:302
 msgid "Human"
 msgstr ""
 
-#: src/being/being.cpp:509
+#: src/being/being.cpp:510
 msgid "dodge"
 msgstr "uskočil"
 
-#: src/being/being.cpp:509
+#: src/being/being.cpp:510
 msgid "miss"
 msgstr "minul"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1753 src/gui/windows/whoisonline.cpp:862
+#: src/being/being.cpp:1754 src/gui/windows/whoisonline.cpp:862
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1758 src/gui/windows/whoisonline.cpp:867
+#: src/being/being.cpp:1759 src/gui/windows/whoisonline.cpp:867
 msgid "I"
 msgstr ""
 
@@ -2499,7 +2499,7 @@ msgstr ""
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
 #: src/gui/setupactiondata.h:1928 src/gui/widgets/tabs/setup_chat.cpp:41
-#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:204
+#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:203
 msgid "Chat"
 msgstr "Chat"
 
@@ -2726,61 +2726,61 @@ msgstr "Peníze: %s"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:153
+#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:152
 msgid "black"
 msgstr "černá"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:155
+#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:154
 msgid "red"
 msgstr "červená"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:157
+#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:156
 msgid "green"
 msgstr "zelená"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:159
+#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:158
 msgid "blue"
 msgstr "modrá"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:161
+#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:160
 msgid "gold"
 msgstr "zlatá"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:163
+#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:162
 msgid "yellow"
 msgstr "žlutá"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:165
+#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:164
 msgid "pink"
 msgstr "růžová"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:167
+#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:166
 msgid "purple"
 msgstr "fialová"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:169
+#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:168
 msgid "grey"
 msgstr "šedá"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:171
+#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:170
 msgid "brown"
 msgstr "hnědá"
 
@@ -3441,7 +3441,7 @@ msgstr ""
 #. TRANSLATORS: chat color
 #. TRANSLATORS: inventory sort mode
 #: src/gui/widgets/tabs/setup_other.cpp:71
-#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:151
+#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:150
 #: src/gui/windows/inventorywindow.cpp:69
 msgid "default"
 msgstr "výchozí"
@@ -5273,28 +5273,28 @@ msgid "Enter password:"
 msgstr "Zadej heslo:"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:173
+#: src/gui/windows/chatwindow.cpp:172
 msgid "rainbow 1"
 msgstr "duhová 1"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:175
+#: src/gui/windows/chatwindow.cpp:174
 msgid "rainbow 2"
 msgstr "duhová 2"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:177
+#: src/gui/windows/chatwindow.cpp:176
 msgid "rainbow 3"
 msgstr "duhová 3"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:742
+#: src/gui/windows/chatwindow.cpp:741
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Přítomni: %s; %d hráčů je přítomno."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1156
+#: src/gui/windows/chatwindow.cpp:1155
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Šeptání pro %s: %s"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-11-09 14:08+0300\n"
-"PO-Revision-Date: 2013-11-20 09:23+0000\n"
+"POT-Creation-Date: 2013-11-22 12:13+0300\n"
+"PO-Revision-Date: 2013-11-23 08:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/manaplus/language/sv_SE/)\n"
 "MIME-Version: 1.0\n"
@@ -34,25 +34,25 @@ msgid "Visible on map"
 msgstr "Synlig på karta"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:298
+#: src/being/being.cpp:301
 msgid "Human"
 msgstr "Människa"
 
-#: src/being/being.cpp:506
+#: src/being/being.cpp:509
 msgid "dodge"
 msgstr "undvika"
 
-#: src/being/being.cpp:506
+#: src/being/being.cpp:509
 msgid "miss"
 msgstr "missa"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1750 src/gui/windows/whoisonline.cpp:862
+#: src/being/being.cpp:1753 src/gui/windows/whoisonline.cpp:862
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1755 src/gui/windows/whoisonline.cpp:867
+#: src/being/being.cpp:1758 src/gui/windows/whoisonline.cpp:867
 msgid "I"
 msgstr "I"
 
@@ -1059,7 +1059,7 @@ msgstr "Nuke"
 #: src/gui/popups/popupmenu.cpp:226 src/gui/popups/popupmenu.cpp:247
 #: src/gui/popups/popupmenu.cpp:395 src/gui/popups/popupmenu.cpp:546
 #: src/gui/popups/popupmenu.cpp:705 src/gui/popups/popupmenu.cpp:786
-#: src/gui/setupactiondata.h:1862 src/gui/windows/botcheckerwindow.cpp:304
+#: src/gui/setupactiondata.h:1918 src/gui/windows/botcheckerwindow.cpp:304
 msgid "Move"
 msgstr "Flytta"
 
@@ -1253,7 +1253,7 @@ msgstr "Rör kamera"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
-#: src/gui/popups/popupmenu.cpp:566 src/gui/setupactiondata.h:1870
+#: src/gui/popups/popupmenu.cpp:566 src/gui/setupactiondata.h:1926
 #: src/gui/windowmenu.cpp:148 src/gui/windows/inventorywindow.cpp:221
 #: src/gui/windows/outfitwindow.cpp:53
 msgid "Outfits"
@@ -2402,10 +2402,10 @@ msgstr ""
 #. TRANSLATORS: settings group
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
-#: src/gui/setupactiondata.h:1785 src/gui/setupactiondata.h:1874
+#: src/gui/setupactiondata.h:1785 src/gui/setupactiondata.h:1930
 #: src/gui/widgets/tabs/setup_audio.cpp:159
 #: src/gui/widgets/tabs/setup_chat.cpp:180
-#: src/gui/widgets/tabs/setup_other.cpp:321
+#: src/gui/widgets/tabs/setup_other.cpp:325
 #: src/gui/widgets/tabs/setup_visual.cpp:175
 #: src/gui/windows/charcreatedialog.cpp:107
 #: src/gui/windows/registerdialog.cpp:115
@@ -2456,21 +2456,26 @@ msgstr ""
 msgid "Mod"
 msgstr ""
 
+#. TRANSLATORS: input action name
+#: src/gui/setupactiondata.h:1839
+msgid "Ctrl"
+msgstr ""
+
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:1860
+#: src/gui/setupactiondata.h:1916
 msgid "Basic"
 msgstr "Enkel"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:1864 src/gui/windowmenu.cpp:128
+#: src/gui/setupactiondata.h:1920 src/gui/windowmenu.cpp:128
 msgid "Shortcuts"
 msgstr "Genvägar"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings group
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:1866 src/gui/widgets/tabs/setup_other.cpp:299
+#: src/gui/setupactiondata.h:1922 src/gui/widgets/tabs/setup_other.cpp:303
 #: src/gui/windowmenu.cpp:161
 msgid "Windows"
 msgstr "Fönster"
@@ -2478,7 +2483,7 @@ msgstr "Fönster"
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: emotes window name
 #. TRANSLATORS: emotes tab name
-#: src/gui/setupactiondata.h:1868 src/gui/windows/emotewindow.cpp:49
+#: src/gui/setupactiondata.h:1924 src/gui/windows/emotewindow.cpp:49
 #: src/gui/windows/emotewindow.cpp:107
 msgid "Emotes"
 msgstr "Emotes"
@@ -2486,13 +2491,13 @@ msgstr "Emotes"
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
-#: src/gui/setupactiondata.h:1872 src/gui/widgets/tabs/setup_chat.cpp:41
-#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:203
+#: src/gui/setupactiondata.h:1928 src/gui/widgets/tabs/setup_chat.cpp:41
+#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:204
 msgid "Chat"
 msgstr "Chat"
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:1876
+#: src/gui/setupactiondata.h:1932
 msgid "Gui"
 msgstr "Gui"
 
@@ -2714,61 +2719,61 @@ msgstr "Money: %s"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:152
+#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:153
 msgid "black"
 msgstr "svart"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:154
+#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:155
 msgid "red"
 msgstr "röd"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:156
+#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:157
 msgid "green"
 msgstr "grön"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:158
+#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:159
 msgid "blue"
 msgstr "blå"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:160
+#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:161
 msgid "gold"
 msgstr "guld"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:162
+#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:163
 msgid "yellow"
 msgstr "gul"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:164
+#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:165
 msgid "pink"
 msgstr "rosa"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:166
+#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:167
 msgid "purple"
 msgstr "lila"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:168
+#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:169
 msgid "grey"
 msgstr "grå"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:170
+#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:171
 msgid "brown"
 msgstr "brun"
 
@@ -3427,7 +3432,7 @@ msgstr "SOCKS5 hostnamn"
 #. TRANSLATORS: chat color
 #. TRANSLATORS: inventory sort mode
 #: src/gui/widgets/tabs/setup_other.cpp:71
-#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:150
+#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:151
 #: src/gui/windows/inventorywindow.cpp:69
 msgid "default"
 msgstr "standard"
@@ -3566,96 +3571,101 @@ msgstr "Skroll-radius"
 msgid "Auto resize minimaps"
 msgstr "Auto-ändra storlek för minikartan"
 
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_other.cpp:172
+msgid "Play map animations"
+msgstr ""
+
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:173
+#: src/gui/widgets/tabs/setup_other.cpp:177
 msgid "Moving"
 msgstr "Förflyttning"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:176
+#: src/gui/widgets/tabs/setup_other.cpp:180
 msgid "Auto fix position"
 msgstr "Auto-fix position"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:180
+#: src/gui/widgets/tabs/setup_other.cpp:184
 msgid "Attack while moving"
 msgstr "Attackera under rörelse"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:184
+#: src/gui/widgets/tabs/setup_other.cpp:188
 msgid "Attack next target"
 msgstr "Attackera nästa target"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:188
+#: src/gui/widgets/tabs/setup_other.cpp:192
 msgid "Sync player move"
 msgstr "Synkronicera spelarrörelse"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:192
+#: src/gui/widgets/tabs/setup_other.cpp:196
 msgid "Crazy move A program"
 msgstr "Crazy move A FuXual"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:196
+#: src/gui/widgets/tabs/setup_other.cpp:200
 msgid "Mouse relative moves (good for touch interfaces)"
 msgstr "Musrelativa förflyttningar (bra för touch-gränssnitt)"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:201
+#: src/gui/widgets/tabs/setup_other.cpp:205
 msgid "Player"
 msgstr "Spelare"
 
-#: src/gui/widgets/tabs/setup_other.cpp:203
+#: src/gui/widgets/tabs/setup_other.cpp:207
 msgid "Show own hp bar"
 msgstr "Visa egen hp-bar"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:207
+#: src/gui/widgets/tabs/setup_other.cpp:211
 msgid "Enable quick stats"
 msgstr "Aktivera quick stats"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:211
+#: src/gui/widgets/tabs/setup_other.cpp:215
 msgid "Cycle player targets"
 msgstr "Cycle spelarens targets"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:215
+#: src/gui/widgets/tabs/setup_other.cpp:219
 msgid "Show job exp messages"
 msgstr "Visa jobbexp-meddelanden"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:219
+#: src/gui/widgets/tabs/setup_other.cpp:223
 msgid "Show players popups"
 msgstr "Visa spelar-popups"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:223
+#: src/gui/widgets/tabs/setup_other.cpp:227
 msgid "Afk message"
 msgstr "Afk-meddelande"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:227
+#: src/gui/widgets/tabs/setup_other.cpp:231
 msgid "Show job"
 msgstr "Visa jobb"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:231
+#: src/gui/widgets/tabs/setup_other.cpp:235
 msgid "Enable attack filter"
 msgstr "Aktivera attack-filter"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:235
+#: src/gui/widgets/tabs/setup_other.cpp:239
 msgid "Enable pickup filter"
 msgstr "Aktivera pickup-filter"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:239
+#: src/gui/widgets/tabs/setup_other.cpp:243
 msgid "Enable advert protocol"
 msgstr "Aktivera annonsprotokoll"
 
-#: src/gui/widgets/tabs/setup_other.cpp:242
+#: src/gui/widgets/tabs/setup_other.cpp:246
 msgid "Enable weight notifications"
 msgstr "Aktivera vikt-notationer"
 
@@ -3663,157 +3673,157 @@ msgstr "Aktivera vikt-notationer"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: shop window name
 #. TRANSLATORS: inventory button
-#: src/gui/widgets/tabs/setup_other.cpp:247 src/gui/windowmenu.cpp:144
+#: src/gui/widgets/tabs/setup_other.cpp:251 src/gui/windowmenu.cpp:144
 #: src/gui/windows/buyselldialog.cpp:39 src/gui/windows/buyselldialog.cpp:50
 #: src/gui/windows/inventorywindow.cpp:223
 msgid "Shop"
 msgstr "Shop"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:250
+#: src/gui/widgets/tabs/setup_other.cpp:254
 msgid "Accept sell/buy requests"
 msgstr "Acceptera sälj/köp erbjudanden"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:254
+#: src/gui/widgets/tabs/setup_other.cpp:258
 msgid "Enable shop mode"
 msgstr "Aktivera shop mode"
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: npc dialog name
 #. TRANSLATORS: npc post dialog caption
-#: src/gui/widgets/tabs/setup_other.cpp:259 src/gui/windows/npcdialog.cpp:82
+#: src/gui/widgets/tabs/setup_other.cpp:263 src/gui/windows/npcdialog.cpp:82
 #: src/gui/windows/npcpostdialog.cpp:44
 msgid "NPC"
 msgstr "NPC"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:262
+#: src/gui/widgets/tabs/setup_other.cpp:266
 msgid "Cycle npc targets"
 msgstr "Cycle npc-targets"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:266
+#: src/gui/widgets/tabs/setup_other.cpp:270
 msgid "Log NPC dialogue"
 msgstr "Logga NPC-dialoger"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:271
+#: src/gui/widgets/tabs/setup_other.cpp:275
 msgid "Bots support"
 msgstr "Bots support"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:274
+#: src/gui/widgets/tabs/setup_other.cpp:278
 msgid "Enable auction bot support"
 msgstr "Aktivera support för auktions-bot"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:278
+#: src/gui/widgets/tabs/setup_other.cpp:282
 msgid "Enable guild bot support and disable native guild support"
 msgstr "Aktivera support för guild-bot och avaktivera grund-supporten för guild"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:284
+#: src/gui/widgets/tabs/setup_other.cpp:288
 msgid "Keyboard"
 msgstr "Tangentbord"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:287
+#: src/gui/widgets/tabs/setup_other.cpp:291
 msgid "Repeat delay"
 msgstr "Upprepningsfördröjning"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:291
+#: src/gui/widgets/tabs/setup_other.cpp:295
 msgid "Repeat interval"
 msgstr "Upprepningsintervall"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:295
+#: src/gui/widgets/tabs/setup_other.cpp:299
 msgid "Custom repeat interval"
 msgstr "Anpassat upprepningsintervall"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:303
+#: src/gui/widgets/tabs/setup_other.cpp:307
 msgid "Shortcut buttons"
 msgstr "Genvägsknappar"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:308
+#: src/gui/widgets/tabs/setup_other.cpp:312
 msgid "Proxy server"
 msgstr "Proxy-server"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:312
+#: src/gui/widgets/tabs/setup_other.cpp:316
 msgid "Proxy type"
 msgstr "Proxy-typ"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:316
+#: src/gui/widgets/tabs/setup_other.cpp:320
 msgid "Proxy address:port"
 msgstr "Proxy-adress:port"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:324
+#: src/gui/widgets/tabs/setup_other.cpp:328
 msgid "Enable server side attack"
 msgstr "Aktivera serversideattack"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:328
+#: src/gui/widgets/tabs/setup_other.cpp:332
 msgid "Enable double clicks"
 msgstr "Aktivera dubbleklick"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:332
+#: src/gui/widgets/tabs/setup_other.cpp:336
 msgid "Enable bot checker"
 msgstr "Aktivera bot checker"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:336
+#: src/gui/widgets/tabs/setup_other.cpp:340
 msgid "Enable buggy servers protection (do not disable)"
 msgstr "Aktivera buggig-server-skydd (ändra inte denna är du snäll)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:341
+#: src/gui/widgets/tabs/setup_other.cpp:345
 msgid "Enable debug log"
 msgstr "Aktivera debug-logg"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:345
+#: src/gui/widgets/tabs/setup_other.cpp:349
 msgid "Enable OpenGL log"
 msgstr "Aktivera OpenGL-logg"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:349
+#: src/gui/widgets/tabs/setup_other.cpp:353
 msgid "Enable input log"
 msgstr "Aktivera inputs-logg"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:353
+#: src/gui/widgets/tabs/setup_other.cpp:357
 msgid "Low traffic mode"
 msgstr "Lågtrafik-mode"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:357
+#: src/gui/widgets/tabs/setup_other.cpp:361
 msgid "Hide shield sprite"
 msgstr "Dölj sköld"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:362
+#: src/gui/widgets/tabs/setup_other.cpp:366
 msgid "Use FBO for screenshots (only for opengl)"
 msgstr "Använd FBO för skärmdumpar (bara för openGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:367
+#: src/gui/widgets/tabs/setup_other.cpp:371
 msgid "Network delay between sub servers"
 msgstr "Nätverksfördröjning mellan underservrar"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:371
+#: src/gui/widgets/tabs/setup_other.cpp:375
 msgid "Show background"
 msgstr "Visa bakgrund"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:376
+#: src/gui/widgets/tabs/setup_other.cpp:380
 msgid "Screen density override"
 msgstr "Skärmdensitet överskrids"
 
@@ -3931,7 +3941,7 @@ msgstr "Cache:a alla sprites per karta (kan få för sig att använda mer minne)
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:152
-msgid "Cache all sounds (can use additinal memory)"
+msgid "Cache all sounds (can use additional memory)"
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -5250,28 +5260,28 @@ msgid "Enter password:"
 msgstr "Skriv lösenord:"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:172
+#: src/gui/windows/chatwindow.cpp:173
 msgid "rainbow 1"
 msgstr "regnbåge 1"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:174
+#: src/gui/windows/chatwindow.cpp:175
 msgid "rainbow 2"
 msgstr "regnbåge 2"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:176
+#: src/gui/windows/chatwindow.cpp:177
 msgid "rainbow 3"
 msgstr "regnbåge 3"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:741
+#: src/gui/windows/chatwindow.cpp:742
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Presentera: %s; %d spelare är presenterad."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1155
+#: src/gui/windows/chatwindow.cpp:1156
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Viskar till %s: %s"
@@ -6926,13 +6936,13 @@ msgid "Failed to delete character."
 msgstr "Misslyckades att radera karaktär."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/chathandler.cpp:95
+#: src/net/ea/chathandler.cpp:97
 #, c-format
 msgid "Whisper could not be sent, %s is offline."
 msgstr "Viskning kunde inte sändas, %s är offline."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/chathandler.cpp:104
+#: src/net/ea/chathandler.cpp:106
 #, c-format
 msgid "Whisper could not be sent, ignored by %s."
 msgstr "Viskning kunde inte sändas, ignorerad av %s."

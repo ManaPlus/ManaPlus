@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-11-22 12:13+0300\n"
-"PO-Revision-Date: 2013-11-21 16:25+0000\n"
-"Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
+"POT-Creation-Date: 2013-11-23 12:25+0300\n"
+"PO-Revision-Date: 2013-11-23 08:14+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/"
 "language/es/)\n"
 "Language: es\n"
@@ -44,25 +44,25 @@ msgid "Visible on map"
 msgstr "Visibles en el mapa"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:301
+#: src/being/being.cpp:302
 msgid "Human"
 msgstr "Humano"
 
-#: src/being/being.cpp:509
+#: src/being/being.cpp:510
 msgid "dodge"
 msgstr "evade"
 
-#: src/being/being.cpp:509
+#: src/being/being.cpp:510
 msgid "miss"
 msgstr "falla"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1753 src/gui/windows/whoisonline.cpp:862
+#: src/being/being.cpp:1754 src/gui/windows/whoisonline.cpp:862
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1758 src/gui/windows/whoisonline.cpp:867
+#: src/being/being.cpp:1759 src/gui/windows/whoisonline.cpp:867
 msgid "I"
 msgstr "I"
 
@@ -2505,7 +2505,7 @@ msgstr "Emotes"
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
 #: src/gui/setupactiondata.h:1928 src/gui/widgets/tabs/setup_chat.cpp:41
-#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:204
+#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:203
 msgid "Chat"
 msgstr "Chat"
 
@@ -2578,12 +2578,12 @@ msgstr "Barra de PV del monstruo (segundo color)"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:135
 msgid "Party members"
-msgstr "Miembros de grupo"
+msgstr "Miembros de tu grupo"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:137
 msgid "Guild members"
-msgstr "Miembros de clan"
+msgstr "Miembros de tu clan"
 
 #. TRANSLATORS: palette color
 #. TRANSLATORS: settings option
@@ -2594,7 +2594,7 @@ msgstr "Efectos de partículas"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:141
 msgid "Pickup notification"
-msgstr "Notificación al recojer"
+msgstr "Notificación al recoger"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:143
@@ -2704,12 +2704,12 @@ msgstr "Color de artículos amontonados en el suelo"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:204
 msgid "Home place"
-msgstr "Marca de inicio"
+msgstr "Marca Home"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:207
 msgid "Home place border"
-msgstr "Borde de marca de inicio"
+msgstr "Borde de marca Home"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:210
@@ -2732,61 +2732,61 @@ msgstr "Dinero: %s"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:153
+#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:152
 msgid "black"
 msgstr "negro"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:155
+#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:154
 msgid "red"
 msgstr "rojo"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:157
+#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:156
 msgid "green"
 msgstr "verde"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:159
+#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:158
 msgid "blue"
 msgstr "azul"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:161
+#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:160
 msgid "gold"
 msgstr "dorado"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:163
+#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:162
 msgid "yellow"
 msgstr "amarillo"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:165
+#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:164
 msgid "pink"
 msgstr "rosa"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:167
+#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:166
 msgid "purple"
 msgstr "púrpura"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:169
+#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:168
 msgid "grey"
 msgstr "gris"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:171
+#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:170
 msgid "brown"
 msgstr "marrón"
 
@@ -3160,7 +3160,7 @@ msgstr "Mostrar mensajes de conexión de miembros del grupo"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:112
 msgid "Show guild online messages"
-msgstr "Mostrar mensajes de clan conectado"
+msgstr "Mostrar mensajes de conexión de miembros del clan"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_chat.cpp:117
@@ -3215,7 +3215,7 @@ msgstr "Habilitar pestaña de lenguaje"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:156
 msgid "Show all languages messages"
-msgstr "Mostrar los mensajes de todos los lenguajes"
+msgstr "Mostrar mensajes de todos los lenguajes"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:160
@@ -3448,7 +3448,7 @@ msgstr "SOCKS5 hostname"
 #. TRANSLATORS: chat color
 #. TRANSLATORS: inventory sort mode
 #: src/gui/widgets/tabs/setup_other.cpp:71
-#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:151
+#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:150
 #: src/gui/windows/inventorywindow.cpp:69
 msgid "default"
 msgstr "predeterminado"
@@ -3610,7 +3610,7 @@ msgstr "Atacar mientras está en movimiento"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:188
 msgid "Attack next target"
-msgstr "Atacar próximo objetivo"
+msgstr "Atacar siguiente objetivo"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:192
@@ -3961,9 +3961,8 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:152
-#, fuzzy
 msgid "Cache all sounds (can use additional memory)"
-msgstr "Almacenar en caché todos los sonidos (puede usar memoria adicional)"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:44
@@ -4038,7 +4037,7 @@ msgstr "Ocultar los nicks de jugadores borrados"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:100
 msgid "Use special diagonal speed in players moving"
-msgstr "Usar velocidad especial diagonal en movimientos de jugadores"
+msgstr "Usar velocidad diagonal especial en movimiento de jugadores"
 
 #. TRANSLATORS: relations table header
 #. TRANSLATORS: bot checker window table header
@@ -4373,7 +4372,7 @@ msgstr "Grande"
 #. TRANSLATORS: touch settings tab
 #: src/gui/widgets/tabs/setup_touch.cpp:63
 msgid "Touch"
-msgstr "Tocar"
+msgstr "Táctil"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_touch.cpp:72
@@ -5296,28 +5295,28 @@ msgid "Enter password:"
 msgstr "Ingrese contraseña:"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:173
+#: src/gui/windows/chatwindow.cpp:172
 msgid "rainbow 1"
 msgstr "arco iris 1"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:175
+#: src/gui/windows/chatwindow.cpp:174
 msgid "rainbow 2"
 msgstr "arco iris 2"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:177
+#: src/gui/windows/chatwindow.cpp:176
 msgid "rainbow 3"
 msgstr "arco iris 3"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:742
+#: src/gui/windows/chatwindow.cpp:741
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Presentes: %s; %d jugadores están presentes."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1156
+#: src/gui/windows/chatwindow.cpp:1155
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Susurrando a %s: %s"
@@ -7902,12 +7901,12 @@ msgstr "pvp activado"
 #. TRANSLATORS: notification message
 #: src/notifications.h:331
 msgid "gvg on"
-msgstr "gvg encendido"
+msgstr "gvg activado"
 
 #. TRANSLATORS: notification message
 #: src/notifications.h:334
 msgid "pvp on, gvg on"
-msgstr "pvp encendido, gvg encendido "
+msgstr "pvp activado, gvg activado"
 
 #. TRANSLATORS: notification message
 #: src/notifications.h:337

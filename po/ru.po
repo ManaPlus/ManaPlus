@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-11-22 12:13+0300\n"
-"PO-Revision-Date: 2013-11-20 09:23+0000\n"
+"POT-Creation-Date: 2013-11-23 12:25+0300\n"
+"PO-Revision-Date: 2013-11-23 09:23+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
 "language/ru/)\n"
@@ -42,25 +42,25 @@ msgid "Visible on map"
 msgstr "Видимые на карте"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:301
+#: src/being/being.cpp:302
 msgid "Human"
 msgstr "Человек"
 
-#: src/being/being.cpp:509
+#: src/being/being.cpp:510
 msgid "dodge"
 msgstr "уворот"
 
-#: src/being/being.cpp:509
+#: src/being/being.cpp:510
 msgid "miss"
 msgstr "промах"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1753 src/gui/windows/whoisonline.cpp:862
+#: src/being/being.cpp:1754 src/gui/windows/whoisonline.cpp:862
 msgid "A"
 msgstr "О"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1758 src/gui/windows/whoisonline.cpp:867
+#: src/being/being.cpp:1759 src/gui/windows/whoisonline.cpp:867
 msgid "I"
 msgstr "Б"
 
@@ -2472,7 +2472,7 @@ msgstr "Модификатор"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1839
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #. TRANSLATORS: input tab sub tab name
 #: src/gui/setupactiondata.h:1916
@@ -2505,7 +2505,7 @@ msgstr "Смайлы"
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
 #: src/gui/setupactiondata.h:1928 src/gui/widgets/tabs/setup_chat.cpp:41
-#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:204
+#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:203
 msgid "Chat"
 msgstr "Чат"
 
@@ -2732,61 +2732,61 @@ msgstr "Деньги: %s"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:153
+#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:152
 msgid "black"
 msgstr "черный"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:155
+#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:154
 msgid "red"
 msgstr "красный"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:157
+#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:156
 msgid "green"
 msgstr "зеленый"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:159
+#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:158
 msgid "blue"
 msgstr "синий"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:161
+#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:160
 msgid "gold"
 msgstr "золотой"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:163
+#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:162
 msgid "yellow"
 msgstr "желтый"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:165
+#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:164
 msgid "pink"
 msgstr "розовый"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:167
+#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:166
 msgid "purple"
 msgstr "фиолетовый"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:169
+#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:168
 msgid "grey"
 msgstr "серый"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:171
+#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:170
 msgid "brown"
 msgstr "коричневый"
 
@@ -3447,7 +3447,7 @@ msgstr "SOCKS5 хост"
 #. TRANSLATORS: chat color
 #. TRANSLATORS: inventory sort mode
 #: src/gui/widgets/tabs/setup_other.cpp:71
-#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:151
+#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:150
 #: src/gui/windows/inventorywindow.cpp:69
 msgid "default"
 msgstr "По умолчанию"
@@ -3589,7 +3589,7 @@ msgstr "Автоматически менять размер миникарты"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:172
 msgid "Play map animations"
-msgstr ""
+msgstr "Играть анимацию карт"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_other.cpp:177
@@ -3962,9 +3962,8 @@ msgstr "Кэшировать все спрайты на карте (может �
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:152
-#, fuzzy
 msgid "Cache all sounds (can use additional memory)"
-msgstr "Кэшировать все звуки (может быть использовано много памяти)"
+msgstr "Кешировать все звуки (может использовать дополнительную память)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:44
@@ -5294,28 +5293,28 @@ msgid "Enter password:"
 msgstr "Введите пароль:"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:173
+#: src/gui/windows/chatwindow.cpp:172
 msgid "rainbow 1"
 msgstr "радуга 1"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:175
+#: src/gui/windows/chatwindow.cpp:174
 msgid "rainbow 2"
 msgstr "радуга 2"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:177
+#: src/gui/windows/chatwindow.cpp:176
 msgid "rainbow 3"
 msgstr "радуга 3"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:742
+#: src/gui/windows/chatwindow.cpp:741
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Присутствуют: %s; Всего %d игроков."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1156
+#: src/gui/windows/chatwindow.cpp:1155
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Вы прошептали %s: %s"
