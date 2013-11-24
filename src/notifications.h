@@ -261,7 +261,7 @@ namespace NotifyManager
             N_("Cannot raise skill!"), EMPTY},
         {"arrow equip needed",
             // TRANSLATORS: notification message
-            N_("Equip arrows first."), EMPTY},
+            N_("Equip ammunition first."), EMPTY},
         {"trade fail far away",
             // TRANSLATORS: notification message
             N_("Trading with %s isn't possible. Trade partner is "
