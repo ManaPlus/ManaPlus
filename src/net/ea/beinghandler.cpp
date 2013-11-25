@@ -110,7 +110,7 @@ void BeingHandler::setSprite(Being *const being, const unsigned int slot,
 {
     if (!being)
         return;
-    being->setSprite(slot, id, color, colorId, isWeapon, isTempSprite);
+    being->updateSprite(slot, id, color, colorId, isWeapon, isTempSprite);
 }
 
 void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
@@ -255,10 +255,9 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     }
     uint8_t gender = msg.readInt8();
 
-    // reserving bits for future usage
-
     if (!disguiseId && dstBeing->getType() == ActorSprite::PLAYER)
     {
+        // reserving bits for future usage
         gender &= 3;
         dstBeing->setGender(Being::intToGender(gender));
         // Set these after the gender, as the sprites may be gender-specific

@@ -1902,6 +1902,21 @@ void Being::updateColors()
     }
 }
 
+void Being::updateSprite(const unsigned int slot, const int id,
+                         std::string color, const unsigned char colorId,
+                         const bool isWeapon, const bool isTempSprite)
+{
+    if (slot >= Net::getCharServerHandler()->maxSprite())
+        return;
+
+    if (slot >= mSpriteIDs.size())
+        mSpriteIDs.resize(slot + 1, 0);
+
+    if (slot && mSpriteIDs[slot] == id)
+        return;
+    setSprite(slot, id, color, colorId, isWeapon, isTempSprite);
+}
+
 void Being::setSprite(const unsigned int slot, const int id,
                       std::string color, const unsigned char colorId,
                       const bool isWeapon, const bool isTempSprite)

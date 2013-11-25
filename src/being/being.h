@@ -378,6 +378,12 @@ class Being : public ActorSprite, public ConfigListener
                        const bool isWeapon = false,
                        const bool isTempSprite = false);
 
+        void updateSprite(const unsigned int slot, const int id,
+                          std::string color = "",
+                          const unsigned char colorId = 1,
+                          const bool isWeapon = false,
+                          const bool isTempSprite = false);
+
         void setSpriteID(const unsigned int slot, const int id);
 
         void setSpriteColor(const unsigned int slot,
