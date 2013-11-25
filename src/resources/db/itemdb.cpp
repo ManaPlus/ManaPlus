@@ -604,7 +604,11 @@ const ItemDB::ItemInfos &ItemDB::getItemInfos()
 int parseSpriteName(const std::string &name)
 {
     int id = -1;
-    if (name == "shoes" || name == "boot" || name == "boots")
+    if (name == "body" || name == "race")
+    {
+        id = 0;
+    }
+    else if (name == "shoes" || name == "boot" || name == "boots")
     {
         id = 1;
     }
@@ -788,21 +792,33 @@ void loadReplaceSprite(ItemInfo *const itemInfo, const XmlNodePtr replaceNode)
     {
         case -1:
         {
-            for (int f = 0; f < 10; f ++)
-            {
-                std::map<int, int> *const mapList
-                    = itemInfo->addReplaceSprite(
-                    parseSpriteName(removeSprite), f);
-                if (!mapList)
-                    continue;
-                for_each_xml_child_node(itemNode, replaceNode)
+            if (removeSprite.empty())
+            {  // remove all sprites
+                for (int f = 0; f < 10; f ++)
                 {
-                    if (xmlNameEqual(itemNode, "item"))
+                    for (int sprite = 0; sprite < 13; sprite ++)
+                        itemInfo->addReplaceSprite(sprite, f);
+                }
+            }
+            else
+            {  // replace only given sprites
+                for (int f = 0; f < 10; f ++)
+                {
+                    std::map<int, int> *const mapList
+                        = itemInfo->addReplaceSprite(
+                        parseSpriteName(removeSprite), f);
+                    if (!mapList)
+                        continue;
+                    for_each_xml_child_node(itemNode, replaceNode)
                     {
-                        const int from = XML::getProperty(itemNode, "from", 0);
-                        const int to = XML::getProperty(itemNode, "to", 1);
-
-                        (*mapList)[from] = to;
+                        if (xmlNameEqual(itemNode, "item"))
+                        {
+                            const int from = XML::getProperty(
+                                itemNode, "from", 0);
+                            const int to = XML::getProperty(
+                                itemNode, "to", 1);
+                            (*mapList)[from] = to;
+                        }
                     }
                 }
             }
