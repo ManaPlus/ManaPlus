@@ -148,6 +148,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mIp(),
     mSpriteRemap(new int[20]),
     mSpriteHide(new int[20]),
+    mSpriteDraw(new int[20]),
     mComment(),
     mPet(nullptr),
     mOwner(nullptr),
@@ -191,6 +192,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     {
         mSpriteRemap[f] = f;
         mSpriteHide[f] = 0;
+        mSpriteDraw[f] = 0;
     }
 
     setMap(map);
@@ -223,6 +225,8 @@ Being::~Being()
     mSpriteRemap = nullptr;
     delete [] mSpriteHide;
     mSpriteHide = nullptr;
+    delete [] mSpriteDraw;
+    mSpriteDraw = nullptr;
 
     delete mSpeechBubble;
     mSpeechBubble = nullptr;
@@ -1944,6 +1948,7 @@ void Being::setSprite(const unsigned int slot, const int id,
     if (id == 0)
     {
         removeSprite(slot);
+        mSpriteDraw[slot] = 0;
 
         if (isWeapon)
             mEquippedWeapon = nullptr;
@@ -1987,6 +1992,7 @@ void Being::setSprite(const unsigned int slot, const int id,
             equipmentSprite->setSpriteDirection(getSpriteDirection());
 
         CompoundSprite::setSprite(slot, equipmentSprite);
+        mSpriteDraw[slot] = id;
 
         addItemParticles(id, info.getDisplay());
 
@@ -2474,6 +2480,7 @@ void Being::recalcSpritesOrder()
 
     std::vector<int>::iterator it;
     int oldHide[20];
+    bool updatedSprite[20];
     int dir = mSpriteDirection;
     if (dir < 0 || dir >= 9)
         dir = 0;
@@ -2487,9 +2494,11 @@ void Being::recalcSpritesOrder()
     {
         oldHide[slot] = mSpriteHide[slot];
         mSpriteHide[slot] = 0;
+        updatedSprite[slot] = false;
     }
 
     const size_t spriteIdSize = mSpriteIDs.size();
+
     for (unsigned slot = 0; slot < sz; slot ++)
     {
         slotRemap.push_back(slot);
@@ -2549,6 +2558,7 @@ void Being::recalcSpritesOrder()
                                             .getDyeColorsString(mHairColor),
                                             1, false, true);
                                     }
+                                    updatedSprite[remSprite] = true;
                                 }
                             }
                         }
@@ -2578,6 +2588,7 @@ void Being::recalcSpritesOrder()
                                                 mHairColor),
                                                 1, false, true);
                                         }
+                                        updatedSprite[slot2] = true;
                                     }
                                 }
                             }
@@ -2709,13 +2720,19 @@ void Being::recalcSpritesOrder()
     for (unsigned slot = 0; slot < sz; slot ++)
     {
         mSpriteRemap[slot] = slotRemap[slot];
-        if (oldHide[slot] != 0 && oldHide[slot] != 1 && mSpriteHide[slot] == 0)
+        if (mSpriteHide[slot] == 0)
         {
             const int id = mSpriteIDs[slot];
-            if (!id)
-                continue;
+            if (oldHide[slot] != 0 && oldHide[slot] != 1)
+            {
+                if (!id)
+                    continue;
 
-            setSprite(slot, id, mSpriteColors[slot], 1, false, true);
+                updatedSprite[slot] = true;
+                setSprite(slot, id, mSpriteColors[slot], 1, false, true);
+            }
+            if (updatedSprite[slot] == false && mSpriteDraw[slot] != id)
+                setSprite(slot, id, mSpriteColors[slot], 1, false, true);
         }
 //        logger->log("slot %d = %d", slot, mSpriteRemap[slot]);
     }

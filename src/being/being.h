@@ -1022,6 +1022,7 @@ class Being : public ActorSprite, public ConfigListener
         std::string mIp;
         int *mSpriteRemap;
         int *mSpriteHide;
+        int *mSpriteDraw;
         std::string mComment;
         Being *mPet;
         Being *mOwner;
