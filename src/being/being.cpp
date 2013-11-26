@@ -2722,19 +2722,25 @@ void Being::recalcSpritesOrder()
         mSpriteRemap[slot] = slotRemap[slot];
         if (mSpriteHide[slot] == 0)
         {
-            const int id = mSpriteIDs[slot];
             if (oldHide[slot] != 0 && oldHide[slot] != 1)
             {
+                const int id = mSpriteIDs[slot];
                 if (!id)
                     continue;
 
                 updatedSprite[slot] = true;
                 setSprite(slot, id, mSpriteColors[slot], 1, false, true);
             }
+        }
+    }
+    for (unsigned slot = 0; slot < spriteIdSize; slot ++)
+    {
+        if (mSpriteHide[slot] == 0)
+        {
+            const int id = mSpriteIDs[slot];
             if (updatedSprite[slot] == false && mSpriteDraw[slot] != id)
                 setSprite(slot, id, mSpriteColors[slot], 1, false, true);
         }
-//        logger->log("slot %d = %d", slot, mSpriteRemap[slot]);
     }
 }
 
