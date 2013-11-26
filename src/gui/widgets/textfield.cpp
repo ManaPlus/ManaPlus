@@ -31,9 +31,7 @@
 #include "input/keydata.h"
 #include "input/keyevent.h"
 
-#ifndef USE_INTERNALGUICHAN
 #include "gui/sdlinput.h"
-#endif
 
 #include "gui/viewport.h"
 
