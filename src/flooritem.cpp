@@ -144,7 +144,10 @@ bool FloorItem::draw(Graphics *const graphics,
         }
     }
 
-    const bool res = ActorSprite::draw(graphics, offsetX, offsetY);
+    const int px = getActorX() + offsetX;
+    const int py = getActorY() + offsetY;
+    ActorSprite::draw1(graphics, px, py);
+    const bool res = CompoundSprite::draw(graphics, px, py);
 
     if (mHighlight)
     {

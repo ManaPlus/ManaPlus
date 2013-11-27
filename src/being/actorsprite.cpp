@@ -75,34 +75,17 @@ ActorSprite::~ActorSprite()
     }
 }
 
-bool ActorSprite::draw(Graphics *const graphics,
+void ActorSprite::draw1(Graphics *const graphics,
                        const int offsetX, const int offsetY) const
 {
-    FUNC_BLOCK("ActorSprite::draw", 1)
-    const int px = getPixelX() + offsetX - mapTileSize / 2;
-    // Temporary fix to the Y offset.
-#ifdef MANASERV_SUPPORT
-    const int py = getPixelY() + offsetY -
-        ((Net::getNetworkType() == ServerInfo::MANASERV) ? 15 : mapTileSize);
-#else
-    const int py = getPixelY() + offsetY - mapTileSize;
-#endif
-
+    FUNC_BLOCK("ActorSprite::draw1", 1)
     if (mUsedTargetCursor)
     {
         mUsedTargetCursor->update(tick_time * MILLISECONDS_IN_A_TICK);
         mUsedTargetCursor->draw(graphics,
-            px + getTargetOffsetX() - mCursorPaddingX,
-            py + getTargetOffsetY() - mCursorPaddingY);
+            offsetX + getTargetOffsetX() - mCursorPaddingX,
+            offsetY + getTargetOffsetY() - mCursorPaddingY);
     }
-
-    return drawSpriteAt(graphics, px, py);
-}
-
-bool ActorSprite::drawSpriteAt(Graphics *const graphics,
-                               const int x, const int y) const
-{
-    return CompoundSprite::draw(graphics, x, y);
 }
 
 void ActorSprite::logic()

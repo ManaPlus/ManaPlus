@@ -2253,7 +2253,12 @@ bool Being::draw(Graphics *const graphics,
 {
     bool res = true;
     if (!mErased)
-        res = ActorSprite::draw(graphics, offsetX, offsetY);
+    {
+        const int px = getActorX() + offsetX;
+        const int py = getActorY() + offsetY;
+        ActorSprite::draw1(graphics, px, py);
+        res = drawSpriteAt(graphics, px, py);
+    }
 
     return res;
 }
@@ -2296,10 +2301,7 @@ void Being::drawSpritesSDL(Graphics *const graphics,
 bool Being::drawSpriteAt(Graphics *const graphics,
                          const int x, const int y) const
 {
-    bool res = true;
-
-    if (!mErased)
-        res = ActorSprite::drawSpriteAt(graphics, x, y);
+    bool res = CompoundSprite::draw(graphics, x, y);
 
     if (!userPalette)
         return res;
