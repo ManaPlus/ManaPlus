@@ -128,13 +128,20 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
 
         font->drawString(g, key, emoteX + 2, emoteY + 2);
     }
-    const unsigned sz = static_cast<unsigned>(mEmoteImg.size());
-    for (unsigned i = 0; i < mMaxItems; i++)
+    unsigned sz = static_cast<unsigned>(mEmoteImg.size());
+    if (sz > mMaxItems)
+        sz = mMaxItems;
+    for (unsigned i = 0; i < sz; i++)
     {
-        if (i < sz && mEmoteImg[i] && mEmoteImg[i]->sprite)
+        const EmoteSprite *const emoteImg = mEmoteImg[i];
+        if (emoteImg)
         {
-            mEmoteImg[i]->sprite->draw(g, (i % mGridWidth) * mBoxWidth + 2,
-                (i / mGridWidth) * mBoxHeight + 10);
+            const AnimatedSprite *const sprite = emoteImg->sprite;
+            if (sprite)
+            {
+                sprite->draw(g, (i % mGridWidth) * mBoxWidth + 2,
+                    (i / mGridWidth) * mBoxHeight + 10);
+            }
         }
     }
 
