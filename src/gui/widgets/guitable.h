@@ -158,6 +158,9 @@ public:
 
     void requestFocus();
 
+    void setSelectable(bool b)
+    { mSelectable = b; }
+
 protected:
     /** Frees all action listeners on inner widgets. */
     void uninstallActionListeners();
@@ -194,6 +197,7 @@ private:
     bool mLinewiseMode;
     bool mWrappingEnabled;
     bool mOpaque;
+    bool mSelectable;
 };
 
 #endif  // GUI_WIDGETS_GUITABLE_H

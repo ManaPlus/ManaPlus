@@ -293,6 +293,7 @@ BotCheckerWindow::BotCheckerWindow():
     }
 
     mPlayerTitleTable->setHeight(1);
+    mPlayerTitleTable->setSelectable(false);
 
     // TRANSLATORS: bot checker window table header
     mPlayerTableTitleModel->set(0, 0, new Label(this, _("Name")));
