@@ -293,6 +293,8 @@ BotCheckerWindow::BotCheckerWindow():
     }
 
     mPlayerTitleTable->setHeight(1);
+    mPlayerTitleTable->setBackgroundColor(getThemeColor(
+        Theme::TABLE_BACKGROUND));
     mPlayerTitleTable->setSelectable(false);
 
     // TRANSLATORS: bot checker window table header
