@@ -391,7 +391,7 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
     else if (eventId == "slide")
         amount = static_cast<int>(mItemAmountSlide->getValue());
     mItemAmountTextField->setValue(amount);
-    mItemAmountSlide->setValue(amount);
+    mItemAmountSlide->setValue2(amount);
 
     if (mItemPriceTextField && mItemPriceSlide)
     {
@@ -407,14 +407,14 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
             mPrice++;
             price = static_cast<int>(pow(10.0, mPrice));
             mItemPriceTextField->setValue(price);
-            mItemPriceSlide->setValue(price);
+            mItemPriceSlide->setValue2(price);
         }
         else if (eventId == "decPrice")
         {
             mPrice--;
             price = static_cast<int>(pow(10.0, mPrice));
             mItemPriceTextField->setValue(price);
-            mItemPriceSlide->setValue(price);
+            mItemPriceSlide->setValue2(price);
         }
         else if (eventId == "slidePrice")
         {
@@ -424,7 +424,7 @@ void ItemAmountWindow::action(const gcn::ActionEvent &event)
             else
                 mPrice = 0;
             mItemPriceTextField->setValue(price);
-            mItemPriceSlide->setValue(price);
+            mItemPriceSlide->setValue2(price);
         }
     }
 }
@@ -437,7 +437,7 @@ void ItemAmountWindow::close()
 
 void ItemAmountWindow::keyReleased(gcn::KeyEvent &keyEvent A_UNUSED)
 {
-    mItemAmountSlide->setValue(mItemAmountTextField->getValue());
+    mItemAmountSlide->setValue2(mItemAmountTextField->getValue());
 }
 
 void ItemAmountWindow::showWindow(const Usage usage, Window *const parent,

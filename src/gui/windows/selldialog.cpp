@@ -161,7 +161,7 @@ SellDialog::~SellDialog()
 void SellDialog::reset()
 {
     mShopItems->clear();
-    mSlider->setValue(0);
+    mSlider->setValue2(0);
     mShopItemList->setSelected(-1);
     updateButtonsAndLabels();
 }
@@ -212,19 +212,19 @@ void SellDialog::action(const gcn::ActionEvent &event)
     else if (eventId == "inc" && mAmountItems < mMaxItems)
     {
         mAmountItems++;
-        mSlider->setValue(mAmountItems);
+        mSlider->setValue2(mAmountItems);
         updateButtonsAndLabels();
     }
     else if (eventId == "dec" && mAmountItems > 1)
     {
         mAmountItems--;
-        mSlider->setValue(mAmountItems);
+        mSlider->setValue2(mAmountItems);
         updateButtonsAndLabels();
     }
     else if (eventId == "max")
     {
         mAmountItems = mMaxItems;
-        mSlider->setValue(mAmountItems);
+        mSlider->setValue2(mAmountItems);
         updateButtonsAndLabels();
     }
     else if ((eventId == "presell" || eventId == "sell" || eventId == "yes")
@@ -278,7 +278,7 @@ void SellDialog::action(const gcn::ActionEvent &event)
             mPlayerMoney +=
                 mAmountItems * mShopItems->at(selectedItem)->getPrice();
             mAmountItems = 1;
-            mSlider->setValue(0);
+            mSlider->setValue2(0);
 
             if (mMaxItems)
             {
@@ -313,7 +313,7 @@ void SellDialog::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
 {
     // Reset amount of items and update labels
     mAmountItems = 1;
-    mSlider->setValue(0);
+    mSlider->setValue2(0);
 
     updateButtonsAndLabels();
     mSlider->setScale(1, mMaxItems);
