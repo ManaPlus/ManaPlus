@@ -392,6 +392,7 @@ class Theme final : public Palette, public ConfigListener
             BROWN_OUTLINE,
             STATUSBAR_ON,
             STATUSBAR_OFF,
+            TABLE_BACKGROUND,
             THEME_COLORS_END
         };
 

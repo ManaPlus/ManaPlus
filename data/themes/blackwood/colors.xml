@@ -86,6 +86,7 @@
         <color id="BUBBLE_TEXT" color="#000000" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
+        <color id="TABLE_BACKGROUND" color="#bfbfbf" />
 
         <color id="BLACK" color="#7a7972" />
         <color id="RED" color="#ff0000" />

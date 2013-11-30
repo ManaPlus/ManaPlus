@@ -268,8 +268,8 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     mPlayerTableTitleModel->fixColumnWidth(NAME_COLUMN, NAME_COLUMN_WIDTH);
     mPlayerTableTitleModel->fixColumnWidth(RELATION_CHOICE_COLUMN,
                                            RELATION_CHOICE_COLUMN_WIDTH);
-    mPlayerTitleTable->setBackgroundColor(gcn::Color(0xbf, 0xbf, 0xbf));
-
+    mPlayerTitleTable->setBackgroundColor(getThemeColor(
+        Theme::TABLE_BACKGROUND));
 
     for (int i = 0; i < COLUMNS_NR; i++)
     {
