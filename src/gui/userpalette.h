@@ -77,6 +77,7 @@ class UserPalette final : public Palette, public gcn::ListModel
             HOME_PLACE,
             HOME_PLACE_BORDER,
             ROAD_POINT,
+            NET,
             USER_COLOR_LAST
         };
 

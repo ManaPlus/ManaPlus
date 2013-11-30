@@ -568,7 +568,7 @@ void Map::drawCollision(Graphics *const graphics,
 
     if (debugFlags < MAP_SPECIAL)
     {
-        graphics->setColor(gcn::Color(0, 0, 0, 64));
+        graphics->setColor(userPalette->getColorWithAlpha(UserPalette::NET));
         graphics->drawNet(
             startX * mTileWidth - scrollX,
             startY * mTileHeight - scrollY,

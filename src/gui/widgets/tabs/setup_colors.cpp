@@ -274,6 +274,7 @@ void Setup_Colors::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
         case UserPalette::PORTAL_HIGHLIGHT:
         case UserPalette::HOME_PLACE:
         case UserPalette::ROAD_POINT:
+        case UserPalette::NET:
             mTextPreview->setBGColor(col);
             mTextPreview->setOpaque(true);
             mTextPreview->setOutline(false);
@@ -325,6 +326,7 @@ void Setup_Colors::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
         case UserPalette::PLAYER_HP:
         case UserPalette::PLAYER_HP2:
         case UserPalette::FLOOR_ITEM_TEXT:
+        case UserPalette::NET:
             // TRANSLATORS: colors tab. label.
             mGradDelayLabel->setCaption(_("Alpha:"));
             mGradDelayText->setRange(0, 255);

@@ -70,7 +70,8 @@ const std::string ColorTypeNames[] =
     "ColorFloorItemText",
     "ColorHomePlace",
     "ColorHomePlaceBorder",
-    "ColorRoadPoint"
+    "ColorRoadPoint",
+    "ColorNet"
 };
 
 std::string UserPalette::getConfigName(const std::string &typeName)
@@ -208,6 +209,9 @@ UserPalette::UserPalette():
     addColor(ROAD_POINT, 0x000000, STATIC,
         // TRANSLATORS: palette color
         _("Road point"), 100);
+    addColor(NET, 0x000000, STATIC,
+        // TRANSLATORS: palette color
+        _("Tiles border"), 64);
     commit(true);
 }
 
