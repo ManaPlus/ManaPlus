@@ -100,8 +100,8 @@ GuiTable::GuiTable(const Widget2 *const widget,
     mTopWidget(nullptr),
     mActionListeners(),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
-    mSelectedRow(0),
-    mSelectedColumn(0),
+    mSelectedRow(-1),
+    mSelectedColumn(-1),
     mLinewiseMode(false),
     mWrappingEnabled(false),
     mOpaque(opacity)
@@ -352,7 +352,7 @@ void GuiTable::draw(gcn::Graphics* graphics)
 
                 widget->setDimension(bounds);
 
-                if (mSelectedRow > 0)
+                if (mSelectedRow > -1)
                 {
                     mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
                     graphics->setColor(mHighlightColor);
