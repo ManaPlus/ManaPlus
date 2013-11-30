@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-11-23 12:25+0300\n"
+"POT-Creation-Date: 2013-11-30 17:59+0300\n"
 "PO-Revision-Date: 2013-11-23 08:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/manaplus/"
@@ -38,25 +38,25 @@ msgid "Visible on map"
 msgstr "Visivel no mapa"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:302
+#: src/being/being.cpp:306
 msgid "Human"
 msgstr "Humano"
 
-#: src/being/being.cpp:510
+#: src/being/being.cpp:514
 msgid "dodge"
 msgstr "desviou"
 
-#: src/being/being.cpp:510
+#: src/being/being.cpp:514
 msgid "miss"
 msgstr "errou"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1754 src/gui/windows/whoisonline.cpp:862
+#: src/being/being.cpp:1758 src/gui/windows/whoisonline.cpp:862
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1759 src/gui/windows/whoisonline.cpp:867
+#: src/being/being.cpp:1763 src/gui/windows/whoisonline.cpp:867
 msgid "I"
 msgstr "l"
 
@@ -1005,7 +1005,7 @@ msgstr "Negócios"
 #. TRANSLATORS: player stat
 #: src/gui/popups/popupmenu.cpp:154 src/gui/popups/popupmenu.cpp:258
 #: src/gui/popups/popupmenu.cpp:694 src/gui/setupactiondata.h:51
-#: src/gui/windows/botcheckerwindow.cpp:300
+#: src/gui/windows/botcheckerwindow.cpp:303
 #: src/net/eathena/generalhandler.cpp:250 src/net/tmwa/generalhandler.cpp:285
 msgid "Attack"
 msgstr "Atacar"
@@ -1066,7 +1066,7 @@ msgstr "Desaparecer"
 #: src/gui/popups/popupmenu.cpp:226 src/gui/popups/popupmenu.cpp:247
 #: src/gui/popups/popupmenu.cpp:395 src/gui/popups/popupmenu.cpp:546
 #: src/gui/popups/popupmenu.cpp:705 src/gui/popups/popupmenu.cpp:786
-#: src/gui/setupactiondata.h:1918 src/gui/windows/botcheckerwindow.cpp:304
+#: src/gui/setupactiondata.h:1918 src/gui/windows/botcheckerwindow.cpp:307
 msgid "Move"
 msgstr "Mover"
 
@@ -1075,7 +1075,7 @@ msgstr "Mover"
 #. TRANSLATORS: input action name
 #. TRANSLATORS: bot checker window table header
 #: src/gui/popups/popupmenu.cpp:237 src/gui/setupactiondata.h:93
-#: src/gui/windows/botcheckerwindow.cpp:302
+#: src/gui/windows/botcheckerwindow.cpp:305
 msgid "Talk"
 msgstr "Falar"
 
@@ -2509,206 +2509,212 @@ msgid "Gui"
 msgstr "Gui"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:110
+#: src/gui/userpalette.cpp:111
 msgid "Being"
 msgstr "Personagem"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:112
+#: src/gui/userpalette.cpp:113
 msgid "Friend names"
 msgstr "Nome de Amigos"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:114
+#: src/gui/userpalette.cpp:115
 msgid "Disregarded names"
 msgstr "Nome de Desconsiderados"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:116
+#: src/gui/userpalette.cpp:117
 msgid "Ignored names"
 msgstr "Nome de Ignorados"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:118
+#: src/gui/userpalette.cpp:119
 msgid "Erased names"
 msgstr "Nome de Apagados"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:120
+#: src/gui/userpalette.cpp:121
 msgid "Other players names"
 msgstr "Nomes de outros jogadores"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:122
+#: src/gui/userpalette.cpp:123
 msgid "Own name"
 msgstr "Próprio nome"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:124
+#: src/gui/userpalette.cpp:125
 msgid "GM names"
 msgstr "Nomes dos GMs"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:126
+#: src/gui/userpalette.cpp:127
 msgid "NPCs"
 msgstr "NPCs"
 
 #. TRANSLATORS: palette color
 #. TRANSLATORS: settings option
-#: src/gui/userpalette.cpp:128 src/gui/widgets/tabs/setup_other.cpp:100
+#: src/gui/userpalette.cpp:129 src/gui/widgets/tabs/setup_other.cpp:100
 msgid "Monsters"
 msgstr "Monstros"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:130
+#: src/gui/userpalette.cpp:131
 msgid "Monster HP bar"
 msgstr "Barra de HP"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:133
+#: src/gui/userpalette.cpp:134
 msgid "Monster HP bar (second color)"
 msgstr "Barra de HP do inimigo (segunda cor)"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:135
+#: src/gui/userpalette.cpp:136
 msgid "Party members"
 msgstr "Membros do grupo"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:137
+#: src/gui/userpalette.cpp:138
 msgid "Guild members"
 msgstr "Membros da guilda"
 
 #. TRANSLATORS: palette color
 #. TRANSLATORS: settings option
-#: src/gui/userpalette.cpp:139 src/gui/widgets/tabs/setup_visual.cpp:140
+#: src/gui/userpalette.cpp:140 src/gui/widgets/tabs/setup_visual.cpp:140
 msgid "Particle effects"
 msgstr "Efeitos de partícula"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:141
+#: src/gui/userpalette.cpp:142
 msgid "Pickup notification"
 msgstr "Aviso ao pegar algum item"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:143
+#: src/gui/userpalette.cpp:144
 msgid "Exp notification"
 msgstr "Aviso de experiência"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:145
+#: src/gui/userpalette.cpp:146
 msgid "Player HP bar"
 msgstr "Barra de HP do jogador"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:149
+#: src/gui/userpalette.cpp:150
 msgid "Player HP bar (second color)"
 msgstr "Barra de HP do jogador (segunda cor)"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:151
+#: src/gui/userpalette.cpp:152
 msgid "Player hits monster"
 msgstr "Jogador acerta Monstro"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:153
+#: src/gui/userpalette.cpp:154
 msgid "Monster hits player"
 msgstr "Monstro Acerta Jogador"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:157
+#: src/gui/userpalette.cpp:158
 msgid "Other player hits local player"
 msgstr "Outro jogador ataca jogador local"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:159
+#: src/gui/userpalette.cpp:160
 msgid "Critical Hit"
 msgstr "Golpe crítico"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:163
+#: src/gui/userpalette.cpp:164
 msgid "Local player hits monster"
 msgstr "Jogador local Acerta Monstro"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:166
+#: src/gui/userpalette.cpp:167
 msgid "Local player critical hit"
 msgstr "Golpe Crítico do Jogador local"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:169
+#: src/gui/userpalette.cpp:170
 msgid "Local player miss"
 msgstr "Jogador local Erra o Golpe"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:171
+#: src/gui/userpalette.cpp:172
 msgid "Misses"
 msgstr "Golpes errados"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:173
+#: src/gui/userpalette.cpp:174
 msgid "Portal highlight"
 msgstr "Destaque do portal"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:176
+#: src/gui/userpalette.cpp:177
 msgid "Default collision highlight"
 msgstr "Destaque de colisão padrão"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:179
+#: src/gui/userpalette.cpp:180
 msgid "Air collision highlight"
 msgstr "Detaque de colisão no ar"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:182
+#: src/gui/userpalette.cpp:183
 msgid "Water collision highlight"
 msgstr "Destaque de colisão na água"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:185
+#: src/gui/userpalette.cpp:186
 msgid "Special ground collision highlight"
 msgstr "Destaque especial em colisão de chão"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:188
+#: src/gui/userpalette.cpp:189
 msgid "Walkable highlight"
 msgstr "Destaque de caminho"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:191
+#: src/gui/userpalette.cpp:192
 msgid "Local player attack range"
 msgstr "Alcance de ataque do jogador local"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:194
+#: src/gui/userpalette.cpp:195
 msgid "Local player attack range border"
 msgstr "Borda de Alcance de ataque do jogador local"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:197
+#: src/gui/userpalette.cpp:198
 msgid "Monster attack range"
 msgstr "Alcance do monstro"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:201
+#: src/gui/userpalette.cpp:202
 msgid "Floor item amount color"
 msgstr "Quantidade de cor em item no chão"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:204
+#: src/gui/userpalette.cpp:205
 msgid "Home place"
 msgstr "Lugar Inicial"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:207
+#: src/gui/userpalette.cpp:208
 msgid "Home place border"
 msgstr "Borda do Lugar Inicial"
 
 #. TRANSLATORS: palette color
-#: src/gui/userpalette.cpp:210
+#: src/gui/userpalette.cpp:211
 msgid "Road point"
 msgstr "Ponto de estrada"
+
+#. TRANSLATORS: palette color
+#: src/gui/userpalette.cpp:214
+#, fuzzy
+msgid "Tiles border"
+msgstr "Borda do Lugar Inicial"
 
 #: src/gui/widgets/characterdisplay.cpp:131
 #, c-format
@@ -3266,7 +3272,7 @@ msgstr "Tipo:"
 
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:64
-#: src/gui/widgets/tabs/setup_colors.cpp:335
+#: src/gui/widgets/tabs/setup_colors.cpp:337
 msgid "Delay:"
 msgstr "Atraso:"
 
@@ -3287,33 +3293,33 @@ msgstr "Azul:"
 
 #. TRANSLATORS: color type
 #: src/gui/widgets/tabs/setup_colors.cpp:102
-#: src/gui/widgets/tabs/setup_colors.cpp:402
+#: src/gui/widgets/tabs/setup_colors.cpp:404
 msgid "Static"
 msgstr "Estático"
 
 #. TRANSLATORS: color type
 #: src/gui/widgets/tabs/setup_colors.cpp:105
 #: src/gui/widgets/tabs/setup_colors.cpp:108
-#: src/gui/widgets/tabs/setup_colors.cpp:404
+#: src/gui/widgets/tabs/setup_colors.cpp:406
 msgid "Pulse"
 msgstr "Pulso"
 
 #. TRANSLATORS: color type
 #: src/gui/widgets/tabs/setup_colors.cpp:110
 #: src/gui/widgets/tabs/setup_colors.cpp:113
-#: src/gui/widgets/tabs/setup_colors.cpp:406
+#: src/gui/widgets/tabs/setup_colors.cpp:408
 msgid "Rainbow"
 msgstr "Arco-íris"
 
 #. TRANSLATORS: color type
 #: src/gui/widgets/tabs/setup_colors.cpp:115
 #: src/gui/widgets/tabs/setup_colors.cpp:118
-#: src/gui/widgets/tabs/setup_colors.cpp:406
+#: src/gui/widgets/tabs/setup_colors.cpp:408
 msgid "Spectrum"
 msgstr "Espectro"
 
 #. TRANSLATORS: colors tab. label.
-#: src/gui/widgets/tabs/setup_colors.cpp:329
+#: src/gui/widgets/tabs/setup_colors.cpp:331
 msgid "Alpha:"
 msgstr "Alpha:"
 
@@ -4031,7 +4037,7 @@ msgstr ""
 #. TRANSLATORS: relations table header
 #. TRANSLATORS: bot checker window table header
 #: src/gui/widgets/tabs/setup_relations.cpp:58
-#: src/gui/windows/botcheckerwindow.cpp:298
+#: src/gui/windows/botcheckerwindow.cpp:301
 msgid "Name"
 msgstr "Nome"
 
@@ -4091,7 +4097,7 @@ msgid "Relations"
 msgstr "Relações"
 
 #. TRANSLATORS: relation dialog label
-#: src/gui/widgets/tabs/setup_relations.cpp:288
+#: src/gui/widgets/tabs/setup_relations.cpp:289
 msgid "When ignoring:"
 msgstr "Quando ignorar:"
 
@@ -4901,7 +4907,7 @@ msgid "Reset"
 msgstr "Resetar"
 
 #. TRANSLATORS: bot checker window table header
-#: src/gui/windows/botcheckerwindow.cpp:306
+#: src/gui/windows/botcheckerwindow.cpp:309
 msgid "Result"
 msgstr "Resultado"
 
@@ -7769,7 +7775,8 @@ msgstr "Impossível aumentar o atributo!"
 
 #. TRANSLATORS: notification message
 #: src/notifications.h:264
-msgid "Equip arrows first."
+#, fuzzy
+msgid "Equip ammunition first."
 msgstr "Equipe as flechas primeiro."
 
 #. TRANSLATORS: notification message
