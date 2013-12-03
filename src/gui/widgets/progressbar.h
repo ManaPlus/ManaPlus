@@ -50,8 +50,8 @@ class ProgressBar final : public gcn::Widget,
          * Constructor, initializes the progress with the given value.
          */
         ProgressBar(const Widget2 *const widget, float progress,
-                    const int width = 40, const int height = 7,
-                    const int color = -1);
+                    const int width, const int height,
+                    const int backColor);
 
         A_DELETE_COPY(ProgressBar)
 

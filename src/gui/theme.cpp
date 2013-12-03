@@ -1031,14 +1031,14 @@ static int readProgressType(const std::string &type)
 {
     static const std::string colors[] =
     {
-        "DEFAULT",
         "HP",
         "MP",
         "NO_MP",
         "EXP",
         "INVY_SLOTS",
         "WEIGHT",
-        "JOB"
+        "JOB",
+        "UPDATE"
     };
 
     if (type.empty())

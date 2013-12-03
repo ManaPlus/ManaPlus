@@ -398,14 +398,14 @@ class Theme final : public Palette, public ConfigListener
 
         enum ProgressPalette
         {
-            PROG_DEFAULT = 0,
-            PROG_HP,
+            PROG_HP = 0,
             PROG_MP,
             PROG_NO_MP,
             PROG_EXP,
             PROG_INVY_SLOTS,
             PROG_WEIGHT,
             PROG_JOB,
+            PROG_UPDATE,
             THEME_PROG_END
         };
 

@@ -335,7 +335,6 @@
         <color id="TABLE_BACKGROUND" color="#bfbfbf" />
     </palette>
 
-    <progressbar id="DEFAULT" color="#969696" />
     <progressbar id="HP" color="#b80000" />
     <progressbar id="MP" color="#1a66e6" />
     <progressbar id="NO_MP" color="#646464" />
@@ -343,4 +342,5 @@
     <progressbar id="INVY_SLOTS" color="#e1c819" />
     <progressbar id="WEIGHT" color="#0000ff,ffff00,ff0000" />
     <progressbar id="JOB" color="#e187cb" />
+    <progressbar id="UPDATE" color="#969696" />
 </colors>

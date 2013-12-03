@@ -37,19 +37,19 @@ float ProgressBar::mAlpha = 1.0;
 
 ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
                          const int width, const int height,
-                         const int color):
+                         const int backColor):
     gcn::Widget(),
     Widget2(widget),
     gcn::WidgetListener(),
     mSkin(nullptr),
     mProgress(progress),
     mProgressToGo(progress),
-    mColor(Theme::getProgressColor(color >= 0 ? color : 0, mProgress)),
+    mColor(Theme::getProgressColor(backColor >= 0 ? backColor : 0, mProgress)),
     mColorToGo(mColor),
     mOutlineColor(getThemeColor(Theme::OUTLINE)),
     mText(),
     mVertexes(new ImageCollection),
-    mProgressPalette(color),
+    mProgressPalette(backColor),
     mPadding(2),
     mFillPadding(3),
     mSmoothProgress(true),
