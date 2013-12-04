@@ -9,6 +9,7 @@
         <color id="OUTLINE" color="#000000" />
         <color id="BORDER" color="#000000" />
         <color id="PROGRESS_BAR" color="#ffffff" />
+        <color id="PROGRESS_BAR_OUTLINE" color="#000000" />
         <color id="BUTTON" color="#FF00FF" />
         <color id="BUTTON_HIGHLIGHTED" color="#FF00FF" />
         <color id="BUTTON_PRESSED" color="#FF00FF" />

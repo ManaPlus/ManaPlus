@@ -96,8 +96,9 @@ class MiniStatusWindow final : public Popup,
     private:
         bool isInBar(ProgressBar *bar, int x, int y) const;
 
-        ProgressBar *createBar(const float progress, const int width,
-                               const int height, const int color,
+        ProgressBar *createBar(const float progress,
+                               const int width, const int height,
+                               const int textColor, const int backColor,
                                const std::string &name,
                                const std::string &description) A_WARN_UNUSED;
 

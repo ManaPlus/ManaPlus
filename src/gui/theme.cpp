@@ -781,6 +781,7 @@ static int readColorType(const std::string &type)
         "OUTLINE",
         "BORDER",
         "PROGRESS_BAR",
+        "PROGRESS_BAR_OUTLINE",
         "BUTTON",
         "BUTTON_OUTLINE",
         "BUTTON_DISABLED",

@@ -47,7 +47,7 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     mBackgroundColor(Theme::getProgressColor(backColor >= 0
         ? backColor : 0, mProgress)),
     mBackgroundColorToGo(mBackgroundColor),
-    mForegroundColor2(getThemeColor(Theme::OUTLINE)),
+    mForegroundColor2(getThemeColor(Theme::PROGRESS_BAR_OUTLINE)),
     mText(),
     mVertexes(new ImageCollection),
     mProgressPalette(backColor),

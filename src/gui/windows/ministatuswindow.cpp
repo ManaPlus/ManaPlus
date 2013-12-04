@@ -62,30 +62,33 @@ MiniStatusWindow::MiniStatusWindow() :
     mIconSpacing(mSkin ? mSkin->getOption("iconSpacing", 2) : 2),
     mMaxX(0),
     // TRANSLATORS: status bar name
-    mHpBar(createBar(0, 100, 0, Theme::PROG_HP, "hp bar", _("health bar"))),
+    mHpBar(createBar(0, 100, 0, Theme::PROGRESS_BAR, Theme::PROG_HP,
+        "hp bar", _("health bar"))),
     mMpBar(Net::getGameHandler()->canUseMagicBar()
-        ? createBar(0, 100, 0, Net::getPlayerHandler()->canUseMagic()
+        ? createBar(0, 100, 0, Theme::PROGRESS_BAR,
+        Net::getPlayerHandler()->canUseMagic()
         // TRANSLATORS: status bar name
         ? Theme::PROG_MP : Theme::PROG_NO_MP, "mp bar", _("mana bar"))
         : nullptr),
-    mXpBar(createBar(0, 100, 0, Theme::PROG_EXP,
+    mXpBar(createBar(0, 100, 0, Theme::PROGRESS_BAR, Theme::PROG_EXP,
         // TRANSLATORS: status bar name
         "xp bar", _("experience bar"))),
     mJobBar(nullptr),
-    mWeightBar(createBar(0, 140, 0, Theme::PROG_WEIGHT,
+    mWeightBar(createBar(0, 140, 0, Theme::PROGRESS_BAR, Theme::PROG_WEIGHT,
         // TRANSLATORS: status bar name
         "weight bar", _("weight bar"))),
-    mInvSlotsBar(createBar(0, 45, 0, Theme::PROG_INVY_SLOTS,
+    mInvSlotsBar(createBar(0, 45, 0,
+        Theme::SLOTS_BAR, Theme::PROG_INVY_SLOTS,
         // TRANSLATORS: status bar name
         "inventory slots bar", _("inventory slots bar"))),
-    mMoneyBar(createBar(0, 130, 0, Theme::PROG_INVY_SLOTS,
+    mMoneyBar(createBar(0, 130, 0, Theme::SLOTS_BAR, Theme::PROG_INVY_SLOTS,
         // TRANSLATORS: status bar name
         "money bar", _("money bar"))),
-    mArrowsBar(createBar(0, 50, 0, Theme::PROG_INVY_SLOTS,
+    mArrowsBar(createBar(0, 50, 0, Theme::SLOTS_BAR, Theme::PROG_INVY_SLOTS,
         // TRANSLATORS: status bar name
         "arrows bar", _("arrows bar"))),
     mStatusBar(createBar(100, (config.getIntValue("fontSize") > 16
-        ? 250 : 165), 0, Theme::PROG_EXP,
+        ? 250 : 165), 0, Theme::PROGRESS_BAR, Theme::PROG_EXP,
         // TRANSLATORS: status bar name
         "status bar", _("status bar"))),
     mTextPopup(new TextPopup),
@@ -108,9 +111,9 @@ MiniStatusWindow::MiniStatusWindow() :
 
     if (job)
     {
-        mJobBar = createBar(0, 100, 0, Theme::PROG_JOB, "job bar",
+        mJobBar = createBar(0, 100, 0, Theme::PROGRESS_BAR, Theme::PROG_JOB,
             // TRANSLATORS: status bar name
-            _("job bar"));
+            "job bar", _("job bar"));
         StatusWindow::updateJobBar(mJobBar);
     }
 
@@ -154,14 +157,17 @@ MiniStatusWindow::~MiniStatusWindow()
 
 ProgressBar *MiniStatusWindow::createBar(const float progress,
                                          const int width, const int height,
-                                         const int color,
+                                         const int textColor,
+                                         const int backColor,
                                          const std::string &name,
                                          const std::string &description)
 {
     ProgressBar *const bar = new ProgressBar(this,
-        progress, width, height, color);
+        progress, width, height, backColor);
     bar->setActionEventId(name);
     bar->setId(description);
+    bar->setColor(Theme::getThemeColor(textColor),
+        Theme::getThemeColor(textColor + 1));
     mBars.push_back(bar);
     mBarNames[name] = bar;
     return bar;

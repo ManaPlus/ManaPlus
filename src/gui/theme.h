@@ -224,6 +224,7 @@ class Theme final : public Palette, public ConfigListener
             OUTLINE,
             BORDER,
             PROGRESS_BAR,
+            PROGRESS_BAR_OUTLINE,
             BUTTON,
             BUTTON_OUTLINE,
             BUTTON_DISABLED,

@@ -8,6 +8,7 @@
         <color id="SHADOW" color="#000000" />
         <color id="OUTLINE" color="#000000" />
         <color id="PROGRESS_BAR" color="#ffffff" />
+        <color id="PROGRESS_BAR_OUTLINE" color="#000000" />
         <color id="BUTTON" color="#FE9750" />
         <color id="BUTTON_HIGHLIGHTED" color="#FE9750" />
         <color id="BUTTON_PRESSED" color="#FE9750" />
