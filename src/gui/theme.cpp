@@ -768,7 +768,7 @@ ImageSet *Theme::getImageSetFromTheme(const std::string &path,
 
 static int readColorType(const std::string &type)
 {
-    static const std::string colors[] =
+    static const std::string colors[Theme::THEME_COLORS_END] =
     {
         "BROWSERBOX",
         "BROWSERBOX_OUTLINE",
@@ -949,7 +949,9 @@ static int readColorType(const std::string &type)
         "BROWN_OUTLINE",
         "STATUSBAR_ON",
         "STATUSBAR_OFF",
-        "TABLE_BACKGROUND"
+        "TABLE_BACKGROUND",
+        "SLOTS_BAR",
+        "SLOTS_BAR_OUTLINE"
     };
 
     if (type.empty())

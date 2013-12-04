@@ -393,6 +393,8 @@ class Theme final : public Palette, public ConfigListener
             STATUSBAR_ON,
             STATUSBAR_OFF,
             TABLE_BACKGROUND,
+            SLOTS_BAR,
+            SLOTS_BAR_OUTLINE,
             THEME_COLORS_END
         };
 

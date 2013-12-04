@@ -92,13 +92,15 @@ class ProgressBar final : public gcn::Widget,
         /**
          * Change the color of the progress bar.
          */
-        void setColor(const gcn::Color &color);
+        void setBackgroundColor(const gcn::Color &color);
+
+        void setColor(const gcn::Color &color1, const gcn::Color &color2);
 
         /**
          * Returns the color of the progress bar.
          */
-        const gcn::Color &getColor() const A_WARN_UNUSED
-        { return mColor; }
+        const gcn::Color &getBackgroundColor() const A_WARN_UNUSED
+        { return mBackgroundColor; }
 
         /**
          * Sets the text shown on the progress bar.
@@ -141,9 +143,9 @@ class ProgressBar final : public gcn::Widget,
         float mProgress;
         float mProgressToGo;
 
-        gcn::Color mColor;
-        gcn::Color mColorToGo;
-        gcn::Color mOutlineColor;
+        gcn::Color mBackgroundColor;
+        gcn::Color mBackgroundColorToGo;
+        gcn::Color mForegroundColor2;
 
         std::string mText;
         ImageCollection *mVertexes;

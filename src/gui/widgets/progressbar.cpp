@@ -44,9 +44,10 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     mSkin(nullptr),
     mProgress(progress),
     mProgressToGo(progress),
-    mColor(Theme::getProgressColor(backColor >= 0 ? backColor : 0, mProgress)),
-    mColorToGo(mColor),
-    mOutlineColor(getThemeColor(Theme::OUTLINE)),
+    mBackgroundColor(Theme::getProgressColor(backColor >= 0
+        ? backColor : 0, mProgress)),
+    mBackgroundColorToGo(mBackgroundColor),
+    mForegroundColor2(getThemeColor(Theme::OUTLINE)),
     mText(),
     mVertexes(new ImageCollection),
     mProgressPalette(backColor),
@@ -99,21 +100,21 @@ ProgressBar::~ProgressBar()
 void ProgressBar::logic()
 {
     BLOCK_START("ProgressBar::logic")
-    if (mSmoothColorChange && mColorToGo != mColor)
+    if (mSmoothColorChange && mBackgroundColorToGo != mBackgroundColor)
     {
         // Smoothly changing the color for a nicer effect.
-        if (mColorToGo.r > mColor.r)
-            mColor.r++;
-        if (mColorToGo.g > mColor.g)
-            mColor.g++;
-        if (mColorToGo.b > mColor.b)
-            mColor.b++;
-        if (mColorToGo.r < mColor.r)
-            mColor.r--;
-        if (mColorToGo.g < mColor.g)
-            mColor.g--;
-        if (mColorToGo.b < mColor.b)
-            mColor.b--;
+        if (mBackgroundColorToGo.r > mBackgroundColor.r)
+            mBackgroundColor.r++;
+        if (mBackgroundColorToGo.g > mBackgroundColor.g)
+            mBackgroundColor.g++;
+        if (mBackgroundColorToGo.b > mBackgroundColor.b)
+            mBackgroundColor.b++;
+        if (mBackgroundColorToGo.r < mBackgroundColor.r)
+            mBackgroundColor.r--;
+        if (mBackgroundColorToGo.g < mBackgroundColor.g)
+            mBackgroundColor.g--;
+        if (mBackgroundColorToGo.b < mBackgroundColor.b)
+            mBackgroundColor.b--;
     }
 
     if (mSmoothProgress && mProgressToGo != mProgress)
@@ -138,7 +139,7 @@ void ProgressBar::draw(gcn::Graphics *graphics)
 {
     BLOCK_START("ProgressBar::draw")
     updateAlpha();
-    mColor.a = static_cast<int>(mAlpha * 255);
+    mBackgroundColor.a = static_cast<int>(mAlpha * 255);
     render(static_cast<Graphics*>(graphics));
     BLOCK_END("ProgressBar::draw")
 }
@@ -152,7 +153,10 @@ void ProgressBar::setProgress(const float progress)
         mProgress = p;
 
     if (mProgressPalette >= 0)
-        mColorToGo = Theme::getProgressColor(mProgressPalette, progress);
+    {
+        mBackgroundColorToGo = Theme::getProgressColor(
+            mProgressPalette, progress);
+    }
 }
 
 void ProgressBar::setProgressPalette(const int progressPalette)
@@ -161,15 +165,24 @@ void ProgressBar::setProgressPalette(const int progressPalette)
     mProgressPalette = progressPalette;
 
     if (mProgressPalette != oldPalette && mProgressPalette >= 0)
-        mColorToGo = Theme::getProgressColor(mProgressPalette, mProgressToGo);
+    {
+        mBackgroundColorToGo = Theme::getProgressColor(
+            mProgressPalette, mProgressToGo);
+    }
 }
 
-void ProgressBar::setColor(const gcn::Color &color)
+void ProgressBar::setBackgroundColor(const gcn::Color &color)
 {
-    mColorToGo = color;
+    mBackgroundColorToGo = color;
 
     if (!mSmoothColorChange)
-        mColor = color;
+        mBackgroundColor = color;
+}
+
+void ProgressBar::setColor(const gcn::Color &color1, const gcn::Color &color2)
+{
+    mForegroundColor = color1;
+    mForegroundColor2 = color2;
 }
 
 void ProgressBar::render(Graphics *graphics)
@@ -198,7 +211,7 @@ void ProgressBar::render(Graphics *graphics)
     // The bar
     if (mProgress > 0)
     {
-        graphics->setColor(mColor);
+        graphics->setColor(mBackgroundColor);
         const unsigned int pad = 2 * mFillPadding;
         const int maxWidth = mDimension.width - pad;
         int width = static_cast<int>(mProgress * static_cast<float>(maxWidth));
@@ -220,7 +233,7 @@ void ProgressBar::render(Graphics *graphics)
         const int textX = mDimension.width / 2;
         const int textY = (mDimension.height - font->getHeight()) / 2;
 
-        graphics->setColorAll(mForegroundColor, mOutlineColor);
+        graphics->setColorAll(mForegroundColor, mForegroundColor2);
         font->drawString(graphics, mText, textX
             - font->getWidth(mText) / 2, textY);
 

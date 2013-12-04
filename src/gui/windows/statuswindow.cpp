@@ -713,9 +713,9 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
 
     bar->setProgress(50);
     if (player_node->getDisableGameModifiers())
-        bar->setColor(Theme::getThemeColor(Theme::STATUSBAR_ON));
+        bar->setBackgroundColor(Theme::getThemeColor(Theme::STATUSBAR_ON));
     else
-        bar->setColor(Theme::getThemeColor(Theme::STATUSBAR_OFF));
+        bar->setBackgroundColor(Theme::getThemeColor(Theme::STATUSBAR_OFF));
 }
 
 void StatusWindow::action(const gcn::ActionEvent &event)

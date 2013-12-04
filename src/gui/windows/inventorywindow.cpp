@@ -131,6 +131,8 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mCompactMode(false)
 {
     mTextPopup->postInit();
+    mSlotsBar->setColor(Theme::getThemeColor(Theme::SLOTS_BAR),
+        Theme::getThemeColor(Theme::SLOTS_BAR_OUTLINE));
 
     if (inventory)
     {

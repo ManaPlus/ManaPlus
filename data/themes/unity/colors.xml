@@ -87,6 +87,8 @@
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
         <color id="TABLE_BACKGROUND" color="#bfbfbf" />
+        <color id="SLOTS_BAR" color="#ffffff" />
+        <color id="SLOTS_BAR_OUTLINE" color="#000000" />
 
         <color id="BLACK" color="#0E0E0E" />
         <color id="RED" color="#FFA8A8" />
