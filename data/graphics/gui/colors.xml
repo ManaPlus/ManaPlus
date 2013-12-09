@@ -97,6 +97,7 @@
         <color id="GRAY" color="#919191" />
         <color id="BROWN" color="#8e4c17" />
         <color id="OLDCHAT" color="#8e4c17" />
+        <color id="AWAYCHAT" color="#8e4c17" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
         <color id="TABLE_BACKGROUND" color="#ffffff" />

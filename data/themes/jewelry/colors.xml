@@ -269,6 +269,8 @@
         <color id="BROWN_OUTLINE" color="#271802" />
         <color id="OLDCHAT" color="#cb884c" />
         <color id="OLDCHAT_OUTLINE" color="#271802" />
+        <color id="AWAYCHAT" color="#cb884c" />
+        <color id="AWAYCHAT_OUTLINE" color="#271802" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
         <color id="TABLE_BACKGROUND" color="#bfbfbf" />
@@ -377,6 +379,7 @@
         <color id="GRAY" color="#dbdbdb" />
         <color id="BROWN" color="#8e4c17" />
         <color id="OLDCHAT" color="#8e4c17" />
+        <color id="AWAYCHAT" color="#8e4c17" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
         <color id="TABLE_BACKGROUND" color="#bfbfbf" />

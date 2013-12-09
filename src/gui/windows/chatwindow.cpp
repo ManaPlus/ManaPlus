@@ -1714,7 +1714,7 @@ void ChatWindow::addToAwayLog(const std::string &line)
         mAwayLog.pop_front();
 
     if (findI(line, mHighlights) != std::string::npos)
-        mAwayLog.push_back("##9away:" + line);
+        mAwayLog.push_back("##aaway:" + line);
 }
 
 void ChatWindow::displayAwayLog() const

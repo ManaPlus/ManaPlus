@@ -199,6 +199,7 @@ Theme::Theme() :
     mColors[HYPERLINK].ch = '<';
     mColors[SELFNICK].ch = 's';
     mColors[OLDCHAT].ch = 'o';
+    mColors[AWAYCHAT].ch = 'a';
     mCharColors['H'] = HIGHLIGHT;
     mCharColors['C'] = CHAT;
     mCharColors['G'] = GM;
@@ -214,6 +215,7 @@ Theme::Theme() :
     mCharColors['<'] = HYPERLINK;
     mCharColors['s'] = SELFNICK;
     mCharColors['o'] = OLDCHAT;
+    mCharColors['a'] = AWAYCHAT;
 
     // here need use outlined colors
     mCharColors['H' | 0x80] = HIGHLIGHT_OUTLINE;
@@ -231,6 +233,7 @@ Theme::Theme() :
     mCharColors['<' | 0x80] = HYPERLINK_OUTLINE;
     mCharColors['s' | 0x80] = SELFNICK_OUTLINE;
     mCharColors['o' | 0x80] = OLDCHAT_OUTLINE;
+    mCharColors['a' | 0x80] = AWAYCHAT_OUTLINE;
 }
 
 Theme::~Theme()
@@ -975,7 +978,9 @@ static int readColorType(const std::string &type)
         "JOB_BAR",
         "JOB_BAR_OUTLINE",
         "OLDCHAT",
-        "OLDCHAT_OUTLINE"
+        "OLDCHAT_OUTLINE",
+        "AWAYCHAT",
+        "AWAYCHAT_OUTLINE"
     };
 
     if (type.empty())
