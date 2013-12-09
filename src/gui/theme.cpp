@@ -954,13 +954,13 @@ static int readColorType(const std::string &type)
         "SLOTS_BAR",
         "SLOTS_BAR_OUTLINE",
         "HP_BAR",
-        "HP_BAR_OUTLINE"
+        "HP_BAR_OUTLINE",
         "MP_BAR",
-        "MP_BAR_OUTLINE"
+        "MP_BAR_OUTLINE",
         "NO_MP_BAR",
-        "NO_MP_BAR_OUTLINE"
+        "NO_MP_BAR_OUTLINE",
         "XP_BAR",
-        "XP_BAR_OUTLINE"
+        "XP_BAR_OUTLINE",
         "WEIGHT_BAR",
         "WEIGHT_BAR_OUTLINE"
     };
