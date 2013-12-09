@@ -119,6 +119,7 @@
         <color id="PURPLE" color="#8415e2" />
         <color id="GRAY" color="#919191" />
         <color id="BROWN" color="#8e4c17" />
+        <color id="OLDCHAT" color="#8e4c17" />
     </palette>
 
     <progressbar id="HP" color="#ff0000,e28000,c38948,0f6a20" />

@@ -414,6 +414,8 @@ class Theme final : public Palette, public ConfigListener
             STATUS_BAR_OUTLINE,
             JOB_BAR,
             JOB_BAR_OUTLINE,
+            OLDCHAT,
+            OLDCHAT_OUTLINE,
             THEME_COLORS_END
         };
 

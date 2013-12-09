@@ -504,7 +504,7 @@ void ChatTab::loadFromLogFile(const std::string &name)
         std::list<std::string>::const_iterator i = list.begin();
         while (i != list.end())
         {
-            std::string line("##9" + *i);
+            std::string line("##o" + *i);
             addRow(line);
             ++i;
         }

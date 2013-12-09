@@ -83,6 +83,7 @@
         <color id="PURPLE" color="#8415e2" />
         <color id="GRAY" color="#919191" />
         <color id="BROWN" color="#774217" />
+        <color id="OLDCHAT" color="#774217" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
         <color id="TABLE_BACKGROUND" color="#bfbfbf" />
@@ -266,6 +267,8 @@
         <color id="GRAY_OUTLINE" color="#333333" />
         <color id="BROWN" color="#cb884c" />
         <color id="BROWN_OUTLINE" color="#271802" />
+        <color id="OLDCHAT" color="#cb884c" />
+        <color id="OLDCHAT_OUTLINE" color="#271802" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
         <color id="TABLE_BACKGROUND" color="#bfbfbf" />
@@ -373,6 +376,7 @@
         <color id="PURPLE" color="#5e1298" />
         <color id="GRAY" color="#dbdbdb" />
         <color id="BROWN" color="#8e4c17" />
+        <color id="OLDCHAT" color="#8e4c17" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
         <color id="TABLE_BACKGROUND" color="#bfbfbf" />
