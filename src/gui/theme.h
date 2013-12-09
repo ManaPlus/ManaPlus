@@ -402,6 +402,8 @@ class Theme final : public Palette, public ConfigListener
             MP_BAR_OUTLINE,
             NO_MP_BAR,
             NO_MP_BAR_OUTLINE,
+            XP_BAR,
+            XP_BAR_OUTLINE,
             THEME_COLORS_END
         };
 

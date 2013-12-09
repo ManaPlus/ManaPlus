@@ -97,6 +97,8 @@
         <color id="MP_BAR_OUTLINE" color="#000000" />
         <color id="NO_MP_BAR" color="#ffffff" />
         <color id="NO_MP_BAR_OUTLINE" color="#000000" />
+        <color id="XP_BAR" color="#ffffff" />
+        <color id="XP_BAR_OUTLINE" color="#000000" />
 
         <color id="BLACK" color="#000000" />
         <color id="RED" color="#ff0000" />

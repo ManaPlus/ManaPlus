@@ -199,6 +199,8 @@ StatusWindow::StatusWindow() :
             static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::EXP))
             / static_cast<float>(max):
             static_cast<float>(0), 80, 0, Theme::PROG_EXP);
+    mXpBar->setColor(Theme::getThemeColor(Theme::XP_BAR),
+        Theme::getThemeColor(Theme::XP_BAR_OUTLINE));
 
     const bool magicBar = Net::getGameHandler()->canUseMagicBar();
     const int job = Net::getPlayerHandler()->getJobLocation()

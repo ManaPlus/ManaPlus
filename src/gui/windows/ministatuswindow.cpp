@@ -71,7 +71,7 @@ MiniStatusWindow::MiniStatusWindow() :
         // TRANSLATORS: status bar name
         ? Theme::PROG_MP : Theme::PROG_NO_MP, "mp bar", _("mana bar"))
         : nullptr),
-    mXpBar(createBar(0, 100, 0, Theme::PROGRESS_BAR, Theme::PROG_EXP,
+    mXpBar(createBar(0, 100, 0, Theme::XP_BAR, Theme::PROG_EXP,
         // TRANSLATORS: status bar name
         "xp bar", _("experience bar"))),
     mJobBar(nullptr),
