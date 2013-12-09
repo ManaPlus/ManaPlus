@@ -102,6 +102,8 @@
         <color id="MONEY_BAR_OUTLINE" color="#000000" />
         <color id="ARROWS_BAR" color="#ffffff" />
         <color id="ARROWS_BAR_OUTLINE" color="#000000" />
+        <color id="STATUS_BAR" color="#ffffff" />
+        <color id="STATUS_BAR_OUTLINE" color="#000000" />
     </palette>
 
     <palette id="1">
@@ -281,6 +283,8 @@
         <color id="MONEY_BAR_OUTLINE" color="#000000" />
         <color id="ARROWS_BAR" color="#ffffff" />
         <color id="ARROWS_BAR_OUTLINE" color="#000000" />
+        <color id="STATUS_BAR" color="#ffffff" />
+        <color id="STATUS_BAR_OUTLINE" color="#000000" />
     </palette>
 
     <palette id="2">
@@ -384,6 +388,8 @@
         <color id="MONEY_BAR_OUTLINE" color="#000000" />
         <color id="ARROWS_BAR" color="#ffffff" />
         <color id="ARROWS_BAR_OUTLINE" color="#000000" />
+        <color id="STATUS_BAR" color="#ffffff" />
+        <color id="STATUS_BAR_OUTLINE" color="#000000" />
     </palette>
 
     <progressbar id="HP" color="#b80000" />

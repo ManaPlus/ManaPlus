@@ -410,6 +410,8 @@ class Theme final : public Palette, public ConfigListener
             MONEY_BAR_OUTLINE,
             ARROWS_BAR,
             ARROWS_BAR_OUTLINE,
+            STATUS_BAR,
+            STATUS_BAR_OUTLINE,
             THEME_COLORS_END
         };
 

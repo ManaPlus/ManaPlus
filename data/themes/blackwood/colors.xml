@@ -104,6 +104,8 @@
         <color id="MONEY_BAR_OUTLINE" color="#000000" />
         <color id="ARROWS_BAR" color="#ffffff" />
         <color id="ARROWS_BAR_OUTLINE" color="#000000" />
+        <color id="STATUS_BAR" color="#ffffff" />
+        <color id="STATUS_BAR_OUTLINE" color="#000000" />
 
         <color id="BLACK" color="#7a7972" />
         <color id="RED" color="#ff0000" />

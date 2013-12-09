@@ -89,7 +89,7 @@ MiniStatusWindow::MiniStatusWindow() :
         // TRANSLATORS: status bar name
         "arrows bar", _("arrows bar"))),
     mStatusBar(createBar(100, (config.getIntValue("fontSize") > 16
-        ? 250 : 165), 0, Theme::PROGRESS_BAR, Theme::PROG_STATUS,
+        ? 250 : 165), 0, Theme::STATUS_BAR, Theme::PROG_STATUS,
         // TRANSLATORS: status bar name
         "status bar", _("status bar"))),
     mTextPopup(new TextPopup),
