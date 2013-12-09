@@ -396,6 +396,8 @@ class Theme final : public Palette, public ConfigListener
             TABLE_BACKGROUND,
             SLOTS_BAR,
             SLOTS_BAR_OUTLINE,
+            HP_BAR,
+            HP_BAR_OUTLINE,
             THEME_COLORS_END
         };
 

@@ -90,6 +90,8 @@
         <color id="TABLE_BACKGROUND" color="#bfbfbf" />
         <color id="SLOTS_BAR" color="#ffffff" />
         <color id="SLOTS_BAR_OUTLINE" color="#000000" />
+        <color id="HP_BAR" color="#ffffff" />
+        <color id="HP_BAR_OUTLINE" color="#000000" />
 
         <color id="BLACK" color="#0E0E0E" />
         <color id="RED" color="#FFA8A8" />

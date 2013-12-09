@@ -88,6 +88,8 @@
         <color id="TABLE_BACKGROUND" color="#bfbfbf" />
         <color id="SLOTS_BAR" color="#ffffff" />
         <color id="SLOTS_BAR_OUTLINE" color="#000000" />
+        <color id="HP_BAR" color="#ffffff" />
+        <color id="HP_BAR_OUTLINE" color="#000000" />
     </palette>
 
     <palette id="1">
@@ -253,6 +255,8 @@
         <color id="TABLE_BACKGROUND" color="#bfbfbf" />
         <color id="SLOTS_BAR" color="#ffffff" />
         <color id="SLOTS_BAR_OUTLINE" color="#000000" />
+        <color id="HP_BAR" color="#ffffff" />
+        <color id="HP_BAR_OUTLINE" color="#000000" />
     </palette>
 
     <palette id="2">
@@ -342,6 +346,8 @@
         <color id="TABLE_BACKGROUND" color="#bfbfbf" />
         <color id="SLOTS_BAR" color="#ffffff" />
         <color id="SLOTS_BAR_OUTLINE" color="#000000" />
+        <color id="HP_BAR" color="#ffffff" />
+        <color id="HP_BAR_OUTLINE" color="#000000" />
     </palette>
 
     <progressbar id="HP" color="#b80000" />

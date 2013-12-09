@@ -952,7 +952,9 @@ static int readColorType(const std::string &type)
         "STATUSBAR_OFF",
         "TABLE_BACKGROUND",
         "SLOTS_BAR",
-        "SLOTS_BAR_OUTLINE"
+        "SLOTS_BAR_OUTLINE",
+        "HP_BAR",
+        "HP_BAR_OUTLINE"
     };
 
     if (type.empty())

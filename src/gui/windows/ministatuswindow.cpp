@@ -62,7 +62,7 @@ MiniStatusWindow::MiniStatusWindow() :
     mIconSpacing(mSkin ? mSkin->getOption("iconSpacing", 2) : 2),
     mMaxX(0),
     // TRANSLATORS: status bar name
-    mHpBar(createBar(0, 100, 0, Theme::PROGRESS_BAR, Theme::PROG_HP,
+    mHpBar(createBar(0, 100, 0, Theme::HP_BAR, Theme::PROG_HP,
         "hp bar", _("health bar"))),
     mMpBar(Net::getGameHandler()->canUseMagicBar()
         ? createBar(0, 100, 0, Theme::PROGRESS_BAR,
