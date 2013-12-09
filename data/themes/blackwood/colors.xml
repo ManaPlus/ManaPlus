@@ -92,6 +92,10 @@
         <color id="SLOTS_BAR_OUTLINE" color="#000000" />
         <color id="HP_BAR" color="#ffffff" />
         <color id="HP_BAR_OUTLINE" color="#000000" />
+        <color id="MP_BAR" color="#ffffff" />
+        <color id="MP_BAR_OUTLINE" color="#000000" />
+        <color id="NO_MP_BAR" color="#ffffff" />
+        <color id="NO_MP_BAR_OUTLINE" color="#000000" />
 
         <color id="BLACK" color="#7a7972" />
         <color id="RED" color="#ff0000" />

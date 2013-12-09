@@ -398,6 +398,10 @@ class Theme final : public Palette, public ConfigListener
             SLOTS_BAR_OUTLINE,
             HP_BAR,
             HP_BAR_OUTLINE,
+            MP_BAR,
+            MP_BAR_OUTLINE,
+            NO_MP_BAR,
+            NO_MP_BAR_OUTLINE,
             THEME_COLORS_END
         };
 

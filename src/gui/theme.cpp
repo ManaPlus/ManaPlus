@@ -955,6 +955,10 @@ static int readColorType(const std::string &type)
         "SLOTS_BAR_OUTLINE",
         "HP_BAR",
         "HP_BAR_OUTLINE"
+        "MP_BAR",
+        "MP_BAR_OUTLINE"
+        "NO_MP_BAR",
+        "NO_MP_BAR_OUTLINE"
     };
 
     if (type.empty())

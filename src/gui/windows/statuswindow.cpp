@@ -209,11 +209,21 @@ StatusWindow::StatusWindow() :
         max = PlayerInfo::getAttribute(PlayerInfo::MAX_MP);
         // TRANSLATORS: status window label
         mMpLabel = new Label(this, _("MP:"));
+        const bool useMagic = Net::getPlayerHandler()->canUseMagic();
         mMpBar = new ProgressBar(this, max ? static_cast<float>(
             PlayerInfo::getAttribute(PlayerInfo::MAX_MP))
             / static_cast<float>(max) : static_cast<float>(0),
-            80, 0, Net::getPlayerHandler()->canUseMagic() ?
-            Theme::PROG_MP : Theme::PROG_NO_MP);
+            80, 0, useMagic ? Theme::PROG_MP : Theme::PROG_NO_MP);
+        if (useMagic)
+        {
+            mMpBar->setColor(Theme::getThemeColor(Theme::MP_BAR),
+                Theme::getThemeColor(Theme::MP_BAR_OUTLINE));
+        }
+        else
+        {
+            mMpBar->setColor(Theme::getThemeColor(Theme::NO_MP_BAR),
+                Theme::getThemeColor(Theme::NO_MP_BAR_OUTLINE));
+        }
     }
     else
     {
@@ -523,9 +533,17 @@ void StatusWindow::updateMPBar(ProgressBar *const bar, const bool showMax)
         prog = static_cast<float>(mp) / static_cast<float>(maxMp);
 
     if (Net::getPlayerHandler()->canUseMagic())
+    {
+        bar->setColor(Theme::getThemeColor(Theme::MP_BAR),
+            Theme::getThemeColor(Theme::MP_BAR_OUTLINE));
         bar->setProgressPalette(Theme::PROG_MP);
+    }
     else
+    {
+        bar->setColor(Theme::getThemeColor(Theme::NO_MP_BAR),
+            Theme::getThemeColor(Theme::NO_MP_BAR_OUTLINE));
         bar->setProgressPalette(Theme::PROG_NO_MP);
+    }
 
     bar->setProgress(prog);
 }

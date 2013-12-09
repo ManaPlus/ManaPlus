@@ -65,7 +65,8 @@ MiniStatusWindow::MiniStatusWindow() :
     mHpBar(createBar(0, 100, 0, Theme::HP_BAR, Theme::PROG_HP,
         "hp bar", _("health bar"))),
     mMpBar(Net::getGameHandler()->canUseMagicBar()
-        ? createBar(0, 100, 0, Theme::PROGRESS_BAR,
+        ? createBar(0, 100, 0, Net::getPlayerHandler()->canUseMagic()
+        ? Theme::MP_BAR : Theme::NO_MP_BAR,
         Net::getPlayerHandler()->canUseMagic()
         // TRANSLATORS: status bar name
         ? Theme::PROG_MP : Theme::PROG_NO_MP, "mp bar", _("mana bar"))
