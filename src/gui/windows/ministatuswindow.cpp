@@ -75,7 +75,7 @@ MiniStatusWindow::MiniStatusWindow() :
         // TRANSLATORS: status bar name
         "xp bar", _("experience bar"))),
     mJobBar(nullptr),
-    mWeightBar(createBar(0, 140, 0, Theme::PROGRESS_BAR, Theme::PROG_WEIGHT,
+    mWeightBar(createBar(0, 140, 0, Theme::WEIGHT_BAR, Theme::PROG_WEIGHT,
         // TRANSLATORS: status bar name
         "weight bar", _("weight bar"))),
     mInvSlotsBar(createBar(0, 45, 0,

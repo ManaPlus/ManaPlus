@@ -96,6 +96,8 @@
         <color id="NO_MP_BAR_OUTLINE" color="#000000" />
         <color id="XP_BAR" color="#ffffff" />
         <color id="XP_BAR_OUTLINE" color="#000000" />
+        <color id="WEIGHT_BAR" color="#ffffff" />
+        <color id="WEIGHT_BAR_OUTLINE" color="#000000" />
     </palette>
 
     <palette id="1">
@@ -269,6 +271,8 @@
         <color id="NO_MP_BAR_OUTLINE" color="#000000" />
         <color id="XP_BAR" color="#ffffff" />
         <color id="XP_BAR_OUTLINE" color="#000000" />
+        <color id="WEIGHT_BAR" color="#ffffff" />
+        <color id="WEIGHT_BAR_OUTLINE" color="#000000" />
     </palette>
 
     <palette id="2">
@@ -366,6 +370,8 @@
         <color id="NO_MP_BAR_OUTLINE" color="#000000" />
         <color id="XP_BAR" color="#ffffff" />
         <color id="XP_BAR_OUTLINE" color="#000000" />
+        <color id="WEIGHT_BAR" color="#ffffff" />
+        <color id="WEIGHT_BAR_OUTLINE" color="#000000" />
     </palette>
 
     <progressbar id="HP" color="#b80000" />

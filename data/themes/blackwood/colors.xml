@@ -98,6 +98,8 @@
         <color id="NO_MP_BAR_OUTLINE" color="#000000" />
         <color id="XP_BAR" color="#ffffff" />
         <color id="XP_BAR_OUTLINE" color="#000000" />
+        <color id="WEIGHT_BAR" color="#ffffff" />
+        <color id="WEIGHT_BAR_OUTLINE" color="#000000" />
 
         <color id="BLACK" color="#7a7972" />
         <color id="RED" color="#ff0000" />

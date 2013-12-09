@@ -961,6 +961,8 @@ static int readColorType(const std::string &type)
         "NO_MP_BAR_OUTLINE"
         "XP_BAR",
         "XP_BAR_OUTLINE"
+        "WEIGHT_BAR",
+        "WEIGHT_BAR_OUTLINE"
     };
 
     if (type.empty())

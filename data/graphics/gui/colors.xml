@@ -109,6 +109,8 @@
         <color id="NO_MP_BAR_OUTLINE" color="#000000" />
         <color id="XP_BAR" color="#ffffff" />
         <color id="XP_BAR_OUTLINE" color="#000000" />
+        <color id="WEIGHT_BAR" color="#ffffff" />
+        <color id="WEIGHT_BAR_OUTLINE" color="#000000" />
     </palette>
 
     <progressbar id="HP" color="#ff0000,e28000,c38948,0f6a20" />
