@@ -1046,7 +1046,7 @@ static Palette::GradientType readColorGradient(const std::string &grad)
 
 static int readProgressType(const std::string &type)
 {
-    static const std::string colors[] =
+    static const std::string colors[Theme::THEME_PROG_END] =
     {
         "HP",
         "MP",
@@ -1057,7 +1057,8 @@ static int readProgressType(const std::string &type)
         "JOB",
         "UPDATE",
         "MONEY",
-        "ARROWS"
+        "ARROWS",
+        "STATUS"
     };
 
     if (type.empty())

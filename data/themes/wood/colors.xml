@@ -128,4 +128,5 @@
     <progressbar id="UPDATE" color="#969696" />
     <progressbar id="MONEY" color="#e1c819" />
     <progressbar id="ARROWS" color="#e1c819" />
+    <progressbar id="STATUS" color="#8fc0d3" />
 </colors>

@@ -425,6 +425,7 @@ class Theme final : public Palette, public ConfigListener
             PROG_UPDATE,
             PROG_MONEY,
             PROG_ARROWS,
+            PROG_STATUS,
             THEME_PROG_END
         };
 
