@@ -122,4 +122,5 @@
     <progressbar id="WEIGHT" color="#0000ff,ffff00,ff0000" />
     <progressbar id="JOB" color="#e187cb" />
     <progressbar id="UPDATE" color="#969696" />
+    <progressbar id="MONEY" color="#e1c819" />
 </colors>

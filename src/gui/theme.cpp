@@ -1051,7 +1051,8 @@ static int readProgressType(const std::string &type)
         "INVY_SLOTS",
         "WEIGHT",
         "JOB",
-        "UPDATE"
+        "UPDATE",
+        "MONEY",
     };
 
     if (type.empty())
