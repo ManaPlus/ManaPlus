@@ -5,138 +5,138 @@
 
 ##2<<KEYBOARD:>>
 
-     ##2###keyMoveUp;##P          \t40;<<"Move up">>
-     ##2###keyMoveDown;##P        \t40;<<"Move down">>
-     ##2###keyMoveLeft;##P        \t40;<<"Move left">>
-     ##2###keyMoveRight;##P       \t40;<<"Move right">>
-     ##2###keyAttack;##P          \t40;<<"Attack">>
-     ##2###keyTargetAttack;##P    \t40;<<"Target & attack">>
-     ##2###keyMoveToTarget;##P    \t40;<<"Move to target">>
-     ##2###keyChangeMoveToTarget;##P    \t40;<<"Change move to target type">>
-     ##2###keyMoveToHome;##P            \t40;<<"Move to home location">>
-     ##2###keySetHome;##P               \t40;<<"Set home location/set arrow">>
-     ##2###keyMoveToPoint; + <<move key>>##P    \t40;<<"Move to navigation point">>
-     ##2###keySmilie; + <<emote key>>##P        \t40;<<"Smilie">>
-     ##2###keyTalk;##P            \t40;<<"Talk">>
-     ##2###keyTarget;##P          \t40;<<"Stop Attack">>
-     ##2###keyTargetMonster;##P   \t40;<<"Target closest monster">>
-     ##2###keyTargetNPC;##P       \t40;<<"Target NPC">>
-     ##2###keyTargetPlayer;##P    \t40;<<"Target player">>
-     ##2###keyPickup;##P          \t40;<<"Pickup">>
-     ##2###keyChangePickupType;##P  \t40;<<"Change pickup type">>
-     ##2###keyHideWindows;##P     \t40;<<"Hide windows">>
-     ##2###keyBeingSit;##P        \t40;<<"Sit">>
-     ##2###keyScreenshot;##P      \t40;<<"Screenshot">>
-     ##2###keyTrade;##P           \t40;<<"Enable/disable trading">>
-     ##2###keyPathfind;##P        \t40;<<"Change map view mode">>
-     ##2###keyShortcutsKey;##P    \t40;<<"Item shortcuts Key">>
-     ##2###keyShortcut1;##P       \t40;<<"Item shortcut 1">>
-     ##2###keyShortcut2;##P       \t40;<<"Item shortcut 2">>
-     ##2###keyShortcut3;##P       \t40;<<"Item shortcut 3">>
-     ##2###keyShortcut4;##P       \t40;<<"Item shortcut 4">>
-     ##2###keyShortcut5;##P       \t40;<<"Item shortcut 5">>
-     ##2###keyShortcut6;##P       \t40;<<"Item shortcut 6">>
-     ##2###keyShortcut7;##P       \t40;<<"Item shortcut 7">>
-     ##2###keyShortcut8;##P       \t40;<<"Item shortcut 8">>
-     ##2###keyShortcut9;##P       \t40;<<"Item shortcut 9">>
-     ##2###keyShortcut0;##P       \t40;<<"Item shortcut 10">>
-     ##2###keyShortcut10;##P      \t40;<<"Item shortcut 11">>
-     ##2###keyShortcut11;##P      \t40;<<"Item shortcut 12">>
-     ##2###keyShortcut12;##P      \t40;<<"Item shortcut 13">>
-     ##2###keyShortcut13;##P      \t40;<<"Item shortcut 14">>
-     ##2###keyShortcut14;##P      \t40;<<"Item shortcut 15">>
-     ##2###keyWindowHelp;##P      \t40;<<"Help window">>
-     ##2###keyWindowStatus;##P    \t40;<<"Status window">>
-     ##2###keyWindowInventory;##P \t40;<<"Inventory window">>
-     ##2###keyWindowEquipment;##P \t40;<<"Equipment window">>
-     ##2###keyWindowSkill;##P     \t40;<<"Skill window">>
-     ##2###keyWindowMinimap;##P   \t40;<<"Minimap window">>
-     ##2###keyWindowChat;##P      \t40;<<"Chat window">>
-     ##2###keyWindowShortcut;##P  \t40;<<"Item shortcut window">>
-     ##2###keyWindowSetup;##P     \t40;<<"Setup window">>
-     ##2###keyWindowDebug;##P     \t40;<<"Debug window">>
-     ##2###keyWindowSocial;##P    \t40;<<"Social window">>
-     ##2###keyWindowEmoteBar;##P  \t40;<<"Emote shortcut window">>
-     ##2###keyWindowOutfit;##P    \t40;<<"Outfits window">>
-     ##2###keyWindowShop;##P      \t40;<<"Shop window">>
-     ##2###keyWindowDrop;##P      \t40;<<"Quick drop window">>
-     ##2###keyWindowKills;##P     \t40;<<"Kills stats window">>
-     ##2###keyWindowSpells;##P    \t40;<<"Commands window">>
-     ##2###keyWindowBotChecker;##P  \t40;<<"Bot checker window">>
-     ##2###keyWindowOnline;##P    \t40;<<"Who is online window">>
-     ##2###keyWindowDidYouKnow;##P  \t40;<<"Did you know window">>
-     ##2###keyWindowQuests;##P      \t40;<<"Quests window">>
-     ##2###keySmilie; + ###keyEmoteShortcut1;##P \t40;<<"Emote shortcut 1">>
-     ##2###keySmilie; + ###keyEmoteShortcut2;##P \t40;<<"Emote shortcut 2">>
-     ##2###keySmilie; + ###keyEmoteShortcut3;##P \t40;<<"Emote shortcut 3">>
-     ##2###keySmilie; + ###keyEmoteShortcut4;##P \t40;<<"Emote shortcut 4">>
-     ##2###keySmilie; + ###keyEmoteShortcut5;##P \t40;<<"Emote shortcut 5">>
-     ##2###keySmilie; + ###keyEmoteShortcut6;##P \t40;<<"Emote shortcut 6">>
-     ##2###keySmilie; + ###keyEmoteShortcut7;##P \t40;<<"Emote shortcut 7">>
-     ##2###keySmilie; + ###keyEmoteShortcut8;##P \t40;<<"Emote shortcut 8">>
-     ##2###keySmilie; + ###keyEmoteShortcut9;##P \t40;<<"Emote shortcut 9">>
-     ##2###keySmilie; + ###keyEmoteShortcut10;##P \t40;<<"Emote shortcut 10">>
-     ##2###keySmilie; + ###keyEmoteShortcut11;##P \t40;<<"Emote shortcut 11">>
-     ##2###keySmilie; + ###keyEmoteShortcut12;##P \t40;<<"Emote shortcut 12">>
-     ##2###keySmilie; + ###keyEmoteShortcut13;##P \t40;<<"Emote shortcut 13">>
-     ##2###keySmilie; + ###keyEmoteShortcut14;##P \t40;<<"Emote shortcut 14">>
-     ##2###keyWearOutfit;##P      \t40;<<"Wear outfit">>
-     ##2###keyCopyOutfit;##P      \t40;<<"Copy outfit">>
-     ##2###keyCopyEquipedOutfit;##P \t40;<<"Copy equiped to Outfit">>
-     ##2###keyOutfitShortcut1;##P   \t40;<<"Outfit shortcut 1">>
-     ##2###keyOutfitShortcut2;##P   \t40;<<"Outfit shortcut 2">>
-     ##2###keyOutfitShortcut3;##P   \t40;<<"Outfit shortcut 3">>
-     ##2###keyOutfitShortcut4;##P   \t40;<<"Outfit shortcut 4">>
-     ##2###keyOutfitShortcut5;##P   \t40;<<"Outfit shortcut 5">>
-     ##2###keyOutfitShortcut6;##P   \t40;<<"Outfit shortcut 6">>
-     ##2###keyOutfitShortcut7;##P   \t40;<<"Outfit shortcut 7">>
-     ##2###keyOutfitShortcut8;##P   \t40;<<"Outfit shortcut 8">>
-     ##2###keyOutfitShortcut9;##P   \t40;<<"Outfit shortcut 9">>
-     ##2###keyOutfitShortcut0;##P   \t40;<<"Outfit shortcut 10">>
-     ##2###keyOutfitShortcut10;##P  \t40;<<"Outfit shortcut 11">>
-     ##2###keyOutfitShortcut11;##P  \t40;<<"Outfit shortcut 12">>
-     ##2###keyOutfitShortcut12;##P  \t40;<<"Outfit shortcut 13">>
-     ##2###keyOutfitShortcut13;##P  \t40;<<"Outfit shortcut 14">>
-     ##2###keyOutfitShortcut14;##P  \t40;<<"Outfit shortcut 15">>
-     ##2###keyChat;##P              \t40;<<"Toggle chat">>
-     ##2###keyChatScrollUp;##P      \t40;<<"Scroll chat up">>
-     ##2###keyChatScrollDown;##P    \t40;<<"Scroll chat down">>
-     ##2###keyChatPrevTab;##P       \t40;<<"Previous chat tab">>
-     ##2###keyChatNextTab;##P       \t40;<<"Next chat tab">>
-     ##2###keyChatCloseTab;##P      \t40;<<"Close chat tab">>
-     ##2###keyChatPrevHistory;##P   \t40;<<"Previous chat tab line">>
-     ##2###keyChatNextHistory;##P   \t40;<<"Next chat tab line">>
-     ##2###keyGUITab;##P            \t40;<<"Chat auto complete">>
-     ##2###keyGUICancel;##P         \t40;<<"Deactivate chat input">>
-     ##2###keyOK;##P                \t40;<<"Select OK">>
-     ##2###keyQuit;##P              \t40;<<"Quit">>
-     ##2###keyIgnoreInput1;##P      \t40;<<"Ignore input 1">>
-     ##2###keyIgnoreInput2;##P      \t40;<<"Ignore input 2">>
-     ##2###keyDirectUp;##P          \t40;<<"Set direction up">>
-     ##2###keyDirectDown;##P        \t40;<<"Set direction down">>
-     ##2###keyDirectLeft;##P        \t40;<<"Set direction left">>
-     ##2###keyDirectRight;##P       \t40;<<"Set direction right">>
-     ##2###keyCrazyMoves;##P        \t40;<<"Crazy moves">>
-     ##2###keyChangeCrazyMoveType;##P   \t40;<<"Change crazy Move mode">>
-     ##2###keyQuickDrop;##P         \t40;<<"Quick drop N items from 0 slot">>
-     ##2###keyQuickDropN;##P        \t40;<<"Quick drop N items">>
-     ##2###keySwitchQuickDrop;##P   \t40;<<"Switch quick drop counter">>
-     ##2###keyMagicInma1;##P        \t40;<<"Quick heal target or self">>
-     ##2###keyMagicItenplz;##P      \t40;<<"Use #itenplz spell">>
-     ##2###keyMagicAttack;##P       \t40;<<"Use magic attack">>
-     ##2###keySwitchMagicAttack;##P \t40;<<"Switch magic attack">>
-     ##2###keySwitchPvpAttack;##P   \t40;<<"Switch pvp attack">>
-     ##2###keyInvertDirection;##P   \t40;<<"Change move type">>
-     ##2###keyChangeAttackWeaponType;##P    \t40;<<"Change attack weapon type">>
-     ##2###keyChangeAttackType;##P  \t40;<<"Change attack type">>
-     ##2###keyChangeFollowMode;##P  \t40;<<"Change follow mode">>
-     ##2###keyChangeImitationMode;##P   \t40;<<"Change imitation mode">>
-     ##2###keyDisableGameModifiers;##P  \t40;<<"Disable / enable game modifier keys">>
-     ##2###keyChangeAudio;##P       \t40;<<"On / off audio">>
-     ##2###keyAway;##P              \t40;<<"Enable / disable away mode">>
-     ##2###keyRightClick;##P        \t40;<<"Emulate right click from keyboard">>
-     ##2###keyCameraMode;##P        \t40;<<"Toggle camera mode">>
-     ##2###keySafeVideo;##P         \t40;<<"Reset video mode to safe value">>
+     ##2###keyMoveUp;##9          \t40;<<"Move up">>
+     ##2###keyMoveDown;##9        \t40;<<"Move down">>
+     ##2###keyMoveLeft;##9        \t40;<<"Move left">>
+     ##2###keyMoveRight;##9       \t40;<<"Move right">>
+     ##2###keyAttack;##9          \t40;<<"Attack">>
+     ##2###keyTargetAttack;##9    \t40;<<"Target & attack">>
+     ##2###keyMoveToTarget;##9    \t40;<<"Move to target">>
+     ##2###keyChangeMoveToTarget;##9    \t40;<<"Change move to target type">>
+     ##2###keyMoveToHome;##9            \t40;<<"Move to home location">>
+     ##2###keySetHome;##9               \t40;<<"Set home location/set arrow">>
+     ##2###keyMoveToPoint; + <<move key>>##9    \t40;<<"Move to navigation point">>
+     ##2###keySmilie; + <<emote key>>##9        \t40;<<"Smilie">>
+     ##2###keyTalk;##9            \t40;<<"Talk">>
+     ##2###keyTarget;##9          \t40;<<"Stop Attack">>
+     ##2###keyTargetMonster;##9   \t40;<<"Target closest monster">>
+     ##2###keyTargetNPC;##9       \t40;<<"Target NPC">>
+     ##2###keyTargetPlayer;##9    \t40;<<"Target player">>
+     ##2###keyPickup;##9          \t40;<<"Pickup">>
+     ##2###keyChangePickupType;##9  \t40;<<"Change pickup type">>
+     ##2###keyHideWindows;##9     \t40;<<"Hide windows">>
+     ##2###keyBeingSit;##9        \t40;<<"Sit">>
+     ##2###keyScreenshot;##9      \t40;<<"Screenshot">>
+     ##2###keyTrade;##9           \t40;<<"Enable/disable trading">>
+     ##2###keyPathfind;##9        \t40;<<"Change map view mode">>
+     ##2###keyShortcutsKey;##9    \t40;<<"Item shortcuts Key">>
+     ##2###keyShortcut1;##9       \t40;<<"Item shortcut 1">>
+     ##2###keyShortcut2;##9       \t40;<<"Item shortcut 2">>
+     ##2###keyShortcut3;##9       \t40;<<"Item shortcut 3">>
+     ##2###keyShortcut4;##9       \t40;<<"Item shortcut 4">>
+     ##2###keyShortcut5;##9       \t40;<<"Item shortcut 5">>
+     ##2###keyShortcut6;##9       \t40;<<"Item shortcut 6">>
+     ##2###keyShortcut7;##9       \t40;<<"Item shortcut 7">>
+     ##2###keyShortcut8;##9       \t40;<<"Item shortcut 8">>
+     ##2###keyShortcut9;##9       \t40;<<"Item shortcut 9">>
+     ##2###keyShortcut0;##9       \t40;<<"Item shortcut 10">>
+     ##2###keyShortcut10;##9      \t40;<<"Item shortcut 11">>
+     ##2###keyShortcut11;##9      \t40;<<"Item shortcut 12">>
+     ##2###keyShortcut12;##9      \t40;<<"Item shortcut 13">>
+     ##2###keyShortcut13;##9      \t40;<<"Item shortcut 14">>
+     ##2###keyShortcut14;##9      \t40;<<"Item shortcut 15">>
+     ##2###keyWindowHelp;##9      \t40;<<"Help window">>
+     ##2###keyWindowStatus;##9    \t40;<<"Status window">>
+     ##2###keyWindowInventory;##9 \t40;<<"Inventory window">>
+     ##2###keyWindowEquipment;##9 \t40;<<"Equipment window">>
+     ##2###keyWindowSkill;##9     \t40;<<"Skill window">>
+     ##2###keyWindowMinimap;##9   \t40;<<"Minimap window">>
+     ##2###keyWindowChat;##9      \t40;<<"Chat window">>
+     ##2###keyWindowShortcut;##9  \t40;<<"Item shortcut window">>
+     ##2###keyWindowSetup;##9     \t40;<<"Setup window">>
+     ##2###keyWindowDebug;##9     \t40;<<"Debug window">>
+     ##2###keyWindowSocial;##9    \t40;<<"Social window">>
+     ##2###keyWindowEmoteBar;##9  \t40;<<"Emote shortcut window">>
+     ##2###keyWindowOutfit;##9    \t40;<<"Outfits window">>
+     ##2###keyWindowShop;##9      \t40;<<"Shop window">>
+     ##2###keyWindowDrop;##9      \t40;<<"Quick drop window">>
+     ##2###keyWindowKills;##9     \t40;<<"Kills stats window">>
+     ##2###keyWindowSpells;##9    \t40;<<"Commands window">>
+     ##2###keyWindowBotChecker;##9  \t40;<<"Bot checker window">>
+     ##2###keyWindowOnline;##9    \t40;<<"Who is online window">>
+     ##2###keyWindowDidYouKnow;##9  \t40;<<"Did you know window">>
+     ##2###keyWindowQuests;##9      \t40;<<"Quests window">>
+     ##2###keySmilie; + ###keyEmoteShortcut1;##9 \t40;<<"Emote shortcut 1">>
+     ##2###keySmilie; + ###keyEmoteShortcut2;##9 \t40;<<"Emote shortcut 2">>
+     ##2###keySmilie; + ###keyEmoteShortcut3;##9 \t40;<<"Emote shortcut 3">>
+     ##2###keySmilie; + ###keyEmoteShortcut4;##9 \t40;<<"Emote shortcut 4">>
+     ##2###keySmilie; + ###keyEmoteShortcut5;##9 \t40;<<"Emote shortcut 5">>
+     ##2###keySmilie; + ###keyEmoteShortcut6;##9 \t40;<<"Emote shortcut 6">>
+     ##2###keySmilie; + ###keyEmoteShortcut7;##9 \t40;<<"Emote shortcut 7">>
+     ##2###keySmilie; + ###keyEmoteShortcut8;##9 \t40;<<"Emote shortcut 8">>
+     ##2###keySmilie; + ###keyEmoteShortcut9;##9 \t40;<<"Emote shortcut 9">>
+     ##2###keySmilie; + ###keyEmoteShortcut10;##9 \t40;<<"Emote shortcut 10">>
+     ##2###keySmilie; + ###keyEmoteShortcut11;##9 \t40;<<"Emote shortcut 11">>
+     ##2###keySmilie; + ###keyEmoteShortcut12;##9 \t40;<<"Emote shortcut 12">>
+     ##2###keySmilie; + ###keyEmoteShortcut13;##9 \t40;<<"Emote shortcut 13">>
+     ##2###keySmilie; + ###keyEmoteShortcut14;##9 \t40;<<"Emote shortcut 14">>
+     ##2###keyWearOutfit;##9      \t40;<<"Wear outfit">>
+     ##2###keyCopyOutfit;##9      \t40;<<"Copy outfit">>
+     ##2###keyCopyEquipedOutfit;##9 \t40;<<"Copy equiped to Outfit">>
+     ##2###keyOutfitShortcut1;##9   \t40;<<"Outfit shortcut 1">>
+     ##2###keyOutfitShortcut2;##9   \t40;<<"Outfit shortcut 2">>
+     ##2###keyOutfitShortcut3;##9   \t40;<<"Outfit shortcut 3">>
+     ##2###keyOutfitShortcut4;##9   \t40;<<"Outfit shortcut 4">>
+     ##2###keyOutfitShortcut5;##9   \t40;<<"Outfit shortcut 5">>
+     ##2###keyOutfitShortcut6;##9   \t40;<<"Outfit shortcut 6">>
+     ##2###keyOutfitShortcut7;##9   \t40;<<"Outfit shortcut 7">>
+     ##2###keyOutfitShortcut8;##9   \t40;<<"Outfit shortcut 8">>
+     ##2###keyOutfitShortcut9;##9   \t40;<<"Outfit shortcut 9">>
+     ##2###keyOutfitShortcut0;##9   \t40;<<"Outfit shortcut 10">>
+     ##2###keyOutfitShortcut10;##9  \t40;<<"Outfit shortcut 11">>
+     ##2###keyOutfitShortcut11;##9  \t40;<<"Outfit shortcut 12">>
+     ##2###keyOutfitShortcut12;##9  \t40;<<"Outfit shortcut 13">>
+     ##2###keyOutfitShortcut13;##9  \t40;<<"Outfit shortcut 14">>
+     ##2###keyOutfitShortcut14;##9  \t40;<<"Outfit shortcut 15">>
+     ##2###keyChat;##9              \t40;<<"Toggle chat">>
+     ##2###keyChatScrollUp;##9      \t40;<<"Scroll chat up">>
+     ##2###keyChatScrollDown;##9    \t40;<<"Scroll chat down">>
+     ##2###keyChatPrevTab;##9       \t40;<<"Previous chat tab">>
+     ##2###keyChatNextTab;##9       \t40;<<"Next chat tab">>
+     ##2###keyChatCloseTab;##9      \t40;<<"Close chat tab">>
+     ##2###keyChatPrevHistory;##9   \t40;<<"Previous chat tab line">>
+     ##2###keyChatNextHistory;##9   \t40;<<"Next chat tab line">>
+     ##2###keyGUITab;##9            \t40;<<"Chat auto complete">>
+     ##2###keyGUICancel;##9         \t40;<<"Deactivate chat input">>
+     ##2###keyOK;##9                \t40;<<"Select OK">>
+     ##2###keyQuit;##9              \t40;<<"Quit">>
+     ##2###keyIgnoreInput1;##9      \t40;<<"Ignore input 1">>
+     ##2###keyIgnoreInput2;##9      \t40;<<"Ignore input 2">>
+     ##2###keyDirectUp;##9          \t40;<<"Set direction up">>
+     ##2###keyDirectDown;##9        \t40;<<"Set direction down">>
+     ##2###keyDirectLeft;##9        \t40;<<"Set direction left">>
+     ##2###keyDirectRight;##9       \t40;<<"Set direction right">>
+     ##2###keyCrazyMoves;##9        \t40;<<"Crazy moves">>
+     ##2###keyChangeCrazyMoveType;##9   \t40;<<"Change crazy Move mode">>
+     ##2###keyQuickDrop;##9         \t40;<<"Quick drop N items from 0 slot">>
+     ##2###keyQuickDropN;##9        \t40;<<"Quick drop N items">>
+     ##2###keySwitchQuickDrop;##9   \t40;<<"Switch quick drop counter">>
+     ##2###keyMagicInma1;##9        \t40;<<"Quick heal target or self">>
+     ##2###keyMagicItenplz;##9      \t40;<<"Use #itenplz spell">>
+     ##2###keyMagicAttack;##9       \t40;<<"Use magic attack">>
+     ##2###keySwitchMagicAttack;##9 \t40;<<"Switch magic attack">>
+     ##2###keySwitchPvpAttack;##9   \t40;<<"Switch pvp attack">>
+     ##2###keyInvertDirection;##9   \t40;<<"Change move type">>
+     ##2###keyChangeAttackWeaponType;##9    \t40;<<"Change attack weapon type">>
+     ##2###keyChangeAttackType;##9  \t40;<<"Change attack type">>
+     ##2###keyChangeFollowMode;##9  \t40;<<"Change follow mode">>
+     ##2###keyChangeImitationMode;##9   \t40;<<"Change imitation mode">>
+     ##2###keyDisableGameModifiers;##9  \t40;<<"Disable / enable game modifier keys">>
+     ##2###keyChangeAudio;##9       \t40;<<"On / off audio">>
+     ##2###keyAway;##9              \t40;<<"Enable / disable away mode">>
+     ##2###keyRightClick;##9        \t40;<<"Emulate right click from keyboard">>
+     ##2###keyCameraMode;##9        \t40;<<"Toggle camera mode">>
+     ##2###keySafeVideo;##9         \t40;<<"Reset video mode to safe value">>
 
 
 ##2<<MOUSE:>>
@@ -170,12 +170,12 @@
 << There you will find a list of all players you are acquainted with, as well as
  several configuration options:>>
 
-<< - ##2save player list##P: Should your acquaintance list be saved when you
+<< - ##2save player list##9: Should your acquaintance list be saved when you
    quit the game?  If you enable this option, your list will survive when you
    quit and re-start.>>
-<< - ##2allow trading##P: Do you wish to allow trade requests from arbitrary
+<< - ##2allow trading##9: Do you wish to allow trade requests from arbitrary
    players?>>
-<< - ##2allow whispers##P: Do you wish to allow arbitrary players to send
+<< - ##2allow whispers##9: Do you wish to allow arbitrary players to send
    private messages to you in-game?>>
 
 ##2<<THE PLAYER LIST>>
@@ -183,15 +183,15 @@
 << The player list lists all of your acquaintances.  They are categorised as one
  of the following:>>
 
-<< - ##2neutral##P:  As far as the game is concerned, this is the same as not
+<< - ##2neutral##9:  As far as the game is concerned, this is the same as not
    having the player listed:  the player may chat with you, but may only trade
    or whisper if you have this option allowed for everyone.>>
-<< - ##2friend##P:  You consider this player a friend.  The player may chat,
+<< - ##2friend##9:  You consider this player a friend.  The player may chat,
    message your in private, or trade with you at any point.>>
-<< - ##2disregarded##P:  You wish to disregard this player, meaning that his or
+<< - ##2disregarded##9:  You wish to disregard this player, meaning that his or
    her chat messages are not logged and trade requests and whispers are
    ignored.>>
-<< - ##2ignored##P:  You wish to completely ignore this player.  You will not
+<< - ##2ignored##9:  You wish to completely ignore this player.  You will not
    even see floating text for him or her anymore, nor emotions.>>
 
 

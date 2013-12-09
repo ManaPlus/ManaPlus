@@ -8,15 +8,15 @@
 
    ##4 <<Basic skills:>>
 
-     <<##2Emote:##P enables the ability to express emotions.>>
-     <<##2Trade:##P enables the ability to trade with others.>>
-     <<##2Party Level1:##P enables a char to join a party.>>
-     <<##2Party level2:##P enables a char to create a party.>>
+     <<##2Emote:##9 enables the ability to express emotions.>>
+     <<##2Trade:##9 enables the ability to trade with others.>>
+     <<##2Party Level1:##9 enables a char to join a party.>>
+     <<##2Party level2:##9 enables a char to create a party.>>
 
    ##4 <<Magic skills:>>
 
-     <<##PMagic skills can be obtain by doing quests and missions in game.>>
+     <<##9Magic skills can be obtain by doing quests and missions in game.>>
 
    ##4 <<Other skills:>>
 
-     <<##POther skills can be obtain by doing quests and missions in game.>>
+     <<##9Other skills can be obtain by doing quests and missions in game.>>

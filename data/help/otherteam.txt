@@ -7,8 +7,8 @@
 ##3-- <<Mana Contributors>> --
 ##3-----------------------
 
-<<##P This file lists all contributors up to the current release. Check the wiki
-##P for the currently active development team.>>
+<<##9 This file lists all contributors up to the current release. Check the wiki
+##9 for the currently active development team.>>
 
 ##3== <<Contributors to client/server development>> ==
 

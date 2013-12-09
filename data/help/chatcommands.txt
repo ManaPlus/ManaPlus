@@ -4,7 +4,7 @@
 ##3                            <<Chat commands>>
 
 
-##P<<Whispers>>
+##9<<Whispers>>
 ##2
     <</closeall - close all whispers.>>
     <</ignoreall - add all whispers to ignore list.>>
@@ -12,7 +12,7 @@
     <</query NICK, /q NICK - open new whisper tab for nick.>>
 
 
-##P<<Actions>>
+##9<<Actions>>
 ##2
     <</help - show small help about chat commands. >>
     <</target NICK - select nick as target. Can be monster or player nick.>>
@@ -37,14 +37,14 @@
     <</addignoreattack NAME - add monster to ignore attack list.>>
     <</setdrop N - set drop counter to requested value.>>
 
-##P<<Trade>>
+##9<<Trade>>
 ##2
     <</trade NICK - start trade with nick.>>
     <</priceload - load shop price from disc.>>
     <</pricesave - save shop price to disc.>>
 
 
-##P<<Player relations>>
+##9<<Player relations>>
 ##2
     <</ignore NICK - add nick to ignore list.>>
     <</unignore NICK - Remove nick from ignore list.>>
@@ -59,7 +59,7 @@
     <</serverignoreall - ignore all whispers on server side.>>
     <</serverunignoreall - unignore all whispers on server side.>>
 
-##P<<Debug>>
+##9<<Debug>>
 ##2
     <</who - print online players number to chat.>>
     <</all - show visible beings list in debug tab.>>
@@ -70,7 +70,7 @@
     <</dirs - show client dirs in debug chat tab.>>
 
 
-##P<<Whispers commands>>
+##9<<Whispers commands>>
 ##2
 <<Most commands working in whispers.
 For example command /imitation in whisper with nick1,
