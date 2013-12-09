@@ -431,9 +431,10 @@ class Window : public gcn::Window,
         int getOption(const std::string &name,
                       const int def = 0) const A_WARN_UNUSED;
 
-        bool getOptionBool(const std::string &name) const A_WARN_UNUSED;
+        bool getOptionBool(const std::string &name,
+                           const bool def = false) const A_WARN_UNUSED;
 
-        void setTitlePadding(int p)
+        void setTitlePadding(const int p)
         { mTitlePadding = p; }
 
         int getTitlePadding() const A_WARN_UNUSED

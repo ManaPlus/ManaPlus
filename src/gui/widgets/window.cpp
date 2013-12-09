@@ -142,6 +142,7 @@ Window::Window(const std::string &caption, const bool modal,
             mTitleBarHeight += getOption("titlebarHeightRelative");
             setPalette(getOption("palette"));
             childPalette = getOption("childPalette");
+            mShowTitle = getOptionBool("showTitle", true);
         }
     }
 
@@ -1219,11 +1220,11 @@ int Window::getOption(const std::string &name, const int def) const
     return def;
 }
 
-bool Window::getOptionBool(const std::string &name) const
+bool Window::getOptionBool(const std::string &name, const bool def) const
 {
     if (mSkin)
-        return mSkin->getOption(name) != 0;
-    return 0;
+        return mSkin->getOption(name, def) != 0;
+    return def;
 }
 
 #ifdef USE_PROFILER
