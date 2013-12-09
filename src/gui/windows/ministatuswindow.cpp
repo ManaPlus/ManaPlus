@@ -112,7 +112,7 @@ MiniStatusWindow::MiniStatusWindow() :
 
     if (job)
     {
-        mJobBar = createBar(0, 100, 0, Theme::PROGRESS_BAR, Theme::PROG_JOB,
+        mJobBar = createBar(0, 100, 0, Theme::JOB_BAR, Theme::PROG_JOB,
             // TRANSLATORS: status bar name
             "job bar", _("job bar"));
         StatusWindow::updateJobBar(mJobBar);

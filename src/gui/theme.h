@@ -412,6 +412,8 @@ class Theme final : public Palette, public ConfigListener
             ARROWS_BAR_OUTLINE,
             STATUS_BAR,
             STATUS_BAR_OUTLINE,
+            JOB_BAR,
+            JOB_BAR_OUTLINE,
             THEME_COLORS_END
         };
 

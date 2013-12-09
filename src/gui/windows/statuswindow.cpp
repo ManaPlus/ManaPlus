@@ -255,6 +255,8 @@ StatusWindow::StatusWindow() :
         // TRANSLATORS: status window label
         mJobLabel = new Label(this, _("Job:"));
         mJobBar = new ProgressBar(this, 0.0F, 80, 0, Theme::PROG_JOB);
+        mJobBar->setColor(Theme::getThemeColor(Theme::JOB_BAR),
+            Theme::getThemeColor(Theme::JOB_BAR_OUTLINE));
 
         place(3, 0, mJobLvlLabel, 3);
         place(5, 2, mJobLabel).setPadding(3);

@@ -106,6 +106,8 @@
         <color id="ARROWS_BAR_OUTLINE" color="#000000" />
         <color id="STATUS_BAR" color="#ffffff" />
         <color id="STATUS_BAR_OUTLINE" color="#000000" />
+        <color id="JOB_BAR" color="#ffffff" />
+        <color id="JOB_BAR_OUTLINE" color="#000000" />
 
         <color id="BLACK" color="#0E0E0E" />
         <color id="RED" color="#FFA8A8" />
