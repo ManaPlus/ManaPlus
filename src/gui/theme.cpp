@@ -1055,6 +1055,7 @@ static int readProgressType(const std::string &type)
         "JOB",
         "UPDATE",
         "MONEY",
+        "ARROWS"
     };
 
     if (type.empty())

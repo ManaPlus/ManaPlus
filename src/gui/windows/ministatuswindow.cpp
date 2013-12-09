@@ -85,7 +85,7 @@ MiniStatusWindow::MiniStatusWindow() :
     mMoneyBar(createBar(0, 130, 0, Theme::MONEY_BAR, Theme::PROG_MONEY,
         // TRANSLATORS: status bar name
         "money bar", _("money bar"))),
-    mArrowsBar(createBar(0, 50, 0, Theme::SLOTS_BAR, Theme::PROG_INVY_SLOTS,
+    mArrowsBar(createBar(0, 50, 0, Theme::SLOTS_BAR, Theme::PROG_ARROWS,
         // TRANSLATORS: status bar name
         "arrows bar", _("arrows bar"))),
     mStatusBar(createBar(100, (config.getIntValue("fontSize") > 16

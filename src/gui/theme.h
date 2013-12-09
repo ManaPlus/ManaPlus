@@ -422,6 +422,7 @@ class Theme final : public Palette, public ConfigListener
             PROG_JOB,
             PROG_UPDATE,
             PROG_MONEY,
+            PROG_ARROWS,
             THEME_PROG_END
         };
 
