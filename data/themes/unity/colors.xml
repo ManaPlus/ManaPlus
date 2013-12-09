@@ -100,6 +100,8 @@
         <color id="XP_BAR_OUTLINE" color="#000000" />
         <color id="WEIGHT_BAR" color="#ffffff" />
         <color id="WEIGHT_BAR_OUTLINE" color="#000000" />
+        <color id="MONEY_BAR" color="#ffffff" />
+        <color id="MONEY_BAR_OUTLINE" color="#000000" />
 
         <color id="BLACK" color="#0E0E0E" />
         <color id="RED" color="#FFA8A8" />

@@ -82,7 +82,7 @@ MiniStatusWindow::MiniStatusWindow() :
         Theme::SLOTS_BAR, Theme::PROG_INVY_SLOTS,
         // TRANSLATORS: status bar name
         "inventory slots bar", _("inventory slots bar"))),
-    mMoneyBar(createBar(0, 130, 0, Theme::SLOTS_BAR, Theme::PROG_MONEY,
+    mMoneyBar(createBar(0, 130, 0, Theme::MONEY_BAR, Theme::PROG_MONEY,
         // TRANSLATORS: status bar name
         "money bar", _("money bar"))),
     mArrowsBar(createBar(0, 50, 0, Theme::SLOTS_BAR, Theme::PROG_INVY_SLOTS,

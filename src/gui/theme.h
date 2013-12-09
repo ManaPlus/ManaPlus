@@ -406,6 +406,8 @@ class Theme final : public Palette, public ConfigListener
             XP_BAR_OUTLINE,
             WEIGHT_BAR,
             WEIGHT_BAR_OUTLINE,
+            MONEY_BAR,
+            MONEY_BAR_OUTLINE,
             THEME_COLORS_END
         };
 
