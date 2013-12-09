@@ -408,6 +408,8 @@ class Theme final : public Palette, public ConfigListener
             WEIGHT_BAR_OUTLINE,
             MONEY_BAR,
             MONEY_BAR_OUTLINE,
+            ARROWS_BAR,
+            ARROWS_BAR_OUTLINE,
             THEME_COLORS_END
         };
 

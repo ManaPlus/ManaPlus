@@ -964,7 +964,9 @@ static int readColorType(const std::string &type)
         "WEIGHT_BAR",
         "WEIGHT_BAR_OUTLINE",
         "MONEY_BAR",
-        "MONEY_BAR_OUTLINE"
+        "MONEY_BAR_OUTLINE",
+        "ARROWS_BAR",
+        "ARROWS_BAR_OUTLINE"
     };
 
     if (type.empty())

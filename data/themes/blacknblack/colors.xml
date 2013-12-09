@@ -103,6 +103,8 @@
         <color id="WEIGHT_BAR_OUTLINE" color="#555555" />
         <color id="MONEY_BAR" color="#ffffff" />
         <color id="MONEY_BAR_OUTLINE" color="#555555" />
+        <color id="ARROWS_BAR" color="#ffffff" />
+        <color id="ARROWS_BAR_OUTLINE" color="#555555" />
 
         <color id="BLACK" color="#ffffff" />
         <color id="RED" color="#ffffff" />
