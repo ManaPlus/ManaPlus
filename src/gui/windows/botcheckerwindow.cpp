@@ -316,18 +316,23 @@ BotCheckerWindow::BotCheckerWindow():
     setDefaultSize(w, h, ImageRect::CENTER);
 
     playersScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mIncButton->adjustSize();
 
-    mPlayerTitleTable->setPosition(mPadding, mPadding);
-    mPlayerTitleTable->setWidth(w - 10);
+    const int pad4 = mPadding * 4;
+    int y = mPadding;
+    mPlayerTitleTable->setPosition(mPadding, y);
+    mPlayerTitleTable->setWidth(w - pad4);
     mPlayerTitleTable->setHeight(20);
 
-    playersScrollArea->setPosition(mPadding, 20 + 2 * mPadding);
-    playersScrollArea->setWidth(w - 15);
-    playersScrollArea->setHeight(h - 80);
+    y += 20 + mPadding;
+    playersScrollArea->setPosition(mPadding, y);
+    playersScrollArea->setWidth(w - pad4);
+    const int scrollHeight = h - y - mTitleBarHeight - mPadding * 3
+        - mIncButton->getHeight();
+    playersScrollArea->setHeight(scrollHeight);
+    y += scrollHeight + mPadding;
 
-    mIncButton->setPosition(mPadding, 190 + 3 * mPadding);
-    mIncButton->setWidth(80);
-    mIncButton->setHeight(20);
+    mIncButton->setPosition(mPadding, y);
 
     add(mPlayerTitleTable);
     add(playersScrollArea);
