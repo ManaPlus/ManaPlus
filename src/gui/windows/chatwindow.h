@@ -340,6 +340,7 @@ class ChatWindow final : public Window,
 
         void loadCommandsFile(const std::string &name);
 
+        void updateTabsMargin();
 
         typedef std::map<const std::string, WhisperTab*> TabMap;
         /** Manage whisper tabs */

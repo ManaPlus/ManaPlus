@@ -485,7 +485,7 @@ void TabbedArea::adjustSize()
             maxTabHeight = mTabs[i].first->getHeight();
     }
 
-    mTabContainer->setSize(width - 2, maxTabHeight);
+    mTabContainer->setSize(width - mRightMargin, maxTabHeight);
 
     mWidgetContainer->setPosition(0, maxTabHeight);
     mWidgetContainer->setSize(width, height - maxTabHeight);

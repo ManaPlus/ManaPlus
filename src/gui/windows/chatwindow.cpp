@@ -291,6 +291,7 @@ ChatWindow::ChatWindow():
     mChatInput->addKeyListener(this);
     mCurHist = mHistory.end();
     mColorPicker->setVisible(config.getBoolValue("showChatColorsList"));
+    updateTabsMargin();
 
     fillCommands();
     if (player_node && player_node->isGM())
@@ -362,6 +363,18 @@ void ChatWindow::loadGMCommands()
     mGMLoaded = true;
 }
 
+void ChatWindow::updateTabsMargin()
+{
+    if (mColorPicker->isVisible())
+    {
+        mChatTabs->setRightMargin(mColorPicker->getWidth() + 16 + 8);
+    }
+    else
+    {
+        mChatTabs->setRightMargin(8);
+    }
+}
+
 void ChatWindow::adjustTabSize()
 {
     const gcn::Rectangle area = getChildrenArea();
@@ -381,6 +394,7 @@ void ChatWindow::adjustTabSize()
         mChatTabs->setHeight(height);
     else
         mChatTabs->setHeight(height + inputHeight);
+    updateTabsMargin();
 
     if (showEmotes)
     {
