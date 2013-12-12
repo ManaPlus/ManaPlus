@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window" xpos="41" ypos="0">
+        <option name="padding" value="6" />
+
+        <!-- Top Row -->
+        <part type="top-left-corner" xpos="0" ypos="0" width="10" height="10" />
+        <part type="top-edge" xpos="11" ypos="0" width="4" height="10" />
+        <part type="top-right-corner" xpos="16" ypos="0" width="10" height="10" />
+
+        <!-- Middle Row -->
+        <part type="left-edge" xpos="0" ypos="11" width="10" height="2" />
+        <part type="bg-quad" xpos="11" ypos="11" width="4" height="2" />
+        <part type="right-edge" xpos="16" ypos="11" width="10" height="2" />
+
+        <!-- Bottom Row -->
+        <part type="bottom-left-corner" xpos="0" ypos="14" width="10" height="10" />
+        <part type="bottom-edge" xpos="11" ypos="14" width="4" height="10" />
+        <part type="bottom-right-corner" xpos="16" ypos="14" width="10" height="10" />
+    </widget>
+</skinset>

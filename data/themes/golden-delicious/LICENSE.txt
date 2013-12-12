@@ -1,0 +1,13 @@
+"Golden Delicious" theme by t3st3r [aka Hello=)].
+(c) 2013. Some rights reserved.
+
+This work is based on "Jewelry" theme by Francesco Miglietta (aka Hal9000)
+and therefore also comes under same CC-BY-SA license, version 3, or at
+your option, any later version of CC-BY-SA license, as allowed by 
+CC-BY-SA licensing terms.
+
+window.png: almost completely redrawn by t3st3r.
+colors.xml: many changes by t3st3r.
+window.xml: some tweaks by t3st3r.
+items.xml: some tweaks by t3st3r.
+progress-indicator.png - created by t3st3r.

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window" xpos="41" ypos="163">
+        <!-- Top Row -->
+        <part type="top-left-corner" xpos="0" ypos="0" width="22" height="22" />
+        <part type="top-edge" xpos="0" ypos="0" width="0" height="0" />
+        <part type="top-right-corner" xpos="0" ypos="0" width="0" height="0" />
+
+        <!-- Middle Row -->
+        <part type="left-edge" xpos="0" ypos="0" width="0" height="0" />
+        <part type="bg-quad" xpos="0" ypos="0" width="0" height="0" />
+        <part type="right-edge" xpos="0" ypos="0" width="0" height="0" />
+
+        <!-- Bottom Row -->
+        <part type="bottom-left-corner" xpos="0" ypos="0" width="0" height="0" />
+        <part type="bottom-edge" xpos="0" ypos="0" width="0" height="0" />
+        <part type="bottom-right-corner" xpos="0" ypos="0" width="0" height="0" />
+    </widget>
+</skinset>

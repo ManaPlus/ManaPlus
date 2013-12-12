@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window">
+        <option name="padding" value="5" />
+        <option name="spacing" value="3" />
+
+        <option name="iconPadding" value="3" />
+        <option name="iconSpacing" value="2" />
+    </widget>
+</skinset>

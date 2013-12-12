@@ -411,6 +411,7 @@ data/themes/blacknblack/Makefile
 data/themes/blackwood/Makefile
 data/themes/classic/Makefile
 data/themes/enchilado/Makefile
+data/themes/golden-delicious/Makefile
 data/themes/jewelry/Makefile
 data/themes/mana/Makefile
 data/themes/pink/Makefile

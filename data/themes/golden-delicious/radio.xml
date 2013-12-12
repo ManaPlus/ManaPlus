@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window" xpos="190" ypos="26">
+        <option name="padding" value="3" />
+        <option name="imagePadding" value="8" />
+        <option name="imageSize" value="13" />
+        <option name="spacing" value="10" />
+
+        <part type="out" xpos="0" ypos="0" width="13" height="13" />
+        <part type="in" xpos="0" ypos="13" width="13" height="13" />
+        <part type="out-highlighted" xpos="13" ypos="0" width="13" height="13" />
+        <part type="in-highlighted" xpos="13" ypos="13" width="13" height="13" />
+    </widget>
+</skinset>

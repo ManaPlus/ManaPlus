@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window" xpos="260" ypos="109">
+        <option name="padding" value="5" />
+        <option name="palette" value="1" />
+
+        <!-- Top Row -->
+        <part type="top-left-corner" width="30" height="15" />
+        <part type="top-edge" xpos="31" ypos="0" width="48" height="15" />
+        <part type="top-right-corner" xpos="80" ypos="0" width="30" height="15" />
+
+        <!-- Middle Row -->
+        <part type="left-edge" xpos="0" ypos="16" width="30" height="10" />
+        <part type="bg-quad" xpos="31" ypos="16" width="48" height="10" />
+        <part type="right-edge" xpos="80" ypos="16" width="30" height="10" />
+
+        <!-- Bottom Row -->
+        <part type="bottom-left-corner" xpos="0" ypos="27" width="30" height="14" />
+        <part type="bottom-edge" xpos="31" ypos="27" width="48" height="14" />
+        <part type="bottom-right-corner" xpos="80" ypos="27" width="30" height="14" />
+    </widget>
+</skinset>

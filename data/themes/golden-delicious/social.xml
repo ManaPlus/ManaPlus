@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window" xpos="260" ypos="0">
+        <option name="captionoffsetx" value="20" /> 
+        <option name="captionoffsety" value="7" />
+        <option name="titlebarBold" value="1" />
+        <option name="titlebarHeight" value="35" />
+        <option name="padding" value="10" />
+        <option name="showtabbackground" value="1" />
+        <option name="stickySpacing" value="6" />
+        <option name="childPalette" value="1" />
+
+        <!-- Top Row -->
+        <part type="top-left-corner" xpos="0" ypos="0" width="30" height="53" />
+        <part type="top-edge" xpos="31" ypos="0" width="48" height="53" />
+        <part type="top-right-corner" xpos="80" ypos="0" width="30" height="53" />
+
+        <!-- Middle Row -->
+        <part type="left-edge" xpos="0" ypos="54" width="30" height="24" />
+        <part type="bg-quad" xpos="31" ypos="54" width="48" height="24" />
+        <part type="right-edge" xpos="80" ypos="54" width="30" height="24" />
+
+        <!-- Bottom Row -->
+        <part type="bottom-left-corner" xpos="0" ypos="79" width="30" height="28" />
+        <part type="bottom-edge" xpos="31" ypos="79" width="48" height="28" />
+        <part type="bottom-right-corner" xpos="80" ypos="79" width="30" height="28" />
+
+        <part type="closeImage" xpos="-163" ypos="0" width="22" height="22" />
+        <part type="closeImageHighlighted" xpos="-138" ypos="0" width="22" height="22" />
+        <part type="stickyImageUp" xpos="-130" ypos="51" width="19" height="22" />
+        <part type="stickyImageDown" xpos="-99" ypos="51" width="19" height="22" />
+    </widget>
+</skinset>
