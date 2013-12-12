@@ -70,6 +70,7 @@ gui_DATA =				\
 	popup_xxhigh.xml		\
 	popupbrowserbox.xml		\
 	popupbrowserbox_high.xml		\
+	popupbrowserbox_medium.xml		\
 	popupbrowserbox_xhigh.xml		\
 	popupbrowserbox_xxhigh.xml		\
 	popuplist.xml		\
