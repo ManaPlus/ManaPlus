@@ -76,7 +76,7 @@ ActorSprite::~ActorSprite()
 }
 
 void ActorSprite::draw1(Graphics *const graphics,
-                       const int offsetX, const int offsetY) const
+                        const int offsetX, const int offsetY) const
 {
     FUNC_BLOCK("ActorSprite::draw1", 1)
     if (mUsedTargetCursor)
