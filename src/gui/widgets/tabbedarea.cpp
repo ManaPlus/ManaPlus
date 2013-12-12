@@ -106,9 +106,9 @@ void TabbedArea::enableScrollButtons(const bool enable)
     if (mEnableScrollButtons && !enable)
     {
         if (mArrowButton[0])
-            add(mArrowButton[0]);
+            remove(mArrowButton[0]);
         if (mArrowButton[1])
-            add(mArrowButton[1]);
+            remove(mArrowButton[1]);
     }
     else if (!mEnableScrollButtons && enable)
     {
@@ -117,6 +117,7 @@ void TabbedArea::enableScrollButtons(const bool enable)
         if (mArrowButton[1])
             add(mArrowButton[1]);
     }
+    mEnableScrollButtons = enable;
 }
 
 int TabbedArea::getNumberOfTabs() const
@@ -519,7 +520,8 @@ void TabbedArea::adjustTabPositions()
             maxTabHeight = tab->getHeight();
     }
 
-    int x = mArrowButton[0]->isVisible() ? mArrowButton[0]->getWidth() : 0;
+    int x = (mEnableScrollButtons && mArrowButton[0]->isVisible())
+        ? mArrowButton[0]->getWidth() : 0;
     for (size_t i = mTabScrollIndex; i < sz; ++i)
     {
         Tab *const tab = mTabs[i].first;
