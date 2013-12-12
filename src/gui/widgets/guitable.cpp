@@ -314,7 +314,9 @@ void GuiTable::draw(gcn::Graphics* graphics)
 
     // First, determine how many rows we need to draw,
     // and where we should start.
-    const int rHeight = getRowHeight();
+    int rHeight = getRowHeight();
+    if (!rHeight)
+        rHeight = 1;
     int first_row = -(y / rHeight);
 
     if (first_row < 0)
