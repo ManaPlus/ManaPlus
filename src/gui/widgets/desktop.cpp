@@ -38,12 +38,21 @@ Desktop::Desktop(const Widget2 *const widget) :
     gcn::WidgetListener(),
     mWallpaper(nullptr),
     mVersionLabel(nullptr),
+    mSkin(nullptr),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND, 128)),
-    mBackgroundGrayColor(getThemeColor(Theme::BACKGROUND_GRAY))
+    mBackgroundGrayColor(getThemeColor(Theme::BACKGROUND_GRAY)),
+    mShowBackground(true)
 {
     addWidgetListener(this);
 
     Wallpaper::loadWallpapers();
+
+    Theme *const theme = Theme::instance();
+    if (theme)
+        mSkin = theme->load("desktop.xml", "");
+
+    if (mSkin)
+        mShowBackground = mSkin->getOption("showBackground");
 
     const std::string appName = branding.getValue("appName", std::string());
     if (appName.empty())
@@ -66,11 +75,21 @@ Desktop::~Desktop()
         mWallpaper->decRef();
         mWallpaper = nullptr;
     }
+    if (Theme::instance())
+        Theme::instance()->unload(mSkin);
 }
 
 void Desktop::postInit()
 {
-    add(mVersionLabel, 25, 2);
+    if (mSkin)
+    {
+        add(mVersionLabel, mSkin->getOption("versionX", 25),
+            mSkin->getOption("versionY", 2));
+    }
+    else
+    {
+        add(mVersionLabel, 25, 2);
+    }
 }
 
 void Desktop::reloadWallpaper()
@@ -132,7 +151,7 @@ void Desktop::draw(gcn::Graphics *graphics)
 
 void Desktop::setBestFittingWallpaper()
 {
-    if (!config.getBoolValue("showBackground"))
+    if (!mShowBackground || !config.getBoolValue("showBackground"))
         return;
 
     const std::string wallpaperName =

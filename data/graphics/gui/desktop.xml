@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window">
+        <option name="showBackground" value="1" />
+        <option name="versionX" value="25" />
+        <option name="versionY" value="2" />
+    </widget>
+</skinset>

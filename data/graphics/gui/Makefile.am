@@ -19,6 +19,7 @@ gui_DATA =				\
 	complete_icon.xml		\
 	dbutton.xml		\
 	dbutton_image.xml		\
+	desktop.xml		\
 	dpad.xml		\
 	dpad_image.xml		\
 	dropdown.xml		\

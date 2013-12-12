@@ -30,6 +30,7 @@
 
 class Image;
 class Label;
+class Skin;
 
 /**
  * Desktop widget, for drawing a background image and color.
@@ -69,8 +70,10 @@ class Desktop final : public Container, private gcn::WidgetListener
 
         Image *mWallpaper;
         Label *mVersionLabel;
+        Skin *mSkin;
         gcn::Color mBackgroundColor;
         gcn::Color mBackgroundGrayColor;
+        bool mShowBackground;
 };
 
 #endif  // GUI_WIDGETS_DESKTOP_H
