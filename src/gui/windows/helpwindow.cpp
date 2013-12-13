@@ -87,6 +87,7 @@ HelpWindow::HelpWindow() :
     loadWindowState();
     loadTags();
     enableVisibleSound(true);
+    widgetResized(gcn::Event(nullptr));
 }
 
 void HelpWindow::action(const gcn::ActionEvent &event)
