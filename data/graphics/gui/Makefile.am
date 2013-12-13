@@ -17,6 +17,7 @@ gui_DATA =				\
 	circle-on.xml		\
 	colors.xml			\
 	complete_icon.xml		\
+	connection.xml		\
 	dbutton.xml		\
 	dbutton_image.xml		\
 	desktop.xml		\

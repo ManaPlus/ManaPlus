@@ -33,7 +33,7 @@
 
 ConnectionDialog::ConnectionDialog(const std::string &text,
                                    const State cancelState):
-    Window(""),
+    Window("", false, nullptr, "connection.xml"),
     gcn::ActionListener(),
     mCancelState(cancelState)
 {
