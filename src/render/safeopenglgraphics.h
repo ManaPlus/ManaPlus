@@ -88,11 +88,13 @@ class SafeOpenGLGraphics final : public Graphics
                                       const int scaledWidth,
                                       const int scaledHeight) override final;
 
-        void calcTile(ImageVertexes *const vert, const Image *const image,
-                      int x, int y) const override final;
+        void calcTileVertexes(ImageVertexes *const vert,
+                              const Image *const image,
+                              int x, int y) const override final;
 
-        void calcTile(ImageCollection *const vertCol,
-                      const Image *const image, int x, int y) override final;
+        void calcTileCollection(ImageCollection *const vertCol,
+                                const Image *const image,
+                                int x, int y) override final;
 
         void calcImagePattern(ImageVertexes *const vert,
                               const Image *const image,

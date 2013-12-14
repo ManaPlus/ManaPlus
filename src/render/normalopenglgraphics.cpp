@@ -797,9 +797,9 @@ void NormalOpenGLGraphics::calcImagePattern(ImageVertexes* const vert,
     ogl.switchVp(vp);
 }
 
-void NormalOpenGLGraphics::calcTile(ImageCollection *const vertCol,
-                                    const Image *const image,
-                                    int x, int y)
+void NormalOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
+                                              const Image *const image,
+                                              int x, int y)
 {
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -808,11 +808,11 @@ void NormalOpenGLGraphics::calcTile(ImageCollection *const vertCol,
         vertCol->currentVert = vert;
         vert->image = image;
         vertCol->draws.push_back(vert);
-        calcTile(vert, image, x, y);
+        calcTileVertexes(vert, image, x, y);
     }
     else
     {
-        calcTile(vertCol->currentVert, image, x, y);
+        calcTileVertexes(vertCol->currentVert, image, x, y);
     }
 }
 
@@ -857,9 +857,9 @@ void NormalOpenGLGraphics::calcImagePattern(ImageCollection* const vertCol,
     calcImagePattern(vert, image, x, y, w, h);
 }
 
-void NormalOpenGLGraphics::calcTile(ImageVertexes *const vert,
-                                    const Image *const image,
-                                    int dstX, int dstY) const
+void NormalOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
+                                            const Image *const image,
+                                            int dstX, int dstY) const
 {
     if (!vert || !image)
         return;

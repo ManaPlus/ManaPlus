@@ -234,9 +234,9 @@ class Graphics : public gcn::Graphics
                                       const int x, const int y,
                                       const int w, const int h) const = 0;
 
-        virtual void calcTile(ImageVertexes *const vert,
-                              const Image *const image,
-                              int x, int y) const = 0;
+        virtual void calcTileVertexes(ImageVertexes *const vert,
+                                      const Image *const image,
+                                      int x, int y) const = 0;
 
         virtual void calcTileSDL(ImageVertexes *const vert A_UNUSED,
                                  int x A_UNUSED, int y A_UNUSED) const
@@ -247,9 +247,9 @@ class Graphics : public gcn::Graphics
 
         virtual void drawTile(const ImageCollection *const vertCol) = 0;
 
-        virtual void calcTile(ImageCollection *const vertCol,
-                              const Image *const image,
-                              int x, int y) = 0;
+        virtual void calcTileCollection(ImageCollection *const vertCol,
+                                        const Image *const image,
+                                        int x, int y) = 0;
 
         virtual bool calcWindow(ImageCollection *const vertCol,
                                 const int x, const int y,

@@ -623,9 +623,9 @@ void MobileOpenGLGraphics::calcImagePattern(ImageVertexes *const vert,
     ogl.switchVp(vp);
 }
 
-void MobileOpenGLGraphics::calcTile(ImageCollection *const vertCol,
-                                    const Image *const image,
-                                    int x, int y)
+void MobileOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
+                                              const Image *const image,
+                                              int x, int y)
 {
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -634,11 +634,11 @@ void MobileOpenGLGraphics::calcTile(ImageCollection *const vertCol,
         vertCol->currentVert = vert;
         vert->image = image;
         vertCol->draws.push_back(vert);
-        calcTile(vert, image, x, y);
+        calcTileVertexes(vert, image, x, y);
     }
     else
     {
-        calcTile(vertCol->currentVert, image, x, y);
+        calcTileVertexes(vertCol->currentVert, image, x, y);
     }
 }
 
@@ -683,9 +683,9 @@ void MobileOpenGLGraphics::calcImagePattern(ImageCollection* const vertCol,
     calcImagePattern(vert, image, x, y, w, h);
 }
 
-void MobileOpenGLGraphics::calcTile(ImageVertexes *const vert,
-                                    const Image *const image,
-                                    int dstX, int dstY) const
+void MobileOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
+                                            const Image *const image,
+                                            int dstX, int dstY) const
 {
     if (!vert || !image)
         return;

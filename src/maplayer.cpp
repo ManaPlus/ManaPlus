@@ -311,7 +311,7 @@ void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
                     lastImage = img;
 //                    if (imgVert->image->mGLImage != lastImage->mGLImage)
 //                        logger->log("wrong image draw");
-                    graphics->calcTile(imgVert, lastImage, px, py);
+                    graphics->calcTileVertexes(imgVert, lastImage, px, py);
                 }
             }
         }

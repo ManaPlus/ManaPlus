@@ -700,9 +700,9 @@ void NullOpenGLGraphics::calcImagePattern(ImageVertexes* const vert,
     ogl.switchVp(vp);
 }
 
-void NullOpenGLGraphics::calcTile(ImageCollection *const vertCol,
-                                  const Image *const image,
-                                  int x, int y)
+void NullOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
+                                            const Image *const image,
+                                            int x, int y)
 {
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -711,11 +711,11 @@ void NullOpenGLGraphics::calcTile(ImageCollection *const vertCol,
         vertCol->currentVert = vert;
         vert->image = image;
         vertCol->draws.push_back(vert);
-        calcTile(vert, image, x, y);
+        calcTileVertexes(vert, image, x, y);
     }
     else
     {
-        calcTile(vertCol->currentVert, image, x, y);
+        calcTileVertexes(vertCol->currentVert, image, x, y);
     }
 }
 
@@ -760,9 +760,9 @@ void NullOpenGLGraphics::calcImagePattern(ImageCollection* const vertCol,
     calcImagePattern(vert, image, x, y, w, h);
 }
 
-void NullOpenGLGraphics::calcTile(ImageVertexes *const vert,
-                                  const Image *const image,
-                                  int dstX, int dstY) const
+void NullOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
+                                          const Image *const image,
+                                          int dstX, int dstY) const
 {
     if (!vert || !image)
         return;

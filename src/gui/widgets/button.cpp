@@ -485,12 +485,13 @@ void Button::draw(gcn::Graphics *graphics)
             {
                 if (isPressed())
                 {
-                    g2->calcTile(mVertexes2, mImages[mode],
+                    g2->calcTileCollection(mVertexes2, mImages[mode],
                         imageX + 1, imageY + 1);
                 }
                 else
                 {
-                    g2->calcTile(mVertexes2, mImages[mode], imageX, imageY);
+                    g2->calcTileCollection(mVertexes2,
+                        mImages[mode], imageX, imageY);
                 }
             }
         }

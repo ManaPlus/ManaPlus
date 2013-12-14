@@ -95,16 +95,16 @@ class SDLGraphics : public Graphics
                                       const int w,
                                       const int h) const override final;
 
-        virtual void calcTile(ImageVertexes *const vert,
-                              const Image *const image,
-                              int x, int y) const override final;
+        virtual void calcTileVertexes(ImageVertexes *const vert,
+                                      const Image *const image,
+                                      int x, int y) const override final;
 
         virtual void calcTileSDL(ImageVertexes *const vert,
                                  int x, int y) const override final;
 
-        virtual void calcTile(ImageCollection *const vertCol,
-                              const Image *const image,
-                              int x, int y) override final;
+        virtual void calcTileCollection(ImageCollection *const vertCol,
+                                        const Image *const image,
+                                        int x, int y) override final;
 
         virtual void drawTile(const ImageVertexes *const vert) override final;
 

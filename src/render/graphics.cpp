@@ -569,14 +569,14 @@ bool Graphics::calcImageRect(ImageVertexes *const vert,
         calcImagePattern(vert, right, x + w - rw, y + th, rw, h - th - bh);
     }
 
-    calcTile(vert, topLeft, x, y);
+    calcTileVertexes(vert, topLeft, x, y);
     if (topRight)
-        calcTile(vert, topRight, x + w - topRight->getWidth(), y);
+        calcTileVertexes(vert, topRight, x + w - topRight->getWidth(), y);
     if (bottomLeft)
-        calcTile(vert, bottomLeft, x, y + h - bottomLeft->getHeight());
+        calcTileVertexes(vert, bottomLeft, x, y + h - bottomLeft->getHeight());
     if (bottomRight)
     {
-        calcTile(vert, bottomRight, x + w - bottomRight->getWidth(),
+        calcTileVertexes(vert, bottomRight, x + w - bottomRight->getWidth(),
             y + h - bottomRight->getHeight());
     }
 

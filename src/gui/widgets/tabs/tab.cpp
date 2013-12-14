@@ -224,7 +224,8 @@ void Tab::draw(gcn::Graphics *graphics)
                 if (skin1)
                 {
                     const int padding = skin1->getPadding();
-                    g->calcTile(mVertexes, mImage, padding, padding);
+                    g->calcTileCollection(mVertexes, mImage,
+                        padding, padding);
                 }
             }
         }

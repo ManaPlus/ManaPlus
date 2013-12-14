@@ -239,7 +239,10 @@ void Window::draw(gcn::Graphics *graphics)
                 const Image *const button = mSkin->getCloseImage(
                     mResizeHandles == CLOSE);
                 if (button)
-                    g->calcTile(mVertexes, button, mCloseRect.x, mCloseRect.y);
+                {
+                    g->calcTileCollection(mVertexes, button,
+                        mCloseRect.x, mCloseRect.y);
+                }
             }
             // Draw Sticky Button
             if (mStickyButton)
@@ -247,13 +250,16 @@ void Window::draw(gcn::Graphics *graphics)
                 const Image *const button = mSkin->getStickyImage(mSticky);
                 if (button)
                 {
-                    g->calcTile(mVertexes, button,
+                    g->calcTileCollection(mVertexes, button,
                         mStickyRect.x, mStickyRect.y);
                 }
             }
 
             if (mGrip)
-                g->calcTile(mVertexes, mGrip, mGripRect.x, mGripRect.y);
+            {
+                g->calcTileCollection(mVertexes, mGrip,
+                    mGripRect.x, mGripRect.y);
+            }
         }
         else
         {

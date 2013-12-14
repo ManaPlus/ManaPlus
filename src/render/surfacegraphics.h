@@ -113,18 +113,19 @@ class SurfaceGraphics : public Graphics
                               const int h A_UNUSED) const override final
         { }
 
-        void calcTile(ImageVertexes *const vert A_UNUSED,
-                      const Image *const image A_UNUSED,
-                      int x A_UNUSED, int y A_UNUSED) const override final
+        void calcTileVertexes(ImageVertexes *const vert A_UNUSED,
+                              const Image *const image A_UNUSED,
+                              int x A_UNUSED,
+                              int y A_UNUSED) const override final
         { }
 
         void calcTileSDL(ImageVertexes *const vert A_UNUSED,
                          int x A_UNUSED, int y A_UNUSED) const override final
         { }
 
-        void calcTile(ImageCollection *const vertCol A_UNUSED,
-                      const Image *const image A_UNUSED,
-                      int x A_UNUSED, int y A_UNUSED) override final
+        void calcTileCollection(ImageCollection *const vertCol A_UNUSED,
+                                const Image *const image A_UNUSED,
+                                int x A_UNUSED, int y A_UNUSED) override final
         { }
 
         void drawTile(const ImageVertexes *const vert A_UNUSED) override final

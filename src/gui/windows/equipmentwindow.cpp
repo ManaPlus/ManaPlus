@@ -181,12 +181,13 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
                     continue;
                 if (i == mSelected)
                 {
-                    g->calcTile(mVertexes, mSlotHighlightedBackground,
-                        box->x, box->y);
+                    g->calcTileCollection(mVertexes,
+                        mSlotHighlightedBackground, box->x, box->y);
                 }
                 else
                 {
-                    g->calcTile(mVertexes, mSlotBackground, box->x, box->y);
+                    g->calcTileCollection(mVertexes, mSlotBackground,
+                        box->x, box->y);
                 }
             }
         }

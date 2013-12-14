@@ -203,7 +203,7 @@ void TouchManager::draw()
                     const Image *const icon = item->icon;
                     if (icon)
                     {
-                        mainGraphics->calcTile(mVertexes, icon,
+                        mainGraphics->calcTileCollection(mVertexes, icon,
                             item->x + (item->width - icon->mBounds.w) / 2,
                             item->y + (item->height - icon->mBounds.h) / 2);
                     }

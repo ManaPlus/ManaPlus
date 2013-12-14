@@ -105,11 +105,13 @@ class NormalOpenGLGraphics final : public Graphics
                               const int x, const int y,
                               const int w, const int h) const override final;
 
-        void calcTile(ImageVertexes *const vert, const Image *const image,
-                      int x, int y) const override final;
+        void calcTileVertexes(ImageVertexes *const vert,
+                              const Image *const image,
+                              int x, int y) const override final;
 
-        void calcTile(ImageCollection *const vertCol,
-                      const Image *const image, int x, int y) override final;
+        void calcTileCollection(ImageCollection *const vertCol,
+                                const Image *const image,
+                                int x, int y) override final;
 
         void drawTile(const ImageCollection *const vertCol) override final;
 

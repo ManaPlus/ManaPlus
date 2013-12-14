@@ -132,7 +132,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
             {
                 if (useCaching)
                 {
-                    graphics->calcTile(&vertexes, icon,
+                    graphics->calcTileCollection(&vertexes, icon,
                         mImagePadding, y + mPadding);
                 }
                 else

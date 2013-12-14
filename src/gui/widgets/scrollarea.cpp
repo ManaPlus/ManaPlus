@@ -466,7 +466,7 @@ void ScrollArea::calcButton(gcn::Graphics *const graphics,
 
     if (buttons[dir][state])
     {
-        static_cast<Graphics*>(graphics)->calcTile(
+        static_cast<Graphics*>(graphics)->calcTileCollection(
             mVertexes, buttons[dir][state], dim.x, dim.y);
     }
 }

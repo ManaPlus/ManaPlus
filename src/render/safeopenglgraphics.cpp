@@ -326,15 +326,16 @@ void SafeOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
     glEnd();
 }
 
-void SafeOpenGLGraphics::calcTile(ImageCollection *const vertCol A_UNUSED,
-                                  const Image *const image A_UNUSED,
-                                  int x A_UNUSED, int y A_UNUSED)
+void SafeOpenGLGraphics::calcTileCollection(ImageCollection *const
+                                            vertCol A_UNUSED,
+                                            const Image *const image A_UNUSED,
+                                            int x A_UNUSED, int y A_UNUSED)
 {
 }
 
-void SafeOpenGLGraphics::calcTile(ImageVertexes *const vert A_UNUSED,
-                                  const Image *const image A_UNUSED,
-                                  int x A_UNUSED, int y A_UNUSED) const
+void SafeOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert A_UNUSED,
+                                          const Image *const image A_UNUSED,
+                                          int x A_UNUSED, int y A_UNUSED) const
 {
 }
 
