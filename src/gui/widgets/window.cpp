@@ -265,7 +265,7 @@ void Window::draw(gcn::Graphics *graphics)
         {
             mLastRedraw = false;
         }
-        g->drawTile(mVertexes);
+        g->drawTileCollection(mVertexes);
     }
     else
     {

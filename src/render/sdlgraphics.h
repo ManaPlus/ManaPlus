@@ -106,10 +106,11 @@ class SDLGraphics : public Graphics
                                         const Image *const image,
                                         int x, int y) override final;
 
-        virtual void drawTile(const ImageVertexes *const vert) override final;
+        virtual void drawTileVertexes(const ImageVertexes
+                                      *const vert) override final;
 
-        virtual void drawTile(const ImageCollection *const vertCol)
-                              override final;
+        virtual void drawTileCollection(const ImageCollection *const vertCol)
+                                        override final;
 
         virtual void updateScreen() override final;
 

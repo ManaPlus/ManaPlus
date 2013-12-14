@@ -243,9 +243,10 @@ class Graphics : public gcn::Graphics
         {
         }
 
-        virtual void drawTile(const ImageVertexes *const vert) = 0;
+        virtual void drawTileVertexes(const ImageVertexes *const vert) = 0;
 
-        virtual void drawTile(const ImageCollection *const vertCol) = 0;
+        virtual void drawTileCollection(const ImageCollection
+                                        *const vertCol) = 0;
 
         virtual void calcTileCollection(ImageCollection *const vertCol,
                                         const Image *const image,

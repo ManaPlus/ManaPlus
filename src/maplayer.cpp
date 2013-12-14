@@ -167,7 +167,7 @@ void MapLayer::drawSDL(Graphics *const graphics)
         const MepRowImages::const_iterator iit_end = images->end();
         while (iit != iit_end)
         {
-            graphics->drawTile(*iit);
+            graphics->drawTileVertexes(*iit);
             ++ iit;
         }
         ++ rit;
@@ -332,7 +332,7 @@ void MapLayer::drawOGL(Graphics *const graphics)
         const MepRowImages::const_iterator iit_end = images->end();
         while (iit != iit_end)
         {
-            graphics->drawTile(*iit);
+            graphics->drawTileVertexes(*iit);
             ++ iit;
 //            k ++;
         }

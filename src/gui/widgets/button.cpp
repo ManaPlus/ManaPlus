@@ -495,7 +495,7 @@ void Button::draw(gcn::Graphics *graphics)
                 }
             }
         }
-        g2->drawTile(mVertexes2);
+        g2->drawTileCollection(mVertexes2);
     }
     else
     {

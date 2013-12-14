@@ -109,13 +109,14 @@ class MobileOpenGLGraphics final : public Graphics
                               const Image *const image,
                               int x, int y) const override final;
 
-        void drawTile(const ImageCollection *const vertCol) override final;
+        void drawTileCollection(const ImageCollection
+                                *const vertCol) override final;
 
         void calcTileCollection(ImageCollection *const vertCol,
                                 const Image *const image,
                                 int x, int y) override final;
 
-        void drawTile(const ImageVertexes *const vert) override final;
+        void drawTileVertexes(const ImageVertexes *const vert) override final;
 
         bool calcWindow(ImageCollection *const vertCol,
                         const int x, const int y,

@@ -642,7 +642,8 @@ void MobileOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
     }
 }
 
-void MobileOpenGLGraphics::drawTile(const ImageCollection *const vertCol)
+void MobileOpenGLGraphics::drawTileCollection(const ImageCollection
+                                              *const vertCol)
 {
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();
@@ -768,7 +769,7 @@ void MobileOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
     ogl.switchVp(vp);
 }
 
-void MobileOpenGLGraphics::drawTile(const ImageVertexes *const vert)
+void MobileOpenGLGraphics::drawTileVertexes(const ImageVertexes *const vert)
 {
     if (!vert)
         return;

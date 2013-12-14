@@ -210,7 +210,7 @@ void TouchManager::draw()
                 }
             }
         }
-        mainGraphics->drawTile(mVertexes);
+        mainGraphics->drawTileCollection(mVertexes);
     }
     else
     {

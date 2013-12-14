@@ -106,9 +106,10 @@ class SafeOpenGLGraphics final : public Graphics
                               const int x, const int y,
                               const int w, const int h) const override final;
 
-        void drawTile(const ImageVertexes *const vert) override final;
+        void drawTileVertexes(const ImageVertexes *const vert) override final;
 
-        void drawTile(const ImageCollection *const vertCol) override final;
+        void drawTileCollection(const ImageCollection *const vertCol)
+                                override final;
 
         void updateScreen() override final;
 

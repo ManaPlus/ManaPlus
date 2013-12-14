@@ -128,11 +128,12 @@ class SurfaceGraphics : public Graphics
                                 int x A_UNUSED, int y A_UNUSED) override final
         { }
 
-        void drawTile(const ImageVertexes *const vert A_UNUSED) override final
+        void drawTileVertexes(const ImageVertexes *const
+                              vert A_UNUSED) override final
         { }
 
-        void drawTile(const ImageCollection *const vertCol A_UNUSED)
-                      override final
+        void drawTileCollection(const ImageCollection *const vertCol A_UNUSED)
+                                override final
         { }
 
         void updateScreen()

@@ -357,12 +357,13 @@ void SafeOpenGLGraphics::calcImagePattern(ImageCollection *const vert A_UNUSED,
 {
 }
 
-void SafeOpenGLGraphics::drawTile(const ImageVertexes *const vert A_UNUSED)
+void SafeOpenGLGraphics::drawTileVertexes(const ImageVertexes
+                                          *const vert A_UNUSED)
 {
 }
 
-void SafeOpenGLGraphics::drawTile(const ImageCollection *const
-                                  vertCol A_UNUSED)
+void SafeOpenGLGraphics::drawTileCollection(const ImageCollection *const
+                                            vertCol A_UNUSED)
 {
 }
 

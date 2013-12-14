@@ -305,7 +305,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
     }
 
     if (useCaching)
-        graphics->drawTile(&vertexes);
+        graphics->drawTileCollection(&vertexes);
 
     if (parent)
         setWidth(parent->getWidth() - 10);

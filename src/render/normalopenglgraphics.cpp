@@ -816,7 +816,8 @@ void NormalOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
     }
 }
 
-void NormalOpenGLGraphics::drawTile(const ImageCollection *const vertCol)
+void NormalOpenGLGraphics::drawTileCollection(const ImageCollection
+                                              *const vertCol)
 {
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();
@@ -970,7 +971,7 @@ void NormalOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
     ogl.switchVp(vp);
 }
 
-void NormalOpenGLGraphics::drawTile(const ImageVertexes *const vert)
+void NormalOpenGLGraphics::drawTileVertexes(const ImageVertexes *const vert)
 {
     if (!vert)
         return;

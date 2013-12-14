@@ -200,7 +200,7 @@ void ProgressBar::render(Graphics *graphics)
                 mDimension.width, mDimension.height, mSkin->getBorder());
         }
 
-        graphics->drawTile(mVertexes);
+        graphics->drawTileCollection(mVertexes);
     }
     else
     {

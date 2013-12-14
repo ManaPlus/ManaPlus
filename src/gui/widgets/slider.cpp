@@ -203,7 +203,7 @@ void Slider::draw(gcn::Graphics *graphics)
                 }
             }
         }
-        g->drawTile(mVertexes);
+        g->drawTileCollection(mVertexes);
     }
     else
     {

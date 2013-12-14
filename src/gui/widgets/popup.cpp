@@ -112,7 +112,7 @@ void Popup::draw(gcn::Graphics *graphics)
                     mSkin->getBorder());
             }
 
-            g->drawTile(mVertexes);
+            g->drawTileCollection(mVertexes);
         }
         else
         {

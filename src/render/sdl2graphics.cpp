@@ -385,7 +385,8 @@ void SDLGraphics::calcTileCollection(ImageCollection *const vertCol,
     }
 }
 
-void SDLGraphics::drawTile(const ImageCollection *const vertCol)
+void SDLGraphics::drawTileCollection(const ImageCollection
+                                     *const vertCol)
 {
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();
@@ -405,7 +406,7 @@ void SDLGraphics::drawTile(const ImageCollection *const vertCol)
     }
 }
 
-void SDLGraphics::drawTile(const ImageVertexes *const vert)
+void SDLGraphics::drawTileVertexes(const ImageVertexes *const vert)
 {
     // vert and img must be != 0
     const Image *const img = vert->image;
