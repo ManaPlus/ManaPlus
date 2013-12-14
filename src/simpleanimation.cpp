@@ -72,16 +72,15 @@ SimpleAnimation::~SimpleAnimation()
     }
 }
 
-bool SimpleAnimation::draw(Graphics *const graphics,
+void SimpleAnimation::draw(Graphics *const graphics,
                            const int posX, const int posY) const
 {
     FUNC_BLOCK("SimpleAnimation::draw", 1)
     if (!mCurrentFrame || !mCurrentFrame->image)
-        return false;
+        return;
 
     DRAW_IMAGE(graphics, mCurrentFrame->image,
         posX + mCurrentFrame->offsetX, posY + mCurrentFrame->offsetY);
-    return true;
 }
 
 void SimpleAnimation::reset()

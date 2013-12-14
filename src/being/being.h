@@ -683,10 +683,10 @@ class Being : public ActorSprite, public ConfigListener
 
         void talkTo() const;
 
-        bool draw(Graphics *const graphics,
+        void draw(Graphics *const graphics,
                   const int offsetX, const int offsetY) const override final;
 
-        bool drawSpriteAt(Graphics *const graphics,
+        void drawSpriteAt(Graphics *const graphics,
                           const int x, const int y) const;
 
         void setMoveTime()

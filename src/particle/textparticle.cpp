@@ -43,17 +43,17 @@ TextParticle::TextParticle(const std::string &text,
 {
 }
 
-bool TextParticle::draw(Graphics *const graphics,
+void TextParticle::draw(Graphics *const graphics,
                         const int offsetX, const int offsetY) const
 {
     if (!mColor || !mTextFont)
-        return false;
+        return;
 
     BLOCK_START("TextParticle::draw")
     if (!isAlive())
     {
         BLOCK_END("TextParticle::draw")
-        return false;
+        return;
     }
 
     const int screenX = static_cast<int>(mPos.x) + offsetX;
@@ -85,5 +85,5 @@ bool TextParticle::draw(Graphics *const graphics,
     }
     mTextFont->drawString(graphics, mText, screenX - mTextWidth, screenY);
     BLOCK_END("TextParticle::draw")
-    return true;
+    return;
 }

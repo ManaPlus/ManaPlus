@@ -65,7 +65,7 @@ public:
 
     virtual bool update(const int time) override final;
 
-    virtual bool draw(Graphics *const graphics,
+    virtual void draw(Graphics *const graphics,
                       const int posX, const int posY) const override;
 
     /**

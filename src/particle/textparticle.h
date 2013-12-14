@@ -40,7 +40,7 @@ class TextParticle final : public Particle
         /**
          * Draws the particle image.
          */
-        bool draw(Graphics *const graphics,
+        void draw(Graphics *const graphics,
                   const int offsetX, const int offsetY) const override final;
 
         // hack to improve text visibility

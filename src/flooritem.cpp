@@ -100,11 +100,11 @@ std::string FloorItem::getName() const
         return info.getName();
 }
 
-bool FloorItem::draw(Graphics *const graphics,
+void FloorItem::draw(Graphics *const graphics,
                      const int offsetX, const int offsetY) const
 {
     if (!mMap)
-        return false;
+        return;
 
     BLOCK_START("FloorItem::draw")
     const int x = mX * mMap->getTileWidth() + offsetX;
@@ -147,7 +147,7 @@ bool FloorItem::draw(Graphics *const graphics,
     const int px = getActorX() + offsetX;
     const int py = getActorY() + offsetY;
     ActorSprite::draw1(graphics, px, py);
-    const bool res = CompoundSprite::draw(graphics, px, py);
+    CompoundSprite::draw(graphics, px, py);
 
     if (mHighlight)
     {
@@ -160,5 +160,4 @@ bool FloorItem::draw(Graphics *const graphics,
         }
     }
     BLOCK_END("FloorItem::draw")
-    return res;
 }

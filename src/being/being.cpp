@@ -2248,19 +2248,16 @@ void Being::talkTo() const
     Net::getNpcHandler()->talk(mId);
 }
 
-bool Being::draw(Graphics *const graphics,
+void Being::draw(Graphics *const graphics,
                  const int offsetX, const int offsetY) const
 {
-    bool res = true;
     if (!mErased)
     {
         const int px = getActorX() + offsetX;
         const int py = getActorY() + offsetY;
         ActorSprite::draw1(graphics, px, py);
-        res = drawSpriteAt(graphics, px, py);
+        drawSpriteAt(graphics, px, py);
     }
-
-    return res;
 }
 
 void Being::drawSprites(Graphics *const graphics,
@@ -2298,13 +2295,13 @@ void Being::drawSpritesSDL(Graphics *const graphics,
     }
 }
 
-bool Being::drawSpriteAt(Graphics *const graphics,
+void Being::drawSpriteAt(Graphics *const graphics,
                          const int x, const int y) const
 {
-    bool res = CompoundSprite::draw(graphics, x, y);
+    CompoundSprite::draw(graphics, x, y);
 
     if (!userPalette)
-        return res;
+        return;
 
     if (mHighlightMapPortals && mMap && mSubType == 45 && !mMap->getHasWarps())
     {
@@ -2365,7 +2362,6 @@ bool Being::drawSpriteAt(Graphics *const graphics,
                   y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
                   2 * 50, 4);
     }
-    return res;
 }
 
 void Being::drawHpBar(Graphics *const graphics, const int maxHP, const int hp,

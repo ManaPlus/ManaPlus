@@ -46,7 +46,7 @@ public:
     bool update(const int time A_UNUSED) override final
     { return false; }
 
-    bool draw(Graphics *const graphics,
+    void draw(Graphics *const graphics,
               const int posX, const int posY) const override final;
 
     int getWidth() const override final A_WARN_UNUSED

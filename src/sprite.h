@@ -61,7 +61,7 @@ class Sprite
          * Draw the current animation frame at the coordinates given in screen
          * pixels.
          */
-        virtual bool draw(Graphics *const graphics,
+        virtual void draw(Graphics *const graphics,
                           const int posX, const int posY) const = 0;
 
         /**

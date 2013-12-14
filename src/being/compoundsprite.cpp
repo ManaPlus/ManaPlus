@@ -111,7 +111,7 @@ bool CompoundSprite::update(const int time)
     return ret;
 }
 
-bool CompoundSprite::draw(Graphics *const graphics,
+void CompoundSprite::draw(Graphics *const graphics,
                           const int posX, const int posY) const
 {
     FUNC_BLOCK("CompoundSprite::draw", 1)
@@ -119,25 +119,22 @@ bool CompoundSprite::draw(Graphics *const graphics,
         updateImages();
 
     if (mSprites.empty())  // Nothing to draw
-        return false;
+        return;
 
     if (mAlpha == 1.0F && mImage)
     {
         DRAW_IMAGE(graphics, mImage, posX + mOffsetX, posY + mOffsetY);
-        return true;
     }
     else if (mAlpha && mAlphaImage)
     {
         mAlphaImage->setAlpha(mAlpha);
         DRAW_IMAGE(graphics, mAlphaImage,
             posX + mOffsetX, posY + mOffsetY);
-        return true;
     }
     else
     {
         drawSprites(graphics, posX, posY);
     }
-    return false;
 }
 
 void CompoundSprite::drawSprites(Graphics *const graphics,

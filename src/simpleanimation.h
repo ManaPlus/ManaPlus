@@ -63,7 +63,7 @@ class SimpleAnimation final
 
         bool update(const int timePassed);
 
-        bool draw(Graphics *const graphics,
+        void draw(Graphics *const graphics,
                   const int posX, const int posY) const;
 
         /**

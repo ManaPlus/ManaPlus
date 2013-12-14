@@ -53,7 +53,7 @@ class ImageParticle : public Particle
         /**
          * Draws the particle image
          */
-        virtual bool draw(Graphics *const graphics,
+        virtual void draw(Graphics *const graphics,
                           const int offsetX,
                           const int offsetY) const override final;
 

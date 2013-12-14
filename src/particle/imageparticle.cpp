@@ -67,12 +67,12 @@ ImageParticle::~ImageParticle()
     }
 }
 
-bool ImageParticle::draw(Graphics *const graphics,
+void ImageParticle::draw(Graphics *const graphics,
                          const int offsetX, const int offsetY) const
 {
     FUNC_BLOCK("ImageParticle::draw", 1)
     if (mAlive != ALIVE || !mImage)
-        return false;
+        return;
 
     const int screenX = static_cast<int>(mPos.x)
         + offsetX - mImage->mBounds.w / 2;
@@ -85,7 +85,7 @@ bool ImageParticle::draw(Graphics *const graphics,
         screenY + mImage->mBounds.h < 0 ||
         screenY > graphics->mHeight)
     {
-        return false;
+        return;
     }
 
     float alphafactor = mAlpha;
@@ -104,5 +104,5 @@ bool ImageParticle::draw(Graphics *const graphics,
 
     mImage->setAlpha(alphafactor);
     DRAW_IMAGE(graphics, mImage, screenX, screenY);
-    return true;
+    return;
 }

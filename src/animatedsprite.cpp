@@ -283,12 +283,12 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
     return true;
 }
 
-bool AnimatedSprite::draw(Graphics *const graphics,
+void AnimatedSprite::draw(Graphics *const graphics,
                           const int posX, const int posY) const
 {
     FUNC_BLOCK("AnimatedSprite::draw", 1)
     if (!mFrame || !mFrame->image)
-        return false;
+        return;
 
     Image *const image = mFrame->image;
     if (image->getAlpha() != mAlpha)
@@ -296,7 +296,6 @@ bool AnimatedSprite::draw(Graphics *const graphics,
 
     DRAW_IMAGE(graphics, image,
         posX + mFrame->offsetX, posY + mFrame->offsetY);
-    return true;
 }
 
 bool AnimatedSprite::setSpriteDirection(const SpriteDirection direction)

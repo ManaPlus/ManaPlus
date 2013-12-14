@@ -48,14 +48,13 @@ ImageSprite::~ImageSprite()
     }
 }
 
-bool ImageSprite::draw(Graphics *const graphics,
+void ImageSprite::draw(Graphics *const graphics,
                        const int posX, const int posY) const
 {
     FUNC_BLOCK("ImageSprite::draw", 1)
     if (!mImage)
-        return false;
+        return;
 
     mImage->setAlpha(mAlpha);
     DRAW_IMAGE(graphics, mImage, posX, posY);
-    return true;
 }

@@ -55,7 +55,7 @@ class FloorItem final : public ActorSprite
         Type getType() const override final A_WARN_UNUSED
         { return FLOOR_ITEM; }
 
-        bool draw(Graphics *const graphics,
+        void draw(Graphics *const graphics,
                   const int offsetX, const int offsetY) const override final;
 
         /**

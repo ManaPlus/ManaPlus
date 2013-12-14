@@ -69,7 +69,7 @@ class AnimatedSprite final : public Sprite
 
         bool update(const int time) override final;
 
-        bool draw(Graphics *const graphics,
+        void draw(Graphics *const graphics,
                   const int posX, const int posY) const override final;
 
         int getWidth() const A_WARN_UNUSED;

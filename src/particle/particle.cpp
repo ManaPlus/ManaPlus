@@ -98,9 +98,8 @@ void Particle::setupEngine()
     logger->log1("Particle engine set up");
 }
 
-bool Particle::draw(Graphics *const, const int, const int) const
+void Particle::draw(Graphics *const, const int, const int) const
 {
-    return false;
 }
 
 bool Particle::update()

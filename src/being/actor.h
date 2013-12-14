@@ -49,7 +49,7 @@ public:
      * would support setting a translation offset. It already does this
      * partly with the clipping rectangle support.
      */
-    virtual bool draw(Graphics *const graphics,
+    virtual void draw(Graphics *const graphics,
                       const int offsetX, const int offsetY) const = 0;
 
     /**
