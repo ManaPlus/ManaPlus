@@ -180,13 +180,13 @@ class SurfaceGraphics : public Graphics
                           const bool noFrame A_UNUSED) override final
         { return false; }
 
-    protected:
         bool drawImage2(const Image *const image,
                         int srcX, int srcY,
                         int dstX, int dstY,
                         const int width, const int height,
                         const bool useColor) override final;
 
+    protected:
         BlitMode mBlitMode;
         SDL_Surface *mTarget;
 };

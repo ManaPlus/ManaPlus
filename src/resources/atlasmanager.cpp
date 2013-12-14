@@ -250,7 +250,7 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 #else
                 SDL_SetAlpha(image->mSDLSurface, 0, SDL_ALPHA_OPAQUE);
 #endif
-                graphics->drawImage(image, item->x, item->y);
+                DRAW_IMAGE(graphics, image, item->x, item->y);
             }
         }
     }

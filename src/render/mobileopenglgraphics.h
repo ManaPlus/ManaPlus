@@ -184,6 +184,12 @@ class MobileOpenGLGraphics final : public Graphics
 
         void updateTextureFormat();
 
+        bool drawImage2(const Image *const image,
+                        int srcX, int srcY,
+                        int dstX, int dstY,
+                        const int width, const int height,
+                        const bool useColor) override final;
+
 #ifdef DEBUG_DRAW_CALLS
         unsigned int getDrawCalls() const
         { return mLastDrawCalls; }
@@ -198,12 +204,6 @@ class MobileOpenGLGraphics final : public Graphics
         static GLuint mLastImage;
 
     protected:
-        bool drawImage2(const Image *const image,
-                        int srcX, int srcY,
-                        int dstX, int dstY,
-                        const int width, const int height,
-                        const bool useColor) override final;
-
         void setTexturingAndBlending(const bool enable);
 
         void debugBindTexture(const Image *const image);

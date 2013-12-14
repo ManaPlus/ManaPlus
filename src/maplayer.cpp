@@ -139,7 +139,7 @@ void MapLayer::draw(Graphics *const graphics,
 
                     if (!c)
                     {
-                        graphics->drawImage(img, px, py);
+                        DRAW_IMAGE(graphics, img, px, py);
                     }
                     else
                     {
@@ -455,7 +455,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
 
                         if (!c)
                         {
-                            graphics->drawImage(img, px, py);
+                            DRAW_IMAGE(graphics, img, px, py);
                         }
                         else
                         {
@@ -796,7 +796,7 @@ void MapItem::draw(Graphics *const graphics, const int x, const int y,
 {
     BLOCK_START("MapItem::draw")
     if (mImage)
-        graphics->drawImage(mImage, x, y);
+        DRAW_IMAGE(graphics, mImage, x, y);
 
     switch (mType)
     {

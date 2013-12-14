@@ -272,18 +272,18 @@ void Window::draw(gcn::Graphics *graphics)
             const Image *const button = mSkin->getCloseImage(
                 mResizeHandles == CLOSE);
             if (button)
-                g->drawImage(button, mCloseRect.x, mCloseRect.y);
+                DRAW_IMAGE(g, button, mCloseRect.x, mCloseRect.y);
         }
         // Draw Sticky Button
         if (mStickyButton)
         {
             const Image *const button = mSkin->getStickyImage(mSticky);
             if (button)
-                g->drawImage(button, mStickyRect.x, mStickyRect.y);
+                DRAW_IMAGE(g, button, mStickyRect.x, mStickyRect.y);
         }
 
         if (mGrip)
-            g->drawImage(mGrip, mGripRect.x, mGripRect.y);
+            DRAW_IMAGE(g, mGrip, mGripRect.x, mGripRect.y);
     }
 
     // Draw title

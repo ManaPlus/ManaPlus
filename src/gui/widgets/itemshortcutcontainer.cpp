@@ -175,7 +175,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                     caption = "Eq.";
 
                     image->setAlpha(1.0F);
-                    g->drawImage(image, itemX, itemY);
+                    DRAW_IMAGE(g, image, itemX, itemY);
                     if (item->isEquipped())
                         g->setColorAll(mEquipedColor, mEquipedColor2);
                     else
@@ -199,7 +199,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                     if (image)
                     {
                         image->setAlpha(1.0F);
-                        g->drawImage(image, itemX, itemY);
+                        DRAW_IMAGE(g, image, itemX, itemY);
                     }
                 }
 
@@ -218,7 +218,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                 if (image)
                 {
                     image->setAlpha(1.0F);
-                    g->drawImage(image, itemX, itemY);
+                    DRAW_IMAGE(g, image, itemX, itemY);
                 }
 
                 font->drawString(g, skill->data->shortName, itemX + 2,

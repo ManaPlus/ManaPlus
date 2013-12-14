@@ -142,13 +142,13 @@ class SDLGraphics : public Graphics
         void setRendererFlags(const uint32_t flags)
         { mRendererFlags = flags; }
 
-    protected:
         virtual bool drawImage2(const Image *const image,
                                 int srcX, int srcY,
                                 int dstX, int dstY,
                                 const int width, const int height,
                                 const bool useColor) override final;
 
+    protected:
         uint32_t mRendererFlags;
         uint32_t mOldPixel;
         int mOldAlpha;

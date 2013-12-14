@@ -103,7 +103,7 @@ void EmotePage::draw(gcn::Graphics *graphics)
             const Image *const image = *it;
             if (image)
             {
-                g->drawImage(image, x, y);
+                DRAW_IMAGE(g, image, x, y);
                 x += emoteWidth;
                 if (x + emoteWidth > width)
                 {

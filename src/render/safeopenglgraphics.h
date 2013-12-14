@@ -154,17 +154,17 @@ class SafeOpenGLGraphics final : public Graphics
 
         void prepareScreenshot() override final;
 
-        static void bindTexture(const GLenum target, const GLuint texture);
-
-        static GLuint mLastImage;
-
-    protected:
         bool drawImage2(const Image *const image,
                         int srcX, int srcY,
                         int dstX, int dstY,
                         const int width, const int height,
                         const bool useColor) override final;
 
+        static void bindTexture(const GLenum target, const GLuint texture);
+
+        static GLuint mLastImage;
+
+    protected:
         void setTexturingAndBlending(const bool enable);
 
     private:

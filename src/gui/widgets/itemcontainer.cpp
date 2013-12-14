@@ -280,16 +280,16 @@ void ItemContainer::draw(gcn::Graphics *graphics)
                 if (mShowMatrix[itemIndex] == mSelectedIndex)
                 {
                     if (mSelImg)
-                        g->drawImage(mSelImg, itemX, itemY);
+                        DRAW_IMAGE(g, mSelImg, itemX, itemY);
                 }
                 image->setAlpha(1.0F);  // ensure the image if fully drawn...
-                g->drawImage(image, itemX + mPaddingItemX,
+                DRAW_IMAGE(g, image, itemX + mPaddingItemX,
                     itemY + mPaddingItemY);
                 if (mProtectedImg && PlayerInfo::isItemProtected(
                     item->getId()))
                 {
-                    g->drawImage(mProtectedImg, itemX + mPaddingItemX,
-                        itemY + mPaddingItemY);
+                    DRAW_IMAGE(g, mProtectedImg,
+                        itemX + mPaddingItemX, itemY + mPaddingItemY);
                 }
             }
         }

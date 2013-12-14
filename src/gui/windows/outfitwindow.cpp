@@ -348,7 +348,7 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
                 const Image *const image = item->getImage();
                 if (image)
                 {
-                    g->drawImage(image, itemX, itemY);
+                    DRAW_IMAGE(g, image, itemX, itemY);
                     foundItem = true;
                 }
             }
@@ -359,14 +359,13 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
                 mItemColors[mCurrentOutfit][i]);
             if (image)
             {
-                g->drawImage(image, itemX, itemY);
+                DRAW_IMAGE(g, image, itemX, itemY);
                 image->decRef();
             }
         }
     }
     BLOCK_END("OutfitWindow::draw")
 }
-
 
 void OutfitWindow::mouseDragged(gcn::MouseEvent &event)
 {

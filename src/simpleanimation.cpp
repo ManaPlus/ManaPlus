@@ -29,6 +29,7 @@
 
 #include "resources/animation.h"
 #include "resources/dye.h"
+#include "resources/image.h"
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
@@ -78,9 +79,9 @@ bool SimpleAnimation::draw(Graphics *const graphics,
     if (!mCurrentFrame || !mCurrentFrame->image)
         return false;
 
-    return graphics->drawImage(mCurrentFrame->image,
-                               posX + mCurrentFrame->offsetX,
-                               posY + mCurrentFrame->offsetY);
+    DRAW_IMAGE(graphics, mCurrentFrame->image,
+        posX + mCurrentFrame->offsetX, posY + mCurrentFrame->offsetY);
+    return true;
 }
 
 void SimpleAnimation::reset()

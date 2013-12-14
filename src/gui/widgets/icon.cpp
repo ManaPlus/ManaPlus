@@ -73,7 +73,8 @@ void Icon::draw(gcn::Graphics *g)
     if (mImage)
     {
         Graphics *const graphics = static_cast<Graphics*>(g);
-        graphics->drawImage(mImage, (mDimension.width - mImage->mBounds.w) / 2,
+        DRAW_IMAGE(graphics, mImage,
+            (mDimension.width - mImage->mBounds.w) / 2,
             (mDimension.height - mImage->mBounds.h) / 2);
     }
     BLOCK_END("Icon::draw")

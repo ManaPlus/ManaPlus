@@ -139,13 +139,13 @@ class SDLGraphics : public Graphics
                           const bool resize,
                           const bool noFrame) override final;
 
-    protected:
         virtual bool drawImage2(const Image *const image,
                                 int srcX, int srcY,
                                 int dstX, int dstY,
                                 const int width, const int height,
                                 const bool useColor) override final;
 
+    protected:
         int SDL_FakeUpperBlit(const SDL_Surface *const src,
                               SDL_Rect *const srcrect,
                               const SDL_Surface *const dst,

@@ -294,9 +294,9 @@ bool AnimatedSprite::draw(Graphics *const graphics,
     if (image->getAlpha() != mAlpha)
         image->setAlpha(mAlpha);
 
-    return graphics->drawImage(image,
-                               posX + mFrame->offsetX,
-                               posY + mFrame->offsetY);
+    DRAW_IMAGE(graphics, image,
+        posX + mFrame->offsetX, posY + mFrame->offsetY);
+    return true;
 }
 
 bool AnimatedSprite::setSpriteDirection(const SpriteDirection direction)

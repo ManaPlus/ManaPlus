@@ -124,7 +124,7 @@ void Desktop::draw(gcn::Graphics *graphics)
 
         if (imageHelper->useOpenGL() == RENDER_SOFTWARE)
         {
-            g->drawImage(mWallpaper,
+            DRAW_IMAGE(g, mWallpaper,
                 (width - wallpWidth) / 2,
                 (height - wallpHeight) / 2);
         }

@@ -132,7 +132,7 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
             const Image *const image = model->getImageAt(row1);
             if (image)
             {
-                g->drawImage(image, mImagePadding, item.y + (height
+                DRAW_IMAGE(g, image, mImagePadding, item.y + (height
                     - image->getHeight()) / 2 + mPadding);
             }
         }
@@ -166,7 +166,7 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
             const Image *const image = model->getImageAt(row1);
             if (image)
             {
-                g->drawImage(image, mImagePadding, item.y + (height
+                DRAW_IMAGE(g, image, mImagePadding, item.y + (height
                     - image->getHeight()) / 2 + mPadding);
             }
         }

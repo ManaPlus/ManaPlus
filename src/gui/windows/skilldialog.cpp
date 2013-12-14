@@ -134,7 +134,7 @@ class SkillListBox final : public ListBox
                     const SkillData *const data = e->data;
                     const int yPad = y + mPadding;
                     const std::string &description = data->description;
-                    graphics->drawImage(data->icon, mPadding, yPad);
+                    DRAW_IMAGE(graphics, data->icon, mPadding, yPad);
                     font->drawString(graphics, data->name, mTextPadding, yPad);
                     if (!description.empty())
                     {

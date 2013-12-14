@@ -499,12 +499,17 @@ void Button::draw(gcn::Graphics *graphics)
     else
     {
         g2->drawImageRect(0, 0, width, height, skin->getBorder());
+
         if (mImages)
         {
             if (isPressed())
-                g2->drawImage(mImages[mode], imageX + 1, imageY + 1);
+            {
+                DRAW_IMAGE(g2, mImages[mode], imageX + 1, imageY + 1);
+            }
             else
-                g2->drawImage(mImages[mode], imageX, imageY);
+            {
+                DRAW_IMAGE(g2, mImages[mode], imageX, imageY);
+            }
         }
     }
 

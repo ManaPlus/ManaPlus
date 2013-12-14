@@ -494,10 +494,10 @@ void Graphics::drawImageRect(const int x, const int y,
     // Draw the corners
     if (drawMain)
     {
-        drawImage(topLeft, x, y);
-        drawImage(topRight, x + w - topRight->getWidth(), y);
-        drawImage(bottomLeft, x, h - bottomLeft->getHeight() + y);
-        drawImage(bottomRight,
+        DRAW_IMAGE(this, topLeft, x, y);
+        DRAW_IMAGE(this, topRight, x + w - topRight->getWidth(), y);
+        DRAW_IMAGE(this, bottomLeft, x, h - bottomLeft->getHeight() + y);
+        DRAW_IMAGE(this, bottomRight,
             x + w - bottomRight->getWidth(),
             y + h - bottomRight->getHeight());
     }

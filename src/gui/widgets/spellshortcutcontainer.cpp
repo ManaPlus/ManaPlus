@@ -135,7 +135,7 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
                 if (image)
                 {
                     image->setAlpha(1.0F);
-                    g->drawImage(image, itemX, itemY);
+                    DRAW_IMAGE(g, image, itemX, itemY);
                 }
             }
 

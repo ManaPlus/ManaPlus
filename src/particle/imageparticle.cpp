@@ -103,5 +103,6 @@ bool ImageParticle::draw(Graphics *const graphics,
     }
 
     mImage->setAlpha(alphafactor);
-    return graphics->drawImage(mImage, screenX, screenY);
+    DRAW_IMAGE(graphics, mImage, screenX, screenY);
+    return true;
 }
