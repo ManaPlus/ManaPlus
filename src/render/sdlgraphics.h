@@ -39,7 +39,7 @@ class ImageVertexes;
 /**
  * A central point of control for graphics.
  */
-class SDLGraphics : public Graphics
+class SDLGraphics final : public Graphics
 {
     public:
         /**
@@ -52,7 +52,7 @@ class SDLGraphics : public Graphics
         /**
          * Destructor.
          */
-        virtual ~SDLGraphics();
+        ~SDLGraphics();
 
         void _beginDraw() override final;
 
@@ -62,68 +62,61 @@ class SDLGraphics : public Graphics
 
         void popClipArea() override final;
 
-        virtual bool drawRescaledImage(const Image *const image, int srcX,
-                                       int srcY, int dstX, int dstY,
-                                       const int width, const int height,
-                                       const int desiredWidth,
-                                       const int desiredHeight,
-                                       const bool useColor = false)
-                                       override final;
+        bool drawRescaledImage(const Image *const image, int srcX,
+                               int srcY, int dstX, int dstY,
+                               const int width, const int height,
+                               const int desiredWidth,
+                               const int desiredHeight,
+                               const bool useColor = false) override final;
 
-        virtual void drawImagePattern(const Image *const image,
+        void drawImagePattern(const Image *const image,
+                              const int x, const int y,
+                              const int w, const int h) override final;
+
+        void drawRescaledImagePattern(const Image *const image,
                                       const int x, const int y,
-                                      const int w, const int h) override final;
+                                      const int w, const int h,
+                                      const int scaledWidth,
+                                      const int scaledHeight) override final;
 
-        virtual void drawRescaledImagePattern(const Image *const image,
-                                              const int x, const int y,
-                                              const int w, const int h,
-                                              const int scaledWidth,
-                                              const int scaledHeight)
-                                              override final;
+        void calcImagePattern(ImageVertexes *const vert,
+                              const Image *const image,
+                              const int x, const int y,
+                              const int w, const int h) const override final;
 
-        virtual void calcImagePattern(ImageVertexes *const vert,
-                                      const Image *const image,
-                                      const int x,
-                                      const int y,
-                                      const int w,
-                                      const int h) const override final;
+        void calcImagePattern(ImageCollection *const vert,
+                              const Image *const image,
+                              const int x, const int y,
+                              const int w, const int h) const override final;
 
-        virtual void calcImagePattern(ImageCollection *const vert,
-                                      const Image *const image,
-                                      const int x,
-                                      const int y,
-                                      const int w,
-                                      const int h) const override final;
+        void calcTileVertexes(ImageVertexes *const vert,
+                              const Image *const image,
+                              int x, int y) const override final;
 
-        virtual void calcTileVertexes(ImageVertexes *const vert,
-                                      const Image *const image,
-                                      int x, int y) const override final;
+        void calcTileSDL(ImageVertexes *const vert,
+                         int x, int y) const override final;
 
-        virtual void calcTileSDL(ImageVertexes *const vert,
-                                 int x, int y) const override final;
+        void calcTileCollection(ImageCollection *const vertCol,
+                                const Image *const image,
+                                int x, int y) override final;
 
-        virtual void calcTileCollection(ImageCollection *const vertCol,
-                                        const Image *const image,
-                                        int x, int y) override final;
+        void drawTileVertexes(const ImageVertexes *const vert) override final;
 
-        virtual void drawTileVertexes(const ImageVertexes
-                                      *const vert) override final;
+        void drawTileCollection(const ImageCollection *const vertCol)
+                                override final;
 
-        virtual void drawTileCollection(const ImageCollection *const vertCol)
-                                        override final;
+        void updateScreen() override final;
 
-        virtual void updateScreen() override final;
+        SDL_Surface *getScreenshot() override final A_WARN_UNUSED;
 
-        virtual SDL_Surface *getScreenshot() override final A_WARN_UNUSED;
+        bool drawNet(const int x1, const int y1,
+                     const int x2, const int y2,
+                     const int width, const int height) override final;
 
-        virtual bool drawNet(const int x1, const int y1,
-                             const int x2, const int y2,
-                             const int width, const int height) override final;
-
-        virtual bool calcWindow(ImageCollection *const vertCol,
-                                const int x, const int y,
-                                const int w, const int h,
-                                const ImageRect &imgRect) override final;
+        bool calcWindow(ImageCollection *const vertCol,
+                        const int x, const int y,
+                        const int w, const int h,
+                        const ImageRect &imgRect) override final;
 
         void fillRectangle(const gcn::Rectangle &rect) override final;
 
@@ -140,11 +133,11 @@ class SDLGraphics : public Graphics
                           const bool resize,
                           const bool noFrame) override final;
 
-        virtual bool drawImage2(const Image *const image,
-                                int srcX, int srcY,
-                                int dstX, int dstY,
-                                const int width, const int height,
-                                const bool useColor) override final;
+        bool drawImage2(const Image *const image,
+                        int srcX, int srcY,
+                        int dstX, int dstY,
+                        const int width, const int height,
+                        const bool useColor) override final;
 
     protected:
         int SDL_FakeUpperBlit(const SDL_Surface *const src,

@@ -36,7 +36,7 @@ struct SDL_Surface;
 /**
  * A central point of control for graphics.
  */
-class SurfaceGraphics : public Graphics
+class SurfaceGraphics final : public Graphics
 {
     public:
         enum BlitMode
@@ -49,7 +49,7 @@ class SurfaceGraphics : public Graphics
 
         A_DELETE_COPY(SurfaceGraphics)
 
-        virtual ~SurfaceGraphics();
+        ~SurfaceGraphics();
 
         void setTarget(SDL_Surface *const target)
         { mTarget = target; }
