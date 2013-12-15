@@ -90,6 +90,7 @@ class CheckBox final : public gcn::CheckBox,
         int mImageSize;
         int mSpacing;
         bool mHasMouse;
+        bool mDrawBox;
 
         static int instances;
         static Skin *mSkin;

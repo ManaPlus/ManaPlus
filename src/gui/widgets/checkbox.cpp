@@ -47,7 +47,8 @@ CheckBox::CheckBox(const Widget2 *const widget,
     mImagePadding(0),
     mImageSize(9),
     mSpacing(2),
-    mHasMouse(false)
+    mHasMouse(false),
+    mDrawBox(true)
 {
     mForegroundColor2 = getThemeColor(Theme::CHECKBOX_OUTLINE);
     if (instances == 0)
@@ -74,6 +75,7 @@ CheckBox::CheckBox(const Widget2 *const widget,
         mImagePadding = mSkin->getOption("imagePadding");
         mImageSize = mSkin->getOption("imageSize");
         mSpacing = mSkin->getOption("spacing");
+        mDrawBox = mSkin->getOption("drawBox", 1);
     }
     adjustSize();
 }
@@ -129,7 +131,7 @@ void CheckBox::updateAlpha()
 
 void CheckBox::drawBox(gcn::Graphics *const graphics)
 {
-    if (!mSkin)
+    if (!mSkin || !mDrawBox)
         return;
 
     const ImageRect &rect = mSkin->getBorder();

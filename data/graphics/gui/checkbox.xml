@@ -5,6 +5,7 @@
         <option name="imagePadding" value="0" />
         <option name="imageSize" value="9" />
         <option name="spacing" value="2" />
+        <option name="drawBox" value="1" />
 
         <part type="normal" xpos="0" ypos="0" width="9" height="9" />
         <part type="checked" xpos="9" ypos="0" width="9" height="9" />
