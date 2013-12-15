@@ -1001,25 +1001,24 @@ bool ResourceManager::loadTextFile(const std::string &fileName,
     return true;
 }
 
-StringVect ResourceManager::loadTextFileLocal(
-        const std::string &fileName)
+bool ResourceManager::loadTextFileLocal(const std::string &fileName,
+                                        StringVect &lines)
 {
     std::ifstream file;
     char line[501];
-    StringVect lines;
 
     file.open(fileName.c_str(), std::ios::in);
 
     if (!file.is_open())
     {
         logger->log("Couldn't load text file: %s", fileName.c_str());
-        return lines;
+        return false;
     }
 
     while (file.getline(line, 500))
         lines.push_back(line);
 
-    return lines;
+    return true;
 }
 
 void ResourceManager::saveTextFile(std::string path, const std::string &name,

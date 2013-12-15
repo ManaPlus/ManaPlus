@@ -329,8 +329,11 @@ void UpdaterWindow::loadNews()
     std::stringstream ss(mMemoryBuffer);
     std::string line;
     file.open(newsName.c_str(), std::ios::out);
+    int cnt = 0;
+    const int maxNews = 50;
     while (std::getline(ss, line, '\n'))
     {
+        cnt ++;
         if (firstLine)
         {
             firstLine = false;
@@ -340,17 +343,25 @@ void UpdaterWindow::loadNews()
 
             if (file.is_open())
                 file << line << std::endl;
-            mBrowserBox->addRow(line);
+            if (cnt < maxNews)
+                mBrowserBox->addRow(line);
         }
         else
         {
             if (file.is_open())
                 file << line << std::endl;
-            mBrowserBox->addRow(line);
+            if (cnt < maxNews)
+                mBrowserBox->addRow(line);
         }
     }
 
     file.close();
+    if (cnt > maxNews)
+    {
+        mBrowserBox->addRow("");
+        mBrowserBox->addRow("news", _("Show all news (can be slow)"));
+        mBrowserBox->addRow("");
+    }
     // Free the memory buffer now that we don't need it anymore
     free(mMemoryBuffer);
     mMemoryBuffer = nullptr;
@@ -944,5 +955,24 @@ void UpdaterWindow::handleLink(const std::string &link,
                                gcn::MouseEvent *event A_UNUSED)
 {
     if (strStartWith(link, "http://") || strStartWith(link, "https://"))
+    {
         openBrowser(link);
+    }
+    else if (link == "news")
+    {
+        loadFile("news");
+    }
+}
+
+void UpdaterWindow::loadFile(std::string file)
+{
+    mBrowserBox->clearRows();
+    trim(file);
+
+    StringVect lines;
+    ResourceManager::getInstance()->loadTextFileLocal(
+        mUpdatesDir + "/local/help/news.txt", lines);
+
+    for (size_t i = 0, sz = lines.size(); i < sz; ++i)
+        mBrowserBox->addRow(lines[i]);
 }

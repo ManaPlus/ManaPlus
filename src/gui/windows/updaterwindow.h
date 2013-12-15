@@ -126,6 +126,8 @@ class UpdaterWindow final : public Window,
     void handleLink(const std::string &link,
                     gcn::MouseEvent *event A_UNUSED) override final;
 
+    void loadFile(std::string file);
+
     static void loadLocalUpdates(const std::string &dir);
 
     static void unloadUpdates(const std::string &dir);

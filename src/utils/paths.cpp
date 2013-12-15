@@ -171,7 +171,8 @@ std::string getDesktopDir()
         file = std::string(xdg).append("/user-dirs.dirs");
     }
 
-    const StringVect arr = ResourceManager::loadTextFileLocal(file);
+    StringVect arr;
+    ResourceManager::loadTextFileLocal(file, arr);
     FOR_EACH (StringVectCIter, it, arr)
     {
         std::string str = *it;

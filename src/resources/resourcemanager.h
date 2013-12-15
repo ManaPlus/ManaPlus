@@ -268,8 +268,8 @@ class ResourceManager final
         /**
          * Retrieves the contents of a text file.
          */
-        static StringVect loadTextFileLocal(const std::string &fileName)
-                                            A_WARN_UNUSED;
+        static bool loadTextFileLocal(const std::string &fileName,
+                                      StringVect &lines);
 
         void saveTextFile(std::string path, const std::string &name,
                           const std::string &text) const;

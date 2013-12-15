@@ -2848,7 +2848,8 @@ std::string Being::loadComment(const std::string &name, const int type)
     const ResourceManager *const resman = ResourceManager::getInstance();
     if (resman->existsLocal(str))
     {
-        lines = resman->loadTextFileLocal(str);
+        StringVect lines;
+        resman->loadTextFileLocal(str, lines);
         if (lines.size() >= 2)
             return lines[1];
     }
