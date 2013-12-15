@@ -60,6 +60,7 @@ class ChatHandler : public Net::ChatHandler
     protected:
         typedef std::queue<std::string> WhisperQueue;
         WhisperQueue mSentWhispers;
+        int mMotdTime;
         bool mShowAllLang;
         bool mShowMotd;
         bool mSkipping;
