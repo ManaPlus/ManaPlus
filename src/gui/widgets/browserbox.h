@@ -231,6 +231,9 @@ class BrowserBox final : public gcn::Widget,
         int getPadding() const A_WARN_UNUSED
         { return mPadding; }
 
+        void setForegroundColorAll(const gcn::Color &color1,
+                                   const gcn::Color &color2);
+
     private:
         int calcHeight() A_WARN_UNUSED;
 

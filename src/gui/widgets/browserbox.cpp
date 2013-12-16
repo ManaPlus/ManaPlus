@@ -889,6 +889,13 @@ std::string BrowserBox::getTextAtPos(const int x, const int y) const
     return str;
 }
 
+void BrowserBox::setForegroundColorAll(const gcn::Color &color1,
+                                       const gcn::Color &color2)
+{
+    mForegroundColor = color1;
+    mForegroundColor2 = color2;
+}
+
 LinePart::~LinePart()
 {
     if (mImage)

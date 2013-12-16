@@ -78,7 +78,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("speechBubbleAlpha", 1.0F);
     AddDEF("MostUsedServerName0", "server.themanaworld.org");
     AddDEF("visiblenames", true);
-    AddDEF("speech", static_cast<int>(Being::TEXT_OVERHEAD));
+    AddDEF("speech", static_cast<int>(Being::NO_NAME_IN_BUBBLE));
     AddDEF("showgender", true);
     AddDEF("showlevel", false);
     AddDEF("showMonstersTakedDamage", true);

@@ -25,6 +25,7 @@
 
 #include "gui/sdlfont.h"
 
+#include "gui/widgets/browserbox.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/textbox.h"
 
@@ -36,14 +37,15 @@ SpeechBubble::SpeechBubble() :
     Popup("Speech", "speechbubble.xml"),
     mText(),
     mCaption(new Label(this)),
-    mSpeechBox(new TextBox(this))
+    mSpeechBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
+        "browserbox.xml"))
 {
     setContentSize(140, 46);
     setMinWidth(29);
     setMinHeight(29);
 
     mCaption->setFont(boldFont);
-    mSpeechBox->setEditable(false);
+//    mSpeechBox->setEditable(false);
     mSpeechBox->setOpaque(false);
     mSpeechBox->setForegroundColorAll(getThemeColor(Theme::BUBBLE_TEXT),
         getThemeColor(Theme::BUBBLE_TEXT_OUTLINE));
@@ -66,7 +68,7 @@ void SpeechBubble::setCaption(const std::string &name,
 
 void SpeechBubble::setText(const std::string &text, const bool showName)
 {
-    if (text == mText && (mCaption->getWidth() <= mSpeechBox->getMinWidth()))
+    if (text == mText && (mCaption->getWidth() <= mSpeechBox->getWidth()))
         return;
 
     mSpeechBox->setForegroundColorAll(getThemeColor(Theme::BUBBLE_TEXT),
@@ -75,13 +77,14 @@ void SpeechBubble::setText(const std::string &text, const bool showName)
     const int pad = mPadding;
     const int pad2 = 2 * pad;
     int width = mCaption->getWidth() + pad2;
-    mSpeechBox->setTextWrapped(text, 130 > width ? 130 : width);
-    const int speechWidth = mSpeechBox->getMinWidth() + pad2;
+    mSpeechBox->clearRows();
+    mSpeechBox->addRow(text);
+    const int speechWidth = mSpeechBox->getWidth() + pad2;
 
     const int fontHeight = getFont()->getHeight();
     const int nameHeight = showName ? mCaption->getHeight() + pad / 2 : 0;
-    const int numRows = mSpeechBox->getNumberOfRows();
-    const int height = (numRows * fontHeight) + nameHeight + pad;
+    const int numRows = 1;
+    const int height = fontHeight + nameHeight + pad;
 
     if (width < speechWidth)
         width = speechWidth;

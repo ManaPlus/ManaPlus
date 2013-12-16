@@ -2899,8 +2899,16 @@ void Client::checkConfigVersion()
         config.setValue("showDidYouKnow", false);
 #endif
     }
+    if (version < 5)
+    {
+        if (config.getIntValue("speech") == Being::TEXT_OVERHEAD)
+        {
+            config.setValue("speech", static_cast<int>(
+                Being::NO_NAME_IN_BUBBLE));
+        }
+    }
 
-    config.setValue("cfgver", 4);
+    config.setValue("cfgver", 5);
 }
 
 Window *Client::openErrorDialog(const std::string &header,
