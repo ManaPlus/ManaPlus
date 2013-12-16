@@ -74,22 +74,18 @@ void SpeechBubble::setText(const std::string &text, const bool showName)
     mSpeechBox->setForegroundColorAll(getThemeColor(Theme::BUBBLE_TEXT),
         getThemeColor(Theme::BUBBLE_TEXT_OUTLINE));
 
-    const int pad = mPadding;
     int width = mCaption->getWidth();
     mSpeechBox->clearRows();
     mSpeechBox->addRow(text);
     mSpeechBox->setWidth(mSpeechBox->getDataWidth());
-    const int speechWidth = mSpeechBox->getWidth();
 
-    const int fontHeight = getFont()->getHeight();
+    const int speechWidth = mSpeechBox->getWidth();
     const int nameHeight = showName ? mCaption->getHeight() + mSpacing : 0;
-    int height = fontHeight + nameHeight;
 
     if (width < speechWidth)
         width = speechWidth;
 
-    setContentSize(width, height);
-
+    setContentSize(width, getFont()->getHeight() + nameHeight);
     mCaption->setPosition(0, 0);
     mSpeechBox->setPosition(0, nameHeight);
 }

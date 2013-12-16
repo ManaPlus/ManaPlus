@@ -970,8 +970,8 @@ void UpdaterWindow::loadFile(std::string file)
     trim(file);
 
     StringVect lines;
-    ResourceManager::getInstance()->loadTextFileLocal(
-        mUpdatesDir + "/local/help/news.txt", lines);
+    const ResourceManager *const resman = ResourceManager::getInstance();
+    resman->loadTextFileLocal(mUpdatesDir + "/local/help/news.txt", lines);
 
     for (size_t i = 0, sz = lines.size(); i < sz; ++i)
         mBrowserBox->addRow(lines[i]);

@@ -2843,7 +2843,6 @@ std::string Being::loadComment(const std::string &name, const int type)
 
     str.append(stringToHexPath(name)).append("/comment.txt");
     logger->log("load from: %s", str.c_str());
-    StringVect lines;
 
     const ResourceManager *const resman = ResourceManager::getInstance();
     if (resman->existsLocal(str))
