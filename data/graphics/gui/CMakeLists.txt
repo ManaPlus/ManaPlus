@@ -66,6 +66,7 @@ SET (FILES
     shop.xml
     slider.xml
     slider_highlighted.xml
+    speechbrowserbox.xml
     speechbubble.xml
     tab.xml
     tab_highlighted.xml

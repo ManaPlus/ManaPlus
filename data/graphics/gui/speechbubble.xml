@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skinset name="SpeechBubble" image="bubble.png">
     <widget type="Window">
+        <option name="padding" value="4" />
+        <option name="spacing" value="2" />
+
         <!-- Top Row -->
         <part type="top-left-corner" xpos="0" ypos="0" width="5" height="5" />
         <part type="top-edge" xpos="5" ypos="0" width="5" height="5" />

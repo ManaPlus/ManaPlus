@@ -72,6 +72,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     mPadding(0),
     mNewLinePadding(15),
     mItemPadding(0),
+    mDataWidth(0),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mHyperLinkColor(getThemeColor(Theme::HYPERLINK)),
     mOpaque(opaque),
@@ -403,6 +404,7 @@ void BrowserBox::clearRows()
     setHeight(0);
     mSelectedLink = -1;
     mUpdateTime = 0;
+    mDataWidth = 0;
     updateHeight();
 }
 
@@ -751,7 +753,11 @@ int BrowserBox::calcHeight()
 
                     start += 3;
                     if (start == row.size())
+                    {
+                        if (x > mDataWidth)
+                            mDataWidth = x;
                         break;
+                    }
                 }
             }
             const size_t len = (end == std::string::npos) ? end : end - start;
@@ -832,6 +838,8 @@ int BrowserBox::calcHeight()
                 break;
 
             x += width;
+            if (x > mDataWidth)
+                mDataWidth = x;
         }
         y += fontHeight;
     }

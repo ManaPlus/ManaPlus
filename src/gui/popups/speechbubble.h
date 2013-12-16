@@ -59,6 +59,7 @@ class SpeechBubble final : public Popup
 
     private:
         std::string mText;
+        int mSpacing;
         Label *mCaption;
         BrowserBox *mSpeechBox;
 };

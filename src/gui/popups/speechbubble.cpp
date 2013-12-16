@@ -36,16 +36,16 @@
 SpeechBubble::SpeechBubble() :
     Popup("Speech", "speechbubble.xml"),
     mText(),
+    mSpacing(mSkin ? mSkin->getOption("spacing") : 2),
     mCaption(new Label(this)),
     mSpeechBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
-        "browserbox.xml"))
+        "speechbrowserbox.xml"))
 {
     setContentSize(140, 46);
-    setMinWidth(29);
-    setMinHeight(29);
+    setMinWidth(8);
+    setMinHeight(8);
 
     mCaption->setFont(boldFont);
-//    mSpeechBox->setEditable(false);
     mSpeechBox->setOpaque(false);
     mSpeechBox->setForegroundColorAll(getThemeColor(Theme::BUBBLE_TEXT),
         getThemeColor(Theme::BUBBLE_TEXT_OUTLINE));
@@ -75,28 +75,21 @@ void SpeechBubble::setText(const std::string &text, const bool showName)
         getThemeColor(Theme::BUBBLE_TEXT_OUTLINE));
 
     const int pad = mPadding;
-    const int pad2 = 2 * pad;
-    int width = mCaption->getWidth() + pad2;
+    int width = mCaption->getWidth();
     mSpeechBox->clearRows();
     mSpeechBox->addRow(text);
-    const int speechWidth = mSpeechBox->getWidth() + pad2;
+    mSpeechBox->setWidth(mSpeechBox->getDataWidth());
+    const int speechWidth = mSpeechBox->getWidth();
 
     const int fontHeight = getFont()->getHeight();
-    const int nameHeight = showName ? mCaption->getHeight() + pad / 2 : 0;
-    const int numRows = 1;
-    const int height = fontHeight + nameHeight + pad;
+    const int nameHeight = showName ? mCaption->getHeight() + mSpacing : 0;
+    int height = fontHeight + nameHeight;
 
     if (width < speechWidth)
         width = speechWidth;
 
-    width += pad2;
-
     setContentSize(width, height);
 
-    const gcn::Rectangle &rect = mDimension;
-    const int xPos = ((rect.width - width) / 2);
-    const int yPos = ((rect.height - height) / 2) + nameHeight;
-
-    mCaption->setPosition(xPos, pad);
-    mSpeechBox->setPosition(xPos, yPos);
+    mCaption->setPosition(0, 0);
+    mSpeechBox->setPosition(0, nameHeight);
 }

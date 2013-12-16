@@ -234,6 +234,9 @@ class BrowserBox final : public gcn::Widget,
         void setForegroundColorAll(const gcn::Color &color1,
                                    const gcn::Color &color2);
 
+        int getDataWidth() const
+        { return mDataWidth; }
+
     private:
         int calcHeight() A_WARN_UNUSED;
 
@@ -264,6 +267,7 @@ class BrowserBox final : public gcn::Widget,
         int mPadding;
         int mNewLinePadding;
         int mItemPadding;
+        unsigned int mDataWidth;
 
         gcn::Color mHighlightColor;
         gcn::Color mHyperLinkColor;
