@@ -294,10 +294,10 @@ SDL_Surface *SDLImageHelper::create32BitSurface(int width, int height) const
         width, height, 32, rmask, gmask, bmask, amask);
 }
 
-int SDLImageHelper::combineSurface(SDL_Surface *const src,
-                                   SDL_Rect *const srcrect,
-                                   SDL_Surface *const dst,
-                                   SDL_Rect *const dstrect)
+int SDLImageHelper::combineSurface(SDL_Surface *restrict const src,
+                                   SDL_Rect *restrict const srcrect,
+                                   SDL_Surface *restrict const dst,
+                                   SDL_Rect *restrict const dstrect)
 {
     return SDL_gfxBlitRGBA(src, srcrect, dst, dstrect);
 }
