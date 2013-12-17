@@ -45,11 +45,12 @@ class TextField : public gcn::TextField,
         /**
          * Constructor, initializes the text field with the given string.
          */
-        explicit TextField(const Widget2 *const widget,
-                           const std::string &text = "",
+        explicit TextField(const Widget2 *restrict const widget,
+                           const std::string &restrict text = "",
                            const bool loseFocusOnTab = true,
-                           gcn::ActionListener *const listener = nullptr,
-                           const std::string &eventId = "",
+                           gcn::ActionListener *restrict
+                           const listener = nullptr,
+                           const std::string &restrict eventId = "",
                            const bool sendAlwaysEvents = false);
 
         A_DELETE_COPY(TextField)
