@@ -52,7 +52,8 @@ class OkDialog final : public Window,
          *
          * @see Window::Window
          */
-        OkDialog(const std::string &title, const std::string &msg,
+        OkDialog(const std::string &restrict title,
+                 const std::string &restrict msg,
                  const int soundEvent = DIALOG_OK, const bool modal = true,
                  const bool showCenter = true, Window *const parent = nullptr,
                  const int minWidth = 260);

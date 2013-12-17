@@ -34,7 +34,8 @@
 
 #include "debug.h"
 
-OkDialog::OkDialog(const std::string &title, const std::string &msg,
+OkDialog::OkDialog(const std::string &restrict title,
+                   const std::string &restrict msg,
                    const int soundEvent, const bool modal,
                    const bool showCenter, Window *const parent,
                    const int minWidth) :
