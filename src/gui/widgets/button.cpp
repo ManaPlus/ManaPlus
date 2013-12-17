@@ -79,7 +79,8 @@ Button::Button(const Widget2 *const widget) :
 }
 
 Button::Button(const Widget2 *const widget,
-               const std::string &caption, const std::string &actionEventId,
+               const std::string &restrict caption,
+               const std::string &restrict actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(caption),
     Widget2(widget),
@@ -116,9 +117,10 @@ Button::Button(const Widget2 *const widget,
 }
 
 Button::Button(const Widget2 *const widget,
-               const std::string &caption, const std::string &imageName,
+               const std::string &restrict caption,
+               const std::string &restrict imageName,
                const int imageWidth, const int imageHeight,
-               const std::string &actionEventId,
+               const std::string &restrict actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(caption),
     Widget2(widget),
@@ -155,9 +157,10 @@ Button::Button(const Widget2 *const widget,
         addActionListener(listener);
 }
 
-Button::Button(const Widget2 *const widget, const std::string &imageName,
+Button::Button(const Widget2 *const widget,
+               const std::string &restrict imageName,
                const int imageWidth, const int imageHeight,
-               const std::string &actionEventId,
+               const std::string &restrict actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(),
     Widget2(widget),
@@ -195,9 +198,9 @@ Button::Button(const Widget2 *const widget, const std::string &imageName,
 }
 
 Button::Button(const Widget2 *const widget,
-               const std::string &caption,
-               const std::string &imageName,
-               const std::string &actionEventId,
+               const std::string &restrict caption,
+               const std::string &restrict imageName,
+               const std::string &restrict actionEventId,
                gcn::ActionListener *const listener) :
     gcn::Button(caption),
     Widget2(widget),

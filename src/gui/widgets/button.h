@@ -57,7 +57,8 @@ class Button final : public gcn::Button,
          * adds the given action listener.
          */
         Button(const Widget2 *const widget,
-               const std::string &caption, const std::string &actionEventId,
+               const std::string &restrict caption,
+               const std::string &restrict actionEventId,
                gcn::ActionListener *const listener);
 
         /**
@@ -65,7 +66,8 @@ class Button final : public gcn::Button,
          * adds the given action listener.
          */
         Button(const Widget2 *const widget,
-               const std::string &caption, const std::string &imageName,
+               const std::string &restrict caption,
+               const std::string &restrict imageName,
                const int imageWidth, const int imageHeight,
                const std::string &actionEventId,
                gcn::ActionListener *const listener);
@@ -74,17 +76,20 @@ class Button final : public gcn::Button,
          * Constructor, sets the caption of the button to the given string and
          * adds the given action listener.
          */
-        Button(const Widget2 *const widget, const std::string &imageName,
+        Button(const Widget2 *const widget,
+               const std::string &restrict imageName,
                const int imageWidth, const int imageHeight,
-               const std::string &actionEventId,
+               const std::string &restrict actionEventId,
                gcn::ActionListener *const listener);
 
         /**
          * Constructor, sets the caption of the button to the given string and
          * adds the given action listener.
          */
-        Button(const Widget2 *const widget, const std::string &imageName,
-               const std::string &caption, const std::string &actionEventId,
+        Button(const Widget2 *const widget,
+               const std::string &restrict imageName,
+               const std::string &restrict caption,
+               const std::string &restrict actionEventId,
                gcn::ActionListener *const listener);
 
         A_DELETE_COPY(Button)
