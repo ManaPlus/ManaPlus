@@ -87,8 +87,9 @@ class AttrDisplay : public Container
 
     protected:
         AttrDisplay(const Widget2 *const widget,
-                    const int id, const std::string &name,
-                    const std::string &shortName);
+                    const int id,
+                    const std::string &restrict name,
+                    const std::string &restrict shortName);
 
         const int mId;
         const std::string mName;
@@ -103,8 +104,8 @@ class DerDisplay final : public AttrDisplay
 {
     public:
         DerDisplay(const Widget2 *const widget,
-                   const int id, const std::string &name,
-                   const std::string &shortName);
+                   const int id, const std::string &restrict name,
+                   const std::string &restrict shortName);
 
         A_DELETE_COPY(DerDisplay)
 
@@ -116,8 +117,8 @@ class ChangeDisplay final : public AttrDisplay, gcn::ActionListener
 {
     public:
         ChangeDisplay(const Widget2 *const widget,
-                      const int id, const std::string &name,
-                      const std::string &shortName);
+                      const int id, const std::string &restrict name,
+                      const std::string &restrict shortName);
 
         A_DELETE_COPY(ChangeDisplay)
 
@@ -471,10 +472,9 @@ void StatusWindow::setPointsNeeded(const int id, const int needed)
     }
 }
 
-void StatusWindow::addAttribute(const int id, const std::string &name,
-                                const std::string &shortName,
-                                const bool modifiable,
-                                const std::string &description A_UNUSED)
+void StatusWindow::addAttribute(const int id, const std::string &restrict name,
+                                const std::string &restrict shortName,
+                                const bool modifiable)
 {
     AttrDisplay *disp;
 
@@ -768,8 +768,8 @@ void StatusWindow::action(const gcn::ActionEvent &event)
 }
 
 AttrDisplay::AttrDisplay(const Widget2 *const widget,
-                         const int id, const std::string &name,
-                         const std::string &shortName) :
+                         const int id, const std::string &restrict name,
+                         const std::string &restrict shortName) :
     Container(widget),
     mId(id),
     mName(name),
@@ -802,8 +802,8 @@ std::string AttrDisplay::update()
 }
 
 DerDisplay::DerDisplay(const Widget2 *const widget,
-                       const int id, const std::string &name,
-                       const std::string &shortName) :
+                       const int id, const std::string &restrict name,
+                       const std::string &restrict shortName) :
     AttrDisplay(widget, id, name, shortName)
 {
     ContainerPlacer place = mLayout->getPlacer(0, 0);
@@ -813,8 +813,8 @@ DerDisplay::DerDisplay(const Widget2 *const widget,
 }
 
 ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
-                             const int id, const std::string &name,
-                             const std::string &shortName) :
+                             const int id, const std::string &restrict name,
+                             const std::string &restrict shortName) :
     AttrDisplay(widget, id, name, shortName),
     gcn::ActionListener(),
     mNeeded(1),

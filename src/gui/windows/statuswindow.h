@@ -60,10 +60,9 @@ class StatusWindow final : public Window,
 
         void setPointsNeeded(const int id, const int needed);
 
-        void addAttribute(const int id, const std::string &name,
-                          const std::string &shortName = "",
-                          const bool modifiable = false,
-                          const std::string &description = "");
+        void addAttribute(const int id, const std::string &restrict name,
+                          const std::string &restrict shortName = "",
+                          const bool modifiable = false);
 
         static void updateHPBar(ProgressBar *const bar,
                                 const bool showMax = false);

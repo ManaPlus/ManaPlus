@@ -269,17 +269,17 @@ void GeneralHandler::gameStarted() const
     statusWindow->clearAttributes();
 
     // TRANSLATORS: player stat
-    statusWindow->addAttribute(STR, _("Strength"), "str", true, "");
+    statusWindow->addAttribute(STR, _("Strength"), "str", true);
     // TRANSLATORS: player stat
-    statusWindow->addAttribute(AGI, _("Agility"), "agi", true, "");
+    statusWindow->addAttribute(AGI, _("Agility"), "agi", true);
     // TRANSLATORS: player stat
-    statusWindow->addAttribute(VIT, _("Vitality"), "vit", true, "");
+    statusWindow->addAttribute(VIT, _("Vitality"), "vit", true);
     // TRANSLATORS: player stat
-    statusWindow->addAttribute(INT, _("Intelligence"), "int", true, "");
+    statusWindow->addAttribute(INT, _("Intelligence"), "int", true);
     // TRANSLATORS: player stat
-    statusWindow->addAttribute(DEX, _("Dexterity"), "dex", true, "");
+    statusWindow->addAttribute(DEX, _("Dexterity"), "dex", true);
     // TRANSLATORS: player stat
-    statusWindow->addAttribute(LUK, _("Luck"), "luk", true, "");
+    statusWindow->addAttribute(LUK, _("Luck"), "luk", true);
 
     // TRANSLATORS: player stat
     statusWindow->addAttribute(ATK, _("Attack"));
