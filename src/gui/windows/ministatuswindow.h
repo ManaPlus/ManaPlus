@@ -99,8 +99,9 @@ class MiniStatusWindow final : public Popup,
         ProgressBar *createBar(const float progress,
                                const int width, const int height,
                                const int textColor, const int backColor,
-                               const std::string &name,
-                               const std::string &description) A_WARN_UNUSED;
+                               const std::string &restrict name,
+                               const std::string &restrict description)
+                               A_WARN_UNUSED;
 
         void loadBars();
 
