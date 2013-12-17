@@ -128,8 +128,8 @@ void SpriteDef::fixDeadAction()
     }
 }
 
-void SpriteDef::substituteAction(const std::string &complete,
-                                 const std::string &with)
+void SpriteDef::substituteAction(const std::string &restrict complete,
+                                 const std::string &restrict with)
 {
     FOR_EACH (ActionsConstIter, it, mActions)
     {

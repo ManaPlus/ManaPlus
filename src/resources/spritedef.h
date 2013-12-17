@@ -225,8 +225,8 @@ class SpriteDef final : public Resource
          * When there are no animations defined for the action "complete", its
          * animations become a copy of those of the action "with".
          */
-        void substituteAction(const std::string &complete,
-                              const std::string &with);
+        void substituteAction(const std::string &restrict complete,
+                              const std::string &restrict with);
 
         typedef std::map<std::string, ImageSet*> ImageSets;
         typedef ImageSets::iterator ImageSetIterator;
