@@ -46,8 +46,9 @@ class ConfirmDialog : public Window, public gcn::ActionListener
          *
          * @see Window::Window
          */
-        ConfirmDialog(const std::string &title, const std::string &msg,
-                      const std::string &soundEvent = SOUND_REQUEST,
+        ConfirmDialog(const std::string &restrict title,
+                      const std::string &restrict msg,
+                      const std::string &restrict soundEvent = SOUND_REQUEST,
                       const bool ignore = false, const bool modal = false,
                       Window *const parent = nullptr);
 
