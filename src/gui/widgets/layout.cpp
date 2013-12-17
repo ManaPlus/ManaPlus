@@ -232,8 +232,9 @@ LayoutCell &LayoutArray::place(gcn::Widget *const widget, const int x,
     return cell;
 }
 
-void LayoutArray::align(int &pos, int &size, const int dim,
-                        LayoutCell const &cell, const int *const sizes,
+void LayoutArray::align(int &restrict pos, int &restrict size, const int dim,
+                        LayoutCell const &restrict cell,
+                        const int *restrict const sizes,
                         const int sizeCount) const
 {
     if (dim < 0 || dim >= 2)
@@ -385,7 +386,7 @@ Layout::Layout() :
     setPadding(6);
 }
 
-void Layout::reflow(int &nw, int &nh)
+void Layout::reflow(int &restrict nw, int &restrict nh)
 {
     if (!mComputed)
     {

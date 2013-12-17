@@ -128,8 +128,9 @@ class LayoutArray final
         /**
          * Gets the position and size of a widget along a given axis
          */
-        void align(int &pos, int &size, const int dim, LayoutCell const &cell,
-                   const int *const sizes, const int sizeCount) const;
+        void align(int &restrict pos, int &restrict size, const int dim,
+                   LayoutCell const &restrict cell,
+                   const int *restrict const sizes, const int sizeCount) const;
 
         /**
          * Ensures the private vectors are large enough.
@@ -347,7 +348,7 @@ class Layout final : public LayoutCell
          * Sets the positions of all the widgets.
          * @see LayoutArray::reflow
          */
-        void reflow(int &nW, int &nH);
+        void reflow(int &restrict nW, int &restrict nH);
 
         /**
          * When the minimum size of the layout is less than the available size,
