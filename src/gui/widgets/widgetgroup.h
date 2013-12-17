@@ -37,8 +37,8 @@ class WidgetGroup : public Container,
 
         virtual void addButton(const std::string &tag);
 
-        virtual void addButton(const std::string &text,
-                               const std::string &tag);
+        virtual void addButton(const std::string &restrict text,
+                               const std::string &restrict tag);
 
         void action(const gcn::ActionEvent &event) override;
 

@@ -42,7 +42,8 @@ void WidgetGroup::addButton(const std::string &tag)
     addButton(tag, tag);
 }
 
-void WidgetGroup::addButton(const std::string &text, const std::string &tag)
+void WidgetGroup::addButton(const std::string &restrict text,
+                            const std::string &restrict tag)
 {
     if (text.empty() || tag.empty())
         return;
