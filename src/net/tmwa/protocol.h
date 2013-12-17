@@ -352,6 +352,7 @@ enum
 #define SMSG_BEING_MOVE3             0x0225
 #define SMSG_MAP_MASK                0x0226
 #define SMSG_MAP_MUSIC               0x0227
+#define SMSG_NPC_CHANGETITLE         0x0228
 
 #define CMSG_SEND_CLIENT_INFO        0x7533
 #define SMSG_UPDATE_HOST2            0x7534

@@ -72,6 +72,8 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         void processLangReuqest(Net::MessageIn &msg, const int npcId);
 
+        void processChangeTitle(Net::MessageIn &msg, const int npcId) const;
+
     private:
         bool mRequestLang;
 };

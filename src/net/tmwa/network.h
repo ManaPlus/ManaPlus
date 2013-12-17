@@ -31,7 +31,7 @@
  * Protocol version, reported to the eAthena char and mapserver who can adjust
  * the protocol accordingly.
  */
-#define CLIENT_PROTOCOL_VERSION      11
+#define CLIENT_PROTOCOL_VERSION      12
 #define CLIENT_TMW_PROTOCOL_VERSION  1
 
 namespace TmwAthena
