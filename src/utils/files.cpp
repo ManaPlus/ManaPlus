@@ -75,8 +75,8 @@ void Files::setCopyCallBack(Files::CopyFileCallbackPtr callback)
     mCallbackPtr = callback;
 }
 
-void Files::copyPhysFsFile(const std::string &inFile,
-                           const std::string &outFile)
+void Files::copyPhysFsFile(const std::string &restrict inFile,
+                           const std::string &restrict outFile)
 {
     int size = 0;
     void *const buf = ResourceManager::loadFile(inFile, size);
@@ -93,7 +93,8 @@ void Files::copyPhysFsFile(const std::string &inFile,
 #endif
 }
 
-void Files::copyPhysFsDir(const std::string &inDir, const std::string &outDir)
+void Files::copyPhysFsDir(const std::string &restrict inDir,
+                          const std::string &restrict outDir)
 {
     mkdir_r(outDir.c_str());
     char **files = PhysFs::enumerateFiles(inDir.c_str());
@@ -109,8 +110,9 @@ void Files::copyPhysFsDir(const std::string &inDir, const std::string &outDir)
     PhysFs::freeList(files);
 }
 
-void Files::extractZip(const std::string &zipName, const std::string &inDir,
-                       const std::string &outDir)
+void Files::extractZip(const std::string &restrict zipName,
+                       const std::string &restrict inDir,
+                       const std::string &restrict outDir)
 {
     const ResourceManager *const resman = ResourceManager::getInstance();
     resman->addToSearchPath(zipName, false);
@@ -121,7 +123,8 @@ void Files::extractZip(const std::string &zipName, const std::string &inDir,
 
 #endif  // ANDROID __native_client__
 
-int Files::renameFile(const std::string &srcName, const std::string &dstName)
+int Files::renameFile(const std::string &restrict srcName,
+                      const std::string &restrict dstName)
 {
     FILE *srcFile = fopen(srcName.c_str(), "rb");
     if (srcFile == nullptr)

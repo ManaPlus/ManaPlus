@@ -23,6 +23,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 namespace Files
 {
 #ifdef ANDROID
@@ -34,15 +36,19 @@ namespace Files
 
     void setCopyCallBack(CopyFileCallbackPtr callback);
 
-    void copyPhysFsFile(const std::string &inFile, const std::string &outFile);
+    void copyPhysFsFile(const std::string &restrict inFile,
+                        const std::string &restrict outFile);
 
-    void copyPhysFsDir(const std::string &inDir, const std::string &outDir);
+    void copyPhysFsDir(const std::string &restrict inDir,
+                       const std::string &restrict outDir);
 
-    void extractZip(const std::string &zipName, const std::string &inDir,
-                    const std::string &outDir);
+    void extractZip(const std::string &restrict zipName,
+                    const std::string &restrict inDir,
+                    const std::string &restrict outDir);
 #endif  // ANDROID __native_client__
 
-    int renameFile(const std::string &pFrom, const std::string &pTo);
+    int renameFile(const std::string &restrict pFrom,
+                   const std::string &restrict pTo);
 }  // namespace Files
 
 #endif  // UTILS_FILES_H
