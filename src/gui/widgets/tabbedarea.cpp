@@ -177,7 +177,8 @@ gcn::Widget *TabbedArea::getCurrentWidget() const
         return nullptr;
 }
 
-void TabbedArea::addTab(Tab *const tab, gcn::Widget *const widget)
+void TabbedArea::addTab(Tab *restrict const tab,
+                        gcn::Widget *restrict const widget)
 {
     if (!tab || !widget)
         return;
