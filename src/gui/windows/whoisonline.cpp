@@ -201,10 +201,10 @@ void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
     }
 }
 
-void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
-                               std::vector<OnlinePlayer*> &neutral,
-                               std::vector<OnlinePlayer*> &disregard,
-                               std::vector<OnlinePlayer*> enemy,
+void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &restrict friends,
+                               std::vector<OnlinePlayer*> &restrict neutral,
+                               std::vector<OnlinePlayer*> &restrict disregard,
+                               std::vector<OnlinePlayer*> &restrict enemy,
                                size_t numOnline)
 {
     // Set window caption
@@ -733,9 +733,10 @@ void WhoIsOnline::updateSize()
         mBrowserBox->setWidth(area.width - 10);
 }
 
-const std::string WhoIsOnline::prepareNick(const std::string &nick,
+const std::string WhoIsOnline::prepareNick(const std::string &restrict nick,
                                            const int level,
-                                           const std::string &color) const
+                                           const std::string &restrict
+                                           color) const
 {
     const std::string text = encodeLinkText(nick);
     if (mShowLevel && level > 1)

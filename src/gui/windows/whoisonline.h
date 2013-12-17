@@ -173,14 +173,15 @@ private:
     static size_t memoryWrite(void *ptr, size_t size, size_t nmemb,
                               FILE *stream);
 
-    const std::string prepareNick(const std::string &nick, const int level,
-                                  const std::string &color)
+    const std::string prepareNick(const std::string &restrict nick,
+                                  const int level,
+                                  const std::string &restrict color)
                                   const A_WARN_UNUSED;
 
-    void updateWindow(std::vector<OnlinePlayer*> &friends,
-                      std::vector<OnlinePlayer*> &neutral,
-                      std::vector<OnlinePlayer*> &disregard,
-                      std::vector<OnlinePlayer*> enemy,
+    void updateWindow(std::vector<OnlinePlayer*> &restrict friends,
+                      std::vector<OnlinePlayer*> &restrict neutral,
+                      std::vector<OnlinePlayer*> &restrict disregard,
+                      std::vector<OnlinePlayer*> &restrict enemy,
                       size_t numOnline);
 
     enum DownloadStatus
