@@ -1089,8 +1089,8 @@ void ChatWindow::setVisible(bool visible)
     mTmpVisible = false;
 }
 
-void ChatWindow::addWhisper(const std::string &nick,
-                            const std::string &mes, const Own own)
+void ChatWindow::addWhisper(const std::string &restrict nick,
+                            const std::string &restrict mes, const Own own)
 {
     if (mes.empty() || !player_node)
         return;
