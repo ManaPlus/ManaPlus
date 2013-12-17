@@ -56,7 +56,7 @@ class SellDialog final : public Window,
         /**
          * Constructor.
          */
-        explicit SellDialog(std::string nick);
+        explicit SellDialog(const std::string &nick);
 
         A_DELETE_COPY(SellDialog)
 
