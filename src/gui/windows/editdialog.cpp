@@ -28,8 +28,9 @@
 
 #include "debug.h"
 
-EditDialog::EditDialog(const std::string &title, const std::string &msg,
-                       const std::string &eventOk, const int width,
+EditDialog::EditDialog(const std::string &restrict title,
+                       const std::string &restrict msg,
+                       const std::string &restrict eventOk, const int width,
                        Window *const parent, const bool modal):
     Window(title, modal, parent, "edit.xml"),
     gcn::ActionListener(),

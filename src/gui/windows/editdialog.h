@@ -45,8 +45,9 @@ class EditDialog final : public Window, public gcn::ActionListener
          *
          * @see Window::Window
          */
-        EditDialog(const std::string &title, const std::string &msg,
-                   const std::string &eventOk = ACTION_EDIT_OK,
+        EditDialog(const std::string &restrict title,
+                   const std::string &restrict msg,
+                   const std::string &restrict eventOk = ACTION_EDIT_OK,
                    const int width = 300, Window *const parent = nullptr,
                    const bool modal = true);
 
