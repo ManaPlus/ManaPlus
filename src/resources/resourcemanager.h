@@ -98,15 +98,15 @@ class ResourceManager final
         /**
         * Searches for zip files and adds them to the search path.
         */
-        void searchAndAddArchives(const std::string &path,
-                                  const std::string &ext,
+        void searchAndAddArchives(const std::string &restrict path,
+                                  const std::string &restrict ext,
                                   const bool append) const;
 
         /**
         * Searches for zip files and remove them from the search path.
         */
-        void searchAndRemoveArchives(const std::string &path,
-                                     const std::string &ext) const;
+        void searchAndRemoveArchives(const std::string &restrict path,
+                                     const std::string &restrict ext) const;
 
         /**
          * Creates a directory in the write path
@@ -184,7 +184,8 @@ class ResourceManager final
         * @return true on success, false on failure. An error message should be
         *         in the log file.
         */
-        bool copyFile(const std::string &src, const std::string &dst) const;
+        bool copyFile(const std::string &restrict src,
+                      const std::string &restrict dst) const;
 
         /**
          * Convenience wrapper around ResourceManager::get for loading
@@ -271,8 +272,8 @@ class ResourceManager final
         static bool loadTextFileLocal(const std::string &fileName,
                                       StringVect &lines);
 
-        void saveTextFile(std::string path, const std::string &name,
-                          const std::string &text) const;
+        void saveTextFile(std::string path, const std::string &restrict name,
+                          const std::string &restrict text) const;
 
         Image *getRescaled(Image *const image,
                            const int width, const int height) A_WARN_UNUSED;

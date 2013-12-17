@@ -342,8 +342,8 @@ bool ResourceManager::removeFromSearchPath(const std::string &path) const
     return true;
 }
 
-void ResourceManager::searchAndAddArchives(const std::string &path,
-                                           const std::string &ext,
+void ResourceManager::searchAndAddArchives(const std::string &restrict path,
+                                           const std::string &restrict ext,
                                            const bool append) const
 {
     const char *const dirSep = dirSeparator;
@@ -366,8 +366,9 @@ void ResourceManager::searchAndAddArchives(const std::string &path,
     PhysFs::freeList(list);
 }
 
-void ResourceManager::searchAndRemoveArchives(const std::string &path,
-                                              const std::string &ext) const
+void ResourceManager::searchAndRemoveArchives(const std::string &restrict path,
+                                              const std::string &restrict ext)
+                                              const
 {
     const char *const dirSep = dirSeparator;
     char **list = PhysFs::enumerateFiles(path.c_str());
@@ -950,8 +951,8 @@ void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
     return buffer;
 }
 
-bool ResourceManager::copyFile(const std::string &src,
-                               const std::string &dst) const
+bool ResourceManager::copyFile(const std::string &restrict src,
+                               const std::string &restrict dst) const
 {
     PHYSFS_file *const srcFile = PhysFs::openRead(src.c_str());
     if (!srcFile)
@@ -1021,8 +1022,9 @@ bool ResourceManager::loadTextFileLocal(const std::string &fileName,
     return true;
 }
 
-void ResourceManager::saveTextFile(std::string path, const std::string &name,
-                                   const std::string &text) const
+void ResourceManager::saveTextFile(std::string path,
+                                   const std::string &restrict name,
+                                   const std::string &restrict text) const
 {
     if (!mkdir_r(path.c_str()))
     {
