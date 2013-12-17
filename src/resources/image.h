@@ -203,11 +203,12 @@ class Image : public Resource
         // -----------------------
 
         /** SDL Constructor */
-        Image(SDL_Surface *const image, const bool hasAlphaChannel,
-              uint8_t *const alphaChannel = nullptr);
+        Image(SDL_Surface *restrict const image, const bool hasAlphaChannel,
+              uint8_t *restrict const alphaChannel = nullptr);
 
 #ifdef USE_SDL2
-        Image(SDL_Texture *const image, const int width, const int height);
+        Image(SDL_Texture *restrict const image,
+              const int width, const int height);
 #endif
 
         SDL_Surface *getByAlpha(const float alpha) A_WARN_UNUSED;

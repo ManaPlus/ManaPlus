@@ -42,7 +42,8 @@
 #include "debug.h"
 
 #ifdef USE_SDL2
-Image::Image(SDL_Texture *const image, const int width, const int height) :
+Image::Image(SDL_Texture *restrict const image,
+             const int width, const int height) :
     Resource(),
 #ifdef USE_OPENGL
     mGLImage(0),
@@ -85,8 +86,8 @@ Image::Image(SDL_Texture *const image, const int width, const int height) :
 }
 #endif
 
-Image::Image(SDL_Surface *const image, const bool hasAlphaChannel0,
-             uint8_t *const alphaChannel) :
+Image::Image(SDL_Surface *restrict const image, const bool hasAlphaChannel0,
+             uint8_t *restrict const alphaChannel) :
     Resource(),
 #ifdef USE_OPENGL
     mGLImage(0),
