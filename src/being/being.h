@@ -803,8 +803,9 @@ class Being : public ActorSprite, public ConfigListener
         static std::string loadComment(const std::string &name,
                                        const int type) A_WARN_UNUSED;
 
-        static void saveComment(const std::string &name,
-                                const std::string &comment, const int type);
+        static void saveComment(const std::string &restrict name,
+                                const std::string &restrict comment,
+                                const int type);
 
         bool isAdvanced() const A_WARN_UNUSED
         { return mAdvanced; }

@@ -2856,8 +2856,8 @@ std::string Being::loadComment(const std::string &name, const int type)
     return "";
 }
 
-void Being::saveComment(const std::string &name,
-                        const std::string &comment, const int type)
+void Being::saveComment(const std::string &restrict name,
+                        const std::string &restrict comment, const int type)
 {
     std::string dir;
     switch (type)
