@@ -60,10 +60,10 @@ static void initDefaultThemePath()
         defaultThemePath = "themes/";
 }
 
-Skin::Skin(ImageRect *skin, const ImageRect *images,
+Skin::Skin(ImageRect *restrict skin, const ImageRect *restrict images,
            const std::string &filePath, const std::string &name,
            const int padding, const int titlePadding,
-           std::map<std::string, int> *const options):
+           std::map<std::string, int> *restrict const options):
     instances(1),
     mFilePath(filePath),
     mName(name),
@@ -276,7 +276,7 @@ gcn::Color Theme::getProgressColor(const int type, const float progress)
 }
 
 Skin *Theme::load(const std::string &filename, const std::string &filename2,
-                  const bool full, const std::string &defaultPath)
+                  const bool full, const std::string &restrict defaultPath)
 {
     // Check if this skin was already loaded
 

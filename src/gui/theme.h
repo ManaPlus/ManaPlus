@@ -75,10 +75,10 @@ struct ThemeInfo final
 class Skin final
 {
     public:
-        Skin(ImageRect *skin, const ImageRect *images,
+        Skin(ImageRect *restrict skin, const ImageRect *restrict images,
              const std::string &filePath, const std::string &name = "",
              const int padding = 3, const int titlePadding = 4,
-             std::map<std::string, int> *const options = nullptr);
+             std::map<std::string, int> *restrict const options = nullptr);
 
         A_DELETE_COPY(Skin)
 
@@ -467,7 +467,7 @@ class Theme final : public Palette, public ConfigListener
          */
         Skin *load(const std::string &filename, const std::string &filename2,
                    const bool full = true, const std::string
-                   &defaultPath = getThemePath()) A_WARN_UNUSED;
+                   &restrict defaultPath = getThemePath()) A_WARN_UNUSED;
 
         Skin *loadSkinRect(ImageRect &image, const std::string &name,
                            const std::string &name2, const int start = 0,
