@@ -520,8 +520,8 @@ class LocalPlayer final : public Being,
                                const unsigned index,
                                const unsigned sz) const A_WARN_UNUSED;
 
-        void changeMode(unsigned *const var, const unsigned limit,
-                        const char *const conf,
+        void changeMode(unsigned *restrict const var, const unsigned limit,
+                        const char *restrict const conf,
                         std::string (LocalPlayer::*const func)(),
                         const unsigned def = 0,
                         const bool save = true);

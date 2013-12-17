@@ -1832,8 +1832,9 @@ void LocalPlayer::moveToHome()
 
 static const unsigned invertDirectionSize = 5;
 
-void LocalPlayer::changeMode(unsigned *const var, const unsigned limit,
-                             const char *const conf,
+void LocalPlayer::changeMode(unsigned *restrict const var,
+                             const unsigned limit,
+                             const char *restrict const conf,
                              std::string (LocalPlayer::*const func)(),
                              const unsigned def,
                              const bool save)
