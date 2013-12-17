@@ -52,8 +52,8 @@ static std::string const dropdownFiles[2] =
 
 DropDown::DropDown(const Widget2 *const widget,
                    gcn::ListModel *const listModel,
-                   bool extended,
-                   bool modal,
+                   const bool extended,
+                   const bool modal,
                    gcn::ActionListener *const listener,
                    const std::string &eventId):
     gcn::ActionListener(),
