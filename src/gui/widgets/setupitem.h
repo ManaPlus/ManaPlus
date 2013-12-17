@@ -97,13 +97,19 @@ class SetupItem : public gcn::ActionListener,
         void rereadValue();
 
     protected:
-        SetupItem(const std::string &text, const std::string &description,
-                  const std::string &keyName, SetupTabScroll *const parent,
-                  const std::string &eventName, const bool mainConfig);
+        SetupItem(const std::string &restrict text,
+                  const std::string &restrict description,
+                  const std::string &restrict keyName,
+                  SetupTabScroll *restrict const parent,
+                  const std::string &restrict eventName,
+                  const bool mainConfig);
 
-        SetupItem(const std::string &text, const std::string &description,
-                  const std::string &keyName, SetupTabScroll *const parent,
-                  const std::string &eventName, const std::string &def,
+        SetupItem(const std::string &restrict text,
+                  const std::string &restrict description,
+                  const std::string &restrict keyName,
+                  SetupTabScroll *restrict const parent,
+                  const std::string &restrict eventName,
+                  const std::string &def,
                   const bool mainConfig);
 
         std::string mText;
@@ -134,19 +140,19 @@ class SetupItem : public gcn::ActionListener,
 class SetupItemCheckBox final : public SetupItem
 {
     public:
-        SetupItemCheckBox(const std::string &text,
-                          const std::string &description,
-                          const std::string &keyName,
-                          SetupTabScroll *const parent,
-                          const std::string &eventName,
+        SetupItemCheckBox(const std::string &restrict text,
+                          const std::string &restrict description,
+                          const std::string &restrict keyName,
+                          SetupTabScroll *restrict const parent,
+                          const std::string &restrict eventName,
                           const bool mainConfig = true);
 
-        SetupItemCheckBox(const std::string &text,
-                          const std::string &description,
-                          const std::string &keyName,
-                          SetupTabScroll *const parent,
-                          const std::string &eventName,
-                          const std::string &def,
+        SetupItemCheckBox(const std::string &restrict text,
+                          const std::string &restrict description,
+                          const std::string &restrict keyName,
+                          SetupTabScroll *restrict const parent,
+                          const std::string &restrict eventName,
+                          const std::string &restrict def,
                           const bool mainConfig = true);
 
         A_DELETE_COPY(SetupItemCheckBox)
@@ -166,19 +172,19 @@ class SetupItemCheckBox final : public SetupItem
 class SetupItemTextField final : public SetupItem
 {
     public:
-        SetupItemTextField(const std::string &text,
-                           const std::string &description,
-                           const std::string &keyName,
-                           SetupTabScroll *const parent,
-                           const std::string &eventName,
+        SetupItemTextField(const std::string &restrict text,
+                           const std::string &restrict description,
+                           const std::string &restrict keyName,
+                           SetupTabScroll *restrict const parent,
+                           const std::string &restrict eventName,
                            const bool mainConfig = true);
 
-        SetupItemTextField(const std::string &text,
-                           const std::string &description,
-                           const std::string &keyName,
-                           SetupTabScroll *const parent,
-                           const std::string &eventName,
-                           const std::string &def,
+        SetupItemTextField(const std::string &restrict text,
+                           const std::string &restrict description,
+                           const std::string &restrict keyName,
+                           SetupTabScroll *restrict const parent,
+                           const std::string &restrict eventName,
+                           const std::string &restrict def,
                            const bool mainConfig = true);
 
         A_DELETE_COPY(SetupItemTextField)
@@ -206,21 +212,21 @@ class SetupItemTextField final : public SetupItem
 class SetupItemIntTextField final : public SetupItem
 {
     public:
-        SetupItemIntTextField(const std::string &text,
-                              const std::string &description,
-                              const std::string &keyName,
-                              SetupTabScroll *const parent,
-                              const std::string &eventName,
+        SetupItemIntTextField(const std::string &restrict text,
+                              const std::string &restrict description,
+                              const std::string &restrict keyName,
+                              SetupTabScroll *restrict const parent,
+                              const std::string &restrict eventName,
                               const int min, const int max,
                               const bool mainConfig = true);
 
-        SetupItemIntTextField(const std::string &text,
-                              const std::string &description,
-                              const std::string &keyName,
-                              SetupTabScroll *const parent,
-                              const std::string &eventName,
+        SetupItemIntTextField(const std::string &restrict text,
+                              const std::string &restrict description,
+                              const std::string &restrict keyName,
+                              SetupTabScroll *restrict const parent,
+                              const std::string &restrict eventName,
                               const int min, const int max,
-                              const std::string &def,
+                              const std::string &restrict def,
                               const bool mainConfig = true);
 
         A_DELETE_COPY(SetupItemIntTextField)
@@ -250,9 +256,9 @@ class SetupItemIntTextField final : public SetupItem
 class SetupItemLabel final : public SetupItem
 {
     public:
-        SetupItemLabel(const std::string &text,
-                       const std::string &description,
-                       SetupTabScroll *const parent,
+        SetupItemLabel(const std::string &restrict text,
+                       const std::string &restrict description,
+                       SetupTabScroll *restrict const parent,
                        const bool separator = true);
 
         A_DELETE_COPY(SetupItemLabel)
@@ -277,21 +283,22 @@ class SetupItemLabel final : public SetupItem
 class SetupItemDropDown final : public SetupItem
 {
     public:
-        SetupItemDropDown(const std::string &text,
-                          const std::string &description,
-                          const std::string &keyName,
-                          SetupTabScroll *const parent,
-                          const std::string &eventName,
-                          gcn::ListModel *const model,
+        SetupItemDropDown(const std::string &restrict text,
+                          const std::string &restrict description,
+                          const std::string &restrict keyName,
+                          SetupTabScroll *restrict const parent,
+                          const std::string &restrict eventName,
+                          gcn::ListModel *restrict const model,
                           const int width, const bool mainConfig = true);
 
-        SetupItemDropDown(const std::string &text,
-                          const std::string &description,
-                          const std::string &keyName,
-                          SetupTabScroll *const parent,
-                          const std::string &eventName,
-                          gcn::ListModel *const model,
-                          const int width, const std::string &def,
+        SetupItemDropDown(const std::string &restrict text,
+                          const std::string &restrict description,
+                          const std::string &restrict keyName,
+                          SetupTabScroll *restrict const parent,
+                          const std::string &restrict eventName,
+                          gcn::ListModel *restrict const model,
+                          const int width,
+                          const std::string &restrict def,
                           const bool mainConfig = true);
 
         A_DELETE_COPY(SetupItemDropDown)
@@ -315,22 +322,22 @@ class SetupItemDropDown final : public SetupItem
 class SetupItemSlider final : public SetupItem
 {
     public:
-        SetupItemSlider(const std::string &text,
-                        const std::string &description,
-                        const std::string &keyName,
-                        SetupTabScroll *const parent,
-                        const std::string &eventName,
+        SetupItemSlider(const std::string &restrict text,
+                        const std::string &restrict description,
+                        const std::string &restrict keyName,
+                        SetupTabScroll *restrict const parent,
+                        const std::string &restrict eventName,
                         const double min, const double max,
                         const int width = 150, const bool onTheFly = false,
                         const bool mainConfig = true);
 
-        SetupItemSlider(const std::string &text,
-                        const std::string &description,
-                        const std::string &keyName,
-                        SetupTabScroll *const parent,
-                        const std::string &eventName,
+        SetupItemSlider(const std::string &restrict text,
+                        const std::string &restrict description,
+                        const std::string &restrict keyName,
+                        SetupTabScroll *restrict const parent,
+                        const std::string &restrict eventName,
                         const double min, const double max,
-                        const std::string &def, const int width = 150,
+                        const std::string &restrict def, const int width = 150,
                         const bool onTheFly = false,
                         const bool mainConfig = true);
 
@@ -367,25 +374,25 @@ typedef SetupItemNames::const_iterator SetupItemNamesConstIter;
 class SetupItemSlider2 final : public SetupItem
 {
     public:
-        SetupItemSlider2(const std::string &text,
-                         const std::string &description,
-                         const std::string &keyName,
-                         SetupTabScroll *const parent,
-                         const std::string &eventName,
+        SetupItemSlider2(const std::string &restrict text,
+                         const std::string &restrict description,
+                         const std::string &restrict keyName,
+                         SetupTabScroll *restrict const parent,
+                         const std::string &restrict eventName,
                          const int min, const int max,
-                         SetupItemNames *const values,
+                         SetupItemNames *restrict const values,
                          const bool onTheFly = false,
                          const bool mainConfig = true,
                          const bool doNotAlign = false);
 
-        SetupItemSlider2(const std::string &text,
-                         const std::string &description,
-                         const std::string &keyName,
-                         SetupTabScroll *const parent,
-                         const std::string &eventName,
+        SetupItemSlider2(const std::string &restrict text,
+                         const std::string &restrict description,
+                         const std::string &restrict keyName,
+                         SetupTabScroll *restrict const parent,
+                         const std::string &restrict eventName,
                          const int min, const int max,
-                         SetupItemNames *const values,
-                         const std::string &def,
+                         SetupItemNames *restrict const values,
+                         const std::string &restrict def,
                          const bool onTheFly = false,
                          const bool mainConfig = true,
                          const bool doNotAlign = false);
@@ -444,22 +451,23 @@ class SetupItemSliderList : public SetupItem
         virtual void addMoreControls() = 0;
 
     protected:
-        SetupItemSliderList(const std::string &text,
-                            const std::string &description,
-                            const std::string &keyName,
-                            SetupTabScroll *const parent,
-                            const std::string &eventName,
-                            gcn::ListModel *const model,
+        SetupItemSliderList(const std::string &restrict text,
+                            const std::string &restrict description,
+                            const std::string &restrict keyName,
+                            SetupTabScroll *restrict const parent,
+                            const std::string &restrict eventName,
+                            gcn::ListModel *restrict const model,
                             const int width = 150, const bool onTheFly = false,
                             const bool mainConfig = true);
 
-        SetupItemSliderList(const std::string &text,
-                            const std::string &description,
-                            const std::string &keyName,
-                            SetupTabScroll *const parent,
-                            const std::string &eventName,
-                            gcn::ListModel *const model,
-                            const std::string &def, const int width = 150,
+        SetupItemSliderList(const std::string &restrict text,
+                            const std::string &restrict description,
+                            const std::string &restrict keyName,
+                            SetupTabScroll *restrict const parent,
+                            const std::string &restrict eventName,
+                            gcn::ListModel *restrict const model,
+                            const std::string &restrict def,
+                            const int width = 150,
                             const bool onTheFly = false,
                             const bool mainConfig = true);
 
@@ -474,12 +482,12 @@ class SetupItemSliderList : public SetupItem
 class SetupItemSound final : public SetupItemSliderList
 {
     public:
-        SetupItemSound(const std::string &text,
-                       const std::string &description,
-                       const std::string &keyName,
-                       SetupTabScroll *const parent,
-                       const std::string &eventName,
-                       gcn::ListModel *const model,
+        SetupItemSound(const std::string &restrict text,
+                       const std::string &restrict description,
+                       const std::string &restrict keyName,
+                       SetupTabScroll *restrict const parent,
+                       const std::string &restrict eventName,
+                       gcn::ListModel *restrict const model,
                        const int width = 150,
                        const bool onTheFly = false,
                        const bool mainConfig = true);
