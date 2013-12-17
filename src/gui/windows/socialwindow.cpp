@@ -1616,9 +1616,9 @@ void SocialWindow::showGuildCreate()
     mGuildCreateDialog->addActionListener(this);
 }
 
-void SocialWindow::showGuildInvite(const std::string &guildName,
+void SocialWindow::showGuildInvite(const std::string &restrict guildName,
                                    const int guildId,
-                                   const std::string &inviterName)
+                                   const std::string &restrict inviterName)
 {
     // check there isnt already an invite showing
     if (mGuildInvited != 0)
@@ -1648,8 +1648,8 @@ void SocialWindow::showGuildInvite(const std::string &guildName,
     mGuildInvited = guildId;
 }
 
-void SocialWindow::showPartyInvite(const std::string &partyName,
-                                   const std::string &inviter)
+void SocialWindow::showPartyInvite(const std::string &restrict partyName,
+                                   const std::string &restrict inviter)
 {
     // check there isnt already an invite showing
     if (!mPartyInviter.empty())

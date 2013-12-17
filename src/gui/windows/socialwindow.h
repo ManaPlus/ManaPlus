@@ -66,13 +66,14 @@ public:
 
     void action(const gcn::ActionEvent &event) override final;
 
-    void showGuildInvite(const std::string &guildName, const int guildId,
-                         const std::string &inviterName);
+    void showGuildInvite(const std::string &restrict guildName,
+                         const int guildId,
+                         const std::string &restrict inviterName);
 
     void showGuildCreate();
 
-    void showPartyInvite(const std::string &partyName,
-                         const std::string &inviter = "");
+    void showPartyInvite(const std::string &restrict partyName,
+                         const std::string &restrict inviter = "");
 
     void showPartyCreate();
 
