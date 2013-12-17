@@ -46,20 +46,20 @@ class TouchActionsModel final : public NamesModel
 class SetupActionDropDown final : public SetupItem
 {
     public:
-        SetupActionDropDown(const std::string &text,
-                            const std::string &description,
-                            const std::string &keyName,
-                            SetupTabScroll *const parent,
-                            const std::string &eventName,
-                            TouchActionsModel *const model,
+        SetupActionDropDown(const std::string &restrict text,
+                            const std::string &restrict description,
+                            const std::string &restrict keyName,
+                            SetupTabScroll *restrict const parent,
+                            const std::string &restrict eventName,
+                            TouchActionsModel *restrict const model,
                             const int width, const bool mainConfig = true);
 
-        SetupActionDropDown(const std::string &text,
-                            const std::string &description,
-                            const std::string &keyName,
-                            SetupTabScroll *const parent,
-                            const std::string &eventName,
-                            TouchActionsModel *const model,
+        SetupActionDropDown(const std::string &restrict text,
+                            const std::string &restrict description,
+                            const std::string &restrict keyName,
+                            SetupTabScroll *restrict const parent,
+                            const std::string &restrict eventName,
+                            TouchActionsModel *restrict const model,
                             const int width, const std::string &def,
                             const bool mainConfig = true);
 

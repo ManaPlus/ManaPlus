@@ -89,12 +89,14 @@ int TouchActionsModel::getSelectionFromAction(const int action) const
 }
 
 
-SetupActionDropDown::SetupActionDropDown(const std::string &text,
-                                         const std::string &description,
-                                         const std::string &keyName,
-                                         SetupTabScroll *const parent,
-                                         const std::string &eventName,
-                                         TouchActionsModel *const model,
+SetupActionDropDown::SetupActionDropDown(const std::string &restrict text,
+                                         const std::string &restrict
+                                         description,
+                                         const std::string &restrict keyName,
+                                         SetupTabScroll *restrict const parent,
+                                         const std::string &restrict eventName,
+                                         TouchActionsModel *restrict
+                                         const model,
                                          const int width,
                                          const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
@@ -108,14 +110,16 @@ SetupActionDropDown::SetupActionDropDown(const std::string &text,
     createControls();
 }
 
-SetupActionDropDown::SetupActionDropDown(const std::string &text,
-                                         const std::string &description,
-                                         const std::string &keyName,
-                                         SetupTabScroll *const parent,
-                                         const std::string &eventName,
-                                         TouchActionsModel *const model,
+SetupActionDropDown::SetupActionDropDown(const std::string &restrict text,
+                                         const std::string &restrict
+                                         description,
+                                         const std::string &restrict keyName,
+                                         SetupTabScroll *restrict const parent,
+                                         const std::string &restrict eventName,
+                                         TouchActionsModel *restrict
+                                         const model,
                                          const int width,
-                                         const std::string &def,
+                                         const std::string &restrict def,
                                          const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
