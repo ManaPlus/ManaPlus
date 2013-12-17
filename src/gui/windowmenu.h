@@ -123,7 +123,7 @@ class WindowMenu final : public Container,
     private:
         inline void addButton(const char *const text,
                               const std::string &description,
-                              int &x, int &h, const int key,
+                              int &restrict x, int &restrict h, const int key,
                               const bool visible = true);
 
         void updateButtons();

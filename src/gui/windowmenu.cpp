@@ -231,7 +231,7 @@ void WindowMenu::action(const gcn::ActionEvent &event)
 
 void WindowMenu::addButton(const char *const text,
                            const std::string &description,
-                           int &x, int &h, const int key,
+                           int &restrict x, int &restrict h, const int key,
                            const bool visible)
 {
     Button *const btn = new Button(this, gettext(text), text, this);
