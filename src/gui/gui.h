@@ -147,7 +147,8 @@ class Gui final : public gcn::Gui
 
         MouseEvent *createMouseEvent(Window *const widget) A_WARN_UNUSED;
 
-        void getAbsolutePosition(gcn::Widget *widget, int &x, int &y);
+        void getAbsolutePosition(gcn::Widget *restrict widget,
+                                 int &restrict x, int &restrict y);
 
         void addGlobalFocusListener(gcn::FocusListener* focusListener);
 

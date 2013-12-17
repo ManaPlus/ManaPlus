@@ -757,7 +757,8 @@ MouseEvent *Gui::createMouseEvent(Window *const widget)
         mouseX - x, mouseY - y, mClickCount);
 }
 
-void Gui::getAbsolutePosition(gcn::Widget *widget, int &x, int &y)
+void Gui::getAbsolutePosition(gcn::Widget *restrict widget,
+                              int &restrict x, int &restrict y)
 {
     x = 0;
     y = 0;
