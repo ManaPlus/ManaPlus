@@ -86,10 +86,10 @@ class SDLImageHelper final : public ImageHelper
         SDL_Surface *create32BitSurface(int width, int height) const
                                         override final;
 
-        static int combineSurface(SDL_Surface *const src,
-                                  SDL_Rect *const srcrect,
-                                  SDL_Surface *const dst,
-                                  SDL_Rect *const dstrect);
+        static int combineSurface(SDL_Surface *restrict const src,
+                                  SDL_Rect *restrict const srcrect,
+                                  SDL_Surface *restrict const dst,
+                                  SDL_Rect *restrict const dstrect);
 
 #ifdef USE_SDL2
         static void setRenderer(SDL_Renderer *const renderer)
