@@ -40,13 +40,13 @@ class ShortcutWindow final : public Window
         /**
          * Constructor.
          */
-        ShortcutWindow(const std::string &title,
-                       ShortcutContainer *const content,
-                       const std::string &skinFile = "",
+        ShortcutWindow(const std::string &restrict title,
+                       ShortcutContainer *restrict const content,
+                       const std::string &restrict skinFile = "",
                        int width = 0, int height = 0);
 
-        ShortcutWindow(const std::string &title,
-                       const std::string &skinFile = "",
+        ShortcutWindow(const std::string &restrict title,
+                       const std::string &restrict skinFile = "",
                        const int width = 0, const int height = 0);
 
         A_DELETE_COPY(ShortcutWindow)

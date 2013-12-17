@@ -51,9 +51,9 @@ class ShortcutTab final : public Tab
         ShortcutContainer* mContent;
 };
 
-ShortcutWindow::ShortcutWindow(const std::string &title,
-                               ShortcutContainer *const content,
-                               const std::string &skinFile,
+ShortcutWindow::ShortcutWindow(const std::string &restrict title,
+                               ShortcutContainer *restrict const content,
+                               const std::string &restrict skinFile,
                                int width, int height) :
     Window("Window", false, nullptr, skinFile),
     mItems(content),
@@ -107,8 +107,8 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
     enableVisibleSound(true);
 }
 
-ShortcutWindow::ShortcutWindow(const std::string &title,
-                               const std::string &skinFile,
+ShortcutWindow::ShortcutWindow(const std::string &restrict title,
+                               const std::string &restrict skinFile,
                                const int width, const int height) :
     Window("Window", false, nullptr, skinFile),
     mItems(nullptr),
