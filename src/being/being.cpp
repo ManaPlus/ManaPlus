@@ -500,6 +500,12 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
                          &userPalette->getColor(UserPalette::PARTICLE),
                          true);
     }
+    else
+    {
+        const bool isShowName = (speech == NAME_IN_BUBBLE);
+        mSpeechBubble->setCaption(isShowName ? mName : "");
+        mSpeechBubble->setText(mSpeech, isShowName);
+    }
 }
 
 void Being::takeDamage(Being *const attacker, const int amount,
@@ -1631,14 +1637,10 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
     else if (mSpeechTime > 0 && (speech == NAME_IN_BUBBLE ||
              speech == NO_NAME_IN_BUBBLE))
     {
-        const bool isShowName = (speech == NAME_IN_BUBBLE);
-
         delete mText;
         mText = nullptr;
 
-        mSpeechBubble->setCaption(isShowName ? mName : "");
-
-        mSpeechBubble->setText(mSpeech, isShowName);
+        const bool isShowName = (speech == NAME_IN_BUBBLE);
         mSpeechBubble->setPosition(px - (mSpeechBubble->getWidth() / 2),
             py - getHeight() - (mSpeechBubble->getHeight()));
         mSpeechBubble->setVisible(true);
