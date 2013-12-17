@@ -42,7 +42,8 @@ namespace CharDB
     void unload();
 
     void loadMinMax(const XmlNodePtr node,
-                    unsigned *const min, unsigned *const max);
+                    unsigned *restrict const min,
+                    unsigned *restrict const max);
 
     unsigned getMinHairColor() A_WARN_UNUSED;
 
