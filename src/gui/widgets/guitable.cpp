@@ -40,7 +40,8 @@ float GuiTable::mAlpha = 1.0;
 class GuiTableActionListener final : public gcn::ActionListener
 {
 public:
-    GuiTableActionListener(GuiTable *_table, gcn::Widget *_widget,
+    GuiTableActionListener(GuiTable *restrict _table,
+                           gcn::Widget *restrict _widget,
                            int _row, int _column);
 
     A_DELETE_COPY(GuiTableActionListener)
@@ -57,9 +58,9 @@ protected:
 };
 
 
-GuiTableActionListener::GuiTableActionListener(GuiTable *table,
-                                               gcn::Widget *widget, int row,
-                                               int column) :
+GuiTableActionListener::GuiTableActionListener(GuiTable *restrict table,
+                                               gcn::Widget *restrict widget,
+                                               int row, int column) :
     gcn::ActionListener(),
     mTable(table),
     mRow(row),
