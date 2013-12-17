@@ -38,7 +38,8 @@ Skin *RadioButton::mSkin = nullptr;
 float RadioButton::mAlpha = 1.0;
 
 RadioButton::RadioButton(const Widget2 *const widget,
-                         const std::string &caption, const std::string &group,
+                         const std::string &restrict caption,
+                         const std::string &restrict group,
                          const bool marked):
     gcn::RadioButton(caption, group, marked),
     Widget2(widget),
