@@ -63,22 +63,24 @@ class DyePalette final
         /**
          * replace colors for SDL for S dye.
          */
-        void replaceSColor(uint32_t *pixels, const int bufSize) const;
+        void replaceSColor(uint32_t *restrict pixels, const int bufSize) const;
 
         /**
          * replace colors for SDL for S dye.
          */
-        void replaceAColor(uint32_t *pixels, const int bufSize) const;
+        void replaceAColor(uint32_t *restrict pixels, const int bufSize) const;
 
         /**
          * replace colors for OpenGL for S dye.
          */
-        void replaceSOGLColor(uint32_t *pixels, const int bufSize) const;
+        void replaceSOGLColor(uint32_t *restrict pixels,
+                              const int bufSize) const;
 
         /**
          * replace colors for OpenGL for A dye.
          */
-        void replaceAOGLColor(uint32_t *pixels, const int bufSize) const;
+        void replaceAOGLColor(uint32_t *restrict pixels,
+                              const int bufSize) const;
 
         static int hexDecode(const signed char c) A_WARN_UNUSED;
 
@@ -110,8 +112,8 @@ class Dye final
         /**
          * Fills the blank in a dye placeholder with some palette names.
          */
-        static void instantiate(std::string &target,
-                                const std::string &palettes);
+        static void instantiate(std::string &restrict target,
+                                const std::string &restrict palettes);
 
         /**
          * Return special dye palete (S)
@@ -130,9 +132,9 @@ class Dye final
          */
         int getType() const A_WARN_UNUSED;
 
-        void normalDye(uint32_t *pixels, const int bufSize) const;
+        void normalDye(uint32_t *restrict pixels, const int bufSize) const;
 
-        void normalOGLDye(uint32_t *pixels, const int bufSize) const;
+        void normalOGLDye(uint32_t *restrict pixels, const int bufSize) const;
 
     private:
         /**

@@ -197,7 +197,7 @@ void DyePalette::getColor(double intensity, int color[3]) const
     color[2] = static_cast<int>(rest * b1 + intensity * b2);
 }
 
-void DyePalette::replaceSColor(uint32_t *pixels, const int bufSize) const
+void DyePalette::replaceSColor(uint32_t *restrict pixels, const int bufSize) const
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const int sz = mColors.size();
@@ -253,7 +253,8 @@ void DyePalette::replaceSColor(uint32_t *pixels, const int bufSize) const
     }
 }
 
-void DyePalette::replaceAColor(uint32_t *pixels, const int bufSize) const
+void DyePalette::replaceAColor(uint32_t *restrict pixels,
+                               const int bufSize) const
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const int sz = mColors.size();
@@ -296,7 +297,8 @@ void DyePalette::replaceAColor(uint32_t *pixels, const int bufSize) const
     }
 }
 
-void DyePalette::replaceSOGLColor(uint32_t *pixels, const int bufSize) const
+void DyePalette::replaceSOGLColor(uint32_t *restrict pixels,
+                                  const int bufSize) const
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const int sz = mColors.size();
@@ -345,7 +347,8 @@ void DyePalette::replaceSOGLColor(uint32_t *pixels, const int bufSize) const
     }
 }
 
-void DyePalette::replaceAOGLColor(uint32_t *pixels, const int bufSize) const
+void DyePalette::replaceAOGLColor(uint32_t *restrict pixels,
+                                  const int bufSize) const
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const int sz = mColors.size();
@@ -444,7 +447,8 @@ Dye::~Dye()
     }
 }
 
-void Dye::instantiate(std::string &target, const std::string &palettes)
+void Dye::instantiate(std::string &restrict target,
+                      const std::string &restrict palettes)
 {
     size_t next_pos = target.find('|');
 
@@ -503,7 +507,7 @@ int Dye::getType() const
     return 0;
 }
 
-void Dye::normalDye(uint32_t *pixels, const int bufSize) const
+void Dye::normalDye(uint32_t *restrict pixels, const int bufSize) const
 {
     for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++ pixels)
     {
@@ -556,7 +560,7 @@ void Dye::normalDye(uint32_t *pixels, const int bufSize) const
     }
 }
 
-void Dye::normalOGLDye(uint32_t *pixels, const int bufSize) const
+void Dye::normalOGLDye(uint32_t *restrict pixels, const int bufSize) const
 {
     for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++ pixels)
     {
