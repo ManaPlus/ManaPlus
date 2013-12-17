@@ -131,9 +131,9 @@ void AtlasManager::loadImages(const StringVect &files,
     }
 }
 
-void AtlasManager::simpleSort(const std::string &name,
-                              std::vector<TextureAtlas*> &atlases,
-                              std::vector<Image*> &images, int size)
+void AtlasManager::simpleSort(const std::string &restrict name,
+                              std::vector<TextureAtlas*> &restrict atlases,
+                              std::vector<Image*> &restrict images, int size)
 {
     int x = 0;
     int y = 0;

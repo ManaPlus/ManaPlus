@@ -112,9 +112,9 @@ class AtlasManager final
         static void loadImages(const StringVect &files,
                                std::vector<Image*> &images);
 
-        static void simpleSort(const std::string &name,
-                               std::vector<TextureAtlas*> &atlases,
-                               std::vector<Image*> &images, int size);
+        static void simpleSort(const std::string &restrict name,
+                               std::vector<TextureAtlas*> &restrict atlases,
+                               std::vector<Image*> &restrict images, int size);
 
         static SDL_Surface *createSDLAtlas(TextureAtlas *const atlas)
                                            A_WARN_UNUSED;
