@@ -144,8 +144,8 @@ static std::vector<UpdateFile> loadTxtFile(const std::string &fileName)
     return files;
 }
 
-UpdaterWindow::UpdaterWindow(const std::string &updateHost,
-                             const std::string &updatesDir,
+UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
+                             const std::string &restrict updatesDir,
                              const bool applyUpdates,
                              const int updateType):
     // TRANSLATORS: updater window name
@@ -670,9 +670,9 @@ void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir,
 }
 
 void UpdaterWindow::addUpdateFile(const ResourceManager *const resman,
-                                  const std::string &path,
-                                  const std::string &fixPath,
-                                  const std::string &file,
+                                  const std::string &restrict path,
+                                  const std::string &restrict fixPath,
+                                  const std::string &restrict file,
                                   const bool append)
 {
     const std::string tmpPath = std::string(path).append("/").append(file);
@@ -689,9 +689,9 @@ void UpdaterWindow::addUpdateFile(const ResourceManager *const resman,
 }
 
 void UpdaterWindow::removeUpdateFile(const ResourceManager *const resman,
-                                     const std::string &path,
-                                     const std::string &fixPath,
-                                     const std::string &file)
+                                     const std::string &restrict path,
+                                     const std::string &restrict fixPath,
+                                     const std::string &restrict file)
 {
     resman->removeFromSearchPath(std::string(path).append("/").append(file));
     const std::string fixFile = std::string(fixPath).append("/").append(file);

@@ -81,8 +81,8 @@ class UpdaterWindow final : public Window,
      * @param applyUpdates If true, the update window will pass the updates to teh
      *                     resource manager
      */
-    UpdaterWindow(const std::string &updateHost,
-                  const std::string &updatesDir,
+    UpdaterWindow(const std::string &restrict updateHost,
+                  const std::string &restrict updatesDir,
                   const bool applyUpdates, const int updateType);
 
     A_DELETE_COPY(UpdaterWindow)
@@ -133,15 +133,15 @@ class UpdaterWindow final : public Window,
     static void unloadUpdates(const std::string &dir);
 
     static void addUpdateFile(const ResourceManager *const resman,
-                              const std::string &path,
-                              const std::string &fixPath,
-                              const std::string &file,
+                              const std::string &restrict path,
+                              const std::string &restrict fixPath,
+                              const std::string &restrict file,
                               const bool append);
 
     static void removeUpdateFile(const ResourceManager *const resman,
-                                 const std::string &path,
-                                 const std::string &fixPath,
-                                 const std::string &file);
+                                 const std::string &restrict path,
+                                 const std::string &restrict fixPath,
+                                 const std::string &filerestrict );
 
     static void loadManaPlusUpdates(const std::string &dir,
                                     const ResourceManager *const resman);
