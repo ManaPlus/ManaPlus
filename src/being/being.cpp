@@ -1640,7 +1640,6 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
         delete mText;
         mText = nullptr;
 
-        const bool isShowName = (speech == NAME_IN_BUBBLE);
         mSpeechBubble->setPosition(px - (mSpeechBubble->getWidth() / 2),
             py - getHeight() - (mSpeechBubble->getHeight()));
         mSpeechBubble->setVisible(true);
