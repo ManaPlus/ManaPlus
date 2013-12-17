@@ -42,11 +42,14 @@
 
 #include "debug.h"
 
-static int inflateMemory(unsigned char *const in, const unsigned int inLength,
-                         unsigned char *&out, unsigned int &outLength);
+static int inflateMemory(unsigned char *restrict const in,
+                         const unsigned int inLength,
+                         unsigned char *&restrict out,
+                         unsigned int &restrict outLength);
 
-static int inflateMemory(unsigned char *const in, const unsigned int inLength,
-                         unsigned char *&out);
+static int inflateMemory(unsigned char *restrict const in,
+                         const unsigned int inLength,
+                         unsigned char *&restrict out);
 
 static std::string resolveRelativePath(std::string base, std::string relative)
 {
@@ -78,8 +81,10 @@ static std::string resolveRelativePath(std::string base, std::string relative)
  * Inflates either zlib or gzip deflated memory. The inflated memory is
  * expected to be freed by the caller.
  */
-int inflateMemory(unsigned char *const in, const unsigned int inLength,
-                  unsigned char *&out, unsigned int &outLength)
+int inflateMemory(unsigned char *restrict const in,
+                  const unsigned int inLength,
+                  unsigned char *&restrict out,
+                  unsigned int &restrict outLength)
 {
     int bufferSize = 256 * 1024;
     out = static_cast<unsigned char*>(calloc(bufferSize, 1));
@@ -143,8 +148,9 @@ int inflateMemory(unsigned char *const in, const unsigned int inLength,
     return ret == Z_STREAM_END ? Z_OK : Z_DATA_ERROR;
 }
 
-int inflateMemory(unsigned char *const in, const unsigned int inLength,
-                  unsigned char *&out)
+int inflateMemory(unsigned char *restrict const in,
+                  const unsigned int inLength,
+                  unsigned char *&restrict out)
 {
     unsigned int outLength = 0;
     const int ret = inflateMemory(in, inLength, out, outLength);
@@ -176,8 +182,8 @@ int inflateMemory(unsigned char *const in, const unsigned int inLength,
     return outLength;
 }
 
-Map *MapReader::readMap(const std::string &filename,
-                        const std::string &realFilename)
+Map *MapReader::readMap(const std::string &restrict filename,
+                        const std::string &restrict realFilename)
 {
     BLOCK_START("MapReader::readMap")
     logger->log("Attempting to read map %s", realFilename.c_str());
@@ -510,7 +516,8 @@ bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
                                 const MapLayer::Type &layerType,
                                 MapHeights *const heights,
                                 const std::string &compression,
-                                int &x, int &y, const int w, const int h)
+                                int &restrict x, int &restrict y,
+                                const int w, const int h)
 {
     if (!compression.empty() && compression != "gzip"
         && compression != "zlib")
@@ -610,7 +617,8 @@ bool MapReader::readCsvLayer(const XmlNodePtr childNode, Map *const map,
                              MapLayer *const layer,
                              const MapLayer::Type &layerType,
                              MapHeights *const heights,
-                             int &x, int &y, const int w, const int h)
+                             int &restrict x, int &restrict y,
+                             const int w, const int h)
 {
     XmlNodePtr dataChild = childNode->xmlChildrenNode;
     if (!dataChild)
@@ -944,8 +952,8 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
     return set;
 }
 
-Map *MapReader::createEmptyMap(const std::string &filename,
-                               const std::string &realFilename)
+Map *MapReader::createEmptyMap(const std::string &restrict filename,
+                               const std::string &restrict realFilename)
 {
     logger->log1("Creating empty map");
     Map *const map = new Map(300, 300, mapTileSize, mapTileSize);

@@ -44,8 +44,9 @@ class MapReader final
         /**
          * Read an XML map from a file.
          */
-        static Map *readMap(const std::string &filename,
-                            const std::string &realFilename) A_WARN_UNUSED;
+        static Map *readMap(const std::string &restrict filename,
+                            const std::string &restrict realFilename)
+                            A_WARN_UNUSED;
 
         /**
          * Read an XML map from a parsed XML tree. The path is used to find the
@@ -54,8 +55,8 @@ class MapReader final
         static Map *readMap(XmlNodePtr node,
                             const std::string &path) A_WARN_UNUSED;
 
-        static Map *createEmptyMap(const std::string &filename,
-                                   const std::string &realFilename)
+        static Map *createEmptyMap(const std::string &restrict filename,
+                                   const std::string &restrict realFilename)
                                    A_WARN_UNUSED;
 
     private:
@@ -79,13 +80,15 @@ class MapReader final
                                     const MapLayer::Type &layerType,
                                     MapHeights *const heights,
                                     const std::string &compression,
-                                    int &x, int &y, const int w, const int h);
+                                    int &restrict x, int &restrict y,
+                                    const int w, const int h);
 
         static bool readCsvLayer(const XmlNodePtr childNode, Map *const map,
                                  MapLayer *const layer,
                                  const MapLayer::Type &layerType,
                                  MapHeights *const heights,
-                                 int &x, int &y, const int w, const int h);
+                                 int &restrict x, int &restrict y,
+                                 const int w, const int h);
 
         /**
          * Reads a tile set.
