@@ -111,7 +111,8 @@ class InputManager final
 
         void makeDefault(const int i);
 
-        bool hasConflicts(int &key1, int &key2) const A_WARN_UNUSED;
+        bool hasConflicts(int &restrict key1,
+                          int &restrict key2) const A_WARN_UNUSED;
 
         void callbackNewKey();
 

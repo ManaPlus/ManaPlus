@@ -282,7 +282,7 @@ void InputManager::makeDefault(const int i)
     }
 }
 
-bool InputManager::hasConflicts(int &key1, int &key2) const
+bool InputManager::hasConflicts(int &restrict key1, int &restrict key2) const
 {
     /**
      * No need to parse the square matrix: only check one triangle
