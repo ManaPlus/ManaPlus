@@ -43,8 +43,8 @@ static char base64_table[] =
 };
 static const char base64_pad = '=';
 
-unsigned char *php3_base64_encode(const unsigned char *const string,
-                                  int length, int *const ret_length)
+unsigned char *php3_base64_encode(const unsigned char *restrict const string,
+                                  int length, int *restrict const ret_length)
 {
     const unsigned char *current = string;
     int i = 0;
@@ -93,8 +93,9 @@ unsigned char *php3_base64_encode(const unsigned char *const string,
 }
 
 /* as above, but backwards. :) */
-unsigned char *php3_base64_decode(const unsigned char *const string,
-                                  const int length, int *const ret_length)
+unsigned char *php3_base64_decode(const unsigned char *restrict const string,
+                                  const int length,
+                                  int *restrict const ret_length)
 {
     const unsigned char *current = string;
     int ch, i = 0, j = 0, k;

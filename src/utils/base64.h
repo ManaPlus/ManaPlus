@@ -32,9 +32,9 @@
 
 #include "localconsts.h"
 
-extern unsigned char *php3_base64_encode(const unsigned char *,
-                                         int, int *) A_WARN_UNUSED;
-extern unsigned char *php3_base64_decode(const unsigned char *,
-                                         int, int *) A_WARN_UNUSED;
+extern unsigned char *php3_base64_encode(const unsigned char *restrict,
+                                         int, int *restrict) A_WARN_UNUSED;
+extern unsigned char *php3_base64_decode(const unsigned char *restrict,
+                                         int, int *restrict ) A_WARN_UNUSED;
 
 #endif  // UTILS_BASE64_H
