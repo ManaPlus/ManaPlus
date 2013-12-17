@@ -151,8 +151,8 @@ bool isWordSeparator(const signed char chr)
     return (chr == ' ' || chr == ',' || chr == '.' || chr == '"');
 }
 
-const std::string findSameSubstring(const std::string &str1,
-                                    const std::string &str2)
+const std::string findSameSubstring(const std::string &restrict str1,
+                                    const std::string &restrict str2)
 {
     const int minLength = str1.length() > str2.length()
         ? static_cast<int>(str2.length()) : static_cast<int>(str1.length());
@@ -164,8 +164,8 @@ const std::string findSameSubstring(const std::string &str1,
     return str1.substr(0, minLength);
 }
 
-const std::string findSameSubstringI(const std::string &s1,
-                                     const std::string &s2)
+const std::string findSameSubstringI(const std::string &restrict s1,
+                                     const std::string &restrict s2)
 {
     std::string str1 = s1;
     std::string str2 = s2;
@@ -340,8 +340,8 @@ std::string getFileDir(const std::string &path)
     return path.substr(0, pos1);
 }
 
-std::string& replaceAll(std::string& context, const std::string& from,
-                        const std::string& to)
+std::string& replaceAll(std::string& context, const std::string &restrict from,
+                        const std::string &restrict to)
 {
     if (from.empty())
         return context;
@@ -594,7 +594,8 @@ void deleteCharLeft(std::string &str, unsigned *const pos)
     }
 }
 
-bool findLast(const std::string &str1, const std::string &str2)
+bool findLast(const std::string &restrict str1,
+              const std::string &restrict str2)
 {
     const size_t s1 = str1.size();
     const size_t s2 = str2.size();
@@ -605,7 +606,8 @@ bool findLast(const std::string &str1, const std::string &str2)
     return false;
 }
 
-bool findFirst(const std::string &str1, const std::string &str2)
+bool findFirst(const std::string &restrict str1,
+               const std::string &restrict str2)
 {
     const size_t s1 = str1.size();
     const size_t s2 = str2.size();
@@ -616,7 +618,7 @@ bool findFirst(const std::string &str1, const std::string &str2)
     return false;
 }
 
-bool findCutLast(std::string &str1, const std::string &str2)
+bool findCutLast(std::string &restrict str1, const std::string &restrict str2)
 {
     const size_t s1 = str1.size();
     const size_t s2 = str2.size();
@@ -630,7 +632,7 @@ bool findCutLast(std::string &str1, const std::string &str2)
     return false;
 }
 
-bool findCutFirst(std::string &str1, const std::string &str2)
+bool findCutFirst(std::string &restrict str1, const std::string &restrict str2)
 {
     const size_t s1 = str1.size();
     const size_t s2 = str2.size();
@@ -652,7 +654,8 @@ std::string &removeProtocol(std::string &url)
     return url;
 }
 
-bool strStartWith(const std::string &str1, const std::string &str2)
+bool strStartWith(const std::string &restrict str1,
+                  const std::string &restrict str2)
 {
     const size_t sz2 = str2.size();
     if (str1.size() < sz2)

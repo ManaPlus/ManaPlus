@@ -115,11 +115,11 @@ std::string strprintf(const char *const format, ...) A_WARN_UNUSED
  */
 std::string removeColors(std::string msg) A_WARN_UNUSED;
 
-const std::string findSameSubstring(const std::string &str1,
-                                    const std::string &str2);
+const std::string findSameSubstring(const std::string &restrict str1,
+                                    const std::string &restrict str2);
 
-const std::string findSameSubstringI(const std::string &str1,
-                                     const std::string &str2);
+const std::string findSameSubstringI(const std::string &restrict str1,
+                                     const std::string &restrict str2);
 
 /**
  * Compares the two strings case-insensitively.
@@ -157,8 +157,8 @@ std::string getFileName(const std::string &path) A_WARN_UNUSED;
 
 std::string getFileDir(const std::string &path) A_WARN_UNUSED;
 
-std::string& replaceAll(std::string& context, const std::string& from,
-                        const std::string& to);
+std::string& replaceAll(std::string& context, const std::string &restrict from,
+                        const std::string &restrict to);
 
 /**
  * Returns a bool value depending on the given string value.
@@ -209,18 +209,22 @@ std::string stringToHexPath(const std::string &str) A_WARN_UNUSED;
 
 void deleteCharLeft(std::string &str, unsigned *const pos);
 
-bool findLast(const std::string &str1, const std::string &str2) A_WARN_UNUSED;
+bool findLast(const std::string &restrict str1,
+              const std::string &restrict str2) A_WARN_UNUSED;
 
-bool findFirst(const std::string &str1, const std::string &str2) A_WARN_UNUSED;
+bool findFirst(const std::string &restrict str1,
+               const std::string &restrict str2) A_WARN_UNUSED;
 
-bool findCutLast(std::string &str1, const std::string &str2) A_WARN_UNUSED;
+bool findCutLast(std::string &restrict str1,
+                 const std::string &restrict str2) A_WARN_UNUSED;
 
-bool findCutFirst(std::string &str1, const std::string &str2) A_WARN_UNUSED;
+bool findCutFirst(std::string &restrict str1,
+                  const std::string &restrict str2) A_WARN_UNUSED;
 
 std::string &removeProtocol(std::string &url);
 
-bool strStartWith(const std::string &str,
-                  const std::string &start) A_WARN_UNUSED;
+bool strStartWith(const std::string &restrict str,
+                  const std::string &restrict start) A_WARN_UNUSED;
 
 std::string getDateString() A_WARN_UNUSED;
 
