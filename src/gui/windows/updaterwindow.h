@@ -141,7 +141,7 @@ class UpdaterWindow final : public Window,
     static void removeUpdateFile(const ResourceManager *const resman,
                                  const std::string &restrict path,
                                  const std::string &restrict fixPath,
-                                 const std::string &filerestrict );
+                                 const std::string &filerestrict);
 
     static void loadManaPlusUpdates(const std::string &dir,
                                     const ResourceManager *const resman);

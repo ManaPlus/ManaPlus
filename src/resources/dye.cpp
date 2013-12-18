@@ -197,7 +197,8 @@ void DyePalette::getColor(double intensity, int color[3]) const
     color[2] = static_cast<int>(rest * b1 + intensity * b2);
 }
 
-void DyePalette::replaceSColor(uint32_t *restrict pixels, const int bufSize) const
+void DyePalette::replaceSColor(uint32_t *restrict pixels,
+                               const int bufSize) const
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const int sz = mColors.size();

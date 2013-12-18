@@ -346,7 +346,8 @@ void NpcHandler::processLangReuqest(Net::MessageIn &msg A_UNUSED,
     stringInput(npcId, getLangSimple());
 }
 
-void NpcHandler::processChangeTitle(Net::MessageIn &msg, const int npcId) const
+void NpcHandler::processChangeTitle(Net::MessageIn &msg,
+                                    const int npcId A_UNUSED) const
 {
     const std::string str = msg.readString();
     if (mDialog)
