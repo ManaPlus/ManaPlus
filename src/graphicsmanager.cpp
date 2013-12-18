@@ -298,7 +298,7 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
 
 #else  // USE_OPENGL
 
-void GraphicsManager::initGraphics(const bool noOpenGL A_UNUSED)
+void GraphicsManager::initGraphics(const bool noOpenGL)
 {
     RenderType useOpenGL = RENDER_SOFTWARE;
     if (!noOpenGL)
