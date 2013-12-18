@@ -179,7 +179,6 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mGridColumns(1),
     mGridRows(1),
     mSelectedIndex(-1),
-    mHighlightedIndex(-1),
     mLastUsedSlot(-1),
     mTag(0),
     mSortType(0),
@@ -192,7 +191,6 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mPaddingItemY(mSkin ? mSkin->getOption("paddingItemY", 0) : 0),
     mSelectionStatus(SEL_NONE),
     mForceQuantity(forceQuantity),
-    mSwapItems(false),
     mDescItems(false)
 {
     mItemPopup->postInit();

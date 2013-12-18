@@ -197,7 +197,6 @@ class ItemContainer final : public gcn::Widget,
         int mGridColumns;
         int mGridRows;
         int mSelectedIndex;
-        int mHighlightedIndex;
         int mLastUsedSlot;
         int mTag;
         int mSortType;
@@ -209,7 +208,6 @@ class ItemContainer final : public gcn::Widget,
         int mPaddingItemY;
         SelectionState mSelectionStatus;
         bool mForceQuantity;
-        bool mSwapItems;
         bool mDescItems;
 };
 
