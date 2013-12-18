@@ -26,8 +26,8 @@
 
 #include <SDL.h>
 
-SDL_RWops *FakePHYSFSRWOPS_openRead(const char *const name,
-                                    const char *const file,
+SDL_RWops *FakePHYSFSRWOPS_openRead(const char *restrict const name,
+                                    const char *restrict const file,
                                     const unsigned line);
 
 void FakePhysFSClose(SDL_RWops *const rwops);

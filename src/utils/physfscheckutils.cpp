@@ -51,9 +51,9 @@ namespace
     std::map<void*, MemoryObject*> mRWops;
 }  // namespace
 
-static SDL_RWops *addRWops(SDL_RWops *const rwops,
-                           const char *const name,
-                           const char *const file,
+static SDL_RWops *addRWops(SDL_RWops *restrict const rwops,
+                           const char *restrict const name,
+                           const char *restrict const file,
                            const unsigned line)
 {
     if (!rwops)
@@ -84,8 +84,8 @@ static void deleteRWops(SDL_RWops *const rwops)
     }
 }
 
-SDL_RWops *FakePHYSFSRWOPS_openRead(const char *const name,
-                                    const char *const file,
+SDL_RWops *FakePHYSFSRWOPS_openRead(const char *restrict const name,
+                                    const char *restrict const file,
                                     const unsigned line)
 {
     return addRWops(PHYSFSRWOPS_openRead(name), name, file, line);
