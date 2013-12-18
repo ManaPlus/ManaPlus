@@ -88,7 +88,8 @@ bool SDL::getWindowWMInfo(SDL_Window *const window, SDL_SysWMinfo *const info)
 }
 
 SDL_Thread *SDL::createThread(SDL_ThreadFunction fn,
-                              const char *const name, void *const data)
+                              const char *restrict const name,
+                              void *restrict const data)
 {
     return SDL_CreateThread(fn, name, data);
 }
