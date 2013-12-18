@@ -94,8 +94,7 @@ class TabbedArea final : public Widget2,
          * @param tab The tab widget for the tab.
          * @param widget The widget to view when the tab is selected.
          */
-        void addTab(Tab *restrict const tab,
-                    gcn::Widget *restrict const widget);
+        void addTab(Tab *const tab, gcn::Widget *const widget);
 
         void addTab(const std::string &caption, gcn::Widget *const widget);
 
