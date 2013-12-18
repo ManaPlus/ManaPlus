@@ -57,10 +57,10 @@ SDL_Surface *FakeSDL_ConvertSurface(SDL_Surface *const src,
                                     const char *const file,
                                     const unsigned line);
 
-SDL_Surface *FakeTTF_RenderUTF8_Blended(_TTF_Font *const font,
-                                        const char *const text,
+SDL_Surface *FakeTTF_RenderUTF8_Blended(_TTF_Font *restrict const font,
+                                        const char *restrict const text,
                                         const SDL_Color &fg,
-                                        const char *const file,
+                                        const char *restrict const file,
                                         const unsigned line);
 
 SDL_Surface *FakeIMG_Load(const char *name, const char *const file,

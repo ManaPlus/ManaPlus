@@ -54,9 +54,9 @@ struct MemoryObject
 
 std::map<void*, MemoryObject*> mSurfaces;
 
-static SDL_Surface *addSurface(const char *const name,
-                               SDL_Surface *const surface,
-                               const char *const file,
+static SDL_Surface *addSurface(const char *restrict const name,
+                               SDL_Surface *restrict const surface,
+                               const char *restrict const file,
                                const unsigned line)
 {
 #ifdef DEBUG_SURFACE_ALLOCATION
@@ -85,9 +85,9 @@ static SDL_Surface *addSurface(const char *const name,
     return surface;
 }
 
-static void deleteSurface(const char *const name A_UNUSED,
-                          SDL_Surface *const surface,
-                          const char *const file,
+static void deleteSurface(const char *restrict const name A_UNUSED,
+                          SDL_Surface *restrict const surface,
+                          const char *restrict const file,
                           const unsigned line)
 {
 #ifdef DEBUG_SURFACE_ALLOCATION
@@ -159,7 +159,8 @@ void FakeSDL_FreeSurface(SDL_Surface *const surface, const char *const file,
 
 SDL_Surface *FakeSDL_CreateRGBSurface(const uint32_t flags,
                                       const int width, const int height,
-                                      const int depth, const uint32_t rMask,
+                                      const int depth,
+                                      const uint32_t rMask,
                                       const uint32_t gMask,
                                       const uint32_t bMask,
                                       const uint32_t aMask,
@@ -181,9 +182,9 @@ SDL_Surface *FakeSDL_ConvertSurface(SDL_Surface *const src,
 }
 
 SDL_Surface *FakeTTF_RenderUTF8_Blended(_TTF_Font *const font,
-                                        const char *const text,
+                                        const char *restrict const text,
                                         const SDL_Color &fg,
-                                        const char *const file,
+                                        const char *restrict const file,
                                         const unsigned line)
 {
     return addSurface("TTF_RenderUTF8_Blended", TTF_RenderUTF8_Blended(
