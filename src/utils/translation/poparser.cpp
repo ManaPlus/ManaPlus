@@ -59,8 +59,9 @@ void PoParser::openFile(std::string name)
     }
 }
 
-PoDict *PoParser::load(const std::string &lang, const std::string &fileName,
-                       PoDict *const dict)
+PoDict *PoParser::load(const std::string &restrict lang,
+                       const std::string &restrict fileName,
+                       PoDict *restrict const dict)
 {
     logger->log("loading lang: %s, file: %s", lang.c_str(), fileName.c_str());
 
