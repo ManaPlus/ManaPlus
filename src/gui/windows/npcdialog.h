@@ -164,7 +164,7 @@ class NpcDialog final : public Window,
         void integerRequest(const int defaultValue = 0, const int min = 0,
                             const int max = 2147483647);
 
-        void itemRequest();
+        void itemRequest(const int size);
 
         void move(const int amount);
 

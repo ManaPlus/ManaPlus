@@ -160,6 +160,8 @@ class Inventory final
 
         std::string getName() const A_WARN_UNUSED;
 
+        void resize(const unsigned int newSize);
+
     protected:
         typedef std::list<InventoryListener*> InventoryListenerList;
         InventoryListenerList mInventoryListeners;

@@ -360,16 +360,38 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                     if (!client->limitPackets(PACKET_NPC_INPUT))
                         return;
 
-                    const Item *const item = mInventory->getItem(0);
                     std::string str;
-                    if (item)
+                    const int sz = mInventory->getNumberOfSlotsUsed();
+                    if (sz == 0)
                     {
-                        str = strprintf("%d,%d", item->getId(),
-                            item->getColor());
+                        str = "0,0";
                     }
                     else
                     {
-                        str = "0,0";
+                        const Item *item = mInventory->getItem(0);
+                        if (item)
+                        {
+                            str = strprintf("%d,%d", item->getId(),
+                                item->getColor());
+                        }
+                        else
+                        {
+                            str = "0,0";
+                        }
+                        for (int f = 1; f < sz; f ++)
+                        {
+                            str.append(";");
+                            item = mInventory->getItem(f);
+                            if (item)
+                            {
+                                str.append(strprintf("%d,%d", item->getId(),
+                                    item->getColor()));
+                            }
+                            else
+                            {
+                                str.append("0,0");
+                            }
+                        }
                     }
 
                     // need send selected item
@@ -597,11 +619,11 @@ void NpcDialog::integerRequest(const int defaultValue, const int min,
     buildLayout();
 }
 
-void NpcDialog::itemRequest()
+void NpcDialog::itemRequest(const int size)
 {
     mActionState = NPC_ACTION_INPUT;
     mInputState = NPC_INPUT_ITEM;
-
+    mInventory->resize(size);
     buildLayout();
 }
 

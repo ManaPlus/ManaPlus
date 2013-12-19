@@ -329,10 +329,14 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg, const int npcId)
                 mDialog->clearRows();
             break;
         case 10:  // send selected item id
+        {
+            int invSize = msg.readInt32();
+            if (!invSize)
+                invSize = 1;
             if (mDialog)
-                mDialog->itemRequest();
+                mDialog->itemRequest(invSize);
             break;
-
+        }
         default:
             logger->log("unknown npc command: %d", cmd);
             break;

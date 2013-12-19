@@ -268,3 +268,18 @@ std::string Inventory::getName() const
         }
     }
 }
+
+void Inventory::resize(const unsigned int newSize)
+{
+    clear();
+    if (mSize == newSize)
+        return;
+
+    for (unsigned i = 0; i < mSize; i++)
+        delete mItems[i];
+    delete [] mItems;
+
+    mSize = newSize;
+    mItems = new Item*[mSize];
+    std::fill_n(mItems, mSize, static_cast<Item*>(nullptr));
+}
