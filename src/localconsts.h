@@ -39,6 +39,7 @@
 #define final
 #define override
 #define constexpr
+#define noexcept
 #define A_DELETE(func)
 #define A_DELETE_COPY(func)
 #else
@@ -49,6 +50,7 @@
 #define final
 #define override
 #define constexpr
+#define noexcept
 // #define A_DELETE
 // #define A_DELETE_COPY
 #endif
