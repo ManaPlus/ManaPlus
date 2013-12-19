@@ -24,7 +24,7 @@
 
 #include "debug.h"
 
-Animation::Animation() :
+Animation::Animation() noexcept :
     mFrames(),
     mDuration(0)
 {
@@ -32,7 +32,7 @@ Animation::Animation() :
 
 void Animation::addFrame(Image *const image, const int delay,
                          const int offsetX, const int offsetY,
-                         const int rand)
+                         const int rand) noexcept
 {
     Frame frame
         = { image, delay, offsetX, offsetY, rand, Frame::ANIMATION, "" };
@@ -40,41 +40,41 @@ void Animation::addFrame(Image *const image, const int delay,
     mDuration += delay;
 }
 
-void Animation::addTerminator(const int rand)
+void Animation::addTerminator(const int rand) noexcept
 {
     addFrame(nullptr, 0, 0, 0, rand);
 }
 
-bool Animation::isTerminator(const Frame &candidate)
+bool Animation::isTerminator(const Frame &candidate) noexcept
 {
     return (!candidate.image && candidate.type == Frame::ANIMATION);
 }
 
-void Animation::addJump(const std::string &name, const int rand)
+void Animation::addJump(const std::string &name, const int rand) noexcept
 {
     Frame frame = { nullptr, 0, 0, 0, rand, Frame::JUMP, name };
     mFrames.push_back(frame);
 }
 
-void Animation::addLabel(const std::string &name)
+void Animation::addLabel(const std::string &name) noexcept
 {
     Frame frame = { nullptr, 0, 0, 0, 100, Frame::LABEL, name };
     mFrames.push_back(frame);
 }
 
-void Animation::addGoto(const std::string &name, const int rand)
+void Animation::addGoto(const std::string &name, const int rand) noexcept
 {
     Frame frame = { nullptr, 0, 0, 0, rand, Frame::GOTO, name };
     mFrames.push_back(frame);
 }
 
-void Animation::addPause(const int delay, const int rand)
+void Animation::addPause(const int delay, const int rand) noexcept
 {
     Frame frame = { nullptr, delay, 0, 0, rand, Frame::PAUSE, "" };
     mFrames.push_back(frame);
 }
 
-void Animation::setLastFrameDelay(const int delay)
+void Animation::setLastFrameDelay(const int delay) noexcept
 {
     for (FramesRevIter it = mFrames.rbegin(), it_end = mFrames.rend();
          it != it_end; ++ it)

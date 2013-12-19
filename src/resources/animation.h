@@ -64,50 +64,50 @@ class Animation final
     friend class SimpleAnimation;
 
     public:
-        Animation();
+        Animation() noexcept;
 
         /**
          * Appends a new animation at the end of the sequence.
          */
         void addFrame(Image *const image, const int delay,
                       const int offsetX, const int offsetY,
-                      const int rand);
+                      const int rand) noexcept;
 
         /**
          * Appends an animation terminator that states that the animation
          * should not loop.
          */
-        void addTerminator(const int rand);
+        void addTerminator(const int rand) noexcept;
 
         /**
          * Returns the length of this animation in frames.
          */
-        size_t getLength() const A_WARN_UNUSED
+        size_t getLength() const noexcept A_WARN_UNUSED
         { return mFrames.size(); }
 
-        void addJump(const std::string &name, const int rand);
+        void addJump(const std::string &name, const int rand) noexcept;
 
-        void addLabel(const std::string &name);
+        void addLabel(const std::string &name) noexcept;
 
-        void addGoto(const std::string &name, const int rand);
+        void addGoto(const std::string &name, const int rand) noexcept;
 
-        void addPause(const int delay, const int rand);
+        void addPause(const int delay, const int rand) noexcept;
 
-        void setLastFrameDelay(const int delay);
+        void setLastFrameDelay(const int delay) noexcept;
 
         typedef std::vector<Frame> Frames;
         typedef Frames::iterator FramesIter;
         typedef Frames::reverse_iterator FramesRevIter;
 
 #ifdef UNITTESTS
-        Frames &getFrames()
+        Frames &getFrames() noexcept
         { return mFrames; }
 #endif
 
         /**
          * Determines whether the given animation frame is a terminator.
          */
-        static bool isTerminator(const Frame &phase) A_WARN_UNUSED;
+        static bool isTerminator(const Frame &phase) noexcept A_WARN_UNUSED;
 
     protected:
         Frames mFrames;
