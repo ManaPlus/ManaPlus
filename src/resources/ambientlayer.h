@@ -45,7 +45,7 @@ class AmbientLayer final
          */
         AmbientLayer(Image *const img, const float parallax,
                      const float speedX, const float speedY,
-                     const bool keepRatio, int mask);
+                     const bool keepRatio, const int mask);
 
         A_DELETE_COPY(AmbientLayer)
 

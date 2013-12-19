@@ -33,7 +33,7 @@
 
 AmbientLayer::AmbientLayer(Image *const img, const float parallax,
                            const float speedX, const float speedY,
-                           const bool keepRatio, int mask) :
+                           const bool keepRatio, const int mask) :
     mImage(img),
     mParallax(parallax),
     mPosX(0),
@@ -93,8 +93,9 @@ void AmbientLayer::update(const int timePassed, const float dx, const float dy)
     mPosX += dx * mParallax;
     mPosY += dy * mParallax;
 
-    const float imgW = mImage->mBounds.w;
-    const float imgH = mImage->mBounds.h;
+    const SDL_Rect &rect = mImage->mBounds;
+    const float imgW = rect.w;
+    const float imgH = rect.h;
 
     // Wrap values
     while (mPosX > imgW)
