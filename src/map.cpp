@@ -286,8 +286,10 @@ void Map::initializeAmbientLayers()
             int mask = atoi(getProperty(name + "mask").c_str());
             if (!mask)
                 mask = 1;
+            const float parallax = getFloatProperty(name + "parallax");
             mForegrounds.push_back(new AmbientLayer(img,
-                getFloatProperty(name + "parallax"),
+                getFloatProperty(name + "parallaxX", parallax),
+                getFloatProperty(name + "parallaxY", parallax),
                 getFloatProperty(name + "scrollX"),
                 getFloatProperty(name + "scrollY"),
                 getBoolProperty(name + "keepratio"),
@@ -310,8 +312,11 @@ void Map::initializeAmbientLayers()
             int mask = atoi(getProperty(name + "mask").c_str());
             if (!mask)
                 mask = 1;
-            mBackgrounds.push_back(new AmbientLayer(img,
-                getFloatProperty(name + "parallax"),
+
+            const float parallax = getFloatProperty(name + "parallax");
+            mForegrounds.push_back(new AmbientLayer(img,
+                getFloatProperty(name + "parallaxX", parallax),
+                getFloatProperty(name + "parallaxY", parallax),
                 getFloatProperty(name + "scrollX"),
                 getFloatProperty(name + "scrollY"),
                 getBoolProperty(name + "keepratio"),

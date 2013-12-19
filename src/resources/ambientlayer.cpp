@@ -31,11 +31,13 @@
 
 #include "debug.h"
 
-AmbientLayer::AmbientLayer(Image *const img, const float parallax,
+AmbientLayer::AmbientLayer(Image *const img,
+                           const float parallaxX, const float parallaxY,
                            const float speedX, const float speedY,
                            const bool keepRatio, const int mask) :
     mImage(img),
-    mParallax(parallax),
+    mParallaxX(parallaxX),
+    mParallaxY(parallaxY),
     mPosX(0),
     mPosY(0),
     mSpeedX(speedX),
@@ -90,8 +92,8 @@ void AmbientLayer::update(const int timePassed, const float dx, const float dy)
     mPosY -= mSpeedY * time;
 
     // Parallax scrolling
-    mPosX += dx * mParallax;
-    mPosY += dy * mParallax;
+    mPosX += dx * mParallaxX;
+    mPosY += dy * mParallaxY;
 
     const SDL_Rect &rect = mImage->mBounds;
     const float imgW = rect.w;
