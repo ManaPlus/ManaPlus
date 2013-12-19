@@ -35,23 +35,25 @@ class Animation;
 class Action final
 {
     public:
-        Action();
+        Action() noexcept;
 
         A_DELETE_COPY(Action)
 
         ~Action();
 
-        void setAnimation(const int direction, Animation *const animation);
+        void setAnimation(const int direction,
+                          Animation *const animation) noexcept;
 
-        const Animation *getAnimation(int direction) const A_WARN_UNUSED;
+        const Animation *getAnimation(int direction) const
+                                      noexcept A_WARN_UNUSED;
 
-        unsigned getNumber() const A_WARN_UNUSED
+        unsigned getNumber() const noexcept A_WARN_UNUSED
         { return mNumber; }
 
-        void setNumber(const unsigned n)
+        void setNumber(const unsigned n) noexcept
         { mNumber = n; }
 
-        void setLastFrameDelay(const int delay);
+        void setLastFrameDelay(const int delay) noexcept;
 
     protected:
         typedef std::map<int, Animation*> Animations;

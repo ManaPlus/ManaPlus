@@ -29,7 +29,7 @@
 
 #include "debug.h"
 
-Action::Action() :
+Action::Action() noexcept :
     mAnimations(),
     mNumber(100)
 {
@@ -40,7 +40,7 @@ Action::~Action()
     delete_all(mAnimations);
 }
 
-const Animation *Action::getAnimation(int direction) const
+const Animation *Action::getAnimation(int direction) const noexcept
 {
     Animations::const_iterator i = mAnimations.find(direction);
 
@@ -66,12 +66,13 @@ const Animation *Action::getAnimation(int direction) const
     return (i == mAnimations.end()) ? nullptr : i->second;
 }
 
-void Action::setAnimation(const int direction, Animation *const animation)
+void Action::setAnimation(const int direction,
+                          Animation *const animation) noexcept
 {
     mAnimations[direction] = animation;
 }
 
-void Action::setLastFrameDelay(const int delay)
+void Action::setLastFrameDelay(const int delay) noexcept
 {
     FOR_EACH (AnimationIter, it, mAnimations)
     {
