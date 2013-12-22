@@ -100,6 +100,7 @@ class MiniStatusWindow final : public Popup,
                                const int width, const int height,
                                const int textColor, const int backColor,
                                const std::string &restrict skin,
+                               const std::string &restrict skinFill,
                                const std::string &restrict name,
                                const std::string &restrict description)
                                A_WARN_UNUSED;

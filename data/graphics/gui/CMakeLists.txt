@@ -51,6 +51,7 @@ SET (FILES
     popupbrowserbox.xml
     progress-indicator.png
     progressbar.xml
+    progressbar_fill.xml
     quests.xml
     radio.xml
     resize.xml

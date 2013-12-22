@@ -118,7 +118,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     mInvCloseButton(nullptr),
     mWeightBar(nullptr),
     mSlotsBar(new ProgressBar(this, 0.0F, 100, 0, Theme::PROG_INVY_SLOTS,
-              "slotsprogressbar.xml")),
+              "slotsprogressbar.xml", "slotsprogressbar_fill.xml")),
     mFilter(nullptr),
     mSortModel(new SortListModelInv),
     mSortDropDown(new DropDown(this, mSortModel, false, false, this, "sort")),
@@ -227,7 +227,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
         // TRANSLATORS: inventory button
         mEquipmentButton = new Button(this, _("Equipment"), "equipment", this);
         mWeightBar = new ProgressBar(this, 0.0F, 100, 0, Theme::PROG_WEIGHT,
-            "weightprogressbar.xml");
+            "weightprogressbar.xml", "weightprogressbar_fill.xml");
         mWeightBar->setColor(Theme::getThemeColor(Theme::WEIGHT_BAR),
             Theme::getThemeColor(Theme::WEIGHT_BAR_OUTLINE));
 

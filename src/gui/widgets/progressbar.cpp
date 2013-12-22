@@ -37,11 +37,14 @@ float ProgressBar::mAlpha = 1.0;
 
 ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
                          const int width, const int height,
-                         const int backColor, const std::string &skin):
+                         const int backColor,
+                         const std::string &skin, const std::string &skinFill):
     gcn::Widget(),
     Widget2(widget),
     gcn::WidgetListener(),
+    mFillRect(),
     mSkin(nullptr),
+    mSkinFill(nullptr),
     mProgress(progress),
     mProgressToGo(progress),
     mBackgroundColor(Theme::getProgressColor(backColor >= 0
@@ -53,6 +56,7 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     mProgressPalette(backColor),
     mPadding(2),
     mFillPadding(3),
+    mFillImage(false),
     mSmoothProgress(true),
     mSmoothColorChange(true),
     mRedraw(true)
@@ -73,6 +77,9 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
         {
             setPadding(mSkin->getPadding());
             mFillPadding = mSkin->getOption("fillPadding");
+            mFillImage = mSkin->getOption("fillImage") != 0;
+            if (mFillImage)
+                theme->loadRect(mFillRect, skinFill, "progressbar_fill.xml");
         }
         setHeight(2 * mPadding + getFont()->getHeight() + 2);
     }
@@ -86,13 +93,15 @@ ProgressBar::~ProgressBar()
         gui->removeDragged(this);
 
     mInstances--;
+    Theme *const theme = Theme::instance();
     if (mSkin)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
             theme->unload(mSkin);
         mSkin = nullptr;
     }
+    if (theme)
+        theme->unloadRect(mFillRect);
     delete mVertexes;
     mVertexes = nullptr;
 }
@@ -115,6 +124,7 @@ void ProgressBar::logic()
             mBackgroundColor.g--;
         if (mBackgroundColorToGo.b < mBackgroundColor.b)
             mBackgroundColor.b--;
+        mRedraw = true;
     }
 
     if (mSmoothProgress && mProgressToGo != mProgress)
@@ -124,6 +134,7 @@ void ProgressBar::logic()
             mProgress = std::min(1.0F, mProgress + 0.005F);
         if (mProgressToGo < mProgress)
             mProgress = std::max(0.0F, mProgress - 0.005F);
+        mRedraw = true;
     }
     BLOCK_END("ProgressBar::logic")
 }
@@ -148,6 +159,7 @@ void ProgressBar::setProgress(const float progress)
 {
     const float p = std::min(1.0F, std::max(0.0F, progress));
     mProgressToGo = p;
+    mRedraw = true;
 
     if (!mSmoothProgress)
         mProgress = p;
@@ -163,6 +175,7 @@ void ProgressBar::setProgressPalette(const int progressPalette)
 {
     const int oldPalette = mProgressPalette;
     mProgressPalette = progressPalette;
+    mRedraw = true;
 
     if (mProgressPalette != oldPalette && mProgressPalette >= 0)
     {
@@ -173,6 +186,7 @@ void ProgressBar::setProgressPalette(const int progressPalette)
 
 void ProgressBar::setBackgroundColor(const gcn::Color &color)
 {
+    mRedraw = true;
     mBackgroundColorToGo = color;
 
     if (!mSmoothColorChange)
@@ -198,6 +212,21 @@ void ProgressBar::render(Graphics *graphics)
             mVertexes->clear();
             graphics->calcWindow(mVertexes, 0, 0,
                 mDimension.width, mDimension.height, mSkin->getBorder());
+            if (mFillImage)
+            {
+                const unsigned int pad = 2 * mFillPadding;
+                const int maxWidth = mDimension.width - pad;
+                int width = static_cast<int>(mProgress
+                    * static_cast<float>(maxWidth));
+                if (width > 0)
+                {
+                    if (width > maxWidth)
+                        width = maxWidth;
+                    logger->log("calc fill: %d, %d", mFillPadding,  width);
+                    graphics->calcWindow(mVertexes, mFillPadding, mFillPadding,
+                        width, mDimension.height - pad, mFillRect);
+                }
+            }
         }
 
         graphics->drawTileCollection(mVertexes);
@@ -206,10 +235,24 @@ void ProgressBar::render(Graphics *graphics)
     {
         graphics->drawImageRect(0, 0, mDimension.width, mDimension.height,
             mSkin->getBorder());
+        if (mFillImage)
+        {
+            const unsigned int pad = 2 * mFillPadding;
+            const int maxWidth = mDimension.width - pad;
+            int width = static_cast<int>(mProgress
+                * static_cast<float>(maxWidth));
+            if (width > 0)
+            {
+                if (width > maxWidth)
+                    width = maxWidth;
+                graphics->drawImageRect(mFillPadding, mFillPadding,
+                    width, mDimension.height - pad, mFillRect);
+            }
+        }
     }
 
     // The bar
-    if (mProgress > 0)
+    if (!mFillImage && mProgress > 0)
     {
         graphics->setColor(mBackgroundColor);
         const unsigned int pad = 2 * mFillPadding;

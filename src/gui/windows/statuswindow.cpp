@@ -191,16 +191,16 @@ StatusWindow::StatusWindow() :
         max = 1;
 
     mHpBar = new ProgressBar(this, static_cast<float>(PlayerInfo::getAttribute(
-        PlayerInfo::HP)) / static_cast<float>(max), 80, 0,
-        Theme::PROG_HP, "hpprogressbar.xml");
+        PlayerInfo::HP)) / static_cast<float>(max), 80, 0, Theme::PROG_HP,
+        "hpprogressbar.xml", "hpprogressbar_fill.xml");
     mHpBar->setColor(Theme::getThemeColor(Theme::HP_BAR),
         Theme::getThemeColor(Theme::HP_BAR_OUTLINE));
 
     max = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
     mXpBar = new ProgressBar(this, max ?
             static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::EXP))
-            / static_cast<float>(max) : static_cast<float>(0),
-            80, 0, Theme::PROG_EXP, "xpprogressbar.xml");
+            / static_cast<float>(max) : static_cast<float>(0), 80, 0,
+            Theme::PROG_EXP, "xpprogressbar.xml", "xpprogressbar_fill.xml");
     mXpBar->setColor(Theme::getThemeColor(Theme::XP_BAR),
         Theme::getThemeColor(Theme::XP_BAR_OUTLINE));
 
@@ -218,7 +218,8 @@ StatusWindow::StatusWindow() :
             PlayerInfo::getAttribute(PlayerInfo::MAX_MP))
             / static_cast<float>(max) : static_cast<float>(0),
             80, 0, useMagic ? Theme::PROG_MP : Theme::PROG_NO_MP,
-            useMagic ? "mpprogressbar.xml" : "nompprogressbar.xml");
+            useMagic ? "mpprogressbar.xml" : "nompprogressbar.xml",
+            useMagic ? "mpprogressbar_fill.xml" : "nompprogressbar_fill.xml");
         if (useMagic)
         {
             mMpBar->setColor(Theme::getThemeColor(Theme::MP_BAR),
@@ -258,7 +259,7 @@ StatusWindow::StatusWindow() :
         // TRANSLATORS: status window label
         mJobLabel = new Label(this, _("Job:"));
         mJobBar = new ProgressBar(this, 0.0F, 80, 0, Theme::PROG_JOB,
-            "jobprogressbar.xml");
+            "jobprogressbar.xml", "jobprogressbar_fill.xml");
         mJobBar->setColor(Theme::getThemeColor(Theme::JOB_BAR),
             Theme::getThemeColor(Theme::JOB_BAR_OUTLINE));
 

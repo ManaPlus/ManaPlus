@@ -52,7 +52,7 @@ class ProgressBar final : public gcn::Widget,
         ProgressBar(const Widget2 *const widget, float progress,
                     const int width, const int height,
                     const int backColor,
-                    const std::string &skin);
+                    const std::string &skin, const std::string &skinFill);
 
         A_DELETE_COPY(ProgressBar)
 
@@ -140,7 +140,9 @@ class ProgressBar final : public gcn::Widget,
         { mPadding = padding; }
 
     private:
+        ImageRect mFillRect;
         Skin *mSkin;
+        Skin *mSkinFill;
         float mProgress;
         float mProgressToGo;
 
@@ -157,6 +159,7 @@ class ProgressBar final : public gcn::Widget,
         static int mInstances;
         static float mAlpha;
 
+        bool mFillImage;
         bool mSmoothProgress;
         bool mSmoothColorChange;
         bool mRedraw;
