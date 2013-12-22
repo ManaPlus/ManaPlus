@@ -46,9 +46,6 @@ SliderList::SliderList(const Widget2 *const widget,
     mSelectedIndex(0)
 {
     setHeight(sliderHeight);
-
-    mButtons[0] = new Button(this, "<", mPrevEventId, this);
-    mButtons[1] = new Button(this, ">", mNextEventId, this);
 }
 
 void SliderList::postInit(gcn::ActionListener *const listener,
@@ -56,6 +53,9 @@ void SliderList::postInit(gcn::ActionListener *const listener,
 {
     mPrevEventId = eventId + "_prev";
     mNextEventId = eventId + "_next";
+
+    mButtons[0] = new Button(this, "<", mPrevEventId, this);
+    mButtons[1] = new Button(this, ">", mNextEventId, this);
 
     add(mButtons[0]);
     add(mLabel);
@@ -83,7 +83,6 @@ void SliderList::updateAlpha()
 
 void SliderList::mouseWheelMovedUp(gcn::MouseEvent& mouseEvent)
 {
-    logger->log("SliderList::mouseWheelMovedUp");
     setSelected(mSelectedIndex - 1);
     mouseEvent.consume();
 }
