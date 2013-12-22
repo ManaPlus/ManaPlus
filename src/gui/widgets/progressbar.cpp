@@ -222,7 +222,6 @@ void ProgressBar::render(Graphics *graphics)
                 {
                     if (width > maxWidth)
                         width = maxWidth;
-                    logger->log("calc fill: %d, %d", mFillPadding,  width);
                     graphics->calcWindow(mVertexes, mFillPadding, mFillPadding,
                         width, mDimension.height - pad, mFillRect);
                 }
