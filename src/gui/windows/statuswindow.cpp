@@ -191,15 +191,16 @@ StatusWindow::StatusWindow() :
         max = 1;
 
     mHpBar = new ProgressBar(this, static_cast<float>(PlayerInfo::getAttribute(
-        PlayerInfo::HP)) / static_cast<float>(max), 80, 0, Theme::PROG_HP);
+        PlayerInfo::HP)) / static_cast<float>(max), 80, 0,
+        Theme::PROG_HP, "hpprogressbar.xml");
     mHpBar->setColor(Theme::getThemeColor(Theme::HP_BAR),
         Theme::getThemeColor(Theme::HP_BAR_OUTLINE));
 
     max = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
     mXpBar = new ProgressBar(this, max ?
             static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::EXP))
-            / static_cast<float>(max):
-            static_cast<float>(0), 80, 0, Theme::PROG_EXP);
+            / static_cast<float>(max) : static_cast<float>(0),
+            80, 0, Theme::PROG_EXP, "xpprogressbar.xml");
     mXpBar->setColor(Theme::getThemeColor(Theme::XP_BAR),
         Theme::getThemeColor(Theme::XP_BAR_OUTLINE));
 
@@ -216,7 +217,8 @@ StatusWindow::StatusWindow() :
         mMpBar = new ProgressBar(this, max ? static_cast<float>(
             PlayerInfo::getAttribute(PlayerInfo::MAX_MP))
             / static_cast<float>(max) : static_cast<float>(0),
-            80, 0, useMagic ? Theme::PROG_MP : Theme::PROG_NO_MP);
+            80, 0, useMagic ? Theme::PROG_MP : Theme::PROG_NO_MP,
+            useMagic ? "mpprogressbar.xml" : "nompprogressbar.xml");
         if (useMagic)
         {
             mMpBar->setColor(Theme::getThemeColor(Theme::MP_BAR),
@@ -255,7 +257,8 @@ StatusWindow::StatusWindow() :
         mJobLvlLabel = new Label(this, strprintf(_("Job: %d"), 0));
         // TRANSLATORS: status window label
         mJobLabel = new Label(this, _("Job:"));
-        mJobBar = new ProgressBar(this, 0.0F, 80, 0, Theme::PROG_JOB);
+        mJobBar = new ProgressBar(this, 0.0F, 80, 0, Theme::PROG_JOB,
+            "jobprogressbar.xml");
         mJobBar->setColor(Theme::getThemeColor(Theme::JOB_BAR),
             Theme::getThemeColor(Theme::JOB_BAR_OUTLINE));
 

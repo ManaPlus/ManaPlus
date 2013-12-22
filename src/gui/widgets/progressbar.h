@@ -51,7 +51,8 @@ class ProgressBar final : public gcn::Widget,
          */
         ProgressBar(const Widget2 *const widget, float progress,
                     const int width, const int height,
-                    const int backColor);
+                    const int backColor,
+                    const std::string &skin);
 
         A_DELETE_COPY(ProgressBar)
 

@@ -37,7 +37,7 @@ float ProgressBar::mAlpha = 1.0;
 
 ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
                          const int width, const int height,
-                         const int backColor):
+                         const int backColor, const std::string &skin):
     gcn::Widget(),
     Widget2(widget),
     gcn::WidgetListener(),
@@ -68,7 +68,7 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     Theme *const theme = Theme::instance();
     if (theme)
     {
-        mSkin = theme->load("progressbar.xml", "");
+        mSkin = theme->load(skin, "progressbar.xml");
         if (mSkin)
         {
             setPadding(mSkin->getPadding());
