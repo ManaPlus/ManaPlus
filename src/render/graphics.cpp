@@ -489,17 +489,26 @@ void Graphics::drawImageRect(const int x, const int y,
         drawImagePattern(top, x + lw, y, w - lw - rw, th);
         drawImagePattern(bottom, x + lw, h - bh + y, w - lw - rw, bh);
         drawImagePattern(left, x, y + th, lw, h - th - bh);
-        drawImagePattern(right, x + w - rw, th + y, rw, h - th - bh);
+        if (w > rw)
+            drawImagePattern(right, x + w - rw, th + y, rw, h - th - bh);
     }
     // Draw the corners
     if (drawMain)
     {
         DRAW_IMAGE(this, topLeft, x, y);
-        DRAW_IMAGE(this, topRight, x + w - topRight->getWidth(), y);
+        const int trw = topRight->getWidth();
+        if (w > trw)
+        {
+            DRAW_IMAGE(this, topRight, x + w - trw, y);
+        }
         DRAW_IMAGE(this, bottomLeft, x, h - bottomLeft->getHeight() + y);
-        DRAW_IMAGE(this, bottomRight,
-            x + w - bottomRight->getWidth(),
-            y + h - bottomRight->getHeight());
+        const int brw = bottomRight->getWidth();
+        if (w > brw)
+        {
+            DRAW_IMAGE(this, bottomRight,
+                x + w - brw,
+                y + h - bottomRight->getHeight());
+        }
     }
     BLOCK_END("Graphics::drawImageRect")
 }
@@ -566,18 +575,27 @@ bool Graphics::calcImageRect(ImageVertexes *const vert,
         calcImagePattern(vert, top, x + lw, y, w - lw - rw, th);
         calcImagePattern(vert, bottom, x + lw, y + h - bh, w - lw - rw, bh);
         calcImagePattern(vert, left, x, y + th, lw, h - th - bh);
-        calcImagePattern(vert, right, x + w - rw, y + th, rw, h - th - bh);
+        if (w > rw)
+            calcImagePattern(vert, right, x + w - rw, y + th, rw, h - th - bh);
     }
 
     calcTileVertexes(vert, topLeft, x, y);
     if (topRight)
-        calcTileVertexes(vert, topRight, x + w - topRight->getWidth(), y);
+    {
+        const int trw = topRight->getWidth();
+        if (w > trw)
+            calcTileVertexes(vert, topRight, x + w - trw, y);
+    }
     if (bottomLeft)
         calcTileVertexes(vert, bottomLeft, x, y + h - bottomLeft->getHeight());
     if (bottomRight)
     {
-        calcTileVertexes(vert, bottomRight, x + w - bottomRight->getWidth(),
-            y + h - bottomRight->getHeight());
+        const int brw = bottomRight->getWidth();
+        if (w > brw)
+        {
+            calcTileVertexes(vert, bottomRight, x + w - brw,
+                y + h - bottomRight->getHeight());
+        }
     }
 
 //    popClipArea();
