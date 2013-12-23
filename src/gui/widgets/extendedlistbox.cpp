@@ -89,9 +89,12 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
         if (insideWidth < strWidth)
         {
             const int strSize = str.size();
+            int divPos = strSize / 2;
+            if (divPos > 0 && (unsigned char)str[divPos - 1] >= 0xc0)
+                divPos --;
             list.push_back(ExtendedListBoxItem(row,
-                str.substr(0, strSize / 2), useImage, y));
-            str = str.substr(strSize / 2);
+                str.substr(0, divPos), useImage, y));
+            str = str.substr(divPos);
             y += height;
             useImage = false;
         }
