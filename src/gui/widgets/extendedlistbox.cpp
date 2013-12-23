@@ -90,8 +90,19 @@ void ExtendedListBox::draw(gcn::Graphics *graphics)
         {
             const int strSize = str.size();
             int divPos = strSize / 2;
-            if (divPos > 0 && (unsigned char)str[divPos - 1] >= 0xc0)
+            if (divPos > 0 && static_cast<unsigned char>(
+                str[divPos - 1]) >= 0xc0)
+            {
                 divPos --;
+            }
+            for (int d = divPos; d > 10; d --)
+            {
+                if (str[d] == 32)
+                {
+                    divPos = d + 1;
+                    break;
+                }
+            }
             list.push_back(ExtendedListBoxItem(row,
                 str.substr(0, divPos), useImage, y));
             str = str.substr(divPos);
