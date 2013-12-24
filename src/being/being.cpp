@@ -243,7 +243,12 @@ Being::~Being()
     if (mOwner)
         mOwner->setPet(nullptr);
     if (mPet)
+    {
         mPet->setOwner(nullptr);
+        actorManager->erase(mPet);
+        delete mPet;
+        mPet = nullptr;
+    }
 
     removeAllItemsParticles();
 }
@@ -2921,7 +2926,6 @@ std::string Being::loadComment(const std::string &name, const int type)
     }
 
     str.append(stringToHexPath(name)).append("/comment.txt");
-    logger->log("load from: %s", str.c_str());
 
     const ResourceManager *const resman = ResourceManager::getInstance();
     if (resman->existsLocal(str))
@@ -3143,7 +3147,8 @@ void Being::removePet()
     if (mPet)
     {
         mPet->setOwner(nullptr);
-        actorManager->destroy(mPet);
+        actorManager->erase(mPet);
+        delete mPet;
         mPet = nullptr;
     }
 }

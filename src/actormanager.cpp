@@ -792,8 +792,9 @@ void ActorManager::logic()
 
     FOR_EACH (ActorSpritesConstIterator, it, mDeleteActors)
     {
-        mActors.erase(*it);
-        delete *it;
+        ActorSprite *actor = *it;
+        mActors.erase(actor);
+        delete actor;
     }
 
     mDeleteActors.clear();
