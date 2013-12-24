@@ -212,10 +212,10 @@ class BeingInfo final
         void setAvatarId(const uint16_t id)
         { mAvatarId = id; }
 
-        int getWidth() const
+        int getWidth() const A_WARN_UNUSED
         { return mWidth; }
 
-        int getHeight() const
+        int getHeight() const A_WARN_UNUSED
         { return mHeight; }
 
         void setWidth(const int n)
@@ -227,30 +227,30 @@ class BeingInfo final
         void setStartFollowDist(const int n)
         { mStartFollowDist = n; }
 
-        int getStartFollowDist()
+        int getStartFollowDist() const A_WARN_UNUSED
         { return mStartFollowDist; }
 
         void setFollowDist(const int n)
         { mFollowDist = n; }
 
-        int getFollowDist()
+        int getFollowDist() const A_WARN_UNUSED
         { return mFollowDist; }
 
         void setWalkSpeed(const int n)
         { mWalkSpeed = n; }
 
-        int getWalkSpeed()
+        int getWalkSpeed() const A_WARN_UNUSED
         { return mWalkSpeed; }
 
         void setWarpDist(const int n)
         { mWarpDist = n; }
 
-        int getWarpDist()
+        int getWarpDist() const A_WARN_UNUSED
         { return mWarpDist; }
 
         void setColorsList(const std::string &name);
 
-        std::string getColor(const int idx) const;
+        std::string getColor(const int idx) const A_WARN_UNUSED;
 
         static void init();
 
