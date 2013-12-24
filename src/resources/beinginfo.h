@@ -236,6 +236,12 @@ class BeingInfo final
         int getFollowDist()
         { return mFollowDist; }
 
+        void setWalkSpeed(const int n)
+        { mWalkSpeed = n; }
+
+        int getWalkSpeed()
+        { return mWalkSpeed; }
+
         void setColorsList(const std::string &name);
 
         std::string getColor(const int idx) const;
@@ -268,6 +274,7 @@ class BeingInfo final
         int mHeight;
         int mStartFollowDist;
         int mFollowDist;
+        int mWalkSpeed;
         bool mStaticMaxHP;
         bool mTargetSelection;
 };

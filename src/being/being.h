@@ -478,7 +478,7 @@ class Being : public ActorSprite, public ConfigListener
          * in pixels per second for eAthena,
          * in tiles per second for Manaserv.
          */
-        void setWalkSpeed(const Vector &speed)
+        void setWalkSpeed(Vector speed)
         { mWalkSpeed = speed; mSpeed = speed.x; }
 
         /**

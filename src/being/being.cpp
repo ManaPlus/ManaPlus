@@ -292,6 +292,16 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
         {
             setupSpriteDisplay(mInfo->getDisplay(), false);
             mYDiff = mInfo->getSortOffsetY();
+            const int speed = mInfo->getWalkSpeed();
+            if (!speed)
+            {
+                setWalkSpeed(Net::getPlayerHandler()
+                    ->getDefaultWalkSpeed());
+            }
+            else
+            {
+                setWalkSpeed(Vector(speed, speed, 0));
+            }
         }
     }
     else if (mType == PLAYER)
