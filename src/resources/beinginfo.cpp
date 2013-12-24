@@ -62,6 +62,7 @@ BeingInfo::BeingInfo() :
     mHeight(0),
     mStartFollowDist(3),
     mFollowDist(1),
+    mWarpDist(11),
     mWalkSpeed(0),
     mStaticMaxHP(false),
     mTargetSelection(true)

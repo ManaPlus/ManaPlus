@@ -1630,10 +1630,17 @@ void Being::petLogic()
     int dstX = dstX0;
     int dstY = dstY0;
     const int followDist = mInfo->getStartFollowDist();
+    const int warpDist = mInfo->getWarpDist();
     const int dist = mInfo->getFollowDist();
     const int divX = abs(dstX - mX);
     const int divY = abs(dstY - mY);
-    if (divX > followDist || divY > followDist)
+
+    if (divX >= warpDist || divY >= warpDist)
+    {
+        setAction(Being::STAND, 0);
+        setTileCoords(dstX0, dstY0);
+    }
+    else if (divX > followDist || divY > followDist)
     {
         if (divX > followDist)
         {

@@ -86,9 +86,12 @@ void PETDB::load()
             "startFollowDistance", 3));
         currentInfo->setFollowDist(XML::getProperty(petNode,
             "followDistance", 1));
+        currentInfo->setWarpDist(XML::getProperty(petNode,
+            "warpDistance", 11));
 
         currentInfo->setWalkSpeed(XML::getProperty(petNode,
             "walkSpeed", 0));
+
 
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, petNode)

@@ -242,6 +242,12 @@ class BeingInfo final
         int getWalkSpeed()
         { return mWalkSpeed; }
 
+        void setWarpDist(const int n)
+        { mWarpDist = n; }
+
+        int getWarpDist()
+        { return mWarpDist; }
+
         void setColorsList(const std::string &name);
 
         std::string getColor(const int idx) const;
@@ -274,6 +280,7 @@ class BeingInfo final
         int mHeight;
         int mStartFollowDist;
         int mFollowDist;
+        int mWarpDist;
         int mWalkSpeed;
         bool mStaticMaxHP;
         bool mTargetSelection;
