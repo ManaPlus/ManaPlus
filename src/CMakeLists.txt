@@ -422,6 +422,7 @@ SET(SRCS
     net/net.h
     net/netconsts.h
     net/partyhandler.h
+    net/pethandler.h
     net/playerhandler.h
     net/sdltcpnet.cpp
     net/sdltcpnet.h
@@ -917,6 +918,8 @@ SET(SRCS_TMWA
     net/tmwa/npchandler.h
     net/tmwa/partyhandler.cpp
     net/tmwa/partyhandler.h
+    net/tmwa/pethandler.cpp
+    net/tmwa/pethandler.h
     net/tmwa/playerhandler.cpp
     net/tmwa/playerhandler.h
     net/tmwa/protocol.h

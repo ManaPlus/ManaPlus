@@ -51,6 +51,7 @@
 #include "net/gamehandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
+#include "net/pethandler.h"
 #include "net/playerhandler.h"
 
 #include "resources/iteminfo.h"
@@ -1643,7 +1644,8 @@ void Being::petLogic()
     if (divX >= warpDist || divY >= warpDist)
     {
         setAction(Being::STAND, 0);
-        setTileCoords(dstX0, dstY0);
+        setTileCoords(dstX, dstY);
+        Net::getPetHandler()->spawn(mOwner, dstX, dstY);
     }
     else if (divX > followDist || divY > followDist)
     {
@@ -1688,6 +1690,7 @@ void Being::petLogic()
             }
         }
         setPath(mMap->findPath(mX, mY, dstX, dstY, walkMask));
+        Net::getPetHandler()->move(mOwner, mX, mY, dstX, dstY);
     }
 }
 
@@ -3131,10 +3134,11 @@ void Being::addPet(const int id)
         id, ActorSprite::PET, 0);
     if (being)
     {
-        being->setTileCoords(getTileX(), getTileY());
+        being->setTileCoords(mX, mY);
         being->setOwner(this);
         mPetId = id;
         mPet = being;
+        Net::getPetHandler()->spawn(this, mX, mY);
     }
 }
 

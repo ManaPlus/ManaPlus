@@ -48,6 +48,7 @@ Net::GameHandler *gameHandler = nullptr;
 Net::GuildHandler *guildHandler = nullptr;
 Net::NpcHandler *npcHandler = nullptr;
 Net::PartyHandler *partyHandler = nullptr;
+Net::PetHandler *petHandler = nullptr;
 Net::PlayerHandler *playerHandler = nullptr;
 Net::SkillHandler *skillHandler = nullptr;
 Net::TradeHandler *tradeHandler = nullptr;
@@ -102,6 +103,11 @@ Net::NpcHandler *Net::getNpcHandler()
 Net::PartyHandler *Net::getPartyHandler()
 {
     return partyHandler;
+}
+
+Net::PetHandler *Net::getPetHandler()
+{
+    return petHandler;
 }
 
 Net::PlayerHandler *Net::getPlayerHandler()

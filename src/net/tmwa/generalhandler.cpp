@@ -48,6 +48,7 @@
 #include "net/tmwa/network.h"
 #include "net/tmwa/npchandler.h"
 #include "net/tmwa/partyhandler.h"
+#include "net/tmwa/pethandler.h"
 #include "net/tmwa/playerhandler.h"
 #include "net/tmwa/protocol.h"
 #include "net/tmwa/tradehandler.h"
@@ -80,6 +81,7 @@ GeneralHandler::GeneralHandler() :
     mLoginHandler(new LoginHandler),
     mNpcHandler(new NpcHandler),
     mPartyHandler(new PartyHandler),
+    mPetHandler(new PetHandler),
     mPlayerHandler(new PlayerHandler),
     mSkillHandler(new SkillHandler),
     mTradeHandler(new TradeHandler),
@@ -195,6 +197,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mSkillHandler.get());
     mNetwork->registerHandler(mTradeHandler.get());
     mNetwork->registerHandler(mPartyHandler.get());
+    mNetwork->registerHandler(mPetHandler.get());
     mNetwork->registerHandler(mQuestHandler.get());
 }
 

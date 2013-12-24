@@ -559,6 +559,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/netconsts.h \
 	      net/npchandler.h \
 	      net/partyhandler.h \
+	      net/pethandler.h \
 	      net/playerhandler.h \
 	      net/sdltcpnet.cpp \
 	      net/sdltcpnet.h \
@@ -975,6 +976,8 @@ manaplus_SOURCES += \
 	      net/tmwa/npchandler.h \
 	      net/tmwa/partyhandler.cpp \
 	      net/tmwa/partyhandler.h \
+	      net/tmwa/pethandler.cpp \
+	      net/tmwa/pethandler.h \
 	      net/tmwa/playerhandler.cpp \
 	      net/tmwa/playerhandler.h \
 	      net/tmwa/protocol.h \
