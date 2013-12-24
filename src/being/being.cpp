@@ -1615,8 +1615,10 @@ void Being::petLogic()
 {
     if (!mOwner || !mMap || !mInfo)
         return;
-    int dstX = mOwner->getTileX();
-    int dstY = mOwner->getTileY();
+    const int dstX0 = mOwner->getTileX();
+    const int dstY0 = mOwner->getTileY();
+    int dstX = dstX0;
+    int dstY = dstY0;
     const int followDist = mInfo->getStartFollowDist();
     const int dist = mInfo->getFollowDist();
     const int divX = abs(dstX - mX);
@@ -1647,7 +1649,23 @@ void Being::petLogic()
             dstY = mY;
         }
 
-        setPath(mMap->findPath(mX, mY, dstX, dstY, getWalkMask()));
+        const int walkMask = getWalkMask();
+        if (!mMap->getWalk(dstX, dstY, walkMask))
+        {
+            if (dstX != dstX0)
+            {
+                dstX = dstX0;
+                if (!mMap->getWalk(dstX, dstY, walkMask))
+                    dstY = dstY0;
+            }
+            else if (dstY != dstY0)
+            {
+                dstY = dstY0;
+                if (!mMap->getWalk(dstX, dstY, walkMask))
+                    dstX = dstX0;
+            }
+        }
+        setPath(mMap->findPath(mX, mY, dstX, dstY, walkMask));
     }
 }
 
