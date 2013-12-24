@@ -1452,7 +1452,7 @@ std::string ChatWindow::autoCompleteHistory(const std::string &partName) const
     return autoComplete(nameList, partName);
 }
 
-void ChatWindow::resortChatLog(std::string line, Own own,
+bool ChatWindow::resortChatLog(std::string line, Own own,
                                const std::string &channel,
                                const bool ignoreRecord,
                                const bool tryRemoveColors)
@@ -1470,7 +1470,7 @@ void ChatWindow::resortChatLog(std::string line, Own own,
         {
             tradeChatTab->chatLog(prefix + line, own,
                 ignoreRecord, tryRemoveColors);
-            return;
+            return false;
         }
 
         size_t idx2 = line.find(": ");
@@ -1481,11 +1481,11 @@ void ChatWindow::resortChatLog(std::string line, Own own,
             {
                 // ignore special message formats.
                 if (line.find(": \302\202\302") != std::string::npos)
-                    return;
+                    return false;
                 line = line.erase(idx + 2, 2);
                 tradeChatTab->chatLog(prefix + line, own, ignoreRecord,
                     tryRemoveColors);
-                return;
+                return false;
             }
         }
 
@@ -1502,7 +1502,7 @@ void ChatWindow::resortChatLog(std::string line, Own own,
                     {
                         tradeChatTab->chatLog(prefix + line, own,
                             ignoreRecord, tryRemoveColors);
-                        return;
+                        return false;
                     }
                 }
             }
@@ -1533,6 +1533,7 @@ void ChatWindow::resortChatLog(std::string line, Own own,
     {
         localChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
     }
+    return true;
 }
 
 void ChatWindow::battleChatLog(const std::string &line, Own own,

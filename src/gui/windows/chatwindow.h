@@ -233,7 +233,7 @@ class ChatWindow final : public Window,
 
         void ignoreAllWhispers();
 
-        void resortChatLog(std::string line, Own own,
+        bool resortChatLog(std::string line, Own own,
                            const std::string &channel,
                            const bool ignoreRecord,
                            const bool tryRemoveColors);

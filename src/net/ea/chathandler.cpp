@@ -310,17 +310,18 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg,
 
     trim(chatMsg);
 
+    bool allow(true);
     // We use getIgnorePlayer instead of ignoringPlayer here
     // because ignorePlayer' side effects are triggered
     // right below for Being::IGNORE_SPEECH_FLOAT.
     if (player_relations.checkPermissionSilently(sender_name,
         PlayerRelation::SPEECH_LOG) && chatWindow)
     {
-        chatWindow->resortChatLog(removeColors(sender_name)
+        allow = chatWindow->resortChatLog(removeColors(sender_name)
             .append(" : ").append(chatMsg), BY_OTHER, channel, false, true);
     }
 
-    if (player_relations.hasPermission(sender_name,
+    if (allow && player_relations.hasPermission(sender_name,
         PlayerRelation::SPEECH_FLOAT))
     {
         being->setSpeech(chatMsg, channel);
@@ -352,9 +353,10 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
 
     if (normalChat)
     {
+        bool allow(true);
         if (chatWindow)
         {
-            chatWindow->resortChatLog(chatMsg, BY_PLAYER,
+            allow = chatWindow->resortChatLog(chatMsg, BY_PLAYER,
                 channel, false, true);
         }
 
@@ -386,7 +388,7 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
 
         if (player_node)
         {
-            if (chatWindow || mShowMotd)
+            if ((chatWindow || mShowMotd) && allow)
                 player_node->setSpeech(chatMsg, channel);
         }
     }
