@@ -92,6 +92,11 @@ void PETDB::load()
         currentInfo->setWalkSpeed(XML::getProperty(petNode,
             "walkSpeed", 0));
 
+        currentInfo->setTargetOffsetX(XML::getProperty(petNode,
+            "offsetX", 0));
+        currentInfo->setTargetOffsetY(XML::getProperty(petNode,
+            "offsetY", 1));
+
 
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, petNode)

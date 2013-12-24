@@ -1644,6 +1644,7 @@ void Being::petLogic()
     if (divX >= warpDist || divY >= warpDist)
     {
         setAction(Being::STAND, 0);
+        fixPetSpawnPos(dstX, dstY);
         setTileCoords(dstX, dstY);
         Net::getPetHandler()->spawn(mOwner, dstX, dstY);
     }
@@ -3134,11 +3135,14 @@ void Being::addPet(const int id)
         id, ActorSprite::PET, 0);
     if (being)
     {
-        being->setTileCoords(mX, mY);
         being->setOwner(this);
         mPetId = id;
         mPet = being;
-        Net::getPetHandler()->spawn(this, mX, mY);
+        int dstX = mX;
+        int dstY = mY;
+        being->fixPetSpawnPos(dstX, dstY);
+        being->setTileCoords(dstX, dstY);
+        Net::getPetHandler()->spawn(this, dstX, dstY);
     }
 }
 
@@ -3173,6 +3177,37 @@ void Being::updatePets()
             return;
         }
     }
+}
+
+void Being::fixPetSpawnPos(int &dstX, int &dstY) const
+{
+    if (!mInfo || !mOwner)
+        return;
+
+    const int offsetX1 = mInfo->getTargetOffsetX();
+    const int offsetY1 = mInfo->getTargetOffsetY();
+    int offsetX = offsetX1;
+    int offsetY = offsetY1;
+    switch (mOwner->getDirection())
+    {
+        case LEFT:
+            offsetX = offsetY1;
+            offsetY = -offsetX1;
+            break;
+        case RIGHT:
+            offsetX = offsetY1;
+            offsetY = offsetX1;
+            break;
+        case UP:
+            offsetY = -offsetY;
+            break;
+        default:
+        case DOWN:
+            break;
+    }
+    logger->log("fix offset: %d,%d", offsetX, offsetY);
+    dstX += offsetX;
+    dstY += offsetY;
 }
 
 void Being::playSfx(const SoundInfo &sound, Being *const being,
