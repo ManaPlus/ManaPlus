@@ -60,6 +60,8 @@ BeingInfo::BeingInfo() :
     mAvatarId(0),
     mWidth(0),
     mHeight(0),
+    mStartFollowDist(3),
+    mFollowDist(1),
     mStaticMaxHP(false),
     mTargetSelection(true)
 {

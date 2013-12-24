@@ -1617,8 +1617,8 @@ void Being::petLogic()
         return;
     int dstX = mOwner->getTileX();
     int dstY = mOwner->getTileY();
-    const int followDist = 3;
-    const int dist = 1;
+    const int followDist = mInfo->getStartFollowDist();
+    const int dist = mInfo->getFollowDist();
     const int divX = abs(dstX - mX);
     const int divY = abs(dstY - mY);
     if (divX > followDist || divY > followDist)

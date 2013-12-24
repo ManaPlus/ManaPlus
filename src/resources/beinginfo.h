@@ -224,6 +224,18 @@ class BeingInfo final
         void setHeight(const int n)
         { mHeight = n; }
 
+        void setStartFollowDist(const int n)
+        { mStartFollowDist = n; }
+
+        int getStartFollowDist()
+        { return mStartFollowDist; }
+
+        void setFollowDist(const int n)
+        { mFollowDist = n; }
+
+        int getFollowDist()
+        { return mFollowDist; }
+
         void setColorsList(const std::string &name);
 
         std::string getColor(const int idx) const;
@@ -254,6 +266,8 @@ class BeingInfo final
         uint16_t mAvatarId;
         int mWidth;
         int mHeight;
+        int mStartFollowDist;
+        int mFollowDist;
         bool mStaticMaxHP;
         bool mTargetSelection;
 };

@@ -82,6 +82,11 @@ void PETDB::load()
         currentInfo->setDeadSortOffsetY(XML::getProperty(petNode,
             "deadSortOffsetY", 31));
 
+        currentInfo->setStartFollowDist(XML::getProperty(petNode,
+            "startFollowDistance", 3));
+        currentInfo->setFollowDist(XML::getProperty(petNode,
+            "followDistance", 1));
+
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, petNode)
         {
