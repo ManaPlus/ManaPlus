@@ -1592,6 +1592,9 @@ void Being::logic()
             actorManager->destroy(this);
     }
 
+    if (mPet)
+        mPet->petLogic();
+
     const SoundInfo *const sound = mNextSound.sound;
     if (sound)
     {
@@ -1606,6 +1609,46 @@ void Being::logic()
     }
 
     BLOCK_END("Being::logic")
+}
+
+void Being::petLogic()
+{
+    if (!mOwner || !mMap || !mInfo)
+        return;
+    int dstX = mOwner->getTileX();
+    int dstY = mOwner->getTileY();
+    const int followDist = 3;
+    const int dist = 1;
+    const int divX = abs(dstX - mX);
+    const int divY = abs(dstY - mY);
+    if (divX > followDist || divY > followDist)
+    {
+        if (divX > followDist)
+        {
+            if (dstX > mX + dist)
+                dstX -= dist;
+            else if (dstX + dist <= mX)
+                dstX += dist;
+        }
+        else
+        {
+            dstX = mX;
+        }
+
+        if (divY > followDist)
+        {
+            if (dstY > mY + dist)
+                dstY -= dist;
+            else if (dstX + dist <= mX)
+                dstY += dist;
+        }
+        else
+        {
+            dstY = mY;
+        }
+
+        setPath(mMap->findPath(mX, mY, dstX, dstY, getWalkMask()));
+    }
 }
 
 void Being::drawEmotion(Graphics *const graphics, const int offsetX,

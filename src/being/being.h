@@ -412,6 +412,8 @@ class Being : public ActorSprite, public ConfigListener
          */
         virtual void logic() override;
 
+        void petLogic();
+
         /**
          * Draws the speech text above the being.
          */
