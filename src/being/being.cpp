@@ -1650,28 +1650,34 @@ void Being::petLogic()
     }
     else if (divX > followDist || divY > followDist)
     {
-        if (divX > followDist)
+        if (!dist)
         {
-            if (dstX > mX + dist)
-                dstX -= dist;
-            else if (dstX + dist <= mX)
-                dstX += dist;
+            fixPetSpawnPos(dstX, dstY);
         }
         else
         {
-            dstX = mX;
-        }
-
-        if (divY > followDist)
-        {
-            if (dstY > mY + dist)
-                dstY -= dist;
-            else if (dstX + dist <= mX)
-                dstY += dist;
-        }
-        else
-        {
-            dstY = mY;
+            if (divX > followDist)
+            {
+                if (dstX > mX + dist)
+                    dstX -= dist;
+                else if (dstX + dist <= mX)
+                    dstX += dist;
+            }
+            else
+            {
+                dstX = mX;
+            }
+            if (divY > followDist)
+            {
+                if (dstY > mY + dist)
+                    dstY -= dist;
+                else if (dstX + dist <= mX)
+                    dstY += dist;
+            }
+            else
+            {
+                dstY = mY;
+            }
         }
 
         const int walkMask = getWalkMask();
@@ -3191,7 +3197,7 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
     switch (mOwner->getDirection())
     {
         case LEFT:
-            offsetX = offsetY1;
+            offsetX = -offsetY1;
             offsetY = -offsetX1;
             break;
         case RIGHT:

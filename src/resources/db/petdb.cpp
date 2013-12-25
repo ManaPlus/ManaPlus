@@ -85,7 +85,7 @@ void PETDB::load()
         currentInfo->setStartFollowDist(XML::getProperty(petNode,
             "startFollowDistance", 3));
         currentInfo->setFollowDist(XML::getProperty(petNode,
-            "followDistance", 1));
+            "followDistance", 0));
         currentInfo->setWarpDist(XML::getProperty(petNode,
             "warpDistance", 11));
 
