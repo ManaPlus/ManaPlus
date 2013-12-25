@@ -248,6 +248,18 @@ class BeingInfo final
         int getWarpDist() const A_WARN_UNUSED
         { return mWarpDist; }
 
+        void setSitOffsetX(const int n)
+        { mSitOffsetX = n; }
+
+        int getSitOffsetX() const A_WARN_UNUSED
+        { return mSitOffsetX; }
+
+        void setSitOffsetY(const int n)
+        { mSitOffsetY = n; }
+
+        int getSitOffsetY() const A_WARN_UNUSED
+        { return mSitOffsetY; }
+
         void setColorsList(const std::string &name);
 
         std::string getColor(const int idx) const A_WARN_UNUSED;
@@ -282,6 +294,8 @@ class BeingInfo final
         int mFollowDist;
         int mWarpDist;
         int mWalkSpeed;
+        int mSitOffsetX;
+        int mSitOffsetY;
         bool mStaticMaxHP;
         bool mTargetSelection;
 };

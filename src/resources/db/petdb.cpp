@@ -96,6 +96,10 @@ void PETDB::load()
             "offsetX", 0));
         currentInfo->setTargetOffsetY(XML::getProperty(petNode,
             "offsetY", 1));
+        currentInfo->setSitOffsetX(XML::getProperty(petNode,
+            "sitOffsetX", 0));
+        currentInfo->setSitOffsetY(XML::getProperty(petNode,
+            "sitOffsetY", 1));
 
 
         SpriteDisplay display;

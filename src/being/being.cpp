@@ -1698,8 +1698,11 @@ void Being::petLogic()
                     dstX = dstX0;
             }
         }
-        setPath(mMap->findPath(mX, mY, dstX, dstY, walkMask));
-        Net::getPetHandler()->move(mOwner, mX, mY, dstX, dstY);
+        if (mX != dstX || mY != dstY)
+        {
+            setPath(mMap->findPath(mX, mY, dstX, dstY, walkMask));
+            Net::getPetHandler()->move(mOwner, mX, mY, dstX, dstY);
+        }
     }
 }
 
@@ -3187,13 +3190,30 @@ void Being::updatePets()
     }
 }
 
+void Being::updatePet()
+{
+    if (mPet)
+        mPet->petLogic();
+}
+
 void Being::fixPetSpawnPos(int &dstX, int &dstY) const
 {
     if (!mInfo || !mOwner)
         return;
 
-    const int offsetX1 = mInfo->getTargetOffsetX();
-    const int offsetY1 = mInfo->getTargetOffsetY();
+    int offsetX1;
+    int offsetY1;
+    if (mOwner->getCurrentAction() == SIT)
+    {
+        offsetX1 = mInfo->getSitOffsetX();
+        offsetY1 = mInfo->getSitOffsetY();
+    }
+    else
+    {
+        offsetX1 = mInfo->getTargetOffsetX();
+        offsetY1 = mInfo->getTargetOffsetY();
+    }
+
     int offsetX = offsetX1;
     int offsetY = offsetY1;
     switch (mOwner->getDirection())
@@ -3214,7 +3234,6 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
         case DOWN:
             break;
     }
-    logger->log("fix offset: %d,%d", offsetX, offsetY);
     dstX += offsetX;
     dstY += offsetY;
 }
