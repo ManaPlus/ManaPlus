@@ -354,6 +354,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("buySortOrder", 0);
     AddDEF("showmotd", false);
     AddDEF("playMapAnimations", true);
+    AddDEF("usepets", true);
     return configData;
 }
 

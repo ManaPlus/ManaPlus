@@ -3185,7 +3185,7 @@ void Being::addEffect(const std::string &name)
 
 void Being::addPet(const int id)
 {
-    if (!actorManager)
+    if (!actorManager || !config.getBoolValue("usepets"))
         return;
 
     removePet();

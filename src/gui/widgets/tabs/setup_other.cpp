@@ -243,6 +243,10 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enable advert protocol"), "",
         "enableAdvert", this, "enableAdvertEvent");
 
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Enabled pets support"),
+        "", "usepets", this, "usepetsEvent");
+
     new SetupItemCheckBox(_("Enable weight notifications"), "",
         "weightMsg", this, "weightMsgEvent");
 
