@@ -881,8 +881,6 @@ class Being : public ActorSprite, public ConfigListener
 
         void updatePets();
 
-        void updatePet();
-
         void fixPetSpawnPos(int &dstX, int &dstY) const;
 
         Being *getPet()

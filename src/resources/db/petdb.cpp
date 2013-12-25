@@ -101,6 +101,8 @@ void PETDB::load()
         currentInfo->setSitOffsetY(XML::getProperty(petNode,
             "sitOffsetY", 1));
 
+        currentInfo->setThinkTime(XML::getProperty(petNode,
+            "thinkTime", 500) / 10);
 
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, petNode)

@@ -515,7 +515,6 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
             if (srcBeing)
             {
                 srcBeing->setAction(Being::SIT, 0);
-                srcBeing->updatePet();
                 if (srcBeing->getType() == Being::PLAYER)
                 {
                     srcBeing->setMoveTime();

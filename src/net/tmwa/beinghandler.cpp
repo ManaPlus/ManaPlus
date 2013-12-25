@@ -612,7 +612,6 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
             case 2:
                 dstBeing->setAction(Being::SIT, 0);
-                dstBeing->updatePet();
                 player_node->imitateAction(dstBeing, Being::SIT);
                 break;
 

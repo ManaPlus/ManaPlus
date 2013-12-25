@@ -1337,8 +1337,6 @@ void Being::setDirection(const uint8_t direction)
     if (mAnimationEffect)
         mAnimationEffect->setSpriteDirection(dir);
     recalcSpritesOrder();
-    if (mPet)
-        mPet->petLogic();
 }
 
 uint8_t Being::calcDirection() const
@@ -1633,6 +1631,14 @@ void Being::petLogic()
 {
     if (!mOwner || !mMap || !mInfo)
         return;
+
+    const int time = tick_time;
+    const int thinkTime = mInfo->getThinkTime();
+    if (abs(mMoveTime - time) < thinkTime)
+        return;
+
+    mMoveTime = time;
+
     const int dstX0 = mOwner->getTileX();
     const int dstY0 = mOwner->getTileY();
     int dstX = dstX0;
@@ -3188,12 +3194,6 @@ void Being::updatePets()
             return;
         }
     }
-}
-
-void Being::updatePet()
-{
-    if (mPet)
-        mPet->petLogic();
 }
 
 void Being::fixPetSpawnPos(int &dstX, int &dstY) const

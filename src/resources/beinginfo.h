@@ -260,6 +260,12 @@ class BeingInfo final
         int getSitOffsetY() const A_WARN_UNUSED
         { return mSitOffsetY; }
 
+        void setThinkTime(const int n)
+        { mThinkTime = n; }
+
+        int getThinkTime() const A_WARN_UNUSED
+        { return mThinkTime; }
+
         void setColorsList(const std::string &name);
 
         std::string getColor(const int idx) const A_WARN_UNUSED;
@@ -296,6 +302,7 @@ class BeingInfo final
         int mWalkSpeed;
         int mSitOffsetX;
         int mSitOffsetY;
+        int mThinkTime;
         bool mStaticMaxHP;
         bool mTargetSelection;
 };
