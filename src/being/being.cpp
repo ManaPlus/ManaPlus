@@ -3200,14 +3200,15 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
     {
         case LEFT:
             offsetX = -offsetY1;
-            offsetY = -offsetX1;
+            offsetY = offsetX1;
             break;
         case RIGHT:
             offsetX = offsetY1;
-            offsetY = offsetX1;
+            offsetY = -offsetX1;
             break;
         case UP:
             offsetY = -offsetY;
+            offsetX = -offsetX;
             break;
         default:
         case DOWN:
