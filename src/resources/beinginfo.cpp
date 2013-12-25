@@ -66,6 +66,9 @@ BeingInfo::BeingInfo() :
     mWalkSpeed(0),
     mSitOffsetX(0),
     mSitOffsetY(0),
+    mThinkTime(50),
+    mDirectionType(1),
+    mSitDirectionType(1),
     mStaticMaxHP(false),
     mTargetSelection(true)
 {

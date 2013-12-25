@@ -1713,7 +1713,8 @@ void Being::petLogic()
     }
     if (mAction == STAND)
     {
-        const int directionType = mInfo->getDirectionType();
+        const int directionType = mOwner->getCurrentAction() != SIT
+            ? mInfo->getDirectionType() : mInfo->getSitDirectionType();
         int newDir = 0;
         switch (directionType)
         {

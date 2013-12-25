@@ -103,8 +103,11 @@ void PETDB::load()
 
         currentInfo->setThinkTime(XML::getProperty(petNode,
             "thinkTime", 500) / 10);
+
         currentInfo->setDirectionType(XML::getProperty(petNode,
             "directionType", 1));
+        currentInfo->setSitDirectionType(XML::getProperty(petNode,
+            "sitDirectionType", 1));
 
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, petNode)

@@ -272,6 +272,12 @@ class BeingInfo final
         int getDirectionType() const A_WARN_UNUSED
         { return mDirectionType; }
 
+        void setSitDirectionType(const int n)
+        { mSitDirectionType = n; }
+
+        int getSitDirectionType() const A_WARN_UNUSED
+        { return mSitDirectionType; }
+
         void setColorsList(const std::string &name);
 
         std::string getColor(const int idx) const A_WARN_UNUSED;
@@ -310,6 +316,7 @@ class BeingInfo final
         int mSitOffsetY;
         int mThinkTime;
         int mDirectionType;
+        int mSitDirectionType;
         bool mStaticMaxHP;
         bool mTargetSelection;
 };
