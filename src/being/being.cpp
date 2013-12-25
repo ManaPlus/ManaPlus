@@ -1337,6 +1337,8 @@ void Being::setDirection(const uint8_t direction)
     if (mAnimationEffect)
         mAnimationEffect->setSpriteDirection(dir);
     recalcSpritesOrder();
+    if (mPet)
+        mPet->petLogic();
 }
 
 uint8_t Being::calcDirection() const
