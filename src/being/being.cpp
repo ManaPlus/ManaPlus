@@ -1708,7 +1708,47 @@ void Being::petLogic()
         {
             setPath(mMap->findPath(mX, mY, dstX, dstY, walkMask));
             Net::getPetHandler()->move(mOwner, mX, mY, dstX, dstY);
+            return;
         }
+    }
+    if (mAction == STAND)
+    {
+        const int directionType = mInfo->getDirectionType();
+        int newDir = 0;
+        switch (directionType)
+        {
+            case 0:
+            default:
+                return;
+
+            case 1:
+                newDir = mOwner->getDirection();
+                break;
+
+            case 2:
+                if (dstX > dstX0)
+                    newDir |= LEFT;
+                else if (dstX < dstX0)
+                    newDir |= RIGHT;
+                if (dstY > dstY0)
+                    newDir != UP;
+                else if (dstY < dstY0)
+                    newDir != DOWN;
+                break;
+
+            case 3:
+                if (dstX > dstX0)
+                    newDir |= RIGHT;
+                else if (dstX < dstX0)
+                    newDir |= LEFT;
+                if (dstY > dstY0)
+                    newDir != DOWN;
+                else if (dstY < dstY0)
+                    newDir != UP;
+                break;
+        }
+        if (newDir && newDir != getDirection())
+            setDirection(newDir);
     }
 }
 
