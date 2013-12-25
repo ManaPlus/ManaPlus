@@ -1732,9 +1732,9 @@ void Being::petLogic()
                 else if (dstX < dstX0)
                     newDir |= RIGHT;
                 if (dstY > dstY0)
-                    newDir != UP;
+                    newDir |= UP;
                 else if (dstY < dstY0)
-                    newDir != DOWN;
+                    newDir |= DOWN;
                 break;
 
             case 3:
@@ -1743,9 +1743,9 @@ void Being::petLogic()
                 else if (dstX < dstX0)
                     newDir |= LEFT;
                 if (dstY > dstY0)
-                    newDir != DOWN;
+                    newDir |= DOWN;
                 else if (dstY < dstY0)
-                    newDir != UP;
+                    newDir |= UP;
                 break;
         }
         if (newDir && newDir != getDirection())
