@@ -48,6 +48,7 @@ BeingPopup::BeingPopup() :
     mBeingName->setPosition(0, 0);
 
     const int fontHeight = mBeingName->getHeight();
+    setMinHeight(fontHeight);
 
     // Being's party
     mBeingParty->setPosition(0, fontHeight);
