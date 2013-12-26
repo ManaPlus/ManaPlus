@@ -604,7 +604,7 @@ const ItemDB::ItemInfos &ItemDB::getItemInfos()
 int parseSpriteName(const std::string &name)
 {
     int id = -1;
-    if (name == "body" || name == "race")
+    if (name == "race" || name == "type")
     {
         id = 0;
     }
