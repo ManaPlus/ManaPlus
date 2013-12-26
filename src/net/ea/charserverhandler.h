@@ -72,13 +72,14 @@ class CharServerHandler : public Net::CharServerHandler
 
         virtual void processCharDeleteFailed(Net::MessageIn &msg);
 
-        virtual void processCharMapInfo(Net::MessageIn &msg,
-                                        Network *const network,
-                                        ServerInfo &mapServer);
+        virtual void processCharMapInfo(Net::MessageIn &restrict msg,
+                                        Network *restrict const network,
+                                        ServerInfo &restrict mapServer);
 
-        virtual void processChangeMapServer(Net::MessageIn &msg,
-                                            Network *const network,
-                                            ServerInfo &mapServer) const;
+        virtual void processChangeMapServer(Net::MessageIn &restrict msg,
+                                            Network *restrict const network,
+                                            ServerInfo &restrict mapServer)
+                                            const;
 
         virtual void clear() override final;
 

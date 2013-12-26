@@ -232,9 +232,9 @@ void CharServerHandler::clear()
     mCharacters.clear();
 }
 
-void CharServerHandler::processCharMapInfo(Net::MessageIn &msg,
-                                           Network *const network,
-                                           ServerInfo &server)
+void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg,
+                                           Network *restrict const network,
+                                           ServerInfo &restrict server)
 {
     BLOCK_START("CharServerHandler::processCharMapInfo")
 //    msg.skip(4); // CharID, must be the same as player_node->charID
@@ -267,9 +267,10 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &msg,
     BLOCK_END("CharServerHandler::processCharMapInfo")
 }
 
-void CharServerHandler::processChangeMapServer(Net::MessageIn &msg,
-                                               Network *const network,
-                                               ServerInfo &server) const
+void CharServerHandler::processChangeMapServer(Net::MessageIn &restrict msg,
+                                               Network *restrict const network,
+                                               ServerInfo &restrict server)
+                                               const
 {
     BLOCK_START("CharServerHandler::processChangeMapServer")
     GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
