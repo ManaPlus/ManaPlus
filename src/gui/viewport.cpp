@@ -849,7 +849,8 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
 
     mHoverBeing = actorManager->findBeingByPixel(x, y, true);
     if (mHoverBeing && (mHoverBeing->getType() == Being::PLAYER
-        || mHoverBeing->getType() == Being::NPC))
+        || mHoverBeing->getType() == Being::NPC
+        || mHoverBeing->getType() == Being::PET))
     {
         mTextPopup->setVisible(false);
         if (mShowBeingPopup)

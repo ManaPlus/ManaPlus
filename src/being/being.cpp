@@ -296,6 +296,7 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
         mInfo = PETDB::get(mId);
         if (mInfo)
         {
+            setName(mInfo->getName());
             setupSpriteDisplay(mInfo->getDisplay(), false);
             mYDiff = mInfo->getSortOffsetY();
             const int speed = mInfo->getWalkSpeed();
