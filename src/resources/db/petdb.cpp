@@ -22,13 +22,14 @@
 
 #include "resources/db/petdb.h"
 
+#include "configuration.h"
 #include "logger.h"
 
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 
+#include "utils/gettext.h"
 #include "utils/dtor.h"
-#include "configuration.h"
 
 #include "debug.h"
 
@@ -74,8 +75,12 @@ void PETDB::load()
 
         BeingInfo *const currentInfo = new BeingInfo;
 
+        currentInfo->setName(XML::langProperty(petNode,
+            // TRANSLATORS: unknown info name
+            "name", _("pet")));
+
         currentInfo->setTargetSelection(XML::getBoolProperty(petNode,
-            "targetSelection", false));
+            "targetSelection", true));
 
         BeingCommon::readBasicAttributes(currentInfo, petNode, "talk");
 
