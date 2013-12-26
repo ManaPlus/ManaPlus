@@ -104,7 +104,9 @@ int PacketCounters::getOutPackets()
 }
 
 
-void PacketCounters::updateCounter(int &currentSec, int &calc, int &counter)
+void PacketCounters::updateCounter(int &restrict currentSec,
+                                   int &restrict calc,
+                                   int &restrict counter)
 {
     const int idx = cur_time % 60;
     if (currentSec != idx)

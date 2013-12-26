@@ -58,7 +58,9 @@ public:
     static int mOutPacketsCalc;
 
 private:
-    static void updateCounter(int &currentSec, int &calc, int &counter);
+    static void updateCounter(int &restrict currentSec,
+                              int &restrict calc,
+                              int &restrict counter);
 };
 
 #endif  // NET_PACKETCOUNTERS_H
