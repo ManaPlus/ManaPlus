@@ -52,8 +52,8 @@ GuildChatTab::~GuildChatTab()
     CHECKLISTENERS
 }
 
-bool GuildChatTab::handleCommand(const std::string &type,
-                                 const std::string &args)
+bool GuildChatTab::handleCommand(const std::string &restrict type,
+                                 const std::string &restrict args)
 {
     if (type == "help")
     {

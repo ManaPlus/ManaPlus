@@ -86,7 +86,8 @@ void PartyTab::showHelp()
     chatLog(_("/exp > Show/change party experience sharing options"));
 }
 
-bool PartyTab::handleCommand(const std::string &type, const std::string &args)
+bool PartyTab::handleCommand(const std::string &restrict type,
+                             const std::string &restrict args)
 {
     if (type == "help")
     {

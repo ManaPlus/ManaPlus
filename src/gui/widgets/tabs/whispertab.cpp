@@ -102,8 +102,8 @@ void WhisperTab::showHelp()
     chatLog(_("/close > Close the whisper tab"));
 }
 
-bool WhisperTab::handleCommand(const std::string &type,
-                               const std::string &args)
+bool WhisperTab::handleCommand(const std::string &restrict type,
+                               const std::string &restrict args)
 {
     if (type == "help")
     {

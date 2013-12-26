@@ -60,7 +60,8 @@ GuildTab::~GuildTab()
     CHECKLISTENERS
 }
 
-bool GuildTab::handleCommand(const std::string &type, const std::string &args)
+bool GuildTab::handleCommand(const std::string &restrict type,
+                             const std::string &restrict args)
 {
     if (type == "help")
     {

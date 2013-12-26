@@ -122,8 +122,8 @@ class ChatTab : public Tab
          * @returns true  if the command was handled
          *          false if the command was not handled
          */
-        virtual bool handleCommand(const std::string &type A_UNUSED,
-                                   const std::string &args A_UNUSED)
+        virtual bool handleCommand(const std::string &restrict type A_UNUSED,
+                                   const std::string &restrict args A_UNUSED)
         { return false; }
 
         /**

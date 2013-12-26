@@ -37,8 +37,8 @@ class GuildChatTab final : public ChatTab, public ConfigListener
 
         ~GuildChatTab();
 
-        bool handleCommand(const std::string &type,
-                           const std::string &args) override final;
+        bool handleCommand(const std::string &restrict type,
+                           const std::string &restrict args) override final;
 
         void showHelp() override;
 
