@@ -53,8 +53,8 @@ class GuildHandler
 
         virtual void leave(const int guildId) const = 0;
 
-        virtual void kick(const GuildMember *const member,
-                          const std::string &reason) const = 0;
+        virtual void kick(const GuildMember *restrict const member,
+                          const std::string &restrict reason) const = 0;
 
         virtual void chat(const int guildId,
                           const std::string &text) const = 0;
@@ -76,8 +76,9 @@ class GuildHandler
         virtual void endAlliance(const int guildId,
                                  const int otherGuildId) const = 0;
 
-        virtual void changeNotice(const int guildId, const std::string &msg1,
-                                  const std::string &msg2) const = 0;
+        virtual void changeNotice(const int guildId,
+                                  const std::string &restrict msg1,
+                                  const std::string &restrict msg2) const = 0;
 
         virtual void clear() const = 0;
 
