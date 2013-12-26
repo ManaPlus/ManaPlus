@@ -107,8 +107,8 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("ChatHandler::handleMessage")
 }
 
-void ChatHandler::talk(const std::string &text,
-                       const std::string &channel) const
+void ChatHandler::talk(const std::string &restrict text,
+                       const std::string &restrict channel) const
 {
     if (!player_node)
         return;
@@ -142,8 +142,8 @@ void ChatHandler::talkRaw(const std::string &mes) const
     outMsg.writeString(mes, static_cast<int>(mes.length()));
 }
 
-void ChatHandler::privateMessage(const std::string &recipient,
-                                 const std::string &text)
+void ChatHandler::privateMessage(const std::string &restrict recipient,
+                                 const std::string &restrict text)
 {
     MessageOut outMsg(CMSG_CHAT_WHISPER);
     outMsg.writeInt16(static_cast<int16_t>(text.length() + 28));
@@ -193,7 +193,8 @@ void ChatHandler::sendRaw(const std::string &args) const
     delete outMsg;
 }
 
-void ChatHandler::processRaw(MessageOut &outMsg, const std::string &line)
+void ChatHandler::processRaw(MessageOut &restrict outMsg,
+                             const std::string &restrict line)
 {
     size_t pos = line.find(":");
     if (pos == std::string::npos)

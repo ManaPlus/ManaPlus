@@ -40,13 +40,13 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void talk(const std::string &text,
-                  const std::string &channel) const override final;
+        void talk(const std::string &restrict text,
+                  const std::string &restrict channel) const override final;
 
         void talkRaw(const std::string &text) const override final;
 
-        void privateMessage(const std::string &recipient,
-                            const std::string &text) override final;
+        void privateMessage(const std::string &restrict recipient,
+                            const std::string &restrict text) override final;
 
         void who() const override final;
 
@@ -56,7 +56,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void unIgnoreAll() const override final;
 
-        static void processRaw(MessageOut &outMsg, const std::string &line);
+        static void processRaw(MessageOut &restrict outMsg,
+                               const std::string &restrict line);
 };
 
 }  // namespace TmwAthena

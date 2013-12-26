@@ -36,16 +36,16 @@ class ChatHandler
         virtual ~ChatHandler()
         { }
 
-        virtual void talk(const std::string &text,
-                          const std::string &channel) const = 0;
+        virtual void talk(const std::string &restrict text,
+                          const std::string &restrict channel) const = 0;
 
         virtual void talkRaw(const std::string &text) const = 0;
 
         virtual void me(const std::string &restrict text,
                         const std::string &restrict channel) const = 0;
 
-        virtual void privateMessage(const std::string &recipient,
-                                    const std::string &text) = 0;
+        virtual void privateMessage(const std::string &restrict recipient,
+                                    const std::string &restrict text) = 0;
 
         virtual void who() const = 0;
 
