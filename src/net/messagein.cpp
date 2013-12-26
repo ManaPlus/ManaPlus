@@ -59,7 +59,7 @@ unsigned char MessageIn::readInt8()
     return value;
 }
 
-void MessageIn::readCoordinates(uint16_t &x, uint16_t &y)
+void MessageIn::readCoordinates(uint16_t &restrict x, uint16_t &restrict y)
 {
     if (mPos + 3 <= mLength)
     {
@@ -108,7 +108,8 @@ uint8_t MessageIn::fromServerDirection(const uint8_t serverDir)
     }
 }
 
-void MessageIn::readCoordinates(uint16_t &x, uint16_t &y, uint8_t &direction)
+void MessageIn::readCoordinates(uint16_t &restrict x, uint16_t &restrict y,
+                                uint8_t &restrict direction)
 {
     uint8_t serverDir = 0;
     if (mPos + 3 <= mLength)
@@ -138,8 +139,10 @@ void MessageIn::readCoordinates(uint16_t &x, uint16_t &y, uint8_t &direction)
     PacketCounters::incInBytes(3);
 }
 
-void MessageIn::readCoordinatePair(uint16_t &srcX, uint16_t &srcY,
-                                   uint16_t &dstX, uint16_t &dstY)
+void MessageIn::readCoordinatePair(uint16_t &restrict srcX,
+                                   uint16_t &restrict srcY,
+                                   uint16_t &restrict dstX,
+                                   uint16_t &restrict dstY)
 {
     if (mPos + 5 <= mLength)
     {
