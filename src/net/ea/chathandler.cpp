@@ -62,7 +62,8 @@ void ChatHandler::clear()
     mSkipping = true;
 }
 
-void ChatHandler::me(const std::string &text, const std::string &channel) const
+void ChatHandler::me(const std::string &restrict text,
+                     const std::string &restrict channel) const
 {
     // here need string duplication
     std::string action = strprintf("*%s*", text.c_str());
