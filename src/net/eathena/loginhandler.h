@@ -57,9 +57,9 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
         unsigned int getMaxPasswordLength() const override final A_WARN_UNUSED
         { return 24; }
 
-        void changePassword(const std::string &username,
-                            const std::string &oldPassword,
-                            const std::string &newPassword)
+        void changePassword(const std::string &restrict username,
+                            const std::string &restrict oldPassword,
+                            const std::string &restrict newPassword)
                             const override final;
 
         ServerInfo *getCharServer() const override final A_WARN_UNUSED;
@@ -71,9 +71,10 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
         void processUpdateHost2(Net::MessageIn &msg) const;
 
     private:
-        void sendLoginRegister(const std::string &username,
-                               const std::string &password,
-                               const std::string &email) const override final;
+        void sendLoginRegister(const std::string &restrict username,
+                               const std::string &restrict password,
+                               const std::string &restrict email)
+                               const override final;
 };
 
 }  // namespace EAthena

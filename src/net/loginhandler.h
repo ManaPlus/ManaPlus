@@ -88,9 +88,10 @@ class LoginHandler
 
         virtual void changeEmail(const std::string &email) const = 0;
 
-        virtual void changePassword(const std::string &username,
-                                    const std::string &oldPassword,
-                                    const std::string &newPassword) const = 0;
+        virtual void changePassword(const std::string &restrict username,
+                                    const std::string &restrict oldPassword,
+                                    const std::string &restrict newPassword)
+                                    const = 0;
 
         virtual void chooseServer(unsigned int server) const = 0;
 

@@ -125,18 +125,20 @@ void LoginHandler::disconnect()
         mNetwork->disconnect();
 }
 
-void LoginHandler::changePassword(const std::string &username A_UNUSED,
-                                  const std::string &oldPassword,
-                                  const std::string &newPassword) const
+void LoginHandler::changePassword(const std::string &restrict username
+                                  A_UNUSED,
+                                  const std::string &restrict oldPassword,
+                                  const std::string &restrict newPassword)
+                                  const
 {
     MessageOut outMsg(CMSG_CHAR_PASSWORD_CHANGE);
     outMsg.writeStringNoLog(oldPassword, 24);
     outMsg.writeStringNoLog(newPassword, 24);
 }
 
-void LoginHandler::sendLoginRegister(const std::string &username,
-                                     const std::string &password,
-                                     const std::string &email) const
+void LoginHandler::sendLoginRegister(const std::string &restrict username,
+                                     const std::string &restrict password,
+                                     const std::string &restrict email) const
 {
     if (email.empty())
     {
