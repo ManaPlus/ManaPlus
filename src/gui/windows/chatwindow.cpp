@@ -1577,9 +1577,14 @@ void ChatWindow::localPetSay(const std::string &nick, const std::string &text)
     if (!localChatTab)
         return;
     if (pet)
+    {
+        // TRANSLATORS: owners pet name. For example: 4144's pet
         localChatTab->chatLog(strprintf(_("%s's pet"), nick.c_str()), text);
+    }
     else
+    {
         localChatTab->chatLog(nick, text);
+    }
 }
 
 void ChatWindow::initTradeFilter()
