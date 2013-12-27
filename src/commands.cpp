@@ -62,6 +62,7 @@
 #include "net/guildhandler.h"
 #include "net/net.h"
 #include "net/partyhandler.h"
+#include "net/pethandler.h"
 #include "net/tradehandler.h"
 
 #ifdef DEBUG_DUMP_LEAKS1
@@ -721,6 +722,11 @@ impHandler1(emote)
 {
     if (player_node)
         player_node->emote(static_cast<uint8_t>(atoi(args.c_str())));
+}
+
+impHandler1(emotePet)
+{
+    Net::getPetHandler()->emote(static_cast<uint8_t>(atoi(args.c_str())));
 }
 
 impHandler1(away)

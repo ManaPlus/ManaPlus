@@ -38,6 +38,8 @@ class PetHandler
 
         virtual void spawn(const Being *const being,
                            const int x, const int y) const = 0;
+
+        virtual void emote(const uint8_t emoteId) const = 0;
 };
 
 }  // namespace Net

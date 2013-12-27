@@ -81,6 +81,7 @@ namespace Commands
     decHandler(ignoreAll);
     decHandler(outfit);
     decHandler(emote);
+    decHandler(emotePet);
     decHandler(away);
     decHandler(pseudoAway);
     decHandler(follow);
@@ -170,6 +171,7 @@ enum
     COMMAND_ATKHUMAN,
     COMMAND_OUTFIT,
     COMMAND_EMOTE,
+    COMMAND_EMOTEPET,
     COMMAND_AWAY,
     COMMAND_PSEUDOAWAY,
     COMMAND_FOLLOW,
@@ -265,6 +267,7 @@ static const CommandInfo commands[] =
     {"atkhuman", &Commands::attackHuman, -1, true},
     {"outfit", &Commands::outfit, -1, true},
     {"emote", &Commands::emote, -1, true},
+    {"emotepet", &Commands::emotePet, -1, true},
     {"away", &Commands::away, -1, true},
     {"pseudoaway", &Commands::pseudoAway, -1, true},
     {"follow", &Commands::follow, -1, true},

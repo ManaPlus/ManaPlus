@@ -20,8 +20,11 @@
 
 #include "net/tmwa/pethandler.h"
 
+#include "gui/widgets/tabs/chattab.h"
+
 #include "net/net.h"
 
+#include "net/tmwa/chathandler.h"
 #include "net/tmwa/protocol.h"
 
 #include "debug.h"
@@ -57,6 +60,12 @@ void PetHandler::move(const Being *const being A_UNUSED,
 void PetHandler::spawn(const Being *const being A_UNUSED,
                        const int x A_UNUSED, const int y A_UNUSED) const
 {
+}
+
+void PetHandler::emote(const uint8_t emoteId) const
+{
+    Net::getChatHandler()->talk("\302\202\302e" + toString(
+        static_cast<int>(emoteId)), GENERAL_CHANNEL);
 }
 
 }  // namespace TmwAthena

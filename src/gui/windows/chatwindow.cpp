@@ -1479,9 +1479,17 @@ bool ChatWindow::resortChatLog(std::string line, Own own,
             const size_t idx = line.find(": \302\202");
             if (idx == idx2)
             {
-                // ignore special message formats.
                 if (line.find(": \302\202\302") != std::string::npos)
+                {
+                    if (line.find(": \302\202\302e") != std::string::npos)
+                    {
+                        const std::string nick = line.substr(0, idx2 - 1);
+                        line = line.substr(idx2 + 6);
+                        localPetEmote(nick, atoi(line.c_str()));
+                    }
+                    // ignore other special message formats.
                     return false;
+                }
 
                 // pet talk message detected
                 if (line.find(": \302\202\303 ") != std::string::npos)
@@ -1584,6 +1592,18 @@ void ChatWindow::localPetSay(const std::string &nick, const std::string &text)
     else
     {
         localChatTab->chatLog(nick, text);
+    }
+}
+
+void ChatWindow::localPetEmote(const std::string &nick, const uint8_t emoteId)
+{
+    Being *const being = actorManager->findBeingByName(
+        nick, ActorSprite::PLAYER);
+    if (being)
+    {
+        Being *const pet = being->getPet();
+        if (pet)
+            pet->setEmote(emoteId, 0);
     }
 }
 
