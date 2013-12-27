@@ -39,6 +39,9 @@ class ChatHandler
         virtual void talk(const std::string &restrict text,
                           const std::string &restrict channel) const = 0;
 
+        virtual void talkPet(const std::string &restrict text,
+                             const std::string &restrict channel) const = 0;
+
         virtual void talkRaw(const std::string &text) const = 0;
 
         virtual void me(const std::string &restrict text,

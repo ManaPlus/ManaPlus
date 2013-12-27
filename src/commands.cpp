@@ -1252,6 +1252,15 @@ impHandler1(talkRaw)
     Net::getChatHandler()->talkRaw(args);
 }
 
+impHandler1(talkPet)
+{
+    // in future probably need add channel detection
+    if (player_node->getPet())
+        Net::getChatHandler()->talkPet(args, GENERAL_CHANNEL);
+    else
+        Net::getChatHandler()->talk(args, GENERAL_CHANNEL);
+}
+
 impHandler0(testsdlfont)
 {
 #if defined USE_OPENGL && defined DEBUG_SDLFONT

@@ -1482,6 +1482,20 @@ bool ChatWindow::resortChatLog(std::string line, Own own,
                 // ignore special message formats.
                 if (line.find(": \302\202\302") != std::string::npos)
                     return false;
+
+                // pet talk message detected
+                if (line.find(": \302\202\303 ") != std::string::npos)
+                {
+                    if (actorManager && idx2 > 1)
+                    {
+                        const std::string nick = line.substr(0, idx2 - 1);
+                        line = line.substr(idx2 + 6);
+                        localPetSay(nick, line);
+                    }
+
+                    return false;
+                }
+
                 line = line.erase(idx + 2, 2);
                 tradeChatTab->chatLog(prefix + line, own, ignoreRecord,
                     tryRemoveColors);
@@ -1546,6 +1560,26 @@ void ChatWindow::battleChatLog(const std::string &line, Own own,
         battleChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
     else if (debugChatTab)
         debugChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
+}
+
+void ChatWindow::localPetSay(const std::string &nick, const std::string &text)
+{
+    Being *const being = actorManager->findBeingByName(
+        nick, ActorSprite::PLAYER);
+    Being *pet = nullptr;
+    if (being)
+    {
+        pet = being->getPet();
+        if (pet)
+            pet->setSpeech(text, GENERAL_CHANNEL);
+    }
+
+    if (!localChatTab)
+        return;
+    if (pet)
+        localChatTab->chatLog(strprintf(_("%s's pet"), nick.c_str()), text);
+    else
+        localChatTab->chatLog(nick, text);
 }
 
 void ChatWindow::initTradeFilter()

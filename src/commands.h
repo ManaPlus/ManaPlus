@@ -127,6 +127,7 @@ namespace Commands
     decHandler(testParticle);
     decHandler(createItems);
     decHandler(talkRaw);
+    decHandler(talkPet);
 
     void replaceVars(std::string &str);
 }  // namespace Commands
@@ -221,6 +222,7 @@ enum
     COMMAND_TEST_PARTICLE,
     COMMAND_CREATEITEMS,
     COMMAND_TALKRAW,
+    COMMAND_TALKPET,
     COMMAND_HACK,
     END_COMMANDS
 };
@@ -315,6 +317,7 @@ static const CommandInfo commands[] =
     {"testparticle", &Commands::testParticle, -1, true},
     {"createitems", &Commands::createItems, -1, false},
     {"talkraw", &Commands::talkRaw, -1, true},
+    {"talkpet", &Commands::talkPet, -1, true},
     {"hack", &Commands::hack, -1, true}
 };
 

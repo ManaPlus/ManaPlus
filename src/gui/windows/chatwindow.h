@@ -292,6 +292,8 @@ class ChatWindow final : public Window,
 
         void postInit() override final;
 
+        void localPetSay(const std::string &nick, const std::string &text);
+
 #ifdef USE_PROFILER
         void logicChildren();
 #endif

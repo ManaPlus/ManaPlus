@@ -38,6 +38,9 @@ class ChatHandler : public Net::ChatHandler
 
         A_DELETE_COPY(ChatHandler)
 
+        void talkPet(const std::string &restrict text,
+                     const std::string &restrict channel) const override final;
+
         void me(const std::string &restrict text,
                 const std::string &restrict channel) const override final;
 
