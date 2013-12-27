@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011
+# mas886 <thealchemist886@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2013-12-20 14:43+0300\n"
-"PO-Revision-Date: 2013-12-21 08:14+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2013-12-25 23:53+0000\n"
+"Last-Translator: mas886 <thealchemist886@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/manaplus/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,12 +22,12 @@ msgstr ""
 #. TRANSLATORS: disable trades message
 #: src/actionmanager.cpp:864
 msgid "Ignoring incoming trade requests"
-msgstr ""
+msgstr "Ignorant sol·licituds d'intercanvi. "
 
 #. TRANSLATORS: enable trades message
 #: src/actionmanager.cpp:874
 msgid "Accepting incoming trade requests"
-msgstr ""
+msgstr "Acceptant sol·licituds d'intercanvi"
 
 #. TRANSLATORS: visible beings on map
 #: src/actormanager.cpp:1250
@@ -40,11 +41,11 @@ msgstr ""
 
 #: src/being/being.cpp:520
 msgid "dodge"
-msgstr ""
+msgstr "esquiva "
 
 #: src/being/being.cpp:520
 msgid "miss"
-msgstr ""
+msgstr "falla"
 
 #. TRANSLATORS: this away status writed in player nick
 #: src/being/being.cpp:1759 src/gui/windows/whoisonline.cpp:863
@@ -527,7 +528,7 @@ msgstr ""
 #. TRANSLATORS: setup window name
 #: src/client.cpp:1117 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:58
 msgid "Setup"
-msgstr ""
+msgstr "Configuració "
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
@@ -573,32 +574,32 @@ msgstr ""
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1253
 msgid "Connecting to server"
-msgstr ""
+msgstr "Connectant al servidor"
 
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1298
 msgid "Logging in"
-msgstr ""
+msgstr "Iniciant sessió "
 
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1339
 msgid "Entering game world"
-msgstr ""
+msgstr "Entrant al mon de joc "
 
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1463
 msgid "Requesting characters"
-msgstr ""
+msgstr "Sol·licitant personatges "
 
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1504
 msgid "Connecting to the game server"
-msgstr ""
+msgstr "Connectant al servidor de joc "
 
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1518
 msgid "Changing game servers"
-msgstr ""
+msgstr "Canviant servidors de joc"
 
 #. TRANSLATORS: error dialog header
 #. TRANSLATORS: error message header
@@ -621,49 +622,49 @@ msgstr ""
 #: src/gui/windows/unregisterdialog.cpp:146
 #: src/net/ea/charserverhandler.cpp:201 src/net/ea/charserverhandler.cpp:225
 msgid "Error"
-msgstr ""
+msgstr "Error "
 
 #. TRANSLATORS: connection dialog header
 #: src/client.cpp:1602
 msgid "Requesting registration details"
-msgstr ""
+msgstr "Sol·licitant detalls de registre"
 
 #. TRANSLATORS: password change message header
 #: src/client.cpp:1642
 msgid "Password Change"
-msgstr ""
+msgstr "Canvi de contrasenya "
 
 #. TRANSLATORS: password change message text
 #: src/client.cpp:1644
 msgid "Password changed successfully!"
-msgstr ""
+msgstr "Contrasenya canviada amb èxit! "
 
 #. TRANSLATORS: email change message header
 #: src/client.cpp:1666
 msgid "Email Change"
-msgstr ""
+msgstr "Canvi de correu "
 
 #. TRANSLATORS: email change message text
 #: src/client.cpp:1668
 msgid "Email changed successfully!"
-msgstr ""
+msgstr "Correu canviat amb èxit! "
 
 #. TRANSLATORS: unregister message header
 #: src/client.cpp:1691
 msgid "Unregister Successful"
-msgstr ""
+msgstr "Registre anul·lat amb èxit "
 
 #. TRANSLATORS: unregister message text
 #: src/client.cpp:1693
 msgid "Farewell, come back any time..."
-msgstr ""
+msgstr "Adéu, torna quan vulguis... "
 
 #. TRANSLATORS: directory creation error
 #: src/client.cpp:1967 src/client.cpp:1982 src/client.cpp:2027
 #: src/client.cpp:2043 src/client.cpp:2469 src/client.cpp:2477
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
-msgstr ""
+msgstr "%s no existeix i no pot ser creat! Sortint."
 
 #. TRANSLATORS: update server initialisation error
 #: src/client.cpp:2183
@@ -674,12 +675,12 @@ msgstr ""
 #. TRANSLATORS: update server initialisation error
 #: src/client.cpp:2224 src/client.cpp:2231
 msgid "Error creating updates directory!"
-msgstr ""
+msgstr "Error creant el directori d'actualitzacions! "
 
 #: src/client.cpp:2253 src/client.cpp:2266
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
-msgstr ""
+msgstr "Error: %s no existeix i no pot ser creat! Sortint."
 
 #. TRANSLATORS: error message question
 #: src/client.cpp:2927
@@ -689,7 +690,7 @@ msgstr ""
 #. TRANSLATORS: chat commands handling message
 #: src/commandhandler.cpp:97
 msgid "Unknown command."
-msgstr ""
+msgstr "Comandament desconegut. "
 
 #. TRANSLATORS: change relation
 #. TRANSLATORS: party invite message
@@ -698,30 +699,30 @@ msgstr ""
 #: src/commands.cpp:151 src/commands.cpp:444 src/commands.cpp:531
 #: src/commands.cpp:585
 msgid "Please specify a name."
-msgstr ""
+msgstr "Si us plau especifica un nom."
 
 #. TRANSLATORS: change relation
 #: src/commands.cpp:158
 #, c-format
 msgid "Player already %s!"
-msgstr ""
+msgstr "El jugador ja és %s!"
 
 #. TRANSLATORS: change relation
 #: src/commands.cpp:170
 #, c-format
 msgid "Player successfully %s!"
-msgstr ""
+msgstr "Relació canviada amb èxit, el jugador es ara %s!"
 
 #. TRANSLATORS: change relation
 #: src/commands.cpp:176
 #, c-format
 msgid "Player could not be %s!"
-msgstr ""
+msgstr "El jugador no pot ser %s!"
 
 #. TRANSLATORS: whisper send
 #: src/commands.cpp:348
 msgid "Cannot send empty whispers!"
-msgstr ""
+msgstr "No es poden enviar murmuris buits! "
 
 #. TRANSLATORS: new whisper query
 #: src/commands.cpp:366
@@ -729,7 +730,7 @@ msgstr ""
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
 " you."
-msgstr ""
+msgstr "No s'ha pogut crear pestanya de murmuri pel nick \"%s\"! Ja existeix, o ets tu. "
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
@@ -741,60 +742,60 @@ msgstr ""
 #. TRANSLATORS: chat error message
 #: src/commands.cpp:408 src/net/ea/gui/partytab.cpp:154
 msgid "Party name is missing."
-msgstr ""
+msgstr "Falta el nom del grup. "
 
 #. TRANSLATORS: create guild message
 #: src/commands.cpp:424
 msgid "Guild name is missing."
-msgstr ""
+msgstr "Falta el nom del gremi. "
 
 #: src/commands.cpp:461
 msgid "Return toggles chat."
-msgstr ""
+msgstr "Tornar a alternar el xat. "
 
 #: src/commands.cpp:461
 msgid "Message closes chat."
-msgstr ""
+msgstr "Missatge tanca el xat. "
 
 #. TRANSLATORS: message from toggle chat command
 #: src/commands.cpp:472
 msgid "Return now toggles chat."
-msgstr ""
+msgstr "Torna ara a canviar el xat. "
 
 #. TRANSLATORS: message from toggle chat command
 #: src/commands.cpp:481
 msgid "Message now closes chat."
-msgstr ""
+msgstr "Missatge ara tanca el xat."
 
 #. TRANSLATORS: adding friend command
 #: src/commands.cpp:509
 msgid "friend"
-msgstr ""
+msgstr "amic"
 
 #. TRANSLATORS: disregard command
 #: src/commands.cpp:515
 msgid "disregarded"
-msgstr ""
+msgstr "desatès"
 
 #. TRANSLATORS: neutral command
 #: src/commands.cpp:521
 msgid "neutral"
-msgstr ""
+msgstr "neutral"
 
 #. TRANSLATORS: unignore command
 #: src/commands.cpp:546
 msgid "Player wasn't ignored!"
-msgstr ""
+msgstr "El jugador no estava ignorat! "
 
 #. TRANSLATORS: unignore command
 #: src/commands.cpp:556
 msgid "Player no longer ignored!"
-msgstr ""
+msgstr "El jugador ja no està ignorat!"
 
 #. TRANSLATORS: unignore command
 #: src/commands.cpp:561
 msgid "Player could not be unignored!"
-msgstr ""
+msgstr "El jugador no pot ser des-ignorat! "
 
 #. TRANSLATORS: blacklist command
 #: src/commands.cpp:569
@@ -809,17 +810,17 @@ msgstr ""
 #. TRANSLATORS: erase command
 #: src/commands.cpp:595
 msgid "Player already erased!"
-msgstr ""
+msgstr "Personatge ja esborrat!  "
 
 #. TRANSLATORS: erase command
 #: src/commands.cpp:609
 msgid "Player successfully erased!"
-msgstr ""
+msgstr "Personatge esborrat correctament!"
 
 #. TRANSLATORS: erase command
 #: src/commands.cpp:614
 msgid "Player could not be erased!"
-msgstr ""
+msgstr "El personatge no pot ser esborrat!"
 
 #. TRANSLATORS: uptime command
 #: src/commands.cpp:899 src/commands.cpp:955
@@ -901,7 +902,7 @@ msgstr ""
 #: src/commands.h:35
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
+msgstr "Les opcions per a /%s son \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 
 #: src/dyetool/dyemain.cpp:49
 msgid "dyecmd srcfile dyestring dstfile"
@@ -918,7 +919,7 @@ msgstr ""
 #. TRANSLATORS: chat tab header
 #: src/game.cpp:273 src/gui/widgets/tabs/chattab.cpp:469
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: full button name
@@ -926,7 +927,7 @@ msgstr ""
 #: src/game.cpp:289 src/gui/widgets/tabs/chattab.cpp:471
 #: src/gui/windowmenu.cpp:152 src/gui/windows/debugwindow.cpp:52
 msgid "Debug"
-msgstr ""
+msgstr "Depurador "
 
 #. TRANSLATORS: save file message
 #: src/game.cpp:550
@@ -937,29 +938,29 @@ msgstr ""
 #. TRANSLATORS: save file message
 #: src/game.cpp:560
 msgid "Saving screenshot failed!"
-msgstr ""
+msgstr "Error al guardar la captura de pantalla! "
 
 #. TRANSLATORS: error message text
 #: src/game.cpp:632
 msgid "The connection to the server was lost."
-msgstr ""
+msgstr "S'ha perdut la connexió amb el servidor."
 
 #. TRANSLATORS: error message header
 #: src/game.cpp:635
 msgid "Network Error"
-msgstr ""
+msgstr "Error de xarxa "
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:132
 #, c-format
 msgid "Party: %s"
-msgstr ""
+msgstr "Grup: %s"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:147
 #, c-format
 msgid "Guild: %s"
-msgstr ""
+msgstr "Gremi: %s"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:161
@@ -1001,7 +1002,7 @@ msgstr ""
 #: src/gui/windows/botcheckerwindow.cpp:303
 #: src/net/eathena/generalhandler.cpp:250 src/net/tmwa/generalhandler.cpp:285
 msgid "Attack"
-msgstr ""
+msgstr "Atacar "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: send whisper to player
@@ -1061,7 +1062,7 @@ msgstr ""
 #: src/gui/popups/popupmenu.cpp:705 src/gui/popups/popupmenu.cpp:786
 #: src/gui/setupactiondata.h:1918 src/gui/windows/botcheckerwindow.cpp:307
 msgid "Move"
-msgstr ""
+msgstr "Moure"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: talk with npc
@@ -1070,7 +1071,7 @@ msgstr ""
 #: src/gui/popups/popupmenu.cpp:237 src/gui/setupactiondata.h:93
 #: src/gui/windows/botcheckerwindow.cpp:305
 msgid "Talk"
-msgstr ""
+msgstr "Parlar "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: buy from npc
@@ -1082,7 +1083,7 @@ msgstr ""
 #: src/gui/windows/buydialog.cpp:207 src/gui/windows/buydialog.cpp:219
 #: src/gui/windows/buydialog.cpp:273 src/gui/windows/buyselldialog.cpp:67
 msgid "Buy"
-msgstr ""
+msgstr "Comprar"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: sell to npc
@@ -1095,7 +1096,7 @@ msgstr ""
 #: src/gui/windows/buyselldialog.cpp:69 src/gui/windows/selldialog.cpp:55
 #: src/gui/windows/selldialog.cpp:65 src/gui/windows/selldialog.cpp:107
 msgid "Sell"
-msgstr ""
+msgstr "Vendre "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add comment to npc
@@ -1186,7 +1187,7 @@ msgstr ""
 #: src/gui/windows/unregisterdialog.cpp:54
 #: src/gui/windows/updaterwindow.cpp:179
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel·lar "
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: settings tab name
@@ -1858,7 +1859,7 @@ msgstr ""
 #: src/gui/windows/quitdialog.cpp:58 src/gui/windows/selldialog.cpp:109
 #: src/gui/windows/serverdialog.cpp:254
 msgid "Quit"
-msgstr "sortir"
+msgstr "Sortir"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:183
@@ -2434,7 +2435,7 @@ msgstr ""
 #: src/gui/windows/shopwindow.cpp:100
 #: src/gui/windows/textcommandeditor.cpp:205
 msgid "Delete"
-msgstr ""
+msgstr "Esborra "
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1815
@@ -2726,13 +2727,13 @@ msgstr ""
 #. TRANSLATORS: chat color
 #: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:152
 msgid "black"
-msgstr ""
+msgstr "negre"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
 #: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:154
 msgid "red"
-msgstr ""
+msgstr "roig"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
@@ -2873,7 +2874,7 @@ msgstr ""
 #: src/gui/widgets/tabs/guildchattab.cpp:67 src/net/ea/gui/guildtab.cpp:74
 #: src/net/ea/gui/partytab.cpp:100
 msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
-msgstr ""
+msgstr "Si el <nick> té espais en ell, tanca'l entre cometes dobles (\"). "
 
 #. TRANSLATORS: guild chat tab help
 #. TRANSLATORS: guild chat help
@@ -3440,7 +3441,7 @@ msgstr ""
 #: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:150
 #: src/gui/windows/inventorywindow.cpp:69
 msgid "default"
-msgstr ""
+msgstr "Per defecte "
 
 #. TRANSLATORS: screen density type
 #. TRANSLATORS: ambient effect type
@@ -3682,7 +3683,7 @@ msgstr ""
 #: src/gui/windows/buyselldialog.cpp:39 src/gui/windows/buyselldialog.cpp:50
 #: src/gui/windows/inventorywindow.cpp:225
 msgid "Shop"
-msgstr ""
+msgstr "Botiga "
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:254
@@ -4029,7 +4030,7 @@ msgstr ""
 #: src/gui/widgets/tabs/setup_relations.cpp:58
 #: src/gui/windows/botcheckerwindow.cpp:301
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #. TRANSLATORS: relations table header
 #: src/gui/widgets/tabs/setup_relations.cpp:60
@@ -4695,7 +4696,7 @@ msgstr ""
 #. TRANSLATORS: whisper tab help
 #: src/gui/widgets/tabs/whispertab.cpp:128
 msgid "Command: /unignore <player>"
-msgstr ""
+msgstr "Comandament: /unignore <jugador> "
 
 #. TRANSLATORS: whisper tab help
 #: src/gui/widgets/tabs/whispertab.cpp:130
@@ -4884,18 +4885,18 @@ msgstr ""
 #. TRANSLATORS: bot checker window header
 #: src/gui/windows/botcheckerwindow.cpp:262
 msgid "Bot Checker"
-msgstr ""
+msgstr "Comprovador de bots "
 
 #. TRANSLATORS: bot checker window button
 #. TRANSLATORS: npc dialog button
 #: src/gui/windows/botcheckerwindow.cpp:271 src/gui/windows/npcdialog.cpp:113
 msgid "Reset"
-msgstr ""
+msgstr "Reajustar "
 
 #. TRANSLATORS: bot checker window table header
 #: src/gui/windows/botcheckerwindow.cpp:309
 msgid "Result"
-msgstr ""
+msgstr "Resultat"
 
 #. TRANSLATORS: buy dialog sort type.
 #: src/gui/windows/buydialog.cpp:57
@@ -4948,7 +4949,7 @@ msgstr ""
 #: src/gui/windows/selldialog.cpp:99 src/gui/windows/selldialog.cpp:365
 #, c-format
 msgid "Price: %s / Total: %s"
-msgstr ""
+msgstr "Preu: %s / Total: %s"
 
 #. TRANSLATORS: buy dialog label
 #: src/gui/windows/buydialog.cpp:262
@@ -4965,7 +4966,7 @@ msgstr ""
 #: src/gui/windows/itemamountwindow.cpp:240 src/gui/windows/npcdialog.cpp:102
 #: src/gui/windows/selldialog.cpp:103 src/gui/windows/statuswindow.cpp:825
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
 #. You may change this symbol if your language uses another.
@@ -4977,7 +4978,7 @@ msgstr ""
 #: src/gui/windows/itemamountwindow.cpp:237 src/gui/windows/npcdialog.cpp:104
 #: src/gui/windows/selldialog.cpp:105 src/gui/windows/statuswindow.cpp:838
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
@@ -4986,7 +4987,7 @@ msgstr ""
 #: src/gui/windows/charselectdialog.cpp:591
 #: src/gui/windows/socialwindow.cpp:1299
 msgid "Create"
-msgstr ""
+msgstr "Crear"
 
 #. TRANSLATORS: buy dialog button
 #. TRANSLATORS: sell dialog button
@@ -4997,14 +4998,14 @@ msgstr ""
 #: src/gui/windows/statuswindow.cpp:564 src/gui/windows/statuswindow.cpp:619
 #: src/gui/windows/statuswindow.cpp:822 src/gui/windows/statuswindow.cpp:854
 msgid "Max"
-msgstr ""
+msgstr "Max"
 
 #. TRANSLATORS: change email dialog header
 #. TRANSLATORS: button in change email dialog
 #: src/gui/windows/changeemaildialog.cpp:47
 #: src/gui/windows/changeemaildialog.cpp:52
 msgid "Change Email Address"
-msgstr ""
+msgstr "Canviar direcció de correu "
 
 #. TRANSLATORS: label in change email dialog
 #. TRANSLATORS: change password dialog label
@@ -5012,12 +5013,12 @@ msgstr ""
 #: src/gui/windows/changepassworddialog.cpp:63
 #, c-format
 msgid "Account: %s"
-msgstr ""
+msgstr "Compte: %s"
 
 #. TRANSLATORS: label in change email dialog
 #: src/gui/windows/changeemaildialog.cpp:64
 msgid "Type new email address twice:"
-msgstr ""
+msgstr "Escriu la nova direcció de correu dos vegades: "
 
 #. TRANSLATORS: change email error
 #: src/gui/windows/changeemaildialog.cpp:139
@@ -5034,7 +5035,7 @@ msgstr ""
 #. TRANSLATORS: change email error
 #: src/gui/windows/changeemaildialog.cpp:155
 msgid "The email address entries mismatch."
-msgstr ""
+msgstr "Les direccions de correu no coincideixen."
 
 #. TRANSLATORS: change password window name
 #. TRANSLATORS: change password dialog button
@@ -5043,7 +5044,7 @@ msgstr ""
 #: src/gui/windows/changepassworddialog.cpp:54
 #: src/gui/windows/charselectdialog.cpp:97
 msgid "Change Password"
-msgstr ""
+msgstr "Canviar contrasenya "
 
 #. TRANSLATORS: change password dialog label
 #. TRANSLATORS: login dialog label
@@ -5053,17 +5054,17 @@ msgstr ""
 #: src/gui/windows/logindialog.cpp:186 src/gui/windows/registerdialog.cpp:90
 #: src/gui/windows/unregisterdialog.cpp:65
 msgid "Password:"
-msgstr ""
+msgstr "Contrasenya: "
 
 #. TRANSLATORS: change password dialog label
 #: src/gui/windows/changepassworddialog.cpp:70
 msgid "Type new password twice:"
-msgstr ""
+msgstr "Escriu la nova contrasenya: "
 
 #. TRANSLATORS: change password error
 #: src/gui/windows/changepassworddialog.cpp:120
 msgid "Enter the old password first."
-msgstr ""
+msgstr "Escriu l'antiga contrasenya. "
 
 #. TRANSLATORS: change password error
 #: src/gui/windows/changepassworddialog.cpp:127
@@ -5080,7 +5081,7 @@ msgstr ""
 #. TRANSLATORS: change password error
 #: src/gui/windows/changepassworddialog.cpp:143
 msgid "The new password entries mismatch."
-msgstr ""
+msgstr "Les noves contrasenyes no coincideixen. "
 
 #. TRANSLATORS: char create dialog name
 #: src/gui/windows/charcreatedialog.cpp:65
@@ -5108,7 +5109,7 @@ msgstr "nom"
 #: src/gui/windows/charcreatedialog.cpp:181
 #: src/gui/windows/outfitwindow.cpp:58
 msgid ">"
-msgstr ""
+msgstr ">"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'previous'.
 #. You may change this symbol if your language uses another.
@@ -5120,17 +5121,17 @@ msgstr ""
 #: src/gui/windows/charcreatedialog.cpp:183
 #: src/gui/windows/outfitwindow.cpp:56
 msgid "<"
-msgstr ""
+msgstr "<"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:81
 msgid "Hair color:"
-msgstr ""
+msgstr "Color de cabells: "
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:88
 msgid "Hair style:"
-msgstr ""
+msgstr "Pentinat: "
 
 #. TRANSLATORS: char create dialog button
 #: src/gui/windows/charcreatedialog.cpp:99
@@ -5142,21 +5143,21 @@ msgstr ""
 #: src/gui/windows/charcreatedialog.cpp:103
 #: src/gui/windows/registerdialog.cpp:109
 msgid "Male"
-msgstr ""
+msgstr "Home"
 
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
 #: src/gui/windows/charcreatedialog.cpp:105
 #: src/gui/windows/registerdialog.cpp:111
 msgid "Female"
-msgstr ""
+msgstr "Dona"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:113
 #: src/gui/windows/charcreatedialog.cpp:467
 #, c-format
 msgid "Please distribute %d points"
-msgstr ""
+msgstr "Distribueix %d punts"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:175
@@ -5171,28 +5172,28 @@ msgstr ""
 #. TRANSLATORS: char creation error
 #: src/gui/windows/charcreatedialog.cpp:360
 msgid "Your name needs to be at least 4 characters."
-msgstr ""
+msgstr "El nom ha de tenir com a mínim 4 caràcters. "
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:457
 msgid "Character stats OK"
-msgstr ""
+msgstr "Estadístiques de personatge correctes"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:473
 #, c-format
 msgid "Please remove %d points"
-msgstr ""
+msgstr "Has de treure %d punts"
 
 #. TRANSLATORS: char deletion message
 #: src/gui/windows/charselectdialog.cpp:62
 msgid "Confirm Character Delete"
-msgstr ""
+msgstr "Confirma l'eliminació de personatge "
 
 #. TRANSLATORS: char deletion message
 #: src/gui/windows/charselectdialog.cpp:64
 msgid "Are you sure you want to delete this character?"
-msgstr ""
+msgstr "Estàs segur que bols esborrar aquest personatge? "
 
 #. TRANSLATORS: char select dialog name
 #: src/gui/windows/charselectdialog.cpp:88
@@ -5203,7 +5204,7 @@ msgstr ""
 #. TRANSLATORS: char select dialog. button.
 #: src/gui/windows/charselectdialog.cpp:95
 msgid "Switch Login"
-msgstr ""
+msgstr "Canvia compta d'accés "
 
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: updater window button
@@ -5227,12 +5228,12 @@ msgstr ""
 #: src/gui/windows/unregisterdialog.cpp:47
 #: src/gui/windows/unregisterdialog.cpp:52
 msgid "Unregister"
-msgstr ""
+msgstr "No registrat"
 
 #. TRANSLATORS: char select dialog. button.
 #: src/gui/windows/charselectdialog.cpp:143
 msgid "Change Email"
-msgstr ""
+msgstr "Canvia correu "
 
 #. TRANSLATORS: char select dialog name
 #: src/gui/windows/charselectdialog.cpp:181

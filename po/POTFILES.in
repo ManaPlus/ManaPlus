@@ -112,6 +112,7 @@ src/resources/beinginfo.cpp
 src/resources/db/avatardb.cpp
 src/resources/db/itemdb.cpp
 src/resources/db/monsterdb.cpp
+src/resources/db/petdb.cpp
 src/resources/mapreader.cpp
 src/utils/gettext.h
 src/utils/stringutils.h
