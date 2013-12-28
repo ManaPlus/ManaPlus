@@ -51,9 +51,15 @@ NormalOpenGLGraphics::NormalOpenGLGraphics():
     mFloatTexArray(nullptr),
     mIntTexArray(nullptr),
     mIntVertArray(nullptr),
+    mFloatTexArrayCached(nullptr),
+    mIntTexArrayCached(nullptr),
+    mIntVertArrayCached(nullptr),
+    mAlphaCached(1.0F),
+    mVpCached(0),
     mTexture(false),
     mIsByteColor(false),
     mByteColor(),
+    mImageCached(0),
     mFloatColor(1.0F),
     mMaxVertices(500),
     mColorAlpha(false),
@@ -72,6 +78,9 @@ NormalOpenGLGraphics::~NormalOpenGLGraphics()
     delete [] mFloatTexArray;
     delete [] mIntTexArray;
     delete [] mIntVertArray;
+    delete [] mFloatTexArrayCached;
+    delete [] mIntTexArrayCached;
+    delete [] mIntVertArrayCached;
 }
 
 void NormalOpenGLGraphics::initArrays()
@@ -88,6 +97,9 @@ void NormalOpenGLGraphics::initArrays()
     mFloatTexArray = new GLfloat[sz];
     mIntTexArray = new GLint[sz];
     mIntVertArray = new GLint[sz];
+    mFloatTexArrayCached = new GLfloat[sz];
+    mIntTexArrayCached = new GLint[sz];
+    mIntVertArrayCached = new GLint[sz];
 }
 
 bool NormalOpenGLGraphics::setVideoMode(const int w, const int h,
@@ -261,6 +273,266 @@ bool NormalOpenGLGraphics::drawImage2(const Image *const image,
         dstX, dstY, width, height);
 
     return true;
+}
+
+void NormalOpenGLGraphics::drawImageCached(const Image *const image,
+                                           int x, int y)
+{
+    if (!image)
+        return;
+
+    if (image->mGLImage != mImageCached)
+    {
+        completeCache();
+        mImageCached = image->mGLImage;
+        mAlphaCached = image->mAlpha;
+    }
+
+    const SDL_Rect &imageRect = image->mBounds;
+    const int w = imageRect.w;
+    const int h = imageRect.h;
+
+    if (w == 0 || h == 0)
+        return;
+
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
+
+    const float tw = static_cast<float>(image->mTexWidth);
+    const float th = static_cast<float>(image->mTexHeight);
+
+    const unsigned int vLimit = mMaxVertices * 4;
+
+    unsigned int vp = mVpCached;
+
+    // Draw a set of textured rectangles
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    {
+        const float texX1 = static_cast<float>(srcX) / tw;
+        const float texY1 = static_cast<float>(srcY) / th;
+
+        const float texX2 = static_cast<float>(srcX + w) / tw;
+        const float texY2 = static_cast<float>(srcY + h) / th;
+
+        mFloatTexArrayCached[vp + 0] = texX1;
+        mFloatTexArrayCached[vp + 1] = texY1;
+
+        mFloatTexArrayCached[vp + 2] = texX2;
+        mFloatTexArrayCached[vp + 3] = texY1;
+
+        mFloatTexArrayCached[vp + 4] = texX2;
+        mFloatTexArrayCached[vp + 5] = texY2;
+
+        mFloatTexArrayCached[vp + 6] = texX1;
+        mFloatTexArrayCached[vp + 7] = texY2;
+
+        mIntVertArrayCached[vp + 0] = x;
+        mIntVertArrayCached[vp + 1] = y;
+
+        mIntVertArrayCached[vp + 2] = x + w;
+        mIntVertArrayCached[vp + 3] = y;
+
+        mIntVertArrayCached[vp + 4] = x + w;
+        mIntVertArrayCached[vp + 5] = y + h;
+
+        mIntVertArrayCached[vp + 6] = x;
+        mIntVertArrayCached[vp + 7] = y + h;
+
+        vp += 8;
+        if (vp >= vLimit)
+        {
+            completeCache();
+            vp = 0;
+        }
+        else
+        {
+            mVpCached = vp;
+        }
+    }
+    else
+    {
+        mIntTexArrayCached[vp + 0] = srcX;
+        mIntTexArrayCached[vp + 1] = srcY;
+
+        mIntTexArrayCached[vp + 2] = srcX + w;
+        mIntTexArrayCached[vp + 3] = srcY;
+
+        mIntTexArrayCached[vp + 4] = srcX + w;
+        mIntTexArrayCached[vp + 5] = srcY + h;
+
+        mIntTexArrayCached[vp + 6] = srcX;
+        mIntTexArrayCached[vp + 7] = srcY + h;
+
+        mIntVertArrayCached[vp + 0] = x;
+        mIntVertArrayCached[vp + 1] = y;
+
+        mIntVertArrayCached[vp + 2] = x + w;
+        mIntVertArrayCached[vp + 3] = y;
+
+        mIntVertArrayCached[vp + 4] = x + w;
+        mIntVertArrayCached[vp + 5] = y + h;
+
+        mIntVertArrayCached[vp + 6] = x;
+        mIntVertArrayCached[vp + 7] = y + h;
+
+        vp += 8;
+        if (vp >= vLimit)
+        {
+            completeCache();
+            vp = 0;
+        }
+        else
+        {
+            mVpCached = vp;
+        }
+    }
+}
+
+void NormalOpenGLGraphics::drawPatternCached(const Image *const image,
+                                             const int x, const int y,
+                                             const int w, const int h)
+{
+    FUNC_BLOCK("Graphics::drawPatternCached", 1)
+    if (!image)
+        return;
+
+    if (image->mGLImage != mImageCached)
+    {
+        completeCache();
+        mImageCached = image->mGLImage;
+    }
+
+    const SDL_Rect &imageRect = image->mBounds;
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
+    const int iw = imageRect.w;
+    const int ih = imageRect.h;
+
+    if (iw == 0 || ih == 0)
+        return;
+
+    const float tw = static_cast<float>(image->mTexWidth);
+    const float th = static_cast<float>(image->mTexHeight);
+
+    unsigned int vp = mVpCached;
+    const unsigned int vLimit = mMaxVertices * 4;
+    // Draw a set of textured rectangles
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    {
+        const float texX1 = static_cast<float>(srcX) / tw;
+        const float texY1 = static_cast<float>(srcY) / th;
+
+        for (int py = 0; py < h; py += ih)
+        {
+            const int height = (py + ih >= h) ? h - py : ih;
+            const int dstY = y + py;
+            const float texY2 = static_cast<float>(srcY + height) / th;
+            for (int px = 0; px < w; px += iw)
+            {
+                const int width = (px + iw >= w) ? w - px : iw;
+                const int dstX = x + px;
+
+                const float texX2 = static_cast<float>(srcX + width) / tw;
+
+                mFloatTexArrayCached[vp + 0] = texX1;
+                mFloatTexArrayCached[vp + 1] = texY1;
+
+                mFloatTexArrayCached[vp + 2] = texX2;
+                mFloatTexArrayCached[vp + 3] = texY1;
+
+                mFloatTexArrayCached[vp + 4] = texX2;
+                mFloatTexArrayCached[vp + 5] = texY2;
+
+                mFloatTexArrayCached[vp + 6] = texX1;
+                mFloatTexArrayCached[vp + 7] = texY2;
+
+                mIntVertArrayCached[vp + 0] = dstX;
+                mIntVertArrayCached[vp + 1] = dstY;
+
+                mIntVertArrayCached[vp + 2] = dstX + width;
+                mIntVertArrayCached[vp + 3] = dstY;
+
+                mIntVertArrayCached[vp + 4] = dstX + width;
+                mIntVertArrayCached[vp + 5] = dstY + height;
+
+                mIntVertArrayCached[vp + 6] = dstX;
+                mIntVertArrayCached[vp + 7] = dstY + height;
+
+                vp += 8;
+                if (vp >= vLimit)
+                {
+                    completeCache();
+                    vp = 0;
+                }
+            }
+        }
+    }
+    else
+    {
+        for (int py = 0; py < h; py += ih)
+        {
+            const int height = (py + ih >= h) ? h - py : ih;
+            const int dstY = y + py;
+            for (int px = 0; px < w; px += iw)
+            {
+                const int width = (px + iw >= w) ? w - px : iw;
+                const int dstX = x + px;
+
+                mIntTexArrayCached[vp + 0] = srcX;
+                mIntTexArrayCached[vp + 1] = srcY;
+
+                mIntTexArrayCached[vp + 2] = srcX + width;
+                mIntTexArrayCached[vp + 3] = srcY;
+
+                mIntTexArrayCached[vp + 4] = srcX + width;
+                mIntTexArrayCached[vp + 5] = srcY + height;
+
+                mIntTexArrayCached[vp + 6] = srcX;
+                mIntTexArrayCached[vp + 7] = srcY + height;
+
+                mIntVertArrayCached[vp + 0] = dstX;
+                mIntVertArrayCached[vp + 1] = dstY;
+
+                mIntVertArrayCached[vp + 2] = dstX + width;
+                mIntVertArrayCached[vp + 3] = dstY;
+
+                mIntVertArrayCached[vp + 4] = dstX + width;
+                mIntVertArrayCached[vp + 5] = dstY + height;
+
+                mIntVertArrayCached[vp + 6] = dstX;
+                mIntVertArrayCached[vp + 7] = dstY + height;
+
+                vp += 8;
+                if (vp >= vLimit)
+                {
+                    completeCache();
+                    vp = 0;
+                }
+            }
+        }
+    }
+    mVpCached = vp;
+}
+
+void NormalOpenGLGraphics::completeCache()
+{
+    if (!mImageCached)
+        return;
+
+    setColorAlpha(mAlphaCached);
+#ifdef DEBUG_BIND_TEXTURE
+//    debugBindTexture(image);
+#endif
+    bindTexture(OpenGLImageHelper::mTextureType, mImageCached);
+    setTexturingAndBlending(true);
+
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+        drawQuadArrayfiCached(mVpCached);
+    else
+        drawQuadArrayiiCached(mVpCached);
+
+    mImageCached = 0;
+    mVpCached = 0;
 }
 
 bool NormalOpenGLGraphics::drawRescaledImage(const Image *const image,
@@ -1391,6 +1663,17 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(const int size)
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
+inline void NormalOpenGLGraphics::drawQuadArrayfiCached(const int size)
+{
+    glVertexPointer(2, GL_INT, 0, mIntVertArrayCached);
+    glTexCoordPointer(2, GL_FLOAT, 0, mFloatTexArrayCached);
+
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
+    glDrawArrays(GL_QUADS, 0, size / 2);
+}
+
 inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *const
                                                   intVertArray,
                                                   const GLfloat *const
@@ -1410,6 +1693,17 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(const int size)
 {
     glVertexPointer(2, GL_INT, 0, mIntVertArray);
     glTexCoordPointer(2, GL_INT, 0, mIntTexArray);
+
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
+    glDrawArrays(GL_QUADS, 0, size / 2);
+}
+
+inline void NormalOpenGLGraphics::drawQuadArrayiiCached(const int size)
+{
+    glVertexPointer(2, GL_INT, 0, mIntVertArrayCached);
+    glTexCoordPointer(2, GL_INT, 0, mIntTexArrayCached);
 
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;

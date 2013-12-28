@@ -80,3 +80,41 @@ bool SurfaceGraphics::drawImage2(const Image *const image, int srcX, int srcY,
     }
 #endif
 }
+
+void SurfaceGraphics::drawImageCached(const Image *const image,
+                                      int x, int y)
+{
+    FUNC_BLOCK("Graphics::drawImageCached", 1)
+    // Check that preconditions for blitting are met.
+    if (!mTarget || !image || !image->mSDLSurface)
+        return;
+
+    const SDL_Rect &rect = image->mBounds;
+
+    SDL_Rect dstRect;
+    SDL_Rect srcRect;
+    dstRect.x = static_cast<int16_t>(x);
+    dstRect.y = static_cast<int16_t>(y);
+    srcRect.x = static_cast<int16_t>(rect.x);
+    srcRect.y = static_cast<int16_t>(rect.y);
+    srcRect.w = static_cast<uint16_t>(rect.w);
+    srcRect.h = static_cast<uint16_t>(rect.h);
+
+#ifdef USE_SDL2
+    SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
+#else
+    if (mBlitMode == BLIT_NORMAL)
+    {
+        SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
+    }
+    else
+    {
+        SurfaceImageHelper::combineSurface(image->mSDLSurface, &srcRect,
+            mTarget, &dstRect);
+    }
+#endif
+}
+
+void SurfaceGraphics::completeCache()
+{
+}

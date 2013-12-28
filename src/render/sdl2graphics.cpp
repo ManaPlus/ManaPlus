@@ -149,6 +149,89 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
     return !MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
 }
 
+void SDLGraphics::drawImageCached(const Image *const image,
+                                  int x, int y)
+{
+    FUNC_BLOCK("Graphics::drawImageCached", 1)
+    // Check that preconditions for blitting are met.
+    if (!mWindow || !image || !image->mTexture)
+        return;
+
+    const gcn::ClipRectangle &top = mClipStack.top();
+    if (!top.width || !top.height)
+        return;
+
+    const SDL_Rect &bounds = image->mBounds;
+    const SDL_Rect srcRect =
+    {
+        static_cast<int32_t>(bounds.x),
+        static_cast<int32_t>(bounds.y),
+        static_cast<int32_t>(bounds.w),
+        static_cast<int32_t>(bounds.h)
+    };
+
+    const SDL_Rect dstRect =
+    {
+        static_cast<int32_t>(x + top.xOffset),
+        static_cast<int32_t>(y + top.yOffset),
+        static_cast<int32_t>(bounds.w),
+        static_cast<int32_t>(bounds.h)
+    };
+
+    MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
+}
+
+void SDLGraphics::drawPatternCached(const Image *const image,
+                                    const int x, const int y,
+                                    const int w, const int h)
+{
+    FUNC_BLOCK("Graphics::drawPatternCached", 1)
+    // Check that preconditions for blitting are met.
+    if (!mWindow || !image)
+        return;
+    if (!image->mTexture)
+        return;
+
+    const gcn::ClipRectangle &top = mClipStack.top();
+    if (!top.width || !top.height)
+        return;
+
+    const SDL_Rect &bounds = image->mBounds;
+    const int iw = bounds.w;
+    const int ih = bounds.h;
+    if (iw == 0 || ih == 0)
+        return;
+
+    const int xOffset = top.xOffset + x;
+    const int yOffset = top.yOffset + y;
+
+    SDL_Rect dstRect;
+    SDL_Rect srcRect;
+    srcRect.x = static_cast<int32_t>(bounds.x);
+    srcRect.y = static_cast<int32_t>(bounds.y);
+    for (int py = 0; py < h; py += ih)
+    {
+        const int dh = (py + ih >= h) ? h - py : ih;
+        dstRect.y = static_cast<int32_t>(py + yOffset);
+        srcRect.h = static_cast<int32_t>(dh);
+        dstRect.h = static_cast<int32_t>(dh);
+
+        for (int px = 0; px < w; px += iw)
+        {
+            const int dw = (px + iw >= w) ? w - px : iw;
+            dstRect.x = static_cast<int32_t>(px + xOffset);
+            srcRect.w = static_cast<int32_t>(dw);
+            dstRect.w = static_cast<int32_t>(dw);
+
+            MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
+        }
+    }
+}
+
+void SDLGraphics::completeCache()
+{
+}
+
 void SDLGraphics::drawPattern(const Image *const image,
                               const int x, const int y,
                               const int w, const int h)

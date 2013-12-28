@@ -160,11 +160,15 @@ class NormalOpenGLGraphics final : public Graphics
 
         inline void drawQuadArrayfi(const int size);
 
+        inline void drawQuadArrayfiCached(const int size);
+
         inline void drawQuadArrayfi(const GLint *const intVertArray,
                                     const GLfloat *const floatTexArray,
                                     const int size);
 
         inline void drawQuadArrayii(const int size);
+
+        inline void drawQuadArrayiiCached(const int size);
 
         inline void drawQuadArrayii(const GLint *const intVertArray,
                                     const GLint *const intTexArray,
@@ -200,6 +204,15 @@ class NormalOpenGLGraphics final : public Graphics
                         const int width, const int height,
                         const bool useColor) override final;
 
+        void drawImageCached(const Image *const image,
+                             int x, int y) override final;
+
+        void drawPatternCached(const Image *const image,
+                               const int x, const int y,
+                               const int w, const int h) override final;
+
+        void completeCache() override final;
+
 #ifdef DEBUG_DRAW_CALLS
         unsigned int getDrawCalls() const
         { return mLastDrawCalls; }
@@ -229,10 +242,16 @@ class NormalOpenGLGraphics final : public Graphics
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
         GLint *mIntVertArray;
+        GLfloat *mFloatTexArrayCached;
+        GLint *mIntTexArrayCached;
+        GLint *mIntVertArrayCached;
+        float mAlphaCached;
+        int mVpCached;
         bool mTexture;
 
         bool mIsByteColor;
         gcn::Color mByteColor;
+        GLuint mImageCached;
         float mFloatColor;
         int mMaxVertices;
         bool mColorAlpha;

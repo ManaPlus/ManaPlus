@@ -163,6 +163,15 @@ class SafeOpenGLGraphics final : public Graphics
                         const int width, const int height,
                         const bool useColor) override final;
 
+        void drawImageCached(const Image *const image,
+                             int x, int y) override final;
+
+        void drawPatternCached(const Image *const image,
+                               const int x, const int y,
+                               const int w, const int h) override final;
+
+        void completeCache() override final;
+
         static void bindTexture(const GLenum target, const GLuint texture);
 
         static GLuint mLastImage;

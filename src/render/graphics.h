@@ -385,6 +385,15 @@ class Graphics : public gcn::Graphics
                                 const int width, const int height,
                                 const bool useColor) = 0;
 
+        virtual void drawImageCached(const Image *const image,
+                                     int srcX, int srcY) = 0;
+
+        virtual void drawPatternCached(const Image *const image,
+                                       const int x, const int y,
+                                       const int w, const int h) = 0;
+
+        virtual void completeCache() = 0;
+
         int mWidth;
         int mHeight;
 

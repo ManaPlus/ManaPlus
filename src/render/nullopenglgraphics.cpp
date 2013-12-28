@@ -166,6 +166,21 @@ bool NullOpenGLGraphics::drawImage2(const Image *const image,
     return true;
 }
 
+void NullOpenGLGraphics::drawImageCached(const Image *const image,
+                                         int x, int y)
+{
+}
+
+void NullOpenGLGraphics::drawPatternCached(const Image *const image,
+                                           const int x, const int y,
+                                           const int w, const int h)
+{
+}
+
+void NullOpenGLGraphics::completeCache()
+{
+}
+
 bool NullOpenGLGraphics::drawRescaledImage(const Image *const image,
                                            int srcX, int srcY,
                                            int dstX, int dstY,

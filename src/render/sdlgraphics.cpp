@@ -116,7 +116,6 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
     const gcn::ClipRectangle &top = mClipStack.top();
     const SDL_Rect &bounds = image->mBounds;
 
-
     SDL_Surface *const src = image->mSDLSurface;
 
     srcX += bounds.x;
@@ -192,6 +191,207 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
         return SDL_LowerBlit(src, &srcRect, mWindow, &dstRect);
     }
     return 0;
+}
+
+void SDLGraphics::drawImageCached(const Image *const image,
+                                  int x, int y)
+{
+    FUNC_BLOCK("Graphics::drawImageCached", 1)
+    // Check that preconditions for blitting are met.
+    if (!mWindow || !image || !image->mSDLSurface)
+        return;
+
+    const gcn::ClipRectangle &top = mClipStack.top();
+    const SDL_Rect &bounds = image->mBounds;
+
+    SDL_Surface *const src = image->mSDLSurface;
+
+    int srcX = bounds.x;
+    int srcY = bounds.y;
+    x += top.xOffset;
+    y += top.yOffset;
+
+    int w = bounds.w;
+    int h = bounds.h;
+    if (srcX < 0)
+    {
+        w += srcX;
+        x -= static_cast<int16_t>(srcX);
+        srcX = 0;
+    }
+    const int maxw = src->w - srcX;
+    if (maxw < w)
+        w = maxw;
+
+    if (srcY < 0)
+    {
+        h += srcY;
+        y -= static_cast<int16_t>(srcY);
+        srcY = 0;
+    }
+    const int maxh = src->h - srcY;
+    if (maxh < h)
+        h = maxh;
+
+    const SDL_Rect *const clip = &mWindow->clip_rect;
+    const int clipX = clip->x;
+    const int clipY = clip->y;
+    int dx = clipX - x;
+    if (dx > 0)
+    {
+        w -= dx;
+        x += static_cast<int16_t>(dx);
+        srcX += dx;
+    }
+    dx = x + w - clipX - clip->w;
+    if (dx > 0)
+        w -= dx;
+
+    int dy = clipY - y;
+    if (dy > 0)
+    {
+        h -= dy;
+        y += static_cast<int16_t>(dy);
+        srcY += dy;
+    }
+    dy = y + h - clipY - clip->h;
+    if (dy > 0)
+        h -= dy;
+
+    if (w > 0 && h > 0)
+    {
+        SDL_Rect srcRect =
+        {
+            static_cast<int16_t>(srcX),
+            static_cast<int16_t>(srcY),
+            static_cast<uint16_t>(w),
+            static_cast<uint16_t>(h)
+        };
+
+        SDL_Rect dstRect =
+        {
+            static_cast<int16_t>(x),
+            static_cast<int16_t>(y),
+            static_cast<uint16_t>(w),
+            static_cast<uint16_t>(h)
+        };
+
+        SDL_LowerBlit(src, &srcRect, mWindow, &dstRect);
+    }
+}
+
+void SDLGraphics::drawPatternCached(const Image *const image,
+                                    const int x, const int y,
+                                    const int w, const int h)
+{
+    FUNC_BLOCK("Graphics::drawPatternCached", 1)
+    // Check that preconditions for blitting are met.
+    if (!mWindow || !image)
+        return;
+    if (!image->mSDLSurface)
+        return;
+
+    const SDL_Rect &bounds = image->mBounds;
+    const int iw = bounds.w;
+    const int ih = bounds.h;
+    if (iw == 0 || ih == 0)
+        return;
+
+    const gcn::ClipRectangle &top = mClipStack.top();
+    const int xOffset = top.xOffset + x;
+    const int yOffset = top.yOffset + y;
+    const int srcX = bounds.x;
+    const int srcY = bounds.y;
+    SDL_Surface *const src = image->mSDLSurface;
+    const SDL_Rect *const clip = &mWindow->clip_rect;
+    const int clipX = clip->x;
+    const int clipY = clip->y;
+
+    for (int py = 0; py < h; py += ih)
+    {
+        const int dh = (py + ih >= h) ? h - py : ih;
+        int dstY = py + yOffset;
+        int y2 = srcY;
+        int h2 = dh;
+        if (y2 < 0)
+        {
+            h2 += y2;
+            dstY -= static_cast<int16_t>(y2);
+            y2 = 0;
+        }
+        const int maxh = src->h - y2;
+        if (maxh < h2)
+            h2 = maxh;
+
+        int dy = clipY - dstY;
+        if (dy > 0)
+        {
+            h2 -= dy;
+            dstY += static_cast<int16_t>(dy);
+            y2 += dy;
+        }
+        dy = dstY + h2 - clipY - clip->h;
+        if (dy > 0)
+            h2 -= dy;
+
+        if (h2 > 0)
+        {
+            for (int px = 0; px < w; px += iw)
+            {
+                const int dw = (px + iw >= w) ? w - px : iw;
+                int dstX = px + xOffset;
+                int x2 = srcX;
+                int w2 = dw;
+                if (x2 < 0)
+                {
+                    w2 += x2;
+                    dstX -= static_cast<int16_t>(x2);
+                    x2 = 0;
+                }
+                const int maxw = src->w - x2;
+                if (maxw < w2)
+                    w2 = maxw;
+
+                int dx = clipX - dstX;
+                if (dx > 0)
+                {
+                    w2 -= dx;
+                    dstX += static_cast<int16_t>(dx);
+                    x2 += dx;
+                }
+                dx = dstX + w2 - clipX - clip->w;
+                if (dx > 0)
+                    w2 -= dx;
+
+                if (w2 > 0)
+                {
+                    SDL_Rect srcRect =
+                    {
+                        static_cast<int16_t>(x2),
+                        static_cast<int16_t>(y2),
+                        static_cast<uint16_t>(w2),
+                        static_cast<uint16_t>(h2)
+                    };
+
+                    SDL_Rect dstRect =
+                    {
+                        static_cast<int16_t>(dstX),
+                        static_cast<int16_t>(dstY),
+                        static_cast<uint16_t>(w2),
+                        static_cast<uint16_t>(h2)
+                    };
+
+                    SDL_LowerBlit(src, &srcRect, mWindow, &dstRect);
+                }
+
+//            SDL_BlitSurface(image->mSDLSurface, &srcRect, mWindow, &dstRect);
+            }
+        }
+    }
+}
+
+void SDLGraphics::completeCache()
+{
 }
 
 void SDLGraphics::drawPattern(const Image *const image,

@@ -165,6 +165,8 @@ class MobileOpenGLGraphics final : public Graphics
 
         inline void drawTriangleArrayfs(const int size);
 
+        inline void drawTriangleArrayfsCached(const int size);
+
         inline void drawLineArrays(const int size);
 
         inline void drawVertexes(const NormalOpenGLGraphicsVertexes &ogl);
@@ -193,6 +195,15 @@ class MobileOpenGLGraphics final : public Graphics
                         const int width, const int height,
                         const bool useColor) override final;
 
+        void drawImageCached(const Image *const image,
+                             int x, int y) override final;
+
+        void drawPatternCached(const Image *const image,
+                               const int x, const int y,
+                               const int w, const int h) override final;
+
+        void completeCache() override final;
+
 #ifdef DEBUG_DRAW_CALLS
         unsigned int getDrawCalls() const
         { return mLastDrawCalls; }
@@ -220,10 +231,15 @@ class MobileOpenGLGraphics final : public Graphics
         GLint *mIntTexArray;
         GLint *mIntVertArray;
         GLshort *mShortVertArray;
+        GLfloat *mFloatTexArrayCached;
+        GLshort *mShortVertArrayCached;
+        float mAlphaCached;
+        int mVpCached;
         bool mTexture;
 
         bool mIsByteColor;
         gcn::Color mByteColor;
+        GLuint mImageCached;
         float mFloatColor;
         int mMaxVertices;
         bool mColorAlpha;

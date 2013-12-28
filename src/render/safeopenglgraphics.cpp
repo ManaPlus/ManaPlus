@@ -165,6 +165,67 @@ bool SafeOpenGLGraphics::drawImage2(const Image *const image,
     return true;
 }
 
+void SafeOpenGLGraphics::drawImageCached(const Image *const image,
+                                         int x, int y)
+{
+    FUNC_BLOCK("Graphics::drawImageCached", 1)
+    if (!image)
+        return;
+
+    setColorAlpha(image->mAlpha);
+    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    setTexturingAndBlending(true);
+
+    const SDL_Rect &bounds = image->mBounds;
+    // Draw a textured quad.
+    glBegin(GL_QUADS);
+    drawQuad(image, bounds.x, bounds.y, x, y, bounds.w, bounds.h);
+    glEnd();
+}
+
+void SafeOpenGLGraphics::drawPatternCached(const Image *const image,
+                                           const int x, const int y,
+                                           const int w, const int h)
+{
+    FUNC_BLOCK("Graphics::drawPatternCached", 1)
+    if (!image)
+        return;
+
+    const SDL_Rect &imageRect = image->mBounds;
+    const int iw = imageRect.w;
+    const int ih = imageRect.h;
+    if (iw == 0 || ih == 0)
+        return;
+
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
+
+    setColorAlpha(image->mAlpha);
+    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    setTexturingAndBlending(true);
+
+    // Draw a set of textured rectangles
+    glBegin(GL_QUADS);
+
+    for (int py = 0; py < h; py += ih)
+    {
+        const int height = (py + ih >= h) ? h - py : ih;
+        const int dstY = y + py;
+        for (int px = 0; px < w; px += iw)
+        {
+            int width = (px + iw >= w) ? w - px : iw;
+            int dstX = x + px;
+            drawQuad(image, srcX, srcY, dstX, dstY, width, height);
+        }
+    }
+
+    glEnd();
+}
+
+void SafeOpenGLGraphics::completeCache()
+{
+}
+
 bool SafeOpenGLGraphics::drawRescaledImage(const Image *const image, int srcX,
                                            int srcY, int dstX, int dstY,
                                            const int width, const int height,

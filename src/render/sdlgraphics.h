@@ -139,6 +139,15 @@ class SDLGraphics final : public Graphics
                         const int width, const int height,
                         const bool useColor) override final;
 
+        void drawImageCached(const Image *const image,
+                             int x, int y) override final;
+
+        void drawPatternCached(const Image *const image,
+                               const int x, const int y,
+                               const int w, const int h) override final;
+
+        void completeCache() override final;
+
     protected:
         int SDL_FakeUpperBlit(const SDL_Surface *const src,
                               SDL_Rect *const srcrect,
