@@ -194,11 +194,11 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
     return 0;
 }
 
-void SDLGraphics::drawImagePattern(const Image *const image,
-                                   const int x, const int y,
-                                   const int w, const int h)
+void SDLGraphics::drawPattern(const Image *const image,
+                              const int x, const int y,
+                              const int w, const int h)
 {
-    FUNC_BLOCK("Graphics::drawImagePattern", 1)
+    FUNC_BLOCK("Graphics::drawPattern", 1)
     // Check that preconditions for blitting are met.
     if (!mWindow || !image)
         return;
@@ -304,11 +304,11 @@ void SDLGraphics::drawImagePattern(const Image *const image,
     }
 }
 
-void SDLGraphics::drawRescaledImagePattern(const Image *const image,
-                                           const int x, const int y,
-                                           const int w, const int h,
-                                           const int scaledWidth,
-                                           const int scaledHeight)
+void SDLGraphics::drawRescaledPattern(const Image *const image,
+                                      const int x, const int y,
+                                      const int w, const int h,
+                                      const int scaledWidth,
+                                      const int scaledHeight)
 {
     // Check that preconditions for blitting are met.
     if (!mWindow || !image)
@@ -370,10 +370,10 @@ void SDLGraphics::drawRescaledImagePattern(const Image *const image,
     delete tmpImage;
 }
 
-void SDLGraphics::calcImagePattern(ImageVertexes* const vert,
-                                   const Image *const image,
-                                   const int x, const int y,
-                                   const int w, const int h) const
+void SDLGraphics::calcPattern(ImageVertexes* const vert,
+                              const Image *const image,
+                              const int x, const int y,
+                              const int w, const int h) const
 {
     // Check that preconditions for blitting are met.
     if (!vert || !mWindow || !image || !image->mSDLSurface)
@@ -424,10 +424,10 @@ void SDLGraphics::calcImagePattern(ImageVertexes* const vert,
     }
 }
 
-void SDLGraphics::calcImagePattern(ImageCollection* const vertCol,
-                                   const Image *const image,
-                                   const int x, const int y,
-                                   const int w, const int h) const
+void SDLGraphics::calcPattern(ImageCollection* const vertCol,
+                              const Image *const image,
+                              const int x, const int y,
+                              const int w, const int h) const
 {
     ImageVertexes *vert = nullptr;
     if (vertCol->currentImage != image)
@@ -443,7 +443,7 @@ void SDLGraphics::calcImagePattern(ImageCollection* const vertCol,
         vert = vertCol->currentVert;
     }
 
-    calcImagePattern(vert, image, x, y, w, h);
+    calcPattern(vert, image, x, y, w, h);
 }
 
 void SDLGraphics::calcTileVertexes(ImageVertexes *const vert,

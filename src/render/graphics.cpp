@@ -474,7 +474,7 @@ void Graphics::drawImageRect(const int x, const int y,
     {
         const int tlw = topLeft->getWidth();
         const int tlh = topLeft->getHeight();
-        drawImagePattern(center, tlw + x, tlh + y,
+        drawPattern(center, tlw + x, tlh + y,
             w - tlw - topRight->getWidth(),
             h - tlh - bottomLeft->getHeight());
     }
@@ -486,11 +486,11 @@ void Graphics::drawImageRect(const int x, const int y,
         const int rw = right->getWidth();
         const int th = top->getHeight();
         const int bh = bottom->getHeight();
-        drawImagePattern(top, x + lw, y, w - lw - rw, th);
-        drawImagePattern(bottom, x + lw, h - bh + y, w - lw - rw, bh);
-        drawImagePattern(left, x, y + th, lw, h - th - bh);
+        drawPattern(top, x + lw, y, w - lw - rw, th);
+        drawPattern(bottom, x + lw, h - bh + y, w - lw - rw, bh);
+        drawPattern(left, x, y + th, lw, h - th - bh);
         if (w > rw)
-            drawImagePattern(right, x + w - rw, th + y, rw, h - th - bh);
+            drawPattern(right, x + w - rw, th + y, rw, h - th - bh);
     }
     // Draw the corners
     if (drawMain)
@@ -561,7 +561,7 @@ bool Graphics::calcImageRect(ImageVertexes *const vert,
     {
         const int tlw = topLeft->getWidth();
         const int tlh = topLeft->getHeight();
-        calcImagePattern(vert, center, tlw + x, tlh + y,
+        calcPattern(vert, center, tlw + x, tlh + y,
             w - tlw - topRight->getWidth(),
             h - tlh - bottomLeft->getHeight());
     }
@@ -572,11 +572,11 @@ bool Graphics::calcImageRect(ImageVertexes *const vert,
         const int rw = right->getWidth();
         const int th = top->getHeight();
         const int bh = bottom->getHeight();
-        calcImagePattern(vert, top, x + lw, y, w - lw - rw, th);
-        calcImagePattern(vert, bottom, x + lw, y + h - bh, w - lw - rw, bh);
-        calcImagePattern(vert, left, x, y + th, lw, h - th - bh);
+        calcPattern(vert, top, x + lw, y, w - lw - rw, th);
+        calcPattern(vert, bottom, x + lw, y + h - bh, w - lw - rw, bh);
+        calcPattern(vert, left, x, y + th, lw, h - th - bh);
         if (w > rw)
-            calcImagePattern(vert, right, x + w - rw, y + th, rw, h - th - bh);
+            calcPattern(vert, right, x + w - rw, y + th, rw, h - th - bh);
     }
 
     calcTileVertexes(vert, topLeft, x, y);

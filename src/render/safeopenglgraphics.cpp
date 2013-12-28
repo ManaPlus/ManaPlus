@@ -237,13 +237,13 @@ bool SafeOpenGLGraphics::drawRescaledImage(const Image *const image, int srcX,
     return true;
 }
 
-/* Optimising the functions that Graphics::drawImagePattern would call,
+/* Optimising the functions that Graphics::drawPattern would call,
  * so that glBegin...glEnd are outside the main loop. */
-void SafeOpenGLGraphics::drawImagePattern(const Image *const image,
-                                          const int x, const int y,
-                                          const int w, const int h)
+void SafeOpenGLGraphics::drawPattern(const Image *const image,
+                                     const int x, const int y,
+                                     const int w, const int h)
 {
-    FUNC_BLOCK("Graphics::drawImagePattern", 1)
+    FUNC_BLOCK("Graphics::drawPattern", 1)
     if (!image)
         return;
 
@@ -278,11 +278,11 @@ void SafeOpenGLGraphics::drawImagePattern(const Image *const image,
     glEnd();
 }
 
-void SafeOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
-                                                  const int x, const int y,
-                                                  const int w, const int h,
-                                                  const int scaledWidth,
-                                                  const int scaledHeight)
+void SafeOpenGLGraphics::drawRescaledPattern(const Image *const image,
+                                             const int x, const int y,
+                                             const int w, const int h,
+                                             const int scaledWidth,
+                                             const int scaledHeight)
 {
     if (!image)
         return;
@@ -339,21 +339,21 @@ void SafeOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert A_UNUSED,
 {
 }
 
-void SafeOpenGLGraphics::calcImagePattern(ImageVertexes *const vert A_UNUSED,
-                                          const Image *const image A_UNUSED,
-                                          const int x A_UNUSED,
-                                          const int y A_UNUSED,
-                                          const int w A_UNUSED,
-                                          const int h A_UNUSED) const
+void SafeOpenGLGraphics::calcPattern(ImageVertexes *const vert A_UNUSED,
+                                     const Image *const image A_UNUSED,
+                                     const int x A_UNUSED,
+                                     const int y A_UNUSED,
+                                     const int w A_UNUSED,
+                                     const int h A_UNUSED) const
 {
 }
 
-void SafeOpenGLGraphics::calcImagePattern(ImageCollection *const vert A_UNUSED,
-                                          const Image *const image A_UNUSED,
-                                          const int x A_UNUSED,
-                                          const int y A_UNUSED,
-                                          const int w A_UNUSED,
-                                          const int h A_UNUSED) const
+void SafeOpenGLGraphics::calcPattern(ImageCollection *const vert A_UNUSED,
+                                     const Image *const image A_UNUSED,
+                                     const int x A_UNUSED,
+                                     const int y A_UNUSED,
+                                     const int w A_UNUSED,
+                                     const int h A_UNUSED) const
 {
 }
 

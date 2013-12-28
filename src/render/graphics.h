@@ -176,18 +176,18 @@ class Graphics : public gcn::Graphics
                                        const int desiredHeight,
                                        const bool useColor = false) = 0;
 
-        virtual void drawImagePattern(const Image *const image,
-                                      const int x, const int y,
-                                      const int w, const int h) = 0;
+        virtual void drawPattern(const Image *const image,
+                                 const int x, const int y,
+                                 const int w, const int h) = 0;
 
         /**
          * Draw a pattern based on a rescaled version of the given image...
          */
-        virtual void drawRescaledImagePattern(const Image *const image,
-                                              const int x, const int y,
-                                              const int w, const int h,
-                                              const int scaledWidth,
-                                              const int scaledHeight) = 0;
+        virtual void drawRescaledPattern(const Image *const image,
+                                         const int x, const int y,
+                                         const int w, const int h,
+                                         const int scaledWidth,
+                                         const int scaledHeight) = 0;
 
         /**
          * Draws a rectangle using images. 4 corner images, 4 side images and 1
@@ -224,15 +224,15 @@ class Graphics : public gcn::Graphics
                            const Image *const left,
                            const Image *const center);
 
-        virtual void calcImagePattern(ImageVertexes *const vert,
-                                      const Image *const image,
-                                      const int x, const int y,
-                                      const int w, const int h) const = 0;
+        virtual void calcPattern(ImageVertexes *const vert,
+                                 const Image *const image,
+                                 const int x, const int y,
+                                 const int w, const int h) const = 0;
 
-        virtual void calcImagePattern(ImageCollection *const vert,
-                                      const Image *const image,
-                                      const int x, const int y,
-                                      const int w, const int h) const = 0;
+        virtual void calcPattern(ImageCollection *const vert,
+                                 const Image *const image,
+                                 const int x, const int y,
+                                 const int w, const int h) const = 0;
 
         virtual void calcTileVertexes(ImageVertexes *const vert,
                                       const Image *const image,

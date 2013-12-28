@@ -203,11 +203,11 @@ bool SDL2SoftwareGraphics::drawImage2(const Image *const image,
     return 0;
 }
 
-void SDL2SoftwareGraphics::drawImagePattern(const Image *const image,
-                                            const int x, const int y,
-                                            const int w, const int h)
+void SDL2SoftwareGraphics::drawPattern(const Image *const image,
+                                       const int x, const int y,
+                                       const int w, const int h)
 {
-    FUNC_BLOCK("Graphics::drawImagePattern", 1)
+    FUNC_BLOCK("Graphics::drawPattern", 1)
     // Check that preconditions for blitting are met.
     if (!mSurface || !image)
         return;
@@ -313,11 +313,11 @@ void SDL2SoftwareGraphics::drawImagePattern(const Image *const image,
     }
 }
 
-void SDL2SoftwareGraphics::drawRescaledImagePattern(const Image *const image,
-                                                    const int x, const int y,
-                                                    const int w, const int h,
-                                                    const int scaledWidth,
-                                                    const int scaledHeight)
+void SDL2SoftwareGraphics::drawRescaledPattern(const Image *const image,
+                                               const int x, const int y,
+                                               const int w, const int h,
+                                               const int scaledWidth,
+                                               const int scaledHeight)
 {
     // Check that preconditions for blitting are met.
     if (!mSurface || !image)
@@ -379,10 +379,10 @@ void SDL2SoftwareGraphics::drawRescaledImagePattern(const Image *const image,
     delete tmpImage;
 }
 
-void SDL2SoftwareGraphics::calcImagePattern(ImageVertexes* const vert,
-                                            const Image *const image,
-                                            const int x, const int y,
-                                            const int w, const int h) const
+void SDL2SoftwareGraphics::calcPattern(ImageVertexes* const vert,
+                                       const Image *const image,
+                                       const int x, const int y,
+                                       const int w, const int h) const
 {
     // Check that preconditions for blitting are met.
     if (!vert || !mSurface || !image || !image->mSDLSurface)
@@ -433,10 +433,10 @@ void SDL2SoftwareGraphics::calcImagePattern(ImageVertexes* const vert,
     }
 }
 
-void SDL2SoftwareGraphics::calcImagePattern(ImageCollection* const vertCol,
-                                            const Image *const image,
-                                            const int x, const int y,
-                                            const int w, const int h) const
+void SDL2SoftwareGraphics::calcPattern(ImageCollection* const vertCol,
+                                       const Image *const image,
+                                       const int x, const int y,
+                                       const int w, const int h) const
 {
     ImageVertexes *vert = nullptr;
     if (vertCol->currentImage != image)

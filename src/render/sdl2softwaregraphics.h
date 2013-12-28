@@ -70,25 +70,25 @@ class SDL2SoftwareGraphics final : public Graphics
                                const int desiredHeight,
                                const bool useColor = false) override final;
 
-        void drawImagePattern(const Image *const image,
-                              const int x, const int y,
-                              const int w, const int h) override final;
+        void drawPattern(const Image *const image,
+                         const int x, const int y,
+                         const int w, const int h) override final;
 
-        void drawRescaledImagePattern(const Image *const image,
-                                      const int x, const int y,
-                                      const int w, const int h,
-                                      const int scaledWidth,
-                                      const int scaledHeight) override final;
+        void drawRescaledPattern(const Image *const image,
+                                 const int x, const int y,
+                                 const int w, const int h,
+                                 const int scaledWidth,
+                                 const int scaledHeight) override final;
 
-        void calcImagePattern(ImageVertexes *const vert,
-                              const Image *const image,
-                              const int x, const int y,
-                              const int w, const int h) const override final;
+        void calcPattern(ImageVertexes *const vert,
+                         const Image *const image,
+                         const int x, const int y,
+                         const int w, const int h) const override final;
 
-        void calcImagePattern(ImageCollection *const vert,
-                              const Image *const image,
-                              const int x, const int y,
-                              const int w, const int h) const override final;
+        void calcPattern(ImageCollection *const vert,
+                         const Image *const image,
+                         const int x, const int y,
+                         const int w, const int h) const override final;
 
         void calcTileVertexes(ImageVertexes *const vert,
                               const Image *const image,

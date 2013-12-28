@@ -75,18 +75,18 @@ class SafeOpenGLGraphics final : public Graphics
                                const int desiredWidth, const int desiredHeight,
                                const bool useColor, bool smooth);
 
-        void drawImagePattern(const Image *const image,
-                              const int x, const int y,
-                              const int w, const int h) override final;
+        void drawPattern(const Image *const image,
+                         const int x, const int y,
+                         const int w, const int h) override final;
 
         /**
          * Draw a pattern based on a rescaled version of the given image...
          */
-        void drawRescaledImagePattern(const Image *const image,
-                                      const int x, const int y,
-                                      const int w, const int h,
-                                      const int scaledWidth,
-                                      const int scaledHeight) override final;
+        void drawRescaledPattern(const Image *const image,
+                                 const int x, const int y,
+                                 const int w, const int h,
+                                 const int scaledWidth,
+                                 const int scaledHeight) override final;
 
         void calcTileVertexes(ImageVertexes *const vert,
                               const Image *const image,
@@ -96,15 +96,15 @@ class SafeOpenGLGraphics final : public Graphics
                                 const Image *const image,
                                 int x, int y) override final;
 
-        void calcImagePattern(ImageVertexes *const vert,
-                              const Image *const image,
-                              const int x, const int y,
-                              const int w, const int h) const override final;
+        void calcPattern(ImageVertexes *const vert,
+                         const Image *const image,
+                         const int x, const int y,
+                         const int w, const int h) const override final;
 
-        void calcImagePattern(ImageCollection *const vert,
-                              const Image *const image,
-                              const int x, const int y,
-                              const int w, const int h) const override final;
+        void calcPattern(ImageCollection *const vert,
+                         const Image *const image,
+                         const int x, const int y,
+                         const int w, const int h) const override final;
 
         void drawTileVertexes(const ImageVertexes *const vert) override final;
 

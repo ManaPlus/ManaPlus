@@ -80,37 +80,37 @@ class SurfaceGraphics final : public Graphics
                                override final
         { return false; }
 
-        void drawImagePattern(const Image *const image A_UNUSED,
-                              const int x A_UNUSED,
-                              const int y A_UNUSED,
-                              const int w A_UNUSED,
-                              const int h A_UNUSED) override final
+        void drawPattern(const Image *const image A_UNUSED,
+                         const int x A_UNUSED,
+                         const int y A_UNUSED,
+                         const int w A_UNUSED,
+                         const int h A_UNUSED) override final
         { }
 
-        void drawRescaledImagePattern(const Image *const image A_UNUSED,
-                                      const int x A_UNUSED,
-                                      const int y A_UNUSED,
-                                      const int w A_UNUSED,
-                                      const int h A_UNUSED,
-                                      const int scaledWidth A_UNUSED,
-                                      const int scaledHeight A_UNUSED)
-                                      override final
+        void drawRescaledPattern(const Image *const image A_UNUSED,
+                                 const int x A_UNUSED,
+                                 const int y A_UNUSED,
+                                 const int w A_UNUSED,
+                                 const int h A_UNUSED,
+                                 const int scaledWidth A_UNUSED,
+                                 const int scaledHeight A_UNUSED)
+                                 override final
         { }
 
-        void calcImagePattern(ImageVertexes *const vert A_UNUSED,
-                              const Image *const image A_UNUSED,
-                              const int x A_UNUSED,
-                              const int y A_UNUSED,
-                              const int w A_UNUSED,
-                              const int h A_UNUSED) const override final
+        void calcPattern(ImageVertexes *const vert A_UNUSED,
+                         const Image *const image A_UNUSED,
+                         const int x A_UNUSED,
+                         const int y A_UNUSED,
+                         const int w A_UNUSED,
+                         const int h A_UNUSED) const override final
         { }
 
-        void calcImagePattern(ImageCollection *const vert A_UNUSED,
-                              const Image *const image A_UNUSED,
-                              const int x A_UNUSED,
-                              const int y A_UNUSED,
-                              const int w A_UNUSED,
-                              const int h A_UNUSED) const override final
+        void calcPattern(ImageCollection *const vert A_UNUSED,
+                         const Image *const image A_UNUSED,
+                         const int x A_UNUSED,
+                         const int y A_UNUSED,
+                         const int w A_UNUSED,
+                         const int h A_UNUSED) const override final
         { }
 
         void calcTileVertexes(ImageVertexes *const vert A_UNUSED,

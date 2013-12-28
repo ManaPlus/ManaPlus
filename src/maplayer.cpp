@@ -143,7 +143,7 @@ void MapLayer::draw(Graphics *const graphics,
                     }
                     else
                     {
-                        graphics->drawImagePattern(img, px, py,
+                        graphics->drawPattern(img, px, py,
                             width, img->mBounds.h);
                     }
                 }
@@ -459,7 +459,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                         }
                         else
                         {
-                            graphics->drawImagePattern(img, px, py,
+                            graphics->drawPattern(img, px, py,
                                 width, img->mBounds.h);
                         }
                     }

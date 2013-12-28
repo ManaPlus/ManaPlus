@@ -156,7 +156,7 @@ void Slider::draw(gcn::Graphics *graphics)
                 if (buttons[0].grid[HMID])
                 {
                     const Image *const hMid = buttons[0].grid[HMID];
-                    g->calcImagePattern(mVertexes, hMid, x, y,
+                    g->calcPattern(mVertexes, hMid, x, y,
                         w, hMid->getHeight());
                 }
 
@@ -184,7 +184,7 @@ void Slider::draw(gcn::Graphics *graphics)
                 if (buttons[1].grid[HMID])
                 {
                     const Image *const hMid = buttons[1].grid[HMID];
-                    g->calcImagePattern(mVertexes, hMid, x, y,
+                    g->calcPattern(mVertexes, hMid, x, y,
                         w, hMid->getHeight());
                 }
 
@@ -217,7 +217,7 @@ void Slider::draw(gcn::Graphics *graphics)
             if (buttons[0].grid[HMID])
             {
                 const Image *const hMid = buttons[0].grid[HMID];
-                g->drawImagePattern(hMid, x, y, w, hMid->getHeight());
+                g->drawPattern(hMid, x, y, w, hMid->getHeight());
             }
 
             x += w;
@@ -243,7 +243,7 @@ void Slider::draw(gcn::Graphics *graphics)
             if (buttons[1].grid[HMID])
             {
                 const Image *const hMid = buttons[1].grid[HMID];
-                g->drawImagePattern(hMid, x, y, w, hMid->getHeight());
+                g->drawPattern(hMid, x, y, w, hMid->getHeight());
             }
 
             x += w;

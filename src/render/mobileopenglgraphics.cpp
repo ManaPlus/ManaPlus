@@ -291,11 +291,11 @@ bool MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
     return true;
 }
 
-void MobileOpenGLGraphics::drawImagePattern(const Image *const image,
-                                            const int x, const int y,
-                                            const int w, const int h)
+void MobileOpenGLGraphics::drawPattern(const Image *const image,
+                                       const int x, const int y,
+                                       const int w, const int h)
 {
-    FUNC_BLOCK("Graphics::drawImagePattern", 1)
+    FUNC_BLOCK("Graphics::drawPattern", 1)
     if (!image)
         return;
 
@@ -389,11 +389,11 @@ void MobileOpenGLGraphics::drawImagePattern(const Image *const image,
 //    }
 }
 
-void MobileOpenGLGraphics::drawRescaledImagePattern(const Image *const image,
-                                                    const int x, const int y,
-                                                    const int w, const int h,
-                                                    const int scaledWidth,
-                                                    const int scaledHeight)
+void MobileOpenGLGraphics::drawRescaledPattern(const Image *const image,
+                                               const int x, const int y,
+                                               const int w, const int h,
+                                               const int scaledWidth,
+                                               const int scaledHeight)
 {
     if (!image)
         return;
@@ -528,10 +528,10 @@ inline void MobileOpenGLGraphics::drawVertexes(const
     }
 }
 
-void MobileOpenGLGraphics::calcImagePattern(ImageVertexes *const vert,
-                                            const Image *const image,
-                                            const int x, const int y,
-                                            const int w, const int h) const
+void MobileOpenGLGraphics::calcPattern(ImageVertexes *const vert,
+                                       const Image *const image,
+                                       const int x, const int y,
+                                       const int w, const int h) const
 {
     if (!image || !vert)
         return;
@@ -662,10 +662,10 @@ void MobileOpenGLGraphics::drawTileCollection(const ImageCollection
     }
 }
 
-void MobileOpenGLGraphics::calcImagePattern(ImageCollection* const vertCol,
-                                            const Image *const image,
-                                            const int x, const int y,
-                                            const int w, const int h) const
+void MobileOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
+                                       const Image *const image,
+                                       const int x, const int y,
+                                       const int w, const int h) const
 {
     ImageVertexes *vert = nullptr;
     if (vertCol->currentGLImage != image->mGLImage)
@@ -681,7 +681,7 @@ void MobileOpenGLGraphics::calcImagePattern(ImageCollection* const vertCol,
         vert = vertCol->currentVert;
     }
 
-    calcImagePattern(vert, image, x, y, w, h);
+    calcPattern(vert, image, x, y, w, h);
 }
 
 void MobileOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
