@@ -150,14 +150,6 @@ class Graphics : public gcn::Graphics
          */
         virtual bool resizeScreen(const int width, const int height);
 
-        /**
-         * Blits an image onto the screen.
-         *
-         * @return <code>true</code> if the image was blitted properly
-         *         <code>false</code> otherwise.
-         */
-        bool drawImage(const Image *image, int x, int y);
-
         //  override unused abstract function
         void drawImage(const gcn::Image* image A_UNUSED,
                        int srcX A_UNUSED, int srcY A_UNUSED,

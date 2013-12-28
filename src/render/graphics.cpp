@@ -440,19 +440,6 @@ int Graphics::getHeight() const
     return mHeight;
 }
 
-bool Graphics::drawImage(const Image *image, int x, int y)
-{
-    if (image)
-    {
-        return drawImage2(image, 0, 0, x, y,
-            image->mBounds.w, image->mBounds.h, false);
-    }
-    else
-    {
-        return false;
-    }
-}
-
 void Graphics::drawImageRect(const int x, const int y,
                              const int w, const int h,
                              const Image *const topLeft,
