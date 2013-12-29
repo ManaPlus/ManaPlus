@@ -45,7 +45,7 @@ PetHandler::PetHandler() :
     petHandler = this;
 }
 
-void PetHandler::handleMessage(Net::MessageIn &msg)
+void PetHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
     BLOCK_START("PetHandler::handleMessage")
     BLOCK_END("PetHandler::handleMessage")

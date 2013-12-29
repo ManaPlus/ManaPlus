@@ -339,7 +339,7 @@ void MobileOpenGLGraphics::drawPatternCached(const Image *const image,
 
                 vertFill2D(mFloatTexArrayCached, mShortVertArrayCached,
                     texX1, texY1, texX2, texY2,
-                    x, y, width, height);
+                    dstX, dstY, width, height);
 
                 vp += 12;
                 if (vp >= vLimit)

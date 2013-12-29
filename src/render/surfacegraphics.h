@@ -188,9 +188,11 @@ class SurfaceGraphics final : public Graphics
         void drawImageCached(const Image *const image,
                              int x, int y) override final;
 
-        void drawPatternCached(const Image *const image,
-                               const int x, const int y,
-                               const int w, const int h) override final
+        void drawPatternCached(const Image *const image A_UNUSED,
+                               const int x A_UNUSED,
+                               const int y A_UNUSED,
+                               const int w A_UNUSED,
+                               const int h A_UNUSED) override final
         { }
 
         void completeCache() override final;
