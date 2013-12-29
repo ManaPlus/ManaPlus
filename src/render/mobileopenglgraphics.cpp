@@ -38,6 +38,32 @@
 
 #include "debug.h"
 
+#define vertFill2D(tVar, vVar, x1, y1, x2, y2, dstX, dstY, w, h) \
+    tVar[vp + 0] = x1; \
+    tVar[vp + 1] = y1; \
+    tVar[vp + 2] = x2; \
+    tVar[vp + 3] = y1; \
+    tVar[vp + 4] = x2; \
+    tVar[vp + 5] = y2; \
+    tVar[vp + 6] = x1; \
+    tVar[vp + 7] = y1; \
+    tVar[vp + 8] = x1; \
+    tVar[vp + 9] = y2; \
+    tVar[vp + 10] = x2; \
+    tVar[vp + 11] = y2; \
+    vVar[vp + 0] = dstX; \
+    vVar[vp + 1] = dstY; \
+    vVar[vp + 2] = dstX + w; \
+    vVar[vp + 3] = dstY; \
+    vVar[vp + 4] = dstX + w; \
+    vVar[vp + 5] = dstY + h; \
+    vVar[vp + 6] = dstX; \
+    vVar[vp + 7] = dstY; \
+    vVar[vp + 8] = dstX; \
+    vVar[vp + 9] = dstY + h; \
+    vVar[vp + 10] = dstX + w; \
+    vVar[vp + 11] = dstY + h;
+
 GLuint MobileOpenGLGraphics::mLastImage = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int MobileOpenGLGraphics::mDrawCalls = 0;
@@ -256,41 +282,9 @@ void MobileOpenGLGraphics::drawImageCached(const Image *const image,
         float texX2 = static_cast<float>(srcX + w) / tw;
         float texY2 = static_cast<float>(srcY + h) / th;
 
-        mFloatTexArrayCached[vp + 0] = texX1;
-        mFloatTexArrayCached[vp + 1] = texY1;
-
-        mFloatTexArrayCached[vp + 2] = texX2;
-        mFloatTexArrayCached[vp + 3] = texY1;
-
-        mFloatTexArrayCached[vp + 4] = texX2;
-        mFloatTexArrayCached[vp + 5] = texY2;
-
-        mFloatTexArrayCached[vp + 6] = texX1;
-        mFloatTexArrayCached[vp + 7] = texY1;
-
-        mFloatTexArrayCached[vp + 8] = texX1;
-        mFloatTexArrayCached[vp + 9] = texY2;
-
-        mFloatTexArrayCached[vp + 10] = texX2;
-        mFloatTexArrayCached[vp + 11] = texY2;
-
-        mShortVertArray[vp + 0] = x;
-        mShortVertArray[vp + 1] = y;
-
-        mShortVertArray[vp + 2] = x + w;
-        mShortVertArray[vp + 3] = y;
-
-        mShortVertArray[vp + 4] = x + w;
-        mShortVertArray[vp + 5] = y + h;
-
-        mShortVertArray[vp + 6] = x;
-        mShortVertArray[vp + 7] = y;
-
-        mShortVertArray[vp + 8] = x;
-        mShortVertArray[vp + 9] = y + h;
-
-        mShortVertArray[vp + 10] = x + w;
-        mShortVertArray[vp + 11] = y + h;
+        vertFill2D(mFloatTexArrayCached, mShortVertArrayCached,
+            texX1, texY1, texX2, texY2,
+            x, y, w, h);
 
         vp += 12;
         if (vp >= vLimit)
@@ -350,47 +344,9 @@ void MobileOpenGLGraphics::drawPatternCached(const Image *const image,
 
                 const float texX2 = static_cast<float>(srcX + width) / tw;
 
-                mFloatTexArrayCached[vp + 0] = texX1;     // 1
-                mFloatTexArrayCached[vp + 1] = texY1;
-
-                mFloatTexArrayCached[vp + 2] = texX2;     // 2
-                mFloatTexArrayCached[vp + 3] = texY1;
-
-                mFloatTexArrayCached[vp + 4] = texX2;     // 3
-                mFloatTexArrayCached[vp + 5] = texY2;
-
-                mFloatTexArrayCached[vp + 6] = texX1;     // 1
-                mFloatTexArrayCached[vp + 7] = texY1;
-
-                mFloatTexArrayCached[vp + 8] = texX1;     // 4
-                mFloatTexArrayCached[vp + 9] = texY2;
-
-                mFloatTexArrayCached[vp + 10] = texX2;    // 3
-                mFloatTexArrayCached[vp + 11] = texY2;
-
-                mShortVertArrayCached[vp + 0] = static_cast<GLshort>(dstX);
-                mShortVertArrayCached[vp + 1] = static_cast<GLshort>(dstY);
-
-                mShortVertArrayCached[vp + 2] = static_cast<GLshort>(
-                    dstX + width);
-                mShortVertArrayCached[vp + 3] = static_cast<GLshort>(dstY);
-
-                mShortVertArrayCached[vp + 4] = static_cast<GLshort>(
-                    dstX + width);
-                mShortVertArrayCached[vp + 5] = static_cast<GLshort>(
-                    dstY + height);
-
-                mShortVertArrayCached[vp + 6] = static_cast<GLshort>(dstX);
-                mShortVertArrayCached[vp + 7] = static_cast<GLshort>(dstY);
-
-                mShortVertArrayCached[vp + 8] = static_cast<GLshort>(dstX);
-                mShortVertArrayCached[vp + 9] = static_cast<GLshort>(
-                    dstY + height);
-
-                mShortVertArrayCached[vp + 10] = static_cast<GLshort>(
-                    dstX + width);
-                mShortVertArrayCached[vp + 11] = static_cast<GLshort>(
-                    dstY + height);
+                vertFill2D(mFloatTexArrayCached, mShortVertArrayCached,
+                    texX1, texY1, texX2, texY2,
+                    x, y, width, height);
 
                 vp += 12;
                 if (vp >= vLimit)
@@ -545,41 +501,9 @@ void MobileOpenGLGraphics::drawPattern(const Image *const image,
 
                 const float texX2 = static_cast<float>(srcX + width) / tw;
 
-                mFloatTexArray[vp + 0] = texX1;     // 1
-                mFloatTexArray[vp + 1] = texY1;
-
-                mFloatTexArray[vp + 2] = texX2;     // 2
-                mFloatTexArray[vp + 3] = texY1;
-
-                mFloatTexArray[vp + 4] = texX2;     // 3
-                mFloatTexArray[vp + 5] = texY2;
-
-                mFloatTexArray[vp + 6] = texX1;     // 1
-                mFloatTexArray[vp + 7] = texY1;
-
-                mFloatTexArray[vp + 8] = texX1;     // 4
-                mFloatTexArray[vp + 9] = texY2;
-
-                mFloatTexArray[vp + 10] = texX2;    // 3
-                mFloatTexArray[vp + 11] = texY2;
-
-                mShortVertArray[vp + 0] = static_cast<GLshort>(dstX);
-                mShortVertArray[vp + 1] = static_cast<GLshort>(dstY);
-
-                mShortVertArray[vp + 2] = static_cast<GLshort>(dstX + width);
-                mShortVertArray[vp + 3] = static_cast<GLshort>(dstY);
-
-                mShortVertArray[vp + 4] = static_cast<GLshort>(dstX + width);
-                mShortVertArray[vp + 5] = static_cast<GLshort>(dstY + height);
-
-                mShortVertArray[vp + 6] = static_cast<GLshort>(dstX);
-                mShortVertArray[vp + 7] = static_cast<GLshort>(dstY);
-
-                mShortVertArray[vp + 8] = static_cast<GLshort>(dstX);
-                mShortVertArray[vp + 9] = static_cast<GLshort>(dstY + height);
-
-                mShortVertArray[vp + 10] = static_cast<GLshort>(dstX + width);
-                mShortVertArray[vp + 11] = static_cast<GLshort>(dstY + height);
+                vertFill2D(mFloatTexArray, mShortVertArray,
+                    texX1, texY1, texX2, texY2,
+                    dstX, dstY, width, height);
 
                 vp += 12;
                 if (vp >= vLimit)
@@ -655,41 +579,9 @@ void MobileOpenGLGraphics::drawRescaledPattern(const Image *const image,
                     / scaledWidth;
                 const float texX2 = texX1 + tFractionW * visibleFractionW;
 
-                mFloatTexArray[vp + 0] = texX1;
-                mFloatTexArray[vp + 1] = texY1;
-
-                mFloatTexArray[vp + 2] = texX2;
-                mFloatTexArray[vp + 3] = texY1;
-
-                mFloatTexArray[vp + 4] = texX2;
-                mFloatTexArray[vp + 5] = texY2;
-
-                mFloatTexArray[vp + 6] = texX1;
-                mFloatTexArray[vp + 7] = texY1;
-
-                mFloatTexArray[vp + 8] = texX1;
-                mFloatTexArray[vp + 9] = texY2;
-
-                mFloatTexArray[vp + 10] = texX2;
-                mFloatTexArray[vp + 11] = texY2;
-
-                mShortVertArray[vp + 0] = static_cast<GLshort>(dstX);
-                mShortVertArray[vp + 1] = static_cast<GLshort>(dstY);
-
-                mShortVertArray[vp + 2] = static_cast<GLshort>(dstX + width);
-                mShortVertArray[vp + 3] = static_cast<GLshort>(dstY);
-
-                mShortVertArray[vp + 4] = static_cast<GLshort>(dstX + width);
-                mShortVertArray[vp + 5] = static_cast<GLshort>(dstY + height);
-
-                mShortVertArray[vp + 6] = static_cast<GLshort>(dstX);
-                mShortVertArray[vp + 7] = static_cast<GLshort>(dstY);
-
-                mShortVertArray[vp + 8] = static_cast<GLshort>(dstX);
-                mShortVertArray[vp + 9] = static_cast<GLshort>(dstY + height);
-
-                mShortVertArray[vp + 10] = static_cast<GLshort>(dstX + width);
-                mShortVertArray[vp + 11] = static_cast<GLshort>(dstY + height);
+                vertFill2D(mFloatTexArray, mShortVertArray,
+                    texX1, texY1, texX2, texY2,
+                    dstX, dstY, width, height);
 
                 vp += 12;
                 if (vp >= vLimit)
@@ -778,41 +670,9 @@ void MobileOpenGLGraphics::calcPattern(ImageVertexes *const vert,
                 const int dstX = x + px;
                 const float texX2 = static_cast<float>(srcX + width) / tw;
 
-                floatTexArray[vp + 0] = texX1;
-                floatTexArray[vp + 1] = texY1;
-
-                floatTexArray[vp + 2] = texX2;
-                floatTexArray[vp + 3] = texY1;
-
-                floatTexArray[vp + 4] = texX2;
-                floatTexArray[vp + 5] = texY2;
-
-                floatTexArray[vp + 6] = texX1;
-                floatTexArray[vp + 7] = texY1;
-
-                floatTexArray[vp + 8] = texX1;
-                floatTexArray[vp + 9] = texY2;
-
-                floatTexArray[vp + 10] = texX2;
-                floatTexArray[vp + 11] = texY2;
-
-                shortVertArray[vp + 0] = dstX;
-                shortVertArray[vp + 1] = dstY;
-
-                shortVertArray[vp + 2] = dstX + width;
-                shortVertArray[vp + 3] = dstY;
-
-                shortVertArray[vp + 4] = dstX + width;
-                shortVertArray[vp + 5] = dstY + height;
-
-                shortVertArray[vp + 6] = dstX;
-                shortVertArray[vp + 7] = dstY;
-
-                shortVertArray[vp + 8] = dstX;
-                shortVertArray[vp + 9] = dstY + height;
-
-                shortVertArray[vp + 10] = dstX + width;
-                shortVertArray[vp + 11] = dstY + height;
+                vertFill2D(floatTexArray, shortVertArray,
+                    texX1, texY1, texX2, texY2,
+                    dstX, dstY, width, height);
 
                 vp += 12;
                 if (vp >= vLimit)
@@ -926,41 +786,9 @@ void MobileOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
         GLfloat *const floatTexArray = ogl.continueFloatTexArray();
         GLshort *const shortVertArray = ogl.continueShortVertArray();
 
-        floatTexArray[vp + 0] = texX1;
-        floatTexArray[vp + 1] = texY1;
-
-        floatTexArray[vp + 2] = texX2;
-        floatTexArray[vp + 3] = texY1;
-
-        floatTexArray[vp + 4] = texX2;
-        floatTexArray[vp + 5] = texY2;
-
-        floatTexArray[vp + 6] = texX1;
-        floatTexArray[vp + 7] = texY1;
-
-        floatTexArray[vp + 8] = texX1;
-        floatTexArray[vp + 9] = texY2;
-
-        floatTexArray[vp + 10] = texX2;
-        floatTexArray[vp + 11] = texY2;
-
-        shortVertArray[vp + 0] = dstX;
-        shortVertArray[vp + 1] = dstY;
-
-        shortVertArray[vp + 2] = dstX + w;
-        shortVertArray[vp + 3] = dstY;
-
-        shortVertArray[vp + 4] = dstX + w;
-        shortVertArray[vp + 5] = dstY + h;
-
-        shortVertArray[vp + 6] = dstX;
-        shortVertArray[vp + 7] = dstY;
-
-        shortVertArray[vp + 8] = dstX;
-        shortVertArray[vp + 9] = dstY + h;
-
-        shortVertArray[vp + 10] = dstX + w;
-        shortVertArray[vp + 11] = dstY + h;
+        vertFill2D(floatTexArray, shortVertArray,
+            texX1, texY1, texX2, texY2,
+            dstX, dstY, w, h);
 
         vp += 12;
         if (vp >= vLimit)
