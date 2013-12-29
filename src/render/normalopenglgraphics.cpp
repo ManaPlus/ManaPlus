@@ -37,6 +37,43 @@
 
 #include "debug.h"
 
+#define vertFill2D(tVar, vVar, x1, y1, x2, y2, dstX, dstY, w, h) \
+    tVar[vp + 0] = x1; \
+    tVar[vp + 1] = y1; \
+    tVar[vp + 2] = x2; \
+    tVar[vp + 3] = y1; \
+    tVar[vp + 4] = x2; \
+    tVar[vp + 5] = y2; \
+    tVar[vp + 6] = x1; \
+    tVar[vp + 7] = y2; \
+    vVar[vp + 0] = dstX; \
+    vVar[vp + 1] = dstY; \
+    vVar[vp + 2] = dstX + w; \
+    vVar[vp + 3] = dstY; \
+    vVar[vp + 4] = dstX + w; \
+    vVar[vp + 5] = dstY + h; \
+    vVar[vp + 6] = dstX; \
+    vVar[vp + 7] = dstY + h;
+
+
+#define vertFillNv(tVar, vVar, srcX, srcY, dstX, dstY, w, h) \
+    tVar[vp + 0] = srcX; \
+    tVar[vp + 1] = srcY; \
+    tVar[vp + 2] = srcX + w; \
+    tVar[vp + 3] = srcY; \
+    tVar[vp + 4] = srcX + w; \
+    tVar[vp + 5] = srcY + h; \
+    tVar[vp + 6] = srcX; \
+    tVar[vp + 7] = srcY + h; \
+    vVar[vp + 0] = dstX; \
+    vVar[vp + 1] = dstY; \
+    vVar[vp + 2] = dstX + w; \
+    vVar[vp + 3] = dstY; \
+    vVar[vp + 4] = dstX + w; \
+    vVar[vp + 5] = dstY + h; \
+    vVar[vp + 6] = dstX; \
+    vVar[vp + 7] = dstY + h;
+
 GLuint NormalOpenGLGraphics::mLastImage = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int NormalOpenGLGraphics::mDrawCalls = 0;
@@ -314,29 +351,9 @@ void NormalOpenGLGraphics::drawImageCached(const Image *const image,
         const float texX2 = static_cast<float>(srcX + w) / tw;
         const float texY2 = static_cast<float>(srcY + h) / th;
 
-        mFloatTexArrayCached[vp + 0] = texX1;
-        mFloatTexArrayCached[vp + 1] = texY1;
-
-        mFloatTexArrayCached[vp + 2] = texX2;
-        mFloatTexArrayCached[vp + 3] = texY1;
-
-        mFloatTexArrayCached[vp + 4] = texX2;
-        mFloatTexArrayCached[vp + 5] = texY2;
-
-        mFloatTexArrayCached[vp + 6] = texX1;
-        mFloatTexArrayCached[vp + 7] = texY2;
-
-        mIntVertArrayCached[vp + 0] = x;
-        mIntVertArrayCached[vp + 1] = y;
-
-        mIntVertArrayCached[vp + 2] = x + w;
-        mIntVertArrayCached[vp + 3] = y;
-
-        mIntVertArrayCached[vp + 4] = x + w;
-        mIntVertArrayCached[vp + 5] = y + h;
-
-        mIntVertArrayCached[vp + 6] = x;
-        mIntVertArrayCached[vp + 7] = y + h;
+        vertFill2D(mFloatTexArrayCached, mIntVertArrayCached,
+            texX1, texY1, texX2, texY2,
+            x, y, w, h);
 
         vp += 8;
         if (vp >= vLimit)
@@ -351,29 +368,8 @@ void NormalOpenGLGraphics::drawImageCached(const Image *const image,
     }
     else
     {
-        mIntTexArrayCached[vp + 0] = srcX;
-        mIntTexArrayCached[vp + 1] = srcY;
-
-        mIntTexArrayCached[vp + 2] = srcX + w;
-        mIntTexArrayCached[vp + 3] = srcY;
-
-        mIntTexArrayCached[vp + 4] = srcX + w;
-        mIntTexArrayCached[vp + 5] = srcY + h;
-
-        mIntTexArrayCached[vp + 6] = srcX;
-        mIntTexArrayCached[vp + 7] = srcY + h;
-
-        mIntVertArrayCached[vp + 0] = x;
-        mIntVertArrayCached[vp + 1] = y;
-
-        mIntVertArrayCached[vp + 2] = x + w;
-        mIntVertArrayCached[vp + 3] = y;
-
-        mIntVertArrayCached[vp + 4] = x + w;
-        mIntVertArrayCached[vp + 5] = y + h;
-
-        mIntVertArrayCached[vp + 6] = x;
-        mIntVertArrayCached[vp + 7] = y + h;
+        vertFillNv(mIntTexArrayCached, mIntVertArrayCached,
+            srcX, srcY, x, y, w, h);
 
         vp += 8;
         if (vp >= vLimit)
@@ -434,29 +430,9 @@ void NormalOpenGLGraphics::drawPatternCached(const Image *const image,
 
                 const float texX2 = static_cast<float>(srcX + width) / tw;
 
-                mFloatTexArrayCached[vp + 0] = texX1;
-                mFloatTexArrayCached[vp + 1] = texY1;
-
-                mFloatTexArrayCached[vp + 2] = texX2;
-                mFloatTexArrayCached[vp + 3] = texY1;
-
-                mFloatTexArrayCached[vp + 4] = texX2;
-                mFloatTexArrayCached[vp + 5] = texY2;
-
-                mFloatTexArrayCached[vp + 6] = texX1;
-                mFloatTexArrayCached[vp + 7] = texY2;
-
-                mIntVertArrayCached[vp + 0] = dstX;
-                mIntVertArrayCached[vp + 1] = dstY;
-
-                mIntVertArrayCached[vp + 2] = dstX + width;
-                mIntVertArrayCached[vp + 3] = dstY;
-
-                mIntVertArrayCached[vp + 4] = dstX + width;
-                mIntVertArrayCached[vp + 5] = dstY + height;
-
-                mIntVertArrayCached[vp + 6] = dstX;
-                mIntVertArrayCached[vp + 7] = dstY + height;
+                vertFill2D(mFloatTexArrayCached, mIntVertArrayCached,
+                    texX1, texY1, texX2, texY2,
+                    dstX, dstY, width, height);
 
                 vp += 8;
                 if (vp >= vLimit)
@@ -478,29 +454,8 @@ void NormalOpenGLGraphics::drawPatternCached(const Image *const image,
                 const int width = (px + iw >= w) ? w - px : iw;
                 const int dstX = x + px;
 
-                mIntTexArrayCached[vp + 0] = srcX;
-                mIntTexArrayCached[vp + 1] = srcY;
-
-                mIntTexArrayCached[vp + 2] = srcX + width;
-                mIntTexArrayCached[vp + 3] = srcY;
-
-                mIntTexArrayCached[vp + 4] = srcX + width;
-                mIntTexArrayCached[vp + 5] = srcY + height;
-
-                mIntTexArrayCached[vp + 6] = srcX;
-                mIntTexArrayCached[vp + 7] = srcY + height;
-
-                mIntVertArrayCached[vp + 0] = dstX;
-                mIntVertArrayCached[vp + 1] = dstY;
-
-                mIntVertArrayCached[vp + 2] = dstX + width;
-                mIntVertArrayCached[vp + 3] = dstY;
-
-                mIntVertArrayCached[vp + 4] = dstX + width;
-                mIntVertArrayCached[vp + 5] = dstY + height;
-
-                mIntVertArrayCached[vp + 6] = dstX;
-                mIntVertArrayCached[vp + 7] = dstY + height;
+                vertFillNv(mIntTexArrayCached, mIntVertArrayCached,
+                    srcX, srcY, dstX, dstY, width, height);
 
                 vp += 8;
                 if (vp >= vLimit)
@@ -656,32 +611,11 @@ void NormalOpenGLGraphics::drawPattern(const Image *const image,
             {
                 const int width = (px + iw >= w) ? w - px : iw;
                 const int dstX = x + px;
-
                 const float texX2 = static_cast<float>(srcX + width) / tw;
 
-                mFloatTexArray[vp + 0] = texX1;
-                mFloatTexArray[vp + 1] = texY1;
-
-                mFloatTexArray[vp + 2] = texX2;
-                mFloatTexArray[vp + 3] = texY1;
-
-                mFloatTexArray[vp + 4] = texX2;
-                mFloatTexArray[vp + 5] = texY2;
-
-                mFloatTexArray[vp + 6] = texX1;
-                mFloatTexArray[vp + 7] = texY2;
-
-                mIntVertArray[vp + 0] = dstX;
-                mIntVertArray[vp + 1] = dstY;
-
-                mIntVertArray[vp + 2] = dstX + width;
-                mIntVertArray[vp + 3] = dstY;
-
-                mIntVertArray[vp + 4] = dstX + width;
-                mIntVertArray[vp + 5] = dstY + height;
-
-                mIntVertArray[vp + 6] = dstX;
-                mIntVertArray[vp + 7] = dstY + height;
+                vertFill2D(mFloatTexArray, mIntVertArray,
+                    texX1, texY1, texX2, texY2,
+                    dstX, dstY, width, height);
 
                 vp += 8;
                 if (vp >= vLimit)
@@ -705,29 +639,8 @@ void NormalOpenGLGraphics::drawPattern(const Image *const image,
                 const int width = (px + iw >= w) ? w - px : iw;
                 const int dstX = x + px;
 
-                mIntTexArray[vp + 0] = srcX;
-                mIntTexArray[vp + 1] = srcY;
-
-                mIntTexArray[vp + 2] = srcX + width;
-                mIntTexArray[vp + 3] = srcY;
-
-                mIntTexArray[vp + 4] = srcX + width;
-                mIntTexArray[vp + 5] = srcY + height;
-
-                mIntTexArray[vp + 6] = srcX;
-                mIntTexArray[vp + 7] = srcY + height;
-
-                mIntVertArray[vp + 0] = dstX;
-                mIntVertArray[vp + 1] = dstY;
-
-                mIntVertArray[vp + 2] = dstX + width;
-                mIntVertArray[vp + 3] = dstY;
-
-                mIntVertArray[vp + 4] = dstX + width;
-                mIntVertArray[vp + 5] = dstY + height;
-
-                mIntVertArray[vp + 6] = dstX;
-                mIntVertArray[vp + 7] = dstY + height;
+                vertFillNv(mIntTexArray, mIntVertArray,
+                    srcX, srcY, dstX, dstY, width, height);
 
                 vp += 8;
                 if (vp >= vLimit)
@@ -804,29 +717,9 @@ void NormalOpenGLGraphics::drawRescaledPattern(const Image *const image,
                     / scaledWidth;
                 const float texX2 = texX1 + tFractionW * visibleFractionW;
 
-                mFloatTexArray[vp + 0] = texX1;
-                mFloatTexArray[vp + 1] = texY1;
-
-                mFloatTexArray[vp + 2] = texX2;
-                mFloatTexArray[vp + 3] = texY1;
-
-                mFloatTexArray[vp + 4] = texX2;
-                mFloatTexArray[vp + 5] = texY2;
-
-                mFloatTexArray[vp + 6] = texX1;
-                mFloatTexArray[vp + 7] = texY2;
-
-                mIntVertArray[vp + 0] = dstX;
-                mIntVertArray[vp + 1] = dstY;
-
-                mIntVertArray[vp + 2] = dstX + width;
-                mIntVertArray[vp + 3] = dstY;
-
-                mIntVertArray[vp + 4] = dstX + width;
-                mIntVertArray[vp + 5] = dstY + height;
-
-                mIntVertArray[vp + 6] = dstX;
-                mIntVertArray[vp + 7] = dstY + height;
+                vertFill2D(mFloatTexArray, mIntVertArray,
+                    texX1, texY1, texX2, texY2,
+                    dstX, dstY, width, height);
 
                 vp += 8;
                 if (vp >= vLimit)
@@ -982,29 +875,9 @@ void NormalOpenGLGraphics::calcPattern(ImageVertexes* const vert,
                 const int dstX = x + px;
                 const float texX2 = static_cast<float>(srcX + width) / tw;
 
-                floatTexArray[vp + 0] = texX1;
-                floatTexArray[vp + 1] = texY1;
-
-                floatTexArray[vp + 2] = texX2;
-                floatTexArray[vp + 3] = texY1;
-
-                floatTexArray[vp + 4] = texX2;
-                floatTexArray[vp + 5] = texY2;
-
-                floatTexArray[vp + 6] = texX1;
-                floatTexArray[vp + 7] = texY2;
-
-                intVertArray[vp + 0] = dstX;
-                intVertArray[vp + 1] = dstY;
-
-                intVertArray[vp + 2] = dstX + width;
-                intVertArray[vp + 3] = dstY;
-
-                intVertArray[vp + 4] = dstX + width;
-                intVertArray[vp + 5] = dstY + height;
-
-                intVertArray[vp + 6] = dstX;
-                intVertArray[vp + 7] = dstY + height;
+                vertFill2D(floatTexArray, intVertArray,
+                    texX1, texY1, texX2, texY2,
+                    dstX, dstY, width, height);
 
                 vp += 8;
                 if (vp >= vLimit)
@@ -1031,29 +904,8 @@ void NormalOpenGLGraphics::calcPattern(ImageVertexes* const vert,
                 const int width = (px + iw >= w) ? w - px : iw;
                 const int dstX = x + px;
 
-                intTexArray[vp + 0] = srcX;
-                intTexArray[vp + 1] = srcY;
-
-                intTexArray[vp + 2] = srcX + width;
-                intTexArray[vp + 3] = srcY;
-
-                intTexArray[vp + 4] = srcX + width;
-                intTexArray[vp + 5] = srcY + height;
-
-                intTexArray[vp + 6] = srcX;
-                intTexArray[vp + 7] = srcY + height;
-
-                intVertArray[vp + 0] = dstX;
-                intVertArray[vp + 1] = dstY;
-
-                intVertArray[vp + 2] = dstX + width;
-                intVertArray[vp + 3] = dstY;
-
-                intVertArray[vp + 4] = dstX + width;
-                intVertArray[vp + 5] = dstY + height;
-
-                intVertArray[vp + 6] = dstX;
-                intVertArray[vp + 7] = dstY + height;
+                vertFillNv(intTexArray, intVertArray,
+                    srcX, srcY, dstX, dstY, width, height);
 
                 vp += 8;
                 if (vp >= vLimit)
@@ -1169,29 +1021,9 @@ void NormalOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
         GLfloat *const floatTexArray = ogl.continueFloatTexArray();
         GLint *const intVertArray = ogl.continueIntVertArray();
 
-        floatTexArray[vp + 0] = texX1;
-        floatTexArray[vp + 1] = texY1;
-
-        floatTexArray[vp + 2] = texX2;
-        floatTexArray[vp + 3] = texY1;
-
-        floatTexArray[vp + 4] = texX2;
-        floatTexArray[vp + 5] = texY2;
-
-        floatTexArray[vp + 6] = texX1;
-        floatTexArray[vp + 7] = texY2;
-
-        intVertArray[vp + 0] = dstX;
-        intVertArray[vp + 1] = dstY;
-
-        intVertArray[vp + 2] = dstX + w;
-        intVertArray[vp + 3] = dstY;
-
-        intVertArray[vp + 4] = dstX + w;
-        intVertArray[vp + 5] = dstY + h;
-
-        intVertArray[vp + 6] = dstX;
-        intVertArray[vp + 7] = dstY + h;
+        vertFill2D(floatTexArray, intVertArray,
+            texX1, texY1, texX2, texY2,
+            dstX, dstY, w, h);
 
         vp += 8;
         if (vp >= vLimit)
@@ -1207,29 +1039,8 @@ void NormalOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
         GLint *const intTexArray = ogl.continueIntTexArray();
         GLint *const intVertArray = ogl.continueIntVertArray();
 
-        intTexArray[vp + 0] = srcX;
-        intTexArray[vp + 1] = srcY;
-
-        intTexArray[vp + 2] = srcX + w;
-        intTexArray[vp + 3] = srcY;
-
-        intTexArray[vp + 4] = srcX + w;
-        intTexArray[vp + 5] = srcY + h;
-
-        intTexArray[vp + 6] = srcX;
-        intTexArray[vp + 7] = srcY + h;
-
-        intVertArray[vp + 0] = dstX;
-        intVertArray[vp + 1] = dstY;
-
-        intVertArray[vp + 2] = dstX + w;
-        intVertArray[vp + 3] = dstY;
-
-        intVertArray[vp + 4] = dstX + w;
-        intVertArray[vp + 5] = dstY + h;
-
-        intVertArray[vp + 6] = dstX;
-        intVertArray[vp + 7] = dstY + h;
+        vertFillNv(intTexArray, intVertArray,
+            srcX, srcY, dstX, dstY, w, h);
 
         vp += 8;
         if (vp >= vLimit)
