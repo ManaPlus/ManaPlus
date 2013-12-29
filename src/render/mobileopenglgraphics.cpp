@@ -46,8 +46,6 @@ unsigned int MobileOpenGLGraphics::mLastDrawCalls = 0;
 
 MobileOpenGLGraphics::MobileOpenGLGraphics():
     mFloatTexArray(nullptr),
-    mIntTexArray(nullptr),
-    mIntVertArray(nullptr),
     mShortVertArray(nullptr),
     mFloatTexArrayCached(nullptr),
     mShortVertArrayCached(nullptr),
@@ -73,8 +71,6 @@ MobileOpenGLGraphics::MobileOpenGLGraphics():
 MobileOpenGLGraphics::~MobileOpenGLGraphics()
 {
     delete [] mFloatTexArray;
-    delete [] mIntTexArray;
-    delete [] mIntVertArray;
     delete [] mShortVertArray;
     delete [] mFloatTexArrayCached;
     delete [] mShortVertArrayCached;
@@ -92,8 +88,6 @@ void MobileOpenGLGraphics::initArrays()
     const int sz = mMaxVertices * 4 + 30;
     vertexBufSize = mMaxVertices;
     mFloatTexArray = new GLfloat[sz];
-    mIntTexArray = new GLint[sz];
-    mIntVertArray = new GLint[sz];
     mShortVertArray = new GLshort[sz];
     mFloatTexArrayCached = new GLfloat[sz];
     mShortVertArrayCached = new GLshort[sz];

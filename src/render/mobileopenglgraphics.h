@@ -228,8 +228,6 @@ class MobileOpenGLGraphics final : public Graphics
         void inline restoreColor();
 
         GLfloat *mFloatTexArray;
-        GLint *mIntTexArray;
-        GLint *mIntVertArray;
         GLshort *mShortVertArray;
         GLfloat *mFloatTexArrayCached;
         GLshort *mShortVertArrayCached;
