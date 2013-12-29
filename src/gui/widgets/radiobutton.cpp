@@ -149,7 +149,7 @@ void RadioButton::drawBox(gcn::Graphics* graphics)
 
     if (box)
     {
-        DRAW_IMAGE(static_cast<Graphics*>(graphics),
+        static_cast<Graphics*>(graphics)->drawImage2(
             box, mImagePadding, (getHeight() - mImageSize) / 2);
     }
 }

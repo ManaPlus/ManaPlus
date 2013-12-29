@@ -482,17 +482,17 @@ void Graphics::drawImageRect(const int x, const int y,
     // Draw the corners
     if (drawMain)
     {
-        DRAW_IMAGE(this, topLeft, x, y);
+        drawImage2(topLeft, x, y);
         const int trw = topRight->getWidth();
         if (w > trw)
         {
-            DRAW_IMAGE(this, topRight, x + w - trw, y);
+            drawImage2(topRight, x + w - trw, y);
         }
-        DRAW_IMAGE(this, bottomLeft, x, h - bottomLeft->getHeight() + y);
+        drawImage2(bottomLeft, x, h - bottomLeft->getHeight() + y);
         const int brw = bottomRight->getWidth();
         if (w > brw)
         {
-            DRAW_IMAGE(this, bottomRight,
+            drawImage2(bottomRight,
                 x + w - brw,
                 y + h - bottomRight->getHeight());
         }

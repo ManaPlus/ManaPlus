@@ -202,13 +202,9 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
             if (!box)
                 continue;
             if (i == mSelected)
-            {
-                DRAW_IMAGE(g, mSlotHighlightedBackground, box->x, box->y);
-            }
+                g->drawImage2(mSlotHighlightedBackground, box->x, box->y);
             else
-            {
-                DRAW_IMAGE(g, mSlotBackground, box->x, box->y);
-            }
+                g->drawImage2(mSlotBackground, box->x, box->y);
         }
     }
 
@@ -234,7 +230,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
             {
                 image->setAlpha(1.0F);  // Ensure the image is drawn
                                         // with maximum opacity
-                DRAW_IMAGE(g, image, box->x + mItemPadding,
+                g->drawImage2(image, box->x + mItemPadding,
                     box->y + mItemPadding);
                 if (i == EQUIP_PROJECTILE_SLOT)
                 {
@@ -248,7 +244,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
         }
         else if (box->image)
         {
-            DRAW_IMAGE(g, box->image, box->x + mItemPadding,
+            g->drawImage2(box->image, box->x + mItemPadding,
                 box->y + mItemPadding);
         }
     }

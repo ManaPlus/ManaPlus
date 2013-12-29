@@ -79,7 +79,7 @@ void SimpleAnimation::draw(Graphics *const graphics,
     if (!mCurrentFrame || !mCurrentFrame->image)
         return;
 
-    DRAW_IMAGE(graphics, mCurrentFrame->image,
+    graphics->drawImage2(mCurrentFrame->image,
         posX + mCurrentFrame->offsetX, posY + mCurrentFrame->offsetY);
 }
 

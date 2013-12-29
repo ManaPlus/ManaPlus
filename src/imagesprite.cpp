@@ -56,5 +56,5 @@ void ImageSprite::draw(Graphics *const graphics,
         return;
 
     mImage->setAlpha(mAlpha);
-    DRAW_IMAGE(graphics, mImage, posX, posY);
+    graphics->drawImage2(mImage, posX, posY);
 }

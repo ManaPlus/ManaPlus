@@ -294,7 +294,7 @@ void AnimatedSprite::draw(Graphics *const graphics,
     if (image->getAlpha() != mAlpha)
         image->setAlpha(mAlpha);
 
-    DRAW_IMAGE(graphics, image,
+    graphics->drawImage2(image,
         posX + mFrame->offsetX, posY + mFrame->offsetY);
 }
 

@@ -286,7 +286,7 @@ void Minimap::draw(gcn::Graphics *graphics)
                 mMapOriginY = 0;
         }
 
-        DRAW_IMAGE(graph, mMapImage, mMapOriginX, mMapOriginY);
+        graph->drawImage2(mMapImage, mMapOriginX, mMapOriginY);
     }
 
     const ActorSprites &actors = actorManager->getAll();

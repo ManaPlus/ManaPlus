@@ -137,7 +137,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
                 }
                 else
                 {
-                    DRAW_IMAGE(graphics, icon, mImagePadding, y + mPadding);
+                    graphics->drawImage2(icon, mImagePadding, y + mPadding);
                 }
             }
         }

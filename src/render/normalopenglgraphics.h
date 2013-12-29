@@ -199,10 +199,7 @@ class NormalOpenGLGraphics final : public Graphics
         void updateTextureFormat();
 
         bool drawImage2(const Image *const image,
-                        int srcX, int srcY,
-                        int dstX, int dstY,
-                        const int width, const int height,
-                        const bool useColor) override final;
+                        int dstX, int dstY) override final;
 
         void drawImageCached(const Image *const image,
                              int x, int y) override final;

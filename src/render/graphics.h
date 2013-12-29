@@ -47,15 +47,6 @@ struct SDL_Window;
 static const int defaultScreenWidth = 800;
 static const int defaultScreenHeight = 600;
 
-#define DRAW_IMAGE(graphics, image, x, y) \
-    { \
-        if (image) \
-        { \
-            (graphics)->drawImage2(image, 0, 0, x, y, \
-                (image)->mBounds.w, (image)->mBounds.h, false); \
-        } \
-    }
-
 /**
  * 9 images defining a rectangle. 4 corners, 4 sides and a middle area. The
  * topology is as follows:
@@ -380,10 +371,7 @@ class Graphics : public gcn::Graphics
          *         <code>false</code> otherwise.
          */
         virtual bool drawImage2(const Image *const image,
-                                int srcX, int srcY,
-                                int dstX, int dstY,
-                                const int width, const int height,
-                                const bool useColor) = 0;
+                                int dstX, int dstY) = 0;
 
         virtual void drawImageCached(const Image *const image,
                                      int srcX, int srcY) = 0;

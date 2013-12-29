@@ -116,9 +116,8 @@ bool SDLGraphics::drawRescaledImage(const Image *const image,
         &srcRect, &dstRect) < 0);
 }
 
-bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
-                             int dstX, int dstY, const int width,
-                             const int height, const bool useColor A_UNUSED)
+bool SDLGraphics::drawImage2(const Image *const image,
+                             int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage2", 1)
     // Check that preconditions for blitting are met.
@@ -132,18 +131,18 @@ bool SDLGraphics::drawImage2(const Image *const image, int srcX, int srcY,
     const SDL_Rect &bounds = image->mBounds;
     const SDL_Rect srcRect =
     {
-        static_cast<int32_t>(srcX + bounds.x),
-        static_cast<int32_t>(srcY + bounds.y),
-        static_cast<int32_t>(width),
-        static_cast<int32_t>(height)
+        static_cast<int32_t>(bounds.x),
+        static_cast<int32_t>(bounds.y),
+        static_cast<int32_t>(bounds.w),
+        static_cast<int32_t>(bounds.h)
     };
 
     const SDL_Rect dstRect =
     {
         static_cast<int32_t>(dstX + top.xOffset),
         static_cast<int32_t>(dstY + top.yOffset),
-        static_cast<int32_t>(width),
-        static_cast<int32_t>(height)
+        static_cast<int32_t>(bounds.w),
+        static_cast<int32_t>(bounds.h)
     };
 
     return !MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);

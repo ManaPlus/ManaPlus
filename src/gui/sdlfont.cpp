@@ -482,7 +482,7 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
         if (image)
         {
             image->setAlpha(alpha);
-            DRAW_IMAGE(g, image, x, y);
+            g->drawImage2(image, x, y);
         }
     }
     else
@@ -504,7 +504,7 @@ void SDLFont::drawString(gcn::Graphics *const graphics,
 
         const Image *const image = chunk2->img;
         if (image)
-            DRAW_IMAGE(g, image, x, y);
+            g->drawImage2(image, x, y);
     }
     BLOCK_END("SDLFont::drawString")
 }

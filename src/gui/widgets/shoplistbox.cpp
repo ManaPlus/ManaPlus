@@ -157,7 +157,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
             if (icon)
             {
                 icon->setAlpha(1.0F);
-                DRAW_IMAGE(graphics, icon, mPadding, y + mPadding);
+                graphics->drawImage2(icon, mPadding, y + mPadding);
             }
         }
         if (mSelected == i)

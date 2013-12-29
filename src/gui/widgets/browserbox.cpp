@@ -508,7 +508,7 @@ void BrowserBox::draw(gcn::Graphics *graphics)
         }
         else if (part.mImage)
         {
-            DRAW_IMAGE(graphics2, part.mImage, part.mX, part.mY);
+            graphics2->drawImage2(part.mImage, part.mX, part.mY);
         }
     }
 

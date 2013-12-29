@@ -140,26 +140,21 @@ static inline void drawRescaledQuad(const Image *const image,
 
 
 bool SafeOpenGLGraphics::drawImage2(const Image *const image,
-                                    int srcX, int srcY,
-                                    int dstX, int dstY,
-                                    const int width, const int height,
-                                    const bool useColor)
+                                    int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage2", 1)
     if (!image)
         return false;
 
-    if (!useColor)
-        setColorAlpha(image->mAlpha);
-
+    setColorAlpha(image->mAlpha);
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-
     setTexturingAndBlending(true);
 
+    const SDL_Rect &bounds = image->mBounds;
     // Draw a textured quad.
     glBegin(GL_QUADS);
-    drawQuad(image, srcX + image->mBounds.x, srcY + image->mBounds.y,
-        dstX, dstY, width, height);
+    drawQuad(image, bounds.x, bounds.y,
+        dstX, dstY, bounds.w, bounds.h);
     glEnd();
 
     return true;
@@ -254,10 +249,7 @@ bool SafeOpenGLGraphics::drawRescaledImage(const Image *const image, int srcX,
 
     // Just draw the image normally when no resizing is necessary,
     if (width == desiredWidth && height == desiredHeight)
-    {
-        return drawImage2(image, srcX, srcY, dstX, dstY,
-                          width, height, useColor);
-    }
+        return drawImage2(image, dstX, dstY);
 
     // When the desired image is smaller than the current one,
     // disable smooth effect.

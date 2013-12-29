@@ -209,7 +209,7 @@ void Slider::draw(gcn::Graphics *graphics)
     {
         if (!mHasMouse)
         {
-            DRAW_IMAGE(g, buttons[0].grid[HSTART], x, y);
+            g->drawImage2(buttons[0].grid[HSTART], x, y);
             const int width = buttons[0].grid[HSTART]->getWidth();
             w -= width + buttons[0].grid[HEND]->getWidth();
             x += width;
@@ -221,18 +221,18 @@ void Slider::draw(gcn::Graphics *graphics)
             }
 
             x += w;
-            DRAW_IMAGE(g, buttons[0].grid[HEND], x, y);
+            g->drawImage2(buttons[0].grid[HEND], x, y);
 
             const Image *const img = buttons[0].grid[HGRIP];
             if (img)
             {
-                DRAW_IMAGE(g, img, getMarkerPosition(),
+                g->drawImage2(img, getMarkerPosition(),
                     (mDimension.height - img->getHeight()) / 2);
             }
         }
         else
         {
-            DRAW_IMAGE(g, buttons[1].grid[HSTART], x, y);
+            g->drawImage2(buttons[1].grid[HSTART], x, y);
 
             const int width = buttons[1].grid[HSTART]->getWidth();
             w -= width;
@@ -248,12 +248,12 @@ void Slider::draw(gcn::Graphics *graphics)
 
             x += w;
             if (buttons[1].grid[HEND])
-                DRAW_IMAGE(g, buttons[1].grid[HEND], x, y);
+                g->drawImage2(buttons[1].grid[HEND], x, y);
 
             const Image *const img = buttons[1].grid[HGRIP];
             if (img)
             {
-                DRAW_IMAGE(g, img, getMarkerPosition(),
+                g->drawImage2(img, getMarkerPosition(),
                     (mDimension.height - img->getHeight()) / 2);
             }
         }

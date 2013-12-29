@@ -348,7 +348,7 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
                 const Image *const image = item->getImage();
                 if (image)
                 {
-                    DRAW_IMAGE(g, image, itemX, itemY);
+                    g->drawImage2(image, itemX, itemY);
                     foundItem = true;
                 }
             }
@@ -359,7 +359,7 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
                 mItemColors[mCurrentOutfit][i]);
             if (image)
             {
-                DRAW_IMAGE(g, image, itemX, itemY);
+                g->drawImage2(image, itemX, itemY);
                 image->decRef();
             }
         }

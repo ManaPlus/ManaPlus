@@ -167,7 +167,7 @@ void CheckBox::drawBox(gcn::Graphics *const graphics)
 
     if (box)
     {
-        DRAW_IMAGE(static_cast<Graphics*>(graphics),
+        static_cast<Graphics*>(graphics)->drawImage2(
             box, mImagePadding, (getHeight() - mImageSize) / 2);
     }
 }

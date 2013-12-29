@@ -285,29 +285,23 @@ static inline void drawRescaledQuad(const Image *const image,
 
 
 bool NormalOpenGLGraphics::drawImage2(const Image *const image,
-                                      int srcX, int srcY,
-                                      int dstX, int dstY,
-                                      const int width, const int height,
-                                      const bool useColor)
+                                      int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage2", 1)
     if (!image)
         return false;
 
-    const SDL_Rect &imageRect = image->mBounds;
 
-    if (!useColor)
-        setColorAlpha(image->mAlpha);
-
+    setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
 #endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-
     setTexturingAndBlending(true);
 
-    drawQuad(image, srcX + imageRect.x, srcY + imageRect.y,
-        dstX, dstY, width, height);
+    const SDL_Rect &imageRect = image->mBounds;
+    drawQuad(image, imageRect.x, imageRect.y,
+        dstX, dstY, imageRect.w, imageRect.h);
 
     return true;
 }
@@ -520,10 +514,7 @@ bool NormalOpenGLGraphics::drawRescaledImage(const Image *const image,
 
     // Just draw the image normally when no resizing is necessary,
     if (width == desiredWidth && height == desiredHeight)
-    {
-        return drawImage2(image, srcX, srcY, dstX, dstY,
-                          width, height, useColor);
-    }
+        return drawImage2(image, dstX, dstY);
 
     // When the desired image is smaller than the current one,
     // disable smooth effect.

@@ -250,7 +250,7 @@ void DropDown::draw(gcn::Graphics* graphics)
             }
             else
             {
-                DRAW_IMAGE(static_cast<Graphics*>(graphics),
+                static_cast<Graphics*>(graphics)->drawImage2(
                     image, mImagePadding, (mDimension.height
                     - image->getHeight()) / 2 + mPadding);
                 font->drawString(graphics, model->getElementAt(sel),
@@ -303,7 +303,7 @@ void DropDown::drawButton(gcn::Graphics *graphics)
     Image *image = buttons[mDroppedDown][mPushed];
     if (image)
     {
-        DRAW_IMAGE(static_cast<Graphics*>(graphics), image,
+        static_cast<Graphics*>(graphics)->drawImage2(image,
             mDimension.width - image->getWidth() - mImagePadding,
             (height - image->getHeight()) / 2);
     }

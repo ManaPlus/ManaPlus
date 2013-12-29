@@ -225,7 +225,7 @@ void TouchManager::draw()
                 const Image *const icon = item->icon;
                 if (icon)
                 {
-                    DRAW_IMAGE(mainGraphics, icon,
+                    mainGraphics->drawImage2(icon,
                         item->x + (item->width - icon->mBounds.w) / 2,
                         item->y + (item->height - icon->mBounds.h) / 2);
                 }

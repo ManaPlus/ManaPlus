@@ -508,11 +508,11 @@ void Button::draw(gcn::Graphics *graphics)
         {
             if (isPressed())
             {
-                DRAW_IMAGE(g2, mImages[mode], imageX + 1, imageY + 1);
+                g2->drawImage2(mImages[mode], imageX + 1, imageY + 1);
             }
             else
             {
-                DRAW_IMAGE(g2, mImages[mode], imageX, imageY);
+                g2->drawImage2(mImages[mode], imageX, imageY);
             }
         }
     }

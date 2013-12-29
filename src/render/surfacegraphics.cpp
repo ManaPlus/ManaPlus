@@ -42,27 +42,23 @@ SurfaceGraphics::~SurfaceGraphics()
 {
 }
 
-bool SurfaceGraphics::drawImage2(const Image *const image, int srcX, int srcY,
-                                 int dstX, int dstY,
-                                 const int width, const int height,
-                                 const bool useColor A_UNUSED)
+bool SurfaceGraphics::drawImage2(const Image *const image,
+                                 int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage2", 1)
     // Check that preconditions for blitting are met.
     if (!mTarget || !image || !image->mSDLSurface)
         return false;
 
-    srcX += image->mBounds.x;
-    srcY += image->mBounds.y;
-
+    const SDL_Rect &imageRect = image->mBounds;
     SDL_Rect dstRect;
     SDL_Rect srcRect;
     dstRect.x = static_cast<int16_t>(dstX);
     dstRect.y = static_cast<int16_t>(dstY);
-    srcRect.x = static_cast<int16_t>(srcX);
-    srcRect.y = static_cast<int16_t>(srcY);
-    srcRect.w = static_cast<uint16_t>(width);
-    srcRect.h = static_cast<uint16_t>(height);
+    srcRect.x = static_cast<int16_t>(imageRect.x);
+    srcRect.y = static_cast<int16_t>(imageRect.y);
+    srcRect.w = static_cast<uint16_t>(imageRect.w);
+    srcRect.h = static_cast<uint16_t>(imageRect.h);
 
 #ifdef USE_SDL2
     return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,

@@ -242,7 +242,7 @@ void Tab::draw(gcn::Graphics *graphics)
             if (skin1)
             {
                 const int padding = skin1->getPadding();
-                DRAW_IMAGE(g, mImage, padding, padding);
+                g->drawImage2(mImage, padding, padding);
             }
         }
     }

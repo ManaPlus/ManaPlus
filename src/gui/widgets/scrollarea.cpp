@@ -429,7 +429,7 @@ void ScrollArea::drawButton(gcn::Graphics *const graphics,
 
     if (buttons[dir][state])
     {
-        DRAW_IMAGE(static_cast<Graphics*>(graphics),
+        static_cast<Graphics*>(graphics)->drawImage2(
             buttons[dir][state], dim.x, dim.y);
     }
 }
