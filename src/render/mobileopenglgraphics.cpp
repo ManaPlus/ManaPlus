@@ -771,7 +771,7 @@ void MobileOpenGLGraphics::drawTileVertexes(const ImageVertexes *const vert)
     drawVertexes(vert->ogl);
 }
 
-bool MobileOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
+void MobileOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
                                       const int x, const int y,
                                       const int w, const int h,
                                       const ImageRect &imgRect)
@@ -790,8 +790,7 @@ bool MobileOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
     {
         vert = vertCol->currentVert;
     }
-
-    return calcImageRect(vert, x, y, w, h, imgRect);
+    calcImageRect(vert, x, y, w, h, imgRect);
 }
 
 void MobileOpenGLGraphics::updateScreen()
@@ -1270,6 +1269,14 @@ void MobileOpenGLGraphics::drawImageRect(const int x, const int y,
                                          const ImageRect &imgRect)
 {
     #include "render/openglgraphics_drawImageRect.hpp"
+}
+
+void MobileOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
+                                         const int x, const int y,
+                                         const int w, const int h,
+                                         const ImageRect &imgRect)
+{
+    #include "render/openglgraphics_calcImageRect.hpp"
 }
 
 #ifdef DEBUG_BIND_TEXTURE

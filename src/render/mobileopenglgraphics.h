@@ -101,6 +101,11 @@ class MobileOpenGLGraphics final : public Graphics
 
         void inline restoreColor();
 
+        void inline calcImageRect(ImageVertexes *const vert,
+                                  int x, int y,
+                                  int w, int h,
+                                  const ImageRect &imgRect);
+
         GLfloat *mFloatTexArray;
         GLshort *mShortVertArray;
         GLfloat *mFloatTexArrayCached;

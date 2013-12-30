@@ -174,11 +174,6 @@ class Graphics : public gcn::Graphics
                                    const int w, const int h,
                                    const ImageRect &imgRect) = 0;
 
-        bool calcImageRect(ImageVertexes *const vert,
-                           const int x, const int y,
-                           const int w, const int h,
-                           const ImageRect &imgRect);
-
         virtual void calcPattern(ImageVertexes *const vert,
                                  const Image *const image,
                                  const int x, const int y,
@@ -207,7 +202,7 @@ class Graphics : public gcn::Graphics
                                         const Image *const image,
                                         int x, int y) = 0;
 
-        virtual bool calcWindow(ImageCollection *const vertCol,
+        virtual void calcWindow(ImageCollection *const vertCol,
                                 const int x, const int y,
                                 const int w, const int h,
                                 const ImageRect &imgRect) = 0;

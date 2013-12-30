@@ -115,7 +115,7 @@ class SDLGraphics final : public Graphics
                      const int x2, const int y2,
                      const int width, const int height) override final;
 
-        bool calcWindow(ImageCollection *const vertCol,
+        void calcWindow(ImageCollection *const vertCol,
                         const int x, const int y,
                         const int w, const int h,
                         const ImageRect &imgRect) override final;
@@ -161,6 +161,12 @@ class SDLGraphics final : public Graphics
         uint32_t mRendererFlags;
         uint32_t mOldPixel;
         int mOldAlpha;
+
+    private:
+        void inline calcImageRect(ImageVertexes *const vert,
+                                  int x, int y,
+                                  int w, int h,
+                                  const ImageRect &imgRect);
 
 };
 

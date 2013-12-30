@@ -1024,7 +1024,7 @@ void NormalOpenGLGraphics::drawTileVertexes(const ImageVertexes *const vert)
     drawVertexes(vert->ogl);
 }
 
-bool NormalOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
+void NormalOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
                                       const int x, const int y,
                                       const int w, const int h,
                                       const ImageRect &imgRect)
@@ -1032,7 +1032,7 @@ bool NormalOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
     ImageVertexes *vert = nullptr;
     Image *const image = imgRect.grid[4];
     if (!image)
-        return false;
+        return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
         vert = new ImageVertexes();
@@ -1045,9 +1045,7 @@ bool NormalOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
     {
         vert = vertCol->currentVert;
     }
-
-    const Image *const *const grid = &imgRect.grid[0];
-    return calcImageRect(vert, x, y, w, h, imgRect);
+    calcImageRect(vert, x, y, w, h, imgRect);
 }
 
 void NormalOpenGLGraphics::updateScreen()
@@ -1557,6 +1555,14 @@ void NormalOpenGLGraphics::drawImageRect(const int x, const int y,
                                          const ImageRect &imgRect)
 {
     #include "render/openglgraphics_drawImageRect.hpp"
+}
+
+void NormalOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
+                                         const int x, const int y,
+                                         const int w, const int h,
+                                         const ImageRect &imgRect)
+{
+    #include "render/openglgraphics_calcImageRect.hpp"
 }
 
 #ifdef DEBUG_BIND_TEXTURE

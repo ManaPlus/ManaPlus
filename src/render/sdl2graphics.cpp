@@ -550,7 +550,7 @@ bool SDLGraphics::drawNet(const int x1, const int y1,
     return true;
 }
 
-bool SDLGraphics::calcWindow(ImageCollection *const vertCol,
+void SDLGraphics::calcWindow(ImageCollection *const vertCol,
                              const int x, const int y,
                              const int w, const int h,
                              const ImageRect &imgRect)
@@ -569,9 +569,7 @@ bool SDLGraphics::calcWindow(ImageCollection *const vertCol,
     {
         vert = vertCol->currentVert;
     }
-
-    const Image *const *const grid = &imgRect.grid[0];
-    return calcImageRect(vert, x, y, w, h, imgRect);
+    calcImageRect(vert, x, y, w, h, imgRect);
 }
 
 void SDLGraphics::fillRectangle(const gcn::Rectangle &rectangle)
@@ -728,6 +726,14 @@ void SDLGraphics::drawImageRect(const int x, const int y,
                                 const ImageRect &imgRect)
 {
     #include "render/openglgraphics_drawImageRect.hpp"
+}
+
+void SDLGraphics::calcImageRect(ImageVertexes *const vert,
+                                const int x, const int y,
+                                const int w, const int h,
+                                const ImageRect &imgRect)
+{
+    #include "render/openglgraphics_calcImageRect.hpp"
 }
 
 #endif  // USE_SDL2

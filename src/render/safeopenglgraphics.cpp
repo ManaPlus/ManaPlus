@@ -397,12 +397,11 @@ void SafeOpenGLGraphics::updateScreen()
     BLOCK_END("Graphics::updateScreen")
 }
 
-bool SafeOpenGLGraphics::calcWindow(ImageCollection *const vertCol A_UNUSED,
+void SafeOpenGLGraphics::calcWindow(ImageCollection *const vertCol A_UNUSED,
                                     const int x A_UNUSED, const int y A_UNUSED,
                                     const int w A_UNUSED, const int h A_UNUSED,
                                     const ImageRect &imgRect A_UNUSED)
 {
-    return false;
 }
 
 void SafeOpenGLGraphics::_beginDraw()
@@ -666,6 +665,14 @@ void SafeOpenGLGraphics::drawImageRect(const int x, const int y,
                                        const ImageRect &imgRect)
 {
     #include "render/openglgraphics_drawImageRect.hpp"
+}
+
+void SafeOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
+                                       const int x, const int y,
+                                       const int w, const int h,
+                                       const ImageRect &imgRect)
+{
+    #include "render/openglgraphics_calcImageRect.hpp"
 }
 
 #endif  // USE_OPENGL

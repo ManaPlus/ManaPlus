@@ -146,11 +146,11 @@ class SurfaceGraphics final : public Graphics
                      const int height A_UNUSED) override final
         { return false; }
 
-        bool calcWindow(ImageCollection *const vertCol A_UNUSED,
+        void calcWindow(ImageCollection *const vertCol A_UNUSED,
                         const int x A_UNUSED, const int y A_UNUSED,
                         const int w A_UNUSED, const int h A_UNUSED,
                         const ImageRect &imgRect A_UNUSED) override final
-        { return false; }
+        { }
 
         void setBlitMode(const BlitMode mode)
         { mBlitMode = mode; }

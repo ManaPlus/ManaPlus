@@ -76,7 +76,7 @@
 
         void drawTileVertexes(const ImageVertexes *const vert) override final;
 
-        bool calcWindow(ImageCollection *const vertCol,
+        void calcWindow(ImageCollection *const vertCol,
                         const int x, const int y,
                         const int w, const int h,
                         const ImageRect &imgRect) override final;

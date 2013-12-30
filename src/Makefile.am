@@ -835,6 +835,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      notifymanager.h \
 	      render/nullopenglgraphics.cpp \
 	      render/nullopenglgraphics.h \
+	      render/openglgraphics_calcImageRect.hpp \
 	      render/openglgraphics_drawImageRect.hpp \
 	      render/openglgraphicsdef.hpp \
 	      render/renderers.cpp \

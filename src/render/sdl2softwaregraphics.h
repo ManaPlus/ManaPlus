@@ -115,7 +115,7 @@ class SDL2SoftwareGraphics final : public Graphics
                      const int x2, const int y2,
                      const int width, const int height) override final;
 
-        bool calcWindow(ImageCollection *const vertCol,
+        void calcWindow(ImageCollection *const vertCol,
                         const int x, const int y,
                         const int w, const int h,
                         const ImageRect &imgRect) override final;
@@ -173,6 +173,13 @@ class SDL2SoftwareGraphics final : public Graphics
         SDL_Surface *mSurface;
         uint32_t mOldPixel;
         int mOldAlpha;
+
+    private:
+        void inline calcImageRect(ImageVertexes *const vert,
+                                  const int x, const int y,
+                                  const int w, const int h,
+                                  const ImageRect &imgRect);
+
 };
 
 #endif  // USE_SDL2
