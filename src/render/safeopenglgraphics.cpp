@@ -365,6 +365,15 @@ void SafeOpenGLGraphics::calcPattern(ImageVertexes *const vert A_UNUSED,
 {
 }
 
+void SafeOpenGLGraphics::calcPatternInline(ImageVertexes *const vert A_UNUSED,
+                                           const Image *const image A_UNUSED,
+                                           const int x A_UNUSED,
+                                           const int y A_UNUSED,
+                                           const int w A_UNUSED,
+                                           const int h A_UNUSED) const
+{
+}
+
 void SafeOpenGLGraphics::calcPattern(ImageCollection *const vert A_UNUSED,
                                      const Image *const image A_UNUSED,
                                      const int x A_UNUSED,
@@ -664,7 +673,7 @@ void SafeOpenGLGraphics::drawImageRect(const int x, const int y,
                                        const int w, const int h,
                                        const ImageRect &imgRect)
 {
-    #include "render/openglgraphics_drawImageRect.hpp"
+    #include "render/graphics_drawImageRect.hpp"
 }
 
 void SafeOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
@@ -672,7 +681,7 @@ void SafeOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
                                        const int w, const int h,
                                        const ImageRect &imgRect)
 {
-    #include "render/openglgraphics_calcImageRect.hpp"
+    #include "render/graphics_calcImageRect.hpp"
 }
 
 #endif  // USE_OPENGL

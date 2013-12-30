@@ -168,6 +168,10 @@ class SDLGraphics final : public Graphics
                                   int w, int h,
                                   const ImageRect &imgRect);
 
+        void inline calcPatternInline(ImageVertexes *const vert,
+                                      const Image *const image,
+                                      const int x, const int y,
+                                      const int w, const int h) const;
 };
 
 #endif  // USE_SDL2

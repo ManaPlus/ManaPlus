@@ -345,6 +345,14 @@ void SDLGraphics::calcPattern(ImageVertexes* const vert,
                               const int x, const int y,
                               const int w, const int h) const
 {
+    calcPatternInline(vert, image, x, y, w, h);
+}
+
+void SDLGraphics::calcPatternInline(ImageVertexes* const vert,
+                                    const Image *const image,
+                                    const int x, const int y,
+                                    const int w, const int h) const
+{
     // Check that preconditions for blitting are met.
     if (!vert || !mWindow || !image || !image->mTexture)
         return;
@@ -409,7 +417,7 @@ void SDLGraphics::calcPattern(ImageCollection* const vertCol,
         vert = vertCol->currentVert;
     }
 
-    calcPattern(vert, image, x, y, w, h);
+    calcPatternInline(vert, image, x, y, w, h);
 }
 
 void SDLGraphics::calcTileVertexes(ImageVertexes *const vert,
@@ -725,7 +733,7 @@ void SDLGraphics::drawImageRect(const int x, const int y,
                                 const int w, const int h,
                                 const ImageRect &imgRect)
 {
-    #include "render/openglgraphics_drawImageRect.hpp"
+    #include "render/graphics_drawImageRect.hpp"
 }
 
 void SDLGraphics::calcImageRect(ImageVertexes *const vert,
@@ -733,7 +741,7 @@ void SDLGraphics::calcImageRect(ImageVertexes *const vert,
                                 const int w, const int h,
                                 const ImageRect &imgRect)
 {
-    #include "render/openglgraphics_calcImageRect.hpp"
+    #include "render/graphics_calcImageRect.hpp"
 }
 
 #endif  // USE_SDL2

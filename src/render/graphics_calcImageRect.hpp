@@ -50,7 +50,7 @@ if (center && drawMain)
 {
     const int tlw = topLeft->getWidth();
     const int tlh = topLeft->getHeight();
-    calcPattern(vert, center, tlw + x, tlh + y,
+    calcPatternInline(vert, center, tlw + x, tlh + y,
         w - tlw - topRight->getWidth(),
         h - tlh - bottomLeft->getHeight());
 }
@@ -61,11 +61,11 @@ if (top && left && bottom && right)
     const int rw = right->getWidth();
     const int th = top->getHeight();
     const int bh = bottom->getHeight();
-    calcPattern(vert, top, x + lw, y, w - lw - rw, th);
-    calcPattern(vert, bottom, x + lw, y + h - bh, w - lw - rw, bh);
-    calcPattern(vert, left, x, y + th, lw, h - th - bh);
+    calcPatternInline(vert, top, x + lw, y, w - lw - rw, th);
+    calcPatternInline(vert, bottom, x + lw, y + h - bh, w - lw - rw, bh);
+    calcPatternInline(vert, left, x, y + th, lw, h - th - bh);
     if (w > rw)
-        calcPattern(vert, right, x + w - rw, y + th, rw, h - th - bh);
+        calcPatternInline(vert, right, x + w - rw, y + th, rw, h - th - bh);
 }
 
 calcTileVertexes(vert, topLeft, x, y);

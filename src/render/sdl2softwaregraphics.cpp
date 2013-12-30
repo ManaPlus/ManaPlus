@@ -585,6 +585,14 @@ void SDL2SoftwareGraphics::calcPattern(ImageVertexes* const vert,
                                        const int x, const int y,
                                        const int w, const int h) const
 {
+    calcPatternInline(vert, image, x, y, w, h);
+}
+
+void SDL2SoftwareGraphics::calcPatternInline(ImageVertexes* const vert,
+                                             const Image *const image,
+                                             const int x, const int y,
+                                             const int w, const int h) const
+{
     // Check that preconditions for blitting are met.
     if (!vert || !mSurface || !image || !image->mSDLSurface)
         return;
@@ -1488,7 +1496,7 @@ void SDL2SoftwareGraphics::drawImageRect(const int x, const int y,
                                          const int w, const int h,
                                          const ImageRect &imgRect)
 {
-    #include "render/openglgraphics_drawImageRect.hpp"
+    #include "render/graphics_drawImageRect.hpp"
 }
 
 void SDL2SoftwareGraphics::calcImageRect(ImageVertexes *const vert,
@@ -1496,7 +1504,7 @@ void SDL2SoftwareGraphics::calcImageRect(ImageVertexes *const vert,
                                          const int w, const int h,
                                          const ImageRect &imgRect)
 {
-    #include "render/openglgraphics_calcImageRect.hpp"
+    #include "render/graphics_calcImageRect.hpp"
 }
 
 #endif  // USE_SDL2

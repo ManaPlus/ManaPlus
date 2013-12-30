@@ -72,6 +72,11 @@ class SafeOpenGLGraphics final : public Graphics
                                   int w, int h,
                                   const ImageRect &imgRect);
 
+        void calcPatternInline(ImageVertexes *const vert,
+                               const Image *const image,
+                               const int x, const int y,
+                               const int w, const int h) const;
+
         bool mTexture;
         bool mIsByteColor;
         gcn::Color mByteColor;

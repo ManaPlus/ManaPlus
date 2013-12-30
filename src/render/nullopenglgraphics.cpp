@@ -543,6 +543,14 @@ void NullOpenGLGraphics::calcPattern(ImageVertexes* const vert,
                                      const int x, const int y,
                                      const int w, const int h) const
 {
+    calcPatternInline(vert, image, x, y, w, h);
+}
+
+void NullOpenGLGraphics::calcPatternInline(ImageVertexes* const vert,
+                                           const Image *const image,
+                                           const int x, const int y,
+                                           const int w, const int h) const
+{
     if (!image || !vert)
         return;
 
@@ -728,7 +736,7 @@ void NullOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
         vert = vertCol->currentVert;
     }
 
-    calcPattern(vert, image, x, y, w, h);
+    calcPatternInline(vert, image, x, y, w, h);
 }
 
 void NullOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
@@ -1143,7 +1151,7 @@ void NullOpenGLGraphics::drawImageRect(const int x, const int y,
                                        const int w, const int h,
                                        const ImageRect &imgRect)
 {
-    #include "render/openglgraphics_drawImageRect.hpp"
+    #include "render/graphics_drawImageRect.hpp"
 }
 
 void NullOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
@@ -1151,7 +1159,7 @@ void NullOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
                                        const int w, const int h,
                                        const ImageRect &imgRect)
 {
-    #include "render/openglgraphics_calcImageRect.hpp"
+    #include "render/graphics_calcImageRect.hpp"
 }
 
 #ifdef DEBUG_BIND_TEXTURE

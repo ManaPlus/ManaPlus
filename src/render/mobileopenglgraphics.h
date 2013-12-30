@@ -106,6 +106,11 @@ class MobileOpenGLGraphics final : public Graphics
                                   int w, int h,
                                   const ImageRect &imgRect);
 
+        void inline calcPatternInline(ImageVertexes *const vert,
+                                      const Image *const image,
+                                      const int x, const int y,
+                                      const int w, const int h) const;
+
         GLfloat *mFloatTexArray;
         GLshort *mShortVertArray;
         GLfloat *mFloatTexArrayCached;
