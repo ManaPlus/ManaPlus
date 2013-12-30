@@ -68,21 +68,21 @@ if (top && left && bottom && right)
         calcPatternInline(vert, right, x + w - rw, y + th, rw, h - th - bh);
 }
 
-calcTileVertexes(vert, topLeft, x, y);
+calcTileVertexesInline(vert, topLeft, x, y);
 if (topRight)
 {
     const int trw = topRight->getWidth();
     if (w > trw)
-        calcTileVertexes(vert, topRight, x + w - trw, y);
+        calcTileVertexesInline(vert, topRight, x + w - trw, y);
 }
 if (bottomLeft)
-    calcTileVertexes(vert, bottomLeft, x, y + h - bottomLeft->getHeight());
+    calcTileVertexesInline(vert, bottomLeft, x, y + h - bottomLeft->getHeight());
 if (bottomRight)
 {
     const int brw = bottomRight->getWidth();
     if (w > brw)
     {
-        calcTileVertexes(vert, bottomRight, x + w - brw,
+        calcTileVertexesInline(vert, bottomRight, x + w - brw,
             y + h - bottomRight->getHeight());
     }
 }

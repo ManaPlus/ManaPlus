@@ -356,6 +356,15 @@ void SafeOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert A_UNUSED,
 {
 }
 
+void SafeOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const
+                                                vert A_UNUSED,
+                                                const Image *const
+                                                image A_UNUSED,
+                                                int x A_UNUSED,
+                                                int y A_UNUSED) const
+{
+}
+
 void SafeOpenGLGraphics::calcPattern(ImageVertexes *const vert A_UNUSED,
                                      const Image *const image A_UNUSED,
                                      const int x A_UNUSED,

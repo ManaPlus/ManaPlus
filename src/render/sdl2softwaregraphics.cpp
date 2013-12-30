@@ -672,6 +672,14 @@ void SDL2SoftwareGraphics::calcTileVertexes(ImageVertexes *const vert,
     calcTileSDL(vert, x, y);
 }
 
+void SDL2SoftwareGraphics::calcTileVertexesInline(ImageVertexes *const vert,
+                                                  const Image *const image,
+                                                  int x, int y) const
+{
+    vert->image = image;
+    calcTileSDL(vert, x, y);
+}
+
 void SDL2SoftwareGraphics::calcTileSDL(ImageVertexes *const vert,
                                        int x, int y) const
 {

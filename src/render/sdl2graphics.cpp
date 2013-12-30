@@ -428,6 +428,14 @@ void SDLGraphics::calcTileVertexes(ImageVertexes *const vert,
     calcTileSDL(vert, x, y);
 }
 
+void SDLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
+                                         const Image *const image,
+                                         int x, int y) const
+{
+    vert->image = image;
+    calcTileSDL(vert, x, y);
+}
+
 void SDLGraphics::calcTileSDL(ImageVertexes *const vert, int x, int y) const
 {
     // Check that preconditions for blitting are met.

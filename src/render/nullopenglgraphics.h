@@ -117,6 +117,10 @@ class NullOpenGLGraphics final : public Graphics
                                       const int x, const int y,
                                       const int w, const int h) const;
 
+        void inline calcTileVertexesInline(ImageVertexes *const vert,
+                                           const Image *const image,
+                                           int x, int y) const;
+
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
         GLint *mIntVertArray;

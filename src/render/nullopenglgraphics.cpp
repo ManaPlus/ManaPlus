@@ -689,11 +689,11 @@ void NullOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
         vertCol->currentVert = vert;
         vert->image = image;
         vertCol->draws.push_back(vert);
-        calcTileVertexes(vert, image, x, y);
+        calcTileVertexesInline(vert, image, x, y);
     }
     else
     {
-        calcTileVertexes(vertCol->currentVert, image, x, y);
+        calcTileVertexesInline(vertCol->currentVert, image, x, y);
     }
 }
 
@@ -742,6 +742,13 @@ void NullOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
 void NullOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
                                           const Image *const image,
                                           int dstX, int dstY) const
+{
+    calcTileVertexesInline(vert, image, dstX, dstY);
+}
+
+void NullOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
+                                                const Image *const image,
+                                                int dstX, int dstY) const
 {
     if (!vert || !image)
         return;

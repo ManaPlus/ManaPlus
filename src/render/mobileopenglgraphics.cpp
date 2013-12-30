@@ -661,11 +661,11 @@ void MobileOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
         vertCol->currentVert = vert;
         vert->image = image;
         vertCol->draws.push_back(vert);
-        calcTileVertexes(vert, image, x, y);
+        calcTileVertexesInline(vert, image, x, y);
     }
     else
     {
-        calcTileVertexes(vertCol->currentVert, image, x, y);
+        calcTileVertexesInline(vertCol->currentVert, image, x, y);
     }
 }
 
@@ -714,6 +714,13 @@ void MobileOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
 void MobileOpenGLGraphics::calcTileVertexes(ImageVertexes *const vert,
                                             const Image *const image,
                                             int dstX, int dstY) const
+{
+    calcTileVertexesInline(vert, image, dstX, dstY);
+}
+
+void MobileOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
+                                                  const Image *const image,
+                                                  int dstX, int dstY) const
 {
     if (!vert || !image)
         return;

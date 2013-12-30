@@ -177,6 +177,10 @@ class SDLGraphics final : public Graphics
                                       const Image *const image,
                                       const int x, const int y,
                                       const int w, const int h) const;
+
+        void inline calcTileVertexesInline(ImageVertexes *const vert,
+                                           const Image *const image,
+                                           int x, int y) const;
 };
 
 #endif  // USE_SDL2
