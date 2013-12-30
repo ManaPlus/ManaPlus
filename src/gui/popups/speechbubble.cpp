@@ -24,10 +24,12 @@
 #include "gui/popups/speechbubble.h"
 
 #include "gui/sdlfont.h"
+#include "gui/viewport.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/textbox.h"
+#include "gui/widgets/windowcontainer.h"
 
 #include <guichan/font.hpp>
 
@@ -88,4 +90,9 @@ void SpeechBubble::setText(const std::string &text, const bool showName)
     setContentSize(width, getFont()->getHeight() + nameHeight);
     mCaption->setPosition(0, 0);
     mSpeechBox->setPosition(0, nameHeight);
+}
+
+void SpeechBubble::requestMoveToBackground()
+{
+    windowContainer->moveWidgetAfter(viewport, this);
 }

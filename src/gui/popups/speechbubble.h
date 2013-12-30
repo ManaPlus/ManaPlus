@@ -57,6 +57,8 @@ class SpeechBubble final : public Popup
          */
         void setText(const std::string &text, const bool showName = true);
 
+        void requestMoveToBackground();
+
     private:
         std::string mText;
         int mSpacing;

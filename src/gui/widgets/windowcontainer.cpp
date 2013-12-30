@@ -58,6 +58,26 @@ void WindowContainer::adjustAfterResize(const int oldScreenWidth,
     }
 }
 
+void WindowContainer::moveWidgetAfter(gcn::Widget *const after,
+                                      gcn::Widget *const widget)
+{
+    WidgetListIterator widgetIter = std::find(
+        mWidgets.begin(), mWidgets.end(), widget);
+
+    if (widgetIter == mWidgets.end())
+        return;
+
+    WidgetListIterator afterIter = std::find(
+        mWidgets.begin(), mWidgets.end(), after);
+
+    if (afterIter == mWidgets.end())
+        return;
+
+    ++ afterIter;
+    mWidgets.erase(widgetIter);
+    mWidgets.insert(afterIter, widget);
+}
+
 #ifdef USE_PROFILER
 void WindowContainer::draw(gcn::Graphics* graphics)
 {

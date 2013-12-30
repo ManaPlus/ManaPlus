@@ -53,6 +53,9 @@ class WindowContainer : public Container
         void adjustAfterResize(const int oldScreenWidth,
                                const int oldScreenHeight);
 
+        void moveWidgetAfter(gcn::Widget *const before,
+                             gcn::Widget *const widget);
+
 #ifdef USE_PROFILER
         void draw(gcn::Graphics* graphics);
 #endif
