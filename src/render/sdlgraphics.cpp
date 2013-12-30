@@ -104,6 +104,12 @@ bool SDLGraphics::drawRescaledImage(const Image *const image,
 bool SDLGraphics::drawImage2(const Image *const image,
                              int dstX, int dstY)
 {
+    drawImageInline(image, dstX, dstY);
+}
+
+bool SDLGraphics::drawImageInline(const Image *const image,
+                                  int dstX, int dstY)
+{
     FUNC_BLOCK("Graphics::drawImage2", 1)
     // Check that preconditions for blitting are met.
     if (!mWindow || !image || !image->mSDLSurface)

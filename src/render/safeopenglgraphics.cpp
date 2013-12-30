@@ -138,9 +138,14 @@ static inline void drawRescaledQuad(const Image *const image,
     }
 }
 
-
 bool SafeOpenGLGraphics::drawImage2(const Image *const image,
                                     int dstX, int dstY)
+{
+    return drawImageInline(image, dstX, dstY);
+}
+
+bool SafeOpenGLGraphics::drawImageInline(const Image *const image,
+                                         int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage2", 1)
     if (!image)
@@ -234,7 +239,7 @@ bool SafeOpenGLGraphics::drawRescaledImage(const Image *const image,
 
     // Just draw the image normally when no resizing is necessary,
     if (imageRect.w == desiredWidth && imageRect.h == desiredHeight)
-        return drawImage2(image, dstX, dstY);
+        return drawImageInline(image, dstX, dstY);
 
     setColorAlpha(image->mAlpha);
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);

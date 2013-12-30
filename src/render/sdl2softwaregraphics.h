@@ -188,6 +188,9 @@ class SDL2SoftwareGraphics final : public Graphics
         void inline calcTileVertexesInline(ImageVertexes *const vert,
                                            const Image *const image,
                                            int x, int y) const;
+
+        bool inline drawImageInline(const Image *const image,
+                                    int dstX, int dstY);
 };
 
 #endif  // USE_SDL2

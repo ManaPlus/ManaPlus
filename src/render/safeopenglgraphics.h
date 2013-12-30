@@ -81,6 +81,9 @@ class SafeOpenGLGraphics final : public Graphics
                                            const Image *const image,
                                            int x, int y) const;
 
+        bool inline drawImageInline(const Image *const image,
+                                    int dstX, int dstY);
+
         bool mTexture;
         bool mIsByteColor;
         gcn::Color mByteColor;

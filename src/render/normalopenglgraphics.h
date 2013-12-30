@@ -129,6 +129,9 @@ class NormalOpenGLGraphics final : public Graphics
                                            const Image *const image,
                                            int x, int y) const;
 
+        bool inline drawImageInline(const Image *const image,
+                                    int dstX, int dstY);
+
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
         GLint *mIntVertArray;

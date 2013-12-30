@@ -67,15 +67,15 @@ if (top && left && bottom && right)
 // Draw the corners
 if (drawMain)
 {
-    drawImage2(topLeft, x, y);
+    drawImageInline(topLeft, x, y);
     const int trw = topRight->getWidth();
     if (w > trw)
-        drawImage2(topRight, x + w - trw, y);
-    drawImage2(bottomLeft, x, h - bottomLeft->getHeight() + y);
+        drawImageInline(topRight, x + w - trw, y);
+    drawImageInline(bottomLeft, x, h - bottomLeft->getHeight() + y);
     const int brw = bottomRight->getWidth();
     if (w > brw)
     {
-        drawImage2(bottomRight,
+        drawImageInline(bottomRight,
             x + w - brw,
             y + h - bottomRight->getHeight());
     }
