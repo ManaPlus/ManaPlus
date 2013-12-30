@@ -696,10 +696,10 @@ SET(SRCS
     notifications.h
     notifymanager.cpp
     notifymanager.h
+    render/graphics_calcImageRect.hpp
+    render/graphics_drawImageRect.hpp
     render/nullopenglgraphics.cpp
     render/nullopenglgraphics.h
-    render/openglgraphics_calcImageRect.hpp
-    render/openglgraphics_drawImageRect.hpp
     render/openglgraphicsdef.hpp
     render/renderers.cpp
     render/renderers.h
