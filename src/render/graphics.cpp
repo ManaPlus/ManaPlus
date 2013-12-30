@@ -536,8 +536,6 @@ bool Graphics::calcImageRect(ImageVertexes *const vert,
     const bool drawMain = center && topLeft && topRight
         && bottomLeft && bottomRight;
 
-//    pushClipArea(gcn::Rectangle(x, y, w, h));
-
     // Draw the center area
     if (center && drawMain)
     {
@@ -580,7 +578,6 @@ bool Graphics::calcImageRect(ImageVertexes *const vert,
         }
     }
 
-//    popClipArea();
     BLOCK_END("Graphics::calcImageRect")
     return 0;
 }
