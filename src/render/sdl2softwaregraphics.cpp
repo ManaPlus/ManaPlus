@@ -177,8 +177,8 @@ bool SDL2SoftwareGraphics::drawImage2(const Image *const image,
     {
         SDL_Rect srcRect =
         {
-            static_cast<int16_t>(0),
-            static_cast<int16_t>(0),
+            static_cast<int16_t>(srcX),
+            static_cast<int16_t>(srcY),
             static_cast<uint16_t>(w),
             static_cast<uint16_t>(h)
         };
