@@ -81,6 +81,13 @@ class NullOpenGLGraphics final : public Graphics
 
         void initArrays() override final;
 
+        /**
+         * Draws a rectangle using images. 4 corner images, 4 side images and 1
+         * image for the inside.
+         */
+        void drawImageRect(int x, int y, int w, int h,
+                           const ImageRect &imgRect);
+
 #ifdef DEBUG_DRAW_CALLS
         unsigned int getDrawCalls() const
         { return mLastDrawCalls; }

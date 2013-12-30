@@ -193,6 +193,15 @@ class SurfaceGraphics final : public Graphics
 
         void completeCache() override final;
 
+        /**
+         * Draws a rectangle using images. 4 corner images, 4 side images and 1
+         * image for the inside.
+         */
+        void drawImageRect(const int x, const int y,
+                           const int w, const int h,
+                           const ImageRect &imgRect)
+        { }
+
     protected:
         BlitMode mBlitMode;
         SDL_Surface *mTarget;

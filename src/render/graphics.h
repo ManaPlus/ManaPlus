@@ -170,12 +170,9 @@ class Graphics : public gcn::Graphics
                                          const int scaledWidth,
                                          const int scaledHeight) = 0;
 
-        /**
-         * Draws a rectangle using images. 4 corner images, 4 side images and 1
-         * image for the inside.
-         */
-        void drawImageRect(int x, int y, int w, int h,
-                           const ImageRect &imgRect);
+        virtual void drawImageRect(const int x, const int y,
+                                   const int w, const int h,
+                                   const ImageRect &imgRect) = 0;
 
         bool calcImageRect(ImageVertexes *const vert,
                            const int x, const int y,
@@ -214,14 +211,6 @@ class Graphics : public gcn::Graphics
                                 const int x, const int y,
                                 const int w, const int h,
                                 const ImageRect &imgRect) = 0;
-
-        /**
-         * Draws a rectangle using images. 4 corner images, 4 side images and 1
-         * image for the inside.
-         */
-        inline void drawImageRect(const gcn::Rectangle &area,
-                                  const ImageRect &imgRect)
-        { drawImageRect(area.x, area.y, area.width, area.height, imgRect); }
 
         virtual void fillRectangle(const gcn::Rectangle& rectangle)
                                    override = 0;

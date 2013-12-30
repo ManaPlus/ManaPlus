@@ -52,6 +52,13 @@ class SafeOpenGLGraphics final : public Graphics
 
         #include "render/openglgraphicsdef.hpp"
 
+        /**
+         * Draws a rectangle using images. 4 corner images, 4 side images and 1
+         * image for the inside.
+         */
+        void drawImageRect(int x, int y, int w, int h,
+                           const ImageRect &imgRect);
+
     protected:
         void setTexturingAndBlending(const bool enable);
 

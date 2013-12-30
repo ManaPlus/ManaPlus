@@ -1133,6 +1133,13 @@ void NullOpenGLGraphics::restoreColor()
     mByteColor = mColor;
 }
 
+void NullOpenGLGraphics::drawImageRect(const int x, const int y,
+                                       const int w, const int h,
+                                       const ImageRect &imgRect)
+{
+    #include "render/openglgraphics_drawImageRect.hpp"
+}
+
 #ifdef DEBUG_BIND_TEXTURE
 void NullOpenGLGraphics::debugBindTexture(const Image *const image)
 {

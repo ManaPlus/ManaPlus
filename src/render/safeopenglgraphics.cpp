@@ -656,4 +656,11 @@ void SafeOpenGLGraphics::restoreColor()
     mByteColor = mColor;
 }
 
+void SafeOpenGLGraphics::drawImageRect(const int x, const int y,
+                                       const int w, const int h,
+                                       const ImageRect &imgRect)
+{
+    #include "render/openglgraphics_drawImageRect.hpp"
+}
+
 #endif  // USE_OPENGL

@@ -143,6 +143,13 @@ class SDLGraphics final : public Graphics
 
         void completeCache() override final;
 
+        /**
+         * Draws a rectangle using images. 4 corner images, 4 side images and 1
+         * image for the inside.
+         */
+        void drawImageRect(int x, int y, int w, int h,
+                           const ImageRect &imgRect);
+
     protected:
         int SDL_FakeUpperBlit(const SDL_Surface *const src,
                               SDL_Rect *const srcrect,

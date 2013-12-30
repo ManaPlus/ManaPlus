@@ -1479,4 +1479,11 @@ bool SDL2SoftwareGraphics::resizeScreen(const int width, const int height)
     return ret;
 }
 
+void SDL2SoftwareGraphics::drawImageRect(const int x, const int y,
+                                         const int w, const int h,
+                                         const ImageRect &imgRect)
+{
+    #include "render/openglgraphics_drawImageRect.hpp"
+}
+
 #endif  // USE_SDL2

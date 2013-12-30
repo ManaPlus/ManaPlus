@@ -146,10 +146,18 @@ class SDLGraphics final : public Graphics
 
         void completeCache() override final;
 
+        /**
+         * Draws a rectangle using images. 4 corner images, 4 side images and 1
+         * image for the inside.
+         */
+        void drawImageRect(int x, int y, int w, int h,
+                           const ImageRect &imgRect);
+
     protected:
         uint32_t mRendererFlags;
         uint32_t mOldPixel;
         int mOldAlpha;
+
 };
 
 #endif  // USE_SDL2

@@ -1458,4 +1458,11 @@ bool SDLGraphics::setVideoMode(const int w, const int h, const int bpp,
     return videoInfo();
 }
 
+void SDLGraphics::drawImageRect(const int x, const int y,
+                                const int w, const int h,
+                                const ImageRect &imgRect)
+{
+    #include "render/openglgraphics_drawImageRect.hpp"
+}
+
 #endif  // USE_SDL2
