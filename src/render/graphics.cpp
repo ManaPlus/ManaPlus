@@ -442,17 +442,21 @@ int Graphics::getHeight() const
 
 void Graphics::drawImageRect(const int x, const int y,
                              const int w, const int h,
-                             const Image *const topLeft,
-                             const Image *const topRight,
-                             const Image *const bottomLeft,
-                             const Image *const bottomRight,
-                             const Image *const top,
-                             const Image *const right,
-                             const Image *const bottom,
-                             const Image *const left,
-                             const Image *const center)
+                             const ImageRect &imgRect)
 {
     BLOCK_START("Graphics::drawImageRect")
+
+    const Image *const *const grid = imgRect.grid;
+    const Image *const topLeft = grid[0];
+    const Image *const topRight = grid[2];
+    const Image *const bottomLeft = grid[6];
+    const Image *const bottomRight = grid[8];
+    const Image *const top = grid[1];
+    const Image *const right = grid[5];
+    const Image *const bottom = grid[7];
+    const Image *const left = grid[3];
+    const Image *const center = grid[4];
+
     const bool drawMain = center && topLeft && topRight
         && bottomLeft && bottomRight;
 
@@ -498,15 +502,6 @@ void Graphics::drawImageRect(const int x, const int y,
         }
     }
     BLOCK_END("Graphics::drawImageRect")
-}
-
-void Graphics::drawImageRect(int x, int y, int w, int h,
-                             const ImageRect &imgRect)
-{
-    drawImageRect(x, y, w, h,
-            imgRect.grid[0], imgRect.grid[2], imgRect.grid[6], imgRect.grid[8],
-            imgRect.grid[1], imgRect.grid[5], imgRect.grid[7], imgRect.grid[3],
-            imgRect.grid[4]);
 }
 
 bool Graphics::drawNet(const int x1, const int y1, const int x2, const int y2,

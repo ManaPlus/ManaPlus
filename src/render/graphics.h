@@ -145,7 +145,7 @@ class Graphics : public gcn::Graphics
         void drawImage(const gcn::Image* image A_UNUSED,
                        int srcX A_UNUSED, int srcY A_UNUSED,
                        int dstX A_UNUSED, int dstY A_UNUSED,
-                       int width A_UNUSED, int height A_UNUSED) override
+                       int width A_UNUSED, int height A_UNUSED) override final
         {
         }
 
@@ -169,21 +169,6 @@ class Graphics : public gcn::Graphics
                                          const int w, const int h,
                                          const int scaledWidth,
                                          const int scaledHeight) = 0;
-
-        /**
-         * Draws a rectangle using images. 4 corner images, 4 side images and 1
-         * image for the inside.
-         */
-        void drawImageRect(const int x, const int y, const int w, const int h,
-                           const Image *const topLeft,
-                           const Image *const topRight,
-                           const Image *const bottomLeft,
-                           const Image *const bottomRight,
-                           const Image *const top,
-                           const Image *const right,
-                           const Image *const bottom,
-                           const Image *const left,
-                           const Image *const center);
 
         /**
          * Draws a rectangle using images. 4 corner images, 4 side images and 1
