@@ -517,6 +517,13 @@ void NormalOpenGLGraphics::drawPattern(const Image *const image,
                                        const int x, const int y,
                                        const int w, const int h)
 {
+    drawPatternInline(image, x, y, w, h);
+}
+
+void NormalOpenGLGraphics::drawPatternInline(const Image *const image,
+                                             const int x, const int y,
+                                             const int w, const int h)
+{
     FUNC_BLOCK("Graphics::drawPattern", 1)
     if (!image)
         return;

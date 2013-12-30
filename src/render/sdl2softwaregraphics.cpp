@@ -401,6 +401,13 @@ void SDL2SoftwareGraphics::drawPattern(const Image *const image,
                                        const int x, const int y,
                                        const int w, const int h)
 {
+    drawPatternInline(image, x, y, w, h);
+}
+
+void SDL2SoftwareGraphics::drawPatternInline(const Image *const image,
+                                             const int x, const int y,
+                                             const int w, const int h)
+{
     FUNC_BLOCK("Graphics::drawPattern", 1)
     // Check that preconditions for blitting are met.
     if (!mSurface || !image)

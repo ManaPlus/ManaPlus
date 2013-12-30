@@ -71,6 +71,10 @@ class SDLGraphics final : public Graphics
                          const int x, const int y,
                          const int w, const int h) override final;
 
+        void inline drawPatternInline(const Image *const image,
+                                      const int x, const int y,
+                                      const int w, const int h);
+
         void drawRescaledPattern(const Image *const image,
                                  const int x, const int y,
                                  const int w, const int h,

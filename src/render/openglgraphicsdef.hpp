@@ -36,6 +36,10 @@
                                const int desiredWidth,
                                const int desiredHeight) override final;
 
+        void inline drawPatternInline(const Image *const image,
+                                      const int x, const int y,
+                                      const int w, const int h);
+
         void drawPattern(const Image *const image,
                          const int x, const int y,
                          const int w, const int h) override final;

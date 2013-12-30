@@ -249,11 +249,16 @@ bool SafeOpenGLGraphics::drawRescaledImage(const Image *const image,
     return true;
 }
 
-/* Optimising the functions that Graphics::drawPattern would call,
- * so that glBegin...glEnd are outside the main loop. */
 void SafeOpenGLGraphics::drawPattern(const Image *const image,
                                      const int x, const int y,
                                      const int w, const int h)
+{
+    drawPatternInline(image, x, y, w, h);
+}
+
+void SafeOpenGLGraphics::drawPatternInline(const Image *const image,
+                                           const int x, const int y,
+                                           const int w, const int h)
 {
     FUNC_BLOCK("Graphics::drawPattern", 1)
     if (!image)

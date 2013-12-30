@@ -46,7 +46,7 @@ if (center && drawMain)
 {
     const int tlw = topLeft->getWidth();
     const int tlh = topLeft->getHeight();
-    drawPattern(center, tlw + x, tlh + y,
+    drawPatternInline(center, tlw + x, tlh + y,
         w - tlw - topRight->getWidth(),
         h - tlh - bottomLeft->getHeight());
 }
@@ -58,11 +58,11 @@ if (top && left && bottom && right)
     const int rw = right->getWidth();
     const int th = top->getHeight();
     const int bh = bottom->getHeight();
-    drawPattern(top, x + lw, y, w - lw - rw, th);
-    drawPattern(bottom, x + lw, h - bh + y, w - lw - rw, bh);
-    drawPattern(left, x, y + th, lw, h - th - bh);
+    drawPatternInline(top, x + lw, y, w - lw - rw, th);
+    drawPatternInline(bottom, x + lw, h - bh + y, w - lw - rw, bh);
+    drawPatternInline(left, x, y + th, lw, h - th - bh);
     if (w > rw)
-        drawPattern(right, x + w - rw, th + y, rw, h - th - bh);
+        drawPatternInline(right, x + w - rw, th + y, rw, h - th - bh);
 }
 // Draw the corners
 if (drawMain)
