@@ -485,73 +485,30 @@ void NormalOpenGLGraphics::completeCache()
 }
 
 bool NormalOpenGLGraphics::drawRescaledImage(const Image *const image,
-                                             int srcX, int srcY,
                                              int dstX, int dstY,
-                                             const int width, const int height,
                                              const int desiredWidth,
-                                             const int desiredHeight,
-                                             const bool useColor)
-{
-    return drawRescaledImage(image, srcX, srcY,
-                             dstX, dstY,
-                             width, height,
-                             desiredWidth, desiredHeight,
-                             useColor, true);
-}
-
-bool NormalOpenGLGraphics::drawRescaledImage(const Image *const image,
-                                             int srcX, int srcY,
-                                             int dstX, int dstY,
-                                             const int width, const int height,
-                                             const int desiredWidth,
-                                             const int desiredHeight,
-                                             const bool useColor,
-                                             bool smooth)
+                                             const int desiredHeight)
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     if (!image)
         return false;
 
+    const SDL_Rect &imageRect = image->mBounds;
+
     // Just draw the image normally when no resizing is necessary,
-    if (width == desiredWidth && height == desiredHeight)
+    if (imageRect.w == desiredWidth && imageRect.h == desiredHeight)
         return drawImage2(image, dstX, dstY);
 
-    // When the desired image is smaller than the current one,
-    // disable smooth effect.
-    if (width > desiredWidth && height > desiredHeight)
-        smooth = false;
-
-    const SDL_Rect &imageRect = image->mBounds;
-    srcX += imageRect.x;
-    srcY += imageRect.y;
-
-    if (!useColor)
-        setColorAlpha(image->mAlpha);
-
+    setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
 #endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-
     setTexturingAndBlending(true);
 
     // Draw a textured quad.
-    drawRescaledQuad(image, srcX, srcY, dstX, dstY, width, height,
-                     desiredWidth, desiredHeight);
-
-    if (smooth)  // A basic smooth effect...
-    {
-        setColorAlpha(0.2F);
-        drawRescaledQuad(image, srcX, srcY, dstX - 1, dstY - 1, width, height,
-                         desiredWidth + 1, desiredHeight + 1);
-        drawRescaledQuad(image, srcX, srcY, dstX + 1, dstY + 1, width, height,
-                         desiredWidth - 1, desiredHeight - 1);
-
-        drawRescaledQuad(image, srcX, srcY, dstX + 1, dstY, width, height,
-                         desiredWidth - 1, desiredHeight);
-        drawRescaledQuad(image, srcX, srcY, dstX, dstY + 1, width, height,
-                         desiredWidth, desiredHeight - 1);
-    }
+    drawRescaledQuad(image, imageRect.x, imageRect.y, dstX, dstY,
+        imageRect.w, imageRect.h, desiredWidth, desiredHeight);
 
     return true;
 }

@@ -62,12 +62,9 @@ SDL2SoftwareGraphics::~SDL2SoftwareGraphics()
 }
 
 bool SDL2SoftwareGraphics::drawRescaledImage(const Image *const image,
-                                             int srcX, int srcY,
                                              int dstX, int dstY,
-                                             const int width, const int height,
                                              const int desiredWidth,
-                                             const int desiredHeight,
-                                             const bool useColor A_UNUSED)
+                                             const int desiredHeight)
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     // Check that preconditions for blitting are met.
@@ -89,10 +86,10 @@ bool SDL2SoftwareGraphics::drawRescaledImage(const Image *const image,
 
     SDL_Rect srcRect =
     {
-        static_cast<int16_t>(srcX + bounds.x),
-        static_cast<int16_t>(srcY + bounds.y),
-        static_cast<uint16_t>(width),
-        static_cast<uint16_t>(height)
+        static_cast<int16_t>(bounds.x),
+        static_cast<int16_t>(bounds.y),
+        static_cast<uint16_t>(bounds.w),
+        static_cast<uint16_t>(bounds.h)
     };
 
     SDL_Rect dstRect =

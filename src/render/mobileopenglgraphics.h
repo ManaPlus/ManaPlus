@@ -67,20 +67,10 @@ class MobileOpenGLGraphics final : public Graphics
         /**
          * Draws a resclaled version of the image
          */
-        bool drawRescaledImage(const Image *const image, int srcX, int srcY,
+        bool drawRescaledImage(const Image *const image,
                                int dstX, int dstY,
-                               const int width, const int height,
-                               const int desiredWidth, const int desiredHeight,
-                               const bool useColor) override final;
-
-        /**
-         * Used to get the smooth rescale option over the standard function.
-         */
-        bool drawRescaledImage(const Image *const image, int srcX, int srcY,
-                               int dstX, int dstY,
-                               const int width, const int height,
-                               const int desiredWidth, const int desiredHeight,
-                               const bool useColor, bool smooth);
+                               const int desiredWidth,
+                               const int desiredHeight) override final;
 
         void drawPattern(const Image *const image,
                          const int x, const int y,

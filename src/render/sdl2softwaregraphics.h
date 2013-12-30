@@ -63,12 +63,9 @@ class SDL2SoftwareGraphics final : public Graphics
         void popClipArea();
 
         bool drawRescaledImage(const Image *const image,
-                               int srcX, int srcY,
                                int dstX, int dstY,
-                               const int width, const int height,
                                const int desiredWidth,
-                               const int desiredHeight,
-                               const bool useColor = false) override final;
+                               const int desiredHeight) override final;
 
         void drawPattern(const Image *const image,
                          const int x, const int y,

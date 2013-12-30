@@ -70,13 +70,9 @@ class SurfaceGraphics final : public Graphics
         { }
 
         bool drawRescaledImage(const Image *const image A_UNUSED,
-                               int srcX A_UNUSED, int srcY A_UNUSED,
                                int dstX A_UNUSED, int dstY A_UNUSED,
-                               const int width A_UNUSED,
-                               const int height A_UNUSED,
                                const int desiredWidth A_UNUSED,
-                               const int desiredHeight A_UNUSED,
-                               const bool useColor A_UNUSED = false)
+                               const int desiredHeight A_UNUSED)
                                override final
         { return false; }
 

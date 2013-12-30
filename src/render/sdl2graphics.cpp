@@ -81,12 +81,9 @@ SDLGraphics::~SDLGraphics()
 }
 
 bool SDLGraphics::drawRescaledImage(const Image *const image,
-                                    int srcX, int srcY,
                                     int dstX, int dstY,
-                                    const int width, const int height,
                                     const int desiredWidth,
-                                    const int desiredHeight,
-                                    const bool useColor A_UNUSED)
+                                    const int desiredHeight)
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     // Check that preconditions for blitting are met.
@@ -99,10 +96,10 @@ bool SDLGraphics::drawRescaledImage(const Image *const image,
     const SDL_Rect &bounds = image->mBounds;
     const SDL_Rect srcRect =
     {
-        static_cast<int32_t>(srcX + bounds.x),
-        static_cast<int32_t>(srcY + bounds.y),
-        static_cast<int32_t>(width),
-        static_cast<int32_t>(height)
+        static_cast<int32_t>(bounds.x),
+        static_cast<int32_t>(bounds.y),
+        static_cast<int32_t>(bounds.w),
+        static_cast<int32_t>(bounds.h)
     };
     const SDL_Rect dstRect =
     {

@@ -152,12 +152,10 @@ class Graphics : public gcn::Graphics
         /**
          * Draws a resclaled version of the image
          */
-        virtual bool drawRescaledImage(const Image *const image, int srcX,
-                                       int srcY, int dstX, int dstY,
-                                       const int width, const int height,
+        virtual bool drawRescaledImage(const Image *const image,
+                                       int dstX, int dstY,
                                        const int desiredWidth,
-                                       const int desiredHeight,
-                                       const bool useColor = false) = 0;
+                                       const int desiredHeight) = 0;
 
         virtual void drawPattern(const Image *const image,
                                  const int x, const int y,

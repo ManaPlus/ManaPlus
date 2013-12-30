@@ -130,9 +130,7 @@ void Desktop::draw(gcn::Graphics *graphics)
         }
         else
         {
-            g->drawRescaledImage(mWallpaper, 0, 0, 0, 0,
-                wallpWidth, wallpHeight,
-                width, height, false);
+            g->drawRescaledImage(mWallpaper, 0, 0, width, height);
         }
     }
     else
