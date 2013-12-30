@@ -803,10 +803,7 @@ bool SDLGraphics::calcWindow(ImageCollection *const vertCol,
     }
 
     const Image *const *const grid = &imgRect.grid[0];
-    return calcImageRect(vert, x, y, w, h,
-        grid[0], grid[2], grid[6], grid[8],
-        grid[1], grid[5], grid[7], grid[3],
-        grid[4]);
+    return calcImageRect(vert, x, y, w, h, imgRect);
 }
 
 int SDLGraphics::SDL_FakeUpperBlit(const SDL_Surface *const src,

@@ -519,20 +519,24 @@ bool Graphics::drawNet(const int x1, const int y1, const int x2, const int y2,
 bool Graphics::calcImageRect(ImageVertexes *const vert,
                              const int x, const int y,
                              const int w, const int h,
-                             const Image *const topLeft,
-                             const Image *const topRight,
-                             const Image *const bottomLeft,
-                             const Image *const bottomRight,
-                             const Image *const top,
-                             const Image *const right,
-                             const Image *const bottom,
-                             const Image *const left,
-                             const Image *const center)
+                             const ImageRect &imgRect)
 {
     if (!vert)
         return false;
 
     BLOCK_START("Graphics::calcImageRect")
+
+    const Image *const *const grid = imgRect.grid;
+    const Image *const topLeft = grid[0];
+    const Image *const topRight = grid[2];
+    const Image *const bottomLeft = grid[6];
+    const Image *const bottomRight = grid[8];
+    const Image *const top = grid[1];
+    const Image *const right = grid[5];
+    const Image *const bottom = grid[7];
+    const Image *const left = grid[3];
+    const Image *const center = grid[4];
+
     const bool drawMain = center && topLeft && topRight
         && bottomLeft && bottomRight;
 

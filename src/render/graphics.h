@@ -180,15 +180,7 @@ class Graphics : public gcn::Graphics
         bool calcImageRect(ImageVertexes *const vert,
                            const int x, const int y,
                            const int w, const int h,
-                           const Image *const topLeft,
-                           const Image *const topRight,
-                           const Image *const bottomLeft,
-                           const Image *const bottomRight,
-                           const Image *const top,
-                           const Image *const right,
-                           const Image *const bottom,
-                           const Image *const left,
-                           const Image *const center);
+                           const ImageRect &imgRect);
 
         virtual void calcPattern(ImageVertexes *const vert,
                                  const Image *const image,

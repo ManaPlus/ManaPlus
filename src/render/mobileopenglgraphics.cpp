@@ -784,10 +784,7 @@ bool MobileOpenGLGraphics::calcWindow(ImageCollection *const vertCol,
         vert = vertCol->currentVert;
     }
 
-    return calcImageRect(vert, x, y, w, h,
-        imgRect.grid[0], imgRect.grid[2], imgRect.grid[6], imgRect.grid[8],
-        imgRect.grid[1], imgRect.grid[5], imgRect.grid[7], imgRect.grid[3],
-        imgRect.grid[4]);
+    return calcImageRect(vert, x, y, w, h, imgRect);
 }
 
 void MobileOpenGLGraphics::updateScreen()
