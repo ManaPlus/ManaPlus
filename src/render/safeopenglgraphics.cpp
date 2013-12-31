@@ -576,14 +576,18 @@ bool SafeOpenGLGraphics::drawNet(const int x1, const int y1,
     glBegin(GL_LINES);
     for (int y = y1; y < y2; y += height)
     {
-        glVertex2f(static_cast<float>(x1) + 0.5F, static_cast<float>(y) + 0.5F);
-        glVertex2f(static_cast<float>(x2) + 0.5F, static_cast<float>(y) + 0.5F);
+        glVertex2f(static_cast<float>(x1) + 0.5F,
+            static_cast<float>(y) + 0.5F);
+        glVertex2f(static_cast<float>(x2) + 0.5F,
+            static_cast<float>(y) + 0.5F);
     }
 
     for (int x = x1; x < x2; x += width)
     {
-        glVertex2f(static_cast<float>(x) + 0.5F, static_cast<float>(y1) + 0.5F);
-        glVertex2f(static_cast<float>(x) + 0.5F, static_cast<float>(y2) + 0.5F);
+        glVertex2f(static_cast<float>(x) + 0.5F,
+            static_cast<float>(y1) + 0.5F);
+        glVertex2f(static_cast<float>(x) + 0.5F,
+            static_cast<float>(y2) + 0.5F);
     }
     glEnd();
 

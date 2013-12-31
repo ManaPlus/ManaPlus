@@ -21,9 +21,9 @@
  */
 
 
-//void GraphicsX::drawImageRect(const int x, const int y,
-//                              const int w, const int h,
-//                              const ImageRect &imgRect)
+// void GraphicsX::drawImageRect(const int x, const int y,
+//                               const int w, const int h,
+//                               const ImageRect &imgRect)
 
 BLOCK_START("Graphics::drawImageRect")
 

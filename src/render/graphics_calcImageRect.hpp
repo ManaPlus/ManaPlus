@@ -21,10 +21,10 @@
  */
 
 
-//bool Graphics::calcImageRect(ImageVertexes *const vert,
-//                             const int x, const int y,
-//                             const int w, const int h,
-//                             const ImageRect &imgRect)
+// bool GraphicsX::calcImageRect(ImageVertexes *const vert,
+//                               const int x, const int y,
+//                               const int w, const int h,
+//                               const ImageRect &imgRect)
 
 if (!vert)
     return;
@@ -76,7 +76,10 @@ if (topRight)
         calcTileVertexesInline(vert, topRight, x + w - trw, y);
 }
 if (bottomLeft)
-    calcTileVertexesInline(vert, bottomLeft, x, y + h - bottomLeft->getHeight());
+{
+    calcTileVertexesInline(vert, bottomLeft,
+        x, y + h - bottomLeft->getHeight());
+}
 if (bottomRight)
 {
     const int brw = bottomRight->getWidth();

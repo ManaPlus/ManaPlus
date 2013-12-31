@@ -32,7 +32,6 @@
 
 #include "localconsts.h"
 
-class Graphics;
 class ImageCollection;
 class Skin;
 
@@ -142,7 +141,6 @@ class ProgressBar final : public gcn::Widget,
     private:
         ImageRect mFillRect;
         Skin *mSkin;
-        Skin *mSkinFill;
         float mProgress;
         float mProgressToGo;
 

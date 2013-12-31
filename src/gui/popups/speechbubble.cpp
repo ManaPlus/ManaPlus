@@ -29,7 +29,6 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/textbox.h"
-#include "gui/widgets/windowcontainer.h"
 
 #include <guichan/font.hpp>
 

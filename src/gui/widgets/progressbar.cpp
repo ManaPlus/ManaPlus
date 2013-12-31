@@ -44,7 +44,6 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     gcn::WidgetListener(),
     mFillRect(),
     mSkin(nullptr),
-    mSkinFill(nullptr),
     mProgress(progress),
     mProgressToGo(progress),
     mBackgroundColor(Theme::getProgressColor(backColor >= 0

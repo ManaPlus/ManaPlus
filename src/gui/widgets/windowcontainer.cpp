@@ -61,7 +61,7 @@ void WindowContainer::adjustAfterResize(const int oldScreenWidth,
 void WindowContainer::moveWidgetAfter(gcn::Widget *const after,
                                       gcn::Widget *const widget)
 {
-    WidgetListIterator widgetIter = std::find(
+    const WidgetListIterator widgetIter = std::find(
         mWidgets.begin(), mWidgets.end(), widget);
 
     if (widgetIter == mWidgets.end())
