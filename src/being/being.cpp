@@ -3246,15 +3246,27 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
 
     int offsetX1;
     int offsetY1;
-    if (mOwner->getCurrentAction() == SIT)
+    switch (mOwner->getCurrentAction())
     {
-        offsetX1 = mInfo->getSitOffsetX();
-        offsetY1 = mInfo->getSitOffsetY();
-    }
-    else
-    {
-        offsetX1 = mInfo->getTargetOffsetX();
-        offsetY1 = mInfo->getTargetOffsetY();
+        case SIT:
+            offsetX1 = mInfo->getSitOffsetX();
+            offsetY1 = mInfo->getSitOffsetY();
+            break;
+
+        case MOVE:
+            offsetX1 = mInfo->getMoveOffsetX();
+            offsetY1 = mInfo->getMoveOffsetY();
+            break;
+
+        case ATTACK:
+        case DEAD:
+        case SPAWN:
+        case HURT:
+        case STAND:
+        default:
+            offsetX1 = mInfo->getTargetOffsetX();
+            offsetY1 = mInfo->getTargetOffsetY();
+            break;
     }
 
     int offsetX = offsetX1;

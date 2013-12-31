@@ -260,6 +260,18 @@ class BeingInfo final
         int getSitOffsetY() const A_WARN_UNUSED
         { return mSitOffsetY; }
 
+        void setMoveOffsetX(const int n)
+        { mMoveOffsetX = n; }
+
+        int getMoveOffsetX() const A_WARN_UNUSED
+        { return mMoveOffsetX; }
+
+        void setMoveOffsetY(const int n)
+        { mMoveOffsetY = n; }
+
+        int getMoveOffsetY() const A_WARN_UNUSED
+        { return mMoveOffsetY; }
+
         void setThinkTime(const int n)
         { mThinkTime = n; }
 
@@ -314,6 +326,8 @@ class BeingInfo final
         int mWalkSpeed;
         int mSitOffsetX;
         int mSitOffsetY;
+        int mMoveOffsetX;
+        int mMoveOffsetY;
         int mThinkTime;
         int mDirectionType;
         int mSitDirectionType;
