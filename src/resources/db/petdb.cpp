@@ -121,6 +121,8 @@ void PETDB::load()
             "directionType", 1));
         currentInfo->setSitDirectionType(XML::getProperty(petNode,
             "sitDirectionType", 1));
+        currentInfo->setDeadDirectionType(XML::getProperty(petNode,
+            "deadDirectionType", 1));
 
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, petNode)

@@ -302,6 +302,12 @@ class BeingInfo final
         int getSitDirectionType() const A_WARN_UNUSED
         { return mSitDirectionType; }
 
+        void setDeadDirectionType(const int n)
+        { mDeadDirectionType = n; }
+
+        int getDeadDirectionType() const A_WARN_UNUSED
+        { return mDeadDirectionType; }
+
         void setColorsList(const std::string &name);
 
         std::string getColor(const int idx) const A_WARN_UNUSED;
@@ -345,6 +351,7 @@ class BeingInfo final
         int mThinkTime;
         int mDirectionType;
         int mSitDirectionType;
+        int mDeadDirectionType;
         bool mStaticMaxHP;
         bool mTargetSelection;
 };

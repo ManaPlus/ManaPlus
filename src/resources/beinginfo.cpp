@@ -73,6 +73,7 @@ BeingInfo::BeingInfo() :
     mThinkTime(50),
     mDirectionType(1),
     mSitDirectionType(1),
+    mDeadDirectionType(1),
     mStaticMaxHP(false),
     mTargetSelection(true)
 {
