@@ -68,6 +68,8 @@ BeingInfo::BeingInfo() :
     mSitOffsetY(0),
     mMoveOffsetX(0),
     mMoveOffsetY(0),
+    mDeadOffsetX(0),
+    mDeadOffsetY(0),
     mThinkTime(50),
     mDirectionType(1),
     mSitDirectionType(1),

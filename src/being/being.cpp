@@ -3258,8 +3258,12 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
             offsetY1 = mInfo->getMoveOffsetY();
             break;
 
-        case ATTACK:
         case DEAD:
+            offsetX1 = mInfo->getDeadOffsetX();
+            offsetY1 = mInfo->getDeadOffsetY();
+            break;
+
+        case ATTACK:
         case SPAWN:
         case HURT:
         case STAND:

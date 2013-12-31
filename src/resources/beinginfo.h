@@ -272,6 +272,18 @@ class BeingInfo final
         int getMoveOffsetY() const A_WARN_UNUSED
         { return mMoveOffsetY; }
 
+        void setDeadOffsetX(const int n)
+        { mDeadOffsetX = n; }
+
+        int getDeadOffsetX() const A_WARN_UNUSED
+        { return mDeadOffsetX; }
+
+        void setDeadOffsetY(const int n)
+        { mDeadOffsetY = n; }
+
+        int getDeadOffsetY() const A_WARN_UNUSED
+        { return mDeadOffsetY; }
+
         void setThinkTime(const int n)
         { mThinkTime = n; }
 
@@ -328,6 +340,8 @@ class BeingInfo final
         int mSitOffsetY;
         int mMoveOffsetX;
         int mMoveOffsetY;
+        int mDeadOffsetX;
+        int mDeadOffsetY;
         int mThinkTime;
         int mDirectionType;
         int mSitDirectionType;

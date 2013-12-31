@@ -109,6 +109,10 @@ void PETDB::load()
             "moveOffsetX", 0));
         currentInfo->setMoveOffsetY(XML::getProperty(petNode,
             "moveOffsetY", 1));
+        currentInfo->setDeadOffsetX(XML::getProperty(petNode,
+            "deadOffsetX", 0));
+        currentInfo->setDeadOffsetY(XML::getProperty(petNode,
+            "deadOffsetY", 1));
 
         currentInfo->setThinkTime(XML::getProperty(petNode,
             "thinkTime", 500) / 10);
