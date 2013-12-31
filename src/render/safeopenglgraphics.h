@@ -59,6 +59,10 @@ class SafeOpenGLGraphics final : public Graphics
         void drawImageRect(int x, int y, int w, int h,
                            const ImageRect &imgRect);
 
+        bool drawNet(const int x1, const int y1,
+                     const int x2, const int y2,
+                     const int width, const int height) override final;
+
     protected:
         void setTexturingAndBlending(const bool enable);
 

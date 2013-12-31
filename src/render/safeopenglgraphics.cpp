@@ -566,6 +566,30 @@ void SafeOpenGLGraphics::drawPoint(int x, int y)
     glEnd();
 }
 
+bool SafeOpenGLGraphics::drawNet(const int x1, const int y1,
+                                 const int x2, const int y2,
+                                 const int width, const int height)
+{
+    setTexturingAndBlending(false);
+    restoreColor();
+
+    glBegin(GL_LINES);
+    for (int y = y1; y < y2; y += height)
+    {
+        glVertex2f(static_cast<float>(x1) + 0.5F, static_cast<float>(y) + 0.5F);
+        glVertex2f(static_cast<float>(x2) + 0.5F, static_cast<float>(y) + 0.5F);
+    }
+
+    for (int x = x1; x < x2; x += width)
+    {
+        glVertex2f(static_cast<float>(x) + 0.5F, static_cast<float>(y1) + 0.5F);
+        glVertex2f(static_cast<float>(x) + 0.5F, static_cast<float>(y2) + 0.5F);
+    }
+    glEnd();
+
+    return true;
+}
+
 void SafeOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
     setTexturingAndBlending(false);
@@ -573,10 +597,6 @@ void SafeOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 
     glBegin(GL_LINES);
     glVertex2f(static_cast<float>(x1) + 0.5F, static_cast<float>(y1) + 0.5F);
-    glVertex2f(static_cast<float>(x2) + 0.5F, static_cast<float>(y2) + 0.5F);
-    glEnd();
-
-    glBegin(GL_POINTS);
     glVertex2f(static_cast<float>(x2) + 0.5F, static_cast<float>(y2) + 0.5F);
     glEnd();
 }
