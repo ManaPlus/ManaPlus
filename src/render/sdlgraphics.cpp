@@ -104,7 +104,7 @@ bool SDLGraphics::drawRescaledImage(const Image *const image,
 bool SDLGraphics::drawImage2(const Image *const image,
                              int dstX, int dstY)
 {
-    drawImageInline(image, dstX, dstY);
+    return drawImageInline(image, dstX, dstY);
 }
 
 bool SDLGraphics::drawImageInline(const Image *const image,

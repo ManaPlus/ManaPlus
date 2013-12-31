@@ -216,7 +216,7 @@ void SDL2SoftwareGraphics::drawImageCached(const Image *const image,
     SDL_Surface *const src = image->mSDLSurface;
 
     int srcX = bounds.x;
-    const int srcY = bounds.y;
+    int srcY = bounds.y;
     x += top.xOffset;
     y += top.yOffset;
 
@@ -667,7 +667,7 @@ void SDL2SoftwareGraphics::calcPattern(ImageCollection* const vertCol,
         vert = vertCol->currentVert;
     }
 
-    calcImagePattern(vert, image, x, y, w, h);
+    calcPatternInline(vert, image, x, y, w, h);
 }
 
 void SDL2SoftwareGraphics::calcTileVertexes(ImageVertexes *const vert,

@@ -238,7 +238,7 @@ void SDLGraphics::drawPattern(const Image *const image,
                               const int x, const int y,
                               const int w, const int h)
 {
-    drawParrernInline(image, x, y, w, h);
+    drawPatternInline(image, x, y, w, h);
 }
 
 void SDLGraphics::drawPatternInline(const Image *const image,
