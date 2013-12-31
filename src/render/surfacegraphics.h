@@ -197,9 +197,9 @@ class SurfaceGraphics final : public Graphics
          * Draws a rectangle using images. 4 corner images, 4 side images and 1
          * image for the inside.
          */
-        void drawImageRect(const int x, const int y,
-                           const int w, const int h,
-                           const ImageRect &imgRect)
+        void drawImageRect(const int x A_UNUSED, const int y A_UNUSED,
+                           const int w A_UNUSED, const int h A_UNUSED,
+                           const ImageRect &imgRect A_UNUSED)
         { }
 
     protected:
