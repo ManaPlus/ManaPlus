@@ -126,6 +126,7 @@ void Files::extractZip(const std::string &restrict zipName,
 int Files::renameFile(const std::string &restrict srcName,
                       const std::string &restrict dstName)
 {
+#if defined __native_client__
     FILE *srcFile = fopen(srcName.c_str(), "rb");
     if (srcFile == nullptr)
         return -1;
@@ -158,4 +159,7 @@ int Files::renameFile(const std::string &restrict srcName,
         return 0;
 
     return -1;
+#else
+    return ::rename(srcName.c_str(), dstName.c_str());
+#endif
 }
