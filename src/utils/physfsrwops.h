@@ -19,7 +19,7 @@
  *
  *  This file was written by Ryan C. Gordon. (icculus@icculus.org).
  *
- *  Copyright (C) 2012-2013  The ManaPlus Developers
+ *  Copyright (C) 2012-2014  The ManaPlus Developers
  */
 
 #ifndef UTILS_PHYSFSRWOPS_H

@@ -8,7 +8,7 @@
  *
  * Copyright (c) 2004, 2005, 2006, 2007 Olof Naessén and Per Larsson
  * Copyright (C) 2007-2010  The Mana World Development Team
- * Copyright (C) 2011-2013  The ManaPlus Developers
+ * Copyright (C) 2011-2014  The ManaPlus Developers
  *
  *                                                         Js_./
  * Per Larsson a.k.a finalman                          _RqZ{a<^_aa

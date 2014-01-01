@@ -1,7 +1,7 @@
 /*
  *  Extended support for activating emotes
  *  Copyright (C) 2009  Aethyra Development Team
- *  Copyright (C) 2011-2013  The ManaPlus Developers
+ *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *

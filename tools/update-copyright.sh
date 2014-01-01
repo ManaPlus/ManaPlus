@@ -1,7 +1,7 @@
 #!/bin/bash
 # Copyright (C) 2001-2010 Wormux Team.
 # Copyright (C) 2010 The ManaWorld Development Team.
-# Copyright (C) 2012-2013 The ManaPlus Developers.
+# Copyright (C) 2012-2014 The ManaPlus Developers.
 
 new_year="$1"
 [[ -z $new_year ]] && echo "Missing parameter: year" && exit 1

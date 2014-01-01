@@ -3,7 +3,7 @@
  *  Copyright (C) 2008  The Legend of Mazzeroth Development Team
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  Andrei Karas
- *  Copyright (C) 2011-2013  The ManaPlus developers
+ *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
