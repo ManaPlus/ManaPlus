@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Author : 4144
-(C) ManaPlus Developers 2013. -->
+(C) ManaPlus Developers 2014 -->
 <messages>
     <its:rules xmlns:its="http://www.w3.org/2005/11/its" version="1.0">
         <its:translateRule selector="//message" translate="yes"/>
