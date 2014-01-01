@@ -366,6 +366,8 @@ private:
 
     void storeSafeParameters() const;
 
+    void backupConfig() const;
+
     void gameClear();
 
     void testsClear();

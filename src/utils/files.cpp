@@ -163,3 +163,36 @@ int Files::renameFile(const std::string &restrict srcName,
     return ::rename(srcName.c_str(), dstName.c_str());
 #endif
 }
+
+int Files::copyFile(const std::string &restrict srcName,
+                    const std::string &restrict dstName)
+{
+    FILE *srcFile = fopen(srcName.c_str(), "rb");
+    if (srcFile == nullptr)
+        return -1;
+    FILE *dstFile = fopen(dstName.c_str(), "w+b");
+    if (dstFile == nullptr)
+    {
+        fclose(srcFile);
+        return -1;
+    }
+
+    const int chunkSize = 500000;
+    char *buf = new char[chunkSize];
+    size_t sz = 0;
+    while ((sz = fread(buf, 1, chunkSize, srcFile)))
+    {
+        if (fwrite(buf, 1, sz, dstFile) != sz)
+        {
+            delete [] buf;
+            fclose(srcFile);
+            fclose(dstFile);
+            return -1;
+        }
+    }
+
+    delete [] buf;
+    fclose(srcFile);
+    fclose(dstFile);
+    return 0;
+}

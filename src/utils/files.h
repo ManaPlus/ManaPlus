@@ -49,6 +49,9 @@ namespace Files
 
     int renameFile(const std::string &restrict pFrom,
                    const std::string &restrict pTo);
+
+    int copyFile(const std::string &restrict pFrom,
+                 const std::string &restrict pTo);
 }  // namespace Files
 
 #endif  // UTILS_FILES_H

@@ -110,6 +110,7 @@
 #include "utils/files.h"
 #include "utils/fuzzer.h"
 #include "utils/gettext.h"
+#include "utils/files.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/physfstools.h"
@@ -297,6 +298,7 @@ void Client::gameInit()
 #ifdef USE_FUZZER
     Fuzzer::init();
 #endif
+    backupConfig();
     initConfiguration();
     paths.setDefaultValues(getPathsDefaults());
     initFeatures();
@@ -2140,6 +2142,22 @@ void Client::initConfiguration() const
         config.setDefaultValues(getConfigDefaults());
         logger->log("configPath: " + configPath);
     }
+}
+
+void Client::backupConfig() const
+{
+    const std::string confName = mConfigDir + "/config.xml.bak";
+    const int maxFileIndex = 5;
+    ::remove((confName + toString(maxFileIndex)).c_str());
+    for (int f = maxFileIndex; f > 1; f --)
+    {
+        const std::string fileName1 = confName + toString(f - 1);
+        const std::string fileName2 = confName + toString(f);
+        Files::renameFile(fileName1, fileName2);
+    }
+    const std::string fileName3 = mConfigDir + "/config.xml";
+    const std::string fileName4 = confName + toString(1);
+    Files::copyFile(fileName3, fileName4);
 }
 
 /**
