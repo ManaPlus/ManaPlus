@@ -70,6 +70,7 @@ class ItemPopup final : public Popup
         ItemType mItemType;
         Icon *mIcon;
         std::string mLastName;
+        int mLastId;
         unsigned char mLastColor;
 
         void setLabelColor(Label *label, const ItemType type) const;

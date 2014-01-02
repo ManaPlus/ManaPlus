@@ -53,6 +53,7 @@ ItemPopup::ItemPopup() :
     mItemType(ITEM_UNUSABLE),
     mIcon(new Icon(this, nullptr)),
     mLastName(),
+    mLastId(0),
     mLastColor(1)
 {
     // Item Name
@@ -112,6 +113,7 @@ void ItemPopup::setItem(const Item *const item, const bool showImage)
     {
         mLastName = ii.getName();
         mLastColor = item->getColor();
+        mLastId = item->getId();
         if (serverVersion > 0)
         {
             mItemName->setCaption(strprintf("%s (+%d), %d", ii.getName(
@@ -132,8 +134,11 @@ void ItemPopup::setItem(const Item *const item, const bool showImage)
 void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
                         const bool showImage, int id)
 {
-    if (!mIcon || (item.getName() == mLastName && color == mLastColor))
+    if (!mIcon || (item.getName() == mLastName && color == mLastColor
+        && id == mLastId))
+    {
         return;
+    }
 
     if (id == -1)
         id = item.getId();
@@ -167,6 +172,7 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
 
     mLastName = item.getName();
     mLastColor = color;
+    mLastId = id;
 
     if (serverVersion > 0)
     {
@@ -267,4 +273,5 @@ void ItemPopup::mouseMoved(gcn::MouseEvent &event)
     setVisible(false);
     mLastName.clear();
     mLastColor = 1;
+    mLastId = 0;
 }
