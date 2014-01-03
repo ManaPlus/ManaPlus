@@ -3312,6 +3312,14 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
     }
     dstX += offsetX;
     dstY += offsetY;
+    if (mMap)
+    {
+        if (!mMap->getWalk(dstX, dstY, getWalkMask()))
+        {
+            dstX = mOwner->getTileX();
+            dstY = mOwner->getTileY();
+        }
+    }
 }
 
 void Being::playSfx(const SoundInfo &sound, Being *const being,
