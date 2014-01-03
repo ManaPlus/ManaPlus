@@ -195,6 +195,7 @@ void QuitDialog::action(const gcn::ActionEvent &event)
             {
                 Net::getCharServerHandler()->switchCharacter();
                 Game::closeDialogs();
+                serverConfig.write();
             }
         }
     }

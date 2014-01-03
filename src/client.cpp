@@ -1705,6 +1705,7 @@ int Client::gameExec()
                     Net::getGameHandler()->disconnect();
                     Net::getGameHandler()->clear();
                     mServerName.clear();
+                    serverConfig.write();
                     serverConfig.unload();
 
                     mState = STATE_CHOOSE_SERVER;

@@ -801,6 +801,9 @@ void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
 
 void Configuration::write()
 {
+    if (mConfigPath.empty())
+        return;
+
     // Do not attempt to write to file that cannot be opened for writing
     FILE *const testFile = fopen(mConfigPath.c_str(), "w");
     if (!testFile)
