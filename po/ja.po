@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2013-12-27 18:01+0300\n"
-"PO-Revision-Date: 2013-12-21 08:14+0000\n"
+"POT-Creation-Date: 2014-01-04 13:58+0300\n"
+"PO-Revision-Date: 2013-12-28 08:13+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/"
 "language/ja/)\n"
@@ -53,12 +53,12 @@ msgid "miss"
 msgstr "ミス"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1905 src/gui/windows/whoisonline.cpp:863
+#: src/being/being.cpp:1923 src/gui/windows/whoisonline.cpp:863
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1910 src/gui/windows/whoisonline.cpp:868
+#: src/being/being.cpp:1928 src/gui/windows/whoisonline.cpp:868
 msgid "I"
 msgstr "I"
 
@@ -530,31 +530,31 @@ msgstr "吹出し"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1117 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:58
+#: src/client.cpp:1119 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:58
 msgid "Setup"
 msgstr "設定"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1121 src/gui/widgets/tabs/setup_perfomance.cpp:50
+#: src/client.cpp:1123 src/gui/widgets/tabs/setup_perfomance.cpp:50
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1124 src/gui/widgets/tabs/setup_video.cpp:221
+#: src/client.cpp:1126 src/gui/widgets/tabs/setup_video.cpp:221
 msgid "Video"
 msgstr "ビデオ"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1127 src/gui/widgets/tabs/setup_theme.cpp:279
+#: src/client.cpp:1129 src/gui/widgets/tabs/setup_theme.cpp:279
 msgid "Theme"
 msgstr "テーマ"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:1130 src/gui/windowmenu.cpp:72
+#: src/client.cpp:1132 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:50
 msgid "Help"
 msgstr "ヘルプ"
@@ -567,7 +567,7 @@ msgstr "ヘルプ"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1134 src/gui/popups/popupmenu.cpp:618
+#: src/client.cpp:1136 src/gui/popups/popupmenu.cpp:618
 #: src/gui/windows/didyouknowwindow.cpp:78
 #: src/gui/windows/inventorywindow.cpp:258 src/gui/windows/npcdialog.cpp:71
 #: src/gui/windows/npcdialog.cpp:109 src/gui/windows/questswindow.cpp:134
@@ -576,32 +576,32 @@ msgid "Close"
 msgstr "閉じる"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1253
+#: src/client.cpp:1255
 msgid "Connecting to server"
 msgstr "サーバーに接続しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1297
+#: src/client.cpp:1299
 msgid "Logging in"
 msgstr "ログインしています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1339
+#: src/client.cpp:1341
 msgid "Entering game world"
 msgstr "ゲームの世界に移動しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1462
+#: src/client.cpp:1464
 msgid "Requesting characters"
 msgstr "キャラクターを呼び出しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1502
+#: src/client.cpp:1504
 msgid "Connecting to the game server"
 msgstr "ゲームサーバーに接続しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1515
+#: src/client.cpp:1517
 msgid "Changing game servers"
 msgstr "ゲームサーバーを変更しています"
 
@@ -616,7 +616,7 @@ msgstr "ゲームサーバーを変更しています"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1576 src/client.cpp:1587 src/client.cpp:1768
+#: src/client.cpp:1578 src/client.cpp:1589 src/client.cpp:1771
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
 #: src/gui/windows/charcreatedialog.cpp:358
@@ -629,65 +629,65 @@ msgid "Error"
 msgstr "エラー"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1599
+#: src/client.cpp:1601
 msgid "Requesting registration details"
 msgstr "登録内容を呼び出しています"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1640
+#: src/client.cpp:1642
 msgid "Password Change"
 msgstr "パスワード変更"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1642
+#: src/client.cpp:1644
 msgid "Password changed successfully!"
 msgstr "パスワードを変更しました"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1664
+#: src/client.cpp:1666
 msgid "Email Change"
 msgstr "メールアドレス変更"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1666
+#: src/client.cpp:1668
 msgid "Email changed successfully!"
 msgstr "メールアドレスを変更しました"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1689
+#: src/client.cpp:1691
 msgid "Unregister Successful"
 msgstr "登録を解除しました"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1691
+#: src/client.cpp:1693
 msgid "Farewell, come back any time..."
 msgstr "さようなら　また会いましょう"
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1965 src/client.cpp:1980 src/client.cpp:2025
-#: src/client.cpp:2041 src/client.cpp:2467 src/client.cpp:2475
+#: src/client.cpp:1968 src/client.cpp:1983 src/client.cpp:2028
+#: src/client.cpp:2044 src/client.cpp:2486 src/client.cpp:2494
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%sは存在しない為、作成できません"
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2181
+#: src/client.cpp:2200
 #, c-format
 msgid "Invalid update host: %s."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2222 src/client.cpp:2229
+#: src/client.cpp:2241 src/client.cpp:2248
 msgid "Error creating updates directory!"
 msgstr "更新フォルダの作成エラー"
 
-#: src/client.cpp:2251 src/client.cpp:2264
+#: src/client.cpp:2270 src/client.cpp:2283
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "エラー: %s は存在しない為、作成できません"
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2925
+#: src/client.cpp:2944
 msgid "Do you want to open support page?"
 msgstr ""
 
@@ -700,36 +700,36 @@ msgstr "不明なコマンドです"
 #. TRANSLATORS: party invite message
 #. TRANSLATORS: unignore command
 #. TRANSLATORS: erase command
-#: src/commands.cpp:151 src/commands.cpp:444 src/commands.cpp:531
-#: src/commands.cpp:585
+#: src/commands.cpp:152 src/commands.cpp:445 src/commands.cpp:532
+#: src/commands.cpp:586
 msgid "Please specify a name."
 msgstr "名前を入力してください"
 
 #. TRANSLATORS: change relation
-#: src/commands.cpp:158
+#: src/commands.cpp:159
 #, c-format
 msgid "Player already %s!"
 msgstr "プレイヤーは既に%s"
 
 #. TRANSLATORS: change relation
-#: src/commands.cpp:170
+#: src/commands.cpp:171
 #, c-format
 msgid "Player successfully %s!"
 msgstr "プレイヤーの%sに成功しました"
 
 #. TRANSLATORS: change relation
-#: src/commands.cpp:176
+#: src/commands.cpp:177
 #, c-format
 msgid "Player could not be %s!"
 msgstr "プレイヤーを%sできなかった"
 
 #. TRANSLATORS: whisper send
-#: src/commands.cpp:348
+#: src/commands.cpp:349
 msgid "Cannot send empty whispers!"
 msgstr "空のささやきを送信することはできません"
 
 #. TRANSLATORS: new whisper query
-#: src/commands.cpp:366
+#: src/commands.cpp:367
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
@@ -740,167 +740,167 @@ msgstr ""
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
-#: src/commands.cpp:385 src/commands.cpp:396
+#: src/commands.cpp:386 src/commands.cpp:397
 msgid "Cache cleaned"
 msgstr ""
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
-#: src/commands.cpp:408 src/net/ea/gui/partytab.cpp:155
+#: src/commands.cpp:409 src/net/ea/gui/partytab.cpp:155
 msgid "Party name is missing."
 msgstr "パーティ名がありません"
 
 #. TRANSLATORS: create guild message
-#: src/commands.cpp:424
+#: src/commands.cpp:425
 msgid "Guild name is missing."
 msgstr "ギルド名がありません"
 
-#: src/commands.cpp:461
+#: src/commands.cpp:462
 msgid "Return toggles chat."
 msgstr "改行キーでチャット入力ができます"
 
-#: src/commands.cpp:461
+#: src/commands.cpp:462
 msgid "Message closes chat."
 msgstr "チャットを閉じます"
 
 #. TRANSLATORS: message from toggle chat command
-#: src/commands.cpp:472
+#: src/commands.cpp:473
 msgid "Return now toggles chat."
 msgstr "改行キーでチャット入力ができます"
 
 #. TRANSLATORS: message from toggle chat command
-#: src/commands.cpp:481
+#: src/commands.cpp:482
 msgid "Message now closes chat."
 msgstr "チャットを閉じます"
 
 #. TRANSLATORS: adding friend command
-#: src/commands.cpp:509
+#: src/commands.cpp:510
 msgid "friend"
 msgstr "友達"
 
 #. TRANSLATORS: disregard command
-#: src/commands.cpp:515
+#: src/commands.cpp:516
 msgid "disregarded"
 msgstr "無視"
 
 #. TRANSLATORS: neutral command
-#: src/commands.cpp:521
+#: src/commands.cpp:522
 msgid "neutral"
 msgstr "中性"
 
 #. TRANSLATORS: unignore command
-#: src/commands.cpp:546
+#: src/commands.cpp:547
 msgid "Player wasn't ignored!"
 msgstr "プレイヤーを完全無視できませんでした"
 
 #. TRANSLATORS: unignore command
-#: src/commands.cpp:556
+#: src/commands.cpp:557
 msgid "Player no longer ignored!"
 msgstr "プレイヤーを完全無視解除しました"
 
 #. TRANSLATORS: unignore command
-#: src/commands.cpp:561
+#: src/commands.cpp:562
 msgid "Player could not be unignored!"
 msgstr "プレイヤーを完全無視解除できませんでした"
 
 #. TRANSLATORS: blacklist command
-#: src/commands.cpp:569
+#: src/commands.cpp:570
 msgid "blacklisted"
 msgstr "ブラックリスト化されています"
 
 #. TRANSLATORS: enemy command
-#: src/commands.cpp:575
+#: src/commands.cpp:576
 msgid "enemy"
 msgstr "敵"
 
 #. TRANSLATORS: erase command
-#: src/commands.cpp:595
+#: src/commands.cpp:596
 msgid "Player already erased!"
 msgstr "プレイヤーは削除されています"
 
 #. TRANSLATORS: erase command
-#: src/commands.cpp:609
+#: src/commands.cpp:610
 msgid "Player successfully erased!"
 msgstr "プレイヤーを削除しました"
 
 #. TRANSLATORS: erase command
-#: src/commands.cpp:614
+#: src/commands.cpp:615
 msgid "Player could not be erased!"
 msgstr "プレイヤーを削除できませんでした"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:899 src/commands.cpp:955
+#: src/commands.cpp:905 src/commands.cpp:961
 #, c-format
 msgid "Client uptime: %s"
 msgstr "クライアントの稼働時間: %s"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:910
+#: src/commands.cpp:916
 #, c-format
 msgid "%d week"
 msgstr "%d週"
 
-#: src/commands.cpp:910
+#: src/commands.cpp:916
 #, c-format
 msgid "%d weeks"
 msgstr ""
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:921
+#: src/commands.cpp:927
 #, c-format
 msgid "%d day"
 msgstr "%d日"
 
-#: src/commands.cpp:921
+#: src/commands.cpp:927
 #, c-format
 msgid "%d days"
 msgstr ""
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:931
+#: src/commands.cpp:937
 #, c-format
 msgid "%d hour"
 msgstr "%d時"
 
-#: src/commands.cpp:931
+#: src/commands.cpp:937
 #, c-format
 msgid "%d hours"
 msgstr ""
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:941
+#: src/commands.cpp:947
 #, c-format
 msgid "%d minute"
 msgstr "%d分"
 
-#: src/commands.cpp:941
+#: src/commands.cpp:947
 #, c-format
 msgid "%d minutes"
 msgstr ""
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:951
+#: src/commands.cpp:957
 #, c-format
 msgid "%d second"
 msgstr "%d秒"
 
-#: src/commands.cpp:951
+#: src/commands.cpp:957
 #, c-format
 msgid "%d seconds"
 msgstr ""
 
 #. TRANSLATORS: dump environment command
-#: src/commands.cpp:1109
+#: src/commands.cpp:1115
 msgid "Environment variables dumped"
 msgstr ""
 
 #. TRANSLATORS: dump command
-#: src/commands.cpp:1373 src/commands.cpp:1382
+#: src/commands.cpp:1379 src/commands.cpp:1388
 msgid "Resource images:"
 msgstr "リソースイメージ:"
 
 #. TRANSLATORS: dump command
-#: src/commands.cpp:1376 src/commands.cpp:1385
+#: src/commands.cpp:1382 src/commands.cpp:1391
 msgid "Resource orphaned images:"
 msgstr "リソース孤児イメージ:"
 
@@ -982,7 +982,7 @@ msgid "Comment: %s"
 msgstr "コメント: %s"
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:190
+#: src/gui/popups/itempopup.cpp:196
 #, c-format
 msgid "Weight: %s"
 msgstr "重力: %s"
@@ -3684,9 +3684,8 @@ msgstr "アドバートプロトコルを有効にする"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:247
-#, fuzzy
 msgid "Enabled pets support"
-msgstr "ボットサポート"
+msgstr ""
 
 #: src/gui/widgets/tabs/setup_other.cpp:250
 msgid "Enable weight notifications"
@@ -5309,7 +5308,7 @@ msgid "Whispering to %s: %s"
 msgstr "%sにささやき中:%s"
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1582
+#: src/gui/windows/chatwindow.cpp:1590
 #, c-format
 msgid "%s's pet"
 msgstr ""
@@ -7969,6 +7968,5 @@ msgstr "不明なアイテム"
 
 #. TRANSLATORS: unknown info name
 #: src/resources/db/petdb.cpp:80
-#, fuzzy
 msgid "pet"
-msgstr "ネット"
+msgstr ""
