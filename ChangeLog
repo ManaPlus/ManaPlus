@@ -1,3 +1,15 @@
+2014-01-04 New release 1.4.1.4
+fix: draw background for very small objects.
+fix: sound event selection.
+fix: split utf8 strings in npc dialog menu.
+fix: being popups height.
+fix: over head text draw order.
+fix: configs saving while switching characters.
+add: extend progress bar theming.
+add: client side pets support.
+add: improve performance in renderers.
+add: basic config auto backups.
+
 2013-12-22 New release 1.3.12.22
 fix: bot checker window in some themes.
 fix: tabbed area resizing.
