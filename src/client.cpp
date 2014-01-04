@@ -356,6 +356,10 @@ void Client::gameInit()
     SDL_EventState(SDL_SYSWMEVENT, SDL_IGNORE);
     SDL_EventState(SDL_USEREVENT, SDL_IGNORE);
 
+#ifdef WIN32
+    setIcon();
+#endif
+
     initGraphics();
     extractDataDir();
     mountDataDir();
@@ -586,7 +590,9 @@ void Client::initTitle()
     }
 
     SDL::SetWindowTitle(mainGraphics->getWindow(), mCaption.c_str());
+#ifndef WIN32
     setIcon();
+#endif
 }
 
 #ifdef ANDROID
@@ -2965,6 +2971,8 @@ void Client::setIcon()
     // Attempt to load icon from .ico file
     HICON icon = (HICON) LoadImage(nullptr, iconFile.c_str(),
         IMAGE_ICON, 64, 64, LR_LOADFROMFILE);
+    if (!icon)
+        logger->log("icon load error");
     // If it's failing, we load the default resource file.
     if (!icon)
         icon = LoadIcon(GetModuleHandle(nullptr), "A");
