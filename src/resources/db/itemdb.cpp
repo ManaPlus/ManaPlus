@@ -237,6 +237,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
             continue;
 
         const int id = XML::getProperty(node, "id", 0);
+        ItemInfo *itemInfo = nullptr;
 
         if (id == 0)
         {
@@ -247,7 +248,10 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         else if (mItemInfos.find(id) != mItemInfos.end())
         {
             logger->log("ItemDB: Redefinition of item ID %d", id);
+            itemInfo = mItemInfos[id];
         }
+        if (!itemInfo)
+            itemInfo = new ItemInfo;
 
         const std::string typeStr = XML::getProperty(node, "type", "other");
         const int weight = XML::getProperty(node, "weight", 0);
@@ -310,7 +314,6 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         else
             display.floor = image;
 
-        ItemInfo *const itemInfo = new ItemInfo;
         itemInfo->setId(id);
         // TRANSLATORS: item info name
         itemInfo->setName(name.empty() ? _("unnamed") : name);
@@ -485,18 +488,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         if (!name.empty())
         {
             temp = normalize(name);
-
-            const NamedItemInfos::const_iterator
-                itr = mNamedItemInfos.find(temp);
-            if (itr == mNamedItemInfos.end())
-            {
-                mNamedItemInfos[temp] = itemInfo;
-            }
-            else
-            {
-                logger->log("ItemDB: Duplicate name of item found item %d",
-                    id);
-            }
+            mNamedItemInfos[temp] = itemInfo;
         }
 
         if (!attackAction.empty())
