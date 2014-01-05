@@ -210,6 +210,7 @@ void ItemDB::load()
     mUnknown->setSprite(errFile, GENDER_OTHER, 0);
     mUnknown->addTag(mTags["All"]);
     loadXmlFile(paths.getStringValue("itemsFile"), tagNum);
+    loadXmlFile(paths.getStringValue("itemsPatchFile"), tagNum);
 }
 
 void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)

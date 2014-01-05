@@ -48,6 +48,7 @@ void NPCDB::load()
     logger->log1("Initializing NPC database...");
 
     loadXmlFile(paths.getStringValue("npcsFile"));
+    loadXmlFile(paths.getStringValue("npcsPatchFile"));
     mLoaded = true;
 }
 

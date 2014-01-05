@@ -489,10 +489,13 @@ DefaultsData* getPathsDefaults()
     AddDEF("charCreationFile", "charcreation.xml");
     AddDEF("soundsFile", "sounds.xml");
     AddDEF("itemsFile", "items.xml");
+    AddDEF("itemsPatchFile", "items_patch.xml");
     AddDEF("avatarsFile", "avatars.xml");
     AddDEF("npcsFile", "npcs.xml");
+    AddDEF("npcsPatchFile", "npcs_patch.xml");
     AddDEF("petsFile", "pets.xml");
     AddDEF("monstersFile", "monsters.xml");
+    AddDEF("monstersPatchFile", "monsters_patch.xml");
     AddDEF("mapsRemapFile", "maps/remap.xml");
     AddDEF("mapsFile", "maps.xml");
     AddDEF("deadMessagesFile", "deadmessages.xml");

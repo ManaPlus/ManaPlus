@@ -49,6 +49,7 @@ void MonsterDB::load()
 
     logger->log1("Initializing monster database...");
     loadXmlFile(paths.getStringValue("monstersFile"));
+    loadXmlFile(paths.getStringValue("monstersPatchFile"));
     mLoaded = true;
 }
 
