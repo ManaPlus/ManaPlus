@@ -12,7 +12,8 @@ fonts_DATA =				\
 	liberationsansmono.ttf		\
 	liberationsansmono-bold.ttf	\
 	mplus-1p-bold.ttf	\
-	mplus-1p-regular.ttf
+	mplus-1p-regular.ttf \
+	wqy-microhei.ttf
 
 EXTRA_DIST =				\
 	$(fonts_DATA) \

@@ -11,6 +11,7 @@ SET (FILES
     liberationsansmono-bold.ttf
     mplus-1p-bold.ttf
     mplus-1p-regular.ttf
+    wqy-microhei.ttf
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/fonts)
