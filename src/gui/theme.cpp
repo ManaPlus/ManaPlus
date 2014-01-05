@@ -1310,6 +1310,8 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
             readValue(secureFont);
         else if (xmlNameEqual(infoNode, "japanFont"))
             readValue(japanFont);
+        else if (xmlNameEqual(infoNode, "chinaFont"))
+            readValue(chinaFont);
         else if (xmlNameEqual(infoNode, "fontSize"))
             readIntValue(fontSize);
         else if (xmlNameEqual(infoNode, "npcfontSize"))

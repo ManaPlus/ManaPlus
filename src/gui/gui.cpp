@@ -137,6 +137,8 @@ void Gui::postInit(Graphics *const graphics)
     const StringVect langs = getLang();
     const bool isJapan = (!langs.empty() && langs[0].size() > 3
         && langs[0].substr(0, 3) == "ja_");
+    const bool isChinese = (!langs.empty() && langs[0].size() > 3
+        && langs[0].substr(0, 3) == "zh_");
 
     // Set global font
     const int fontSize = config.getIntValue("fontSize");
@@ -146,6 +148,12 @@ void Gui::postInit(Graphics *const graphics)
         fontFile = config.getValue("japanFont", "");
         if (fontFile.empty())
             fontFile = branding.getStringValue("japanFont");
+    }
+    else if(isChinese)
+    {
+        fontFile = config.getValue("chinaFont", "");
+        if (fontFile.empty())
+            fontFile = branding.getStringValue("chinaFont");
     }
 
     if (fontFile.empty())
@@ -169,6 +177,12 @@ void Gui::postInit(Graphics *const graphics)
         fontFile = config.getValue("japanFont", "");
         if (fontFile.empty())
             fontFile = branding.getStringValue("japanFont");
+    }
+    else if(isChinese)
+    {
+        fontFile = config.getValue("chinaFont", "");
+        if (fontFile.empty())
+            fontFile = branding.getStringValue("chinaFont");
     }
 
 

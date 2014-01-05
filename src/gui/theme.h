@@ -54,6 +54,7 @@ struct ThemeInfo final
         helpFont(),
         secureFont(),
         japanFont(),
+        chinaFont(),
         fontSize(0),
         npcfontSize(0),
         guiAlpha(0.0F)
@@ -67,6 +68,7 @@ struct ThemeInfo final
     std::string helpFont;
     std::string secureFont;
     std::string japanFont;
+    std::string chinaFont;
     int fontSize;
     int npcfontSize;
     float guiAlpha;

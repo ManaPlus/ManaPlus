@@ -188,6 +188,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("helpFont", "fonts/dejavusansmono.ttf");
     AddDEF("secureFont", "fonts/dejavusansmono.ttf");
     AddDEF("japanFont", "fonts/mplus-1p-regular.ttf");
+    AddDEF("chinaFont", "fonts/wqy-microhei.ttf");
     AddDEF("npcFont", "fonts/dejavusans.ttf");
     AddDEF("showBackground", true);
     AddDEF("enableTradeTab", true);
@@ -430,6 +431,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF("secureFont", "fonts/dejavusansmono.ttf");
     AddDEF("npcFont", "fonts/dejavusans.ttf");
     AddDEF("japanFont", "fonts/mplus-1p-regular.ttf");
+    AddDEF("chinaFont", "fonts/wqy-microhei.ttf");
 
     AddDEF("guiPath", "graphics/gui/");
     AddDEF("guiThemePath", "themes/");
