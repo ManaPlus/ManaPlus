@@ -484,7 +484,6 @@ DefaultsData* getPathsDefaults()
     AddDEF("equipmentWindowFile", "equipmentwindow.xml");
     AddDEF("emotesFile", "emotes.xml");
     AddDEF("hairColorFile", "hair.xml");
-    AddDEF("hairColorFile2", "colors.xml");
     AddDEF("itemColorsFile", "itemcolors.xml");
     AddDEF("charCreationFile", "charcreation.xml");
     AddDEF("soundsFile", "sounds.xml");

@@ -52,6 +52,7 @@ void ColorDB::load()
         mHairColorsSize = static_cast<int>((*it).second.size());
     else
         mHairColorsSize = 0;
+    mLoaded = true;
 }
 
 void ColorDB::loadHair()
@@ -69,25 +70,11 @@ void ColorDB::loadHair()
 
     if (!root || !xmlNameEqual(root, "colors"))
     {
-        logger->log("Trying to fall back on "
-            + paths.getStringValue("hairColorFile2"));
-
-        hairXml = false;
-
-        delete doc;
-        doc = new XML::Document(paths.getStringValue("hairColorFile2"));
-        root = doc->rootNode();
-
-        if (!root || !xmlNameEqual(root, "colors"))
-        {
-            logger->log1("ColorDB: Failed to find any color files.");
+        logger->log("ColorDB: Failed to find hair colors file.");
+        if (colors.find(0) == colors.end())
             colors[0] = ItemColor(0, "", "");
-            mLoaded = true;
-
-            delete doc;
-
-            return;
-        }
+        delete doc;
+        return;
     }
 
     for_each_xml_child_node(node, root)
@@ -105,9 +92,7 @@ void ColorDB::loadHair()
     }
 
     delete doc;
-
     mColorLists["hair"] = colors;
-    mLoaded = true;
 }
 
 void ColorDB::loadColorLists()
