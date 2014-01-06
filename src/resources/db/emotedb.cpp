@@ -53,6 +53,7 @@ void EmoteDB::load()
 
     mLastEmote = 0;
     loadXmlFile(paths.getStringValue("emotesFile"));
+    loadXmlFile(paths.getStringValue("emotesPatchFile"));
     loadSpecialXmlFile("graphics/sprites/manaplus_emotes.xml");
 
     mLoaded = true;

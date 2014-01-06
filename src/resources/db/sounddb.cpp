@@ -38,6 +38,7 @@ void SoundDB::load()
 {
     unload();
     loadXmlFile(paths.getStringValue("soundsFile"));
+    loadXmlFile(paths.getStringValue("soundsPatchFile"));
 }
 
 void SoundDB::loadXmlFile(const std::string &fileName)

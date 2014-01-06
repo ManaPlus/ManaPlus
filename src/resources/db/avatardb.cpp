@@ -44,6 +44,7 @@ void AvatarDB::load()
     if (mLoaded)
         unload();
     loadXmlFile(paths.getStringValue("avatarsFile"));
+    loadXmlFile(paths.getStringValue("avatarsPatchFile"));
 }
 
 void AvatarDB::loadXmlFile(const std::string &fileName)

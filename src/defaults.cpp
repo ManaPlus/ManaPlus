@@ -483,24 +483,32 @@ DefaultsData* getPathsDefaults()
     AddDEF("skillsFile2", "skills.xml");
     AddDEF("equipmentWindowFile", "equipmentwindow.xml");
     AddDEF("emotesFile", "emotes.xml");
+    AddDEF("emotesPatchFile", "emotes_patch.xml");
     AddDEF("hairColorFile", "hair.xml");
+    AddDEF("hairColorPatchFile", "hair_patch.xml");
     AddDEF("itemColorsFile", "itemcolors.xml");
+    AddDEF("itemColorsPatchFile", "itemcolors_patch.xml");
     AddDEF("charCreationFile", "charcreation.xml");
     AddDEF("soundsFile", "sounds.xml");
+    AddDEF("soundsPatchFile", "sounds_patch.xml");
     AddDEF("itemsFile", "items.xml");
     AddDEF("itemsPatchFile", "items_patch.xml");
     AddDEF("itemsPatchDir", "items.d");
     AddDEF("avatarsFile", "avatars.xml");
+    AddDEF("avatarsPatchFile", "avatars_patch.xml");
     AddDEF("npcsFile", "npcs.xml");
     AddDEF("npcsPatchFile", "npcs_patch.xml");
     AddDEF("npcsPatchDir", "npcs.d");
     AddDEF("petsFile", "pets.xml");
+    AddDEF("petsPatchFile", "pets_patch.xml");
     AddDEF("monstersFile", "monsters.xml");
     AddDEF("monstersPatchFile", "monsters_patch.xml");
     AddDEF("monstersPatchDir", "monsters.d");
     AddDEF("mapsRemapFile", "maps/remap.xml");
     AddDEF("mapsFile", "maps.xml");
+    AddDEF("mapsPatchFile", "maps_patch.xml");
     AddDEF("deadMessagesFile", "deadmessages.xml");
+    AddDEF("deadMessagesPatchFile", "deadmessages_patch.xml");
 
     return configData;
 }

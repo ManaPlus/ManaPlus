@@ -36,6 +36,7 @@ namespace
 void DeadDB::load()
 {
     loadXmlFile(paths.getStringValue("deadMessagesFile"));
+    loadXmlFile(paths.getStringValue("deadMessagesPatchFile"));
 }
 
 void DeadDB::loadXmlFile(const std::string &fileName)

@@ -47,6 +47,7 @@ void MapDB::load()
 
     loadRemap();
     loadInfo(paths.getStringValue("mapsFile"));
+    loadInfo(paths.getStringValue("mapsPatchFile"));
     mLoaded = true;
 }
 
