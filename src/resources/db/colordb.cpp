@@ -43,11 +43,17 @@ void ColorDB::load()
     if (mLoaded)
         unload();
 
-    loadHair();
+    std::map<int, ItemColor> colors;
+    ColorListsIterator it = mColorLists.find("hair");
+    if (it != mColorLists.end())
+        colors = it->second;
+    loadHair(paths.getStringValue("hairColorFile"), colors);
+    mColorLists["hair"] = colors;
+
     if (serverVersion >= 1)
         loadColorLists();
 
-    const ColorListsIterator it = mColorLists.find("hair");
+    it = mColorLists.find("hair");
     if (it != mColorLists.end())
         mHairColorsSize = static_cast<int>((*it).second.size());
     else
@@ -55,16 +61,10 @@ void ColorDB::load()
     mLoaded = true;
 }
 
-void ColorDB::loadHair()
+void ColorDB::loadHair(const std::string &fileName,
+                       std::map<int, ItemColor> &colors)
 {
-    std::map <int, ItemColor> colors;
-    const ColorListsIterator it = mColorLists.find("hair");
-
-    if (it != mColorLists.end())
-        colors = it->second;
-
-    XML::Document *doc = new XML::Document(
-        paths.getStringValue("hairColorFile"));
+    XML::Document *doc = new XML::Document(fileName);
     XmlNodePtr root = doc->rootNode();
     bool hairXml = true;
 
@@ -79,6 +79,13 @@ void ColorDB::loadHair()
 
     for_each_xml_child_node(node, root)
     {
+        if (xmlNameEqual(node, "include"))
+        {
+            const std::string name = XML::getProperty(node, "name", "");
+            if (!name.empty())
+                loadHair(name, colors);
+            continue;
+        }
         if (xmlNameEqual(node, "color"))
         {
             const int id = XML::getProperty(node, "id", 0);
@@ -92,7 +99,6 @@ void ColorDB::loadHair()
     }
 
     delete doc;
-    mColorLists["hair"] = colors;
 }
 
 void ColorDB::loadColorLists()
