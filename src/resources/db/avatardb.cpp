@@ -43,20 +43,32 @@ void AvatarDB::load()
 {
     if (mLoaded)
         unload();
+    loadXmlFile(paths.getStringValue("avatarsFile"));
+}
 
-    XML::Document doc(paths.getStringValue("avatarsFile"));
+void AvatarDB::loadXmlFile(const std::string &fileName)
+{
+    XML::Document doc(fileName);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "avatars"))
     {
         logger->log("Avatars Database: Error while loading %s!",
-            paths.getStringValue("avatarsFile").c_str());
+            fileName.c_str());
         mLoaded = true;
         return;
     }
 
     for_each_xml_child_node(avatarNode, rootNode)
     {
+        if (xmlNameEqual(avatarNode, "include"))
+        {
+            const std::string name = XML::getProperty(avatarNode, "name", "");
+            if (!name.empty())
+                loadXmlFile(name);
+            continue;
+        }
+
         if (!xmlNameEqual(avatarNode, "avatar"))
             continue;
 

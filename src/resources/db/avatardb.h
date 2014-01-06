@@ -23,6 +23,8 @@
 #ifndef RESOURCES_DB_AVATARDB_H
 #define RESOURCES_DB_AVATARDB_H
 
+#include <string>
+
 #include "localconsts.h"
 
 class BeingInfo;
@@ -34,6 +36,8 @@ namespace AvatarDB
     void unload();
 
     BeingInfo *get(const int id) A_WARN_UNUSED;
+
+    void loadXmlFile(const std::string &fileName);
 }
 
 #endif  // RESOURCES_DB_AVATARDB_H
