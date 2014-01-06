@@ -446,49 +446,6 @@ void SkillDialog::loadSkills()
     if (!root || !xmlNameEqual(root, "skills"))
     {
         logger->log("Error loading skills");
-
-#ifdef MANASERV_SUPPORT
-        if (Net::getNetworkType() != ServerInfo::MANASERV)
-#endif
-        {
-            SkillModel *const model = new SkillModel();
-            if (!mDefaultModel)
-                mDefaultModel = model;
-
-            SkillInfo *const skill = new SkillInfo;
-            skill->id = 1;
-            // TRANSLATORS: skills dialog default skills tab
-            skill->data->name = _("basic");
-            skill->data->description.clear();
-            // TRANSLATORS: skills dialog default skill name
-            skill->data->dispName = _("basic, 1");
-            skill->data->shortName = "bas";
-            skill->data->setIcon("");
-            skill->modifiable = true;
-            skill->visible = true;
-            skill->model = model;
-            skill->update();
-
-            model->addSkill(skill);
-            mSkills[1] = skill;
-
-            model->updateVisibilities();
-
-            listbox = new SkillListBox(this, model);
-            listbox->postInit();
-            listbox->setActionEventId("sel");
-            listbox->addActionListener(this);
-            scroll = new ScrollArea(listbox, false);
-            scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-            scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
-
-            tab = new SkillTab(this, "Skills", listbox);
-            mDeleteTabs.push_back(tab);
-
-            mTabs->addTab(tab, scroll);
-
-            update();
-        }
         return;
     }
 
