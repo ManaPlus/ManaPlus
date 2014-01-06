@@ -92,13 +92,7 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
 
         const int id = XML::getProperty(monsterNode, "id", 0);
         BeingInfo *currentInfo = nullptr;
-        if (id == 0)
-        {
-            logger->log("MonsterDB: monster with missing ID in %s!",
-                fileName.c_str());
-            continue;
-        }
-        else if (mMonsterInfos.find(id + offset) != mMonsterInfos.end())
+        if (mMonsterInfos.find(id + offset) != mMonsterInfos.end())
         {
             logger->log("MonsterDB: Redefinition of monster ID %d", id);
             currentInfo = mMonsterInfos[id + offset];
