@@ -52,7 +52,7 @@ namespace MapDB
 
     void loadRemap();
 
-    void loadInfo();
+    void loadInfo(const std::string &fileName);
 
     /**
      * Clear the remap data

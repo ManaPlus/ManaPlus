@@ -46,7 +46,7 @@ void MapDB::load()
         unload();
 
     loadRemap();
-    loadInfo();
+    loadInfo(paths.getStringValue("mapsFile"));
     mLoaded = true;
 }
 
@@ -125,9 +125,9 @@ void MapDB::readAtlas(XmlNodePtr node)
     }
 }
 
-void MapDB::loadInfo()
+void MapDB::loadInfo(const std::string &fileName)
 {
-    XML::Document *doc = new XML::Document(paths.getStringValue("mapsFile"));
+    XML::Document *doc = new XML::Document(fileName);
     const XmlNodePtr root = doc->rootNode();
     if (!root)
     {
@@ -138,9 +138,20 @@ void MapDB::loadInfo()
     for_each_xml_child_node(node, root)
     {
         if (xmlNameEqual(node, "map"))
+        {
             readMap(node);
+        }
         else if (xmlNameEqual(node, "atlas"))
+        {
             readAtlas(node);
+        }
+        else if (xmlNameEqual(node, "include"))
+        {
+            const std::string name = XML::getProperty(node, "name", "");
+            if (!name.empty())
+                loadInfo(name);
+            continue;
+        }
     }
     delete doc;
 }
