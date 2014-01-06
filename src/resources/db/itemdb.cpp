@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "resources/beingcommon.h"
 #include "resources/iteminfo.h"
 
 #include "utils/dtor.h"
@@ -211,6 +212,11 @@ void ItemDB::load()
     mUnknown->addTag(mTags["All"]);
     loadXmlFile(paths.getStringValue("itemsFile"), tagNum);
     loadXmlFile(paths.getStringValue("itemsPatchFile"), tagNum);
+
+    StringVect list;
+    BeingCommon::getIncludeFiles(paths.getStringValue("itemsPatchDir"), list);
+    FOR_EACH (StringVectCIter, it, list)
+        loadXmlFile(*it, tagNum);
 }
 
 void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)

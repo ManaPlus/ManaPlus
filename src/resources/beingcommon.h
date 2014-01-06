@@ -23,6 +23,8 @@
 
 #include "utils/xml.h"
 
+#include "utils/stringvector.h"
+
 #include "localconsts.h"
 
 class BeingInfo;
@@ -31,6 +33,8 @@ namespace BeingCommon
 {
     void readBasicAttributes(BeingInfo *const info, XmlNodePtr node,
                              const std::string &hoverCursor);
+
+    void getIncludeFiles(const std::string &dir, StringVect &list);
 }
 
 #endif  // RESOURCES_BEINGCOMMON_H

@@ -56,6 +56,9 @@ namespace Files
                  const std::string &restrict pTo);
 
     void getFiles(const std::string &path, StringVect &list);
+
+    void getFilesWithDir(const std::string &restrict path,
+                         StringVect &restrict list);
 }  // namespace Files
 
 #endif  // UTILS_FILES_H
