@@ -88,7 +88,21 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
         if (!xmlNameEqual(monsterNode, "monster"))
             continue;
 
-        BeingInfo *const currentInfo = new BeingInfo;
+        const int id = XML::getProperty(monsterNode, "id", 0);
+        BeingInfo *currentInfo = nullptr;
+        if (id == 0)
+        {
+            logger->log("MonsterDB: monster with missing ID in %s!",
+                fileName.c_str());
+            continue;
+        }
+        else if (mMonsterInfos.find(id + offset) != mMonsterInfos.end())
+        {
+            logger->log("MonsterDB: Redefinition of monster ID %d", id);
+            currentInfo = mMonsterInfos[id + offset];
+        }
+        if (!currentInfo)
+            currentInfo = new BeingInfo;
 
         currentInfo->setWalkMask(Map::BLOCKMASK_WALL
             | Map::BLOCKMASK_CHARACTER | Map::BLOCKMASK_MONSTER);
@@ -234,8 +248,7 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
         }
         currentInfo->setDisplay(display);
 
-        mMonsterInfos[XML::getProperty(
-            monsterNode, "id", 0) + offset] = currentInfo;
+        mMonsterInfos[id + offset] = currentInfo;
     }
 }
 
