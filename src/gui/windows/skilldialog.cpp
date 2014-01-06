@@ -429,32 +429,39 @@ void SkillDialog::clearSkills()
 void SkillDialog::loadSkills()
 {
     clearSkills();
+    loadXmlFile(paths.getStringValue("skillsFile"));
+    if (mSkills.empty())
+        loadXmlFile(paths.getStringValue("skillsFile2"));
 
+    update();
+}
+
+void SkillDialog::loadXmlFile(const std::string &fileName)
+{
     XML::Document doc(paths.getStringValue("skillsFile"));
-    XML::Document doc2(paths.getStringValue("skillsFile2"));
     XmlNodePtr root = doc.rootNode();
 
     int setCount = 0;
-    std::string setName;
-    ScrollArea *scroll;
-    SkillListBox *listbox;
-    SkillTab *tab;
-
-    if (!root || !xmlNameEqual(root, "skills"))
-        root = doc2.rootNode();
 
     if (!root || !xmlNameEqual(root, "skills"))
     {
-        logger->log("Error loading skills");
+        logger->log("Error loading skills: " + fileName);
         return;
     }
 
     for_each_xml_child_node(set, root)
     {
-        if (xmlNameEqual(set, "set"))
+        if (xmlNameEqual(set, "include"))
+        {
+            const std::string name = XML::getProperty(set, "name", "");
+            if (!name.empty())
+                loadXmlFile(name);
+            continue;
+        }
+        else if (xmlNameEqual(set, "set"))
         {
             setCount++;
-            setName = XML::getProperty(set, "name",
+            const std::string setName = XML::getProperty(set, "name",
                 // TRANSLATORS: skills dialog default skill tab
                 strprintf(_("Skill Set %d"), setCount));
 
@@ -532,20 +539,19 @@ void SkillDialog::loadSkills()
             model->updateVisibilities();
 
             // possible leak listbox, scroll
-            listbox = new SkillListBox(this, model);
+            SkillListBox *const listbox = new SkillListBox(this, model);
             listbox->setActionEventId("sel");
             listbox->addActionListener(this);
-            scroll = new ScrollArea(listbox, false);
+            ScrollArea *const scroll = new ScrollArea(listbox, false);
             scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
             scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 
-            tab = new SkillTab(this, setName, listbox);
+            SkillTab *const tab = new SkillTab(this, setName, listbox);
             mDeleteTabs.push_back(tab);
 
             mTabs->addTab(tab, scroll);
         }
     }
-    update();
 }
 
 bool SkillDialog::updateSkill(const int id, const int range,

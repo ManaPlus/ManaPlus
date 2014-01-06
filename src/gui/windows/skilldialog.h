@@ -69,6 +69,8 @@ class SkillDialog final : public Window, public gcn::ActionListener
          */
         void update();
 
+        void loadXmlFile(const std::string &fileName);
+
         void clearSkills();
 
         void loadSkills();
