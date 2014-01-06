@@ -26,6 +26,8 @@
 
 #include "utils/xml.h"
 
+#include "resources/beingcommon.h"
+
 #include "debug.h"
 
 namespace
@@ -39,6 +41,7 @@ void SoundDB::load()
     unload();
     loadXmlFile(paths.getStringValue("soundsFile"));
     loadXmlFile(paths.getStringValue("soundsPatchFile"));
+    loadXmlDir("soundsPatchDir", loadXmlFile);
 }
 
 void SoundDB::loadXmlFile(const std::string &fileName)

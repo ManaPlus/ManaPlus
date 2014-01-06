@@ -24,6 +24,8 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "resources/beingcommon.h"
+
 #include "debug.h"
 
 namespace
@@ -48,6 +50,7 @@ void MapDB::load()
     loadRemap();
     loadInfo(paths.getStringValue("mapsFile"));
     loadInfo(paths.getStringValue("mapsPatchFile"));
+    loadXmlDir("mapsPatchDir", loadInfo);
     mLoaded = true;
 }
 

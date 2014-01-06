@@ -29,6 +29,13 @@
 
 class BeingInfo;
 
+#define loadXmlDir(name, function) \
+    StringVect list; \
+    BeingCommon::getIncludeFiles(paths.getStringValue( \
+        name), list); \
+    FOR_EACH (StringVectCIter, it, list) \
+        function(*it);
+
 namespace BeingCommon
 {
     void readBasicAttributes(BeingInfo *const info, XmlNodePtr node,

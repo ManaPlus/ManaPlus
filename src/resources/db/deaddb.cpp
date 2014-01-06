@@ -25,6 +25,8 @@
 
 #include "utils/translation/podict.h"
 
+#include "resources/beingcommon.h"
+
 #include "debug.h"
 
 namespace
@@ -37,6 +39,7 @@ void DeadDB::load()
 {
     loadXmlFile(paths.getStringValue("deadMessagesFile"));
     loadXmlFile(paths.getStringValue("deadMessagesPatchFile"));
+    loadXmlDir("deadMessagesPatchDir", loadXmlFile);
 }
 
 void DeadDB::loadXmlFile(const std::string &fileName)

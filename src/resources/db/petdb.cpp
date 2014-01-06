@@ -49,6 +49,7 @@ void PETDB::load()
     logger->log1("Initializing PET database...");
     loadXmlFile(paths.getStringValue("petsFile"));
     loadXmlFile(paths.getStringValue("petsPatchFile"));
+    loadXmlDir("petsPatchDir", loadXmlFile);
     mLoaded = true;
 }
 

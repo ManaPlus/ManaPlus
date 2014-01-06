@@ -24,6 +24,7 @@
 
 #include "logger.h"
 
+#include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 
 #include "utils/dtor.h"
@@ -45,6 +46,7 @@ void AvatarDB::load()
         unload();
     loadXmlFile(paths.getStringValue("avatarsFile"));
     loadXmlFile(paths.getStringValue("avatarsPatchFile"));
+    loadXmlDir("avatarsPatchDir", loadXmlFile);
 }
 
 void AvatarDB::loadXmlFile(const std::string &fileName)

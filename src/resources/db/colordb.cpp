@@ -26,6 +26,8 @@
 
 #include "utils/xml.h"
 
+#include "resources/beingcommon.h"
+
 #include "debug.h"
 
 namespace
@@ -49,12 +51,19 @@ void ColorDB::load()
         colors = it->second;
     loadHair(paths.getStringValue("hairColorFile"), colors);
     loadHair(paths.getStringValue("hairColorPatchFile"), colors);
+    StringVect list;
+    BeingCommon::getIncludeFiles(paths.getStringValue(
+        "hairColorPatchDir"), list);
+    FOR_EACH (StringVectCIter, it, list)
+        loadHair(*it, colors);
+
     mColorLists["hair"] = colors;
 
     if (serverVersion >= 1)
     {
         loadColorLists(paths.getStringValue("itemColorsFile"));
         loadColorLists(paths.getStringValue("itemColorsPatchFile"));
+        loadXmlDir("itemColorsPatchDir", loadColorLists);
     }
 
     it = mColorLists.find("hair");

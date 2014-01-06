@@ -27,6 +27,8 @@
 
 #include "configuration.h"
 
+#include "resources/beingcommon.h"
+
 #include "debug.h"
 
 namespace
@@ -54,6 +56,7 @@ void EmoteDB::load()
     mLastEmote = 0;
     loadXmlFile(paths.getStringValue("emotesFile"));
     loadXmlFile(paths.getStringValue("emotesPatchFile"));
+    loadXmlDir("emotesPatchDir", loadXmlFile);
     loadSpecialXmlFile("graphics/sprites/manaplus_emotes.xml");
 
     mLoaded = true;

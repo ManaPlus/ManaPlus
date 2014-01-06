@@ -50,12 +50,7 @@ void MonsterDB::load()
     logger->log1("Initializing monster database...");
     loadXmlFile(paths.getStringValue("monstersFile"));
     loadXmlFile(paths.getStringValue("monstersPatchFile"));
-
-    StringVect list;
-    BeingCommon::getIncludeFiles(paths.getStringValue(
-        "monstersPatchDir"), list);
-    FOR_EACH (StringVectCIter, it, list)
-        loadXmlFile(*it);
+    loadXmlDir("monstersPatchDir", loadXmlFile);
 
     mLoaded = true;
 }

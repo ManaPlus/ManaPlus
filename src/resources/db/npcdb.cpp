@@ -49,12 +49,7 @@ void NPCDB::load()
 
     loadXmlFile(paths.getStringValue("npcsFile"));
     loadXmlFile(paths.getStringValue("npcsPatchFile"));
-
-    StringVect list;
-    BeingCommon::getIncludeFiles(paths.getStringValue(
-        "npcsPatchDir"), list);
-    FOR_EACH (StringVectCIter, it, list)
-        loadXmlFile(*it);
+    loadXmlDir("npcsPatchDir", loadXmlFile);
 
     mLoaded = true;
 }
