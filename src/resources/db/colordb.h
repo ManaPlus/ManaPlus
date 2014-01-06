@@ -65,7 +65,7 @@ namespace ColorDB
     void loadHair(const std::string &fileName,
                   std::map<int, ItemColor> &colors);
 
-    void loadColorLists();
+    void loadColorLists(const std::string &fileName);
 
     /**
      * Clear the color data

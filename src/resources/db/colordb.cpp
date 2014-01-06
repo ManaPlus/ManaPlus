@@ -51,7 +51,7 @@ void ColorDB::load()
     mColorLists["hair"] = colors;
 
     if (serverVersion >= 1)
-        loadColorLists();
+        loadColorLists(paths.getStringValue("itemColorsFile"));
 
     it = mColorLists.find("hair");
     if (it != mColorLists.end())
@@ -86,7 +86,7 @@ void ColorDB::loadHair(const std::string &fileName,
                 loadHair(name, colors);
             continue;
         }
-        if (xmlNameEqual(node, "color"))
+        else if (xmlNameEqual(node, "color"))
         {
             const int id = XML::getProperty(node, "id", 0);
 
@@ -101,10 +101,9 @@ void ColorDB::loadHair(const std::string &fileName,
     delete doc;
 }
 
-void ColorDB::loadColorLists()
+void ColorDB::loadColorLists(const std::string &fileName)
 {
-    XML::Document *doc = new XML::Document(
-        paths.getStringValue("itemColorsFile"));
+    XML::Document *doc = new XML::Document(fileName);
     const XmlNodePtr root = doc->rootNode();
     if (!root)
     {
@@ -114,7 +113,14 @@ void ColorDB::loadColorLists()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlNameEqual(node, "list"))
+        if (xmlNameEqual(node, "include"))
+        {
+            const std::string name = XML::getProperty(node, "name", "");
+            if (!name.empty())
+                loadColorLists(name);
+            continue;
+        }
+        else if (xmlNameEqual(node, "list"))
         {
             const std::string name = XML::getProperty(node, "name", "");
             if (name.empty())
