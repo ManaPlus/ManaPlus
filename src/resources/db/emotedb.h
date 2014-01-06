@@ -69,6 +69,10 @@ namespace EmoteDB
 {
     void load();
 
+    void loadXmlFile(const std::string &fileName);
+
+    void loadSpecialXmlFile(const std::string &fileName);
+
     void unload();
 
     const EmoteInfo *get(const int id,
