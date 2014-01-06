@@ -102,7 +102,12 @@ void Units::loadUnits()
         units[UNIT_CURRENCY] = ud;
     }
 
-    XML::Document doc(paths.getStringValue("unitsFile"));
+    loadXmlFile(paths.getStringValue("unitsFile"));
+}
+
+void Units::loadXmlFile(const std::string &fileName)
+{
+    XML::Document doc(fileName);
     const XmlNodePtr root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "units"))
@@ -114,7 +119,14 @@ void Units::loadUnits()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlNameEqual(node, "unit"))
+        if (xmlNameEqual(node, "include"))
+        {
+            const std::string name = XML::getProperty(node, "name", "");
+            if (!name.empty())
+                loadXmlFile(name);
+            continue;
+        }
+        else if (xmlNameEqual(node, "unit"))
         {
             UnitDescription ud;
             int level = 1;

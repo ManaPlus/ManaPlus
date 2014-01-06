@@ -37,6 +37,8 @@ class Units final
         */
         static void loadUnits();
 
+        static void loadXmlFile(const std::string &fileName);
+
         /**
         * Formats the given number in the correct currency format.
         */
