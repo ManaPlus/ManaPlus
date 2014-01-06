@@ -475,12 +475,17 @@ DefaultsData* getPathsDefaults()
     AddDEF("help", "help/");
 
     AddDEF("statusEffectsFile", "status-effects.xml");
+    AddDEF("statusEffectsPatchFile", "status-effects_patch.xml");
     AddDEF("effectsFile", "effects.xml");
+    AddDEF("effectsPatchFile", "effects_patch.xml");
     AddDEF("unitsFile", "units.xml");
+    AddDEF("unitsPatchFile", "units_patch.xml");
     AddDEF("featuresFile", "features.xml");
     AddDEF("questsFile", "quests.xml");
-    AddDEF("skillsFile", "ea-skills.xml");
-    AddDEF("skillsFile2", "skills.xml");
+    AddDEF("questsPatchFile", "quests_patch.xml");
+    AddDEF("skillsFile", "skills.xml");
+    AddDEF("skillsPatchFile", "skills_patch.xml");
+    AddDEF("skillsFile2", "ea-skills.xml");
     AddDEF("equipmentWindowFile", "equipmentwindow.xml");
     AddDEF("emotesFile", "emotes.xml");
     AddDEF("emotesPatchFile", "emotes_patch.xml");

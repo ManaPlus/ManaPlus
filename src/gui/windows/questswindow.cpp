@@ -182,6 +182,7 @@ QuestsWindow::QuestsWindow() :
     loadWindowState();
     enableVisibleSound(true);
     loadXmlFile(paths.getStringValue("questsFile"));
+    loadXmlFile(paths.getStringValue("questsPatchFile"));
 }
 
 QuestsWindow::~QuestsWindow()

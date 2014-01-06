@@ -128,6 +128,7 @@ void StatusEffect::load()
         unload();
 
     loadXmlFile(paths.getStringValue("statusEffectsFile"));
+    loadXmlFile(paths.getStringValue("statusEffectsPatchFile"));
 
     mLoaded = true;
 }

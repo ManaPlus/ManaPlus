@@ -37,6 +37,7 @@ EffectManager::EffectManager() :
 {
     logger->log1("Effects are now loading");
     loadXmlFile(paths.getStringValue("effectsFile"));
+    loadXmlFile(paths.getStringValue("effectsPatchFile"));
 }
 
 void EffectManager::loadXmlFile(const std::string &fileName)

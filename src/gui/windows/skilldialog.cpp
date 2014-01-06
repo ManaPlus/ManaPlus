@@ -432,6 +432,7 @@ void SkillDialog::loadSkills()
     loadXmlFile(paths.getStringValue("skillsFile"));
     if (mSkills.empty())
         loadXmlFile(paths.getStringValue("skillsFile2"));
+    loadXmlFile(paths.getStringValue("skillsPatchFile"));
 
     update();
 }

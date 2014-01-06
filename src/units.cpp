@@ -103,6 +103,7 @@ void Units::loadUnits()
     }
 
     loadXmlFile(paths.getStringValue("unitsFile"));
+    loadXmlFile(paths.getStringValue("unitsPatchFile"));
 }
 
 void Units::loadXmlFile(const std::string &fileName)
