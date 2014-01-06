@@ -2353,6 +2353,7 @@ void Client::storeSafeParameters() const
     std::string particleFont;
     std::string helpFont;
     std::string secureFont;
+    std::string npcFont;
     std::string japanFont;
     std::string chinaFont;
     bool showBackground;
@@ -2378,6 +2379,7 @@ void Client::storeSafeParameters() const
     particleFont = config.getStringValue("particleFont");
     helpFont = config.getStringValue("helpFont");
     secureFont = config.getStringValue("secureFont");
+    npcFont = config.getStringValue("npcFont");
     japanFont = config.getStringValue("japanFont");
     chinaFont = config.getStringValue("chinaFont");
 
@@ -2399,6 +2401,7 @@ void Client::storeSafeParameters() const
         config.setValue("particleFont", "fonts/dejavusans.ttf");
         config.setValue("helpFont", "fonts/dejavusansmono.ttf");
         config.setValue("secureFont", "fonts/dejavusansmono.ttf");
+        config.setValue("npcFont", "fonts/dejavusans.ttf");
         config.setValue("japanFont", "fonts/mplus-1p-regular.ttf");
         config.setValue("chinaFont", "fonts/wqy-microhei.ttf");
         config.setValue("showBackground", false);
@@ -2440,6 +2443,7 @@ void Client::storeSafeParameters() const
         config.setValue("particleFont", particleFont);
         config.setValue("helpFont", helpFont);
         config.setValue("secureFont", secureFont);
+        config.setValue("npcFont", npcFont);
         config.setValue("japanFont", japanFont);
         config.setValue("chinaFont", chinaFont);
         config.setValue("showBackground", showBackground);

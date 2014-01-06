@@ -53,6 +53,7 @@ struct ThemeInfo final
         particleFont(),
         helpFont(),
         secureFont(),
+        npcFont(),
         japanFont(),
         chinaFont(),
         fontSize(0),
@@ -67,6 +68,7 @@ struct ThemeInfo final
     std::string particleFont;
     std::string helpFont;
     std::string secureFont;
+    std::string npcFont;
     std::string japanFont;
     std::string chinaFont;
     int fontSize;

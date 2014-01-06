@@ -1308,6 +1308,8 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
             readValue(helpFont);
         else if (xmlNameEqual(infoNode, "secureFont"))
             readValue(secureFont);
+        else if (xmlNameEqual(infoNode, "npcFont"))
+            readValue(npcFont);
         else if (xmlNameEqual(infoNode, "japanFont"))
             readValue(japanFont);
         else if (xmlNameEqual(infoNode, "chinaFont"))
