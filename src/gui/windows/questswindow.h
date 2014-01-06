@@ -72,7 +72,7 @@ class QuestsWindow final : public Window,
         void addEffect(Being *const being);
 
     private:
-        void loadXml();
+        void loadXmlFile(const std::string &fileName);
 
         void loadQuest(const int var, const XmlNodePtr node);
 
