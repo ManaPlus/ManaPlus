@@ -35,11 +35,15 @@ namespace
 
 void DeadDB::load()
 {
+    loadXmlFile(paths.getStringValue("deadMessagesFile"));
+}
+
+void DeadDB::loadXmlFile(const std::string &fileName)
+{
     if (mLoaded)
         unload();
 
-    XML::Document *doc = new XML::Document(
-        paths.getStringValue("deadMessagesFile"));
+    XML::Document *doc = new XML::Document(fileName);
     const XmlNodePtr root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "messages"))
@@ -52,7 +56,14 @@ void DeadDB::load()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlNameEqual(node, "message"))
+        if (xmlNameEqual(node, "include"))
+        {
+            const std::string name = XML::getProperty(node, "name", "");
+            if (!name.empty())
+                loadXmlFile(name);
+            continue;
+        }
+        else if (xmlNameEqual(node, "message"))
         {
             const char *const data = reinterpret_cast<const char*>(
                 xmlNodeGetContent(node));

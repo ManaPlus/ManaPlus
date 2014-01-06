@@ -33,6 +33,8 @@ namespace DeadDB
      */
     void load();
 
+    void loadXmlFile(const std::string &fileName);
+
     /**
      * Clear the chars data
      */
