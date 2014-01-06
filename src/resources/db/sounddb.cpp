@@ -37,8 +37,12 @@ namespace
 void SoundDB::load()
 {
     unload();
+    loadXmlFile(paths.getStringValue("soundsFile"));
+}
 
-    XML::Document *doc = new XML::Document(paths.getStringValue("soundsFile"));
+void SoundDB::loadXmlFile(const std::string &fileName)
+{
+    XML::Document *doc = new XML::Document(fileName);
     const XmlNodePtr root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "sounds"))
@@ -49,7 +53,14 @@ void SoundDB::load()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlNameEqual(node, "sound"))
+        if (xmlNameEqual(node, "include"))
+        {
+            const std::string name = XML::getProperty(node, "name", "");
+            if (!name.empty())
+                loadXmlFile(name);
+            continue;
+        }
+        else if (xmlNameEqual(node, "sound"))
         {
             const std::string name = XML::getProperty(node, "name", "");
             const int id = NotifyManager::getIndexBySound(name);

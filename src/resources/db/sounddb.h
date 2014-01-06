@@ -29,6 +29,8 @@ namespace SoundDB
 {
     void load();
 
+    void loadXmlFile(const std::string &fileName);
+
     void unload();
 
     std::string &getSound(const int id);
