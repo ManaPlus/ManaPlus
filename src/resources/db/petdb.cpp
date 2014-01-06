@@ -47,23 +47,36 @@ void PETDB::load()
         unload();
 
     logger->log1("Initializing PET database...");
+    loadXmlFile(paths.getStringValue("petsFile"));
+    mLoaded = true;
+}
 
-    XML::Document doc(paths.getStringValue("petsFile"));
+void PETDB::loadXmlFile(const std::string &fileName)
+{
+    XML::Document doc(fileName);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "pets"))
     {
         logger->log("PET Database: Error while loading %s!",
-            paths.getStringValue("petsFile").c_str());
-        mLoaded = true;
+            fileName.c_str());
         return;
     }
 
     // iterate <pet>s
     for_each_xml_child_node(petNode, rootNode)
     {
-        if (!xmlNameEqual(petNode, "pet"))
+        if (xmlNameEqual(petNode, "include"))
+        {
+            const std::string name = XML::getProperty(petNode, "name", "");
+            if (!name.empty())
+                loadXmlFile(name);
             continue;
+        }
+        else if (!xmlNameEqual(petNode, "pet"))
+        {
+            continue;
+        }
 
         const int id = XML::getProperty(petNode, "id", 0);
         if (id == 0)
@@ -151,8 +164,6 @@ void PETDB::load()
 
         mPETInfos[id] = currentInfo;
     }
-
-    mLoaded = true;
 }
 
 void PETDB::unload()
