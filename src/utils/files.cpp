@@ -22,10 +22,10 @@
 
 #if defined(ANDROID) || defined(__native_client__)
 #include "resources/resourcemanager.h"
-#include "utils/physfstools.h"
 #endif
 
 #include "utils/mkdir.h"
+#include "utils/physfstools.h"
 
 #include "localconsts.h"
 
@@ -195,4 +195,15 @@ int Files::copyFile(const std::string &restrict srcName,
     fclose(srcFile);
     fclose(dstFile);
     return 0;
+}
+
+void Files::getFiles(const std::string &path, StringVect &list)
+{
+    char **fonts = PhysFs::enumerateFiles(path.c_str());
+    for (char **i = fonts; *i; i++)
+    {
+        if (!PhysFs::isDirectory((path + *i).c_str()))
+            list.push_back(*i);
+    }
+    PhysFs::freeList(fonts);
 }

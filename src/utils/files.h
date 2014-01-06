@@ -21,6 +21,8 @@
 #ifndef UTILS_FILES_H
 #define UTILS_FILES_H
 
+#include "utils/stringvector.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -52,6 +54,8 @@ namespace Files
 
     int copyFile(const std::string &restrict pFrom,
                  const std::string &restrict pTo);
+
+    void getFiles(const std::string &path, StringVect &list);
 }  // namespace Files
 
 #endif  // UTILS_FILES_H

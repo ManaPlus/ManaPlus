@@ -33,6 +33,7 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/dtor.h"
+#include "utils/files.h"
 #include "utils/physfstools.h"
 
 #include <algorithm>
@@ -649,37 +650,13 @@ bool Theme::tryThemePath(const std::string &themeName)
 
 void Theme::fillSkinsList(StringVect &list)
 {
-    char **skins = PhysFs::enumerateFiles(
-        branding.getStringValue("guiThemePath").c_str());
-
-    for (char **i = skins; *i; i++)
-    {
-        if (PhysFs::isDirectory((
-            branding.getStringValue("guiThemePath") + *i).c_str()))
-        {
-            list.push_back(*i);
-        }
-    }
-
-    PhysFs::freeList(skins);
+    Files::getFiles(branding.getStringValue("guiThemePath"), list);
 }
 
 void Theme::fillFontsList(StringVect &list)
 {
     PHYSFS_permitSymbolicLinks(1);
-    char **fonts = PhysFs::enumerateFiles(
-        branding.getStringValue("fontsPath").c_str());
-
-    for (char **i = fonts; *i; i++)
-    {
-        if (!PhysFs::isDirectory((
-            branding.getStringValue("fontsPath") + *i).c_str()))
-        {
-            list.push_back(*i);
-        }
-    }
-
-    PhysFs::freeList(fonts);
+    Files::getFiles(branding.getStringValue("fontsPath"), list);
     PHYSFS_permitSymbolicLinks(0);
 }
 
