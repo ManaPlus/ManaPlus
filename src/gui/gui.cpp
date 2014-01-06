@@ -155,7 +155,6 @@ void Gui::postInit(Graphics *const graphics)
         if (fontFile.empty())
             fontFile = branding.getStringValue("chinaFont");
     }
-
     if (fontFile.empty())
         fontFile = branding.getStringValue("font");
 
@@ -169,9 +168,9 @@ void Gui::postInit(Graphics *const graphics)
                       .append("': ").append(e.getMessage()));
     }
 
+
     // Set particle font
     fontFile = config.getValue("particleFont", "");
-
     if (isJapan)
     {
         fontFile = config.getValue("japanFont", "");
@@ -184,8 +183,6 @@ void Gui::postInit(Graphics *const graphics)
         if (fontFile.empty())
             fontFile = branding.getStringValue("chinaFont");
     }
-
-
     if (fontFile.empty())
         fontFile = branding.getStringValue("particleFont");
 
@@ -199,6 +196,7 @@ void Gui::postInit(Graphics *const graphics)
         logger->error(std::string("Unable to load '").append(fontFile)
                       .append("': ").append(e.getMessage()));
     }
+
 
     // Set bold font
     fontFile = config.getValue("boldFont", "");
@@ -215,6 +213,7 @@ void Gui::postInit(Graphics *const graphics)
                       .append("': ").append(e.getMessage()));
     }
 
+
     // Set help font
     fontFile = config.getValue("helpFont", "");
     if (fontFile.empty())
@@ -229,6 +228,7 @@ void Gui::postInit(Graphics *const graphics)
         logger->error(std::string("Unable to load '").append(fontFile)
                       .append("': ").append(e.getMessage()));
     }
+
 
     // Set secure font
     fontFile = config.getValue("secureFont", "");
@@ -245,9 +245,22 @@ void Gui::postInit(Graphics *const graphics)
                       .append("': ").append(e.getMessage()));
     }
 
+
     // Set npc font
-    fontFile = config.getValue("npcFont", "");
     const int npcFontSize = config.getIntValue("npcfontSize");
+    fontFile = config.getValue("npcFont", "");
+    if (isJapan)
+    {
+        fontFile = config.getValue("japanFont", "");
+        if (fontFile.empty())
+            fontFile = branding.getStringValue("japanFont");
+    }
+    else if(isChinese)
+    {
+        fontFile = config.getValue("chinaFont", "");
+        if (fontFile.empty())
+            fontFile = branding.getStringValue("chinaFont");
+    }
     if (fontFile.empty())
         fontFile = branding.getStringValue("npcFont");
 
