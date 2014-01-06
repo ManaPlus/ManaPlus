@@ -57,6 +57,8 @@ class EffectManager final
 
         ~EffectManager();
 
+        void loadXmlFile(const std::string &fileName);
+
         /**
          * Triggers a effect with the id, at
          * the specified being.
