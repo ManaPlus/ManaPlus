@@ -127,17 +127,32 @@ void StatusEffect::load()
     if (mLoaded)
         unload();
 
-    XML::Document doc(paths.getStringValue("statusEffectsFile"));
+    loadXmlFile(paths.getStringValue("statusEffectsFile"));
+
+    mLoaded = true;
+}
+
+void StatusEffect::loadXmlFile(const std::string &fileName)
+{
+    XML::Document doc(fileName);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "status-effects"))
     {
-        logger->log1("Error loading status effects file");
+        logger->log("Error loading status effects file: " + fileName);
         return;
     }
 
     for_each_xml_child_node(node, rootNode)
     {
+        if (xmlNameEqual(node, "include"))
+        {
+            const std::string name = XML::getProperty(node, "name", "");
+            if (!name.empty())
+                loadXmlFile(name);
+            continue;
+        }
+
         status_effect_map *the_map = nullptr;
 
         const int index = atoi(XML::getProperty(node, "id", "-1").c_str());
@@ -182,7 +197,6 @@ void StatusEffect::load()
             (*the_map)[0][index] = endEffect;
         }
     }
-    mLoaded = true;
 }
 
 static void unloadMap(std::map<int, StatusEffect *> &map)

@@ -105,6 +105,8 @@ public:
 
     static void load();
 
+    static void loadXmlFile(const std::string &fileName);
+
     static void unload();
 private:
     static bool mLoaded;
