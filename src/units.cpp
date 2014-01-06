@@ -28,6 +28,8 @@
 #include "utils/stringutils.h"
 #include "utils/xml.h"
 
+#include "resources/beingcommon.h"
+
 #include <climits>
 #include <vector>
 
@@ -104,6 +106,7 @@ void Units::loadUnits()
 
     loadXmlFile(paths.getStringValue("unitsFile"));
     loadXmlFile(paths.getStringValue("unitsPatchFile"));
+    loadXmlDir("unitsPatchDir", loadXmlFile);
 }
 
 void Units::loadXmlFile(const std::string &fileName)

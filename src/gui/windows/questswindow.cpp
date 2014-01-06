@@ -41,6 +41,8 @@
 
 #include "utils/translation/podict.h"
 
+#include "resources/beingcommon.h"
+
 #include "debug.h"
 
 enum QuestType
@@ -183,6 +185,7 @@ QuestsWindow::QuestsWindow() :
     enableVisibleSound(true);
     loadXmlFile(paths.getStringValue("questsFile"));
     loadXmlFile(paths.getStringValue("questsPatchFile"));
+    loadXmlDir("questsPatchDir", loadXmlFile);
 }
 
 QuestsWindow::~QuestsWindow()

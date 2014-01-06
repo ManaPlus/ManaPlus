@@ -30,6 +30,8 @@
 
 #include "particle/particle.h"
 
+#include "resources/beingcommon.h"
+
 #include "debug.h"
 
 EffectManager::EffectManager() :
@@ -38,6 +40,7 @@ EffectManager::EffectManager() :
     logger->log1("Effects are now loading");
     loadXmlFile(paths.getStringValue("effectsFile"));
     loadXmlFile(paths.getStringValue("effectsPatchFile"));
+    loadXmlDir("effectsPatchDir", loadXmlFile);
 }
 
 void EffectManager::loadXmlFile(const std::string &fileName)

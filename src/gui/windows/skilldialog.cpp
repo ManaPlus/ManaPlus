@@ -51,6 +51,8 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
+#include "resources/beingcommon.h"
+
 #include <guichan/font.hpp>
 
 #include "debug.h"
@@ -433,6 +435,7 @@ void SkillDialog::loadSkills()
     if (mSkills.empty())
         loadXmlFile(paths.getStringValue("skillsFile2"));
     loadXmlFile(paths.getStringValue("skillsPatchFile"));
+    loadXmlDir("skillsPatchDir", loadXmlFile);
 
     update();
 }

@@ -22,12 +22,13 @@
 
 #include "statuseffect.h"
 
+#include "configuration.h"
 #include "logger.h"
 #include "soundmanager.h"
 
 #include "gui/widgets/tabs/chattab.h"
 
-#include "configuration.h"
+#include "resources/beingcommon.h"
 
 #include <map>
 
@@ -129,6 +130,7 @@ void StatusEffect::load()
 
     loadXmlFile(paths.getStringValue("statusEffectsFile"));
     loadXmlFile(paths.getStringValue("statusEffectsPatchFile"));
+    loadXmlDir("statusEffectsPatchDir", loadXmlFile);
 
     mLoaded = true;
 }
