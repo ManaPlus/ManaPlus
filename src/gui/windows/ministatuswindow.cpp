@@ -485,7 +485,7 @@ void MiniStatusWindow::loadBars()
         if (mStatusBar)
             mStatusBar->setVisible(false);
         if (mJobBar)
-            mJobBar->setVisible(false);
+            mJobBar->setVisible(true);
         return;
     }
 
