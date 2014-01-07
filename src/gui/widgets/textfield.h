@@ -131,6 +131,10 @@ class TextField : public gcn::TextField,
 
         void moveCaretForward();
 
+        void moveCaretWordBack();
+
+        void moveCaretWordForward();
+
         void caretDelete();
 
         void caretDeleteToStart();
@@ -145,6 +149,14 @@ class TextField : public gcn::TextField,
         void fontChanged();
 
         bool mSendAlwaysEvents;
+
+        bool handleNormalKeys(const int action, bool &consumed);
+
+        void handleCtrlKeys(const int action, bool &consumed);
+
+#ifndef USE_SDL2
+        void handleSDLKeys(const int val, bool &consumed);
+#endif
 
         static Skin *mSkin;
 
