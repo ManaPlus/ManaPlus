@@ -176,8 +176,12 @@ void StatusEffect::loadXmlFile(const std::string &fileName)
 
         if (the_map)
         {
-            StatusEffect *const startEffect = new StatusEffect;
-            StatusEffect *const endEffect = new StatusEffect;
+            StatusEffect *startEffect = (*the_map)[1][index];
+            StatusEffect *endEffect = (*the_map)[0][index];
+            if (!startEffect)
+                startEffect = new StatusEffect;
+            if (!endEffect)
+                endEffect = new StatusEffect;
 
             startEffect->mMessage = XML::getProperty(
                 node, "start-message", "");
