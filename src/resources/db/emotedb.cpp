@@ -100,8 +100,11 @@ void EmoteDB::loadXmlFile(const std::string &fileName)
                 paths.getStringValue("emotesFile").c_str());
             continue;
         }
-
-        EmoteInfo *const currentInfo = new EmoteInfo;
+        EmoteInfo *currentInfo = nullptr;
+        if (mEmoteInfos.find(id) != mEmoteInfos.end())
+            currentInfo = mEmoteInfos[id];
+        else
+            currentInfo = new EmoteInfo;
         currentInfo->time = XML::getProperty(emoteNode, "time", 500);
 
         for_each_xml_child_node(spriteNode, emoteNode)
@@ -169,7 +172,11 @@ void EmoteDB::loadSpecialXmlFile(const std::string &fileName)
         }
         const int altId = XML::getProperty(emoteNode, "altid", -1);
 
-        EmoteInfo *const currentInfo = new EmoteInfo;
+        EmoteInfo *currentInfo = nullptr;
+        if (mEmoteInfos.find(id) != mEmoteInfos.end())
+            currentInfo = mEmoteInfos[id];
+        if (!currentInfo)
+            currentInfo = new EmoteInfo;
         currentInfo->time = XML::getProperty(emoteNode, "time", 500);
 
         for_each_xml_child_node(spriteNode, emoteNode)
