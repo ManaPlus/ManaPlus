@@ -75,7 +75,12 @@ void AvatarDB::loadXmlFile(const std::string &fileName)
         if (!xmlNameEqual(avatarNode, "avatar"))
             continue;
 
-        BeingInfo *const currentInfo = new BeingInfo;
+        const int id = XML::getProperty(avatarNode, "id", 0);
+        BeingInfo *currentInfo = nullptr;
+        if (mAvatarInfos.find(id) != mAvatarInfos.end())
+            currentInfo = mAvatarInfos[id];
+        else
+            currentInfo = new BeingInfo;
 
         currentInfo->setName(XML::langProperty(
             // TRANSLATORS: unknown info name
@@ -112,8 +117,7 @@ void AvatarDB::loadXmlFile(const std::string &fileName)
             }
         }
         currentInfo->setDisplay(display);
-
-        mAvatarInfos[XML::getProperty(avatarNode, "id", 0)] = currentInfo;
+        mAvatarInfos[id] = currentInfo;
     }
 
     mLoaded = true;
