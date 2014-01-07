@@ -79,7 +79,7 @@ void AvatarDB::loadXmlFile(const std::string &fileName)
         BeingInfo *currentInfo = nullptr;
         if (mAvatarInfos.find(id) != mAvatarInfos.end())
             currentInfo = mAvatarInfos[id];
-        else
+        if (!currentInfo)
             currentInfo = new BeingInfo;
 
         currentInfo->setName(XML::langProperty(
