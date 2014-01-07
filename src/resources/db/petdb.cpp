@@ -80,15 +80,19 @@ void PETDB::loadXmlFile(const std::string &fileName)
             continue;
         }
 
-        const int id = XML::getProperty(petNode, "id", 0);
-        if (id == 0)
+        const int id = XML::getProperty(petNode, "id", -1);
+        if (id == -1)
         {
             logger->log("PET Database: PET with missing ID in %s!",
                 paths.getStringValue("petsFile").c_str());
             continue;
         }
 
-        BeingInfo *const currentInfo = new BeingInfo;
+        BeingInfo *currentInfo = nullptr;
+        if (mPETInfos.find(id) != mPETInfos.end())
+            currentInfo = mPETInfos[id];
+        if (!currentInfo)
+            currentInfo = new BeingInfo;
 
         currentInfo->setName(XML::langProperty(petNode,
             // TRANSLATORS: unknown info name
