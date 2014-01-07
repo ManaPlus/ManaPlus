@@ -37,16 +37,17 @@ namespace
 
 void DeadDB::load()
 {
+    if (mLoaded)
+        unload();
+
     loadXmlFile(paths.getStringValue("deadMessagesFile"));
     loadXmlFile(paths.getStringValue("deadMessagesPatchFile"));
     loadXmlDir("deadMessagesPatchDir", loadXmlFile);
+    mLoaded = true;
 }
 
 void DeadDB::loadXmlFile(const std::string &fileName)
 {
-    if (mLoaded)
-        unload();
-
     XML::Document *doc = new XML::Document(fileName);
     const XmlNodePtr root = doc->rootNode();
 
@@ -78,7 +79,6 @@ void DeadDB::loadXmlFile(const std::string &fileName)
     }
 
     delete doc;
-    mLoaded = true;
 }
 
 void DeadDB::unload()
