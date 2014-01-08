@@ -511,6 +511,9 @@ DefaultsData* getPathsDefaults()
     AddDEF("avatarsFile", "avatars.xml");
     AddDEF("avatarsPatchFile", "avatars_patch.xml");
     AddDEF("avatarsPatchDir", "avatars.d");
+    AddDEF("modsFile", "mods.xml");
+    AddDEF("modsPatchFile", "mods_patch.xml");
+    AddDEF("modsPatchDir", "mods.d");
     AddDEF("npcsFile", "npcs.xml");
     AddDEF("npcsPatchFile", "npcs_patch.xml");
     AddDEF("npcsPatchDir", "npcs.d");

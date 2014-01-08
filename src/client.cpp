@@ -98,6 +98,7 @@
 #include "resources/db/sounddb.h"
 #include "resources/db/itemdb.h"
 #include "resources/db/mapdb.h"
+#include "resources/db/moddb.h"
 #include "resources/db/monsterdb.h"
 #include "resources/db/npcdb.h"
 #ifdef MANASERV_SUPPORT
@@ -832,6 +833,7 @@ void Client::gameClear()
     PaletteDB::unload();
     PETDB::unload();
     StatusEffect::unload();
+    ModDB::unload();
 
     if (Net::getLoginHandler())
         Net::getLoginHandler()->clearWorlds();
@@ -1454,6 +1456,7 @@ int Client::gameExec()
                     NPCDB::load();
                     PETDB::load();
                     EmoteDB::load();
+                    ModDB::load();
                     StatusEffect::load();
                     Units::loadUnits();
 
