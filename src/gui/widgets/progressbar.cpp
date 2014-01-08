@@ -46,10 +46,6 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     mSkin(nullptr),
     mProgress(progress),
     mProgressToGo(progress),
-    mBackgroundColor(Theme::getProgressColor(backColor >= 0
-        ? backColor : 0, mProgress)),
-    mBackgroundColorToGo(mBackgroundColor),
-    mForegroundColor2(getThemeColor(Theme::PROGRESS_BAR_OUTLINE)),
     mText(),
     mVertexes(new ImageCollection),
     mProgressPalette(backColor),
@@ -60,6 +56,11 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
     mSmoothColorChange(true),
     mRedraw(true)
 {
+    mBackgroundColor = Theme::getProgressColor(backColor >= 0
+        ? backColor : 0, mProgress);
+    mBackgroundColorToGo = mBackgroundColor;
+    mForegroundColor2 = getThemeColor(Theme::PROGRESS_BAR_OUTLINE);
+
     // The progress value is directly set at load time:
     if (mProgress > 1.0F || mProgress < 0.0F)
         mProgress = 1.0F;

@@ -41,10 +41,6 @@ class ColorPage final : public ListBox
         void resetAction();
 
         void adjustSize() override final;
-
-    private:
-        int mItemPadding;
-        unsigned int mRowHeight;
 };
 
 #endif  // GUI_WIDGETS_COLORPAGE_H

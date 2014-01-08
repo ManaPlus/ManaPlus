@@ -35,9 +35,9 @@ EditDialog::EditDialog(const std::string &restrict title,
     Window(title, modal, parent, "edit.xml"),
     gcn::ActionListener(),
     mEventOk(eventOk),
-    mTextField(new TextField(this)),
-    mDefaultWidth(width)
+    mTextField(new TextField(this))
 {
+    mDefaultWidth = width;
     mTextField->setText(msg);
 }
 

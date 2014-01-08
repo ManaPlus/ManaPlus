@@ -29,10 +29,10 @@
 ColorPage::ColorPage(const Widget2 *const widget,
                      gcn::ListModel *const listModel,
                      const std::string &skin) :
-    ListBox(widget, listModel, skin),
-    mItemPadding(mSkin ? mSkin->getOption("itemPadding") : 1),
-    mRowHeight(13)
+    ListBox(widget, listModel, skin)
 {
+    mItemPadding = mSkin ? mSkin->getOption("itemPadding") : 1;
+    mRowHeight = 13;
     const gcn::Font *const font = getFont();
     if (font)
         mRowHeight = font->getHeight() + 2 * mItemPadding;

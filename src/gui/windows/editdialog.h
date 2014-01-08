@@ -66,7 +66,6 @@ class EditDialog final : public Window, public gcn::ActionListener
     private:
         std::string mEventOk;
         TextField *mTextField;
-        int mDefaultWidth;
 };
 
 #endif  // GUI_WINDOWS_EDITDIALOG_H

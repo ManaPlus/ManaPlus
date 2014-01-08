@@ -42,20 +42,18 @@
 
 const int ITEM_ICON_SIZE = 32;
 
-float ShopListBox::mAlpha = 1.0;
-
 ShopListBox::ShopListBox(const Widget2 *const widget,
                          gcn::ListModel *const listModel) :
     ListBox(widget, listModel, "shoplistbox.xml"),
     mPlayerMoney(0),
     mShopItems(nullptr),
     mItemPopup(new ItemPopup),
-    mRowHeight(getFont()->getHeight()),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
     mWarningColor(getThemeColor(Theme::SHOP_WARNING)),
     mPriceCheck(true),
     mProtectItems(false)
 {
+    mRowHeight = getFont()->getHeight();
     mItemPopup->postInit();
     mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     mForegroundColor = getThemeColor(Theme::LISTBOX);
@@ -68,12 +66,12 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
     mPlayerMoney(0),
     mShopItems(shopListModel),
     mItemPopup(new ItemPopup),
-    mRowHeight(std::max(getFont()->getHeight(), ITEM_ICON_SIZE)),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
     mWarningColor(getThemeColor(Theme::SHOP_WARNING)),
     mPriceCheck(true),
     mProtectItems(false)
 {
+    mRowHeight = std::max(getFont()->getHeight(), ITEM_ICON_SIZE);
     mItemPopup->postInit();
     mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     mForegroundColor = getThemeColor(Theme::LISTBOX);

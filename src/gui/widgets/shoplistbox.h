@@ -59,12 +59,6 @@ class ShopListBox final : public ListBox
         void draw(gcn::Graphics *graphics) override final;
 
         /**
-         * Returns the height of a row.
-         */
-        unsigned int getRowHeight() const override final A_WARN_UNUSED
-        { return mRowHeight; }
-
-        /**
          * gives information about the current player's money
          */
         void setPlayersMoney(const int money);
@@ -100,15 +94,11 @@ class ShopListBox final : public ListBox
 
         ItemPopup *mItemPopup;
 
-        unsigned int mRowHeight; /**< Row Height */
-
         gcn::Color mBackgroundColor;
         gcn::Color mWarningColor;
 
         bool mPriceCheck;
         bool mProtectItems;
-
-        static float mAlpha;
 };
 
 #endif  // GUI_WIDGETS_SHOPLISTBOX_H

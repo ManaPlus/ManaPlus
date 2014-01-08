@@ -144,9 +144,7 @@ class ProgressBar final : public gcn::Widget,
         float mProgress;
         float mProgressToGo;
 
-        gcn::Color mBackgroundColor;
         gcn::Color mBackgroundColorToGo;
-        gcn::Color mForegroundColor2;
 
         std::string mText;
         ImageCollection *mVertexes;
