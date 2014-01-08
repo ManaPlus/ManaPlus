@@ -871,7 +871,7 @@ impHandler0(dirs)
 
 impHandler2(info)
 {
-    if (!tab || !player_node || !tmwServerVersion > 0)
+    if (!tab || !player_node || tmwServerVersion > 0)
         return;
 
     switch (tab->getType())
