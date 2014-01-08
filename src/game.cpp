@@ -807,9 +807,6 @@ void Game::handleMove()
         && chatWindow && !chatWindow->isInputFocused()
         && !InventoryWindow::isAnyInputFocused() && !quitDialog)
     {
-        // Get the state of the keyboard keys
-        keyboard.refreshActiveKeys();
-
         // Ignore input if either "ignore" key is pressed
         // Stops the character moving about if the user's window manager
         // uses "ignore+arrow key" to switch virtual desktops.

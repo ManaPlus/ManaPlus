@@ -524,6 +524,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
     {
         case SDL_KEYDOWN:
         {
+            keyboard.refreshActiveKeys();
             updateConditionMask();
             if (handleAssignKey(event, INPUT_KEYBOARD))
                 return true;
@@ -551,6 +552,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
         }
         case SDL_KEYUP:
         {
+            keyboard.refreshActiveKeys();
             updateConditionMask();
             keyboard.handleDeActicateKey(event);
             break;

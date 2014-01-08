@@ -413,6 +413,10 @@ void Client::gameInit()
     Joystick::init();
     createWindows();
 
+    keyboard.update();
+    if (joystick)
+        joystick->update();
+
     // Initialize default server
     mCurrentServer.hostname = mOptions.serverName;
     mCurrentServer.port = mOptions.serverPort;
