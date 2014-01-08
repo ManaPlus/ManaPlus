@@ -345,7 +345,6 @@ void Joystick::handleRepeat(const int time)
     {
         bool repeat(false);
         const int key = (*it).first;
-        int &keyTime = (*it).second;
         if (key >= 0 && key < mButtonsNumber)
         {
             if (mActiveButtons[key])
@@ -353,6 +352,7 @@ void Joystick::handleRepeat(const int time)
         }
         if (repeat)
         {
+            int &keyTime = (*it).second;
             if (time > keyTime && abs(time - keyTime)
                 > SDL_DEFAULT_REPEAT_DELAY * 10)
             {

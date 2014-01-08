@@ -251,7 +251,6 @@ void KeyboardConfig::handleRepeat(const int time)
     {
         bool repeat(false);
         const int key = (*it).first;
-        int &keyTime = (*it).second;
         if (key >= 0)
         {
             if (mActiveKeys && mActiveKeys[key])
@@ -264,6 +263,7 @@ void KeyboardConfig::handleRepeat(const int time)
         }
         if (repeat)
         {
+            int &keyTime = (*it).second;
             if (time > keyTime && abs(time - keyTime)
                 > static_cast<signed>(mRepeatTime))
             {
