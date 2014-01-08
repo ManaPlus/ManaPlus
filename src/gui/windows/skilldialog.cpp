@@ -440,7 +440,7 @@ void SkillDialog::loadSkills()
 
 void SkillDialog::loadXmlFile(const std::string &fileName)
 {
-    XML::Document doc(paths.getStringValue("skillsFile"));
+    XML::Document doc(fileName);
     XmlNodePtr root = doc.rootNode();
 
     int setCount = 0;
