@@ -646,7 +646,10 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
     for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
-        std::string name = updateFiles[updateIndex].name;
+        const UpdateFile &file = updateFiles[updateIndex];
+        if (!file.group.empty())
+            continue;
+        const std::string name = file.name;
         if (strStartWith(name, "manaplus_"))
         {
             struct stat statbuf;
