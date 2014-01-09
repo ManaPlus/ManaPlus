@@ -2991,7 +2991,10 @@ void Client::setIcon()
 
 #ifdef WIN32
     static SDL_SysWMinfo pInfo;
-    SDL::getWindowWMInfo(mainGraphics->getWindow(), &pInfo);
+    if (mainGraphics)
+        SDL::getWindowWMInfo(mainGraphics->getWindow(), &pInfo);
+    else
+        SDL::getWindowWMInfo(nullptr, &pInfo);
     // Attempt to load icon from .ico file
     HICON icon = (HICON) LoadImage(nullptr, iconFile.c_str(),
         IMAGE_ICON, 64, 64, LR_LOADFROMFILE);
