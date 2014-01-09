@@ -20,6 +20,8 @@
 
 #include "resources/beingcommon.h"
 
+#include "logger.h"
+
 #include "utils/files.h"
 #include "utils/physfstools.h"
 #include "utils/stringutils.h"
@@ -51,7 +53,7 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info, XmlNodePtr node,
 
 void BeingCommon::getIncludeFiles(const std::string &dir, StringVect &list)
 {
-    const std::string path = dir + PhysFs::getDirSeparator();
+    const std::string path = dir + "/";
     StringVect tempList;
     Files::getFilesWithDir(path, tempList);
     FOR_EACH (StringVectCIter, it, tempList)

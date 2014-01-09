@@ -650,7 +650,7 @@ bool Theme::tryThemePath(const std::string &themeName)
 
 void Theme::fillSkinsList(StringVect &list)
 {
-    Files::getFiles(branding.getStringValue("guiThemePath"), list);
+    Files::getDirs(branding.getStringValue("guiThemePath"), list);
 }
 
 void Theme::fillFontsList(StringVect &list)

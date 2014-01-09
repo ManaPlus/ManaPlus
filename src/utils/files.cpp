@@ -208,6 +208,17 @@ void Files::getFiles(const std::string &path, StringVect &list)
     PhysFs::freeList(fonts);
 }
 
+void Files::getDirs(const std::string &path, StringVect &list)
+{
+    char **fonts = PhysFs::enumerateFiles(path.c_str());
+    for (char **i = fonts; *i; i++)
+    {
+        if (PhysFs::isDirectory((path + *i).c_str()))
+            list.push_back(*i);
+    }
+    PhysFs::freeList(fonts);
+}
+
 void Files::getFilesWithDir(const std::string &path, StringVect &list)
 {
     char **fonts = PhysFs::enumerateFiles(path.c_str());

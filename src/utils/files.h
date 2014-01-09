@@ -57,6 +57,8 @@ namespace Files
 
     void getFiles(const std::string &path, StringVect &list);
 
+    void getDirs(const std::string &path, StringVect &list);
+
     void getFilesWithDir(const std::string &restrict path,
                          StringVect &restrict list);
 }  // namespace Files
