@@ -51,10 +51,17 @@ class ModInfo final
         const std::string &getHelp() const A_WARN_UNUSED
         { return mHelp; }
 
+        void setLocalDir(const std::string &text)
+        { mLocalDir = text; }
+
+        const std::string &getLocalDir() const A_WARN_UNUSED
+        { return mLocalDir; }
+
     private:
         std::string mName;
         std::string mDescription;
         std::string mHelp;
+        std::string mLocalDir;
 };
 
 typedef std::map<std::string, ModInfo*> ModInfos;

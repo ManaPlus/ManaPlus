@@ -28,6 +28,7 @@ ModInfo::ModInfo() :
     // TRANSLATORS: being info default name
     mName(_("unnamed")),
     mDescription(),
-    mHelp()
+    mHelp(),
+    mLocalDir()
 {
 }

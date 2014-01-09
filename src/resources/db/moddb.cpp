@@ -83,10 +83,12 @@ void ModDB::loadXmlFile(const std::string &fileName)
             currentInfo = new ModInfo;
 
         currentInfo->setName(name);
-        currentInfo->setDescription(XML::getProperty(
+        currentInfo->setDescription(XML::langProperty(
             modNode, "description", ""));
         currentInfo->setHelp(XML::getProperty(
             modNode, "help", ""));
+        currentInfo->setLocalDir(XML::getProperty(
+            modNode, "localdir", ""));
 
         mModInfos[name] = currentInfo;
     }
