@@ -32,13 +32,14 @@
 #include "gui/widgets/tabs/setup_audio.h"
 #include "gui/widgets/tabs/setup_chat.h"
 #include "gui/widgets/tabs/setup_colors.h"
-#include "gui/widgets/tabs/setup_joystick.h"
-#include "gui/widgets/tabs/setup_other.h"
-#include "gui/widgets/tabs/setup_theme.h"
 #include "gui/widgets/tabs/setup_input.h"
+#include "gui/widgets/tabs/setup_joystick.h"
+#include "gui/widgets/tabs/setup_mods.h"
+#include "gui/widgets/tabs/setup_other.h"
 #include "gui/widgets/tabs/setup_perfomance.h"
 #include "gui/widgets/tabs/setup_players.h"
 #include "gui/widgets/tabs/setup_relations.h"
+#include "gui/widgets/tabs/setup_theme.h"
 #include "gui/widgets/tabs/setup_touch.h"
 #include "gui/widgets/tabs/setup_video.h"
 #include "gui/widgets/tabs/setup_visual.h"
@@ -124,6 +125,7 @@ void Setup::postInit()
     mTabs.push_back(new Setup_Players(this));
     mTabs.push_back(new Setup_Relations(this));
     mTabs.push_back(new Setup_Theme(this));
+    mTabs.push_back(new Setup_Mods(this));
     mTabs.push_back(new Setup_Other(this));
 
     FOR_EACH (std::list<SetupTab*>::const_iterator, i, mTabs)

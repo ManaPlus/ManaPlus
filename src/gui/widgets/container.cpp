@@ -35,7 +35,11 @@ Container::~Container()
 {
     if (gui)
         gui->removeDragged(this);
+    removeControls();
+}
 
+void Container::removeControls()
+{
     while (!mWidgets.empty())
         delete mWidgets.front();
 }

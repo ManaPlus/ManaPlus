@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
+ *  Copyright (C) 2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  Andrei Karas
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -20,28 +20,29 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_DB_MODDB_H
-#define RESOURCES_DB_MODDB_H
+#ifndef GUI_WIDGETS_TABS_SETUP_MODS_H
+#define GUI_WIDGETS_TABS_SETUP_MODS_H
 
-#include "resources/modinfo.h"
+#include "gui/widgets/tabs/setuptabscroll.h"
 
-#include <string>
-
-#include "localconsts.h"
-
-class ModInfo;
-
-namespace ModDB
+class Setup_Mods final : public SetupTabScroll
 {
-    void load();
+    public:
+        explicit Setup_Mods(const Widget2 *const widget);
 
-    void unload();
+        A_DELETE_COPY(Setup_Mods)
 
-    ModInfo *get(const std::string &name) A_WARN_UNUSED;
+        ~Setup_Mods();
 
-    void loadXmlFile(const std::string &fileName);
+        void apply() override final;
 
-    const ModInfos &getAll();
-}
+        void externalUpdated() override final;
 
-#endif  // RESOURCES_DB_MODDB_H
+        void loadMods();
+
+        void saveMods();
+
+    protected:
+};
+
+#endif  // GUI_WIDGETS_TABS_SETUP_MODS_H

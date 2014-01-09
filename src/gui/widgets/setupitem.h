@@ -96,6 +96,15 @@ class SetupItem : public gcn::ActionListener,
 
         void rereadValue();
 
+        void setValue(const std::string str)
+        { mValue = str; }
+
+        std::string getValue() const
+        { return mValue; }
+
+        std::string getEventName() const
+        { return mEventName; }
+
     protected:
         SetupItem(const std::string &restrict text,
                   const std::string &restrict description,

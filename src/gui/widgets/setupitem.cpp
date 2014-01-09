@@ -105,6 +105,9 @@ Configuration *SetupItem::getConfig() const
 
 void SetupItem::load()
 {
+    if (mKeyName.empty())
+        return;
+
     const Configuration *const cfg = getConfig();
     if (mUseDefault)
     {
@@ -135,6 +138,9 @@ void SetupItem::load()
 
 void SetupItem::save() const
 {
+    if (mKeyName.empty())
+        return;
+
     Configuration *const cfg = getConfig();
     cfg->setValue(mKeyName, mValue);
 }

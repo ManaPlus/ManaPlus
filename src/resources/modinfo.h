@@ -59,5 +59,6 @@ class ModInfo final
 
 typedef std::map<std::string, ModInfo*> ModInfos;
 typedef ModInfos::iterator ModInfoIterator;
+typedef ModInfos::const_iterator ModInfoCIterator;
 
 #endif  // RESOURCES_MODINFO_H

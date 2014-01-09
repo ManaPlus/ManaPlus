@@ -45,6 +45,11 @@ SetupTabScroll::~SetupTabScroll()
     delete mContainer;
     mContainer = nullptr;
 
+    removeItems();
+}
+
+void SetupTabScroll::removeItems()
+{
     std::set<SetupItem*>::iterator it = mAllItems.begin();
     const std::set<SetupItem*>::iterator it_end = mAllItems.end();
     while (it != it_end)
@@ -53,6 +58,15 @@ SetupTabScroll::~SetupTabScroll()
         ++ it;
     }
     mAllItems.clear();
+
+    mItems.clear();
+}
+
+void SetupTabScroll::clear()
+{
+    removeItems();
+    mContainer->removeControls();
+    mContainer->clear();
 }
 
 void SetupTabScroll::addControl(SetupItem *const widget)

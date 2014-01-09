@@ -26,7 +26,6 @@
 #include "logger.h"
 
 #include "resources/beingcommon.h"
-#include "resources/modinfo.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
@@ -58,7 +57,6 @@ void ModDB::loadXmlFile(const std::string &fileName)
     {
         logger->log("Mods Database: Error while loading %s!",
             fileName.c_str());
-        mLoaded = true;
         return;
     }
 
@@ -108,4 +106,9 @@ ModInfo *ModDB::get(const std::string &name)
         return nullptr;
     else
         return i->second;
+}
+
+const ModInfos &ModDB::getAll()
+{
+    return mModInfos;
 }

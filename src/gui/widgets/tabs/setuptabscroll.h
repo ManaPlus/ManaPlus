@@ -65,7 +65,14 @@ class SetupTabScroll : public SetupTab
 
         void reread(const std::string &name);
 
+        void clear();
+
+        const std::set<SetupItem*> &getAllItems() const
+        { return mAllItems; }
+
     protected:
+        void removeItems();
+
         VertContainer *mContainer;
         ScrollArea *mScroll;
         std::map<std::string, SetupItem*> mItems;
