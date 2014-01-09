@@ -1176,10 +1176,12 @@ int Client::gameExec()
                 Net::getPartyHandler()->clear();
                 if (chatLogger)
                     chatLogger->clear();
-                if (mOptions.dataPath.empty())
-                    UpdaterWindow::unloadMods(mOldUpdates);
-                else
+                if (!mOptions.dataPath.empty())
                     UpdaterWindow::unloadMods(mOptions.dataPath);
+                else
+                    UpdaterWindow::unloadMods(mOldUpdates);
+                if (!mOptions.skipUpdate)
+                    UpdaterWindow::unloadMods(mOldUpdates + "/fix/");
             }
 
             mOldState = mState;

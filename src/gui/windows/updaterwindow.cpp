@@ -1033,6 +1033,7 @@ void UpdaterWindow::loadMods(const std::string &dir,
         }
     }
 
+    loadDirMods(dir + "/local/");
 }
 
 void UpdaterWindow::loadDirMods(const std::string &dir)
@@ -1051,7 +1052,12 @@ void UpdaterWindow::loadDirMods(const std::string &dir)
         if (modIt == mods.end())
             continue;
         const ModInfo *const mod = (*modIt).second;
-        resman->addToSearchPath(dir + "/" + mod->getLocalDir(), false);
+        if (mod)
+        {
+            const std::string localDir = mod->getLocalDir();
+            if (!localDir.empty())
+                resman->addToSearchPath(dir + "/" + localDir, false);
+        }
     }
 }
 
@@ -1069,6 +1075,11 @@ void UpdaterWindow::unloadMods(const std::string &dir)
         if (modIt == mods.end())
             continue;
         const ModInfo *const mod = (*modIt).second;
-        resman->removeFromSearchPath(dir + "/" + mod->getLocalDir());
+        if (mod)
+        {
+            const std::string localDir = mod->getLocalDir();
+            if (!localDir.empty())
+                resman->removeFromSearchPath(dir + "/" + localDir);
+        }
     }
 }
