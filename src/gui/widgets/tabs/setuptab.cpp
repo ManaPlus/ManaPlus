@@ -37,3 +37,7 @@ SetupTab::SetupTab(const Widget2 *const widget) :
 void SetupTab::externalUpdated()
 {
 }
+
+void SetupTab::externalUnloaded()
+{
+}

@@ -59,6 +59,7 @@ Setup::Setup() :
     Window(_("Setup"), false, nullptr, "setup.xml"),
     gcn::ActionListener(),
     mTabs(),
+    mModsTab(nullptr),
     mWindowsToReset(),
     mButtons(),
     mResetWindows(nullptr),
@@ -125,7 +126,6 @@ void Setup::postInit()
     mTabs.push_back(new Setup_Players(this));
     mTabs.push_back(new Setup_Relations(this));
     mTabs.push_back(new Setup_Theme(this));
-    mTabs.push_back(new Setup_Mods(this));
     mTabs.push_back(new Setup_Other(this));
 
     FOR_EACH (std::list<SetupTab*>::const_iterator, i, mTabs)
@@ -203,10 +203,30 @@ void Setup::setInGame(const bool inGame)
 
 void Setup::externalUpdate()
 {
+    mModsTab = new Setup_Mods(this);
+    mTabs.push_back(mModsTab);
+    mPanel->addTab(mModsTab->getName(), mModsTab);
     FOR_EACH (std::list<SetupTab*>::const_iterator, it, mTabs)
     {
         if (*it)
             (*it)->externalUpdated();
+    }
+}
+
+void Setup::externalUnload()
+{
+    FOR_EACH (std::list<SetupTab*>::const_iterator, it, mTabs)
+    {
+        if (*it)
+            (*it)->externalUnloaded();
+    }
+    if (mModsTab)
+    {
+        mTabs.remove(mModsTab);
+        Tab *const tab = mPanel->getTab(mModsTab->getName());
+        mPanel->removeTab(tab);
+        delete mModsTab;
+        mModsTab = nullptr;
     }
 }
 

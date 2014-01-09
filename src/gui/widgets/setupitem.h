@@ -89,6 +89,8 @@ class SetupItem : public gcn::ActionListener,
 
         virtual void externalUpdated(const std::string &eventName);
 
+        virtual void externalUnloaded(const std::string &eventName);
+
         bool isMainConfig() const A_WARN_UNUSED
         { return mMainConfig; }
 

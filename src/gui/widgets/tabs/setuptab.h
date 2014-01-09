@@ -57,6 +57,8 @@ class SetupTab : public Container,
 
         virtual void externalUpdated();
 
+        virtual void externalUnloaded();
+
     protected:
         explicit SetupTab(const Widget2 *const widget);
 

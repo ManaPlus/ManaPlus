@@ -1720,6 +1720,8 @@ int Client::gameExec()
                     mServerName.clear();
                     serverConfig.write();
                     serverConfig.unload();
+                    if (setupWindow)
+                        setupWindow->externalUnload();
 
                     mState = STATE_CHOOSE_SERVER;
                     BLOCK_END("Client::gameExec STATE_SWITCH_SERVER")

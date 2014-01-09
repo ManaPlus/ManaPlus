@@ -184,6 +184,10 @@ void SetupItem::externalUpdated(const std::string &eventName A_UNUSED)
     toWidget();
 }
 
+void SetupItem::externalUnloaded(const std::string &eventName A_UNUSED)
+{
+}
+
 void SetupItem::fixFirstItemSize(gcn::Widget *const widget)
 {
     const int maxSize = mParent->getPreferredFirstItemSize();

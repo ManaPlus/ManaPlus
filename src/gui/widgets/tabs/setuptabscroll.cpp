@@ -134,6 +134,18 @@ void SetupTabScroll::externalUpdated()
     }
 }
 
+void SetupTabScroll::externalUnloaded()
+{
+    for (std::map<std::string, SetupItem*>::const_iterator
+         iter = mItems.begin(), iter_end = mItems.end();
+         iter != iter_end; ++ iter)
+    {
+        SetupItem *const widget = (*iter).second;
+        if (widget && !widget->isMainConfig())
+            widget->externalUnloaded((*iter).first);
+    }
+}
+
 void SetupTabScroll::widgetResized(const gcn::Event &event A_UNUSED)
 {
     mScroll->setWidth(getWidth() - 12);

@@ -57,6 +57,8 @@ class Setup final : public Window, public gcn::ActionListener
 
         void externalUpdate();
 
+        void externalUnload();
+
         void registerWindowForReset(Window *const window);
 
         void clearWindowsForReset()
@@ -72,6 +74,7 @@ class Setup final : public Window, public gcn::ActionListener
 
     private:
         std::list<SetupTab*> mTabs;
+        SetupTab *mModsTab;
         std::list<Window*> mWindowsToReset;
         std::vector<Button*> mButtons;
         Button *mResetWindows;
