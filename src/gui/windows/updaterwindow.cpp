@@ -39,6 +39,8 @@
 
 #include "resources/resourcemanager.h"
 
+#include "resources/db/moddb.h"
+
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
@@ -75,14 +77,12 @@ static std::vector<UpdateFile> loadXMLFile(const std::string &fileName)
         if (!xmlNameEqual(fileNode, "update"))
             continue;
 
-        if (XML::getProperty(fileNode, "group", "default") != "default")
-            continue;
-
         UpdateFile file;
         file.name = XML::getProperty(fileNode, "file", "");
         file.hash = XML::getProperty(fileNode, "hash", "");
         file.type = XML::getProperty(fileNode, "type", "data");
         file.desc = XML::getProperty(fileNode, "description", "");
+        file.group = XML::getProperty(fileNode, "group", "");
         const std::string version = XML::getProperty(
             fileNode, "version", "");
         if (!version.empty())
@@ -128,6 +128,7 @@ static std::vector<UpdateFile> loadTxtFile(const std::string &fileName)
             thisFile.name = name;
             thisFile.hash = hash;
             thisFile.type = "data";
+            thisFile.group = "";
             thisFile.required = true;
             thisFile.desc.clear();
 
@@ -573,10 +574,14 @@ void UpdaterWindow::loadUpdates()
     const unsigned sz = static_cast<unsigned>(mUpdateFiles.size());
     for (mUpdateIndex = 0; mUpdateIndex < sz; mUpdateIndex++)
     {
-        UpdaterWindow::addUpdateFile(resman, mUpdatesDir, fixPath,
-            mUpdateFiles[mUpdateIndex].name, false);
+        const UpdateFile &file = mUpdateFiles[mUpdateIndex];
+        if (!file.group.empty())
+            continue;
+        UpdaterWindow::addUpdateFile(resman, mUpdatesDir,
+            fixPath, file.name, false);
     }
     loadManaPlusUpdates(mUpdatesDir, resman);
+    loadMods(mUpdatesDir, resman, mUpdateFiles);
 }
 
 void UpdaterWindow::loadLocalUpdates(const std::string &dir)
@@ -599,10 +604,14 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
     for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
-        UpdaterWindow::addUpdateFile(resman, dir, fixPath,
-            updateFiles[updateIndex].name, false);
+        const UpdateFile &file = updateFiles[updateIndex];
+        if (!file.group.empty())
+            continue;
+        UpdaterWindow::addUpdateFile(resman, dir,
+            fixPath, file.name, false);
     }
     loadManaPlusUpdates(dir, resman);
+    loadMods(dir, resman, updateFiles);
 }
 
 void UpdaterWindow::unloadUpdates(const std::string &dir)
@@ -956,13 +965,9 @@ void UpdaterWindow::handleLink(const std::string &link,
                                gcn::MouseEvent *event A_UNUSED)
 {
     if (strStartWith(link, "http://") || strStartWith(link, "https://"))
-    {
         openBrowser(link);
-    }
     else if (link == "news")
-    {
         loadFile("news");
-    }
 }
 
 void UpdaterWindow::loadFile(std::string file)
@@ -976,4 +981,94 @@ void UpdaterWindow::loadFile(std::string file)
 
     for (size_t i = 0, sz = lines.size(); i < sz; ++i)
         mBrowserBox->addRow(lines[i]);
+}
+
+void UpdaterWindow::loadMods(const std::string &dir,
+                             const ResourceManager *const resman,
+                             const std::vector<UpdateFile> &updateFiles)
+{
+    ModDB::load();
+    std::string modsString = serverConfig.getValue("mods", "");
+    std::set<std::string> modsList;
+    splitToStringSet(modsList, modsString, '|');
+
+    const std::string fixPath = dir + "/fix";
+    for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
+         updateFiles.size()); updateIndex < sz; updateIndex ++)
+    {
+        const UpdateFile &file = updateFiles[updateIndex];
+        if (file.group.empty())
+            continue;
+        const std::set<std::string>::const_iterator
+            it = modsList.find(file.group);
+        if (it != modsList.end())
+        {
+            UpdaterWindow::addUpdateFile(resman, dir,
+                fixPath, file.name, false);
+        }
+    }
+
+    std::vector<UpdateFile> updateFiles2
+        = loadXMLFile(std::string(fixPath).append("/").append(xmlUpdateFile));
+
+    for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
+         updateFiles2.size()); updateIndex < sz; updateIndex ++)
+    {
+        const UpdateFile &file = updateFiles2[updateIndex];
+        if (file.group.empty())
+            continue;
+        std::string name = file.name;
+        if (strStartWith(name, "manaplus_"))
+        {
+            const std::set<std::string>::const_iterator
+                it = modsList.find(file.group);
+            if (it != modsList.end())
+            {
+                struct stat statbuf;
+                std::string file = std::string(fixPath).append(
+                    "/").append(name);
+                if (!stat(file.c_str(), &statbuf))
+                    resman->addToSearchPath(file, false);
+            }
+        }
+    }
+
+}
+
+void UpdaterWindow::loadDirMods(const std::string &dir)
+{
+    ModDB::load();
+    const ResourceManager *const resman = ResourceManager::getInstance();
+    const ModInfos &mods = ModDB::getAll();
+
+    std::string modsString = serverConfig.getValue("mods", "");
+    StringVect modsList;
+    splitToStringVector(modsList, modsString, '|');
+    FOR_EACH (StringVectCIter, it, modsList)
+    {
+        const std::string &name = *it;
+        const ModInfoCIterator modIt = mods.find(name);
+        if (modIt == mods.end())
+            continue;
+        const ModInfo *const mod = (*modIt).second;
+        resman->addToSearchPath(dir + "/" + mod->getLocalDir(), false);
+    }
+}
+
+void UpdaterWindow::unloadMods(const std::string &dir)
+{
+    const ResourceManager *const resman = ResourceManager::getInstance();
+    const ModInfos &mods = ModDB::getAll();
+    std::string modsString = serverConfig.getValue("mods", "");
+    StringVect modsList;
+    splitToStringVector(modsList, modsString, '|');
+    FOR_EACH (StringVectCIter, it, modsList)
+    {
+        const std::string &name = *it;
+        const ModInfoCIterator modIt = mods.find(name);
+        if (modIt == mods.end())
+            continue;
+        const ModInfo *const mod = (*modIt).second;
+        resman->removeFromSearchPath(dir + "/" + mod->getLocalDir());
+    }
 }

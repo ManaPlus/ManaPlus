@@ -51,6 +51,7 @@ struct UpdateFile final
             hash(),
             type(),
             desc(),
+            group(),
             required(false)
         {
         }
@@ -58,6 +59,7 @@ struct UpdateFile final
         std::string hash;
         std::string type;
         std::string desc;
+        std::string group;
         bool required;
 };
 
@@ -150,6 +152,14 @@ class UpdaterWindow final : public Window,
                                       const ResourceManager *const resman);
 
     static unsigned long getFileHash(const std::string &filePath);
+
+    static void loadMods(const std::string &dir,
+                         const ResourceManager *const resman,
+                         const std::vector<UpdateFile> &updateFiles);
+
+    static void loadDirMods(const std::string &dir);
+
+    static void unloadMods(const std::string &dir);
 
 private:
     void download();

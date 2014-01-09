@@ -1176,6 +1176,10 @@ int Client::gameExec()
                 Net::getPartyHandler()->clear();
                 if (chatLogger)
                     chatLogger->clear();
+                if (mOptions.dataPath.empty())
+                    UpdaterWindow::unloadMods(mOldUpdates);
+                else
+                    UpdaterWindow::unloadMods(mOptions.dataPath);
             }
 
             mOldState = mState;
@@ -1372,6 +1376,7 @@ int Client::gameExec()
                     {
                         mState = STATE_LOAD_DATA;
                         mOldUpdates = "";
+                        UpdaterWindow::loadDirMods(mOptions.dataPath);
                     }
                     else if (loginData.updateType & LoginData::Upd_Skip)
                     {
@@ -1456,7 +1461,7 @@ int Client::gameExec()
                     NPCDB::load();
                     PETDB::load();
                     EmoteDB::load();
-                    ModDB::load();
+//                    ModDB::load();
                     StatusEffect::load();
                     Units::loadUnits();
 
