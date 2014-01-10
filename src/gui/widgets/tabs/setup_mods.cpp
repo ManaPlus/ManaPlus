@@ -71,6 +71,13 @@ void Setup_Mods::loadMods()
     splitToStringSet(modsList, modsString, '|');
 
     const ModInfos &mods = ModDB::getAll();
+    if (mods.empty())
+    {
+        // TRANSLATORS: settings label
+        new SetupItemLabel(_("No mods present"), "", this, false);
+        return;
+    }
+
     FOR_EACH (ModInfoCIterator, it, mods)
     {
         const ModInfo *const info = (*it).second;
