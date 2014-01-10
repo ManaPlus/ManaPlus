@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-01-04 13:58+0300\n"
+"POT-Creation-Date: 2014-01-10 12:12+0300\n"
 "PO-Revision-Date: 2013-12-28 08:13+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/manaplus/"
@@ -527,31 +527,31 @@ msgstr ""
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1119 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:58
+#: src/client.cpp:1131 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:59
 msgid "Setup"
 msgstr "Pengaturan"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1123 src/gui/widgets/tabs/setup_perfomance.cpp:50
+#: src/client.cpp:1135 src/gui/widgets/tabs/setup_perfomance.cpp:50
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1126 src/gui/widgets/tabs/setup_video.cpp:221
+#: src/client.cpp:1138 src/gui/widgets/tabs/setup_video.cpp:221
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1129 src/gui/widgets/tabs/setup_theme.cpp:279
+#: src/client.cpp:1141 src/gui/widgets/tabs/setup_theme.cpp:289
 msgid "Theme"
 msgstr "Tema"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:1132 src/gui/windowmenu.cpp:72
+#: src/client.cpp:1144 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:50
 msgid "Help"
 msgstr "Bantuan"
@@ -564,41 +564,41 @@ msgstr "Bantuan"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1136 src/gui/popups/popupmenu.cpp:618
+#: src/client.cpp:1148 src/gui/popups/popupmenu.cpp:618
 #: src/gui/windows/didyouknowwindow.cpp:78
 #: src/gui/windows/inventorywindow.cpp:258 src/gui/windows/npcdialog.cpp:71
-#: src/gui/windows/npcdialog.cpp:109 src/gui/windows/questswindow.cpp:134
+#: src/gui/windows/npcdialog.cpp:109 src/gui/windows/questswindow.cpp:136
 #: src/gui/windows/shopwindow.cpp:77
 msgid "Close"
 msgstr "Tutup"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1255
+#: src/client.cpp:1273
 msgid "Connecting to server"
 msgstr "Terhubung dengan server"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1299
+#: src/client.cpp:1317
 msgid "Logging in"
 msgstr "Masuk"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1341
+#: src/client.cpp:1359
 msgid "Entering game world"
 msgstr "Memasuki arena permainan"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1464
+#: src/client.cpp:1484
 msgid "Requesting characters"
 msgstr "Pemilihan karakter"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1504
+#: src/client.cpp:1524
 msgid "Connecting to the game server"
 msgstr "terhubung dengan server"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1517
+#: src/client.cpp:1537
 msgid "Changing game servers"
 msgstr "Pergantian server"
 
@@ -613,7 +613,7 @@ msgstr "Pergantian server"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1578 src/client.cpp:1589 src/client.cpp:1771
+#: src/client.cpp:1598 src/client.cpp:1609 src/client.cpp:1793
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
 #: src/gui/windows/charcreatedialog.cpp:358
@@ -626,65 +626,65 @@ msgid "Error"
 msgstr "Kesalahan"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1601
+#: src/client.cpp:1621
 msgid "Requesting registration details"
 msgstr "Meminta detail registrasi"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1642
+#: src/client.cpp:1662
 msgid "Password Change"
 msgstr "Ubah sandi"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1644
+#: src/client.cpp:1664
 msgid "Password changed successfully!"
 msgstr "Perubahan sandi berhasil"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1666
+#: src/client.cpp:1686
 msgid "Email Change"
 msgstr "Perubahan email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1668
+#: src/client.cpp:1688
 msgid "Email changed successfully!"
 msgstr "Perubahan email berhasil"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1691
+#: src/client.cpp:1711
 msgid "Unregister Successful"
 msgstr "Telah tidak terdaftar"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1693
+#: src/client.cpp:1713
 msgid "Farewell, come back any time..."
 msgstr "Selamat tinggal, datang kembali setiap saat"
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1968 src/client.cpp:1983 src/client.cpp:2028
-#: src/client.cpp:2044 src/client.cpp:2486 src/client.cpp:2494
+#: src/client.cpp:1990 src/client.cpp:2005 src/client.cpp:2050
+#: src/client.cpp:2066 src/client.cpp:2516 src/client.cpp:2524
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s tidak ada dan tidak dapat dibuat!keluar."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2200
+#: src/client.cpp:2222
 #, c-format
 msgid "Invalid update host: %s."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2241 src/client.cpp:2248
+#: src/client.cpp:2263 src/client.cpp:2270
 msgid "Error creating updates directory!"
 msgstr "Gagal membuat direktori update!"
 
-#: src/client.cpp:2270 src/client.cpp:2283
+#: src/client.cpp:2292 src/client.cpp:2305
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "kesalahan %s tidak ada dan tidak dapat dibuat!keluar."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2944
+#: src/client.cpp:2974
 msgid "Do you want to open support page?"
 msgstr ""
 
@@ -1185,11 +1185,11 @@ msgstr "Tambahkan nama ke Obrolan"
 #: src/gui/windows/editserverdialog.cpp:78
 #: src/gui/windows/itemamountwindow.cpp:209
 #: src/gui/windows/npcpostdialog.cpp:68 src/gui/windows/quitdialog.cpp:69
-#: src/gui/windows/registerdialog.cpp:76 src/gui/windows/setup.cpp:90
+#: src/gui/windows/registerdialog.cpp:76 src/gui/windows/setup.cpp:92
 #: src/gui/windows/socialwindow.cpp:1231
 #: src/gui/windows/textcommandeditor.cpp:201 src/gui/windows/textdialog.cpp:55
 #: src/gui/windows/unregisterdialog.cpp:54
-#: src/gui/windows/updaterwindow.cpp:179
+#: src/gui/windows/updaterwindow.cpp:180
 msgid "Cancel"
 msgstr "Batal"
 
@@ -1410,7 +1410,7 @@ msgstr "Tambahkan semua ke Penukaran"
 #. TRANSLATORS: setup button
 #: src/gui/popups/popupmenu.cpp:1894 src/gui/popups/popupmenu.cpp:2024
 #: src/gui/popups/popupmenu.cpp:2065 src/gui/windows/inventorywindow.cpp:254
-#: src/gui/windows/inventorywindow.cpp:780 src/gui/windows/setup.cpp:92
+#: src/gui/windows/inventorywindow.cpp:780 src/gui/windows/setup.cpp:94
 msgid "Store"
 msgstr "Simpan"
 
@@ -1509,8 +1509,8 @@ msgstr "Pindahkan ke chat"
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: language
 #: src/gui/popups/popupmenu.cpp:2214 src/gui/popups/popupmenu.cpp:2292
-#: src/gui/widgets/tabs/setup_theme.cpp:58
-#: src/gui/widgets/tabs/setup_theme.cpp:145
+#: src/gui/widgets/tabs/setup_theme.cpp:60
+#: src/gui/widgets/tabs/setup_theme.cpp:147
 #: src/gui/windows/socialwindow.cpp:997
 msgid "(default)"
 msgstr "(kembalikan)"
@@ -2799,13 +2799,13 @@ msgstr ""
 
 #. TRANSLATORS: setup item button
 #. TRANSLATORS: servers dialog button
-#: src/gui/widgets/setupitem.cpp:307 src/gui/widgets/setupitem.cpp:443
+#: src/gui/widgets/setupitem.cpp:317 src/gui/widgets/setupitem.cpp:453
 #: src/gui/windows/serverdialog.cpp:260
 msgid "Edit"
 msgstr "Ganti"
 
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:89 src/gui/windows/skilldialog.cpp:630
+#: src/gui/widgets/skillinfo.cpp:89 src/gui/windows/skilldialog.cpp:595
 #, c-format
 msgid "Lvl: %d"
 msgstr "Level: %d"
@@ -3361,7 +3361,7 @@ msgstr ""
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
 #: src/gui/widgets/tabs/setup_input.cpp:362
-#: src/gui/windows/questswindow.cpp:250
+#: src/gui/windows/questswindow.cpp:261
 msgid "unknown"
 msgstr ""
 
@@ -3405,6 +3405,16 @@ msgstr "Berhenti"
 #. TRANSLATORS: joystick settings tab label
 #: src/gui/widgets/tabs/setup_joystick.cpp:146
 msgid "Rotate the stick and don't press buttons"
+msgstr ""
+
+#. TRANSLATORS: mods tab in settings
+#: src/gui/widgets/tabs/setup_mods.cpp:42
+msgid "Mods"
+msgstr ""
+
+#. TRANSLATORS: settings label
+#: src/gui/widgets/tabs/setup_mods.cpp:77
+msgid "No mods present"
 msgstr ""
 
 #. TRANSLATORS: show buttons at top right corner type
@@ -4102,242 +4112,254 @@ msgid "When ignoring:"
 msgstr "Ketika menolak:"
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:82
+#: src/gui/widgets/tabs/setup_theme.cpp:84
 msgid "Very small (8)"
 msgstr ""
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:84
+#: src/gui/widgets/tabs/setup_theme.cpp:86
 msgid "Very small (9)"
 msgstr ""
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:86
+#: src/gui/widgets/tabs/setup_theme.cpp:88
 msgid "Tiny (10)"
 msgstr "Sangat kecil (10)"
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:88
+#: src/gui/widgets/tabs/setup_theme.cpp:90
 msgid "Small (11)"
 msgstr "Kecil (11)"
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:90
+#: src/gui/widgets/tabs/setup_theme.cpp:92
 msgid "Medium (12)"
 msgstr "Sedang (12)"
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:92
+#: src/gui/widgets/tabs/setup_theme.cpp:94
 msgid "Normal (13)"
 msgstr ""
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:94
+#: src/gui/widgets/tabs/setup_theme.cpp:96
 msgid "Large (14)"
 msgstr ""
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:96
+#: src/gui/widgets/tabs/setup_theme.cpp:98
 msgid "Large (15)"
 msgstr ""
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:98
+#: src/gui/widgets/tabs/setup_theme.cpp:100
 msgid "Large (16)"
 msgstr ""
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:100
+#: src/gui/widgets/tabs/setup_theme.cpp:102
 msgid "Big (17)"
 msgstr ""
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:102
+#: src/gui/widgets/tabs/setup_theme.cpp:104
 msgid "Big (18)"
 msgstr ""
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:104
+#: src/gui/widgets/tabs/setup_theme.cpp:106
 msgid "Big (19)"
 msgstr ""
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:106
+#: src/gui/widgets/tabs/setup_theme.cpp:108
 msgid "Very big (20)"
 msgstr ""
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:108
+#: src/gui/widgets/tabs/setup_theme.cpp:110
 msgid "Very big (21)"
 msgstr ""
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:110
+#: src/gui/widgets/tabs/setup_theme.cpp:112
 msgid "Very big (22)"
 msgstr ""
 
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:112
+#: src/gui/widgets/tabs/setup_theme.cpp:114
 msgid "Huge (23)"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:147
+#: src/gui/widgets/tabs/setup_theme.cpp:149
 msgid "Chinese (China)"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:149
+#: src/gui/widgets/tabs/setup_theme.cpp:151
 msgid "Czech"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:151
+#: src/gui/widgets/tabs/setup_theme.cpp:153
 msgid "English"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:153
+#: src/gui/widgets/tabs/setup_theme.cpp:155
 msgid "Finnish"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:155
+#: src/gui/widgets/tabs/setup_theme.cpp:157
 msgid "French"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:157
+#: src/gui/widgets/tabs/setup_theme.cpp:159
 msgid "German"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:159
+#: src/gui/widgets/tabs/setup_theme.cpp:161
 msgid "Indonesian"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:161
+#: src/gui/widgets/tabs/setup_theme.cpp:163
 msgid "Italian"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:163
+#: src/gui/widgets/tabs/setup_theme.cpp:165
 msgid "Polish"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:165
+#: src/gui/widgets/tabs/setup_theme.cpp:167
 msgid "Japanese"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:167
+#: src/gui/widgets/tabs/setup_theme.cpp:169
 msgid "Dutch (Belgium/Flemish)"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:169
+#: src/gui/widgets/tabs/setup_theme.cpp:171
 msgid "Portuguese"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:171
+#: src/gui/widgets/tabs/setup_theme.cpp:173
 msgid "Portuguese (Brazilian)"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:173
+#: src/gui/widgets/tabs/setup_theme.cpp:175
 msgid "Russian"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:175
+#: src/gui/widgets/tabs/setup_theme.cpp:177
 msgid "Spanish (Castilian)"
 msgstr ""
 
 #. TRANSLATORS: language
-#: src/gui/widgets/tabs/setup_theme.cpp:177
+#: src/gui/widgets/tabs/setup_theme.cpp:179
 msgid "Turkish"
 msgstr ""
 
 #. TRANSLATORS: theme settings label
-#: src/gui/widgets/tabs/setup_theme.cpp:229
+#: src/gui/widgets/tabs/setup_theme.cpp:231
 msgid "Gui theme"
 msgstr "Tema Gui"
 
 #. TRANSLATORS: theme settings label
-#: src/gui/widgets/tabs/setup_theme.cpp:236
+#: src/gui/widgets/tabs/setup_theme.cpp:238
 msgid "Main Font"
 msgstr "Jenis huruf utama"
 
 #. TRANSLATORS: theme settings label
-#: src/gui/widgets/tabs/setup_theme.cpp:241
+#: src/gui/widgets/tabs/setup_theme.cpp:243
 msgid "Language"
 msgstr ""
 
 #. TRANSLATORS: theme settings label
 #. TRANSLATORS: font size
-#: src/gui/widgets/tabs/setup_theme.cpp:245 src/gui/windows/emotewindow.cpp:44
+#: src/gui/widgets/tabs/setup_theme.cpp:247 src/gui/windows/emotewindow.cpp:44
 msgid "Bold font"
 msgstr "Jenis huruf tebal"
 
 #. TRANSLATORS: theme settings label
-#: src/gui/widgets/tabs/setup_theme.cpp:249
+#: src/gui/widgets/tabs/setup_theme.cpp:251
 msgid "Particle font"
 msgstr ""
 
 #. TRANSLATORS: theme settings label
-#: src/gui/widgets/tabs/setup_theme.cpp:253
+#: src/gui/widgets/tabs/setup_theme.cpp:255
 msgid "Help font"
 msgstr ""
 
 #. TRANSLATORS: theme settings label
-#: src/gui/widgets/tabs/setup_theme.cpp:257
+#: src/gui/widgets/tabs/setup_theme.cpp:259
 msgid "Secure font"
 msgstr "Jenis huruf/Karakter yang diperbolehkan"
 
 #. TRANSLATORS: theme settings label
-#: src/gui/widgets/tabs/setup_theme.cpp:261
+#: src/gui/widgets/tabs/setup_theme.cpp:263
+#, fuzzy
+msgid "Npc font"
+msgstr "Jenis huruf/Karakter yang diperbolehkan"
+
+#. TRANSLATORS: theme settings label
+#: src/gui/widgets/tabs/setup_theme.cpp:267
 msgid "Japanese font"
 msgstr ""
 
 #. TRANSLATORS: theme settings label
-#: src/gui/widgets/tabs/setup_theme.cpp:266
+#: src/gui/widgets/tabs/setup_theme.cpp:271
+#, fuzzy
+msgid "Chinese font"
+msgstr "Jenis huruf/Karakter yang diperbolehkan"
+
+#. TRANSLATORS: theme settings label
+#: src/gui/widgets/tabs/setup_theme.cpp:276
 msgid "Font size"
 msgstr "Ukuran huruf"
 
 #. TRANSLATORS: theme settings label
-#: src/gui/widgets/tabs/setup_theme.cpp:271
+#: src/gui/widgets/tabs/setup_theme.cpp:281
 msgid "Npc font size"
 msgstr ""
 
 #. TRANSLATORS: button name with information about selected theme
-#: src/gui/widgets/tabs/setup_theme.cpp:275
+#: src/gui/widgets/tabs/setup_theme.cpp:285
 msgid "i"
 msgstr ""
 
 #. TRANSLATORS: theme info dialog
-#: src/gui/widgets/tabs/setup_theme.cpp:402
+#: src/gui/widgets/tabs/setup_theme.cpp:424
 msgid "Name: "
 msgstr ""
 
-#: src/gui/widgets/tabs/setup_theme.cpp:403
+#: src/gui/widgets/tabs/setup_theme.cpp:425
 msgid "Copyright:"
 msgstr ""
 
 #. TRANSLATORS: theme info dialog header
-#: src/gui/widgets/tabs/setup_theme.cpp:460
+#: src/gui/widgets/tabs/setup_theme.cpp:490
 msgid "Theme info"
 msgstr ""
 
 #. TRANSLATORS: theme message dialog
-#: src/gui/widgets/tabs/setup_theme.cpp:485
+#: src/gui/widgets/tabs/setup_theme.cpp:517
 msgid "Theme Changed"
 msgstr "Tema diganti"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_theme.cpp:485
+#: src/gui/widgets/tabs/setup_theme.cpp:517
 #: src/gui/widgets/tabs/setup_video.cpp:493
 #: src/gui/widgets/tabs/setup_video.cpp:502
 msgid "Restart your client for the change to take effect."
@@ -4732,7 +4754,7 @@ msgid "QE"
 msgstr ""
 
 #. TRANSLATORS: quests window name
-#: src/gui/windowmenu.cpp:75 src/gui/windows/questswindow.cpp:122
+#: src/gui/windowmenu.cpp:75 src/gui/windows/questswindow.cpp:124
 msgid "Quests"
 msgstr ""
 
@@ -5218,7 +5240,7 @@ msgstr "Ubah Login"
 #. TRANSLATORS: updater window button
 #: src/gui/windows/charselectdialog.cpp:102
 #: src/gui/windows/charselectdialog.cpp:586
-#: src/gui/windows/updaterwindow.cpp:181
+#: src/gui/windows/updaterwindow.cpp:182
 msgid "Play"
 msgstr "Main"
 
@@ -6065,12 +6087,12 @@ msgid "requires v%s"
 msgstr "Membutuhkan v%s"
 
 #. TRANSLATORS: setup button
-#: src/gui/windows/setup.cpp:88
+#: src/gui/windows/setup.cpp:90
 msgid "Apply"
 msgstr "Terapkan"
 
 #. TRANSLATORS: setup button
-#: src/gui/windows/setup.cpp:94
+#: src/gui/windows/setup.cpp:96
 msgid "Reset Windows"
 msgstr "Atur ulang jendela"
 
@@ -6127,24 +6149,14 @@ msgstr "Naik"
 msgid "Skill points available: %d"
 msgstr "poin Skill yang tersedia: %d"
 
-#. TRANSLATORS: skills dialog default skills tab
-#: src/gui/windows/skilldialog.cpp:461
-msgid "basic"
-msgstr ""
-
-#. TRANSLATORS: skills dialog default skill name
-#: src/gui/windows/skilldialog.cpp:464
-msgid "basic, 1"
-msgstr ""
-
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:502
+#: src/gui/windows/skilldialog.cpp:468
 #, c-format
 msgid "Skill Set %d"
 msgstr ""
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:536
+#: src/gui/windows/skilldialog.cpp:502
 #, c-format
 msgid "Skill %d"
 msgstr "Skill %d"
@@ -6630,36 +6642,36 @@ msgid "Name: %s"
 msgstr "Nama: %s"
 
 #. TRANSLATORS: updater window name
-#: src/gui/windows/updaterwindow.cpp:152
+#: src/gui/windows/updaterwindow.cpp:153
 msgid "Updating..."
 msgstr "Mengupdate..."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:177
+#: src/gui/windows/updaterwindow.cpp:178
 msgid "Connecting..."
 msgstr "Menyambung..."
 
-#: src/gui/windows/updaterwindow.cpp:363
+#: src/gui/windows/updaterwindow.cpp:364
 msgid "Show all news (can be slow)"
 msgstr ""
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:739
+#: src/gui/windows/updaterwindow.cpp:751
 msgid "##1  The update process is incomplete."
 msgstr ""
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:741
+#: src/gui/windows/updaterwindow.cpp:753
 msgid "##1  It is strongly recommended that"
 msgstr ""
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:743
+#: src/gui/windows/updaterwindow.cpp:755
 msgid "##1  you try again later."
 msgstr ""
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:921
+#: src/gui/windows/updaterwindow.cpp:933
 msgid "Completed"
 msgstr ""
 
@@ -7908,47 +7920,49 @@ msgstr "OpenGL aman"
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: item info name
 #. TRANSLATORS: unknown info name
-#: src/resources/beinginfo.cpp:41 src/resources/db/avatardb.cpp:67
-#: src/resources/db/itemdb.cpp:316 src/resources/db/monsterdb.cpp:98
+#. TRANSLATORS: being info default name
+#: src/resources/beinginfo.cpp:41 src/resources/db/avatardb.cpp:87
+#: src/resources/db/itemdb.cpp:326 src/resources/db/moddb.cpp:78
+#: src/resources/db/monsterdb.cpp:109 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:73
+#: src/resources/db/itemdb.cpp:74
 #, c-format
 msgid "Attack %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:75
+#: src/resources/db/itemdb.cpp:76
 #, c-format
 msgid "Defense %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:77
+#: src/resources/db/itemdb.cpp:78
 #, c-format
 msgid "HP %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:79
+#: src/resources/db/itemdb.cpp:80
 #, c-format
 msgid "MP %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:81
+#: src/resources/db/itemdb.cpp:82
 #, c-format
 msgid "Level %s"
 msgstr ""
 
 #. TRANSLATORS: item name
-#: src/resources/db/itemdb.cpp:205
+#: src/resources/db/itemdb.cpp:206
 msgid "Unknown item"
 msgstr ""
 
 #. TRANSLATORS: unknown info name
-#: src/resources/db/petdb.cpp:80
+#: src/resources/db/petdb.cpp:99
 msgid "pet"
 msgstr ""

@@ -32,6 +32,7 @@ src/gui/widgets/tabs/setup_chat.cpp
 src/gui/widgets/tabs/setup_colors.cpp
 src/gui/widgets/tabs/setup_input.cpp
 src/gui/widgets/tabs/setup_joystick.cpp
+src/gui/widgets/tabs/setup_mods.cpp
 src/gui/widgets/tabs/setup_other.cpp
 src/gui/widgets/tabs/setup_perfomance.cpp
 src/gui/widgets/tabs/setup_players.cpp
@@ -111,9 +112,11 @@ src/render/rendererslistsdl.h
 src/resources/beinginfo.cpp
 src/resources/db/avatardb.cpp
 src/resources/db/itemdb.cpp
+src/resources/db/moddb.cpp
 src/resources/db/monsterdb.cpp
 src/resources/db/petdb.cpp
 src/resources/mapreader.cpp
+src/resources/modinfo.cpp
 src/utils/gettext.h
 src/utils/stringutils.h
 src/utils/xml.cpp
