@@ -1657,7 +1657,7 @@ void Being::petLogic()
         setTileCoords(dstX, dstY);
         Net::getPetHandler()->spawn(mOwner, dstX, dstY);
     }
-    else if (divX > followDist || divY > followDist)
+    else if (!followDist || divX > followDist || divY > followDist)
     {
         if (!dist)
         {
