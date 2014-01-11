@@ -1577,7 +1577,7 @@ void ChatWindow::localPetSay(const std::string &nick, const std::string &text)
     Being *pet = nullptr;
     if (being)
     {
-        pet = being->getPet();
+        pet = being->getFirstPet();
         if (pet)
             pet->setSpeech(text, GENERAL_CHANNEL);
     }
@@ -1601,7 +1601,7 @@ void ChatWindow::localPetEmote(const std::string &nick, const uint8_t emoteId)
         nick, ActorSprite::PLAYER);
     if (being)
     {
-        Being *const pet = being->getPet();
+        Being *const pet = being->getFirstPet();
         if (pet)
             pet->setEmote(emoteId, 0);
     }

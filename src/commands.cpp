@@ -1261,7 +1261,7 @@ impHandler1(talkRaw)
 impHandler1(talkPet)
 {
     // in future probably need add channel detection
-    if (player_node->getPet())
+    if (!player_node->getPets().empty())
         Net::getChatHandler()->talkPet(args, GENERAL_CHANNEL);
     else
         Net::getChatHandler()->talk(args, GENERAL_CHANNEL);

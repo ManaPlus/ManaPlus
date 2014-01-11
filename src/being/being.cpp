@@ -151,7 +151,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mSpriteHide(new int[20]),
     mSpriteDraw(new int[20]),
     mComment(),
-    mPet(nullptr),
+    mPets(),
     mOwner(nullptr),
     mSpecialParticle(nullptr),
     mX(0),
@@ -176,7 +176,6 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mCriticalHit(0),
     mPvpRank(0),
     mNumber(100),
-    mPetId(0),
     mLook(0),
     mHairColor(0),
     mErased(false),
@@ -242,14 +241,18 @@ Being::~Being()
     mAnimationEffect = nullptr;
 
     if (mOwner)
-        mOwner->setPet(nullptr);
-    if (mPet)
+        mOwner->unassignPet(this);
+    FOR_EACH (std::vector<Being*>::iterator, it, mPets)
     {
-        mPet->setOwner(nullptr);
-        actorManager->erase(mPet);
-        delete mPet;
-        mPet = nullptr;
+        Being *pet = *it;
+        if (pet)
+        {
+            pet->setOwner(nullptr);
+            actorManager->erase(pet);
+            delete pet;
+        }
     }
+    mPets.clear();
 
     removeAllItemsParticles();
 }
@@ -1609,8 +1612,12 @@ void Being::logic()
             actorManager->destroy(this);
     }
 
-    if (mPet)
-        mPet->petLogic();
+    FOR_EACH (std::vector<Being*>::iterator, it, mPets)
+    {
+        Being *const pet = *it;
+        if (pet)
+            pet->petLogic();
+    }
 
     const SoundInfo *const sound = mNextSound.sound;
     if (sound)
@@ -2121,11 +2128,11 @@ void Being::setSprite(const unsigned int slot, const int id,
         if (id1)
         {
             const ItemInfo &info = ItemDB::get(id1);
-            if (mMap)
+            if (mMap && mType == PLAYER)
             {
                 const int pet = info.getPet();
                 if (pet)
-                    removePet();
+                    removePet(pet);
             }
             removeItemParticles(id1);
         }
@@ -3207,14 +3214,15 @@ void Being::addPet(const int id)
     if (!actorManager || !config.getBoolValue("usepets"))
         return;
 
-    removePet();
+    if (findChildPet(id))
+        return;
+
     Being *const being = actorManager->createBeing(
         id, ActorSprite::PET, 0);
     if (being)
     {
         being->setOwner(this);
-        mPetId = id;
-        mPet = being;
+        mPets.push_back(being);
         int dstX = mX;
         int dstY = mY;
         being->fixPetSpawnPos(dstX, dstY);
@@ -3223,24 +3231,53 @@ void Being::addPet(const int id)
     }
 }
 
-void Being::removePet()
+Being *Being::findChildPet(const int id)
+{
+    FOR_EACH (std::vector<Being*>::iterator, it, mPets)
+    {
+        Being *const pet = *it;
+        if (pet && pet->mId == id)
+            return pet;
+    }
+    return nullptr;
+}
+
+void Being::removePet(const int id)
 {
     if (!actorManager)
         return;
 
-    mPetId = 0;
-    if (mPet)
+    FOR_EACH (std::vector<Being*>::iterator, it, mPets)
     {
-        mPet->setOwner(nullptr);
-        actorManager->erase(mPet);
-        delete mPet;
-        mPet = nullptr;
+        Being *const pet = *it;
+        if (pet && pet->mId == id)
+        {
+            pet->setOwner(nullptr);
+            actorManager->erase(pet);
+            mPets.erase(it);
+            delete pet;
+        }
     }
+}
+
+void Being::removeAllPets()
+{
+    FOR_EACH (std::vector<Being*>::iterator, it, mPets)
+    {
+        Being *const pet = *it;
+        if (pet)
+        {
+            pet->setOwner(nullptr);
+            actorManager->erase(pet);
+            delete pet;
+        }
+    }
+    mPets.clear();
 }
 
 void Being::updatePets()
 {
-    removePet();
+    removeAllPets();
     FOR_EACH (std::vector<int>::const_iterator, it, mSpriteIDs)
     {
         const int id = *it;
@@ -3249,8 +3286,18 @@ void Being::updatePets()
         const ItemInfo &info = ItemDB::get(id);
         const int pet = info.getPet();
         if (pet)
-        {
             addPet(pet);
+    }
+}
+
+void Being::unassignPet(Being *const pet1)
+{
+    FOR_EACH (std::vector<Being*>::iterator, it, mPets)
+    {
+        Being *const pet = *it;
+        if (pet == pet1)
+        {
+            mPets.erase(it);
             return;
         }
     }
