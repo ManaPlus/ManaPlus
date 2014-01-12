@@ -924,6 +924,12 @@ class Being : public ActorSprite, public ConfigListener
 
         void recreateItemParticles();
 
+        void incUsage()
+        { mUsageCounter ++; }
+
+        int decUsage()
+        { return --mUsageCounter; }
+
     protected:
         /**
          * Updates name's location.
@@ -1084,6 +1090,7 @@ class Being : public ActorSprite, public ConfigListener
         unsigned int mNumber;
         int mPetId;
         int mLook;
+        int mUsageCounter;
         unsigned char mHairColor;
         bool mErased;
         bool mEnemy;

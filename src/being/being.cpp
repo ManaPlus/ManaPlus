@@ -177,6 +177,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mPvpRank(0),
     mNumber(100),
     mLook(0),
+    mUsageCounter(1),
     mHairColor(0),
     mErased(false),
     mEnemy(false),
@@ -3214,8 +3215,12 @@ void Being::addPet(const int id)
     if (!actorManager || !config.getBoolValue("usepets"))
         return;
 
-    if (findChildPet(id))
+    Being *const pet = findChildPet(id);
+    if (pet)
+    {
+        pet->incUsage();
         return;
+    }
 
     Being *const being = actorManager->createBeing(
         id, ActorSprite::PET, 0);
@@ -3252,10 +3257,13 @@ void Being::removePet(const int id)
         Being *const pet = *it;
         if (pet && pet->mId == id)
         {
-            pet->setOwner(nullptr);
-            actorManager->erase(pet);
-            mPets.erase(it);
-            delete pet;
+            if (!pet->decUsage())
+            {
+                pet->setOwner(nullptr);
+                actorManager->erase(pet);
+                mPets.erase(it);
+                delete pet;
+            }
         }
     }
 }
