@@ -52,17 +52,19 @@ void PetHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 }
 
 void PetHandler::move(const Being *const being A_UNUSED,
+                      const int petId A_UNUSED,
                       const int x1 A_UNUSED, const int y1 A_UNUSED,
                       const int x2 A_UNUSED, const int y2 A_UNUSED) const
 {
 }
 
 void PetHandler::spawn(const Being *const being A_UNUSED,
+                       const int petId A_UNUSED,
                        const int x A_UNUSED, const int y A_UNUSED) const
 {
 }
 
-void PetHandler::emote(const uint8_t emoteId) const
+void PetHandler::emote(const uint8_t emoteId, const int petId A_UNUSED) const
 {
     Net::getChatHandler()->talk("\302\202\302e" + toString(
         static_cast<int>(emoteId)), GENERAL_CHANNEL);

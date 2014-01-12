@@ -38,13 +38,16 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
         void handleMessage(Net::MessageIn &msg) override final;
 
         void move(const Being *const being,
+                  const int petId,
                   const int x1, const int y1,
                   const int x2, const int y2) const override final;
 
         void spawn(const Being *const being,
+                   const int petId,
                    const int x, const int y) const override final;
 
-        void emote(const uint8_t emoteId) const override final;
+        void emote(const uint8_t emoteId,
+                   const int petId) const override final;
 };
 
 }  // namespace TmwAthena

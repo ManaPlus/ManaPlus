@@ -1663,7 +1663,7 @@ void Being::petLogic()
         setAction(Being::STAND, 0);
         fixPetSpawnPos(dstX, dstY);
         setTileCoords(dstX, dstY);
-        Net::getPetHandler()->spawn(mOwner, dstX, dstY);
+        Net::getPetHandler()->spawn(mOwner, mId, dstX, dstY);
     }
     else if (!followDist || divX > followDist || divY > followDist)
     {
@@ -1716,7 +1716,7 @@ void Being::petLogic()
         if (mX != dstX || mY != dstY)
         {
             setPath(mMap->findPath(mX, mY, dstX, dstY, walkMask));
-            Net::getPetHandler()->move(mOwner, mX, mY, dstX, dstY);
+            Net::getPetHandler()->move(mOwner, mId, mX, mY, dstX, dstY);
             return;
         }
     }
@@ -3232,7 +3232,7 @@ void Being::addPet(const int id)
         int dstY = mY;
         being->fixPetSpawnPos(dstX, dstY);
         being->setTileCoords(dstX, dstY);
-        Net::getPetHandler()->spawn(this, dstX, dstY);
+        Net::getPetHandler()->spawn(this, being->mId, dstX, dstY);
     }
 }
 

@@ -33,13 +33,15 @@ class PetHandler
         { }
 
         virtual void move(const Being *const being,
+                          const int petId,
                           const int x1, const int y1,
                           const int x2, const int y2) const = 0;
 
         virtual void spawn(const Being *const being,
+                           const int petId,
                            const int x, const int y) const = 0;
 
-        virtual void emote(const uint8_t emoteId) const = 0;
+        virtual void emote(const uint8_t emoteId, const int petId) const = 0;
 };
 
 }  // namespace Net

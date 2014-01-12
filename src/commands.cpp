@@ -726,7 +726,8 @@ impHandler1(emote)
 
 impHandler1(emotePet)
 {
-    Net::getPetHandler()->emote(static_cast<uint8_t>(atoi(args.c_str())));
+    // need use actual pet id
+    Net::getPetHandler()->emote(static_cast<uint8_t>(atoi(args.c_str())), 0);
 }
 
 impHandler1(away)
