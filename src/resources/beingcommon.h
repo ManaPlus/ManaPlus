@@ -30,11 +30,11 @@
 class BeingInfo;
 
 #define loadXmlDir(name, function) \
-    StringVect list; \
+    StringVect listVect; \
     BeingCommon::getIncludeFiles(paths.getStringValue( \
-        name), list); \
-    FOR_EACH (StringVectCIter, it, list) \
-        function(*it);
+        name), listVect); \
+    FOR_EACH (StringVectCIter, itVect, listVect) \
+        function(*itVect);
 
 namespace BeingCommon
 {

@@ -609,7 +609,7 @@ void TextField::caretDeleteToStart()
 
 void TextField::moveCaretWordBack()
 {
-    const int oldCaret = mCaretPosition;
+    const unsigned int oldCaret = mCaretPosition;
     while (mCaretPosition > 0)
     {
         if (!isWordSeparator(mText[mCaretPosition - 1]))
@@ -629,7 +629,7 @@ void TextField::moveCaretWordBack()
 void TextField::moveCaretWordForward()
 {
     const unsigned sz = static_cast<unsigned>(mText.size());
-    const int oldCaret = mCaretPosition;
+    const unsigned int oldCaret = mCaretPosition;
     while (mCaretPosition < sz)
     {
         if (!isWordSeparator(mText[mCaretPosition]))

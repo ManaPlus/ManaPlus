@@ -653,9 +653,9 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
         if (strStartWith(name, "manaplus_"))
         {
             struct stat statbuf;
-            std::string file = std::string(fixPath).append("/").append(name);
-            if (!stat(file.c_str(), &statbuf))
-                resman->addToSearchPath(file, false);
+            std::string fileName = std::string(fixPath).append("/").append(name);
+            if (!stat(fileName.c_str(), &statbuf))
+                resman->addToSearchPath(fileName, false);
         }
     }
 }
@@ -1028,10 +1028,10 @@ void UpdaterWindow::loadMods(const std::string &dir,
             if (it != modsList.end())
             {
                 struct stat statbuf;
-                std::string file = std::string(fixPath).append(
+                std::string fileName = std::string(fixPath).append(
                     "/").append(name);
-                if (!stat(file.c_str(), &statbuf))
-                    resman->addToSearchPath(file, false);
+                if (!stat(fileName.c_str(), &statbuf))
+                    resman->addToSearchPath(fileName, false);
             }
         }
     }

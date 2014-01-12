@@ -54,8 +54,8 @@ void ColorDB::load()
     StringVect list;
     BeingCommon::getIncludeFiles(paths.getStringValue(
         "hairColorPatchDir"), list);
-    FOR_EACH (StringVectCIter, it, list)
-        loadHair(*it, colors);
+    FOR_EACH (StringVectCIter, it2, list)
+        loadHair(*it2, colors);
 
     mColorLists["hair"] = colors;
 
