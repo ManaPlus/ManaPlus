@@ -358,12 +358,16 @@ void Client::gameInit()
     SDL_EventState(SDL_USEREVENT, SDL_IGNORE);
 
 #ifdef WIN32
+    extractDataDir();
+    mountDataDir();
     setIcon();
-#endif
-
+    initGraphics();
+#else
+    setIcon();
     initGraphics();
     extractDataDir();
     mountDataDir();
+#endif
 
     if (mOptions.dataPath.empty()
         && !branding.getStringValue("dataPath").empty())
