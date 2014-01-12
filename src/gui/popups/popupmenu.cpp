@@ -294,8 +294,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
         case ActorSprite::PORTAL:
         case ActorSprite::PET:
         default:
-            /* Other beings aren't interesting... */
-            return;
+            break;
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add being name to chat
