@@ -195,6 +195,7 @@
 		<Unit filename="src/gui/widgets/tabs/setup_colors.cpp" />
 		<Unit filename="src/gui/widgets/tabs/setup_input.cpp" />
 		<Unit filename="src/gui/widgets/tabs/setup_joystick.cpp" />
+		<Unit filename="src/gui/widgets/tabs/setup_mods.cpp" />
 		<Unit filename="src/gui/widgets/tabs/setup_other.cpp" />
 		<Unit filename="src/gui/widgets/tabs/setup_perfomance.cpp" />
 		<Unit filename="src/gui/widgets/tabs/setup_players.cpp" />
@@ -384,6 +385,7 @@
 		<Unit filename="src/net/tmwa/network.cpp" />
 		<Unit filename="src/net/tmwa/npchandler.cpp" />
 		<Unit filename="src/net/tmwa/partyhandler.cpp" />
+		<Unit filename="src/net/tmwa/pethandler.cpp" />
 		<Unit filename="src/net/tmwa/playerhandler.cpp" />
 		<Unit filename="src/net/tmwa/questhandler.cpp" />
 		<Unit filename="src/net/tmwa/skillhandler.cpp" />
@@ -423,6 +425,7 @@
 		<Unit filename="src/resources/db/emotedb.cpp" />
 		<Unit filename="src/resources/db/itemdb.cpp" />
 		<Unit filename="src/resources/db/mapdb.cpp" />
+		<Unit filename="src/resources/db/moddb.cpp" />
 		<Unit filename="src/resources/db/monsterdb.cpp" />
 		<Unit filename="src/resources/db/npcdb.cpp" />
 		<Unit filename="src/resources/db/palettedb.cpp" />
@@ -435,6 +438,7 @@
 		<Unit filename="src/resources/imagewriter.cpp" />
 		<Unit filename="src/resources/iteminfo.cpp" />
 		<Unit filename="src/resources/mapreader.cpp" />
+		<Unit filename="src/resources/modinfo.cpp" />
 		<Unit filename="src/resources/openglimagehelper.cpp" />
 		<Unit filename="src/resources/resource.cpp" />
 		<Unit filename="src/resources/resourcemanager.cpp" />
