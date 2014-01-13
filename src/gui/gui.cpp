@@ -49,6 +49,7 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/langs.h"
+#include "utils/timer.h"
 
 #include <guichan/exception.hpp>
 
@@ -107,6 +108,7 @@ Gui::Gui() :
     mFocusListeners(),
     mForegroundColor(Theme::getThemeColor(Theme::TEXT)),
     mForegroundColor2(Theme::getThemeColor(Theme::TEXT_OUTLINE)),
+    mTime(0),
     mCustomCursor(false),
     mDoubleClick(true)
 {
@@ -366,6 +368,14 @@ void Gui::slowLogic()
         mNpcFont->slowLogic(5);
     if (windowContainer)
         windowContainer->slowLogic();
+
+    const int time = cur_time;
+    if (mTime != time)
+    {
+        logger->flush();
+        mTime = time;
+    }
+
     BLOCK_END("Gui::slowLogic")
 }
 

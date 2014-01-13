@@ -64,6 +64,9 @@ Logger *logger = nullptr;          // Log object
 
 Logger::Logger() :
     mLogFile(),
+    mDelayedLog(),
+    mMutex(SDL_CreateMutex()),
+    mThreadLocked(false),
     mLogToStandardOut(true),
     mDebugLog(false)
 {
@@ -73,6 +76,7 @@ Logger::~Logger()
 {
     if (mLogFile.is_open())
         mLogFile.close();
+    SDL_DestroyMutex(mMutex);
 }
 
 void Logger::setLogFile(const std::string &logFilename)
@@ -167,6 +171,60 @@ void Logger::log(const char *const log_text, ...)
 
     // Delete temporary buffer
     delete [] buf;
+}
+
+void Logger::log_r(const char *const log_text, ...)
+{
+    SDL_mutexP(mMutex);
+
+    unsigned size = 1024;
+    if (strlen(log_text) * 3 > size)
+        size = static_cast<unsigned>(strlen(log_text) * 3);
+
+    char* buf = new char[size + 1];
+    va_list ap;
+
+    // Use a temporary buffer to fill in the variables
+    va_start(ap, log_text);
+    vsnprintf(buf, size, log_text, ap);
+    buf[size] = 0;
+    va_end(ap);
+
+    // Get the current system time
+    timeval tv;
+    gettimeofday(&tv, nullptr);
+
+    // Print the log entry
+    std::stringstream timeStr;
+    DATESTREAM
+    LOG_ANDROID(buf)
+
+    if (mLogFile.is_open())
+    {
+        timeStr << buf << std::endl;
+        mThreadLocked = true;
+        mDelayedLog.push_back(timeStr.str());
+        mThreadLocked = false;
+    }
+
+    if (mLogToStandardOut)
+        std::cout << timeStr.str() << buf << std::endl;
+
+    // Delete temporary buffer
+    delete [] buf;
+
+    SDL_mutexV(mMutex);
+}
+
+void Logger::flush()
+{
+    if (!mThreadLocked)
+    {
+        SDL_mutexP(mMutex);
+        FOR_EACH (std::vector<std::string>::const_iterator, it, mDelayedLog)
+            mLogFile << *it;
+        SDL_mutexV(mMutex);
+    }
 }
 
 // here string must be safe for any usage

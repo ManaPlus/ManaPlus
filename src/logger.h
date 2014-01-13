@@ -24,7 +24,11 @@
 #define LOGGER_H
 
 #include "main.h"
+
+#include <SDL_thread.h>
+
 #include <fstream>
+#include <vector>
 
 #include "localconsts.h"
 
@@ -79,6 +83,19 @@ class Logger final
             ;
 
         /**
+         * Enters a message in the log (thread safe).
+         */
+        void log_r(const char *const log_text, ...)
+#ifdef __GNUC__
+#ifdef __OpenBSD__
+            __attribute__((__format__(printf, 2, 3)))
+#else
+            __attribute__((__format__(gnu_printf, 2, 3)))
+#endif
+#endif
+            ;
+
+        /**
          * Enters a message in the log. The message will be timestamped.
          */
         void log1(const char *const log_text);
@@ -87,6 +104,8 @@ class Logger final
          * Enters a message in the log. The message will be timestamped.
          */
         void log(const std::string &str);
+
+        void flush();
 
 #ifdef ENABLEDEBUGLOG
         /**
@@ -113,6 +132,9 @@ class Logger final
 
     private:
         std::ofstream mLogFile;
+        std::vector<std::string> mDelayedLog;
+        SDL_mutex *mMutex;
+        volatile bool mThreadLocked;
         bool mLogToStandardOut;
         bool mDebugLog;
 };

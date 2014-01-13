@@ -197,6 +197,7 @@ class Gui final : public gcn::Gui
         FocusListenerList mFocusListeners;
         gcn::Color mForegroundColor;
         gcn::Color mForegroundColor2;
+        int mTime;
         bool mCustomCursor;                 /**< Show custom cursor */
         bool mDoubleClick;
 };
