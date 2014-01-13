@@ -74,8 +74,11 @@ static std::vector<UpdateFile> loadXMLFile(const std::string &fileName)
 
     for_each_xml_child_node(fileNode, rootNode)
     {
-        if (!xmlNameEqual(fileNode, "update"))
+        if (!xmlNameEqual(fileNode, "update")
+            && !xmlNameEqual(fileNode, "update2"))
+        {
             continue;
+        }
 
         UpdateFile file;
         file.name = XML::getProperty(fileNode, "file", "");
