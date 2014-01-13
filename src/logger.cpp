@@ -223,6 +223,7 @@ void Logger::flush()
         SDL_mutexP(mMutex);
         FOR_EACH (std::vector<std::string>::const_iterator, it, mDelayedLog)
             mLogFile << *it;
+        mDelayedLog.clear();
         SDL_mutexV(mMutex);
     }
 }
