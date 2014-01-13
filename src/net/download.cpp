@@ -302,7 +302,7 @@ int Download::downloadThread(void *ptr)
                     {
                         if (d->mError)
                         {
-                            logger->log("curl error %d: %s host: %s",
+                            logger->log_r("curl error %d: %s host: %s",
                                 res, d->mError, d->mUrl.c_str());
                         }
                         break;
@@ -347,7 +347,7 @@ int Download::downloadThread(void *ptr)
 
                         // Remove the corrupted file
                         ::remove(d->mFileName.c_str());
-                        logger->log("Checksum for file %s failed: (%lx/%lx)",
+                        logger->log_r("Checksum for file %s failed: (%lx/%lx)",
                             d->mFileName.c_str(),
                             adler, d->mAdler);
                         attempts++;

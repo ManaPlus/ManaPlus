@@ -106,14 +106,14 @@ TcpNet::Socket TcpNet::open(IPaddress *const ip)
                 if (setsockopt(hack->channel, IPPROTO_TCP,
                     TCP_THIN_LINEAR_TIMEOUTS, &val, sizeof(val)))
                 {
-                    logger->log1("error on set TCP_THIN_LINEAR_TIMEOUTS");
+                    logger->log_r("error on set TCP_THIN_LINEAR_TIMEOUTS");
                 }
 #endif
 #ifdef TCP_THIN_DUPACK
                 if (setsockopt(hack->channel, IPPROTO_TCP,
                     TCP_THIN_DUPACK, &val, sizeof(val)))
                 {
-                    logger->log1("error on set TCP_THIN_DUPACK");
+                    logger->log_r("error on set TCP_THIN_DUPACK");
                 }
 #endif
             }

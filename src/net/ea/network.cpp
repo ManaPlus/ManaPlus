@@ -201,10 +201,10 @@ bool Network::realConnect()
                 _("Unable to resolve host \"")).append(
                 mServer.hostname).append("\".");
             setError(errorMessage);
-            logger->log("TcpNet::ResolveHost: %s", errorMessage.c_str());
+            logger->log_r("TcpNet::ResolveHost: %s", errorMessage.c_str());
             return false;
         }
-        logger->log("using alt host name: %s", mServer.althostname.c_str());
+        logger->log_r("using alt host name: %s", mServer.althostname.c_str());
     }
 
     mState = CONNECTING;
@@ -212,12 +212,12 @@ bool Network::realConnect()
     mSocket = TcpNet::open(&ipAddress);
     if (!mSocket)
     {
-        logger->log("Error in TcpNet::open(): %s", TcpNet::getError());
+        logger->log_r("Error in TcpNet::open(): %s", TcpNet::getError());
         setError(TcpNet::getError());
         return false;
     }
 
-    logger->log("Network::Started session with %s:%i",
+    logger->log_r("Network::Started session with %s:%i",
         ipToString(ipAddress.host), ipAddress.port);
 
     mState = CONNECTED;
@@ -248,7 +248,7 @@ void Network::receive()
         switch (numReady)
         {
             case -1:
-                logger->log1("Error: TcpNet::checkSockets");
+                logger->log_r("Error: TcpNet::checkSockets");
                 break;
                 // FALLTHROUGH
             case 0:
@@ -272,7 +272,7 @@ void Network::receive()
                 {
                     // We got disconnected
                     mState = IDLE;
-                    logger->log1("Disconnected.");
+                    logger->log_r("Disconnected.");
                 }
                 else if (ret < 0)
                 {
@@ -315,14 +315,14 @@ void Network::receive()
     }
 
     if (TcpNet::delSocket(set, mSocket) == -1)
-        logger->log("Error in TcpNet::delSocket(): %s", TcpNet::getError());
+        logger->log_r("Error in TcpNet::delSocket(): %s", TcpNet::getError());
 
     TcpNet::freeSocketSet(set);
 }
 
 void Network::setError(const std::string &error)
 {
-    logger->log("Network error: %s", error.c_str());
+    logger->log_r("Network error: %s", error.c_str());
     mError = error;
     mState = NET_ERROR;
 }
