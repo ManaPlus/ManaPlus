@@ -65,6 +65,7 @@
 #include "gui/windows/killstats.h"
 #include "gui/windows/minimap.h"
 #include "gui/windows/ministatuswindow.h"
+#include "gui/windows/npcdialog.h"
 #include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/setup.h"
@@ -803,10 +804,16 @@ void Game::handleMove()
         return;
 
     // Moving player around
-    if (player_node->isAlive() && !PlayerInfo::isTalking()
-        && chatWindow && !chatWindow->isInputFocused()
-        && !InventoryWindow::isAnyInputFocused() && !quitDialog)
+    if (player_node->isAlive()
+        && chatWindow
+        && !chatWindow->isInputFocused()
+        && !InventoryWindow::isAnyInputFocused()
+        && !quitDialog)
     {
+        NpcDialog *const dialog = NpcDialog::getActive();
+        if (dialog)
+            return;
+
         // Ignore input if either "ignore" key is pressed
         // Stops the character moving about if the user's window manager
         // uses "ignore+arrow key" to switch virtual desktops.

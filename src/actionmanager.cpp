@@ -87,28 +87,36 @@ extern QuitDialog *quitDialog;
 namespace ActionManager
 {
 
+static bool closeMoveNpcDialog(bool focus)
+{
+    NpcDialog *const dialog = NpcDialog::getActive();
+    if (dialog)
+    {
+        if (dialog->isCloseState())
+        {
+            dialog->closeDialog();
+            return true;
+        }
+        else if (focus)
+        {
+            dialog->refocus();
+        }
+    }
+    return false;
+}
+
 impHandler(moveUp)
 {
-    if (NpcDialog *const dialog = NpcDialog::getActive())
-    {
-        dialog->refocus();
-        return false;
-    }
     if (inputManager.isActionActive(Input::KEY_EMOTE))
         return directUp(event);
-    return false;
+    return closeMoveNpcDialog(false);
 }
 
 impHandler(moveDown)
 {
-    if (NpcDialog *const dialog = NpcDialog::getActive())
-    {
-        dialog->refocus();
-        return false;
-    }
     if (inputManager.isActionActive(Input::KEY_EMOTE))
         return directDown(event);
-    return false;
+    return closeMoveNpcDialog(false);
 }
 
 impHandler(moveLeft)
@@ -122,7 +130,7 @@ impHandler(moveLeft)
     }
     if (inputManager.isActionActive(Input::KEY_EMOTE))
         return directLeft(event);
-    return false;
+    return closeMoveNpcDialog(false);
 }
 
 impHandler(moveRight)
@@ -136,14 +144,14 @@ impHandler(moveRight)
     }
     if (inputManager.isActionActive(Input::KEY_EMOTE))
         return directRight(event);
-    return false;
+    return closeMoveNpcDialog(false);
 }
 
 impHandler(moveForward)
 {
     if (inputManager.isActionActive(Input::KEY_EMOTE))
         return directRight(event);
-    return false;
+    return closeMoveNpcDialog(false);
 }
 
 impHandler(emote)

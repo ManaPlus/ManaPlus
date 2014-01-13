@@ -1974,7 +1974,7 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         Input::GRP_DEFAULT,
         &ActionManager::moveForward,
         Input::KEY_NO_VALUE, 50,
-        COND_GAME},
+        COND_ARROWKEYS},
     {"keyGUICtrl",
         INPUT_KEYBOARD, SDLK_LCTRL,
         INPUT_UNKNOWN, Input::KEY_NO_VALUE,

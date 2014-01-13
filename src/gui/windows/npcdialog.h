@@ -212,6 +212,9 @@ class NpcDialog final : public Window,
 
         void mousePressed(gcn::MouseEvent &event);
 
+        int isCloseState() const
+        { return mActionState == NPC_ACTION_CLOSE; }
+
         static void copyToClipboard(const int npcId, const int x, const int y);
 
         static NpcDialogs mNpcDialogs;

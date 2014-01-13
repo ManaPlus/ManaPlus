@@ -24,11 +24,11 @@
 #include "game.h"
 #include "touchmanager.h"
 
-#include "being/localplayer.h"
-
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
 #include "input/keyboarddata.h"
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
 #ifdef USE_SDL2
 #include "input/multitouchmanager.h"
 #endif
@@ -340,6 +340,8 @@ bool InputManager::isActionActive(const int index) const
         return false;
 
     const KeyData &key = keyData[index];
+//    logger->log("isActionActive mask=%d, condition=%d, index=%d",
+//        mMask, key.condition, index);
     if ((key.condition & mMask) != key.condition)
         return false;
     return true;
@@ -688,6 +690,12 @@ void InputManager::updateConditionMask()
     const NpcDialog *const dialog = NpcDialog::getActive();
     if (!dialog || !dialog->isTextInputFocused())
         mMask |= COND_NONPCINPUT;
+    if (!dialog || dialog->isCloseState())
+    {
+        mMask |= COND_NONPCDIALOG;
+        if (!InventoryWindow::isStorageActive())
+            mMask |= COND_NOTALKING;
+    }
 
     if (!player_node || !player_node->getDisableGameModifiers())
         mMask |= COND_EMODS;
@@ -706,7 +714,7 @@ void InputManager::updateConditionMask()
 
 bool InputManager::checkKey(const KeyData *const key) const
 {
-//    logger->log("mask=%d, condition=%d", mMask, key->condition);
+    //logger->log("checkKey mask=%d, condition=%d", mMask, key->condition);
     if (!key || (key->condition & mMask) != key->condition)
         return false;
 
