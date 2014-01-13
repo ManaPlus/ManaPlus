@@ -527,14 +527,22 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
     std::fstream testExists;
     bool found = false;
     static unsigned int screenshotCount = 0;
+
+    time_t rawtime;
+    char buffer [100];
+    time(&rawtime);
+    struct tm *const timeinfo = localtime(&rawtime);
+    strftime(buffer, 99, "%Y-%m-%d_%H-%M-%S", timeinfo);
+
+    const std::string screenShortStr = strprintf("%s_Screenshot_%s_",
+        branding.getValue("appName", "ManaPlus").c_str(), buffer);
     do
     {
         screenshotCount++;
         filenameSuffix.str("");
         filename.str("");
         filename << screenshotDirectory << "/";
-        filenameSuffix << branding.getValue("appName", "ManaPlus")
-                       << "_Screenshot_" << screenshotCount << ".png";
+        filenameSuffix << screenShortStr << screenshotCount << ".png";
         filename << filenameSuffix.str();
         testExists.open(filename.str().c_str(), std::ios::in);
         found = !testExists.is_open();
