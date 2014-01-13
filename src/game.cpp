@@ -488,9 +488,12 @@ Game::~Game()
 
 bool Game::createScreenshot()
 {
+    if (!mainGraphics)
+        return false;
+
     SDL_Surface *screenshot = nullptr;
 
-    if (!config.getBoolValue("showip"))
+    if (!config.getBoolValue("showip") && gui)
     {
         mainGraphics->setSecure(true);
         mainGraphics->prepareScreenshot();
@@ -512,7 +515,6 @@ bool Game::createScreenshot()
 bool Game::saveScreenshot(SDL_Surface *const screenshot)
 {
     std::string screenshotDirectory = client->getScreenshotDirectory();
-
     if (mkdir_r(screenshotDirectory.c_str()) != 0)
     {
         logger->log("Directory %s doesn't exist and can't be created! "
@@ -554,12 +556,14 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
 
     if (success)
     {
-        std::stringstream chatlogentry;
-        // TRANSLATORS: save file message
-        chatlogentry << strprintf(_("Screenshot saved as %s"),
-            filenameSuffix.str().c_str());
         if (localChatTab)
-            localChatTab->chatLog(chatlogentry.str(), BY_SERVER);
+        {
+            std::stringstream chatlogentry;
+            // TRANSLATORS: save file message
+            std::string str = strprintf(_("Screenshot saved as %s"),
+                filenameSuffix.str().c_str());
+            localChatTab->chatLog(str, BY_SERVER);
+        }
     }
     else
     {
@@ -573,7 +577,6 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
     }
 
     MSDL_FreeSurface(screenshot);
-
     return success;
 }
 
