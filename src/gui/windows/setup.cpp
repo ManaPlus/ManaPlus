@@ -203,6 +203,7 @@ void Setup::setInGame(const bool inGame)
 
 void Setup::externalUpdate()
 {
+    unloadModTab();
     mModsTab = new Setup_Mods(this);
     mTabs.push_back(mModsTab);
     mPanel->addTab(mModsTab->getName(), mModsTab);
@@ -213,13 +214,8 @@ void Setup::externalUpdate()
     }
 }
 
-void Setup::externalUnload()
+void Setup::unloadModTab()
 {
-    FOR_EACH (std::list<SetupTab*>::const_iterator, it, mTabs)
-    {
-        if (*it)
-            (*it)->externalUnloaded();
-    }
     if (mModsTab)
     {
         mTabs.remove(mModsTab);
@@ -228,6 +224,16 @@ void Setup::externalUnload()
         delete mModsTab;
         mModsTab = nullptr;
     }
+}
+
+void Setup::externalUnload()
+{
+    FOR_EACH (std::list<SetupTab*>::const_iterator, it, mTabs)
+    {
+        if (*it)
+            (*it)->externalUnloaded();
+    }
+    unloadModTab();
 }
 
 void Setup::registerWindowForReset(Window *const window)

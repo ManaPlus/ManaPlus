@@ -73,6 +73,8 @@ class Setup final : public Window, public gcn::ActionListener
         void widgetResized(const gcn::Event &event) override final;
 
     private:
+        void unloadModTab();
+
         std::list<SetupTab*> mTabs;
         SetupTab *mModsTab;
         std::list<Window*> mWindowsToReset;
