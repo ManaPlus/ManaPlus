@@ -2315,7 +2315,7 @@ void Client::initScreenshotDir()
         if (!configScreenshotDir.empty())
             mScreenshotDir = configScreenshotDir;
         else
-            mScreenshotDir = getDesktopDir();
+            mScreenshotDir = getPicturesDir();
 #endif
 
 //      config.setValue("screenshotDirectory", mScreenshotDir);

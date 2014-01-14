@@ -151,7 +151,7 @@ std::string getSelfName()
 
 #endif
 
-std::string getDesktopDir()
+std::string getPicturesDir()
 {
 #ifdef WIN32
     std::string dir = getSpecialFolderLocation(CSIDL_MYPICTURES);
@@ -176,7 +176,7 @@ std::string getDesktopDir()
     FOR_EACH (StringVectCIter, it, arr)
     {
         std::string str = *it;
-        if (findCutFirst(str, "XDG_DESKTOP_DIR=\""))
+        if (findCutFirst(str, "XDG_PICTURES_DIR=\""))
         {
             str = str.substr(0, str.size() - 1);
             // use hack to replace $HOME var.

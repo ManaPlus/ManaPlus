@@ -37,7 +37,7 @@ std::string removeLast(const std::string &str) A_WARN_UNUSED;
 
 std::string getSelfName() A_WARN_UNUSED;
 
-std::string getDesktopDir() A_WARN_UNUSED;
+std::string getPicturesDir() A_WARN_UNUSED;
 
 #ifdef ANDROID
 std::string getSdStoragePath() A_WARN_UNUSED;
