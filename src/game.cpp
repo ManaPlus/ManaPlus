@@ -541,26 +541,24 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
     do
     {
         screenshotCount++;
-        filenameSuffix.str("");
         filename.str("");
         filename << screenshotDirectory << "/";
-        filenameSuffix << screenShortStr << screenshotCount << ".png";
-        filename << filenameSuffix.str();
+        filename << screenShortStr << screenshotCount << ".png";
         testExists.open(filename.str().c_str(), std::ios::in);
         found = !testExists.is_open();
         testExists.close();
     }
     while (!found);
 
-    const bool success = ImageWriter::writePNG(screenshot, filename.str());
-
+    const std::string fileNameStr = filename.str();
+    const bool success = ImageWriter::writePNG(screenshot, fileNameStr);
     if (success)
     {
         if (localChatTab)
         {
             // TRANSLATORS: save file message
             std::string str = strprintf(_("Screenshot saved as %s"),
-                filenameSuffix.str().c_str());
+                fileNameStr.c_str());
             localChatTab->chatLog(str, BY_SERVER);
         }
     }
