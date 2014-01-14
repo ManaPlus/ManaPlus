@@ -174,3 +174,32 @@ unsigned char *php3_base64_decode(const unsigned char *restrict const string,
     result[k] = '\0';
     return result;
 }
+
+std::string encodeBase64String(std::string value)
+{
+    int sz = 0;
+    unsigned char *str = reinterpret_cast<unsigned char*>(
+        const_cast<char*>(value.c_str()));
+    unsigned char *const buf = php3_base64_encode(str, value.size(), &sz);
+    if (!buf)
+        return std::string();
+
+    value = std::string(reinterpret_cast<char*>(buf), sz);
+    free(buf);
+    return value;
+}
+
+std::string decodeBase64String(std::string value)
+{
+    int sz = 0;
+    unsigned char *str = reinterpret_cast<unsigned char*>(
+        const_cast<char*>(value.c_str()));
+    unsigned char *const buf = php3_base64_decode(str, value.size(), &sz);
+
+    if (buf)
+        value = std::string(reinterpret_cast<char*>(buf), sz);
+    else
+        value.clear();
+    free(buf);
+    return value;
+}

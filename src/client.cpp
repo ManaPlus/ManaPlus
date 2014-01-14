@@ -107,6 +107,7 @@
 #include "resources/db/palettedb.h"
 #include "resources/db/petdb.h"
 
+#include "utils/base64.h"
 #include "utils/cpu.h"
 #include "utils/files.h"
 #include "utils/fuzzer.h"
@@ -2299,40 +2300,39 @@ void Client::initScreenshotDir()
     }
     else if (mScreenshotDir.empty())
     {
-#ifdef __ANDROID__
-        mScreenshotDir = getSdStoragePath() + std::string("/images");
-
-        if (mkdir_r(mScreenshotDir.c_str()))
+        mScreenshotDir = decodeBase64String(
+            config.getStringValue("screenshotDirectory2"));
+        if (mScreenshotDir.empty())
         {
-            // TRANSLATORS: directory creation error
-            logger->log(strprintf(
-                _("Error: %s doesn't exist and can't be created! "
-                "Exiting."), mScreenshotDir.c_str()));
-        }
+#ifdef __ANDROID__
+            mScreenshotDir = getSdStoragePath() + std::string("/images");
+
+            if (mkdir_r(mScreenshotDir.c_str()))
+            {
+                // TRANSLATORS: directory creation error
+                logger->log(strprintf(
+                    _("Error: %s doesn't exist and can't be created! "
+                    "Exiting."), mScreenshotDir.c_str()));
+            }
 #else
-        const std::string configScreenshotDir =
-            config.getStringValue("screenshotDirectory");
-        if (!configScreenshotDir.empty())
-            mScreenshotDir = configScreenshotDir;
-        else
             mScreenshotDir = getPicturesDir();
 #endif
-
-//      config.setValue("screenshotDirectory", mScreenshotDir);
-        logger->log("screenshotDirectory: " + mScreenshotDir);
-
-        if (config.getBoolValue("useScreenshotDirectorySuffix"))
-        {
-            const std::string configScreenshotSuffix =
-                branding.getValue("screenshots", "ManaPlus");
-
-            if (!configScreenshotSuffix.empty())
+            if (config.getBoolValue("useScreenshotDirectorySuffix"))
             {
-                mScreenshotDir.append(dirSeparator).append(
-                    configScreenshotSuffix);
+                const std::string configScreenshotSuffix =
+                    branding.getValue("screenshots", "ManaPlus");
+
+                if (!configScreenshotSuffix.empty())
+                {
+                    mScreenshotDir.append(dirSeparator).append(
+                        configScreenshotSuffix);
+                }
             }
+            config.setValue("screenshotDirectory2",
+                encodeBase64String(mScreenshotDir));
         }
     }
+    logger->log("screenshotDirectory: " + mScreenshotDir);
 }
 
 void Client::accountLogin(LoginData *const data) const

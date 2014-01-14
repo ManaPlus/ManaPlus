@@ -37,6 +37,7 @@
 #include "gui/widgets/sliderlist.h"
 #include "gui/widgets/vertcontainer.h"
 
+#include "utils/base64.h"
 #include "utils/gettext.h"
 #include "utils/mathutils.h"
 
@@ -136,7 +137,7 @@ void SetupItem::load()
     }
 }
 
-void SetupItem::save() const
+void SetupItem::save()
 {
     if (mKeyName.empty())
         return;
@@ -267,13 +268,15 @@ SetupItemTextField::SetupItemTextField(const std::string &restrict text,
                                        const std::string &restrict keyName,
                                        SetupTabScroll *restrict const parent,
                                        const std::string &restrict eventName,
-                                       const bool mainConfig) :
+                                       const bool mainConfig,
+                                       const bool useBase64) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
     mTextField(nullptr),
     mButton(nullptr),
-    mEditDialog(nullptr)
+    mEditDialog(nullptr),
+    mUseBase64(useBase64)
 {
     mValueType = VSTR;
     createControls();
@@ -285,13 +288,15 @@ SetupItemTextField::SetupItemTextField(const std::string &restrict text,
                                        SetupTabScroll *restrict const parent,
                                        const std::string &restrict eventName,
                                        const std::string &restrict def,
-                                       const bool mainConfig) :
+                                       const bool mainConfig,
+                                       const bool useBase64) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
     mTextField(nullptr),
     mButton(nullptr),
-    mEditDialog(nullptr)
+    mEditDialog(nullptr),
+    mUseBase64(useBase64)
 {
     mValueType = VSTR;
     createControls();
@@ -306,9 +311,26 @@ SetupItemTextField::~SetupItemTextField()
     mButton = nullptr;
 }
 
+void SetupItemTextField::save()
+{
+    if (mUseBase64)
+    {
+        std::string normalValue = mValue;
+        mValue = encodeBase64String(mValue);
+        SetupItem::save();
+        mValue = normalValue;
+    }
+    else
+    {
+        SetupItem::save();
+    }
+}
+
 void SetupItemTextField::createControls()
 {
     load();
+    if (mUseBase64)
+        mValue = decodeBase64String(mValue);
     mHorizont = new HorizontContainer(this, 32, 2);
 
     mLabel = new Label(this, mText);

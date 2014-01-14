@@ -372,6 +372,10 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
 #endif
 
     // TRANSLATORS: settings option
+    new SetupItemTextField(_("Screenshot directory"), "",
+        "screenshotDirectory2", this, "screenshotDirectory2Event", true, true);
+
+    // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Network delay between sub servers"),
         "", "networksleep", this, "networksleepEvent", 0, 10000);
 

@@ -63,7 +63,7 @@ class SetupItem : public gcn::ActionListener,
 
         void load();
 
-        void save() const;
+        virtual void save();
 
         virtual void fromWidget() = 0;
 
@@ -188,7 +188,8 @@ class SetupItemTextField final : public SetupItem
                            const std::string &restrict keyName,
                            SetupTabScroll *restrict const parent,
                            const std::string &restrict eventName,
-                           const bool mainConfig = true);
+                           const bool mainConfig = true,
+                           const bool useBase64 = false);
 
         SetupItemTextField(const std::string &restrict text,
                            const std::string &restrict description,
@@ -196,7 +197,8 @@ class SetupItemTextField final : public SetupItem
                            SetupTabScroll *restrict const parent,
                            const std::string &restrict eventName,
                            const std::string &restrict def,
-                           const bool mainConfig = true);
+                           const bool mainConfig = true,
+                           const bool useBase64 = false);
 
         A_DELETE_COPY(SetupItemTextField)
 
@@ -212,12 +214,18 @@ class SetupItemTextField final : public SetupItem
 
         void apply(const std::string &eventName) override final;
 
+        void save() override final;
+
+        void setUseBase64(const bool b)
+        { mUseBase64 = b; }
+
     protected:
         HorizontContainer *mHorizont;
         Label *mLabel;
         TextField *mTextField;
         Button *mButton;
         EditDialog *mEditDialog;
+        bool mUseBase64;
 };
 
 class SetupItemIntTextField final : public SetupItem
