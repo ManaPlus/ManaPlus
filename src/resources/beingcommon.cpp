@@ -20,10 +20,7 @@
 
 #include "resources/beingcommon.h"
 
-#include "logger.h"
-
 #include "utils/files.h"
-#include "utils/physfstools.h"
 #include "utils/stringutils.h"
 
 #include "resources/beinginfo.h"

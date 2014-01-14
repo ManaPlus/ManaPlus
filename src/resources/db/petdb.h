@@ -38,6 +38,6 @@ namespace PETDB
     void unload();
 
     BeingInfo *get(const int id) A_WARN_UNUSED;
-}
+}  // namespace PETDB
 
 #endif  // RESOURCES_DB_PETDB_H

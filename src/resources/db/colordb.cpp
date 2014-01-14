@@ -79,7 +79,6 @@ void ColorDB::loadHair(const std::string &fileName,
 {
     XML::Document *doc = new XML::Document(fileName);
     XmlNodePtr root = doc->rootNode();
-    bool hairXml = true;
 
     if (!root || !xmlNameEqual(root, "colors"))
     {
@@ -107,7 +106,7 @@ void ColorDB::loadHair(const std::string &fileName,
                 logger->log("ColorDB: Redefinition of dye ID %d", id);
 
             colors[id] = ItemColor(id, XML::langProperty(node, "name", ""),
-                XML::getProperty(node, hairXml ? "value" : "dye", "#FFFFFF"));
+                XML::getProperty(node, "value", "#FFFFFF"));
         }
     }
 

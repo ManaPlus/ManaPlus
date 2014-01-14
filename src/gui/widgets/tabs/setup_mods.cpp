@@ -23,7 +23,6 @@
 #include "gui/widgets/tabs/setup_mods.h"
 
 #include "configuration.h"
-#include "map.h"
 
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/setupitem.h"
@@ -96,7 +95,7 @@ void Setup_Mods::loadMods()
     }
 }
 
-void Setup_Mods::saveMods()
+void Setup_Mods::saveMods() const
 {
     const ModInfos &mods = ModDB::getAll();
     if (mods.empty())

@@ -656,7 +656,8 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
         if (strStartWith(name, "manaplus_"))
         {
             struct stat statbuf;
-            std::string fileName = std::string(fixPath).append("/").append(name);
+            std::string fileName = std::string(fixPath).append(
+                "/").append(name);
             if (!stat(fileName.c_str(), &statbuf))
                 resman->addToSearchPath(fileName, false);
         }

@@ -151,7 +151,7 @@ void Gui::postInit(Graphics *const graphics)
         if (fontFile.empty())
             fontFile = branding.getStringValue("japanFont");
     }
-    else if(isChinese)
+    else if (isChinese)
     {
         fontFile = config.getValue("chinaFont", "");
         if (fontFile.empty())
@@ -179,7 +179,7 @@ void Gui::postInit(Graphics *const graphics)
         if (fontFile.empty())
             fontFile = branding.getStringValue("japanFont");
     }
-    else if(isChinese)
+    else if (isChinese)
     {
         fontFile = config.getValue("chinaFont", "");
         if (fontFile.empty())
@@ -257,7 +257,7 @@ void Gui::postInit(Graphics *const graphics)
         if (fontFile.empty())
             fontFile = branding.getStringValue("japanFont");
     }
-    else if(isChinese)
+    else if (isChinese)
     {
         fontFile = config.getValue("chinaFont", "");
         if (fontFile.empty())

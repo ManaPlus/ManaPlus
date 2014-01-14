@@ -42,7 +42,7 @@ class Setup_Mods final : public SetupTabScroll
 
         void loadMods();
 
-        void saveMods();
+        void saveMods() const;
 
     protected:
 };

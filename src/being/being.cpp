@@ -917,7 +917,7 @@ const Guild *Being::getGuild(const std::string &guildName) const
 {
     FOR_EACH (GuildsMapCIter, itr, mGuilds)
     {
-        Guild *const guild = itr->second;
+        const Guild *const guild = itr->second;
         if (guild && guild->getName() == guildName)
             return guild;
     }
@@ -3298,12 +3298,11 @@ void Being::updatePets()
     }
 }
 
-void Being::unassignPet(Being *const pet1)
+void Being::unassignPet(const Being *const pet1)
 {
     FOR_EACH (std::vector<Being*>::iterator, it, mPets)
     {
-        Being *const pet = *it;
-        if (pet == pet1)
+        if (*it == pet1)
         {
             mPets.erase(it);
             return;

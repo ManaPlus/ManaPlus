@@ -714,7 +714,7 @@ void InputManager::updateConditionMask()
 
 bool InputManager::checkKey(const KeyData *const key) const
 {
-    //logger->log("checkKey mask=%d, condition=%d", mMask, key->condition);
+    // logger->log("checkKey mask=%d, condition=%d", mMask, key->condition);
     if (!key || (key->condition & mMask) != key->condition)
         return false;
 

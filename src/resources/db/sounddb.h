@@ -34,6 +34,6 @@ namespace SoundDB
     void unload();
 
     std::string &getSound(const int id);
-}
+}  // namespace SoundDB
 
 #endif  // RESOURCES_DB_SOUNDDB_H

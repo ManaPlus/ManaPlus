@@ -558,7 +558,6 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
     {
         if (localChatTab)
         {
-            std::stringstream chatlogentry;
             // TRANSLATORS: save file message
             std::string str = strprintf(_("Screenshot saved as %s"),
                 filenameSuffix.str().c_str());

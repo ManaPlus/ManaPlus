@@ -892,7 +892,7 @@ class Being : public ActorSprite, public ConfigListener
         void setOwner(Being *const owner)
         { mOwner = owner; }
 
-        void unassignPet(Being *const pet);
+        void unassignPet(const Being *const pet);
 
         void removeAllPets();
 
@@ -1088,7 +1088,6 @@ class Being : public ActorSprite, public ConfigListener
         int mCriticalHit;
         unsigned int mPvpRank;
         unsigned int mNumber;
-        int mPetId;
         int mLook;
         int mUsageCounter;
         unsigned char mHairColor;

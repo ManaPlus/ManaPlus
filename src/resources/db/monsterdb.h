@@ -41,6 +41,6 @@ namespace MonsterDB
     void loadXmlFile(const std::string &fileName);
 
     BeingInfo *get(const int id) A_WARN_UNUSED;
-}
+}  // namespace MonsterDB
 
 #endif  // RESOURCES_DB_MONSTERDB_H

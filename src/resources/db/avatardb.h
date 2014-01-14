@@ -38,6 +38,6 @@ namespace AvatarDB
     BeingInfo *get(const int id) A_WARN_UNUSED;
 
     void loadXmlFile(const std::string &fileName);
-}
+}  // namespace AvatarDB
 
 #endif  // RESOURCES_DB_AVATARDB_H

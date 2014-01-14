@@ -42,6 +42,6 @@ namespace ModDB
     void loadXmlFile(const std::string &fileName);
 
     const ModInfos &getAll();
-}
+}  // namespace ModDB
 
 #endif  // RESOURCES_DB_MODDB_H

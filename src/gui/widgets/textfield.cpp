@@ -26,7 +26,6 @@
 
 #include "input/inputmanager.h"
 
-#include "input/keydata.h"
 #include "input/keyevent.h"
 
 #include "gui/sdlinput.h"

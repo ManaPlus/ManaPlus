@@ -200,7 +200,7 @@ int Files::copyFile(const std::string &restrict srcName,
 void Files::getFiles(const std::string &path, StringVect &list)
 {
     char **fonts = PhysFs::enumerateFiles(path.c_str());
-    for (char **i = fonts; *i; i++)
+    for (char *const *i = fonts; *i; i++)
     {
         if (!PhysFs::isDirectory((path + *i).c_str()))
             list.push_back(*i);
@@ -211,7 +211,7 @@ void Files::getFiles(const std::string &path, StringVect &list)
 void Files::getDirs(const std::string &path, StringVect &list)
 {
     char **fonts = PhysFs::enumerateFiles(path.c_str());
-    for (char **i = fonts; *i; i++)
+    for (char *const *i = fonts; *i; i++)
     {
         if (PhysFs::isDirectory((path + *i).c_str()))
             list.push_back(*i);
@@ -222,7 +222,7 @@ void Files::getDirs(const std::string &path, StringVect &list)
 void Files::getFilesWithDir(const std::string &path, StringVect &list)
 {
     char **fonts = PhysFs::enumerateFiles(path.c_str());
-    for (char **i = fonts; *i; i++)
+    for (char *const *i = fonts; *i; i++)
     {
         if (!PhysFs::isDirectory((path + *i).c_str()))
             list.push_back(path + *i);
