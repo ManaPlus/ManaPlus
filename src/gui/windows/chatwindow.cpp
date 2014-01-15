@@ -1240,6 +1240,39 @@ WhisperTab *ChatWindow::getWhisperTab(const std::string &nick) const
     return ret;
 }
 
+
+#define changeColor(fun) \
+    { \
+        msg = removeColors(msg); \
+        int skip = 0; \
+        const size_t sz = msg.length(); \
+        for (size_t f = 0; f < sz; f ++) \
+        { \
+            if (skip > 0) \
+            { \
+                newMsg += msg.at(f); \
+                skip --; \
+                continue; \
+            } \
+            const unsigned char ch = static_cast<unsigned char>(msg.at(f)); \
+            if (f + 2 < sz && msg.substr(f, 2) == "%%") \
+            { \
+                newMsg += msg.at(f); \
+                skip = 2; \
+            } \
+            else if (ch > 0xc0 || ch < 0x80) \
+            { \
+                newMsg += "##" + toString(fun) + msg.at(f); \
+                if (mRainbowColor > 9) \
+                    mRainbowColor = 0; \
+            } \
+            else \
+            { \
+                newMsg += msg.at(f); \
+            } \
+        } \
+    }
+
 std::string ChatWindow::addColors(std::string &msg)
 {
     // default color or chat command
@@ -1256,31 +1289,13 @@ std::string ChatWindow::addColors(std::string &msg)
     switch (mChatColor)
     {
         case 11:
-            msg = removeColors(msg);
-            for (unsigned int f = 0; f < msg.length(); f ++)
-            {
-                newMsg += "##" + toString(mRainbowColor++) + msg.at(f);
-                if (mRainbowColor > 9)
-                    mRainbowColor = 0;
-            }
+            changeColor(mRainbowColor++)
             return newMsg;
         case 12:
-            msg = removeColors(msg);
-            for (unsigned int f = 0; f < msg.length(); f ++)
-            {
-                newMsg += "##" + toString(cMap[mRainbowColor++]) + msg.at(f);
-                if (mRainbowColor > 9)
-                    mRainbowColor = 0;
-            }
+            changeColor(cMap[mRainbowColor++])
             return newMsg;
         case 13:
-            msg = removeColors(msg);
-            for (unsigned int f = 0; f < msg.length(); f ++)
-            {
-                newMsg += "##" + toString(cMap[9-mRainbowColor++]) + msg.at(f);
-                if (mRainbowColor > 9)
-                    mRainbowColor = 0;
-            }
+            changeColor(cMap[9-mRainbowColor++])
             return newMsg;
         default:
             break;
@@ -1289,6 +1304,8 @@ std::string ChatWindow::addColors(std::string &msg)
     // simple colors
     return std::string("##").append(toString(mChatColor - 1)).append(msg);
 }
+
+#undef changeColor
 
 void ChatWindow::autoComplete()
 {
