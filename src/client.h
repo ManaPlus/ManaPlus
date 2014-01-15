@@ -321,6 +321,8 @@ public:
     void updateScreenKeyboard(const int height)
     { mKeyboardHeight = height; }
 
+    void reloadWallpaper();
+
     Window *openErrorDialog(const std::string &header,
                             const std::string &message,
                             const bool modal);

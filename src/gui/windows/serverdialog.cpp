@@ -394,7 +394,10 @@ void ServerDialog::connectToSelectedServer()
     if (!LoginDialog::savedPasswordKey.empty())
     {
         if (mServerInfo->hostname != LoginDialog::savedPasswordKey)
+        {
             LoginDialog::savedPassword.clear();
+            client->reloadWallpaper();
+        }
     }
 
     config.setValue("usePersistentIP",

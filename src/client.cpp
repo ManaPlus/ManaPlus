@@ -3033,6 +3033,12 @@ bool Client::isKeyboardVisible() const
 #endif
 }
 
+void Client::reloadWallpaper()
+{
+    if (mDesktop)
+        mDesktop->reloadWallpaper();
+}
+
 #ifdef ANDROID
 #ifdef USE_SDL2
 void Client::extractAssets()
