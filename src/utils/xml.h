@@ -31,6 +31,7 @@
 #include "localconsts.h"
 
 #define XmlNodePtr xmlNodePtr
+#define XmlNodePtrConst xmlNode *const
 #define XmlStrEqual(str1, str2) xmlStrEqual(str1, \
     reinterpret_cast<const xmlChar*>(str2))
 #define xmlNameEqual(node, str) xmlStrEqual((node)->name, \
@@ -96,37 +97,45 @@ namespace XML
     /**
      * Gets an floating point property from an XmlNodePtr.
      */
-    double getFloatProperty(const XmlNodePtr node, const char *const name,
+    double getFloatProperty(const XmlNodePtr node,
+                            const char *const name,
                             double def) A_WARN_UNUSED;
 
     /**
      * Gets an integer property from an XmlNodePtr.
      */
-    int getProperty(const XmlNodePtr node, const char *const name,
+    int getProperty(const XmlNodePtr node,
+                    const char *const name,
                     int def) A_WARN_UNUSED;
 
     /**
      * Gets an integer property from an XmlNodePtr.
      */
-    int getIntProperty(const XmlNodePtr node, const char *const name, int def,
-                       const int min, const int max) A_WARN_UNUSED;
+    int getIntProperty(const XmlNodePtr node,
+                       const char *const name,
+                       int def,
+                       const int min,
+                       const int max) A_WARN_UNUSED;
 
     /**
      * Gets a string property from an XmlNodePtr.
      */
-    std::string getProperty(const XmlNodePtr node, const char *const name,
+    std::string getProperty(const XmlNodePtr node,
+                            const char *const name,
                             const std::string &def) A_WARN_UNUSED;
 
     /**
      * Gets a translated string property from an XmlNodePtr.
      */
-    std::string langProperty(const XmlNodePtr node, const char *const name,
+    std::string langProperty(const XmlNodePtr node,
+                             const char *const name,
                              const std::string &def) A_WARN_UNUSED;
 
     /**
      * Gets a boolean property from an XmlNodePtr.
      */
-    bool getBoolProperty(const XmlNodePtr node, const char *const name,
+    bool getBoolProperty(const XmlNodePtr node,
+                         const char *const name,
                          const bool def) A_WARN_UNUSED;
 
     /**

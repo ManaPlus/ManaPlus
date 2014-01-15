@@ -38,8 +38,8 @@ namespace
 
 namespace MapDB
 {
-    void readMap(XmlNodePtr node);
-    void readAtlas(XmlNodePtr node);
+    void readMap(XmlNodePtrConst node);
+    void readAtlas(XmlNodePtrConst node);
 }
 
 void MapDB::load()
@@ -59,7 +59,7 @@ void MapDB::loadRemap()
     XML::Document *const doc = new XML::Document(
         paths.getStringValue("mapsRemapFile"));
 
-    const XmlNodePtr root = doc->rootNode();
+    const XmlNodePtrConst root = doc->rootNode();
     if (!root)
     {
         delete doc;
@@ -85,7 +85,7 @@ void MapDB::loadRemap()
     delete doc;
 }
 
-void MapDB::readMap(XmlNodePtr node)
+void MapDB::readMap(XmlNodePtrConst node)
 {
     const std::string map = XML::getProperty(node, "name", "");
     if (map.empty())
@@ -103,7 +103,7 @@ void MapDB::readMap(XmlNodePtr node)
     }
 }
 
-void MapDB::readAtlas(XmlNodePtr node)
+void MapDB::readAtlas(XmlNodePtrConst node)
 {
     const std::string atlas = XML::getProperty(node, "name", "");
     if (atlas.empty())
@@ -132,7 +132,7 @@ void MapDB::readAtlas(XmlNodePtr node)
 void MapDB::loadInfo(const std::string &fileName)
 {
     XML::Document *doc = new XML::Document(fileName);
-    const XmlNodePtr root = doc->rootNode();
+    const XmlNodePtrConst root = doc->rootNode();
     if (!root)
     {
         delete doc;

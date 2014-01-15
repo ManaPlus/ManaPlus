@@ -51,7 +51,7 @@ void ModDB::load()
 void ModDB::loadXmlFile(const std::string &fileName)
 {
     XML::Document doc(fileName);
-    const XmlNodePtr rootNode = doc.rootNode();
+    const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "mods"))
     {

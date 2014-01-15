@@ -140,7 +140,9 @@ namespace XML
         return mDoc ? xmlDocGetRootElement(mDoc) : nullptr;
     }
 
-    int getProperty(const XmlNodePtr node, const char *const name, int def)
+    int getProperty(const XmlNodePtr node,
+                    const char *const name,
+                    int def)
     {
         int &ret = def;
 
@@ -154,8 +156,11 @@ namespace XML
         return ret;
     }
 
-    int getIntProperty(const XmlNodePtr node, const char *const name, int def,
-                       const int min, const int max)
+    int getIntProperty(const XmlNodePtr node,
+                       const char *const name,
+                       int def,
+                       const int min,
+                       const int max)
     {
         int &ret = def;
 
@@ -172,7 +177,8 @@ namespace XML
         return ret;
     }
 
-    double getFloatProperty(const XmlNodePtr node, const char *const name,
+    double getFloatProperty(const XmlNodePtr node,
+                            const char *const name,
                             double def)
     {
         double &ret = def;
@@ -187,7 +193,8 @@ namespace XML
         return ret;
     }
 
-    std::string getProperty(const XmlNodePtr node, const char *const name,
+    std::string getProperty(const XmlNodePtr node,
+                            const char *const name,
                             const std::string &def)
     {
         xmlChar *const prop = XmlGetProp(node, name);
@@ -201,7 +208,8 @@ namespace XML
         return def;
     }
 
-    std::string langProperty(const XmlNodePtr node, const char *const name,
+    std::string langProperty(const XmlNodePtr node,
+                             const char *const name,
                              const std::string &def)
     {
         std::string str = getProperty(node, name, def);
@@ -211,7 +219,8 @@ namespace XML
         return translator->getStr(str);
     }
 
-    bool getBoolProperty(const XmlNodePtr node, const char *const name,
+    bool getBoolProperty(const XmlNodePtr node,
+                         const char *const name,
                          const bool def)
     {
         const xmlChar *const prop = XmlGetProp(node, name);

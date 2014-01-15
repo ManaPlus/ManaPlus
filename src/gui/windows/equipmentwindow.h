@@ -115,7 +115,7 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
 
         void addBox(const int idx, int x, int y, const int imageIndex);
 
-        void loadWindow(const XmlNodePtr windowNode);
+        void loadWindow(const XmlNodePtrConst windowNode);
 
         void loadPlayerBox(const XmlNodePtr playerBoxNode);
 

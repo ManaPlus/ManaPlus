@@ -43,8 +43,10 @@ class Particle;
 class ParticleEmitter final
 {
     public:
-        ParticleEmitter(const XmlNodePtr emitterNode, Particle *const target,
-                        Map *const map, const int rotation = 0,
+        ParticleEmitter(const XmlNodePtrConst emitterNode,
+                        Particle *const target,
+                        Map *const map,
+                        const int rotation = 0,
                         const std::string& dyePalettes = std::string());
 
         /**
@@ -82,9 +84,9 @@ class ParticleEmitter final
 
     private:
         template <typename T> ParticleEmitterProp<T>
-            readParticleEmitterProp(XmlNodePtr propertyNode, T def);
+            readParticleEmitterProp(XmlNodePtrConst propertyNode, T def);
 
-        ImageSet *getImageSet(XmlNodePtr node);
+        ImageSet *getImageSet(XmlNodePtrConst node);
 
         /**
          * initial position of particles:

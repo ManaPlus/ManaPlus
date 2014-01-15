@@ -29,7 +29,8 @@
 
 #include "debug.h"
 
-void BeingCommon::readBasicAttributes(BeingInfo *const info, XmlNodePtr node,
+void BeingCommon::readBasicAttributes(BeingInfo *const info,
+                                      XmlNodePtrConst node,
                                       const std::string &hoverCursor)
 {
     info->setTargetCursorSize(XML::getProperty(node,

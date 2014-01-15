@@ -32,7 +32,7 @@ AnimationParticle::AnimationParticle(Animation *const animation) :
 {
 }
 
-AnimationParticle::AnimationParticle(XmlNodePtr const animationNode,
+AnimationParticle::AnimationParticle(XmlNodePtrConst animationNode,
                                      const std::string& dyePalettes):
     ImageParticle(nullptr),
     mAnimation(new SimpleAnimation(animationNode, dyePalettes))

@@ -43,7 +43,7 @@ static const float DEG_RAD_FACTOR = 0.017453293F;
 typedef std::vector<ImageSet*>::const_iterator ImageSetVectorCIter;
 typedef std::list<ParticleEmitter>::const_iterator ParticleEmitterListCIter;
 
-ParticleEmitter::ParticleEmitter(const XmlNodePtr emitterNode,
+ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
                                  Particle *const target,
                                  Map *const map, const int rotation,
                                  const std::string& dyePalettes) :
@@ -425,7 +425,7 @@ ParticleEmitter::ParticleEmitter(const ParticleEmitter &o)
     *this = o;
 }
 
-ImageSet *ParticleEmitter::getImageSet(XmlNodePtr node)
+ImageSet *ParticleEmitter::getImageSet(XmlNodePtrConst node)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
     ImageSet *imageset = nullptr;
@@ -525,7 +525,7 @@ ParticleEmitter::~ParticleEmitter()
 }
 
 template <typename T> ParticleEmitterProp<T>
-ParticleEmitter::readParticleEmitterProp(XmlNodePtr propertyNode, T def)
+ParticleEmitter::readParticleEmitterProp(XmlNodePtrConst propertyNode, T def)
 {
     ParticleEmitterProp<T> retval;
 

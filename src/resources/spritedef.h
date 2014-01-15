@@ -185,18 +185,21 @@ class SpriteDef final : public Resource
         /**
          * Loads a sprite element.
          */
-        void loadSprite(const XmlNodePtr spriteNode, const int variant,
+        void loadSprite(const XmlNodePtr spriteNode,
+                        const int variant,
                         const std::string &palettes = "");
 
         /**
          * Loads an imageset element.
          */
-        void loadImageSet(const XmlNodePtr node, const std::string &palettes);
+        void loadImageSet(const XmlNodePtr node,
+                          const std::string &palettes);
 
         /**
          * Loads an action element.
          */
-        void loadAction(const XmlNodePtr node, const int variant_offset);
+        void loadAction(const XmlNodePtr node,
+                        const int variant_offset);
 
         /**
          * Loads an animation element.

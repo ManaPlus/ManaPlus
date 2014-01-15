@@ -1072,7 +1072,7 @@ void Theme::loadColors(std::string file)
         file.append("/colors.xml");
 
     XML::Document doc(resolveThemePath(file));
-    const XmlNodePtr root = doc.rootNode();
+    const XmlNodePtrConst root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "colors"))
     {
@@ -1260,7 +1260,7 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
     }
     logger->log("loading: " + path);
     XML::Document doc(path);
-    const XmlNodePtr rootNode = doc.rootNode();
+    const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "info"))
         return nullptr;

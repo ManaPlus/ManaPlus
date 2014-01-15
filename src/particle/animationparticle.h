@@ -35,7 +35,7 @@ class AnimationParticle final : public ImageParticle
     public:
         explicit AnimationParticle(Animation *const animation);
 
-        explicit AnimationParticle(XmlNodePtr const animationNode,
+        explicit AnimationParticle(XmlNodePtrConst animationNode,
                                    const std::string& dyePalettes
                                    = std::string());
 

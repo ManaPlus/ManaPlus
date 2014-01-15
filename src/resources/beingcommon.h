@@ -38,7 +38,8 @@ class BeingInfo;
 
 namespace BeingCommon
 {
-    void readBasicAttributes(BeingInfo *const info, XmlNodePtr node,
+    void readBasicAttributes(BeingInfo *const info,
+                             XmlNodePtrConst node,
                              const std::string &hoverCursor);
 
     void getIncludeFiles(const std::string &dir, StringVect &list);

@@ -85,7 +85,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
         palettes = animationFile.substr(pos + 1);
 
     XML::Document doc(animationFile.substr(0, pos));
-    XmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
@@ -225,7 +225,8 @@ void SpriteDef::loadImageSet(const XmlNodePtr node,
     mImageSets[name] = imageSet;
 }
 
-void SpriteDef::loadAction(const XmlNodePtr node, const int variant_offset)
+void SpriteDef::loadAction(const XmlNodePtr node,
+                           const int variant_offset)
 {
     const std::string actionName = XML::getProperty(node, "name", "");
     const std::string imageSetName = XML::getProperty(node, "imageset", "");

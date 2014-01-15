@@ -227,7 +227,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
     XML::Document doc(reinterpret_cast<char*>(inflated), inflatedSize);
     free(inflated);
 
-    XmlNodePtr node = doc.rootNode();
+    XmlNodePtrConst node = doc.rootNode();
 
     // Parse the inflated map data
     if (node)
@@ -256,7 +256,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
     return map;
 }
 
-Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
+Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
 {
     if (!node)
         return nullptr;
@@ -405,7 +405,8 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
     return map;
 }
 
-void MapReader::readProperties(const XmlNodePtr node, Properties *const props)
+void MapReader::readProperties(const XmlNodePtrConst node,
+                               Properties *const props)
 {
     if (!node || !props)
         return;
@@ -511,7 +512,8 @@ inline static void setTile(Map *const map, MapLayer *const layer,
         } \
     } \
 
-bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
+bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
+                                Map *const map,
                                 MapLayer *const layer,
                                 const MapLayer::Type &layerType,
                                 MapHeights *const heights,
@@ -528,7 +530,7 @@ bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
     }
 
     // Read base64 encoded map file
-    XmlNodePtr dataChild = childNode->xmlChildrenNode;
+    XmlNodePtrConst dataChild = childNode->xmlChildrenNode;
     if (!dataChild)
         return true;
 
@@ -613,14 +615,15 @@ bool MapReader::readBase64Layer(const XmlNodePtr childNode, Map *const map,
     return true;
 }
 
-bool MapReader::readCsvLayer(const XmlNodePtr childNode, Map *const map,
+bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
+                             Map *const map,
                              MapLayer *const layer,
                              const MapLayer::Type &layerType,
                              MapHeights *const heights,
                              int &restrict x, int &restrict y,
                              const int w, const int h)
 {
-    XmlNodePtr dataChild = childNode->xmlChildrenNode;
+    XmlNodePtrConst dataChild = childNode->xmlChildrenNode;
     if (!dataChild)
         return true;
 
@@ -803,7 +806,8 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
     }
 }
 
-Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
+Tileset *MapReader::readTileset(XmlNodePtr node,
+                                const std::string &path,
                                 Map *const map)
 {
     if (!map)

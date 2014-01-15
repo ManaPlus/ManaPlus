@@ -48,13 +48,16 @@ namespace
 extern int serverVersion;
 
 // Forward declarations
-static void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node);
-static void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node);
+static void loadSpriteRef(ItemInfo *const itemInfo,
+                          const XmlNodePtr node);
+static void loadSoundRef(ItemInfo *const itemInfo,
+                         const XmlNodePtr node);
 static void loadFloorSprite(SpriteDisplay *const display,
-                            const XmlNodePtr node);
+                            const XmlNodePtrConst node);
 static void loadReplaceSprite(ItemInfo *const itemInfo,
                               const XmlNodePtr replaceNode);
-static void loadOrderSprite(ItemInfo *const itemInfo, const XmlNodePtr node,
+static void loadOrderSprite(ItemInfo *const itemInfo,
+                            const XmlNodePtr node,
                             const bool drawAfter);
 static int parseSpriteName(const std::string &name);
 static int parseDirectionName(const std::string &name);
@@ -757,7 +760,8 @@ void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
     }
 }
 
-void loadFloorSprite(SpriteDisplay *const display, const XmlNodePtr floorNode)
+void loadFloorSprite(SpriteDisplay *const display,
+                     const XmlNodePtrConst floorNode)
 {
     for_each_xml_child_node(spriteNode, floorNode)
     {
@@ -778,7 +782,8 @@ void loadFloorSprite(SpriteDisplay *const display, const XmlNodePtr floorNode)
     }
 }
 
-void loadReplaceSprite(ItemInfo *const itemInfo, const XmlNodePtr replaceNode)
+void loadReplaceSprite(ItemInfo *const itemInfo,
+                       const XmlNodePtr replaceNode)
 {
     const std::string removeSprite = XML::getProperty(
         replaceNode, "sprite", "");
@@ -909,7 +914,8 @@ void loadReplaceSprite(ItemInfo *const itemInfo, const XmlNodePtr replaceNode)
     }
 }
 
-void loadOrderSprite(ItemInfo *const itemInfo, const XmlNodePtr node,
+void loadOrderSprite(ItemInfo *const itemInfo,
+                     const XmlNodePtr node,
                      const bool drawAfter)
 {
     const int sprite = parseSpriteName(XML::getProperty(node, "name", ""));

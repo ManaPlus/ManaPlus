@@ -47,7 +47,7 @@ void SoundDB::load()
 void SoundDB::loadXmlFile(const std::string &fileName)
 {
     XML::Document *doc = new XML::Document(fileName);
-    const XmlNodePtr root = doc->rootNode();
+    const XmlNodePtrConst root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "sounds"))
     {

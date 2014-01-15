@@ -52,7 +52,7 @@ class MapReader final
          * Read an XML map from a parsed XML tree. The path is used to find the
          * location of referenced tileset images.
          */
-        static Map *readMap(XmlNodePtr node,
+        static Map *readMap(XmlNodePtrConst node,
                             const std::string &path) A_WARN_UNUSED;
 
         static Map *createEmptyMap(const std::string &restrict filename,
@@ -67,7 +67,7 @@ class MapReader final
          * @param props The Properties instance to which the properties will
          *              be assigned.
          */
-        static void readProperties(const XmlNodePtr node,
+        static void readProperties(const XmlNodePtrConst node,
                                    Properties *const props);
 
         /**
@@ -75,7 +75,8 @@ class MapReader final
          */
         static void readLayer(const XmlNodePtr node, Map *const map);
 
-        static bool readBase64Layer(const XmlNodePtr childNode, Map *const map,
+        static bool readBase64Layer(const XmlNodePtrConst childNode,
+                                    Map *const map,
                                     MapLayer *const layer,
                                     const MapLayer::Type &layerType,
                                     MapHeights *const heights,
@@ -83,7 +84,8 @@ class MapReader final
                                     int &restrict x, int &restrict y,
                                     const int w, const int h);
 
-        static bool readCsvLayer(const XmlNodePtr childNode, Map *const map,
+        static bool readCsvLayer(const XmlNodePtrConst childNode,
+                                 Map *const map,
                                  MapLayer *const layer,
                                  const MapLayer::Type &layerType,
                                  MapHeights *const heights,
@@ -93,7 +95,8 @@ class MapReader final
         /**
          * Reads a tile set.
          */
-        static Tileset *readTileset(XmlNodePtr node, const std::string &path,
+        static Tileset *readTileset(XmlNodePtr node,
+                                    const std::string &path,
                                     Map *const map) A_WARN_UNUSED;
 
         static void updateMusic(Map *const map);
