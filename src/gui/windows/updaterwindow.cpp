@@ -60,7 +60,8 @@ const std::string updateServer2
 /**
  * Load the given file into a vector of updateFiles.
  */
-static std::vector<UpdateFile> loadXMLFile(const std::string &fileName)
+static std::vector<UpdateFile> loadXMLFile(const std::string &fileName,
+                                           const bool loadMods)
 {
     std::vector<UpdateFile> files;
     XML::Document doc(fileName, false);
@@ -74,11 +75,9 @@ static std::vector<UpdateFile> loadXMLFile(const std::string &fileName)
 
     for_each_xml_child_node(fileNode, rootNode)
     {
-        if (!xmlNameEqual(fileNode, "update")
-            && !xmlNameEqual(fileNode, "update2"))
-        {
+        const bool isMod = xmlNameEqual(fileNode, "mod");
+        if (!xmlNameEqual(fileNode, "update") && !isMod)
             continue;
-        }
 
         UpdateFile file;
         file.name = XML::getProperty(fileNode, "file", "");
@@ -86,6 +85,9 @@ static std::vector<UpdateFile> loadXMLFile(const std::string &fileName)
         file.type = XML::getProperty(fileNode, "type", "data");
         file.desc = XML::getProperty(fileNode, "description", "");
         file.group = XML::getProperty(fileNode, "group", "");
+        if (!file.group.empty() && (!isMod || !loadMods))
+            continue;
+
         const std::string version = XML::getProperty(
             fileNode, "version", "");
         if (!version.empty())
@@ -562,7 +564,7 @@ void UpdaterWindow::loadUpdates()
     if (mUpdateFiles.empty())
     {   // updates not downloaded
         mUpdateFiles = loadXMLFile(std::string(mUpdatesDir).append(
-            "/").append(xmlUpdateFile));
+            "/").append(xmlUpdateFile), false);
         if (mUpdateFiles.empty())
         {
             logger->log("Warning this server does not have a"
@@ -591,8 +593,8 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
 {
     const ResourceManager *const resman = ResourceManager::getInstance();
 
-    std::vector<UpdateFile> updateFiles
-        = loadXMLFile(std::string(dir).append("/").append(xmlUpdateFile));
+    std::vector<UpdateFile> updateFiles = loadXMLFile(
+        std::string(dir).append("/").append(xmlUpdateFile), false);
 
     if (updateFiles.empty())
     {
@@ -620,8 +622,8 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
 void UpdaterWindow::unloadUpdates(const std::string &dir)
 {
     const ResourceManager *const resman = ResourceManager::getInstance();
-    std::vector<UpdateFile> updateFiles
-        = loadXMLFile(std::string(dir).append("/").append(xmlUpdateFile));
+    std::vector<UpdateFile> updateFiles = loadXMLFile(
+        std::string(dir).append("/").append(xmlUpdateFile), true);
 
     if (updateFiles.empty())
     {
@@ -643,8 +645,8 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir,
                                         const ResourceManager *const resman)
 {
     std::string fixPath = dir + "/fix";
-    std::vector<UpdateFile> updateFiles
-        = loadXMLFile(std::string(fixPath).append("/").append(xmlUpdateFile));
+    std::vector<UpdateFile> updateFiles = loadXMLFile(
+        std::string(fixPath).append("/").append(xmlUpdateFile), false);
 
     for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
@@ -668,8 +670,8 @@ void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir,
                                           const ResourceManager *const resman)
 {
     const std::string fixPath = dir + "/fix";
-    const std::vector<UpdateFile> updateFiles
-        = loadXMLFile(std::string(fixPath).append("/").append(xmlUpdateFile));
+    const std::vector<UpdateFile> updateFiles = loadXMLFile(
+        std::string(fixPath).append("/").append(xmlUpdateFile), true);
 
     for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
@@ -796,7 +798,7 @@ void UpdaterWindow::logic()
                 if (mCurrentFile == xmlUpdateFile)
                 {
                     mUpdateFiles = loadXMLFile(std::string(mUpdatesDir).append(
-                        "/").append(xmlUpdateFile));
+                        "/").append(xmlUpdateFile), true);
 
                     if (mUpdateFiles.empty())
                     {
@@ -885,7 +887,7 @@ void UpdaterWindow::logic()
                 if (mCurrentFile == xmlUpdateFile)
                 {
                     mTempUpdateFiles = loadXMLFile(std::string(
-                        mUpdatesDir).append("/").append(xmlUpdateFile));
+                        mUpdatesDir).append("/").append(xmlUpdateFile), true);
                 }
                 mUpdateIndexOffset = mUpdateIndex;
                 mUpdateIndex = 0;
@@ -1015,8 +1017,8 @@ void UpdaterWindow::loadMods(const std::string &dir,
         }
     }
 
-    std::vector<UpdateFile> updateFiles2
-        = loadXMLFile(std::string(fixPath).append("/").append(xmlUpdateFile));
+    std::vector<UpdateFile> updateFiles2 = loadXMLFile(
+        std::string(fixPath).append("/").append(xmlUpdateFile), true);
 
     for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
          updateFiles2.size()); updateIndex < sz; updateIndex ++)
