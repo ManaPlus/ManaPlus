@@ -887,6 +887,37 @@ void ResourceManager::moveToDeleted(Resource *const res)
     }
 }
 
+void ResourceManager::decRefDelete(Resource *const res)
+{
+    if (!res)
+        return;
+
+    bool found(false);
+    const int count = res->getRefCount();
+    if (count == 1)
+    {
+        logResource(res);
+
+        ResourceIterator resIter = mResources.find(res->mIdPath);
+        if (resIter != mResources.end() && resIter->second == res)
+        {
+            mResources.erase(resIter);
+        }
+        else
+        {
+            resIter = mOrphanedResources.find(res->mIdPath);
+            if (resIter != mOrphanedResources.end() && resIter->second == res)
+                mOrphanedResources.erase(resIter);
+        }
+
+        delete res;
+    }
+    else
+    {
+        res->decRef();
+    }
+}
+
 ResourceManager *ResourceManager::getInstance()
 {
     // Create a new instance if necessary.

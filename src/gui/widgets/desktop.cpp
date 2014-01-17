@@ -162,7 +162,7 @@ void Desktop::setBestFittingWallpaper()
         ResourceManager *const resman = ResourceManager::getInstance();
         if (mWallpaper)
         {
-            resman->moveToDeleted(mWallpaper);
+            resman->decRefDelete(mWallpaper);
             mWallpaper = nullptr;
         }
 
@@ -180,7 +180,7 @@ void Desktop::setBestFittingWallpaper()
 
             if (newRsclWlPpr)
             {
-                resman->moveToDeleted(nWallPaper);
+                resman->decRefDelete(nWallPaper);
                 // We replace the resource in the resource manager
                 mWallpaper = newRsclWlPpr;
             }

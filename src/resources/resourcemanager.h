@@ -240,6 +240,8 @@ class ResourceManager final
 
         void clearDeleted(const bool full = true);
 
+        void decRefDelete(Resource *const res);
+
         static void logResource(const Resource *const res);
 
         /**
