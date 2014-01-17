@@ -178,7 +178,7 @@ unsigned char *php3_base64_decode(const unsigned char *restrict const string,
 std::string encodeBase64String(std::string value)
 {
     int sz = 0;
-    unsigned char *str = reinterpret_cast<unsigned char*>(
+    const unsigned char *const str = reinterpret_cast<unsigned char*>(
         const_cast<char*>(value.c_str()));
     unsigned char *const buf = php3_base64_encode(str, value.size(), &sz);
     if (!buf)
@@ -192,7 +192,7 @@ std::string encodeBase64String(std::string value)
 std::string decodeBase64String(std::string value)
 {
     int sz = 0;
-    unsigned char *str = reinterpret_cast<unsigned char*>(
+    const unsigned char *const str = reinterpret_cast<unsigned char*>(
         const_cast<char*>(value.c_str()));
     unsigned char *const buf = php3_base64_decode(str, value.size(), &sz);
 

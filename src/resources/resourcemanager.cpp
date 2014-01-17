@@ -892,7 +892,6 @@ void ResourceManager::decRefDelete(Resource *const res)
     if (!res)
         return;
 
-    bool found(false);
     const int count = res->getRefCount();
     if (count == 1)
     {

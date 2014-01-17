@@ -78,7 +78,7 @@ void ColorDB::loadHair(const std::string &fileName,
                        std::map<int, ItemColor> &colors)
 {
     XML::Document *doc = new XML::Document(fileName);
-    XmlNodePtrConst root = doc->rootNode();
+    const XmlNodePtrConst root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "colors"))
     {
