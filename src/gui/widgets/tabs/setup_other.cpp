@@ -371,9 +371,11 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         "", "usefbo", this, "usefboEvent");
 #endif
 
+#ifndef WIN32
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Screenshot directory"), "",
         "screenshotDirectory2", this, "screenshotDirectory2Event", true, true);
+#endif
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Network delay between sub servers"),
