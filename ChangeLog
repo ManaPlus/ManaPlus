@@ -1,3 +1,25 @@
+2014-01-18 New release 1.4.1.18
+fix: npc font option.
+fix: job bar showing in new installs.
+fix: input actions before logging to game.
+fix: icon under windows.
+fix: block moving keys in buy/sell dialogs.
+fix: logging in threads.
+fix: reload background image if connecting to different servers.
+fix: rainbow colors with utf8 chars and smiles.
+fix: crash with external guichan in chat.
+add: chinese locale and font support.
+add: most client data configs splits/patching by other configs.
+add: mods support.
+add: in input fields for ctrl+left, ctrl+right.
+add: update dejavu fonts.
+add: multiply pets for one owner at same time.
+add: autoclose npc dialog by moving keys if it almost closed.
+add: show date time and server name in screenshot file names.
+add: create screenshots before connecting to game.
+add: allow edit screenshot path (not in windows).
+add: change screenshot default path to pictures directory.
+
 2014-01-04 New release 1.4.1.4
 fix: draw background for very small objects.
 fix: sound event selection.
