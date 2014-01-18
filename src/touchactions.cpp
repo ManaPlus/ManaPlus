@@ -23,6 +23,8 @@
 #include "mouseinput.h"
 #include "touchmanager.h"
 
+#include "input/inputmanager.h"
+
 #include "debug.h"
 
 bool padClicked(false);
@@ -96,6 +98,7 @@ static void moveChar(int x, int y)
         touchManager.setActionActive(Input::KEY_MOVE_DOWN, false);
         touchManager.setActionActive(Input::KEY_MOVE_UP, false);
     }
+    inputManager.updateConditionMask();
 }
 
 impHandler(padClick)
