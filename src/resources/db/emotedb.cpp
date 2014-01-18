@@ -49,6 +49,7 @@ void EmoteDB::load()
     unknownSprite->sprite = AnimatedSprite::load(
         paths.getStringValue("spriteErrorFile"));
     unknownSprite->name = "unknown";
+    unknownSprite->id = 0;
     mUnknown.sprites.push_back(unknownSprite);
 
     logger->log1("Initializing emote database...");
@@ -122,6 +123,7 @@ void EmoteDB::loadXmlFile(const std::string &fileName)
                     XML::getProperty(spriteNode, "variant", 0));
                 currentSprite->name = XML::langProperty(
                     spriteNode, "name", "");
+                currentSprite->id = id;
                 currentInfo->sprites.push_back(currentSprite);
             }
             else if (xmlNameEqual(spriteNode, "particlefx"))
@@ -194,6 +196,7 @@ void EmoteDB::loadSpecialXmlFile(const std::string &fileName)
                     XML::getProperty(spriteNode, "variant", 0));
                 currentSprite->name = XML::langProperty(
                     spriteNode, "name", "");
+                currentSprite->id = id;
                 currentInfo->sprites.push_back(currentSprite);
             }
             else if (xmlNameEqual(spriteNode, "particlefx"))
