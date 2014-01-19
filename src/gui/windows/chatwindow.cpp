@@ -1481,53 +1481,59 @@ bool ChatWindow::resortChatLog(std::string line, Own own,
     if (!channel.empty())
         prefix = std::string("##3").append(channel).append("##0");
 
-    if (tradeChatTab)
+    if (findI(line, mTradeFilter) != std::string::npos)
     {
-        if (findI(line, mTradeFilter) != std::string::npos)
+        if (tradeChatTab)
         {
             tradeChatTab->chatLog(prefix + line, own,
                 ignoreRecord, tryRemoveColors);
-            return false;
         }
+        return false;
+    }
 
-        size_t idx2 = line.find(": ");
-        if (idx2 != std::string::npos)
+    size_t idx2 = line.find(": ");
+    if (idx2 != std::string::npos)
+    {
+        const size_t idx = line.find(": \302\202");
+        if (idx == idx2)
         {
-            const size_t idx = line.find(": \302\202");
-            if (idx == idx2)
+            if (line.find(": \302\202\302") != std::string::npos)
             {
-                if (line.find(": \302\202\302") != std::string::npos)
+                if (line.find(": \302\202\302e") != std::string::npos)
                 {
-                    if (line.find(": \302\202\302e") != std::string::npos)
-                    {
-                        const std::string nick = line.substr(0, idx2 - 1);
-                        line = line.substr(idx2 + 6);
-                        localPetEmote(nick, atoi(line.c_str()));
-                    }
-                    // ignore other special message formats.
-                    return false;
+                    const std::string nick = line.substr(0, idx2 - 1);
+                    line = line.substr(idx2 + 6);
+                    localPetEmote(nick, atoi(line.c_str()));
+                }
+                // ignore other special message formats.
+                return false;
+            }
+
+            // pet talk message detected
+            if (line.find(": \302\202\303 ") != std::string::npos)
+            {
+                if (actorManager && idx2 > 1)
+                {
+                    const std::string nick = line.substr(0, idx2 - 1);
+                    line = line.substr(idx2 + 6);
+                    localPetSay(nick, line);
                 }
 
-                // pet talk message detected
-                if (line.find(": \302\202\303 ") != std::string::npos)
-                {
-                    if (actorManager && idx2 > 1)
-                    {
-                        const std::string nick = line.substr(0, idx2 - 1);
-                        line = line.substr(idx2 + 6);
-                        localPetSay(nick, line);
-                    }
+                return false;
+            }
 
-                    return false;
-                }
-
+            if (tradeChatTab)
+            {
                 line = line.erase(idx + 2, 2);
                 tradeChatTab->chatLog(prefix + line, own, ignoreRecord,
                     tryRemoveColors);
-                return false;
             }
+            return false;
         }
+    }
 
+    if (tradeChatTab)
+    {
         const size_t idx1 = line.find("@@");
         if (idx1 != std::string::npos)
         {
