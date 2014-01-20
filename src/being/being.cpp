@@ -2164,7 +2164,7 @@ void Being::setSprite(const unsigned int slot, const int id,
         if (id1)
         {
             const ItemInfo &info = ItemDB::get(id1);
-            if (mMap && mType == PLAYER)
+            if (!isTempSprite && mMap && mType == PLAYER)
             {
                 const int pet = info.getPet();
                 if (pet)
@@ -2179,7 +2179,7 @@ void Being::setSprite(const unsigned int slot, const int id,
         const std::string filename = info.getSprite(mGender, mSubType);
         AnimatedSprite *equipmentSprite = nullptr;
 
-        if (mType == PLAYER)
+        if (!isTempSprite && mType == PLAYER)
         {
             const int pet = info.getPet();
             if (pet)
