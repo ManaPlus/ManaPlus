@@ -70,10 +70,13 @@ BeingInfo::BeingInfo() :
     mMoveOffsetY(0),
     mDeadOffsetX(0),
     mDeadOffsetY(0),
+    mAttackOffsetX(0),
+    mAttackOffsetY(0),
     mThinkTime(50),
     mDirectionType(1),
     mSitDirectionType(1),
     mDeadDirectionType(1),
+    mAttackDirectionType(1),
     mStaticMaxHP(false),
     mTargetSelection(true)
 {

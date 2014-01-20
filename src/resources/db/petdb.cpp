@@ -132,6 +132,10 @@ void PETDB::loadXmlFile(const std::string &fileName)
             "deadOffsetX", 0));
         currentInfo->setDeadOffsetY(XML::getProperty(petNode,
             "deadOffsetY", 1));
+        currentInfo->setAttackOffsetX(XML::getProperty(petNode,
+            "attackOffsetX", currentInfo->getTargetOffsetX()));
+        currentInfo->setAttackOffsetY(XML::getProperty(petNode,
+            "attackOffsetY", currentInfo->getTargetOffsetY()));
 
         currentInfo->setThinkTime(XML::getProperty(petNode,
             "thinkTime", 500) / 10);
@@ -142,6 +146,8 @@ void PETDB::loadXmlFile(const std::string &fileName)
             "sitDirectionType", 1));
         currentInfo->setDeadDirectionType(XML::getProperty(petNode,
             "deadDirectionType", 1));
+        currentInfo->setAttackDirectionType(XML::getProperty(petNode,
+            "attackDirectionType", 4));
 
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, petNode)

@@ -134,6 +134,8 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mAttackSpeed(350),
     mLevel(0),
     mAttackRange(1),
+    mLastAttackX(0),
+    mLastAttackY(0),
     mGender(GENDER_UNSPECIFIED),
     mAction(STAND),
     mSubType(0xFFFF),
@@ -759,6 +761,9 @@ void Being::handleAttack(Being *const victim, const int damage,
 
     if (this != player_node)
         setAction(Being::ATTACK, attackId);
+
+    mLastAttackX = victim->getTileX();
+    mLastAttackY = victim->getTileY();
 
     if (mType == PLAYER && mEquippedWeapon)
         fireMissile(victim, mEquippedWeapon->getMissileParticleFile());
@@ -1720,14 +1725,24 @@ void Being::petLogic()
             return;
         }
     }
-    if (mAction == STAND)
+    if (mOwner->getCurrentAction() != ATTACK)
+    {
+        if (mAction == ATTACK)
+            setAction(STAND, 0);
+    }
+    else
+    {
+        if (mAction == STAND || mAction == ATTACK)
+            setAction(ATTACK, 0);
+    }
+
+    if (mAction == STAND || mAction == ATTACK)
     {
         int directionType = 0;
         switch (mOwner->getCurrentAction())
         {
             case STAND:
             case MOVE:
-            case ATTACK:
             case HURT:
             case SPAWN:
             default:
@@ -1738,6 +1753,9 @@ void Being::petLogic()
                 break;
             case DEAD:
                 directionType = mInfo->getDeadDirectionType();
+                break;
+            case ATTACK:
+                directionType = mInfo->getAttackDirectionType();
                 break;
         }
 
@@ -1773,6 +1791,21 @@ void Being::petLogic()
                 else if (dstY < dstY0)
                     newDir |= UP;
                 break;
+
+            case 4:
+            {
+                const int dstX2 = mOwner->getLastAttackX();
+                const int dstY2 = mOwner->getLastAttackY();
+                if (dstX > dstX2)
+                    newDir |= LEFT;
+                else if (dstX < dstX2)
+                    newDir |= RIGHT;
+                if (dstY > dstY2)
+                    newDir |= UP;
+                else if (dstY < dstY2)
+                    newDir |= DOWN;
+                break;
+            }
         }
         if (newDir && newDir != getDirection())
             setDirection(newDir);
@@ -3337,6 +3370,10 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
             break;
 
         case ATTACK:
+            offsetX1 = mInfo->getAttackOffsetX();
+            offsetY1 = mInfo->getAttackOffsetY();
+            break;
+
         case SPAWN:
         case HURT:
         case STAND:

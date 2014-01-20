@@ -503,6 +503,12 @@ class LocalPlayer final : public Being,
 
         std::string getGameModifiersString();
 
+        int getLastAttackX() const override final
+        { return mTarget ? mTarget->getTileX() : mLastAttackX; }
+
+        int getLastAttackY() const override final
+        { return mTarget ? mTarget->getTileY() : mLastAttackY; }
+
     protected:
         void updateCoords() override final;
 

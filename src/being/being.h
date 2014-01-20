@@ -930,6 +930,12 @@ class Being : public ActorSprite, public ConfigListener
         int decUsage()
         { return --mUsageCounter; }
 
+        virtual int getLastAttackX() const
+        { return mLastAttackX; }
+
+        virtual int getLastAttackY() const
+        { return mLastAttackY; }
+
     protected:
         /**
          * Updates name's location.
@@ -996,6 +1002,8 @@ class Being : public ActorSprite, public ConfigListener
 
         int mLevel;
         int mAttackRange;
+        int mLastAttackX;
+        int mLastAttackY;
         Gender mGender;
         Action mAction;       /**< Action the being is performing */
         uint16_t mSubType;      /**< Subtype (graphical view, basically) */

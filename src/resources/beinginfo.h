@@ -284,6 +284,18 @@ class BeingInfo final
         int getDeadOffsetY() const A_WARN_UNUSED
         { return mDeadOffsetY; }
 
+        void setAttackOffsetX(const int n)
+        { mAttackOffsetX = n; }
+
+        int getAttackOffsetX() const A_WARN_UNUSED
+        { return mAttackOffsetX; }
+
+        void setAttackOffsetY(const int n)
+        { mAttackOffsetY = n; }
+
+        int getAttackOffsetY() const A_WARN_UNUSED
+        { return mAttackOffsetY; }
+
         void setThinkTime(const int n)
         { mThinkTime = n; }
 
@@ -307,6 +319,12 @@ class BeingInfo final
 
         int getDeadDirectionType() const A_WARN_UNUSED
         { return mDeadDirectionType; }
+
+        void setAttackDirectionType(const int n)
+        { mAttackDirectionType = n; }
+
+        int getAttackDirectionType() const A_WARN_UNUSED
+        { return mAttackDirectionType; }
 
         void setColorsList(const std::string &name);
 
@@ -348,10 +366,13 @@ class BeingInfo final
         int mMoveOffsetY;
         int mDeadOffsetX;
         int mDeadOffsetY;
+        int mAttackOffsetX;
+        int mAttackOffsetY;
         int mThinkTime;
         int mDirectionType;
         int mSitDirectionType;
         int mDeadDirectionType;
+        int mAttackDirectionType;
         bool mStaticMaxHP;
         bool mTargetSelection;
 };
