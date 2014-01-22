@@ -116,6 +116,7 @@ namespace Commands
     decHandler(dumpTests);
     decHandler(dumpOGL);
     decHandler(dumpGL);
+    decHandler(dumpMods);
     decHandler(cacheInfo);
     decHandler(execute);
     decHandler(testsdlfont);
@@ -205,6 +206,7 @@ enum
     COMMAND_DUMPT,
     COMMAND_DUMPOGL,
     COMMAND_DUMPGL,
+    COMMAND_DUMPMODS,
     COMMAND_URL,
     COMMAND_OPEN,
     COMMAND_EXECUTE,
@@ -301,6 +303,7 @@ static const CommandInfo commands[] =
     {"dumpt", &Commands::dumpTests, -1, false},
     {"dumpogl", &Commands::dumpOGL, -1, false},
     {"dumpgl", &Commands::dumpGL, -1, false},
+    {"dumpmods", &Commands::dumpMods, -1, false},
     {"url", &Commands::url, -1, true},
     {"open", &Commands::open, -1, true},
     {"execute", &Commands::execute, -1, true},

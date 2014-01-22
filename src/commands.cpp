@@ -1311,6 +1311,12 @@ impHandler0(testsdlfont)
 #endif
 }
 
+impHandler2(dumpMods)
+{
+    std::string str = "enabled mods: " + serverConfig.getValue("mods", "");
+    outStringNormal(tab, str, str);
+}
+
 #ifdef USE_OPENGL
 impHandler2(dumpGL)
 {
