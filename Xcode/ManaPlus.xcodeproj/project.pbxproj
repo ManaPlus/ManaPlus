@@ -574,6 +574,16 @@
 		2B7A5E5D16D82A3E0020A1C1 /* physfstools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */; };
 		2B7A5E5E16D82A3E0020A1C1 /* physfstools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A5E5B16D82A3E0020A1C1 /* physfstools.cpp */; };
 		2B8B70CB167EBCB3003A8440 /* popuplist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8B70C9167EBCB3003A8440 /* popuplist.cpp */; };
+		2B9A1A48188F3D40005F72F1 /* setup_mods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A1A46188F3D40005F72F1 /* setup_mods.cpp */; };
+		2B9A1A49188F3D40005F72F1 /* setup_mods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A1A46188F3D40005F72F1 /* setup_mods.cpp */; };
+		2B9A1A51188F3DAD005F72F1 /* pethandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A1A4F188F3DAD005F72F1 /* pethandler.cpp */; };
+		2B9A1A52188F3DAD005F72F1 /* pethandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A1A4F188F3DAD005F72F1 /* pethandler.cpp */; };
+		2B9A1A56188F3DE6005F72F1 /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A1A54188F3DE6005F72F1 /* timer.cpp */; };
+		2B9A1A57188F3DE6005F72F1 /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A1A54188F3DE6005F72F1 /* timer.cpp */; };
+		2B9A1A5A188F3EC6005F72F1 /* modinfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A1A58188F3EC6005F72F1 /* modinfo.cpp */; };
+		2B9A1A5B188F3EC6005F72F1 /* modinfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A1A58188F3EC6005F72F1 /* modinfo.cpp */; };
+		2B9A1A5E188F3EE4005F72F1 /* moddb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A1A5C188F3EE4005F72F1 /* moddb.cpp */; };
+		2B9A1A5F188F3EE4005F72F1 /* moddb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A1A5C188F3EE4005F72F1 /* moddb.cpp */; };
 		2BAC2B44166DB4B300874178 /* manaplus.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC2B43166DB4B300874178 /* manaplus.icns */; };
 		2BDF45C4166D5AEC0054E77F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BDF45C3166D5AEC0054E77F /* Cocoa.framework */; };
 		2BDF45CE166D5AEC0054E77F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF45CC166D5AEC0054E77F /* InfoPlist.strings */; };
@@ -1387,10 +1397,6 @@
 		2B72F2D7182716C1003A9FB7 /* itemsoundmanager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = itemsoundmanager.h; path = ../../src/itemsoundmanager.h; sourceTree = "<group>"; };
 		2B72F2D8182716C1003A9FB7 /* sdlshared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sdlshared.h; path = ../../src/sdlshared.h; sourceTree = "<group>"; };
 		2B72F2D9182716C1003A9FB7 /* soundconsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = soundconsts.h; path = ../../src/soundconsts.h; sourceTree = "<group>"; };
-		2B72F2E1182716D7003A9FB7 /* SDL_framerate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SDL_framerate.c; sourceTree = "<group>"; };
-		2B72F2E2182716D7003A9FB7 /* SDL_framerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_framerate.h; sourceTree = "<group>"; };
-		2B72F2E3182716D7003A9FB7 /* SDL_rotozoom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SDL_rotozoom.c; sourceTree = "<group>"; };
-		2B72F2E4182716D7003A9FB7 /* SDL_rotozoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_rotozoom.h; sourceTree = "<group>"; };
 		2B72F2E9182716F1003A9FB7 /* multitouchmanager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = multitouchmanager.cpp; sourceTree = "<group>"; };
 		2B72F2EA182716F1003A9FB7 /* multitouchmanager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multitouchmanager.h; sourceTree = "<group>"; };
 		2B72F2EE18271727003A9FB7 /* avatardb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avatardb.cpp; sourceTree = "<group>"; };
@@ -1469,6 +1475,22 @@
 		2B7A5E5C16D82A3E0020A1C1 /* physfstools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = physfstools.h; sourceTree = "<group>"; };
 		2B8B70C9167EBCB3003A8440 /* popuplist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = popuplist.cpp; sourceTree = "<group>"; };
 		2B8B70CA167EBCB3003A8440 /* popuplist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popuplist.h; sourceTree = "<group>"; };
+		2B9A1A46188F3D40005F72F1 /* setup_mods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = setup_mods.cpp; sourceTree = "<group>"; };
+		2B9A1A47188F3D40005F72F1 /* setup_mods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setup_mods.h; sourceTree = "<group>"; };
+		2B9A1A4A188F3D72005F72F1 /* graphics_calcImageRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = graphics_calcImageRect.hpp; sourceTree = "<group>"; };
+		2B9A1A4B188F3D72005F72F1 /* graphics_drawImageRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = graphics_drawImageRect.hpp; sourceTree = "<group>"; };
+		2B9A1A4C188F3D72005F72F1 /* openglgraphicsdef.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = openglgraphicsdef.hpp; sourceTree = "<group>"; };
+		2B9A1A4D188F3D9F005F72F1 /* netconsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netconsts.h; sourceTree = "<group>"; };
+		2B9A1A4E188F3D9F005F72F1 /* pethandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pethandler.h; sourceTree = "<group>"; };
+		2B9A1A4F188F3DAD005F72F1 /* pethandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pethandler.cpp; sourceTree = "<group>"; };
+		2B9A1A50188F3DAD005F72F1 /* pethandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pethandler.h; sourceTree = "<group>"; };
+		2B9A1A53188F3DC6005F72F1 /* particleinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particleinfo.h; sourceTree = "<group>"; };
+		2B9A1A54188F3DE6005F72F1 /* timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timer.cpp; sourceTree = "<group>"; };
+		2B9A1A55188F3DE6005F72F1 /* timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timer.h; sourceTree = "<group>"; };
+		2B9A1A58188F3EC6005F72F1 /* modinfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = modinfo.cpp; sourceTree = "<group>"; };
+		2B9A1A59188F3EC6005F72F1 /* modinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = modinfo.h; sourceTree = "<group>"; };
+		2B9A1A5C188F3EE4005F72F1 /* moddb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = moddb.cpp; sourceTree = "<group>"; };
+		2B9A1A5D188F3EE4005F72F1 /* moddb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = moddb.h; sourceTree = "<group>"; };
 		2BAC2B43166DB4B300874178 /* manaplus.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = manaplus.icns; sourceTree = "<group>"; };
 		2BC90AA916855F8000FE7AD3 /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = libs/libintl.a; sourceTree = "<group>"; };
 		2BDF45BF166D5AEC0054E77F /* ManaPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManaPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2137,6 +2159,7 @@
 		2B1217AD1827120D006F8EED /* particle */ = {
 			isa = PBXGroup;
 			children = (
+				2B9A1A53188F3DC6005F72F1 /* particleinfo.h */,
 				2B1217AE1827120D006F8EED /* animationparticle.cpp */,
 				2B1217AF1827120D006F8EED /* animationparticle.h */,
 				2B1217B01827120D006F8EED /* imageparticle.cpp */,
@@ -2160,6 +2183,9 @@
 		2B1217BD1827120D006F8EED /* render */ = {
 			isa = PBXGroup;
 			children = (
+				2B9A1A4A188F3D72005F72F1 /* graphics_calcImageRect.hpp */,
+				2B9A1A4B188F3D72005F72F1 /* graphics_drawImageRect.hpp */,
+				2B9A1A4C188F3D72005F72F1 /* openglgraphicsdef.hpp */,
 				2B72F31E1827173C003A9FB7 /* mgl.cpp */,
 				2B72F31F1827173C003A9FB7 /* mgl.h */,
 				2B1217BE1827120D006F8EED /* graphics.cpp */,
@@ -2307,21 +2333,11 @@
 			path = windows;
 			sourceTree = "<group>";
 		};
-		2B72F2E0182716D7003A9FB7 /* sdl2gfx */ = {
-			isa = PBXGroup;
-			children = (
-				2B72F2E1182716D7003A9FB7 /* SDL_framerate.c */,
-				2B72F2E2182716D7003A9FB7 /* SDL_framerate.h */,
-				2B72F2E3182716D7003A9FB7 /* SDL_rotozoom.c */,
-				2B72F2E4182716D7003A9FB7 /* SDL_rotozoom.h */,
-			);
-			name = sdl2gfx;
-			path = ../../src/sdl2gfx;
-			sourceTree = "<group>";
-		};
 		2B72F2ED18271727003A9FB7 /* db */ = {
 			isa = PBXGroup;
 			children = (
+				2B9A1A5C188F3EE4005F72F1 /* moddb.cpp */,
+				2B9A1A5D188F3EE4005F72F1 /* moddb.h */,
 				2B72F2EE18271727003A9FB7 /* avatardb.cpp */,
 				2B72F2EF18271727003A9FB7 /* avatardb.h */,
 				2B72F2F018271727003A9FB7 /* chardb.cpp */,
@@ -2353,6 +2369,8 @@
 		2B72F3221827175B003A9FB7 /* tabs */ = {
 			isa = PBXGroup;
 			children = (
+				2B9A1A46188F3D40005F72F1 /* setup_mods.cpp */,
+				2B9A1A47188F3D40005F72F1 /* setup_mods.h */,
 				2B72F3231827175B003A9FB7 /* battletab.cpp */,
 				2B72F3241827175B003A9FB7 /* battletab.h */,
 				2B72F3251827175B003A9FB7 /* chattab.cpp */,
@@ -2468,45 +2486,23 @@
 		2BDF45C9166D5AEC0054E77F /* ManaPlus */ = {
 			isa = PBXGroup;
 			children = (
-				2B72F2E0182716D7003A9FB7 /* sdl2gfx */,
-				2B72F2D2182716C1003A9FB7 /* actormanager.cpp */,
-				2B72F2D3182716C1003A9FB7 /* eventsmanager.cpp */,
-				2B72F2D4182716C1003A9FB7 /* eventsmanager.h */,
-				2B72F2D5182716C1003A9FB7 /* actormanager.h */,
-				2B72F2D6182716C1003A9FB7 /* itemsoundmanager.cpp */,
-				2B72F2D7182716C1003A9FB7 /* itemsoundmanager.h */,
-				2B72F2D8182716C1003A9FB7 /* sdlshared.h */,
-				2B72F2D9182716C1003A9FB7 /* soundconsts.h */,
-				2B12178D1827120D006F8EED /* being */,
-				2B12179E1827120D006F8EED /* input */,
-				2B1217AD1827120D006F8EED /* particle */,
-				2B1217BD1827120D006F8EED /* render */,
-				2B121789182711F8006F8EED /* mapheights.cpp */,
-				2B12178A182711F8006F8EED /* mapheights.h */,
-				2B6B0E69176BDE0400930985 /* beingequipbackend.cpp */,
-				2B6B0E6A176BDE0400930985 /* beingequipbackend.h */,
-				2B6B0E64176BDDE100930985 /* depricatedlistener.cpp */,
-				2B6B0E65176BDDE100930985 /* depricatedlistener.h */,
-				2B6B0E53176BDD5500930985 /* dragdrop.h */,
-				2B1E2220172AFA2100B7230A /* navigationmanager.cpp */,
-				2B1E2221172AFA2100B7230A /* navigationmanager.h */,
-				2B1E2214172AF96000B7230A /* auctionmanager.cpp */,
-				2B1E2215172AF96000B7230A /* auctionmanager.h */,
-				2B1E2216172AF96000B7230A /* walklayer.cpp */,
-				2B1E2217172AF96000B7230A /* walklayer.h */,
-				2B65B45416EFC75D00AAD717 /* notifications.h */,
-				2B65B45516EFC75D00AAD717 /* notifymanager.cpp */,
-				2B65B45616EFC75D00AAD717 /* notifymanager.h */,
 				2BDF4755166D5B680054E77F /* actionmanager.cpp */,
 				2BDF4756166D5B680054E77F /* actionmanager.h */,
+				2B72F2D2182716C1003A9FB7 /* actormanager.cpp */,
+				2B72F2D5182716C1003A9FB7 /* actormanager.h */,
 				2BDF475E166D5B680054E77F /* animatedsprite.cpp */,
 				2BDF475F166D5B680054E77F /* animatedsprite.h */,
 				2BDF4760166D5B680054E77F /* animationdelayload.cpp */,
 				2BDF4761166D5B680054E77F /* animationdelayload.h */,
 				2BDF45D5166D5AEC0054E77F /* AppDelegate.h */,
 				2BDF45D6166D5AEC0054E77F /* AppDelegate.m */,
+				2B1E2214172AF96000B7230A /* auctionmanager.cpp */,
+				2B1E2215172AF96000B7230A /* auctionmanager.h */,
 				2BDF4766166D5B680054E77F /* avatar.cpp */,
 				2BDF4767166D5B680054E77F /* avatar.h */,
+				2B12178D1827120D006F8EED /* being */,
+				2B6B0E69176BDE0400930985 /* beingequipbackend.cpp */,
+				2B6B0E6A176BDE0400930985 /* beingequipbackend.h */,
 				2BDF476E166D5B680054E77F /* chatlogger.cpp */,
 				2BDF476F166D5B680054E77F /* chatlogger.h */,
 				2BDF4770166D5B680054E77F /* client.cpp */,
@@ -2525,6 +2521,9 @@
 				2BDF4782166D5B680054E77F /* defaults.h */,
 				2BDF4783166D5B680054E77F /* depricatedevent.cpp */,
 				2BDF4784166D5B680054E77F /* depricatedevent.h */,
+				2B6B0E64176BDDE100930985 /* depricatedlistener.cpp */,
+				2B6B0E65176BDDE100930985 /* depricatedlistener.h */,
+				2B6B0E53176BDD5500930985 /* dragdrop.h */,
 				2BDF4785166D5B680054E77F /* dropshortcut.cpp */,
 				2BDF4786166D5B680054E77F /* dropshortcut.h */,
 				2BDF4787166D5B680054E77F /* effectmanager.cpp */,
@@ -2532,6 +2531,8 @@
 				2BDF4789166D5B680054E77F /* emoteshortcut.cpp */,
 				2BDF478A166D5B680054E77F /* emoteshortcut.h */,
 				2BDF478B166D5B680054E77F /* equipment.h */,
+				2B72F2D3182716C1003A9FB7 /* eventsmanager.cpp */,
+				2B72F2D4182716C1003A9FB7 /* eventsmanager.h */,
 				2BDF478E166D5B680054E77F /* flooritem.cpp */,
 				2BDF478F166D5B680054E77F /* flooritem.h */,
 				2BDF4790166D5B680054E77F /* game.cpp */,
@@ -2548,12 +2549,15 @@
 				2BDF48FD166D5B680054E77F /* guildmanager.h */,
 				2BDF4900166D5B680054E77F /* imagesprite.cpp */,
 				2BDF4901166D5B680054E77F /* imagesprite.h */,
+				2B12179E1827120D006F8EED /* input */,
 				2BDF4906166D5B680054E77F /* inventory.cpp */,
 				2BDF4907166D5B680054E77F /* inventory.h */,
 				2BDF4908166D5B680054E77F /* item.cpp */,
 				2BDF4909166D5B680054E77F /* item.h */,
 				2BDF490A166D5B680054E77F /* itemshortcut.cpp */,
 				2BDF490B166D5B680054E77F /* itemshortcut.h */,
+				2B72F2D6182716C1003A9FB7 /* itemsoundmanager.cpp */,
+				2B72F2D7182716C1003A9FB7 /* itemsoundmanager.h */,
 				2BDF4918166D5B680054E77F /* localconsts.h */,
 				2BDF491B166D5B680054E77F /* logger.cpp */,
 				2BDF491C166D5B680054E77F /* logger.h */,
@@ -2562,25 +2566,36 @@
 				2BDF45D8166D5AEC0054E77F /* MainMenu.xib */,
 				2BDF491F166D5B680054E77F /* map.cpp */,
 				2BDF4920166D5B680054E77F /* map.h */,
+				2B121789182711F8006F8EED /* mapheights.cpp */,
+				2B12178A182711F8006F8EED /* mapheights.h */,
 				2BDF4921166D5B680054E77F /* maplayer.cpp */,
 				2BDF4922166D5B680054E77F /* maplayer.h */,
 				2BDF4927166D5B680054E77F /* mouseinput.cpp */,
 				2BDF4928166D5B680054E77F /* mouseinput.h */,
 				2BDF4929166D5B680054E77F /* mumblemanager.cpp */,
 				2BDF492A166D5B680054E77F /* mumblemanager.h */,
+				2B1E2220172AFA2100B7230A /* navigationmanager.cpp */,
+				2B1E2221172AFA2100B7230A /* navigationmanager.h */,
 				2BDF492B166D5B680054E77F /* net */,
+				2B65B45416EFC75D00AAD717 /* notifications.h */,
+				2B65B45516EFC75D00AAD717 /* notifymanager.cpp */,
+				2B65B45616EFC75D00AAD717 /* notifymanager.h */,
+				2B1217AD1827120D006F8EED /* particle */,
 				2BDF49DB166D5B680054E77F /* party.cpp */,
 				2BDF49DC166D5B680054E77F /* party.h */,
 				2BDF49E1166D5B680054E77F /* position.cpp */,
 				2BDF49E2166D5B680054E77F /* position.h */,
 				2BDF49E3166D5B680054E77F /* properties.h */,
+				2B1217BD1827120D006F8EED /* render */,
 				2BDF49E4166D5B680054E77F /* resources */,
 				2BDF4A26166D5B680054E77F /* SDLMain.h */,
 				2BDF4A27166D5B680054E77F /* SDLMain.m */,
+				2B72F2D8182716C1003A9FB7 /* sdlshared.h */,
 				2BDF4A28166D5B680054E77F /* shopitem.cpp */,
 				2BDF4A29166D5B680054E77F /* shopitem.h */,
 				2BDF4A2A166D5B680054E77F /* simpleanimation.cpp */,
 				2BDF4A2B166D5B680054E77F /* simpleanimation.h */,
+				2B72F2D9182716C1003A9FB7 /* soundconsts.h */,
 				2BDF4A2C166D5B680054E77F /* soundmanager.cpp */,
 				2BDF4A2D166D5B680054E77F /* soundmanager.h */,
 				2BDF4A2E166D5B680054E77F /* spellmanager.cpp */,
@@ -2609,6 +2624,8 @@
 				2BDF4A72166D5B680054E77F /* variabledata.h */,
 				2BDF4A73166D5B680054E77F /* vector.cpp */,
 				2BDF4A74166D5B680054E77F /* vector.h */,
+				2B1E2216172AF96000B7230A /* walklayer.cpp */,
+				2B1E2217172AF96000B7230A /* walklayer.h */,
 				2BDF4A75166D5B680054E77F /* winver.h */,
 			);
 			path = ManaPlus;
@@ -2954,6 +2971,8 @@
 		2BDF492B166D5B680054E77F /* net */ = {
 			isa = PBXGroup;
 			children = (
+				2B9A1A4D188F3D9F005F72F1 /* netconsts.h */,
+				2B9A1A4E188F3D9F005F72F1 /* pethandler.h */,
 				2B1E2228172AFC4C00B7230A /* charserverhandler.cpp */,
 				2B1E2229172AFC4C00B7230A /* charserverhandler.h */,
 				2B1E222A172AFC4C00B7230A /* sdltcpnet.cpp */,
@@ -3110,6 +3129,8 @@
 		2BDF499F166D5B680054E77F /* tmwa */ = {
 			isa = PBXGroup;
 			children = (
+				2B9A1A4F188F3DAD005F72F1 /* pethandler.cpp */,
+				2B9A1A50188F3DAD005F72F1 /* pethandler.h */,
 				2BFB6E3716E2AEB9007EE3A6 /* skillhandler.cpp */,
 				2BFB6E3816E2AEB9007EE3A6 /* skillhandler.h */,
 				2BDF49A0166D5B680054E77F /* adminhandler.cpp */,
@@ -3172,6 +3193,8 @@
 		2BDF49E4166D5B680054E77F /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				2B9A1A58188F3EC6005F72F1 /* modinfo.cpp */,
+				2B9A1A59188F3EC6005F72F1 /* modinfo.h */,
 				2B72F2ED18271727003A9FB7 /* db */,
 				2B12182A182712DC006F8EED /* sdl2imagehelper.h */,
 				2B12182B182712DC006F8EED /* sdl2softwareimagehelper.h */,
@@ -3248,6 +3271,8 @@
 		2BDF4A4A166D5B680054E77F /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				2B9A1A54188F3DE6005F72F1 /* timer.cpp */,
+				2B9A1A55188F3DE6005F72F1 /* timer.h */,
 				2B121810182712A6006F8EED /* files.cpp */,
 				2B121811182712A6006F8EED /* files.h */,
 				2B121812182712A6006F8EED /* sdlcheckutils.cpp */,
@@ -3601,6 +3626,7 @@
 				2B72F27D18271656003A9FB7 /* buyselldialog.cpp in Sources */,
 				2B17120C1686A98C002E9493 /* inttextfield.cpp in Sources */,
 				2B17120D1686A98C002E9493 /* itemcontainer.cpp in Sources */,
+				2B9A1A52188F3DAD005F72F1 /* pethandler.cpp in Sources */,
 				2B72F3681827175B003A9FB7 /* setup_perfomance.cpp in Sources */,
 				2B17120E1686A98C002E9493 /* itemlinkhandler.cpp in Sources */,
 				2B17120F1686A98C002E9493 /* itemshortcutcontainer.cpp in Sources */,
@@ -3647,6 +3673,7 @@
 				2B72F3521827175B003A9FB7 /* battletab.cpp in Sources */,
 				2B1712321686A98C002E9493 /* windowcontainer.cpp in Sources */,
 				2B1712331686A98C002E9493 /* windowmenu.cpp in Sources */,
+				2B9A1A49188F3D40005F72F1 /* setup_mods.cpp in Sources */,
 				2B1712351686A98C002E9493 /* actionevent.cpp in Sources */,
 				2B1712361686A98C002E9493 /* basiccontainer.cpp in Sources */,
 				2B72F28F18271656003A9FB7 /* didyouknowwindow.cpp in Sources */,
@@ -3677,6 +3704,7 @@
 				2B72F2A118271656003A9FB7 /* logindialog.cpp in Sources */,
 				2B72F27518271656003A9FB7 /* statuspopup.cpp in Sources */,
 				2B17124B1686A98C002E9493 /* checkbox.cpp in Sources */,
+				2B9A1A5F188F3EE4005F72F1 /* moddb.cpp in Sources */,
 				2B17124C1686A98C002E9493 /* container.cpp in Sources */,
 				2B17124D1686A98C002E9493 /* label.cpp in Sources */,
 				2B72F28118271656003A9FB7 /* changepassworddialog.cpp in Sources */,
@@ -3803,6 +3831,7 @@
 				2B1712AD1686A98C002E9493 /* playerhandler.cpp in Sources */,
 				2B1218091827120D006F8EED /* sdl2graphics.cpp in Sources */,
 				2B72F2D118271656003A9FB7 /* worldselectdialog.cpp in Sources */,
+				2B9A1A57188F3DE6005F72F1 /* timer.cpp in Sources */,
 				2B1712AE1686A98C002E9493 /* questhandler.cpp in Sources */,
 				2B1712B01686A98C002E9493 /* tradehandler.cpp in Sources */,
 				2B1712B51686A98C002E9493 /* party.cpp in Sources */,
@@ -3872,6 +3901,7 @@
 				2B1712EE1686A98C002E9493 /* paths.cpp in Sources */,
 				2B1712EF1686A98C002E9493 /* perfomance.cpp in Sources */,
 				2B12181F182712A6006F8EED /* sdlcheckutils.cpp in Sources */,
+				2B9A1A5B188F3EC6005F72F1 /* modinfo.cpp in Sources */,
 				2B1712F01686A98C002E9493 /* physfsrwops.cpp in Sources */,
 				2B1712F11686A98C002E9493 /* process.cpp in Sources */,
 				2B1712F21686A98C002E9493 /* specialfolder.cpp in Sources */,
@@ -4006,6 +4036,7 @@
 				2B72F27C18271656003A9FB7 /* buyselldialog.cpp in Sources */,
 				2BDF4B6A166D5B690054E77F /* inttextfield.cpp in Sources */,
 				2BDF4B6C166D5B690054E77F /* itemcontainer.cpp in Sources */,
+				2B9A1A51188F3DAD005F72F1 /* pethandler.cpp in Sources */,
 				2B72F3671827175B003A9FB7 /* setup_perfomance.cpp in Sources */,
 				2BDF4B6E166D5B690054E77F /* itemlinkhandler.cpp in Sources */,
 				2BDF4B70166D5B690054E77F /* itemshortcutcontainer.cpp in Sources */,
@@ -4052,6 +4083,7 @@
 				2B72F3511827175B003A9FB7 /* battletab.cpp in Sources */,
 				2BDF4BB6166D5B690054E77F /* windowcontainer.cpp in Sources */,
 				2BDF4BB8166D5B690054E77F /* windowmenu.cpp in Sources */,
+				2B9A1A48188F3D40005F72F1 /* setup_mods.cpp in Sources */,
 				2BDF4BBC166D5B690054E77F /* actionevent.cpp in Sources */,
 				2BDF4BBE166D5B690054E77F /* basiccontainer.cpp in Sources */,
 				2B72F28E18271656003A9FB7 /* didyouknowwindow.cpp in Sources */,
@@ -4082,6 +4114,7 @@
 				2B72F2A018271656003A9FB7 /* logindialog.cpp in Sources */,
 				2B72F27418271656003A9FB7 /* statuspopup.cpp in Sources */,
 				2BDF4BE8166D5B690054E77F /* checkbox.cpp in Sources */,
+				2B9A1A5E188F3EE4005F72F1 /* moddb.cpp in Sources */,
 				2BDF4BEA166D5B690054E77F /* container.cpp in Sources */,
 				2BDF4BEE166D5B690054E77F /* label.cpp in Sources */,
 				2B72F28018271656003A9FB7 /* changepassworddialog.cpp in Sources */,
@@ -4208,6 +4241,7 @@
 				2BDF4CAE166D5B690054E77F /* playerhandler.cpp in Sources */,
 				2B1218081827120D006F8EED /* sdl2graphics.cpp in Sources */,
 				2B72F2D018271656003A9FB7 /* worldselectdialog.cpp in Sources */,
+				2B9A1A56188F3DE6005F72F1 /* timer.cpp in Sources */,
 				2BDF4CB0166D5B690054E77F /* questhandler.cpp in Sources */,
 				2BDF4CB4166D5B690054E77F /* tradehandler.cpp in Sources */,
 				2BDF4CBE166D5B690054E77F /* party.cpp in Sources */,
@@ -4277,6 +4311,7 @@
 				2BDF4D30166D5B690054E77F /* paths.cpp in Sources */,
 				2BDF4D32166D5B690054E77F /* perfomance.cpp in Sources */,
 				2B12181E182712A6006F8EED /* sdlcheckutils.cpp in Sources */,
+				2B9A1A5A188F3EC6005F72F1 /* modinfo.cpp in Sources */,
 				2BDF4D34166D5B690054E77F /* physfsrwops.cpp in Sources */,
 				2BDF4D36166D5B690054E77F /* process.cpp in Sources */,
 				2BDF4D3A166D5B690054E77F /* specialfolder.cpp in Sources */,
