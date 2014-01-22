@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>5D6D74E5-9189-45A9-9774-D896F3051F8E</string>
+	<string>05565ECD-361A-472C-96DA-3AD3C5D5032A</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ManaPlus</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>EE4C56A4-FCD1-49DF-989B-1238810A772E</key>
+		<key>27712BCC-89D3-4B70-B17B-E454649F8AE8</key>
 		<string>https://git.gitorious.org/~socapex/manaplus/socapexs-manaplus.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Xcode/ManaPlus.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>EE4C56A4-FCD1-49DF-989B-1238810A772E</key>
+		<key>27712BCC-89D3-4B70-B17B-E454649F8AE8</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>EE4C56A4-FCD1-49DF-989B-1238810A772E</string>
+	<string>27712BCC-89D3-4B70-B17B-E454649F8AE8</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>EE4C56A4-FCD1-49DF-989B-1238810A772E</string>
+			<string>27712BCC-89D3-4B70-B17B-E454649F8AE8</string>
 			<key>IDESourceControlWCCName</key>
 			<string>socapexs-manaplus</string>
 		</dict>
