@@ -151,4 +151,4 @@ Xcode/Release/*.dmg
 Xcode/Release/Manaplus_ssh.txt
 Xcode/DerivedData/
 Xcode/Build/
-
+Xcode/Release/Release*
