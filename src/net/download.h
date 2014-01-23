@@ -55,7 +55,7 @@ class Download final
     public:
         Download(void *const ptr, const std::string &url,
                  const DownloadUpdate updateFunction,
-                 const bool ignoreError = false);
+                 const bool ignoreError);
 
         A_DELETE_COPY(Download)
 

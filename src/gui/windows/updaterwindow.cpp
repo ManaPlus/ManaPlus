@@ -528,7 +528,7 @@ void UpdaterWindow::download()
     else
     {
         mDownload = new Net::Download(this, std::string(mUpdateHost).append(
-            "/").append(mCurrentFile), &updateProgress);
+            "/").append(mCurrentFile), &updateProgress, false);
     }
 
     if (mStoreInMemory)
