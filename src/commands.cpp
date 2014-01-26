@@ -58,6 +58,7 @@
 #include "net/adminhandler.h"
 #include "net/beinghandler.h"
 #include "net/chathandler.h"
+#include "net/download.h"
 #include "net/gamehandler.h"
 #include "net/guildhandler.h"
 #include "net/net.h"
@@ -96,7 +97,8 @@ extern char **environ;
 namespace Commands
 {
 
-static void outString(ChatTab *const tab, const std::string &str,
+static void outString(ChatTab *const tab,
+                      const std::string &str,
                       const std::string &def)
 {
     if (!tab)
@@ -236,7 +238,7 @@ static void outStringNormal(ChatTab *const tab,
         case ChatTab::TAB_WHISPER:
         {
             const WhisperTab *const whisper
-                = static_cast<WhisperTab *const>(tab);
+                = static_cast<const WhisperTab *const>(tab);
             tab->chatLog(player_node->getName(), str);
             Net::getChatHandler()->privateMessage(whisper->getNick(), str);
             break;
@@ -1266,6 +1268,78 @@ impHandler1(talkPet)
         Net::getChatHandler()->talkPet(args, GENERAL_CHANNEL);
     else
         Net::getChatHandler()->talk(args, GENERAL_CHANNEL);
+}
+
+
+struct UploadChatInfo
+{
+    UploadChatInfo() :
+        tab(nullptr),
+        upload(nullptr),
+        text(),
+        addStr()
+    { }
+
+    ChatTab *tab;
+    Net::Download *upload;
+    std::string text;
+    std::string addStr;
+};
+
+static int uploadUpdate(void *ptr,
+                        DownloadStatus status,
+                        size_t total A_UNUSED,
+                        size_t remaining A_UNUSED)
+{
+    if (status == DOWNLOAD_STATUS_IDLE || status == DOWNLOAD_STATUS_STARTING)
+        return 0;
+
+    UploadChatInfo *const info = reinterpret_cast<UploadChatInfo*>(ptr);
+    if (status == DOWNLOAD_STATUS_COMPLETE)
+    {
+        ChatTab *const tab = info->tab;
+        if (chatWindow && (!tab || chatWindow->isTabPresent(tab)))
+        {
+            std::string str = Net::Download::getUploadResponse();
+            const int sz = str.size();
+            if (sz > 0)
+            {
+                if (str[sz - 1] == '\n')
+                    str = str.substr(0, sz - 1);
+                str.append(info->addStr);
+                str = strprintf("%s [@@%s |%s@@]",
+                    info->text.c_str(), str.c_str(), str.c_str());
+                outStringNormal(tab, str, str);
+            }
+        }
+    }
+    delete info->upload;
+    info->upload = nullptr;
+    delete info;
+    return 0;
+}
+
+static void uploadFile(const std::string &str,
+                       const std::string &fileName,
+                       const std::string &addStr)
+{
+    UploadChatInfo *const info = new UploadChatInfo();
+    Net::Download *const upload = new Net::Download(info,
+        "http://sprunge.us",
+        &uploadUpdate,
+        false, true);
+    info->upload = upload;
+    info->text = str;
+    info->addStr = addStr;
+    upload->setFile(fileName);
+    upload->start();
+}
+
+impHandler0(uploadConfig)
+{
+    uploadFile(_("Uploaded config into:"),
+        config.getFileName(),
+        "?xml");
 }
 
 impHandler0(testsdlfont)

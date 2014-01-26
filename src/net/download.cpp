@@ -58,7 +58,7 @@ enum
 namespace Net
 {
 
-std::string Download::mUploadRssponse = "";
+std::string Download::mUploadResponse = "";
 
 Download::Download(void *const ptr, const std::string &url,
                    const DownloadUpdate updateFunction,
@@ -228,10 +228,7 @@ int Download::downloadProgress(void *clientp, double dltotal, double dlnow,
     Download *const d = reinterpret_cast<Download *const>(clientp);
 
     if (!d)
-    {
-        logger->log("downloadProgress error");
         return -5;
-    }
 
     if (d->mUpload)
         return 0;
@@ -295,7 +292,7 @@ int Download::downloadThread(void *ptr)
                 curl_easy_setopt(d->mCurl, CURLOPT_HTTPPOST, d->mFormPost);
                 curl_easy_setopt(d->mCurl, CURLOPT_WRITEFUNCTION,
                     &Download::writeFunction);
-                mUploadRssponse.clear();
+                mUploadResponse.clear();
             }
             else
             {
@@ -457,6 +454,8 @@ int Download::downloadThread(void *ptr)
         attempts++;
     }
 
+    d->mThread = nullptr;
+
     if (d->mOptions.cancel)
     {
         // Nothing to do...
@@ -470,7 +469,6 @@ int Download::downloadThread(void *ptr)
         d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_COMPLETE, 0, 0);
     }
 
-    d->mThread = nullptr;
     return 0;
 }
 
@@ -569,8 +567,7 @@ size_t Download::writeFunction(void *ptr, size_t size,
     char *buf = new char[totalMem + 1];
     memcpy(buf, ptr, totalMem);
     buf[totalMem] = 0;
-    mUploadRssponse.append(buf);
-    logger->log("data: %s", buf);
+    mUploadResponse.append(buf);
     return totalMem;
 }
 

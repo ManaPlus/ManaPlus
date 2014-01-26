@@ -236,6 +236,16 @@ bool TabbedArea::isTabSelected(const unsigned int index) const
     return mSelectedTab == mTabs[index].first;
 }
 
+bool TabbedArea::isTabPresent(const Tab *const tab) const
+{
+    FOR_EACH (TabContainer::const_iterator, it, mTabs)
+    {
+        if ((*it).first == tab || (*it).second == tab)
+            return true;
+    }
+    return false;
+}
+
 bool TabbedArea::isTabSelected(const Tab *const tab) const
 {
     return mSelectedTab == tab;

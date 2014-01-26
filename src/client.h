@@ -272,6 +272,9 @@ public:
     std::string getSupportUrl() const A_WARN_UNUSED
     { return mCurrentServer.supportUrl; }
 
+    std::string getLogFileName() const A_WARN_UNUSED
+    { return mLogFileName; }
+
     bool isKeyboardVisible() const;
 
     void setGuiAlpha(const float n)
@@ -406,6 +409,7 @@ private:
     std::string mRootDir;
     std::string mServerName;
     std::string mOnlineListUrl;
+    std::string mLogFileName;
 
     ServerInfo mCurrentServer;
 

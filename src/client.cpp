@@ -226,6 +226,7 @@ Client::Client(const Options &options) :
     mRootDir(),
     mServerName(),
     mOnlineListUrl(),
+    mLogFileName(),
     mCurrentServer(),
     mGame(nullptr),
     mCurrentDialog(nullptr),
@@ -293,9 +294,10 @@ void Client::gameInit()
 
     // Configure logger
     if (!mOptions.logFileName.empty())
-        logger->setLogFile(mOptions.logFileName);
+        mLogFileName = mOptions.logFileName;
     else
-        logger->setLogFile(mLocalDataDir + "/manaplus.log");
+        mLogFileName = mLocalDataDir + "/manaplus.log";
+    logger->setLogFile(mLogFileName);
 
 #ifdef USE_FUZZER
     Fuzzer::init();

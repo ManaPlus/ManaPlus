@@ -104,6 +104,8 @@ class TabbedArea final : public Widget2,
 
         bool isTabSelected(const Tab *const tab) const A_WARN_UNUSED;
 
+        bool isTabPresent(const Tab *const tab) const A_WARN_UNUSED;
+
         /**
          * Overload the remove tab function as it's broken in guichan 0.8.
          */
@@ -206,7 +208,7 @@ class TabbedArea final : public Widget2,
         gcn::Container* mTabContainer;
         gcn::Container* mWidgetContainer;
         std::vector<Tab*> mTabsToDelete;
-        std::vector<std::pair<Tab*, gcn::Widget*> > mTabs;
+        TabContainer mTabs;
 
         /**
          * The overall width of all tab.

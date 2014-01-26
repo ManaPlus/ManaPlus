@@ -106,12 +106,15 @@ class Download final
 
         static unsigned long adlerBuffer(char *buffer, int size);
 
+        static std::string getUploadResponse()
+        { return mUploadResponse; }
+
     private:
         static int downloadThread(void *ptr);
         static int downloadProgress(void *clientp, double dltotal,
                                     double dlnow, double ultotal,
                                     double ulnow);
-        static std::string mUploadRssponse;
+        static std::string mUploadResponse;
         void *mPtr;
         std::string mUrl;
         struct

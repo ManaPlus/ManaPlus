@@ -343,6 +343,9 @@ class Configuration final : public ConfigurationObject
 
         void removeOldKeys();
 
+        std::string getFileName() const A_WARN_UNUSED
+        { return mFilename; }
+
     private:
         /**
          * Clean up the default values member.

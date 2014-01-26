@@ -1949,3 +1949,8 @@ void ChatWindow::addGlobalMessage(const std::string &line)
     else
         localChatTab->chatLog(line, BY_GM);
 }
+
+bool ChatWindow::isTabPresent(const ChatTab *const tab) const
+{
+    return mChatTabs->isTabPresent(tab);
+}

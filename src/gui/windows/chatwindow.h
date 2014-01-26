@@ -292,6 +292,8 @@ class ChatWindow final : public Window,
 
         void postInit() override final;
 
+        bool isTabPresent(const ChatTab *const tab) const A_WARN_UNUSED;
+
         static void localPetSay(const std::string &nick,
                                 const std::string &text);
 
