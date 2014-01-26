@@ -1342,6 +1342,13 @@ impHandler0(uploadConfig)
         "?xml");
 }
 
+impHandler0(uploadServerConfig)
+{
+    uploadFile(_("Uploaded server config into:"),
+        serverConfig.getFileName(),
+        "?xml");
+}
+
 impHandler0(uploadLog)
 {
     uploadFile(_("Uploaded log into:"),
