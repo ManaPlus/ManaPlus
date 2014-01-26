@@ -58,9 +58,11 @@ enum
 namespace Net
 {
 
+std::string Download::mUploadRssponse = "";
+
 Download::Download(void *const ptr, const std::string &url,
                    const DownloadUpdate updateFunction,
-                   const bool ignoreError) :
+                   const bool ignoreError, const bool isUpload) :
     mPtr(ptr),
     mUrl(url),
     mOptions(),
@@ -71,8 +73,10 @@ Download::Download(void *const ptr, const std::string &url,
     mThread(nullptr),
     mCurl(nullptr),
     mHeaders(nullptr),
+    mFormPost(nullptr),
     mError(static_cast<char*>(calloc(CURL_ERROR_SIZE + 1, 1))),
-    mIgnoreError(ignoreError)
+    mIgnoreError(ignoreError),
+    mUpload(isUpload)
 {
     if (mError)
         mError[0] = 0;
@@ -80,23 +84,34 @@ Download::Download(void *const ptr, const std::string &url,
     mOptions.cancel = 0;
     mOptions.memoryWrite = 0;
     mOptions.checkAdler = true;
-    const std::string serverName = client->getServerName();
-    if (!serverName.empty())
+    if (!mUpload)
     {
-        if (mUrl.find("?") == std::string::npos)
-            mUrl.append("?host=");
-        else
-            mUrl.append("&host=");
-        mUrl.append(serverName);
+        const std::string serverName = client->getServerName();
+        if (!serverName.empty())
+        {
+            if (mUrl.find("?") == std::string::npos)
+                mUrl.append("?host=");
+            else
+                mUrl.append("&host=");
+            mUrl.append(serverName);
+        }
     }
 }
 
 Download::~Download()
 {
-    if (mHeaders)
-        curl_slist_free_all(mHeaders);
+    if (mFormPost)
+    {
+        curl_formfree(mFormPost);
+        mFormPost = nullptr;
+    }
 
-    mHeaders = nullptr;
+    if (mHeaders)
+    {
+        curl_slist_free_all(mHeaders);
+        mHeaders = nullptr;
+    }
+
     int status;
     if (mThread && SDL_GetThreadID(mThread))
         SDL_WaitThread(mThread, &status);
@@ -211,8 +226,15 @@ int Download::downloadProgress(void *clientp, double dltotal, double dlnow,
                                double ultotal A_UNUSED, double ulnow A_UNUSED)
 {
     Download *const d = reinterpret_cast<Download *const>(clientp);
+
     if (!d)
+    {
+        logger->log("downloadProgress error");
         return -5;
+    }
+
+    if (d->mUpload)
+        return 0;
 
     if (d->mOptions.cancel)
     {
@@ -236,8 +258,19 @@ int Download::downloadThread(void *ptr)
     if (!d)
         return 0;
 
-    const std::string outFilename = !d->mOptions.memoryWrite
-        ? (d->mFileName + ".part") : "";
+    std::string outFilename;
+    if (d->mUpload)
+    {
+        outFilename = d->mFileName;
+        prepareForm(&d->mFormPost, outFilename);
+    }
+    else
+    {
+        if (!d->mOptions.memoryWrite)
+            outFilename = d->mFileName + ".part";
+        else
+            outFilename = "";
+    }
 
     while (attempts < 3 && !complete && !d->mOptions.cancel)
     {
@@ -249,45 +282,57 @@ int Download::downloadThread(void *ptr)
             d->mThread = nullptr;
             return 0;
         }
-
         d->mCurl = curl_easy_init();
 
         if (d->mCurl && !d->mOptions.cancel)
         {
             FILE *file = nullptr;
-            logger->log("Downloading: %s", d->mUrl.c_str());
 
-            curl_easy_setopt(d->mCurl, CURLOPT_FOLLOWLOCATION, 1);
-            curl_easy_setopt(d->mCurl, CURLOPT_HTTPHEADER, d->mHeaders);
-
-            if (d->mOptions.memoryWrite)
+            if (d->mUpload)
             {
-                curl_easy_setopt(d->mCurl, CURLOPT_FAILONERROR, 1);
+                logger->log("Uploading: %s", d->mUrl.c_str());
+                curl_easy_setopt(d->mCurl, CURLOPT_URL, d->mUrl.c_str());
+                curl_easy_setopt(d->mCurl, CURLOPT_HTTPPOST, d->mFormPost);
                 curl_easy_setopt(d->mCurl, CURLOPT_WRITEFUNCTION,
-                                 d->mWriteFunction);
-                curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA, d->mPtr);
+                    &Download::writeFunction);
+                mUploadRssponse.clear();
             }
             else
             {
-                file = fopen(outFilename.c_str(), "w+b");
-                if (file)
-                    curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA, file);
+                logger->log("Downloading: %s", d->mUrl.c_str());
+                curl_easy_setopt(d->mCurl, CURLOPT_FOLLOWLOCATION, 1);
+                curl_easy_setopt(d->mCurl, CURLOPT_HTTPHEADER, d->mHeaders);
+                if (d->mOptions.memoryWrite)
+                {
+                    curl_easy_setopt(d->mCurl, CURLOPT_FAILONERROR, 1);
+                    curl_easy_setopt(d->mCurl, CURLOPT_WRITEFUNCTION,
+                                     d->mWriteFunction);
+                    curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA, d->mPtr);
+                }
+                else
+                {
+                    file = fopen(outFilename.c_str(), "w+b");
+                    if (file)
+                        curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA, file);
+                }
+                curl_easy_setopt(d->mCurl, CURLOPT_USERAGENT,
+                    strprintf(PACKAGE_EXTENDED_VERSION,
+                    branding.getStringValue("appName").c_str()).c_str());
+
+
+                curl_easy_setopt(d->mCurl, CURLOPT_ERRORBUFFER, d->mError);
+                curl_easy_setopt(d->mCurl, CURLOPT_URL, d->mUrl.c_str());
+                curl_easy_setopt(d->mCurl, CURLOPT_NOPROGRESS, 0);
+                curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSFUNCTION,
+                    &downloadProgress);
+                curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSDATA, ptr);
+                curl_easy_setopt(d->mCurl, CURLOPT_NOSIGNAL, 1);
+                curl_easy_setopt(d->mCurl, CURLOPT_CONNECTTIMEOUT, 30);
+                curl_easy_setopt(d->mCurl, CURLOPT_TIMEOUT, 1800);
+                addProxy(d->mCurl);
+                secureCurl(d->mCurl);
             }
 
-            curl_easy_setopt(d->mCurl, CURLOPT_USERAGENT,
-                strprintf(PACKAGE_EXTENDED_VERSION,
-                branding.getStringValue("appName").c_str()).c_str());
-            curl_easy_setopt(d->mCurl, CURLOPT_ERRORBUFFER, d->mError);
-            curl_easy_setopt(d->mCurl, CURLOPT_URL, d->mUrl.c_str());
-            curl_easy_setopt(d->mCurl, CURLOPT_NOPROGRESS, 0);
-            curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSFUNCTION,
-                             &downloadProgress);
-            curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSDATA, ptr);
-            curl_easy_setopt(d->mCurl, CURLOPT_NOSIGNAL, 1);
-            curl_easy_setopt(d->mCurl, CURLOPT_CONNECTTIMEOUT, 30);
-            curl_easy_setopt(d->mCurl, CURLOPT_TIMEOUT, 1800);
-            addProxy(d->mCurl);
-            secureCurl(d->mCurl);
 
             if ((res = curl_easy_perform(d->mCurl)) != 0
                 && !d->mOptions.cancel)
@@ -314,15 +359,13 @@ int Download::downloadThread(void *ptr)
 
                 d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_ERROR, 0, 0);
 
-                if (!d->mOptions.memoryWrite)
+                if (file)
                 {
-                    if (file)
-                    {
-                        fclose(file);
-                        file = nullptr;
-                    }
-                    ::remove(outFilename.c_str());
+                    fclose(file);
+                    file = nullptr;
                 }
+                if (!d->mUpload && !d->mOptions.memoryWrite)
+                    ::remove(outFilename.c_str());
                 attempts++;
                 continue;
             }
@@ -330,58 +373,72 @@ int Download::downloadThread(void *ptr)
             curl_easy_cleanup(d->mCurl);
             d->mCurl = nullptr;
 
-            if (!d->mOptions.memoryWrite)
+            if (d->mUpload)
             {
-                // Don't check resources.xml checksum
-                if (d->mOptions.checkAdler)
-                {
-                    const unsigned long adler = fadler32(file);
-
-                    if (d->mAdler != adler)
-                    {
-                        if (file)
-                        {
-                            fclose(file);
-                            file = nullptr;
-                        }
-
-                        // Remove the corrupted file
-                        ::remove(d->mFileName.c_str());
-                        logger->log_r("Checksum for file %s failed: (%lx/%lx)",
-                            d->mFileName.c_str(),
-                            adler, d->mAdler);
-                        attempts++;
-                        continue;  // Bail out here to avoid the renaming
-                    }
-                }
                 if (file)
                 {
                     fclose(file);
                     file = nullptr;
                 }
-
-                // Any existing file with this name is deleted first, otherwise
-                // the rename will fail on Windows.
-                if (!d->mOptions.cancel)
+                // need check first if we read data from server
+                complete = true;
+            }
+            else
+            {
+                if (!d->mOptions.memoryWrite)
                 {
-                    ::remove(d->mFileName.c_str());
-                    Files::renameFile(outFilename, d->mFileName);
+                    // Don't check resources.xml checksum
+                    if (d->mOptions.checkAdler)
+                    {
+                        const unsigned long adler = fadler32(file);
 
-                    // Check if we can open it and no errors were encountered
-                    // during renaming
-                    file = fopen(d->mFileName.c_str(), "rb");
+                        if (d->mAdler != adler)
+                        {
+                            if (file)
+                            {
+                                fclose(file);
+                                file = nullptr;
+                            }
+
+                            // Remove the corrupted file
+                            ::remove(d->mFileName.c_str());
+                            logger->log_r("Checksum for file %s failed:"
+                                " (%lx/%lx)",
+                                d->mFileName.c_str(),
+                                adler, d->mAdler);
+                            attempts++;
+                            continue;  // Bail out here to avoid the renaming
+                        }
+                    }
                     if (file)
                     {
                         fclose(file);
                         file = nullptr;
-                        complete = true;
+                    }
+
+                    // Any existing file with this name is deleted first,
+                    // otherwise the rename will fail on Windows.
+                    if (!d->mOptions.cancel)
+                    {
+                        ::remove(d->mFileName.c_str());
+                        Files::renameFile(outFilename, d->mFileName);
+
+                        // Check if we can open it and no errors were
+                        // encountered during renaming
+                        file = fopen(d->mFileName.c_str(), "rb");
+                        if (file)
+                        {
+                            fclose(file);
+                            file = nullptr;
+                            complete = true;
+                        }
                     }
                 }
-            }
-            else
-            {
-                // It's stored in memory, we're done
-                complete = true;
+                else
+                {
+                    // It's stored in memory, we're done
+                    complete = true;
+                }
             }
         }
 
@@ -479,6 +536,42 @@ void Download::secureCurl(CURL *const curl)
 #if CURLVERSION_ATLEAST(7, 15, 1)
     curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 3);
 #endif
+}
+
+void Download::prepareForm(curl_httppost **form, const std::string &fileName)
+{
+    curl_httppost *lastPtr = nullptr;
+
+    std::ifstream file;
+    std::ostringstream str;
+    char *line = new char[10001];
+
+    file.open(fileName.c_str(), std::ios::in);
+
+    if (!file.is_open())
+        return;
+
+    while (file.getline(line, 10000))
+        str << line << "\n";
+
+    delete [] line;
+
+    curl_formadd(form, &lastPtr,
+        CURLFORM_COPYNAME, "sprunge",
+        CURLFORM_COPYCONTENTS, str.str().c_str(),
+        CURLFORM_END);
+}
+
+size_t Download::writeFunction(void *ptr, size_t size,
+                               size_t nmemb, void *stream)
+{
+    const size_t totalMem = size * nmemb;
+    char *buf = new char[totalMem + 1];
+    memcpy(buf, ptr, totalMem);
+    buf[totalMem] = 0;
+    mUploadRssponse.append(buf);
+    logger->log("data: %s", buf);
+    return totalMem;
 }
 
 }  // namespace Net

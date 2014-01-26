@@ -573,7 +573,8 @@ void ServerDialog::downloadServerList()
         mDownload = nullptr;
     }
 
-    mDownload = new Net::Download(this, listFile, &downloadUpdate, false);
+    mDownload = new Net::Download(this, listFile,
+        &downloadUpdate, false, false);
     mDownload->setFile(std::string(mDir).append("/").append(
         branding.getStringValue("onlineServerFile")));
     mDownload->start();

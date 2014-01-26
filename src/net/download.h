@@ -46,6 +46,7 @@ typedef size_t (*WriteFunction)( void *ptr, size_t size, size_t nmemb,
 
 struct SDL_Thread;
 typedef void CURL;
+struct curl_httppost;
 struct curl_slist;
 
 namespace Net
@@ -55,7 +56,7 @@ class Download final
     public:
         Download(void *const ptr, const std::string &url,
                  const DownloadUpdate updateFunction,
-                 const bool ignoreError);
+                 const bool ignoreError, const bool isUpload);
 
         A_DELETE_COPY(Download)
 
@@ -91,6 +92,12 @@ class Download final
         void setIgnoreError(const bool n)
         { mIgnoreError = n; }
 
+        static size_t writeFunction(void *ptr, size_t size,
+                                    size_t nmemb, void *stream);
+
+        static void prepareForm(curl_httppost **form,
+                                const std::string &fileName);
+
         static unsigned long fadler32(FILE *const file) A_WARN_UNUSED;
 
         static void addProxy(CURL *const curl);
@@ -104,6 +111,7 @@ class Download final
         static int downloadProgress(void *clientp, double dltotal,
                                     double dlnow, double ultotal,
                                     double ulnow);
+        static std::string mUploadRssponse;
         void *mPtr;
         std::string mUrl;
         struct
@@ -119,8 +127,10 @@ class Download final
         SDL_Thread *mThread;
         CURL *mCurl;
         curl_slist *mHeaders;
+        curl_httppost *mFormPost;
         char *mError;
         bool mIgnoreError;
+        bool mUpload;
 };
 
 }  // namespace Net

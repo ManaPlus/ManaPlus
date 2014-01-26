@@ -523,12 +523,12 @@ void UpdaterWindow::download()
     {
         mDownload = new Net::Download(this,
             "http://manaplus.org/update/" + mCurrentFile,
-            &updateProgress, true);
+            &updateProgress, true, false);
     }
     else
     {
         mDownload = new Net::Download(this, std::string(mUpdateHost).append(
-            "/").append(mCurrentFile), &updateProgress, false);
+            "/").append(mCurrentFile), &updateProgress, false, false);
     }
 
     if (mStoreInMemory)
