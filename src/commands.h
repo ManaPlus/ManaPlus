@@ -131,6 +131,7 @@ namespace Commands
     decHandler(talkRaw);
     decHandler(talkPet);
     decHandler(uploadConfig);
+    decHandler(uploadLog);
 
     void replaceVars(std::string &str);
 }  // namespace Commands
@@ -229,6 +230,7 @@ enum
     COMMAND_TALKRAW,
     COMMAND_TALKPET,
     COMMAND_UPLOADCONFIG,
+    COMMAND_UPLOADLOG,
     COMMAND_HACK,
     END_COMMANDS
 };
@@ -327,6 +329,7 @@ static const CommandInfo commands[] =
     {"talkraw", &Commands::talkRaw, -1, true},
     {"talkpet", &Commands::talkPet, -1, true},
     {"uploadconfig", &Commands::uploadConfig, -1, false},
+    {"uploadlog", &Commands::uploadLog, -1, false},
     {"hack", &Commands::hack, -1, true}
 };
 

@@ -1342,6 +1342,13 @@ impHandler0(uploadConfig)
         "?xml");
 }
 
+impHandler0(uploadLog)
+{
+    uploadFile(_("Uploaded log into:"),
+        client->getLogFileName(),
+        "?txt");
+}
+
 impHandler0(testsdlfont)
 {
 #if defined USE_OPENGL && defined DEBUG_SDLFONT
