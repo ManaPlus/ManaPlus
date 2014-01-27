@@ -81,6 +81,8 @@
 
 #include "input/inputmanager.h"
 
+#include "render/graphics.h"
+
 #ifdef USE_SDL2
 #include "gui/gui.h"
 #endif
@@ -210,14 +212,19 @@ void SDLInput::pushInput(const SDL_Event &event)
 #endif
 
         case SDL_MOUSEBUTTONDOWN:
+        {
             mMouseDown = true;
-            mouseInput.setX(event.button.x);
-            mouseInput.setY(event.button.y);
+            const int scale = mainGraphics->getScale();
+            const int x = event.button.x / scale;
+            const int y = event.button.y / scale;
+            mouseInput.setX(x);
+            mouseInput.setY(y);
 #ifdef ANDROID
 #ifdef USE_SDL2
-            mouseInput.setReal(event.button.x, event.button.y);
+            mouseInput.setReal(x, y);
 #else
-            mouseInput.setReal(event.button.realx, event.button.realy);
+            mouseInput.setReal(event.button.realx / scale,
+                event.button.realy / scale);
 #endif
 #endif
             mouseInput.setButton(convertMouseButton(event.button.button));
@@ -233,16 +240,21 @@ void SDLInput::pushInput(const SDL_Event &event)
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
             break;
-
+        }
         case SDL_MOUSEBUTTONUP:
+        {
             mMouseDown = false;
-            mouseInput.setX(event.button.x);
-            mouseInput.setY(event.button.y);
+            const int scale = mainGraphics->getScale();
+            const int x = event.button.x / scale;
+            const int y = event.button.y / scale;
+            mouseInput.setX(x);
+            mouseInput.setY(y);
 #ifdef ANDROID
 #ifdef USE_SDL2
-            mouseInput.setReal(event.button.x, event.button.y);
+            mouseInput.setReal(x, y);
 #else
-            mouseInput.setReal(event.button.realx, event.button.realy);
+            mouseInput.setReal(event.button.realx / scale,
+                event.button.realy / scale);
 #endif
 #endif
             mouseInput.setButton(convertMouseButton(event.button.button));
@@ -250,15 +262,20 @@ void SDLInput::pushInput(const SDL_Event &event)
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
             break;
-
+        }
         case SDL_MOUSEMOTION:
-            mouseInput.setX(event.motion.x);
-            mouseInput.setY(event.motion.y);
+        {
+            const int scale = mainGraphics->getScale();
+            const int x = event.motion.x / scale;
+            const int y = event.motion.y / scale;
+            mouseInput.setX(x);
+            mouseInput.setY(y);
 #ifdef ANDROID
 #ifdef USE_SDL2
-            mouseInput.setReal(event.motion.x, event.motion.y);
+            mouseInput.setReal(x, y);
 #else
-            mouseInput.setReal(event.motion.realx, event.motion.realy);
+            mouseInput.setReal(event.motion.realx / scale,
+                event.motion.realy / scale);
 #endif
 #endif
             mouseInput.setButton(gcn::MouseInput::EMPTY);
@@ -266,7 +283,7 @@ void SDLInput::pushInput(const SDL_Event &event)
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
             break;
-
+        }
 #ifndef USE_SDL2
         case SDL_ACTIVEEVENT:
             /*

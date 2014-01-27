@@ -21,6 +21,7 @@
  */
 
         bool setVideoMode(const int w, const int h,
+                          const int scalle,
                           const int bpp,
                           const bool fs,
                           const bool hwaccel,
@@ -140,6 +141,9 @@
                                const int w, const int h) override final;
 
         void completeCache() override final;
+
+        bool allowScale() const override final
+        { return true; }
 
         static void bindTexture(const GLenum target, const GLuint texture);
 

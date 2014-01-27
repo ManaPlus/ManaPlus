@@ -172,6 +172,7 @@ class SurfaceGraphics final : public Graphics
         { }
 
         bool setVideoMode(const int w A_UNUSED, const int h A_UNUSED,
+                          const int scale A_UNUSED,
                           const int bpp A_UNUSED,
                           const bool fs A_UNUSED, const bool hwaccel A_UNUSED,
                           const bool resize A_UNUSED,

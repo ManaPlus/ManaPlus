@@ -77,7 +77,7 @@ bool EventsManager::handleCommonEvents(const SDL_Event &event)
             return true;
 #else
         case SDL_VIDEORESIZE:
-            client->resizeVideo(event.resize.w, event.resize.h);
+            client->resizeVideo(event.resize.w, event.resize.h, false);
             return true;
         case SDL_ACTIVEEVENT:
             handleActive(event);

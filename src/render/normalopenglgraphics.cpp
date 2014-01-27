@@ -140,11 +140,14 @@ void NormalOpenGLGraphics::initArrays()
 }
 
 bool NormalOpenGLGraphics::setVideoMode(const int w, const int h,
-                                        const int bpp, const bool fs,
-                                        const bool hwaccel, const bool resize,
+                                        const int scale,
+                                        const int bpp,
+                                        const bool fs,
+                                        const bool hwaccel,
+                                        const bool resize,
                                         const bool noFrame)
 {
-    setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
+    setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame);
 
     return setOpenGLMode();
 }
@@ -1103,10 +1106,12 @@ void NormalOpenGLGraphics::_beginDraw()
     const int h = mRect.h;
 
 #ifdef ANDROID
-    glOrthof(0.0, static_cast<float>(w), static_cast<float>(h),
+    glOrthof(0.0, static_cast<float>(w),
+        static_cast<float>(h),
         0.0, -1.0, 1.0);
 #else
-    glOrtho(0.0, static_cast<double>(w), static_cast<double>(h),
+    glOrtho(0.0, static_cast<double>(w),
+        static_cast<double>(h),
         0.0, -1.0, 1.0);
 #endif
 
@@ -1229,8 +1234,10 @@ bool NormalOpenGLGraphics::pushClipArea(gcn::Rectangle area)
         glTranslatef(static_cast<GLfloat>(transX),
                      static_cast<GLfloat>(transY), 0);
     }
-    glScissor(clipArea.x, mRect.h - clipArea.y - clipArea.height,
-        clipArea.width, clipArea.height);
+    glScissor(clipArea.x * mScale,
+        (mRect.h - clipArea.y - clipArea.height) * mScale,
+        clipArea.width * mScale,
+        clipArea.height * mScale);
 
     return result;
 }
@@ -1257,8 +1264,10 @@ void NormalOpenGLGraphics::popClipArea()
         glTranslatef(static_cast<GLfloat>(transX),
                      static_cast<GLfloat>(transY), 0);
     }
-    glScissor(clipArea.x, mRect.h - clipArea.y - clipArea.height,
-        clipArea.width, clipArea.height);
+    glScissor(clipArea.x * mScale,
+        (mRect.h - clipArea.y - clipArea.height) * mScale,
+        clipArea.width * mScale,
+        clipArea.height * mScale);
 }
 
 void NormalOpenGLGraphics::drawPoint(int x, int y)

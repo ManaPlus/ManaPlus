@@ -51,6 +51,8 @@ Graphics::Graphics() :
     gcn::Graphics(),
     mWidth(0),
     mHeight(0),
+    mActualWidth(0),
+    mActualHeight(0),
     mWindow(nullptr),
 #ifdef USE_SDL2
     mRenderer(nullptr),
@@ -72,6 +74,7 @@ Graphics::Graphics() :
     mName("Unknown"),
     mStartFreeMem(0),
     mSync(false),
+    mScale(1),
     mColor(),
     mColor2()
 {
@@ -105,21 +108,28 @@ void Graphics::setSync(const bool sync)
     mSync = sync;
 }
 
-void Graphics::setMainFlags(const int w, const int h, const int bpp,
-                            const bool fs, const bool hwaccel,
-                            const bool resize, const bool noFrame)
+void Graphics::setMainFlags(const int w, const int h,
+                            const int scale,
+                            const int bpp,
+                            const bool fs,
+                            const bool hwaccel,
+                            const bool resize,
+                            const bool noFrame)
 {
     logger->log("graphics backend: %s", getName().c_str());
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
 
-    mWidth = w;
-    mHeight = h;
+    mWidth = w / scale;
+    mHeight = h / scale;
     mBpp = bpp;
     mFullscreen = fs;
     mHWAccel = hwaccel;
     mEnableResize = resize;
     mNoFrame = noFrame;
+    mScale = scale;
+    mActualWidth = w;
+    mActualHeight = h;
 }
 
 int Graphics::getOpenGLFlags() const
@@ -161,7 +171,8 @@ bool Graphics::setOpenGLMode()
 {
 #ifdef USE_OPENGL
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    if (!(mWindow = graphicsManager.createWindow(mWidth, mHeight,
+    if (!(mWindow = graphicsManager.createWindow(
+        mActualWidth, mActualHeight,
         mBpp, getOpenGLFlags())))
     {
         mRect.w = 0;
@@ -173,15 +184,16 @@ bool Graphics::setOpenGLMode()
     int w1 = 0;
     int h1 = 0;
     SDL_GetWindowSize(mWindow, &w1, &h1);
-    mRect.w = w1;
-    mRect.h = h1;
+    mRect.w = w1 / mScale;
+    mRect.h = h1 / mScale;
 
     mGLContext = SDL_GL_CreateContext(mWindow);
 
 #else  // USE_SDL2
 
-    mRect.w = static_cast<uint16_t>(mWindow->w);
-    mRect.h = static_cast<uint16_t>(mWindow->h);
+    mRect.w = static_cast<uint16_t>(mWindow->w / mScale);
+    mRect.h = static_cast<uint16_t>(mWindow->h / mScale);
+
 #endif  // USE_SDL2
 
 #ifdef __APPLE__
@@ -196,7 +208,7 @@ bool Graphics::setOpenGLMode()
     graphicsManager.logVersion();
 
     // Setup OpenGL
-    glViewport(0, 0, mWidth, mHeight);
+    glViewport(0, 0, mActualWidth, mActualHeight);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
     int gotDoubleBuffer = 0;
     SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &gotDoubleBuffer);
@@ -374,7 +386,7 @@ bool Graphics::setFullscreen(const bool fs)
     if (mFullscreen == fs)
         return true;
 
-    return setVideoMode(mWidth, mHeight, mBpp, fs, mHWAccel,
+    return setVideoMode(mActualWidth, mActualHeight, mScale, mBpp, fs, mHWAccel,
         mEnableResize, mNoFrame);
 }
 
@@ -386,10 +398,10 @@ bool Graphics::resizeScreen(const int width, const int height)
 #ifdef USE_SDL2
     _endDraw();
 
-    mRect.w = width;
-    mRect.h = height;
-    mWidth = width;
-    mHeight = height;
+    mRect.w = width / mScale;
+    mRect.h = height / mScale;
+    mWidth = width / mScale;
+    mHeight = height / mScale;
 
 #ifdef USE_OPENGL
     // +++ probably this way will not work in windows/mac
@@ -409,14 +421,14 @@ bool Graphics::resizeScreen(const int width, const int height)
 
     _endDraw();
 
-    const bool success = setVideoMode(width, height, mBpp,
+    const bool success = setVideoMode(width, height, mScale, mBpp,
         mFullscreen, mHWAccel, mEnableResize, mNoFrame);
 
     // If it didn't work, try to restore the previous size. If that didn't
     // work either, bail out (but then we're in deep trouble).
     if (!success)
     {
-        if (!setVideoMode(prevWidth, prevHeight, mBpp,
+        if (!setVideoMode(prevWidth, prevHeight, mScale, mBpp,
             mFullscreen, mHWAccel, mEnableResize, mNoFrame))
         {
             return false;

@@ -2798,25 +2798,30 @@ bool Client::isTmw() const
     return false;
 }
 
-void Client::resizeVideo(int width, int height, const bool always)
+void Client::resizeVideo(int actualWidth,
+                         int actualHeight,
+                         const bool always)
 {
     // Keep a minimum size. This isn't adhered to by the actual window, but
     // it keeps some window positions from getting messed up.
-    width = std::max(470, width);
-    height = std::max(320, height);
+    actualWidth = std::max(470, actualWidth);
+    actualHeight = std::max(320, actualHeight);
 
     if (!mainGraphics)
         return;
-    if (!always && mainGraphics->mWidth == width
-        && mainGraphics->mHeight == height)
+    if (!always
+        && mainGraphics->mActualWidth == actualWidth
+        && mainGraphics->mActualHeight == actualHeight)
     {
         return;
     }
 
-    touchManager.resize(width, height);
-
-    if (mainGraphics->resizeScreen(width, height))
+    if (mainGraphics->resizeScreen(actualWidth, actualHeight))
     {
+        const int width = mainGraphics->mWidth;
+        const int height = mainGraphics->mHeight;
+        touchManager.resize(width, height);
+
         if (gui)
             gui->videoResized();
 
@@ -2852,8 +2857,8 @@ void Client::resizeVideo(int width, int height, const bool always)
         if (gui)
             gui->draw();
 
-        config.setValue("screenwidth", width);
-        config.setValue("screenheight", height);
+        config.setValue("screenwidth", actualWidth);
+        config.setValue("screenheight", actualHeight);
     }
 }
 

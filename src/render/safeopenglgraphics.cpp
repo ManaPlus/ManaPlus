@@ -53,11 +53,15 @@ SafeOpenGLGraphics::~SafeOpenGLGraphics()
 {
 }
 
-bool SafeOpenGLGraphics::setVideoMode(const int w, const int h, const int bpp,
-                                      const bool fs, const bool hwaccel,
-                                      const bool resize, const bool noFrame)
+bool SafeOpenGLGraphics::setVideoMode(const int w, const int h,
+                                      const int scale,
+                                      const int bpp,
+                                      const bool fs,
+                                      const bool hwaccel,
+                                      const bool resize,
+                                      const bool noFrame)
 {
-    setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
+    setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame);
 
     return setOpenGLMode();
 }
@@ -436,7 +440,8 @@ void SafeOpenGLGraphics::_beginDraw()
     glLoadIdentity();
 
     glOrtho(0.0, static_cast<double>(mRect.w),
-        static_cast<double>(mRect.h), 0.0, -1.0, 1.0);
+        static_cast<double>(mRect.h),
+        0.0, -1.0, 1.0);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -537,9 +542,10 @@ bool SafeOpenGLGraphics::pushClipArea(gcn::Rectangle area)
     glPushMatrix();
     glTranslatef(static_cast<GLfloat>(transX + clipArea.xOffset),
                  static_cast<GLfloat>(transY + clipArea.yOffset), 0);
-    glScissor(clipArea.x, mRect.h - clipArea.y - clipArea.height,
-        clipArea.width, clipArea.height);
-
+    glScissor(clipArea.x * mScale,
+        (mRect.h - clipArea.y - clipArea.height) * mScale,
+        clipArea.width * mScale,
+        clipArea.height * mScale);
     return result;
 }
 
@@ -552,8 +558,10 @@ void SafeOpenGLGraphics::popClipArea()
 
     glPopMatrix();
     const gcn::ClipRectangle &clipArea = mClipStack.top();
-    glScissor(clipArea.x, mRect.h - clipArea.y - clipArea.height,
-        clipArea.width, clipArea.height);
+    glScissor(clipArea.x * mScale,
+        (mRect.h - clipArea.y - clipArea.height) * mScale,
+        clipArea.width * mScale,
+        clipArea.height * mScale);
 }
 
 void SafeOpenGLGraphics::drawPoint(int x, int y)

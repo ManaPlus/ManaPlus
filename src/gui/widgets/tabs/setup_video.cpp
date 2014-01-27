@@ -122,8 +122,8 @@ ModeListModel::ModeListModel() :
     addCustomMode("1280x1024");
     addCustomMode("1400x900");
     addCustomMode("1500x990");
-    addCustomMode(toString(mainGraphics->mWidth).append("x")
-        .append(toString(mainGraphics->mHeight)));
+    addCustomMode(toString(mainGraphics->mActualWidth).append("x")
+        .append(toString(mainGraphics->mActualHeight)));
 
     std::sort(mVideoModes.begin(), mVideoModes.end(), &modeSorter);
     mVideoModes.push_back("custom");
@@ -243,8 +243,9 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mFpsCheckBox->setSelected(mFps > 0);
 
     // Pre-select the current video mode.
-    const std::string videoMode = toString(mainGraphics->mWidth).append("x")
-        .append(toString(mainGraphics->mHeight));
+    const std::string videoMode = toString(
+        mainGraphics->mActualWidth).append("x").append(
+        toString(mainGraphics->mActualHeight));
     mModeList->setSelected(mModeListModel->getIndexOf(videoMode));
 
     mModeList->setActionEventId("videomode");
@@ -428,11 +429,11 @@ void Setup_Video::cancel()
     config.setValue("screen", mFullScreenEnabled);
 
     // Set back to the current video mode.
-    std::string videoMode = toString(mainGraphics->mWidth).append("x")
-        .append(toString(mainGraphics->mHeight));
+    std::string videoMode = toString(mainGraphics->mActualWidth).append("x")
+        .append(toString(mainGraphics->mActualHeight));
     mModeList->setSelected(mModeListModel->getIndexOf(videoMode));
-    config.setValue("screenwidth", mainGraphics->mWidth);
-    config.setValue("screenheight", mainGraphics->mHeight);
+    config.setValue("screenwidth", mainGraphics->mActualWidth);
+    config.setValue("screenheight", mainGraphics->mActualHeight);
 
     config.setValue("customcursor", mCustomCursorEnabled);
     config.setValue("opengl", static_cast<int>(mOpenGLEnabled));
@@ -474,18 +475,19 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         if (!width || !height)
             return;
 
-        if (width != mainGraphics->mWidth || height != mainGraphics->mHeight)
+        if (width != mainGraphics->mActualWidth
+            || height != mainGraphics->mActualHeight)
         {
 #if defined(WIN32) || defined(__APPLE__) || defined(ANDROID)
             if (intToRenderType(config.getIntValue("opengl"))
                 == RENDER_SOFTWARE)
             {
-                client->resizeVideo(width, height);
+                client->resizeVideo(width, height, false);
             }
             else
             {
-                if (width < mainGraphics->mWidth
-                    || height < mainGraphics->mHeight)
+                if (width < mainGraphics->mActualWidth
+                    || height < mainGraphics->mActualHeight)
                 {
                     // TRANSLATORS: video settings warning
                     new OkDialog(_("Screen Resolution Changed"),
@@ -505,13 +507,13 @@ void Setup_Video::action(const gcn::ActionEvent &event)
             }
 #else
             mainGraphics->setWindowSize(width, height);
-            client->resizeVideo(width, height);
+            client->resizeVideo(width, height, false);
 #endif
         }
 
         config.setValue("oldscreen", config.getBoolValue("screen"));
-        config.setValue("oldscreenwidth", mainGraphics->mWidth);
-        config.setValue("oldscreenheight", mainGraphics->mHeight);
+        config.setValue("oldscreenwidth", mainGraphics->mActualWidth);
+        config.setValue("oldscreenheight", mainGraphics->mActualHeight);
         config.setValue("screenwidth", width);
         config.setValue("screenheight", height);
     }

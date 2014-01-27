@@ -129,6 +129,7 @@ class SDLGraphics final : public Graphics
         void drawLine(int x1, int y1, int x2, int y2) override final;
 
         bool setVideoMode(const int w, const int h,
+                          const int scale,
                           const int bpp,
                           const bool fs,
                           const bool hwaccel,

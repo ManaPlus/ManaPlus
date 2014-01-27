@@ -356,6 +356,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showmotd", false);
     AddDEF("playMapAnimations", true);
     AddDEF("usepets", true);
+    AddDEF("scale", 1);
     return configData;
 }
 

@@ -311,7 +311,9 @@ public:
 
     void writePacketLimits(const std::string &packetLimitsName) const;
 
-    void resizeVideo(int width, int height, const bool always = false);
+    void resizeVideo(int actualWidth,
+                     int actualHeight,
+                     const bool always);
 
     bool limitPackets(const int type) A_WARN_UNUSED;
 

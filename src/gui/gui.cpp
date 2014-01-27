@@ -942,5 +942,9 @@ void Gui::removeDragged(gcn::Widget *widget)
 
 uint32_t Gui::getMouseState(int *const x, int *const y) const
 {
-    return SDL_GetMouseState(x, y);
+    const uint32_t res = SDL_GetMouseState(x, y);
+    const int scale = mainGraphics->getScale();
+    (*x) /= scale;
+    (*y) /= scale;
+    return res;
 }

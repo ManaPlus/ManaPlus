@@ -83,11 +83,14 @@ void NullOpenGLGraphics::initArrays()
 }
 
 bool NullOpenGLGraphics::setVideoMode(const int w, const int h,
-                                      const int bpp, const bool fs,
-                                      const bool hwaccel, const bool resize,
+                                      const int scale,
+                                      const int bpp,
+                                      const bool fs,
+                                      const bool hwaccel,
+                                      const bool resize,
                                       const bool noFrame)
 {
-    setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
+    setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame);
 
     return setOpenGLMode();
 }

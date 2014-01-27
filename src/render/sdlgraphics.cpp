@@ -1465,11 +1465,15 @@ void SDLGraphics::drawLine(int x1, int y1, int x2, int y2)
     //  other cases not implimented
 }
 
-bool SDLGraphics::setVideoMode(const int w, const int h, const int bpp,
-                               const bool fs, const bool hwaccel,
-                               const bool resize, const bool noFrame)
+bool SDLGraphics::setVideoMode(const int w, const int h,
+                               const int scale,
+                               const int bpp,
+                               const bool fs,
+                               const bool hwaccel,
+                               const bool resize,
+                               const bool noFrame)
 {
-    setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
+    setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame);
 
     if (!(mWindow = graphicsManager.createWindow(w, h, bpp,
         getSoftwareFlags())))
