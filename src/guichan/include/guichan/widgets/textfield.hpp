@@ -47,7 +47,6 @@
 
 #include "guichan/keylistener.hpp"
 #include "guichan/mouselistener.hpp"
-#include "guichan/platform.hpp"
 #include "guichan/widget.hpp"
 
 #include <string>
@@ -57,7 +56,7 @@ namespace gcn
     /**
      * An implementation of a text field where a user can enter a line of text.
      */
-    class GCN_CORE_DECLSPEC TextField:
+    class TextField:
         public Widget,
         public MouseListener,
         public KeyListener

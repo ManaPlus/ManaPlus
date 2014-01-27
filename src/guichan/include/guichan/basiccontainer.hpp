@@ -49,7 +49,6 @@
 #include <vector>
 
 #include "guichan/deathlistener.hpp"
-#include "guichan/platform.hpp"
 #include "guichan/widget.hpp"
 
 namespace gcn
@@ -62,8 +61,8 @@ namespace gcn
      * @see Container
      * @since 0.6.0
      */
-    class GCN_CORE_DECLSPEC BasicContainer : public Widget,
-                                             public DeathListener
+    class BasicContainer : public Widget,
+                           public DeathListener
     {
     public:
         BasicContainer() :

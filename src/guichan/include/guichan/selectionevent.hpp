@@ -46,7 +46,6 @@
 #define GCN_SELECTIONEVENT_HPP
 
 #include "guichan/event.hpp"
-#include "guichan/platform.hpp"
 
 #include "localconsts.h"
 
@@ -60,7 +59,7 @@ namespace gcn
      * @author Olof Naessén
      * @since 0.8.0
      */
-    class GCN_CORE_DECLSPEC SelectionEvent final: public Event
+    class SelectionEvent final: public Event
     {
     public:
         /**

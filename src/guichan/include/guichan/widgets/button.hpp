@@ -52,7 +52,6 @@
 #include "guichan/keylistener.hpp"
 #include "guichan/mouseevent.hpp"
 #include "guichan/mouselistener.hpp"
-#include "guichan/platform.hpp"
 #include "guichan/widget.hpp"
 
 namespace gcn
@@ -66,10 +65,10 @@ namespace gcn
      *
      * @see ImageButton
      */
-    class GCN_CORE_DECLSPEC Button : public Widget,
-                                     public MouseListener,
-                                     public KeyListener,
-                                     public FocusListener
+    class Button : public Widget,
+                   public MouseListener,
+                   public KeyListener,
+                   public FocusListener
     {
     public:
         /**

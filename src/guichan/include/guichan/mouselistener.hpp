@@ -46,7 +46,6 @@
 #define GCN_MOUSELISTENER_HPP
 
 #include "guichan/mouseevent.hpp"
-#include "guichan/platform.hpp"
 
 #include "localconsts.h"
 
@@ -58,7 +57,7 @@ namespace gcn
      * @see Widget::addMouseListener, Widget::removeMouseListener
      * @since 0.1.0
      */
-    class GCN_CORE_DECLSPEC MouseListener
+    class MouseListener
     {
     public:
         /**

@@ -45,8 +45,6 @@
 #ifndef GCN_RECTANGLE_HPP
 #define GCN_RECTANGLE_HPP
 
-#include "guichan/platform.hpp"
-
 #include <iostream>
 
 #include "localconsts.h"
@@ -58,7 +56,7 @@ namespace gcn
      *
      * @since 0.1.0
      */
-    class GCN_CORE_DECLSPEC Rectangle
+    class Rectangle
     {
     public:
         /**

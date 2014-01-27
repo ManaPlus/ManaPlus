@@ -49,7 +49,6 @@
 
 #include "guichan/basiccontainer.hpp"
 #include "guichan/graphics.hpp"
-#include "guichan/platform.hpp"
 
 namespace gcn
 {
@@ -61,7 +60,7 @@ namespace gcn
      *
      * @see Gui::setTop
      */
-    class GCN_CORE_DECLSPEC Container: public BasicContainer
+    class Container: public BasicContainer
     {
     public:
         /**

@@ -49,7 +49,6 @@
 #include <stack>
 
 #include "guichan/cliprectangle.hpp"
-#include "guichan/platform.hpp"
 
 namespace gcn
 {
@@ -92,7 +91,7 @@ namespace gcn
      *      SDLGraphics, Image
      * @since 0.1.0
      */
-    class GCN_CORE_DECLSPEC Graphics
+    class Graphics
     {
     public:
         /**

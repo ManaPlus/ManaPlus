@@ -45,8 +45,6 @@
 #ifndef GCN_MOUSEINPUT_HPP
 #define GCN_MOUSEINPUT_HPP
 
-#include "guichan/platform.hpp"
-
 #include "localconsts.h"
 
 namespace gcn
@@ -61,7 +59,7 @@ namespace gcn
      * @author Per Larsson
      * @since 0.1.0
      */
-    class GCN_CORE_DECLSPEC MouseInput
+    class MouseInput
     {
     public:
         /**

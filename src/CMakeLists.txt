@@ -796,7 +796,6 @@ SET(SRCS_GUICHAN
     guichan/include/guichan/mouseevent.hpp
     guichan/include/guichan/mouseinput.hpp
     guichan/include/guichan/mouselistener.hpp
-    guichan/include/guichan/platform.hpp
     guichan/include/guichan/rectangle.hpp
     guichan/include/guichan/selectionevent.hpp
     guichan/include/guichan/selectionlistener.hpp

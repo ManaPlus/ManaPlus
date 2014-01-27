@@ -47,8 +47,6 @@
 
 #include <string>
 
-#include "guichan/platform.hpp"
-
 #include "localconsts.h"
 
 namespace gcn
@@ -69,7 +67,7 @@ namespace gcn
      *      OpenGLAllegroImageLoader, OpenGLSDLImageLoader, SDLImageLoader
      * @since 0.1.0
      */
-    class GCN_CORE_DECLSPEC Image
+    class Image
     {
     public:
         /**

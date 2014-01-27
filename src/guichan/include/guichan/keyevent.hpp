@@ -47,7 +47,6 @@
 
 #include "guichan/inputevent.hpp"
 #include "guichan/key.hpp"
-#include "guichan/platform.hpp"
 
 namespace gcn
 {
@@ -56,7 +55,7 @@ namespace gcn
     /**
      * Represents a key event.
      */
-    class GCN_CORE_DECLSPEC KeyEvent: public InputEvent
+    class KeyEvent: public InputEvent
     {
     public:
         /**

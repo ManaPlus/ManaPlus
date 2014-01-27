@@ -48,7 +48,6 @@
 #include <string>
 
 #include "guichan/graphics.hpp"
-#include "guichan/platform.hpp"
 #include "guichan/widget.hpp"
 
 namespace gcn
@@ -56,7 +55,7 @@ namespace gcn
     /**
      * Implementation of a label capable of displaying a caption.
      */
-    class GCN_CORE_DECLSPEC Label: public Widget
+    class Label: public Widget
     {
     public:
         /**

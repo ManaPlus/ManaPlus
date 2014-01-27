@@ -48,7 +48,6 @@
 #include <vector>
 
 #include "guichan/event.hpp"
-#include "guichan/platform.hpp"
 
 namespace gcn
 {
@@ -68,7 +67,7 @@ namespace gcn
      *
      * @since 0.1.0
      */
-    class GCN_CORE_DECLSPEC FocusHandler
+    class FocusHandler
     {
     public:
         /**

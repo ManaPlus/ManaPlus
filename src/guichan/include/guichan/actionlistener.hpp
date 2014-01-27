@@ -48,7 +48,6 @@
 #include <string>
 
 #include "guichan/actionevent.hpp"
-#include "guichan/platform.hpp"
 
 namespace gcn
 {
@@ -60,7 +59,7 @@ namespace gcn
      * @author Olof Naessén
      * @author Per Larsson
      */
-    class GCN_CORE_DECLSPEC ActionListener
+    class ActionListener
     {
     public:
         /**

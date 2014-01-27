@@ -48,7 +48,6 @@
 #include <string>
 
 #include "guichan/mouselistener.hpp"
-#include "guichan/platform.hpp"
 #include "guichan/widgets/container.hpp"
 
 namespace gcn
@@ -56,8 +55,8 @@ namespace gcn
     /**
      * An implementation of a movable window that can contain other widgets.
      */
-    class GCN_CORE_DECLSPEC Window : public Container,
-                                     public MouseListener
+    class Window : public Container,
+                   public MouseListener
     {
     public:
         /**

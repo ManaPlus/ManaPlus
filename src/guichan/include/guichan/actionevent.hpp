@@ -46,7 +46,6 @@
 #define GCN_ACTIONEVENT_HPP
 
 #include "guichan/event.hpp"
-#include "guichan/platform.hpp"
 
 #include <string>
 
@@ -78,7 +77,7 @@ namespace gcn
      * @author Olof Naessén
      * @since 0.6.0
      */
-    class GCN_CORE_DECLSPEC ActionEvent final : public Event
+    class ActionEvent final : public Event
     {
     public:
         /**

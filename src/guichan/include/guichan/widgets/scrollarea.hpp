@@ -49,7 +49,6 @@
 
 #include "guichan/basiccontainer.hpp"
 #include "guichan/mouselistener.hpp"
-#include "guichan/platform.hpp"
 
 namespace gcn
 {
@@ -58,7 +57,7 @@ namespace gcn
      * A scroll area can be customized to always show scroll bars or to show them only when
      * necessary.
      */
-    class GCN_CORE_DECLSPEC ScrollArea:
+    class ScrollArea:
         public BasicContainer,
         public MouseListener
     {

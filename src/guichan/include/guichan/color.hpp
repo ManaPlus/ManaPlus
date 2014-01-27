@@ -45,8 +45,6 @@
 #ifndef GCN_COLOR_HPP
 #define GCN_COLOR_HPP
 
-#include "guichan/platform.hpp"
-
 #include <iostream>
 
 #include "localconsts.h"
@@ -56,7 +54,7 @@ namespace gcn
     /**
      * Represents a color with red, green, blue and alpha components.
      */
-    class GCN_CORE_DECLSPEC Color final
+    class Color final
     {
     public:
         /**

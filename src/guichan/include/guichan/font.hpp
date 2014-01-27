@@ -46,7 +46,6 @@
 #define GCN_FONT_HPP
 
 #include <string>
-#include "guichan/platform.hpp"
 
 #include "localconsts.h"
 
@@ -59,7 +58,7 @@ namespace gcn
      *
      * @see ImageFont
      */
-    class GCN_CORE_DECLSPEC Font
+    class Font
     {
     public:
         /**

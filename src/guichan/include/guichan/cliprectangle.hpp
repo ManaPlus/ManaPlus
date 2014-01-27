@@ -46,7 +46,6 @@
 #define GCN_CLIPRECTANGLE_HPP
 
 #include "guichan/rectangle.hpp"
-#include "guichan/platform.hpp"
 
 #include "localconsts.h"
 
@@ -58,7 +57,7 @@ namespace gcn
      * offsets. The offsets are used for calculations from relative
      * screen coordinates to actual screen coordinates.
      */
-    class GCN_CORE_DECLSPEC ClipRectangle final : public Rectangle
+    class ClipRectangle final : public Rectangle
     {
     public:
         /**

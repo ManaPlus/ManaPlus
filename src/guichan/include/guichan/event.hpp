@@ -45,8 +45,6 @@
 #ifndef GCN_EVENT_HPP
 #define GCN_EVENT_HPP
 
-#include "guichan/platform.hpp"
-
 #include "localconsts.h"
 
 namespace gcn
@@ -60,7 +58,7 @@ namespace gcn
      * @author Olof Naessén
      * @since 0.6.0
      */
-    class GCN_CORE_DECLSPEC Event
+    class Event
     {
     public:
         /**

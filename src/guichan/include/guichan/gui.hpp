@@ -51,7 +51,6 @@
 #include "guichan/keyevent.hpp"
 #include "guichan/mouseevent.hpp"
 #include "guichan/mouseinput.hpp"
-#include "guichan/platform.hpp"
 
 namespace gcn
 {
@@ -94,7 +93,7 @@ namespace gcn
      *
      * @see Graphics, Input, Image
      */
-    class GCN_CORE_DECLSPEC Gui
+    class Gui
     {
     public:
         /**

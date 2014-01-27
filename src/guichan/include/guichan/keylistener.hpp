@@ -46,7 +46,6 @@
 #define GCN_KEYLISTENER_HPP
 
 #include "guichan/keyevent.hpp"
-#include "guichan/platform.hpp"
 
 #include "localconsts.h"
 
@@ -59,7 +58,7 @@ namespace gcn
      *
      * @see Widget::addKeyListener, Widget::removeKeyListener
      */
-    class GCN_CORE_DECLSPEC KeyListener
+    class KeyListener
     {
     public:
         /**

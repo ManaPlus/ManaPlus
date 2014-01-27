@@ -48,7 +48,6 @@
 #include <string>
 
 #include "guichan/event.hpp"
-#include "guichan/platform.hpp"
 
 namespace gcn
 {
@@ -59,7 +58,7 @@ namespace gcn
      * @author Olof Naessén
      * @since 0.6.0
      */
-    class GCN_CORE_DECLSPEC DeathListener
+    class DeathListener
     {
     public:
         /**

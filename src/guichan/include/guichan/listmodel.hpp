@@ -47,8 +47,6 @@
 
 #include <string>
 
-#include "guichan/platform.hpp"
-
 #include "localconsts.h"
 
 namespace gcn
@@ -60,7 +58,7 @@ namespace gcn
      * like ListBox, make a derived class from this class that 
      * represents your list.
      */
-    class GCN_CORE_DECLSPEC ListModel
+    class ListModel
     {
     public:
         /**

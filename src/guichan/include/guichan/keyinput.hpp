@@ -46,7 +46,6 @@
 #define GCN_KEYINPUT_HPP
 
 #include "guichan/key.hpp"
-#include "guichan/platform.hpp"
 
 namespace gcn
 {
@@ -57,7 +56,7 @@ namespace gcn
      *
      * @since 0.1.0
      */
-    class GCN_CORE_DECLSPEC KeyInput
+    class KeyInput
     {
     public:
         /**

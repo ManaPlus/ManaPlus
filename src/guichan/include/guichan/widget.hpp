@@ -80,7 +80,7 @@ namespace gcn
      * @author Per Larsson.
      * @since 0.1.0
      */
-    class GCN_CORE_DECLSPEC Widget
+    class Widget
     {
     public:
         /**

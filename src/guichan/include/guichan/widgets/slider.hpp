@@ -47,7 +47,6 @@
 
 #include "guichan/keylistener.hpp"
 #include "guichan/mouselistener.hpp"
-#include "guichan/platform.hpp"
 #include "guichan/widget.hpp"
 
 namespace gcn
@@ -59,7 +58,7 @@ namespace gcn
      * If the selected value is changed an action event will be sent to all
      * action listeners of the slider.
      */
-    class GCN_CORE_DECLSPEC Slider :
+    class Slider :
         public Widget,
         public MouseListener,
         public KeyListener

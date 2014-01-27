@@ -48,7 +48,6 @@
 #include <string>
 
 #include "guichan/event.hpp"
-#include "guichan/platform.hpp"
 
 #include "localconsts.h"
 
@@ -61,7 +60,7 @@ namespace gcn
      * @author Olof Naessén
      * @since 0.7.0
      */
-    class GCN_CORE_DECLSPEC FocusListener
+    class FocusListener
     {
     public:
         /**

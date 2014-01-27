@@ -51,7 +51,6 @@
 
 #include "guichan/keylistener.hpp"
 #include "guichan/mouselistener.hpp"
-#include "guichan/platform.hpp"
 #include "guichan/widget.hpp"
 
 namespace gcn
@@ -59,7 +58,7 @@ namespace gcn
     /**
      * An implementation of a text box where a user can enter text that contains of many lines.
      */
-    class GCN_CORE_DECLSPEC TextBox:
+    class TextBox:
         public Widget,
         public MouseListener,
         public KeyListener

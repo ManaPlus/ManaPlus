@@ -45,8 +45,6 @@
 #ifndef GCN_INPUT_HPP
 #define GCN_INPUT_HPP
 
-#include "guichan/platform.hpp"
-
 #include "localconsts.h"
 
 namespace gcn
@@ -66,7 +64,7 @@ namespace gcn
      * @see AllegroInput, HGEInput, OpenLayerInput, 
      *      SDLInput
      */
-    class GCN_CORE_DECLSPEC Input
+    class Input
     {
     public:
         /**

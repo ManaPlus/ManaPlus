@@ -46,7 +46,6 @@
 #define GCN_MOUSEEVENT_HPP
 
 #include "guichan/inputevent.hpp"
-#include "guichan/platform.hpp"
 
 namespace gcn
 {
@@ -59,7 +58,7 @@ namespace gcn
      * @author Olof Naessén
      * @since 0.6.0
      */
-    class GCN_CORE_DECLSPEC MouseEvent: public InputEvent
+    class MouseEvent: public InputEvent
     {
     public:
         /**

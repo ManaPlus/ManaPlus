@@ -45,8 +45,6 @@
 #ifndef GCN_KEY_HPP
 #define GCN_KEY_HPP
 
-#include "guichan/platform.hpp"
-
 #include "localconsts.h"
 
 // windows.h defines DELETE which breaks this file as we have a constant named
@@ -61,7 +59,7 @@ namespace gcn
     /**
      * Represents a key or a character.
      */
-    class GCN_CORE_DECLSPEC Key final
+    class Key final
     {
     public:
         /**

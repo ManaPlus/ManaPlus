@@ -50,7 +50,6 @@
 #include "guichan/keylistener.hpp"
 #include "guichan/listmodel.hpp"
 #include "guichan/mouselistener.hpp"
-#include "guichan/platform.hpp"
 #include "guichan/widget.hpp"
 
 namespace gcn
@@ -68,7 +67,7 @@ namespace gcn
      * a mouse click or by using the enter or space key an action event will be
      * sent to all action listeners of the list box.
      */
-    class GCN_CORE_DECLSPEC ListBox :
+    class ListBox :
         public Widget,
         public MouseListener,
         public KeyListener

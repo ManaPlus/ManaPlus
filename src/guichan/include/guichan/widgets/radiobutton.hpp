@@ -50,7 +50,6 @@
 
 #include "guichan/keylistener.hpp"
 #include "guichan/mouselistener.hpp"
-#include "guichan/platform.hpp"
 #include "guichan/widget.hpp"
 
 namespace gcn
@@ -65,7 +64,7 @@ namespace gcn
      * If a radio button's state changes an action event will be sent to all action 
      * listeners of the check box.
      */
-    class GCN_CORE_DECLSPEC RadioButton :
+    class RadioButton :
         public Widget,
         public MouseListener,
         public KeyListener

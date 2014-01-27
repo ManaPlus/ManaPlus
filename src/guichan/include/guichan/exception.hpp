@@ -47,8 +47,6 @@
 
 #include <string>
 
-#include "guichan/platform.hpp"
-
 #include "localconsts.h"
 
 #ifndef __FUNCTION__
@@ -85,7 +83,7 @@ namespace gcn
      *          throw GCN_EXCEPTION("my error message");
      *          @endcode
      */
-    class GCN_CORE_DECLSPEC Exception final
+    class Exception final
     {
     public:
         /**

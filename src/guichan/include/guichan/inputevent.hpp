@@ -46,7 +46,6 @@
 #define GCN_INPUTEVENT_HPP
 
 #include "guichan/event.hpp"
-#include "guichan/platform.hpp"
 
 namespace gcn
 {
@@ -56,7 +55,7 @@ namespace gcn
      * @author Olof Naessén
      * @since 0.6.0
      */
-    class GCN_CORE_DECLSPEC InputEvent: public Event
+    class InputEvent: public Event
     {
     public:
         /**
