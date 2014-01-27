@@ -250,7 +250,7 @@ fi
 AM_CONDITIONAL(USE_OPENGL, test x$with_opengl = xyes)
 
 # Option to enable internal guichan
-AC_ARG_WITH(internalguichan,[  --without-internalguichan        don't use internal guichan ] )
+AC_ARG_WITH(internalguichan,[  --without-internalguichan        DEPRICATED. don't use internal guichan ] )
 if test "x$with_internalguichan" == "xno"; then
     with_internalguichan=no
 
