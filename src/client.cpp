@@ -2976,8 +2976,10 @@ void Client::checkConfigVersion()
                 Being::NO_NAME_IN_BUBBLE));
         }
     }
+    if (version < 6)
+        config.setValue("blur", false);
 
-    config.setValue("cfgver", 5);
+    config.setValue("cfgver", 6);
 }
 
 Window *Client::openErrorDialog(const std::string &header,
