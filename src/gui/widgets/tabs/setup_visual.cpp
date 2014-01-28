@@ -87,7 +87,8 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     mAmbientFxList(new NamesModel),
     mParticleList(new SetupItemNames),
     mParticleTypeList(new NamesModel),
-    mVSyncList(new NamesModel)
+    mVSyncList(new NamesModel),
+    mScaleList(new SetupItemNames)
 {
     // TRANSLATORS: settings tab name
     setName(_("Visual"));
@@ -97,6 +98,18 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     place(0, 0, mScroll, 10, 10);
 
     mPreferredFirstItemSize = 150;
+
+    // TRANSLATORS: settings option
+    new SetupItemLabel(_("Scale"), "", this);
+
+    for (int f = 1; f <= 7; f ++)
+    {
+        // TRANSLATORS: particle details
+        mScaleList->push_back(toString(f) + "x");
+    }
+    new SetupItemSlider2(_("Scale "), "", "scale",
+        this, "scaleEvent", 1, 7,
+        mScaleList, true);
 
     // TRANSLATORS: settings option
     new SetupItemLabel(_("Notifications"), "", this);
@@ -204,6 +217,8 @@ Setup_Visual::~Setup_Visual()
     mParticleTypeList = nullptr;
     delete mVSyncList;
     mVSyncList = nullptr;
+    delete mScaleList;
+    mScaleList = nullptr;
 }
 
 void Setup_Visual::apply()

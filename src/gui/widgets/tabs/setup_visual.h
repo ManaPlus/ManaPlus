@@ -43,6 +43,7 @@ class Setup_Visual final : public SetupTabScroll
         SetupItemNames *mParticleList;
         NamesModel *mParticleTypeList;
         NamesModel *mVSyncList;
+        SetupItemNames *mScaleList;
 };
 
 #endif  // GUI_WIDGETS_TABS_SETUP_VISUAL_H
