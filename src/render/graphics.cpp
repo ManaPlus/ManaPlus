@@ -140,13 +140,15 @@ void Graphics::setScale(int scale)
             scale = 1;
         logger->log("set scale: %d", scale);
         mScale = scale;
+        mWidth = mActualWidth / mScale;
+        mHeight = mActualHeight / mScale;
     }
     else
     {
         mScale = 1;
+        mWidth = mActualWidth;
+        mHeight = mActualHeight;
     }
-    mWidth = mActualWidth / mScale;
-    mHeight = mActualHeight / mScale;
     mRect.w = mWidth;
     mRect.h = mHeight;
 }
@@ -411,9 +413,6 @@ bool Graphics::setFullscreen(const bool fs)
 
 bool Graphics::resizeScreen(const int width, const int height)
 {
-    if (mWidth == width && mHeight == height)
-        return true;
-
 #ifdef USE_SDL2
     _endDraw();
 
