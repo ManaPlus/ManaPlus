@@ -374,7 +374,7 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
 #ifndef WIN32
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Screenshot directory"), "",
-        "screenshotDirectory2", this, "screenshotDirectory2Event", true, true);
+        "screenshotDirectory3", this, "screenshotDirectory3Event", true, true);
 #endif
 
     // TRANSLATORS: settings option

@@ -2303,7 +2303,7 @@ void Client::initScreenshotDir()
     else if (mScreenshotDir.empty())
     {
         mScreenshotDir = decodeBase64String(
-            config.getStringValue("screenshotDirectory2"));
+            config.getStringValue("screenshotDirectory3"));
         if (mScreenshotDir.empty())
         {
 #ifdef __ANDROID__
@@ -2330,7 +2330,7 @@ void Client::initScreenshotDir()
                         configScreenshotSuffix);
                 }
             }
-            config.setValue("screenshotDirectory2",
+            config.setValue("screenshotDirectory3",
                 encodeBase64String(mScreenshotDir));
         }
     }

@@ -202,6 +202,8 @@ const std::string unusedKeys[] =
     "OutfitAwayIndex",
     "playerHomes",
     "remember",
+    "screenshotDirectory",
+    "screenshotDirectory2",
     ""
 };
 

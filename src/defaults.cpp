@@ -152,7 +152,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("lastCharacter", "");
     AddDEF("altfpslimit", 5);
     AddDEF("updatehost", "");
-    AddDEF("screenshotDirectory2", "");
+    AddDEF("screenshotDirectory3", "");
     AddDEF("useScreenshotDirectorySuffix", true);
     AddDEF("screenshotDirectorySuffix", "");
     AddDEF("EnableSync", false);

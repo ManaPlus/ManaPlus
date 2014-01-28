@@ -326,6 +326,30 @@ void SetupItemTextField::save()
     }
 }
 
+void SetupItemTextField::cancel(const std::string &eventName A_UNUSED)
+{
+    load();
+    if (mUseBase64)
+        mValue = decodeBase64String(mValue);
+    toWidget();
+}
+
+void SetupItemTextField::externalUpdated(const std::string &eventName A_UNUSED)
+{
+    load();
+    if (mUseBase64)
+        mValue = decodeBase64String(mValue);
+    toWidget();
+}
+
+void SetupItemTextField::rereadValue()
+{
+    load();
+    if (mUseBase64)
+        mValue = decodeBase64String(mValue);
+    toWidget();
+}
+
 void SetupItemTextField::createControls()
 {
     load();

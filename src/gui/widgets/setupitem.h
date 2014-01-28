@@ -96,7 +96,7 @@ class SetupItem : public gcn::ActionListener,
 
         void fixFirstItemSize(gcn::Widget *const widget);
 
-        void rereadValue();
+        virtual void rereadValue();
 
         void setValue(const std::string str)
         { mValue = str; }
@@ -213,6 +213,13 @@ class SetupItemTextField final : public SetupItem
         void action(const gcn::ActionEvent &event) override final;
 
         void apply(const std::string &eventName) override final;
+
+        void cancel(const std::string &eventName A_UNUSED) override final;
+
+        void externalUpdated(const std::string &eventName A_UNUSED)
+                             override final;
+
+        void rereadValue() override final;
 
         void save() override final;
 
