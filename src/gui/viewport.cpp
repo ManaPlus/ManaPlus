@@ -275,7 +275,9 @@ void Viewport::logic()
 
 void Viewport::_followMouse()
 {
-    const uint8_t button = SDL_GetMouseState(&mMouseX, &mMouseY);
+    if (!gui)
+        return;
+    const uint8_t button = gui->getMouseState(&mMouseX, &mMouseY);
     // If the left button is dragged
     if (mPlayerFollowMouse && (button & SDL_BUTTON(1)))
     {
@@ -297,10 +299,10 @@ void Viewport::_followMouse()
 
 void Viewport::_drawDebugPath(Graphics *const graphics)
 {
-    if (!player_node || !userPalette || !actorManager || !mMap)
+    if (!player_node || !userPalette || !actorManager || !mMap || !gui)
         return;
 
-    SDL_GetMouseState(&mMouseX, &mMouseY);
+    gui->getMouseState(&mMouseX, &mMouseY);
 
     static Path debugPath;
     static Vector lastMouseDestination = Vector(0.0F, 0.0F);

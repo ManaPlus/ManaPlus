@@ -741,10 +741,13 @@ void TextField::mousePressed(gcn::MouseEvent &mouseEvent)
                 mPopupMenu = new PopupMenu();
                 mPopupMenu->postInit();
             }
-            int x = 0;
-            int y = 0;
-            SDL_GetMouseState(&x, &y);
-            mPopupMenu->showTextFieldPopup(x, y, this);
+            if (gui)
+            {
+                int x = 0;
+                int y = 0;
+                gui->getMouseState(&x, &y);
+                mPopupMenu->showTextFieldPopup(x, y, this);
+            }
         }
     }
     else

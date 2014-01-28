@@ -122,9 +122,12 @@ void CharacterDisplay::mouseExited(gcn::MouseEvent &event A_UNUSED)
 
 void CharacterDisplay::mouseMoved(gcn::MouseEvent &event A_UNUSED)
 {
+    if (!gui)
+        return;
+
     int mouseX = 0;
     int mouseY = 0;
-    SDL_GetMouseState(&mouseX, &mouseY);
+    gui->getMouseState(&mouseX, &mouseY);
     const std::string &name = mName->getCaption();
     if (!name.empty())
     {

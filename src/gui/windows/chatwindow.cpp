@@ -1911,11 +1911,14 @@ void ChatWindow::draw(gcn::Graphics* graphics)
 
 void ChatWindow::updateVisibility()
 {
+    if (!gui)
+        return;
+
     int mouseX = 0;
     int mouseY = 0;
     int x = 0;
     int y = 0;
-    SDL_GetMouseState(&mouseX, &mouseY);
+    gui->getMouseState(&mouseX, &mouseY);
     getAbsolutePosition(x, y);
     if (mChatInput->isVisible())
     {

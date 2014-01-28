@@ -211,11 +211,11 @@ impHandler(outfit)
 
 impHandler0(mouseClick)
 {
-    if (!guiInput)
+    if (!guiInput || !gui)
         return false;
 
     int mouseX, mouseY;
-    SDL_GetMouseState(&mouseX, &mouseY);
+    gui->getMouseState(&mouseX, &mouseY);
     guiInput->simulateMouseClick(mouseX, mouseY, gcn::MouseEvent::RIGHT);
     return true;
 }

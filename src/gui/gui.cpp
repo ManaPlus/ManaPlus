@@ -494,7 +494,7 @@ void Gui::draw()
     touchManager.draw();
 
     int mouseX, mouseY;
-    const uint8_t button = SDL_GetMouseState(&mouseX, &mouseY);
+    const uint8_t button = getMouseState(&mouseX, &mouseY);
 
     if ((client->getMouseFocused() || button & SDL_BUTTON(1))
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0F)
@@ -787,7 +787,7 @@ MouseEvent *Gui::createMouseEvent(Window *const widget)
     int mouseY = 0;
 
     getAbsolutePosition(widget, x, y);
-    SDL_GetMouseState(&mouseX, &mouseY);
+    getMouseState(&mouseX, &mouseY);
 
     return new MouseEvent(widget, mShiftPressed,
         mControlPressed, mAltPressed, mMetaPressed, 0, 0,
@@ -938,4 +938,9 @@ void Gui::removeDragged(gcn::Widget *widget)
 
     if (mFocusHandler->getDraggedWidget() == widget)
         mFocusHandler->setDraggedWidget(nullptr);
+}
+
+uint32_t Gui::getMouseState(int *const x, int *const y) const
+{
+    return SDL_GetMouseState(x, y);
 }

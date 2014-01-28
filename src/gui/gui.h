@@ -164,6 +164,8 @@ class Gui final : public gcn::Gui
         int getLastMouseY() const
         { return mLastMouseY; }
 
+        uint32_t getMouseState(int *const x, int *const y) const;
+
     protected:
         void handleMouseMoved(const gcn::MouseInput &mouseInput);
 
