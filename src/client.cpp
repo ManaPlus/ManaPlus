@@ -546,6 +546,7 @@ void Client::initGraphics()
 #endif
 #endif
 
+    checkConfigVersion();
 #if defined(WIN32) || defined(__APPLE__)
     if (config.getBoolValue("centerwindow"))
         setEnv("SDL_VIDEO_CENTERED", "1");
@@ -577,7 +578,6 @@ void Client::initGraphics()
     runCounters = config.getBoolValue("packetcounters");
     applyVSync();
     graphicsManager.setVideoMode();
-    checkConfigVersion();
     getConfigDefaults2(config.getDefaultValues());
     applyGrabMode();
     applyGamma();
