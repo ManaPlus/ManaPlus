@@ -225,4 +225,5 @@ void Setup_Visual::apply()
 {
     SetupTabScroll::apply();
     Client::applyGrabMode();
+    client->applyScale();
 }

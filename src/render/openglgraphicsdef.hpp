@@ -142,7 +142,7 @@
 
         void completeCache() override final;
 
-        bool allowScale() const override final
+        bool isAllowScale() const override final
         { return true; }
 
         static void bindTexture(const GLenum target, const GLuint texture);

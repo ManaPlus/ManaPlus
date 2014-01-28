@@ -2892,6 +2892,17 @@ void Client::applyKeyRepeat()
 #endif
 }
 
+void Client::applyScale()
+{
+    const int scale = config.getIntValue("scale");
+    if (mainGraphics->getScale() == scale)
+        return;
+    mainGraphics->setScale(scale);
+    resizeVideo(mainGraphics->mActualWidth,
+        mainGraphics->mActualHeight,
+        true);
+}
+
 void Client::setIsMinimized(const bool n)
 {
     mIsMinimized = n;

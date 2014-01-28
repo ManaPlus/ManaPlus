@@ -120,16 +120,35 @@ void Graphics::setMainFlags(const int w, const int h,
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
 
-    mWidth = w / scale;
-    mHeight = h / scale;
     mBpp = bpp;
     mFullscreen = fs;
     mHWAccel = hwaccel;
     mEnableResize = resize;
     mNoFrame = noFrame;
-    mScale = scale;
     mActualWidth = w;
     mActualHeight = h;
+    setScale(scale);
+}
+
+void Graphics::setScale(int scale)
+{
+    if (isAllowScale())
+    {
+        if (!scale)
+            scale = 1;
+        if (mActualWidth / scale < 470 || mActualHeight / scale < 320)
+            scale = 1;
+        logger->log("set scale: %d", scale);
+        mScale = scale;
+    }
+    else
+    {
+        mScale = 1;
+    }
+    mWidth = mActualWidth / mScale;
+    mHeight = mActualHeight / mScale;
+    mRect.w = mWidth;
+    mRect.h = mHeight;
 }
 
 int Graphics::getOpenGLFlags() const

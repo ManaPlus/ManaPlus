@@ -376,17 +376,7 @@ void GraphicsManager::setVideoMode()
     int width = config.getIntValue("screenwidth");
     int height = config.getIntValue("screenheight");
 #endif
-
-    int scale = 1;
-    if (mainGraphics->allowScale())
-    {
-        if (!scale)
-            scale = 1;
-        scale = config.getIntValue("scale");
-        if (width / scale < 470 || height / scale < 320)
-            scale = 1;
-        logger->log("set scale: %d", scale);
-    }
+    const int scale = config.getIntValue("scale");
 
     // Try to set the desired video mode
     if (!mainGraphics->setVideoMode(width, height, scale, bpp,

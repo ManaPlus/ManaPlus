@@ -315,6 +315,8 @@ public:
                      int actualHeight,
                      const bool always);
 
+    void applyScale();
+
     bool limitPackets(const int type) A_WARN_UNUSED;
 
     bool checkPackets(const int type) const A_WARN_UNUSED;

@@ -348,8 +348,10 @@ class Graphics : public gcn::Graphics
         int getScale() const
         { return mScale; }
 
-        virtual bool allowScale() const
+        virtual bool isAllowScale() const
         { return false; }
+
+        void setScale(int scale);
 
         int mWidth;
         int mHeight;
