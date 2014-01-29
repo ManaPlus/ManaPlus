@@ -260,6 +260,12 @@ bool openBrowser(std::string url)
 {
     return execFile("/usr/bin/open", "/usr/bin/open", url, "");
 }
+#elif defined __OpenBSD__ || defined __FreeBSD__ || defined __DragonFly__
+bool openBrowser(std::string url)
+{
+    return execFile("/usr/local/bin/xdg-open",
+        "/usr/local/bin/xdg-open", url, "");
+}
 #elif defined __linux__ || defined __linux
 bool openBrowser(std::string url)
 {

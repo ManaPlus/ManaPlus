@@ -441,14 +441,21 @@ static bool runxsel(std::string& text, const char *p1, const char *p2)
             }
             close(fd[0]);
         }
+
+        const char *const xselPath =
+#if defined __OpenBSD__ || defined __FreeBSD__ || defined __DragonFly__
+            "/usr/local/bin/xsel";
+#else
+            "/usr/bin/xsel";
+#endif
         if (p2)
         {
-            execl("/usr/bin/xsel", "xsel", p1, p2,
+            execl(xselPath, "xsel", p1, p2,
                 static_cast<char *>(nullptr));
         }
         else
         {
-            execl("/usr/bin/xsel", "xsel", p1,
+            execl(xselPath, "xsel", p1,
                 static_cast<char *>(nullptr));
         }
 
