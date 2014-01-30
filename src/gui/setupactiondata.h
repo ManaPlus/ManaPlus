@@ -96,7 +96,7 @@ static SetupActionData setupActionData0[] =
     },
     {
         // TRANSLATORS: input action name
-        N_("Stop Attack"),
+        N_("Stop Attack / Modifier key"),
         Input::KEY_STOP_ATTACK,
         "",
     },
@@ -1364,12 +1364,6 @@ static SetupActionData setupActionData6[] =
         // TRANSLATORS: input action name
         N_("Toggle camera mode"),
         Input::KEY_CAMERA,
-        "",
-    },
-    {
-        // TRANSLATORS: input action name
-        N_("Modifier key"),
-        Input::KEY_MOD,
         "",
     },
     {

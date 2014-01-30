@@ -425,7 +425,8 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
             if (PlayerInfo::isItemProtected(item->getId()))
                 return;
 
-            if (inputManager.isActionActive(static_cast<int>(Input::KEY_MOD)))
+            if (inputManager.isActionActive(static_cast<int>(
+                Input::KEY_STOP_ATTACK)))
             {
                 PlayerInfo::dropItem(item, item->getQuantity(), true);
             }
@@ -474,10 +475,11 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
         gui->resetClickCount();
 
     const bool mod = (isStorageActive() && inputManager.isActionActive(
-        static_cast<int>(Input::KEY_MOD)));
+        static_cast<int>(Input::KEY_STOP_ATTACK)));
 
     const bool mod2 = (tradeWindow && tradeWindow->isWindowVisible()
-        && inputManager.isActionActive(static_cast<int>(Input::KEY_MOD)));
+        && inputManager.isActionActive(static_cast<int>(
+        Input::KEY_STOP_ATTACK)));
 
     if (!mod && !mod2 && event.getButton() == gcn::MouseEvent::RIGHT)
     {

@@ -388,7 +388,7 @@ impHandler0(heal)
 {
     if (actorManager)
     {
-        if (inputManager.isActionActive(Input::KEY_MOD))
+        if (inputManager.isActionActive(Input::KEY_STOP_ATTACK))
         {
             Being *target = player_node->getTarget();
             if (!target || target->getType() != ActorSprite::PLAYER)

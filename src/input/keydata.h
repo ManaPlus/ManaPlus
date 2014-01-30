@@ -319,7 +319,7 @@ namespace Input
         KEY_AWAY,
         KEY_RIGHT_CLICK,
         KEY_CAMERA,
-        KEY_MOD,
+        KEY_RESERVED1,
         KEY_GUI_UP,
         KEY_GUI_DOWN,
         KEY_GUI_LEFT,
