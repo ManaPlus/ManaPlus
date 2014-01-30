@@ -14,6 +14,10 @@ THE MANA PLUS CLIENT
   - libcurl (HTTP downloads)
   - zlib (Archives)
 
+ Additiona run time deps:
+  - xsel (for clipboard access, used only in SDL 1.2)
+  - xdg-open (from xdg-utils, for open url in browser)
+
 
 0. Index
 --------
@@ -131,5 +135,5 @@ If you're having issues with this client, feel free to report them to us.
 You can report on forum http://forums.themanaworld.org/viewforum.php?f=12
 or IRC on irc.freenode.net in the #manaplus channel.
 
-If you have feedback about a specific game that uses the Mana client, be sure
+If you have feedback about a specific game that uses the ManaPlus client, be sure
 to contact the developers of the game instead.
