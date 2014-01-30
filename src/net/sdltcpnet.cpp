@@ -89,7 +89,9 @@ int TcpNet::resolveHost(IPaddress *const address, const char *const host,
 TcpNet::Socket TcpNet::open(IPaddress *const ip)
 {
     const TcpNet::Socket sock = SDLNet_TCP_Open(ip);
-#ifndef __native_client__
+#if !defined(__native_client__) \
+    || defined(TCP_THIN_LINEAR_TIMEOUTS) \
+    || defined(TCP_THIN_DUPACK)
     if (sock && ip)
     {
         const TCPsocketHack *const hack

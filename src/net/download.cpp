@@ -541,14 +541,12 @@ void Download::prepareForm(curl_httppost **form, const std::string &fileName)
     curl_httppost *lastPtr = nullptr;
 
     std::ifstream file;
-    std::ostringstream str;
-    char *line = new char[10001];
-
     file.open(fileName.c_str(), std::ios::in);
-
     if (!file.is_open())
         return;
 
+    char *line = new char[10001];
+    std::ostringstream str;
     while (file.getline(line, 10000))
         str << line << "\n";
 
@@ -560,8 +558,10 @@ void Download::prepareForm(curl_httppost **form, const std::string &fileName)
         CURLFORM_END);
 }
 
-size_t Download::writeFunction(void *ptr, size_t size,
-                               size_t nmemb, void *stream)
+size_t Download::writeFunction(void *ptr,
+                               size_t size,
+                               size_t nmemb,
+                               void *stream A_UNUSED)
 {
     const size_t totalMem = size * nmemb;
     char *buf = new char[totalMem + 1];

@@ -1280,6 +1280,8 @@ struct UploadChatInfo
         addStr()
     { }
 
+    A_DELETE_COPY(UploadChatInfo)
+
     ChatTab *tab;
     Net::Download *upload;
     std::string text;

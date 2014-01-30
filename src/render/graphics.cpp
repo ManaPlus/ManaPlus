@@ -407,8 +407,8 @@ bool Graphics::setFullscreen(const bool fs)
     if (mFullscreen == fs)
         return true;
 
-    return setVideoMode(mActualWidth, mActualHeight, mScale, mBpp, fs, mHWAccel,
-        mEnableResize, mNoFrame);
+    return setVideoMode(mActualWidth, mActualHeight, mScale, mBpp, fs,
+        mHWAccel, mEnableResize, mNoFrame);
 }
 
 bool Graphics::resizeScreen(const int width, const int height)
