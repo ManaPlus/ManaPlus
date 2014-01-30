@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-01-18 12:47+0300\n"
-"PO-Revision-Date: 2014-01-11 08:35+0000\n"
+"POT-Creation-Date: 2014-01-30 11:24+0300\n"
+"PO-Revision-Date: 2014-01-19 09:35+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
 "language/ru/)\n"
@@ -43,25 +43,25 @@ msgid "Visible on map"
 msgstr "Видимые на карте"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:327
+#: src/being/being.cpp:329
 msgid "Human"
 msgstr "Человек"
 
-#: src/being/being.cpp:541
+#: src/being/being.cpp:543
 msgid "dodge"
 msgstr "уклонение"
 
-#: src/being/being.cpp:541
+#: src/being/being.cpp:543
 msgid "miss"
 msgstr "промах"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1933 src/gui/windows/whoisonline.cpp:863
+#: src/being/being.cpp:1966 src/gui/windows/whoisonline.cpp:863
 msgid "A"
 msgstr "О"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1938 src/gui/windows/whoisonline.cpp:868
+#: src/being/being.cpp:1971 src/gui/windows/whoisonline.cpp:868
 msgid "I"
 msgstr "Б"
 
@@ -535,31 +535,31 @@ msgstr "Плавающий пузырек"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1136 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:59
+#: src/client.cpp:1138 src/gui/windowmenu.cpp:165 src/gui/windows/setup.cpp:59
 msgid "Setup"
 msgstr "Настройка"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1140 src/gui/widgets/tabs/setup_perfomance.cpp:50
+#: src/client.cpp:1142 src/gui/widgets/tabs/setup_perfomance.cpp:50
 msgid "Performance"
 msgstr "Производительность"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1143 src/gui/widgets/tabs/setup_video.cpp:221
+#: src/client.cpp:1145 src/gui/widgets/tabs/setup_video.cpp:221
 msgid "Video"
 msgstr "Видео"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1146 src/gui/widgets/tabs/setup_theme.cpp:289
+#: src/client.cpp:1148 src/gui/widgets/tabs/setup_theme.cpp:289
 msgid "Theme"
 msgstr "Тема"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:1149 src/gui/windowmenu.cpp:72
+#: src/client.cpp:1151 src/gui/windowmenu.cpp:72
 #: src/gui/windows/helpwindow.cpp:50
 msgid "Help"
 msgstr "Помощь"
@@ -572,7 +572,7 @@ msgstr "Помощь"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1153 src/gui/popups/popupmenu.cpp:617
+#: src/client.cpp:1155 src/gui/popups/popupmenu.cpp:617
 #: src/gui/windows/didyouknowwindow.cpp:78
 #: src/gui/windows/inventorywindow.cpp:258 src/gui/windows/npcdialog.cpp:71
 #: src/gui/windows/npcdialog.cpp:109 src/gui/windows/questswindow.cpp:136
@@ -581,32 +581,32 @@ msgid "Close"
 msgstr "Закрыть"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1278
+#: src/client.cpp:1280
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1322
+#: src/client.cpp:1324
 msgid "Logging in"
 msgstr "Авторизация"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1364
+#: src/client.cpp:1366
 msgid "Entering game world"
 msgstr "Входим в игровой мир"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1489
+#: src/client.cpp:1491
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1529
+#: src/client.cpp:1531
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1542
+#: src/client.cpp:1544
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
@@ -621,7 +621,7 @@ msgstr "Смена игрового сервера"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1603 src/client.cpp:1614 src/client.cpp:1798
+#: src/client.cpp:1605 src/client.cpp:1616 src/client.cpp:1800
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
 #: src/gui/windows/charcreatedialog.cpp:358
@@ -634,65 +634,65 @@ msgid "Error"
 msgstr "Ошибка"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1626
+#: src/client.cpp:1628
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1667
+#: src/client.cpp:1669
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1669
+#: src/client.cpp:1671
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1691
+#: src/client.cpp:1693
 msgid "Email Change"
 msgstr "Сменить Email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1693
+#: src/client.cpp:1695
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1716
+#: src/client.cpp:1718
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1718
+#: src/client.cpp:1720
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1995 src/client.cpp:2010 src/client.cpp:2055
-#: src/client.cpp:2071 src/client.cpp:2520 src/client.cpp:2528
+#: src/client.cpp:1997 src/client.cpp:2012 src/client.cpp:2057
+#: src/client.cpp:2073 src/client.cpp:2522 src/client.cpp:2530
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s не существует, и не может быть создано! Выход."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2227
+#: src/client.cpp:2229
 #, c-format
 msgid "Invalid update host: %s."
 msgstr "Некорректный сервер обновленмй: %s."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2268 src/client.cpp:2275
+#: src/client.cpp:2270 src/client.cpp:2277
 msgid "Error creating updates directory!"
 msgstr "Ошибка создания директории для обновлений!"
 
-#: src/client.cpp:2297 src/client.cpp:2314
+#: src/client.cpp:2299 src/client.cpp:2316
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Ошибка: %s не существует, и не может быть создан! Выход."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2978
+#: src/client.cpp:2998
 msgid "Do you want to open support page?"
 msgstr "Открыть страницу поддержки?"
 
@@ -705,36 +705,36 @@ msgstr "Неизвестная команда."
 #. TRANSLATORS: party invite message
 #. TRANSLATORS: unignore command
 #. TRANSLATORS: erase command
-#: src/commands.cpp:152 src/commands.cpp:445 src/commands.cpp:532
-#: src/commands.cpp:586
+#: src/commands.cpp:154 src/commands.cpp:447 src/commands.cpp:534
+#: src/commands.cpp:588
 msgid "Please specify a name."
 msgstr "Пожалуйста, укажите имя"
 
 #. TRANSLATORS: change relation
-#: src/commands.cpp:159
+#: src/commands.cpp:161
 #, c-format
 msgid "Player already %s!"
 msgstr "Игрок уже %s!"
 
 #. TRANSLATORS: change relation
-#: src/commands.cpp:171
+#: src/commands.cpp:173
 #, c-format
 msgid "Player successfully %s!"
 msgstr "Игрок удачно %s!"
 
 #. TRANSLATORS: change relation
-#: src/commands.cpp:177
+#: src/commands.cpp:179
 #, c-format
 msgid "Player could not be %s!"
 msgstr "Игрок не может быть %s!"
 
 #. TRANSLATORS: whisper send
-#: src/commands.cpp:349
+#: src/commands.cpp:351
 msgid "Cannot send empty whispers!"
 msgstr "Нельзя отправлять пустые сообщения!"
 
 #. TRANSLATORS: new whisper query
-#: src/commands.cpp:367
+#: src/commands.cpp:369
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
@@ -745,167 +745,180 @@ msgstr ""
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
-#: src/commands.cpp:386 src/commands.cpp:397
+#: src/commands.cpp:388 src/commands.cpp:399
 msgid "Cache cleaned"
 msgstr "Кеш очищен"
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
-#: src/commands.cpp:409 src/net/ea/gui/partytab.cpp:155
+#: src/commands.cpp:411 src/net/ea/gui/partytab.cpp:155
 msgid "Party name is missing."
 msgstr "Не указано название группы"
 
 #. TRANSLATORS: create guild message
-#: src/commands.cpp:425
+#: src/commands.cpp:427
 msgid "Guild name is missing."
 msgstr "Не задано имя гильдии."
 
-#: src/commands.cpp:462
+#: src/commands.cpp:464
 msgid "Return toggles chat."
 msgstr "Enter переключает Вас на окно чата."
 
-#: src/commands.cpp:462
+#: src/commands.cpp:464
 msgid "Message closes chat."
 msgstr "Сообщение закрывает чат."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/commands.cpp:473
+#: src/commands.cpp:475
 msgid "Return now toggles chat."
 msgstr "Теперь Return переключает чат."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/commands.cpp:482
+#: src/commands.cpp:484
 msgid "Message now closes chat."
 msgstr "Теперь сообщение закрывает чат."
 
 #. TRANSLATORS: adding friend command
-#: src/commands.cpp:510
+#: src/commands.cpp:512
 msgid "friend"
 msgstr "друг"
 
 #. TRANSLATORS: disregard command
-#: src/commands.cpp:516
+#: src/commands.cpp:518
 msgid "disregarded"
 msgstr "пренебрегаемый"
 
 #. TRANSLATORS: neutral command
-#: src/commands.cpp:522
+#: src/commands.cpp:524
 msgid "neutral"
 msgstr "нейтральный"
 
 #. TRANSLATORS: unignore command
-#: src/commands.cpp:547
+#: src/commands.cpp:549
 msgid "Player wasn't ignored!"
 msgstr "Игрок не был игнорируемым!"
 
 #. TRANSLATORS: unignore command
-#: src/commands.cpp:557
+#: src/commands.cpp:559
 msgid "Player no longer ignored!"
 msgstr "Игрок больше не игнорируется!"
 
 #. TRANSLATORS: unignore command
-#: src/commands.cpp:562
+#: src/commands.cpp:564
 msgid "Player could not be unignored!"
 msgstr "Игрок не может быть удален из списка игнорирования!"
 
 #. TRANSLATORS: blacklist command
-#: src/commands.cpp:570
+#: src/commands.cpp:572
 msgid "blacklisted"
 msgstr "добавлен в черный список"
 
 #. TRANSLATORS: enemy command
-#: src/commands.cpp:576
+#: src/commands.cpp:578
 msgid "enemy"
 msgstr "враг"
 
 #. TRANSLATORS: erase command
-#: src/commands.cpp:596
+#: src/commands.cpp:598
 msgid "Player already erased!"
 msgstr "Игрок и так уже удален!"
 
 #. TRANSLATORS: erase command
-#: src/commands.cpp:610
+#: src/commands.cpp:612
 msgid "Player successfully erased!"
 msgstr "Игрок удален!"
 
 #. TRANSLATORS: erase command
-#: src/commands.cpp:615
+#: src/commands.cpp:617
 msgid "Player could not be erased!"
 msgstr "Игрок не может быть удален!"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:906 src/commands.cpp:962
+#: src/commands.cpp:908 src/commands.cpp:964
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Время работы клиента: %s"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:917
+#: src/commands.cpp:919
 #, c-format
 msgid "%d week"
 msgstr "%d неделя"
 
-#: src/commands.cpp:917
+#: src/commands.cpp:919
 #, c-format
 msgid "%d weeks"
 msgstr "%d недель"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:928
+#: src/commands.cpp:930
 #, c-format
 msgid "%d day"
 msgstr "%d день"
 
-#: src/commands.cpp:928
+#: src/commands.cpp:930
 #, c-format
 msgid "%d days"
 msgstr "%d дней"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:938
+#: src/commands.cpp:940
 #, c-format
 msgid "%d hour"
 msgstr "%d час"
 
-#: src/commands.cpp:938
+#: src/commands.cpp:940
 #, c-format
 msgid "%d hours"
 msgstr "%d часов"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:948
+#: src/commands.cpp:950
 #, c-format
 msgid "%d minute"
 msgstr "%d минута"
 
-#: src/commands.cpp:948
+#: src/commands.cpp:950
 #, c-format
 msgid "%d minutes"
 msgstr "%d минут"
 
 #. TRANSLATORS: uptime command
-#: src/commands.cpp:958
+#: src/commands.cpp:960
 #, c-format
 msgid "%d second"
 msgstr "%d секунда"
 
-#: src/commands.cpp:958
+#: src/commands.cpp:960
 #, c-format
 msgid "%d seconds"
 msgstr "%d секунд"
 
 #. TRANSLATORS: dump environment command
-#: src/commands.cpp:1116
+#: src/commands.cpp:1118
 msgid "Environment variables dumped"
 msgstr "Переменные среды сохранены"
 
+#: src/commands.cpp:1340
+msgid "Uploaded config into:"
+msgstr ""
+
+#: src/commands.cpp:1347
+msgid "Uploaded server config into:"
+msgstr ""
+
+#: src/commands.cpp:1354
+#, fuzzy
+msgid "Uploaded log into:"
+msgstr "Двойная попытка подключения."
+
 #. TRANSLATORS: dump command
-#: src/commands.cpp:1380 src/commands.cpp:1389
+#: src/commands.cpp:1474 src/commands.cpp:1483
 msgid "Resource images:"
 msgstr "Изображений:"
 
 #. TRANSLATORS: dump command
-#: src/commands.cpp:1383 src/commands.cpp:1392
+#: src/commands.cpp:1477 src/commands.cpp:1486
 msgid "Resource orphaned images:"
 msgstr "Удаленных изображений:"
 
@@ -2420,7 +2433,7 @@ msgstr "Страница вниз"
 #: src/gui/widgets/tabs/setup_audio.cpp:159
 #: src/gui/widgets/tabs/setup_chat.cpp:180
 #: src/gui/widgets/tabs/setup_other.cpp:329
-#: src/gui/widgets/tabs/setup_visual.cpp:175
+#: src/gui/widgets/tabs/setup_visual.cpp:188
 #: src/gui/windows/charcreatedialog.cpp:107
 #: src/gui/windows/registerdialog.cpp:115
 msgid "Other"
@@ -2588,7 +2601,7 @@ msgstr "Члены гильдии"
 
 #. TRANSLATORS: palette color
 #. TRANSLATORS: settings option
-#: src/gui/userpalette.cpp:140 src/gui/widgets/tabs/setup_visual.cpp:140
+#: src/gui/userpalette.cpp:140 src/gui/widgets/tabs/setup_visual.cpp:153
 msgid "Particle effects"
 msgstr "Эффекты частиц"
 
@@ -2722,13 +2735,13 @@ msgstr "Точка дороги"
 msgid "Tiles border"
 msgstr "Бордюр тайлов"
 
-#: src/gui/widgets/characterdisplay.cpp:131
+#: src/gui/widgets/characterdisplay.cpp:134
 #, c-format
 msgid "Level: %u"
 msgstr "Уровень: %u"
 
 #. TRANSLATORS: status window label
-#: src/gui/widgets/characterdisplay.cpp:133
+#: src/gui/widgets/characterdisplay.cpp:136
 #: src/gui/windows/inventorywindow.cpp:598
 #: src/gui/windows/statuswindow.cpp:149 src/gui/windows/statuswindow.cpp:312
 #: src/gui/windows/statuswindow.cpp:365
@@ -2808,7 +2821,7 @@ msgstr "Открыть ссылку"
 
 #. TRANSLATORS: setup item button
 #. TRANSLATORS: servers dialog button
-#: src/gui/widgets/setupitem.cpp:339 src/gui/widgets/setupitem.cpp:475
+#: src/gui/widgets/setupitem.cpp:363 src/gui/widgets/setupitem.cpp:499
 #: src/gui/windows/serverdialog.cpp:260
 msgid "Edit"
 msgstr "Изменить"
@@ -3473,14 +3486,14 @@ msgstr "По умолчанию"
 #. TRANSLATORS: particle details
 #: src/gui/widgets/tabs/setup_other.cpp:73
 #: src/gui/widgets/tabs/setup_visual.cpp:55
-#: src/gui/widgets/tabs/setup_visual.cpp:144
+#: src/gui/widgets/tabs/setup_visual.cpp:157
 msgid "low"
 msgstr "низ."
 
 #. TRANSLATORS: screen density type
 #. TRANSLATORS: particle details
 #: src/gui/widgets/tabs/setup_other.cpp:75
-#: src/gui/widgets/tabs/setup_visual.cpp:146
+#: src/gui/widgets/tabs/setup_visual.cpp:159
 msgid "medium"
 msgstr "средне"
 
@@ -3494,7 +3507,7 @@ msgstr "ТВ"
 #. TRANSLATORS: particle details
 #: src/gui/widgets/tabs/setup_other.cpp:79
 #: src/gui/widgets/tabs/setup_visual.cpp:57
-#: src/gui/widgets/tabs/setup_visual.cpp:148
+#: src/gui/widgets/tabs/setup_visual.cpp:161
 msgid "high"
 msgstr "выс."
 
@@ -3850,9 +3863,8 @@ msgstr "Использовать FBO для скриншотов (только �
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:376
-#, fuzzy
 msgid "Screenshot directory"
-msgstr "Создание скриншота"
+msgstr "Путь для снимков экрана"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:381
@@ -4381,8 +4393,8 @@ msgstr "Тема изменена"
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_theme.cpp:517
-#: src/gui/widgets/tabs/setup_video.cpp:493
-#: src/gui/widgets/tabs/setup_video.cpp:502
+#: src/gui/widgets/tabs/setup_video.cpp:495
+#: src/gui/widgets/tabs/setup_video.cpp:504
 msgid "Restart your client for the change to take effect."
 msgstr "Перезагрузите игру дабы изменения вступили в силу."
 
@@ -4481,8 +4493,8 @@ msgstr "Ограничить кадр/с:"
 #. TRANSLATORS: video settings label
 #: src/gui/widgets/tabs/setup_video.cpp:194
 #: src/gui/widgets/tabs/setup_video.cpp:236
-#: src/gui/widgets/tabs/setup_video.cpp:424
-#: src/gui/widgets/tabs/setup_video.cpp:551
+#: src/gui/widgets/tabs/setup_video.cpp:425
+#: src/gui/widgets/tabs/setup_video.cpp:553
 msgid "Alt FPS limit: "
 msgstr "Альтер. ограничить кадр/с: "
 
@@ -4514,14 +4526,14 @@ msgstr "Без рамки"
 #. TRANSLATORS: video settings label
 #: src/gui/widgets/tabs/setup_video.cpp:233
 #: src/gui/widgets/tabs/setup_video.cpp:237
-#: src/gui/widgets/tabs/setup_video.cpp:422
-#: src/gui/widgets/tabs/setup_video.cpp:535
-#: src/gui/widgets/tabs/setup_video.cpp:548
+#: src/gui/widgets/tabs/setup_video.cpp:423
+#: src/gui/widgets/tabs/setup_video.cpp:537
+#: src/gui/widgets/tabs/setup_video.cpp:550
 msgid "None"
 msgstr "Нет"
 
 #. TRANSLATORS: video error message
-#: src/gui/widgets/tabs/setup_video.cpp:344
+#: src/gui/widgets/tabs/setup_video.cpp:345
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
@@ -4529,7 +4541,7 @@ msgstr ""
 "удалось!"
 
 #. TRANSLATORS: video error message
-#: src/gui/widgets/tabs/setup_video.cpp:351
+#: src/gui/widgets/tabs/setup_video.cpp:352
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
@@ -4537,42 +4549,42 @@ msgstr ""
 "также не удалось!"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:363
+#: src/gui/widgets/tabs/setup_video.cpp:364
 msgid "Switching to Full Screen"
 msgstr "Переключение в полноэкранный режим"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:365
+#: src/gui/widgets/tabs/setup_video.cpp:366
 msgid "Restart needed for changes to take effect."
 msgstr "Для вступления в силу выбранных настроек требуется перезагрузка игры."
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:383
+#: src/gui/widgets/tabs/setup_video.cpp:384
 msgid "Changing to OpenGL"
 msgstr "Переключение на OpenGL"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:385
+#: src/gui/widgets/tabs/setup_video.cpp:386
 msgid "Applying change to OpenGL requires restart."
 msgstr "Для изменения режима OpenGL необходима перезагрузки игры."
 
 #. TRANSLATORS: resolution question dialog
-#: src/gui/widgets/tabs/setup_video.cpp:463
+#: src/gui/widgets/tabs/setup_video.cpp:464
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Свое разрешение (например: 1024х768)"
 
 #. TRANSLATORS: resolution question dialog
-#: src/gui/widgets/tabs/setup_video.cpp:465
+#: src/gui/widgets/tabs/setup_video.cpp:466
 msgid "Enter new resolution:                "
 msgstr "Введите новое разрешение:            "
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:491
-#: src/gui/widgets/tabs/setup_video.cpp:500
+#: src/gui/widgets/tabs/setup_video.cpp:493
+#: src/gui/widgets/tabs/setup_video.cpp:502
 msgid "Screen Resolution Changed"
 msgstr "Разрешение экрана изменено"
 
-#: src/gui/widgets/tabs/setup_video.cpp:494
+#: src/gui/widgets/tabs/setup_video.cpp:496
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Некоторые окна могут быть сдвинуты, чтобы уместиться на экране при меньшем "
@@ -4626,93 +4638,102 @@ msgid "on"
 msgstr "вкл."
 
 #. TRANSLATORS: settings tab name
-#: src/gui/widgets/tabs/setup_visual.cpp:93
+#: src/gui/widgets/tabs/setup_visual.cpp:94
 msgid "Visual"
 msgstr "Графика"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:102
+#: src/gui/widgets/tabs/setup_visual.cpp:103
+msgid "Scale"
+msgstr ""
+
+#: src/gui/widgets/tabs/setup_visual.cpp:110
+msgid "Scale "
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_visual.cpp:115
 msgid "Notifications"
 msgstr "Информационные сообщения"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:105
+#: src/gui/widgets/tabs/setup_visual.cpp:118
 msgid "Show pickup notifications in chat"
 msgstr "Показывать в чате сообщения о поднятых предметах"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:109
+#: src/gui/widgets/tabs/setup_visual.cpp:122
 msgid "Show pickup notifications as particle effects"
 msgstr "Показывать сообщения о поднятых предметах в виде эффектов"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:113
+#: src/gui/widgets/tabs/setup_visual.cpp:126
 msgid "Effects"
 msgstr "Эффекты"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:117
+#: src/gui/widgets/tabs/setup_visual.cpp:130
 msgid "Grab mouse and keyboard input"
 msgstr "Захватывать ввод с клавиатуры и мыши"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:122
+#: src/gui/widgets/tabs/setup_visual.cpp:135
 msgid "Blurring textures (OpenGL)"
 msgstr "Смазывать текстуры (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:126
+#: src/gui/widgets/tabs/setup_visual.cpp:139
 msgid "Gui opacity"
 msgstr "Непрозрачность интерфейса"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:131
+#: src/gui/widgets/tabs/setup_visual.cpp:144
 msgid "Overhead text"
 msgstr "Текст над головами"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:136
+#: src/gui/widgets/tabs/setup_visual.cpp:149
 msgid "Ambient FX"
 msgstr "Эффекты окружающей среды"
 
 #. TRANSLATORS: particle details
-#: src/gui/widgets/tabs/setup_visual.cpp:150
+#: src/gui/widgets/tabs/setup_visual.cpp:163
 msgid "max"
 msgstr "макс."
 
-#: src/gui/widgets/tabs/setup_visual.cpp:151
+#: src/gui/widgets/tabs/setup_visual.cpp:164
 msgid "Particle detail"
 msgstr "Детализация частиц"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:158
+#: src/gui/widgets/tabs/setup_visual.cpp:171
 msgid "Particle physics"
 msgstr "Физика частиц"
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:163
-#: src/gui/widgets/tabs/setup_visual.cpp:170
+#: src/gui/widgets/tabs/setup_visual.cpp:176
+#: src/gui/widgets/tabs/setup_visual.cpp:183
 msgid "Gamma"
 msgstr "Гамма"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:166
+#: src/gui/widgets/tabs/setup_visual.cpp:179
 msgid "Enable gamma control"
 msgstr "Включить гамма коррекцию"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:179
+#: src/gui/widgets/tabs/setup_visual.cpp:192
 msgid "Vsync"
 msgstr "Вертикальная синхронизация"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:184
+#: src/gui/widgets/tabs/setup_visual.cpp:197
 msgid "Center game window"
 msgstr "Центрировать игровое окно"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_visual.cpp:189
+#: src/gui/widgets/tabs/setup_visual.cpp:202
 msgid "Allow screensaver to run"
 msgstr "Разрешить запуск скринсейвера"
 
@@ -5357,7 +5378,7 @@ msgid "Whispering to %s: %s"
 msgstr "Вы прошептали %s: %s"
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1607
+#: src/gui/windows/chatwindow.cpp:1613
 #, c-format
 msgid "%s's pet"
 msgstr "животное %s'а"
@@ -6114,12 +6135,12 @@ msgid "Error retreiving server list!"
 msgstr "Не удалось получить список серверов!"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:638
+#: src/gui/windows/serverdialog.cpp:639
 msgid "requires a newer version"
 msgstr "требуется более новая версия"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:643
+#: src/gui/windows/serverdialog.cpp:644
 #, c-format
 msgid "requires v%s"
 msgstr "требуется v%s"
