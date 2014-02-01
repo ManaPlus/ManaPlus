@@ -84,7 +84,9 @@ class ModeListModel final : public gcn::ListModel
         int getIndexOf(const std::string &widthXHeightMode);
 
     private:
+#ifndef ANDROID
         void addCustomMode(const std::string &mode);
+#endif
 
         StringVect mVideoModes;
 };
@@ -130,6 +132,7 @@ ModeListModel::ModeListModel() :
 #endif
 }
 
+#ifndef ANDROID
 void ModeListModel::addCustomMode(const std::string &mode)
 {
     StringVectCIter it = mVideoModes.begin();
@@ -142,6 +145,7 @@ void ModeListModel::addCustomMode(const std::string &mode)
     }
     mVideoModes.push_back(mode);
 }
+#endif
 
 int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
 {

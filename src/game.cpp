@@ -524,7 +524,6 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
     }
 
     // Search for an unused screenshot name
-    std::stringstream filenameSuffix;
     std::stringstream filename;
     std::fstream testExists;
     bool found = false;

@@ -373,7 +373,9 @@ private:
 
     void accountLogin(LoginData *const data) const;
 
+#ifndef ANDROID
     void storeSafeParameters() const;
+#endif
 
     void backupConfig() const;
 

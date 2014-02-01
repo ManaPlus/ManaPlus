@@ -2361,6 +2361,7 @@ void Client::accountLogin(LoginData *const data) const
     serverConfig.setValue("remember", remember);
 }
 
+#ifndef ANDROID
 void Client::storeSafeParameters() const
 {
     bool tmpHwaccel;
@@ -2479,6 +2480,7 @@ void Client::storeSafeParameters() const
         config.setValue("screenheight", height);
     }
 }
+#endif
 
 void Client::initTradeFilter() const
 {
