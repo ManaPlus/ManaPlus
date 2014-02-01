@@ -1,3 +1,13 @@
+2014-02-01 New release 1.4.2.1
+fix: pet talk in trade tab is disabled.
+fix: screenshot directory editing.
+fix: paths into tools in OpenBSD and FreeBSD.
+add: show emote id in emotes.
+add: attack action to pets.
+add: /dumpmods command.
+add: commands for upload config and log into pastebin.
+add: screen scale in OpenGL modes.
+
 2014-01-18 New release 1.4.1.18
 fix: npc font option.
 fix: job bar showing in new installs.
