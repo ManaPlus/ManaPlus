@@ -225,5 +225,7 @@ void Setup_Visual::apply()
 {
     SetupTabScroll::apply();
     Client::applyGrabMode();
+#ifndef WIN32
     client->applyScale();
+#endif
 }
