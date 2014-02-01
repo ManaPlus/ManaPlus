@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-01-30 11:24+0300\n"
-"PO-Revision-Date: 2014-01-19 08:13+0000\n"
+"POT-Creation-Date: 2014-02-01 12:07+0300\n"
+"PO-Revision-Date: 2014-01-31 08:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/"
 "language/it/)\n"
@@ -544,7 +544,7 @@ msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1145 src/gui/widgets/tabs/setup_video.cpp:221
+#: src/client.cpp:1145 src/gui/widgets/tabs/setup_video.cpp:225
 msgid "Video"
 msgstr "Video"
 
@@ -667,7 +667,7 @@ msgstr "Addio, torna quando vuoi..."
 
 #. TRANSLATORS: directory creation error
 #: src/client.cpp:1997 src/client.cpp:2012 src/client.cpp:2057
-#: src/client.cpp:2073 src/client.cpp:2522 src/client.cpp:2530
+#: src/client.cpp:2073 src/client.cpp:2524 src/client.cpp:2532
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s non esiste e non può essere creato! Uscita in corso."
@@ -689,7 +689,7 @@ msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Errore: %s non esiste e non può essere creato! Ucita in corso."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2998
+#: src/client.cpp:3000
 msgid "Do you want to open support page?"
 msgstr ""
 
@@ -896,26 +896,25 @@ msgstr ""
 msgid "Environment variables dumped"
 msgstr ""
 
-#: src/commands.cpp:1340
+#: src/commands.cpp:1342
 msgid "Uploaded config into:"
 msgstr ""
 
-#: src/commands.cpp:1347
+#: src/commands.cpp:1349
 msgid "Uploaded server config into:"
 msgstr ""
 
-#: src/commands.cpp:1354
-#, fuzzy
+#: src/commands.cpp:1356
 msgid "Uploaded log into:"
-msgstr "Accesso duplicato"
+msgstr ""
 
 #. TRANSLATORS: dump command
-#: src/commands.cpp:1474 src/commands.cpp:1483
+#: src/commands.cpp:1476 src/commands.cpp:1485
 msgid "Resource images:"
 msgstr ""
 
 #. TRANSLATORS: dump command
-#: src/commands.cpp:1477 src/commands.cpp:1486
+#: src/commands.cpp:1479 src/commands.cpp:1488
 msgid "Resource orphaned images:"
 msgstr ""
 
@@ -953,23 +952,23 @@ msgid "Debug"
 msgstr "Debug"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:573
+#: src/game.cpp:572
 #, c-format
 msgid "Screenshot saved as %s"
 msgstr ""
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:583
+#: src/game.cpp:582
 msgid "Saving screenshot failed!"
 msgstr "Salvataggio immagine fallito!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:654
+#: src/game.cpp:653
 msgid "The connection to the server was lost."
 msgstr "La connessione al server è caduta."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:657
+#: src/game.cpp:656
 msgid "Network Error"
 msgstr "Errore di rete"
 
@@ -1083,7 +1082,7 @@ msgstr "Nascondi"
 #: src/gui/popups/popupmenu.cpp:226 src/gui/popups/popupmenu.cpp:247
 #: src/gui/popups/popupmenu.cpp:394 src/gui/popups/popupmenu.cpp:545
 #: src/gui/popups/popupmenu.cpp:704 src/gui/popups/popupmenu.cpp:785
-#: src/gui/setupactiondata.h:1918 src/gui/windows/botcheckerwindow.cpp:307
+#: src/gui/setupactiondata.h:1912 src/gui/windows/botcheckerwindow.cpp:307
 msgid "Move"
 msgstr "Movimento"
 
@@ -1195,7 +1194,7 @@ msgstr "Aggiungi nome alla chat"
 #: src/gui/popups/popupmenu.cpp:2330 src/gui/popups/popupmenu.cpp:2352
 #: src/gui/popups/popupmenu.cpp:2375 src/gui/popups/popupmenu.cpp:2402
 #: src/gui/popups/popupmenu.cpp:2419 src/gui/popups/popupmenu.cpp:2699
-#: src/gui/popups/popupmenu.cpp:2835 src/gui/setupactiondata.h:1803
+#: src/gui/popups/popupmenu.cpp:2835 src/gui/setupactiondata.h:1797
 #: src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/changeemaildialog.cpp:55
 #: src/gui/windows/changepassworddialog.cpp:57
@@ -1277,7 +1276,7 @@ msgstr "Muovi telecamera"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
-#: src/gui/popups/popupmenu.cpp:565 src/gui/setupactiondata.h:1926
+#: src/gui/popups/popupmenu.cpp:565 src/gui/setupactiondata.h:1920
 #: src/gui/windowmenu.cpp:148 src/gui/windows/inventorywindow.cpp:224
 #: src/gui/windows/outfitwindow.cpp:53
 msgid "Outfits"
@@ -1429,7 +1428,7 @@ msgstr "Aggiungi tutti"
 #. TRANSLATORS: setup button
 #: src/gui/popups/popupmenu.cpp:1893 src/gui/popups/popupmenu.cpp:2023
 #: src/gui/popups/popupmenu.cpp:2064 src/gui/windows/inventorywindow.cpp:254
-#: src/gui/windows/inventorywindow.cpp:780 src/gui/windows/setup.cpp:94
+#: src/gui/windows/inventorywindow.cpp:782 src/gui/windows/setup.cpp:94
 msgid "Store"
 msgstr "Magazzino"
 
@@ -1494,7 +1493,7 @@ msgstr "Ritira tutto"
 #. TRANSLATORS: skills dialog button
 #: src/gui/popups/popupmenu.cpp:1985 src/gui/popups/popupmenu.cpp:2763
 #: src/gui/windows/inventorywindow.cpp:205
-#: src/gui/windows/inventorywindow.cpp:691 src/gui/windows/skilldialog.cpp:290
+#: src/gui/windows/inventorywindow.cpp:693 src/gui/windows/skilldialog.cpp:290
 msgid "Use"
 msgstr "Usa"
 
@@ -1685,9 +1684,9 @@ msgstr ""
 #. TRANSLATORS: unequip item
 #. TRANSLATORS: equipment window button
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2748 src/gui/windows/equipmentwindow.cpp:68
+#: src/gui/popups/popupmenu.cpp:2748 src/gui/windows/equipmentwindow.cpp:66
 #: src/gui/windows/inventorywindow.cpp:207
-#: src/gui/windows/inventorywindow.cpp:680
+#: src/gui/windows/inventorywindow.cpp:682
 msgid "Unequip"
 msgstr "Togli"
 
@@ -1696,7 +1695,7 @@ msgstr "Togli"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window button
 #: src/gui/popups/popupmenu.cpp:2754 src/gui/windows/inventorywindow.cpp:203
-#: src/gui/windows/inventorywindow.cpp:685 src/gui/windows/outfitwindow.cpp:60
+#: src/gui/windows/inventorywindow.cpp:687 src/gui/windows/outfitwindow.cpp:60
 msgid "Equip"
 msgstr "Equipaggia"
 
@@ -1704,7 +1703,7 @@ msgstr "Equipaggia"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2774 src/gui/windows/inventorywindow.cpp:220
-#: src/gui/windows/inventorywindow.cpp:788
+#: src/gui/windows/inventorywindow.cpp:790
 msgid "Drop..."
 msgstr "Lascia..."
 
@@ -1719,7 +1718,7 @@ msgstr "Lascia tutto"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2783 src/gui/windowmenu.cpp:136
-#: src/gui/windows/inventorywindow.cpp:793
+#: src/gui/windows/inventorywindow.cpp:795
 msgid "Drop"
 msgstr "Lascia"
 
@@ -1808,8 +1807,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:99
-msgid "Stop Attack"
-msgstr "Ferma attacco"
+msgid "Stop Attack / Modifier key"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:105
@@ -2324,100 +2323,95 @@ msgstr "Cambia Visuale"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1371
-msgid "Modifier key"
-msgstr ""
-
-#. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1377
 msgid "Show onscreen keyboard"
 msgstr "Mostra tastiera su schermo"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1392
+#: src/gui/setupactiondata.h:1386
 msgid "Move Keys"
 msgstr "Tasti Movimento"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1398 src/gui/setupactiondata.h:1737
+#: src/gui/setupactiondata.h:1392 src/gui/setupactiondata.h:1731
 msgid "Move Up"
 msgstr "Muoviti verso l'alto"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1404 src/gui/setupactiondata.h:1743
+#: src/gui/setupactiondata.h:1398 src/gui/setupactiondata.h:1737
 msgid "Move Down"
 msgstr "Muoviti verso il basso"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1410 src/gui/setupactiondata.h:1749
+#: src/gui/setupactiondata.h:1404 src/gui/setupactiondata.h:1743
 msgid "Move Left"
 msgstr "Muoviti verso sinistra"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1416 src/gui/setupactiondata.h:1755
+#: src/gui/setupactiondata.h:1410 src/gui/setupactiondata.h:1749
 msgid "Move Right"
 msgstr "Muoviti verso destra"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1422
+#: src/gui/setupactiondata.h:1416
 msgid "Move Forward"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1428
+#: src/gui/setupactiondata.h:1422
 msgid "Move to navigation point shortcuts"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1434 src/gui/setupactiondata.h:1440
-#: src/gui/setupactiondata.h:1446 src/gui/setupactiondata.h:1452
-#: src/gui/setupactiondata.h:1458 src/gui/setupactiondata.h:1464
-#: src/gui/setupactiondata.h:1470 src/gui/setupactiondata.h:1476
-#: src/gui/setupactiondata.h:1482 src/gui/setupactiondata.h:1488
-#: src/gui/setupactiondata.h:1494 src/gui/setupactiondata.h:1500
-#: src/gui/setupactiondata.h:1506 src/gui/setupactiondata.h:1512
-#: src/gui/setupactiondata.h:1518 src/gui/setupactiondata.h:1524
-#: src/gui/setupactiondata.h:1530 src/gui/setupactiondata.h:1536
-#: src/gui/setupactiondata.h:1542 src/gui/setupactiondata.h:1548
-#: src/gui/setupactiondata.h:1554 src/gui/setupactiondata.h:1560
-#: src/gui/setupactiondata.h:1566 src/gui/setupactiondata.h:1572
-#: src/gui/setupactiondata.h:1578 src/gui/setupactiondata.h:1584
-#: src/gui/setupactiondata.h:1590 src/gui/setupactiondata.h:1596
-#: src/gui/setupactiondata.h:1602 src/gui/setupactiondata.h:1608
-#: src/gui/setupactiondata.h:1614 src/gui/setupactiondata.h:1620
-#: src/gui/setupactiondata.h:1626 src/gui/setupactiondata.h:1632
-#: src/gui/setupactiondata.h:1638 src/gui/setupactiondata.h:1644
-#: src/gui/setupactiondata.h:1650 src/gui/setupactiondata.h:1656
-#: src/gui/setupactiondata.h:1662 src/gui/setupactiondata.h:1668
-#: src/gui/setupactiondata.h:1674 src/gui/setupactiondata.h:1680
-#: src/gui/setupactiondata.h:1686 src/gui/setupactiondata.h:1692
-#: src/gui/setupactiondata.h:1698 src/gui/setupactiondata.h:1704
-#: src/gui/setupactiondata.h:1710 src/gui/setupactiondata.h:1716
+#: src/gui/setupactiondata.h:1428 src/gui/setupactiondata.h:1434
+#: src/gui/setupactiondata.h:1440 src/gui/setupactiondata.h:1446
+#: src/gui/setupactiondata.h:1452 src/gui/setupactiondata.h:1458
+#: src/gui/setupactiondata.h:1464 src/gui/setupactiondata.h:1470
+#: src/gui/setupactiondata.h:1476 src/gui/setupactiondata.h:1482
+#: src/gui/setupactiondata.h:1488 src/gui/setupactiondata.h:1494
+#: src/gui/setupactiondata.h:1500 src/gui/setupactiondata.h:1506
+#: src/gui/setupactiondata.h:1512 src/gui/setupactiondata.h:1518
+#: src/gui/setupactiondata.h:1524 src/gui/setupactiondata.h:1530
+#: src/gui/setupactiondata.h:1536 src/gui/setupactiondata.h:1542
+#: src/gui/setupactiondata.h:1548 src/gui/setupactiondata.h:1554
+#: src/gui/setupactiondata.h:1560 src/gui/setupactiondata.h:1566
+#: src/gui/setupactiondata.h:1572 src/gui/setupactiondata.h:1578
+#: src/gui/setupactiondata.h:1584 src/gui/setupactiondata.h:1590
+#: src/gui/setupactiondata.h:1596 src/gui/setupactiondata.h:1602
+#: src/gui/setupactiondata.h:1608 src/gui/setupactiondata.h:1614
+#: src/gui/setupactiondata.h:1620 src/gui/setupactiondata.h:1626
+#: src/gui/setupactiondata.h:1632 src/gui/setupactiondata.h:1638
+#: src/gui/setupactiondata.h:1644 src/gui/setupactiondata.h:1650
+#: src/gui/setupactiondata.h:1656 src/gui/setupactiondata.h:1662
+#: src/gui/setupactiondata.h:1668 src/gui/setupactiondata.h:1674
+#: src/gui/setupactiondata.h:1680 src/gui/setupactiondata.h:1686
+#: src/gui/setupactiondata.h:1692 src/gui/setupactiondata.h:1698
+#: src/gui/setupactiondata.h:1704 src/gui/setupactiondata.h:1710
 #, c-format
 msgid "Move to point Shortcut %d"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1731
+#: src/gui/setupactiondata.h:1725
 msgid "Move & selection"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1761
+#: src/gui/setupactiondata.h:1755
 msgid "Move Home"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1767
+#: src/gui/setupactiondata.h:1761
 msgid "Move End"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1773
+#: src/gui/setupactiondata.h:1767
 msgid "Page up"
 msgstr "Page up"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1779
+#: src/gui/setupactiondata.h:1773
 msgid "Page down"
 msgstr "Page down"
 
@@ -2426,7 +2420,7 @@ msgstr "Page down"
 #. TRANSLATORS: settings group
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
-#: src/gui/setupactiondata.h:1785 src/gui/setupactiondata.h:1930
+#: src/gui/setupactiondata.h:1779 src/gui/setupactiondata.h:1924
 #: src/gui/widgets/tabs/setup_audio.cpp:159
 #: src/gui/widgets/tabs/setup_chat.cpp:180
 #: src/gui/widgets/tabs/setup_other.cpp:329
@@ -2437,12 +2431,12 @@ msgid "Other"
 msgstr "Altro"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1791
+#: src/gui/setupactiondata.h:1785
 msgid "Select"
 msgstr "Seleziona"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1797
+#: src/gui/setupactiondata.h:1791
 msgid "Select2"
 msgstr ""
 
@@ -2452,7 +2446,7 @@ msgstr ""
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: command editor button
-#: src/gui/setupactiondata.h:1809 src/gui/widgets/tabs/setup_relations.cpp:259
+#: src/gui/setupactiondata.h:1803 src/gui/widgets/tabs/setup_relations.cpp:259
 #: src/gui/windows/charselectdialog.cpp:106
 #: src/gui/windows/serverdialog.cpp:262 src/gui/windows/shopwindow.cpp:93
 #: src/gui/windows/shopwindow.cpp:100
@@ -2461,45 +2455,45 @@ msgid "Delete"
 msgstr "Elimina"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1815
+#: src/gui/setupactiondata.h:1809
 msgid "Backspace"
 msgstr "Backspace"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1821
+#: src/gui/setupactiondata.h:1815
 msgid "Insert"
 msgstr "Insert"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1827
+#: src/gui/setupactiondata.h:1821
 msgid "Tab"
 msgstr "Tab"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1833
+#: src/gui/setupactiondata.h:1827
 msgid "Mod"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1839
+#: src/gui/setupactiondata.h:1833
 msgid "Ctrl"
 msgstr ""
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:1916
+#: src/gui/setupactiondata.h:1910
 msgid "Basic"
 msgstr "Base"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:1920 src/gui/windowmenu.cpp:128
+#: src/gui/setupactiondata.h:1914 src/gui/windowmenu.cpp:128
 msgid "Shortcuts"
 msgstr "Shortcuts"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings group
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:1922 src/gui/widgets/tabs/setup_other.cpp:307
+#: src/gui/setupactiondata.h:1916 src/gui/widgets/tabs/setup_other.cpp:307
 #: src/gui/windowmenu.cpp:161
 msgid "Windows"
 msgstr "Finestre"
@@ -2507,7 +2501,7 @@ msgstr "Finestre"
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: emotes window name
 #. TRANSLATORS: emotes tab name
-#: src/gui/setupactiondata.h:1924 src/gui/windows/emotewindow.cpp:49
+#: src/gui/setupactiondata.h:1918 src/gui/windows/emotewindow.cpp:49
 #: src/gui/windows/emotewindow.cpp:107
 msgid "Emotes"
 msgstr "Faccine"
@@ -2515,13 +2509,13 @@ msgstr "Faccine"
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
-#: src/gui/setupactiondata.h:1928 src/gui/widgets/tabs/setup_chat.cpp:41
+#: src/gui/setupactiondata.h:1922 src/gui/widgets/tabs/setup_chat.cpp:41
 #: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:203
 msgid "Chat"
 msgstr "Chat"
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:1932
+#: src/gui/setupactiondata.h:1926
 msgid "Gui"
 msgstr ""
 
@@ -2739,7 +2733,7 @@ msgstr ""
 
 #. TRANSLATORS: status window label
 #: src/gui/widgets/characterdisplay.cpp:136
-#: src/gui/windows/inventorywindow.cpp:598
+#: src/gui/windows/inventorywindow.cpp:600
 #: src/gui/windows/statuswindow.cpp:149 src/gui/windows/statuswindow.cpp:312
 #: src/gui/windows/statuswindow.cpp:365
 #, c-format
@@ -4384,8 +4378,8 @@ msgstr "Tema cambiato"
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_theme.cpp:517
-#: src/gui/widgets/tabs/setup_video.cpp:495
-#: src/gui/widgets/tabs/setup_video.cpp:504
+#: src/gui/widgets/tabs/setup_video.cpp:499
+#: src/gui/widgets/tabs/setup_video.cpp:508
 msgid "Restart your client for the change to take effect."
 msgstr "Per applicare le modifiche, è necessario riavviare il client."
 
@@ -4472,59 +4466,59 @@ msgid "Button %u action"
 msgstr ""
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:186
+#: src/gui/widgets/tabs/setup_video.cpp:190
 msgid "Full screen"
 msgstr "Schermo intero"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:189
+#: src/gui/widgets/tabs/setup_video.cpp:193
 msgid "FPS limit:"
 msgstr "Limite FPS:"
 
 #. TRANSLATORS: video settings label
-#: src/gui/widgets/tabs/setup_video.cpp:194
-#: src/gui/widgets/tabs/setup_video.cpp:236
-#: src/gui/widgets/tabs/setup_video.cpp:425
-#: src/gui/widgets/tabs/setup_video.cpp:553
+#: src/gui/widgets/tabs/setup_video.cpp:198
+#: src/gui/widgets/tabs/setup_video.cpp:240
+#: src/gui/widgets/tabs/setup_video.cpp:429
+#: src/gui/widgets/tabs/setup_video.cpp:557
 msgid "Alt FPS limit: "
 msgstr "Limite Alt FPS:  "
 
 #. TRANSLATORS: video settings button
-#: src/gui/widgets/tabs/setup_video.cpp:197
+#: src/gui/widgets/tabs/setup_video.cpp:201
 msgid "Detect best mode"
 msgstr "Trova modalita' migliore"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:206
+#: src/gui/widgets/tabs/setup_video.cpp:210
 msgid "Show cursor"
 msgstr "Mostra cursore"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:209
+#: src/gui/widgets/tabs/setup_video.cpp:213
 msgid "Custom cursor"
 msgstr "Cursore personalizzato"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:213
+#: src/gui/widgets/tabs/setup_video.cpp:217
 msgid "Enable resize"
 msgstr "Permetti ridimensiona"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:216
+#: src/gui/widgets/tabs/setup_video.cpp:220
 msgid "No frame"
 msgstr ""
 
 #. TRANSLATORS: video settings label
-#: src/gui/widgets/tabs/setup_video.cpp:233
 #: src/gui/widgets/tabs/setup_video.cpp:237
-#: src/gui/widgets/tabs/setup_video.cpp:423
-#: src/gui/widgets/tabs/setup_video.cpp:537
-#: src/gui/widgets/tabs/setup_video.cpp:550
+#: src/gui/widgets/tabs/setup_video.cpp:241
+#: src/gui/widgets/tabs/setup_video.cpp:427
+#: src/gui/widgets/tabs/setup_video.cpp:541
+#: src/gui/widgets/tabs/setup_video.cpp:554
 msgid "None"
 msgstr "Nessuno"
 
 #. TRANSLATORS: video error message
-#: src/gui/widgets/tabs/setup_video.cpp:345
+#: src/gui/widgets/tabs/setup_video.cpp:349
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
@@ -4532,7 +4526,7 @@ msgstr ""
 "precedente è fallito!"
 
 #. TRANSLATORS: video error message
-#: src/gui/widgets/tabs/setup_video.cpp:352
+#: src/gui/widgets/tabs/setup_video.cpp:356
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
@@ -4540,42 +4534,42 @@ msgstr ""
 "modalità precedente è fallito!"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:364
+#: src/gui/widgets/tabs/setup_video.cpp:368
 msgid "Switching to Full Screen"
 msgstr "Cambiamento a schermo intero"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:366
+#: src/gui/widgets/tabs/setup_video.cpp:370
 msgid "Restart needed for changes to take effect."
 msgstr "Riavvio necessario affinchè i cambiamenti abbiano effetto."
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:384
+#: src/gui/widgets/tabs/setup_video.cpp:388
 msgid "Changing to OpenGL"
 msgstr "Passa a OpenGL"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:386
+#: src/gui/widgets/tabs/setup_video.cpp:390
 msgid "Applying change to OpenGL requires restart."
 msgstr "Riavvia per passare a OpenGL."
 
 #. TRANSLATORS: resolution question dialog
-#: src/gui/widgets/tabs/setup_video.cpp:464
+#: src/gui/widgets/tabs/setup_video.cpp:468
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Risoluzione scelta (esempio 1024x768)"
 
 #. TRANSLATORS: resolution question dialog
-#: src/gui/widgets/tabs/setup_video.cpp:466
+#: src/gui/widgets/tabs/setup_video.cpp:470
 msgid "Enter new resolution:                "
 msgstr "Nuova risoluzione:                                         "
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:493
-#: src/gui/widgets/tabs/setup_video.cpp:502
+#: src/gui/widgets/tabs/setup_video.cpp:497
+#: src/gui/widgets/tabs/setup_video.cpp:506
 msgid "Screen Resolution Changed"
 msgstr "RIsoluzione schermo cambiata"
 
-#: src/gui/widgets/tabs/setup_video.cpp:496
+#: src/gui/widgets/tabs/setup_video.cpp:500
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Alcune finestre potrebbero essere spostate per addattarsi alla risoluzione "
@@ -4844,7 +4838,7 @@ msgstr "EQU"
 
 #. TRANSLATORS: equipment window name
 #. TRANSLATORS: inventory button
-#: src/gui/windowmenu.cpp:97 src/gui/windows/equipmentwindow.cpp:61
+#: src/gui/windowmenu.cpp:97 src/gui/windows/equipmentwindow.cpp:59
 #: src/gui/windows/inventorywindow.cpp:228
 msgid "Equipment"
 msgstr "Equipaggiamento"
@@ -8020,3 +8014,6 @@ msgstr "Oggetto sconosciuto"
 #: src/resources/db/petdb.cpp:99
 msgid "pet"
 msgstr ""
+
+#~ msgid "Stop Attack"
+#~ msgstr "Ferma attacco"
