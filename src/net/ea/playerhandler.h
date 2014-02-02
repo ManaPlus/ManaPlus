@@ -53,23 +53,23 @@ class PlayerHandler : public Net::PlayerHandler
 
         int getAttackLocation() const override final A_WARN_UNUSED;
 
-        void processWalkResponse(Net::MessageIn &msg) const;
+        static void processWalkResponse(Net::MessageIn &msg);
 
-        void processPlayerWarp(Net::MessageIn &msg) const;
+        static void processPlayerWarp(Net::MessageIn &msg);
 
-        void processPlayerStatUpdate1(Net::MessageIn &msg) const;
+        static void processPlayerStatUpdate1(Net::MessageIn &msg);
 
-        void processPlayerStatUpdate2(Net::MessageIn &msg) const;
+        static void processPlayerStatUpdate2(Net::MessageIn &msg);
 
-        void processPlayerStatUpdate3(Net::MessageIn &msg) const;
+        static void processPlayerStatUpdate3(Net::MessageIn &msg);
 
-        void processPlayerStatUpdate4(Net::MessageIn &msg) const;
+        static void processPlayerStatUpdate4(Net::MessageIn &msg);
 
-        void processPlayerStatUpdate5(Net::MessageIn &msg) const;
+        static void processPlayerStatUpdate5(Net::MessageIn &msg);
 
-        void processPlayerStatUpdate6(Net::MessageIn &msg) const;
+        static void processPlayerStatUpdate6(Net::MessageIn &msg);
 
-        void processPlayerArrowMessage(Net::MessageIn &msg) const;
+        static void processPlayerArrowMessage(Net::MessageIn &msg);
 };
 
 }  // namespace Ea

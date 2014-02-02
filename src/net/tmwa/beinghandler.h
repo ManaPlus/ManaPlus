@@ -47,12 +47,12 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void processBeingChangeLook(Net::MessageIn &msg,
                                     const bool look2) const;
 
-        void processNameResponse2(Net::MessageIn &msg) const;
+        static void processNameResponse2(Net::MessageIn &msg);
 
         void processPlayerMoveUpdate(Net::MessageIn &msg,
                                      const int type) const;
 
-        void processBeingMove3(Net::MessageIn &msg) const;
+        static void processBeingMove3(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

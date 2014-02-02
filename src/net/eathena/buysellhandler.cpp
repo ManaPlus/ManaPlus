@@ -107,7 +107,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
     mBuyDialog->sort();
 }
 
-void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg) const
+void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg)
 {
     switch (msg.readInt8())
     {

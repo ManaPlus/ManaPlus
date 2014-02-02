@@ -61,7 +61,7 @@ void QuestHandler::handleMessage(Net::MessageIn &msg)
     BLOCK_END("QuestHandler::handleMessage")
 }
 
-void QuestHandler::processSetQuestVar(Net::MessageIn &msg) const
+void QuestHandler::processSetQuestVar(Net::MessageIn &msg)
 {
     const int var = msg.readInt16();    // variable
     const int val = msg.readInt32();    // value
@@ -77,7 +77,7 @@ void QuestHandler::processSetQuestVar(Net::MessageIn &msg) const
     }
 }
 
-void QuestHandler::processPlayerQuests(Net::MessageIn &msg) const
+void QuestHandler::processPlayerQuests(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16() - 4) / 6;
     for (int f = 0; f < count; f ++)

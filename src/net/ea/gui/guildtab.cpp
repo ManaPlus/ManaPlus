@@ -127,15 +127,8 @@ void GuildTab::handleInput(const std::string &msg)
     if (!taGuild)
         return;
 
-    if (chatWindow)
-    {
-        Net::getGuildHandler()->chat(taGuild->getId(),
-            chatWindow->doReplace(msg));
-    }
-    else
-    {
-        Net::getGuildHandler()->chat(taGuild->getId(), msg);
-    }
+    Net::getGuildHandler()->chat(taGuild->getId(),
+        ChatWindow::doReplace(msg));
 }
 
 void GuildTab::showHelp()

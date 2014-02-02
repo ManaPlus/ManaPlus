@@ -223,7 +223,7 @@ void PlayerHandler::updateStatus(const uint8_t status) const
     outMsg.writeInt8(0);
 }
 
-void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
 {
     for (int f = 0; f < 27; f ++)
     {
@@ -233,7 +233,7 @@ void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg) const
     }
 }
 
-void PlayerHandler::processPlayerShowEquip(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerShowEquip(Net::MessageIn &msg)
 {
     msg.readInt8();  // show equip
 }

@@ -64,10 +64,7 @@ PartyTab::~PartyTab()
 
 void PartyTab::handleInput(const std::string &msg)
 {
-    if (chatWindow)
-        Net::getPartyHandler()->chat(chatWindow->doReplace(msg));
-    else
-        Net::getPartyHandler()->chat(msg);
+    Net::getPartyHandler()->chat(ChatWindow::doReplace(msg));
 }
 
 void PartyTab::showHelp()

@@ -182,7 +182,7 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg) const
     }
 }
 
-void TradeHandler::processTradeItemAdd(Net::MessageIn &msg) const
+void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
 {
     const int amount = msg.readInt32();
     const int type = msg.readInt16();
@@ -205,7 +205,7 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg) const
     }
 }
 
-void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg) const
+void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
 {
     // Trade: New Item add response (was 0x00ea, now 01b1)
     const int index = msg.readInt16() - INVENTORY_OFFSET;
@@ -255,7 +255,7 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg) const
     }
 }
 
-void TradeHandler::processTradeOk(Net::MessageIn &msg) const
+void TradeHandler::processTradeOk(Net::MessageIn &msg)
 {
     // 0 means ok from myself, 1 means ok from other;
     if (tradeWindow)
@@ -264,7 +264,7 @@ void TradeHandler::processTradeOk(Net::MessageIn &msg) const
         msg.readInt8();
 }
 
-void TradeHandler::processTradeCancel(Net::MessageIn &msg A_UNUSED) const
+void TradeHandler::processTradeCancel(Net::MessageIn &msg A_UNUSED)
 {
     NotifyManager::notify(NotifyManager::TRADE_CANCELLED);
     if (tradeWindow)
@@ -275,7 +275,7 @@ void TradeHandler::processTradeCancel(Net::MessageIn &msg A_UNUSED) const
     PlayerInfo::setTrading(false);
 }
 
-void TradeHandler::processTradeComplete(Net::MessageIn &msg A_UNUSED) const
+void TradeHandler::processTradeComplete(Net::MessageIn &msg A_UNUSED)
 {
     NotifyManager::notify(NotifyManager::TRADE_COMPLETE);
     if (tradeWindow)

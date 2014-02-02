@@ -389,11 +389,10 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
     }
 }
 
-void BeingHandler::processNameResponse2(Net::MessageIn &msg) const
+void BeingHandler::processNameResponse2(Net::MessageIn &msg)
 {
     if (!actorManager || !player_node)
         return;
-
 
     const int len = msg.readInt16();
     const int beingId = msg.readInt32();
@@ -653,7 +652,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
         dstBeing->setMoveTime();
 }
 
-void BeingHandler::processBeingMove3(Net::MessageIn &msg) const
+void BeingHandler::processBeingMove3(Net::MessageIn &msg)
 {
     if (serverVersion < 10)
         return;

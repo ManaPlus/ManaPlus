@@ -37,7 +37,7 @@ ItemHandler::~ItemHandler()
 {
 }
 
-void ItemHandler::processItemVisible(Net::MessageIn &msg) const
+void ItemHandler::processItemVisible(Net::MessageIn &msg)
 {
     const int id = msg.readInt32();
     const int itemId = msg.readInt16();
@@ -55,7 +55,7 @@ void ItemHandler::processItemVisible(Net::MessageIn &msg) const
     }
 }
 
-void ItemHandler::processItemDropped(Net::MessageIn &msg) const
+void ItemHandler::processItemDropped(Net::MessageIn &msg)
 {
     const int id = msg.readInt32();
     const int itemId = msg.readInt16();
@@ -73,7 +73,7 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg) const
     }
 }
 
-void ItemHandler::processItemRemove(Net::MessageIn &msg) const
+void ItemHandler::processItemRemove(Net::MessageIn &msg)
 {
     if (actorManager)
     {

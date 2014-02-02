@@ -37,11 +37,11 @@ class ItemHandler
 
         virtual ~ItemHandler();
 
-        void processItemVisible(Net::MessageIn &msg) const;
+        static void processItemVisible(Net::MessageIn &msg);
 
-        void processItemRemove(Net::MessageIn &msg) const;
+        static void processItemRemove(Net::MessageIn &msg);
 
-        void processItemDropped(Net::MessageIn &msg) const;
+        static void processItemDropped(Net::MessageIn &msg);
 };
 
 }  // namespace Ea

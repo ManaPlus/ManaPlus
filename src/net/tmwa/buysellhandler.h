@@ -41,7 +41,7 @@ class BuySellHandler final : public MessageHandler, public Ea::BuySellHandler
 
         void processNpcBuy(Net::MessageIn &msg);
 
-        void processNpcSellResponse(Net::MessageIn &msg) const;
+        static void processNpcSellResponse(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

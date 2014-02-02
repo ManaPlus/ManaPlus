@@ -71,7 +71,7 @@ SkillHandler::SkillHandler()
 {
 }
 
-void SkillHandler::processPlayerSkills(Net::MessageIn &msg) const
+void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
 {
     msg.readInt16();  // length
     const int skillCount = (msg.getLength() - 4) / 37;
@@ -101,7 +101,7 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg) const
         skillDialog->playUpdateEffect(updateSkill);
 }
 
-void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg) const
+void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg)
 {
     const int skillId = msg.readInt16();
     const int level = msg.readInt16();
@@ -119,7 +119,7 @@ void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg) const
     }
 }
 
-void SkillHandler::processSkillFailed(Net::MessageIn &msg) const
+void SkillHandler::processSkillFailed(Net::MessageIn &msg)
 {
     // Action failed (ex. sit because you have not reached the
     // right level)

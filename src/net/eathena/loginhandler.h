@@ -66,7 +66,7 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
         void processServerVersion(Net::MessageIn &msg);
 
-        void requestUpdateHosts() const;
+        static void requestUpdateHosts();
 
         void processUpdateHost2(Net::MessageIn &msg) const;
 

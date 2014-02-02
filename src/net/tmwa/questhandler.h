@@ -35,9 +35,9 @@ class QuestHandler final : public MessageHandler
 
         void handleMessage(Net::MessageIn &msg) override final;
 
-        void processSetQuestVar(Net::MessageIn &msg) const;
+        static void processSetQuestVar(Net::MessageIn &msg);
 
-        void processPlayerQuests(Net::MessageIn &msg) const;
+        static void processPlayerQuests(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

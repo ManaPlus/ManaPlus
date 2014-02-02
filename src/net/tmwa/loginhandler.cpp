@@ -178,7 +178,7 @@ ServerInfo *LoginHandler::getCharServer() const
     return &charServer;
 }
 
-void LoginHandler::requestUpdateHosts() const
+void LoginHandler::requestUpdateHosts()
 {
     MessageOut outMsg(CMSG_SEND_CLIENT_INFO);
     outMsg.writeInt8(CLIENT_PROTOCOL_VERSION);

@@ -180,11 +180,11 @@ class InventoryHandler : public Net::InventoryHandler
 
         void processPlayerInventoryAdd(Net::MessageIn &msg);
 
-        void processPlayerInventoryRemove(Net::MessageIn &msg) const;
+        static void processPlayerInventoryRemove(Net::MessageIn &msg);
 
-        void processPlayerInventoryUse(Net::MessageIn &msg) const;
+        static void processPlayerInventoryUse(Net::MessageIn &msg);
 
-        void processItemUseResponse(Net::MessageIn &msg) const;
+        static void processItemUseResponse(Net::MessageIn &msg);
 
         void processPlayerStorageStatus(Net::MessageIn &msg);
 

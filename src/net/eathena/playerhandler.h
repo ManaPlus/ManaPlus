@@ -53,8 +53,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         void changeAction(const Being::Action &action) const override final;
         void updateStatus(const uint8_t status) const override final;
 
-        void processPlayerShortcuts(Net::MessageIn &msg) const;
-        void processPlayerShowEquip(Net::MessageIn &msg) const;
+        static void processPlayerShortcuts(Net::MessageIn &msg);
+        static void processPlayerShowEquip(Net::MessageIn &msg);
 
         void requestOnlineList() const override final;
         void respawn() const override final;

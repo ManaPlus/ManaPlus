@@ -172,7 +172,7 @@ void GameHandler::disconnect2() const
     MessageOut outMsg(CMSG_CLIENT_DISCONNECT);
 }
 
-void GameHandler::processMapCharId(Net::MessageIn &msg) const
+void GameHandler::processMapCharId(Net::MessageIn &msg)
 {
     msg.readInt32();  // char id
 }

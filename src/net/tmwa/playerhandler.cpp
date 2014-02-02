@@ -233,7 +233,7 @@ void PlayerHandler::requestOnlineList() const
     MessageOut outMsg(CMSG_ONLINE_LIST);
 }
 
-void PlayerHandler::processOnlineList(Net::MessageIn &msg) const
+void PlayerHandler::processOnlineList(Net::MessageIn &msg)
 {
     if (!whoIsOnline)
         return;
@@ -309,7 +309,7 @@ void PlayerHandler::updateStatus(const uint8_t status) const
     outMsg.writeInt8(0);
 }
 
-void PlayerHandler::processMapMask(Net::MessageIn &msg) const
+void PlayerHandler::processMapMask(Net::MessageIn &msg)
 {
     const int mask = msg.readInt32();
     msg.readInt32();  // unused
@@ -318,7 +318,7 @@ void PlayerHandler::processMapMask(Net::MessageIn &msg) const
         map->setMask(mask);
 }
 
-void PlayerHandler::processMapMusic(Net::MessageIn &msg) const
+void PlayerHandler::processMapMusic(Net::MessageIn &msg)
 {
     const int size = msg.readInt16() - 5;
     const std::string music = msg.readString(size);

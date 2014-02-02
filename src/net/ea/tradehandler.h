@@ -43,15 +43,15 @@ class TradeHandler : public Net::TradeHandler
 
         void processTradeResponse(Net::MessageIn &msg) const;
 
-        void processTradeItemAdd(Net::MessageIn &msg) const;
+        static void processTradeItemAdd(Net::MessageIn &msg);
 
-        void processTradeItemAddResponse(Net::MessageIn &msg) const;
+        static void processTradeItemAddResponse(Net::MessageIn &msg);
 
-        void processTradeOk(Net::MessageIn &msg) const;
+        static void processTradeOk(Net::MessageIn &msg);
 
-        void processTradeCancel(Net::MessageIn &msg) const;
+        static void processTradeCancel(Net::MessageIn &msg);
 
-        void processTradeComplete(Net::MessageIn &msg) const;
+        static void processTradeComplete(Net::MessageIn &msg);
 };
 
 }  // namespace Ea

@@ -380,7 +380,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
     }
 }
 
-void BeingHandler::processNameResponse2(Net::MessageIn &msg) const
+void BeingHandler::processNameResponse2(Net::MessageIn &msg)
 {
     if (!actorManager || !player_node)
         return;

@@ -242,14 +242,14 @@ int NpcHandler::getNpc(Net::MessageIn &msg, const bool haveLength)
 }
 
 void NpcHandler::processNpcCutin(Net::MessageIn &msg A_UNUSED,
-                                 const int npcId A_UNUSED) const
+                                 const int npcId A_UNUSED)
 {
     msg.readString(64);  // image name
     msg.readInt8();      // type
 }
 
 void NpcHandler::processNpcViewPoint(Net::MessageIn &msg A_UNUSED,
-                                     const int npcId A_UNUSED) const
+                                     const int npcId A_UNUSED)
 {
     msg.readInt32();  // type
     msg.readInt32();  // x

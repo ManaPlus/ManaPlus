@@ -124,7 +124,7 @@ Vector PlayerHandler::getDefaultWalkSpeed() const
     return Vector(150, 150, 0);
 }
 
-void PlayerHandler::processWalkResponse(Net::MessageIn &msg) const
+void PlayerHandler::processWalkResponse(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processWalkResponse")
     /*
@@ -140,7 +140,7 @@ void PlayerHandler::processWalkResponse(Net::MessageIn &msg) const
     BLOCK_END("PlayerHandler::processWalkResponse")
 }
 
-void PlayerHandler::processPlayerWarp(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerWarp")
     std::string mapPath = msg.readString(16);
@@ -216,7 +216,7 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg) const
     BLOCK_END("PlayerHandler::processPlayerWarp")
 }
 
-void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate1")
     const int type = msg.readInt16();
@@ -405,7 +405,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg) const
     BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
 }
 
-void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate2")
     const int type = msg.readInt16();
@@ -450,7 +450,7 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg) const
     BLOCK_END("PlayerHandler::processPlayerStatUpdate2")
 }
 
-void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate3")
     const int type = msg.readInt32();
@@ -464,7 +464,7 @@ void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg) const
     BLOCK_END("PlayerHandler::processPlayerStatUpdate3")
 }
 
-void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate4")
     const int type = msg.readInt16();
@@ -484,7 +484,7 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg) const
     BLOCK_END("PlayerHandler::processPlayerStatUpdate4")
 }
 
-void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate5")
     PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, msg.readInt16());
@@ -558,7 +558,7 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg) const
     BLOCK_END("PlayerHandler::processPlayerStatUpdate5")
 }
 
-void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate6")
     const int type = msg.readInt16();
@@ -593,7 +593,7 @@ void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg) const
     BLOCK_END("PlayerHandler::processPlayerStatUpdate6")
 }
 
-void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg) const
+void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerArrowMessage")
     const int type = msg.readInt16();

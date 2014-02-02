@@ -337,7 +337,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     }
 }
 
-void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg) const
+void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg)
 {
     Inventory *const inventory = player_node
         ? PlayerInfo::getInventory() : nullptr;
@@ -357,7 +357,7 @@ void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg) const
     }
 }
 
-void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg) const
+void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg)
 {
     Inventory *const inventory = player_node
         ? PlayerInfo::getInventory() : nullptr;
@@ -380,7 +380,7 @@ void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg) const
     }
 }
 
-void InventoryHandler::processItemUseResponse(Net::MessageIn &msg) const
+void InventoryHandler::processItemUseResponse(Net::MessageIn &msg)
 {
     Inventory *const inventory = player_node
         ? PlayerInfo::getInventory() : nullptr;
