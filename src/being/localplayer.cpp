@@ -3229,7 +3229,7 @@ void LocalPlayer::specialMove(const unsigned char direction)
     }
 }
 
-void LocalPlayer::debugMsg(const std::string &str) const
+void LocalPlayer::debugMsg(const std::string &str)
 {
     if (debugChatTab)
         debugChatTab->chatLog(str);
@@ -4317,7 +4317,7 @@ bool LocalPlayer::checAttackPermissions(const Being *const target) const
 
 const char *LocalPlayer::getVarItem(const char *const *const arr,
                                     const unsigned index,
-                                    const unsigned sz) const
+                                    const unsigned sz)
 {
     if (index < sz)
         return arr[index];

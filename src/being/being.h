@@ -1025,9 +1025,10 @@ class Being : public ActorSprite, public ConfigListener
         int searchSlotValue(const std::vector<int> &slotRemap,
                             const int val) const A_WARN_UNUSED;
 
-        void searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
-                                std::vector<int> &slotRemap,
-                                const int val) const;
+        static void searchSlotValueItr(std::vector<int>::iterator &it,
+                                       int &idx,
+                                       std::vector<int> &slotRemap,
+                                       const int val);
 
         void dumpSprites() const;
 

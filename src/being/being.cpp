@@ -2964,7 +2964,7 @@ int Being::searchSlotValue(const std::vector<int> &slotRemap,
 
 void Being::searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
                                std::vector<int> &slotRemap,
-                               const int val) const
+                               const int val)
 {
 //    logger->log("searching %d", val);
     it = slotRemap.begin();
@@ -3052,7 +3052,7 @@ std::string Being::loadComment(const std::string &name, const int type)
     str.append(stringToHexPath(name)).append("/comment.txt");
 
     const ResourceManager *const resman = ResourceManager::getInstance();
-    if (resman->existsLocal(str))
+    if (ResourceManager::existsLocal(str))
     {
         StringVect lines;
         resman->loadTextFileLocal(str, lines);
@@ -3078,8 +3078,7 @@ void Being::saveComment(const std::string &restrict name,
             return;
     }
     dir.append(stringToHexPath(name));
-    const ResourceManager *const resman = ResourceManager::getInstance();
-    resman->saveTextFile(dir, "comment.txt",
+    ResourceManager::saveTextFile(dir, "comment.txt",
         (name + "\n").append(comment));
 }
 

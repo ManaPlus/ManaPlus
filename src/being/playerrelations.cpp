@@ -600,7 +600,7 @@ bool PlayerRelationsManager::isGoodName(Being *const being) const
     return status;
 }
 
-bool PlayerRelationsManager::checkName(const std::string &name) const
+bool PlayerRelationsManager::checkName(const std::string &name)
 {
     const size_t size = name.size();
     const std::string check = config.getStringValue("unsecureChars");

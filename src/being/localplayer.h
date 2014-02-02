@@ -297,7 +297,7 @@ class LocalPlayer final : public Being,
 
         void moveToHome();
 
-        void debugMsg(const std::string &str) const;
+        static void debugMsg(const std::string &str);
 
         bool isReachable(Being *const being,
                          const int maxCost = 0) A_WARN_UNUSED;
@@ -331,7 +331,7 @@ class LocalPlayer final : public Being,
 
         void afkRespond(ChatTab *const tab, const std::string &nick);
 
-        void setAfkMessage(std::string message);
+        static void setAfkMessage(std::string message);
 
         bool navigateTo(const int x, const int y);
 
@@ -522,11 +522,12 @@ class LocalPlayer final : public Being,
         static void tryMagic(const std::string &spell, const int baseMagic,
                              const int schoolMagic, const int mana);
 
-        const char *getVarItem(const char *const *const arr,
-                               const unsigned index,
-                               const unsigned sz) const A_WARN_UNUSED;
+        static const char *getVarItem(const char *const *const arr,
+                                      const unsigned index,
+                                      const unsigned sz) A_WARN_UNUSED;
 
-        void changeMode(unsigned *restrict const var, const unsigned limit,
+        void changeMode(unsigned *restrict const var,
+                        const unsigned limit,
                         const char *restrict const conf,
                         std::string (LocalPlayer::*const func)(),
                         const unsigned def = 0,

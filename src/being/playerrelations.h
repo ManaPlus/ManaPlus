@@ -270,7 +270,7 @@ class PlayerRelationsManager final
                                // ignored data upon reloading
         unsigned int mDefaultPermissions;
 
-        bool checkName(const std::string &name) const A_WARN_UNUSED;
+        static bool checkName(const std::string &name) A_WARN_UNUSED;
 
         PlayerIgnoreStrategy *mIgnoreStrategy;
         std::map<std::string, PlayerRelation *> mRelations;
