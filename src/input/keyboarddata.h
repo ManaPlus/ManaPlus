@@ -2066,6 +2066,20 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         &ActionManager::nextShortcutsTab,
         Input::KEY_NO_VALUE, 50,
         COND_NOINPUT | COND_INGAME},
+    {"keyCommandsPrevTab",
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        Input::GRP_DEFAULT | Input::GRP_GUI,
+        &ActionManager::prevCommandsTab,
+        Input::KEY_NO_VALUE, 50,
+        COND_NOINPUT | COND_INGAME},
+    {"keyCommandsNextTab",
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        Input::GRP_DEFAULT | Input::GRP_GUI,
+        &ActionManager::nextCommandsTab,
+        Input::KEY_NO_VALUE, 50,
+        COND_NOINPUT | COND_INGAME}
 };
 
 #endif  // INPUT_KEYBOARDDATA_H

@@ -509,6 +509,18 @@ static SetupActionData setupActionData2[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Previous Commands tab"),
+        Input::KEY_PREV_COMMANDS_TAB,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Next Commands tab"),
+        Input::KEY_NEXT_COMMANDS_TAB,
+        "",
+    },
+    {
         "",
         Input::KEY_NO_VALUE,
         ""

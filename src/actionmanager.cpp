@@ -1169,4 +1169,24 @@ impHandler0(prevShortcutsTab)
     return false;
 }
 
+impHandler0(nextCommandsTab)
+{
+    if (spellShortcutWindow)
+    {
+        spellShortcutWindow->nextTab();
+        return true;
+    }
+    return false;
+}
+
+impHandler0(prevCommandsTab)
+{
+    if (spellShortcutWindow)
+    {
+        spellShortcutWindow->prevTab();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace ActionManager
