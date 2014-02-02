@@ -44,9 +44,14 @@ class AmbientLayer final
          * the same ratio than in 800x600 resolution mode.
          */
         AmbientLayer(Image *const img,
-                     const float parallax, const float parallaxY,
-                     const float speedX, const float speedY,
-                     const bool keepRatio, const int mask);
+                     const float parallax,
+                     const float parallaxY,
+                     const float posX,
+                     const float posY,
+                     const float speedX,
+                     const float speedY,
+                     const bool keepRatio,
+                     const int mask);
 
         A_DELETE_COPY(AmbientLayer)
 

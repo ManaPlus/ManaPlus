@@ -32,14 +32,19 @@
 #include "debug.h"
 
 AmbientLayer::AmbientLayer(Image *const img,
-                           const float parallaxX, const float parallaxY,
-                           const float speedX, const float speedY,
-                           const bool keepRatio, const int mask) :
+                           const float parallaxX,
+                           const float parallaxY,
+                           const float posX,
+                           const float posY,
+                           const float speedX,
+                           const float speedY,
+                           const bool keepRatio,
+                           const int mask) :
     mImage(img),
     mParallaxX(parallaxX),
     mParallaxY(parallaxY),
-    mPosX(0),
-    mPosY(0),
+    mPosX(posX),
+    mPosY(posY),
     mSpeedX(speedX),
     mSpeedY(speedY),
     mMask(mask),
