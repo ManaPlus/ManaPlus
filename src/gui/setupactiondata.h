@@ -497,6 +497,18 @@ static SetupActionData setupActionData2[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Previous Shortcuts tab"),
+        Input::KEY_PREV_SHORTCUTS_TAB,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Next Shortcuts tab"),
+        Input::KEY_NEXT_SHORTCUTS_TAB,
+        "",
+    },
+    {
         "",
         Input::KEY_NO_VALUE,
         ""

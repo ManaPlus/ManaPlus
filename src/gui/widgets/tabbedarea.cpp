@@ -725,3 +725,22 @@ void TabbedArea::death(const gcn::Event &event)
     else
         gcn::BasicContainer::death(event);
 }
+
+void TabbedArea::selectNextTab()
+{
+    int tab = getSelectedTabIndex();
+    tab++;
+    if (tab == static_cast<int>(mTabs.size()))
+        tab = 0;
+    setSelectedTab(mTabs[tab].first);
+}
+
+void TabbedArea::selectPrevTab()
+{
+    int tab = getSelectedTabIndex();
+
+    if (tab == 0)
+        tab = static_cast<int>(mTabs.size());
+    tab--;
+    setSelectedTab(mTabs[tab].first);
+}

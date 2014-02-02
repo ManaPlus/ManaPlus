@@ -353,6 +353,8 @@ namespace Input
         KEY_GUI_U,
         KEY_GUI_V,
         KEY_GUI_W,
+        KEY_PREV_SHORTCUTS_TAB,
+        KEY_NEXT_SHORTCUTS_TAB,
         KEY_TOTAL
     };
 }  // namespace Input

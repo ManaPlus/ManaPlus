@@ -94,6 +94,8 @@ namespace ActionManager
     decHandler(stopSit);
     decHandler(showKeyboard);
     decHandler(showWindows);
+    decHandler(nextShortcutsTab);
+    decHandler(prevShortcutsTab);
 
     decHandler(hideWindows);
     decHandler(helpWindowShow);

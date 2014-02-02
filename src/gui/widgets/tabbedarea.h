@@ -189,6 +189,10 @@ class TabbedArea final : public Widget2,
 
         void adjustWidget(gcn::Widget *const widget) const;
 
+        void selectNextTab();
+
+        void selectPrevTab();
+
     private:
         typedef std::vector <std::pair<Tab*, gcn::Widget*> > TabContainer;
 

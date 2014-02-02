@@ -1819,30 +1819,14 @@ void SocialWindow::removePortal(const int x, const int y)
 
 void SocialWindow::nextTab()
 {
-    if (!mTabs)
-        return;
-
-    int tab = mTabs->getSelectedTabIndex();
-
-    tab++;
-    if (tab == mTabs->getNumberOfTabs())
-        tab = 0;
-
-    mTabs->setSelectedTabByIndex(tab);
+    if (mTabs)
+        mTabs->selectNextTab();
 }
 
 void SocialWindow::prevTab()
 {
-    if (!mTabs)
-        return;
-
-    int tab = mTabs->getSelectedTabIndex();
-
-    if (tab == 0)
-        tab = mTabs->getNumberOfTabs();
-    tab--;
-
-    mTabs->setSelectedTabByIndex(tab);
+    if (mTabs)
+        mTabs->selectPrevTab();
 }
 
 void SocialWindow::updateAttackFilter()

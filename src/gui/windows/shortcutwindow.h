@@ -68,6 +68,10 @@ class ShortcutWindow final : public Window
 
         void mouseDragged(gcn::MouseEvent &event) override final;
 
+        void nextTab();
+
+        void prevTab();
+
 #ifdef USE_PROFILER
         void logicChildren();
 #endif

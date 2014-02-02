@@ -1149,4 +1149,24 @@ impHandler0(showWindows)
     return false;
 }
 
+impHandler0(nextShortcutsTab)
+{
+    if (itemShortcutWindow)
+    {
+        itemShortcutWindow->nextTab();
+        return true;
+    }
+    return false;
+}
+
+impHandler0(prevShortcutsTab)
+{
+    if (itemShortcutWindow)
+    {
+        itemShortcutWindow->prevTab();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace ActionManager

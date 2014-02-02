@@ -234,6 +234,18 @@ void ShortcutWindow::widgetMoved(const gcn::Event& event)
         (*it)->setRedraw(true);
 }
 
+void ShortcutWindow::nextTab()
+{
+    if (mTabs)
+        mTabs->selectNextTab();
+}
+
+void ShortcutWindow::prevTab()
+{
+    if (mTabs)
+        mTabs->selectPrevTab();
+}
+
 #ifdef USE_PROFILER
 void ShortcutWindow::logicChildren()
 {
