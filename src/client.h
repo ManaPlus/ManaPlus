@@ -285,7 +285,7 @@ public:
 
     static void closeDialogs();
 
-    void setFramerate(const int fpsLimit);
+    void setFramerate(const int fpsLimit) const;
 
     int getFramerate() const A_WARN_UNUSED;
 
@@ -335,9 +335,9 @@ public:
                             const bool modal);
 
 private:
-    void createWindows();
+    static void createWindows();
 
-    void initLang();
+    static void initLang();
 
     void initSoundManager();
 
@@ -347,7 +347,7 @@ private:
 
     void initTitle();
 
-    void extractDataDir();
+    static void extractDataDir();
 
     void mountDataDir();
 
@@ -369,9 +369,9 @@ private:
 
     void initServerConfig(std::string serverName);
 
-    void initFeatures() const;
+    static void initFeatures();
 
-    void accountLogin(LoginData *const data) const;
+    static void accountLogin(LoginData *const data);
 
 #ifndef ANDROID
     void storeSafeParameters() const;
@@ -383,9 +383,9 @@ private:
 
     void testsClear();
 
-    void logVars();
+    static void logVars();
 
-    void checkConfigVersion();
+    static void checkConfigVersion();
 
     void setIcon();
 

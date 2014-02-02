@@ -55,7 +55,7 @@ class ChatLogger final
 
         std::string getDir() const A_WARN_UNUSED;
 
-        std::string secureName(std::string &str) const;
+        static std::string secureName(std::string &str);
 
         void setServerName(const std::string &serverName);
 
@@ -72,7 +72,7 @@ class ChatLogger final
 
         void setLogDir(const std::string &logDir);
 
-        void writeTo(std::ofstream &file, const std::string &str) const;
+        static void writeTo(std::ofstream &file, const std::string &str);
 
         std::ofstream mLogFile;
         std::string mLogDir;

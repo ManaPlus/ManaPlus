@@ -1556,7 +1556,7 @@ void ActorManager::rebuildPickupItems()
 }
 
 int ActorManager::getIndexByName(const std::string &name,
-                                 const std::map<std::string, int> &map) const
+                                 const std::map<std::string, int> &map)
 {
     const std::map<std::string, int>::const_iterator
         i = map.find(name);

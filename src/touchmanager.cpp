@@ -346,12 +346,9 @@ void TouchManager::unload(TouchItem *const item)
 {
     if (item)
     {
-        Theme *const theme = Theme::instance();
-        if (!theme)
-            return;
         if (item->images)
         {
-            theme->unloadRect(*item->images);
+            Theme::unloadRect(*item->images);
             delete item->images;
             item->images = nullptr;
             if (item->icon)

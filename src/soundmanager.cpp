@@ -170,7 +170,7 @@ void SoundManager::init()
         playMusic(mCurrentMusicFile);
 }
 
-void SoundManager::info() const
+void SoundManager::info()
 {
     SDL_version compiledVersion;
     const char *format = "Unknown";

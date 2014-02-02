@@ -83,7 +83,7 @@ class ParticleEmitter final
         void adjustSize(const int w, const int h);
 
     private:
-        template <typename T> ParticleEmitterProp<T>
+        template <typename T> static ParticleEmitterProp<T>
             readParticleEmitterProp(XmlNodePtrConst propertyNode, T def);
 
         ImageSet *getImageSet(XmlNodePtrConst node);

@@ -738,7 +738,7 @@ bool Map::getWalk(const int x, const int y, const unsigned char walkmask) const
     return !(mMetaTiles[x + y * mWidth].blockmask & walkmask);
 }
 
-unsigned char Map::getBlockMask(const int x, const int y)
+unsigned char Map::getBlockMask(const int x, const int y) const
 {
     // You can't walk outside of the map
     if (x < 0 || y < 0 || x >= mWidth || y >= mHeight)

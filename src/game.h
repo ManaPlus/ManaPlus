@@ -107,12 +107,12 @@ class Game final
 
         static void closeDialogs();
 
-        void videoResized(const int width, const int height) const;
+        static void videoResized(const int width, const int height);
 
         bool getValidSpeed() const A_WARN_UNUSED
         { return mValidSpeed; }
 
-        void moveInDirection(const unsigned char direction);
+        static void moveInDirection(const unsigned char direction);
 
         static bool createScreenshot();
 

@@ -60,7 +60,7 @@ void EventsManager::shutdown()
    config.removeListeners(this);
 }
 
-bool EventsManager::handleCommonEvents(const SDL_Event &event)
+bool EventsManager::handleCommonEvents(const SDL_Event &event) const
 {
     if (mLogInput)
         logEvent(event);

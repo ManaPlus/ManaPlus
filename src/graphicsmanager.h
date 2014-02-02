@@ -78,7 +78,7 @@ class GraphicsManager final
 
         void initGraphics(const bool noOpenGL);
 
-        void setVideoMode();
+        static void setVideoMode();
 
         SDL_Window *createWindow(const int w, const int h,
                                  const int bpp, const int flags);
@@ -94,7 +94,7 @@ class GraphicsManager final
 
         std::string getDensityString() const;
 
-        int getDensity()
+        int getDensity() const
         { return mDensity; }
 
 #ifdef USE_OPENGL
@@ -104,7 +104,7 @@ class GraphicsManager final
 
         bool supportExtension(const std::string &ext) const A_WARN_UNUSED;
 
-        void updateTextureFormat();
+        void updateTextureFormat() const;
 
         bool checkGLVersion(const int major, const int minor)
                             const A_WARN_UNUSED;
@@ -154,7 +154,7 @@ class GraphicsManager final
 
         void updateDebugLog() const;
 
-        std::string getGLVersion()
+        std::string getGLVersion() const
         { return mGlVersionString; }
 #endif
 

@@ -56,7 +56,7 @@ MumbleManager::~MumbleManager()
     }
 }
 
-uint16_t MumbleManager::getMapId(std::string mapName) const
+uint16_t MumbleManager::getMapId(std::string mapName)
 {
     uint16_t res = 0;
     if (mapName.size() != 5 || mapName[3] != '-')

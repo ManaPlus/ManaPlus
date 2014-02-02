@@ -548,7 +548,8 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
 }
 
 int MapLayer::getTileDrawWidth(const Image *img,
-                               const int endX, int &width) const
+                               const int endX,
+                               int &width)
 {
     BLOCK_START("MapLayer::getTileDrawWidth")
     const Image *const img1 = img;

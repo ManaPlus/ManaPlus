@@ -181,7 +181,7 @@ void SpellManager::invokeSpell(const TextCommand *const spell,
 }
 
 std::string SpellManager::parseCommand(std::string command,
-                                       const Being *const target) const
+                                       const Being *const target)
 {
     if (!player_node)
         return command;

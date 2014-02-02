@@ -75,9 +75,9 @@ class SpellManager final
 
         void invokeSpell(const TextCommand *const spell) const;
 
-        std::string parseCommand(std::string command,
-                                 const Being *const target)
-                                 const A_WARN_UNUSED;
+        static std::string parseCommand(std::string command,
+                                        const Being *const target)
+                                        A_WARN_UNUSED;
 
         std::map<unsigned int, TextCommand*> mSpells;
         std::vector<TextCommand*> mSpellsVector;

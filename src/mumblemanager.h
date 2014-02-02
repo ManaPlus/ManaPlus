@@ -60,7 +60,7 @@ class MumbleManager final
         void setServer(const std::string &serverName);
 
     private:
-        uint16_t getMapId(std::string mapName) const A_WARN_UNUSED;
+        static uint16_t getMapId(std::string mapName) A_WARN_UNUSED;
 
         void setMapBase(uint16_t mapid);
 

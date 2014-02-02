@@ -131,7 +131,7 @@ std::string ChatLogger::getDir() const
     return date;
 }
 
-std::string ChatLogger::secureName(std::string &name) const
+std::string ChatLogger::secureName(std::string &name)
 {
     const unsigned int sz = name.length();
     for (unsigned int f = 0; f < sz; f ++)
@@ -151,7 +151,8 @@ std::string ChatLogger::secureName(std::string &name) const
     return name;
 }
 
-void ChatLogger::writeTo(std::ofstream &file, const std::string &str) const
+void ChatLogger::writeTo(std::ofstream &file,
+                         const std::string &str)
 {
     file << str << std::endl;
 }

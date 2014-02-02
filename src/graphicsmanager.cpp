@@ -546,7 +546,7 @@ bool GraphicsManager::supportExtension(const std::string &ext) const
     return mExtensions.find(ext) != mExtensions.end();
 }
 
-void GraphicsManager::updateTextureFormat()
+void GraphicsManager::updateTextureFormat() const
 {
     const int compressionFormat = config.getIntValue("compresstextures");
     if (compressionFormat)

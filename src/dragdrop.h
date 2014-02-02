@@ -75,10 +75,10 @@ class DragDrop final
                 mItemImage->decRef();
         }
 
-        int getItem()
+        int getItem() const
         { return mItem; }
 
-        int getItemColor()
+        int getItemColor() const
         { return mItemColor; }
 
         Image *getItemImage()

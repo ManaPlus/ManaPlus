@@ -296,8 +296,9 @@ class ActorManager final: public ConfigListener
 
         int getPickupItemIndex(const std::string &name) const A_WARN_UNUSED;
 
-        int getIndexByName(const std::string &name, const std::map<std::string,
-                           int> &map) const A_WARN_UNUSED;
+        static int getIndexByName(const std::string &name,
+                                  const std::map<std::string,int> &map)
+                                  A_WARN_UNUSED;
 
         bool checkForPickup(const FloorItem *const item) const A_WARN_UNUSED;
 

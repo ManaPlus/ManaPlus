@@ -60,7 +60,7 @@ class EmoteShortcut final
         /**
          * Returns the amount of shortcut Emotes.
          */
-        unsigned int getEmoteCount() const A_WARN_UNUSED
+        static unsigned int getEmoteCount() A_WARN_UNUSED
         { return SHORTCUT_EMOTES; }
 
         /**
