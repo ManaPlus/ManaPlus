@@ -404,8 +404,8 @@ TTF_Font *SDLFont::openFont(const char *const name, const int size)
 //        return nullptr;
 //    return TTF_OpenFontIndexRW(rw, 1, size, 0);
 // #else
-    return TTF_OpenFontIndex(ResourceManager::getInstance()->getPath(
-        name).c_str(), size, 0);
+    return TTF_OpenFontIndex(ResourceManager::getPath(name).c_str(),
+        size, 0);
 // #endif
 }
 

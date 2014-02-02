@@ -153,7 +153,7 @@ public:
 
     void readFromWeb();
 
-    void setNeutralColor(OnlinePlayer *const player);
+    static void setNeutralColor(OnlinePlayer *const player);
 
     void getPlayerNames(StringVect &names);
 

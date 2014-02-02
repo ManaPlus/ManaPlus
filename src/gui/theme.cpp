@@ -1179,7 +1179,7 @@ Skin *Theme::loadSkinRect(ImageRect &image, const std::string &name,
 }
 
 void Theme::unloadRect(const ImageRect &rect, const int start,
-                       const int end) const
+                       const int end)
 {
     for (int f = start; f <= end; f ++)
     {

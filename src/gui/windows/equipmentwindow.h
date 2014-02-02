@@ -122,7 +122,7 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
         void loadSlot(const XmlNodePtr slotNode,
                       const ImageSet *const imageset);
 
-        int parseSlotName(const std::string &name) const A_WARN_UNUSED;
+        static int parseSlotName(const std::string &name) A_WARN_UNUSED;
 
         Equipment *mEquipment;
 

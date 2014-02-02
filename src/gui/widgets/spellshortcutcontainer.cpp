@@ -321,7 +321,7 @@ void SpellShortcutContainer::widgetHidden(const gcn::Event &event A_UNUSED)
         mSpellPopup->setVisible(false);
 }
 
-int SpellShortcutContainer::getItemByIndex(const int index)
+int SpellShortcutContainer::getItemByIndex(const int index) const
 {
     return spellShortcut->getItem(
         (mNumber * SPELL_SHORTCUT_ITEMS) + index);

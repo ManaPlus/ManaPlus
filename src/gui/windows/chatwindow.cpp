@@ -452,7 +452,7 @@ ChatTab *ChatWindow::getFocused() const
     return static_cast<ChatTab*>(mChatTabs->getSelectedTab());
 }
 
-void ChatWindow::clearTab(ChatTab *const tab) const
+void ChatWindow::clearTab(ChatTab *const tab)
 {
     if (tab)
         tab->clearText();
@@ -1386,7 +1386,7 @@ void ChatWindow::autoComplete()
 }
 
 std::string ChatWindow::autoComplete(StringVect &names,
-                                     std::string partName) const
+                                     std::string partName)
 {
     StringVectCIter i = names.begin();
     const StringVectCIter i_end = names.end();
@@ -1770,7 +1770,7 @@ void ChatWindow::saveState() const
     }
 }
 
-std::string ChatWindow::doReplace(const std::string &msg) const
+std::string ChatWindow::doReplace(const std::string &msg)
 {
     std::string str = msg;
     replaceSpecialChars(str);
@@ -1918,7 +1918,7 @@ void ChatWindow::updateVisibility()
     int mouseY = 0;
     int x = 0;
     int y = 0;
-    gui->getMouseState(&mouseX, &mouseY);
+    Gui::getMouseState(&mouseX, &mouseY);
     getAbsolutePosition(x, y);
     if (mChatInput->isVisible())
     {

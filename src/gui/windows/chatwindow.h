@@ -109,7 +109,7 @@ class ChatWindow final : public Window,
         /**
          * Clear the given tab.
          */
-        void clearTab(ChatTab *const tab) const;
+        static void clearTab(ChatTab *const tab);
 
         /**
          * Clear the current tab.
@@ -253,7 +253,7 @@ class ChatWindow final : public Window,
 
         void loadGMCommands();
 
-        std::string doReplace(const std::string &msg) const A_WARN_UNUSED;
+        static std::string doReplace(const std::string &msg) A_WARN_UNUSED;
 
         void adjustTabSize();
 
@@ -328,8 +328,8 @@ class ChatWindow final : public Window,
         std::string autoComplete(const std::string &partName,
                                  History *const words) const;
 
-        std::string autoComplete(StringVect &names,
-                                 std::string partName) const;
+        static std::string autoComplete(StringVect &names,
+                                        std::string partName);
 
         /** Used for showing item popup on clicking links **/
         ItemLinkHandler *mItemLinkHandler;

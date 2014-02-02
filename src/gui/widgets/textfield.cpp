@@ -116,7 +116,7 @@ TextField::~TextField()
         if (theme)
         {
             theme->unload(mSkin);
-            theme->unloadRect(skin);
+            Theme::unloadRect(skin);
         }
     }
 }
@@ -745,7 +745,7 @@ void TextField::mousePressed(gcn::MouseEvent &mouseEvent)
             {
                 int x = 0;
                 int y = 0;
-                gui->getMouseState(&x, &y);
+                Gui::getMouseState(&x, &y);
                 mPopupMenu->showTextFieldPopup(x, y, this);
             }
         }

@@ -606,7 +606,7 @@ void StatusWindow::updateJobBar(ProgressBar *const bar, const bool percent)
 }
 
 void StatusWindow::updateProgressBar(ProgressBar *const bar, const int id,
-                                     const bool percent) const
+                                     const bool percent)
 {
     const std::pair<int, int> exp =  PlayerInfo::getStatExperience(id);
     updateProgressBar(bar, exp.first, exp.second, percent);

@@ -67,7 +67,7 @@ class SliderList final : public Container,
 
         void adjustSize();
 
-        int getSelected() A_WARN_UNUSED
+        int getSelected() const A_WARN_UNUSED
         { return mSelectedIndex; }
 
     protected:

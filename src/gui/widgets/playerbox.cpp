@@ -70,13 +70,8 @@ PlayerBox::~PlayerBox()
     if (gui)
         gui->removeDragged(this);
 
-    Theme *const theme = Theme::instance();
-    if (theme)
-    {
-        theme->unloadRect(mBackground);
-        theme->unloadRect(mSelectedBackground);
-    }
-
+    Theme::unloadRect(mBackground);
+    Theme::unloadRect(mSelectedBackground);
     mBeing = nullptr;
 }
 

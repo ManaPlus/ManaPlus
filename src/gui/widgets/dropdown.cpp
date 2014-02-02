@@ -183,7 +183,7 @@ DropDown::~DropDown()
         if (theme)
         {
             theme->unload(mSkin);
-            theme->unloadRect(skinRect);
+            Theme::unloadRect(skinRect);
         }
     }
 }

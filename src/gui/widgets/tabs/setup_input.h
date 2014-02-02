@@ -82,11 +82,12 @@ class Setup_Input final : public SetupTab
         std::string keyToString(const int index) const A_WARN_UNUSED;
 
     private:
-        void fixTranslations() const;
+        static void fixTranslations();
 
-        void fixTranslation(SetupActionData *const actionDatas,
-                            const int actionStart, const int actionEnd,
-                            const std::string &text) const;
+        static void fixTranslation(SetupActionData *const actionDatas,
+                                   const int actionStart,
+                                   const int actionEnd,
+                                   const std::string &text);
 
         KeyListModel *mKeyListModel;
         ListBox *mKeyList;

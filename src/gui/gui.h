@@ -147,8 +147,9 @@ class Gui final : public gcn::Gui
 
         MouseEvent *createMouseEvent(Window *const widget) A_WARN_UNUSED;
 
-        void getAbsolutePosition(gcn::Widget *restrict widget,
-                                 int &restrict x, int &restrict y);
+        static void getAbsolutePosition(gcn::Widget *restrict widget,
+                                        int &restrict x,
+                                        int &restrict y);
 
         void addGlobalFocusListener(gcn::FocusListener* focusListener);
 
@@ -164,7 +165,7 @@ class Gui final : public gcn::Gui
         int getLastMouseY() const
         { return mLastMouseY; }
 
-        uint32_t getMouseState(int *const x, int *const y) const;
+        static uint32_t getMouseState(int *const x, int *const y);
 
     protected:
         void handleMouseMoved(const gcn::MouseInput &mouseInput);

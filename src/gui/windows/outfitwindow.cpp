@@ -524,7 +524,7 @@ void OutfitWindow::unequipNotInOutfit(const int outfit) const
     }
 }
 
-std::string OutfitWindow::keyName(const int number) const
+std::string OutfitWindow::keyName(const int number)
 {
     if (number < 0 || number >= SHORTCUT_EMOTES)
         return "";

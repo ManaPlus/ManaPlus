@@ -75,7 +75,7 @@ class SpellShortcutContainer final : public ShortcutContainer
 
         void setWidget2(const Widget2 *const widget) override final;
 
-        int getItemByIndex(const int index);
+        int getItemByIndex(const int index) const A_WARN_UNUSED;
 
     private:
         SpellPopup *mSpellPopup;

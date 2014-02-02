@@ -107,11 +107,7 @@ void GuildChatTab::handleInput(const std::string &msg)
 {
     if (!guildManager)
         return;
-
-    if (chatWindow)
-        guildManager->chat(chatWindow->doReplace(msg));
-    else
-        guildManager->chat(msg);
+    guildManager->chat(ChatWindow::doReplace(msg));
 }
 
 void GuildChatTab::showHelp()

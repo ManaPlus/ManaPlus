@@ -96,23 +96,19 @@ ScrollArea::~ScrollArea()
     delete getContent();
 
     instances--;
-    const Theme *const theme = Theme::instance();
-    if (theme)
+    if (instances == 0)
     {
-        if (instances == 0)
+        Theme::unloadRect(background);
+        Theme::unloadRect(vMarker);
+        Theme::unloadRect(vMarkerHi);
+        Theme::unloadRect(vBackground);
+        Theme::unloadRect(hBackground);
+        for (int i = 0; i < 2; i ++)
         {
-            theme->unloadRect(background);
-            theme->unloadRect(vMarker);
-            theme->unloadRect(vMarkerHi);
-            theme->unloadRect(vBackground);
-            theme->unloadRect(hBackground);
-            for (int i = 0; i < 2; i ++)
+            for (int f = UP; f < BUTTONS_DIR; f ++)
             {
-                for (int f = UP; f < BUTTONS_DIR; f ++)
-                {
-                    if (buttons[f][i])
-                        buttons[f][i]->decRef();
-                }
+                if (buttons[f][i])
+                    buttons[f][i]->decRef();
             }
         }
     }

@@ -502,8 +502,9 @@ class Theme final : public Palette, public ConfigListener
                       const std::string &name2, const int start = 0,
                       const int end = 8);
 
-        void unloadRect(const ImageRect &rect, const int start = 0,
-                        const int end = 8) const;
+        static void unloadRect(const ImageRect &rect,
+                               const int start = 0,
+                               const int end = 8);
 
         static Image *getImageFromThemeXml(const std::string &name,
                                            const std::string &name2)

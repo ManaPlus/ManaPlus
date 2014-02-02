@@ -101,8 +101,7 @@ ProgressBar::~ProgressBar()
             theme->unload(mSkin);
         mSkin = nullptr;
     }
-    if (theme)
-        theme->unloadRect(mFillRect);
+    Theme::unloadRect(mFillRect);
     delete mVertexes;
     mVertexes = nullptr;
 }

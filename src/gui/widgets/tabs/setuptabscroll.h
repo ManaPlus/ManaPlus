@@ -60,7 +60,7 @@ class SetupTabScroll : public SetupTab
                             override final
         { }
 
-        int getPreferredFirstItemSize() A_WARN_UNUSED
+        int getPreferredFirstItemSize() const A_WARN_UNUSED
         { return mPreferredFirstItemSize; }
 
         void widgetResized(const gcn::Event &event) override final;

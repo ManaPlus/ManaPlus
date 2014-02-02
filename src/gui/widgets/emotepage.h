@@ -53,7 +53,7 @@ class EmotePage final : public gcn::Widget,
 
         void resetAction();
 
-        int getSelectedIndex()
+        int getSelectedIndex() const
         { return mSelectedIndex; }
 
     private:

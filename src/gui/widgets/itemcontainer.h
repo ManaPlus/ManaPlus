@@ -134,7 +134,7 @@ class ItemContainer final : public gcn::Widget,
 
         void updateMatrix();
 
-        bool getClickCount() A_WARN_UNUSED
+        bool getClickCount() const A_WARN_UNUSED
         { return mClicks; }
 
     private:

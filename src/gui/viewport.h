@@ -284,7 +284,7 @@ class Viewport final : public WindowContainer,
         /// Clears any matching hovers
         void clearHover(const ActorSprite *const actor);
 
-        void validateSpeed() const;
+        static void validateSpeed();
 
     private:
         /**

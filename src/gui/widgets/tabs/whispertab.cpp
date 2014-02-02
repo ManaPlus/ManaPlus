@@ -52,10 +52,7 @@ WhisperTab::~WhisperTab()
 void WhisperTab::handleInput(const std::string &msg)
 {
     std::string newMsg;
-    if (chatWindow)
-        newMsg = chatWindow->doReplace(msg);
-    else
-        newMsg = msg;
+    newMsg = ChatWindow::doReplace(msg);
     Net::getChatHandler()->privateMessage(mNick, newMsg);
 
     if (player_node)

@@ -277,7 +277,7 @@ void Viewport::_followMouse()
 {
     if (!gui)
         return;
-    const uint8_t button = gui->getMouseState(&mMouseX, &mMouseY);
+    const uint8_t button = Gui::getMouseState(&mMouseX, &mMouseY);
     // If the left button is dragged
     if (mPlayerFollowMouse && (button & SDL_BUTTON(1)))
     {
@@ -302,7 +302,7 @@ void Viewport::_drawDebugPath(Graphics *const graphics)
     if (!player_node || !userPalette || !actorManager || !mMap || !gui)
         return;
 
-    gui->getMouseState(&mMouseX, &mMouseY);
+    Gui::getMouseState(&mMouseX, &mMouseY);
 
     static Path debugPath;
     static Vector lastMouseDestination = Vector(0.0F, 0.0F);
@@ -1034,7 +1034,7 @@ void Viewport::returnCamera()
     mCameraRelativeY = 0;
 }
 
-void Viewport::validateSpeed() const
+void Viewport::validateSpeed()
 {
     if (!inputManager.isActionActive(static_cast<int>(
         Input::KEY_TARGET_ATTACK)) && !inputManager.isActionActive(

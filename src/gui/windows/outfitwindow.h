@@ -89,7 +89,7 @@ class OutfitWindow final : public Window,
 
         void showCurrentOutfit();
 
-        std::string keyName(const int number) const A_WARN_UNUSED;
+        static std::string keyName(const int number) A_WARN_UNUSED;
 
         void clearCurrentOutfit();
 

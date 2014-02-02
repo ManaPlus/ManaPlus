@@ -632,7 +632,7 @@ void ShopWindow::sendMessage(const std::string &nick,
         chatWindow->addWhisper(nick, data, BY_PLAYER);
 }
 
-void ShopWindow::showList(const std::string &nick, std::string data) const
+void ShopWindow::showList(const std::string &nick, std::string data)
 {
     BuyDialog *buyDialog = nullptr;
     SellDialog *sellDialog = nullptr;

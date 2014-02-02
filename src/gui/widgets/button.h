@@ -107,7 +107,7 @@ class Button final : public gcn::Button,
         /**
          * Update the alpha value to the button components.
          */
-        void updateAlpha();
+        static void updateAlpha();
 
         void mouseReleased(gcn::MouseEvent& mouseEvent) override final;
 

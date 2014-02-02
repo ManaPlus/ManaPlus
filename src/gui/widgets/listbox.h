@@ -97,7 +97,7 @@ class ListBox : public gcn::ListBox,
         void setCenter(const bool b)
         { mCenterText = b; }
 
-        int getPressedIndex()
+        int getPressedIndex() const
         { return mPressedIndex; }
 
         unsigned int getRowHeight() const override A_WARN_UNUSED

@@ -270,7 +270,7 @@ void Setup_Input::action(const gcn::ActionEvent &event)
     else if (id == "resetkeys")
     {
         inputManager.resetKeys();
-        inputManager.update();
+        InputManager::update();
         refreshKeys();
     }
     else if (id == "default")
@@ -378,8 +378,9 @@ void Setup_Input::keyUnresolved()
 }
 
 void Setup_Input::fixTranslation(SetupActionData *const actionDatas,
-                                 const int actionStart, const int actionEnd,
-                                 const std::string &text) const
+                                 const int actionStart,
+                                 const int actionEnd,
+                                 const std::string &text)
 {
     int k = 0;
 
@@ -397,7 +398,7 @@ void Setup_Input::fixTranslation(SetupActionData *const actionDatas,
     }
 }
 
-void Setup_Input::fixTranslations() const
+void Setup_Input::fixTranslations()
 {
     fixTranslation(setupActionData1, static_cast<int>(Input::KEY_SHORTCUT_1),
         static_cast<int>(Input::KEY_SHORTCUT_20), "Item Shortcut %d");

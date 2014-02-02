@@ -940,7 +940,7 @@ void Gui::removeDragged(gcn::Widget *widget)
         mFocusHandler->setDraggedWidget(nullptr);
 }
 
-uint32_t Gui::getMouseState(int *const x, int *const y) const
+uint32_t Gui::getMouseState(int *const x, int *const y)
 {
     const uint32_t res = SDL_GetMouseState(x, y);
     const int scale = mainGraphics->getScale();

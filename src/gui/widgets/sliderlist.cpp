@@ -77,8 +77,7 @@ SliderList::~SliderList()
 
 void SliderList::updateAlpha()
 {
-    mButtons[0]->updateAlpha();
-    mButtons[1]->updateAlpha();
+    Button::updateAlpha();
 }
 
 void SliderList::mouseWheelMovedUp(gcn::MouseEvent& mouseEvent)

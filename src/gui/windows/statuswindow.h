@@ -79,8 +79,9 @@ class StatusWindow final : public Window,
                                     const bool percent = true);
         static void updateProgressBar(ProgressBar *const bar, const int value,
                                       const int max, const bool percent);
-        void updateProgressBar(ProgressBar *const bar, const int id,
-                               const bool percent = true) const;
+        static void updateProgressBar(ProgressBar *const bar,
+                                      const int id,
+                                      const bool percent = true);
 
         void action(const gcn::ActionEvent &event) override;
 
