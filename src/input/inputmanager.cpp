@@ -102,7 +102,7 @@ void InputManager::init()
     update();
 }
 
-void InputManager::update() const
+void InputManager::update()
 {
     keyboard.update();
     if (joystick)
@@ -347,7 +347,7 @@ bool InputManager::isActionActive(const int index) const
     return true;
 }
 
-bool InputManager::isActionActive0(const int index) const
+bool InputManager::isActionActive0(const int index)
 {
     if (keyboard.isActionActive(index))
         return true;
@@ -497,7 +497,7 @@ void InputManager::setNewKey(const SDL_Event &event, const int type)
 {
     int val = -1;
     if (type == INPUT_KEYBOARD)
-        val = keyboard.getKeyValueFromEvent(event);
+        val = KeyboardConfig::getKeyValueFromEvent(event);
     else if (type == INPUT_JOYSTICK && joystick)
         val = joystick->getButtonFromEvent(event);
 
@@ -651,7 +651,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
     return false;
 }
 
-void InputManager::handleRepeat() const
+void InputManager::handleRepeat()
 {
     const int time = tick_time;
     keyboard.handleRepeat(time);

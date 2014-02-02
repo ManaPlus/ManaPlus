@@ -59,7 +59,7 @@ void KeyboardConfig::deinit()
     mActiveKeys2 = nullptr;
 }
 
-int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event) const
+int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event)
 {
 #ifdef USE_SDL2
     return event.key.keysym.scancode;

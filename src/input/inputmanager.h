@@ -164,14 +164,14 @@ class InputManager final
 
         bool handleAssignKey(const SDL_Event &event, const int type);
 
-        void handleRepeat() const;
+        static void handleRepeat();
 
         bool triggerAction(const KeysVector *const ptrs);
 
         int getKeyIndex(const int value, const int grp,
                         const int type) const A_WARN_UNUSED;
 
-        void update() const;
+        static void update();
 
         void updateConditionMask();
 
@@ -180,7 +180,7 @@ class InputManager final
         void executeAction(const int keyNum);
 
     protected:
-        bool isActionActive0(const int index) const A_WARN_UNUSED;
+        static bool isActionActive0(const int index) A_WARN_UNUSED;
 
         Setup_Input *mSetupInput;      /**< Reference to setup window */
 

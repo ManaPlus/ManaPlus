@@ -75,7 +75,7 @@ class KeyboardConfig final
 
         static SDLKey getKeyFromEvent(const SDL_Event &event) A_WARN_UNUSED;
 
-        int getKeyValueFromEvent(const SDL_Event &event) const A_WARN_UNUSED;
+        static int getKeyValueFromEvent(const SDL_Event &event) A_WARN_UNUSED;
 
         KeysVector *getActionVector(const SDL_Event &event) A_WARN_UNUSED;
 
