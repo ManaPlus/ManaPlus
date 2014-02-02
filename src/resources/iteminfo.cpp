@@ -253,8 +253,10 @@ const SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(const int direction)
     return nullptr;
 }
 
-void ItemInfo::setSpriteOrder(int *const ptr, const int direction,
-                              const int n, const int def) const
+void ItemInfo::setSpriteOrder(int *const ptr,
+                              const int direction,
+                              const int n,
+                              const int def)
 {
     switch (direction)
     {

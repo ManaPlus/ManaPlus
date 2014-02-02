@@ -82,7 +82,7 @@ class ImageHelper
         static SDL_Surface *convertTo32Bit(SDL_Surface *const tmpImage)
                                            A_WARN_UNUSED;
 
-        void dumpSurfaceFormat(const SDL_Surface *const image) const;
+        static void dumpSurfaceFormat(const SDL_Surface *const image);
 
         virtual SDL_Surface *create32BitSurface(int width, int height)
                                                 const A_WARN_UNUSED = 0;

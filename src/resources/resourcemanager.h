@@ -122,7 +122,7 @@ class ResourceManager final
         /**
          * Checks whether the given file or directory exists
          */
-        bool existsLocal(const std::string &path) const A_WARN_UNUSED;
+        static bool existsLocal(const std::string &path) A_WARN_UNUSED;
 
         /**
          * Checks whether the given path is a directory.
@@ -136,7 +136,7 @@ class ResourceManager final
          * @param file The file to get the real path to.
          * @return The real path.
          */
-        std::string getPath(const std::string &file) const A_WARN_UNUSED;
+        static std::string getPath(const std::string &file) A_WARN_UNUSED;
 
         /**
          * Creates a resource and adds it to the resource map.
@@ -184,8 +184,8 @@ class ResourceManager final
         * @return true on success, false on failure. An error message should be
         *         in the log file.
         */
-        bool copyFile(const std::string &restrict src,
-                      const std::string &restrict dst) const;
+        static bool copyFile(const std::string &restrict src,
+                             const std::string &restrict dst);
 
         /**
          * Convenience wrapper around ResourceManager::get for loading
@@ -274,8 +274,9 @@ class ResourceManager final
         static bool loadTextFileLocal(const std::string &fileName,
                                       StringVect &lines);
 
-        void saveTextFile(std::string path, const std::string &restrict name,
-                          const std::string &restrict text) const;
+        static void saveTextFile(std::string path,
+                                 const std::string &restrict name,
+                                 const std::string &restrict text);
 
         Image *getRescaled(Image *const image,
                            const int width, const int height) A_WARN_UNUSED;

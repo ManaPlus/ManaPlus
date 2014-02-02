@@ -493,12 +493,16 @@ void SpriteDef::addAction(const unsigned hp, const std::string &name,
     (*mActions[hp])[name] = action;
 }
 
-bool SpriteDef::addSequence(const int start, const int end, const int delay,
-                            const int offsetX, const int offsetY,
+bool SpriteDef::addSequence(const int start,
+                            const int end,
+                            const int delay,
+                            const int offsetX,
+                            const int offsetY,
                             const int variant_offset,
-                            int repeat, const int rand,
+                            int repeat,
+                            const int rand,
                             const ImageSet *const imageSet,
-                            Animation *const animation) const
+                            Animation *const animation)
 {
     if (!imageSet || !animation)
         return true;

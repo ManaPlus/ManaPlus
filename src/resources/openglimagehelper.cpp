@@ -110,7 +110,7 @@ Image *OpenGLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
     return img;
 }
 
-int OpenGLImageHelper::powerOfTwo(const int input) const
+int OpenGLImageHelper::powerOfTwo(const int input)
 {
     int value;
     if (mTextureType == GL_TEXTURE_2D)

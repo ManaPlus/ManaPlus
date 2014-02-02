@@ -399,7 +399,7 @@ bool ResourceManager::exists(const std::string &path) const
     return PhysFs::exists(path.c_str());
 }
 
-bool ResourceManager::existsLocal(const std::string &path) const
+bool ResourceManager::existsLocal(const std::string &path)
 {
     bool flg(false);
     std::fstream file;
@@ -415,7 +415,7 @@ bool ResourceManager::isDirectory(const std::string &path) const
     return PhysFs::isDirectory(path.c_str());
 }
 
-std::string ResourceManager::getPath(const std::string &file) const
+std::string ResourceManager::getPath(const std::string &file)
 {
     // get the real path to the file
     const char *const tmp = PhysFs::getRealDir(file.c_str());
@@ -982,7 +982,7 @@ void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
 }
 
 bool ResourceManager::copyFile(const std::string &restrict src,
-                               const std::string &restrict dst) const
+                               const std::string &restrict dst)
 {
     PHYSFS_file *const srcFile = PhysFs::openRead(src.c_str());
     if (!srcFile)
@@ -1054,7 +1054,7 @@ bool ResourceManager::loadTextFileLocal(const std::string &fileName,
 
 void ResourceManager::saveTextFile(std::string path,
                                    const std::string &restrict name,
-                                   const std::string &restrict text) const
+                                   const std::string &restrict text)
 {
     if (!mkdir_r(path.c_str()))
     {

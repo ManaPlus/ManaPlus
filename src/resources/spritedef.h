@@ -159,12 +159,16 @@ class SpriteDef final : public Resource
         void addAction(const unsigned hp, const std::string &name,
                        Action *const action);
 
-        bool addSequence(const int start, const int end, const int delay,
-                         const int offsetX, const int offsetY,
-                         const int variant_offset,
-                         int repeat, const int rand,
-                         const ImageSet *const imageSet,
-                         Animation *const animation) const;
+        static bool addSequence(const int start,
+                                const int end,
+                                const int delay,
+                                const int offsetX,
+                                const int offsetY,
+                                const int variant_offset,
+                                int repeat,
+                                const int rand,
+                                const ImageSet *const imageSet,
+                                Animation *const animation);
 
     private:
         /**

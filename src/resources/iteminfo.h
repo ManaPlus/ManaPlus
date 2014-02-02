@@ -229,8 +229,10 @@ class ItemInfo final
 
         void setDrawPriority(const int direction, const int n);
 
-        void setSpriteOrder(int *const ptr, const int direction,
-                            const int n, const int def = -1) const;
+        static void setSpriteOrder(int *const ptr,
+                                   const int direction,
+                                   const int n,
+                                   const int def = -1);
 
         const std::map<int, int> &getTags() const A_WARN_UNUSED
         { return mTags; }

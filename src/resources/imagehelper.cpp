@@ -94,7 +94,7 @@ SDL_Surface* ImageHelper::convertTo32Bit(SDL_Surface *const tmpImage)
     return MSDL_ConvertSurface(tmpImage, &RGBAFormat, SDL_SWSURFACE);
 }
 
-void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image) const
+void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image)
 {
     if (image->format)
     {

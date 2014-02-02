@@ -123,7 +123,7 @@ class OpenGLImageHelper final : public ImageHelper
         /**
          * Returns the first power of two equal or bigger than the input.
          */
-        int powerOfTwo(const int input) const A_WARN_UNUSED;
+        static int powerOfTwo(const int input) A_WARN_UNUSED;
 
         Image *glLoad(SDL_Surface *tmpImage,
                       int width = 0, int height = 0) const A_WARN_UNUSED;
