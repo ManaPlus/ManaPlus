@@ -373,7 +373,7 @@ bool Graphics::videoInfo()
     mDoubleBuffer = ((mWindow->flags & SDL_DOUBLEBUF) == SDL_DOUBLEBUF);
     logger->log("Double buffer mode: %s", mDoubleBuffer ? "yes" : "no");
 
-    imageHelper->dumpSurfaceFormat(mWindow);
+    ImageHelper::dumpSurfaceFormat(mWindow);
 
     const SDL_VideoInfo *const vi = SDL_GetVideoInfo();
     if (!vi)
