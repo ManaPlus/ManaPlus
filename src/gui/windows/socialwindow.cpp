@@ -1276,6 +1276,7 @@ SocialWindow::SocialWindow() :
     // TRANSLATORS: social window name
     Window(_("Social"), false, nullptr, "social.xml"),
     gcn::ActionListener(),
+    PlayerRelationsListener(),
     mGuildInvited(0),
     mGuildAcceptDialog(nullptr),
     mGuildCreateDialog(nullptr),
@@ -1372,10 +1373,12 @@ void SocialWindow::postInit()
 
     enableVisibleSound(true);
     updateButtons();
+    player_relations.addListener(this);
 }
 
 SocialWindow::~SocialWindow()
 {
+    player_relations.removeListener(this);
     if (mGuildAcceptDialog)
     {
         mGuildAcceptDialog->close();
@@ -1740,6 +1743,7 @@ void SocialWindow::slowLogic()
     const unsigned int nowTime = cur_time;
     if (mNeedUpdate && nowTime - mLastUpdateTime > 1)
     {
+        logger->log("soc update");
         mPlayers->updateList();
         mFriends->updateList();
         mNeedUpdate = false;
@@ -1890,6 +1894,16 @@ void SocialWindow::updateGuildCounter(const int online, const int total)
             tab->buildCounter(online, total);
         }
     }
+}
+
+void SocialWindow::updatedPlayer(const std::string &name)
+{
+    mNeedUpdate = true;
+}
+
+void SocialWindow::updateAll()
+{
+    mNeedUpdate = true;
 }
 
 #ifdef USE_PROFILER

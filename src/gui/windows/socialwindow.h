@@ -24,6 +24,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "being/playerrelationslistener.h"
+
 #include <guichan/actionlistener.hpp>
 
 #include <string>
@@ -45,7 +47,9 @@ class TextDialog;
  *
  * \ingroup Interface
  */
-class SocialWindow final : public Window, private gcn::ActionListener
+class SocialWindow final : public Window,
+                           private gcn::ActionListener,
+                           public PlayerRelationsListener
 {
 public:
     SocialWindow();
@@ -124,6 +128,10 @@ public:
     void setCounter(const SocialTab *const tab, const std::string &str);
 
     void updateGuildCounter(const int online = 0, const int total = 0);
+
+    void updatedPlayer(const std::string &name);
+
+    void updateAll();
 
 #ifdef USE_PROFILER
     void logicChildren();
