@@ -465,6 +465,8 @@ class Window : public gcn::Window,
          */
         void ensureOnScreen();
 
+        void adjustSizeToScreen();
+
         /**
          * Determines if the mouse is in a resize area and returns appropriate
          * resize handles. Also initializes drag offset in case the resize

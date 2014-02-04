@@ -1059,6 +1059,28 @@ void Window::adjustPositionAfterResize(const int oldScreenWidth,
     }
 
     ensureOnScreen();
+    adjustSizeToScreen();
+}
+
+void Window::adjustSizeToScreen()
+{
+    if (!mGrip)
+        return;
+
+    const int screenWidth = mainGraphics->mWidth;
+    const int screenHeight = mainGraphics->mHeight;
+    const int oldWidth = mDimension.width;
+    const int oldHeight = mDimension.height;
+    if (oldWidth + mDimension.x > screenWidth)
+        mDimension.x = 0;
+    if (oldHeight + mDimension.y > screenHeight)
+        mDimension.x = 0;
+    if (mDimension.width > screenWidth)
+        mDimension.width = screenWidth;
+    if (mDimension.height > screenHeight)
+        mDimension.height = screenHeight;
+    if (oldWidth != mDimension.width || oldHeight != mDimension.height)
+        widgetResized(gcn::Event(this));
 }
 
 int Window::getResizeHandles(const gcn::MouseEvent &event)
