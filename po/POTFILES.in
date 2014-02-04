@@ -76,7 +76,7 @@ src/gui/windows/quitdialog.cpp
 src/gui/windows/registerdialog.cpp
 src/gui/windows/selldialog.cpp
 src/gui/windows/serverdialog.cpp
-src/gui/windows/setup.cpp
+src/gui/windows/setupwindow.cpp
 src/gui/windows/shopwindow.cpp
 src/gui/windows/skilldialog.cpp
 src/gui/windows/socialwindow.cpp
