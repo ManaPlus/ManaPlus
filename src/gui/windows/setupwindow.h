@@ -40,14 +40,15 @@ class SetupTab;
  *
  * \ingroup GUI
  */
-class Setup final : public Window, public gcn::ActionListener
+class SetupWindow final : public Window,
+                          public gcn::ActionListener
 {
     public:
-        Setup();
+        SetupWindow();
 
-        A_DELETE_COPY(Setup)
+        A_DELETE_COPY(SetupWindow)
 
-        ~Setup();
+        ~SetupWindow();
 
         void postInit() override final;
 
@@ -84,6 +85,6 @@ class Setup final : public Window, public gcn::ActionListener
         Label *mVersion;
 };
 
-extern Setup* setupWindow;
+extern SetupWindow* setupWindow;
 
 #endif  // GUI_WINDOWS_SETUP_H

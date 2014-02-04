@@ -43,7 +43,7 @@
 #include "gui/viewport.h"
 
 #include "gui/windows/emotewindow.h"
-#include "gui/windows/setup.h"
+#include "gui/windows/setupwindow.h"
 #include "gui/windows/whoisonline.h"
 
 #include "gui/widgets/tabs/battletab.h"

@@ -33,7 +33,7 @@
 
 #include "gui/popups/textpopup.h"
 
-#include "gui/windows/setup.h"
+#include "gui/windows/setupwindow.h"
 #include "gui/windows/shortcutwindow.h"
 
 #include "gui/widgets/button.h"

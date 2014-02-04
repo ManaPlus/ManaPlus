@@ -38,7 +38,7 @@
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/itemamountwindow.h"
 #include "gui/windows/outfitwindow.h"
-#include "gui/windows/setup.h"
+#include "gui/windows/setupwindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/tradewindow.h"
 

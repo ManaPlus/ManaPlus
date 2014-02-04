@@ -66,7 +66,7 @@
 #include "gui/windows/registerdialog.h"
 #include "gui/windows/selldialog.h"
 #include "gui/windows/serverdialog.h"
-#include "gui/windows/setup.h"
+#include "gui/windows/setupwindow.h"
 #include "gui/windows/unregisterdialog.h"
 #include "gui/windows/updaterwindow.h"
 #include "gui/windows/quitdialog.h"
@@ -527,7 +527,7 @@ void Client::initSoundManager()
 void Client::createWindows()
 {
     userPalette = new UserPalette;
-    setupWindow = new Setup;
+    setupWindow = new SetupWindow;
     setupWindow->postInit();
     helpWindow = new HelpWindow;
     didYouKnowWindow = new DidYouKnowWindow;

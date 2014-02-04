@@ -31,7 +31,7 @@
 
 #include "gui/viewport.h"
 
-#include "gui/windows/setup.h"
+#include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"

@@ -68,7 +68,7 @@
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
-#include "gui/windows/setup.h"
+#include "gui/windows/setupwindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
 #include "gui/windows/skilldialog.h"

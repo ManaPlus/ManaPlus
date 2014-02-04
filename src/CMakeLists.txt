@@ -335,8 +335,8 @@ SET(SRCS
     gui/windows/selldialog.h
     gui/windows/serverdialog.cpp
     gui/windows/serverdialog.h
-    gui/windows/setup.cpp
-    gui/windows/setup.h
+    gui/windows/setupwindow.cpp
+    gui/windows/setupwindow.h
     gui/widgets/tabs/setup_audio.cpp
     gui/widgets/tabs/setup_audio.h
     gui/widgets/tabs/setup_colors.cpp

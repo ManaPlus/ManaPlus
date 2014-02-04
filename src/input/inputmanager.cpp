@@ -44,7 +44,7 @@
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/npcpostdialog.h"
 #include "gui/windows/selldialog.h"
-#include "gui/windows/setup.h"
+#include "gui/windows/setupwindow.h"
 #include "gui/windows/textdialog.h"
 #include "gui/windows/tradewindow.h"
 #include "gui/windows/quitdialog.h"

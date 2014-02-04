@@ -35,7 +35,7 @@
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/itemamountwindow.h"
-#include "gui/windows/setup.h"
+#include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/itemcontainer.h"

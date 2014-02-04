@@ -27,7 +27,7 @@
 #include "gui/sdlfont.h"
 
 #include "gui/windows/didyouknowwindow.h"
-#include "gui/windows/setup.h"
+#include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"

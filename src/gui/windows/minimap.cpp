@@ -33,7 +33,7 @@
 
 #include "gui/popups/textpopup.h"
 
-#include "gui/windows/setup.h"
+#include "gui/windows/setupwindow.h"
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
