@@ -1159,6 +1159,7 @@ SetupItemSliderInt::SetupItemSliderInt(const std::string &restrict text,
 
 void SetupItemSliderInt::addMoreControls()
 {
+    toWidget();
 }
 
 void SetupItemSliderInt::fromWidget()
