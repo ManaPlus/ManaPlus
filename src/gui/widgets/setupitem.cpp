@@ -1139,3 +1139,40 @@ void SetupItemSound::action(const gcn::ActionEvent &event)
         SetupItemSliderList::action(event);
     }
 }
+
+SetupItemSliderInt::SetupItemSliderInt(const std::string &restrict text,
+                                       const std::string &restrict description,
+                                       const std::string &restrict keyName,
+                                       SetupTabScroll *restrict const parent,
+                                       const std::string &restrict eventName,
+                                       gcn::ListModel *restrict const model,
+                                       const int min,
+                                       const int width,
+                                       const bool onTheFly,
+                                       const bool mainConfig) :
+    SetupItemSliderList(text, description, keyName, parent, eventName,
+                        model, width, onTheFly, mainConfig),
+    mMin(min)
+{
+    createControls();
+}
+
+void SetupItemSliderInt::addMoreControls()
+{
+}
+
+void SetupItemSliderInt::fromWidget()
+{
+    if (!mSlider)
+        return;
+
+    mValue = toString(mSlider->getSelected() + mMin);
+}
+
+void SetupItemSliderInt::toWidget()
+{
+    if (!mSlider)
+        return;
+
+    mSlider->setSelected(atoi(mValue.c_str()) - mMin);
+}

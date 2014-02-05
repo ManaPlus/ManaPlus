@@ -466,9 +466,9 @@ class SetupItemSliderList : public SetupItem
 
         void createControls();
 
-        void fromWidget() override final;
+        void fromWidget() override;
 
-        void toWidget() override final;
+        void toWidget() override;
 
         virtual void action(const gcn::ActionEvent &event) override;
 
@@ -526,6 +526,32 @@ class SetupItemSound final : public SetupItemSliderList
 
     protected:
         Button *mButton;
+};
+
+class SetupItemSliderInt final : public SetupItemSliderList
+{
+    public:
+        SetupItemSliderInt(const std::string &restrict text,
+                           const std::string &restrict description,
+                           const std::string &restrict keyName,
+                           SetupTabScroll *restrict const parent,
+                           const std::string &restrict eventName,
+                           gcn::ListModel *restrict const model,
+                           const int min,
+                           const int width = 150,
+                           const bool onTheFly = false,
+                           const bool mainConfig = true);
+
+        A_DELETE_COPY(SetupItemSliderInt)
+
+        void addMoreControls() override final;
+
+        void fromWidget() override final;
+
+        void toWidget() override final;
+
+    protected:
+        int mMin;
 };
 
 #endif  // GUI_WIDGETS_SETUPITEM_H
