@@ -136,8 +136,21 @@ void Graphics::setScale(int scale)
     {
         if (!scale)
             scale = 1;
-        if (mActualWidth / scale < 470 || mActualHeight / scale < 320)
-            scale = 1;
+        int scaleW = mActualWidth / scale;
+        int scaleH = mActualHeight / scale;
+        if (scaleW < 470)
+        {
+            scale = mActualWidth / 470;
+            if (scale < 1)
+                scale = 1;
+            scaleH = mActualHeight / scale;
+        }
+        if (scaleH < 320)
+        {
+            scale = mActualHeight / 320;
+            if (scale < 1)
+                scale = 1;
+        }
         logger->log("set scale: %d", scale);
         mScale = scale;
         mWidth = mActualWidth / mScale;
