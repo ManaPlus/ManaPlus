@@ -295,3 +295,18 @@ const int &EmoteDB::getLast()
 {
     return mLastEmote;
 }
+
+int EmoteDB::size()
+{
+    return static_cast<signed int>(mEmoteInfos.size());
+}
+
+int EmoteDB::getIdByIndex(const int index)
+{
+    if (index < 0 || index >= static_cast<signed int>(mEmoteInfos.size()))
+        return 0;
+    EmoteInfos::const_iterator it = mEmoteInfos.begin();
+    for (int f = 0; f < index; f ++)
+        ++ it;
+    return (*it).first;
+}

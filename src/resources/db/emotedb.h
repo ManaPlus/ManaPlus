@@ -87,6 +87,10 @@ namespace EmoteDB
 
     const int &getLast() A_WARN_UNUSED;
 
+    int getIdByIndex(const int index);
+
+    int size();
+
     typedef EmoteInfos::iterator EmoteInfosIterator;
 }  // namespace EmoteDB
 

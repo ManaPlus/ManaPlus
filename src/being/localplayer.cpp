@@ -66,6 +66,8 @@
 
 #include "resources/iteminfo.h"
 
+#include "resources/db/emotedb.h"
+
 #include "utils/gettext.h"
 #include "utils/timer.h"
 
@@ -2988,14 +2990,18 @@ void LocalPlayer::crazyMoveA()
         if (emo == '?')
         {
             srand(tick_time);
-            emote(static_cast<unsigned char>(1 + (rand() % 13)));
+            emote(static_cast<unsigned char>(1 + (rand() % EmoteDB::size())));
         }
         else
         {
+            unsigned char emoteId = 0;
             if (emo >= '0' && emo <= '9')
-                emote(static_cast<unsigned char>(emo - '0' + 1));
-            else if (emo >= 'a' && emo <= 'd')
-                emote(static_cast<unsigned char>(emo - 'a' + 11));
+                emoteId = static_cast<unsigned char>(emo - '0' + 1);
+            else if (emo >= 'a' && emo <= 'z')
+                emoteId = static_cast<unsigned char>(emo - 'a' + 11);
+            else if (emo >= 'A' && emo <= 'Z')
+                emoteId = static_cast<unsigned char>(emo - 'A' + 37);
+            emote(emoteId);
         }
 
         mCrazyMoveState ++;
