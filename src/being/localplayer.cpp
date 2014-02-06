@@ -2796,9 +2796,9 @@ void LocalPlayer::crazyMoveA()
             signed char param = mMoveProgram[mCrazyMoveState++];
             if (param == '?')
             {
-                const char cmd[] = {'l', 'r', 'u', 'd'};
+                const char cmd[] = {'l', 'r', 'u', 'd', 'L', 'R', 'U', 'D'};
                 srand(tick_time);
-                param = cmd[rand() % 4];
+                param = cmd[rand() % 8];
             }
             switch (param)
             {
@@ -2814,26 +2814,38 @@ void LocalPlayer::crazyMoveA()
                 case 'r':
                     move(1, 0);
                     break;
+                case 'D':
+                    move(1, 1);
+                    break;
+                case 'U':
+                    move (-1, -1);
+                    break;
+                case 'L':
+                    move(-1, 1);
+                    break;
+                case 'R':
+                    move(1, -1);
+                    break;
                 case 'f':
-                    switch (mDirection)
-                    {
-                        case UP   : dy = -1; break;
-                        case DOWN : dy = 1; break;
-                        case LEFT : dx = -1; break;
-                        case RIGHT: dx = 1; break;
-                        default: break;
-                    }
+                    if (mDirection | UP)
+                        dy = -1;
+                    else if (mDirection | DOWN)
+                        dy = 1;
+                    if (mDirection | LEFT)
+                        dx = -1;
+                    else if (mDirection | RIGHT)
+                        dx = 1;
                     move(dx, dy);
                     break;
                 case 'b':
-                    switch (mDirection)
-                    {
-                        case UP   : dy = 1; break;
-                        case DOWN : dy = -1; break;
-                        case LEFT : dx = 1; break;
-                        case RIGHT: dx = -1; break;
-                        default: break;
-                    }
+                    if (mDirection | UP)
+                        dy = 1;
+                    else if (mDirection | DOWN)
+                        dy = -1;
+                    if (mDirection | LEFT)
+                        dx = 1;
+                    else if (mDirection | RIGHT)
+                        dx = -1;
                     move(dx, dy);
                     break;
                 default:
