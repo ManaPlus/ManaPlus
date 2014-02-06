@@ -62,6 +62,7 @@
 #include "net/chathandler.h"
 #include "net/inventoryhandler.h"
 #include "net/net.h"
+#include "net/pethandler.h"
 #include "net/playerhandler.h"
 
 #include "resources/iteminfo.h"
@@ -2983,26 +2984,32 @@ void LocalPlayer::crazyMoveA()
         pickUpItems();
     }
     // emote
-    else if (mMoveProgram[mCrazyMoveState] == 'e')
+    else if (mMoveProgram[mCrazyMoveState] == 'e'
+             || mMoveProgram[mCrazyMoveState] == 'E')
     {
         mCrazyMoveState ++;
         const signed char emo = mMoveProgram[mCrazyMoveState];
+        unsigned char emoteId = 0;
         if (emo == '?')
         {
             srand(tick_time);
-            emote(static_cast<unsigned char>(1 + (rand() % EmoteDB::size())));
+            emoteId = static_cast<unsigned char>(
+                1 + (rand() % EmoteDB::size()));
         }
         else
         {
-            unsigned char emoteId = 0;
             if (emo >= '0' && emo <= '9')
                 emoteId = static_cast<unsigned char>(emo - '0' + 1);
             else if (emo >= 'a' && emo <= 'z')
                 emoteId = static_cast<unsigned char>(emo - 'a' + 11);
             else if (emo >= 'A' && emo <= 'Z')
                 emoteId = static_cast<unsigned char>(emo - 'A' + 37);
-            emote(emoteId);
+
         }
+        if (mMoveProgram[mCrazyMoveState] == 'e')
+            emote(emoteId);
+        else
+            Net::getPetHandler()->emote(emoteId, 0);
 
         mCrazyMoveState ++;
     }
