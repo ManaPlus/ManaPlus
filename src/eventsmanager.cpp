@@ -100,7 +100,7 @@ bool EventsManager::handleCommonEvents(const SDL_Event &event) const
     return false;
 }
 
-bool EventsManager::handleEvents()
+bool EventsManager::handleEvents() const
 {
     if (Game::instance())
     {
@@ -157,7 +157,7 @@ bool EventsManager::handleEvents()
     return false;
 }
 
-void EventsManager::handleGameEvents()
+void EventsManager::handleGameEvents() const
 {
     Game *const game = Game::instance();
 

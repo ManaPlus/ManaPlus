@@ -68,7 +68,7 @@ void CommandHandler::handleCommands(const std::string &command,
 }
 
 void CommandHandler::handleCommand(const std::string &command,
-                                   ChatTab *const tab)
+                                   ChatTab *const tab) const
 {
     const size_t pos = command.find(' ');
     const std::string type(command, 0, pos);

@@ -165,7 +165,7 @@ void SpellManager::invoke(const int spellId) const
     }
 }
 
-void SpellManager::invokeSpell(const TextCommand *const spell) const
+void SpellManager::invokeSpell(const TextCommand *const spell)
 {
     if (!chatWindow || !spell)
         return;
@@ -173,7 +173,7 @@ void SpellManager::invokeSpell(const TextCommand *const spell) const
 }
 
 void SpellManager::invokeSpell(const TextCommand *const spell,
-                               const Being *const target) const
+                               const Being *const target)
 {
     if (!chatWindow || !spell || !target)
         return;

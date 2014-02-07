@@ -72,7 +72,7 @@ int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event)
     return 0;
 }
 
-int KeyboardConfig::getKeyIndex(const SDL_Event &event, const int grp) const
+int KeyboardConfig::getKeyIndex(const SDL_Event &event, const int grp)
 {
     const int keyValue = getKeyValueFromEvent(event);
     return inputManager.getKeyIndex(keyValue, grp, INPUT_KEYBOARD);

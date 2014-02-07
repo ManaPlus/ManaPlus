@@ -70,10 +70,10 @@ class SpellManager final
     private:
         void fillSpells();
 
-        void invokeSpell(const TextCommand *const spell,
-                         const Being *const target) const;
+        static void invokeSpell(const TextCommand *const spell,
+                                const Being *const target);
 
-        void invokeSpell(const TextCommand *const spell) const;
+        static void invokeSpell(const TextCommand *const spell);
 
         static std::string parseCommand(std::string command,
                                         const Being *const target)

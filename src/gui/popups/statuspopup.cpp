@@ -154,7 +154,7 @@ void StatusPopup::updateLabels() const
         Input::KEY_SWITCH_QUICK_DROP);
     setLabelText(7, player_node->getPickUpTypeString(),
         Input::KEY_CHANGE_PICKUP_TYPE);
-    setLabelText(8, player_node->getDebugPathString(),
+    setLabelText(8, LocalPlayer::getDebugPathString(),
         Input::KEY_PATHFIND);
     setLabelText(9, player_node->getMagicAttackString(),
         Input::KEY_SWITCH_MAGIC_ATTACK);
@@ -166,6 +166,6 @@ void StatusPopup::updateLabels() const
         Input::KEY_CHANGE_IMITATION_MODE);
     setLabelText(13, player_node->getAwayModeString(),
         Input::KEY_AWAY);
-    setLabelText(14, player_node->getCameraModeString(),
+    setLabelText(14, LocalPlayer::getCameraModeString(),
         Input::KEY_CAMERA);
 }

@@ -2121,7 +2121,7 @@ static const char *const debugPathStrings[] =
     N_("(b) black & white map view")
 };
 
-std::string LocalPlayer::getDebugPathString() const
+std::string LocalPlayer::getDebugPathString()
 {
     return gettext(getVarItem(&debugPathStrings[0],
         viewport->getDebugPath(), debugPathSize));
@@ -2277,7 +2277,7 @@ static const char *const cameraModeStrings[] =
     N_("(?) away")
 };
 
-std::string LocalPlayer::getCameraModeString() const
+std::string LocalPlayer::getCameraModeString()
 {
     return gettext(getVarItem(&cameraModeStrings[0],
         viewport->getCameraMode(), cameraModeSize));

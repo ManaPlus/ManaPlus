@@ -43,7 +43,7 @@ class NamesModel : public gcn::ListModel
         StringVect &getNames() A_WARN_UNUSED
         { return mNames; }
 
-        size_t size() A_WARN_UNUSED
+        size_t size() const A_WARN_UNUSED
         { return mNames.size(); }
 
         void clear()

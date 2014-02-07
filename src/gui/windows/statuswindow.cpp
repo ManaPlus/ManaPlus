@@ -733,10 +733,10 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
         player_node->getQuickDropCounterString()))
         .append(translateLetter2(player_node->getPickUpTypeString()))
         .append(" ").append(translateLetter2(
-        player_node->getDebugPathString()))
+        LocalPlayer::getDebugPathString()))
         .append(" ").append(translateLetter2(
         player_node->getImitationModeString()))
-        .append(translateLetter2(player_node->getCameraModeString()))
+        .append(translateLetter2(LocalPlayer::getCameraModeString()))
         .append(translateLetter2(player_node->getAwayModeString())));
 
     bar->setProgress(50);

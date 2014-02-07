@@ -42,11 +42,11 @@ class EventsManager final : public ConfigListener
 
         void shutdown();
 
-        bool handleEvents();
+        bool handleEvents() const;
 
         bool handleCommonEvents(const SDL_Event &event) const;
 
-        void handleGameEvents();
+        void handleGameEvents() const;
 
 #ifdef USE_SDL2
         static void handleSDL2WindowEvent(const SDL_Event &event);

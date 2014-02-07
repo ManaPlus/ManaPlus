@@ -489,7 +489,7 @@ class LocalPlayer final : public Being,
 
         std::string getPickUpTypeString();
 
-        std::string getDebugPathString() const;
+        static std::string getDebugPathString();
 
         std::string getMagicAttackString();
 
@@ -499,7 +499,7 @@ class LocalPlayer final : public Being,
 
         std::string getAwayModeString();
 
-        std::string getCameraModeString() const;
+        static std::string getCameraModeString();
 
         std::string getGameModifiersString();
 
