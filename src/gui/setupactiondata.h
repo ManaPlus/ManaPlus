@@ -162,6 +162,12 @@ static SetupActionData setupActionData0[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Open trade window"),
+        Input::KEY_OPEN_TRADE,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Change Map View Mode"),
         Input::KEY_PATHFIND,
         "",

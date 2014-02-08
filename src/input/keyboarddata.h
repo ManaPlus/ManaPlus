@@ -2079,7 +2079,14 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         Input::GRP_DEFAULT | Input::GRP_GUI,
         &ActionManager::nextCommandsTab,
         Input::KEY_NO_VALUE, 50,
-        COND_NOINPUT | COND_INGAME}
+        COND_NOINPUT | COND_INGAME},
+    {"keyOpenTrade",
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        Input::GRP_DEFAULT,
+        &ActionManager::openTrade,
+        Input::KEY_NO_VALUE, 50,
+        COND_GAME | COND_NOTARGET},
 };
 
 #endif  // INPUT_KEYBOARDDATA_H
