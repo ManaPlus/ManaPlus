@@ -37,6 +37,8 @@
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/socialwindow.h"
 
+#include "input/inputmanager.h"
+
 #include "utils/checkutils.h"
 #include "utils/gettext.h"
 
@@ -327,6 +329,7 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
         return nullptr;
 
     const bool targetDead = mTargetDeadPlayers;
+    const bool modActive = inputManager.isActionActive(Input::KEY_STOP_ATTACK);
 
     if (mExtMouseTargeting)
     {
@@ -360,8 +363,11 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
 
             Being *const being = static_cast<Being*>(*it);
 
-            if (being->getInfo() && !being->getInfo()->isTargetSelection())
+            if (being->getInfo() && !(being->getInfo()->isTargetSelection()
+                || modActive))
+            {
                 continue;
+            }
 
             if ((being->isAlive()
                 || (targetDead && being->getType() == Being::PLAYER))
@@ -406,8 +412,11 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
 
             Being *const being = static_cast<Being*>(*it);
 
-            if (being->getInfo() && !being->getInfo()->isTargetSelection())
+            if (being->getInfo() && !(being->getInfo()->isTargetSelection()
+                || modActive))
+            {
                 continue;
+            }
 
             if ((being->getPixelX() - mapTileSize / 2 <= x) &&
                 (being->getPixelX() + mapTileSize / 2 > x) &&
@@ -430,6 +439,7 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
 
     const int xtol = mapTileSize / 2;
     const int uptol = mapTileSize;
+    const bool modActive = inputManager.isActionActive(Input::KEY_STOP_ATTACK);
 
     for_actors
     {
@@ -442,7 +452,7 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
         const Being *const being = dynamic_cast<const Being*>(*it);
 
         if (being && being->getInfo()
-            && !being->getInfo()->isTargetSelection())
+            && !(being->getInfo()->isTargetSelection() || modActive))
         {
             continue;
         }
@@ -879,6 +889,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
 
     const bool filtered = config.getBoolValue("enableAttackFilter")
         && type == Being::MONSTER;
+    const bool modActive = inputManager.isActionActive(Input::KEY_STOP_ATTACK);
 
     bool ignoreDefault = false;
     if (filtered)
@@ -935,8 +946,11 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                 }
             }
 
-            if (being->getInfo() && !being->getInfo()->isTargetSelection())
+            if (being->getInfo()
+                && !(being->getInfo()->isTargetSelection() || modActive))
+            {
                 continue;
+            }
 
             if (validateBeing(aroundBeing, being, type, nullptr, maxDist))
             {
@@ -1029,8 +1043,11 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                 }
             }
 
-            if (being->getInfo() && !being->getInfo()->isTargetSelection())
+            if (being->getInfo()
+                && !(being->getInfo()->isTargetSelection() || modActive))
+            {
                 continue;
+            }
 
             const bool valid = validateBeing(aroundBeing, being,
                                              type, excluded, 50);
