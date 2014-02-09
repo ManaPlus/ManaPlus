@@ -190,7 +190,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
     // Load the file through resource manager
     const ResourceManager *const resman = ResourceManager::getInstance();
     int fileSize;
-    void *buffer = resman->loadFile(realFilename, fileSize);
+    void *const buffer = resman->loadFile(realFilename, fileSize);
     Map *map = nullptr;
 
     if (!buffer)
@@ -199,33 +199,8 @@ Map *MapReader::readMap(const std::string &restrict filename,
         return createEmptyMap(filename, realFilename);
     }
 
-    unsigned char *inflated = nullptr;
-    unsigned int inflatedSize;
-
-    if (realFilename.find(".gz", realFilename.length() - 3)
-        != std::string::npos)
-    {
-        // Inflate the gzipped map data
-        inflatedSize = inflateMemory(static_cast<unsigned char*>(buffer),
-            fileSize, inflated);
-        free(buffer);
-
-        if (!inflated)
-        {
-            logger->log("Could not decompress map file (%s)",
-                        realFilename.c_str());
-            BLOCK_END("MapReader::readMap")
-            return nullptr;
-        }
-    }
-    else
-    {
-        inflated = static_cast<unsigned char*>(buffer);
-        inflatedSize = fileSize;
-    }
-
-    XML::Document doc(reinterpret_cast<char*>(inflated), inflatedSize);
-    free(inflated);
+    XML::Document doc(reinterpret_cast<const char*>(buffer), fileSize);
+    free(buffer);
 
     XmlNodePtrConst node = doc.rootNode();
 
