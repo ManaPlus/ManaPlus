@@ -236,4 +236,6 @@ std::string decodeLinkText(std::string data);
 
 bool isDigit(const std::string &str);
 
+void secureChatCommand(std::string &str);
+
 #endif  // UTILS_STRINGUTILS_H

@@ -1312,7 +1312,6 @@ void ChatWindow::autoComplete()
     const int caretPos = mChatInput->getCaretPosition();
     int startName = 0;
     const std::string inputText = mChatInput->getText();
-    bool needSecure(false);
     std::string name = inputText.substr(0, caretPos);
 
     for (int f = caretPos - 1; f > -1; f --)
@@ -1335,15 +1334,15 @@ void ChatWindow::autoComplete()
     if (cTab)
         cTab->getAutoCompleteList(nameList);
     std::string newName = autoComplete(nameList, name);
-    if (!newName.empty())
-        needSecure = true;
+    if (!newName.empty() && !startName)
+        secureChatCommand(newName);
 
     if (newName.empty() && actorManager)
     {
         actorManager->getPlayerNames(nameList, true);
         newName = autoComplete(nameList, name);
-        if (!newName.empty())
-            needSecure = true;
+        if (!newName.empty() && !startName)
+            secureChatCommand(newName);
     }
     if (newName.empty())
         newName = autoCompleteHistory(name);
@@ -1366,11 +1365,6 @@ void ChatWindow::autoComplete()
 
     if (!newName.empty())
     {
-        if (!startName && needSecure && (newName[0] == '/'
-            || newName[0] == '@' || newName[0] == '#'))
-        {
-            newName = "_" + newName;
-        }
         mChatInput->setText(inputText.substr(0, startName).append(newName)
             .append(inputText.substr(caretPos,
             inputText.length() - caretPos)));

@@ -721,3 +721,9 @@ bool isDigit(const std::string &str)
     }
     return true;
 }
+
+void secureChatCommand(std::string &str)
+{
+    if (str[0] == '/' || str[0] == '@' || str[0] == '#')
+        str = "_" + str;
+}
