@@ -30,6 +30,7 @@
 #include "tileset.h"
 
 #include "resources/animation.h"
+#include "resources/beingcommon.h"
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
@@ -41,6 +42,15 @@
 #include <zlib.h>
 
 #include "debug.h"
+
+typedef std::map<std::string, XmlNodePtr>::iterator LayerInfoIterator;
+typedef std::set<XML::Document*>::iterator DocIterator;
+
+namespace
+{
+    std::map<std::string, XmlNodePtr> mKnownLayers;
+    std::set<XML::Document*> mKnownDocs;
+}  // namespace
 
 static int inflateMemory(unsigned char *restrict const in,
                          const unsigned int inLength,
@@ -182,28 +192,47 @@ int inflateMemory(unsigned char *restrict const in,
     return outLength;
 }
 
+void MapReader::addLayerToList(const std::string &fileName)
+{
+    XML::Document *doc = new XML::Document(fileName);
+    XmlNodePtrConst node = doc->rootNode();
+    if (!node)
+    {
+        delete doc;
+        return;
+    }
+
+    for_each_xml_child_node(childNode, node)
+    {
+        if (!xmlNameEqual(childNode, "layer"))
+            continue;
+        std::string name = XML::getProperty(childNode, "name", "");
+        if (name.empty())
+            continue;
+        name = toLower(name);
+        logger->log("found patch layer: " + name);
+        LayerInfoIterator it = mKnownLayers.find(name);
+        mKnownLayers[name] = childNode;
+        mKnownDocs.insert(doc);
+    }
+}
+
 Map *MapReader::readMap(const std::string &restrict filename,
                         const std::string &restrict realFilename)
 {
     BLOCK_START("MapReader::readMap")
     logger->log("Attempting to read map %s", realFilename.c_str());
-    // Load the file through resource manager
-    const ResourceManager *const resman = ResourceManager::getInstance();
-    int fileSize;
-    void *const buffer = resman->loadFile(realFilename, fileSize);
-    Map *map = nullptr;
 
-    if (!buffer)
+    XML::Document doc(realFilename);
+    if (!doc.isLoaded())
     {
         BLOCK_END("MapReader::readMap")
         return createEmptyMap(filename, realFilename);
     }
 
-    XML::Document doc(reinterpret_cast<const char*>(buffer), fileSize);
-    free(buffer);
-
     XmlNodePtrConst node = doc.rootNode();
 
+    Map *map = nullptr;
     // Parse the inflated map data
     if (node)
     {
@@ -231,6 +260,24 @@ Map *MapReader::readMap(const std::string &restrict filename,
     return map;
 }
 
+void MapReader::loadLayers(const std::string &path)
+{
+    loadXmlDir2(path, addLayerToList, ".tmx");
+}
+
+void MapReader::unloadTempLayers()
+{
+    FOR_EACH (DocIterator, it, mKnownDocs)
+        delete (*it);
+    mKnownLayers.clear();
+    mKnownDocs.clear();
+}
+
+static void loadReplaceLayer(LayerInfoIterator &it, Map *const map)
+{
+    MapReader::readLayer((*it).second, map);
+}
+
 Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
 {
     if (!node)
@@ -255,6 +302,9 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
                     path.c_str());
         return nullptr;
     }
+
+    logger->log("loading replace layer list");
+    loadLayers(path + "_replace.d");
 
     Map *const map = new Map(w, h, tilew, tileh);
 
@@ -284,7 +334,18 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
         }
         else if (xmlNameEqual(childNode, "layer"))
         {
-            readLayer(childNode, map);
+            std::string name = XML::getProperty(childNode, "name", "");
+            name = toLower(name);
+            LayerInfoIterator it = mKnownLayers.find(name);
+            if (it == mKnownLayers.end())
+            {
+                readLayer(childNode, map);
+            }
+            else
+            {
+                logger->log("load replace layer: " + name);
+                loadReplaceLayer(it, map);
+            }
         }
         else if (xmlNameEqual(childNode, "properties"))
         {
@@ -377,6 +438,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     map->setActorsFix(0, atoi(map->getProperty("actorsfix").c_str()));
     map->reduce();
     map->setWalkLayer(resman->getWalkLayer(fileName, map));
+    unloadTempLayers();
     return map;
 }
 

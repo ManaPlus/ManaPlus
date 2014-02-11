@@ -59,6 +59,11 @@ class MapReader final
                                    const std::string &restrict realFilename)
                                    A_WARN_UNUSED;
 
+        /**
+         * Reads a map layer and adds it to the given map.
+         */
+        static void readLayer(const XmlNodePtr node, Map *const map);
+
     private:
         /**
          * Reads the properties element.
@@ -69,11 +74,6 @@ class MapReader final
          */
         static void readProperties(const XmlNodePtrConst node,
                                    Properties *const props);
-
-        /**
-         * Reads a map layer and adds it to the given map.
-         */
-        static void readLayer(const XmlNodePtr node, Map *const map);
 
         static bool readBase64Layer(const XmlNodePtrConst childNode,
                                     Map *const map,
@@ -100,6 +100,12 @@ class MapReader final
                                     Map *const map) A_WARN_UNUSED;
 
         static void updateMusic(Map *const map);
+
+        static void addLayerToList(const std::string &fileName);
+
+        static void loadLayers(const std::string &path);
+
+        static void unloadTempLayers();
 };
 
 #endif  // RESOURCES_MAPREADER_H

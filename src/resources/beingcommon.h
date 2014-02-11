@@ -30,11 +30,21 @@
 class BeingInfo;
 
 #define loadXmlDir(name, function) \
-    StringVect listVect; \
-    BeingCommon::getIncludeFiles(paths.getStringValue( \
-        name), listVect); \
-    FOR_EACH (StringVectCIter, itVect, listVect) \
-        function(*itVect);
+    { \
+        StringVect listVect; \
+        BeingCommon::getIncludeFiles(paths.getStringValue( \
+            name), listVect, ".xml"); \
+        FOR_EACH (StringVectCIter, itVect, listVect) \
+            function(*itVect); \
+    }
+
+#define loadXmlDir2(name, function, ext) \
+    { \
+        StringVect listVect; \
+        BeingCommon::getIncludeFiles(name, listVect, ext); \
+        FOR_EACH (StringVectCIter, itVect, listVect) \
+            function(*itVect); \
+    }
 
 namespace BeingCommon
 {
@@ -42,7 +52,9 @@ namespace BeingCommon
                              XmlNodePtrConst node,
                              const std::string &hoverCursor);
 
-    void getIncludeFiles(const std::string &dir, StringVect &list);
+    void getIncludeFiles(const std::string &dir,
+                         StringVect &list,
+                         const std::string &ext);
 }
 
 #endif  // RESOURCES_BEINGCOMMON_H

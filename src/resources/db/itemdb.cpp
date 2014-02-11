@@ -217,7 +217,9 @@ void ItemDB::load()
     loadXmlFile(paths.getStringValue("itemsPatchFile"), tagNum);
 
     StringVect list;
-    BeingCommon::getIncludeFiles(paths.getStringValue("itemsPatchDir"), list);
+    BeingCommon::getIncludeFiles(paths.getStringValue("itemsPatchDir"),
+        list,
+        ".xml");
     FOR_EACH (StringVectCIter, it, list)
         loadXmlFile(*it, tagNum);
 }

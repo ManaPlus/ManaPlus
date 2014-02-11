@@ -53,7 +53,7 @@ void ColorDB::load()
     loadHair(paths.getStringValue("hairColorPatchFile"), colors);
     StringVect list;
     BeingCommon::getIncludeFiles(paths.getStringValue(
-        "hairColorPatchDir"), list);
+        "hairColorPatchDir"), list, ".xml");
     FOR_EACH (StringVectCIter, it2, list)
         loadHair(*it2, colors);
 

@@ -49,7 +49,9 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info,
     info->setHpBarOffsetY(XML::getProperty(node, "hpBarOffsetY", 0));
 }
 
-void BeingCommon::getIncludeFiles(const std::string &dir, StringVect &list)
+void BeingCommon::getIncludeFiles(const std::string &dir,
+                                  StringVect &list,
+                                  const std::string &ext)
 {
     const std::string path = dir + "/";
     StringVect tempList;
@@ -57,7 +59,7 @@ void BeingCommon::getIncludeFiles(const std::string &dir, StringVect &list)
     FOR_EACH (StringVectCIter, it, tempList)
     {
         const std::string &str = *it;
-        if (findLast(str, ".xml"))
+        if (findLast(str, ext))
             list.push_back(str);
     }
     std::sort(list.begin(), list.end());

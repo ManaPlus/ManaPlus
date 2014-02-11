@@ -90,6 +90,9 @@ namespace XML
              */
             XmlNodePtr rootNode() A_WARN_UNUSED;
 
+            bool isLoaded() const
+            { return mDoc != nullptr; }
+
         private:
             xmlDocPtr mDoc;
     };
