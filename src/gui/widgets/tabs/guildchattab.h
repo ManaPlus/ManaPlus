@@ -55,6 +55,8 @@ class GuildChatTab final : public ChatTab, public ConfigListener
         void handleInput(const std::string &msg) override final;
 
         void getAutoCompleteList(StringVect &names) const override final;
+
+        void getAutoCompleteCommands(StringVect &names) const override final;
 };
 
 #endif  // GUI_WIDGETS_TABS_GUILDCHATTAB_H

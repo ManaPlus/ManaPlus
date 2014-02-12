@@ -58,6 +58,8 @@ class GuildTab : public ChatTab, public ConfigListener
         void handleInput(const std::string &msg) override final;
 
         void getAutoCompleteList(StringVect &names) const override final;
+
+        void getAutoCompleteCommands(StringVect &names) const override final;
 };
 
 }  // namespace Ea

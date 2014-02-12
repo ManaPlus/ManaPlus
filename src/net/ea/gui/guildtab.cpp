@@ -147,7 +147,15 @@ void GuildTab::getAutoCompleteList(StringVect &names) const
 {
     if (taGuild)
         taGuild->getNames(names);
+}
+
+void GuildTab::getAutoCompleteCommands(StringVect &names) const
+{
+    names.push_back("/help");
+    names.push_back("/invite ");
+    names.push_back("/kick ");
     names.push_back("/notice ");
+    names.push_back("/leave");
 }
 
 void GuildTab::saveToLogFile(const std::string &msg) const
