@@ -1,0 +1,16 @@
+ <- @@index|<<Back to Index>>@@
+
+
+##3                            <<Party chat commands>>
+
+##2
+    <</help - show this help.>>
+    <</invite NICK - invite a player to your party.>>
+    <</leave - leave the party you are in.>>
+    <</kick NICK - kick someone from the party you are in.>>
+    <</item - show party item sharing options.>>
+      <</item 0 - disable party item sharing options.>>
+      <</item 1 - enable party item sharing options.>>
+    <</exp - show party experience sharing options.>>
+      <</exp 0 - disable party experience sharing options.>>
+      <</exp 1 - enable party experience sharing options.>>

@@ -5,6 +5,7 @@ helpdir = $(pkgdatadir)/data/help
 help_DATA =				\
 	about.txt			\
 	chatcommands.txt	\
+	chatparty.txt	\
 	commands.txt		\
 	download.txt		\
 	footer.txt			\
