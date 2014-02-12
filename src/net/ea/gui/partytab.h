@@ -57,7 +57,9 @@ class PartyTab : public ChatTab, public ConfigListener
     protected:
         void handleInput(const std::string &msg) override final;
 
-        virtual void getAutoCompleteList(StringVect&) const override final;
+        void getAutoCompleteList(StringVect&) const override final;
+
+        void getAutoCompleteCommands(StringVect &names) const override final;
 };
 
 extern PartyTab *partyTab;

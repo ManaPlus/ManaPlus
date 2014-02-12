@@ -275,6 +275,16 @@ void PartyTab::getAutoCompleteList(StringVect &names) const
         p->getNames(names);
 }
 
+void PartyTab::getAutoCompleteCommands(StringVect &names) const
+{
+    names.push_back("/help");
+    names.push_back("/invite ");
+    names.push_back("/leave");
+    names.push_back("/kick ");
+    names.push_back("/item");
+    names.push_back("/exp");
+}
+
 void PartyTab::saveToLogFile(const std::string &msg) const
 {
     if (chatLogger)

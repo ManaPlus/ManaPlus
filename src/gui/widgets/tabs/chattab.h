@@ -195,6 +195,9 @@ class ChatTab : public Tab
         virtual void getAutoCompleteList(StringVect&) const
         {}
 
+        virtual void getAutoCompleteCommands(StringVect&) const
+        {}
+
         void addRow(std::string &line);
 
         BrowserBox *mTextOutput;

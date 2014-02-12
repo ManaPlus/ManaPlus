@@ -1337,6 +1337,12 @@ void ChatWindow::autoComplete()
     if (!newName.empty() && !startName)
         secureChatCommand(newName);
 
+    if (cTab && newName.empty())
+    {
+        cTab->getAutoCompleteCommands(nameList);
+        newName = autoComplete(nameList, name);
+    }
+
     if (newName.empty() && actorManager)
     {
         actorManager->getPlayerNames(nameList, true);
