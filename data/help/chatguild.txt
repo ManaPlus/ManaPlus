@@ -1,0 +1,11 @@
+ <- @@index|<<Back to Index>>@@
+
+
+##3                            <<Guild chat commands>>
+
+##2
+    <</help - show this help.>>
+    <</invite NICK - invite a player to your party.>>
+    <</leave - leave the party you are in.>>
+    <</kick NICK - kick someone from the party you are in.>>
+    <</notice TEXT - set notice guild text.>>
