@@ -43,8 +43,6 @@ class GuildTab : public ChatTab, public ConfigListener
         bool handleCommand(const std::string &restrict type,
                            const std::string &restrict args) override final;
 
-        void showHelp() override;
-
         void saveToLogFile(const std::string &msg) const override final;
 
         int getType() const override final A_WARN_UNUSED

@@ -109,13 +109,6 @@ class ChatTab : public Tab
         void clearText();
 
         /**
-         * Add any extra help text to the output. Allows tabs to define help
-         * for commands defined by the tab itself.
-         */
-        virtual void showHelp()
-        { }
-
-        /**
          * Handle special commands. Allows a tab to handle commands it
          * defines itself.
          *

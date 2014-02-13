@@ -67,84 +67,10 @@ void PartyTab::handleInput(const std::string &msg)
     Net::getPartyHandler()->chat(ChatWindow::doReplace(msg));
 }
 
-void PartyTab::showHelp()
-{
-    // TRANSLATORS: party help message
-    chatLog(_("/help > Display this help."));
-    // TRANSLATORS: party help message
-    chatLog(_("/invite > Invite a player to your party"));
-    // TRANSLATORS: party help message
-    chatLog(_("/leave > Leave the party you are in"));
-    // TRANSLATORS: party help message
-    chatLog(_("/kick > Kick someone from the party you are in"));
-    // TRANSLATORS: party help message
-    chatLog(_("/item > Show/change party item sharing options"));
-    // TRANSLATORS: party help message
-    chatLog(_("/exp > Show/change party experience sharing options"));
-}
-
 bool PartyTab::handleCommand(const std::string &restrict type,
                              const std::string &restrict args)
 {
-    if (type == "help")
-    {
-        if (args == "invite")
-        {
-            // TRANSLATORS: party help message
-            chatLog(_("Command: /invite <nick>"));
-            // TRANSLATORS: party help message
-            chatLog(_("This command invites <nick> to party with you."));
-            // TRANSLATORS: party help message
-            chatLog(_("If the <nick> has spaces in it, enclose it in "
-                            "double quotes (\")."));
-        }
-        else if (args == "leave")
-        {
-            // TRANSLATORS: party help message
-            chatLog(_("Command: /leave"));
-            // TRANSLATORS: party help message
-            chatLog(_("This command causes the player to leave the party."));
-        }
-        else if (args == "item")
-        {
-            // TRANSLATORS: party help message
-            chatLog(_("Command: /item <policy>"));
-            // TRANSLATORS: party help message
-            chatLog(
-                _("This command changes the party's item sharing policy."));
-            // TRANSLATORS: party help message
-            chatLog(_("<policy> can be one of \"1\", \"yes\", \"true\" to "
-                      "enable item sharing, or \"0\", \"no\", \"false\" to "
-                      "disable item sharing."));
-            // TRANSLATORS: party help message
-            chatLog(_("Command: /item"));
-            // TRANSLATORS: party help message
-            chatLog(_("This command displays the party's"
-                    " current item sharing policy."));
-        }
-        else if (args == "exp")
-        {
-            // TRANSLATORS: party help message
-            chatLog(_("Command: /exp <policy>"));
-            // TRANSLATORS: party help message
-            chatLog(_("This command changes the party's "
-                    "experience sharing policy."));
-            // TRANSLATORS: party help message
-            chatLog(_("<policy> can be one of \"1\", \"yes\", \"true\" to "
-                      "enable experience sharing, or \"0\","
-                      " \"no\", \"false\" to disable experience sharing."));
-            // TRANSLATORS: party help message
-            chatLog(_("Command: /exp"));
-            // TRANSLATORS: party help message
-            chatLog(_("This command displays the party's current "
-                    "experience sharing policy."));
-        }
-        else
-        {
-            return false;
-        }
-    }
-    else if (type == "create" || type == "new")
+    if (type == "create" || type == "new")
     {
         if (args.empty())
         {

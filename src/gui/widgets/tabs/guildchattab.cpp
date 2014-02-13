@@ -55,50 +55,16 @@ GuildChatTab::~GuildChatTab()
 bool GuildChatTab::handleCommand(const std::string &restrict type,
                                  const std::string &restrict args)
 {
-    if (type == "help")
-    {
-        if (args == "invite")
-        {
-            // TRANSLATORS: guild chat tab help
-            chatLog(_("Command: /invite <nick>"));
-            // TRANSLATORS: guild chat tab help
-            chatLog(_("This command invites <nick> to the guild you're in."));
-            // TRANSLATORS: guild chat tab help
-            chatLog(_("If the <nick> has spaces in it, enclose it in "
-                            "double quotes (\")."));
-        }
-        else if (args == "leave")
-        {
-            // TRANSLATORS: guild chat tab help
-            chatLog(_("Command: /leave"));
-            // TRANSLATORS: guild chat tab help
-            chatLog(_("This command causes the player to leave the guild."));
-        }
-        else
-        {
-            return false;
-        }
-    }
-    else if (type == "invite" && guildManager)
-    {
+    if (type == "invite" && guildManager)
         guildManager->invite(args);
-    }
     else if (type == "leave" && guildManager)
-    {
         guildManager->leave();
-    }
     else if (type == "kick" && guildManager)
-    {
         guildManager->kick(args);
-    }
     else if (type == "notice" && guildManager)
-    {
         guildManager->notice(args);
-    }
     else
-    {
         return false;
-    }
 
     return true;
 }
@@ -108,18 +74,6 @@ void GuildChatTab::handleInput(const std::string &msg)
     if (!guildManager)
         return;
     guildManager->chat(ChatWindow::doReplace(msg));
-}
-
-void GuildChatTab::showHelp()
-{
-    // TRANSLATORS: guild chat tab help
-    chatLog(_("/help > Display this help."));
-    // TRANSLATORS: guild chat tab help
-    chatLog(_("/invite > Invite a player to your guild"));
-    // TRANSLATORS: guild chat tab help
-    chatLog(_("/leave > Leave the guild you are in"));
-    // TRANSLATORS: guild chat tab help
-    chatLog(_("/kick > Kick someone from the guild you are in"));
 }
 
 void GuildChatTab::getAutoCompleteList(StringVect &names) const

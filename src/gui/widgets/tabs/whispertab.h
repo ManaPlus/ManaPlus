@@ -36,8 +36,6 @@ class WhisperTab final : public ChatTab
         const std::string &getNick() const A_WARN_UNUSED
         { return mNick; }
 
-        void showHelp() override final;
-
         bool handleCommand(const std::string &restrict type,
                            const std::string &restrict args) override final;
 

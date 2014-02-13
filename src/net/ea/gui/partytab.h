@@ -40,8 +40,6 @@ class PartyTab : public ChatTab, public ConfigListener
 
         virtual ~PartyTab();
 
-        void showHelp() override final;
-
         bool handleCommand(const std::string &restrict type,
                            const std::string &restrict args) override final;
 
