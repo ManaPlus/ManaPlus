@@ -42,7 +42,6 @@ src/gui/widgets/tabs/setup_touch.cpp
 src/gui/widgets/tabs/setup_video.cpp
 src/gui/widgets/tabs/setup_visual.cpp
 src/gui/widgets/tabs/tradetab.cpp
-src/gui/widgets/tabs/whispertab.cpp
 src/gui/windowmenu.cpp
 src/gui/windows/botcheckerwindow.cpp
 src/gui/windows/buydialog.cpp

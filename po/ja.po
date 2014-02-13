@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-02-04 22:58+0300\n"
-"PO-Revision-Date: 2014-02-02 08:14+0000\n"
+"POT-Creation-Date: 2014-02-13 12:04+0300\n"
+"PO-Revision-Date: 2014-02-05 08:13+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/"
 "language/ja/)\n"
@@ -25,17 +25,17 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. TRANSLATORS: disable trades message
-#: src/actionmanager.cpp:872
+#: src/actionmanager.cpp:875
 msgid "Ignoring incoming trade requests"
 msgstr "トレードリクエストを無効にしています"
 
 #. TRANSLATORS: enable trades message
-#: src/actionmanager.cpp:882
+#: src/actionmanager.cpp:885
 msgid "Accepting incoming trade requests"
 msgstr "トレードリクエストを有効にしました"
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1251
+#: src/actormanager.cpp:1268
 msgid "Visible on map"
 msgstr "マップに表示させる"
 
@@ -63,436 +63,436 @@ msgid "I"
 msgstr "I"
 
 #. TRANSLATORS: chat message after death
-#: src/being/localplayer.cpp:388
+#: src/being/localplayer.cpp:391
 #, c-format
 msgid "You were killed by %s"
 msgstr "%sによって殺されました"
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:1373
+#: src/being/localplayer.cpp:1376
 msgid "Tried to pick up nonexistent item."
 msgstr "存在しないアイテムは拾えません"
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:1377
+#: src/being/localplayer.cpp:1380
 msgid "Item is too heavy."
 msgstr "アイテムが重過ぎます"
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:1381
+#: src/being/localplayer.cpp:1384
 msgid "Item is too far away."
 msgstr "アイテムが遠すぎます."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:1385
+#: src/being/localplayer.cpp:1388
 msgid "Inventory is full."
 msgstr "インベントリーが満杯です"
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:1389
+#: src/being/localplayer.cpp:1392
 msgid "Stack is too big."
 msgstr "量が多すぎます"
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:1393
+#: src/being/localplayer.cpp:1396
 msgid "Item belongs to someone else."
 msgstr "これは他のプレイヤーのアイテムです"
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:1397
+#: src/being/localplayer.cpp:1400
 msgid "Unknown problem picking up item."
 msgstr "不明なエラーの為拾えません"
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:1421
+#: src/being/localplayer.cpp:1424
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "%d [@@%d|%s@@]を手に入れました"
 
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1626 src/being/localplayer.cpp:1661
-#: src/being/localplayer.cpp:1662
+#: src/being/localplayer.cpp:1629 src/being/localplayer.cpp:1664
+#: src/being/localplayer.cpp:1665
 msgid "xp"
 msgstr "xp"
 
-#: src/being/localplayer.cpp:1667 src/being/localplayer.cpp:1674
-#: src/being/localplayer.cpp:1681
+#: src/being/localplayer.cpp:1670 src/being/localplayer.cpp:1677
+#: src/being/localplayer.cpp:1684
 msgid "job"
 msgstr "ジョブ"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1867
+#: src/being/localplayer.cpp:1870
 msgid "(D) default moves"
 msgstr "(D) デフォルトムーブ"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1869
+#: src/being/localplayer.cpp:1872
 msgid "(I) invert moves"
 msgstr "(I) 逆ムーブ"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1871
+#: src/being/localplayer.cpp:1874
 msgid "(c) moves with some crazy moves"
 msgstr "(c) クレイジームーブを含んだムーブ"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1873
+#: src/being/localplayer.cpp:1876
 msgid "(C) moves with crazy moves"
 msgstr "(C) クレイジームーブ"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1875
+#: src/being/localplayer.cpp:1878
 msgid "(d) double normal + crazy"
 msgstr "(d) ダブルノーマル + クレイジー"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1877
+#: src/being/localplayer.cpp:1880
 msgid "(?) unknown move"
 msgstr "(?) 不明なムーブ"
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/being/localplayer.cpp:1900
+#: src/being/localplayer.cpp:1903
 #, c-format
 msgid "(%u) crazy move number %u"
 msgstr ""
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/being/localplayer.cpp:1906
+#: src/being/localplayer.cpp:1909
 msgid "(a) custom crazy move"
 msgstr "(a) カスタムクレイジームーブ"
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/being/localplayer.cpp:1911
+#: src/being/localplayer.cpp:1914
 msgid "(?) crazy move"
 msgstr "(?) クレイジームーブ"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1926
+#: src/being/localplayer.cpp:1929
 msgid "(0) default moves to target"
 msgstr "(0) ターゲットへデフォルト接近"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1928
+#: src/being/localplayer.cpp:1931
 msgid "(1) moves to target in distance 1"
 msgstr "(1) 距離1でターゲットへ接近"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1930
+#: src/being/localplayer.cpp:1933
 msgid "(2) moves to target in distance 2"
 msgstr "(2) 距離2でターゲットに近付く"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1932
+#: src/being/localplayer.cpp:1935
 msgid "(3) moves to target in distance 3"
 msgstr "(3) 距離3でターゲットへ接近"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1934
+#: src/being/localplayer.cpp:1937
 msgid "(5) moves to target in distance 5"
 msgstr "(5) 距離5でターゲットに近付く"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1936
+#: src/being/localplayer.cpp:1939
 msgid "(7) moves to target in distance 7"
 msgstr "(7) 距離7でターゲットに近付く"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1938
+#: src/being/localplayer.cpp:1941
 msgid "(A) moves to target in attack range"
 msgstr "(A) 攻撃範囲内のターゲットに近付く"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1940
+#: src/being/localplayer.cpp:1943
 msgid "(a) archer attack range"
 msgstr "(a) 弓師攻撃範囲"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1942
+#: src/being/localplayer.cpp:1945
 msgid "(B) moves to target in attack range - 1"
 msgstr "(B) 攻撃範囲 - 1のターゲットまで移動"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1944
+#: src/being/localplayer.cpp:1947
 msgid "(?) move to target"
 msgstr "(?) ターゲットに近付く"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1964
+#: src/being/localplayer.cpp:1967
 msgid "(D) default follow"
 msgstr "(D) デフォルトフォロー"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1966
+#: src/being/localplayer.cpp:1969
 msgid "(R) relative follow"
 msgstr "(R) 友達フォロー"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1968
+#: src/being/localplayer.cpp:1971
 msgid "(M) mirror follow"
 msgstr "(M) ミラーフォロー"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1970
+#: src/being/localplayer.cpp:1973
 msgid "(P) pet follow"
 msgstr "(P) ペットフォロー"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1972
+#: src/being/localplayer.cpp:1975
 msgid "(?) unknown follow"
 msgstr "(?) 不明なフォロー"
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1992 src/being/localplayer.cpp:2000
-#: src/being/localplayer.cpp:2028
+#: src/being/localplayer.cpp:1995 src/being/localplayer.cpp:2003
+#: src/being/localplayer.cpp:2031
 msgid "(?) attack"
 msgstr "(?) 攻撃"
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1994 src/being/localplayer.cpp:2020
+#: src/being/localplayer.cpp:1997 src/being/localplayer.cpp:2023
 msgid "(D) default attack"
 msgstr "(D) デフォルト攻撃"
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/being/localplayer.cpp:1996
+#: src/being/localplayer.cpp:1999
 msgid "(s) switch attack without shield"
 msgstr "(s) 盾なし攻撃"
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/being/localplayer.cpp:1998
+#: src/being/localplayer.cpp:2001
 msgid "(S) switch attack with shield"
 msgstr "(S) 盾あり攻撃"
 
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:2022
+#: src/being/localplayer.cpp:2025
 msgid "(G) go and attack"
 msgstr "(G) 接近、攻撃"
 
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:2024
+#: src/being/localplayer.cpp:2027
 msgid "(A) go, attack, pickup"
 msgstr "(A) 接近、攻撃、拾う"
 
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:2026
+#: src/being/localplayer.cpp:2029
 msgid "(d) without auto attack"
 msgstr "(d) 自動攻撃なし"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:2080
+#: src/being/localplayer.cpp:2083
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) 小範囲で拾う 1x1セル"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:2082
+#: src/being/localplayer.cpp:2085
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) デフォルト範囲で拾う 2x1セル"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:2084
+#: src/being/localplayer.cpp:2087
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) 広範囲で拾う 2x3セル"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:2086
+#: src/being/localplayer.cpp:2089
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) 3x3セルの範囲で拾う"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:2088
+#: src/being/localplayer.cpp:2091
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) 距離4の範囲で拾う"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:2090
+#: src/being/localplayer.cpp:2093
 msgid "(G) go and pick up in distance 8"
 msgstr "(G) 距離8で拾う"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:2092
+#: src/being/localplayer.cpp:2095
 msgid "(A) go and pick up in max distance"
 msgstr "(A) 最大範囲で拾う"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:2094
+#: src/being/localplayer.cpp:2097
 msgid "(?) pick up"
 msgstr "(?) 拾う"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:2108
+#: src/being/localplayer.cpp:2111
 msgid "(N) normal map view"
 msgstr "(N) 通常マップビュー"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:2110
+#: src/being/localplayer.cpp:2113
 msgid "(D) debug map view"
 msgstr "(D) デバッグマップビュー"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:2112
+#: src/being/localplayer.cpp:2115
 msgid "(u) ultra map view"
 msgstr "(u) ウルトラマップビュー"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:2114
+#: src/being/localplayer.cpp:2117
 msgid "(U) ultra map view 2"
 msgstr "(U) ウルトラマップビュー2"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:2116
+#: src/being/localplayer.cpp:2119
 msgid "(e) empty map view"
 msgstr "(e) 空マップビュー"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:2118
+#: src/being/localplayer.cpp:2121
 msgid "(b) black & white map view"
 msgstr "(b) 白黒マップビュー"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:2138
+#: src/being/localplayer.cpp:2141
 msgid "(f) use #flar for magic attack"
 msgstr "(f) 魔法攻撃は #flarを使う"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:2140
+#: src/being/localplayer.cpp:2143
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) 魔法攻撃は #chizaを使う"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:2142
+#: src/being/localplayer.cpp:2145
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) 魔法攻撃は #ingravを使う"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:2144
+#: src/being/localplayer.cpp:2147
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) 魔法攻撃は #frillyarを使う"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:2146
+#: src/being/localplayer.cpp:2149
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) 魔法攻撃は #upmarmuを使う"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:2148
+#: src/being/localplayer.cpp:2151
 msgid "(?) magic attack"
 msgstr "(?) 魔法攻撃"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:2168
+#: src/being/localplayer.cpp:2171
 msgid "(a) attack all players"
 msgstr "(a) 全てのプレイヤーを攻撃"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:2170
+#: src/being/localplayer.cpp:2173
 msgid "(f) attack all except friends"
 msgstr "(f) 友達以外を攻撃"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:2172
+#: src/being/localplayer.cpp:2175
 msgid "(b) attack bad relations"
 msgstr "(b) 敵を攻撃"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:2174
+#: src/being/localplayer.cpp:2177
 msgid "(d) don't attack players"
 msgstr "(d) 他のプレイヤーを攻撃しない"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:2176
+#: src/being/localplayer.cpp:2179
 msgid "(?) pvp attack"
 msgstr "(?) PvP攻撃"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:2196
+#: src/being/localplayer.cpp:2199
 msgid "(D) default imitation"
 msgstr "(D) デフォルト真似"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:2198
+#: src/being/localplayer.cpp:2201
 msgid "(O) outfits imitation"
 msgstr "(O) 服装真似"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:2200
+#: src/being/localplayer.cpp:2203
 msgid "(?) imitation"
 msgstr "(?) 真似をする"
 
 #. TRANSLATORS: away message box header
-#: src/being/localplayer.cpp:2229
+#: src/being/localplayer.cpp:2232
 msgid "Away"
 msgstr "アウェイ"
 
 #. TRANSLATORS: away type in status bar
-#: src/being/localplayer.cpp:2252
+#: src/being/localplayer.cpp:2255
 msgid "(O) on keyboard"
 msgstr "(O) キーボード"
 
 #. TRANSLATORS: away type in status bar
-#: src/being/localplayer.cpp:2254
+#: src/being/localplayer.cpp:2257
 msgid "(A) away"
 msgstr "(A) アウェイ"
 
 #. TRANSLATORS: away type in status bar
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:2256 src/being/localplayer.cpp:2274
+#: src/being/localplayer.cpp:2259 src/being/localplayer.cpp:2277
 msgid "(?) away"
 msgstr "(?) アウェイ"
 
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:2270
+#: src/being/localplayer.cpp:2273
 msgid "(G) game camera mode"
 msgstr "(G) ゲームカメラモード"
 
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:2272
+#: src/being/localplayer.cpp:2275
 msgid "(F) free camera mode"
 msgstr "(F) フリーカメラモード"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:2299
+#: src/being/localplayer.cpp:2302
 msgid "Game modifiers are enabled"
 msgstr "ゲームモディファイアは有効になってます"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:2301
+#: src/being/localplayer.cpp:2304
 msgid "Game modifiers are disabled"
 msgstr "ゲームモディファイアは無効になってます"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:2303
+#: src/being/localplayer.cpp:2306
 msgid "Game modifiers are unknown"
 msgstr "不明なゲームモディファイア"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:3862
+#: src/being/localplayer.cpp:3887
 #, c-format
 msgid "Follow: %s"
 msgstr ""
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3868 src/being/localplayer.cpp:3893
+#: src/being/localplayer.cpp:3893 src/being/localplayer.cpp:3918
 msgid "Follow canceled"
 msgstr "フォローを止める"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:3878
+#: src/being/localplayer.cpp:3903
 #, c-format
 msgid "Imitation: %s"
 msgstr ""
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3884 src/being/localplayer.cpp:3898
+#: src/being/localplayer.cpp:3909 src/being/localplayer.cpp:3923
 msgid "Imitation canceled"
 msgstr "真似をやめる"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:4241
+#: src/being/localplayer.cpp:4266
 #, c-format
 msgid "You see %s"
 msgstr ""
@@ -747,7 +747,7 @@ msgstr ""
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
-#: src/commands.cpp:411 src/net/ea/gui/partytab.cpp:152
+#: src/commands.cpp:411 src/net/ea/gui/partytab.cpp:78
 msgid "Party name is missing."
 msgstr "パーティ名がありません"
 
@@ -1080,7 +1080,7 @@ msgstr "消す"
 #: src/gui/popups/popupmenu.cpp:226 src/gui/popups/popupmenu.cpp:247
 #: src/gui/popups/popupmenu.cpp:394 src/gui/popups/popupmenu.cpp:545
 #: src/gui/popups/popupmenu.cpp:704 src/gui/popups/popupmenu.cpp:785
-#: src/gui/setupactiondata.h:1936 src/gui/windows/botcheckerwindow.cpp:307
+#: src/gui/setupactiondata.h:1942 src/gui/windows/botcheckerwindow.cpp:307
 msgid "Move"
 msgstr "動く"
 
@@ -1192,7 +1192,7 @@ msgstr "名前をチャットへ追加する"
 #: src/gui/popups/popupmenu.cpp:2330 src/gui/popups/popupmenu.cpp:2352
 #: src/gui/popups/popupmenu.cpp:2375 src/gui/popups/popupmenu.cpp:2402
 #: src/gui/popups/popupmenu.cpp:2419 src/gui/popups/popupmenu.cpp:2699
-#: src/gui/popups/popupmenu.cpp:2835 src/gui/setupactiondata.h:1821
+#: src/gui/popups/popupmenu.cpp:2835 src/gui/setupactiondata.h:1827
 #: src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/changeemaildialog.cpp:55
 #: src/gui/windows/changepassworddialog.cpp:57
@@ -1274,7 +1274,7 @@ msgstr "カメラを動かす"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
-#: src/gui/popups/popupmenu.cpp:565 src/gui/setupactiondata.h:1944
+#: src/gui/popups/popupmenu.cpp:565 src/gui/setupactiondata.h:1950
 #: src/gui/windowmenu.cpp:148 src/gui/windows/inventorywindow.cpp:224
 #: src/gui/windows/outfitwindow.cpp:53
 msgid "Outfits"
@@ -1860,11 +1860,17 @@ msgstr "取引を有効/無効にする"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:165
+#, fuzzy
+msgid "Open trade window"
+msgstr "この窓を自動で開ける"
+
+#. TRANSLATORS: input action name
+#: src/gui/setupactiondata.h:171
 msgid "Change Map View Mode"
 msgstr "マップビューモード変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:171
+#: src/gui/setupactiondata.h:177
 msgid "Select OK"
 msgstr "OKを選択する"
 
@@ -1874,7 +1880,7 @@ msgstr "OKを選択する"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/setupactiondata.h:177 src/gui/windows/buydialog.cpp:275
+#: src/gui/setupactiondata.h:183 src/gui/windows/buydialog.cpp:275
 #: src/gui/windows/quitdialog.cpp:51 src/gui/windows/quitdialog.cpp:56
 #: src/gui/windows/quitdialog.cpp:58 src/gui/windows/selldialog.cpp:109
 #: src/gui/windows/serverdialog.cpp:254
@@ -1882,558 +1888,554 @@ msgid "Quit"
 msgstr "終了"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:183
+#: src/gui/setupactiondata.h:189
 msgid "Stop or sit"
 msgstr "止まる・座る"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:189
+#: src/gui/setupactiondata.h:195
 msgid "Return to safe video mode"
 msgstr "セーフビデオモードへ戻る"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:204
+#: src/gui/setupactiondata.h:210
 msgid "Shortcuts modifiers keys"
 msgstr "ショートカット編集キー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:210
+#: src/gui/setupactiondata.h:216
 msgid "Item Shortcuts Key"
 msgstr "アイテムショートカットキー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:216
+#: src/gui/setupactiondata.h:222
 msgid "Shortcuts keys"
 msgstr "ショートカットキー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:222 src/gui/setupactiondata.h:228
-#: src/gui/setupactiondata.h:234 src/gui/setupactiondata.h:240
-#: src/gui/setupactiondata.h:246 src/gui/setupactiondata.h:252
-#: src/gui/setupactiondata.h:258 src/gui/setupactiondata.h:264
-#: src/gui/setupactiondata.h:270 src/gui/setupactiondata.h:276
-#: src/gui/setupactiondata.h:282 src/gui/setupactiondata.h:288
-#: src/gui/setupactiondata.h:294 src/gui/setupactiondata.h:300
-#: src/gui/setupactiondata.h:306 src/gui/setupactiondata.h:312
-#: src/gui/setupactiondata.h:318 src/gui/setupactiondata.h:324
-#: src/gui/setupactiondata.h:330 src/gui/setupactiondata.h:336
+#: src/gui/setupactiondata.h:228 src/gui/setupactiondata.h:234
+#: src/gui/setupactiondata.h:240 src/gui/setupactiondata.h:246
+#: src/gui/setupactiondata.h:252 src/gui/setupactiondata.h:258
+#: src/gui/setupactiondata.h:264 src/gui/setupactiondata.h:270
+#: src/gui/setupactiondata.h:276 src/gui/setupactiondata.h:282
+#: src/gui/setupactiondata.h:288 src/gui/setupactiondata.h:294
+#: src/gui/setupactiondata.h:300 src/gui/setupactiondata.h:306
+#: src/gui/setupactiondata.h:312 src/gui/setupactiondata.h:318
+#: src/gui/setupactiondata.h:324 src/gui/setupactiondata.h:330
+#: src/gui/setupactiondata.h:336 src/gui/setupactiondata.h:342
 #, c-format
 msgid "Item Shortcut %d"
 msgstr "アイテムショートカット: %d"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:351
+#: src/gui/setupactiondata.h:357
 msgid "Show Windows Menu"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:357
+#: src/gui/setupactiondata.h:363
 msgid "Hide Windows"
 msgstr "ウィンドウを隠す"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:363
+#: src/gui/setupactiondata.h:369
 msgid "Help Window"
 msgstr "ヘルプウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:369
+#: src/gui/setupactiondata.h:375
 msgid "Status Window"
 msgstr "ステータスウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:375
+#: src/gui/setupactiondata.h:381
 msgid "Inventory Window"
 msgstr "インベントリーウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:381
+#: src/gui/setupactiondata.h:387
 msgid "Equipment Window"
 msgstr "装着ウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:387
+#: src/gui/setupactiondata.h:393
 msgid "Skill Window"
 msgstr "スキルウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:393
+#: src/gui/setupactiondata.h:399
 msgid "Minimap Window"
 msgstr "ミニマップウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:399
+#: src/gui/setupactiondata.h:405
 msgid "Chat Window"
 msgstr "チャットウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:405
+#: src/gui/setupactiondata.h:411
 msgid "Item Shortcut Window"
 msgstr "アイテムショートカットウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:411
+#: src/gui/setupactiondata.h:417
 msgid "Setup Window"
 msgstr "設定ウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:417
+#: src/gui/setupactiondata.h:423
 msgid "Debug Window"
 msgstr "デバグウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:423
+#: src/gui/setupactiondata.h:429
 msgid "Social Window"
 msgstr "ソーシャルウインドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:429
+#: src/gui/setupactiondata.h:435
 msgid "Emote Shortcut Window"
 msgstr "スマイリーショートカットウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:435
+#: src/gui/setupactiondata.h:441
 msgid "Outfits Window"
 msgstr "服装ウインドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:441
+#: src/gui/setupactiondata.h:447
 msgid "Shop Window"
 msgstr "ショップウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:447
+#: src/gui/setupactiondata.h:453
 msgid "Quick drop Window"
 msgstr "クイックドロップウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:453
+#: src/gui/setupactiondata.h:459
 msgid "Kill Stats Window"
 msgstr "キルスタッツ窓"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:459
+#: src/gui/setupactiondata.h:465
 msgid "Commands Window"
 msgstr "コマンドウインドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:465
+#: src/gui/setupactiondata.h:471
 msgid "Bot Checker Window"
 msgstr "ボットチェッカーウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:471
+#: src/gui/setupactiondata.h:477
 msgid "Who Is Online Window"
 msgstr "オンラインユーザーウインドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:477
+#: src/gui/setupactiondata.h:483
 msgid "Did you know Window"
 msgstr "豆知識窓"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:483
+#: src/gui/setupactiondata.h:489
 msgid "Quests Window"
 msgstr "クエスト窓"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:489
+#: src/gui/setupactiondata.h:495
 msgid "Previous Social Tab"
 msgstr "前ソーシャルタブ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:495
+#: src/gui/setupactiondata.h:501
 msgid "Next Social Tab"
 msgstr "次ソーシャルタブ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:501
-#, fuzzy
-msgid "Previous Shortcuts tab"
-msgstr "前ソーシャルタブ"
-
-#. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:507
-#, fuzzy
-msgid "Next Shortcuts tab"
-msgstr "アイテムショートカットキー"
+msgid "Previous Shortcuts tab"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:513
-#, fuzzy
-msgid "Previous Commands tab"
-msgstr "前のチャットタブ"
+msgid "Next Shortcuts tab"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:519
-#, fuzzy
-msgid "Next Commands tab"
-msgstr "次のチャットタブ"
+msgid "Previous Commands tab"
+msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:534
+#: src/gui/setupactiondata.h:525
+msgid "Next Commands tab"
+msgstr ""
+
+#. TRANSLATORS: input action name
+#: src/gui/setupactiondata.h:540
 msgid "Emote modifiers keys"
 msgstr "スマイリー編集キー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:540
+#: src/gui/setupactiondata.h:546
 msgid "Emote modifier key"
 msgstr "スマイリー編集キー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:546
+#: src/gui/setupactiondata.h:552
 msgid "Emote shortcuts"
 msgstr "スマイリーショートカット"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:552 src/gui/setupactiondata.h:558
-#: src/gui/setupactiondata.h:564 src/gui/setupactiondata.h:570
-#: src/gui/setupactiondata.h:576 src/gui/setupactiondata.h:582
-#: src/gui/setupactiondata.h:588 src/gui/setupactiondata.h:594
-#: src/gui/setupactiondata.h:600 src/gui/setupactiondata.h:606
-#: src/gui/setupactiondata.h:612 src/gui/setupactiondata.h:618
-#: src/gui/setupactiondata.h:624 src/gui/setupactiondata.h:630
-#: src/gui/setupactiondata.h:636 src/gui/setupactiondata.h:642
-#: src/gui/setupactiondata.h:648 src/gui/setupactiondata.h:654
-#: src/gui/setupactiondata.h:660 src/gui/setupactiondata.h:666
-#: src/gui/setupactiondata.h:672 src/gui/setupactiondata.h:678
-#: src/gui/setupactiondata.h:684 src/gui/setupactiondata.h:690
-#: src/gui/setupactiondata.h:696 src/gui/setupactiondata.h:702
-#: src/gui/setupactiondata.h:708 src/gui/setupactiondata.h:714
-#: src/gui/setupactiondata.h:720 src/gui/setupactiondata.h:726
-#: src/gui/setupactiondata.h:732 src/gui/setupactiondata.h:738
-#: src/gui/setupactiondata.h:744 src/gui/setupactiondata.h:750
-#: src/gui/setupactiondata.h:756 src/gui/setupactiondata.h:762
-#: src/gui/setupactiondata.h:768 src/gui/setupactiondata.h:774
-#: src/gui/setupactiondata.h:780 src/gui/setupactiondata.h:786
-#: src/gui/setupactiondata.h:792 src/gui/setupactiondata.h:798
-#: src/gui/setupactiondata.h:804 src/gui/setupactiondata.h:810
-#: src/gui/setupactiondata.h:816 src/gui/setupactiondata.h:822
-#: src/gui/setupactiondata.h:828 src/gui/setupactiondata.h:834
+#: src/gui/setupactiondata.h:558 src/gui/setupactiondata.h:564
+#: src/gui/setupactiondata.h:570 src/gui/setupactiondata.h:576
+#: src/gui/setupactiondata.h:582 src/gui/setupactiondata.h:588
+#: src/gui/setupactiondata.h:594 src/gui/setupactiondata.h:600
+#: src/gui/setupactiondata.h:606 src/gui/setupactiondata.h:612
+#: src/gui/setupactiondata.h:618 src/gui/setupactiondata.h:624
+#: src/gui/setupactiondata.h:630 src/gui/setupactiondata.h:636
+#: src/gui/setupactiondata.h:642 src/gui/setupactiondata.h:648
+#: src/gui/setupactiondata.h:654 src/gui/setupactiondata.h:660
+#: src/gui/setupactiondata.h:666 src/gui/setupactiondata.h:672
+#: src/gui/setupactiondata.h:678 src/gui/setupactiondata.h:684
+#: src/gui/setupactiondata.h:690 src/gui/setupactiondata.h:696
+#: src/gui/setupactiondata.h:702 src/gui/setupactiondata.h:708
+#: src/gui/setupactiondata.h:714 src/gui/setupactiondata.h:720
+#: src/gui/setupactiondata.h:726 src/gui/setupactiondata.h:732
+#: src/gui/setupactiondata.h:738 src/gui/setupactiondata.h:744
+#: src/gui/setupactiondata.h:750 src/gui/setupactiondata.h:756
+#: src/gui/setupactiondata.h:762 src/gui/setupactiondata.h:768
+#: src/gui/setupactiondata.h:774 src/gui/setupactiondata.h:780
+#: src/gui/setupactiondata.h:786 src/gui/setupactiondata.h:792
+#: src/gui/setupactiondata.h:798 src/gui/setupactiondata.h:804
+#: src/gui/setupactiondata.h:810 src/gui/setupactiondata.h:816
+#: src/gui/setupactiondata.h:822 src/gui/setupactiondata.h:828
+#: src/gui/setupactiondata.h:834 src/gui/setupactiondata.h:840
 #, c-format
 msgid "Emote Shortcut %d"
 msgstr "スマイリーショートカット: %d"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:849
+#: src/gui/setupactiondata.h:855
 msgid "Outfits keys"
 msgstr "服装キー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:855
+#: src/gui/setupactiondata.h:861
 msgid "Wear Outfit"
 msgstr "服を着る"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:861
+#: src/gui/setupactiondata.h:867
 msgid "Copy Outfit"
 msgstr "服をコピーする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:867
+#: src/gui/setupactiondata.h:873
 msgid "Copy equipped to Outfit"
 msgstr "装着品を服装にコピー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:873
+#: src/gui/setupactiondata.h:879
 msgid "Outfits shortcuts"
 msgstr "服装ショートカット"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:879 src/gui/setupactiondata.h:885
-#: src/gui/setupactiondata.h:891 src/gui/setupactiondata.h:897
-#: src/gui/setupactiondata.h:903 src/gui/setupactiondata.h:909
-#: src/gui/setupactiondata.h:915 src/gui/setupactiondata.h:921
-#: src/gui/setupactiondata.h:927 src/gui/setupactiondata.h:933
-#: src/gui/setupactiondata.h:939 src/gui/setupactiondata.h:945
-#: src/gui/setupactiondata.h:951 src/gui/setupactiondata.h:957
-#: src/gui/setupactiondata.h:963 src/gui/setupactiondata.h:969
-#: src/gui/setupactiondata.h:975 src/gui/setupactiondata.h:981
-#: src/gui/setupactiondata.h:987 src/gui/setupactiondata.h:993
-#: src/gui/setupactiondata.h:999 src/gui/setupactiondata.h:1005
-#: src/gui/setupactiondata.h:1011 src/gui/setupactiondata.h:1017
-#: src/gui/setupactiondata.h:1023 src/gui/setupactiondata.h:1029
-#: src/gui/setupactiondata.h:1035 src/gui/setupactiondata.h:1041
-#: src/gui/setupactiondata.h:1047 src/gui/setupactiondata.h:1053
-#: src/gui/setupactiondata.h:1059 src/gui/setupactiondata.h:1065
-#: src/gui/setupactiondata.h:1071 src/gui/setupactiondata.h:1077
-#: src/gui/setupactiondata.h:1083 src/gui/setupactiondata.h:1089
-#: src/gui/setupactiondata.h:1095 src/gui/setupactiondata.h:1101
-#: src/gui/setupactiondata.h:1107 src/gui/setupactiondata.h:1113
-#: src/gui/setupactiondata.h:1119 src/gui/setupactiondata.h:1125
-#: src/gui/setupactiondata.h:1131 src/gui/setupactiondata.h:1137
-#: src/gui/setupactiondata.h:1143 src/gui/setupactiondata.h:1149
-#: src/gui/setupactiondata.h:1155 src/gui/setupactiondata.h:1161
+#: src/gui/setupactiondata.h:885 src/gui/setupactiondata.h:891
+#: src/gui/setupactiondata.h:897 src/gui/setupactiondata.h:903
+#: src/gui/setupactiondata.h:909 src/gui/setupactiondata.h:915
+#: src/gui/setupactiondata.h:921 src/gui/setupactiondata.h:927
+#: src/gui/setupactiondata.h:933 src/gui/setupactiondata.h:939
+#: src/gui/setupactiondata.h:945 src/gui/setupactiondata.h:951
+#: src/gui/setupactiondata.h:957 src/gui/setupactiondata.h:963
+#: src/gui/setupactiondata.h:969 src/gui/setupactiondata.h:975
+#: src/gui/setupactiondata.h:981 src/gui/setupactiondata.h:987
+#: src/gui/setupactiondata.h:993 src/gui/setupactiondata.h:999
+#: src/gui/setupactiondata.h:1005 src/gui/setupactiondata.h:1011
+#: src/gui/setupactiondata.h:1017 src/gui/setupactiondata.h:1023
+#: src/gui/setupactiondata.h:1029 src/gui/setupactiondata.h:1035
+#: src/gui/setupactiondata.h:1041 src/gui/setupactiondata.h:1047
+#: src/gui/setupactiondata.h:1053 src/gui/setupactiondata.h:1059
+#: src/gui/setupactiondata.h:1065 src/gui/setupactiondata.h:1071
+#: src/gui/setupactiondata.h:1077 src/gui/setupactiondata.h:1083
+#: src/gui/setupactiondata.h:1089 src/gui/setupactiondata.h:1095
+#: src/gui/setupactiondata.h:1101 src/gui/setupactiondata.h:1107
+#: src/gui/setupactiondata.h:1113 src/gui/setupactiondata.h:1119
+#: src/gui/setupactiondata.h:1125 src/gui/setupactiondata.h:1131
+#: src/gui/setupactiondata.h:1137 src/gui/setupactiondata.h:1143
+#: src/gui/setupactiondata.h:1149 src/gui/setupactiondata.h:1155
+#: src/gui/setupactiondata.h:1161 src/gui/setupactiondata.h:1167
 #, c-format
 msgid "Outfit Shortcut %d"
 msgstr "服装ショートカット %d"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1176
+#: src/gui/setupactiondata.h:1182
 msgid "Toggle Chat"
 msgstr "トグルチャット"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1182
+#: src/gui/setupactiondata.h:1188
 msgid "Scroll Chat Up"
 msgstr "チャットを上へスクロールする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1188
+#: src/gui/setupactiondata.h:1194
 msgid "Scroll Chat Down"
 msgstr "チャットを下へスクロールする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1194
+#: src/gui/setupactiondata.h:1200
 msgid "Previous Chat Tab"
 msgstr "前のチャットタブ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1200
+#: src/gui/setupactiondata.h:1206
 msgid "Next Chat Tab"
 msgstr "次のチャットタブ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1206
+#: src/gui/setupactiondata.h:1212
 msgid "Close current Chat Tab"
 msgstr "このチャットタブを閉じる"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1212
+#: src/gui/setupactiondata.h:1218
 msgid "Previous chat line"
 msgstr "前チャット文"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1218
+#: src/gui/setupactiondata.h:1224
 msgid "Next chat line"
 msgstr "次チャット文"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1224
+#: src/gui/setupactiondata.h:1230
 msgid "Chat modifier key"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1239
+#: src/gui/setupactiondata.h:1245
 msgid "Ignore input 1"
 msgstr "インプット１完全無視"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1245
+#: src/gui/setupactiondata.h:1251
 msgid "Ignore input 2"
 msgstr "インプット２完全無視"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1251
+#: src/gui/setupactiondata.h:1257
 msgid "Direct Up"
 msgstr "上方向"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1257
+#: src/gui/setupactiondata.h:1263
 msgid "Direct Down"
 msgstr "下方向"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1263
+#: src/gui/setupactiondata.h:1269
 msgid "Direct Left"
 msgstr "左方向"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1269
+#: src/gui/setupactiondata.h:1275
 msgid "Direct Right"
 msgstr "右方向"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1275
+#: src/gui/setupactiondata.h:1281
 msgid "Crazy moves"
 msgstr "クレイジームーブ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1281
+#: src/gui/setupactiondata.h:1287
 msgid "Change Crazy Move mode"
 msgstr "クレイジームーブモード変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1287
+#: src/gui/setupactiondata.h:1293
 msgid "Quick Drop N Items from 0 slot"
 msgstr "Nアイテムを 0スロットからクイックドロップ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1293
+#: src/gui/setupactiondata.h:1299
 msgid "Quick Drop N Items"
 msgstr "Nアイテムをクイックドロップ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1299
+#: src/gui/setupactiondata.h:1305
 msgid "Switch Quick Drop Counter"
 msgstr "クイックドロップカウンター変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1305
+#: src/gui/setupactiondata.h:1311
 msgid "Quick heal target or self"
 msgstr "ターゲット又は自分をHP回復させる"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1311
+#: src/gui/setupactiondata.h:1317
 msgid "Use #itenplz spell"
 msgstr "呪文 #itenplz を唱える"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1317
+#: src/gui/setupactiondata.h:1323
 msgid "Use magic attack"
 msgstr "魔法攻撃を使用"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1323
+#: src/gui/setupactiondata.h:1329
 msgid "Switch magic attack"
 msgstr "マジックアタック変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1329
+#: src/gui/setupactiondata.h:1335
 msgid "Switch pvp attack"
 msgstr "PvP攻撃変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1335
+#: src/gui/setupactiondata.h:1341
 msgid "Change move type"
 msgstr "ムーブタイプ変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1341
+#: src/gui/setupactiondata.h:1347
 msgid "Change Attack Weapon Type"
 msgstr "武器変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1347
+#: src/gui/setupactiondata.h:1353
 msgid "Change Attack Type"
 msgstr "攻撃方法変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1353
+#: src/gui/setupactiondata.h:1359
 msgid "Change Follow mode"
 msgstr "フォローモード変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1359
+#: src/gui/setupactiondata.h:1365
 msgid "Change Imitation mode"
 msgstr "真似モード変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1365
+#: src/gui/setupactiondata.h:1371
 msgid "Disable / Enable Game modifier keys"
 msgstr "ゲームモディファイアキーを無効 / 有効にする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1371
+#: src/gui/setupactiondata.h:1377
 msgid "On / Off audio"
 msgstr "オーディオ　オン/オフ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1377
+#: src/gui/setupactiondata.h:1383
 msgid "Enable / Disable away mode"
 msgstr "AFKモードを有効 / 無効にする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1383
+#: src/gui/setupactiondata.h:1389
 msgid "Emulate right click from keyboard"
 msgstr "右クリックをエミュレートする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1389
+#: src/gui/setupactiondata.h:1395
 msgid "Toggle camera mode"
 msgstr "カメラモード変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1395
+#: src/gui/setupactiondata.h:1401
 msgid "Show onscreen keyboard"
 msgstr "オンスクリーンキーボード"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1410
+#: src/gui/setupactiondata.h:1416
 msgid "Move Keys"
 msgstr "キーを移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1416 src/gui/setupactiondata.h:1755
+#: src/gui/setupactiondata.h:1422 src/gui/setupactiondata.h:1761
 msgid "Move Up"
 msgstr "上へ移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1422 src/gui/setupactiondata.h:1761
+#: src/gui/setupactiondata.h:1428 src/gui/setupactiondata.h:1767
 msgid "Move Down"
 msgstr "下へ移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1428 src/gui/setupactiondata.h:1767
+#: src/gui/setupactiondata.h:1434 src/gui/setupactiondata.h:1773
 msgid "Move Left"
 msgstr "左へ移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1434 src/gui/setupactiondata.h:1773
+#: src/gui/setupactiondata.h:1440 src/gui/setupactiondata.h:1779
 msgid "Move Right"
 msgstr "右へ移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1440
+#: src/gui/setupactiondata.h:1446
 msgid "Move Forward"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1446
+#: src/gui/setupactiondata.h:1452
 msgid "Move to navigation point shortcuts"
 msgstr "ナビポイントショートカットまで移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1452 src/gui/setupactiondata.h:1458
-#: src/gui/setupactiondata.h:1464 src/gui/setupactiondata.h:1470
-#: src/gui/setupactiondata.h:1476 src/gui/setupactiondata.h:1482
-#: src/gui/setupactiondata.h:1488 src/gui/setupactiondata.h:1494
-#: src/gui/setupactiondata.h:1500 src/gui/setupactiondata.h:1506
-#: src/gui/setupactiondata.h:1512 src/gui/setupactiondata.h:1518
-#: src/gui/setupactiondata.h:1524 src/gui/setupactiondata.h:1530
-#: src/gui/setupactiondata.h:1536 src/gui/setupactiondata.h:1542
-#: src/gui/setupactiondata.h:1548 src/gui/setupactiondata.h:1554
-#: src/gui/setupactiondata.h:1560 src/gui/setupactiondata.h:1566
-#: src/gui/setupactiondata.h:1572 src/gui/setupactiondata.h:1578
-#: src/gui/setupactiondata.h:1584 src/gui/setupactiondata.h:1590
-#: src/gui/setupactiondata.h:1596 src/gui/setupactiondata.h:1602
-#: src/gui/setupactiondata.h:1608 src/gui/setupactiondata.h:1614
-#: src/gui/setupactiondata.h:1620 src/gui/setupactiondata.h:1626
-#: src/gui/setupactiondata.h:1632 src/gui/setupactiondata.h:1638
-#: src/gui/setupactiondata.h:1644 src/gui/setupactiondata.h:1650
-#: src/gui/setupactiondata.h:1656 src/gui/setupactiondata.h:1662
-#: src/gui/setupactiondata.h:1668 src/gui/setupactiondata.h:1674
-#: src/gui/setupactiondata.h:1680 src/gui/setupactiondata.h:1686
-#: src/gui/setupactiondata.h:1692 src/gui/setupactiondata.h:1698
-#: src/gui/setupactiondata.h:1704 src/gui/setupactiondata.h:1710
-#: src/gui/setupactiondata.h:1716 src/gui/setupactiondata.h:1722
-#: src/gui/setupactiondata.h:1728 src/gui/setupactiondata.h:1734
+#: src/gui/setupactiondata.h:1458 src/gui/setupactiondata.h:1464
+#: src/gui/setupactiondata.h:1470 src/gui/setupactiondata.h:1476
+#: src/gui/setupactiondata.h:1482 src/gui/setupactiondata.h:1488
+#: src/gui/setupactiondata.h:1494 src/gui/setupactiondata.h:1500
+#: src/gui/setupactiondata.h:1506 src/gui/setupactiondata.h:1512
+#: src/gui/setupactiondata.h:1518 src/gui/setupactiondata.h:1524
+#: src/gui/setupactiondata.h:1530 src/gui/setupactiondata.h:1536
+#: src/gui/setupactiondata.h:1542 src/gui/setupactiondata.h:1548
+#: src/gui/setupactiondata.h:1554 src/gui/setupactiondata.h:1560
+#: src/gui/setupactiondata.h:1566 src/gui/setupactiondata.h:1572
+#: src/gui/setupactiondata.h:1578 src/gui/setupactiondata.h:1584
+#: src/gui/setupactiondata.h:1590 src/gui/setupactiondata.h:1596
+#: src/gui/setupactiondata.h:1602 src/gui/setupactiondata.h:1608
+#: src/gui/setupactiondata.h:1614 src/gui/setupactiondata.h:1620
+#: src/gui/setupactiondata.h:1626 src/gui/setupactiondata.h:1632
+#: src/gui/setupactiondata.h:1638 src/gui/setupactiondata.h:1644
+#: src/gui/setupactiondata.h:1650 src/gui/setupactiondata.h:1656
+#: src/gui/setupactiondata.h:1662 src/gui/setupactiondata.h:1668
+#: src/gui/setupactiondata.h:1674 src/gui/setupactiondata.h:1680
+#: src/gui/setupactiondata.h:1686 src/gui/setupactiondata.h:1692
+#: src/gui/setupactiondata.h:1698 src/gui/setupactiondata.h:1704
+#: src/gui/setupactiondata.h:1710 src/gui/setupactiondata.h:1716
+#: src/gui/setupactiondata.h:1722 src/gui/setupactiondata.h:1728
+#: src/gui/setupactiondata.h:1734 src/gui/setupactiondata.h:1740
 #, c-format
 msgid "Move to point Shortcut %d"
 msgstr "ショートカット %dまで移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1749
+#: src/gui/setupactiondata.h:1755
 msgid "Move & selection"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1779
+#: src/gui/setupactiondata.h:1785
 msgid "Move Home"
 msgstr "ホームへ移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1785
+#: src/gui/setupactiondata.h:1791
 msgid "Move End"
 msgstr "最後まで移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1791
+#: src/gui/setupactiondata.h:1797
 msgid "Page up"
 msgstr "ページ上へ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1797
+#: src/gui/setupactiondata.h:1803
 msgid "Page down"
 msgstr "ページ下へ"
 
@@ -2442,7 +2444,7 @@ msgstr "ページ下へ"
 #. TRANSLATORS: settings group
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
-#: src/gui/setupactiondata.h:1803 src/gui/setupactiondata.h:1948
+#: src/gui/setupactiondata.h:1809 src/gui/setupactiondata.h:1954
 #: src/gui/widgets/tabs/setup_audio.cpp:159
 #: src/gui/widgets/tabs/setup_chat.cpp:180
 #: src/gui/widgets/tabs/setup_other.cpp:329
@@ -2453,12 +2455,12 @@ msgid "Other"
 msgstr "その他"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1809
+#: src/gui/setupactiondata.h:1815
 msgid "Select"
 msgstr "選択"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1815
+#: src/gui/setupactiondata.h:1821
 msgid "Select2"
 msgstr "選択2"
 
@@ -2468,7 +2470,7 @@ msgstr "選択2"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: command editor button
-#: src/gui/setupactiondata.h:1827 src/gui/widgets/tabs/setup_relations.cpp:259
+#: src/gui/setupactiondata.h:1833 src/gui/widgets/tabs/setup_relations.cpp:259
 #: src/gui/windows/charselectdialog.cpp:106
 #: src/gui/windows/serverdialog.cpp:262 src/gui/windows/shopwindow.cpp:93
 #: src/gui/windows/shopwindow.cpp:100
@@ -2477,45 +2479,45 @@ msgid "Delete"
 msgstr "削除"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1833
+#: src/gui/setupactiondata.h:1839
 msgid "Backspace"
 msgstr "バックスペース"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1839
+#: src/gui/setupactiondata.h:1845
 msgid "Insert"
 msgstr "挿入"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1845
+#: src/gui/setupactiondata.h:1851
 msgid "Tab"
 msgstr "タブ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1851
+#: src/gui/setupactiondata.h:1857
 msgid "Mod"
 msgstr "モッド"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1857
+#: src/gui/setupactiondata.h:1863
 msgid "Ctrl"
 msgstr ""
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:1934
+#: src/gui/setupactiondata.h:1940
 msgid "Basic"
 msgstr "基本"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:1938 src/gui/windowmenu.cpp:128
+#: src/gui/setupactiondata.h:1944 src/gui/windowmenu.cpp:128
 msgid "Shortcuts"
 msgstr "ショートカット"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings group
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:1940 src/gui/widgets/tabs/setup_other.cpp:307
+#: src/gui/setupactiondata.h:1946 src/gui/widgets/tabs/setup_other.cpp:307
 #: src/gui/windowmenu.cpp:161
 msgid "Windows"
 msgstr "ウィンドウ"
@@ -2523,7 +2525,7 @@ msgstr "ウィンドウ"
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: emotes window name
 #. TRANSLATORS: emotes tab name
-#: src/gui/setupactiondata.h:1942 src/gui/windows/emotewindow.cpp:49
+#: src/gui/setupactiondata.h:1948 src/gui/windows/emotewindow.cpp:49
 #: src/gui/windows/emotewindow.cpp:107
 msgid "Emotes"
 msgstr "スマイリー"
@@ -2531,13 +2533,13 @@ msgstr "スマイリー"
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
-#: src/gui/setupactiondata.h:1946 src/gui/widgets/tabs/setup_chat.cpp:41
+#: src/gui/setupactiondata.h:1952 src/gui/widgets/tabs/setup_chat.cpp:41
 #: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:203
 msgid "Chat"
 msgstr "チャット"
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:1950
+#: src/gui/setupactiondata.h:1956
 msgid "Gui"
 msgstr "GUI"
 
@@ -2892,70 +2894,6 @@ msgstr ""
 #: src/net/ea/gui/guildtab.cpp:45
 msgid "Guild"
 msgstr "ギルド"
-
-#. TRANSLATORS: guild chat tab help
-#. TRANSLATORS: guild chat help
-#. TRANSLATORS: party help message
-#: src/gui/widgets/tabs/guildchattab.cpp:63 src/net/ea/gui/guildtab.cpp:71
-#: src/net/ea/gui/partytab.cpp:94
-msgid "Command: /invite <nick>"
-msgstr "コマンド: /invite <プレイヤー名>"
-
-#. TRANSLATORS: guild chat tab help
-#. TRANSLATORS: guild chat help
-#: src/gui/widgets/tabs/guildchattab.cpp:65 src/net/ea/gui/guildtab.cpp:73
-msgid "This command invites <nick> to the guild you're in."
-msgstr "このコマンドは、入力したプレイヤーを自分のギルドに招待します"
-
-#. TRANSLATORS: guild chat tab help
-#. TRANSLATORS: guild chat help
-#. TRANSLATORS: party help message
-#: src/gui/widgets/tabs/guildchattab.cpp:67 src/net/ea/gui/guildtab.cpp:75
-#: src/net/ea/gui/partytab.cpp:98
-msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
-msgstr ""
-"入力するニックネームにスペースが含まれている場合はダブルコーテーション(\"\")"
-"で囲んでください"
-
-#. TRANSLATORS: guild chat tab help
-#. TRANSLATORS: guild chat help
-#. TRANSLATORS: party help message
-#: src/gui/widgets/tabs/guildchattab.cpp:73 src/net/ea/gui/guildtab.cpp:81
-#: src/net/ea/gui/partytab.cpp:104
-msgid "Command: /leave"
-msgstr "コマンド: /leave"
-
-#. TRANSLATORS: guild chat tab help
-#. TRANSLATORS: guild chat help
-#: src/gui/widgets/tabs/guildchattab.cpp:75 src/net/ea/gui/guildtab.cpp:83
-msgid "This command causes the player to leave the guild."
-msgstr "このコマンドはプレイヤーをギルドから退会させます"
-
-#. TRANSLATORS: guild chat tab help
-#. TRANSLATORS: guild chat help
-#. TRANSLATORS: party help message
-#: src/gui/widgets/tabs/guildchattab.cpp:116 src/net/ea/gui/guildtab.cpp:137
-#: src/net/ea/gui/partytab.cpp:73
-msgid "/help > Display this help."
-msgstr "/help > ヘルプメニューを表示"
-
-#. TRANSLATORS: guild chat tab help
-#. TRANSLATORS: guild chat help
-#: src/gui/widgets/tabs/guildchattab.cpp:118 src/net/ea/gui/guildtab.cpp:139
-msgid "/invite > Invite a player to your guild"
-msgstr "/invite > プレイヤーをギルドへ招待する"
-
-#. TRANSLATORS: guild chat tab help
-#. TRANSLATORS: guild chat help
-#: src/gui/widgets/tabs/guildchattab.cpp:120 src/net/ea/gui/guildtab.cpp:141
-msgid "/leave > Leave the guild you are in"
-msgstr "/leave > ギルドから退会する"
-
-#. TRANSLATORS: guild chat tab help
-#. TRANSLATORS: guild chat help
-#: src/gui/widgets/tabs/guildchattab.cpp:122 src/net/ea/gui/guildtab.cpp:143
-msgid "/kick > Kick someone from the guild you are in"
-msgstr ""
 
 #. TRANSLATORS: lang chat tab name
 #: src/gui/widgets/tabs/langtab.cpp:31
@@ -4647,11 +4585,8 @@ msgstr "視覚"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_visual.cpp:103
+#: src/gui/widgets/tabs/setup_visual.cpp:111
 msgid "Scale"
-msgstr ""
-
-#: src/gui/widgets/tabs/setup_visual.cpp:110
-msgid "Scale "
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4739,51 +4674,6 @@ msgstr ""
 #: src/gui/widgets/tabs/setup_visual.cpp:202
 msgid "Allow screensaver to run"
 msgstr "スクリーンセーバーを有効にする"
-
-#. TRANSLATORS: whisper tab help
-#: src/gui/widgets/tabs/whispertab.cpp:95
-msgid "/ignore > Ignore the other player"
-msgstr "/ignore > 他のプレイヤーを完全無視する"
-
-#. TRANSLATORS: whisper tab help
-#: src/gui/widgets/tabs/whispertab.cpp:97
-msgid "/unignore > Stop ignoring the other player"
-msgstr "/unignore はプレイヤー無視を解除をします"
-
-#. TRANSLATORS: whisper tab help
-#: src/gui/widgets/tabs/whispertab.cpp:99
-msgid "/close > Close the whisper tab"
-msgstr "/closeでささやきタブを閉じます"
-
-#. TRANSLATORS: whisper tab help
-#: src/gui/widgets/tabs/whispertab.cpp:110
-msgid "Command: /close"
-msgstr "コマンド: /close"
-
-#. TRANSLATORS: whisper tab help
-#: src/gui/widgets/tabs/whispertab.cpp:112
-msgid "This command closes the current whisper tab."
-msgstr "このコマンドは現在開いているささやきタブを閉じます"
-
-#. TRANSLATORS: whisper tab help
-#: src/gui/widgets/tabs/whispertab.cpp:117
-msgid "Command: /ignore"
-msgstr "コマンド: /ignore"
-
-#. TRANSLATORS: whisper tab help
-#: src/gui/widgets/tabs/whispertab.cpp:119
-msgid "This command ignores the other player regardless of current relations."
-msgstr "このコマンドは全てのプレイヤーを完全無視します"
-
-#. TRANSLATORS: whisper tab help
-#: src/gui/widgets/tabs/whispertab.cpp:125
-msgid "Command: /unignore <player>"
-msgstr "コマンド: /unignore <プレイヤー名>"
-
-#. TRANSLATORS: whisper tab help
-#: src/gui/widgets/tabs/whispertab.cpp:127
-msgid "This command stops ignoring the other player if they are being ignored."
-msgstr "このコマンドはプレイヤー完全無視を解除します"
 
 #. TRANSLATORS: short button name for who is online window.
 #: src/gui/windowmenu.cpp:68
@@ -7098,141 +6988,49 @@ msgstr "次のギルドExpまで: %d"
 msgid "Guild castle: %s"
 msgstr "ギルド城: %s"
 
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:75
-msgid "/invite > Invite a player to your party"
-msgstr "/invite パーティにプレイヤーを招待する"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:77
-msgid "/leave > Leave the party you are in"
-msgstr "/leave パーティから退会する"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:79
-msgid "/kick > Kick someone from the party you are in"
-msgstr ""
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:81
-msgid "/item > Show/change party item sharing options"
-msgstr "/item パーティ内でアイテム共有モードを表示/変更する"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:83
-msgid "/exp > Show/change party experience sharing options"
-msgstr "/exp でパーティ内のExpシェアモードを表示/変更する"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:96
-msgid "This command invites <nick> to party with you."
-msgstr "このコマンドは入力したプレイヤーを自分のパーティーに招待します"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:106
-msgid "This command causes the player to leave the party."
-msgstr "このコマンドはパーティからプレイヤーを退会させます"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:111
-msgid "Command: /item <policy>"
-msgstr "コマンド: /item <ポリシー>"
-
-#: src/net/ea/gui/partytab.cpp:114
-msgid "This command changes the party's item sharing policy."
-msgstr "このコマンドはアイテム共有モードを変更します"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:116
-msgid ""
-"<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
-"\"0\", \"no\", \"false\" to disable item sharing."
-msgstr ""
-"＜ポリシー＞ アイテム共有モードを有効するためには \"1\", \"yes\", \"true\"、"
-"無効にするには\"0\", \"no\", \"false\"と入力して下さい"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:120
-msgid "Command: /item"
-msgstr "コマンド: /item"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:122
-msgid "This command displays the party's current item sharing policy."
-msgstr "このコマンドはアイテム共有モードを表示します"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:128
-msgid "Command: /exp <policy>"
-msgstr "コマンド: /exp <ポリシー>"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:130
-msgid "This command changes the party's experience sharing policy."
-msgstr "このコマンドはExpシェアモードを変更します"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:133
-msgid ""
-"<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
-"sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
-msgstr ""
-"＜ポリシー＞ Expシェアモードを有効するためには \"1\", \"yes\", \"true\"、無効"
-"にするには\"0\", \"no\", \"false\"と入力して下さい"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:137
-msgid "Command: /exp"
-msgstr "コマンド: /exp"
-
-#. TRANSLATORS: party help message
-#: src/net/ea/gui/partytab.cpp:139
-msgid "This command displays the party's current experience sharing policy."
-msgstr "このコマンドはパーティメンバーのExpシェアモードを表示します"
-
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:179 src/notifications.h:237
+#: src/net/ea/gui/partytab.cpp:105 src/notifications.h:237
 msgid "Item sharing enabled."
 msgstr "アイテム共有モード有効"
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:183 src/notifications.h:240
+#: src/net/ea/gui/partytab.cpp:109 src/notifications.h:240
 msgid "Item sharing disabled."
 msgstr "アイテム共有モード無効"
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:187 src/notifications.h:243
+#: src/net/ea/gui/partytab.cpp:113 src/notifications.h:243
 msgid "Item sharing not possible."
 msgstr "アイテム共有モード不可能"
 
 #. TRANSLATORS: chat message
-#: src/net/ea/gui/partytab.cpp:191
+#: src/net/ea/gui/partytab.cpp:117
 msgid "Item sharing unknown."
 msgstr "アイテム共有モード不明"
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:223 src/notifications.h:228
+#: src/net/ea/gui/partytab.cpp:149 src/notifications.h:228
 msgid "Experience sharing enabled."
 msgstr "Expシェアモード有効"
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:227 src/notifications.h:231
+#: src/net/ea/gui/partytab.cpp:153 src/notifications.h:231
 msgid "Experience sharing disabled."
 msgstr "Expシェアモード無効"
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:231 src/notifications.h:234
+#: src/net/ea/gui/partytab.cpp:157 src/notifications.h:234
 msgid "Experience sharing not possible."
 msgstr "Expシェアモード不可能"
 
 #. TRANSLATORS: chat message
-#: src/net/ea/gui/partytab.cpp:235
+#: src/net/ea/gui/partytab.cpp:161
 msgid "Experience sharing unknown."
 msgstr "Expシェアモード不明"
 
@@ -7984,7 +7782,7 @@ msgstr "セーフ OpenGL"
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:41 src/resources/db/avatardb.cpp:87
-#: src/resources/db/itemdb.cpp:329 src/resources/db/moddb.cpp:78
+#: src/resources/db/itemdb.cpp:331 src/resources/db/moddb.cpp:78
 #: src/resources/db/monsterdb.cpp:109 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr "名前なし"
@@ -8028,3 +7826,114 @@ msgstr "不明なアイテム"
 #: src/resources/db/petdb.cpp:99
 msgid "pet"
 msgstr ""
+
+#~ msgid "Command: /invite <nick>"
+#~ msgstr "コマンド: /invite <プレイヤー名>"
+
+#~ msgid "This command invites <nick> to the guild you're in."
+#~ msgstr "このコマンドは、入力したプレイヤーを自分のギルドに招待します"
+
+#~ msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
+#~ msgstr ""
+#~ "入力するニックネームにスペースが含まれている場合はダブルコーテーション"
+#~ "(\"\")で囲んでください"
+
+#~ msgid "Command: /leave"
+#~ msgstr "コマンド: /leave"
+
+#~ msgid "This command causes the player to leave the guild."
+#~ msgstr "このコマンドはプレイヤーをギルドから退会させます"
+
+#~ msgid "/help > Display this help."
+#~ msgstr "/help > ヘルプメニューを表示"
+
+#~ msgid "/invite > Invite a player to your guild"
+#~ msgstr "/invite > プレイヤーをギルドへ招待する"
+
+#~ msgid "/leave > Leave the guild you are in"
+#~ msgstr "/leave > ギルドから退会する"
+
+#~ msgid "/ignore > Ignore the other player"
+#~ msgstr "/ignore > 他のプレイヤーを完全無視する"
+
+#~ msgid "/unignore > Stop ignoring the other player"
+#~ msgstr "/unignore はプレイヤー無視を解除をします"
+
+#~ msgid "/close > Close the whisper tab"
+#~ msgstr "/closeでささやきタブを閉じます"
+
+#~ msgid "Command: /close"
+#~ msgstr "コマンド: /close"
+
+#~ msgid "This command closes the current whisper tab."
+#~ msgstr "このコマンドは現在開いているささやきタブを閉じます"
+
+#~ msgid "Command: /ignore"
+#~ msgstr "コマンド: /ignore"
+
+#~ msgid ""
+#~ "This command ignores the other player regardless of current relations."
+#~ msgstr "このコマンドは全てのプレイヤーを完全無視します"
+
+#~ msgid "Command: /unignore <player>"
+#~ msgstr "コマンド: /unignore <プレイヤー名>"
+
+#~ msgid ""
+#~ "This command stops ignoring the other player if they are being ignored."
+#~ msgstr "このコマンドはプレイヤー完全無視を解除します"
+
+#~ msgid "/invite > Invite a player to your party"
+#~ msgstr "/invite パーティにプレイヤーを招待する"
+
+#~ msgid "/leave > Leave the party you are in"
+#~ msgstr "/leave パーティから退会する"
+
+#~ msgid "/item > Show/change party item sharing options"
+#~ msgstr "/item パーティ内でアイテム共有モードを表示/変更する"
+
+#~ msgid "/exp > Show/change party experience sharing options"
+#~ msgstr "/exp でパーティ内のExpシェアモードを表示/変更する"
+
+#~ msgid "This command invites <nick> to party with you."
+#~ msgstr "このコマンドは入力したプレイヤーを自分のパーティーに招待します"
+
+#~ msgid "This command causes the player to leave the party."
+#~ msgstr "このコマンドはパーティからプレイヤーを退会させます"
+
+#~ msgid "Command: /item <policy>"
+#~ msgstr "コマンド: /item <ポリシー>"
+
+#~ msgid "This command changes the party's item sharing policy."
+#~ msgstr "このコマンドはアイテム共有モードを変更します"
+
+#~ msgid ""
+#~ "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, "
+#~ "or \"0\", \"no\", \"false\" to disable item sharing."
+#~ msgstr ""
+#~ "＜ポリシー＞ アイテム共有モードを有効するためには \"1\", \"yes\", \"true"
+#~ "\"、無効にするには\"0\", \"no\", \"false\"と入力して下さい"
+
+#~ msgid "Command: /item"
+#~ msgstr "コマンド: /item"
+
+#~ msgid "This command displays the party's current item sharing policy."
+#~ msgstr "このコマンドはアイテム共有モードを表示します"
+
+#~ msgid "Command: /exp <policy>"
+#~ msgstr "コマンド: /exp <ポリシー>"
+
+#~ msgid "This command changes the party's experience sharing policy."
+#~ msgstr "このコマンドはExpシェアモードを変更します"
+
+#~ msgid ""
+#~ "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
+#~ "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
+#~ msgstr ""
+#~ "＜ポリシー＞ Expシェアモードを有効するためには \"1\", \"yes\", \"true\"、"
+#~ "無効にするには\"0\", \"no\", \"false\"と入力して下さい"
+
+#~ msgid "Command: /exp"
+#~ msgstr "コマンド: /exp"
+
+#~ msgid "This command displays the party's current experience sharing policy."
+#~ msgstr "このコマンドはパーティメンバーのExpシェアモードを表示します"

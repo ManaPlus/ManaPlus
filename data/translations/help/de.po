@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2013-10-07 21:17+0000\n"
+"PO-Revision-Date: 2014-02-13 09:02+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -17,13 +17,11 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "\"Outfit shortcut 12\""
+msgid "/item 0 - disable party item sharing options."
 msgstr ""
 
-msgid ""
-" - ##2allow trading##P: Do you wish to allow trade requests from arbitrary\n"
-"   players?"
-msgstr " - ##2allow trading##P: Möchten Sie Handelsanfragen von beliebigen Spielern\n erlauben?"
+msgid "\"Outfit shortcut 12\""
+msgstr ""
 
 msgid "To read about whispering and other chat commands, look here:"
 msgstr "Um mehr über das Flüstern und andere Chat-Befehle zu erfahren, lesen Sie hier:"
@@ -72,18 +70,26 @@ msgid ""
 msgstr "Man kann andere Spieler nachahmen, indem Sie \"Imitation \"im Spieler-Kontext-Menü\n anklicken oder oder den Chat-Befehl: /imitate playername benutzen."
 
 msgid ""
-" If you're having troubles, please first of all read the FAQ. If you\n"
-" can't find a solution to your problem, feel free to check our\n"
-" Bugs/Support section of the forum:"
-msgstr " Wenn Sie Probleme haben, dann lesen Sie bitte zuerst die FAQ. Wenn Sie\n dort keine Lösung für Ihr Problem finden können, dann zögern Sie nicht,\n den Fehler- / Hilfebereich unseres Forums zu besuchen:"
+" - ##2allow trading##9: Do you wish to allow trade requests from arbitrary\n"
+"   players?"
+msgstr ""
 
 msgid "\"Emote shortcut 9\""
+msgstr ""
+
+msgid "/item 1 - enable party item sharing options."
 msgstr ""
 
 msgid "\"Set direction down\""
 msgstr ""
 
 msgid "\"Target NPC\""
+msgstr ""
+
+msgid "Party chat commands"
+msgstr ""
+
+msgid "/help - show this help."
 msgstr ""
 
 msgid ""
@@ -120,22 +126,9 @@ msgid "\"Quests window\""
 msgstr ""
 
 msgid ""
-" - ##2friend##P:  You consider this player a friend.  The player may chat,\n"
-"   message your in private, or trade with you at any point."
-msgstr " - ##2friend##P:  Du betrachtest diesen Spieler einen Freund. Der Spieler \n   kann in Ihren privaten Chat posten, sowie von jeder Stelle aus handeln."
-
-msgid ""
-" - ##2allow whispers##P: Do you wish to allow arbitrary players to send\n"
-"   private messages to you in-game?"
-msgstr " - ##2allow whispers##P: Möchten Sie mit jedem Spieler Privatnachrichten\n   im Spiel schreiben und auch bekommen?"
-
-msgid ""
 "You can disable yellow bar,\n"
 "by pressing ###keyDisableGameModifiers;."
 msgstr ""
-
-msgid "Support"
-msgstr "Unterstützung"
 
 msgid "\"Quick drop window\""
 msgstr ""
@@ -143,17 +136,19 @@ msgstr ""
 msgid "\"Screenshot\""
 msgstr ""
 
-msgid "##PMagic skills can be obtain by doing quests and missions in game."
-msgstr "##PMagiefähigkeiten sind durch Aufgaben und Missionen im Spiel erhältlich."
+msgid "Support"
+msgstr "Unterstützung"
 
 msgid "\"Emote shortcut 1\""
 msgstr ""
 
-msgid "\"Outfit shortcut 13\""
+msgid ""
+" - ##2ignored##9:  You wish to completely ignore this player.  You will not\n"
+"   even see floating text for him or her anymore, nor emotions."
 msgstr ""
 
-msgid "##2Party level2:##P enables a char to create a party."
-msgstr "##2Party level2:##P Ermöglicht es einer Spielfigur, eine Gruppe zu gründen."
+msgid "\"Outfit shortcut 13\""
+msgstr ""
 
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
@@ -178,6 +173,11 @@ msgstr ""
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr "/query NICK, /q NICK - öffnet neues Chatunterfenster für das Flüstern mit NICK."
 
+msgid ""
+" - ##2allow whispers##9: Do you wish to allow arbitrary players to send\n"
+"   private messages to you in-game?"
+msgstr ""
+
 msgid "\"Item shortcut 5\""
 msgstr ""
 
@@ -195,6 +195,13 @@ msgstr "/addattack NAME - Monster zur normalen Angriffsliste hinzufügen."
 
 msgid "For other server look servers pages for support."
 msgstr "Für andere Server, schau auf der Server-Webseite für Unterstützung."
+
+msgid ""
+"##2ManaPlus##9 is a serious effort to create an innovative free and open\n"
+" source MMORPG Client. ManaPlus uses 2D graphics and aims to create a large\n"
+" and diverse interactive world. It is licensed under the GPL, making\n"
+" sure this game can't ever run away from you."
+msgstr ""
 
 msgid "\"Target closest monster\""
 msgstr ""
@@ -244,21 +251,16 @@ msgstr ""
 msgid "/where - print current player position to chat."
 msgstr "/where - print current player position to chat."
 
-msgid ""
-" - ##2ignored##P:  You wish to completely ignore this player.  You will not\n"
-"   even see floating text for him or her anymore, nor emotions."
-msgstr " - ##2ignored##P: Sie möchten den Spieler ignorieren. Sie werden weder\n   Texte noch Emoticons von diesem Spieler sehen können."
+msgid "Instructions"
+msgstr ""
 
 msgid ""
 "If client working very slow, you can improve speed\n"
 "by reading this: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
 msgstr ""
 
-msgid ""
-" - ##2save player list##P: Should your acquaintance list be saved when you\n"
-"   quit the game?  If you enable this option, your list will survive when you\n"
-"   quit and re-start."
-msgstr " - ##2save player list##P: Soll Ihre Bekanntschaftsliste gespeichert werden,\n   wenn Sie das Spiel beenden ? Wenn Sie diese Option aktivieren, überlebt\n   Ihre Liste, wenn man Beendet und neu startet."
+msgid "/exp - show party experience sharing options."
+msgstr ""
 
 msgid ""
 "You can do basic searching in help by using command\n"
@@ -270,9 +272,6 @@ msgid ""
 "Right click on player and select \"Buy\" or \"Sell\""
 msgstr "Sie können aus Spielern Geschäften Artikel kaufen oder verkaufen.\n Rechtsklick auf Spieler und wählen Sie \"Kauf\" oder \"Verkauf\"."
 
-msgid "##2Trade:##P enables the ability to trade with others."
-msgstr "##2Trade:##P Ermöglicht den Handel mit anderen."
-
 msgid "\"Enable/disable trading\""
 msgstr ""
 
@@ -282,8 +281,11 @@ msgstr ""
 msgid "/unignore NICK - Remove nick from ignore list."
 msgstr "unignore NICK - Entferne NICK von der Ignore-Liste."
 
-msgid "Instructions"
-msgstr ""
+msgid ""
+" If you're having troubles, please first of all read the FAQ. If you\n"
+" can't find a solution to your problem, feel free to check our\n"
+" Bugs/Support section of the forum:"
+msgstr " Wenn Sie Probleme haben, dann lesen Sie bitte zuerst die FAQ. Wenn Sie\n dort keine Lösung für Ihr Problem finden können, dann zögern Sie nicht,\n den Fehler- / Hilfebereich unseres Forums zu besuchen:"
 
 msgid "IGNORING COMMUNICATION"
 msgstr "KOMMUNIKATION IGNORIEREN"
@@ -306,8 +308,11 @@ msgstr "KOMMUNIKATION:"
 msgid "Other skills:"
 msgstr "Andere Fähigkeiten"
 
-msgid "Powered By"
-msgstr "Angetrieben durch"
+msgid ""
+" - ##2save player list##9: Should your acquaintance list be saved when you\n"
+"   quit the game?  If you enable this option, your list will survive when you\n"
+"   quit and re-start."
+msgstr ""
 
 msgid ""
 "You can use mumble voice chat for talking with other players.\n"
@@ -322,12 +327,6 @@ msgstr "Beitragende übergeordneter Projekte"
 
 msgid "\"Item shortcut 4\""
 msgstr ""
-
-msgid ""
-" - ##2disregarded##P:  You wish to disregard this player, meaning that his or\n"
-"   her chat messages are not logged and trade requests and whispers are\n"
-"   ignored."
-msgstr " - ##2disregarded##P: Sie möchten diesen Spieler missachten, was bedeutet,\n   dass seine Chat-Nachrichten nicht protokolliert werden und Handel und flüstern\n   werden ignoriert."
 
 msgid ""
 "You can restore yellow bar settings,\n"
@@ -371,6 +370,9 @@ msgstr "Sie können die Infofenster und Knöpfe verstecken/anzeigen, indem Sie\n
 msgid "\"Scroll chat down\""
 msgstr ""
 
+msgid "##2Trade:##9 enables the ability to trade with others."
+msgstr ""
+
 msgid "Server news"
 msgstr "Server-Neuigkeiten"
 
@@ -412,6 +414,9 @@ msgstr "INHALT"
 msgid "\"Chat auto complete\""
 msgstr ""
 
+msgid "/kick NICK - kick someone from the party you are in."
+msgstr ""
+
 msgid "\"Commands window\""
 msgstr ""
 
@@ -420,6 +425,9 @@ msgstr "/ignoreall - Fügt alle aktiven Flüsterchats zur Ignorierliste hinzu."
 
 msgid "\"Copy outfit\""
 msgstr ""
+
+msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
+msgstr "Internetseite: @@http://manaplus.org/|http://manaplus.org/@@"
 
 msgid "/ignore NICK - add nick to ignore list."
 msgstr "/ignore NICK - Fügt NICK zur Ignorierliste hinzu."
@@ -455,6 +463,9 @@ msgstr "Sie können den Weg-Modus durch Eingabe des Chat-Befehls /away setzen."
 
 msgid "/move X Y - move to X,Y position in short distance."
 msgstr "/move X Y - Zur Position X,Y in kurzer Entfernung gehen."
+
+msgid "##2Party Level1:##9 enables a char to join a party."
+msgstr ""
 
 msgid "\"Item shortcut 3\""
 msgstr ""
@@ -501,7 +512,18 @@ msgstr ""
 msgid "\"Item shortcut 6\""
 msgstr ""
 
+msgid ""
+" - ##2neutral##9:  As far as the game is concerned, this is the same as not\n"
+"   having the player listed:  the player may chat with you, but may only trade\n"
+"   or whisper if you have this option allowed for everyone."
+msgstr ""
+
 msgid "Download"
+msgstr ""
+
+msgid ""
+" - ##2friend##9:  You consider this player a friend.  The player may chat,\n"
+"   message your in private, or trade with you at any point."
 msgstr ""
 
 msgid "Art or images contributors"
@@ -510,7 +532,19 @@ msgstr "Kunst oder Bilder Mitwirkende"
 msgid "\"Target player\""
 msgstr ""
 
+msgid "/invite NICK - invite a player to your party."
+msgstr ""
+
 msgid "##2ManaPlus version: ##6%VER%"
+msgstr ""
+
+msgid "/exp 0 - disable party experience sharing options."
+msgstr ""
+
+msgid ""
+" - ##2disregarded##9:  You wish to disregard this player, meaning that his or\n"
+"   her chat messages are not logged and trade requests and whispers are\n"
+"   ignored."
 msgstr ""
 
 msgid "\"Debug window\""
@@ -527,6 +561,9 @@ msgstr ""
 
 msgid "Basic skills:"
 msgstr "Grundfähigkeiten"
+
+msgid "/leave - leave the party you are in."
+msgstr ""
 
 msgid "\"Change move to target type\""
 msgstr ""
@@ -546,8 +583,15 @@ msgstr ""
 msgid "\"Item shortcut 2\""
 msgstr ""
 
-msgid "##2Emote:##P enables the ability to express emotions."
-msgstr "##2Emote:##P erlaubt die Fähigkeit, Emotionen auszudrücken."
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr "##2               SDL, SDL_image, SDL_mixer (Media framework)\n##2                     SDL_net (Networking framework)\n##2                        Guichan (GUI framework)\n##2                   libxml2 (XML parsing and writing)\n##2                          PhysFS (Data files)\n##2                        libcurl (HTTP downloads)\n##2                            zlib (Archives)"
 
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend NICK, /befriend NICK - Fügt NICK der Freundesliste hinzu."
@@ -559,22 +603,12 @@ msgid "\"Scroll chat up\""
 msgstr ""
 
 msgid ""
-"##2ManaPlus##P is extended client based on old code from ##2Mana##P client.\n"
-" Added many features, improved perfomance, stability, security and more."
-msgstr "##2ManaPlus##P ist ein erweiterter Client, basierend auf dem Code des ##2Mana##P Clients.\n Hinzugefügt wurden viele Funktionen, verbesserte Performance, Stabilität, Sicherheit und\n vieles mehr."
+"##9 This file lists all contributors up to the current release. Check the wiki\n"
+"##9 for the currently active development team."
+msgstr ""
 
-msgid ""
-"##2ManaPlus##P is a serious effort to create an innovative free and open\n"
-" source MMORPG Client. ManaPlus uses 2D graphics and aims to create a large\n"
-" and diverse interactive world. It is licensed under the GPL, making\n"
-" sure this game can't ever run away from you."
-msgstr "##2ManaPlus##P ist ernsthaft bemüht, einen innovativen und freien Open\nSource MMORPG-Client zu erstellen. Mana verwendet 2D-Grafik und zielt\ndarauf ab, eine große und vielfältig interaktive Welt zu schaffen.\nEs unterliegt der GPL, so dass sichergestellt ist, das dieses Spiel\nnicht wegkommen kann."
-
-msgid ""
-" - ##2neutral##P:  As far as the game is concerned, this is the same as not\n"
-"   having the player listed:  the player may chat with you, but may only trade\n"
-"   or whisper if you have this option allowed for everyone."
-msgstr " - ##2neutral##P: Soweit es das Spiel betrifft, so ist dies nicht das gleiche wenn\n   der Spieler aufgelistet ist: Der Spieler darf mit Ihnen chatten, kann aber nur\n   mit Ihnen handeln oder flüstern, wenn Sie diese Option für alle erlaubt haben."
+msgid "/item - show party item sharing options."
+msgstr ""
 
 msgid "\"Inventory window\""
 msgstr ""
@@ -599,9 +633,6 @@ msgstr ""
 
 msgid "Skills"
 msgstr "Fähigkeiten"
-
-msgid "##2Party Level1:##P enables a char to join a party."
-msgstr "##2Party Level1:##P  Ermöglicht einer Spielfigur, einer Gruppe zu beizutreten."
 
 msgid "\"Outfit shortcut 3\""
 msgstr ""
@@ -649,8 +680,8 @@ msgstr "/outfit prev - vorige Ausrüstung anziehen."
 msgid "\"Crazy moves\""
 msgstr ""
 
-msgid "SHORTCUTS:"
-msgstr "KURZBEFEHLE:"
+msgid "##2Party level2:##9 enables a char to create a party."
+msgstr ""
 
 msgid "/target NICK - select nick as target. Can be monster or player nick."
 msgstr "/target NICK - NICK als Ziel wählen. Kann Monster oder Spieler NICK sein."
@@ -687,6 +718,9 @@ msgstr "Sie können die Werte von jeder Info-Leiste kopieren: Mit der rechten\nM
 msgid "/closeall - close all whispers."
 msgstr "/closeall - Alle Flüsterchats schließen."
 
+msgid "/exp 1 - enable party experience sharing options."
+msgstr ""
+
 msgid "COMMANDS"
 msgstr "BEFEHLE"
 
@@ -696,6 +730,9 @@ msgstr ""
 msgid "/serverunignoreall - unignore all whispers on server side."
 msgstr "/serverunignoreall - Serverseitiges ignorieren des Flüsterns (Privatchat) beenden."
 
+msgid "##9Magic skills can be obtain by doing quests and missions in game."
+msgstr ""
+
 msgid "\"Skill window\""
 msgstr ""
 
@@ -704,9 +741,6 @@ msgstr ""
 
 msgid "\"Toggle chat\""
 msgstr ""
-
-msgid "##POther skills can be obtain by doing quests and missions in game."
-msgstr "##PAndere Fähigkeiten sind durch Aufgaben und Missionen erhältlich."
 
 msgid "\"Change attack type\""
 msgstr ""
@@ -729,8 +763,8 @@ msgstr "Sie können die (vor)eingestellte Tastaturbelegung jederzeit\nin den Tas
 msgid "/dirs - show client dirs in debug chat tab."
 msgstr "/dirs - listet die verwendeten Verzeichnisse des Clienten\nim Debug-Chatfenster auf."
 
-msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
-msgstr "Internetseite: @@http://manaplus.org/|http://manaplus.org/@@"
+msgid "Powered By"
+msgstr "Angetrieben durch"
 
 msgid "/disconnect - quick disconnect from server."
 msgstr "/disconnect - schnell vom Server trennen."
@@ -754,6 +788,14 @@ msgid "\"Outfit shortcut 8\""
 msgstr ""
 
 msgid "\"Change imitation mode\""
+msgstr ""
+
+msgid ""
+"##2ManaPlus##9 is extended client based on old code from ##2Mana##9 client.\n"
+" Added many features, improved perfomance, stability, security and more."
+msgstr ""
+
+msgid "##9Other skills can be obtain by doing quests and missions in game."
 msgstr ""
 
 msgid "\"Reset video mode to safe value\""
@@ -885,6 +927,9 @@ msgstr ""
 msgid "\"Move left\""
 msgstr ""
 
+msgid "##2Emote:##9 enables the ability to express emotions."
+msgstr ""
+
 msgid "\"Item shortcut window\""
 msgstr ""
 
@@ -903,15 +948,8 @@ msgstr ""
 msgid "/serverignoreall - ignore all whispers on server side."
 msgstr "/serverignoreall - ignoriert alle Flüsterchats auf der Serverseite."
 
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
-msgstr "##2               SDL, SDL_image, SDL_mixer (Media framework)\n##2                     SDL_net (Networking framework)\n##2                        Guichan (GUI framework)\n##2                   libxml2 (XML parsing and writing)\n##2                          PhysFS (Data files)\n##2                        libcurl (HTTP downloads)\n##2                            zlib (Archives)"
+msgid "/notice TEXT - set notice guild text."
+msgstr ""
 
 msgid "\"Emote shortcut 3\""
 msgstr ""
@@ -923,11 +961,6 @@ msgid ""
 " `Setup' menu, which lists all the players you have added to it.  To open this\n"
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
 msgstr "Aber du kannst dich vor solchen Spielern schützen, indem du sie ignorierst. Rechts-⏎ klicke auf sie, um das Kontextmenü aufzurufen, dann wähle `Ignore' oder⏎ `Disregard' (siehe unten). In deinem ⏎  Einstellungs-Menü kannst du Feineinstellungen deiner 'Beziehungen' vornehmen. Um dieses ⏎ Menü zu öffnen, klicke in der oberen rechten Ecke auf 'Einstellungen', dann auf den Tab 'Beziehungen'. Dieser listet alle Spieler auf, die du hinzugefügt hast."
-
-msgid ""
-"##P This file lists all contributors up to the current release. Check the wiki\n"
-"##P for the currently active development team."
-msgstr "##P Diese Datei listet alle Mitwirkenden bis zur aktuellen Version. Überprüfen\n##P Sie das Wiki für das momentan aktive Entwickler-Team."
 
 msgid "Different patches"
 msgstr "Verschiedene Patches"
@@ -941,6 +974,9 @@ msgstr "/navigate x y - Geht im aktuellen Gebiet zur Position x y,\n            
 msgid "SKILLS"
 msgstr "Fertigkeiten"
 
+msgid "Guild chat commands"
+msgstr ""
+
 msgid "Actions"
 msgstr "Aktionen"
 
@@ -952,6 +988,9 @@ msgstr ""
 
 msgid "Sound effects"
 msgstr "Soundeffekte"
+
+msgid "SHORTCUTS:"
+msgstr "KURZBEFEHLE:"
 
 msgid "\"Talk\""
 msgstr ""
