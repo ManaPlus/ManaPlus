@@ -211,7 +211,6 @@ void MapReader::addLayerToList(const std::string &fileName)
             continue;
         name = toLower(name);
         logger->log("found patch layer: " + name);
-        LayerInfoIterator it = mKnownLayers.find(name);
         mKnownLayers[name] = childNode;
         mKnownDocs.insert(doc);
     }

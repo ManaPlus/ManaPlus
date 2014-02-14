@@ -23,6 +23,7 @@
 #include "gui/windows/shortcutwindow.h"
 
 #include "gui/windows/setupwindow.h"
+#include "gui/widgets/tabbedarea.h"
 
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"

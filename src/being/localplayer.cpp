@@ -2818,7 +2818,7 @@ void LocalPlayer::crazyMoveA()
                     move(1, 1);
                     break;
                 case 'U':
-                    move (-1, -1);
+                    move(-1, -1);
                     break;
                 case 'L':
                     move(-1, 1);
@@ -3016,7 +3016,6 @@ void LocalPlayer::crazyMoveA()
                 emoteId = static_cast<unsigned char>(emo - 'a' + 11);
             else if (emo >= 'A' && emo <= 'Z')
                 emoteId = static_cast<unsigned char>(emo - 'A' + 37);
-
         }
         if (mMoveProgram[mCrazyMoveState] == 'e')
             emote(emoteId);

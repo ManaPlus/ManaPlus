@@ -45,6 +45,7 @@
 #include "gui/widgets/tabs/setup_visual.h"
 
 #include "gui/widgets/label.h"
+#include "gui/widgets/tabbedarea.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"

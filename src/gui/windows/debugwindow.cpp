@@ -36,6 +36,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/tabbedarea.h"
 
 #include "resources/imagehelper.h"
 

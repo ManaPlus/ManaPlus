@@ -32,8 +32,6 @@
 
 #include "gui/widgets/windowcontainer.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 WhisperTab::WhisperTab(const Widget2 *const widget, const std::string &nick) :
@@ -90,7 +88,7 @@ void WhisperTab::handleCommand(const std::string &msg)
 }
 
 bool WhisperTab::handleCommand(const std::string &restrict type,
-                               const std::string &restrict args)
+                               const std::string &restrict args A_UNUSED)
 {
     if (type == "close")
     {

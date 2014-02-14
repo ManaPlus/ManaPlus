@@ -1487,7 +1487,7 @@ bool SDL2SoftwareGraphics::setVideoMode(const int w, const int h,
     }
 
     mSurface = SDL_GetWindowSurface(mWindow);
-    IimageHelper::dumpSurfaceFormat(mSurface);
+    ImageHelper::dumpSurfaceFormat(mSurface);
     SDL2SoftwareImageHelper::setFormat(mSurface->format);
 
     int w1 = 0;

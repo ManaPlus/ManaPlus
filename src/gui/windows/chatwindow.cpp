@@ -44,6 +44,7 @@
 
 #include "gui/windows/emotewindow.h"
 #include "gui/windows/setupwindow.h"
+#include "gui/widgets/tabbedarea.h"
 #include "gui/windows/whoisonline.h"
 
 #include "gui/widgets/tabs/battletab.h"

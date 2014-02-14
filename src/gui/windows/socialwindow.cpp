@@ -46,6 +46,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/popup.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/tabbedarea.h"
 
 #include "gui/widgets/tabs/chattab.h"
 
@@ -1896,7 +1897,7 @@ void SocialWindow::updateGuildCounter(const int online, const int total)
     }
 }
 
-void SocialWindow::updatedPlayer(const std::string &name)
+void SocialWindow::updatedPlayer(const std::string &name A_UNUSED)
 {
     mNeedUpdate = true;
 }

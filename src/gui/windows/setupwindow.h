@@ -20,10 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WINDOWS_SETUP_H
-#define GUI_WINDOWS_SETUP_H
-
-#include "gui/widgets/tabbedarea.h"
+#ifndef GUI_WINDOWS_SETUPWINDOW_H
+#define GUI_WINDOWS_SETUPWINDOW_H
 
 #include "gui/widgets/window.h"
 
@@ -31,8 +29,10 @@
 
 #include <list>
 
+class Button;
 class Label;
 class SetupTab;
+class TabbedArea;
 
 /**
  * The setup dialog. Displays several tabs for configuring different aspects
@@ -87,4 +87,4 @@ class SetupWindow final : public Window,
 
 extern SetupWindow* setupWindow;
 
-#endif  // GUI_WINDOWS_SETUP_H
+#endif  // GUI_WINDOWS_SETUPWINDOW_H

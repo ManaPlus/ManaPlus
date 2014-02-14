@@ -23,6 +23,8 @@
 #ifndef BEING_PLAYERRELATIONSLISTENER_H
 #define BEING_PLAYERRELATIONSLISTENER_H
 
+#include <string>
+
 class PlayerRelationsListener
 {
     public:
