@@ -9,7 +9,6 @@ SDL_PATH := ../SDL
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(SDL_PATH)/include \
     $(LOCAL_PATH)/src \
-    $(LOCAL_PATH)/src/guichan/include \
     $(ROOT_PATH)/xml2/include \
     $(ROOT_PATH)/gettext-0.18/gettext-runtime/intl \
     $(ROOT_PATH)/sdl_gfx \
@@ -17,7 +16,7 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(SDL_PATH)/include \
     $(ROOT_PATH)/curl/include \
     $(ROOT_PATH)/SDL2_net-2.0.0
 
-LOCAL_CPPFLAGS += -DUSE_SDL2 -DUSE_INTERNALGUICHAN -DEATHENA_SUPPORT -DUSE_OPENGL -DENABLE_NLS
+LOCAL_CPPFLAGS += -DUSE_SDL2 -DEATHENA_SUPPORT -DUSE_OPENGL -DENABLE_NLS
 LOCAL_CPPFLAGS += -frtti -fexceptions -Wno-error=format-security -fvisibility=hidden
 LOCAL_CPPFLAGS += -ffast-math -funswitch-loops -pedantic -Wall -Wc++11-compat -std=c++0x -funsafe-loop-optimizations -flto -fwhole-program
 
@@ -36,8 +35,8 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/gui/widgets/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/widgets/tabs/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/windows/*.cpp) \
-    $(wildcard $(LOCAL_PATH)/src/guichan/*.cpp) \
-    $(wildcard $(LOCAL_PATH)/src/guichan/widgets/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/gui/basic/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/gui/basic/widgets/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/input/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/net/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/net/ea/*.cpp) \
