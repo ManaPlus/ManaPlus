@@ -176,6 +176,8 @@ class TouchManager final : public ConfigListener
         int mButtonsSize;
         int mJoystickSize;
         int mButtonsFormat;
+        int mWidth;
+        int mHeight;
         bool mShow;
         bool mInGame;
         bool mTempHideButtons;

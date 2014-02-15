@@ -52,6 +52,8 @@ TouchManager::TouchManager() :
     mButtonsSize(1),
     mJoystickSize(1),
     mButtonsFormat(0),
+    mWidth(0),
+    mHeight(0),
     mShow(false),
     mInGame(false),
     mTempHideButtons(false)
@@ -99,6 +101,8 @@ void TouchManager::init()
         loadPad();
     if (mShowButtons)
         loadButtons();
+    mWidth = mainGraphics->mWidth;
+    mHeight = mainGraphics->mHeight;
 }
 
 void TouchManager::loadTouchItem(TouchItem **item, const std::string &name,
@@ -309,8 +313,8 @@ bool TouchManager::isActionActive(const int index) const
 void TouchManager::resize(const int width, const int height)
 {
     mRedraw = true;
-    const int maxHeight = mainGraphics->mHeight;
-    const int diffW = width - mainGraphics->mWidth;
+    const int maxHeight = mHeight;
+    const int diffW = width - mWidth;
     const int diffH = height - maxHeight;
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
     {
@@ -340,6 +344,8 @@ void TouchManager::resize(const int width, const int height)
                 break;
         }
     }
+    mWidth = mainGraphics->mWidth;
+    mHeight = mainGraphics->mHeight;
 }
 
 void TouchManager::unload(TouchItem *const item)
