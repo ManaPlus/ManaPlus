@@ -72,10 +72,10 @@
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
 
+class SelectionListener;
+
 namespace gcn
 {
-    class SelectionListener;
-
     /**
      * An implementation of a list box where an item can be selected.
      *

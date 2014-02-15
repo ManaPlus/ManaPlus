@@ -26,7 +26,7 @@
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/selectionlistener.hpp"
+#include "listeners/selectionlistener.h"
 
 #include <memory>
 
@@ -44,7 +44,7 @@ class TextField;
  */
 class TradeWindow final : public Window,
                           private ActionListener,
-                          private gcn::SelectionListener
+                          private SelectionListener
 {
     public:
         /**

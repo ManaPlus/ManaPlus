@@ -32,7 +32,7 @@
 #include "listeners/focuslistener.h"
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
-#include "gui/base/selectionlistener.hpp"
+#include "listeners/selectionlistener.h"
 
 #include "localconsts.h"
 
@@ -55,7 +55,7 @@ class DropDown final : public ActionListener,
                        public KeyListener,
                        public MouseListener,
                        public FocusListener,
-                       public gcn::SelectionListener,
+                       public SelectionListener,
                        public Widget2
 {
     public:

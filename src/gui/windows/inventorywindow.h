@@ -31,7 +31,7 @@
 
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
-#include "gui/base/selectionlistener.hpp"
+#include "listeners/selectionlistener.h"
 
 class Button;
 class DropDown;
@@ -53,7 +53,7 @@ class TextPopup;
 class InventoryWindow final : public Window,
                               public ActionListener,
                               public KeyListener,
-                              public gcn::SelectionListener,
+                              public SelectionListener,
                               public InventoryListener,
                               public DepricatedListener
 {

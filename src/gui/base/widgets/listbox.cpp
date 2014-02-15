@@ -72,7 +72,7 @@
 #include "gui/base/key.hpp"
 #include "gui/base/listmodel.hpp"
 #include "gui/base/mouseinput.hpp"
-#include "gui/base/selectionlistener.hpp"
+#include "listeners/selectionlistener.h"
 
 #include "render/graphics.h"
 

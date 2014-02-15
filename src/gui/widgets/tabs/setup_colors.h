@@ -24,7 +24,7 @@
 
 #include "gui/widgets/tabs/setuptab.h"
 
-#include "gui/base/selectionlistener.hpp"
+#include "listeners/selectionlistener.h"
 
 #include <string>
 
@@ -37,7 +37,7 @@ class TextField;
 class TextPreview;
 
 class Setup_Colors final : public SetupTab,
-                           public gcn::SelectionListener
+                           public SelectionListener
 {
     public:
         explicit Setup_Colors(const Widget2 *const widget);

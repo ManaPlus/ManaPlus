@@ -72,7 +72,7 @@ ShopWindow::ShopWindow():
     // TRANSLATORS: shop window name
     Window(_("Personal Shop"), false, nullptr, "shop.xml"),
     ActionListener(),
-    gcn::SelectionListener(),
+    SelectionListener(),
     // TRANSLATORS: shop window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mBuyShopItems(new ShopItems),

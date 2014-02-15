@@ -26,7 +26,7 @@
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/selectionlistener.hpp"
+#include "listeners/selectionlistener.h"
 
 class Button;
 class CheckBox;
@@ -44,7 +44,7 @@ class ShopListBox;
  */
 class ShopWindow final : public Window,
                          public ActionListener,
-                         public gcn::SelectionListener
+                         public SelectionListener
 {
     public:
         enum ShopMode

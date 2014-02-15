@@ -29,7 +29,7 @@
 #include "gui/widgets/button.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/selectionlistener.hpp"
+#include "listeners/selectionlistener.h"
 
 #include "localconsts.h"
 
@@ -78,7 +78,7 @@ struct ButtonText final
 class WindowMenu final : public Container,
                          public ConfigListener,
                          public ActionListener,
-                         public gcn::SelectionListener,
+                         public SelectionListener,
                          public MouseListener
 {
     public:

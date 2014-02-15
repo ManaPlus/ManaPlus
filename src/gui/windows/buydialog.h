@@ -26,7 +26,7 @@
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/selectionlistener.hpp"
+#include "listeners/selectionlistener.h"
 
 class Button;
 class DropDown;
@@ -46,7 +46,7 @@ class Slider;
  */
 class BuyDialog final : public Window,
                         public ActionListener,
-                        public gcn::SelectionListener
+                        public SelectionListener
 {
     public:
         /**

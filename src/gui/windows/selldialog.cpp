@@ -54,7 +54,7 @@ SellDialog::SellDialog(const int npcId) :
     // TRANSLATORS: sell dialog name
     Window(_("Sell"), false, nullptr, "sell.xml"),
     ActionListener(),
-    gcn::SelectionListener(),
+    SelectionListener(),
     mNpcId(npcId), mMaxItems(0), mAmountItems(0), mNick("")
 {
     init();
@@ -64,7 +64,7 @@ SellDialog::SellDialog(const std::string &nick):
     // TRANSLATORS: sell dialog name
     Window(_("Sell"), false, nullptr, "sell.xml"),
     ActionListener(),
-    gcn::SelectionListener(),
+    SelectionListener(),
     mNpcId(-1), mMaxItems(0), mAmountItems(0), mNick(nick)
 {
     init();

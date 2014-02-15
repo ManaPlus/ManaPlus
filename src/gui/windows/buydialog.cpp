@@ -194,7 +194,7 @@ BuyDialog::BuyDialog() :
     // TRANSLATORS: buy dialog name
     Window(_("Create items"), false, nullptr, "buy.xml"),
     ActionListener(),
-    gcn::SelectionListener(),
+    SelectionListener(),
     mNpcId(-2), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(),
     mSortModel(nullptr),
     mSortDropDown(nullptr)
@@ -206,7 +206,7 @@ BuyDialog::BuyDialog(const int npcId) :
     // TRANSLATORS: buy dialog name
     Window(_("Buy"), false, nullptr, "buy.xml"),
     ActionListener(),
-    gcn::SelectionListener(),
+    SelectionListener(),
     mNpcId(npcId), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(),
     mSortModel(nullptr),
     mSortDropDown(nullptr)
@@ -218,7 +218,7 @@ BuyDialog::BuyDialog(std::string nick) :
     // TRANSLATORS: buy dialog name
     Window(_("Buy"), false, nullptr, "buy.xml"),
     ActionListener(),
-    gcn::SelectionListener(),
+    SelectionListener(),
     mNpcId(-1), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(nick),
     mSortModel(new SortListModelBuy),
     mSortDropDown(new DropDown(this, mSortModel, false, false, this, "sort"))

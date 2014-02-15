@@ -246,7 +246,7 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     Window(_("Choose Your Server"), false, nullptr, "server.xml"),
     ActionListener(),
     KeyListener(),
-    gcn::SelectionListener(),
+    SelectionListener(),
     mMutex(),
     mDescription(new Label(this, std::string())),
     // TRANSLATORS: servers dialog button

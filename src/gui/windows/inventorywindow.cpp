@@ -103,7 +103,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     Window("Inventory", false, nullptr, "inventory.xml"),
     ActionListener(),
     KeyListener(),
-    gcn::SelectionListener(),
+    SelectionListener(),
     InventoryListener(),
     mInventory(inventory),
     mItems(new ItemContainer(this, mInventory)),

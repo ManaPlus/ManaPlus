@@ -33,7 +33,7 @@
 
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
-#include "gui/base/selectionlistener.hpp"
+#include "listeners/selectionlistener.h"
 
 #include "gui/base/listmodel.hpp"
 
@@ -94,7 +94,7 @@ class ServersListModel final : public gcn::ListModel
 class ServerDialog final : public Window,
                            public ActionListener,
                            public KeyListener,
-                           public gcn::SelectionListener
+                           public SelectionListener
 {
     public:
         /**

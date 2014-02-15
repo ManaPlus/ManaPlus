@@ -39,11 +39,7 @@ class Image;
 class Inventory;
 class Item;
 class ItemPopup;
-
-namespace gcn
-{
-    class SelectionListener;
-}
+class SelectionListener;
 
 /**
  * An item container. Used to show items in inventory and trade dialog.
@@ -116,14 +112,14 @@ class ItemContainer final : public gcn::Widget,
          * Adds a listener to the list that's notified each time a change to
          * the selection occurs.
          */
-        void addSelectionListener(gcn::SelectionListener *listener)
+        void addSelectionListener(SelectionListener *listener)
         { mSelectionListeners.push_back(listener); }
 
         /**
          * Removes a listener from the list that's notified each time a change
          * to the selection occurs.
          */
-        void removeSelectionListener(gcn::SelectionListener *listener)
+        void removeSelectionListener(SelectionListener *listener)
         { mSelectionListeners.remove(listener); }
 
         void setFilter(const int tag);
@@ -192,7 +188,7 @@ class ItemContainer final : public gcn::Widget,
         gcn::Color mEquipedColor2;
         gcn::Color mUnEquipedColor;
         gcn::Color mUnEquipedColor2;
-        typedef std::list<gcn::SelectionListener*> SelectionListenerList;
+        typedef std::list<SelectionListener*> SelectionListenerList;
         typedef SelectionListenerList::iterator SelectionListenerIterator;
         SelectionListenerList mSelectionListeners;
         int mGridColumns;

@@ -47,7 +47,7 @@
 #include "resources/image.h"
 
 #include "gui/base/font.hpp"
-#include "gui/base/selectionlistener.hpp"
+#include "listeners/selectionlistener.h"
 
 #include <algorithm>
 

@@ -45,7 +45,7 @@
 WindowMenu::WindowMenu(const Widget2 *const widget) :
     Container(widget),
     ActionListener(),
-    gcn::SelectionListener(),
+    SelectionListener(),
     MouseListener(),
     mSkin(Theme::instance() ? Theme::instance()->load("windowmenu.xml", "")
           : nullptr),

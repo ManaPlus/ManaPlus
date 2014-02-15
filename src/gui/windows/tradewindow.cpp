@@ -68,7 +68,7 @@ TradeWindow::TradeWindow():
     // TRANSLATORS: trade window caption
     Window(_("Trade: You"), false, nullptr, "trade.xml"),
     ActionListener(),
-    gcn::SelectionListener(),
+    SelectionListener(),
     mMyInventory(new Inventory(Inventory::TRADE)),
     mPartnerInventory(new Inventory(Inventory::TRADE)),
     mMyItemContainer(new ItemContainer(this, mMyInventory.get())),
