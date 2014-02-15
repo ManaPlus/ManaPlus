@@ -139,8 +139,7 @@ void DebugWindow::draw(Graphics *g)
         const Being *const target = player_node->getTarget();
         if (target)
         {
-            Graphics *const g2 = static_cast<Graphics*>(g);
-            target->draw(g2, -target->getPixelX() + mapTileSize / 2
+            target->draw(g, -target->getPixelX() + mapTileSize / 2
                 + mDimension.width / 2, -target->getPixelY() + mapTileSize
                 + mDimension.height / 2);
         }

@@ -68,7 +68,6 @@ void EmotePage::draw(Graphics *graphics)
 
     const std::vector<Image*> &images = mEmotes->getImages();
 
-    Graphics *const g = static_cast<Graphics*>(graphics);
     const unsigned int width = mDimension.width;
     unsigned int x = 0;
     unsigned int y = 0;
@@ -84,7 +83,7 @@ void EmotePage::draw(Graphics *graphics)
                 const Image *const image = *it;
                 if (image)
                 {
-                    g->calcTileCollection(mVertexes, image, x, y);
+                    graphics->calcTileCollection(mVertexes, image, x, y);
                     x += emoteWidth;
                     if (x + emoteWidth > width)
                     {
@@ -94,7 +93,7 @@ void EmotePage::draw(Graphics *graphics)
                 }
             }
         }
-        g->drawTileCollection(mVertexes);
+        graphics->drawTileCollection(mVertexes);
     }
     else
     {
@@ -103,7 +102,7 @@ void EmotePage::draw(Graphics *graphics)
             const Image *const image = *it;
             if (image)
             {
-                g->drawImage2(image, x, y);
+                graphics->drawImage2(image, x, y);
                 x += emoteWidth;
                 if (x + emoteWidth > width)
                 {

@@ -101,8 +101,7 @@ void Label::draw(Graphics* graphics)
             break;
     }
 
-    static_cast<Graphics*>(graphics)->setColorAll(
-        mForegroundColor, mForegroundColor2);
+    graphics->setColorAll(mForegroundColor, mForegroundColor2);
     font->drawString(graphics, mCaption, textX, textY);
     BLOCK_END("Label::draw")
 }

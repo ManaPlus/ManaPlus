@@ -107,8 +107,7 @@ void DropShortcutContainer::draw(Graphics *graphics)
             mBackgroundImg->setAlpha(mAlpha);
     }
 
-    Graphics *const g = static_cast<Graphics*>(graphics);
-    drawBackground(g);
+    drawBackground(graphics);
 
     const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
@@ -144,12 +143,12 @@ void DropShortcutContainer::draw(Graphics *graphics)
                     caption = "Eq.";
 
                 image->setAlpha(1.0F);
-                g->drawImage2(image, itemX, itemY);
+                graphics->drawImage2(image, itemX, itemY);
                 if (item->isEquipped())
-                    g->setColorAll(mEquipedColor, mEquipedColor2);
+                    graphics->setColorAll(mEquipedColor, mEquipedColor2);
                 else
-                    g->setColorAll(mUnEquipedColor, mUnEquipedColor2);
-                font->drawString(g, caption,
+                    graphics->setColorAll(mUnEquipedColor, mUnEquipedColor2);
+                font->drawString(graphics, caption,
                     itemX + (mBoxWidth - font->getWidth(caption)) / 2,
                     itemY + mBoxHeight - 14);
             }

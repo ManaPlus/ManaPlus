@@ -106,7 +106,6 @@ void ListBox::draw(Graphics *graphics)
 
     BLOCK_START("ListBox::draw")
     updateAlpha();
-    Graphics *const g = static_cast<Graphics*>(graphics);
 
     mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
     graphics->setColor(mHighlightColor);
@@ -123,7 +122,7 @@ void ListBox::draw(Graphics *graphics)
                 rowHeight * mSelected + mPadding,
                 mDimension.width - 2 * mPadding, rowHeight));
 
-            g->setColorAll(mForegroundSelectedColor,
+            graphics->setColorAll(mForegroundSelectedColor,
                 mForegroundSelectedColor2);
             const std::string str = mListModel->getElementAt(mSelected);
             font->drawString(graphics, str,
@@ -131,7 +130,7 @@ void ListBox::draw(Graphics *graphics)
                 mSelected * rowHeight + mPadding + mItemPadding);
         }
         // Draw the list elements
-        g->setColorAll(mForegroundColor, mForegroundColor2);
+        graphics->setColorAll(mForegroundColor, mForegroundColor2);
         const int sz = mListModel->getNumberOfElements();
         for (int i = 0, y = mPadding + mItemPadding;
              i < sz; ++i, y += rowHeight)
@@ -153,14 +152,14 @@ void ListBox::draw(Graphics *graphics)
                 rowHeight * mSelected + mPadding,
                 mDimension.width - 2 * mPadding, rowHeight));
 
-            g->setColorAll(mForegroundSelectedColor,
+            graphics->setColorAll(mForegroundSelectedColor,
                 mForegroundSelectedColor2);
             const std::string str = mListModel->getElementAt(mSelected);
             font->drawString(graphics, str, mPadding,
                 mSelected * rowHeight + mPadding + mItemPadding);
         }
         // Draw the list elements
-        g->setColorAll(mForegroundColor, mForegroundColor2);
+        graphics->setColorAll(mForegroundColor, mForegroundColor2);
         const int sz = mListModel->getNumberOfElements();
         for (int i = 0, y = mPadding + mItemPadding; i < sz;
              ++i, y += rowHeight)

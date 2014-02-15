@@ -499,13 +499,12 @@ void Gui::draw()
     if ((client->getMouseFocused() || button & SDL_BUTTON(1))
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0F)
     {
-        Graphics *g2 = static_cast<Graphics*>(mGraphics);
         const Image *const image = dragDrop.getItemImage();
         if (image)
         {
             const int posX = mouseX - (image->mBounds.w / 2);
             const int posY = mouseY - (image->mBounds.h / 2);
-            g2->drawImage2(image, posX, posY);
+            mGraphics->drawImage2(image, posX, posY);
         }
         if (mGuiFont)
         {
@@ -514,8 +513,8 @@ void Gui::draw()
             {
                 const int posX = mouseX - mGuiFont->getWidth(str) / 2;
                 const int posY = mouseY + (image ? image->mBounds.h / 2 : 0);
-                g2->setColorAll(mForegroundColor, mForegroundColor2);
-                mGuiFont->drawString(g2, str, posX, posY);
+                mGraphics->setColorAll(mForegroundColor, mForegroundColor2);
+                mGuiFont->drawString(mGraphics, str, posX, posY);
             }
         }
 
@@ -523,7 +522,7 @@ void Gui::draw()
         if (mouseCursor)
         {
             mouseCursor->setAlpha(mMouseCursorAlpha);
-            g2->drawImage2(mouseCursor, mouseX - 15, mouseY - 17);
+            mGraphics->drawImage2(mouseCursor, mouseX - 15, mouseY - 17);
         }
     }
 

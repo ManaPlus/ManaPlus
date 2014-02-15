@@ -149,8 +149,9 @@ void RadioButton::drawBox(Graphics* graphics)
 
     if (box)
     {
-        static_cast<Graphics*>(graphics)->drawImage2(
-            box, mImagePadding, (getHeight() - mImageSize) / 2);
+        graphics->drawImage2(box,
+            mImagePadding,
+            (getHeight() - mImageSize) / 2);
     }
 }
 
@@ -160,9 +161,7 @@ void RadioButton::draw(Graphics* graphics)
     drawBox(graphics);
 
     gcn::Font *const font = getFont();
-    static_cast<Graphics *const>(graphics)->setColorAll(
-        mForegroundColor, mForegroundColor2);
-
+    graphics->setColorAll(mForegroundColor, mForegroundColor2);
     font->drawString(graphics, mCaption, mPadding + mImageSize + mSpacing,
         mPadding);
     BLOCK_END("RadioButton::draw")

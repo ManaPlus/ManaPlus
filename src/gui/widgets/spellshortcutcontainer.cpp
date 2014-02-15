@@ -103,12 +103,11 @@ void SpellShortcutContainer::draw(Graphics *graphics)
             mBackgroundImg->setAlpha(mAlpha);
     }
 
-    Graphics *const g = static_cast<Graphics *const>(graphics);
     gcn::Font *const font = getFont();
 
     const int selectedId = spellShortcut->getSelectedItem();
-    g->setColorAll(mForegroundColor, mForegroundColor2);
-    drawBackground(g);
+    graphics->setColorAll(mForegroundColor, mForegroundColor2);
+    drawBackground(graphics);
 
     for (unsigned i = 0; i < mMaxItems; i++)
     {
@@ -118,7 +117,7 @@ void SpellShortcutContainer::draw(Graphics *graphics)
         const int itemId = getItemByIndex(i);
         if (selectedId >= 0 && itemId == selectedId)
         {
-            g->drawRectangle(gcn::Rectangle(itemX + 1, itemY + 1,
+            graphics->drawRectangle(gcn::Rectangle(itemX + 1, itemY + 1,
                 mBoxWidth - 1, mBoxHeight - 1));
         }
 
@@ -135,11 +134,11 @@ void SpellShortcutContainer::draw(Graphics *graphics)
                 if (image)
                 {
                     image->setAlpha(1.0F);
-                    g->drawImage2(image, itemX, itemY);
+                    graphics->drawImage2(image, itemX, itemY);
                 }
             }
 
-            font->drawString(g, spell->getSymbol(),
+            font->drawString(graphics, spell->getSymbol(),
                 itemX + 2, itemY + mBoxHeight / 2);
         }
     }

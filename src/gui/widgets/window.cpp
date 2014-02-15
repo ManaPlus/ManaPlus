@@ -209,7 +209,6 @@ void Window::draw(Graphics *graphics)
         return;
 
     BLOCK_START("Window::draw")
-    Graphics *const g = static_cast<Graphics*>(graphics);
     bool update = false;
 
     if (isBatchDrawRenders(openGLMode))
@@ -225,8 +224,11 @@ void Window::draw(Graphics *graphics)
             mRedraw = false;
             update = true;
             mVertexes->clear();
-            g->calcWindow(mVertexes, 0, 0, mDimension.width,
-                mDimension.height, mSkin->getBorder());
+            graphics->calcWindow(mVertexes,
+                0, 0,
+                mDimension.width,
+                mDimension.height,
+                mSkin->getBorder());
 
             // Draw Close Button
             if (mCloseWindowButton)
@@ -235,8 +237,10 @@ void Window::draw(Graphics *graphics)
                     mResizeHandles == CLOSE);
                 if (button)
                 {
-                    g->calcTileCollection(mVertexes, button,
-                        mCloseRect.x, mCloseRect.y);
+                    graphics->calcTileCollection(mVertexes,
+                        button,
+                        mCloseRect.x,
+                        mCloseRect.y);
                 }
             }
             // Draw Sticky Button
@@ -245,27 +249,33 @@ void Window::draw(Graphics *graphics)
                 const Image *const button = mSkin->getStickyImage(mSticky);
                 if (button)
                 {
-                    g->calcTileCollection(mVertexes, button,
-                        mStickyRect.x, mStickyRect.y);
+                    graphics->calcTileCollection(mVertexes,
+                        button,
+                        mStickyRect.x,
+                        mStickyRect.y);
                 }
             }
 
             if (mGrip)
             {
-                g->calcTileCollection(mVertexes, mGrip,
-                    mGripRect.x, mGripRect.y);
+                graphics->calcTileCollection(mVertexes,
+                    mGrip,
+                    mGripRect.x,
+                    mGripRect.y);
             }
         }
         else
         {
             mLastRedraw = false;
         }
-        g->drawTileCollection(mVertexes);
+        graphics->drawTileCollection(mVertexes);
     }
     else
     {
-        g->drawImageRect(0, 0, mDimension.width,
-            mDimension.height, mSkin->getBorder());
+        graphics->drawImageRect(0, 0,
+            mDimension.width,
+            mDimension.height,
+            mSkin->getBorder());
 
         // Draw Close Button
         if (mCloseWindowButton)
@@ -273,24 +283,24 @@ void Window::draw(Graphics *graphics)
             const Image *const button = mSkin->getCloseImage(
                 mResizeHandles == CLOSE);
             if (button)
-                g->drawImage2(button, mCloseRect.x, mCloseRect.y);
+                graphics->drawImage2(button, mCloseRect.x, mCloseRect.y);
         }
         // Draw Sticky Button
         if (mStickyButton)
         {
             const Image *const button = mSkin->getStickyImage(mSticky);
             if (button)
-                g->drawImage2(button, mStickyRect.x, mStickyRect.y);
+                graphics->drawImage2(button, mStickyRect.x, mStickyRect.y);
         }
 
         if (mGrip)
-            g->drawImage2(mGrip, mGripRect.x, mGripRect.y);
+            graphics->drawImage2(mGrip, mGripRect.x, mGripRect.y);
     }
 
     // Draw title
     if (mShowTitle)
     {
-        g->setColorAll(mForegroundColor, mForegroundColor2);
+        graphics->setColorAll(mForegroundColor, mForegroundColor2);
         int x;
         switch (mCaptionAlign)
         {
@@ -305,14 +315,14 @@ void Window::draw(Graphics *graphics)
                 x = mCaptionOffsetX - mCaptionFont->getWidth(mCaption);
                 break;
         }
-        mCaptionFont->drawString(g, mCaption, x, mCaptionOffsetY);
+        mCaptionFont->drawString(graphics, mCaption, x, mCaptionOffsetY);
     }
 
     if (update)
     {
-        g->setRedraw(update);
+        graphics->setRedraw(update);
         drawChildren(graphics);
-        g->setRedraw(false);
+        graphics->setRedraw(false);
     }
     else
     {

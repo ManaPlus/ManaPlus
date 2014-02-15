@@ -367,8 +367,7 @@ void TextBox::draw(Graphics* graphics)
             mCaretRow * font->getHeight());
     }
 
-    static_cast<Graphics*>(graphics)->setColorAll(
-        mForegroundColor, mForegroundColor2);
+    graphics->setColorAll(mForegroundColor, mForegroundColor2);
     const int fontHeight = font->getHeight();
 
     for (size_t i = 0, sz = mTextRows.size(); i < sz; i++)

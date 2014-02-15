@@ -115,7 +115,7 @@ void PlayerBox::draw(Graphics *graphics)
         const int bs = mFrameSize;
         const int x = mDimension.width / 2 + bs + mOffsetX;
         const int y = mDimension.height - bs + mOffsetY;
-        mBeing->drawSpriteAt(static_cast<Graphics*>(graphics), x, y);
+        mBeing->drawSpriteAt(graphics, x, y);
     }
 
     if (client->getGuiAlpha() != mAlpha)
@@ -140,15 +140,9 @@ void PlayerBox::drawFrame(Graphics *graphics)
         const int h = mDimension.height + bs;
 
         if (!mSelected)
-        {
-            static_cast<Graphics*>(graphics)->drawImageRect(
-                0, 0, w, h, mBackground);
-        }
+            graphics->drawImageRect(0, 0, w, h, mBackground);
         else
-        {
-            static_cast<Graphics*>(graphics)->drawImageRect(
-                0, 0, w, h, mSelectedBackground);
-        }
+            graphics->drawImageRect(0, 0, w, h, mSelectedBackground);
     }
     BLOCK_END("PlayerBox::drawFrame")
 }

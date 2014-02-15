@@ -373,8 +373,6 @@ void Button::draw(Graphics *graphics)
 
     updateAlpha();
 
-    Graphics *const g2 = static_cast<Graphics *const>(graphics);
-
     bool recalc = false;
     if (mRedraw)
     {
@@ -384,7 +382,7 @@ void Button::draw(Graphics *graphics)
     {
         // because we don't know where parent windows was moved,
         // need recalc vertexes
-        gcn::ClipRectangle &rect = g2->getTopClip();
+        gcn::ClipRectangle &rect = graphics->getTopClip();
         if (rect.xOffset != mXOffset || rect.yOffset != mYOffset)
         {
             recalc = true;
@@ -396,7 +394,7 @@ void Button::draw(Graphics *graphics)
             recalc = true;
             mMode = mode;
         }
-        else if (g2->getRedraw())
+        else if (graphics->getRedraw())
         {
             recalc = true;
         }
@@ -408,16 +406,16 @@ void Button::draw(Graphics *graphics)
     switch (mode)
     {
         case BUTTON_DISABLED:
-            g2->setColorAll(mDisabledColor, mDisabledColor2);
+            graphics->setColorAll(mDisabledColor, mDisabledColor2);
             break;
         case BUTTON_PRESSED:
-            g2->setColorAll(mPressedColor, mPressedColor2);
+            graphics->setColorAll(mPressedColor, mPressedColor2);
             break;
         case BUTTON_HIGHLIGHTED:
-            g2->setColorAll(mHighlightedColor, mHighlightedColor2);
+            graphics->setColorAll(mHighlightedColor, mHighlightedColor2);
             break;
         default:
-            g2->setColorAll(mEnabledColor, mEnabledColor2);
+            graphics->setColorAll(mEnabledColor, mEnabledColor2);
             break;
     }
 
@@ -481,39 +479,39 @@ void Button::draw(Graphics *graphics)
             mRedraw = false;
             mMode = mode;
             mVertexes2->clear();
-            g2->calcWindow(mVertexes2, 0, 0, width, height,
+            graphics->calcWindow(mVertexes2,
+                0, 0,
+                width, height,
                 skin->getBorder());
 
             if (mImages)
             {
                 if (isPressed())
                 {
-                    g2->calcTileCollection(mVertexes2, mImages[mode],
+                    graphics->calcTileCollection(mVertexes2,
+                        mImages[mode],
                         imageX + 1, imageY + 1);
                 }
                 else
                 {
-                    g2->calcTileCollection(mVertexes2,
-                        mImages[mode], imageX, imageY);
+                    graphics->calcTileCollection(mVertexes2,
+                        mImages[mode],
+                        imageX, imageY);
                 }
             }
         }
-        g2->drawTileCollection(mVertexes2);
+        graphics->drawTileCollection(mVertexes2);
     }
     else
     {
-        g2->drawImageRect(0, 0, width, height, skin->getBorder());
+        graphics->drawImageRect(0, 0, width, height, skin->getBorder());
 
         if (mImages)
         {
             if (isPressed())
-            {
-                g2->drawImage2(mImages[mode], imageX + 1, imageY + 1);
-            }
+                graphics->drawImage2(mImages[mode], imageX + 1, imageY + 1);
             else
-            {
-                g2->drawImage2(mImages[mode], imageX, imageY);
-            }
+                graphics->drawImage2(mImages[mode], imageX, imageY);
         }
     }
 
@@ -522,7 +520,7 @@ void Button::draw(Graphics *graphics)
         textX ++;
         textY ++;
     }
-    font->drawString(g2, mCaption, textX, textY);
+    font->drawString(graphics, mCaption, textX, textY);
     BLOCK_END("Button::draw")
 }
 

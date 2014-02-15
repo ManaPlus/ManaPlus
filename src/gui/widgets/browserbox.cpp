@@ -453,7 +453,6 @@ void BrowserBox::draw(Graphics *graphics)
     const gcn::ClipRectangle *const cr = graphics->getCurrentClipArea();
     if (!cr)
         return;
-    Graphics *const graphics2 = static_cast<Graphics *const>(graphics);
     mYStart = cr->y - cr->yOffset;
     const int yEnd = mYStart + cr->height;
     if (mYStart < 0)
@@ -503,7 +502,7 @@ void BrowserBox::draw(Graphics *graphics)
             break;
         if (!part.mType)
         {
-            graphics2->setColorAll(part.mColor, part.mColor2);
+            graphics->setColorAll(part.mColor, part.mColor2);
             if (part.mBold)
                 boldFont->drawString(graphics, part.mText, part.mX, part.mY);
             else
@@ -511,7 +510,7 @@ void BrowserBox::draw(Graphics *graphics)
         }
         else if (part.mImage)
         {
-            graphics2->drawImage2(part.mImage, part.mX, part.mY);
+            graphics->drawImage2(part.mImage, part.mX, part.mY);
         }
     }
 

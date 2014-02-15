@@ -149,8 +149,7 @@ void TextField::draw(Graphics *graphics)
             font->getWidth(mText.substr(0, mCaretPosition)) - mXScroll);
     }
 
-    static_cast<Graphics*>(graphics)->setColorAll(
-        mForegroundColor, mForegroundColor2);
+    graphics->setColorAll(mForegroundColor, mForegroundColor2);
     font->drawString(graphics, mText, mPadding - mXScroll, mPadding);
     BLOCK_END("TextField::draw")
 }
@@ -159,8 +158,11 @@ void TextField::drawFrame(Graphics *graphics)
 {
     BLOCK_START("TextField::drawFrame")
     const int bs = 2 * mFrameSize;
-    static_cast<Graphics*>(graphics)->drawImageRect(0, 0,
-        mDimension.width + bs, mDimension.height + bs, skin);
+    graphics->drawImageRect(0,
+        0,
+        mDimension.width + bs,
+        mDimension.height + bs,
+        skin);
     BLOCK_END("TextField::drawFrame")
 }
 

@@ -282,8 +282,7 @@ void ScrollArea::draw(Graphics *graphics)
                     calcHMarker(graphics);
                 }
             }
-            static_cast<Graphics *const>(graphics)->drawTileCollection(
-                mVertexes);
+            graphics->drawTileCollection(mVertexes);
         }
         else
         {
@@ -315,11 +314,10 @@ void ScrollArea::draw(Graphics *graphics)
 
     if (mRedraw)
     {
-        Graphics *g = static_cast<Graphics *const>(graphics);
-        const bool redraw = g->getRedraw();
-        g->setRedraw(true);
+        const bool redraw = graphics->getRedraw();
+        graphics->setRedraw(true);
         drawChildren(graphics);
-        g->setRedraw(redraw);
+        graphics->setRedraw(redraw);
     }
     else
     {
@@ -335,8 +333,7 @@ void ScrollArea::updateCalcFlag(Graphics *const graphics)
     {
         // because we don't know where parent windows was moved,
         // need recalc vertexes
-        const gcn::ClipRectangle &rect = static_cast<Graphics*>(
-            graphics)->getTopClip();
+        const gcn::ClipRectangle &rect = graphics->getTopClip();
         if (rect.xOffset != mXOffset || rect.yOffset != mYOffset)
         {
             mRedraw = true;
@@ -349,7 +346,7 @@ void ScrollArea::updateCalcFlag(Graphics *const graphics)
             mDrawWidth = rect.width;
             mDrawHeight = rect.height;
         }
-        else if (static_cast<Graphics*>(graphics)->getRedraw())
+        else if (graphics->getRedraw())
         {
             mRedraw = true;
         }
@@ -372,15 +369,18 @@ void ScrollArea::drawFrame(Graphics *graphics)
             if (mRedraw)
             {
                 mVertexes2->clear();
-                static_cast<Graphics*>(graphics)->calcWindow(
-                    mVertexes2, 0, 0, w, h, background);
+                graphics->calcWindow(mVertexes2,
+                    0, 0,
+                    w, h,
+                    background);
             }
-            static_cast<Graphics*>(graphics)->drawTileCollection(mVertexes2);
+            graphics->drawTileCollection(mVertexes2);
         }
         else
         {
-            static_cast<Graphics*>(graphics)->drawImageRect(
-                0, 0, w, h, background);
+            graphics->drawImageRect(0, 0,
+                w, h,
+                background);
         }
     }
     BLOCK_END("ScrollArea::drawFrame")
@@ -424,10 +424,7 @@ void ScrollArea::drawButton(Graphics *const graphics,
     }
 
     if (buttons[dir][state])
-    {
-        static_cast<Graphics*>(graphics)->drawImage2(
-            buttons[dir][state], dim.x, dim.y);
-    }
+        graphics->drawImage2(buttons[dir][state], dim.x, dim.y);
 }
 
 void ScrollArea::calcButton(Graphics *const graphics,
@@ -471,21 +468,21 @@ void ScrollArea::calcButton(Graphics *const graphics,
 void ScrollArea::drawVBar(Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getVerticalBarDimension();
-    Graphics *const g = static_cast<Graphics*>(graphics);
 
     if (vBackground.grid[4])
     {
-        g->drawPattern(vBackground.grid[4],
+        graphics->drawPattern(vBackground.grid[4],
             dim.x, dim.y, dim.width, dim.height);
     }
     if (vBackground.grid[1])
     {
-        g->drawPattern(vBackground.grid[1],
-            dim.x, dim.y, dim.width, vBackground.grid[1]->getHeight());
+        graphics->drawPattern(vBackground.grid[1],
+            dim.x, dim.y,
+            dim.width, vBackground.grid[1]->getHeight());
     }
     if (vBackground.grid[7])
     {
-        g->drawPattern(vBackground.grid[7],
+        graphics->drawPattern(vBackground.grid[7],
             dim.x, dim.height - vBackground.grid[7]->getHeight() + dim.y,
             dim.width, vBackground.grid[7]->getHeight());
     }
@@ -494,21 +491,25 @@ void ScrollArea::drawVBar(Graphics *const graphics)
 void ScrollArea::calcVBar(Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getVerticalBarDimension();
-    Graphics *const g = static_cast<Graphics *const>(graphics);
 
     if (vBackground.grid[4])
     {
-        g->calcPattern(mVertexes, vBackground.grid[4],
-            dim.x, dim.y, dim.width, dim.height);
+        graphics->calcPattern(mVertexes,
+            vBackground.grid[4],
+            dim.x, dim.y,
+            dim.width, dim.height);
     }
     if (vBackground.grid[1])
     {
-        g->calcPattern(mVertexes, vBackground.grid[1],
-            dim.x, dim.y, dim.width, vBackground.grid[1]->getHeight());
+        graphics->calcPattern(mVertexes,
+            vBackground.grid[1],
+            dim.x, dim.y,
+            dim.width, vBackground.grid[1]->getHeight());
     }
     if (vBackground.grid[7])
     {
-        g->calcPattern(mVertexes, vBackground.grid[7],
+        graphics->calcPattern(mVertexes,
+            vBackground.grid[7],
             dim.x, dim.height - vBackground.grid[7]->getHeight() + dim.y,
             dim.width, vBackground.grid[7]->getHeight());
     }
@@ -517,50 +518,59 @@ void ScrollArea::calcVBar(Graphics *const graphics)
 void ScrollArea::drawHBar(Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getHorizontalBarDimension();
-    Graphics *const g = static_cast<Graphics*>(graphics);
 
     if (hBackground.grid[4])
     {
-        g->drawPattern(hBackground.grid[4],
-            dim.x, dim.y, dim.width, dim.height);
+        graphics->drawPattern(hBackground.grid[4],
+            dim.x, dim.y,
+            dim.width, dim.height);
     }
 
     if (hBackground.grid[3])
     {
-        g->drawPattern(hBackground.grid[3],
-            dim.x, dim.y, hBackground.grid[3]->getWidth(), dim.height);
+        graphics->drawPattern(hBackground.grid[3],
+            dim.x, dim.y,
+            hBackground.grid[3]->getWidth(), dim.height);
     }
 
     if (hBackground.grid[5])
     {
-        g->drawPattern(hBackground.grid[5],
-            dim.x + dim.width - hBackground.grid[5]->getWidth(), dim.y,
-            hBackground.grid[5]->getWidth(), dim.height);
+        graphics->drawPattern(hBackground.grid[5],
+            dim.x + dim.width - hBackground.grid[5]->getWidth(),
+            dim.y,
+            hBackground.grid[5]->getWidth(),
+            dim.height);
     }
 }
 
 void ScrollArea::calcHBar(Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getHorizontalBarDimension();
-    Graphics *const g = static_cast<Graphics*>(graphics);
 
     if (hBackground.grid[4])
     {
-        g->calcPattern(mVertexes, hBackground.grid[4],
-            dim.x, dim.y, dim.width, dim.height);
+        graphics->calcPattern(mVertexes,
+            hBackground.grid[4],
+            dim.x, dim.y,
+            dim.width, dim.height);
     }
 
     if (hBackground.grid[3])
     {
-        g->calcPattern(mVertexes, hBackground.grid[3],
-            dim.x, dim.y, hBackground.grid[3]->getWidth(), dim.height);
+        graphics->calcPattern(mVertexes,
+            hBackground.grid[3],
+            dim.x, dim.y,
+            hBackground.grid[3]->getWidth(), dim.height);
     }
 
     if (hBackground.grid[5])
     {
-        g->calcPattern(mVertexes, hBackground.grid[5],
-            dim.x + dim.width - hBackground.grid[5]->getWidth(), dim.y,
-            hBackground.grid[5]->getWidth(), dim.height);
+        graphics->calcPattern(mVertexes,
+            hBackground.grid[5],
+            dim.x + dim.width - hBackground.grid[5]->getWidth(),
+            dim.y,
+            hBackground.grid[5]->getWidth(),
+            dim.height);
     }
 }
 
@@ -570,13 +580,15 @@ void ScrollArea::drawVMarker(Graphics *const graphics)
 
     if ((mHasMouse) && (mX > (mDimension.width - mScrollbarWidth)))
     {
-        static_cast<Graphics*>(graphics)->
-            drawImageRect(dim.x, dim.y, dim.width, dim.height, vMarkerHi);
+        graphics->drawImageRect(dim.x, dim.y,
+            dim.width, dim.height,
+            vMarkerHi);
     }
     else
     {
-        static_cast<Graphics*>(graphics)->
-            drawImageRect(dim.x, dim.y, dim.width, dim.height, vMarker);
+        graphics->drawImageRect(dim.x, dim.y,
+            dim.width, dim.height,
+            vMarker);
     }
 }
 
@@ -586,13 +598,17 @@ void ScrollArea::calcVMarker(Graphics *const graphics)
 
     if ((mHasMouse) && (mX > (mDimension.width - mScrollbarWidth)))
     {
-        static_cast<Graphics*>(graphics)->calcWindow(
-            mVertexes, dim.x, dim.y, dim.width, dim.height, vMarkerHi);
+        graphics->calcWindow(mVertexes,
+            dim.x, dim.y,
+            dim.width, dim.height,
+            vMarkerHi);
     }
     else
     {
-        static_cast<Graphics*>(graphics)->calcWindow(
-            mVertexes, dim.x, dim.y, dim.width, dim.height, vMarker);
+        graphics->calcWindow(mVertexes,
+            dim.x, dim.y,
+            dim.width, dim.height,
+            vMarker);
     }
 }
 
@@ -602,13 +618,16 @@ void ScrollArea::drawHMarker(Graphics *const graphics)
 
     if ((mHasMouse) && (mY > (mDimension.height - mScrollbarWidth)))
     {
-        static_cast<Graphics*>(graphics)->
-            drawImageRect(dim.x, dim.y, dim.width, dim.height, vMarkerHi);
+        graphics->drawImageRect(dim.x, dim.y,
+            dim.width, dim.height,
+            vMarkerHi);
     }
     else
     {
-        static_cast<Graphics*>(graphics)->
-            drawImageRect(dim.x, dim.y, dim.width, dim.height, vMarker);
+        graphics->drawImageRect(
+            dim.x, dim.y,
+            dim.width, dim.height,
+            vMarker);
     }
 }
 
@@ -618,13 +637,17 @@ void ScrollArea::calcHMarker(Graphics *const graphics)
 
     if ((mHasMouse) && (mY > (mDimension.height - mScrollbarWidth)))
     {
-        static_cast<Graphics*>(graphics)->calcWindow(
-            mVertexes, dim.x, dim.y, dim.width, dim.height, vMarkerHi);
+        graphics->calcWindow(mVertexes,
+            dim.x, dim.y,
+            dim.width, dim.height,
+            vMarkerHi);
     }
     else
     {
-        static_cast<Graphics*>(graphics)->calcWindow(
-            mVertexes, dim.x, dim.y, dim.width, dim.height, vMarker);
+        graphics->calcWindow(mVertexes,
+            dim.x, dim.y,
+            dim.width, dim.height,
+            vMarker);
     }
 }
 

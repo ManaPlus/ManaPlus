@@ -129,9 +129,8 @@ void ItemShortcutContainer::draw(Graphics *graphics)
         mAlpha = client->getGuiAlpha();
     }
 
-    Graphics *const g = static_cast<Graphics*>(graphics);
     gcn::Font *const font = getFont();
-    drawBackground(g);
+    drawBackground(graphics);
 
     const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
@@ -149,8 +148,8 @@ void ItemShortcutContainer::draw(Graphics *graphics)
         // Draw item keyboard shortcut.
         const std::string key = inputManager.getKeyValueString(
             Input::KEY_SHORTCUT_1 + i);
-        g->setColorAll(mForegroundColor, mForegroundColor);
-        font->drawString(g, key, itemX + 2, itemY + 2);
+        graphics->setColorAll(mForegroundColor, mForegroundColor);
+        font->drawString(graphics, key, itemX + 2, itemY + 2);
 
         const int itemId = selShortcut->getItem(i);
         const unsigned char itemColor = selShortcut->getItemColor(i);
@@ -175,12 +174,17 @@ void ItemShortcutContainer::draw(Graphics *graphics)
                     caption = "Eq.";
 
                     image->setAlpha(1.0F);
-                    g->drawImage2(image, itemX, itemY);
+                    graphics->drawImage2(image, itemX, itemY);
                     if (item->isEquipped())
-                        g->setColorAll(mEquipedColor, mEquipedColor2);
+                    {
+                        graphics->setColorAll(mEquipedColor, mEquipedColor2);
+                    }
                     else
-                        g->setColorAll(mUnEquipedColor, mUnEquipedColor2);
-                    font->drawString(g, caption,
+                    {
+                        graphics->setColorAll(mUnEquipedColor,
+                            mUnEquipedColor2);
+                    }
+                    font->drawString(graphics, caption,
                         itemX + (mBoxWidth - font->getWidth(caption)) / 2,
                         itemY + mBoxHeight - 14);
                 }
@@ -199,11 +203,11 @@ void ItemShortcutContainer::draw(Graphics *graphics)
                     if (image)
                     {
                         image->setAlpha(1.0F);
-                        g->drawImage2(image, itemX, itemY);
+                        graphics->drawImage2(image, itemX, itemY);
                     }
                 }
 
-                font->drawString(g, spell->getSymbol(),
+                font->drawString(graphics, spell->getSymbol(),
                     itemX + 2, itemY + mBoxHeight / 2);
             }
         }
@@ -218,10 +222,10 @@ void ItemShortcutContainer::draw(Graphics *graphics)
                 if (image)
                 {
                     image->setAlpha(1.0F);
-                    g->drawImage2(image, itemX, itemY);
+                    graphics->drawImage2(image, itemX, itemY);
                 }
 
-                font->drawString(g, skill->data->shortName, itemX + 2,
+                font->drawString(graphics, skill->data->shortName, itemX + 2,
                     itemY + mBoxHeight / 2);
             }
         }

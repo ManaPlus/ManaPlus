@@ -314,7 +314,6 @@ void OutfitWindow::draw(Graphics *graphics)
 {
     BLOCK_START("OutfitWindow::draw")
     Window::draw(graphics);
-    Graphics *const g = static_cast<Graphics*>(graphics);
 
     if (mCurrentOutfit < 0 || mCurrentOutfit
         >= static_cast<signed int>(OUTFITS_COUNT))
@@ -348,7 +347,7 @@ void OutfitWindow::draw(Graphics *graphics)
                 const Image *const image = item->getImage();
                 if (image)
                 {
-                    g->drawImage2(image, itemX, itemY);
+                    graphics->drawImage2(image, itemX, itemY);
                     foundItem = true;
                 }
             }
@@ -359,7 +358,7 @@ void OutfitWindow::draw(Graphics *graphics)
                 mItemColors[mCurrentOutfit][i]);
             if (image)
             {
-                g->drawImage2(image, itemX, itemY);
+                graphics->drawImage2(image, itemX, itemY);
                 image->decRef();
             }
         }

@@ -84,18 +84,17 @@ void TextPreview::draw(Graphics* graphics)
     BLOCK_START("TextPreview::draw")
     if (client->getGuiAlpha() != mAlpha)
         mAlpha = client->getGuiAlpha();
-    Graphics *const g = static_cast<Graphics*>(graphics);
 
     const int intAlpha = static_cast<int>(mAlpha * 255.0F);
     const int alpha = mTextAlpha ? intAlpha : 255;
 
     if (mOpaque)
     {
-        g->setColor(gcn::Color(static_cast<int>(mBGColor->r),
+        graphics->setColor(gcn::Color(static_cast<int>(mBGColor->r),
                     static_cast<int>(mBGColor->g),
                     static_cast<int>(mBGColor->b),
                     static_cast<int>(mAlpha * 255.0F)));
-        g->fillRectangle(gcn::Rectangle(0, 0,
+        graphics->fillRectangle(gcn::Rectangle(0, 0,
             mDimension.width, mDimension.height));
     }
 
@@ -108,20 +107,20 @@ void TextPreview::draw(Graphics* graphics)
                 + 2 * ((mOutline || mShadow) ? 1 :0);
             const int y = font->getHeight() + 1
                 + 2 * ((mOutline || mShadow) ? 1 : 0);
-            g->setColor(gcn::Color(static_cast<int>(mTextBGColor->r),
+            graphics->setColor(gcn::Color(static_cast<int>(mTextBGColor->r),
                 static_cast<int>(mTextBGColor->g),
                 static_cast<int>(mTextBGColor->b),
                 intAlpha));
-            g->fillRectangle(gcn::Rectangle(mPadding, mPadding, x, y));
+            graphics->fillRectangle(gcn::Rectangle(mPadding, mPadding, x, y));
         }
     }
 
-    g->setColorAll(gcn::Color(mTextColor->r, mTextColor->g, mTextColor->b,
-        alpha), gcn::Color(mTextColor2->r, mTextColor2->g, mTextColor2->b,
-        alpha));
+    graphics->setColorAll(gcn::Color(mTextColor->r,
+        mTextColor->g, mTextColor->b, alpha),
+        gcn::Color(mTextColor2->r, mTextColor2->g, mTextColor2->b, alpha));
 
     if (mOutline && mTextColor != mTextColor2)
-        g->setColor2(Theme::getThemeColor(Theme::OUTLINE));
+        graphics->setColor2(Theme::getThemeColor(Theme::OUTLINE));
 
     mFont->drawString(graphics, mText, mPadding + 1, mPadding + 1);
     BLOCK_END("TextPreview::draw")

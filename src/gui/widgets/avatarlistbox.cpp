@@ -90,7 +90,7 @@ AvatarListBox::~AvatarListBox()
     }
 }
 
-void AvatarListBox::draw(Graphics *gcnGraphics)
+void AvatarListBox::draw(Graphics *graphics)
 {
     BLOCK_START("AvatarListBox::draw")
     if (!mListModel || !player_node)
@@ -102,10 +102,8 @@ void AvatarListBox::draw(Graphics *gcnGraphics)
     AvatarListModel *const model = static_cast<AvatarListModel *const>(
         mListModel);
     updateAlpha();
-    Graphics *const graphics = static_cast<Graphics *const>(gcnGraphics);
 
     gcn::Font *const font = getFont();
-
     const int fontHeight = getFont()->getHeight();
     const gcn::Widget *const parent = mParent;
     const std::string name = player_node->getName();

@@ -67,12 +67,11 @@ void Icon::setImage(Image *const image)
     }
 }
 
-void Icon::draw(Graphics *g)
+void Icon::draw(Graphics *graphics)
 {
     BLOCK_START("Icon::draw")
     if (mImage)
     {
-        Graphics *const graphics = static_cast<Graphics*>(g);
         graphics->drawImage2(mImage,
             (mDimension.width - mImage->mBounds.w) / 2,
             (mDimension.height - mImage->mBounds.h) / 2);

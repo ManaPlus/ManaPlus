@@ -112,11 +112,10 @@ void EmoteShortcutContainer::draw(Graphics *graphics)
         mAlpha = client->getGuiAlpha();
     }
 
-    Graphics *const g = static_cast<Graphics *const>(graphics);
     gcn::Font *const font = getFont();
-    drawBackground(g);
+    drawBackground(graphics);
 
-    g->setColorAll(mForegroundColor, mForegroundColor2);
+    graphics->setColorAll(mForegroundColor, mForegroundColor2);
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         const int emoteX = (i % mGridWidth) * mBoxWidth;
@@ -126,7 +125,7 @@ void EmoteShortcutContainer::draw(Graphics *graphics)
         const std::string key = inputManager.getKeyValueString(
             Input::KEY_EMOTE_1 + i);
 
-        font->drawString(g, key, emoteX + 2, emoteY + 2);
+        font->drawString(graphics, key, emoteX + 2, emoteY + 2);
     }
     unsigned sz = static_cast<unsigned>(mEmoteImg.size());
     if (sz > mMaxItems)
@@ -139,7 +138,8 @@ void EmoteShortcutContainer::draw(Graphics *graphics)
             const AnimatedSprite *const sprite = emoteImg->sprite;
             if (sprite)
             {
-                sprite->draw(g, (i % mGridWidth) * mBoxWidth + 2,
+                sprite->draw(graphics,
+                    (i % mGridWidth) * mBoxWidth + 2,
                     (i / mGridWidth) * mBoxHeight + 10);
             }
         }

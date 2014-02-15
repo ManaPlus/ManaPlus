@@ -204,19 +204,19 @@ void Tab::draw(Graphics *graphics)
 
     updateAlpha();
 
-    Graphics *const g = static_cast<Graphics*>(graphics);
-
     // draw tab
     if (isBatchDrawRenders(openGLMode))
     {
         const ImageRect &rect = skin->getBorder();
-        if (mRedraw || mode != mMode || g->getRedraw())
+        if (mRedraw || mode != mMode || graphics->getRedraw())
         {
             mMode = mode;
             mRedraw = false;
             mVertexes->clear();
-            g->calcWindow(mVertexes, 0, 0,
-                mDimension.width, mDimension.height, rect);
+            graphics->calcWindow(mVertexes,
+                0, 0,
+                mDimension.width, mDimension.height,
+                rect);
 
             if (mImage)
             {
@@ -224,25 +224,28 @@ void Tab::draw(Graphics *graphics)
                 if (skin1)
                 {
                     const int padding = skin1->getPadding();
-                    g->calcTileCollection(mVertexes, mImage,
-                        padding, padding);
+                    graphics->calcTileCollection(mVertexes,
+                        mImage,
+                        padding,
+                        padding);
                 }
             }
         }
 
-        g->drawTileCollection(mVertexes);
+        graphics->drawTileCollection(mVertexes);
     }
     else
     {
-        g->drawImageRect(0, 0,
-            mDimension.width, mDimension.height, skin->getBorder());
+        graphics->drawImageRect(0, 0,
+            mDimension.width, mDimension.height,
+            skin->getBorder());
         if (mImage)
         {
             const Skin *const skin1 = tabImg[TAB_STANDARD];
             if (skin1)
             {
                 const int padding = skin1->getPadding();
-                g->drawImage2(mImage, padding, padding);
+                graphics->drawImage2(mImage, padding, padding);
             }
         }
     }

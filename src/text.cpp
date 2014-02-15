@@ -137,9 +137,11 @@ void Text::draw(Graphics *const graphics, const int xOff, const int yOff)
     BLOCK_START("Text::draw")
     if (mIsSpeech)
     {
-        static_cast<Graphics*>(graphics)->drawImageRect(
-                mX - xOff - 5, mY - yOff - 5, mWidth + 10, mHeight + 10,
-                mBubble);
+        graphics->drawImageRect(mX - xOff - 5,
+            mY - yOff - 5,
+            mWidth + 10,
+            mHeight + 10,
+            mBubble);
     }
 
     graphics->setColor(*mColor);

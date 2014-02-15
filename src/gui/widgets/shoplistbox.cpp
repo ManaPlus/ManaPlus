@@ -82,7 +82,7 @@ void ShopListBox::setPlayersMoney(const int money)
     mPlayerMoney = money;
 }
 
-void ShopListBox::draw(Graphics *gcnGraphics)
+void ShopListBox::draw(Graphics *graphics)
 {
     BLOCK_START("ShopListBox::draw")
     if (!mListModel || !mShopItems)
@@ -95,7 +95,6 @@ void ShopListBox::draw(Graphics *gcnGraphics)
         mAlpha = client->getGuiAlpha();
 
     const int alpha = static_cast<int>(mAlpha * 255.0F);
-    Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
     gcn::Font *const font = getFont();
 
     const int sz = mListModel->getNumberOfElements();

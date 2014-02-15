@@ -56,7 +56,6 @@ void ExtendedListBox::draw(Graphics *graphics)
     BLOCK_START("ExtendedListBox::draw")
     ExtendedListModel *const model = static_cast<ExtendedListModel* const>(
         mListModel);
-    Graphics *const g = static_cast<Graphics *const>(graphics);
 
     updateAlpha();
     gcn::Font *const font = getFont();
@@ -147,13 +146,14 @@ void ExtendedListBox::draw(Graphics *graphics)
             const Image *const image = model->getImageAt(row1);
             if (image)
             {
-                g->drawImage2(image, mImagePadding, item.y + (height
-                    - image->getHeight()) / 2 + mPadding);
+                graphics->drawImage2(image,
+                    mImagePadding,
+                    item.y + (height - image->getHeight()) / 2 + mPadding);
             }
         }
     }
 
-    g->setColorAll(mForegroundColor, mForegroundColor2);
+    graphics->setColorAll(mForegroundColor, mForegroundColor2);
 
     for (int f = 0; f < itemsSz; ++f)
     {
@@ -181,13 +181,14 @@ void ExtendedListBox::draw(Graphics *graphics)
             const Image *const image = model->getImageAt(row1);
             if (image)
             {
-                g->drawImage2(image, mImagePadding, item.y + (height
-                    - image->getHeight()) / 2 + mPadding);
+                graphics->drawImage2(image,
+                    mImagePadding,
+                    item.y + (height - image->getHeight()) / 2 + mPadding);
             }
         }
     }
 
-    g->setColorAll(mForegroundSelectedColor, mForegroundSelectedColor2);
+    graphics->setColorAll(mForegroundSelectedColor, mForegroundSelectedColor2);
 
     for (int f = 0; f < selSz; ++f)
     {

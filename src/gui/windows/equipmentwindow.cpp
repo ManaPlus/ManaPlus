@@ -161,7 +161,6 @@ void EquipmentWindow::draw(Graphics *graphics)
     BLOCK_START("EquipmentWindow::draw")
     // Draw window graphics
     Window::draw(graphics);
-    Graphics *const g = static_cast<Graphics*>(graphics);
 
     int i = 0;
     gcn::Font *const font = getFont();
@@ -179,17 +178,19 @@ void EquipmentWindow::draw(Graphics *graphics)
                     continue;
                 if (i == mSelected)
                 {
-                    g->calcTileCollection(mVertexes,
-                        mSlotHighlightedBackground, box->x, box->y);
+                    graphics->calcTileCollection(mVertexes,
+                        mSlotHighlightedBackground,
+                        box->x, box->y);
                 }
                 else
                 {
-                    g->calcTileCollection(mVertexes, mSlotBackground,
+                    graphics->calcTileCollection(mVertexes,
+                        mSlotBackground,
                         box->x, box->y);
                 }
             }
         }
-        g->drawTileCollection(mVertexes);
+        graphics->drawTileCollection(mVertexes);
     }
     else
     {
@@ -200,9 +201,14 @@ void EquipmentWindow::draw(Graphics *graphics)
             if (!box)
                 continue;
             if (i == mSelected)
-                g->drawImage2(mSlotHighlightedBackground, box->x, box->y);
+            {
+                graphics->drawImage2(mSlotHighlightedBackground,
+                    box->x, box->y);
+            }
             else
-                g->drawImage2(mSlotBackground, box->x, box->y);
+            {
+                graphics->drawImage2(mSlotBackground, box->x, box->y);
+            }
         }
     }
 
@@ -228,13 +234,14 @@ void EquipmentWindow::draw(Graphics *graphics)
             {
                 image->setAlpha(1.0F);  // Ensure the image is drawn
                                         // with maximum opacity
-                g->drawImage2(image, box->x + mItemPadding,
+                graphics->drawImage2(image, box->x + mItemPadding,
                     box->y + mItemPadding);
                 if (i == EQUIP_PROJECTILE_SLOT)
                 {
-                    g->setColorAll(mLabelsColor, mLabelsColor2);
+                    graphics->setColorAll(mLabelsColor, mLabelsColor2);
                     const std::string str = toString(item->getQuantity());
-                    font->drawString(g, str,
+                    font->drawString(graphics,
+                        str,
                         box->x + (mBoxSize - font->getWidth(str)) / 2,
                         box->y - fontHeight);
                 }
@@ -242,7 +249,8 @@ void EquipmentWindow::draw(Graphics *graphics)
         }
         else if (box->image)
         {
-            g->drawImage2(box->image, box->x + mItemPadding,
+            graphics->drawImage2(box->image,
+                box->x + mItemPadding,
                 box->y + mItemPadding);
         }
     }

@@ -244,8 +244,6 @@ void Minimap::draw(Graphics *graphics)
         return;
     }
 
-    Graphics *const graph = static_cast<Graphics*>(graphics);
-
     const gcn::Rectangle a = getChildrenArea();
 
     graphics->pushClipArea(a);
@@ -286,7 +284,7 @@ void Minimap::draw(Graphics *graphics)
                 mMapOriginY = 0;
         }
 
-        graph->drawImage2(mMapImage, mMapOriginX, mMapOriginY);
+        graphics->drawImage2(mMapImage, mMapOriginX, mMapOriginY);
     }
 
     const ActorSprites &actors = actorManager->getAll();
@@ -401,8 +399,8 @@ void Minimap::draw(Graphics *graphics)
 
     const Vector &pos = player_node->getPosition();
 
-    const int gw = graph->getWidth();
-    const int gh = graph->getHeight();
+    const int gw = graphics->getWidth();
+    const int gh = graphics->getHeight();
     int x = static_cast<float>((pos.x - (gw / 2)
         + viewport->getCameraRelativeX())
         * mWidthProportion) / 32 + mMapOriginX;

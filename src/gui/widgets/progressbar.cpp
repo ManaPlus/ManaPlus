@@ -151,7 +151,7 @@ void ProgressBar::draw(Graphics *graphics)
     BLOCK_START("ProgressBar::draw")
     updateAlpha();
     mBackgroundColor.a = static_cast<int>(mAlpha * 255);
-    render(static_cast<Graphics*>(graphics));
+    render(graphics);
     BLOCK_END("ProgressBar::draw")
 }
 

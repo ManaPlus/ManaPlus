@@ -164,12 +164,11 @@ public:
 
         ServersListModel *const model = static_cast<ServersListModel *const>(
             mListModel);
-        Graphics *const g = static_cast<Graphics*>(graphics);
 
         updateAlpha();
 
         mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
-        g->setColor(mHighlightColor);
+        graphics->setColor(mHighlightColor);
 
         const int height = getRowHeight();
         mNotSupportedColor.a = static_cast<int>(mAlpha * 255.0F);
@@ -196,12 +195,12 @@ public:
 
             if (mSelected == i)
             {
-                g->setColorAll(mForegroundSelectedColor,
+                graphics->setColorAll(mForegroundSelectedColor,
                     mForegroundSelectedColor2);
             }
             else
             {
-                g->setColorAll(mForegroundColor, mForegroundColor2);
+                graphics->setColorAll(mForegroundColor, mForegroundColor2);
             }
 
             int top;
@@ -224,7 +223,7 @@ public:
 
             if (info.version.first > 0)
             {
-                g->setColorAll(mNotSupportedColor, mNotSupportedColor2);
+                graphics->setColorAll(mNotSupportedColor, mNotSupportedColor2);
                 font2->drawString(graphics, info.version.second,
                     width - info.version.first - mPadding, top);
             }

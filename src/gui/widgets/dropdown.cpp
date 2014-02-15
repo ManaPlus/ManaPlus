@@ -235,8 +235,7 @@ void DropDown::draw(Graphics* graphics)
     if (model && mPopup->getSelected() >= 0)
     {
         gcn::Font *const font = getFont();
-        static_cast<Graphics *const>(graphics)->setColorAll(
-            mForegroundColor, mForegroundColor2);
+        graphics->setColorAll(mForegroundColor, mForegroundColor2);
         if (mExtended)
         {
             const int sel = mPopup->getSelected();
@@ -250,9 +249,9 @@ void DropDown::draw(Graphics* graphics)
             }
             else
             {
-                static_cast<Graphics*>(graphics)->drawImage2(
-                    image, mImagePadding, (mDimension.height
-                    - image->getHeight()) / 2 + mPadding);
+                graphics->drawImage2(image,
+                    mImagePadding,
+                    (mDimension.height - image->getHeight()) / 2 + mPadding);
                 font->drawString(graphics, model->getElementAt(sel),
                     image->getWidth() + mImagePadding + mSpacing, mPadding);
             }
@@ -291,8 +290,9 @@ void DropDown::drawFrame(Graphics *graphics)
     BLOCK_START("DropDown::drawFrame")
     const int bs2 = getFrameSize();
     const gcn::Rectangle &rect = mDimension;
-    static_cast<Graphics*>(graphics)->drawImageRect(
-        0, 0, rect.width + bs2, rect.height + bs2, skinRect);
+    graphics->drawImageRect(0, 0,
+        rect.width + bs2, rect.height + bs2,
+        skinRect);
     BLOCK_END("DropDown::drawFrame")
 }
 
@@ -303,7 +303,7 @@ void DropDown::drawButton(Graphics *graphics)
     Image *image = buttons[mDroppedDown][mPushed];
     if (image)
     {
-        static_cast<Graphics*>(graphics)->drawImage2(image,
+        graphics->drawImage2(image,
             mDimension.width - image->getWidth() - mImagePadding,
             (height - image->getHeight()) / 2);
     }

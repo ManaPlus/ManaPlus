@@ -73,7 +73,7 @@ void ProgressIndicator::draw(Graphics *graphics)
         // Draw the indicator centered on the widget
         const int x = (mDimension.width - 32) / 2;
         const int y = (mDimension.height - 32) / 2;
-        mIndicator->draw(static_cast<Graphics*>(graphics), x, y);
+        mIndicator->draw(graphics, x, y);
     }
     BLOCK_END("ProgressIndicator::draw")
 }

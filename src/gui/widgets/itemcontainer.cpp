@@ -251,7 +251,6 @@ void ItemContainer::draw(Graphics *graphics)
         return;
 
     BLOCK_START("ItemContainer::draw")
-    Graphics *const g = static_cast<Graphics *const>(graphics);
     gcn::Font *const font = getFont();
 
     for (int j = 0; j < mGridRows; j++)
@@ -278,16 +277,18 @@ void ItemContainer::draw(Graphics *graphics)
                 if (mShowMatrix[itemIndex] == mSelectedIndex)
                 {
                     if (mSelImg)
-                        g->drawImage2(mSelImg, itemX, itemY);
+                        graphics->drawImage2(mSelImg, itemX, itemY);
                 }
                 image->setAlpha(1.0F);  // ensure the image if fully drawn...
-                g->drawImage2(image, itemX + mPaddingItemX,
+                graphics->drawImage2(image,
+                    itemX + mPaddingItemX,
                     itemY + mPaddingItemY);
                 if (mProtectedImg && PlayerInfo::isItemProtected(
                     item->getId()))
                 {
-                    g->drawImage2(mProtectedImg,
-                        itemX + mPaddingItemX, itemY + mPaddingItemY);
+                    graphics->drawImage2(mProtectedImg,
+                        itemX + mPaddingItemX,
+                        itemY + mPaddingItemY);
                 }
             }
         }
@@ -324,11 +325,11 @@ void ItemContainer::draw(Graphics *graphics)
             }
 
             if (item->isEquipped())
-                g->setColorAll(mEquipedColor, mEquipedColor2);
+                graphics->setColorAll(mEquipedColor, mEquipedColor2);
             else
-                g->setColorAll(mUnEquipedColor, mUnEquipedColor2);
+                graphics->setColorAll(mUnEquipedColor, mUnEquipedColor2);
 
-            font->drawString(g, caption,
+            font->drawString(graphics, caption,
                 itemX + (mBoxWidth - font->getWidth(caption)) / 2,
                 itemY + mEquippedTextPadding);
         }

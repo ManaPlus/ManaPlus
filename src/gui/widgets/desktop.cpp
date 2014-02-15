@@ -106,7 +106,6 @@ void Desktop::widgetResized(const gcn::Event &event A_UNUSED)
 void Desktop::draw(Graphics *graphics)
 {
     BLOCK_START("Desktop::draw")
-    Graphics *const g = static_cast<Graphics *const>(graphics);
 
     const gcn::Rectangle &rect = mDimension;
     const int width = rect.width;
@@ -118,30 +117,30 @@ void Desktop::draw(Graphics *graphics)
 
         if (width > wallpWidth || height > wallpHeight)
         {
-            g->setColor(mBackgroundGrayColor);
-            g->fillRectangle(gcn::Rectangle(0, 0, width, height));
+            graphics->setColor(mBackgroundGrayColor);
+            graphics->fillRectangle(gcn::Rectangle(0, 0, width, height));
         }
 
         if (imageHelper->useOpenGL() == RENDER_SOFTWARE)
         {
-            g->drawImage2(mWallpaper,
+            graphics->drawImage2(mWallpaper,
                 (width - wallpWidth) / 2,
                 (height - wallpHeight) / 2);
         }
         else
         {
-            g->drawRescaledImage(mWallpaper, 0, 0, width, height);
+            graphics->drawRescaledImage(mWallpaper, 0, 0, width, height);
         }
     }
     else
     {
-        g->setColor(mBackgroundGrayColor);
-        g->fillRectangle(gcn::Rectangle(0, 0, width, height));
+        graphics->setColor(mBackgroundGrayColor);
+        graphics->fillRectangle(gcn::Rectangle(0, 0, width, height));
     }
 
     // Draw a thin border under the application version...
-    g->setColor(mBackgroundColor);
-    g->fillRectangle(gcn::Rectangle(mVersionLabel->getDimension()));
+    graphics->setColor(mBackgroundColor);
+    graphics->fillRectangle(gcn::Rectangle(mVersionLabel->getDimension()));
 
     Container::draw(graphics);
     BLOCK_END("Desktop::draw")

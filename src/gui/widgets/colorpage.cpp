@@ -53,7 +53,6 @@ void ColorPage::draw(Graphics *graphics)
 
     const ColorModel *const model = static_cast<ColorModel* const>(
         mListModel);
-    Graphics *const g = static_cast<Graphics *const>(graphics);
 
     mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
     graphics->setColor(mHighlightColor);
@@ -70,20 +69,20 @@ void ColorPage::draw(Graphics *graphics)
             mDimension.width - 2 * mPadding, rowHeight));
 
         const ColorPair *const colors = model->getColorAt(mSelected);
-        g->setColorAll(*colors->color1, *colors->color2);
+        graphics->setColorAll(*colors->color1, *colors->color2);
         const std::string str = mListModel->getElementAt(mSelected);
         font->drawString(graphics, str, (width - font->getWidth(str)) / 2,
             mSelected * rowHeight + mPadding);
     }
 
-    g->setColorAll(mForegroundColor, mForegroundColor2);
+    graphics->setColorAll(mForegroundColor, mForegroundColor2);
     const int sz = mListModel->getNumberOfElements();
     for (int i = 0, y = mPadding; i < sz; ++i, y += rowHeight)
     {
         if (i != mSelected)
         {
             const ColorPair *const colors = model->getColorAt(i);
-            g->setColorAll(*colors->color1, *colors->color2);
+            graphics->setColorAll(*colors->color1, *colors->color2);
             const std::string str = mListModel->getElementAt(i);
             font->drawString(graphics, str, (width - font->getWidth(str)) / 2,
                 y);

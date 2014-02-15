@@ -97,7 +97,6 @@ void Popup::setWindowContainer(WindowContainer *const wc)
 void Popup::draw(Graphics *graphics)
 {
     BLOCK_START("Popup::draw")
-    Graphics *const g = static_cast<Graphics*>(graphics);
 
     if (mSkin)
     {
@@ -107,16 +106,18 @@ void Popup::draw(Graphics *graphics)
             {
                 mRedraw = false;
                 mVertexes->clear();
-                g->calcWindow(mVertexes, 0, 0,
+                graphics->calcWindow(mVertexes,
+                    0, 0,
                     mDimension.width, mDimension.height,
                     mSkin->getBorder());
             }
 
-            g->drawTileCollection(mVertexes);
+            graphics->drawTileCollection(mVertexes);
         }
         else
         {
-            g->drawImageRect(0, 0, mDimension.width, mDimension.height,
+            graphics->drawImageRect(0, 0,
+                mDimension.width, mDimension.height,
                 mSkin->getBorder());
         }
     }
