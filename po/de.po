@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-02-15 18:08+0300\n"
+"POT-Creation-Date: 2014-02-16 01:05+0300\n"
 "PO-Revision-Date: 2014-02-14 08:13+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/"
@@ -1501,7 +1501,7 @@ msgstr "Alles abholen"
 #. TRANSLATORS: skills dialog button
 #: src/gui/popups/popupmenu.cpp:1985 src/gui/popups/popupmenu.cpp:2763
 #: src/gui/windows/inventorywindow.cpp:205
-#: src/gui/windows/inventorywindow.cpp:693 src/gui/windows/skilldialog.cpp:290
+#: src/gui/windows/inventorywindow.cpp:693 src/gui/windows/skilldialog.cpp:288
 msgid "Use"
 msgstr "Benutzen"
 
@@ -1892,7 +1892,7 @@ msgstr "OK auswählen"
 #: src/gui/setupactiondata.h:183 src/gui/windows/buydialog.cpp:275
 #: src/gui/windows/quitdialog.cpp:51 src/gui/windows/quitdialog.cpp:56
 #: src/gui/windows/quitdialog.cpp:58 src/gui/windows/selldialog.cpp:109
-#: src/gui/windows/serverdialog.cpp:254
+#: src/gui/windows/serverdialog.cpp:253
 msgid "Quit"
 msgstr "Beenden"
 
@@ -2481,7 +2481,7 @@ msgstr "Auswahl 2"
 #. TRANSLATORS: command editor button
 #: src/gui/setupactiondata.h:1833 src/gui/widgets/tabs/setup_relations.cpp:259
 #: src/gui/windows/charselectdialog.cpp:106
-#: src/gui/windows/serverdialog.cpp:262 src/gui/windows/shopwindow.cpp:93
+#: src/gui/windows/serverdialog.cpp:261 src/gui/windows/shopwindow.cpp:93
 #: src/gui/windows/shopwindow.cpp:100
 #: src/gui/windows/textcommandeditor.cpp:205
 msgid "Delete"
@@ -2834,7 +2834,7 @@ msgid "brown"
 msgstr "braun"
 
 #. TRANSLATORS: Text under equipped items (should be small)
-#: src/gui/widgets/itemcontainer.cpp:323
+#: src/gui/widgets/itemcontainer.cpp:324
 msgid "Eq."
 msgstr "Eq."
 
@@ -2846,12 +2846,12 @@ msgstr "URL öffnen"
 #. TRANSLATORS: setup item button
 #. TRANSLATORS: servers dialog button
 #: src/gui/widgets/setupitem.cpp:363 src/gui/widgets/setupitem.cpp:499
-#: src/gui/windows/serverdialog.cpp:260
+#: src/gui/windows/serverdialog.cpp:259
 msgid "Edit"
 msgstr "Ändern"
 
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:89 src/gui/windows/skilldialog.cpp:595
+#: src/gui/widgets/skillinfo.cpp:89 src/gui/windows/skilldialog.cpp:593
 #, c-format
 msgid "Lvl: %d"
 msgstr "Lvl: %d"
@@ -4788,7 +4788,7 @@ msgid "SKI"
 msgstr "FÄH"
 
 #. TRANSLATORS: skills dialog name
-#: src/gui/windowmenu.cpp:109 src/gui/windows/skilldialog.cpp:283
+#: src/gui/windowmenu.cpp:109 src/gui/windows/skilldialog.cpp:281
 msgid "Skills"
 msgstr "Fähigkeiten"
 
@@ -4865,7 +4865,7 @@ msgstr "EINST"
 #. TRANSLATORS: short key name
 #. TRANSLATORS: outfits window label
 #: src/gui/windowmenu.cpp:299 src/gui/windows/outfitwindow.cpp:71
-#: src/gui/windows/outfitwindow.cpp:562
+#: src/gui/windows/outfitwindow.cpp:561
 #, c-format
 msgid "Key: %s"
 msgstr "Taste: %s"
@@ -5302,201 +5302,201 @@ msgid "Net"
 msgstr "Netz"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:171 src/gui/windows/debugwindow.cpp:302
-#: src/gui/windows/debugwindow.cpp:353
+#: src/gui/windows/debugwindow.cpp:170 src/gui/windows/debugwindow.cpp:301
+#: src/gui/windows/debugwindow.cpp:352
 msgid "Music:"
 msgstr "Musik:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:173 src/gui/windows/debugwindow.cpp:308
-#: src/gui/windows/debugwindow.cpp:357
+#: src/gui/windows/debugwindow.cpp:172 src/gui/windows/debugwindow.cpp:307
+#: src/gui/windows/debugwindow.cpp:356
 msgid "Map:"
 msgstr "Karte:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:175 src/gui/windows/debugwindow.cpp:305
-#: src/gui/windows/debugwindow.cpp:355
+#: src/gui/windows/debugwindow.cpp:174 src/gui/windows/debugwindow.cpp:304
+#: src/gui/windows/debugwindow.cpp:354
 msgid "Minimap:"
 msgstr "Minikarte:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:178 src/gui/windows/debugwindow.cpp:299
-#: src/gui/windows/debugwindow.cpp:351
+#: src/gui/windows/debugwindow.cpp:177 src/gui/windows/debugwindow.cpp:298
+#: src/gui/windows/debugwindow.cpp:350
 msgid "Cursor:"
 msgstr "Zeiger:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:181
+#: src/gui/windows/debugwindow.cpp:180
 msgid "Particle count:"
 msgstr "Partikelanzahl:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:184 src/gui/windows/debugwindow.cpp:321
-#: src/gui/windows/debugwindow.cpp:361
+#: src/gui/windows/debugwindow.cpp:183 src/gui/windows/debugwindow.cpp:320
+#: src/gui/windows/debugwindow.cpp:360
 msgid "Map actors count:"
 msgstr "Anzahl aktiver Mapobjekte:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:186 src/gui/windows/debugwindow.cpp:280
-#: src/gui/windows/debugwindow.cpp:286
+#: src/gui/windows/debugwindow.cpp:185 src/gui/windows/debugwindow.cpp:279
+#: src/gui/windows/debugwindow.cpp:285
 msgid "Player Position:"
 msgstr "Spielerposition:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:192 src/gui/windows/debugwindow.cpp:334
+#: src/gui/windows/debugwindow.cpp:191 src/gui/windows/debugwindow.cpp:333
 msgid "Draw calls:"
 msgstr "Draw calls:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:197 src/gui/windows/debugwindow.cpp:342
+#: src/gui/windows/debugwindow.cpp:196 src/gui/windows/debugwindow.cpp:341
 msgid "Texture binds:"
 msgstr ""
 
 #. TRANSLATORS: debug window label, frames per second
-#: src/gui/windows/debugwindow.cpp:200
+#: src/gui/windows/debugwindow.cpp:199
 #, c-format
 msgid "%d FPS"
 msgstr "%d FPS"
 
 #. TRANSLATORS: debug window label, logic per second
-#: src/gui/windows/debugwindow.cpp:202 src/gui/windows/debugwindow.cpp:369
+#: src/gui/windows/debugwindow.cpp:201 src/gui/windows/debugwindow.cpp:368
 #, c-format
 msgid "%d LPS"
 msgstr "%d LPS"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:213 src/gui/windows/debugwindow.cpp:237
+#: src/gui/windows/debugwindow.cpp:212 src/gui/windows/debugwindow.cpp:236
 #, c-format
 msgid "%d FPS (Software)"
 msgstr "%d FPS (Software)"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:220
+#: src/gui/windows/debugwindow.cpp:219
 #, c-format
 msgid "%d FPS (normal OpenGL)"
 msgstr ""
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:224
+#: src/gui/windows/debugwindow.cpp:223
 #, c-format
 msgid "%d FPS (safe OpenGL)"
 msgstr ""
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:228
+#: src/gui/windows/debugwindow.cpp:227
 #, c-format
 msgid "%d FPS (mobile OpenGL)"
 msgstr "%d FPS (mobile OpenGL)"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:232
+#: src/gui/windows/debugwindow.cpp:231
 #, c-format
 msgid "%d FPS (SDL2 default)"
 msgstr ""
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:257 src/gui/windows/debugwindow.cpp:327
+#: src/gui/windows/debugwindow.cpp:256 src/gui/windows/debugwindow.cpp:326
 msgid "Textures count:"
 msgstr "Texturanzahl:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:316
+#: src/gui/windows/debugwindow.cpp:315
 #, c-format
 msgid "Particle count: %d"
 msgstr "Partikelanzahl: %d"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:376 src/gui/windows/debugwindow.cpp:427
-#: src/gui/windows/debugwindow.cpp:489
+#: src/gui/windows/debugwindow.cpp:375 src/gui/windows/debugwindow.cpp:426
+#: src/gui/windows/debugwindow.cpp:488
 msgid "Target:"
 msgstr "Ziel:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:378 src/gui/windows/debugwindow.cpp:433
-#: src/gui/windows/debugwindow.cpp:491
+#: src/gui/windows/debugwindow.cpp:377 src/gui/windows/debugwindow.cpp:432
+#: src/gui/windows/debugwindow.cpp:490
 msgid "Target Id:"
 msgstr "Ziel ID:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:381 src/gui/windows/debugwindow.cpp:436
-#: src/gui/windows/debugwindow.cpp:493
+#: src/gui/windows/debugwindow.cpp:380 src/gui/windows/debugwindow.cpp:435
+#: src/gui/windows/debugwindow.cpp:492
 msgid "Target type:"
 msgstr "Art des Ziels:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:383
+#: src/gui/windows/debugwindow.cpp:382
 msgid "Target level:"
 msgstr "Ziel Level:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:385 src/gui/windows/debugwindow.cpp:452
+#: src/gui/windows/debugwindow.cpp:384 src/gui/windows/debugwindow.cpp:451
 msgid "Target race:"
 msgstr "Ziel Rasse:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:387
+#: src/gui/windows/debugwindow.cpp:386
 msgid "Target party:"
 msgstr "Ziel Party:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:389
+#: src/gui/windows/debugwindow.cpp:388
 msgid "Target guild:"
 msgstr "Ziel Gilde:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:391 src/gui/windows/debugwindow.cpp:477
-#: src/gui/windows/debugwindow.cpp:483 src/gui/windows/debugwindow.cpp:501
+#: src/gui/windows/debugwindow.cpp:390 src/gui/windows/debugwindow.cpp:476
+#: src/gui/windows/debugwindow.cpp:482 src/gui/windows/debugwindow.cpp:500
 msgid "Attack delay:"
 msgstr "Angriffs-Verzögerung:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:393 src/gui/windows/debugwindow.cpp:464
-#: src/gui/windows/debugwindow.cpp:503
+#: src/gui/windows/debugwindow.cpp:392 src/gui/windows/debugwindow.cpp:463
+#: src/gui/windows/debugwindow.cpp:502
 msgid "Minimal hit:"
 msgstr "Minimaler Treffer"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:395 src/gui/windows/debugwindow.cpp:467
-#: src/gui/windows/debugwindow.cpp:505
+#: src/gui/windows/debugwindow.cpp:394 src/gui/windows/debugwindow.cpp:466
+#: src/gui/windows/debugwindow.cpp:504
 msgid "Maximum hit:"
 msgstr "Maximaler Treffer"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:397 src/gui/windows/debugwindow.cpp:470
-#: src/gui/windows/debugwindow.cpp:507
+#: src/gui/windows/debugwindow.cpp:396 src/gui/windows/debugwindow.cpp:469
+#: src/gui/windows/debugwindow.cpp:506
 msgid "Critical hit:"
 msgstr "Kritischer Treffer"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:441 src/gui/windows/debugwindow.cpp:447
-#: src/gui/windows/debugwindow.cpp:495
+#: src/gui/windows/debugwindow.cpp:440 src/gui/windows/debugwindow.cpp:446
+#: src/gui/windows/debugwindow.cpp:494
 msgid "Target Level:"
 msgstr "Ziel Level:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:455 src/gui/windows/debugwindow.cpp:497
+#: src/gui/windows/debugwindow.cpp:454 src/gui/windows/debugwindow.cpp:496
 msgid "Target Party:"
 msgstr "Ziel Gruppe:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:459 src/gui/windows/debugwindow.cpp:499
+#: src/gui/windows/debugwindow.cpp:458 src/gui/windows/debugwindow.cpp:498
 msgid "Target Guild:"
 msgstr "Ziel Gilde:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:544 src/gui/windows/debugwindow.cpp:550
+#: src/gui/windows/debugwindow.cpp:543 src/gui/windows/debugwindow.cpp:549
 #, c-format
 msgid "Ping: %s ms"
 msgstr "Ping: %s ms"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:553
+#: src/gui/windows/debugwindow.cpp:552
 #, c-format
 msgid "In: %d bytes/s"
 msgstr "Eingehend: %d bytes/s"
 
 #. TRANSLATORS: debug window label
-#: src/gui/windows/debugwindow.cpp:556
+#: src/gui/windows/debugwindow.cpp:555
 #, c-format
 msgid "Out: %d bytes/s"
 msgstr "Ausgehend: %d bytes/s"
@@ -5541,7 +5541,7 @@ msgstr "Bearbeite Server"
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
 #: src/gui/windows/editserverdialog.cpp:74
-#: src/gui/windows/serverdialog.cpp:256
+#: src/gui/windows/serverdialog.cpp:255
 msgid "Connect"
 msgstr "Verbinde..."
 
@@ -5895,7 +5895,7 @@ msgstr "Absenden"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: trade window button
-#: src/gui/windows/npcdialog.cpp:111 src/gui/windows/serverdialog.cpp:258
+#: src/gui/windows/npcdialog.cpp:111 src/gui/windows/serverdialog.cpp:257
 #: src/gui/windows/shopwindow.cpp:91 src/gui/windows/shopwindow.cpp:98
 #: src/gui/windows/tradewindow.cpp:79
 msgid "Add"
@@ -5917,7 +5917,7 @@ msgid "Failed to send as sender or letter invalid."
 msgstr "Es misslang, den Brief zu senden oder er war ungültig."
 
 #. TRANSLATORS: outfits window label
-#: src/gui/windows/outfitwindow.cpp:62 src/gui/windows/outfitwindow.cpp:556
+#: src/gui/windows/outfitwindow.cpp:62 src/gui/windows/outfitwindow.cpp:555
 #, c-format
 msgid "Outfit: %d"
 msgstr "Ausrüstung: %d"
@@ -5997,53 +5997,53 @@ msgid "Do you really want to sell %s?"
 msgstr ""
 
 #. TRANSLATORS: servers dialog name
-#: src/gui/windows/serverdialog.cpp:247
+#: src/gui/windows/serverdialog.cpp:246
 msgid "Choose Your Server"
 msgstr "Wähle deinen Server"
 
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/serverdialog.cpp:264
+#: src/gui/windows/serverdialog.cpp:263
 msgid "Load"
 msgstr "Laden"
 
 #. TRANSLATORS: servers dialog name
-#: src/gui/windows/serverdialog.cpp:280
+#: src/gui/windows/serverdialog.cpp:279
 msgid "Choose Your Server  *** SAFE MODE ***"
 msgstr "Wähle einen Server  ***SICHERER MODUS ***"
 
 #. TRANSLATORS: servers dialog checkbox
-#: src/gui/windows/serverdialog.cpp:289
+#: src/gui/windows/serverdialog.cpp:288
 msgid "Use same ip for game sub servers"
 msgstr "Benutze die selbe IP auf Zweitservern des Spiels"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:532
+#: src/gui/windows/serverdialog.cpp:531
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "Lade Serverliste herunter...%2.2f%%"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:538
+#: src/gui/windows/serverdialog.cpp:537
 msgid "Waiting for server..."
 msgstr "Warte auf den Server"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:543
+#: src/gui/windows/serverdialog.cpp:542
 msgid "Preparing download"
 msgstr "Download wird vorbereitet"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:548
+#: src/gui/windows/serverdialog.cpp:547
 msgid "Error retreiving server list!"
 msgstr "Fehler beim Empfangen der Serverliste!"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:639
+#: src/gui/windows/serverdialog.cpp:638
 msgid "requires a newer version"
 msgstr "benötigt eine neuere Version"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:644
+#: src/gui/windows/serverdialog.cpp:643
 #, c-format
 msgid "requires v%s"
 msgstr "benötigt v%s"
@@ -6101,24 +6101,24 @@ msgid "%s wants to %s %s do you accept?"
 msgstr "%s möchte %s %s akzeptierst du?"
 
 #. TRANSLATORS: skills dialog button
-#: src/gui/windows/skilldialog.cpp:292
+#: src/gui/windows/skilldialog.cpp:290
 msgid "Up"
 msgstr "Erhöhen"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:408
+#: src/gui/windows/skilldialog.cpp:406
 #, c-format
 msgid "Skill points available: %d"
 msgstr "Fähigkeitspunkte verfügbar: %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:468
+#: src/gui/windows/skilldialog.cpp:466
 #, c-format
 msgid "Skill Set %d"
 msgstr "Fähigkeiten Tab %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:502
+#: src/gui/windows/skilldialog.cpp:500
 #, c-format
 msgid "Skill %d"
 msgstr "Fähigkeit %d"
