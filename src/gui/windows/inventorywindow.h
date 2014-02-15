@@ -28,9 +28,9 @@
 
 #include "gui/widgets/window.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/keylistener.hpp>
-#include <guichan/selectionlistener.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/keylistener.hpp"
+#include "gui/base/selectionlistener.hpp"
 
 class Button;
 class DropDown;

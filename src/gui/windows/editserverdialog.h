@@ -31,9 +31,9 @@ class ServerDialog;
 
 #include "net/serverinfo.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/keylistener.hpp>
-#include <guichan/listmodel.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/keylistener.hpp"
+#include "gui/base/listmodel.hpp"
 
 /**
  * Server Type List Model

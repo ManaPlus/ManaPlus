@@ -25,8 +25,8 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/focuslistener.hpp>
-#include <guichan/widgets/textfield.hpp>
+#include "gui/base/focuslistener.hpp"
+#include "gui/base/widgets/textfield.hpp"
 
 #include "localconsts.h"
 

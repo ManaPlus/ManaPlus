@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_SKILLINFO_H
 #define GUI_WIDGETS_SKILLINFO_H
 
-#include <guichan/color.hpp>
+#include "gui/base/color.hpp"
 
 #include <vector>
 #include <map>

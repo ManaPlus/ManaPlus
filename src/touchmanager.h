@@ -27,7 +27,7 @@
 
 #include "input/keydata.h"
 
-#include <guichan/rectangle.hpp>
+#include "gui/base/rectangle.hpp"
 
 #include <string>
 #include <vector>

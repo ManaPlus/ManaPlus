@@ -90,7 +90,7 @@
 #include <SDL_keyboard.h>
 #include <SDL_timer.h>
 
-#include <guichan/exception.hpp>
+#include "gui/base/exception.hpp"
 
 SDLInput::SDLInput() :
     mKeyInputQueue(),

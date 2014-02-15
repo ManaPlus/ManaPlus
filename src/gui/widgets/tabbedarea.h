@@ -25,11 +25,11 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/keylistener.hpp>
-#include <guichan/mouselistener.hpp>
-#include <guichan/widgetlistener.hpp>
-#include <guichan/widgets/container.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/keylistener.hpp"
+#include "gui/base/mouselistener.hpp"
+#include "gui/base/widgetlistener.hpp"
+#include "gui/base/widgets/container.hpp"
 
 class Button;
 class Image;

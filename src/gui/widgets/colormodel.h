@@ -23,8 +23,8 @@
 
 #include "utils/stringvector.h"
 
-#include <guichan/color.hpp>
-#include <guichan/listmodel.hpp>
+#include "gui/base/color.hpp"
+#include "gui/base/listmodel.hpp"
 
 #include "localconsts.h"
 

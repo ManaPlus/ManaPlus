@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_SHOPITEMS_H
 #define GUI_WIDGETS_SHOPITEMS_H
 
-#include <guichan/listmodel.hpp>
+#include "gui/base/listmodel.hpp"
 
 #include <string>
 #include <vector>

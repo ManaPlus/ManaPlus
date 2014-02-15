@@ -25,9 +25,9 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/basiccontainer.hpp>
-#include <guichan/mouselistener.hpp>
-#include <guichan/widgetlistener.hpp>
+#include "gui/base/basiccontainer.hpp"
+#include "gui/base/mouselistener.hpp"
+#include "gui/base/widgetlistener.hpp"
 
 #include "localconsts.h"
 

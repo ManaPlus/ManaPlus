@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-#include <guichan/widgets/container.hpp>
+#include "gui/base/widgets/container.hpp"
 
 #include <vector>
 

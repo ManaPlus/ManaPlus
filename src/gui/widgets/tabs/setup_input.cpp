@@ -38,7 +38,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabstrip.h"
 
-#include <guichan/listmodel.hpp>
+#include "gui/base/listmodel.hpp"
 
 #include "debug.h"
 

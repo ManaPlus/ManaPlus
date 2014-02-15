@@ -25,7 +25,7 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/widgets/container.hpp>
+#include "gui/base/widgets/container.hpp"
 
 /**
  * A widget container.

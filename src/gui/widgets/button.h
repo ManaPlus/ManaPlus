@@ -25,8 +25,8 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/widgets/button.hpp>
-#include <guichan/widgetlistener.hpp>
+#include "gui/base/widgets/button.hpp"
+#include "gui/base/widgetlistener.hpp"
 
 #include "localconsts.h"
 

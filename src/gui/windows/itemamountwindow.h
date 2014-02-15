@@ -25,8 +25,8 @@
 
 #include "gui/widgets/window.h"
 
-#include <guichan/keylistener.hpp>
-#include <guichan/actionlistener.hpp>
+#include "gui/base/keylistener.hpp"
+#include "gui/base/actionlistener.hpp"
 
 class DropDown;
 class Icon;

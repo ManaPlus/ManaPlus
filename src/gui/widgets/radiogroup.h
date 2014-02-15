@@ -23,7 +23,7 @@
 
 #include "gui/widgets/widgetgroup.h"
 
-#include <guichan/widget.hpp>
+#include "gui/base/widget.hpp"
 
 class RadioGroup final : public WidgetGroup
 {

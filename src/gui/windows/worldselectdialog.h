@@ -27,8 +27,8 @@
 
 #include "net/worldinfo.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/keylistener.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/keylistener.hpp"
 
 class Button;
 class ListBox;

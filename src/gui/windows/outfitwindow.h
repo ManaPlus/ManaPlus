@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include <guichan/actionlistener.hpp>
+#include "gui/base/actionlistener.hpp"
 
 const unsigned int OUTFITS_COUNT = 100;
 const unsigned int OUTFIT_ITEM_COUNT = 16;

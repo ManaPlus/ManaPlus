@@ -23,7 +23,7 @@
 
 #include "resources/image.h"
 
-#include <guichan/listmodel.hpp>
+#include "gui/base/listmodel.hpp"
 
 class ExtendedListModel : public gcn::ListModel
 {

@@ -26,7 +26,7 @@
 
 #include "render/graphics.h"
 
-#include <guichan/color.hpp>
+#include "gui/base/color.hpp"
 
 #include "localconsts.h"
 

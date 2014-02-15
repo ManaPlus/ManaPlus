@@ -23,7 +23,7 @@
 
 #include "utils/stringvector.h"
 
-#include <guichan/listmodel.hpp>
+#include "gui/base/listmodel.hpp"
 
 #include "localconsts.h"
 

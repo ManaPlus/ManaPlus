@@ -68,7 +68,7 @@
 
 #include "resources/resourcemanager.h"
 
-#include <guichan/focushandler.hpp>
+#include "gui/base/focushandler.hpp"
 
 #include <sstream>
 

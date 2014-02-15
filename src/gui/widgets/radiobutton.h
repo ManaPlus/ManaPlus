@@ -25,7 +25,7 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/widgets/radiobutton.hpp>
+#include "gui/base/widgets/radiobutton.hpp"
 
 #include "localconsts.h"
 

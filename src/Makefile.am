@@ -25,25 +25,25 @@ else
 manaplus_SOURCES =
 endif
 
-dyecmd_CXXFLAGS = -I$(srcdir)/guichan/include -DUSE_INTERNALGUICHAN
-dyecmd_SOURCES = guichan/actionevent.cpp \
-	      guichan/cliprectangle.cpp \
-	      guichan/color.cpp \
-	      guichan/event.cpp \
-	      guichan/exception.cpp \
-	      guichan/font.cpp \
-	      guichan/graphics.cpp \
-	      guichan/rectangle.cpp \
-	      guichan/widget.cpp \
-	      guichan/include/guichan/actionevent.hpp \
-	      guichan/include/guichan/cliprectangle.hpp \
-	      guichan/include/guichan/color.hpp \
-	      guichan/include/guichan/event.hpp \
-	      guichan/include/guichan/exception.hpp \
-	      guichan/include/guichan/font.hpp \
-	      guichan/include/guichan/graphics.hpp \
-	      guichan/include/guichan/rectangle.hpp \
-	      guichan/include/guichan/widget.hpp
+dyecmd_CXXFLAGS =
+dyecmd_SOURCES = gui/base/actionevent.cpp \
+	      gui/base/cliprectangle.cpp \
+	      gui/base/color.cpp \
+	      gui/base/event.cpp \
+	      gui/base/exception.cpp \
+	      gui/base/font.cpp \
+	      gui/base/graphics.cpp \
+	      gui/base/rectangle.cpp \
+	      gui/base/widget.cpp \
+	      gui/base/actionevent.hpp \
+	      gui/base/cliprectangle.hpp \
+	      gui/base/color.hpp \
+	      gui/base/event.hpp \
+	      gui/base/exception.hpp \
+	      gui/base/font.hpp \
+	      gui/base/graphics.hpp \
+	      gui/base/rectangle.hpp \
+	      gui/base/widget.hpp
 
 dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      animatedsprite.cpp \
@@ -158,80 +158,78 @@ manaplus_CXXFLAGS += -DUSE_SDL2
 endif
 endif
 
-manaplus_CXXFLAGS += -I$(srcdir)/guichan/include -DUSE_INTERNALGUICHAN
-manaplus_SOURCES += guichan/include/guichan/actionevent.hpp \
-	      guichan/include/guichan/actionlistener.hpp \
-	      guichan/include/guichan/basiccontainer.hpp \
-	      guichan/include/guichan/cliprectangle.hpp \
-	      guichan/include/guichan/color.hpp \
-	      guichan/include/guichan/deathlistener.hpp \
-	      guichan/include/guichan/event.hpp \
-	      guichan/include/guichan/exception.hpp \
-	      guichan/include/guichan/focushandler.hpp \
-	      guichan/include/guichan/focuslistener.hpp \
-	      guichan/include/guichan/font.hpp \
-	      guichan/include/guichan/graphics.hpp \
-	      guichan/include/guichan/gui.hpp \
-	      guichan/include/guichan/image.hpp \
-	      guichan/include/guichan/input.hpp \
-	      guichan/include/guichan/inputevent.hpp \
-	      guichan/include/guichan/key.hpp \
-	      guichan/include/guichan/keyevent.hpp \
-	      guichan/include/guichan/keyinput.hpp \
-	      guichan/include/guichan/keylistener.hpp \
-	      guichan/include/guichan/listmodel.hpp \
-	      guichan/include/guichan/mouseevent.hpp \
-	      guichan/include/guichan/mouseinput.hpp \
-	      guichan/include/guichan/mouselistener.hpp \
-	      guichan/include/guichan/rectangle.hpp \
-	      guichan/include/guichan/selectionevent.hpp \
-	      guichan/include/guichan/selectionlistener.hpp \
-	      guichan/include/guichan/sdl/sdlpixel.hpp \
-	      guichan/include/guichan/widget.hpp \
-	      guichan/include/guichan/widgetlistener.hpp \
-	      guichan/include/guichan/widgets/button.hpp \
-	      guichan/include/guichan/widgets/checkbox.hpp \
-	      guichan/include/guichan/widgets/container.hpp \
-	      guichan/include/guichan/widgets/label.hpp \
-	      guichan/include/guichan/widgets/listbox.hpp \
-	      guichan/include/guichan/widgets/radiobutton.hpp \
-	      guichan/include/guichan/widgets/scrollarea.hpp \
-	      guichan/include/guichan/widgets/slider.hpp \
-	      guichan/include/guichan/widgets/textbox.hpp \
-	      guichan/include/guichan/widgets/textfield.hpp \
-	      guichan/include/guichan/widgets/window.hpp
-
-manaplus_SOURCES += guichan/actionevent.cpp \
-	      guichan/basiccontainer.cpp \
-	      guichan/cliprectangle.cpp \
-	      guichan/color.cpp \
-	      guichan/event.cpp \
-	      guichan/exception.cpp \
-	      guichan/focushandler.cpp \
-	      guichan/font.cpp \
-	      guichan/graphics.cpp \
-	      guichan/gui.cpp \
-	      guichan/image.cpp \
-	      guichan/inputevent.cpp \
-	      guichan/key.cpp \
-	      guichan/keyevent.cpp \
-	      guichan/keyinput.cpp \
-	      guichan/mouseevent.cpp \
-	      guichan/mouseinput.cpp \
-	      guichan/rectangle.cpp \
-	      guichan/selectionevent.cpp \
-	      guichan/widget.cpp \
-	      guichan/widgets/button.cpp \
-	      guichan/widgets/checkbox.cpp \
-	      guichan/widgets/container.cpp \
-	      guichan/widgets/label.cpp \
-	      guichan/widgets/listbox.cpp \
-	      guichan/widgets/radiobutton.cpp \
-	      guichan/widgets/scrollarea.cpp \
-	      guichan/widgets/slider.cpp \
-	      guichan/widgets/textbox.cpp \
-	      guichan/widgets/textfield.cpp \
-	      guichan/widgets/window.cpp
+manaplus_SOURCES += gui/base/actionevent.hpp \
+	      gui/base/actionlistener.hpp \
+	      gui/base/basiccontainer.hpp \
+	      gui/base/cliprectangle.hpp \
+	      gui/base/color.hpp \
+	      gui/base/deathlistener.hpp \
+	      gui/base/event.hpp \
+	      gui/base/exception.hpp \
+	      gui/base/focushandler.hpp \
+	      gui/base/focuslistener.hpp \
+	      gui/base/font.hpp \
+	      gui/base/graphics.hpp \
+	      gui/base/gui.hpp \
+	      gui/base/image.hpp \
+	      gui/base/input.hpp \
+	      gui/base/inputevent.hpp \
+	      gui/base/key.hpp \
+	      gui/base/keyevent.hpp \
+	      gui/base/keyinput.hpp \
+	      gui/base/keylistener.hpp \
+	      gui/base/listmodel.hpp \
+	      gui/base/mouseevent.hpp \
+	      gui/base/mouseinput.hpp \
+	      gui/base/mouselistener.hpp \
+	      gui/base/rectangle.hpp \
+	      gui/base/selectionevent.hpp \
+	      gui/base/selectionlistener.hpp \
+	      gui/base/sdl/sdlpixel.hpp \
+	      gui/base/widget.hpp \
+	      gui/base/widgetlistener.hpp \
+	      gui/base/widgets/button.hpp \
+	      gui/base/widgets/checkbox.hpp \
+	      gui/base/widgets/container.hpp \
+	      gui/base/widgets/label.hpp \
+	      gui/base/widgets/listbox.hpp \
+	      gui/base/widgets/radiobutton.hpp \
+	      gui/base/widgets/scrollarea.hpp \
+	      gui/base/widgets/slider.hpp \
+	      gui/base/widgets/textbox.hpp \
+	      gui/base/widgets/textfield.hpp \
+	      gui/base/widgets/window.hpp \
+	      gui/base/actionevent.cpp \
+	      gui/base/basiccontainer.cpp \
+	      gui/base/cliprectangle.cpp \
+	      gui/base/color.cpp \
+	      gui/base/event.cpp \
+	      gui/base/exception.cpp \
+	      gui/base/focushandler.cpp \
+	      gui/base/font.cpp \
+	      gui/base/graphics.cpp \
+	      gui/base/gui.cpp \
+	      gui/base/image.cpp \
+	      gui/base/inputevent.cpp \
+	      gui/base/key.cpp \
+	      gui/base/keyevent.cpp \
+	      gui/base/keyinput.cpp \
+	      gui/base/mouseevent.cpp \
+	      gui/base/mouseinput.cpp \
+	      gui/base/rectangle.cpp \
+	      gui/base/selectionevent.cpp \
+	      gui/base/widget.cpp \
+	      gui/base/widgets/button.cpp \
+	      gui/base/widgets/checkbox.cpp \
+	      gui/base/widgets/container.cpp \
+	      gui/base/widgets/label.cpp \
+	      gui/base/widgets/listbox.cpp \
+	      gui/base/widgets/radiobutton.cpp \
+	      gui/base/widgets/scrollarea.cpp \
+	      gui/base/widgets/slider.cpp \
+	      gui/base/widgets/textbox.cpp \
+	      gui/base/widgets/textfield.cpp \
+	      gui/base/widgets/window.cpp
 
 manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/avatarlistbox.h \

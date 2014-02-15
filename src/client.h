@@ -27,7 +27,7 @@
 
 #include "net/serverinfo.h"
 
-#include <guichan/actionlistener.hpp>
+#include "gui/base/actionlistener.hpp"
 
 #include <SDL.h>
 

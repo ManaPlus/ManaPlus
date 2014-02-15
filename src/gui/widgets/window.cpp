@@ -37,9 +37,9 @@
 #include "resources/cursor.h"
 #include "resources/image.h"
 
-#include <guichan/exception.hpp>
-#include <guichan/focushandler.hpp>
-#include <guichan/font.hpp>
+#include "gui/base/exception.hpp"
+#include "gui/base/focushandler.hpp"
+#include "gui/base/font.hpp"
 
 #include "debug.h"
 

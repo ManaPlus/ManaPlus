@@ -21,7 +21,7 @@
 #ifndef INPUT_KEYINPUT_H
 #define INPUT_KEYINPUT_H
 
-#include <guichan/keyinput.hpp>
+#include "gui/base/keyinput.hpp"
 
 #include <string>
 

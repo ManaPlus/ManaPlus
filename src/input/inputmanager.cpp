@@ -51,8 +51,8 @@
 
 #include "utils/timer.h"
 
-#include <guichan/exception.hpp>
-#include <guichan/focushandler.hpp>
+#include "gui/base/exception.hpp"
+#include "gui/base/focushandler.hpp"
 
 #include <algorithm>
 

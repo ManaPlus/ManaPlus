@@ -26,7 +26,7 @@
 
 #include "logger.h"
 
-#include <guichan/color.hpp>
+#include "gui/base/color.hpp"
 
 #if defined __native_client__
 #include <stdlib.h>

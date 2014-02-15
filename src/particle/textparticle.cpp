@@ -26,8 +26,8 @@
 
 #include "gui/theme.h"
 
-#include <guichan/color.hpp>
-#include <guichan/font.hpp>
+#include "gui/base/color.hpp"
+#include "gui/base/font.hpp"
 
 #include "debug.h"
 

@@ -24,7 +24,7 @@
 #define GUI_WIDGETS_SKILLMODEL_H
 
 #include "gui/widgets/skillinfo.h"
-#include <guichan/listmodel.hpp>
+#include "gui/base/listmodel.hpp"
 
 #include <string>
 

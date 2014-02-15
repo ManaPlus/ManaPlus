@@ -25,9 +25,9 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/mouselistener.hpp>
-#include <guichan/widget.hpp>
-#include <guichan/widgetlistener.hpp>
+#include "gui/base/mouselistener.hpp"
+#include "gui/base/widget.hpp"
+#include "gui/base/widgetlistener.hpp"
 
 class Image;
 class ImageCollection;

@@ -29,8 +29,8 @@
 
 #include "render/renderers.h"
 
-#include <guichan/color.hpp>
-#include <guichan/graphics.hpp>
+#include "gui/base/color.hpp"
+#include "gui/base/graphics.hpp"
 
 #ifdef USE_SDL2
 #include <SDL_render.h>

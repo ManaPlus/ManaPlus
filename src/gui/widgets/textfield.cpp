@@ -39,7 +39,7 @@
 #include "utils/copynpaste.h"
 #include "utils/timer.h"
 
-#include <guichan/font.hpp>
+#include "gui/base/font.hpp"
 
 #undef DELETE  // Win32 compatibility hack
 

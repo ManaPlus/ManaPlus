@@ -37,9 +37,9 @@
 #include "utils/stringutils.h"
 #include "utils/timer.h"
 
-#include <guichan/graphics.hpp>
-#include <guichan/font.hpp>
-#include <guichan/cliprectangle.hpp>
+#include "gui/base/graphics.hpp"
+#include "gui/base/font.hpp"
+#include "gui/base/cliprectangle.hpp"
 
 #include <algorithm>
 

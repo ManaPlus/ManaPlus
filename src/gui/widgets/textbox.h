@@ -25,7 +25,7 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/widgets/textbox.hpp>
+#include "gui/base/widgets/textbox.hpp"
 
 #include "localconsts.h"
 

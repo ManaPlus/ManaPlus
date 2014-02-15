@@ -46,8 +46,8 @@
 
 #include "resources/image.h"
 
-#include <guichan/font.hpp>
-#include <guichan/selectionlistener.hpp>
+#include "gui/base/font.hpp"
+#include "gui/base/selectionlistener.hpp"
 
 #include <algorithm>
 

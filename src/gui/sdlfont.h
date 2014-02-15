@@ -24,8 +24,8 @@
 #ifndef GUI_SDLFONT_H
 #define GUI_SDLFONT_H
 
-#include <guichan/color.hpp>
-#include <guichan/font.hpp>
+#include "gui/base/color.hpp"
+#include "gui/base/font.hpp"
 
 #include <SDL_ttf.h>
 

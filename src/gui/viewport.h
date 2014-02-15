@@ -28,7 +28,7 @@
 
 #include "gui/widgets/windowcontainer.h"
 
-#include <guichan/mouselistener.hpp>
+#include "gui/base/mouselistener.hpp"
 
 class ActorSprite;
 class Button;

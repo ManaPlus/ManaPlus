@@ -31,7 +31,7 @@
 
 #include "utils/sdlcheckutils.h"
 
-#include <guichan/sdl/sdlpixel.hpp>
+#include "gui/base/sdl/sdlpixel.hpp"
 
 #include "debug.h"
 

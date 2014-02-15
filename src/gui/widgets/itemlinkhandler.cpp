@@ -37,8 +37,8 @@
 
 #include <string>
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/mouseinput.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/mouseinput.hpp"
 
 #include "debug.h"
 

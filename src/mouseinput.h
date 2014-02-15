@@ -21,7 +21,7 @@
 #ifndef MOUSEINPUT_H
 #define MOUSEINPUT_H
 
-#include <guichan/mouseinput.hpp>
+#include "gui/base/mouseinput.hpp"
 
 #include "localconsts.h"
 

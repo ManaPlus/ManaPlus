@@ -25,8 +25,8 @@
 
 #include "gui/widgets/window.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/keylistener.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/keylistener.hpp"
 
 #include <string>
 

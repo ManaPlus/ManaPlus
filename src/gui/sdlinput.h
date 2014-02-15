@@ -84,9 +84,9 @@
 
 #include <SDL_events.h>
 
-#include <guichan/input.hpp>
-#include <guichan/keyinput.hpp>
-#include <guichan/mouseinput.hpp>
+#include "gui/base/input.hpp"
+#include "gui/base/keyinput.hpp"
+#include "gui/base/mouseinput.hpp"
 
 #include <queue>
 

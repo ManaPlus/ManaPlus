@@ -25,13 +25,13 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/basiccontainer.hpp>
-#include <guichan/focuslistener.hpp>
-#include <guichan/keylistener.hpp>
-#include <guichan/listmodel.hpp>
-#include <guichan/mouselistener.hpp>
-#include <guichan/selectionlistener.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/basiccontainer.hpp"
+#include "gui/base/focuslistener.hpp"
+#include "gui/base/keylistener.hpp"
+#include "gui/base/listmodel.hpp"
+#include "gui/base/mouselistener.hpp"
+#include "gui/base/selectionlistener.hpp"
 
 #include "localconsts.h"
 

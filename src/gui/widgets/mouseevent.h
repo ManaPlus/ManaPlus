@@ -22,8 +22,8 @@
 #ifndef GUI_WIDGETS_MOUSEEVENT_H
 #define GUI_WIDGETS_MOUSEEVENT_H
 
-#include <guichan/mouseevent.hpp>
-#include <guichan/widget.hpp>
+#include "gui/base/mouseevent.hpp"
+#include "gui/base/widget.hpp"
 
 class MouseEvent final : public gcn::MouseEvent
 {

@@ -29,7 +29,7 @@
 #include "net/charserverhandler.h"
 #include "net/net.h"
 
-#include <guichan/widgetlistener.hpp>
+#include "gui/base/widgetlistener.hpp"
 
 #include "localconsts.h"
 

@@ -51,7 +51,7 @@
 #include "utils/langs.h"
 #include "utils/timer.h"
 
-#include <guichan/exception.hpp>
+#include "gui/base/exception.hpp"
 
 #include "debug.h"
 

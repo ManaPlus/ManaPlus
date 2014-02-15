@@ -30,7 +30,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/textbox.h"
 
-#include <guichan/font.hpp>
+#include "gui/base/font.hpp"
 
 #include "debug.h"
 

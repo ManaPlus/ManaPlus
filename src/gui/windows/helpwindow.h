@@ -26,7 +26,7 @@
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
-#include <guichan/actionlistener.hpp>
+#include "gui/base/actionlistener.hpp"
 
 #include "localconsts.h"
 

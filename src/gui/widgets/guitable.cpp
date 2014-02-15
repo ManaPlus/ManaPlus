@@ -29,9 +29,9 @@
 
 #include "utils/dtor.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/graphics.hpp>
-#include <guichan/key.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/graphics.hpp"
+#include "gui/base/key.hpp"
 
 #include "debug.h"
 

@@ -24,7 +24,7 @@
 
 #include "gui/widgets/tabs/setuptab.h"
 
-#include <guichan/selectionlistener.hpp>
+#include "gui/base/selectionlistener.hpp"
 
 #include <string>
 

@@ -21,9 +21,9 @@
 #ifndef GUI_WIDGETS_SLIDERLIST_H
 #define GUI_WIDGETS_SLIDERLIST_H
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/listmodel.hpp>
-#include <guichan/mouselistener.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/listmodel.hpp"
+#include "gui/base/mouselistener.hpp"
 
 #include "gui/widgets/container.h"
 

@@ -25,7 +25,7 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/widgets/checkbox.hpp>
+#include "gui/base/widgets/checkbox.hpp"
 
 #include "localconsts.h"
 

@@ -42,7 +42,7 @@
 
 #include "gui/windows/ministatuswindow.h"
 
-#include <guichan/font.hpp>
+#include "gui/base/font.hpp"
 
 #include "debug.h"
 

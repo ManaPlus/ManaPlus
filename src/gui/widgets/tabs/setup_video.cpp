@@ -46,7 +46,7 @@
 
 #include "test/testmain.h"
 
-#include <guichan/listmodel.hpp>
+#include "gui/base/listmodel.hpp"
 
 #include <algorithm>
 

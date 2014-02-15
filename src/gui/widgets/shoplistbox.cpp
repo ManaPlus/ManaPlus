@@ -35,8 +35,8 @@
 
 #include "resources/image.h"
 
-#include <guichan/font.hpp>
-#include <guichan/listmodel.hpp>
+#include "gui/base/font.hpp"
+#include "gui/base/listmodel.hpp"
 
 #include "debug.h"
 

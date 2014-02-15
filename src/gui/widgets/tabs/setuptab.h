@@ -25,8 +25,8 @@
 
 #include "gui/widgets/container.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/widgetlistener.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/widgetlistener.hpp"
 
 #include <string>
 

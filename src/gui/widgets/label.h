@@ -24,7 +24,7 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/widgets/label.hpp>
+#include "gui/base/widgets/label.hpp"
 
 #include "localconsts.h"
 

@@ -24,7 +24,7 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/tabs/setuptabscroll.h"
 
-#include <guichan/actionlistener.hpp>
+#include "gui/base/actionlistener.hpp"
 
 #include <list>
 #include <vector>

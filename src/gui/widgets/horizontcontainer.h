@@ -24,7 +24,7 @@
 
 #include "gui/widgets/container.h"
 
-#include <guichan/widgetlistener.hpp>
+#include "gui/base/widgetlistener.hpp"
 
 #include "localconsts.h"
 

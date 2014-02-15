@@ -24,7 +24,7 @@
 
 #include "utils/dtor.h"
 
-#include <guichan/widget.hpp>
+#include "gui/base/widget.hpp"
 
 #include "debug.h"
 

@@ -25,7 +25,7 @@
 
 #include "gui/widgets/layout.h"
 
-#include <guichan/widgetlistener.hpp>
+#include "gui/base/widgetlistener.hpp"
 
 /**
  * A helper class for adding a layout to a Guichan container widget. The layout

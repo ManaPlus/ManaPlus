@@ -28,8 +28,8 @@
 
 #include "being/actorsprite.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/listmodel.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/listmodel.hpp"
 
 #include "localconsts.h"
 

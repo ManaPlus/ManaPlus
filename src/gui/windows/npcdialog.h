@@ -30,7 +30,7 @@
 
 #include "utils/stringvector.h"
 
-#include <guichan/actionlistener.hpp>
+#include "gui/base/actionlistener.hpp"
 
 #include <list>
 

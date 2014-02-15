@@ -26,8 +26,8 @@
 
 #include "gui/widgets/container.h"
 
-#include <guichan/mouselistener.hpp>
-#include <guichan/widgetlistener.hpp>
+#include "gui/base/mouselistener.hpp"
+#include "gui/base/widgetlistener.hpp"
 
 class ImageCollection;
 class Skin;

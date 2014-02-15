@@ -79,7 +79,7 @@
 #include "utils/gettext.h"
 #include "utils/process.h"
 
-#include <guichan/listmodel.hpp>
+#include "gui/base/listmodel.hpp"
 
 #include "debug.h"
 

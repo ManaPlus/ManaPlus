@@ -23,9 +23,9 @@
 #ifndef GUI_GUI_H
 #define GUI_GUI_H
 
-#include <guichan/color.hpp>
-#include <guichan/focuslistener.hpp>
-#include <guichan/gui.hpp>
+#include "gui/base/color.hpp"
+#include "gui/base/focuslistener.hpp"
+#include "gui/base/gui.hpp"
 
 #include "localconsts.h"
 

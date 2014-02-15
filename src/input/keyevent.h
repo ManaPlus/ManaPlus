@@ -21,8 +21,8 @@
 #ifndef INPUT_KEYEVENT_H
 #define INPUT_KEYEVENT_H
 
-#include <guichan/key.hpp>
-#include <guichan/keyevent.hpp>
+#include "gui/base/key.hpp"
+#include "gui/base/keyevent.hpp"
 
 #include <string>
 

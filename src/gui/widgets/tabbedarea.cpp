@@ -29,7 +29,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabs/tab.h"
 
-#include <guichan/widgets/container.hpp>
+#include "gui/base/widgets/container.hpp"
 
 #include "debug.h"
 

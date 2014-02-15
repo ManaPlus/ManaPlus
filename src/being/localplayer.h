@@ -30,7 +30,7 @@
 
 #include "gui/userpalette.h"
 
-#include <guichan/actionlistener.hpp>
+#include "gui/base/actionlistener.hpp"
 
 #include <vector>
 

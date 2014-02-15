@@ -30,7 +30,7 @@
 
 #include <set>
 
-#include <guichan/actionlistener.hpp>
+#include "gui/base/actionlistener.hpp"
 
 class BrowserBox;
 class Button;

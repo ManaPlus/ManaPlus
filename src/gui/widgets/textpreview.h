@@ -25,7 +25,7 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/widget.hpp>
+#include "gui/base/widget.hpp"
 
 #include "localconsts.h"
 

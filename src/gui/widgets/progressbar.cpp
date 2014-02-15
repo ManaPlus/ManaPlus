@@ -28,7 +28,7 @@
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
 
-#include <guichan/font.hpp>
+#include "gui/base/font.hpp"
 
 #include "debug.h"
 

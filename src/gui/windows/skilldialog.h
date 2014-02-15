@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include <guichan/actionlistener.hpp>
+#include "gui/base/actionlistener.hpp"
 
 const int SKILL_MIN_ID = 200000;
 const unsigned int SKILL_VAR_MIN_ID = 1000000;

@@ -26,7 +26,7 @@
 
 #include "gui/palette.h"
 
-#include <guichan/listmodel.hpp>
+#include "gui/base/listmodel.hpp"
 
 /**
  * Class controlling the game's color palette.

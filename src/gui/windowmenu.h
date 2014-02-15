@@ -28,8 +28,8 @@
 #include "gui/widgets/container.h"
 #include "gui/widgets/button.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/selectionlistener.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/selectionlistener.hpp"
 
 #include "localconsts.h"
 

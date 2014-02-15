@@ -51,7 +51,7 @@
 
 #include "utils/gettext.h"
 
-#include <guichan/font.hpp>
+#include "gui/base/font.hpp"
 
 #include "debug.h"
 

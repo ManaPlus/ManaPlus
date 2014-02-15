@@ -25,7 +25,7 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/widgets/slider.hpp>
+#include "gui/base/widgets/slider.hpp"
 
 #include "localconsts.h"
 

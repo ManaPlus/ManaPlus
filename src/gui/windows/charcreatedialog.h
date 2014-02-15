@@ -27,8 +27,8 @@
 
 #include "gui/windows/charselectdialog.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/keylistener.hpp>
+#include "gui/base/actionlistener.hpp"
+#include "gui/base/keylistener.hpp"
 
 class Label;
 class PlayerBox;

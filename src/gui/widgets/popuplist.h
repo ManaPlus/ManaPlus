@@ -23,8 +23,8 @@
 
 #include "gui/widgets/popup.h"
 
-#include <guichan/focuslistener.hpp>
-#include <guichan/listmodel.hpp>
+#include "gui/base/focuslistener.hpp"
+#include "gui/base/listmodel.hpp"
 
 #include "localconsts.h"
 

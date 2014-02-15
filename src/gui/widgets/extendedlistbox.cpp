@@ -22,9 +22,9 @@
 
 #include "gui/widgets/extendedlistmodel.h"
 
-#include <guichan/font.hpp>
-#include <guichan/graphics.hpp>
-#include <guichan/listmodel.hpp>
+#include "gui/base/font.hpp"
+#include "gui/base/graphics.hpp"
+#include "gui/base/listmodel.hpp"
 
 #include "debug.h"
 

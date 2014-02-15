@@ -25,7 +25,7 @@
 
 #include "gui/widgets/tabs/setuptab.h"
 
-#include <guichan/keylistener.hpp>
+#include "gui/base/keylistener.hpp"
 
 class Button;
 class CheckBox;

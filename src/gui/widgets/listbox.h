@@ -25,7 +25,7 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/widgets/listbox.hpp>
+#include "gui/base/widgets/listbox.hpp"
 
 #include "localconsts.h"
 

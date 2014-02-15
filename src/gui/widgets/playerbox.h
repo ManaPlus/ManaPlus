@@ -25,7 +25,7 @@
 
 #include "gui/widgets/widget2.h"
 
-#include <guichan/widgets/scrollarea.hpp>
+#include "gui/base/widgets/scrollarea.hpp"
 
 #include "localconsts.h"
 

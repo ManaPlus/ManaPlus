@@ -23,7 +23,7 @@
 #ifndef GUI_WINDOWS_KILLSTATS_H
 #define GUI_WINDOWS_KILLSTATS_H
 
-#include <guichan/actionlistener.hpp>
+#include "gui/base/actionlistener.hpp"
 
 #include "depricatedlistener.h"
 
