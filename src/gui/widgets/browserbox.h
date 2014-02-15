@@ -165,7 +165,7 @@ class BrowserBox final : public gcn::Widget,
         /**
          * Draws the browser box.
          */
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         void updateHeight();
 

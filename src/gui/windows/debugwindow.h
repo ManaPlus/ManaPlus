@@ -147,7 +147,7 @@ class DebugWindow final : public Window
          */
         void slowLogic();
 
-        void draw(gcn::Graphics *g) override final;
+        void draw(Graphics *g) override final;
 
         void setPing(int pingTime);
 

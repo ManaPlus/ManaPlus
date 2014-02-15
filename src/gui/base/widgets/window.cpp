@@ -69,8 +69,9 @@
 
 #include "gui/base/exception.hpp"
 #include "gui/base/font.hpp"
-#include "gui/base/graphics.hpp"
 #include "gui/base/mouseinput.hpp"
+
+#include "render/graphics.h"
 
 #include "debug.h"
 

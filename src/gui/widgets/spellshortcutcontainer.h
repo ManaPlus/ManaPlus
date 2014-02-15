@@ -50,7 +50,7 @@ class SpellShortcutContainer final : public ShortcutContainer
         /**
          * Draws the items.
          */
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         /**
          * Handles mouse when dragged.

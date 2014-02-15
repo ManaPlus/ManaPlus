@@ -74,12 +74,13 @@
 #include "gui/base/event.hpp"
 #include "gui/base/exception.hpp"
 #include "gui/base/focushandler.hpp"
-#include "gui/base/graphics.hpp"
 #include "gui/base/keyinput.hpp"
 #include "gui/base/keylistener.hpp"
 #include "gui/base/mouseinput.hpp"
 #include "gui/base/mouselistener.hpp"
 #include "gui/base/widgetlistener.hpp"
+
+#include "render/graphics.h"
 
 #include "debug.h"
 

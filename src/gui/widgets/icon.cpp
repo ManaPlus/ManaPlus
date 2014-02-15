@@ -67,7 +67,7 @@ void Icon::setImage(Image *const image)
     }
 }
 
-void Icon::draw(gcn::Graphics *g)
+void Icon::draw(Graphics *g)
 {
     BLOCK_START("Icon::draw")
     if (mImage)

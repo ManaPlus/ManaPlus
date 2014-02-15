@@ -68,10 +68,10 @@
 
 #include "localconsts.h"
 
+class Graphics;
+
 namespace gcn
 {
-    class Graphics;
-
     /**
      * Interface for a font.
      *

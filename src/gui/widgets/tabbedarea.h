@@ -60,7 +60,7 @@ class TabbedArea final : public Widget2,
         /**
          * Draw the tabbed area.
          */
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         /**
          * Return how many tabs have been created.

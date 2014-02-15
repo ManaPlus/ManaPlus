@@ -32,7 +32,6 @@ dyecmd_SOURCES = gui/base/actionevent.cpp \
 	      gui/base/event.cpp \
 	      gui/base/exception.cpp \
 	      gui/base/font.cpp \
-	      gui/base/graphics.cpp \
 	      gui/base/rectangle.cpp \
 	      gui/base/widget.cpp \
 	      gui/base/actionevent.hpp \
@@ -41,7 +40,6 @@ dyecmd_SOURCES = gui/base/actionevent.cpp \
 	      gui/base/event.hpp \
 	      gui/base/exception.hpp \
 	      gui/base/font.hpp \
-	      gui/base/graphics.hpp \
 	      gui/base/rectangle.hpp \
 	      gui/base/widget.hpp
 
@@ -206,7 +204,6 @@ manaplus_SOURCES += gui/base/actionevent.hpp \
 	      gui/base/exception.cpp \
 	      gui/base/focushandler.cpp \
 	      gui/base/font.cpp \
-	      gui/base/graphics.cpp \
 	      gui/base/gui.cpp \
 	      gui/base/inputevent.cpp \
 	      gui/base/key.cpp \

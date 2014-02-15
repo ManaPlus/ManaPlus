@@ -963,7 +963,7 @@ bool MobileOpenGLGraphics::pushClipArea(gcn::Rectangle area)
         transY = -clipArea.yOffset;
     }
 
-    const bool result = gcn::Graphics::pushClipArea(area);
+    const bool result = Graphics::pushClipArea(area);
 
     const gcn::ClipRectangle &clipArea = mClipStack.top();
     transX += clipArea.xOffset;
@@ -990,7 +990,7 @@ void MobileOpenGLGraphics::popClipArea()
     int transX = -clipArea1.xOffset;
     int transY = -clipArea1.yOffset;
 
-    gcn::Graphics::popClipArea();
+    Graphics::popClipArea();
 
     if (mClipStack.empty())
         return;

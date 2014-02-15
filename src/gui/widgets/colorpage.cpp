@@ -47,7 +47,7 @@ ColorPage::~ColorPage()
 {
 }
 
-void ColorPage::draw(gcn::Graphics *graphics)
+void ColorPage::draw(Graphics *graphics)
 {
     BLOCK_START("ColorPage::draw")
 

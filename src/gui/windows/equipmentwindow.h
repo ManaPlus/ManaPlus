@@ -81,7 +81,7 @@ class EquipmentWindow final : public Window, public gcn::ActionListener
         /**
          * Draws the equipment window.
          */
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         void action(const gcn::ActionEvent &event) override final;
 

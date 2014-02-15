@@ -233,7 +233,7 @@ void Minimap::toggle()
     mShow = isWindowVisible();
 }
 
-void Minimap::draw(gcn::Graphics *graphics)
+void Minimap::draw(Graphics *graphics)
 {
     BLOCK_START("Minimap::draw")
     Window::draw(graphics);

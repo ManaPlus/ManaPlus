@@ -214,7 +214,7 @@ void DropDown::updateAlpha()
     }
 }
 
-void DropDown::draw(gcn::Graphics* graphics)
+void DropDown::draw(Graphics* graphics)
 {
     BLOCK_START("DropDown::draw")
     int h;
@@ -286,7 +286,7 @@ void DropDown::draw(gcn::Graphics* graphics)
     BLOCK_END("DropDown::draw")
 }
 
-void DropDown::drawFrame(gcn::Graphics *graphics)
+void DropDown::drawFrame(Graphics *graphics)
 {
     BLOCK_START("DropDown::drawFrame")
     const int bs2 = getFrameSize();
@@ -296,7 +296,7 @@ void DropDown::drawFrame(gcn::Graphics *graphics)
     BLOCK_END("DropDown::drawFrame")
 }
 
-void DropDown::drawButton(gcn::Graphics *graphics)
+void DropDown::drawButton(Graphics *graphics)
 {
     const int height = mDroppedDown ? mFoldedUpHeight : mDimension.height;
 

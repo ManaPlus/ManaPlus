@@ -65,7 +65,7 @@ void ProgressIndicator::logic()
     BLOCK_END("ProgressIndicator::logic")
 }
 
-void ProgressIndicator::draw(gcn::Graphics *graphics)
+void ProgressIndicator::draw(Graphics *graphics)
 {
     BLOCK_START("ProgressIndicator::draw")
     if (mIndicator)

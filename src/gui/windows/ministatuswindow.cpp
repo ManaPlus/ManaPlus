@@ -308,7 +308,7 @@ void MiniStatusWindow::logic()
     BLOCK_END("MiniStatusWindow::logic")
 }
 
-void MiniStatusWindow::draw(gcn::Graphics *graphics)
+void MiniStatusWindow::draw(Graphics *graphics)
 {
     BLOCK_START("MiniStatusWindow::draw")
     drawChildren(graphics);

@@ -30,6 +30,11 @@
 
 #include "localconsts.h"
 
+namespace gcn
+{
+    class Font;
+}
+
 class Text
 {
     friend class TextManager;
@@ -39,7 +44,7 @@ class Text
          * Constructor creates a text object to display on the screen.
          */
         Text(const std::string &text, const int x, const int y,
-             const gcn::Graphics::Alignment alignment,
+             const Graphics::Alignment alignment,
              const gcn::Color *const color, const bool isSpeech = false,
              gcn::Font *const font = nullptr);
 
@@ -90,7 +95,7 @@ class FlashText final : public Text
 {
     public:
         FlashText(const std::string &text, const int x, const int y,
-                  const gcn::Graphics::Alignment alignment,
+                  const Graphics::Alignment alignment,
                   const gcn::Color *const color,
                   gcn::Font *const font = nullptr);
 

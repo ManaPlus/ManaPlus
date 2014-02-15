@@ -76,7 +76,7 @@ void Label::init()
         mPadding = 0;
 }
 
-void Label::draw(gcn::Graphics* graphics)
+void Label::draw(Graphics* graphics)
 {
     BLOCK_START("Label::draw")
     int textX;

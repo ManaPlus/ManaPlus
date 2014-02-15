@@ -52,7 +52,7 @@ class OutfitWindow final : public Window,
 
         void action(const gcn::ActionEvent &event) override final;
 
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         void mousePressed(gcn::MouseEvent &event) override final;
 

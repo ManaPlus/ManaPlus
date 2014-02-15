@@ -53,7 +53,7 @@ class ShortcutContainer : public gcn::Widget,
         /**
          * Draws the shortcuts
          */
-        virtual void draw(gcn::Graphics *graphics) override = 0;
+        virtual void draw(Graphics *graphics) override = 0;
 
         /**
          * Invoked when a widget changes its size. This is used to determine

@@ -60,7 +60,7 @@ class TextField : public gcn::TextField,
         /**
          * Draws the text field.
          */
-        virtual void draw(gcn::Graphics *graphics) override;
+        virtual void draw(Graphics *graphics) override;
 
         /**
          * Update the alpha value to the graphic components.
@@ -70,7 +70,7 @@ class TextField : public gcn::TextField,
         /**
          * Draws the background and border.
          */
-        void drawFrame(gcn::Graphics *graphics) override final;
+        void drawFrame(Graphics *graphics) override final;
 
         /**
          * Determine whether the field should be numeric or not
@@ -142,7 +142,7 @@ class TextField : public gcn::TextField,
         void caretDeleteWord();
 
     protected:
-        void drawCaret(gcn::Graphics* graphics, int x) override final;
+        void drawCaret(Graphics* graphics, int x) override final;
 
         void fixScroll();
 

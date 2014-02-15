@@ -58,7 +58,7 @@ class ListBox : public gcn::ListBox,
         /**
          * Draws the list box.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(Graphics *graphics) override;
 
         /**
          * Update the alpha value to the graphic components.

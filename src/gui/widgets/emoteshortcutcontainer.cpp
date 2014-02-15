@@ -99,7 +99,7 @@ void EmoteShortcutContainer::setWidget2(const Widget2 *const widget)
     mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
 }
 
-void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
+void EmoteShortcutContainer::draw(Graphics *graphics)
 {
     if (!emoteShortcut)
         return;

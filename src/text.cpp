@@ -40,7 +40,7 @@ int Text::mInstances = 0;
 ImageRect Text::mBubble;
 
 Text::Text(const std::string &text, const int x, const int y,
-           const gcn::Graphics::Alignment alignment,
+           const Graphics::Alignment alignment,
            const gcn::Color *const color, const bool isSpeech,
            gcn::Font *const font) :
     mFont(font ? font : (gui ? gui->getFont() : nullptr)),
@@ -78,13 +78,13 @@ Text::Text(const std::string &text, const int x, const int y,
 
     switch (alignment)
     {
-        case gcn::Graphics::LEFT:
+        case Graphics::LEFT:
             mXOffset = 0;
             break;
-        case gcn::Graphics::CENTER:
+        case Graphics::CENTER:
             mXOffset = mWidth / 2;
             break;
-        case gcn::Graphics::RIGHT:
+        case Graphics::RIGHT:
             mXOffset = mWidth;
             break;
         default:
@@ -151,7 +151,7 @@ void Text::draw(Graphics *const graphics, const int xOff, const int yOff)
 }
 
 FlashText::FlashText(const std::string &text, const int x, const int y,
-                     const gcn::Graphics::Alignment alignment,
+                     const Graphics::Alignment alignment,
                      const gcn::Color *const color, gcn::Font *const font) :
     Text(text, x, y, alignment, color, false, font),
     mTime(0)

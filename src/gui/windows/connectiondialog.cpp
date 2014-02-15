@@ -66,7 +66,7 @@ void ConnectionDialog::action(const gcn::ActionEvent &)
     client->setState(mCancelState);
 }
 
-void ConnectionDialog::draw(gcn::Graphics *graphics)
+void ConnectionDialog::draw(Graphics *graphics)
 {
     BLOCK_START("ConnectionDialog::draw")
     // Don't draw the window background, only draw the children

@@ -114,21 +114,19 @@ void Viewport::setMap(Map *const map)
     mMap = map;
 }
 
-void Viewport::draw(gcn::Graphics *gcnGraphics)
+void Viewport::draw(Graphics *graphics)
 {
     BLOCK_START("Viewport::draw 1")
     static int lastTick = tick_time;
 
     if (!mMap || !player_node)
     {
-        gcnGraphics->setColor(gcn::Color(64, 64, 64));
-        gcnGraphics->fillRectangle(
+        graphics->setColor(gcn::Color(64, 64, 64));
+        graphics->fillRectangle(
                 gcn::Rectangle(0, 0, getWidth(), getHeight()));
         BLOCK_END("Viewport::draw 1")
         return;
     }
-
-    Graphics *const graphics = static_cast<Graphics* const>(gcnGraphics);
 
     // Avoid freaking out when tick_time overflows
     if (tick_time < lastTick)
@@ -260,7 +258,7 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         miniStatusWindow->drawIcons(graphics);
 
     // Draw contained widgets
-    WindowContainer::draw(gcnGraphics);
+    WindowContainer::draw(graphics);
     BLOCK_END("Viewport::draw 1")
 }
 

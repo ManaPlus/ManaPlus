@@ -245,7 +245,7 @@ void ItemContainer::logic()
     BLOCK_END("ItemContainer::logic")
 }
 
-void ItemContainer::draw(gcn::Graphics *graphics)
+void ItemContainer::draw(Graphics *graphics)
 {
     if (!mInventory || !mShowMatrix)
         return;

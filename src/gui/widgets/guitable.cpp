@@ -30,8 +30,9 @@
 #include "utils/dtor.h"
 
 #include "gui/base/actionlistener.hpp"
-#include "gui/base/graphics.hpp"
 #include "gui/base/key.hpp"
+
+#include "render/graphics.h"
 
 #include "debug.h"
 
@@ -293,7 +294,7 @@ void GuiTable::installActionListeners()
 }
 
 // -- widget ops
-void GuiTable::draw(gcn::Graphics* graphics)
+void GuiTable::draw(Graphics* graphics)
 {
     if (!mModel || !getRowHeight())
         return;

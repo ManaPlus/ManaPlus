@@ -780,7 +780,6 @@ SET(SRCS
     gui/base/focushandler.hpp
     gui/base/focuslistener.hpp
     gui/base/font.hpp
-    gui/base/graphics.hpp
     gui/base/gui.hpp
     gui/base/input.hpp
     gui/base/inputevent.hpp
@@ -817,7 +816,6 @@ SET(SRCS
     gui/base/exception.cpp
     gui/base/focushandler.cpp
     gui/base/font.cpp
-    gui/base/graphics.cpp
     gui/base/gui.cpp
     gui/base/inputevent.cpp
     gui/base/key.cpp

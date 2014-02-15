@@ -57,7 +57,7 @@ class ConnectionDialog final : public Window, private gcn::ActionListener
          */
         void action(const gcn::ActionEvent &) override;
 
-        void draw(gcn::Graphics *graphics) override;
+        void draw(Graphics *graphics) override;
 
     private:
         State mCancelState;

@@ -59,7 +59,7 @@ EmotePage::~EmotePage()
     mVertexes = nullptr;
 }
 
-void EmotePage::draw(gcn::Graphics *graphics)
+void EmotePage::draw(Graphics *graphics)
 {
     BLOCK_START("EmotePage::draw")
 

@@ -94,7 +94,7 @@ void Popup::setWindowContainer(WindowContainer *const wc)
     windowContainer = wc;
 }
 
-void Popup::draw(gcn::Graphics *graphics)
+void Popup::draw(Graphics *graphics)
 {
     BLOCK_START("Popup::draw")
     Graphics *const g = static_cast<Graphics*>(graphics);

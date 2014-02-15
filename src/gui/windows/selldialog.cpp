@@ -94,7 +94,7 @@ void SellDialog::init()
 
     mQuantityLabel = new Label(this, strprintf(
         "%d / %d", mAmountItems, mMaxItems));
-    mQuantityLabel->setAlignment(gcn::Graphics::CENTER);
+    mQuantityLabel->setAlignment(Graphics::CENTER);
     // TRANSLATORS: sell dialog label
     mMoneyLabel = new Label(this, strprintf(_("Price: %s / Total: %s"),
                                       "", ""));

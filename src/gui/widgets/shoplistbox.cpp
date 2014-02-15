@@ -82,7 +82,7 @@ void ShopListBox::setPlayersMoney(const int money)
     mPlayerMoney = money;
 }
 
-void ShopListBox::draw(gcn::Graphics *gcnGraphics)
+void ShopListBox::draw(Graphics *gcnGraphics)
 {
     BLOCK_START("ShopListBox::draw")
     if (!mListModel || !mShopItems)

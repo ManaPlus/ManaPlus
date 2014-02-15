@@ -71,12 +71,12 @@ class PlayerBox final : public Widget2,
         /**
          * Draws the scroll area.
          */
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         /**
          * Draws the background and border of the scroll area.
          */
-        void drawFrame(gcn::Graphics *graphics) override final;
+        void drawFrame(Graphics *graphics) override final;
 
         Being *getBeing() A_WARN_UNUSED
         { return mBeing; }

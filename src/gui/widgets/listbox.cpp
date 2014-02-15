@@ -31,8 +31,9 @@
 
 #include "gui/base/focushandler.hpp"
 #include "gui/base/font.hpp"
-#include "gui/base/graphics.hpp"
 #include "gui/base/listmodel.hpp"
+
+#include "render/graphics.h"
 
 #include "debug.h"
 
@@ -98,7 +99,7 @@ void ListBox::updateAlpha()
         mAlpha = alpha;
 }
 
-void ListBox::draw(gcn::Graphics *graphics)
+void ListBox::draw(Graphics *graphics)
 {
     if (!mListModel)
         return;

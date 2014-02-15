@@ -146,7 +146,7 @@ void ProgressBar::updateAlpha()
     mAlpha = alpha;
 }
 
-void ProgressBar::draw(gcn::Graphics *graphics)
+void ProgressBar::draw(Graphics *graphics)
 {
     BLOCK_START("ProgressBar::draw")
     updateAlpha();

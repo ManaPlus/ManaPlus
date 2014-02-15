@@ -156,7 +156,7 @@ EquipmentWindow::~EquipmentWindow()
     mVertexes = nullptr;
 }
 
-void EquipmentWindow::draw(gcn::Graphics *graphics)
+void EquipmentWindow::draw(Graphics *graphics)
 {
     BLOCK_START("EquipmentWindow::draw")
     // Draw window graphics

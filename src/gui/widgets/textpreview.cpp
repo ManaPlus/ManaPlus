@@ -79,7 +79,7 @@ TextPreview::~TextPreview()
     }
 }
 
-void TextPreview::draw(gcn::Graphics* graphics)
+void TextPreview::draw(Graphics* graphics)
 {
     BLOCK_START("TextPreview::draw")
     if (client->getGuiAlpha() != mAlpha)

@@ -75,7 +75,7 @@ class Popup : public Container, public gcn::MouseListener,
         /**
          * Draws the popup.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(Graphics *graphics) override;
 
         /**
          * Sets the size of this popup.

@@ -66,8 +66,9 @@
 
 #include <string>
 
-#include "gui/base/graphics.hpp"
 #include "gui/base/widget.hpp"
+
+#include "render/graphics.h"
 
 namespace gcn
 {

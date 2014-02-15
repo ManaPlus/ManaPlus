@@ -57,7 +57,7 @@ class WindowContainer : public Container
                              gcn::Widget *const widget);
 
 #ifdef USE_PROFILER
-        void draw(gcn::Graphics* graphics);
+        void draw(Graphics* graphics);
 #endif
 
     private:

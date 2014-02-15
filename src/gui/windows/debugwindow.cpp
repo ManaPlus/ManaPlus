@@ -129,7 +129,7 @@ void DebugWindow::slowLogic()
     BLOCK_END("DebugWindow::slowLogic")
 }
 
-void DebugWindow::draw(gcn::Graphics *g)
+void DebugWindow::draw(Graphics *g)
 {
     BLOCK_START("DebugWindow::draw")
     Window::draw(g);

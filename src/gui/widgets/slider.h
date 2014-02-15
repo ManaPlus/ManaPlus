@@ -65,7 +65,7 @@ class Slider final : public gcn::Slider,
         /**
          * Draws the slider.
          */
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         /**
          * Called when the mouse enteres the widget area.

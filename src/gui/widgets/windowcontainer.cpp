@@ -79,7 +79,7 @@ void WindowContainer::moveWidgetAfter(gcn::Widget *const after,
 }
 
 #ifdef USE_PROFILER
-void WindowContainer::draw(gcn::Graphics* graphics)
+void WindowContainer::draw(Graphics* graphics)
 {
     BLOCK_START("WindowContainer::draw")
     Container::draw(graphics);

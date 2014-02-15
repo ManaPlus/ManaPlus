@@ -157,7 +157,7 @@ public:
         mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     }
 
-    void draw(gcn::Graphics *graphics) override final
+    void draw(Graphics *graphics) override final
     {
         if (!mListModel)
             return;

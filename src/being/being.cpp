@@ -519,7 +519,7 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
 
         mText = new Text(mSpeech,
                          getPixelX(), getPixelY() - getHeight(),
-                         gcn::Graphics::CENTER,
+                         Graphics::CENTER,
                          &userPalette->getColor(UserPalette::PARTICLE),
                          true);
     }
@@ -1856,7 +1856,7 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
         if (!mText && userPalette)
         {
             mText = new Text(mSpeech, getPixelX(), getPixelY() - getHeight(),
-                gcn::Graphics::CENTER, &Theme::getThemeColor(
+                Graphics::CENTER, &Theme::getThemeColor(
                 Theme::BUBBLE_TEXT), true);
         }
     }
@@ -2019,12 +2019,12 @@ void Being::showName()
         mDispName = new FlashText(displayName,
             getPixelX() + mInfo->getNameOffsetX(),
             getPixelY() + mInfo->getNameOffsetY(),
-            gcn::Graphics::CENTER, mNameColor, font);
+            Graphics::CENTER, mNameColor, font);
     }
     else
     {
         mDispName = new FlashText(displayName, getPixelX(), getPixelY(),
-            gcn::Graphics::CENTER, mNameColor, font);
+            Graphics::CENTER, mNameColor, font);
     }
 
     updateCoords();

@@ -94,7 +94,7 @@ CheckBox::~CheckBox()
     }
 }
 
-void CheckBox::draw(gcn::Graphics *const graphics)
+void CheckBox::draw(Graphics *const graphics)
 {
     BLOCK_START("CheckBox::draw")
     drawBox(graphics);
@@ -129,7 +129,7 @@ void CheckBox::updateAlpha()
     }
 }
 
-void CheckBox::drawBox(gcn::Graphics *const graphics)
+void CheckBox::drawBox(Graphics *const graphics)
 {
     if (!mSkin || !mDrawBox)
         return;

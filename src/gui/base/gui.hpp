@@ -71,10 +71,11 @@
 #include "gui/base/mouseevent.hpp"
 #include "gui/base/mouseinput.hpp"
 
+class Graphics;
+
 namespace gcn
 {
     class FocusHandler;
-    class Graphics;
     class Input;
     class KeyListener;
     class Widget;

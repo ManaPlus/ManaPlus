@@ -419,7 +419,7 @@ void WindowMenu::saveButtons() const
         config.deleteKey("windowmenu" + toString(f));
 }
 
-void WindowMenu::drawChildren(gcn::Graphics* graphics)
+void WindowMenu::drawChildren(Graphics* graphics)
 {
     if (mHaveMouse || !mAutoHide || (mAutoHide == 1
         && mainGraphics && (mSmallWindow || mainGraphics->mWidth > 800)))

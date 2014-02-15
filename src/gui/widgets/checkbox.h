@@ -59,7 +59,7 @@ class CheckBox final : public gcn::CheckBox,
         /**
          * Draws the caption, then calls drawBox to draw the check box.
          */
-        void draw(gcn::Graphics *const graphics) override final;
+        void draw(Graphics *const graphics) override final;
 
         /**
          * Update the alpha value to the checkbox components.
@@ -69,7 +69,7 @@ class CheckBox final : public gcn::CheckBox,
         /**
          * Draws the check box, not the caption.
          */
-        void drawBox(gcn::Graphics *const graphics);
+        void drawBox(Graphics *const graphics);
 
         /**
          * Called when the mouse enteres the widget area.

@@ -74,7 +74,7 @@ Window::Window(const std::string &caption, const bool modal,
     mVertexes(new ImageCollection),
     mCaptionOffsetX(7),
     mCaptionOffsetY(5),
-    mCaptionAlign(gcn::Graphics::LEFT),
+    mCaptionAlign(Graphics::LEFT),
     mTitlePadding(4),
     mGripPadding(2),
     mResizeHandles(-1),
@@ -123,12 +123,12 @@ Window::Window(const std::string &caption, const bool modal,
             mCaptionOffsetY = getOption("captionoffsety");
             if (!mCaptionOffsetY)
                 mCaptionOffsetY = 5;
-            mCaptionAlign = static_cast<gcn::Graphics::Alignment>(
+            mCaptionAlign = static_cast<Graphics::Alignment>(
                 getOption("captionalign"));
-            if (mCaptionAlign < gcn::Graphics::LEFT
-                || mCaptionAlign > gcn::Graphics::RIGHT)
+            if (mCaptionAlign < Graphics::LEFT
+                || mCaptionAlign > Graphics::RIGHT)
             {
-                mCaptionAlign = gcn::Graphics::LEFT;
+                mCaptionAlign = Graphics::LEFT;
             }
             setTitleBarHeight(getOption("titlebarHeight"));
             if (!mTitleBarHeight)
@@ -203,7 +203,7 @@ void Window::setWindowContainer(WindowContainer *const wc)
     windowContainer = wc;
 }
 
-void Window::draw(gcn::Graphics *graphics)
+void Window::draw(Graphics *graphics)
 {
     if (!mSkin)
         return;

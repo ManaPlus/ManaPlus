@@ -280,7 +280,7 @@ class ChatWindow final : public Window,
 
         void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED) override final;
 
-        void draw(gcn::Graphics* graphics) override final;
+        void draw(Graphics* graphics) override final;
 
         void updateVisibility();
 

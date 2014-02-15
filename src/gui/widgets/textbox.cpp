@@ -350,7 +350,7 @@ void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
     keyEvent.consume();
 }
 
-void TextBox::draw(gcn::Graphics* graphics)
+void TextBox::draw(Graphics* graphics)
 {
     BLOCK_START("TextBox::draw")
     if (mOpaque)

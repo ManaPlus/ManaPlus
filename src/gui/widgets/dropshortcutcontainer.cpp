@@ -94,7 +94,7 @@ void DropShortcutContainer::setWidget2(const Widget2 *const widget)
     mUnEquipedColor2 = getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE);
 }
 
-void DropShortcutContainer::draw(gcn::Graphics *graphics)
+void DropShortcutContainer::draw(Graphics *graphics)
 {
     if (!dropShortcut)
         return;

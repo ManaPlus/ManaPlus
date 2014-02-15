@@ -90,7 +90,7 @@ AvatarListBox::~AvatarListBox()
     }
 }
 
-void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
+void AvatarListBox::draw(Graphics *gcnGraphics)
 {
     BLOCK_START("AvatarListBox::draw")
     if (!mListModel || !player_node)

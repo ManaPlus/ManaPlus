@@ -84,12 +84,12 @@ class ScrollArea final : public gcn::ScrollArea,
         /**
          * Draws the scroll area.
          */
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         /**
          * Draws the background and border of the scroll area.
          */
-        void drawFrame(gcn::Graphics *graphics) override final;
+        void drawFrame(Graphics *graphics) override final;
 
         /**
          * Sets whether the widget should draw its background or not.
@@ -158,19 +158,19 @@ class ScrollArea final : public gcn::ScrollArea,
          */
         void init(std::string skinName);
 
-        void drawButton(gcn::Graphics *const graphics, const BUTTON_DIR dir);
-        void calcButton(gcn::Graphics *const graphics, const BUTTON_DIR dir);
-        void drawVBar(gcn::Graphics *const graphics) override final;
-        void drawHBar(gcn::Graphics *const graphics) override final;
-        void drawVMarker(gcn::Graphics *const graphics) override final;
-        void drawHMarker(gcn::Graphics *const graphics) override final;
+        void drawButton(Graphics *const graphics, const BUTTON_DIR dir);
+        void calcButton(Graphics *const graphics, const BUTTON_DIR dir);
+        void drawVBar(Graphics *const graphics) override final;
+        void drawHBar(Graphics *const graphics) override final;
+        void drawVMarker(Graphics *const graphics) override final;
+        void drawHMarker(Graphics *const graphics) override final;
 
-        void calcVBar(gcn::Graphics *const graphics);
-        void calcHBar(gcn::Graphics *const graphics);
-        void calcVMarker(gcn::Graphics *const graphics);
-        void calcHMarker(gcn::Graphics *const graphics);
+        void calcVBar(Graphics *const graphics);
+        void calcHBar(Graphics *const graphics);
+        void calcVMarker(Graphics *const graphics);
+        void calcHMarker(Graphics *const graphics);
 
-        void updateCalcFlag(gcn::Graphics *const graphics);
+        void updateCalcFlag(Graphics *const graphics);
 
         static int instances;
         static float mAlpha;

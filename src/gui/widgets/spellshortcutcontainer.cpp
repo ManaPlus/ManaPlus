@@ -90,7 +90,7 @@ void SpellShortcutContainer::setWidget2(const Widget2 *const widget)
     mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
 }
 
-void SpellShortcutContainer::draw(gcn::Graphics *graphics)
+void SpellShortcutContainer::draw(Graphics *graphics)
 {
     if (!spellShortcut)
         return;

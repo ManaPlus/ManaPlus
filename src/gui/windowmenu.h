@@ -118,7 +118,7 @@ class WindowMenu final : public Container,
 #endif
 
     protected:
-        void drawChildren(gcn::Graphics* graphics) override final;
+        void drawChildren(Graphics* graphics) override final;
 
     private:
         inline void addButton(const char *const text,

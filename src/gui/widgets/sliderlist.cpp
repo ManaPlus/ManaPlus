@@ -103,7 +103,7 @@ void SliderList::resize()
     updateLabel();
 }
 
-void SliderList::draw(gcn::Graphics *graphics)
+void SliderList::draw(Graphics *graphics)
 {
     BLOCK_START("SliderList::draw")
     const int width = mDimension.width;

@@ -153,7 +153,7 @@ void Tab::updateAlpha()
     }
 }
 
-void Tab::draw(gcn::Graphics *graphics)
+void Tab::draw(Graphics *graphics)
 {
     BLOCK_START("Tab::draw")
     int mode = TAB_STANDARD;

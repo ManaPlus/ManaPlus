@@ -1126,7 +1126,7 @@ void SDL2SoftwareGraphics::_endDraw()
 
 bool SDL2SoftwareGraphics::pushClipArea(gcn::Rectangle area)
 {
-    const bool result = gcn::Graphics::pushClipArea(area);
+    const bool result = Graphics::pushClipArea(area);
 
     const gcn::ClipRectangle &carea = mClipStack.top();
     const SDL_Rect rect =
@@ -1142,7 +1142,7 @@ bool SDL2SoftwareGraphics::pushClipArea(gcn::Rectangle area)
 
 void SDL2SoftwareGraphics::popClipArea()
 {
-    gcn::Graphics::popClipArea();
+    Graphics::popClipArea();
 
     if (mClipStack.empty())
         return;

@@ -248,7 +248,7 @@ void ScrollArea::updateAlpha()
     }
 }
 
-void ScrollArea::draw(gcn::Graphics *graphics)
+void ScrollArea::draw(Graphics *graphics)
 {
     BLOCK_START("ScrollArea::draw")
     if (mVBarVisible || mHBarVisible)
@@ -329,7 +329,7 @@ void ScrollArea::draw(gcn::Graphics *graphics)
     BLOCK_END("ScrollArea::draw")
 }
 
-void ScrollArea::updateCalcFlag(gcn::Graphics *const graphics)
+void ScrollArea::updateCalcFlag(Graphics *const graphics)
 {
     if (!mRedraw)
     {
@@ -356,7 +356,7 @@ void ScrollArea::updateCalcFlag(gcn::Graphics *const graphics)
     }
 }
 
-void ScrollArea::drawFrame(gcn::Graphics *graphics)
+void ScrollArea::drawFrame(Graphics *graphics)
 {
     BLOCK_START("ScrollArea::drawFrame")
     if (mOpaque)
@@ -392,7 +392,7 @@ void ScrollArea::setOpaque(bool opaque)
     setFrameSize(mOpaque ? 2 : 0);
 }
 
-void ScrollArea::drawButton(gcn::Graphics *const graphics,
+void ScrollArea::drawButton(Graphics *const graphics,
                             const BUTTON_DIR dir)
 {
     int state = 0;
@@ -430,7 +430,7 @@ void ScrollArea::drawButton(gcn::Graphics *const graphics,
     }
 }
 
-void ScrollArea::calcButton(gcn::Graphics *const graphics,
+void ScrollArea::calcButton(Graphics *const graphics,
                             const BUTTON_DIR dir)
 {
     int state = 0;
@@ -468,7 +468,7 @@ void ScrollArea::calcButton(gcn::Graphics *const graphics,
     }
 }
 
-void ScrollArea::drawVBar(gcn::Graphics *const graphics)
+void ScrollArea::drawVBar(Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getVerticalBarDimension();
     Graphics *const g = static_cast<Graphics*>(graphics);
@@ -491,7 +491,7 @@ void ScrollArea::drawVBar(gcn::Graphics *const graphics)
     }
 }
 
-void ScrollArea::calcVBar(gcn::Graphics *const graphics)
+void ScrollArea::calcVBar(Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getVerticalBarDimension();
     Graphics *const g = static_cast<Graphics *const>(graphics);
@@ -514,7 +514,7 @@ void ScrollArea::calcVBar(gcn::Graphics *const graphics)
     }
 }
 
-void ScrollArea::drawHBar(gcn::Graphics *const graphics)
+void ScrollArea::drawHBar(Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getHorizontalBarDimension();
     Graphics *const g = static_cast<Graphics*>(graphics);
@@ -539,7 +539,7 @@ void ScrollArea::drawHBar(gcn::Graphics *const graphics)
     }
 }
 
-void ScrollArea::calcHBar(gcn::Graphics *const graphics)
+void ScrollArea::calcHBar(Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getHorizontalBarDimension();
     Graphics *const g = static_cast<Graphics*>(graphics);
@@ -564,7 +564,7 @@ void ScrollArea::calcHBar(gcn::Graphics *const graphics)
     }
 }
 
-void ScrollArea::drawVMarker(gcn::Graphics *const graphics)
+void ScrollArea::drawVMarker(Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getVerticalMarkerDimension();
 
@@ -580,7 +580,7 @@ void ScrollArea::drawVMarker(gcn::Graphics *const graphics)
     }
 }
 
-void ScrollArea::calcVMarker(gcn::Graphics *const graphics)
+void ScrollArea::calcVMarker(Graphics *const graphics)
 {
     const gcn::Rectangle &dim = getVerticalMarkerDimension();
 
@@ -596,7 +596,7 @@ void ScrollArea::calcVMarker(gcn::Graphics *const graphics)
     }
 }
 
-void ScrollArea::drawHMarker(gcn::Graphics *const graphics)
+void ScrollArea::drawHMarker(Graphics *const graphics)
 {
     const gcn::Rectangle dim = getHorizontalMarkerDimension();
 
@@ -612,7 +612,7 @@ void ScrollArea::drawHMarker(gcn::Graphics *const graphics)
     }
 }
 
-void ScrollArea::calcHMarker(gcn::Graphics *const graphics)
+void ScrollArea::calcHMarker(Graphics *const graphics)
 {
     const gcn::Rectangle dim = getHorizontalMarkerDimension();
 

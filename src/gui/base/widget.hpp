@@ -73,6 +73,8 @@
 
 #include "localconsts.h"
 
+class Graphics;
+
 namespace gcn
 {
     class ActionListener;
@@ -81,7 +83,6 @@ namespace gcn
     class FocusHandler;
     class FocusListener;
     class Font;
-    class Graphics;
     class KeyInput;
     class KeyListener;
     class MouseInput;

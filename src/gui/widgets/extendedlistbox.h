@@ -59,7 +59,7 @@ class ExtendedListBox final : public ListBox
         /**
          * Draws the list box.
          */
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         void adjustSize() override;
 

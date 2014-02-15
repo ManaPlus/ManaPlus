@@ -41,7 +41,7 @@ class EmotePage final : public gcn::Widget,
 
         ~EmotePage();
 
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         void mousePressed(gcn::MouseEvent &mouseEvent) override final;
 

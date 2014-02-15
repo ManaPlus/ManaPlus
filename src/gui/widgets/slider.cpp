@@ -118,7 +118,7 @@ void Slider::updateAlpha()
     }
 }
 
-void Slider::draw(gcn::Graphics *graphics)
+void Slider::draw(Graphics *graphics)
 {
     BLOCK_START("Slider::draw")
     if (!buttons[0].grid[HSTART] || !buttons[1].grid[HSTART]

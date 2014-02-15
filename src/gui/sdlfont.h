@@ -131,7 +131,7 @@ class SDLFont final : public gcn::Font
         /**
          * @see Font::drawString
          */
-        void drawString(gcn::Graphics *const graphics,
+        void drawString(Graphics *const graphics,
                         const std::string &text,
                         const int x, const int y) override final;
 

@@ -55,7 +55,7 @@ class SliderList final : public Container,
 
         void resize();
 
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         void action(const gcn::ActionEvent &event) override final;
 

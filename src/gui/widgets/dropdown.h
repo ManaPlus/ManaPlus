@@ -82,9 +82,9 @@ class DropDown final : public gcn::ActionListener,
          */
         void updateAlpha();
 
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
-        void drawFrame(gcn::Graphics *graphics) override final;
+        void drawFrame(Graphics *graphics) override final;
 
         // Inherited from KeyListener
 
@@ -142,7 +142,7 @@ class DropDown final : public gcn::ActionListener,
          *
          * @param graphics a Graphics object to draw with.
          */
-        void drawButton(gcn::Graphics *graphics);
+        void drawButton(Graphics *graphics);
 
         PopupList *mPopup;
         gcn::Color mShadowColor;

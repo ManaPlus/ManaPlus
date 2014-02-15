@@ -1902,7 +1902,7 @@ void ChatWindow::mouseExited(gcn::MouseEvent& mouseEvent)
     Window::mouseExited(mouseEvent);
 }
 
-void ChatWindow::draw(gcn::Graphics* graphics)
+void ChatWindow::draw(Graphics* graphics)
 {
     BLOCK_START("ChatWindow::draw")
     if (!mAutoHide || mHaveMouse)

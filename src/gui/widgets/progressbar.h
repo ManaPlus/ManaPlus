@@ -70,7 +70,7 @@ class ProgressBar final : public gcn::Widget,
         /**
          * Draws the progress bar.
          */
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         /**
          * Sets the current progress.

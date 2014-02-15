@@ -102,7 +102,7 @@ class Button final : public gcn::Button,
         /**
          * Draws the button.
          */
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         /**
          * Update the alpha value to the button components.

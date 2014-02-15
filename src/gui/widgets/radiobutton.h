@@ -56,13 +56,13 @@ class RadioButton final : public gcn::RadioButton,
         /**
          * Draws the radiobutton, not the caption.
          */
-        void drawBox(gcn::Graphics* graphics) override final;
+        void drawBox(Graphics* graphics) override final;
 
         /**
          * Implementation of the draw methods.
          * Thus, avoiding the rhomb around the radio button.
          */
-        void draw(gcn::Graphics* graphics) override final;
+        void draw(Graphics* graphics) override final;
 
         /**
          * Called when the mouse enteres the widget area.

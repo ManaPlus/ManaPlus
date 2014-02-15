@@ -80,7 +80,7 @@ class Window : public gcn::Window,
         /**
          * Draws the window.
          */
-        void draw(gcn::Graphics *graphics) override;
+        void draw(Graphics *graphics) override;
 
         /**
          * Sets the size of this window.
@@ -501,7 +501,7 @@ class Window : public gcn::Window,
         ImageCollection *mVertexes;
         int mCaptionOffsetX;
         int mCaptionOffsetY;
-        gcn::Graphics::Alignment mCaptionAlign;
+        Graphics::Alignment mCaptionAlign;
         int mTitlePadding;
         int mGripPadding;
         int mResizeHandles;

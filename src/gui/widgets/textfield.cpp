@@ -137,7 +137,7 @@ void TextField::updateAlpha()
     }
 }
 
-void TextField::draw(gcn::Graphics *graphics)
+void TextField::draw(Graphics *graphics)
 {
     BLOCK_START("TextField::draw")
     updateAlpha();
@@ -155,7 +155,7 @@ void TextField::draw(gcn::Graphics *graphics)
     BLOCK_END("TextField::draw")
 }
 
-void TextField::drawFrame(gcn::Graphics *graphics)
+void TextField::drawFrame(Graphics *graphics)
 {
     BLOCK_START("TextField::drawFrame")
     const int bs = 2 * mFrameSize;
@@ -661,12 +661,14 @@ void TextField::handleCopy() const
     sendBuffer(text);
 }
 
-void TextField::drawCaret(gcn::Graphics* graphics, int x)
+void TextField::drawCaret(Graphics* graphics, int x)
 {
-    const gcn::Rectangle &clipArea = graphics->getCurrentClipArea();
+    const gcn::Rectangle *const clipArea = graphics->getCurrentClipArea();
+    if (!clipArea)
+        return;
 
     graphics->setColor(*mCaretColor);
-    graphics->drawLine(x + mPadding, clipArea.height - mPadding,
+    graphics->drawLine(x + mPadding, clipArea->height - mPadding,
         x + mPadding, mPadding);
 }
 

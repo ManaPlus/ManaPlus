@@ -68,7 +68,7 @@ class Tab : public gcn::BasicContainer,
         /**
          * Draw the tabbed area.
          */
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         /**
          * Set the normal color for the tab's text.

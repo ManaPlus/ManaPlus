@@ -67,11 +67,12 @@
 #include <string>
 
 #include "gui/base/focuslistener.hpp"
-#include "gui/base/graphics.hpp"
 #include "gui/base/keylistener.hpp"
 #include "gui/base/mouseevent.hpp"
 #include "gui/base/mouselistener.hpp"
 #include "gui/base/widget.hpp"
+
+#include "render/graphics.h"
 
 namespace gcn
 {

@@ -139,7 +139,7 @@ Tab *TabbedArea::getTab(const std::string &name) const
     return nullptr;
 }
 
-void TabbedArea::draw(gcn::Graphics *graphics)
+void TabbedArea::draw(Graphics *graphics)
 {
     BLOCK_START("TabbedArea::draw")
     if (mTabs.empty())

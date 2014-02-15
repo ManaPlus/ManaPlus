@@ -444,7 +444,7 @@ void SDLFont::clear()
         mCache[f].clear();
 }
 
-void SDLFont::drawString(gcn::Graphics *const graphics,
+void SDLFont::drawString(Graphics *const graphics,
                          const std::string &text,
                          const int x, const int y)
 {

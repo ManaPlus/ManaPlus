@@ -23,8 +23,9 @@
 #include "gui/widgets/extendedlistmodel.h"
 
 #include "gui/base/font.hpp"
-#include "gui/base/graphics.hpp"
 #include "gui/base/listmodel.hpp"
+
+#include "render/graphics.h"
 
 #include "debug.h"
 
@@ -47,7 +48,7 @@ ExtendedListBox::~ExtendedListBox()
 {
 }
 
-void ExtendedListBox::draw(gcn::Graphics *graphics)
+void ExtendedListBox::draw(Graphics *graphics)
 {
     if (!mListModel)
         return;

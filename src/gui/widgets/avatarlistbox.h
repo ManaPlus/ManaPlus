@@ -53,7 +53,7 @@ public:
     /**
      * Draws the list box.
      */
-    void draw(gcn::Graphics *gcnGraphics) override final;
+    void draw(Graphics *gcnGraphics) override final;
 
     void mousePressed(gcn::MouseEvent &event) override final;
 

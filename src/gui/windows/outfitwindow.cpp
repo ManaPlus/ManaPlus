@@ -91,8 +91,8 @@ OutfitWindow::OutfitWindow():
     setMinWidth(145);
     setMinHeight(220);
 
-    mCurrentLabel->setAlignment(gcn::Graphics::CENTER);
-    mKeyLabel->setAlignment(gcn::Graphics::CENTER);
+    mCurrentLabel->setAlignment(Graphics::CENTER);
+    mKeyLabel->setAlignment(Graphics::CENTER);
 
     mUnequipCheck->setActionEventId("unequip");
     mUnequipCheck->addActionListener(this);
@@ -310,7 +310,7 @@ void OutfitWindow::copyOutfit(const int src, const int dst)
     save();
 }
 
-void OutfitWindow::draw(gcn::Graphics *graphics)
+void OutfitWindow::draw(Graphics *graphics)
 {
     BLOCK_START("OutfitWindow::draw")
     Window::draw(graphics);

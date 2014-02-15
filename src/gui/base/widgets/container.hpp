@@ -67,7 +67,8 @@
 #include <list>
 
 #include "gui/base/basiccontainer.hpp"
-#include "gui/base/graphics.hpp"
+
+#include "render/graphics.h"
 
 namespace gcn
 {

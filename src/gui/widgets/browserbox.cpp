@@ -37,9 +37,10 @@
 #include "utils/stringutils.h"
 #include "utils/timer.h"
 
-#include "gui/base/graphics.hpp"
 #include "gui/base/font.hpp"
 #include "gui/base/cliprectangle.hpp"
+
+#include "render/graphics.h"
 
 #include <algorithm>
 
@@ -446,13 +447,15 @@ void BrowserBox::mouseMoved(gcn::MouseEvent &event)
         ? static_cast<int>(i - mLinks.begin()) : -1;
 }
 
-void BrowserBox::draw(gcn::Graphics *graphics)
+void BrowserBox::draw(Graphics *graphics)
 {
     BLOCK_START("BrowserBox::draw")
-    const gcn::ClipRectangle &cr = graphics->getCurrentClipArea();
+    const gcn::ClipRectangle *const cr = graphics->getCurrentClipArea();
+    if (!cr)
+        return;
     Graphics *const graphics2 = static_cast<Graphics *const>(graphics);
-    mYStart = cr.y - cr.yOffset;
-    const int yEnd = mYStart + cr.height;
+    mYStart = cr->y - cr->yOffset;
+    const int yEnd = mYStart + cr->height;
     if (mYStart < 0)
         mYStart = 0;
 

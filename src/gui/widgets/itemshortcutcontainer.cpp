@@ -112,7 +112,7 @@ void ItemShortcutContainer::setWidget2(const Widget2 *const widget)
     mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
 }
 
-void ItemShortcutContainer::draw(gcn::Graphics *graphics)
+void ItemShortcutContainer::draw(Graphics *graphics)
 {
     BLOCK_START("ItemShortcutContainer::draw")
     const ItemShortcut *const selShortcut = itemShortcut[mNumber];

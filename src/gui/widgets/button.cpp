@@ -350,7 +350,7 @@ void Button::updateAlpha()
     }
 }
 
-void Button::draw(gcn::Graphics *graphics)
+void Button::draw(Graphics *graphics)
 {
     BLOCK_START("Button::draw")
     int mode;
@@ -437,7 +437,7 @@ void Button::draw(gcn::Graphics *graphics)
     switch (mAlignment)
     {
         default:
-        case gcn::Graphics::LEFT:
+        case Graphics::LEFT:
         {
             if (mImages)
             {
@@ -450,7 +450,7 @@ void Button::draw(gcn::Graphics *graphics)
             }
             break;
         }
-        case gcn::Graphics::CENTER:
+        case Graphics::CENTER:
         {
             const int width1 = font->getWidth(mCaption);
             if (mImages)
@@ -465,7 +465,7 @@ void Button::draw(gcn::Graphics *graphics)
             }
             break;
         }
-        case gcn::Graphics::RIGHT:
+        case Graphics::RIGHT:
         {
             const int width1 = font->getWidth(mCaption);
             textX = width - width1 - padding;

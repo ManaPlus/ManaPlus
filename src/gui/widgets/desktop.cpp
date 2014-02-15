@@ -103,7 +103,7 @@ void Desktop::widgetResized(const gcn::Event &event A_UNUSED)
     setBestFittingWallpaper();
 }
 
-void Desktop::draw(gcn::Graphics *graphics)
+void Desktop::draw(Graphics *graphics)
 {
     BLOCK_START("Desktop::draw")
     Graphics *const g = static_cast<Graphics *const>(graphics);

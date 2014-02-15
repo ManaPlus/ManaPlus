@@ -110,7 +110,7 @@ void RadioButton::updateAlpha()
     }
 }
 
-void RadioButton::drawBox(gcn::Graphics* graphics)
+void RadioButton::drawBox(Graphics* graphics)
 {
     if (!mSkin)
         return;
@@ -154,7 +154,7 @@ void RadioButton::drawBox(gcn::Graphics* graphics)
     }
 }
 
-void RadioButton::draw(gcn::Graphics* graphics)
+void RadioButton::draw(Graphics* graphics)
 {
     BLOCK_START("RadioButton::draw")
     drawBox(graphics);

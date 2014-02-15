@@ -36,7 +36,7 @@ class ColorPage final : public ListBox
 
         ~ColorPage();
 
-        void draw(gcn::Graphics *graphics) override final;
+        void draw(Graphics *graphics) override final;
 
         void resetAction();
 

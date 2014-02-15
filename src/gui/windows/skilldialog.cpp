@@ -100,7 +100,7 @@ class SkillListBox final : public ListBox
             return static_cast<SkillModel*>(mListModel)->getSkillAt(selected);
         }
 
-        void draw(gcn::Graphics *gcnGraphics) override
+        void draw(Graphics *gcnGraphics) override
         {
             if (!mListModel)
                 return;

@@ -31,7 +31,7 @@ PasswordField::PasswordField(const Widget2 *const widget,
 {
 }
 
-void PasswordField::draw(gcn::Graphics *graphics)
+void PasswordField::draw(Graphics *graphics)
 {
     BLOCK_START("PasswordField::draw")
     // std::string uses cow, thus cheap copy
