@@ -725,6 +725,7 @@ SET(SRCS
     being/playerinfo.h
     being/playerrelations.cpp
     being/playerrelations.h
+    being/playerrelationslistener.h
     position.cpp
     position.h
     properties.h
