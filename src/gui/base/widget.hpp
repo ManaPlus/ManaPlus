@@ -74,12 +74,12 @@
 #include "localconsts.h"
 
 class ActionListener;
+class DeathListener;
 class Graphics;
 
 namespace gcn
 {
     class BasicContainer;
-    class DeathListener;
     class FocusHandler;
     class FocusListener;
     class Font;

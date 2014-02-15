@@ -161,7 +161,7 @@ manaplus_SOURCES += gui/base/actionevent.hpp \
 	      gui/base/basiccontainer.hpp \
 	      gui/base/cliprectangle.hpp \
 	      gui/base/color.hpp \
-	      gui/base/deathlistener.hpp \
+	      listeners/deathlistener.h \
 	      gui/base/event.hpp \
 	      gui/base/exception.hpp \
 	      gui/base/focushandler.hpp \

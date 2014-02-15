@@ -61,49 +61,46 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GCN_DEATHLISTENER_HPP
-#define GCN_DEATHLISTENER_HPP
+#ifndef LISTENERS_DEATHLISTENER_HPP
+#define LISTENERS_DEATHLISTENER_HPP
 
 #include <string>
 
 #include "gui/base/event.hpp"
 
-namespace gcn
+/**
+  * Interface for listening for death events from widgets.
+  *
+  * @see Widget::addDeathListener, Widget::removeDeathListener
+  * @author Olof Naessén
+  * @since 0.6.0
+  */
+class DeathListener
 {
-    /**
-     * Interface for listening for death events from widgets.
-     *
-     * @see Widget::addDeathListener, Widget::removeDeathListener
-     * @author Olof Naessén
-     * @since 0.6.0
-     */
-    class DeathListener
-    {
     public:
         /**
-         * Destructor.
-         */
+          * Destructor.
+          */
         virtual ~DeathListener()
         { }
 
         /**
-         * Called when a widget dies. It is used to be able to recieve
-         * a notification when a death of a widget occurs.
-         *
-         * @param event The event of the death.
-         */
-        virtual void death(const Event& event) = 0;
+          * Called when a widget dies. It is used to be able to recieve
+          * a notification when a death of a widget occurs.
+          *
+          * @param event The event of the death.
+          */
+        virtual void death(const gcn::Event &event) = 0;
 
     protected:
         /**
-         * Constructor.
-         *
-         * You should not be able to make an instance of DeathListener,
-         * therefore its constructor is protected.
-         */
+          * Constructor.
+          *
+          * You should not be able to make an instance of DeathListener,
+          * therefore its constructor is protected.
+          */
         DeathListener()
         { }
-    };
-}  // namespace gcn
+};
 
-#endif  // end GCN_DEATHLISTENER_HPP
+#endif  // LISTENERS_DEATHLISTENER_HPP

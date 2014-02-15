@@ -70,7 +70,6 @@
 #include "gui/base/actionevent.hpp"
 #include "listeners/actionlistener.h"
 #include "gui/base/basiccontainer.hpp"
-#include "gui/base/deathlistener.hpp"
 #include "gui/base/event.hpp"
 #include "gui/base/exception.hpp"
 #include "gui/base/focushandler.hpp"
@@ -79,6 +78,8 @@
 #include "gui/base/mouseinput.hpp"
 #include "gui/base/mouselistener.hpp"
 #include "gui/base/widgetlistener.hpp"
+
+#include "listeners/deathlistener.h"
 
 #include "render/graphics.h"
 

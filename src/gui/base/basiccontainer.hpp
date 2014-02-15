@@ -67,8 +67,9 @@
 #include <list>
 #include <vector>
 
-#include "gui/base/deathlistener.hpp"
 #include "gui/base/widget.hpp"
+
+#include "listeners/deathlistener.h"
 
 namespace gcn
 {
