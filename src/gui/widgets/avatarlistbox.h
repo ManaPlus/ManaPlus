@@ -24,7 +24,7 @@
 
 #include "avatar.h"
 
-#include "configlistener.h"
+#include "listeners/configlistener.h"
 
 #include "gui/widgets/listbox.h"
 

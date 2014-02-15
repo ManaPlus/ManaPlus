@@ -25,7 +25,7 @@
 
 #include "gui/base/actionlistener.hpp"
 
-#include "depricatedlistener.h"
+#include "listeners/depricatedlistener.h"
 
 #include "gui/widgets/window.h"
 

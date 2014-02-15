@@ -23,7 +23,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include "configlistener.h"
+#include "listeners/configlistener.h"
 
 #include "net/serverinfo.h"
 

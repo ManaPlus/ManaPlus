@@ -23,7 +23,7 @@
 
 #include "resources/image.h"
 
-#include "configlistener.h"
+#include "listeners/configlistener.h"
 
 #include "input/keydata.h"
 

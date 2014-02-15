@@ -25,7 +25,7 @@
 #ifndef GUI_THEME_H
 #define GUI_THEME_H
 
-#include "configlistener.h"
+#include "listeners/configlistener.h"
 
 #include "render/graphics.h"
 

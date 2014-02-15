@@ -732,7 +732,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      commands.h \
 	      being/compoundsprite.cpp \
 	      being/compoundsprite.h \
-	      configlistener.h \
+	      listeners/configlistener.h \
 	      configuration.cpp \
 	      configuration.h \
 	      debug.h \
@@ -740,8 +740,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      defaults.h \
 	      depricatedevent.cpp \
 	      depricatedevent.h \
-	      depricatedlistener.cpp \
-	      depricatedlistener.h \
+	      listeners/depricatedlistener.cpp \
+	      listeners/depricatedlistener.h \
 	      dragdrop.h \
 	      dropshortcut.cpp \
 	      dropshortcut.h \

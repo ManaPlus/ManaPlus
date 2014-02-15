@@ -23,9 +23,9 @@
 #ifndef GUI_WINDOWS_CHATWINDOW_H
 #define GUI_WINDOWS_CHATWINDOW_H
 
-#include "depricatedlistener.h"
+#include "listeners/depricatedlistener.h"
 
-#include "configlistener.h"
+#include "listeners/configlistener.h"
 
 #include "gui/widgets/window.h"
 

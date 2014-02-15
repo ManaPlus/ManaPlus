@@ -21,8 +21,9 @@
 
 #include "depricatedevent.h"
 
-#include "depricatedlistener.h"
 #include "variabledata.h"
+
+#include "listeners/depricatedlistener.h"
 
 #include "debug.h"
 

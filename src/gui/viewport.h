@@ -23,8 +23,9 @@
 #ifndef GUI_VIEWPORT_H
 #define GUI_VIEWPORT_H
 
-#include "configlistener.h"
 #include "position.h"
+
+#include "listeners/configlistener.h"
 
 #include "gui/widgets/windowcontainer.h"
 

@@ -23,7 +23,7 @@
 #ifndef BEING_LOCALPLAYER_H
 #define BEING_LOCALPLAYER_H
 
-#include "depricatedlistener.h"
+#include "listeners/depricatedlistener.h"
 
 #include "being/actorspritelistener.h"
 #include "being/being.h"

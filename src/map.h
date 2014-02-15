@@ -23,11 +23,12 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include "configlistener.h"
 #include "position.h"
 #include "properties.h"
 
 #include "being/actor.h"
+
+#include "listeners/configlistener.h"
 
 #include "render/renderers.h"
 

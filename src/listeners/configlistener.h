@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CONFIGLISTENER_H
-#define CONFIGLISTENER_H
+#ifndef LISTENERS_CONFIGLISTENER_H
+#define LISTENERS_CONFIGLISTENER_H
 
 #include <string>
 
@@ -47,4 +47,4 @@ class ConfigListener
         virtual void optionChanged(const std::string &name) = 0;
 };
 
-#endif  // CONFIGLISTENER_H
+#endif  // LISTENERS_CONFIGLISTENER_H

@@ -23,7 +23,7 @@
 #ifndef GUI_WINDOWS_STATUSWINDOW_H
 #define GUI_WINDOWS_STATUSWINDOW_H
 
-#include "depricatedlistener.h"
+#include "listeners/depricatedlistener.h"
 
 #include "gui/widgets/window.h"
 

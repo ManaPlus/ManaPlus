@@ -24,7 +24,8 @@
 #define GUI_WINDOWS_INVENTORYWINDOW_H
 
 #include "inventory.h"
-#include "depricatedlistener.h"
+
+#include "listeners/depricatedlistener.h"
 
 #include "gui/widgets/window.h"
 

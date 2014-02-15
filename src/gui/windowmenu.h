@@ -23,7 +23,7 @@
 #ifndef GUI_WINDOWMENU_H
 #define GUI_WINDOWMENU_H
 
-#include "configlistener.h"
+#include "listeners/configlistener.h"
 
 #include "gui/widgets/container.h"
 #include "gui/widgets/button.h"

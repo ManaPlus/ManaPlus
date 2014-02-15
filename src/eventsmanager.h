@@ -21,7 +21,7 @@
 #ifndef EVENTSMANAGER_H
 #define EVENTSMANAGER_H
 
-#include "configlistener.h"
+#include "listeners/configlistener.h"
 
 #include <string>
 

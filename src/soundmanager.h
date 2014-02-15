@@ -25,7 +25,7 @@
 
 #include <SDL_mixer.h>
 
-#include "configlistener.h"
+#include "listeners/configlistener.h"
 
 #include <string>
 

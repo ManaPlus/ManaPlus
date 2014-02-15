@@ -607,7 +607,7 @@ SET(SRCS
     commands.h
     being/compoundsprite.cpp
     being/compoundsprite.h
-    configlistener.h
+    listeners/configlistener.h
     configuration.cpp
     configuration.h
     debug.h
@@ -615,8 +615,8 @@ SET(SRCS
     defaults.h
     depricatedevent.cpp
     depricatedevent.h
-    depricatedlistener.cpp
-    depricatedlistener.h
+    listeners/depricatedlistener.cpp
+    listeners/depricatedlistener.h
     dragdrop.h
     effectmanager.cpp
     effectmanager.h

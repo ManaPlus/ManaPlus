@@ -23,9 +23,10 @@
 #ifndef MAPLAYER_H
 #define MAPLAYER_H
 
-#include "configlistener.h"
 #include "position.h"
 #include "main.h"
+
+#include "listeners/configlistener.h"
 
 #include "being/actor.h"
 

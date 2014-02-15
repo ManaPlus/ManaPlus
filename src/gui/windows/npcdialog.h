@@ -23,7 +23,7 @@
 #ifndef GUI_WINDOWS_NPCDIALOG_H
 #define GUI_WINDOWS_NPCDIALOG_H
 
-#include "configlistener.h"
+#include "listeners/configlistener.h"
 
 #include "gui/widgets/extendedlistmodel.h"
 #include "gui/widgets/window.h"
