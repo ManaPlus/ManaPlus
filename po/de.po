@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-02-15 12:09+0300\n"
+"POT-Creation-Date: 2014-02-15 18:08+0300\n"
 "PO-Revision-Date: 2014-02-14 08:13+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/"
@@ -61,12 +61,12 @@ msgid "miss"
 msgstr "verfehlt"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1966 src/gui/windows/whoisonline.cpp:863
+#: src/being/being.cpp:1964 src/gui/windows/whoisonline.cpp:863
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1971 src/gui/windows/whoisonline.cpp:868
+#: src/being/being.cpp:1969 src/gui/windows/whoisonline.cpp:868
 msgid "I"
 msgstr "I"
 
