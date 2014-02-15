@@ -79,7 +79,7 @@
 #include "listeners/deathlistener.h"
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include "render/graphics.h"
 

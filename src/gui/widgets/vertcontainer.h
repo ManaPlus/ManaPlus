@@ -24,7 +24,7 @@
 
 #include "gui/widgets/container.h"
 
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include <vector>
 
@@ -35,7 +35,8 @@
  *
  * This container places it's contents veritcally.
  */
-class VertContainer final : public Container, public gcn::WidgetListener
+class VertContainer final : public Container,
+                            public WidgetListener
 {
     public:
         VertContainer(const Widget2 *const widget,

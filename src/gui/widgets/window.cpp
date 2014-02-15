@@ -52,7 +52,7 @@ Window::Window(const std::string &caption, const bool modal,
                Window *const parent, std::string skin) :
     gcn::Window(caption),
     Widget2(),
-    gcn::WidgetListener(),
+    WidgetListener(),
     mSkin(nullptr),
     mDefaultX(0),
     mDefaultY(0),

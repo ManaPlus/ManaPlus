@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GCN_WIDGETLISTENER_HPP
-#define GCN_WIDGETLISTENER_HPP
+#ifndef LISTENERS_WIDGETLISTENER_HPP
+#define LISTENERS_WIDGETLISTENER_HPP
 
 #include <string>
 
@@ -70,74 +70,71 @@
 
 #include "localconsts.h"
 
-namespace gcn
+/**
+  * Interface for listening for events from widgets. When a widget's size,
+  * location or visibility changes, the relevant method of the listener is
+  * invoked.
+  *
+  * @see Widget::addWidgetListener, Widget::removeWidgetListener
+  * @author Olof Naessén
+  * @since 0.8.0
+  */
+class WidgetListener
 {
-    /**
-     * Interface for listening for events from widgets. When a widget's size,
-     * location or visibility changes, the relevant method of the listener is
-     * invoked.
-     *
-     * @see Widget::addWidgetListener, Widget::removeWidgetListener
-     * @author Olof Naessén
-     * @since 0.8.0
-     */
-    class WidgetListener
-    {
     public:
         /**
-         * Destructor.
-         */
+          * Destructor.
+          */
         virtual ~WidgetListener()
         { }
 
         /**
-         * Invoked when a widget changes its size.
-         *
-         * @param event Describes the event.
-         * @since 0.8.0
-         */
-        virtual void widgetResized(const Event& event A_UNUSED)
+          * Invoked when a widget changes its size.
+          *
+          * @param event Describes the event.
+          * @since 0.8.0
+          */
+        virtual void widgetResized(const gcn::Event &event A_UNUSED)
         { }
 
         /**
-         * Invoked when a widget is moved.
-         *
-         * @param event Describes the event.
-         * @since 0.8.0
-         */
-        virtual void widgetMoved(const Event& event A_UNUSED)
+          * Invoked when a widget is moved.
+          *
+          * @param event Describes the event.
+          * @since 0.8.0
+          */
+        virtual void widgetMoved(const gcn::Event &event A_UNUSED)
         { }
 
         /**
-         * Invoked when a widget is hidden, i.e it's set to be
-         * not visible.
-         *
-         * @param event Describes the event.
-         * @since 0.8.0
-         */
-        virtual void widgetHidden(const Event& event A_UNUSED)
+          * Invoked when a widget is hidden, i.e it's set to be
+          * not visible.
+          *
+          * @param event Describes the event.
+          * @since 0.8.0
+          */
+        virtual void widgetHidden(const gcn::Event &event A_UNUSED)
         { }
 
         /**
-         * Invoked when a widget is shown, i.e it's set to be
-         * visible.
-         *
-         * @param event Describes the event.
-         * @since 0.8.0
-         */
-        virtual void widgetShown(const Event& event A_UNUSED)
+          * Invoked when a widget is shown, i.e it's set to be
+          * visible.
+          *
+          * @param event Describes the event.
+          * @since 0.8.0
+          */
+        virtual void widgetShown(const gcn::Event &event A_UNUSED)
         { }
 
     protected:
         /**
-         * Constructor.
-         *
-         * You should not be able to make an instance of WidgetListener,
-         * therefore its constructor is protected.
-         */
+          * Constructor.
+          *
+          * You should not be able to make an instance of WidgetListener,
+          * therefore its constructor is protected.
+          */
         WidgetListener()
         { }
-    };
-}  // namespace gcn
+};
 
-#endif  // end GCN_WIDGETLISTENER_HPP
+#endif  // LISTENERS_WIDGETLISTENER_HPP

@@ -27,7 +27,7 @@
 #include "gui/widgets/container.h"
 
 #include "listeners/mouselistener.h"
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 class ImageCollection;
 class Skin;
@@ -47,7 +47,7 @@ class WindowContainer;
  */
 class Popup : public Container,
               public MouseListener,
-              public gcn::WidgetListener
+              public WidgetListener
 {
     public:
         /**

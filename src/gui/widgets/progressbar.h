@@ -26,7 +26,8 @@
 #include "gui/widgets/widget2.h"
 
 #include "gui/base/widget.hpp"
-#include "gui/base/widgetlistener.hpp"
+
+#include "listeners/widgetlistener.h"
 
 #include <string>
 
@@ -42,7 +43,7 @@ class Skin;
  */
 class ProgressBar final : public gcn::Widget,
                           public Widget2,
-                          public gcn::WidgetListener
+                          public WidgetListener
 {
     public:
         /**

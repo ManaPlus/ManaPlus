@@ -27,7 +27,7 @@
 SetupTab::SetupTab(const Widget2 *const widget) :
     Container(widget),
     ActionListener(),
-    gcn::WidgetListener(),
+    WidgetListener(),
     mName()
 {
     setOpaque(false);

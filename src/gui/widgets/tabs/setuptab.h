@@ -26,7 +26,7 @@
 #include "gui/widgets/container.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include <string>
 
@@ -37,7 +37,7 @@
  */
 class SetupTab : public Container,
                  public ActionListener,
-                 public gcn::WidgetListener
+                 public WidgetListener
 {
     public:
         A_DELETE_COPY(SetupTab)

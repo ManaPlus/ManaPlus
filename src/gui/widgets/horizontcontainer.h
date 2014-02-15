@@ -24,7 +24,7 @@
 
 #include "gui/widgets/container.h"
 
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
 
@@ -33,7 +33,8 @@
  *
  * This container places it's contents veritcally.
  */
-class HorizontContainer final : public Container, public gcn::WidgetListener
+class HorizontContainer final : public Container,
+                                public WidgetListener
 {
     public:
         HorizontContainer(const Widget2 *const widget,

@@ -26,7 +26,7 @@
 #include "gui/widgets/widget2.h"
 
 #include "gui/base/widgets/button.hpp"
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
 
@@ -44,7 +44,7 @@ const std::string BUTTON_PLAY = "buttonplay.png";
  */
 class Button final : public gcn::Button,
                      public Widget2,
-                     public gcn::WidgetListener
+                     public WidgetListener
 {
     public:
         /**

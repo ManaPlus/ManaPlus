@@ -27,7 +27,7 @@
 
 #include "gui/widgets/widget2.h"
 
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include "gui/base/widgets/window.hpp"
 
@@ -48,7 +48,7 @@ class WindowContainer;
  */
 class Window : public gcn::Window,
                public Widget2,
-               private gcn::WidgetListener
+               private WidgetListener
 {
     public:
         /**

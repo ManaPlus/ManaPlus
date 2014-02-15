@@ -35,7 +35,7 @@
 
 Desktop::Desktop(const Widget2 *const widget) :
     Container(widget),
-    gcn::WidgetListener(),
+    WidgetListener(),
     mWallpaper(nullptr),
     mVersionLabel(nullptr),
     mSkin(nullptr),

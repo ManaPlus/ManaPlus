@@ -24,7 +24,7 @@
 #include "gui/widgets/widget2.h"
 
 #include "listeners/mouselistener.h"
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include "gui/base/widget.hpp"
 
@@ -33,7 +33,7 @@
 class EmotePage final : public gcn::Widget,
                         public Widget2,
                         public MouseListener,
-                        public gcn::WidgetListener
+                        public WidgetListener
 {
     public:
         explicit EmotePage(const Widget2 *const widget);

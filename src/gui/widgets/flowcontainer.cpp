@@ -26,7 +26,7 @@
 FlowContainer::FlowContainer(const Widget2 *const widget,
                              const int boxWidth, const int boxHeight) :
     Container(widget),
-    gcn::WidgetListener(),
+    WidgetListener(),
     mBoxWidth(boxWidth),
     mBoxHeight(boxHeight),
     mGridWidth(1),

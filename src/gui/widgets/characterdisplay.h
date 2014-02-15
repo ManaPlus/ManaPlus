@@ -29,7 +29,7 @@
 #include "net/charserverhandler.h"
 #include "net/net.h"
 
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
 
@@ -39,7 +39,7 @@ class TextPopup;
 
 class CharacterDisplay final : public Container,
                                public MouseListener,
-                               public gcn::WidgetListener
+                               public WidgetListener
 {
     public:
         CharacterDisplay(const Widget2 *const widget,

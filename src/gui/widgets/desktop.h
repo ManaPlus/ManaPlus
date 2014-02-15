@@ -24,7 +24,7 @@
 
 #include "gui/widgets/container.h"
 
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
 
@@ -45,7 +45,8 @@ class Skin;
  *
  * \ingroup GUI
  */
-class Desktop final : public Container, private gcn::WidgetListener
+class Desktop final : public Container,
+                      private WidgetListener
 {
     public:
         explicit Desktop(const Widget2 *const widget);

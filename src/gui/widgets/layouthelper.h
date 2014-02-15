@@ -25,14 +25,14 @@
 
 #include "gui/widgets/layout.h"
 
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 /**
  * A helper class for adding a layout to a Guichan container widget. The layout
  * will register itself as a widget listener and relayout the widgets in the
  * container dynamically on resize.
  */
-class LayoutHelper final : public gcn::WidgetListener
+class LayoutHelper final : public WidgetListener
 {
     public:
         /**

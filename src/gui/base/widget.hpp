@@ -79,6 +79,7 @@ class FocusListener;
 class Graphics;
 class KeyListener;
 class MouseListener;
+class WidgetListener;
 
 namespace gcn
 {
@@ -87,7 +88,6 @@ namespace gcn
     class Font;
     class KeyInput;
     class MouseInput;
-    class WidgetListener;
 
     /**
      * Abstract class for widgets of Guichan. It contains basic functions 

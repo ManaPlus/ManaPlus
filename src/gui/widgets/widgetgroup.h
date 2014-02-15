@@ -24,12 +24,12 @@
 #include "gui/widgets/container.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
 
 class WidgetGroup : public Container,
-                    public gcn::WidgetListener,
+                    public WidgetListener,
                     public ActionListener
 {
     public:

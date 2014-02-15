@@ -41,7 +41,7 @@ ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
                          const std::string &skin, const std::string &skinFill):
     gcn::Widget(),
     Widget2(widget),
-    gcn::WidgetListener(),
+    WidgetListener(),
     mFillRect(),
     mSkin(nullptr),
     mProgress(progress),

@@ -24,7 +24,7 @@
 
 #include "gui/widgets/container.h"
 
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
 
@@ -34,7 +34,7 @@
  * \ingroup GUI
  */
 class FlowContainer final : public Container,
-                            public gcn::WidgetListener
+                            public WidgetListener
 {
     public:
         /**

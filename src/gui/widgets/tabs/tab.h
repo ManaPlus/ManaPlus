@@ -28,7 +28,7 @@
 #include "gui/base/basiccontainer.hpp"
 
 #include "listeners/mouselistener.h"
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
 
@@ -43,7 +43,7 @@ class TabbedArea;
 class Tab : public gcn::BasicContainer,
             public Widget2,
             public MouseListener,
-            public gcn::WidgetListener
+            public WidgetListener
 {
     public:
         explicit Tab(const Widget2 *const widget);

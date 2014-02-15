@@ -26,7 +26,8 @@
 #include "gui/widgets/widget2.h"
 
 #include "gui/base/widgets/scrollarea.hpp"
-#include "gui/base/widgetlistener.hpp"
+
+#include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
 
@@ -44,7 +45,7 @@ class ImageCollection;
  */
 class ScrollArea final : public gcn::ScrollArea,
                          public Widget2,
-                         public gcn::WidgetListener
+                         public WidgetListener
 {
     public:
         /**

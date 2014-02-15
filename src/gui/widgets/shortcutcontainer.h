@@ -27,7 +27,7 @@
 
 #include "listeners/mouselistener.h"
 #include "gui/base/widget.hpp"
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 class Image;
 class ImageCollection;
@@ -39,7 +39,7 @@ class ImageCollection;
  */
 class ShortcutContainer : public gcn::Widget,
                           public Widget2,
-                          public gcn::WidgetListener,
+                          public WidgetListener,
                           public MouseListener
 {
     public:

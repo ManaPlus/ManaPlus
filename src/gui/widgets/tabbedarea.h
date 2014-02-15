@@ -27,7 +27,7 @@
 
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
-#include "gui/base/widgetlistener.hpp"
+#include "listeners/widgetlistener.h"
 
 #include "gui/base/widgets/container.hpp"
 
@@ -45,7 +45,7 @@ class TabbedArea final : public Widget2,
                          public gcn::BasicContainer,
                          public KeyListener,
                          public MouseListener,
-                         public gcn::WidgetListener
+                         public WidgetListener
 {
     public:
         /**

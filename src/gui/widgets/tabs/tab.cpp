@@ -47,7 +47,7 @@ Tab::Tab(const Widget2 *const widget) :
     gcn::BasicContainer(),
     Widget2(widget),
     MouseListener(),
-    gcn::WidgetListener(),
+    WidgetListener(),
     mLabel(new Label(this)),
     mTabbedArea(nullptr),
     mTabColor(&getThemeColor(Theme::TAB)),

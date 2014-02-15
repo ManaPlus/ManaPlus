@@ -41,7 +41,7 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
                                    CharSelectDialog *const charSelectDialog) :
     Container(widget),
     MouseListener(),
-    gcn::WidgetListener(),
+    WidgetListener(),
     mCharacter(nullptr),
     mPlayerBox(new PlayerBox(nullptr)),
     mName(new Label(this, "wwwwwwwwwwwwwwwwwwwwwwww")),

@@ -25,7 +25,7 @@
 #include "debug.h"
 
 LayoutHelper::LayoutHelper(gcn::Container *const container) :
-    gcn::WidgetListener(),
+    WidgetListener(),
     mLayout(),
     mContainer(container)
 {
