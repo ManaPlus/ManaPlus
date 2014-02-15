@@ -68,8 +68,8 @@
 #include <set>
 #include <string>
 
-#include "guichan/color.hpp"
-#include "guichan/rectangle.hpp"
+#include "gui/base/color.hpp"
+#include "gui/base/rectangle.hpp"
 
 #include "localconsts.h"
 
