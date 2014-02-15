@@ -250,7 +250,7 @@
 		<Unit filename="src/gui/windows/registerdialog.cpp" />
 		<Unit filename="src/gui/windows/selldialog.cpp" />
 		<Unit filename="src/gui/windows/serverdialog.cpp" />
-		<Unit filename="src/gui/windows/setup.cpp" />
+		<Unit filename="src/gui/windows/setupwindow.cpp" />
 		<Unit filename="src/gui/windows/shopwindow.cpp" />
 		<Unit filename="src/gui/windows/shortcutwindow.cpp" />
 		<Unit filename="src/gui/windows/skilldialog.cpp" />
