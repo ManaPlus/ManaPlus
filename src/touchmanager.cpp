@@ -327,8 +327,8 @@ void TouchManager::resize(const int width, const int height)
             case LEFT:
                 if (height != maxHeight)
                 {
-                    item->y += (height - item->height) / 2;
-                    item->rect.y += (height - item->rect.y) / 2;
+                    item->y = (height - item->height) / 2;
+                    item->rect.y = (height - item->rect.y) / 2;
                 }
                 break;
             case RIGHT:
