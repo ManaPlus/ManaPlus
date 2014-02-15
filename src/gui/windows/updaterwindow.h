@@ -31,7 +31,7 @@
 #include "utils/mutex.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/keylistener.hpp"
+#include "listeners/keylistener.h"
 
 #include <string>
 #include <vector>
@@ -71,7 +71,7 @@ struct UpdateFile final
 class UpdaterWindow final : public Window,
                             public ActionListener,
                             public LinkHandler,
-                            public gcn::KeyListener
+                            public KeyListener
 {
  public:
     /**

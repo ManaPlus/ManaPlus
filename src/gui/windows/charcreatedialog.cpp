@@ -64,7 +64,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     // TRANSLATORS: char create dialog name
     Window(_("New Character"), true, parent, "charcreate.xml"),
     ActionListener(),
-    gcn::KeyListener(),
+    KeyListener(),
     mCharSelectDialog(parent),
     mNameField(new TextField(this, "")),
     // TRANSLATORS: char create dialog label

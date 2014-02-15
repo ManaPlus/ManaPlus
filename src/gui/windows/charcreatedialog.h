@@ -28,7 +28,7 @@
 #include "gui/windows/charselectdialog.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/keylistener.hpp"
+#include "listeners/keylistener.h"
 
 class Label;
 class PlayerBox;
@@ -43,7 +43,7 @@ class TextField;
  */
 class CharCreateDialog final : public Window,
                                public ActionListener,
-                               public gcn::KeyListener
+                               public KeyListener
 {
     public:
         /**

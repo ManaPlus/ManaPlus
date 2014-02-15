@@ -77,6 +77,7 @@ class ActionListener;
 class DeathListener;
 class FocusListener;
 class Graphics;
+class KeyListener;
 
 namespace gcn
 {
@@ -84,7 +85,6 @@ namespace gcn
     class FocusHandler;
     class Font;
     class KeyInput;
-    class KeyListener;
     class MouseInput;
     class MouseListener;
     class WidgetListener;

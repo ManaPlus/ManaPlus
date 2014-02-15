@@ -160,7 +160,7 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
                              const bool forceQuantity) :
     gcn::Widget(),
     Widget2(widget),
-    gcn::KeyListener(),
+    KeyListener(),
     gcn::MouseListener(),
     gcn::WidgetListener(),
     mInventory(inventory),

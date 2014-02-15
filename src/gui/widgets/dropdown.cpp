@@ -58,7 +58,7 @@ DropDown::DropDown(const Widget2 *const widget,
                    const std::string &eventId):
     ActionListener(),
     gcn::BasicContainer(),
-    gcn::KeyListener(),
+    KeyListener(),
     gcn::MouseListener(),
     FocusListener(),
     gcn::SelectionListener(),

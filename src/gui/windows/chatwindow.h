@@ -30,7 +30,7 @@
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/keylistener.hpp"
+#include "listeners/keylistener.h"
 
 #include <list>
 #include <map>
@@ -84,7 +84,7 @@ struct CHATLOG final
  */
 class ChatWindow final : public Window,
                          public ActionListener,
-                         public gcn::KeyListener,
+                         public KeyListener,
                          public DepricatedListener,
                          public ConfigListener
 {

@@ -178,7 +178,7 @@ public:
 
 Setup_Video::Setup_Video(const Widget2 *const widget) :
     SetupTab(widget),
-    gcn::KeyListener(),
+    KeyListener(),
     mFullScreenEnabled(config.getBoolValue("screen")),
     mOpenGLEnabled(intToRenderType(config.getIntValue("opengl"))),
     mFps(config.getIntValue("fpslimit")),

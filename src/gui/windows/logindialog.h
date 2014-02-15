@@ -26,7 +26,7 @@
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/keylistener.hpp"
+#include "listeners/keylistener.h"
 
 #include <string>
 
@@ -46,7 +46,7 @@ class UpdateTypeModel;
  */
 class LoginDialog final : public Window,
                           public ActionListener,
-                          public gcn::KeyListener
+                          public KeyListener
 {
     public:
         /**

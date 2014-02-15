@@ -72,12 +72,12 @@
 #include "gui/base/mouseinput.hpp"
 
 class Graphics;
+class KeyListener;
 
 namespace gcn
 {
     class FocusHandler;
     class Input;
-    class KeyListener;
     class Widget;
 
     // The following comment will appear in the doxygen main page.

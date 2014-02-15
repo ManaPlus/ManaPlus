@@ -32,7 +32,7 @@ class ServerDialog;
 #include "net/serverinfo.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/keylistener.hpp"
+#include "listeners/keylistener.h"
 
 #include "gui/base/listmodel.hpp"
 
@@ -77,7 +77,7 @@ class TypeListModel : public gcn::ListModel
  */
 class EditServerDialog final : public Window,
                                public ActionListener,
-                               public gcn::KeyListener
+                               public KeyListener
 {
     public:
         EditServerDialog(ServerDialog *const parent, ServerInfo server,

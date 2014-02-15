@@ -89,7 +89,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
         data->username.c_str(), data->lastLogin.c_str()),
         false, nullptr, "char.xml"),
     ActionListener(),
-    gcn::KeyListener(),
+    KeyListener(),
     mLoginData(data),
     // TRANSLATORS: char select dialog. button.
     mSwitchLoginButton(new Button(this, _("Switch Login"), "switch", this)),

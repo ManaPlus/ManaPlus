@@ -30,7 +30,7 @@
 #include "net/charserverhandler.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/keylistener.hpp"
+#include "listeners/keylistener.h"
 
 class Button;
 class CharacterDisplay;
@@ -46,7 +46,7 @@ class TextDialog;
  */
 class CharSelectDialog final : public Window,
                                public ActionListener,
-                               public gcn::KeyListener
+                               public KeyListener
 {
     public:
         friend class CharDeleteConfirm;

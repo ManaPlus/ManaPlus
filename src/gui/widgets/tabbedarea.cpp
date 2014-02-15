@@ -37,7 +37,7 @@ TabbedArea::TabbedArea(const Widget2 *const widget) :
     Widget2(widget),
     ActionListener(),
     gcn::BasicContainer(),
-    gcn::KeyListener(),
+    KeyListener(),
     gcn::MouseListener(),
     gcn::WidgetListener(),
     mSelectedTab(nullptr),

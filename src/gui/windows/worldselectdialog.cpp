@@ -83,7 +83,7 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds):
     // TRANSLATORS: world select dialog name
     Window(_("Select World"), false, nullptr, "world.xml"),
     ActionListener(),
-    gcn::KeyListener(),
+    KeyListener(),
     mWorldListModel(new WorldListModel(worlds)),
     mWorldList(new ListBox(this, mWorldListModel, "")),
     // TRANSLATORS: world dialog button

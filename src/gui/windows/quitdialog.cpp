@@ -50,7 +50,7 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     // TRANSLATORS: quit dialog name
     Window(_("Quit"), true, nullptr, "quit.xml"),
     ActionListener(),
-    gcn::KeyListener(),
+    KeyListener(),
     mOptions(),
     // TRANSLATORS: quit dialog button
     mLogoutQuit(new RadioButton(this, _("Quit"), "quitdialog")),

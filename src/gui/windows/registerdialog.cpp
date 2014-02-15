@@ -64,7 +64,7 @@ RegisterDialog::RegisterDialog(LoginData *const data) :
     // TRANSLATORS: register dialog name
     Window(_("Register"), false, nullptr, "register.xml"),
     ActionListener(),
-    gcn::KeyListener(),
+    KeyListener(),
     mLoginData(data),
     mUserField(new TextField(this, mLoginData->username)),
     mPasswordField(new PasswordField(this, mLoginData->password)),

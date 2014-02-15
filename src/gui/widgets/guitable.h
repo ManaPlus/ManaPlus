@@ -28,8 +28,9 @@
 #include "gui/widgets/tablemodel.h"
 #include "gui/widgets/widget2.h"
 
-#include "gui/base/keylistener.hpp"
+#include "listeners/keylistener.h"
 #include "gui/base/mouselistener.hpp"
+
 #include "gui/base/widget.hpp"
 
 #include <vector>
@@ -48,7 +49,7 @@ class GuiTableActionListener;
 class GuiTable final : public gcn::Widget,
                        public Widget2,
                        public gcn::MouseListener,
-                       public gcn::KeyListener,
+                       public KeyListener,
                        public TableModelListener
 {
     // so that the action listener can call distributeActionEvent

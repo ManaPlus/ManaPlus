@@ -82,7 +82,7 @@ namespace gcn
     RadioButton::RadioButton() :
         gcn::Widget(),
         gcn::MouseListener(),
-        gcn::KeyListener(),
+        KeyListener(),
         mSelected(false),
         mCaption(),
         mGroup()
@@ -99,7 +99,7 @@ namespace gcn
                              bool selected) :
         gcn::Widget(),
         gcn::MouseListener(),
-        gcn::KeyListener(),
+        KeyListener(),
         mSelected(false),
         mCaption(),
         mGroup()

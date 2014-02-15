@@ -203,7 +203,7 @@ ChatWindow::ChatWindow():
     // TRANSLATORS: chat window name
     Window(_("Chat"), false, nullptr, "chat.xml"),
     ActionListener(),
-    gcn::KeyListener(),
+    KeyListener(),
     mItemLinkHandler(new ItemLinkHandler),
     mChatTabs(new TabbedArea(this)),
     mChatInput(new ChatInput(this)),

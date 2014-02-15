@@ -82,7 +82,7 @@ namespace gcn
     Button::Button() :
         gcn::Widget(),
         gcn::MouseListener(),
-        gcn::KeyListener(),
+        KeyListener(),
         FocusListener(),
         mCaption(),
         mHasMouse(false),
@@ -103,7 +103,7 @@ namespace gcn
     Button::Button(const std::string& caption) :
         gcn::Widget(),
         gcn::MouseListener(),
-        gcn::KeyListener(),
+        KeyListener(),
         FocusListener(),
         mCaption(caption),
         mHasMouse(false),

@@ -25,8 +25,8 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/keylistener.hpp"
 #include "listeners/actionlistener.h"
+#include "listeners/keylistener.h"
 
 class DropDown;
 class Icon;
@@ -44,7 +44,7 @@ class Slider;
  */
 class ItemAmountWindow final : public Window,
                                public ActionListener,
-                               public gcn::KeyListener
+                               public KeyListener
 {
     public:
         enum Usage

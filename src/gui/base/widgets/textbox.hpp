@@ -68,8 +68,9 @@
 #include <string>
 #include <vector>
 
-#include "gui/base/keylistener.hpp"
+#include "listeners/keylistener.h"
 #include "gui/base/mouselistener.hpp"
+
 #include "gui/base/widget.hpp"
 
 namespace gcn

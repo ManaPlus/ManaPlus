@@ -30,7 +30,7 @@
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/keylistener.hpp"
+#include "listeners/keylistener.h"
 #include "gui/base/selectionlistener.hpp"
 
 class Button;
@@ -52,7 +52,7 @@ class TextPopup;
  */
 class InventoryWindow final : public Window,
                               public ActionListener,
-                              public gcn::KeyListener,
+                              public KeyListener,
                               public gcn::SelectionListener,
                               public InventoryListener,
                               public DepricatedListener

@@ -26,7 +26,7 @@
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/keylistener.hpp"
+#include "listeners/keylistener.h"
 
 class Button;
 class LoginData;
@@ -59,7 +59,7 @@ class WrongDataNoticeListener final : public ActionListener
  */
 class RegisterDialog final : public Window,
                              public ActionListener,
-                             public gcn::KeyListener
+                             public KeyListener
 {
     public:
         /**

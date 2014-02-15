@@ -139,7 +139,7 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
                                    Item *const item, const int maxRange) :
     Window("", false, parent, "amount.xml"),
     ActionListener(),
-    gcn::KeyListener(),
+    KeyListener(),
     mItemAmountTextField(new IntTextField(this, 1)),
     mItemPriceTextField(nullptr),
     mGPLabel(nullptr),

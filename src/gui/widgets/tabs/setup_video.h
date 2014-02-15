@@ -25,7 +25,7 @@
 
 #include "gui/widgets/tabs/setuptab.h"
 
-#include "gui/base/keylistener.hpp"
+#include "listeners/keylistener.h"
 
 class Button;
 class CheckBox;
@@ -37,7 +37,7 @@ class OpenGLListModel;
 class Slider;
 class TextDialog;
 
-class Setup_Video final : public SetupTab, public gcn::KeyListener
+class Setup_Video final : public SetupTab, public KeyListener
 {
     public:
         explicit Setup_Video(const Widget2 *const widget);

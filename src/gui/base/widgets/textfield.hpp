@@ -64,8 +64,9 @@
 #ifndef GCN_TEXTFIELD_HPP
 #define GCN_TEXTFIELD_HPP
 
-#include "gui/base/keylistener.hpp"
+#include "listeners/keylistener.h"
 #include "gui/base/mouselistener.hpp"
+
 #include "gui/base/widget.hpp"
 
 #include <string>

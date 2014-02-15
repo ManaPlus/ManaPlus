@@ -72,10 +72,11 @@
 #include "gui/base/focushandler.hpp"
 #include "gui/base/input.hpp"
 #include "gui/base/keyinput.hpp"
-#include "gui/base/keylistener.hpp"
 #include "gui/base/mouseinput.hpp"
-#include "gui/base/mouselistener.hpp"
 #include "gui/base/widget.hpp"
+
+#include "listeners/keylistener.h"
+#include "gui/base/mouselistener.hpp"
 
 #include "render/graphics.h"
 

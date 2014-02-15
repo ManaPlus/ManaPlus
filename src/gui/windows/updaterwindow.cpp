@@ -157,7 +157,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     // TRANSLATORS: updater window name
     Window(_("Updating..."), false, nullptr, "update.xml"),
     ActionListener(),
-    gcn::KeyListener(),
+    KeyListener(),
     mDownloadStatus(UPDATE_NEWS),
     mUpdateHost(updateHost),
     mUpdatesDir(updatesDir),

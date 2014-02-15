@@ -144,7 +144,7 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
     // TRANSLATORS: login dialog name
     Window(_("Login"), false, nullptr, "login.xml"),
     ActionListener(),
-    gcn::KeyListener(),
+    KeyListener(),
     mLoginData(data),
     mUserField(new TextField(this, mLoginData->username)),
     mPassField(new PasswordField(this, mLoginData->password)),

@@ -83,7 +83,7 @@ namespace gcn
     ListBox::ListBox() :
         gcn::Widget(),
         gcn::MouseListener(),
-        gcn::KeyListener(),
+        KeyListener(),
         mSelected(-1),
         mListModel(nullptr),
         mWrappingEnabled(false),
@@ -99,7 +99,7 @@ namespace gcn
     ListBox::ListBox(ListModel *listModel) :
         gcn::Widget(),
         gcn::MouseListener(),
-        gcn::KeyListener(),
+        KeyListener(),
         mSelected(-1),
         mListModel(listModel),
         mWrappingEnabled(false),

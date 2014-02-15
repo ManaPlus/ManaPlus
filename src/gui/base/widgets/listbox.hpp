@@ -66,10 +66,11 @@
 
 #include <list>
 
-#include "gui/base/keylistener.hpp"
 #include "gui/base/listmodel.hpp"
-#include "gui/base/mouselistener.hpp"
 #include "gui/base/widget.hpp"
+
+#include "listeners/keylistener.h"
+#include "gui/base/mouselistener.hpp"
 
 namespace gcn
 {
