@@ -433,11 +433,13 @@ bool Graphics::resizeScreen(const int width, const int height)
     mRect.h = height / mScale;
     mWidth = width / mScale;
     mHeight = height / mScale;
+    mActualWidth = width;
+    mActualHeight = height;
 
 #ifdef USE_OPENGL
     // +++ probably this way will not work in windows/mac
     // Setup OpenGL
-    glViewport(0, 0, mWidth, mHeight);
+    glViewport(0, 0, mActualWidth, mActualHeight);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
 #else
     // +++ need impliment resize in soft mode
