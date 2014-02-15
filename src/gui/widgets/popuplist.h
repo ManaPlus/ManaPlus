@@ -23,7 +23,8 @@
 
 #include "gui/widgets/popup.h"
 
-#include "gui/base/focuslistener.hpp"
+#include "listeners/focuslistener.h"
+
 #include "gui/base/listmodel.hpp"
 
 #include "localconsts.h"
@@ -33,7 +34,7 @@ class ListBox;
 class ScrollArea;
 
 class PopupList final : public Popup,
-                        public gcn::FocusListener
+                        public FocusListener
 {
     public:
         PopupList(DropDown *const widget,

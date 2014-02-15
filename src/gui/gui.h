@@ -24,8 +24,9 @@
 #define GUI_GUI_H
 
 #include "gui/base/color.hpp"
-#include "gui/base/focuslistener.hpp"
 #include "gui/base/gui.hpp"
+
+#include "listeners/focuslistener.h"
 
 #include "localconsts.h"
 
@@ -151,9 +152,9 @@ class Gui final : public gcn::Gui
                                         int &restrict x,
                                         int &restrict y);
 
-        void addGlobalFocusListener(gcn::FocusListener* focusListener);
+        void addGlobalFocusListener(FocusListener* focusListener);
 
-        void removeGlobalFocusListener(gcn::FocusListener* focusListener);
+        void removeGlobalFocusListener(FocusListener* focusListener);
 
         void distributeGlobalFocusGainedEvent(const gcn::Event &focusEvent);
 
@@ -195,7 +196,7 @@ class Gui final : public gcn::Gui
         uint16_t mLastMouseRealX;
         uint16_t mLastMouseRealY;
 #endif
-        typedef std::list<gcn::FocusListener*> FocusListenerList;
+        typedef std::list<FocusListener*> FocusListenerList;
         typedef FocusListenerList::iterator FocusListenerIterator;
         FocusListenerList mFocusListeners;
         gcn::Color mForegroundColor;

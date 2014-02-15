@@ -778,7 +778,7 @@ SET(SRCS
     gui/base/event.hpp
     gui/base/exception.hpp
     gui/base/focushandler.hpp
-    gui/base/focuslistener.hpp
+    listeners/focuslistener.h
     gui/base/font.hpp
     gui/base/gui.hpp
     gui/base/input.hpp

@@ -910,12 +910,12 @@ void Gui::handleMouseReleased(const gcn::MouseInput &mouseInput)
         mFocusHandler->setDraggedWidget(nullptr);
 }
 
-void Gui::addGlobalFocusListener(gcn::FocusListener* focusListener)
+void Gui::addGlobalFocusListener(FocusListener* focusListener)
 {
     mFocusListeners.push_back(focusListener);
 }
 
-void Gui::removeGlobalFocusListener(gcn::FocusListener* focusListener)
+void Gui::removeGlobalFocusListener(FocusListener* focusListener)
 {
     mFocusListeners.remove(focusListener);
 }

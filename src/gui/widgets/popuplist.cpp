@@ -32,7 +32,7 @@ PopupList::PopupList(DropDown *const widget,
                      gcn::ListModel *const listModel,
                      bool extended, bool modal):
     Popup("PopupList", "popuplist.xml"),
-    gcn::FocusListener(),
+    FocusListener(),
     mListModel(listModel),
     mListBox(extended ? new ExtendedListBox(
         widget, listModel, "extendedlistbox.xml", 0) :

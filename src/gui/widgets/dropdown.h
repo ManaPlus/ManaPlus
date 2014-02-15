@@ -26,9 +26,10 @@
 #include "gui/widgets/widget2.h"
 
 #include "gui/base/basiccontainer.hpp"
-#include "gui/base/focuslistener.hpp"
-#include "gui/base/keylistener.hpp"
 #include "gui/base/listmodel.hpp"
+
+#include "listeners/focuslistener.h"
+#include "gui/base/keylistener.hpp"
 #include "gui/base/mouselistener.hpp"
 #include "gui/base/selectionlistener.hpp"
 
@@ -54,7 +55,7 @@ class DropDown final : public ActionListener,
                        public gcn::BasicContainer,
                        public gcn::KeyListener,
                        public gcn::MouseListener,
-                       public gcn::FocusListener,
+                       public FocusListener,
                        public gcn::SelectionListener,
                        public Widget2
 {

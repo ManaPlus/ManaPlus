@@ -25,7 +25,8 @@
 
 #include "gui/widgets/widget2.h"
 
-#include "gui/base/focuslistener.hpp"
+#include "listeners/focuslistener.h"
+
 #include "gui/base/widgets/textfield.hpp"
 
 #include "localconsts.h"
@@ -38,7 +39,7 @@ class PopupMenu;
  * \ingroup GUI
  */
 class TextField : public gcn::TextField,
-                  public gcn::FocusListener,
+                  public FocusListener,
                   public Widget2
 {
     public:

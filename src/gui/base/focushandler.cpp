@@ -67,9 +67,10 @@
 
 #include "gui/base/focushandler.hpp"
 
-#include "gui/base/focuslistener.hpp"
 #include "gui/base/exception.hpp"
 #include "gui/base/widget.hpp"
+
+#include "listeners/focuslistener.h"
 
 #include "debug.h"
 

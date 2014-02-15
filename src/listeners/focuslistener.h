@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GCN_FOCUSLISTENER_HPP
-#define GCN_FOCUSLISTENER_HPP
+#ifndef LISTENERS_FOCUSLISTENER_HPP
+#define LISTENERS_FOCUSLISTENER_HPP
 
 #include <string>
 
@@ -70,50 +70,47 @@
 
 #include "localconsts.h"
 
-namespace gcn
+/**
+  * Interface for listening for focus events from widgets.
+  *
+  * @see Widget::addFocusListener, Widget::removeFocusListener
+  * @author Olof Naessén
+  * @since 0.7.0
+  */
+class FocusListener
 {
-    /**
-     * Interface for listening for focus events from widgets.
-     *
-     * @see Widget::addFocusListener, Widget::removeFocusListener
-     * @author Olof Naessén
-     * @since 0.7.0
-     */
-    class FocusListener
-    {
     public:
         /**
-         * Destructor.
-         */
+          * Destructor.
+          */
         virtual ~FocusListener()
         { }
 
         /**
-         * Called when a widget gains focus. 
-         *
-         * @param event Discribes the event.
-         */
-        virtual void focusGained(const Event& event A_UNUSED)
+          * Called when a widget gains focus. 
+          *
+          * @param event Discribes the event.
+          */
+        virtual void focusGained(const gcn::Event &event A_UNUSED)
         { }
 
         /**
-         * Called when a widget loses focus. 
-         *
-         * @param event Discribes the event.
-         */
-        virtual void focusLost(const Event& event A_UNUSED)
+          * Called when a widget loses focus. 
+          *
+          * @param event Discribes the event.
+          */
+        virtual void focusLost(const gcn::Event &event A_UNUSED)
         { }
 
     protected:
         /**
-         * Constructor.
-         *
-         * You should not be able to make an instance of FocusListener,
-         * therefore its constructor is protected.
-         */
+          * Constructor.
+          *
+          * You should not be able to make an instance of FocusListener,
+          * therefore its constructor is protected.
+          */
         FocusListener()
         { }
-    };
-}  // namespace gcn
+};
 
-#endif  // end GCN_FOCUSLISTENER_HPP
+#endif  // LISTENERS_FOCUSLISTENER_HPP

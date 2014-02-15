@@ -75,13 +75,13 @@
 
 class ActionListener;
 class DeathListener;
+class FocusListener;
 class Graphics;
 
 namespace gcn
 {
     class BasicContainer;
     class FocusHandler;
-    class FocusListener;
     class Font;
     class KeyInput;
     class KeyListener;

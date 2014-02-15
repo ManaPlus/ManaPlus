@@ -66,10 +66,11 @@
 
 #include <string>
 
-#include "gui/base/focuslistener.hpp"
+#include "listeners/focuslistener.h"
 #include "gui/base/keylistener.hpp"
-#include "gui/base/mouseevent.hpp"
 #include "gui/base/mouselistener.hpp"
+
+#include "gui/base/mouseevent.hpp"
 #include "gui/base/widget.hpp"
 
 #include "render/graphics.h"

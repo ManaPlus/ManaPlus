@@ -57,7 +57,7 @@ TextField::TextField(const Widget2 *restrict const widget,
                      const std::string &restrict eventId,
                      const bool sendAlwaysEvents):
     gcn::TextField(text),
-    gcn::FocusListener(),
+    FocusListener(),
     Widget2(widget),
     mSendAlwaysEvents(sendAlwaysEvents),
     mCaretColor(&getThemeColor(Theme::CARET)),
