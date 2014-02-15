@@ -174,17 +174,17 @@ manaplus_SOURCES += gui/base/actionevent.hpp \
 	      gui/base/key.hpp \
 	      gui/base/keyevent.hpp \
 	      gui/base/keyinput.hpp \
-	      gui/base/keylistener.hpp \
+	      listeners/keylistener.h \
 	      gui/base/listmodel.hpp \
 	      gui/base/mouseevent.hpp \
 	      gui/base/mouseinput.hpp \
-	      listeners/mouselistener.hpp \
+	      listeners/mouselistener.h \
 	      gui/base/rectangle.hpp \
 	      gui/base/selectionevent.hpp \
-	      gui/base/selectionlistener.hpp \
+	      listeners/selectionlistener.h \
 	      gui/base/sdl/sdlpixel.hpp \
 	      gui/base/widget.hpp \
-	      gui/base/widgetlistener.hpp \
+	      listeners/widgetlistener.h \
 	      gui/base/widgets/button.hpp \
 	      gui/base/widgets/checkbox.hpp \
 	      gui/base/widgets/container.hpp \
