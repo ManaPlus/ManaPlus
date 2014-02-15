@@ -33,13 +33,6 @@
 #endif
 #endif
 
-#ifndef DEBUGBUILD
-#ifndef USE_INTERNALGUICHAN
-#warning using depricated way for linking with guichan. \
- Please removed configure flag --without-internalguichan
-#endif
-#endif
-
 #if !defined(__GXX_EXPERIMENTAL_CXX0X__)
 #undef nullptr
 #define nullptr 0

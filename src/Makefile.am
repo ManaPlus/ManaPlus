@@ -25,7 +25,6 @@ else
 manaplus_SOURCES =
 endif
 
-if USE_INTERNALGUICHAN
 dyecmd_CXXFLAGS = -I$(srcdir)/guichan/include -DUSE_INTERNALGUICHAN
 dyecmd_SOURCES = guichan/actionevent.cpp \
 	      guichan/cliprectangle.cpp \
@@ -45,10 +44,6 @@ dyecmd_SOURCES = guichan/actionevent.cpp \
 	      guichan/include/guichan/graphics.hpp \
 	      guichan/include/guichan/rectangle.hpp \
 	      guichan/include/guichan/widget.hpp
-else
-dyecmd_CXXFLAGS =
-dyecmd_SOURCES =
-endif
 
 dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      animatedsprite.cpp \
@@ -163,7 +158,6 @@ manaplus_CXXFLAGS += -DUSE_SDL2
 endif
 endif
 
-if USE_INTERNALGUICHAN
 manaplus_CXXFLAGS += -I$(srcdir)/guichan/include -DUSE_INTERNALGUICHAN
 manaplus_SOURCES += guichan/include/guichan/actionevent.hpp \
 	      guichan/include/guichan/actionlistener.hpp \
@@ -238,7 +232,6 @@ manaplus_SOURCES += guichan/actionevent.cpp \
 	      guichan/widgets/textbox.cpp \
 	      guichan/widgets/textfield.cpp \
 	      guichan/widgets/window.cpp
-endif
 
 manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/avatarlistbox.h \

@@ -249,28 +249,6 @@ else
 fi
 AM_CONDITIONAL(USE_OPENGL, test x$with_opengl = xyes)
 
-# Option to enable internal guichan
-AC_ARG_WITH(internalguichan,[  --without-internalguichan        DEPRICATED. don't use internal guichan ] )
-if test "x$with_internalguichan" == "xno"; then
-    with_internalguichan=no
-
-    AC_CHECK_LIB([guichan], [gcnGuichanVersion], ,
-    AC_MSG_ERROR([ *** Unable to find Guichan library (http://guichan.sf.net/)]))
-    AC_CHECK_HEADERS([guichan.hpp], ,
-    AC_MSG_ERROR([ *** Guichan library found but cannot find headers (http://guichan.sf.net/)]))
-
-    AC_CHECK_HEADERS([guichan/widgetlistener.hpp], ,
-    AC_MSG_ERROR([ *** Guichan library version is found  but version is < 0.8.0 (http://guichan.sf.net/)]))
-
-    AC_CHECK_LIB([guichan_sdl], [gcnSDL], ,
-    AC_MSG_ERROR([ *** Unable to find Guichan SDL library (http://guichan.sf.net/)]))
-
-else
-    with_internalguichan=yes
-    AC_DEFINE(USE_INTERNALGUICHAN, 1, [Defines if ManaPlus should use internal guichan classes])
-fi
-AM_CONDITIONAL(USE_INTERNALGUICHAN, test x$with_internalguichan = xyes)
-
 # Option to enable mumble support
 AC_ARG_WITH(mumble,[  --without-mumble        don't use mumble integration ] )
 if test "x$with_mumble" == "xno"; then

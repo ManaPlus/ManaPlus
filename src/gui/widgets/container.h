@@ -27,10 +27,6 @@
 
 #include <guichan/widgets/container.hpp>
 
-#if !defined USE_INTERNALGUICHAN
-typedef std::list<gcn::Widget *>::const_iterator WidgetListConstIterator;
-#endif
-
 /**
  * A widget container.
  *
