@@ -782,7 +782,6 @@ SET(SRCS
     gui/base/font.hpp
     gui/base/graphics.hpp
     gui/base/gui.hpp
-    gui/base/image.hpp
     gui/base/input.hpp
     gui/base/inputevent.hpp
     gui/base/key.hpp
@@ -820,7 +819,6 @@ SET(SRCS
     gui/base/font.cpp
     gui/base/graphics.cpp
     gui/base/gui.cpp
-    gui/base/image.cpp
     gui/base/inputevent.cpp
     gui/base/key.cpp
     gui/base/keyevent.cpp

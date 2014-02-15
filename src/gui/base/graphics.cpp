@@ -69,7 +69,7 @@
 
 #include "gui/base/exception.hpp"
 #include "gui/base/font.hpp"
-#include "gui/base/image.hpp"
+#include "resources/image.h"
 
 #include "debug.h"
 
