@@ -1,3 +1,20 @@
+2014-02-15 New release 1.4.2.15
+fix: friends tab update in social window.
+fix: windows resizing for smaller screen size.
+fix: displaying scale value.
+fix: autocomplete commands in party and guild tabs.
+fix: guild and party tab help.
+fix: dyecmd with non standard 32 bit images.
+add: actions for next/prev tab in shortcuts window.
+add: actions for next/prev tab in commands window.
+add: action for open trade window.
+add: start attributes for abmient layers.
+add: all emotes in crazy moves a.
+add: crazy moves command for pet emotes.
+add: diagonal directions for crazy moves.
+add: select unselectable npc if mod key pressed.
+add: map layer replacment (for mods).
+
 2014-02-01 New release 1.4.2.1
 fix: pet talk in trade tab is disabled.
 fix: screenshot directory editing.
