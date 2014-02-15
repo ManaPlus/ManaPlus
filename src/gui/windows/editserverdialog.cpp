@@ -63,7 +63,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
                                    const int index) :
     // TRANSLATORS: edit server dialog name
     Window(_("Edit Server"), true, parent),
-    gcn::ActionListener(),
+    ActionListener(),
     gcn::KeyListener(),
     mServerAddressField(new TextField(this, std::string())),
     mPortField(new TextField(this, std::string())),

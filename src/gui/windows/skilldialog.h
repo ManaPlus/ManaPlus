@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 const int SKILL_MIN_ID = 200000;
 const unsigned int SKILL_VAR_MIN_ID = 1000000;
@@ -43,7 +43,8 @@ struct SkillInfo;
  *
  * \ingroup Interface
  */
-class SkillDialog final : public Window, public gcn::ActionListener
+class SkillDialog final : public Window,
+                          public ActionListener
 {
     public:
         SkillDialog();

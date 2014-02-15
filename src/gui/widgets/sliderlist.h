@@ -21,9 +21,10 @@
 #ifndef GUI_WIDGETS_SLIDERLIST_H
 #define GUI_WIDGETS_SLIDERLIST_H
 
-#include "gui/base/actionlistener.hpp"
 #include "gui/base/listmodel.hpp"
 #include "gui/base/mouselistener.hpp"
+
+#include "listeners/actionlistener.h"
 
 #include "gui/widgets/container.h"
 
@@ -33,7 +34,7 @@ class Button;
 class Label;
 
 class SliderList final : public Container,
-                         public gcn::ActionListener,
+                         public ActionListener,
                          public gcn::MouseListener
 {
     public:
@@ -44,7 +45,7 @@ class SliderList final : public Container,
 
         ~SliderList();
 
-        void postInit(gcn::ActionListener *const listener,
+        void postInit(ActionListener *const listener,
                       const std::string &eventId);
 
         void updateAlpha();

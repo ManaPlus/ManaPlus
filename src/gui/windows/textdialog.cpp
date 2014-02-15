@@ -41,7 +41,7 @@ TextDialog::TextDialog(const std::string &restrict title,
                        Window *const parent,
                        const bool isPassword):
     Window(title, true, parent, "textdialog.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     mTextField(nullptr),
     mPasswordField(nullptr),
     // TRANSLATORS: text dialog button

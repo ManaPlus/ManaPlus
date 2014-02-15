@@ -31,7 +31,7 @@
 
 #include "utils/mutex.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/keylistener.hpp"
 #include "gui/base/listmodel.hpp"
 #include "gui/base/selectionlistener.hpp"
@@ -91,7 +91,7 @@ class ServersListModel final : public gcn::ListModel
  * \ingroup Interface
  */
 class ServerDialog final : public Window,
-                           public gcn::ActionListener,
+                           public ActionListener,
                            public gcn::KeyListener,
                            public gcn::SelectionListener
 {

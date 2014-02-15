@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 class Button;
 class PasswordField;
@@ -36,7 +36,8 @@ class TextField;
  *
  * \ingroup GUI
  */
-class TextDialog final : public Window, public gcn::ActionListener
+class TextDialog final : public Window,
+                         public ActionListener
 {
 public:
     /**

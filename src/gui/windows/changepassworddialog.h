@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 class Button;
 class LoginData;
@@ -37,7 +37,8 @@ class WrongDataNoticeListener;
  *
  * \ingroup Interface
  */
-class ChangePasswordDialog final : public Window, public gcn::ActionListener
+class ChangePasswordDialog final : public Window,
+                                   public ActionListener
 {
     public:
         /**

@@ -27,7 +27,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 class TextBox;
 
@@ -44,7 +44,7 @@ enum
  * \ingroup GUI
  */
 class OkDialog final : public Window,
-                       public gcn::ActionListener
+                       public ActionListener
 {
     public:
         /**

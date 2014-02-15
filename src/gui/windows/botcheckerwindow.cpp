@@ -260,7 +260,7 @@ protected:
 BotCheckerWindow::BotCheckerWindow():
     // TRANSLATORS: bot checker window header
     Window(_("Bot Checker"), false, nullptr, "botchecker.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     mTableModel(new UsersTableModel(this)),
     mTable(new GuiTable(this, mTableModel)),
     playersScrollArea(new ScrollArea(mTable, true,

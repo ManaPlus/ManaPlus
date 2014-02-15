@@ -27,7 +27,7 @@ WidgetGroup::WidgetGroup(const Widget2 *const widget,
                          const int spacing) :
     Container(widget),
     gcn::WidgetListener(),
-    gcn::ActionListener(),
+    ActionListener(),
     mSpacing(spacing),
     mCount(0),
     mGroup(group),

@@ -53,7 +53,7 @@ ImageRect TextField::skin;
 TextField::TextField(const Widget2 *restrict const widget,
                      const std::string &restrict text,
                      const bool loseFocusOnTab,
-                     gcn::ActionListener *restrict const listener,
+                     ActionListener *restrict const listener,
                      const std::string &restrict eventId,
                      const bool sendAlwaysEvents):
     gcn::TextField(text),

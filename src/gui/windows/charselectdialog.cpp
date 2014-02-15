@@ -88,7 +88,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     Window(strprintf(_("Account %s (last login time %s)"),
         data->username.c_str(), data->lastLogin.c_str()),
         false, nullptr, "char.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     gcn::KeyListener(),
     mLoginData(data),
     // TRANSLATORS: char select dialog. button.

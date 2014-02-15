@@ -157,7 +157,7 @@ endif
 endif
 
 manaplus_SOURCES += gui/base/actionevent.hpp \
-	      gui/base/actionlistener.hpp \
+	      listeners/actionlistener.h \
 	      gui/base/basiccontainer.hpp \
 	      gui/base/cliprectangle.hpp \
 	      gui/base/color.hpp \

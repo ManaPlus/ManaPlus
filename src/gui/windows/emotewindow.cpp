@@ -207,7 +207,7 @@ void EmoteWindow::clearFont()
     setVisible(false);
 }
 
-void EmoteWindow::addListeners(gcn::ActionListener *const listener)
+void EmoteWindow::addListeners(ActionListener *const listener)
 {
     mEmotePage->addActionListener(listener);
     mColorPage->addActionListener(listener);

@@ -51,7 +51,7 @@
 OutfitWindow::OutfitWindow():
     // TRANSLATORS: outfits window name
     Window(_("Outfits"), false, nullptr, "outfits.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     // TRANSLATORS: outfits window button
     mPreviousButton(new Button(this, _("<"), "previous", this)),
     // TRANSLATORS: outfits window button

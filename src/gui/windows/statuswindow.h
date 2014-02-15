@@ -27,7 +27,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 #include <map>
 
@@ -44,7 +44,7 @@ class VertContainer;
  * \ingroup Interface
  */
 class StatusWindow final : public Window,
-                           public gcn::ActionListener,
+                           public ActionListener,
                            public DepricatedListener
 {
     public:

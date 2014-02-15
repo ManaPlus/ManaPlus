@@ -30,7 +30,7 @@
 
 #include <set>
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 class BrowserBox;
 class Button;
@@ -102,7 +102,7 @@ class OnlinePlayer final
  */
 class WhoIsOnline final : public Window,
                           public LinkHandler,
-                          public gcn::ActionListener,
+                          public ActionListener,
                           public ConfigListener
 {
 public:

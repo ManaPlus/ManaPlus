@@ -29,7 +29,7 @@
 
 #include "net/charserverhandler.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/keylistener.hpp"
 
 class Button;
@@ -45,7 +45,7 @@ class TextDialog;
  * \ingroup Interface
  */
 class CharSelectDialog final : public Window,
-                               public gcn::ActionListener,
+                               public ActionListener,
                                public gcn::KeyListener
 {
     public:

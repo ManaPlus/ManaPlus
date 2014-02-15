@@ -25,13 +25,13 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 class TextBox;
 class TextField;
 
 class NpcPostDialog final : public Window,
-                            public gcn::ActionListener
+                            public ActionListener
 {
     public:
         /**

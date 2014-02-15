@@ -48,7 +48,7 @@ static const int maxTip = 18;
 DidYouKnowWindow::DidYouKnowWindow() :
     // TRANSLATORS: did you know window name
     Window(_("Did You Know?"), false, nullptr, "didyouknow.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(mBrowserBox,

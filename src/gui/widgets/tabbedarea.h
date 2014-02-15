@@ -25,11 +25,12 @@
 
 #include "gui/widgets/widget2.h"
 
-#include "gui/base/actionlistener.hpp"
 #include "gui/base/keylistener.hpp"
 #include "gui/base/mouselistener.hpp"
 #include "gui/base/widgetlistener.hpp"
 #include "gui/base/widgets/container.hpp"
+
+#include "listeners/actionlistener.h"
 
 class Button;
 class Image;
@@ -39,7 +40,7 @@ class Tab;
  * A tabbed area, the same as the guichan tabbed area in 0.8, but extended
  */
 class TabbedArea final : public Widget2,
-                         public gcn::ActionListener,
+                         public ActionListener,
                          public gcn::BasicContainer,
                          public gcn::KeyListener,
                          public gcn::MouseListener,

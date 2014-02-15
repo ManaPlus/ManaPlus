@@ -53,10 +53,10 @@ std::string LoginDialog::savedPasswordKey("");
 
 namespace
 {
-    struct OpenUrlListener : public gcn::ActionListener
+    struct OpenUrlListener : public ActionListener
     {
         OpenUrlListener() :
-            gcn::ActionListener(),
+            ActionListener(),
             url()
         {
         }
@@ -143,7 +143,7 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
                          std::string *const updateHost):
     // TRANSLATORS: login dialog name
     Window(_("Login"), false, nullptr, "login.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     gcn::KeyListener(),
     mLoginData(data),
     mUserField(new TextField(this, mLoginData->username)),

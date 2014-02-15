@@ -37,14 +37,14 @@
 
 #include <string>
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/mouseinput.hpp"
 
 #include "debug.h"
 
 namespace
 {
-    struct OpenUrlListener : public gcn::ActionListener
+    struct OpenUrlListener : public ActionListener
     {
         OpenUrlListener() :
             url()

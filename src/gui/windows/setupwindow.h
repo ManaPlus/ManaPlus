@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 #include <list>
 
@@ -41,7 +41,7 @@ class TabbedArea;
  * \ingroup GUI
  */
 class SetupWindow final : public Window,
-                          public gcn::ActionListener
+                          public ActionListener
 {
     public:
         SetupWindow();

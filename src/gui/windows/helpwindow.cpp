@@ -48,7 +48,7 @@
 HelpWindow::HelpWindow() :
     // TRANSLATORS: help window name
     Window(_("Help"), false, nullptr, "help.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     // TRANSLATORS: help window. button.
     mDYKButton(new Button(this, _("Did you know..."), "DYK", this)),
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,

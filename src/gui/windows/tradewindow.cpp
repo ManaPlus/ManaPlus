@@ -67,7 +67,7 @@
 TradeWindow::TradeWindow():
     // TRANSLATORS: trade window caption
     Window(_("Trade: You"), false, nullptr, "trade.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     gcn::SelectionListener(),
     mMyInventory(new Inventory(Inventory::TRADE)),
     mPartnerInventory(new Inventory(Inventory::TRADE)),

@@ -29,7 +29,7 @@
 
 #include "utils/dtor.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/key.hpp"
 
 #include "render/graphics.h"
@@ -38,7 +38,7 @@
 
 float GuiTable::mAlpha = 1.0;
 
-class GuiTableActionListener final : public gcn::ActionListener
+class GuiTableActionListener final : public ActionListener
 {
 public:
     GuiTableActionListener(GuiTable *restrict _table,
@@ -62,7 +62,7 @@ protected:
 GuiTableActionListener::GuiTableActionListener(GuiTable *restrict table,
                                                gcn::Widget *restrict widget,
                                                int row, int column) :
-    gcn::ActionListener(),
+    ActionListener(),
     mTable(table),
     mRow(row),
     mColumn(column),

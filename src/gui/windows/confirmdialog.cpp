@@ -39,7 +39,7 @@ ConfirmDialog::ConfirmDialog(const std::string &restrict title,
                              const bool ignore,
                              const bool modal, Window *const parent):
     Window(title, modal, parent, "confirm.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     mTextBox(new TextBox(this)),
     mIgnore(ignore)
 {

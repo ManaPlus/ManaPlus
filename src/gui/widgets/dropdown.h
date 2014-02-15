@@ -25,13 +25,14 @@
 
 #include "gui/widgets/widget2.h"
 
-#include "gui/base/actionlistener.hpp"
 #include "gui/base/basiccontainer.hpp"
 #include "gui/base/focuslistener.hpp"
 #include "gui/base/keylistener.hpp"
 #include "gui/base/listmodel.hpp"
 #include "gui/base/mouselistener.hpp"
 #include "gui/base/selectionlistener.hpp"
+
+#include "listeners/actionlistener.h"
 
 #include "localconsts.h"
 
@@ -49,7 +50,7 @@ class Skin;
  * DropDown you must give DropDown an implemented ListModel which represents
  * your list.
  */
-class DropDown final : public gcn::ActionListener,
+class DropDown final : public ActionListener,
                        public gcn::BasicContainer,
                        public gcn::KeyListener,
                        public gcn::MouseListener,
@@ -70,7 +71,7 @@ class DropDown final : public gcn::ActionListener,
                  gcn::ListModel *const listModel,
                  const bool extended = false,
                  const bool modal = false,
-                 gcn::ActionListener *const listener = nullptr,
+                 ActionListener *const listener = nullptr,
                  const std::string &eventId = "");
 
         A_DELETE_COPY(DropDown)

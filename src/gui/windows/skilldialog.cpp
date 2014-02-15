@@ -279,7 +279,7 @@ class SkillTab final : public Tab
 SkillDialog::SkillDialog() :
     // TRANSLATORS: skills dialog name
     Window(_("Skills"), false, nullptr, "skills.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     mSkills(),
     mTabs(new TabbedArea(this)),
     mDeleteTabs(),

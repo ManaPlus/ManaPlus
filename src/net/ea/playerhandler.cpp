@@ -60,7 +60,7 @@ namespace
     /**
      * Listener used for handling the overweigth message.
      */
-    struct WeightListener final : public gcn::ActionListener
+    struct WeightListener final : public ActionListener
     {
         void action(const gcn::ActionEvent &event A_UNUSED)
         {
@@ -71,7 +71,7 @@ namespace
     /**
      * Listener used for handling death message.
      */
-    struct DeathListener final : public gcn::ActionListener
+    struct DeathListener final : public ActionListener
     {
         void action(const gcn::ActionEvent &event A_UNUSED)
         {

@@ -71,7 +71,7 @@ ShopWindow::DialogList ShopWindow::instances;
 ShopWindow::ShopWindow():
     // TRANSLATORS: shop window name
     Window(_("Personal Shop"), false, nullptr, "shop.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     gcn::SelectionListener(),
     // TRANSLATORS: shop window button
     mCloseButton(new Button(this, _("Close"), "close", this)),

@@ -27,14 +27,15 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 /**
  * The connection dialog.
  *
  * \ingroup Interface
  */
-class ConnectionDialog final : public Window, private gcn::ActionListener
+class ConnectionDialog final : public Window,
+                               private ActionListener
 {
     public:
         /**

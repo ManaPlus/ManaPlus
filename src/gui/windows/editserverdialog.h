@@ -31,8 +31,9 @@ class ServerDialog;
 
 #include "net/serverinfo.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/keylistener.hpp"
+
 #include "gui/base/listmodel.hpp"
 
 /**
@@ -75,7 +76,7 @@ class TypeListModel : public gcn::ListModel
  * \ingroup Interface
  */
 class EditServerDialog final : public Window,
-                               public gcn::ActionListener,
+                               public ActionListener,
                                public gcn::KeyListener
 {
     public:

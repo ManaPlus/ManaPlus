@@ -160,7 +160,7 @@ public:
 TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor name
     Window(_("Command Editor"), false, nullptr, "commandeditor.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     mIsMagicCommand(command->getCommandType() == TEXT_COMMAND_MAGIC),
     mCommand(command),
     // TRANSLATORS: command editor button

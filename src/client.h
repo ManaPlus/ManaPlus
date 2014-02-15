@@ -27,7 +27,7 @@
 
 #include "net/serverinfo.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 #include <SDL.h>
 
@@ -57,7 +57,7 @@ extern unsigned int tmwServerVersion;
 extern int start_time;
 extern int textures_count;
 
-class ErrorListener : public gcn::ActionListener
+class ErrorListener : public ActionListener
 {
     public:
         void action(const gcn::ActionEvent &event) override final;
@@ -142,7 +142,8 @@ struct PacketLimit
  * The core part of the client. This class initializes all subsystems, runs
  * the event loop, and shuts everything down again.
  */
-class Client final : public ConfigListener, public gcn::ActionListener
+class Client final : public ConfigListener,
+                     public ActionListener
 {
 public:
     /**

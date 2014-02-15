@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/keylistener.hpp"
 
 #include <vector>
@@ -38,7 +38,8 @@ class RadioButton;
  *
  * \ingroup Interface
  */
-class QuitDialog final : public Window, public gcn::ActionListener,
+class QuitDialog final : public Window,
+                         public ActionListener,
                          public gcn::KeyListener
 {
     public:

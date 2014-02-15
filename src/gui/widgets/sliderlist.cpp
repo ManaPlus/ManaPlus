@@ -36,7 +36,7 @@ static const int sliderHeight = 30;
 SliderList::SliderList(const Widget2 *const widget,
                        gcn::ListModel *const listModel) :
     Container(widget),
-    gcn::ActionListener(),
+    ActionListener(),
     gcn::MouseListener(),
     mLabel(new Label(this)),
     mListModel(listModel),
@@ -48,7 +48,7 @@ SliderList::SliderList(const Widget2 *const widget,
     setHeight(sliderHeight);
 }
 
-void SliderList::postInit(gcn::ActionListener *const listener,
+void SliderList::postInit(ActionListener *const listener,
                           const std::string &eventId)
 {
     mPrevEventId = eventId + "_prev";

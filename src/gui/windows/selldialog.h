@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/selectionlistener.hpp"
 
 class Button;
@@ -42,7 +42,7 @@ class Slider;
  * \ingroup Interface
  */
 class SellDialog final : public Window,
-                         private gcn::ActionListener,
+                         private ActionListener,
                          private gcn::SelectionListener
 {
     public:

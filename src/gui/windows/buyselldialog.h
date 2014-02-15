@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 class Button;
 
@@ -34,7 +34,8 @@ class Button;
  *
  * \ingroup Interface
  */
-class BuySellDialog final : public Window, public gcn::ActionListener
+class BuySellDialog final : public Window,
+                            public ActionListener
 {
     public:
         /**

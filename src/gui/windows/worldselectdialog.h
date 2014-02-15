@@ -27,7 +27,7 @@
 
 #include "net/worldinfo.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/keylistener.hpp"
 
 class Button;
@@ -39,7 +39,8 @@ class WorldListModel;
  *
  * \ingroup Interface
  */
-class WorldSelectDialog final : public Window, public gcn::ActionListener,
+class WorldSelectDialog final : public Window,
+                                public ActionListener,
                                 public gcn::KeyListener
 {
     public:

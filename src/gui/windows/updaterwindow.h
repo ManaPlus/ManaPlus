@@ -30,7 +30,7 @@
 
 #include "utils/mutex.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/keylistener.hpp"
 
 #include <string>
@@ -69,7 +69,7 @@ struct UpdateFile final
  * \ingroup GUI
  */
 class UpdaterWindow final : public Window,
-                            public gcn::ActionListener,
+                            public ActionListener,
                             public LinkHandler,
                             public gcn::KeyListener
 {

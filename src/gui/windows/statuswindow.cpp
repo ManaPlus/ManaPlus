@@ -113,7 +113,7 @@ class DerDisplay final : public AttrDisplay
         { return DERIVED; }
 };
 
-class ChangeDisplay final : public AttrDisplay, gcn::ActionListener
+class ChangeDisplay final : public AttrDisplay, ActionListener
 {
     public:
         ChangeDisplay(const Widget2 *const widget,
@@ -142,7 +142,7 @@ class ChangeDisplay final : public AttrDisplay, gcn::ActionListener
 StatusWindow::StatusWindow() :
     Window(player_node ? player_node->getName() :
         "?", false, nullptr, "status.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     // TRANSLATORS: status window label
     mLvlLabel(new Label(this, strprintf(_("Level: %d"), 0))),
     // TRANSLATORS: status window label
@@ -820,7 +820,7 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
                              const int id, const std::string &restrict name,
                              const std::string &restrict shortName) :
     AttrDisplay(widget, id, name, shortName),
-    gcn::ActionListener(),
+    ActionListener(),
     mNeeded(1),
     // TRANSLATORS: status window label
     mPoints(new Label(this, _("Max"))),

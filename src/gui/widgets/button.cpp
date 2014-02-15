@@ -81,7 +81,7 @@ Button::Button(const Widget2 *const widget) :
 Button::Button(const Widget2 *const widget,
                const std::string &restrict caption,
                const std::string &restrict actionEventId,
-               gcn::ActionListener *const listener) :
+               ActionListener *const listener) :
     gcn::Button(caption),
     Widget2(widget),
     gcn::WidgetListener(),
@@ -121,7 +121,7 @@ Button::Button(const Widget2 *const widget,
                const std::string &restrict imageName,
                const int imageWidth, const int imageHeight,
                const std::string &restrict actionEventId,
-               gcn::ActionListener *const listener) :
+               ActionListener *const listener) :
     gcn::Button(caption),
     Widget2(widget),
     gcn::WidgetListener(),
@@ -161,7 +161,7 @@ Button::Button(const Widget2 *const widget,
                const std::string &restrict imageName,
                const int imageWidth, const int imageHeight,
                const std::string &restrict actionEventId,
-               gcn::ActionListener *const listener) :
+               ActionListener *const listener) :
     gcn::Button(),
     Widget2(widget),
     gcn::WidgetListener(),
@@ -201,7 +201,7 @@ Button::Button(const Widget2 *const widget,
                const std::string &restrict caption,
                const std::string &restrict imageName,
                const std::string &restrict actionEventId,
-               gcn::ActionListener *const listener) :
+               ActionListener *const listener) :
     gcn::Button(caption),
     Widget2(widget),
     gcn::WidgetListener(),

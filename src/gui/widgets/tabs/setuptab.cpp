@@ -26,7 +26,7 @@
 
 SetupTab::SetupTab(const Widget2 *const widget) :
     Container(widget),
-    gcn::ActionListener(),
+    ActionListener(),
     gcn::WidgetListener(),
     mName()
 {

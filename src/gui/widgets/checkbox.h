@@ -46,7 +46,7 @@ class CheckBox final : public gcn::CheckBox,
         CheckBox(const Widget2 *const widget,
                  const std::string &restrict caption,
                  const bool selected = false,
-                 gcn::ActionListener *const listener = nullptr,
+                 ActionListener *const listener = nullptr,
                  const std::string &restrict eventId = "");
 
         A_DELETE_COPY(CheckBox)

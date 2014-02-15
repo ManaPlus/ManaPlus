@@ -26,7 +26,7 @@
 
 #include "being/playerrelationslistener.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 #include <string>
 #include <map>
@@ -48,7 +48,7 @@ class TextDialog;
  * \ingroup Interface
  */
 class SocialWindow final : public Window,
-                           private gcn::ActionListener,
+                           private ActionListener,
                            public PlayerRelationsListener
 {
 public:

@@ -82,7 +82,7 @@ class WorldListModel final : public gcn::ListModel
 WorldSelectDialog::WorldSelectDialog(Worlds worlds):
     // TRANSLATORS: world select dialog name
     Window(_("Select World"), false, nullptr, "world.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     gcn::KeyListener(),
     mWorldListModel(new WorldListModel(worlds)),
     mWorldList(new ListBox(this, mWorldListModel, "")),

@@ -169,13 +169,13 @@ protected:
     std::string mCounterString;
 };
 
-class SocialGuildTab final : public SocialTab, public gcn::ActionListener
+class SocialGuildTab final : public SocialTab, public ActionListener
 {
 public:
     SocialGuildTab(const Widget2 *const widget,
                    Guild *const guild, const bool showBackground) :
         SocialTab(widget),
-        gcn::ActionListener(),
+        ActionListener(),
         mGuild(guild)
     {
         // TRANSLATORS: tab in social window
@@ -305,13 +305,13 @@ private:
     Guild *mGuild;
 };
 
-class SocialGuildTab2 final : public SocialTab, public gcn::ActionListener
+class SocialGuildTab2 final : public SocialTab, public ActionListener
 {
 public:
     SocialGuildTab2(const Widget2 *const widget, Guild *const guild,
                     const bool showBackground) :
         SocialTab(widget),
-        gcn::ActionListener()
+        ActionListener()
     {
         // TRANSLATORS: tab in social window
         setCaption(_("Guild"));
@@ -372,13 +372,13 @@ public:
     }
 };
 
-class SocialPartyTab final : public SocialTab, public gcn::ActionListener
+class SocialPartyTab final : public SocialTab, public ActionListener
 {
 public:
     SocialPartyTab(const Widget2 *const widget,
                    Party *const party, const bool showBackground) :
         SocialTab(widget),
-        gcn::ActionListener(),
+        ActionListener(),
         mParty(party)
     {
         // TRANSLATORS: tab in social window
@@ -1276,7 +1276,7 @@ private:
 SocialWindow::SocialWindow() :
     // TRANSLATORS: social window name
     Window(_("Social"), false, nullptr, "social.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     PlayerRelationsListener(),
     mGuildInvited(0),
     mGuildAcceptDialog(nullptr),

@@ -25,12 +25,12 @@
 
 #include "gui/widgets/container.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 #include "localconsts.h"
 
 class CharacterViewBase : public Container,
-                          public gcn::ActionListener
+                          public ActionListener
 {
     public:
         A_DELETE_COPY(CharacterViewBase)
@@ -50,7 +50,7 @@ class CharacterViewBase : public Container,
     protected:
         CharacterViewBase(CharSelectDialog *const widget, const int padding) :
             Container(widget),
-            gcn::ActionListener(),
+            ActionListener(),
             mParent(widget),
             mPadding(padding),
             mSelected(0)

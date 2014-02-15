@@ -28,7 +28,7 @@
 #include "gui/widgets/window.h"
 #include "gui/widgets/textfield.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 #define ACTION_EDIT_OK "edit ok"
 
@@ -37,7 +37,8 @@
  *
  * \ingroup GUI
  */
-class EditDialog final : public Window, public gcn::ActionListener
+class EditDialog final : public Window,
+                         public ActionListener
 {
     public:
         /**

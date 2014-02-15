@@ -30,7 +30,7 @@
 
 #include "utils/xml.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 #include <vector>
 
@@ -60,7 +60,8 @@ struct EquipmentBox final
  *
  * \ingroup Interface
  */
-class EquipmentWindow final : public Window, public gcn::ActionListener
+class EquipmentWindow final : public Window,
+                              public ActionListener
 {
     public:
         /**

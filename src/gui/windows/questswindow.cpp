@@ -122,7 +122,7 @@ struct QuestEffect final
 QuestsWindow::QuestsWindow() :
     // TRANSLATORS: quests window name
     Window(_("Quests"), false, nullptr, "quests.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     mQuestsModel(new QuestsModel),
     mQuestsListBox(new ExtendedListBox(this,
         mQuestsModel, "extendedlistbox.xml")),

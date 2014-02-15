@@ -26,7 +26,7 @@
 #include "gui/widgets/window.h"
 
 #include "gui/base/keylistener.hpp"
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 class DropDown;
 class Icon;
@@ -43,7 +43,7 @@ class Slider;
  * \ingroup Interface
  */
 class ItemAmountWindow final : public Window,
-                               public gcn::ActionListener,
+                               public ActionListener,
                                public gcn::KeyListener
 {
     public:

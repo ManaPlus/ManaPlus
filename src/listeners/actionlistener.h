@@ -61,52 +61,49 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GCN_ACTIONLISTENER_HPP
-#define GCN_ACTIONLISTENER_HPP
+#ifndef LISTENERS_ACTIONLISTENER_HPP
+#define LISTENERS_ACTIONLISTENER_HPP
 
 #include <string>
 
 #include "gui/base/actionevent.hpp"
 
-namespace gcn
+/**
+  * Interface for listening for action events from widgets.
+  *
+  * @see Widget::addActionListener, Widget::removeActionListener,
+  *      ActionEvent
+  * @author Olof Naessén
+  * @author Per Larsson
+  */
+class ActionListener
 {
-    /**
-     * Interface for listening for action events from widgets.
-     *
-     * @see Widget::addActionListener, Widget::removeActionListener,
-     *      ActionEvent
-     * @author Olof Naessén
-     * @author Per Larsson
-     */
-    class ActionListener
-    {
     public:
         /**
-         * Destructor.
-         */
+          * Destructor.
+          */
         virtual ~ActionListener()
         { }
 
         /**
-         * Called when an action is recieved from a widget. It is used
-         * to be able to recieve a notification that an action has
-         * occured.
-         *
-         * @param actionEvent The event of the action.
-         * @since 0.6.0
-         */
-        virtual void action(const ActionEvent& actionEvent) = 0;
+          * Called when an action is recieved from a widget. It is used
+          * to be able to recieve a notification that an action has
+          * occured.
+          *
+          * @param actionEvent The event of the action.
+          * @since 0.6.0
+          */
+        virtual void action(const gcn::ActionEvent &actionEvent) = 0;
 
     protected:
         /**
-         * Constructor.
-         *
-         * You should not be able to make an instance of ActionListener,
-         * therefore its constructor is protected.
-         */
+          * Constructor.
+          *
+          * You should not be able to make an instance of ActionListener,
+          * therefore its constructor is protected.
+          */
         ActionListener()
         { }
-    };
-}  // namespace gcn
+};
 
-#endif  // end GCN_ACTIONLISTENER_HPP
+#endif  // end LISTENERS_ACTIONLISTENER_HPP

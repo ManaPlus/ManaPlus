@@ -193,7 +193,7 @@ int textures_count = 0;
 extern "C" char const *_nl_locale_name_default(void);
 #endif
 
-class AccountListener final : public gcn::ActionListener
+class AccountListener final : public ActionListener
 {
     public:
         void action(const gcn::ActionEvent &)
@@ -202,7 +202,7 @@ class AccountListener final : public gcn::ActionListener
         }
 } accountListener;
 
-class LoginListener final : public gcn::ActionListener
+class LoginListener final : public ActionListener
 {
     public:
         void action(const gcn::ActionEvent &)
@@ -212,7 +212,7 @@ class LoginListener final : public gcn::ActionListener
 } loginListener;
 
 Client::Client(const Options &options) :
-    gcn::ActionListener(),
+    ActionListener(),
     mOptions(options),
     mConfigDir(),
     mServerConfigDir(),

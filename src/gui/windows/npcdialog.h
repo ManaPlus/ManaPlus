@@ -30,7 +30,7 @@
 
 #include "utils/stringvector.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 #include <list>
 
@@ -56,7 +56,7 @@ typedef std::map<int, NpcDialog*> NpcDialogs;
  * \ingroup Interface
  */
 class NpcDialog final : public Window,
-                        public gcn::ActionListener,
+                        public ActionListener,
                         public ExtendedListModel,
                         public ConfigListener
 {

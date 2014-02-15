@@ -26,7 +26,7 @@
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 class Button;
 class BrowserBox;
@@ -38,7 +38,7 @@ class ScrollArea;
  */
 class DidYouKnowWindow final : public Window,
                                public LinkHandler,
-                               public gcn::ActionListener
+                               public ActionListener
 {
     public:
         /**

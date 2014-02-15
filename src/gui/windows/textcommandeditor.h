@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 class Button;
 class DropDown;
@@ -38,7 +38,8 @@ class TargetTypeModel;
 class TextCommand;
 class TextField;
 
-class TextCommandEditor final : public Window, public gcn::ActionListener
+class TextCommandEditor final : public Window,
+                                public ActionListener
 {
     public:
         /**

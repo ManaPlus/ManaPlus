@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/keylistener.hpp"
 
 class Button;
@@ -38,7 +38,7 @@ class TextField;
  * to the field which contained wrong data when the Ok button was pressed on
  * the error notice.
  */
-class WrongDataNoticeListener final : public gcn::ActionListener
+class WrongDataNoticeListener final : public ActionListener
 {
     public:
         WrongDataNoticeListener();
@@ -58,7 +58,7 @@ class WrongDataNoticeListener final : public gcn::ActionListener
  * \ingroup Interface
  */
 class RegisterDialog final : public Window,
-                             public gcn::ActionListener,
+                             public ActionListener,
                              public gcn::KeyListener
 {
     public:

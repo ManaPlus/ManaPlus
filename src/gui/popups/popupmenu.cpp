@@ -2838,7 +2838,7 @@ void PopupMenu::showGMPopup()
 }
 
 RenameListener::RenameListener() :
-    gcn::ActionListener(),
+    ActionListener(),
     mMapItemX(0),
     mMapItemY(0),
     mDialog(nullptr)

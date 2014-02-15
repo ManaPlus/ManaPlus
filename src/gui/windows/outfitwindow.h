@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 const unsigned int OUTFITS_COUNT = 100;
 const unsigned int OUTFIT_ITEM_COUNT = 16;
@@ -35,7 +35,7 @@ class CheckBox;
 class Label;
 
 class OutfitWindow final : public Window,
-                           private gcn::ActionListener
+                           private ActionListener
 {
     public:
         /**

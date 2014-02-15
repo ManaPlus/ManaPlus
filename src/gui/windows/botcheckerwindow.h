@@ -27,7 +27,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 struct BOTCHK final
 {
@@ -43,7 +43,7 @@ class UsersTableModel;
 class StaticTableModel;
 
 class BotCheckerWindow final : public Window,
-                               public gcn::ActionListener,
+                               public ActionListener,
                                public ConfigListener
 {
     public:

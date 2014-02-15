@@ -48,7 +48,7 @@ class TextField : public gcn::TextField,
         explicit TextField(const Widget2 *restrict const widget,
                            const std::string &restrict text = "",
                            const bool loseFocusOnTab = true,
-                           gcn::ActionListener *restrict
+                           ActionListener *restrict
                            const listener = nullptr,
                            const std::string &restrict eventId = "",
                            const bool sendAlwaysEvents = false);

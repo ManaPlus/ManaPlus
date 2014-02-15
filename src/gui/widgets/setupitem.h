@@ -24,7 +24,7 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/tabs/setuptabscroll.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 #include <list>
 #include <vector>
@@ -45,7 +45,7 @@ namespace gcn
     class ListModel;
 }
 
-class SetupItem : public gcn::ActionListener,
+class SetupItem : public ActionListener,
                   public Widget2
 {
     public:

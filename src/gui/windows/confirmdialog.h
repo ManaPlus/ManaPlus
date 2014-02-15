@@ -29,7 +29,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 class TextBox;
 
@@ -38,7 +38,8 @@ class TextBox;
  *
  * \ingroup GUI
  */
-class ConfirmDialog : public Window, public gcn::ActionListener
+class ConfirmDialog : public Window,
+                      public ActionListener
 {
     public:
         /**

@@ -48,7 +48,7 @@ ConfirmDialog *confirmDlg = nullptr;
  */
 namespace
 {
-    struct RequestTradeListener : public gcn::ActionListener
+    struct RequestTradeListener : public ActionListener
     {
         void action(const gcn::ActionEvent &event)
         {

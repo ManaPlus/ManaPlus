@@ -25,7 +25,7 @@
 
 #include "gui/widgets/container.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/widgetlistener.hpp"
 
 #include <string>
@@ -36,7 +36,7 @@
  * A container for the contents of a tab in the setup window.
  */
 class SetupTab : public Container,
-                 public gcn::ActionListener,
+                 public ActionListener,
                  public gcn::WidgetListener
 {
     public:

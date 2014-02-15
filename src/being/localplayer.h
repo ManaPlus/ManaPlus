@@ -30,7 +30,7 @@
 
 #include "gui/userpalette.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 #include <vector>
 
@@ -41,7 +41,7 @@ class FloorItem;
 class Map;
 class OkDialog;
 
-class AwayListener final : public gcn::ActionListener
+class AwayListener final : public ActionListener
 {
     public:
         void action(const gcn::ActionEvent &event) override final;

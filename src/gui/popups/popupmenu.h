@@ -28,7 +28,7 @@
 
 #include "being/actorsprite.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/listmodel.hpp"
 
 #include "localconsts.h"
@@ -47,7 +47,7 @@ class TextField;
 class ProgressBar;
 class Window;
 
-class RenameListener final : public gcn::ActionListener
+class RenameListener final : public ActionListener
 {
     public:
         RenameListener();
@@ -67,7 +67,7 @@ class RenameListener final : public gcn::ActionListener
         TextDialog *mDialog;
 };
 
-class PlayerListener : public gcn::ActionListener
+class PlayerListener : public ActionListener
 {
     public:
         PlayerListener();

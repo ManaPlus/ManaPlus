@@ -202,7 +202,7 @@ static const char *const ACTION_COLOR_PICKER = "color picker";
 ChatWindow::ChatWindow():
     // TRANSLATORS: chat window name
     Window(_("Chat"), false, nullptr, "chat.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     gcn::KeyListener(),
     mItemLinkHandler(new ItemLinkHandler),
     mChatTabs(new TabbedArea(this)),

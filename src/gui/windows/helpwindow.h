@@ -26,7 +26,7 @@
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 
 #include "localconsts.h"
 
@@ -44,8 +44,9 @@ typedef std::map<std::string, HelpNames> HelpTagsMap;
 /**
  * The help window.
  */
-class HelpWindow final : public Window, public LinkHandler,
-                         public gcn::ActionListener
+class HelpWindow final : public Window,
+                         public LinkHandler,
+                         public ActionListener
 {
     public:
         /**

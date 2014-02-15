@@ -29,7 +29,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/keylistener.hpp"
 #include "gui/base/selectionlistener.hpp"
 
@@ -51,7 +51,7 @@ class TextPopup;
  * \ingroup Interface
  */
 class InventoryWindow final : public Window,
-                              public gcn::ActionListener,
+                              public ActionListener,
                               public gcn::KeyListener,
                               public gcn::SelectionListener,
                               public InventoryListener,

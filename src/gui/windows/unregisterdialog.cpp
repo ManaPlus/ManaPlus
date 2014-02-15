@@ -45,7 +45,7 @@
 UnRegisterDialog::UnRegisterDialog(LoginData *const data) :
     // TRANSLATORS: unregister dialog name
     Window(_("Unregister"), true, nullptr, "unregister.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     mLoginData(data),
     mPasswordField(new PasswordField(this, mLoginData->password)),
     // TRANSLATORS: unregister dialog. button.

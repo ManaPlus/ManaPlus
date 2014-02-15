@@ -49,7 +49,7 @@
 QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
     // TRANSLATORS: quit dialog name
     Window(_("Quit"), true, nullptr, "quit.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     gcn::KeyListener(),
     mOptions(),
     // TRANSLATORS: quit dialog button

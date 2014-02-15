@@ -73,11 +73,11 @@
 
 #include "localconsts.h"
 
+class ActionListener;
 class Graphics;
 
 namespace gcn
 {
-    class ActionListener;
     class BasicContainer;
     class DeathListener;
     class FocusHandler;

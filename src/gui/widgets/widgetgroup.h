@@ -23,14 +23,14 @@
 
 #include "gui/widgets/container.h"
 
-#include "gui/base/actionlistener.hpp"
+#include "listeners/actionlistener.h"
 #include "gui/base/widgetlistener.hpp"
 
 #include "localconsts.h"
 
 class WidgetGroup : public Container,
                     public gcn::WidgetListener,
-                    public gcn::ActionListener
+                    public ActionListener
 {
     public:
         A_DELETE_COPY(WidgetGroup)

@@ -39,7 +39,7 @@ float CheckBox::mAlpha = 1.0;
 
 CheckBox::CheckBox(const Widget2 *const widget,
                    const std::string &restrict caption, const bool selected,
-                   gcn::ActionListener *const listener,
+                   ActionListener *const listener,
                    const std::string &restrict eventId) :
     gcn::CheckBox(caption, selected),
     Widget2(widget),

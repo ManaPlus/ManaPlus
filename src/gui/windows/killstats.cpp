@@ -40,7 +40,7 @@
 KillStats::KillStats() :
     // TRANSLATORS: kill stats window name
     Window(_("Kill stats"), false, nullptr, "killstats.xml"),
-    gcn::ActionListener(),
+    ActionListener(),
     mKillCounter(0),
     mExpCounter(0),
     mKillTCounter(0),

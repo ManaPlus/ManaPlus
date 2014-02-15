@@ -59,7 +59,7 @@ class EmoteWindow final : public Window
 
         void clearFont();
 
-        void addListeners(gcn::ActionListener *const listener);
+        void addListeners(ActionListener *const listener);
 
         void widgetResized(const gcn::Event &event) override final;
 
