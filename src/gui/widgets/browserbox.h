@@ -26,7 +26,7 @@
 
 #include "gui/widgets/widget2.h"
 
-#include "gui/base/mouselistener.hpp"
+#include "listeners/mouselistener.h"
 #include "gui/base/widget.hpp"
 
 #include <list>
@@ -104,7 +104,7 @@ class LinePart final
  */
 class BrowserBox final : public gcn::Widget,
                          public Widget2,
-                         public gcn::MouseListener
+                         public MouseListener
 {
     public:
         /**

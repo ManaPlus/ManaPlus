@@ -23,15 +23,16 @@
 
 #include "gui/widgets/widget2.h"
 
-#include "gui/base/mouselistener.hpp"
-#include "gui/base/widget.hpp"
+#include "listeners/mouselistener.h"
 #include "gui/base/widgetlistener.hpp"
+
+#include "gui/base/widget.hpp"
 
 #include "localconsts.h"
 
 class EmotePage final : public gcn::Widget,
                         public Widget2,
-                        public gcn::MouseListener,
+                        public MouseListener,
                         public gcn::WidgetListener
 {
     public:

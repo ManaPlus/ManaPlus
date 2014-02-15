@@ -178,7 +178,7 @@ manaplus_SOURCES += gui/base/actionevent.hpp \
 	      gui/base/listmodel.hpp \
 	      gui/base/mouseevent.hpp \
 	      gui/base/mouseinput.hpp \
-	      gui/base/mouselistener.hpp \
+	      listeners/mouselistener.hpp \
 	      gui/base/rectangle.hpp \
 	      gui/base/selectionevent.hpp \
 	      gui/base/selectionlistener.hpp \

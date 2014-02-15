@@ -26,7 +26,7 @@
 #include "gui/widgets/widget2.h"
 
 #include "listeners/keylistener.h"
-#include "gui/base/mouselistener.hpp"
+#include "listeners/mouselistener.h"
 #include "gui/base/widgetlistener.hpp"
 
 #include "gui/base/widget.hpp"
@@ -53,7 +53,7 @@ namespace gcn
 class ItemContainer final : public gcn::Widget,
                             public Widget2,
                             public KeyListener,
-                            public gcn::MouseListener,
+                            public MouseListener,
                             public gcn::WidgetListener
 {
     public:

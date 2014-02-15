@@ -79,7 +79,7 @@ namespace gcn
 {
     Window::Window() :
         Container(),
-        gcn::MouseListener(),
+        MouseListener(),
         mCaption(),
         mAlignment(Graphics::CENTER),
         mPadding(2),
@@ -96,7 +96,7 @@ namespace gcn
 
     Window::Window(const std::string& caption) :
         Container(),
-        gcn::MouseListener(),
+        MouseListener(),
         mCaption(caption),
         mAlignment(Graphics::CENTER),
         mPadding(2),

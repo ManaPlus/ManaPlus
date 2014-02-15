@@ -22,9 +22,9 @@
 #define GUI_WIDGETS_SLIDERLIST_H
 
 #include "gui/base/listmodel.hpp"
-#include "gui/base/mouselistener.hpp"
 
 #include "listeners/actionlistener.h"
+#include "listeners/mouselistener.h"
 
 #include "gui/widgets/container.h"
 
@@ -35,7 +35,7 @@ class Label;
 
 class SliderList final : public Container,
                          public ActionListener,
-                         public gcn::MouseListener
+                         public MouseListener
 {
     public:
         SliderList(const Widget2 *const widget,

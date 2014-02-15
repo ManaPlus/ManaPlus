@@ -38,7 +38,7 @@ class Label;
 class TextPopup;
 
 class CharacterDisplay final : public Container,
-                               public gcn::MouseListener,
+                               public MouseListener,
                                public gcn::WidgetListener
 {
     public:

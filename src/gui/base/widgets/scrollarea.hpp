@@ -67,7 +67,7 @@
 #include <string>
 
 #include "gui/base/basiccontainer.hpp"
-#include "gui/base/mouselistener.hpp"
+#include "listeners/mouselistener.h"
 
 namespace gcn
 {

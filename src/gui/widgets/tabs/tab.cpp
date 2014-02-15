@@ -46,7 +46,7 @@ Skin *Tab::tabImg[Tab::TAB_COUNT];
 Tab::Tab(const Widget2 *const widget) :
     gcn::BasicContainer(),
     Widget2(widget),
-    gcn::MouseListener(),
+    MouseListener(),
     gcn::WidgetListener(),
     mLabel(new Label(this)),
     mTabbedArea(nullptr),

@@ -790,7 +790,7 @@ SET(SRCS
     gui/base/listmodel.hpp
     gui/base/mouseevent.hpp
     gui/base/mouseinput.hpp
-    gui/base/mouselistener.hpp
+    listeners/mouselistener.h
     gui/base/rectangle.hpp
     gui/base/selectionevent.hpp
     gui/base/selectionlistener.hpp

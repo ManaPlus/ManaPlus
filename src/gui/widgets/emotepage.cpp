@@ -36,7 +36,7 @@ namespace
 EmotePage::EmotePage(const Widget2 *const widget) :
     gcn::Widget(),
     Widget2(widget),
-    gcn::MouseListener(),
+    MouseListener(),
     gcn::WidgetListener(),
     mEmotes(ResourceManager::getInstance()->getImageSet(
         "graphics/sprites/chatemotes.png", emoteWidth, emoteHeight)),

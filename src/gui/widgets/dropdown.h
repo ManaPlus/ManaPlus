@@ -31,7 +31,7 @@
 #include "listeners/actionlistener.h"
 #include "listeners/focuslistener.h"
 #include "listeners/keylistener.h"
-#include "gui/base/mouselistener.hpp"
+#include "listeners/mouselistener.h"
 #include "gui/base/selectionlistener.hpp"
 
 #include "localconsts.h"
@@ -53,7 +53,7 @@ class Skin;
 class DropDown final : public ActionListener,
                        public gcn::BasicContainer,
                        public KeyListener,
-                       public gcn::MouseListener,
+                       public MouseListener,
                        public FocusListener,
                        public gcn::SelectionListener,
                        public Widget2

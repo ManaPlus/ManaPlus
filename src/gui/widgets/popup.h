@@ -26,7 +26,7 @@
 
 #include "gui/widgets/container.h"
 
-#include "gui/base/mouselistener.hpp"
+#include "listeners/mouselistener.h"
 #include "gui/base/widgetlistener.hpp"
 
 class ImageCollection;
@@ -45,7 +45,8 @@ class WindowContainer;
  *
  * \ingroup GUI
  */
-class Popup : public Container, public gcn::MouseListener,
+class Popup : public Container,
+              public MouseListener,
               public gcn::WidgetListener
 {
     public:

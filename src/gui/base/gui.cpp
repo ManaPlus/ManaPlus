@@ -76,7 +76,7 @@
 #include "gui/base/widget.hpp"
 
 #include "listeners/keylistener.h"
-#include "gui/base/mouselistener.hpp"
+#include "listeners/mouselistener.h"
 
 #include "render/graphics.h"
 

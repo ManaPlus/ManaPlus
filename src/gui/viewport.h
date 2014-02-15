@@ -29,7 +29,7 @@
 
 #include "gui/widgets/windowcontainer.h"
 
-#include "gui/base/mouselistener.hpp"
+#include "listeners/mouselistener.h"
 
 class ActorSprite;
 class Button;
@@ -60,7 +60,7 @@ const int walkingMouseDelay = 500;
  * coordinates.
  */
 class Viewport final : public WindowContainer,
-                       public gcn::MouseListener,
+                       public MouseListener,
                        public ConfigListener
 {
     public:

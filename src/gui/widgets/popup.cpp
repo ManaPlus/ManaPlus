@@ -34,7 +34,7 @@
 Popup::Popup(const std::string &name,
              std::string skin) :
     Container(nullptr),
-    gcn::MouseListener(),
+    MouseListener(),
     gcn::WidgetListener(),
     mPadding(3),
     mSkin(nullptr),

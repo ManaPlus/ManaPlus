@@ -79,7 +79,7 @@ class WindowMenu final : public Container,
                          public ConfigListener,
                          public ActionListener,
                          public gcn::SelectionListener,
-                         public gcn::MouseListener
+                         public MouseListener
 {
     public:
         explicit WindowMenu(const Widget2 *const widget);

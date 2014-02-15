@@ -51,7 +51,7 @@ extern MiniStatusWindow *miniStatusWindow;
 
 Viewport::Viewport() :
     WindowContainer(nullptr),
-    gcn::MouseListener(),
+    MouseListener(),
     mMap(nullptr),
     mScrollRadius(config.getIntValue("ScrollRadius")),
     mScrollLaziness(config.getIntValue("ScrollLaziness")),

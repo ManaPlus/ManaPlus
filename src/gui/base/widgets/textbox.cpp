@@ -80,7 +80,7 @@ namespace gcn
 {
     TextBox::TextBox() :
         gcn::Widget(),
-        gcn::MouseListener(),
+        MouseListener(),
         KeyListener(),
         mTextRows(),
         mCaretColumn(0),
@@ -98,7 +98,7 @@ namespace gcn
 
     TextBox::TextBox(const std::string& text) :
         gcn::Widget(),
-        gcn::MouseListener(),
+        MouseListener(),
         KeyListener(),
         mTextRows(),
         mCaretColumn(0),

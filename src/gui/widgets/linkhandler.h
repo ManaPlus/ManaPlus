@@ -25,7 +25,7 @@
 
 #include <string>
 
-#include "gui/base/mouselistener.hpp"
+#include "listeners/mouselistener.h"
 
 /**
  * A simple interface to windows that need to handle links from BrowserBox

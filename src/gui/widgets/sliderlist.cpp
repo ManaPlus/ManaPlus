@@ -37,7 +37,7 @@ SliderList::SliderList(const Widget2 *const widget,
                        gcn::ListModel *const listModel) :
     Container(widget),
     ActionListener(),
-    gcn::MouseListener(),
+    MouseListener(),
     mLabel(new Label(this)),
     mListModel(listModel),
     mPrevEventId(),

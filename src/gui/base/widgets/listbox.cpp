@@ -82,7 +82,7 @@ namespace gcn
 {
     ListBox::ListBox() :
         gcn::Widget(),
-        gcn::MouseListener(),
+        MouseListener(),
         KeyListener(),
         mSelected(-1),
         mListModel(nullptr),
@@ -98,7 +98,7 @@ namespace gcn
 
     ListBox::ListBox(ListModel *listModel) :
         gcn::Widget(),
-        gcn::MouseListener(),
+        MouseListener(),
         KeyListener(),
         mSelected(-1),
         mListModel(listModel),

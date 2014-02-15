@@ -68,129 +68,126 @@
 
 #include "localconsts.h"
 
-namespace gcn
+/**
+  * Interface for listening for mouse events from widgets.
+  *
+  * @see Widget::addMouseListener, Widget::removeMouseListener
+  * @since 0.1.0
+  */
+class MouseListener
 {
-    /**
-     * Interface for listening for mouse events from widgets.
-     *
-     * @see Widget::addMouseListener, Widget::removeMouseListener
-     * @since 0.1.0
-     */
-    class MouseListener
-    {
     public:
         /**
-         * Destructor.
-         */
+          * Destructor.
+          */
         virtual ~MouseListener()
         { }
 
         /**
-         * Called when the mouse has entered into the widget area.
-         *
-         * @param mouseEvent Describes the event.
-         * @since 0.6.0
-         */
-        virtual void mouseEntered(MouseEvent& mouseEvent A_UNUSED)
+          * Called when the mouse has entered into the widget area.
+          *
+          * @param mouseEvent Describes the event.
+          * @since 0.6.0
+          */
+        virtual void mouseEntered(gcn::MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
         /**
-         * Called when the mouse has exited the widget area.
-         *
-         * @param mouseEvent Describes the event.
-         * @since 0.6.0
-         */
-        virtual void mouseExited(MouseEvent& mouseEvent A_UNUSED)
+          * Called when the mouse has exited the widget area.
+          *
+          * @param mouseEvent Describes the event.
+          * @since 0.6.0
+          */
+        virtual void mouseExited(gcn::MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
         /**
-         * Called when a mouse button has been pressed on the widget area.
-         *
-         * NOTE: A mouse press is NOT equal to a mouse click.
-         *       Use mouseClickMessage to check for mouse clicks.
-         *
-         * @param mouseEvent Describes the event.
-         * @since 0.6.0
-         */
-        virtual void mousePressed(MouseEvent& mouseEvent A_UNUSED)
+          * Called when a mouse button has been pressed on the widget area.
+          *
+          * NOTE: A mouse press is NOT equal to a mouse click.
+          *       Use mouseClickMessage to check for mouse clicks.
+          *
+          * @param mouseEvent Describes the event.
+          * @since 0.6.0
+          */
+        virtual void mousePressed(gcn::MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
         /**
-         * Called when a mouse button has been released on the widget area.
-         *
-         * @param mouseEvent Describes the event.
-         * @since 0.6.0
-         */
-        virtual void mouseReleased(MouseEvent& mouseEvent A_UNUSED)
+          * Called when a mouse button has been released on the widget area.
+          *
+          * @param mouseEvent Describes the event.
+          * @since 0.6.0
+          */
+        virtual void mouseReleased(gcn::MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
         /**
-         * Called when a mouse button is pressed and released (clicked) on
-         * the widget area.
-         *
-         * @param mouseEvent Describes the event.
-         * @since 0.6.0
-         */
-        virtual void mouseClicked(MouseEvent& mouseEvent A_UNUSED)
+          * Called when a mouse button is pressed and released (clicked) on
+          * the widget area.
+          *
+          * @param mouseEvent Describes the event.
+          * @since 0.6.0
+          */
+        virtual void mouseClicked(gcn::MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
         /**
-         * Called when the mouse wheel has moved up on the widget area.
-         *
-         * @param mouseEvent Describes the event.
-         * @since 0.6.0
-         */
-        virtual void mouseWheelMovedUp(MouseEvent& mouseEvent A_UNUSED)
+          * Called when the mouse wheel has moved up on the widget area.
+          *
+          * @param mouseEvent Describes the event.
+          * @since 0.6.0
+          */
+        virtual void mouseWheelMovedUp(gcn::MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
         /**
-         * Called when the mouse wheel has moved down on the widget area.
-         *
-         * @param mousEvent Describes the event.
-         * @since 0.6.0
-         */
-        virtual void mouseWheelMovedDown(MouseEvent& mouseEvent A_UNUSED)
+          * Called when the mouse wheel has moved down on the widget area.
+          *
+          * @param mousEvent Describes the event.
+          * @since 0.6.0
+          */
+        virtual void mouseWheelMovedDown(gcn::MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
         /**
-         * Called when the mouse has moved in the widget area and no mouse button
-         * has been pressed (i.e no widget is being dragged).
-         *
-         * @param mouseEvent Describes the event.
-         * @since 0.6.0
-         */
-        virtual void mouseMoved(MouseEvent& mouseEvent A_UNUSED)
+          * Called when the mouse has moved in the widget area and no mouse button
+          * has been pressed (i.e no widget is being dragged).
+          *
+          * @param mouseEvent Describes the event.
+          * @since 0.6.0
+          */
+        virtual void mouseMoved(gcn::MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
         /**
-         * Called when the mouse has moved and the mouse has previously been
-         * pressed on the widget.
-         *
-         * @param mouseEvent Describes the event.
-         * @since 0.6.0
-         */
-        virtual void mouseDragged(MouseEvent& mouseEvent A_UNUSED)
+          * Called when the mouse has moved and the mouse has previously been
+          * pressed on the widget.
+          *
+          * @param mouseEvent Describes the event.
+          * @since 0.6.0
+          */
+        virtual void mouseDragged(gcn::MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
     protected:
         /**
-         * Constructor.
-         *
-         * You should not be able to make an instance of MouseListener,
-         * therefore its constructor is protected.
-         */
+          * Constructor.
+          *
+          * You should not be able to make an instance of MouseListener,
+          * therefore its constructor is protected.
+          */
         MouseListener()
         { }
-    };
-}  // namespace gcn
+};
 
 #endif  // end GCN_MOUSELISTENER_HPP

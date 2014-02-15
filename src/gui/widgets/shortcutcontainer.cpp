@@ -32,7 +32,7 @@ ShortcutContainer::ShortcutContainer() :
     gcn::Widget(),
     Widget2(),
     gcn::WidgetListener(),
-    gcn::MouseListener(),
+    MouseListener(),
     mBackgroundImg(nullptr),
     mMaxItems(0),
     mBoxWidth(1),

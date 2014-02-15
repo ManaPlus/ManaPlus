@@ -65,7 +65,7 @@
 #define GCN_SLIDER_HPP
 
 #include "listeners/keylistener.h"
-#include "gui/base/mouselistener.hpp"
+#include "listeners/mouselistener.h"
 
 #include "gui/base/widget.hpp"
 

@@ -29,7 +29,7 @@
 #include "gui/widgets/widget2.h"
 
 #include "listeners/keylistener.h"
-#include "gui/base/mouselistener.hpp"
+#include "listeners/mouselistener.h"
 
 #include "gui/base/widget.hpp"
 
@@ -48,7 +48,7 @@ class GuiTableActionListener;
  */
 class GuiTable final : public gcn::Widget,
                        public Widget2,
-                       public gcn::MouseListener,
+                       public MouseListener,
                        public KeyListener,
                        public TableModelListener
 {

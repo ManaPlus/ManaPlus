@@ -96,7 +96,7 @@ GuiTable::GuiTable(const Widget2 *const widget,
                    TableModel *const initial_model, const bool opacity) :
     gcn::Widget(),
     Widget2(widget),
-    gcn::MouseListener(),
+    MouseListener(),
     KeyListener(),
     mModel(nullptr),
     mTopWidget(nullptr),

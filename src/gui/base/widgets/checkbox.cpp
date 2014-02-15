@@ -80,7 +80,7 @@ namespace gcn
 
     CheckBox::CheckBox() :
         gcn::Widget(),
-        gcn::MouseListener(),
+        MouseListener(),
         KeyListener(),
         mSelected(false),
         mCaption()
@@ -92,7 +92,7 @@ namespace gcn
 
     CheckBox::CheckBox(const std::string &caption, bool selected) :
         gcn::Widget(),
-        gcn::MouseListener(),
+        MouseListener(),
         KeyListener(),
         mSelected(selected),
         mCaption()

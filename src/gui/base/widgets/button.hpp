@@ -68,7 +68,7 @@
 
 #include "listeners/focuslistener.h"
 #include "listeners/keylistener.h"
-#include "gui/base/mouselistener.hpp"
+#include "listeners/mouselistener.h"
 
 #include "gui/base/mouseevent.hpp"
 #include "gui/base/widget.hpp"

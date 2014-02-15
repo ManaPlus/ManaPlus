@@ -55,7 +55,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
                        const std::string &skin) :
     gcn::Widget(),
     Widget2(widget),
-    gcn::MouseListener(),
+    MouseListener(),
     mTextRows(),
     mTextRowLinksCount(),
     mLineParts(),
