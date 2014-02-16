@@ -103,22 +103,22 @@ class Viewport final : public WindowContainer,
         /**
          * Handles mouse press on map.
          */
-        void mousePressed(gcn::MouseEvent &event) override final;
+        void mousePressed(MouseEvent &event) override final;
 
         /**
          * Handles mouse move on map
          */
-        void mouseDragged(gcn::MouseEvent &event) override final;
+        void mouseDragged(MouseEvent &event) override final;
 
         /**
          * Handles mouse button release on map.
          */
-        void mouseReleased(gcn::MouseEvent &event) override final;
+        void mouseReleased(MouseEvent &event) override final;
 
         /**
          * Handles mouse move on map.
          */
-        void mouseMoved(gcn::MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) override final;
 
         /**
          * Shows a popup for an item.

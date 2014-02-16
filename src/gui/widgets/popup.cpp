@@ -231,7 +231,7 @@ void Popup::position(const int x, const int y)
     mRedraw = true;
 }
 
-void Popup::mouseMoved(gcn::MouseEvent &event A_UNUSED)
+void Popup::mouseMoved(MouseEvent &event A_UNUSED)
 {
     if (viewport)
         viewport->hideBeingPopup();

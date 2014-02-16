@@ -74,11 +74,11 @@ class ShopListBox final : public ListBox
          */
         void setPriceCheck(const bool check);
 
-        void mouseMoved(gcn::MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) override final;
 
-        void mouseReleased(gcn::MouseEvent& mouseEvent) override final;
+        void mouseReleased(MouseEvent& mouseEvent) override final;
 
-        void mouseExited(gcn::MouseEvent& mouseEvent) override final;
+        void mouseExited(MouseEvent& mouseEvent) override final;
 
         void setProtectItems(bool p)
         { mProtectItems = p; }

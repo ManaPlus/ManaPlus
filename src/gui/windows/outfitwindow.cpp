@@ -366,9 +366,9 @@ void OutfitWindow::draw(Graphics *graphics)
     BLOCK_END("OutfitWindow::draw")
 }
 
-void OutfitWindow::mouseDragged(gcn::MouseEvent &event)
+void OutfitWindow::mouseDragged(MouseEvent &event)
 {
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         if (dragDrop.isEmpty() && mItemClicked)
         {
@@ -409,12 +409,12 @@ void OutfitWindow::mouseDragged(gcn::MouseEvent &event)
     Window::mouseDragged(event);
 }
 
-void OutfitWindow::mousePressed(gcn::MouseEvent &event)
+void OutfitWindow::mousePressed(MouseEvent &event)
 {
     const int index = getIndexFromGrid(event.getX(), event.getY());
     if (index == -1)
     {
-        if (event.getButton() == gcn::MouseEvent::RIGHT && viewport)
+        if (event.getButton() == MouseEvent::RIGHT && viewport)
         {
             viewport->showOutfitsPopup();
             event.consume();
@@ -446,9 +446,9 @@ void OutfitWindow::mousePressed(gcn::MouseEvent &event)
     Window::mousePressed(event);
 }
 
-void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
+void OutfitWindow::mouseReleased(MouseEvent &event)
 {
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         if (mCurrentOutfit < 0 || mCurrentOutfit
             >= static_cast<signed int>(OUTFITS_COUNT))

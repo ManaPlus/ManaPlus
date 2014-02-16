@@ -84,7 +84,7 @@ class PlayerBox final : public Widget2,
         void setSelected(bool b)
         { mSelected = b; }
 
-        void mouseReleased(gcn::MouseEvent& event) override final;
+        void mouseReleased(MouseEvent& event) override final;
 
     private:
         Being *mBeing;

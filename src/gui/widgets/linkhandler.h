@@ -38,7 +38,7 @@ class LinkHandler
         { }
 
         virtual void handleLink(const std::string &link,
-                                gcn::MouseEvent *event) = 0;
+                                MouseEvent *event) = 0;
 };
 
 #endif  // GUI_WIDGETS_LINKHANDLER_H

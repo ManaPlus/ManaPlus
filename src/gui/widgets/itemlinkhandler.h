@@ -39,7 +39,7 @@ class ItemLinkHandler final : public LinkHandler
         ~ItemLinkHandler();
 
         void handleLink(const std::string &link,
-                        gcn::MouseEvent *event) override final;
+                        MouseEvent *event) override final;
 
     private:
         ItemPopup *mItemPopup;

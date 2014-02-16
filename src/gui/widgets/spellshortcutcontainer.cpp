@@ -146,9 +146,9 @@ void SpellShortcutContainer::draw(Graphics *graphics)
     BLOCK_END("SpellShortcutContainer::draw")
 }
 
-void SpellShortcutContainer::mouseDragged(gcn::MouseEvent &event)
+void SpellShortcutContainer::mouseDragged(MouseEvent &event)
 {
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         if (dragDrop.isEmpty() && mSpellClicked)
         {
@@ -177,7 +177,7 @@ void SpellShortcutContainer::mouseDragged(gcn::MouseEvent &event)
     }
 }
 
-void SpellShortcutContainer::mousePressed(gcn::MouseEvent &event)
+void SpellShortcutContainer::mousePressed(MouseEvent &event)
 {
     const int index = getIndexFromGrid(event.getX(), event.getY());
 
@@ -185,16 +185,16 @@ void SpellShortcutContainer::mousePressed(gcn::MouseEvent &event)
         return;
 
     const unsigned int eventButton = event.getButton();
-    if (eventButton == gcn::MouseEvent::LEFT)
+    if (eventButton == MouseEvent::LEFT)
     {
         const int itemId = getItemByIndex(index);
         if (itemId > 0)
             mSpellClicked = true;
     }
-    else if (eventButton == gcn::MouseEvent::RIGHT)
+    else if (eventButton == MouseEvent::RIGHT)
     {
     }
-    else if (eventButton == gcn::MouseEvent::MIDDLE)
+    else if (eventButton == MouseEvent::MIDDLE)
     {
         if (!spellShortcut || !spellManager)
             return;
@@ -204,7 +204,7 @@ void SpellShortcutContainer::mousePressed(gcn::MouseEvent &event)
     }
 }
 
-void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
+void SpellShortcutContainer::mouseReleased(MouseEvent &event)
 {
     if (!spellShortcut || !spellManager)
         return;
@@ -220,7 +220,7 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
     const int itemId = getItemByIndex(index);
     const unsigned int eventButton = event.getButton();
 
-    if (eventButton == gcn::MouseEvent::LEFT)
+    if (eventButton == MouseEvent::LEFT)
     {
         mSpellClicked = false;
 
@@ -272,7 +272,7 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
             }
         }
     }
-    else if (eventButton == gcn::MouseEvent::RIGHT)
+    else if (eventButton == MouseEvent::RIGHT)
     {
         TextCommand *spell = nullptr;
         if (itemId >= 0)
@@ -284,7 +284,7 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
 }
 
 // Show ItemTooltip
-void SpellShortcutContainer::mouseMoved(gcn::MouseEvent &event)
+void SpellShortcutContainer::mouseMoved(MouseEvent &event)
 {
     if (!mSpellPopup || !spellShortcut || !spellManager)
         return;
@@ -308,7 +308,7 @@ void SpellShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-void SpellShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
+void SpellShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (mSpellPopup)
         mSpellPopup->setVisible(false);

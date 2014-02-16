@@ -88,7 +88,7 @@ class Popup : public Container,
          */
         void setLocationRelativeTo(const gcn::Widget *const widget);
 
-        void mouseMoved(gcn::MouseEvent &event) override;
+        void mouseMoved(MouseEvent &event) override;
 
         /**
          * Sets the minimum width of the popup.

@@ -280,13 +280,13 @@ void Viewport::_followMouse()
     if (mPlayerFollowMouse && (button & SDL_BUTTON(1)))
     {
         // We create a mouse event and send it to mouseDragged.
-        gcn::MouseEvent mouseEvent(nullptr,
+        MouseEvent mouseEvent(nullptr,
             0,
             false,
             false,
             false,
-            gcn::MouseEvent::DRAGGED,
-            gcn::MouseEvent::LEFT,
+            MouseEvent::DRAGGED,
+            MouseEvent::LEFT,
             mMouseX,
             mMouseY,
             0);
@@ -385,7 +385,7 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
 #endif
 }
 
-void Viewport::mousePressed(gcn::MouseEvent &event)
+void Viewport::mousePressed(MouseEvent &event)
 {
     if (event.getSource() != this)
         return;
@@ -406,7 +406,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     const int pixelY = eventY + mPixelViewY;
 
     // Right click might open a popup
-    if (eventButton == gcn::MouseEvent::RIGHT)
+    if (eventButton == MouseEvent::RIGHT)
     {
         mPlayerFollowMouse = false;
         if (mHoverBeing)
@@ -460,7 +460,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     }
 
     // Left click can cause different actions
-    if (eventButton == gcn::MouseEvent::LEFT)
+    if (eventButton == MouseEvent::LEFT)
     {
         // Interact with some being
         if (mHoverBeing)
@@ -532,7 +532,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
             _followMouse();
         }
     }
-    else if (eventButton == gcn::MouseEvent::MIDDLE)
+    else if (eventButton == MouseEvent::MIDDLE)
     {
         mPlayerFollowMouse = false;
         validateSpeed();
@@ -548,7 +548,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     }
 }
 
-void Viewport::mouseDragged(gcn::MouseEvent &event)
+void Viewport::mouseDragged(MouseEvent &event)
 {
     if (!mMap || !player_node)
         return;
@@ -685,7 +685,7 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
     }
 }
 
-void Viewport::mouseReleased(gcn::MouseEvent &event A_UNUSED)
+void Viewport::mouseReleased(MouseEvent &event A_UNUSED)
 {
     mPlayerFollowMouse = false;
     // Only useful for eAthena but doesn't hurt under ManaServ
@@ -838,7 +838,7 @@ void Viewport::optionChanged(const std::string &name)
         mMouseDirectionMove = config.getBoolValue("mouseDirectionMove");
 }
 
-void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
+void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
 {
     // Check if we are on the map
     if (!mMap || !player_node || !actorManager)

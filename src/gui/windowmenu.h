@@ -90,11 +90,11 @@ class WindowMenu final : public Container,
 
         void action(const ActionEvent &event) override final;
 
-        void mousePressed(gcn::MouseEvent &event) override final;
+        void mousePressed(MouseEvent &event) override final;
 
-        void mouseMoved(gcn::MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) override final;
 
-        void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED) override final;
+        void mouseExited(MouseEvent& mouseEvent A_UNUSED) override final;
 
         std::map <std::string, ButtonInfo*> &getButtonNames() A_WARN_UNUSED
         { return mButtonNames; }

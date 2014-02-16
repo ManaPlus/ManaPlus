@@ -109,7 +109,7 @@ void SpellPopup::view(const int x, const int y)
     requestMoveToTop();
 }
 
-void SpellPopup::mouseMoved(gcn::MouseEvent &event)
+void SpellPopup::mouseMoved(MouseEvent &event)
 {
     Popup::mouseMoved(event);
 

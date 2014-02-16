@@ -71,17 +71,17 @@ class ListBox : public gcn::ListBox,
 
         // Inherited from MouseListener
 
-        void mouseWheelMovedUp(gcn::MouseEvent& mouseEvent) override final;
+        void mouseWheelMovedUp(MouseEvent& mouseEvent) override final;
 
-        void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent) override final;
+        void mouseWheelMovedDown(MouseEvent& mouseEvent) override final;
 
-        void mousePressed(gcn::MouseEvent &event) override;
+        void mousePressed(MouseEvent &event) override;
 
-        void mouseReleased(gcn::MouseEvent &event) override;
+        void mouseReleased(MouseEvent &event) override;
 
-        void mouseReleased1(const gcn::MouseEvent &event);
+        void mouseReleased1(const MouseEvent &event);
 
-        void mouseDragged(gcn::MouseEvent &event) override;
+        void mouseDragged(MouseEvent &event) override;
 
         void refocus();
 

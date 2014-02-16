@@ -75,8 +75,7 @@ ItemLinkHandler::~ItemLinkHandler()
     mItemPopup = nullptr;
 }
 
-void ItemLinkHandler::handleLink(const std::string &link,
-                                 gcn::MouseEvent *event)
+void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
 {
     if (strStartWith(link, "http://") || strStartWith(link, "https://"))
     {

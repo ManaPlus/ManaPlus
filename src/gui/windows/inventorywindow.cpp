@@ -466,7 +466,7 @@ void InventoryWindow::widgetHidden(const Event &event)
     mItems->hidePopup();
 }
 
-void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
+void InventoryWindow::mouseClicked(MouseEvent &event)
 {
     Window::mouseClicked(event);
 
@@ -482,7 +482,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
         && inputManager.isActionActive(static_cast<int>(
         Input::KEY_STOP_ATTACK)));
 
-    if (!mod && !mod2 && event.getButton() == gcn::MouseEvent::RIGHT)
+    if (!mod && !mod2 && event.getButton() == MouseEvent::RIGHT)
     {
         Item *const item = mItems->getSelectedItem();
 
@@ -502,8 +502,8 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
     if (!mInventory)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT
-        || event.getButton() == gcn::MouseEvent::RIGHT)
+    if (event.getButton() == MouseEvent::LEFT
+        || event.getButton() == MouseEvent::RIGHT)
     {
         Item *const item = mItems->getSelectedItem();
 
@@ -514,7 +514,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
         {
             if (mInventory->isMainInventory())
             {
-                if (event.getButton() == gcn::MouseEvent::RIGHT)
+                if (event.getButton() == MouseEvent::RIGHT)
                 {
                     ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
                         inventoryWindow, item);
@@ -528,7 +528,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
             }
             else
             {
-                if (event.getButton() == gcn::MouseEvent::RIGHT)
+                if (event.getButton() == MouseEvent::RIGHT)
                 {
                     ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
                         inventoryWindow, item);
@@ -545,7 +545,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
         {
             if (PlayerInfo::isItemProtected(item->getId()))
                 return;
-            if (event.getButton() == gcn::MouseEvent::RIGHT)
+            if (event.getButton() == MouseEvent::RIGHT)
             {
                 ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
                     tradeWindow, item);
@@ -589,7 +589,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
     }
 }
 
-void InventoryWindow::mouseMoved(gcn::MouseEvent &event)
+void InventoryWindow::mouseMoved(MouseEvent &event)
 {
     Window::mouseMoved(event);
     const gcn::Widget *const src = event.getSource();
@@ -608,7 +608,7 @@ void InventoryWindow::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-void InventoryWindow::mouseExited(gcn::MouseEvent &event A_UNUSED)
+void InventoryWindow::mouseExited(MouseEvent &event A_UNUSED)
 {
     mTextPopup->hide();
 }

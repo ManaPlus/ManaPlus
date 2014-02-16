@@ -233,13 +233,13 @@ void ItemShortcutContainer::draw(Graphics *graphics)
     BLOCK_END("ItemShortcutContainer::draw")
 }
 
-void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
+void ItemShortcutContainer::mouseDragged(MouseEvent &event)
 {
     ItemShortcut *const selShortcut = itemShortcut[mNumber];
     if (!selShortcut)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         if (dragDrop.isEmpty() && mItemClicked)
         {
@@ -321,7 +321,7 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
     }
 }
 
-void ItemShortcutContainer::mousePressed(gcn::MouseEvent &event)
+void ItemShortcutContainer::mousePressed(MouseEvent &event)
 {
     ItemShortcut *const selShortcut = itemShortcut[mNumber];
     if (!selShortcut)
@@ -332,7 +332,7 @@ void ItemShortcutContainer::mousePressed(gcn::MouseEvent &event)
     if (index == -1)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         // Stores the selected item if theirs one.
         if (selShortcut->isItemSelected() && inventoryWindow &&
@@ -350,7 +350,7 @@ void ItemShortcutContainer::mousePressed(gcn::MouseEvent &event)
             mItemClicked = true;
         }
     }
-    else if (event.getButton() == gcn::MouseEvent::RIGHT)
+    else if (event.getButton() == MouseEvent::RIGHT)
     {
         if (viewport && selShortcut)
         {
@@ -360,13 +360,13 @@ void ItemShortcutContainer::mousePressed(gcn::MouseEvent &event)
     }
 }
 
-void ItemShortcutContainer::mouseReleased(gcn::MouseEvent &event)
+void ItemShortcutContainer::mouseReleased(MouseEvent &event)
 {
     ItemShortcut *const selShortcut = itemShortcut[mNumber];
     if (!selShortcut)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         if (selShortcut->isItemSelected())
             selShortcut->setItemSelected(-1);
@@ -402,7 +402,7 @@ void ItemShortcutContainer::mouseReleased(gcn::MouseEvent &event)
     }
 }
 
-void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
+void ItemShortcutContainer::mouseMoved(MouseEvent &event)
 {
     const ItemShortcut *const selShortcut = itemShortcut[mNumber];
     if (!selShortcut)
@@ -459,7 +459,7 @@ void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
 }
 
 // Hide ItemTooltip
-void ItemShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
+void ItemShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (mItemPopup)
         mItemPopup->setVisible(false);

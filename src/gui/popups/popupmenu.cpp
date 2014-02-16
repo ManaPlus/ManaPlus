@@ -839,7 +839,7 @@ void PopupMenu::showChangePos(const int x, const int y)
 }
 
 void PopupMenu::handleLink(const std::string &link,
-                           gcn::MouseEvent *event A_UNUSED)
+                           MouseEvent *event A_UNUSED)
 {
     Being *being = nullptr;
     if (actorManager)

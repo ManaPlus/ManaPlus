@@ -771,12 +771,12 @@ void ChatWindow::scroll(const int amount) const
         tab->scroll(amount);
 }
 
-void ChatWindow::mousePressed(gcn::MouseEvent &event)
+void ChatWindow::mousePressed(MouseEvent &event)
 {
     if (event.isConsumed())
         return;
 
-    if (event.getButton() == gcn::MouseEvent::RIGHT)
+    if (event.getButton() == MouseEvent::RIGHT)
     {
         if (viewport)
         {
@@ -805,7 +805,7 @@ void ChatWindow::mousePressed(gcn::MouseEvent &event)
     if (event.isConsumed())
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         const ChatTab *const tab = getFocused();
         if (tab)
@@ -816,7 +816,7 @@ void ChatWindow::mousePressed(gcn::MouseEvent &event)
     mDragOffsetY = event.getY();
 }
 
-void ChatWindow::mouseDragged(gcn::MouseEvent &event)
+void ChatWindow::mouseDragged(MouseEvent &event)
 {
     Window::mouseDragged(event);
 
@@ -1885,19 +1885,19 @@ void ChatWindow::optionChanged(const std::string &name)
         parseGlobalsFilter();
 }
 
-void ChatWindow::mouseMoved(gcn::MouseEvent &event)
+void ChatWindow::mouseMoved(MouseEvent &event)
 {
     mHaveMouse = true;
     Window::mouseMoved(event);
 }
 
-void ChatWindow::mouseEntered(gcn::MouseEvent& mouseEvent)
+void ChatWindow::mouseEntered(MouseEvent& mouseEvent)
 {
     mHaveMouse = true;
     Window::mouseEntered(mouseEvent);
 }
 
-void ChatWindow::mouseExited(gcn::MouseEvent& mouseEvent)
+void ChatWindow::mouseExited(MouseEvent& mouseEvent)
 {
     updateVisibility();
     Window::mouseExited(mouseEvent);

@@ -525,9 +525,9 @@ void Button::draw(Graphics *graphics)
     BLOCK_END("Button::draw")
 }
 
-void Button::mouseReleased(gcn::MouseEvent& mouseEvent)
+void Button::mouseReleased(MouseEvent& mouseEvent)
 {
-    if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
+    if (mouseEvent.getButton() == MouseEvent::LEFT)
     {
         if (mStick)
             mPressed = !mPressed;

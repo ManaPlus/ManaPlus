@@ -129,13 +129,13 @@ void PopupList::adjustSize()
     mListBox->setWidth(width);
 }
 
-void PopupList::mousePressed(gcn::MouseEvent& mouseEvent)
+void PopupList::mousePressed(MouseEvent& mouseEvent)
 {
     mPressedIndex = mListBox->getSelectionByMouse(
         mouseEvent.getY() + mPadding);
 }
 
-void PopupList::mouseReleased(gcn::MouseEvent& mouseEvent)
+void PopupList::mouseReleased(MouseEvent& mouseEvent)
 {
     if (mPressedIndex != mListBox->getSelectionByMouse(
         mouseEvent.getY() + mPadding))

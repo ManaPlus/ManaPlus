@@ -506,7 +506,7 @@ void ServerDialog::valueChanged(const gcn::SelectionEvent &)
     mDeleteButton->setEnabled(true);
 }
 
-void ServerDialog::mouseClicked(gcn::MouseEvent &mouseEvent)
+void ServerDialog::mouseClicked(MouseEvent &mouseEvent)
 {
     if (mouseEvent.getClickCount() == 2 &&
         mouseEvent.getSource() == mServersList)

@@ -80,13 +80,13 @@ void SliderList::updateAlpha()
     Button::updateAlpha();
 }
 
-void SliderList::mouseWheelMovedUp(gcn::MouseEvent& mouseEvent)
+void SliderList::mouseWheelMovedUp(MouseEvent& mouseEvent)
 {
     setSelected(mSelectedIndex - 1);
     mouseEvent.consume();
 }
 
-void SliderList::mouseWheelMovedDown(gcn::MouseEvent& mouseEvent)
+void SliderList::mouseWheelMovedDown(MouseEvent& mouseEvent)
 {
     setSelected(mSelectedIndex + 1);
     mouseEvent.consume();

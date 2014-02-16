@@ -70,20 +70,20 @@ class Slider final : public gcn::Slider,
         /**
          * Called when the mouse enteres the widget area.
          */
-        void mouseEntered(gcn::MouseEvent& event) override final;
+        void mouseEntered(MouseEvent& event) override final;
 
         /**
          * Called when the mouse leaves the widget area.
          */
-        void mouseExited(gcn::MouseEvent& event) override final;
+        void mouseExited(MouseEvent& event) override final;
 
-        void mousePressed(gcn::MouseEvent &mouseEvent) override final;
+        void mousePressed(MouseEvent &mouseEvent) override final;
 
-        void mouseDragged(gcn::MouseEvent &mouseEvent) override final;
+        void mouseDragged(MouseEvent &mouseEvent) override final;
 
-        void mouseWheelMovedUp(gcn::MouseEvent &mouseEvent) override final;
+        void mouseWheelMovedUp(MouseEvent &mouseEvent) override final;
 
-        void mouseWheelMovedDown(gcn::MouseEvent &mouseEvent) override final;
+        void mouseWheelMovedDown(MouseEvent &mouseEvent) override final;
 
         void keyPressed(KeyEvent& keyEvent) override final;
 

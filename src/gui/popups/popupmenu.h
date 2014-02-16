@@ -187,7 +187,7 @@ class PopupMenu final : public Popup, public LinkHandler
          * Handles link action.
          */
         void handleLink(const std::string &link,
-                        gcn::MouseEvent *event A_UNUSED) override final;
+                        MouseEvent *event A_UNUSED) override final;
 
         void clear();
 

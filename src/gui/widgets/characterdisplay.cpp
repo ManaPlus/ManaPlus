@@ -115,12 +115,12 @@ void CharacterDisplay::widgetHidden(const Event &event A_UNUSED)
     mPopup->setVisible(false);
 }
 
-void CharacterDisplay::mouseExited(gcn::MouseEvent &event A_UNUSED)
+void CharacterDisplay::mouseExited(MouseEvent &event A_UNUSED)
 {
     mPopup->setVisible(false);
 }
 
-void CharacterDisplay::mouseMoved(gcn::MouseEvent &event A_UNUSED)
+void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
 {
     if (!gui)
         return;
@@ -142,7 +142,7 @@ void CharacterDisplay::mouseMoved(gcn::MouseEvent &event A_UNUSED)
     }
 }
 
-void CharacterDisplay::mousePressed(gcn::MouseEvent &event)
+void CharacterDisplay::mousePressed(MouseEvent &event)
 {
     if (event.getClickCount() == 2)
         distributeActionEvent();

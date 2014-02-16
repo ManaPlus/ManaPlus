@@ -118,7 +118,7 @@ class TextField : public gcn::TextField,
 
         void setCaretPosition(unsigned int position);
 
-        void mousePressed(gcn::MouseEvent &mouseEvent) override final;
+        void mousePressed(MouseEvent &mouseEvent) override final;
 
         void handlePaste();
 

@@ -195,21 +195,21 @@ void ShortcutWindow::widgetHidden(const Event &event)
     }
 }
 
-void ShortcutWindow::mousePressed(gcn::MouseEvent &event)
+void ShortcutWindow::mousePressed(MouseEvent &event)
 {
     Window::mousePressed(event);
 
     if (event.isConsumed())
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         mDragOffsetX = event.getX();
         mDragOffsetY = event.getY();
     }
 }
 
-void ShortcutWindow::mouseDragged(gcn::MouseEvent &event)
+void ShortcutWindow::mouseDragged(MouseEvent &event)
 {
     Window::mouseDragged(event);
 

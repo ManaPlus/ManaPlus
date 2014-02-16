@@ -726,13 +726,13 @@ void TextField::fontChanged()
     fixScroll();
 }
 
-void TextField::mousePressed(gcn::MouseEvent &mouseEvent)
+void TextField::mousePressed(MouseEvent &mouseEvent)
 {
 #ifdef ANDROID
     if (!client->isKeyboardVisible())
         inputManager.executeAction(Input::KEY_SHOW_KEYBOARD);
 #endif
-    if (mouseEvent.getButton() == gcn::MouseEvent::RIGHT)
+    if (mouseEvent.getButton() == MouseEvent::RIGHT)
     {
         if (viewport)
         {

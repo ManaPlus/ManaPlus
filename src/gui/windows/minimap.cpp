@@ -434,14 +434,14 @@ void Minimap::draw(Graphics *graphics)
     BLOCK_END("Minimap::draw")
 }
 
-void Minimap::mouseReleased(gcn::MouseEvent &event)
+void Minimap::mouseReleased(MouseEvent &event)
 {
     Window::mouseReleased(event);
 
     if (!player_node || !viewport)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         int x = event.getX();
         int y = event.getY();
@@ -449,7 +449,7 @@ void Minimap::mouseReleased(gcn::MouseEvent &event)
 
         player_node->navigateTo(x, y);
     }
-    else if (event.getButton() == gcn::MouseEvent::RIGHT)
+    else if (event.getButton() == MouseEvent::RIGHT)
     {
         int x = event.getX();
         int y = event.getY();
@@ -458,7 +458,7 @@ void Minimap::mouseReleased(gcn::MouseEvent &event)
     }
 }
 
-void Minimap::mouseMoved(gcn::MouseEvent &event)
+void Minimap::mouseMoved(MouseEvent &event)
 {
     Window::mouseMoved(event);
     const int x = event.getX();
@@ -467,7 +467,7 @@ void Minimap::mouseMoved(gcn::MouseEvent &event)
     mTextPopup->show(x + rect.x, y + rect.y, mCaption);
 }
 
-void Minimap::mouseExited(gcn::MouseEvent &event)
+void Minimap::mouseExited(MouseEvent &event)
 {
     Window::mouseExited(event);
     mTextPopup->hide();

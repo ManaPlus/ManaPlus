@@ -257,35 +257,35 @@ class Window : public gcn::Window,
         /**
          * Starts window resizing when appropriate.
          */
-        void mousePressed(gcn::MouseEvent &event) override;
+        void mousePressed(MouseEvent &event) override;
 
         /**
          * Implements window resizing and makes sure the window is not
          * dragged/resized outside of the screen.
          */
-        void mouseDragged(gcn::MouseEvent &event) override;
+        void mouseDragged(MouseEvent &event) override;
 
         /**
          * Implements custom cursor image changing context, based on mouse
          * relative position.
          */
-        void mouseMoved(gcn::MouseEvent &event) override;
+        void mouseMoved(MouseEvent &event) override;
 
         /**
          * When the mouse button has been let go, this ensures that the mouse
          * custom cursor is restored back to it's standard image.
          */
-        void mouseReleased(gcn::MouseEvent &event) override;
+        void mouseReleased(MouseEvent &event) override;
 
         /**
          * When the mouse leaves the window this ensures that the custom cursor
          * is restored back to it's standard image.
          */
-        void mouseExited(gcn::MouseEvent &event) override;
+        void mouseExited(MouseEvent &event) override;
 
-        void mouseEntered(gcn::MouseEvent &event) override;
+        void mouseEntered(MouseEvent &event) override;
 
-        void updateResizeHandler(gcn::MouseEvent &event);
+        void updateResizeHandler(MouseEvent &event);
 
         /**
          * Sets the name of the window. This is not the window title.
@@ -410,7 +410,7 @@ class Window : public gcn::Window,
 
         gcn::Rectangle getWindowArea() const A_WARN_UNUSED;
 
-        bool isResizeAllowed(const gcn::MouseEvent &event) const A_WARN_UNUSED;
+        bool isResizeAllowed(const MouseEvent &event) const A_WARN_UNUSED;
 
         void setCaptionFont(gcn::Font *font)
         { mCaptionFont = font; }
@@ -474,7 +474,7 @@ class Window : public gcn::Window,
          *
          * @see ResizeHandles
          */
-        int getResizeHandles(const gcn::MouseEvent &event) A_WARN_UNUSED;
+        int getResizeHandles(const MouseEvent &event) A_WARN_UNUSED;
 
         Image *mGrip;                 /**< Resize grip */
         Window *mParent;              /**< The parent window */

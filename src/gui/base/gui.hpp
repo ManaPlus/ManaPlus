@@ -68,7 +68,8 @@
 #include <deque>
 
 #include "events/keyevent.h"
-#include "gui/base/mouseevent.hpp"
+#include "events/mouseevent.h"
+
 #include "gui/base/mouseinput.hpp"
 
 class Graphics;

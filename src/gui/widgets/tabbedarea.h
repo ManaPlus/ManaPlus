@@ -155,7 +155,7 @@ class TabbedArea final : public Widget2,
 
         // Inherited from MouseListener
 
-        void mousePressed(gcn::MouseEvent &mouseEvent) override final;
+        void mousePressed(MouseEvent &mouseEvent) override final;
 
         void enableScrollButtons(const bool enable);
 

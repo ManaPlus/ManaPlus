@@ -324,12 +324,12 @@ void TabbedArea::logic()
     BLOCK_END("TabbedArea::logic")
 }
 
-void TabbedArea::mousePressed(gcn::MouseEvent &mouseEvent)
+void TabbedArea::mousePressed(MouseEvent &mouseEvent)
 {
     if (mouseEvent.isConsumed())
         return;
 
-    if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
+    if (mouseEvent.getButton() == MouseEvent::LEFT)
     {
         gcn::Widget *const widget = mTabContainer->getWidgetAt(
             mouseEvent.getX(), mouseEvent.getY());

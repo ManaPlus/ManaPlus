@@ -70,8 +70,9 @@
 #include "gui/base/exception.hpp"
 #include "gui/base/font.hpp"
 #include "gui/base/key.hpp"
-#include "gui/base/mouseevent.hpp"
 #include "gui/base/mouseinput.hpp"
+
+#include "events/mouseevent.h"
 
 #include "render/graphics.h"
 

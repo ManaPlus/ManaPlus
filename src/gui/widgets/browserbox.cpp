@@ -423,7 +423,7 @@ struct MouseOverLink
     int mX, mY;
 };
 
-void BrowserBox::mousePressed(gcn::MouseEvent &event)
+void BrowserBox::mousePressed(MouseEvent &event)
 {
     if (!mLinkHandler)
         return;
@@ -438,7 +438,7 @@ void BrowserBox::mousePressed(gcn::MouseEvent &event)
     }
 }
 
-void BrowserBox::mouseMoved(gcn::MouseEvent &event)
+void BrowserBox::mouseMoved(MouseEvent &event)
 {
     const LinkIterator i = std::find_if(mLinks.begin(), mLinks.end(),
         MouseOverLink(event.getX(), event.getY()));

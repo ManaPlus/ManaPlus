@@ -66,21 +66,21 @@ class ShortcutContainer : public gcn::Widget,
         /**
          * Handles mouse when dragged.
          */
-        virtual void mouseDragged(gcn::MouseEvent &event A_UNUSED) override
+        virtual void mouseDragged(MouseEvent &event A_UNUSED) override
         {
         }
 
         /**
          * Handles mouse when pressed.
          */
-        virtual void mousePressed(gcn::MouseEvent &event A_UNUSED) override
+        virtual void mousePressed(MouseEvent &event A_UNUSED) override
         {
         }
 
         /**
          * Handles mouse release.
          */
-        virtual void mouseReleased(gcn::MouseEvent &event A_UNUSED) override
+        virtual void mouseReleased(MouseEvent &event A_UNUSED) override
         {
         }
 

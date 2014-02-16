@@ -55,9 +55,9 @@ public:
      */
     void draw(Graphics *gcnGraphics) override final;
 
-    void mousePressed(gcn::MouseEvent &event) override final;
+    void mousePressed(MouseEvent &event) override final;
 
-    void mouseReleased(gcn::MouseEvent &event A_UNUSED) override final;
+    void mouseReleased(MouseEvent &event A_UNUSED) override final;
 
     void optionChanged(const std::string &value) override final;
 

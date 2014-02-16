@@ -97,7 +97,7 @@ class InventoryWindow final : public Window,
         /**
          * Handles the mouse clicks.
          */
-        void mouseClicked(gcn::MouseEvent &event) override final;
+        void mouseClicked(MouseEvent &event) override final;
 
         /**
          * Handles the key presses.
@@ -147,9 +147,9 @@ class InventoryWindow final : public Window,
 
         void widgetResized(const Event &event) override final;
 
-        void mouseMoved(gcn::MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) override final;
 
-        void mouseExited(gcn::MouseEvent &event) override final;
+        void mouseExited(MouseEvent &event) override final;
 
         void setVisible(bool visible) override final;
 

@@ -116,7 +116,7 @@ void EmotePage::draw(Graphics *graphics)
     BLOCK_END("EmotePage::draw")
 }
 
-void EmotePage::mousePressed(gcn::MouseEvent &mouseEvent)
+void EmotePage::mousePressed(MouseEvent &mouseEvent)
 {
     mSelectedIndex = getIndexFromGrid(mouseEvent.getX(), mouseEvent.getY());
     distributeActionEvent();

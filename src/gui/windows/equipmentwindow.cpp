@@ -291,7 +291,7 @@ Item *EquipmentWindow::getItem(const int x, const int y) const
     return nullptr;
 }
 
-void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
+void EquipmentWindow::mousePressed(MouseEvent& mouseEvent)
 {
     if (!mEquipment)
     {
@@ -302,7 +302,7 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
     const int x = mouseEvent.getX();
     const int y = mouseEvent.getY();
 
-    if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
+    if (mouseEvent.getButton() == MouseEvent::LEFT)
     {
         if (mForing)
         {
@@ -337,7 +337,7 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
                 return;
         }
     }
-    else if (mouseEvent.getButton() == gcn::MouseEvent::RIGHT)
+    else if (mouseEvent.getButton() == MouseEvent::RIGHT)
     {
         if (Item *const item = getItem(x, y))
         {
@@ -362,7 +362,7 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
     Window::mousePressed(mouseEvent);
 }
 
-void EquipmentWindow::mouseReleased(gcn::MouseEvent &mouseEvent)
+void EquipmentWindow::mouseReleased(MouseEvent &mouseEvent)
 {
     Window::mouseReleased(mouseEvent);
     const DragDropSource src = dragDrop.getSource();
@@ -417,7 +417,7 @@ void EquipmentWindow::mouseReleased(gcn::MouseEvent &mouseEvent)
 }
 
 // Show ItemTooltip
-void EquipmentWindow::mouseMoved(gcn::MouseEvent &event)
+void EquipmentWindow::mouseMoved(MouseEvent &event)
 {
     Window::mouseMoved(event);
 
@@ -441,7 +441,7 @@ void EquipmentWindow::mouseMoved(gcn::MouseEvent &event)
 }
 
 // Hide ItemTooltip
-void EquipmentWindow::mouseExited(gcn::MouseEvent &event A_UNUSED)
+void EquipmentWindow::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (mItemPopup)
         mItemPopup->setVisible(false);

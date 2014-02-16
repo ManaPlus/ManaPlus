@@ -125,7 +125,7 @@ class ServerDialog final : public Window,
          */
         void valueChanged(const gcn::SelectionEvent &event) override final;
 
-        void mouseClicked(gcn::MouseEvent &mouseEvent) override final;
+        void mouseClicked(MouseEvent &mouseEvent) override final;
 
         void logic() override final;
 

@@ -394,7 +394,7 @@ void ItemContainer::keyReleased(KeyEvent &event A_UNUSED)
 {
 }
 
-void ItemContainer::mousePressed(gcn::MouseEvent &event)
+void ItemContainer::mousePressed(MouseEvent &event)
 {
     if (!mInventory)
         return;
@@ -402,7 +402,7 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
     const int button = event.getButton();
     mClicks = event.getClickCount();
 
-    if (button == gcn::MouseEvent::LEFT || button == gcn::MouseEvent::RIGHT)
+    if (button == MouseEvent::LEFT || button == MouseEvent::RIGHT)
     {
         const int index = getSlotIndex(event.getX(), event.getY());
         if (index == Inventory::NO_SLOT_INDEX)
@@ -468,13 +468,13 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
     }
 }
 
-void ItemContainer::mouseDragged(gcn::MouseEvent &event A_UNUSED)
+void ItemContainer::mouseDragged(MouseEvent &event A_UNUSED)
 {
     if (mSelectionStatus != SEL_NONE)
         mSelectionStatus = SEL_DRAGGING;
 }
 
-void ItemContainer::mouseReleased(gcn::MouseEvent &event)
+void ItemContainer::mouseReleased(MouseEvent &event)
 {
     if (mClicks == 2)
         return;
@@ -594,7 +594,7 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
     }
 }
 
-void ItemContainer::mouseMoved(gcn::MouseEvent &event)
+void ItemContainer::mouseMoved(MouseEvent &event)
 {
     if (!mInventory)
         return;
@@ -613,7 +613,7 @@ void ItemContainer::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-void ItemContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
+void ItemContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
     mItemPopup->setVisible(false);
 }

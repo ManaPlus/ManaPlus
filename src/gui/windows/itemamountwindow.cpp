@@ -313,7 +313,7 @@ ItemAmountWindow::~ItemAmountWindow()
 }
 
 // Show ItemTooltip
-void ItemAmountWindow::mouseMoved(gcn::MouseEvent &event)
+void ItemAmountWindow::mouseMoved(MouseEvent &event)
 {
     Window::mouseMoved(event);
 
@@ -328,7 +328,7 @@ void ItemAmountWindow::mouseMoved(gcn::MouseEvent &event)
 }
 
 // Hide ItemTooltip
-void ItemAmountWindow::mouseExited(gcn::MouseEvent &event A_UNUSED)
+void ItemAmountWindow::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (mItemPopup)
         mItemPopup->setVisible(false);

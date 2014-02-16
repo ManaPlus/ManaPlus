@@ -100,7 +100,7 @@ void TextPopup::show(const int x, const int y, const std::string &str1,
     requestMoveToTop();
 }
 
-void TextPopup::mouseMoved(gcn::MouseEvent &event)
+void TextPopup::mouseMoved(MouseEvent &event)
 {
     Popup::mouseMoved(event);
 

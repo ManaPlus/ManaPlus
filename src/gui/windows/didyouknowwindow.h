@@ -59,7 +59,7 @@ class DidYouKnowWindow final : public Window,
          * Handles link action.
          */
         void handleLink(const std::string &link,
-                        gcn::MouseEvent *event) override final;
+                        MouseEvent *event) override final;
 
         void loadData(int num = 0);
 

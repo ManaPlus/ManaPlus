@@ -157,12 +157,12 @@ void DropShortcutContainer::draw(Graphics *graphics)
     BLOCK_END("DropShortcutContainer::draw")
 }
 
-void DropShortcutContainer::mouseDragged(gcn::MouseEvent &event)
+void DropShortcutContainer::mouseDragged(MouseEvent &event)
 {
     if (!dropShortcut)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         if (dragDrop.isEmpty() && mItemClicked)
         {
@@ -196,7 +196,7 @@ void DropShortcutContainer::mouseDragged(gcn::MouseEvent &event)
     }
 }
 
-void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
+void DropShortcutContainer::mousePressed(MouseEvent &event)
 {
     if (!dropShortcut || !inventoryWindow)
         return;
@@ -207,7 +207,7 @@ void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
         return;
 
     const int eventButton = event.getButton();
-    if (eventButton == gcn::MouseEvent::LEFT)
+    if (eventButton == MouseEvent::LEFT)
     {
         if (dropShortcut->getItem(index) > 0)
         {
@@ -223,7 +223,7 @@ void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
             }
         }
     }
-    else if (eventButton == gcn::MouseEvent::RIGHT)
+    else if (eventButton == MouseEvent::RIGHT)
     {
         const Inventory *const inv = PlayerInfo::getInventory();
         if (!inv)
@@ -237,12 +237,12 @@ void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
     }
 }
 
-void DropShortcutContainer::mouseReleased(gcn::MouseEvent &event)
+void DropShortcutContainer::mouseReleased(MouseEvent &event)
 {
     if (!dropShortcut)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         if (dropShortcut->isItemSelected())
             dropShortcut->setItemSelected(-1);
@@ -269,7 +269,7 @@ void DropShortcutContainer::mouseReleased(gcn::MouseEvent &event)
 }
 
 // Show ItemTooltip
-void DropShortcutContainer::mouseMoved(gcn::MouseEvent &event)
+void DropShortcutContainer::mouseMoved(MouseEvent &event)
 {
     if (!dropShortcut)
         return;
@@ -302,7 +302,7 @@ void DropShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-void DropShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
+void DropShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (mItemPopup)
         mItemPopup->setVisible(false);

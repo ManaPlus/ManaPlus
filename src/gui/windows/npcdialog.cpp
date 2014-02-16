@@ -965,10 +965,10 @@ void NpcDialog::clearDialogs()
     mNpcDialogs.clear();
 }
 
-void NpcDialog::mousePressed(gcn::MouseEvent &event)
+void NpcDialog::mousePressed(MouseEvent &event)
 {
     Window::mousePressed(event);
-    if (event.getButton() == gcn::MouseEvent::RIGHT
+    if (event.getButton() == MouseEvent::RIGHT
         && event.getSource() == mTextBox)
     {
         if (viewport)

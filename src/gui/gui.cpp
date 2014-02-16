@@ -31,7 +31,8 @@
 #include "gui/theme.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/mouseevent.h"
+#include "events/mouseevent.h"
+
 #include "gui/widgets/window.h"
 
 #include "client.h"
@@ -708,32 +709,32 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
             {
                 switch (mouseEvent.getType())
                 {
-                    case gcn::MouseEvent::ENTERED:
+                    case MouseEvent::ENTERED:
                         (*it)->mouseEntered(mouseEvent);
                         break;
-                    case gcn::MouseEvent::EXITED:
+                    case MouseEvent::EXITED:
                         (*it)->mouseExited(mouseEvent);
                         break;
-                    case gcn::MouseEvent::MOVED:
+                    case MouseEvent::MOVED:
                         (*it)->mouseMoved(mouseEvent);
                         break;
-                    case gcn::MouseEvent::PRESSED:
+                    case MouseEvent::PRESSED:
                         (*it)->mousePressed(mouseEvent);
                         break;
-                    case gcn::MouseEvent::RELEASED:
+                    case MouseEvent::RELEASED:
                     case 100:  // manual hack for release on target after drag
                         (*it)->mouseReleased(mouseEvent);
                         break;
-                    case gcn::MouseEvent::WHEEL_MOVED_UP:
+                    case MouseEvent::WHEEL_MOVED_UP:
                         (*it)->mouseWheelMovedUp(mouseEvent);
                         break;
-                    case gcn::MouseEvent::WHEEL_MOVED_DOWN:
+                    case MouseEvent::WHEEL_MOVED_DOWN:
                         (*it)->mouseWheelMovedDown(mouseEvent);
                         break;
-                    case gcn::MouseEvent::DRAGGED:
+                    case MouseEvent::DRAGGED:
                         (*it)->mouseDragged(mouseEvent);
                         break;
-                    case gcn::MouseEvent::CLICKED:
+                    case MouseEvent::CLICKED:
                         (*it)->mouseClicked(mouseEvent);
                         break;
                     default:
@@ -749,7 +750,7 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
         widget = parent;
         parent = swap->getParent();
 
-        if (type == gcn::MouseEvent::RELEASED)
+        if (type == MouseEvent::RELEASED)
             dragDrop.clear();
 
         // If a non modal focused widget has been reach

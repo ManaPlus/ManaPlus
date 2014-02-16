@@ -174,7 +174,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/keyinput.hpp \
 	      listeners/keylistener.h \
 	      gui/base/listmodel.hpp \
-	      gui/base/mouseevent.hpp \
+	      events/mouseevent.h \
 	      gui/base/mouseinput.hpp \
 	      listeners/mouselistener.h \
 	      gui/base/rectangle.hpp \
@@ -203,7 +203,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/gui.cpp \
 	      gui/base/key.cpp \
 	      gui/base/keyinput.cpp \
-	      gui/base/mouseevent.cpp \
 	      gui/base/mouseinput.cpp \
 	      gui/base/rectangle.cpp \
 	      gui/base/selectionevent.cpp \
@@ -293,7 +292,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/linkhandler.h \
 	      gui/widgets/listbox.cpp \
 	      gui/widgets/listbox.h \
-	      gui/widgets/mouseevent.h \
 	      gui/widgets/namesmodel.cpp \
 	      gui/widgets/namesmodel.h \
 	      gui/widgets/passwordfield.cpp \

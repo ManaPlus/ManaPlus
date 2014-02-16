@@ -315,7 +315,7 @@ void MiniStatusWindow::draw(Graphics *graphics)
     BLOCK_END("MiniStatusWindow::draw")
 }
 
-void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
+void MiniStatusWindow::mouseMoved(MouseEvent &event)
 {
     Popup::mouseMoved(event);
 
@@ -433,12 +433,12 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-void MiniStatusWindow::mousePressed(gcn::MouseEvent &event)
+void MiniStatusWindow::mousePressed(MouseEvent &event)
 {
     if (!viewport)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::RIGHT)
+    if (event.getButton() == MouseEvent::RIGHT)
     {
         const ProgressBar *const bar = dynamic_cast<ProgressBar*>(
             event.getSource());
@@ -452,7 +452,7 @@ void MiniStatusWindow::mousePressed(gcn::MouseEvent &event)
     }
 }
 
-void MiniStatusWindow::mouseExited(gcn::MouseEvent &event)
+void MiniStatusWindow::mouseExited(MouseEvent &event)
 {
     Popup::mouseExited(event);
 

@@ -64,9 +64,9 @@ class ShortcutWindow final : public Window
 
         void widgetMoved(const Event& event) override final;
 
-        void mousePressed(gcn::MouseEvent &event) override final;
+        void mousePressed(MouseEvent &event) override final;
 
-        void mouseDragged(gcn::MouseEvent &event) override final;
+        void mouseDragged(MouseEvent &event) override final;
 
         void nextTab();
 

@@ -172,12 +172,12 @@ void CheckBox::drawBox(Graphics *const graphics)
     }
 }
 
-void CheckBox::mouseEntered(gcn::MouseEvent& event A_UNUSED)
+void CheckBox::mouseEntered(MouseEvent& event A_UNUSED)
 {
     mHasMouse = true;
 }
 
-void CheckBox::mouseExited(gcn::MouseEvent& event A_UNUSED)
+void CheckBox::mouseExited(MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }

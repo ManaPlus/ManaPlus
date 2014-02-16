@@ -189,7 +189,7 @@ void ShopListBox::setPriceCheck(const bool check)
     mPriceCheck = check;
 }
 
-void ShopListBox::mouseMoved(gcn::MouseEvent &event)
+void ShopListBox::mouseMoved(MouseEvent &event)
 {
     if (!mItemPopup || !mRowHeight)
         return;
@@ -221,10 +221,10 @@ void ShopListBox::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-void ShopListBox::mouseReleased(gcn::MouseEvent& mouseEvent)
+void ShopListBox::mouseReleased(MouseEvent& mouseEvent)
 {
     ListBox::mouseReleased(mouseEvent);
-    if (mouseEvent.getButton() == gcn::MouseEvent::RIGHT)
+    if (mouseEvent.getButton() == MouseEvent::RIGHT)
     {
         setSelected(std::max(0, getSelectionByMouse(mouseEvent.getY())));
 
@@ -236,7 +236,7 @@ void ShopListBox::mouseReleased(gcn::MouseEvent& mouseEvent)
     }
 }
 
-void ShopListBox::mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED)
+void ShopListBox::mouseExited(MouseEvent& mouseEvent A_UNUSED)
 {
     if (!mItemPopup)
         return;

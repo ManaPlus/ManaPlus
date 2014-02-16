@@ -631,7 +631,7 @@ void Window::setVisible(const bool visible, const bool forceSticky)
             soundManager.playGuiSound(SOUND_SHOW_WINDOW);
         if (gui)
         {
-            gcn::MouseEvent *const event = reinterpret_cast<gcn::MouseEvent*>(
+            MouseEvent *const event = reinterpret_cast<MouseEvent*>(
                 gui->createMouseEvent(this));
             if (event)
             {
@@ -658,12 +658,12 @@ void Window::scheduleDelete()
     windowContainer->scheduleDelete(this);
 }
 
-void Window::mousePressed(gcn::MouseEvent &event)
+void Window::mousePressed(MouseEvent &event)
 {
     // Let Guichan move window to top and figure out title bar drag
     gcn::Window::mousePressed(event);
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         const int x = event.getX();
         const int y = event.getY();
@@ -701,7 +701,7 @@ void Window::close()
     setVisible(false);
 }
 
-void Window::mouseReleased(gcn::MouseEvent &event A_UNUSED)
+void Window::mouseReleased(MouseEvent &event A_UNUSED)
 {
     if (mGrip && mouseResize)
     {
@@ -714,18 +714,18 @@ void Window::mouseReleased(gcn::MouseEvent &event A_UNUSED)
     mMoved = false;
 }
 
-void Window::mouseEntered(gcn::MouseEvent &event)
+void Window::mouseEntered(MouseEvent &event)
 {
     updateResizeHandler(event);
 }
 
-void Window::mouseExited(gcn::MouseEvent &event A_UNUSED)
+void Window::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (mGrip && !mouseResize && gui)
         gui->setCursorType(Cursor::CURSOR_POINTER);
 }
 
-void Window::updateResizeHandler(gcn::MouseEvent &event)
+void Window::updateResizeHandler(MouseEvent &event)
 {
     if (!gui)
         return;
@@ -760,7 +760,7 @@ void Window::updateResizeHandler(gcn::MouseEvent &event)
     }
 }
 
-void Window::mouseMoved(gcn::MouseEvent &event)
+void Window::mouseMoved(MouseEvent &event)
 {
     updateResizeHandler(event);
     if (viewport)
@@ -772,7 +772,7 @@ bool Window::canMove() const
     return !mStickyButtonLock || !mSticky;
 }
 
-void Window::mouseDragged(gcn::MouseEvent &event)
+void Window::mouseDragged(MouseEvent &event)
 {
     if (canMove())
     {
@@ -1088,7 +1088,7 @@ void Window::adjustSizeToScreen()
         widgetResized(Event(this));
 }
 
-int Window::getResizeHandles(const gcn::MouseEvent &event)
+int Window::getResizeHandles(const MouseEvent &event)
 {
     if (event.getX() < 0 || event.getY() < 0)
         return 0;
@@ -1125,7 +1125,7 @@ int Window::getResizeHandles(const gcn::MouseEvent &event)
     return resizeHandles;
 }
 
-bool Window::isResizeAllowed(const gcn::MouseEvent &event) const
+bool Window::isResizeAllowed(const MouseEvent &event) const
 {
     const int y = event.getY();
 

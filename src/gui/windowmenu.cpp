@@ -248,12 +248,12 @@ void WindowMenu::addButton(const char *const text,
         mButtonTexts.push_back(new ButtonText(description, key));
 }
 
-void WindowMenu::mousePressed(gcn::MouseEvent &event)
+void WindowMenu::mousePressed(MouseEvent &event)
 {
     if (!viewport)
         return;
 
-    if (!mSmallWindow && event.getButton() == gcn::MouseEvent::RIGHT)
+    if (!mSmallWindow && event.getButton() == MouseEvent::RIGHT)
     {
         Button *const btn = dynamic_cast<Button*>(event.getSource());
         if (!btn)
@@ -266,7 +266,7 @@ void WindowMenu::mousePressed(gcn::MouseEvent &event)
     }
 }
 
-void WindowMenu::mouseMoved(gcn::MouseEvent &event)
+void WindowMenu::mouseMoved(MouseEvent &event)
 {
     mHaveMouse = true;
 
@@ -305,7 +305,7 @@ void WindowMenu::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-void WindowMenu::mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED)
+void WindowMenu::mouseExited(MouseEvent& mouseEvent A_UNUSED)
 {
     mHaveMouse = false;
     if (!mTextPopup)

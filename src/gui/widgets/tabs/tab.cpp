@@ -327,12 +327,12 @@ const std::string &Tab::getCaption() const
     return mLabel->getCaption();
 }
 
-void Tab::mouseEntered(gcn::MouseEvent& mouseEvent A_UNUSED)
+void Tab::mouseEntered(MouseEvent& mouseEvent A_UNUSED)
 {
     mHasMouse = true;
 }
 
-void Tab::mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED)
+void Tab::mouseExited(MouseEvent& mouseEvent A_UNUSED)
 {
     mHasMouse = false;
 }

@@ -168,12 +168,12 @@ void RadioButton::draw(Graphics* graphics)
     BLOCK_END("RadioButton::draw")
 }
 
-void RadioButton::mouseEntered(gcn::MouseEvent& event A_UNUSED)
+void RadioButton::mouseEntered(MouseEvent& event A_UNUSED)
 {
     mHasMouse = true;
 }
 
-void RadioButton::mouseExited(gcn::MouseEvent& event A_UNUSED)
+void RadioButton::mouseExited(MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }

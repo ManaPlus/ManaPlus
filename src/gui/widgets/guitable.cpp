@@ -463,12 +463,12 @@ void GuiTable::keyPressed(KeyEvent& keyEvent)
 }
 
 // -- MouseListener notifications
-void GuiTable::mousePressed(gcn::MouseEvent& mouseEvent)
+void GuiTable::mousePressed(MouseEvent& mouseEvent)
 {
     if (!mModel || !mSelectable)
         return;
 
-    if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
+    if (mouseEvent.getButton() == MouseEvent::LEFT)
     {
         const int row = getRowForY(mouseEvent.getY());
         const int column = getColumnForX(mouseEvent.getX());
@@ -484,7 +484,7 @@ void GuiTable::mousePressed(gcn::MouseEvent& mouseEvent)
     }
 }
 
-void GuiTable::mouseWheelMovedUp(gcn::MouseEvent& mouseEvent)
+void GuiTable::mouseWheelMovedUp(MouseEvent& mouseEvent)
 {
     if (isFocused())
     {
@@ -495,7 +495,7 @@ void GuiTable::mouseWheelMovedUp(gcn::MouseEvent& mouseEvent)
     }
 }
 
-void GuiTable::mouseWheelMovedDown(gcn::MouseEvent& mouseEvent)
+void GuiTable::mouseWheelMovedDown(MouseEvent& mouseEvent)
 {
     if (isFocused())
     {
@@ -504,9 +504,9 @@ void GuiTable::mouseWheelMovedDown(gcn::MouseEvent& mouseEvent)
     }
 }
 
-void GuiTable::mouseDragged(gcn::MouseEvent& mouseEvent)
+void GuiTable::mouseDragged(MouseEvent& mouseEvent)
 {
-    if (mouseEvent.getButton() != gcn::MouseEvent::LEFT)
+    if (mouseEvent.getButton() != MouseEvent::LEFT)
         return;
 
     // Make table selection update on drag

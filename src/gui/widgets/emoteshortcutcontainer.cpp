@@ -148,11 +148,11 @@ void EmoteShortcutContainer::draw(Graphics *graphics)
     BLOCK_END("EmoteShortcutContainer::draw")
 }
 
-void EmoteShortcutContainer::mouseDragged(gcn::MouseEvent &event A_UNUSED)
+void EmoteShortcutContainer::mouseDragged(MouseEvent &event A_UNUSED)
 {
 }
 
-void EmoteShortcutContainer::mousePressed(gcn::MouseEvent &event)
+void EmoteShortcutContainer::mousePressed(MouseEvent &event)
 {
     if (!emoteShortcut)
         return;
@@ -174,12 +174,12 @@ void EmoteShortcutContainer::mousePressed(gcn::MouseEvent &event)
     }
 }
 
-void EmoteShortcutContainer::mouseReleased(gcn::MouseEvent &event)
+void EmoteShortcutContainer::mouseReleased(MouseEvent &event)
 {
     if (!emoteShortcut)
         return;
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         const int index = getIndexFromGrid(event.getX(), event.getY());
 
@@ -206,7 +206,7 @@ void EmoteShortcutContainer::mouseReleased(gcn::MouseEvent &event)
     }
 }
 
-void EmoteShortcutContainer::mouseMoved(gcn::MouseEvent &event)
+void EmoteShortcutContainer::mouseMoved(MouseEvent &event)
 {
     if (!emoteShortcut || !mEmotePopup)
         return;
@@ -226,7 +226,7 @@ void EmoteShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-void EmoteShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
+void EmoteShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (mEmotePopup)
         mEmotePopup->setVisible(false);

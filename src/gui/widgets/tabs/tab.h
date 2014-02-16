@@ -149,9 +149,9 @@ class Tab : public gcn::BasicContainer,
 
         const std::string &getCaption() const A_WARN_UNUSED;
 
-        void mouseEntered(gcn::MouseEvent &mouseEvent) override final;
+        void mouseEntered(MouseEvent &mouseEvent) override final;
 
-        void mouseExited(gcn::MouseEvent &mouseEvent) override final;
+        void mouseExited(MouseEvent &mouseEvent) override final;
 
         void setImage(Image *const image);
 

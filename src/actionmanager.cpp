@@ -219,7 +219,7 @@ impHandler0(mouseClick)
 
     int mouseX, mouseY;
     Gui::getMouseState(&mouseX, &mouseY);
-    guiInput->simulateMouseClick(mouseX, mouseY, gcn::MouseEvent::RIGHT);
+    guiInput->simulateMouseClick(mouseX, mouseY, MouseEvent::RIGHT);
     return true;
 }
 

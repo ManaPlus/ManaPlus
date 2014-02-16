@@ -159,9 +159,9 @@ WhoIsOnline::~WhoIsOnline()
     mOnlineNicks.clear();
 }
 
-void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
+void WhoIsOnline::handleLink(const std::string& link, MouseEvent *event)
 {
-    if (!event || event->getButton() == gcn::MouseEvent::LEFT)
+    if (!event || event->getButton() == MouseEvent::LEFT)
     {
         if (chatWindow)
         {
@@ -177,7 +177,7 @@ void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
             }
         }
     }
-    else if (event->getButton() == gcn::MouseEvent::RIGHT)
+    else if (event->getButton() == MouseEvent::RIGHT)
     {
         if (player_node && link == player_node->getName())
             return;

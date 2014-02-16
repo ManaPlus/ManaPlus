@@ -64,7 +64,7 @@
 #ifndef GCN_MOUSELISTENER_HPP
 #define GCN_MOUSELISTENER_HPP
 
-#include "gui/base/mouseevent.hpp"
+#include "events/mouseevent.h"
 
 #include "localconsts.h"
 
@@ -89,7 +89,7 @@ class MouseListener
           * @param mouseEvent Describes the event.
           * @since 0.6.0
           */
-        virtual void mouseEntered(gcn::MouseEvent &mouseEvent A_UNUSED)
+        virtual void mouseEntered(MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
@@ -99,7 +99,7 @@ class MouseListener
           * @param mouseEvent Describes the event.
           * @since 0.6.0
           */
-        virtual void mouseExited(gcn::MouseEvent &mouseEvent A_UNUSED)
+        virtual void mouseExited(MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
@@ -112,7 +112,7 @@ class MouseListener
           * @param mouseEvent Describes the event.
           * @since 0.6.0
           */
-        virtual void mousePressed(gcn::MouseEvent &mouseEvent A_UNUSED)
+        virtual void mousePressed(MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
@@ -122,7 +122,7 @@ class MouseListener
           * @param mouseEvent Describes the event.
           * @since 0.6.0
           */
-        virtual void mouseReleased(gcn::MouseEvent &mouseEvent A_UNUSED)
+        virtual void mouseReleased(MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
@@ -133,7 +133,7 @@ class MouseListener
           * @param mouseEvent Describes the event.
           * @since 0.6.0
           */
-        virtual void mouseClicked(gcn::MouseEvent &mouseEvent A_UNUSED)
+        virtual void mouseClicked(MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
@@ -143,7 +143,7 @@ class MouseListener
           * @param mouseEvent Describes the event.
           * @since 0.6.0
           */
-        virtual void mouseWheelMovedUp(gcn::MouseEvent &mouseEvent A_UNUSED)
+        virtual void mouseWheelMovedUp(MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
@@ -153,7 +153,7 @@ class MouseListener
           * @param mousEvent Describes the event.
           * @since 0.6.0
           */
-        virtual void mouseWheelMovedDown(gcn::MouseEvent &mouseEvent A_UNUSED)
+        virtual void mouseWheelMovedDown(MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
@@ -164,7 +164,7 @@ class MouseListener
           * @param mouseEvent Describes the event.
           * @since 0.6.0
           */
-        virtual void mouseMoved(gcn::MouseEvent &mouseEvent A_UNUSED)
+        virtual void mouseMoved(MouseEvent &mouseEvent A_UNUSED)
         {
         }
 
@@ -175,7 +175,7 @@ class MouseListener
           * @param mouseEvent Describes the event.
           * @since 0.6.0
           */
-        virtual void mouseDragged(gcn::MouseEvent &mouseEvent A_UNUSED)
+        virtual void mouseDragged(MouseEvent &mouseEvent A_UNUSED)
         {
         }
 

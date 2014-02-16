@@ -128,7 +128,7 @@ public:
     void loadList(std::vector<OnlinePlayer*> &list);
 
     void handleLink(const std::string& link,
-                    gcn::MouseEvent *event) override final;
+                    MouseEvent *event) override final;
 
     void logic() override final;
 

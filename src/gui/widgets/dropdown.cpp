@@ -357,10 +357,10 @@ void DropDown::hideDrop(bool event)
     mPopup->setVisible(false);
 }
 
-void DropDown::mousePressed(gcn::MouseEvent& mouseEvent)
+void DropDown::mousePressed(MouseEvent& mouseEvent)
 {
     // If we have a mouse press on the widget.
-    if (mouseEvent.getButton() == gcn::MouseEvent::LEFT
+    if (mouseEvent.getButton() == MouseEvent::LEFT
         && !mDroppedDown && mouseEvent.getSource() == this)
     {
         mPushed = true;
@@ -374,7 +374,7 @@ void DropDown::mousePressed(gcn::MouseEvent& mouseEvent)
     }
 }
 
-void DropDown::mouseReleased(gcn::MouseEvent &mouseEvent)
+void DropDown::mouseReleased(MouseEvent &mouseEvent)
 {
     if (mIsDragged)
         mPushed = false;
@@ -385,12 +385,12 @@ void DropDown::mouseReleased(gcn::MouseEvent &mouseEvent)
     // Released outside of widget. Can happen when we have modal
     // input focus.
     if ((0 > y || y >= mDimension.height || x < 0 || x >= mDimension.width)
-        && button == gcn::MouseEvent::LEFT)
+        && button == MouseEvent::LEFT)
     {
         if (mIsDragged)
             foldUp();
     }
-    else if (button == gcn::MouseEvent::LEFT)
+    else if (button == MouseEvent::LEFT)
     {
         mPushed = false;
     }
@@ -398,19 +398,19 @@ void DropDown::mouseReleased(gcn::MouseEvent &mouseEvent)
     mIsDragged = false;
 }
 
-void DropDown::mouseDragged(gcn::MouseEvent &mouseEvent)
+void DropDown::mouseDragged(MouseEvent &mouseEvent)
 {
     mIsDragged = true;
     mouseEvent.consume();
 }
 
-void DropDown::mouseWheelMovedUp(gcn::MouseEvent& mouseEvent)
+void DropDown::mouseWheelMovedUp(MouseEvent& mouseEvent)
 {
     setSelected(getSelected() - 1);
     mouseEvent.consume();
 }
 
-void DropDown::mouseWheelMovedDown(gcn::MouseEvent& mouseEvent)
+void DropDown::mouseWheelMovedDown(MouseEvent& mouseEvent)
 {
     setSelected(getSelected() + 1);
     mouseEvent.consume();

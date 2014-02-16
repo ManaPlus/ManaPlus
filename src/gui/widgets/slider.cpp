@@ -272,21 +272,21 @@ void Slider::draw(Graphics *graphics)
     BLOCK_END("Slider::draw")
 }
 
-void Slider::mouseEntered(gcn::MouseEvent& event A_UNUSED)
+void Slider::mouseEntered(MouseEvent& event A_UNUSED)
 {
     mHasMouse = true;
     mRedraw = true;
 }
 
-void Slider::mouseExited(gcn::MouseEvent& event A_UNUSED)
+void Slider::mouseExited(MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
     mRedraw = true;
 }
 
-void Slider::mousePressed(gcn::MouseEvent &mouseEvent)
+void Slider::mousePressed(MouseEvent &mouseEvent)
 {
-    if (mouseEvent.getButton() == gcn::MouseEvent::LEFT
+    if (mouseEvent.getButton() == MouseEvent::LEFT
         && mouseEvent.getX() >= 0
         && mouseEvent.getX() <= getWidth()
         && mouseEvent.getY() >= 0
@@ -307,7 +307,7 @@ void Slider::mousePressed(gcn::MouseEvent &mouseEvent)
     }
 }
 
-void Slider::mouseDragged(gcn::MouseEvent &mouseEvent)
+void Slider::mouseDragged(MouseEvent &mouseEvent)
 {
     if (getOrientation() == HORIZONTAL)
     {
@@ -325,7 +325,7 @@ void Slider::mouseDragged(gcn::MouseEvent &mouseEvent)
     mouseEvent.consume();
 }
 
-void Slider::mouseWheelMovedUp(gcn::MouseEvent &mouseEvent)
+void Slider::mouseWheelMovedUp(MouseEvent &mouseEvent)
 {
     setValue2(getValue() + getStepLength());
     distributeActionEvent();
@@ -333,7 +333,7 @@ void Slider::mouseWheelMovedUp(gcn::MouseEvent &mouseEvent)
     mouseEvent.consume();
 }
 
-void Slider::mouseWheelMovedDown(gcn::MouseEvent &mouseEvent)
+void Slider::mouseWheelMovedDown(MouseEvent &mouseEvent)
 {
     setValue2(getValue() - getStepLength());
     distributeActionEvent();

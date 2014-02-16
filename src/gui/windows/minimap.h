@@ -62,11 +62,11 @@ class Minimap final : public Window, public ConfigListener
          */
         void draw(Graphics *graphics) override final;
 
-        void mouseMoved(gcn::MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) override final;
 
-        void mouseReleased(gcn::MouseEvent &event) override final;
+        void mouseReleased(MouseEvent &event) override final;
 
-        void mouseExited(gcn::MouseEvent &event) override final;
+        void mouseExited(MouseEvent &event) override final;
 
         void screenToMap(int &x, int &y);
 

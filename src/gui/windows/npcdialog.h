@@ -210,7 +210,7 @@ class NpcDialog final : public Window,
 
         void clearRows();
 
-        void mousePressed(gcn::MouseEvent &event);
+        void mousePressed(MouseEvent &event);
 
         int isCloseState() const
         { return mActionState == NPC_ACTION_CLOSE; }

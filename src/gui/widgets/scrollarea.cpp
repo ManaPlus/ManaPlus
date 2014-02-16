@@ -651,18 +651,18 @@ void ScrollArea::calcHMarker(Graphics *const graphics)
     }
 }
 
-void ScrollArea::mouseMoved(gcn::MouseEvent& event)
+void ScrollArea::mouseMoved(MouseEvent& event)
 {
     mX = event.getX();
     mY = event.getY();
 }
 
-void ScrollArea::mouseEntered(gcn::MouseEvent& event A_UNUSED)
+void ScrollArea::mouseEntered(MouseEvent& event A_UNUSED)
 {
     mHasMouse = true;
 }
 
-void ScrollArea::mouseExited(gcn::MouseEvent& event A_UNUSED)
+void ScrollArea::mouseExited(MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }
@@ -684,7 +684,7 @@ void ScrollArea::widgetMoved(const Event& event A_UNUSED)
     mRedraw = true;
 }
 
-void ScrollArea::mousePressed(gcn::MouseEvent& event)
+void ScrollArea::mousePressed(MouseEvent& event)
 {
     const int x = event.getX();
     const int y = event.getY();
@@ -754,16 +754,16 @@ void ScrollArea::mousePressed(gcn::MouseEvent& event)
         }
     }
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         mClickX = event.getX();
         mClickY = event.getY();
     }
 }
 
-void ScrollArea::mouseReleased(gcn::MouseEvent& event)
+void ScrollArea::mouseReleased(MouseEvent& event)
 {
-    if (event.getButton() == gcn::MouseEvent::LEFT && mClickX && mClickY)
+    if (event.getButton() == MouseEvent::LEFT && mClickX && mClickY)
     {
         if (!event.isConsumed())
         {
@@ -822,7 +822,7 @@ void ScrollArea::mouseReleased(gcn::MouseEvent& event)
     mRedraw = true;
 }
 
-void ScrollArea::mouseDragged(gcn::MouseEvent &event)
+void ScrollArea::mouseDragged(MouseEvent &event)
 {
     if (mIsVerticalMarkerDragged)
     {

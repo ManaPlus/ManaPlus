@@ -186,12 +186,12 @@ class ChatWindow final : public Window,
         /**
          * Handles mouse when dragged.
          */
-        void mouseDragged(gcn::MouseEvent &event) override final;
+        void mouseDragged(MouseEvent &event) override final;
 
         /**
          * Handles mouse when pressed.
          */
-        void mousePressed(gcn::MouseEvent &event) override final;
+        void mousePressed(MouseEvent &event) override final;
 
         void processEvent(const Channels channel,
                           const DepricatedEvent &event) override final;
@@ -274,11 +274,11 @@ class ChatWindow final : public Window,
 
         void optionChanged(const std::string &name) override final;
 
-        void mouseEntered(gcn::MouseEvent& mouseEvent) override final;
+        void mouseEntered(MouseEvent& mouseEvent) override final;
 
-        void mouseMoved(gcn::MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) override final;
 
-        void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED) override final;
+        void mouseExited(MouseEvent& mouseEvent A_UNUSED) override final;
 
         void draw(Graphics* graphics) override final;
 

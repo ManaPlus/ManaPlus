@@ -71,11 +71,11 @@ class MiniStatusWindow final : public Popup,
 
         void draw(Graphics *graphics) override final;
 
-        void mouseMoved(gcn::MouseEvent &mouseEvent) override final;
+        void mouseMoved(MouseEvent &mouseEvent) override final;
 
-        void mousePressed(gcn::MouseEvent &event) override final;
+        void mousePressed(MouseEvent &event) override final;
 
-        void mouseExited(gcn::MouseEvent &event) override final;
+        void mouseExited(MouseEvent &event) override final;
 
         void showBar(const std::string &name, const bool visible);
 

@@ -73,9 +73,9 @@ class ItemAmountWindow final : public Window,
         void resetAmount();
 
         // MouseListener
-        void mouseMoved(gcn::MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) override final;
 
-        void mouseExited(gcn::MouseEvent &event) override final;
+        void mouseExited(MouseEvent &event) override final;
 
         /**
          * Schedules the Item Amount window for deletion.

@@ -265,7 +265,7 @@ void ItemPopup::setLabelColor(Label *label, const ItemType type) const
 }
 #undef caseSetColor
 
-void ItemPopup::mouseMoved(gcn::MouseEvent &event)
+void ItemPopup::mouseMoved(MouseEvent &event)
 {
     Popup::mouseMoved(event);
 

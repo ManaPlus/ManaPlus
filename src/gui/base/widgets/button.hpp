@@ -70,7 +70,8 @@
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
 
-#include "gui/base/mouseevent.hpp"
+#include "events/mouseevent.h"
+
 #include "gui/base/widget.hpp"
 
 #include "render/graphics.h"

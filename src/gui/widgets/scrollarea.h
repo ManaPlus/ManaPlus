@@ -106,23 +106,23 @@ class ScrollArea final : public gcn::ScrollArea,
         /**
          * Called when the mouse moves in the widget area.
          */
-        void mouseMoved(gcn::MouseEvent& event) override final;
+        void mouseMoved(MouseEvent& event) override final;
 
         /**
          * Called when the mouse enteres the widget area.
          */
-        void mouseEntered(gcn::MouseEvent& event) override final;
+        void mouseEntered(MouseEvent& event) override final;
 
         /**
          * Called when the mouse leaves the widget area.
          */
-        void mouseExited(gcn::MouseEvent& event) override final;
+        void mouseExited(MouseEvent& event) override final;
 
-        void mousePressed(gcn::MouseEvent& event) override final;
+        void mousePressed(MouseEvent& event) override final;
 
-        void mouseReleased(gcn::MouseEvent& event) override final;
+        void mouseReleased(MouseEvent& event) override final;
 
-        void mouseDragged(gcn::MouseEvent &event) override final;
+        void mouseDragged(MouseEvent &event) override final;
 
         void widgetResized(const Event &event) override final;
 

@@ -310,7 +310,7 @@ void AvatarListBox::draw(Graphics *graphics)
     BLOCK_END("AvatarListBox::draw")
 }
 
-void AvatarListBox::mousePressed(gcn::MouseEvent &event)
+void AvatarListBox::mousePressed(MouseEvent &event)
 {
     if (!actorManager || !player_node || !viewport
         || !getFont()->getHeight())
@@ -334,7 +334,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
         return;
 
     const unsigned int eventButton = event.getButton();
-    if (eventButton == gcn::MouseEvent::LEFT)
+    if (eventButton == MouseEvent::LEFT)
     {
         if (ava->getType() == AVATAR_PLAYER)
         {
@@ -348,7 +348,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
             player_node->navigateTo(ava->getX(), ava->getY());
         }
     }
-    else if (eventButton == gcn::MouseEvent::RIGHT)
+    else if (eventButton == MouseEvent::RIGHT)
     {
         switch (ava->getType())
         {
@@ -407,7 +407,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
             }
         }
     }
-    else if (eventButton == gcn::MouseEvent::MIDDLE)
+    else if (eventButton == MouseEvent::MIDDLE)
     {
         if (ava->getType() == AVATAR_PLAYER && chatWindow)
         {
@@ -419,7 +419,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
     }
 }
 
-void AvatarListBox::mouseReleased(gcn::MouseEvent &event A_UNUSED)
+void AvatarListBox::mouseReleased(MouseEvent &event A_UNUSED)
 {
 }
 

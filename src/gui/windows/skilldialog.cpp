@@ -157,7 +157,7 @@ class SkillListBox final : public ListBox
         unsigned int getRowHeight() const override
         { return mRowHeight; }
 
-        const SkillInfo *getSkillByEvent(const gcn::MouseEvent &event) const
+        const SkillInfo *getSkillByEvent(const MouseEvent &event) const
         {
             const int y = (event.getY() + mPadding) / getRowHeight();
             if (!mModel || y >= mModel->getNumberOfElements())
@@ -168,7 +168,7 @@ class SkillListBox final : public ListBox
             return skill;
         }
 
-        void mouseMoved(gcn::MouseEvent &event) override
+        void mouseMoved(MouseEvent &event) override
         {
             ListBox::mouseMoved(event);
             if (!viewport || !dragDrop.isEmpty())
@@ -182,9 +182,9 @@ class SkillListBox final : public ListBox
                 skill->data->dispName, skill->data->description);
         }
 
-        void mouseDragged(gcn::MouseEvent &event)
+        void mouseDragged(MouseEvent &event)
         {
-            if (event.getButton() == gcn::MouseEvent::LEFT)
+            if (event.getButton() == MouseEvent::LEFT)
             {
                 if (dragDrop.isEmpty())
                 {
@@ -206,10 +206,10 @@ class SkillListBox final : public ListBox
             }
         }
 
-        void mousePressed(gcn::MouseEvent &event)
+        void mousePressed(MouseEvent &event)
         {
             ListBox::mousePressed(event);
-            if (event.getButton() == gcn::MouseEvent::LEFT)
+            if (event.getButton() == MouseEvent::LEFT)
             {
                 const SkillInfo *const skill = getSkillByEvent(event);
                 if (!skill)
@@ -218,12 +218,12 @@ class SkillListBox final : public ListBox
             }
         }
 
-        void mouseReleased(gcn::MouseEvent &event)
+        void mouseReleased(MouseEvent &event)
         {
             ListBox::mouseReleased(event);
         }
 
-        void mouseExited(gcn::MouseEvent &event A_UNUSED) override
+        void mouseExited(MouseEvent &event A_UNUSED) override
         {
             mPopup->hide();
         }
