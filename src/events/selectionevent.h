@@ -61,22 +61,41 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/*
- * For comments regarding functions please see the header file.
- */
+#ifndef EVENTS_SELECTIONEVENT_HPP
+#define EVENTS_SELECTIONEVENT_HPP
 
-#include "gui/base/selectionevent.hpp"
+#include "events/event.h"
 
-#include "debug.h"
+#include "localconsts.h"
 
 namespace gcn
 {
-    SelectionEvent::SelectionEvent(Widget *const source) :
-        Event(source)
-    {
-    }
+    class Widget;
+}
 
-    SelectionEvent::~SelectionEvent()
-    {
-    }
-}  // namespace gcn
+/**
+  * Represents a selection event.
+  *
+  * @author Olof Naessén
+  * @since 0.8.0
+  */
+class SelectionEvent final: public Event
+{
+    public:
+        /**
+          * Constructor.
+          *
+          * @param source source The widget of the selection event.
+          */
+        explicit SelectionEvent(gcn::Widget *const source) :
+            Event(source)
+        { }
+
+        /**
+          * Destructor.
+          */
+        virtual ~SelectionEvent()
+        { }
+};
+
+#endif  // EVENTS_SELECTIONEVENT_HPP

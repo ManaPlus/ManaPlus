@@ -374,7 +374,7 @@ void ItemContainer::distributeValueChangedEvent()
     {
         if (*i)
         {
-            gcn::SelectionEvent event(this);
+            SelectionEvent event(this);
             (*i)->valueChanged(event);
         }
     }

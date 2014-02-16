@@ -108,7 +108,7 @@ class BuyDialog final : public Window,
         /**
          * Updates the labels according to the selected item.
          */
-        void valueChanged(const gcn::SelectionEvent &event) override final;
+        void valueChanged(const SelectionEvent &event) override final;
 
         /**
          * Updates the state of buttons and labels.

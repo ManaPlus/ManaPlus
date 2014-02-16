@@ -87,7 +87,7 @@ class SellDialog final : public Window,
          *
          * @see SelectionListener::selectionChanged
          */
-        void valueChanged(const gcn::SelectionEvent &event) override final;
+        void valueChanged(const SelectionEvent &event) override final;
 
         /**
          * Gives Player's Money amount

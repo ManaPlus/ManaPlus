@@ -112,7 +112,7 @@ class InventoryWindow final : public Window,
         /**
          * Updates labels to currently selected item.
          */
-        void valueChanged(const gcn::SelectionEvent &event) override final;
+        void valueChanged(const SelectionEvent &event) override final;
 
         /**
          * Sets whether the split button should be shown.

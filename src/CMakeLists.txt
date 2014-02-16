@@ -789,7 +789,7 @@ SET(SRCS
     gui/base/mouseinput.hpp
     listeners/mouselistener.h
     gui/base/rectangle.hpp
-    gui/base/selectionevent.hpp
+    events/selectionevent.h
     listeners/selectionlistener.h
     gui/base/sdl/sdlpixel.hpp
     gui/base/widget.hpp
@@ -816,7 +816,6 @@ SET(SRCS
     gui/base/keyinput.cpp
     gui/base/mouseinput.cpp
     gui/base/rectangle.cpp
-    gui/base/selectionevent.cpp
     gui/base/widget.cpp
     gui/base/widgets/button.cpp
     gui/base/widgets/checkbox.cpp

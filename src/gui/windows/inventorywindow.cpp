@@ -625,7 +625,7 @@ void InventoryWindow::keyReleased(KeyEvent &event)
         mSplit = false;
 }
 
-void InventoryWindow::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
+void InventoryWindow::valueChanged(const SelectionEvent &event A_UNUSED)
 {
     if (!mInventory || !mInventory->isMainInventory())
         return;

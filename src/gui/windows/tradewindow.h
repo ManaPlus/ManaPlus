@@ -109,7 +109,7 @@ class TradeWindow final : public Window,
          * Updates the labels and makes sure only one item is selected in
          * either my inventory or partner inventory.
          */
-        void valueChanged(const gcn::SelectionEvent &event) override final;
+        void valueChanged(const SelectionEvent &event) override final;
 
         /**
          * Called when receiving actions from the widgets.

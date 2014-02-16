@@ -123,7 +123,7 @@ class ServerDialog final : public Window,
         /**
          * Called when the selected value changed in the servers list box.
          */
-        void valueChanged(const gcn::SelectionEvent &event) override final;
+        void valueChanged(const SelectionEvent &event) override final;
 
         void mouseClicked(MouseEvent &mouseEvent) override final;
 

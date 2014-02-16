@@ -307,7 +307,7 @@ void ShopWindow::startTrade()
     mTradeNick.clear();
 }
 
-void ShopWindow::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
+void ShopWindow::valueChanged(const SelectionEvent &event A_UNUSED)
 {
     updateButtonsAndLabels();
 }

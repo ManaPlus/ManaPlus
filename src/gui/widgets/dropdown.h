@@ -107,7 +107,7 @@ class DropDown final : public ActionListener,
 
         std::string getSelectedString() const A_WARN_UNUSED;
 
-        void valueChanged(const gcn::SelectionEvent& event) override final;
+        void valueChanged(const SelectionEvent& event) override final;
 
         void updateSelection();
 

@@ -268,7 +268,7 @@ void TradeWindow::tradeItem(const Item *const item, const int quantity,
     Net::getTradeHandler()->addItem(item, quantity);
 }
 
-void TradeWindow::valueChanged(const gcn::SelectionEvent &event)
+void TradeWindow::valueChanged(const SelectionEvent &event)
 {
     if (!mMyItemContainer || !mPartnerItemContainer)
         return;

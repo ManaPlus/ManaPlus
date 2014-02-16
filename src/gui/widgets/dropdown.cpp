@@ -524,7 +524,7 @@ gcn::Rectangle DropDown::getChildrenArea()
     return gcn::Rectangle();
 }
 
-void DropDown::valueChanged(const gcn::SelectionEvent& event A_UNUSED)
+void DropDown::valueChanged(const SelectionEvent& event A_UNUSED)
 {
 }
 
@@ -552,7 +552,7 @@ void DropDown::distributeValueChangedEvent()
           iter != mSelectionListeners.end();
           ++iter)
     {
-        gcn::SelectionEvent event(this);
+        SelectionEvent event(this);
         (*iter)->valueChanged(event);
     }
 }

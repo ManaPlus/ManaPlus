@@ -66,7 +66,7 @@
 
 #include <string>
 
-#include "gui/base/selectionevent.hpp"
+#include "events/selectionevent.h"
 
 #include "localconsts.h"
 
@@ -97,7 +97,7 @@ class SelectionListener
           * @param event The event of the value change.
           * @since 0.8.0
           */
-        virtual void valueChanged(const gcn::SelectionEvent &event A_UNUSED)
+        virtual void valueChanged(const SelectionEvent &event A_UNUSED)
         { }
 
     protected:

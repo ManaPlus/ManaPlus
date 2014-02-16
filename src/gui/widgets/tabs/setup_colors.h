@@ -52,7 +52,7 @@ class Setup_Colors final : public SetupTab,
 
         void action(const ActionEvent &event) override final;
 
-        void valueChanged(const gcn::SelectionEvent &event) override final;
+        void valueChanged(const SelectionEvent &event) override final;
 
     private:
         static const char *const rawmsg;
