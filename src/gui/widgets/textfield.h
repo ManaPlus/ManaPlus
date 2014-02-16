@@ -90,7 +90,7 @@ class TextField : public gcn::TextField,
         /**
          * Processes one keypress.
          */
-        void keyPressed(gcn::KeyEvent &keyEvent) override;
+        void keyPressed(KeyEvent &keyEvent) override;
 
         /**
          * Set the minimum value for a range

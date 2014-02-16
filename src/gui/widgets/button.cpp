@@ -25,8 +25,9 @@
 #include "client.h"
 #include "graphicsvertexes.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "resources/imageset.h"
 
@@ -589,7 +590,7 @@ void Button::setCaption(const std::string& caption)
     mCaption = caption;
 }
 
-void Button::keyPressed(gcn::KeyEvent& keyEvent)
+void Button::keyPressed(KeyEvent& keyEvent)
 {
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
@@ -600,7 +601,7 @@ void Button::keyPressed(gcn::KeyEvent& keyEvent)
     }
 }
 
-void Button::keyReleased(gcn::KeyEvent& keyEvent)
+void Button::keyReleased(KeyEvent& keyEvent)
 {
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 

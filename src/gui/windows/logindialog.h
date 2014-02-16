@@ -71,7 +71,7 @@ class LoginDialog final : public Window,
         /**
          * Called when a key is pressed in one of the text fields.
          */
-        void keyPressed(gcn::KeyEvent &keyEvent) override final;
+        void keyPressed(KeyEvent &keyEvent) override final;
 
         void close() override final;
 

@@ -24,8 +24,9 @@
 
 #include "client.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/windows/okdialog.h"
 
@@ -281,7 +282,7 @@ void RegisterDialog::action(const ActionEvent &event)
     }
 }
 
-void RegisterDialog::keyPressed(gcn::KeyEvent &keyEvent)
+void RegisterDialog::keyPressed(KeyEvent &keyEvent)
 {
     if (keyEvent.isConsumed())
     {

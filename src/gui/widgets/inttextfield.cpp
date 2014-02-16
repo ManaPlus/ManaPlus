@@ -26,8 +26,9 @@
 #include "gui/sdlinput.h"
 #endif
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "utils/stringutils.h"
 #include "debug.h"
@@ -49,7 +50,7 @@ IntTextField::IntTextField(const Widget2 *const widget, const int def,
         setWidth(width);
 }
 
-void IntTextField::keyPressed(gcn::KeyEvent &event)
+void IntTextField::keyPressed(KeyEvent &event)
 {
     const int action = static_cast<KeyEvent*>(&event)->getActionId();
 

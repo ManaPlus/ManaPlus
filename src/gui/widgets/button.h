@@ -144,9 +144,9 @@ class Button final : public gcn::Button,
 
         void setCaption(const std::string& caption);
 
-        void keyPressed(gcn::KeyEvent &keyEvent) override final;
+        void keyPressed(KeyEvent &keyEvent) override final;
 
-        void keyReleased(gcn::KeyEvent &keyEvent) override final;
+        void keyReleased(KeyEvent &keyEvent) override final;
 
         bool isPressed2() const A_WARN_UNUSED;
 

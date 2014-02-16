@@ -25,8 +25,9 @@
 #include "client.h"
 #include "configuration.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
@@ -290,7 +291,7 @@ void UpdaterWindow::action(const ActionEvent &event)
     }
 }
 
-void UpdaterWindow::keyPressed(gcn::KeyEvent &keyEvent)
+void UpdaterWindow::keyPressed(KeyEvent &keyEvent)
 {
     const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))

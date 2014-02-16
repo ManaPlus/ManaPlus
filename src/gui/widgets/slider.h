@@ -85,7 +85,7 @@ class Slider final : public gcn::Slider,
 
         void mouseWheelMovedDown(gcn::MouseEvent &mouseEvent) override final;
 
-        void keyPressed(gcn::KeyEvent& keyEvent) override final;
+        void keyPressed(KeyEvent& keyEvent) override final;
 
         void setValue2(const double value);
 

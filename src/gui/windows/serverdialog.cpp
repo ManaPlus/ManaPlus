@@ -27,8 +27,9 @@
 #include "configuration.h"
 #include "main.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/sdlfont.h"
 
@@ -444,7 +445,7 @@ void ServerDialog::action(const ActionEvent &event)
     }
 }
 
-void ServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
+void ServerDialog::keyPressed(KeyEvent &keyEvent)
 {
     switch (static_cast<KeyEvent*>(&keyEvent)->getActionId())
     {

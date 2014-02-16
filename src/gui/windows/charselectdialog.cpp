@@ -26,8 +26,9 @@
 #include "configuration.h"
 #include "units.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/confirmdialog.h"
@@ -315,7 +316,7 @@ void CharSelectDialog::use(const int selected)
     }
 }
 
-void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
+void CharSelectDialog::keyPressed(KeyEvent &keyEvent)
 {
     const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     switch (actionId)

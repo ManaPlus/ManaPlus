@@ -25,8 +25,9 @@
 #include "client.h"
 #include "graphicsvertexes.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "resources/image.h"
 
@@ -340,7 +341,7 @@ void Slider::mouseWheelMovedDown(gcn::MouseEvent &mouseEvent)
     mouseEvent.consume();
 }
 
-void Slider::keyPressed(gcn::KeyEvent& keyEvent)
+void Slider::keyPressed(KeyEvent& keyEvent)
 {
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 

@@ -85,8 +85,8 @@ class ItemContainer final : public gcn::Widget,
         void draw(Graphics *graphics) override final;
 
         // KeyListener
-        void keyPressed(gcn::KeyEvent &event) override final;
-        void keyReleased(gcn::KeyEvent &event) override final;
+        void keyPressed(KeyEvent &event) override final;
+        void keyReleased(KeyEvent &event) override final;
 
         // MouseListener
         void mousePressed(gcn::MouseEvent &event) override final;

@@ -24,8 +24,9 @@
 
 #include "client.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "resources/image.h"
 
@@ -181,7 +182,7 @@ void CheckBox::mouseExited(gcn::MouseEvent& event A_UNUSED)
     mHasMouse = false;
 }
 
-void CheckBox::keyPressed(gcn::KeyEvent& keyEvent)
+void CheckBox::keyPressed(KeyEvent& keyEvent)
 {
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 

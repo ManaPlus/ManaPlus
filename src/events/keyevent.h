@@ -61,51 +61,132 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/*
- * For comments regarding functions please see the header file.
- */
+#ifndef EVENTS_KEYEVENT_HPP
+#define EVENTS_KEYEVENT_HPP
 
-#include "gui/base/keyevent.hpp"
-
-#include "debug.h"
+#include "events/inputguievent.h"
+#include "gui/base/key.hpp"
 
 namespace gcn
 {
-    KeyEvent::KeyEvent(Widget *const source,
-                       const bool shiftPressed,
-                       const bool controlPressed,
-                       const bool altPressed,
-                       const bool metaPressed,
-                       const unsigned int type,
-                       const bool numericPad,
-                       const Key& key) :
-        InputGuiEvent(source,
+    class Widget;
+}
+
+/**
+  * Represents a key event.
+  */
+class KeyEvent: public InputGuiEvent
+{
+    public:
+        /**
+          * Key event types.
+          */
+        enum
+        {
+            PRESSED = 0,
+            RELEASED
+        };
+
+        /**
+          * Constructor.
+          *
+          * @param source The source widget of the event.
+          * @param shiftPressed True if shift is pressed, false otherwise.
+          * @param controlPressed True if control is pressed, false otherwise.
+          * @param altPressed True if alt is pressed, false otherwise.
+          * @param metaPressed True if meta is pressed, false otherwise.
+          * @param type The type of the event. A value from KeyEventType.
+          * @param numericPad True if the event occured on the numeric pad,
+          *                     false otherwise.
+          * @param key The key of the event.
+          */
+        KeyEvent(gcn::Widget *const source,
+                  const bool shiftPressed,
+                  const bool controlPressed,
+                  const bool altPressed,
+                  const bool metaPressed,
+                  const unsigned int type,
+                  const bool numericPad,
+                  const int actionId,
+                  const gcn::Key &key) :
+            InputGuiEvent(source,
                       shiftPressed,
                       controlPressed,
                       altPressed,
                       metaPressed),
-        mType(type),
-        mIsNumericPad(numericPad),
-        mKey(key)
-    {
-    }
+            mKey(key),
+#ifdef USE_SDL2
+            mText(),
+#endif
+            mType(type),
+            mActionId(actionId),
+            mIsNumericPad(numericPad)
+        { }
 
-    KeyEvent::~KeyEvent()
-    {
-    }
+        /**
+          * Destructor.
+          */
+        virtual ~KeyEvent()
+        { }
 
-    unsigned int KeyEvent::getType() const
-    {
-        return mType;
-    }
+        /**
+          * Gets the type of the event.
+          *
+          * @return The type of the event.
+          */
+        unsigned int getType() const A_WARN_UNUSED
+        { return mType; }
 
-    bool KeyEvent::isNumericPad() const
-    {
-        return mIsNumericPad;
-    }
+        /**
+          * Checks if the key event occured on the numeric pad.
+          *
+          * @return True if key event occured on the numeric pad,
+          *         false otherwise.
+          *
+          */
+        bool isNumericPad() const A_WARN_UNUSED
+        { return mIsNumericPad; }
 
-    const Key& KeyEvent::getKey() const
-    {
-        return mKey;
-    }
-}  // namespace gcn
+        /**
+          * Gets the key of the event.
+          *
+          * @return The key of the event.
+          */
+        const gcn::Key &getKey() const A_WARN_UNUSED
+        { return mKey; }
+
+        int getActionId() const A_WARN_UNUSED
+        { return mActionId; }
+
+#ifdef USE_SDL2
+        void setText(const std::string &text)
+        { mText = text; }
+
+        std::string getText() const
+        { return mText; }
+#endif
+
+    protected:
+        /** 
+          * Holds the key of the key event.
+          */
+        gcn::Key mKey;
+
+#ifdef USE_SDL2
+        std::string mText;
+#endif
+
+        /**
+          * Holds the type of the key event.
+          */
+        unsigned int mType;
+
+        int mActionId;
+
+        /**
+          * True if the numeric pad was used, false otherwise.
+          */
+        bool mIsNumericPad;
+};
+
+#endif  // EVENTS_KEYEVENT_HPP

@@ -169,7 +169,7 @@ class ChatWindow final : public Window,
         void localChatInput(const std::string &msg) const;
 
         /** Called when key is pressed */
-        void keyPressed(gcn::KeyEvent &event) override final;
+        void keyPressed(KeyEvent &event) override final;
 
         /** Set the chat input as the given text. */
         void setInputText(const std::string &text);

@@ -21,8 +21,9 @@
 
 #include "gui/windows/editserverdialog.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/windows/okdialog.h"
 #include "gui/windows/serverdialog.h"
@@ -284,7 +285,7 @@ void EditServerDialog::action(const ActionEvent &event)
     }
 }
 
-void EditServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
+void EditServerDialog::keyPressed(KeyEvent &keyEvent)
 {
     if (keyEvent.isConsumed())
         return;

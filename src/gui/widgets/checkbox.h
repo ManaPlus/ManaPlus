@@ -81,7 +81,7 @@ class CheckBox final : public gcn::CheckBox,
          */
         void mouseExited(gcn::MouseEvent& event) override final;
 
-        void keyPressed(gcn::KeyEvent& keyEvent) override final;
+        void keyPressed(KeyEvent& keyEvent) override final;
 
         void adjustSize();
 

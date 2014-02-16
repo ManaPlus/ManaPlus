@@ -28,8 +28,9 @@
 
 #include "being/playerinfo.h"
 
+#include "events/keyevent.h"
+
 #include "input/inputmanager.h"
-#include "input/keyevent.h"
 
 #include "gui/viewport.h"
 
@@ -612,7 +613,7 @@ void InventoryWindow::mouseExited(gcn::MouseEvent &event A_UNUSED)
     mTextPopup->hide();
 }
 
-void InventoryWindow::keyPressed(gcn::KeyEvent &event)
+void InventoryWindow::keyPressed(KeyEvent &event)
 {
     if (static_cast<KeyEvent*>(&event)->getActionId()
         == static_cast<int>(Input::KEY_GUI_MOD))
@@ -621,7 +622,7 @@ void InventoryWindow::keyPressed(gcn::KeyEvent &event)
     }
 }
 
-void InventoryWindow::keyReleased(gcn::KeyEvent &event)
+void InventoryWindow::keyReleased(KeyEvent &event)
 {
     if (static_cast<KeyEvent*>(&event)->getActionId()
         == static_cast<int>(Input::KEY_GUI_MOD))

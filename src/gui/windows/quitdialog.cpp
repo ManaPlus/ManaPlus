@@ -28,8 +28,9 @@
 #include "soundconsts.h"
 #include "soundmanager.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/viewport.h"
 
@@ -202,7 +203,7 @@ void QuitDialog::action(const ActionEvent &event)
     scheduleDelete();
 }
 
-void QuitDialog::keyPressed(gcn::KeyEvent &keyEvent)
+void QuitDialog::keyPressed(KeyEvent &keyEvent)
 {
     const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     int dir = 0;

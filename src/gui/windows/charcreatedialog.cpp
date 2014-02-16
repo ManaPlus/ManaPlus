@@ -24,8 +24,9 @@
 
 #include "main.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/windows/okdialog.h"
 
@@ -664,7 +665,7 @@ void CharCreateDialog::updatePlayer()
     }
 }
 
-void CharCreateDialog::keyPressed(gcn::KeyEvent &keyEvent)
+void CharCreateDialog::keyPressed(KeyEvent &keyEvent)
 {
     const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     switch (actionId)

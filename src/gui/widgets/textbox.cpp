@@ -22,8 +22,9 @@
 
 #include "gui/widgets/textbox.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/base/font.hpp"
 
@@ -165,7 +166,7 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
     gcn::TextBox::setText(wrappedStream.str());
 }
 
-void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
+void TextBox::keyPressed(KeyEvent& keyEvent)
 {
     const gcn::Key &key = keyEvent.getKey();
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();

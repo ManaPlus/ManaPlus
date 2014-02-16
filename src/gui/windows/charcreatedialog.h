@@ -76,7 +76,7 @@ class CharCreateDialog final : public Window,
 
         void updatePlayer();
 
-        void keyPressed(gcn::KeyEvent &keyEvent) override final;
+        void keyPressed(KeyEvent &keyEvent) override final;
 
     private:
         int getDistributedPoints() const A_WARN_UNUSED;

@@ -64,7 +64,7 @@
 #ifndef GCN_KEYLISTENER_HPP
 #define GCN_KEYLISTENER_HPP
 
-#include "gui/base/keyevent.hpp"
+#include "events/keyevent.h"
 
 #include "localconsts.h"
 
@@ -94,7 +94,7 @@ class KeyListener
           *
           * @param keyEvent Discribes the event.
           */
-        virtual void keyPressed(gcn::KeyEvent &keyEvent A_UNUSED)
+        virtual void keyPressed(KeyEvent &keyEvent A_UNUSED)
         { }
 
         /**
@@ -102,7 +102,7 @@ class KeyListener
           *
           * @param keyEvent Discribes the event.
           */
-        virtual void keyReleased(gcn::KeyEvent &keyEvent A_UNUSED)
+        virtual void keyReleased(KeyEvent &keyEvent A_UNUSED)
         { }
 
     protected:

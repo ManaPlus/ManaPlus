@@ -386,11 +386,11 @@ void ItemContainer::hidePopup()
         mItemPopup->setVisible(false);
 }
 
-void ItemContainer::keyPressed(gcn::KeyEvent &event A_UNUSED)
+void ItemContainer::keyPressed(KeyEvent &event A_UNUSED)
 {
 }
 
-void ItemContainer::keyReleased(gcn::KeyEvent &event A_UNUSED)
+void ItemContainer::keyReleased(KeyEvent &event A_UNUSED)
 {
 }
 

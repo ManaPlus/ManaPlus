@@ -125,7 +125,7 @@ public:
     void _setFocusHandler(gcn::FocusHandler* focusHandler) override final;
 
     // Inherited from KeyListener
-    void keyPressed(gcn::KeyEvent& keyEvent) override final;
+    void keyPressed(KeyEvent& keyEvent) override final;
 
     /**
      * Sets the table to be opaque, that is sets the table

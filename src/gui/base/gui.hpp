@@ -67,7 +67,7 @@
 #include <list>
 #include <deque>
 
-#include "gui/base/keyevent.hpp"
+#include "events/keyevent.h"
 #include "gui/base/mouseevent.hpp"
 #include "gui/base/mouseinput.hpp"
 

@@ -667,8 +667,6 @@ SET(SRCS
     input/keyboardconfig.h
     input/keyboarddata.h
     input/keydata.h
-    input/keyevent.cpp
-    input/keyevent.h
     input/keyinput.cpp
     input/keyinput.h
     input/multitouchmanager.cpp
@@ -784,7 +782,7 @@ SET(SRCS
     gui/base/input.hpp
     events/inputguievent.h
     gui/base/key.hpp
-    gui/base/keyevent.hpp
+    events/keyevent.h
     gui/base/keyinput.hpp
     listeners/keylistener.h
     gui/base/listmodel.hpp
@@ -816,7 +814,6 @@ SET(SRCS
     gui/base/font.cpp
     gui/base/gui.cpp
     gui/base/key.cpp
-    gui/base/keyevent.cpp
     gui/base/keyinput.cpp
     gui/base/mouseevent.cpp
     gui/base/mouseinput.cpp

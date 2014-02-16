@@ -24,8 +24,9 @@
 
 #include "client.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/layout.h"
@@ -153,7 +154,7 @@ void WorldSelectDialog::action(const ActionEvent &event)
     }
 }
 
-void WorldSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
+void WorldSelectDialog::keyPressed(KeyEvent &keyEvent)
 {
     const int actionId = static_cast<KeyEvent*>(
         &keyEvent)->getActionId();

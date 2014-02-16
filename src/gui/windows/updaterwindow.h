@@ -121,7 +121,7 @@ class UpdaterWindow final : public Window,
 
     void action(const ActionEvent &event) override final;
 
-    void keyPressed(gcn::KeyEvent &keyEvent) override final;
+    void keyPressed(KeyEvent &keyEvent) override final;
 
     void logic() override final;
 

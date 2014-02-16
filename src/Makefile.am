@@ -202,7 +202,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/font.cpp \
 	      gui/base/gui.cpp \
 	      gui/base/key.cpp \
-	      gui/base/keyevent.cpp \
 	      gui/base/keyinput.cpp \
 	      gui/base/mouseevent.cpp \
 	      gui/base/mouseinput.cpp \
@@ -787,8 +786,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      input/keyboardconfig.h \
 	      input/keyboarddata.h \
 	      input/keydata.h \
-	      input/keyevent.cpp \
-	      input/keyevent.h \
 	      input/keyinput.cpp \
 	      input/keyinput.h \
 	      input/multitouchmanager.cpp \

@@ -87,7 +87,7 @@ class RegisterDialog final : public Window,
         /**
          * Called when a key is pressed in one of the text fields.
          */
-        void keyPressed(gcn::KeyEvent &keyEvent) override;
+        void keyPressed(KeyEvent &keyEvent) override;
 
         void close() override;
 

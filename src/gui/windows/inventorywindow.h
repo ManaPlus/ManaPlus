@@ -102,12 +102,12 @@ class InventoryWindow final : public Window,
         /**
          * Handles the key presses.
          */
-        void keyPressed(gcn::KeyEvent &event) override final;
+        void keyPressed(KeyEvent &event) override final;
 
         /**
          * Handles the key releases.
          */
-        void keyReleased(gcn::KeyEvent &event) override final;
+        void keyReleased(KeyEvent &event) override final;
 
         /**
          * Updates labels to currently selected item.

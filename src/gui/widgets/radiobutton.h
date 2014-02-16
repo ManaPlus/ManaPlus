@@ -74,7 +74,7 @@ class RadioButton final : public gcn::RadioButton,
          */
         void mouseExited(gcn::MouseEvent& event) override final;
 
-        void keyPressed(gcn::KeyEvent& keyEvent) override final;
+        void keyPressed(KeyEvent& keyEvent) override final;
 
         void updateAlpha();
 

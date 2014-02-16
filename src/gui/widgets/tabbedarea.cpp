@@ -22,8 +22,9 @@
 
 #include "gui/widgets/tabbedarea.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/scrollarea.h"
@@ -683,7 +684,7 @@ void TabbedArea::setDimension(const gcn::Rectangle &dimension)
     adjustSize();
 }
 
-void TabbedArea::keyPressed(gcn::KeyEvent& keyEvent)
+void TabbedArea::keyPressed(KeyEvent& keyEvent)
 {
     if (mBlockSwitching || keyEvent.isConsumed() || !isFocused())
         return;

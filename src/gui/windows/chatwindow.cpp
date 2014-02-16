@@ -35,8 +35,9 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
+#include "events/keyevent.h"
+
 #include "input/inputmanager.h"
-#include "input/keyevent.h"
 
 #include "gui/sdlfont.h"
 #include "gui/sdlinput.h"
@@ -836,7 +837,7 @@ void ChatWindow::mouseDragged(gcn::MouseEvent &event)
     temp = str; \
     break
 
-void ChatWindow::keyPressed(gcn::KeyEvent &event)
+void ChatWindow::keyPressed(KeyEvent &event)
 {
     const int key = event.getKey().getValue();
     const int actionId = static_cast<KeyEvent*>(&event)->getActionId();

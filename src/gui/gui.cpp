@@ -39,8 +39,9 @@
 #include "dragdrop.h"
 #include "touchmanager.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 #include "input/keyinput.h"
 
 #include "resources/cursor.h"

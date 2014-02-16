@@ -24,8 +24,9 @@
 
 #include "client.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/widgets/extendedlistmodel.h"
 #include "gui/widgets/popuplist.h"
@@ -309,7 +310,7 @@ void DropDown::drawButton(Graphics *graphics)
     }
 }
 
-void DropDown::keyPressed(gcn::KeyEvent& keyEvent)
+void DropDown::keyPressed(KeyEvent& keyEvent)
 {
     if (keyEvent.isConsumed())
         return;

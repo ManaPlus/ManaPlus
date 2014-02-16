@@ -89,7 +89,7 @@ class DropDown final : public ActionListener,
 
         // Inherited from KeyListener
 
-        void keyPressed(gcn::KeyEvent& keyEvent) override final;
+        void keyPressed(KeyEvent& keyEvent) override final;
 
         // Inherited from MouseListener
 

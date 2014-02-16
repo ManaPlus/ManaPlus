@@ -24,8 +24,9 @@
 
 #include "client.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "resources/image.h"
 
@@ -177,7 +178,7 @@ void RadioButton::mouseExited(gcn::MouseEvent& event A_UNUSED)
     mHasMouse = false;
 }
 
-void RadioButton::keyPressed(gcn::KeyEvent& keyEvent)
+void RadioButton::keyPressed(KeyEvent& keyEvent)
 {
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     if (action == Input::KEY_GUI_SELECT)

@@ -25,8 +25,9 @@
 #include "client.h"
 #include "configuration.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/windows/confirmdialog.h"
 
@@ -318,7 +319,7 @@ void LoginDialog::action(const ActionEvent &event)
     }
 }
 
-void LoginDialog::keyPressed(gcn::KeyEvent &keyEvent)
+void LoginDialog::keyPressed(KeyEvent &keyEvent)
 {
     if (keyEvent.isConsumed())
     {

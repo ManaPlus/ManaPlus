@@ -24,7 +24,8 @@
 
 #include "client.h"
 
-#include "input/keyevent.h"
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
 
 #include "utils/dtor.h"
@@ -418,7 +419,7 @@ gcn::Rectangle GuiTable::getChildrenArea()
 }
 
 // -- KeyListener notifications
-void GuiTable::keyPressed(gcn::KeyEvent& keyEvent)
+void GuiTable::keyPressed(KeyEvent& keyEvent)
 {
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 

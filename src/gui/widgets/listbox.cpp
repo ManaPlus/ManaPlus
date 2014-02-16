@@ -24,8 +24,9 @@
 
 #include "client.h"
 
+#include "events/keyevent.h"
+
 #include "input/keydata.h"
-#include "input/keyevent.h"
 
 #include "gui/gui.h"
 
@@ -174,7 +175,7 @@ void ListBox::draw(Graphics *graphics)
     BLOCK_END("ListBox::draw")
 }
 
-void ListBox::keyPressed(gcn::KeyEvent &keyEvent)
+void ListBox::keyPressed(KeyEvent &keyEvent)
 {
     const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     if (action == Input::KEY_GUI_SELECT)

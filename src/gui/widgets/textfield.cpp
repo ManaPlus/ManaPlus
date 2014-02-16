@@ -26,7 +26,7 @@
 
 #include "input/inputmanager.h"
 
-#include "input/keyevent.h"
+#include "events/keyevent.h"
 
 #include "gui/sdlinput.h"
 
@@ -198,7 +198,7 @@ int TextField::getValue() const
     return value;
 }
 
-void TextField::keyPressed(gcn::KeyEvent &keyEvent)
+void TextField::keyPressed(KeyEvent &keyEvent)
 {
     const int val = keyEvent.getKey().getValue();
 #ifdef USE_SDL2
