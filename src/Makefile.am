@@ -170,7 +170,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/input.hpp \
 	      events/inputguievent.h \
 	      gui/base/key.hpp \
-	      gui/base/keyevent.hpp \
+	      events/keyevent.h \
 	      gui/base/keyinput.hpp \
 	      listeners/keylistener.h \
 	      gui/base/listmodel.hpp \
