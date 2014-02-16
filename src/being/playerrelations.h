@@ -25,7 +25,7 @@
 
 #include "utils/stringvector.h"
 
-#include "being/playerrelationslistener.h"
+#include "listeners/playerrelationslistener.h"
 
 #include <list>
 #include <map>

@@ -24,9 +24,8 @@
 
 #include "gui/widgets/window.h"
 
-#include "being/playerrelationslistener.h"
-
 #include "listeners/actionlistener.h"
+#include "listeners/playerrelationslistener.h"
 
 #include <string>
 #include <map>

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_PLAYERRELATIONSLISTENER_H
-#define BEING_PLAYERRELATIONSLISTENER_H
+#ifndef LISTERNERS_PLAYERRELATIONSLISTENER_H
+#define LISTERNERS_PLAYERRELATIONSLISTENER_H
 
 #include <string>
 
@@ -40,4 +40,4 @@ class PlayerRelationsListener
         { }
 };
 
-#endif  // BEING_PLAYERRELATIONSLISTENER_H
+#endif  // LISTERNERS_PLAYERRELATIONSLISTENER_H
