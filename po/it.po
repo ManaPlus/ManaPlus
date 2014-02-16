@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-02-16 15:26+0300\n"
+"POT-Creation-Date: 2014-02-16 22:19+0300\n"
 "PO-Revision-Date: 2014-02-14 08:13+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/"
@@ -26,12 +26,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. TRANSLATORS: disable trades message
-#: src/actionmanager.cpp:875
+#: src/actionmanager.cpp:876
 msgid "Ignoring incoming trade requests"
 msgstr "Le richieste di scambio in arrivo saranno ignorate"
 
 #. TRANSLATORS: enable trades message
-#: src/actionmanager.cpp:885
+#: src/actionmanager.cpp:886
 msgid "Accepting incoming trade requests"
 msgstr "Le richieste di scambio in arrivo saranno accettate"
 
@@ -572,8 +572,8 @@ msgstr "Aiuto"
 #. TRANSLATORS: shop window button
 #: src/client.cpp:1155 src/gui/popups/popupmenu.cpp:617
 #: src/gui/windows/didyouknowwindow.cpp:78
-#: src/gui/windows/inventorywindow.cpp:259 src/gui/windows/npcdialog.cpp:71
-#: src/gui/windows/npcdialog.cpp:109 src/gui/windows/questswindow.cpp:136
+#: src/gui/windows/inventorywindow.cpp:257 src/gui/windows/npcdialog.cpp:69
+#: src/gui/windows/npcdialog.cpp:107 src/gui/windows/questswindow.cpp:136
 #: src/gui/windows/shopwindow.cpp:77
 msgid "Close"
 msgstr "Chiudi"
@@ -974,31 +974,31 @@ msgid "Network Error"
 msgstr "Errore di rete"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:133
+#: src/gui/popups/beingpopup.cpp:131
 #, c-format
 msgid "Party: %s"
 msgstr "Party: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:148
+#: src/gui/popups/beingpopup.cpp:146
 #, c-format
 msgid "Guild: %s"
 msgstr "Gilda: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:162
+#: src/gui/popups/beingpopup.cpp:160
 #, c-format
 msgid "Pvp rank: %u"
 msgstr ""
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:174
+#: src/gui/popups/beingpopup.cpp:172
 #, c-format
 msgid "Comment: %s"
 msgstr "Commento: %s"
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:196
+#: src/gui/popups/itempopup.cpp:194
 #, c-format
 msgid "Weight: %s"
 msgstr "Peso: %s"
@@ -1278,7 +1278,7 @@ msgstr "Muovi telecamera"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
 #: src/gui/popups/popupmenu.cpp:565 src/gui/setupactiondata.h:1950
-#: src/gui/windowmenu.cpp:148 src/gui/windows/inventorywindow.cpp:225
+#: src/gui/windowmenu.cpp:148 src/gui/windows/inventorywindow.cpp:223
 #: src/gui/windows/outfitwindow.cpp:53
 msgid "Outfits"
 msgstr "Attrezzatura"
@@ -1304,7 +1304,7 @@ msgstr "Modifica Incantesimo"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove all text from chat tab
 #. TRANSLATORS: npc dialog button
-#: src/gui/popups/popupmenu.cpp:622 src/gui/windows/npcdialog.cpp:106
+#: src/gui/popups/popupmenu.cpp:622 src/gui/windows/npcdialog.cpp:104
 msgid "Clear"
 msgstr "Cancella"
 
@@ -1428,8 +1428,8 @@ msgstr "Aggiungi tutti"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: setup button
 #: src/gui/popups/popupmenu.cpp:1893 src/gui/popups/popupmenu.cpp:2023
-#: src/gui/popups/popupmenu.cpp:2064 src/gui/windows/inventorywindow.cpp:255
-#: src/gui/windows/inventorywindow.cpp:777 src/gui/windows/setupwindow.cpp:95
+#: src/gui/popups/popupmenu.cpp:2064 src/gui/windows/inventorywindow.cpp:253
+#: src/gui/windows/inventorywindow.cpp:775 src/gui/windows/setupwindow.cpp:95
 msgid "Store"
 msgstr "Magazzino"
 
@@ -1460,7 +1460,7 @@ msgstr "Salva tutto"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get item from storage
 #. TRANSLATORS: storage button
-#: src/gui/popups/popupmenu.cpp:1922 src/gui/windows/inventorywindow.cpp:257
+#: src/gui/popups/popupmenu.cpp:1922 src/gui/windows/inventorywindow.cpp:255
 msgid "Retrieve"
 msgstr "Recupera"
 
@@ -1493,8 +1493,8 @@ msgstr "Ritira tutto"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: skills dialog button
 #: src/gui/popups/popupmenu.cpp:1985 src/gui/popups/popupmenu.cpp:2763
-#: src/gui/windows/inventorywindow.cpp:206
-#: src/gui/windows/inventorywindow.cpp:688 src/gui/windows/skilldialog.cpp:288
+#: src/gui/windows/inventorywindow.cpp:204
+#: src/gui/windows/inventorywindow.cpp:686 src/gui/windows/skilldialog.cpp:287
 msgid "Use"
 msgstr "Usa"
 
@@ -1685,9 +1685,9 @@ msgstr ""
 #. TRANSLATORS: unequip item
 #. TRANSLATORS: equipment window button
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2748 src/gui/windows/equipmentwindow.cpp:66
-#: src/gui/windows/inventorywindow.cpp:208
-#: src/gui/windows/inventorywindow.cpp:677
+#: src/gui/popups/popupmenu.cpp:2748 src/gui/windows/equipmentwindow.cpp:65
+#: src/gui/windows/inventorywindow.cpp:206
+#: src/gui/windows/inventorywindow.cpp:675
 msgid "Unequip"
 msgstr "Togli"
 
@@ -1695,16 +1695,16 @@ msgstr "Togli"
 #. TRANSLATORS: use item
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window button
-#: src/gui/popups/popupmenu.cpp:2754 src/gui/windows/inventorywindow.cpp:204
-#: src/gui/windows/inventorywindow.cpp:682 src/gui/windows/outfitwindow.cpp:60
+#: src/gui/popups/popupmenu.cpp:2754 src/gui/windows/inventorywindow.cpp:202
+#: src/gui/windows/inventorywindow.cpp:680 src/gui/windows/outfitwindow.cpp:60
 msgid "Equip"
 msgstr "Equipaggia"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2774 src/gui/windows/inventorywindow.cpp:221
-#: src/gui/windows/inventorywindow.cpp:785
+#: src/gui/popups/popupmenu.cpp:2774 src/gui/windows/inventorywindow.cpp:219
+#: src/gui/windows/inventorywindow.cpp:783
 msgid "Drop..."
 msgstr "Lascia..."
 
@@ -1719,14 +1719,14 @@ msgstr "Lascia tutto"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2783 src/gui/windowmenu.cpp:136
-#: src/gui/windows/inventorywindow.cpp:790
+#: src/gui/windows/inventorywindow.cpp:788
 msgid "Drop"
 msgstr "Lascia"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: split items
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2791 src/gui/windows/inventorywindow.cpp:223
+#: src/gui/popups/popupmenu.cpp:2791 src/gui/windows/inventorywindow.cpp:221
 msgid "Split"
 msgstr "Dividi"
 
@@ -1885,7 +1885,7 @@ msgstr "Seleziona OK"
 #: src/gui/setupactiondata.h:183 src/gui/windows/buydialog.cpp:275
 #: src/gui/windows/quitdialog.cpp:52 src/gui/windows/quitdialog.cpp:57
 #: src/gui/windows/quitdialog.cpp:59 src/gui/windows/selldialog.cpp:109
-#: src/gui/windows/serverdialog.cpp:254
+#: src/gui/windows/serverdialog.cpp:252
 msgid "Quit"
 msgstr "Esci"
 
@@ -2474,7 +2474,7 @@ msgstr ""
 #. TRANSLATORS: command editor button
 #: src/gui/setupactiondata.h:1833 src/gui/widgets/tabs/setup_relations.cpp:259
 #: src/gui/windows/charselectdialog.cpp:107
-#: src/gui/windows/serverdialog.cpp:262 src/gui/windows/shopwindow.cpp:93
+#: src/gui/windows/serverdialog.cpp:260 src/gui/windows/shopwindow.cpp:93
 #: src/gui/windows/shopwindow.cpp:100
 #: src/gui/windows/textcommandeditor.cpp:205
 msgid "Delete"
@@ -2759,7 +2759,7 @@ msgstr ""
 
 #. TRANSLATORS: status window label
 #: src/gui/widgets/characterdisplay.cpp:136
-#: src/gui/windows/inventorywindow.cpp:601
+#: src/gui/windows/inventorywindow.cpp:599
 #: src/gui/windows/statuswindow.cpp:149 src/gui/windows/statuswindow.cpp:312
 #: src/gui/windows/statuswindow.cpp:365
 #, c-format
@@ -2838,13 +2838,13 @@ msgstr "Apri url"
 
 #. TRANSLATORS: setup item button
 #. TRANSLATORS: servers dialog button
-#: src/gui/widgets/setupitem.cpp:363 src/gui/widgets/setupitem.cpp:499
-#: src/gui/windows/serverdialog.cpp:260
+#: src/gui/widgets/setupitem.cpp:361 src/gui/widgets/setupitem.cpp:497
+#: src/gui/windows/serverdialog.cpp:258
 msgid "Edit"
 msgstr "Modifica"
 
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:89 src/gui/windows/skilldialog.cpp:593
+#: src/gui/widgets/skillinfo.cpp:89 src/gui/windows/skilldialog.cpp:592
 #, c-format
 msgid "Lvl: %d"
 msgstr "Lvl: %d"
@@ -3432,7 +3432,7 @@ msgstr ""
 #. TRANSLATORS: inventory sort mode
 #: src/gui/widgets/tabs/setup_other.cpp:71
 #: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:152
-#: src/gui/windows/inventorywindow.cpp:70
+#: src/gui/windows/inventorywindow.cpp:68
 msgid "default"
 msgstr "Predefinito"
 
@@ -3679,7 +3679,7 @@ msgstr ""
 #. TRANSLATORS: inventory button
 #: src/gui/widgets/tabs/setup_other.cpp:255 src/gui/windowmenu.cpp:144
 #: src/gui/windows/buyselldialog.cpp:39 src/gui/windows/buyselldialog.cpp:50
-#: src/gui/windows/inventorywindow.cpp:227
+#: src/gui/windows/inventorywindow.cpp:225
 msgid "Shop"
 msgstr "Negozio"
 
@@ -3696,7 +3696,7 @@ msgstr "Abilita la modalità negozio"
 #. TRANSLATORS: settings group
 #. TRANSLATORS: npc dialog name
 #. TRANSLATORS: npc post dialog caption
-#: src/gui/widgets/tabs/setup_other.cpp:267 src/gui/windows/npcdialog.cpp:82
+#: src/gui/widgets/tabs/setup_other.cpp:267 src/gui/windows/npcdialog.cpp:80
 #: src/gui/windows/npcpostdialog.cpp:44
 msgid "NPC"
 msgstr "NPC"
@@ -4751,8 +4751,8 @@ msgstr "EQU"
 
 #. TRANSLATORS: equipment window name
 #. TRANSLATORS: inventory button
-#: src/gui/windowmenu.cpp:97 src/gui/windows/equipmentwindow.cpp:59
-#: src/gui/windows/inventorywindow.cpp:229
+#: src/gui/windowmenu.cpp:97 src/gui/windows/equipmentwindow.cpp:58
+#: src/gui/windows/inventorywindow.cpp:227
 msgid "Equipment"
 msgstr "Equipaggiamento"
 
@@ -4763,7 +4763,7 @@ msgstr "INV"
 
 #. TRANSLATORS: inventory window name
 #. TRANSLATORS: inventory type name
-#: src/gui/windowmenu.cpp:100 src/gui/windows/inventorywindow.cpp:162
+#: src/gui/windowmenu.cpp:100 src/gui/windows/inventorywindow.cpp:160
 #: src/inventory.cpp:257
 msgid "Inventory"
 msgstr "Inventario"
@@ -4779,7 +4779,7 @@ msgid "SKI"
 msgstr "SKI"
 
 #. TRANSLATORS: skills dialog name
-#: src/gui/windowmenu.cpp:109 src/gui/windows/skilldialog.cpp:281
+#: src/gui/windowmenu.cpp:109 src/gui/windows/skilldialog.cpp:280
 msgid "Skills"
 msgstr "Abilità"
 
@@ -4868,7 +4868,7 @@ msgstr "Bot Checker"
 
 #. TRANSLATORS: bot checker window button
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/botcheckerwindow.cpp:271 src/gui/windows/npcdialog.cpp:113
+#: src/gui/windows/botcheckerwindow.cpp:271 src/gui/windows/npcdialog.cpp:111
 msgid "Reset"
 msgstr "Reimposta"
 
@@ -4889,31 +4889,31 @@ msgstr "per prezzo"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
-#: src/gui/windows/buydialog.cpp:61 src/gui/windows/inventorywindow.cpp:72
+#: src/gui/windows/buydialog.cpp:61 src/gui/windows/inventorywindow.cpp:70
 msgid "by name"
 msgstr "per nome"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
-#: src/gui/windows/buydialog.cpp:63 src/gui/windows/inventorywindow.cpp:74
+#: src/gui/windows/buydialog.cpp:63 src/gui/windows/inventorywindow.cpp:72
 msgid "by id"
 msgstr "per ID"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
-#: src/gui/windows/buydialog.cpp:65 src/gui/windows/inventorywindow.cpp:76
+#: src/gui/windows/buydialog.cpp:65 src/gui/windows/inventorywindow.cpp:74
 msgid "by weight"
 msgstr "per peso"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
-#: src/gui/windows/buydialog.cpp:67 src/gui/windows/inventorywindow.cpp:78
+#: src/gui/windows/buydialog.cpp:67 src/gui/windows/inventorywindow.cpp:76
 msgid "by amount"
 msgstr "per quantita'"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
-#: src/gui/windows/buydialog.cpp:69 src/gui/windows/inventorywindow.cpp:80
+#: src/gui/windows/buydialog.cpp:69 src/gui/windows/inventorywindow.cpp:78
 msgid "by type"
 msgstr "per tipo"
 
@@ -4942,7 +4942,7 @@ msgstr "Quantita':"
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (plus sign)
 #: src/gui/windows/buydialog.cpp:267 src/gui/windows/itemamountwindow.cpp:205
-#: src/gui/windows/itemamountwindow.cpp:240 src/gui/windows/npcdialog.cpp:102
+#: src/gui/windows/itemamountwindow.cpp:240 src/gui/windows/npcdialog.cpp:100
 #: src/gui/windows/selldialog.cpp:103 src/gui/windows/statuswindow.cpp:829
 msgid "+"
 msgstr "+"
@@ -4954,7 +4954,7 @@ msgstr "+"
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (minus sign)
 #: src/gui/windows/buydialog.cpp:270 src/gui/windows/itemamountwindow.cpp:203
-#: src/gui/windows/itemamountwindow.cpp:237 src/gui/windows/npcdialog.cpp:104
+#: src/gui/windows/itemamountwindow.cpp:237 src/gui/windows/npcdialog.cpp:102
 #: src/gui/windows/selldialog.cpp:105 src/gui/windows/statuswindow.cpp:842
 msgid "-"
 msgstr "-"
@@ -5532,7 +5532,7 @@ msgstr "Modifica Server"
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
 #: src/gui/windows/editserverdialog.cpp:75
-#: src/gui/windows/serverdialog.cpp:256
+#: src/gui/windows/serverdialog.cpp:254
 msgid "Connect"
 msgstr "Connetti"
 
@@ -5865,17 +5865,17 @@ msgid "Job level: %d"
 msgstr ""
 
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/npcdialog.cpp:67
+#: src/gui/windows/npcdialog.cpp:65
 msgid "Stop waiting"
 msgstr "Ferma attesa"
 
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/npcdialog.cpp:69
+#: src/gui/windows/npcdialog.cpp:67
 msgid "Next"
 msgstr "Prossimo"
 
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/npcdialog.cpp:73
+#: src/gui/windows/npcdialog.cpp:71
 msgid "Submit"
 msgstr "Invia"
 
@@ -5884,9 +5884,9 @@ msgstr "Invia"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: trade window button
-#: src/gui/windows/npcdialog.cpp:111 src/gui/windows/serverdialog.cpp:258
+#: src/gui/windows/npcdialog.cpp:109 src/gui/windows/serverdialog.cpp:256
 #: src/gui/windows/shopwindow.cpp:91 src/gui/windows/shopwindow.cpp:98
-#: src/gui/windows/tradewindow.cpp:79
+#: src/gui/windows/tradewindow.cpp:77
 msgid "Add"
 msgstr "Aggiungi"
 
@@ -5986,53 +5986,53 @@ msgid "Do you really want to sell %s?"
 msgstr ""
 
 #. TRANSLATORS: servers dialog name
-#: src/gui/windows/serverdialog.cpp:247
+#: src/gui/windows/serverdialog.cpp:245
 msgid "Choose Your Server"
 msgstr "Scegli il tuo server"
 
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/serverdialog.cpp:264
+#: src/gui/windows/serverdialog.cpp:262
 msgid "Load"
 msgstr "Carica"
 
 #. TRANSLATORS: servers dialog name
-#: src/gui/windows/serverdialog.cpp:280
+#: src/gui/windows/serverdialog.cpp:278
 msgid "Choose Your Server  *** SAFE MODE ***"
 msgstr "Scegli Il Tuo Server  *** MODALITA' SICURA ***"
 
 #. TRANSLATORS: servers dialog checkbox
-#: src/gui/windows/serverdialog.cpp:289
+#: src/gui/windows/serverdialog.cpp:287
 msgid "Use same ip for game sub servers"
 msgstr "Utilizzare lo stesso IP per i sub server di gioco"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:532
+#: src/gui/windows/serverdialog.cpp:530
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "Downloading server list... %2.2f%%"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:538
+#: src/gui/windows/serverdialog.cpp:536
 msgid "Waiting for server..."
 msgstr "Attesa del server..."
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:543
+#: src/gui/windows/serverdialog.cpp:541
 msgid "Preparing download"
 msgstr "Preparazione download"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:548
+#: src/gui/windows/serverdialog.cpp:546
 msgid "Error retreiving server list!"
 msgstr "Errore nel ricevimento della lista sei server!"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:639
+#: src/gui/windows/serverdialog.cpp:637
 msgid "requires a newer version"
 msgstr "Richiede una versione più nuova"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:644
+#: src/gui/windows/serverdialog.cpp:642
 #, c-format
 msgid "requires v%s"
 msgstr "Richiede v%s"
@@ -6090,24 +6090,24 @@ msgid "%s wants to %s %s do you accept?"
 msgstr "%s vuole %s %s accetti?"
 
 #. TRANSLATORS: skills dialog button
-#: src/gui/windows/skilldialog.cpp:290
+#: src/gui/windows/skilldialog.cpp:289
 msgid "Up"
 msgstr "Su"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:406
+#: src/gui/windows/skilldialog.cpp:405
 #, c-format
 msgid "Skill points available: %d"
 msgstr "Punti abilità disponibili: %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:466
+#: src/gui/windows/skilldialog.cpp:465
 #, c-format
 msgid "Skill Set %d"
 msgstr "Abilità impostata %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:500
+#: src/gui/windows/skilldialog.cpp:499
 #, c-format
 msgid "Skill %d"
 msgstr "Abilità %d"
@@ -6536,53 +6536,53 @@ msgid "Save"
 msgstr "Salva"
 
 #. TRANSLATORS: trade window button
-#: src/gui/windows/tradewindow.cpp:59
+#: src/gui/windows/tradewindow.cpp:57
 msgid "Propose trade"
 msgstr "Inizia uno scambio"
 
 #. TRANSLATORS: trade window button
-#: src/gui/windows/tradewindow.cpp:61
+#: src/gui/windows/tradewindow.cpp:59
 msgid "Confirmed. Waiting..."
 msgstr "Confermato. In attesa..."
 
 #. TRANSLATORS: trade window button
-#: src/gui/windows/tradewindow.cpp:63
+#: src/gui/windows/tradewindow.cpp:61
 msgid "Agree trade"
 msgstr "Accetta scambio"
 
 #. TRANSLATORS: trade window button
-#: src/gui/windows/tradewindow.cpp:65
+#: src/gui/windows/tradewindow.cpp:63
 msgid "Agreed. Waiting..."
 msgstr "Accettato. In attesa..."
 
 #. TRANSLATORS: trade window caption
-#: src/gui/windows/tradewindow.cpp:69
+#: src/gui/windows/tradewindow.cpp:67
 msgid "Trade: You"
 msgstr "Commercia: Tu"
 
 #. TRANSLATORS: trade window money label
-#: src/gui/windows/tradewindow.cpp:77 src/gui/windows/tradewindow.cpp:184
+#: src/gui/windows/tradewindow.cpp:75 src/gui/windows/tradewindow.cpp:182
 #, c-format
 msgid "You get %s"
 msgstr "Ottieni %s"
 
 #. TRANSLATORS: trade window money change button
-#: src/gui/windows/tradewindow.cpp:82
+#: src/gui/windows/tradewindow.cpp:80
 msgid "Change"
 msgstr "Cambia"
 
 #. TRANSLATORS: trade window money label
-#: src/gui/windows/tradewindow.cpp:126
+#: src/gui/windows/tradewindow.cpp:124
 msgid "You give:"
 msgstr "Dai:"
 
 #. TRANSLATORS: trade error
-#: src/gui/windows/tradewindow.cpp:389
+#: src/gui/windows/tradewindow.cpp:387
 msgid "You don't have enough money."
 msgstr "Non hai abbastanza denaro."
 
 #. TRANSLATORS: trade error
-#: src/gui/windows/tradewindow.cpp:475
+#: src/gui/windows/tradewindow.cpp:473
 msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Aggiunta dell'oggetto fallita. Non puoi sovrapporre un tipo di oggetto sulla "
@@ -6671,25 +6671,25 @@ msgstr "Scegli parola"
 #. TRANSLATORS: long key name. must be short.
 #. TRANSLATORS: short key name. must be very short.
 #. TRANSLATORS: long key name, should be short
-#: src/input/inputmanager.cpp:384 src/input/inputmanager.cpp:428
+#: src/input/inputmanager.cpp:383 src/input/inputmanager.cpp:427
 #: src/input/keyboardconfig.cpp:101
 #, c-format
 msgid "key_%d"
 msgstr ""
 
 #. TRANSLATORS: long joystick button name. must be short.
-#: src/input/inputmanager.cpp:390
+#: src/input/inputmanager.cpp:389
 #, c-format
 msgid "JButton%d"
 msgstr ""
 
 #. TRANSLATORS: unknown long key type
-#: src/input/inputmanager.cpp:404
+#: src/input/inputmanager.cpp:403
 msgid "unknown key"
 msgstr "pulsante sconosciuto"
 
 #. TRANSLATORS: short joystick button name. muse be very short
-#: src/input/inputmanager.cpp:434
+#: src/input/inputmanager.cpp:433
 #, c-format
 msgid "JB%d"
 msgstr ""
@@ -6697,7 +6697,7 @@ msgstr ""
 #. TRANSLATORS: unknown short key type. must be short
 #. TRANSLATORS: Unknown key short string.
 #. TRANSLATORS: This string must be maximum 5 chars
-#: src/input/inputmanager.cpp:448 src/input/keyboardconfig.cpp:145
+#: src/input/inputmanager.cpp:447 src/input/keyboardconfig.cpp:145
 msgid "u key"
 msgstr ""
 
