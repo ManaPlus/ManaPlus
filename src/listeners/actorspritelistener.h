@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_ACTORSPRITELISTENER_H
-#define BEING_ACTORSPRITELISTENER_H
+#ifndef LISTENERS_ACTORSPRITELISTENER_H
+#define LISTENERS_ACTORSPRITELISTENER_H
 
 class ActorSprite;
 
@@ -41,4 +41,4 @@ class ActorSpriteListener
         virtual void actorSpriteDestroyed(const ActorSprite &actorSprite) = 0;
 };
 
-#endif  // BEING_ACTORSPRITELISTENER_H
+#endif  // LISTENERS_ACTORSPRITELISTENER_H

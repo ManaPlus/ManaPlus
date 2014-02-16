@@ -25,12 +25,12 @@
 
 #include "listeners/depricatedlistener.h"
 
-#include "being/actorspritelistener.h"
 #include "being/being.h"
 
 #include "gui/userpalette.h"
 
 #include "listeners/actionlistener.h"
+#include "listeners/actorspritelistener.h"
 
 #include <vector>
 

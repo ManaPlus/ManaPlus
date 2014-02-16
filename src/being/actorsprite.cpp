@@ -25,10 +25,11 @@
 #include "imagesprite.h"
 #include "statuseffect.h"
 
-#include "being/actorspritelistener.h"
 #include "being/localplayer.h"
 
 #include "gui/theme.h"
+
+#include "listeners/actorspritelistener.h"
 
 #include "resources/resourcemanager.h"
 
