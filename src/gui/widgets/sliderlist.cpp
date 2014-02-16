@@ -138,7 +138,7 @@ void SliderList::updateLabel()
         mLabel->setPosition(buttonSpace + (space - labelWidth) / 2, labelY);
 }
 
-void SliderList::action(const gcn::ActionEvent &event)
+void SliderList::action(const ActionEvent &event)
 {
     if (!mListModel)
         return;

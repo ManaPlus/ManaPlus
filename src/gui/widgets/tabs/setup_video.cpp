@@ -445,7 +445,7 @@ void Setup_Video::cancel()
     config.setValue("noframe", mNoFrame);
 }
 
-void Setup_Video::action(const gcn::ActionEvent &event)
+void Setup_Video::action(const ActionEvent &event)
 {
     const std::string &id = event.getId();
 

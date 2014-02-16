@@ -83,7 +83,7 @@ class StatusWindow final : public Window,
                                       const int id,
                                       const bool percent = true);
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const ActionEvent &event) override;
 
         void clearAttributes();
 

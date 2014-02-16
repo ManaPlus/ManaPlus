@@ -139,7 +139,7 @@ class ChatWindow final : public Window,
         /**
          * Performs action.
          */
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         /**
          * Request focus for typing chat message.

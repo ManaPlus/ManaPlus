@@ -44,7 +44,7 @@ class OkDialog;
 class AwayListener final : public ActionListener
 {
     public:
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 };
 
 /**

@@ -198,7 +198,7 @@ void EditServerDialog::postInit()
     mNameField->requestFocus();
 }
 
-void EditServerDialog::action(const gcn::ActionEvent &event)
+void EditServerDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
 
@@ -299,6 +299,6 @@ void EditServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
     else if (actionId == static_cast<int>(Input::KEY_GUI_SELECT)
              || actionId == static_cast<int>(Input::KEY_GUI_SELECT2))
     {
-        action(gcn::ActionEvent(nullptr, mOkButton->getActionEventId()));
+        action(ActionEvent(nullptr, mOkButton->getActionEventId()));
     }
 }

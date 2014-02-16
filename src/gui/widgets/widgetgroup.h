@@ -40,7 +40,7 @@ class WidgetGroup : public Container,
         virtual void addButton(const std::string &restrict text,
                                const std::string &restrict tag);
 
-        void action(const gcn::ActionEvent &event) override;
+        void action(const ActionEvent &event) override;
 
         virtual void add(gcn::Widget *const widget,
                          const int spacing);

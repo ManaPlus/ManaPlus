@@ -119,7 +119,7 @@ class UpdaterWindow final : public Window,
 
     void loadPatch();
 
-    void action(const gcn::ActionEvent &event) override final;
+    void action(const ActionEvent &event) override final;
 
     void keyPressed(gcn::KeyEvent &keyEvent) override final;
 

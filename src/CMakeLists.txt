@@ -769,7 +769,7 @@ SET(SRCS
     vector.h
     walklayer.cpp
     walklayer.h
-    gui/base/actionevent.hpp
+    events/actionevent.h
     listeners/actionlistener.h
     gui/base/basiccontainer.hpp
     gui/base/cliprectangle.hpp
@@ -808,7 +808,6 @@ SET(SRCS
     gui/base/widgets/textbox.hpp
     gui/base/widgets/textfield.hpp
     gui/base/widgets/window.hpp
-    gui/base/actionevent.cpp
     gui/base/basiccontainer.cpp
     gui/base/cliprectangle.cpp
     gui/base/color.cpp

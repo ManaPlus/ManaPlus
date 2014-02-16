@@ -48,7 +48,7 @@ gcn::Widget *TabStrip::createWidget(const std::string &text) const
     return widget;
 }
 
-void TabStrip::action(const gcn::ActionEvent &event)
+void TabStrip::action(const ActionEvent &event)
 {
     WidgetGroup::action(event);
     if (event.getSource())

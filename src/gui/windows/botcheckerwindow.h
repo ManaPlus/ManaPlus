@@ -61,7 +61,7 @@ class BotCheckerWindow final : public Window,
          */
         ~BotCheckerWindow();
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void update();
 

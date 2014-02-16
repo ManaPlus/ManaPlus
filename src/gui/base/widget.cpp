@@ -67,8 +67,8 @@
 
 #include "gui/base/widget.hpp"
 
-#include "gui/base/actionevent.hpp"
-#include "listeners/actionlistener.h"
+#include "events/actionevent.h"
+
 #include "gui/base/basiccontainer.hpp"
 #include "gui/base/event.hpp"
 #include "gui/base/exception.hpp"
@@ -76,6 +76,7 @@
 #include "gui/base/keyinput.hpp"
 #include "gui/base/mouseinput.hpp"
 
+#include "listeners/actionlistener.h"
 #include "listeners/deathlistener.h"
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"

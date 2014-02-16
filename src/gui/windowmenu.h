@@ -88,7 +88,7 @@ class WindowMenu final : public Container,
 
         ~WindowMenu();
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void mousePressed(gcn::MouseEvent &event) override final;
 

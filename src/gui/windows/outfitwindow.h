@@ -50,7 +50,7 @@ class OutfitWindow final : public Window,
          */
         ~OutfitWindow();
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void draw(Graphics *graphics) override final;
 

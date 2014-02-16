@@ -514,7 +514,7 @@ void ChatWindow::defaultTab()
         mChatTabs->setSelectedTabByIndex(static_cast<unsigned>(0));
 }
 
-void ChatWindow::action(const gcn::ActionEvent &event)
+void ChatWindow::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "chatinput")

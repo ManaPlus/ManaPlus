@@ -40,7 +40,7 @@ class TabStrip final : public WidgetGroup
         gcn::Widget *createWidget(const std::string &name)
                                   const override final A_WARN_UNUSED;
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 };
 
 #endif  // GUI_WIDGETS_TABSTRIP_H

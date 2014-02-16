@@ -90,7 +90,7 @@ HelpWindow::HelpWindow() :
     widgetResized(gcn::Event(nullptr));
 }
 
-void HelpWindow::action(const gcn::ActionEvent &event)
+void HelpWindow::action(const ActionEvent &event)
 {
     if (event.getId() == "DYK")
     {

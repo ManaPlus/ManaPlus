@@ -26,15 +26,14 @@ manaplus_SOURCES =
 endif
 
 dyecmd_CXXFLAGS =
-dyecmd_SOURCES = gui/base/actionevent.cpp \
-	      gui/base/cliprectangle.cpp \
+dyecmd_SOURCES = gui/base/cliprectangle.cpp \
 	      gui/base/color.cpp \
 	      gui/base/event.cpp \
 	      gui/base/exception.cpp \
 	      gui/base/font.cpp \
 	      gui/base/rectangle.cpp \
 	      gui/base/widget.cpp \
-	      gui/base/actionevent.hpp \
+	      events/actionevent.h \
 	      gui/base/cliprectangle.hpp \
 	      gui/base/color.hpp \
 	      gui/base/event.hpp \
@@ -156,7 +155,7 @@ manaplus_CXXFLAGS += -DUSE_SDL2
 endif
 endif
 
-manaplus_SOURCES += gui/base/actionevent.hpp \
+manaplus_SOURCES += events/actionevent.h \
 	      listeners/actionlistener.h \
 	      gui/base/basiccontainer.hpp \
 	      gui/base/cliprectangle.hpp \
@@ -196,7 +195,6 @@ manaplus_SOURCES += gui/base/actionevent.hpp \
 	      gui/base/widgets/textbox.hpp \
 	      gui/base/widgets/textfield.hpp \
 	      gui/base/widgets/window.hpp \
-	      gui/base/actionevent.cpp \
 	      gui/base/basiccontainer.cpp \
 	      gui/base/cliprectangle.cpp \
 	      gui/base/color.cpp \

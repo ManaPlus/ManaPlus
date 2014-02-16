@@ -208,7 +208,7 @@ public:
         mScroll = nullptr;
     }
 
-    void action(const gcn::ActionEvent &event) override final
+    void action(const ActionEvent &event) override final
     {
         const std::string &eventId = event.getId();
         if (eventId == "do invite")
@@ -343,7 +343,7 @@ public:
         mScroll = nullptr;
     }
 
-    void action(const gcn::ActionEvent &event A_UNUSED) override final
+    void action(const ActionEvent &event A_UNUSED) override final
     {
     }
 
@@ -411,7 +411,7 @@ public:
         mScroll = nullptr;
     }
 
-    void action(const gcn::ActionEvent &event) override final
+    void action(const ActionEvent &event) override final
     {
         const std::string &eventId = event.getId();
         if (eventId == "do invite")
@@ -1482,7 +1482,7 @@ bool SocialWindow::removeTab(Party *const party)
     return true;
 }
 
-void SocialWindow::action(const gcn::ActionEvent &event)
+void SocialWindow::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
 

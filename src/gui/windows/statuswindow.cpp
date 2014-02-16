@@ -129,7 +129,7 @@ class ChangeDisplay final : public AttrDisplay, ActionListener
 
         void setPointsNeeded(const int needed);
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
     private:
         int mNeeded;
@@ -746,7 +746,7 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
         bar->setBackgroundColor(Theme::getThemeColor(Theme::STATUSBAR_OFF));
 }
 
-void StatusWindow::action(const gcn::ActionEvent &event)
+void StatusWindow::action(const ActionEvent &event)
 {
     if (!chatWindow)
         return;
@@ -873,7 +873,7 @@ void ChangeDisplay::setPointsNeeded(const int needed)
     update();
 }
 
-void ChangeDisplay::action(const gcn::ActionEvent &event)
+void ChangeDisplay::action(const ActionEvent &event)
 {
     if (Net::getPlayerHandler()->canCorrectAttributes() &&
         event.getSource() == mDec)

@@ -388,7 +388,7 @@ void BuyDialog::sort()
     }
 }
 
-void BuyDialog::action(const gcn::ActionEvent &event)
+void BuyDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "quit")

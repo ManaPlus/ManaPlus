@@ -295,7 +295,7 @@ void NpcDialog::showCloseButton()
     buildLayout();
 }
 
-void NpcDialog::action(const gcn::ActionEvent &event)
+void NpcDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "ok")

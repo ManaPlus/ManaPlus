@@ -321,7 +321,7 @@ SkillDialog::~SkillDialog()
     clearSkills();
 }
 
-void SkillDialog::action(const gcn::ActionEvent &event)
+void SkillDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "inc")

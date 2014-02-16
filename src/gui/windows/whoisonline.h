@@ -134,7 +134,7 @@ public:
 
     void slowLogic();
 
-    void action(const gcn::ActionEvent &event) override final;
+    void action(const ActionEvent &event) override final;
 
     void widgetResized(const gcn::Event &event) override final;
 

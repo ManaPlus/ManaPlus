@@ -207,7 +207,7 @@ Setup_Colors::~Setup_Colors()
     }
 }
 
-void Setup_Colors::action(const gcn::ActionEvent &event)
+void Setup_Colors::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "slider_grad")

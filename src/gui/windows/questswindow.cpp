@@ -318,7 +318,7 @@ void QuestsWindow::loadEffect(const int var, const XmlNodePtr node)
     mAllEffects.push_back(effect);
 }
 
-void QuestsWindow::action(const gcn::ActionEvent &event)
+void QuestsWindow::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "select")

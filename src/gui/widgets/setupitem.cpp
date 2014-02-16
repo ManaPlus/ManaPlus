@@ -154,7 +154,7 @@ std::string SetupItem::getActionEventId() const
     return mWidget->getActionEventId();
 }
 
-void SetupItem::action(const gcn::ActionEvent &event)
+void SetupItem::action(const ActionEvent &event)
 {
     if (!mWidget)
         return;
@@ -393,7 +393,7 @@ void SetupItemTextField::toWidget()
     mTextField->setText(mValue);
 }
 
-void SetupItemTextField::action(const gcn::ActionEvent &event)
+void SetupItemTextField::action(const ActionEvent &event)
 {
     if (!mTextField)
         return;
@@ -529,7 +529,7 @@ void SetupItemIntTextField::toWidget()
     mTextField->setText(mValue);
 }
 
-void SetupItemIntTextField::action(const gcn::ActionEvent &event)
+void SetupItemIntTextField::action(const ActionEvent &event)
 {
     if (!mTextField)
         return;
@@ -609,7 +609,7 @@ void SetupItemLabel::toWidget()
 {
 }
 
-void SetupItemLabel::action(const gcn::ActionEvent &event A_UNUSED)
+void SetupItemLabel::action(const ActionEvent &event A_UNUSED)
 {
 }
 
@@ -799,7 +799,7 @@ void SetupItemSlider::toWidget()
     mSlider->setValue2(atof(mValue.c_str()));
 }
 
-void SetupItemSlider::action(const gcn::ActionEvent &event A_UNUSED)
+void SetupItemSlider::action(const ActionEvent &event A_UNUSED)
 {
     fromWidget();
     if (mOnTheFly)
@@ -954,7 +954,7 @@ void SetupItemSlider2::toWidget()
     updateLabel();
 }
 
-void SetupItemSlider2::action(const gcn::ActionEvent &event A_UNUSED)
+void SetupItemSlider2::action(const ActionEvent &event A_UNUSED)
 {
     fromWidget();
     updateLabel();
@@ -1086,7 +1086,7 @@ void SetupItemSliderList::toWidget()
     mSlider->setSelectedString(mValue);
 }
 
-void SetupItemSliderList::action(const gcn::ActionEvent &event A_UNUSED)
+void SetupItemSliderList::action(const ActionEvent &event A_UNUSED)
 {
     fromWidget();
     if (mOnTheFly)
@@ -1124,7 +1124,7 @@ void SetupItemSound::addMoreControls()
     mHorizont->add(mButton);
 }
 
-void SetupItemSound::action(const gcn::ActionEvent &event)
+void SetupItemSound::action(const ActionEvent &event)
 {
     if (event.getId() == mEventName + "_PLAY")
     {

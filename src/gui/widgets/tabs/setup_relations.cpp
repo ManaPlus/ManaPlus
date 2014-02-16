@@ -370,7 +370,7 @@ void Setup_Relations::cancel()
 {
 }
 
-void Setup_Relations::action(const gcn::ActionEvent &event)
+void Setup_Relations::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == ACTION_TABLE)

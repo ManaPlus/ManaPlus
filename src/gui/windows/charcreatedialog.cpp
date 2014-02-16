@@ -318,7 +318,7 @@ CharCreateDialog::~CharCreateDialog()
         Net::getCharServerHandler()->setCharCreateDialog(nullptr);
 }
 
-void CharCreateDialog::action(const gcn::ActionEvent &event)
+void CharCreateDialog::action(const ActionEvent &event)
 {
     const std::string id = event.getId();
     if (id == "create")
@@ -671,7 +671,7 @@ void CharCreateDialog::keyPressed(gcn::KeyEvent &keyEvent)
     {
         case Input::KEY_GUI_CANCEL:
             keyEvent.consume();
-            action(gcn::ActionEvent(mCancelButton,
+            action(ActionEvent(mCancelButton,
                 mCancelButton->getActionEventId()));
             break;
 

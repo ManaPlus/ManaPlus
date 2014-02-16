@@ -54,7 +54,7 @@ void WrongDataNoticeListener::setTarget(TextField *const textField)
     mTarget = textField;
 }
 
-void WrongDataNoticeListener::action(const gcn::ActionEvent &event)
+void WrongDataNoticeListener::action(const ActionEvent &event)
 {
     if (event.getId() == "ok" && mTarget)
         mTarget->requestFocus();
@@ -172,7 +172,7 @@ RegisterDialog::~RegisterDialog()
     mWrongDataNoticeListener = nullptr;
 }
 
-void RegisterDialog::action(const gcn::ActionEvent &event)
+void RegisterDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "cancel")
@@ -292,12 +292,12 @@ void RegisterDialog::keyPressed(gcn::KeyEvent &keyEvent)
         &keyEvent)->getActionId();
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {
-        action(gcn::ActionEvent(nullptr, mCancelButton->getActionEventId()));
+        action(ActionEvent(nullptr, mCancelButton->getActionEventId()));
     }
     else if (actionId == static_cast<int>(Input::KEY_GUI_SELECT)
              || actionId == static_cast<int>(Input::KEY_GUI_SELECT2))
     {
-        action(gcn::ActionEvent(nullptr, mRegisterButton->getActionEventId()));
+        action(ActionEvent(nullptr, mRegisterButton->getActionEventId()));
     }
     else
     {

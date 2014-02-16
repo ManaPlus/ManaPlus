@@ -339,7 +339,7 @@ void ItemAmountWindow::resetAmount()
     mItemAmountTextField->setValue(1);
 }
 
-void ItemAmountWindow::action(const gcn::ActionEvent &event)
+void ItemAmountWindow::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "cancel")

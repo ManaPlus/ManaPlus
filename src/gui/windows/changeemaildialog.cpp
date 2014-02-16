@@ -109,7 +109,7 @@ ChangeEmailDialog::~ChangeEmailDialog()
     mWrongDataNoticeListener = nullptr;
 }
 
-void ChangeEmailDialog::action(const gcn::ActionEvent &event)
+void ChangeEmailDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "cancel")

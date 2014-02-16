@@ -98,7 +98,7 @@ void CharacterViewSmall::resize()
     mNumber->setPosition(10, y2);
 }
 
-void CharacterViewSmall::action(const gcn::ActionEvent &event)
+void CharacterViewSmall::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "next")

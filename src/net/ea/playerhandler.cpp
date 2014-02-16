@@ -62,7 +62,7 @@ namespace
      */
     struct WeightListener final : public ActionListener
     {
-        void action(const gcn::ActionEvent &event A_UNUSED)
+        void action(const ActionEvent &event A_UNUSED)
         {
             weightNotice = nullptr;
         }
@@ -73,7 +73,7 @@ namespace
      */
     struct DeathListener final : public ActionListener
     {
-        void action(const gcn::ActionEvent &event A_UNUSED)
+        void action(const ActionEvent &event A_UNUSED)
         {
             if (Net::getPlayerHandler())
                 Net::getPlayerHandler()->respawn();

@@ -101,7 +101,7 @@ UnRegisterDialog::~UnRegisterDialog()
     mWrongDataNoticeListener = nullptr;
 }
 
-void UnRegisterDialog::action(const gcn::ActionEvent &event)
+void UnRegisterDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "cancel")

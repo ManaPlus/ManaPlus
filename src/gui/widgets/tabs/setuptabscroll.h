@@ -56,7 +56,7 @@ class SetupTabScroll : public SetupTab
 
         virtual void externalUnloaded() override;
 
-        virtual void action(const gcn::ActionEvent &event A_UNUSED)
+        virtual void action(const ActionEvent &event A_UNUSED)
                             override final
         { }
 

@@ -65,7 +65,7 @@ void EditDialog::postInit()
     okButton->requestFocus();
 }
 
-void EditDialog::action(const gcn::ActionEvent &event)
+void EditDialog::action(const ActionEvent &event)
 {
     // Proxy button events to our listeners
     FOR_EACH (ActionListenerIterator, i, mActionListeners)

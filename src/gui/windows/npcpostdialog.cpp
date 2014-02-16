@@ -98,7 +98,7 @@ NpcPostDialog::~NpcPostDialog()
     instances.remove(this);
 }
 
-void NpcPostDialog::action(const gcn::ActionEvent &event)
+void NpcPostDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "send")

@@ -205,7 +205,7 @@ ShopWindow::~ShopWindow()
     instances.remove(this);
 }
 
-void ShopWindow::action(const gcn::ActionEvent &event)
+void ShopWindow::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "close")

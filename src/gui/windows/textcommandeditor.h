@@ -56,7 +56,7 @@ class TextCommandEditor final : public Window,
 
         void postInit() override final;
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void scheduleDelete() override final;
 

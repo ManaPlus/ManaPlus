@@ -50,7 +50,7 @@ class Setup_Colors final : public SetupTab,
 
         void cancel() override final;
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void valueChanged(const gcn::SelectionEvent &event) override final;
 

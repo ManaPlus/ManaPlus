@@ -102,7 +102,7 @@ void DidYouKnowWindow::postInit()
     widgetResized(gcn::Event(nullptr));
 }
 
-void DidYouKnowWindow::action(const gcn::ActionEvent &event)
+void DidYouKnowWindow::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "close")

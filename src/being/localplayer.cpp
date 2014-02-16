@@ -4385,7 +4385,7 @@ void LocalPlayer::setTestParticle(const std::string &fileName,
     }
 }
 
-void AwayListener::action(const gcn::ActionEvent &event)
+void AwayListener::action(const ActionEvent &event)
 {
     if (event.getId() == "ok" && player_node && player_node->getAway())
     {

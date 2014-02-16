@@ -53,7 +53,7 @@ namespace
 
         A_DELETE_COPY(OpenUrlListener)
 
-        void action(const gcn::ActionEvent &event) override final
+        void action(const ActionEvent &event) override final
         {
             if (event.getId() == "yes")
                 openBrowser(url);

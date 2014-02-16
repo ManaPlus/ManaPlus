@@ -335,7 +335,7 @@ void InventoryWindow::storeSortOrder()
     }
 }
 
-void InventoryWindow::action(const gcn::ActionEvent &event)
+void InventoryWindow::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "outfit")

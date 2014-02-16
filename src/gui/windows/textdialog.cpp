@@ -104,7 +104,7 @@ TextDialog::~TextDialog()
     instances--;
 }
 
-void TextDialog::action(const gcn::ActionEvent &event)
+void TextDialog::action(const ActionEvent &event)
 {
     if (event.getId() == "CANCEL")
         setActionEventId("~" + getActionEventId());

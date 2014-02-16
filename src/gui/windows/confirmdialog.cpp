@@ -107,7 +107,7 @@ void ConfirmDialog::postInit()
     yesButton->requestFocus();
 }
 
-void ConfirmDialog::action(const gcn::ActionEvent &event)
+void ConfirmDialog::action(const ActionEvent &event)
 {
     setActionEventId(event.getId());
     distributeActionEvent();

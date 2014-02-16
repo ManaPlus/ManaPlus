@@ -65,7 +65,7 @@ class ItemAmountWindow final : public Window,
         /**
          * Called when receiving actions from widget.
          */
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         /**
          * Sets default amount value.

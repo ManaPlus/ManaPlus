@@ -63,7 +63,7 @@ namespace
 
         A_DELETE_COPY(OpenUrlListener)
 
-        void action(const gcn::ActionEvent &event) override final
+        void action(const ActionEvent &event) override final
         {
             if (event.getId() == "yes")
                 openBrowser(url);
@@ -276,7 +276,7 @@ LoginDialog::~LoginDialog()
     mUpdateListModel = nullptr;
 }
 
-void LoginDialog::action(const gcn::ActionEvent &event)
+void LoginDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "login" && canSubmit())
@@ -330,12 +330,12 @@ void LoginDialog::keyPressed(gcn::KeyEvent &keyEvent)
         &keyEvent)->getActionId();
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {
-        action(gcn::ActionEvent(nullptr, mServerButton->getActionEventId()));
+        action(ActionEvent(nullptr, mServerButton->getActionEventId()));
     }
     else if (actionId == static_cast<int>(Input::KEY_GUI_SELECT)
              || actionId == static_cast<int>(Input::KEY_GUI_SELECT2))
     {
-        action(gcn::ActionEvent(nullptr, mLoginButton->getActionEventId()));
+        action(ActionEvent(nullptr, mLoginButton->getActionEventId()));
     }
     else
     {

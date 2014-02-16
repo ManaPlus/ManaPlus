@@ -58,7 +58,7 @@ class SkillDialog final : public Window,
         /**
          * Called when receiving actions from widget.
          */
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         /**
          * Update the given skill's display

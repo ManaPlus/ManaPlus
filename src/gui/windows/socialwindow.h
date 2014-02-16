@@ -68,7 +68,7 @@ public:
 
     bool removeTab(Party *const party);
 
-    void action(const gcn::ActionEvent &event) override final;
+    void action(const ActionEvent &event) override final;
 
     void showGuildInvite(const std::string &restrict guildName,
                          const int guildId,

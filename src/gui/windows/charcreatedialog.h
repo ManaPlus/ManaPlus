@@ -58,7 +58,7 @@ class CharCreateDialog final : public Window,
          */
         ~CharCreateDialog();
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         /**
          * Unlocks the dialog, enabling the create character button again.

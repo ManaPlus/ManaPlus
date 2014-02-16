@@ -151,7 +151,7 @@ class TabbedArea final : public Widget2,
 */
         void adjustTabPositions();
 
-        void action(const gcn::ActionEvent& actionEvent) override final;
+        void action(const ActionEvent& actionEvent) override final;
 
         // Inherited from MouseListener
 

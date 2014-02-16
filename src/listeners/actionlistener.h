@@ -66,7 +66,7 @@
 
 #include <string>
 
-#include "gui/base/actionevent.hpp"
+#include "events/actionevent.h"
 
 /**
   * Interface for listening for action events from widgets.
@@ -93,7 +93,7 @@ class ActionListener
           * @param actionEvent The event of the action.
           * @since 0.6.0
           */
-        virtual void action(const gcn::ActionEvent &actionEvent) = 0;
+        virtual void action(const ActionEvent &actionEvent) = 0;
 
     protected:
         /**

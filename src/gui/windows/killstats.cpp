@@ -156,7 +156,7 @@ KillStats::~KillStats()
 {
 }
 
-void KillStats::action(const gcn::ActionEvent &event)
+void KillStats::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "reset")

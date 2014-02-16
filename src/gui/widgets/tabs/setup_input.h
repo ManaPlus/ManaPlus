@@ -55,7 +55,7 @@ class Setup_Input final : public SetupTab
 
         void cancel() override final;
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         /**
          * Get an update on the assigned key.

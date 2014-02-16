@@ -174,7 +174,7 @@ UserPalette *userPalette = nullptr;
 SoundManager soundManager;
 RenderType openGLMode = RENDER_SOFTWARE;
 
-void ErrorListener::action(const gcn::ActionEvent &event)
+void ErrorListener::action(const ActionEvent &event)
 {
     if (event.getId() == "yes")
         openBrowser(client->getSupportUrl());
@@ -196,7 +196,7 @@ extern "C" char const *_nl_locale_name_default(void);
 class AccountListener final : public ActionListener
 {
     public:
-        void action(const gcn::ActionEvent &)
+        void action(const ActionEvent &)
         {
             client->setState(STATE_CHAR_SELECT);
         }
@@ -205,7 +205,7 @@ class AccountListener final : public ActionListener
 class LoginListener final : public ActionListener
 {
     public:
-        void action(const gcn::ActionEvent &)
+        void action(const ActionEvent &)
         {
             client->setState(STATE_PRE_LOGIN);
         }
@@ -1351,7 +1351,7 @@ int Client::gameExec()
                             if (mOptions.chooseDefault)
                             {
                                 static_cast<WorldSelectDialog*>(mCurrentDialog)
-                                    ->action(gcn::ActionEvent(nullptr, "ok"));
+                                    ->action(ActionEvent(nullptr, "ok"));
                             }
                         }
                     }
@@ -1853,7 +1853,7 @@ void Client::optionChanged(const std::string &name)
     }
 }
 
-void Client::action(const gcn::ActionEvent &event)
+void Client::action(const ActionEvent &event)
 {
     std::string tab;
     const std::string &eventId = event.getId();

@@ -58,7 +58,7 @@ class ConfirmDialog : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const gcn::ActionEvent &event) override;
+        void action(const ActionEvent &event) override;
 
         void postInit() override final;
 

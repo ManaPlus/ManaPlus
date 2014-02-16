@@ -257,7 +257,7 @@ void EquipmentWindow::draw(Graphics *graphics)
     BLOCK_END("EquipmentWindow::draw")
 }
 
-void EquipmentWindow::action(const gcn::ActionEvent &event)
+void EquipmentWindow::action(const ActionEvent &event)
 {
     if (!mEquipment)
         return;

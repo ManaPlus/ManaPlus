@@ -225,7 +225,7 @@ void OutfitWindow::save() const
     serverConfig.setValue("OutfitAwayIndex", mAwayOutfit);
 }
 
-void OutfitWindow::action(const gcn::ActionEvent &event)
+void OutfitWindow::action(const ActionEvent &event)
 {
     const std::string eventId = event.getId();
     if (eventId == "next")

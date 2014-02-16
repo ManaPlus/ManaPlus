@@ -102,7 +102,7 @@ Setup_Joystick::~Setup_Joystick()
     mNamesModel = nullptr;
 }
 
-void Setup_Joystick::action(const gcn::ActionEvent &event)
+void Setup_Joystick::action(const ActionEvent &event)
 {
     const gcn::Widget *const source = event.getSource();
     if (source == mJoystickEnabled)

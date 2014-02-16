@@ -160,7 +160,7 @@ SetupWindow::~SetupWindow()
     mButtons.clear();
 }
 
-void SetupWindow::action(const gcn::ActionEvent &event)
+void SetupWindow::action(const ActionEvent &event)
 {
     if (Game::instance())
         Game::instance()->resetAdjustLevel();

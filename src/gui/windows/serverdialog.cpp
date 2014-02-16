@@ -404,7 +404,7 @@ void ServerDialog::connectToSelectedServer()
     client->setState(STATE_CONNECT_SERVER);
 }
 
-void ServerDialog::action(const gcn::ActionEvent &event)
+void ServerDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "connect")
@@ -456,7 +456,7 @@ void ServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
         case Input::KEY_GUI_SELECT:
         case Input::KEY_GUI_SELECT2:
             keyEvent.consume();
-            action(gcn::ActionEvent(nullptr,
+            action(ActionEvent(nullptr,
                 mConnectButton->getActionEventId()));
             return;
 
@@ -510,8 +510,8 @@ void ServerDialog::mouseClicked(gcn::MouseEvent &mouseEvent)
     if (mouseEvent.getClickCount() == 2 &&
         mouseEvent.getSource() == mServersList)
     {
-        action(gcn::ActionEvent(mConnectButton,
-                                mConnectButton->getActionEventId()));
+        action(ActionEvent(mConnectButton,
+            mConnectButton->getActionEventId()));
     }
 }
 

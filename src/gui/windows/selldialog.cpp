@@ -185,7 +185,7 @@ void SellDialog::addItem(const int id, const unsigned char color,
 }
 
 
-void SellDialog::action(const gcn::ActionEvent &event)
+void SellDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
 

@@ -56,7 +56,7 @@ public:
 
     void reset();
 
-    void action(const gcn::ActionEvent &event) override final;
+    void action(const ActionEvent &event) override final;
 
     void updatedPlayer(const std::string &name);
 

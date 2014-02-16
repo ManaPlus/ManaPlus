@@ -49,7 +49,7 @@ public:
 
     ~GuiTableActionListener();
 
-    void action(const gcn::ActionEvent& actionEvent) override final;
+    void action(const ActionEvent& actionEvent) override final;
 
 protected:
     GuiTable *mTable;
@@ -84,8 +84,7 @@ GuiTableActionListener::~GuiTableActionListener()
     }
 }
 
-void GuiTableActionListener::action(const gcn::ActionEvent
-                                    &actionEvent A_UNUSED)
+void GuiTableActionListener::action(const ActionEvent &actionEvent A_UNUSED)
 {
     mTable->setSelected(mRow, mColumn);
     mTable->distributeActionEvent();

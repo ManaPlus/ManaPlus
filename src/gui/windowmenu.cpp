@@ -213,7 +213,7 @@ WindowMenu::~WindowMenu()
     }
 }
 
-void WindowMenu::action(const gcn::ActionEvent &event)
+void WindowMenu::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
 

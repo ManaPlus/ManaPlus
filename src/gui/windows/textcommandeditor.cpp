@@ -314,7 +314,7 @@ TextCommandEditor::~TextCommandEditor()
     mMagicSchoolModel = nullptr;
 }
 
-void TextCommandEditor::action(const gcn::ActionEvent &event)
+void TextCommandEditor::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "magic")

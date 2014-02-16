@@ -2859,7 +2859,7 @@ void RenameListener::setMapItem(MapItem *const mapItem)
     }
 }
 
-void RenameListener::action(const gcn::ActionEvent &event)
+void RenameListener::action(const ActionEvent &event)
 {
     if (event.getId() == "ok" && viewport && mDialog)
     {
@@ -2893,7 +2893,7 @@ PlayerListener::PlayerListener() :
 {
 }
 
-void PlayerListener::action(const gcn::ActionEvent &event)
+void PlayerListener::action(const ActionEvent &event)
 {
     if (event.getId() == "ok" && !mNick.empty() && mDialog)
     {

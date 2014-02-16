@@ -683,7 +683,7 @@ void WhoIsOnline::slowLogic()
     BLOCK_END("WhoIsOnline::slowLogic")
 }
 
-void WhoIsOnline::action(const gcn::ActionEvent &event)
+void WhoIsOnline::action(const ActionEvent &event)
 {
     if (event.getId() == "update")
     {

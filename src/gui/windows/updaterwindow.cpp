@@ -270,7 +270,7 @@ void UpdaterWindow::enable()
         client->setState(STATE_LOAD_DATA);
 }
 
-void UpdaterWindow::action(const gcn::ActionEvent &event)
+void UpdaterWindow::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "cancel")
@@ -295,7 +295,7 @@ void UpdaterWindow::keyPressed(gcn::KeyEvent &keyEvent)
     const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {
-        action(gcn::ActionEvent(nullptr, mCancelButton->getActionEventId()));
+        action(ActionEvent(nullptr, mCancelButton->getActionEventId()));
         client->setState(STATE_LOGIN);
     }
     else if (actionId == static_cast<int>(Input::KEY_GUI_SELECT)
@@ -304,12 +304,11 @@ void UpdaterWindow::keyPressed(gcn::KeyEvent &keyEvent)
         if (mDownloadStatus == UPDATE_COMPLETE ||
             mDownloadStatus == UPDATE_ERROR)
         {
-            action(gcn::ActionEvent(nullptr, mPlayButton->getActionEventId()));
+            action(ActionEvent(nullptr, mPlayButton->getActionEventId()));
         }
         else
         {
-            action(gcn::ActionEvent(nullptr,
-                mCancelButton->getActionEventId()));
+            action(ActionEvent(nullptr, mCancelButton->getActionEventId()));
         }
     }
 }

@@ -70,7 +70,7 @@ class CharDeleteConfirm final : public ConfirmDialog
 
         A_DELETE_COPY(CharDeleteConfirm)
 
-        void action(const gcn::ActionEvent &event)
+        void action(const ActionEvent &event)
         {
             if (event.getId() == "yes" && mMaster)
                 mMaster->askPasswordForDeletion(mIndex);
@@ -205,7 +205,7 @@ void CharSelectDialog::postInit()
     requestFocus();
 }
 
-void CharSelectDialog::action(const gcn::ActionEvent &event)
+void CharSelectDialog::action(const ActionEvent &event)
 {
     // Check if a button of a character was pressed
     const gcn::Widget *const sourceParent = event.getSource()->getParent();
@@ -322,7 +322,7 @@ void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
     {
         case Input::KEY_GUI_CANCEL:
             keyEvent.consume();
-            action(gcn::ActionEvent(mSwitchLoginButton,
+            action(ActionEvent(mSwitchLoginButton,
                 mSwitchLoginButton->getActionEventId()));
             break;
 

@@ -79,7 +79,7 @@ class SetupItem : public ActionListener,
 
         virtual std::string getActionEventId() const A_WARN_UNUSED;
 
-        virtual void action(const gcn::ActionEvent &event) override;
+        virtual void action(const ActionEvent &event) override;
 
         virtual void action();
 
@@ -210,7 +210,7 @@ class SetupItemTextField final : public SetupItem
 
         void toWidget() override final;
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void apply(const std::string &eventName) override final;
 
@@ -265,7 +265,7 @@ class SetupItemIntTextField final : public SetupItem
 
         void toWidget() override final;
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void apply(const std::string &eventName) override final;
 
@@ -297,7 +297,7 @@ class SetupItemLabel final : public SetupItem
 
         void toWidget() override final;
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void apply(const std::string &eventName) override final;
 
@@ -377,7 +377,7 @@ class SetupItemSlider final : public SetupItem
 
         void toWidget() override final;
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void apply(const std::string &eventName) override final;
 
@@ -433,7 +433,7 @@ class SetupItemSlider2 final : public SetupItem
 
         void toWidget() override final;
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void apply(const std::string &eventName) override final;
 
@@ -470,7 +470,7 @@ class SetupItemSliderList : public SetupItem
 
         void toWidget() override;
 
-        virtual void action(const gcn::ActionEvent &event) override;
+        virtual void action(const ActionEvent &event) override;
 
         void apply(const std::string &eventName) override final;
 
@@ -520,7 +520,7 @@ class SetupItemSound final : public SetupItemSliderList
 
         A_DELETE_COPY(SetupItemSound)
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void addMoreControls() override final;
 

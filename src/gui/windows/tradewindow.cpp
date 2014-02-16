@@ -318,7 +318,7 @@ void TradeWindow::setStatus(const Status s)
     mOkButton->setEnabled((s != PROPOSING && s != ACCEPTED));
 }
 
-void TradeWindow::action(const gcn::ActionEvent &event)
+void TradeWindow::action(const ActionEvent &event)
 {
     if (!inventoryWindow)
         return;

@@ -505,7 +505,7 @@ gcn::ListModel *DropDown::getListModel()
     return mPopup->getListModel();
 }
 
-void DropDown::action(const gcn::ActionEvent &actionEvent A_UNUSED)
+void DropDown::action(const ActionEvent &actionEvent A_UNUSED)
 {
     foldUp();
     distributeActionEvent();

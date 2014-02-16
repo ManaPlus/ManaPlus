@@ -119,7 +119,7 @@ void BuySellDialog::setVisible(bool visible)
     }
 }
 
-void BuySellDialog::action(const gcn::ActionEvent &event)
+void BuySellDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "Buy")

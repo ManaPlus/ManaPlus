@@ -147,7 +147,7 @@ void QuitDialog::placeOption(ContainerPlacer &placer,
     mOptions.push_back(option);
 }
 
-void QuitDialog::action(const gcn::ActionEvent &event)
+void QuitDialog::action(const ActionEvent &event)
 {
     soundManager.playGuiSound(SOUND_HIDE_WINDOW);
     if (event.getId() == "ok")
@@ -211,11 +211,10 @@ void QuitDialog::keyPressed(gcn::KeyEvent &keyEvent)
     {
         case Input::KEY_GUI_SELECT:
         case Input::KEY_GUI_SELECT2:
-            action(gcn::ActionEvent(nullptr, mOkButton->getActionEventId()));
+            action(ActionEvent(nullptr, mOkButton->getActionEventId()));
             break;
         case Input::KEY_GUI_CANCEL:
-            action(gcn::ActionEvent(nullptr,
-                mCancelButton->getActionEventId()));
+            action(ActionEvent(nullptr, mCancelButton->getActionEventId()));
             break;
         case Input::KEY_GUI_UP:
             dir = -1;

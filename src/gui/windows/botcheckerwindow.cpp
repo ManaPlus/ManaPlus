@@ -377,7 +377,7 @@ void BotCheckerWindow::slowLogic()
     BLOCK_END("BotCheckerWindow::slowLogic")
 }
 
-void BotCheckerWindow::action(const gcn::ActionEvent &event)
+void BotCheckerWindow::action(const ActionEvent &event)
 {
     if (event.getId() == "reset")
     {

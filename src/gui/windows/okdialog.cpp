@@ -84,7 +84,7 @@ OkDialog::OkDialog(const std::string &restrict title,
         soundManager.playGuiSound(SOUND_ERROR);
 }
 
-void OkDialog::action(const gcn::ActionEvent &event)
+void OkDialog::action(const ActionEvent &event)
 {
     setActionEventId(event.getId());
     distributeActionEvent();

@@ -433,7 +433,7 @@ void Setup_Theme::updateInfo()
     mInfoButton->setEnabled(!mThemeInfo.empty());
 }
 
-void Setup_Theme::action(const gcn::ActionEvent &event)
+void Setup_Theme::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == ACTION_THEME)

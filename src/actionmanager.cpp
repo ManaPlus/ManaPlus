@@ -234,12 +234,12 @@ impHandler0(ok)
     // Close the config window, cancelling changes if opened
     else if (setupWindow && setupWindow->isWindowVisible())
     {
-        setupWindow->action(gcn::ActionEvent(nullptr, "cancel"));
+        setupWindow->action(ActionEvent(nullptr, "cancel"));
         return true;
     }
     else if (NpcDialog *const dialog = NpcDialog::getActive())
     {
-        dialog->action(gcn::ActionEvent(nullptr, "ok"));
+        dialog->action(ActionEvent(nullptr, "ok"));
         return true;
     }
     return false;

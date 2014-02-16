@@ -213,7 +213,7 @@ void Setup_Input::cancel()
     refreshKeys();
 }
 
-void Setup_Input::action(const gcn::ActionEvent &event)
+void Setup_Input::action(const ActionEvent &event)
 {
     const std::string id = event.getId();
 

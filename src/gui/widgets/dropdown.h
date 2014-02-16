@@ -133,7 +133,7 @@ class DropDown final : public ActionListener,
 
         gcn::Rectangle getChildrenArea() override;
 
-        void action(const gcn::ActionEvent &actionEvent) override;
+        void action(const ActionEvent &actionEvent) override;
 
         void distributeValueChangedEvent();
 

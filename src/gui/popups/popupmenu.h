@@ -54,7 +54,7 @@ class RenameListener final : public ActionListener
 
         A_DELETE_COPY(RenameListener)
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void setMapItem(MapItem *const mapItem);
 
@@ -74,7 +74,7 @@ class PlayerListener : public ActionListener
 
         A_DELETE_COPY(PlayerListener)
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
         void setNick(std::string name)
         { mNick = name; }

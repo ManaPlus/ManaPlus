@@ -50,7 +50,7 @@ class Setup_Video final : public SetupTab, public KeyListener
 
         void cancel() override final;
 
-        void action(const gcn::ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
     private:
         bool mFullScreenEnabled;

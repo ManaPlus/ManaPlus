@@ -558,7 +558,7 @@ void TabbedArea::adjustTabPositions()
     }
 }
 
-void TabbedArea::action(const gcn::ActionEvent& actionEvent)
+void TabbedArea::action(const ActionEvent& actionEvent)
 {
     gcn::Widget *const source = actionEvent.getSource();
     Tab *const tab = dynamic_cast<Tab *const>(source);

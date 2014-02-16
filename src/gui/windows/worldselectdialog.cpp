@@ -134,7 +134,7 @@ WorldSelectDialog::~WorldSelectDialog()
     mWorldListModel = nullptr;
 }
 
-void WorldSelectDialog::action(const gcn::ActionEvent &event)
+void WorldSelectDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     if (eventId == "world")
@@ -160,12 +160,12 @@ void WorldSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
 
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {
-        action(gcn::ActionEvent(nullptr,
+        action(ActionEvent(nullptr,
             mChangeLoginButton->getActionEventId()));
     }
     else if (actionId == static_cast<int>(Input::KEY_GUI_SELECT)
              || actionId == static_cast<int>(Input::KEY_GUI_SELECT2))
     {
-        action(gcn::ActionEvent(nullptr, mChooseWorld->getActionEventId()));
+        action(ActionEvent(nullptr, mChooseWorld->getActionEventId()));
     }
 }

@@ -50,7 +50,7 @@ namespace
 {
     struct RequestTradeListener : public ActionListener
     {
-        void action(const gcn::ActionEvent &event)
+        void action(const ActionEvent &event)
         {
             confirmDlg = nullptr;
             const std::string &eventId = event.getId();
