@@ -119,9 +119,9 @@ bool SDLInput::isMouseQueueEmpty()
     return mMouseInputQueue.empty();
 }
 
-gcn::MouseInput SDLInput::dequeueMouseInput()
+MouseInput SDLInput::dequeueMouseInput()
 {
-    gcn::MouseInput mouseInput;
+    MouseInput mouseInput;
 
     if (mMouseInputQueue.empty())
         return MouseInput();
@@ -189,9 +189,9 @@ void SDLInput::pushInput(const SDL_Event &event)
 #endif
                 mouseInput.setButton(-1);
                 if (y > 0)
-                    mouseInput.setType(gcn::MouseInput::WHEEL_MOVED_UP);
+                    mouseInput.setType(MouseInput::WHEEL_MOVED_UP);
                 else
-                    mouseInput.setType(gcn::MouseInput::WHEEL_MOVED_DOWN);
+                    mouseInput.setType(MouseInput::WHEEL_MOVED_DOWN);
                 mouseInput.setTimeStamp(SDL_GetTicks());
                 mMouseInputQueue.push(mouseInput);
             }
@@ -227,12 +227,12 @@ void SDLInput::pushInput(const SDL_Event &event)
 
 #ifndef USE_SDL2
             if (event.button.button == SDL_BUTTON_WHEELDOWN)
-                mouseInput.setType(gcn::MouseInput::WHEEL_MOVED_DOWN);
+                mouseInput.setType(MouseInput::WHEEL_MOVED_DOWN);
             else if (event.button.button == SDL_BUTTON_WHEELUP)
-                mouseInput.setType(gcn::MouseInput::WHEEL_MOVED_UP);
+                mouseInput.setType(MouseInput::WHEEL_MOVED_UP);
             else
 #endif
-                mouseInput.setType(gcn::MouseInput::PRESSED);
+                mouseInput.setType(MouseInput::PRESSED);
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
             break;
@@ -254,7 +254,7 @@ void SDLInput::pushInput(const SDL_Event &event)
 #endif
 #endif
             mouseInput.setButton(convertMouseButton(event.button.button));
-            mouseInput.setType(gcn::MouseInput::RELEASED);
+            mouseInput.setType(MouseInput::RELEASED);
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
             break;
@@ -274,8 +274,8 @@ void SDLInput::pushInput(const SDL_Event &event)
                 event.motion.realy / scale);
 #endif
 #endif
-            mouseInput.setButton(gcn::MouseInput::EMPTY);
-            mouseInput.setType(gcn::MouseInput::MOVED);
+            mouseInput.setButton(MouseInput::EMPTY);
+            mouseInput.setType(MouseInput::MOVED);
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
             break;
@@ -295,8 +295,8 @@ void SDLInput::pushInput(const SDL_Event &event)
                 {
                     mouseInput.setX(-1);
                     mouseInput.setY(-1);
-                    mouseInput.setButton(gcn::MouseInput::EMPTY);
-                    mouseInput.setType(gcn::MouseInput::MOVED);
+                    mouseInput.setButton(MouseInput::EMPTY);
+                    mouseInput.setType(MouseInput::MOVED);
                     mMouseInputQueue.push(mouseInput);
                 }
             }
@@ -338,11 +338,11 @@ int SDLInput::convertMouseButton(const int button)
     switch (button)
     {
       case SDL_BUTTON_LEFT:
-          return gcn::MouseInput::LEFT;
+          return MouseInput::LEFT;
       case SDL_BUTTON_RIGHT:
-          return gcn::MouseInput::RIGHT;
+          return MouseInput::RIGHT;
       case SDL_BUTTON_MIDDLE:
-          return gcn::MouseInput::MIDDLE;
+          return MouseInput::MIDDLE;
       default:
           // We have an unknown mouse type which is ignored.
           return button;
@@ -569,10 +569,10 @@ void SDLInput::simulateMouseClick(const int x, const int y,
     mouseInput.setY(y);
     mouseInput.setReal(x, y);
     mouseInput.setButton(button);
-    mouseInput.setType(gcn::MouseInput::PRESSED);
+    mouseInput.setType(MouseInput::PRESSED);
     mouseInput.setTimeStamp(SDL_GetTicks());
     mMouseInputQueue.push(mouseInput);
-    mouseInput.setType(gcn::MouseInput::RELEASED);
+    mouseInput.setType(MouseInput::RELEASED);
     mouseInput.setTimeStamp(SDL_GetTicks());
     mMouseInputQueue.push(mouseInput);
 }

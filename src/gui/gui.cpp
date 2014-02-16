@@ -20,8 +20,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mouseinput.h"
-
 #include "gui/gui.h"
 
 #include "gui/focushandler.h"
@@ -44,6 +42,7 @@
 
 #include "input/keydata.h"
 #include "input/keyinput.h"
+#include "input/mouseinput.h"
 
 #include "resources/cursor.h"
 #include "resources/image.h"
@@ -524,13 +523,13 @@ void Gui::setUseCustomCursor(const bool customCursor)
     }
 }
 
-void Gui::handleMouseMoved(const gcn::MouseInput &mouseInput)
+void Gui::handleMouseMoved(const MouseInput &mouseInput)
 {
     gcn::Gui::handleMouseMoved(mouseInput);
     mMouseInactivityTimer = 0;
 }
 
-void Gui::handleMousePressed(const gcn::MouseInput &mouseInput)
+void Gui::handleMousePressed(const MouseInput &mouseInput)
 {
     const int x = mouseInput.getX();
     const int y = mouseInput.getY();
@@ -781,19 +780,19 @@ void Gui::handleMouseInput()
 #endif
         switch (mouseInput.getType())
         {
-            case gcn::MouseInput::PRESSED:
+            case MouseInput::PRESSED:
                 handleMousePressed(mouseInput);
                 break;
-            case gcn::MouseInput::RELEASED:
+            case MouseInput::RELEASED:
                 handleMouseReleased(mouseInput);
                 break;
-            case gcn::MouseInput::MOVED:
+            case MouseInput::MOVED:
                 handleMouseMoved(mouseInput);
                 break;
-            case gcn::MouseInput::WHEEL_MOVED_DOWN:
+            case MouseInput::WHEEL_MOVED_DOWN:
                 handleMouseWheelMovedDown(mouseInput);
                 break;
-            case gcn::MouseInput::WHEEL_MOVED_UP:
+            case MouseInput::WHEEL_MOVED_UP:
                 handleMouseWheelMovedUp(mouseInput);
                 break;
             default:
@@ -803,7 +802,7 @@ void Gui::handleMouseInput()
     BLOCK_END("Gui::handleMouseInput")
 }
 
-void Gui::handleMouseReleased(const gcn::MouseInput &mouseInput)
+void Gui::handleMouseReleased(const MouseInput &mouseInput)
 {
     gcn::Widget *sourceWidget = getMouseEventSource(
         mouseInput.getX(), mouseInput.getY());

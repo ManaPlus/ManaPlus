@@ -72,7 +72,8 @@
 #include "gui/base/basiccontainer.hpp"
 #include "gui/base/key.hpp"
 #include "gui/base/listmodel.hpp"
-#include "gui/base/mouseinput.hpp"
+
+#include "input/mouseinput.h"
 
 #include "listeners/selectionlistener.h"
 

@@ -168,7 +168,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      listeners/keylistener.h \
 	      gui/base/listmodel.hpp \
 	      events/mouseevent.h \
-	      gui/base/mouseinput.hpp \
 	      listeners/mouselistener.h \
 	      gui/base/rectangle.hpp \
 	      events/selectionevent.h \
@@ -193,7 +192,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/focushandler.cpp \
 	      gui/base/gui.cpp \
 	      gui/base/key.cpp \
-	      gui/base/mouseinput.cpp \
 	      gui/base/rectangle.cpp \
 	      gui/base/widget.cpp \
 	      gui/base/widgets/button.cpp \
@@ -792,8 +790,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      render/mgl.h \
 	      render/mobileopenglgraphics.cpp \
 	      render/mobileopenglgraphics.h \
-	      mouseinput.cpp \
-	      mouseinput.h \
+	      input/mouseinput.h \
 	      navigationmanager.cpp \
 	      navigationmanager.h \
 	      render/normalopenglgraphics.cpp \

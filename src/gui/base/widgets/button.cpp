@@ -70,7 +70,8 @@
 #include "gui/font.h"
 
 #include "gui/base/key.hpp"
-#include "gui/base/mouseinput.hpp"
+
+#include "input/mouseinput.h"
 
 #include "events/mouseevent.h"
 

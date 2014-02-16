@@ -70,7 +70,7 @@
 #include "events/keyevent.h"
 #include "events/mouseevent.h"
 
-#include "gui/base/mouseinput.hpp"
+#include "input/mouseinput.h"
 
 class Graphics;
 class KeyListener;

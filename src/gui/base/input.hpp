@@ -67,11 +67,10 @@
 #include "localconsts.h"
 
 class KeyInput;
+class MouseInput;
 
 namespace gcn
 {
-    class MouseInput;
-
     /**
      * Abstract class for providing functions for user input. 
      *

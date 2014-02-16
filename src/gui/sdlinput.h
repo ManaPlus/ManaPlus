@@ -79,13 +79,13 @@
 #define GUI_SDLINPUT_H
 
 #include "input/keyinput.h"
-
-#include "mouseinput.h"
+#include "input/mouseinput.h"
 
 #include <SDL_events.h>
 
 #include "gui/base/input.hpp"
-#include "gui/base/mouseinput.hpp"
+
+#include "input/mouseinput.h"
 
 #include <queue>
 
@@ -184,7 +184,7 @@ public:
 
     bool isMouseQueueEmpty() override final A_WARN_UNUSED;
 
-    gcn::MouseInput dequeueMouseInput() override final A_WARN_UNUSED;
+    MouseInput dequeueMouseInput() override final A_WARN_UNUSED;
 
     MouseInput dequeueMouseInput2() A_WARN_UNUSED;
 

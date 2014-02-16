@@ -20,10 +20,10 @@
 
 #include "touchactions.h"
 
-#include "mouseinput.h"
 #include "touchmanager.h"
 
 #include "input/inputmanager.h"
+#include "input/mouseinput.h"
 
 #include "debug.h"
 
@@ -109,7 +109,7 @@ impHandler(padClick)
 
 impHandler(padEvents)
 {
-    if (mouseInput.getType() == gcn::MouseInput::MOVED)
+    if (mouseInput.getType() == MouseInput::MOVED)
     {
         if (padClicked)
             moveChar(mouseInput.getX(), mouseInput.getY());

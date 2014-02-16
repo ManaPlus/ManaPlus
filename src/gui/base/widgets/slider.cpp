@@ -68,7 +68,8 @@
 #include "gui/base/widgets/slider.hpp"
 
 #include "gui/base/key.hpp"
-#include "gui/base/mouseinput.hpp"
+
+#include "input/mouseinput.h"
 
 #include "render/graphics.h"
 

@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2011-2014  The ManaPlus Developers
+ *  Copyright (C) 2012-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -61,148 +61,28 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GCN_MOUSEINPUT_HPP
-#define GCN_MOUSEINPUT_HPP
+#ifndef MOUSEINPUT_H
+#define MOUSEINPUT_H
+
+#include "input/mouseinput.h"
 
 #include "localconsts.h"
 
-namespace gcn
+class MouseInput final
 {
-
-    /**
-     * Internal class that represents mouse input. Generally you won't have to
-     * bother using this class unless you implement an Input class for
-     * a back end.
-     *
-     * @author Olof Naessén
-     * @author Per Larsson
-     * @since 0.1.0
-     */
-    class MouseInput
-    {
     public:
-        /**
-         * Constructor.
-         */
         MouseInput() :
             mType(0),
             mButton(0),
             mTimeStamp(0),
             mX(0),
-            mY(0)
+            mY(0),
+            mRealX(0),
+            mRealY(0)
         { }
 
-        /**
-         * Constructor.
-         *
-         * @param button The button pressed.
-         * @param type The type of mouse input.
-         * @param x The mouse x coordinate.
-         * @param y The mouse y coordinate.
-         * @param timeStamp The timestamp of the mouse input. Used to
-         *                  check for double clicks.
-         */
-        MouseInput(const unsigned int button,
-                   const unsigned int type,
-                   const int x,
-                   const int y,
-                   const int timeStamp);
-
-        /**
-         * Sets the type of the mouse input.
-         *
-         * @param type The type of the mouse input. Should be a value from the
-         *             mouse event type enum
-         * @see getType
-         * @since 0.1.0
-         */
-        void setType(unsigned int type);
-
-        /**
-         * Gets the type of the mouse input.
-         *
-         * @return The type of the mouse input. A value from the mouse event
-         *         type enum.
-         * @see setType
-         * @since 0.1.0
-         */
-        unsigned int getType() const A_WARN_UNUSED;
-
-        /**
-         * Sets the button pressed.
-         *
-         * @param button The button pressed. Should be one of the values
-         *               in the mouse event button enum.
-         * @see getButton.
-         * @since 0.1.0
-         */
-        void setButton(unsigned int button);
-
-        /**
-         * Gets the button pressed.
-         *
-         * @return The button pressed. A value from the mouse event
-         *         button enum.
-         * @see setButton
-         * @since 0.1.0
-         */
-        unsigned int getButton() const A_WARN_UNUSED;
-
-        /**
-         * Sets the timestamp for the mouse input.
-         * Used to check for double clicks.
-         *
-         * @param timeStamp The timestamp of the mouse input.
-         * @see getTimeStamp
-         * @since 0.1.0
-         */
-        void setTimeStamp(int timeStamp);
-
-        /**
-         * Gets the time stamp of the input.
-         * Used to check for double clicks.
-         *
-         * @return The time stamp of the mouse input.
-         * @see setTimeStamp
-         * @since 0.1.0
-         */
-        int getTimeStamp() const A_WARN_UNUSED;
-
-        /**
-         * Sets the x coordinate of the mouse input.
-         *
-         * @param x The x coordinate of the mouse input.
-         * @see getX
-         * @since 0.6.0
-         */
-        void setX(int x);
-
-        /**
-         * Gets the x coordinate of the mouse input.
-         *
-         * @return The x coordinate of the mouse input.
-         * @see setX
-         * @since 0.6.0
-         */
-        int getX() const A_WARN_UNUSED;
-
-        /**
-         * Sets the y coordinate of the mouse input.
-         *
-         * @param y The y coordinate of the mouse input.
-         * @see getY
-         * @since 0.6.0
-         */
-        void setY(int y);
-
-        /**
-         * Gets the y coordinate of the mouse input.
-         *
-         * @return The y coordinate of the mouse input.
-         * @see setY
-         * @since 0.6.0
-         */
-        int getY() const A_WARN_UNUSED;
+        ~MouseInput()
+        { }
 
         /**
          * Mouse input event types. This enum partially corresponds
@@ -227,6 +107,79 @@ namespace gcn
             RIGHT,
             MIDDLE
         };
+
+        void setType(unsigned int type)
+        {
+            mType = type;
+        }
+
+        unsigned int getType() const
+        {
+            return mType;
+        }
+
+        void setButton(unsigned int button)
+        {
+            mButton = button;
+        }
+
+        unsigned int getButton() const
+        {
+            return mButton;
+        }
+
+        int getTimeStamp() const
+        {
+            return mTimeStamp;
+        }
+
+        void setTimeStamp(int timeStamp)
+        {
+            mTimeStamp = timeStamp;
+        }
+
+        void setX(int x)
+        {
+            mX = x;
+        }
+
+        int getX() const
+        {
+            return mX;
+        }
+
+        void setY(int y)
+        {
+            mY = y;
+        }
+
+        int getY() const
+        {
+            return mY;
+        }
+
+        void setReal(const int x, const int y)
+        { mRealX = x; mRealY = y; }
+
+        int getRealX() const A_WARN_UNUSED
+        { return mRealX; }
+
+        int getRealY() const A_WARN_UNUSED
+        { return mRealY; }
+
+#ifdef ANDROID
+        int getTouchX() const A_WARN_UNUSED
+        { return mRealX; }
+
+        int getTouchY() const A_WARN_UNUSED
+        { return mRealY; }
+#else
+        int getTouchX() const A_WARN_UNUSED
+        { return mX; }
+
+        int getTouchY() const A_WARN_UNUSED
+        { return mY; }
+#endif
 
     protected:
         /**
@@ -254,7 +207,10 @@ namespace gcn
          * Holds the y coordinate of the mouse input.
          */
         int mY;
-    };
-}  // namespace gcn
 
-#endif  // end GCN_MOUSEINPUT_HPP
+        int mRealX;
+
+        int mRealY;
+};
+
+#endif  // MOUSEINPUT_H

@@ -22,8 +22,9 @@
 
 #include "configuration.h"
 #include "graphicsvertexes.h"
-#include "mouseinput.h"
 #include "touchactions.h"
+
+#include "input/mouseinput.h"
 
 #include "gui/font.h"
 #include "gui/gui.h"
@@ -278,13 +279,13 @@ bool TouchManager::processEvent(const MouseInput &mouseInput)
 
             switch (mouseInput.getType())
             {
-                case gcn::MouseInput::PRESSED:
+                case MouseInput::PRESSED:
                     if (!item->eventPressed.empty())
                         executeAction(item->eventPressed);
                     else if (item->funcPressed)
                         item->funcPressed(event);
                     break;
-                case gcn::MouseInput::RELEASED:
+                case MouseInput::RELEASED:
                     if (!item->eventReleased.empty())
                         executeAction(item->eventReleased);
                     else if (item->funcReleased)

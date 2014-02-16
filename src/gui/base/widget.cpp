@@ -73,9 +73,9 @@
 
 #include "gui/base/basiccontainer.hpp"
 #include "gui/base/focushandler.hpp"
-#include "gui/base/mouseinput.hpp"
 
 #include "input/keyinput.h"
+#include "input/mouseinput.h"
 
 #include "listeners/actionlistener.h"
 #include "listeners/deathlistener.h"

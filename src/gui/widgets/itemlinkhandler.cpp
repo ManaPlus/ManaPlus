@@ -35,10 +35,11 @@
 
 #include "resources/db/itemdb.h"
 
-#include <string>
-
 #include "listeners/actionlistener.h"
-#include "gui/base/mouseinput.hpp"
+
+#include "input/mouseinput.h"
+
+#include <string>
 
 #include "debug.h"
 
@@ -85,7 +86,7 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         replaceAll(url, " ", "");
         listener.url = url;
         const int button = event->getButton();
-        if (button == gcn::MouseInput::LEFT)
+        if (button == MouseInput::LEFT)
         {
             ConfirmDialog *const confirmDlg = new ConfirmDialog(
                 // TRANSLATORS: dialog message
@@ -93,7 +94,7 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
             confirmDlg->postInit();
             confirmDlg->addActionListener(&listener);
         }
-        else if (button == gcn::MouseInput::RIGHT)
+        else if (button == MouseInput::RIGHT)
         {
             if (viewport)
                 viewport->showLinkPopup(url);

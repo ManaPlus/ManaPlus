@@ -169,11 +169,11 @@ class Gui final : public gcn::Gui
         static uint32_t getMouseState(int *const x, int *const y);
 
     protected:
-        void handleMouseMoved(const gcn::MouseInput &mouseInput);
+        void handleMouseMoved(const MouseInput &mouseInput);
 
-        void handleMouseReleased(const gcn::MouseInput &mouseInput);
+        void handleMouseReleased(const MouseInput &mouseInput);
 
-        void handleMousePressed(const gcn::MouseInput &mouseInput);
+        void handleMousePressed(const MouseInput &mouseInput);
 
         void handleMouseInput();
 

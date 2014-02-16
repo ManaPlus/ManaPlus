@@ -82,7 +82,7 @@ void MultiTouchManager::checkDevice(const int touchId,
             const int w = mainGraphics->mWidth;
             const int h = mainGraphics->mHeight;
             guiInput->simulateMouseClick(finger0.x * w, finger0.y * h,
-                gcn::MouseInput::RIGHT);
+                MouseInput::RIGHT);
         }
     }
 }

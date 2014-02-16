@@ -69,7 +69,7 @@
 
 #include "gui/font.h"
 
-#include "gui/base/mouseinput.hpp"
+#include "input/mouseinput.h"
 
 #include "render/graphics.h"
 
