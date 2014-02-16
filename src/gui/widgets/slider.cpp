@@ -343,7 +343,7 @@ void Slider::mouseWheelMovedDown(gcn::MouseEvent &mouseEvent)
 
 void Slider::keyPressed(KeyEvent& keyEvent)
 {
-    const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int action = keyEvent.getActionId();
 
     if (getOrientation() == HORIZONTAL)
     {

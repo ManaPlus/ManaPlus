@@ -840,7 +840,7 @@ void ChatWindow::mouseDragged(gcn::MouseEvent &event)
 void ChatWindow::keyPressed(KeyEvent &event)
 {
     const int key = event.getKey().getValue();
-    const int actionId = static_cast<KeyEvent*>(&event)->getActionId();
+    const int actionId = event.getActionId();
     if (actionId == static_cast<int>(Input::KEY_GUI_DOWN))
     {
         if (mCurHist != mHistory.end())

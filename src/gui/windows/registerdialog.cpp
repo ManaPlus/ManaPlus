@@ -289,8 +289,7 @@ void RegisterDialog::keyPressed(KeyEvent &keyEvent)
         mRegisterButton->setEnabled(canSubmit());
         return;
     }
-    const int actionId = static_cast<KeyEvent*>(
-        &keyEvent)->getActionId();
+    const int actionId = keyEvent.getActionId();
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {
         action(ActionEvent(nullptr, mCancelButton->getActionEventId()));

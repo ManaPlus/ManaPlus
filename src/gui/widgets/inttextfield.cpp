@@ -52,7 +52,7 @@ IntTextField::IntTextField(const Widget2 *const widget, const int def,
 
 void IntTextField::keyPressed(KeyEvent &event)
 {
-    const int action = static_cast<KeyEvent*>(&event)->getActionId();
+    const int action = event.getActionId();
 
     if (action == Input::KEY_GUI_DELETE || action == Input::KEY_GUI_BACKSPACE)
     {
@@ -68,7 +68,7 @@ void IntTextField::keyPressed(KeyEvent &event)
     if (val != Key::TEXTINPUT)
         return;
 
-    const std::string str = static_cast<KeyEvent*>(&event)->getText();
+    const std::string str = event->getText();
     if (str.empty())
         return;
     const size_t sz = str.size();

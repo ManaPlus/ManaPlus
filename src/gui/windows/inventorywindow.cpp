@@ -615,20 +615,14 @@ void InventoryWindow::mouseExited(gcn::MouseEvent &event A_UNUSED)
 
 void InventoryWindow::keyPressed(KeyEvent &event)
 {
-    if (static_cast<KeyEvent*>(&event)->getActionId()
-        == static_cast<int>(Input::KEY_GUI_MOD))
-    {
+    if (event.getActionId() == static_cast<int>(Input::KEY_GUI_MOD))
         mSplit = true;
-    }
 }
 
 void InventoryWindow::keyReleased(KeyEvent &event)
 {
-    if (static_cast<KeyEvent*>(&event)->getActionId()
-        == static_cast<int>(Input::KEY_GUI_MOD))
-    {
+    if (event.getActionId() == static_cast<int>(Input::KEY_GUI_MOD))
         mSplit = false;
-    }
 }
 
 void InventoryWindow::valueChanged(const gcn::SelectionEvent &event A_UNUSED)

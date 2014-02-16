@@ -447,7 +447,7 @@ void ServerDialog::action(const ActionEvent &event)
 
 void ServerDialog::keyPressed(KeyEvent &keyEvent)
 {
-    switch (static_cast<KeyEvent*>(&keyEvent)->getActionId())
+    switch (keyEvent.getActionId())
     {
         case Input::KEY_GUI_CANCEL:
             keyEvent.consume();

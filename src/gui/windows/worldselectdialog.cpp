@@ -156,8 +156,7 @@ void WorldSelectDialog::action(const ActionEvent &event)
 
 void WorldSelectDialog::keyPressed(KeyEvent &keyEvent)
 {
-    const int actionId = static_cast<KeyEvent*>(
-        &keyEvent)->getActionId();
+    const int actionId = keyEvent.getActionId();
 
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {

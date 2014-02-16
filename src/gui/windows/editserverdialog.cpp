@@ -290,8 +290,7 @@ void EditServerDialog::keyPressed(KeyEvent &keyEvent)
     if (keyEvent.isConsumed())
         return;
 
-    const int actionId = static_cast<KeyEvent*>(
-        &keyEvent)->getActionId();
+    const int actionId = keyEvent.getActionId();
 
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {

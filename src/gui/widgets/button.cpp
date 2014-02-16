@@ -592,7 +592,7 @@ void Button::setCaption(const std::string& caption)
 
 void Button::keyPressed(KeyEvent& keyEvent)
 {
-    const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int action = keyEvent.getActionId();
 
     if (action == Input::KEY_GUI_SELECT)
     {
@@ -603,7 +603,7 @@ void Button::keyPressed(KeyEvent& keyEvent)
 
 void Button::keyReleased(KeyEvent& keyEvent)
 {
-    const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int action = keyEvent.getActionId();
 
     if (action == Input::KEY_GUI_SELECT && mKeyPressed)
     {

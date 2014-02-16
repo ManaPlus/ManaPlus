@@ -327,8 +327,7 @@ void LoginDialog::keyPressed(KeyEvent &keyEvent)
         return;
     }
 
-    const int actionId = static_cast<KeyEvent*>(
-        &keyEvent)->getActionId();
+    const int actionId = keyEvent.getActionId();
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {
         action(ActionEvent(nullptr, mServerButton->getActionEventId()));

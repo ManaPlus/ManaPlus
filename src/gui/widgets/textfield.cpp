@@ -204,7 +204,7 @@ void TextField::keyPressed(KeyEvent &keyEvent)
 #ifdef USE_SDL2
     if (val == Key::TEXTINPUT)
     {
-        std::string str = static_cast<KeyEvent*>(&keyEvent)->getText();
+        std::string str = keyEvent->getText();
         mText.insert(mCaretPosition, str);
         mCaretPosition += str.size();
         keyEvent.consume();
@@ -293,7 +293,7 @@ void TextField::keyPressed(KeyEvent &keyEvent)
     }
     else
     {
-        const int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+        const int action = keyEvent.getActionId();
         if (!inputManager.isActionActive(static_cast<int>(
             Input::KEY_GUI_CTRL)))
         {

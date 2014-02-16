@@ -318,7 +318,7 @@ void CharSelectDialog::use(const int selected)
 
 void CharSelectDialog::keyPressed(KeyEvent &keyEvent)
 {
-    const int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    const int actionId = keyEvent.getActionId();
     switch (actionId)
     {
         case Input::KEY_GUI_CANCEL:
