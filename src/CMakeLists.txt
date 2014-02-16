@@ -773,7 +773,6 @@ SET(SRCS
     gui/base/focushandler.hpp
     listeners/focuslistener.h
     gui/base/gui.hpp
-    gui/base/input.hpp
     events/inputguievent.h
     gui/base/key.hpp
     events/keyevent.h

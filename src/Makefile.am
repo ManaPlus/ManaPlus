@@ -161,7 +161,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      listeners/focuslistener.h \
 	      render/graphics.h \
 	      gui/base/gui.hpp \
-	      gui/base/input.hpp \
 	      events/inputguievent.h \
 	      gui/base/key.hpp \
 	      events/keyevent.h \

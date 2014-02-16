@@ -74,11 +74,11 @@
 
 class Graphics;
 class KeyListener;
+class SDLInput;
 
 namespace gcn
 {
     class FocusHandler;
-    class Input;
     class Widget;
 
     // The following comment will appear in the doxygen main page.
@@ -178,7 +178,7 @@ namespace gcn
          *      SDLInput
          * @since 0.1.0
          */
-        virtual void setInput(Input* input);
+        virtual void setInput(SDLInput* input);
 
         /**
          * Gets the input object being used for input handling.
@@ -189,7 +189,7 @@ namespace gcn
          *      SDLInput
          * @since 0.1.0
          */
-        virtual Input* getInput() const A_WARN_UNUSED;
+        virtual SDLInput* getInput() const A_WARN_UNUSED;
 
         /**
          * Performs logic of the GUI. By calling this function all logic
@@ -418,7 +418,7 @@ namespace gcn
         /**
          * Holds the input implementation used.
          */
-        Input* mInput;
+        SDLInput* mInput;
 
         /**
          * Holds the focus handler for the Gui.

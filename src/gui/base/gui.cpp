@@ -69,8 +69,9 @@
 
 #include "gui/base/basiccontainer.hpp"
 #include "gui/base/focushandler.hpp"
-#include "gui/base/input.hpp"
 #include "gui/base/widget.hpp"
+
+#include "gui/sdlinput.h"
 
 #include "input/keyinput.h"
 #include "input/mouseinput.h"
@@ -139,12 +140,12 @@ namespace gcn
         return mGraphics;
     }
 
-    void Gui::setInput(Input* input)
+    void Gui::setInput(SDLInput* input)
     {
         mInput = input;
     }
 
-    Input* Gui::getInput() const
+    SDLInput* Gui::getInput() const
     {
         return mInput;
     }

@@ -75,15 +75,13 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GUI_SDLINPUT_H
-#define GUI_SDLINPUT_H
+#ifndef GUI_INPUT_H
+#define GUI_INPUT_H
 
 #include "input/keyinput.h"
 #include "input/mouseinput.h"
 
 #include <SDL_events.h>
-
-#include "gui/base/input.hpp"
 
 #include "input/mouseinput.h"
 
@@ -145,9 +143,9 @@ namespace Key
 }  // namespace Key
 
 /**
- * SDL implementation of Input.
+ * SDL implementation of SDLInput.
  */
-class SDLInput final : public gcn::Input
+class SDLInput final
 {
 public:
     /**
@@ -170,21 +168,21 @@ public:
      * only use SDL and plan sticking with SDL you can safely ignore this
      * function as it in the SDL case does nothing.
      */
-    void _pollInput() override final
+    void _pollInput()
     { }
 
     KeyInput dequeueKeyInput2() A_WARN_UNUSED;
 
-    KeyInput dequeueKeyInput() override final A_WARN_UNUSED
+    KeyInput dequeueKeyInput() A_WARN_UNUSED
     { return KeyInput(); }
 
-    // Inherited from Input
+    // Inherited from SDLInput
 
-    bool isKeyQueueEmpty() override final A_WARN_UNUSED;
+    bool isKeyQueueEmpty() A_WARN_UNUSED;
 
-    bool isMouseQueueEmpty() override final A_WARN_UNUSED;
+    bool isMouseQueueEmpty() A_WARN_UNUSED;
 
-    MouseInput dequeueMouseInput() override final A_WARN_UNUSED;
+    MouseInput dequeueMouseInput() A_WARN_UNUSED;
 
     MouseInput dequeueMouseInput2() A_WARN_UNUSED;
 
@@ -220,4 +218,4 @@ protected:
     bool mMouseInWindow;
 };
 
-#endif  // GUI_SDLINPUT_H
+#endif  // GUI_INPUT_H

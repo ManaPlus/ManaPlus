@@ -75,11 +75,11 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "gui/sdlinput.h"
-
 #include "sdlshared.h"
 
 #include "input/inputmanager.h"
+
+#include "gui/sdlinput.h"
 
 #include "render/graphics.h"
 
