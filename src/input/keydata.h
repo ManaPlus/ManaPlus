@@ -23,7 +23,7 @@
 #ifndef INPUT_KEYDATA_H
 #define INPUT_KEYDATA_H
 
-#include "input/inputevent.h"
+#include "events/inputevent.h"
 
 #include <string>
 

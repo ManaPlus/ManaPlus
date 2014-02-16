@@ -21,7 +21,8 @@
 #ifndef INPUT_INPUTMANAGER_H
 #define INPUT_INPUTMANAGER_H
 
-#include "input/inputevent.h"
+#include "events/inputevent.h"
+
 #include "input/keydata.h"
 
 #include <string>

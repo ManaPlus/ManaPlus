@@ -31,7 +31,8 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "input/inputevent.h"
+#include "events/inputevent.h"
+
 #include "input/inputmanager.h"
 
 #include "gui/sdlinput.h"

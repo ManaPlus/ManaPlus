@@ -773,8 +773,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      spellshortcut.h \
 	      textcommand.cpp \
 	      textcommand.h \
-	      input/inputevent.cpp \
-	      input/inputevent.h \
+	      events/inputevent.h \
 	      input/inputmanager.cpp \
 	      input/inputmanager.h \
 	      input/joystick.cpp \

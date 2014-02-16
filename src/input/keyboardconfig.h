@@ -27,7 +27,7 @@
 
 #include "sdlshared.h"
 
-#include "input/inputevent.h"
+#include "events/inputevent.h"
 
 #include <string>
 

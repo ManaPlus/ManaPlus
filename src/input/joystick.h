@@ -23,7 +23,7 @@
 #ifndef INPUT_JOYSTICK_H
 #define INPUT_JOYSTICK_H
 
-#include "input/inputevent.h"
+#include "events/inputevent.h"
 
 #include <SDL_events.h>
 

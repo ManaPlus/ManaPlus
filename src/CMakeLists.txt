@@ -658,8 +658,7 @@ SET(SRCS
     textcommand.h
     input/inputmanager.cpp
     input/inputmanager.h
-    input/inputevent.cpp
-    input/inputevent.h
+    events/inputevent.h
     input/joystick.cpp
     input/joystick.h
     input/keyboardconfig.cpp

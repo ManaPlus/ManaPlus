@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_INPUTEVENT_H
-#define INPUT_INPUTEVENT_H
+#ifndef EVENTS_INPUTEVENT_H
+#define EVENTS_INPUTEVENT_H
 
 #include <map>
 #include <vector>
@@ -41,11 +41,14 @@ typedef KeyTimeMap::iterator KeyTimeMapIter;
 
 struct InputEvent final
 {
-    InputEvent(const int action0, const int mask0);
+    InputEvent(const int action0, const int mask0) :
+        action(action0),
+        mask(mask0)
+    { }
 
     int action;
 
     int mask;
 };
 
-#endif  // INPUT_INPUTEVENT_H
+#endif  // EVENTS_INPUTEVENT_H
