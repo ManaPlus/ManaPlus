@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-02-16 01:05+0300\n"
+"POT-Creation-Date: 2014-02-16 15:26+0300\n"
 "PO-Revision-Date: 2014-02-14 14:20+0000\n"
 "Last-Translator: Bernard <nard@bh28.net>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
@@ -575,7 +575,7 @@ msgstr "Aide"
 #. TRANSLATORS: shop window button
 #: src/client.cpp:1155 src/gui/popups/popupmenu.cpp:617
 #: src/gui/windows/didyouknowwindow.cpp:78
-#: src/gui/windows/inventorywindow.cpp:258 src/gui/windows/npcdialog.cpp:71
+#: src/gui/windows/inventorywindow.cpp:259 src/gui/windows/npcdialog.cpp:71
 #: src/gui/windows/npcdialog.cpp:109 src/gui/windows/questswindow.cpp:136
 #: src/gui/windows/shopwindow.cpp:77
 msgid "Close"
@@ -625,10 +625,10 @@ msgstr "Changement de serveur de jeu"
 #: src/client.cpp:1605 src/client.cpp:1616 src/client.cpp:1800
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
-#: src/gui/windows/charcreatedialog.cpp:358
-#: src/gui/windows/charselectdialog.cpp:297
-#: src/gui/windows/editserverdialog.cpp:217
-#: src/gui/windows/registerdialog.cpp:259
+#: src/gui/windows/charcreatedialog.cpp:359
+#: src/gui/windows/charselectdialog.cpp:298
+#: src/gui/windows/editserverdialog.cpp:218
+#: src/gui/windows/registerdialog.cpp:260
 #: src/gui/windows/unregisterdialog.cpp:146
 #: src/net/ea/charserverhandler.cpp:201 src/net/ea/charserverhandler.cpp:225
 msgid "Error"
@@ -1204,16 +1204,16 @@ msgstr "Ajouter le nom dans la boite de dialogue"
 #: src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/changeemaildialog.cpp:55
 #: src/gui/windows/changepassworddialog.cpp:57
-#: src/gui/windows/charcreatedialog.cpp:119
+#: src/gui/windows/charcreatedialog.cpp:120
 #: src/gui/windows/connectiondialog.cpp:48
-#: src/gui/windows/editserverdialog.cpp:78
+#: src/gui/windows/editserverdialog.cpp:79
 #: src/gui/windows/itemamountwindow.cpp:209
-#: src/gui/windows/npcpostdialog.cpp:68 src/gui/windows/quitdialog.cpp:69
-#: src/gui/windows/registerdialog.cpp:76 src/gui/windows/setupwindow.cpp:93
+#: src/gui/windows/npcpostdialog.cpp:68 src/gui/windows/quitdialog.cpp:70
+#: src/gui/windows/registerdialog.cpp:77 src/gui/windows/setupwindow.cpp:93
 #: src/gui/windows/socialwindow.cpp:1232
 #: src/gui/windows/textcommandeditor.cpp:201 src/gui/windows/textdialog.cpp:55
 #: src/gui/windows/unregisterdialog.cpp:54
-#: src/gui/windows/updaterwindow.cpp:185
+#: src/gui/windows/updaterwindow.cpp:186
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -1283,7 +1283,7 @@ msgstr "Bouger la caméra"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
 #: src/gui/popups/popupmenu.cpp:565 src/gui/setupactiondata.h:1950
-#: src/gui/windowmenu.cpp:148 src/gui/windows/inventorywindow.cpp:224
+#: src/gui/windowmenu.cpp:148 src/gui/windows/inventorywindow.cpp:225
 #: src/gui/windows/outfitwindow.cpp:53
 msgid "Outfits"
 msgstr "Costumes"
@@ -1433,8 +1433,8 @@ msgstr "Ajouter tout dans l'échange"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: setup button
 #: src/gui/popups/popupmenu.cpp:1893 src/gui/popups/popupmenu.cpp:2023
-#: src/gui/popups/popupmenu.cpp:2064 src/gui/windows/inventorywindow.cpp:254
-#: src/gui/windows/inventorywindow.cpp:782 src/gui/windows/setupwindow.cpp:95
+#: src/gui/popups/popupmenu.cpp:2064 src/gui/windows/inventorywindow.cpp:255
+#: src/gui/windows/inventorywindow.cpp:777 src/gui/windows/setupwindow.cpp:95
 msgid "Store"
 msgstr "Entreposer"
 
@@ -1465,7 +1465,7 @@ msgstr "Entreposer tout"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get item from storage
 #. TRANSLATORS: storage button
-#: src/gui/popups/popupmenu.cpp:1922 src/gui/windows/inventorywindow.cpp:256
+#: src/gui/popups/popupmenu.cpp:1922 src/gui/windows/inventorywindow.cpp:257
 msgid "Retrieve"
 msgstr "Récupérer"
 
@@ -1498,8 +1498,8 @@ msgstr "Reprendre tout"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: skills dialog button
 #: src/gui/popups/popupmenu.cpp:1985 src/gui/popups/popupmenu.cpp:2763
-#: src/gui/windows/inventorywindow.cpp:205
-#: src/gui/windows/inventorywindow.cpp:693 src/gui/windows/skilldialog.cpp:288
+#: src/gui/windows/inventorywindow.cpp:206
+#: src/gui/windows/inventorywindow.cpp:688 src/gui/windows/skilldialog.cpp:288
 msgid "Use"
 msgstr "Utiliser"
 
@@ -1691,8 +1691,8 @@ msgstr "Objet protégé"
 #. TRANSLATORS: equipment window button
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2748 src/gui/windows/equipmentwindow.cpp:66
-#: src/gui/windows/inventorywindow.cpp:207
-#: src/gui/windows/inventorywindow.cpp:682
+#: src/gui/windows/inventorywindow.cpp:208
+#: src/gui/windows/inventorywindow.cpp:677
 msgid "Unequip"
 msgstr "Retirer"
 
@@ -1700,16 +1700,16 @@ msgstr "Retirer"
 #. TRANSLATORS: use item
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window button
-#: src/gui/popups/popupmenu.cpp:2754 src/gui/windows/inventorywindow.cpp:203
-#: src/gui/windows/inventorywindow.cpp:687 src/gui/windows/outfitwindow.cpp:60
+#: src/gui/popups/popupmenu.cpp:2754 src/gui/windows/inventorywindow.cpp:204
+#: src/gui/windows/inventorywindow.cpp:682 src/gui/windows/outfitwindow.cpp:60
 msgid "Equip"
 msgstr "Équiper"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2774 src/gui/windows/inventorywindow.cpp:220
-#: src/gui/windows/inventorywindow.cpp:790
+#: src/gui/popups/popupmenu.cpp:2774 src/gui/windows/inventorywindow.cpp:221
+#: src/gui/windows/inventorywindow.cpp:785
 msgid "Drop..."
 msgstr "Jeter..."
 
@@ -1724,14 +1724,14 @@ msgstr "Jeter tout"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2783 src/gui/windowmenu.cpp:136
-#: src/gui/windows/inventorywindow.cpp:795
+#: src/gui/windows/inventorywindow.cpp:790
 msgid "Drop"
 msgstr "Jeter"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: split items
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2791 src/gui/windows/inventorywindow.cpp:222
+#: src/gui/popups/popupmenu.cpp:2791 src/gui/windows/inventorywindow.cpp:223
 msgid "Split"
 msgstr "Partager"
 
@@ -1888,9 +1888,9 @@ msgstr "Sélectionner OK"
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: servers dialog button
 #: src/gui/setupactiondata.h:183 src/gui/windows/buydialog.cpp:275
-#: src/gui/windows/quitdialog.cpp:51 src/gui/windows/quitdialog.cpp:56
-#: src/gui/windows/quitdialog.cpp:58 src/gui/windows/selldialog.cpp:109
-#: src/gui/windows/serverdialog.cpp:253
+#: src/gui/windows/quitdialog.cpp:52 src/gui/windows/quitdialog.cpp:57
+#: src/gui/windows/quitdialog.cpp:59 src/gui/windows/selldialog.cpp:109
+#: src/gui/windows/serverdialog.cpp:254
 msgid "Quit"
 msgstr "Quitter"
 
@@ -2456,8 +2456,8 @@ msgstr "Page suivante"
 #: src/gui/widgets/tabs/setup_chat.cpp:180
 #: src/gui/widgets/tabs/setup_other.cpp:329
 #: src/gui/widgets/tabs/setup_visual.cpp:188
-#: src/gui/windows/charcreatedialog.cpp:107
-#: src/gui/windows/registerdialog.cpp:115
+#: src/gui/windows/charcreatedialog.cpp:108
+#: src/gui/windows/registerdialog.cpp:116
 msgid "Other"
 msgstr "Autre"
 
@@ -2478,8 +2478,8 @@ msgstr "Sélectionner2"
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: command editor button
 #: src/gui/setupactiondata.h:1833 src/gui/widgets/tabs/setup_relations.cpp:259
-#: src/gui/windows/charselectdialog.cpp:106
-#: src/gui/windows/serverdialog.cpp:261 src/gui/windows/shopwindow.cpp:93
+#: src/gui/windows/charselectdialog.cpp:107
+#: src/gui/windows/serverdialog.cpp:262 src/gui/windows/shopwindow.cpp:93
 #: src/gui/windows/shopwindow.cpp:100
 #: src/gui/windows/textcommandeditor.cpp:205
 msgid "Delete"
@@ -2541,7 +2541,7 @@ msgstr "Emoticônes"
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
 #: src/gui/setupactiondata.h:1952 src/gui/widgets/tabs/setup_chat.cpp:41
-#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:204
+#: src/gui/windowmenu.cpp:86 src/gui/windows/chatwindow.cpp:205
 msgid "Chat"
 msgstr "Conversation"
 
@@ -2764,7 +2764,7 @@ msgstr "Niveau : %u"
 
 #. TRANSLATORS: status window label
 #: src/gui/widgets/characterdisplay.cpp:136
-#: src/gui/windows/inventorywindow.cpp:600
+#: src/gui/windows/inventorywindow.cpp:601
 #: src/gui/windows/statuswindow.cpp:149 src/gui/windows/statuswindow.cpp:312
 #: src/gui/windows/statuswindow.cpp:365
 #, c-format
@@ -2773,61 +2773,61 @@ msgstr "Argent : %s"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:153
+#: src/gui/widgets/colormodel.cpp:74 src/gui/windows/chatwindow.cpp:154
 msgid "black"
 msgstr "noir"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:155
+#: src/gui/widgets/colormodel.cpp:76 src/gui/windows/chatwindow.cpp:156
 msgid "red"
 msgstr "rouge"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:157
+#: src/gui/widgets/colormodel.cpp:78 src/gui/windows/chatwindow.cpp:158
 msgid "green"
 msgstr "vert"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:159
+#: src/gui/widgets/colormodel.cpp:80 src/gui/windows/chatwindow.cpp:160
 msgid "blue"
 msgstr "bleu"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:161
+#: src/gui/widgets/colormodel.cpp:82 src/gui/windows/chatwindow.cpp:162
 msgid "gold"
 msgstr "or"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:163
+#: src/gui/widgets/colormodel.cpp:84 src/gui/windows/chatwindow.cpp:164
 msgid "yellow"
 msgstr "jaune"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:165
+#: src/gui/widgets/colormodel.cpp:86 src/gui/windows/chatwindow.cpp:166
 msgid "pink"
 msgstr "rose"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:167
+#: src/gui/widgets/colormodel.cpp:88 src/gui/windows/chatwindow.cpp:168
 msgid "purple"
 msgstr "violet"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:169
+#: src/gui/widgets/colormodel.cpp:90 src/gui/windows/chatwindow.cpp:170
 msgid "grey"
 msgstr "gris"
 
 #. TRANSLATORS: color name
 #. TRANSLATORS: chat color
-#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:171
+#: src/gui/widgets/colormodel.cpp:92 src/gui/windows/chatwindow.cpp:172
 msgid "brown"
 msgstr "marron"
 
@@ -2837,14 +2837,14 @@ msgid "Eq."
 msgstr "Eq."
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:93
+#: src/gui/widgets/itemlinkhandler.cpp:92
 msgid "Open url"
 msgstr "Ouvrir l'adresse"
 
 #. TRANSLATORS: setup item button
 #. TRANSLATORS: servers dialog button
 #: src/gui/widgets/setupitem.cpp:363 src/gui/widgets/setupitem.cpp:499
-#: src/gui/windows/serverdialog.cpp:259
+#: src/gui/windows/serverdialog.cpp:260
 msgid "Edit"
 msgstr "Éditer"
 
@@ -3436,8 +3436,8 @@ msgstr "Nom d'hôte SOCKS5"
 #. TRANSLATORS: chat color
 #. TRANSLATORS: inventory sort mode
 #: src/gui/widgets/tabs/setup_other.cpp:71
-#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:151
-#: src/gui/windows/inventorywindow.cpp:69
+#: src/gui/widgets/tabs/setup_visual.cpp:77 src/gui/windows/chatwindow.cpp:152
+#: src/gui/windows/inventorywindow.cpp:70
 msgid "default"
 msgstr "défaut"
 
@@ -3684,7 +3684,7 @@ msgstr "Activer les notifications de poids"
 #. TRANSLATORS: inventory button
 #: src/gui/widgets/tabs/setup_other.cpp:255 src/gui/windowmenu.cpp:144
 #: src/gui/windows/buyselldialog.cpp:39 src/gui/windows/buyselldialog.cpp:50
-#: src/gui/windows/inventorywindow.cpp:226
+#: src/gui/windows/inventorywindow.cpp:227
 msgid "Shop"
 msgstr "Boutique"
 
@@ -4365,7 +4365,7 @@ msgstr "Petit"
 
 #. TRANSLATORS: onscreen button size
 #. TRANSLATORS: update type
-#: src/gui/widgets/tabs/setup_touch.cpp:38 src/gui/windows/logindialog.cpp:79
+#: src/gui/widgets/tabs/setup_touch.cpp:38 src/gui/windows/logindialog.cpp:80
 msgid "Normal"
 msgstr "Normal"
 
@@ -4765,7 +4765,7 @@ msgstr "Equ"
 #. TRANSLATORS: equipment window name
 #. TRANSLATORS: inventory button
 #: src/gui/windowmenu.cpp:97 src/gui/windows/equipmentwindow.cpp:59
-#: src/gui/windows/inventorywindow.cpp:228
+#: src/gui/windows/inventorywindow.cpp:229
 msgid "Equipment"
 msgstr "Équipement"
 
@@ -4776,7 +4776,7 @@ msgstr "Inv"
 
 #. TRANSLATORS: inventory window name
 #. TRANSLATORS: inventory type name
-#: src/gui/windowmenu.cpp:100 src/gui/windows/inventorywindow.cpp:161
+#: src/gui/windowmenu.cpp:100 src/gui/windows/inventorywindow.cpp:162
 #: src/inventory.cpp:257
 msgid "Inventory"
 msgstr "Inventaire"
@@ -4902,31 +4902,31 @@ msgstr "par prix"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
-#: src/gui/windows/buydialog.cpp:61 src/gui/windows/inventorywindow.cpp:71
+#: src/gui/windows/buydialog.cpp:61 src/gui/windows/inventorywindow.cpp:72
 msgid "by name"
 msgstr "par nom"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
-#: src/gui/windows/buydialog.cpp:63 src/gui/windows/inventorywindow.cpp:73
+#: src/gui/windows/buydialog.cpp:63 src/gui/windows/inventorywindow.cpp:74
 msgid "by id"
 msgstr "par numéro d'identification"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
-#: src/gui/windows/buydialog.cpp:65 src/gui/windows/inventorywindow.cpp:75
+#: src/gui/windows/buydialog.cpp:65 src/gui/windows/inventorywindow.cpp:76
 msgid "by weight"
 msgstr "par poids"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
-#: src/gui/windows/buydialog.cpp:67 src/gui/windows/inventorywindow.cpp:77
+#: src/gui/windows/buydialog.cpp:67 src/gui/windows/inventorywindow.cpp:78
 msgid "by amount"
 msgstr "par nombre"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
-#: src/gui/windows/buydialog.cpp:69 src/gui/windows/inventorywindow.cpp:79
+#: src/gui/windows/buydialog.cpp:69 src/gui/windows/inventorywindow.cpp:80
 msgid "by type"
 msgstr "par type"
 
@@ -4975,8 +4975,8 @@ msgstr "-"
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
-#: src/gui/windows/buydialog.cpp:273 src/gui/windows/charcreatedialog.cpp:117
-#: src/gui/windows/charselectdialog.cpp:591
+#: src/gui/windows/buydialog.cpp:273 src/gui/windows/charcreatedialog.cpp:118
+#: src/gui/windows/charselectdialog.cpp:592
 #: src/gui/windows/socialwindow.cpp:1301
 msgid "Create"
 msgstr "Créer"
@@ -5034,7 +5034,7 @@ msgstr "Les deux adresses e-mail ne correspondent pas."
 #. TRANSLATORS: char select dialog. button.
 #: src/gui/windows/changepassworddialog.cpp:48
 #: src/gui/windows/changepassworddialog.cpp:54
-#: src/gui/windows/charselectdialog.cpp:97
+#: src/gui/windows/charselectdialog.cpp:98
 msgid "Change Password"
 msgstr "Changer le mot de passe"
 
@@ -5043,7 +5043,7 @@ msgstr "Changer le mot de passe"
 #. TRANSLATORS: register dialog. label.
 #. TRANSLATORS: unregister dialog. label.
 #: src/gui/windows/changepassworddialog.cpp:67
-#: src/gui/windows/logindialog.cpp:186 src/gui/windows/registerdialog.cpp:90
+#: src/gui/windows/logindialog.cpp:187 src/gui/windows/registerdialog.cpp:91
 #: src/gui/windows/unregisterdialog.cpp:65
 msgid "Password:"
 msgstr "Mot de passe :"
@@ -5076,7 +5076,7 @@ msgid "The new password entries mismatch."
 msgstr "Les nouveaux mots de passe ne correspondent pas."
 
 #. TRANSLATORS: char create dialog name
-#: src/gui/windows/charcreatedialog.cpp:65
+#: src/gui/windows/charcreatedialog.cpp:66
 msgid "New Character"
 msgstr "Nouveau Personnage"
 
@@ -5084,9 +5084,9 @@ msgstr "Nouveau Personnage"
 #. TRANSLATORS: edit server dialog label
 #. TRANSLATORS: login dialog label
 #. TRANSLATORS: register dialog. label.
-#: src/gui/windows/charcreatedialog.cpp:71
-#: src/gui/windows/editserverdialog.cpp:88 src/gui/windows/logindialog.cpp:184
-#: src/gui/windows/registerdialog.cpp:88
+#: src/gui/windows/charcreatedialog.cpp:72
+#: src/gui/windows/editserverdialog.cpp:89 src/gui/windows/logindialog.cpp:185
+#: src/gui/windows/registerdialog.cpp:89
 msgid "Name:"
 msgstr "Nom :"
 
@@ -5094,11 +5094,11 @@ msgstr "Nom :"
 #. You may change this symbol if your language uses another.
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: outfits window button
-#: src/gui/windows/charcreatedialog.cpp:75
-#: src/gui/windows/charcreatedialog.cpp:84
-#: src/gui/windows/charcreatedialog.cpp:101
-#: src/gui/windows/charcreatedialog.cpp:171
-#: src/gui/windows/charcreatedialog.cpp:181
+#: src/gui/windows/charcreatedialog.cpp:76
+#: src/gui/windows/charcreatedialog.cpp:85
+#: src/gui/windows/charcreatedialog.cpp:102
+#: src/gui/windows/charcreatedialog.cpp:172
+#: src/gui/windows/charcreatedialog.cpp:182
 #: src/gui/windows/outfitwindow.cpp:58
 msgid ">"
 msgstr ">"
@@ -5107,108 +5107,108 @@ msgstr ">"
 #. You may change this symbol if your language uses another.
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: outfits window button
-#: src/gui/windows/charcreatedialog.cpp:79
-#: src/gui/windows/charcreatedialog.cpp:86
-#: src/gui/windows/charcreatedialog.cpp:173
-#: src/gui/windows/charcreatedialog.cpp:183
+#: src/gui/windows/charcreatedialog.cpp:80
+#: src/gui/windows/charcreatedialog.cpp:87
+#: src/gui/windows/charcreatedialog.cpp:174
+#: src/gui/windows/charcreatedialog.cpp:184
 #: src/gui/windows/outfitwindow.cpp:56
 msgid "<"
 msgstr "<"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:81
+#: src/gui/windows/charcreatedialog.cpp:82
 msgid "Hair color:"
 msgstr "Couleur :"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:88
+#: src/gui/windows/charcreatedialog.cpp:89
 msgid "Hair style:"
 msgstr "Coupe :"
 
 #. TRANSLATORS: char create dialog button
-#: src/gui/windows/charcreatedialog.cpp:99
+#: src/gui/windows/charcreatedialog.cpp:100
 msgid "^"
 msgstr "^"
 
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
-#: src/gui/windows/charcreatedialog.cpp:103
-#: src/gui/windows/registerdialog.cpp:109
+#: src/gui/windows/charcreatedialog.cpp:104
+#: src/gui/windows/registerdialog.cpp:110
 msgid "Male"
 msgstr "Masculin"
 
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
-#: src/gui/windows/charcreatedialog.cpp:105
-#: src/gui/windows/registerdialog.cpp:111
+#: src/gui/windows/charcreatedialog.cpp:106
+#: src/gui/windows/registerdialog.cpp:112
 msgid "Female"
 msgstr "Féminin"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:113
-#: src/gui/windows/charcreatedialog.cpp:467
+#: src/gui/windows/charcreatedialog.cpp:114
+#: src/gui/windows/charcreatedialog.cpp:468
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Distribues %d points"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:175
+#: src/gui/windows/charcreatedialog.cpp:176
 msgid "Race:"
 msgstr "Race :"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:185
+#: src/gui/windows/charcreatedialog.cpp:186
 msgid "Look:"
 msgstr "Apparence :"
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:360
+#: src/gui/windows/charcreatedialog.cpp:361
 msgid "Your name needs to be at least 4 characters."
 msgstr "Ton nom doit comporter un minimum de 4 caractères."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:457
+#: src/gui/windows/charcreatedialog.cpp:458
 msgid "Character stats OK"
 msgstr "Caractéristiques du personnage Ok"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:473
+#: src/gui/windows/charcreatedialog.cpp:474
 #, c-format
 msgid "Please remove %d points"
 msgstr "Retires %d points"
 
 #. TRANSLATORS: char deletion message
-#: src/gui/windows/charselectdialog.cpp:62
+#: src/gui/windows/charselectdialog.cpp:63
 msgid "Confirm Character Delete"
 msgstr "Confirmer la suppression du personnage"
 
 #. TRANSLATORS: char deletion message
-#: src/gui/windows/charselectdialog.cpp:64
+#: src/gui/windows/charselectdialog.cpp:65
 msgid "Are you sure you want to delete this character?"
 msgstr "Etes-vous certain de vouloir supprimer ce personnage ?"
 
 #. TRANSLATORS: char select dialog name
-#: src/gui/windows/charselectdialog.cpp:88
+#: src/gui/windows/charselectdialog.cpp:89
 #, c-format
 msgid "Account %s (last login time %s)"
 msgstr "Compte %s (dernier ouverture le %s)"
 
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/charselectdialog.cpp:95
+#: src/gui/windows/charselectdialog.cpp:96
 msgid "Switch Login"
 msgstr "Changer de compte"
 
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: updater window button
-#: src/gui/windows/charselectdialog.cpp:102
-#: src/gui/windows/charselectdialog.cpp:586
-#: src/gui/windows/updaterwindow.cpp:187
+#: src/gui/windows/charselectdialog.cpp:103
+#: src/gui/windows/charselectdialog.cpp:587
+#: src/gui/windows/updaterwindow.cpp:188
 msgid "Play"
 msgstr "Jouer"
 
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: info message
-#: src/gui/windows/charselectdialog.cpp:104
+#: src/gui/windows/charselectdialog.cpp:105
 #: src/net/ea/charserverhandler.cpp:216
 msgid "Info"
 msgstr "Informations"
@@ -5216,25 +5216,25 @@ msgstr "Informations"
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: unregister dialog name
 #. TRANSLATORS: unregister dialog. button.
-#: src/gui/windows/charselectdialog.cpp:131
+#: src/gui/windows/charselectdialog.cpp:132
 #: src/gui/windows/unregisterdialog.cpp:47
 #: src/gui/windows/unregisterdialog.cpp:52
 msgid "Unregister"
 msgstr "Se désinscrire"
 
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/charselectdialog.cpp:143
+#: src/gui/windows/charselectdialog.cpp:144
 msgid "Change Email"
 msgstr "Modifier l'adresse e-mail"
 
 #. TRANSLATORS: char select dialog name
-#: src/gui/windows/charselectdialog.cpp:181
+#: src/gui/windows/charselectdialog.cpp:182
 #, c-format
 msgid "Account %s"
 msgstr "Compte %s"
 
 #. TRANSLATORS: char select dialog. player info message.
-#: src/gui/windows/charselectdialog.cpp:255
+#: src/gui/windows/charselectdialog.cpp:256
 #, c-format
 msgid ""
 "Hp: %u/%u\n"
@@ -5249,48 +5249,48 @@ msgstr ""
 "Expérience : %u\n"
 "Argent : %s"
 
-#: src/gui/windows/charselectdialog.cpp:297
+#: src/gui/windows/charselectdialog.cpp:298
 msgid "Incorrect password"
 msgstr "Mot de passe incorrect"
 
 #. TRANSLATORS: char deletion question.
-#: src/gui/windows/charselectdialog.cpp:433
+#: src/gui/windows/charselectdialog.cpp:434
 msgid "Enter password for deleting character"
 msgstr "Entrer le mot de passe pour effacer le personnage"
 
-#: src/gui/windows/charselectdialog.cpp:433
+#: src/gui/windows/charselectdialog.cpp:434
 msgid "Enter password:"
 msgstr "Entrer le mot de passe :"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:173
+#: src/gui/windows/chatwindow.cpp:174
 msgid "rainbow 1"
 msgstr "arc en ciel 1"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:175
+#: src/gui/windows/chatwindow.cpp:176
 msgid "rainbow 2"
 msgstr "arc en ciel 2"
 
 #. TRANSLATORS: chat color
-#: src/gui/windows/chatwindow.cpp:177
+#: src/gui/windows/chatwindow.cpp:178
 msgid "rainbow 3"
 msgstr "arc en ciel 3"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:756
+#: src/gui/windows/chatwindow.cpp:757
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Présents : %s ; %d joueurs sont présents."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1170
+#: src/gui/windows/chatwindow.cpp:1171
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Message envoyé à %s : %s"
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1614
+#: src/gui/windows/chatwindow.cpp:1615
 #, c-format
 msgid "%s's pet"
 msgstr "%s du familier"
@@ -5536,51 +5536,51 @@ msgstr "Ouverture automatique de cette fenêtre"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
-#: src/gui/windows/editdialog.cpp:47 src/gui/windows/editserverdialog.cpp:76
+#: src/gui/windows/editdialog.cpp:47 src/gui/windows/editserverdialog.cpp:77
 #: src/gui/windows/itemamountwindow.cpp:207 src/gui/windows/okdialog.cpp:51
-#: src/gui/windows/quitdialog.cpp:67 src/gui/windows/textdialog.cpp:48
+#: src/gui/windows/quitdialog.cpp:68 src/gui/windows/textdialog.cpp:48
 msgid "OK"
 msgstr "Ok"
 
 #. TRANSLATORS: edit server dialog name
-#: src/gui/windows/editserverdialog.cpp:65
+#: src/gui/windows/editserverdialog.cpp:66
 msgid "Edit Server"
 msgstr "Éditer le Serveur"
 
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/editserverdialog.cpp:74
-#: src/gui/windows/serverdialog.cpp:255
+#: src/gui/windows/editserverdialog.cpp:75
+#: src/gui/windows/serverdialog.cpp:256
 msgid "Connect"
 msgstr "Connexion..."
 
 #. TRANSLATORS: edit server dialog label
-#: src/gui/windows/editserverdialog.cpp:90
+#: src/gui/windows/editserverdialog.cpp:91
 msgid "Address:"
 msgstr "Adresse :"
 
 #. TRANSLATORS: edit server dialog label
-#: src/gui/windows/editserverdialog.cpp:92
+#: src/gui/windows/editserverdialog.cpp:93
 msgid "Port:"
 msgstr "Port :"
 
 #. TRANSLATORS: edit server dialog label
-#: src/gui/windows/editserverdialog.cpp:94
+#: src/gui/windows/editserverdialog.cpp:95
 msgid "Server type:"
 msgstr "Type de Serveur :"
 
 #. TRANSLATORS: edit server dialog label
-#: src/gui/windows/editserverdialog.cpp:96
+#: src/gui/windows/editserverdialog.cpp:97
 msgid "Description:"
 msgstr "Description :"
 
 #. TRANSLATORS: edit server dialog label
-#: src/gui/windows/editserverdialog.cpp:98
+#: src/gui/windows/editserverdialog.cpp:99
 msgid "Online list url:"
 msgstr "URL de la liste en ligne"
 
 #. TRANSLATORS: edit server dialog error message
-#: src/gui/windows/editserverdialog.cpp:219
+#: src/gui/windows/editserverdialog.cpp:220
 msgid "Please at least type both the address and the port of the server."
 msgstr "Entres au moins l'adresse et le port du serveur."
 
@@ -5752,61 +5752,61 @@ msgid "jacko spawning"
 msgstr "Arrivée de Jack0"
 
 #. TRANSLATORS: update type
-#: src/gui/windows/logindialog.cpp:81
+#: src/gui/windows/logindialog.cpp:82
 msgid "Auto Close"
 msgstr "Fermeture automatique"
 
 #. TRANSLATORS: update type
-#: src/gui/windows/logindialog.cpp:83
+#: src/gui/windows/logindialog.cpp:84
 msgid "Skip"
 msgstr "Sauter"
 
 #. TRANSLATORS: login dialog name
 #. TRANSLATORS: login dialog button
-#: src/gui/windows/logindialog.cpp:145 src/gui/windows/logindialog.cpp:162
+#: src/gui/windows/logindialog.cpp:146 src/gui/windows/logindialog.cpp:163
 msgid "Login"
 msgstr "Compte"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:152
+#: src/gui/windows/logindialog.cpp:153
 msgid "Remember username"
 msgstr "Se souvenir du nom d'utilisateur"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:155
+#: src/gui/windows/logindialog.cpp:156
 msgid "Update:"
 msgstr "Mise à jour : "
 
 #. TRANSLATORS: login dialog button
-#: src/gui/windows/logindialog.cpp:160
+#: src/gui/windows/logindialog.cpp:161
 msgid "Change Server"
 msgstr "Changer de Serveur"
 
 #. TRANSLATORS: login dialog button
 #. TRANSLATORS: register dialog name
 #. TRANSLATORS: register dialog. button.
-#: src/gui/windows/logindialog.cpp:164 src/gui/windows/registerdialog.cpp:65
-#: src/gui/windows/registerdialog.cpp:74
+#: src/gui/windows/logindialog.cpp:165 src/gui/windows/registerdialog.cpp:66
+#: src/gui/windows/registerdialog.cpp:75
 msgid "Register"
 msgstr "S'inscrire"
 
 #. TRANSLATORS: login dialog checkbox
-#: src/gui/windows/logindialog.cpp:166
+#: src/gui/windows/logindialog.cpp:167
 msgid "Custom update host"
 msgstr "Serveur de mise à jour personnalisé"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:180
+#: src/gui/windows/logindialog.cpp:181
 msgid "Server:"
 msgstr "Serveur :"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:190
+#: src/gui/windows/logindialog.cpp:191
 #, c-format
 msgid "Update host: %s"
 msgstr "Hôte de mise à jour : %s"
 
-#: src/gui/windows/logindialog.cpp:305
+#: src/gui/windows/logindialog.cpp:306
 msgid "Open register url"
 msgstr "Ouvrir l'URL d'inscription"
 
@@ -5902,7 +5902,7 @@ msgstr "Soumettre"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: trade window button
-#: src/gui/windows/npcdialog.cpp:111 src/gui/windows/serverdialog.cpp:257
+#: src/gui/windows/npcdialog.cpp:111 src/gui/windows/serverdialog.cpp:258
 #: src/gui/windows/shopwindow.cpp:91 src/gui/windows/shopwindow.cpp:98
 #: src/gui/windows/tradewindow.cpp:79
 msgid "Add"
@@ -5940,40 +5940,40 @@ msgid "Away outfit"
 msgstr "Équipement en absence"
 
 #. TRANSLATORS: quit dialog button
-#: src/gui/windows/quitdialog.cpp:61
+#: src/gui/windows/quitdialog.cpp:62
 msgid "Switch server"
 msgstr "Changer de serveur"
 
 #. TRANSLATORS: quit dialog button
-#: src/gui/windows/quitdialog.cpp:64
+#: src/gui/windows/quitdialog.cpp:65
 msgid "Switch character"
 msgstr "Changer de personnage"
 
 #. TRANSLATORS: register dialog. label.
-#: src/gui/windows/registerdialog.cpp:92
+#: src/gui/windows/registerdialog.cpp:93
 msgid "Confirm:"
 msgstr "Vérification :"
 
 #. TRANSLATORS: register dialog. label.
-#: src/gui/windows/registerdialog.cpp:132
+#: src/gui/windows/registerdialog.cpp:133
 msgid "Email:"
 msgstr "E-mail :"
 
 #. TRANSLATORS: error message
-#: src/gui/windows/registerdialog.cpp:204
+#: src/gui/windows/registerdialog.cpp:205
 #, c-format
 msgid "The username needs to be at least %u characters long."
 msgstr "Le nom d'utilisateur doit être long d'au moins %u caractères."
 
 #. TRANSLATORS: error message
-#: src/gui/windows/registerdialog.cpp:213
+#: src/gui/windows/registerdialog.cpp:214
 #, c-format
 msgid "The username needs to be less than %u characters long."
 msgstr "Le nom d'utilisateur doit être long d'au plus %u caractères."
 
 #. TRANSLATORS: error message
 #. TRANSLATORS: unregister dialog. error message.
-#: src/gui/windows/registerdialog.cpp:222
+#: src/gui/windows/registerdialog.cpp:223
 #: src/gui/windows/unregisterdialog.cpp:129
 #, c-format
 msgid "The password needs to be at least %u characters long."
@@ -5981,14 +5981,14 @@ msgstr " Le mot de passe doit être long d'au moins %u caractères."
 
 #. TRANSLATORS: error message
 #. TRANSLATORS: unregister dialog. error message.
-#: src/gui/windows/registerdialog.cpp:231
+#: src/gui/windows/registerdialog.cpp:232
 #: src/gui/windows/unregisterdialog.cpp:136
 #, c-format
 msgid "The password needs to be less than %u characters long."
 msgstr " Le mot de passe doit être long d'au plus %u caractères."
 
 #. TRANSLATORS: error message
-#: src/gui/windows/registerdialog.cpp:239
+#: src/gui/windows/registerdialog.cpp:240
 msgid "Passwords do not match."
 msgstr "Les deux mots de passe sont différents"
 
@@ -6004,53 +6004,53 @@ msgid "Do you really want to sell %s?"
 msgstr "Veux-tu vraiment vendre %s ?"
 
 #. TRANSLATORS: servers dialog name
-#: src/gui/windows/serverdialog.cpp:246
+#: src/gui/windows/serverdialog.cpp:247
 msgid "Choose Your Server"
 msgstr "Choisis le serveur"
 
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/serverdialog.cpp:263
+#: src/gui/windows/serverdialog.cpp:264
 msgid "Load"
 msgstr "Charger"
 
 #. TRANSLATORS: servers dialog name
-#: src/gui/windows/serverdialog.cpp:279
+#: src/gui/windows/serverdialog.cpp:280
 msgid "Choose Your Server  *** SAFE MODE ***"
 msgstr "Choisis ton serveur  *** Mode Sûr ***"
 
 #. TRANSLATORS: servers dialog checkbox
-#: src/gui/windows/serverdialog.cpp:288
+#: src/gui/windows/serverdialog.cpp:289
 msgid "Use same ip for game sub servers"
 msgstr "Utiliser la même ip pour les sous-serveurs de jeu"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:531
+#: src/gui/windows/serverdialog.cpp:532
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "Téléchargement de la liste des serveurs...%2.2f%%"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:537
+#: src/gui/windows/serverdialog.cpp:538
 msgid "Waiting for server..."
 msgstr "En attente du serveur..."
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:542
+#: src/gui/windows/serverdialog.cpp:543
 msgid "Preparing download"
 msgstr "Préparation du téléchargement"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:547
+#: src/gui/windows/serverdialog.cpp:548
 msgid "Error retreiving server list!"
 msgstr "Erreur lors du téléchargement de la liste de serveurs !"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:638
+#: src/gui/windows/serverdialog.cpp:639
 msgid "requires a newer version"
 msgstr "requiert une nouvelle version"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:643
+#: src/gui/windows/serverdialog.cpp:644
 #, c-format
 msgid "requires v%s"
 msgstr "requiert la v%s"
@@ -6617,12 +6617,12 @@ msgid "Name: %s"
 msgstr "Nom : %s"
 
 #. TRANSLATORS: updater window name
-#: src/gui/windows/updaterwindow.cpp:158
+#: src/gui/windows/updaterwindow.cpp:159
 msgid "Updating..."
 msgstr "Mise à jour en cours..."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:183
+#: src/gui/windows/updaterwindow.cpp:184
 msgid "Connecting..."
 msgstr "Connexion..."
 
@@ -6676,17 +6676,17 @@ msgid "Who Is Online - Update"
 msgstr "Qui est en ligne - Mise à jour"
 
 #. TRANSLATORS: world select dialog name
-#: src/gui/windows/worldselectdialog.cpp:84
+#: src/gui/windows/worldselectdialog.cpp:85
 msgid "Select World"
 msgstr "Sélection du monde"
 
 #. TRANSLATORS: world dialog button
-#: src/gui/windows/worldselectdialog.cpp:90
+#: src/gui/windows/worldselectdialog.cpp:91
 msgid "Change Login"
 msgstr "Changer de Compte"
 
 #. TRANSLATORS: world dialog button
-#: src/gui/windows/worldselectdialog.cpp:92
+#: src/gui/windows/worldselectdialog.cpp:93
 msgid "Choose World"
 msgstr "Choix du monde"
 
