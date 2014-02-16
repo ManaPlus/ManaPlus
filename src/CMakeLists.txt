@@ -782,7 +782,7 @@ SET(SRCS
     gui/base/font.hpp
     gui/base/gui.hpp
     gui/base/input.hpp
-    gui/base/inputevent.hpp
+    events/inputguievent.h
     gui/base/key.hpp
     gui/base/keyevent.hpp
     gui/base/keyinput.hpp
@@ -815,7 +815,6 @@ SET(SRCS
     gui/base/focushandler.cpp
     gui/base/font.cpp
     gui/base/gui.cpp
-    gui/base/inputevent.cpp
     gui/base/key.cpp
     gui/base/keyevent.cpp
     gui/base/keyinput.cpp

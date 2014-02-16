@@ -64,7 +64,7 @@
 #ifndef GCN_MOUSEEVENT_HPP
 #define GCN_MOUSEEVENT_HPP
 
-#include "gui/base/inputevent.hpp"
+#include "events/inputguievent.h"
 
 namespace gcn
 {
@@ -77,7 +77,7 @@ namespace gcn
      * @author Olof Naessén
      * @since 0.6.0
      */
-    class MouseEvent: public InputEvent
+    class MouseEvent: public InputGuiEvent
     {
     public:
         /**

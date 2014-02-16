@@ -64,7 +64,7 @@
 #ifndef GCN_KEYEVENT_HPP
 #define GCN_KEYEVENT_HPP
 
-#include "gui/base/inputevent.hpp"
+#include "events/inputguievent.h"
 #include "gui/base/key.hpp"
 
 namespace gcn
@@ -74,7 +74,7 @@ namespace gcn
     /**
      * Represents a key event.
      */
-    class KeyEvent: public InputEvent
+    class KeyEvent: public InputGuiEvent
     {
     public:
         /**

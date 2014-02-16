@@ -79,11 +79,11 @@ namespace gcn
                        const unsigned int type,
                        const bool numericPad,
                        const Key& key) :
-        InputEvent(source,
-                   shiftPressed,
-                   controlPressed,
-                   altPressed,
-                   metaPressed),
+        InputGuiEvent(source,
+                      shiftPressed,
+                      controlPressed,
+                      altPressed,
+                      metaPressed),
         mType(type),
         mIsNumericPad(numericPad),
         mKey(key)
