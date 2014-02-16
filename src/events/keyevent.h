@@ -65,7 +65,7 @@
 #define EVENTS_KEYEVENT_HPP
 
 #include "events/inputguievent.h"
-#include "gui/base/key.hpp"
+#include "input/key.h"
 
 namespace gcn
 {
@@ -108,7 +108,7 @@ class KeyEvent: public InputGuiEvent
                   const unsigned int type,
                   const bool numericPad,
                   const int actionId,
-                  const gcn::Key &key) :
+                  const Key &key) :
             InputGuiEvent(source,
                       shiftPressed,
                       controlPressed,
@@ -152,7 +152,7 @@ class KeyEvent: public InputGuiEvent
           *
           * @return The key of the event.
           */
-        const gcn::Key &getKey() const A_WARN_UNUSED
+        const Key &getKey() const A_WARN_UNUSED
         { return mKey; }
 
         int getActionId() const A_WARN_UNUSED
@@ -170,7 +170,7 @@ class KeyEvent: public InputGuiEvent
         /** 
           * Holds the key of the key event.
           */
-        gcn::Key mKey;
+        Key mKey;
 
 #ifdef USE_SDL2
         std::string mText;

@@ -87,61 +87,6 @@
 
 #include <queue>
 
-namespace Key
-{
-    enum
-    {
-        SPACE              = ' ',
-        TAB                = '\t',
-        ENTER              = '\n',
-        // Negative values, to avoid conflicts with higher character codes.
-        LEFT_ALT           = -1000,
-        RIGHT_ALT,
-        LEFT_SHIFT,
-        RIGHT_SHIFT,
-        LEFT_CONTROL,
-        RIGHT_CONTROL,
-        LEFT_META,
-        RIGHT_META,
-        LEFT_SUPER,
-        RIGHT_SUPER,
-        INSERT,
-        HOME,
-        PAGE_UP,
-        DELETE_,
-        END,
-        PAGE_DOWN,
-        ESCAPE,
-        CAPS_LOCK,
-        BACKSPACE,
-        F1,
-        F2,
-        F3,
-        F4,
-        F5,
-        F6,
-        F7,
-        F8,
-        F9,
-        F10,
-        F11,
-        F12,
-        F13,
-        F14,
-        F15,
-        PRINT_SCREEN,
-        SCROLL_LOCK,
-        PAUSE,
-        NUM_LOCK,
-        ALT_GR,
-        LEFT,
-        RIGHT,
-        UP,
-        DOWN,
-        TEXTINPUT
-    };
-}  // namespace Key
-
 /**
  * SDL implementation of SDLInput.
  */

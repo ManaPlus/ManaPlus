@@ -64,7 +64,7 @@
 #ifndef INPUT_KEYINPUT_H
 #define INPUT_KEYINPUT_H
 
-#include "gui/base/key.hpp"
+#include "input/key.h"
 
 #include <string>
 
@@ -110,12 +110,12 @@ class KeyInput final
             return mType;
         }
 
-        void setKey(const gcn::Key& key)
+        void setKey(const Key& key)
         {
             mKey = key;
         }
 
-        const gcn::Key& getKey() const
+        const Key& getKey() const
         {
             return mKey;
         }
@@ -196,7 +196,7 @@ class KeyInput final
         /**
          * Holds the key of the key input.
          */
-        gcn::Key mKey;
+        Key mKey;
 
         /**
          * Holds the type of the key input.

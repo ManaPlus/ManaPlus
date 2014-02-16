@@ -31,7 +31,8 @@
 #include "utils/dtor.h"
 
 #include "listeners/actionlistener.h"
-#include "gui/base/key.hpp"
+
+#include "input/key.h"
 
 #include "render/graphics.h"
 

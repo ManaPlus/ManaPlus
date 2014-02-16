@@ -68,10 +68,7 @@
 
 #include "localconsts.h"
 
-namespace gcn
-{
-    class Key;
-}
+class Key;
 
 /**
   * Interface for listening for key events from widgets.

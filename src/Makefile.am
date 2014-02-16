@@ -162,7 +162,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      render/graphics.h \
 	      gui/base/gui.hpp \
 	      events/inputguievent.h \
-	      gui/base/key.hpp \
+	      input/key.hpp \
 	      events/keyevent.h \
 	      listeners/keylistener.h \
 	      gui/base/listmodel.hpp \
@@ -190,7 +190,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/color.cpp \
 	      gui/base/focushandler.cpp \
 	      gui/base/gui.cpp \
-	      gui/base/key.cpp \
+	      input/key.cpp \
 	      gui/base/rectangle.cpp \
 	      gui/base/widget.cpp \
 	      gui/base/widgets/button.cpp \

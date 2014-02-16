@@ -171,7 +171,7 @@ void SDLInput::pushInput(const SDL_Event &event)
 #ifdef USE_SDL2
         case SDL_TEXTINPUT:
             keyInput.setType(KeyInput::PRESSED);
-            keyInput.setKey(gcn::Key(Key::TEXTINPUT));
+            keyInput.setKey(Key(Key::TEXTINPUT));
             keyInput.setText(event.text.text);
             mKeyInputQueue.push(keyInput);
             break;
@@ -315,7 +315,7 @@ void SDLInput::pushInput(const SDL_Event &event)
 
 void SDLInput::convertKeyEventToKey(const SDL_Event &event, KeyInput &keyInput)
 {
-    keyInput.setKey(gcn::Key(convertKeyCharacter(event)));
+    keyInput.setKey(Key(convertKeyCharacter(event)));
     keyInput.setShiftPressed(event.key.keysym.mod & KMOD_SHIFT);
     keyInput.setControlPressed(event.key.keysym.mod & KMOD_CTRL);
     keyInput.setAltPressed(event.key.keysym.mod & KMOD_ALT);
