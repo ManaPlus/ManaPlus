@@ -32,6 +32,7 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "gui/font.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/itempopup.h"
@@ -45,8 +46,6 @@
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -163,7 +162,7 @@ void EquipmentWindow::draw(Graphics *graphics)
     Window::draw(graphics);
 
     int i = 0;
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
     const int fontHeight = font->getHeight();
 
     if (isBatchDrawRenders(openGLMode))

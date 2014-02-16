@@ -30,10 +30,7 @@
 
 #include "localconsts.h"
 
-namespace gcn
-{
-    class Font;
-}
+class Font;
 
 class Text
 {
@@ -46,7 +43,7 @@ class Text
         Text(const std::string &text, const int x, const int y,
              const Graphics::Alignment alignment,
              const gcn::Color *const color, const bool isSpeech = false,
-             gcn::Font *const font = nullptr);
+             Font *const font = nullptr);
 
         A_DELETE_COPY(Text)
 
@@ -75,7 +72,7 @@ class Text
                           const int xOff, const int yOff);
 
     private:
-        gcn::Font *mFont;      /**< The font of the text */
+        Font *mFont;      /**< The font of the text */
         int mX;                /**< Actual x-value of left of text written. */
         int mY;                /**< Actual y-value of top of text written. */
         int mWidth;            /**< The width of the text. */
@@ -97,7 +94,7 @@ class FlashText final : public Text
         FlashText(const std::string &text, const int x, const int y,
                   const Graphics::Alignment alignment,
                   const gcn::Color *const color,
-                  gcn::Font *const font = nullptr);
+                  Font *const font = nullptr);
 
         A_DELETE_COPY(FlashText)
 

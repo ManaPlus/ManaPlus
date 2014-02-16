@@ -42,8 +42,8 @@
 
 #include "input/keyboardconfig.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
-#include "gui/sdlfont.h"
 #include "gui/viewport.h"
 
 #include "gui/windows/chatwindow.h"

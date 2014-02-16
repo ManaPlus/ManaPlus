@@ -29,6 +29,7 @@
 
 #include "being/localplayer.h"
 
+#include "gui/font.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/textpopup.h"
@@ -52,8 +53,6 @@
 #include "utils/gettext.h"
 
 #include "resources/beingcommon.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -121,7 +120,7 @@ class SkillListBox final : public ListBox
 
             // Draw the list elements
             graphics->setColorAll(mTextColor, mTextColor2);
-            gcn::Font *const font = getFont();
+            Font *const font = getFont();
             const int space = font->getHeight() + mSpacing;
             const int width2 = getWidth() - mPadding;
             for (int i = 0, y = 1;

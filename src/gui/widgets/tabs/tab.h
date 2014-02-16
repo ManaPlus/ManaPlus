@@ -134,7 +134,7 @@ class Tab : public gcn::BasicContainer,
 
         void widgetMoved(const Event &event) override final;
 
-        void setLabelFont(gcn::Font *const font);
+        void setLabelFont(Font *const font);
 
         Label *getLabel() const A_WARN_UNUSED
         { return mLabel; }

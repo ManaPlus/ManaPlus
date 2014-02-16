@@ -30,7 +30,7 @@
 
 #include "resources/image.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include "debug.h"
 
@@ -161,7 +161,7 @@ void RadioButton::draw(Graphics* graphics)
     BLOCK_START("RadioButton::draw")
     drawBox(graphics);
 
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
     graphics->setColorAll(mForegroundColor, mForegroundColor2);
     font->drawString(graphics, mCaption, mPadding + mImageSize + mSpacing,
         mPadding);
@@ -191,7 +191,7 @@ void RadioButton::keyPressed(KeyEvent& keyEvent)
 
 void RadioButton::adjustSize()
 {
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
     setHeight(font->getHeight() + 2 * mPadding);
     setWidth(mImagePadding + mImageSize + mSpacing
         + font->getWidth(mCaption) + mPadding);

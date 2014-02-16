@@ -24,14 +24,12 @@
 #include "being/being.h"
 #include "being/playerrelations.h"
 
-#include "gui/sdlfont.h"
+#include "gui/font.h"
 
 #include "gui/widgets/label.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 

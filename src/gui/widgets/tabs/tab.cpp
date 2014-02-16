@@ -264,7 +264,7 @@ void Tab::widgetMoved(const Event &event A_UNUSED)
     mRedraw = true;
 }
 
-void Tab::setLabelFont(gcn::Font *const font)
+void Tab::setLabelFont(Font *const font)
 {
     if (!mLabel)
         return;

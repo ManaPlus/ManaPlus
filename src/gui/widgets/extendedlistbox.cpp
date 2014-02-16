@@ -22,7 +22,8 @@
 
 #include "gui/widgets/extendedlistmodel.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
+
 #include "gui/base/listmodel.hpp"
 
 #include "render/graphics.h"
@@ -58,7 +59,7 @@ void ExtendedListBox::draw(Graphics *graphics)
         mListModel);
 
     updateAlpha();
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
 
     const int height = mRowHeight;
     const int pad2 = 2 + mPadding;

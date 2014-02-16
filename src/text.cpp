@@ -26,13 +26,11 @@
 #include "configuration.h"
 #include "textmanager.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
-#include "gui/sdlfont.h"
 #include "gui/theme.h"
 
 #include "resources/image.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -42,7 +40,7 @@ ImageRect Text::mBubble;
 Text::Text(const std::string &text, const int x, const int y,
            const Graphics::Alignment alignment,
            const gcn::Color *const color, const bool isSpeech,
-           gcn::Font *const font) :
+           Font *const font) :
     mFont(font ? font : (gui ? gui->getFont() : nullptr)),
     mX(x),
     mY(y),
@@ -154,7 +152,7 @@ void Text::draw(Graphics *const graphics, const int xOff, const int yOff)
 
 FlashText::FlashText(const std::string &text, const int x, const int y,
                      const Graphics::Alignment alignment,
-                     const gcn::Color *const color, gcn::Font *const font) :
+                     const gcn::Color *const color, Font *const font) :
     Text(text, x, y, alignment, color, false, font),
     mTime(0)
 {

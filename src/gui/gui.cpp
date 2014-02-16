@@ -25,8 +25,8 @@
 #include "gui/gui.h"
 
 #include "gui/focushandler.h"
+#include "gui/font.h"
 #include "gui/palette.h"
-#include "gui/sdlfont.h"
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
 #include "gui/viewport.h"
@@ -60,7 +60,7 @@ Gui *gui = nullptr;
 SDLInput *guiInput = nullptr;
 
 // Bolded font
-SDLFont *boldFont = nullptr;
+Font *boldFont = nullptr;
 
 class GuiConfigListener final : public ConfigListener
 {
@@ -160,7 +160,7 @@ void Gui::postInit(Graphics *const graphics)
     if (fontFile.empty())
         fontFile = branding.getStringValue("font");
 
-    mGuiFont = new SDLFont(fontFile, fontSize);
+    mGuiFont = new Font(fontFile, fontSize);
 
     // Set particle font
     fontFile = config.getValue("particleFont", "");
@@ -179,28 +179,28 @@ void Gui::postInit(Graphics *const graphics)
     if (fontFile.empty())
         fontFile = branding.getStringValue("particleFont");
 
-    mInfoParticleFont = new SDLFont(fontFile, fontSize, TTF_STYLE_BOLD);
+    mInfoParticleFont = new Font(fontFile, fontSize, TTF_STYLE_BOLD);
 
     // Set bold font
     fontFile = config.getValue("boldFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("boldFont");
 
-    boldFont = new SDLFont(fontFile, fontSize);
+    boldFont = new Font(fontFile, fontSize);
 
     // Set help font
     fontFile = config.getValue("helpFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("helpFont");
 
-    mHelpFont = new SDLFont(fontFile, fontSize);
+    mHelpFont = new Font(fontFile, fontSize);
 
     // Set secure font
     fontFile = config.getValue("secureFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("secureFont");
 
-    mSecureFont = new SDLFont(fontFile, fontSize);
+    mSecureFont = new Font(fontFile, fontSize);
 
     // Set npc font
     const int npcFontSize = config.getIntValue("npcfontSize");
@@ -220,7 +220,7 @@ void Gui::postInit(Graphics *const graphics)
     if (fontFile.empty())
         fontFile = branding.getStringValue("npcFont");
 
-    mNpcFont = new SDLFont(fontFile, npcFontSize);
+    mNpcFont = new Font(fontFile, npcFontSize);
 
     gcn::Widget::setGlobalFont(mGuiFont);
 

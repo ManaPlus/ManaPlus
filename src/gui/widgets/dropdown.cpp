@@ -33,7 +33,7 @@
 
 #include "resources/image.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include <algorithm>
 
@@ -235,7 +235,7 @@ void DropDown::draw(Graphics* graphics)
     gcn::ListModel *const model = mPopup->getListModel();
     if (model && mPopup->getSelected() >= 0)
     {
-        gcn::Font *const font = getFont();
+        Font *const font = getFont();
         graphics->setColorAll(mForegroundColor, mForegroundColor2);
         if (mExtended)
         {

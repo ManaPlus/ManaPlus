@@ -27,7 +27,7 @@
 #include "item.h"
 #include "units.h"
 
-#include "gui/sdlfont.h"
+#include "gui/font.h"
 
 #include "gui/widgets/icon.h"
 #include "gui/widgets/label.h"
@@ -37,8 +37,6 @@
 
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 

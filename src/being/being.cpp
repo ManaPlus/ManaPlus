@@ -39,7 +39,7 @@
 #include "particle/particle.h"
 #include "particle/particleinfo.h"
 
-#include "gui/sdlfont.h"
+#include "gui/font.h"
 
 #include "gui/popups/speechbubble.h"
 
@@ -537,7 +537,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
     if (!userPalette || !attacker)
         return;
 
-    gcn::Font *font = nullptr;
+    Font *font = nullptr;
     // TRANSLATORS: hit or miss message in attacks
     const std::string damage = amount ? toString(amount) : type == FLEE ?
             _("dodge") : _("miss");
@@ -2003,7 +2003,7 @@ void Being::showName()
             displayName.append(", ").append(toString(getDamageTaken()));
     }
 
-    gcn::Font *font = nullptr;
+    Font *font = nullptr;
     if (player_node && player_node->getTarget() == this
         && mType != MONSTER)
     {
@@ -2519,7 +2519,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
 
         if (mDrawHotKeys && !mName.empty())
         {
-            gcn::Font *const font = gui->getFont();
+            Font *const font = gui->getFont();
             if (font)
             {
                 graphics->setColor(userPalette->getColor(UserPalette::BEING));

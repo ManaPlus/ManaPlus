@@ -21,7 +21,7 @@
 
 #include "gui/widgets/label.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include "debug.h"
 
@@ -82,7 +82,7 @@ void Label::draw(Graphics* graphics)
     int textX;
     const gcn::Rectangle &rect = mDimension;
     const int textY = rect.height / 2 - getFont()->getHeight() / 2;
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
 
     switch (mAlignment)
     {
@@ -108,7 +108,7 @@ void Label::draw(Graphics* graphics)
 
 void Label::adjustSize()
 {
-    const gcn::Font *const font = getFont();
+    const Font *const font = getFont();
     const int pad2 = 2 * mPadding;
     setWidth(font->getWidth(mCaption) + pad2);
     setHeight(font->getHeight() + pad2);
@@ -129,7 +129,7 @@ void Label::setForegroundColorAll(const gcn::Color &color1,
 
 void Label::resizeTo(const int maxSize, const int minSize)
 {
-    const gcn::Font *const font = getFont();
+    const Font *const font = getFont();
     const int pad2 = 2 * mPadding;
     setHeight(font->getHeight() + pad2);
 

@@ -25,10 +25,8 @@
 #include "client.h"
 #include "graphicsvertexes.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
-#include "gui/sdlfont.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -271,7 +269,7 @@ void ProgressBar::render(Graphics *graphics)
     {
         const gcn::Color oldColor = graphics->getColor();
 
-        gcn::Font *const font = gui->getFont();
+        Font *const font = gui->getFont();
         const int textX = mDimension.width / 2;
         const int textY = (mDimension.height - font->getHeight()) / 2;
 

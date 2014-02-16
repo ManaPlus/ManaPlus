@@ -26,8 +26,8 @@
 
 #include "render/graphics.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
-#include "gui/sdlfont.h"
 #include "gui/userpalette.h"
 
 #include "resources/iteminfo.h"
@@ -109,7 +109,7 @@ void FloorItem::draw(Graphics *const graphics,
     BLOCK_START("FloorItem::draw")
     const int x = mX * mMap->getTileWidth() + offsetX;
     const int y = mY * mMap->getTileHeight() + offsetY;
-    gcn::Font *font = nullptr;
+    Font *font = nullptr;
 
     if (mHighlight)
     {

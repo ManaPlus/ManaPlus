@@ -36,8 +36,9 @@ class ParticleEmitter;
 namespace gcn
 {
     class Color;
-    class Font;
 }
+
+class Font;
 
 typedef std::list<Particle *> Particles;
 typedef Particles::iterator ParticleIterator;
@@ -136,7 +137,7 @@ class Particle : public Actor
         Particle *addTextSplashEffect(const std::string &text,
                                       const int x, const int y,
                                       const gcn::Color *const color,
-                                      gcn::Font *const font,
+                                      Font *const font,
                                       const bool outline = false);
 
         /**
@@ -145,7 +146,7 @@ class Particle : public Actor
         Particle *addTextRiseFadeOutEffect(const std::string &text,
                                            const int x, const int y,
                                            const gcn::Color *const color,
-                                           gcn::Font *const font,
+                                           Font *const font,
                                            const bool outline = false);
 
         /**

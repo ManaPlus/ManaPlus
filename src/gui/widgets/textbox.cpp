@@ -26,7 +26,7 @@
 
 #include "input/keydata.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include <sstream>
 
@@ -88,7 +88,7 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
             text.substr(lastNewlinePos, newlinePos - lastNewlinePos);
         size_t lastSpacePos = 0;
         xpos = 0;
-        const gcn::Font *const font = getFont();
+        const Font *const font = getFont();
         const int spaceWidth = font->getWidth(" ");
         size_t sz = line.size();
 
@@ -360,7 +360,7 @@ void TextBox::draw(Graphics* graphics)
         graphics->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
     }
 
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
     if (isFocused() && isEditable())
     {
         drawCaret(graphics, font->getWidth(

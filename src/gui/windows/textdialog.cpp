@@ -30,7 +30,7 @@
 
 #include "utils/gettext.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include "debug.h"
 
@@ -68,7 +68,7 @@ TextDialog::TextDialog(const std::string &restrict title,
     place(2, 2, mOkButton);
     place(3, 2, cancelButton);
 
-    const gcn::Font *const font = getFont();
+    const Font *const font = getFont();
     if (font)
     {
         int width = font->getWidth(title);

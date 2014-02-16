@@ -29,6 +29,7 @@
 #include "soundconsts.h"
 #include "soundmanager.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/viewport.h"
 
@@ -38,7 +39,6 @@
 #include "resources/image.h"
 
 #include "gui/base/focushandler.hpp"
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -110,7 +110,7 @@ Window::Window(const std::string &caption, const bool modal,
         {
             setPadding(mSkin->getPadding());
             if (getOptionBool("titlebarBold"))
-                mCaptionFont = reinterpret_cast<gcn::Font*>(boldFont);
+                mCaptionFont = boldFont;
             mTitlePadding = mSkin->getTitlePadding();
             mGripPadding = getOption("resizePadding");
             mCaptionOffsetX = getOption("captionoffsetx");

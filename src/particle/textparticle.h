@@ -33,7 +33,7 @@ class TextParticle final : public Particle
          */
         TextParticle(const std::string &text,
                      const gcn::Color *const color,
-                     gcn::Font *const font, const bool outline = false);
+                     Font *const font, const bool outline = false);
 
         A_DELETE_COPY(TextParticle)
 
@@ -53,7 +53,7 @@ class TextParticle final : public Particle
 
     private:
         std::string mText;             /**< Text of the particle. */
-        gcn::Font *mTextFont;          /**< Font used for drawing the text. */
+        Font *mTextFont;          /**< Font used for drawing the text. */
         const gcn::Color *mColor;      /**< Color used for drawing the text. */
         int mTextWidth;
         bool mOutline;                 /**< Make the text better readable */

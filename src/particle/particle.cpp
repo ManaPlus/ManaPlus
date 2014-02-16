@@ -415,7 +415,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
 Particle *Particle::addTextSplashEffect(const std::string &text,
                                         const int x, const int y,
                                         const gcn::Color *const color,
-                                        gcn::Font *const font,
+                                        Font *const font,
                                         const bool outline)
 {
     Particle *const newParticle = new TextParticle(text, color, font, outline);
@@ -439,7 +439,7 @@ Particle *Particle::addTextSplashEffect(const std::string &text,
 Particle *Particle::addTextRiseFadeOutEffect(const std::string &text,
                                              const int x, const int y,
                                              const gcn::Color *const color,
-                                             gcn::Font *const font,
+                                             Font *const font,
                                              const bool outline)
 {
     Particle *const newParticle = new TextParticle(text, color, font, outline);

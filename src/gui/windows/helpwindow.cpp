@@ -24,7 +24,7 @@
 
 #include "configuration.h"
 
-#include "gui/sdlfont.h"
+#include "gui/font.h"
 
 #include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/setupwindow.h"

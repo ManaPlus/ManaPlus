@@ -25,8 +25,8 @@
 #include "mouseinput.h"
 #include "touchactions.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
-#include "gui/sdlfont.h"
 
 #include "input/inputmanager.h"
 
@@ -239,7 +239,7 @@ void TouchManager::draw()
     if (!gui)
         return;
 
-    SDLFont *const font = boldFont;
+    Font *const font = boldFont;
     mainGraphics->setColorAll(Theme::getThemeColor(Theme::TEXT),
         Theme::getThemeColor(Theme::TEXT_OUTLINE));
     FOR_EACH (TouchItemVectorCIter, it, mObjects)

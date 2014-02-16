@@ -31,7 +31,7 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "gui/sdlfont.h"
+#include "gui/font.h"
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/itemamountwindow.h"
@@ -50,8 +50,6 @@
 #include "net/tradehandler.h"
 
 #include "utils/gettext.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -102,7 +100,7 @@ TradeWindow::TradeWindow():
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
-    const gcn::Font *const fnt = mOkButton->getFont();
+    const Font *const fnt = mOkButton->getFont();
     int width = std::max(fnt->getWidth(CAPTION_PROPOSE),
         fnt->getWidth(CAPTION_CONFIRMED));
     width = std::max(width, fnt->getWidth(CAPTION_ACCEPT));

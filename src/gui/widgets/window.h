@@ -412,7 +412,7 @@ class Window : public gcn::Window,
 
         bool isResizeAllowed(const MouseEvent &event) const A_WARN_UNUSED;
 
-        void setCaptionFont(gcn::Font *font)
+        void setCaptionFont(Font *font)
         { mCaptionFont = font; }
 
         void enableVisibleSound(bool b)
@@ -506,7 +506,7 @@ class Window : public gcn::Window,
         int mGripPadding;
         int mResizeHandles;
         int mOldResizeHandles;
-        gcn::Font *mCaptionFont;
+        Font *mCaptionFont;
         bool mShowTitle;              /**< Window has a title bar */
         bool mModal;                  /**< Window is modal */
         bool mCloseWindowButton;      /**< Window has a close button */

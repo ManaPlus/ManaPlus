@@ -28,15 +28,13 @@
 
 #include "being/localplayer.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
-#include "gui/sdlfont.h"
 #include "gui/viewport.h"
 
 #include "gui/windows/chatwindow.h"
 
 #include "resources/image.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -103,7 +101,7 @@ void AvatarListBox::draw(Graphics *graphics)
         mListModel);
     updateAlpha();
 
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
     const int fontHeight = getFont()->getHeight();
     const gcn::Widget *const parent = mParent;
     const std::string name = player_node->getName();

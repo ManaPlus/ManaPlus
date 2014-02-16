@@ -27,13 +27,12 @@
 
 #include "input/inputmanager.h"
 
+#include "gui/font.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/textpopup.h"
 
 #include "resources/image.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -112,7 +111,7 @@ void EmoteShortcutContainer::draw(Graphics *graphics)
         mAlpha = client->getGuiAlpha();
     }
 
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
     drawBackground(graphics);
 
     graphics->setColorAll(mForegroundColor, mForegroundColor2);

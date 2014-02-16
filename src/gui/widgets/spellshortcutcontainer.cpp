@@ -27,6 +27,7 @@
 #include "itemshortcut.h"
 #include "spellshortcut.h"
 
+#include "gui/font.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/spellpopup.h"
@@ -35,8 +36,6 @@
 #include "gui/windows/shortcutwindow.h"
 
 #include "resources/image.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -103,7 +102,7 @@ void SpellShortcutContainer::draw(Graphics *graphics)
             mBackgroundImg->setAlpha(mAlpha);
     }
 
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
 
     const int selectedId = spellShortcut->getSelectedItem();
     graphics->setColorAll(mForegroundColor, mForegroundColor2);

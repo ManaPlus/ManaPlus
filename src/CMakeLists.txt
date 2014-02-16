@@ -364,8 +364,8 @@ SET(SRCS
     gui/widgets/tabs/setup_visual.cpp
     gui/widgets/tabs/setup_visual.h
     gui/setupactiondata.h
-    gui/sdlfont.cpp
-    gui/sdlfont.h
+    gui/font.cpp
+    gui/font.h
     gui/windows/shopwindow.cpp
     gui/windows/shopwindow.h
     gui/windows/shortcutwindow.cpp
@@ -774,7 +774,6 @@ SET(SRCS
     events/event.h
     gui/base/focushandler.hpp
     listeners/focuslistener.h
-    gui/base/font.hpp
     gui/base/gui.hpp
     gui/base/input.hpp
     events/inputguievent.h
@@ -807,7 +806,6 @@ SET(SRCS
     gui/base/cliprectangle.cpp
     gui/base/color.cpp
     gui/base/focushandler.cpp
-    gui/base/font.cpp
     gui/base/gui.cpp
     gui/base/key.cpp
     gui/base/keyinput.cpp

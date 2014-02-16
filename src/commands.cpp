@@ -1024,7 +1024,7 @@ impHandler0(cacheInfo)
         return;
 
 /*
-    SDLFont *const font = dynamic_cast<SDLFont *const>(chatWindow->getFont());
+    Font *const font = chatWindow->getFont();
     if (!font)
         return;
 
@@ -1361,7 +1361,7 @@ impHandler0(uploadLog)
 impHandler0(testsdlfont)
 {
 #if defined USE_OPENGL && defined DEBUG_SDLFONT
-    SDLFont *font = new SDLFont("fonts/dejavusans.ttf", 18);
+    Font *font = new Font("fonts/dejavusans.ttf", 18);
     timespec time1;
     timespec time2;
     NullOpenGLGraphics *nullGraphics = new NullOpenGLGraphics;

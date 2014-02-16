@@ -32,8 +32,8 @@
 
 #include "being/being.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
-#include "gui/sdlfont.h"
 #include "gui/viewport.h"
 
 #include "gui/windows/inventorywindow.h"
@@ -58,8 +58,6 @@
 
 #include "utils/copynpaste.h"
 #include "utils/gettext.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -170,7 +168,7 @@ NpcDialog::NpcDialog(const int npcId) :
     mTextField->setVisible(true);
     mIntField->setVisible(true);
 
-    const gcn::Font *const fnt = mButton->getFont();
+    const Font *const fnt = mButton->getFont();
     int width = std::max(fnt->getWidth(CAPTION_WAITING),
         fnt->getWidth(CAPTION_NEXT));
     width = std::max(width, fnt->getWidth(CAPTION_CLOSE));

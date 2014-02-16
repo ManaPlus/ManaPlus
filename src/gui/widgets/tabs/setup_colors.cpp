@@ -21,7 +21,7 @@
 
 #include "gui/widgets/tabs/setup_colors.h"
 
-#include "gui/sdlfont.h"
+#include "gui/font.h"
 #include "gui/userpalette.h"
 
 #include "gui/widgets/browserbox.h"
@@ -101,7 +101,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     // TRANSLATORS: color type
     std::string longText = _("Static");
 
-    const gcn::Font *const font = getFont();
+    const Font *const font = getFont();
     if (getFont()->getWidth(_("Pulse")) > font->getWidth(longText))
     {
         // TRANSLATORS: color type

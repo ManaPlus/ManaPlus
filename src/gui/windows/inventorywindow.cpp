@@ -32,6 +32,7 @@
 
 #include "input/inputmanager.h"
 
+#include "gui/font.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/textpopup.h"
@@ -42,7 +43,6 @@
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/tradewindow.h"
-
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/dropdown.h"
@@ -57,8 +57,6 @@
 #include "net/net.h"
 
 #include "utils/gettext.h"
-
-#include "gui/base/font.hpp"
 
 #include <string>
 

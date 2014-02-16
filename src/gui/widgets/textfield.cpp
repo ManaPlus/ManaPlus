@@ -28,8 +28,8 @@
 
 #include "events/keyevent.h"
 
+#include "gui/font.h"
 #include "gui/sdlinput.h"
-
 #include "gui/viewport.h"
 
 #include "gui/popups/popupmenu.h"
@@ -38,8 +38,6 @@
 
 #include "utils/copynpaste.h"
 #include "utils/timer.h"
-
-#include "gui/base/font.hpp"
 
 #undef DELETE  // Win32 compatibility hack
 
@@ -142,7 +140,7 @@ void TextField::draw(Graphics *graphics)
     BLOCK_START("TextField::draw")
     updateAlpha();
 
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
     if (isFocused())
     {
         drawCaret(graphics,

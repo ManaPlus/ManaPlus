@@ -27,6 +27,7 @@
 
 #include "being/playerinfo.h"
 
+#include "gui/font.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/itempopup.h"
@@ -35,7 +36,6 @@
 
 #include "resources/image.h"
 
-#include "gui/base/font.hpp"
 #include "gui/base/listmodel.hpp"
 
 #include "debug.h"
@@ -95,7 +95,7 @@ void ShopListBox::draw(Graphics *graphics)
         mAlpha = client->getGuiAlpha();
 
     const int alpha = static_cast<int>(mAlpha * 255.0F);
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
 
     const int sz = mListModel->getNumberOfElements();
     const int fontHeigh = getFont()->getHeight();

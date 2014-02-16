@@ -20,12 +20,11 @@
 
 #include "gui/widgets/sliderlist.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -209,7 +208,7 @@ int SliderList::getMaxLabelWidth() const
         return 1;
 
     int maxWidth = 0;
-    const gcn::Font *const font = getFont();
+    const Font *const font = getFont();
 
     const int num = mListModel->getNumberOfElements();
     for (int f = 0; f < num; f ++)

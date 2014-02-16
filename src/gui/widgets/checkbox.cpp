@@ -30,7 +30,7 @@
 
 #include "resources/image.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include "debug.h"
 
@@ -100,7 +100,7 @@ void CheckBox::draw(Graphics *const graphics)
     BLOCK_START("CheckBox::draw")
     drawBox(graphics);
 
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
     graphics->setColorAll(mForegroundColor, mForegroundColor2);
     font->drawString(graphics, mCaption, mPadding + mImageSize + mSpacing,
         mPadding);

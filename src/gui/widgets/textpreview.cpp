@@ -24,8 +24,8 @@
 
 #include "client.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
-#include "gui/sdlfont.h"
 
 #include "debug.h"
 
@@ -100,12 +100,11 @@ void TextPreview::draw(Graphics* graphics)
 
     if (mTextBGColor)
     {
-        const SDLFont *const font = dynamic_cast<SDLFont*>(mFont);
-        if (font)
+        if (mFont)
         {
-            const int x = font->getWidth(mText) + 1
+            const int x = mFont->getWidth(mText) + 1
                 + 2 * ((mOutline || mShadow) ? 1 :0);
-            const int y = font->getHeight() + 1
+            const int y = mFont->getHeight() + 1
                 + 2 * ((mOutline || mShadow) ? 1 : 0);
             graphics->setColor(gcn::Color(static_cast<int>(mTextBGColor->r),
                 static_cast<int>(mTextBGColor->g),

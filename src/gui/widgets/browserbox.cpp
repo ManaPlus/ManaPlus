@@ -25,8 +25,8 @@
 
 #include "input/inputmanager.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
-#include "gui/sdlfont.h"
 
 #include "gui/widgets/linkhandler.h"
 
@@ -37,7 +37,6 @@
 #include "utils/stringutils.h"
 #include "utils/timer.h"
 
-#include "gui/base/font.hpp"
 #include "gui/base/cliprectangle.hpp"
 
 #include "render/graphics.h"
@@ -175,7 +174,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
     std::string tmp = row;
     std::string newRow;
     size_t idx1;
-    const gcn::Font *const font = getFont();
+    const Font *const font = getFont();
     int linksCount = 0;
 
     if (getWidth() < 0)
@@ -491,7 +490,7 @@ void BrowserBox::draw(Graphics *graphics)
         }
     }
 
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
 
     FOR_EACH (LinePartCIter, i, mLineParts)
     {
@@ -530,7 +529,7 @@ int BrowserBox::calcHeight()
     if (maxWidth < 0)
         return 1;
 
-    const gcn::Font *const font = getFont();
+    const Font *const font = getFont();
     const int fontHeight = font->getHeight() + 2 * mItemPadding;
     const int fontWidthMinus = font->getWidth("-");
     const char *const hyphen = "~";

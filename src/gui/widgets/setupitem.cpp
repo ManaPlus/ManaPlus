@@ -24,7 +24,7 @@
 #include "main.h"
 #include "soundmanager.h"
 
-#include "gui/sdlfont.h"
+#include "gui/font.h"
 
 #include "gui/windows/editdialog.h"
 
@@ -40,8 +40,6 @@
 #include "utils/base64.h"
 #include "utils/gettext.h"
 #include "utils/mathutils.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -918,7 +916,7 @@ int SetupItemSlider2::getMaxWidth()
     int maxWidth = 0;
     SetupItemNamesConstIter it = mValues->begin();
     const SetupItemNamesConstIter it_end = mValues->end();
-    const gcn::Font *const font = gui->getFont();
+    const Font *const font = gui->getFont();
 
     while (it != it_end)
     {

@@ -67,11 +67,13 @@
 
 #include "gui/base/widgets/listbox.hpp"
 
+#include "gui/font.h"
+
 #include "gui/base/basiccontainer.hpp"
-#include "gui/base/font.hpp"
 #include "gui/base/key.hpp"
 #include "gui/base/listmodel.hpp"
 #include "gui/base/mouseinput.hpp"
+
 #include "listeners/selectionlistener.h"
 
 #include "render/graphics.h"

@@ -125,7 +125,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     mKeyListModel->setSize(mActionDataSize[0]);
     refreshKeys();
     if (gui)
-        mKeyList->setFont(reinterpret_cast<gcn::Font*>(gui->getHelpFont()));
+        mKeyList->setFont(gui->getHelpFont());
     mKeyList->addActionListener(this);
 
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);

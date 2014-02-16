@@ -33,6 +33,7 @@
 
 #include "input/inputmanager.h"
 
+#include "gui/font.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/itempopup.h"
@@ -44,8 +45,6 @@
 #include "gui/widgets/skillinfo.h"
 
 #include "resources/image.h"
-
-#include "gui/base/font.hpp"
 
 #include "debug.h"
 
@@ -129,7 +128,7 @@ void ItemShortcutContainer::draw(Graphics *graphics)
         mAlpha = client->getGuiAlpha();
     }
 
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
     drawBackground(graphics);
 
     const Inventory *const inv = PlayerInfo::getInventory();

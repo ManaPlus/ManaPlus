@@ -28,14 +28,12 @@ endif
 dyecmd_CXXFLAGS =
 dyecmd_SOURCES = gui/base/cliprectangle.cpp \
 	      gui/base/color.cpp \
-	      gui/base/font.cpp \
 	      gui/base/rectangle.cpp \
 	      gui/base/widget.cpp \
 	      events/actionevent.h \
 	      gui/base/cliprectangle.hpp \
 	      gui/base/color.hpp \
 	      events/event.h \
-	      gui/base/font.hpp \
 	      gui/base/rectangle.hpp \
 	      gui/base/widget.hpp
 
@@ -161,7 +159,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      events/event.h \
 	      gui/base/focushandler.hpp \
 	      listeners/focuslistener.h \
-	      gui/base/font.hpp \
 	      render/graphics.h \
 	      gui/base/gui.hpp \
 	      gui/base/input.hpp \
@@ -195,7 +192,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/cliprectangle.cpp \
 	      gui/base/color.cpp \
 	      gui/base/focushandler.cpp \
-	      gui/base/font.cpp \
 	      gui/base/gui.cpp \
 	      gui/base/key.cpp \
 	      gui/base/keyinput.cpp \
@@ -473,8 +469,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/tabs/setup_visual.cpp \
 	      gui/widgets/tabs/setup_visual.h \
 	      gui/setupactiondata.h \
-	      gui/sdlfont.cpp \
-	      gui/sdlfont.h \
+	      gui/font.cpp \
+	      gui/font.h \
 	      gui/windows/shopwindow.cpp \
 	      gui/windows/shopwindow.h \
 	      gui/windows/shortcutwindow.cpp \

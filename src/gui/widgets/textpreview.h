@@ -78,7 +78,7 @@ class TextPreview final : public gcn::Widget,
          *
          * @param font the font to use.
          */
-        inline void setFont(gcn::Font *const font)
+        inline void setFont(Font *const font)
         { mFont = font; }
 
         /**
@@ -123,7 +123,7 @@ class TextPreview final : public gcn::Widget,
         void adjustSize();
 
     private:
-        gcn::Font *mFont;
+        Font *mFont;
         std::string mText;
         const gcn::Color *mTextColor;
         const gcn::Color *mTextColor2;

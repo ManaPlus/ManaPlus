@@ -67,7 +67,8 @@
 
 #include "gui/base/widgets/checkbox.hpp"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
+
 #include "gui/base/key.hpp"
 #include "gui/base/mouseinput.hpp"
 

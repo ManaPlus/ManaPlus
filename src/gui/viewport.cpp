@@ -42,7 +42,7 @@
 
 #include "gui/windows/ministatuswindow.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include "debug.h"
 
@@ -341,7 +341,7 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
                          const gcn::Color &color) const
 {
     graphics->setColor(color);
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
 
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() != ServerInfo::MANASERV)

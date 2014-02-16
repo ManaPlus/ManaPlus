@@ -39,7 +39,7 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/sdlfont.h"
+#include "gui/font.h"
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"
 

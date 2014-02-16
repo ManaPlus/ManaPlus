@@ -67,7 +67,7 @@
 
 #include "gui/base/widgets/label.hpp"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include "render/graphics.h"
 

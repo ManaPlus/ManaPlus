@@ -29,7 +29,7 @@
 
 #include "utils/gettext.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include "debug.h"
 

@@ -22,7 +22,7 @@
 
 #include "gui/widgets/colormodel.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include "debug.h"
 
@@ -33,7 +33,7 @@ ColorPage::ColorPage(const Widget2 *const widget,
 {
     mItemPadding = mSkin ? mSkin->getOption("itemPadding") : 1;
     mRowHeight = 13;
-    const gcn::Font *const font = getFont();
+    const Font *const font = getFont();
     if (font)
         mRowHeight = font->getHeight() + 2 * mItemPadding;
     if (mListModel)
@@ -57,7 +57,7 @@ void ColorPage::draw(Graphics *graphics)
     mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
     graphics->setColor(mHighlightColor);
     updateAlpha();
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
 
     const int rowHeight = getRowHeight();
     const int width = mDimension.width;

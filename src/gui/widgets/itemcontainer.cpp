@@ -46,7 +46,7 @@
 
 #include "resources/image.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 #include "listeners/selectionlistener.h"
 
 #include <algorithm>
@@ -251,7 +251,7 @@ void ItemContainer::draw(Graphics *graphics)
         return;
 
     BLOCK_START("ItemContainer::draw")
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
 
     for (int j = 0; j < mGridRows; j++)
     {

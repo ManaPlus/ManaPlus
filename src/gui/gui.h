@@ -35,7 +35,7 @@ class GuiConfigListener;
 class ImageSet;
 class MouseEvent;
 class MouseInput;
-class SDLFont;
+class Font;
 class SDLInput;
 class Window;
 
@@ -96,32 +96,32 @@ class Gui final : public gcn::Gui
         /**
          * Return game font.
          */
-        SDLFont *getFont() const A_WARN_UNUSED
+        Font *getFont() const A_WARN_UNUSED
         { return mGuiFont; }
 
         /**
          * Return help font.
          */
-        SDLFont *getHelpFont() const A_WARN_UNUSED
+        Font *getHelpFont() const A_WARN_UNUSED
         { return mHelpFont; }
 
         /**
          * Return secure font.
          */
-        SDLFont *getSecureFont() const A_WARN_UNUSED
+        Font *getSecureFont() const A_WARN_UNUSED
         { return mSecureFont; }
 
         /**
          * Return npc font.
          */
-        SDLFont *getNpcFont() const A_WARN_UNUSED
+        Font *getNpcFont() const A_WARN_UNUSED
         { return mNpcFont; }
 
         /**
          * Return the Font used for "Info Particles", i.e. ones showing, what
          * you picked up, etc.
          */
-        SDLFont *getInfoParticleFont() const A_WARN_UNUSED
+        Font *getInfoParticleFont() const A_WARN_UNUSED
         { return mInfoParticleFont; }
 
         /**
@@ -183,11 +183,11 @@ class Gui final : public gcn::Gui
 
     private:
         GuiConfigListener *mConfigListener;
-        SDLFont *mGuiFont;                  /**< The global GUI font */
-        SDLFont *mInfoParticleFont;         /**< Font for Info Particles */
-        SDLFont *mHelpFont;                 /**< Font for Help Window */
-        SDLFont *mSecureFont;               /**< Font for secure labels */
-        SDLFont *mNpcFont;                  /**< Font for npc text */
+        Font *mGuiFont;                  /**< The global GUI font */
+        Font *mInfoParticleFont;         /**< Font for Info Particles */
+        Font *mHelpFont;                 /**< Font for Help Window */
+        Font *mSecureFont;               /**< Font for secure labels */
+        Font *mNpcFont;                  /**< Font for npc text */
         ImageSet *mMouseCursors;            /**< Mouse cursor images */
         float mMouseCursorAlpha;
         int mMouseInactivityTimer;
@@ -212,6 +212,6 @@ extern SDLInput *guiInput;                  /**< GUI input */
 /**
  * Bolded text font
  */
-extern SDLFont *boldFont;
+extern Font *boldFont;
 
 #endif  // GUI_GUI_H

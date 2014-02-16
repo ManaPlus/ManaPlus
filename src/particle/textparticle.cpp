@@ -27,13 +27,13 @@
 #include "gui/theme.h"
 
 #include "gui/base/color.hpp"
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include "debug.h"
 
 TextParticle::TextParticle(const std::string &text,
                            const gcn::Color *const color,
-                           gcn::Font *const font, const bool outline) :
+                           Font *const font, const bool outline) :
     Particle(),
     mText(text),
     mTextFont(font),

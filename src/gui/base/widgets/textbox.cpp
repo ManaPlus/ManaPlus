@@ -67,8 +67,9 @@
 
 #include "gui/base/widgets/textbox.hpp"
 
+#include "gui/font.h"
+
 #include "gui/base/basiccontainer.hpp"
-#include "gui/base/font.hpp"
 #include "gui/base/key.hpp"
 #include "gui/base/mouseinput.hpp"
 

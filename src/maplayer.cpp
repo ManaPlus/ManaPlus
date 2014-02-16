@@ -35,8 +35,8 @@
 
 #include "resources/resourcemanager.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
-#include "gui/sdlfont.h"
 
 #include "utils/dtor.h"
 
@@ -823,7 +823,7 @@ void MapItem::draw(Graphics *const graphics, const int x, const int y,
     }
     if (!mName.empty() && mType != PORTAL && mType != EMPTY)
     {
-        gcn::Font *const font = gui->getFont();
+        Font *const font = gui->getFont();
         if (font)
         {
             graphics->setColor(userPalette->getColor(UserPalette::BEING));

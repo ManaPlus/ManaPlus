@@ -36,7 +36,7 @@
 
 #include "resources/image.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include "debug.h"
 
@@ -116,7 +116,7 @@ void DropShortcutContainer::draw(Graphics *graphics)
         return;
     }
 
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
 
     for (unsigned i = 0; i < mMaxItems; i++)
     {

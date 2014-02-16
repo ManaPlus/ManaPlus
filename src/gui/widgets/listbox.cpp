@@ -28,10 +28,10 @@
 
 #include "input/keydata.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
 
 #include "gui/base/focushandler.hpp"
-#include "gui/base/font.hpp"
 #include "gui/base/listmodel.hpp"
 
 #include "render/graphics.h"
@@ -70,7 +70,7 @@ ListBox::ListBox(const Widget2 *const widget,
         mItemPadding = mSkin->getOption("itemPadding");
     }
 
-    const gcn::Font *const font = getFont();
+    const Font *const font = getFont();
     if (font)
         mRowHeight = font->getHeight() + 2 * mItemPadding;
     else
@@ -110,7 +110,7 @@ void ListBox::draw(Graphics *graphics)
 
     mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
     graphics->setColor(mHighlightColor);
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
     const int rowHeight = getRowHeight();
     const int width = mDimension.width;
 

@@ -31,7 +31,7 @@
 
 #include "input/keydata.h"
 
-#include "gui/sdlfont.h"
+#include "gui/font.h"
 
 #include "gui/windows/editserverdialog.h"
 #include "gui/windows/logindialog.h"
@@ -44,8 +44,6 @@
 
 #include "utils/gettext.h"
 #include "utils/langs.h"
-
-#include "gui/base/font.hpp"
 
 #include <string>
 
@@ -182,8 +180,8 @@ public:
                 height));
         }
 
-        gcn::Font *const font1 = boldFont;
-        gcn::Font *const font2 = getFont();
+        Font *const font1 = boldFont;
+        Font *const font2 = getFont();
         const int fontHeight = font1->getHeight();
         const int pad1 = fontHeight + mPadding;
         const int pad2 = height / 4 + mPadding;
@@ -644,7 +642,7 @@ void ServerDialog::loadServers(const bool addNew)
             version = strprintf(_("requires v%s"), version.c_str());
         }
 
-        const gcn::Font *const font = gui->getFont();
+        const Font *const font = gui->getFont();
 
         for_each_xml_child_node(subNode, serverNode)
         {

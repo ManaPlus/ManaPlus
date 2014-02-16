@@ -31,7 +31,7 @@
 
 #include "resources/imageset.h"
 
-#include "gui/base/font.hpp"
+#include "gui/font.h"
 
 #include "debug.h"
 
@@ -426,7 +426,7 @@ void Button::draw(Graphics *graphics)
     const gcn::Rectangle &rect = mDimension;
     const int width = rect.width;
     const int height = rect.height;
-    gcn::Font *const font = getFont();
+    Font *const font = getFont();
     int textY = height / 2 - font->getHeight() / 2;
     if (mImages)
         imageY = height / 2 - mImageHeight / 2;
@@ -559,7 +559,7 @@ void Button::widgetMoved(const Event &event A_UNUSED)
 
 void Button::adjustSize()
 {
-    const gcn::Font *const font = getFont();
+    const Font *const font = getFont();
     const Skin *const skin = button[BUTTON_STANDARD];
     if (!skin)
         return;
