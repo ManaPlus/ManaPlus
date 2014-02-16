@@ -22,7 +22,7 @@
 
 #include "client.h"
 
-#include "gui/sdlfont.h"
+#include "gui/font.h"
 #include "gui/theme.h"
 
 #include "gui/widgets/browserbox.h"

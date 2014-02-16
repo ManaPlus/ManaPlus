@@ -20,7 +20,7 @@
 
 #include "logger.h"
 
-#include "gui/sdlfont.h"
+#include "gui/font.h"
 #include "gui/theme.h"
 
 #include "gtest/gtest.h"
