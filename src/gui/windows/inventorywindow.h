@@ -92,7 +92,7 @@ class InventoryWindow final : public Window,
         /**
          * Handles closing of the window
          */
-        void widgetHidden(const gcn::Event &event) override final;
+        void widgetHidden(const Event &event) override final;
 
         /**
          * Handles the mouse clicks.
@@ -145,7 +145,7 @@ class InventoryWindow final : public Window,
 
         bool isInputFocused() const A_WARN_UNUSED;
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
         void mouseMoved(gcn::MouseEvent &event) override final;
 

@@ -232,7 +232,7 @@ void EmoteShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
         mEmotePopup->setVisible(false);
 }
 
-void EmoteShortcutContainer::widgetHidden(const gcn::Event &event A_UNUSED)
+void EmoteShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
     if (mEmotePopup)
         mEmotePopup->setVisible(false);

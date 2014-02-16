@@ -132,9 +132,9 @@ class ProgressBar final : public gcn::Widget,
          */
         void render(Graphics *graphics);
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
-        void widgetMoved(const gcn::Event &event) override final;
+        void widgetMoved(const Event &event) override final;
 
         void setPadding(unsigned int padding)
         { mPadding = padding; }

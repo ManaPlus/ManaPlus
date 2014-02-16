@@ -283,12 +283,12 @@ void ProgressBar::render(Graphics *graphics)
     }
 }
 
-void ProgressBar::widgetResized(const gcn::Event &event A_UNUSED)
+void ProgressBar::widgetResized(const Event &event A_UNUSED)
 {
     mRedraw = true;
 }
 
-void ProgressBar::widgetMoved(const gcn::Event &event A_UNUSED)
+void ProgressBar::widgetMoved(const Event &event A_UNUSED)
 {
     mRedraw = true;
 }

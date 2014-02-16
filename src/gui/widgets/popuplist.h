@@ -49,7 +49,7 @@ class PopupList final : public Popup,
 
         void show(int x, int y);
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
         void setSelected(int selected);
 
@@ -62,9 +62,9 @@ class PopupList final : public Popup,
 
         void adjustSize();
 
-        void focusGained(const gcn::Event& event A_UNUSED) override final;
+        void focusGained(const Event& event A_UNUSED) override final;
 
-        void focusLost(const gcn::Event& event A_UNUSED) override final;
+        void focusLost(const Event& event A_UNUSED) override final;
 
         void mousePressed(gcn::MouseEvent& mouseEvent) override final;
 

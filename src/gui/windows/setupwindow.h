@@ -71,7 +71,7 @@ class SetupWindow final : public Window,
 
         void setVisible(bool visible) override final;
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
     private:
         void unloadModTab();

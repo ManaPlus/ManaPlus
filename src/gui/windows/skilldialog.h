@@ -88,7 +88,7 @@ class SkillDialog final : public Window,
         bool hasSkills() const A_WARN_UNUSED
         { return !mSkills.empty(); }
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
         void useItem(const int itemId) const;
 

@@ -90,7 +90,7 @@ void PopupList::show(int x, int y)
         requestModalFocus();
 }
 
-void PopupList::widgetResized(const gcn::Event &event)
+void PopupList::widgetResized(const Event &event)
 {
     Popup::widgetResized(event);
     adjustSize();
@@ -154,7 +154,7 @@ void PopupList::mouseReleased(gcn::MouseEvent& mouseEvent)
         releaseModalFocus();
 }
 
-void PopupList::focusGained(const gcn::Event& event)
+void PopupList::focusGained(const Event& event)
 {
     const gcn::Widget *const source = event.getSource();
     if (!mVisible || source == this || source == mListBox
@@ -170,7 +170,7 @@ void PopupList::focusGained(const gcn::Event& event)
         releaseModalFocus();
 }
 
-void PopupList::focusLost(const gcn::Event& event A_UNUSED)
+void PopupList::focusLost(const Event& event A_UNUSED)
 {
     if (mDropDown)
         mDropDown->updateSelection();

@@ -124,9 +124,9 @@ class ScrollArea final : public gcn::ScrollArea,
 
         void mouseDragged(gcn::MouseEvent &event) override final;
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
-        void widgetMoved(const gcn::Event &event) override final;
+        void widgetMoved(const Event &event) override final;
 
         gcn::Rectangle getVerticalBarDimension() const;
 

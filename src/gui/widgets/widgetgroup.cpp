@@ -84,6 +84,6 @@ void WidgetGroup::clear()
     mCount = 0;
 }
 
-void WidgetGroup::widgetResized(const gcn::Event &event A_UNUSED)
+void WidgetGroup::widgetResized(const Event &event A_UNUSED)
 {
 }

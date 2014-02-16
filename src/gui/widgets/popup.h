@@ -164,9 +164,9 @@ class Popup : public Container,
 
         void hide();
 
-        void widgetResized(const gcn::Event &event) override;
+        void widgetResized(const Event &event) override;
 
-        void widgetMoved(const gcn::Event &event) override final;
+        void widgetMoved(const Event &event) override final;
 
         bool isPopupVisible() const
         { return mVisible; }

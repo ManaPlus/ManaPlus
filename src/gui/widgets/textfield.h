@@ -124,9 +124,9 @@ class TextField : public gcn::TextField,
 
         void handleCopy() const;
 
-        void focusGained(const gcn::Event &event) override final;
+        void focusGained(const Event &event) override final;
 
-        void focusLost(const gcn::Event &event) override;
+        void focusLost(const Event &event) override;
 
         void moveCaretBack();
 

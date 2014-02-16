@@ -147,7 +147,7 @@ void DebugWindow::draw(Graphics *g)
     BLOCK_END("DebugWindow::draw")
 }
 
-void DebugWindow::widgetResized(const gcn::Event &event)
+void DebugWindow::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
 

@@ -96,7 +96,7 @@ class ItemContainer final : public gcn::Widget,
         void mouseExited(gcn::MouseEvent &event) override final;
 
         // WidgetListener
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
         /**
          * Returns the selected item.

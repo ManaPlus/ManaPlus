@@ -618,7 +618,7 @@ void ItemContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
     mItemPopup->setVisible(false);
 }
 
-void ItemContainer::widgetResized(const gcn::Event &event A_UNUSED)
+void ItemContainer::widgetResized(const Event &event A_UNUSED)
 {
     mGridColumns = std::max(1, mDimension.width / mBoxWidth);
     adjustHeight();

@@ -97,7 +97,7 @@ class ChatInput final : public TextField
          * Called if the chat input loses focus. It will set itself to
          * invisible as result.
          */
-        void focusLost(const gcn::Event &event)
+        void focusLost(const Event &event)
         {
             TextField::focusLost(event);
             if (mFocusGaining || !config.getBoolValue("protectChatFocus"))
@@ -441,7 +441,7 @@ void ChatWindow::adjustTabSize()
     mChatTabs->adjustSize();
 }
 
-void ChatWindow::widgetResized(const gcn::Event &event)
+void ChatWindow::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
 

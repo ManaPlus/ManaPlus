@@ -110,7 +110,7 @@ void CharacterDisplay::update()
     distributeResizedEvent();
 }
 
-void CharacterDisplay::widgetHidden(const gcn::Event &event A_UNUSED)
+void CharacterDisplay::widgetHidden(const Event &event A_UNUSED)
 {
     mPopup->setVisible(false);
 }

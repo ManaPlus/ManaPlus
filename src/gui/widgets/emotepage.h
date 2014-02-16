@@ -48,9 +48,9 @@ class EmotePage final : public gcn::Widget,
 
         int getIndexFromGrid(const int x, const int y) const;
 
-        void widgetResized(const gcn::Event &event A_UNUSED) override final;
+        void widgetResized(const Event &event A_UNUSED) override final;
 
-        void widgetMoved(const gcn::Event &event A_UNUSED) override final;
+        void widgetMoved(const Event &event A_UNUSED) override final;
 
         void resetAction();
 

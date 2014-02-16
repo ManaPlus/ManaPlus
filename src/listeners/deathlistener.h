@@ -66,7 +66,7 @@
 
 #include <string>
 
-#include "gui/base/event.hpp"
+#include "events/event.h"
 
 /**
   * Interface for listening for death events from widgets.
@@ -90,7 +90,7 @@ class DeathListener
           *
           * @param event The event of the death.
           */
-        virtual void death(const gcn::Event &event) = 0;
+        virtual void death(const Event &event) = 0;
 
     protected:
         /**

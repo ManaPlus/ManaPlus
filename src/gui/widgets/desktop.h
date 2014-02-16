@@ -60,7 +60,7 @@ class Desktop final : public Container,
          */
         void reloadWallpaper();
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
         void draw(Graphics *graphics) override final;
 

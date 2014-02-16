@@ -64,7 +64,7 @@
 #ifndef EVENTS_ACTIONEVENT_HPP
 #define EVENTS_ACTIONEVENT_HPP
 
-#include "gui/base/event.hpp"
+#include "events/event.h"
 
 #include <string>
 
@@ -97,7 +97,7 @@ namespace GCN
   * @author Olof Naessén
   * @since 0.6.0
   */
-class ActionEvent final : public gcn::Event
+class ActionEvent final : public Event
 {
     public:
         /**
@@ -107,7 +107,7 @@ class ActionEvent final : public gcn::Event
           * @param id An identifier of the event.
           */
         ActionEvent(gcn::Widget *const source, const std::string &id) :
-            gcn::Event(source),
+            Event(source),
             mId(id)
         {
         }

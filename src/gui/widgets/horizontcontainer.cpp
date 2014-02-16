@@ -58,6 +58,6 @@ void HorizontContainer::clear()
     mCount = 0;
 }
 
-void HorizontContainer::widgetResized(const gcn::Event &event A_UNUSED)
+void HorizontContainer::widgetResized(const Event &event A_UNUSED)
 {
 }

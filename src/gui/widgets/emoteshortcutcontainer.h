@@ -74,7 +74,7 @@ class EmoteShortcutContainer final : public ShortcutContainer
 
         void mouseExited(gcn::MouseEvent &event) override final;
 
-        void widgetHidden(const gcn::Event &event) override final;
+        void widgetHidden(const Event &event) override final;
 
         void setWidget2(const Widget2 *const widget) override final;
 

@@ -132,9 +132,9 @@ class Button final : public gcn::Button,
         void setPressed(bool b)
         { mPressed = b; }
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
-        void widgetMoved(const gcn::Event &event) override final;
+        void widgetMoved(const Event &event) override final;
 
         void loadImage(const std::string &imageName);
 

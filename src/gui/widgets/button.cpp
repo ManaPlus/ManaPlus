@@ -546,12 +546,12 @@ void Button::mouseReleased(gcn::MouseEvent& mouseEvent)
     }
 }
 
-void Button::widgetResized(const gcn::Event &event A_UNUSED)
+void Button::widgetResized(const Event &event A_UNUSED)
 {
     mRedraw = true;
 }
 
-void Button::widgetMoved(const gcn::Event &event A_UNUSED)
+void Button::widgetMoved(const Event &event A_UNUSED)
 {
     mRedraw = true;
 }

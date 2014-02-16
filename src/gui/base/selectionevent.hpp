@@ -64,7 +64,7 @@
 #ifndef GCN_SELECTIONEVENT_HPP
 #define GCN_SELECTIONEVENT_HPP
 
-#include "gui/base/event.hpp"
+#include "events/event.h"
 
 #include "localconsts.h"
 

@@ -61,53 +61,57 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GCN_EVENT_HPP
-#define GCN_EVENT_HPP
+#ifndef EVENTS_EVENT_HPP
+#define EVENTS_EVENT_HPP
 
 #include "localconsts.h"
 
 namespace gcn
 {
     class Widget;
+}
 
-    /**
-     * Base class for all events. All events in Guichan should
-     * inherit from this class.
-     *
-     * @author Olof Naessén
-     * @since 0.6.0
-     */
-    class Event
-    {
+/**
+  * Base class for all events. All events in Guichan should
+  * inherit from this class.
+  *
+  * @author Olof Naessén
+  * @since 0.6.0
+  */
+class Event
+{
     public:
         /**
-         * Constructor.
-         *
-         * @param source The source widget of the event.
-         */
-        explicit Event(Widget *const source);
+          * Constructor.
+          *
+          * @param source The source widget of the event.
+          */
+        explicit Event(gcn::Widget *const source) :
+            mSource(source)
+        { }
 
         A_DELETE_COPY(Event)
 
         /**
-         * Destructor.
-         */
-        virtual ~Event();
+          * Destructor.
+          */
+        virtual ~Event()
+        { }
 
         /**
-         * Gets the source widget of the event. The function
-         * is used to tell which widget fired an event.
-         *
-         * @return The source widget of the event.
-         */
-        Widget* getSource() const A_WARN_UNUSED;
+          * Gets the source widget of the event. The function
+          * is used to tell which widget fired an event.
+          *
+          * @return The source widget of the event.
+          */
+        gcn::Widget* getSource() const A_WARN_UNUSED
+        { return mSource; }
 
     protected:
         /**
-         * Holds the source widget of the event.
-         */
-        Widget* mSource;
-    };
-}  // namespace gcn
+          * Holds the source widget of the event.
+          */
+        gcn::Widget* mSource;
+};
 
-#endif  // end GCN_EVENT_HPP
+#endif  // EVENTS_EVENT_HPP

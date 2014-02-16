@@ -308,7 +308,7 @@ void DropShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
         mItemPopup->setVisible(false);
 }
 
-void DropShortcutContainer::widgetHidden(const gcn::Event &event A_UNUSED)
+void DropShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
     if (mItemPopup)
         mItemPopup->setVisible(false);

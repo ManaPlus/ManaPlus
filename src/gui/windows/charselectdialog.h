@@ -86,7 +86,7 @@ class CharSelectDialog final : public Window,
 
         void close() override final;
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
         void updateState();
 

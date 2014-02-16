@@ -130,9 +130,9 @@ class Tab : public gcn::BasicContainer,
         int getFlash() const A_WARN_UNUSED
         { return mFlash; }
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
-        void widgetMoved(const gcn::Event &event) override final;
+        void widgetMoved(const Event &event) override final;
 
         void setLabelFont(gcn::Font *const font);
 

@@ -68,7 +68,7 @@ class ItemShortcutContainer final : public ShortcutContainer
          */
         void mouseReleased(gcn::MouseEvent &event) override final;
 
-        void widgetHidden(const gcn::Event &event) override final;
+        void widgetHidden(const Event &event) override final;
 
         void mouseExited(gcn::MouseEvent &event) override final;
 

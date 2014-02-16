@@ -114,14 +114,14 @@ class Window : public gcn::Window,
         /**
          * Called whenever the widget changes size.
          */
-        virtual void widgetResized(const gcn::Event &event) override;
+        virtual void widgetResized(const Event &event) override;
 
-        virtual void widgetMoved(const gcn::Event& event) override;
+        virtual void widgetMoved(const Event& event) override;
 
         /**
          * Called whenever the widget is hidden.
          */
-        virtual void widgetHidden(const gcn::Event &event) override;
+        virtual void widgetHidden(const Event &event) override;
 
         /**
          * Sets whether or not the window has a close button.

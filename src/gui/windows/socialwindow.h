@@ -123,7 +123,7 @@ public:
 
     void updatePickupFilter();
 
-    void widgetResized(const gcn::Event &event) override final;
+    void widgetResized(const Event &event) override final;
 
     void setCounter(const SocialTab *const tab, const std::string &str);
 

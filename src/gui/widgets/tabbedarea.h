@@ -142,7 +142,7 @@ class TabbedArea final : public Widget2,
 
         void setSelectedTabByName(const std::string &name);
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
 /*
         void moveLeft(Tab *tab);
@@ -184,7 +184,7 @@ class TabbedArea final : public Widget2,
 
         void setDimension(const gcn::Rectangle &dimension);
 
-        void death(const gcn::Event &event);
+        void death(const Event &event);
 
         void setResizeHeight(bool b)
         { mResizeHeight = b; }

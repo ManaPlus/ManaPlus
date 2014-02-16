@@ -103,7 +103,7 @@ void FocusHandler::checkForWindow() const
     }
 }
 
-void FocusHandler::distributeFocusGainedEvent(const gcn::Event &focusEvent)
+void FocusHandler::distributeFocusGainedEvent(const Event &focusEvent)
 {
     if (gui)
         gui->distributeGlobalFocusGainedEvent(focusEvent);

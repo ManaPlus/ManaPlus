@@ -136,7 +136,7 @@ public:
 
     void action(const ActionEvent &event) override final;
 
-    void widgetResized(const gcn::Event &event) override final;
+    void widgetResized(const Event &event) override final;
 
     const std::set<OnlinePlayer*> &getOnlinePlayers() const A_WARN_UNUSED
     { return mOnlinePlayers; }

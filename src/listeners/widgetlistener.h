@@ -66,7 +66,7 @@
 
 #include <string>
 
-#include "gui/base/event.hpp"
+#include "events/event.h"
 
 #include "localconsts.h"
 
@@ -94,7 +94,7 @@ class WidgetListener
           * @param event Describes the event.
           * @since 0.8.0
           */
-        virtual void widgetResized(const gcn::Event &event A_UNUSED)
+        virtual void widgetResized(const Event &event A_UNUSED)
         { }
 
         /**
@@ -103,7 +103,7 @@ class WidgetListener
           * @param event Describes the event.
           * @since 0.8.0
           */
-        virtual void widgetMoved(const gcn::Event &event A_UNUSED)
+        virtual void widgetMoved(const Event &event A_UNUSED)
         { }
 
         /**
@@ -113,7 +113,7 @@ class WidgetListener
           * @param event Describes the event.
           * @since 0.8.0
           */
-        virtual void widgetHidden(const gcn::Event &event A_UNUSED)
+        virtual void widgetHidden(const Event &event A_UNUSED)
         { }
 
         /**
@@ -123,7 +123,7 @@ class WidgetListener
           * @param event Describes the event.
           * @since 0.8.0
           */
-        virtual void widgetShown(const gcn::Event &event A_UNUSED)
+        virtual void widgetShown(const Event &event A_UNUSED)
         { }
 
     protected:

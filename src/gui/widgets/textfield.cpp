@@ -760,7 +760,7 @@ void TextField::mousePressed(gcn::MouseEvent &mouseEvent)
     }
 }
 
-void TextField::focusGained(const gcn::Event &event A_UNUSED)
+void TextField::focusGained(const Event &event A_UNUSED)
 {
 #ifdef ANDROID
     if (!client->isKeyboardVisible())
@@ -768,6 +768,6 @@ void TextField::focusGained(const gcn::Event &event A_UNUSED)
 #endif
 }
 
-void TextField::focusLost(const gcn::Event &event A_UNUSED)
+void TextField::focusLost(const Event &event A_UNUSED)
 {
 }

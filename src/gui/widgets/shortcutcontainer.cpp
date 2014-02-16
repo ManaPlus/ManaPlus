@@ -53,7 +53,7 @@ ShortcutContainer::~ShortcutContainer()
     mVertexes = nullptr;
 }
 
-void ShortcutContainer::widgetResized(const gcn::Event &event A_UNUSED)
+void ShortcutContainer::widgetResized(const Event &event A_UNUSED)
 {
     mGridWidth = mDimension.width / mBoxWidth;
 
@@ -116,7 +116,7 @@ void ShortcutContainer::drawBackground(Graphics *g)
     }
 }
 
-void ShortcutContainer::widgetMoved(const gcn::Event& event A_UNUSED)
+void ShortcutContainer::widgetMoved(const Event& event A_UNUSED)
 {
     mRedraw = true;
 }

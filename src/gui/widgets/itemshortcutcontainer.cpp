@@ -467,7 +467,7 @@ void ItemShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
         mSpellPopup->setVisible(false);
 }
 
-void ItemShortcutContainer::widgetHidden(const gcn::Event &event A_UNUSED)
+void ItemShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
     if (mItemPopup)
         mItemPopup->setVisible(false);

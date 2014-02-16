@@ -71,7 +71,7 @@ class FocusHandler final : public gcn::FocusHandler
 
         void tabPrevious() override final;
 
-        void distributeFocusGainedEvent(const gcn::Event &focusEvent)
+        void distributeFocusGainedEvent(const Event &focusEvent)
                                         override final;
 
     private:

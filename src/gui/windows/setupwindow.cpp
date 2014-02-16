@@ -149,7 +149,7 @@ void SetupWindow::postInit()
 
     center();
 
-    widgetResized(gcn::Event(nullptr));
+    widgetResized(Event(nullptr));
     setInGame(false);
     enableVisibleSound(true);
 }
@@ -260,7 +260,7 @@ void SetupWindow::setVisible(bool visible)
     Window::setVisible(visible);
 }
 
-void SetupWindow::widgetResized(const gcn::Event &event)
+void SetupWindow::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
 

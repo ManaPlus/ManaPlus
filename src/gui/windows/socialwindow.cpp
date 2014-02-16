@@ -1336,7 +1336,7 @@ void SocialWindow::postInit()
     place(0, 1, mCountLabel);
     place(0, 2, mTabs, 4, 4);
 
-    widgetResized(gcn::Event(nullptr));
+    widgetResized(Event(nullptr));
 
     loadWindowState();
 
@@ -1863,7 +1863,7 @@ void SocialWindow::updateParty()
     }
 }
 
-void SocialWindow::widgetResized(const gcn::Event &event)
+void SocialWindow::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
     if (mTabs)

@@ -39,7 +39,7 @@ FlowContainer::FlowContainer(const Widget2 *const widget,
         mBoxHeight = 1;
 }
 
-void FlowContainer::widgetResized(const gcn::Event &event A_UNUSED)
+void FlowContainer::widgetResized(const Event &event A_UNUSED)
 {
     if (getWidth() < mBoxWidth)
     {
@@ -92,5 +92,5 @@ void FlowContainer::add(gcn::Widget *widget)
 
     Container::add(widget);
     widget->setSize(mBoxWidth, mBoxHeight);
-    widgetResized(gcn::Event(nullptr));
+    widgetResized(Event(nullptr));
 }

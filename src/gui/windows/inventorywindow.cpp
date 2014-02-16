@@ -295,7 +295,7 @@ void InventoryWindow::postInit()
     slotsChanged(mInventory);
 
     mItems->setSortType(mSortDropDown->getSelected());
-    widgetResized(gcn::Event(nullptr));
+    widgetResized(Event(nullptr));
     if (!isMainInventory())
         setVisible(true);
 }
@@ -459,7 +459,7 @@ void InventoryWindow::unselectItem()
     mItems->selectNone();
 }
 
-void InventoryWindow::widgetHidden(const gcn::Event &event)
+void InventoryWindow::widgetHidden(const Event &event)
 {
     Window::widgetHidden(event);
     mItems->hidePopup();
@@ -812,7 +812,7 @@ bool InventoryWindow::isAnyInputFocused()
     return false;
 }
 
-void InventoryWindow::widgetResized(const gcn::Event &event)
+void InventoryWindow::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
 

@@ -314,7 +314,7 @@ void SpellShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
         mSpellPopup->setVisible(false);
 }
 
-void SpellShortcutContainer::widgetHidden(const gcn::Event &event A_UNUSED)
+void SpellShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
     if (mSpellPopup)
         mSpellPopup->setVisible(false);

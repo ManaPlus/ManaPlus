@@ -214,7 +214,7 @@ void EmoteWindow::addListeners(ActionListener *const listener)
     mFontPage->addActionListener(listener);
 }
 
-void EmoteWindow::widgetResized(const gcn::Event &event)
+void EmoteWindow::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
     const int pad2 = mPadding * 2;
@@ -229,7 +229,7 @@ void EmoteWindow::widgetResized(const gcn::Event &event)
     mEmotePage->widgetResized(event);
 }
 
-void EmoteWindow::widgetMoved(const gcn::Event &event)
+void EmoteWindow::widgetMoved(const Event &event)
 {
     Window::widgetMoved(event);
     mEmotePage->widgetResized(event);

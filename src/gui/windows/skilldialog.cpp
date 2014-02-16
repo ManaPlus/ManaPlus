@@ -617,7 +617,7 @@ SkillInfo* SkillDialog::getSkillByItem(const int itemId) const
     return nullptr;
 }
 
-void SkillDialog::widgetResized(const gcn::Event &event)
+void SkillDialog::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
 

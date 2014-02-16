@@ -133,7 +133,7 @@ void WhoIsOnline::postInit()
 
     download();
 
-    widgetResized(gcn::Event(nullptr));
+    widgetResized(Event(nullptr));
     config.addListener("updateOnlineList", this);
     config.addListener("groupFriends", this);
     mGroupFriends = config.getBoolValue("groupFriends");
@@ -715,7 +715,7 @@ void WhoIsOnline::action(const ActionEvent &event)
     }
 }
 
-void WhoIsOnline::widgetResized(const gcn::Event &event)
+void WhoIsOnline::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
     updateSize();

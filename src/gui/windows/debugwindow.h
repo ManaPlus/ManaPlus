@@ -151,7 +151,7 @@ class DebugWindow final : public Window
 
         void setPing(int pingTime);
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
 #ifdef USE_PROFILER
         void logicChildren();

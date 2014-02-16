@@ -286,7 +286,7 @@ class ChatWindow final : public Window,
 
         void unHideWindow();
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
         void addGlobalMessage(const std::string &line);
 

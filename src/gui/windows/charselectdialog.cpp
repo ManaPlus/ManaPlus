@@ -563,7 +563,7 @@ void CharSelectDialog::close()
     Window::close();
 }
 
-void CharSelectDialog::widgetResized(const gcn::Event &event)
+void CharSelectDialog::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
     if (mCharacterView)

@@ -66,7 +66,7 @@
 
 #include <string>
 
-#include "gui/base/event.hpp"
+#include "events/event.h"
 
 #include "localconsts.h"
 
@@ -91,7 +91,7 @@ class FocusListener
           *
           * @param event Discribes the event.
           */
-        virtual void focusGained(const gcn::Event &event A_UNUSED)
+        virtual void focusGained(const Event &event A_UNUSED)
         { }
 
         /**
@@ -99,7 +99,7 @@ class FocusListener
           *
           * @param event Discribes the event.
           */
-        virtual void focusLost(const gcn::Event &event A_UNUSED)
+        virtual void focusLost(const Event &event A_UNUSED)
         { }
 
     protected:

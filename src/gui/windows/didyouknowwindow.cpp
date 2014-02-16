@@ -99,7 +99,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
 
 void DidYouKnowWindow::postInit()
 {
-    widgetResized(gcn::Event(nullptr));
+    widgetResized(Event(nullptr));
 }
 
 void DidYouKnowWindow::action(const ActionEvent &event)

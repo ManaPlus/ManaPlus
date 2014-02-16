@@ -156,7 +156,7 @@ class Gui final : public gcn::Gui
 
         void removeGlobalFocusListener(FocusListener* focusListener);
 
-        void distributeGlobalFocusGainedEvent(const gcn::Event &focusEvent);
+        void distributeGlobalFocusGainedEvent(const Event &focusEvent);
 
         void removeDragged(gcn::Widget *widget);
 

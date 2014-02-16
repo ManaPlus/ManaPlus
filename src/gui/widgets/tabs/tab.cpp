@@ -254,12 +254,12 @@ void Tab::draw(Graphics *graphics)
     BLOCK_END("Tab::draw")
 }
 
-void Tab::widgetResized(const gcn::Event &event A_UNUSED)
+void Tab::widgetResized(const Event &event A_UNUSED)
 {
     mRedraw = true;
 }
 
-void Tab::widgetMoved(const gcn::Event &event A_UNUSED)
+void Tab::widgetMoved(const Event &event A_UNUSED)
 {
     mRedraw = true;
 }

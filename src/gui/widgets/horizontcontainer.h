@@ -48,7 +48,7 @@ class HorizontContainer final : public Container,
 
         void clear() override;
 
-        void widgetResized(const gcn::Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
     protected:
         int mSpacing;

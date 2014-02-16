@@ -139,12 +139,12 @@ void EmotePage::resetAction()
     mSelectedIndex = -1;
 }
 
-void EmotePage::widgetResized(const gcn::Event &event A_UNUSED)
+void EmotePage::widgetResized(const Event &event A_UNUSED)
 {
     mRedraw = true;
 }
 
-void EmotePage::widgetMoved(const gcn::Event &event A_UNUSED)
+void EmotePage::widgetMoved(const Event &event A_UNUSED)
 {
     mRedraw = true;
 }

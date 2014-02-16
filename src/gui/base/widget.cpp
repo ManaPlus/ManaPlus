@@ -70,7 +70,7 @@
 #include "events/actionevent.h"
 
 #include "gui/base/basiccontainer.hpp"
-#include "gui/base/event.hpp"
+#include "events/event.h"
 #include "gui/base/exception.hpp"
 #include "gui/base/focushandler.hpp"
 #include "gui/base/keyinput.hpp"

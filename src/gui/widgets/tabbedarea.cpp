@@ -72,7 +72,7 @@ TabbedArea::TabbedArea(const Widget2 *const widget) :
 
 void TabbedArea::postInit()
 {
-    widgetResized(gcn::Event(nullptr));
+    widgetResized(Event(nullptr));
 }
 
 TabbedArea::~TabbedArea()
@@ -365,7 +365,7 @@ void TabbedArea::setSelectedTab(Tab *const tab)
     if (newTab)
         newTab->setCurrent();
 
-    widgetResized(gcn::Event(nullptr));
+    widgetResized(Event(nullptr));
 }
 
 int TabbedArea::getSelectedTabIndex() const
@@ -392,7 +392,7 @@ void TabbedArea::setSelectedTabByName(const std::string &name)
     }
 }
 
-void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
+void TabbedArea::widgetResized(const Event &event A_UNUSED)
 {
     adjustSize();
 
@@ -716,7 +716,7 @@ void TabbedArea::keyPressed(gcn::KeyEvent& keyEvent)
     }
 }
 
-void TabbedArea::death(const gcn::Event &event)
+void TabbedArea::death(const Event &event)
 {
     Tab *const tab = dynamic_cast<Tab*>(event.getSource());
 

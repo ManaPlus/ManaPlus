@@ -66,7 +66,7 @@
 
 #include <vector>
 
-#include "gui/base/event.hpp"
+#include "events/event.h"
 
 namespace gcn
 {

@@ -176,7 +176,7 @@ int ShortcutWindow::getTabIndex() const
     return mTabs->getSelectedTabIndex();
 }
 
-void ShortcutWindow::widgetHidden(const gcn::Event &event)
+void ShortcutWindow::widgetHidden(const Event &event)
 {
     if (mItems)
         mItems->widgetHidden(event);
@@ -226,7 +226,7 @@ void ShortcutWindow::mouseDragged(gcn::MouseEvent &event)
     }
 }
 
-void ShortcutWindow::widgetMoved(const gcn::Event& event)
+void ShortcutWindow::widgetMoved(const Event& event)
 {
     Window::widgetMoved(event);
     if (mItems)

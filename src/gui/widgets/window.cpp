@@ -490,7 +490,7 @@ void Window::setResizable(const bool r)
     }
 }
 
-void Window::widgetResized(const gcn::Event &event A_UNUSED)
+void Window::widgetResized(const Event &event A_UNUSED)
 {
     const gcn::Rectangle area = getChildrenArea();
 
@@ -554,12 +554,12 @@ void Window::widgetResized(const gcn::Event &event A_UNUSED)
     mRedraw = true;
 }
 
-void Window::widgetMoved(const gcn::Event& event A_UNUSED)
+void Window::widgetMoved(const Event& event A_UNUSED)
 {
     mRedraw = true;
 }
 
-void Window::widgetHidden(const gcn::Event &event A_UNUSED)
+void Window::widgetHidden(const Event &event A_UNUSED)
 {
     if (gui)
         gui->setCursorType(Cursor::CURSOR_POINTER);
@@ -1085,7 +1085,7 @@ void Window::adjustSizeToScreen()
     if (mDimension.height > screenHeight)
         mDimension.height = screenHeight;
     if (oldWidth != mDimension.width || oldHeight != mDimension.height)
-        widgetResized(gcn::Event(this));
+        widgetResized(Event(this));
 }
 
 int Window::getResizeHandles(const gcn::MouseEvent &event)

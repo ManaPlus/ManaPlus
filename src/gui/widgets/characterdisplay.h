@@ -73,7 +73,7 @@ class CharacterDisplay final : public Container,
         void setSelect(bool b)
         { mPlayerBox->setSelected(b); }
 
-        void widgetHidden(const gcn::Event &event) override final;
+        void widgetHidden(const Event &event) override final;
 
         void mouseExited(gcn::MouseEvent &event) override final;
 

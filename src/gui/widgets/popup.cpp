@@ -244,12 +244,12 @@ void Popup::hide()
     mRedraw = true;
 }
 
-void Popup::widgetResized(const gcn::Event &event A_UNUSED)
+void Popup::widgetResized(const Event &event A_UNUSED)
 {
     mRedraw = true;
 }
 
-void Popup::widgetMoved(const gcn::Event &event A_UNUSED)
+void Popup::widgetMoved(const Event &event A_UNUSED)
 {
     mRedraw = true;
 }

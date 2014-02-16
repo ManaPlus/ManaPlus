@@ -667,7 +667,7 @@ void ScrollArea::mouseExited(gcn::MouseEvent& event A_UNUSED)
     mHasMouse = false;
 }
 
-void ScrollArea::widgetResized(const gcn::Event &event A_UNUSED)
+void ScrollArea::widgetResized(const Event &event A_UNUSED)
 {
     mRedraw = true;
     const unsigned int frameSize = 2 * mFrameSize;
@@ -679,7 +679,7 @@ void ScrollArea::widgetResized(const gcn::Event &event A_UNUSED)
     }
 }
 
-void ScrollArea::widgetMoved(const gcn::Event& event A_UNUSED)
+void ScrollArea::widgetMoved(const Event& event A_UNUSED)
 {
     mRedraw = true;
 }

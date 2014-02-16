@@ -64,7 +64,7 @@
 #ifndef GCN_INPUTEVENT_HPP
 #define GCN_INPUTEVENT_HPP
 
-#include "gui/base/event.hpp"
+#include "events/event.h"
 
 namespace gcn
 {
