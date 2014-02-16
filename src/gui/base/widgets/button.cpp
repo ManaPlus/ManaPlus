@@ -67,7 +67,6 @@
 
 #include "gui/base/widgets/button.hpp"
 
-#include "gui/base/exception.hpp"
 #include "gui/base/font.hpp"
 #include "gui/base/key.hpp"
 #include "gui/base/mouseinput.hpp"

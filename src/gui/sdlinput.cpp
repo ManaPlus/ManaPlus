@@ -90,8 +90,6 @@
 #include <SDL_keyboard.h>
 #include <SDL_timer.h>
 
-#include "gui/base/exception.hpp"
-
 SDLInput::SDLInput() :
     mKeyInputQueue(),
     mMouseInputQueue(),
@@ -108,9 +106,7 @@ bool SDLInput::isKeyQueueEmpty()
 KeyInput SDLInput::dequeueKeyInput2()
 {
     if (mKeyInputQueue.empty())
-    {
-        throw GCN_EXCEPTION("The queue is empty.");
-    }
+        return KeyInput();
 
     KeyInput keyInput = mKeyInputQueue.front();
     mKeyInputQueue.pop();
@@ -128,7 +124,7 @@ gcn::MouseInput SDLInput::dequeueMouseInput()
     gcn::MouseInput mouseInput;
 
     if (mMouseInputQueue.empty())
-        throw GCN_EXCEPTION("The queue is empty.");
+        return MouseInput();
 
     mouseInput = mMouseInputQueue.front();
     mMouseInputQueue.pop();
@@ -141,7 +137,7 @@ MouseInput SDLInput::dequeueMouseInput2()
     MouseInput mouseInput;
 
     if (mMouseInputQueue.empty())
-        throw GCN_EXCEPTION("The queue is empty.");
+        return MouseInput();
 
     mouseInput = mMouseInputQueue.front();
     mMouseInputQueue.pop();

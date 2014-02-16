@@ -67,7 +67,6 @@
 
 #include "gui/base/focushandler.hpp"
 
-#include "gui/base/exception.hpp"
 #include "gui/base/widget.hpp"
 
 #include "listeners/focuslistener.h"
@@ -106,7 +105,7 @@ namespace gcn
         }
 
         if (toBeFocusedIndex < 0)
-            throw GCN_EXCEPTION("Trying to focus a none existing widget.");
+            return;
 
         Widget *const oldFocused = mFocusedWidget;
 
@@ -128,10 +127,9 @@ namespace gcn
     void FocusHandler::requestModalFocus(Widget* widget)
     {
         if (mModalFocusedWidget && mModalFocusedWidget != widget)
-            throw GCN_EXCEPTION("Another widget already has modal focus.");
+            return;
 
         mModalFocusedWidget = widget;
-
         if (mFocusedWidget && !mFocusedWidget->isModalFocused())
             focusNone();
     }
@@ -141,8 +139,7 @@ namespace gcn
         if (mModalMouseInputFocusedWidget
             && mModalMouseInputFocusedWidget != widget)
         {
-            throw GCN_EXCEPTION("Another widget already has "
-                "modal input focus.");
+            return;
         }
 
         mModalMouseInputFocusedWidget = widget;

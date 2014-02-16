@@ -67,7 +67,6 @@
 
 #include "gui/base/widgets/scrollarea.hpp"
 
-#include "gui/base/exception.hpp"
 
 #include "render/graphics.h"
 
@@ -300,8 +299,6 @@ namespace gcn
     {
         if (width > 0)
             mScrollbarWidth = width;
-        else
-            throw GCN_EXCEPTION("Width should be greater then 0.");
     }
 
     int ScrollArea::getScrollbarWidth() const
@@ -446,7 +443,7 @@ namespace gcn
                 break;
 
             default:
-                throw GCN_EXCEPTION("Horizontal scroll policy invalid.");
+                break;
         }
 
         switch (mVPolicy)
@@ -471,7 +468,7 @@ namespace gcn
                 }
                 break;
             default:
-                throw GCN_EXCEPTION("Vertical scroll policy invalid.");
+                break;
         }
     }
 
@@ -491,7 +488,7 @@ namespace gcn
     {
         const Widget *const content = getContent();
         if (widget != content)
-            throw GCN_EXCEPTION("Widget not content widget");
+            return;
 
         BasicContainer::showWidgetPart(widget, area);
 

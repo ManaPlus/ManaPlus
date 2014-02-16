@@ -67,7 +67,6 @@
 
 #include "gui/base/widgets/container.hpp"
 
-#include "gui/base/exception.hpp"
 
 #include "render/graphics.h"
 

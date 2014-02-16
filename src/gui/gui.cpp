@@ -53,8 +53,6 @@
 #include "utils/langs.h"
 #include "utils/timer.h"
 
-#include "gui/base/exception.hpp"
-
 #include "debug.h"
 
 // Guichan stuff
@@ -162,16 +160,7 @@ void Gui::postInit(Graphics *const graphics)
     if (fontFile.empty())
         fontFile = branding.getStringValue("font");
 
-    try
-    {
-        mGuiFont = new SDLFont(fontFile, fontSize);
-    }
-    catch (const gcn::Exception &e)
-    {
-        logger->error(std::string("Unable to load '").append(fontFile)
-                      .append("': ").append(e.getMessage()));
-    }
-
+    mGuiFont = new SDLFont(fontFile, fontSize);
 
     // Set particle font
     fontFile = config.getValue("particleFont", "");
@@ -190,65 +179,28 @@ void Gui::postInit(Graphics *const graphics)
     if (fontFile.empty())
         fontFile = branding.getStringValue("particleFont");
 
-    try
-    {
-        mInfoParticleFont = new SDLFont(
-            fontFile, fontSize, TTF_STYLE_BOLD);
-    }
-    catch (const gcn::Exception &e)
-    {
-        logger->error(std::string("Unable to load '").append(fontFile)
-                      .append("': ").append(e.getMessage()));
-    }
-
+    mInfoParticleFont = new SDLFont(fontFile, fontSize, TTF_STYLE_BOLD);
 
     // Set bold font
     fontFile = config.getValue("boldFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("boldFont");
 
-    try
-    {
-        boldFont = new SDLFont(fontFile, fontSize);
-    }
-    catch (const gcn::Exception &e)
-    {
-        logger->error(std::string("Unable to load '").append(fontFile)
-                      .append("': ").append(e.getMessage()));
-    }
-
+    boldFont = new SDLFont(fontFile, fontSize);
 
     // Set help font
     fontFile = config.getValue("helpFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("helpFont");
 
-    try
-    {
-        mHelpFont = new SDLFont(fontFile, fontSize);
-    }
-    catch (const gcn::Exception &e)
-    {
-        logger->error(std::string("Unable to load '").append(fontFile)
-                      .append("': ").append(e.getMessage()));
-    }
-
+    mHelpFont = new SDLFont(fontFile, fontSize);
 
     // Set secure font
     fontFile = config.getValue("secureFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("secureFont");
 
-    try
-    {
-        mSecureFont = new SDLFont(fontFile, fontSize);
-    }
-    catch (const gcn::Exception &e)
-    {
-        logger->error(std::string("Unable to load '").append(fontFile)
-                      .append("': ").append(e.getMessage()));
-    }
-
+    mSecureFont = new SDLFont(fontFile, fontSize);
 
     // Set npc font
     const int npcFontSize = config.getIntValue("npcfontSize");
@@ -268,15 +220,7 @@ void Gui::postInit(Graphics *const graphics)
     if (fontFile.empty())
         fontFile = branding.getStringValue("npcFont");
 
-    try
-    {
-        mNpcFont = new SDLFont(fontFile, npcFontSize);
-    }
-    catch (const gcn::Exception &e)
-    {
-        logger->error(std::string("Unable to load '").append(fontFile)
-                      .append("': ").append(e.getMessage()));
-    }
+    mNpcFont = new SDLFont(fontFile, npcFontSize);
 
     gcn::Widget::setGlobalFont(mGuiFont);
 
@@ -853,7 +797,6 @@ void Gui::handleMouseInput()
                 handleMouseWheelMovedUp(mouseInput);
                 break;
             default:
-                throw GCN_EXCEPTION("Unknown mouse input type.");
                 break;
         }
     }

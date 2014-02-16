@@ -68,7 +68,6 @@
 #include "gui/base/gui.hpp"
 
 #include "gui/base/basiccontainer.hpp"
-#include "gui/base/exception.hpp"
 #include "gui/base/focushandler.hpp"
 #include "gui/base/input.hpp"
 #include "gui/base/keyinput.hpp"
@@ -532,7 +531,7 @@ namespace gcn
                             (*it)->mouseClicked(mouseEvent);
                             break;
                         default:
-                            throw GCN_EXCEPTION("Unknown mouse event type.");
+                            break;
                     }
                 }
 
@@ -608,7 +607,7 @@ namespace gcn
                             (*it)->keyReleased(keyEvent);
                             break;
                         default:
-                            throw GCN_EXCEPTION("Unknown key event type.");
+                            break;
                     }
                 }
             }
@@ -641,7 +640,7 @@ namespace gcn
                     (*it)->keyReleased(keyEvent);
                     break;
                 default:
-                    throw GCN_EXCEPTION("Unknown key event type.");
+                    break;
             }
 
             if (keyEvent.isConsumed())

@@ -51,7 +51,6 @@
 
 #include "utils/timer.h"
 
-#include "gui/base/exception.hpp"
 #include "gui/base/focushandler.hpp"
 
 #include <algorithm>
@@ -549,18 +548,10 @@ bool InputManager::handleEvent(const SDL_Event &event)
             if (quitDialog || TextDialog::isActive() ||
                 NpcPostDialog::isActive())
             {
-                try
-                {
-                    if (guiInput)
-                        guiInput->pushInput(event);
-                    if (gui)
-                        gui->handleInput();
-                }
-                catch(const gcn::Exception &e)
-                {
-                    const char *const err = e.getMessage().c_str();
-                    logger->log("Warning: guichan input exception: %s", err);
-                }
+                if (guiInput)
+                    guiInput->pushInput(event);
+                if (gui)
+                    gui->handleInput();
                 return true;
             }
             break;
@@ -605,16 +596,8 @@ bool InputManager::handleEvent(const SDL_Event &event)
             break;
     }
 
-    try
-    {
-        if (guiInput)
-            guiInput->pushInput(event);
-    }
-    catch(const gcn::Exception &e)
-    {
-        const char *const err = e.getMessage().c_str();
-        logger->log("Warning: guichan input exception: %s", err);
-    }
+    if (guiInput)
+        guiInput->pushInput(event);
     if (gui)
     {
         const bool res = gui->handleInput();

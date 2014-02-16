@@ -71,7 +71,6 @@
 
 #include "gui/base/basiccontainer.hpp"
 #include "events/event.h"
-#include "gui/base/exception.hpp"
 #include "gui/base/focushandler.hpp"
 #include "gui/base/keyinput.hpp"
 #include "gui/base/mouseinput.hpp"
@@ -276,10 +275,7 @@ namespace gcn
     void Widget::requestFocus()
     {
         if (!mFocusHandler)
-        {
-            throw GCN_EXCEPTION("No focushandler set (did you add "
-                "the widget to the gui?).");
-        }
+            return;
 
         if (isFocusable())
             mFocusHandler->requestFocus(this);
@@ -521,10 +517,7 @@ namespace gcn
     void Widget::requestModalFocus()
     {
         if (!mFocusHandler)
-        {
-            throw GCN_EXCEPTION("No focushandler set (did you add "
-                "the widget to the gui?).");
-        }
+            return;
 
         mFocusHandler->requestModalFocus(this);
     }
@@ -532,10 +525,7 @@ namespace gcn
     void Widget::requestModalMouseInputFocus()
     {
         if (!mFocusHandler)
-        {
-            throw GCN_EXCEPTION("No focushandler set (did you add "
-                "the widget to the gui?).");
-        }
+            return;
 
         mFocusHandler->requestModalMouseInputFocus(this);
     }
@@ -559,10 +549,7 @@ namespace gcn
     bool Widget::isModalFocused() const
     {
         if (!mFocusHandler)
-        {
-            throw GCN_EXCEPTION("No focushandler set (did you add "
-                "the widget to the gui?).");
-        }
+            return false;
 
         if (mParent)
         {
@@ -576,10 +563,7 @@ namespace gcn
     bool Widget::isModalMouseInputFocused() const
     {
         if (!mFocusHandler)
-        {
-            throw GCN_EXCEPTION("No focushandler set (did you add "
-                "the widget to the gui?).");
-        }
+            return false;
 
         if (mParent)
         {

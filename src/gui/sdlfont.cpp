@@ -39,8 +39,6 @@
 #include "utils/stringutils.h"
 #include "utils/timer.h"
 
-#include "gui/base/exception.hpp"
-
 #include "debug.h"
 
 const unsigned int CACHE_SIZE = 256;
@@ -350,7 +348,7 @@ SDLFont::SDLFont(std::string filename,
         mSoftMode = imageHelper->useOpenGL() == RENDER_SOFTWARE;
         if (TTF_Init() == -1)
         {
-            throw GCN_EXCEPTION("Unable to initialize SDL_ttf: " +
+            logger->error("Unable to initialize SDL_ttf: " +
                 std::string(TTF_GetError()));
         }
     }
@@ -373,8 +371,8 @@ SDLFont::SDLFont(std::string filename,
         mFont = openFont(fixDirSeparators(backFile).c_str(), size);
         if (!mFont)
         {
-            throw GCN_EXCEPTION("SDLSDLFont::SDLSDLFont: " +
-                                std::string(TTF_GetError()));
+            logger->error("SDLSDLFont::SDLSDLFont: " +
+                          std::string(TTF_GetError()));
         }
     }
 

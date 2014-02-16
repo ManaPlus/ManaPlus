@@ -772,7 +772,6 @@ SET(SRCS
     gui/base/color.hpp
     listeners/deathlistener.h
     events/event.h
-    gui/base/exception.hpp
     gui/base/focushandler.hpp
     listeners/focuslistener.h
     gui/base/font.hpp
@@ -807,7 +806,6 @@ SET(SRCS
     gui/base/basiccontainer.cpp
     gui/base/cliprectangle.cpp
     gui/base/color.cpp
-    gui/base/exception.cpp
     gui/base/focushandler.cpp
     gui/base/font.cpp
     gui/base/gui.cpp

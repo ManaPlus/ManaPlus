@@ -69,7 +69,6 @@
 
 #include <algorithm>
 
-#include "gui/base/exception.hpp"
 #include "gui/base/focushandler.hpp"
 #include "gui/base/mouseinput.hpp"
 
@@ -96,8 +95,6 @@ namespace gcn
                 return;
             }
         }
-
-        throw GCN_EXCEPTION("There is no such widget in this container.");
     }
 
     void BasicContainer::moveToBottom(Widget* widget)
@@ -106,11 +103,10 @@ namespace gcn
         iter = std::find(mWidgets.begin(), mWidgets.end(), widget);
 
         if (iter == mWidgets.end())
-            throw GCN_EXCEPTION("There is no such widget in this container.");
+            return;
 
         mWidgets.erase(iter);
         mWidgets.insert(mWidgets.begin(), widget);
-//        mWidgets.push_front(widget);
     }
 
     void BasicContainer::death(const Event& event)
@@ -119,7 +115,7 @@ namespace gcn
         iter = std::find(mWidgets.begin(), mWidgets.end(), event.getSource());
 
         if (iter == mWidgets.end())
-            throw GCN_EXCEPTION("There is no such widget in this container.");
+            return;
 
         mWidgets.erase(iter);
     }
@@ -260,8 +256,6 @@ namespace gcn
                 return;
             }
         }
-
-        throw GCN_EXCEPTION("There is no such widget in this container.");
     }
 
     void BasicContainer::clear()

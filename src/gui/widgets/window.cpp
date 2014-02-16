@@ -37,7 +37,6 @@
 #include "resources/cursor.h"
 #include "resources/image.h"
 
-#include "gui/base/exception.hpp"
 #include "gui/base/focushandler.hpp"
 #include "gui/base/font.hpp"
 
@@ -92,9 +91,6 @@ Window::Window(const std::string &caption, const bool modal,
 {
     logger->log("Window::Window(\"%s\")", caption.c_str());
 
-    if (!windowContainer)
-        throw GCN_EXCEPTION("Window::Window(): no windowContainer set");
-
     windowInstances++;
 
     setFrameSize(0);
@@ -142,7 +138,8 @@ Window::Window(const std::string &caption, const bool modal,
     }
 
     // Add this window to the window container
-    windowContainer->add(this);
+    if (windowContainer)
+        windowContainer->add(this);
 
     if (mModal)
     {

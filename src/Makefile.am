@@ -28,7 +28,6 @@ endif
 dyecmd_CXXFLAGS =
 dyecmd_SOURCES = gui/base/cliprectangle.cpp \
 	      gui/base/color.cpp \
-	      gui/base/exception.cpp \
 	      gui/base/font.cpp \
 	      gui/base/rectangle.cpp \
 	      gui/base/widget.cpp \
@@ -36,7 +35,6 @@ dyecmd_SOURCES = gui/base/cliprectangle.cpp \
 	      gui/base/cliprectangle.hpp \
 	      gui/base/color.hpp \
 	      events/event.h \
-	      gui/base/exception.hpp \
 	      gui/base/font.hpp \
 	      gui/base/rectangle.hpp \
 	      gui/base/widget.hpp
@@ -161,7 +159,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/color.hpp \
 	      listeners/deathlistener.h \
 	      events/event.h \
-	      gui/base/exception.hpp \
 	      gui/base/focushandler.hpp \
 	      listeners/focuslistener.h \
 	      gui/base/font.hpp \
@@ -197,7 +194,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/basiccontainer.cpp \
 	      gui/base/cliprectangle.cpp \
 	      gui/base/color.cpp \
-	      gui/base/exception.cpp \
 	      gui/base/focushandler.cpp \
 	      gui/base/font.cpp \
 	      gui/base/gui.cpp \

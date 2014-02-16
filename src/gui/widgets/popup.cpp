@@ -27,8 +27,6 @@
 
 #include "gui/viewport.h"
 
-#include "gui/base/exception.hpp"
-
 #include "debug.h"
 
 Popup::Popup(const std::string &name,
@@ -48,9 +46,6 @@ Popup::Popup(const std::string &name,
 {
     logger->log("Popup::Popup(\"%s\")", name.c_str());
 
-    if (!windowContainer)
-        throw GCN_EXCEPTION("Popup::Popup(): no windowContainer set");
-
     addWidgetListener(this);
 
     if (skin == "")
@@ -67,7 +62,8 @@ Popup::Popup(const std::string &name,
         }
     }
 
-    windowContainer->add(this);
+    if (windowContainer)
+        windowContainer->add(this);
 
     // Popups are invisible by default
     setVisible(false);
