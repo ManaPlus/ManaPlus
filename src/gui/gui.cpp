@@ -419,7 +419,7 @@ bool Gui::handleKeyInput2()
             // change focus.
             if (!keyEventConsumed && mTabbing && keyInput.getActionId()
                 == static_cast<int>(Input::KEY_GUI_TAB)
-                && keyInput.getType() == gcn::KeyInput::PRESSED)
+                && keyInput.getType() == KeyInput::PRESSED)
             {
                 if (keyInput.isShiftPressed())
                     mFocusHandler->tabPrevious();

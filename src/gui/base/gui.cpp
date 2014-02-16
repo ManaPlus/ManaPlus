@@ -70,9 +70,10 @@
 #include "gui/base/basiccontainer.hpp"
 #include "gui/base/focushandler.hpp"
 #include "gui/base/input.hpp"
-#include "gui/base/keyinput.hpp"
 #include "gui/base/mouseinput.hpp"
 #include "gui/base/widget.hpp"
+
+#include "input/keyinput.h"
 
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"

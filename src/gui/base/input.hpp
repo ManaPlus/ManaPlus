@@ -66,9 +66,10 @@
 
 #include "localconsts.h"
 
+class KeyInput;
+
 namespace gcn
 {
-    class KeyInput;
     class MouseInput;
 
     /**

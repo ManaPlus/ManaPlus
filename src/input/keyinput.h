@@ -18,41 +18,226 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*      _______   __   __   __   ______   __   __   _______   __   __
+ *     / _____/\ / /\ / /\ / /\ / ____/\ / /\ / /\ / ___  /\ /  |\/ /\
+ *    / /\____\// / // / // / // /\___\// /_// / // /\_/ / // , |/ / /
+ *   / / /__   / / // / // / // / /    / ___  / // ___  / // /| ' / /
+ *  / /_// /\ / /_// / // / // /_/_   / / // / // /\_/ / // / |  / /
+ * /______/ //______/ //_/ //_____/\ /_/ //_/ //_/ //_/ //_/ /|_/ /
+ * \______\/ \______\/ \_\/ \_____\/ \_\/ \_\/ \_\/ \_\/ \_\/ \_\/
+ *
+ * Copyright (c) 2004 - 2008 Olof Naessén and Per Larsson
+ *
+ *
+ * Per Larsson a.k.a finalman
+ * Olof Naessén a.k.a jansem/yakslem
+ *
+ * Visit: http://guichan.sourceforge.net
+ *
+ * License: (BSD)
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ * 3. Neither the name of Guichan nor the names of its contributors may
+ *    be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
 #ifndef INPUT_KEYINPUT_H
 #define INPUT_KEYINPUT_H
 
-#include "gui/base/keyinput.hpp"
+#include "gui/base/key.hpp"
 
 #include <string>
 
 #include "localconsts.h"
 
-class KeyInput final : public gcn::KeyInput
+class KeyInput final
 {
     public:
-        KeyInput();
+        KeyInput() :
+            mKey(0),
+            mType(0),
+#ifdef USE_SDL2
+            mText(),
+#endif
+            mActionId(-2),
+            mShiftPressed(false),
+            mControlPressed(false),
+            mAltPressed(false),
+            mMetaPressed(false),
+            mNumericPad(false)
+        { }
 
-        ~KeyInput();
+        ~KeyInput()
+        { }
+
+        /**
+         * Key input types. This enum corresponds to the enum with event
+         * types on KeyEvent for easy mapping.
+         */
+        enum
+        {
+            PRESSED = 0,
+            RELEASED
+        };
+
+        void setType(unsigned int type)
+        {
+            mType = type;
+        }
+
+        int getType() const
+        {
+            return mType;
+        }
+
+        void setKey(const gcn::Key& key)
+        {
+            mKey = key;
+        }
+
+        const gcn::Key& getKey() const
+        {
+            return mKey;
+        }
+
+        bool isShiftPressed() const
+        {
+            return mShiftPressed;
+        }
+
+        void setShiftPressed(bool pressed)
+        {
+            mShiftPressed = pressed;
+        }
+
+        bool isControlPressed() const
+        {
+            return mControlPressed;
+        }
+
+        void setControlPressed(bool pressed)
+        {
+            mControlPressed = pressed;
+        }
+
+        bool isAltPressed() const
+        {
+            return mAltPressed;
+        }
+
+        void setAltPressed(bool pressed)
+        {
+            mAltPressed = pressed;
+        }
+
+        bool isMetaPressed() const
+        {
+            return mMetaPressed;
+        }
+
+        void setMetaPressed(bool pressed)
+        {
+            mMetaPressed = pressed;
+        }
+
+        bool isNumericPad() const
+        {
+            return mNumericPad;
+        }
+
+        void setNumericPad(bool numpad)
+        {
+            mNumericPad = numpad;
+        }
 
         void setActionId(const int n)
-        { mActionId = n; }
+        {
+            mActionId = n;
+        }
 
         int getActionId() const A_WARN_UNUSED
-        { return mActionId; }
+        {
+            return mActionId;
+        }
 
 #ifdef USE_SDL2
         void setText(const std::string &text)
-        { mText = text; }
+        {
+            mText = text;
+        }
 
         std::string getText() const
-        { return mText; }
+        {
+            return mText;
+        }
 #endif
 
     protected:
-        int mActionId;
+        /**
+         * Holds the key of the key input.
+         */
+        gcn::Key mKey;
+
+        /**
+         * Holds the type of the key input.
+         */
+        unsigned int mType;
+
 #ifdef USE_SDL2
         std::string mText;
 #endif
+
+        int mActionId;
+
+        /**
+         * True if shift was pressed at the same time as the key,
+         * false otherwise.
+         */
+        bool mShiftPressed;
+
+        /**
+         * True if control was pressed at the same time as the key,
+         * false otherwise.
+         */
+        bool mControlPressed;
+
+        /**
+         * True if alt was pressed at the same time as the key,
+         * false otherwise.
+         */
+        bool mAltPressed;
+
+        /**
+         * True if meta was pressed at the same time as the key,
+         * false otherwise.
+         */
+        bool mMetaPressed;
+
+        /**
+         * True if the numeric pad was used when the key was pressed,
+         * false otherwise.
+         */
+        bool mNumericPad;
 };
 
 #endif  // INPUT_KEYINPUT_H

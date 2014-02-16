@@ -69,11 +69,13 @@
 
 #include "events/actionevent.h"
 
-#include "gui/base/basiccontainer.hpp"
 #include "events/event.h"
+
+#include "gui/base/basiccontainer.hpp"
 #include "gui/base/focushandler.hpp"
-#include "gui/base/keyinput.hpp"
 #include "gui/base/mouseinput.hpp"
+
+#include "input/keyinput.h"
 
 #include "listeners/actionlistener.h"
 #include "listeners/deathlistener.h"

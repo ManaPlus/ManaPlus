@@ -85,7 +85,6 @@
 #include <SDL_events.h>
 
 #include "gui/base/input.hpp"
-#include "gui/base/keyinput.hpp"
 #include "gui/base/mouseinput.hpp"
 
 #include <queue>
@@ -176,8 +175,8 @@ public:
 
     KeyInput dequeueKeyInput2() A_WARN_UNUSED;
 
-    gcn::KeyInput dequeueKeyInput() override final A_WARN_UNUSED
-    { return gcn::KeyInput(); }
+    KeyInput dequeueKeyInput() override final A_WARN_UNUSED
+    { return KeyInput(); }
 
     // Inherited from Input
 
