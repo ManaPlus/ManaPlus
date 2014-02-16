@@ -45,6 +45,7 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/net/eathena/gui/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/net/tmwa/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/net/tmwa/gui/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/listeners/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/particle/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/render/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/*.cpp) \
