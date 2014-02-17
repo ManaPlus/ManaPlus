@@ -39,6 +39,7 @@
 
 #include "input/inputmanager.h"
 
+#include "gui/focushandler.h"
 #include "gui/font.h"
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"
@@ -68,8 +69,6 @@
 #include "utils/gettext.h"
 
 #include "resources/resourcemanager.h"
-
-#include "gui/base/focushandler.hpp"
 
 #include <sstream>
 

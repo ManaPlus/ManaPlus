@@ -90,7 +90,7 @@ class Gui final : public gcn::Gui
          */
         void videoResized() const;
 
-        gcn::FocusHandler *getFocusHandler() const A_WARN_UNUSED
+        FocusHandler *getFocusHandler() const A_WARN_UNUSED
         { return mFocusHandler; }
 
         /**

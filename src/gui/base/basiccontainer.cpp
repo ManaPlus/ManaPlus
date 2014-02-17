@@ -69,7 +69,8 @@
 
 #include <algorithm>
 
-#include "gui/base/focushandler.hpp"
+#include "gui/focushandler.h"
+
 #include "input/mouseinput.h"
 
 #include "render/graphics.h"

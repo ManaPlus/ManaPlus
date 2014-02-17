@@ -29,13 +29,11 @@ dyecmd_CXXFLAGS =
 dyecmd_SOURCES = gui/base/cliprectangle.cpp \
 	      gui/base/color.cpp \
 	      gui/base/rectangle.cpp \
-	      gui/base/widget.cpp \
 	      events/actionevent.h \
 	      gui/base/cliprectangle.hpp \
 	      gui/base/color.hpp \
 	      events/event.h \
-	      gui/base/rectangle.hpp \
-	      gui/base/widget.hpp
+	      gui/base/rectangle.hpp
 
 dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      animatedsprite.cpp \
@@ -157,7 +155,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/color.hpp \
 	      listeners/deathlistener.h \
 	      events/event.h \
-	      gui/base/focushandler.hpp \
 	      listeners/focuslistener.h \
 	      render/graphics.h \
 	      gui/base/gui.hpp \
@@ -188,7 +185,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/basiccontainer.cpp \
 	      gui/base/cliprectangle.cpp \
 	      gui/base/color.cpp \
-	      gui/base/focushandler.cpp \
 	      gui/base/gui.cpp \
 	      input/key.cpp \
 	      gui/base/rectangle.cpp \

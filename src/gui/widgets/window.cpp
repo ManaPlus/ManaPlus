@@ -29,6 +29,7 @@
 #include "soundconsts.h"
 #include "soundmanager.h"
 
+#include "gui/focushandler.h"
 #include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/viewport.h"
@@ -37,8 +38,6 @@
 
 #include "resources/cursor.h"
 #include "resources/image.h"
-
-#include "gui/base/focushandler.hpp"
 
 #include "debug.h"
 

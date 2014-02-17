@@ -75,6 +75,7 @@
 
 class ActionListener;
 class DeathListener;
+class FocusHandler;
 class FocusListener;
 class Font;
 class Graphics;
@@ -87,7 +88,6 @@ class WidgetListener;
 namespace gcn
 {
     class BasicContainer;
-    class FocusHandler;
 
     /**
      * Abstract class for widgets of Guichan. It contains basic functions 

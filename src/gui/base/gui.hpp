@@ -72,13 +72,13 @@
 
 #include "input/mouseinput.h"
 
+class FocusHandler;
 class Graphics;
 class KeyListener;
 class SDLInput;
 
 namespace gcn
 {
-    class FocusHandler;
     class Widget;
 
     // The following comment will appear in the doxygen main page.

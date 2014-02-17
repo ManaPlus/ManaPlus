@@ -28,10 +28,10 @@
 
 #include "input/keydata.h"
 
+#include "gui/focushandler.h"
 #include "gui/font.h"
 #include "gui/gui.h"
 
-#include "gui/base/focushandler.hpp"
 #include "gui/base/listmodel.hpp"
 
 #include "render/graphics.h"

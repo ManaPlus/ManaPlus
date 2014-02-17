@@ -72,7 +72,8 @@
 #include "events/event.h"
 
 #include "gui/base/basiccontainer.hpp"
-#include "gui/base/focushandler.hpp"
+
+#include "gui/focushandler.h"
 
 #include "input/keyinput.h"
 #include "input/mouseinput.h"

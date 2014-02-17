@@ -122,7 +122,7 @@ public:
 
     void moveToBottom(gcn::Widget *child) override final;
 
-    void _setFocusHandler(gcn::FocusHandler* focusHandler) override final;
+    void _setFocusHandler(FocusHandler* focusHandler) override final;
 
     // Inherited from KeyListener
     void keyPressed(KeyEvent& keyEvent) override final;

@@ -51,7 +51,7 @@
 
 #include "utils/timer.h"
 
-#include "gui/base/focushandler.hpp"
+#include "gui/focushandler.h"
 
 #include <algorithm>
 

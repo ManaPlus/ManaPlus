@@ -588,7 +588,7 @@ int GuiTable::getColumnForX(int x) const
         return column;
 }
 
-void GuiTable::_setFocusHandler(gcn::FocusHandler* focusHandler)
+void GuiTable::_setFocusHandler(FocusHandler* focusHandler)
 {
 // add check for focusHandler. may be need remove it?
 

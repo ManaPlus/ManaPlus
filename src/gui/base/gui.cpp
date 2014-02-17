@@ -68,9 +68,9 @@
 #include "gui/base/gui.hpp"
 
 #include "gui/base/basiccontainer.hpp"
-#include "gui/base/focushandler.hpp"
 #include "gui/base/widget.hpp"
 
+#include "gui/focushandler.h"
 #include "gui/sdlinput.h"
 
 #include "input/keyinput.h"
