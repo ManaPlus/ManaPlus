@@ -55,8 +55,7 @@ class DropDown final : public ActionListener,
                        public KeyListener,
                        public MouseListener,
                        public FocusListener,
-                       public SelectionListener,
-                       public Widget2
+                       public SelectionListener
 {
     public:
         /**

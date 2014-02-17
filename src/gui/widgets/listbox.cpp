@@ -43,8 +43,7 @@ float ListBox::mAlpha = 1.0;
 ListBox::ListBox(const Widget2 *const widget,
                  gcn::ListModel *const listModel,
                  const std::string &skin) :
-    gcn::ListBox(listModel),
-    Widget2(widget),
+    gcn::ListBox(widget, listModel),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mForegroundSelectedColor(getThemeColor(Theme::LISTBOX_SELECTED)),
     mForegroundSelectedColor2(getThemeColor(Theme::LISTBOX_SELECTED_OUTLINE)),

@@ -53,7 +53,8 @@ HelpWindow::HelpWindow() :
     mDYKButton(new Button(this, _("Did you know..."), "DYK", this)),
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
         "browserbox.xml")),
-    mScrollArea(new ScrollArea(mBrowserBox, true, "help_background.xml")),
+    mScrollArea(new ScrollArea(this, mBrowserBox,
+        true, "help_background.xml")),
     mTagFileMap()
 {
     setMinWidth(300);

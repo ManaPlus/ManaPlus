@@ -26,7 +26,8 @@
 class LangTab final : public ChatTab
 {
     public:
-        LangTab(const Widget2 *const widget, const std::string &lang);
+        LangTab(const Widget2 *const widget,
+                const std::string &lang);
 
         A_DELETE_COPY(LangTab)
 

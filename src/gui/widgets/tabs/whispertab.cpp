@@ -34,7 +34,8 @@
 
 #include "debug.h"
 
-WhisperTab::WhisperTab(const Widget2 *const widget, const std::string &nick) :
+WhisperTab::WhisperTab(const Widget2 *const widget,
+                       const std::string &nick) :
     ChatTab(widget, nick, ""),
     mNick(nick)
 {

@@ -75,8 +75,8 @@
 namespace gcn
 {
 
-    Container::Container() :
-        BasicContainer(),
+    Container::Container(const Widget2 *const widget) :
+        BasicContainer(widget),
         mOpaque(true)
     {
     }

@@ -29,11 +29,13 @@ class TabStrip final : public WidgetGroup
 {
     public:
         TabStrip(const Widget2 *const widget,
-                 const std::string &group, const int height,
+                 const std::string &group,
+                 const int height,
                  const int spacing = 0);
 
         TabStrip(const Widget2 *const widget,
-                 const int height, const int spacing = 0);
+                 const int height,
+                 const int spacing = 0);
 
         A_DELETE_COPY(TabStrip)
 

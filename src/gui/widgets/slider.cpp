@@ -45,8 +45,7 @@ static std::string const data[2] =
 
 Slider::Slider(Widget2 *const widget,
                const double scaleEnd) :
-    gcn::Slider(scaleEnd),
-    Widget2(widget),
+    gcn::Slider(widget, scaleEnd),
     mVertexes(new ImageCollection),
     mHasMouse(false),
     mRedraw(true)
@@ -57,8 +56,7 @@ Slider::Slider(Widget2 *const widget,
 Slider::Slider(Widget2 *const widget,
                const double scaleStart,
                const double scaleEnd) :
-    gcn::Slider(scaleStart, scaleEnd),
-    Widget2(widget),
+    gcn::Slider(widget, scaleStart, scaleEnd),
     mVertexes(new ImageCollection),
     mHasMouse(false),
     mRedraw(true)

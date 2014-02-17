@@ -96,7 +96,7 @@ namespace gcn
         /**
          * Constructor.
          */
-        Button();
+        explicit Button(const Widget2 *const widget);
 
         /**
          * Constructor. The button will be automatically resized
@@ -104,7 +104,8 @@ namespace gcn
          *
          * @param caption The caption of the button.
          */
-        explicit Button(const std::string& caption);
+        Button(const Widget2 *const widget,
+               const std::string& caption);
 
         A_DELETE_COPY(Button)
 

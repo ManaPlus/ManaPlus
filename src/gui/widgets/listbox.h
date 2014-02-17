@@ -38,8 +38,7 @@ class Skin;
  *
  * \ingroup GUI
  */
-class ListBox : public gcn::ListBox,
-                public Widget2
+class ListBox : public gcn::ListBox
 {
     public:
         /**

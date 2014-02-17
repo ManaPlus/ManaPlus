@@ -99,7 +99,8 @@ namespace gcn
          *
          * @param scaleEnd The end value of the slider scale.
          */
-        explicit Slider(const double scaleEnd = 1.0);
+        explicit Slider(const Widget2 *const widget,
+                        const double scaleEnd = 1.0);
 
         /**
          * Constructor.
@@ -107,7 +108,9 @@ namespace gcn
          * @param scaleStart The start value of the slider scale.
          * @param scaleEnd The end value of the slider scale.
          */
-        Slider(const double scaleStart, const double scaleEnd);
+        Slider(const Widget2 *const widget,
+               const double scaleStart,
+               const double scaleEnd);
 
         A_DELETE_COPY(Slider)
 

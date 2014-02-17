@@ -54,7 +54,8 @@ class WidgetGroup : public Container,
 
     protected:
         WidgetGroup(const Widget2 *const widget,
-                    const std::string &group, const int height,
+                    const std::string &group,
+                    const int height,
                     const int spacing);
 
         int mSpacing;

@@ -78,15 +78,14 @@
 #include "debug.h"
 
 TabbedArea::TabbedArea(const Widget2 *const widget) :
-    Widget2(widget),
     ActionListener(),
-    gcn::BasicContainer(),
+    gcn::BasicContainer(widget),
     KeyListener(),
     MouseListener(),
     WidgetListener(),
     mSelectedTab(nullptr),
-    mTabContainer(new gcn::Container()),
-    mWidgetContainer(new gcn::Container()),
+    mTabContainer(new gcn::Container(widget)),
+    mWidgetContainer(new gcn::Container(widget)),
     mTabsToDelete(),
     mTabs(),
     mTabsWidth(0),

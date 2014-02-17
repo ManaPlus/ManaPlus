@@ -31,7 +31,8 @@ namespace Ea
 /**
  * A tab for a guild chat channel.
  */
-class GuildTab : public ChatTab, public ConfigListener
+class GuildTab : public ChatTab,
+                 public ConfigListener
 {
     public:
         explicit GuildTab(const Widget2 *const widget);

@@ -89,7 +89,7 @@ namespace gcn
          *
          * @see setOpaque, isOpaque
          */
-        Container();
+        Container(const Widget2 *const widget);
 
         /**
          * Destructor.

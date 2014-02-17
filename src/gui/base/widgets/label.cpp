@@ -75,15 +75,16 @@
 
 namespace gcn
 {
-    Label::Label() :
-        gcn::Widget(),
+    Label::Label(const Widget2 *const widget) :
+        gcn::Widget(widget),
         mCaption(),
         mAlignment(Graphics::LEFT)
     {
     }
 
-    Label::Label(const std::string& caption) :
-        gcn::Widget(),
+    Label::Label(const Widget2 *const widget,
+                 const std::string& caption) :
+        gcn::Widget(widget),
         mCaption(caption),
         mAlignment(Graphics::LEFT)
     {

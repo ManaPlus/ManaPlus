@@ -190,7 +190,8 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
                  "updateprogressbar.xml", "updateprogressbar_fill.xml")),
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
         "browserbox.xml")),
-    mScrollArea(new ScrollArea(mBrowserBox, true, "update_background.xml")),
+    mScrollArea(new ScrollArea(this, mBrowserBox,
+        true, "update_background.xml")),
     mUpdateServerPath(mUpdateHost)
 {
     setWindowName("UpdaterWindow");

@@ -80,8 +80,8 @@
 
 namespace gcn
 {
-    Button::Button() :
-        gcn::Widget(),
+    Button::Button(const Widget2 *const widget) :
+        gcn::Widget(widget),
         MouseListener(),
         KeyListener(),
         FocusListener(),
@@ -101,8 +101,9 @@ namespace gcn
         addFocusListener(this);
     }
 
-    Button::Button(const std::string& caption) :
-        gcn::Widget(),
+    Button::Button(const Widget2 *const widget,
+                   const std::string& caption) :
+        gcn::Widget(widget),
         MouseListener(),
         KeyListener(),
         FocusListener(),

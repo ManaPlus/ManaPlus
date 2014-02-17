@@ -83,8 +83,8 @@
 
 namespace gcn
 {
-    ListBox::ListBox() :
-        gcn::Widget(),
+    ListBox::ListBox(const Widget2 *const widget) :
+        gcn::Widget(widget),
         MouseListener(),
         KeyListener(),
         mSelected(-1),
@@ -99,8 +99,9 @@ namespace gcn
         addKeyListener(this);
     }
 
-    ListBox::ListBox(ListModel *listModel) :
-        gcn::Widget(),
+    ListBox::ListBox(const Widget2 *const widget,
+                     ListModel *listModel) :
+        gcn::Widget(widget),
         MouseListener(),
         KeyListener(),
         mSelected(-1),

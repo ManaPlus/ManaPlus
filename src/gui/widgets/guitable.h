@@ -47,7 +47,6 @@ class GuiTableActionListener;
  * \ingroup GUI
  */
 class GuiTable final : public gcn::Widget,
-                       public Widget2,
                        public MouseListener,
                        public KeyListener,
                        public TableModelListener

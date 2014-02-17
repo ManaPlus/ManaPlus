@@ -81,7 +81,7 @@ namespace gcn
         /**
          * Constructor.
          */
-        Label();
+        explicit Label(const Widget2 *const widget);
 
         /**
          * Constructor. The label will be automatically resized
@@ -89,7 +89,8 @@ namespace gcn
          *
          * @param caption The caption of the label.
          */
-        explicit Label(const std::string& caption);
+        Label(const Widget2 *const widget,
+              const std::string& caption);
 
         A_DELETE_COPY(Label)
 

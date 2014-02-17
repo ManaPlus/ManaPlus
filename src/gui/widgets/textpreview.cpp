@@ -35,8 +35,7 @@ Skin *TextPreview::mSkin = nullptr;
 
 TextPreview::TextPreview(const Widget2 *const widget,
                          const std::string &text) :
-    gcn::Widget(),
-    Widget2(widget),
+    gcn::Widget(widget),
     mFont(gui->getFont()),
     mText(text),
     mTextColor(&getThemeColor(Theme::TEXT)),

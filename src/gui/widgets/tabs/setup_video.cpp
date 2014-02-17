@@ -224,7 +224,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     // TRANSLATORS: video settings tab name
     setName(_("Video"));
 
-    ScrollArea *const scrollArea = new ScrollArea(mModeList,
+    ScrollArea *const scrollArea = new ScrollArea(this, mModeList,
         true, "setup_video_background.xml");
     scrollArea->setWidth(150);
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);

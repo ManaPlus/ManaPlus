@@ -77,8 +77,8 @@
 
 namespace gcn
 {
-    Window::Window() :
-        Container(),
+    Window::Window(const Widget2 *const widget) :
+        Container(widget),
         MouseListener(),
         mCaption(),
         mAlignment(Graphics::CENTER),
@@ -94,8 +94,9 @@ namespace gcn
         addMouseListener(this);
     }
 
-    Window::Window(const std::string& caption) :
-        Container(),
+    Window::Window(const Widget2 *const widget,
+                   const std::string& caption) :
+        Container(widget),
         MouseListener(),
         mCaption(caption),
         mAlignment(Graphics::CENTER),

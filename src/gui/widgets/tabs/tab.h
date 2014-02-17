@@ -84,7 +84,6 @@ class TabbedArea;
  * A tab, the same as the Guichan tab in 0.8, but extended
  */
 class Tab : public gcn::BasicContainer,
-            public Widget2,
             public MouseListener,
             public WidgetListener
 {

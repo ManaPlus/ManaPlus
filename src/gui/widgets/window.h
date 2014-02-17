@@ -47,7 +47,6 @@ class WindowContainer;
  * \ingroup GUI
  */
 class Window : public gcn::Window,
-               public Widget2,
                private WidgetListener
 {
     public:

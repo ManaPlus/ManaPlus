@@ -74,7 +74,7 @@ void NpcPostDialog::postInit()
     mText->setEditable(true);
 
     // create scroll box for letter text
-    ScrollArea *const scrollArea = new ScrollArea(mText);
+    ScrollArea *const scrollArea = new ScrollArea(this, mText);
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     scrollArea->setDimension(gcn::Rectangle(
                 5, mSender->getHeight() + 5,

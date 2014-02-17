@@ -126,11 +126,11 @@ QuestsWindow::QuestsWindow() :
     mQuestsModel(new QuestsModel),
     mQuestsListBox(new ExtendedListBox(this,
         mQuestsModel, "extendedlistbox.xml")),
-    mQuestScrollArea(new ScrollArea(mQuestsListBox,
+    mQuestScrollArea(new ScrollArea(this, mQuestsListBox,
         getOptionBool("showlistbackground"), "quests_list_background.xml")),
     mItemLinkHandler(new ItemLinkHandler),
     mText(new BrowserBox(this, BrowserBox::AUTO_WRAP, true, "browserbox.xml")),
-    mTextScrollArea(new ScrollArea(mText,
+    mTextScrollArea(new ScrollArea(this, mText,
         getOptionBool("showtextbackground"), "quests_text_background.xml")),
     // TRANSLATORS: quests window button
     mCloseButton(new Button(this, _("Close"), "close", this)),

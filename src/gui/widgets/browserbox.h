@@ -103,7 +103,6 @@ class LinePart final
  * parent conteiner.
  */
 class BrowserBox final : public gcn::Widget,
-                         public Widget2,
                          public MouseListener
 {
     public:

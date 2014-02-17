@@ -44,27 +44,18 @@ class ImageCollection;
  * \ingroup GUI
  */
 class ScrollArea final : public gcn::ScrollArea,
-                         public Widget2,
                          public WidgetListener
 {
     public:
-        /**
-         * Constructor that takes no content. Needed for use with the DropDown
-         * class.
-         */
-        explicit ScrollArea(Widget2 *const widget,
-                            const bool opaque = true,
-                            const std::string &skin = "");
-
         /**
          * Constructor.
          *
          * @param content the initial content to show in the scroll area
          */
-        explicit ScrollArea(Widget2 *const widget2,
-                            gcn::Widget *const widget,
-                            const bool opaque = true,
-                            const std::string &skin = "");
+        ScrollArea(Widget2 *const widget2,
+                   gcn::Widget *const widget,
+                   const bool opaque = true,
+                   const std::string &skin = "");
 
         A_DELETE_COPY(ScrollArea)
 

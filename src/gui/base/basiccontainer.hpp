@@ -85,7 +85,9 @@ namespace gcn
                            public DeathListener
     {
     public:
-        BasicContainer() :
+        BasicContainer(const Widget2 *const widget) :
+            Widget(widget),
+            DeathListener(),
             mWidgets()
         { }
 

@@ -173,7 +173,8 @@ class SocialGuildTab final : public SocialTab, public ActionListener
 {
 public:
     SocialGuildTab(const Widget2 *const widget,
-                   Guild *const guild, const bool showBackground) :
+                   Guild *const guild,
+                   const bool showBackground) :
         SocialTab(widget),
         ActionListener(),
         mGuild(guild)
@@ -191,7 +192,7 @@ public:
 
         mList = new AvatarListBox(this, guild);
         mList->postInit();
-        mScroll = new ScrollArea(mList, showBackground,
+        mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
@@ -308,7 +309,8 @@ private:
 class SocialGuildTab2 final : public SocialTab, public ActionListener
 {
 public:
-    SocialGuildTab2(const Widget2 *const widget, Guild *const guild,
+    SocialGuildTab2(const Widget2 *const widget,
+                    Guild *const guild,
                     const bool showBackground) :
         SocialTab(widget),
         ActionListener()
@@ -326,7 +328,7 @@ public:
 
         mList = new AvatarListBox(this, guild);
         mList->postInit();
-        mScroll = new ScrollArea(mList, showBackground,
+        mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
@@ -376,7 +378,8 @@ class SocialPartyTab final : public SocialTab, public ActionListener
 {
 public:
     SocialPartyTab(const Widget2 *const widget,
-                   Party *const party, const bool showBackground) :
+                   Party *const party,
+                   const bool showBackground) :
         SocialTab(widget),
         ActionListener(),
         mParty(party)
@@ -394,7 +397,7 @@ public:
 
         mList = new AvatarListBox(this, party);
         mList->postInit();
-        mScroll = new ScrollArea(mList, showBackground,
+        mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
@@ -538,13 +541,14 @@ class SocialPlayersTab final : public SocialTab
 {
 public:
     SocialPlayersTab(const Widget2 *const widget,
-                     std::string name, const bool showBackground) :
+                     std::string name,
+                     const bool showBackground) :
         SocialTab(widget),
         mBeings(new BeingsListModal)
     {
         mList = new AvatarListBox(this, mBeings);
         mList->postInit();
-        mScroll = new ScrollArea(mList, showBackground,
+        mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
@@ -710,7 +714,7 @@ public:
     {
         mList = new AvatarListBox(this, mBeings);
         mList->postInit();
-        mScroll = new ScrollArea(mList, showBackground,
+        mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
@@ -1039,7 +1043,7 @@ public:
     {
         mList = new AvatarListBox(this, mBeings);
         mList->postInit();
-        mScroll = new ScrollArea(mList, showBackground,
+        mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
@@ -1086,7 +1090,7 @@ public:
     {
         mList = new AvatarListBox(this, mBeings);
         mList->postInit();
-        mScroll = new ScrollArea(mList, showBackground,
+        mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
@@ -1126,13 +1130,14 @@ class SocialFriendsTab final : public SocialTab
 {
 public:
     SocialFriendsTab(const Widget2 *const widget,
-                     std::string name, const bool showBackground) :
+                     std::string name,
+                     const bool showBackground) :
         SocialTab(widget),
         mBeings(new BeingsListModal)
     {
         mList = new AvatarListBox(this, mBeings);
         mList->postInit();
-        mScroll = new ScrollArea(mList, showBackground,
+        mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);

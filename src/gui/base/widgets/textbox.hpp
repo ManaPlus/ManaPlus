@@ -87,14 +87,15 @@ namespace gcn
         /**
          * Constructor.
          */
-        TextBox();
+        explicit TextBox(const Widget2 *const widget);
 
         /**
          * Constructor.
          *
          * @param text The default text of the text box.
          */
-        explicit TextBox(const std::string& text);
+        TextBox(const Widget2 *const widget,
+                const std::string& text);
 
         A_DELETE_COPY(TextBox)
 

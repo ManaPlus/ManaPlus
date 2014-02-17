@@ -51,7 +51,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
     ActionListener(),
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
         "browserbox.xml")),
-    mScrollArea(new ScrollArea(mBrowserBox,
+    mScrollArea(new ScrollArea(this, mBrowserBox,
         true, "didyouknow_background.xml")),
     // TRANSLATORS: did you know window button
     mButtonPrev(new Button(this, _("< Previous"), "prev", this)),

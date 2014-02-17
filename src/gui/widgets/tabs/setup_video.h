@@ -37,7 +37,8 @@ class OpenGLListModel;
 class Slider;
 class TextDialog;
 
-class Setup_Video final : public SetupTab, public KeyListener
+class Setup_Video final : public SetupTab,
+                          public KeyListener
 {
     public:
         explicit Setup_Video(const Widget2 *const widget);

@@ -47,7 +47,6 @@ class SelectionListener;
  * \ingroup GUI
  */
 class ItemContainer final : public gcn::Widget,
-                            public Widget2,
                             public KeyListener,
                             public MouseListener,
                             public WidgetListener

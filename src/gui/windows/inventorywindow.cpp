@@ -182,8 +182,8 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
 
     mItems->addSelectionListener(this);
 
-    gcn::ScrollArea *const invenScroll = new ScrollArea(
-        mItems, getOptionBool("showbackground"), "inventory_background.xml");
+    gcn::ScrollArea *const invenScroll = new ScrollArea(this, mItems,
+        getOptionBool("showbackground"), "inventory_background.xml");
     invenScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     const int size = config.getIntValue("fontSize");

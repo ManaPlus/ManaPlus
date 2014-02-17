@@ -159,9 +159,9 @@ StatusWindow::StatusWindow() :
     mJobLabel(nullptr),
     mJobBar(nullptr),
     mAttrCont(new VertContainer(this, 32)),
-    mAttrScroll(new ScrollArea(mAttrCont, false)),
+    mAttrScroll(new ScrollArea(this, mAttrCont, false)),
     mDAttrCont(new VertContainer(this, 32)),
-    mDAttrScroll(new ScrollArea(mDAttrCont, false)),
+    mDAttrScroll(new ScrollArea(this, mDAttrCont, false)),
     mCharacterPointsLabel(new Label(this, "C")),
     mCorrectionPointsLabel(nullptr),
     // TRANSLATORS: status window button

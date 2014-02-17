@@ -82,7 +82,7 @@ namespace gcn
         /**
          * Constructor.
          */
-        Window();
+        explicit Window(const Widget2 *const widget);
 
         /**
          * Constructor. The window will be automatically resized in height
@@ -90,7 +90,8 @@ namespace gcn
          *
          * @param caption the caption of the window.
          */
-        explicit Window(const std::string& caption);
+        Window(const Widget2 *const widget,
+               const std::string& caption);
 
         A_DELETE_COPY(Window)
 

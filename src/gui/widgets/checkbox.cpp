@@ -39,11 +39,11 @@ Skin *CheckBox::mSkin = nullptr;
 float CheckBox::mAlpha = 1.0;
 
 CheckBox::CheckBox(const Widget2 *const widget,
-                   const std::string &restrict caption, const bool selected,
+                   const std::string &restrict caption,
+                   const bool selected,
                    ActionListener *const listener,
                    const std::string &restrict eventId) :
-    gcn::CheckBox(caption, selected),
-    Widget2(widget),
+    gcn::CheckBox(widget, caption, selected),
     mPadding(0),
     mImagePadding(0),
     mImageSize(9),

@@ -36,8 +36,7 @@ class ImageCollection;
  *
  * \ingroup GUI
  */
-class Slider final : public gcn::Slider,
-                     public Widget2
+class Slider final : public gcn::Slider
 {
     public:
         /**

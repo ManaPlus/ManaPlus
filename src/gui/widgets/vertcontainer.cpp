@@ -24,7 +24,8 @@
 #include "debug.h"
 
 VertContainer::VertContainer(const Widget2 *const widget,
-                             const int verticalItemSize, const bool resizable,
+                             const int verticalItemSize,
+                             const bool resizable,
                              const int leftSpacing) :
     Container(widget),
     WidgetListener(),

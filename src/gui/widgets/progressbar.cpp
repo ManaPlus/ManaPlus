@@ -33,12 +33,14 @@
 int ProgressBar::mInstances = 0;
 float ProgressBar::mAlpha = 1.0;
 
-ProgressBar::ProgressBar(const Widget2 *const widget, float progress,
-                         const int width, const int height,
+ProgressBar::ProgressBar(const Widget2 *const widget,
+                         float progress,
+                         const int width,
+                         const int height,
                          const int backColor,
-                         const std::string &skin, const std::string &skinFill):
-    gcn::Widget(),
-    Widget2(widget),
+                         const std::string &skin,
+                         const std::string &skinFill):
+    gcn::Widget(widget),
     WidgetListener(),
     mFillRect(),
     mSkin(nullptr),

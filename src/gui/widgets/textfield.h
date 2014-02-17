@@ -39,8 +39,7 @@ class PopupMenu;
  * \ingroup GUI
  */
 class TextField : public gcn::TextField,
-                  public FocusListener,
-                  public Widget2
+                  public FocusListener
 {
     public:
         /**

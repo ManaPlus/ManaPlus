@@ -158,8 +158,7 @@ namespace
 ItemContainer::ItemContainer(const Widget2 *const widget,
                              Inventory *const inventory,
                              const bool forceQuantity) :
-    gcn::Widget(),
-    Widget2(widget),
+    gcn::Widget(widget),
     KeyListener(),
     MouseListener(),
     WidgetListener(),

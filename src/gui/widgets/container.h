@@ -36,8 +36,7 @@
  *
  * This container is also non-opaque by default.
  */
-class Container : public gcn::Container,
-                  public Widget2
+class Container : public gcn::Container
 {
     public:
         explicit Container(const Widget2 *const widget);

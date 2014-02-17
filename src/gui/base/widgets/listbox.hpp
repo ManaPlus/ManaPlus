@@ -96,14 +96,15 @@ namespace gcn
         /**
          * Constructor.
          */
-        ListBox();
+        explicit ListBox(const Widget2 *const widget);
 
         /**
          * Constructor.
          *
          * @param listModel the list model to use.
          */
-        explicit ListBox(ListModel *listModel);
+        ListBox(const Widget2 *const widget,
+                ListModel *listModel);
 
         A_DELETE_COPY(ListBox)
 

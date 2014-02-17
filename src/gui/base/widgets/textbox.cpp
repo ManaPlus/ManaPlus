@@ -80,8 +80,8 @@
 
 namespace gcn
 {
-    TextBox::TextBox() :
-        gcn::Widget(),
+    TextBox::TextBox(const Widget2 *const widget) :
+        gcn::Widget(widget),
         MouseListener(),
         KeyListener(),
         mTextRows(),
@@ -98,8 +98,9 @@ namespace gcn
         adjustSize();
     }
 
-    TextBox::TextBox(const std::string& text) :
-        gcn::Widget(),
+    TextBox::TextBox(const Widget2 *const widget,
+                     const std::string& text) :
+        gcn::Widget(widget),
         MouseListener(),
         KeyListener(),
         mTextRows(),

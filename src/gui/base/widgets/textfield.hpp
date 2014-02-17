@@ -85,7 +85,7 @@ namespace gcn
         /**
          * Constructor.
          */
-        TextField();
+        explicit TextField(const Widget2 *const widget);
 
         /**
          * Constructor. The text field will be automatically resized
@@ -93,7 +93,8 @@ namespace gcn
          *
          * @param text The default text of the text field.
          */
-        explicit TextField(const std::string& text);
+        TextField(const Widget2 *const widget,
+                  const std::string& text);
 
         A_DELETE_COPY(TextField)
 

@@ -34,8 +34,7 @@ class Skin;
 /**
  * Guichan based RadioButton with custom look
  */
-class RadioButton final : public gcn::RadioButton,
-                          public Widget2
+class RadioButton final : public gcn::RadioButton
 {
     public:
         /**

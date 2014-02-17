@@ -31,7 +31,6 @@
 #include "localconsts.h"
 
 class EmotePage final : public gcn::Widget,
-                        public Widget2,
                         public MouseListener,
                         public WidgetListener
 {

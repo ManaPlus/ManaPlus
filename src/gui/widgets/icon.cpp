@@ -27,9 +27,9 @@
 
 #include "debug.h"
 
-Icon::Icon(const Widget2 *const widget, const std::string &file) :
-    gcn::Widget(),
-    Widget2(widget),
+Icon::Icon(const Widget2 *const widget,
+           const std::string &file) :
+    gcn::Widget(widget),
     mImage(ResourceManager::getInstance()->getImage(file))
 {
     if (mImage)
@@ -39,9 +39,9 @@ Icon::Icon(const Widget2 *const widget, const std::string &file) :
     }
 }
 
-Icon::Icon(const Widget2 *const widget, Image *const image) :
-    gcn::Widget(),
-    Widget2(widget),
+Icon::Icon(const Widget2 *const widget,
+           Image *const image) :
+    gcn::Widget(widget),
     mImage(image)
 {
     if (mImage)

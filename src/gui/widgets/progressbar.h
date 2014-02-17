@@ -42,17 +42,19 @@ class Skin;
  * \ingroup GUI
  */
 class ProgressBar final : public gcn::Widget,
-                          public Widget2,
                           public WidgetListener
 {
     public:
         /**
          * Constructor, initializes the progress with the given value.
          */
-        ProgressBar(const Widget2 *const widget, float progress,
-                    const int width, const int height,
+        ProgressBar(const Widget2 *const widget,
+                    float progress,
+                    const int width,
+                    const int height,
                     const int backColor,
-                    const std::string &skin, const std::string &skinFill);
+                    const std::string &skin,
+                    const std::string &skinFill);
 
         A_DELETE_COPY(ProgressBar)
 

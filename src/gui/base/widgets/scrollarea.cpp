@@ -74,8 +74,8 @@
 
 namespace gcn
 {
-    ScrollArea::ScrollArea() :
-        gcn::BasicContainer(),
+    ScrollArea::ScrollArea(const Widget2 *const widget) :
+        gcn::BasicContainer(widget),
         MouseListener(),
         mVScroll(0),
         mHScroll(0),
@@ -101,8 +101,9 @@ namespace gcn
         addMouseListener(this);
     }
 
-    ScrollArea::ScrollArea(Widget *const content) :
-        gcn::BasicContainer(),
+    ScrollArea::ScrollArea(const Widget2 *const widget,
+                           Widget *const content) :
+        gcn::BasicContainer(widget),
         MouseListener(),
         mVScroll(0),
         mHScroll(0),
@@ -129,10 +130,11 @@ namespace gcn
         addMouseListener(this);
     }
 
-    ScrollArea::ScrollArea(Widget *content,
+    ScrollArea::ScrollArea(const Widget2 *const widget,
+                           Widget *content,
                            ScrollPolicy hPolicy,
                            ScrollPolicy vPolicy) :
-        gcn::BasicContainer(),
+        gcn::BasicContainer(widget),
         MouseListener(),
         mVScroll(0),
         mHScroll(0),

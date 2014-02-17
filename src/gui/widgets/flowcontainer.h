@@ -41,7 +41,8 @@ class FlowContainer final : public Container,
          * Constructor. Initializes the shortcut container.
          */
         FlowContainer(const Widget2 *const widget,
-                      const int boxWidth, const int boxHeight);
+                      const int boxWidth,
+                      const int boxHeight);
 
         A_DELETE_COPY(FlowContainer)
 

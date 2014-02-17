@@ -40,7 +40,8 @@ class ShortcutTab final : public Tab
 {
     public:
         ShortcutTab(const Widget2 *const widget,
-                    std::string name, ShortcutContainer *const content) :
+                    std::string name,
+                    ShortcutContainer *const content) :
             Tab(widget),
             mContent(content)
         {
@@ -58,7 +59,7 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
                                int width, int height) :
     Window("Window", false, nullptr, skinFile),
     mItems(content),
-    mScrollArea(new ScrollArea(mItems, false)),
+    mScrollArea(new ScrollArea(this, mItems, false)),
     mTabs(nullptr),
     mPages()
 {
@@ -160,7 +161,7 @@ ShortcutWindow::~ShortcutWindow()
 void ShortcutWindow::addTab(const std::string &name,
                             ShortcutContainer *const content)
 {
-    ScrollArea *const scroll = new ScrollArea(content, false);
+    ScrollArea *const scroll = new ScrollArea(this, content, false);
     scroll->setPosition(SCROLL_PADDING, SCROLL_PADDING);
     scroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     content->setWidget2(this);

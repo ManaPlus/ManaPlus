@@ -29,16 +29,15 @@ Skin *Label::mSkin = nullptr;
 int Label::mInstances = 0;
 
 Label::Label(const Widget2 *const widget) :
-    gcn::Label(),
-    Widget2(widget),
+    gcn::Label(widget),
     mPadding(0)
 {
     init();
 }
 
-Label::Label(const Widget2 *const widget, const std::string &caption) :
-    gcn::Label(caption),
-    Widget2(widget),
+Label::Label(const Widget2 *const widget,
+             const std::string &caption) :
+    gcn::Label(widget, caption),
     mPadding(0)
 {
     init();

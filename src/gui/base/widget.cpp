@@ -94,7 +94,8 @@ namespace gcn
     std::list<Widget*> Widget::mWidgets;
     std::set<Widget*> Widget::mWidgetsSet;
 
-    Widget::Widget() :
+    Widget::Widget(const Widget2 *const widget) :
+        Widget2(widget),
         mMouseListeners(),
         mKeyListeners(),
         mActionListeners(),

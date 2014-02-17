@@ -36,8 +36,7 @@
  *
  * \ingroup GUI
  */
-class TextBox final : public gcn::TextBox,
-                      public Widget2
+class TextBox final : public gcn::TextBox
 {
     public:
         /**

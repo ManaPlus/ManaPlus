@@ -43,7 +43,6 @@ const std::string BUTTON_PLAY = "buttonplay.png";
  * \ingroup GUI
  */
 class Button final : public gcn::Button,
-                     public Widget2,
                      public WidgetListener
 {
     public:

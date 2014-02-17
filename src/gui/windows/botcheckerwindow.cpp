@@ -263,7 +263,7 @@ BotCheckerWindow::BotCheckerWindow():
     ActionListener(),
     mTableModel(new UsersTableModel(this)),
     mTable(new GuiTable(this, mTableModel)),
-    playersScrollArea(new ScrollArea(mTable, true,
+    playersScrollArea(new ScrollArea(this, mTable, true,
         "bochecker_background.xml")),
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
     mPlayerTitleTable(new GuiTable(this, mPlayerTableTitleModel)),

@@ -36,8 +36,7 @@ class Skin;
  *
  * \ingroup GUI
  */
-class CheckBox final : public gcn::CheckBox,
-                       public Widget2
+class CheckBox final : public gcn::CheckBox
 {
     public:
         /**

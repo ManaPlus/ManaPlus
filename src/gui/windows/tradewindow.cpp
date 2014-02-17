@@ -110,13 +110,14 @@ TradeWindow::TradeWindow():
 
     mMyItemContainer->addSelectionListener(this);
 
-    ScrollArea *const myScroll = new ScrollArea(mMyItemContainer,
+    ScrollArea *const myScroll = new ScrollArea(this, mMyItemContainer,
         true, "trade_background.xml");
     myScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     mPartnerItemContainer->addSelectionListener(this);
 
-    ScrollArea *const partnerScroll = new ScrollArea(mPartnerItemContainer,
+    ScrollArea *const partnerScroll = new ScrollArea(this,
+        mPartnerItemContainer,
         true, "trade_background.xml");
     partnerScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 

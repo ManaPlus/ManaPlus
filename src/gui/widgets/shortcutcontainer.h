@@ -38,7 +38,6 @@ class ImageCollection;
  * \ingroup GUI
  */
 class ShortcutContainer : public gcn::Widget,
-                          public Widget2,
                           public WidgetListener,
                           public MouseListener
 {

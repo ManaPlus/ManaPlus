@@ -41,10 +41,12 @@ public:
     { return getAvatarAt(i)->getName(); }
 };
 
-class AvatarListBox final : public ListBox, public ConfigListener
+class AvatarListBox final : public ListBox,
+                            public ConfigListener
 {
 public:
-    AvatarListBox(const Widget2 *const widget, AvatarListModel *const model);
+    AvatarListBox(const Widget2 *const widget,
+                  AvatarListModel *const model);
 
     A_DELETE_COPY(AvatarListBox)
 

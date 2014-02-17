@@ -90,7 +90,7 @@ namespace gcn
         /**
          * Contructor.
          */
-        CheckBox();
+        CheckBox(const Widget2 *const widget);
 
         /**
          * Constructor. The check box will be automatically resized
@@ -99,7 +99,9 @@ namespace gcn
          * @param caption The caption of the check box.
          * @param marked True if the check box is selected, false otherwise.
          */
-        CheckBox(const std::string &caption, bool selected = false);
+        CheckBox(const Widget2 *const widget,
+                 const std::string &caption,
+                 bool selected = false);
 
         A_DELETE_COPY(CheckBox)
 

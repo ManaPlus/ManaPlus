@@ -93,7 +93,7 @@ namespace gcn
         /**
          * Constructor.
          */
-        RadioButton();
+        RadioButton(const Widget2 *const widget);
 
         /**
          * Constructor. The radio button will be automatically resized
@@ -103,7 +103,8 @@ namespace gcn
          * @param group The group the radio button should belong to.
          * @param selected True if the radio button should be selected.
          */
-        RadioButton(const std::string &caption,
+        RadioButton(const Widget2 *const widget,
+                    const std::string &caption,
                     const std::string &group,
                     bool selected = false);
 

@@ -71,6 +71,8 @@
 #include "gui/base/color.hpp"
 #include "gui/base/rectangle.hpp"
 
+#include "gui/widgets/widget2.h"
+
 #include "localconsts.h"
 
 class ActionListener;
@@ -100,7 +102,7 @@ namespace gcn
      * @author Per Larsson.
      * @since 0.1.0
      */
-    class Widget
+    class Widget : public Widget2
     {
     public:
         /**
@@ -108,7 +110,7 @@ namespace gcn
          * focusable as default, therefore, widgets that are supposed to be
          * focusable should overide this default in their own constructor.
          */
-        Widget();
+        Widget(const Widget2 *const widget);
 
         A_DELETE_COPY(Widget)
 

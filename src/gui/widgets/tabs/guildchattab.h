@@ -28,7 +28,8 @@
 /**
  * A tab for a guild chat channel.
  */
-class GuildChatTab final : public ChatTab, public ConfigListener
+class GuildChatTab final : public ChatTab,
+                           public ConfigListener
 {
     public:
         explicit GuildChatTab(const Widget2 *const widget);

@@ -94,9 +94,9 @@ void GuiTableActionListener::action(const ActionEvent &actionEvent A_UNUSED)
 
 
 GuiTable::GuiTable(const Widget2 *const widget,
-                   TableModel *const initial_model, const bool opacity) :
-    gcn::Widget(),
-    Widget2(widget),
+                   TableModel *const initial_model,
+                   const bool opacity) :
+    gcn::Widget(widget),
     MouseListener(),
     KeyListener(),
     mModel(nullptr),

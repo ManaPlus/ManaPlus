@@ -29,8 +29,7 @@
 #include "debug.h"
 
 ProgressIndicator::ProgressIndicator(Widget2 *const widget) :
-    gcn::Widget(),
-    Widget2(widget),
+    gcn::Widget(widget),
     mIndicator(nullptr)
 {
     ImageSet *const images = Theme::getImageSetFromTheme(

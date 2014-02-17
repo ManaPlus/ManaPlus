@@ -100,14 +100,15 @@ namespace gcn
         /**
          * Constructor.
          */
-        ScrollArea();
+        explicit ScrollArea(const Widget2 *const widget);
 
         /**
          * Constructor.
          *
          * @param content The content of the scroll area.
          */
-        explicit ScrollArea(Widget *const content);
+        ScrollArea(const Widget2 *const widget,
+                   Widget *const content);
 
         /**
          * Constructor.
@@ -118,7 +119,8 @@ namespace gcn
          * @param vPolicy The policy for the vertical scrollbar. See enum with
          *                policies.
          */
-        ScrollArea(Widget *content,
+        ScrollArea(const Widget2 *const widget,
+                   Widget *content,
                    ScrollPolicy hPolicy,
                    ScrollPolicy vPolicy);
 

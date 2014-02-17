@@ -59,7 +59,8 @@
 class SkillListBox final : public ListBox
 {
     public:
-        SkillListBox(const Widget2 *const widget, SkillModel *const model) :
+        SkillListBox(const Widget2 *const widget,
+                     SkillModel *const model) :
             ListBox(widget, model, "skilllistbox.xml"),
             mModel(model),
             mPopup(new TextPopup),
@@ -241,7 +242,8 @@ class SkillTab final : public Tab
 {
     public:
         SkillTab(const Widget2 *const widget,
-                 const std::string &name, SkillListBox *const listBox) :
+                 const std::string &name,
+                 SkillListBox *const listBox) :
             Tab(widget),
             mListBox(listBox)
         {
@@ -541,7 +543,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
             SkillListBox *const listbox = new SkillListBox(this, model);
             listbox->setActionEventId("sel");
             listbox->addActionListener(this);
-            ScrollArea *const scroll = new ScrollArea(listbox, false);
+            ScrollArea *const scroll = new ScrollArea(this, listbox, false);
             scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
             scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 

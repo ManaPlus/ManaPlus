@@ -79,9 +79,9 @@ ShopWindow::ShopWindow():
     mSellShopItems(new ShopItems),
     mBuyShopItemList(new ShopListBox(this, mBuyShopItems, mBuyShopItems)),
     mSellShopItemList(new ShopListBox(this, mSellShopItems, mSellShopItems)),
-    mBuyScrollArea(new ScrollArea(mBuyShopItemList,
+    mBuyScrollArea(new ScrollArea(this, mBuyShopItemList,
         getOptionBool("showbuybackground"), "shop_buy_background.xml")),
-    mSellScrollArea(new ScrollArea(mSellShopItemList,
+    mSellScrollArea(new ScrollArea(this, mSellShopItemList,
         getOptionBool("showsellbackground"), "shop_sell_background.xml")),
     // TRANSLATORS: shop window label
     mBuyLabel(new Label(this, _("Buy items"))),

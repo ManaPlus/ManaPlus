@@ -25,14 +25,16 @@
 #include "debug.h"
 
 TabStrip::TabStrip(const Widget2 *const widget,
-                   const std::string &group, const int height,
+                   const std::string &group,
+                   const int height,
                    const int spacing) :
     WidgetGroup(widget, group, height, spacing)
 {
 }
 
 TabStrip::TabStrip(const Widget2 *const widget,
-                   const int height, const int spacing) :
+                   const int height,
+                   const int spacing) :
     WidgetGroup(widget, "", height, spacing)
 {
 }

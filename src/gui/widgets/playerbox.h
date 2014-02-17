@@ -37,8 +37,7 @@ class Skin;
  *
  * \ingroup GUI
  */
-class PlayerBox final : public Widget2,
-                        public gcn::ScrollArea
+class PlayerBox final : public gcn::ScrollArea
 {
     public:
         /**

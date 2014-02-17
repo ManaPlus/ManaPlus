@@ -34,8 +34,7 @@ class SimpleAnimation;
  * A widget that indicates progress. Suitable to use instead of a progress bar
  * in cases where it is unknown how long something is going to take.
  */
-class ProgressIndicator final : public gcn::Widget,
-                                public Widget2
+class ProgressIndicator final : public gcn::Widget
 {
     public:
         ProgressIndicator(Widget2 *const widget);

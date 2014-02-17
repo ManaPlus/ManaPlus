@@ -86,7 +86,7 @@ void SellDialog::init()
     mShopItemList = new ShopListBox(this, mShopItems, mShopItems);
     mShopItemList->postInit();
     mShopItemList->setProtectItems(true);
-    mScrollArea = new ScrollArea(mShopItemList,
+    mScrollArea = new ScrollArea(this, mShopItemList,
         getOptionBool("showbackground"), "sell_background.xml");
     mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 

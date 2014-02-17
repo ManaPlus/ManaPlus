@@ -45,36 +45,11 @@ static std::string const buttonFiles[2] =
     "scrollbuttons_pressed.xml"
 };
 
-ScrollArea::ScrollArea(Widget2 *const widget,
-                       const bool opaque,
-                       const std::string &skin) :
-    gcn::ScrollArea(),
-    Widget2(widget),
-    WidgetListener(),
-    mX(0),
-    mY(0),
-    mClickX(0),
-    mClickY(0),
-    mVertexes(new ImageCollection),
-    mVertexes2(new ImageCollection),
-    mXOffset(0),
-    mYOffset(0),
-    mDrawWidth(0),
-    mDrawHeight(0),
-    mHasMouse(false),
-    mRedraw(true)
-{
-    mOpaque = opaque;
-    addWidgetListener(this);
-    init(skin);
-}
-
 ScrollArea::ScrollArea(Widget2 *const widget2,
                        gcn::Widget *const widget,
                        const bool opaque,
                        const std::string &skin) :
-    gcn::ScrollArea(widget),
-    Widget2(widget2),
+    gcn::ScrollArea(widget2, widget),
     WidgetListener(),
     mX(0),
     mY(0),

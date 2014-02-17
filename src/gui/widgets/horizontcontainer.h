@@ -38,7 +38,8 @@ class HorizontContainer final : public Container,
 {
     public:
         HorizontContainer(const Widget2 *const widget,
-                          const int height, const int spacing);
+                          const int height,
+                          const int spacing);
 
         A_DELETE_COPY(HorizontContainer)
 
