@@ -43,12 +43,15 @@ class Slider final : public gcn::Slider,
         /**
          * Constructor with scale start equal to 0.
          */
-        explicit Slider(const double scaleEnd = 1.0);
+        explicit Slider(Widget2 *const widget,
+                        const double scaleEnd = 1.0);
 
         /**
          * Constructor.
          */
-        Slider(const double scaleStart, const double scaleEnd);
+        Slider(Widget2 *const widget,
+               const double scaleStart,
+               const double scaleEnd);
 
         A_DELETE_COPY(Slider)
 

@@ -39,8 +39,9 @@
 
 #include "debug.h"
 
-SpellShortcutContainer::SpellShortcutContainer(const unsigned number) :
-    ShortcutContainer(),
+SpellShortcutContainer::SpellShortcutContainer(Widget2 *const widget,
+                                               const unsigned number) :
+    ShortcutContainer(widget),
     mSpellPopup(new SpellPopup),
     mNumber(number),
     mSpellClicked(false)

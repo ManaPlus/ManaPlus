@@ -38,8 +38,8 @@
 
 static const int MAX_ITEMS = 48;
 
-EmoteShortcutContainer::EmoteShortcutContainer():
-    ShortcutContainer(),
+EmoteShortcutContainer::EmoteShortcutContainer(Widget2 *const widget) :
+    ShortcutContainer(widget),
     mEmoteImg(),
     mEmotePopup(new TextPopup),
     mEmoteClicked(false),

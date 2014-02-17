@@ -43,9 +43,10 @@ static std::string const data[2] =
     "slider_highlighted.xml"
 };
 
-Slider::Slider(const double scaleEnd) :
+Slider::Slider(Widget2 *const widget,
+               const double scaleEnd) :
     gcn::Slider(scaleEnd),
-    Widget2(),
+    Widget2(widget),
     mVertexes(new ImageCollection),
     mHasMouse(false),
     mRedraw(true)
@@ -53,9 +54,11 @@ Slider::Slider(const double scaleEnd) :
     init();
 }
 
-Slider::Slider(const double scaleStart, const double scaleEnd) :
+Slider::Slider(Widget2 *const widget,
+               const double scaleStart,
+               const double scaleEnd) :
     gcn::Slider(scaleStart, scaleEnd),
-    Widget2(),
+    Widget2(widget),
     mVertexes(new ImageCollection),
     mHasMouse(false),
     mRedraw(true)

@@ -124,7 +124,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mMaxLook(CharDB::getMaxLook()),
     mPlayer(new Being(0, ActorSprite::PLAYER, static_cast<uint16_t>(mRace),
             nullptr)),
-    mPlayerBox(new PlayerBox(mPlayer, "charcreate_playerbox.xml",
+    mPlayerBox(new PlayerBox(this, mPlayer, "charcreate_playerbox.xml",
         "charcreate_selectedplayerbox.xml")),
     mHairStyle(0),
     mHairColor(0),
@@ -528,7 +528,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
         mAttributeLabel[i]->adjustSize();
         add(mAttributeLabel[i]);
 
-        mAttributeSlider[i] = new Slider(min, max);
+        mAttributeSlider[i] = new Slider(this, min, max);
         mAttributeSlider[i]->setDimension(gcn::Rectangle(140, y + i * 24,
                                                          150, 12));
         mAttributeSlider[i]->setActionEventId("statslider");

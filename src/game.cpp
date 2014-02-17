@@ -236,7 +236,7 @@ static void createGuiWindows()
     for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
     {
         itemShortcutWindow->addTab(toString(f + 1),
-            new ItemShortcutContainer(f));
+            new ItemShortcutContainer(nullptr, f));
     }
     if (config.getBoolValue("showDidYouKnow"))
     {
@@ -245,20 +245,23 @@ static void createGuiWindows()
     }
 
     emoteShortcutWindow = new ShortcutWindow("EmoteShortcut",
-        new EmoteShortcutContainer, "emotes.xml", 130, 480);
+        new EmoteShortcutContainer(nullptr),
+        "emotes.xml",
+        130, 480);
     outfitWindow = new OutfitWindow();
 #ifdef MANASERV_SUPPORT
     specialsWindow = new SpecialsWindow();
 #endif
     dropShortcutWindow = new ShortcutWindow("DropShortcut",
-        new DropShortcutContainer, "drops.xml");
+        new DropShortcutContainer(nullptr),
+        "drops.xml");
 
     spellShortcutWindow = new ShortcutWindow("SpellShortcut", "spells.xml",
                                              265, 328);
     for (unsigned f = 0; f < SPELL_SHORTCUT_TABS; f ++)
     {
         spellShortcutWindow->addTab(toString(f + 1),
-            new SpellShortcutContainer(f));
+            new SpellShortcutContainer(nullptr, f));
     }
 
     botCheckerWindow = new BotCheckerWindow;

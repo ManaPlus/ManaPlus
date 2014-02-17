@@ -90,7 +90,7 @@ void SellDialog::init()
         getOptionBool("showbackground"), "sell_background.xml");
     mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
-    mSlider = new Slider(1.0);
+    mSlider = new Slider(this, 1.0);
 
     mQuantityLabel = new Label(this, strprintf(
         "%d / %d", mAmountItems, mMaxItems));

@@ -102,7 +102,7 @@ class ShortcutContainer : public gcn::Widget,
         /**
          * Constructor. Initializes the shortcut container.
          */
-        explicit ShortcutContainer();
+        explicit ShortcutContainer(Widget2 *const widget);
 
         /**
          * Gets the index from the grid provided the point is in an item box.

@@ -38,7 +38,7 @@ class ProgressIndicator final : public gcn::Widget,
                                 public Widget2
 {
     public:
-        ProgressIndicator();
+        ProgressIndicator(Widget2 *const widget);
 
         A_DELETE_COPY(ProgressIndicator)
 

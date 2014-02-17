@@ -50,7 +50,7 @@ SetupItem::SetupItem(const std::string &restrict text,
                      const std::string &restrict eventName,
                      const bool mainConfig) :
     ActionListener(),
-    Widget2(),
+    Widget2(parent),
     mText(text),
     mDescription(description),
     mKeyName(keyName),
@@ -74,7 +74,7 @@ SetupItem::SetupItem(const std::string &restrict text,
                      const std::string &restrict def,
                      const bool mainConfig) :
     ActionListener(),
-    Widget2(),
+    Widget2(parent),
     mText(text),
     mDescription(description),
     mKeyName(keyName),
@@ -762,7 +762,7 @@ void SetupItemSlider::createControls()
     mHorizont = new HorizontContainer(this, 32, 2);
 
     mLabel = new Label(this, mText);
-    mSlider = new Slider(mMin, mMax);
+    mSlider = new Slider(this, mMin, mMax);
     mSlider->setActionEventId(mEventName);
     mSlider->addActionListener(mParent);
     mSlider->setValue2(atof(mValue.c_str()));
@@ -886,7 +886,7 @@ void SetupItemSlider2::createControls()
     mLabel = new Label(this, mText);
     mLabel2 = new Label(this, "");
     mLabel2->setWidth(width);
-    mSlider = new Slider(mMin, mMax);
+    mSlider = new Slider(this, mMin, mMax);
     mSlider->setActionEventId(mEventName);
     mSlider->addActionListener(mParent);
     mSlider->setValue2(atof(mValue.c_str()));

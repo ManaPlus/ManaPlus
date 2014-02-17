@@ -40,8 +40,8 @@
 
 #include "debug.h"
 
-DropShortcutContainer::DropShortcutContainer():
-    ShortcutContainer(),
+DropShortcutContainer::DropShortcutContainer(Widget2 *const widget):
+    ShortcutContainer(widget),
     mItemClicked(false),
     mItemPopup(new ItemPopup),
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),

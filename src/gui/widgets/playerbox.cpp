@@ -30,9 +30,11 @@
 
 #include "debug.h"
 
-PlayerBox::PlayerBox(Being *const being, const std::string &skin,
+PlayerBox::PlayerBox(Widget2 *const widget,
+                     Being *const being,
+                     const std::string &skin,
                      const std::string &selectedSkin) :
-    Widget2(),
+    Widget2(widget),
     ScrollArea(),
     mBeing(being),
     mAlpha(1.0),
@@ -48,8 +50,10 @@ PlayerBox::PlayerBox(Being *const being, const std::string &skin,
     init(skin, selectedSkin);
 }
 
-PlayerBox::PlayerBox(const std::string &skin,
+PlayerBox::PlayerBox(Widget2 *const widget,
+                     const std::string &skin,
                      const std::string &selectedSkin) :
+    Widget2(widget),
     ScrollArea(),
     mBeing(nullptr),
     mAlpha(1.0),

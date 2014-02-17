@@ -48,8 +48,9 @@
 
 #include "debug.h"
 
-ItemShortcutContainer::ItemShortcutContainer(const unsigned number) :
-    ShortcutContainer(),
+ItemShortcutContainer::ItemShortcutContainer(Widget2 *const widget,
+                                             const unsigned number) :
+    ShortcutContainer(widget),
     mItemClicked(false),
     mNumber(number),
     mItemPopup(new ItemPopup),

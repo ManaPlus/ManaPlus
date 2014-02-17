@@ -41,7 +41,7 @@ class EmoteShortcutContainer final : public ShortcutContainer
         /**
          * Constructor. Initializes the graphic.
          */
-        EmoteShortcutContainer();
+        EmoteShortcutContainer(Widget2 *const widget);
 
         A_DELETE_COPY(EmoteShortcutContainer)
 

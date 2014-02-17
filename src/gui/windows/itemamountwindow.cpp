@@ -148,7 +148,7 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     mMax(maxRange),
     mUsage(usage),
     mItemPopup(new ItemPopup),
-    mItemAmountSlide(new Slider(1.0, mMax)),
+    mItemAmountSlide(new Slider(this, 1.0, mMax)),
     mItemPriceSlide(nullptr),
     mItemDropDown(nullptr),
     mItemsModal(nullptr),
@@ -182,7 +182,7 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
         mItemPriceTextField->setWidth(35);
         mItemPriceTextField->addKeyListener(this);
 
-        mItemPriceSlide = new Slider(1.0, 10000000);
+        mItemPriceSlide = new Slider(this, 1.0, 10000000);
         mItemPriceSlide->setHeight(10);
         mItemPriceSlide->setActionEventId("slidePrice");
         mItemPriceSlide->addActionListener(this);
