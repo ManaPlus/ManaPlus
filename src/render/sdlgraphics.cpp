@@ -31,7 +31,7 @@
 
 #include "utils/sdlcheckutils.h"
 
-#include "gui/base/sdl/sdlpixel.hpp"
+#include "utils/sdlpixel.h"
 
 #include "debug.h"
 
@@ -963,7 +963,7 @@ void SDLGraphics::fillRectangle(const gcn::Rectangle& rectangle)
                     for (x = x1; x < x2; x++)
                     {
                         uint8_t *const p = p0 + x * 2;
-                        *reinterpret_cast<uint16_t *>(p) = gcn::SDLAlpha16(
+                        *reinterpret_cast<uint16_t *>(p) = SDLAlpha16(
                             static_cast<uint16_t>(pixel),
                             *reinterpret_cast<uint16_t *>(p),
                             static_cast<uint8_t>(mColor.a), mWindow->format);

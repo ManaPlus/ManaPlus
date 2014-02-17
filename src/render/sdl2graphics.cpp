@@ -79,7 +79,7 @@
 
 #include "utils/sdlcheckutils.h"
 
-#include "gui/base/sdl/sdlpixel.hpp"
+#include "utils/sdlpixel.h"
 
 #include "debug.h"
 
