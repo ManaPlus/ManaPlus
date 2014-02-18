@@ -27,6 +27,7 @@
 #include "input/keydata.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 
 #include <sstream>
 

@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef EVENTS_KEYEVENT_HPP
-#define EVENTS_KEYEVENT_HPP
+#ifndef EVENTS_KEYEVENT_H
+#define EVENTS_KEYEVENT_H
 
 #include "events/inputguievent.h"
 #include "input/key.h"
@@ -191,4 +191,4 @@ class KeyEvent: public InputGuiEvent
         bool mIsNumericPad;
 };
 
-#endif  // EVENTS_KEYEVENT_HPP
+#endif  // EVENTS_KEYEVENT_H

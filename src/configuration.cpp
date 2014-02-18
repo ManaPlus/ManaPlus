@@ -23,6 +23,7 @@
 #include "configuration.h"
 
 #include "logger.h"
+#include "variabledata.h"
 
 #include "listeners/configlistener.h"
 

@@ -21,14 +21,17 @@
 #ifndef GUI_WIDGETS_SETUPITEM_H
 #define GUI_WIDGETS_SETUPITEM_H
 
-#include "gui/widgets/button.h"
-#include "gui/widgets/tabs/setuptabscroll.h"
+//#include "gui/widgets/button.h"
+//#include "gui/widgets/tabs/setuptabscroll.h"
+
+#include "gui/widgets/widget2.h"
 
 #include "listeners/actionlistener.h"
 
 #include <list>
 #include <vector>
 
+class Button;
 class CheckBox;
 class Configuration;
 class DropDown;
@@ -36,6 +39,7 @@ class EditDialog;
 class HorizontContainer;
 class IntTextField;
 class Label;
+class SetupTabScroll;
 class Slider;
 class SliderList;
 class TextField;

@@ -23,14 +23,15 @@
 #ifndef COMMANDHANDLER_H
 #define COMMANDHANDLER_H
 
-#include "commands.h"
-
 #include <list>
+#include <map>
 #include <string>
 
 #include "localconsts.h"
 
 class ChatTab;
+
+struct CommandInfo;
 
 extern ChatTab *localChatTab;
 

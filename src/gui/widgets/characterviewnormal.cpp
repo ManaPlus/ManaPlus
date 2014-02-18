@@ -23,7 +23,6 @@
 #include "configuration.h"
 
 #include "gui/widgets/characterdisplay.h"
-#include "gui/widgets/characterviewsmall.h"
 
 #include "debug.h"
 

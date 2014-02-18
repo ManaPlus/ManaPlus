@@ -33,6 +33,7 @@
 
 #include "net/ea/guildhandler.h"
 
+#include "net/ea/gui/guildtab.h"
 #include "net/ea/gui/partytab.h"
 
 #include "net/eathena/adminhandler.h"

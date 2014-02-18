@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_SLIDER_H
 #define GUI_WIDGETS_SLIDER_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/widgets/slider.hpp"
 
 #include "localconsts.h"

@@ -23,8 +23,12 @@
 #ifndef NET_EA_PLAYERHANDLER_H
 #define NET_EA_PLAYERHANDLER_H
 
-#include "net/messagein.h"
 #include "net/playerhandler.h"
+
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace Ea
 {

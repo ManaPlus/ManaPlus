@@ -24,6 +24,7 @@
 
 #include "chatlogger.h"
 #include "client.h"
+#include "commands.h"
 #include "commandhandler.h"
 #include "configuration.h"
 #include "soundconsts.h"

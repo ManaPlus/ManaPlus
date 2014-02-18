@@ -26,8 +26,6 @@
 
 #include "listeners/selectionlistener.h"
 
-#include <string>
-
 class BrowserBox;
 class Label;
 class ListBox;

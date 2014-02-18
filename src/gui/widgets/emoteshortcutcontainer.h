@@ -24,11 +24,11 @@
 
 #include "gui/widgets/shortcutcontainer.h"
 
-#include "resources/db/emotedb.h"
-
 #include <vector>
 
 class TextPopup;
+
+struct EmoteSprite;
 
 /**
  * An emote shortcut container. Used to quickly use emoticons.
@@ -41,7 +41,7 @@ class EmoteShortcutContainer final : public ShortcutContainer
         /**
          * Constructor. Initializes the graphic.
          */
-        EmoteShortcutContainer(Widget2 *const widget);
+        explicit EmoteShortcutContainer(Widget2 *const widget);
 
         A_DELETE_COPY(EmoteShortcutContainer)
 

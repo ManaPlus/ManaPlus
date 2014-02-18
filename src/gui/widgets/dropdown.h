@@ -26,7 +26,7 @@
 #include "gui/widgets/widget2.h"
 
 #include "gui/base/basiccontainer.hpp"
-#include "gui/base/listmodel.hpp"
+//#include "gui/base/listmodel.hpp"
 
 #include "listeners/actionlistener.h"
 #include "listeners/focuslistener.h"
@@ -42,6 +42,11 @@ class ListBox;
 class PopupList;
 class ScrollArea;
 class Skin;
+
+namespace gcn
+{
+    class ListModel;
+}
 
 /**
  * A drop down box from which you can select different values.

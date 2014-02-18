@@ -38,6 +38,8 @@
 
 #include "gui/widgets/tabs/chattab.h"
 
+#include "net/messagein.h"
+
 #include <string>
 
 #include "debug.h"

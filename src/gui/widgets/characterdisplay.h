@@ -26,9 +26,6 @@
 #include "gui/widgets/container.h"
 #include "gui/widgets/playerbox.h"
 
-#include "net/charserverhandler.h"
-#include "net/net.h"
-
 #include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
@@ -36,6 +33,11 @@
 class CharSelectDialog;
 class Label;
 class TextPopup;
+
+namespace Net
+{
+    struct Character;
+}
 
 class CharacterDisplay final : public Container,
                                public MouseListener,

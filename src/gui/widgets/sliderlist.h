@@ -21,8 +21,6 @@
 #ifndef GUI_WIDGETS_SLIDERLIST_H
 #define GUI_WIDGETS_SLIDERLIST_H
 
-#include "gui/base/listmodel.hpp"
-
 #include "listeners/actionlistener.h"
 #include "listeners/mouselistener.h"
 
@@ -32,6 +30,11 @@
 
 class Button;
 class Label;
+
+namespace gcn
+{
+    class ListModel;
+}
 
 class SliderList final : public Container,
                          public ActionListener,

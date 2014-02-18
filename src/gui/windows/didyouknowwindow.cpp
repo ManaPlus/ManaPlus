@@ -24,7 +24,7 @@
 
 #include "configuration.h"
 
-#include "gui/font.h"
+#include "gui/gui.h"
 
 #include "gui/windows/setupwindow.h"
 
@@ -78,7 +78,8 @@ DidYouKnowWindow::DidYouKnowWindow() :
     Button *const okButton = new Button(this, _("Close"), "close", this);
 
     mBrowserBox->setLinkHandler(this);
-    mBrowserBox->setFont(gui->getHelpFont());
+    if (gui)
+        mBrowserBox->setFont(gui->getHelpFont());
     mBrowserBox->setProcessVersion(true);
     mBrowserBox->setEnableImages(true);
     mBrowserBox->setEnableKeys(true);

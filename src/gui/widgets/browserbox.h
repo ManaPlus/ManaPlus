@@ -24,8 +24,6 @@
 #ifndef GUI_WIDGETS_BROWSERBOX_H
 #define GUI_WIDGETS_BROWSERBOX_H
 
-#include "gui/widgets/widget2.h"
-
 #include "listeners/mouselistener.h"
 #include "gui/base/widget.hpp"
 

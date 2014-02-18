@@ -35,6 +35,8 @@
 
 #include "gui/theme.h"
 
+#include "resources/image.h"
+
 #include "debug.h"
 
 TouchManager touchManager;

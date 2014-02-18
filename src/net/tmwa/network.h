@@ -25,8 +25,6 @@
 
 #include "net/ea/network.h"
 
-#include "net/tmwa/messagehandler.h"
-
 /**
  * Protocol version, reported to the eAthena char and mapserver who can adjust
  * the protocol accordingly.
@@ -36,6 +34,7 @@
 
 namespace TmwAthena
 {
+class MessageHandler;
 
 class Network final : public Ea::Network
 {

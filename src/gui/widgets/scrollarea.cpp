@@ -25,6 +25,10 @@
 #include "client.h"
 #include "graphicsvertexes.h"
 
+#include "gui/gui.h"
+
+#include "resources/image.h"
+
 #include "debug.h"
 
 int ScrollArea::instances = 0;

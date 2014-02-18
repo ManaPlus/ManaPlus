@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_PROGRESSBAR_H
 #define GUI_WIDGETS_PROGRESSBAR_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/widget.hpp"
 
 #include "listeners/widgetlistener.h"

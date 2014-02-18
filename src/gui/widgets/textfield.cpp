@@ -29,7 +29,7 @@
 #include "events/keyevent.h"
 
 #include "gui/font.h"
-#include "gui/sdlinput.h"
+#include "gui/gui.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/popupmenu.h"

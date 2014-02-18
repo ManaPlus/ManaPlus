@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef MOUSEINPUT_H
-#define MOUSEINPUT_H
+#ifndef INPUT_MOUSEINPUT_H
+#define INPUT_MOUSEINPUT_H
 
 #include "input/mouseinput.h"
 
@@ -213,4 +213,4 @@ class MouseInput final
         int mRealY;
 };
 
-#endif  // MOUSEINPUT_H
+#endif  // INPUT_MOUSEINPUT_H

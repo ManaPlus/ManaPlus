@@ -21,8 +21,6 @@
 #ifndef TOUCHMANAGER_H
 #define TOUCHMANAGER_H
 
-#include "resources/image.h"
-
 #include "listeners/configlistener.h"
 
 #include "input/keydata.h"
@@ -34,6 +32,7 @@
 
 #include "localconsts.h"
 
+class Image;
 class ImageCollection;
 class ImageRect;
 class MouseInput;

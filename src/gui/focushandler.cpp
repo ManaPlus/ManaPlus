@@ -69,6 +69,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "listeners/focuslistener.h"
+
 #include "debug.h"
 
 FocusHandler::FocusHandler() :

@@ -22,6 +22,8 @@
 
 #include "gui/widgets/container.h"
 
+#include "gui/gui.h"
+
 #include "debug.h"
 
 Container::Container(const Widget2 *const widget) :

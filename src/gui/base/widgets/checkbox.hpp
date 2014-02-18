@@ -90,7 +90,7 @@ namespace gcn
         /**
          * Contructor.
          */
-        CheckBox(const Widget2 *const widget);
+        explicit CheckBox(const Widget2 *const widget);
 
         /**
          * Constructor. The check box will be automatically resized

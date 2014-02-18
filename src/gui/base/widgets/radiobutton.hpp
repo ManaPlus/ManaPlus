@@ -93,7 +93,7 @@ namespace gcn
         /**
          * Constructor.
          */
-        RadioButton(const Widget2 *const widget);
+        explicit RadioButton(const Widget2 *const widget);
 
         /**
          * Constructor. The radio button will be automatically resized

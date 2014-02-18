@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef EVENTS_EVENT_HPP
-#define EVENTS_EVENT_HPP
+#ifndef EVENTS_EVENT_H
+#define EVENTS_EVENT_H
 
 #include "localconsts.h"
 
@@ -114,4 +114,4 @@ class Event
         gcn::Widget* mSource;
 };
 
-#endif  // EVENTS_EVENT_HPP
+#endif  // EVENTS_EVENT_H

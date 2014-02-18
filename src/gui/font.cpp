@@ -77,7 +77,6 @@
 #include "resources/surfaceimagehelper.h"
 
 #include "utils/paths.h"
-#include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/stringutils.h"
 #include "utils/timer.h"

@@ -32,7 +32,9 @@
 #include "input/keydata.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 
+#include "gui/widgets/checkbox.h"
 #include "gui/windows/editserverdialog.h"
 #include "gui/windows/logindialog.h"
 
@@ -132,7 +134,7 @@ void ServersListModel::setVersionString(const int index,
     if (index < 0 || index >= static_cast<int>(mVersionStrings.size()))
         return;
 
-    if (version.empty())
+    if (version.empty() || !gui)
     {
         mVersionStrings[index] = VersionString(0, "");
     }

@@ -24,7 +24,6 @@
 #include "resources/resourcemanager.h"
 #endif
 
-#include "utils/mkdir.h"
 #include "utils/physfstools.h"
 
 #include "localconsts.h"

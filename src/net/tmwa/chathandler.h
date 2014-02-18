@@ -26,10 +26,10 @@
 #include "net/ea/chathandler.h"
 
 #include "net/tmwa/messagehandler.h"
-#include "net/tmwa/messageout.h"
 
 namespace TmwAthena
 {
+class MessageOut;
 
 class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 {

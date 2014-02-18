@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_BUTTON_H
 #define GUI_WIDGETS_BUTTON_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/widgets/button.hpp"
 #include "listeners/widgetlistener.h"
 

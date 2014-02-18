@@ -25,9 +25,11 @@
 #include "soundmanager.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 
 #include "gui/windows/editdialog.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/horizontcontainer.h"
@@ -36,6 +38,8 @@
 #include "gui/widgets/slider.h"
 #include "gui/widgets/sliderlist.h"
 #include "gui/widgets/vertcontainer.h"
+
+#include "gui/widgets/tabs/setuptabscroll.h"
 
 #include "utils/base64.h"
 #include "utils/gettext.h"

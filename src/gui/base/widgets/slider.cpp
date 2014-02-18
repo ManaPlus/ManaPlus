@@ -67,11 +67,6 @@
 
 #include "gui/base/widgets/slider.hpp"
 
-#include "input/key.h"
-#include "input/mouseinput.h"
-
-#include "render/graphics.h"
-
 #include "debug.h"
 
 namespace gcn

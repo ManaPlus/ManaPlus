@@ -25,6 +25,8 @@
 
 #include "gui/widgets/setupitem.h"
 
+#include "gui/widgets/tabs/setuptabscroll.h"
+
 class Setup_Audio final : public SetupTabScroll
 {
     public:

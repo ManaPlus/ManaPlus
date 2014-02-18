@@ -21,12 +21,12 @@
 #ifndef UTILS_TRANSLATION_POPARSER_H
 #define UTILS_TRANSLATION_POPARSER_H
 
-#include "utils/translation/podict.h"
-
 #include "localconsts.h"
 
 #include <sstream>
 #include <string>
+
+class PoDict;
 
 class PoParser final
 {

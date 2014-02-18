@@ -194,4 +194,4 @@ class Key final
         int mValue;
 };
 
-#endif  // end GCN_KEY_HPP
+#endif  // INPUT_KEY_H

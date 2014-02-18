@@ -22,6 +22,7 @@
 #include "gui/widgets/tabs/setup_colors.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 #include "gui/userpalette.h"
 
 #include "gui/widgets/browserbox.h"

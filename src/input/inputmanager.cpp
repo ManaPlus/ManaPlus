@@ -28,7 +28,6 @@
 #include "input/keyboardconfig.h"
 #include "input/keyboarddata.h"
 #include "being/localplayer.h"
-#include "being/playerinfo.h"
 #ifdef USE_SDL2
 #include "input/multitouchmanager.h"
 #endif
@@ -47,7 +46,6 @@
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/textdialog.h"
 #include "gui/windows/tradewindow.h"
-#include "gui/windows/quitdialog.h"
 
 #include "utils/timer.h"
 
@@ -58,6 +56,8 @@
 #include "debug.h"
 
 InputManager inputManager;
+
+class QuitDialog;
 
 extern QuitDialog *quitDialog;
 

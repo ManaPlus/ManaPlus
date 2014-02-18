@@ -24,6 +24,8 @@
 
 #include "gui/widgets/setupitem.h"
 
+#include "gui/widgets/tabs/setuptabscroll.h"
+
 class NamesModel;
 
 class Setup_Visual final : public SetupTabScroll

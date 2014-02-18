@@ -67,19 +67,14 @@
 
 #include "gui/base/gui.hpp"
 
-#include "gui/base/basiccontainer.hpp"
 #include "gui/base/widget.hpp"
 
 #include "gui/focushandler.h"
-#include "gui/sdlinput.h"
 
-#include "input/keyinput.h"
 #include "input/mouseinput.h"
 
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
-
-#include "render/graphics.h"
 
 #include "debug.h"
 

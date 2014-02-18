@@ -27,6 +27,8 @@
 
 #include "input/keyboardconfig.h"
 
+#include "gui/base/listmodel.hpp"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/inttextfield.h"

@@ -24,6 +24,8 @@
 
 #include "client.h"
 
+#include "gui/gui.h"
+
 #include "events/keyevent.h"
 
 #include "input/keydata.h"
@@ -31,8 +33,6 @@
 #include "utils/dtor.h"
 
 #include "listeners/actionlistener.h"
-
-#include "input/key.h"
 
 #include "render/graphics.h"
 

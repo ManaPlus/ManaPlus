@@ -24,6 +24,8 @@
 #include "gui/widgets/characterdisplay.h"
 #include "gui/widgets/label.h"
 
+#include "utils/stringutils.h"
+
 #include "debug.h"
 
 CharacterViewSmall::CharacterViewSmall(CharSelectDialog *const widget,

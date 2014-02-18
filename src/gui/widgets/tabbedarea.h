@@ -66,8 +66,6 @@
 #ifndef GUI_WIDGETS_TABBEDAREA_H
 #define GUI_WIDGETS_TABBEDAREA_H
 
-#include "gui/widgets/widget2.h"
-
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"

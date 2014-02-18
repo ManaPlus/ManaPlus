@@ -33,6 +33,8 @@
 
 #include "utils/stringutils.h"
 
+#include "net/messagein.h"
+
 #include "debug.h"
 
 /** job dependend identifiers (?)  */

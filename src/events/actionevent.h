@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef EVENTS_ACTIONEVENT_HPP
-#define EVENTS_ACTIONEVENT_HPP
+#ifndef EVENTS_ACTIONEVENT_H
+#define EVENTS_ACTIONEVENT_H
 
 #include "events/event.h"
 
@@ -136,4 +136,4 @@ class ActionEvent final : public Event
         std::string mId;
 };
 
-#endif  // EVENTS_ACTIONEVENT_HPP
+#endif  // EVENTS_ACTIONEVENT_H

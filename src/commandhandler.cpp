@@ -22,6 +22,8 @@
 
 #include "commandhandler.h"
 
+#include "commands.h"
+
 #include "input/inputmanager.h"
 
 #include "gui/widgets/tabs/chattab.h"

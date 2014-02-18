@@ -25,6 +25,13 @@
 
 #include "net/messagein.h"
 
+#include "localconsts.h"
+
+namespace Net
+{
+    class MessageIn;
+}
+
 namespace Ea
 {
 

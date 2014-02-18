@@ -69,15 +69,7 @@
 
 #include "gui/font.h"
 
-#include "gui/base/basiccontainer.hpp"
-#include "gui/base/listmodel.hpp"
-
-#include "input/key.h"
-#include "input/mouseinput.h"
-
 #include "listeners/selectionlistener.h"
-
-#include "render/graphics.h"
 
 #include "debug.h"
 

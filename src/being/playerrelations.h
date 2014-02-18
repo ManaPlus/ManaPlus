@@ -25,14 +25,13 @@
 
 #include "utils/stringvector.h"
 
-#include "listeners/playerrelationslistener.h"
-
 #include <list>
 #include <map>
 
 #include "localconsts.h"
 
 class Being;
+class PlayerRelationsListener;
 
 struct PlayerRelation final
 {

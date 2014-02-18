@@ -26,10 +26,9 @@
 #include "gui/base/color.hpp"
 #include "gui/base/gui.hpp"
 
-#include "listeners/focuslistener.h"
-
 #include "localconsts.h"
 
+class FocusListener;
 class Graphics;
 class GuiConfigListener;
 class ImageSet;

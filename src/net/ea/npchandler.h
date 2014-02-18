@@ -23,10 +23,16 @@
 #ifndef NET_EA_NPCHANDLER_H
 #define NET_EA_NPCHANDLER_H
 
-#include "net/messagein.h"
 #include "net/npchandler.h"
 
+#include "localconsts.h"
+
 class NpcDialog;
+
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace Ea
 {

@@ -69,6 +69,8 @@
 
 #include "input/keydata.h"
 
+#include "gui/gui.h"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabs/tab.h"

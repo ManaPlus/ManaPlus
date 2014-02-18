@@ -95,6 +95,9 @@ namespace gcn
          */
         Rectangle(const int x, const int y, const int width, const int height);
 
+        virtual ~Rectangle()
+        { }
+
         /**
          * Sets the dimension of a rectangle.
          *

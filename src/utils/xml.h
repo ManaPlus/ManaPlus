@@ -23,8 +23,8 @@
 #ifndef UTILS_XML_H
 #define UTILS_XML_H
 
-#include <libxml/xmlwriter.h>
 #include <libxml/tree.h>
+#include <libxml/xmlwriter.h>
 
 #include <string>
 

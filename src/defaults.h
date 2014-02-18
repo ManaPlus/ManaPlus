@@ -22,12 +22,12 @@
 #ifndef DEFAULTS_H
 #define DEFAULTS_H
 
-#include "variabledata.h"
-
 #include <map>
 #include <string>
 
 #include "localconsts.h"
+
+class VariableData;
 
 typedef std::map<std::string, VariableData*> DefaultsData;
 

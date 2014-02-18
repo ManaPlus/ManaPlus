@@ -35,6 +35,8 @@
 #include "gui/specialswindow.h"
 #endif
 
+#include "gui/widgets/button.h"
+
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 

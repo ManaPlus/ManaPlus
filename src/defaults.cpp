@@ -22,6 +22,7 @@
 #include "defaults.h"
 
 #include "graphicsmanager.h"
+#include "variabledata.h"
 
 #include "being/being.h"
 

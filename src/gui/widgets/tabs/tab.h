@@ -66,8 +66,6 @@
 #ifndef GUI_WIDGETS_TABS_TAB_H
 #define GUI_WIDGETS_TABS_TAB_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/basiccontainer.hpp"
 
 #include "listeners/mouselistener.h"

@@ -23,11 +23,9 @@
 #ifndef BEING_BEING_H
 #define BEING_BEING_H
 
-#include "equipment.h"
+//#include "equipment.h"
 
 #include "resources/beinginfo.h"
-
-#include "gui/base/color.hpp"
 
 #include <map>
 
@@ -45,6 +43,7 @@ static const int DEFAULT_BEING_HEIGHT = 32;
 
 class AnimatedSprite;
 class BeingCacheEntry;
+class Equipment;
 class FlashText;
 class Guild;
 class ItemInfo;
@@ -54,6 +53,11 @@ class SpeechBubble;
 class Text;
 
 struct ParticleInfo;
+
+namespace gcn
+{
+    class Color;
+}
 
 extern volatile int cur_time;
 

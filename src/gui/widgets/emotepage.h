@@ -21,8 +21,6 @@
 #ifndef GUI_WIDGETS_EMOTEPAGE_H
 #define GUI_WIDGETS_EMOTEPAGE_H
 
-#include "gui/widgets/widget2.h"
-
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 

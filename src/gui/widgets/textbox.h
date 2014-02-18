@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_TEXTBOX_H
 #define GUI_WIDGETS_TEXTBOX_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/widgets/textbox.hpp"
 
 #include "localconsts.h"

@@ -24,8 +24,7 @@
 
 #include "net/net.h"
 
-#include "net/tmwa/chathandler.h"
-#include "net/tmwa/protocol.h"
+#include "net/chathandler.h"
 
 #include "debug.h"
 

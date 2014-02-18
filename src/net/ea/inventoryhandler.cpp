@@ -29,6 +29,8 @@
 
 #include "gui/windows/ministatuswindow.h"
 
+#include "net/messagein.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "debug.h"

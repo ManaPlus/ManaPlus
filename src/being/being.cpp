@@ -40,6 +40,7 @@
 #include "particle/particleinfo.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 
 #include "gui/popups/speechbubble.h"
 

@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GCN_KEYLISTENER_HPP
-#define GCN_KEYLISTENER_HPP
+#ifndef LISTENERS_KEYLISTENER_H
+#define LISTENERS_KEYLISTENER_H
 
 #include "events/keyevent.h"
 
@@ -113,4 +113,4 @@ class KeyListener
         { }
 };
 
-#endif  // end GCN_KEYLISTENER_HPP
+#endif  // LISTENERS_KEYLISTENER_H

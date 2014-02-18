@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef EVENTS_INPUTEVENT_HPP
-#define EVENTS_INPUTEVENT_HPP
+#ifndef EVENTS_INPUTGUIEVENT_H
+#define EVENTS_INPUTGUIEVENT_H
 
 #include "events/event.h"
 
@@ -184,4 +184,4 @@ class InputGuiEvent: public Event
         bool mIsConsumed;
 };
 
-#endif  // EVENTS_INPUTEVENT_HPP
+#endif  // EVENTS_INPUTGUIEVENT_H

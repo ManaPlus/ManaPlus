@@ -25,8 +25,6 @@
 
 #include "render/graphics.h"
 
-#include "gui/widgets/widget2.h"
-
 #include "listeners/widgetlistener.h"
 
 #include "gui/base/widgets/window.hpp"

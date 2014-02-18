@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef UTILS_SDLPIXEL_HPP
-#define UTILS_SDLPIXEL_HPP
+#ifndef UTILS_SDLPIXEL_H
+#define UTILS_SDLPIXEL_H
 
 #include "SDL.h"
 #include "gui/base/color.hpp"
@@ -229,4 +229,4 @@ inline void SDLputPixelAlpha(SDL_Surface* surface, int x, int y,
     SDL_UnlockSurface(surface);
 }
 
-#endif  // UTILS_SDLPIXEL_HPP
+#endif  // UTILS_SDLPIXEL_H

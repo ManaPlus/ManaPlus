@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef EVENTS_SELECTIONEVENT_HPP
-#define EVENTS_SELECTIONEVENT_HPP
+#ifndef EVENTS_SELECTIONEVENT_H
+#define EVENTS_SELECTIONEVENT_H
 
 #include "events/event.h"
 
@@ -98,4 +98,4 @@ class SelectionEvent final: public Event
         { }
 };
 
-#endif  // EVENTS_SELECTIONEVENT_HPP
+#endif  // EVENTS_SELECTIONEVENT_H

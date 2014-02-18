@@ -28,7 +28,9 @@
 #include "utils/physfstools.h"
 #include "utils/stringutils.h"
 
+#ifdef USE_X11
 #include "resources/resourcemanager.h"
+#endif
 
 #ifdef __native_client__
 #include <limits.h>

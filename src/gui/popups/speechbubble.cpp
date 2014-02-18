@@ -24,11 +24,11 @@
 #include "gui/popups/speechbubble.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/textbox.h"
 
 #include "debug.h"
 

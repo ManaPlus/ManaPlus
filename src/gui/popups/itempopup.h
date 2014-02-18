@@ -29,6 +29,7 @@
 #include "resources/iteminfo.h"
 
 class Icon;
+class Item;
 class Label;
 class TextBox;
 

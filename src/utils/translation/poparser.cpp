@@ -24,6 +24,8 @@
 
 #include "utils/stringutils.h"
 
+#include "utils/translation/podict.h"
+
 #include "logger.h"
 
 #include "debug.h"

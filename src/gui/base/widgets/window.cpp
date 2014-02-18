@@ -67,10 +67,6 @@
 
 #include "gui/base/widgets/window.hpp"
 
-#include "gui/font.h"
-
-#include "input/mouseinput.h"
-
 #include "render/graphics.h"
 
 #include "debug.h"

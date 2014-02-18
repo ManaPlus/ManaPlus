@@ -25,11 +25,15 @@
 
 #include "localconsts.h"
 
-#include "gui/base/widgets/container.hpp"
-
 #include <vector>
 
 class LayoutCell;
+
+namespace gcn
+{
+    class Container;
+    class Widget;
+}
 
 /**
  * This class is a helper for adding widgets to nested tables in a window.

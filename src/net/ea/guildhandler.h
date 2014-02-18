@@ -23,12 +23,15 @@
 #define NET_EA_GUILDHANDLER_H
 
 #include "net/guildhandler.h"
-#include "net/messagein.h"
 
-#include "net/ea/gui/guildtab.h"
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace Ea
 {
+class GuildTab;
 
 class GuildHandler : public Net::GuildHandler
 {

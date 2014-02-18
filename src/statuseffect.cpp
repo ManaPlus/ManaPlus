@@ -22,11 +22,14 @@
 
 #include "statuseffect.h"
 
+#include "animatedsprite.h"
 #include "configuration.h"
 #include "logger.h"
 #include "soundmanager.h"
 
 #include "gui/widgets/tabs/chattab.h"
+
+#include "particle/particle.h"
 
 #include "resources/beingcommon.h"
 

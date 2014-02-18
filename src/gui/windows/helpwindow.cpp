@@ -24,7 +24,7 @@
 
 #include "configuration.h"
 
-#include "gui/font.h"
+#include "gui/gui.h"
 
 #include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/setupwindow.h"
@@ -73,7 +73,8 @@ HelpWindow::HelpWindow() :
     mBrowserBox->setOpaque(false);
 
     mBrowserBox->setLinkHandler(this);
-    mBrowserBox->setFont(gui->getHelpFont());
+    if (gui)
+        mBrowserBox->setFont(gui->getHelpFont());
     mBrowserBox->setProcessVersion(true);
     mBrowserBox->setEnableImages(true);
     mBrowserBox->setEnableKeys(true);

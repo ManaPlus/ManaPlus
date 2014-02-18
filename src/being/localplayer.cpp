@@ -23,6 +23,7 @@
 #include "being/localplayer.h"
 
 #include "actormanager.h"
+#include "animatedsprite.h"
 #include "client.h"
 #include "configuration.h"
 #include "dropshortcut.h"
@@ -42,7 +43,6 @@
 
 #include "input/keyboardconfig.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/viewport.h"
 
@@ -51,7 +51,6 @@
 #include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/shopwindow.h"
-#include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/updaterwindow.h"
 
@@ -84,6 +83,8 @@ static const int MAX_TICK_VALUE = INT_MAX / 2;
 typedef std::map<int, Guild*>::const_iterator GuildMapCIter;
 
 LocalPlayer *player_node = nullptr;
+
+class SkillDialog;
 
 extern std::list<BeingCacheEntry*> beingInfoCache;
 extern OkDialog *weightNotice;

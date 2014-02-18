@@ -21,7 +21,10 @@
 #ifndef GUI_WIDGETS_TABS_SETUP_TOUCH_H
 #define GUI_WIDGETS_TABS_SETUP_TOUCH_H
 
-#include "gui/widgets/setuptouchitem.h"
+#include "gui/widgets/tabs/setuptabscroll.h"
+
+class NamesModel;
+class TouchActionsModel;
 
 class Setup_Touch final : public SetupTabScroll
 {

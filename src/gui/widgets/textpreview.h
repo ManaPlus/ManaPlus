@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_TEXTPREVIEW_H
 #define GUI_WIDGETS_TEXTPREVIEW_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/widget.hpp"
 
 #include "localconsts.h"

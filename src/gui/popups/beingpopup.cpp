@@ -25,6 +25,7 @@
 #include "being/playerrelations.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 
 #include "gui/widgets/label.h"
 

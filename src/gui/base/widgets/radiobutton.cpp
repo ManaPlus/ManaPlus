@@ -67,13 +67,6 @@
 
 #include "gui/base/widgets/radiobutton.hpp"
 
-#include "gui/font.h"
-
-#include "input/key.h"
-#include "input/mouseinput.h"
-
-#include "render/graphics.h"
-
 #include "debug.h"
 
 namespace gcn

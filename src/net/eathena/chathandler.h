@@ -26,10 +26,10 @@
 #include "net/ea/chathandler.h"
 
 #include "net/eathena/messagehandler.h"
-#include "net/eathena/messageout.h"
 
 namespace EAthena
 {
+class MessageOut;
 
 class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 {

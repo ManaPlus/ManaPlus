@@ -40,8 +40,7 @@
 #include "input/inputmanager.h"
 
 #include "gui/focushandler.h"
-#include "gui/font.h"
-#include "gui/sdlinput.h"
+#include "gui/gui.h"
 #include "gui/viewport.h"
 
 #include "gui/windows/emotewindow.h"

@@ -33,7 +33,10 @@
 #include "input/inputmanager.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 #include "gui/viewport.h"
+
+#include "gui/base/listmodel.hpp"
 
 #include "gui/popups/textpopup.h"
 

@@ -27,6 +27,8 @@
 
 #include "gui/widgets/tabs/setuptab.h"
 
+#include "listeners/playerrelationslistener.h"
+
 class Button;
 class CheckBox;
 class DropDown;

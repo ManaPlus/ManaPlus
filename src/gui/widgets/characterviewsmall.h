@@ -25,6 +25,8 @@
 
 #include "localconsts.h"
 
+class Label;
+
 class CharacterViewSmall final : public CharacterViewBase
 {
     public:

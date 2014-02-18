@@ -24,6 +24,8 @@
 
 #include "graphicsvertexes.h"
 
+#include "gui/gui.h"
+
 #include "debug.h"
 
 float ShortcutContainer::mAlpha = 1.0;

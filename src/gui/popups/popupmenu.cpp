@@ -23,6 +23,7 @@
 #include "gui/popups/popupmenu.h"
 
 #include "actormanager.h"
+#include "commands.h"
 #include "commandhandler.h"
 #include "configuration.h"
 #include "dropshortcut.h"
@@ -56,6 +57,7 @@
 
 #include "gui/viewport.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/tabs/chattab.h"
 #include "gui/widgets/progressbar.h"

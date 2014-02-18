@@ -35,7 +35,6 @@
 class Button;
 class CharacterDisplay;
 class CharacterViewBase;
-class Label;
 class LoginData;
 class TextDialog;
 

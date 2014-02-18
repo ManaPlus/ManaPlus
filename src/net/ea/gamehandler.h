@@ -24,7 +24,11 @@
 #define NET_EA_GAMEHANDLER_H
 
 #include "net/gamehandler.h"
-#include "net/messagein.h"
+
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace Ea
 {

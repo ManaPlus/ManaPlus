@@ -24,6 +24,7 @@
 
 #include "logger.h"
 
+#include "net/eathena/messagehandler.h"
 #include "net/eathena/messagein.h"
 #include "net/eathena/protocol.h"
 

@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_CHECKBOX_H
 #define GUI_WIDGETS_CHECKBOX_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/widgets/checkbox.hpp"
 
 #include "localconsts.h"

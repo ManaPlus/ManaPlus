@@ -24,6 +24,7 @@
 #include "gui/popups/spellpopup.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 
 #include "gui/widgets/label.h"
 

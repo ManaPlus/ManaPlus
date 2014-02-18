@@ -33,6 +33,7 @@
 
 #include "render/graphics.h"
 
+#include "resources/image.h"
 #include "resources/resourcemanager.h"
 
 #include "gui/font.h"

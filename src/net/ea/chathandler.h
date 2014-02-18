@@ -24,9 +24,13 @@
 #define NET_EA_CHATHANDLER_H
 
 #include "net/chathandler.h"
-#include "net/messagein.h"
 
 #include <queue>
+
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace Ea
 {

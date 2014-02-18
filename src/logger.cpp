@@ -22,8 +22,9 @@
 
 #include "logger.h"
 
-#include <iostream>
 #include <sstream>
+
+#include <iostream>
 
 #ifdef WIN32
 #include <windows.h>

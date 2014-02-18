@@ -32,6 +32,7 @@
 #include "being/playerrelations.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/itemamountwindow.h"

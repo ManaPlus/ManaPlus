@@ -31,10 +31,9 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "events/inputevent.h"
-
 #include "input/inputmanager.h"
 
+#include "gui/gui.h"
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
@@ -45,7 +44,6 @@
 #include "gui/windows/questswindow.h"
 #include "gui/windows/quitdialog.h"
 #include "gui/windows/whoisonline.h"
-
 #include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/chatwindow.h"

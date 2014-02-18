@@ -21,7 +21,6 @@
 #ifndef GUI_WIDGETS_WIDGET2_H
 #define GUI_WIDGETS_WIDGET2_H
 
-#include "gui/gui.h"
 #include "gui/theme.h"
 
 #include "render/renderers.h"

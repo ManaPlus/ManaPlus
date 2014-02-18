@@ -29,6 +29,8 @@
 
 #include "input/keydata.h"
 
+#include "gui/gui.h"
+
 #include "resources/image.h"
 
 #include "debug.h"

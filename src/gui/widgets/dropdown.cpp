@@ -34,6 +34,7 @@
 #include "resources/image.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 
 #include <algorithm>
 

@@ -23,11 +23,12 @@
 #ifndef STATUSEFFECT_H
 #define STATUSEFFECT_H
 
-#include "animatedsprite.h"
-
-#include "particle/particle.h"
+#include <string>
 
 #include "localconsts.h"
+
+class AnimatedSprite;
+class Particle;
 
 class StatusEffect final
 {

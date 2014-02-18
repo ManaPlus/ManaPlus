@@ -38,7 +38,7 @@ class DropShortcutContainer final : public ShortcutContainer
         /**
          * Constructor. Initializes the graphic.
          */
-        DropShortcutContainer(Widget2 *const widget);
+        explicit DropShortcutContainer(Widget2 *const widget);
 
         A_DELETE_COPY(DropShortcutContainer)
 

@@ -29,6 +29,7 @@
 #include "being/actorsprite.h"
 
 #include "listeners/actionlistener.h"
+
 #include "gui/base/listmodel.hpp"
 
 #include "localconsts.h"

@@ -64,7 +64,6 @@
 #ifndef GCN_TEXTBOX_HPP
 #define GCN_TEXTBOX_HPP
 
-#include <ctime>
 #include <string>
 #include <vector>
 

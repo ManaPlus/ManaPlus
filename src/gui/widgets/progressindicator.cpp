@@ -23,6 +23,8 @@
 
 #include "simpleanimation.h"
 
+#include "gui/gui.h"
+
 #include "resources/animation.h"
 #include "resources/imageset.h"
 

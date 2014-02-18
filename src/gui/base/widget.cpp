@@ -71,17 +71,10 @@
 
 #include "events/event.h"
 
-#include "gui/base/basiccontainer.hpp"
-
 #include "gui/focushandler.h"
-
-#include "input/keyinput.h"
-#include "input/mouseinput.h"
 
 #include "listeners/actionlistener.h"
 #include "listeners/deathlistener.h"
-#include "listeners/keylistener.h"
-#include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 
 #include "render/graphics.h"

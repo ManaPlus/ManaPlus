@@ -64,7 +64,6 @@
 #ifndef GCN_BASICCONTAINER_HPP
 #define GCN_BASICCONTAINER_HPP
 
-#include <list>
 #include <vector>
 
 #include "gui/base/widget.hpp"
@@ -85,7 +84,7 @@ namespace gcn
                            public DeathListener
     {
     public:
-        BasicContainer(const Widget2 *const widget) :
+        explicit BasicContainer(const Widget2 *const widget) :
             Widget(widget),
             DeathListener(),
             mWidgets()

@@ -31,6 +31,7 @@
 #include "gui/windows/okdialog.h"
 
 #include "gui/widgets/button.h"
+#include "gui/windows/charselectdialog.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/radiobutton.h"

@@ -27,6 +27,7 @@
 #include "being/localplayer.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
@@ -166,7 +167,7 @@ QuestsWindow::QuestsWindow() :
     mText->setLinkHandler(mItemLinkHandler);
     mTextScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     mQuestsListBox->setWidth(500);
-    if (gui->getNpcFont()->getHeight() < 20)
+    if (gui && gui->getNpcFont()->getHeight() < 20)
         mQuestsListBox->setRowHeight(20);
     else
         mQuestsListBox->setRowHeight(gui->getNpcFont()->getHeight());

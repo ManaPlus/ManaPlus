@@ -67,11 +67,6 @@
 
 #include "gui/base/widgets/button.hpp"
 
-#include "gui/font.h"
-
-#include "input/key.h"
-#include "input/mouseinput.h"
-
 #include "events/mouseevent.h"
 
 #include "render/graphics.h"

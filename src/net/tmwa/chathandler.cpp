@@ -24,8 +24,7 @@
 
 #include "being/localplayer.h"
 
-#include "gui/widgets/tabs/chattab.h"
-
+#include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
 #include <string>

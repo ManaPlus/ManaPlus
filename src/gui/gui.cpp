@@ -40,6 +40,8 @@
 
 #include "events/keyevent.h"
 
+#include "listeners/focuslistener.h"
+
 #include "input/keydata.h"
 #include "input/keyinput.h"
 #include "input/mouseinput.h"

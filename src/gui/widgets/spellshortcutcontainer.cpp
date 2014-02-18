@@ -32,7 +32,6 @@
 
 #include "gui/popups/spellpopup.h"
 
-#include "gui/windows/inventorywindow.h"
 #include "gui/windows/shortcutwindow.h"
 
 #include "resources/image.h"

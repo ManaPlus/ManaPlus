@@ -24,13 +24,17 @@
 #define NET_EA_LOGINHANDLER_H
 
 #include "net/loginhandler.h"
-#include "net/messagein.h"
 
 #include "net/ea/token.h"
 
 #include <string>
 
 class LoginData;
+
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace Ea
 {

@@ -24,6 +24,7 @@
 #include "actormanager.h"
 #include "notifications.h"
 #include "notifymanager.h"
+#include "party.h"
 
 #include "being/localplayer.h"
 

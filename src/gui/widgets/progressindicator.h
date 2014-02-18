@@ -22,8 +22,6 @@
 #ifndef GUI_WIDGETS_PROGRESSINDICATOR_H
 #define GUI_WIDGETS_PROGRESSINDICATOR_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/widget.hpp"
 
 #include "localconsts.h"
@@ -37,7 +35,7 @@ class SimpleAnimation;
 class ProgressIndicator final : public gcn::Widget
 {
     public:
-        ProgressIndicator(Widget2 *const widget);
+        explicit ProgressIndicator(Widget2 *const widget);
 
         A_DELETE_COPY(ProgressIndicator)
 

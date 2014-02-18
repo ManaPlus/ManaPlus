@@ -23,8 +23,14 @@
 #ifndef NET_EA_SKILLHANDLER_H
 #define NET_EA_SKILLHANDLER_H
 
-#include "net/messagein.h"
 #include "net/skillhandler.h"
+
+#include "localconsts.h"
+
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace Ea
 {

@@ -44,6 +44,7 @@
 #include "gui/widgets/tabs/setup_video.h"
 #include "gui/widgets/tabs/setup_visual.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"
 

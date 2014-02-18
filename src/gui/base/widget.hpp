@@ -89,8 +89,6 @@ class WidgetListener;
 
 namespace gcn
 {
-    class BasicContainer;
-
     /**
      * Abstract class for widgets of Guichan. It contains basic functions 
      * every widget should have.
@@ -110,7 +108,7 @@ namespace gcn
          * focusable as default, therefore, widgets that are supposed to be
          * focusable should overide this default in their own constructor.
          */
-        Widget(const Widget2 *const widget);
+        explicit Widget(const Widget2 *const widget);
 
         A_DELETE_COPY(Widget)
 

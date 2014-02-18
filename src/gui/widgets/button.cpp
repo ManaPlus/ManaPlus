@@ -29,9 +29,11 @@
 
 #include "input/keydata.h"
 
+#include "resources/image.h"
 #include "resources/imageset.h"
 
 #include "gui/font.h"
+#include "gui/gui.h"
 
 #include "debug.h"
 

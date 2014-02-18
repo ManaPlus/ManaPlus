@@ -23,6 +23,8 @@
 #include "gui/font.h"
 #include "gui/gui.h"
 
+#include "gui/base/listmodel.hpp"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 

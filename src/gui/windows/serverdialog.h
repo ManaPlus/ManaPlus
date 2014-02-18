@@ -24,7 +24,6 @@
 #define GUI_WINDOWS_SERVERDIALOG_H
 
 #include "gui/widgets/window.h"
-#include "gui/widgets/checkbox.h"
 
 #include "net/download.h"
 #include "net/serverinfo.h"
@@ -41,6 +40,7 @@
 #include <vector>
 
 class Button;
+class CheckBox;
 class Label;
 class ListBox;
 class ServerDialog;

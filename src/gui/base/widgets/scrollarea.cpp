@@ -67,9 +67,6 @@
 
 #include "gui/base/widgets/scrollarea.hpp"
 
-
-#include "render/graphics.h"
-
 #include "debug.h"
 
 namespace gcn

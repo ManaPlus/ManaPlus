@@ -24,8 +24,13 @@
 #define NET_EA_CHARSERVERHANDLER_H
 
 #include "net/charserverhandler.h"
-#include "net/messagein.h"
-#include "net/serverinfo.h"
+
+class ServerInfo;
+
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace Ea
 {

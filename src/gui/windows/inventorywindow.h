@@ -37,7 +37,6 @@ class Button;
 class DropDown;
 class Item;
 class ItemContainer;
-class Label;
 class LayoutCell;
 class ProgressBar;
 class SortListModelInv;

@@ -24,8 +24,7 @@
 
 #include "being/localplayer.h"
 
-#include "gui/widgets/tabs/chattab.h"
-
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include <string>

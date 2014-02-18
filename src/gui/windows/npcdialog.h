@@ -45,7 +45,6 @@ class ItemContainer;
 class NpcDialog;
 class PlayerBox;
 class ScrollArea;
-class TextBox;
 class TextField;
 
 typedef std::map<int, NpcDialog*> NpcDialogs;

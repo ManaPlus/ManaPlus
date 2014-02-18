@@ -68,8 +68,12 @@
 #include "client.h"
 #include "graphicsvertexes.h"
 
+#include "gui/gui.h"
+
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"
+
+#include "resources/image.h"
 
 #include "debug.h"
 

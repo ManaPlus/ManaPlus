@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef EVENTS_MOUSEEVENT_HPP
-#define EVENTS_MOUSEEVENT_HPP
+#ifndef EVENTS_MOUSEEVENT_H
+#define EVENTS_MOUSEEVENT_H
 
 #include "events/inputguievent.h"
 
@@ -237,4 +237,4 @@ class MouseEvent: public InputGuiEvent
         friend class gcn::Gui;
 };
 
-#endif  // EVENTS_MOUSEEVENT_HPP
+#endif  // EVENTS_MOUSEEVENT_H

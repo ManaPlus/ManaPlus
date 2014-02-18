@@ -30,6 +30,10 @@
 
 #include "gui/windows/socialwindow.h"
 
+#include "net/messagein.h"
+
+#include "net/ea/gui/guildtab.h"
+
 #include "debug.h"
 
 namespace Ea

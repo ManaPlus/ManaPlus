@@ -25,10 +25,15 @@
 #include "configuration.h"
 #include "notifications.h"
 #include "notifymanager.h"
+#include "party.h"
 
 #include "being/localplayer.h"
 
 #include "gui/windows/socialwindow.h"
+
+#include "net/messagein.h"
+
+#include "net/ea/gui/partytab.h"
 
 #include "debug.h"
 

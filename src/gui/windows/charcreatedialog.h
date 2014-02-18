@@ -25,11 +25,13 @@
 
 #include "being/being.h"
 
-#include "gui/windows/charselectdialog.h"
+#include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
 
+class Button;
+class CharSelectDialog;
 class Label;
 class PlayerBox;
 class RadioButton;

@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_LISTBOX_H
 #define GUI_WIDGETS_LISTBOX_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/widgets/listbox.hpp"
 
 #include "localconsts.h"

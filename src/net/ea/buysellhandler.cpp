@@ -39,8 +39,6 @@
 #include "net/chathandler.h"
 #include "net/net.h"
 
-#include "net/ea/eaprotocol.h"
-
 #include "utils/timer.h"
 
 #include "debug.h"

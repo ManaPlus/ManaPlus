@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_SCROLLAREA_H
 #define GUI_WIDGETS_SCROLLAREA_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/widgets/scrollarea.hpp"
 
 #include "listeners/widgetlistener.h"

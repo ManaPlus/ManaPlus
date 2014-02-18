@@ -33,6 +33,8 @@
 #include "net/net.h"
 #include "gui/viewport.h"
 
+#include "gui/base/listmodel.hpp"
+
 #include "gui/popups/itempopup.h"
 
 #include "gui/windows/shopwindow.h"

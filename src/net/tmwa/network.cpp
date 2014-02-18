@@ -24,6 +24,7 @@
 
 #include "logger.h"
 
+#include "net/tmwa/messagehandler.h"
 #include "net/tmwa/messagein.h"
 #include "net/tmwa/protocol.h"
 

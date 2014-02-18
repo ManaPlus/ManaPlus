@@ -29,6 +29,8 @@
 
 #include "localconsts.h"
 
+class Item;
+
 namespace Net
 {
 class TradeHandler

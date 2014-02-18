@@ -33,6 +33,8 @@
 
 #include "utils/sdlpixel.h"
 
+#include "resources/image.h"
+
 #include "debug.h"
 
 #if SDL_BYTEORDER == SDL_LIL_ENDIAN

@@ -28,9 +28,8 @@
 #include "soundconsts.h"
 #include "soundmanager.h"
 
+#include "net/guildhandler.h"
 #include "net/net.h"
-
-#include "net/ea/guildhandler.h"
 
 #include "utils/gettext.h"
 

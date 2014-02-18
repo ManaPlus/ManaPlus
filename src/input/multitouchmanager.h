@@ -25,7 +25,9 @@
 
 #include "localconsts.h"
 
+#ifdef USE_SDL2
 union SDL_Event;
+#endif
 
 struct MultiTouchEvent
 {

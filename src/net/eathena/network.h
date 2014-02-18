@@ -25,8 +25,6 @@
 
 #include "net/ea/network.h"
 
-#include "net/eathena/messagehandler.h"
-
 /**
  * Protocol version, reported to the eAthena char and mapserver who can adjust
  * the protocol accordingly.
@@ -35,6 +33,7 @@
 
 namespace EAthena
 {
+class MessageHandler;
 
 class Network final : public Ea::Network
 {

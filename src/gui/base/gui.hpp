@@ -68,7 +68,6 @@
 #include <deque>
 
 #include "events/keyevent.h"
-#include "events/mouseevent.h"
 
 #include "input/mouseinput.h"
 

@@ -64,11 +64,7 @@
 #ifndef GCN_CONTAINER_HPP
 #define GCN_CONTAINER_HPP
 
-#include <list>
-
 #include "gui/base/basiccontainer.hpp"
-
-#include "render/graphics.h"
 
 namespace gcn
 {
@@ -89,7 +85,7 @@ namespace gcn
          *
          * @see setOpaque, isOpaque
          */
-        Container(const Widget2 *const widget);
+        explicit Container(const Widget2 *const widget);
 
         /**
          * Destructor.

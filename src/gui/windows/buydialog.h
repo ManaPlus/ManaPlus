@@ -35,7 +35,6 @@ class ShopListBox;
 class SortListModelBuy;
 class IntTextField;
 class Label;
-class ListBox;
 class ScrollArea;
 class Slider;
 

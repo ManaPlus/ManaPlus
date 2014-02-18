@@ -71,8 +71,6 @@
 
 #include "gui/focushandler.h"
 
-#include "input/mouseinput.h"
-
 #include "render/graphics.h"
 
 #include "debug.h"

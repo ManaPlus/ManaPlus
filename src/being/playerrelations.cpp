@@ -30,6 +30,8 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
+#include "listeners/playerrelationslistener.h"
+
 #include <algorithm>
 
 #include "debug.h"

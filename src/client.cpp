@@ -85,6 +85,8 @@
 #include "net/netconsts.h"
 #include "net/partyhandler.h"
 
+#include "particle/particle.h"
+
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
 #include "resources/surfaceimagehelper.h"
@@ -112,7 +114,6 @@
 #include "utils/files.h"
 #include "utils/fuzzer.h"
 #include "utils/gettext.h"
-#include "utils/files.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/physfstools.h"

@@ -38,9 +38,11 @@
 
 #endif
 
-#include "resources/image.h"
+#include <SDL_video.h>
 
 #include <vector>
+
+class Image;
 
 struct DoubleRect final
 {

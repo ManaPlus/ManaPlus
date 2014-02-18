@@ -75,11 +75,10 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GUI_INPUT_H
-#define GUI_INPUT_H
+#ifndef GUI_SDLINPUT_H
+#define GUI_SDLINPUT_H
 
 #include "input/keyinput.h"
-#include "input/mouseinput.h"
 
 #include <SDL_events.h>
 
@@ -163,4 +162,4 @@ protected:
     bool mMouseInWindow;
 };
 
-#endif  // GUI_INPUT_H
+#endif  // GUI_SDLINPUT_H

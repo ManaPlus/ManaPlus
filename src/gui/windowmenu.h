@@ -26,9 +26,9 @@
 #include "listeners/configlistener.h"
 
 #include "gui/widgets/container.h"
-#include "gui/widgets/button.h"
 
 #include "listeners/actionlistener.h"
+#include "listeners/mouselistener.h"
 #include "listeners/selectionlistener.h"
 
 #include "localconsts.h"
@@ -36,8 +36,8 @@
 #include <map>
 #include <vector>
 
+class Button;
 class TextPopup;
-class Window;
 
 struct ButtonInfo final
 {

@@ -24,6 +24,8 @@
 
 #include "units.h"
 
+#include "gui/gui.h"
+
 #include "gui/windows/charselectdialog.h"
 
 #include "gui/popups/textpopup.h"
@@ -32,8 +34,7 @@
 #include "gui/widgets/layouthelper.h"
 
 #include "utils/gettext.h"
-
-#include <SDL_mouse.h>
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

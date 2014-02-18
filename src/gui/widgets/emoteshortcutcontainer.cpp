@@ -34,6 +34,8 @@
 
 #include "resources/image.h"
 
+#include "resources/db/emotedb.h"
+
 #include "debug.h"
 
 static const int MAX_ITEMS = 48;

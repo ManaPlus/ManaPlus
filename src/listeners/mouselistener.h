@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GCN_MOUSELISTENER_HPP
-#define GCN_MOUSELISTENER_HPP
+#ifndef LISTENERS_MOUSELISTENER_H
+#define LISTENERS_MOUSELISTENER_H
 
 #include "events/mouseevent.h"
 
@@ -190,4 +190,4 @@ class MouseListener
         { }
 };
 
-#endif  // end GCN_MOUSELISTENER_HPP
+#endif  // LISTENERS_MOUSELISTENER_H

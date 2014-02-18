@@ -33,10 +33,14 @@
 #include "gui/windows/inventorywindow.h"
 
 #include "net/inventoryhandler.h"
-#include "net/messagein.h"
 
 #include <vector>
 #include <queue>
+
+namespace Net
+{
+    class MessageIn;
+}
 
 namespace Ea
 {
