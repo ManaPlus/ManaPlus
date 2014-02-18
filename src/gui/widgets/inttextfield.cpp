@@ -71,7 +71,7 @@ void IntTextField::keyPressed(KeyEvent &event)
     if (val != Key::TEXTINPUT)
         return;
 
-    const std::string str = event->getText();
+    const std::string str = event.getText();
     if (str.empty())
         return;
     const size_t sz = str.size();

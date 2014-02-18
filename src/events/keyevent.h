@@ -67,6 +67,8 @@
 #include "events/inputguievent.h"
 #include "input/key.h"
 
+#include <string>
+
 namespace gcn
 {
     class Widget;

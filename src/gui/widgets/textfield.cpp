@@ -201,7 +201,7 @@ void TextField::keyPressed(KeyEvent &keyEvent)
 #ifdef USE_SDL2
     if (val == Key::TEXTINPUT)
     {
-        std::string str = keyEvent->getText();
+        std::string str = keyEvent.getText();
         mText.insert(mCaretPosition, str);
         mCaretPosition += str.size();
         keyEvent.consume();
