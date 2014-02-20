@@ -97,15 +97,15 @@ class MouseEvent: public InputGuiEvent
           *                   It's set to zero if another button is used.
           */
         MouseEvent(gcn::Widget *const source,
-                    const bool shiftPressed,
-                    const bool controlPressed,
-                    const bool altPressed,
-                    const bool metaPressed,
-                    const unsigned int type,
-                    const unsigned int button,
-                    const int x,
-                    const int y,
-                    const int clickCount) :
+                   const bool shiftPressed,
+                   const bool controlPressed,
+                   const bool altPressed,
+                   const bool metaPressed,
+                   const unsigned int type,
+                   const unsigned int button,
+                   const int x,
+                   const int y,
+                   const int clickCount) :
             InputGuiEvent(source,
                           shiftPressed,
                           controlPressed,

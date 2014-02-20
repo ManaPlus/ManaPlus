@@ -26,7 +26,6 @@
 #include "localconsts.h"
 
 #include "gui/widgets/tablemodel.h"
-#include "gui/widgets/widget2.h"
 
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"

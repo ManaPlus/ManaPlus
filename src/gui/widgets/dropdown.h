@@ -23,10 +23,7 @@
 #ifndef GUI_WIDGETS_DROPDOWN_H
 #define GUI_WIDGETS_DROPDOWN_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/basiccontainer.hpp"
-//#include "gui/base/listmodel.hpp"
 
 #include "listeners/actionlistener.h"
 #include "listeners/focuslistener.h"
@@ -37,10 +34,7 @@
 #include "localconsts.h"
 
 class Image;
-class ImageRect;
-class ListBox;
 class PopupList;
-class ScrollArea;
 class Skin;
 
 namespace gcn

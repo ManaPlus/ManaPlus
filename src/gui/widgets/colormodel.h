@@ -23,12 +23,16 @@
 
 #include "utils/stringvector.h"
 
-#include "gui/base/color.hpp"
 #include "gui/base/listmodel.hpp"
 
 #include "localconsts.h"
 
 class Widget2;
+
+namespace gcn
+{
+    class Color;
+}
 
 struct ColorPair
 {

@@ -66,7 +66,6 @@
 
 #include <list>
 
-#include "gui/base/listmodel.hpp"
 #include "gui/base/widget.hpp"
 
 #include "listeners/keylistener.h"
@@ -76,6 +75,8 @@ class SelectionListener;
 
 namespace gcn
 {
+    class ListModel;
+
     /**
      * An implementation of a list box where an item can be selected.
      *

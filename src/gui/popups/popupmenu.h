@@ -26,14 +26,11 @@
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
 
-#include "being/actorsprite.h"
-
 #include "listeners/actionlistener.h"
-
-#include "gui/base/listmodel.hpp"
 
 #include "localconsts.h"
 
+class ActorSprite;
 class Being;
 class BrowserBox;
 class Button;
@@ -47,6 +44,11 @@ class TextDialog;
 class TextField;
 class ProgressBar;
 class Window;
+
+namespace gcn
+{
+    class ListModel;
+}
 
 class RenameListener final : public ActionListener
 {

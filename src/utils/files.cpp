@@ -22,6 +22,8 @@
 
 #if defined(ANDROID) || defined(__native_client__)
 #include "resources/resourcemanager.h"
+
+#include "utils/mkdir.h"
 #endif
 
 #include "utils/physfstools.h"

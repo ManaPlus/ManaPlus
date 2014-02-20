@@ -69,6 +69,8 @@
 
 #include "gui/font.h"
 
+#include "gui/base/listmodel.hpp"
+
 #include "listeners/selectionlistener.h"
 
 #include "debug.h"

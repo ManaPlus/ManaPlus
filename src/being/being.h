@@ -23,8 +23,6 @@
 #ifndef BEING_BEING_H
 #define BEING_BEING_H
 
-//#include "equipment.h"
-
 #include "resources/beinginfo.h"
 
 #include <map>

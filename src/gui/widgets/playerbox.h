@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_PLAYERBOX_H
 #define GUI_WIDGETS_PLAYERBOX_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/widgets/scrollarea.hpp"
 
 #include "localconsts.h"

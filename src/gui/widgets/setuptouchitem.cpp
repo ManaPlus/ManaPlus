@@ -27,7 +27,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/vertcontainer.h"
 
-#include "gui/widgets/tabs/setuptabscroll.h" 
+#include "gui/widgets/tabs/setuptabscroll.h"
 
 #include <algorithm>
 

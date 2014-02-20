@@ -115,6 +115,11 @@ public:
     virtual void selectIndex(const unsigned num A_UNUSED)
     { }
 
+    virtual void buildCounter(const int online A_UNUSED = 0,
+                              const int total A_UNUSED = 0)
+    {
+    }
+
 protected:
     friend class SocialWindow;
 
@@ -155,11 +160,6 @@ protected:
     {
         if (socialWindow)
             socialWindow->setCounter(this, mCounterString);
-    }
-
-    virtual void buildCounter(const int online A_UNUSED = 0,
-                              const int total A_UNUSED = 0)
-    {
     }
 
     TextDialog *mInviteDialog;

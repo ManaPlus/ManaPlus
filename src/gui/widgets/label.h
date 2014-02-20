@@ -22,8 +22,6 @@
 #ifndef GUI_WIDGETS_LABEL_H
 #define GUI_WIDGETS_LABEL_H
 
-#include "gui/widgets/widget2.h"
-
 #include "gui/base/widgets/label.hpp"
 
 #include "localconsts.h"

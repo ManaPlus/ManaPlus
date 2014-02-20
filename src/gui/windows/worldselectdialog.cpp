@@ -33,6 +33,8 @@
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
 
+#include "gui/base/listmodel.hpp"
+
 #include "net/loginhandler.h"
 #include "net/net.h"
 

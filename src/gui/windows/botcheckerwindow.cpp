@@ -101,7 +101,7 @@ public:
         freeWidgets();
         mPlayers.clear();
         if (actorManager && botCheckerWindow
-            && botCheckerWindow->mEnabled)
+            && botCheckerWindow->mBotcheckerEnabled)
         {
             std::set<ActorSprite*> beings = actorManager->getAll();
             FOR_EACH (ActorSprites::iterator, i, beings)
@@ -271,7 +271,7 @@ BotCheckerWindow::BotCheckerWindow():
     mIncButton(new Button(this, _("Reset"), "reset", this)),
     mLastUpdateTime(0),
     mNeedUpdate(false),
-    mEnabled(false)
+    mBotcheckerEnabled(false)
 {
     const int w = 500;
     const int h = 250;
@@ -346,7 +346,7 @@ BotCheckerWindow::BotCheckerWindow():
     enableVisibleSound(true);
 
     config.addListener("enableBotCheker", this);
-    mEnabled = config.getBoolValue("enableBotCheker");
+    mBotcheckerEnabled = config.getBoolValue("enableBotCheker");
 }
 
 BotCheckerWindow::~BotCheckerWindow()
@@ -358,7 +358,7 @@ BotCheckerWindow::~BotCheckerWindow()
 void BotCheckerWindow::slowLogic()
 {
     BLOCK_START("BotCheckerWindow::slowLogic")
-    if (mEnabled && mTableModel)
+    if (mBotcheckerEnabled && mTableModel)
     {
         const unsigned int nowTime = cur_time;
         if (nowTime - mLastUpdateTime > 5 && mNeedUpdate)
@@ -417,7 +417,7 @@ void BotCheckerWindow::reset()
 void BotCheckerWindow::optionChanged(const std::string &name)
 {
     if (name == "enableBotCheker")
-        mEnabled = config.getBoolValue("enableBotCheker");
+        mBotcheckerEnabled = config.getBoolValue("enableBotCheker");
 }
 
 #ifdef USE_PROFILER

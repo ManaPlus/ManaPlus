@@ -26,9 +26,8 @@
 
 #include "gui/widgets/popup.h"
 
-#include "textcommand.h"
-
 class Label;
+class TextCommand;
 
 /**
  * A popup that displays information about an item.

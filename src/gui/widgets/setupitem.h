@@ -21,9 +21,6 @@
 #ifndef GUI_WIDGETS_SETUPITEM_H
 #define GUI_WIDGETS_SETUPITEM_H
 
-//#include "gui/widgets/button.h"
-//#include "gui/widgets/tabs/setuptabscroll.h"
-
 #include "gui/widgets/widget2.h"
 
 #include "listeners/actionlistener.h"

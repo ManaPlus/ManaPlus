@@ -103,19 +103,19 @@ class KeyEvent: public InputGuiEvent
           * @param key The key of the event.
           */
         KeyEvent(gcn::Widget *const source,
-                  const bool shiftPressed,
-                  const bool controlPressed,
-                  const bool altPressed,
-                  const bool metaPressed,
-                  const unsigned int type,
-                  const bool numericPad,
-                  const int actionId,
-                  const Key &key) :
+                 const bool shiftPressed,
+                 const bool controlPressed,
+                 const bool altPressed,
+                 const bool metaPressed,
+                 const unsigned int type,
+                 const bool numericPad,
+                 const int actionId,
+                 const Key &key) :
             InputGuiEvent(source,
-                      shiftPressed,
-                      controlPressed,
-                      altPressed,
-                      metaPressed),
+                          shiftPressed,
+                          controlPressed,
+                          altPressed,
+                          metaPressed),
             mKey(key),
 #ifdef USE_SDL2
             mText(),

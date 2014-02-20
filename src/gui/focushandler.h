@@ -68,12 +68,12 @@
 
 #include "gui/focushandler.h"
 
-#include "events/event.h"
-
 #include <list>
 #include <vector>
 
 #include "localconsts.h"
+
+class Event;
 
 namespace gcn
 {

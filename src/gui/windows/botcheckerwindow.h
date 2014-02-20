@@ -86,7 +86,7 @@ class BotCheckerWindow final : public Window,
         Button *mIncButton;
         int mLastUpdateTime;
         bool mNeedUpdate;
-        bool mEnabled;
+        bool mBotcheckerEnabled;
 };
 
 extern BotCheckerWindow *botCheckerWindow;

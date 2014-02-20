@@ -28,6 +28,8 @@
 
 #include "gui/widgets/listbox.h"
 
+#include "gui/base/listmodel.hpp"
+
 #include <string>
 
 class Image;

@@ -69,8 +69,6 @@
 
 #include <algorithm>
 
-#include "gui/focushandler.h"
-
 #include "render/graphics.h"
 
 #include "debug.h"

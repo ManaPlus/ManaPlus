@@ -67,13 +67,14 @@
 #include <list>
 #include <deque>
 
-#include "events/keyevent.h"
+#include "localconsts.h"
 
-#include "input/mouseinput.h"
-
+class Event;
 class FocusHandler;
 class Graphics;
+class KeyEvent;
 class KeyListener;
+class MouseInput;
 class SDLInput;
 
 namespace gcn

@@ -80,14 +80,14 @@ inline void SDLputPixel(SDL_Surface* surface, int x, int y,
     if (!surface)
         return;
 
-    int bpp = surface->format->BytesPerPixel;
+    const int bpp = surface->format->BytesPerPixel;
 
     SDL_LockSurface(surface);
 
-    Uint8 *p = static_cast<uint8_t*>(surface->pixels)
+    Uint8 *const p = static_cast<uint8_t*>(surface->pixels)
         + y * surface->pitch + x * bpp;
 
-    Uint32 pixel = SDL_MapRGB(surface->format,
+    const Uint32 pixel = SDL_MapRGB(surface->format,
         static_cast<uint8_t>(color.r), static_cast<uint8_t>(color.g),
         static_cast<uint8_t>(color.b));
 
@@ -131,13 +131,14 @@ inline void SDLputPixel(SDL_Surface* surface, int x, int y,
   * @param dst the destination color.
   * @param a alpha.
   */
-inline unsigned int SDLAlpha32(unsigned int src, unsigned int dst,
-                               unsigned char a)
+inline unsigned int SDLAlpha32(const unsigned int src,
+                               const unsigned int dst,
+                               const unsigned char a)
 {
-    unsigned int b = ((src & 0xff) * a + (dst & 0xff) * (255 - a)) >> 8;
-    unsigned int g = ((src & 0xff00) * a + (dst & 0xff00)
+    const unsigned int b = ((src & 0xff) * a + (dst & 0xff) * (255 - a)) >> 8;
+    const unsigned int g = ((src & 0xff00) * a + (dst & 0xff00)
         * (255 - a)) >> 8;
-    unsigned int r = ((src & 0xff0000) * a + (dst & 0xff0000)
+    const unsigned int r = ((src & 0xff0000) * a + (dst & 0xff0000)
         * (255 - a)) >> 8;
 
     return (b & 0xff) | (g & 0xff00) | (r & 0xff0000);
@@ -150,8 +151,10 @@ inline unsigned int SDLAlpha32(unsigned int src, unsigned int dst,
   * @param dst the destination color.
   * @param a alpha.
   */
-inline unsigned short SDLAlpha16(unsigned short src, unsigned short dst,
-                                  unsigned char a, const SDL_PixelFormat *f)
+inline unsigned short SDLAlpha16(const unsigned short src,
+                                 const unsigned short dst,
+                                 const unsigned char a,
+                                 const SDL_PixelFormat *const f)
 {
     unsigned int b = ((src & f->Rmask) * a + (dst & f->Rmask)
         * (255 - a)) >> 8;
@@ -174,14 +177,14 @@ inline unsigned short SDLAlpha16(unsigned short src, unsigned short dst,
 inline void SDLputPixelAlpha(SDL_Surface* surface, int x, int y,
                              const gcn::Color& color)
 {
-    int bpp = surface->format->BytesPerPixel;
+    const int bpp = surface->format->BytesPerPixel;
 
     SDL_LockSurface(surface);
 
-    Uint8 *p = static_cast<uint8_t*>(surface->pixels)
+    Uint8 *const p = static_cast<uint8_t*>(surface->pixels)
         + y * surface->pitch + x * bpp;
 
-    Uint32 pixel = SDL_MapRGB(surface->format,
+    const Uint32 pixel = SDL_MapRGB(surface->format,
         static_cast<uint8_t>(color.r),
         static_cast<uint8_t>(color.g),
         static_cast<uint8_t>(color.b));

@@ -48,6 +48,7 @@ namespace
     struct OpenUrlListener : public ActionListener
     {
         OpenUrlListener() :
+            ActionListener(),
             url()
         {
         }
@@ -65,6 +66,7 @@ namespace
 }  // namespace
 
 ItemLinkHandler::ItemLinkHandler() :
+    LinkHandler(),
     mItemPopup(new ItemPopup)
 {
     mItemPopup->postInit();

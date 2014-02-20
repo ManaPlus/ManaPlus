@@ -23,8 +23,6 @@
 #ifndef GUI_WIDGETS_TEXTFIELD_H
 #define GUI_WIDGETS_TEXTFIELD_H
 
-#include "gui/widgets/widget2.h"
-
 #include "listeners/focuslistener.h"
 
 #include "gui/base/widgets/textfield.hpp"

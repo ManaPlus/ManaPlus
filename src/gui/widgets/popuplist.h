@@ -25,13 +25,16 @@
 
 #include "listeners/focuslistener.h"
 
-#include "gui/base/listmodel.hpp"
-
 #include "localconsts.h"
 
 class DropDown;
 class ListBox;
 class ScrollArea;
+
+namespace gcn
+{
+    class ListModel;
+}
 
 class PopupList final : public Popup,
                         public FocusListener

@@ -23,12 +23,23 @@
 #ifndef GUI_WIDGETS_LISTBOX_H
 #define GUI_WIDGETS_LISTBOX_H
 
+#include "gui/base/color.hpp"
+
 #include "gui/base/widgets/listbox.hpp"
+
+#include "render/graphics.h"
 
 #include "localconsts.h"
 
 class Skin;
+class KeyEvent;
+class MouseEvent;
+class Widget2;
 
+namespace gcn
+{
+    class ListModel;
+}
 /**
  * A list box, meant to be used inside a scroll area. Same as the Guichan list
  * box except this one doesn't have a background, instead completely relying

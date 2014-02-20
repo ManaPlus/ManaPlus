@@ -81,9 +81,7 @@ class FocusHandler;
 class FocusListener;
 class Font;
 class Graphics;
-class KeyInput;
 class KeyListener;
-class MouseInput;
 class MouseListener;
 class WidgetListener;
 
