@@ -1749,7 +1749,6 @@ void SocialWindow::slowLogic()
     const unsigned int nowTime = cur_time;
     if (mNeedUpdate && nowTime - mLastUpdateTime > 1)
     {
-        logger->log("soc update");
         mPlayers->updateList();
         mFriends->updateList();
         mNeedUpdate = false;
