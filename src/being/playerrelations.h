@@ -35,14 +35,14 @@ class PlayerRelationsListener;
 
 struct PlayerRelation final
 {
-    static const unsigned int EMOTE        = (1 << 0);
-    static const unsigned int SPEECH_FLOAT = (1 << 1);
-    static const unsigned int SPEECH_LOG   = (1 << 2);
-    static const unsigned int WHISPER      = (1 << 3);
-    static const unsigned int TRADE        = (1 << 4);
-    static const unsigned int INVISIBLE    = (1 << 5);
-    static const unsigned int BLACKLIST    = (1 << 6);
-    static const unsigned int ENEMY        = (1 << 7);
+    static const unsigned int EMOTE        = (1U << 0);
+    static const unsigned int SPEECH_FLOAT = (1U << 1);
+    static const unsigned int SPEECH_LOG   = (1U << 2);
+    static const unsigned int WHISPER      = (1U << 3);
+    static const unsigned int TRADE        = (1U << 4);
+    static const unsigned int INVISIBLE    = (1U << 5);
+    static const unsigned int BLACKLIST    = (1U << 6);
+    static const unsigned int ENEMY        = (1U << 7);
 
     static const unsigned int RELATIONS_NR = 7;
     static const unsigned int RELATION_PERMISSIONS[RELATIONS_NR];

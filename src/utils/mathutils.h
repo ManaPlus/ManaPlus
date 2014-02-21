@@ -70,7 +70,7 @@ inline float fastSqrt(const float x) A_WARN_UNUSED;
 constexpr inline float weightedAverage(const float n1, const float n2,
                                        const float w) A_WARN_UNUSED;
 constexpr inline int roundDouble(const double v) A_WARN_UNUSED;
-inline int powerOfTwo(const int input) A_WARN_UNUSED;
+inline int powerOfTwo(const unsigned int input) A_WARN_UNUSED;
 
 inline uint16_t getCrc16(const std::string &str)
 {
@@ -123,9 +123,9 @@ constexpr inline int roundDouble(const double v)
     return (v > 0.0) ? static_cast<int>(v + 0.5) : static_cast<int>(v - 0.5);
 }
 
-inline int powerOfTwo(const int input)
+inline int powerOfTwo(const unsigned int input)
 {
-    int value = 1;
+    unsigned int value = 1;
     while (value < input)
         value <<= 1;
     return value;

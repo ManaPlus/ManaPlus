@@ -93,7 +93,7 @@ namespace gcn
          *
          * @param color The color to initialise the object with.
          */
-        explicit Color(const int color);
+        explicit Color(const unsigned int color);
 
         /**
          * Constructor. The default alpha value is 255.
@@ -104,7 +104,10 @@ namespace gcn
          * @param a Alpha, used for transparency. A value of 0 means
          *          totaly transparent, 255 is totaly opaque.
          */
-        Color(const int r, const int g, const int b, const int a = 255);
+        Color(const unsigned int r,
+              const unsigned int g,
+              const unsigned int b,
+              const unsigned int a = 255);
 
         /**
          * Adds the RGB values of two colors together. The values will be
@@ -169,23 +172,23 @@ namespace gcn
         /**
          * Holds the red color component (range 0-255).
          */
-        int r;
+        unsigned int r;
 
         /**
          *  Holds the green color component (range 0-255).
          */
-        int g;
+        unsigned int g;
 
         /**
          *  Holds the blue color component (range 0-255).
          */
-        int b;
+        unsigned int b;
 
         /**
          * Holds the alpha color component. A value of 0 means totally
          * transparent while a value of 255 is considered opaque.
          */
-        int a;
+        unsigned int a;
     };
 }  // namespace gcn
 

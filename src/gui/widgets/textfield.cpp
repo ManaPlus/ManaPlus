@@ -251,7 +251,7 @@ void TextField::keyPressed(KeyEvent &keyEvent)
             }
 
             if (len > 1)
-                buf[0] |= static_cast<char>(255 << (8 - len));
+                buf[0] |= static_cast<char>(255U << (8 - len));
 
             mText.insert(mCaretPosition, std::string(buf, buf + len));
             mCaretPosition += len;

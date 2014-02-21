@@ -982,7 +982,7 @@ static gcn::Color readColor(const std::string &description)
         return Palette::BLACK;
     }
 
-    int v = 0;
+    unsigned int v = 0;
     for (int i = 1; i < 7; ++i)
     {
         signed const char c = description[i];

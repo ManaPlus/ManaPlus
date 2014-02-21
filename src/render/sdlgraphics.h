@@ -166,7 +166,7 @@ class SDLGraphics final : public Graphics
         void drawVLine(int x, int y1, int y2);
 
         uint32_t mOldPixel;
-        int mOldAlpha;
+        unsigned int mOldAlpha;
 
     private:
         void inline calcImageRect(ImageVertexes *const vert,

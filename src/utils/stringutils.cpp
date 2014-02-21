@@ -73,7 +73,7 @@ unsigned int atox(const std::string &str)
     return value;
 }
 
-const char *ipToString(const int address)
+const char *ipToString(const uint32_t address)
 {
     static char asciiIP[18];
 

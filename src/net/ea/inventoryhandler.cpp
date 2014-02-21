@@ -160,7 +160,7 @@ int InventoryHandler::getSlot(const int eAthenaSlot) const
     if (eAthenaSlot & 0x8000)
         return Equipment::EQUIP_PROJECTILE_SLOT;
 
-    int mask = 1;
+    unsigned int mask = 1;
     int position = 0;
     while (!(eAthenaSlot & mask))
     {

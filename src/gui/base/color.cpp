@@ -72,22 +72,25 @@
 namespace gcn
 {
     Color::Color() :
-        r(0),
-        g(0),
-        b(0),
-        a(255)
+        r(0U),
+        g(0U),
+        b(0U),
+        a(255U)
     {
     }
 
-    Color::Color(const int color) :
+    Color::Color(const unsigned int color) :
         r((color >> 16) & 0xFF),
         g((color >>  8) & 0xFF),
         b(color         & 0xFF),
-        a(255)
+        a(255U)
     {
     }
 
-    Color::Color(const int ar, const int ag, const int ab, const int aa) :
+    Color::Color(const unsigned int ar,
+                 const unsigned int ag,
+                 const unsigned int ab,
+                 const unsigned int aa) :
         r(ar),
         g(ag),
         b(ab),
@@ -100,11 +103,11 @@ namespace gcn
         Color result(r + color.r,
                      g + color.g,
                      b + color.b,
-                     255);
+                     255U);
 
-        result.r = (result.r>255?255:(result.r<0?0:result.r));
-        result.g = (result.g>255?255:(result.g<0?0:result.g));
-        result.b = (result.b>255?255:(result.b<0?0:result.b));
+        result.r = (result.r > 255U ? 255U : result.r);
+        result.g = (result.g > 255U ? 255U : result.g);
+        result.b = (result.b > 255U ? 255U : result.b);
 
         return result;
     }
@@ -114,11 +117,11 @@ namespace gcn
         Color result(r - color.r,
                      g - color.g,
                      b - color.b,
-                     255);
+                     255U);
 
-        result.r = (result.r > 255 ? 255 : (result.r < 0 ? 0 : result.r));
-        result.g = (result.g > 255 ? 255 : (result.g < 0 ? 0 : result.g));
-        result.b = (result.b > 255 ? 255 : (result.b < 0 ? 0 : result.b));
+        result.r = (result.r > 255U ? 255U : result.r);
+        result.g = (result.g > 255U ? 255U : result.g);
+        result.b = (result.b > 255U ? 255U : result.b);
 
         return result;
     }
@@ -130,9 +133,9 @@ namespace gcn
                      static_cast<int>(static_cast<float>(b) * value),
                      a);
 
-        result.r = (result.r > 255 ? 255 : (result.r < 0 ? 0 : result.r));
-        result.g = (result.g > 255 ? 255 : (result.g < 0 ? 0 : result.g));
-        result.b = (result.b > 255 ? 255 : (result.b < 0 ? 0 : result.b));
+        result.r = (result.r > 255U ? 255U : result.r);
+        result.g = (result.g > 255U ? 255U : result.g);
+        result.b = (result.b > 255U ? 255U : result.b);
 
         return result;
     }

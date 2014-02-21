@@ -90,7 +90,7 @@ std::string toStringPrint(const unsigned int val);
  * @param address the address to convert to a string
  * @return the string representation of the address
  */
-const char *ipToString(const int address) A_WARN_UNUSED;
+const char *ipToString(const uint32_t address) A_WARN_UNUSED;
 
 /**
  * A safe version of sprintf that returns a std::string of the result.

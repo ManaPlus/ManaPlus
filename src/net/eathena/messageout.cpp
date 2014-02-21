@@ -96,7 +96,7 @@ void MessageOut::writeCoordinates(const uint16_t x,
     mNetwork->mOutSize += 3;
     mPos += 3;
 
-    int16_t temp = x;
+    uint16_t temp = x;
     temp <<= 6;
     data[0] = 0;
     data[1] = 1;

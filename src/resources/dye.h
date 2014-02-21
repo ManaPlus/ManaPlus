@@ -82,7 +82,7 @@ class DyePalette final
         void replaceAOGLColor(uint32_t *restrict pixels,
                               const int bufSize) const;
 
-        static int hexDecode(const signed char c) A_WARN_UNUSED;
+        static unsigned int hexDecode(const signed char c) A_WARN_UNUSED;
 
     private:
         std::vector<DyeColor> mColors;
