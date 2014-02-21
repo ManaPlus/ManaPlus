@@ -19,23 +19,34 @@
     <</outfit N - wear outfit number N.>>
     <</outfit next - wear next outfit.>>
     <</outfit prev - wear previous outfit.>>
+    <</talkpet TEXT - talk from your pet.>>
     <</emote N - use emotion number N.>>
+    <</emotepet N - use emotion number N from your pet.>>
     <</away, /away MSG - set away mode.>>
     <</pseudoaway, /pseudoaway MSG - set/unset pseudo away mode.>>
     <</follow NICK - start follow mode.>>
     <</imitation NICK - start imitation mode.>>
     <</heal NICK - heal nick.>>
     <</move X Y - move to X,Y position in short distance.>>
+    <</movetotarget - move to target position.>>
+    <</movetohome - move to home position.>>
+    <</sethome - set home position.>>
     <</navigate x y - move to position x,y in current map in any distance.>>
     <</mail NICK MSG - send offline message to NICK. Working only in tmw server.>>
     <</disconnect - quick disconnect from server.>>
     <</attack - attack target.>>
+    <</atkhuman - select and attack nearest player.>>
+    <</magicattack - attack target with magic.>>
     <</undress NICK - remove all clothes from nick. Local effect only.>>
     <</addattack NAME - add monster to attack list.>>
     <</addpriorityattack NAME - add monster to priority attack list.>>
     <</removeattack NAME - remove monster from attack list.>>
     <</addignoreattack NAME - add monster to ignore attack list.>>
     <</setdrop N - set drop counter to requested value.>>
+    <</drop - drop N items from 0 slot.>>
+    <</dropn - drop N items from any slot.>>
+    <</info - show guild info. Only for native guilds only.>>
+    <</wait NAME - wait for nick or moster with name.>>
 
 ##9<<Trade>>
 ##2
@@ -53,7 +64,7 @@
     <</neutral NICK - add nick to neutral relation list.>>
     <</blacklist NICK - add nick to blacklist relation list.>>
     <</erase NICK - add nick to erased list.>>
-    <</clear - clear current chat tab.>>
+    <</enemy NICK - add nick to enemyes list.>>
     <</createparty NAME - create party with selected name.>>
     <</me text - send text to chat as /me command in irc.>>
     <</serverignoreall - ignore all whispers on server side.>>
@@ -62,12 +73,45 @@
 ##9<<Debug>>
 ##2
     <</who - print online players number to chat.>>
+    <</present - print visible players number to chat.>>
     <</all - show visible beings list in debug tab.>>
     <</where - print current player position to chat.>>
     <</cacheinfo - show text cache info.>>
     <</uptime - show client uptime.>>
+    <</dumpe - dump environment variables into chat.>>
     <</dumpg - dump graphics and some other settings to chat.>>
+    <</dumpgl - dump OpenGL version into chat.>>
+    <</dumpt - dump tests info into chat.>>
+    <</dumpogl - dump all OpenGL variables into log file.>>
+    <</dumpmods - dump all enabled mod names into chat.>>
     <</dirs - show client dirs in debug chat tab.>>
+    <</uploadconfig - upload main config into pastebin service.>>
+    <</uploadserverconfig - upload server config into pastebin service.>>
+    <</uploadlog - upload log into pastebin service.>>
+
+##9<<GM>>
+##2
+    <</announce MESSAGE - show global message.>>
+    <</createitems - open dialog for creating items.>>
+
+##9<<Tabs>>
+##2
+    <</clear - clear current chat tab.>>
+    <</enablehighlight - enable highlight in current tab.>>
+    <</disablehighlight - disable highlight in current tab.>>
+    <</enableaway - enable away messages in current tab.>>
+    <</disableaway - disable away messages in current tab.>>
+
+##9<<Content devs>>
+##2
+    <</cleangraphics - remove all cached graphics. Usefull for content developers.>>
+    <</testparticle FILENAME - set test particle on player.>>
+
+##9<<Other>>
+##2
+    <</cleanfonts - remove all cached render strings.>>
+    <</url URL - insert url into chat.>>
+    <</open URL - open url in browser.>>
 
 
 ##9<<Whispers commands>>
