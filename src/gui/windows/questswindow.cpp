@@ -29,11 +29,12 @@
 #include "gui/font.h"
 #include "gui/gui.h"
 
+#include "gui/models/extendednamesmodel.h"
+
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/extendedlistbox.h"
-#include "gui/widgets/extendednamesmodel.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/scrollarea.h"
 

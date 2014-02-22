@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_EXTENDEDNAMESMODEL_H
-#define GUI_WIDGETS_EXTENDEDNAMESMODEL_H
+#ifndef GUI_MODELS_EXTENDEDNAMESMODEL_H
+#define GUI_MODELS_EXTENDEDNAMESMODEL_H
 
 #include "utils/stringvector.h"
 
@@ -56,4 +56,4 @@ class ExtendedNamesModel : public ExtendedListModel
         std::vector<Image*> mImages;
 };
 
-#endif  // GUI_WIDGETS_EXTENDEDNAMESMODEL_H
+#endif  // GUI_MODELS_EXTENDEDNAMESMODEL_H

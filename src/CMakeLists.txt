@@ -139,8 +139,8 @@ SET(SRCS
     gui/widgets/extendedlistbox.cpp
     gui/widgets/extendedlistbox.h
     gui/models/extendedlistmodel.h
-    gui/widgets/extendednamesmodel.cpp
-    gui/widgets/extendednamesmodel.h
+    gui/models/extendednamesmodel.cpp
+    gui/models/extendednamesmodel.h
     gui/widgets/flowcontainer.cpp
     gui/widgets/flowcontainer.h
     gui/widgets/tabs/gmtab.cpp
