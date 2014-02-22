@@ -29,6 +29,7 @@
 
 #include "input/keydata.h"
 
+#include "gui/models/updatelistmodel.h"
 #include "gui/models/updatetypemodel.h"
 
 #include "gui/windows/confirmdialog.h"
@@ -75,38 +76,6 @@ namespace
         std::string url;
     } urlListener;
 }  // namespace
-
-class UpdateListModel final : public ListModel
-{
-    public:
-        explicit UpdateListModel(LoginData *const data) :
-            ListModel(),
-            mLoginData(data)
-        {
-        }
-
-        A_DELETE_COPY(UpdateListModel)
-
-        ~UpdateListModel()
-        { }
-
-        int getNumberOfElements() override final
-        {
-            if (!mLoginData)
-                return 0;
-            return static_cast<int>(mLoginData->updateHosts.size());
-        }
-
-        std::string getElementAt(int i) override final
-        {
-            if (!mLoginData || i >= getNumberOfElements() || i < 0)
-                return "???";
-            return mLoginData->updateHosts[i];
-        }
-
-    protected:
-        LoginData *mLoginData;
-};
 
 LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
                          std::string *const updateHost):
