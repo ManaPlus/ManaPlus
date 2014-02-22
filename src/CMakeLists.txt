@@ -179,6 +179,7 @@ SET(SRCS
     gui/widgets/listbox.h
     gui/models/namesmodel.cpp
     gui/models/namesmodel.h
+    gui/models/playerrelationlistmodel.h
     gui/widgets/passwordfield.cpp
     gui/widgets/passwordfield.h
     gui/widgets/playerbox.cpp

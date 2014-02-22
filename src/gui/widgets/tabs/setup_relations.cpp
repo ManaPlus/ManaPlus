@@ -26,6 +26,8 @@
 
 #include "being/localplayer.h"
 
+#include "gui/models/playerrelationlistmodel.h"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/dropdown.h"
@@ -58,43 +60,6 @@ static const char *const table_titles[COLUMNS_NR] =
     N_("Name"),
     // TRANSLATORS: relations table header
     N_("Relation")
-};
-
-static const char *const RELATION_NAMES[PlayerRelation::RELATIONS_NR] =
-{
-    // TRANSLATORS: relation type
-    N_("Neutral"),
-    // TRANSLATORS: relation type
-    N_("Friend"),
-    // TRANSLATORS: relation type
-    N_("Disregarded"),
-    // TRANSLATORS: relation type
-    N_("Ignored"),
-    // TRANSLATORS: relation type
-    N_("Erased"),
-    // TRANSLATORS: relation type
-    N_("Blacklisted"),
-    // TRANSLATORS: relation type
-    N_("Enemy")
-};
-
-class PlayerRelationListModel final : public ListModel
-{
-public:
-    ~PlayerRelationListModel()
-    { }
-
-    int getNumberOfElements() override final
-    {
-        return PlayerRelation::RELATIONS_NR;
-    }
-
-    std::string getElementAt(int i) override final
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return "";
-        return gettext(RELATION_NAMES[i]);
-    }
 };
 
 class PlayerTableModel final : public Widget2, public TableModel
