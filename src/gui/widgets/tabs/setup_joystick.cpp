@@ -26,12 +26,13 @@
 
 #include "input/joystick.h"
 
+#include "gui/models/namesmodel.h"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
-#include "gui/widgets/namesmodel.h"
 
 #include "utils/gettext.h"
 

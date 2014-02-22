@@ -30,8 +30,9 @@
 
 #include "gui/viewport.h"
 
+#include "gui/models/namesmodel.h"
+
 #include "gui/widgets/layouthelper.h"
-#include "gui/widgets/namesmodel.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "utils/gettext.h"

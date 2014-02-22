@@ -21,10 +21,10 @@
 #include "gui/windows/emotewindow.h"
 
 #include "gui/models/colormodel.h"
+#include "gui/models/namesmodel.h"
 
 #include "gui/widgets/colorpage.h"
 #include "gui/widgets/emotepage.h"
-#include "gui/widgets/namesmodel.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabbedarea.h"
 

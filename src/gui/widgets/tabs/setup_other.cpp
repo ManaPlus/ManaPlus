@@ -22,8 +22,9 @@
 
 #include "gui/widgets/tabs/setup_other.h"
 
+#include "gui/models/namesmodel.h"
+
 #include "gui/widgets/layouthelper.h"
-#include "gui/widgets/namesmodel.h"
 #include "gui/widgets/setupitem.h"
 #include "gui/widgets/scrollarea.h"
 

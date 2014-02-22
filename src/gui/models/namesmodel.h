@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_NAMESMODEL_H
-#define GUI_WIDGETS_NAMESMODEL_H
+#ifndef GUI_MODELS_NAMESMODEL_H
+#define GUI_MODELS_NAMESMODEL_H
 
 #include "utils/stringvector.h"
 
@@ -58,4 +58,4 @@ class NamesModel : public ListModel
         StringVect mNames;
 };
 
-#endif  // GUI_WIDGETS_NAMESMODEL_H
+#endif  // GUI_MODELS_NAMESMODEL_H
