@@ -22,6 +22,8 @@
 
 #include "gui/setupactiondata.h"
 
+#include "gui/models/touchactionmodel.h"
+
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/horizontcontainer.h"
 #include "gui/widgets/label.h"

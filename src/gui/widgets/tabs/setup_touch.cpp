@@ -21,6 +21,7 @@
 #include "gui/widgets/tabs/setup_touch.h"
 
 #include "gui/models/namesmodel.h"
+#include "gui/models/touchactionmodel.h"
 
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/setuptouchitem.h"

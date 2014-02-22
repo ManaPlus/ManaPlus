@@ -25,24 +25,7 @@
 
 #include "gui/widgets/setupitem.h"
 
-class TouchActionsModel final : public NamesModel
-{
-    public:
-        TouchActionsModel();
-
-        A_DELETE_COPY(TouchActionsModel)
-
-        ~TouchActionsModel()
-        { }
-
-        int getActionFromSelection(const int sel) const;
-
-        int getSelectionFromAction(const int action) const;
-
-    private:
-        std::vector<int> mActionId;
-        std::map<int, int> mActionToSelection;
-};
+class TouchActionsModel;
 
 class SetupActionDropDown final : public SetupItem
 {
