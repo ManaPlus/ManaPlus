@@ -20,7 +20,7 @@
 
 #include "gui/widgets/extendedlistbox.h"
 
-#include "gui/widgets/extendedlistmodel.h"
+#include "gui/models/extendedlistmodel.h"
 
 #include "gui/font.h"
 

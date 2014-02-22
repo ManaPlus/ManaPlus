@@ -25,7 +25,8 @@
 
 #include "listeners/configlistener.h"
 
-#include "gui/widgets/extendedlistmodel.h"
+#include "gui/models/extendedlistmodel.h"
+
 #include "gui/widgets/window.h"
 
 #include "utils/stringvector.h"

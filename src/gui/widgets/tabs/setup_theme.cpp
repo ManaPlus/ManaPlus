@@ -26,9 +26,10 @@
 
 #include "gui/windows/okdialog.h"
 
+#include "gui/models/extendedlistmodel.h"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/dropdown.h"
-#include "gui/widgets/extendedlistmodel.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/namesmodel.h"

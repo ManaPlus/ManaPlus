@@ -23,7 +23,7 @@
 
 #include "utils/stringvector.h"
 
-#include "gui/widgets/extendedlistmodel.h"
+#include "gui/models/extendedlistmodel.h"
 
 class ExtendedNamesModel : public ExtendedListModel
 {

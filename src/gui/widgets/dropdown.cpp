@@ -28,7 +28,8 @@
 
 #include "input/keydata.h"
 
-#include "gui/widgets/extendedlistmodel.h"
+#include "gui/models/extendedlistmodel.h"
+
 #include "gui/widgets/popuplist.h"
 
 #include "resources/image.h"

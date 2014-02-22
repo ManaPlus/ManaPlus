@@ -138,7 +138,7 @@ SET(SRCS
     gui/widgets/emoteshortcutcontainer.h
     gui/widgets/extendedlistbox.cpp
     gui/widgets/extendedlistbox.h
-    gui/widgets/extendedlistmodel.h
+    gui/models/extendedlistmodel.h
     gui/widgets/extendednamesmodel.cpp
     gui/widgets/extendednamesmodel.h
     gui/widgets/flowcontainer.cpp
