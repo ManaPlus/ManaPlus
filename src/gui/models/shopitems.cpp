@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/shopitems.h"
+#include "gui/models/shopitems.h"
 
 #include "shopitem.h"
 

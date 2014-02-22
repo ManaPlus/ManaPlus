@@ -32,7 +32,7 @@
 
 #include "gui/popups/itempopup.h"
 
-#include "gui/widgets/shopitems.h"
+#include "gui/models/shopitems.h"
 
 #include "resources/image.h"
 

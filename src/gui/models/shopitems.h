@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_SHOPITEMS_H
-#define GUI_WIDGETS_SHOPITEMS_H
+#ifndef GUI_MODELS_SHOPITEMS_H
+#define GUI_MODELS_SHOPITEMS_H
 
 #include "gui/models/listmodel.h"
 
@@ -138,4 +138,4 @@ class ShopItems final : public ListModel
         bool mMergeDuplicates;
 };
 
-#endif  // GUI_WIDGETS_SHOPITEMS_H
+#endif  // GUI_MODELS_SHOPITEMS_H

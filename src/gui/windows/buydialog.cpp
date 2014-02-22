@@ -28,13 +28,14 @@
 
 #include "gui/windows/tradewindow.h"
 
+#include "gui/models/shopitems.h"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/shopitems.h"
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"
 

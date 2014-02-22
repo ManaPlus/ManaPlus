@@ -204,8 +204,8 @@ SET(SRCS
     gui/widgets/tabs/setuptabscroll.h
     gui/widgets/setuptouchitem.cpp
     gui/widgets/setuptouchitem.h
-    gui/widgets/shopitems.cpp
-    gui/widgets/shopitems.h
+    gui/models/shopitems.cpp
+    gui/models/shopitems.h
     gui/widgets/shoplistbox.cpp
     gui/widgets/shoplistbox.h
     gui/widgets/shortcutcontainer.cpp
