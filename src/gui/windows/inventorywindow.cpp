@@ -37,6 +37,7 @@
 #include "gui/viewport.h"
 
 #include "gui/models/listmodel.h"
+#include "gui/models/sortlistmodelinv.h"
 
 #include "gui/popups/textpopup.h"
 
@@ -64,40 +65,6 @@
 #include <string>
 
 #include "debug.h"
-
-static const char *const SORT_NAME_INVENTORY[6] =
-{
-    // TRANSLATORS: inventory sort mode
-    N_("default"),
-    // TRANSLATORS: inventory sort mode
-    N_("by name"),
-    // TRANSLATORS: inventory sort mode
-    N_("by id"),
-    // TRANSLATORS: inventory sort mode
-    N_("by weight"),
-    // TRANSLATORS: inventory sort mode
-    N_("by amount"),
-    // TRANSLATORS: inventory sort mode
-    N_("by type")
-};
-
-class SortListModelInv final : public ListModel
-{
-public:
-    ~SortListModelInv()
-    { }
-
-    int getNumberOfElements() override final
-    { return 6; }
-
-    std::string getElementAt(int i) override final
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return "???";
-
-        return gettext(SORT_NAME_INVENTORY[i]);
-    }
-};
 
 InventoryWindow::WindowList InventoryWindow::invInstances;
 
