@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/colormodel.h"
+#include "gui/models/colormodel.h"
 
 #include "gui/widgets/widget2.h"
 

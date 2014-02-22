@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_COLORMODEL_H
-#define GUI_WIDGETS_COLORMODEL_H
+#ifndef GUI_MODELS_COLORMODEL_H
+#define GUI_MODELS_COLORMODEL_H
 
 #include "utils/stringvector.h"
 
@@ -73,4 +73,4 @@ class ColorModel : public ListModel
         std::vector<ColorPair> mColors;
 };
 
-#endif  // GUI_WIDGETS_COLORMODEL_H
+#endif  // GUI_MODELS_COLORMODEL_H

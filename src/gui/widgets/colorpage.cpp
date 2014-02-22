@@ -20,7 +20,7 @@
 
 #include "gui/widgets/colorpage.h"
 
-#include "gui/widgets/colormodel.h"
+#include "gui/models/colormodel.h"
 
 #include "gui/font.h"
 

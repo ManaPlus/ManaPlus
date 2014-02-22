@@ -220,8 +220,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/tabs/chattab.h \
 	      gui/widgets/checkbox.cpp \
 	      gui/widgets/checkbox.h \
-	      gui/widgets/colormodel.cpp \
-	      gui/widgets/colormodel.h \
+	      gui/models/colormodel.cpp \
+	      gui/models/colormodel.h \
 	      gui/widgets/colorpage.cpp \
 	      gui/widgets/colorpage.h \
 	      gui/widgets/container.cpp \
