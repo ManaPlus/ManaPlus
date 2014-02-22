@@ -35,64 +35,6 @@
 
 #include "debug.h"
 
-static class SortTouchActionFunctor final
-{
-    public:
-        bool operator() (const SetupActionData *const data1,
-                         const SetupActionData *const data2) const
-        {
-            if (!data1 || !data2)
-                return false;
-            return data1->name < data2->name;
-        }
-} touchActionSorter;
-
-TouchActionsModel::TouchActionsModel() :
-    NamesModel(),
-    mActionId(),
-    mActionToSelection()
-{
-    std::vector<SetupActionData*> data;
-
-    for (int f = 0, sz = touchActionDataSize; f < sz; f ++)
-    {
-        int k = 0;
-        while (!touchActionData[f][k].name.empty())
-        {
-            data.push_back(&touchActionData[f][k]);
-            k ++;
-        }
-    }
-
-    std::sort(data.begin(), data.end(), touchActionSorter);
-    int cnt = 0;
-    FOR_EACH (std::vector<SetupActionData*>::iterator, it, data)
-    {
-        const SetupActionData *const data1 = *it;
-        mNames.push_back(data1->name);
-        mActionId.push_back(data1->actionId);
-        mActionToSelection[data1->actionId] = cnt;
-        cnt ++;
-    }
-}
-
-int TouchActionsModel::getActionFromSelection(const int sel) const
-{
-    if (sel < 0 || sel > static_cast<signed int>(mActionId.size()))
-        return -1;
-    return mActionId[sel];
-}
-
-int TouchActionsModel::getSelectionFromAction(const int action) const
-{
-    const std::map<int, int>::const_iterator it
-        = mActionToSelection.find(action);
-    if (it == mActionToSelection.end())
-        return 0;
-    return (*it).second;
-}
-
-
 SetupActionDropDown::SetupActionDropDown(const std::string &restrict text,
                                          const std::string &restrict
                                          description,

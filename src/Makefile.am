@@ -324,6 +324,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/tabbedarea.h \
 	      gui/models/tablemodel.cpp \
 	      gui/models/tablemodel.h \
+	      gui/models/touchactionmodel.cpp \
 	      gui/models/touchactionmodel.h \
 	      gui/widgets/tabstrip.cpp \
 	      gui/widgets/tabstrip.h \

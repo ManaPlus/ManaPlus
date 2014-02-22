@@ -228,6 +228,7 @@ SET(SRCS
     gui/widgets/guitable.h
     gui/models/tablemodel.cpp
     gui/models/tablemodel.h
+    gui/models/touchactionmodel.cpp
     gui/models/touchactionmodel.h
     gui/widgets/tabstrip.cpp
     gui/widgets/tabstrip.h
