@@ -29,6 +29,8 @@
 
 #include "input/keydata.h"
 
+#include "gui/models/updatetypemodel.h"
+
 #include "gui/windows/confirmdialog.h"
 
 #include "gui/widgets/button.h"
@@ -73,40 +75,6 @@ namespace
         std::string url;
     } urlListener;
 }  // namespace
-
-const char *UPDATE_TYPE_TEXT[3] =
-{
-    // TRANSLATORS: update type
-    N_("Normal"),
-    // TRANSLATORS: update type
-    N_("Auto Close"),
-    // TRANSLATORS: update type
-    N_("Skip"),
-};
-
-class UpdateTypeModel final : public ListModel
-{
-    public:
-        UpdateTypeModel()
-        { }
-
-        A_DELETE_COPY(UpdateTypeModel)
-
-        ~UpdateTypeModel()
-        { }
-
-        int getNumberOfElements() override final
-        {
-            return 3;
-        }
-
-        std::string getElementAt(int i) override final
-        {
-            if (i >= getNumberOfElements() || i < 0)
-                return "???";
-            return gettext(UPDATE_TYPE_TEXT[i]);
-        }
-};
 
 class UpdateListModel final : public ListModel
 {
