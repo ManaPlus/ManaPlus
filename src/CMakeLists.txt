@@ -226,8 +226,8 @@ SET(SRCS
     gui/widgets/tabbedarea.h
     gui/widgets/guitable.cpp
     gui/widgets/guitable.h
-    gui/widgets/tablemodel.cpp
-    gui/widgets/tablemodel.h
+    gui/models/tablemodel.cpp
+    gui/models/tablemodel.h
     gui/widgets/tabstrip.cpp
     gui/widgets/tabstrip.h
     gui/widgets/textbox.cpp
