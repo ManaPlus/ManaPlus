@@ -32,16 +32,8 @@
 
 #include <string>
 
+class AvatarListModel;
 class Image;
-
-class AvatarListModel : public ListModel
-{
-public:
-    virtual Avatar *getAvatarAt(const int i) A_WARN_UNUSED = 0;
-
-    std::string getElementAt(int i) override final A_WARN_UNUSED
-    { return getAvatarAt(i)->getName(); }
-};
 
 class AvatarListBox final : public ListBox,
                             public ConfigListener

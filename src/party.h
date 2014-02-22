@@ -22,7 +22,7 @@
 #ifndef PARTY_H
 #define PARTY_H
 
-#include "gui/widgets/avatarlistbox.h"
+#include "gui/models/avatarlistmodel.h"
 
 #include "utils/dtor.h"
 #include "utils/stringvector.h"

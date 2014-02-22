@@ -32,6 +32,8 @@
 #include "gui/gui.h"
 #include "gui/viewport.h"
 
+#include "gui/models/avatarlistmodel.h"
+
 #include "gui/windows/chatwindow.h"
 
 #include "resources/image.h"

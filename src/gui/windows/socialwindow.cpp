@@ -41,6 +41,7 @@
 
 #include "gui/windows/outfitwindow.h"
 
+#include "gui/widgets/avatarlistbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/label.h"
