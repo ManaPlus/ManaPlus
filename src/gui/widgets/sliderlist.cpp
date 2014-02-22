@@ -23,7 +23,7 @@
 #include "gui/font.h"
 #include "gui/gui.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
@@ -35,7 +35,7 @@ static const int buttonSpace = 30;
 static const int sliderHeight = 30;
 
 SliderList::SliderList(const Widget2 *const widget,
-                       gcn::ListModel *const listModel) :
+                       ListModel *const listModel) :
     Container(widget),
     ActionListener(),
     MouseListener(),

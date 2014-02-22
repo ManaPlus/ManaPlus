@@ -32,6 +32,7 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/being/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/events/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/gui/models/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/popups/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/widgets/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/widgets/tabs/*.cpp) \

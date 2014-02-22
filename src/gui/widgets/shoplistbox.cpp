@@ -36,14 +36,14 @@
 
 #include "resources/image.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "debug.h"
 
 const int ITEM_ICON_SIZE = 32;
 
 ShopListBox::ShopListBox(const Widget2 *const widget,
-                         gcn::ListModel *const listModel) :
+                         ListModel *const listModel) :
     ListBox(widget, listModel, "shoplistbox.xml"),
     mPlayerMoney(0),
     mShopItems(nullptr),
@@ -60,7 +60,7 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
 }
 
 ShopListBox::ShopListBox(const Widget2 *const widget,
-                         gcn::ListModel *const listModel,
+                         ListModel *const listModel,
                          ShopItems *const shopListModel) :
     ListBox(widget, listModel, "shoplistbox.xml"),
     mPlayerMoney(0),

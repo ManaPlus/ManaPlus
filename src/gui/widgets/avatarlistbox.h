@@ -28,13 +28,13 @@
 
 #include "gui/widgets/listbox.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include <string>
 
 class Image;
 
-class AvatarListModel : public gcn::ListModel
+class AvatarListModel : public ListModel
 {
 public:
     virtual Avatar *getAvatarAt(const int i) A_WARN_UNUSED = 0;

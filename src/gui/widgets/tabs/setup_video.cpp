@@ -46,7 +46,7 @@
 
 #include "test/testmain.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include <algorithm>
 
@@ -54,7 +54,7 @@
 
 extern Graphics *mainGraphics;
 
-class ModeListModel final : public gcn::ListModel
+class ModeListModel final : public ListModel
 {
     public:
         ModeListModel();
@@ -159,7 +159,7 @@ int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
     return -1;
 }
 
-class OpenGLListModel final : public gcn::ListModel
+class OpenGLListModel final : public ListModel
 {
 public:
     ~OpenGLListModel()

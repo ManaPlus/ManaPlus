@@ -61,46 +61,43 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GCN_LISTMODEL_HPP
-#define GCN_LISTMODEL_HPP
+#ifndef GUI_MODELS_LISTMODEL_H
+#define GUI_MODELS_LISTMODEL_H
 
 #include <string>
 
 #include "localconsts.h"
 
-namespace gcn
+/**
+  * An interface for a model that represents a list. It is 
+  * used in certain widgets, like the ListBox, to handle a 
+  * lists with string elements. If you want to use widgets 
+  * like ListBox, make a derived class from this class that 
+  * represents your list.
+  */
+class ListModel
 {
-    /**
-     * An interface for a model that represents a list. It is 
-     * used in certain widgets, like the ListBox, to handle a 
-     * lists with string elements. If you want to use widgets 
-     * like ListBox, make a derived class from this class that 
-     * represents your list.
-     */
-    class ListModel
-    {
     public:
         /**
-         * Destructor.
-         */
+          * Destructor.
+          */
         virtual ~ListModel()
         { }
 
         /**
-         * Gets the number of elements in the list.
-         *
-         * @return The number of elements in the list
-         */
+          * Gets the number of elements in the list.
+          *
+          * @return The number of elements in the list
+          */
         virtual int getNumberOfElements() A_WARN_UNUSED = 0;
 
         /**
-         * Gets an element at a certain index in the list.
-         *
-         * @param i An index in the list.
-         * @return An element as a string at the a certain index.
-         */
+          * Gets an element at a certain index in the list.
+          *
+          * @param i An index in the list.
+          * @return An element as a string at the a certain index.
+          */
         virtual std::string getElementAt(int i) A_WARN_UNUSED = 0;
-    };
-}  // namespace gcn
+};
 
-#endif  // end GCN_LISTMODEL_HPP
+#endif  // GUI_MODELS_LISTMODEL_H

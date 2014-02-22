@@ -53,7 +53,7 @@ static std::string const dropdownFiles[2] =
 };
 
 DropDown::DropDown(const Widget2 *const widget,
-                   gcn::ListModel *const listModel,
+                   ListModel *const listModel,
                    const bool extended,
                    const bool modal,
                    ActionListener *const listener,
@@ -232,7 +232,7 @@ void DropDown::draw(Graphics* graphics)
     mHighlightColor.a = alpha;
     mShadowColor.a = alpha;
 
-    gcn::ListModel *const model = mPopup->getListModel();
+    ListModel *const model = mPopup->getListModel();
     if (model && mPopup->getSelected() >= 0)
     {
         Font *const font = getFont();
@@ -418,7 +418,7 @@ void DropDown::mouseWheelMovedDown(MouseEvent& mouseEvent)
 
 void DropDown::setSelectedString(const std::string &str)
 {
-    gcn::ListModel *const listModel = mPopup->getListModel();
+    ListModel *const listModel = mPopup->getListModel();
     if (!listModel)
         return;
 
@@ -434,7 +434,7 @@ void DropDown::setSelectedString(const std::string &str)
 
 std::string DropDown::getSelectedString() const
 {
-    gcn::ListModel *const listModel = mPopup->getListModel();
+    ListModel *const listModel = mPopup->getListModel();
     if (!listModel)
         return "";
 
@@ -491,7 +491,7 @@ void DropDown::setSelected(int selected)
         mPopup->setSelected(selected);
 }
 
-void DropDown::setListModel(gcn::ListModel *const listModel)
+void DropDown::setListModel(ListModel *const listModel)
 {
     mPopup->setListModel(listModel);
 
@@ -501,7 +501,7 @@ void DropDown::setListModel(gcn::ListModel *const listModel)
     adjustHeight();
 }
 
-gcn::ListModel *DropDown::getListModel()
+ListModel *DropDown::getListModel()
 {
     return mPopup->getListModel();
 }

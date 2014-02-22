@@ -81,7 +81,7 @@
 #include "utils/gettext.h"
 #include "utils/process.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "debug.h"
 
@@ -2685,7 +2685,7 @@ void PopupMenu::addPickupFilter(const std::string &name)
 }
 
 void PopupMenu::showPopup(const int x, const int y,
-                          gcn::ListModel *const model)
+                          ListModel *const model)
 {
     if (!model)
         return;

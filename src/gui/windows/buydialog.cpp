@@ -69,7 +69,7 @@ static const char *const SORT_NAME_BUY[7] =
     N_("by type")
 };
 
-class SortListModelBuy final : public gcn::ListModel
+class SortListModelBuy final : public ListModel
 {
 public:
     ~SortListModelBuy()

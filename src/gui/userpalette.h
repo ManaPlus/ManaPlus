@@ -26,12 +26,12 @@
 
 #include "gui/palette.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 /**
  * Class controlling the game's color palette.
  */
-class UserPalette final : public Palette, public gcn::ListModel
+class UserPalette final : public Palette, public ListModel
 {
     public:
         /** List of all colors that are configurable. */

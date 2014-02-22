@@ -39,7 +39,7 @@ class Setup_Audio final : public SetupTabScroll
         void apply() override final;
 
     private:
-        gcn::ListModel *mSoundModel;
+        ListModel *mSoundModel;
 
         SetupItemNames *mChannelsList;
 };

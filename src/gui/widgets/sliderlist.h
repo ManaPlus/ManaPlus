@@ -30,11 +30,7 @@
 
 class Button;
 class Label;
-
-namespace gcn
-{
-    class ListModel;
-}
+class ListModel;
 
 class SliderList final : public Container,
                          public ActionListener,
@@ -42,7 +38,7 @@ class SliderList final : public Container,
 {
     public:
         SliderList(const Widget2 *const widget,
-                   gcn::ListModel *const listModel);
+                   ListModel *const listModel);
 
         A_DELETE_COPY(SliderList)
 
@@ -81,7 +77,7 @@ class SliderList final : public Container,
 
         Button *mButtons[2];
         Label *mLabel;
-        gcn::ListModel *mListModel;
+        ListModel *mListModel;
         std::string mPrevEventId;
         std::string mNextEventId;
         int mOldWidth;

@@ -33,7 +33,7 @@
 #include "net/net.h"
 #include "gui/viewport.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "gui/popups/itempopup.h"
 
@@ -52,7 +52,7 @@
 
 #include "debug.h"
 
-class ItemsModal final : public gcn::ListModel
+class ItemsModal final : public ListModel
 {
 public:
     ItemsModal() :

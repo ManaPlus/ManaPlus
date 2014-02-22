@@ -36,7 +36,7 @@
 #include "gui/gui.h"
 #include "gui/viewport.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "gui/popups/textpopup.h"
 
@@ -81,7 +81,7 @@ static const char *const SORT_NAME_INVENTORY[6] =
     N_("by type")
 };
 
-class SortListModelInv final : public gcn::ListModel
+class SortListModelInv final : public ListModel
 {
 public:
     ~SortListModelInv()

@@ -23,9 +23,9 @@
 
 #include "resources/image.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
-class ExtendedListModel : public gcn::ListModel
+class ExtendedListModel : public ListModel
 {
     public:
         virtual const Image *getImageAt(int i) A_WARN_UNUSED = 0;

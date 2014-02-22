@@ -116,7 +116,7 @@ const char *SIZE_NAME[maxFontSizes] =
     N_("Huge (23)"),
 };
 
-class FontSizeChoiceListModel final : public gcn::ListModel
+class FontSizeChoiceListModel final : public ListModel
 {
 public:
     ~FontSizeChoiceListModel()

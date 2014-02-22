@@ -33,7 +33,7 @@
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "net/loginhandler.h"
 #include "net/net.h"
@@ -47,7 +47,7 @@ extern WorldInfo **server_info;
 /**
  * The list model for the server list.
  */
-class WorldListModel final : public gcn::ListModel
+class WorldListModel final : public ListModel
 {
     public:
         explicit WorldListModel(Worlds worlds) :

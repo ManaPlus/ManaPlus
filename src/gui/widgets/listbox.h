@@ -33,13 +33,10 @@
 
 class Skin;
 class KeyEvent;
+class ListModel;
 class MouseEvent;
 class Widget2;
 
-namespace gcn
-{
-    class ListModel;
-}
 /**
  * A list box, meant to be used inside a scroll area. Same as the Guichan list
  * box except this one doesn't have a background, instead completely relying
@@ -54,7 +51,7 @@ class ListBox : public gcn::ListBox
          * Constructor.
          */
         ListBox(const Widget2 *const widget,
-                gcn::ListModel *const listModel,
+                ListModel *const listModel,
                 const std::string &skin);
 
         A_DELETE_COPY(ListBox)

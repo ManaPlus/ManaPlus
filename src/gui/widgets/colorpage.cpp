@@ -27,7 +27,7 @@
 #include "debug.h"
 
 ColorPage::ColorPage(const Widget2 *const widget,
-                     gcn::ListModel *const listModel,
+                     ListModel *const listModel,
                      const std::string &skin) :
     ListBox(widget, listModel, skin)
 {

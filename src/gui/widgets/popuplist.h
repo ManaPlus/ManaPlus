@@ -29,19 +29,15 @@
 
 class DropDown;
 class ListBox;
+class ListModel;
 class ScrollArea;
-
-namespace gcn
-{
-    class ListModel;
-}
 
 class PopupList final : public Popup,
                         public FocusListener
 {
     public:
         PopupList(DropDown *const widget,
-                  gcn::ListModel *const listModel, bool extended,
+                  ListModel *const listModel, bool extended,
                   bool modal = false);
 
         ~PopupList();
@@ -58,9 +54,9 @@ class PopupList final : public Popup,
 
         int getSelected() const;
 
-        void setListModel(gcn::ListModel *const model);
+        void setListModel(ListModel *const model);
 
-        gcn::ListModel *getListModel() const
+        ListModel *getListModel() const
         { return mListModel; }
 
         void adjustSize();
@@ -74,7 +70,7 @@ class PopupList final : public Popup,
         void mouseReleased(MouseEvent& mouseEvent) override final;
 
     private:
-        gcn::ListModel *mListModel;
+        ListModel *mListModel;
         ListBox *mListBox;
         ScrollArea *mScrollArea;
         DropDown *mDropDown;

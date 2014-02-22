@@ -24,14 +24,14 @@
 
 #include "gui/font.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "render/graphics.h"
 
 #include "debug.h"
 
 ExtendedListBox::ExtendedListBox(const Widget2 *const widget,
-                                 gcn::ListModel *const listModel,
+                                 ListModel *const listModel,
                                  const std::string &skin,
                                  const int rowHeight) :
     ListBox(widget, listModel, skin),

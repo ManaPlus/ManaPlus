@@ -23,7 +23,7 @@
 
 #include "utils/stringvector.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "localconsts.h"
 
@@ -42,7 +42,7 @@ struct ColorPair
     const Color* color2;
 };
 
-class ColorModel : public gcn::ListModel
+class ColorModel : public ListModel
 {
     public:
         ColorModel();

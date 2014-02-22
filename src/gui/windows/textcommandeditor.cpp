@@ -27,7 +27,7 @@
 
 #include "input/keyboardconfig.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/dropdown.h"
@@ -44,7 +44,7 @@
 
 #include "debug.h"
 
-class IconsModal final : public gcn::ListModel
+class IconsModal final : public ListModel
 {
 public:
     IconsModal() :
@@ -121,7 +121,7 @@ const char *MAGIC_SCHOOL_TEXT[6] =
     N_("Astral Magic")
 };
 
-class TargetTypeModel final : public gcn::ListModel
+class TargetTypeModel final : public ListModel
 {
 public:
     ~TargetTypeModel()
@@ -140,7 +140,7 @@ public:
     }
 };
 
-class MagicSchoolModel final : public gcn::ListModel
+class MagicSchoolModel final : public ListModel
 {
 public:
     ~MagicSchoolModel()

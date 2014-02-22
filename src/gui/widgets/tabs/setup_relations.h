@@ -33,14 +33,10 @@ class Button;
 class CheckBox;
 class DropDown;
 class GuiTable;
+class ListModel;
 class PlayerTableModel;
 class ScrollArea;
 class StaticTableModel;
-
-namespace gcn
-{
-    class ListModel;
-}
 
 class Setup_Relations final : public SetupTab,
                               public PlayerRelationsListener
@@ -78,7 +74,7 @@ private:
 
     Button *mDeleteButton;
 
-    gcn::ListModel *mIgnoreActionChoicesModel;
+    ListModel *mIgnoreActionChoicesModel;
     DropDown *mIgnoreActionChoicesBox;
 };
 

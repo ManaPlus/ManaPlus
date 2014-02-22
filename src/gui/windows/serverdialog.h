@@ -34,7 +34,7 @@
 #include "listeners/keylistener.h"
 #include "listeners/selectionlistener.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include <string>
 #include <vector>
@@ -48,7 +48,7 @@ class ServerDialog;
 /**
  * Server and Port List Model
  */
-class ServersListModel final : public gcn::ListModel
+class ServersListModel final : public ListModel
 {
     public:
         typedef std::pair<int, std::string> VersionString;

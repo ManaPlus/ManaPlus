@@ -162,7 +162,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      input/key.h \
 	      events/keyevent.h \
 	      listeners/keylistener.h \
-	      gui/base/listmodel.hpp \
+	      gui/models/listmodel.h \
 	      events/mouseevent.h \
 	      listeners/mouselistener.h \
 	      gui/rectangle.h \

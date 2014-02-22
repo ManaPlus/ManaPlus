@@ -69,7 +69,7 @@
 
 #include "gui/font.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "listeners/selectionlistener.h"
 

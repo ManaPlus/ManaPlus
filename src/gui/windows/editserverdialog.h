@@ -34,12 +34,12 @@ class ServerDialog;
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 /**
  * Server Type List Model
  */
-class TypeListModel : public gcn::ListModel
+class TypeListModel : public ListModel
 {
     public:
         TypeListModel()

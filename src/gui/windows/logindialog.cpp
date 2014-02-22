@@ -84,7 +84,7 @@ const char *UPDATE_TYPE_TEXT[3] =
     N_("Skip"),
 };
 
-class UpdateTypeModel final : public gcn::ListModel
+class UpdateTypeModel final : public ListModel
 {
     public:
         UpdateTypeModel()
@@ -108,11 +108,11 @@ class UpdateTypeModel final : public gcn::ListModel
         }
 };
 
-class UpdateListModel final : public gcn::ListModel
+class UpdateListModel final : public ListModel
 {
     public:
         explicit UpdateListModel(LoginData *const data) :
-            gcn::ListModel(),
+            ListModel(),
             mLoginData(data)
         {
         }

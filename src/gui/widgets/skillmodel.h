@@ -24,13 +24,13 @@
 #define GUI_WIDGETS_SKILLMODEL_H
 
 #include "gui/widgets/skillinfo.h"
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include <string>
 
 #include "localconsts.h"
 
-class SkillModel final : public gcn::ListModel
+class SkillModel final : public ListModel
 {
     public:
         SkillModel();

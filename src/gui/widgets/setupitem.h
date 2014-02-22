@@ -36,15 +36,11 @@ class EditDialog;
 class HorizontContainer;
 class IntTextField;
 class Label;
+class ListModel;
 class SetupTabScroll;
 class Slider;
 class SliderList;
 class TextField;
-
-namespace gcn
-{
-    class ListModel;
-}
 
 class SetupItem : public ActionListener,
                   public Widget2
@@ -315,7 +311,7 @@ class SetupItemDropDown final : public SetupItem
                           const std::string &restrict keyName,
                           SetupTabScroll *restrict const parent,
                           const std::string &restrict eventName,
-                          gcn::ListModel *restrict const model,
+                          ListModel *restrict const model,
                           const int width, const bool mainConfig = true);
 
         SetupItemDropDown(const std::string &restrict text,
@@ -323,7 +319,7 @@ class SetupItemDropDown final : public SetupItem
                           const std::string &restrict keyName,
                           SetupTabScroll *restrict const parent,
                           const std::string &restrict eventName,
-                          gcn::ListModel *restrict const model,
+                          ListModel *restrict const model,
                           const int width,
                           const std::string &restrict def,
                           const bool mainConfig = true);
@@ -341,7 +337,7 @@ class SetupItemDropDown final : public SetupItem
     protected:
         HorizontContainer *mHorizont;
         Label *mLabel;
-        gcn::ListModel *mModel;
+        ListModel *mModel;
         DropDown *mDropDown;
         int mWidth;
 };
@@ -483,7 +479,7 @@ class SetupItemSliderList : public SetupItem
                             const std::string &restrict keyName,
                             SetupTabScroll *restrict const parent,
                             const std::string &restrict eventName,
-                            gcn::ListModel *restrict const model,
+                            ListModel *restrict const model,
                             const int width = 150, const bool onTheFly = false,
                             const bool mainConfig = true);
 
@@ -492,7 +488,7 @@ class SetupItemSliderList : public SetupItem
                             const std::string &restrict keyName,
                             SetupTabScroll *restrict const parent,
                             const std::string &restrict eventName,
-                            gcn::ListModel *restrict const model,
+                            ListModel *restrict const model,
                             const std::string &restrict def,
                             const int width = 150,
                             const bool onTheFly = false,
@@ -501,7 +497,7 @@ class SetupItemSliderList : public SetupItem
         HorizontContainer *mHorizont;
         Label *mLabel;
         SliderList *mSlider;
-        gcn::ListModel *mModel;
+        ListModel *mModel;
         int mWidth;
         bool mOnTheFly;
 };
@@ -514,7 +510,7 @@ class SetupItemSound final : public SetupItemSliderList
                        const std::string &restrict keyName,
                        SetupTabScroll *restrict const parent,
                        const std::string &restrict eventName,
-                       gcn::ListModel *restrict const model,
+                       ListModel *restrict const model,
                        const int width = 150,
                        const bool onTheFly = false,
                        const bool mainConfig = true);
@@ -537,7 +533,7 @@ class SetupItemSliderInt final : public SetupItemSliderList
                            const std::string &restrict keyName,
                            SetupTabScroll *restrict const parent,
                            const std::string &restrict eventName,
-                           gcn::ListModel *restrict const model,
+                           ListModel *restrict const model,
                            const int min,
                            const int width = 150,
                            const bool onTheFly = false,

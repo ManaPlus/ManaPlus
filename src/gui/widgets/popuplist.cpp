@@ -29,7 +29,7 @@
 #include "debug.h"
 
 PopupList::PopupList(DropDown *const widget,
-                     gcn::ListModel *const listModel,
+                     ListModel *const listModel,
                      bool extended, bool modal):
     Popup("PopupList", "popuplist.xml"),
     FocusListener(),
@@ -112,7 +112,7 @@ int PopupList::getSelected() const
     return mListBox->getSelected();
 }
 
-void PopupList::setListModel(gcn::ListModel *const model)
+void PopupList::setListModel(ListModel *const model)
 {
     if (mListBox)
         mListBox->setListModel(model);

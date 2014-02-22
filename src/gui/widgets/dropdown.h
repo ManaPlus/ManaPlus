@@ -34,13 +34,9 @@
 #include "localconsts.h"
 
 class Image;
+class ListModel;
 class PopupList;
 class Skin;
-
-namespace gcn
-{
-    class ListModel;
-}
 
 /**
  * A drop down box from which you can select different values.
@@ -66,7 +62,7 @@ class DropDown final : public ActionListener,
          * @see ListModel, ScrollArea, ListBox.
          */
         DropDown(const Widget2 *const widget,
-                 gcn::ListModel *const listModel,
+                 ListModel *const listModel,
                  const bool extended = false,
                  const bool modal = false,
                  ActionListener *const listener = nullptr,
@@ -121,9 +117,9 @@ class DropDown final : public ActionListener,
 
         void setSelected(int selected);
 
-        void setListModel(gcn::ListModel *const listModel);
+        void setListModel(ListModel *const listModel);
 
-        gcn::ListModel *getListModel();
+        ListModel *getListModel();
 
         void addSelectionListener(SelectionListener* listener);
 

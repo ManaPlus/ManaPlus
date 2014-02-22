@@ -177,7 +177,7 @@ const char *COLOR_NAME[14] =
 };
 
 
-class ColorListModel final : public gcn::ListModel
+class ColorListModel final : public ListModel
 {
 public:
     ~ColorListModel()

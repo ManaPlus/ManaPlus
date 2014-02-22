@@ -37,6 +37,7 @@ class Button;
 class ChatTab;
 class FloorItem;
 class Item;
+class ListModel;
 class MapItem;
 class ScrollArea;
 class TextCommand;
@@ -44,11 +45,6 @@ class TextDialog;
 class TextField;
 class ProgressBar;
 class Window;
-
-namespace gcn
-{
-    class ListModel;
-}
 
 class RenameListener final : public ActionListener
 {
@@ -176,7 +172,7 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showChangePos(const int x, const int y);
 
-        void showPopup(const int x, const int y, gcn::ListModel *const model);
+        void showPopup(const int x, const int y, ListModel *const model);
 
         void showTextFieldPopup(int x, int y, TextField *const input);
 

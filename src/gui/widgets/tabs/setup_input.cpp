@@ -39,7 +39,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabstrip.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "debug.h"
 
@@ -51,7 +51,7 @@ static const int setupGroups = 9;
  *
  * \ingroup Interface
  */
-class KeyListModel final : public gcn::ListModel
+class KeyListModel final : public ListModel
 {
     public:
         KeyListModel() :

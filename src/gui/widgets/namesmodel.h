@@ -23,11 +23,11 @@
 
 #include "utils/stringvector.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "localconsts.h"
 
-class NamesModel : public gcn::ListModel
+class NamesModel : public ListModel
 {
     public:
         NamesModel();

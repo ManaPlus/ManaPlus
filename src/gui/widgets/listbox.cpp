@@ -32,7 +32,7 @@
 #include "gui/font.h"
 #include "gui/gui.h"
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include "render/graphics.h"
 
@@ -41,7 +41,7 @@
 float ListBox::mAlpha = 1.0;
 
 ListBox::ListBox(const Widget2 *const widget,
-                 gcn::ListModel *const listModel,
+                 ListModel *const listModel,
                  const std::string &skin) :
     gcn::ListBox(widget, listModel),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),

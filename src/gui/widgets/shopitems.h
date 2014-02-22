@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_SHOPITEMS_H
 #define GUI_WIDGETS_SHOPITEMS_H
 
-#include "gui/base/listmodel.hpp"
+#include "gui/models/listmodel.h"
 
 #include <string>
 #include <vector>
@@ -41,7 +41,7 @@ class ShopItem;
  *
  * This functionality can be enabled in the constructor.
  */
-class ShopItems final : public gcn::ListModel
+class ShopItems final : public ListModel
 {
     public:
         /**
