@@ -73,7 +73,7 @@ void ShortcutContainer::widgetResized(const Event &event A_UNUSED)
 int ShortcutContainer::getIndexFromGrid(const int pointX,
                                         const int pointY) const
 {
-    const gcn::Rectangle tRect = gcn::Rectangle(0, 0,
+    const Rectangle tRect = Rectangle(0, 0,
         mGridWidth * mBoxWidth, mGridHeight * mBoxHeight);
 
     int index = ((pointY / mBoxHeight) * mGridWidth) + pointX / mBoxWidth;

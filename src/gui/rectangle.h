@@ -61,102 +61,102 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GCN_RECTANGLE_HPP
-#define GCN_RECTANGLE_HPP
+#ifndef GUI_RECTANGLE_H
+#define GUI_RECTANGLE_H
 
 #include <iostream>
 
 #include "localconsts.h"
 
-namespace gcn
+/**
+  * Represents a rectangle.
+  *
+  * @since 0.1.0
+  */
+class Rectangle
 {
-    /**
-     * Represents a rectangle.
-     *
-     * @since 0.1.0
-     */
-    class Rectangle
-    {
     public:
         /**
-         * Constructor. The default rectangle is an empty rectangle
-         * at the coordinates (0,0).
-         */
+          * Constructor. The default rectangle is an empty rectangle
+          * at the coordinates (0,0).
+          */
         Rectangle();
 
         /**
-         * Constructor.
-         *
-         * @param x The x coordinate of the rectangle.
-         * @param y The y coordinate of the rectangle.
-         * @param width The width of the rectangle.
-         * @param height The height of the rectangle.
-         * @since 0.1.0
-         */
+          * Constructor.
+          *
+          * @param x The x coordinate of the rectangle.
+          * @param y The y coordinate of the rectangle.
+          * @param width The width of the rectangle.
+          * @param height The height of the rectangle.
+          * @since 0.1.0
+          */
         Rectangle(const int x, const int y, const int width, const int height);
 
         virtual ~Rectangle()
         { }
 
         /**
-         * Sets the dimension of a rectangle.
-         *
-         * @param x The x coordinate of the rectangle.
-         * @param y The y coordinate of the rectangle.
-         * @param width The width of the rectangle.
-         * @param height The height of the rectangle.
-         * @since 0.1.0
-         */
-        void setAll(int x, int y, int width, int height);
+          * Sets the dimension of a rectangle.
+          *
+          * @param x The x coordinate of the rectangle.
+          * @param y The y coordinate of the rectangle.
+          * @param width The width of the rectangle.
+          * @param height The height of the rectangle.
+          * @since 0.1.0
+          */
+        void setAll(const int x,
+                    const int y,
+                    const int width0,
+                    const int height0);
 
         /**
-         * Checks if another rectangle intersects with the rectangle.
-         *
-         * @param rectangle Another rectangle to check for intersection.
-         * @return True if the rectangles intersect, false otherwise.
-         * @since 0.1.0
-         */
+          * Checks if another rectangle intersects with the rectangle.
+          *
+          * @param rectangle Another rectangle to check for intersection.
+          * @return True if the rectangles intersect, false otherwise.
+          * @since 0.1.0
+          */
         bool isIntersecting(const Rectangle& rectangle) const A_WARN_UNUSED;
 
         /**
-         * Checks if a point is inside the rectangle
-         *
-         * @param x The x coordinate of the point.
-         * @param y The y coordinate of the point.
-         * @return True if the point is inside the rectangle.
-         * @since 0.1.0
-         */
+          * Checks if a point is inside the rectangle
+          *
+          * @param x The x coordinate of the point.
+          * @param y The y coordinate of the point.
+          * @return True if the point is inside the rectangle.
+          * @since 0.1.0
+          */
         bool isPointInRect(int x, int y) const A_WARN_UNUSED;
 
         /**
-         * Output operator for output.
-         *
-         * @param out The stream to output to.
-         * @param rectangle The rectangle to output.
-         */
+          * Output operator for output.
+          *
+          * @param out The stream to output to.
+          * @param rectangle The rectangle to output.
+          */
         friend std::ostream& operator<<(std::ostream& out,
                                         const Rectangle& rectangle);
 
         /**
-         * Holds the x coordinate of the rectangle.
-         */
+          * Holds the x coordinate of the rectangle.
+          */
         int x;
 
         /**
-         * Holds the x coordinate of the rectangle.
-         */
+          * Holds the x coordinate of the rectangle.
+          */
         int y;
 
         /**
-         * Holds the width of the rectangle.
-         */
+          * Holds the width of the rectangle.
+          */
         int width;
 
         /**
-         * Holds the height of the rectangle.
-         */
+          * Holds the height of the rectangle.
+          */
         int height;
-    };
-}  // namespace gcn
+};
 
-#endif  // end GCN_RECTANGEL_HPP
+#endif  // GUI_RECTANGEL_H

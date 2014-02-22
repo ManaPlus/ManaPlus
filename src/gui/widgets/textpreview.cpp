@@ -93,7 +93,7 @@ void TextPreview::draw(Graphics* graphics)
                     static_cast<int>(mBGColor->g),
                     static_cast<int>(mBGColor->b),
                     static_cast<int>(mAlpha * 255.0F)));
-        graphics->fillRectangle(gcn::Rectangle(0, 0,
+        graphics->fillRectangle(Rectangle(0, 0,
             mDimension.width, mDimension.height));
     }
 
@@ -109,7 +109,7 @@ void TextPreview::draw(Graphics* graphics)
                 static_cast<int>(mTextBGColor->g),
                 static_cast<int>(mTextBGColor->b),
                 intAlpha));
-            graphics->fillRectangle(gcn::Rectangle(mPadding, mPadding, x, y));
+            graphics->fillRectangle(Rectangle(mPadding, mPadding, x, y));
         }
     }
 

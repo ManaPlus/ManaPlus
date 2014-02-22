@@ -487,7 +487,7 @@ void Window::setResizable(const bool r)
 
 void Window::widgetResized(const Event &event A_UNUSED)
 {
-    const gcn::Rectangle area = getChildrenArea();
+    const Rectangle area = getChildrenArea();
 
     if (mGrip)
     {
@@ -794,7 +794,7 @@ void Window::mouseDragged(MouseEvent &event)
     {
         const int dx = event.getX() - mDragOffsetX;
         const int dy = event.getY() - mDragOffsetY;
-        gcn::Rectangle newDim = getDimension();
+        Rectangle newDim = getDimension();
 
         if (mouseResize & (TOP | BOTTOM))
         {
@@ -1192,7 +1192,7 @@ void Window::redraw()
 {
     if (mLayout)
     {
-        const gcn::Rectangle area = getChildrenArea();
+        const Rectangle area = getChildrenArea();
         int w = area.width;
         int h = area.height;
         mLayout->reflow(w, h);
@@ -1228,12 +1228,12 @@ void Window::ensureOnScreen()
         mDimension.y = 0;
 }
 
-gcn::Rectangle Window::getWindowArea() const
+Rectangle Window::getWindowArea() const
 {
-    return gcn::Rectangle(mPadding,
-                          mPadding,
-                          mDimension.width - mPadding * 2,
-                          mDimension.height - mPadding * 2);
+    return Rectangle(mPadding,
+        mPadding,
+        mDimension.width - mPadding * 2,
+        mDimension.height - mPadding * 2);
 }
 
 int Window::getOption(const std::string &name, const int def) const

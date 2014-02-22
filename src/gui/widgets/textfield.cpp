@@ -662,7 +662,7 @@ void TextField::handleCopy() const
 
 void TextField::drawCaret(Graphics* graphics, int x)
 {
-    const gcn::Rectangle *const clipArea = graphics->getCurrentClipArea();
+    const Rectangle *const clipArea = graphics->getCurrentClipArea();
     if (!clipArea)
         return;
 

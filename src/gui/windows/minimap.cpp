@@ -213,7 +213,7 @@ void Minimap::setMap(const Map *const map)
             setHeight(height);
         }
 
-        const gcn::Rectangle &rect = mDimension;
+        const Rectangle &rect = mDimension;
         setDefaultSize(rect.x, rect.y, rect.width, rect.height);
         resetToDefaultSize();
 
@@ -244,7 +244,7 @@ void Minimap::draw(Graphics *graphics)
         return;
     }
 
-    const gcn::Rectangle a = getChildrenArea();
+    const Rectangle a = getChildrenArea();
 
     graphics->pushClipArea(a);
 
@@ -346,7 +346,7 @@ void Minimap::draw(Graphics *graphics)
                 dotSize - 1) * mWidthProportion);
         const Vector &pos = being->getPosition();
 
-        graphics->fillRectangle(gcn::Rectangle(
+        graphics->fillRectangle(Rectangle(
             static_cast<float>(pos.x * mWidthProportion) / 32
             + mMapOriginX - offsetWidth,
             static_cast<float>(pos.y * mHeightProportion) / 32
@@ -384,7 +384,7 @@ void Minimap::draw(Graphics *graphics)
                         const int offsetWidth = static_cast<int>(
                             mWidthProportion);
 
-                        graphics->fillRectangle(gcn::Rectangle(
+                        graphics->fillRectangle(Rectangle(
                             static_cast<int>(member->getX()
                             * mWidthProportion) + mMapOriginX - offsetWidth,
                             static_cast<int>(member->getY()
@@ -429,7 +429,7 @@ void Minimap::draw(Graphics *graphics)
     }
 
     graphics->setColor(userPalette->getColor(UserPalette::PC));
-    graphics->drawRectangle(gcn::Rectangle(x, y, w, h));
+    graphics->drawRectangle(Rectangle(x, y, w, h));
     graphics->popClipArea();
     BLOCK_END("Minimap::draw")
 }
@@ -463,7 +463,7 @@ void Minimap::mouseMoved(MouseEvent &event)
     Window::mouseMoved(event);
     const int x = event.getX();
     const int y = event.getY();
-    const gcn::Rectangle &rect = mDimension;
+    const Rectangle &rect = mDimension;
     mTextPopup->show(x + rect.x, y + rect.y, mCaption);
 }
 
@@ -475,7 +475,7 @@ void Minimap::mouseExited(MouseEvent &event)
 
 void Minimap::screenToMap(int &x, int &y)
 {
-    const gcn::Rectangle a = getChildrenArea();
+    const Rectangle a = getChildrenArea();
     x = (x - a.x - mMapOriginX + mWidthProportion) / mWidthProportion;
     y = (y - a.y - mMapOriginY + mHeightProportion) / mHeightProportion;
 }

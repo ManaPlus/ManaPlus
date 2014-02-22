@@ -144,7 +144,7 @@ void ShopListBox::draw(Graphics *graphics)
         if (needDraw)
         {
             graphics->setColor(*backgroundColor);
-            graphics->fillRectangle(gcn::Rectangle(mPadding, y + mPadding,
+            graphics->fillRectangle(Rectangle(mPadding, y + mPadding,
                 width, mRowHeight));
         }
 

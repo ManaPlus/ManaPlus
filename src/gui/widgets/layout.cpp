@@ -80,7 +80,7 @@ void LayoutCell::reflow(int nx, int ny, int nw, int nh)
     if (mType == ARRAY)
         mArray->reflow(nx, ny, nw, nh);
     else
-        mWidget->setDimension(gcn::Rectangle(nx, ny, nw, nh));
+        mWidget->setDimension(Rectangle(nx, ny, nw, nh));
 }
 
 void LayoutCell::computeSizes()

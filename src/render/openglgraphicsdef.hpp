@@ -88,7 +88,7 @@
 
         void _endDraw() override final;
 
-        bool pushClipArea(gcn::Rectangle area) override final;
+        bool pushClipArea(Rectangle area) override final;
 
         void popClipArea() override final;
 
@@ -110,12 +110,12 @@
 
         void drawLine(int x1, int y1, int x2, int y2) override final;
 
-        void drawRectangle(const gcn::Rectangle &rect,
+        void drawRectangle(const Rectangle &rect,
                            const bool filled);
 
-        void drawRectangle(const gcn::Rectangle &rect) override final;
+        void drawRectangle(const Rectangle &rect) override final;
 
-        void fillRectangle(const gcn::Rectangle &rect) override final;
+        void fillRectangle(const Rectangle &rect) override final;
 
         static void dumpSettings();
 

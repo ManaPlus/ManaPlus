@@ -389,7 +389,7 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
     else if (size > maxWidth)
         size = maxWidth;
 
-    setDimension(gcn::Rectangle(0, 0, size, 500));
+    setDimension(Rectangle(0, 0, size, 500));
 }
 
 Setup_Theme::~Setup_Theme()

@@ -100,5 +100,5 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Use special diagonal speed in players moving"),
         "", "useDiagonalSpeed", this, "useDiagonalSpeedEvent");
 
-    setDimension(gcn::Rectangle(0, 0, 550, 350));
+    setDimension(Rectangle(0, 0, 550, 350));
 }

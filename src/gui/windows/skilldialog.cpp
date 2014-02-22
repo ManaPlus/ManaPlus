@@ -114,7 +114,7 @@ class SkillListBox final : public ListBox
             // Draw filled rectangle around the selected list element
             if (mSelected >= 0)
             {
-                graphics->fillRectangle(gcn::Rectangle(mPadding, getRowHeight()
+                graphics->fillRectangle(Rectangle(mPadding, getRowHeight()
                     * mSelected + mPadding, getWidth() - 2 * mPadding,
                     getRowHeight()));
             }

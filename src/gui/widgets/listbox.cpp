@@ -118,7 +118,7 @@ void ListBox::draw(Graphics *graphics)
         // Draw filled rectangle around the selected list element
         if (mSelected >= 0)
         {
-            graphics->fillRectangle(gcn::Rectangle(mPadding,
+            graphics->fillRectangle(Rectangle(mPadding,
                 rowHeight * mSelected + mPadding,
                 mDimension.width - 2 * mPadding, rowHeight));
 
@@ -148,7 +148,7 @@ void ListBox::draw(Graphics *graphics)
         // Draw filled rectangle around the selected list element
         if (mSelected >= 0)
         {
-            graphics->fillRectangle(gcn::Rectangle(mPadding,
+            graphics->fillRectangle(Rectangle(mPadding,
                 rowHeight * mSelected + mPadding,
                 mDimension.width - 2 * mPadding, rowHeight));
 

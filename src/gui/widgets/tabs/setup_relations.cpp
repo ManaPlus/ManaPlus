@@ -319,7 +319,7 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
 
     player_relations.addListener(this);
 
-    setDimension(gcn::Rectangle(0, 0, 500, 350));
+    setDimension(Rectangle(0, 0, 500, 350));
 }
 
 Setup_Relations::~Setup_Relations()

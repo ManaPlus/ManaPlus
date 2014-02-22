@@ -202,7 +202,7 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Allow screensaver to run"),
         "", "allowscreensaver", this, "allowscreensaverEvent");
 
-    setDimension(gcn::Rectangle(0, 0, 550, 350));
+    setDimension(Rectangle(0, 0, 550, 350));
 }
 
 Setup_Visual::~Setup_Visual()

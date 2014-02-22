@@ -407,7 +407,7 @@ void ChatTab::chatInput(const std::string &message)
 void ChatTab::scroll(const int amount)
 {
     const int range = mScrollArea->getHeight() / 8 * amount;
-    gcn::Rectangle scr;
+    Rectangle scr;
     scr.y = mScrollArea->getVerticalScrollAmount() + range;
     scr.height = abs(range);
     mTextOutput->showPart(scr);

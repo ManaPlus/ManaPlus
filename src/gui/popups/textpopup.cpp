@@ -86,7 +86,7 @@ void TextPopup::show(const int x, const int y, const std::string &str1,
     setHeight(pad2 + mText[0]->getFont()->getHeight() * cnt);
     const int distance = 20;
 
-    const gcn::Rectangle &rect = mDimension;
+    const Rectangle &rect = mDimension;
     int posX = std::max(0, x - rect.width / 2);
     int posY = y + distance;
 

@@ -88,7 +88,7 @@ class MiniStatusWindow final : public Popup,
         std::vector <ProgressBar*> &getBars() A_WARN_UNUSED
         { return mBars; }
 
-        gcn::Rectangle getChildrenArea() override final A_WARN_UNUSED;
+        Rectangle getChildrenArea() override final A_WARN_UNUSED;
 
 #ifdef USE_PROFILER
         void logicChildren();

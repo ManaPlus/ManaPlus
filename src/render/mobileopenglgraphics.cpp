@@ -884,7 +884,7 @@ void MobileOpenGLGraphics::_beginDraw()
 
 //    glScalef(0.5F, 0.5F, 0.5F);
 
-    pushClipArea(gcn::Rectangle(0, 0, mRect.w, mRect.h));
+    pushClipArea(Rectangle(0, 0, mRect.w, mRect.h));
 }
 
 void MobileOpenGLGraphics::_endDraw()
@@ -951,21 +951,21 @@ SDL_Surface* MobileOpenGLGraphics::getScreenshot()
     return screenshot;
 }
 
-bool MobileOpenGLGraphics::pushClipArea(gcn::Rectangle area)
+bool MobileOpenGLGraphics::pushClipArea(Rectangle area)
 {
     int transX = 0;
     int transY = 0;
 
     if (!mClipStack.empty())
     {
-        const gcn::ClipRectangle &clipArea = mClipStack.top();
+        const ClipRectangle &clipArea = mClipStack.top();
         transX = -clipArea.xOffset;
         transY = -clipArea.yOffset;
     }
 
     const bool result = Graphics::pushClipArea(area);
 
-    const gcn::ClipRectangle &clipArea = mClipStack.top();
+    const ClipRectangle &clipArea = mClipStack.top();
     transX += clipArea.xOffset;
     transY += clipArea.yOffset;
 
@@ -986,7 +986,7 @@ void MobileOpenGLGraphics::popClipArea()
     if (mClipStack.empty())
         return;
 
-    const gcn::ClipRectangle &clipArea1 = mClipStack.top();
+    const ClipRectangle &clipArea1 = mClipStack.top();
     int transX = -clipArea1.xOffset;
     int transY = -clipArea1.yOffset;
 
@@ -995,7 +995,7 @@ void MobileOpenGLGraphics::popClipArea()
     if (mClipStack.empty())
         return;
 
-    const gcn::ClipRectangle &clipArea = mClipStack.top();
+    const ClipRectangle &clipArea = mClipStack.top();
     transX += clipArea.xOffset;
     transY += clipArea.yOffset;
     if (transX || transY)
@@ -1040,12 +1040,12 @@ void MobileOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
     drawLineArrays(4);
 }
 
-void MobileOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect)
+void MobileOpenGLGraphics::drawRectangle(const Rectangle& rect)
 {
     drawRectangle(rect, false);
 }
 
-void MobileOpenGLGraphics::fillRectangle(const gcn::Rectangle& rect)
+void MobileOpenGLGraphics::fillRectangle(const Rectangle& rect)
 {
     drawRectangle(rect, true);
 }
@@ -1090,7 +1090,7 @@ void MobileOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
 }
 
-void MobileOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
+void MobileOpenGLGraphics::drawRectangle(const Rectangle& rect,
                                          const bool filled)
 {
     BLOCK_START("Graphics::drawRectangle")

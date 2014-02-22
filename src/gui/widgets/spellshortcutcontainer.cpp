@@ -116,7 +116,7 @@ void SpellShortcutContainer::draw(Graphics *graphics)
         const int itemId = getItemByIndex(i);
         if (selectedId >= 0 && itemId == selectedId)
         {
-            graphics->drawRectangle(gcn::Rectangle(itemX + 1, itemY + 1,
+            graphics->drawRectangle(Rectangle(itemX + 1, itemY + 1,
                 mBoxWidth - 1, mBoxHeight - 1));
         }
 

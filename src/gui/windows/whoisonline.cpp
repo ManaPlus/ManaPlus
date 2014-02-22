@@ -116,10 +116,10 @@ void WhoIsOnline::postInit()
     setSaveVisible(true);
 
     mUpdateButton->setEnabled(false);
-    mUpdateButton->setDimension(gcn::Rectangle(5, 5, w - 10, 20 + 5));
+    mUpdateButton->setDimension(Rectangle(5, 5, w - 10, 20 + 5));
 
     mBrowserBox->setOpaque(false);
-    mScrollArea->setDimension(gcn::Rectangle(5, 20 + 10, w - 10, h - 10 - 30));
+    mScrollArea->setDimension(Rectangle(5, 20 + 10, w - 10, h - 10 - 30));
     mScrollArea->setSize(w - 10, h - 10 - 30);
     mBrowserBox->setLinkHandler(this);
 
@@ -723,7 +723,7 @@ void WhoIsOnline::widgetResized(const Event &event)
 
 void WhoIsOnline::updateSize()
 {
-    const gcn::Rectangle area = getChildrenArea();
+    const Rectangle area = getChildrenArea();
     if (mUpdateButton)
         mUpdateButton->setWidth(area.width - 10);
 

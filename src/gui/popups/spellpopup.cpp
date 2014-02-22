@@ -90,7 +90,7 @@ void SpellPopup::view(const int x, const int y)
     int posX = std::max(0, x - getWidth() / 2);
     int posY = y + distance;
 
-    const gcn::Rectangle &rect = mDimension;
+    const Rectangle &rect = mDimension;
     const int w = rect.width;
     const int h = rect.height;
     if (posX + w > mainGraphics->mWidth)

@@ -74,7 +74,7 @@
 
 #include "render/renderers.h"
 
-#include "gui/base/cliprectangle.hpp"
+#include "gui/cliprectangle.h"
 
 #ifdef USE_SDL2
 #include <SDL_render.h>
@@ -259,7 +259,7 @@ class Graphics
                                 const int w, const int h,
                                 const ImageRect &imgRect) = 0;
 
-        virtual void fillRectangle(const gcn::Rectangle& rectangle) = 0;
+        virtual void fillRectangle(const Rectangle& rectangle) = 0;
 
         /**
          * Updates the screen. This is done by either copying the buffer to the
@@ -293,7 +293,7 @@ class Graphics
                              const int x2, const int y2,
                              const int width, const int height);
 
-        gcn::ClipRectangle &getTopClip() A_WARN_UNUSED
+        ClipRectangle &getTopClip() A_WARN_UNUSED
         { return mClipStack.top(); }
 
         void setRedraw(const bool n)
@@ -410,7 +410,7 @@ class Graphics
          * @return False if the the new area lays outside the current clip 
          *         area.
          */
-        virtual bool pushClipArea(gcn::Rectangle area);
+        virtual bool pushClipArea(Rectangle area);
 
         /**
          * Removes the top most clip area from the stack.
@@ -434,7 +434,7 @@ class Graphics
          *
          * @param rectangle The rectangle to draw.
          */
-        virtual void drawRectangle(const gcn::Rectangle &rectangle) = 0;
+        virtual void drawRectangle(const Rectangle &rectangle) = 0;
 
         /**
          * Gets the current clip area. Usefull if you want to do drawing
@@ -442,7 +442,7 @@ class Graphics
          *
          * @return The current clip area.
          */
-        virtual const gcn::ClipRectangle *getCurrentClipArea() const;
+        virtual const ClipRectangle *getCurrentClipArea() const;
 
         /**
          * Draws a single point/pixel.
@@ -510,7 +510,7 @@ class Graphics
         /**
          * Holds the clip area stack.
          */
-        std::stack<gcn::ClipRectangle> mClipStack;
+        std::stack<ClipRectangle> mClipStack;
 
         SDL_Window *mWindow;
 

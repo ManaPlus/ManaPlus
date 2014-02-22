@@ -380,7 +380,7 @@ void Button::draw(Graphics *graphics)
     {
         // because we don't know where parent windows was moved,
         // need recalc vertexes
-        gcn::ClipRectangle &rect = graphics->getTopClip();
+        ClipRectangle &rect = graphics->getTopClip();
         if (rect.xOffset != mXOffset || rect.yOffset != mYOffset)
         {
             recalc = true;
@@ -420,7 +420,7 @@ void Button::draw(Graphics *graphics)
     int imageX = 0;
     int imageY = 0;
     int textX = 0;
-    const gcn::Rectangle &rect = mDimension;
+    const Rectangle &rect = mDimension;
     const int width = rect.width;
     const int height = rect.height;
     Font *const font = getFont();

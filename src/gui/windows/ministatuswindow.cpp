@@ -322,7 +322,7 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     const int x = event.getX();
     const int y = event.getY();
 
-    const gcn::Rectangle &rect = mDimension;
+    const Rectangle &rect = mDimension;
     if (event.getSource() == mStatusBar)
     {
         mStatusPopup->view(x + rect.x, y + rect.y);
@@ -535,12 +535,12 @@ void MiniStatusWindow::updateArrows()
     StatusWindow::updateArrowsBar(mArrowsBar);
 }
 
-gcn::Rectangle MiniStatusWindow::getChildrenArea()
+Rectangle MiniStatusWindow::getChildrenArea()
 {
     const int padding = mPadding;
     const int padding2 = padding * 2;
-    const gcn::Rectangle &rect = mDimension;
-    return gcn::Rectangle(padding, padding,
+    const Rectangle &rect = mDimension;
+    return Rectangle(padding, padding,
         rect.width - padding2,
         rect.height - padding2);
 }

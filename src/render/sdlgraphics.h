@@ -58,7 +58,7 @@ class SDLGraphics final : public Graphics
 
         void _endDraw() override final;
 
-        bool pushClipArea(gcn::Rectangle rect) override final;
+        bool pushClipArea(Rectangle rect) override final;
 
         void popClipArea() override final;
 
@@ -120,9 +120,9 @@ class SDLGraphics final : public Graphics
                         const int w, const int h,
                         const ImageRect &imgRect) override final;
 
-        void fillRectangle(const gcn::Rectangle &rect) override final;
+        void fillRectangle(const Rectangle &rect) override final;
 
-        void drawRectangle(const gcn::Rectangle &rect) override final;
+        void drawRectangle(const Rectangle &rect) override final;
 
         void drawPoint(int x, int y) override final;
 

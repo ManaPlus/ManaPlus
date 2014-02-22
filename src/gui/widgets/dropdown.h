@@ -129,7 +129,7 @@ class DropDown final : public ActionListener,
 
         void removeSelectionListener(SelectionListener* selectionListener);
 
-        gcn::Rectangle getChildrenArea() override;
+        Rectangle getChildrenArea() override;
 
         void action(const ActionEvent &actionEvent) override;
 

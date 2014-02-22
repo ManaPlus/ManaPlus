@@ -65,43 +65,40 @@
  * For comments regarding functions please see the header file.
  */
 
-#include "gui/base/cliprectangle.hpp"
+#include "gui/cliprectangle.h"
 
 #include "debug.h"
 
-namespace gcn
+ClipRectangle::ClipRectangle() :
+    Rectangle(),
+    xOffset(0),
+    yOffset(0)
 {
-    ClipRectangle::ClipRectangle() :
-        Rectangle(),
-        xOffset(0),
-        yOffset(0)
-    {
-        x = 0;
-        y = 0;
-        width = 0;
-        height = 0;
-    }
+    x = 0;
+    y = 0;
+    width = 0;
+    height = 0;
+}
 
-    ClipRectangle::ClipRectangle(const int x0, const int y0,
-                                 const int width0, const int height0,
-                                 const int xOffset0, const int yOffset0) :
-        Rectangle(),
-        xOffset(xOffset0),
-        yOffset(yOffset0)
-    {
-        x = x0;
-        y = y0;
-        width = width0;
-        height = height0;
-    }
+ClipRectangle::ClipRectangle(const int x0, const int y0,
+                              const int width0, const int height0,
+                              const int xOffset0, const int yOffset0) :
+    Rectangle(),
+    xOffset(xOffset0),
+    yOffset(yOffset0)
+{
+    x = x0;
+    y = y0;
+    width = width0;
+    height = height0;
+}
 
-    const ClipRectangle& ClipRectangle::operator=(const Rectangle& other)
-    {
-        x = other.x;
-        y = other.y;
-        width = other.width;
-        height = other.height;
+const ClipRectangle& ClipRectangle::operator=(const Rectangle& other)
+{
+    x = other.x;
+    y = other.y;
+    width = other.width;
+    height = other.height;
 
-        return *this;
-    }
-}  // namespace gcn
+    return *this;
+}

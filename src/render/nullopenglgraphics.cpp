@@ -918,7 +918,7 @@ void NullOpenGLGraphics::updateScreen()
 
 void NullOpenGLGraphics::_beginDraw()
 {
-    pushClipArea(gcn::Rectangle(0, 0, 640, 480));
+    pushClipArea(Rectangle(0, 0, 640, 480));
 }
 
 void NullOpenGLGraphics::_endDraw()
@@ -935,21 +935,21 @@ SDL_Surface* NullOpenGLGraphics::getScreenshot()
     return nullptr;
 }
 
-bool NullOpenGLGraphics::pushClipArea(gcn::Rectangle area)
+bool NullOpenGLGraphics::pushClipArea(Rectangle area)
 {
     int transX = 0;
     int transY = 0;
 
     if (!mClipStack.empty())
     {
-        const gcn::ClipRectangle &clipArea = mClipStack.top();
+        const ClipRectangle &clipArea = mClipStack.top();
         transX = -clipArea.xOffset;
         transY = -clipArea.yOffset;
     }
 
     const bool result = Graphics::pushClipArea(area);
 
-    const gcn::ClipRectangle &clipArea = mClipStack.top();
+    const ClipRectangle &clipArea = mClipStack.top();
     transX += clipArea.xOffset;
     transY += clipArea.yOffset;
 
@@ -984,12 +984,12 @@ void NullOpenGLGraphics::drawLine(int x1, int y1,
     drawLineArrayf(4);
 }
 
-void NullOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect)
+void NullOpenGLGraphics::drawRectangle(const Rectangle& rect)
 {
     drawRectangle(rect, false);
 }
 
-void NullOpenGLGraphics::fillRectangle(const gcn::Rectangle& rect)
+void NullOpenGLGraphics::fillRectangle(const Rectangle& rect)
 {
     drawRectangle(rect, true);
 }
@@ -1017,7 +1017,7 @@ void NullOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
 }
 
-void NullOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect A_UNUSED,
+void NullOpenGLGraphics::drawRectangle(const Rectangle& rect A_UNUSED,
                                        const bool filled A_UNUSED)
 {
     BLOCK_START("Graphics::drawRectangle")

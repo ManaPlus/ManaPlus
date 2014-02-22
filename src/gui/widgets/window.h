@@ -405,7 +405,7 @@ class Window : public gcn::Window,
          */
         int getGuiAlpha() const A_WARN_UNUSED;
 
-        gcn::Rectangle getWindowArea() const A_WARN_UNUSED;
+        Rectangle getWindowArea() const A_WARN_UNUSED;
 
         bool isResizeAllowed(const MouseEvent &event) const A_WARN_UNUSED;
 
@@ -476,9 +476,9 @@ class Window : public gcn::Window,
         Image *mGrip;                 /**< Resize grip */
         Window *mParent;              /**< The parent window */
         Layout *mLayout;              /**< Layout handler */
-        gcn::Rectangle mCloseRect;    /**< Close button rectangle */
-        gcn::Rectangle mStickyRect;   /**< Sticky button rectangle */
-        gcn::Rectangle mGripRect;     /**< Resize grip rectangle */
+        Rectangle mCloseRect;    /**< Close button rectangle */
+        Rectangle mStickyRect;   /**< Sticky button rectangle */
+        Rectangle mGripRect;     /**< Resize grip rectangle */
         std::string mWindowName;      /**< Name of the window */
         int mMinWinWidth;             /**< Minimum window width */
         int mMinWinHeight;            /**< Minimum window height */

@@ -390,7 +390,7 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemDropDown(_("Screen density override"), "",
         "screenDensity", this, "screenDensityEvent", mDensityList, 100);
 
-    setDimension(gcn::Rectangle(0, 0, 550, 350));
+    setDimension(Rectangle(0, 0, 550, 350));
 }
 
 Setup_Other::~Setup_Other()

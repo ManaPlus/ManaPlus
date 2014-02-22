@@ -122,10 +122,10 @@ void Popup::draw(Graphics *graphics)
     BLOCK_END("Popup::draw")
 }
 
-gcn::Rectangle Popup::getChildrenArea()
+Rectangle Popup::getChildrenArea()
 {
     const int pad2 = mPadding * 2;
-    return gcn::Rectangle(mPadding, mPadding,
+    return Rectangle(mPadding, mPadding,
         mDimension.width - pad2, mDimension.height - pad2);
 }
 

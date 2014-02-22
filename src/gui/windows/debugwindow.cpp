@@ -75,7 +75,7 @@ DebugWindow::DebugWindow() :
     // TRANSLATORS: debug window tab
     mTabs->addTab(std::string(_("Net")), mNetWidget);
 
-    mTabs->setDimension(gcn::Rectangle(0, 0, 600, 300));
+    mTabs->setDimension(Rectangle(0, 0, 600, 300));
 
     const int w = mDimension.width;
     const int h = mDimension.height;
@@ -151,7 +151,7 @@ void DebugWindow::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
 
-    mTabs->setDimension(gcn::Rectangle(0, 0,
+    mTabs->setDimension(Rectangle(0, 0,
         mDimension.width, mDimension.height));
 }
 
@@ -267,7 +267,7 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
 #endif
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
-    setDimension(gcn::Rectangle(0, 0, 600, 300));
+    setDimension(Rectangle(0, 0, 600, 300));
 }
 
 void MapDebugTab::logic()
@@ -412,7 +412,7 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
-    setDimension(gcn::Rectangle(0, 0, 600, 300));
+    setDimension(Rectangle(0, 0, 600, 300));
 }
 
 void TargetDebugTab::logic()
@@ -531,7 +531,7 @@ NetDebugTab::NetDebugTab(const Widget2 *const widget) :
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
-    setDimension(gcn::Rectangle(0, 0, 600, 300));
+    setDimension(Rectangle(0, 0, 600, 300));
 }
 
 void NetDebugTab::logic()

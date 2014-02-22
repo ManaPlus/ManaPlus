@@ -134,7 +134,7 @@ void ExtendedListBox::draw(Graphics *graphics)
     {
         mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
         graphics->setColor(mHighlightColor);
-        graphics->fillRectangle(gcn::Rectangle(mPadding, minY + mPadding,
+        graphics->fillRectangle(Rectangle(mPadding, minY + mPadding,
             width - pad2, maxY - minY + height));
     }
 

@@ -160,7 +160,7 @@ void AvatarListBox::draw(Graphics *graphics)
                 color.a = 80;
                 graphics->setColor(color);
 
-                graphics->fillRectangle(gcn::Rectangle(mPadding, y + mPadding,
+                graphics->fillRectangle(Rectangle(mPadding, y + mPadding,
                     parent->getWidth() * a->getHp() / a->getMaxHp()
                     - 2 * mPadding, fontHeight));
             }
@@ -184,7 +184,7 @@ void AvatarListBox::draw(Graphics *graphics)
 
                 color.a = 80;
                 graphics->setColor(color);
-                graphics->fillRectangle(gcn::Rectangle(mPadding, y + mPadding,
+                graphics->fillRectangle(Rectangle(mPadding, y + mPadding,
                     parent->getWidth() * a->getDamageHp() / 1024
                     - 2 * mPadding, fontHeight));
 

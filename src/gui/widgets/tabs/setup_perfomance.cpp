@@ -153,7 +153,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
         "", "uselonglivesounds", this,
         "uselonglivesoundsEvent");
 
-    setDimension(gcn::Rectangle(0, 0, 550, 350));
+    setDimension(Rectangle(0, 0, 550, 350));
 }
 
 Setup_Perfomance::~Setup_Perfomance()

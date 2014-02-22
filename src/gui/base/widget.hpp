@@ -69,8 +69,7 @@
 #include <string>
 
 #include "gui/color.h"
-
-#include "gui/base/rectangle.hpp"
+#include "gui/rectangle.h"
 
 #include "gui/widgets/widget2.h"
 

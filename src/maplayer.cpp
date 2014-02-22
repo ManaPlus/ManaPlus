@@ -538,10 +538,10 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             {
                 graphics->setColor(userPalette->getColorWithAlpha(
                     UserPalette::ATTACK_RANGE));
-                graphics->fillRectangle(gcn::Rectangle(x, y, w, h));
+                graphics->fillRectangle(Rectangle(x, y, w, h));
                 graphics->setColor(userPalette->getColorWithAlpha(
                     UserPalette::ATTACK_RANGE_BORDER));
-                graphics->drawRectangle(gcn::Rectangle(x, y, w, h));
+                graphics->drawRectangle(Rectangle(x, y, w, h));
             }
         }
     }
@@ -806,17 +806,17 @@ void MapItem::draw(Graphics *const graphics, const int x, const int y,
         case CROSS:
             graphics->setColor(userPalette->getColorWithAlpha(
                                UserPalette::ROAD_POINT));
-            graphics->fillRectangle(gcn::Rectangle(x + dx / 3, y + dy / 3,
+            graphics->fillRectangle(Rectangle(x + dx / 3, y + dy / 3,
                                     dx / 3, dy / 3));
             break;
         case HOME:
         {
             graphics->setColor(userPalette->getColorWithAlpha(
                                UserPalette::HOME_PLACE));
-            graphics->fillRectangle(gcn::Rectangle(x, y, dx, dy));
+            graphics->fillRectangle(Rectangle(x, y, dx, dy));
             graphics->setColor(userPalette->getColorWithAlpha(
                                UserPalette::HOME_PLACE_BORDER));
-            graphics->drawRectangle(gcn::Rectangle(x, y, dx, dy));
+            graphics->drawRectangle(Rectangle(x, y, dx, dy));
             break;
         }
         default:

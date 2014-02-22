@@ -766,7 +766,7 @@ SET(SRCS
     events/actionevent.h
     listeners/actionlistener.h
     gui/base/basiccontainer.hpp
-    gui/base/cliprectangle.hpp
+    gui/cliprectangle.h
     gui/color.h
     listeners/deathlistener.h
     events/event.h
@@ -779,7 +779,7 @@ SET(SRCS
     gui/base/listmodel.hpp
     events/mouseevent.h
     listeners/mouselistener.h
-    gui/base/rectangle.hpp
+    gui/rectangle.h
     events/selectionevent.h
     listeners/selectionlistener.h
     utils/sdlpixel.h
@@ -797,11 +797,11 @@ SET(SRCS
     gui/base/widgets/textfield.hpp
     gui/base/widgets/window.hpp
     gui/base/basiccontainer.cpp
-    gui/base/cliprectangle.cpp
+    gui/cliprectangle.cpp
     gui/color.cpp
     gui/base/gui.cpp
     input/key.cpp
-    gui/base/rectangle.cpp
+    gui/rectangle.cpp
     gui/base/widget.cpp
     gui/base/widgets/button.cpp
     gui/base/widgets/checkbox.cpp
