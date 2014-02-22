@@ -332,6 +332,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/models/touchactionmodel.h \
 	      gui/models/updatetypemodel.h \
 	      gui/models/updatelistmodel.h \
+	      gui/models/worldlistmodel.h \
 	      gui/models/themesmodel.h \
 	      gui/widgets/tabstrip.cpp \
 	      gui/widgets/tabstrip.h \

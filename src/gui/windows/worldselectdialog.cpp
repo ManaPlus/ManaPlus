@@ -34,6 +34,7 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "gui/models/listmodel.h"
+#include "gui/models/worldlistmodel.h"
 
 #include "net/loginhandler.h"
 #include "net/net.h"
@@ -43,44 +44,6 @@
 #include "debug.h"
 
 extern WorldInfo **server_info;
-
-/**
- * The list model for the server list.
- */
-class WorldListModel final : public ListModel
-{
-    public:
-        explicit WorldListModel(Worlds worlds) :
-            mWorlds(worlds)
-        {
-        }
-
-        A_DELETE_COPY(WorldListModel)
-
-        ~WorldListModel()
-        { }
-
-        int getNumberOfElements() override final
-        {
-            return static_cast<int>(mWorlds.size());
-        }
-
-        std::string getElementAt(int i) override final
-        {
-            const WorldInfo *const si = mWorlds[i];
-            if (si)
-            {
-                return std::string(si->name).append(" (").append(
-                    toString(si->online_users)).append(")");
-            }
-            else
-            {
-                return "???";
-            }
-        }
-    private:
-        Worlds mWorlds;
-};
 
 WorldSelectDialog::WorldSelectDialog(Worlds worlds):
     // TRANSLATORS: world select dialog name
