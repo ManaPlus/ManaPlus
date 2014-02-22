@@ -34,6 +34,8 @@
 
 #include "gui/popups/textpopup.h"
 
+#include "gui/models/skillmodel.h"
+
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/shortcutwindow.h"
 
@@ -41,7 +43,6 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/skillmodel.h"
 #include "gui/widgets/tabs/tab.h"
 #include "gui/widgets/tabbedarea.h"
 

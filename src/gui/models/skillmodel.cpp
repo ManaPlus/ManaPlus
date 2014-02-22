@@ -20,36 +20,43 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_SKILLMODEL_H
-#define GUI_WIDGETS_SKILLMODEL_H
+#include "gui/models/skillmodel.h"
 
-#include "gui/widgets/skillinfo.h"
-#include "gui/models/listmodel.h"
+#include "gui/widgets/skilldata.h"
 
 #include <string>
 
-#include "localconsts.h"
+#include "debug.h"
 
-class SkillModel final : public ListModel
+SkillModel::SkillModel() :
+    mSkills(),
+    mVisibleSkills()
 {
-    public:
-        SkillModel();
+}
 
-        SkillInfo *getSkillAt(const int i) const;
+SkillInfo *SkillModel::getSkillAt(const int i) const
+{
+    if (i < 0 || i >= static_cast<int>(mVisibleSkills.size()))
+        return nullptr;
+    return mVisibleSkills.at(i);
+}
 
-        std::string getElementAt(int i) override final;
+std::string SkillModel::getElementAt(int i)
+{
+    const SkillInfo *const info = getSkillAt(i);
+    if (info)
+        return info->data->name;
+    else
+        return std::string();
+}
 
-        int getNumberOfElements() override final
-        { return static_cast<int>(mVisibleSkills.size()); }
+void SkillModel::updateVisibilities()
+{
+    mVisibleSkills.clear();
 
-        void addSkill(SkillInfo *const info)
-        { mSkills.push_back(info); }
-
-        void updateVisibilities();
-
-    private:
-        SkillList mSkills;
-        SkillList mVisibleSkills;
-};
-
-#endif  // GUI_WIDGETS_SKILLMODEL_H
+    FOR_EACH (SkillList::const_iterator, it, mSkills)
+    {
+        if ((*it) && (*it)->visible)
+            mVisibleSkills.push_back((*it));
+    }
+}

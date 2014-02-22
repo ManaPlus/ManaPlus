@@ -214,8 +214,8 @@ SET(SRCS
     gui/widgets/skilldata.h
     gui/widgets/skillinfo.cpp
     gui/widgets/skillinfo.h
-    gui/widgets/skillmodel.cpp
-    gui/widgets/skillmodel.h
+    gui/models/skillmodel.cpp
+    gui/models/skillmodel.h
     gui/widgets/slider.cpp
     gui/widgets/slider.h
     gui/widgets/sliderlist.cpp
