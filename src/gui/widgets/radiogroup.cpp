@@ -31,7 +31,7 @@ RadioGroup::RadioGroup(const Widget2 *const widget,
 {
 }
 
-gcn::Widget *RadioGroup::createWidget(const std::string &text) const
+Widget *RadioGroup::createWidget(const std::string &text) const
 {
     RadioButton *const widget = new RadioButton(
         this, text, mGroup, mCount == 0);

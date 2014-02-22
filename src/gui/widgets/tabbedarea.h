@@ -118,17 +118,17 @@ class TabbedArea final : public ActionListener,
 
         Tab *getTabByIndex(const int index) const A_WARN_UNUSED;
 
-        gcn::Widget *getWidgetByIndex(const int index) const A_WARN_UNUSED;
+        Widget *getWidgetByIndex(const int index) const A_WARN_UNUSED;
 
         /**
          * Returns the widget with the tab that has specified caption
          */
-        gcn::Widget *getWidget(const std::string &name) const A_WARN_UNUSED;
+        Widget *getWidget(const std::string &name) const A_WARN_UNUSED;
 
         /**
          * Returns the widget for the current tab
          */
-        gcn::Widget *getCurrentWidget() const A_WARN_UNUSED;
+        Widget *getCurrentWidget() const A_WARN_UNUSED;
 
         /**
          * Add a tab. Overridden since it needs to size the widget.
@@ -136,11 +136,11 @@ class TabbedArea final : public ActionListener,
          * @param tab The tab widget for the tab.
          * @param widget The widget to view when the tab is selected.
          */
-        void addTab(Tab *const tab, gcn::Widget *const widget);
+        void addTab(Tab *const tab, Widget *const widget);
 
-        void addTab(const std::string &caption, gcn::Widget *const widget);
+        void addTab(const std::string &caption, Widget *const widget);
 
-        void addTab(Image *const image, gcn::Widget *const widget);
+        void addTab(Image *const image, Widget *const widget);
 
         bool isTabSelected(const unsigned int index) const A_WARN_UNUSED;
 
@@ -229,14 +229,14 @@ class TabbedArea final : public ActionListener,
         void setResizeHeight(bool b)
         { mResizeHeight = b; }
 
-        void adjustWidget(gcn::Widget *const widget) const;
+        void adjustWidget(Widget *const widget) const;
 
         void selectNextTab();
 
         void selectPrevTab();
 
     private:
-        typedef std::vector <std::pair<Tab*, gcn::Widget*> > TabContainer;
+        typedef std::vector <std::pair<Tab*, Widget*> > TabContainer;
 
         /** The tab arrows */
         Button *mArrowButton[2];

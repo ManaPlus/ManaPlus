@@ -125,7 +125,7 @@ public:
                 continue;
 
             const Being *const player = mPlayers.at(r);
-            gcn::Widget *widget = new Label(this, player->getName());
+            Widget *widget = new Label(this, player->getName());
 
             mWidgets.push_back(widget);
 
@@ -235,14 +235,14 @@ public:
     {
     }
 
-    gcn::Widget *getElementAt(const int row, const int column) const
+    Widget *getElementAt(const int row, const int column) const
     {
         return mWidgets[WIDGET_AT(row, column)];
     }
 
     void freeWidgets()
     {
-        for (std::vector<gcn::Widget *>::const_iterator it = mWidgets.begin();
+        for (std::vector<Widget *>::const_iterator it = mWidgets.begin();
              it != mWidgets.end(); ++it)
         {
             delete *it;
@@ -253,7 +253,7 @@ public:
 
 protected:
     std::vector<Being*> mPlayers;
-    std::vector<gcn::Widget*> mWidgets;
+    std::vector<Widget*> mWidgets;
 };
 
 

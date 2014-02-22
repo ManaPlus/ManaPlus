@@ -1261,7 +1261,7 @@ public:
         setVisible(false);
     }
 
-    void show(gcn::Widget *parent)
+    void show(Widget *parent)
     {
         if (!parent)
             return;

@@ -40,7 +40,7 @@ ProgressBar::ProgressBar(const Widget2 *const widget,
                          const int backColor,
                          const std::string &skin,
                          const std::string &skinFill):
-    gcn::Widget(widget),
+    Widget(widget),
     WidgetListener(),
     mFillRect(),
     mSkin(nullptr),

@@ -67,7 +67,7 @@ void WidgetGroup::action(const ActionEvent &event)
     }
 }
 
-void WidgetGroup::add(gcn::Widget *const widget, const int spacing)
+void WidgetGroup::add(Widget *const widget, const int spacing)
 {
     if (!widget)
         return;

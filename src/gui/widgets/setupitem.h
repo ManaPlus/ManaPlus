@@ -70,10 +70,10 @@ class SetupItem : public ActionListener,
 
         virtual void toWidget() = 0;
 
-        void setWidget(gcn::Widget *widget)
+        void setWidget(Widget *widget)
         { mWidget = widget; }
 
-        gcn::Widget *getWidget() const A_WARN_UNUSED
+        Widget *getWidget() const A_WARN_UNUSED
         { return mWidget; }
 
         Configuration *getConfig() const A_WARN_UNUSED;
@@ -95,7 +95,7 @@ class SetupItem : public ActionListener,
         bool isMainConfig() const A_WARN_UNUSED
         { return mMainConfig; }
 
-        void fixFirstItemSize(gcn::Widget *const widget);
+        void fixFirstItemSize(Widget *const widget);
 
         virtual void rereadValue();
 
@@ -138,9 +138,9 @@ class SetupItem : public ActionListener,
 
         std::string mDefault;
 
-        gcn::Widget *mWidget;
+        Widget *mWidget;
 
-        std::list<gcn::Widget*> mTempWidgets;
+        std::list<Widget*> mTempWidgets;
 
         int mValueType;
 

@@ -74,11 +74,7 @@
 #include "localconsts.h"
 
 class Event;
-
-namespace gcn
-{
-    class Widget;
-}
+class Widget;
 
 /**
  * The focus handler. This focus handler does exactly the same as the Guichan
@@ -101,7 +97,7 @@ class FocusHandler final
           * @param widget The widget to request focus for.
           * @see isFocused, Widget::requestFocus
           */
-        void requestFocus(gcn::Widget* widget);
+        void requestFocus(Widget* widget);
 
         /**
           * Requests modal focus for a widget. Focus will only be granted
@@ -112,7 +108,7 @@ class FocusHandler final
           * @throws Exception when another widget already has modal focus.
           * @see releaseModalFocus, Widget::requestModalFocus
           */
-        void requestModalFocus(gcn::Widget* widget);
+        void requestModalFocus(Widget* widget);
 
         /**
           * Requests modal mouse input focus for a widget. Focus will only
@@ -129,7 +125,7 @@ class FocusHandler final
           *         focus.
           * @see releaseModalMouseInputFocus, Widget::requestModalMouseInputFocus
           */
-        void requestModalMouseInputFocus(gcn::Widget* widget);
+        void requestModalMouseInputFocus(Widget* widget);
 
         /**
           * Releases modal focus if the widget has modal focus.
@@ -138,7 +134,7 @@ class FocusHandler final
           * @param widget The widget to release modal focus for.
           * @see reuqestModalFocus, Widget::releaseModalFocus
           */
-        void releaseModalFocus(gcn::Widget* widget);
+        void releaseModalFocus(Widget* widget);
 
         /**
           * Releases modal mouse input focus if the widget has modal mouse input
@@ -148,7 +144,7 @@ class FocusHandler final
           * @param widget the widget to release modal mouse input focus for.
           * @see requestModalMouseInputFocus, Widget::releaseModalMouseInputFocus
           */
-        void releaseModalMouseInputFocus(gcn::Widget* widget);
+        void releaseModalMouseInputFocus(Widget* widget);
 
         /**
           * Checks if a widget is focused.
@@ -157,14 +153,14 @@ class FocusHandler final
           * @return True if the widget is focused, false otherwise.
           * @see Widget::isFocused
           */
-        bool isFocused(const gcn::Widget* widget) const;
+        bool isFocused(const Widget* widget) const;
 
         /**
           * Gets the widget with focus.
           *
           * @return The widget with focus. NULL if no widget has focus.
           */
-        gcn::Widget* getFocused() const A_WARN_UNUSED;
+        Widget* getFocused() const A_WARN_UNUSED;
 
         /**
           * Gets the widget with modal focus.
@@ -172,7 +168,7 @@ class FocusHandler final
           * @return The widget with modal focus. NULL if no widget has
           *         modal focus.
           */
-        gcn::Widget* getModalFocused() const A_WARN_UNUSED;
+        Widget* getModalFocused() const A_WARN_UNUSED;
 
         /**
           * Gets the widget with modal mouse input focus.
@@ -180,7 +176,7 @@ class FocusHandler final
           * @return The widget with modal mouse input focus. NULL if
           *         no widget has modal mouse input focus.
           */
-        gcn::Widget* getModalMouseInputFocused() const A_WARN_UNUSED;
+        Widget* getModalMouseInputFocused() const A_WARN_UNUSED;
 
         /**
           * Focuses the next widget added to a conainer.
@@ -208,7 +204,7 @@ class FocusHandler final
           * @param widget The widget to add.
           * @see remove
           */
-        void add(gcn::Widget* widget);
+        void add(Widget* widget);
 
         /**
           * Removes a widget from the focus handler.
@@ -216,7 +212,7 @@ class FocusHandler final
           * @param widget The widget to remove.
           * @see add
           */
-        void remove(gcn::Widget* widget);
+        void remove(Widget* widget);
 
         /**
           * Focuses nothing. A focus event will also be sent to the
@@ -247,7 +243,7 @@ class FocusHandler final
           * @return the widget being dragged.
           * @see setDraggedWidget
           */
-        gcn::Widget* getDraggedWidget() A_WARN_UNUSED;
+        Widget* getDraggedWidget() A_WARN_UNUSED;
 
         /**
           * Sets the widget being dragged. Used by the Gui class to
@@ -256,7 +252,7 @@ class FocusHandler final
           * @param draggedWidget The widget being dragged.
           * @see getDraggedWidget
           */
-        void setDraggedWidget(gcn::Widget* draggedWidget);
+        void setDraggedWidget(Widget* draggedWidget);
 
         /**
           * Gets the last widget with the mouse. Used by the Gui class
@@ -265,7 +261,7 @@ class FocusHandler final
           * @return The last widget with the mouse.
           * @see setLastWidgetWithMouse
           */
-        gcn::Widget* getLastWidgetWithMouse() A_WARN_UNUSED;
+        Widget* getLastWidgetWithMouse() A_WARN_UNUSED;
 
         /**
           * Sets the last widget with the mouse. Used by the Gui class
@@ -274,7 +270,7 @@ class FocusHandler final
           * @param lastWidgetWithMouse The last widget with the mouse.
           * @see getLastWidgetWithMouse
           */
-        void setLastWidgetWithMouse(gcn::Widget* lastWidgetWithMouse);
+        void setLastWidgetWithMouse(Widget* lastWidgetWithMouse);
 
         /**
           * Gets the last widget with modal focus.
@@ -282,7 +278,7 @@ class FocusHandler final
           * @return The last widget with modal focus.
           * @see setLastWidgetWithModalFocus
           */
-        gcn::Widget* getLastWidgetWithModalFocus() A_WARN_UNUSED;
+        Widget* getLastWidgetWithModalFocus() A_WARN_UNUSED;
 
         /**
           * Sets the last widget with modal focus.
@@ -290,7 +286,7 @@ class FocusHandler final
           * @param widget The last widget with modal focus.
           * @see getLastWidgetWithModalFocus
           */
-        void setLastWidgetWithModalFocus(gcn::Widget* widget);
+        void setLastWidgetWithModalFocus(Widget* widget);
 
         /**
           * Gets the last widget with modal mouse input focus.
@@ -298,7 +294,7 @@ class FocusHandler final
           * @return The last widget with modal mouse input focus.
           * @see setLastWidgetWithModalMouseInputFocus
           */
-        gcn::Widget* getLastWidgetWithModalMouseInputFocus() A_WARN_UNUSED;
+        Widget* getLastWidgetWithModalMouseInputFocus() A_WARN_UNUSED;
 
         /**
           * Sets the last widget with modal mouse input focus.
@@ -306,7 +302,7 @@ class FocusHandler final
           * @param widget The last widget with modal mouse input focus.
           * @see getLastWidgetWithModalMouseInputFocus
           */
-        void setLastWidgetWithModalMouseInputFocus(gcn::Widget* widget);
+        void setLastWidgetWithModalMouseInputFocus(Widget* widget);
 
         /**
           * Gets the last widget pressed. Used by the Gui class to keep track
@@ -315,7 +311,7 @@ class FocusHandler final
           * @return The last widget pressed.
           * @see setLastWidgetPressed
           */
-        gcn::Widget* getLastWidgetPressed() A_WARN_UNUSED;
+        Widget* getLastWidgetPressed() A_WARN_UNUSED;
 
         /**
           * Sets the last widget pressed. Used by the Gui class to keep track
@@ -324,7 +320,7 @@ class FocusHandler final
           * @param lastWidgetPressed The last widget pressed.
           * @see getLastWidgetPressed
           */
-        void setLastWidgetPressed(gcn::Widget* lastWidgetPressed);
+        void setLastWidgetPressed(Widget* lastWidgetPressed);
 
     private:
         /**
@@ -352,7 +348,7 @@ class FocusHandler final
         /**
          * Typedef.
          */
-        typedef std::vector<gcn::Widget*> WidgetVector;
+        typedef std::vector<Widget*> WidgetVector;
 
         /**
          * Typedef.
@@ -368,50 +364,50 @@ class FocusHandler final
         /**
          * Holds the focused widget. NULL if no widget has focus.
          */
-        gcn::Widget* mFocusedWidget;
+        Widget* mFocusedWidget;
 
         /**
          * Holds the modal focused widget. NULL if no widget has
          * modal focused.
          */
-        gcn::Widget* mModalFocusedWidget;
+        Widget* mModalFocusedWidget;
 
         /**
          * Holds the modal mouse input focused widget. NULL if no widget
          * is being dragged.
          */
-        gcn::Widget* mModalMouseInputFocusedWidget;
+        Widget* mModalMouseInputFocusedWidget;
 
         /**
          * Holds the dragged widget. NULL if no widget is
          * being dragged.
          */
-        gcn::Widget* mDraggedWidget;
+        Widget* mDraggedWidget;
 
         /**
          * Holds the last widget with the mouse.
          */
-        gcn::Widget* mLastWidgetWithMouse;
+        Widget* mLastWidgetWithMouse;
 
         /**
          * Holds the last widget with modal focus.
          */
-        gcn::Widget* mLastWidgetWithModalFocus;
+        Widget* mLastWidgetWithModalFocus;
 
         /**
          * Holds the last widget with modal mouse input focus.
          */
-        gcn::Widget* mLastWidgetWithModalMouseInputFocus;
+        Widget* mLastWidgetWithModalMouseInputFocus;
 
         /**
          * Holds the last widget pressed.
          */
-        gcn::Widget* mLastWidgetPressed;
+        Widget* mLastWidgetPressed;
 
         /**
          * Stack of widgets that have requested modal forcus.
          */
-        std::list<gcn::Widget*> mModalStack;
+        std::list<Widget*> mModalStack;
 };
 
 #endif  // GUI_FOCUSHANDLER_H

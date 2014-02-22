@@ -783,7 +783,7 @@ SET(SRCS
     events/selectionevent.h
     listeners/selectionlistener.h
     utils/sdlpixel.h
-    gui/base/widget.hpp
+    gui/widgets/widget.h
     listeners/widgetlistener.h
     gui/base/widgets/button.hpp
     gui/base/widgets/checkbox.hpp
@@ -802,7 +802,7 @@ SET(SRCS
     gui/base/gui.cpp
     input/key.cpp
     gui/rectangle.cpp
-    gui/base/widget.cpp
+    gui/widgets/widget.cpp
     gui/base/widgets/button.cpp
     gui/base/widgets/checkbox.cpp
     gui/base/widgets/container.cpp

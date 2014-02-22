@@ -70,10 +70,7 @@
 
 #include "localconsts.h"
 
-namespace GCN
-{
-    class Widget;
-}
+class Widget;
 
 /**
   * Represents an action event. An action event is an event
@@ -106,7 +103,7 @@ class ActionEvent final : public Event
           * @param source The source widget of the event.
           * @param id An identifier of the event.
           */
-        ActionEvent(gcn::Widget *const source, const std::string &id) :
+        ActionEvent(Widget *const source, const std::string &id) :
             Event(source),
             mId(id)
         {

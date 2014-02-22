@@ -67,7 +67,7 @@ class LayoutHelper final : public WidgetListener
         /**
          * Adds a widget to the container and sets it at given cell.
          */
-        LayoutCell &place(const int x, const int y, gcn::Widget *const wg,
+        LayoutCell &place(const int x, const int y, Widget *const wg,
                           const int w = 1, const int h = 1);
 
         /**

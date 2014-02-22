@@ -42,7 +42,7 @@ class WidgetGroup : public Container,
 
         void action(const ActionEvent &event) override;
 
-        virtual void add(gcn::Widget *const widget,
+        virtual void add(Widget *const widget,
                          const int spacing);
 
         virtual void clear();

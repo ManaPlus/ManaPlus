@@ -87,12 +87,12 @@ class Window : public gcn::Window,
         /**
          * Sets the location relative to the given widget.
          */
-        void setLocationRelativeTo(const gcn::Widget *const widget);
+        void setLocationRelativeTo(const Widget *const widget);
 
         /**
          * Sets the location relative to the given widget (only horisontally)
          */
-        void setLocationHorisontallyRelativeTo(const gcn::Widget
+        void setLocationHorisontallyRelativeTo(const Widget
                                                *const widget);
 
         /**
@@ -370,7 +370,7 @@ class Window : public gcn::Window,
         /**
          * Adds a widget to the window and sets it at given cell.
          */
-        LayoutCell &place(const int x, const int y, gcn::Widget *const wg,
+        LayoutCell &place(const int x, const int y, Widget *const wg,
                           const int w = 1, const int h = 1);
 
         /**

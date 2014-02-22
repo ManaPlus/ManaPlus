@@ -66,7 +66,7 @@
 
 #include <vector>
 
-#include "gui/base/widget.hpp"
+#include "gui/widgets/widget.h"
 
 #include "listeners/deathlistener.h"
 

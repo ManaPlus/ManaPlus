@@ -44,7 +44,7 @@ class GuiTableActionListener final : public ActionListener
 {
 public:
     GuiTableActionListener(GuiTable *restrict _table,
-                           gcn::Widget *restrict _widget,
+                           Widget *restrict _widget,
                            int _row, int _column);
 
     A_DELETE_COPY(GuiTableActionListener)
@@ -57,12 +57,12 @@ protected:
     GuiTable *mTable;
     int mRow;
     int mColumn;
-    gcn::Widget *mWidget;
+    Widget *mWidget;
 };
 
 
 GuiTableActionListener::GuiTableActionListener(GuiTable *restrict table,
-                                               gcn::Widget *restrict widget,
+                                               Widget *restrict widget,
                                                int row, int column) :
     ActionListener(),
     mTable(table),
@@ -96,7 +96,7 @@ void GuiTableActionListener::action(const ActionEvent &actionEvent A_UNUSED)
 GuiTable::GuiTable(const Widget2 *const widget,
                    TableModel *const initial_model,
                    const bool opacity) :
-    gcn::Widget(widget),
+    Widget(widget),
     MouseListener(),
     KeyListener(),
     mModel(nullptr),
@@ -282,7 +282,7 @@ void GuiTable::installActionListeners()
     {
         for (int column = 0; column < columns; ++column)
         {
-            gcn::Widget *const widget = mModel->getElementAt(row, column);
+            Widget *const widget = mModel->getElementAt(row, column);
             if (widget)
             {
                 mActionListeners.push_back(new GuiTableActionListener(
@@ -347,7 +347,7 @@ void GuiTable::draw(Graphics* graphics)
 
         for (unsigned c = first_column; c + 1 <= last_column1; ++c)
         {
-            gcn::Widget *const widget = mModel->getElementAt(r, c);
+            Widget *const widget = mModel->getElementAt(r, c);
             const int cWidth = getColumnWidth(c);
             if (widget)
             {
@@ -401,15 +401,15 @@ void GuiTable::draw(Graphics* graphics)
     BLOCK_END("GuiTable::draw")
 }
 
-void GuiTable::moveToTop(gcn::Widget *widget)
+void GuiTable::moveToTop(Widget *widget)
 {
-    gcn::Widget::moveToTop(widget);
+    Widget::moveToTop(widget);
     mTopWidget = widget;
 }
 
-void GuiTable::moveToBottom(gcn::Widget *widget)
+void GuiTable::moveToBottom(Widget *widget)
 {
-    gcn::Widget::moveToBottom(widget);
+    Widget::moveToBottom(widget);
     if (widget == mTopWidget)
         mTopWidget = nullptr;
 }
@@ -532,7 +532,7 @@ void GuiTable::modelUpdated(const bool completed)
     }
 }
 
-gcn::Widget *GuiTable::getWidgetAt(int x, int y)
+Widget *GuiTable::getWidgetAt(int x, int y)
 {
     const int row = getRowForY(y);
     const int column = getColumnForX(x);
@@ -542,7 +542,7 @@ gcn::Widget *GuiTable::getWidgetAt(int x, int y)
 
     if (mModel && row > -1 && column > -1)
     {
-        gcn::Widget *const w = mModel->getElementAt(row, column);
+        Widget *const w = mModel->getElementAt(row, column);
         if (w && w->isFocusable())
             return w;
         else
@@ -595,7 +595,7 @@ void GuiTable::_setFocusHandler(FocusHandler* focusHandler)
     if (!mModel || !focusHandler)
         return;
 
-    gcn::Widget::_setFocusHandler(focusHandler);
+    Widget::_setFocusHandler(focusHandler);
 
     const int rows = mModel->getRows();
     const int cols = mModel->getColumns();
@@ -603,7 +603,7 @@ void GuiTable::_setFocusHandler(FocusHandler* focusHandler)
     {
         for (int c = 0; c < cols ; ++c)
         {
-            gcn::Widget *const w = mModel->getElementAt(r, c);
+            Widget *const w = mModel->getElementAt(r, c);
             if (w)
                 w->_setFocusHandler(focusHandler);
         }
@@ -614,5 +614,5 @@ void GuiTable::requestFocus()
 {
     if (!mFocusHandler)
         return;
-    gcn::Widget::requestFocus();
+    Widget::requestFocus();
 }

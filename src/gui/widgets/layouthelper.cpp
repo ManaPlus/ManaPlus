@@ -45,7 +45,7 @@ const Layout &LayoutHelper::getLayout() const
 }
 
 LayoutCell &LayoutHelper::place(const int x, const int y,
-                                gcn::Widget *const wg,
+                                Widget *const wg,
                                 const int w, const int h)
 {
     mContainer->add(wg);

@@ -27,7 +27,7 @@
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 
-#include "gui/base/widget.hpp"
+#include "gui/widgets/widget.h"
 
 #include <list>
 
@@ -44,7 +44,7 @@ class SelectionListener;
  *
  * \ingroup GUI
  */
-class ItemContainer final : public gcn::Widget,
+class ItemContainer final : public Widget,
                             public KeyListener,
                             public MouseListener,
                             public WidgetListener

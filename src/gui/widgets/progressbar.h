@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_PROGRESSBAR_H
 #define GUI_WIDGETS_PROGRESSBAR_H
 
-#include "gui/base/widget.hpp"
+#include "gui/widgets/widget.h"
 
 #include "listeners/widgetlistener.h"
 
@@ -39,7 +39,7 @@ class Skin;
  *
  * \ingroup GUI
  */
-class ProgressBar final : public gcn::Widget,
+class ProgressBar final : public Widget,
                           public WidgetListener
 {
     public:

@@ -343,7 +343,7 @@ void Window::setContentSize(int width, int height)
     setSize(width, height);
 }
 
-void Window::setLocationRelativeTo(const gcn::Widget *const widget)
+void Window::setLocationRelativeTo(const Widget *const widget)
 {
     if (!widget)
         return;
@@ -360,7 +360,7 @@ void Window::setLocationRelativeTo(const gcn::Widget *const widget)
         - mDimension.height) / 2 - y));
 }
 
-void Window::setLocationHorisontallyRelativeTo(const gcn::Widget *const widget)
+void Window::setLocationHorisontallyRelativeTo(const Widget *const widget)
 {
     if (!widget)
         return;
@@ -1165,7 +1165,7 @@ void Window::clearLayout()
     }
 }
 
-LayoutCell &Window::place(const int x, const int y, gcn::Widget *const wg,
+LayoutCell &Window::place(const int x, const int y, Widget *const wg,
                           const int w, const int h)
 {
     add(wg);

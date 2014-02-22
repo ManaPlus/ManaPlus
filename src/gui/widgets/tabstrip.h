@@ -23,7 +23,7 @@
 
 #include "gui/widgets/widgetgroup.h"
 
-#include "gui/base/widget.hpp"
+#include "gui/widgets/widget.h"
 
 class TabStrip final : public WidgetGroup
 {
@@ -39,8 +39,8 @@ class TabStrip final : public WidgetGroup
 
         A_DELETE_COPY(TabStrip)
 
-        gcn::Widget *createWidget(const std::string &name)
-                                  const override final A_WARN_UNUSED;
+        Widget *createWidget(const std::string &name)
+                             const override final A_WARN_UNUSED;
 
         void action(const ActionEvent &event) override final;
 };

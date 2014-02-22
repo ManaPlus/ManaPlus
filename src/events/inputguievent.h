@@ -84,7 +84,7 @@ class InputGuiEvent: public Event
           * @param isAltPressed True if alt is pressed, false otherwise.
           * @param isMetaPressed True if meta is pressed, false otherwise.
           */
-        InputGuiEvent(gcn::Widget *const source,
+        InputGuiEvent(Widget *const source,
                       const bool shiftPressed,
                       const bool controlPressed,
                       const bool altPressed,

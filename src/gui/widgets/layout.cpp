@@ -36,7 +36,7 @@ ContainerPlacer ContainerPlacer::at(const int x, const int y)
 }
 
 LayoutCell &ContainerPlacer::operator()
-    (const int x, const int y, gcn::Widget *const wg, const int w, const int h)
+    (const int x, const int y, Widget *const wg, const int w, const int h)
 {
     mContainer->add(wg);
     return mCell->place(wg, x, y, w, h);
@@ -203,7 +203,7 @@ void LayoutArray::extend(const int x, const int y, const int w, const int h)
     cell.mExtent[1] = h;
 }
 
-LayoutCell &LayoutArray::place(gcn::Widget *const widget, const int x,
+LayoutCell &LayoutArray::place(Widget *const widget, const int x,
                                const int y, const int w, const int h)
 {
     LayoutCell &cell = at(x, y, w, h);

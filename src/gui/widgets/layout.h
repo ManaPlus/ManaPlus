@@ -32,8 +32,9 @@ class LayoutCell;
 namespace gcn
 {
     class Container;
-    class Widget;
 }
+
+class Widget;
 
 /**
  * This class is a helper for adding widgets to nested tables in a window.
@@ -61,7 +62,7 @@ class ContainerPlacer final
          * Adds the given widget to the container and places it in the layout.
          * @see LayoutArray::place
          */
-        LayoutCell &operator()(const int x, const int y, gcn::Widget *const wg,
+        LayoutCell &operator()(const int x, const int y, Widget *const wg,
             const int w = 1, const int h = 1);
 
     private:
@@ -94,7 +95,7 @@ class LayoutArray final
          * @note When @a w is 1, the width of column @a x is reset to zero if
          *       it was AUTO_DEF. Similarly for @a h.
          */
-        LayoutCell &place(gcn::Widget *const widget, const int x, const int y,
+        LayoutCell &place(Widget *const widget, const int x, const int y,
                           const int w = 1, const int h = 1);
 
         /**
@@ -220,7 +221,7 @@ class LayoutCell
         /**
          * @see LayoutArray::place
          */
-        LayoutCell &place(gcn::Widget *wg, int x, int y, int w = 1, int h = 1)
+        LayoutCell &place(Widget *wg, int x, int y, int w = 1, int h = 1)
         { return getArray().place(wg, x, y, w, h); }
 
         /**
@@ -298,7 +299,7 @@ class LayoutCell
 
         union
         {
-            gcn::Widget *mWidget;
+            Widget *mWidget;
             LayoutArray *mArray;
         };
 

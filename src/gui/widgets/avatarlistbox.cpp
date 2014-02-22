@@ -103,7 +103,7 @@ void AvatarListBox::draw(Graphics *graphics)
 
     Font *const font = getFont();
     const int fontHeight = getFont()->getHeight();
-    const gcn::Widget *const parent = mParent;
+    const Widget *const parent = mParent;
     const std::string name = player_node->getName();
 
     // Draw the list elements

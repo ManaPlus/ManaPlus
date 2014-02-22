@@ -76,7 +76,7 @@
 namespace gcn
 {
     Button::Button(const Widget2 *const widget) :
-        gcn::Widget(widget),
+        Widget(widget),
         MouseListener(),
         KeyListener(),
         FocusListener(),
@@ -98,7 +98,7 @@ namespace gcn
 
     Button::Button(const Widget2 *const widget,
                    const std::string& caption) :
-        gcn::Widget(widget),
+        Widget(widget),
         MouseListener(),
         KeyListener(),
         FocusListener(),

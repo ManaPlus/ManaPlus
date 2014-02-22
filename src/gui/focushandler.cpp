@@ -87,7 +87,7 @@ FocusHandler::FocusHandler() :
 {
 }
 
-void FocusHandler::requestModalFocus(gcn::Widget *widget)
+void FocusHandler::requestModalFocus(Widget *widget)
 {
     /* If there is another widget with modal focus, remove its modal focus
      * and put it on the modal widget stack.
@@ -103,7 +103,7 @@ void FocusHandler::requestModalFocus(gcn::Widget *widget)
         focusNone();
 }
 
-void FocusHandler::releaseModalFocus(gcn::Widget *widget)
+void FocusHandler::releaseModalFocus(Widget *widget)
 {
     mModalStack.remove(widget);
 
@@ -123,7 +123,7 @@ void FocusHandler::releaseModalFocus(gcn::Widget *widget)
     }
 }
 
-void FocusHandler::remove(gcn::Widget *widget)
+void FocusHandler::remove(Widget *widget)
 {
     releaseModalFocus(widget);
 
@@ -217,7 +217,7 @@ void FocusHandler::tabNext()
         if (focusedWidget == focused)
             return;
 
-        const gcn::Widget *const widget = mWidgets.at(focusedWidget);
+        const Widget *const widget = mWidgets.at(focusedWidget);
         if (widget->isFocusable() && widget->isTabInEnabled() &&
             (!mModalFocusedWidget || widget->isModalFocused()))
         {
@@ -288,7 +288,7 @@ void FocusHandler::tabPrevious()
         if (focusedWidget == focused)
             return;
 
-        const gcn::Widget *const widget = mWidgets.at(focusedWidget);
+        const Widget *const widget = mWidgets.at(focusedWidget);
         if (widget->isFocusable() && widget->isTabInEnabled() &&
             (!mModalFocusedWidget || widget->isModalFocused()))
         {
@@ -317,7 +317,7 @@ void FocusHandler::checkForWindow() const
 {
     if (mFocusedWidget)
     {
-        gcn::Widget *widget = mFocusedWidget->getParent();
+        Widget *widget = mFocusedWidget->getParent();
 
         while (widget)
         {
@@ -339,7 +339,7 @@ void FocusHandler::distributeFocusGainedEvent(const Event &focusEvent)
     if (gui)
         gui->distributeGlobalFocusGainedEvent(focusEvent);
 
-    gcn::Widget *const sourceWidget = focusEvent.getSource();
+    Widget *const sourceWidget = focusEvent.getSource();
 
     std::list<FocusListener*> focusListeners
         = sourceWidget->_getFocusListeners();
@@ -354,7 +354,7 @@ void FocusHandler::distributeFocusGainedEvent(const Event &focusEvent)
     }
 }
 
-void FocusHandler::requestFocus(gcn::Widget* widget)
+void FocusHandler::requestFocus(Widget* widget)
 {
     if (!widget || widget == mFocusedWidget)
         return;
@@ -373,7 +373,7 @@ void FocusHandler::requestFocus(gcn::Widget* widget)
     if (toBeFocusedIndex < 0)
         return;
 
-    gcn::Widget *const oldFocused = mFocusedWidget;
+    Widget *const oldFocused = mFocusedWidget;
 
     if (oldFocused != widget)
     {
@@ -390,7 +390,7 @@ void FocusHandler::requestFocus(gcn::Widget* widget)
     }
 }
 
-void FocusHandler::requestModalMouseInputFocus(gcn::Widget* widget)
+void FocusHandler::requestModalMouseInputFocus(Widget* widget)
 {
     if (mModalMouseInputFocusedWidget
         && mModalMouseInputFocusedWidget != widget)
@@ -401,23 +401,23 @@ void FocusHandler::requestModalMouseInputFocus(gcn::Widget* widget)
     mModalMouseInputFocusedWidget = widget;
 }
 
-void FocusHandler::releaseModalMouseInputFocus(gcn::Widget* widget)
+void FocusHandler::releaseModalMouseInputFocus(Widget* widget)
 {
     if (mModalMouseInputFocusedWidget == widget)
         mModalMouseInputFocusedWidget = nullptr;
 }
 
-gcn::Widget* FocusHandler::getFocused() const
+Widget* FocusHandler::getFocused() const
 {
     return mFocusedWidget;
 }
 
-gcn::Widget* FocusHandler::getModalFocused() const
+Widget* FocusHandler::getModalFocused() const
 {
     return mModalFocusedWidget;
 }
 
-gcn::Widget* FocusHandler::getModalMouseInputFocused() const
+Widget* FocusHandler::getModalMouseInputFocused() const
 {
     return mModalMouseInputFocusedWidget;
 }
@@ -527,12 +527,12 @@ void FocusHandler::focusPrevious()
     }
 }
 
-bool FocusHandler::isFocused(const gcn::Widget* widget) const
+bool FocusHandler::isFocused(const Widget* widget) const
 {
     return mFocusedWidget == widget;
 }
 
-void FocusHandler::add(gcn::Widget* widget)
+void FocusHandler::add(Widget* widget)
 {
     mWidgets.push_back(widget);
 }
@@ -541,7 +541,7 @@ void FocusHandler::focusNone()
 {
     if (mFocusedWidget)
     {
-        gcn::Widget *const focused = mFocusedWidget;
+        Widget *const focused = mFocusedWidget;
         mFocusedWidget = nullptr;
 
         Event focusEvent(focused);
@@ -551,7 +551,7 @@ void FocusHandler::focusNone()
 
 void FocusHandler::distributeFocusLostEvent(const Event& focusEvent)
 {
-    gcn::Widget *const sourceWidget = focusEvent.getSource();
+    Widget *const sourceWidget = focusEvent.getSource();
 
     std::list<FocusListener*> focusListeners
         = sourceWidget->_getFocusListeners();
@@ -566,52 +566,52 @@ void FocusHandler::distributeFocusLostEvent(const Event& focusEvent)
     }
 }
 
-gcn::Widget* FocusHandler::getDraggedWidget()
+Widget* FocusHandler::getDraggedWidget()
 {
     return mDraggedWidget;
 }
 
-void FocusHandler::setDraggedWidget(gcn::Widget* draggedWidget)
+void FocusHandler::setDraggedWidget(Widget* draggedWidget)
 {
     mDraggedWidget = draggedWidget;
 }
 
-gcn::Widget* FocusHandler::getLastWidgetWithMouse()
+Widget* FocusHandler::getLastWidgetWithMouse()
 {
     return mLastWidgetWithMouse;
 }
 
-void FocusHandler::setLastWidgetWithMouse(gcn::Widget* lastWidgetWithMouse)
+void FocusHandler::setLastWidgetWithMouse(Widget* lastWidgetWithMouse)
 {
     mLastWidgetWithMouse = lastWidgetWithMouse;
 }
 
-gcn::Widget* FocusHandler::getLastWidgetWithModalFocus()
+Widget* FocusHandler::getLastWidgetWithModalFocus()
 {
     return mLastWidgetWithModalFocus;
 }
 
-void FocusHandler::setLastWidgetWithModalFocus(gcn::Widget* widget)
+void FocusHandler::setLastWidgetWithModalFocus(Widget* widget)
 {
     mLastWidgetWithModalFocus = widget;
 }
 
-gcn::Widget* FocusHandler::getLastWidgetWithModalMouseInputFocus()
+Widget* FocusHandler::getLastWidgetWithModalMouseInputFocus()
 {
     return mLastWidgetWithModalMouseInputFocus;
 }
 
-void FocusHandler::setLastWidgetWithModalMouseInputFocus(gcn::Widget* widget)
+void FocusHandler::setLastWidgetWithModalMouseInputFocus(Widget* widget)
 {
     mLastWidgetWithModalMouseInputFocus = widget;
 }
 
-gcn::Widget* FocusHandler::getLastWidgetPressed()
+Widget* FocusHandler::getLastWidgetPressed()
 {
     return mLastWidgetPressed;
 }
 
-void FocusHandler::setLastWidgetPressed(gcn::Widget* lastWidgetPressed)
+void FocusHandler::setLastWidgetPressed(Widget* lastWidgetPressed)
 {
     mLastWidgetPressed = lastWidgetPressed;
 }

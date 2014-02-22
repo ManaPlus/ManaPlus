@@ -292,7 +292,7 @@ void TextBox::keyPressed(KeyEvent& keyEvent)
 
         case Input::KEY_GUI_PAGE_UP:
         {
-            gcn::Widget *const par = getParent();
+            Widget *const par = getParent();
 
             if (par)
             {
@@ -308,7 +308,7 @@ void TextBox::keyPressed(KeyEvent& keyEvent)
 
         case Input::KEY_GUI_PAGE_DOWN:
         {
-            gcn::Widget *const par = getParent();
+            Widget *const par = getParent();
 
             if (par)
             {

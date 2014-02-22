@@ -69,10 +69,7 @@
 
 #include <string>
 
-namespace gcn
-{
-    class Widget;
-}
+class Widget;
 
 /**
   * Represents a key event.
@@ -102,7 +99,7 @@ class KeyEvent: public InputGuiEvent
           *                     false otherwise.
           * @param key The key of the event.
           */
-        KeyEvent(gcn::Widget *const source,
+        KeyEvent(Widget *const source,
                  const bool shiftPressed,
                  const bool controlPressed,
                  const bool altPressed,

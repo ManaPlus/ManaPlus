@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_ICON_H
 #define GUI_WIDGETS_ICON_H
 
-#include "gui/base/widget.hpp"
+#include "gui/widgets/widget.h"
 
 #include "localconsts.h"
 
@@ -34,7 +34,7 @@ class Image;
  *
  * \ingroup GUI
  */
-class Icon final : public gcn::Widget
+class Icon final : public Widget
 {
     public:
         /**

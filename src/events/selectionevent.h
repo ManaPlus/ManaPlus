@@ -68,10 +68,7 @@
 
 #include "localconsts.h"
 
-namespace gcn
-{
-    class Widget;
-}
+class Widget;
 
 /**
   * Represents a selection event.
@@ -87,7 +84,7 @@ class SelectionEvent final: public Event
           *
           * @param source source The widget of the selection event.
           */
-        explicit SelectionEvent(gcn::Widget *const source) :
+        explicit SelectionEvent(Widget *const source) :
             Event(source)
         { }
 

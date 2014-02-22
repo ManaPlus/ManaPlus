@@ -39,7 +39,7 @@ TabStrip::TabStrip(const Widget2 *const widget,
 {
 }
 
-gcn::Widget *TabStrip::createWidget(const std::string &text) const
+Widget *TabStrip::createWidget(const std::string &text) const
 {
     Button *const widget = new Button(this);
     widget->setStick(true);
@@ -55,7 +55,7 @@ void TabStrip::action(const ActionEvent &event)
     WidgetGroup::action(event);
     if (event.getSource())
     {
-        gcn::Widget *const widget = event.getSource();
+        Widget *const widget = event.getSource();
         if (static_cast<Button*>(widget)->isPressed2())
         {
             FOR_EACH (WidgetListConstIterator, iter, mWidgets)

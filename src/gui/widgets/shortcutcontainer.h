@@ -23,8 +23,9 @@
 #ifndef GUI_WIDGETS_SHORTCUTCONTAINER_H
 #define GUI_WIDGETS_SHORTCUTCONTAINER_H
 
+#include "gui/widgets/widget.h"
+
 #include "listeners/mouselistener.h"
-#include "gui/base/widget.hpp"
 #include "listeners/widgetlistener.h"
 
 class Image;
@@ -35,7 +36,7 @@ class ImageCollection;
  *
  * \ingroup GUI
  */
-class ShortcutContainer : public gcn::Widget,
+class ShortcutContainer : public Widget,
                           public WidgetListener,
                           public MouseListener
 {

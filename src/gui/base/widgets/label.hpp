@@ -66,7 +66,7 @@
 
 #include <string>
 
-#include "gui/base/widget.hpp"
+#include "gui/widgets/widget.h"
 
 #include "render/graphics.h"
 

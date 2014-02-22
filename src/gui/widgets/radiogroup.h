@@ -23,7 +23,7 @@
 
 #include "gui/widgets/widgetgroup.h"
 
-#include "gui/base/widget.hpp"
+#include "gui/widgets/widget.h"
 
 class RadioGroup final : public WidgetGroup
 {
@@ -35,8 +35,8 @@ class RadioGroup final : public WidgetGroup
 
         A_DELETE_COPY(RadioGroup)
 
-        gcn::Widget *createWidget(const std::string &name)
-                                  const override final A_WARN_UNUSED;
+        Widget *createWidget(const std::string &name)
+                             const override final A_WARN_UNUSED;
 };
 
 #endif  // GUI_WIDGETS_RADIOGROUP_H

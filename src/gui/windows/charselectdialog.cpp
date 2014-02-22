@@ -210,7 +210,7 @@ void CharSelectDialog::postInit()
 void CharSelectDialog::action(const ActionEvent &event)
 {
     // Check if a button of a character was pressed
-    const gcn::Widget *const sourceParent = event.getSource()->getParent();
+    const Widget *const sourceParent = event.getSource()->getParent();
     int selected = -1;
     for (unsigned int i = 0, sz = static_cast<unsigned int>(
          mCharacterEntries.size()); i < sz; ++i)

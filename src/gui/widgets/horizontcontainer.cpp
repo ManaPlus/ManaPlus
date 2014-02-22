@@ -36,12 +36,12 @@ HorizontContainer::HorizontContainer(const Widget2 *const widget,
     addWidgetListener(this);
 }
 
-void HorizontContainer::add(gcn::Widget *widget)
+void HorizontContainer::add(Widget *widget)
 {
     add(widget, mSpacing);
 }
 
-void HorizontContainer::add(gcn::Widget *const widget, const int spacing)
+void HorizontContainer::add(Widget *const widget, const int spacing)
 {
     if (!widget)
         return;

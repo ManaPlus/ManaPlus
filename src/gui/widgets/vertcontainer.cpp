@@ -40,12 +40,12 @@ VertContainer::VertContainer(const Widget2 *const widget,
     addWidgetListener(this);
 }
 
-void VertContainer::add1(gcn::Widget *const widget, const int spacing)
+void VertContainer::add1(Widget *const widget, const int spacing)
 {
     add2(widget, mResizable, spacing);
 }
 
-void VertContainer::add2(gcn::Widget *const widget, const bool resizable,
+void VertContainer::add2(Widget *const widget, const bool resizable,
                          const int spacing)
 {
     if (!widget)
@@ -82,6 +82,6 @@ void VertContainer::clear()
 
 void VertContainer::widgetResized(const Event &event A_UNUSED)
 {
-    FOR_EACH (std::vector<gcn::Widget*>::const_iterator, it, mResizableWidgets)
+    FOR_EACH (std::vector<Widget*>::const_iterator, it, mResizableWidgets)
         (*it)->setWidth(getWidth());
 }

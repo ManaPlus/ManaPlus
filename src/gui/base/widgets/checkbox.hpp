@@ -69,7 +69,7 @@
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
 
-#include "gui/base/widget.hpp"
+#include "gui/widgets/widget.h"
 
 namespace gcn
 {

@@ -24,7 +24,7 @@
 
 #include "utils/dtor.h"
 
-#include "gui/base/widget.hpp"
+#include "gui/widgets/widget.h"
 
 #include "debug.h"
 
@@ -89,7 +89,7 @@ void StaticTableModel::resize()
 }
 
 void StaticTableModel::set(const int row, const int column,
-                           gcn::Widget *const widget)
+                           Widget *const widget)
 {
     if (!widget || row >= mRows || row < 0
         || column >= mColumns || column < 0)
@@ -119,8 +119,8 @@ void StaticTableModel::set(const int row, const int column,
     signalAfterUpdate();
 }
 
-gcn::Widget *StaticTableModel::getElementAt(const int row,
-                                            const int column) const
+Widget *StaticTableModel::getElementAt(const int row,
+                                       const int column) const
 {
     return mTableModel[WIDGET_AT(row, column)];
 }

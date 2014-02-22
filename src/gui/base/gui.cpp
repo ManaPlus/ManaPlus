@@ -67,7 +67,7 @@
 
 #include "gui/base/gui.hpp"
 
-#include "gui/base/widget.hpp"
+#include "gui/widgets/widget.h"
 
 #include "gui/focushandler.h"
 

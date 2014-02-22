@@ -28,10 +28,7 @@
 
 #include "localconsts.h"
 
-namespace gcn
-{
-    class Widget;
-}
+class Widget;
 
 class TableModelListener
 {
@@ -83,7 +80,7 @@ public:
     /**
      * Retrieves the widget stored at the specified location within the table.
      */
-    virtual gcn::Widget *getElementAt(const int row, const int column)
+    virtual Widget *getElementAt(const int row, const int column)
                                       const A_WARN_UNUSED = 0;
 
     virtual void installListener(TableModelListener *const listener);
@@ -125,7 +122,7 @@ public:
      * The model is resized to accomodate the widget's width and height,
      * unless column width / row height have been fixed.
      */
-    void set(const int row, const int column, gcn::Widget *const widget);
+    void set(const int row, const int column, Widget *const widget);
 
     /**
      * Fixes the column width for a given column; this overrides dynamic width
@@ -153,14 +150,14 @@ public:
     int getWidth() const A_WARN_UNUSED;
     int getHeight() const A_WARN_UNUSED;
     int getColumnWidth(const int index) const override final A_WARN_UNUSED;
-    gcn::Widget *getElementAt(const int row,
+    Widget *getElementAt(const int row,
                               const int column) const
                               override final A_WARN_UNUSED;
 
 protected:
     int mRows, mColumns;
     int mHeight;
-    std::vector<gcn::Widget *> mTableModel;
+    std::vector<Widget *> mTableModel;
     std::vector<int> mWidths;
 };
 

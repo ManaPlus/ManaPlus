@@ -76,11 +76,10 @@ class KeyEvent;
 class KeyListener;
 class MouseInput;
 class SDLInput;
+class Widget;
 
 namespace gcn
 {
-    class Widget;
-
     // The following comment will appear in the doxygen main page.
     /**
      * @mainpage

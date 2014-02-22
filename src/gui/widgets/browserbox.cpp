@@ -52,7 +52,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
                        const unsigned int mode,
                        const bool opaque,
                        const std::string &skin) :
-    gcn::Widget(widget),
+    Widget(widget),
     MouseListener(),
     mTextRows(),
     mTextRowLinksCount(),

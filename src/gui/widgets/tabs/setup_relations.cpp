@@ -165,7 +165,7 @@ public:
              player_names->size()); r < sz; ++r)
         {
             const std::string name = (*player_names)[r];
-            gcn::Widget *const widget = new Label(this, name);
+            Widget *const widget = new Label(this, name);
             mWidgets.push_back(widget);
 
             DropDown *const choicebox = new DropDown(this, mListModel);
@@ -186,7 +186,7 @@ public:
     }
 
 
-    gcn::Widget *getElementAt(int row, int column) const override final
+    Widget *getElementAt(int row, int column) const override final
     {
         return mWidgets[WIDGET_AT(row, column)];
     }
@@ -209,7 +209,7 @@ public:
 
 protected:
     StringVect *mPlayers;
-    std::vector<gcn::Widget *> mWidgets;
+    std::vector<Widget *> mWidgets;
     PlayerRelationListModel *mListModel;
 };
 

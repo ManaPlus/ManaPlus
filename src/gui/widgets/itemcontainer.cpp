@@ -158,7 +158,7 @@ namespace
 ItemContainer::ItemContainer(const Widget2 *const widget,
                              Inventory *const inventory,
                              const bool forceQuantity) :
-    gcn::Widget(widget),
+    Widget(widget),
     KeyListener(),
     MouseListener(),
     WidgetListener(),
@@ -226,7 +226,7 @@ ItemContainer::~ItemContainer()
 void ItemContainer::logic()
 {
     BLOCK_START("ItemContainer::logic")
-    gcn::Widget::logic();
+    Widget::logic();
 
     if (!mInventory)
     {

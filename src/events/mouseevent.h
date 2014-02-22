@@ -69,8 +69,9 @@
 namespace gcn
 {
     class Gui;
-    class Widget;
 }
+
+class Widget;
 
 /**
   * Represents a mouse event.
@@ -96,7 +97,7 @@ class MouseEvent: public InputGuiEvent
           * @param clickCount The number of clicks generated with the same button.
           *                   It's set to zero if another button is used.
           */
-        MouseEvent(gcn::Widget *const source,
+        MouseEvent(Widget *const source,
                    const bool shiftPressed,
                    const bool controlPressed,
                    const bool altPressed,

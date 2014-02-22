@@ -223,7 +223,7 @@ void Gui::postInit(Graphics *const graphics)
 
     mNpcFont = new Font(fontFile, npcFontSize);
 
-    gcn::Widget::setGlobalFont(mGuiFont);
+    Widget::setGlobalFont(mGuiFont);
 
     // Initialize mouse cursor and listen for changes to the option
     setUseCustomCursor(config.getBoolValue("customcursor"));
@@ -538,7 +538,7 @@ void Gui::handleMousePressed(const MouseInput &mouseInput)
     const unsigned int button = mouseInput.getButton();
     const int timeStamp = mouseInput.getTimeStamp();
 
-    gcn::Widget *sourceWidget = getMouseEventSource(x, y);
+    Widget *sourceWidget = getMouseEventSource(x, y);
 
     if (mFocusHandler->getDraggedWidget())
         sourceWidget = mFocusHandler->getDraggedWidget();
@@ -601,14 +601,14 @@ void Gui::updateFonts()
     mNpcFont->loadFont(fontFile, npcFontSize);
 }
 
-void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
+void Gui::distributeMouseEvent(Widget* source, int type, int button,
                                int x, int y, bool force,
                                bool toSourceOnly)
 {
     if (!source || !mFocusHandler)
         return;
 
-    gcn::Widget* widget = source;
+    Widget* widget = source;
 
     if (!force && mFocusHandler->getModalFocused() != nullptr
         && !widget->isModalFocused())
@@ -626,12 +626,12 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
         mAltPressed, mMetaPressed, type, button,
         x, y, mClickCount);
 
-    gcn::Widget* parent = source;
+    Widget* parent = source;
     while (parent)
     {
         // If the widget has been removed due to input
         // cancel the distribution.
-        if (!gcn::Widget::widgetExists(widget))
+        if (!Widget::widgetExists(widget))
             break;
 
         parent = widget->getParent();
@@ -691,7 +691,7 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
                 break;
         }
 
-        const gcn::Widget *const swap = widget;
+        const Widget *const swap = widget;
         widget = parent;
         parent = swap->getParent();
 
@@ -740,7 +740,7 @@ MouseEvent *Gui::createMouseEvent(Window *const widget)
         mouseX - x, mouseY - y, mClickCount);
 }
 
-void Gui::getAbsolutePosition(gcn::Widget *restrict widget,
+void Gui::getAbsolutePosition(Widget *restrict widget,
                               int &restrict x, int &restrict y)
 {
     x = 0;
@@ -806,7 +806,7 @@ void Gui::handleMouseInput()
 
 void Gui::handleMouseReleased(const MouseInput &mouseInput)
 {
-    gcn::Widget *sourceWidget = getMouseEventSource(
+    Widget *sourceWidget = getMouseEventSource(
         mouseInput.getX(), mouseInput.getY());
 
     int sourceWidgetX, sourceWidgetY;
@@ -815,7 +815,7 @@ void Gui::handleMouseReleased(const MouseInput &mouseInput)
         if (sourceWidget != mFocusHandler->getLastWidgetPressed())
             mFocusHandler->setLastWidgetPressed(nullptr);
 
-        gcn::Widget *oldWidget = sourceWidget;
+        Widget *oldWidget = sourceWidget;
         sourceWidget = mFocusHandler->getDraggedWidget();
         if (oldWidget != sourceWidget)
         {
@@ -876,7 +876,7 @@ void Gui::distributeGlobalFocusGainedEvent(const Event &focusEvent)
     }
 }
 
-void Gui::removeDragged(gcn::Widget *widget)
+void Gui::removeDragged(Widget *widget)
 {
     if (!mFocusHandler)
         return;

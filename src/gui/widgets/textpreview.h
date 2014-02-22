@@ -23,14 +23,14 @@
 #ifndef GUI_WIDGETS_TEXTPREVIEW_H
 #define GUI_WIDGETS_TEXTPREVIEW_H
 
-#include "gui/base/widget.hpp"
+#include "gui/widgets/widget.h"
 
 #include "localconsts.h"
 
 /**
  * Preview widget for particle colors, etc.
  */
-class TextPreview final : public gcn::Widget
+class TextPreview final : public Widget
 {
     public:
         TextPreview(const Widget2 *const widget,

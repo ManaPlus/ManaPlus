@@ -25,7 +25,8 @@
 #define GUI_WIDGETS_BROWSERBOX_H
 
 #include "listeners/mouselistener.h"
-#include "gui/base/widget.hpp"
+
+#include "gui/widgets/widget.h"
 
 #include <list>
 #include <vector>
@@ -100,7 +101,7 @@ class LinePart final
  * A simple browser box able to handle links and forward events to the
  * parent conteiner.
  */
-class BrowserBox final : public gcn::Widget,
+class BrowserBox final : public Widget,
                          public MouseListener
 {
     public:

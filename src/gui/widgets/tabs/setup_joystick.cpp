@@ -104,7 +104,7 @@ Setup_Joystick::~Setup_Joystick()
 
 void Setup_Joystick::action(const ActionEvent &event)
 {
-    const gcn::Widget *const source = event.getSource();
+    const Widget *const source = event.getSource();
     if (source == mJoystickEnabled)
     {
         setTempEnabled(mJoystickEnabled->isSelected());

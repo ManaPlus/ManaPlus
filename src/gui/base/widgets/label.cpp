@@ -76,7 +76,7 @@
 namespace gcn
 {
     Label::Label(const Widget2 *const widget) :
-        gcn::Widget(widget),
+        Widget(widget),
         mCaption(),
         mAlignment(Graphics::LEFT)
     {
@@ -84,7 +84,7 @@ namespace gcn
 
     Label::Label(const Widget2 *const widget,
                  const std::string& caption) :
-        gcn::Widget(widget),
+        Widget(widget),
         mCaption(caption),
         mAlignment(Graphics::LEFT)
     {

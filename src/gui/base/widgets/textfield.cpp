@@ -74,7 +74,7 @@
 namespace gcn
 {
     TextField::TextField(const Widget2 *const widget) :
-        gcn::Widget(widget),
+        Widget(widget),
         MouseListener(),
         KeyListener(),
         mText(),
@@ -89,7 +89,7 @@ namespace gcn
 
     TextField::TextField(const Widget2 *const widget,
                          const std::string& text) :
-        gcn::Widget(widget),
+        Widget(widget),
         MouseListener(),
         KeyListener(),
         mText(text),

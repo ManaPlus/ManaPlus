@@ -51,7 +51,7 @@ class ScrollArea final : public gcn::ScrollArea,
          * @param content the initial content to show in the scroll area
          */
         ScrollArea(Widget2 *const widget2,
-                   gcn::Widget *const widget,
+                   Widget *const widget,
                    const bool opaque = true,
                    const std::string &skin = "");
 

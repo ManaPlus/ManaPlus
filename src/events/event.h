@@ -66,10 +66,7 @@
 
 #include "localconsts.h"
 
-namespace gcn
-{
-    class Widget;
-}
+class Widget;
 
 /**
   * Base class for all events. All events in Guichan should
@@ -86,7 +83,7 @@ class Event
           *
           * @param source The source widget of the event.
           */
-        explicit Event(gcn::Widget *const source) :
+        explicit Event(Widget *const source) :
             mSource(source)
         { }
 
@@ -104,14 +101,14 @@ class Event
           *
           * @return The source widget of the event.
           */
-        gcn::Widget* getSource() const A_WARN_UNUSED
+        Widget* getSource() const A_WARN_UNUSED
         { return mSource; }
 
     protected:
         /**
           * Holds the source widget of the event.
           */
-        gcn::Widget* mSource;
+        Widget* mSource;
 };
 
 #endif  // EVENTS_EVENT_H

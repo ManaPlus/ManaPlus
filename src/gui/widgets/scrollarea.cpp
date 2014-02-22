@@ -50,7 +50,7 @@ static std::string const buttonFiles[2] =
 };
 
 ScrollArea::ScrollArea(Widget2 *const widget2,
-                       gcn::Widget *const widget,
+                       Widget *const widget,
                        const bool opaque,
                        const std::string &skin) :
     gcn::ScrollArea(widget2, widget),
@@ -179,7 +179,7 @@ void ScrollArea::logic()
     }
 
     gcn::ScrollArea::logic();
-    gcn::Widget *const content = getContent();
+    Widget *const content = getContent();
 
     // When no scrollbar in a certain direction, adapt content size to match
     // the content dimension exactly.
@@ -656,7 +656,7 @@ void ScrollArea::widgetResized(const Event &event A_UNUSED)
 {
     mRedraw = true;
     const unsigned int frameSize = 2 * mFrameSize;
-    gcn::Widget *const content = getContent();
+    Widget *const content = getContent();
     if (content)
     {
         content->setSize(mDimension.width - frameSize,
@@ -900,7 +900,7 @@ Rectangle ScrollArea::getVerticalMarkerDimension()
     int height;
     const int h2 = mShowButtons
         ? mScrollbarWidth : mMarkerSize / 2;
-    const gcn::Widget *content;
+    const Widget *content;
     if (!mWidgets.empty())
         content = *mWidgets.begin();
     else
@@ -958,7 +958,7 @@ Rectangle ScrollArea::getHorizontalMarkerDimension()
     int width;
     const int w2 = mShowButtons
         ? mScrollbarWidth : mMarkerSize / 2;
-    const gcn::Widget *content;
+    const Widget *content;
     if (!mWidgets.empty())
         content = *mWidgets.begin();
     else

@@ -30,7 +30,7 @@
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
 
-#include "gui/base/widget.hpp"
+#include "gui/widgets/widget.h"
 
 #include <vector>
 
@@ -45,7 +45,7 @@ class GuiTableActionListener;
  *
  * \ingroup GUI
  */
-class GuiTable final : public gcn::Widget,
+class GuiTable final : public Widget,
                        public MouseListener,
                        public KeyListener,
                        public TableModelListener
@@ -114,11 +114,11 @@ public:
     // Inherited from Widget
     void draw(Graphics* graphics) override final;
 
-    gcn::Widget *getWidgetAt(int x, int y) override final A_WARN_UNUSED;
+    Widget *getWidgetAt(int x, int y) override final A_WARN_UNUSED;
 
-    void moveToTop(gcn::Widget *child) override final;
+    void moveToTop(Widget *child) override final;
 
-    void moveToBottom(gcn::Widget *child) override final;
+    void moveToBottom(Widget *child) override final;
 
     void _setFocusHandler(FocusHandler* focusHandler) override final;
 
@@ -180,7 +180,7 @@ private:
     TableModel *mModel;
 
     /** If someone moves a fresh widget to the top, we must display it. */
-    gcn::Widget *mTopWidget;
+    Widget *mTopWidget;
 
     /** Vector for compactness; used as a list in practice. */
     std::vector<GuiTableActionListener *> mActionListeners;

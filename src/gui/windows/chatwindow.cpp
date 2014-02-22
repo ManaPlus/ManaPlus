@@ -424,7 +424,7 @@ void ChatWindow::adjustTabSize()
     const ChatTab *const tab = getFocused();
     if (tab)
     {
-        gcn::Widget *const content = tab->mScrollArea;
+        Widget *const content = tab->mScrollArea;
         if (content)
         {
             const int contentFrame2 = 2 * content->getFrameSize();

@@ -31,7 +31,7 @@
 
 Icon::Icon(const Widget2 *const widget,
            const std::string &file) :
-    gcn::Widget(widget),
+    Widget(widget),
     mImage(ResourceManager::getInstance()->getImage(file))
 {
     if (mImage)
@@ -43,7 +43,7 @@ Icon::Icon(const Widget2 *const widget,
 
 Icon::Icon(const Widget2 *const widget,
            Image *const image) :
-    gcn::Widget(widget),
+    Widget(widget),
     mImage(image)
 {
     if (mImage)

@@ -34,7 +34,7 @@ namespace
 }  // namespace
 
 EmotePage::EmotePage(const Widget2 *const widget) :
-    gcn::Widget(widget),
+    Widget(widget),
     MouseListener(),
     WidgetListener(),
     mEmotes(ResourceManager::getInstance()->getImageSet(

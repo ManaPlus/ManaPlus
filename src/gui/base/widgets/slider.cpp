@@ -73,7 +73,7 @@ namespace gcn
 {
     Slider::Slider(const Widget2 *const widget,
                    const double scaleEnd) :
-        gcn::Widget(widget),
+        Widget(widget),
         MouseListener(),
         KeyListener(),
         mDragged(false),
@@ -94,7 +94,7 @@ namespace gcn
     Slider::Slider(const Widget2 *const widget,
                    const double scaleStart,
                    const double scaleEnd) :
-        gcn::Widget(widget),
+        Widget(widget),
         MouseListener(),
         KeyListener(),
         mDragged(false),

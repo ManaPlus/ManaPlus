@@ -44,7 +44,7 @@ class WindowContainer : public Container
          * Schedule a widget for deletion. It will be deleted at the start of
          * the next logic update.
          */
-        void scheduleDelete(gcn::Widget *const widget);
+        void scheduleDelete(Widget *const widget);
 
         /**
          * Ensures that all visible windows are on the screen after the screen
@@ -53,8 +53,8 @@ class WindowContainer : public Container
         void adjustAfterResize(const int oldScreenWidth,
                                const int oldScreenHeight);
 
-        void moveWidgetAfter(gcn::Widget *const before,
-                             gcn::Widget *const widget);
+        void moveWidgetAfter(Widget *const before,
+                             Widget *const widget);
 
 #ifdef USE_PROFILER
         void draw(Graphics* graphics);
@@ -64,7 +64,7 @@ class WindowContainer : public Container
         /**
          * List of widgets that are scheduled to be deleted.
          */
-        typedef std::vector<gcn::Widget*> Widgets;
+        typedef std::vector<Widget*> Widgets;
         typedef Widgets::iterator WidgetIterator;
         Widgets mDeathList;
 };

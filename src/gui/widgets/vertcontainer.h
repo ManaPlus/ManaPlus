@@ -46,17 +46,17 @@ class VertContainer final : public Container,
 
         A_DELETE_COPY(VertContainer)
 
-        void add2(gcn::Widget *const widget, const bool resizable,
+        void add2(Widget *const widget, const bool resizable,
                   const int spacing = -1);
 
-        void add1(gcn::Widget *const widget, const int spacing = -1);
+        void add1(Widget *const widget, const int spacing = -1);
 
         void clear();
 
         void widgetResized(const Event &event) override final;
 
     private:
-        std::vector<gcn::Widget*> mResizableWidgets;
+        std::vector<Widget*> mResizableWidgets;
         int mVerticalItemSize;
         int mCount;
         int mNextY;
