@@ -9,6 +9,10 @@ src/commands.cpp
 src/commands.h
 src/dyetool/dyemain.cpp
 src/game.cpp
+src/gui/models/colormodel.cpp
+src/gui/models/playerrelationlistmodel.h
+src/gui/models/sortlistmodelinv.h
+src/gui/models/updatetypemodel.h
 src/gui/popups/beingpopup.cpp
 src/gui/popups/itempopup.cpp
 src/gui/popups/popupmenu.cpp
@@ -17,7 +21,6 @@ src/gui/sdlinput.h
 src/gui/setupactiondata.h
 src/gui/userpalette.cpp
 src/gui/widgets/characterdisplay.cpp
-src/gui/widgets/colormodel.cpp
 src/gui/widgets/itemcontainer.cpp
 src/gui/widgets/itemlinkhandler.cpp
 src/gui/widgets/setupitem.cpp
