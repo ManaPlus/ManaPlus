@@ -127,7 +127,7 @@ class MobileOpenGLGraphics final : public Graphics
         bool mTexture;
 
         bool mIsByteColor;
-        gcn::Color mByteColor;
+        Color mByteColor;
         GLuint mImageCached;
         float mFloatColor;
         int mMaxVertices;

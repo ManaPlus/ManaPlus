@@ -122,21 +122,21 @@ void FloorItem::draw(Graphics *const graphics,
 
             if (curTime > mDropTime + 28 && curTime < mDropTime + 50)
             {
-                graphics->setColor(gcn::Color(80, 200, 20, 200));
+                graphics->setColor(Color(80, 200, 20, 200));
                 graphics->fillRectangle(gcn::Rectangle(
                                         x, y, dx, dy));
             }
             else if (curTime > mDropTime + 19
                      && curTime < mDropTime + 28)
             {
-                graphics->setColor(gcn::Color(200, 80, 20,
+                graphics->setColor(Color(200, 80, 20,
                     80 + 10 * (curTime - mDropTime - 18)));
                 graphics->fillRectangle(gcn::Rectangle(
                     x, y, dx, dy));
             }
             else if (curTime > mDropTime && curTime < mDropTime + 20)
             {
-                graphics->setColor(gcn::Color(20, 20, 255,
+                graphics->setColor(Color(20, 20, 255,
                     7 * (curTime - mDropTime)));
                 graphics->fillRectangle(gcn::Rectangle(
                                         x, y, dx, dy));
@@ -153,7 +153,7 @@ void FloorItem::draw(Graphics *const graphics,
     {
         if (font && mAmount > 1)
         {
-//            graphics->setColor(gcn::Color(255, 255, 255, 100));
+//            graphics->setColor(Color(255, 255, 255, 100));
             graphics->setColor(userPalette->getColor(
                 UserPalette::FLOOR_ITEM_TEXT));
             font->drawString(graphics, toString(mAmount), x, y);

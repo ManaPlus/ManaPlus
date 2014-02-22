@@ -136,10 +136,10 @@ class EquipmentWindow final : public Window,
         ImageSet *mImageSet;
         Being *mBeing;
         std::vector<EquipmentBox*> mBoxes;
-        gcn::Color mHighlightColor;
-        gcn::Color mBorderColor;
-        gcn::Color mLabelsColor;
-        gcn::Color mLabelsColor2;
+        Color mHighlightColor;
+        Color mBorderColor;
+        Color mLabelsColor;
+        Color mLabelsColor2;
         Image *mSlotBackground;
         Image *mSlotHighlightedBackground;
         ImageCollection *mVertexes;

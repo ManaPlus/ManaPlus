@@ -62,10 +62,10 @@ class Label final : public gcn::Label
 
         void adjustSize();
 
-        void setForegroundColor(const gcn::Color &color);
+        void setForegroundColor(const Color &color);
 
-        void setForegroundColorAll(const gcn::Color &color1,
-                                   const gcn::Color &color2);
+        void setForegroundColorAll(const Color &color1,
+                                   const Color &color2);
 
         void resizeTo(const int maxSize, const int minSize);
 

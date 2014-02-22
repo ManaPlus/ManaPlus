@@ -57,8 +57,8 @@ void SpeechBubble::postInit()
 }
 
 void SpeechBubble::setCaption(const std::string &name,
-                              const gcn::Color *const color1,
-                              const gcn::Color *const color2)
+                              const Color *const color1,
+                              const Color *const color2)
 {
     mCaption->setCaption(name);
     mCaption->adjustSize();

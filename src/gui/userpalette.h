@@ -100,8 +100,8 @@ class UserPalette final : public Palette, public gcn::ListModel
          *
          * @return the requested committed color
          */
-        inline const gcn::Color &getCommittedColor(const int type)
-                                                   const A_WARN_UNUSED
+        inline const Color &getCommittedColor(const int type)
+                                              const A_WARN_UNUSED
         {
             return mColors[type].committedColor;
         }
@@ -113,8 +113,7 @@ class UserPalette final : public Palette, public gcn::ListModel
          *
          * @return the requested test color
          */
-        inline const gcn::Color &getTestColor(const int type)
-                                              const A_WARN_UNUSED
+        inline const Color &getTestColor(const int type) const A_WARN_UNUSED
         { return mColors[type].testColor; }
 
         /**
@@ -123,7 +122,7 @@ class UserPalette final : public Palette, public gcn::ListModel
          * @param type the color type requested
          * @param color the color that should be tested
          */
-        inline void setTestColor(const int type, const gcn::Color &color)
+        inline void setTestColor(const int type, const Color &color)
         { mColors[type].testColor = color; }
 
         /**

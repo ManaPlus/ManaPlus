@@ -23,7 +23,8 @@
 #ifndef GUI_GUI_H
 #define GUI_GUI_H
 
-#include "gui/base/color.hpp"
+#include "gui/color.h"
+
 #include "gui/base/gui.hpp"
 
 #include "localconsts.h"
@@ -198,8 +199,8 @@ class Gui final : public gcn::Gui
         typedef std::list<FocusListener*> FocusListenerList;
         typedef FocusListenerList::iterator FocusListenerIterator;
         FocusListenerList mFocusListeners;
-        gcn::Color mForegroundColor;
-        gcn::Color mForegroundColor2;
+        Color mForegroundColor;
+        Color mForegroundColor2;
         int mTime;
         bool mCustomCursor;                 /**< Show custom cursor */
         bool mDoubleClick;

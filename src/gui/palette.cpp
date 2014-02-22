@@ -29,18 +29,18 @@
 
 #include "debug.h"
 
-const gcn::Color Palette::BLACK = gcn::Color(0, 0, 0);
+const Color Palette::BLACK = Color(0, 0, 0);
 Palette::Palettes Palette::mInstances;
 
-const gcn::Color Palette::RAINBOW_COLORS[7] =
+const Color Palette::RAINBOW_COLORS[7] =
 {
-    gcn::Color(255, 0, 0),
-    gcn::Color(255, 153, 0),
-    gcn::Color(255, 255, 0),
-    gcn::Color(0, 153, 0),
-    gcn::Color(0, 204, 204),
-    gcn::Color(51, 0, 153),
-    gcn::Color(153, 0, 153)
+    Color(255, 0, 0),
+    Color(255, 153, 0),
+    Color(255, 255, 0),
+    Color(0, 153, 0),
+    Color(0, 204, 204),
+    Color(51, 0, 153),
+    Color(153, 0, 153)
 };
 
 const int Palette::RAINBOW_COLOR_COUNT = 7;
@@ -59,7 +59,7 @@ Palette::~Palette()
     mInstances.erase(this);
 }
 
-const gcn::Color& Palette::getCharColor(const signed char c, bool &valid) const
+const Color& Palette::getCharColor(const signed char c, bool &valid) const
 {
     const CharColors::const_iterator it = mCharColors.find(c);
     if (it != mCharColors.end())
@@ -128,7 +128,7 @@ void Palette::advanceGradient()
             else
                 colIndex = gradIndex;
 
-            gcn::Color &color = elem->color;
+            Color &color = elem->color;
             int colVal;
 
             if (grad == PULSE)
@@ -136,7 +136,7 @@ void Palette::advanceGradient()
                 colVal = static_cast<int>(255.0 *
                         sin(M_PI * colIndex / numOfColors));
 
-                const gcn::Color &col = elem->testColor;
+                const Color &col = elem->testColor;
 
                 color.r = ((colVal * col.r) / 255) % (col.r + 1);
                 color.g = ((colVal * col.g) / 255) % (col.g + 1);
@@ -180,9 +180,9 @@ void Palette::advanceGradient()
             }
             else if (elem->grad == RAINBOW)
             {
-                const gcn::Color &startCol = RAINBOW_COLORS[colIndex];
-                const gcn::Color &destCol =
-                        RAINBOW_COLORS[(colIndex + 1) % numOfColors];
+                const Color &startCol = RAINBOW_COLORS[colIndex];
+                const Color &destCol
+                    = RAINBOW_COLORS[(colIndex + 1) % numOfColors];
                 double startColVal;
                 double destColVal;
 

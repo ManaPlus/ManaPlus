@@ -27,23 +27,19 @@
 
 #include "localconsts.h"
 
+class Color;
 class Widget2;
-
-namespace gcn
-{
-    class Color;
-}
 
 struct ColorPair
 {
-    ColorPair(const gcn::Color* c1, const gcn::Color* c2) :
+    ColorPair(const Color* c1, const Color* c2) :
         color1(c1),
         color2(c2)
     {
     }
 
-    const gcn::Color* color1;
-    const gcn::Color* color2;
+    const Color* color1;
+    const Color* color2;
 };
 
 class ColorModel : public gcn::ListModel
@@ -67,8 +63,8 @@ class ColorModel : public gcn::ListModel
         size_t size() A_WARN_UNUSED
         { return mNames.size(); }
 
-        void add(const std::string &name, const gcn::Color *const color1,
-                 const gcn::Color *const color2);
+        void add(const std::string &name, const Color *const color1,
+                 const Color *const color2);
 
         static ColorModel *createDefault(const Widget2 *const widget);
 

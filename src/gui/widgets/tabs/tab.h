@@ -114,8 +114,8 @@ class Tab : public gcn::BasicContainer,
         /**
          * Set the normal color for the tab's text.
          */
-        void setTabColor(const gcn::Color *const color1,
-                         const gcn::Color *const color2)
+        void setTabColor(const Color *const color1,
+                         const Color *const color2)
         {
             mTabColor = color1;
             mTabOutlineColor = color2;
@@ -124,8 +124,8 @@ class Tab : public gcn::BasicContainer,
         /**
          * Set the highlighted color for the tab's text.
          */
-        void setHighlightedTabColor(const gcn::Color *const color1,
-                                    const gcn::Color *const color2)
+        void setHighlightedTabColor(const Color *const color1,
+                                    const Color *const color2)
         {
             mTabHighlightedColor = color1;
             mTabHighlightedOutlineColor = color2;
@@ -134,8 +134,8 @@ class Tab : public gcn::BasicContainer,
         /**
          * Set the selected color for the tab's text.
          */
-        void setSelectedTabColor(const gcn::Color *const color1,
-                                 const gcn::Color *const color2)
+        void setSelectedTabColor(const Color *const color1,
+                                 const Color *const color2)
         {
             mTabSelectedColor = color1;
             mTabSelectedOutlineColor = color2;
@@ -144,8 +144,8 @@ class Tab : public gcn::BasicContainer,
         /**
          * Set the flash color for the tab's text.
          */
-        void setFlashTabColor(const gcn::Color *const color1,
-                              const gcn::Color *const color2)
+        void setFlashTabColor(const Color *const color1,
+                              const Color *const color2)
         {
             mFlashColor = color1;
             mFlashOutlineColor = color2;
@@ -154,8 +154,8 @@ class Tab : public gcn::BasicContainer,
         /**
          * Set the player flash color for the tab's text.
          */
-        void setPlayerFlashTabColor(const gcn::Color *const color1,
-                                    const gcn::Color *const color2)
+        void setPlayerFlashTabColor(const Color *const color1,
+                                    const Color *const color2)
         {
             mPlayerFlashColor = color1;
             mPlayerFlashOutlineColor = color2;
@@ -214,16 +214,16 @@ class Tab : public gcn::BasicContainer,
         static int mInstances;           /**< Number of tab instances */
         static float mAlpha;
 
-        const gcn::Color *mTabColor;
-        const gcn::Color *mTabOutlineColor;
-        const gcn::Color *mTabHighlightedColor;
-        const gcn::Color *mTabHighlightedOutlineColor;
-        const gcn::Color *mTabSelectedColor;
-        const gcn::Color *mTabSelectedOutlineColor;
-        const gcn::Color *mFlashColor;
-        const gcn::Color *mFlashOutlineColor;
-        const gcn::Color *mPlayerFlashColor;
-        const gcn::Color *mPlayerFlashOutlineColor;
+        const Color *mTabColor;
+        const Color *mTabOutlineColor;
+        const Color *mTabHighlightedColor;
+        const Color *mTabHighlightedOutlineColor;
+        const Color *mTabSelectedColor;
+        const Color *mTabSelectedOutlineColor;
+        const Color *mFlashColor;
+        const Color *mFlashOutlineColor;
+        const Color *mPlayerFlashColor;
+        const Color *mPlayerFlashOutlineColor;
         int mFlash;
         ImageCollection *mVertexes;
         Image *mImage;

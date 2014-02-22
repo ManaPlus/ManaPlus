@@ -68,7 +68,8 @@
 #include <set>
 #include <string>
 
-#include "gui/base/color.hpp"
+#include "gui/color.h"
+
 #include "gui/base/rectangle.hpp"
 
 #include "gui/widgets/widget2.h"

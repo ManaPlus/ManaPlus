@@ -614,7 +614,7 @@ static void updateProgress(int cnt)
 {
     const int progress = cnt + loadingProgressCounter;
     const int h = mainGraphics->mHeight;
-    mainGraphics->setColor(gcn::Color(255, 255, 255));
+    mainGraphics->setColor(Color(255, 255, 255));
     const int maxSize = mainGraphics->mWidth - 100;
     const int width = maxSize * progress / 450;
     mainGraphics->fillRectangle(gcn::Rectangle(50, h - 100, width, 50));

@@ -253,7 +253,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
 
     mSelected = mColorBox->getSelected();
     const int type = userPalette->getColorTypeAt(mSelected);
-    const gcn::Color *col = &userPalette->getColor(type);
+    const Color *col = &userPalette->getColor(type);
     const Palette::GradientType grad = userPalette->getGradientType(type);
     const int delay = userPalette->getGradientDelay(type);
 
@@ -383,7 +383,7 @@ void Setup_Colors::cancel()
 
     userPalette->rollback();
     const int type = userPalette->getColorTypeAt(mSelected);
-    const gcn::Color *const col = &userPalette->getColor(type);
+    const Color *const col = &userPalette->getColor(type);
     mGradTypeSlider->setValue2(userPalette->getGradientType(type));
     const int delay = userPalette->getGradientDelay(type);
     setEntry(mGradDelaySlider, mGradDelayText, delay);
@@ -444,7 +444,7 @@ void Setup_Colors::updateColor()
     }
     else if (grad == Palette::PULSE)
     {
-        userPalette->setTestColor(type, gcn::Color(
+        userPalette->setTestColor(type, Color(
                 static_cast<int>(mRedSlider->getValue()),
                 static_cast<int>(mGreenSlider->getValue()),
                 static_cast<int>(mBlueSlider->getValue())));

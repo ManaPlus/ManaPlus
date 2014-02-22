@@ -94,8 +94,8 @@ class ShopListBox final : public ListBox
 
         ItemPopup *mItemPopup;
 
-        gcn::Color mBackgroundColor;
-        gcn::Color mWarningColor;
+        Color mBackgroundColor;
+        Color mWarningColor;
 
         bool mPriceCheck;
         bool mProtectItems;

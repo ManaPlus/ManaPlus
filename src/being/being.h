@@ -41,6 +41,7 @@ static const int DEFAULT_BEING_HEIGHT = 32;
 
 class AnimatedSprite;
 class BeingCacheEntry;
+class Color;
 class Equipment;
 class FlashText;
 class Guild;
@@ -51,11 +52,6 @@ class SpeechBubble;
 class Text;
 
 struct ParticleInfo;
-
-namespace gcn
-{
-    class Color;
-}
 
 extern volatile int cur_time;
 
@@ -969,7 +965,7 @@ class Being : public ActorSprite, public ConfigListener
          * Holds a text object when the being displays it's name, 0 otherwise
          */
         FlashText *mDispName;
-        const gcn::Color *mNameColor;
+        const Color *mNameColor;
 
         /** Engine-related infos about weapon. */
         const ItemInfo *mEquippedWeapon;
@@ -979,7 +975,7 @@ class Being : public ActorSprite, public ConfigListener
 
         Path mPath;
         Text *mText;
-        const gcn::Color *mTextColor;
+        const Color *mTextColor;
 
         Vector mDest;  /**< destination coordinates. */
 

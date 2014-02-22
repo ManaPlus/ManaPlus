@@ -159,7 +159,7 @@ class TextField : public gcn::TextField,
         static Skin *mSkin;
 
     private:
-        const gcn::Color *mCaretColor;
+        const Color *mCaretColor;
         PopupMenu *mPopupMenu;
         static int instances;
         static float mAlpha;

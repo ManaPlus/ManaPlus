@@ -154,7 +154,7 @@ void AvatarListBox::draw(Graphics *graphics)
             }
             if (parent && a->getMaxHp())
             {
-                gcn::Color color = Theme::getProgressColor(
+                Color color = Theme::getProgressColor(
                         Theme::PROG_HP, static_cast<float>(a->getHp())
                         / static_cast<float>(a->getMaxHp()));
                 color.a = 80;
@@ -180,8 +180,7 @@ void AvatarListBox::draw(Graphics *graphics)
 
             if (parent)
             {
-                gcn::Color color = Theme::getProgressColor(Theme::PROG_HP,
-                        1);
+                Color color = Theme::getProgressColor(Theme::PROG_HP, 1);
 
                 color.a = 80;
                 graphics->setColor(color);

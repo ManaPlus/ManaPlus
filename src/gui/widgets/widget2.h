@@ -32,16 +32,16 @@ class Widget2
         {
         }
 
-        inline const gcn::Color &getThemeColor(const int type,
-                                               const int alpha = 255)
-                                               const A_WARN_UNUSED
+        inline const Color &getThemeColor(const int type,
+                                          const int alpha = 255)
+                                          const A_WARN_UNUSED
         {
             return Theme::getThemeColor(mPaletteOffset + type, alpha);
         }
 
-        inline const gcn::Color &getThemeCharColor(const signed char c,
-                                                   bool &valid)
-                                                   const A_WARN_UNUSED
+        inline const Color &getThemeCharColor(const signed char c,
+                                              bool &valid)
+                                              const A_WARN_UNUSED
         {
             const int colorId = Theme::getThemeIdByChar(c, valid);
             if (valid)
@@ -71,7 +71,7 @@ class Widget2
             }
         }
 
-        void setForegroundColor2(const gcn::Color &color)
+        void setForegroundColor2(const Color &color)
         {
             mForegroundColor2 = color;
         }
@@ -85,7 +85,7 @@ class Widget2
         }
 
         int mPaletteOffset;
-        gcn::Color mForegroundColor2;
+        Color mForegroundColor2;
 };
 
 extern RenderType openGLMode;

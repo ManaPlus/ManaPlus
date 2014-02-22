@@ -58,8 +58,8 @@ struct BrowserLink final
 class LinePart final
 {
     public:
-        LinePart(const int x, const int y, const gcn::Color &color,
-                 const gcn::Color &color2, const std::string &text,
+        LinePart(const int x, const int y, const Color &color,
+                 const Color &color2, const std::string &text,
                  const bool bold) :
             mX(x),
             mY(y),
@@ -72,8 +72,8 @@ class LinePart final
         {
         }
 
-        LinePart(const int x, const int y, const gcn::Color &color,
-                 const gcn::Color &color2, Image *const image) :
+        LinePart(const int x, const int y, const Color &color,
+                 const Color &color2, Image *const image) :
             mX(x),
             mY(y),
             mColor(color),
@@ -88,8 +88,8 @@ class LinePart final
         ~LinePart();
 
         int mX, mY;
-        gcn::Color mColor;
-        gcn::Color mColor2;
+        Color mColor;
+        Color mColor2;
         std::string mText;
         unsigned char mType;
         Image *mImage;
@@ -228,8 +228,8 @@ class BrowserBox final : public gcn::Widget,
         int getPadding() const A_WARN_UNUSED
         { return mPadding; }
 
-        void setForegroundColorAll(const gcn::Color &color1,
-                                   const gcn::Color &color2);
+        void setForegroundColorAll(const Color &color1,
+                                   const Color &color2);
 
         int getDataWidth() const
         { return mDataWidth; }
@@ -266,9 +266,9 @@ class BrowserBox final : public gcn::Widget,
         int mItemPadding;
         unsigned int mDataWidth;
 
-        gcn::Color mHighlightColor;
-        gcn::Color mHyperLinkColor;
-        gcn::Color mColors[2][COLORS_MAX];
+        Color mHighlightColor;
+        Color mHyperLinkColor;
+        Color mColors[2][COLORS_MAX];
 
         bool mOpaque;
         bool mUseLinksAndUserColors;

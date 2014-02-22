@@ -26,7 +26,7 @@
 
 #include "render/graphics.h"
 
-#include "gui/base/color.hpp"
+#include "gui/color.h"
 
 #include "localconsts.h"
 
@@ -42,7 +42,7 @@ class Text
          */
         Text(const std::string &text, const int x, const int y,
              const Graphics::Alignment alignment,
-             const gcn::Color *const color, const bool isSpeech = false,
+             const Color *const color, const bool isSpeech = false,
              Font *const font = nullptr);
 
         A_DELETE_COPY(Text)
@@ -52,7 +52,7 @@ class Text
          */
         virtual ~Text();
 
-        void setColor(const gcn::Color *const color);
+        void setColor(const Color *const color);
 
         int getWidth() const A_WARN_UNUSED
         { return mWidth; }
@@ -80,8 +80,8 @@ class Text
         int mXOffset;          /**< The offset of mX from the desired x. */
         static int mInstances; /**< Instances of text. */
         std::string mText;     /**< The text to display. */
-        const gcn::Color *mColor;     /**< The color of the text. */
-        const gcn::Color mOutlineColor;
+        const Color *mColor;     /**< The color of the text. */
+        const Color mOutlineColor;
         bool mIsSpeech;        /**< Is this text a speech bubble? */
 
     protected:
@@ -93,7 +93,7 @@ class FlashText final : public Text
     public:
         FlashText(const std::string &text, const int x, const int y,
                   const Graphics::Alignment alignment,
-                  const gcn::Color *const color,
+                  const Color *const color,
                   Font *const font = nullptr);
 
         A_DELETE_COPY(FlashText)

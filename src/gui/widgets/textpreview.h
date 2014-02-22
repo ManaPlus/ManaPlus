@@ -40,10 +40,10 @@ class TextPreview final : public gcn::Widget
 
         ~TextPreview();
 
-        inline void setTextColor(const gcn::Color *color)
+        inline void setTextColor(const Color *color)
         { mTextColor = color; adjustSize(); }
 
-        inline void setTextColor2(const gcn::Color *color)
+        inline void setTextColor2(const Color *color)
         { mTextColor2 = color; adjustSize(); }
 
         /**
@@ -60,7 +60,7 @@ class TextPreview final : public gcn::Widget
          *
          * @param color the color to set
          */
-        inline void setTextBGColor(const gcn::Color *color)
+        inline void setTextBGColor(const Color *color)
         { mTextBGColor = color; }
 
         /**
@@ -68,7 +68,7 @@ class TextPreview final : public gcn::Widget
          *
          * @param color the color to set
          */
-        inline void setBGColor(const gcn::Color *color)
+        inline void setBGColor(const Color *color)
         { mBGColor = color; }
 
         /**
@@ -123,10 +123,10 @@ class TextPreview final : public gcn::Widget
     private:
         Font *mFont;
         std::string mText;
-        const gcn::Color *mTextColor;
-        const gcn::Color *mTextColor2;
-        const gcn::Color *mBGColor;
-        const gcn::Color *mTextBGColor;
+        const Color *mTextColor;
+        const Color *mTextColor2;
+        const Color *mBGColor;
+        const Color *mTextBGColor;
         int mPadding;
         static int instances;
         static float mAlpha;

@@ -236,8 +236,8 @@ public:
         return 2 * getFont()->getHeight() + 5;
     }
 private:
-    gcn::Color mNotSupportedColor;
-    gcn::Color mNotSupportedColor2;
+    Color mNotSupportedColor;
+    Color mNotSupportedColor2;
 };
 
 

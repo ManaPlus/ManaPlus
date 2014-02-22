@@ -188,7 +188,7 @@ private:
     /**
      * Holds the background color of the table.
      */
-    gcn::Color mHighlightColor;
+    Color mHighlightColor;
 
     int mSelectedRow;
     int mSelectedColumn;

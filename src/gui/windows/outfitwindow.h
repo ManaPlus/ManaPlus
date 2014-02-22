@@ -115,8 +115,8 @@ class OutfitWindow final : public Window,
         int mItems[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
         int mAwayOutfit;
 
-        gcn::Color mBorderColor;
-        gcn::Color mBackgroundColor;
+        Color mBorderColor;
+        Color mBackgroundColor;
         unsigned char mItemColors[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
         bool mItemClicked;
         bool mItemsUnequip[OUTFITS_COUNT];

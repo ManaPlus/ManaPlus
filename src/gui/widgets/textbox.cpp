@@ -379,14 +379,14 @@ void TextBox::draw(Graphics* graphics)
     BLOCK_END("TextBox::draw")
 }
 
-void TextBox::setForegroundColor(const gcn::Color &color)
+void TextBox::setForegroundColor(const Color &color)
 {
     mForegroundColor = color;
     mForegroundColor2 = color;
 }
 
-void TextBox::setForegroundColorAll(const gcn::Color &color1,
-                                    const gcn::Color &color2)
+void TextBox::setForegroundColorAll(const Color &color1,
+                                    const Color &color2)
 {
     mForegroundColor = color1;
     mForegroundColor2 = color2;

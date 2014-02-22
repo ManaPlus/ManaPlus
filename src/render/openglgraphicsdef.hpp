@@ -92,14 +92,14 @@
 
         void popClipArea() override final;
 
-        void setColor(const gcn::Color &color) override final
+        void setColor(const Color &color) override final
         {
             mColor = color;
             mColor2 = color;
             mColorAlpha = (color.a != 255);
         }
 
-        void setColorAll(const gcn::Color &color, const gcn::Color &color2)
+        void setColorAll(const Color &color, const Color &color2)
         {
             mColor = color;
             mColor2 = color2;

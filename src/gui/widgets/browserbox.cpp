@@ -534,8 +534,8 @@ int BrowserBox::calcHeight()
     const char *const hyphen = "~";
     const int hyphenWidth = font->getWidth(hyphen);
 
-    gcn::Color selColor[2] = {mForegroundColor, mForegroundColor2};
-    const gcn::Color textColor[2] = {mForegroundColor, mForegroundColor2};
+    Color selColor[2] = {mForegroundColor, mForegroundColor2};
+    const Color textColor[2] = {mForegroundColor, mForegroundColor2};
     ResourceManager *const resman = ResourceManager::getInstance();
 
     mLineParts.clear();
@@ -581,7 +581,7 @@ int BrowserBox::calcHeight()
             continue;
         }
 
-        gcn::Color prevColor[2];
+        Color prevColor[2];
         prevColor[0] = selColor[0];
         prevColor[1] = selColor[1];
         bold = false;
@@ -621,7 +621,7 @@ int BrowserBox::calcHeight()
                     const signed char c = row.at(start + 2);
 
                     bool valid(false);
-                    const gcn::Color col[2] =
+                    const Color col[2] =
                     {
                         getThemeCharColor(c, valid),
                         getThemeCharColor(c | 0x80, valid)
@@ -897,8 +897,8 @@ std::string BrowserBox::getTextAtPos(const int x, const int y) const
     return str;
 }
 
-void BrowserBox::setForegroundColorAll(const gcn::Color &color1,
-                                       const gcn::Color &color2)
+void BrowserBox::setForegroundColorAll(const Color &color1,
+                                       const Color &color2)
 {
     mForegroundColor = color1;
     mForegroundColor2 = color2;

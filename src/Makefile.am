@@ -27,11 +27,11 @@ endif
 
 dyecmd_CXXFLAGS =
 dyecmd_SOURCES = gui/base/cliprectangle.cpp \
-	      gui/base/color.cpp \
+	      gui/color.cpp \
 	      gui/base/rectangle.cpp \
 	      events/actionevent.h \
 	      gui/base/cliprectangle.hpp \
-	      gui/base/color.hpp \
+	      gui/color.h \
 	      events/event.h \
 	      gui/base/rectangle.hpp
 
@@ -152,7 +152,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      listeners/actionlistener.h \
 	      gui/base/basiccontainer.hpp \
 	      gui/base/cliprectangle.hpp \
-	      gui/base/color.hpp \
+	      gui/color.h \
 	      listeners/deathlistener.h \
 	      events/event.h \
 	      listeners/focuslistener.h \
@@ -184,7 +184,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/widgets/window.hpp \
 	      gui/base/basiccontainer.cpp \
 	      gui/base/cliprectangle.cpp \
-	      gui/base/color.cpp \
+	      gui/color.cpp \
 	      gui/base/gui.cpp \
 	      input/key.cpp \
 	      gui/base/rectangle.cpp \

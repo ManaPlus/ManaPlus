@@ -114,14 +114,14 @@ void Label::adjustSize()
     setHeight(font->getHeight() + pad2);
 }
 
-void Label::setForegroundColor(const gcn::Color &color)
+void Label::setForegroundColor(const Color &color)
 {
     mForegroundColor = color;
     mForegroundColor2 = color;
 }
 
-void Label::setForegroundColorAll(const gcn::Color &color1,
-                                  const gcn::Color &color2)
+void Label::setForegroundColorAll(const Color &color1,
+                                  const Color &color2)
 {
     mForegroundColor = color1;
     mForegroundColor2 = color2;

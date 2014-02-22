@@ -70,10 +70,11 @@
 
 #include "sdlshared.h"
 
+#include "gui/color.h"
+
 #include "render/renderers.h"
 
 #include "gui/base/cliprectangle.hpp"
-#include "gui/base/color.hpp"
 
 #ifdef USE_SDL2
 #include <SDL_render.h>
@@ -331,27 +332,27 @@ class Graphics
         virtual void initArrays()
         { }
 
-        virtual void setColor(const gcn::Color &color)
+        virtual void setColor(const Color &color)
         {
             mColor = color;
             mColor2 = color;
             mAlpha = (color.a != 255);
         }
 
-        void setColor2(const gcn::Color &color)
+        void setColor2(const Color &color)
         { mColor2 = color; }
 
-        void setColorAll(const gcn::Color &color, const gcn::Color &color2)
+        void setColorAll(const Color &color, const Color &color2)
         {
             mColor = color;
             mColor2 = color2;
             mAlpha = (color.a != 255);
         }
 
-        const gcn::Color &getColor() const
+        const Color &getColor() const
         { return mColor; }
 
-        const gcn::Color &getColor2() const
+        const Color &getColor2() const
         { return mColor2; }
 
 #ifdef DEBUG_DRAW_CALLS
@@ -534,8 +535,8 @@ class Graphics
         int mStartFreeMem;
         bool mSync;
         int mScale;
-        gcn::Color mColor;
-        gcn::Color mColor2;
+        Color mColor;
+        Color mColor2;
 };
 
 extern Graphics *mainGraphics;

@@ -237,7 +237,7 @@ UserPalette::~UserPalette()
 void UserPalette::setColor(const int type, const int r,
                            const int g, const int b)
 {
-    gcn::Color &color = mColors[type].color;
+    Color &color = mColors[type].color;
     color.r = r;
     color.g = g;
     color.b = b;
@@ -296,14 +296,14 @@ void UserPalette::rollback()
         if (i->grad != i->committedGrad)
             setGradient(i->type, i->committedGrad);
 
-        const gcn::Color &committedColor = i->committedColor;
+        const Color &committedColor = i->committedColor;
         setGradientDelay(i->type, i->committedDelay);
         setColor(i->type, committedColor.r,
                  committedColor.g, committedColor.b);
 
         if (i->grad == PULSE)
         {
-            gcn::Color &testColor = i->testColor;
+            Color &testColor = i->testColor;
             testColor.r = committedColor.r;
             testColor.g = committedColor.g;
             testColor.b = committedColor.b;
@@ -342,7 +342,7 @@ void UserPalette::addColor(const unsigned type, const unsigned rgb,
         rgbValue = atox(rgbString);
     else
         rgbValue = atoi(rgbString.c_str());
-    const gcn::Color &trueCol = gcn::Color(rgbValue);
+    const Color &trueCol = Color(rgbValue);
     grad = static_cast<GradientType>(config.getValue(configName + "Gradient",
                                      static_cast<int>(grad)));
     delay = config.getValueInt(configName + "Delay", delay);

@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_LISTBOX_H
 #define GUI_WIDGETS_LISTBOX_H
 
-#include "gui/base/color.hpp"
+#include "gui/color.h"
 
 #include "gui/base/widgets/listbox.hpp"
 
@@ -115,9 +115,9 @@ class ListBox : public gcn::ListBox
         { mRowHeight = n; }
 
     protected:
-        gcn::Color mHighlightColor;
-        gcn::Color mForegroundSelectedColor;
-        gcn::Color mForegroundSelectedColor2;
+        Color mHighlightColor;
+        Color mForegroundSelectedColor;
+        Color mForegroundSelectedColor2;
         int mOldSelected;
         int mPadding;
         int mPressedIndex;

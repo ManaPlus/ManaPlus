@@ -26,7 +26,7 @@
 
 #include "logger.h"
 
-#include "gui/base/color.hpp"
+#include "gui/color.h"
 
 #if defined __native_client__
 #include <stdlib.h>
@@ -49,7 +49,7 @@ class Palette
 {
     public:
         /** Black Color Constant */
-        static const gcn::Color BLACK;
+        static const Color BLACK;
 
         /** Colors can be static or can alter over time. */
         enum GradientType
@@ -71,8 +71,8 @@ class Palette
          *
          * @return the requested color or Palette::BLACK
          */
-        const gcn::Color &getCharColor(const signed char c,
-                                       bool &valid) const A_WARN_UNUSED;
+        const Color &getCharColor(const signed char c,
+                                  bool &valid) const A_WARN_UNUSED;
 
         int getIdByChar(const signed char c, bool &valid) const A_WARN_UNUSED;
 
@@ -85,8 +85,8 @@ class Palette
          *
          * @return the requested color
          */
-        inline const gcn::Color &getColor(int type,
-                                          const int alpha = 255) A_WARN_UNUSED
+        inline const Color &getColor(int type,
+                                     const int alpha = 255) A_WARN_UNUSED
         {
             if (type >= static_cast<signed>(mColors.size()) || type < 0)
             {
@@ -94,15 +94,14 @@ class Palette
                     type, static_cast<unsigned int>(mColors.size()));
                 type = 0;
             }
-            gcn::Color* col = &mColors[type].color;
+            Color* col = &mColors[type].color;
             col->a = alpha;
             return *col;
         }
 
-        inline const gcn::Color &getColorWithAlpha(const int type)
-                                                   A_WARN_UNUSED
+        inline const Color &getColorWithAlpha(const int type) A_WARN_UNUSED
         {
-            gcn::Color* col = &mColors[type].color;
+            Color* col = &mColors[type].color;
             col->a = mColors[type].delay;
             return *col;
         }
@@ -144,7 +143,7 @@ class Palette
 
     protected:
         /** Colors used for the rainbow gradient */
-        static const gcn::Color RAINBOW_COLORS[7];
+        static const Color RAINBOW_COLORS[7];
         static const int RAINBOW_COLOR_COUNT;
 
         /** Time tick, that gradient-type colors were updated the last time. */
@@ -183,9 +182,9 @@ class Palette
             }
 
             int type;
-            gcn::Color color;
-            gcn::Color testColor;
-            gcn::Color committedColor;
+            Color color;
+            Color testColor;
+            Color committedColor;
             std::string text;
             signed char ch;
             GradientType grad;
@@ -194,7 +193,7 @@ class Palette
             int delay;
             int committedDelay;
 
-            void set(const int type0, const gcn::Color &color0,
+            void set(const int type0, const Color &color0,
                      const GradientType grad0, const int delay0)
             {
                 type = type0;

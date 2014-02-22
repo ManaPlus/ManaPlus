@@ -89,7 +89,7 @@ void TextPreview::draw(Graphics* graphics)
 
     if (mOpaque)
     {
-        graphics->setColor(gcn::Color(static_cast<int>(mBGColor->r),
+        graphics->setColor(Color(static_cast<int>(mBGColor->r),
                     static_cast<int>(mBGColor->g),
                     static_cast<int>(mBGColor->b),
                     static_cast<int>(mAlpha * 255.0F)));
@@ -105,7 +105,7 @@ void TextPreview::draw(Graphics* graphics)
                 + 2 * ((mOutline || mShadow) ? 1 :0);
             const int y = mFont->getHeight() + 1
                 + 2 * ((mOutline || mShadow) ? 1 : 0);
-            graphics->setColor(gcn::Color(static_cast<int>(mTextBGColor->r),
+            graphics->setColor(Color(static_cast<int>(mTextBGColor->r),
                 static_cast<int>(mTextBGColor->g),
                 static_cast<int>(mTextBGColor->b),
                 intAlpha));
@@ -113,9 +113,9 @@ void TextPreview::draw(Graphics* graphics)
         }
     }
 
-    graphics->setColorAll(gcn::Color(mTextColor->r,
+    graphics->setColorAll(Color(mTextColor->r,
         mTextColor->g, mTextColor->b, alpha),
-        gcn::Color(mTextColor2->r, mTextColor2->g, mTextColor2->b, alpha));
+        Color(mTextColor2->r, mTextColor2->g, mTextColor2->b, alpha));
 
     if (mOutline && mTextColor != mTextColor2)
         graphics->setColor2(Theme::getThemeColor(Theme::OUTLINE));

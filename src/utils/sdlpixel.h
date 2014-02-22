@@ -64,8 +64,9 @@
 #ifndef UTILS_SDLPIXEL_H
 #define UTILS_SDLPIXEL_H
 
+#include "gui/color.h"
+
 #include "SDL.h"
-#include "gui/base/color.hpp"
 
 /**
   * Puts a pixel on an SDL_Surface.
@@ -75,7 +76,7 @@
   * @param color the color the pixel should be in.
   */
 inline void SDLputPixel(SDL_Surface* surface, int x, int y,
-                        const gcn::Color& color)
+                        const Color& color)
 {
     if (!surface)
         return;
@@ -175,7 +176,7 @@ inline unsigned short SDLAlpha16(const unsigned short src,
   * @param color the color the pixel should be in.
   */
 inline void SDLputPixelAlpha(SDL_Surface* surface, int x, int y,
-                             const gcn::Color& color)
+                             const Color& color)
 {
     const int bpp = surface->format->BytesPerPixel;
 

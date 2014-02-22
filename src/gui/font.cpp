@@ -99,8 +99,8 @@ int sdlTextChunkCnt = 0;
 #endif
 
 SDLTextChunkSmall::SDLTextChunkSmall(const std::string &text0,
-                                     const gcn::Color &color0,
-                                     const gcn::Color &color1) :
+                                     const Color &color0,
+                                     const Color &color1) :
     text(text0),
     color(color0),
     color2(color1)
@@ -125,7 +125,7 @@ bool SDLTextChunkSmall::operator<(const SDLTextChunkSmall &chunk) const
     if (chunk.text != text)
         return chunk.text > text;
 
-    const gcn::Color &c = chunk.color;
+    const Color &c = chunk.color;
     if (c.r != color.r)
         return c.r > color.r;
     if (c.g != color.g)
@@ -133,7 +133,7 @@ bool SDLTextChunkSmall::operator<(const SDLTextChunkSmall &chunk) const
     if (c.b != color.b)
         return c.b > color.b;
 
-    const gcn::Color &c2 = chunk.color2;
+    const Color &c2 = chunk.color2;
     if (c2.r != color2.r)
         return c2.r > color2.r;
     if (c2.g != color2.g)
@@ -147,8 +147,8 @@ bool SDLTextChunkSmall::operator<(const SDLTextChunkSmall &chunk) const
     return false;
 }
 
-SDLTextChunk::SDLTextChunk(const std::string &text0, const gcn::Color &color0,
-                           const gcn::Color &color1) :
+SDLTextChunk::SDLTextChunk(const std::string &text0, const Color &color0,
+                           const Color &color1) :
     img(nullptr),
     text(text0),
     color(color0),
@@ -499,8 +499,8 @@ void Font::drawString(Graphics *const graphics,
     if (!g)
         return;
 
-    gcn::Color col = g->getColor();
-    const gcn::Color &col2 = g->getColor2();
+    Color col = g->getColor();
+    const Color &col2 = g->getColor2();
     const float alpha = static_cast<float>(col.a) / 255.0F;
 
     /* The alpha value is ignored at string generation so avoid caching the

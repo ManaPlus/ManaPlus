@@ -542,7 +542,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
     // TRANSLATORS: hit or miss message in attacks
     const std::string damage = amount ? toString(amount) : type == FLEE ?
             _("dodge") : _("miss");
-    const gcn::Color *color;
+    const Color *color;
 
     if (gui)
         font = gui->getInfoParticleFont();

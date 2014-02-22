@@ -181,10 +181,10 @@ class ItemContainer final : public gcn::Widget,
         ItemPopup *mItemPopup;
         int *mShowMatrix;
         Skin *mSkin;
-        gcn::Color mEquipedColor;
-        gcn::Color mEquipedColor2;
-        gcn::Color mUnEquipedColor;
-        gcn::Color mUnEquipedColor2;
+        Color mEquipedColor;
+        Color mEquipedColor2;
+        Color mUnEquipedColor;
+        Color mUnEquipedColor2;
         typedef std::list<SelectionListener*> SelectionListenerList;
         typedef SelectionListenerList::iterator SelectionListenerIterator;
         SelectionListenerList mSelectionListeners;

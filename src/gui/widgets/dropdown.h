@@ -144,8 +144,8 @@ class DropDown final : public ActionListener,
         void drawButton(Graphics *graphics);
 
         PopupList *mPopup;
-        gcn::Color mShadowColor;
-        gcn::Color mHighlightColor;
+        Color mShadowColor;
+        Color mHighlightColor;
         int mPadding;
         int mImagePadding;
         int mSpacing;

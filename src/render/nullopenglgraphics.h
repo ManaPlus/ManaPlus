@@ -130,7 +130,7 @@ class NullOpenGLGraphics final : public Graphics
         bool mTexture;
 
         bool mIsByteColor;
-        gcn::Color mByteColor;
+        Color mByteColor;
         float mFloatColor;
         int mMaxVertices;
         bool mColorAlpha;

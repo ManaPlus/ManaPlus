@@ -121,7 +121,7 @@ void Viewport::draw(Graphics *graphics)
 
     if (!mMap || !player_node)
     {
-        graphics->setColor(gcn::Color(64, 64, 64));
+        graphics->setColor(Color(64, 64, 64));
         graphics->fillRectangle(
                 gcn::Rectangle(0, 0, getWidth(), getHeight()));
         BLOCK_END("Viewport::draw 1")
@@ -338,7 +338,7 @@ void Viewport::_drawDebugPath(Graphics *const graphics)
 }
 
 void Viewport::_drawPath(Graphics *const graphics, const Path &path,
-                         const gcn::Color &color) const
+                         const Color &color) const
 {
     graphics->setColor(color);
     Font *const font = getFont();

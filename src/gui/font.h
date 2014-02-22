@@ -67,7 +67,7 @@
 #ifndef GUI_FONT_H
 #define GUI_FONT_H
 
-#include "gui/base/color.hpp"
+#include "gui/color.h"
 
 #include <SDL_ttf.h>
 
@@ -84,8 +84,8 @@ const unsigned int CACHES_NUMBER = 256;
 class SDLTextChunkSmall
 {
     public:
-        SDLTextChunkSmall(const std::string &text0, const gcn::Color &color0,
-                          const gcn::Color &color1);
+        SDLTextChunkSmall(const std::string &text0, const Color &color0,
+                          const Color &color1);
 
         SDLTextChunkSmall(const SDLTextChunkSmall &old);
 
@@ -93,15 +93,15 @@ class SDLTextChunkSmall
         bool operator<(const SDLTextChunkSmall &chunk) const;
 
         std::string text;
-        gcn::Color color;
-        gcn::Color color2;
+        Color color;
+        Color color2;
 };
 
 class SDLTextChunk final
 {
     public:
-        SDLTextChunk(const std::string &text0, const gcn::Color &color0,
-                     const gcn::Color &color1);
+        SDLTextChunk(const std::string &text0, const Color &color0,
+                     const Color &color1);
 
         A_DELETE_COPY(SDLTextChunk)
 
@@ -113,8 +113,8 @@ class SDLTextChunk final
 
         Image *img;
         std::string text;
-        gcn::Color color;
-        gcn::Color color2;
+        Color color;
+        Color color2;
         SDLTextChunk *prev;
         SDLTextChunk *next;
 };

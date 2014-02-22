@@ -72,8 +72,8 @@ class Desktop final : public Container,
         Image *mWallpaper;
         Label *mVersionLabel;
         Skin *mSkin;
-        gcn::Color mBackgroundColor;
-        gcn::Color mBackgroundGrayColor;
+        Color mBackgroundColor;
+        Color mBackgroundGrayColor;
         bool mShowBackground;
 };
 

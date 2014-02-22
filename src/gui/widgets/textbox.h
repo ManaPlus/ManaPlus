@@ -61,10 +61,10 @@ class TextBox final : public gcn::TextBox
 
         void draw(Graphics* graphics) override final;
 
-        void setForegroundColor(const gcn::Color &color);
+        void setForegroundColor(const Color &color);
 
-        void setForegroundColorAll(const gcn::Color &color1,
-                                   const gcn::Color &color2);
+        void setForegroundColorAll(const Color &color1,
+                                   const Color &color2);
 
     private:
         int mMinWidth;

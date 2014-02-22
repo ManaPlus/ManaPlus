@@ -65,104 +65,101 @@
  * For comments regarding functions please see the header file.
  */
 
-#include "gui/base/color.hpp"
+#include "gui/color.h"
 
 #include "debug.h"
 
-namespace gcn
+Color::Color() :
+    r(0U),
+    g(0U),
+    b(0U),
+    a(255U)
 {
-    Color::Color() :
-        r(0U),
-        g(0U),
-        b(0U),
-        a(255U)
-    {
-    }
+}
 
-    Color::Color(const unsigned int color) :
-        r((color >> 16) & 0xFF),
-        g((color >>  8) & 0xFF),
-        b(color         & 0xFF),
-        a(255U)
-    {
-    }
+Color::Color(const unsigned int color) :
+    r((color >> 16) & 0xFF),
+    g((color >>  8) & 0xFF),
+    b(color         & 0xFF),
+    a(255U)
+{
+}
 
-    Color::Color(const unsigned int ar,
-                 const unsigned int ag,
-                 const unsigned int ab,
-                 const unsigned int aa) :
-        r(ar),
-        g(ag),
-        b(ab),
-        a(aa)
-    {
-    }
+Color::Color(const unsigned int ar,
+              const unsigned int ag,
+              const unsigned int ab,
+              const unsigned int aa) :
+    r(ar),
+    g(ag),
+    b(ab),
+    a(aa)
+{
+}
 
-    Color Color::operator+(const Color& color) const
-    {
-        Color result(r + color.r,
-                     g + color.g,
-                     b + color.b,
-                     255U);
+Color Color::operator+(const Color& color) const
+{
+    Color result(r + color.r,
+                  g + color.g,
+                  b + color.b,
+                  255U);
 
-        result.r = (result.r > 255U ? 255U : result.r);
-        result.g = (result.g > 255U ? 255U : result.g);
-        result.b = (result.b > 255U ? 255U : result.b);
+    result.r = (result.r > 255U ? 255U : result.r);
+    result.g = (result.g > 255U ? 255U : result.g);
+    result.b = (result.b > 255U ? 255U : result.b);
 
-        return result;
-    }
+    return result;
+}
 
-    Color Color::operator-(const Color& color) const
-    {
-        Color result(r - color.r,
-                     g - color.g,
-                     b - color.b,
-                     255U);
+Color Color::operator-(const Color& color) const
+{
+    Color result(r - color.r,
+                  g - color.g,
+                  b - color.b,
+                  255U);
 
-        result.r = (result.r > 255U ? 255U : result.r);
-        result.g = (result.g > 255U ? 255U : result.g);
-        result.b = (result.b > 255U ? 255U : result.b);
+    result.r = (result.r > 255U ? 255U : result.r);
+    result.g = (result.g > 255U ? 255U : result.g);
+    result.b = (result.b > 255U ? 255U : result.b);
 
-        return result;
-    }
+    return result;
+}
 
-    Color Color::operator*(const float value) const
-    {
-        Color result(static_cast<int>(static_cast<float>(r) * value),
-                     static_cast<int>(static_cast<float>(g) * value),
-                     static_cast<int>(static_cast<float>(b) * value),
-                     a);
+Color Color::operator*(const float value) const
+{
+    Color result(static_cast<int>(static_cast<float>(r) * value),
+                  static_cast<int>(static_cast<float>(g) * value),
+                  static_cast<int>(static_cast<float>(b) * value),
+                  a);
 
-        result.r = (result.r > 255U ? 255U : result.r);
-        result.g = (result.g > 255U ? 255U : result.g);
-        result.b = (result.b > 255U ? 255U : result.b);
+    result.r = (result.r > 255U ? 255U : result.r);
+    result.g = (result.g > 255U ? 255U : result.g);
+    result.b = (result.b > 255U ? 255U : result.b);
 
-        return result;
-    }
+    return result;
+}
 
-    bool Color::operator==(const Color& color) const
-    {
-        return r == color.r && g == color.g && b == color.b && a == color.a;
-    }
+bool Color::operator==(const Color& color) const
+{
+    return r == color.r && g == color.g && b == color.b && a == color.a;
+}
 
-    bool Color::operator!=(const Color& color) const
-    {
-        return !(r == color.r && g == color.g && b == color.b && a == color.a);
-    }
+bool Color::operator!=(const Color& color) const
+{
+    return !(r == color.r && g == color.g && b == color.b && a == color.a);
+}
 
-    std::ostream& operator<<(std::ostream& out,
-                             const Color& color)
-    {
-        out << "Color [r = "
-            << color.r
-            << ", g = "
-            << color.g
-            << ", b = "
-            << color.b
-            << ", a = "
-            << color.a
-            << "]";
+std::ostream& operator<<(std::ostream& out,
+                          const Color& color)
+{
+    out << "Color [r = "
+        << color.r
+        << ", g = "
+        << color.g
+        << ", b = "
+        << color.b
+        << ", a = "
+        << color.a
+        << "]";
 
-        return out;
-    }
-}  // namespace gcn
+    return out;
+}

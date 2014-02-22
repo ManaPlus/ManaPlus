@@ -450,21 +450,21 @@ class Theme final : public Palette, public ConfigListener
          *
          * @return the requested color
          */
-        inline static const gcn::Color &getThemeColor(const int type,
-                                                      const int alpha = 255)
-                                                      A_WARN_UNUSED
+        inline static const Color &getThemeColor(const int type,
+                                                 const int alpha = 255)
+                                                 A_WARN_UNUSED
         { return mInstance->getColor(type, alpha); }
 
-        static const gcn::Color &getThemeCharColor(const signed char c,
-                                                   bool &valid) A_WARN_UNUSED
+        static const Color &getThemeCharColor(const signed char c,
+                                              bool &valid) A_WARN_UNUSED
         { return mInstance->getCharColor(c, valid); }
 
         static int getThemeIdByChar(const signed char c,
                                     bool &valid) A_WARN_UNUSED
         { return mInstance->getIdByChar(c, valid); }
 
-        static gcn::Color getProgressColor(const int type,
-                                           const float progress) A_WARN_UNUSED;
+        static Color getProgressColor(const int type,
+                                      const float progress) A_WARN_UNUSED;
 
         /**
          * Loads a skin.

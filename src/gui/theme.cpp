@@ -259,7 +259,7 @@ void Theme::deleteInstance()
     mInstance = nullptr;
 }
 
-gcn::Color Theme::getProgressColor(const int type, const float progress)
+Color Theme::getProgressColor(const int type, const float progress)
 {
     int color[3] = {0, 0, 0};
 
@@ -273,7 +273,7 @@ gcn::Color Theme::getProgressColor(const int type, const float progress)
             logger->log("color not found: " + toString(type));
     }
 
-    return gcn::Color(color[0], color[1], color[2]);
+    return Color(color[0], color[1], color[2]);
 }
 
 Skin *Theme::load(const std::string &filename, const std::string &filename2,
@@ -972,7 +972,7 @@ static int readColorType(const std::string &type)
     return -1;
 }
 
-static gcn::Color readColor(const std::string &description)
+static Color readColor(const std::string &description)
 {
     const int size = static_cast<const int>(description.length());
     if (size < 7 || description[0] != '#')
@@ -1010,7 +1010,7 @@ static gcn::Color readColor(const std::string &description)
         v = (v << 4) | n;
     }
 
-    return gcn::Color(v);
+    return Color(v);
 }
 
 static Palette::GradientType readColorGradient(const std::string &grad)
@@ -1084,7 +1084,7 @@ void Theme::loadColors(std::string file)
 
     int type;
     std::string temp;
-    gcn::Color color;
+    Color color;
     GradientType grad;
 
     for_each_xml_child_node(paletteNode, root)

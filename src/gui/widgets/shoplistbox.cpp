@@ -106,8 +106,8 @@ void ShopListBox::draw(Graphics *graphics)
          ++i, y += mRowHeight)
     {
         bool needDraw(false);
-        gcn::Color temp;
-        gcn::Color* backgroundColor = &mBackgroundColor;
+        Color temp;
+        Color* backgroundColor = &mBackgroundColor;
 
         ShopItem *const item = mShopItems->at(i);
         if (item && ((mShopItems && mPlayerMoney < item->getPrice()

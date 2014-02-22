@@ -184,7 +184,7 @@ void ProgressBar::setProgressPalette(const int progressPalette)
     }
 }
 
-void ProgressBar::setBackgroundColor(const gcn::Color &color)
+void ProgressBar::setBackgroundColor(const Color &color)
 {
     mRedraw = true;
     mBackgroundColorToGo = color;
@@ -193,7 +193,7 @@ void ProgressBar::setBackgroundColor(const gcn::Color &color)
         mBackgroundColor = color;
 }
 
-void ProgressBar::setColor(const gcn::Color &color1, const gcn::Color &color2)
+void ProgressBar::setColor(const Color &color1, const Color &color2)
 {
     mForegroundColor = color1;
     mForegroundColor2 = color2;
@@ -269,7 +269,7 @@ void ProgressBar::render(Graphics *graphics)
     // The label
     if (!mText.empty())
     {
-        const gcn::Color oldColor = graphics->getColor();
+        const Color oldColor = graphics->getColor();
 
         Font *const font = gui->getFont();
         const int textX = mDimension.width / 2;

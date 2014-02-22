@@ -90,7 +90,7 @@ class SafeOpenGLGraphics final : public Graphics
 
         bool mTexture;
         bool mIsByteColor;
-        gcn::Color mByteColor;
+        Color mByteColor;
         float mFloatColor;
         bool mColorAlpha;
         FBOInfo mFbo;

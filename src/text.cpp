@@ -39,7 +39,7 @@ ImageRect Text::mBubble;
 
 Text::Text(const std::string &text, const int x, const int y,
            const Graphics::Alignment alignment,
-           const gcn::Color *const color, const bool isSpeech,
+           const Color *const color, const bool isSpeech,
            Font *const font) :
     mFont(font ? font : (gui ? gui->getFont() : nullptr)),
     mX(x),
@@ -112,7 +112,7 @@ Text::~Text()
     }
 }
 
-void Text::setColor(const gcn::Color *const color)
+void Text::setColor(const Color *const color)
 {
     mColor = color;
 }
@@ -152,7 +152,7 @@ void Text::draw(Graphics *const graphics, const int xOff, const int yOff)
 
 FlashText::FlashText(const std::string &text, const int x, const int y,
                      const Graphics::Alignment alignment,
-                     const gcn::Color *const color, Font *const font) :
+                     const Color *const color, Font *const font) :
     Text(text, x, y, alignment, color, false, font),
     mTime(0)
 {

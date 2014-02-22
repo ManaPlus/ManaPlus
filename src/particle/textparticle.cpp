@@ -26,13 +26,13 @@
 
 #include "gui/theme.h"
 
-#include "gui/base/color.hpp"
+#include "gui/color.h"
 #include "gui/font.h"
 
 #include "debug.h"
 
 TextParticle::TextParticle(const std::string &text,
-                           const gcn::Color *const color,
+                           const Color *const color,
                            Font *const font, const bool outline) :
     Particle(),
     mText(text),
@@ -74,7 +74,7 @@ void TextParticle::draw(Graphics *const graphics,
                 / static_cast<float>(mFadeIn);
     }
 
-    gcn::Color color = *mColor;
+    Color color = *mColor;
     color.a = static_cast<int>(alpha);
 
     graphics->setColor(color);

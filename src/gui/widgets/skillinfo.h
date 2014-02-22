@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_SKILLINFO_H
 #define GUI_WIDGETS_SKILLINFO_H
 
-#include "gui/base/color.hpp"
+#include "gui/color.h"
 
 #include <vector>
 #include <map>
@@ -43,7 +43,7 @@ struct SkillInfo final
     std::string skillLevel;
     std::string skillExp;
     float progress;
-    gcn::Color color;
+    Color color;
     SkillDataMap dataMap;
     SkillModel *model;
     SkillData *data;

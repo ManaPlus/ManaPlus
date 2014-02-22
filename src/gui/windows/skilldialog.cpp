@@ -231,8 +231,8 @@ class SkillListBox final : public ListBox
     private:
         SkillModel *mModel;
         TextPopup *mPopup;
-        gcn::Color mTextColor;
-        gcn::Color mTextColor2;
+        Color mTextColor;
+        Color mTextColor2;
         int mTextPadding;
         int mSpacing;
         bool mSkillClicked;
