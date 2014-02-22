@@ -33,6 +33,7 @@
 #include "net/net.h"
 #include "gui/viewport.h"
 
+#include "gui/models/itemsmodel.h"
 #include "gui/models/listmodel.h"
 
 #include "gui/popups/itempopup.h"
@@ -51,55 +52,6 @@
 #include "utils/gettext.h"
 
 #include "debug.h"
-
-class ItemsModal final : public ListModel
-{
-public:
-    ItemsModal() :
-        mStrings()
-    {
-        const std::map<int, ItemInfo*> &items = ItemDB::getItemInfos();
-        std::list<std::string> tempStrings;
-
-        for (std::map<int, ItemInfo*>::const_iterator
-             i = items.begin(), i_end = items.end();
-             i != i_end; ++i)
-        {
-            if (i->first < 0)
-                continue;
-
-            const ItemInfo &info = *i->second;
-            const std::string name = info.getName();
-            if (name != "unnamed" && !info.getName().empty()
-                && info.getName() != "unnamed")
-            {
-                tempStrings.push_back(name);
-            }
-        }
-        tempStrings.sort();
-        FOR_EACH (std::list<std::string>::const_iterator, i, tempStrings)
-            mStrings.push_back(*i);
-    }
-
-    A_DELETE_COPY(ItemsModal)
-
-    ~ItemsModal()
-    { }
-
-    int getNumberOfElements() override final
-    {
-        return static_cast<int>(mStrings.size());
-    }
-
-    std::string getElementAt(int i) override final
-    {
-        if (i < 0 || i >= getNumberOfElements())
-            return "???";
-        return mStrings.at(i);
-    }
-private:
-    StringVect mStrings;
-};
 
 void ItemAmountWindow::finish(Item *const item, const int amount,
                               const int price, const Usage usage)
