@@ -27,6 +27,7 @@
 #include "gui/windows/okdialog.h"
 
 #include "gui/models/extendedlistmodel.h"
+#include "gui/models/fontsmodel.h"
 #include "gui/models/namesmodel.h"
 #include "gui/models/themesmodel.h"
 
@@ -54,17 +55,6 @@ const char* ACTION_NPC_FONT = "npc font";
 const char* ACTION_JAPAN_FONT = "japanese font";
 const char* ACTION_CHINA_FONT = "chinese font";
 const char* ACTION_INFO = "info";
-
-class FontsModel final : public NamesModel
-{
-public:
-    FontsModel() :
-        NamesModel()
-    { Theme::fillFontsList(mNames); }
-
-    ~FontsModel()
-    { }
-};
 
 const int maxFontSizes = 16;
 

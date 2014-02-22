@@ -19,29 +19,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_MODELS_THEMESMODEL_H
-#define GUI_MODELS_THEMESMODEL_H
+#ifndef GUI_MODELS_FONTSMODEL_H
+#define GUI_MODELS_FONTSMODEL_H
 
 #include "gui/theme.h"
 
 #include "gui/models/namesmodel.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
-class ThemesModel final : public NamesModel
+class FontsModel final : public NamesModel
 {
     public:
-        ThemesModel() :
+        FontsModel() :
             NamesModel()
-        {
-            mNames.push_back(gettext("(default)"));
-            Theme::fillSkinsList(mNames);
-        }
+        { Theme::fillFontsList(mNames); }
 
-        ~ThemesModel()
+        ~FontsModel()
         { }
 };
 
-#endif  // GUI_MODELS_THEMESMODEL_H
+#endif  // GUI_MODELS_FONTSMODEL_H
