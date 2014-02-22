@@ -26,6 +26,7 @@
 
 #include "being/localplayer.h"
 
+#include "gui/models/ignorechoiceslistmodel.h"
 #include "gui/models/playerrelationlistmodel.h"
 
 #include "gui/widgets/button.h"
@@ -176,31 +177,6 @@ protected:
     StringVect *mPlayers;
     std::vector<Widget *> mWidgets;
     PlayerRelationListModel *mListModel;
-};
-
-/**
- * Class for choosing one of the various `what to do when ignoring a player' options
- */
-class IgnoreChoicesListModel final : public ListModel
-{
-public:
-    ~IgnoreChoicesListModel()
-    { }
-
-    int getNumberOfElements() override final
-    {
-        return static_cast<int>(player_relations.getPlayerIgnoreStrategies()
-                                ->size());
-    }
-
-    std::string getElementAt(int i) override final
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return "???";
-
-        return (*player_relations.getPlayerIgnoreStrategies())
-            [i]->mDescription;
-    }
 };
 
 static const std::string ACTION_DELETE("delete");
