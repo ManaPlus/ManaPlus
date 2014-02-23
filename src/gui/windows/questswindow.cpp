@@ -30,6 +30,7 @@
 #include "gui/gui.h"
 
 #include "gui/models/extendednamesmodel.h"
+#include "gui/models/questsmodel.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
@@ -87,20 +88,6 @@ struct QuestItem final
     std::vector<QuestItemText> texts;
     int completeFlag;
     bool broken;
-};
-
-class QuestsModel final : public ExtendedNamesModel
-{
-    public:
-        QuestsModel() :
-            ExtendedNamesModel()
-        {
-        }
-
-        A_DELETE_COPY(QuestsModel)
-
-        ~QuestsModel()
-        { }
 };
 
 struct QuestEffect final
