@@ -203,6 +203,7 @@ manaplus_SOURCES += events/actionevent.h \
 
 manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/avatarlistbox.h \
+	      gui/models/colorlistmodel.h \
 	      gui/widgets/tabs/battletab.cpp \
 	      gui/widgets/tabs/battletab.h \
 	      gui/widgets/browserbox.cpp \

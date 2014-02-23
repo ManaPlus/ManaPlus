@@ -43,6 +43,8 @@
 #include "gui/gui.h"
 #include "gui/viewport.h"
 
+#include "gui/models/colorlistmodel.h"
+
 #include "gui/windows/emotewindow.h"
 #include "gui/windows/setupwindow.h"
 #include "gui/widgets/tabbedarea.h"
@@ -142,58 +144,6 @@ class ChatInput final : public TextField
     private:
         ChatWindow *mWindow;
         bool mFocusGaining;
-};
-
-const char *COLOR_NAME[14] =
-{
-    // TRANSLATORS: chat color
-    N_("default"),
-    // TRANSLATORS: chat color
-    N_("black"),
-    // TRANSLATORS: chat color
-    N_("red"),
-    // TRANSLATORS: chat color
-    N_("green"),
-    // TRANSLATORS: chat color
-    N_("blue"),
-    // TRANSLATORS: chat color
-    N_("gold"),
-    // TRANSLATORS: chat color
-    N_("yellow"),
-    // TRANSLATORS: chat color
-    N_("pink"),
-    // TRANSLATORS: chat color
-    N_("purple"),
-    // TRANSLATORS: chat color
-    N_("grey"),
-    // TRANSLATORS: chat color
-    N_("brown"),
-    // TRANSLATORS: chat color
-    N_("rainbow 1"),
-    // TRANSLATORS: chat color
-    N_("rainbow 2"),
-    // TRANSLATORS: chat color
-    N_("rainbow 3"),
-};
-
-
-class ColorListModel final : public ListModel
-{
-public:
-    ~ColorListModel()
-    { }
-
-    int getNumberOfElements()
-    {
-        return 14;
-    }
-
-    std::string getElementAt(int i)
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return "???";
-        return gettext(COLOR_NAME[i]);
-    }
 };
 
 static const char *const ACTION_COLOR_PICKER = "color picker";
