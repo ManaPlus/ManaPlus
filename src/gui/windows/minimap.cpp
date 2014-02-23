@@ -284,7 +284,7 @@ void Minimap::draw(Graphics *graphics)
                 mMapOriginY = 0;
         }
 
-        graphics->drawImage2(mMapImage, mMapOriginX, mMapOriginY);
+        graphics->drawImage(mMapImage, mMapOriginX, mMapOriginY);
     }
 
     const ActorSprites &actors = actorManager->getAll();

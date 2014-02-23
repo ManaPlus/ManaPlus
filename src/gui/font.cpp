@@ -522,7 +522,7 @@ void Font::drawString(Graphics *const graphics,
         if (image)
         {
             image->setAlpha(alpha);
-            g->drawImage2(image, x, y);
+            g->drawImage(image, x, y);
         }
     }
     else
@@ -544,7 +544,7 @@ void Font::drawString(Graphics *const graphics,
 
         const Image *const image = chunk2->img;
         if (image)
-            g->drawImage2(image, x, y);
+            g->drawImage(image, x, y);
     }
     BLOCK_END("Font::drawString")
 }

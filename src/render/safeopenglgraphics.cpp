@@ -142,7 +142,7 @@ static inline void drawRescaledQuad(const Image *const image,
     }
 }
 
-bool SafeOpenGLGraphics::drawImage2(const Image *const image,
+bool SafeOpenGLGraphics::drawImage(const Image *const image,
                                     int dstX, int dstY)
 {
     return drawImageInline(image, dstX, dstY);
@@ -151,7 +151,7 @@ bool SafeOpenGLGraphics::drawImage2(const Image *const image,
 bool SafeOpenGLGraphics::drawImageInline(const Image *const image,
                                          int dstX, int dstY)
 {
-    FUNC_BLOCK("Graphics::drawImage2", 1)
+    FUNC_BLOCK("Graphics::drawImage", 1)
     if (!image)
         return false;
 

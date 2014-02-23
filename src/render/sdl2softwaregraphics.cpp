@@ -109,7 +109,7 @@ bool SDL2SoftwareGraphics::drawRescaledImage(const Image *const image,
     return returnValue;
 }
 
-bool SDL2SoftwareGraphics::drawImage2(const Image *const image,
+bool SDL2SoftwareGraphics::drawImage(const Image *const image,
                                       int dstX, int dstY)
 {
     return drawImageInline(image, dstX, dstY);
@@ -118,7 +118,7 @@ bool SDL2SoftwareGraphics::drawImage2(const Image *const image,
 bool SDL2SoftwareGraphics::drawImageInline(const Image *const image,
                                            int dstX, int dstY)
 {
-    FUNC_BLOCK("Graphics::drawImage2", 1)
+    FUNC_BLOCK("Graphics::drawImage", 1)
     // Check that preconditions for blitting are met.
     if (!mSurface || !image || !image->mSDLSurface)
         return false;

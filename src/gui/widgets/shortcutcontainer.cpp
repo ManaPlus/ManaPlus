@@ -110,7 +110,7 @@ void ShortcutContainer::drawBackground(Graphics *g)
         {
             for (unsigned i = 0; i < mMaxItems; i ++)
             {
-                g->drawImage2(mBackgroundImg, (i % mGridWidth) * mBoxWidth,
+                g->drawImage(mBackgroundImg, (i % mGridWidth) * mBoxWidth,
                     (i / mGridWidth) * mBoxHeight);
             }
         }

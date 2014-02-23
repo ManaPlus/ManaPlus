@@ -103,6 +103,6 @@ void ImageParticle::draw(Graphics *const graphics,
     }
 
     mImage->setAlpha(alphafactor);
-    graphics->drawImage2(mImage, screenX, screenY);
+    graphics->drawImage(mImage, screenX, screenY);
     return;
 }

@@ -133,7 +133,7 @@ void SpellShortcutContainer::draw(Graphics *graphics)
                 if (image)
                 {
                     image->setAlpha(1.0F);
-                    graphics->drawImage2(image, itemX, itemY);
+                    graphics->drawImage(image, itemX, itemY);
                 }
             }
 

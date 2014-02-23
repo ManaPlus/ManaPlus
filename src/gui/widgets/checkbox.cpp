@@ -167,7 +167,7 @@ void CheckBox::drawBox(Graphics *const graphics)
 
     if (box)
     {
-        graphics->drawImage2(box,
+        graphics->drawImage(box,
             mImagePadding,
             (getHeight() - mImageSize) / 2);
     }

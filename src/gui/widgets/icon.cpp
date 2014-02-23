@@ -74,7 +74,7 @@ void Icon::draw(Graphics *graphics)
     BLOCK_START("Icon::draw")
     if (mImage)
     {
-        graphics->drawImage2(mImage,
+        graphics->drawImage(mImage,
             (mDimension.width - mImage->mBounds.w) / 2,
             (mDimension.height - mImage->mBounds.h) / 2);
     }

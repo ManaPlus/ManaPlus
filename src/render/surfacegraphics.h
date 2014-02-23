@@ -179,8 +179,8 @@ class SurfaceGraphics final : public Graphics
                           const bool noFrame A_UNUSED) override final
         { return false; }
 
-        bool drawImage2(const Image *const image,
-                        int dstX, int dstY) override final;
+        bool drawImage(const Image *const image,
+                       int dstX, int dstY) override final;
 
         void drawImageCached(const Image *const image,
                              int x, int y) override final;

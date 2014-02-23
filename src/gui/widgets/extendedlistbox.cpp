@@ -147,7 +147,7 @@ void ExtendedListBox::draw(Graphics *graphics)
             const Image *const image = model->getImageAt(row1);
             if (image)
             {
-                graphics->drawImage2(image,
+                graphics->drawImage(image,
                     mImagePadding,
                     item.y + (height - image->getHeight()) / 2 + mPadding);
             }
@@ -182,7 +182,7 @@ void ExtendedListBox::draw(Graphics *graphics)
             const Image *const image = model->getImageAt(row1);
             if (image)
             {
-                graphics->drawImage2(image,
+                graphics->drawImage(image,
                     mImagePadding,
                     item.y + (height - image->getHeight()) / 2 + mPadding);
             }

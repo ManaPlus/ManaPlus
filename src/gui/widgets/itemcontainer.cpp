@@ -276,16 +276,16 @@ void ItemContainer::draw(Graphics *graphics)
                 if (mShowMatrix[itemIndex] == mSelectedIndex)
                 {
                     if (mSelImg)
-                        graphics->drawImage2(mSelImg, itemX, itemY);
+                        graphics->drawImage(mSelImg, itemX, itemY);
                 }
                 image->setAlpha(1.0F);  // ensure the image if fully drawn...
-                graphics->drawImage2(image,
+                graphics->drawImage(image,
                     itemX + mPaddingItemX,
                     itemY + mPaddingItemY);
                 if (mProtectedImg && PlayerInfo::isItemProtected(
                     item->getId()))
                 {
-                    graphics->drawImage2(mProtectedImg,
+                    graphics->drawImage(mProtectedImg,
                         itemX + mPaddingItemX,
                         itemY + mPaddingItemY);
                 }

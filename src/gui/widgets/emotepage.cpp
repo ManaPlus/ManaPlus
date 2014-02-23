@@ -101,7 +101,7 @@ void EmotePage::draw(Graphics *graphics)
             const Image *const image = *it;
             if (image)
             {
-                graphics->drawImage2(image, x, y);
+                graphics->drawImage(image, x, y);
                 x += emoteWidth;
                 if (x + emoteWidth > width)
                 {

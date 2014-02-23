@@ -409,7 +409,7 @@ void ScrollArea::drawButton(Graphics *const graphics,
     }
 
     if (buttons[dir][state])
-        graphics->drawImage2(buttons[dir][state], dim.x, dim.y);
+        graphics->drawImage(buttons[dir][state], dim.x, dim.y);
 }
 
 void ScrollArea::calcButton(Graphics *const graphics,

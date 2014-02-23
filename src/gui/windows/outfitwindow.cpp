@@ -347,7 +347,7 @@ void OutfitWindow::draw(Graphics *graphics)
                 const Image *const image = item->getImage();
                 if (image)
                 {
-                    graphics->drawImage2(image, itemX, itemY);
+                    graphics->drawImage(image, itemX, itemY);
                     foundItem = true;
                 }
             }
@@ -358,7 +358,7 @@ void OutfitWindow::draw(Graphics *graphics)
                 mItemColors[mCurrentOutfit][i]);
             if (image)
             {
-                graphics->drawImage2(image, itemX, itemY);
+                graphics->drawImage(image, itemX, itemY);
                 image->decRef();
             }
         }

@@ -123,7 +123,7 @@ void Desktop::draw(Graphics *graphics)
 
         if (imageHelper->useOpenGL() == RENDER_SOFTWARE)
         {
-            graphics->drawImage2(mWallpaper,
+            graphics->drawImage(mWallpaper,
                 (width - wallpWidth) / 2,
                 (height - wallpHeight) / 2);
         }

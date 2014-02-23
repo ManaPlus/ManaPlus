@@ -123,12 +123,12 @@ void CompoundSprite::draw(Graphics *const graphics,
 
     if (mAlpha == 1.0F && mImage)
     {
-        graphics->drawImage2(mImage, posX + mOffsetX, posY + mOffsetY);
+        graphics->drawImage(mImage, posX + mOffsetX, posY + mOffsetY);
     }
     else if (mAlpha && mAlphaImage)
     {
         mAlphaImage->setAlpha(mAlpha);
-        graphics->drawImage2(mAlphaImage,
+        graphics->drawImage(mAlphaImage,
             posX + mOffsetX, posY + mOffsetY);
     }
     else

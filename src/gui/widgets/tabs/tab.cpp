@@ -291,7 +291,7 @@ void Tab::draw(Graphics *graphics)
             if (skin1)
             {
                 const int padding = skin1->getPadding();
-                graphics->drawImage2(mImage, padding, padding);
+                graphics->drawImage(mImage, padding, padding);
             }
         }
     }

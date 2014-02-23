@@ -135,7 +135,7 @@ void AvatarListBox::draw(Graphics *graphics)
                 }
                 else
                 {
-                    graphics->drawImage2(icon, mImagePadding, y + mPadding);
+                    graphics->drawImage(icon, mImagePadding, y + mPadding);
                 }
             }
         }

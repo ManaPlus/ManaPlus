@@ -377,8 +377,8 @@ class Graphics
          * @return <code>true</code> if the image was blitted properly
          *         <code>false</code> otherwise.
          */
-        virtual bool drawImage2(const Image *const image,
-                                int dstX, int dstY) = 0;
+        virtual bool drawImage(const Image *const image,
+                               int dstX, int dstY) = 0;
 
         virtual void drawImageCached(const Image *const image,
                                      int srcX, int srcY) = 0;

@@ -507,9 +507,9 @@ void Button::draw(Graphics *graphics)
         if (mImages)
         {
             if (isPressed())
-                graphics->drawImage2(mImages[mode], imageX + 1, imageY + 1);
+                graphics->drawImage(mImages[mode], imageX + 1, imageY + 1);
             else
-                graphics->drawImage2(mImages[mode], imageX, imageY);
+                graphics->drawImage(mImages[mode], imageX, imageY);
         }
     }
 

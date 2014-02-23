@@ -251,7 +251,7 @@ void DropDown::draw(Graphics* graphics)
             }
             else
             {
-                graphics->drawImage2(image,
+                graphics->drawImage(image,
                     mImagePadding,
                     (mDimension.height - image->getHeight()) / 2 + mPadding);
                 font->drawString(graphics, model->getElementAt(sel),
@@ -305,7 +305,7 @@ void DropDown::drawButton(Graphics *graphics)
     Image *image = buttons[mDroppedDown][mPushed];
     if (image)
     {
-        graphics->drawImage2(image,
+        graphics->drawImage(image,
             mDimension.width - image->getWidth() - mImagePadding,
             (height - image->getHeight()) / 2);
     }

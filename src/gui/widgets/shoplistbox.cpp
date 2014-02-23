@@ -154,7 +154,7 @@ void ShopListBox::draw(Graphics *graphics)
             if (icon)
             {
                 icon->setAlpha(1.0F);
-                graphics->drawImage2(icon, mPadding, y + mPadding);
+                graphics->drawImage(icon, mPadding, y + mPadding);
             }
         }
         if (mSelected == i)

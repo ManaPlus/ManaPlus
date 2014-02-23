@@ -78,8 +78,9 @@ void SimpleAnimation::draw(Graphics *const graphics,
     if (!mCurrentFrame || !mCurrentFrame->image)
         return;
 
-    graphics->drawImage2(mCurrentFrame->image,
-        posX + mCurrentFrame->offsetX, posY + mCurrentFrame->offsetY);
+    graphics->drawImage(mCurrentFrame->image,
+        posX + mCurrentFrame->offsetX,
+        posY + mCurrentFrame->offsetY);
 }
 
 void SimpleAnimation::reset()

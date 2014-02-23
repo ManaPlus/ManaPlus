@@ -451,7 +451,7 @@ void Gui::draw()
         {
             const int posX = mouseX - (image->mBounds.w / 2);
             const int posY = mouseY - (image->mBounds.h / 2);
-            mGraphics->drawImage2(image, posX, posY);
+            mGraphics->drawImage(image, posX, posY);
         }
         if (mGuiFont)
         {
@@ -469,7 +469,7 @@ void Gui::draw()
         if (mouseCursor)
         {
             mouseCursor->setAlpha(mMouseCursorAlpha);
-            mGraphics->drawImage2(mouseCursor, mouseX - 15, mouseY - 17);
+            mGraphics->drawImage(mouseCursor, mouseX - 15, mouseY - 17);
         }
     }
 

@@ -94,7 +94,7 @@ int TestLauncher::testBackend() const
 
     for (int f = 0; f < cnt; f ++)
     {
-        mainGraphics->drawImage2(img, cnt * 7, cnt * 5);
+        mainGraphics->drawImage(img, cnt * 7, cnt * 5);
         mainGraphics->updateScreen();
     }
 
@@ -152,11 +152,11 @@ int TestLauncher::testFps()
         {
             for (int y = 0; y < 600; y += 50)
             {
-                mainGraphics->drawImage2(img[idx], x, y);
+                mainGraphics->drawImage(img[idx], x, y);
                 idx ++;
                 if (idx > sz)
                     idx = 0;
-                mainGraphics->drawImage2(img[idx], x, y);
+                mainGraphics->drawImage(img[idx], x, y);
                 idx ++;
                 if (idx > sz)
                     idx = 0;
@@ -211,9 +211,9 @@ int TestLauncher::testInternal()
         {
             for (int y = 0; y < 600; y += 25)
             {
-                mainGraphics->drawImage2(img[idx], x, y);
-                mainGraphics->drawImage2(img[idx], x + 1, y);
-                mainGraphics->drawImage2(img[idx], x, y + 5);
+                mainGraphics->drawImage(img[idx], x, y);
+                mainGraphics->drawImage(img[idx], x + 1, y);
+                mainGraphics->drawImage(img[idx], x, y + 5);
 
                 idx ++;
                 if (idx > 3)

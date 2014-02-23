@@ -143,7 +143,7 @@ void DropShortcutContainer::draw(Graphics *graphics)
                     caption = "Eq.";
 
                 image->setAlpha(1.0F);
-                graphics->drawImage2(image, itemX, itemY);
+                graphics->drawImage(image, itemX, itemY);
                 if (item->isEquipped())
                     graphics->setColorAll(mEquipedColor, mEquipedColor2);
                 else

@@ -174,7 +174,7 @@ void ItemShortcutContainer::draw(Graphics *graphics)
                     caption = "Eq.";
 
                     image->setAlpha(1.0F);
-                    graphics->drawImage2(image, itemX, itemY);
+                    graphics->drawImage(image, itemX, itemY);
                     if (item->isEquipped())
                     {
                         graphics->setColorAll(mEquipedColor, mEquipedColor2);
@@ -203,7 +203,7 @@ void ItemShortcutContainer::draw(Graphics *graphics)
                     if (image)
                     {
                         image->setAlpha(1.0F);
-                        graphics->drawImage2(image, itemX, itemY);
+                        graphics->drawImage(image, itemX, itemY);
                     }
                 }
 
@@ -222,7 +222,7 @@ void ItemShortcutContainer::draw(Graphics *graphics)
                 if (image)
                 {
                     image->setAlpha(1.0F);
-                    graphics->drawImage2(image, itemX, itemY);
+                    graphics->drawImage(image, itemX, itemY);
                 }
 
                 font->drawString(graphics, skill->data->shortName, itemX + 2,

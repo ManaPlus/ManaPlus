@@ -334,18 +334,18 @@ void Window::draw(Graphics *graphics)
             const Image *const button = mSkin->getCloseImage(
                 mResizeHandles == CLOSE);
             if (button)
-                graphics->drawImage2(button, mCloseRect.x, mCloseRect.y);
+                graphics->drawImage(button, mCloseRect.x, mCloseRect.y);
         }
         // Draw Sticky Button
         if (mStickyButton)
         {
             const Image *const button = mSkin->getStickyImage(mSticky);
             if (button)
-                graphics->drawImage2(button, mStickyRect.x, mStickyRect.y);
+                graphics->drawImage(button, mStickyRect.x, mStickyRect.y);
         }
 
         if (mGrip)
-            graphics->drawImage2(mGrip, mGripRect.x, mGripRect.y);
+            graphics->drawImage(mGrip, mGripRect.x, mGripRect.y);
     }
 
     // Draw title
