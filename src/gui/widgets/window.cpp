@@ -20,6 +20,49 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*      _______   __   __   __   ______   __   __   _______   __   __
+ *     / _____/\ / /\ / /\ / /\ / ____/\ / /\ / /\ / ___  /\ /  |\/ /\
+ *    / /\____\// / // / // / // /\___\// /_// / // /\_/ / // , |/ / /
+ *   / / /__   / / // / // / // / /    / ___  / // ___  / // /| ' / /
+ *  / /_// /\ / /_// / // / // /_/_   / / // / // /\_/ / // / |  / /
+ * /______/ //______/ //_/ //_____/\ /_/ //_/ //_/ //_/ //_/ /|_/ /
+ * \______\/ \______\/ \_\/ \_____\/ \_\/ \_\/ \_\/ \_\/ \_\/ \_\/
+ *
+ * Copyright (c) 2004 - 2008 Olof Naessén and Per Larsson
+ *
+ *
+ * Per Larsson a.k.a finalman
+ * Olof Naessén a.k.a jansem/yakslem
+ *
+ * Visit: http://guichan.sourceforge.net
+ *
+ * License: (BSD)
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ * 3. Neither the name of Guichan nor the names of its contributors may
+ *    be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
 #include "gui/widgets/window.h"
 
 #include "client.h"
@@ -48,8 +91,18 @@ int Window::mouseResize = 0;
 
 Window::Window(const std::string &caption, const bool modal,
                Window *const parent, std::string skin) :
-    gcn::Window(nullptr, caption),
+    gcn::Container(nullptr),
+    MouseListener(),
     WidgetListener(),
+    mCaption(caption),
+    mAlignment(Graphics::CENTER),
+    mPadding(2),
+    mTitleBarHeight(16),
+    mMovable(true),
+    mOpaque(true),
+    mDragOffsetX(0),
+    mDragOffsetY(0),
+    mMoved(false),
     mSkin(nullptr),
     mDefaultX(0),
     mDefaultY(0),
@@ -90,6 +143,9 @@ Window::Window(const std::string &caption, const bool modal,
     logger->log("Window::Window(\"%s\")", caption.c_str());
 
     windowInstances++;
+
+//    mFrameSize = 1;
+    addMouseListener(this);
 
     setFrameSize(0);
     setPadding(3);
@@ -608,18 +664,14 @@ void Window::setVisible(const bool visible, const bool forceSticky)
 
     // Check if the window is off screen...
     if (visible)
-    {
         ensureOnScreen();
-    }
     else
-    {
         mResizeHandles = 0;
-    }
 
     if (mStickyButtonLock)
-        gcn::Window::setVisible(visible);
+        gcn::Container::setVisible(visible);
     else
-        gcn::Window::setVisible((!forceSticky && mSticky) || visible);
+        gcn::Container::setVisible((!forceSticky && mSticky) || visible);
     if (visible)
     {
         if (mPlayVisibleSound)
@@ -655,8 +707,15 @@ void Window::scheduleDelete()
 
 void Window::mousePressed(MouseEvent &event)
 {
-    // Let Guichan move window to top and figure out title bar drag
-    gcn::Window::mousePressed(event);
+    if (event.getSource() == this)
+    {
+        if (getParent())
+            getParent()->moveToTop(this);
+
+        mDragOffsetX = event.getX();
+        mDragOffsetY = event.getY();
+        mMoved = event.getY() <= static_cast<int>(mTitleBarHeight);
+    }
 
     if (event.getButton() == MouseEvent::LEFT)
     {
@@ -705,7 +764,6 @@ void Window::mouseReleased(MouseEvent &event A_UNUSED)
             gui->setCursorType(Cursor::CURSOR_POINTER);
     }
 
-    // This should be the responsibility of Guichan (and is from 0.8.0 on)
     mMoved = false;
 }
 
@@ -771,8 +829,16 @@ void Window::mouseDragged(MouseEvent &event)
 {
     if (canMove())
     {
-        // Let Guichan handle title bar drag
-        gcn::Window::mouseDragged(event);
+        if (!event.isConsumed() && event.getSource() == this)
+        {
+            if (isMovable() && mMoved)
+            {
+                setPosition(event.getX() - mDragOffsetX + getX(),
+                    event.getY() - mDragOffsetY + getY());
+            }
+
+            event.consume();
+        }
     }
     else
     {
@@ -1253,6 +1319,37 @@ bool Window::getOptionBool(const std::string &name, const bool def) const
     if (mSkin)
         return mSkin->getOption(name, def) != 0;
     return def;
+}
+
+Rectangle Window::getChildrenArea()
+{
+    return Rectangle(mPadding,
+        mTitleBarHeight,
+        mDimension.width - mPadding * 2,
+        mDimension.height - mPadding - mTitleBarHeight);
+}
+
+void Window::resizeToContent()
+{
+    int w = 0;
+    int h = 0;
+    for (WidgetListConstIterator it = mWidgets.begin();
+          it != mWidgets.end(); ++ it)
+    {
+        const Widget *const widget = *it;
+        const int x = widget->getX();
+        const int y = widget->getY();
+        const int width = widget->getWidth();
+        const int height = widget->getHeight();
+        if (x + width > w)
+            w = x + width;
+
+        if (y + height > h)
+            h = y + height;
+    }
+
+    setSize(w + 2 * mPadding,
+        h + mPadding + mTitleBarHeight);
 }
 
 #ifdef USE_PROFILER

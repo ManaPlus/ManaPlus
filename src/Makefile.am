@@ -182,7 +182,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/widgets/slider.hpp \
 	      gui/base/widgets/textbox.hpp \
 	      gui/base/widgets/textfield.hpp \
-	      gui/base/widgets/window.hpp \
 	      gui/base/basiccontainer.cpp \
 	      gui/cliprectangle.cpp \
 	      gui/color.cpp \
@@ -199,8 +198,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/widgets/scrollarea.cpp \
 	      gui/base/widgets/slider.cpp \
 	      gui/base/widgets/textbox.cpp \
-	      gui/base/widgets/textfield.cpp \
-	      gui/base/widgets/window.cpp
+	      gui/base/widgets/textfield.cpp
 
 manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/avatarlistbox.h \
