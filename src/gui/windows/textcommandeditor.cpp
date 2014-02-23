@@ -29,6 +29,7 @@
 
 #include "gui/models/iconsmodel.h"
 #include "gui/models/listmodel.h"
+#include "gui/models/targettypemodel.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/dropdown.h"
@@ -45,16 +46,6 @@
 
 #include "debug.h"
 
-const char *TARGET_TYPE_TEXT[3] =
-{
-    // TRANSLATORS: target type
-    N_("No Target"),
-    // TRANSLATORS: target type
-    N_("Allow Target"),
-    // TRANSLATORS: target type
-    N_("Need Target"),
-};
-
 const char *MAGIC_SCHOOL_TEXT[6] =
 {
     // TRANSLATORS: magic school
@@ -69,25 +60,6 @@ const char *MAGIC_SCHOOL_TEXT[6] =
     N_("Nature Magic"),
     // TRANSLATORS: magic school
     N_("Astral Magic")
-};
-
-class TargetTypeModel final : public ListModel
-{
-public:
-    ~TargetTypeModel()
-    { }
-
-    int getNumberOfElements() override final
-    {
-        return 3;
-    }
-
-    std::string getElementAt(int i) override final
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return "???";
-        return TARGET_TYPE_TEXT[i];
-    }
 };
 
 class MagicSchoolModel final : public ListModel
