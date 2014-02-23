@@ -29,6 +29,7 @@
 #include "gui/windows/tradewindow.h"
 
 #include "gui/models/shopitems.h"
+#include "gui/models/sortlistmodelbuy.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/dropdown.h"
@@ -51,41 +52,6 @@
 #include <algorithm>
 
 #include "debug.h"
-
-static const char *const SORT_NAME_BUY[7] =
-{
-    // TRANSLATORS: buy dialog sort type.
-    N_("unsorted"),
-    // TRANSLATORS: buy dialog sort type.
-    N_("by price"),
-    // TRANSLATORS: buy dialog sort type.
-    N_("by name"),
-    // TRANSLATORS: buy dialog sort type.
-    N_("by id"),
-    // TRANSLATORS: buy dialog sort type.
-    N_("by weight"),
-    // TRANSLATORS: buy dialog sort type.
-    N_("by amount"),
-    // TRANSLATORS: buy dialog sort type.
-    N_("by type")
-};
-
-class SortListModelBuy final : public ListModel
-{
-public:
-    ~SortListModelBuy()
-    { }
-
-    int getNumberOfElements()
-    { return 7; }
-
-    std::string getElementAt(int i)
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return "???";
-        return gettext(SORT_NAME_BUY[i]);
-    }
-};
 
 class SortItemPriceFunctor final
 {

@@ -222,6 +222,7 @@ SET(SRCS
     gui/widgets/skillinfo.h
     gui/models/skillmodel.cpp
     gui/models/skillmodel.h
+    gui/models/sortlistmodelbuy.h
     gui/models/soundsmodel.h
     gui/widgets/slider.cpp
     gui/widgets/slider.h
