@@ -107,6 +107,7 @@ MARK_AS_ADVANCED(SDL_LIBRARY)
 SET(SRCS
     gui/widgets/avatarlistbox.cpp
     gui/widgets/avatarlistbox.h
+    gui/models/beingslistmodel.h
     gui/models/colorlistmodel.h
     gui/widgets/tabs/battletab.cpp
     gui/widgets/tabs/battletab.h

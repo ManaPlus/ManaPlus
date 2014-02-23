@@ -33,6 +33,8 @@
 
 #include "input/keyboardconfig.h"
 
+#include "gui/models/beingslistmodel.h"
+
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/okdialog.h"
 #include "gui/windows/setupwindow.h"
@@ -503,41 +505,6 @@ private:
     Party *mParty;
 };
 
-class BeingsListModal final : public AvatarListModel
-{
-public:
-    BeingsListModal() :
-        AvatarListModel(),
-        mMembers()
-    {
-    }
-
-    A_DELETE_COPY(BeingsListModal)
-
-    ~BeingsListModal()
-    {
-        delete_all(mMembers);
-        mMembers.clear();
-    }
-
-    std::vector<Avatar*> *getMembers()
-    {
-        return &mMembers;
-    }
-
-    Avatar *getAvatarAt(int index) override final
-    {
-        return mMembers[index];
-    }
-
-    int getNumberOfElements() override final
-    {
-        return static_cast<int>(mMembers.size());
-    }
-
-    std::vector<Avatar*> mMembers;
-};
-
 class SocialPlayersTab final : public SocialTab
 {
 public:
@@ -545,7 +512,7 @@ public:
                      std::string name,
                      const bool showBackground) :
         SocialTab(widget),
-        mBeings(new BeingsListModal)
+        mBeings(new BeingsListModel)
     {
         mList = new AvatarListBox(this, mBeings);
         mList->postInit();
@@ -701,7 +668,7 @@ public:
     }
 
 private:
-    BeingsListModal *mBeings;
+    BeingsListModel *mBeings;
 };
 
 
@@ -711,7 +678,7 @@ public:
     SocialNavigationTab(const Widget2 *const widget,
                         const bool showBackground) :
         SocialTab(widget),
-        mBeings(new BeingsListModal)
+        mBeings(new BeingsListModel)
     {
         mList = new AvatarListBox(this, mBeings);
         mList->postInit();
@@ -978,7 +945,7 @@ public:
     }
 
 private:
-    BeingsListModal *mBeings;
+    BeingsListModel *mBeings;
 };
 
 
@@ -1040,7 +1007,7 @@ public:
     SocialAttackTab(const Widget2 *const widget,
                     const bool showBackground) :
         SocialTab(widget),
-        mBeings(new BeingsListModal)
+        mBeings(new BeingsListModel)
     {
         mList = new AvatarListBox(this, mBeings);
         mList->postInit();
@@ -1078,7 +1045,7 @@ public:
     }
 
 private:
-    BeingsListModal *mBeings;
+    BeingsListModel *mBeings;
 };
 
 class SocialPickupTab final : public SocialTab
@@ -1087,7 +1054,7 @@ public:
     SocialPickupTab(const Widget2 *const widget,
                     const bool showBackground) :
         SocialTab(widget),
-        mBeings(new BeingsListModal)
+        mBeings(new BeingsListModel)
     {
         mList = new AvatarListBox(this, mBeings);
         mList->postInit();
@@ -1123,7 +1090,7 @@ public:
     }
 
 private:
-    BeingsListModal *mBeings;
+    BeingsListModel *mBeings;
 };
 
 
@@ -1134,7 +1101,7 @@ public:
                      std::string name,
                      const bool showBackground) :
         SocialTab(widget),
-        mBeings(new BeingsListModal)
+        mBeings(new BeingsListModel)
     {
         mList = new AvatarListBox(this, mBeings);
         mList->postInit();
@@ -1214,7 +1181,7 @@ public:
     }
 
 private:
-    BeingsListModal *mBeings;
+    BeingsListModel *mBeings;
 };
 
 
