@@ -27,6 +27,7 @@
 
 #include "input/keyboardconfig.h"
 
+#include "gui/models/iconsmodel.h"
 #include "gui/models/listmodel.h"
 
 #include "gui/widgets/button.h"
@@ -43,57 +44,6 @@
 #include "resources/db/itemdb.h"
 
 #include "debug.h"
-
-class IconsModal final : public ListModel
-{
-public:
-    IconsModal() :
-        mStrings()
-    {
-        const std::map<int, ItemInfo*> &items = ItemDB::getItemInfos();
-        std::list<std::string> tempStrings;
-
-        for (std::map<int, ItemInfo*>::const_iterator
-             i = items.begin(), i_end = items.end();
-             i != i_end; ++i)
-        {
-            if (i->first < 0)
-                continue;
-
-            const ItemInfo &info = (*i->second);
-            const std::string name = info.getName();
-            if (name != "unnamed" && !info.getName().empty()
-                && info.getName() != "unnamed")
-            {
-                tempStrings.push_back(name);
-            }
-        }
-        tempStrings.sort();
-        mStrings.push_back("");
-        FOR_EACH (std::list<std::string>::const_iterator, i, tempStrings)
-            mStrings.push_back(*i);
-    }
-
-    A_DELETE_COPY(IconsModal)
-
-    ~IconsModal()
-    { }
-
-    int getNumberOfElements() override final
-    {
-        return static_cast<int>(mStrings.size());
-    }
-
-    std::string getElementAt(int i) override final
-    {
-        if (i < 0 || i >= getNumberOfElements())
-            return "???";
-        return mStrings.at(i);
-    }
-private:
-    StringVect mStrings;
-};
-
 
 const char *TARGET_TYPE_TEXT[3] =
 {
@@ -182,10 +132,10 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor label
     mTypeLabel(new Label(this, _("Target Type:"))),
     mTypeDropDown(new DropDown(this, mTargetTypeModel)),
-    mIconsModal(new IconsModal),
+    mIconsModel(new IconsModel),
     // TRANSLATORS: command editor label
     mIconLabel(new Label(this, _("Icon:"))),
-    mIconDropDown(new DropDown(this, mIconsModal)),
+    mIconDropDown(new DropDown(this, mIconsModel)),
     // TRANSLATORS: command editor label
     mManaLabel(new Label(this, _("Mana:"))),
     mManaField(new IntTextField(this, 0)),
@@ -308,8 +258,8 @@ void TextCommandEditor::postInit()
 
 TextCommandEditor::~TextCommandEditor()
 {
-    delete mIconsModal;
-    mIconsModal = nullptr;
+    delete mIconsModel;
+    mIconsModel = nullptr;
     delete mTargetTypeModel;
     mTargetTypeModel = nullptr;
     delete mMagicSchoolModel;

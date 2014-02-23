@@ -29,7 +29,7 @@
 
 class Button;
 class DropDown;
-class IconsModal;
+class IconsModel;
 class IntTextField;
 class Label;
 class MagicSchoolModel;
@@ -83,7 +83,7 @@ class TextCommandEditor final : public Window,
         TargetTypeModel *mTargetTypeModel;
         Label *mTypeLabel;
         DropDown *mTypeDropDown;
-        IconsModal *mIconsModal;
+        IconsModel *mIconsModel;
         Label *mIconLabel;
         DropDown *mIconDropDown;
         Label *mManaLabel;

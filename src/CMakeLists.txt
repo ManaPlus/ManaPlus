@@ -142,6 +142,7 @@ SET(SRCS
     gui/models/extendednamesmodel.cpp
     gui/models/extendednamesmodel.h
     gui/models/fontsmodel.h
+    gui/models/iconsmodel.h
     gui/models/ignorechoiceslistmodel.h
     gui/widgets/flowcontainer.cpp
     gui/widgets/flowcontainer.h
