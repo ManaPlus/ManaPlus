@@ -26,6 +26,7 @@ class Button;
 class TextField;
 class DropDown;
 class ServerDialog;
+class TypeListModel;
 
 #include "gui/widgets/window.h"
 
@@ -35,40 +36,6 @@ class ServerDialog;
 #include "listeners/keylistener.h"
 
 #include "gui/models/listmodel.h"
-
-/**
- * Server Type List Model
- */
-class TypeListModel : public ListModel
-{
-    public:
-        TypeListModel()
-        { }
-
-        /**
-         * Used to get number of line in the list
-         */
-        int getNumberOfElements() override final A_WARN_UNUSED
-#ifdef EATHENA_SUPPORT
-#ifdef MANASERV_SUPPORT
-        { return 4; }
-#else
-        { return 3; }
-#endif
-#else
-#ifdef MANASERV_SUPPORT
-        { return 3; }
-#else
-        { return 2; }
-#endif
-#endif
-
-        /**
-         * Used to get an element from the list
-         */
-        std::string getElementAt(int elementIndex)
-                                 override final A_WARN_UNUSED;
-};
 
 /**
  * The custom server addition dialog.

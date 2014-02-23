@@ -235,6 +235,7 @@ SET(SRCS
     gui/models/tablemodel.h
     gui/models/touchactionmodel.cpp
     gui/models/touchactionmodel.h
+    gui/models/typelistmodel.h
     gui/models/updatetypemodel.h
     gui/models/updatelistmodel.h
     gui/models/worldlistmodel.h

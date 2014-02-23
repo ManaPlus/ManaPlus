@@ -25,6 +25,8 @@
 
 #include "input/keydata.h"
 
+#include "gui/models/typelistmodel.h"
+
 #include "gui/windows/okdialog.h"
 #include "gui/windows/serverdialog.h"
 
@@ -35,29 +37,6 @@
 #include "gui/widgets/textfield.h"
 
 #include "utils/gettext.h"
-
-std::string TypeListModel::getElementAt(int elementIndex)
-{
-    if (elementIndex == 0)
-        return "TmwAthena";
-    else if (elementIndex == 1)
-        return "Evol";
-#ifdef EATHENA_SUPPORT
-    else if (elementIndex == 2)
-        return "eAthena";
-#ifdef MANASERV_SUPPORT
-    else if (elementIndex == 3)
-        return "ManaServ";
-#endif
-#else
-#ifdef MANASERV_SUPPORT
-    else if (elementIndex == 2)
-        return "ManaServ";
-#endif
-#endif
-    else
-        return "Unknown";
-}
 
 EditServerDialog::EditServerDialog(ServerDialog *const parent,
                                    ServerInfo server,
