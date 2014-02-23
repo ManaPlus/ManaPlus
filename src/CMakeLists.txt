@@ -107,6 +107,7 @@ MARK_AS_ADVANCED(SDL_LIBRARY)
 SET(SRCS
     gui/widgets/avatarlistbox.cpp
     gui/widgets/avatarlistbox.h
+    gui/models/avatarlistmodel.h
     gui/models/beingslistmodel.h
     gui/models/colorlistmodel.h
     gui/widgets/tabs/battletab.cpp
@@ -146,6 +147,7 @@ SET(SRCS
     gui/models/fontsmodel.h
     gui/models/iconsmodel.h
     gui/models/ignorechoiceslistmodel.h
+    gui/models/itemsmodel.h
     gui/widgets/flowcontainer.cpp
     gui/widgets/flowcontainer.h
     gui/widgets/tabs/gmtab.cpp
@@ -184,6 +186,8 @@ SET(SRCS
     gui/models/namesmodel.cpp
     gui/models/namesmodel.h
     gui/models/playerrelationlistmodel.h
+    gui/models/questsmodel.h
+    gui/models/serverslistmodel.h
     gui/widgets/passwordfield.cpp
     gui/widgets/passwordfield.h
     gui/widgets/playerbox.cpp
@@ -223,6 +227,7 @@ SET(SRCS
     gui/models/skillmodel.cpp
     gui/models/skillmodel.h
     gui/models/sortlistmodelbuy.h
+    gui/models/sortlistmodelinv.h
     gui/models/soundsmodel.h
     gui/widgets/slider.cpp
     gui/widgets/slider.h
@@ -236,6 +241,7 @@ SET(SRCS
     gui/widgets/guitable.h
     gui/models/tablemodel.cpp
     gui/models/tablemodel.h
+    gui/models/targettypemodel.h
     gui/models/touchactionmodel.cpp
     gui/models/touchactionmodel.h
     gui/models/typelistmodel.h
@@ -792,6 +798,7 @@ SET(SRCS
     events/keyevent.h
     listeners/keylistener.h
     gui/models/listmodel.h
+    gui/models/magicschoolmodel.h
     events/mouseevent.h
     listeners/mouselistener.h
     gui/rectangle.h
