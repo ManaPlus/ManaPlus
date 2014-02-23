@@ -44,47 +44,7 @@ class CheckBox;
 class Label;
 class ListBox;
 class ServerDialog;
-
-/**
- * Server and Port List Model
- */
-class ServersListModel final : public ListModel
-{
-    public:
-        typedef std::pair<int, std::string> VersionString;
-
-        ServersListModel(ServerInfos *const servers,
-                         ServerDialog *const parent);
-
-        A_DELETE_COPY(ServersListModel)
-
-        /**
-         * Used to get number of line in the list
-         */
-        int getNumberOfElements() override final A_WARN_UNUSED;
-
-        /**
-         * Used to get an element from the list
-         */
-        std::string getElementAt(int elementIndex)
-                                 override final A_WARN_UNUSED;
-
-        /**
-         * Used to get the corresponding Server struct
-         */
-        const ServerInfo &getServer(const int elementIndex) const A_WARN_UNUSED
-        { return mServers->at(elementIndex); }
-
-        void setVersionString(const int index, const std::string &version);
-
-    private:
-        typedef std::vector<VersionString> VersionStrings;
-
-        ServerInfos *mServers;
-        VersionStrings mVersionStrings;
-        ServerDialog *mParent;
-};
-
+class ServersListModel;
 
 /**
  * The server choice dialog.

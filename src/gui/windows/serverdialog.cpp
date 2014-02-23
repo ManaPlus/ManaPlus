@@ -34,6 +34,8 @@
 #include "gui/font.h"
 #include "gui/gui.h"
 
+#include "gui/models/serverslistmodel.h"
+
 #include "gui/widgets/checkbox.h"
 #include "gui/windows/editserverdialog.h"
 #include "gui/windows/logindialog.h"
@@ -102,46 +104,6 @@ static uint16_t defaultPortForServerType(const ServerInfo::Type type)
         case ServerInfo::MANASERV:
             return 6901;
 #endif
-    }
-}
-
-ServersListModel::ServersListModel(ServerInfos *const servers,
-                                   ServerDialog *const parent) :
-        mServers(servers),
-        mVersionStrings(servers->size(), VersionString(0, "")),
-        mParent(parent)
-{
-}
-
-int ServersListModel::getNumberOfElements()
-{
-    MutexLocker lock = mParent->lock();
-    return static_cast<int>(mServers->size());
-}
-
-std::string ServersListModel::getElementAt(int elementIndex)
-{
-    MutexLocker lock = mParent->lock();
-    const ServerInfo &server = mServers->at(elementIndex);
-    std::string myServer;
-    myServer.append(server.hostname);
-    return myServer;
-}
-
-void ServersListModel::setVersionString(const int index,
-                                        const std::string &version)
-{
-    if (index < 0 || index >= static_cast<int>(mVersionStrings.size()))
-        return;
-
-    if (version.empty() || !gui)
-    {
-        mVersionStrings[index] = VersionString(0, "");
-    }
-    else
-    {
-        mVersionStrings[index] = VersionString(
-            gui->getFont()->getWidth(version), version);
     }
 }
 
