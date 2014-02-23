@@ -29,6 +29,7 @@
 
 #include "gui/models/iconsmodel.h"
 #include "gui/models/listmodel.h"
+#include "gui/models/magicschoolmodel.h"
 #include "gui/models/targettypemodel.h"
 
 #include "gui/widgets/button.h"
@@ -45,41 +46,6 @@
 #include "resources/db/itemdb.h"
 
 #include "debug.h"
-
-const char *MAGIC_SCHOOL_TEXT[6] =
-{
-    // TRANSLATORS: magic school
-    N_("General Magic"),
-    // TRANSLATORS: magic school
-    N_("Life Magic"),
-    // TRANSLATORS: magic school
-    N_("War Magic"),
-    // TRANSLATORS: magic school
-    N_("Transmute Magic"),
-    // TRANSLATORS: magic school
-    N_("Nature Magic"),
-    // TRANSLATORS: magic school
-    N_("Astral Magic")
-};
-
-class MagicSchoolModel final : public ListModel
-{
-public:
-    ~MagicSchoolModel()
-    { }
-
-    int getNumberOfElements() override final
-    {
-        return 6;
-    }
-
-    std::string getElementAt(int i) override final
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return "???";
-        return MAGIC_SCHOOL_TEXT[i];
-    }
-};
 
 TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor name
