@@ -222,7 +222,7 @@ class TabbedArea final : public ActionListener,
 
         void setSize(int width, int height);
 
-        void setDimension(const Rectangle &dimension);
+        void setDimension(const Rect &dimension);
 
         void death(const Event &event);
 

@@ -617,7 +617,7 @@ static void updateProgress(int cnt)
     mainGraphics->setColor(Color(255, 255, 255));
     const int maxSize = mainGraphics->mWidth - 100;
     const int width = maxSize * progress / 450;
-    mainGraphics->fillRectangle(Rectangle(50, h - 100, width, 50));
+    mainGraphics->fillRectangle(Rect(50, h - 100, width, 50));
     mainGraphics->updateScreen();
 }
 

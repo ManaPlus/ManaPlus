@@ -471,19 +471,19 @@ namespace gcn
         }
     }
 
-    Rectangle ScrollArea::getChildrenArea()
+    Rect ScrollArea::getChildrenArea()
     {
-        const Rectangle area = Rectangle(0, 0,
+        const Rect area = Rect(0, 0,
             mVBarVisible ? (getWidth() - mScrollbarWidth) : getWidth(),
             mHBarVisible ? (getHeight() - mScrollbarWidth) : getHeight());
 
         if (area.width < 0 || area.height < 0)
-            return Rectangle();
+            return Rect();
 
         return area;
     }
 
-    void ScrollArea::showWidgetPart(Widget* widget, Rectangle area)
+    void ScrollArea::showWidgetPart(Widget* widget, Rect area)
     {
         const Widget *const content = getContent();
         if (widget != content)
@@ -539,7 +539,7 @@ namespace gcn
         checkPolicies();
     }
 
-    void ScrollArea::setDimension(const Rectangle& dimension)
+    void ScrollArea::setDimension(const Rect& dimension)
     {
         Widget::setDimension(dimension);
         checkPolicies();

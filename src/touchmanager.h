@@ -25,7 +25,7 @@
 
 #include "input/keydata.h"
 
-#include "gui/rectangle.h"
+#include "gui/rect.h"
 
 #include <string>
 #include <vector>
@@ -45,7 +45,7 @@ const int buttonsCount = 12;
 struct TouchItem final
 {
     TouchItem(const std::string &text0,
-              const Rectangle &rect0, const int type0,
+              const Rect &rect0, const int type0,
               const std::string &eventPressed0,
               const std::string &eventReleased0,
               ImageRect *const images0, Image *const icon0,
@@ -73,7 +73,7 @@ struct TouchItem final
     A_DELETE_COPY(TouchItem)
 
     std::string text;
-    Rectangle rect;
+    Rect rect;
     int type;
     std::string eventPressed;
     std::string eventReleased;

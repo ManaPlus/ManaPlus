@@ -64,7 +64,7 @@
 #ifndef GUI_CLIPRECTANGLE_H
 #define GUI_CLIPRECTANGLE_H
 
-#include "gui/rectangle.h"
+#include "gui/rect.h"
 
 #include "localconsts.h"
 
@@ -74,13 +74,13 @@
   * offsets. The offsets are used for calculations from relative
   * screen coordinates to actual screen coordinates.
   */
-class ClipRectangle final : public Rectangle
+class ClipRect final : public Rect
 {
     public:
         /**
           * Constructor.
           */
-        ClipRectangle();
+        ClipRect();
 
         /**
           * Constructor.
@@ -96,7 +96,7 @@ class ClipRectangle final : public Rectangle
           *                 calculating the actual screen coordinate from
           *                 the relative screen coordinate.
           */
-        ClipRectangle(const int x0,
+        ClipRect(const int x0,
                       const int y0,
                       const int width0,
                       const int height0,
@@ -110,7 +110,7 @@ class ClipRectangle final : public Rectangle
           * @param other The rectangle to copy data from.
           * @returns A clip rectangle with data copyied from a rectangle.
           */
-        const ClipRectangle& operator=(const Rectangle& other);
+        const ClipRect& operator=(const Rect& other);
 
         /**
           * Holds the x offset of the x coordinate.

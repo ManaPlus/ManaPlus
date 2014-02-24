@@ -163,7 +163,7 @@ void TouchManager::loadTouchItem(TouchItem **item, const std::string &name,
                 default:
                     break;
             }
-            *item = new TouchItem(text, Rectangle(x + diff, y + diff,
+            *item = new TouchItem(text, Rect(x + diff, y + diff,
                 width + border2, height + border2), type,
                 eventPressed, eventReleased, images, icon,
                 x + pad, y + pad, width, height,
@@ -270,7 +270,7 @@ bool TouchManager::processEvent(const MouseInput &mouseInput)
         const TouchItem *const item = *it;
         if (!item || (!mShow && (item != mKeyboard || !mShowKeyboard)))
             continue;
-        const Rectangle &rect = item->rect;
+        const Rect &rect = item->rect;
         if (rect.isPointInRect(x, y))
         {
             MouseInput event = mouseInput;

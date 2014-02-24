@@ -41,7 +41,7 @@ class DebugTab : public Container
         }
 
         void resize(const int x, const int y)
-        { setDimension(Rectangle(0, 0, x, y)); }
+        { setDimension(Rect(0, 0, x, y)); }
 
     protected:
         explicit DebugTab(const Widget2 *const widget) :

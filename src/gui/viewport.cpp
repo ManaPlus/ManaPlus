@@ -123,7 +123,7 @@ void Viewport::draw(Graphics *graphics)
     {
         graphics->setColor(Color(64, 64, 64));
         graphics->fillRectangle(
-                Rectangle(0, 0, getWidth(), getHeight()));
+                Rect(0, 0, getWidth(), getHeight()));
         BLOCK_END("Viewport::draw 1")
         return;
     }
@@ -353,7 +353,7 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
             const int squareX = i->x * mapTileSize - mPixelViewX + 12;
             const int squareY = i->y * mapTileSize - mPixelViewY + 12;
 
-            graphics->fillRectangle(Rectangle(squareX, squareY, 8, 8));
+            graphics->fillRectangle(Rect(squareX, squareY, 8, 8));
             if (mMap)
             {
                 const std::string str = toString(cnt);
@@ -371,7 +371,7 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
             const int squareX = i->x - mPixelViewX;
             const int squareY = i->y - mPixelViewY;
 
-            graphics->fillRectangle(Rectangle(
+            graphics->fillRectangle(Rect(
                 squareX - 4, squareY - 4, 8, 8));
             if (mMap)
             {

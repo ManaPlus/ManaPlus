@@ -565,7 +565,7 @@ void InventoryWindow::mouseMoved(MouseEvent &event)
     {
         const int x = event.getX();
         const int y = event.getY();
-        const Rectangle &rect = mDimension;
+        const Rect &rect = mDimension;
         mTextPopup->show(rect.x + x, rect.y + y, strprintf(_("Money: %s"),
             Units::formatCurrency(PlayerInfo::getAttribute(
             PlayerInfo::MONEY)).c_str()));

@@ -192,7 +192,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
 
     mGradTypeText->setCaption("");
 
-    setDimension(Rectangle(0, 0, 365, 350));
+    setDimension(Rect(0, 0, 365, 350));
 }
 
 Setup_Colors::~Setup_Colors()

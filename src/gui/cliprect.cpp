@@ -61,102 +61,44 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GUI_RECTANGLE_H
-#define GUI_RECTANGLE_H
+/*
+ * For comments regarding functions please see the header file.
+ */
 
-#include <iostream>
+#include "gui/cliprect.h"
 
-#include "localconsts.h"
+#include "debug.h"
 
-/**
-  * Represents a rectangle.
-  *
-  * @since 0.1.0
-  */
-class Rectangle
+ClipRect::ClipRect() :
+    Rect(),
+    xOffset(0),
+    yOffset(0)
 {
-    public:
-        /**
-          * Constructor. The default rectangle is an empty rectangle
-          * at the coordinates (0,0).
-          */
-        Rectangle();
+    x = 0;
+    y = 0;
+    width = 0;
+    height = 0;
+}
 
-        /**
-          * Constructor.
-          *
-          * @param x The x coordinate of the rectangle.
-          * @param y The y coordinate of the rectangle.
-          * @param width The width of the rectangle.
-          * @param height The height of the rectangle.
-          * @since 0.1.0
-          */
-        Rectangle(const int x, const int y, const int width, const int height);
+ClipRect::ClipRect(const int x0, const int y0,
+                   const int width0, const int height0,
+                   const int xOffset0, const int yOffset0) :
+    Rect(),
+    xOffset(xOffset0),
+    yOffset(yOffset0)
+{
+    x = x0;
+    y = y0;
+    width = width0;
+    height = height0;
+}
 
-        virtual ~Rectangle()
-        { }
+const ClipRect& ClipRect::operator=(const Rect& other)
+{
+    x = other.x;
+    y = other.y;
+    width = other.width;
+    height = other.height;
 
-        /**
-          * Sets the dimension of a rectangle.
-          *
-          * @param x The x coordinate of the rectangle.
-          * @param y The y coordinate of the rectangle.
-          * @param width The width of the rectangle.
-          * @param height The height of the rectangle.
-          * @since 0.1.0
-          */
-        void setAll(const int x,
-                    const int y,
-                    const int width0,
-                    const int height0);
-
-        /**
-          * Checks if another rectangle intersects with the rectangle.
-          *
-          * @param rectangle Another rectangle to check for intersection.
-          * @return True if the rectangles intersect, false otherwise.
-          * @since 0.1.0
-          */
-        bool isIntersecting(const Rectangle& rectangle) const A_WARN_UNUSED;
-
-        /**
-          * Checks if a point is inside the rectangle
-          *
-          * @param x The x coordinate of the point.
-          * @param y The y coordinate of the point.
-          * @return True if the point is inside the rectangle.
-          * @since 0.1.0
-          */
-        bool isPointInRect(int x, int y) const A_WARN_UNUSED;
-
-        /**
-          * Output operator for output.
-          *
-          * @param out The stream to output to.
-          * @param rectangle The rectangle to output.
-          */
-        friend std::ostream& operator<<(std::ostream& out,
-                                        const Rectangle& rectangle);
-
-        /**
-          * Holds the x coordinate of the rectangle.
-          */
-        int x;
-
-        /**
-          * Holds the x coordinate of the rectangle.
-          */
-        int y;
-
-        /**
-          * Holds the width of the rectangle.
-          */
-        int width;
-
-        /**
-          * Holds the height of the rectangle.
-          */
-        int height;
-};
-
-#endif  // GUI_RECTANGEL_H
+    return *this;
+}

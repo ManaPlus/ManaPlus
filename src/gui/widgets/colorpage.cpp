@@ -64,7 +64,7 @@ void ColorPage::draw(Graphics *graphics)
 
     if (mSelected >= 0)
     {
-        graphics->fillRectangle(Rectangle(mPadding,
+        graphics->fillRectangle(Rect(mPadding,
             rowHeight * mSelected + mPadding,
             mDimension.width - 2 * mPadding, rowHeight));
 

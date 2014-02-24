@@ -26,14 +26,14 @@ manaplus_SOURCES =
 endif
 
 dyecmd_CXXFLAGS =
-dyecmd_SOURCES = gui/cliprectangle.cpp \
+dyecmd_SOURCES = gui/cliprect.cpp \
 	      gui/color.cpp \
-	      gui/rectangle.cpp \
+	      gui/rect.cpp \
 	      events/actionevent.h \
-	      gui/cliprectangle.h \
+	      gui/cliprect.h \
 	      gui/color.h \
 	      events/event.h \
-	      gui/rectangle.h
+	      gui/rect.h
 
 dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      animatedsprite.cpp \
@@ -151,7 +151,7 @@ endif
 manaplus_SOURCES += events/actionevent.h \
 	      listeners/actionlistener.h \
 	      gui/base/basiccontainer.hpp \
-	      gui/cliprectangle.h \
+	      gui/cliprect.h \
 	      gui/color.h \
 	      listeners/deathlistener.h \
 	      events/event.h \
@@ -166,7 +166,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/models/magicschoolmodel.h \
 	      events/mouseevent.h \
 	      listeners/mouselistener.h \
-	      gui/rectangle.h \
+	      gui/rect.h \
 	      events/selectionevent.h \
 	      listeners/selectionlistener.h \
 	      utils/sdlpixel.h \
@@ -183,11 +183,11 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/base/widgets/textbox.hpp \
 	      gui/base/widgets/textfield.hpp \
 	      gui/base/basiccontainer.cpp \
-	      gui/cliprectangle.cpp \
+	      gui/cliprect.cpp \
 	      gui/color.cpp \
 	      gui/base/gui.cpp \
 	      input/key.cpp \
-	      gui/rectangle.cpp \
+	      gui/rect.cpp \
 	      gui/widgets/widget.cpp \
 	      gui/base/widgets/button.cpp \
 	      gui/base/widgets/checkbox.cpp \

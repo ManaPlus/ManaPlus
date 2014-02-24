@@ -345,9 +345,9 @@ namespace gcn
 
         // Inherited from BasicContainer
 
-        virtual void showWidgetPart(Widget* widget, Rectangle area);
+        virtual void showWidgetPart(Widget* widget, Rect area);
 
-        virtual Rectangle getChildrenArea();
+        virtual Rect getChildrenArea();
 
         virtual Widget *getWidgetAt(int x, int y);
 
@@ -362,7 +362,7 @@ namespace gcn
 
         void setHeight(int height);
 
-        void setDimension(const Rectangle& dimension);
+        void setDimension(const Rect& dimension);
 
 
         // Inherited from MouseListener

@@ -168,7 +168,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 
     x += mPadding - mSpacing;
     if (mainGraphics)
-        setDimension(Rectangle(mainGraphics->mWidth - x, 0, x, h));
+        setDimension(Rect(mainGraphics->mWidth - x, 0, x, h));
 
     loadButtons();
 
@@ -293,7 +293,7 @@ void WindowMenu::mouseMoved(MouseEvent &event)
     const int x = event.getX();
     const int y = event.getY();
     const int key = btn->getTag();
-    const Rectangle &rect = mDimension;
+    const Rect &rect = mDimension;
     if (key != Input::KEY_NO_VALUE)
     {
         mTextPopup->show(x + rect.x, y + rect.y, btn->getDescription(),
@@ -350,7 +350,7 @@ void WindowMenu::updateButtons()
     }
     x += mPadding - mSpacing;
     if (mainGraphics)
-        setDimension(Rectangle(mainGraphics->mWidth - x, 0, x, h));
+        setDimension(Rect(mainGraphics->mWidth - x, 0, x, h));
 }
 
 void WindowMenu::loadButtons()

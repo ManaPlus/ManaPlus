@@ -304,7 +304,7 @@ void GuiTable::draw(Graphics* graphics)
     if (client->getGuiAlpha() != mAlpha)
         mAlpha = client->getGuiAlpha();
 
-    const Rectangle &rect = mDimension;
+    const Rect &rect = mDimension;
     const int width = rect.width;
     const int height = rect.height;
     const int y = rect.y;
@@ -312,7 +312,7 @@ void GuiTable::draw(Graphics* graphics)
     {
         mBackgroundColor.a = static_cast<int>(mAlpha * 255.0F);
         graphics->setColor(mBackgroundColor);
-        graphics->fillRectangle(Rectangle(0, 0, width, height));
+        graphics->fillRectangle(Rect(0, 0, width, height));
     }
 
     // First, determine how many rows we need to draw,
@@ -351,7 +351,7 @@ void GuiTable::draw(Graphics* graphics)
             const int cWidth = getColumnWidth(c);
             if (widget)
             {
-                Rectangle bounds(x_offset, y_offset, cWidth, rHeight);
+                Rect bounds(x_offset, y_offset, cWidth, rHeight);
 
                 if (widget == mTopWidget)
                 {
@@ -369,14 +369,14 @@ void GuiTable::draw(Graphics* graphics)
                     if (mLinewiseMode && r == static_cast<unsigned>(
                         mSelectedRow) && c == 0)
                     {
-                        graphics->fillRectangle(Rectangle(0, y_offset,
+                        graphics->fillRectangle(Rect(0, y_offset,
                             width, rHeight));
                     }
                     else if (!mLinewiseMode && mSelectedColumn > 0
                              && c == static_cast<unsigned>(mSelectedColumn)
                              && r == static_cast<unsigned>(mSelectedRow))
                     {
-                        graphics->fillRectangle(Rectangle(
+                        graphics->fillRectangle(Rect(
                             x_offset, y_offset, cWidth, rHeight));
                     }
                 }
@@ -393,7 +393,7 @@ void GuiTable::draw(Graphics* graphics)
 
     if (mTopWidget)
     {
-        const Rectangle &bounds = mTopWidget->getDimension();
+        const Rect &bounds = mTopWidget->getDimension();
         graphics->pushClipArea(bounds);
         mTopWidget->draw(graphics);
         graphics->popClipArea();
@@ -414,9 +414,9 @@ void GuiTable::moveToBottom(Widget *widget)
         mTopWidget = nullptr;
 }
 
-Rectangle GuiTable::getChildrenArea()
+Rect GuiTable::getChildrenArea()
 {
-    return Rectangle(0, 0, mDimension.width, mDimension.height);
+    return Rect(0, 0, mDimension.width, mDimension.height);
 }
 
 // -- KeyListener notifications

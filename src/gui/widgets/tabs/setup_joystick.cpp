@@ -94,7 +94,7 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     place(0, 4, mCalibrateLabel);
     place(0, 5, mCalibrateButton);
 
-    setDimension(Rectangle(0, 0, 365, 75));
+    setDimension(Rect(0, 0, 365, 75));
 }
 
 Setup_Joystick::~Setup_Joystick()

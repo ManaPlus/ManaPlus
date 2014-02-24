@@ -787,7 +787,7 @@ SET(SRCS
     events/actionevent.h
     listeners/actionlistener.h
     gui/base/basiccontainer.hpp
-    gui/cliprectangle.h
+    gui/cliprect.h
     gui/color.h
     listeners/deathlistener.h
     events/event.h
@@ -801,7 +801,7 @@ SET(SRCS
     gui/models/magicschoolmodel.h
     events/mouseevent.h
     listeners/mouselistener.h
-    gui/rectangle.h
+    gui/rect.h
     events/selectionevent.h
     listeners/selectionlistener.h
     utils/sdlpixel.h
@@ -818,11 +818,11 @@ SET(SRCS
     gui/base/widgets/textbox.hpp
     gui/base/widgets/textfield.hpp
     gui/base/basiccontainer.cpp
-    gui/cliprectangle.cpp
+    gui/cliprect.cpp
     gui/color.cpp
     gui/base/gui.cpp
     input/key.cpp
-    gui/rectangle.cpp
+    gui/rect.cpp
     gui/widgets/widget.cpp
     gui/base/widgets/button.cpp
     gui/base/widgets/checkbox.cpp

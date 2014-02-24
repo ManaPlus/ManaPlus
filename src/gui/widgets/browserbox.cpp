@@ -37,7 +37,7 @@
 #include "utils/stringutils.h"
 #include "utils/timer.h"
 
-#include "gui/cliprectangle.h"
+#include "gui/cliprect.h"
 
 #include "render/graphics.h"
 
@@ -448,7 +448,7 @@ void BrowserBox::mouseMoved(MouseEvent &event)
 void BrowserBox::draw(Graphics *graphics)
 {
     BLOCK_START("BrowserBox::draw")
-    const ClipRectangle *const cr = graphics->getCurrentClipArea();
+    const ClipRect *const cr = graphics->getCurrentClipArea();
     if (!cr)
         return;
     mYStart = cr->y - cr->yOffset;
@@ -462,7 +462,7 @@ void BrowserBox::draw(Graphics *graphics)
     if (mOpaque)
     {
         graphics->setColor(mBackgroundColor);
-        graphics->fillRectangle(Rectangle(0, 0, getWidth(), getHeight()));
+        graphics->fillRectangle(Rect(0, 0, getWidth(), getHeight()));
     }
 
     if (mSelectedLink >= 0 && mSelectedLink
@@ -471,7 +471,7 @@ void BrowserBox::draw(Graphics *graphics)
         if ((mHighMode & BACKGROUND))
         {
             graphics->setColor(mHighlightColor);
-            graphics->fillRectangle(Rectangle(
+            graphics->fillRectangle(Rect(
                 mLinks[mSelectedLink].x1,
                 mLinks[mSelectedLink].y1,
                 mLinks[mSelectedLink].x2 - mLinks[mSelectedLink].x1,

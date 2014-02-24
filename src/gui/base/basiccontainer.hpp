@@ -108,7 +108,7 @@ namespace gcn
          *               itself to be visible.
          * @param rectangle The rectangle to be visible.
          */
-        virtual void showWidgetPart(Widget* widget, Rectangle area);
+        virtual void showWidgetPart(Widget* widget, Rect area);
 
         // Inherited from Widget
 
@@ -116,7 +116,7 @@ namespace gcn
 
         virtual void moveToBottom(Widget* widget);
 
-        virtual Rectangle getChildrenArea() A_WARN_UNUSED;
+        virtual Rect getChildrenArea() A_WARN_UNUSED;
 
         virtual void focusNext();
 

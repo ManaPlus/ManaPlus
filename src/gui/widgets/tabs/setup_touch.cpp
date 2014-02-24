@@ -121,7 +121,7 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
             key, this, event, mActionsList, 250);
     }
 
-    setDimension(Rectangle(0, 0, 550, 350));
+    setDimension(Rect(0, 0, 550, 350));
 }
 
 Setup_Touch::~Setup_Touch()

@@ -92,7 +92,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
         mBoxSize = 36;
 
     // Control that shows the Player
-    mPlayerBox->setDimension(Rectangle(50, 80, 74, 168));
+    mPlayerBox->setDimension(Rect(50, 80, 74, 168));
     mPlayerBox->setPlayer(being);
 
     if (foring)
@@ -116,7 +116,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
 
 void EquipmentWindow::postInit()
 {
-    const Rectangle &area = getChildrenArea();
+    const Rect &area = getChildrenArea();
     mUnequip->setPosition(area.width  - mUnequip->getWidth() - mButtonPadding,
         area.height - mUnequip->getHeight() - mButtonPadding);
     mUnequip->setEnabled(false);
@@ -283,7 +283,7 @@ Item *EquipmentWindow::getItem(const int x, const int y) const
         const EquipmentBox *const box = *it;
         if (!box)
             continue;
-        const Rectangle tRect(box->x, box->y, mBoxSize, mBoxSize);
+        const Rect tRect(box->x, box->y, mBoxSize, mBoxSize);
 
         if (tRect.isPointInRect(x, y))
             return mEquipment->getEquipment(i);
@@ -321,7 +321,7 @@ void EquipmentWindow::mousePressed(MouseEvent& mouseEvent)
             if (!box)
                 continue;
             const Item *const item = mEquipment->getEquipment(i);
-            const Rectangle tRect(box->x, box->y, mBoxSize, mBoxSize);
+            const Rect tRect(box->x, box->y, mBoxSize, mBoxSize);
 
             if (tRect.isPointInRect(x, y))
             {
@@ -402,7 +402,7 @@ void EquipmentWindow::mouseReleased(MouseEvent &mouseEvent)
                 const EquipmentBox *const box = *it;
                 if (!box)
                     continue;
-                const Rectangle tRect(box->x, box->y, mBoxSize, mBoxSize);
+                const Rect tRect(box->x, box->y, mBoxSize, mBoxSize);
 
                 if (tRect.isPointInRect(x, y))
                     return;
@@ -514,7 +514,7 @@ void EquipmentWindow::fillBoxes()
 
 void EquipmentWindow::loadPlayerBox(const XmlNodePtr playerBoxNode)
 {
-    mPlayerBox->setDimension(Rectangle(
+    mPlayerBox->setDimension(Rect(
         XML::getProperty(playerBoxNode, "x", 50),
         XML::getProperty(playerBoxNode, "y", 80),
         XML::getProperty(playerBoxNode, "width", 74),

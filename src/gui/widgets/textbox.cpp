@@ -357,7 +357,7 @@ void TextBox::draw(Graphics* graphics)
     if (mOpaque)
     {
         graphics->setColor(mBackgroundColor);
-        graphics->fillRectangle(Rectangle(0, 0, getWidth(), getHeight()));
+        graphics->fillRectangle(Rect(0, 0, getWidth(), getHeight()));
     }
 
     Font *const font = getFont();

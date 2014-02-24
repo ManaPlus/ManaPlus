@@ -156,7 +156,7 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Download music"), "",
         "download-music", this, "download-musicEvent");
 
-    setDimension(Rectangle(0, 0, 550, 350));
+    setDimension(Rect(0, 0, 550, 350));
 }
 
 Setup_Audio::~Setup_Audio()

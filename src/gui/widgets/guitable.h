@@ -93,7 +93,7 @@ public:
     void setWrappingEnabled(bool wrappingEnabled)
     { mWrappingEnabled = wrappingEnabled; }
 
-    Rectangle getChildrenArea() override final A_WARN_UNUSED;
+    Rect getChildrenArea() override final A_WARN_UNUSED;
 
     /**
      * Toggle whether to use linewise selection mode, in which the table selects

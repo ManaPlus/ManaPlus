@@ -113,7 +113,7 @@ void SetupWindow::postInit()
             mResetWindows = btn;
     }
 
-    mPanel->setDimension(Rectangle(5, 5, width - 10, height - 40));
+    mPanel->setDimension(Rect(5, 5, width - 10, height - 40));
     mPanel->enableScrollButtons(true);
 
     mTabs.push_back(new Setup_Video(this));
@@ -265,12 +265,12 @@ void SetupWindow::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
 
-    const Rectangle area = getChildrenArea();
+    const Rect area = getChildrenArea();
     int x = area.width;
     const int height = area.height;
     const int width = area.width;
     const int buttonPadding = getOption("buttonPadding", 5);
-    mPanel->setDimension(Rectangle(5, 5, width - 10, height - 40));
+    mPanel->setDimension(Rect(5, 5, width - 10, height - 40));
     FOR_EACH (std::vector<Button*>::iterator, it, mButtons)
     {
         Button *const btn = *it;

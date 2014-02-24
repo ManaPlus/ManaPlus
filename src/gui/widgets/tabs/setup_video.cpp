@@ -304,7 +304,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     if (config.getIntValue("screenwidth") >= 730)
         width += 100;
 
-    setDimension(Rectangle(0, 0, width, 300));
+    setDimension(Rect(0, 0, width, 300));
 }
 
 Setup_Video::~Setup_Video()

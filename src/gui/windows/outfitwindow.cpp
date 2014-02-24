@@ -328,9 +328,9 @@ void OutfitWindow::draw(Graphics *graphics)
             + ((i / mGridWidth) * mBoxHeight);
 
         graphics->setColor(mBorderColor);
-        graphics->drawRectangle(Rectangle(itemX, itemY, 32, 32));
+        graphics->drawRectangle(Rect(itemX, itemY, 32, 32));
         graphics->setColor(mBackgroundColor);
-        graphics->fillRectangle(Rectangle(itemX, itemY, 32, 32));
+        graphics->fillRectangle(Rect(itemX, itemY, 32, 32));
 
         if (mItems[mCurrentOutfit][i] < 0)
             continue;
@@ -483,7 +483,7 @@ void OutfitWindow::mouseReleased(MouseEvent &event)
 
 int OutfitWindow::getIndexFromGrid(const int pointX, const int pointY) const
 {
-    const Rectangle tRect = Rectangle(mPadding, mTitleBarHeight,
+    const Rect tRect = Rect(mPadding, mTitleBarHeight,
         mGridWidth * mBoxWidth, mGridHeight * mBoxHeight);
     if (!tRect.isPointInRect(pointX, pointY))
         return -1;

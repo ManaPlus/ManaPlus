@@ -80,7 +80,7 @@ void Label::draw(Graphics* graphics)
 {
     BLOCK_START("Label::draw")
     int textX;
-    const Rectangle &rect = mDimension;
+    const Rect &rect = mDimension;
     const int textY = rect.height / 2 - getFont()->getHeight() / 2;
     Font *const font = getFont();
 

@@ -1145,7 +1145,7 @@ void NormalOpenGLGraphics::_beginDraw()
 #endif
 #endif
 
-    pushClipArea(Rectangle(0, 0, w, h));
+    pushClipArea(Rect(0, 0, w, h));
 }
 
 void NormalOpenGLGraphics::_endDraw()
@@ -1211,21 +1211,21 @@ SDL_Surface* NormalOpenGLGraphics::getScreenshot()
     return screenshot;
 }
 
-bool NormalOpenGLGraphics::pushClipArea(Rectangle area)
+bool NormalOpenGLGraphics::pushClipArea(Rect area)
 {
     int transX = 0;
     int transY = 0;
 
     if (!mClipStack.empty())
     {
-        const ClipRectangle &clipArea = mClipStack.top();
+        const ClipRect &clipArea = mClipStack.top();
         transX = -clipArea.xOffset;
         transY = -clipArea.yOffset;
     }
 
     const bool result = Graphics::pushClipArea(area);
 
-    const ClipRectangle &clipArea = mClipStack.top();
+    const ClipRect &clipArea = mClipStack.top();
     transX += clipArea.xOffset;
     transY += clipArea.yOffset;
 
@@ -1247,7 +1247,7 @@ void NormalOpenGLGraphics::popClipArea()
     if (mClipStack.empty())
         return;
 
-    const ClipRectangle &clipArea1 = mClipStack.top();
+    const ClipRect &clipArea1 = mClipStack.top();
     int transX = -clipArea1.xOffset;
     int transY = -clipArea1.yOffset;
 
@@ -1256,7 +1256,7 @@ void NormalOpenGLGraphics::popClipArea()
     if (mClipStack.empty())
         return;
 
-    const ClipRectangle &clipArea = mClipStack.top();
+    const ClipRect &clipArea = mClipStack.top();
     transX += clipArea.xOffset;
     transY += clipArea.yOffset;
     if (transX || transY)
@@ -1297,12 +1297,12 @@ void NormalOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
     drawLineArrayf(4);
 }
 
-void NormalOpenGLGraphics::drawRectangle(const Rectangle& rect)
+void NormalOpenGLGraphics::drawRectangle(const Rect& rect)
 {
     drawRectangle(rect, false);
 }
 
-void NormalOpenGLGraphics::fillRectangle(const Rectangle& rect)
+void NormalOpenGLGraphics::fillRectangle(const Rect& rect)
 {
     drawRectangle(rect, true);
 }
@@ -1347,7 +1347,7 @@ void NormalOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
 }
 
-void NormalOpenGLGraphics::drawRectangle(const Rectangle& rect,
+void NormalOpenGLGraphics::drawRectangle(const Rect& rect,
                                          const bool filled)
 {
     BLOCK_START("Graphics::drawRectangle")

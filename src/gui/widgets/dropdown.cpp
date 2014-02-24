@@ -268,7 +268,7 @@ void DropDown::draw(Graphics* graphics)
     if (isFocused())
     {
         graphics->setColor(mHighlightColor);
-        graphics->drawRectangle(Rectangle(mPadding, mPadding,
+        graphics->drawRectangle(Rect(mPadding, mPadding,
             mDimension.width - h - pad, h - pad));
     }
 
@@ -291,7 +291,7 @@ void DropDown::drawFrame(Graphics *graphics)
 {
     BLOCK_START("DropDown::drawFrame")
     const int bs2 = getFrameSize();
-    const Rectangle &rect = mDimension;
+    const Rect &rect = mDimension;
     graphics->drawImageRect(0, 0,
         rect.width + bs2, rect.height + bs2,
         skinRect);
@@ -513,16 +513,16 @@ void DropDown::action(const ActionEvent &actionEvent A_UNUSED)
     distributeActionEvent();
 }
 
-Rectangle DropDown::getChildrenArea()
+Rect DropDown::getChildrenArea()
 {
     if (mDroppedDown)
     {
         // Calculate the children area (with the one pixel border in mind)
-        return Rectangle(1, mFoldedUpHeight + 1,
+        return Rect(1, mFoldedUpHeight + 1,
             mDimension.width - 2, mDimension.height - mFoldedUpHeight - 2);
     }
 
-    return Rectangle();
+    return Rect();
 }
 
 void DropDown::valueChanged(const SelectionEvent& event A_UNUSED)

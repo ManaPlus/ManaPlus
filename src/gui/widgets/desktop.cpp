@@ -107,7 +107,7 @@ void Desktop::draw(Graphics *graphics)
 {
     BLOCK_START("Desktop::draw")
 
-    const Rectangle &rect = mDimension;
+    const Rect &rect = mDimension;
     const int width = rect.width;
     const int height = rect.height;
     if (mWallpaper)
@@ -118,7 +118,7 @@ void Desktop::draw(Graphics *graphics)
         if (width > wallpWidth || height > wallpHeight)
         {
             graphics->setColor(mBackgroundGrayColor);
-            graphics->fillRectangle(Rectangle(0, 0, width, height));
+            graphics->fillRectangle(Rect(0, 0, width, height));
         }
 
         if (imageHelper->useOpenGL() == RENDER_SOFTWARE)
@@ -135,12 +135,12 @@ void Desktop::draw(Graphics *graphics)
     else
     {
         graphics->setColor(mBackgroundGrayColor);
-        graphics->fillRectangle(Rectangle(0, 0, width, height));
+        graphics->fillRectangle(Rect(0, 0, width, height));
     }
 
     // Draw a thin border under the application version...
     graphics->setColor(mBackgroundColor);
-    graphics->fillRectangle(Rectangle(mVersionLabel->getDimension()));
+    graphics->fillRectangle(Rect(mVersionLabel->getDimension()));
 
     Container::draw(graphics);
     BLOCK_END("Desktop::draw")
@@ -165,7 +165,7 @@ void Desktop::setBestFittingWallpaper()
             mWallpaper = nullptr;
         }
 
-        const Rectangle &rect = mDimension;
+        const Rect &rect = mDimension;
         const int width = rect.width;
         const int height = rect.height;
 

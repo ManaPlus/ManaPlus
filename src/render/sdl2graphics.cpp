@@ -136,7 +136,7 @@ bool SDLGraphics::drawRescaledImage(const Image *const image,
     if (!image->mTexture)
         return false;
 
-    const ClipRectangle &top = mClipStack.top();
+    const ClipRect &top = mClipStack.top();
     const SDL_Rect &bounds = image->mBounds;
     const SDL_Rect srcRect =
     {
@@ -171,7 +171,7 @@ bool SDLGraphics::drawImageInline(const Image *const image,
     if (!mWindow || !image || !image->mTexture)
         return false;
 
-    const ClipRectangle &top = mClipStack.top();
+    const ClipRect &top = mClipStack.top();
     if (!top.width || !top.height)
         return false;
 
@@ -203,7 +203,7 @@ void SDLGraphics::drawImageCached(const Image *const image,
     if (!mWindow || !image || !image->mTexture)
         return;
 
-    const ClipRectangle &top = mClipStack.top();
+    const ClipRect &top = mClipStack.top();
     if (!top.width || !top.height)
         return;
 
@@ -238,7 +238,7 @@ void SDLGraphics::drawPatternCached(const Image *const image,
     if (!image->mTexture)
         return;
 
-    const ClipRectangle &top = mClipStack.top();
+    const ClipRect &top = mClipStack.top();
     if (!top.width || !top.height)
         return;
 
@@ -296,7 +296,7 @@ void SDLGraphics::drawPatternInline(const Image *const image,
     if (!image->mTexture)
         return;
 
-    const ClipRectangle &top = mClipStack.top();
+    const ClipRect &top = mClipStack.top();
     if (!top.width || !top.height)
         return;
 
@@ -347,7 +347,7 @@ void SDLGraphics::drawRescaledPattern(const Image *const image,
     if (scaledHeight == 0 || scaledWidth == 0)
         return;
 
-    const ClipRectangle &top = mClipStack.top();
+    const ClipRect &top = mClipStack.top();
     if (!top.width || !top.height)
         return;
 
@@ -407,7 +407,7 @@ void SDLGraphics::calcPatternInline(ImageVertexes* const vert,
     if (!vert || !mWindow || !image || !image->mTexture)
         return;
 
-    const ClipRectangle &top = mClipStack.top();
+    const ClipRect &top = mClipStack.top();
     if (!top.width || !top.height)
         return;
 
@@ -492,7 +492,7 @@ void SDLGraphics::calcTileSDL(ImageVertexes *const vert, int x, int y) const
     if (!vert || !vert->image || !vert->image->mTexture)
         return;
 
-    const ClipRectangle &top = mClipStack.top();
+    const ClipRect &top = mClipStack.top();
     if (!top.width || !top.height)
         return;
 
@@ -638,9 +638,9 @@ void SDLGraphics::calcWindow(ImageCollection *const vertCol,
     calcImageRect(vert, x, y, w, h, imgRect);
 }
 
-void SDLGraphics::fillRectangle(const Rectangle &rectangle)
+void SDLGraphics::fillRectangle(const Rect &rectangle)
 {
-    const ClipRectangle &top = mClipStack.top();
+    const ClipRect &top = mClipStack.top();
     const SDL_Rect rect =
     {
         static_cast<int32_t>(rectangle.x + top.xOffset),
@@ -655,7 +655,7 @@ void SDLGraphics::fillRectangle(const Rectangle &rectangle)
 
 void SDLGraphics::_beginDraw()
 {
-    pushClipArea(Rectangle(0, 0, mRect.w, mRect.h));
+    pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
 
 void SDLGraphics::_endDraw()
@@ -663,11 +663,11 @@ void SDLGraphics::_endDraw()
     popClipArea();
 }
 
-bool SDLGraphics::pushClipArea(Rectangle area)
+bool SDLGraphics::pushClipArea(Rect area)
 {
     const bool result = Graphics::pushClipArea(area);
 
-    const ClipRectangle &carea = mClipStack.top();
+    const ClipRect &carea = mClipStack.top();
     const SDL_Rect rect =
     {
         static_cast<int32_t>(carea.x),
@@ -686,7 +686,7 @@ void SDLGraphics::popClipArea()
     if (mClipStack.empty())
         return;
 
-    const ClipRectangle &carea = mClipStack.top();
+    const ClipRect &carea = mClipStack.top();
     const SDL_Rect rect =
     {
         static_cast<int32_t>(carea.x),
@@ -703,7 +703,7 @@ void SDLGraphics::drawPoint(int x, int y)
     if (mClipStack.empty())
         return;
 
-    const ClipRectangle &top = mClipStack.top();
+    const ClipRect &top = mClipStack.top();
 
     x += top.xOffset;
     y += top.yOffset;
@@ -722,9 +722,9 @@ void SDLGraphics::drawPoint(int x, int y)
 }
 
 
-void SDLGraphics::drawRectangle(const Rectangle &rectangle)
+void SDLGraphics::drawRectangle(const Rect &rectangle)
 {
-    const ClipRectangle &top = mClipStack.top();
+    const ClipRect &top = mClipStack.top();
 
     SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
 
@@ -746,7 +746,7 @@ void SDLGraphics::drawRectangle(const Rectangle &rectangle)
 
 void SDLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
-    const ClipRectangle &top = mClipStack.top();
+    const ClipRect &top = mClipStack.top();
 
     SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
 

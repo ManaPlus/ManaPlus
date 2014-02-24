@@ -547,21 +547,21 @@ void Graphics::setWindowSize(const int width A_UNUSED,
 #endif
 }
 
-bool Graphics::pushClipArea(Rectangle area)
+bool Graphics::pushClipArea(Rect area)
 {
     // Ignore area with a negate width or height
     // by simple pushing an empty clip area
     // to the stack.
     if (area.width < 0 || area.height < 0)
     {
-        ClipRectangle carea;
+        ClipRect carea;
         mClipStack.push(carea);
         return true;
     }
 
     if (mClipStack.empty())
     {
-        ClipRectangle carea;
+        ClipRect carea;
         carea.x = area.x;
         carea.y = area.y;
         carea.width = area.width;
@@ -572,8 +572,8 @@ bool Graphics::pushClipArea(Rectangle area)
         return true;
     }
 
-    const ClipRectangle &top = mClipStack.top();
-    ClipRectangle carea;
+    const ClipRect &top = mClipStack.top();
+    ClipRect carea;
     carea = area;
     carea.xOffset = top.xOffset + carea.x;
     carea.yOffset = top.yOffset + carea.y;
@@ -618,7 +618,7 @@ void Graphics::popClipArea()
     mClipStack.pop();
 }
 
-const ClipRectangle *Graphics::getCurrentClipArea() const
+const ClipRect *Graphics::getCurrentClipArea() const
 {
     if (mClipStack.empty())
         return nullptr;

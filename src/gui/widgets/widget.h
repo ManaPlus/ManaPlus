@@ -69,7 +69,7 @@
 #include <string>
 
 #include "gui/color.h"
-#include "gui/rectangle.h"
+#include "gui/rect.h"
 
 #include "gui/widgets/widget2.h"
 
@@ -313,7 +313,7 @@ class Widget : public Widget2
           * @see getDimension, setX, getX, setY, getY, setPosition
           * @since 0.1.0
           */
-        void setDimension(const Rectangle& dimension);
+        void setDimension(const Rect& dimension);
 
         /**
           * Gets the dimension of the widget. The dimension is
@@ -323,7 +323,7 @@ class Widget : public Widget2
           * @see getDimension, setX, getX, setY, getY, setPosition
           * @since 0.1.0
           */
-        const Rectangle& getDimension() const A_WARN_UNUSED;
+        const Rect& getDimension() const A_WARN_UNUSED;
 
         /**
           * Sets the widget to be fosusable, or not.
@@ -888,7 +888,7 @@ class Widget : public Widget2
           * @see BasicContainer::drawChildren
           * @since 0.1.0
           */
-        virtual Rectangle getChildrenArea() A_WARN_UNUSED;
+        virtual Rect getChildrenArea() A_WARN_UNUSED;
 
         /**
           * Gets the internal focus handler used.
@@ -960,7 +960,7 @@ class Widget : public Widget2
           * @since 0.1.0
           */
         virtual void showWidgetPart(Widget* widget A_UNUSED,
-                                    Rectangle area A_UNUSED)
+                                    Rect area A_UNUSED)
         { }
 
         /**
@@ -997,7 +997,7 @@ class Widget : public Widget2
           * @param rectangle The rectangle to be shown.
           * @since 0.8.0
           */
-        virtual void showPart(Rectangle rectangle);
+        virtual void showPart(Rect rectangle);
 
     protected:
         /**
@@ -1165,7 +1165,7 @@ class Widget : public Widget2
         /**
           * Holds the dimension of the widget.
           */
-        Rectangle mDimension;
+        Rect mDimension;
 
         /** 
           * Holds the frame size of the widget.

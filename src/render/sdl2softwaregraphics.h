@@ -58,7 +58,7 @@ class SDL2SoftwareGraphics final : public Graphics
 
         void _endDraw();
 
-        bool pushClipArea(Rectangle rect);
+        bool pushClipArea(Rect rect);
 
         void popClipArea();
 
@@ -120,9 +120,9 @@ class SDL2SoftwareGraphics final : public Graphics
                         const int w, const int h,
                         const ImageRect &imgRect) override final;
 
-        void fillRectangle(const Rectangle &rect) override final;
+        void fillRectangle(const Rect &rect) override final;
 
-        void drawRectangle(const Rectangle &rect) override final;
+        void drawRectangle(const Rect &rect) override final;
 
         void drawPoint(int x, int y) override final;
 

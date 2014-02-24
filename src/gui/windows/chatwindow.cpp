@@ -327,7 +327,7 @@ void ChatWindow::updateTabsMargin()
 
 void ChatWindow::adjustTabSize()
 {
-    const Rectangle area = getChildrenArea();
+    const Rect area = getChildrenArea();
 
     const int aw = area.width;
     const int ah = area.height;

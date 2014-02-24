@@ -304,7 +304,7 @@ namespace gcn
 
     void TextBox::scrollToCaret()
     {
-        Rectangle scroll;
+        Rect scroll;
         scroll.x = getFont()->getWidth(
             mTextRows[mCaretRow].substr(0, mCaretColumn));
         scroll.y = getFont()->getHeight() * mCaretRow;

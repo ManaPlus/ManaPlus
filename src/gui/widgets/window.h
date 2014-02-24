@@ -450,7 +450,7 @@ class Window : public gcn::Container,
          */
         int getGuiAlpha() const A_WARN_UNUSED;
 
-        Rectangle getWindowArea() const A_WARN_UNUSED;
+        Rect getWindowArea() const A_WARN_UNUSED;
 
         bool isResizeAllowed(const MouseEvent &event) const A_WARN_UNUSED;
 
@@ -574,7 +574,7 @@ class Window : public gcn::Container,
         bool isOpaque()
         { return mOpaque; }
 
-        virtual Rectangle getChildrenArea();
+        virtual Rect getChildrenArea();
 
         /**
          * Resizes the window to fit the content.
@@ -688,9 +688,9 @@ class Window : public gcn::Container,
         Image *mGrip;                 /**< Resize grip */
         Window *mParent;              /**< The parent window */
         Layout *mLayout;              /**< Layout handler */
-        Rectangle mCloseRect;    /**< Close button rectangle */
-        Rectangle mStickyRect;   /**< Sticky button rectangle */
-        Rectangle mGripRect;     /**< Resize grip rectangle */
+        Rect mCloseRect;    /**< Close button rectangle */
+        Rect mStickyRect;   /**< Sticky button rectangle */
+        Rect mGripRect;     /**< Resize grip rectangle */
         std::string mWindowName;      /**< Name of the window */
         int mMinWinWidth;             /**< Minimum window width */
         int mMinWinHeight;            /**< Minimum window height */

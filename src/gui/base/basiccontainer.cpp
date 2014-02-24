@@ -117,9 +117,9 @@ namespace gcn
         mWidgets.erase(iter);
     }
 
-    Rectangle BasicContainer::getChildrenArea()
+    Rect BasicContainer::getChildrenArea()
     {
-        return Rectangle(0, 0, getWidth(), getHeight());
+        return Rect(0, 0, getWidth(), getHeight());
     }
 
     void BasicContainer::focusNext()
@@ -184,7 +184,7 @@ namespace gcn
 
     Widget *BasicContainer::getWidgetAt(int x, int y)
     {
-        const Rectangle r = getChildrenArea();
+        const Rect r = getChildrenArea();
 
         if (!r.isPointInRect(x, y))
             return nullptr;
@@ -284,7 +284,7 @@ namespace gcn
                 // draw it before drawing the widget
                 if (widget->getFrameSize() > 0)
                 {
-                    Rectangle rec = widget->getDimension();
+                    Rect rec = widget->getDimension();
                     const int frame = widget->getFrameSize();
                     const int frame2 = frame * 2;
                     rec.x -= frame;
@@ -321,9 +321,9 @@ namespace gcn
         BLOCK_END("BasicContainer::logicChildren")
     }
 
-    void BasicContainer::showWidgetPart(Widget* widget, Rectangle area)
+    void BasicContainer::showWidgetPart(Widget* widget, Rect area)
     {
-        const Rectangle widgetArea = getChildrenArea();
+        const Rect widgetArea = getChildrenArea();
 
         area.x += widget->getX();
         area.y += widget->getY();

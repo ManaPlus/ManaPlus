@@ -543,7 +543,7 @@ void Window::setResizable(const bool r)
 
 void Window::widgetResized(const Event &event A_UNUSED)
 {
-    const Rectangle area = getChildrenArea();
+    const Rect area = getChildrenArea();
 
     if (mGrip)
     {
@@ -860,7 +860,7 @@ void Window::mouseDragged(MouseEvent &event)
     {
         const int dx = event.getX() - mDragOffsetX;
         const int dy = event.getY() - mDragOffsetY;
-        Rectangle newDim = getDimension();
+        Rect newDim = getDimension();
 
         if (mouseResize & (TOP | BOTTOM))
         {
@@ -1258,7 +1258,7 @@ void Window::redraw()
 {
     if (mLayout)
     {
-        const Rectangle area = getChildrenArea();
+        const Rect area = getChildrenArea();
         int w = area.width;
         int h = area.height;
         mLayout->reflow(w, h);
@@ -1294,9 +1294,9 @@ void Window::ensureOnScreen()
         mDimension.y = 0;
 }
 
-Rectangle Window::getWindowArea() const
+Rect Window::getWindowArea() const
 {
-    return Rectangle(mPadding,
+    return Rect(mPadding,
         mPadding,
         mDimension.width - mPadding * 2,
         mDimension.height - mPadding * 2);
@@ -1321,9 +1321,9 @@ bool Window::getOptionBool(const std::string &name, const bool def) const
     return def;
 }
 
-Rectangle Window::getChildrenArea()
+Rect Window::getChildrenArea()
 {
-    return Rectangle(mPadding,
+    return Rect(mPadding,
         mTitleBarHeight,
         mDimension.width - mPadding * 2,
         mDimension.height - mPadding - mTitleBarHeight);

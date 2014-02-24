@@ -208,13 +208,13 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     const int h = 350;
 
     setContentSize(w, h);
-    mPlayerBox->setDimension(Rectangle(360, 0, 110, 90));
+    mPlayerBox->setDimension(Rect(360, 0, 110, 90));
     mActionButton->setPosition(385, 100);
     mRotateButton->setPosition(415, 100);
 
     mNameLabel->setPosition(5, 2);
     mNameField->setDimension(
-            Rectangle(60, 2, 300, mNameField->getHeight()));
+            Rect(60, 2, 300, mNameField->getHeight()));
 
     const int leftX = 120;
     const int rightX = 300;
@@ -530,7 +530,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
         add(mAttributeLabel[i]);
 
         mAttributeSlider[i] = new Slider(this, min, max);
-        mAttributeSlider[i]->setDimension(Rectangle(140, y + i * 24,
+        mAttributeSlider[i]->setDimension(Rect(140, y + i * 24,
                                                          150, 12));
         mAttributeSlider[i]->setActionEventId("statslider");
         mAttributeSlider[i]->addActionListener(this);

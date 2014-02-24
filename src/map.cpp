@@ -401,7 +401,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
         graphics->setColor(userPalette->getColorWithAlpha(
             UserPalette::WALKABLE_HIGHLIGHT));
 
-        graphics->fillRectangle(Rectangle(0, 0,
+        graphics->fillRectangle(Rect(0, 0,
             graphics->mWidth, graphics->mHeight));
     }
 
@@ -549,7 +549,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
         {\
             graphics->setColor(userPalette->getColorWithAlpha(\
                 UserPalette::color));\
-            graphics->fillRectangle(Rectangle(\
+            graphics->fillRectangle(Rect(\
                 x0 * mTileWidth - scrollX, \
                 y * mTileHeight - scrollY, \
                 width, mapTileSize));\

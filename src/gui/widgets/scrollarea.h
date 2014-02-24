@@ -119,21 +119,21 @@ class ScrollArea final : public gcn::ScrollArea,
 
         void widgetMoved(const Event &event) override final;
 
-        Rectangle getVerticalBarDimension() const;
+        Rect getVerticalBarDimension() const;
 
-        Rectangle getHorizontalBarDimension() const;
+        Rect getHorizontalBarDimension() const;
 
-        Rectangle getVerticalMarkerDimension();
+        Rect getVerticalMarkerDimension();
 
-        Rectangle getHorizontalMarkerDimension();
+        Rect getHorizontalMarkerDimension();
 
-        Rectangle getUpButtonDimension() const;
+        Rect getUpButtonDimension() const;
 
-        Rectangle getDownButtonDimension() const;
+        Rect getDownButtonDimension() const;
 
-        Rectangle getLeftButtonDimension() const;
+        Rect getLeftButtonDimension() const;
 
-        Rectangle getRightButtonDimension() const;
+        Rect getRightButtonDimension() const;
 
     protected:
         enum BUTTON_DIR

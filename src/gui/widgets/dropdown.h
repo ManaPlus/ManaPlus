@@ -125,7 +125,7 @@ class DropDown final : public ActionListener,
 
         void removeSelectionListener(SelectionListener* selectionListener);
 
-        Rectangle getChildrenArea() override;
+        Rect getChildrenArea() override;
 
         void action(const ActionEvent &actionEvent) override;
 

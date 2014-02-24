@@ -261,7 +261,7 @@ void ProgressBar::render(Graphics *graphics)
         {
             if (width > maxWidth)
                 width = maxWidth;
-            graphics->fillRectangle(Rectangle(mFillPadding, mFillPadding,
+            graphics->fillRectangle(Rect(mFillPadding, mFillPadding,
                 width, mDimension.height - pad));
         }
     }

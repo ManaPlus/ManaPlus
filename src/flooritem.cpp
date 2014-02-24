@@ -123,7 +123,7 @@ void FloorItem::draw(Graphics *const graphics,
             if (curTime > mDropTime + 28 && curTime < mDropTime + 50)
             {
                 graphics->setColor(Color(80, 200, 20, 200));
-                graphics->fillRectangle(Rectangle(
+                graphics->fillRectangle(Rect(
                                         x, y, dx, dy));
             }
             else if (curTime > mDropTime + 19
@@ -131,14 +131,14 @@ void FloorItem::draw(Graphics *const graphics,
             {
                 graphics->setColor(Color(200, 80, 20,
                     80 + 10 * (curTime - mDropTime - 18)));
-                graphics->fillRectangle(Rectangle(
+                graphics->fillRectangle(Rect(
                     x, y, dx, dy));
             }
             else if (curTime > mDropTime && curTime < mDropTime + 20)
             {
                 graphics->setColor(Color(20, 20, 255,
                     7 * (curTime - mDropTime)));
-                graphics->fillRectangle(Rectangle(x, y, dx, dy));
+                graphics->fillRectangle(Rect(x, y, dx, dy));
             }
         }
     }

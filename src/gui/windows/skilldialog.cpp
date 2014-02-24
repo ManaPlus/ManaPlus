@@ -115,7 +115,7 @@ class SkillListBox final : public ListBox
             // Draw filled rectangle around the selected list element
             if (mSelected >= 0)
             {
-                graphics->fillRectangle(Rectangle(mPadding, getRowHeight()
+                graphics->fillRectangle(Rect(mPadding, getRowHeight()
                     * mSelected + mPadding, getWidth() - 2 * mPadding,
                     getRowHeight()));
             }

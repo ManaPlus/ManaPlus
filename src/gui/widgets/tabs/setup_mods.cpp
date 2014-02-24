@@ -44,7 +44,7 @@ Setup_Mods::Setup_Mods(const Widget2 *const widget) :
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
 
-    setDimension(Rectangle(0, 0, 550, 350));
+    setDimension(Rect(0, 0, 550, 350));
 }
 
 Setup_Mods::~Setup_Mods()

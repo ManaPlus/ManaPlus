@@ -162,7 +162,7 @@ void Widget::_setParent(Widget* parent)
 
 void Widget::setWidth(int width)
 {
-    Rectangle newDimension = mDimension;
+    Rect newDimension = mDimension;
     newDimension.width = width;
 
     setDimension(newDimension);
@@ -170,7 +170,7 @@ void Widget::setWidth(int width)
 
 void Widget::setHeight(int height)
 {
-    Rectangle newDimension = mDimension;
+    Rect newDimension = mDimension;
     newDimension.height = height;
 
     setDimension(newDimension);
@@ -178,7 +178,7 @@ void Widget::setHeight(int height)
 
 void Widget::setX(int x)
 {
-    Rectangle newDimension = mDimension;
+    Rect newDimension = mDimension;
     newDimension.x = x;
 
     setDimension(newDimension);
@@ -186,7 +186,7 @@ void Widget::setX(int x)
 
 void Widget::setY(int y)
 {
-    Rectangle newDimension = mDimension;
+    Rect newDimension = mDimension;
     newDimension.y = y;
 
     setDimension(newDimension);
@@ -194,16 +194,16 @@ void Widget::setY(int y)
 
 void Widget::setPosition(int x, int y)
 {
-    Rectangle newDimension = mDimension;
+    Rect newDimension = mDimension;
     newDimension.x = x;
     newDimension.y = y;
 
     setDimension(newDimension);
 }
 
-void Widget::setDimension(const Rectangle& dimension)
+void Widget::setDimension(const Rect& dimension)
 {
-    const Rectangle oldDimension = mDimension;
+    const Rect oldDimension = mDimension;
     mDimension = dimension;
 
     if (mDimension.width != oldDimension.width
@@ -229,7 +229,7 @@ unsigned int Widget::getFrameSize() const
     return mFrameSize;
 }
 
-const Rectangle& Widget::getDimension() const
+const Rect& Widget::getDimension() const
 {
     return mDimension;
 }
@@ -434,7 +434,7 @@ void Widget::getAbsolutePosition(int& x, int& y) const
 
     mParent->getAbsolutePosition(parentX, parentY);
 
-    const Rectangle &rect = mParent->getChildrenArea();
+    const Rect &rect = mParent->getChildrenArea();
     x = parentX + mDimension.x + rect.x;
     y = parentY + mDimension.y + rect.y;
 }
@@ -492,7 +492,7 @@ void Widget::setTabOutEnabled(bool enabled)
 
 void Widget::setSize(int width, int height)
 {
-    Rectangle newDimension = mDimension;
+    Rect newDimension = mDimension;
     newDimension.width = width;
     newDimension.height = height;
 
@@ -589,9 +589,9 @@ const std::list<FocusListener*>& Widget::_getFocusListeners()
     return mFocusListeners;
 }
 
-Rectangle Widget::getChildrenArea()
+Rect Widget::getChildrenArea()
 {
-    return Rectangle(0, 0, 0, 0);
+    return Rect(0, 0, 0, 0);
 }
 
 FocusHandler* Widget::_getInternalFocusHandler()
@@ -669,7 +669,7 @@ void Widget::distributeShownEvent()
     }
 }
 
-void Widget::showPart(Rectangle rectangle)
+void Widget::showPart(Rect rectangle)
 {
     if (mParent)
         mParent->showWidgetPart(this, rectangle);

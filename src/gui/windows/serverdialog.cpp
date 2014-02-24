@@ -139,7 +139,7 @@ public:
         // Draw filled rectangle around the selected list element
         if (mSelected >= 0)
         {
-            graphics->fillRectangle(Rectangle(mPadding,
+            graphics->fillRectangle(Rect(mPadding,
                 height * mSelected + mPadding, getWidth() - 2 * mPadding,
                 height));
         }

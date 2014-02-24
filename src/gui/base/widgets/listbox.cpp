@@ -139,7 +139,7 @@ namespace gcn
                 mSelected = selected;
         }
 
-        Rectangle scroll;
+        Rect scroll;
 
         if (mSelected < 0)
             scroll.y = 0;

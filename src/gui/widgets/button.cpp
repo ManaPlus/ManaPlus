@@ -35,6 +35,8 @@
 #include "gui/font.h"
 #include "gui/gui.h"
 
+#include "gui/rect.h"
+
 #include "debug.h"
 
 int Button::mInstances = 0;
@@ -380,7 +382,7 @@ void Button::draw(Graphics *graphics)
     {
         // because we don't know where parent windows was moved,
         // need recalc vertexes
-        ClipRectangle &rect = graphics->getTopClip();
+        ClipRect &rect = graphics->getTopClip();
         if (rect.xOffset != mXOffset || rect.yOffset != mYOffset)
         {
             recalc = true;
@@ -420,7 +422,7 @@ void Button::draw(Graphics *graphics)
     int imageX = 0;
     int imageY = 0;
     int textX = 0;
-    const Rectangle &rect = mDimension;
+    const Rect &rect = mDimension;
     const int width = rect.width;
     const int height = rect.height;
     Font *const font = getFont();

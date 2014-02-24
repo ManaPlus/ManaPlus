@@ -2515,7 +2515,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
         graphics->setColor(userPalette->
                 getColorWithAlpha(UserPalette::PORTAL_HIGHLIGHT));
 
-        graphics->fillRectangle(Rectangle(x, y,
+        graphics->fillRectangle(Rect(x, y,
             mapTileSize, mapTileSize));
 
         if (mDrawHotKeys && !mName.empty())
@@ -2541,7 +2541,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
         graphics->setColor(userPalette->getColorWithAlpha(
             UserPalette::MONSTER_ATTACK_RANGE));
 
-        graphics->fillRectangle(Rectangle(
+        graphics->fillRectangle(Rect(
             x - attackRange, y - attackRange,
             2 * attackRange + mapTileSize, 2 * attackRange + mapTileSize));
     }
@@ -2606,14 +2606,14 @@ void Being::drawHpBar(Graphics *const graphics, const int maxHP, const int hp,
             || (!hp && maxHP == damage))
         {
             graphics->setColor(userPalette->getColorWithAlpha(color1));
-            graphics->fillRectangle(Rectangle(
+            graphics->fillRectangle(Rect(
                 x, y, dx, height));
             return;
         }
         else if (width - dx <= 0)
         {
             graphics->setColor(userPalette->getColorWithAlpha(color2));
-            graphics->fillRectangle(Rectangle(
+            graphics->fillRectangle(Rect(
                 x, y, width, height));
             return;
         }
@@ -2623,25 +2623,25 @@ void Being::drawHpBar(Graphics *const graphics, const int maxHP, const int hp,
         if (hp == maxHP)
         {
             graphics->setColor(userPalette->getColorWithAlpha(color1));
-            graphics->fillRectangle(Rectangle(
+            graphics->fillRectangle(Rect(
                 x, y, dx, height));
             return;
         }
         else if (width - dx <= 0)
         {
             graphics->setColor(userPalette->getColorWithAlpha(color2));
-            graphics->fillRectangle(Rectangle(
+            graphics->fillRectangle(Rect(
                 x, y, width, height));
             return;
         }
     }
 
     graphics->setColor(userPalette->getColorWithAlpha(color1));
-    graphics->fillRectangle(Rectangle(
+    graphics->fillRectangle(Rect(
         x, y, dx, height));
 
     graphics->setColor(userPalette->getColorWithAlpha(color2));
-    graphics->fillRectangle(Rectangle(x + dx, y, width - dx, height));
+    graphics->fillRectangle(Rect(x + dx, y, width - dx, height));
 }
 
 void Being::setHP(const int hp)

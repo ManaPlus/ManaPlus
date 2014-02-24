@@ -65,20 +65,20 @@
  * For comments regarding functions please see the header file.
  */
 
-#include "gui/rectangle.h"
+#include "gui/rect.h"
 
 #include "debug.h"
 
-Rectangle::Rectangle()
-    : x(0),
-      y(0),
-      width(0),
-      height(0)
+Rect::Rect() :
+    x(0),
+    y(0),
+    width(0),
+    height(0)
 {
 }
 
-Rectangle::Rectangle(const int x_, const int y_,
-                     const int width_, const int height_) :
+Rect::Rect(const int x_, const int y_,
+           const int width_, const int height_) :
     x(x_),
     y(y_),
     width(width_),
@@ -86,10 +86,10 @@ Rectangle::Rectangle(const int x_, const int y_,
 {
 }
 
-void Rectangle::setAll(const int x0,
-                       const int y0,
-                       const int width0,
-                       const int height0)
+void Rect::setAll(const int x0,
+                  const int y0,
+                  const int width0,
+                  const int height0)
 {
     x = x0;
     y = y0;
@@ -97,7 +97,7 @@ void Rectangle::setAll(const int x0,
     height = height0;
 }
 
-bool Rectangle::isIntersecting(const Rectangle& rectangle) const
+bool Rect::isIntersecting(const Rect& rectangle) const
 {
     int x_ = x;
     int y_ = y;
@@ -135,7 +135,7 @@ bool Rectangle::isIntersecting(const Rectangle& rectangle) const
     return true;
 }
 
-bool Rectangle::isPointInRect(int x_, int y_) const
+bool Rect::isPointInRect(int x_, int y_) const
 {
     return x_ >= x
         && y_ >= y
@@ -144,9 +144,9 @@ bool Rectangle::isPointInRect(int x_, int y_) const
 }
 
 std::ostream& operator<<(std::ostream& out,
-                          const Rectangle& rectangle)
+                         const Rect& rectangle)
 {
-    out << "Rectangle [x = " << rectangle.x
+    out << "Rect [x = " << rectangle.x
         << ", y = " << rectangle.y
         << ", width = " << rectangle.width
         << ", height = " << rectangle.height

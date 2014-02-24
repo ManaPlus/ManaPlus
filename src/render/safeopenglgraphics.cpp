@@ -459,7 +459,7 @@ void SafeOpenGLGraphics::_beginDraw()
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    pushClipArea(Rectangle(0, 0, mRect.w, mRect.h));
+    pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
 
 void SafeOpenGLGraphics::_endDraw()
@@ -523,21 +523,21 @@ SDL_Surface* SafeOpenGLGraphics::getScreenshot()
     return screenshot;
 }
 
-bool SafeOpenGLGraphics::pushClipArea(Rectangle area)
+bool SafeOpenGLGraphics::pushClipArea(Rect area)
 {
     int transX = 0;
     int transY = 0;
 
     if (!mClipStack.empty())
     {
-        const ClipRectangle &clipArea = mClipStack.top();
+        const ClipRect &clipArea = mClipStack.top();
         transX = -clipArea.xOffset;
         transY = -clipArea.yOffset;
     }
 
     const bool result = Graphics::pushClipArea(area);
 
-    const ClipRectangle &clipArea = mClipStack.top();
+    const ClipRect &clipArea = mClipStack.top();
 
     glPushMatrix();
     glTranslatef(static_cast<GLfloat>(transX + clipArea.xOffset),
@@ -557,7 +557,7 @@ void SafeOpenGLGraphics::popClipArea()
         return;
 
     glPopMatrix();
-    const ClipRectangle &clipArea = mClipStack.top();
+    const ClipRect &clipArea = mClipStack.top();
     glScissor(clipArea.x * mScale,
         (mRect.h - clipArea.y - clipArea.height) * mScale,
         clipArea.width * mScale,
@@ -613,12 +613,12 @@ void SafeOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
     glEnd();
 }
 
-void SafeOpenGLGraphics::drawRectangle(const Rectangle& rect)
+void SafeOpenGLGraphics::drawRectangle(const Rect& rect)
 {
     drawRectangle(rect, false);
 }
 
-void SafeOpenGLGraphics::fillRectangle(const Rectangle& rect)
+void SafeOpenGLGraphics::fillRectangle(const Rect& rect)
 {
     drawRectangle(rect, true);
 }
@@ -661,7 +661,7 @@ void SafeOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
 }
 
-void SafeOpenGLGraphics::drawRectangle(const Rectangle& rect,
+void SafeOpenGLGraphics::drawRectangle(const Rect& rect,
                                        const bool filled)
 {
     BLOCK_START("Graphics::drawRectangle")
