@@ -1914,6 +1914,12 @@ void Client::initRootDir()
         Configuration portable;
         portable.init(portableName);
 
+        if (mOptions.brandingPath.empty())
+        {
+            branding.init(portableName);
+            branding.setDefaultValues(getBrandingDefaults());
+        }
+
         logger->log("Portable file: %s", portableName.c_str());
 
         if (mOptions.localDataDir.empty())
