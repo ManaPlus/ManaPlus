@@ -587,6 +587,8 @@ SET(SRCS
     utils/mkdir.h
     utils/xml.cpp
     utils/xml.h
+    utils/xmlutils.cpp
+    utils/xmlutils.h
     test/testlauncher.cpp
     test/testlauncher.h
     test/testmain.cpp

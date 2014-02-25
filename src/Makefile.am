@@ -118,6 +118,8 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      utils/timer.h \
 	      utils/xml.cpp \
 	      utils/xml.h \
+	      utils/xmlutils.cpp \
+	      utils/xmlutils.h \
 	      utils/translation/podict.cpp \
 	      utils/translation/podict.h
 
@@ -686,6 +688,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/mutex.h \
 	      utils/xml.cpp \
 	      utils/xml.h \
+	      utils/xmlutils.cpp \
+	      utils/xmlutils.h \
 	      test/testlauncher.cpp \
 	      test/testlauncher.h \
 	      test/testmain.cpp \
@@ -1033,6 +1037,7 @@ manaplus_SOURCES += \
 	      gui/widgets/browserbox_unittest.cc \
 	      utils/files_unittest.cc \
 	      utils/stringutils_unittest.cc \
+	      utils/xmlutils_unittest.cc \
 	      resources/dye_unittest.cc
 endif
 
