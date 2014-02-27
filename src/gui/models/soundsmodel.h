@@ -25,7 +25,7 @@
 
 #include "utils/gettext.h"
 
-#include "debug.h"
+#include "localconsts.h"
 
 class SoundsModel final : public NamesModel
 {

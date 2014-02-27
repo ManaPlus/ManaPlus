@@ -26,7 +26,7 @@
 
 #include "gui/models/namesmodel.h"
 
-#include "debug.h"
+#include "localconsts.h"
 
 class FontsModel final : public NamesModel
 {

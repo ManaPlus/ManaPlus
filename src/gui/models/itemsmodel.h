@@ -31,7 +31,7 @@
 
 #include "utils/gettext.h"
 
-#include "debug.h"
+#include "localconsts.h"
 
 class ItemsModal final : public ListModel
 {

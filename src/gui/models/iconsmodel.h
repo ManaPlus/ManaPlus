@@ -29,7 +29,7 @@
 
 #include "resources/db/itemdb.h"
 
-#include "debug.h"
+#include "localconsts.h"
 
 class IconsModel final : public ListModel
 {

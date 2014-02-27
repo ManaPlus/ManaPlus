@@ -27,7 +27,7 @@
 
 #include "utils/gettext.h"
 
-#include "debug.h"
+#include "localconsts.h"
 
 const char *MAGIC_SCHOOL_TEXT[6] =
 {

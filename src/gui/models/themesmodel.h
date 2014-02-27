@@ -28,7 +28,7 @@
 
 #include "utils/gettext.h"
 
-#include "debug.h"
+#include "localconsts.h"
 
 class ThemesModel final : public NamesModel
 {
