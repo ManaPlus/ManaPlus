@@ -108,6 +108,7 @@
 #endif
 #include "resources/db/palettedb.h"
 #include "resources/db/petdb.h"
+#include "resources/db/weaponsdb.h"
 
 #include "utils/base64.h"
 #include "utils/cpu.h"
@@ -838,6 +839,7 @@ void Client::gameClear()
     MonsterDB::unload();
     NPCDB::unload();
     AvatarDB::unload();
+    WeaponsDB::unload();
     PaletteDB::unload();
     PETDB::unload();
     StatusEffect::unload();
@@ -1468,6 +1470,7 @@ int Client::gameExec()
                     SpecialDB::load();
 #endif
                     AvatarDB::load();
+                    WeaponsDB::load();
                     NPCDB::load();
                     PETDB::load();
                     EmoteDB::load();

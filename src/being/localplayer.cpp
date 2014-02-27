@@ -67,6 +67,7 @@
 #include "resources/iteminfo.h"
 
 #include "resources/db/emotedb.h"
+#include "resources/db/weaponsdb.h"
 
 #include "utils/gettext.h"
 #include "utils/timer.h"
@@ -2337,23 +2338,14 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
     // if attack distance for sword
     if (allowSword)
     {
-        // finding sword
-        item = inv->findItem(571, 0);
-
-        if (!item)
-            item = inv->findItem(570, 0);
-
-        if (!item)
-            item = inv->findItem(579, 0);
-
-        if (!item)
-            item = inv->findItem(867, 0);
-
-        if (!item)
-            item = inv->findItem(536, 0);
-
-        if (!item)
-            item = inv->findItem(758, 0);
+        // searching swords
+        const WeaponsInfos &swords = WeaponsDB::getSwords();
+        FOR_EACH (WeaponsInfosIter, it, swords)
+        {
+            item = inv->findItem(*it, 0);
+            if (item)
+                break;
+        }
 
         // no swords
         if (!item)
@@ -2366,10 +2358,14 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
         // if need equip shield too
         if (mAttackWeaponType == 3)
         {
-            // finding shield
-            item = inv->findItem(601, 0);
-            if (!item)
-                item = inv->findItem(602, 0);
+            // searching shield
+            const WeaponsInfos &shields = WeaponsDB::getShields();
+            FOR_EACH (WeaponsInfosIter, it, shields)
+            {
+                item = inv->findItem(*it, 0);
+                if (item)
+                    break;
+            }
             if (item && !item->isEquipped())
                 PlayerInfo::equipItem(item, true);
         }
@@ -2377,11 +2373,14 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
     // big distance. allowed only bow
     else
     {
-        // finding bow
-        item = inv->findItem(545, 0);
-
-        if (!item)
-            item = inv->findItem(530, 0);
+        // searching bow
+        const WeaponsInfos &bows = WeaponsDB::getBows();
+        FOR_EACH (WeaponsInfosIter, it, bows)
+        {
+            item = inv->findItem(*it, 0);
+            if (item)
+                break;
+        }
 
         // no bow
         if (!item)

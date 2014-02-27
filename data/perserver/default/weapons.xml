@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<weapons>
+    <swords>
+        <item id="571"/>
+        <item id="570"/>
+        <item id="579"/>
+        <item id="867"/>
+        <item id="536"/>
+        <item id="758"/>
+    </swords>
+    <bows>
+        <item id="545"/>
+        <item id="530"/>
+    </bows>
+    <shields>
+        <item id="601"/>
+        <item id="602"/>
+    </shields>
+</weapons>

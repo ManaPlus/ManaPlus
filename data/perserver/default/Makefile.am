@@ -5,7 +5,8 @@ default_DATA =				\
 	chatcommands.txt		\
 	deadmessages.xml		\
 	features.xml		\
-	gmcommands.txt
+	gmcommands.txt		\
+	weapons.xml
 
 EXTRA_DIST =				\
 	$(default_DATA) \

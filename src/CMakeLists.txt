@@ -525,6 +525,8 @@ SET(SRCS
     resources/sdlmusic.h
     resources/db/sounddb.cpp
     resources/db/sounddb.h
+    resources/db/weaponsdb.cpp
+    resources/db/weaponsdb.h
     resources/soundeffect.cpp
     resources/soundeffect.h
     resources/soundinfo.h
