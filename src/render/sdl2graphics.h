@@ -204,7 +204,7 @@ class SDLGraphics final : public Graphics
     protected:
         uint32_t mRendererFlags;
         uint32_t mOldPixel;
-        int mOldAlpha;
+        unsigned int mOldAlpha;
 
     private:
         void inline calcImageRect(ImageVertexes *const vert,

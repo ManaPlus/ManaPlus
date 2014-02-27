@@ -173,7 +173,7 @@ class SDL2SoftwareGraphics final : public Graphics
         uint32_t mRendererFlags;
         SDL_Surface *mSurface;
         uint32_t mOldPixel;
-        int mOldAlpha;
+        unsigned int mOldAlpha;
 
     private:
         void inline calcImageRect(ImageVertexes *const vert,
