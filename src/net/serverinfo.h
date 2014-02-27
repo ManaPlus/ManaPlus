@@ -139,10 +139,6 @@ public:
         else if (compareStrI(serverType, "eathena") == 0)
             return TMWATHENA;
 #endif
-#ifdef MANASERV_SUPPORT
-        else if (compareStrI(serverType, "manaserv") == 0)
-            return MANASERV;
-#endif
         return UNKNOWN;
     }
 };

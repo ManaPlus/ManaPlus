@@ -32,10 +32,6 @@
 #include "net/eathena/generalhandler.h"
 #endif
 
-#ifdef MANASERV_SUPPORT
-#include "net/manaserv/generalhandler.h"
-#endif
-
 #include "debug.h"
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -163,12 +159,6 @@ void connectToServer(const ServerInfo &server)
 #endif
                 break;
             case ServerInfo::MANASERV:
-#ifdef MANASERV_SUPPORT
-                new ManaServ::GeneralHandler;
-#else
-                new TmwAthena::GeneralHandler;
-#endif
-                break;
             case ServerInfo::TMWATHENA:
             case ServerInfo::UNKNOWN:
             default:

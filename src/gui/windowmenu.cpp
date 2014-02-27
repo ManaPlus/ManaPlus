@@ -31,9 +31,6 @@
 #include "gui/popups/textpopup.h"
 
 #include "gui/windows/skilldialog.h"
-#ifdef MANASERV_SUPPORT
-#include "gui/specialswindow.h"
-#endif
 
 #include "gui/widgets/button.h"
 
@@ -110,15 +107,6 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
         addButton(N_("SKI"),
             _("Skills"), x, h, Input::KEY_WINDOW_SKILL);
     }
-
-#ifdef MANASERV_SUPPORT
-    if (Net::getNetworkType() == ServerInfo::MANASERV)
-    {
-        // TRANSLATORS: short button name for specials window.
-        addButton(N_("SPE"),
-            _("Specials"), x, h, Input::KEY_NO_VALUE);
-    }
-#endif
 
     // TRANSLATORS: short button name for social window.
     addButton(N_("SOC"),

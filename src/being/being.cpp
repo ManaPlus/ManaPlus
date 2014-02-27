@@ -371,50 +371,7 @@ void Being::setDestination(const int dstX, const int dstY)
     if (!mMap)
         return;
 
-#ifdef MANASERV_SUPPORT
-    if (Net::getNetworkType() != ServerInfo::MANASERV)
-#endif
-    {
-        setPath(mMap->findPath(mX, mY, dstX, dstY, getWalkMask()));
-        return;
-    }
-
-#ifdef MANASERV_SUPPORT
-    // Don't handle flawed destinations from server...
-    if (dstX == 0 || dstY == 0)
-        return;
-
-    // If the destination is unwalkable, don't bother trying to get there
-    if (!mMap->getWalk(dstX / mapTileSize, dstY / mapTileSize))
-        return;
-
-    Position dest = mMap->checkNodeOffsets(getCollisionRadius(), getWalkMask(),
-                                           dstX, dstY);
-    Path thisPath = mMap->findPixelPath(static_cast<int>(mPos.x),
-        static_cast<int>(mPos.y), dest.x, dest.y,
-        static_cast<int>(getCollisionRadius()),
-        static_cast<unsigned char>(getWalkMask()));
-
-    if (thisPath.empty())
-    {
-        // If there is no path but the destination is on the same walkable tile,
-        // we accept it.
-        if (static_cast<int>(mPos.x) / mapTileSize == dest.x / mapTileSize
-            && static_cast<int>(mPos.y) / mapTileSize == dest.y / mapTileSize)
-        {
-            mDest.x = static_cast<float>(dest.x);
-            mDest.y = static_cast<float>(dest.y);
-        }
-        setPath(Path());
-        return;
-    }
-
-    // The destination is valid, so we set it.
-    mDest.x = static_cast<float>(dest.x);
-    mDest.y = static_cast<float>(dest.y);
-
-    setPath(thisPath);
-#endif
+    setPath(mMap->findPath(mX, mY, dstX, dstY, getWalkMask()));
 }
 
 void Being::clearPath()
@@ -428,12 +385,7 @@ void Being::setPath(const Path &path)
     if (mPath.empty())
         return;
 
-#ifdef MANASERV_SUPPORT
-    if ((Net::getNetworkType() != ServerInfo::MANASERV) &&
-        mAction != MOVE && mAction != DEAD)
-#else
     if (mAction != MOVE && mAction != DEAD)
-#endif
     {
         nextTile();
         mActionTime = tick_time;
@@ -771,13 +723,8 @@ void Being::handleAttack(Being *const victim, const int damage,
     else if (mInfo->getAttack(attackId))
         fireMissile(victim, mInfo->getAttack(attackId)->mMissileParticle);
 
-#ifdef MANASERV_SUPPORT
-    if (Net::getNetworkType() != ServerInfo::MANASERV)
-#endif
-    {
-        reset();
-        mActionTime = tick_time;
-    }
+    reset();
+    mActionTime = tick_time;
 
     if (this != player_node)
     {
@@ -824,13 +771,8 @@ void Being::handleSkill(Being *const victim, const int damage,
     if (data)
         fireMissile(victim, data->particle);
 
-#ifdef MANASERV_SUPPORT
-    if (Net::getNetworkType() != ServerInfo::MANASERV)
-#endif
-    {
-        reset();
-        mActionTime = tick_time;
-    }
+    reset();
+    mActionTime = tick_time;
 
     if (this != player_node)
     {
@@ -1443,157 +1385,68 @@ void Being::logic()
     }
 
     int frameCount = static_cast<int>(getFrameCount());
-#ifdef MANASERV_SUPPORT
-    if ((Net::getNetworkType() == ServerInfo::MANASERV) && (mAction != DEAD))
+
+    switch (mAction)
     {
-        const Vector dest = (mPath.empty()) ?
-            mDest : Vector(static_cast<float>(mPath.front().x),
-                           static_cast<float>(mPath.front().y));
+        case STAND:
+        case SIT:
+        case DEAD:
+        case HURT:
+        case SPAWN:
+        default:
+            break;
 
-        // This is a hack that stops NPCs from running off the map...
-        if (mDest.x <= 0 && mDest.y <= 0)
+        case MOVE:
         {
-            BLOCK_END("Being::logic")
-            return;
+            if (static_cast<float>(get_elapsed_time(
+                mActionTime)) >= mSpeed)
+            {
+                nextTile();
+            }
+            break;
         }
 
-        // The Vector representing the difference between current position
-        // and the next destination path node.
-        Vector dir = dest - mPos;
-
-        const float nominalLength = dir.length();
-
-        // When we've not reached our destination, move to it.
-        if (nominalLength > 0.0F && !mWalkSpeed.isNull())
+        case ATTACK:
         {
-            // The deplacement of a point along a vector is calculated
-            // using the Unit Vector (â) multiplied by the point speed.
-            // â = a / ||a|| (||a|| is the a length.)
-            // Then, diff = (dir/||dir||) * speed.
-            const Vector normalizedDir = dir.normalized();
-            Vector diff(normalizedDir.x * mWalkSpeed.x,
-                        normalizedDir.y * mWalkSpeed.y);
+            if (!mActionTime)
+                break;
 
-            // Test if we don't miss the destination by a move too far:
-            if (diff.length() > nominalLength)
+            int curFrame = 0;
+            if (mAttackSpeed)
             {
-                setPosition(mPos + dir);
-
-                // Also, if the destination is reached, try to get the next
-                // path point, if existing.
-                if (!mPath.empty())
-                    mPath.pop_front();
-            }
-            // Otherwise, go to it using the nominal speed.
-            else
-            {
-                setPosition(mPos + diff);
+                curFrame = (get_elapsed_time(mActionTime) * frameCount)
+                    / mAttackSpeed;
             }
 
-            if (mAction != MOVE)
-                setAction(MOVE, 0);
+            if (this == player_node && curFrame >= frameCount)
+                nextTile();
 
-            // Update the player sprite direction.
-            // N.B.: We only change this if the distance is more than one pixel.
-            if (nominalLength > 1.0F)
-            {
-                int direction = 0;
-                const float dx = std::abs(dir.x);
-                float dy = std::abs(dir.y);
-
-                // When not using mouse for the player, we slightly prefer
-                // UP and DOWN position, especially when walking diagonally.
-                if (player_node && this == player_node &&
-                    !player_node->isPathSetByMouse())
-                {
-                    dy = dy + 2;
-                }
-
-                if (dx > dy)
-                     direction |= (dir.x > 0) ? RIGHT : LEFT;
-                else
-                     direction |= (dir.y > 0) ? DOWN : UP;
-
-                setDirection(static_cast<uint8_t>(direction));
-            }
-        }
-        else if (!mPath.empty())
-        {
-            // If the current path node has been reached,
-            // remove it and go to the next one.
-            mPath.pop_front();
-        }
-        else if (mAction == MOVE)
-        {
-            setAction(STAND, 0);
+            break;
         }
     }
-    else
-    if (Net::getNetworkType() != ServerInfo::MANASERV)
-#endif
+
+    if (mAction == MOVE)
     {
-        switch (mAction)
-        {
-            case STAND:
-            case SIT:
-            case DEAD:
-            case HURT:
-            case SPAWN:
-            default:
-               break;
+        const int xOffset = getXOffset();
+        const int yOffset = getYOffset();
+        int offset = xOffset;
+        if (!offset)
+            offset = yOffset;
 
-            case MOVE:
-            {
-                if (static_cast<float>(get_elapsed_time(
-                    mActionTime)) >= mSpeed)
-                {
-                    nextTile();
-                }
-                break;
-            }
+        mSortOffsetY = (mOldHeight * mapTileSize / 2)
+            + (mOffsetY * mapTileSize / 2)
+            * (mapTileSize - abs(offset)) / mapTileSize;
+        const int yOffset2 = yOffset - mSortOffsetY;
 
-            case ATTACK:
-            {
-                if (!mActionTime)
-                    break;
-
-                int curFrame = 0;
-                if (mAttackSpeed)
-                {
-                    curFrame = (get_elapsed_time(mActionTime) * frameCount)
-                        / mAttackSpeed;
-                }
-
-                if (this == player_node && curFrame >= frameCount)
-                    nextTile();
-
-                break;
-            }
-        }
-
-        if (mAction == MOVE)
-        {
-            const int xOffset = getXOffset();
-            const int yOffset = getYOffset();
-            int offset = xOffset;
-            if (!offset)
-                offset = yOffset;
-
-            mSortOffsetY = (mOldHeight * mapTileSize / 2)
-                + (mOffsetY * mapTileSize / 2)
-                * (mapTileSize - abs(offset)) / mapTileSize;
-            const int yOffset2 = yOffset - mSortOffsetY;
-
-            // Update pixel coordinates
-            setPosition(static_cast<float>(mX * mapTileSize
-                + mapTileSize / 2 + xOffset), static_cast<float>(
-                mY * mapTileSize + mapTileSize + yOffset2));
-        }
-        else
-        {
-            setPosition(static_cast<float>(mX * mapTileSize + mapTileSize / 2),
-                static_cast<float>(mY * mapTileSize + mapTileSize));
-        }
+        // Update pixel coordinates
+        setPosition(static_cast<float>(mX * mapTileSize
+            + mapTileSize / 2 + xOffset), static_cast<float>(
+            mY * mapTileSize + mapTileSize + yOffset2));
+    }
+    else
+    {
+        setPosition(static_cast<float>(mX * mapTileSize + mapTileSize / 2),
+            static_cast<float>(mY * mapTileSize + mapTileSize));
     }
 
     if (mEmotionSprite)

@@ -103,9 +103,6 @@
 #include "resources/db/moddb.h"
 #include "resources/db/monsterdb.h"
 #include "resources/db/npcdb.h"
-#ifdef MANASERV_SUPPORT
-#include "resources/db/specialdb.h"
-#endif
 #include "resources/db/palettedb.h"
 #include "resources/db/petdb.h"
 #include "resources/db/weaponsdb.h"
@@ -1466,9 +1463,6 @@ int Client::gameExec()
                     ItemDB::load();
                     Being::load();
                     MonsterDB::load();
-#ifdef MANASERV_SUPPORT
-                    SpecialDB::load();
-#endif
                     AvatarDB::load();
                     WeaponsDB::load();
                     NPCDB::load();

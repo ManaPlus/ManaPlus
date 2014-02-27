@@ -472,17 +472,13 @@ class Being : public ActorSprite, public ConfigListener
         }
 
         /**
-         * Sets the walk speed.
-         * in pixels per second for eAthena,
-         * in tiles per second for Manaserv.
+         * Sets the walk speed in pixels per second.
          */
         void setWalkSpeed(Vector speed)
         { mWalkSpeed = speed; mSpeed = speed.x; }
 
         /**
-         * Gets the walk speed.
-         * in pixels per second for eAthena,
-         * in tiles per second for Manaserv (0.1 precision).
+         * Gets the walk speed in pixels per second.
          */
         Vector getWalkSpeed() const A_WARN_UNUSED
         { return mWalkSpeed; }
@@ -1037,8 +1033,7 @@ class Being : public ActorSprite, public ConfigListener
 
         /**
          * Walk speed for x and y movement values.
-         * In pixels per second for eAthena,
-         * In pixels per ticks for Manaserv.
+         * In pixels per second.
          * @see MILLISECONDS_IN_A_TICK
          */
         Vector mWalkSpeed;

@@ -38,17 +38,9 @@ class TypeListModel : public ListModel
          */
         int getNumberOfElements() override final A_WARN_UNUSED
 #ifdef EATHENA_SUPPORT
-#ifdef MANASERV_SUPPORT
-        { return 4; }
-#else
-        { return 3; }
-#endif
-#else
-#ifdef MANASERV_SUPPORT
         { return 3; }
 #else
         { return 2; }
-#endif
 #endif
 
         /**
@@ -64,15 +56,6 @@ class TypeListModel : public ListModel
 #ifdef EATHENA_SUPPORT
             else if (elementIndex == 2)
                 return "eAthena";
-#ifdef MANASERV_SUPPORT
-            else if (elementIndex == 3)
-                return "ManaServ";
-#endif
-#else
-#ifdef MANASERV_SUPPORT
-            else if (elementIndex == 2)
-                return "ManaServ";
-#endif
 #endif
             else
                 return "Unknown";

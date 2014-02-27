@@ -137,23 +137,10 @@ class SortBeingFunctor final
                 return being1->getDistance() < being2->getDistance();
             }
 
-            int d1, d2;
-#ifdef MANASERV_SUPPORT
-            if (Net::getNetworkType() == ServerInfo::MANASERV)
-            {
-                const Vector &pos1 = being1->getPosition();
-                d1 = abs((static_cast<int>(pos1.x)) - x)
-                    + abs((static_cast<int>(pos1.y)) - y);
-                const Vector &pos2 = being2->getPosition();
-                d2 = abs((static_cast<int>(pos2.x)) - x)
-                    + abs((static_cast<int>(pos2.y)) - y);
-            }
-            else
-#endif
-            {
-                d1 = abs(being1->getTileX() - x) + abs(being1->getTileY() - y);
-                d2 = abs(being2->getTileX() - x) + abs(being2->getTileY() - y);
-            }
+            const int d1 = abs(being1->getTileX() - x)
+                + abs(being1->getTileY() - y);
+            const int d2 = abs(being2->getTileX() - x)
+                + abs(being2->getTileY() - y);
 
             if (d1 != d2)
                 return d1 < d2;

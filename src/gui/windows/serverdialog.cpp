@@ -63,20 +63,12 @@ static std::string serverTypeToString(const ServerInfo::Type type)
             return "TmwAthena";
         case ServerInfo::EVOL:
             return "Evol";
-#ifdef EATHENA_SUPPORT
         case ServerInfo::EATHENA:
+#ifdef EATHENA_SUPPORT
             return "eAthena";
 #endif
-#ifdef MANASERV_SUPPORT
-        case ServerInfo::MANASERV:
-            return "ManaServ";
-#else
-        case ServerInfo::MANASERV:
-#endif
-#ifndef EATHENA_SUPPORT
-        case ServerInfo::EATHENA:
-#endif
         default:
+        case ServerInfo::MANASERV:
         case ServerInfo::UNKNOWN:
             return "";
     }
@@ -90,20 +82,12 @@ static uint16_t defaultPortForServerType(const ServerInfo::Type type)
         case ServerInfo::EATHENA:
 #ifdef EATHENA_SUPPORT
             return 6900;
-#else
-            return 6901;
 #endif
         case ServerInfo::UNKNOWN:
         case ServerInfo::TMWATHENA:
         case ServerInfo::EVOL:
-#ifdef MANASERV_SUPPORT
-            return 6901;
-        case ServerInfo::MANASERV:
-            return 9601;
-#else
         case ServerInfo::MANASERV:
             return 6901;
-#endif
     }
 }
 

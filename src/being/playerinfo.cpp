@@ -48,11 +48,6 @@ int mCharId = 0;
 Inventory *mInventory = nullptr;
 Equipment *mEquipment = nullptr;
 
-#ifdef MANASERV_SUPPORT
-std::map<int, Special> mSpecials;
-signed char mSpecialRechargeUpdateNeeded = 0;
-#endif
-
 bool mTrading = false;
 int mLevelProgress = 0;
 std::set<int> mProtectedItems;
@@ -365,20 +360,6 @@ int getCharId()
 
 void logic()
 {
-#ifdef MANASERV_SUPPORT
-    if ((mSpecialRechargeUpdateNeeded % 11) == 0)
-    {
-        mSpecialRechargeUpdateNeeded = 0;
-        FOR_EACH (SpecialsMap::iterator, it, mSpecials)
-        {
-            Special &special = it->second;
-            special.currentMana += special.recharge;
-            if (special.currentMana > special.neededMana)
-                special.currentMana = special.neededMana;
-        }
-    }
-    mSpecialRechargeUpdateNeeded++;
-#endif
 }
 
 bool isTrading()

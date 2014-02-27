@@ -139,21 +139,11 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
         case ServerInfo::EATHENA:
             mTypeField->setSelected(2);
             break;
-        case ServerInfo::MANASERV:
-#ifdef MANASERV_SUPPORT
-            mTypeField->setSelected(3);
-            break;
-#endif
-#else
-        case ServerInfo::MANASERV:
-#ifdef MANASERV_SUPPORT
-            mTypeField->setSelected(2);
-            break;
-#endif
 #endif
         default:
         case ServerInfo::UNKNOWN:
         case ServerInfo::TMWATHENA:
+        case ServerInfo::MANASERV:
 #ifndef EATHENA_SUPPORT
         case ServerInfo::EATHENA:
 #endif
@@ -226,17 +216,6 @@ void EditServerDialog::action(const ActionEvent &event)
                     case 2:
                         mServer.type = ServerInfo::EATHENA;
                         break;
-#ifdef MANASERV_SUPPORT
-                    case 3:
-                        mServer.type = ServerInfo::MANASERV;
-                        break;
-#endif
-#else
-#ifdef MANASERV_SUPPORT
-                    case 2:
-                        mServer.type = ServerInfo::MANASERV;
-                        break;
-#endif
 #endif
                     default:
                         mServer.type = ServerInfo::UNKNOWN;

@@ -97,10 +97,7 @@ uint8_t MessageIn::fromServerDirection(const uint8_t serverDir)
         case 7:
             return 9;
         case 8:
-#ifdef MANASERV_SUPPORT
-            if (Net::getNetworkType() != ServerInfo::MANASERV)
-#endif
-                return 8;
+            return 8;
         default:
             logger->log("incorrect direction: %d",
                 static_cast<int>(serverDir));

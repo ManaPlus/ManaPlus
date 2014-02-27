@@ -68,14 +68,8 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
         return;
     }
 
-#ifdef MANASERV_SUPPORT
-    const int offset = XML::getProperty(rootNode, "offset",
-        Net::getNetworkType() != ServerInfo::MANASERV
-        ? OLD_TMWATHENA_OFFSET : 0);
-#else
     const int offset = XML::getProperty(rootNode,
         "offset", OLD_TMWATHENA_OFFSET);
-#endif
 
     // iterate <monster>s
     for_each_xml_child_node(monsterNode, rootNode)

@@ -183,14 +183,7 @@ public:
     { return getPixelX() - mapTileSize / 2; }
 
     int getActorY() const
-    {
-#ifdef MANASERV_SUPPORT
-        return getPixelY() + ((Net::getNetworkType() == ServerInfo::MANASERV)
-            ? 15 : mapTileSize);
-#else
-        return getPixelY() - mapTileSize;
-#endif
-    }
+    { return getPixelY() - mapTileSize; }
 
 protected:
     /**

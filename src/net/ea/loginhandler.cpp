@@ -70,12 +70,7 @@ void LoginHandler::loginAccount(LoginData *const loginData1) const
 {
     if (loginData1)
     {
-        // Since we're attempting to use the tAthena protocol,
-        // let's reset the character slots to the good value,
-        // in case we just logged out a Manaserv server
-        // with a different config.
         loginData1->resetCharacterSlots();
-
         sendLoginRegister(loginData1->username, loginData1->password, "");
     }
 }
