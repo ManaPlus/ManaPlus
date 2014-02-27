@@ -1527,8 +1527,7 @@ int Client::gameExec()
                     mCurrentDialog = new ConnectionDialog(
                         // TRANSLATORS: connection dialog header
                         _("Connecting to the game server"),
-                        Net::getNetworkType() != ServerInfo::MANASERV ?
-                        STATE_CHOOSE_SERVER : STATE_SWITCH_CHARACTER);
+                        STATE_CHOOSE_SERVER);
                     mCurrentDialog->postInit();
                     Net::getGameHandler()->connect();
                     BLOCK_END("Client::gameExec STATE_CONNECT_GAME")

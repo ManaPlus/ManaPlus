@@ -473,7 +473,6 @@ void CharSelectDialog::setCharacters(const Net::Characters &characters)
 
         Net::Character *const character = *i;
 
-        // Slots Number start at 1 for Manaserv, so we offset them by one.
         const int characterSlot = character->slot;
         if (characterSlot >= static_cast<int>(mCharacterEntries.size()))
         {

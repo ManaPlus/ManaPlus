@@ -158,7 +158,6 @@ void connectToServer(const ServerInfo &server)
                 new TmwAthena::GeneralHandler;
 #endif
                 break;
-            case ServerInfo::MANASERV:
             case ServerInfo::TMWATHENA:
             case ServerInfo::UNKNOWN:
             default:

@@ -143,7 +143,6 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
         default:
         case ServerInfo::UNKNOWN:
         case ServerInfo::TMWATHENA:
-        case ServerInfo::MANASERV:
 #ifndef EATHENA_SUPPORT
         case ServerInfo::EATHENA:
 #endif

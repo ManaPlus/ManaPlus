@@ -59,22 +59,6 @@ unsigned char MessageIn::readInt8()
     return value;
 }
 
-void MessageIn::readCoordinates(uint16_t &restrict x, uint16_t &restrict y)
-{
-    if (mPos + 3 <= mLength)
-    {
-        const unsigned char *const p
-            = reinterpret_cast<unsigned char const *const>(mData + mPos);
-        x = static_cast<uint16_t>(p[0] | ((p[1] & 0x07) << 8));
-        y = static_cast<uint16_t>((p[1] >> 3) | ((p[2] & 0x3F) << 5));
-    }
-    mPos += 3;
-    PacketCounters::incInBytes(3);
-    DEBUGLOG(std::string("readCoordinates: ").append(toString(
-        static_cast<int>(x))).append(",").append(toString(
-        static_cast<int>(y))));
-}
-
 uint8_t MessageIn::fromServerDirection(const uint8_t serverDir)
 {
     // Translate from eAthena format

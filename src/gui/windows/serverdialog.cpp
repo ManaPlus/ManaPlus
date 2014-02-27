@@ -68,7 +68,6 @@ static std::string serverTypeToString(const ServerInfo::Type type)
             return "eAthena";
 #endif
         default:
-        case ServerInfo::MANASERV:
         case ServerInfo::UNKNOWN:
             return "";
     }
@@ -86,7 +85,6 @@ static uint16_t defaultPortForServerType(const ServerInfo::Type type)
         case ServerInfo::UNKNOWN:
         case ServerInfo::TMWATHENA:
         case ServerInfo::EVOL:
-        case ServerInfo::MANASERV:
             return 6901;
     }
 }

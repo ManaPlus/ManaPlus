@@ -38,7 +38,6 @@ public:
     enum Type
     {
         UNKNOWN = 0,
-        MANASERV,
         TMWATHENA,
         EVOL,
         EATHENA

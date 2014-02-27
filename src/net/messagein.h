@@ -65,13 +65,6 @@ class MessageIn
         virtual int readInt32() = 0;        /**< Reads a long. */
 
         /**
-         * Reads a 3-byte block containing tile-based coordinates. Used by
-         * manaserv.
-         */
-        virtual void readCoordinates(uint16_t &restrict x,
-                                     uint16_t &restrict y);
-
-        /**
          * Reads a special 3 byte block used by eAthena, containing x and y
          * coordinates and direction.
          */
