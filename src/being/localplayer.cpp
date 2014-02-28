@@ -2240,24 +2240,24 @@ void LocalPlayer::crazyMoveA()
                     move(1, -1);
                     break;
                 case 'f':
-                    if (mDirection | UP)
+                    if (mDirection & UP)
                         dy = -1;
-                    else if (mDirection | DOWN)
+                    else if (mDirection & DOWN)
                         dy = 1;
-                    if (mDirection | LEFT)
+                    if (mDirection & LEFT)
                         dx = -1;
-                    else if (mDirection | RIGHT)
+                    else if (mDirection & RIGHT)
                         dx = 1;
                     move(dx, dy);
                     break;
                 case 'b':
-                    if (mDirection | UP)
+                    if (mDirection & UP)
                         dy = 1;
-                    else if (mDirection | DOWN)
+                    else if (mDirection & DOWN)
                         dy = -1;
-                    if (mDirection | LEFT)
+                    if (mDirection & LEFT)
                         dx = 1;
-                    else if (mDirection | RIGHT)
+                    else if (mDirection & RIGHT)
                         dx = -1;
                     move(dx, dy);
                     break;
