@@ -7,24 +7,24 @@
  can't find a solution to your problem, feel free to check our
  Bugs/Support section of the forum:>>
 
-<< For Evol Online support:
+ <<For Evol Online support:>>
 
  <<Visit IRC channel:>>
 ##2     #evolonline ##9@##2 irc.freenode.net
 
-<< For ManaPlus Online support:
+ <<For ManaPlus Online support:>>
 
  <<Visit IRC channel:>>
 ##2     #manaplus #evolonline ##9@##2 irc.freenode.net
 
 
-<< For TMW support:
+ <<For TMW support:>>
 
-<<##2     @@http://forums.themanaworld.org/viewforum.php?f=3|http://forums.themanaworld.org@@
- or come visit us on our IRC channel:
+##2     @@http://forums.themanaworld.org/viewforum.php?f=3|http://forums.themanaworld.org@@
+ <<or come visit us on our IRC channel:>>
 ##2     #themanaworld ##9@##2 irc.freenode.net
 
-<< Otherwise see the @@team|Development Team@@ section to have a list of
+ <<Otherwise see the @@team|Development Team@@ section to have a list of
  developers and how to contact them.>>
 
  <<For other server look servers pages for support.>>
