@@ -25,6 +25,7 @@
 ##3== <<Translators>> ==
 ##3Czech
 ##9Petr Varkoček (pitriss) <chytrex_fsude centrum cz>
+##9Samuraiii <samurai no dojo+manaplus gmail.com>
 ##9Zirry <zirry centrum cz>
 
 ##3Danish
