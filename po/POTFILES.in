@@ -9,9 +9,13 @@ src/commands.cpp
 src/commands.h
 src/dyetool/dyemain.cpp
 src/game.cpp
+src/gui/models/colorlistmodel.h
 src/gui/models/colormodel.cpp
+src/gui/models/magicschoolmodel.h
 src/gui/models/playerrelationlistmodel.h
+src/gui/models/sortlistmodelbuy.h
 src/gui/models/sortlistmodelinv.h
+src/gui/models/targettypemodel.h
 src/gui/models/updatetypemodel.h
 src/gui/popups/beingpopup.cpp
 src/gui/popups/itempopup.cpp
