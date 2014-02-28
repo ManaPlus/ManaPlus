@@ -130,8 +130,7 @@ TradeWindow::TradeWindow():
     place(1, 0, mMoneyLabel);
     place(0, 1, myScroll).setPadding(3);
     place(1, 1, partnerScroll).setPadding(3);
-    ContainerPlacer placer;
-    placer = getPlacer(0, 0);
+    ContainerPlacer placer = getPlacer(0, 0);
     placer(0, 0, moneyLabel2);
     placer(1, 0, mMoneyField, 2);
     placer(3, 0, mMoneyChangeButton).setHAlign(LayoutCell::LEFT);

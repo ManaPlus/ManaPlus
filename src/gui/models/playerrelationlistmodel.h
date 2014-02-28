@@ -64,4 +64,4 @@ class PlayerRelationListModel final : public ListModel
         }
 };
 
-#endif
+#endif  // GUI_MODELS_PLAYERRELATIONLISTMODEL_H

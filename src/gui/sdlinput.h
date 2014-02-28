@@ -107,14 +107,6 @@ public:
      */
     void pushInput(const SDL_Event &event);
 
-    /**
-     * Polls all input. It exists for input driver compatibility. If you
-     * only use SDL and plan sticking with SDL you can safely ignore this
-     * function as it in the SDL case does nothing.
-     */
-    void _pollInput()
-    { }
-
     KeyInput dequeueKeyInput2() A_WARN_UNUSED;
 
     KeyInput dequeueKeyInput() A_WARN_UNUSED
@@ -122,9 +114,9 @@ public:
 
     // Inherited from SDLInput
 
-    bool isKeyQueueEmpty() A_WARN_UNUSED;
+    bool isKeyQueueEmpty() const A_WARN_UNUSED;
 
-    bool isMouseQueueEmpty() A_WARN_UNUSED;
+    bool isMouseQueueEmpty() const A_WARN_UNUSED;
 
     MouseInput dequeueMouseInput() A_WARN_UNUSED;
 

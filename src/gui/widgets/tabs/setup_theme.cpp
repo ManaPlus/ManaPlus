@@ -28,7 +28,6 @@
 
 #include "gui/models/extendedlistmodel.h"
 #include "gui/models/fontsmodel.h"
-#include "gui/models/namesmodel.h"
 #include "gui/models/themesmodel.h"
 
 #include "gui/widgets/button.h"

@@ -52,7 +52,7 @@ class PartyHandler : public Net::PartyHandler
         PartyShare getShareItems() const override final A_WARN_UNUSED
         { return mShareItems; }
 
-        void reload() const;
+        static void reload();
 
         void clear() const override final;
 

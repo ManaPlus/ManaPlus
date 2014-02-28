@@ -555,25 +555,6 @@ class Window : public gcn::Container,
         bool isMovable() const
         { return mMovable; }
 
-        /**
-         * Sets the window to be opaque or not. An opaque window will draw it's background
-         * and it's content. A non opaque window will only draw it's content.
-         *
-         * @param opaque True if the window should be opaque, false otherwise.
-         * @see isOpaque
-         */
-        void setOpaque(bool opaque)
-        { mOpaque = opaque; }
-
-        /**
-         * Checks if the window is opaque.
-         *
-         * @return True if the window is opaque, false otherwise.
-         * @see setOpaque
-         */
-        bool isOpaque()
-        { return mOpaque; }
-
         virtual Rect getChildrenArea();
 
         /**
@@ -624,11 +605,6 @@ class Window : public gcn::Container,
          * True if the window is movable, false otherwise.
          */
         bool mMovable;
-
-        /**
-         * True if the window is opaque, false otherwise.
-         */
-        bool mOpaque;
 
         /**
          * Holds a drag offset as an x coordinate where the drag of the window

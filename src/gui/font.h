@@ -76,6 +76,7 @@
 
 #include "localconsts.h"
 
+class Color;
 class Graphics;
 class Image;
 

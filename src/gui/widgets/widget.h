@@ -973,7 +973,8 @@ class Widget : public Widget2
           * @see getId, BasicContainer::findWidgetById
           * @since 0.8.0
           */
-        void setId(const std::string& id);
+        void setId(const std::string& id)
+        { mId = id; }
 
         /**
           * Gets the id of a widget. An id can be useful if a widget needs to be
@@ -985,7 +986,8 @@ class Widget : public Widget2
           * @see setId, BasicContainer::findWidgetById
           * @since 0.8.0
           */
-        const std::string& getId() A_WARN_UNUSED;
+        const std::string& getId() const A_WARN_UNUSED
+        { return mId; }
 
         /**
           * Shows a certain part of a widget in the widget's parent.

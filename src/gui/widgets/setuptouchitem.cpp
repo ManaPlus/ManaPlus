@@ -20,8 +20,6 @@
 
 #include "gui/widgets/setuptouchitem.h"
 
-#include "gui/setupactiondata.h"
-
 #include "gui/models/touchactionmodel.h"
 
 #include "gui/widgets/dropdown.h"
@@ -31,7 +29,7 @@
 
 #include "gui/widgets/tabs/setuptabscroll.h"
 
-#include <algorithm>
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

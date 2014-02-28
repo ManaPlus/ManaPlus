@@ -21,7 +21,6 @@
 #ifndef RESOURCES_DB_WEAPONSDB_H
 #define RESOURCES_DB_WEAPONSDB_H
 
-#include <string>
 #include <vector>
 
 #include "localconsts.h"

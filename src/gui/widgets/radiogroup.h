@@ -23,8 +23,6 @@
 
 #include "gui/widgets/widgetgroup.h"
 
-#include "gui/widgets/widget.h"
-
 class RadioGroup final : public WidgetGroup
 {
     public:

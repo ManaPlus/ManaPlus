@@ -61,7 +61,7 @@ void ShortcutContainer::widgetResized(const Event &event A_UNUSED)
     if (mGridWidth < 1)
         mGridWidth = 1;
 
-    mGridHeight = mMaxItems / mGridWidth;
+    mGridHeight = mMaxItems / static_cast<unsigned int>(mGridWidth);
 
     if (mMaxItems % mGridWidth != 0 || mGridHeight < 1)
         ++mGridHeight;

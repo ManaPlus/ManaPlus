@@ -159,4 +159,4 @@ class Rect
         int height;
 };
 
-#endif  // GUI_RECTANGEL_H
+#endif  // GUI_RECT_H

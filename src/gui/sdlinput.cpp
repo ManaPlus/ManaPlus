@@ -98,7 +98,7 @@ SDLInput::SDLInput() :
 {
 }
 
-bool SDLInput::isKeyQueueEmpty()
+bool SDLInput::isKeyQueueEmpty() const
 {
     return mKeyInputQueue.empty();
 }
@@ -114,7 +114,7 @@ KeyInput SDLInput::dequeueKeyInput2()
     return keyInput;
 }
 
-bool SDLInput::isMouseQueueEmpty()
+bool SDLInput::isMouseQueueEmpty() const
 {
     return mMouseInputQueue.empty();
 }

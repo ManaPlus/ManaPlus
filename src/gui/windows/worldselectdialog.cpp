@@ -33,7 +33,6 @@
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
 
-#include "gui/models/listmodel.h"
 #include "gui/models/worldlistmodel.h"
 
 #include "net/loginhandler.h"

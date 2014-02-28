@@ -19,6 +19,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef GUI_MODELS_SOUNDSMODEL_H
+#define GUI_MODELS_SOUNDSMODEL_H
+
 #include "gui/theme.h"
 
 #include "gui/models/namesmodel.h"
@@ -40,3 +43,5 @@ class SoundsModel final : public NamesModel
         ~SoundsModel()
         { }
 };
+
+#endif  // GUI_MODELS_SOUNDSMODEL_H

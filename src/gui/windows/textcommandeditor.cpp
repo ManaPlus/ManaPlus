@@ -28,7 +28,6 @@
 #include "input/keyboardconfig.h"
 
 #include "gui/models/iconsmodel.h"
-#include "gui/models/listmodel.h"
 #include "gui/models/magicschoolmodel.h"
 #include "gui/models/targettypemodel.h"
 
@@ -40,10 +39,6 @@
 #include "gui/widgets/radiobutton.h"
 
 #include "utils/gettext.h"
-
-#include "resources/iteminfo.h"
-
-#include "resources/db/itemdb.h"
 
 #include "debug.h"
 

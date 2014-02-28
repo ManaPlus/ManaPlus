@@ -34,7 +34,6 @@
 #include "gui/viewport.h"
 
 #include "gui/models/itemsmodel.h"
-#include "gui/models/listmodel.h"
 
 #include "gui/popups/itempopup.h"
 

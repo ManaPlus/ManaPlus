@@ -36,7 +36,6 @@
 #include "gui/gui.h"
 #include "gui/viewport.h"
 
-#include "gui/models/listmodel.h"
 #include "gui/models/sortlistmodelinv.h"
 
 #include "gui/popups/textpopup.h"

@@ -30,7 +30,6 @@
 
 #include "gui/viewport.h"
 
-#include "gui/models/namesmodel.h"
 #include "gui/models/soundsmodel.h"
 
 #include "gui/widgets/layouthelper.h"

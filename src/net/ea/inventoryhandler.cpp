@@ -152,7 +152,7 @@ int InventoryHandler::convertFromServerSlot(const int serverSlot) const
     return EQUIP_CONVERT[serverSlot];
 }
 
-int InventoryHandler::getSlot(const int eAthenaSlot) const
+int InventoryHandler::getSlot(const int eAthenaSlot)
 {
     if (eAthenaSlot == 0)
         return Equipment::EQUIP_VECTOREND;
@@ -566,7 +566,7 @@ void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
         miniStatusWindow->updateArrows();
 }
 
-void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg) const
+void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg)
 {
     const int range = msg.readInt16();
     if (player_node)

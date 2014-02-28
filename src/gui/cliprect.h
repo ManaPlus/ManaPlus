@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GUI_CLIPRECTANGLE_H
-#define GUI_CLIPRECTANGLE_H
+#ifndef GUI_CLIPRECT_H
+#define GUI_CLIPRECT_H
 
 #include "gui/rect.h"
 
@@ -97,11 +97,11 @@ class ClipRect final : public Rect
           *                 the relative screen coordinate.
           */
         ClipRect(const int x0,
-                      const int y0,
-                      const int width0,
-                      const int height0,
-                      const int xOffset0,
-                      const int yOffset0);
+                 const int y0,
+                 const int width0,
+                 const int height0,
+                 const int xOffset0,
+                 const int yOffset0);
 
         /**
           * Copy constructor. Copies x, y, width and height 
@@ -123,4 +123,4 @@ class ClipRect final : public Rect
         int yOffset;
 };
 
-#endif  // GUI_CLIPRECTANGLE_H
+#endif  // GUI_CLIPRECT_H

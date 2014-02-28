@@ -43,7 +43,7 @@ SurfaceGraphics::~SurfaceGraphics()
 }
 
 bool SurfaceGraphics::drawImage(const Image *const image,
-                                 int dstX, int dstY)
+                                int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     // Check that preconditions for blitting are met.

@@ -175,7 +175,7 @@ class InventoryHandler : public Net::InventoryHandler
         void pushPickup(const int floorId)
         { mSentPickups.push(floorId); }
 
-        int getSlot(const int eAthenaSlot) const A_WARN_UNUSED;
+        static int getSlot(const int eAthenaSlot) A_WARN_UNUSED;
 
         void processPlayerInventory(Net::MessageIn &msg,
                                     const bool playerInvintory);
@@ -204,7 +204,7 @@ class InventoryHandler : public Net::InventoryHandler
 
         void processPlayerUnEquip(Net::MessageIn &msg);
 
-        void processPlayerAttackRange(Net::MessageIn &msg) const;
+        static void processPlayerAttackRange(Net::MessageIn &msg);
 
         void processPlayerArrowEquip(Net::MessageIn &msg);
 

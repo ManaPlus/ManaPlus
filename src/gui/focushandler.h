@@ -335,7 +335,7 @@ class FocusHandler final
          * @param focusEvent the event to distribute.
          * @since 0.7.0
          */
-        void distributeFocusLostEvent(const Event& focusEvent);
+        static void distributeFocusLostEvent(const Event& focusEvent);
 
         /**
          * Distributes a focus gained event.
@@ -343,7 +343,7 @@ class FocusHandler final
          * @param focusEvent the event to distribute.
          * @since 0.7.0
          */
-        void distributeFocusGainedEvent(const Event& focusEvent);
+        static void distributeFocusGainedEvent(const Event& focusEvent);
 
         /**
          * Typedef.

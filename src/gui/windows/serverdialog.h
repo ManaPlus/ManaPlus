@@ -34,16 +34,12 @@
 #include "listeners/keylistener.h"
 #include "listeners/selectionlistener.h"
 
-#include "gui/models/listmodel.h"
-
 #include <string>
-#include <vector>
 
 class Button;
 class CheckBox;
 class Label;
 class ListBox;
-class ServerDialog;
 class ServersListModel;
 
 /**

@@ -22,13 +22,9 @@
 #ifndef GUI_WIDGETS_AVATARLISTBOX_H
 #define GUI_WIDGETS_AVATARLISTBOX_H
 
-#include "avatar.h"
-
 #include "listeners/configlistener.h"
 
 #include "gui/widgets/listbox.h"
-
-#include "gui/models/listmodel.h"
 
 #include <string>
 

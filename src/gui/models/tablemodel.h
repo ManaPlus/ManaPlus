@@ -151,8 +151,7 @@ public:
     int getHeight() const A_WARN_UNUSED;
     int getColumnWidth(const int index) const override final A_WARN_UNUSED;
     Widget *getElementAt(const int row,
-                              const int column) const
-                              override final A_WARN_UNUSED;
+                         const int column) const override final A_WARN_UNUSED;
 
 protected:
     int mRows, mColumns;

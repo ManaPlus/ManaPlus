@@ -140,7 +140,7 @@ static inline void drawRescaledQuad(const Image *const image A_UNUSED,
 }
 
 bool NullOpenGLGraphics::drawImage(const Image *const image,
-                                    int dstX, int dstY)
+                                   int dstX, int dstY)
 {
     return drawImageInline(image, dstX, dstY);
 }

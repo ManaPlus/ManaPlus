@@ -211,11 +211,11 @@ class ActorManager final: public ConfigListener
 
         void printAllToChat() const;
 
-        void printBeingsToChat(const ActorSprites &beings,
-                               const std::string &header) const;
+        static void printBeingsToChat(const ActorSprites &beings,
+                                      const std::string &header);
 
-        void printBeingsToChat(const std::vector<Being*> &beings,
-                               const std::string &header) const;
+        static void printBeingsToChat(const std::vector<Being*> &beings,
+                                      const std::string &header);
 
         void getPlayerNames(StringVect &names,
                             const bool npcNames) const;

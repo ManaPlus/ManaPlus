@@ -604,16 +604,6 @@ void Widget::setInternalFocusHandler(FocusHandler* focusHandler)
     mInternalFocusHandler = focusHandler;
 }
 
-void Widget::setId(const std::string& id)
-{
-    mId = id;
-}
-
-const std::string& Widget::getId()
-{
-    return mId;
-}
-
 void Widget::distributeResizedEvent()
 {
     for (WidgetListenerIterator iter = mWidgetListeners.begin();

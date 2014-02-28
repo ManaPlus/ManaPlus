@@ -1339,7 +1339,7 @@ static void uploadFile(const std::string &str,
     upload->start();
 }
 
-impHandler0(uploadConfig)
+impHandler2(uploadConfig)
 {
     uploadFile(_("Uploaded config into:"),
         config.getFileName(),
@@ -1347,7 +1347,7 @@ impHandler0(uploadConfig)
         tab);
 }
 
-impHandler0(uploadServerConfig)
+impHandler2(uploadServerConfig)
 {
     uploadFile(_("Uploaded server config into:"),
         serverConfig.getFileName(),
@@ -1355,7 +1355,7 @@ impHandler0(uploadServerConfig)
         tab);
 }
 
-impHandler0(uploadLog)
+impHandler2(uploadLog)
 {
     uploadFile(_("Uploaded log into:"),
         client->getLogFileName(),

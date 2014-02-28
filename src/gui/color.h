@@ -81,7 +81,8 @@ class Color final
 
         /**
           * Constructor. Constructs a color from the bytes in an integer. 
-          * Call it with a hexadecimal constant for HTML-style color representation.
+          * Call it with a hexadecimal constant for HTML-style color
+          * representation.
           * The alpha component is 255 by default.
           *
           * EXAMPLE: Color(0xff50a0) constructs a very nice pinkish color.

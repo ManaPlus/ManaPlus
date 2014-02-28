@@ -29,7 +29,6 @@
 #include "gui/font.h"
 #include "gui/gui.h"
 
-#include "gui/models/extendednamesmodel.h"
 #include "gui/models/questsmodel.h"
 
 #include "gui/widgets/browserbox.h"

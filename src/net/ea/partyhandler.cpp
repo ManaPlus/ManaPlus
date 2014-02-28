@@ -60,7 +60,7 @@ void PartyHandler::join(const int partyId A_UNUSED) const
 {
 }
 
-void PartyHandler::reload() const
+void PartyHandler::reload()
 {
     taParty = Party::getParty(1);
 }

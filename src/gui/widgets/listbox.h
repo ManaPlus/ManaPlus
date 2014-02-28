@@ -27,8 +27,6 @@
 
 #include "gui/base/widgets/listbox.hpp"
 
-#include "render/graphics.h"
-
 #include "localconsts.h"
 
 class Skin;

@@ -35,8 +35,6 @@ class TypeListModel;
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
 
-#include "gui/models/listmodel.h"
-
 /**
  * The custom server addition dialog.
  *

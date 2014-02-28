@@ -95,7 +95,7 @@ class SetupItem : public ActionListener,
 
         virtual void rereadValue();
 
-        void setValue(const std::string str)
+        void setValue(const std::string &str)
         { mValue = str; }
 
         std::string getValue() const

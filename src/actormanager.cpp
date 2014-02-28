@@ -1256,7 +1256,7 @@ void ActorManager::printAllToChat() const
 }
 
 void ActorManager::printBeingsToChat(const ActorSprites &beings,
-                                     const std::string &header) const
+                                     const std::string &header)
 {
     if (!debugChatTab)
         return;
@@ -1281,7 +1281,7 @@ void ActorManager::printBeingsToChat(const ActorSprites &beings,
 }
 
 void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,
-                                     const std::string &header) const
+                                     const std::string &header)
 {
     if (!debugChatTab)
         return;

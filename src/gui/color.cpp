@@ -86,9 +86,9 @@ Color::Color(const unsigned int color) :
 }
 
 Color::Color(const unsigned int ar,
-              const unsigned int ag,
-              const unsigned int ab,
-              const unsigned int aa) :
+             const unsigned int ag,
+             const unsigned int ab,
+             const unsigned int aa) :
     r(ar),
     g(ag),
     b(ab),
@@ -149,7 +149,7 @@ bool Color::operator!=(const Color& color) const
 }
 
 std::ostream& operator<<(std::ostream& out,
-                          const Color& color)
+                         const Color& color)
 {
     out << "Color [r = "
         << color.r

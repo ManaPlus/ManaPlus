@@ -69,8 +69,6 @@
 
 #include <algorithm>
 
-#include "render/graphics.h"
-
 #include "debug.h"
 
 namespace gcn

@@ -325,7 +325,7 @@ void OutfitWindow::draw(Graphics *graphics)
     {
         const int itemX = mPadding + ((i % mGridWidth) * mBoxWidth);
         const int itemY = mPadding + mTitleBarHeight
-            + ((i / mGridWidth) * mBoxHeight);
+            + ((i / static_cast<unsigned int>(mGridWidth)) * mBoxHeight);
 
         graphics->setColor(mBorderColor);
         graphics->drawRectangle(Rect(itemX, itemY, 32, 32));

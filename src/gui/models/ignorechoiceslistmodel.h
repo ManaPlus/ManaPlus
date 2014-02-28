@@ -38,8 +38,8 @@ class IgnoreChoicesListModel final : public ListModel
 
         int getNumberOfElements() override final
         {
-            return static_cast<int>(player_relations.getPlayerIgnoreStrategies(
-                )->size());
+            return static_cast<int>(player_relations.
+                getPlayerIgnoreStrategies()->size());
         }
 
         std::string getElementAt(int i) override final

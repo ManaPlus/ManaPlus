@@ -18,18 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/setuptouchitem.h"
-
 #include "gui/setupactiondata.h"
 
 #include "gui/models/touchactionmodel.h"
-
-#include "gui/widgets/dropdown.h"
-#include "gui/widgets/horizontcontainer.h"
-#include "gui/widgets/label.h"
-#include "gui/widgets/vertcontainer.h"
-
-#include "gui/widgets/tabs/setuptabscroll.h"
 
 #include <algorithm>
 

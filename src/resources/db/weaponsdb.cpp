@@ -20,12 +20,7 @@
 
 #include "resources/db/weaponsdb.h"
 
-#include "logger.h"
-
-#include "utils/gettext.h"
 #include "utils/xmlutils.h"
-
-#include "configuration.h"
 
 #include "debug.h"
 
@@ -37,7 +32,7 @@ namespace
     bool mLoaded = false;
 }
 
-static void loadDB(const std::string name, WeaponsInfos &arr)
+static void loadDB(const std::string &name, WeaponsInfos &arr)
 {
     readXmlIntVector("weapons.xml",
         "weapons",
