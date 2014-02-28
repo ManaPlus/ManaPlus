@@ -3148,6 +3148,7 @@ void Being::removePet(const int id)
                 actorManager->erase(pet);
                 mPets.erase(it);
                 delete pet;
+                return;
             }
         }
     }

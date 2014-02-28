@@ -568,6 +568,7 @@ size_t Download::writeFunction(void *ptr,
     memcpy(buf, ptr, totalMem);
     buf[totalMem] = 0;
     mUploadResponse.append(buf);
+    delete [] buf;
     return totalMem;
 }
 

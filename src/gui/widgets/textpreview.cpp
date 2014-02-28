@@ -80,6 +80,9 @@ TextPreview::~TextPreview()
 
 void TextPreview::draw(Graphics* graphics)
 {
+    if (!mFont)
+        return;
+
     BLOCK_START("TextPreview::draw")
     if (client->getGuiAlpha() != mAlpha)
         mAlpha = client->getGuiAlpha();
@@ -99,18 +102,15 @@ void TextPreview::draw(Graphics* graphics)
 
     if (mTextBGColor)
     {
-        if (mFont)
-        {
-            const int x = mFont->getWidth(mText) + 1
-                + 2 * ((mOutline || mShadow) ? 1 :0);
-            const int y = mFont->getHeight() + 1
-                + 2 * ((mOutline || mShadow) ? 1 : 0);
-            graphics->setColor(Color(static_cast<int>(mTextBGColor->r),
-                static_cast<int>(mTextBGColor->g),
-                static_cast<int>(mTextBGColor->b),
-                intAlpha));
-            graphics->fillRectangle(Rect(mPadding, mPadding, x, y));
-        }
+        const int x = mFont->getWidth(mText) + 1
+            + 2 * ((mOutline || mShadow) ? 1 :0);
+        const int y = mFont->getHeight() + 1
+            + 2 * ((mOutline || mShadow) ? 1 : 0);
+        graphics->setColor(Color(static_cast<int>(mTextBGColor->r),
+            static_cast<int>(mTextBGColor->g),
+            static_cast<int>(mTextBGColor->b),
+            intAlpha));
+        graphics->fillRectangle(Rect(mPadding, mPadding, x, y));
     }
 
     graphics->setColorAll(Color(mTextColor->r,

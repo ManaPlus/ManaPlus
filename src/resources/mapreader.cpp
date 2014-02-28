@@ -214,6 +214,7 @@ void MapReader::addLayerToList(const std::string &fileName)
         mKnownLayers[name] = childNode;
         mKnownDocs.insert(doc);
     }
+    delete doc;
 }
 
 Map *MapReader::readMap(const std::string &restrict filename,
