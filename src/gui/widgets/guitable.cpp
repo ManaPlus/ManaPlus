@@ -101,7 +101,7 @@ GuiTable::GuiTable(const Widget2 *const widget,
     KeyListener(),
     mModel(nullptr),
     mTopWidget(nullptr),
-    mActionListeners(),
+    mActionListeners2(),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mSelectedRow(-1),
     mSelectedColumn(-1),
@@ -266,8 +266,8 @@ void GuiTable::setSelectedColumn(const int selected)
 
 void GuiTable::uninstallActionListeners()
 {
-    delete_all(mActionListeners);
-    mActionListeners.clear();
+    delete_all(mActionListeners2);
+    mActionListeners2.clear();
 }
 
 void GuiTable::installActionListeners()
@@ -285,7 +285,7 @@ void GuiTable::installActionListeners()
             Widget *const widget = mModel->getElementAt(row, column);
             if (widget)
             {
-                mActionListeners.push_back(new GuiTableActionListener(
+                mActionListeners2.push_back(new GuiTableActionListener(
                     this, widget, row, column));
             }
         }

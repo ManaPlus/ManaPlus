@@ -183,7 +183,7 @@ private:
     Widget *mTopWidget;
 
     /** Vector for compactness; used as a list in practice. */
-    std::vector<GuiTableActionListener *> mActionListeners;
+    std::vector<GuiTableActionListener *> mActionListeners2;
 
     /**
      * Holds the background color of the table.
