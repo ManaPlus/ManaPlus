@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-02-28 18:21+0000\n"
+"PO-Revision-Date: 2014-02-28 18:34+0000\n"
 "Last-Translator: samuraiii <samurai.no.dojo@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -221,7 +221,7 @@ msgid "Debug"
 msgstr "Debug"
 
 msgid "/present - print visible players number to chat."
-msgstr ""
+msgstr "/present - vypíše počet viditelných hráčů do chatu."
 
 msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
 msgstr "Webová stránka: @@http://manaplus.org/|http://manaplus.org/@@"
@@ -252,7 +252,7 @@ msgid "/setdrop N - set drop counter to requested value."
 msgstr "/setdrop N - nastavit počítadlo upuštění na danou hodnotu."
 
 msgid "/dumpogl - dump all OpenGL variables into log file."
-msgstr ""
+msgstr "/dumpogl - vypíše všecky OpenGL proměnné do souboru se záznamy."
 
 msgid "/outfit N - wear outfit number N."
 msgstr "/outfit N - obleče výbavu číslo N."
@@ -273,7 +273,7 @@ msgid "/heal NICK - heal nick."
 msgstr "/heal PŘEZDÍVKA - uzdrav hráče s uvedenou přezdívkou."
 
 msgid "/emotepet N - use emotion number N from your pet."
-msgstr ""
+msgstr "/emotepet N - použije smajlíka N pro vašeho mazlíčka."
 
 msgid "\"Setup window\""
 msgstr "\"Okno nastavení\""
@@ -285,7 +285,7 @@ msgid "\"Set direction up\""
 msgstr "\"Nastavit směr dolů\""
 
 msgid "/dumpe - dump environment variables into chat."
-msgstr ""
+msgstr "/dumpe - vypíše proměnné prostředí do chatu."
 
 msgid "Instructions"
 msgstr "Instrukce"
@@ -307,7 +307,7 @@ msgid "\"Change move to target type\""
 msgstr "\"Změnit typ pohybu k cíly\""
 
 msgid "/dumpmods - dump all enabled mod names into chat."
-msgstr ""
+msgstr "/dumpmods - vypíše všecky povolené mody do chatu."
 
 msgid "\"Enable/disable trading\""
 msgstr "\"Zakázet/Povolit obchodování\""
@@ -328,7 +328,7 @@ msgid "IGNORING COMMUNICATION"
 msgstr "IGNOROVANÍ KOMUNIKACE"
 
 msgid "/wait NAME - wait for nick or moster with name."
-msgstr ""
+msgstr "/wait JMÉNO - zapne čekání na monstrum nebo hráče s daným jménem."
 
 msgid "SUPPORT"
 msgstr "PODPORA"
@@ -374,13 +374,13 @@ msgid "/who - print online players number to chat."
 msgstr "/who - vypíše počet  hráčů co jsou připojeni do chatu."
 
 msgid "/createitems - open dialog for creating items."
-msgstr ""
+msgstr "/createitems - otevře dialog pro vytváření předmětů."
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr "/pseudoaway, /pseudoaway ZPRÁVA - nastavit/zrušit pseudo away režim."
 
 msgid "Sources:"
-msgstr ""
+msgstr "Zdrojový kód:"
 
 msgid "/uptime - show client uptime."
 msgstr "/uptime - zobrazí jak dlouho byl klient spuštěn."
@@ -457,7 +457,7 @@ msgid "/item 0 - disable party item sharing options."
 msgstr "/item 0 - zakázat sdílení předmětů v partě."
 
 msgid "/drop - drop N items from 0 slot."
-msgstr ""
+msgstr "/drop - upustí N předmětů z místa 0."
 
 msgid "\"Enable / disable away mode\""
 msgstr "\"Zapnout/Vypnout Away mód\""
@@ -505,7 +505,7 @@ msgid "/outfit next - wear next outfit."
 msgstr "/outfit next - obleče další výbavu."
 
 msgid "/magicattack - attack target with magic."
-msgstr ""
+msgstr "/magicattack - zaútočí na cíl magií."
 
 msgid ""
 "You can set away mode,\n"
@@ -534,7 +534,7 @@ msgid "Android porting"
 msgstr "Portování na Android"
 
 msgid "Tabs"
-msgstr ""
+msgstr "Záložky"
 
 msgid "\"Social window\""
 msgstr "\"Okno společenství\""
@@ -576,7 +576,7 @@ msgid "Download"
 msgstr "Stáhnout"
 
 msgid "Other linux:"
-msgstr ""
+msgstr "Jiný linux:"
 
 msgid ""
 " - ##2friend##9:  You consider this player a friend.  The player may chat,\n"
@@ -590,16 +590,16 @@ msgid "\"Target player\""
 msgstr "\"Zaměřit hráče\""
 
 msgid "/dropn - drop N items from any slot."
-msgstr ""
+msgstr "/dropn - Upustí N předmětů z jakéhokoli slotu."
 
 msgid "/enableaway - enable away messages in current tab."
-msgstr ""
+msgstr "/enableaway - Povolí away zprávy v aktuální záložce."
 
 msgid "##2ManaPlus version: ##6%VER%"
 msgstr "##2ManaPlus verze: ##6%VER%"
 
 msgid "/enemy NICK - add nick to enemyes list."
-msgstr ""
+msgstr "/enemy PŘEZDÍVKA - přidá přezdívku do seznamu nepřátel."
 
 msgid ""
 " - ##2disregarded##9:  You wish to disregard this player, meaning that his or\n"
@@ -611,7 +611,7 @@ msgid "\"Debug window\""
 msgstr "\"Debugovací okno\""
 
 msgid "/uploadlog - upload log into pastebin service."
-msgstr ""
+msgstr "/uploadlog - nahraje záznamy na pastebin."
 
 msgid "ManaPlus Contributors"
 msgstr "Přispěvatelé ManaPlus"
@@ -660,7 +660,7 @@ msgstr "##2               SDL, SDL_image, SDL_mixer (Rámec pro média)\n##2    
 
 msgid ""
 "/cleangraphics - remove all cached graphics. Usefull for content developers."
-msgstr ""
+msgstr "/cleangraphics - odstarní veškerou grafiku z vyrovnávací paměti. Užitečné pro vývojaře obsahu."
 
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend PŘEZDÍVKA, /befriend PŘEZDÍVKA - přidá přezdívku do seznamu přátel."
@@ -718,13 +718,13 @@ msgid ""
 msgstr "/msg PŘEZDÍVKA text, /whisper PŘEZDÍVKA text, /w PŘEZDÍVKA text - pošle šeptaný vzkaz dané přezdívce."
 
 msgid "/movetotarget - move to target position."
-msgstr ""
+msgstr "/movetotarget - přesune postavu na cílovou pozici."
 
 msgid "\"Emote shortcut 14\""
 msgstr "\"Zkratka smajlíka 14\""
 
 msgid "/open URL - open url in browser."
-msgstr ""
+msgstr "/open URL - otevře URL v prohlížeči."
 
 msgid "Commands"
 msgstr "Příkazy"
@@ -747,10 +747,10 @@ msgid ""
 msgstr "Seznam hráčů vede všecky vaše známosti.\n Jsou řazeny podle jednoho možných kritérií:"
 
 msgid "/cleanfonts - remove all cached render strings."
-msgstr ""
+msgstr "/cleanfonts - odstraní všecky vykreslené řetězce z vyrovnávací paměti."
 
 msgid "/dumpgl - dump OpenGL version into chat."
-msgstr ""
+msgstr "/dumpgl - zobrazí verzi OpenGL v chatu."
 
 msgid "/outfit prev - wear previous outfit."
 msgstr "/outfit prev - obleče předchozí výbavu."
@@ -783,7 +783,7 @@ msgid "\"Set direction right\""
 msgstr "\"Nastavit směr vpravo\""
 
 msgid "/announce MESSAGE - show global message."
-msgstr ""
+msgstr "/announce ZPRÁVA - zobrazí globální oznámení."
 
 msgid "Player relations"
 msgstr "Vztahy hráče"
@@ -824,7 +824,7 @@ msgid "\"Toggle chat\""
 msgstr "\"Přepnout chat\""
 
 msgid "/talkpet TEXT - talk from your pet."
-msgstr ""
+msgstr "/talkpet TEXT - mluvte skrze svého mazlíčka."
 
 msgid "\"Change attack type\""
 msgstr "\"Změnit typ útoku\""
@@ -848,7 +848,7 @@ msgid "/dirs - show client dirs in debug chat tab."
 msgstr "/dirs - zobrazí klintské složky v debugové záložce chatu."
 
 msgid "/movetohome - move to home position."
-msgstr ""
+msgstr "/movetohome - přesune na domácí pozici."
 
 msgid "/disconnect - quick disconnect from server."
 msgstr "/disconnect - rychle odpojí od serveru."
@@ -895,7 +895,7 @@ msgid "/undress NICK - remove all clothes from nick. Local effect only."
 msgstr "/undress PŘEZDÍVKA - odstraní veškeré obleční daného hráče. Pouze lokální efekt."
 
 msgid "Other"
-msgstr ""
+msgstr "Jiné"
 
 msgid ""
 " Otherwise see the @@team|Development Team@@ section to have a list of\n"
@@ -906,13 +906,13 @@ msgid "\"Outfit shortcut 14\""
 msgstr "\"Zkratka výbavy 14\""
 
 msgid "/uploadconfig - upload main config into pastebin service."
-msgstr ""
+msgstr "/uploadconfig - nahraje hlavní nastavení na pastebin."
 
 msgid "\"Quick drop N items from 0 slot\""
 msgstr "\"Rychle zahoď N předmětů ze slotu 0\""
 
 msgid "/enablehighlight - enable highlight in current tab."
-msgstr ""
+msgstr "/enablehighlight - povolit zvýraznění v aktuální záložce."
 
 msgid "\"Emote shortcut window\""
 msgstr "\"Okno zkratek smajlíků\""
@@ -921,7 +921,7 @@ msgid "\"Bot checker window\""
 msgstr "\"Okno kontroly botů\""
 
 msgid "/disableaway - disable away messages in current tab."
-msgstr ""
+msgstr "/disableaway - zakáže zobrazování away zprávy v aktuální záložce."
 
 msgid ""
 "/mail NICK MSG - send offline message to NICK. Working only in tmw server."
@@ -931,7 +931,7 @@ msgid "DOWNLOADS"
 msgstr "STAŽENÉ SOUBORY"
 
 msgid "/disablehighlight - disable highlight in current tab."
-msgstr ""
+msgstr "/disablehighlight - zakáže zvýrazňování v aktuální záložce."
 
 msgid "\"Item shortcut 15\""
 msgstr "\"Zkratka předmětu 15\""
@@ -940,7 +940,7 @@ msgid "About The Mana World"
 msgstr "O The Mana World"
 
 msgid "/testparticle FILENAME - set test particle on player."
-msgstr ""
+msgstr "/testparticle NÁZEV_SOUBORU - otestuje částicový efekt na hráči."
 
 msgid "\"Smilie\""
 msgstr "\"Smajlík\""
@@ -965,7 +965,7 @@ msgid "Whispers"
 msgstr "Šeptání"
 
 msgid "/url URL - insert url into chat."
-msgstr ""
+msgstr "/url URL - vloží url do chatu."
 
 msgid "\"Wear outfit\""
 msgstr "\"Obléct výstroj\""
@@ -1071,7 +1071,7 @@ msgid ""
 msgstr "Přesto se ale můžete proti těmto hráčům bránit tím že je budete ignorovat.\nKlikněte pravým tlačítkem myši a v kontextovém menu vyberte 'Ignorovat' nebo\n'Přehlížet' (viz níže). Podrobně můžete upravovat vaše vztahy s ostatními hráči\nv menu 'Nastavení', kde můžete vidět vškeré vztahy s hráči které jste vytvořili.\nPro přístup k tomuto klikněte na tlačítko nastavení v pravém horním rohu a vyberte 'Vztahy'."
 
 msgid "/dumpt - dump tests info into chat."
-msgstr ""
+msgstr "/dumpt - vypíše testy do chatu."
 
 msgid "Different patches"
 msgstr "Různé opravy"

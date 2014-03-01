@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-02-28 21:21+0300\n"
-"PO-Revision-Date: 2014-02-23 08:14+0000\n"
+"PO-Revision-Date: 2014-03-01 08:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
 "fr/)\n"
@@ -7853,9 +7853,3 @@ msgstr "Objet inconnu"
 #: src/resources/db/petdb.cpp:99
 msgid "pet"
 msgstr "familier"
-
-#~ msgid "SPE"
-#~ msgstr "Spe"
-
-#~ msgid "Specials"
-#~ msgstr "Cpt. spéciales"

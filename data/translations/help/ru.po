@@ -1,7 +1,7 @@
 # en#
 # Translators:
 # Alexandr Uspensky <AlexandrUSP@yandex.com>, 2012
-# Andrei Karas <akaras@inbox.ru>, 2012-2013
+# Andrei Karas <akaras@inbox.ru>, 2012-2014
 # BoBaH <BoBaH4spam@ukr.net>, 2012
 # Dan Sagunov <danilka.pro@gmail.com>, 2012-2013
 # RatreX <ratrex@mail.ru>, 2013
@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-02-28 18:14+0000\n"
+"PO-Revision-Date: 2014-02-28 19:53+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -87,7 +87,7 @@ msgid "\"Set direction down\""
 msgstr "\"Установить направление вниз\""
 
 msgid "GM"
-msgstr ""
+msgstr "ГМ"
 
 msgid "\"Target NPC\""
 msgstr "\"Выбрать NPC\""
@@ -204,7 +204,7 @@ msgid "Mana Contributors"
 msgstr "В разработке Mana принимали участие"
 
 msgid "Content devs"
-msgstr ""
+msgstr "Разработчики контента"
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr "/query ИГРОК, /q ИГРОК - открыть новую вкладку для шепота с игроком."
@@ -386,7 +386,7 @@ msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr "/pseudoaway, /pseudoaway ТЕКСТ - включить/выключить режим псевдо-\"Отошел\"."
 
 msgid "Sources:"
-msgstr ""
+msgstr "Исходники:"
 
 msgid "/uptime - show client uptime."
 msgstr "/uptime - показать время работы клиента."
@@ -582,7 +582,7 @@ msgid "Download"
 msgstr "Скачать"
 
 msgid "Other linux:"
-msgstr ""
+msgstr "Другие linux'ы:"
 
 msgid ""
 " - ##2friend##9:  You consider this player a friend.  The player may chat,\n"
@@ -901,7 +901,7 @@ msgid "/undress NICK - remove all clothes from nick. Local effect only."
 msgstr "/undress NICK - снять всю одежду с NICK. Только местное действие."
 
 msgid "Other"
-msgstr ""
+msgstr "Другое"
 
 msgid ""
 " Otherwise see the @@team|Development Team@@ section to have a list of\n"
