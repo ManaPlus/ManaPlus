@@ -70,19 +70,17 @@
 
 #include "listeners/deathlistener.h"
 
-namespace gcn
+/**
+  * A base class for containers. The class implements the most
+  * common things for a container. If you are implementing a 
+  * container, consider inheriting from this class.
+  *
+  * @see Container
+  * @since 0.6.0
+  */
+class BasicContainer : public Widget,
+                       public DeathListener
 {
-    /**
-     * A base class for containers. The class implements the most
-     * common things for a container. If you are implementing a 
-     * container, consider inheriting from this class.
-     *
-     * @see Container
-     * @since 0.6.0
-     */
-    class BasicContainer : public Widget,
-                           public DeathListener
-    {
     public:
         explicit BasicContainer(const Widget2 *const widget) :
             Widget(widget),
@@ -93,21 +91,21 @@ namespace gcn
         A_DELETE_COPY(BasicContainer)
 
         /**
-         * Destructor
-         */
+          * Destructor
+          */
         virtual ~BasicContainer();
 
         /**
-         * Shows a certain part of a widget in the basic container.
-         * Used when widgets want a specific part to be visible in
-         * its parent. An example is a TextArea that wants a specific
-         * part of its text to be visible when a TextArea is a child
-         * of a ScrollArea.
-         *
-         * @param widget The widget whom wants a specific part of
-         *               itself to be visible.
-         * @param rectangle The rectangle to be visible.
-         */
+          * Shows a certain part of a widget in the basic container.
+          * Used when widgets want a specific part to be visible in
+          * its parent. An example is a TextArea that wants a specific
+          * part of its text to be visible when a TextArea is a child
+          * of a ScrollArea.
+          *
+          * @param widget The widget whom wants a specific part of
+          *               itself to be visible.
+          * @param rectangle The rectangle to be visible.
+          */
         virtual void showWidgetPart(Widget* widget, Rect area);
 
         // Inherited from Widget
@@ -137,82 +135,81 @@ namespace gcn
 
     protected:
         /**
-         * Adds a widget to the basic container.
-         *
-         * @param widget The widget to add.
-         * @see remove, clear
-         */
+          * Adds a widget to the basic container.
+          *
+          * @param widget The widget to add.
+          * @see remove, clear
+          */
         void add(Widget* widget);
 
         /**
-         * Removes a widget from the basic container.
-         *
-         * @param widget The widget to remove.
-         * @see add, clear
-         */
+          * Removes a widget from the basic container.
+          *
+          * @param widget The widget to remove.
+          * @see add, clear
+          */
         virtual void remove(Widget* widget);
 
         /**
-         * Clears the basic container from all widgets.
-         *
-         * @see remove, clear
-         */
+          * Clears the basic container from all widgets.
+          *
+          * @see remove, clear
+          */
         virtual void clear();
 
         /**
-         * Draws the children widgets of the basic container.
-         *
-         * @param graphics A graphics object to draw with.
-         */
+          * Draws the children widgets of the basic container.
+          *
+          * @param graphics A graphics object to draw with.
+          */
         virtual void drawChildren(Graphics* graphics);
 
         /**
-         * Calls logic for the children widgets of the basic
-         * container.
-         */
+          * Calls logic for the children widgets of the basic
+          * container.
+          */
         virtual void logicChildren();
 
         /**
-         * Finds a widget given an id. This function can be useful
-         * when implementing a GUI generator for Guichan, such as
-         * the ability to create a Guichan GUI from an XML file.
-         *
-         * @param id The id to find a widget by.
-         * @return The widget with the corrosponding id, 
-                   NULL of no widget is found.
-         */
+          * Finds a widget given an id. This function can be useful
+          * when implementing a GUI generator for Guichan, such as
+          * the ability to create a Guichan GUI from an XML file.
+          *
+          * @param id The id to find a widget by.
+          * @return The widget with the corrosponding id, 
+                    NULL of no widget is found.
+          */
         virtual Widget* findWidgetById(const std::string& id) A_WARN_UNUSED;
 
         /**
-         * Typedef.
-         */
+          * Typedef.
+          */
         typedef std::vector<Widget *> WidgetList;
 
-         /**
-         * Typedef.
-         */
+          /**
+          * Typedef.
+          */
         typedef WidgetList::iterator WidgetListIterator;
 
-         /**
-         * Typedef.
-         */
+          /**
+          * Typedef.
+          */
         typedef WidgetList::const_iterator WidgetListConstIterator;
 
         /**
-         * Typedef.
-         */
+          * Typedef.
+          */
         typedef WidgetList::reverse_iterator WidgetListReverseIterator;
 
         /**
-         * Typedef.
-         */
+          * Typedef.
+          */
         typedef WidgetList::const_reverse_iterator WidgetListCReverseIterator;
 
         /**
-         * Holds all widgets of the basic container.
-         */
+          * Holds all widgets of the basic container.
+          */
         WidgetList mWidgets;
-    };
-}  // namespace gcn
+};
 
 #endif  // end GCN_BASICCONTAINER_HPP

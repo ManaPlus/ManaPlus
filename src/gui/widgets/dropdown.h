@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_DROPDOWN_H
 #define GUI_WIDGETS_DROPDOWN_H
 
-#include "gui/base/basiccontainer.hpp"
+#include "gui/widgets/basiccontainer.h"
 
 #include "listeners/actionlistener.h"
 #include "listeners/focuslistener.h"
@@ -46,7 +46,7 @@ class Skin;
  * your list.
  */
 class DropDown final : public ActionListener,
-                       public gcn::BasicContainer,
+                       public BasicContainer,
                        public KeyListener,
                        public MouseListener,
                        public FocusListener,

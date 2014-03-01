@@ -81,7 +81,7 @@
 
 TabbedArea::TabbedArea(const Widget2 *const widget) :
     ActionListener(),
-    gcn::BasicContainer(widget),
+    BasicContainer(widget),
     KeyListener(),
     MouseListener(),
     WidgetListener(),
@@ -768,7 +768,7 @@ void TabbedArea::death(const Event &event)
     if (tab)
         removeTab(tab);
     else
-        gcn::BasicContainer::death(event);
+        BasicContainer::death(event);
 }
 
 void TabbedArea::selectNextTab()

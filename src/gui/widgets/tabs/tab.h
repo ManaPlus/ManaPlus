@@ -66,7 +66,7 @@
 #ifndef GUI_WIDGETS_TABS_TAB_H
 #define GUI_WIDGETS_TABS_TAB_H
 
-#include "gui/base/basiccontainer.hpp"
+#include "gui/widgets/basiccontainer.h"
 
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
@@ -81,7 +81,7 @@ class TabbedArea;
 /**
  * A tab, the same as the Guichan tab in 0.8, but extended
  */
-class Tab : public gcn::BasicContainer,
+class Tab : public BasicContainer,
             public MouseListener,
             public WidgetListener
 {

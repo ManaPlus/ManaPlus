@@ -790,7 +790,7 @@ SET(SRCS
     walklayer.h
     events/actionevent.h
     listeners/actionlistener.h
-    gui/base/basiccontainer.hpp
+    gui/widgets/basiccontainer.h
     gui/cliprect.h
     gui/color.h
     listeners/deathlistener.h
@@ -821,7 +821,7 @@ SET(SRCS
     gui/base/widgets/slider.hpp
     gui/base/widgets/textbox.hpp
     gui/base/widgets/textfield.hpp
-    gui/base/basiccontainer.cpp
+    gui/widgets/basiccontainer.cpp
     gui/cliprect.cpp
     gui/color.cpp
     gui/base/gui.cpp

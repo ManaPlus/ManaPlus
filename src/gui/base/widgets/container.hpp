@@ -64,7 +64,7 @@
 #ifndef GCN_CONTAINER_HPP
 #define GCN_CONTAINER_HPP
 
-#include "gui/base/basiccontainer.hpp"
+#include "gui/widgets/basiccontainer.h"
 
 namespace gcn
 {

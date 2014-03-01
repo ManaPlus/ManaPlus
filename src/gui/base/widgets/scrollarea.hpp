@@ -64,7 +64,8 @@
 #ifndef GCN_SCROLLAREA_HPP
 #define GCN_SCROLLAREA_HPP
 
-#include "gui/base/basiccontainer.hpp"
+#include "gui/widgets/basiccontainer.h"
+
 #include "listeners/mouselistener.h"
 
 namespace gcn
