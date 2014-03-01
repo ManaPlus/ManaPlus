@@ -1,3 +1,11 @@
+2014-03-01 New release 1.4.3.1
+fix: crazy moves.
+add: missing help translations.
+add: allow load branding info from portable.xml.
+add: dehardcode weapons id for auto switching weapons.
+add: remove all depericated manaserv code.
+add: remove support for external guichan.
+
 2014-02-15 New release 1.4.2.15
 fix: friends tab update in social window.
 fix: windows resizing for smaller screen size.

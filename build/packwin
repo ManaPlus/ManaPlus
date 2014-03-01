@@ -7,7 +7,7 @@ dir=`pwd`
 cd packaging/windows
 ./make-translations.sh
 makensis -DDLLDIR=$dir/../libs/dll/ \
-    -DPRODUCT_VERSION="1.4.2.15" \
+    -DPRODUCT_VERSION="1.4.3.1" \
     -DEXESUFFIX=/src \
     -DUPX=true \
     setup.nsi
