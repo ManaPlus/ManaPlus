@@ -152,10 +152,6 @@ class TextField : public gcn::TextField,
 
         void handleCtrlKeys(const int action, bool &consumed);
 
-#ifndef USE_SDL2
-        void handleSDLKeys(const int val, bool &consumed);
-#endif
-
         static Skin *mSkin;
 
     private:

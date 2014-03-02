@@ -271,40 +271,22 @@ void TextField::keyPressed(KeyEvent &keyEvent)
         mLastEventPaste = 0;
 
     bool consumed(false);
-    handleSDLKeys(val, consumed);
-
-    if (consumed)
-    {
-        if (mSendAlwaysEvents)
-            distributeActionEvent();
-
-        keyEvent.consume();
-        fixScroll();
-        return;
-    }
 #endif
 
-    if (consumed)
+    const int action = keyEvent.getActionId();
+    if (!inputManager.isActionActive(static_cast<int>(
+        Input::KEY_GUI_CTRL)))
     {
-        keyEvent.consume();
+        if (!handleNormalKeys(action, consumed))
+        {
+            if (consumed)
+                keyEvent.consume();
+            return;
+        }
     }
     else
     {
-        const int action = keyEvent.getActionId();
-        if (!inputManager.isActionActive(static_cast<int>(
-            Input::KEY_GUI_CTRL)))
-        {
-            if (!handleNormalKeys(action, consumed))
-            {
-                if (consumed)
-                    keyEvent.consume();
-                return;
-            }
-        }
-        else
-        {
-            handleCtrlKeys(action, consumed);
-        }
+        handleCtrlKeys(action, consumed);
     }
 
     if (mSendAlwaysEvents)
@@ -413,16 +395,15 @@ void TextField::handleCtrlKeys(const int action, bool &consumed)
             consumed = true;
             break;
         }
-#ifdef USE_SDL2
         case Input::KEY_GUI_B:
         {
             moveCaretBack();
             consumed = true;
             break;
         }
-        case Input::KEY_GUI_C:
+        case Input::KEY_GUI_F:
         {
-            handleCopy();
+            moveCaretForward();
             consumed = true;
             break;
         }
@@ -438,21 +419,9 @@ void TextField::handleCtrlKeys(const int action, bool &consumed)
             consumed = true;
             break;
         }
-        case Input::KEY_GUI_F:
-        {
-            moveCaretBack();
-            consumed = true;
-            break;
-        }
         case Input::KEY_GUI_H:
         {
             deleteCharLeft(mText, &mCaretPosition);
-            consumed = true;
-            break;
-        }
-        case Input::KEY_GUI_U:
-        {
-            caretDeleteToStart();
             consumed = true;
             break;
         }
@@ -462,9 +431,29 @@ void TextField::handleCtrlKeys(const int action, bool &consumed)
             consumed = true;
             break;
         }
+        case Input::KEY_GUI_U:
+        {
+            caretDeleteToStart();
+            consumed = true;
+            break;
+        }
+        case Input::KEY_GUI_C:
+        {
+            handleCopy();
+            consumed = true;
+            break;
+        }
         case Input::KEY_GUI_V:
         {
+#ifdef USE_SDL2
             handlePaste();
+#else
+            // hack to prevent paste key sticking
+            if (mLastEventPaste && mLastEventPaste > cur_time)
+                break;
+            handlePaste();
+            mLastEventPaste = cur_time + 2;
+#endif
             consumed = true;
             break;
         }
@@ -474,82 +463,10 @@ void TextField::handleCtrlKeys(const int action, bool &consumed)
             consumed = true;
             break;
         }
-#endif
         default:
             break;
     }
 }
-
-#ifndef USE_SDL2
-void TextField::handleSDLKeys(const int val, bool &consumed)
-{
-    switch (val)
-    {
-        case 2:  // Ctrl+b
-        {
-            moveCaretBack();
-            consumed = true;
-            break;
-        }
-
-        case 6:  // Ctrl+f
-        {
-            moveCaretForward();
-            consumed = true;
-            break;
-        }
-
-        case 4:  // Ctrl+d
-        {
-            caretDelete();
-            consumed = true;
-            break;
-        }
-
-        case 8:  // Ctrl+h
-            deleteCharLeft(mText, &mCaretPosition);
-            consumed = true;
-            break;
-
-        case 5:  // Ctrl+e
-            mCaretPosition = static_cast<int>(mText.size());
-            consumed = true;
-            break;
-
-        case 11:  // Ctrl+k
-            mText = mText.substr(0, mCaretPosition);
-            consumed = true;
-            break;
-
-        case 21:  // Ctrl+u
-            caretDeleteToStart();
-            consumed = true;
-            break;
-
-        case 3:  // Ctrl+c
-            handleCopy();
-            consumed = true;
-            break;
-
-        case 22:  // Control code 22, SYNCHRONOUS IDLE, sent on Ctrl+v
-            // hack to prevent paste key sticking
-            if (mLastEventPaste && mLastEventPaste > cur_time)
-                break;
-            handlePaste();
-            mLastEventPaste = cur_time + 2;
-            consumed = true;
-            break;
-
-        case 23:  // Ctrl+w
-            caretDeleteWord();
-            consumed = true;
-            break;
-
-        default:
-            break;
-    }
-}
-#endif
 
 void TextField::moveCaretBack()
 {
