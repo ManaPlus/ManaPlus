@@ -140,7 +140,6 @@ Gui::Gui() :
     mGraphics(nullptr),
     mInput(nullptr),
     mFocusHandler(new FocusHandler),
-    mTabbing(true),
     mKeyListeners(),
     mShiftPressed(false),
     mMetaPressed(false),
@@ -485,7 +484,7 @@ bool Gui::handleKeyInput2()
             // If the key event hasn't been consumed and
             // tabbing is enable check for tab press and
             // change focus.
-            if (!keyEventConsumed && mTabbing && keyInput.getActionId()
+            if (!keyEventConsumed && keyInput.getActionId()
                 == static_cast<int>(Input::KEY_GUI_TAB)
                 && keyInput.getType() == KeyInput::PRESSED)
             {

@@ -431,11 +431,6 @@ class Gui final
         FocusHandler* mFocusHandler;
 
         /**
-         * True if tabbing is enabled, false otherwise.
-         */
-        bool mTabbing;
-
-        /**
          * Typedef.
          */
         typedef std::list<KeyListener*> KeyListenerList;
