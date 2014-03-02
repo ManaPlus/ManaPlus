@@ -390,7 +390,8 @@ Game::Game():
     mAdjustPerfomance(config.getBoolValue("adjustPerfomance")),
     mLowerCounter(0),
     mPing(0),
-    mTime(cur_time + 1)
+    mTime(cur_time + 1),
+    mTime2(cur_time + 10)
 {
     touchManager.setInGame(true);
     spellManager = new SpellManager;
@@ -620,6 +621,13 @@ void Game::slowLogic()
         Being::reReadConfig();
         if (killStats)
             killStats->recalcStats();
+
+        if (time > mTime2 || mTime2 - time > 10)
+        {
+            mTime2 = time + 10;
+            config.writeUpdated();
+            serverConfig.writeUpdated();
+        }
     }
 
     if (shopWindow)

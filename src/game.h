@@ -135,6 +135,7 @@ class Game final
         int mLowerCounter;
         int mPing;
         int mTime;
+        int mTime2;
 
         static Game *mInstance;
 };

@@ -223,6 +223,7 @@ void ConfigurationObject::deleteKey(const std::string &key)
 void Configuration::setValue(const std::string &key, const std::string &value)
 {
     ConfigurationObject::setValue(key, value);
+    mUpdated = true;
 
     // Notify listeners
     const ListenerMapIterator list = mListenerMap.find(key);
@@ -347,7 +348,8 @@ Configuration::Configuration() :
     mDefaultsData(nullptr),
     mDirectory(),
     mFilename(),
-    mUseResManager(false)
+    mUseResManager(false),
+    mUpdated(false)
 {
 #ifdef DEBUG_CONFIG
     mLogKeys = false;
@@ -803,11 +805,18 @@ void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
     }
 }
 
+void Configuration::writeUpdated()
+{
+    if (mUpdated)
+        write();
+}
+
 void Configuration::write()
 {
     if (mConfigPath.empty())
         return;
 
+    mUpdated = false;
     // Do not attempt to write to file that cannot be opened for writing
     FILE *const testFile = fopen(mConfigPath.c_str(), "w");
     if (!testFile)
