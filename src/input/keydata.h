@@ -358,6 +358,18 @@ namespace Input
         KEY_PREV_COMMANDS_TAB,
         KEY_NEXT_COMMANDS_TAB,
         KEY_OPEN_TRADE,
+        KEY_GUI_F1,
+        KEY_GUI_F2,
+        KEY_GUI_F3,
+        KEY_GUI_F4,
+        KEY_GUI_F5,
+        KEY_GUI_F6,
+        KEY_GUI_F7,
+        KEY_GUI_F8,
+        KEY_GUI_F9,
+        KEY_GUI_F10,
+        KEY_GUI_F11,
+        KEY_GUI_F12,
         KEY_TOTAL
     };
 }  // namespace Input
