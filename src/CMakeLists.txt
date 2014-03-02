@@ -810,7 +810,6 @@ SET(SRCS
     utils/sdlpixel.h
     gui/widgets/widget.h
     listeners/widgetlistener.h
-    gui/base/widgets/checkbox.hpp
     gui/base/widgets/container.hpp
     gui/base/widgets/label.hpp
     gui/base/widgets/listbox.hpp
@@ -825,7 +824,6 @@ SET(SRCS
     input/key.cpp
     gui/rect.cpp
     gui/widgets/widget.cpp
-    gui/base/widgets/checkbox.cpp
     gui/base/widgets/container.cpp
     gui/base/widgets/label.cpp
     gui/base/widgets/listbox.cpp
