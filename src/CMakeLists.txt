@@ -811,7 +811,6 @@ SET(SRCS
     gui/widgets/widget.h
     listeners/widgetlistener.h
     gui/base/widgets/container.hpp
-    gui/base/widgets/listbox.hpp
     gui/base/widgets/radiobutton.hpp
     gui/base/widgets/scrollarea.hpp
     gui/base/widgets/slider.hpp
@@ -824,7 +823,6 @@ SET(SRCS
     gui/rect.cpp
     gui/widgets/widget.cpp
     gui/base/widgets/container.cpp
-    gui/base/widgets/listbox.cpp
     gui/base/widgets/radiobutton.cpp
     gui/base/widgets/scrollarea.cpp
     gui/base/widgets/slider.cpp
