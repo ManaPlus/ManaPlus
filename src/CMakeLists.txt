@@ -796,7 +796,6 @@ SET(SRCS
     listeners/deathlistener.h
     events/event.h
     listeners/focuslistener.h
-    gui/base/gui.hpp
     events/inputguievent.h
     input/key.h
     events/keyevent.h
@@ -824,7 +823,6 @@ SET(SRCS
     gui/widgets/basiccontainer.cpp
     gui/cliprect.cpp
     gui/color.cpp
-    gui/base/gui.cpp
     input/key.cpp
     gui/rect.cpp
     gui/widgets/widget.cpp

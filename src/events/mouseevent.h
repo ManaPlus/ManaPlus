@@ -235,7 +235,7 @@ class MouseEvent: public InputGuiEvent
           * to widget the mouse listener receiving the events have registered 
           * to. 
           */
-        friend class gcn::Gui;
+        friend class Gui;
 };
 
 #endif  // EVENTS_MOUSEEVENT_H

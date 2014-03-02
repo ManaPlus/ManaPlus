@@ -159,7 +159,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      events/event.h \
 	      listeners/focuslistener.h \
 	      render/graphics.h \
-	      gui/base/gui.hpp \
 	      events/inputguievent.h \
 	      input/key.h \
 	      events/keyevent.h \
@@ -187,7 +186,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/widgets/basiccontainer.cpp \
 	      gui/cliprect.cpp \
 	      gui/color.cpp \
-	      gui/base/gui.cpp \
 	      input/key.cpp \
 	      gui/rect.cpp \
 	      gui/widgets/widget.cpp \
