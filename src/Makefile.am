@@ -174,7 +174,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/widgets/widget.h \
 	      listeners/widgetlistener.h \
 	      gui/base/widgets/container.hpp \
-	      gui/base/widgets/label.hpp \
 	      gui/base/widgets/listbox.hpp \
 	      gui/base/widgets/radiobutton.hpp \
 	      gui/base/widgets/scrollarea.hpp \
@@ -188,7 +187,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/rect.cpp \
 	      gui/widgets/widget.cpp \
 	      gui/base/widgets/container.cpp \
-	      gui/base/widgets/label.cpp \
 	      gui/base/widgets/listbox.cpp \
 	      gui/base/widgets/radiobutton.cpp \
 	      gui/base/widgets/scrollarea.cpp \
