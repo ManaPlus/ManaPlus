@@ -139,6 +139,12 @@ class TextField : public gcn::TextField,
 
         void caretDeleteWord();
 
+        void setAllowSpecialActions(const bool b)
+        { mAllowSpecialActions = b; }
+
+        std::string getTextBeforeCaret() const
+        { return mText.substr(0, mCaretPosition); }
+
     protected:
         void drawCaret(Graphics* graphics, int x) override final;
 
@@ -166,6 +172,7 @@ class TextField : public gcn::TextField,
         int mPadding;
         bool mNumeric;
         bool mLoseFocusOnTab;
+        bool mAllowSpecialActions;
 };
 
 #endif  // GUI_WIDGETS_TEXTFIELD_H

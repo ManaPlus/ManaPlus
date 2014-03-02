@@ -64,7 +64,8 @@ TextField::TextField(const Widget2 *restrict const widget,
     mLastEventPaste(false),
     mPadding(1),
     mNumeric(false),
-    mLoseFocusOnTab(loseFocusOnTab)
+    mLoseFocusOnTab(loseFocusOnTab),
+    mAllowSpecialActions(true)
 {
     setFrameSize(2);
     mForegroundColor = getThemeColor(Theme::TEXTFIELD);
@@ -397,8 +398,11 @@ void TextField::handleCtrlKeys(const int action, bool &consumed)
         }
         case Input::KEY_GUI_B:
         {
-            moveCaretBack();
-            consumed = true;
+            if (mAllowSpecialActions)
+            {
+                moveCaretBack();
+                consumed = true;
+            }
             break;
         }
         case Input::KEY_GUI_F:

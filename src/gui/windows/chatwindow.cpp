@@ -227,6 +227,7 @@ ChatWindow::ChatWindow():
 
     mChatInput->setActionEventId("chatinput");
     mChatInput->addActionListener(this);
+    mChatInput->setAllowSpecialActions(false);
 
     mColorPicker->setActionEventId(ACTION_COLOR_PICKER);
     mColorPicker->addActionListener(this);
@@ -933,6 +934,25 @@ void ChatWindow::keyPressed(KeyEvent &event)
     ifKey(Input::KEY_GUI_F10, "\u2605")
     ifKey(Input::KEY_GUI_F11, "\u2618")
     ifKey(Input::KEY_GUI_F12, "\u2592")
+
+    if (inputManager.isActionActive(static_cast<int>(Input::KEY_GUI_CTRL)))
+    {
+        if (actionId == static_cast<int>(Input::KEY_GUI_B))
+        {
+            std::string inputText = mChatInput->getTextBeforeCaret();
+            toLower(inputText);
+            const size_t idx = inputText.rfind("##b");
+            if (idx == std::string::npos
+                || mChatInput->getTextBeforeCaret().substr(idx, 3) == "##b")
+            {
+                temp = "##B";
+            }
+            else
+            {
+                temp = "##b";
+            }
+        }
+    }
 
     if (!temp.empty())
         addInputText(temp, false);
