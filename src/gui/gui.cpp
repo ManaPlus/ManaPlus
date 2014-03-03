@@ -411,17 +411,17 @@ void Gui::clearFonts()
 bool Gui::handleInput()
 {
     if (mInput)
-        return handleKeyInput2();
+        return handleKeyInput();
     else
         return false;
 }
 
-bool Gui::handleKeyInput2()
+bool Gui::handleKeyInput()
 {
     if (!guiInput)
         return false;
 
-    BLOCK_START("Gui::handleKeyInput2")
+    BLOCK_START("Gui::handleKeyInput")
     bool consumed(false);
 
     while (!mInput->isKeyQueueEmpty())
@@ -495,7 +495,7 @@ bool Gui::handleKeyInput2()
             }
         }
     }  // end while
-    BLOCK_END("Gui::handleKeyInput2")
+    BLOCK_END("Gui::handleKeyInput")
     return consumed;
 }
 

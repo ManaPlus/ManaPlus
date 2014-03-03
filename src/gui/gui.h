@@ -191,7 +191,7 @@ class Gui final
 
         bool handleInput();
 
-        bool handleKeyInput2();
+        bool handleKeyInput();
 
         void resetClickCount();
 
