@@ -103,7 +103,7 @@ bool SDLInput::isKeyQueueEmpty() const
     return mKeyInputQueue.empty();
 }
 
-KeyInput SDLInput::dequeueKeyInput2()
+KeyInput SDLInput::dequeueKeyInput()
 {
     if (mKeyInputQueue.empty())
         return KeyInput();
@@ -120,19 +120,6 @@ bool SDLInput::isMouseQueueEmpty() const
 }
 
 MouseInput SDLInput::dequeueMouseInput()
-{
-    MouseInput mouseInput;
-
-    if (mMouseInputQueue.empty())
-        return MouseInput();
-
-    mouseInput = mMouseInputQueue.front();
-    mMouseInputQueue.pop();
-
-    return mouseInput;
-}
-
-MouseInput SDLInput::dequeueMouseInput2()
 {
     MouseInput mouseInput;
 

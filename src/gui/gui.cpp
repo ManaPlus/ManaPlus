@@ -426,7 +426,7 @@ bool Gui::handleKeyInput()
 
     while (!mInput->isKeyQueueEmpty())
     {
-        const KeyInput keyInput = guiInput->dequeueKeyInput2();
+        const KeyInput keyInput = guiInput->dequeueKeyInput();
 
         // Save modifiers state
         mShiftPressed = keyInput.isShiftPressed();
@@ -988,7 +988,7 @@ void Gui::handleMouseInput()
     BLOCK_START("Gui::handleMouseInput")
     while (!mInput->isMouseQueueEmpty())
     {
-        const MouseInput mouseInput = guiInput->dequeueMouseInput2();
+        const MouseInput mouseInput = guiInput->dequeueMouseInput();
 
         if (touchManager.processEvent(mouseInput))
         {

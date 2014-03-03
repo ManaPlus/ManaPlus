@@ -107,10 +107,7 @@ public:
      */
     void pushInput(const SDL_Event &event);
 
-    KeyInput dequeueKeyInput2() A_WARN_UNUSED;
-
-    KeyInput dequeueKeyInput() A_WARN_UNUSED
-    { return KeyInput(); }
+    KeyInput dequeueKeyInput() A_WARN_UNUSED;
 
     // Inherited from SDLInput
 
@@ -119,8 +116,6 @@ public:
     bool isMouseQueueEmpty() const A_WARN_UNUSED;
 
     MouseInput dequeueMouseInput() A_WARN_UNUSED;
-
-    MouseInput dequeueMouseInput2() A_WARN_UNUSED;
 
     void simulateMouseClick(const int x, const int y,
                             const unsigned int button);
