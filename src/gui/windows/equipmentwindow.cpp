@@ -175,7 +175,10 @@ void EquipmentWindow::draw(Graphics *graphics)
             {
                 const EquipmentBox *const box = *it;
                 if (!box)
+                {
+                    i ++;
                     continue;
+                }
                 if (i == mSelected)
                 {
                     graphics->calcTileCollection(mVertexes,
@@ -188,6 +191,7 @@ void EquipmentWindow::draw(Graphics *graphics)
                         mSlotBackground,
                         box->x, box->y);
                 }
+                i ++;
             }
         }
         graphics->drawTileCollection(mVertexes);
