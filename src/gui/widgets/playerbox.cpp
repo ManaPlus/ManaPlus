@@ -36,7 +36,8 @@ PlayerBox::PlayerBox(Widget2 *const widget,
                      Being *const being,
                      const std::string &skin,
                      const std::string &selectedSkin) :
-    ScrollArea(widget),
+    Widget(widget),
+    MouseListener(),
     mBeing(being),
     mAlpha(1.0),
     mBackground(),
@@ -54,7 +55,8 @@ PlayerBox::PlayerBox(Widget2 *const widget,
 PlayerBox::PlayerBox(Widget2 *const widget,
                      const std::string &skin,
                      const std::string &selectedSkin) :
-    ScrollArea(widget),
+    Widget(widget),
+    MouseListener(),
     mBeing(nullptr),
     mAlpha(1.0),
     mBackground(),
@@ -82,6 +84,7 @@ PlayerBox::~PlayerBox()
 void PlayerBox::init(std::string name, std::string selectedName)
 {
     setFrameSize(2);
+    addMouseListener(this);
 
     Theme *const theme = Theme::instance();
     if (theme)
@@ -153,10 +156,10 @@ void PlayerBox::drawFrame(Graphics *graphics)
 
 void PlayerBox::mouseReleased(MouseEvent& event)
 {
-    ScrollArea::mouseReleased(event);
     if (event.getButton() == MouseEvent::LEFT)
     {
         if (!mActionEventId.empty())
             distributeActionEvent();
+        event.consume();
     }
 }

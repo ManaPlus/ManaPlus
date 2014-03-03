@@ -23,7 +23,9 @@
 #ifndef GUI_WIDGETS_PLAYERBOX_H
 #define GUI_WIDGETS_PLAYERBOX_H
 
-#include "gui/base/widgets/scrollarea.hpp"
+#include "gui/widgets/scrollarea.h"
+
+#include "listeners/mouselistener.h"
 
 #include "localconsts.h"
 
@@ -35,7 +37,8 @@ class Skin;
  *
  * \ingroup GUI
  */
-class PlayerBox final : public gcn::ScrollArea
+class PlayerBox final : public Widget,
+                        public MouseListener
 {
     public:
         /**
