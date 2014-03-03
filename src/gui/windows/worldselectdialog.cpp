@@ -60,7 +60,7 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds):
     ScrollArea *const worldsScroll = new ScrollArea(this, mWorldList,
         getOptionBool("showbackground"), "world_background.xml");
 
-    worldsScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    worldsScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     place(0, 0, worldsScroll, 3, 5).setPadding(2);
     place(1, 5, mChangeLoginButton);

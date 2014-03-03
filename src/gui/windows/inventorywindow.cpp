@@ -151,9 +151,9 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
 
     mItems->addSelectionListener(this);
 
-    gcn::ScrollArea *const invenScroll = new ScrollArea(this, mItems,
+    ScrollArea *const invenScroll = new ScrollArea(this, mItems,
         getOptionBool("showbackground"), "inventory_background.xml");
-    invenScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    invenScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     const int size = config.getIntValue("fontSize");
     mFilter = new TabStrip(this, "filter_" + getWindowName(), size + 16);

@@ -147,8 +147,8 @@ NpcDialog::NpcDialog(const int npcId) :
     mTextBox->setEnableKeys(true);
     mTextBox->setEnableTabs(true);
 
-    mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
-    mScrollArea->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+    mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 
     // Setup listbox
     mItemList->setWrappingEnabled(true);
@@ -162,8 +162,8 @@ NpcDialog::NpcDialog(const int npcId) :
         mItemList->setRowHeight(gui->getNpcFont()->getHeight());
 
     setContentSize(260, 175);
-    mListScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
-    mItemScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    mListScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mItemScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mItemList->setVisible(true);
     mTextField->setVisible(true);
     mIntField->setVisible(true);

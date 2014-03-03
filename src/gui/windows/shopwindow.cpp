@@ -138,8 +138,8 @@ ShopWindow::ShopWindow():
     mBuyShopItemList->setPriceCheck(false);
     mSellShopItemList->setPriceCheck(false);
 
-    mBuyScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
-    mSellScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    mBuyScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mSellScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     mBuyShopItemList->addSelectionListener(this);
     mSellShopItemList->addSelectionListener(this);

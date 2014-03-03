@@ -174,7 +174,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/widgets/widget.h \
 	      listeners/widgetlistener.h \
 	      gui/base/widgets/container.hpp \
-	      gui/base/widgets/scrollarea.hpp \
 	      gui/base/widgets/slider.hpp \
 	      gui/base/widgets/textbox.hpp \
 	      gui/base/widgets/textfield.hpp \
@@ -185,7 +184,6 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/rect.cpp \
 	      gui/widgets/widget.cpp \
 	      gui/base/widgets/container.cpp \
-	      gui/base/widgets/scrollarea.cpp \
 	      gui/base/widgets/slider.cpp \
 	      gui/base/widgets/textbox.cpp \
 	      gui/base/widgets/textfield.cpp

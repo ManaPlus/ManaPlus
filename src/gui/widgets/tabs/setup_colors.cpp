@@ -84,15 +84,15 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     // TRANSLATORS: settings colors tab name
     setName(_("Colors"));
     mColorBox->addSelectionListener(this);
-    mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mPreview->setOpaque(false);
 
     // don't do anything with links
     mPreview->setLinkHandler(nullptr);
 
     mPreviewBox->setHeight(20);
-    mPreviewBox->setScrollPolicy(gcn::ScrollArea::SHOW_NEVER,
-                                 gcn::ScrollArea::SHOW_NEVER);
+    mPreviewBox->setScrollPolicy(ScrollArea::SHOW_NEVER,
+        ScrollArea::SHOW_NEVER);
 
     mGradTypeSlider->setWidth(180);
     mGradTypeSlider->setActionEventId("slider_grad");

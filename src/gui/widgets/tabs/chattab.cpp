@@ -72,8 +72,8 @@ ChatTab::ChatTab(const Widget2 *const widget,
         mTextOutput->setLinkHandler(chatWindow->mItemLinkHandler);
     mTextOutput->setAlwaysUpdate(false);
 
-    mScrollArea->setScrollPolicy(gcn::ScrollArea::SHOW_NEVER,
-                                 gcn::ScrollArea::SHOW_ALWAYS);
+    mScrollArea->setScrollPolicy(ScrollArea::SHOW_NEVER,
+        ScrollArea::SHOW_ALWAYS);
     mScrollArea->setScrollAmount(0, 1);
 
     if (chatWindow)

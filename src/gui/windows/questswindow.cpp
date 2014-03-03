@@ -149,10 +149,10 @@ QuestsWindow::QuestsWindow() :
     mQuestsListBox->setActionEventId("select");
     mQuestsListBox->addActionListener(this);
 
-    mQuestScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    mQuestScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mText->setOpaque(false);
     mText->setLinkHandler(mItemLinkHandler);
-    mTextScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    mTextScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mQuestsListBox->setWidth(500);
     if (gui && gui->getNpcFont()->getHeight() < 20)
         mQuestsListBox->setRowHeight(20);

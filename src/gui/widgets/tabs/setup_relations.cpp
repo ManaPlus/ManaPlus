@@ -221,7 +221,7 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
 
     mPlayerTitleTable->setLinewiseSelection(true);
 
-    mPlayerScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    mPlayerScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mPlayerTable->setActionEventId(ACTION_TABLE);
     mPlayerTable->setLinewiseSelection(true);
     mPlayerTable->addActionListener(this);

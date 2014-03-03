@@ -20,6 +20,49 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*      _______   __   __   __   ______   __   __   _______   __   __
+ *     / _____/\ / /\ / /\ / /\ / ____/\ / /\ / /\ / ___  /\ /  |\/ /\
+ *    / /\____\// / // / // / // /\___\// /_// / // /\_/ / // , |/ / /
+ *   / / /__   / / // / // / // / /    / ___  / // ___  / // /| ' / /
+ *  / /_// /\ / /_// / // / // /_/_   / / // / // /\_/ / // / |  / /
+ * /______/ //______/ //_/ //_____/\ /_/ //_/ //_/ //_/ //_/ /|_/ /
+ * \______\/ \______\/ \_\/ \_____\/ \_\/ \_\/ \_\/ \_\/ \_\/ \_\/
+ *
+ * Copyright (c) 2004 - 2008 Olof Naessén and Per Larsson
+ *
+ *
+ * Per Larsson a.k.a finalman
+ * Olof Naessén a.k.a jansem/yakslem
+ *
+ * Visit: http://guichan.sourceforge.net
+ *
+ * License: (BSD)
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ * 3. Neither the name of Guichan nor the names of its contributors may
+ *    be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
 #include "gui/widgets/scrollarea.h"
 
 #include "client.h"
@@ -53,8 +96,29 @@ ScrollArea::ScrollArea(Widget2 *const widget2,
                        Widget *const widget,
                        const bool opaque,
                        const std::string &skin) :
-    gcn::ScrollArea(widget2, widget),
+    BasicContainer(widget2),
+    MouseListener(),
     WidgetListener(),
+    mVScroll(0),
+    mHScroll(0),
+    mScrollbarWidth(12),
+    mHPolicy(SHOW_AUTO),
+    mVPolicy(SHOW_AUTO),
+    mVBarVisible(false),
+    mHBarVisible(false),
+    mUpButtonPressed(false),
+    mDownButtonPressed(false),
+    mLeftButtonPressed(false),
+    mRightButtonPressed(false),
+    mUpButtonScrollAmount(10),
+    mDownButtonScrollAmount(10),
+    mLeftButtonScrollAmount(10),
+    mRightButtonScrollAmount(10),
+    mIsVerticalMarkerDragged(false),
+    mIsHorizontalMarkerDragged(false),
+    mHorizontalMarkerDragOffset(0),
+    mVerticalMarkerDragOffset(0),
+    mOpaque(true),
     mX(0),
     mY(0),
     mClickX(0),
@@ -68,6 +132,8 @@ ScrollArea::ScrollArea(Widget2 *const widget2,
     mHasMouse(false),
     mRedraw(true)
 {
+    setContent(widget);
+    addMouseListener(this);
     mOpaque = opaque;
     init(skin);
 }
@@ -102,6 +168,8 @@ ScrollArea::~ScrollArea()
     mVertexes = nullptr;
     delete mVertexes2;
     mVertexes2 = nullptr;
+
+    setContent(nullptr);
 }
 
 void ScrollArea::init(std::string skinName)
@@ -178,20 +246,30 @@ void ScrollArea::logic()
         return;
     }
 
-    gcn::ScrollArea::logic();
+    checkPolicies();
+
+    setVerticalScrollAmount(getVerticalScrollAmount());
+    setHorizontalScrollAmount(getHorizontalScrollAmount());
+
     Widget *const content = getContent();
+    if (content)
+    {
+        const int frameSize = content->getFrameSize();
+        content->setPosition(-mHScroll + frameSize, -mVScroll + frameSize);
+        content->logic();
+    }
 
     // When no scrollbar in a certain direction, adapt content size to match
     // the content dimension exactly.
     if (content)
     {
         const unsigned int frameSize = 2 * content->getFrameSize();
-        if (mHPolicy == gcn::ScrollArea::SHOW_NEVER)
+        if (mHPolicy == ScrollArea::SHOW_NEVER)
         {
             content->setWidth((mVBarVisible ? (mDimension.width
                 - mScrollbarWidth) : mDimension.width) - frameSize);
         }
-        if (mVPolicy == gcn::ScrollArea::SHOW_NEVER)
+        if (mVPolicy == ScrollArea::SHOW_NEVER)
         {
             content->setHeight((mHBarVisible ? (mDimension.height
                 - mScrollbarWidth) : mDimension.height) - frameSize);
@@ -803,7 +881,13 @@ void ScrollArea::mouseReleased(MouseEvent& event)
                 event.consume();
         }
     }
-    gcn::ScrollArea::mouseReleased(event);
+    mUpButtonPressed = false;
+    mDownButtonPressed = false;
+    mLeftButtonPressed = false;
+    mRightButtonPressed = false;
+    mIsHorizontalMarkerDragged = false;
+    mIsVerticalMarkerDragged = false;
+    event.consume();
     mRedraw = true;
 }
 
@@ -1065,4 +1149,291 @@ Rect ScrollArea::getRightButtonDimension() const
         mDimension.height - mScrollbarWidth,
         mScrollbarWidth,
         mScrollbarWidth);
+}
+
+void ScrollArea::setContent(Widget* widget)
+{
+    if (widget)
+    {
+        clear();
+        add(widget);
+        widget->setPosition(0, 0);
+    }
+    else
+    {
+        clear();
+    }
+
+    checkPolicies();
+}
+
+Widget* ScrollArea::getContent()
+{
+    if (!mWidgets.empty())
+        return *mWidgets.begin();
+
+    return nullptr;
+}
+
+void ScrollArea::setHorizontalScrollPolicy(const ScrollPolicy hPolicy)
+{
+    mHPolicy = hPolicy;
+    checkPolicies();
+}
+
+void ScrollArea::setVerticalScrollPolicy(const ScrollPolicy vPolicy)
+{
+    mVPolicy = vPolicy;
+    checkPolicies();
+}
+
+void ScrollArea::setScrollPolicy(const ScrollPolicy hPolicy,
+                                 const ScrollPolicy vPolicy)
+{
+    mHPolicy = hPolicy;
+    mVPolicy = vPolicy;
+    checkPolicies();
+}
+
+void ScrollArea::setVerticalScrollAmount(const int vScroll)
+{
+    const int max = getVerticalMaxScroll();
+
+    mVScroll = vScroll;
+
+    if (vScroll > max)
+        mVScroll = max;
+
+    if (vScroll < 0)
+        mVScroll = 0;
+}
+
+void ScrollArea::setHorizontalScrollAmount(int hScroll)
+{
+    const int max = getHorizontalMaxScroll();
+
+    mHScroll = hScroll;
+
+    if (hScroll > max)
+        mHScroll = max;
+    else if (hScroll < 0)
+        mHScroll = 0;
+}
+
+void ScrollArea::setScrollAmount(const int hScroll, const int vScroll)
+{
+    setHorizontalScrollAmount(hScroll);
+    setVerticalScrollAmount(vScroll);
+}
+
+int ScrollArea::getHorizontalMaxScroll()
+{
+    checkPolicies();
+
+    const Widget *const content = getContent();
+    if (!content)
+        return 0;
+
+    const int value = content->getWidth() - getChildrenArea().width +
+        2 * content->getFrameSize();
+
+    if (value < 0)
+        return 0;
+
+    return value;
+}
+
+int ScrollArea::getVerticalMaxScroll()
+{
+    checkPolicies();
+
+    const Widget *const content = getContent();
+    if (!content)
+        return 0;
+
+    int value;
+
+    value = content->getHeight() - getChildrenArea().height +
+        2 * content->getFrameSize();
+
+    if (value < 0)
+        return 0;
+
+    return value;
+}
+
+void ScrollArea::setScrollbarWidth(const int width)
+{
+    if (width > 0)
+        mScrollbarWidth = width;
+}
+
+void ScrollArea::showWidgetPart(Widget *const widget, Rect area)
+{
+    const Widget *const content = getContent();
+    if (widget != content)
+        return;
+
+    BasicContainer::showWidgetPart(widget, area);
+
+    setHorizontalScrollAmount(content->getFrameSize()
+        - content->getX());
+    setVerticalScrollAmount(content->getFrameSize()
+        - content->getY());
+}
+
+Rect ScrollArea::getChildrenArea()
+{
+    const Rect area = Rect(0, 0,
+        mVBarVisible ? (getWidth() - mScrollbarWidth) : getWidth(),
+        mHBarVisible ? (getHeight() - mScrollbarWidth) : getHeight());
+
+    if (area.width < 0 || area.height < 0)
+        return Rect();
+
+    return area;
+}
+
+Widget *ScrollArea::getWidgetAt(int x, int y)
+{
+    if (getChildrenArea().isPointInRect(x, y))
+        return getContent();
+
+    return nullptr;
+}
+
+void ScrollArea::setWidth(int width)
+{
+    Widget::setWidth(width);
+    checkPolicies();
+}
+
+void ScrollArea::setHeight(int height)
+{
+    Widget::setHeight(height);
+    checkPolicies();
+}
+
+void ScrollArea::setDimension(const Rect& dimension)
+{
+    Widget::setDimension(dimension);
+    checkPolicies();
+}
+
+void ScrollArea::mouseWheelMovedUp(MouseEvent& mouseEvent)
+{
+    if (mouseEvent.isConsumed())
+        return;
+
+    setVerticalScrollAmount(getVerticalScrollAmount()
+        - getChildrenArea().height / 8);
+
+    mouseEvent.consume();
+}
+
+void ScrollArea::mouseWheelMovedDown(MouseEvent& mouseEvent)
+{
+    if (mouseEvent.isConsumed())
+        return;
+
+    setVerticalScrollAmount(getVerticalScrollAmount()
+        + getChildrenArea().height / 8);
+
+    mouseEvent.consume();
+}
+
+void ScrollArea::checkPolicies()
+{
+    const int w = getWidth();
+    const int h = getHeight();
+
+    mHBarVisible = false;
+    mVBarVisible = false;
+
+    const Widget *const content = getContent();
+    if (!content)
+    {
+        mHBarVisible = (mHPolicy == SHOW_ALWAYS);
+        mVBarVisible = (mVPolicy == SHOW_ALWAYS);
+        return;
+    }
+
+    if (mHPolicy == SHOW_AUTO &&
+        mVPolicy == SHOW_AUTO)
+    {
+        if (content->getWidth() <= w
+            && content->getHeight() <= h)
+        {
+            mHBarVisible = false;
+            mVBarVisible = false;
+        }
+
+        if (content->getWidth() > w)
+        {
+            mHBarVisible = true;
+        }
+
+        if ((content->getHeight() > h)
+            || (mHBarVisible && content->getHeight()
+            > h - mScrollbarWidth))
+        {
+            mVBarVisible = true;
+        }
+
+        if (mVBarVisible && content->getWidth() > w - mScrollbarWidth)
+            mHBarVisible = true;
+
+        return;
+    }
+
+    switch (mHPolicy)
+    {
+        case SHOW_NEVER:
+            mHBarVisible = false;
+            break;
+
+        case SHOW_ALWAYS:
+            mHBarVisible = true;
+            break;
+
+        case SHOW_AUTO:
+            if (mVPolicy == SHOW_NEVER)
+            {
+                mHBarVisible = (content->getWidth() > w);
+            }
+            else  // (mVPolicy == SHOW_ALWAYS)
+            {
+                mHBarVisible = (content->getWidth()
+                    > w - mScrollbarWidth);
+            }
+            break;
+
+        default:
+            break;
+    }
+
+    switch (mVPolicy)
+    {
+        case SHOW_NEVER:
+            mVBarVisible = false;
+            break;
+
+        case SHOW_ALWAYS:
+            mVBarVisible = true;
+            break;
+
+        case SHOW_AUTO:
+            if (mHPolicy == SHOW_NEVER)
+            {
+                mVBarVisible = (content->getHeight() > h);
+            }
+            else  // (mHPolicy == SHOW_ALWAYS)
+            {
+                mVBarVisible = (content->getHeight()
+                    > h - mScrollbarWidth);
+            }
+            break;
+        default:
+            break;
+    }
 }

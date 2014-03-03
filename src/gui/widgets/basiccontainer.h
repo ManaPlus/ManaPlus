@@ -106,7 +106,7 @@ class BasicContainer : public Widget,
           *               itself to be visible.
           * @param rectangle The rectangle to be visible.
           */
-        virtual void showWidgetPart(Widget* widget, Rect area);
+        virtual void showWidgetPart(Widget *const widget, Rect area);
 
         // Inherited from Widget
 

@@ -198,8 +198,8 @@ public:
         mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
-        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
-        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+        mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
     }
 
     A_DELETE_COPY(SocialGuildTab)
@@ -334,8 +334,8 @@ public:
         mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
-        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
-        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+        mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
     }
 
     A_DELETE_COPY(SocialGuildTab2)
@@ -403,8 +403,8 @@ public:
         mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
-        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
-        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+        mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
     }
 
     A_DELETE_COPY(SocialPartyTab)
@@ -519,8 +519,8 @@ public:
         mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
-        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
-        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+        mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 
         getPlayersAvatars();
         setCaption(name);
@@ -685,8 +685,8 @@ public:
         mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
-        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
-        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+        mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 
         // TRANSLATORS: Navigation tab name in social window. Should be small
         setCaption(_("Nav"));
@@ -1014,8 +1014,8 @@ public:
         mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
-        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
-        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+        mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 
         // TRANSLATORS: Attack filter tab name in social window. Should be small
         setCaption(_("Atk"));
@@ -1061,8 +1061,8 @@ public:
         mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
-        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
-        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+        mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 
         // TRANSLATORS: Pickup filter tab name in social window. Should be small
         setCaption(_("Pik"));
@@ -1108,8 +1108,8 @@ public:
         mScroll = new ScrollArea(this, mList, showBackground,
             "social_background.xml");
 
-        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
-        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+        mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 
         getPlayersAvatars();
         setCaption(name);

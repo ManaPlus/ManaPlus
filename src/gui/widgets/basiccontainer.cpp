@@ -313,7 +313,7 @@ void BasicContainer::logicChildren()
     BLOCK_END("BasicContainer::logicChildren")
 }
 
-void BasicContainer::showWidgetPart(Widget* widget, Rect area)
+void BasicContainer::showWidgetPart(Widget *const widget, Rect area)
 {
     const Rect widgetArea = getChildrenArea();
 

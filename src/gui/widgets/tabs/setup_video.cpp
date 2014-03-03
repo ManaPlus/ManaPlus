@@ -227,7 +227,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     ScrollArea *const scrollArea = new ScrollArea(this, mModeList,
         true, "setup_video_background.xml");
     scrollArea->setWidth(150);
-    scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
+    scrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     mOpenGLDropDown->setSelected(renderToIndex[mOpenGLEnabled]);
 
