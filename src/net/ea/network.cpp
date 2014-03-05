@@ -32,6 +32,8 @@
 
 #include "debug.h"
 
+extern unsigned int mLastHost;
+
 namespace Ea
 {
 
@@ -89,7 +91,6 @@ bool Network::connect(ServerInfo server)
     if (mState != IDLE && mState != NET_ERROR)
     {
         logger->log1("Tried to connect an already connected socket!");
-//        assert(false);
         return false;
     }
 
@@ -217,6 +218,7 @@ bool Network::realConnect()
         return false;
     }
 
+    mLastHost = ipAddress.host;
     logger->log_r("Network::Started session with %s:%i",
         ipToString(ipAddress.host), ipAddress.port);
 

@@ -291,6 +291,30 @@ void LoginHandler::processLoginError(Net::MessageIn &msg) const
     client->setState(STATE_ERROR);
 }
 
+void LoginHandler::loginOrRegister(LoginData *const data)
+{
+    if (!data)
+        return;
+
+    logger->log("Username is %s", data->username.c_str());
+
+    // Send login infos
+    if (data->registerLogin)
+        registerAccount(data);
+    else
+        loginAccount(data);
+
+    // Clear the password, avoids auto login when returning to login
+    data->password.clear();
+
+    const bool remember = data->remember;
+    if (remember)
+        serverConfig.setValue("username", data->username);
+    else
+        serverConfig.setValue("username", "");
+    serverConfig.setValue("remember", remember);
+}
+
 void LoginHandler::logout() const
 {
 }

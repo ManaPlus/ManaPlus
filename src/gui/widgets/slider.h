@@ -145,8 +145,6 @@ class Slider final : public Widget,
 
         void keyPressed(KeyEvent& keyEvent) override final;
 
-        void setValue2(const double value);
-
         /**
          * Sets the scale of the slider.
          *
@@ -315,10 +313,6 @@ class Slider final : public Widget,
         static ImageRect buttons[2];
         static float mAlpha;
         static int mInstances;
-        /**
-         * True if the slider is dragged, false otherwise.
-         */
-        bool mDragged;
 
         /**
          * Holds the current selected value.
@@ -330,11 +324,6 @@ class Slider final : public Widget,
          * and RIGHT are pressed to step in the scale.
          */
         double mStepLength;
-
-        /**
-         * Holds the length of the marker.
-         */
-        int mMarkerLength;
 
         /**
          * Holds the start value of the scale.
@@ -353,6 +342,17 @@ class Slider final : public Widget,
         Orientation mOrientation;
 
         ImageCollection *mVertexes;
+
+        /**
+         * Holds the length of the marker.
+         */
+        int mMarkerLength;
+
+        /**
+         * True if the slider is dragged, false otherwise.
+         */
+        bool mDragged;
+
         bool mHasMouse;
         bool mRedraw;
 };

@@ -372,8 +372,6 @@ private:
 
     static void initFeatures();
 
-    static void accountLogin(LoginData *const data);
-
 #ifndef ANDROID
     void storeSafeParameters() const;
 #endif
@@ -455,5 +453,6 @@ private:
 };
 
 extern Client *client;
+extern unsigned int mLastHost;
 
 #endif  // CLIENT_H

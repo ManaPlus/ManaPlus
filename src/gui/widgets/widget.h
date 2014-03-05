@@ -196,7 +196,7 @@ class Widget : public Widget2
           *         has no parent.
           * @since 0.1.0
           */
-        virtual Widget* getParent() const A_WARN_UNUSED
+        Widget* getParent() const A_WARN_UNUSED
         { return mParent; }
 
         /**

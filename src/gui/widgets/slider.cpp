@@ -93,14 +93,14 @@ Slider::Slider(Widget2 *const widget,
     Widget(widget),
     MouseListener(),
     KeyListener(),
-    mDragged(false),
     mValue(0),
     mStepLength(scaleEnd / 10),
-    mMarkerLength(10),
     mScaleStart(0),
     mScaleEnd(scaleEnd),
     mOrientation(HORIZONTAL),
     mVertexes(new ImageCollection),
+    mMarkerLength(10),
+    mDragged(false),
     mHasMouse(false),
     mRedraw(true)
 {
@@ -113,14 +113,14 @@ Slider::Slider(Widget2 *const widget,
     Widget(widget),
     MouseListener(),
     KeyListener(),
-    mDragged(false),
     mValue(scaleStart),
     mStepLength((scaleEnd - scaleStart) / 10),
-    mMarkerLength(10),
     mScaleStart(scaleStart),
     mScaleEnd(scaleEnd),
     mOrientation(HORIZONTAL),
     mVertexes(new ImageCollection),
+    mMarkerLength(10),
+    mDragged(false),
     mHasMouse(false),
     mRedraw(true)
 {
@@ -356,22 +356,18 @@ void Slider::mouseExited(MouseEvent& event A_UNUSED)
 
 void Slider::mousePressed(MouseEvent &mouseEvent)
 {
+    const int x = mouseEvent.getX();
+    const int y = mouseEvent.getY();
+    const int width = mDimension.width;
+    const int height = mDimension.height;
+
     if (mouseEvent.getButton() == MouseEvent::LEFT
-        && mouseEvent.getX() >= 0
-        && mouseEvent.getX() <= getWidth()
-        && mouseEvent.getY() >= 0
-        && mouseEvent.getY() <= getHeight())
+        && x >= 0 && x <= width && y >= 0 && y <= height)
     {
-        if (getOrientation() == HORIZONTAL)
-        {
-            setValue2(markerPositionToValue(
-                mouseEvent.getX() - getMarkerLength() / 2));
-        }
+        if (mOrientation == HORIZONTAL)
+            setValue(markerPositionToValue(x - mMarkerLength / 2));
         else
-        {
-            setValue2(markerPositionToValue(getHeight()
-                - mouseEvent.getY() - getMarkerLength() / 2));
-        }
+            setValue(markerPositionToValue(height - y - mMarkerLength / 2));
 
         distributeActionEvent();
     }
@@ -379,15 +375,14 @@ void Slider::mousePressed(MouseEvent &mouseEvent)
 
 void Slider::mouseDragged(MouseEvent &mouseEvent)
 {
-    if (getOrientation() == HORIZONTAL)
+    if (mOrientation == HORIZONTAL)
     {
-        setValue2(markerPositionToValue(mouseEvent.getX()
-            - getMarkerLength() / 2));
+        setValue(markerPositionToValue(mouseEvent.getX() - mMarkerLength / 2));
     }
     else
     {
-        setValue2(markerPositionToValue(getHeight()
-            - mouseEvent.getY() - getMarkerLength() / 2));
+        setValue(markerPositionToValue(
+            mDimension.height - mouseEvent.getY() - mMarkerLength / 2));
     }
 
     distributeActionEvent();
@@ -397,17 +392,15 @@ void Slider::mouseDragged(MouseEvent &mouseEvent)
 
 void Slider::mouseWheelMovedUp(MouseEvent &mouseEvent)
 {
-    setValue2(getValue() + getStepLength());
+    setValue(mValue + mStepLength);
     distributeActionEvent();
-
     mouseEvent.consume();
 }
 
 void Slider::mouseWheelMovedDown(MouseEvent &mouseEvent)
 {
-    setValue2(getValue() - getStepLength());
+    setValue(mValue - mStepLength);
     distributeActionEvent();
-
     mouseEvent.consume();
 }
 
@@ -415,17 +408,17 @@ void Slider::keyPressed(KeyEvent& keyEvent)
 {
     const int action = keyEvent.getActionId();
 
-    if (getOrientation() == HORIZONTAL)
+    if (mOrientation == HORIZONTAL)
     {
         if (action == Input::KEY_GUI_RIGHT)
         {
-            setValue2(getValue() + getStepLength());
+            setValue(mValue + mStepLength);
             distributeActionEvent();
             keyEvent.consume();
         }
         else if (action == Input::KEY_GUI_LEFT)
         {
-            setValue2(getValue() - getStepLength());
+            setValue(mValue - mStepLength);
             distributeActionEvent();
             keyEvent.consume();
         }
@@ -434,23 +427,17 @@ void Slider::keyPressed(KeyEvent& keyEvent)
     {
         if (action == Input::KEY_GUI_UP)
         {
-            setValue2(getValue() + getStepLength());
+            setValue(mValue + mStepLength);
             distributeActionEvent();
             keyEvent.consume();
         }
         else if (action == Input::KEY_GUI_DOWN)
         {
-            setValue2(getValue() - getStepLength());
+            setValue(mValue - mStepLength);
             distributeActionEvent();
             keyEvent.consume();
         }
     }
-}
-
-void Slider::setValue2(const double value)
-{
-    setValue(value);
-    mRedraw = true;
 }
 
 void Slider::setScale(const double scaleStart, const double scaleEnd)
@@ -461,15 +448,16 @@ void Slider::setScale(const double scaleStart, const double scaleEnd)
 
 void Slider::setValue(const double value)
 {
-    if (value > getScaleEnd())
+    mRedraw = true;
+    if (value > mScaleEnd)
     {
-        mValue = getScaleEnd();
+        mValue = mScaleEnd;
         return;
     }
 
-    if (value < getScaleStart())
+    if (value < mScaleStart)
     {
-        mValue = getScaleStart();
+        mValue = mScaleStart;
         return;
     }
 
@@ -479,32 +467,32 @@ void Slider::setValue(const double value)
 double Slider::markerPositionToValue(const int v) const
 {
     int w;
-    if (getOrientation() == HORIZONTAL)
-        w = getWidth();
+    if (mOrientation == HORIZONTAL)
+        w = mDimension.width;
     else
-        w = getHeight();
+        w = mDimension.height;
 
-    const double pos = v / (static_cast<double>(w) - getMarkerLength());
-    return (1.0 - pos) * getScaleStart() + pos * getScaleEnd();
+    const double pos = v / (static_cast<double>(w) - mMarkerLength);
+    return (1.0 - pos) * mScaleStart + pos * mScaleEnd;
 }
 
 int Slider::valueToMarkerPosition(const double value) const
 {
     int v;
-    if (getOrientation() == HORIZONTAL)
-        v = getWidth();
+    if (mOrientation == HORIZONTAL)
+        v = mDimension.width;
     else
-        v = getHeight();
+        v = mDimension.height;
 
-    const int w = static_cast<int>((v - getMarkerLength())
-            * (value  - getScaleStart())
-            / (getScaleEnd() - getScaleStart()));
+    const int w = static_cast<int>((v - mMarkerLength)
+            * (value  - mScaleStart)
+            / (mScaleEnd - mScaleStart));
 
     if (w < 0)
         return 0;
 
-    if (w > v - getMarkerLength())
-        return v - getMarkerLength();
+    if (w > v - mMarkerLength)
+        return v - mMarkerLength;
 
     return w;
 }

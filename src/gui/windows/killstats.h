@@ -46,7 +46,8 @@ class KillStats final : public Window,
         /**
          * Destructor.
          */
-        ~KillStats();
+        ~KillStats()
+        { }
 
         /**
          * Stuff.

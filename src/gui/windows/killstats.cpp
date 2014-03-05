@@ -27,6 +27,7 @@
 #include "gui/widgets/layout.h"
 
 #include "actormanager.h"
+#include "client.h"
 #include "game.h"
 
 #include "being/localplayer.h"
@@ -150,10 +151,6 @@ KillStats::KillStats() :
 
     loadWindowState();
     enableVisibleSound(true);
-}
-
-KillStats::~KillStats()
-{
 }
 
 void KillStats::action(const ActionEvent &event)
@@ -300,6 +297,15 @@ void KillStats::recalcStats()
         else
             m1minSpeed = 0;
         m1minExpTime = curTime;
+        m1minExpNum = newExp;
+    }
+
+    if (curTime != 0 && mLastHost == 0xFF6B66 && cur_time > 1)
+    {
+        const int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
+        if (m1minExpTime != 0)
+            m1minSpeed = newExp - m1minExpNum;
+        mStatsReUpdated = true;
         m1minExpNum = newExp;
     }
 

@@ -470,6 +470,19 @@ class ScrollArea final : public BasicContainer,
         static ImageRect hBackground;
         static Image *buttons[4][2];
 
+        ImageCollection *mVertexes;
+        ImageCollection *mVertexes2;
+
+        /**
+         * Holds the horizontal scroll bar policy.
+         */
+        ScrollPolicy mHPolicy;
+
+        /**
+         * Holds the vertical scroll bar policy.
+         */
+        ScrollPolicy mVPolicy;
+
         /**
          * Holds the vertical scroll amount.
          */
@@ -486,14 +499,43 @@ class ScrollArea final : public BasicContainer,
         int mScrollbarWidth;
 
         /**
-         * Holds the horizontal scroll bar policy.
+         * Holds the up button scroll amount.
          */
-        ScrollPolicy mHPolicy;
+        int mUpButtonScrollAmount;
 
         /**
-         * Holds the vertical scroll bar policy.
+         * Holds the down button scroll amount.
          */
-        ScrollPolicy mVPolicy;
+        int mDownButtonScrollAmount;
+
+        /**
+         * Holds the left button scroll amount.
+         */
+        int mLeftButtonScrollAmount;
+
+        /**
+         * Holds the right button scroll amount.
+         */
+        int mRightButtonScrollAmount;
+
+        /**
+         * Holds the horizontal markers drag offset.
+         */
+        int mHorizontalMarkerDragOffset;
+
+        /**
+         * Holds the vertical markers drag offset.
+         */
+        int mVerticalMarkerDragOffset;
+
+        int mX;
+        int mY;
+        int mClickX;
+        int mClickY;
+        int mXOffset;
+        int mYOffset;
+        int mDrawWidth;
+        int mDrawHeight;
 
         /**
          * True if the vertical scroll bar is visible, false otherwise.
@@ -526,26 +568,6 @@ class ScrollArea final : public BasicContainer,
         bool mRightButtonPressed;
 
         /**
-         * Holds the up button scroll amount.
-         */
-        int mUpButtonScrollAmount;
-
-        /**
-         * Holds the down button scroll amount.
-         */
-        int mDownButtonScrollAmount;
-
-        /**
-         * Holds the left button scroll amount.
-         */
-        int mLeftButtonScrollAmount;
-
-        /**
-         * Holds the right button scroll amount.
-         */
-        int mRightButtonScrollAmount;
-
-        /**
          * True if the vertical marked is dragged.
          */
         bool mIsVerticalMarkerDragged;
@@ -556,31 +578,11 @@ class ScrollArea final : public BasicContainer,
         bool mIsHorizontalMarkerDragged;
 
         /**
-         * Holds the horizontal markers drag offset.
-         */
-        int mHorizontalMarkerDragOffset;
-
-        /**
-         * Holds the vertical markers drag offset.
-         */
-        int mVerticalMarkerDragOffset;
-
-        /**
          * True if the scroll area should be opaque (that is
          * display its background), false otherwise.
          */
         bool mOpaque;
 
-        int mX;
-        int mY;
-        int mClickX;
-        int mClickY;
-        ImageCollection *mVertexes;
-        ImageCollection *mVertexes2;
-        int mXOffset;
-        int mYOffset;
-        int mDrawWidth;
-        int mDrawHeight;
         bool mHasMouse;
         bool mRedraw;
 };

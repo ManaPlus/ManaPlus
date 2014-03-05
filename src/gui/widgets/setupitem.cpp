@@ -769,7 +769,7 @@ void SetupItemSlider::createControls()
     mSlider = new Slider(this, mMin, mMax);
     mSlider->setActionEventId(mEventName);
     mSlider->addActionListener(mParent);
-    mSlider->setValue2(atof(mValue.c_str()));
+    mSlider->setValue(atof(mValue.c_str()));
     mSlider->setHeight(30);
 
     mWidget = mSlider;
@@ -798,7 +798,7 @@ void SetupItemSlider::toWidget()
     if (!mSlider)
         return;
 
-    mSlider->setValue2(atof(mValue.c_str()));
+    mSlider->setValue(atof(mValue.c_str()));
 }
 
 void SetupItemSlider::action(const ActionEvent &event A_UNUSED)
@@ -893,7 +893,7 @@ void SetupItemSlider2::createControls()
     mSlider = new Slider(this, mMin, mMax);
     mSlider->setActionEventId(mEventName);
     mSlider->addActionListener(mParent);
-    mSlider->setValue2(atof(mValue.c_str()));
+    mSlider->setValue(atof(mValue.c_str()));
     mSlider->setHeight(30);
 
     mWidget = mSlider;
@@ -952,7 +952,7 @@ void SetupItemSlider2::toWidget()
     int val = roundDouble(atof(mValue.c_str()));
     if (mInvert)
         val = mInvertValue - val;
-    mSlider->setValue2(val);
+    mSlider->setValue(val);
     updateLabel();
 }
 

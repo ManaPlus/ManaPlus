@@ -185,7 +185,7 @@ bool isSafeMode = false;
 int serverVersion = 0;
 unsigned int tmwServerVersion = 0;
 int start_time;
-
+unsigned int mLastHost = 0;
 int textures_count = 0;
 
 #ifdef WIN32
@@ -1323,7 +1323,7 @@ int Client::gameExec()
                         // TRANSLATORS: connection dialog header
                         _("Logging in"), STATE_SWITCH_SERVER);
                     mCurrentDialog->postInit();
-                    accountLogin(&loginData);
+                    Net::getLoginHandler()->loginOrRegister(&loginData);
                     BLOCK_END("Client::gameExec STATE_LOGIN_ATTEMPT")
                     break;
 
@@ -2338,30 +2338,6 @@ void Client::initScreenshotDir()
         }
     }
     logger->log("screenshotDirectory: " + mScreenshotDir);
-}
-
-void Client::accountLogin(LoginData *const data)
-{
-    if (!data)
-        return;
-
-    logger->log("Username is %s", data->username.c_str());
-
-    // Send login infos
-    if (data->registerLogin)
-        Net::getLoginHandler()->registerAccount(data);
-    else
-        Net::getLoginHandler()->loginAccount(data);
-
-    // Clear the password, avoids auto login when returning to login
-    data->password.clear();
-
-    const bool remember = data->remember;
-    if (remember)
-        serverConfig.setValue("username", data->username);
-    else
-        serverConfig.setValue("username", "");
-    serverConfig.setValue("remember", remember);
 }
 
 #ifndef ANDROID

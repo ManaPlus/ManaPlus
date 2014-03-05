@@ -99,6 +99,8 @@ class LoginHandler
 
         virtual void clearWorlds() = 0;
 
+        virtual void loginOrRegister(LoginData *const data) = 0;
+
         virtual ~LoginHandler()
         { }
 

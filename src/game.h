@@ -140,4 +140,6 @@ class Game final
         static Game *mInstance;
 };
 
+extern bool mStatsReUpdated;
+
 #endif  // GAME_H

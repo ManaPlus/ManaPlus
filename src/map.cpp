@@ -381,13 +381,9 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
 
     // Make sure actors are sorted ascending by Y-coordinate
     // so that they overlap correctly
-//    if (mSpritesUpdated)
-//    {
     BLOCK_START("Map::draw sort")
         mActors.sort(actorCompare);
     BLOCK_END("Map::draw sort")
-//        mSpritesUpdated = false;
-//    }
 
     // update scrolling of all ambient layers
     updateAmbientLayers(static_cast<float>(scrollX),
@@ -480,15 +476,6 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                 else
 #endif
                 {
-/*
-                    if (updateFlag)
-                    {
-                        (*layeri)->updateSDL(graphics, startX, startY,
-                            endX, endY, scrollX, scrollY, mDebugFlags);
-                    }
-
-                    (*layeri)->drawSDL(graphics);
-*/
                     layer->draw(graphics, startX, startY, endX, endY,
                         scrollX, scrollY, mDebugFlags);
                 }

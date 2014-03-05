@@ -96,7 +96,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
 
     mGradTypeSlider->setWidth(180);
     mGradTypeSlider->setActionEventId("slider_grad");
-    mGradTypeSlider->setValue2(0);
+    mGradTypeSlider->setValue(0);
     mGradTypeSlider->addActionListener(this);
     mGradTypeSlider->setEnabled(false);
 
@@ -128,7 +128,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mGradDelayText->setEnabled(false);
 
     mGradDelaySlider->setWidth(180);
-    mGradDelaySlider->setValue2(mGradDelayText->getValue());
+    mGradDelaySlider->setValue(mGradDelayText->getValue());
     mGradDelaySlider->setActionEventId("slider_graddelay");
     mGradDelaySlider->addActionListener(this);
     mGradDelaySlider->setEnabled(false);
@@ -139,7 +139,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mRedText->setEnabled(false);
 
     mRedSlider->setWidth(180);
-    mRedSlider->setValue2(mRedText->getValue());
+    mRedSlider->setValue(mRedText->getValue());
     mRedSlider->setActionEventId("slider_red");
     mRedSlider->addActionListener(this);
     mRedSlider->setEnabled(false);
@@ -150,7 +150,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mGreenText->setEnabled(false);
 
     mGreenSlider->setWidth(180);
-    mGreenSlider->setValue2(mGreenText->getValue());
+    mGreenSlider->setValue(mGreenText->getValue());
     mGreenSlider->setActionEventId("slider_green");
     mGreenSlider->addActionListener(this);
     mGreenSlider->setEnabled(false);
@@ -161,7 +161,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mBlueText->setEnabled(false);
 
     mBlueSlider->setWidth(180);
-    mBlueSlider->setValue2(mBlueText->getValue());
+    mBlueSlider->setValue(mBlueText->getValue());
     mBlueSlider->setActionEventId("slider_blue");
     mBlueSlider->addActionListener(this);
     mBlueSlider->setEnabled(false);
@@ -356,7 +356,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
     setEntry(mGreenSlider, mGreenText, col->g);
     setEntry(mBlueSlider, mBlueText, col->b);
 
-    mGradTypeSlider->setValue2(grad);
+    mGradTypeSlider->setValue(grad);
     updateGradType();
     mGradTypeSlider->setEnabled(true);
 }
@@ -365,7 +365,7 @@ void Setup_Colors::setEntry(Slider *const s, TextField *const t,
                             const int value)
 {
     if (s)
-        s->setValue2(value);
+        s->setValue(value);
     if (t)
         t->setText(toString(value));
 }
@@ -384,7 +384,7 @@ void Setup_Colors::cancel()
     userPalette->rollback();
     const int type = userPalette->getColorTypeAt(mSelected);
     const Color *const col = &userPalette->getColor(type);
-    mGradTypeSlider->setValue2(userPalette->getGradientType(type));
+    mGradTypeSlider->setValue(userPalette->getGradientType(type));
     const int delay = userPalette->getGradientDelay(type);
     setEntry(mGradDelaySlider, mGradDelayText, delay);
     setEntry(mRedSlider, mRedText, col->r);

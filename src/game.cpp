@@ -165,6 +165,7 @@ BattleTab *battleChatTab = nullptr;
 GmTab *gmChatTab = nullptr;
 LangTab *langChatTab = nullptr;
 
+bool mStatsReUpdated = false;
 const unsigned adjustDelay = 10;
 
 /**

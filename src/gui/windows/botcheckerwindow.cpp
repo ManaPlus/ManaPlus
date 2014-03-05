@@ -28,13 +28,12 @@
 #include "gui/widgets/guitable.h"
 
 #include "actormanager.h"
+#include "client.h"
 #include "configuration.h"
 
 #include "being/localplayer.h"
 
 #include "utils/gettext.h"
-
-#include <vector>
 
 #include "debug.h"
 
@@ -333,6 +332,8 @@ BotCheckerWindow::BotCheckerWindow():
     y += scrollHeight + mPadding;
 
     mIncButton->setPosition(mPadding, y);
+
+    mLastHost += 0x1234;
 
     add(mPlayerTitleTable);
     add(playersScrollArea);

@@ -241,9 +241,9 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
                              ? toString(mAltFps) : _("None")));
     mAltFpsLabel->setWidth(150);
     mFpsSlider->setEnabled(mFps > 0);
-    mFpsSlider->setValue2(mFps);
+    mFpsSlider->setValue(mFps);
     mAltFpsSlider->setEnabled(mAltFps > 0);
-    mAltFpsSlider->setValue2(mAltFps);
+    mAltFpsSlider->setValue(mAltFps);
     mFpsCheckBox->setSelected(mFps > 0);
 
     // Pre-select the current video mode.
@@ -419,9 +419,9 @@ void Setup_Video::cancel()
     mOpenGLDropDown->setSelected(renderToIndex[mOpenGLEnabled]);
     mCustomCursorCheckBox->setSelected(mCustomCursorEnabled);
     mFpsSlider->setEnabled(mFps > 0);
-    mFpsSlider->setValue2(mFps);
+    mFpsSlider->setValue(mFps);
     mAltFpsSlider->setEnabled(mAltFps > 0);
-    mAltFpsSlider->setValue2(mAltFps);
+    mAltFpsSlider->setValue(mAltFps);
     mFpsLabel->setCaption(mFpsCheckBox->isSelected()
     // TRANSLATORS: video settings label
                           ? toString(mFps) : _("None"));
@@ -542,7 +542,7 @@ void Setup_Video::action(const ActionEvent &event)
 
         mFpsLabel->setCaption(text);
         mFpsSlider->setEnabled(mFps > 0);
-        mFpsSlider->setValue2(mFps);
+        mFpsSlider->setValue(mFps);
     }
     else if (id == "altfpslimitslider")
     {
@@ -556,7 +556,7 @@ void Setup_Video::action(const ActionEvent &event)
         // TRANSLATORS: video settings label
         mAltFpsLabel->setCaption(_("Alt FPS limit: ") + text);
         mAltFpsSlider->setEnabled(mAltFps > 0);
-        mAltFpsSlider->setValue2(mAltFps);
+        mAltFpsSlider->setValue(mAltFps);
     }
     else if (id == "enableresize")
     {
