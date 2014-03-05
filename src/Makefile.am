@@ -174,17 +174,13 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/widgets/widget.h \
 	      listeners/widgetlistener.h \
 	      gui/base/widgets/container.hpp \
-	      gui/base/widgets/textbox.hpp \
-	      gui/base/widgets/textfield.hpp \
 	      gui/widgets/basiccontainer.cpp \
 	      gui/cliprect.cpp \
 	      gui/color.cpp \
 	      input/key.cpp \
 	      gui/rect.cpp \
 	      gui/widgets/widget.cpp \
-	      gui/base/widgets/container.cpp \
-	      gui/base/widgets/textbox.cpp \
-	      gui/base/widgets/textfield.cpp
+	      gui/base/widgets/container.cpp
 
 manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/avatarlistbox.h \

@@ -811,8 +811,6 @@ SET(SRCS
     gui/widgets/widget.h
     listeners/widgetlistener.h
     gui/base/widgets/container.hpp
-    gui/base/widgets/textbox.hpp
-    gui/base/widgets/textfield.hpp
     gui/widgets/basiccontainer.cpp
     gui/cliprect.cpp
     gui/color.cpp
@@ -820,8 +818,6 @@ SET(SRCS
     gui/rect.cpp
     gui/widgets/widget.cpp
     gui/base/widgets/container.cpp
-    gui/base/widgets/textbox.cpp
-    gui/base/widgets/textfield.cpp
     )
 
 SET(SRCS_EVOL

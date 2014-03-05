@@ -20,6 +20,49 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*      _______   __   __   __   ______   __   __   _______   __   __
+ *     / _____/\ / /\ / /\ / /\ / ____/\ / /\ / /\ / ___  /\ /  |\/ /\
+ *    / /\____\// / // / // / // /\___\// /_// / // /\_/ / // , |/ / /
+ *   / / /__   / / // / // / // / /    / ___  / // ___  / // /| ' / /
+ *  / /_// /\ / /_// / // / // /_/_   / / // / // /\_/ / // / |  / /
+ * /______/ //______/ //_/ //_____/\ /_/ //_/ //_/ //_/ //_/ /|_/ /
+ * \______\/ \______\/ \_\/ \_____\/ \_\/ \_\/ \_\/ \_\/ \_\/ \_\/
+ *
+ * Copyright (c) 2004 - 2008 Olof Naessén and Per Larsson
+ *
+ *
+ * Per Larsson a.k.a finalman
+ * Olof Naessén a.k.a jansem/yakslem
+ *
+ * Visit: http://guichan.sourceforge.net
+ *
+ * License: (BSD)
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ * 3. Neither the name of Guichan nor the names of its contributors may
+ *    be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
 #include "gui/widgets/textbox.h"
 
 #include "events/keyevent.h"
@@ -34,9 +77,23 @@
 #include "debug.h"
 
 TextBox::TextBox(const Widget2 *const widget) :
-    gcn::TextBox(widget),
-    mMinWidth(getWidth())
+    Widget(widget),
+    MouseListener(),
+    KeyListener(),
+    mTextRows(),
+    mCaretColumn(0),
+    mCaretRow(0),
+    mMinWidth(getWidth()),
+    mEditable(true),
+    mOpaque(true)
 {
+    setText("");
+    setFocusable(true);
+
+    addMouseListener(this);
+    addKeyListener(this);
+    adjustSize();
+
     mForegroundColor = getThemeColor(Theme::TEXTBOX);
     setOpaque(false);
     setFrameSize(0);
@@ -163,7 +220,33 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
 
     mMinWidth = minWidth;
 
-    gcn::TextBox::setText(wrappedStream.str());
+    setText(wrappedStream.str());
+}
+
+void TextBox::setText(const std::string& text)
+{
+    mCaretColumn = 0;
+    mCaretRow = 0;
+
+    mTextRows.clear();
+
+    size_t pos;
+    size_t lastPos = 0;
+    int length;
+    do
+    {
+        pos = text.find("\n", lastPos);
+
+        if (pos != std::string::npos)
+            length = static_cast<int>(pos - lastPos);
+        else
+            length = static_cast<int>(text.size() - lastPos);
+        std::string sub = text.substr(lastPos, length);
+        mTextRows.push_back(sub);
+        lastPos = pos + 1;
+    } while (pos != std::string::npos);
+
+    adjustSize();
 }
 
 void TextBox::keyPressed(KeyEvent& keyEvent)
@@ -390,4 +473,160 @@ void TextBox::setForegroundColorAll(const Color &color1,
 {
     mForegroundColor = color1;
     mForegroundColor2 = color2;
+}
+
+std::string TextBox::getText() const
+{
+    if (mTextRows.empty())
+        return std::string("");
+
+    int i;
+    std::string text;
+
+    const int sz = static_cast<int>(mTextRows.size());
+    for (i = 0; i < sz - 1; ++ i)
+        text.append(mTextRows[i]).append("\n");
+    text.append(mTextRows[i]);
+
+    return text;
+}
+
+void TextBox::setTextRow(const int row, const std::string& text)
+{
+    mTextRows[row] = text;
+
+    if (mCaretRow == row)
+        setCaretColumn(mCaretColumn);
+
+    adjustSize();
+}
+
+void TextBox::setCaretPosition(unsigned int position)
+{
+    for (int row = 0, sz = static_cast<int>(mTextRows.size());
+         row < sz; row ++)
+    {
+        if (position <= mTextRows[row].size())
+        {
+            mCaretRow = row;
+            mCaretColumn = position;
+            return;  // we are done
+        }
+        else
+        {
+            position--;
+        }
+    }
+
+    // position beyond end of text
+    mCaretRow = static_cast<int>(mTextRows.size() - 1);
+    mCaretColumn = static_cast<int>(mTextRows[mCaretRow].size());
+}
+
+void TextBox::setCaretRow(const int row)
+{
+    mCaretRow = row;
+
+    const int sz = static_cast<int>(mTextRows.size());
+    if (mCaretRow >= sz)
+        mCaretRow = sz - 1;
+
+    if (mCaretRow < 0)
+        mCaretRow = 0;
+
+    setCaretColumn(mCaretColumn);
+}
+
+unsigned int TextBox::getCaretPosition() const
+{
+    int pos = 0, row;
+
+    for (row = 0; row < mCaretRow; row++)
+        pos += static_cast<int>(mTextRows[row].size());
+
+    return pos + mCaretColumn;
+}
+
+void TextBox::setCaretColumn(const int column)
+{
+    mCaretColumn = column;
+
+    const int sz = static_cast<int>(mTextRows[mCaretRow].size());
+    if (mCaretColumn > sz)
+        mCaretColumn = sz;
+
+    if (mCaretColumn < 0)
+        mCaretColumn = 0;
+}
+
+void TextBox::setCaretRowColumn(const int row, const int column)
+{
+    setCaretRow(row);
+    setCaretColumn(column);
+}
+
+void TextBox::scrollToCaret()
+{
+    Rect scroll;
+    Font *const font = getFont();
+    scroll.x = font->getWidth(
+        mTextRows[mCaretRow].substr(0, mCaretColumn));
+    scroll.y = font->getHeight() * mCaretRow;
+    scroll.width = font->getWidth(" ");
+
+    // add 2 for some extra space
+    scroll.height = font->getHeight() + 2;
+
+    showPart(scroll);
+}
+
+void TextBox::addRow(const std::string &row)
+{
+    mTextRows.push_back(row);
+    adjustSize();
+}
+
+void TextBox::mousePressed(MouseEvent& mouseEvent)
+{
+    if (mouseEvent.getButton() == MouseEvent::LEFT)
+    {
+        const int height = getFont()->getHeight();
+        if (!height)
+            return;
+
+        mCaretRow = mouseEvent.getY() / height;
+
+        const int sz = static_cast<int>(mTextRows.size());
+        if (mCaretRow >= sz)
+            mCaretRow = sz - 1;
+
+        mCaretColumn = getFont()->getStringIndexAt(
+            mTextRows[mCaretRow], mouseEvent.getX());
+    }
+}
+
+void TextBox::mouseDragged(MouseEvent& mouseEvent)
+{
+    mouseEvent.consume();
+}
+
+void TextBox::drawCaret(Graphics *const graphics, const int x, const int y)
+{
+    graphics->setColor(mForegroundColor);
+    graphics->drawLine(x, getFont()->getHeight() + y, x, y);
+}
+
+void TextBox::adjustSize()
+{
+    int width = 0;
+    Font *const font = getFont();
+    for (size_t i = 0, sz = mTextRows.size(); i < sz; ++i)
+    {
+        const int w = font->getWidth(mTextRows[i]);
+        if (width < w)
+            width = w;
+    }
+
+    setWidth(width + 1);
+    setHeight(static_cast<int>(font->getHeight() * mTextRows.size()));
 }
