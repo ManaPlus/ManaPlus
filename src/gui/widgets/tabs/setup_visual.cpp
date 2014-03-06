@@ -203,6 +203,13 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Allow screensaver to run"),
         "", "allowscreensaver", this, "allowscreensaverEvent");
 
+
+    // TRANSLATORS: settings group
+    new SetupItemLabel(_("Screenshots"), "", this);
+
+    new SetupItemCheckBox(_("Add water mark into screenshots"),
+        "", "addwatermark", this, "addwatermarkEvent");
+
     setDimension(Rect(0, 0, 550, 350));
 }
 

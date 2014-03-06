@@ -116,6 +116,8 @@ class Game final
 
         static bool createScreenshot();
 
+        static void addWatermark();
+
         static bool saveScreenshot(SDL_Surface *const screenshot);
 
         void updateHistory(const SDL_Event &event);

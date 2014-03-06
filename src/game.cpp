@@ -48,6 +48,7 @@
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/viewport.h"
 #include "gui/windowmenu.h"
@@ -479,6 +480,15 @@ Game::~Game()
     PlayerInfo::gameDestroyed();
 }
 
+void Game::addWatermark()
+{
+    if (!boldFont || !config.getBoolValue("addwatermark"))
+        return;
+    mainGraphics->setColorAll(Theme::getThemeColor(Theme::TEXT),
+        Theme::getThemeColor(Theme::TEXT_OUTLINE));
+    boldFont->drawString(mainGraphics, client->getServerName(), 100, 50);
+}
+
 bool Game::createScreenshot()
 {
     if (!mainGraphics)
@@ -491,11 +501,13 @@ bool Game::createScreenshot()
         mainGraphics->setSecure(true);
         mainGraphics->prepareScreenshot();
         gui->draw();
+        addWatermark();
         screenshot = mainGraphics->getScreenshot();
         mainGraphics->setSecure(false);
     }
     else
     {
+        addWatermark();
         screenshot = mainGraphics->getScreenshot();
     }
 
