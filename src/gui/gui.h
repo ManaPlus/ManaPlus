@@ -446,16 +446,6 @@ class Gui final
         KeyListenerList mKeyListeners;
 
         /**
-         * True if shift is pressed, false otherwise.
-         */
-        bool mShiftPressed;
-
-        /**
-         * True if meta is pressed, false otherwise.
-         */
-        bool mMetaPressed;
-
-        /**
          * True if control is pressed, false otherwise.
          */
         bool mControlPressed;

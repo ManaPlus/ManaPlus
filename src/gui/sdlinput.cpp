@@ -303,18 +303,6 @@ void SDLInput::pushInput(const SDL_Event &event)
 void SDLInput::convertKeyEventToKey(const SDL_Event &event, KeyInput &keyInput)
 {
     keyInput.setKey(Key(convertKeyCharacter(event)));
-    keyInput.setShiftPressed(event.key.keysym.mod & KMOD_SHIFT);
-    keyInput.setControlPressed(event.key.keysym.mod & KMOD_CTRL);
-    keyInput.setAltPressed(event.key.keysym.mod & KMOD_ALT);
-    keyInput.setMetaPressed(event.key.keysym.mod & KMOD_META);
-#ifdef USE_SDL2
-    const int code = event.key.keysym.scancode;
-    keyInput.setNumericPad((code >= SDL_SCANCODE_KP_DIVIDE
-        && code <= SDL_SCANCODE_KP_PERIOD) || code == SDL_SCANCODE_KP_EQUALS);
-#else
-    const int code = event.key.keysym.sym;
-    keyInput.setNumericPad(code >= SDLK_KP0 && code <= SDLK_KP_EQUALS);
-#endif
     const int actionId = inputManager.getActionByKey(event);
     if (actionId >= 0)
         keyInput.setActionId(actionId);

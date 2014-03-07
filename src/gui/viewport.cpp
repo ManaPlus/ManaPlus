@@ -281,10 +281,6 @@ void Viewport::_followMouse()
     {
         // We create a mouse event and send it to mouseDragged.
         MouseEvent mouseEvent(nullptr,
-            0,
-            false,
-            false,
-            false,
             MouseEvent::DRAGGED,
             MouseEvent::LEFT,
             mMouseX,

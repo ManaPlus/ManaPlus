@@ -87,6 +87,7 @@
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
 
+#include "input/inputmanager.h"
 #include "input/keydata.h"
 #include "input/keyinput.h"
 #include "input/mouseinput.h"
@@ -141,10 +142,6 @@ Gui::Gui() :
     mInput(nullptr),
     mFocusHandler(new FocusHandler),
     mKeyListeners(),
-    mShiftPressed(false),
-    mMetaPressed(false),
-    mControlPressed(false),
-    mAltPressed(false),
     mLastMousePressButton(0),
     mLastMousePressTimeStamp(0),
     mLastMouseX(0),
@@ -428,15 +425,8 @@ bool Gui::handleKeyInput()
     {
         const KeyInput keyInput = guiInput->dequeueKeyInput();
 
-        // Save modifiers state
-        mShiftPressed = keyInput.isShiftPressed();
-        mMetaPressed = keyInput.isMetaPressed();
-        mControlPressed = keyInput.isControlPressed();
-        mAltPressed = keyInput.isAltPressed();
-
         KeyEvent keyEventToGlobalKeyListeners(nullptr,
-            mShiftPressed, mControlPressed, mAltPressed, mMetaPressed,
-            keyInput.getType(), keyInput.isNumericPad(),
+            keyInput.getType(),
             keyInput.getActionId(), keyInput.getKey());
 
 #ifdef USE_SDL2
@@ -463,8 +453,7 @@ bool Gui::handleKeyInput()
             if (mFocusHandler->getFocused())
             {
                 KeyEvent keyEvent(getKeyEventSource(),
-                    mShiftPressed, mControlPressed, mAltPressed, mMetaPressed,
-                    keyInput.getType(), keyInput.isNumericPad(),
+                    keyInput.getType(),
                     keyInput.getActionId(), keyInput.getKey());
 #ifdef USE_SDL2
                 if (!keyInput.getText().empty())
@@ -488,7 +477,7 @@ bool Gui::handleKeyInput()
                 == static_cast<int>(Input::KEY_GUI_TAB)
                 && keyInput.getType() == KeyInput::PRESSED)
             {
-                if (keyInput.isShiftPressed())
+                if (inputManager.isActionActive(Input::KEY_GUI_MOD))
                     mFocusHandler->tabPrevious();
                 else
                     mFocusHandler->tabNext();
@@ -852,8 +841,8 @@ void Gui::distributeMouseEvent(Widget* source, int type, int button,
         return;
     }
 
-    MouseEvent mouseEvent(source, mShiftPressed, mControlPressed,
-        mAltPressed, mMetaPressed, type, button,
+    MouseEvent mouseEvent(source,
+        type, button,
         x, y, mClickCount);
 
     Widget* parent = source;
@@ -965,8 +954,8 @@ MouseEvent *Gui::createMouseEvent(Window *const widget)
     getAbsolutePosition(widget, x, y);
     getMouseState(&mouseX, &mouseY);
 
-    return new MouseEvent(widget, mShiftPressed,
-        mControlPressed, mAltPressed, mMetaPressed, 0, 0,
+    return new MouseEvent(widget,
+        0, 0,
         mouseX - x, mouseY - y, mClickCount);
 }
 

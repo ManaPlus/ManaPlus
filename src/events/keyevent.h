@@ -90,36 +90,21 @@ class KeyEvent: public InputGuiEvent
           * Constructor.
           *
           * @param source The source widget of the event.
-          * @param shiftPressed True if shift is pressed, false otherwise.
-          * @param controlPressed True if control is pressed, false otherwise.
-          * @param altPressed True if alt is pressed, false otherwise.
-          * @param metaPressed True if meta is pressed, false otherwise.
           * @param type The type of the event. A value from KeyEventType.
-          * @param numericPad True if the event occured on the numeric pad,
           *                     false otherwise.
           * @param key The key of the event.
           */
         KeyEvent(Widget *const source,
-                 const bool shiftPressed,
-                 const bool controlPressed,
-                 const bool altPressed,
-                 const bool metaPressed,
                  const unsigned int type,
-                 const bool numericPad,
                  const int actionId,
                  const Key &key) :
-            InputGuiEvent(source,
-                          shiftPressed,
-                          controlPressed,
-                          altPressed,
-                          metaPressed),
+            InputGuiEvent(source),
             mKey(key),
 #ifdef USE_SDL2
             mText(),
 #endif
             mType(type),
-            mActionId(actionId),
-            mIsNumericPad(numericPad)
+            mActionId(actionId)
         { }
 
         /**
@@ -135,16 +120,6 @@ class KeyEvent: public InputGuiEvent
           */
         unsigned int getType() const A_WARN_UNUSED
         { return mType; }
-
-        /**
-          * Checks if the key event occured on the numeric pad.
-          *
-          * @return True if key event occured on the numeric pad,
-          *         false otherwise.
-          *
-          */
-        bool isNumericPad() const A_WARN_UNUSED
-        { return mIsNumericPad; }
 
         /**
           * Gets the key of the event.
@@ -181,11 +156,6 @@ class KeyEvent: public InputGuiEvent
         unsigned int mType;
 
         int mActionId;
-
-        /**
-          * True if the numeric pad was used, false otherwise.
-          */
-        bool mIsNumericPad;
 };
 
 #endif  // EVENTS_KEYEVENT_H

@@ -79,12 +79,7 @@ class KeyInput final
 #ifdef USE_SDL2
             mText(),
 #endif
-            mActionId(-2),
-            mShiftPressed(false),
-            mControlPressed(false),
-            mAltPressed(false),
-            mMetaPressed(false),
-            mNumericPad(false)
+            mActionId(-2)
         { }
 
         ~KeyInput()
@@ -118,56 +113,6 @@ class KeyInput final
         const Key& getKey() const
         {
             return mKey;
-        }
-
-        bool isShiftPressed() const
-        {
-            return mShiftPressed;
-        }
-
-        void setShiftPressed(bool pressed)
-        {
-            mShiftPressed = pressed;
-        }
-
-        bool isControlPressed() const
-        {
-            return mControlPressed;
-        }
-
-        void setControlPressed(bool pressed)
-        {
-            mControlPressed = pressed;
-        }
-
-        bool isAltPressed() const
-        {
-            return mAltPressed;
-        }
-
-        void setAltPressed(bool pressed)
-        {
-            mAltPressed = pressed;
-        }
-
-        bool isMetaPressed() const
-        {
-            return mMetaPressed;
-        }
-
-        void setMetaPressed(bool pressed)
-        {
-            mMetaPressed = pressed;
-        }
-
-        bool isNumericPad() const
-        {
-            return mNumericPad;
-        }
-
-        void setNumericPad(bool numpad)
-        {
-            mNumericPad = numpad;
         }
 
         void setActionId(const int n)
@@ -208,36 +153,6 @@ class KeyInput final
 #endif
 
         int mActionId;
-
-        /**
-         * True if shift was pressed at the same time as the key,
-         * false otherwise.
-         */
-        bool mShiftPressed;
-
-        /**
-         * True if control was pressed at the same time as the key,
-         * false otherwise.
-         */
-        bool mControlPressed;
-
-        /**
-         * True if alt was pressed at the same time as the key,
-         * false otherwise.
-         */
-        bool mAltPressed;
-
-        /**
-         * True if meta was pressed at the same time as the key,
-         * false otherwise.
-         */
-        bool mMetaPressed;
-
-        /**
-         * True if the numeric pad was used when the key was pressed,
-         * false otherwise.
-         */
-        bool mNumericPad;
 };
 
 #endif  // INPUT_KEYINPUT_H

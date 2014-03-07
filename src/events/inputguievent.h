@@ -79,59 +79,12 @@ class InputGuiEvent: public Event
           * Constructor.
           *
           * @param source The source widget of the event.
-          * @param isShiftPressed True if shift is pressed, false otherwise.
-          * @param isControlPressed True if control is pressed, false otherwise.
-          * @param isAltPressed True if alt is pressed, false otherwise.
           * @param isMetaPressed True if meta is pressed, false otherwise.
           */
-        InputGuiEvent(Widget *const source,
-                      const bool shiftPressed,
-                      const bool controlPressed,
-                      const bool altPressed,
-                      const bool metaPressed) :
+        InputGuiEvent(Widget *const source) :
             Event(source),
-            mShiftPressed(shiftPressed),
-            mControlPressed(controlPressed),
-            mAltPressed(altPressed),
-            mMetaPressed(metaPressed),
             mIsConsumed(false)
         { }
-
-        /**
-          * Checks if shift is pressed.
-          *
-          * @return True if shift was pressed at the same time as the key,
-          *         false otherwise.
-          */
-        bool isShiftPressed() const A_WARN_UNUSED
-        { return mShiftPressed; }
-
-        /**
-          * Checks if control is pressed.
-          *
-          * @return True if control was pressed at the same time as the key,
-          *         false otherwise.
-          */
-        bool isControlPressed() const A_WARN_UNUSED
-        { return mControlPressed; }
-
-        /**
-          * Checks if alt is pressed.
-          *
-          * @return True if alt was pressed at the same time as the key,
-          *         false otherwise.
-          */
-        bool isAltPressed() const A_WARN_UNUSED
-        { return mAltPressed; }
-
-        /**
-          * Checks whether meta is pressed.
-          *
-          * @return True if meta was pressed at the same time as the key,
-          *         false otherwise.
-          */
-        bool isMetaPressed() const A_WARN_UNUSED
-        { return mMetaPressed; }
 
         /**
           * Marks the event as consumed. Input event listeners may discard
@@ -157,26 +110,6 @@ class InputGuiEvent: public Event
         { return mIsConsumed; }
 
     protected:
-        /**
-          * True if shift is pressed, false otherwise.
-          */
-        bool mShiftPressed;
-
-        /**
-          * True if control is pressed, false otherwise.
-          */
-        bool mControlPressed;
-
-        /**
-          * True if alt is pressed, false otherwise.
-          */
-        bool mAltPressed;
-
-        /**
-          * True if meta is pressed, false otherwise.
-          */
-        bool mMetaPressed;
-
         /**
           * True if the input event is consumed, 
           * false otherwise.
