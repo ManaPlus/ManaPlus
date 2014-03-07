@@ -27,13 +27,8 @@
 
 #include <vector>
 
+class BasicContainer2;
 class LayoutCell;
-
-namespace gcn
-{
-    class Container;
-}
-
 class Widget;
 
 /**
@@ -42,7 +37,7 @@ class Widget;
 class ContainerPlacer final
 {
     public:
-        explicit ContainerPlacer(gcn::Container *c = nullptr,
+        explicit ContainerPlacer(BasicContainer2 *c = nullptr,
                                  LayoutCell *lc = nullptr) :
             mContainer(c), mCell(lc)
         {}
@@ -66,7 +61,7 @@ class ContainerPlacer final
             const int w = 1, const int h = 1);
 
     private:
-        gcn::Container *mContainer;
+        BasicContainer2 *mContainer;
         LayoutCell *mCell;
 };
 

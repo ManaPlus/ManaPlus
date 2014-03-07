@@ -70,7 +70,7 @@
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 
-#include "gui/base/widgets/container.hpp"
+#include "gui/widgets/basiccontainer2.h"
 
 #include "listeners/actionlistener.h"
 
@@ -251,8 +251,8 @@ class TabbedArea final : public ActionListener,
         void updateTabsWidth();
 
         Tab* mSelectedTab;
-        gcn::Container* mTabContainer;
-        gcn::Container* mWidgetContainer;
+        BasicContainer2* mTabContainer;
+        BasicContainer2* mWidgetContainer;
         std::vector<Tab*> mTabsToDelete;
         TabContainer mTabs;
 

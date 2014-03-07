@@ -91,7 +91,7 @@ int Window::mouseResize = 0;
 
 Window::Window(const std::string &caption, const bool modal,
                Window *const parent, std::string skin) :
-    gcn::Container(nullptr),
+    BasicContainer2(nullptr),
     MouseListener(),
     WidgetListener(),
     mCaption(caption),
@@ -668,9 +668,9 @@ void Window::setVisible(const bool visible, const bool forceSticky)
         mResizeHandles = 0;
 
     if (mStickyButtonLock)
-        gcn::Container::setVisible(visible);
+        BasicContainer2::setVisible(visible);
     else
-        gcn::Container::setVisible((!forceSticky && mSticky) || visible);
+        BasicContainer2::setVisible((!forceSticky && mSticky) || visible);
     if (visible)
     {
         if (mPlayVisibleSound)

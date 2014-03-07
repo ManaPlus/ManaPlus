@@ -413,7 +413,7 @@ Game::Game():
     viewport->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
     PlayerInfo::clear();
 
-    gcn::Container *const top = static_cast<gcn::Container*>(gui->getTop());
+    BasicContainer2 *const top = static_cast<BasicContainer2*>(gui->getTop());
     if (top)
         top->add(viewport);
     viewport->requestMoveToBottom();

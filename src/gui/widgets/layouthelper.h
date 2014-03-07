@@ -38,7 +38,7 @@ class LayoutHelper final : public WidgetListener
         /**
          * Constructor.
          */
-        explicit LayoutHelper(gcn::Container *const container);
+        explicit LayoutHelper(BasicContainer2 *const container);
 
         A_DELETE_COPY(LayoutHelper)
 
@@ -82,7 +82,7 @@ class LayoutHelper final : public WidgetListener
 
     private:
         Layout mLayout;              /**< Layout handler */
-        gcn::Container *mContainer;  /**< Managed container */
+        BasicContainer2 *mContainer;  /**< Managed container */
 };
 
 #endif  // GUI_WIDGETS_LAYOUTHELPER_H

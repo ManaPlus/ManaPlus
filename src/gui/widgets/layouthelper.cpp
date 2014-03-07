@@ -22,11 +22,11 @@
 
 #include "gui/widgets/layouthelper.h"
 
-#include "gui/base/widgets/container.hpp"
+#include "gui/widgets/basiccontainer2.h"
 
 #include "debug.h"
 
-LayoutHelper::LayoutHelper(gcn::Container *const container) :
+LayoutHelper::LayoutHelper(BasicContainer2 *const container) :
     WidgetListener(),
     mLayout(),
     mContainer(container)

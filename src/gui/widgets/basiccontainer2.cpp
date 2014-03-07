@@ -65,72 +65,67 @@
  * For comments regarding functions please see the header file.
  */
 
-#include "gui/base/widgets/container.hpp"
-
+#include "gui/widgets/basiccontainer2.h"
 
 #include "render/graphics.h"
 
 #include "debug.h"
 
-namespace gcn
+BasicContainer2::BasicContainer2(const Widget2 *const widget) :
+    BasicContainer(widget),
+    mOpaque(true)
 {
+}
 
-    Container::Container(const Widget2 *const widget) :
-        BasicContainer(widget),
-        mOpaque(true)
+BasicContainer2::~BasicContainer2()
+{
+}
+
+void BasicContainer2::draw(Graphics* graphics)
+{
+    BLOCK_START("BasicContainer2::draw")
+    if (isOpaque())
     {
+        graphics->setColor(getBaseColor());
+        graphics->fillRectangle(Rect(0, 0, getWidth(), getHeight()));
     }
 
-    Container::~Container()
-    {
-    }
+    drawChildren(graphics);
+    BLOCK_END("BasicContainer2::draw")
+}
 
-    void Container::draw(Graphics* graphics)
-    {
-        BLOCK_START("Container::draw")
-        if (isOpaque())
-        {
-            graphics->setColor(getBaseColor());
-            graphics->fillRectangle(Rect(0, 0, getWidth(), getHeight()));
-        }
+void BasicContainer2::setOpaque(bool opaque)
+{
+    mOpaque = opaque;
+}
 
-        drawChildren(graphics);
-        BLOCK_END("Container::draw")
-    }
+bool BasicContainer2::isOpaque() const
+{
+    return mOpaque;
+}
 
-    void Container::setOpaque(bool opaque)
-    {
-        mOpaque = opaque;
-    }
+void BasicContainer2::add(Widget* widget)
+{
+    BasicContainer::add(widget);
+}
 
-    bool Container::isOpaque() const
-    {
-        return mOpaque;
-    }
+void BasicContainer2::add(Widget* widget, int x, int y)
+{
+    widget->setPosition(x, y);
+    BasicContainer::add(widget);
+}
 
-    void Container::add(Widget* widget)
-    {
-        BasicContainer::add(widget);
-    }
+void BasicContainer2::remove(Widget* widget)
+{
+    BasicContainer::remove(widget);
+}
 
-    void Container::add(Widget* widget, int x, int y)
-    {
-        widget->setPosition(x, y);
-        BasicContainer::add(widget);
-    }
+void BasicContainer2::clear()
+{
+    BasicContainer::clear();
+}
 
-    void Container::remove(Widget* widget)
-    {
-        BasicContainer::remove(widget);
-    }
-
-    void Container::clear()
-    {
-        BasicContainer::clear();
-    }
-
-    Widget* Container::findWidgetById(const std::string &id)
-    {
-        return BasicContainer::findWidgetById(id);
-    }
-}  // namespace gcn
+Widget* BasicContainer2::findWidgetById(const std::string &id)
+{
+    return BasicContainer::findWidgetById(id);
+}

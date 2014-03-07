@@ -71,7 +71,7 @@
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 
-#include "gui/base/widgets/container.hpp"
+#include "gui/widgets/basiccontainer2.h"
 
 #include "localconsts.h"
 
@@ -88,7 +88,7 @@ class WindowContainer;
  *
  * \ingroup GUI
  */
-class Window : public gcn::Container,
+class Window : public BasicContainer2,
                public MouseListener,
                private WidgetListener
 {

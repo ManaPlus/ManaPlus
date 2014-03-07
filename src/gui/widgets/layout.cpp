@@ -24,7 +24,7 @@
 
 #include "logger.h"
 
-#include "gui/base/widgets/container.hpp"
+#include "gui/widgets/basiccontainer2.h"
 
 #include <cassert>
 

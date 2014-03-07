@@ -1123,7 +1123,7 @@ int Client::gameExec()
             if (!gui)
                 break;
 
-            gcn::Container *const top = static_cast<gcn::Container*>(
+            BasicContainer2 *const top = static_cast<BasicContainer2*>(
                 gui->getTop());
 
             if (!top)

@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_CONTAINER_H
 #define GUI_WIDGETS_CONTAINER_H
 
-#include "gui/base/widgets/container.hpp"
+#include "gui/widgets/basiccontainer2.h"
 
 /**
  * A widget container.
@@ -34,7 +34,7 @@
  *
  * This container is also non-opaque by default.
  */
-class Container : public gcn::Container
+class Container : public BasicContainer2
 {
     public:
         explicit Container(const Widget2 *const widget);
