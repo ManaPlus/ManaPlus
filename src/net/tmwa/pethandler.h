@@ -47,7 +47,10 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
                    const int x, const int y) const override final;
 
         void emote(const uint8_t emoteId,
-                   const int petId) const override final;
+                   const int petId) override final;
+
+    protected:
+        int mRandCounter;
 };
 
 }  // namespace TmwAthena

@@ -41,7 +41,7 @@ class PetHandler
                            const int petId,
                            const int x, const int y) const = 0;
 
-        virtual void emote(const uint8_t emoteId, const int petId) const = 0;
+        virtual void emote(const uint8_t emoteId, const int petId) = 0;
 };
 
 }  // namespace Net

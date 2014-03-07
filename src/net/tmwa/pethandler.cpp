@@ -34,7 +34,8 @@ namespace TmwAthena
 {
 
 PetHandler::PetHandler() :
-    MessageHandler()
+    MessageHandler(),
+    mRandCounter(1000)
 {
     static const uint16_t _messages[] =
     {
@@ -63,10 +64,14 @@ void PetHandler::spawn(const Being *const being A_UNUSED,
 {
 }
 
-void PetHandler::emote(const uint8_t emoteId, const int petId A_UNUSED) const
+void PetHandler::emote(const uint8_t emoteId, const int petId A_UNUSED)
 {
-    Net::getChatHandler()->talk("\302\202\302e" + toString(
-        static_cast<int>(emoteId)), GENERAL_CHANNEL);
+    mRandCounter ++;
+    if (mRandCounter > 10000)
+        mRandCounter = 1000;
+
+    Net::getChatHandler()->talk(strprintf("\302\202\302e%dz%d",
+        static_cast<int>(emoteId), mRandCounter), GENERAL_CHANNEL);
 }
 
 }  // namespace TmwAthena

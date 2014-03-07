@@ -2430,9 +2430,9 @@ void LocalPlayer::crazyMoveA()
             else if (emo >= 'A' && emo <= 'Z')
                 emoteId = static_cast<unsigned char>(emo - 'A' + 37);
         }
-        if (mMoveProgram[mCrazyMoveState] == 'e')
+        if (mMoveProgram[mCrazyMoveState - 1] == 'e')
             emote(emoteId);
-        else
+        else if (client->limitPackets(PACKET_CHAT))
             Net::getPetHandler()->emote(emoteId, 0);
 
         mCrazyMoveState ++;
