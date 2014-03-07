@@ -446,16 +446,6 @@ class Gui final
         KeyListenerList mKeyListeners;
 
         /**
-         * True if control is pressed, false otherwise.
-         */
-        bool mControlPressed;
-
-        /**
-         * True if alt is pressed, false otherwise.
-         */
-        bool mAltPressed;
-
-        /**
          * Holds the last mouse button pressed.
          */
         unsigned int mLastMousePressButton;
