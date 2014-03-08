@@ -163,7 +163,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("leftTolerance", 100);
     AddDEF("rightTolerance", 100);
     AddDEF("logNpcInGui", true);
-    AddDEF("download-music", false);
+    AddDEF("download-music", true);
     AddDEF("guialpha", 0.8F);
     AddDEF("ChatLogLength", 0);
     AddDEF("enableChatLog", true);
@@ -346,7 +346,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("uselonglivesprites", false);
     AddDEF("uselonglivesounds", true);
     AddDEF("screenDensity", 0);
-    AddDEF("cfgver", 6);
+    AddDEF("cfgver", 7);
     AddDEF("enableDebugLog", false);
     AddDEF("doubleClick", true);
     AddDEF("useDiagonalSpeed", true);

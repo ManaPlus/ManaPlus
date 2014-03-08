@@ -2969,7 +2969,10 @@ void Client::checkConfigVersion()
     if (version < 6)
         config.setValue("blur", false);
 
-    config.setValue("cfgver", 6);
+    if (version < 7)
+        config.setValue("download-music", true);
+
+    config.setValue("cfgver", 7);
 }
 
 Window *Client::openErrorDialog(const std::string &header,
