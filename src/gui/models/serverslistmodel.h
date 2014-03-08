@@ -25,16 +25,17 @@
 
 #include "net/serverinfo.h"
 
+#include "gui/font.h"
+#include "gui/gui.h"
+
+#include "gui/windows/serverdialog.h"
+
 #include "utils/mutex.h"
 
 #include "gui/models/listmodel.h"
 
-#include "net/serverinfo.h"
-
 #include <string>
 #include <vector>
-
-class ServerDialog;
 
 /**
  * Server and Port List Model

@@ -96,7 +96,7 @@ class LoginHandler : public Net::LoginHandler
 
         virtual void processServerVersion(Net::MessageIn &msg) = 0;
 
-        void loginOrRegister(LoginData *const data) override final;
+        void loginOrRegister(LoginData *const data) const override final;
 
     protected:
         LoginHandler();

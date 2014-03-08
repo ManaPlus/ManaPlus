@@ -88,7 +88,7 @@ Label::Label(const Widget2 *const widget,
     mAlignment(Graphics::LEFT),
     mPadding(0)
 {
-    Font *const font = getFont();
+    const Font *const font = getFont();
     if (font)
     {
         setWidth(font->getWidth(caption));

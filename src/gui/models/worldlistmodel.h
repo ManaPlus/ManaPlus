@@ -25,6 +25,8 @@
 
 #include "gui/models/listmodel.h"
 
+#include "utils/stringutils.h"
+
 #include "net/worldinfo.h"
 
 /**

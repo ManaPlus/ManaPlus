@@ -71,7 +71,7 @@ class InventoryWindow final : public Window,
 
         void postInit() override final;
 
-        void storeSortOrder();
+        void storeSortOrder() const;
 
         /**
          * Called when receiving actions from the widgets.

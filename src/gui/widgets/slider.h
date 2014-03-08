@@ -348,11 +348,6 @@ class Slider final : public Widget,
          */
         int mMarkerLength;
 
-        /**
-         * True if the slider is dragged, false otherwise.
-         */
-        bool mDragged;
-
         bool mHasMouse;
         bool mRedraw;
 };

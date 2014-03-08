@@ -59,8 +59,6 @@
 #include "net/inventoryhandler.h"
 #include "net/net.h"
 
-#include "utils/gettext.h"
-
 #include <string>
 
 #include "debug.h"
@@ -281,7 +279,7 @@ InventoryWindow::~InventoryWindow()
     mTextPopup = nullptr;
 }
 
-void InventoryWindow::storeSortOrder()
+void InventoryWindow::storeSortOrder() const
 {
     if (mInventory)
     {
@@ -669,7 +667,8 @@ void InventoryWindow::updateButtons(const Item *item)
 
 void InventoryWindow::setSplitAllowed(const bool allowed)
 {
-    mSplitButton->setVisible(allowed);
+    if (mSplitButton)
+        mSplitButton->setVisible(allowed);
 }
 
 void InventoryWindow::close()
@@ -699,7 +698,7 @@ void InventoryWindow::processEvent(const Channels channel A_UNUSED,
 
 void InventoryWindow::updateWeight()
 {
-    if (!isMainInventory())
+    if (!isMainInventory() || !mWeightBar)
         return;
 
     const int total = PlayerInfo::getAttribute(PlayerInfo::TOTAL_WEIGHT);

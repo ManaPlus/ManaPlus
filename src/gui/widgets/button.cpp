@@ -220,7 +220,6 @@ Button::Button(const Widget2 *const widget,
     mStick(false),
     mPressed(false)
 {
-
     init();
     loadImageSet(imageName);
     adjustSize();

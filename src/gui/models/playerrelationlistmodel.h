@@ -25,6 +25,8 @@
 
 #include "being/playerrelations.h"
 
+#include "gui/models/listmodel.h"
+
 #include "utils/gettext.h"
 
 static const char *const RELATION_NAMES[PlayerRelation::RELATIONS_NR] =

@@ -67,8 +67,6 @@
 
 #include "client.h"
 
-#include "events/keyevent.h"
-
 #include "input/keydata.h"
 
 #include "listeners/selectionlistener.h"
@@ -78,8 +76,6 @@
 #include "gui/gui.h"
 
 #include "gui/models/listmodel.h"
-
-#include "render/graphics.h"
 
 #include "debug.h"
 

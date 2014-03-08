@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GUI_WIDGETS_BASICCONTAINER2_HPP
-#define GUI_WIDGETS_BASICCONTAINER2_HPP
+#ifndef GUI_WIDGETS_BASICCONTAINER2_H
+#define GUI_WIDGETS_BASICCONTAINER2_H
 
 #include "gui/widgets/basiccontainer.h"
 
@@ -171,4 +171,4 @@ class BasicContainer2: public BasicContainer
         bool mOpaque;
 };
 
-#endif  // GUI_WIDGETS_BASICCONTAINER2_HPP
+#endif  // GUI_WIDGETS_BASICCONTAINER2_H

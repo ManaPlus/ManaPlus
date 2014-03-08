@@ -75,8 +75,6 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabs/tab.h"
 
-#include "gui/widgets/basiccontainer2.h"
-
 #include "debug.h"
 
 TabbedArea::TabbedArea(const Widget2 *const widget) :

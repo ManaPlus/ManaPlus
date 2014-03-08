@@ -61,8 +61,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GCN_BASICCONTAINER_HPP
-#define GCN_BASICCONTAINER_HPP
+#ifndef GUI_WIDGETS_BASICCONTAINER_H
+#define GUI_WIDGETS_BASICCONTAINER_H
 
 #include <vector>
 
@@ -212,4 +212,4 @@ class BasicContainer : public Widget,
         WidgetList mWidgets;
 };
 
-#endif  // end GCN_BASICCONTAINER_HPP
+#endif  // GUI_WIDGETS_BASICCONTAINER_H

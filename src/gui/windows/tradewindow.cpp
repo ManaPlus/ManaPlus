@@ -440,7 +440,7 @@ void TradeWindow::initTrade(const std::string &nick)
             const Inventory *const inv = PlayerInfo::getInventory();
             if (inv)
             {
-                Item *const item = inv->findItem(mAutoAddItem->getId(),
+                const Item *const item = inv->findItem(mAutoAddItem->getId(),
                     mAutoAddItem->getColor());
                 if (item)
                     tradeItem(item, mAutoAddAmount);

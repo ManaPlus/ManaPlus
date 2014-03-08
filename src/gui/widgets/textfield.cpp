@@ -69,8 +69,6 @@
 
 #include "input/inputmanager.h"
 
-#include "events/keyevent.h"
-
 #include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/viewport.h"

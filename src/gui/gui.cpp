@@ -72,8 +72,6 @@
 #include "gui/theme.h"
 #include "gui/viewport.h"
 
-#include "events/mouseevent.h"
-
 #include "gui/widgets/window.h"
 
 #include "client.h"
@@ -1337,8 +1335,8 @@ void Gui::handleModalMouseInputFocus()
     }
     // Check if modal mouse input focus has been released.
     else if ((mFocusHandler->getLastWidgetWithModalMouseInputFocus()
-              != mFocusHandler->getModalMouseInputFocused())
-              && (mFocusHandler->getLastWidgetWithModalMouseInputFocus()))
+             != mFocusHandler->getModalMouseInputFocused())
+             && (mFocusHandler->getLastWidgetWithModalMouseInputFocus()))
     {
         handleModalFocusReleased();
         mFocusHandler->setLastWidgetWithModalMouseInputFocus(nullptr);
@@ -1360,8 +1358,8 @@ void Gui::handleModalFocus()
     }
     // Check if modal focus has been released.
     else if ((mFocusHandler->getLastWidgetWithModalFocus()
-              != mFocusHandler->getModalFocused())
-              && (mFocusHandler->getLastWidgetWithModalFocus()))
+             != mFocusHandler->getModalFocused())
+             && (mFocusHandler->getLastWidgetWithModalFocus()))
     {
         handleModalFocusReleased();
         mFocusHandler->setLastWidgetWithModalFocus(nullptr);

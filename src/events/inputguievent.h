@@ -81,7 +81,7 @@ class InputGuiEvent: public Event
           * @param source The source widget of the event.
           * @param isMetaPressed True if meta is pressed, false otherwise.
           */
-        InputGuiEvent(Widget *const source) :
+        explicit InputGuiEvent(Widget *const source) :
             Event(source),
             mIsConsumed(false)
         { }

@@ -65,8 +65,6 @@
 
 #include "gui/widgets/textbox.h"
 
-#include "events/keyevent.h"
-
 #include "input/keydata.h"
 
 #include "gui/font.h"
@@ -567,16 +565,13 @@ void TextBox::setCaretRowColumn(const int row, const int column)
 
 void TextBox::scrollToCaret()
 {
+    const Font *const font = getFont();
     Rect scroll;
-    Font *const font = getFont();
-    scroll.x = font->getWidth(
-        mTextRows[mCaretRow].substr(0, mCaretColumn));
+    scroll.x = font->getWidth(mTextRows[mCaretRow].substr(0, mCaretColumn));
     scroll.y = font->getHeight() * mCaretRow;
     scroll.width = font->getWidth(" ");
-
     // add 2 for some extra space
     scroll.height = font->getHeight() + 2;
-
     showPart(scroll);
 }
 
@@ -619,7 +614,7 @@ void TextBox::drawCaret(Graphics *const graphics, const int x, const int y)
 void TextBox::adjustSize()
 {
     int width = 0;
-    Font *const font = getFont();
+    const Font *const font = getFont();
     for (size_t i = 0, sz = mTextRows.size(); i < sz; ++i)
     {
         const int w = font->getWidth(mTextRows[i]);

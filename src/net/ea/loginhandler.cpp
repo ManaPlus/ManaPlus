@@ -291,7 +291,7 @@ void LoginHandler::processLoginError(Net::MessageIn &msg) const
     client->setState(STATE_ERROR);
 }
 
-void LoginHandler::loginOrRegister(LoginData *const data)
+void LoginHandler::loginOrRegister(LoginData *const data) const
 {
     if (!data)
         return;

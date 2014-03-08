@@ -351,7 +351,7 @@ void ChatWindow::adjustTabSize()
     {
         const int chatButtonSize = 20;
         int w = awFrame2 - chatButtonSize;
-        int x = aw - frame - chatButtonSize;
+        const int x = aw - frame - chatButtonSize;
         if (mSkin)
         {
             const int ipad = mSkin->getOption("emoteButtonSpacing", 2);

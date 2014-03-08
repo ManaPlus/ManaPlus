@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_PLAYERBOX_H
 #define GUI_WIDGETS_PLAYERBOX_H
 
-#include "gui/widgets/scrollarea.h"
+#include "gui/widgets/widget.h"
 
 #include "listeners/mouselistener.h"
 
