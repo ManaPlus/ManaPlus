@@ -1137,7 +1137,6 @@ int Client::gameExec()
             ADDBUTTON(mSetupButton, new Button(mDesktop,
                 // TRANSLATORS: setup tab quick button
                 _("Setup"), "Setup", this))
-#ifndef WIN32
             ADDBUTTON(mPerfomanceButton, new Button(mDesktop,
                 // TRANSLATORS: perfoamance tab quick button
                 _("Performance"), "Perfomance", this))
@@ -1157,7 +1156,6 @@ int Client::gameExec()
             ADDBUTTON(mCloseButton, new Button(mDesktop,
                 // TRANSLATORS: close quick button
                 _("Close"), "close", this))
-#endif
 #endif
             mDesktop->setSize(mainGraphics->getWidth(),
                 mainGraphics->getHeight());
