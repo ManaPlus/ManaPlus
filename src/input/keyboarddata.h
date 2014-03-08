@@ -2172,6 +2172,13 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         nullptr,
         Input::KEY_NO_VALUE, 50,
         COND_DEFAULT},
+    {"keyWindowAbout",
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        Input::GRP_DEFAULT | Input::GRP_GUI,
+        &ActionManager::aboutWindowShow,
+        Input::KEY_NO_VALUE, 50,
+        COND_SHORTCUT0},
 };
 
 #endif  // INPUT_KEYBOARDDATA_H

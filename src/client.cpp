@@ -234,6 +234,7 @@ Client::Client(const Options &options) :
     mSetupButton(nullptr),
     mVideoButton(nullptr),
     mHelpButton(nullptr),
+    mAboutButton(nullptr),
     mThemesButton(nullptr),
     mPerfomanceButton(nullptr),
 #ifdef ANDROID
@@ -1146,6 +1147,9 @@ int Client::gameExec()
             ADDBUTTON(mThemesButton, new Button(mDesktop,
                 // TRANSLATORS: theme tab quick button
                 _("Theme"), "Themes", this))
+            ADDBUTTON(mAboutButton, new Button(mDesktop,
+                // TRANSLATORS: theme tab quick button
+                _("About"), "about", this))
             ADDBUTTON(mHelpButton, new Button(mDesktop,
                 // TRANSLATORS: theme tab quick button
                 _("Help"), "help", this))
@@ -1579,6 +1583,8 @@ int Client::gameExec()
                     mVideoButton = nullptr;
                     delete mThemesButton;
                     mThemesButton = nullptr;
+                    delete mAboutButton;
+                    mAboutButton = nullptr;
                     delete mHelpButton;
                     mHelpButton = nullptr;
                     delete mPerfomanceButton;
@@ -1867,6 +1873,11 @@ void Client::action(const ActionEvent &event)
     else if (eventId == "help")
     {
         inputManager.executeAction(Input::KEY_WINDOW_HELP);
+        return;
+    }
+    else if (eventId == "about")
+    {
+        inputManager.executeAction(Input::KEY_WINDOW_ABOUT);
         return;
     }
     else if (eventId == "Video")

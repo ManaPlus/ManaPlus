@@ -425,6 +425,7 @@ private:
     Button *mSetupButton;
     Button *mVideoButton;
     Button *mHelpButton;
+    Button *mAboutButton;
     Button *mThemesButton;
     Button *mPerfomanceButton;
 #ifdef ANDROID

@@ -102,6 +102,7 @@ namespace ActionManager
 
     decHandler(hideWindows);
     decHandler(helpWindowShow);
+    decHandler(aboutWindowShow);
     decHandler(setupWindowShow);
     decHandler(statusWindowShow);
     decHandler(inventoryWindowShow);

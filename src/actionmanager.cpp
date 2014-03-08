@@ -703,7 +703,7 @@ impHandler0(hideWindows)
     return true;
 }
 
-impHandler0(helpWindowShow)
+static bool showHelpPage(const std::string &page)
 {
     if (helpWindow)
     {
@@ -713,12 +713,22 @@ impHandler0(helpWindowShow)
         }
         else
         {
-            helpWindow->loadHelp("index");
+            helpWindow->loadHelp(page);
             helpWindow->requestMoveToTop();
         }
         return true;
     }
     return false;
+}
+
+impHandler0(helpWindowShow)
+{
+    showHelpPage("index");
+}
+
+impHandler0(aboutWindowShow)
+{
+    showHelpPage("about");
 }
 
 static void showHideWindow(Window *const window)

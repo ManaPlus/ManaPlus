@@ -366,6 +366,12 @@ static SetupActionData setupActionData2[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("About Window"),
+        Input::KEY_WINDOW_ABOUT,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Help Window"),
         Input::KEY_WINDOW_HELP,
         "",

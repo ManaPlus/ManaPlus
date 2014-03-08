@@ -370,6 +370,7 @@ namespace Input
         KEY_GUI_F10,
         KEY_GUI_F11,
         KEY_GUI_F12,
+        KEY_WINDOW_ABOUT,
         KEY_TOTAL
     };
 }  // namespace Input
