@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-03-01 06:16+0000\n"
+"PO-Revision-Date: 2014-03-04 16:47+0000\n"
 "Last-Translator: Alige <aligetmw@hotmail.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgid "/invite NICK - invite a player to your party."
 msgstr "/invite - Inviter un joueur à rejoindre votre groupe"
 
 msgid "/uploadserverconfig - upload server config into pastebin service."
-msgstr ""
+msgstr "/uploadserverconfig - importer la configuration du serveur dans le service pastebin."
 
 msgid "\"Switch pvp attack\""
 msgstr "\"Changer en attaque JvJ\""
@@ -42,7 +42,7 @@ msgid "\"Target & attack\""
 msgstr "\"Cibler & attaquer\""
 
 msgid "/atkhuman - select and attack nearest player."
-msgstr ""
+msgstr "/atkhuman - sélectionner et attaquer le joueur le plus proche."
 
 msgid "\"Emote shortcut 11\""
 msgstr "\"Raccourci d'émoticône 11\""
@@ -103,7 +103,7 @@ msgid ""
 msgstr "Vous pouvez marcher jusqu'aux points de transport (warp points) automatiquement.\nOuvrez fa fenêtre Social (F11) et sélectionnez l'onglet Nav, puis cliquez sur le nom du point où vous voulez aller."
 
 msgid "/info - show guild info. Only for native guilds only."
-msgstr ""
+msgstr "/info - afficher les informations de guilde. Seulement pour les guildes natives."
 
 msgid "/neutral NICK - add nick to neutral relation list."
 msgstr "/neutral NICK - ajouter NICK à la liste des relations neutres."
@@ -176,7 +176,7 @@ msgid "\"Outfit shortcut 13\""
 msgstr "\"Raccourci de tenue 13\""
 
 msgid "/sethome - set home position."
-msgstr ""
+msgstr "/sethome - fixer la position maison."
 
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
@@ -202,7 +202,7 @@ msgid "Mana Contributors"
 msgstr "Contributeurs de Mana"
 
 msgid "Content devs"
-msgstr ""
+msgstr "Développeurs de contenu"
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr "/query PSEUDO, /q PSEUDO - ouvre un nouvel onglet de discussion avec le joueur \"PSEUDO\"."
@@ -244,7 +244,7 @@ msgid ""
 msgstr "##2ManaPlus##9 est un effort notable de création d'un client de jeux de rôles MMO, libre et open source. Manaplus utilise utilise des graphiques 2D, avec pour but la création d'un monde interactif vaste et varié. Il est distribué sous la licence GPL pour vous garantir sa disponibilité permanente. "
 
 msgid "\"Target closest monster\""
-msgstr "Viser le monstre le plus proche"
+msgstr "\"Cibler le monstre le plus proche\""
 
 msgid "\"Emote shortcut 2\""
 msgstr "\"Raccourci d'émoticône 2\""
@@ -308,7 +308,7 @@ msgid ""
 msgstr "Vous pouvez faire une recherche simple dans l'aide en utilisant la commande: \n##2?text"
 
 msgid "\"Change move to target type\""
-msgstr "Changer le type de déplacement vers les cibles"
+msgstr "\"Changer le type de déplacement vers les cibles\""
 
 msgid "/dumpmods - dump all enabled mod names into chat."
 msgstr ""
@@ -384,7 +384,7 @@ msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr "/pseudoaway, /pseudoaway MSG - active/désactive le mode pseudo away (pseudo-absent)."
 
 msgid "Sources:"
-msgstr ""
+msgstr "Sources :"
 
 msgid "/uptime - show client uptime."
 msgstr "/uptime - affiche la durée d'utilisation du client."
@@ -509,7 +509,7 @@ msgid "/outfit next - wear next outfit."
 msgstr "/outfit next - met la tenue suivante."
 
 msgid "/magicattack - attack target with magic."
-msgstr ""
+msgstr "/magicattack - attaquer la cible avec de la magie."
 
 msgid ""
 "You can set away mode,\n"
@@ -538,7 +538,7 @@ msgid "Android porting"
 msgstr "Portage Android"
 
 msgid "Tabs"
-msgstr ""
+msgstr "Onglets"
 
 msgid "\"Social window\""
 msgstr "\"Fenêtre sociale\""
@@ -580,7 +580,7 @@ msgid "Download"
 msgstr "Téléchargement"
 
 msgid "Other linux:"
-msgstr ""
+msgstr "Autres Linux :"
 
 msgid ""
 " - ##2friend##9:  You consider this player a friend.  The player may chat,\n"
@@ -591,7 +591,7 @@ msgid "Art or images contributors"
 msgstr " Contributeurs: artistes graphiques"
 
 msgid "\"Target player\""
-msgstr "Viser le Joueur"
+msgstr "\"Cibler le Joueur\""
 
 msgid "/dropn - drop N items from any slot."
 msgstr ""
@@ -690,7 +690,7 @@ msgid "Contributors to client/server development"
 msgstr "Contributeurs au développement client/serveur"
 
 msgid "\"Quick heal target or self\""
-msgstr "Soins rapides de la cible ou de soi-même"
+msgstr "\"Soins rapides sur la cible ou sur soi-même\""
 
 msgid "\"Change pickup type\""
 msgstr "\"Changer le type de ramassage\""
@@ -722,7 +722,7 @@ msgid ""
 msgstr "/msg PSEUDO texte, /whisper PSEUDO texte, /w PSEUDO texte - envoie un message privé au joueur."
 
 msgid "/movetotarget - move to target position."
-msgstr ""
+msgstr "/movetotarget - aller à la position ciblée"
 
 msgid "\"Emote shortcut 14\""
 msgstr "\"Raccourci d'émoticône 14\""
@@ -769,7 +769,7 @@ msgid "##2Party level2:##9 enables a char to create a party."
 msgstr "##2Groupe level2:##P Permet à un personnage de créer un groupe."
 
 msgid "/target NICK - select nick as target. Can be monster or player nick."
-msgstr "/target PSEUDO - sélectionne le joueur ou le monstre comme cible."
+msgstr "/target PSEUDO - cibler le joueur ou le monstre comme cible."
 
 msgid "To type chat message, press ###keyChat;"
 msgstr "\"Pour écrire un message, appuyez sur ###keyChat;"
@@ -822,7 +822,7 @@ msgid "\"Skill window\""
 msgstr "\"Fenêtre des compétences\""
 
 msgid "\"Move to home location\""
-msgstr "\"Aller à la position  de base\""
+msgstr "\"Aller à la position maison\""
 
 msgid "\"Toggle chat\""
 msgstr "\"Activer / Désactiver l'entrée dans le chat\""
@@ -852,7 +852,7 @@ msgid "/dirs - show client dirs in debug chat tab."
 msgstr "/dirs - Liste les répertoires utilisés par le client dans l'onglet d'informations de débogage."
 
 msgid "/movetohome - move to home position."
-msgstr ""
+msgstr "/movetohome - aller à la position maison"
 
 msgid "/disconnect - quick disconnect from server."
 msgstr "/disconnect - déconnexion rapide du serveur."
@@ -899,7 +899,7 @@ msgid "/undress NICK - remove all clothes from nick. Local effect only."
 msgstr "/undress NOM - Déshabiller complètement NOM. Effet local seulement."
 
 msgid "Other"
-msgstr ""
+msgstr "Autre"
 
 msgid ""
 " Otherwise see the @@team|Development Team@@ section to have a list of\n"
@@ -1031,7 +1031,7 @@ msgid "\"Emulate right click from keyboard\""
 msgstr "\"Émuler le clic droit avec le clavier\""
 
 msgid "\"Set home location/set arrow\""
-msgstr "\"Définir la position de base / définir les points de navigation\""
+msgstr "\"Définir la position maison / définir les points de navigation\""
 
 msgid "\"Set direction left\""
 msgstr "\"Définir la direction vers la gauche\""
