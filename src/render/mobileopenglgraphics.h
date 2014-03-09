@@ -56,8 +56,6 @@ class MobileOpenGLGraphics final : public Graphics
 
         ~MobileOpenGLGraphics();
 
-        #include "render/openglgraphicsdef.hpp"
-
         inline void drawTriangleArrayfs(const GLshort *const shortVertArray,
                                         const GLfloat *const floatTexArray,
                                         const int size);
@@ -68,56 +66,13 @@ class MobileOpenGLGraphics final : public Graphics
 
         inline void drawLineArrays(const int size);
 
-        inline void drawVertexes(const NormalOpenGLGraphicsVertexes &ogl);
+        #include "render/graphicsdef.hpp"
 
-        bool drawNet(const int x1, const int y1, const int x2, const int y2,
-                     const int width, const int height) override final;
+        #include "render/openglgraphicsdef.hpp"
 
-        void initArrays() override final;
-
-        /**
-         * Draws a rectangle using images. 4 corner images, 4 side images and 1
-         * image for the inside.
-         */
-        void drawImageRect(int x, int y, int w, int h,
-                           const ImageRect &imgRect);
-
-#ifdef DEBUG_DRAW_CALLS
-        unsigned int getDrawCalls() const
-        { return mLastDrawCalls; }
-
-        static unsigned int mDrawCalls;
-
-        static unsigned int mLastDrawCalls;
-#endif
-
-    protected:
-        void setTexturingAndBlending(const bool enable);
-
-        void debugBindTexture(const Image *const image);
+        #include "render/openglgraphicsdefadvanced.hpp"
 
     private:
-        void inline setColorAlpha(const float alpha);
-
-        void inline restoreColor();
-
-        void inline calcImageRect(ImageVertexes *const vert,
-                                  int x, int y,
-                                  int w, int h,
-                                  const ImageRect &imgRect);
-
-        void inline calcPatternInline(ImageVertexes *const vert,
-                                      const Image *const image,
-                                      const int x, const int y,
-                                      const int w, const int h) const;
-
-        void inline calcTileVertexesInline(ImageVertexes *const vert,
-                                           const Image *const image,
-                                           int x, int y) const;
-
-        bool inline drawImageInline(const Image *const image,
-                                    int dstX, int dstY);
-
         GLfloat *mFloatTexArray;
         GLshort *mShortVertArray;
         GLfloat *mFloatTexArrayCached;

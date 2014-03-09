@@ -20,48 +20,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_SAFEOPENGLGRAPHICS_H
-#define RENDER_SAFEOPENGLGRAPHICS_H
+public:
+    inline void drawVertexes(const NormalOpenGLGraphicsVertexes &ogl);
 
-#include "main.h"
-#if defined USE_OPENGL && !defined ANDROID
+    void initArrays() override final;
 
-#include "render/graphics.h"
+#ifdef DEBUG_DRAW_CALLS
+    unsigned int getDrawCalls() const
+    { return mLastDrawCalls; }
 
-#include "resources/fboinfo.h"
+    static unsigned int mDrawCalls;
 
-#ifdef ANDROID
-#include <GLES/gl.h>
-#include <GLES/glext.h>
-#else
-#ifndef USE_SDL2
-#define GL_GLEXT_PROTOTYPES 1
-#endif
-#include <SDL_opengl.h>
-#include <GL/glext.h>
+    static unsigned int mLastDrawCalls;
 #endif
 
-class SafeOpenGLGraphics final : public Graphics
-{
-    public:
-        SafeOpenGLGraphics();
-
-        A_DELETE_COPY(SafeOpenGLGraphics)
-
-        ~SafeOpenGLGraphics();
-
-        #include "render/graphicsdef.hpp"
-
-        #include "render/openglgraphicsdef.hpp"
-
-    private:
-        bool mTexture;
-        bool mIsByteColor;
-        Color mByteColor;
-        float mFloatColor;
-        bool mColorAlpha;
-        FBOInfo mFbo;
-};
-#endif
-
-#endif  // RENDER_SAFEOPENGLGRAPHICS_H
+protected:
+    void debugBindTexture(const Image *const image);

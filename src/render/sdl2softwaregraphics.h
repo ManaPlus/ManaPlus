@@ -54,111 +54,14 @@ class SDL2SoftwareGraphics final : public Graphics
          */
         ~SDL2SoftwareGraphics();
 
-        void _beginDraw();
-
-        void _endDraw();
-
-        bool pushClipArea(Rect rect);
-
-        void popClipArea();
-
-        bool drawRescaledImage(const Image *const image,
-                               int dstX, int dstY,
-                               const int desiredWidth,
-                               const int desiredHeight) override final;
-
-        void drawPattern(const Image *const image,
-                         const int x, const int y,
-                         const int w, const int h) override final;
-
-        void inline drawPatternInline(const Image *const image,
-                                      const int x, const int y,
-                                      const int w, const int h);
-
-        void drawRescaledPattern(const Image *const image,
-                                 const int x, const int y,
-                                 const int w, const int h,
-                                 const int scaledWidth,
-                                 const int scaledHeight) override final;
-
-        void calcPattern(ImageVertexes *const vert,
-                         const Image *const image,
-                         const int x, const int y,
-                         const int w, const int h) const override final;
-
-        void calcPattern(ImageCollection *const vert,
-                         const Image *const image,
-                         const int x, const int y,
-                         const int w, const int h) const override final;
-
-        void calcTileVertexes(ImageVertexes *const vert,
-                              const Image *const image,
-                              int x, int y) const override final;
-
-        void calcTileSDL(ImageVertexes *const vert,
-                         int x, int y) const override final;
-
-        void calcTileCollection(ImageCollection *const vertCol,
-                                const Image *const image,
-                                int x, int y) override final;
-
-        void drawTileVertexes(const ImageVertexes *const vert) override final;
-
-        void drawTileCollection(const ImageCollection *const vertCol)
-                                override final;
-
-        void updateScreen() override final;
-
-        SDL_Surface *getScreenshot() override final A_WARN_UNUSED;
-
-        bool drawNet(const int x1, const int y1,
-                     const int x2, const int y2,
-                     const int width, const int height) override final;
-
-        void calcWindow(ImageCollection *const vertCol,
-                        const int x, const int y,
-                        const int w, const int h,
-                        const ImageRect &imgRect) override final;
-
-        void fillRectangle(const Rect &rect) override final;
-
-        void drawRectangle(const Rect &rect) override final;
-
-        void drawPoint(int x, int y) override final;
-
-        void drawLine(int x1, int y1, int x2, int y2) override final;
-
-        bool setVideoMode(const int w, const int h,
-                          const int scale,
-                          const int bpp,
-                          const bool fs,
-                          const bool hwaccel,
-                          const bool resize,
-                          const bool noFrame) override final;
-
         void setRendererFlags(const uint32_t flags) override final
         { mRendererFlags = flags; }
 
+        #include "render/graphicsdef.hpp"
+
+        #include "render/softwaregraphicsdef.hpp"
+
         bool resizeScreen(const int width, const int height) override final;
-
-        bool drawImage(const Image *const image,
-                       int dstX, int dstY) override final;
-
-        void drawImageCached(const Image *const image,
-                             int x, int y) override final;
-
-        void drawPatternCached(const Image *const image,
-                               const int x, const int y,
-                               const int w, const int h) override final;
-
-        void completeCache() override final;
-
-        /**
-         * Draws a rectangle using images. 4 corner images, 4 side images and 1
-         * image for the inside.
-         */
-        void drawImageRect(int x, int y, int w, int h,
-                           const ImageRect &imgRect);
 
     protected:
         int SDL_FakeUpperBlit(const SDL_Surface *const src,
@@ -174,24 +77,6 @@ class SDL2SoftwareGraphics final : public Graphics
         SDL_Surface *mSurface;
         uint32_t mOldPixel;
         unsigned int mOldAlpha;
-
-    private:
-        void inline calcImageRect(ImageVertexes *const vert,
-                                  const int x, const int y,
-                                  const int w, const int h,
-                                  const ImageRect &imgRect);
-
-        void inline calcPatternInline(ImageVertexes *const vert,
-                                      const Image *const image,
-                                      const int x, const int y,
-                                      const int w, const int h) const;
-
-        void inline calcTileVertexesInline(ImageVertexes *const vert,
-                                           const Image *const image,
-                                           int x, int y) const;
-
-        bool inline drawImageInline(const Image *const image,
-                                    int dstX, int dstY);
 };
 
 #endif  // USE_SDL2

@@ -56,8 +56,6 @@ class NormalOpenGLGraphics final : public Graphics
 
         ~NormalOpenGLGraphics();
 
-        #include "render/openglgraphicsdef.hpp"
-
         inline void drawQuadArrayfi(const int size);
 
         inline void drawQuadArrayfiCached(const int size);
@@ -78,60 +76,18 @@ class NormalOpenGLGraphics final : public Graphics
 
         inline void drawLineArrayf(const int size);
 
-        inline void drawVertexes(const NormalOpenGLGraphicsVertexes &ogl);
+        #include "render/graphicsdef.hpp"
 
-        bool drawNet(const int x1, const int y1, const int x2, const int y2,
-                     const int width, const int height) override final;
+        #include "render/openglgraphicsdef.hpp"
 
-        void initArrays() override final;
+        #include "render/openglgraphicsdefadvanced.hpp"
 
-        /**
-         * Draws a rectangle using images. 4 corner images, 4 side images and 1
-         * image for the inside.
-         */
-        void drawImageRect(int x, int y, int w, int h,
-                           const ImageRect &imgRect);
-
-#ifdef DEBUG_DRAW_CALLS
-        unsigned int getDrawCalls() const
-        { return mLastDrawCalls; }
-
-        static unsigned int mDrawCalls;
-
-        static unsigned int mLastDrawCalls;
-#endif
 #ifdef DEBUG_BIND_TEXTURE
         unsigned int getBinds() const
         { return mLastBinds; }
 #endif
 
-    protected:
-        void setTexturingAndBlending(const bool enable);
-
-        void debugBindTexture(const Image *const image);
-
     private:
-        void inline setColorAlpha(const float alpha);
-
-        void inline restoreColor();
-
-        void inline calcImageRect(ImageVertexes *const vert,
-                                  int x, int y,
-                                  int w, int h,
-                                  const ImageRect &imgRect);
-
-        void inline calcPatternInline(ImageVertexes *const vert,
-                                      const Image *const image,
-                                      const int x, const int y,
-                                      const int w, const int h) const;
-
-        void inline calcTileVertexesInline(ImageVertexes *const vert,
-                                           const Image *const image,
-                                           int x, int y) const;
-
-        bool inline drawImageInline(const Image *const image,
-                                    int dstX, int dstY);
-
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
         GLint *mIntVertArray;

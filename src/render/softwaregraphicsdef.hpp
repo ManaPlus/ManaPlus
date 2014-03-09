@@ -20,48 +20,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_SAFEOPENGLGRAPHICS_H
-#define RENDER_SAFEOPENGLGRAPHICS_H
-
-#include "main.h"
-#if defined USE_OPENGL && !defined ANDROID
-
-#include "render/graphics.h"
-
-#include "resources/fboinfo.h"
-
-#ifdef ANDROID
-#include <GLES/gl.h>
-#include <GLES/glext.h>
-#else
-#ifndef USE_SDL2
-#define GL_GLEXT_PROTOTYPES 1
-#endif
-#include <SDL_opengl.h>
-#include <GL/glext.h>
-#endif
-
-class SafeOpenGLGraphics final : public Graphics
-{
-    public:
-        SafeOpenGLGraphics();
-
-        A_DELETE_COPY(SafeOpenGLGraphics)
-
-        ~SafeOpenGLGraphics();
-
-        #include "render/graphicsdef.hpp"
-
-        #include "render/openglgraphicsdef.hpp"
-
-    private:
-        bool mTexture;
-        bool mIsByteColor;
-        Color mByteColor;
-        float mFloatColor;
-        bool mColorAlpha;
-        FBOInfo mFbo;
-};
-#endif
-
-#endif  // RENDER_SAFEOPENGLGRAPHICS_H
+public:
+    void calcTileSDL(ImageVertexes *const vert,
+                     int x, int y) const override final;

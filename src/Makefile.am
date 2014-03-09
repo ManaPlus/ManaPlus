@@ -62,6 +62,7 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      render/sdl2graphics.h \
 	      render/sdlgraphics.cpp \
 	      render/sdlgraphics.h \
+	      render/softwaregraphicsdef.hpp \
 	      resources/action.cpp \
 	      resources/action.h \
 	      resources/animation.cpp \
@@ -799,11 +800,13 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      notifications.h \
 	      notifymanager.cpp \
 	      notifymanager.h \
+	      render/graphicsdef.hpp \
 	      render/graphics_calcImageRect.hpp \
 	      render/graphics_drawImageRect.hpp \
 	      render/nullopenglgraphics.cpp \
 	      render/nullopenglgraphics.h \
 	      render/openglgraphicsdef.hpp \
+	      render/openglgraphicsdefadvanced.hpp \
 	      render/renderers.cpp \
 	      render/renderers.h \
 	      render/rendererslistsdl.h \
@@ -836,6 +839,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      render/sdl2softwaregraphics.h \
 	      render/sdlgraphics.cpp \
 	      render/sdlgraphics.h \
+	      render/softwaregraphicsdef.hpp \
 	      sdlshared.h \
 	      shopitem.cpp \
 	      shopitem.h \
