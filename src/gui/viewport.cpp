@@ -65,6 +65,8 @@ Viewport::Viewport() :
     mScrollCenterOffsetY(config.getIntValue("ScrollCenterOffsetY")),
     mMouseX(0),
     mMouseY(0),
+    mMousePressX(0),
+    mMousePressY(0),
     mPixelViewX(0),
     mPixelViewY(0),
     mShowDebugPath(Map::MAP_NORMAL),
@@ -290,7 +292,7 @@ void Viewport::_followMouse()
             mMouseY,
             0);
 
-        mouseDragged(mouseEvent);
+        walkByMouse(mouseEvent);
     }
 }
 
@@ -377,7 +379,6 @@ bool Viewport::openContextMenu(MouseEvent &event)
                 mPopupMenu->showPopup(eventX, eventY, beings);
             else
                 mPopupMenu->showPopup(eventX, eventY, mHoverBeing);
-            mHoverBeing = nullptr;
             return true;
         }
     }
@@ -385,14 +386,12 @@ bool Viewport::openContextMenu(MouseEvent &event)
     {
         validateSpeed();
         mPopupMenu->showPopup(eventX, eventY, mHoverItem);
-        mHoverItem = nullptr;
         return true;
     }
     else if (mHoverSign)
     {
         validateSpeed();
         mPopupMenu->showPopup(eventX, eventY, mHoverSign);
-        mHoverSign = nullptr;
         return true;
     }
     else if (mCameraMode)
@@ -481,7 +480,7 @@ bool Viewport::leftMouseAction()
 
 void Viewport::mousePressed(MouseEvent &event)
 {
-    if (event.getSource() != this)
+    if (event.getSource() != this || event.isConsumed())
         return;
 
     mMouseClicked = true;
@@ -494,11 +493,11 @@ void Viewport::mousePressed(MouseEvent &event)
     if (PlayerInfo::isTalking())
         return;
 
-    const int eventX = event.getX();
-    const int eventY = event.getY();
+    mMousePressX = event.getX();
+    mMousePressY = event.getY();
     const unsigned int eventButton = event.getButton();
-    const int pixelX = eventX + mPixelViewX;
-    const int pixelY = eventY + mPixelViewY;
+    const int pixelX = mMousePressX + mPixelViewX;
+    const int pixelY = mMousePressY + mPixelViewY;
 
     // Right click might open a popup
     if (eventButton == MouseEvent::RIGHT)
@@ -548,6 +547,8 @@ void Viewport::walkByMouse(MouseEvent &event)
         Input::KEY_STOP_ATTACK) && !inputManager.isActionActive(
         Input::KEY_UNTARGET))
     {
+        if (!mMouseDirectionMove)
+            mPlayerFollowMouse = false;
         if (mLocalWalkTime != player_node->getActionTime())
         {
             mLocalWalkTime = cur_time;
@@ -662,6 +663,17 @@ void Viewport::walkByMouse(MouseEvent &event)
 
 void Viewport::mouseDragged(MouseEvent &event)
 {
+    if (event.getSource() != this || event.isConsumed())
+        return;
+    if (mMouseClicked)
+    {
+        if (abs(event.getX() - mMousePressX) > 32
+            || abs(event.getY() - mMousePressY) > 32)
+        {
+            mPlayerFollowMouse = true;
+        }
+    }
+
     walkByMouse(event);
 }
 
@@ -672,6 +684,8 @@ void Viewport::mouseReleased(MouseEvent &event)
     if (mLongMouseClick && mMouseClicked)
     {
         mMouseClicked = false;
+        if (event.getSource() != this || event.isConsumed())
+            return;
         const unsigned int eventButton = event.getButton();
         if (eventButton == MouseEvent::LEFT)
         {

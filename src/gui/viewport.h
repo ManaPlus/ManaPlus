@@ -326,6 +326,8 @@ class Viewport final : public WindowContainer,
         int mScrollCenterOffsetY;
         int mMouseX;                /**< Current mouse position in pixels. */
         int mMouseY;                /**< Current mouse position in pixels. */
+        int mMousePressX;
+        int mMousePressY;
         int mPixelViewX;            /**< Current viewpoint in pixels. */
         int mPixelViewY;            /**< Current viewpoint in pixels. */
         int mShowDebugPath;         /**< Show a path from player to pointer. */
