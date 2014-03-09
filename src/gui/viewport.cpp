@@ -61,6 +61,8 @@ Viewport::Viewport() :
     mScrollCenterOffsetX(config.getIntValue("ScrollCenterOffsetX")),
     mScrollCenterOffsetY(config.getIntValue("ScrollCenterOffsetY")),
     mMouseDirectionMove(config.getBoolValue("mouseDirectionMove")),
+    mLongMouseClick(config.getBoolValue("longmouseclick")),
+    mMouseClicked(false),
     mMouseX(0),
     mMouseY(0),
     mPixelViewX(0),
@@ -91,6 +93,7 @@ Viewport::Viewport() :
     config.addListener("selfMouseHeal", this);
     config.addListener("enableLazyScrolling", this);
     config.addListener("mouseDirectionMove", this);
+    config.addListener("longmouseclick", this);
 
     setFocusable(true);
 }
@@ -356,11 +359,132 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
     }
 }
 
+bool Viewport::openContextMenu(MouseEvent &event)
+{
+    mPlayerFollowMouse = false;
+    const int eventX = event.getX();
+    const int eventY = event.getY();
+    if (mHoverBeing)
+    {
+        validateSpeed();
+        if (actorManager)
+        {
+            std::vector<ActorSprite*> beings;
+            const int x = mMouseX + mPixelViewX;
+            const int y = mMouseY + mPixelViewY;
+            actorManager->findBeingsByPixel(beings, x, y, true);
+            if (beings.size() > 1)
+                mPopupMenu->showPopup(eventX, eventY, beings);
+            else
+                mPopupMenu->showPopup(eventX, eventY, mHoverBeing);
+            mHoverBeing = nullptr;
+            return true;
+        }
+    }
+    else if (mHoverItem)
+    {
+        validateSpeed();
+        mPopupMenu->showPopup(eventX, eventY, mHoverItem);
+        mHoverItem = nullptr;
+        return true;
+    }
+    else if (mHoverSign)
+    {
+        validateSpeed();
+        mPopupMenu->showPopup(eventX, eventY, mHoverSign);
+        mHoverSign = nullptr;
+        return true;
+    }
+    else if (mCameraMode)
+    {
+        mPopupMenu->showMapPopup(eventX, eventY,
+            (mMouseX + mPixelViewX) / mMap->getTileWidth(),
+            (mMouseY + mPixelViewY) / mMap->getTileHeight());
+        return true;
+    }
+    return false;
+}
+
+bool Viewport::leftMouseAction(MouseEvent &event)
+{
+    // Interact with some being
+    if (mHoverBeing)
+    {
+        if (!mHoverBeing->isAlive())
+            return true;
+
+        if (mHoverBeing->canTalk())
+        {
+            validateSpeed();
+            mHoverBeing->talkTo();
+            return true;
+        }
+        else
+        {
+            if (mHoverBeing->getType() == ActorSprite::PLAYER)
+            {
+                validateSpeed();
+                if (actorManager)
+                {
+                    if (player_node != mHoverBeing || mSelfMouseHeal)
+                        actorManager->heal(mHoverBeing);
+                    if (player_node == mHoverBeing && mHoverItem)
+                        player_node->pickUp(mHoverItem);
+                    return true;
+                }
+            }
+            else if (player_node->withinAttackRange(mHoverBeing) ||
+                     inputManager.isActionActive(static_cast<int>(
+                     Input::KEY_ATTACK)))
+            {
+                validateSpeed();
+                if (player_node != mHoverBeing)
+                {
+                    player_node->attack(mHoverBeing,
+                        !inputManager.isActionActive(
+                        static_cast<int>(Input::KEY_STOP_ATTACK)));
+                    return true;
+                }
+            }
+            else if (!inputManager.isActionActive(static_cast<int>(
+                     Input::KEY_ATTACK)))
+            {
+                validateSpeed();
+                if (player_node != mHoverBeing)
+                {
+                    player_node->setGotoTarget(mHoverBeing);
+                    return true;
+                }
+            }
+        }
+    }
+    // Picks up a item if we clicked on one
+    if (mHoverItem)
+    {
+        validateSpeed();
+        player_node->pickUp(mHoverItem);
+    }
+    // Just walk around
+    else if (!inputManager.isActionActive(static_cast<int>(
+             Input::KEY_ATTACK)))
+    {
+        validateSpeed();
+        player_node->stopAttack();
+        player_node->cancelFollow();
+        mPlayerFollowMouse = true;
+
+        // Make the player go to the mouse position
+        _followMouse();
+    }
+    return false;
+}
+
 void Viewport::mousePressed(MouseEvent &event)
 {
     if (event.getSource() != this)
         return;
 
+    mMouseClicked = true;
     // Check if we are alive and kickin'
     if (!mMap || !player_node)
         return;
@@ -379,47 +503,8 @@ void Viewport::mousePressed(MouseEvent &event)
     // Right click might open a popup
     if (eventButton == MouseEvent::RIGHT)
     {
-        mPlayerFollowMouse = false;
-        if (mHoverBeing)
-        {
-            validateSpeed();
-            if (actorManager)
-            {
-                std::vector<ActorSprite*> beings;
-                const int x = mMouseX + mPixelViewX;
-                const int y = mMouseY + mPixelViewY;
-                actorManager->findBeingsByPixel(beings, x, y, true);
-                if (beings.size() > 1)
-                {
-                    mPopupMenu->showPopup(eventX, eventY, beings);
-                    return;
-                }
-                else
-                {
-                    mPopupMenu->showPopup(eventX, eventY, mHoverBeing);
-                    return;
-                }
-            }
-        }
-        else if (mHoverItem)
-        {
-            validateSpeed();
-            mPopupMenu->showPopup(eventX, eventY, mHoverItem);
+        if (openContextMenu(event))
             return;
-        }
-        else if (mHoverSign)
-        {
-            validateSpeed();
-            mPopupMenu->showPopup(eventX, eventY, mHoverSign);
-            return;
-        }
-        else if (mCameraMode)
-        {
-            mPopupMenu->showMapPopup(eventX, eventY,
-                (mMouseX + mPixelViewX) / mMap->getTileWidth(),
-                (mMouseY + mPixelViewY) / mMap->getTileHeight());
-            return;
-        }
     }
 
     // If a popup is active, just remove it
@@ -431,77 +516,10 @@ void Viewport::mousePressed(MouseEvent &event)
     }
 
     // Left click can cause different actions
-    if (eventButton == MouseEvent::LEFT)
+    if (!mLongMouseClick && eventButton == MouseEvent::LEFT)
     {
-        // Interact with some being
-        if (mHoverBeing)
-        {
-            if (!mHoverBeing->isAlive())
-                return;
-
-            if (mHoverBeing->canTalk())
-            {
-                validateSpeed();
-                mHoverBeing->talkTo();
-                return;
-            }
-            else
-            {
-                if (mHoverBeing->getType() == ActorSprite::PLAYER)
-                {
-                    validateSpeed();
-                    if (actorManager)
-                    {
-                        if (player_node != mHoverBeing || mSelfMouseHeal)
-                            actorManager->heal(mHoverBeing);
-                        if (player_node == mHoverBeing && mHoverItem)
-                            player_node->pickUp(mHoverItem);
-                        return;
-                    }
-                }
-                else if (player_node->withinAttackRange(mHoverBeing) ||
-                         inputManager.isActionActive(static_cast<int>(
-                         Input::KEY_ATTACK)))
-                {
-                    validateSpeed();
-                    if (player_node != mHoverBeing)
-                    {
-                        player_node->attack(mHoverBeing,
-                            !inputManager.isActionActive(
-                            static_cast<int>(Input::KEY_STOP_ATTACK)));
-                        return;
-                    }
-                }
-                else if (!inputManager.isActionActive(static_cast<int>(
-                         Input::KEY_ATTACK)))
-                {
-                    validateSpeed();
-                    if (player_node != mHoverBeing)
-                    {
-                        player_node->setGotoTarget(mHoverBeing);
-                        return;
-                    }
-                }
-            }
-        }
-        // Picks up a item if we clicked on one
-        if (mHoverItem)
-        {
-            validateSpeed();
-            player_node->pickUp(mHoverItem);
-        }
-        // Just walk around
-        else if (!inputManager.isActionActive(static_cast<int>(
-                 Input::KEY_ATTACK)))
-        {
-            validateSpeed();
-            player_node->stopAttack();
-            player_node->cancelFollow();
-            mPlayerFollowMouse = true;
-
-            // Make the player go to the mouse position
-            _followMouse();
-        }
+        if (leftMouseAction(event))
+            return;
     }
     else if (eventButton == MouseEvent::MIDDLE)
     {
@@ -519,11 +537,10 @@ void Viewport::mousePressed(MouseEvent &event)
     }
 }
 
-void Viewport::mouseDragged(MouseEvent &event)
+void Viewport::walkByMouse(MouseEvent &event)
 {
     if (!mMap || !player_node)
         return;
-
     if (mPlayerFollowMouse && !inputManager.isActionActive(
         Input::KEY_STOP_ATTACK) && !inputManager.isActionActive(
         Input::KEY_UNTARGET))
@@ -640,10 +657,40 @@ void Viewport::mouseDragged(MouseEvent &event)
     }
 }
 
-void Viewport::mouseReleased(MouseEvent &event A_UNUSED)
+void Viewport::mouseDragged(MouseEvent &event)
+{
+    if (mLongMouseClick)
+        return;
+
+    walkByMouse(event);
+}
+
+void Viewport::mouseReleased(MouseEvent &event)
 {
     mPlayerFollowMouse = false;
     mLocalWalkTime = -1;
+    if (mLongMouseClick && mMouseClicked)
+    {
+        mMouseClicked = false;
+        const unsigned int eventButton = event.getButton();
+        if (eventButton == MouseEvent::LEFT)
+        {
+            // long button press
+            if (gui && gui->isLongPress())
+            {
+                openContextMenu(event);
+                gui->resetClickCount();
+            }
+            else
+            {
+                if (leftMouseAction(event))
+                    return;
+                if (event.getSource() != this)
+                    return;
+                walkByMouse(event);
+            }
+        }
+    }
 }
 
 void Viewport::showPopup(Window *const parent, const int x, const int y,
@@ -790,6 +837,8 @@ void Viewport::optionChanged(const std::string &name)
         mEnableLazyScrolling = config.getBoolValue("enableLazyScrolling");
     else if (name == "mouseDirectionMove")
         mMouseDirectionMove = config.getBoolValue("mouseDirectionMove");
+    else if (name == "longmouseclick")
+        mLongMouseClick = config.getBoolValue("longmouseclick");
 }
 
 void Viewport::mouseMoved(MouseEvent &event A_UNUSED)

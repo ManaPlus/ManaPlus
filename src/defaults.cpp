@@ -124,6 +124,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showChatColorsList", false);
     AddDEF("customcursor", false);
     AddDEF("showDidYouKnow", false);
+    AddDEF("longmouseclick", true);
 #else
     AddDEF("screenwidth", defaultScreenWidth);
     AddDEF("screenheight", defaultScreenHeight);
@@ -141,6 +142,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("customcursor", true);
 #endif
     AddDEF("showDidYouKnow", true);
+    AddDEF("longmouseclick", false);
 #endif
     AddDEF("showEmotesButton", true);
     AddDEF("screen", false);

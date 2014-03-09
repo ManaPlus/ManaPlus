@@ -1436,3 +1436,13 @@ void Gui::handleModalFocusReleased()
         parent = swap->getParent();
     }
 }
+
+int Gui::getMousePressLength()
+{
+    if (!mLastMousePressTimeStamp)
+        return 0;
+    int ticks = SDL_GetTicks();
+    if (ticks > mLastMousePressTimeStamp)
+        return ticks - mLastMousePressTimeStamp;
+    return mLastMousePressTimeStamp - ticks;
+}

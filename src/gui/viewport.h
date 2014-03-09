@@ -300,6 +300,12 @@ class Viewport final : public WindowContainer,
         void _drawPath(Graphics *const graphics, const Path &path,
                        const Color &color = Color(255, 0, 0)) const;
 
+        bool leftMouseAction(MouseEvent &event);
+
+        bool openContextMenu(MouseEvent &event);
+
+        void walkByMouse(MouseEvent &event);
+
         /**
          * Make the player go to the mouse position.
          */
@@ -315,6 +321,8 @@ class Viewport final : public WindowContainer,
         int mScrollCenterOffsetX;
         int mScrollCenterOffsetY;
         bool mMouseDirectionMove;
+        bool mLongMouseClick;
+        bool mMouseClicked;
         int mMouseX;                /**< Current mouse position in pixels. */
         int mMouseY;                /**< Current mouse position in pixels. */
         int mPixelViewX;            /**< Current viewpoint in pixels. */
