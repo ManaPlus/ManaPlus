@@ -313,27 +313,6 @@ class Viewport final : public WindowContainer,
 
         Map *mMap;                   /**< The current map. */
 
-        int mScrollRadius;
-        int mScrollLaziness;
-        bool mShowBeingPopup;
-        bool mSelfMouseHeal;
-        bool mEnableLazyScrolling;
-        int mScrollCenterOffsetX;
-        int mScrollCenterOffsetY;
-        bool mMouseDirectionMove;
-        bool mLongMouseClick;
-        bool mMouseClicked;
-        int mMouseX;                /**< Current mouse position in pixels. */
-        int mMouseY;                /**< Current mouse position in pixels. */
-        int mPixelViewX;            /**< Current viewpoint in pixels. */
-        int mPixelViewY;            /**< Current viewpoint in pixels. */
-        int mShowDebugPath;         /**< Show a path from player to pointer. */
-        int mCameraMode;            /**< Camera mode. */
-
-        bool mPlayerFollowMouse;
-
-        int mLocalWalkTime; /**< Timestamp before the next walk can be sent. */
-
         PopupMenu *mPopupMenu;       /**< Popup menu. */
         Being *mHoverBeing;          /**< Being mouse is currently over. */
         FloorItem *mHoverItem;       /**< FloorItem mouse is currently over. */
@@ -341,8 +320,29 @@ class Viewport final : public WindowContainer,
         BeingPopup *mBeingPopup;     /**< Being information popup. */
         TextPopup *mTextPopup;       /**< Map Item information popup. */
 
+        int mScrollRadius;
+        int mScrollLaziness;
+        int mScrollCenterOffsetX;
+        int mScrollCenterOffsetY;
+        int mMouseX;                /**< Current mouse position in pixels. */
+        int mMouseY;                /**< Current mouse position in pixels. */
+        int mPixelViewX;            /**< Current viewpoint in pixels. */
+        int mPixelViewY;            /**< Current viewpoint in pixels. */
+        int mShowDebugPath;         /**< Show a path from player to pointer. */
+        int mCameraMode;            /**< Camera mode. */
+
+        int mLocalWalkTime; /**< Timestamp before the next walk can be sent. */
+
         int mCameraRelativeX;
         int mCameraRelativeY;
+
+        bool mShowBeingPopup;
+        bool mSelfMouseHeal;
+        bool mEnableLazyScrolling;
+        bool mMouseDirectionMove;
+        bool mLongMouseClick;
+        bool mMouseClicked;
+        bool mPlayerFollowMouse;
 };
 
 extern Viewport *viewport;           /**< The viewport. */
