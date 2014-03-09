@@ -723,12 +723,12 @@ static bool showHelpPage(const std::string &page)
 
 impHandler0(helpWindowShow)
 {
-    showHelpPage("index");
+    return showHelpPage("index");
 }
 
 impHandler0(aboutWindowShow)
 {
-    showHelpPage("about");
+    return showHelpPage("about");
 }
 
 static void showHideWindow(Window *const window)

@@ -300,7 +300,7 @@ class Viewport final : public WindowContainer,
         void _drawPath(Graphics *const graphics, const Path &path,
                        const Color &color = Color(255, 0, 0)) const;
 
-        bool leftMouseAction(MouseEvent &event);
+        bool leftMouseAction();
 
         bool openContextMenu(MouseEvent &event);
 

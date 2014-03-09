@@ -405,7 +405,7 @@ bool Viewport::openContextMenu(MouseEvent &event)
     return false;
 }
 
-bool Viewport::leftMouseAction(MouseEvent &event)
+bool Viewport::leftMouseAction()
 {
     // Interact with some being
     if (mHoverBeing)
@@ -518,7 +518,7 @@ void Viewport::mousePressed(MouseEvent &event)
     // Left click can cause different actions
     if (!mLongMouseClick && eventButton == MouseEvent::LEFT)
     {
-        if (leftMouseAction(event))
+        if (leftMouseAction())
             return;
     }
     else if (eventButton == MouseEvent::MIDDLE)
@@ -683,7 +683,7 @@ void Viewport::mouseReleased(MouseEvent &event)
             }
             else
             {
-                if (leftMouseAction(event))
+                if (leftMouseAction())
                     return;
                 if (event.getSource() != this)
                     return;
