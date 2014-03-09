@@ -519,7 +519,10 @@ void Viewport::mousePressed(MouseEvent &event)
     if (!mLongMouseClick && eventButton == MouseEvent::LEFT)
     {
         if (leftMouseAction())
+        {
+            mPlayerFollowMouse = false;
             return;
+        }
     }
     else if (eventButton == MouseEvent::MIDDLE)
     {
@@ -659,9 +662,6 @@ void Viewport::walkByMouse(MouseEvent &event)
 
 void Viewport::mouseDragged(MouseEvent &event)
 {
-    if (mLongMouseClick)
-        return;
-
     walkByMouse(event);
 }
 
@@ -678,17 +678,18 @@ void Viewport::mouseReleased(MouseEvent &event)
             // long button press
             if (gui && gui->isLongPress())
             {
-                openContextMenu(event);
-                gui->resetClickCount();
+                if (openContextMenu(event))
+                {
+                    gui->resetClickCount();
+                    return;
+                }
             }
             else
             {
                 if (leftMouseAction())
                     return;
-                if (event.getSource() != this)
-                    return;
-                walkByMouse(event);
             }
+            walkByMouse(event);
         }
     }
 }
