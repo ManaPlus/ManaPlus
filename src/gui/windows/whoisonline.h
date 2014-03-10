@@ -162,6 +162,8 @@ private:
 
     void updateSize();
 
+    void handlerPlayerRelation(const std::string &nick,
+                               OnlinePlayer *const player);
     /**
      * The thread function that download the files.
      */
@@ -178,11 +180,7 @@ private:
                                   const std::string &restrict color)
                                   const A_WARN_UNUSED;
 
-    void updateWindow(std::vector<OnlinePlayer*> &restrict friends,
-                      std::vector<OnlinePlayer*> &restrict neutral,
-                      std::vector<OnlinePlayer*> &restrict disregard,
-                      std::vector<OnlinePlayer*> &restrict enemy,
-                      size_t numOnline);
+    void updateWindow(size_t numOnline);
 
     enum DownloadStatus
     {
@@ -216,6 +214,10 @@ private:
     std::set<std::string> mOnlineNicks;
 
     Button *mUpdateButton;
+    std::vector<OnlinePlayer*> mFriends;
+    std::vector<OnlinePlayer*> mNeutral;
+    std::vector<OnlinePlayer*> mDisregard;
+    std::vector<OnlinePlayer*> mEnemy;
     bool mAllowUpdate;
     bool mShowLevel;
     bool mUpdateOnlineList;
