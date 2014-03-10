@@ -181,6 +181,8 @@ class InputManager final
         void executeAction(const int keyNum);
 
     protected:
+        void resetKey(const int i);
+
         static bool isActionActive0(const int index) A_WARN_UNUSED;
 
         Setup_Input *mSetupInput;      /**< Reference to setup window */
