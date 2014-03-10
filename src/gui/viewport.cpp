@@ -420,7 +420,8 @@ bool Viewport::leftMouseAction()
         }
         else
         {
-            if (mHoverBeing->getType() == ActorSprite::PLAYER)
+            const ActorSprite::Type type = mHoverBeing->getType();
+            if (type == ActorSprite::PLAYER)
             {
                 validateSpeed();
                 if (actorManager)
@@ -432,27 +433,30 @@ bool Viewport::leftMouseAction()
                     return true;
                 }
             }
-            else if (player_node->withinAttackRange(mHoverBeing) ||
-                     inputManager.isActionActive(static_cast<int>(
-                     Input::KEY_ATTACK)))
+            else if (type == ActorSprite::MONSTER || type == ActorSprite::NPC)
             {
-                validateSpeed();
-                if (player_node != mHoverBeing)
+                if (player_node->withinAttackRange(mHoverBeing) ||
+                    inputManager.isActionActive(static_cast<int>(
+                    Input::KEY_ATTACK)))
                 {
-                    player_node->attack(mHoverBeing,
-                        !inputManager.isActionActive(
-                        static_cast<int>(Input::KEY_STOP_ATTACK)));
-                    return true;
+                    validateSpeed();
+                    if (player_node != mHoverBeing)
+                    {
+                        player_node->attack(mHoverBeing,
+                            !inputManager.isActionActive(
+                            static_cast<int>(Input::KEY_STOP_ATTACK)));
+                        return true;
+                    }
                 }
-            }
-            else if (!inputManager.isActionActive(static_cast<int>(
-                     Input::KEY_ATTACK)))
-            {
-                validateSpeed();
-                if (player_node != mHoverBeing)
+                else if (!inputManager.isActionActive(static_cast<int>(
+                         Input::KEY_ATTACK)))
                 {
-                    player_node->setGotoTarget(mHoverBeing);
-                    return true;
+                    validateSpeed();
+                    if (player_node != mHoverBeing)
+                    {
+                        player_node->setGotoTarget(mHoverBeing);
+                        return true;
+                    }
                 }
             }
         }
