@@ -49,6 +49,7 @@ const std::string unusedKeys[] =
 {
     "AttackRange",
     "emoteshortcut0",
+    "screenshotDirectory2",
     "AttackRangeBorder",
     "AttackRangeBorderDelay",
     "AttackRangeBorderGradient",
@@ -205,7 +206,6 @@ const std::string unusedKeys[] =
     "playerHomes",
     "remember",
     "screenshotDirectory",
-    "screenshotDirectory2",
     ""
 };
 
@@ -894,7 +894,8 @@ void Configuration::removeListeners(ConfigListener *const listener)
 void Configuration::removeOldKeys()
 {
     if (mOptions.find(unusedKeys[0]) != mOptions.end()
-        || mOptions.find(unusedKeys[1]) != mOptions.end())
+        || mOptions.find(unusedKeys[1]) != mOptions.end()
+        || mOptions.find(unusedKeys[2]) != mOptions.end())
     {
         int f = 0;
         while (unusedKeys[f] != "")

@@ -225,6 +225,8 @@ class ConfigurationObject
 #endif
 };
 
+#define valTest(num) mStatsRe##num
+
 /**
  * Configuration handler for reading (and writing).
  *
