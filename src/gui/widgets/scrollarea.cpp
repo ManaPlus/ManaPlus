@@ -455,11 +455,9 @@ void ScrollArea::setOpaque(bool opaque)
     setFrameSize(mOpaque ? 2 : 0);
 }
 
-void ScrollArea::drawButton(Graphics *const graphics,
-                            const BUTTON_DIR dir)
+Image *ScrollArea::getImageByState(Rect &dim, const BUTTON_DIR dir)
 {
     int state = 0;
-    Rect dim;
 
     switch (dir)
     {
@@ -483,48 +481,31 @@ void ScrollArea::drawButton(Graphics *const graphics,
         default:
             logger->log("ScrollArea::drawButton unknown dir: "
                         + toString(static_cast<unsigned>(dir)));
-            return;
+            return nullptr;
     }
+    return buttons[dir][state];
+}
 
-    if (buttons[dir][state])
-        graphics->drawImage(buttons[dir][state], dim.x, dim.y);
+void ScrollArea::drawButton(Graphics *const graphics,
+                            const BUTTON_DIR dir)
+{
+    Rect dim;
+    const Image *const image = getImageByState(dim, dir);
+
+    if (image)
+        graphics->drawImage(image, dim.x, dim.y);
 }
 
 void ScrollArea::calcButton(Graphics *const graphics,
                             const BUTTON_DIR dir)
 {
-    int state = 0;
     Rect dim;
+    const Image *const image = getImageByState(dim, dir);
 
-    switch (dir)
-    {
-        case UP:
-            state = mUpButtonPressed ? 1 : 0;
-            dim = getUpButtonDimension();
-            break;
-        case DOWN:
-            state = mDownButtonPressed ? 1 : 0;
-            dim = getDownButtonDimension();
-            break;
-        case LEFT:
-            state = mLeftButtonPressed ? 1 : 0;
-            dim = getLeftButtonDimension();
-            break;
-        case RIGHT:
-            state = mRightButtonPressed ? 1 : 0;
-            dim = getRightButtonDimension();
-            break;
-        case BUTTONS_DIR:
-        default:
-            logger->log("ScrollArea::drawButton unknown dir: "
-                        + toString(static_cast<unsigned>(dir)));
-            return;
-    }
-
-    if (buttons[dir][state])
+    if (image)
     {
         static_cast<Graphics*>(graphics)->calcTileCollection(
-            mVertexes, buttons[dir][state], dim.x, dim.y);
+            mVertexes, image, dim.x, dim.y);
     }
 }
 

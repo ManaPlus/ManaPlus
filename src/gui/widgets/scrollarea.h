@@ -456,6 +456,8 @@ class ScrollArea final : public BasicContainer,
         void calcVMarker(Graphics *const graphics);
         void calcHMarker(Graphics *const graphics);
 
+        Image *getImageByState(Rect &dim, const BUTTON_DIR dir);
+
         void updateCalcFlag(Graphics *const graphics);
 
         static int instances;
