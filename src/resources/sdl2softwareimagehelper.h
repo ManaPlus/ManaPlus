@@ -83,9 +83,6 @@ class SDL2SoftwareImageHelper final : public ImageHelper
         static SDL_Surface* SDLDuplicateSurface(SDL_Surface *const tmpImage)
                                                 A_WARN_UNUSED;
 
-        SDL_Surface *create32BitSurface(int width,
-                                        int height) const override final;
-
         static int combineSurface(SDL_Surface *restrict const src,
                                   SDL_Rect *restrict const srcrect,
                                   SDL_Surface *restrict const dst,

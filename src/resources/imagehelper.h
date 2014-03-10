@@ -58,19 +58,16 @@ class ImageHelper
          */
         Image *load(SDL_RWops *const rw) const A_WARN_UNUSED;
 
-#ifdef __GNUC__
         virtual Image *load(SDL_RWops *const rw, Dye
-                            const &dye) const A_WARN_UNUSED = 0;
+                            const &dye) const A_WARN_UNUSED;
 
+#ifdef __GNUC__
         virtual Image *load(SDL_Surface *const) const A_WARN_UNUSED = 0;
 
         virtual Image *createTextSurface(SDL_Surface *const tmpImage,
                                          const int width, const int height,
                                          float alpha) const A_WARN_UNUSED = 0;
 #else
-        virtual Image *load(SDL_RWops *rw, Dye const &dye) const A_WARN_UNUSED
-        { return nullptr; }
-
         virtual Image *load(SDL_Surface *) const A_WARN_UNUSED
         { return nullptr; }
 
@@ -85,7 +82,7 @@ class ImageHelper
         static void dumpSurfaceFormat(const SDL_Surface *const image);
 
         virtual SDL_Surface *create32BitSurface(int width, int height)
-                                                const A_WARN_UNUSED = 0;
+                                                const A_WARN_UNUSED;
 
         static void setEnableAlpha(const bool n)
         { mEnableAlpha = n; }

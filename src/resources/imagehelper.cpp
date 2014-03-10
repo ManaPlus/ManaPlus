@@ -25,6 +25,8 @@
 #include "logger.h"
 #include "main.h"
 
+#include "resources/dye.h"
+
 #include "utils/sdlcheckutils.h"
 
 #include <SDL_image.h>
@@ -49,6 +51,68 @@ Image *ImageHelper::load(SDL_RWops *const rw) const
     Image *const image = load(tmpImage);
 
     MSDL_FreeSurface(tmpImage);
+    return image;
+}
+
+Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
+{
+    SDL_Surface *const tmpImage = loadPng(rw);
+    if (!tmpImage)
+    {
+        logger->log("Error, image load failed: %s", IMG_GetError());
+        return nullptr;
+    }
+
+    SDL_PixelFormat rgba;
+    rgba.palette = nullptr;
+    rgba.BitsPerPixel = 32;
+    rgba.BytesPerPixel = 4;
+
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+    rgba.Rmask = 0x000000FF;
+    rgba.Gmask = 0x0000FF00;
+    rgba.Bmask = 0x00FF0000;
+    rgba.Amask = 0xFF000000;
+#else
+    rgba.Rmask = 0xFF000000;
+    rgba.Gmask = 0x00FF0000;
+    rgba.Bmask = 0x0000FF00;
+    rgba.Amask = 0x000000FF;
+#endif
+
+    SDL_Surface *const surf = MSDL_ConvertSurface(
+        tmpImage, &rgba, SDL_SWSURFACE);
+    MSDL_FreeSurface(tmpImage);
+
+    uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
+    const int type = dye.getType();
+
+    switch (type)
+    {
+        case 1:
+        {
+            const DyePalette *const pal = dye.getSPalete();
+            if (pal)
+                pal->replaceSColor(pixels, surf->w * surf->h);
+            break;
+        }
+        case 2:
+        {
+            const DyePalette *const pal = dye.getAPalete();
+            if (pal)
+                pal->replaceAColor(pixels, surf->w * surf->h);
+            break;
+        }
+        case 0:
+        default:
+        {
+            dye.normalDye(pixels, surf->w * surf->h);
+            break;
+        }
+    }
+
+    Image *const image = load(surf);
+    MSDL_FreeSurface(surf);
     return image;
 }
 
@@ -137,4 +201,22 @@ SDL_Surface *ImageHelper::loadPng(SDL_RWops *const rw)
     logger->log("Error, image is not png");
     SDL_RWclose(rw);
     return nullptr;
+}
+
+SDL_Surface *ImageHelper::create32BitSurface(int width, int height) const
+{
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+    const int rmask = 0xff000000;
+    const int gmask = 0x00ff0000;
+    const int bmask = 0x0000ff00;
+    const int amask = 0x000000ff;
+#else
+    const int rmask = 0x000000ff;
+    const int gmask = 0x0000ff00;
+    const int bmask = 0x00ff0000;
+    const int amask = 0xff000000;
+#endif
+
+    return MSDL_CreateRGBSurface(SDL_SWSURFACE,
+        width, height, 32, rmask, gmask, bmask, amask);
 }
