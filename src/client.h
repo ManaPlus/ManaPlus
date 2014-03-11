@@ -438,13 +438,13 @@ private:
     SDL_Surface *mIcon;
 
     std::string mCaption;
+    std::string mOldUpdates;
     FPSmanager mFpsManager;
     Skin *mSkin;
+    float mGuiAlpha;
     int mButtonPadding;
     int mButtonSpacing;
     int mKeyboardHeight;
-    std::string mOldUpdates;
-    float mGuiAlpha;
     bool mLimitFps;
     bool mConfigAutoSaved;
     bool mIsMinimized;
@@ -455,5 +455,6 @@ private:
 
 extern Client *client;
 extern unsigned int mLastHost;
+extern unsigned long mSearchHash;
 
 #endif  // CLIENT_H

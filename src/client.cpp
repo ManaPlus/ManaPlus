@@ -76,6 +76,7 @@
 #include "gui/widgets/desktop.h"
 
 #include "net/chathandler.h"
+#include "net/download.h"
 #include "net/gamehandler.h"
 #include "net/generalhandler.h"
 #include "net/guildhandler.h"
@@ -186,6 +187,7 @@ int serverVersion = 0;
 unsigned int tmwServerVersion = 0;
 int start_time;
 unsigned int mLastHost = 0;
+unsigned long mSearchHash = 0;
 int textures_count = 0;
 
 #ifdef WIN32
@@ -244,13 +246,13 @@ Client::Client(const Options &options) :
     mOldState(STATE_START),
     mIcon(nullptr),
     mCaption(),
+    mOldUpdates(),
     mFpsManager(),
     mSkin(nullptr),
+    mGuiAlpha(1.0F),
     mButtonPadding(1),
     mButtonSpacing(3),
     mKeyboardHeight(0),
-    mOldUpdates(),
-    mGuiAlpha(1.0F),
     mLimitFps(false),
     mConfigAutoSaved(false),
     mIsMinimized(false),
@@ -1301,6 +1303,9 @@ int Client::gameExec()
                     loginData.updateType
                         = serverConfig.getValue("updateType", 1);
 
+                    mSearchHash = Net::Download::adlerBuffer(
+                        const_cast<char*>(mCurrentServer.hostname.c_str()),
+                        mCurrentServer.hostname.size());
                     if (mOptions.username.empty()
                         || mOptions.password.empty())
                     {

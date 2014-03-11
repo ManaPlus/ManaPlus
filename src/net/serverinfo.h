@@ -49,12 +49,11 @@ public:
     std::string name;
     std::string hostname;
     std::string althostname;
-    uint16_t port;
-
     std::string description;
     std::string registerUrl;
     std::string onlineListUrl;
     std::string supportUrl;
+    uint16_t port;
     VersionString version;
 
     bool save;
@@ -64,11 +63,11 @@ public:
         name(),
         hostname(),
         althostname(),
-        port(6901),
         description(),
         registerUrl(),
         onlineListUrl(),
         supportUrl(),
+        port(6901),
         version(),
         save(false)
     {
@@ -80,11 +79,11 @@ public:
         name(info.name),
         hostname(info.hostname),
         althostname(info.althostname),
-        port(info.port),
         description(info.description),
         registerUrl(info.registerUrl),
         onlineListUrl(info.onlineListUrl),
         supportUrl(info.supportUrl),
+        port(info.port),
         version(),
         save(info.save)
     {

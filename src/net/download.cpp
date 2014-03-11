@@ -148,11 +148,11 @@ unsigned long Download::fadler32(FILE *const file)
     return adler;
 }
 
-unsigned long Download::adlerBuffer(char *buffer, int size)
+unsigned long Download::adlerBuffer(char *const buffer, int size)
 {
     unsigned long adler = adler32(0L, Z_NULL, 0);
     return adler32(static_cast<uInt>(adler),
-        reinterpret_cast<Bytef*>(buffer), size);
+        reinterpret_cast<const Bytef*>(buffer), size);
 }
 
 void Download::addHeader(const std::string &header)

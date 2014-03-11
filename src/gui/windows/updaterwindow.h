@@ -198,6 +198,9 @@ private:
         UPDATE_RESOURCES2
     };
 
+    /** The new progress value to be set in the logic method. */
+    float mDownloadProgress;
+
     /** Status of the current download. */
     UpdateDownloadStatus mDownloadStatus;
 
@@ -215,27 +218,12 @@ private:
     /** The new label caption to be set in the logic method. */
     std::string mNewLabelCaption;
 
-    /** The new progress value to be set in the logic method. */
-    float mDownloadProgress;
-
     // The mutex used to guard access to mNewLabelCaption
     // and mDownloadProgress.
     Mutex mDownloadMutex;
 
     /** The Adler32 checksum of the file currently downloading. */
     unsigned long mCurrentChecksum;
-
-    /** A flag to indicate whether to use a memory buffer or a regular file. */
-    bool mStoreInMemory;
-
-    /** Flag that show if current download is complete. */
-    bool mDownloadComplete;
-
-    /** Flag that show if the user has canceled the update. */
-    bool mUserCancel;
-
-    /** Byte count currently downloaded in mMemoryBuffer. */
-    int mDownloadedBytes;
 
     /** Buffer for files downloaded to memory. */
     char *mMemoryBuffer;
@@ -249,17 +237,6 @@ private:
     /** List of temp files to download. */
     std::vector<UpdateFile> mTempUpdateFiles;
 
-    /** Index of the file to be downloaded. */
-    unsigned int mUpdateIndex;
-
-    /** Index offset for disaplay downloaded file. */
-    unsigned int mUpdateIndexOffset;
-
-    /** Tells ~UpdaterWindow() if it should load updates */
-    bool mLoadUpdates;
-
-    int mUpdateType;
-
     Label *mLabel;           /**< Progress bar caption. */
     Button *mCancelButton;        /**< Button to stop the update process. */
     Button *mPlayButton;          /**< Button to start playing. */
@@ -267,6 +244,29 @@ private:
     BrowserBox *mBrowserBox;      /**< Box to display news. */
     ScrollArea *mScrollArea;      /**< Used to scroll news box. */
     std::string mUpdateServerPath;
+
+    /** Byte count currently downloaded in mMemoryBuffer. */
+    int mDownloadedBytes;
+
+    /** Index of the file to be downloaded. */
+    unsigned int mUpdateIndex;
+
+    /** Index offset for disaplay downloaded file. */
+    unsigned int mUpdateIndexOffset;
+
+    int mUpdateType;
+
+    /** A flag to indicate whether to use a memory buffer or a regular file. */
+    bool mStoreInMemory;
+
+    /** Flag that show if current download is complete. */
+    bool mDownloadComplete;
+
+    /** Flag that show if the user has canceled the update. */
+    bool mUserCancel;
+
+    /** Tells ~UpdaterWindow() if it should load updates */
+    bool mLoadUpdates;
 };
 
 #endif  // GUI_WINDOWS_UPDATERWINDOW_H

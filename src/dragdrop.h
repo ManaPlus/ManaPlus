@@ -54,14 +54,14 @@ class DragDrop final
 {
     public:
         DragDrop(Item *const item, const DragDropSource source) :
-            mItem(item ? item->getId() : 0),
-            mItemColor(item ? item->getColor() : 1),
             mItemImage(item ? item->getImage() : nullptr),
-            mSelItem(0),
-            mSelItemColor(1),
-            mSource(source),
             mText(),
-            mTag(-1)
+            mSource(source),
+            mItem(item ? item->getId() : 0),
+            mSelItem(0),
+            mTag(-1),
+            mItemColor(item ? item->getColor() : 1),
+            mSelItemColor(1)
         {
             if (mItemImage)
                 mItemImage->incRef();
@@ -250,14 +250,14 @@ class DragDrop final
         }
 
     private:
-        int mItem;
-        uint8_t mItemColor;
         Image *mItemImage;
-        int mSelItem;
-        uint8_t mSelItemColor;
-        DragDropSource mSource;
         std::string mText;
+        DragDropSource mSource;
+        int mItem;
+        int mSelItem;
         int mTag;
+        uint8_t mItemColor;
+        uint8_t mSelItemColor;
 };
 
 extern DragDrop dragDrop;
