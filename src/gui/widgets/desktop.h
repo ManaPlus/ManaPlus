@@ -24,12 +24,14 @@
 
 #include "gui/widgets/container.h"
 
+#include "gui/widgets/linkhandler.h"
+
 #include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
 
+class BrowserBox;
 class Image;
-class Label;
 class Skin;
 
 /**
@@ -46,7 +48,8 @@ class Skin;
  * \ingroup GUI
  */
 class Desktop final : public Container,
-                      private WidgetListener
+                      public LinkHandler,
+                      public WidgetListener
 {
     public:
         explicit Desktop(const Widget2 *const widget);
@@ -66,11 +69,13 @@ class Desktop final : public Container,
 
         void postInit();
 
+        void handleLink(const std::string &link,
+                        MouseEvent *event) override final;
     private:
         void setBestFittingWallpaper();
 
         Image *mWallpaper;
-        Label *mVersionLabel;
+        BrowserBox *mVersionLabel;
         Skin *mSkin;
         Color mBackgroundColor;
         Color mBackgroundGrayColor;

@@ -24,7 +24,9 @@
 #include "configuration.h"
 #include "main.h"
 
-#include "gui/widgets/label.h"
+#include "gui/widgets/browserbox.h"
+
+#include "input/inputmanager.h"
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
@@ -35,9 +37,11 @@
 
 Desktop::Desktop(const Widget2 *const widget) :
     Container(widget),
+    LinkHandler(),
     WidgetListener(),
     mWallpaper(nullptr),
-    mVersionLabel(nullptr),
+    mVersionLabel(new BrowserBox(this, BrowserBox::AUTO_WRAP, true,
+        "browserbox.xml")),
     mSkin(nullptr),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND, 128)),
     mBackgroundGrayColor(getThemeColor(Theme::BACKGROUND_GRAY)),
@@ -57,15 +61,16 @@ Desktop::Desktop(const Widget2 *const widget) :
     const std::string appName = branding.getValue("appName", std::string());
     if (appName.empty())
     {
-        mVersionLabel = new Label(this, FULL_VERSION);
+        mVersionLabel->addRow(FULL_VERSION);
     }
     else
     {
-        mVersionLabel = new Label(this, strprintf("%s (%s)", FULL_VERSION,
+        mVersionLabel->addRow(strprintf("%s (%s)", FULL_VERSION,
             appName.c_str()));
     }
-
-    mVersionLabel->setBackgroundColor(getThemeColor(Theme::BACKGROUND, 128));
+    mVersionLabel->addRow("copyright",
+        "(C) ManaPlus developers, http://manaplus.org");
+    mVersionLabel->setLinkHandler(this);
 }
 
 Desktop::~Desktop()
@@ -100,6 +105,7 @@ void Desktop::reloadWallpaper()
 
 void Desktop::widgetResized(const Event &event A_UNUSED)
 {
+    mVersionLabel->setSize(getWidth(), getHeight());
     setBestFittingWallpaper();
 }
 
@@ -197,4 +203,10 @@ void Desktop::setBestFittingWallpaper()
     {
         logger->log("Couldn't load %s as wallpaper", wallpaperName.c_str());
     }
+}
+
+void Desktop::handleLink(const std::string &link, MouseEvent *event)
+{
+    if (link == "copyright")
+        inputManager.executeAction(Input::KEY_WINDOW_ABOUT);
 }

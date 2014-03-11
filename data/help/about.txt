@@ -11,7 +11,7 @@
  sure this game can't ever run away from you.>>
 
 ##9 Copyright (C) 2012-2014  The ManaPlus Developers
- -> @@team|<<Manaplus Developers>>@@
+ -> @@team|<<Manaplus Developers>>, http://manaplus.org@@
 
 ##9 Copyright (C) 2004-2014  The Mana World Development Team
  -> @@about-tmw|<<About The Mana World>>@@

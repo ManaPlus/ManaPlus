@@ -703,11 +703,11 @@ impHandler0(hideWindows)
     return true;
 }
 
-static bool showHelpPage(const std::string &page)
+static bool showHelpPage(const std::string &page, const bool showHide)
 {
     if (helpWindow)
     {
-        if (helpWindow->isWindowVisible())
+        if (showHide && helpWindow->isWindowVisible())
         {
             helpWindow->setVisible(false);
         }
@@ -723,12 +723,12 @@ static bool showHelpPage(const std::string &page)
 
 impHandler0(helpWindowShow)
 {
-    return showHelpPage("index");
+    return showHelpPage("index", true);
 }
 
 impHandler0(aboutWindowShow)
 {
-    return showHelpPage("about");
+    return showHelpPage("about", false);
 }
 
 static void showHideWindow(Window *const window)

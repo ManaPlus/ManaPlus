@@ -1,5 +1,6 @@
 .<- @@index|<<Back to Index>>@@
 
+@@http://manaplus.org/|<<Official site:>> http://manaplus.org@@
 
 ##3---------------------------
 ##3-- <<ManaPlus Contributors>> --
