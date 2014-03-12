@@ -3,6 +3,7 @@ SUBDIRS = tips
 helpdir = $(pkgdatadir)/data/help
 
 help_DATA =				\
+	about-tmw.txt		\
 	about.txt			\
 	chatcommands.txt	\
 	chatguild.txt	\

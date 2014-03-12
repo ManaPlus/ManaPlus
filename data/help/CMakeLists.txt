@@ -1,5 +1,6 @@
 SET(FILES
     about.txt
+    about-tmw.txt
     chatcommands.txt
     chatguild.txt
     chatparty.txt
