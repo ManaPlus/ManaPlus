@@ -57,10 +57,6 @@ MiniStatusWindow::MiniStatusWindow() :
     mBars(),
     mBarNames(),
     mIcons(),
-    mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
-    mIconPadding(mSkin ? mSkin->getOption("iconPadding", 3) : 3),
-    mIconSpacing(mSkin ? mSkin->getOption("iconSpacing", 2) : 2),
-    mMaxX(0),
     // TRANSLATORS: status bar name
     mHpBar(createBar(0, 100, 0, Theme::HP_BAR, Theme::PROG_HP,
         "hpprogressbar.xml", "hpprogressbar_fill.xml",
@@ -105,7 +101,11 @@ MiniStatusWindow::MiniStatusWindow() :
         // TRANSLATORS: status bar name
         "status bar", _("status bar"))),
     mTextPopup(new TextPopup),
-    mStatusPopup(new StatusPopup)
+    mStatusPopup(new StatusPopup),
+    mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
+    mIconPadding(mSkin ? mSkin->getOption("iconPadding", 3) : 3),
+    mIconSpacing(mSkin ? mSkin->getOption("iconSpacing", 2) : 2),
+    mMaxX(0)
 {
     mTextPopup->postInit();
     mStatusPopup->postInit();

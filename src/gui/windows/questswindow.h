@@ -85,6 +85,8 @@ class QuestsWindow final : public Window,
         BrowserBox *mText;
         ScrollArea *mTextScrollArea;
         Button *mCloseButton;
+        Image *mCompleteIcon;
+        Image *mIncompleteIcon;
         // quest variables: var, value
         std::map<int, int> mVars;
         // quests: var, quests
@@ -94,8 +96,6 @@ class QuestsWindow final : public Window,
         // npc effects for current map and values: npc, effect
         NpcQuestEffectMap mNpcEffects;
         std::vector<QuestItem*> mQuestLinks;
-        Image *mCompleteIcon;
-        Image *mIncompleteIcon;
         int mNewQuestEffectId;
         int mCompleteQuestEffectId;
         const Map *mMap;

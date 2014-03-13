@@ -1255,10 +1255,10 @@ SocialWindow::SocialWindow() :
     mGuildAcceptDialog(nullptr),
     mGuildCreateDialog(nullptr),
     mPartyInviter(),
-    mPartyAcceptDialog(nullptr),
-    mPartyCreateDialog(nullptr),
     mGuilds(),
     mParties(),
+    mPartyAcceptDialog(nullptr),
+    mPartyCreateDialog(nullptr),
     mAttackFilter(nullptr),
     mPickupFilter(nullptr),
     // TRANSLATORS: here P is title for visible players tab in social window

@@ -147,6 +147,7 @@ class ShopWindow final : public Window,
 
         ShopItems *mBuyShopItems;
         ShopItems *mSellShopItems;
+        ShopItem *mTradeItem;
 
         ShopListBox *mBuyShopItemList;
         ShopListBox *mSellShopItemList;
@@ -163,15 +164,13 @@ class ShopWindow final : public Window,
         Button *mSellAnnounceButton;
         Button *mSellAuctionButton;
         CheckBox *mAnnounceLinks;
-
+        std::string mAcceptPlayer;
+        std::string mTradeNick;
         int mSelectedItem;
         int mAnnonceTime;
         int mLastRequestTimeList;
         int mLastRequestTimeItem;
         int mRandCounter;
-        std::string mAcceptPlayer;
-        ShopItem *mTradeItem;
-        std::string mTradeNick;
         int mTradeMoney;
         int mAnnounceCounter[2];
 };

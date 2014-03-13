@@ -61,9 +61,9 @@ SetupWindow::SetupWindow() :
     Window(_("Setup"), false, nullptr, "setup.xml"),
     ActionListener(),
     mTabs(),
-    mModsTab(nullptr),
     mWindowsToReset(),
     mButtons(),
+    mModsTab(nullptr),
     mResetWindows(nullptr),
     mPanel(new TabbedArea(this)),
     mVersion(new Label(this, FULL_VERSION))

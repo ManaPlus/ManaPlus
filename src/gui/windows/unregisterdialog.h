@@ -61,12 +61,9 @@ class UnRegisterDialog final : public Window,
 
     private:
         LoginData *mLoginData;
-
         TextField *mPasswordField;
-
         Button *mUnRegisterButton;
         Button *mCancelButton;
-
         WrongDataNoticeListener *mWrongDataNoticeListener;
 };
 

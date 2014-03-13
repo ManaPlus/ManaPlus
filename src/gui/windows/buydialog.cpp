@@ -162,9 +162,13 @@ BuyDialog::BuyDialog() :
     Window(_("Create items"), false, nullptr, "buy.xml"),
     ActionListener(),
     SelectionListener(),
-    mNpcId(-2), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(),
+    mNpcId(-2),
     mSortModel(nullptr),
-    mSortDropDown(nullptr)
+    mSortDropDown(nullptr),
+    mMoney(0),
+    mAmountItems(0),
+    mMaxItems(0),
+    mNick()
 {
     init();
 }
@@ -174,9 +178,13 @@ BuyDialog::BuyDialog(const int npcId) :
     Window(_("Buy"), false, nullptr, "buy.xml"),
     ActionListener(),
     SelectionListener(),
-    mNpcId(npcId), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(),
+    mNpcId(npcId),
     mSortModel(nullptr),
-    mSortDropDown(nullptr)
+    mSortDropDown(nullptr),
+    mMoney(0),
+    mAmountItems(0),
+    mMaxItems(0),
+    mNick()
 {
     init();
 }
@@ -186,7 +194,11 @@ BuyDialog::BuyDialog(std::string nick) :
     Window(_("Buy"), false, nullptr, "buy.xml"),
     ActionListener(),
     SelectionListener(),
-    mNpcId(-1), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(nick),
+    mNpcId(-1),
+    mMoney(0),
+    mAmountItems(0),
+    mMaxItems(0),
+    mNick(nick),
     mSortModel(new SortListModelBuy),
     mSortDropDown(new DropDown(this, mSortModel, false, false, this, "sort"))
 {

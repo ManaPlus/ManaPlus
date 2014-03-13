@@ -80,13 +80,13 @@ TradeWindow::TradeWindow():
     // TRANSLATORS: trade window money change button
     mMoneyChangeButton(new Button(this, _("Change"), "money", this)),
     mMoneyField(new TextField(this)),
-    mStatus(PROPOSING),
     mAutoAddItem(nullptr),
     mAutoAddToNick(""),
     mGotMoney(0),
     mGotMaxMoney(0),
     mAutoMoney(0),
     mAutoAddAmount(0),
+    mStatus(PROPOSING),
     mOkOther(false),
     mOkMe(false)
 {

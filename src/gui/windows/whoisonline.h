@@ -189,17 +189,10 @@ private:
         UPDATE_LIST
     };
 
+    time_t mUpdateTimer;
+
     /** A thread that use libcurl to download updates. */
     SDL_Thread *mThread;
-
-    /** Status of the current download. */
-    DownloadStatus mDownloadStatus;
-
-    /** Flag that show if current download is complete. */
-    bool mDownloadComplete;
-
-    /** Byte count currently downloaded in mMemoryBuffer. */
-    int mDownloadedBytes;
 
     /** Buffer for files downloaded to memory. */
     char *mMemoryBuffer;
@@ -209,7 +202,6 @@ private:
 
     BrowserBox *mBrowserBox;
     ScrollArea *mScrollArea;
-    time_t mUpdateTimer;
     std::set<OnlinePlayer*> mOnlinePlayers;
     std::set<std::string> mOnlineNicks;
 
@@ -218,6 +210,15 @@ private:
     std::vector<OnlinePlayer*> mNeutral;
     std::vector<OnlinePlayer*> mDisregard;
     std::vector<OnlinePlayer*> mEnemy;
+
+    /** Byte count currently downloaded in mMemoryBuffer. */
+    int mDownloadedBytes;
+
+    /** Status of the current download. */
+    DownloadStatus mDownloadStatus;
+
+    /** Flag that show if current download is complete. */
+    bool mDownloadComplete;
     bool mAllowUpdate;
     bool mShowLevel;
     bool mUpdateOnlineList;

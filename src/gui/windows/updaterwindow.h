@@ -201,9 +201,6 @@ private:
     /** The new progress value to be set in the logic method. */
     float mDownloadProgress;
 
-    /** Status of the current download. */
-    UpdateDownloadStatus mDownloadStatus;
-
     /** Host where we get the updated files. */
     std::string mUpdateHost;
 
@@ -237,13 +234,17 @@ private:
     /** List of temp files to download. */
     std::vector<UpdateFile> mTempUpdateFiles;
 
+    std::string mUpdateServerPath;
+
     Label *mLabel;           /**< Progress bar caption. */
     Button *mCancelButton;        /**< Button to stop the update process. */
     Button *mPlayButton;          /**< Button to start playing. */
     ProgressBar *mProgressBar;    /**< Update progress bar. */
     BrowserBox *mBrowserBox;      /**< Box to display news. */
     ScrollArea *mScrollArea;      /**< Used to scroll news box. */
-    std::string mUpdateServerPath;
+
+    /** Status of the current download. */
+    UpdateDownloadStatus mDownloadStatus;
 
     /** Byte count currently downloaded in mMemoryBuffer. */
     int mDownloadedBytes;

@@ -114,11 +114,6 @@ class MiniStatusWindow final : public Popup,
         std::map <std::string, ProgressBar*> mBarNames;
         std::vector<AnimatedSprite *> mIcons;
 
-        int mSpacing;
-        int mIconPadding;
-        int mIconSpacing;
-        int mMaxX;
-
         /*
          * Mini Status Bars
          */
@@ -133,6 +128,11 @@ class MiniStatusWindow final : public Popup,
         ProgressBar *mStatusBar;
         TextPopup *mTextPopup;
         StatusPopup *mStatusPopup;
+
+        int mSpacing;
+        int mIconPadding;
+        int mIconSpacing;
+        int mMaxX;
 };
 
 extern MiniStatusWindow *miniStatusWindow;

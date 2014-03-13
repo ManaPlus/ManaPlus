@@ -52,9 +52,9 @@ Minimap::Minimap() :
     mWidthProportion(0.5),
     mHeightProportion(0.5),
     mMapImage(nullptr),
+    mTextPopup(new TextPopup),
     mMapOriginX(0),
     mMapOriginY(0),
-    mTextPopup(new TextPopup),
     mCustomMapImage(false),
     mAutoResize(config.getBoolValue("autoresizeminimaps"))
 {

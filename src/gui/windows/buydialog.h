@@ -136,8 +136,6 @@ class BuyDialog final : public Window,
         typedef std::list<BuyDialog*> DialogList;
         static DialogList instances;
 
-        int mNpcId;
-
         Button *mBuyButton;
         Button *mQuitButton;
         Button *mAddMaxButton;
@@ -150,15 +148,15 @@ class BuyDialog final : public Window,
         Slider *mSlider;
         Label *mAmountLabel;
         IntTextField *mAmountField;
-
         ShopItems *mShopItems;
+        SortListModelBuy *mSortModel;
+        DropDown *mSortDropDown;
 
+        int mNpcId;
         int mMoney;
         int mAmountItems;
         int mMaxItems;
         std::string mNick;
-        SortListModelBuy *mSortModel;
-        DropDown *mSortDropDown;
 };
 
 #endif  // GUI_WINDOWS_BUYDIALOG_H

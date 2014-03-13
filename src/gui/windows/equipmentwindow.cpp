@@ -64,25 +64,25 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
         "equipment_selectedplayerbox.xml")),
     // TRANSLATORS: equipment window button
     mUnequip(new Button(this, _("Unequip"), "unequip", this)),
-    mSelected(-1),
-    mForing(foring),
     mImageSet(nullptr),
     mBeing(being),
+    mSlotBackground(),
+    mSlotHighlightedBackground(),
+    mVertexes(new ImageCollection),
     mBoxes(),
     mHighlightColor(getThemeColor(Theme::HIGHLIGHT)),
     mBorderColor(getThemeColor(Theme::BORDER)),
     mLabelsColor(getThemeColor(Theme::LABEL)),
     mLabelsColor2(getThemeColor(Theme::LABEL_OUTLINE)),
-    mSlotBackground(),
-    mSlotHighlightedBackground(),
-    mVertexes(new ImageCollection),
+    mSelected(-1),
     mItemPadding(getOption("itemPadding")),
     mBoxSize(getOption("boxSize")),
     mButtonPadding(getOption("buttonPadding", 5)),
     mMinX(180),
     mMinY(345),
     mMaxX(0),
-    mMaxY(0)
+    mMaxY(0),
+    mForing(foring)
 {
     mItemPopup->postInit();
     if (setupWindow)

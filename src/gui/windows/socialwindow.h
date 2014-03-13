@@ -138,22 +138,20 @@ public:
 
 protected:
     friend class SocialTab;
+    typedef std::map<Guild*, SocialTab*> GuildMap;
+    typedef std::map<Party*, SocialTab*> PartyMap;
 
     void updateButtons();
 
     int mGuildInvited;
     ConfirmDialog *mGuildAcceptDialog;
     TextDialog *mGuildCreateDialog;
-
     std::string mPartyInviter;
+    GuildMap mGuilds;
+    PartyMap mParties;
+
     ConfirmDialog *mPartyAcceptDialog;
     TextDialog *mPartyCreateDialog;
-
-    typedef std::map<Guild*, SocialTab*> GuildMap;
-    GuildMap mGuilds;
-
-    typedef std::map<Party*, SocialTab*> PartyMap;
-    PartyMap mParties;
 
     SocialTab *mAttackFilter;
     SocialTab *mPickupFilter;

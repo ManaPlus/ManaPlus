@@ -78,6 +78,7 @@ ShopWindow::ShopWindow():
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mBuyShopItems(new ShopItems),
     mSellShopItems(new ShopItems),
+    mTradeItem(nullptr),
     mBuyShopItemList(new ShopListBox(this, mBuyShopItems, mBuyShopItems)),
     mSellShopItemList(new ShopListBox(this, mSellShopItems, mSellShopItems)),
     mBuyScrollArea(new ScrollArea(this, mBuyShopItemList,
@@ -106,14 +107,13 @@ ShopWindow::ShopWindow():
     // TRANSLATORS: shop window checkbox
     mAnnounceLinks(new CheckBox(this, _("Show links in announce"), false,
         this, "link announce")),
+    mAcceptPlayer(""),
+    mTradeNick(""),
     mSelectedItem(-1),
     mAnnonceTime(0),
     mLastRequestTimeList(0),
     mLastRequestTimeItem(0),
     mRandCounter(0),
-    mAcceptPlayer(""),
-    mTradeItem(nullptr),
-    mTradeNick(""),
     mTradeMoney(0)
 {
     mBuyShopItemList->postInit();

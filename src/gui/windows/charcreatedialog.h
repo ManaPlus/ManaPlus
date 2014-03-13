@@ -136,32 +136,32 @@ class CharCreateDialog final : public Window,
         std::vector<Label*> mAttributeValue;
         Label *mAttributesLeft;
 
-        int mMaxPoints;
-        int mUsedPoints;
-
         Button *mCreateButton;
         Button *mCancelButton;
+
+        Being *mPlayer;
+        PlayerBox *mPlayerBox;
+
+        int mMaxPoints;
+        int mUsedPoints;
 
         int mRace;
         int mLook;
         int mMinLook;
         int mMaxLook;
 
-        Being *mPlayer;
-        PlayerBox *mPlayerBox;
-
         int mHairStyle;
         int mHairColor;
 
         int mSlot;
 
-        unsigned maxHairColor;
-        unsigned minHairColor;
-        unsigned maxHairStyle;
-        unsigned minHairStyle;
+        unsigned int maxHairColor;
+        unsigned int minHairColor;
+        unsigned int maxHairStyle;
+        unsigned int minHairStyle;
 
-        unsigned mAction;
-        unsigned mDirection;
+        unsigned int mAction;
+        unsigned int mDirection;
 };
 
 #endif  // GUI_WINDOWS_CHARCREATEDIALOG_H

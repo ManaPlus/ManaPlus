@@ -67,10 +67,9 @@ class NpcPostDialog final : public Window,
         typedef std::list<NpcPostDialog*> DialogList;
         static DialogList instances;
 
-        int mNpcId;
-
         TextBox *mText;
         TextField *mSender;
+        int mNpcId;
 };
 
 #endif  // GUI_WINDOWS_NPCPOSTDIALOG_H

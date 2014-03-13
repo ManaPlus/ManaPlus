@@ -131,18 +131,17 @@ class EquipmentWindow final : public Window,
         PlayerBox *mPlayerBox;
         Button *mUnequip;
 
-        int mSelected; /**< Index of selected item. */
-        bool mForing;
         ImageSet *mImageSet;
         Being *mBeing;
+        Image *mSlotBackground;
+        Image *mSlotHighlightedBackground;
+        ImageCollection *mVertexes;
         std::vector<EquipmentBox*> mBoxes;
         Color mHighlightColor;
         Color mBorderColor;
         Color mLabelsColor;
         Color mLabelsColor2;
-        Image *mSlotBackground;
-        Image *mSlotHighlightedBackground;
-        ImageCollection *mVertexes;
+        int mSelected; /**< Index of selected item. */
         int mItemPadding;
         int mBoxSize;
         int mButtonPadding;
@@ -150,6 +149,7 @@ class EquipmentWindow final : public Window,
         int mMinY;
         int mMaxX;
         int mMaxY;
+        bool mForing;
 };
 
 extern EquipmentWindow *equipmentWindow;

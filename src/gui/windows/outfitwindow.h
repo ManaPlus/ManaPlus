@@ -94,19 +94,22 @@ class OutfitWindow final : public Window,
         void clearCurrentOutfit();
 
     private:
+        int getIndexFromGrid(const int pointX,
+                             const int pointY) const A_WARN_UNUSED;
+        void save() const;
+
         Button *mPreviousButton;
         Button *mNextButton;
         Button *mEquipButtom;
         Label *mCurrentLabel;
         CheckBox *mUnequipCheck;
         CheckBox *mAwayOutfitCheck;
-        int mCurrentOutfit;
         Label *mKeyLabel;
 
-        int getIndexFromGrid(const int pointX,
-                             const int pointY) const A_WARN_UNUSED;
-        void save() const;
+        Color mBorderColor;
+        Color mBackgroundColor;
 
+        int mCurrentOutfit;
         int mBoxWidth;
         int mBoxHeight;
         int mGridWidth;
@@ -115,8 +118,6 @@ class OutfitWindow final : public Window,
         int mItems[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
         int mAwayOutfit;
 
-        Color mBorderColor;
-        Color mBackgroundColor;
         unsigned char mItemColors[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
         bool mItemClicked;
         bool mItemsUnequip[OUTFITS_COUNT];

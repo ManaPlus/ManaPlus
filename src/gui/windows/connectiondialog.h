@@ -56,9 +56,9 @@ class ConnectionDialog final : public Window,
          * Called when the user presses Cancel. Restores the global state to
          * the previous one.
          */
-        void action(const ActionEvent &) override;
+        void action(const ActionEvent &) override final;
 
-        void draw(Graphics *graphics) override;
+        void draw(Graphics *graphics) override final;
 
     private:
         State mCancelState;

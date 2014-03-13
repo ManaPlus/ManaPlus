@@ -104,24 +104,19 @@ class ItemAmountWindow final : public Window,
         Label *mGPLabel;
         Item *mItem;
         Icon *mItemIcon;
-
-        int mMax;
-        Usage mUsage;
         ItemPopup *mItemPopup;
 
         /**
          * Item Amount buttons.
          */
         Slider *mItemAmountSlide;
-
         Slider *mItemPriceSlide;
-
         DropDown *mItemDropDown;
-
         ItemsModal *mItemsModal;
 
         int mPrice;
-
+        int mMax;
+        Usage mUsage;
         bool mEnabledKeyboard;
 };
 

@@ -77,9 +77,9 @@ class SetupWindow final : public Window,
         void unloadModTab();
 
         std::list<SetupTab*> mTabs;
-        SetupTab *mModsTab;
         std::list<Window*> mWindowsToReset;
         std::vector<Button*> mButtons;
+        SetupTab *mModsTab;
         Button *mResetWindows;
         TabbedArea *mPanel;
         Label *mVersion;

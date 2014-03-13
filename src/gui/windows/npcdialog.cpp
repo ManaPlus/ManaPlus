@@ -115,12 +115,12 @@ NpcDialog::NpcDialog(const int npcId) :
         getOptionBool("showitemsbackground"), "npc_listbackground.xml")),
     mInputState(NPC_INPUT_NONE),
     mActionState(NPC_ACTION_WAIT),
+    mPlayerBox(new PlayerBox(nullptr)),
+    mAvatarBeing(nullptr),
     mLastNextTime(0),
     mCameraMode(-1),
     mCameraX(0),
     mCameraY(0),
-    mPlayerBox(new PlayerBox(nullptr)),
-    mAvatarBeing(nullptr),
     mShowAvatar(false),
     mLogInteraction(config.getBoolValue("logNpcInGui"))
 {

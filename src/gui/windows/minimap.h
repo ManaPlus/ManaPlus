@@ -76,9 +76,9 @@ class Minimap final : public Window, public ConfigListener
         float mWidthProportion;
         float mHeightProportion;
         Image *mMapImage;
+        TextPopup *mTextPopup;
         int mMapOriginX;
         int mMapOriginY;
-        TextPopup *mTextPopup;
         bool mCustomMapImage;
         bool mAutoResize;
         static bool mShow;

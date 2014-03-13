@@ -41,10 +41,6 @@ KillStats::KillStats() :
     // TRANSLATORS: kill stats window name
     Window(_("Kill stats"), false, nullptr, "killstats.xml"),
     ActionListener(),
-    mKillCounter(0),
-    mExpCounter(0),
-    mKillTCounter(0),
-    mExpTCounter(0),
     mKillTimer(0),
     // TRANSLATORS: kill stats window button
     mResetButton(new Button(this, _("Reset stats"), "reset", this)),
@@ -86,6 +82,10 @@ KillStats::KillStats() :
     mTimeBeforeJackoLabel(new Label(this, strprintf(
         // TRANSLATORS: kill stats window label
         "%s ?", _("Time before jacko spawn:")))),
+    mKillCounter(0),
+    mExpCounter(0),
+    mKillTCounter(0),
+    mExpTCounter(0),
     m1minExpTime(0),
     m1minExpNum(0),
     m1minSpeed(0),

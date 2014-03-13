@@ -122,7 +122,7 @@ class SellDialog final : public Window,
          */
         void updateButtonsAndLabels();
 
-        int mNpcId;
+        std::string mNick;
 
         Button *mSellButton;
         Button *mQuitButton;
@@ -134,14 +134,12 @@ class SellDialog final : public Window,
         Label *mMoneyLabel;
         Label *mQuantityLabel;
         Slider *mSlider;
-
         ShopItems *mShopItems;
-        int mPlayerMoney;
 
+        int mNpcId;
+        int mPlayerMoney;
         int mMaxItems;
         int mAmountItems;
-
-        std::string mNick;
 };
 
 #endif  // GUI_WINDOWS_SELLDIALOG_H

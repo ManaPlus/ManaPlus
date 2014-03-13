@@ -66,18 +66,18 @@ OutfitWindow::OutfitWindow():
     // TRANSLATORS: outfits window checkbox
     mAwayOutfitCheck(new CheckBox(this, _("Away outfit"),
         serverConfig.getValue("OutfitAwayIndex", OUTFITS_COUNT - 1))),
-    mCurrentOutfit(0),
     // TRANSLATORS: outfits window label
     mKeyLabel(new Label(this, strprintf(_("Key: %s"),
         keyName(mCurrentOutfit).c_str()))),
+    mBorderColor(getThemeColor(Theme::BORDER, 64)),
+    mBackgroundColor(getThemeColor(Theme::BACKGROUND, 32)),
+    mCurrentOutfit(0),
     mBoxWidth(33),
     mBoxHeight(33),
     mGridWidth(4),
     mGridHeight(4),
     mItems(),
     mAwayOutfit(0),
-    mBorderColor(getThemeColor(Theme::BORDER, 64)),
-    mBackgroundColor(getThemeColor(Theme::BACKGROUND, 32)),
     mItemColors(),
     mItemClicked(false),
     mItemsUnequip()

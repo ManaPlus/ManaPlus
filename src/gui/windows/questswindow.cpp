@@ -122,14 +122,14 @@ QuestsWindow::QuestsWindow() :
         getOptionBool("showtextbackground"), "quests_text_background.xml")),
     // TRANSLATORS: quests window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
+    mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml", "")),
+    mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml", "")),
     mVars(),
     mQuests(),
     mAllEffects(),
     mMapEffects(),
     mNpcEffects(),
     mQuestLinks(),
-    mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml", "")),
-    mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml", "")),
     mNewQuestEffectId(paths.getIntValue("newQuestEffectId")),
     mCompleteQuestEffectId(paths.getIntValue("completeQuestEffectId")),
     mMap(nullptr)

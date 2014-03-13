@@ -79,16 +79,13 @@ class NameFunctuator final
 WhoIsOnline::WhoIsOnline() :
     // TRANSLATORS: who is online window name
     Window(_("Who Is Online - Updating"), false, nullptr, "whoisonline.xml"),
+    mUpdateTimer(0),
     mThread(nullptr),
-    mDownloadStatus(UPDATE_LIST),
-    mDownloadComplete(true),
-    mDownloadedBytes(0),
     mMemoryBuffer(nullptr),
     mCurlError(new char[CURL_ERROR_SIZE]),
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
         "onlinebrowserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox, false)),
-    mUpdateTimer(0),
     mOnlinePlayers(),
     mOnlineNicks(),
     // TRANSLATORS: who is online. button.
@@ -97,6 +94,9 @@ WhoIsOnline::WhoIsOnline() :
     mNeutral(),
     mDisregard(),
     mEnemy(),
+    mDownloadedBytes(0),
+    mDownloadStatus(UPDATE_LIST),
+    mDownloadComplete(true),
     mAllowUpdate(true),
     mShowLevel(false),
     mUpdateOnlineList(config.getBoolValue("updateOnlineList")),

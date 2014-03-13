@@ -56,7 +56,11 @@ SellDialog::SellDialog(const int npcId) :
     Window(_("Sell"), false, nullptr, "sell.xml"),
     ActionListener(),
     SelectionListener(),
-    mNpcId(npcId), mMaxItems(0), mAmountItems(0), mNick("")
+    mNick(""),
+    mNpcId(npcId),
+    mPlayerMoney(0),
+    mMaxItems(0),
+    mAmountItems(0)
 {
     init();
 }
@@ -66,7 +70,11 @@ SellDialog::SellDialog(const std::string &nick):
     Window(_("Sell"), false, nullptr, "sell.xml"),
     ActionListener(),
     SelectionListener(),
-    mNpcId(-1), mMaxItems(0), mAmountItems(0), mNick(nick)
+    mNick(nick),
+    mNpcId(-1),
+    mPlayerMoney(0),
+    mMaxItems(0),
+    mAmountItems(0)
 {
     init();
 }

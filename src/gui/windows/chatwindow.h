@@ -364,19 +364,18 @@ class ChatWindow final : public Window,
         History mCommands;         /**< Command list. */
         History mCustomWords;
 
-        bool mReturnToggles;  // Marks whether <Return> toggles the chat log
-                              // or not
-
         StringVect mTradeFilter;
 
         ColorListModel *mColorListModel;
         DropDown *mColorPicker;
         Button *mChatButton;
-        int mChatColor;
-        unsigned int mChatHistoryIndex;
         std::list<std::string> mAwayLog;
         StringVect mHighlights;
         StringVect mGlobalsFilter;
+        int mChatColor;
+        unsigned int mChatHistoryIndex;
+        bool mReturnToggles;  // Marks whether <Return> toggles the chat log
+                              // or not
         bool mGMLoaded;
         bool mHaveMouse;
         bool mAutoHide;

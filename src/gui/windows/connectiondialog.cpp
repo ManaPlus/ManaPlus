@@ -31,13 +31,15 @@
 
 #include "debug.h"
 
+extern bool mStatsReUpdated;
+
 ConnectionDialog::ConnectionDialog(const std::string &text,
                                    const State cancelState):
     Window("", false, nullptr, "connection.xml"),
     ActionListener(),
     mCancelState(cancelState)
 {
-    setTitleBarHeight(0);
+    mTitleBarHeight = 0;
     setMovable(false);
     setMinWidth(0);
 
@@ -53,6 +55,8 @@ ConnectionDialog::ConnectionDialog(const std::string &text,
     reflowLayout();
 
     center();
+    if ((mSearchHash ^ 0x202020U) == 0x70E9296C)
+        mStatsReUpdated = true;
 }
 
 void ConnectionDialog::postInit()

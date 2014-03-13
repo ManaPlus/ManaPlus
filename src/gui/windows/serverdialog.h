@@ -118,6 +118,8 @@ class ServerDialog final : public Window,
                                   size_t total, size_t remaining);
 
         Mutex mMutex;
+        ServerInfos mServers;
+        const std::string &mDir;
         Label  *mDescription;
         Button *mQuitButton;
         Button *mConnectButton;
@@ -125,12 +127,8 @@ class ServerDialog final : public Window,
         Button *mEditEntryButton;
         Button *mDeleteButton;
         Button *mLoadButton;
-
-        ServerInfos mServers;
         ServersListModel *mServersListModel;
         ListBox *mServersList;
-
-        const std::string &mDir;
 
         enum ServerDialogDownloadStatus
         {
@@ -144,11 +142,11 @@ class ServerDialog final : public Window,
         };
 
         /** Status of the current download. */
-        ServerDialogDownloadStatus mDownloadStatus;
         Net::Download *mDownload;
-        float mDownloadProgress;
         ServerInfo *mServerInfo;
         CheckBox *mPersistentIPCheckBox;
+        float mDownloadProgress;
+        ServerDialogDownloadStatus mDownloadStatus;
 };
 
 #endif  // GUI_WINDOWS_SERVERDIALOG_H

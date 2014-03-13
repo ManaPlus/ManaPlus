@@ -68,18 +68,16 @@ class TextCommandEditor final : public Window,
         void deleteCommand();
 
         bool mIsMagicCommand;
-        TextCommand *mCommand;
 
+        TextCommand *mCommand;
         RadioButton *mIsMagic;
         RadioButton *mIsOther;
         Label *mSymbolLabel;
         TextField *mSymbolTextField;
         Label *mCommandLabel;
         TextField *mCommandTextField;
-
         Label *mCommentLabel;
         TextField *mCommentTextField;
-
         TargetTypeModel *mTargetTypeModel;
         Label *mTypeLabel;
         DropDown *mTypeDropDown;

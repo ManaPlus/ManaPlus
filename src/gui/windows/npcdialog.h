@@ -293,12 +293,12 @@ class NpcDialog final : public Window,
 
         NpcInputState mInputState;
         NpcActionState mActionState;
+        PlayerBox *mPlayerBox;
+        Being *mAvatarBeing;
         int mLastNextTime;
         int mCameraMode;
         int mCameraX;
         int mCameraY;
-        PlayerBox *mPlayerBox;
-        Being *mAvatarBeing;
         bool mShowAvatar;
         bool mLogInteraction;
 };
