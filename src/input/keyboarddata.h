@@ -1977,7 +1977,7 @@ static const KeyData keyData[Input::KEY_TOTAL] = {
         COND_ARROWKEYS},
     {"keyGUICtrl",
         INPUT_KEYBOARD, SDLK_LCTRL,
-        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        INPUT_KEYBOARD, SDLK_RCTRL,
         Input::GRP_GUICHAN,
         nullptr,
         Input::KEY_NO_VALUE, 50,
