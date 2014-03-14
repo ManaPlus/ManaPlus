@@ -117,7 +117,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mCreateButton(new Button(this, _("Create"), "create", this)),
     // TRANSLATORS: char create dialog button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
-    mPlayer(new Being(0, ActorSprite::PLAYER, static_cast<uint16_t>(mRace),
+    mPlayer(new Being(0, ActorSprite::PLAYER, static_cast<uint16_t>(0U),
             nullptr)),
     mPlayerBox(new PlayerBox(this, mPlayer, "charcreate_playerbox.xml",
         "charcreate_selectedplayerbox.xml")),

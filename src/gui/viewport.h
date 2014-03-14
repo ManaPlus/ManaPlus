@@ -302,9 +302,9 @@ class Viewport final : public WindowContainer,
 
         bool leftMouseAction();
 
-        bool openContextMenu(MouseEvent &event);
+        bool openContextMenu(const MouseEvent &event);
 
-        void walkByMouse(MouseEvent &event);
+        void walkByMouse(const MouseEvent &event);
 
         /**
          * Make the player go to the mouse position.

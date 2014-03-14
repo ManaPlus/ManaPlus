@@ -36,7 +36,7 @@ public:
     }
 
     void drawRectangle(const Rect &rect,
-                        const bool filled);
+                       const bool filled);
 
     static void dumpSettings();
 

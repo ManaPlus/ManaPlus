@@ -81,7 +81,8 @@ class ImageHelper
 
         static void dumpSurfaceFormat(const SDL_Surface *const image);
 
-        virtual SDL_Surface *create32BitSurface(int width, int height)
+        virtual SDL_Surface *create32BitSurface(int width,
+                                                int height)
                                                 const A_WARN_UNUSED;
 
         static void setEnableAlpha(const bool n)

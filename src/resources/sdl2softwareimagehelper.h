@@ -52,18 +52,6 @@ class SDL2SoftwareImageHelper final : public ImageHelper
         { }
 
         /**
-         * Loads an image from an SDL_RWops structure and recolors it.
-         *
-         * @param rw         The SDL_RWops to load the image from.
-         * @param dye        The dye used to recolor the image.
-         *
-         * @return <code>NULL</code> if an error occurred, a valid pointer
-         *         otherwise.
-         */
-        Image *load(SDL_RWops *const rw,
-                    Dye const &dye) const override final A_WARN_UNUSED;
-
-        /**
          * Loads an image from an SDL surface.
          */
         Image *load(SDL_Surface *const tmpImage) const

@@ -154,7 +154,7 @@ QuestsWindow::QuestsWindow() :
     mText->setLinkHandler(mItemLinkHandler);
     mTextScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mQuestsListBox->setWidth(500);
-    if (gui && gui->getNpcFont()->getHeight() < 20)
+    if (!gui || gui->getNpcFont()->getHeight() < 20)
         mQuestsListBox->setRowHeight(20);
     else
         mQuestsListBox->setRowHeight(gui->getNpcFont()->getHeight());

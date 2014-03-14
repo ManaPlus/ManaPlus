@@ -84,7 +84,7 @@ Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
         tmpImage, &rgba, SDL_SWSURFACE);
     MSDL_FreeSurface(tmpImage);
 
-    uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
+    uint32_t *const pixels = static_cast<uint32_t *const>(surf->pixels);
     const int type = dye.getType();
 
     switch (type)
@@ -203,7 +203,8 @@ SDL_Surface *ImageHelper::loadPng(SDL_RWops *const rw)
     return nullptr;
 }
 
-SDL_Surface *ImageHelper::create32BitSurface(int width, int height) const
+SDL_Surface *ImageHelper::create32BitSurface(int width,
+                                             int height) const
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     const int rmask = 0xff000000;

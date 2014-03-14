@@ -509,7 +509,7 @@ void ScrollArea::calcButton(Graphics *const graphics,
     }
 }
 
-void ScrollArea::drawVBar(Graphics *const graphics)
+void ScrollArea::drawVBar(Graphics *const graphics) const
 {
     const Rect &dim = getVerticalBarDimension();
 
@@ -559,7 +559,7 @@ void ScrollArea::calcVBar(Graphics *const graphics)
     }
 }
 
-void ScrollArea::drawHBar(Graphics *const graphics)
+void ScrollArea::drawHBar(Graphics *const graphics) const
 {
     const Rect &dim = getHorizontalBarDimension();
 

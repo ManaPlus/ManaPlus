@@ -26,12 +26,12 @@ public:
     * image for the inside.
     */
     void drawImageRect(int x, int y,
-                      int w, int h,
-                      const ImageRect &imgRect);
+                       int w, int h,
+                       const ImageRect &imgRect);
 
     bool drawNet(const int x1, const int y1,
-                const int x2, const int y2,
-                const int width, const int height) override final;
+                 const int x2, const int y2,
+                 const int width, const int height) override final;
 
     void _beginDraw();
 
@@ -45,33 +45,33 @@ public:
     * Draws a resclaled version of the image
     */
     bool drawRescaledImage(const Image *const image,
-                          int dstX, int dstY,
-                          const int desiredWidth,
-                          const int desiredHeight) override final;
+                           int dstX, int dstY,
+                           const int desiredWidth,
+                           const int desiredHeight) override final;
 
     void drawPattern(const Image *const image,
-                    const int x, const int y,
-                    const int w, const int h) override final;
+                     const int x, const int y,
+                     const int w, const int h) override final;
 
     void inline drawPatternInline(const Image *const image,
                                   const int x, const int y,
                                   const int w, const int h);
 
     void drawRescaledPattern(const Image *const image,
-                            const int x, const int y,
-                            const int w, const int h,
-                            const int scaledWidth,
-                            const int scaledHeight) override final;
+                             const int x, const int y,
+                             const int w, const int h,
+                             const int scaledWidth,
+                             const int scaledHeight) override final;
 
     void calcPattern(ImageVertexes *const vert,
-                    const Image *const image,
-                    const int x, const int y,
-                    const int w, const int h) const override final;
+                     const Image *const image,
+                     const int x, const int y,
+                     const int w, const int h) const override final;
 
     void calcPattern(ImageCollection *const vert,
-                    const Image *const image,
-                    const int x, const int y,
-                    const int w, const int h) const override final;
+                     const Image *const image,
+                     const int x, const int y,
+                     const int w, const int h) const override final;
 
     void calcTileVertexes(ImageVertexes *const vert,
                           const Image *const image,
@@ -83,7 +83,8 @@ public:
 
     void drawTileVertexes(const ImageVertexes *const vert) override final;
 
-    void drawTileCollection(const ImageCollection *const vertCol) override final;
+    void drawTileCollection(const ImageCollection
+                            *const vertCol) override final;
 
     void updateScreen() override final;
 
@@ -115,22 +116,22 @@ public:
                       const bool noFrame) override final;
 
     bool drawImage(const Image *const image,
-                  int dstX, int dstY) override final;
+                   int dstX, int dstY) override final;
 
     void drawImageCached(const Image *const image,
-                        int x, int y) override final;
+                         int x, int y) override final;
 
     void drawPatternCached(const Image *const image,
-                          const int x, const int y,
-                          const int w, const int h) override final;
+                           const int x, const int y,
+                           const int w, const int h) override final;
 
     void completeCache() override final;
 
 private:
     void inline calcImageRect(ImageVertexes *const vert,
-                                  int x, int y,
-                                  int w, int h,
-                                  const ImageRect &imgRect);
+                              int x, int y,
+                              int w, int h,
+                              const ImageRect &imgRect);
 
     void inline calcPatternInline(ImageVertexes *const vert,
                                   const Image *const image,

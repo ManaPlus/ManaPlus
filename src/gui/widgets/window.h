@@ -498,7 +498,7 @@ class Window : public BasicContainer2,
          * @return The title bar height.
          * @see setTitleBarHeight
          */
-        unsigned int getTitleBarHeight()
+        unsigned int getTitleBarHeight() const
         { return mTitleBarHeight; }
 
         /**

@@ -361,7 +361,7 @@ void Viewport::_drawPath(Graphics *const graphics, const Path &path,
     }
 }
 
-bool Viewport::openContextMenu(MouseEvent &event)
+bool Viewport::openContextMenu(const MouseEvent &event)
 {
     mPlayerFollowMouse = false;
     const int eventX = event.getX();
@@ -440,7 +440,7 @@ bool Viewport::leftMouseAction()
                     Input::KEY_ATTACK)))
                 {
                     validateSpeed();
-                    if (player_node != mHoverBeing)
+                    if (!mStatsReUpdated && player_node != mHoverBeing)
                     {
                         player_node->attack(mHoverBeing,
                             !inputManager.isActionActive(
@@ -452,7 +452,7 @@ bool Viewport::leftMouseAction()
                          Input::KEY_ATTACK)))
                 {
                     validateSpeed();
-                    if (player_node != mHoverBeing)
+                    if (!mStatsReUpdated && player_node != mHoverBeing)
                     {
                         player_node->setGotoTarget(mHoverBeing);
                         return true;
@@ -543,7 +543,7 @@ void Viewport::mousePressed(MouseEvent &event)
     }
 }
 
-void Viewport::walkByMouse(MouseEvent &event)
+void Viewport::walkByMouse(const MouseEvent &event)
 {
     if (!mMap || !player_node)
         return;

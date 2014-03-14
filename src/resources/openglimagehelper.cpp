@@ -290,7 +290,8 @@ void OpenGLImageHelper::initTextureSampler(const GLint id)
     }
 }
 
-SDL_Surface *OpenGLImageHelper::create32BitSurface(int width, int height) const
+SDL_Surface *OpenGLImageHelper::create32BitSurface(int width,
+                                                   int height) const
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     const int rmask = 0xff000000;

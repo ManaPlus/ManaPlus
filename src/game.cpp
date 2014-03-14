@@ -620,6 +620,9 @@ void Game::slowLogic()
     const int time = cur_time;
     if (mTime != time)
     {
+        if (valTest(Updated))
+            mValidSpeed = false;
+
         mTime = time + 1;
         if (botCheckerWindow)
             botCheckerWindow->slowLogic();

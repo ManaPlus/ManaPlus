@@ -1234,7 +1234,7 @@ Widget* Gui::getKeyEventSource()
     return widget;
 }
 
-void Gui::distributeKeyEvent(KeyEvent& keyEvent)
+void Gui::distributeKeyEvent(KeyEvent& keyEvent) const
 {
     Widget* parent = keyEvent.getSource();
     Widget* widget = keyEvent.getSource();
@@ -1437,7 +1437,7 @@ void Gui::handleModalFocusReleased()
     }
 }
 
-int Gui::getMousePressLength()
+int Gui::getMousePressLength() const
 {
     if (!mLastMousePressTimeStamp)
         return 0;

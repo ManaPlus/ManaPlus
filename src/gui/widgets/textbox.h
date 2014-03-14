@@ -255,7 +255,7 @@ class TextBox final : public Widget,
          * @return True if the text box is opaque, false otherwise.
          * @see setOpaque
          */
-        bool isOpaque()
+        bool isOpaque() const
         { return mOpaque; }
 
         /**

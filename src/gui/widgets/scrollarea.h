@@ -446,8 +446,8 @@ class ScrollArea final : public BasicContainer,
 
         void drawButton(Graphics *const graphics, const BUTTON_DIR dir);
         void calcButton(Graphics *const graphics, const BUTTON_DIR dir);
-        void drawVBar(Graphics *const graphics);
-        void drawHBar(Graphics *const graphics);
+        void drawVBar(Graphics *const graphics) const;
+        void drawHBar(Graphics *const graphics) const;
         void drawVMarker(Graphics *const graphics);
         void drawHMarker(Graphics *const graphics);
 

@@ -302,10 +302,10 @@ class Gui final
          */
         void removeGlobalKeyListener(KeyListener *const keyListener);
 
-        bool isLongPress()
+        bool isLongPress() const
         { return getMousePressLength() > 250; }
 
-        int getMousePressLength();
+        int getMousePressLength() const;
 
     protected:
         void handleMouseMoved(const MouseInput &mouseInput);
@@ -368,7 +368,7 @@ class Gui final
 
          * @since 0.6.0
          */
-        void distributeKeyEvent(KeyEvent& keyEvent);
+        void distributeKeyEvent(KeyEvent& keyEvent) const;
 
         /**
          * Distributes a key event to the global key listeners.
