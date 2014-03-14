@@ -64,7 +64,7 @@
     <</neutral NICK - add nick to neutral relation list.>>
     <</blacklist NICK - add nick to blacklist relation list.>>
     <</erase NICK - add nick to erased list.>>
-    <</enemy NICK - add nick to enemyes list.>>
+    <</enemy NICK - add nick to enemies list.>>
     <</createparty NAME - create party with selected name.>>
     <</me text - send text to chat as /me command in irc.>>
     <</serverignoreall - ignore all whispers on server side.>>
