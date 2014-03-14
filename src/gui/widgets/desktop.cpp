@@ -40,7 +40,7 @@ Desktop::Desktop(const Widget2 *const widget) :
     LinkHandler(),
     WidgetListener(),
     mWallpaper(nullptr),
-    mVersionLabel(new BrowserBox(this, BrowserBox::AUTO_WRAP, true,
+    mVersionLabel(new BrowserBox(this, BrowserBox::AUTO_WRAP, false,
         "browserbox.xml")),
     mSkin(nullptr),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND, 128)),
@@ -143,10 +143,6 @@ void Desktop::draw(Graphics *graphics)
         graphics->setColor(mBackgroundGrayColor);
         graphics->fillRectangle(Rect(0, 0, width, height));
     }
-
-    // Draw a thin border under the application version...
-    graphics->setColor(mBackgroundColor);
-    graphics->fillRectangle(Rect(mVersionLabel->getDimension()));
 
     Container::draw(graphics);
     BLOCK_END("Desktop::draw")
