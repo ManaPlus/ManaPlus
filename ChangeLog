@@ -1,3 +1,17 @@
+2014-03-15 New release 1.4.3.15
+fix: selection in equipment window.
+fix: emotes in crazy moves.
+fix: enable download music by default.
+fix: configuration cleanup from old values.
+fix: disbale pet selection by mouse.
+fix: the mana world about page.
+add: ctrl+b for insert bold font.
+add: auto save configuration files.
+add: print server name in screenshots.
+add: about button.
+add: long mouse press action.
+add: right ctrl in ctrl actions.
+
 2014-03-01 New release 1.4.3.1
 fix: crazy moves.
 add: missing help translations.
