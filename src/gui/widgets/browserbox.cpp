@@ -445,6 +445,11 @@ void BrowserBox::mouseMoved(MouseEvent &event)
         ? static_cast<int>(i - mLinks.begin()) : -1;
 }
 
+void BrowserBox::mouseExited(MouseEvent &event)
+{
+    mSelectedLink = -1;
+}
+
 void BrowserBox::draw(Graphics *graphics)
 {
     BLOCK_START("BrowserBox::draw")

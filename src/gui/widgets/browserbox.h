@@ -160,6 +160,8 @@ class BrowserBox final : public Widget,
 
         void mouseMoved(MouseEvent &event) override final;
 
+        void mouseExited(MouseEvent& event) override final;
+
         /**
          * Draws the browser box.
          */
