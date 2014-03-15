@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-02-28 18:14+0000\n"
+"PO-Revision-Date: 2014-03-09 22:58+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/manaplus/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -14,34 +14,600 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "/invite NICK - invite a player to your party."
-msgstr ""
-
 msgid "/uploadserverconfig - upload server config into pastebin service."
-msgstr ""
-
-msgid "\"Switch pvp attack\""
-msgstr ""
-
-msgid "To read about whispering and other chat commands, look here:"
-msgstr "关于私信以及其他聊天命令请看这里："
-
-msgid "/away, /away MSG - set away mode."
-msgstr ""
-
-msgid ""
-"You can select other themes.\n"
-"For this you should open settings and select theme tab\n"
-"and change \"gui theme\""
-msgstr ""
-
-msgid "\"Target & attack\""
 msgstr ""
 
 msgid "/atkhuman - select and attack nearest player."
 msgstr ""
 
-msgid "\"Emote shortcut 11\""
+msgid "\"Outfit shortcut 12\""
+msgstr ""
+
+msgid "/cacheinfo - show text cache info."
+msgstr "/cacheinfo —— 显示文本缓存信息。"
+
+msgid ""
+"You can imitate other players by selecting \"imitation\" in player context menu\n"
+" or type chat command: /imitate playername."
+msgstr "你可以通过在菜单中点击\"模仿\"选项或者在聊天输入框中输入 /imitate 用户昵称来进行模仿."
+
+msgid ""
+" - ##2allow trading##9: Do you wish to allow trade requests from arbitrary\n"
+"   players?"
+msgstr ""
+
+msgid "\"Emote shortcut 9\""
+msgstr ""
+
+msgid "/addignoreattack NAME - add monster to ignore attack list."
+msgstr "/addignoreattact 怪物名称 - 将怪物加入到非攻击列表中"
+
+msgid "Back to Index"
+msgstr "退回到索引"
+
+msgid "\"Quests window\""
+msgstr ""
+
+msgid "\"Quick drop window\""
+msgstr ""
+
+msgid ""
+" You can improve your skills by increasing job level. Each job level\n"
+" gives you 1 point to spend on basic skills."
+msgstr "你可以通过提升工作等级来增强你的技能。每级工作等级给你 1 点用于增强基本技能。"
+
+msgid "\"Emote shortcut 10\""
+msgstr ""
+
+msgid "Content devs"
+msgstr ""
+
+msgid "Guild chat commands"
+msgstr ""
+
+msgid "/away, /away MSG - set away mode."
+msgstr ""
+
+msgid "GM"
+msgstr ""
+
+msgid "/addattack NAME - add monster to attack list."
+msgstr "/addattack 名称 —— 将怪兽加入攻击列表。"
+
+msgid "\"Emote shortcut 2\""
+msgstr ""
+
+msgid "/announce MESSAGE - show global message."
+msgstr ""
+
+msgid "/serverunignoreall - unignore all whispers on server side."
+msgstr "/serverunignoreall —— 在服务器端取消忽视所有私信。"
+
+msgid "/createparty NAME - create party with selected name."
+msgstr "/createparty 名称 —— 创建帮会。"
+
+msgid "/heal NICK - heal nick."
+msgstr "/heal 昵称 —— 治疗昵称"
+
+msgid "\"Select OK\""
+msgstr ""
+
+msgid "/dumpe - dump environment variables into chat."
+msgstr ""
+
+msgid ""
+"If client working very slow, you can improve speed\n"
+"by reading this: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
+msgstr ""
+
+msgid "\"Enable/disable trading\""
+msgstr ""
+
+msgid "/wait NAME - wait for nick or moster with name."
+msgstr ""
+
+msgid "##2Trade:##9 enables the ability to trade with others."
+msgstr ""
+
+msgid "\"Use magic attack\""
+msgstr ""
+
+msgid "\"Who is online window\""
+msgstr ""
+
+msgid "\"Switch pvp attack\""
+msgstr ""
+
+msgid "\"Deactivate chat input\""
+msgstr ""
+
+msgid "\"Move to navigation point\""
+msgstr ""
+
+msgid "ManaPlus Contributors"
+msgstr "ManaPlus 贡献者"
+
+msgid ""
+"The Mana World##0 is a serious effort to create an innovative free\n"
+" and open source MMORPG world. The Mana World uses 2D graphics and aims to be\n"
+" as much diverse and interactive as possible. All content is licensed\n"
+" under the GPL, making sure this game can't ever run away from you."
+msgstr ""
+
+msgid "ABOUT MANAPLUS"
+msgstr "关于 MANAPLUS"
+
+msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
+msgstr ""
+
+msgid "Other contributors"
+msgstr "其他贡献者"
+
+msgid "\"Item shortcuts Key\""
+msgstr ""
+
+msgid ""
+"Communication is often essential to success in this game. You can communicate\n"
+" in several ways:  By chatting and showing emotions (see above), by trading\n"
+" (with the right-click context menu), and by whispering."
+msgstr "在这个游戏中交流通常是成功必需的。你可以通过多种方式交流：通过聊天和使用表情(参考上面)，通过交易(使用右键菜单)，以及使用私信。"
+
+msgid "\"Item shortcut 3\""
+msgstr ""
+
+msgid "\"Change move type\""
+msgstr ""
+
+msgid "Tabs"
+msgstr ""
+
+msgid "\"Outfit shortcut 4\""
+msgstr ""
+
+msgid "\"Did you know window\""
+msgstr ""
+
+msgid ""
+"/mail NICK MSG - send offline message to NICK. Working only in tmw server."
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "/dropn - drop N items from any slot."
+msgstr ""
+
+msgid "/enableaway - enable away messages in current tab."
+msgstr ""
+
+msgid "/enemy NICK - add nick to enemyes list."
+msgstr ""
+
+msgid "Support"
+msgstr "支持"
+
+msgid "\"Copy equiped to Outfit\""
+msgstr ""
+
+msgid "/outfit next - wear next outfit."
+msgstr ""
+
+msgid ""
+"/cleangraphics - remove all cached graphics. Usefull for content developers."
+msgstr ""
+
+msgid "\"Outfit shortcut 3\""
+msgstr ""
+
+msgid "\"Quick drop N items\""
+msgstr ""
+
+msgid ""
+"/msg NICK text, /whisper NICK text, /w NICK text - send whisper message to "
+"nick."
+msgstr ""
+
+msgid "/movetotarget - move to target position."
+msgstr ""
+
+msgid "/outfit prev - wear previous outfit."
+msgstr ""
+
+msgid "##2Party level2:##9 enables a char to create a party."
+msgstr ""
+
+msgid "/target NICK - select nick as target. Can be monster or player nick."
+msgstr ""
+
+msgid "##2ManaPlus version: ##6%VER%"
+msgstr ""
+
+msgid "COMMANDS"
+msgstr "命令"
+
+msgid "For other server look servers pages for support."
+msgstr "对于其它的服务器，请查阅服务器的网页获取支持。"
+
+msgid "\"Toggle chat\""
+msgstr ""
+
+msgid "/talkpet TEXT - talk from your pet."
+msgstr ""
+
+msgid "\"Change attack type\""
+msgstr ""
+
+msgid "Manaplus Developers"
+msgstr "Manaplus 开发者"
+
+msgid "\"On / off audio\""
+msgstr ""
+
+msgid "You can change any key in keyboard settings."
+msgstr ""
+
+msgid "\"Previous chat tab line\""
+msgstr ""
+
+msgid "\"Emote shortcut 13\""
+msgstr ""
+
+msgid "/disregard NICK - add nick to disregarded list."
+msgstr ""
+
+msgid "/enablehighlight - enable highlight in current tab."
+msgstr ""
+
+msgid "/disableaway - disable away messages in current tab."
+msgstr ""
+
+msgid "\"Smilie\""
+msgstr ""
+
+msgid "Main development"
+msgstr ""
+
+msgid ""
+" Left click to execute default action: walk, pick up an item, attack a monster\n"
+" and talk to NPCs (be sure to click on their feet). Right click to show up a\n"
+" context menu. Holding [Left Shift] prevents from walking when attacking."
+msgstr ""
+
+msgid "Search string not found."
+msgstr ""
+
+msgid "\"Emote shortcut 7\""
+msgstr ""
+
+msgid ""
+"You can set any client resolution. In settings in video tab,\n"
+"click on \"custom\" and enter for example: 900x500 and press ok."
+msgstr ""
+
+msgid "/attack - attack target."
+msgstr "/attack - 攻击目标"
+
+msgid "\"Set home location/set arrow\""
+msgstr ""
+
+msgid "\"Set direction left\""
+msgstr ""
+
+msgid "\"Equipment window\""
+msgstr ""
+
+msgid "Mana Contributors"
+msgstr "Mana 贡献者"
+
+msgid "/dumpt - dump tests info into chat."
+msgstr ""
+
+msgid "Different patches"
+msgstr ""
+
+msgid "Sound effects"
+msgstr ""
+
+msgid "\"Talk\""
+msgstr ""
+
+msgid "\"Item shortcut 8\""
+msgstr ""
+
+msgid "/all - show visible beings list in debug tab."
+msgstr "/all —— 将可见之物显于调试页。"
+
+msgid ""
+"Most commands working in whispers.\n"
+"For example command /imitation in whisper with nick1,\n"
+" similar to command /imitation nick1."
+msgstr ""
+
+msgid "\"Ignore input 1\""
+msgstr ""
+
+msgid "\"Item shortcut 6\""
+msgstr ""
+
+msgid ""
+" If you're having troubles, please first of all read the FAQ. If you\n"
+" can't find a solution to your problem, feel free to check our\n"
+" Bugs/Support section of the forum:"
+msgstr ""
+
+msgid "/help - show this help."
+msgstr ""
+
+msgid "\"Outfit shortcut 7\""
+msgstr ""
+
+msgid "/addpriorityattack NAME - add monster to priority attack list."
+msgstr "/addpriorityattack 名称 —— 将怪兽加入优先攻击列表。"
+
+msgid "For TMW support:"
+msgstr ""
+
+msgid "/priceload - load shop price from disc."
+msgstr "/priceload —— 从磁盘加载商店价格。"
+
+msgid ""
+" - ##2friend##9:  You consider this player a friend.  The player may chat,\n"
+"   message your in private, or trade with you at any point."
+msgstr ""
+
+msgid "\"Item shortcut 13\""
+msgstr ""
+
+msgid "For other servers may exists other copyrights."
+msgstr ""
+
+msgid "\"Outfit shortcut 13\""
+msgstr ""
+
+msgid "/sethome - set home position."
+msgstr ""
+
+msgid ""
+" - ##2allow whispers##9: Do you wish to allow arbitrary players to send\n"
+"   private messages to you in-game?"
+msgstr ""
+
+msgid "\"Copy outfit\""
+msgstr ""
+
+msgid "/present - print visible players number to chat."
+msgstr ""
+
+msgid "/dumpogl - dump all OpenGL variables into log file."
+msgstr ""
+
+msgid "/emotepet N - use emotion number N from your pet."
+msgstr ""
+
+msgid ""
+"You can do basic searching in help by using command\n"
+"##2?text"
+msgstr ""
+
+msgid ""
+"You can buy or sell items from players shops.\n"
+"Right click on player and select \"Buy\" or \"Sell\""
+msgstr ""
+
+msgid "/unignore NICK - Remove nick from ignore list."
+msgstr "/unignore 昵称 —— 将昵称从忽视列表移除。"
+
+msgid ""
+"You can restore yellow bar settings,\n"
+"by right click on it and select in context menu \"Reset yellow bar\"."
+msgstr "你可以通过右键点击并选择“重置黄色栏”来重置黄色栏。"
+
+msgid "\"Emote shortcut 3\""
+msgstr ""
+
+msgid "/dumpg - dump graphics and some other settings to chat."
+msgstr "/dumpg 将图像和其他设定输出到聊天框中"
+
+msgid "/trade NICK - start trade with nick."
+msgstr "/trade 昵称 -- 与对应的人物进行交易"
+
+msgid "\"Switch magic attack\""
+msgstr ""
+
+msgid ""
+"You can hide/show bars and buttons by right click and select menu item."
+msgstr "你可以通过右击菜单项来对菜单进行隐藏和显示."
+
+msgid "\"Enable / disable away mode\""
+msgstr ""
+
+msgid "\"Commands window\""
+msgstr ""
+
+msgid "Android porting"
+msgstr ""
+
+msgid ""
+"You can set away mode,\n"
+"by type in chat command /away"
+msgstr ""
+
+msgid "Magic skills:"
+msgstr "魔法技能:"
+
+msgid "Server news"
+msgstr ""
+
+msgid "/clear - clear current chat tab."
+msgstr "/clear - 清楚当前的聊天项"
+
+msgid "\"Social window\""
+msgstr ""
+
+msgid "\"Emote shortcut 4\""
+msgstr ""
+
+msgid "\"Close chat tab\""
+msgstr ""
+
+msgid "\"Target player\""
+msgstr ""
+
+msgid "/invite NICK - invite a player to your party."
+msgstr ""
+
+msgid ""
+" - ##2disregarded##9:  You wish to disregard this player, meaning that his or\n"
+"   her chat messages are not logged and trade requests and whispers are\n"
+"   ignored."
+msgstr ""
+
+msgid "\"Debug window\""
+msgstr ""
+
+msgid "\"Next chat tab\""
+msgstr ""
+
+msgid "\"Change move to target type\""
+msgstr ""
+
+msgid "\"Pickup\""
+msgstr ""
+
+msgid "\"Item shortcut 2\""
+msgstr ""
+
+msgid "About current server"
+msgstr ""
+
+msgid "\"Quick heal target or self\""
+msgstr ""
+
+msgid "Search error"
+msgstr ""
+
+msgid "\"Outfit shortcut 9\""
+msgstr ""
+
+msgid "\"Change attack weapon type\""
+msgstr ""
+
+msgid "\"Move left\""
+msgstr ""
+
+msgid ""
+"##9 This file lists all contributors up to the current release. Check the wiki\n"
+"##9 for the currently active development team."
+msgstr ""
+
+msgid "\"Chat window\""
+msgstr ""
+
+msgid "\"Change follow mode\""
+msgstr ""
+
+msgid "\"Previous chat tab\""
+msgstr ""
+
+msgid "\"Kills stats window\""
+msgstr ""
+
+msgid "\"Outfit shortcut 2\""
+msgstr ""
+
+msgid "IGNORING COMMUNICATION"
+msgstr "正在忽略交流"
+
+msgid ""
+" - ##2save player list##9: Should your acquaintance list be saved when you\n"
+"   quit the game?  If you enable this option, your list will survive when you\n"
+"   quit and re-start."
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "\"Outfit shortcut 14\""
+msgstr ""
+
+msgid "\"Emote shortcut window\""
+msgstr ""
+
+msgid "\"Wear outfit\""
+msgstr ""
+
+msgid "\"Change map view mode\""
+msgstr ""
+
+msgid "Instructions"
+msgstr ""
+
+msgid "\"Emote shortcut 12\""
+msgstr ""
+
+msgid "About The Mana World"
+msgstr ""
+
+msgid "/serverignoreall - ignore all whispers on server side."
+msgstr "/serverignoreall - 在服务器端忽视所有私信。 "
+
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr ""
+
+msgid "\"Sit\""
+msgstr ""
+
+msgid "/navigate x y - move to position x,y in current map in any distance."
+msgstr ""
+
+msgid "SKILLS"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "/emote N - use emotion number N."
+msgstr ""
+
+msgid "/item 0 - disable party item sharing options."
+msgstr ""
+
+msgid "\"Target closest monster\""
+msgstr ""
+
+msgid "\"Outfits window\""
+msgstr ""
+
+msgid "Party chat commands"
+msgstr ""
+
+msgid ""
+"You can walk to warps automatically.\n"
+"Open Social Window (###keyWindowSocial;) and selecy Nav tab,\n"
+"then click on warp what you want."
+msgstr ""
+
+msgid ""
+"##2ManaPlus##9 is extended client based on old code from ##2Mana##9 client.\n"
+" Added many features, improved perfomance, stability, security and more."
+msgstr ""
+
+msgid ""
+"You can disable yellow bar,\n"
+"by pressing ###keyDisableGameModifiers;."
+msgstr ""
+
+msgid "\"Screenshot\""
+msgstr ""
+
+msgid "/closeall - close all whispers."
 msgstr ""
 
 msgid ""
@@ -52,51 +618,249 @@ msgid ""
 " window and drop them."
 msgstr ""
 
-msgid "\"Outfit shortcut 12\""
+msgid "/query NICK, /q NICK - open new whisper tab for nick."
+msgstr "/query 昵称，/q 昵称 —— 为昵称创建新的私信标签页。"
+
+msgid "\"Item shortcut 5\""
 msgstr ""
 
-msgid "/cacheinfo - show text cache info."
-msgstr "/cacheinfo —— 显示文本缓存信息。"
-
-msgid "/exp 0 - disable party experience sharing options."
+msgid "\"Scroll chat up\""
 msgstr ""
-
-msgid "\"Outfits window\""
-msgstr ""
-
-msgid "KEYBOARD:"
-msgstr "键盘："
 
 msgid ""
-" - ##2allow trading##9: Do you wish to allow trade requests from arbitrary\n"
-"   players?"
+"##2ManaPlus##9 is a serious effort to create an innovative free and open\n"
+" source MMORPG Client. ManaPlus uses 2D graphics and aims to create a large\n"
+" and diverse interactive world. It is licensed under the GPL, making\n"
+" sure this game can't ever run away from you."
 msgstr ""
 
-msgid "\"Emote shortcut 9\""
+msgid "\"Outfit shortcut 6\""
+msgstr ""
+
+msgid "Visit IRC channel:"
+msgstr "访问 IRC 频道："
+
+msgid "\"Target & attack\""
+msgstr ""
+
+msgid "\"Item shortcut 10\""
+msgstr ""
+
+msgid "/where - print current player position to chat."
+msgstr "/where —— 显示玩家当前的位置。"
+
+msgid "/exp - show party experience sharing options."
+msgstr ""
+
+msgid "/dumpmods - dump all enabled mod names into chat."
+msgstr ""
+
+msgid "INDEX"
+msgstr "索引"
+
+msgid "\"Outfit shortcut 10\""
+msgstr ""
+
+msgid "\"Crazy moves\""
+msgstr ""
+
+msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
+msgstr ""
+
+msgid "/uptime - show client uptime."
+msgstr "/uptime —— 显示客户端在线时间。"
+
+msgid "/imitation NICK - start imitation mode."
+msgstr "/imitation 昵称 -- 开启模仿模式"
+
+msgid "\"Ignore input 2\""
+msgstr ""
+
+msgid "\"Scroll chat down\""
+msgstr ""
+
+msgid "\"Move to target\""
+msgstr ""
+
+msgid "/ignoreall - add all whispers to ignore list."
+msgstr "/ignoreall --忽略所有私信"
+
+msgid "\"Chat auto complete\""
+msgstr ""
+
+msgid "/ignore NICK - add nick to ignore list."
+msgstr "/ignore 昵称 -- 忽略某个人的信息"
+
+msgid "\"Attack\""
+msgstr ""
+
+msgid "/magicattack - attack target with magic."
+msgstr ""
+
+msgid "For ManaPlus Online support:"
+msgstr ""
+
+msgid "\"Set direction right\""
+msgstr ""
+
+msgid "Other linux:"
+msgstr ""
+
+msgid "DOWNLOADS"
 msgstr ""
 
 msgid "/item 1 - enable party item sharing options."
 msgstr ""
 
-msgid "\"Set direction down\""
+msgid "##9Magic skills can be obtain by doing quests and missions in game."
 msgstr ""
 
-msgid "GM"
+msgid "/erase NICK - add nick to erased list."
 msgstr ""
 
-msgid "\"Target NPC\""
+msgid "COMMUNICATION:"
 msgstr ""
 
-msgid "Party chat commands"
+msgid "Search results"
 msgstr ""
 
-msgid "/help - show this help."
+msgid "\"Inventory window\""
+msgstr ""
+
+msgid "\"Change pickup type\""
+msgstr ""
+
+msgid "/item - show party item sharing options."
+msgstr ""
+
+msgid "move key"
+msgstr ""
+
+msgid "\"Emote shortcut 5\""
+msgstr ""
+
+msgid "/open URL - open url in browser."
 msgstr ""
 
 msgid ""
-"You can walk to warps automatically.\n"
-"Open Social Window (###keyWindowSocial;) and selecy Nav tab,\n"
-"then click on warp what you want."
+" The player list lists all of your acquaintances.  They are categorised as one\n"
+" of the following:"
+msgstr ""
+
+msgid "/cleanfonts - remove all cached render strings."
+msgstr ""
+
+msgid "/dumpgl - dump OpenGL version into chat."
+msgstr ""
+
+msgid "MOUSE:"
+msgstr "鼠标："
+
+msgid "Player relations"
+msgstr ""
+
+msgid ""
+"You can copy value from any bar,\n"
+"by right click on it and select in context menu \"Copy to chat\"."
+msgstr ""
+
+msgid "\"Item shortcut 14\""
+msgstr ""
+
+msgid "/outfit N - wear outfit number N."
+msgstr ""
+
+msgid "/dirs - show client dirs in debug chat tab."
+msgstr ""
+
+msgid "/movetohome - move to home position."
+msgstr ""
+
+msgid "\"Switch quick drop counter\""
+msgstr ""
+
+msgid "\"Change crazy Move mode\""
+msgstr ""
+
+msgid "\"Outfit shortcut 8\""
+msgstr ""
+
+msgid "\"Change imitation mode\""
+msgstr ""
+
+msgid "##9Other skills can be obtain by doing quests and missions in game."
+msgstr ""
+
+msgid "\"Reset video mode to safe value\""
+msgstr ""
+
+msgid "/uploadconfig - upload main config into pastebin service."
+msgstr ""
+
+msgid "/testparticle FILENAME - set test particle on player."
+msgstr ""
+
+msgid "\"Bot checker window\""
+msgstr ""
+
+msgid ""
+" - ##2neutral##9:  As far as the game is concerned, this is the same as not\n"
+"   having the player listed:  the player may chat with you, but may only trade\n"
+"   or whisper if you have this option allowed for everyone."
+msgstr ""
+
+msgid "/url URL - insert url into chat."
+msgstr ""
+
+msgid "\"Help window\""
+msgstr ""
+
+msgid "\"Outfit shortcut 1\""
+msgstr ""
+
+msgid ""
+" You may find that not all communication is to your liking.  While most people\n"
+" are nice, some may offend you or try to make your life harder-- since this is\n"
+" an open game, there is nothing the developers can do to prevent this."
+msgstr ""
+
+msgid "About"
+msgstr "关于"
+
+msgid "\"Outfit shortcut 15\""
+msgstr ""
+
+msgid "\"Move right\""
+msgstr ""
+
+msgid "##2Emote:##9 enables the ability to express emotions."
+msgstr ""
+
+msgid "\"Emote shortcut 8\""
+msgstr ""
+
+msgid "For Evol Online support:"
+msgstr ""
+
+msgid "/follow NICK - start follow mode."
+msgstr ""
+
+msgid "To read about whispering and other chat commands, look here:"
+msgstr "关于私信以及其他聊天命令请看这里："
+
+msgid ""
+"You can select other themes.\n"
+"For this you should open settings and select theme tab\n"
+"and change \"gui theme\""
+msgstr ""
+
+msgid "\"Emote shortcut 11\""
+msgstr ""
+
+msgid "\"Set direction down\""
+msgstr ""
+
+msgid "\"Target NPC\""
 msgstr ""
 
 msgid "/info - show guild info. Only for native guilds only."
@@ -105,61 +869,11 @@ msgstr ""
 msgid "/neutral NICK - add nick to neutral relation list."
 msgstr "/neutral 昵称 —— 将昵称加入中立列表。"
 
-msgid "\"Outfit shortcut 7\""
-msgstr ""
-
-msgid "/addpriorityattack NAME - add monster to priority attack list."
-msgstr "/addpriorityattack 名称 —— 将怪兽加入优先攻击列表。"
-
-msgid "Back to Index"
-msgstr "退回到索引"
-
-msgid "\"Quit\""
-msgstr ""
-
 msgid "THE PLAYER LIST"
 msgstr "玩家列表"
 
-msgid "/priceload - load shop price from disc."
-msgstr "/priceload —— 从磁盘加载商店价格。"
-
-msgid "Search string not found."
+msgid "\"Item shortcut window\""
 msgstr ""
-
-msgid "\"Quests window\""
-msgstr ""
-
-msgid "Other contributors"
-msgstr "其他贡献者"
-
-msgid ""
-"You can disable yellow bar,\n"
-"by pressing ###keyDisableGameModifiers;."
-msgstr ""
-
-msgid "\"Next chat tab\""
-msgstr ""
-
-msgid "Support"
-msgstr "支持"
-
-msgid "\"Quick drop window\""
-msgstr ""
-
-msgid "\"Screenshot\""
-msgstr ""
-
-msgid ""
-"Most commands working in whispers.\n"
-"For example command /imitation in whisper with nick1,\n"
-" similar to command /imitation nick1."
-msgstr ""
-
-msgid ""
-"Communication is often essential to success in this game. You can communicate\n"
-" in several ways:  By chatting and showing emotions (see above), by trading\n"
-" (with the right-click context menu), and by whispering."
-msgstr "在这个游戏中交流通常是成功必需的。你可以通过多种方式交流：通过聊天和使用表情(参考上面)，通过交易(使用右键菜单)，以及使用私信。"
 
 msgid "\"Emote shortcut 1\""
 msgstr ""
@@ -169,111 +883,22 @@ msgid ""
 "   even see floating text for him or her anymore, nor emotions."
 msgstr ""
 
-msgid "\"Outfit shortcut 13\""
-msgstr ""
-
-msgid "/sethome - set home position."
-msgstr ""
-
-msgid ""
-" You can improve your skills by increasing job level. Each job level\n"
-" gives you 1 point to spend on basic skills."
-msgstr "你可以通过提升工作等级来增强你的技能。每级工作等级给你 1 点用于增强基本技能。"
-
 msgid "/me text - send text to chat as /me command in irc."
 msgstr "/me 文本 —— 将文本作为 /me 命令发送。"
 
-msgid "\"Chat window\""
-msgstr ""
-
-msgid "\"Emote shortcut 10\""
-msgstr ""
-
-msgid "\"Item shortcut 14\""
-msgstr ""
-
-msgid "\"Ignore input 1\""
-msgstr ""
-
-msgid "Mana Contributors"
-msgstr "Mana 贡献者"
-
-msgid "Content devs"
-msgstr ""
-
-msgid "/query NICK, /q NICK - open new whisper tab for nick."
-msgstr "/query 昵称，/q 昵称 —— 为昵称创建新的私信标签页。"
-
-msgid ""
-" - ##2allow whispers##9: Do you wish to allow arbitrary players to send\n"
-"   private messages to you in-game?"
-msgstr ""
-
-msgid "\"Item shortcut 5\""
-msgstr ""
-
-msgid "/all - show visible beings list in debug tab."
-msgstr "/all —— 将可见之物显于调试页。"
-
-msgid "\"Emote shortcut 7\""
+msgid "/help - show small help about chat commands. "
 msgstr ""
 
 msgid "Debug"
 msgstr "调试"
 
-msgid "/present - print visible players number to chat."
-msgstr ""
-
-msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
-msgstr ""
-
-msgid "/addattack NAME - add monster to attack list."
-msgstr "/addattack 名称 —— 将怪兽加入攻击列表。"
-
-msgid "For other server look servers pages for support."
-msgstr "对于其它的服务器，请查阅服务器的网页获取支持。"
-
-msgid ""
-"##2ManaPlus##9 is a serious effort to create an innovative free and open\n"
-" source MMORPG Client. ManaPlus uses 2D graphics and aims to create a large\n"
-" and diverse interactive world. It is licensed under the GPL, making\n"
-" sure this game can't ever run away from you."
-msgstr ""
-
-msgid "\"Target closest monster\""
-msgstr ""
-
-msgid "\"Emote shortcut 2\""
-msgstr ""
-
-msgid "\"Outfit shortcut 6\""
-msgstr ""
-
 msgid "/setdrop N - set drop counter to requested value."
 msgstr "/setdrop 数目 —— 将丢弃数设为指定值。"
-
-msgid "/dumpogl - dump all OpenGL variables into log file."
-msgstr ""
-
-msgid "/outfit N - wear outfit number N."
-msgstr ""
-
-msgid "Visit IRC channel:"
-msgstr "访问 IRC 频道："
 
 msgid "\"Shop window\""
 msgstr ""
 
-msgid "/createparty NAME - create party with selected name."
-msgstr "/createparty 名称 —— 创建帮会。"
-
 msgid "\"Move down\""
-msgstr ""
-
-msgid "/heal NICK - heal nick."
-msgstr "/heal 昵称 —— 治疗昵称"
-
-msgid "/emotepet N - use emotion number N from your pet."
 msgstr ""
 
 msgid "\"Setup window\""
@@ -285,72 +910,26 @@ msgstr "/removeattach 名称 —— 将怪物从攻击列表移除。"
 msgid "\"Set direction up\""
 msgstr ""
 
-msgid "/dumpe - dump environment variables into chat."
-msgstr ""
-
-msgid "Instructions"
-msgstr ""
-
-msgid ""
-"If client working very slow, you can improve speed\n"
-"by reading this: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
-msgstr ""
-
-msgid "\"Kills stats window\""
-msgstr ""
-
-msgid ""
-"You can do basic searching in help by using command\n"
-"##2?text"
-msgstr ""
-
-msgid "\"Change move to target type\""
-msgstr ""
-
-msgid "/dumpmods - dump all enabled mod names into chat."
-msgstr ""
-
-msgid "\"Enable/disable trading\""
+msgid "or come visit us on our IRC channel:"
 msgstr ""
 
 msgid "\"Toggle camera mode\""
 msgstr ""
 
-msgid "/unignore NICK - Remove nick from ignore list."
-msgstr "/unignore 昵称 —— 将昵称从忽视列表移除。"
-
-msgid ""
-" If you're having troubles, please first of all read the FAQ. If you\n"
-" can't find a solution to your problem, feel free to check our\n"
-" Bugs/Support section of the forum:"
-msgstr ""
-
-msgid "IGNORING COMMUNICATION"
-msgstr "正在忽略交流"
-
-msgid "/wait NAME - wait for nick or moster with name."
-msgstr ""
+msgid "WINDOWS"
+msgstr "窗口"
 
 msgid "SUPPORT"
 msgstr "支持"
 
-msgid "\"Outfit shortcut 10\""
+msgid "/pricesave - save shop price to disc."
 msgstr ""
 
 msgid "Look this page for help and downloads:"
 msgstr ""
 
-msgid "COMMUNICATION:"
-msgstr ""
-
 msgid "Other skills:"
 msgstr "其它技能："
-
-msgid ""
-" - ##2save player list##9: Should your acquaintance list be saved when you\n"
-"   quit the game?  If you enable this option, your list will survive when you\n"
-"   quit and re-start."
-msgstr ""
 
 msgid ""
 "You can use mumble voice chat for talking with other players.\n"
@@ -366,81 +945,36 @@ msgstr ""
 msgid "\"Item shortcut 4\""
 msgstr ""
 
-msgid ""
-"You can restore yellow bar settings,\n"
-"by right click on it and select in context menu \"Reset yellow bar\"."
-msgstr "你可以通过右键点击并选择“重置黄色栏”来重置黄色栏。"
-
 msgid "/who - print online players number to chat."
 msgstr "/who —— 显示在线玩家数。"
 
 msgid "/createitems - open dialog for creating items."
 msgstr ""
 
-msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
+msgid "##2Party Level1:##9 enables a char to join a party."
 msgstr ""
-
-msgid "Sources:"
-msgstr ""
-
-msgid "/uptime - show client uptime."
-msgstr "/uptime —— 显示客户端在线时间。"
-
-msgid "\"Who is online window\""
-msgstr ""
-
-msgid "\"Sit\""
-msgstr ""
-
-msgid "/dumpg - dump graphics and some other settings to chat."
-msgstr "/dumpg 将图像和其他设定输出到聊天框中"
-
-msgid "\"Deactivate chat input\""
-msgstr ""
-
-msgid "/trade NICK - start trade with nick."
-msgstr "/trade 昵称 -- 与对应的人物进行交易"
-
-msgid "/imitation NICK - start imitation mode."
-msgstr "/imitation 昵称 -- 开启模仿模式"
 
 msgid "\"Outfit shortcut 5\""
 msgstr ""
 
-msgid ""
-"You can imitate other players by selecting \"imitation\" in player context menu\n"
-" or type chat command: /imitate playername."
-msgstr "你可以通过在菜单中点击\"模仿\"选项或者在聊天输入框中输入 /imitate 用户昵称来进行模仿."
+msgid "KEYBOARD:"
+msgstr "键盘："
 
-msgid ""
-"You can hide/show bars and buttons by right click and select menu item."
-msgstr "你可以通过右击菜单项来对菜单进行隐藏和显示."
-
-msgid "\"Scroll chat down\""
-msgstr ""
-
-msgid "##2Trade:##9 enables the ability to trade with others."
-msgstr ""
+msgid "Windows"
+msgstr "窗口"
 
 msgid "Contributors to client development"
 msgstr "客户端开发贡献者"
 
-msgid "\"Outfit shortcut 11\""
-msgstr ""
-
-msgid "\"Move right\""
+msgid ""
+"Otherwise see the @@team|Development Team@@ section to have a list of\n"
+" developers and how to contact them."
 msgstr ""
 
 msgid "\"Item shortcut 11\""
 msgstr ""
 
-msgid "\"Item shortcut 10\""
-msgstr ""
-
-msgid "ABOUT MANAPLUS"
-msgstr "关于 MANAPLUS"
-
-msgid "\"Select OK\""
+msgid "\"Emulate right click from keyboard\""
 msgstr ""
 
 msgid "MacOSX porting"
@@ -451,106 +985,32 @@ msgid ""
 "@@http://manaplus.org/yellowbar|http://manaplus.org/yellowbar@@"
 msgstr ""
 
-msgid "\"Move to target\""
-msgstr ""
-
-msgid "/item 0 - disable party item sharing options."
-msgstr ""
-
 msgid "/drop - drop N items from 0 slot."
-msgstr ""
-
-msgid "\"Enable / disable away mode\""
-msgstr ""
-
-msgid "INDEX"
-msgstr "索引"
-
-msgid "\"Chat auto complete\""
 msgstr ""
 
 msgid "/kick NICK - kick someone from the party you are in."
 msgstr ""
 
-msgid "\"Commands window\""
-msgstr ""
-
-msgid "/ignoreall - add all whispers to ignore list."
-msgstr "/ignoreall --忽略所有私信"
-
-msgid "\"Copy outfit\""
-msgstr ""
-
-msgid "Server news"
-msgstr ""
-
-msgid "/ignore NICK - add nick to ignore list."
-msgstr "/ignore 昵称 -- 忽略某个人的信息"
-
-msgid "\"Item shortcuts Key\""
+msgid "\"Outfit shortcut 11\""
 msgstr ""
 
 msgid "\"Disable / enable game modifier keys\""
 msgstr ""
 
-msgid "\"Change crazy Move mode\""
-msgstr ""
-
-msgid "/where - print current player position to chat."
-msgstr "/where —— 显示玩家当前的位置。"
-
-msgid "\"Attack\""
-msgstr ""
-
-msgid "/outfit next - wear next outfit."
-msgstr ""
-
-msgid "/magicattack - attack target with magic."
-msgstr ""
-
-msgid ""
-"You can set away mode,\n"
-"by type in chat command /away"
+msgid "\"Quit\""
 msgstr ""
 
 msgid "/move X Y - move to X,Y position in short distance."
 msgstr "/move X Y - 短距离内移动到 X,Y 位置"
 
-msgid "##2Party Level1:##9 enables a char to join a party."
-msgstr ""
-
-msgid "\"Item shortcut 3\""
-msgstr ""
-
-msgid "\"Change move type\""
-msgstr ""
-
-msgid "Magic skills:"
-msgstr "魔法技能:"
-
-msgid "/addignoreattack NAME - add monster to ignore attack list."
-msgstr "/addignoreattact 怪物名称 - 将怪物加入到非攻击列表中"
-
-msgid "Android porting"
-msgstr ""
-
-msgid "Tabs"
-msgstr ""
-
-msgid "\"Social window\""
+msgid "Themes:"
 msgstr ""
 
 msgid "\"Hide windows\""
 msgstr ""
 
-msgid "\"Outfit shortcut 4\""
-msgstr ""
-
 msgid "Chat commands"
 msgstr "聊天命令"
-
-msgid "\"Did you know window\""
-msgstr ""
 
 msgid "Trade"
 msgstr "交易"
@@ -558,214 +1018,46 @@ msgstr "交易"
 msgid "/blacklist NICK - add nick to blacklist relation list."
 msgstr "/blacklist 昵称 - 将昵称加入到黑名单列表。"
 
-msgid "\"Change map view mode\""
-msgstr ""
-
-msgid "\"Close chat tab\""
-msgstr ""
-
-msgid "\"Item shortcut 6\""
-msgstr ""
-
-msgid ""
-" - ##2neutral##9:  As far as the game is concerned, this is the same as not\n"
-"   having the player listed:  the player may chat with you, but may only trade\n"
-"   or whisper if you have this option allowed for everyone."
-msgstr ""
-
-msgid "Download"
-msgstr ""
-
-msgid "Other linux:"
-msgstr ""
-
-msgid ""
-" - ##2friend##9:  You consider this player a friend.  The player may chat,\n"
-"   message your in private, or trade with you at any point."
-msgstr ""
-
 msgid "Art or images contributors"
 msgstr ""
 
-msgid "\"Target player\""
-msgstr ""
-
-msgid "/dropn - drop N items from any slot."
-msgstr ""
-
-msgid "/enableaway - enable away messages in current tab."
-msgstr ""
-
-msgid "##2ManaPlus version: ##6%VER%"
-msgstr ""
-
-msgid "/enemy NICK - add nick to enemyes list."
-msgstr ""
-
-msgid ""
-" - ##2disregarded##9:  You wish to disregard this player, meaning that his or\n"
-"   her chat messages are not logged and trade requests and whispers are\n"
-"   ignored."
-msgstr ""
-
-msgid "\"Debug window\""
-msgstr ""
-
-msgid "/uploadlog - upload log into pastebin service."
-msgstr ""
-
-msgid "ManaPlus Contributors"
-msgstr "ManaPlus 贡献者"
-
-msgid "\"Emote shortcut 5\""
-msgstr ""
-
-msgid "\"Copy equiped to Outfit\""
+msgid "/exp 0 - disable party experience sharing options."
 msgstr ""
 
 msgid "Basic skills:"
 msgstr "基本技能:"
 
+msgid "/uploadlog - upload log into pastebin service."
+msgstr ""
+
 msgid "/leave - leave the party you are in."
-msgstr ""
-
-msgid ""
-"You can buy or sell items from players shops.\n"
-"Right click on player and select \"Buy\" or \"Sell\""
-msgstr ""
-
-msgid "/erase NICK - add nick to erased list."
-msgstr ""
-
-msgid "/pricesave - save shop price to disc."
-msgstr ""
-
-msgid "\"Pickup\""
 msgstr ""
 
 msgid "\"Status window\""
 msgstr ""
 
-msgid "\"Item shortcut 2\""
-msgstr ""
-
-msgid ""
-"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
-"##2                     SDL_net (Networking framework)\n"
-"##2                        Guichan (GUI framework)\n"
-"##2                   libxml2 (XML parsing and writing)\n"
-"##2                          PhysFS (Data files)\n"
-"##2                        libcurl (HTTP downloads)\n"
-"##2                            zlib (Archives)"
-msgstr ""
-
-msgid ""
-"/cleangraphics - remove all cached graphics. Usefull for content developers."
+msgid "/notice TEXT - set notice guild text."
 msgstr ""
 
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr ""
 
-msgid "\"Change follow mode\""
-msgstr ""
-
-msgid "\"Scroll chat up\""
-msgstr ""
-
-msgid ""
-"##9 This file lists all contributors up to the current release. Check the wiki\n"
-"##9 for the currently active development team."
-msgstr ""
-
-msgid "/item - show party item sharing options."
-msgstr ""
-
-msgid "\"Inventory window\""
-msgstr ""
-
-msgid "Contributors to client/server development"
-msgstr ""
-
-msgid "\"Quick heal target or self\""
-msgstr ""
-
-msgid "\"Change pickup type\""
-msgstr ""
-
-msgid "\"Use #itenplz spell\""
-msgstr ""
-
-msgid "move key"
-msgstr ""
-
-msgid "\"Item shortcut 13\""
-msgstr ""
-
-msgid "Skills"
-msgstr "技能"
-
-msgid "\"Outfit shortcut 3\""
-msgstr ""
-
-msgid "\"Quick drop N items\""
-msgstr ""
-
-msgid "Themes:"
-msgstr ""
-
-msgid ""
-"/msg NICK text, /whisper NICK text, /w NICK text - send whisper message to "
-"nick."
-msgstr ""
-
-msgid "/movetotarget - move to target position."
+msgid "ABOUT THE MANA WORLD"
 msgstr ""
 
 msgid "\"Emote shortcut 14\""
 msgstr ""
 
-msgid "/open URL - open url in browser."
-msgstr ""
-
 msgid "Commands"
-msgstr ""
-
-msgid "WINDOWS"
-msgstr "窗口"
-
-msgid "\"Outfit shortcut 9\""
-msgstr ""
-
-msgid "\"Emote shortcut 4\""
 msgstr ""
 
 msgid "\"Stop Attack\""
 msgstr ""
 
-msgid ""
-" The player list lists all of your acquaintances.  They are categorised as one\n"
-" of the following:"
+msgid "Contributors to client/server development"
 msgstr ""
 
-msgid "/cleanfonts - remove all cached render strings."
-msgstr ""
-
-msgid "/dumpgl - dump OpenGL version into chat."
-msgstr ""
-
-msgid "/outfit prev - wear previous outfit."
-msgstr ""
-
-msgid "\"Crazy moves\""
-msgstr ""
-
-msgid "Powered By"
-msgstr ""
-
-msgid "##2Party level2:##9 enables a char to create a party."
-msgstr ""
-
-msgid "/target NICK - select nick as target. Can be monster or player nick."
+msgid "Sources:"
 msgstr ""
 
 msgid "To type chat message, press ###keyChat;"
@@ -774,161 +1066,37 @@ msgstr ""
 msgid "Translators"
 msgstr "译者"
 
-msgid "MOUSE:"
-msgstr "鼠标："
-
 msgid "\"Next chat tab line\""
-msgstr ""
-
-msgid "\"Set direction right\""
-msgstr ""
-
-msgid "/announce MESSAGE - show global message."
-msgstr ""
-
-msgid "Player relations"
-msgstr ""
-
-msgid "Search error"
-msgstr ""
-
-msgid ""
-"You can copy value from any bar,\n"
-"by right click on it and select in context menu \"Copy to chat\"."
-msgstr ""
-
-msgid "/closeall - close all whispers."
-msgstr ""
-
-msgid "/exp 1 - enable party experience sharing options."
-msgstr ""
-
-msgid "COMMANDS"
-msgstr "命令"
-
-msgid "\"Previous chat tab\""
-msgstr ""
-
-msgid "/serverunignoreall - unignore all whispers on server side."
-msgstr "/serverunignoreall —— 在服务器端取消忽视所有私信。"
-
-msgid "##9Magic skills can be obtain by doing quests and missions in game."
-msgstr ""
-
-msgid "\"Skill window\""
 msgstr ""
 
 msgid "\"Move to home location\""
 msgstr ""
 
-msgid "\"Toggle chat\""
+msgid "Powered By"
 msgstr ""
 
-msgid "/talkpet TEXT - talk from your pet."
-msgstr ""
-
-msgid "\"Change attack type\""
-msgstr ""
-
-msgid "/clear - clear current chat tab."
-msgstr "/clear - 清楚当前的聊天项"
-
-msgid "\"On / off audio\""
+msgid "\"Skill window\""
 msgstr ""
 
 msgid "\"Emote shortcut 6\""
 msgstr ""
 
-msgid "\"Outfit shortcut 2\""
-msgstr ""
-
-msgid "You can change any key in keyboard settings."
-msgstr ""
-
-msgid "/dirs - show client dirs in debug chat tab."
-msgstr ""
-
-msgid "/movetohome - move to home position."
-msgstr ""
-
 msgid "/disconnect - quick disconnect from server."
-msgstr ""
-
-msgid "\"Switch quick drop counter\""
-msgstr ""
-
-msgid "\"Previous chat tab line\""
-msgstr ""
-
-msgid "\"Emote shortcut 13\""
-msgstr ""
-
-msgid "/disregard NICK - add nick to disregarded list."
 msgstr ""
 
 msgid "\"Item shortcut 1\""
 msgstr ""
 
-msgid "\"Outfit shortcut 8\""
+msgid "\"Use #itenplz spell\""
 msgstr ""
 
-msgid "Manaplus Developers"
-msgstr "Manaplus 开发者"
-
-msgid "\"Change imitation mode\""
-msgstr ""
-
-msgid ""
-"##2ManaPlus##9 is extended client based on old code from ##2Mana##9 client.\n"
-" Added many features, improved perfomance, stability, security and more."
-msgstr ""
-
-msgid "##9Other skills can be obtain by doing quests and missions in game."
-msgstr ""
-
-msgid "/exp - show party experience sharing options."
-msgstr ""
-
-msgid "\"Reset video mode to safe value\""
+msgid "/exp 1 - enable party experience sharing options."
 msgstr ""
 
 msgid "/undress NICK - remove all clothes from nick. Local effect only."
 msgstr ""
 
-msgid "Other"
-msgstr ""
-
-msgid ""
-" Otherwise see the @@team|Development Team@@ section to have a list of\n"
-" developers and how to contact them."
-msgstr ""
-
-msgid "\"Outfit shortcut 14\""
-msgstr ""
-
-msgid "/uploadconfig - upload main config into pastebin service."
-msgstr ""
-
 msgid "\"Quick drop N items from 0 slot\""
-msgstr ""
-
-msgid "/enablehighlight - enable highlight in current tab."
-msgstr ""
-
-msgid "\"Emote shortcut window\""
-msgstr ""
-
-msgid "\"Bot checker window\""
-msgstr ""
-
-msgid "/disableaway - disable away messages in current tab."
-msgstr ""
-
-msgid ""
-"/mail NICK MSG - send offline message to NICK. Working only in tmw server."
-msgstr ""
-
-msgid "DOWNLOADS"
 msgstr ""
 
 msgid "/disablehighlight - disable highlight in current tab."
@@ -937,24 +1105,7 @@ msgstr ""
 msgid "\"Item shortcut 15\""
 msgstr ""
 
-msgid "About The Mana World"
-msgstr ""
-
-msgid "/testparticle FILENAME - set test particle on player."
-msgstr ""
-
-msgid "\"Smilie\""
-msgstr ""
-
 msgid "Whispers commands"
-msgstr ""
-
-msgid ""
-" There you will find a list of all players you are acquainted with, as well as\n"
-" several configuration options:"
-msgstr ""
-
-msgid "\"Use magic attack\""
 msgstr ""
 
 msgid ""
@@ -965,102 +1116,24 @@ msgstr ""
 msgid "Whispers"
 msgstr ""
 
-msgid "/url URL - insert url into chat."
-msgstr ""
-
-msgid "\"Wear outfit\""
-msgstr ""
-
 msgid "emote key"
-msgstr ""
-
-msgid "Search results"
-msgstr ""
-
-msgid "/help - show small help about chat commands. "
 msgstr ""
 
 msgid "\"Item shortcut 9\""
 msgstr ""
 
 msgid ""
-"You can set any client resolution. In settings in video tab,\n"
-"click on \"custom\" and enter for example: 900x500 and press ok."
+" There you will find a list of all players you are acquainted with, as well as\n"
+" several configuration options:"
 msgstr ""
 
-msgid "Main development"
-msgstr ""
-
-msgid "\"Help window\""
-msgstr ""
-
-msgid "/attack - attack target."
-msgstr "/attack - 攻击目标"
-
-msgid "\"Outfit shortcut 1\""
-msgstr ""
-
-msgid ""
-" You may find that not all communication is to your liking.  While most people\n"
-" are nice, some may offend you or try to make your life harder-- since this is\n"
-" an open game, there is nothing the developers can do to prevent this."
-msgstr ""
-
-msgid "About"
-msgstr "关于"
-
-msgid "\"Change attack weapon type\""
-msgstr ""
-
-msgid "\"Emote shortcut 12\""
-msgstr ""
-
-msgid "\"Outfit shortcut 15\""
-msgstr ""
-
-msgid "Windows"
-msgstr "窗口"
-
-msgid "\"Ignore input 2\""
-msgstr ""
-
-msgid "\"Emulate right click from keyboard\""
-msgstr ""
-
-msgid "\"Set home location/set arrow\""
-msgstr ""
-
-msgid "\"Set direction left\""
-msgstr ""
-
-msgid "\"Move left\""
-msgstr ""
-
-msgid "##2Emote:##9 enables the ability to express emotions."
-msgstr ""
-
-msgid "\"Item shortcut window\""
-msgstr ""
+msgid "Skills"
+msgstr "技能"
 
 msgid "\"Item shortcut 7\""
 msgstr ""
 
-msgid "\"Emote shortcut 8\""
-msgstr ""
-
 msgid "\"Minimap window\""
-msgstr ""
-
-msgid "\"Equipment window\""
-msgstr ""
-
-msgid "/serverignoreall - ignore all whispers on server side."
-msgstr "/serverignoreall - 在服务器端忽视所有私信。 "
-
-msgid "/notice TEXT - set notice guild text."
-msgstr ""
-
-msgid "\"Emote shortcut 3\""
 msgstr ""
 
 msgid ""
@@ -1071,53 +1144,8 @@ msgid ""
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
 msgstr ""
 
-msgid "/dumpt - dump tests info into chat."
-msgstr ""
-
-msgid "Different patches"
-msgstr ""
-
-msgid "\"Switch magic attack\""
-msgstr ""
-
-msgid "/navigate x y - move to position x,y in current map in any distance."
-msgstr ""
-
-msgid "SKILLS"
-msgstr ""
-
-msgid "Guild chat commands"
-msgstr ""
-
-msgid "Actions"
-msgstr ""
-
 msgid "\"Item shortcut 12\""
 msgstr ""
 
-msgid "\"Move to navigation point\""
-msgstr ""
-
-msgid "Sound effects"
-msgstr ""
-
 msgid "SHORTCUTS:"
-msgstr ""
-
-msgid "\"Talk\""
-msgstr ""
-
-msgid ""
-" Left click to execute default action: walk, pick up an item, attack a monster\n"
-" and talk to NPCs (be sure to click on their feet). Right click to show up a\n"
-" context menu. Holding [Left Shift] prevents from walking when attacking."
-msgstr ""
-
-msgid "/follow NICK - start follow mode."
-msgstr ""
-
-msgid "\"Item shortcut 8\""
-msgstr ""
-
-msgid "/emote N - use emotion number N."
 msgstr ""

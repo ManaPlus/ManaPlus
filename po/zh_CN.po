@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-03-10 01:34+0300\n"
-"PO-Revision-Date: 2014-03-01 08:14+0000\n"
+"POT-Creation-Date: 2014-03-15 11:37+0300\n"
+"PO-Revision-Date: 2014-03-10 08:13+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/manaplus/"
 "language/zh_CN/)\n"
@@ -52,12 +52,12 @@ msgid "miss"
 msgstr "失误"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1818 src/gui/windows/whoisonline.cpp:863
+#: src/being/being.cpp:1818 src/gui/windows/whoisonline.cpp:838
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1823 src/gui/windows/whoisonline.cpp:868
+#: src/being/being.cpp:1823 src/gui/windows/whoisonline.cpp:843
 msgid "I"
 msgstr "I"
 
@@ -529,37 +529,37 @@ msgstr "流动的泡沫"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1139 src/gui/windowmenu.cpp:155
+#: src/client.cpp:1141 src/gui/windowmenu.cpp:155
 #: src/gui/windows/setupwindow.cpp:61
 msgid "Setup"
 msgstr "设置"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1142 src/gui/widgets/tabs/setup_perfomance.cpp:51
+#: src/client.cpp:1144 src/gui/widgets/tabs/setup_perfomance.cpp:51
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1145 src/gui/widgets/tabs/setup_video.cpp:225
+#: src/client.cpp:1147 src/gui/widgets/tabs/setup_video.cpp:225
 msgid "Video"
 msgstr "视频"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1148 src/gui/widgets/tabs/setup_theme.cpp:268
+#: src/client.cpp:1150 src/gui/widgets/tabs/setup_theme.cpp:268
 msgid "Theme"
 msgstr "主题"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:1151
+#: src/client.cpp:1153
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:1154 src/gui/windowmenu.cpp:71
+#: src/client.cpp:1156 src/gui/windowmenu.cpp:71
 #: src/gui/windows/helpwindow.cpp:50
 msgid "Help"
 msgstr "帮助"
@@ -572,7 +572,7 @@ msgstr "帮助"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1158 src/gui/popups/popupmenu.cpp:619
+#: src/client.cpp:1160 src/gui/popups/popupmenu.cpp:619
 #: src/gui/windows/didyouknowwindow.cpp:78
 #: src/gui/windows/inventorywindow.cpp:224 src/gui/windows/npcdialog.cpp:69
 #: src/gui/windows/npcdialog.cpp:107 src/gui/windows/questswindow.cpp:124
@@ -581,32 +581,32 @@ msgid "Close"
 msgstr "关闭"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1282
+#: src/client.cpp:1284
 msgid "Connecting to server"
 msgstr "正在连接服务器"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1326
+#: src/client.cpp:1331
 msgid "Logging in"
 msgstr "登录中"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1368
+#: src/client.cpp:1373
 msgid "Entering game world"
 msgstr "进入游戏世界"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1491
+#: src/client.cpp:1496
 msgid "Requesting characters"
 msgstr "请求角色"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1531
+#: src/client.cpp:1536
 msgid "Connecting to the game server"
 msgstr "正在连接游戏服务器"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1543
+#: src/client.cpp:1548
 msgid "Changing game servers"
 msgstr "正在更改游戏服务器"
 
@@ -621,7 +621,7 @@ msgstr "正在更改游戏服务器"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1606 src/client.cpp:1617 src/client.cpp:1801
+#: src/client.cpp:1611 src/client.cpp:1622 src/client.cpp:1806
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
 #: src/gui/windows/charcreatedialog.cpp:349
@@ -634,65 +634,65 @@ msgid "Error"
 msgstr "错误"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1629
+#: src/client.cpp:1634
 msgid "Requesting registration details"
 msgstr "正在请求详细注册信息"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1670
+#: src/client.cpp:1675
 msgid "Password Change"
 msgstr "更改密码"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1672
+#: src/client.cpp:1677
 msgid "Password changed successfully!"
 msgstr "密码更改成功！"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1694
+#: src/client.cpp:1699
 msgid "Email Change"
 msgstr "更改电子邮箱地址"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1696
+#: src/client.cpp:1701
 msgid "Email changed successfully!"
 msgstr "电子邮箱地址更改成功！"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1719
+#: src/client.cpp:1724
 msgid "Unregister Successful"
 msgstr "取消注册成功"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1721
+#: src/client.cpp:1726
 msgid "Farewell, come back any time..."
 msgstr "再见，欢迎随时回来... ..."
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:2009 src/client.cpp:2024 src/client.cpp:2069
-#: src/client.cpp:2085 src/client.cpp:2512 src/client.cpp:2520
+#: src/client.cpp:2014 src/client.cpp:2029 src/client.cpp:2074
+#: src/client.cpp:2090 src/client.cpp:2517 src/client.cpp:2525
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s 不存在，且无法创建！正在退出。"
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2241
+#: src/client.cpp:2246
 #, c-format
 msgid "Invalid update host: %s."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2282 src/client.cpp:2289
+#: src/client.cpp:2287 src/client.cpp:2294
 msgid "Error creating updates directory!"
 msgstr "创建更新目录错误！"
 
-#: src/client.cpp:2311 src/client.cpp:2328
+#: src/client.cpp:2316 src/client.cpp:2333
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "错误：%s 不存在且无法创建！正在退出。"
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2991
+#: src/client.cpp:2996
 msgid "Do you want to open support page?"
 msgstr ""
 
@@ -962,12 +962,12 @@ msgid "Saving screenshot failed!"
 msgstr "保存屏幕快照失败！"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:665
+#: src/game.cpp:668
 msgid "The connection to the server was lost."
 msgstr "服务器的连接丢失。"
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:668
+#: src/game.cpp:671
 msgid "Network Error"
 msgstr "网络错误"
 
@@ -1322,8 +1322,8 @@ msgstr "说话"
 #. TRANSLATORS: buy dialog name
 #. TRANSLATORS: shop window button
 #: src/gui/popups/popupmenu.cpp:242 src/gui/popups/popupmenu.cpp:2599
-#: src/gui/windows/buydialog.cpp:174 src/gui/windows/buydialog.cpp:186
-#: src/gui/windows/buydialog.cpp:240 src/gui/windows/buyselldialog.cpp:67
+#: src/gui/windows/buydialog.cpp:178 src/gui/windows/buydialog.cpp:194
+#: src/gui/windows/buydialog.cpp:252 src/gui/windows/buyselldialog.cpp:67
 msgid "Buy"
 msgstr "购买"
 
@@ -1336,7 +1336,7 @@ msgstr "购买"
 #. TRANSLATORS: sell dialog button
 #: src/gui/popups/popupmenu.cpp:245 src/gui/popups/popupmenu.cpp:2602
 #: src/gui/windows/buyselldialog.cpp:69 src/gui/windows/selldialog.cpp:56
-#: src/gui/windows/selldialog.cpp:66 src/gui/windows/selldialog.cpp:108
+#: src/gui/windows/selldialog.cpp:70 src/gui/windows/selldialog.cpp:116
 msgid "Sell"
 msgstr "出售"
 
@@ -1418,8 +1418,8 @@ msgstr ""
 #: src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/changeemaildialog.cpp:55
 #: src/gui/windows/changepassworddialog.cpp:57
-#: src/gui/windows/charcreatedialog.cpp:121
-#: src/gui/windows/connectiondialog.cpp:48
+#: src/gui/windows/charcreatedialog.cpp:119
+#: src/gui/windows/connectiondialog.cpp:50
 #: src/gui/windows/editserverdialog.cpp:58
 #: src/gui/windows/itemamountwindow.cpp:162
 #: src/gui/windows/npcpostdialog.cpp:68 src/gui/windows/quitdialog.cpp:70
@@ -1427,7 +1427,7 @@ msgstr ""
 #: src/gui/windows/socialwindow.cpp:1205
 #: src/gui/windows/textcommandeditor.cpp:86 src/gui/windows/textdialog.cpp:55
 #: src/gui/windows/unregisterdialog.cpp:54
-#: src/gui/windows/updaterwindow.cpp:186
+#: src/gui/windows/updaterwindow.cpp:178
 msgid "Cancel"
 msgstr "取消"
 
@@ -2100,10 +2100,10 @@ msgstr "选择OK"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/setupactiondata.h:183 src/gui/windows/buydialog.cpp:242
+#: src/gui/setupactiondata.h:183 src/gui/windows/buydialog.cpp:254
 #: src/gui/windows/quitdialog.cpp:52 src/gui/windows/quitdialog.cpp:57
-#: src/gui/windows/quitdialog.cpp:59 src/gui/windows/selldialog.cpp:110
-#: src/gui/windows/serverdialog.cpp:198
+#: src/gui/windows/quitdialog.cpp:59 src/gui/windows/selldialog.cpp:118
+#: src/gui/windows/serverdialog.cpp:200
 msgid "Quit"
 msgstr "退出"
 
@@ -2159,9 +2159,8 @@ msgstr "隐藏窗口"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:369
-#, fuzzy
 msgid "About Window"
-msgstr "Debug窗口"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:375
@@ -2443,9 +2442,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1242
-#, fuzzy
 msgid "Show smiles"
-msgstr "显示状态"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1312
@@ -2704,8 +2702,8 @@ msgstr ""
 #. TRANSLATORS: command editor button
 #: src/gui/setupactiondata.h:1900 src/gui/widgets/tabs/setup_relations.cpp:200
 #: src/gui/windows/charselectdialog.cpp:108
-#: src/gui/windows/serverdialog.cpp:206 src/gui/windows/shopwindow.cpp:94
-#: src/gui/windows/shopwindow.cpp:101 src/gui/windows/textcommandeditor.cpp:90
+#: src/gui/windows/serverdialog.cpp:208 src/gui/windows/shopwindow.cpp:95
+#: src/gui/windows/shopwindow.cpp:102 src/gui/windows/textcommandeditor.cpp:90
 msgid "Delete"
 msgstr "删除"
 
@@ -3008,7 +3006,7 @@ msgstr ""
 #. TRANSLATORS: setup item button
 #. TRANSLATORS: servers dialog button
 #: src/gui/widgets/setupitem.cpp:365 src/gui/widgets/setupitem.cpp:501
-#: src/gui/windows/serverdialog.cpp:204
+#: src/gui/windows/serverdialog.cpp:206
 msgid "Edit"
 msgstr "编辑"
 
@@ -4797,9 +4795,8 @@ msgstr ""
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_visual.cpp:208
-#, fuzzy
 msgid "Screenshots"
-msgstr "屏幕快照"
+msgstr ""
 
 #: src/gui/widgets/tabs/setup_visual.cpp:210
 msgid "Add water mark into screenshots"
@@ -4968,7 +4965,7 @@ msgstr "SET"
 
 #. TRANSLATORS: short key name
 #. TRANSLATORS: outfits window label
-#: src/gui/windowmenu.cpp:289 src/gui/windows/outfitwindow.cpp:71
+#: src/gui/windowmenu.cpp:289 src/gui/windows/outfitwindow.cpp:70
 #: src/gui/windows/outfitwindow.cpp:561
 #, c-format
 msgid "Key: %s"
@@ -4997,14 +4994,14 @@ msgstr ""
 
 #. TRANSLATORS: buy dialog label
 #. TRANSLATORS: sell dialog label
-#: src/gui/windows/buydialog.cpp:220 src/gui/windows/buydialog.cpp:507
-#: src/gui/windows/selldialog.cpp:100 src/gui/windows/selldialog.cpp:356
+#: src/gui/windows/buydialog.cpp:232 src/gui/windows/buydialog.cpp:519
+#: src/gui/windows/selldialog.cpp:108 src/gui/windows/selldialog.cpp:364
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "价格：%s / 总价：%s"
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:229
+#: src/gui/windows/buydialog.cpp:241
 msgid "Amount:"
 msgstr ""
 
@@ -5014,9 +5011,9 @@ msgstr ""
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (plus sign)
-#: src/gui/windows/buydialog.cpp:234 src/gui/windows/itemamountwindow.cpp:158
+#: src/gui/windows/buydialog.cpp:246 src/gui/windows/itemamountwindow.cpp:158
 #: src/gui/windows/itemamountwindow.cpp:193 src/gui/windows/npcdialog.cpp:100
-#: src/gui/windows/selldialog.cpp:104 src/gui/windows/statuswindow.cpp:829
+#: src/gui/windows/selldialog.cpp:112 src/gui/windows/statuswindow.cpp:829
 msgid "+"
 msgstr "+"
 
@@ -5026,16 +5023,16 @@ msgstr "+"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (minus sign)
-#: src/gui/windows/buydialog.cpp:237 src/gui/windows/itemamountwindow.cpp:156
+#: src/gui/windows/buydialog.cpp:249 src/gui/windows/itemamountwindow.cpp:156
 #: src/gui/windows/itemamountwindow.cpp:190 src/gui/windows/npcdialog.cpp:102
-#: src/gui/windows/selldialog.cpp:106 src/gui/windows/statuswindow.cpp:842
+#: src/gui/windows/selldialog.cpp:114 src/gui/windows/statuswindow.cpp:842
 msgid "-"
 msgstr "-"
 
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
-#: src/gui/windows/buydialog.cpp:240 src/gui/windows/charcreatedialog.cpp:119
+#: src/gui/windows/buydialog.cpp:252 src/gui/windows/charcreatedialog.cpp:117
 #: src/gui/windows/charselectdialog.cpp:585
 #: src/gui/windows/socialwindow.cpp:1274
 msgid "Create"
@@ -5046,7 +5043,7 @@ msgstr "建立"
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
 #. TRANSLATORS: status bar label
-#: src/gui/windows/buydialog.cpp:244 src/gui/windows/selldialog.cpp:112
+#: src/gui/windows/buydialog.cpp:256 src/gui/windows/selldialog.cpp:120
 #: src/gui/windows/statuswindow.cpp:568 src/gui/windows/statuswindow.cpp:623
 #: src/gui/windows/statuswindow.cpp:826 src/gui/windows/statuswindow.cpp:858
 msgid "Max"
@@ -5262,7 +5259,7 @@ msgstr "登录"
 #. TRANSLATORS: updater window button
 #: src/gui/windows/charselectdialog.cpp:104
 #: src/gui/windows/charselectdialog.cpp:580
-#: src/gui/windows/updaterwindow.cpp:188
+#: src/gui/windows/updaterwindow.cpp:180
 msgid "Play"
 msgstr "开始"
 
@@ -5590,7 +5587,7 @@ msgstr ""
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
 #: src/gui/windows/editserverdialog.cpp:54
-#: src/gui/windows/serverdialog.cpp:200
+#: src/gui/windows/serverdialog.cpp:202
 msgid "Connect"
 msgstr "连接"
 
@@ -5685,24 +5682,24 @@ msgid "Unknown."
 msgstr "未知。"
 
 #. TRANSLATORS: kill stats window button
-#: src/gui/windows/killstats.cpp:50
+#: src/gui/windows/killstats.cpp:46
 msgid "Reset stats"
 msgstr "复位统计"
 
 #. TRANSLATORS: kill stats window button
-#: src/gui/windows/killstats.cpp:52
+#: src/gui/windows/killstats.cpp:48
 msgid "Reset timer"
 msgstr "复位定时器"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:57 src/gui/windows/killstats.cpp:165
+#: src/gui/windows/killstats.cpp:53 src/gui/windows/killstats.cpp:165
 #: src/gui/windows/killstats.cpp:270 src/gui/windows/killstats.cpp:512
 #, c-format
 msgid "Kills: %s, total exp: %s"
 msgstr ""
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:60 src/gui/windows/killstats.cpp:167
+#: src/gui/windows/killstats.cpp:56 src/gui/windows/killstats.cpp:167
 #: src/gui/windows/killstats.cpp:247 src/gui/windows/killstats.cpp:262
 #: src/gui/windows/killstats.cpp:514
 #, c-format
@@ -5710,7 +5707,7 @@ msgid "Avg Exp: %s"
 msgstr ""
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:62 src/gui/windows/killstats.cpp:170
+#: src/gui/windows/killstats.cpp:58 src/gui/windows/killstats.cpp:170
 #: src/gui/windows/killstats.cpp:252 src/gui/windows/killstats.cpp:266
 #: src/gui/windows/killstats.cpp:517
 #, c-format
@@ -5718,35 +5715,35 @@ msgid "No. of avg mob to next level: %s"
 msgstr ""
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:65 src/gui/windows/killstats.cpp:181
+#: src/gui/windows/killstats.cpp:61 src/gui/windows/killstats.cpp:181
 #: src/gui/windows/killstats.cpp:274 src/gui/windows/killstats.cpp:520
 #, c-format
 msgid "Kills/Min: %s, Exp/Min: %s"
 msgstr ""
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:69 src/gui/windows/killstats.cpp:74
-#: src/gui/windows/killstats.cpp:79 src/gui/windows/killstats.cpp:340
+#: src/gui/windows/killstats.cpp:65 src/gui/windows/killstats.cpp:70
+#: src/gui/windows/killstats.cpp:75 src/gui/windows/killstats.cpp:340
 #: src/gui/windows/killstats.cpp:359 src/gui/windows/killstats.cpp:380
 #, c-format
 msgid "Exp speed per %d min: %s"
 msgid_plural "Exp speed per %d min: %s"
 msgstr[0] ""
 
-#: src/gui/windows/killstats.cpp:71 src/gui/windows/killstats.cpp:76
-#: src/gui/windows/killstats.cpp:82
+#: src/gui/windows/killstats.cpp:67 src/gui/windows/killstats.cpp:72
+#: src/gui/windows/killstats.cpp:78
 #, c-format
 msgid "Time for next level per %d min: %s"
 msgid_plural "Time for next level per %d min: %s"
 msgstr[0] ""
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:85 src/gui/windows/killstats.cpp:279
+#: src/gui/windows/killstats.cpp:81 src/gui/windows/killstats.cpp:279
 msgid "Last kill exp:"
 msgstr "最后EXP："
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:88 src/gui/windows/killstats.cpp:411
+#: src/gui/windows/killstats.cpp:84 src/gui/windows/killstats.cpp:411
 #: src/gui/windows/killstats.cpp:418 src/gui/windows/killstats.cpp:425
 #: src/gui/windows/killstats.cpp:431
 msgid "Time before jacko spawn:"
@@ -5838,42 +5835,42 @@ msgstr ""
 msgid "Open register url"
 msgstr ""
 
-#: src/gui/windows/ministatuswindow.cpp:67
+#: src/gui/windows/ministatuswindow.cpp:63
 msgid "health bar"
 msgstr ""
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:78
+#: src/gui/windows/ministatuswindow.cpp:74
 msgid "mana bar"
 msgstr "法力栏"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:82
+#: src/gui/windows/ministatuswindow.cpp:78
 msgid "experience bar"
 msgstr "经验条"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:87
+#: src/gui/windows/ministatuswindow.cpp:83
 msgid "weight bar"
 msgstr "重量栏"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:93
+#: src/gui/windows/ministatuswindow.cpp:89
 msgid "inventory slots bar"
 msgstr ""
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:97
+#: src/gui/windows/ministatuswindow.cpp:93
 msgid "money bar"
 msgstr "钱栏"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:101
+#: src/gui/windows/ministatuswindow.cpp:97
 msgid "arrows bar"
 msgstr ""
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:106
+#: src/gui/windows/ministatuswindow.cpp:102
 msgid "status bar"
 msgstr "状态栏"
 
@@ -5930,8 +5927,8 @@ msgstr "提交"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: trade window button
-#: src/gui/windows/npcdialog.cpp:109 src/gui/windows/serverdialog.cpp:202
-#: src/gui/windows/shopwindow.cpp:92 src/gui/windows/shopwindow.cpp:99
+#: src/gui/windows/npcdialog.cpp:109 src/gui/windows/serverdialog.cpp:204
+#: src/gui/windows/shopwindow.cpp:93 src/gui/windows/shopwindow.cpp:100
 #: src/gui/windows/tradewindow.cpp:78
 msgid "Add"
 msgstr "添加"
@@ -6021,12 +6018,12 @@ msgid "Passwords do not match."
 msgstr "密码不一致."
 
 #. TRANSLATORS: sell confirmation header
-#: src/gui/windows/selldialog.cpp:246
+#: src/gui/windows/selldialog.cpp:254
 msgid "sell item"
 msgstr ""
 
 #. TRANSLATORS: sell confirmation message
-#: src/gui/windows/selldialog.cpp:248
+#: src/gui/windows/selldialog.cpp:256
 #, c-format
 msgid "Do you really want to sell %s?"
 msgstr ""
@@ -6037,7 +6034,7 @@ msgid "Choose Your Server"
 msgstr "选择您的服务器"
 
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/serverdialog.cpp:208
+#: src/gui/windows/serverdialog.cpp:210
 msgid "Load"
 msgstr "负载"
 
@@ -6099,23 +6096,23 @@ msgid "Personal Shop"
 msgstr "个人商店"
 
 #. TRANSLATORS: shop window label
-#: src/gui/windows/shopwindow.cpp:88
+#: src/gui/windows/shopwindow.cpp:89
 msgid "Buy items"
 msgstr "购买物品"
 
 #. TRANSLATORS: shop window label
-#: src/gui/windows/shopwindow.cpp:90
+#: src/gui/windows/shopwindow.cpp:91
 msgid "Sell items"
 msgstr "出售物品"
 
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
-#: src/gui/windows/shopwindow.cpp:96 src/gui/windows/shopwindow.cpp:103
+#: src/gui/windows/shopwindow.cpp:97 src/gui/windows/shopwindow.cpp:104
 msgid "Announce"
 msgstr "公布"
 
 #. TRANSLATORS: shop window checkbox
-#: src/gui/windows/shopwindow.cpp:107
+#: src/gui/windows/shopwindow.cpp:108
 msgid "Show links in announce"
 msgstr "显示在公布的联系"
 
@@ -6599,7 +6596,7 @@ msgid "Updating..."
 msgstr "更新..."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:184
+#: src/gui/windows/updaterwindow.cpp:176
 msgid "Connecting..."
 msgstr "连接中..."
 
@@ -6628,12 +6625,12 @@ msgid "Completed"
 msgstr "已完成"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:81 src/gui/windows/whoisonline.cpp:641
+#: src/gui/windows/whoisonline.cpp:81 src/gui/windows/whoisonline.cpp:616
 msgid "Who Is Online - Updating"
 msgstr "谁在线 - 更新"
 
 #. TRANSLATORS: who is online. button.
-#: src/gui/windows/whoisonline.cpp:95
+#: src/gui/windows/whoisonline.cpp:92
 msgid "Update"
 msgstr "更新"
 
@@ -6643,12 +6640,12 @@ msgid "Who Is Online - "
 msgstr "谁在线 -"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:656
+#: src/gui/windows/whoisonline.cpp:631
 msgid "Who Is Online - error"
 msgstr "谁在线 - 错误"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:698
+#: src/gui/windows/whoisonline.cpp:673
 msgid "Who Is Online - Update"
 msgstr "谁在线 - 更新"
 
@@ -6670,25 +6667,25 @@ msgstr "选择世界"
 #. TRANSLATORS: long key name. must be short.
 #. TRANSLATORS: short key name. must be very short.
 #. TRANSLATORS: long key name, should be short
-#: src/input/inputmanager.cpp:383 src/input/inputmanager.cpp:427
+#: src/input/inputmanager.cpp:360 src/input/inputmanager.cpp:404
 #: src/input/keyboardconfig.cpp:101
 #, c-format
 msgid "key_%d"
 msgstr ""
 
 #. TRANSLATORS: long joystick button name. must be short.
-#: src/input/inputmanager.cpp:389
+#: src/input/inputmanager.cpp:366
 #, c-format
 msgid "JButton%d"
 msgstr ""
 
 #. TRANSLATORS: unknown long key type
-#: src/input/inputmanager.cpp:403
+#: src/input/inputmanager.cpp:380
 msgid "unknown key"
 msgstr ""
 
 #. TRANSLATORS: short joystick button name. muse be very short
-#: src/input/inputmanager.cpp:433
+#: src/input/inputmanager.cpp:410
 #, c-format
 msgid "JB%d"
 msgstr ""
@@ -6696,7 +6693,7 @@ msgstr ""
 #. TRANSLATORS: unknown short key type. must be short
 #. TRANSLATORS: Unknown key short string.
 #. TRANSLATORS: This string must be maximum 5 chars
-#: src/input/inputmanager.cpp:447 src/input/keyboardconfig.cpp:145
+#: src/input/inputmanager.cpp:424 src/input/keyboardconfig.cpp:145
 msgid "u key"
 msgstr ""
 

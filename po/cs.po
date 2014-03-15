@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-03-10 01:34+0300\n"
-"PO-Revision-Date: 2014-03-01 08:14+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2014-03-15 11:37+0300\n"
+"PO-Revision-Date: 2014-03-10 18:13+0000\n"
+"Last-Translator: samuraiii <samurai.no.dojo@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/"
 "cs/)\n"
 "Language: cs\n"
@@ -52,12 +52,12 @@ msgid "miss"
 msgstr "minutí"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1818 src/gui/windows/whoisonline.cpp:863
+#: src/being/being.cpp:1818 src/gui/windows/whoisonline.cpp:838
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1823 src/gui/windows/whoisonline.cpp:868
+#: src/being/being.cpp:1823 src/gui/windows/whoisonline.cpp:843
 msgid "I"
 msgstr "I"
 
@@ -531,37 +531,37 @@ msgstr "Plovoucí bublina"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1139 src/gui/windowmenu.cpp:155
+#: src/client.cpp:1141 src/gui/windowmenu.cpp:155
 #: src/gui/windows/setupwindow.cpp:61
 msgid "Setup"
 msgstr "Nastavení"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1142 src/gui/widgets/tabs/setup_perfomance.cpp:51
+#: src/client.cpp:1144 src/gui/widgets/tabs/setup_perfomance.cpp:51
 msgid "Performance"
 msgstr "Výkon"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1145 src/gui/widgets/tabs/setup_video.cpp:225
+#: src/client.cpp:1147 src/gui/widgets/tabs/setup_video.cpp:225
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1148 src/gui/widgets/tabs/setup_theme.cpp:268
+#: src/client.cpp:1150 src/gui/widgets/tabs/setup_theme.cpp:268
 msgid "Theme"
 msgstr "Téma"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:1151
+#: src/client.cpp:1153
 msgid "About"
-msgstr ""
+msgstr "O ManaPlus"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:1154 src/gui/windowmenu.cpp:71
+#: src/client.cpp:1156 src/gui/windowmenu.cpp:71
 #: src/gui/windows/helpwindow.cpp:50
 msgid "Help"
 msgstr "Nápověda"
@@ -574,7 +574,7 @@ msgstr "Nápověda"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1158 src/gui/popups/popupmenu.cpp:619
+#: src/client.cpp:1160 src/gui/popups/popupmenu.cpp:619
 #: src/gui/windows/didyouknowwindow.cpp:78
 #: src/gui/windows/inventorywindow.cpp:224 src/gui/windows/npcdialog.cpp:69
 #: src/gui/windows/npcdialog.cpp:107 src/gui/windows/questswindow.cpp:124
@@ -583,32 +583,32 @@ msgid "Close"
 msgstr "Zavřít"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1282
+#: src/client.cpp:1284
 msgid "Connecting to server"
 msgstr "Připojuji se k serveru"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1326
+#: src/client.cpp:1331
 msgid "Logging in"
 msgstr "Přihlašuji se"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1368
+#: src/client.cpp:1373
 msgid "Entering game world"
 msgstr "Vstupuji do herního světa"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1491
+#: src/client.cpp:1496
 msgid "Requesting characters"
 msgstr "Vyžaduji postavy"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1531
+#: src/client.cpp:1536
 msgid "Connecting to the game server"
 msgstr "Připojuji se k hernímu serveru"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1543
+#: src/client.cpp:1548
 msgid "Changing game servers"
 msgstr "Vyměňuji herní servery"
 
@@ -623,7 +623,7 @@ msgstr "Vyměňuji herní servery"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1606 src/client.cpp:1617 src/client.cpp:1801
+#: src/client.cpp:1611 src/client.cpp:1622 src/client.cpp:1806
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
 #: src/gui/windows/charcreatedialog.cpp:349
@@ -636,65 +636,65 @@ msgid "Error"
 msgstr "Chyba"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1629
+#: src/client.cpp:1634
 msgid "Requesting registration details"
 msgstr "Požaduji registrační detaily"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1670
+#: src/client.cpp:1675
 msgid "Password Change"
 msgstr "Změna hesla"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1672
+#: src/client.cpp:1677
 msgid "Password changed successfully!"
 msgstr "Heslo úspěšně změněno!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1694
+#: src/client.cpp:1699
 msgid "Email Change"
 msgstr "Změna emailu"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1696
+#: src/client.cpp:1701
 msgid "Email changed successfully!"
 msgstr "Email úspěšně změněn!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1719
+#: src/client.cpp:1724
 msgid "Unregister Successful"
 msgstr "Zrušení registrace úspěšné"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1721
+#: src/client.cpp:1726
 msgid "Farewell, come back any time..."
 msgstr "Nashledanou, vraťte se kdykoli..."
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:2009 src/client.cpp:2024 src/client.cpp:2069
-#: src/client.cpp:2085 src/client.cpp:2512 src/client.cpp:2520
+#: src/client.cpp:2014 src/client.cpp:2029 src/client.cpp:2074
+#: src/client.cpp:2090 src/client.cpp:2517 src/client.cpp:2525
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s neexistuje a vytvoření selhalo. Končím."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2241
+#: src/client.cpp:2246
 #, c-format
 msgid "Invalid update host: %s."
 msgstr "Neplatný host pro update: %s."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2282 src/client.cpp:2289
+#: src/client.cpp:2287 src/client.cpp:2294
 msgid "Error creating updates directory!"
 msgstr "Chyba při vytváření adresáře s updaty!"
 
-#: src/client.cpp:2311 src/client.cpp:2328
+#: src/client.cpp:2316 src/client.cpp:2333
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Chyba: %s neexistuje a nelze ho vytvořit. Ukončuji."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2991
+#: src/client.cpp:2996
 msgid "Do you want to open support page?"
 msgstr "Preješ si otevřít stránku podpory?"
 
@@ -966,12 +966,12 @@ msgid "Saving screenshot failed!"
 msgstr "Ukládání snímku obrazovky selhalo!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:665
+#: src/game.cpp:668
 msgid "The connection to the server was lost."
 msgstr "Spojení se serverem bylo ztraceno."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:668
+#: src/game.cpp:671
 msgid "Network Error"
 msgstr "Chyba sítě"
 
@@ -1326,8 +1326,8 @@ msgstr "Promluv"
 #. TRANSLATORS: buy dialog name
 #. TRANSLATORS: shop window button
 #: src/gui/popups/popupmenu.cpp:242 src/gui/popups/popupmenu.cpp:2599
-#: src/gui/windows/buydialog.cpp:174 src/gui/windows/buydialog.cpp:186
-#: src/gui/windows/buydialog.cpp:240 src/gui/windows/buyselldialog.cpp:67
+#: src/gui/windows/buydialog.cpp:178 src/gui/windows/buydialog.cpp:194
+#: src/gui/windows/buydialog.cpp:252 src/gui/windows/buyselldialog.cpp:67
 msgid "Buy"
 msgstr "Nákup"
 
@@ -1340,7 +1340,7 @@ msgstr "Nákup"
 #. TRANSLATORS: sell dialog button
 #: src/gui/popups/popupmenu.cpp:245 src/gui/popups/popupmenu.cpp:2602
 #: src/gui/windows/buyselldialog.cpp:69 src/gui/windows/selldialog.cpp:56
-#: src/gui/windows/selldialog.cpp:66 src/gui/windows/selldialog.cpp:108
+#: src/gui/windows/selldialog.cpp:70 src/gui/windows/selldialog.cpp:116
 msgid "Sell"
 msgstr "Prodej"
 
@@ -1422,8 +1422,8 @@ msgstr "Vložit jméno do chatu"
 #: src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/changeemaildialog.cpp:55
 #: src/gui/windows/changepassworddialog.cpp:57
-#: src/gui/windows/charcreatedialog.cpp:121
-#: src/gui/windows/connectiondialog.cpp:48
+#: src/gui/windows/charcreatedialog.cpp:119
+#: src/gui/windows/connectiondialog.cpp:50
 #: src/gui/windows/editserverdialog.cpp:58
 #: src/gui/windows/itemamountwindow.cpp:162
 #: src/gui/windows/npcpostdialog.cpp:68 src/gui/windows/quitdialog.cpp:70
@@ -1431,7 +1431,7 @@ msgstr "Vložit jméno do chatu"
 #: src/gui/windows/socialwindow.cpp:1205
 #: src/gui/windows/textcommandeditor.cpp:86 src/gui/windows/textdialog.cpp:55
 #: src/gui/windows/unregisterdialog.cpp:54
-#: src/gui/windows/updaterwindow.cpp:186
+#: src/gui/windows/updaterwindow.cpp:178
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -2104,10 +2104,10 @@ msgstr "Vybrat OK"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/setupactiondata.h:183 src/gui/windows/buydialog.cpp:242
+#: src/gui/setupactiondata.h:183 src/gui/windows/buydialog.cpp:254
 #: src/gui/windows/quitdialog.cpp:52 src/gui/windows/quitdialog.cpp:57
-#: src/gui/windows/quitdialog.cpp:59 src/gui/windows/selldialog.cpp:110
-#: src/gui/windows/serverdialog.cpp:198
+#: src/gui/windows/quitdialog.cpp:59 src/gui/windows/selldialog.cpp:118
+#: src/gui/windows/serverdialog.cpp:200
 msgid "Quit"
 msgstr "Ukončit"
 
@@ -2163,9 +2163,8 @@ msgstr "Skrýt okna"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:369
-#, fuzzy
 msgid "About Window"
-msgstr "Debug okno"
+msgstr "Okno o ManaPlus"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:375
@@ -2447,9 +2446,8 @@ msgstr "Klávesa modifikátoru chatu"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1242
-#, fuzzy
 msgid "Show smiles"
-msgstr "Zobrazovat statusy"
+msgstr "Zobrazit smajlíky"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1312
@@ -2708,8 +2706,8 @@ msgstr "Vybrat2"
 #. TRANSLATORS: command editor button
 #: src/gui/setupactiondata.h:1900 src/gui/widgets/tabs/setup_relations.cpp:200
 #: src/gui/windows/charselectdialog.cpp:108
-#: src/gui/windows/serverdialog.cpp:206 src/gui/windows/shopwindow.cpp:94
-#: src/gui/windows/shopwindow.cpp:101 src/gui/windows/textcommandeditor.cpp:90
+#: src/gui/windows/serverdialog.cpp:208 src/gui/windows/shopwindow.cpp:95
+#: src/gui/windows/shopwindow.cpp:102 src/gui/windows/textcommandeditor.cpp:90
 msgid "Delete"
 msgstr "Smazat"
 
@@ -3012,7 +3010,7 @@ msgstr "Otevři web adresu"
 #. TRANSLATORS: setup item button
 #. TRANSLATORS: servers dialog button
 #: src/gui/widgets/setupitem.cpp:365 src/gui/widgets/setupitem.cpp:501
-#: src/gui/windows/serverdialog.cpp:204
+#: src/gui/windows/serverdialog.cpp:206
 msgid "Edit"
 msgstr "Upravit"
 
@@ -4197,6 +4195,8 @@ msgstr "Požít speciální diagonální rychlost pro pohyb hráčů"
 msgid ""
 "Emulate right mouse button by long mouse click (usefull for touch interfaces)"
 msgstr ""
+"Emulovat pravé kliknutí myši pomocí dlouhého kliknutí (užitečné pro dotyková "
+"rozhraní)"
 
 #. TRANSLATORS: relations table header
 #. TRANSLATORS: bot checker window table header
@@ -4811,13 +4811,12 @@ msgstr "Povol spuštění spořiče obrazovky"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_visual.cpp:208
-#, fuzzy
 msgid "Screenshots"
-msgstr "Snímek obrazovky"
+msgstr "Snímky obrazovky"
 
 #: src/gui/widgets/tabs/setup_visual.cpp:210
 msgid "Add water mark into screenshots"
-msgstr ""
+msgstr "Přidat ke snímkům obrazovky vodotisk"
 
 #. TRANSLATORS: short button name for who is online window.
 #: src/gui/windowmenu.cpp:67
@@ -4982,7 +4981,7 @@ msgstr "NAS"
 
 #. TRANSLATORS: short key name
 #. TRANSLATORS: outfits window label
-#: src/gui/windowmenu.cpp:289 src/gui/windows/outfitwindow.cpp:71
+#: src/gui/windowmenu.cpp:289 src/gui/windows/outfitwindow.cpp:70
 #: src/gui/windows/outfitwindow.cpp:561
 #, c-format
 msgid "Key: %s"
@@ -5011,14 +5010,14 @@ msgstr "Vytvořit předměty"
 
 #. TRANSLATORS: buy dialog label
 #. TRANSLATORS: sell dialog label
-#: src/gui/windows/buydialog.cpp:220 src/gui/windows/buydialog.cpp:507
-#: src/gui/windows/selldialog.cpp:100 src/gui/windows/selldialog.cpp:356
+#: src/gui/windows/buydialog.cpp:232 src/gui/windows/buydialog.cpp:519
+#: src/gui/windows/selldialog.cpp:108 src/gui/windows/selldialog.cpp:364
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Cena: %s / Celkem %s"
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:229
+#: src/gui/windows/buydialog.cpp:241
 msgid "Amount:"
 msgstr "Počet:"
 
@@ -5028,9 +5027,9 @@ msgstr "Počet:"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (plus sign)
-#: src/gui/windows/buydialog.cpp:234 src/gui/windows/itemamountwindow.cpp:158
+#: src/gui/windows/buydialog.cpp:246 src/gui/windows/itemamountwindow.cpp:158
 #: src/gui/windows/itemamountwindow.cpp:193 src/gui/windows/npcdialog.cpp:100
-#: src/gui/windows/selldialog.cpp:104 src/gui/windows/statuswindow.cpp:829
+#: src/gui/windows/selldialog.cpp:112 src/gui/windows/statuswindow.cpp:829
 msgid "+"
 msgstr "+"
 
@@ -5040,16 +5039,16 @@ msgstr "+"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (minus sign)
-#: src/gui/windows/buydialog.cpp:237 src/gui/windows/itemamountwindow.cpp:156
+#: src/gui/windows/buydialog.cpp:249 src/gui/windows/itemamountwindow.cpp:156
 #: src/gui/windows/itemamountwindow.cpp:190 src/gui/windows/npcdialog.cpp:102
-#: src/gui/windows/selldialog.cpp:106 src/gui/windows/statuswindow.cpp:842
+#: src/gui/windows/selldialog.cpp:114 src/gui/windows/statuswindow.cpp:842
 msgid "-"
 msgstr "-"
 
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
-#: src/gui/windows/buydialog.cpp:240 src/gui/windows/charcreatedialog.cpp:119
+#: src/gui/windows/buydialog.cpp:252 src/gui/windows/charcreatedialog.cpp:117
 #: src/gui/windows/charselectdialog.cpp:585
 #: src/gui/windows/socialwindow.cpp:1274
 msgid "Create"
@@ -5060,7 +5059,7 @@ msgstr "Vytvořit"
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
 #. TRANSLATORS: status bar label
-#: src/gui/windows/buydialog.cpp:244 src/gui/windows/selldialog.cpp:112
+#: src/gui/windows/buydialog.cpp:256 src/gui/windows/selldialog.cpp:120
 #: src/gui/windows/statuswindow.cpp:568 src/gui/windows/statuswindow.cpp:623
 #: src/gui/windows/statuswindow.cpp:826 src/gui/windows/statuswindow.cpp:858
 msgid "Max"
@@ -5276,7 +5275,7 @@ msgstr "Přepnout přihlášení"
 #. TRANSLATORS: updater window button
 #: src/gui/windows/charselectdialog.cpp:104
 #: src/gui/windows/charselectdialog.cpp:580
-#: src/gui/windows/updaterwindow.cpp:188
+#: src/gui/windows/updaterwindow.cpp:180
 msgid "Play"
 msgstr "Hrát"
 
@@ -5609,7 +5608,7 @@ msgstr "Upravit server"
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
 #: src/gui/windows/editserverdialog.cpp:54
-#: src/gui/windows/serverdialog.cpp:200
+#: src/gui/windows/serverdialog.cpp:202
 msgid "Connect"
 msgstr "Připojit"
 
@@ -5704,24 +5703,24 @@ msgid "Unknown."
 msgstr "Neznámý."
 
 #. TRANSLATORS: kill stats window button
-#: src/gui/windows/killstats.cpp:50
+#: src/gui/windows/killstats.cpp:46
 msgid "Reset stats"
 msgstr "Reset statistik"
 
 #. TRANSLATORS: kill stats window button
-#: src/gui/windows/killstats.cpp:52
+#: src/gui/windows/killstats.cpp:48
 msgid "Reset timer"
 msgstr "Reset časů"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:57 src/gui/windows/killstats.cpp:165
+#: src/gui/windows/killstats.cpp:53 src/gui/windows/killstats.cpp:165
 #: src/gui/windows/killstats.cpp:270 src/gui/windows/killstats.cpp:512
 #, c-format
 msgid "Kills: %s, total exp: %s"
 msgstr "Zabití: %s, celkem zk %s"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:60 src/gui/windows/killstats.cpp:167
+#: src/gui/windows/killstats.cpp:56 src/gui/windows/killstats.cpp:167
 #: src/gui/windows/killstats.cpp:247 src/gui/windows/killstats.cpp:262
 #: src/gui/windows/killstats.cpp:514
 #, c-format
@@ -5729,7 +5728,7 @@ msgid "Avg Exp: %s"
 msgstr "Prům Zk: %s"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:62 src/gui/windows/killstats.cpp:170
+#: src/gui/windows/killstats.cpp:58 src/gui/windows/killstats.cpp:170
 #: src/gui/windows/killstats.cpp:252 src/gui/windows/killstats.cpp:266
 #: src/gui/windows/killstats.cpp:517
 #, c-format
@@ -5737,15 +5736,15 @@ msgid "No. of avg mob to next level: %s"
 msgstr "Počet prům. oblud do úrovně: %s"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:65 src/gui/windows/killstats.cpp:181
+#: src/gui/windows/killstats.cpp:61 src/gui/windows/killstats.cpp:181
 #: src/gui/windows/killstats.cpp:274 src/gui/windows/killstats.cpp:520
 #, c-format
 msgid "Kills/Min: %s, Exp/Min: %s"
 msgstr "Zabití/Min: %s, Zk/Min: %s"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:69 src/gui/windows/killstats.cpp:74
-#: src/gui/windows/killstats.cpp:79 src/gui/windows/killstats.cpp:340
+#: src/gui/windows/killstats.cpp:65 src/gui/windows/killstats.cpp:70
+#: src/gui/windows/killstats.cpp:75 src/gui/windows/killstats.cpp:340
 #: src/gui/windows/killstats.cpp:359 src/gui/windows/killstats.cpp:380
 #, c-format
 msgid "Exp speed per %d min: %s"
@@ -5754,8 +5753,8 @@ msgstr[0] "Rychlost Zk za %d min: %s"
 msgstr[1] "Rychlost Zk za %d min: %s"
 msgstr[2] "Rychlost Zk za %d min: %s"
 
-#: src/gui/windows/killstats.cpp:71 src/gui/windows/killstats.cpp:76
-#: src/gui/windows/killstats.cpp:82
+#: src/gui/windows/killstats.cpp:67 src/gui/windows/killstats.cpp:72
+#: src/gui/windows/killstats.cpp:78
 #, c-format
 msgid "Time for next level per %d min: %s"
 msgid_plural "Time for next level per %d min: %s"
@@ -5764,12 +5763,12 @@ msgstr[1] "Čas do další úrovně při %d min: %s"
 msgstr[2] "Čas do další úrovně při %d min: %s"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:85 src/gui/windows/killstats.cpp:279
+#: src/gui/windows/killstats.cpp:81 src/gui/windows/killstats.cpp:279
 msgid "Last kill exp:"
 msgstr "Zk za poslední zabití:"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:88 src/gui/windows/killstats.cpp:411
+#: src/gui/windows/killstats.cpp:84 src/gui/windows/killstats.cpp:411
 #: src/gui/windows/killstats.cpp:418 src/gui/windows/killstats.cpp:425
 #: src/gui/windows/killstats.cpp:431
 msgid "Time before jacko spawn:"
@@ -5861,42 +5860,42 @@ msgstr "Host updatu: %s"
 msgid "Open register url"
 msgstr "Otevřít registrační url"
 
-#: src/gui/windows/ministatuswindow.cpp:67
+#: src/gui/windows/ministatuswindow.cpp:63
 msgid "health bar"
 msgstr "pruh zdraví"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:78
+#: src/gui/windows/ministatuswindow.cpp:74
 msgid "mana bar"
 msgstr "pruh many"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:82
+#: src/gui/windows/ministatuswindow.cpp:78
 msgid "experience bar"
 msgstr "pruh zkušeností"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:87
+#: src/gui/windows/ministatuswindow.cpp:83
 msgid "weight bar"
 msgstr "pruh váhy"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:93
+#: src/gui/windows/ministatuswindow.cpp:89
 msgid "inventory slots bar"
 msgstr "pruh míst v inventáři"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:97
+#: src/gui/windows/ministatuswindow.cpp:93
 msgid "money bar"
 msgstr "pruh peněz"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:101
+#: src/gui/windows/ministatuswindow.cpp:97
 msgid "arrows bar"
 msgstr "pruh šípů"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:106
+#: src/gui/windows/ministatuswindow.cpp:102
 msgid "status bar"
 msgstr "stavový řádek"
 
@@ -5953,8 +5952,8 @@ msgstr "Odeslat"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: trade window button
-#: src/gui/windows/npcdialog.cpp:109 src/gui/windows/serverdialog.cpp:202
-#: src/gui/windows/shopwindow.cpp:92 src/gui/windows/shopwindow.cpp:99
+#: src/gui/windows/npcdialog.cpp:109 src/gui/windows/serverdialog.cpp:204
+#: src/gui/windows/shopwindow.cpp:93 src/gui/windows/shopwindow.cpp:100
 #: src/gui/windows/tradewindow.cpp:78
 msgid "Add"
 msgstr "Přidat"
@@ -6044,12 +6043,12 @@ msgid "Passwords do not match."
 msgstr "Hesla se neshodují."
 
 #. TRANSLATORS: sell confirmation header
-#: src/gui/windows/selldialog.cpp:246
+#: src/gui/windows/selldialog.cpp:254
 msgid "sell item"
 msgstr "prodat předmět"
 
 #. TRANSLATORS: sell confirmation message
-#: src/gui/windows/selldialog.cpp:248
+#: src/gui/windows/selldialog.cpp:256
 #, c-format
 msgid "Do you really want to sell %s?"
 msgstr "Opravdu chceš prodat %s?"
@@ -6060,7 +6059,7 @@ msgid "Choose Your Server"
 msgstr "Zvolte server"
 
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/serverdialog.cpp:208
+#: src/gui/windows/serverdialog.cpp:210
 msgid "Load"
 msgstr "Načíst"
 
@@ -6122,23 +6121,23 @@ msgid "Personal Shop"
 msgstr "Osobní obchod"
 
 #. TRANSLATORS: shop window label
-#: src/gui/windows/shopwindow.cpp:88
+#: src/gui/windows/shopwindow.cpp:89
 msgid "Buy items"
 msgstr "Koupit věci"
 
 #. TRANSLATORS: shop window label
-#: src/gui/windows/shopwindow.cpp:90
+#: src/gui/windows/shopwindow.cpp:91
 msgid "Sell items"
 msgstr "Prodat věci"
 
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
-#: src/gui/windows/shopwindow.cpp:96 src/gui/windows/shopwindow.cpp:103
+#: src/gui/windows/shopwindow.cpp:97 src/gui/windows/shopwindow.cpp:104
 msgid "Announce"
 msgstr "Oznámit"
 
 #. TRANSLATORS: shop window checkbox
-#: src/gui/windows/shopwindow.cpp:107
+#: src/gui/windows/shopwindow.cpp:108
 msgid "Show links in announce"
 msgstr "Zobrazit odkazy v oznámení"
 
@@ -6622,7 +6621,7 @@ msgid "Updating..."
 msgstr "Aktualizuje se..."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:184
+#: src/gui/windows/updaterwindow.cpp:176
 msgid "Connecting..."
 msgstr "Připojuji se..."
 
@@ -6651,12 +6650,12 @@ msgid "Completed"
 msgstr "Hotovo"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:81 src/gui/windows/whoisonline.cpp:641
+#: src/gui/windows/whoisonline.cpp:81 src/gui/windows/whoisonline.cpp:616
 msgid "Who Is Online - Updating"
 msgstr "Kdo je online - Obnovuji"
 
 #. TRANSLATORS: who is online. button.
-#: src/gui/windows/whoisonline.cpp:95
+#: src/gui/windows/whoisonline.cpp:92
 msgid "Update"
 msgstr "Obnovit"
 
@@ -6666,12 +6665,12 @@ msgid "Who Is Online - "
 msgstr "Kdo je online - "
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:656
+#: src/gui/windows/whoisonline.cpp:631
 msgid "Who Is Online - error"
 msgstr "Kdo je online - chyba"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:698
+#: src/gui/windows/whoisonline.cpp:673
 msgid "Who Is Online - Update"
 msgstr "Kdo je přihlášený - "
 
@@ -6693,25 +6692,25 @@ msgstr "Vyber svět"
 #. TRANSLATORS: long key name. must be short.
 #. TRANSLATORS: short key name. must be very short.
 #. TRANSLATORS: long key name, should be short
-#: src/input/inputmanager.cpp:383 src/input/inputmanager.cpp:427
+#: src/input/inputmanager.cpp:360 src/input/inputmanager.cpp:404
 #: src/input/keyboardconfig.cpp:101
 #, c-format
 msgid "key_%d"
 msgstr "kl_%d"
 
 #. TRANSLATORS: long joystick button name. must be short.
-#: src/input/inputmanager.cpp:389
+#: src/input/inputmanager.cpp:366
 #, c-format
 msgid "JButton%d"
 msgstr "Jknoflík%d"
 
 #. TRANSLATORS: unknown long key type
-#: src/input/inputmanager.cpp:403
+#: src/input/inputmanager.cpp:380
 msgid "unknown key"
 msgstr "neznámá klávesa"
 
 #. TRANSLATORS: short joystick button name. muse be very short
-#: src/input/inputmanager.cpp:433
+#: src/input/inputmanager.cpp:410
 #, c-format
 msgid "JB%d"
 msgstr "JK%d"
@@ -6719,7 +6718,7 @@ msgstr "JK%d"
 #. TRANSLATORS: unknown short key type. must be short
 #. TRANSLATORS: Unknown key short string.
 #. TRANSLATORS: This string must be maximum 5 chars
-#: src/input/inputmanager.cpp:447 src/input/keyboardconfig.cpp:145
+#: src/input/inputmanager.cpp:424 src/input/keyboardconfig.cpp:145
 msgid "u key"
 msgstr "n kl"
 
