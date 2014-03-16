@@ -153,12 +153,12 @@ class Item
         const ItemInfo &getInfo() const A_WARN_UNUSED
         { return ItemDB::get(mId); }
 
-        std::string getName() A_WARN_UNUSED;
+        std::string getName() const A_WARN_UNUSED;
 
         static Image *getImage(const int id,
                                const unsigned char color) A_WARN_UNUSED;
 
-        bool isHaveTag(const int tagId) A_WARN_UNUSED;
+        bool isHaveTag(const int tagId) const A_WARN_UNUSED;
 
         unsigned char getColor() const A_WARN_UNUSED
         { return mColor; }

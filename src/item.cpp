@@ -92,11 +92,12 @@ void Item::setId(const int id, const unsigned char color)
     }
 }
 
-bool Item::isHaveTag(const int tagId)
+bool Item::isHaveTag(const int tagId) const
 {
-    if (mTags.find(tagId) == mTags.end())
+    const std::map <int, int>::const_iterator it = mTags.find(tagId);
+    if (it == mTags.end())
         return false;
-    return mTags[tagId] > 0;
+    return (*it).second > 0;
 }
 
 Image *Item::getImage(const int id, const unsigned char color)
@@ -112,7 +113,7 @@ Image *Item::getImage(const int id, const unsigned char color)
     return image;
 }
 
-std::string Item::getName()
+std::string Item::getName() const
 {
     const ItemInfo &info = ItemDB::get(mId);
     if (serverVersion > 0)
