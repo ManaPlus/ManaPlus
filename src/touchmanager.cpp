@@ -242,8 +242,8 @@ void TouchManager::draw()
         return;
 
     Font *const font = boldFont;
-    mainGraphics->setColorAll(Theme::getThemeColor(Theme::TEXT),
-        Theme::getThemeColor(Theme::TEXT_OUTLINE));
+    mainGraphics->setColorAll(theme->getColor(Theme::TEXT, 255),
+        theme->getColor(Theme::TEXT_OUTLINE, 255));
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
     {
         const TouchItem *const item = *it;

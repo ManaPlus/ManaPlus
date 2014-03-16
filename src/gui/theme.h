@@ -444,28 +444,6 @@ class Theme final : public Palette, public ConfigListener
             THEME_PROG_END
         };
 
-        /**
-         * Gets the color associated with the type. Sets the alpha channel
-         * before returning.
-         *
-         * @param type the color type requested
-         * @param alpha alpha channel to use
-         *
-         * @return the requested color
-         */
-        inline static const Color &getThemeColor(const int type,
-                                                 const int alpha = 255)
-                                                 A_WARN_UNUSED
-        { return theme->getColor(type, alpha); }
-
-        static const Color &getThemeCharColor(const signed char c,
-                                              bool &valid) A_WARN_UNUSED
-        { return theme->getCharColor(c, valid); }
-
-        static int getThemeIdByChar(const signed char c,
-                                    bool &valid) A_WARN_UNUSED
-        { return theme->getIdByChar(c, valid); }
-
         static Color getProgressColor(const int type,
                                       const float progress) A_WARN_UNUSED;
 

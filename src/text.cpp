@@ -49,7 +49,7 @@ Text::Text(const std::string &text, const int x, const int y,
     mXOffset(0),
     mText(text),
     mColor(color),
-    mOutlineColor(Theme::getThemeColor(Theme::OUTLINE)),
+    mOutlineColor(theme->getColor(Theme::OUTLINE, 255)),
     mIsSpeech(isSpeech)
 {
     if (!textManager)

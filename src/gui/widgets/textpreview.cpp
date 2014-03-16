@@ -116,7 +116,7 @@ void TextPreview::draw(Graphics* graphics)
         Color(mTextColor2->r, mTextColor2->g, mTextColor2->b, alpha));
 
     if (mOutline && mTextColor != mTextColor2)
-        graphics->setColor2(Theme::getThemeColor(Theme::OUTLINE));
+        graphics->setColor2(getThemeColor(Theme::OUTLINE, 255));
 
     mFont->drawString(graphics, mText, mPadding + 1, mPadding + 1);
     BLOCK_END("TextPreview::draw")

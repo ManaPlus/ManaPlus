@@ -114,8 +114,8 @@ MiniStatusWindow::MiniStatusWindow() :
 
     StatusWindow::updateHPBar(mHpBar);
 
-    if (Net::getGameHandler()->canUseMagicBar())
-        StatusWindow::updateMPBar(mMpBar);
+    if (Net::getGameHandler()->canUseMagicBar() && statusWindow)
+        statusWindow->updateMPBar(mMpBar);
 
     const int job = Net::getPlayerHandler()->getJobLocation()
         && serverConfig.getValueBool("showJob", true);
@@ -183,8 +183,7 @@ ProgressBar *MiniStatusWindow::createBar(const float progress,
         progress, width, height, backColor, skin, skinFill);
     bar->setActionEventId(name);
     bar->setId(description);
-    bar->setColor(Theme::getThemeColor(textColor),
-        Theme::getThemeColor(textColor + 1));
+    bar->setColor(getThemeColor(textColor), getThemeColor(textColor + 1));
     mBars.push_back(bar);
     mBarNames[name] = bar;
     return bar;
@@ -264,7 +263,7 @@ void MiniStatusWindow::processEvent(const Channels channel A_UNUSED,
         }
         else if (id == PlayerInfo::MP || id == PlayerInfo::MAX_MP)
         {
-            StatusWindow::updateMPBar(mMpBar);
+            statusWindow->updateMPBar(mMpBar);
         }
         else if (id == PlayerInfo::EXP || id == PlayerInfo::EXP_NEEDED)
         {
@@ -282,14 +281,14 @@ void MiniStatusWindow::processEvent(const Channels channel A_UNUSED,
     }
     else if (event.getName() == EVENT_UPDATESTAT)
     {
-        StatusWindow::updateMPBar(mMpBar);
+        statusWindow->updateMPBar(mMpBar);
         StatusWindow::updateJobBar(mJobBar);
     }
 }
 
 void MiniStatusWindow::updateStatus()
 {
-    StatusWindow::updateStatusBar(mStatusBar);
+    statusWindow->updateStatusBar(mStatusBar);
     if (mStatusPopup && mStatusPopup->isPopupVisible())
         mStatusPopup->update();
 }

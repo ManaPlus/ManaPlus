@@ -80,7 +80,7 @@ void TextParticle::draw(Graphics *const graphics,
     graphics->setColor(color);
     if (mOutline)
     {
-        graphics->setColor2(Theme::getThemeColor(
+        graphics->setColor2(theme->getColor(
             Theme::OUTLINE, static_cast<int>(alpha)));
     }
     mTextFont->drawString(graphics, mText, screenX - mTextWidth, screenY);

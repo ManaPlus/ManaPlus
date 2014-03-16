@@ -178,7 +178,7 @@ LocalPlayer::LocalPlayer(const int id, const int subtype) :
     mAttackRange = 0;
     mLevel = 1;
     mAdvanced = true;
-    mTextColor = &Theme::getThemeColor(Theme::PLAYER);
+    mTextColor = &theme->getColor(Theme::PLAYER, 255);
     if (userPalette)
         mNameColor = &userPalette->getColor(UserPalette::SELF);
     else

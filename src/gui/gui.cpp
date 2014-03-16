@@ -162,8 +162,8 @@ Gui::Gui() :
     mLastMouseRealY(0),
 #endif
     mFocusListeners(),
-    mForegroundColor(Theme::getThemeColor(Theme::TEXT)),
-    mForegroundColor2(Theme::getThemeColor(Theme::TEXT_OUTLINE)),
+    mForegroundColor(theme->getColor(Theme::TEXT, 255)),
+    mForegroundColor2(theme->getColor(Theme::TEXT_OUTLINE, 255)),
     mTime(0),
     mCustomCursor(false),
     mDoubleClick(true)
