@@ -40,8 +40,11 @@
 class DyePalette;
 class Image;
 class ImageSet;
+class Theme;
 
 const int THEME_PALETTES = 5;
+
+extern Theme *theme;
 
 struct ThemeInfo final
 {
@@ -176,11 +179,11 @@ class Skin final
 class Theme final : public Palette, public ConfigListener
 {
     public:
+        Theme();
+
+        ~Theme();
+
         A_DELETE_COPY(Theme)
-
-        static Theme *instance() A_WARN_UNUSED;
-
-        static void deleteInstance();
 
         static void prepareThemePath();
 
@@ -453,15 +456,15 @@ class Theme final : public Palette, public ConfigListener
         inline static const Color &getThemeColor(const int type,
                                                  const int alpha = 255)
                                                  A_WARN_UNUSED
-        { return mInstance->getColor(type, alpha); }
+        { return theme->getColor(type, alpha); }
 
         static const Color &getThemeCharColor(const signed char c,
                                               bool &valid) A_WARN_UNUSED
-        { return mInstance->getCharColor(c, valid); }
+        { return theme->getCharColor(c, valid); }
 
         static int getThemeIdByChar(const signed char c,
                                     bool &valid) A_WARN_UNUSED
-        { return mInstance->getIdByChar(c, valid); }
+        { return theme->getIdByChar(c, valid); }
 
         static Color getProgressColor(const int type,
                                       const float progress) A_WARN_UNUSED;
@@ -513,10 +516,6 @@ class Theme final : public Palette, public ConfigListener
         static ThemeInfo *loadInfo(const std::string &themeName) A_WARN_UNUSED;
 
     private:
-        Theme();
-
-        ~Theme();
-
         Skin *readSkin(const std::string &filename0,
                        const bool full) A_WARN_UNUSED;
 
@@ -529,7 +528,6 @@ class Theme final : public Palette, public ConfigListener
         static std::string mThemePath;
         static std::string mThemeName;
         static std::string mScreenDensity;
-        static Theme *mInstance;
 
         static bool tryThemePath(const std::string &themePath) A_WARN_UNUSED;
 

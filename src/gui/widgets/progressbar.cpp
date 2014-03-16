@@ -70,7 +70,6 @@ ProgressBar::ProgressBar(const Widget2 *const widget,
     addWidgetListener(this);
     setSize(width, height);
 
-    Theme *const theme = Theme::instance();
     if (theme)
     {
         mSkin = theme->load(skin, "progressbar.xml");
@@ -94,7 +93,6 @@ ProgressBar::~ProgressBar()
         gui->removeDragged(this);
 
     mInstances--;
-    Theme *const theme = Theme::instance();
     if (mSkin)
     {
         if (theme)
@@ -142,7 +140,7 @@ void ProgressBar::logic()
 void ProgressBar::updateAlpha()
 {
     const float alpha = std::max(client->getGuiAlpha(),
-        Theme::instance()->getMinimumOpacity());
+        theme->getMinimumOpacity());
     mAlpha = alpha;
 }
 

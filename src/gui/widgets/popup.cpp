@@ -51,7 +51,6 @@ Popup::Popup(const std::string &name,
     if (skin == "")
         skin = "popup.xml";
 
-    Theme *const theme = Theme::instance();
     if (theme)
     {
         mSkin = theme->load(skin, "popup.xml");
@@ -78,7 +77,6 @@ Popup::~Popup()
 
     if (mSkin)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
             theme->unload(mSkin);
         mSkin = nullptr;

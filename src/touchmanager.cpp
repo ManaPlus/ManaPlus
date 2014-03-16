@@ -122,7 +122,6 @@ void TouchManager::loadTouchItem(TouchItem **item, const std::string &name,
                                  const TouchFuncPtr fOut)
 {
     *item = nullptr;
-    Theme *const theme = Theme::instance();
     if (!theme)
         return;
     ImageRect *images = new ImageRect;
@@ -394,7 +393,6 @@ void TouchManager::loadPad()
 void TouchManager::loadButtons()
 {
     const int sz = (mButtonsSize + 1) * 50;
-    Theme *const theme = Theme::instance();
     if (!theme)
         return;
     Skin *const skin = theme->load("dbutton.xml", "");

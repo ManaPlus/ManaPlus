@@ -155,7 +155,6 @@ Window::Window(const std::string &caption, const bool modal,
 
     int childPalette = 1;
     // Loads the skin
-    Theme *const theme = Theme::instance();
     if (theme)
     {
         mSkin = theme->load(skin, "window.xml");
@@ -236,7 +235,6 @@ Window::~Window()
 
     if (mSkin)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
             theme->unload(mSkin);
         mSkin = nullptr;
@@ -1207,7 +1205,7 @@ bool Window::isResizeAllowed(const MouseEvent &event) const
 int Window::getGuiAlpha() const
 {
     const float alpha = std::max(client->getGuiAlpha(),
-        Theme::instance()->getMinimumOpacity());
+        theme->getMinimumOpacity());
     return static_cast<int>(alpha * 255.0F);
 }
 

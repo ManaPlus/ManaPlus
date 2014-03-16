@@ -106,9 +106,9 @@ CheckBox::CheckBox(const Widget2 *const widget,
     mForegroundColor2 = getThemeColor(Theme::CHECKBOX_OUTLINE);
     if (instances == 0)
     {
-        if (Theme::instance())
+        if (theme)
         {
-            mSkin = Theme::instance()->load("checkbox.xml", "");
+            mSkin = theme->load("checkbox.xml", "");
             updateAlpha();
         }
     }
@@ -142,8 +142,8 @@ CheckBox::~CheckBox()
 
     if (instances == 0)
     {
-        if (Theme::instance())
-            Theme::instance()->unload(mSkin);
+        if (theme)
+            theme->unload(mSkin);
     }
 }
 
@@ -162,7 +162,7 @@ void CheckBox::draw(Graphics *const graphics)
 void CheckBox::updateAlpha()
 {
     const float alpha = std::max(client->getGuiAlpha(),
-        Theme::instance()->getMinimumOpacity());
+        theme->getMinimumOpacity());
 
     if (mAlpha != alpha)
     {

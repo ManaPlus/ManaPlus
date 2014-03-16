@@ -133,7 +133,7 @@ Slider::~Slider()
     delete mVertexes;
     mVertexes = nullptr;
     mInstances--;
-    if (mInstances == 0 && Theme::instance())
+    if (mInstances == 0)
     {
         for (int mode = 0; mode < 2; mode ++)
             Theme::unloadRect(buttons[mode]);
@@ -153,7 +153,6 @@ void Slider::init()
     // Load resources
     if (mInstances == 0)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
         {
             for (int mode = 0; mode < 2; mode ++)
@@ -171,7 +170,7 @@ void Slider::init()
 void Slider::updateAlpha()
 {
     const float alpha = std::max(client->getGuiAlpha(),
-        Theme::instance()->getMinimumOpacity());
+        theme->getMinimumOpacity());
 
     if (alpha != mAlpha)
     {

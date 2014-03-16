@@ -122,7 +122,7 @@ void EquipmentWindow::postInit()
     mUnequip->setEnabled(false);
 
     ImageRect rect;
-    Theme::instance()->loadRect(rect, "equipment_background.xml", "", 0, 1);
+    theme->loadRect(rect, "equipment_background.xml", "", 0, 1);
     mSlotBackground = rect.grid[0];
     mSlotHighlightedBackground = rect.grid[1];
     add(mPlayerBox);

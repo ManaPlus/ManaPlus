@@ -123,9 +123,8 @@ Tab::~Tab()
         gui->removeDragged(this);
 
     mInstances--;
-    if (mInstances == 0 && Theme::instance())
+    if (mInstances == 0 && theme)
     {
-        Theme *const theme = Theme::instance();
         for (int mode = 0; mode < TAB_COUNT; mode ++)
             theme->unload(tabImg[mode]);
     }
@@ -154,7 +153,6 @@ void Tab::init()
     if (mInstances == 0)
     {
         // Load the skin
-        Theme *const theme = Theme::instance();
         if (theme)
         {
             for (int mode = 0; mode < TAB_COUNT; mode ++)
@@ -177,7 +175,7 @@ void Tab::init()
 void Tab::updateAlpha()
 {
     const float alpha = std::max(client->getGuiAlpha(),
-        Theme::instance()->getMinimumOpacity());
+        theme->getMinimumOpacity());
 
     if (alpha != mAlpha)
     {

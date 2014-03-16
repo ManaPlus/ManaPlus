@@ -168,8 +168,7 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mName(),
     mItemPopup(new ItemPopup),
     mShowMatrix(nullptr),
-    mSkin(Theme::instance() ? Theme::instance()->load(
-          "itemcontainer.xml", "") : nullptr),
+    mSkin(theme ? theme->load("itemcontainer.xml", "") : nullptr),
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
     mEquipedColor2(getThemeColor(Theme::ITEM_EQUIPPED_OUTLINE)),
     mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED)),
@@ -215,8 +214,8 @@ ItemContainer::~ItemContainer()
         mProtectedImg = nullptr;
     }
 
-    if (Theme::instance())
-        Theme::instance()->unload(mSkin);
+    if (theme)
+        theme->unload(mSkin);
 
     delete mItemPopup;
     mItemPopup = nullptr;

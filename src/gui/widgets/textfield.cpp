@@ -125,7 +125,6 @@ TextField::TextField(const Widget2 *restrict const widget,
 
     if (instances == 0)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
         {
             mSkin = theme->loadSkinRect(skin, "textfield.xml",
@@ -160,7 +159,6 @@ TextField::~TextField()
     instances--;
     if (instances == 0)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
         {
             theme->unload(mSkin);
@@ -172,7 +170,7 @@ TextField::~TextField()
 void TextField::updateAlpha()
 {
     const float alpha = std::max(client->getGuiAlpha(),
-        Theme::instance()->getMinimumOpacity());
+        theme->getMinimumOpacity());
 
     if (alpha != mAlpha)
     {

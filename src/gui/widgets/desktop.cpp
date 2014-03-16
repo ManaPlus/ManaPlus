@@ -51,7 +51,6 @@ Desktop::Desktop(const Widget2 *const widget) :
 
     Wallpaper::loadWallpapers();
 
-    Theme *const theme = Theme::instance();
     if (theme)
         mSkin = theme->load("desktop.xml", "");
 
@@ -80,8 +79,8 @@ Desktop::~Desktop()
         mWallpaper->decRef();
         mWallpaper = nullptr;
     }
-    if (Theme::instance())
-        Theme::instance()->unload(mSkin);
+    if (theme)
+        theme->unload(mSkin);
 }
 
 void Desktop::postInit()

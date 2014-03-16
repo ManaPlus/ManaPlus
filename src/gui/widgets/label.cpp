@@ -105,7 +105,6 @@ Label::~Label()
     mInstances --;
     if (mInstances == 0)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
             theme->unload(mSkin);
     }
@@ -117,7 +116,6 @@ void Label::init()
     mForegroundColor2 = getThemeColor(Theme::LABEL_OUTLINE);
     if (mInstances == 0)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
             mSkin = theme->load("label.xml", "");
     }

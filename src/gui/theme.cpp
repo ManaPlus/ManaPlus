@@ -46,7 +46,7 @@ std::string Theme::mThemePath;
 std::string Theme::mThemeName;
 std::string Theme::mScreenDensity;
 
-Theme *Theme::mInstance = nullptr;
+Theme *theme = nullptr;
 
 // Set the theme path...
 static void initDefaultThemePath()
@@ -245,27 +245,13 @@ Theme::~Theme()
     delete_all(mProgressColors);
 }
 
-Theme *Theme::instance()
-{
-    if (!mInstance)
-        mInstance = new Theme;
-
-    return mInstance;
-}
-
-void Theme::deleteInstance()
-{
-    delete mInstance;
-    mInstance = nullptr;
-}
-
 Color Theme::getProgressColor(const int type, const float progress)
 {
     int color[3] = {0, 0, 0};
 
-    if (mInstance)
+    if (theme)
     {
-        const DyePalette *const dye = mInstance->mProgressColors[type];
+        const DyePalette *const dye = theme->mProgressColors[type];
 
         if (dye)
             dye->getColor(progress, color);
@@ -639,8 +625,8 @@ bool Theme::tryThemePath(const std::string &themeName)
         {
             mThemePath = path;
             mThemeName = themeName;
-            if (instance())
-                instance()->loadColors("");
+            if (theme)
+                theme->loadColors("");
             return true;
         }
     }
@@ -703,7 +689,7 @@ void Theme::prepareThemePath()
     if (mThemePath.empty())
         mThemePath = "graphics/gui";
 
-    instance()->loadColors(mThemePath);
+    theme->loadColors(mThemePath);
 
     logger->log("Selected Theme: " + mThemePath);
 }
@@ -1191,7 +1177,9 @@ void Theme::unloadRect(const ImageRect &rect, const int start,
 Image *Theme::getImageFromThemeXml(const std::string &name,
                                    const std::string &name2)
 {
-    Theme *const theme = Theme::instance();
+    if (!theme)
+        return nullptr;
+
     Skin *const skin = theme->load(name, name2, false);
     if (skin)
     {
@@ -1212,7 +1200,9 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
                                          const std::string &name2,
                                          const int w, const int h)
 {
-    Theme *const theme = Theme::instance();
+    if (!theme)
+        return nullptr;
+
     Skin *const skin = theme->load(name, name2, false);
     if (skin)
     {

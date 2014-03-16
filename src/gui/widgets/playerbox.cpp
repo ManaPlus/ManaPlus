@@ -86,7 +86,6 @@ void PlayerBox::init(std::string name, std::string selectedName)
     setFrameSize(2);
     addMouseListener(this);
 
-    Theme *const theme = Theme::instance();
     if (theme)
     {
         if (name.empty())

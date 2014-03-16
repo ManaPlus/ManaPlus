@@ -50,7 +50,6 @@ TextPreview::TextPreview(const Widget2 *const widget,
 {
     if (instances == 0)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
             mSkin = theme->load("textpreview.xml", "");
     }
@@ -72,7 +71,6 @@ TextPreview::~TextPreview()
 
     if (instances == 0)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
             theme->unload(mSkin);
     }

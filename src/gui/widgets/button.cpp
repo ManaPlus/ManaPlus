@@ -337,13 +337,10 @@ void Button::init()
 
     if (mInstances == 0)
     {
-        if (Theme::instance())
+        if (theme)
         {
             for (int mode = 0; mode < BUTTON_COUNT; mode ++)
-            {
-                button[mode] = Theme::instance()->load(
-                    data[mode], "button.xml");
-            }
+                button[mode] = theme->load(data[mode], "button.xml");
         }
 
         updateAlpha();
@@ -359,9 +356,8 @@ Button::~Button()
 
     mInstances--;
 
-    if (mInstances == 0 && Theme::instance())
+    if (mInstances == 0 && theme)
     {
-        Theme *const theme = Theme::instance();
         for (int mode = 0; mode < BUTTON_COUNT; mode ++)
             theme->unload(button[mode]);
     }
@@ -420,7 +416,7 @@ void Button::loadImageSet(const std::string &imageName)
 void Button::updateAlpha()
 {
     const float alpha = std::max(client->getGuiAlpha(),
-        Theme::instance()->getMinimumOpacity());
+        theme->getMinimumOpacity());
 
     if (mAlpha != alpha)
     {

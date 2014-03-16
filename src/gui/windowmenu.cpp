@@ -46,8 +46,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     ActionListener(),
     SelectionListener(),
     MouseListener(),
-    mSkin(Theme::instance() ? Theme::instance()->load("windowmenu.xml", "")
-          : nullptr),
+    mSkin(theme ? theme->load("windowmenu.xml", "") : nullptr),
     mPadding(mSkin ? mSkin->getPadding() : 1),
     mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
     mTextPopup(new TextPopup),
@@ -196,7 +195,6 @@ WindowMenu::~WindowMenu()
     mButtonTexts.clear();
     if (mSkin)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
             theme->unload(mSkin);
         mSkin = nullptr;

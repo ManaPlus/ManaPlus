@@ -111,7 +111,6 @@ ListBox::ListBox(const Widget2 *const widget,
     mForegroundColor = getThemeColor(Theme::LISTBOX);
     mForegroundColor2 = getThemeColor(Theme::LISTBOX_OUTLINE);
 
-    Theme *const theme = Theme::instance();
     if (theme)
         mSkin = theme->load(skin, "listbox.xml");
 
@@ -138,14 +137,14 @@ ListBox::~ListBox()
     if (gui)
         gui->removeDragged(this);
 
-    if (Theme::instance())
-        Theme::instance()->unload(mSkin);
+    if (theme)
+        theme->unload(mSkin);
 }
 
 void ListBox::updateAlpha()
 {
     const float alpha = std::max(client->getGuiAlpha(),
-        Theme::instance()->getMinimumOpacity());
+        theme->getMinimumOpacity());
 
     if (mAlpha != alpha)
         mAlpha = alpha;

@@ -88,7 +88,6 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
 
     mBackgroundColor = getThemeColor(Theme::BACKGROUND);
 
-    Theme *const theme = Theme::instance();
     if (theme)
         mSkin = theme->load(skin, "browserbox.xml");
     if (mInstances == 0)
@@ -140,7 +139,6 @@ BrowserBox::~BrowserBox()
     if (gui)
         gui->removeDragged(this);
 
-    Theme *const theme = Theme::instance();
     if (theme)
     {
         theme->unload(mSkin);

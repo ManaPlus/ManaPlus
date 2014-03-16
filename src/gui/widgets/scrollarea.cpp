@@ -195,7 +195,6 @@ void ScrollArea::init(std::string skinName)
         // +++ here probably need move background from static
         if (skinName == "")
             skinName = "scroll_background.xml";
-        Theme *const theme = Theme::instance();
         if (theme)
         {
             theme->loadRect(background, skinName, "scroll_background.xml");
@@ -207,8 +206,9 @@ void ScrollArea::init(std::string skinName)
 
         for (int i = 0; i < 2; i ++)
         {
-            Skin *const skin = Theme::instance()->load(
-                buttonFiles[i], "scrollbuttons.xml");
+            Skin *skin = nullptr;
+            if (theme)
+                skin = theme->load(buttonFiles[i], "scrollbuttons.xml");
             if (skin)
             {
                 const ImageRect &rect = skin->getBorder();
@@ -230,7 +230,8 @@ void ScrollArea::init(std::string skinName)
                 for (int f = UP; f < BUTTONS_DIR; f ++)
                     buttons[f][i] = nullptr;
             }
-            Theme::instance()->unload(skin);
+            if (theme)
+                theme->unload(skin);
         }
     }
     mScrollbarWidth = mScrollbarSize;
@@ -290,7 +291,7 @@ void ScrollArea::logic()
 void ScrollArea::updateAlpha()
 {
     const float alpha = std::max(client->getGuiAlpha(),
-        Theme::instance()->getMinimumOpacity());
+        theme->getMinimumOpacity());
 
     if (alpha != mAlpha)
     {

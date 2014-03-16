@@ -110,7 +110,6 @@ RadioButton::RadioButton(const Widget2 *const widget,
     mForegroundColor2 = getThemeColor(Theme::RADIOBUTTON_OUTLINE);
     if (instances == 0)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
         {
             mSkin = theme->load("radio.xml", "");
@@ -142,7 +141,6 @@ RadioButton::~RadioButton()
 
     if (instances == 0)
     {
-        Theme *const theme = Theme::instance();
         if (theme)
             theme->unload(mSkin);
     }
@@ -151,7 +149,7 @@ RadioButton::~RadioButton()
 void RadioButton::updateAlpha()
 {
     const float alpha = std::max(client->getGuiAlpha(),
-        Theme::instance()->getMinimumOpacity());
+        theme->getMinimumOpacity());
 
     if (mAlpha != alpha)
     {

@@ -85,13 +85,12 @@ DropDown::DropDown(const Widget2 *const widget,
     mPopup->setHeight(100);
 
     // Initialize graphics
-    if (instances == 0)
+    if (instances == 0 && theme)
     {
         // Load the background skin
         for (int i = 0; i < 2; i ++)
         {
-            Skin *const skin = Theme::instance()->load(
-                dropdownFiles[i], "dropdown.xml");
+            Skin *const skin = theme->load(dropdownFiles[i], "dropdown.xml");
             if (skin)
             {
                 if (!i)
@@ -111,7 +110,7 @@ DropDown::DropDown(const Widget2 *const widget,
                     }
                 }
                 if (i)
-                    Theme::instance()->unload(skin);
+                    theme->unload(skin);
             }
             else
             {
@@ -121,11 +120,8 @@ DropDown::DropDown(const Widget2 *const widget,
         }
 
         // get the border skin
-        if (Theme::instance())
-        {
-            Theme::instance()->loadRect(skinRect,
-                "dropdown_background.xml", "");
-        }
+        if (theme)
+            theme->loadRect(skinRect, "dropdown_background.xml", "");
     }
 
     instances++;
@@ -181,7 +177,6 @@ DropDown::~DropDown()
                     buttons[f][i]->decRef();
             }
         }
-        Theme *const theme = Theme::instance();
         if (theme)
         {
             theme->unload(mSkin);
@@ -193,7 +188,7 @@ DropDown::~DropDown()
 void DropDown::updateAlpha()
 {
     const float alpha = std::max(client->getGuiAlpha(),
-        Theme::instance()->getMinimumOpacity());
+        theme->getMinimumOpacity());
 
     if (mAlpha != alpha)
     {

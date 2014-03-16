@@ -399,6 +399,7 @@ void Client::gameInit()
 
     initTitle();
 
+    theme = new Theme;
     Theme::selectSkin();
     touchManager.init();
 
@@ -998,8 +999,7 @@ int Client::gameExec()
         mumbleManager = new MumbleManager();
 #endif
 
-    if (Theme::instance())
-        mSkin = Theme::instance()->load("windowmenu.xml", "");
+    mSkin = theme->load("windowmenu.xml", "");
     if (mSkin)
     {
         mButtonPadding = mSkin->getPadding();
@@ -1256,7 +1256,7 @@ int Client::gameExec()
                     {
                         // Don't allow an alpha opacity
                         // lower than the default value
-                        Theme::instance()->setMinimumOpacity(0.8F);
+                        theme->setMinimumOpacity(0.8F);
 
                         mCurrentDialog = new ServerDialog(&mCurrentServer,
                                                           mConfigDir);
@@ -1298,7 +1298,7 @@ int Client::gameExec()
                     logger->log1("State: LOGIN");
                     // Don't allow an alpha opacity
                     // lower than the default value
-                    Theme::instance()->setMinimumOpacity(0.8F);
+                    theme->setMinimumOpacity(0.8F);
 
                     loginData.updateType
                         = serverConfig.getValue("updateType", 1);
@@ -1505,7 +1505,7 @@ int Client::gameExec()
                     logger->log1("State: CHAR SELECT");
                     // Don't allow an alpha opacity
                     // lower than the default value
-                    Theme::instance()->setMinimumOpacity(0.8F);
+                    theme->setMinimumOpacity(0.8F);
 
                     mCurrentDialog = new CharSelectDialog(&loginData);
                     mCurrentDialog->postInit();
@@ -1571,7 +1571,7 @@ int Client::gameExec()
                     soundManager.fadeOutMusic(1000);
 
                     // Allow any alpha opacity
-                    Theme::instance()->setMinimumOpacity(-1.0F);
+                    theme->setMinimumOpacity(-1.0F);
 
                     if (chatLogger)
                         chatLogger->setServerName(mServerName);

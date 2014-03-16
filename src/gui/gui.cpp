@@ -316,7 +316,8 @@ Gui::~Gui()
     delete guiInput;
     guiInput = nullptr;
 
-    Theme::deleteInstance();
+    delete theme;
+    theme = nullptr;
 
     if (Widget::widgetExists(mTop))
         setTop(nullptr);

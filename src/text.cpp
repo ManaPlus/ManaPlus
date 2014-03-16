@@ -55,9 +55,9 @@ Text::Text(const std::string &text, const int x, const int y,
     if (!textManager)
     {
         textManager = new TextManager;
-        if (Theme::instance())
+        if (theme)
         {
-            Theme::instance()->loadRect(mBubble, "bubble.xml", "");
+            theme->loadRect(mBubble, "bubble.xml", "");
         }
         else
         {
