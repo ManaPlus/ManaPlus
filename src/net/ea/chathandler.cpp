@@ -389,6 +389,7 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
                 mMotdTime = cur_time + 1;
             else if (mMotdTime == cur_time || mMotdTime < cur_time)
                 mSkipping = false;
+            BLOCK_END("ChatHandler::processChat")
             return;
         }
 
