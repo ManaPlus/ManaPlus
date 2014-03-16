@@ -122,7 +122,8 @@ class BasicContainer : public Widget,
 
         virtual void logic() override;
 
-        virtual void _setFocusHandler(FocusHandler* focusHandler) override;
+        virtual void _setFocusHandler(FocusHandler *const focusHandler)
+                                      override;
 
         void setInternalFocusHandler(FocusHandler* focusHandler);
 

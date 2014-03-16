@@ -204,7 +204,7 @@ void BasicContainer::logic()
     BLOCK_END("BasicContainer::logic")
 }
 
-void BasicContainer::_setFocusHandler(FocusHandler* focusHandler)
+void BasicContainer::_setFocusHandler(FocusHandler *const focusHandler)
 {
     Widget::_setFocusHandler(focusHandler);
 

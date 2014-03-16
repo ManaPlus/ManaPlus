@@ -96,20 +96,19 @@ Widget::Widget(const Widget2 *const widget) :
     mForegroundColor(0x000000),
     mBackgroundColor(0xffffff),
     mBaseColor(0x808090),
-    mSelectionColor(0xc3d9ff),
+    mDimension(),
+    mActionEventId(),
+    mId(),
     mFocusHandler(nullptr),
     mInternalFocusHandler(nullptr),
     mParent(nullptr),
-    mDimension(),
+    mCurrentFont(nullptr),
     mFrameSize(0),
-    mActionEventId(),
     mFocusable(false),
     mVisible(true),
     mTabIn(true),
     mTabOut(true),
-    mEnabled(true),
-    mId(),
-    mCurrentFont(nullptr)
+    mEnabled(true)
 {
     mWidgets.push_back(this);
     mWidgetsSet.insert(this);
@@ -117,9 +116,7 @@ Widget::Widget(const Widget2 *const widget) :
 
 Widget::~Widget()
 {
-    for (DeathListenerIterator iter = mDeathListeners.begin();
-          iter != mDeathListeners.end();
-          ++iter)
+    FOR_EACH (DeathListenerIterator, iter, mDeathListeners)
     {
         Event event(this);
         (*iter)->death(event);
@@ -131,73 +128,39 @@ Widget::~Widget()
     mWidgetsSet.erase(this);
 }
 
-void Widget::drawFrame(Graphics* graphics)
-{
-    BLOCK_START("Widget::drawFrame")
-    const Color &faceColor = getBaseColor();
-    Color highlightColor = faceColor + Color(0x303030);
-    Color shadowColor = faceColor - Color(0x303030);
-    const int alpha = getBaseColor().a;
-    const int width = getWidth() + getFrameSize() * 2 - 1;
-    const int height = getHeight() + getFrameSize() * 2 - 1;
-    highlightColor.a = alpha;
-    shadowColor.a = alpha;
-
-    for (unsigned int i = 0; i < getFrameSize(); ++i)
-    {
-        graphics->setColor(shadowColor);
-        graphics->drawLine(i, i, width - i, i);
-        graphics->drawLine(i, i + 1, i, height - i - 1);
-        graphics->setColor(highlightColor);
-        graphics->drawLine(width - i, i + 1, width - i, height - i);
-        graphics->drawLine(i, height - i, width - i - 1, height - i);
-    }
-    BLOCK_END("Widget::drawFrame")
-}
-
-void Widget::_setParent(Widget* parent)
-{
-    mParent = parent;
-}
-
-void Widget::setWidth(int width)
+void Widget::setWidth(const int width)
 {
     Rect newDimension = mDimension;
     newDimension.width = width;
-
     setDimension(newDimension);
 }
 
-void Widget::setHeight(int height)
+void Widget::setHeight(const int height)
 {
     Rect newDimension = mDimension;
     newDimension.height = height;
-
     setDimension(newDimension);
 }
 
-void Widget::setX(int x)
+void Widget::setX(const int x)
 {
     Rect newDimension = mDimension;
     newDimension.x = x;
-
     setDimension(newDimension);
 }
 
-void Widget::setY(int y)
+void Widget::setY(const int y)
 {
     Rect newDimension = mDimension;
     newDimension.y = y;
-
     setDimension(newDimension);
 }
 
-void Widget::setPosition(int x, int y)
+void Widget::setPosition(const int x, const int y)
 {
     Rect newDimension = mDimension;
     newDimension.x = x;
     newDimension.y = y;
-
     setDimension(newDimension);
 }
 
@@ -212,36 +175,8 @@ void Widget::setDimension(const Rect& dimension)
         distributeResizedEvent();
     }
 
-    if (mDimension.x != oldDimension.x
-        || mDimension.y != oldDimension.y)
-    {
+    if (mDimension.x != oldDimension.x || mDimension.y != oldDimension.y)
         distributeMovedEvent();
-    }
-}
-
-void Widget::setFrameSize(unsigned int frameSize)
-{
-    mFrameSize = frameSize;
-}
-
-unsigned int Widget::getFrameSize() const
-{
-    return mFrameSize;
-}
-
-const Rect& Widget::getDimension() const
-{
-    return mDimension;
-}
-
-const std::string& Widget::getActionEventId() const
-{
-    return mActionEventId;
-}
-
-void Widget::setActionEventId(const std::string& actionEventId)
-{
-    mActionEventId = actionEventId;
 }
 
 bool Widget::isFocused() const
@@ -252,13 +187,10 @@ bool Widget::isFocused() const
     return (mFocusHandler->isFocused(this));
 }
 
-void Widget::setFocusable(bool focusable)
+void Widget::setFocusable(const bool focusable)
 {
     if (!focusable && isFocused())
-    {
         mFocusHandler->focusNone();
-    }
-
     mFocusable = focusable;
 }
 
@@ -301,47 +233,7 @@ void Widget::setVisible(bool visible)
     mVisible = visible;
 }
 
-void Widget::setBaseColor(const Color& color)
-{
-    mBaseColor = color;
-}
-
-const Color& Widget::getBaseColor() const
-{
-    return mBaseColor;
-}
-
-void Widget::setForegroundColor(const Color& color)
-{
-    mForegroundColor = color;
-}
-
-const Color& Widget::getForegroundColor() const
-{
-    return mForegroundColor;
-}
-
-void Widget::setBackgroundColor(const Color& color)
-{
-    mBackgroundColor = color;
-}
-
-const Color& Widget::getBackgroundColor() const
-{
-    return mBackgroundColor;
-}
-
-void Widget::setSelectionColor(const Color& color)
-{
-    mSelectionColor = color;
-}
-
-const Color& Widget::getSelectionColor() const
-{
-    return mSelectionColor;
-}
-
-void Widget::_setFocusHandler(FocusHandler* focusHandler)
+void Widget::_setFocusHandler(FocusHandler *const focusHandler)
 {
     if (mFocusHandler)
     {
@@ -355,67 +247,62 @@ void Widget::_setFocusHandler(FocusHandler* focusHandler)
     mFocusHandler = focusHandler;
 }
 
-FocusHandler* Widget::_getFocusHandler()
-{
-    return mFocusHandler;
-}
-
-void Widget::addActionListener(ActionListener* actionListener)
+void Widget::addActionListener(ActionListener *const actionListener)
 {
     mActionListeners.push_back(actionListener);
 }
 
-void Widget::removeActionListener(ActionListener* actionListener)
+void Widget::removeActionListener(ActionListener *const actionListener)
 {
     mActionListeners.remove(actionListener);
 }
 
-void Widget::addDeathListener(DeathListener* deathListener)
+void Widget::addDeathListener(DeathListener *const deathListener)
 {
     mDeathListeners.push_back(deathListener);
 }
 
-void Widget::removeDeathListener(DeathListener* deathListener)
+void Widget::removeDeathListener(DeathListener *const deathListener)
 {
     mDeathListeners.remove(deathListener);
 }
 
-void Widget::addKeyListener(KeyListener* keyListener)
+void Widget::addKeyListener(KeyListener *const keyListener)
 {
     mKeyListeners.push_back(keyListener);
 }
 
-void Widget::removeKeyListener(KeyListener* keyListener)
+void Widget::removeKeyListener(KeyListener *const keyListener)
 {
     mKeyListeners.remove(keyListener);
 }
 
-void Widget::addFocusListener(FocusListener* focusListener)
+void Widget::addFocusListener(FocusListener *const focusListener)
 {
     mFocusListeners.push_back(focusListener);
 }
 
-void Widget::removeFocusListener(FocusListener* focusListener)
+void Widget::removeFocusListener(FocusListener *const focusListener)
 {
     mFocusListeners.remove(focusListener);
 }
 
-void Widget::addMouseListener(MouseListener* mouseListener)
+void Widget::addMouseListener(MouseListener *const mouseListener)
 {
     mMouseListeners.push_back(mouseListener);
 }
 
-void Widget::removeMouseListener(MouseListener* mouseListener)
+void Widget::removeMouseListener(MouseListener *const mouseListener)
 {
     mMouseListeners.remove(mouseListener);
 }
 
-void Widget::addWidgetListener(WidgetListener* widgetListener)
+void Widget::addWidgetListener(WidgetListener *const widgetListener)
 {
     mWidgetListeners.push_back(widgetListener);
 }
 
-void Widget::removeWidgetListener(WidgetListener* widgetListener)
+void Widget::removeWidgetListener(WidgetListener *const widgetListener)
 {
     mWidgetListeners.remove(widgetListener);
 }
@@ -446,19 +333,18 @@ Font* Widget::getFont() const
     return mCurrentFont;
 }
 
-void Widget::setGlobalFont(Font* font)
+void Widget::setGlobalFont(Font *const font)
 {
     mGlobalFont = font;
 
-    for (std::list<Widget*>::const_iterator iter = mWidgets.begin();
-          iter != mWidgets.end(); ++iter)
+    FOR_EACH (std::list<Widget*>::const_iterator, iter, mWidgets)
     {
         if (!(*iter)->mCurrentFont)
             (*iter)->fontChanged();
     }
 }
 
-void Widget::setFont(Font* font)
+void Widget::setFont(Font *const font)
 {
     mCurrentFont = font;
     fontChanged();
@@ -470,38 +356,12 @@ bool Widget::widgetExists(const Widget* widget)
         != mWidgetsSet.end();
 }
 
-bool Widget::isTabInEnabled() const
-{
-    return mTabIn;
-}
-
-void Widget::setTabInEnabled(bool enabled)
-{
-    mTabIn = enabled;
-}
-
-bool Widget::isTabOutEnabled() const
-{
-    return mTabOut;
-}
-
-void Widget::setTabOutEnabled(bool enabled)
-{
-    mTabOut = enabled;
-}
-
-void Widget::setSize(int width, int height)
+void Widget::setSize(const int width, const int height)
 {
     Rect newDimension = mDimension;
     newDimension.width = width;
     newDimension.height = height;
-
     setDimension(newDimension);
-}
-
-void Widget::setEnabled(bool enabled)
-{
-    mEnabled = enabled;
 }
 
 bool Widget::isEnabled() const
@@ -513,7 +373,6 @@ void Widget::requestModalFocus()
 {
     if (!mFocusHandler)
         return;
-
     mFocusHandler->requestModalFocus(this);
 }
 
@@ -521,7 +380,6 @@ void Widget::requestModalMouseInputFocus()
 {
     if (!mFocusHandler)
         return;
-
     mFocusHandler->requestModalMouseInputFocus(this);
 }
 
@@ -529,7 +387,6 @@ void Widget::releaseModalFocus()
 {
     if (!mFocusHandler)
         return;
-
     mFocusHandler->releaseModalFocus(this);
 }
 
@@ -537,7 +394,6 @@ void Widget::releaseModalMouseInputFocus()
 {
     if (!mFocusHandler)
         return;
-
     mFocusHandler->releaseModalMouseInputFocus(this);
 }
 
@@ -569,11 +425,6 @@ bool Widget::isModalMouseInputFocused() const
     return mFocusHandler->getModalMouseInputFocused() == this;
 }
 
-Widget *Widget::getWidgetAt(int x A_UNUSED, int y A_UNUSED)
-{
-    return nullptr;
-}
-
 const std::list<MouseListener*>& Widget::_getMouseListeners()
 {
     return mMouseListeners;
@@ -599,16 +450,14 @@ FocusHandler* Widget::_getInternalFocusHandler()
     return mInternalFocusHandler;
 }
 
-void Widget::setInternalFocusHandler(FocusHandler* focusHandler)
+void Widget::setInternalFocusHandler(FocusHandler *const focusHandler)
 {
     mInternalFocusHandler = focusHandler;
 }
 
 void Widget::distributeResizedEvent()
 {
-    for (WidgetListenerIterator iter = mWidgetListeners.begin();
-          iter != mWidgetListeners.end();
-          ++ iter)
+    FOR_EACH (WidgetListenerIterator, iter, mWidgetListeners)
     {
         Event event(this);
         (*iter)->widgetResized(event);
@@ -617,9 +466,7 @@ void Widget::distributeResizedEvent()
 
 void Widget::distributeMovedEvent()
 {
-    for (WidgetListenerIterator iter = mWidgetListeners.begin();
-          iter != mWidgetListeners.end();
-          ++ iter)
+    FOR_EACH (WidgetListenerIterator, iter, mWidgetListeners)
     {
         Event event(this);
         (*iter)->widgetMoved(event);
@@ -628,9 +475,7 @@ void Widget::distributeMovedEvent()
 
 void Widget::distributeHiddenEvent()
 {
-    for (WidgetListenerIterator iter = mWidgetListeners.begin();
-          iter != mWidgetListeners.end();
-          ++ iter)
+    FOR_EACH (WidgetListenerIterator, iter, mWidgetListeners)
     {
         Event event(this);
         (*iter)->widgetHidden(event);
@@ -639,9 +484,7 @@ void Widget::distributeHiddenEvent()
 
 void Widget::distributeActionEvent()
 {
-    for (ActionListenerIterator iter = mActionListeners.begin();
-          iter != mActionListeners.end();
-          ++iter)
+    FOR_EACH (ActionListenerIterator, iter, mActionListeners)
     {
         ActionEvent actionEvent(this, mActionEventId);
         (*iter)->action(actionEvent);
@@ -650,16 +493,14 @@ void Widget::distributeActionEvent()
 
 void Widget::distributeShownEvent()
 {
-    for (WidgetListenerIterator iter = mWidgetListeners.begin();
-          iter != mWidgetListeners.end();
-          ++iter)
+    FOR_EACH (WidgetListenerIterator, iter, mWidgetListeners)
     {
         Event event(this);
         (*iter)->widgetShown(event);
     }
 }
 
-void Widget::showPart(Rect rectangle)
+void Widget::showPart(const Rect &rectangle)
 {
     if (mParent)
         mParent->showWidgetPart(this, rectangle);

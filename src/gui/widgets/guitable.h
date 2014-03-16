@@ -120,7 +120,7 @@ public:
 
     void moveToBottom(Widget *child) override final;
 
-    void _setFocusHandler(FocusHandler* focusHandler) override final;
+    void _setFocusHandler(FocusHandler *const focusHandler) override final;
 
     // Inherited from KeyListener
     void keyPressed(KeyEvent& keyEvent) override final;
