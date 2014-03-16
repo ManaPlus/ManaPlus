@@ -76,6 +76,7 @@
 #include "localconsts.h"
 
 class ActionListener;
+class BasicContainer;
 class DeathListener;
 class FocusHandler;
 class FocusListener;
@@ -99,6 +100,8 @@ class WidgetListener;
 class Widget : public Widget2
 {
     public:
+        friend BasicContainer;
+
         /**
           * Constructor. Resets member variables. Noteable, a widget is not
           * focusable as default, therefore, widgets that are supposed to be
@@ -970,7 +973,7 @@ class Widget : public Widget2
           * has an id.
           *
           * @param id The id to set to the widget.
-          * @see getId, BasicContainer::findWidgetById
+          * @see getId
           * @since 0.8.0
           */
         void setId(const std::string& id)
@@ -983,7 +986,7 @@ class Widget : public Widget2
           * has an id.
           *
           * @param id The id to set to the widget.
-          * @see setId, BasicContainer::findWidgetById
+          * @see setId
           * @since 0.8.0
           */
         const std::string& getId() const A_WARN_UNUSED

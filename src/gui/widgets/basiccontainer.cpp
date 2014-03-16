@@ -74,8 +74,7 @@ BasicContainer::~BasicContainer()
 
 void BasicContainer::moveToTop(Widget* widget)
 {
-    for (WidgetListIterator iter = mWidgets.begin();
-          iter != mWidgets.end(); ++ iter)
+    FOR_EACH (WidgetListIterator, iter, mWidgets)
     {
         if (*iter == widget)
         {
@@ -88,8 +87,8 @@ void BasicContainer::moveToTop(Widget* widget)
 
 void BasicContainer::moveToBottom(Widget* widget)
 {
-    WidgetListIterator iter;
-    iter = std::find(mWidgets.begin(), mWidgets.end(), widget);
+    WidgetListIterator iter = std::find(mWidgets.begin(),
+        mWidgets.end(), widget);
 
     if (iter == mWidgets.end())
         return;
@@ -98,10 +97,10 @@ void BasicContainer::moveToBottom(Widget* widget)
     mWidgets.insert(mWidgets.begin(), widget);
 }
 
-void BasicContainer::death(const Event& event)
+void BasicContainer::death(const Event &event)
 {
-    WidgetListIterator iter;
-    iter = std::find(mWidgets.begin(), mWidgets.end(), event.getSource());
+    WidgetListIterator iter = std::find(mWidgets.begin(),
+        mWidgets.end(), event.getSource());
 
     if (iter == mWidgets.end())
         return;
@@ -111,7 +110,7 @@ void BasicContainer::death(const Event& event)
 
 Rect BasicContainer::getChildrenArea()
 {
-    return Rect(0, 0, getWidth(), getHeight());
+    return Rect(0, 0, mDimension.width, mDimension.height);
 }
 
 void BasicContainer::focusNext()
@@ -185,12 +184,13 @@ Widget *BasicContainer::getWidgetAt(int x, int y)
     y -= r.y;
 
     for (WidgetListReverseIterator it = mWidgets.rbegin();
-          it != mWidgets.rend(); ++ it)
+         it != mWidgets.rend(); ++ it)
     {
-        if ((*it)->isVisible() && (*it)->getDimension()
+        const Widget *const widget = *it;
+        if (widget->isVisible() && widget->getDimension()
             .isPointInRect(x, y))
         {
-            return (*it);
+            return *it;;
         }
     }
 
@@ -211,11 +211,8 @@ void BasicContainer::_setFocusHandler(FocusHandler* focusHandler)
     if (mInternalFocusHandler)
         return;
 
-    for (WidgetListConstIterator iter = mWidgets.begin();
-          iter != mWidgets.end(); ++ iter)
-    {
+    FOR_EACH (WidgetListConstIterator, iter, mWidgets)
         (*iter)->_setFocusHandler(focusHandler);
-    }
 }
 
 void BasicContainer::add(Widget* widget)
@@ -233,8 +230,7 @@ void BasicContainer::add(Widget* widget)
 
 void BasicContainer::remove(Widget* widget)
 {
-    for (WidgetListIterator iter = mWidgets.begin();
-          iter != mWidgets.end(); ++ iter)
+    FOR_EACH (WidgetListIterator, iter, mWidgets)
     {
         if (*iter == widget)
         {
@@ -249,12 +245,12 @@ void BasicContainer::remove(Widget* widget)
 
 void BasicContainer::clear()
 {
-    for (WidgetListConstIterator iter = mWidgets.begin();
-          iter != mWidgets.end(); ++ iter)
+    FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
-        (*iter)->_setFocusHandler(nullptr);
-        (*iter)->_setParent(nullptr);
-        (*iter)->removeDeathListener(this);
+        Widget *const widget = *iter;
+        widget->_setFocusHandler(nullptr);
+        widget->_setParent(nullptr);
+        widget->removeDeathListener(this);
     }
 
     mWidgets.clear();
@@ -263,21 +259,19 @@ void BasicContainer::clear()
 void BasicContainer::drawChildren(Graphics* graphics)
 {
     BLOCK_START("BasicContainer::drawChildren")
-
     graphics->pushClipArea(getChildrenArea());
 
-    for (WidgetListConstIterator iter = mWidgets.begin();
-          iter != mWidgets.end(); ++ iter)
+    FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
         Widget *const widget = *iter;
         if (widget->isVisible())
         {
             // If the widget has a frame,
             // draw it before drawing the widget
-            if (widget->getFrameSize() > 0)
+            if (widget->mFrameSize > 0)
             {
-                Rect rec = widget->getDimension();
-                const int frame = widget->getFrameSize();
+                Rect rec = widget->mDimension;
+                const int frame = widget->mFrameSize;
                 const int frame2 = frame * 2;
                 rec.x -= frame;
                 rec.y -= frame;
@@ -290,7 +284,7 @@ void BasicContainer::drawChildren(Graphics* graphics)
                 graphics->popClipArea();
             }
 
-            graphics->pushClipArea(widget->getDimension());
+            graphics->pushClipArea(widget->mDimension);
             BLOCK_START("BasicContainer::drawChildren 2")
             widget->draw(graphics);
             BLOCK_END("BasicContainer::drawChildren 2")
@@ -305,11 +299,8 @@ void BasicContainer::drawChildren(Graphics* graphics)
 void BasicContainer::logicChildren()
 {
     BLOCK_START("BasicContainer::logicChildren")
-    for (WidgetListConstIterator iter = mWidgets.begin();
-          iter != mWidgets.end(); ++ iter)
-    {
+    FOR_EACH (WidgetListConstIterator, iter, mWidgets)
         (*iter)->logic();
-    }
     BLOCK_END("BasicContainer::logicChildren")
 }
 
@@ -317,61 +308,33 @@ void BasicContainer::showWidgetPart(Widget *const widget, Rect area)
 {
     const Rect widgetArea = getChildrenArea();
 
-    area.x += widget->getX();
-    area.y += widget->getY();
+    const int x = widget->mDimension.x;
+    const int y = widget->mDimension.y;
+    area.x += x;
+    area.y += y;
 
     if (area.x + area.width > widgetArea.width)
-    {
-        widget->setX(widget->getX() - area.x
-            - area.width + widgetArea.width);
-    }
+        widget->setX(x - area.x - area.width + widgetArea.width);
 
     if (area.y + area.height > widgetArea.height)
-    {
-        widget->setY(widget->getY() - area.y
-            - area.height + widgetArea.height);
-    }
+        widget->setY(y - area.y - area.height + widgetArea.height);
 
     if (area.x < 0)
-        widget->setX(widget->getX() - area.x);
+        widget->setX(x - area.x);
 
     if (area.y < 0)
-        widget->setY(widget->getY() - area.y);
+        widget->setY(y - area.y);
 }
 
 void BasicContainer::setInternalFocusHandler(FocusHandler* focusHandler)
 {
     Widget::setInternalFocusHandler(focusHandler);
 
-    for (WidgetListConstIterator iter = mWidgets.begin();
-          iter != mWidgets.end(); ++ iter)
+    FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
         if (!mInternalFocusHandler)
             (*iter)->_setFocusHandler(_getFocusHandler());
         else
             (*iter)->_setFocusHandler(mInternalFocusHandler);
     }
-}
-
-Widget* BasicContainer::findWidgetById(const std::string& id)
-{
-    for (WidgetListConstIterator iter = mWidgets.begin();
-          iter != mWidgets.end(); ++ iter)
-    {
-        if ((*iter)->getId() == id)
-            return (*iter);
-
-        BasicContainer *const basicContainer
-            = dynamic_cast<BasicContainer *const>(*iter);
-
-        if (basicContainer)
-        {
-            Widget *const widget = basicContainer->findWidgetById(id);
-
-            if (widget)
-                return widget;
-        }
-    }
-
-    return nullptr;
 }

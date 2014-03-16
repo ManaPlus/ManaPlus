@@ -149,17 +149,6 @@ class BasicContainer2: public BasicContainer
           */
         virtual void clear();
 
-        /**
-          * Finds a widget given an id.
-          *
-          * @param id The id to find a widget by.
-          * @return A widget with a corrosponding id, NULL if no widget 
-          *         is found.
-          * @see Widget::setId
-          */
-        virtual Widget* findWidgetById(const std::string &id);
-
-
         // Inherited from Widget
 
         virtual void draw(Graphics* graphics);

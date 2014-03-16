@@ -122,8 +122,3 @@ void BasicContainer2::clear()
 {
     BasicContainer::clear();
 }
-
-Widget* BasicContainer2::findWidgetById(const std::string &id)
-{
-    return BasicContainer::findWidgetById(id);
-}
