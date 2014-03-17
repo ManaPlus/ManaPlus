@@ -50,7 +50,7 @@ TEST(browserbox, test1)
 
     logger = new Logger();
     imageHelper = new SDLImageHelper();
-    Theme *theme = Theme::instance();
+    theme = new Theme;
     Widget::setGlobalFont(new Font("/usr/share/fonts/truetype/"
         "ttf-dejavu/DejaVuSans-Oblique.ttf", 18));
     BrowserBox *box = new BrowserBox(nullptr, BrowserBox::AUTO_WRAP, true, "");
