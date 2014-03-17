@@ -218,6 +218,11 @@ Widget *BasicContainer::getWidgetAt(int x, int y)
 void BasicContainer::logic()
 {
     BLOCK_START("BasicContainer::logic")
+    if (!mVisible)
+    {
+        BLOCK_END("BasicContainer::logic")
+        return;
+    }
     logicChildren();
     BLOCK_END("BasicContainer::logic")
 }
