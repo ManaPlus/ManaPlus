@@ -104,7 +104,7 @@
 
 ##9<<Content devs>>
 ##2
-    <</cleangraphics - remove all cached graphics. Usefull for content developers.>>
+    <</cleangraphics - remove all cached graphics. Useful for content developers.>>
     <</testparticle FILENAME - set test particle on player.>>
 
 ##9<<Other>>

@@ -102,7 +102,7 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Emulate right mouse button by long mouse click"
-        " (usefull for touch interfaces)"),
+        " (useful for touch interfaces)"),
         "", "longmouseclick", this, "longmouseclickEvent");
 
     setDimension(Rect(0, 0, 550, 350));

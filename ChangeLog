@@ -1075,7 +1075,7 @@ fix: crash in reconnecting to servers.
 add: make script for MacOS with fink.
 add: updated mplus and libiration fonts.
 add: player statuses: enabled shop, away and inactive mode.
-add: map reduce mode usefull for sftware drawing mode (improving speed).
+add: map reduce mode useful for sftware drawing mode (improving speed).
 add: updated translations.
 add: redesign video tab in settings.
 
@@ -1176,7 +1176,7 @@ add: dont waste chat space if input box is hidden.
 ManaPlus:
 fix: improve opengl speed.
 fix: update ru, pt, pt_BR, fr, es translations.
-add: remove nicks in whisper. Usefull for bots like guild bot.
+add: remove nicks in whisper. useful for bots like guild bot.
 add: no away option in whisper context menu.
 add: save chat tabs options between client restarts.
 
@@ -1257,7 +1257,7 @@ add: inventory filter and sorter.
 add: increased char slots number from 3 to 9 per each account.
 Also add support for configurable char slots number in exended servers.
 add: option to force connection to only one ip for all three servers (char, login, map).
-Usefull for port mapping connections.
+useful for port mapping connections.
 add: updated russian translation.
 
 Mana:
@@ -1335,7 +1335,7 @@ add: battle chat tab and battle event.
 Disable by default.
 add: color hightlight if trade partner lower money.
 add: custom update host.
-Can be usefull if normal update server is dead.
+Can be useful if normal update server is dead.
 To enable in login dialog select custom update type and put new update host url in text field. (custom host for tmw server is http://manaplus.jonklo.net/updates/)
 
 Mana:
