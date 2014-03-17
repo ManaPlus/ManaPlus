@@ -2837,6 +2837,9 @@ void Client::resizeVideo(int actualWidth,
             x -= mThemesButton->getWidth() + mButtonSpacing;
             mThemesButton->setPosition(x, mButtonPadding);
 
+            x -= mAboutButton->getWidth() + mButtonSpacing;
+            mAboutButton->setPosition(x, mButtonPadding);
+
             x -= mHelpButton->getWidth() + mButtonSpacing;
             mHelpButton->setPosition(x, mButtonPadding);
 #ifdef ANDROID
