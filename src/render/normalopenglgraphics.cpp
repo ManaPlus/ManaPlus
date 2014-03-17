@@ -131,12 +131,18 @@ void NormalOpenGLGraphics::initArrays()
     // need alocate small size, after if limit reached reallocate to double size
     vertexBufSize = mMaxVertices;
     const int sz = mMaxVertices * 4 + 30;
-    mFloatTexArray = new GLfloat[sz];
-    mIntTexArray = new GLint[sz];
-    mIntVertArray = new GLint[sz];
-    mFloatTexArrayCached = new GLfloat[sz];
-    mIntTexArrayCached = new GLint[sz];
-    mIntVertArrayCached = new GLint[sz];
+    if (!mFloatTexArray)
+        mFloatTexArray = new GLfloat[sz];
+    if (!mIntTexArray)
+        mIntTexArray = new GLint[sz];
+    if (!mIntVertArray)
+        mIntVertArray = new GLint[sz];
+    if (!mFloatTexArrayCached)
+        mFloatTexArrayCached = new GLfloat[sz];
+    if (!mIntTexArrayCached)
+        mIntTexArrayCached = new GLint[sz];
+    if (!mIntVertArrayCached)
+        mIntVertArrayCached = new GLint[sz];
 }
 
 bool NormalOpenGLGraphics::setVideoMode(const int w, const int h,

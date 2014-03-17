@@ -113,10 +113,14 @@ void MobileOpenGLGraphics::initArrays()
     // need alocate small size, after if limit reached reallocate to double size
     const int sz = mMaxVertices * 4 + 30;
     vertexBufSize = mMaxVertices;
-    mFloatTexArray = new GLfloat[sz];
-    mShortVertArray = new GLshort[sz];
-    mFloatTexArrayCached = new GLfloat[sz];
-    mShortVertArrayCached = new GLshort[sz];
+    if (!mFloatTexArray)
+        mFloatTexArray = new GLfloat[sz];
+    if (!mShortVertArray)
+        mShortVertArray = new GLshort[sz];
+    if (!mFloatTexArrayCached)
+        mFloatTexArrayCached = new GLfloat[sz];
+    if (!mShortVertArrayCached)
+        mShortVertArrayCached = new GLshort[sz];
 }
 
 bool MobileOpenGLGraphics::setVideoMode(const int w, const int h,
