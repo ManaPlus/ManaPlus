@@ -196,6 +196,7 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     addKeyListener(this);
     addMouseListener(this);
     addWidgetListener(this);
+    mAllowLogic = false;
 }
 
 ItemContainer::~ItemContainer()

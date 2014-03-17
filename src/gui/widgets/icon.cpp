@@ -39,6 +39,7 @@ Icon::Icon(const Widget2 *const widget,
         const SDL_Rect &bounds = mImage->mBounds;
         setSize(bounds.w, bounds.h);
     }
+    mAllowLogic = false;
 }
 
 Icon::Icon(const Widget2 *const widget,
@@ -51,6 +52,7 @@ Icon::Icon(const Widget2 *const widget,
         const SDL_Rect &bounds = mImage->mBounds;
         setSize(bounds.w, bounds.h);
     }
+    mAllowLogic = false;
 }
 
 Icon::~Icon()

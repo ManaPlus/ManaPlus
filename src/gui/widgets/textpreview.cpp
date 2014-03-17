@@ -48,6 +48,7 @@ TextPreview::TextPreview(const Widget2 *const widget,
     mShadow(false),
     mOutline(false)
 {
+    mAllowLogic = false;
     if (instances == 0)
     {
         if (theme)

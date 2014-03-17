@@ -142,6 +142,7 @@ Slider::~Slider()
 
 void Slider::init()
 {
+    mAllowLogic = false;
     setFocusable(true);
     setFrameSize(1);
 

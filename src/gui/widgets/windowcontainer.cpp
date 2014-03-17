@@ -64,18 +64,34 @@ void WindowContainer::moveWidgetAfter(Widget *const after,
     const WidgetListIterator widgetIter = std::find(
         mWidgets.begin(), mWidgets.end(), widget);
 
-    if (widgetIter == mWidgets.end())
-        return;
+    if (widgetIter != mWidgets.end())
+    {
+        WidgetListIterator afterIter = std::find(
+            mWidgets.begin(), mWidgets.end(), after);
 
-    WidgetListIterator afterIter = std::find(
-        mWidgets.begin(), mWidgets.end(), after);
+        if (afterIter != mWidgets.end())
+        {
+            ++ afterIter;
+            mWidgets.erase(widgetIter);
+            mWidgets.insert(afterIter, widget);
+        }
+    }
 
-    if (afterIter == mWidgets.end())
-        return;
+    const WidgetListIterator widgetIter2 = std::find(
+        mLogicWidgets.begin(), mLogicWidgets.end(), widget);
 
-    ++ afterIter;
-    mWidgets.erase(widgetIter);
-    mWidgets.insert(afterIter, widget);
+    if (widgetIter2 != mLogicWidgets.end())
+    {
+        WidgetListIterator afterIter = std::find(
+            mLogicWidgets.begin(), mLogicWidgets.end(), after);
+
+        if (afterIter != mLogicWidgets.end())
+        {
+            ++ afterIter;
+            mLogicWidgets.erase(widgetIter2);
+            mLogicWidgets.insert(afterIter, widget);
+        }
+    }
 }
 
 #ifdef USE_PROFILER

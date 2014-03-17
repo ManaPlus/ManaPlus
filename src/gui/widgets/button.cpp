@@ -327,6 +327,7 @@ Button::Button(const Widget2 *const widget,
 
 void Button::init()
 {
+    mAllowLogic = false;
     addMouseListener(this);
     addKeyListener(this);
     addFocusListener(this);

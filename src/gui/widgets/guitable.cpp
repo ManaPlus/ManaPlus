@@ -110,6 +110,7 @@ GuiTable::GuiTable(const Widget2 *const widget,
     mOpaque(opacity),
     mSelectable(true)
 {
+    mAllowLogic = false;
     mBackgroundColor = getThemeColor(Theme::BACKGROUND);
 
     setModel(initial_model);

@@ -30,6 +30,7 @@ TabStrip::TabStrip(const Widget2 *const widget,
                    const int spacing) :
     WidgetGroup(widget, group, height, spacing)
 {
+    mAllowLogic = false;
 }
 
 TabStrip::TabStrip(const Widget2 *const widget,
@@ -37,6 +38,7 @@ TabStrip::TabStrip(const Widget2 *const widget,
                    const int spacing) :
     WidgetGroup(widget, "", height, spacing)
 {
+    mAllowLogic = false;
 }
 
 Widget *TabStrip::createWidget(const std::string &text) const

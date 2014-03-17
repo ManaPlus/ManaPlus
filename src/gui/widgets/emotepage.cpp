@@ -45,6 +45,7 @@ EmotePage::EmotePage(const Widget2 *const widget) :
 {
     addMouseListener(this);
     addWidgetListener(this);
+    mAllowLogic = false;
 }
 
 EmotePage::~EmotePage()

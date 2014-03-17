@@ -83,6 +83,8 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     mEnableKeys(false),
     mEnableTabs(false)
 {
+    mAllowLogic = false;
+
     setFocusable(true);
     addMouseListener(this);
 

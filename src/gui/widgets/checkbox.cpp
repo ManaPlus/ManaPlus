@@ -98,6 +98,7 @@ CheckBox::CheckBox(const Widget2 *const widget,
     mDrawBox(true)
 {
     setCaption(caption);
+    mAllowLogic = false;
 
     setFocusable(true);
     addMouseListener(this);

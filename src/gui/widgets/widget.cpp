@@ -108,7 +108,8 @@ Widget::Widget(const Widget2 *const widget) :
     mVisible(true),
     mTabIn(true),
     mTabOut(true),
-    mEnabled(true)
+    mEnabled(true),
+    mAllowLogic(true)
 {
     mWidgets.push_back(this);
     mWidgetsSet.insert(this);

@@ -148,7 +148,7 @@ class Widget : public Widget2
           * @see setFrameSize, getFrameSize
           * @since 0.8.0
           */
-        virtual void drawFrame(Graphics* graphics)
+        virtual void drawFrame(Graphics* graphics A_UNUSED)
         { }
 
         /**
@@ -1007,6 +1007,9 @@ class Widget : public Widget2
           */
         virtual void showPart(const Rect &rectangle);
 
+        bool isAllowLogic() const
+        { return mAllowLogic; }
+
     protected:
         /**
           * Distributes an action event to all action listeners
@@ -1214,6 +1217,8 @@ class Widget : public Widget2
           * True if the widget is enabled, false otherwise.
           */
         bool mEnabled;
+
+        bool mAllowLogic;
 
         /**
           * Holds the global font used by the widget.

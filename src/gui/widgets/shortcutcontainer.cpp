@@ -43,6 +43,7 @@ ShortcutContainer::ShortcutContainer(Widget2 *const widget) :
     mVertexes(new ImageCollection),
     mRedraw(true)
 {
+    mAllowLogic = false;
 }
 
 ShortcutContainer::~ShortcutContainer()

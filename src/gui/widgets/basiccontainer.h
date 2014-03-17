@@ -140,7 +140,7 @@ class BasicContainer : public Widget,
           * @param widget The widget to add.
           * @see remove, clear
           */
-        void add(Widget* widget);
+        void add(Widget *const widget);
 
         /**
           * Removes a widget from the basic container.
@@ -199,6 +199,8 @@ class BasicContainer : public Widget,
           * Holds all widgets of the basic container.
           */
         WidgetList mWidgets;
+
+        WidgetList mLogicWidgets;
 };
 
 #endif  // GUI_WIDGETS_BASICCONTAINER_H

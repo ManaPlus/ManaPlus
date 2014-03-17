@@ -85,6 +85,7 @@ TextBox::TextBox(const Widget2 *const widget) :
     mEditable(true),
     mOpaque(true)
 {
+    mAllowLogic = false;
     setText("");
     setFocusable(true);
 

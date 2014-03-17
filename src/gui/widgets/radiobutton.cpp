@@ -98,6 +98,7 @@ RadioButton::RadioButton(const Widget2 *const widget,
     mSpacing(2),
     mHasMouse(false)
 {
+    mAllowLogic = false;
     setCaption(caption);
     setGroup(group);
     setSelected(marked);

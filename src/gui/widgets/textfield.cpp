@@ -113,6 +113,7 @@ TextField::TextField(const Widget2 *restrict const widget,
     mAllowSpecialActions(true),
     mSendAlwaysEvents(sendAlwaysEvents)
 {
+    mAllowLogic = false;
     setFocusable(true);
     addMouseListener(this);
     addKeyListener(this);

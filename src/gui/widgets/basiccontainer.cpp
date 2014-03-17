@@ -80,6 +80,15 @@ void BasicContainer::moveToTop(Widget* widget)
         {
             mWidgets.erase(iter);
             mWidgets.push_back(widget);
+            break;
+        }
+    }
+    FOR_EACH (WidgetListIterator, iter, mLogicWidgets)
+    {
+        if (*iter == widget)
+        {
+            mLogicWidgets.erase(iter);
+            mLogicWidgets.push_back(widget);
             return;
         }
     }
@@ -89,23 +98,32 @@ void BasicContainer::moveToBottom(Widget* widget)
 {
     WidgetListIterator iter = std::find(mWidgets.begin(),
         mWidgets.end(), widget);
+    if (iter != mWidgets.end())
+    {
+        mWidgets.erase(iter);
+        mWidgets.insert(mWidgets.begin(), widget);
+    }
 
-    if (iter == mWidgets.end())
-        return;
-
-    mWidgets.erase(iter);
-    mWidgets.insert(mWidgets.begin(), widget);
+    WidgetListIterator iter2 = std::find(mLogicWidgets.begin(),
+        mLogicWidgets.end(), widget);
+    if (iter2 != mLogicWidgets.end())
+    {
+        mLogicWidgets.erase(iter2);
+        mLogicWidgets.insert(mLogicWidgets.begin(), widget);
+    }
 }
 
 void BasicContainer::death(const Event &event)
 {
     WidgetListIterator iter = std::find(mWidgets.begin(),
         mWidgets.end(), event.getSource());
+    if (iter != mWidgets.end())
+        mWidgets.erase(iter);
 
-    if (iter == mWidgets.end())
-        return;
-
-    mWidgets.erase(iter);
+    WidgetListIterator iter2 = std::find(mLogicWidgets.begin(),
+        mLogicWidgets.end(), event.getSource());
+    if (iter2 != mLogicWidgets.end())
+        mLogicWidgets.erase(iter2);
 }
 
 Rect BasicContainer::getChildrenArea()
@@ -215,9 +233,11 @@ void BasicContainer::_setFocusHandler(FocusHandler *const focusHandler)
         (*iter)->_setFocusHandler(focusHandler);
 }
 
-void BasicContainer::add(Widget* widget)
+void BasicContainer::add(Widget *const widget)
 {
     mWidgets.push_back(widget);
+    if (widget->isAllowLogic())
+        mLogicWidgets.push_back(widget);
 
     if (!mInternalFocusHandler)
         widget->_setFocusHandler(_getFocusHandler());
@@ -241,6 +261,14 @@ void BasicContainer::remove(Widget* widget)
             return;
         }
     }
+    FOR_EACH (WidgetListIterator, iter, mLogicWidgets)
+    {
+        if (*iter == widget)
+        {
+            mLogicWidgets.erase(iter);
+            return;
+        }
+    }
 }
 
 void BasicContainer::clear()
@@ -254,6 +282,7 @@ void BasicContainer::clear()
     }
 
     mWidgets.clear();
+    mLogicWidgets.clear();
 }
 
 void BasicContainer::drawChildren(Graphics* graphics)
@@ -299,7 +328,7 @@ void BasicContainer::drawChildren(Graphics* graphics)
 void BasicContainer::logicChildren()
 {
     BLOCK_START("BasicContainer::logicChildren")
-    FOR_EACH (WidgetListConstIterator, iter, mWidgets)
+    FOR_EACH (WidgetListConstIterator, iter, mLogicWidgets)
         (*iter)->logic();
     BLOCK_END("BasicContainer::logicChildren")
 }

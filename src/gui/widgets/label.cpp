@@ -112,6 +112,7 @@ Label::~Label()
 
 void Label::init()
 {
+    mAllowLogic = false;
     mForegroundColor = getThemeColor(Theme::LABEL);
     mForegroundColor2 = getThemeColor(Theme::LABEL_OUTLINE);
     if (mInstances == 0)

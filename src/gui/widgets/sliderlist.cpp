@@ -46,6 +46,7 @@ SliderList::SliderList(const Widget2 *const widget,
     mOldWidth(0),
     mSelectedIndex(0)
 {
+    mAllowLogic = false;
     setHeight(sliderHeight);
 }
 
