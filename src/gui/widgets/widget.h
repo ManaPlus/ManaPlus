@@ -100,7 +100,7 @@ class WidgetListener;
 class Widget : public Widget2
 {
     public:
-        friend BasicContainer;
+        friend class BasicContainer;
 
         /**
           * Constructor. Resets member variables. Noteable, a widget is not
