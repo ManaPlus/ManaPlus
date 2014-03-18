@@ -112,4 +112,7 @@
 // use file access fuzzer
 // #define USE_FUZZER 1
 
+#ifdef DYECMD
+#undef USE_FUZZER
+#endif
 #include "utils/perfomance.h"
