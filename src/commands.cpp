@@ -1270,6 +1270,10 @@ impHandler1(talkPet)
         Net::getChatHandler()->talk(args, GENERAL_CHANNEL);
 }
 
+impHandler1(gm)
+{
+    Net::getChatHandler()->talk("@wgm " + args, GENERAL_CHANNEL);
+}
 
 struct UploadChatInfo
 {

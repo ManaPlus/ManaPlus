@@ -47,6 +47,7 @@
     <</dropn - drop N items from any slot.>>
     <</info - show guild info. Only for native guilds only.>>
     <</wait NAME - wait for nick or moster with name.>>
+    <</gm MESSAGE - send message to all online gms.>>
 
 ##9<<Trade>>
 ##2
