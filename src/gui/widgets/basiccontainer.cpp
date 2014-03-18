@@ -263,7 +263,7 @@ void BasicContainer::remove(Widget* widget)
             widget->_setFocusHandler(nullptr);
             widget->_setParent(nullptr);
             widget->removeDeathListener(this);
-            return;
+            break;
         }
     }
     FOR_EACH (WidgetListIterator, iter, mLogicWidgets)
