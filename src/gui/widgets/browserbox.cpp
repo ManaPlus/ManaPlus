@@ -445,7 +445,7 @@ void BrowserBox::mouseMoved(MouseEvent &event)
         ? static_cast<int>(i - mLinks.begin()) : -1;
 }
 
-void BrowserBox::mouseExited(MouseEvent &event)
+void BrowserBox::mouseExited(MouseEvent &event A_UNUSED)
 {
     mSelectedLink = -1;
 }
