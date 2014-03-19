@@ -98,11 +98,6 @@ SDLInput::SDLInput() :
 {
 }
 
-bool SDLInput::isKeyQueueEmpty() const
-{
-    return mKeyInputQueue.empty();
-}
-
 KeyInput SDLInput::dequeueKeyInput()
 {
     if (mKeyInputQueue.empty())
@@ -112,11 +107,6 @@ KeyInput SDLInput::dequeueKeyInput()
     mKeyInputQueue.pop();
 
     return keyInput;
-}
-
-bool SDLInput::isMouseQueueEmpty() const
-{
-    return mMouseInputQueue.empty();
 }
 
 MouseInput SDLInput::dequeueMouseInput()
@@ -165,7 +155,6 @@ void SDLInput::pushInput(const SDL_Event &event)
 
         case SDL_MOUSEWHEEL:
         {
-//            const int x = event.wheel.x;
             const int y = event.wheel.y;
             if (y)
             {
@@ -273,8 +262,7 @@ void SDLInput::pushInput(const SDL_Event &event)
              * This occurs when the mouse leaves the window and the Gui-chan
              * application loses its mousefocus.
              */
-            if ((event.active.state & SDL_APPMOUSEFOCUS)
-                && !event.active.gain)
+            if ((event.active.state & SDL_APPMOUSEFOCUS) && !event.active.gain)
             {
                 mMouseInWindow = false;
 
@@ -288,11 +276,8 @@ void SDLInput::pushInput(const SDL_Event &event)
                 }
             }
 
-            if ((event.active.state & SDL_APPMOUSEFOCUS)
-                && event.active.gain)
-            {
+            if ((event.active.state & SDL_APPMOUSEFOCUS) && event.active.gain)
                 mMouseInWindow = true;
-            }
             break;
 #endif
         default:
