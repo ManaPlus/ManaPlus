@@ -97,7 +97,7 @@ class FocusHandler final
           * @param widget The widget to request focus for.
           * @see isFocused, Widget::requestFocus
           */
-        void requestFocus(Widget* widget);
+        void requestFocus(Widget *const widget);
 
         /**
           * Requests modal focus for a widget. Focus will only be granted
@@ -108,7 +108,7 @@ class FocusHandler final
           * @throws Exception when another widget already has modal focus.
           * @see releaseModalFocus, Widget::requestModalFocus
           */
-        void requestModalFocus(Widget* widget);
+        void requestModalFocus(Widget *const widget);
 
         /**
           * Requests modal mouse input focus for a widget. Focus will only
@@ -125,7 +125,7 @@ class FocusHandler final
           *         focus.
           * @see releaseModalMouseInputFocus, Widget::requestModalMouseInputFocus
           */
-        void requestModalMouseInputFocus(Widget* widget);
+        void requestModalMouseInputFocus(Widget *const widget);
 
         /**
           * Releases modal focus if the widget has modal focus.
@@ -134,7 +134,7 @@ class FocusHandler final
           * @param widget The widget to release modal focus for.
           * @see reuqestModalFocus, Widget::releaseModalFocus
           */
-        void releaseModalFocus(Widget* widget);
+        void releaseModalFocus(Widget *const widget);
 
         /**
           * Releases modal mouse input focus if the widget has modal mouse input
@@ -144,7 +144,7 @@ class FocusHandler final
           * @param widget the widget to release modal mouse input focus for.
           * @see requestModalMouseInputFocus, Widget::releaseModalMouseInputFocus
           */
-        void releaseModalMouseInputFocus(Widget* widget);
+        void releaseModalMouseInputFocus(Widget *const widget);
 
         /**
           * Checks if a widget is focused.
@@ -153,7 +153,7 @@ class FocusHandler final
           * @return True if the widget is focused, false otherwise.
           * @see Widget::isFocused
           */
-        bool isFocused(const Widget* widget) const;
+        bool isFocused(const Widget *const widget) const;
 
         /**
           * Gets the widget with focus.
@@ -204,7 +204,7 @@ class FocusHandler final
           * @param widget The widget to add.
           * @see remove
           */
-        void add(Widget* widget);
+        void add(Widget *const widget);
 
         /**
           * Removes a widget from the focus handler.
@@ -212,7 +212,7 @@ class FocusHandler final
           * @param widget The widget to remove.
           * @see add
           */
-        void remove(Widget* widget);
+        void remove(Widget *const widget);
 
         /**
           * Focuses nothing. A focus event will also be sent to the
@@ -243,7 +243,7 @@ class FocusHandler final
           * @return the widget being dragged.
           * @see setDraggedWidget
           */
-        Widget* getDraggedWidget() A_WARN_UNUSED;
+        Widget* getDraggedWidget() const A_WARN_UNUSED;
 
         /**
           * Sets the widget being dragged. Used by the Gui class to
@@ -252,7 +252,7 @@ class FocusHandler final
           * @param draggedWidget The widget being dragged.
           * @see getDraggedWidget
           */
-        void setDraggedWidget(Widget* draggedWidget);
+        void setDraggedWidget(Widget *const draggedWidget);
 
         /**
           * Gets the last widget with the mouse. Used by the Gui class
@@ -261,7 +261,7 @@ class FocusHandler final
           * @return The last widget with the mouse.
           * @see setLastWidgetWithMouse
           */
-        Widget* getLastWidgetWithMouse() A_WARN_UNUSED;
+        Widget* getLastWidgetWithMouse() const A_WARN_UNUSED;
 
         /**
           * Sets the last widget with the mouse. Used by the Gui class
@@ -270,7 +270,7 @@ class FocusHandler final
           * @param lastWidgetWithMouse The last widget with the mouse.
           * @see getLastWidgetWithMouse
           */
-        void setLastWidgetWithMouse(Widget* lastWidgetWithMouse);
+        void setLastWidgetWithMouse(Widget *const lastWidgetWithMouse);
 
         /**
           * Gets the last widget with modal focus.
@@ -278,7 +278,7 @@ class FocusHandler final
           * @return The last widget with modal focus.
           * @see setLastWidgetWithModalFocus
           */
-        Widget* getLastWidgetWithModalFocus() A_WARN_UNUSED;
+        Widget* getLastWidgetWithModalFocus() const A_WARN_UNUSED;
 
         /**
           * Sets the last widget with modal focus.
@@ -286,7 +286,7 @@ class FocusHandler final
           * @param widget The last widget with modal focus.
           * @see getLastWidgetWithModalFocus
           */
-        void setLastWidgetWithModalFocus(Widget* widget);
+        void setLastWidgetWithModalFocus(Widget *const widget);
 
         /**
           * Gets the last widget with modal mouse input focus.
@@ -294,7 +294,7 @@ class FocusHandler final
           * @return The last widget with modal mouse input focus.
           * @see setLastWidgetWithModalMouseInputFocus
           */
-        Widget* getLastWidgetWithModalMouseInputFocus() A_WARN_UNUSED;
+        Widget* getLastWidgetWithModalMouseInputFocus() const A_WARN_UNUSED;
 
         /**
           * Sets the last widget with modal mouse input focus.
@@ -302,7 +302,7 @@ class FocusHandler final
           * @param widget The last widget with modal mouse input focus.
           * @see getLastWidgetWithModalMouseInputFocus
           */
-        void setLastWidgetWithModalMouseInputFocus(Widget* widget);
+        void setLastWidgetWithModalMouseInputFocus(Widget *const widget);
 
         /**
           * Gets the last widget pressed. Used by the Gui class to keep track
@@ -311,7 +311,7 @@ class FocusHandler final
           * @return The last widget pressed.
           * @see setLastWidgetPressed
           */
-        Widget* getLastWidgetPressed() A_WARN_UNUSED;
+        Widget* getLastWidgetPressed() const A_WARN_UNUSED;
 
         /**
           * Sets the last widget pressed. Used by the Gui class to keep track
@@ -320,7 +320,7 @@ class FocusHandler final
           * @param lastWidgetPressed The last widget pressed.
           * @see getLastWidgetPressed
           */
-        void setLastWidgetPressed(Widget* lastWidgetPressed);
+        void setLastWidgetPressed(Widget *const lastWidgetPressed);
 
     private:
         /**
