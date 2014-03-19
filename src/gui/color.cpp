@@ -78,9 +78,9 @@ Color::Color() :
 }
 
 Color::Color(const unsigned int color) :
-    r((color >> 16) & 0xFF),
-    g((color >>  8) & 0xFF),
-    b(color         & 0xFF),
+    r((color >> 16) & 0xFFU),
+    g((color >>  8) & 0xFFU),
+    b(color         & 0xFFU),
     a(255U)
 {
 }
@@ -113,9 +113,9 @@ Color Color::operator+(const Color& color) const
 Color Color::operator-(const Color& color) const
 {
     Color result(r - color.r,
-                  g - color.g,
-                  b - color.b,
-                  255U);
+                 g - color.g,
+                 b - color.b,
+                 255U);
 
     result.r = (result.r > 255U ? 255U : result.r);
     result.g = (result.g > 255U ? 255U : result.g);
@@ -127,9 +127,9 @@ Color Color::operator-(const Color& color) const
 Color Color::operator*(const float value) const
 {
     Color result(static_cast<int>(static_cast<float>(r) * value),
-                  static_cast<int>(static_cast<float>(g) * value),
-                  static_cast<int>(static_cast<float>(b) * value),
-                  a);
+                 static_cast<int>(static_cast<float>(g) * value),
+                 static_cast<int>(static_cast<float>(b) * value),
+                 a);
 
     result.r = (result.r > 255U ? 255U : result.r);
     result.g = (result.g > 255U ? 255U : result.g);
@@ -146,20 +146,4 @@ bool Color::operator==(const Color& color) const
 bool Color::operator!=(const Color& color) const
 {
     return !(r == color.r && g == color.g && b == color.b && a == color.a);
-}
-
-std::ostream& operator<<(std::ostream& out,
-                         const Color& color)
-{
-    out << "Color [r = "
-        << color.r
-        << ", g = "
-        << color.g
-        << ", b = "
-        << color.b
-        << ", a = "
-        << color.a
-        << "]";
-
-    return out;
 }

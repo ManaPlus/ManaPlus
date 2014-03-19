@@ -64,8 +64,6 @@
 #ifndef GUI_COLOR_H
 #define GUI_COLOR_H
 
-#include <iostream>
-
 #include "localconsts.h"
 
 /**
@@ -158,15 +156,6 @@ class Color final
           *         false otherwise.
           */
         bool operator!=(const Color& color) const;
-
-        /**
-          * Output operator for output.
-          *
-          * @param out The stream to output to.
-          * @param color The color to output.
-          */
-        friend std::ostream& operator<<(std::ostream& out,
-                                        const Color& Color);
 
         /**
           * Holds the red color component (range 0-255).
