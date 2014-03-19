@@ -135,22 +135,10 @@ bool Rect::isIntersecting(const Rect& rectangle) const
     return true;
 }
 
-bool Rect::isPointInRect(int x_, int y_) const
+bool Rect::isPointInRect(const int x_, const int y_) const
 {
     return x_ >= x
         && y_ >= y
         && x_ < x + width
         && y_ < y + height;
-}
-
-std::ostream& operator<<(std::ostream& out,
-                         const Rect& rectangle)
-{
-    out << "Rect [x = " << rectangle.x
-        << ", y = " << rectangle.y
-        << ", width = " << rectangle.width
-        << ", height = " << rectangle.height
-        << "]";
-
-    return out;
 }
