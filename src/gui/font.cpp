@@ -294,7 +294,7 @@ void TextChunkList::insertFirst(SDLTextChunk *const item)
     searchWidth[item->text] = item;
 }
 
-void TextChunkList::moveToFirst(SDLTextChunk *item)
+void TextChunkList::moveToFirst(SDLTextChunk *const item)
 {
     if (item == start)
         return;

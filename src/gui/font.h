@@ -130,7 +130,7 @@ class TextChunkList final
 
         void insertFirst(SDLTextChunk *const item);
 
-        void moveToFirst(SDLTextChunk *item);
+        void moveToFirst(SDLTextChunk *const item);
 
         void removeBack();
 
