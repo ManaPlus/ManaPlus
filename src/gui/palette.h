@@ -101,7 +101,7 @@ class Palette
 
         inline const Color &getColorWithAlpha(const int type) A_WARN_UNUSED
         {
-            Color* col = &mColors[type].color;
+            Color *const col = &mColors[type].color;
             col->a = mColors[type].delay;
             return *col;
         }
@@ -113,7 +113,7 @@ class Palette
          *
          * @return the gradient type of the color with the given index
          */
-        inline GradientType getGradientType(int type) const A_WARN_UNUSED
+        inline GradientType getGradientType(const int type) const A_WARN_UNUSED
         { return mColors[type].grad; }
 
         /**
