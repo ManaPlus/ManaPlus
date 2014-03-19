@@ -70,27 +70,19 @@
 #include "debug.h"
 
 ClipRect::ClipRect() :
-    Rect(),
+    Rect(0, 0, 0, 0),
     xOffset(0),
     yOffset(0)
 {
-    x = 0;
-    y = 0;
-    width = 0;
-    height = 0;
 }
 
 ClipRect::ClipRect(const int x0, const int y0,
                    const int width0, const int height0,
                    const int xOffset0, const int yOffset0) :
-    Rect(),
+    Rect(x0, y0, width0, height0),
     xOffset(xOffset0),
     yOffset(yOffset0)
 {
-    x = x0;
-    y = y0;
-    width = width0;
-    height = height0;
 }
 
 const ClipRect& ClipRect::operator=(const Rect& other)
@@ -99,6 +91,5 @@ const ClipRect& ClipRect::operator=(const Rect& other)
     y = other.y;
     width = other.width;
     height = other.height;
-
     return *this;
 }
