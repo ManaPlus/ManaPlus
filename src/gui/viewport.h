@@ -124,32 +124,39 @@ class Viewport final : public WindowContainer,
          * Shows a popup for an item.
          * TODO Find some way to get rid of Item here
          */
-        void showPopup(Window *const parent, const int x, const int y,
-                       Item *const item, const bool isInventory = true);
+        void showPopup(Window *const parent,
+                       const int x, const int y,
+                       Item *const item,
+                       const bool isInventory = true);
 
         /**
          * Shows a popup for an item.
          * TODO Find some way to get rid of Item here
          */
-        void showPopup(Window *const parent, Item *const item,
+        void showPopup(Window *const parent,
+                       Item *const item,
                        const bool isInventory = true);
 
-        void showPopup(const int x, const int y, Button *const button);
+        void showPopup(const int x, const int y,
+                       Button *const button);
 
-        void showPopup(const int x, const int y, const ProgressBar *const bar);
+        void showPopup(const int x, const int y,
+                       const ProgressBar *const bar);
 
         void showPopup(MapItem *const item);
 
         void showItemPopup(Item *const item);
 
-        void showItemPopup(const int itemId, const unsigned char color = 1);
+        void showItemPopup(const int itemId,
+                           const unsigned char color = 1);
 
         void showDropPopup(Item *const item);
 
         /**
          * Shows a popup for being.
          */
-        void showPopup(const int x, const int y, const Being *const being);
+        void showPopup(const int x, const int y,
+                       const Being *const being);
 
         void showPopup(const Being *const being);
 
@@ -161,7 +168,8 @@ class Viewport final : public WindowContainer,
 
         void showSpellPopup(TextCommand *const cmd);
 
-        void showAttackMonsterPopup(const std::string &name, const int type);
+        void showAttackMonsterPopup(const std::string &name,
+                                    const int type);
 
         void showPickupItemPopup(const std::string &name);
 
@@ -169,7 +177,8 @@ class Viewport final : public WindowContainer,
          * Shows the related popup menu when right click on the chat
          * at the specified mouse coordinates.
          */
-        void showChatPopup(const int x, const int y, ChatTab *const tab);
+        void showChatPopup(const int x, const int y,
+                           ChatTab *const tab);
 
         /**
          * Shows the related popup menu when right click on the chat
@@ -177,7 +186,8 @@ class Viewport final : public WindowContainer,
         void showChatPopup(ChatTab *const tab);
 
         void showUndressPopup(const int x, const int y,
-                              const Being *const being, Item *const item);
+                              const Being *const being,
+                              Item *const item);
 
         void showMapPopup(const int x, const int y);
 
@@ -268,7 +278,8 @@ class Viewport final : public WindowContainer,
 
         bool isPopupMenuVisible() const A_WARN_UNUSED;
 
-        void moveCameraToActor(const int actorId, const int x = 0,
+        void moveCameraToActor(const int actorId,
+                               const int x = 0,
                                const int y = 0);
 
         void moveCameraToPosition(const int x, const int y);
@@ -292,13 +303,14 @@ class Viewport final : public WindowContainer,
          * Finds a path from the player to the mouse, and draws it. This is for
          * debug purposes.
          */
-        void _drawDebugPath(Graphics *const graphics);
+        void drawDebugPath(Graphics *const graphics);
 
         /**
          * Draws the given path.
          */
-        void _drawPath(Graphics *const graphics, const Path &path,
-                       const Color &color = Color(255, 0, 0)) const;
+        void drawPath(Graphics *const graphics,
+                      const Path &path,
+                      const Color &color = Color(255, 0, 0)) const;
 
         bool leftMouseAction();
 
@@ -309,7 +321,7 @@ class Viewport final : public WindowContainer,
         /**
          * Make the player go to the mouse position.
          */
-        void _followMouse();
+        void followMouse();
 
         Map *mMap;                   /**< The current map. */
 
