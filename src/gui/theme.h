@@ -82,9 +82,12 @@ struct ThemeInfo final
 class Skin final
 {
     public:
-        Skin(ImageRect *restrict skin, const ImageRect *restrict images,
-             const std::string &filePath, const std::string &name = "",
-             const int padding = 3, const int titlePadding = 4,
+        Skin(ImageRect *const restrict skin,
+             const ImageRect *const restrict images,
+             const std::string &filePath,
+             const std::string &name = "",
+             const int padding = 3,
+             const int titlePadding = 4,
              std::map<std::string, int> *restrict const options = nullptr);
 
         A_DELETE_COPY(Skin)
@@ -176,7 +179,8 @@ class Skin final
         std::map<std::string, int> *mOptions;
 };
 
-class Theme final : public Palette, public ConfigListener
+class Theme final : public Palette,
+                    public ConfigListener
 {
     public:
         Theme();
@@ -450,12 +454,16 @@ class Theme final : public Palette, public ConfigListener
         /**
          * Loads a skin.
          */
-        Skin *load(const std::string &filename, const std::string &filename2,
-                   const bool full = true, const std::string
+        Skin *load(const std::string &filename,
+                   const std::string &filename2,
+                   const bool full = true,
+                   const std::string
                    &restrict defaultPath = getThemePath()) A_WARN_UNUSED;
 
-        Skin *loadSkinRect(ImageRect &image, const std::string &name,
-                           const std::string &name2, const int start = 0,
+        Skin *loadSkinRect(ImageRect &image,
+                           const std::string &name,
+                           const std::string &name2,
+                           const int start = 0,
                            const int end = 8) A_WARN_UNUSED;
 
         void unload(Skin *const skin);
@@ -479,8 +487,10 @@ class Theme final : public Palette, public ConfigListener
 
         void optionChanged(const std::string &) override final;
 
-        void loadRect(ImageRect &image, const std::string &name,
-                      const std::string &name2, const int start = 0,
+        void loadRect(ImageRect &image,
+                      const std::string &name,
+                      const std::string &name2,
+                      const int start = 0,
                       const int end = 8);
 
         static void unloadRect(const ImageRect &rect,
