@@ -234,8 +234,10 @@ UserPalette::~UserPalette()
     }
 }
 
-void UserPalette::setColor(const int type, const int r,
-                           const int g, const int b)
+void UserPalette::setColor(const int type,
+                           const int r,
+                           const int g,
+                           const int b)
 {
     Color &color = mColors[type].color;
     color.r = r;
@@ -311,7 +313,7 @@ void UserPalette::rollback()
     }
 }
 
-int UserPalette::getColorTypeAt(int i)
+int UserPalette::getColorTypeAt(const int i)
 {
     if (i < 0 || i >= getNumberOfElements())
         return BEING;
@@ -319,7 +321,8 @@ int UserPalette::getColorTypeAt(int i)
     return mColors[i].type;
 }
 
-void UserPalette::addColor(const unsigned type, const unsigned rgb,
+void UserPalette::addColor(const unsigned type,
+                           const unsigned rgb,
                            Palette::GradientType grad,
                            const std::string &text,
                            int delay)

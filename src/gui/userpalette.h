@@ -186,7 +186,7 @@ class UserPalette final : public Palette, public ListModel
          *
          * @return the color type of the color with the given index
          */
-        int getColorTypeAt(int i) A_WARN_UNUSED;
+        int getColorTypeAt(const int i) A_WARN_UNUSED;
 
     private:
         /**
