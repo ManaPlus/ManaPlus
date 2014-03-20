@@ -180,16 +180,13 @@ WindowMenu::~WindowMenu()
         delete (*it).second;
     }
     mButtonNames.clear();
-    for (std::vector <Button*>::iterator it = mButtons.begin(),
-         it_end = mButtons.end(); it != it_end; ++it)
+    FOR_EACH (std::vector <Button*>::iterator, it, mButtons)
     {
         Button *const btn = dynamic_cast<Button*>(*it);
         if (!btn)
             continue;
         if (!btn->isVisible())
-        {
             delete btn;
-        }
     }
     delete_all(mButtonTexts);
     mButtonTexts.clear();
@@ -204,7 +201,6 @@ WindowMenu::~WindowMenu()
 void WindowMenu::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
-
     const std::map <std::string, ButtonInfo*>::iterator
         it = mButtonNames.find(eventId);
     if (it == mButtonNames.end())
@@ -219,7 +215,9 @@ void WindowMenu::action(const ActionEvent &event)
 
 void WindowMenu::addButton(const char *const text,
                            const std::string &description,
-                           int &restrict x, int &restrict h, const int key,
+                           int &restrict x,
+                           int &restrict h,
+                           const int key,
                            const bool visible)
 {
     Button *const btn = new Button(this, gettext(text), text, this);
@@ -391,9 +389,7 @@ void WindowMenu::loadButtons()
 void WindowMenu::saveButtons() const
 {
     int i = 0;
-    for (std::vector <Button*>::const_iterator it = mButtons.begin(),
-         it_end = mButtons.end();
-         it != it_end; ++it)
+    FOR_EACH (std::vector <Button*>::const_iterator, it, mButtons)
     {
         const Button *const btn = dynamic_cast<const Button *const>(*it);
         if (btn && !btn->isVisible())
