@@ -724,6 +724,7 @@ void Window::mousePressed(MouseEvent &event)
         {
             mouseResize = 0;
             mMoved = 0;
+            event.consume();
             close();
             return;
         }
@@ -735,11 +736,14 @@ void Window::mousePressed(MouseEvent &event)
             mouseResize = 0;
             mMoved = 0;
             mRedraw = true;
+            event.consume();
             return;
         }
 
         // Handle window resizing
         mouseResize = getResizeHandles(event) & resizeMask;
+        if (mouseResize != 0)
+            event.consume();
         if (canMove())
             mMoved = !mouseResize;
         else

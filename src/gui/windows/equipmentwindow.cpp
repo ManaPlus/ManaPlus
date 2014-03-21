@@ -332,6 +332,7 @@ void EquipmentWindow::mousePressed(MouseEvent& mouseEvent)
                 inBox = true;
                 if (item)
                 {
+                    mouseEvent.consume();
                     setSelected(i);
                     dragDrop.dragItem(item, DRAGDROP_SOURCE_EQUIPMENT);
                     return;
@@ -355,6 +356,7 @@ void EquipmentWindow::mousePressed(MouseEvent& mouseEvent)
             const int my = y + getY();
             if (viewport)
             {
+                mouseEvent.consume();
                 if (mForing)
                     viewport->showUndressPopup(mx, my, mBeing, item);
                 else

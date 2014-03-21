@@ -206,6 +206,8 @@ void DropShortcutContainer::mousePressed(MouseEvent &event)
     if (index == -1)
         return;
 
+    event.consume();
+
     const int eventButton = event.getButton();
     if (eventButton == MouseEvent::LEFT)
     {

@@ -732,6 +732,7 @@ void ChatWindow::mousePressed(MouseEvent &event)
             Tab *const tab = mChatTabs->getSelectedTab();
             if (tab)
             {
+                event.consume();
                 if (inputManager.isActionActive(static_cast<int>(
                     Input::KEY_CHAT_MOD)))
                 {

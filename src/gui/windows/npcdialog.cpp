@@ -969,6 +969,7 @@ void NpcDialog::mousePressed(MouseEvent &event)
     if (event.getButton() == MouseEvent::RIGHT
         && event.getSource() == mTextBox)
     {
+        event.consume();
         if (viewport)
             viewport->showNpcDialogPopup(mNpcId);
     }

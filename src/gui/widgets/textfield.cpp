@@ -699,6 +699,7 @@ void TextField::mousePressed(MouseEvent &mouseEvent)
     if (!client->isKeyboardVisible())
         inputManager.executeAction(Input::KEY_SHOW_KEYBOARD);
 #endif
+    mouseEvent.consume();
     if (mouseEvent.getButton() == MouseEvent::RIGHT)
     {
         if (viewport)

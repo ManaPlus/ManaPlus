@@ -215,6 +215,7 @@ class SkillListBox final : public ListBox
                 const SkillInfo *const skill = getSkillByEvent(event);
                 if (!skill)
                     return;
+                event.consume();
                 mSkillClicked = true;
             }
         }

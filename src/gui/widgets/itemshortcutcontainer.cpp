@@ -334,6 +334,7 @@ void ItemShortcutContainer::mousePressed(MouseEvent &event)
 
     if (event.getButton() == MouseEvent::LEFT)
     {
+        event.consume();
         // Stores the selected item if theirs one.
         if (selShortcut->isItemSelected() && inventoryWindow &&
             (inventoryWindow->isWindowVisible()
@@ -352,6 +353,7 @@ void ItemShortcutContainer::mousePressed(MouseEvent &event)
     }
     else if (event.getButton() == MouseEvent::RIGHT)
     {
+        event.consume();
         if (viewport && selShortcut)
         {
             viewport->showItemPopup(selShortcut->getItem(index),

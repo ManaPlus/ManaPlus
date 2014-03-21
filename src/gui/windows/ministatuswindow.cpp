@@ -443,6 +443,7 @@ void MiniStatusWindow::mousePressed(MouseEvent &event)
             event.getSource());
         if (!bar)
             return;
+        event.consume();
         if (viewport)
         {
             viewport->showPopup(getX() + event.getX(),

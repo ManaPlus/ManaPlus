@@ -256,7 +256,10 @@ void CheckBox::adjustSize()
 void CheckBox::mouseClicked(MouseEvent& mouseEvent)
 {
     if (mouseEvent.getButton() == MouseEvent::LEFT)
+    {
         toggleSelected();
+        mouseEvent.consume();
+    }
 }
 
 void CheckBox::mouseDragged(MouseEvent& mouseEvent)

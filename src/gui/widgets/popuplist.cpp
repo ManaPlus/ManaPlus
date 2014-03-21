@@ -133,6 +133,7 @@ void PopupList::mousePressed(MouseEvent& mouseEvent)
 {
     mPressedIndex = mListBox->getSelectionByMouse(
         mouseEvent.getY() + mPadding);
+    mouseEvent.consume();
 }
 
 void PopupList::mouseReleased(MouseEvent& mouseEvent)

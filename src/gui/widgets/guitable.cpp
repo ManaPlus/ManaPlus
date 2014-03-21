@@ -480,6 +480,7 @@ void GuiTable::mousePressed(MouseEvent& mouseEvent)
         {
             mSelectedColumn = column;
             mSelectedRow = row;
+            mouseEvent.consume();
         }
 
         distributeActionEvent();

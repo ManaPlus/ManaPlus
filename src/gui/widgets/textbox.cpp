@@ -590,6 +590,7 @@ void TextBox::mousePressed(MouseEvent& mouseEvent)
         if (!height)
             return;
 
+        mouseEvent.consume();
         mCaretRow = mouseEvent.getY() / height;
 
         const int sz = static_cast<int>(mTextRows.size());

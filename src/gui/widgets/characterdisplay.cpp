@@ -145,6 +145,7 @@ void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
 
 void CharacterDisplay::mousePressed(MouseEvent &event)
 {
+    event.consume();
     if (event.getClickCount() == 2)
         distributeActionEvent();
 }

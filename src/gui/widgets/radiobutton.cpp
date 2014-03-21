@@ -276,6 +276,7 @@ void RadioButton::mouseClicked(MouseEvent& mouseEvent)
     if (mouseEvent.getButton() == MouseEvent::LEFT)
     {
         setSelected(true);
+        mouseEvent.consume();
         distributeActionEvent();
     }
 }

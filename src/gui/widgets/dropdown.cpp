@@ -356,6 +356,7 @@ void DropDown::hideDrop(bool event)
 
 void DropDown::mousePressed(MouseEvent& mouseEvent)
 {
+    mouseEvent.consume();
     // If we have a mouse press on the widget.
     if (mouseEvent.getButton() == MouseEvent::LEFT
         && !mDroppedDown && mouseEvent.getSource() == this)

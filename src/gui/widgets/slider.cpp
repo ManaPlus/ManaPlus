@@ -362,6 +362,7 @@ void Slider::mousePressed(MouseEvent &mouseEvent)
     if (mouseEvent.getButton() == MouseEvent::LEFT
         && x >= 0 && x <= width && y >= 0 && y <= height)
     {
+        mouseEvent.consume();
         if (mOrientation == HORIZONTAL)
             setValue(markerPositionToValue(x - mMarkerLength / 2));
         else

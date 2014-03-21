@@ -163,6 +163,7 @@ void EmoteShortcutContainer::mousePressed(MouseEvent &event)
     if (index == -1)
         return;
 
+    event.consume();
     // Stores the selected emote if there is one.
     if (emoteShortcut->isEmoteSelected())
     {

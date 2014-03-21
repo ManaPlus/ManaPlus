@@ -403,6 +403,7 @@ void ItemContainer::mousePressed(MouseEvent &event)
 
     if (button == MouseEvent::LEFT || button == MouseEvent::RIGHT)
     {
+        event.consume();
         const int index = getSlotIndex(event.getX(), event.getY());
         if (index == Inventory::NO_SLOT_INDEX)
             return;

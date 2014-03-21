@@ -739,24 +739,28 @@ void ScrollArea::mousePressed(MouseEvent& event)
         setVerticalScrollAmount(mVScroll
                                 - mUpButtonScrollAmount);
         mUpButtonPressed = true;
+        event.consume();
     }
     else if (getDownButtonDimension().isPointInRect(x, y))
     {
         setVerticalScrollAmount(mVScroll
                                 + mDownButtonScrollAmount);
         mDownButtonPressed = true;
+        event.consume();
     }
     else if (getLeftButtonDimension().isPointInRect(x, y))
     {
         setHorizontalScrollAmount(mHScroll
                                   - mLeftButtonScrollAmount);
         mLeftButtonPressed = true;
+        event.consume();
     }
     else if (getRightButtonDimension().isPointInRect(x, y))
     {
         setHorizontalScrollAmount(mHScroll
                                   + mRightButtonScrollAmount);
         mRightButtonPressed = true;
+        event.consume();
     }
     else if (getVerticalMarkerDimension().isPointInRect(x, y))
     {
@@ -764,6 +768,7 @@ void ScrollArea::mousePressed(MouseEvent& event)
         mIsVerticalMarkerDragged = true;
 
         mVerticalMarkerDragOffset = y - getVerticalMarkerDimension().y;
+        event.consume();
     }
     else if (getVerticalBarDimension().isPointInRect(x, y))
     {
@@ -777,13 +782,14 @@ void ScrollArea::mousePressed(MouseEvent& event)
             setVerticalScrollAmount(mVScroll
                 + static_cast<int>(getChildrenArea().height * 0.95));
         }
+        event.consume();
     }
     else if (getHorizontalMarkerDimension().isPointInRect(x, y))
     {
         mIsHorizontalMarkerDragged = true;
         mIsVerticalMarkerDragged = false;
-
         mHorizontalMarkerDragOffset = x - getHorizontalMarkerDimension().x;
+        event.consume();
     }
     else if (getHorizontalBarDimension().isPointInRect(x, y))
     {
@@ -797,6 +803,7 @@ void ScrollArea::mousePressed(MouseEvent& event)
             setHorizontalScrollAmount(mHScroll
                 + static_cast<int>(getChildrenArea().width * 0.95));
         }
+        event.consume();
     }
 
     if (event.getButton() == MouseEvent::LEFT)

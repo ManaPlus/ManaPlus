@@ -189,6 +189,7 @@ void SpellShortcutContainer::mousePressed(MouseEvent &event)
         const int itemId = getItemByIndex(index);
         if (itemId > 0)
             mSpellClicked = true;
+        event.consume();
     }
     else if (eventButton == MouseEvent::RIGHT)
     {
@@ -198,6 +199,7 @@ void SpellShortcutContainer::mousePressed(MouseEvent &event)
         if (!spellShortcut || !spellManager)
             return;
 
+        event.consume();
         const int itemId = getItemByIndex(index);
         spellManager->invoke(itemId);
     }

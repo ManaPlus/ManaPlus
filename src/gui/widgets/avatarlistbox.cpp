@@ -332,6 +332,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
     if (!ava)
         return;
 
+    event.consume();
     const unsigned int eventButton = event.getButton();
     if (eventButton == MouseEvent::LEFT)
     {

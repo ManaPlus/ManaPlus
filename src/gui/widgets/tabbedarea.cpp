@@ -379,6 +379,7 @@ void TabbedArea::mousePressed(MouseEvent &mouseEvent)
 
         if (tab)
         {
+            mouseEvent.consume();
             setSelectedTab(tab);
             requestFocus();
         }

@@ -452,11 +452,15 @@ void ServerDialog::valueChanged(const SelectionEvent &)
 
 void ServerDialog::mouseClicked(MouseEvent &mouseEvent)
 {
-    if (mouseEvent.getClickCount() == 2 &&
-        mouseEvent.getSource() == mServersList)
+    if (mouseEvent.getButton() == MouseEvent::LEFT)
     {
-        action(ActionEvent(mConnectButton,
-            mConnectButton->getActionEventId()));
+        mouseEvent.consume();
+        if (mouseEvent.getClickCount() == 2 &&
+            mouseEvent.getSource() == mServersList)
+        {
+            action(ActionEvent(mConnectButton,
+                mConnectButton->getActionEventId()));
+        }
     }
 }
 
