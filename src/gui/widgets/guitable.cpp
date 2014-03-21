@@ -465,56 +465,56 @@ void GuiTable::keyPressed(KeyEvent& keyEvent)
 }
 
 // -- MouseListener notifications
-void GuiTable::mousePressed(MouseEvent& mouseEvent)
+void GuiTable::mousePressed(MouseEvent& event)
 {
     if (!mModel || !mSelectable)
         return;
 
-    if (mouseEvent.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
-        const int row = getRowForY(mouseEvent.getY());
-        const int column = getColumnForX(mouseEvent.getX());
+        const int row = getRowForY(event.getY());
+        const int column = getColumnForX(event.getX());
 
         if (row > -1 && column > -1 &&
             row < mModel->getRows() && column < mModel->getColumns())
         {
             mSelectedColumn = column;
             mSelectedRow = row;
-            mouseEvent.consume();
+            event.consume();
         }
 
         distributeActionEvent();
     }
 }
 
-void GuiTable::mouseWheelMovedUp(MouseEvent& mouseEvent)
+void GuiTable::mouseWheelMovedUp(MouseEvent& event)
 {
     if (isFocused())
     {
         const int selRow = getSelectedRow();
         if (selRow > 0 || (selRow == 0 && mWrappingEnabled))
             setSelectedRow(selRow - 1);
-        mouseEvent.consume();
+        event.consume();
     }
 }
 
-void GuiTable::mouseWheelMovedDown(MouseEvent& mouseEvent)
+void GuiTable::mouseWheelMovedDown(MouseEvent& event)
 {
     if (isFocused())
     {
         setSelectedRow(getSelectedRow() + 1);
-        mouseEvent.consume();
+        event.consume();
     }
 }
 
-void GuiTable::mouseDragged(MouseEvent& mouseEvent)
+void GuiTable::mouseDragged(MouseEvent& event)
 {
-    if (mouseEvent.getButton() != MouseEvent::LEFT)
+    if (event.getButton() != MouseEvent::LEFT)
         return;
 
     // Make table selection update on drag
-    const int x = std::max(0, mouseEvent.getX());
-    const int y = std::max(0, mouseEvent.getY());
+    const int x = std::max(0, event.getX());
+    const int y = std::max(0, event.getY());
 
     setSelectedRow(getRowForY(y));
     setSelectedColumn(getColumnForX(x));

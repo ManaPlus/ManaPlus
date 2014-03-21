@@ -49,9 +49,9 @@ class SliderList final : public Container,
 
         void updateAlpha();
 
-        void mouseWheelMovedUp(MouseEvent& mouseEvent) override final;
+        void mouseWheelMovedUp(MouseEvent& event) override final;
 
-        void mouseWheelMovedDown(MouseEvent& mouseEvent) override final;
+        void mouseWheelMovedDown(MouseEvent& event) override final;
 
         void resize();
 

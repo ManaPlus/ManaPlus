@@ -129,24 +129,24 @@ void PopupList::adjustSize()
     mListBox->setWidth(width);
 }
 
-void PopupList::mousePressed(MouseEvent& mouseEvent)
+void PopupList::mousePressed(MouseEvent& event)
 {
     mPressedIndex = mListBox->getSelectionByMouse(
-        mouseEvent.getY() + mPadding);
-    mouseEvent.consume();
+        event.getY() + mPadding);
+    event.consume();
 }
 
-void PopupList::mouseReleased(MouseEvent& mouseEvent)
+void PopupList::mouseReleased(MouseEvent& event)
 {
     if (mPressedIndex != mListBox->getSelectionByMouse(
-        mouseEvent.getY() + mPadding))
+        event.getY() + mPadding))
     {
         mPressedIndex = -2;
         return;
     }
 
     mPressedIndex = -2;
-    if (mouseEvent.getSource() == mScrollArea)
+    if (event.getSource() == mScrollArea)
         return;
     if (mDropDown)
         mDropDown->updateSelection();

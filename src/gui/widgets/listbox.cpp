@@ -264,11 +264,11 @@ void ListBox::keyPressed(KeyEvent &keyEvent)
 
 // Don't do anything on scrollwheel. ScrollArea will deal with that.
 
-void ListBox::mouseWheelMovedUp(MouseEvent &mouseEvent A_UNUSED)
+void ListBox::mouseWheelMovedUp(MouseEvent &event A_UNUSED)
 {
 }
 
-void ListBox::mouseWheelMovedDown(MouseEvent &mouseEvent A_UNUSED)
+void ListBox::mouseWheelMovedDown(MouseEvent &event A_UNUSED)
 {
 }
 
@@ -314,11 +314,11 @@ void ListBox::mouseReleased(MouseEvent &event)
     mPressedIndex = -2;
 }
 
-void ListBox::mouseReleased1(const MouseEvent &mouseEvent)
+void ListBox::mouseReleased1(const MouseEvent &event)
 {
-    if (mouseEvent.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
-        setSelected(std::max(0, getSelectionByMouse(mouseEvent.getY())));
+        setSelected(std::max(0, getSelectionByMouse(event.getY())));
         distributeActionEvent();
     }
 }

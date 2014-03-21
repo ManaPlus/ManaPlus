@@ -352,17 +352,17 @@ void Slider::mouseExited(MouseEvent& event A_UNUSED)
     mRedraw = true;
 }
 
-void Slider::mousePressed(MouseEvent &mouseEvent)
+void Slider::mousePressed(MouseEvent &event)
 {
-    const int x = mouseEvent.getX();
-    const int y = mouseEvent.getY();
+    const int x = event.getX();
+    const int y = event.getY();
     const int width = mDimension.width;
     const int height = mDimension.height;
 
-    if (mouseEvent.getButton() == MouseEvent::LEFT
+    if (event.getButton() == MouseEvent::LEFT
         && x >= 0 && x <= width && y >= 0 && y <= height)
     {
-        mouseEvent.consume();
+        event.consume();
         if (mOrientation == HORIZONTAL)
             setValue(markerPositionToValue(x - mMarkerLength / 2));
         else
@@ -372,35 +372,35 @@ void Slider::mousePressed(MouseEvent &mouseEvent)
     }
 }
 
-void Slider::mouseDragged(MouseEvent &mouseEvent)
+void Slider::mouseDragged(MouseEvent &event)
 {
     if (mOrientation == HORIZONTAL)
     {
-        setValue(markerPositionToValue(mouseEvent.getX() - mMarkerLength / 2));
+        setValue(markerPositionToValue(event.getX() - mMarkerLength / 2));
     }
     else
     {
         setValue(markerPositionToValue(
-            mDimension.height - mouseEvent.getY() - mMarkerLength / 2));
+            mDimension.height - event.getY() - mMarkerLength / 2));
     }
 
     distributeActionEvent();
 
-    mouseEvent.consume();
+    event.consume();
 }
 
-void Slider::mouseWheelMovedUp(MouseEvent &mouseEvent)
+void Slider::mouseWheelMovedUp(MouseEvent &event)
 {
     setValue(mValue + mStepLength);
     distributeActionEvent();
-    mouseEvent.consume();
+    event.consume();
 }
 
-void Slider::mouseWheelMovedDown(MouseEvent &mouseEvent)
+void Slider::mouseWheelMovedDown(MouseEvent &event)
 {
     setValue(mValue - mStepLength);
     distributeActionEvent();
-    mouseEvent.consume();
+    event.consume();
 }
 
 void Slider::keyPressed(KeyEvent& keyEvent)

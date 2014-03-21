@@ -144,13 +144,13 @@ public:
     { return mOpaque; }
 
     // Inherited from MouseListener
-    void mousePressed(MouseEvent& mouseEvent) override final;
+    void mousePressed(MouseEvent& event) override final;
 
-    void mouseWheelMovedUp(MouseEvent& mouseEvent) override final;
+    void mouseWheelMovedUp(MouseEvent& event) override final;
 
-    void mouseWheelMovedDown(MouseEvent& mouseEvent) override final;
+    void mouseWheelMovedDown(MouseEvent& event) override final;
 
-    void mouseDragged(MouseEvent& mouseEvent) override final;
+    void mouseDragged(MouseEvent& event) override final;
 
     // Constraints inherited from TableModelListener
     void modelUpdated(const bool completed) override final;

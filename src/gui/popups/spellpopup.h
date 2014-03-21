@@ -59,7 +59,7 @@ class SpellPopup final : public Popup
          */
         void view(const int x, const int y);
 
-        void mouseMoved(MouseEvent &mouseEvent) override final;
+        void mouseMoved(MouseEvent &event) override final;
 
     private:
         Label *mItemName;

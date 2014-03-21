@@ -156,7 +156,7 @@ class Button final : public Widget,
          */
         static void updateAlpha();
 
-        void mouseReleased(MouseEvent& mouseEvent) override final;
+        void mouseReleased(MouseEvent& event) override final;
 
         void setDescription(std::string text)
         { mDescription = text; }
@@ -254,13 +254,13 @@ class Button final : public Widget,
 
         void focusLost(const Event& event) override final;
 
-        void mousePressed(MouseEvent& mouseEvent) override final;
+        void mousePressed(MouseEvent& event) override final;
 
-        void mouseEntered(MouseEvent& mouseEvent) override final;
+        void mouseEntered(MouseEvent& event) override final;
 
-        void mouseExited(MouseEvent& mouseEvent) override final;
+        void mouseExited(MouseEvent& event) override final;
 
-        void mouseDragged(MouseEvent& mouseEvent) override final;
+        void mouseDragged(MouseEvent& event) override final;
 
         enum
         {

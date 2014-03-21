@@ -81,7 +81,7 @@ class ServerDialog final : public Window,
          */
         void valueChanged(const SelectionEvent &event) override final;
 
-        void mouseClicked(MouseEvent &mouseEvent) override final;
+        void mouseClicked(MouseEvent &event) override final;
 
         void logic() override final;
 

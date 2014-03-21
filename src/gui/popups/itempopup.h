@@ -61,7 +61,7 @@ class ItemPopup final : public Popup
 
         void setItem(const Item *const item, const bool showImage = false);
 
-        void mouseMoved(MouseEvent &mouseEvent) override final;
+        void mouseMoved(MouseEvent &event) override final;
 
     private:
         Label *mItemName;

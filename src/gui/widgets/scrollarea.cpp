@@ -1309,26 +1309,26 @@ void ScrollArea::setDimension(const Rect& dimension)
     checkPolicies();
 }
 
-void ScrollArea::mouseWheelMovedUp(MouseEvent& mouseEvent)
+void ScrollArea::mouseWheelMovedUp(MouseEvent& event)
 {
-    if (mouseEvent.isConsumed())
+    if (event.isConsumed())
         return;
 
     setVerticalScrollAmount(getVerticalScrollAmount()
         - getChildrenArea().height / 8);
 
-    mouseEvent.consume();
+    event.consume();
 }
 
-void ScrollArea::mouseWheelMovedDown(MouseEvent& mouseEvent)
+void ScrollArea::mouseWheelMovedDown(MouseEvent& event)
 {
-    if (mouseEvent.isConsumed())
+    if (event.isConsumed())
         return;
 
     setVerticalScrollAmount(getVerticalScrollAmount()
         + getChildrenArea().height / 8);
 
-    mouseEvent.consume();
+    event.consume();
 }
 
 void ScrollArea::checkPolicies()

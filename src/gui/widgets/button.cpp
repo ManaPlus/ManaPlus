@@ -613,9 +613,9 @@ void Button::draw(Graphics *graphics)
     BLOCK_END("Button::draw")
 }
 
-void Button::mouseReleased(MouseEvent& mouseEvent)
+void Button::mouseReleased(MouseEvent& event)
 {
-    if (mouseEvent.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         if (mStick)
             mPressed = !mPressed;
@@ -623,7 +623,7 @@ void Button::mouseReleased(MouseEvent& mouseEvent)
         if (mMousePressed && mHasMouse)
         {
             mMousePressed = false;
-            mClickCount = mouseEvent.getClickCount();
+            mClickCount = event.getClickCount();
             distributeActionEvent();
         }
         else
@@ -631,7 +631,7 @@ void Button::mouseReleased(MouseEvent& mouseEvent)
             mMousePressed = false;
             mClickCount = 0;
         }
-        mouseEvent.consume();
+        event.consume();
     }
 }
 
@@ -717,26 +717,26 @@ void Button::focusLost(const Event& event A_UNUSED)
     mKeyPressed = false;
 }
 
-void Button::mousePressed(MouseEvent& mouseEvent)
+void Button::mousePressed(MouseEvent& event)
 {
-    if (mouseEvent.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         mMousePressed = true;
-        mouseEvent.consume();
+        event.consume();
     }
 }
 
-void Button::mouseEntered(MouseEvent& mouseEvent A_UNUSED)
+void Button::mouseEntered(MouseEvent& event A_UNUSED)
 {
     mHasMouse = true;
 }
 
-void Button::mouseExited(MouseEvent& mouseEvent A_UNUSED)
+void Button::mouseExited(MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }
 
-void Button::mouseDragged(MouseEvent& mouseEvent)
+void Button::mouseDragged(MouseEvent& event)
 {
-    mouseEvent.consume();
+    event.consume();
 }

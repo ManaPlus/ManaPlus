@@ -272,9 +272,9 @@ class TextBox final : public Widget,
         void fontChanged() override final
         { adjustSize(); }
 
-        void mousePressed(MouseEvent& mouseEvent) override final;
+        void mousePressed(MouseEvent& event) override final;
 
-        void mouseDragged(MouseEvent& mouseEvent) override final;
+        void mouseDragged(MouseEvent& event) override final;
 
     private:
         /**

@@ -354,12 +354,12 @@ void DropDown::hideDrop(bool event)
     mPopup->setVisible(false);
 }
 
-void DropDown::mousePressed(MouseEvent& mouseEvent)
+void DropDown::mousePressed(MouseEvent& event)
 {
-    mouseEvent.consume();
+    event.consume();
     // If we have a mouse press on the widget.
-    if (mouseEvent.getButton() == MouseEvent::LEFT
-        && !mDroppedDown && mouseEvent.getSource() == this)
+    if (event.getButton() == MouseEvent::LEFT
+        && !mDroppedDown && event.getSource() == this)
     {
         mPushed = true;
         dropDown();
@@ -372,14 +372,14 @@ void DropDown::mousePressed(MouseEvent& mouseEvent)
     }
 }
 
-void DropDown::mouseReleased(MouseEvent &mouseEvent)
+void DropDown::mouseReleased(MouseEvent &event)
 {
     if (mIsDragged)
         mPushed = false;
 
-    const int button = mouseEvent.getButton();
-    const int x = mouseEvent.getX();
-    const int y = mouseEvent.getY();
+    const int button = event.getButton();
+    const int x = event.getX();
+    const int y = event.getY();
     // Released outside of widget. Can happen when we have modal
     // input focus.
     if ((0 > y || y >= mDimension.height || x < 0 || x >= mDimension.width)
@@ -396,22 +396,22 @@ void DropDown::mouseReleased(MouseEvent &mouseEvent)
     mIsDragged = false;
 }
 
-void DropDown::mouseDragged(MouseEvent &mouseEvent)
+void DropDown::mouseDragged(MouseEvent &event)
 {
     mIsDragged = true;
-    mouseEvent.consume();
+    event.consume();
 }
 
-void DropDown::mouseWheelMovedUp(MouseEvent& mouseEvent)
+void DropDown::mouseWheelMovedUp(MouseEvent& event)
 {
     setSelected(getSelected() - 1);
-    mouseEvent.consume();
+    event.consume();
 }
 
-void DropDown::mouseWheelMovedDown(MouseEvent& mouseEvent)
+void DropDown::mouseWheelMovedDown(MouseEvent& event)
 {
     setSelected(getSelected() + 1);
-    mouseEvent.consume();
+    event.consume();
 }
 
 void DropDown::setSelectedString(const std::string &str)

@@ -82,16 +82,16 @@ void SliderList::updateAlpha()
     Button::updateAlpha();
 }
 
-void SliderList::mouseWheelMovedUp(MouseEvent& mouseEvent)
+void SliderList::mouseWheelMovedUp(MouseEvent& event)
 {
     setSelected(mSelectedIndex - 1);
-    mouseEvent.consume();
+    event.consume();
 }
 
-void SliderList::mouseWheelMovedDown(MouseEvent& mouseEvent)
+void SliderList::mouseWheelMovedDown(MouseEvent& event)
 {
     setSelected(mSelectedIndex + 1);
-    mouseEvent.consume();
+    event.consume();
 }
 
 void SliderList::resize()

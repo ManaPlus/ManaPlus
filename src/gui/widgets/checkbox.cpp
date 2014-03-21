@@ -253,18 +253,18 @@ void CheckBox::adjustSize()
         + getFont()->getWidth(mCaption) + mPadding);
 }
 
-void CheckBox::mouseClicked(MouseEvent& mouseEvent)
+void CheckBox::mouseClicked(MouseEvent& event)
 {
-    if (mouseEvent.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         toggleSelected();
-        mouseEvent.consume();
+        event.consume();
     }
 }
 
-void CheckBox::mouseDragged(MouseEvent& mouseEvent)
+void CheckBox::mouseDragged(MouseEvent& event)
 {
-    mouseEvent.consume();
+    event.consume();
 }
 
 void CheckBox::toggleSelected()

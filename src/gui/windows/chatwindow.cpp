@@ -1858,16 +1858,16 @@ void ChatWindow::mouseMoved(MouseEvent &event)
     Window::mouseMoved(event);
 }
 
-void ChatWindow::mouseEntered(MouseEvent& mouseEvent)
+void ChatWindow::mouseEntered(MouseEvent& event)
 {
     mHaveMouse = true;
-    Window::mouseEntered(mouseEvent);
+    Window::mouseEntered(event);
 }
 
-void ChatWindow::mouseExited(MouseEvent& mouseEvent)
+void ChatWindow::mouseExited(MouseEvent& event)
 {
     updateVisibility();
-    Window::mouseExited(mouseEvent);
+    Window::mouseExited(event);
 }
 
 void ChatWindow::draw(Graphics* graphics)

@@ -76,9 +76,9 @@ class ShopListBox final : public ListBox
 
         void mouseMoved(MouseEvent &event) override final;
 
-        void mouseReleased(MouseEvent& mouseEvent) override final;
+        void mouseReleased(MouseEvent& event) override final;
 
-        void mouseExited(MouseEvent& mouseEvent) override final;
+        void mouseExited(MouseEvent& event) override final;
 
         void setProtectItems(bool p)
         { mProtectItems = p; }

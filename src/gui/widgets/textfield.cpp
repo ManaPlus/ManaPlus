@@ -693,14 +693,14 @@ void TextField::fontChanged()
     fixScroll();
 }
 
-void TextField::mousePressed(MouseEvent &mouseEvent)
+void TextField::mousePressed(MouseEvent &event)
 {
 #ifdef ANDROID
     if (!client->isKeyboardVisible())
         inputManager.executeAction(Input::KEY_SHOW_KEYBOARD);
 #endif
-    mouseEvent.consume();
-    if (mouseEvent.getButton() == MouseEvent::RIGHT)
+    event.consume();
+    if (event.getButton() == MouseEvent::RIGHT)
     {
         if (viewport)
         {
@@ -722,10 +722,10 @@ void TextField::mousePressed(MouseEvent &mouseEvent)
             }
         }
     }
-    else if (mouseEvent.getButton() == MouseEvent::LEFT)
+    else if (event.getButton() == MouseEvent::LEFT)
     {
         mCaretPosition = getFont()->getStringIndexAt(
-            mText, mouseEvent.getX() + mXScroll);
+            mText, event.getX() + mXScroll);
         fixScroll();
     }
 }
@@ -750,7 +750,7 @@ void TextField::setText(const std::string& text)
     mText = text;
 }
 
-void TextField::mouseDragged(MouseEvent& mouseEvent)
+void TextField::mouseDragged(MouseEvent& event)
 {
-    mouseEvent.consume();
+    event.consume();
 }

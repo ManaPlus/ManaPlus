@@ -164,9 +164,9 @@ class RadioButton final : public Widget,
         void setCaption(const std::string &caption)
         { mCaption = caption; }
 
-        void mouseClicked(MouseEvent& mouseEvent) override final;
+        void mouseClicked(MouseEvent& event) override final;
 
-        void mouseDragged(MouseEvent& mouseEvent) override final;
+        void mouseDragged(MouseEvent& event) override final;
 
         /**
          * Sets the group the radio button should belong to. Note that

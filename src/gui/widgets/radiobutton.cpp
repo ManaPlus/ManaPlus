@@ -271,19 +271,19 @@ void RadioButton::setSelected(const bool selected)
     mSelected = selected;
 }
 
-void RadioButton::mouseClicked(MouseEvent& mouseEvent)
+void RadioButton::mouseClicked(MouseEvent& event)
 {
-    if (mouseEvent.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         setSelected(true);
-        mouseEvent.consume();
+        event.consume();
         distributeActionEvent();
     }
 }
 
-void RadioButton::mouseDragged(MouseEvent& mouseEvent)
+void RadioButton::mouseDragged(MouseEvent& event)
 {
-    mouseEvent.consume();
+    event.consume();
 }
 
 void RadioButton::setGroup(const std::string &group)

@@ -189,9 +189,9 @@ class Tab : public BasicContainer,
 
         const std::string &getCaption() const A_WARN_UNUSED;
 
-        void mouseEntered(MouseEvent &mouseEvent) override final;
+        void mouseEntered(MouseEvent &event) override final;
 
-        void mouseExited(MouseEvent &mouseEvent) override final;
+        void mouseExited(MouseEvent &event) override final;
 
         void setImage(Image *const image);
 

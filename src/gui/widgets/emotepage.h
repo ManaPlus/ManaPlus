@@ -41,7 +41,7 @@ class EmotePage final : public Widget,
 
         void draw(Graphics *graphics) override final;
 
-        void mousePressed(MouseEvent &mouseEvent) override final;
+        void mousePressed(MouseEvent &event) override final;
 
         int getIndexFromGrid(const int x, const int y) const;
 

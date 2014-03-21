@@ -195,7 +195,7 @@ class TabbedArea final : public ActionListener,
 
         // Inherited from MouseListener
 
-        void mousePressed(MouseEvent &mouseEvent) override final;
+        void mousePressed(MouseEvent &event) override final;
 
         void enableScrollButtons(const bool enable);
 

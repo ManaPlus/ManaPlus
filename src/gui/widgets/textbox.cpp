@@ -582,29 +582,29 @@ void TextBox::addRow(const std::string &row)
     adjustSize();
 }
 
-void TextBox::mousePressed(MouseEvent& mouseEvent)
+void TextBox::mousePressed(MouseEvent& event)
 {
-    if (mouseEvent.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         const int height = getFont()->getHeight();
         if (!height)
             return;
 
-        mouseEvent.consume();
-        mCaretRow = mouseEvent.getY() / height;
+        event.consume();
+        mCaretRow = event.getY() / height;
 
         const int sz = static_cast<int>(mTextRows.size());
         if (mCaretRow >= sz)
             mCaretRow = sz - 1;
 
         mCaretColumn = getFont()->getStringIndexAt(
-            mTextRows[mCaretRow], mouseEvent.getX());
+            mTextRows[mCaretRow], event.getX());
     }
 }
 
-void TextBox::mouseDragged(MouseEvent& mouseEvent)
+void TextBox::mouseDragged(MouseEvent& event)
 {
-    mouseEvent.consume();
+    event.consume();
 }
 
 void TextBox::drawCaret(Graphics *const graphics, const int x, const int y)

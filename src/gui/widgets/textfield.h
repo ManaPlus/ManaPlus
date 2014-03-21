@@ -162,7 +162,7 @@ class TextField : public Widget,
 
         void setCaretPosition(unsigned int position);
 
-        void mousePressed(MouseEvent &mouseEvent) override final;
+        void mousePressed(MouseEvent &event) override final;
 
         void handlePaste();
 
@@ -219,7 +219,7 @@ class TextField : public Widget,
         unsigned int getCaretPosition() const
         { return mCaretPosition; }
 
-        void mouseDragged(MouseEvent& mouseEvent) override final;
+        void mouseDragged(MouseEvent& event) override final;
 
     protected:
         void drawCaret(Graphics* graphics, int x);

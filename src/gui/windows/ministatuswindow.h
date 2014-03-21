@@ -71,7 +71,7 @@ class MiniStatusWindow final : public Popup,
 
         void draw(Graphics *graphics) override final;
 
-        void mouseMoved(MouseEvent &mouseEvent) override final;
+        void mouseMoved(MouseEvent &event) override final;
 
         void mousePressed(MouseEvent &event) override final;
 

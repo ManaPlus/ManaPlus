@@ -221,12 +221,12 @@ void ShopListBox::mouseMoved(MouseEvent &event)
     }
 }
 
-void ShopListBox::mouseReleased(MouseEvent& mouseEvent)
+void ShopListBox::mouseReleased(MouseEvent& event)
 {
-    ListBox::mouseReleased(mouseEvent);
-    if (mouseEvent.getButton() == MouseEvent::RIGHT)
+    ListBox::mouseReleased(event);
+    if (event.getButton() == MouseEvent::RIGHT)
     {
-        setSelected(std::max(0, getSelectionByMouse(mouseEvent.getY())));
+        setSelected(std::max(0, getSelectionByMouse(event.getY())));
 
         if (mSelected < 0 || mSelected >= mShopItems->getNumberOfElements())
             return;
@@ -236,7 +236,7 @@ void ShopListBox::mouseReleased(MouseEvent& mouseEvent)
     }
 }
 
-void ShopListBox::mouseExited(MouseEvent& mouseEvent A_UNUSED)
+void ShopListBox::mouseExited(MouseEvent& event A_UNUSED)
 {
     if (!mItemPopup)
         return;

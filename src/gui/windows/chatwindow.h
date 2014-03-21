@@ -274,11 +274,11 @@ class ChatWindow final : public Window,
 
         void optionChanged(const std::string &name) override final;
 
-        void mouseEntered(MouseEvent& mouseEvent) override final;
+        void mouseEntered(MouseEvent& event) override final;
 
         void mouseMoved(MouseEvent &event) override final;
 
-        void mouseExited(MouseEvent& mouseEvent A_UNUSED) override final;
+        void mouseExited(MouseEvent& event A_UNUSED) override final;
 
         void draw(Graphics* graphics) override final;
 

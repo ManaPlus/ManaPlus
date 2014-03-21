@@ -849,7 +849,7 @@ void Gui::distributeMouseEvent(Widget *const source,
         }
     }
 
-    MouseEvent mouseEvent(source,
+    MouseEvent event(source,
         type, button,
         x, y, mClickCount);
 
@@ -869,13 +869,13 @@ void Gui::distributeMouseEvent(Widget *const source,
             int widgetY;
             widget->getAbsolutePosition(widgetX, widgetY);
 
-            mouseEvent.setX(x - widgetX);
-            mouseEvent.setY(y - widgetY);
+            event.setX(x - widgetX);
+            event.setY(y - widgetY);
 
             std::list<MouseListener*> mouseListeners
                 = widget->_getMouseListeners();
 
-            unsigned int mouseType = mouseEvent.getType();
+            unsigned int mouseType = event.getType();
             // Send the event to all mouse listeners of the widget.
             FOR_EACH (std::list<MouseListener*>::const_iterator,
                  it, mouseListeners)
@@ -883,32 +883,32 @@ void Gui::distributeMouseEvent(Widget *const source,
                 switch (mouseType)
                 {
                     case MouseEvent::ENTERED:
-                        (*it)->mouseEntered(mouseEvent);
+                        (*it)->mouseEntered(event);
                         break;
                     case MouseEvent::EXITED:
-                        (*it)->mouseExited(mouseEvent);
+                        (*it)->mouseExited(event);
                         break;
                     case MouseEvent::MOVED:
-                        (*it)->mouseMoved(mouseEvent);
+                        (*it)->mouseMoved(event);
                         break;
                     case MouseEvent::PRESSED:
-                        (*it)->mousePressed(mouseEvent);
+                        (*it)->mousePressed(event);
                         break;
                     case MouseEvent::RELEASED:
                     case 100:  // manual hack for release on target after drag
-                        (*it)->mouseReleased(mouseEvent);
+                        (*it)->mouseReleased(event);
                         break;
                     case MouseEvent::WHEEL_MOVED_UP:
-                        (*it)->mouseWheelMovedUp(mouseEvent);
+                        (*it)->mouseWheelMovedUp(event);
                         break;
                     case MouseEvent::WHEEL_MOVED_DOWN:
-                        (*it)->mouseWheelMovedDown(mouseEvent);
+                        (*it)->mouseWheelMovedDown(event);
                         break;
                     case MouseEvent::DRAGGED:
-                        (*it)->mouseDragged(mouseEvent);
+                        (*it)->mouseDragged(event);
                         break;
                     case MouseEvent::CLICKED:
-                        (*it)->mouseClicked(mouseEvent);
+                        (*it)->mouseClicked(event);
                         break;
                     default:
                         break;

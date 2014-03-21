@@ -450,13 +450,13 @@ void ServerDialog::valueChanged(const SelectionEvent &)
     mDeleteButton->setEnabled(true);
 }
 
-void ServerDialog::mouseClicked(MouseEvent &mouseEvent)
+void ServerDialog::mouseClicked(MouseEvent &event)
 {
-    if (mouseEvent.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
-        mouseEvent.consume();
-        if (mouseEvent.getClickCount() == 2 &&
-            mouseEvent.getSource() == mServersList)
+        event.consume();
+        if (event.getClickCount() == 2 &&
+            event.getSource() == mServersList)
         {
             action(ActionEvent(mConnectButton,
                 mConnectButton->getActionEventId()));

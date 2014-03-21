@@ -366,20 +366,20 @@ void TabbedArea::logic()
     BLOCK_END("TabbedArea::logic")
 }
 
-void TabbedArea::mousePressed(MouseEvent &mouseEvent)
+void TabbedArea::mousePressed(MouseEvent &event)
 {
-    if (mouseEvent.isConsumed())
+    if (event.isConsumed())
         return;
 
-    if (mouseEvent.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseEvent::LEFT)
     {
         Widget *const widget = mTabContainer->getWidgetAt(
-            mouseEvent.getX(), mouseEvent.getY());
+            event.getX(), event.getY());
         Tab *const tab = dynamic_cast<Tab *const>(widget);
 
         if (tab)
         {
-            mouseEvent.consume();
+            event.consume();
             setSelectedTab(tab);
             requestFocus();
         }

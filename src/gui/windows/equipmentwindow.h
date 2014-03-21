@@ -86,7 +86,7 @@ class EquipmentWindow final : public Window,
 
         void action(const ActionEvent &event) override final;
 
-        void mousePressed(MouseEvent& mouseEvent) override final;
+        void mousePressed(MouseEvent& event) override final;
 
         const Item* getEquipment(const int i) const A_WARN_UNUSED
         { return mEquipment ? mEquipment->getEquipment(i) : nullptr; }

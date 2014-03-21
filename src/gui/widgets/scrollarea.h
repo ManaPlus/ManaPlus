@@ -420,9 +420,9 @@ class ScrollArea final : public BasicContainer,
 
         void setDimension(const Rect& dimension);
 
-        void mouseWheelMovedUp(MouseEvent& mouseEvent) override final;
+        void mouseWheelMovedUp(MouseEvent& event) override final;
 
-        void mouseWheelMovedDown(MouseEvent& mouseEvent) override final;
+        void mouseWheelMovedDown(MouseEvent& event) override final;
 
     protected:
         enum BUTTON_DIR

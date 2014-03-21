@@ -295,7 +295,7 @@ void WindowMenu::mouseMoved(MouseEvent &event)
     }
 }
 
-void WindowMenu::mouseExited(MouseEvent& mouseEvent A_UNUSED)
+void WindowMenu::mouseExited(MouseEvent& event A_UNUSED)
 {
     mHaveMouse = false;
     if (!mTextPopup)
