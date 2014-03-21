@@ -388,7 +388,7 @@ void ItemAmountWindow::close()
     scheduleDelete();
 }
 
-void ItemAmountWindow::keyReleased(KeyEvent &keyEvent A_UNUSED)
+void ItemAmountWindow::keyReleased(KeyEvent &event A_UNUSED)
 {
     mItemAmountSlide->setValue(mItemAmountTextField->getValue());
 }

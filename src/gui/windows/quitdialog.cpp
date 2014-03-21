@@ -203,9 +203,9 @@ void QuitDialog::action(const ActionEvent &event)
     scheduleDelete();
 }
 
-void QuitDialog::keyPressed(KeyEvent &keyEvent)
+void QuitDialog::keyPressed(KeyEvent &event)
 {
-    const int actionId = keyEvent.getActionId();
+    const int actionId = event.getActionId();
     int dir = 0;
 
     switch (actionId)

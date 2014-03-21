@@ -655,13 +655,13 @@ void CharCreateDialog::updatePlayer()
     }
 }
 
-void CharCreateDialog::keyPressed(KeyEvent &keyEvent)
+void CharCreateDialog::keyPressed(KeyEvent &event)
 {
-    const int actionId = keyEvent.getActionId();
+    const int actionId = event.getActionId();
     switch (actionId)
     {
         case Input::KEY_GUI_CANCEL:
-            keyEvent.consume();
+            event.consume();
             action(ActionEvent(mCancelButton,
                 mCancelButton->getActionEventId()));
             break;

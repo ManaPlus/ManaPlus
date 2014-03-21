@@ -242,12 +242,12 @@ void EditServerDialog::action(const ActionEvent &event)
     }
 }
 
-void EditServerDialog::keyPressed(KeyEvent &keyEvent)
+void EditServerDialog::keyPressed(KeyEvent &event)
 {
-    if (keyEvent.isConsumed())
+    if (event.isConsumed())
         return;
 
-    const int actionId = keyEvent.getActionId();
+    const int actionId = event.getActionId();
 
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {

@@ -120,7 +120,7 @@ class RadioButton final : public Widget,
          */
         void mouseExited(MouseEvent& event) override final;
 
-        void keyPressed(KeyEvent& keyEvent) override final;
+        void keyPressed(KeyEvent& event) override final;
 
         void updateAlpha();
 

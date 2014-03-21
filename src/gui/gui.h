@@ -368,20 +368,20 @@ class Gui final
         /**
          * Distributes a key event.
          *
-         * @param keyEvent The key event to distribute.
+         * @param event The key event to distribute.
 
          * @since 0.6.0
          */
-        void distributeKeyEvent(KeyEvent &keyEvent) const;
+        void distributeKeyEvent(KeyEvent &event) const;
 
         /**
          * Distributes a key event to the global key listeners.
          *
-         * @param keyEvent The key event to distribute.
+         * @param event The key event to distribute.
          *
          * @since 0.6.0
          */
-        void distributeKeyEventToGlobalKeyListeners(KeyEvent& keyEvent);
+        void distributeKeyEventToGlobalKeyListeners(KeyEvent& event);
 
         /**
          * Handles modal mouse input focus. Modal mouse input focus needs 

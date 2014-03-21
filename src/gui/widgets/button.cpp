@@ -673,20 +673,20 @@ void Button::adjustSize()
     }
 }
 
-void Button::keyPressed(KeyEvent& keyEvent)
+void Button::keyPressed(KeyEvent& event)
 {
-    const int action = keyEvent.getActionId();
+    const int action = event.getActionId();
 
     if (action == Input::KEY_GUI_SELECT)
     {
         mKeyPressed = true;
-        keyEvent.consume();
+        event.consume();
     }
 }
 
-void Button::keyReleased(KeyEvent& keyEvent)
+void Button::keyReleased(KeyEvent& event)
 {
-    const int action = keyEvent.getActionId();
+    const int action = event.getActionId();
 
     if (action == Input::KEY_GUI_SELECT && mKeyPressed)
     {
@@ -694,7 +694,7 @@ void Button::keyReleased(KeyEvent& keyEvent)
         if (mStick)
             mPressed = !mPressed;
         distributeActionEvent();
-        keyEvent.consume();
+        event.consume();
     }
 }
 

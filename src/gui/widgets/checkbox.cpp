@@ -235,14 +235,14 @@ void CheckBox::mouseExited(MouseEvent& event A_UNUSED)
     mHasMouse = false;
 }
 
-void CheckBox::keyPressed(KeyEvent& keyEvent)
+void CheckBox::keyPressed(KeyEvent& event)
 {
-    const int action = keyEvent.getActionId();
+    const int action = event.getActionId();
 
     if (action == Input::KEY_GUI_SELECT)
     {
         toggleSelected();
-        keyEvent.consume();
+        event.consume();
     }
 }
 

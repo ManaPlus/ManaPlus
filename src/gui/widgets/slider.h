@@ -143,7 +143,7 @@ class Slider final : public Widget,
 
         void mouseWheelMovedDown(MouseEvent &event) override final;
 
-        void keyPressed(KeyEvent& keyEvent) override final;
+        void keyPressed(KeyEvent& event) override final;
 
         /**
          * Sets the scale of the slider.

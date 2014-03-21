@@ -82,7 +82,7 @@ class ItemAmountWindow final : public Window,
          */
         void close();
 
-        void keyReleased(KeyEvent &keyEvent) override final;
+        void keyReleased(KeyEvent &event) override final;
 
         /**
          * Creates the dialog, or bypass it if there aren't enough items.

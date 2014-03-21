@@ -123,7 +123,7 @@ public:
     void _setFocusHandler(FocusHandler *const focusHandler) override final;
 
     // Inherited from KeyListener
-    void keyPressed(KeyEvent& keyEvent) override final;
+    void keyPressed(KeyEvent& event) override final;
 
     /**
      * Sets the table to be opaque, that is sets the table

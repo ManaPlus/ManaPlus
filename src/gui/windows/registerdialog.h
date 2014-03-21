@@ -87,7 +87,7 @@ class RegisterDialog final : public Window,
         /**
          * Called when a key is pressed in one of the text fields.
          */
-        void keyPressed(KeyEvent &keyEvent) override;
+        void keyPressed(KeyEvent &event) override;
 
         void close() override;
 

@@ -307,12 +307,12 @@ void DropDown::drawButton(Graphics *graphics)
     }
 }
 
-void DropDown::keyPressed(KeyEvent& keyEvent)
+void DropDown::keyPressed(KeyEvent& event)
 {
-    if (keyEvent.isConsumed())
+    if (event.isConsumed())
         return;
 
-    const int actionId = keyEvent.getActionId();
+    const int actionId = event.getActionId();
     switch (actionId)
     {
         case Input::KEY_GUI_SELECT:
@@ -344,7 +344,7 @@ void DropDown::keyPressed(KeyEvent& keyEvent)
             return;
     }
 
-    keyEvent.consume();
+    event.consume();
 }
 
 void DropDown::hideDrop(bool event)

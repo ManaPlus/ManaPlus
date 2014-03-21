@@ -235,14 +235,14 @@ void RadioButton::mouseExited(MouseEvent& event A_UNUSED)
     mHasMouse = false;
 }
 
-void RadioButton::keyPressed(KeyEvent& keyEvent)
+void RadioButton::keyPressed(KeyEvent& event)
 {
-    const int action = keyEvent.getActionId();
+    const int action = event.getActionId();
     if (action == Input::KEY_GUI_SELECT)
     {
         setSelected(true);
         distributeActionEvent();
-        keyEvent.consume();
+        event.consume();
     }
 }
 

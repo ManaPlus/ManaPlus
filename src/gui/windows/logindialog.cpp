@@ -256,15 +256,15 @@ void LoginDialog::action(const ActionEvent &event)
     }
 }
 
-void LoginDialog::keyPressed(KeyEvent &keyEvent)
+void LoginDialog::keyPressed(KeyEvent &event)
 {
-    if (keyEvent.isConsumed())
+    if (event.isConsumed())
     {
         mLoginButton->setEnabled(canSubmit());
         return;
     }
 
-    const int actionId = keyEvent.getActionId();
+    const int actionId = event.getActionId();
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {
         action(ActionEvent(nullptr, mServerButton->getActionEventId()));

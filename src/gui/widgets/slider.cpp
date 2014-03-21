@@ -403,9 +403,9 @@ void Slider::mouseWheelMovedDown(MouseEvent &event)
     event.consume();
 }
 
-void Slider::keyPressed(KeyEvent& keyEvent)
+void Slider::keyPressed(KeyEvent& event)
 {
-    const int action = keyEvent.getActionId();
+    const int action = event.getActionId();
 
     if (mOrientation == HORIZONTAL)
     {
@@ -413,13 +413,13 @@ void Slider::keyPressed(KeyEvent& keyEvent)
         {
             setValue(mValue + mStepLength);
             distributeActionEvent();
-            keyEvent.consume();
+            event.consume();
         }
         else if (action == Input::KEY_GUI_LEFT)
         {
             setValue(mValue - mStepLength);
             distributeActionEvent();
-            keyEvent.consume();
+            event.consume();
         }
     }
     else
@@ -428,13 +428,13 @@ void Slider::keyPressed(KeyEvent& keyEvent)
         {
             setValue(mValue + mStepLength);
             distributeActionEvent();
-            keyEvent.consume();
+            event.consume();
         }
         else if (action == Input::KEY_GUI_DOWN)
         {
             setValue(mValue - mStepLength);
             distributeActionEvent();
-            keyEvent.consume();
+            event.consume();
         }
     }
 }

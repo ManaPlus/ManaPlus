@@ -727,12 +727,12 @@ void TabbedArea::setDimension(const Rect &dimension)
     adjustSize();
 }
 
-void TabbedArea::keyPressed(KeyEvent& keyEvent)
+void TabbedArea::keyPressed(KeyEvent& event)
 {
-    if (mBlockSwitching || keyEvent.isConsumed() || !isFocused())
+    if (mBlockSwitching || event.isConsumed() || !isFocused())
         return;
 
-    const int actionId = keyEvent.getActionId();
+    const int actionId = event.getActionId();
 
     if (actionId == Input::KEY_GUI_LEFT)
     {
@@ -744,7 +744,7 @@ void TabbedArea::keyPressed(KeyEvent& keyEvent)
         else
             setSelectedTab(mTabs[index].first);
 
-        keyEvent.consume();
+        event.consume();
     }
     else if (actionId == Input::KEY_GUI_RIGHT)
     {
@@ -756,7 +756,7 @@ void TabbedArea::keyPressed(KeyEvent& keyEvent)
         else
             setSelectedTab(mTabs[index].first);
 
-        keyEvent.consume();
+        event.consume();
     }
 }
 

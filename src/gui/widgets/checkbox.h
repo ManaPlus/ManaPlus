@@ -126,7 +126,7 @@ class CheckBox final : public Widget,
          */
         void mouseExited(MouseEvent& event) override final;
 
-        void keyPressed(KeyEvent& keyEvent) override final;
+        void keyPressed(KeyEvent& event) override final;
 
         void adjustSize();
 

@@ -424,21 +424,21 @@ bool Gui::handleKeyInput()
     {
         const KeyInput keyInput = guiInput->dequeueKeyInput();
 
-        KeyEvent keyEventToGlobalKeyListeners(nullptr,
+        KeyEvent eventToGlobalKeyListeners(nullptr,
             keyInput.getType(),
             keyInput.getActionId(), keyInput.getKey());
 
 #ifdef USE_SDL2
         if (!keyInput.getText().empty())
-            keyEventToGlobalKeyListeners.setText(keyInput.getText());
+            eventToGlobalKeyListeners.setText(keyInput.getText());
 #endif
 
         distributeKeyEventToGlobalKeyListeners(
-            keyEventToGlobalKeyListeners);
+            eventToGlobalKeyListeners);
 
         // If a global key listener consumes the event it will not be
         // sent further to the source of the event.
-        if (keyEventToGlobalKeyListeners.isConsumed())
+        if (eventToGlobalKeyListeners.isConsumed())
         {
             consumed = true;
             continue;
@@ -446,33 +446,33 @@ bool Gui::handleKeyInput()
 
         if (mFocusHandler)
         {
-            bool keyEventConsumed = false;
+            bool eventConsumed = false;
 
             // Send key inputs to the focused widgets
             if (mFocusHandler->getFocused())
             {
-                KeyEvent keyEvent(getKeyEventSource(),
+                KeyEvent event(getKeyEventSource(),
                     keyInput.getType(),
                     keyInput.getActionId(), keyInput.getKey());
 #ifdef USE_SDL2
                 if (!keyInput.getText().empty())
-                    keyEvent.setText(keyInput.getText());
+                    event.setText(keyInput.getText());
 #endif
 
                 if (!mFocusHandler->getFocused()->isFocusable())
                     mFocusHandler->focusNone();
                 else
-                    distributeKeyEvent(keyEvent);
+                    distributeKeyEvent(event);
 
-                keyEventConsumed = keyEvent.isConsumed();
-                if (keyEventConsumed)
+                eventConsumed = event.isConsumed();
+                if (eventConsumed)
                     consumed = true;
             }
 
             // If the key event hasn't been consumed and
             // tabbing is enable check for tab press and
             // change focus.
-            if (!keyEventConsumed && keyInput.getActionId()
+            if (!eventConsumed && keyInput.getActionId()
                 == static_cast<int>(Input::KEY_GUI_TAB)
                 && keyInput.getType() == KeyInput::PRESSED)
             {
@@ -1247,10 +1247,10 @@ Widget* Gui::getKeyEventSource() const
     return widget;
 }
 
-void Gui::distributeKeyEvent(KeyEvent &keyEvent) const
+void Gui::distributeKeyEvent(KeyEvent &event) const
 {
-    Widget* parent = keyEvent.getSource();
-    Widget* widget = keyEvent.getSource();
+    Widget* parent = event.getSource();
+    Widget* widget = event.getSource();
 
     if (mFocusHandler->getModalFocused() && !widget->isModalFocused())
         return;
@@ -1275,7 +1275,7 @@ void Gui::distributeKeyEvent(KeyEvent &keyEvent) const
             std::list<KeyListener*> keyListeners
                 = widget->_getKeyListeners();
 
-            const unsigned int eventType = keyEvent.getType();
+            const unsigned int eventType = event.getType();
             // Send the event to all key listeners of the source widget.
             FOR_EACH (std::list<KeyListener*>::const_iterator,
                  it, keyListeners)
@@ -1283,10 +1283,10 @@ void Gui::distributeKeyEvent(KeyEvent &keyEvent) const
                 switch (eventType)
                 {
                     case KeyEvent::PRESSED:
-                        (*it)->keyPressed(keyEvent);
+                        (*it)->keyPressed(event);
                         break;
                     case KeyEvent::RELEASED:
-                        (*it)->keyReleased(keyEvent);
+                        (*it)->keyReleased(event);
                         break;
                     default:
                         break;
@@ -1305,24 +1305,24 @@ void Gui::distributeKeyEvent(KeyEvent &keyEvent) const
     }
 }
 
-void Gui::distributeKeyEventToGlobalKeyListeners(KeyEvent& keyEvent)
+void Gui::distributeKeyEventToGlobalKeyListeners(KeyEvent& event)
 {
-    const unsigned int eventType = keyEvent.getType();
+    const unsigned int eventType = event.getType();
     FOR_EACH (KeyListenerListIterator, it, mKeyListeners)
     {
         switch (eventType)
         {
             case KeyEvent::PRESSED:
-                (*it)->keyPressed(keyEvent);
+                (*it)->keyPressed(event);
                 break;
             case KeyEvent::RELEASED:
-                (*it)->keyReleased(keyEvent);
+                (*it)->keyReleased(event);
                 break;
             default:
                 break;
         }
 
-        if (keyEvent.isConsumed())
+        if (event.isConsumed())
             break;
     }
 }

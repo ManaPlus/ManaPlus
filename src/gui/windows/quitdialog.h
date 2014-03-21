@@ -64,7 +64,7 @@ class QuitDialog final : public Window,
          */
         void action(const ActionEvent &event) override final;
 
-        void keyPressed(KeyEvent &keyEvent) override final;
+        void keyPressed(KeyEvent &event) override final;
 
     private:
         void placeOption(ContainerPlacer &placer,

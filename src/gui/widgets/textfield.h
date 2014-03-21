@@ -134,7 +134,7 @@ class TextField : public Widget,
         /**
          * Processes one keypress.
          */
-        void keyPressed(KeyEvent &keyEvent) override;
+        void keyPressed(KeyEvent &event) override;
 
         /**
          * Set the minimum value for a range

@@ -89,17 +89,17 @@ class KeyListener
           * If a key is held down the widget will generate multiple key
           * presses.
           *
-          * @param keyEvent Discribes the event.
+          * @param event Discribes the event.
           */
-        virtual void keyPressed(KeyEvent &keyEvent A_UNUSED)
+        virtual void keyPressed(KeyEvent &event A_UNUSED)
         { }
 
         /**
           * Called if a key is released when the widget has keyboard focus.
           *
-          * @param keyEvent Discribes the event.
+          * @param event Discribes the event.
           */
-        virtual void keyReleased(KeyEvent &keyEvent A_UNUSED)
+        virtual void keyReleased(KeyEvent &event A_UNUSED)
         { }
 
     protected:

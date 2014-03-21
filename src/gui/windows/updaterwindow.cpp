@@ -292,9 +292,9 @@ void UpdaterWindow::action(const ActionEvent &event)
     }
 }
 
-void UpdaterWindow::keyPressed(KeyEvent &keyEvent)
+void UpdaterWindow::keyPressed(KeyEvent &event)
 {
-    const int actionId = keyEvent.getActionId();
+    const int actionId = event.getActionId();
     if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
     {
         action(ActionEvent(nullptr, mCancelButton->getActionEventId()));

@@ -225,13 +225,13 @@ void ListBox::draw(Graphics *graphics)
     BLOCK_END("ListBox::draw")
 }
 
-void ListBox::keyPressed(KeyEvent &keyEvent)
+void ListBox::keyPressed(KeyEvent &event)
 {
-    const int action = keyEvent.getActionId();
+    const int action = event.getActionId();
     if (action == Input::KEY_GUI_SELECT)
     {
         distributeActionEvent();
-        keyEvent.consume();
+        event.consume();
     }
     else if (action == Input::KEY_GUI_UP)
     {
@@ -239,7 +239,7 @@ void ListBox::keyPressed(KeyEvent &keyEvent)
             setSelected(mSelected - 1);
         else if (mSelected == 0 && mWrappingEnabled && getListModel())
             setSelected(getListModel()->getNumberOfElements() - 1);
-        keyEvent.consume();
+        event.consume();
     }
     else if (action == Input::KEY_GUI_DOWN)
     {
@@ -248,17 +248,17 @@ void ListBox::keyPressed(KeyEvent &keyEvent)
             setSelected(mSelected + 1);
         else if (mSelected == num && mWrappingEnabled)
             setSelected(0);
-        keyEvent.consume();
+        event.consume();
     }
     else if (action == Input::KEY_GUI_HOME)
     {
         setSelected(0);
-        keyEvent.consume();
+        event.consume();
     }
     else if (action == Input::KEY_GUI_END && getListModel())
     {
         setSelected(getListModel()->getNumberOfElements() - 1);
-        keyEvent.consume();
+        event.consume();
     }
 }
 

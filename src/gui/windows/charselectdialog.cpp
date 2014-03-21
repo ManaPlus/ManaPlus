@@ -317,20 +317,20 @@ void CharSelectDialog::use(const int selected)
     }
 }
 
-void CharSelectDialog::keyPressed(KeyEvent &keyEvent)
+void CharSelectDialog::keyPressed(KeyEvent &event)
 {
-    const int actionId = keyEvent.getActionId();
+    const int actionId = event.getActionId();
     switch (actionId)
     {
         case Input::KEY_GUI_CANCEL:
-            keyEvent.consume();
+            event.consume();
             action(ActionEvent(mSwitchLoginButton,
                 mSwitchLoginButton->getActionEventId()));
             break;
 
         case Input::KEY_GUI_RIGHT:
         {
-            keyEvent.consume();
+            event.consume();
             int idx = mCharacterView->getSelected();
             if (idx >= 0)
             {
@@ -345,7 +345,7 @@ void CharSelectDialog::keyPressed(KeyEvent &keyEvent)
 
         case Input::KEY_GUI_LEFT:
         {
-            keyEvent.consume();
+            event.consume();
             int idx = mCharacterView->getSelected();
             if (idx >= 0)
             {
@@ -360,7 +360,7 @@ void CharSelectDialog::keyPressed(KeyEvent &keyEvent)
 
         case Input::KEY_GUI_UP:
         {
-            keyEvent.consume();
+            event.consume();
             int idx = mCharacterView->getSelected();
             if (idx >= 0)
             {
@@ -375,7 +375,7 @@ void CharSelectDialog::keyPressed(KeyEvent &keyEvent)
 
         case Input::KEY_GUI_DOWN:
         {
-            keyEvent.consume();
+            event.consume();
             int idx = mCharacterView->getSelected();
             if (idx >= 0)
             {
@@ -390,7 +390,7 @@ void CharSelectDialog::keyPressed(KeyEvent &keyEvent)
 
         case Input::KEY_GUI_DELETE:
         {
-            keyEvent.consume();
+            event.consume();
             const int idx = mCharacterView->getSelected();
             if (idx >= 0 && mCharacterEntries[idx]
                 && mCharacterEntries[idx]->getCharacter())
@@ -402,7 +402,7 @@ void CharSelectDialog::keyPressed(KeyEvent &keyEvent)
 
         case Input::KEY_GUI_SELECT:
         {
-            keyEvent.consume();
+            event.consume();
             use(mCharacterView->getSelected());
             break;
         }

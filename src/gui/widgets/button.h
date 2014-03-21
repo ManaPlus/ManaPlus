@@ -189,9 +189,9 @@ class Button final : public Widget,
 
         void adjustSize();
 
-        void keyPressed(KeyEvent &keyEvent) override final;
+        void keyPressed(KeyEvent &event) override final;
 
-        void keyReleased(KeyEvent &keyEvent) override final;
+        void keyReleased(KeyEvent &event) override final;
 
         bool isPressed2() const A_WARN_UNUSED;
 

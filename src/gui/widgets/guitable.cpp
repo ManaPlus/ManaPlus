@@ -421,46 +421,46 @@ Rect GuiTable::getChildrenArea()
 }
 
 // -- KeyListener notifications
-void GuiTable::keyPressed(KeyEvent& keyEvent)
+void GuiTable::keyPressed(KeyEvent& event)
 {
-    const int action = keyEvent.getActionId();
+    const int action = event.getActionId();
 
     if (action == Input::KEY_GUI_SELECT)
     {
         distributeActionEvent();
-        keyEvent.consume();
+        event.consume();
     }
     else if (action == Input::KEY_GUI_UP)
     {
         setSelectedRow(mSelectedRow - 1);
-        keyEvent.consume();
+        event.consume();
     }
     else if (action == Input::KEY_GUI_DOWN)
     {
         setSelectedRow(mSelectedRow + 1);
-        keyEvent.consume();
+        event.consume();
     }
     else if (action == Input::KEY_GUI_LEFT)
     {
         setSelectedColumn(mSelectedColumn - 1);
-        keyEvent.consume();
+        event.consume();
     }
     else if (action == Input::KEY_GUI_RIGHT)
     {
         setSelectedColumn(mSelectedColumn + 1);
-        keyEvent.consume();
+        event.consume();
     }
     else if (action == Input::KEY_GUI_HOME)
     {
         setSelectedRow(0);
         setSelectedColumn(0);
-        keyEvent.consume();
+        event.consume();
     }
     else if (action == Input::KEY_GUI_END && mModel)
     {
         setSelectedRow(mModel->getRows() - 1);
         setSelectedColumn(mModel->getColumns() - 1);
-        keyEvent.consume();
+        event.consume();
     }
 }
 

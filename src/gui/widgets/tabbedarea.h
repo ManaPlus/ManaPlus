@@ -211,7 +211,7 @@ class TabbedArea final : public ActionListener,
         bool getFollowDownScroll() const A_WARN_UNUSED
         { return mFollowDownScroll; }
 
-        void keyPressed(KeyEvent& keyEvent) override final;
+        void keyPressed(KeyEvent& event) override final;
 
         void setBlockSwitching(const bool b)
         { mBlockSwitching = b; }

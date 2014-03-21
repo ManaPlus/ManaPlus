@@ -389,18 +389,18 @@ void ServerDialog::action(const ActionEvent &event)
     }
 }
 
-void ServerDialog::keyPressed(KeyEvent &keyEvent)
+void ServerDialog::keyPressed(KeyEvent &event)
 {
-    switch (keyEvent.getActionId())
+    switch (event.getActionId())
     {
         case Input::KEY_GUI_CANCEL:
-            keyEvent.consume();
+            event.consume();
             client->setState(STATE_EXIT);
             return;
 
         case Input::KEY_GUI_SELECT:
         case Input::KEY_GUI_SELECT2:
-            keyEvent.consume();
+            event.consume();
             action(ActionEvent(nullptr,
                 mConnectButton->getActionEventId()));
             return;
@@ -435,8 +435,8 @@ void ServerDialog::keyPressed(KeyEvent &keyEvent)
         default:
             break;
     }
-    if (!keyEvent.isConsumed())
-        mServersList->keyPressed(keyEvent);
+    if (!event.isConsumed())
+        mServersList->keyPressed(event);
 }
 
 void ServerDialog::valueChanged(const SelectionEvent &)

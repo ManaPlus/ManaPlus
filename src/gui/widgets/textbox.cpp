@@ -248,10 +248,10 @@ void TextBox::setText(const std::string& text)
     adjustSize();
 }
 
-void TextBox::keyPressed(KeyEvent& keyEvent)
+void TextBox::keyPressed(KeyEvent& event)
 {
-    const Key &key = keyEvent.getKey();
-    const int action = keyEvent.getActionId();
+    const Key &key = event.getKey();
+    const int action = event.getActionId();
 
     switch (action)
     {
@@ -430,7 +430,7 @@ void TextBox::keyPressed(KeyEvent& keyEvent)
     adjustSize();
     scrollToCaret();
 
-    keyEvent.consume();
+    event.consume();
 }
 
 void TextBox::draw(Graphics* graphics)
