@@ -840,6 +840,47 @@ void PopupMenu::showChangePos(const int x, const int y)
     }
 }
 
+void PopupMenu::showWindowPopup(Window *const window,
+                                const int x, const int y)
+{
+    if (!window)
+        return;
+
+    mWindow = window;
+    mBrowserBox->clearRows();
+    // TRANSLATORS: popup menu header
+    mBrowserBox->addRow(_("window"));
+
+    if (window->getCloseButton())
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: close window
+        mBrowserBox->addRow("window close", _("Close"));
+    }
+
+    if (window->isStickyButtonLock())
+    {
+        if (window->isSticky())
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: unlock window
+            mBrowserBox->addRow("window unlock", _("Unlock"));
+        }
+        else
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: lock window
+            mBrowserBox->addRow("window lock", _("Lock"));
+        }
+    }
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(x, y);
+}
+
 void PopupMenu::handleLink(const std::string &link,
                            MouseEvent *event A_UNUSED)
 {
@@ -1196,8 +1237,11 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "retrieve" && mItem)
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
-            mWindow, mItem);
+        if (Widget::widgetExists(mWindow))
+        {
+            ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
+                mWindow, mItem);
+        }
     }
     else if (link == "retrieve 10" && mItem)
     {
@@ -1747,6 +1791,21 @@ void PopupMenu::handleLink(const std::string &link,
     {
         showGMPopup();
         return;
+    }
+    else if (link == "window close" && mWindow)
+    {
+        if (Widget::widgetExists(mWindow))
+            mWindow->close();
+    }
+    else if (link == "window unlock" && mWindow)
+    {
+        if (Widget::widgetExists(mWindow))
+            mWindow->setSticky(false);
+    }
+    else if (link == "window lock" && mWindow)
+    {
+        if (Widget::widgetExists(mWindow))
+            mWindow->setSticky(true);
     }
     else if (!link.compare(0, 10, "guild-pos-"))
     {

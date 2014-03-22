@@ -641,6 +641,7 @@ void Window::setStickyButton(const bool flag)
 void Window::setSticky(const bool sticky)
 {
     mSticky = sticky;
+    mRedraw = true;
 }
 
 void Window::setStickyButtonLock(const bool lock)
@@ -704,6 +705,9 @@ void Window::scheduleDelete()
 
 void Window::mousePressed(MouseEvent &event)
 {
+    if (event.isConsumed())
+        return;
+
     if (event.getSource() == this)
     {
         if (getParent())
@@ -714,7 +718,8 @@ void Window::mousePressed(MouseEvent &event)
         mMoved = event.getY() <= static_cast<int>(mTitleBarHeight);
     }
 
-    if (event.getButton() == MouseEvent::LEFT)
+    const unsigned int button = event.getButton();
+    if (button == MouseEvent::LEFT)
     {
         const int x = event.getX();
         const int y = event.getY();
@@ -735,7 +740,6 @@ void Window::mousePressed(MouseEvent &event)
             setSticky(!isSticky());
             mouseResize = 0;
             mMoved = 0;
-            mRedraw = true;
             event.consume();
             return;
         }
@@ -748,6 +752,14 @@ void Window::mousePressed(MouseEvent &event)
             mMoved = !mouseResize;
         else
             mMoved = false;
+    }
+    else if (button == MouseEvent::RIGHT)
+    {
+        if (viewport)
+        {
+            event.consume();
+            viewport->showWindowPopup(this);
+        }
     }
 }
 

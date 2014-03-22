@@ -199,6 +199,8 @@ class Viewport final : public WindowContainer,
 
         void showNpcDialogPopup(const int npcId);
 
+        void showWindowPopup(Window *const window);
+
         /**
          * Closes the popup menu. Needed for when the player dies or switching
          * maps.

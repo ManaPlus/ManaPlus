@@ -170,6 +170,9 @@ class Window : public BasicContainer2,
          */
         void setCloseButton(const bool flag);
 
+        bool getCloseButton() const A_WARN_UNUSED
+        { return mCloseWindowButton; }
+
         /**
          * Returns whether the window can be resized.
          */

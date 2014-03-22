@@ -846,6 +846,11 @@ void Viewport::showNpcDialogPopup(const int npcId)
     mPopupMenu->showNpcDialogPopup(npcId, mMouseX, mMouseY);
 }
 
+void Viewport::showWindowPopup(Window *const window)
+{
+    mPopupMenu->showWindowPopup(window, mMouseX, mMouseY);
+}
+
 void Viewport::closePopupMenu()
 {
     if (mPopupMenu)
