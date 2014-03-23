@@ -27,7 +27,7 @@
 
 #include "listeners/depricatedlistener.h"
 
-#include "gui/widgets/popup.h"
+#include "gui/widgets/window.h"
 
 #include <vector>
 
@@ -42,7 +42,7 @@ class TextPopup;
  *
  * \ingroup Interface
  */
-class MiniStatusWindow final : public Popup,
+class MiniStatusWindow final : public Window,
                                public InventoryListener,
                                public DepricatedListener
 {

@@ -52,7 +52,7 @@ extern volatile int tick_time;
 typedef std::vector <ProgressBar*>::const_iterator ProgressBarVectorCIter;
 
 MiniStatusWindow::MiniStatusWindow() :
-    Popup("MiniStatus", "ministatus.xml"),
+    Window("MiniStatus", false, nullptr, "ministatus.xml"),
     InventoryListener(),
     mBars(),
     mBarNames(),
@@ -134,7 +134,7 @@ MiniStatusWindow::MiniStatusWindow() :
     loadBars();
     updateBars();
 
-    setVisible(config.getValueBool(getPopupName() + "Visible", true));
+    setVisible(true);
     addMouseListener(this);
     Inventory *const inv = PlayerInfo::getInventory();
     if (inv)
@@ -194,7 +194,7 @@ void MiniStatusWindow::updateBars()
     int x = 0;
     const ProgressBar *lastBar = nullptr;
     FOR_EACH (ProgressBarVectorCIter, it, mBars)
-        safeRemove(*it);
+        remove(*it);
 
     FOR_EACH (ProgressBarVectorCIter, it, mBars)
     {
@@ -296,7 +296,7 @@ void MiniStatusWindow::updateStatus()
 void MiniStatusWindow::logic()
 {
     BLOCK_START("MiniStatusWindow::logic")
-    Popup::logic();
+    Window::logic();
 
     for (size_t i = 0, sz = mIcons.size(); i < sz; i++)
     {
@@ -316,7 +316,7 @@ void MiniStatusWindow::draw(Graphics *graphics)
 
 void MiniStatusWindow::mouseMoved(MouseEvent &event)
 {
-    Popup::mouseMoved(event);
+    Window::mouseMoved(event);
 
     const int x = event.getX();
     const int y = event.getY();
@@ -454,7 +454,7 @@ void MiniStatusWindow::mousePressed(MouseEvent &event)
 
 void MiniStatusWindow::mouseExited(MouseEvent &event)
 {
-    Popup::mouseExited(event);
+    Window::mouseExited(event);
 
     mTextPopup->hide();
     mStatusPopup->hide();
