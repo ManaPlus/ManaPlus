@@ -202,6 +202,7 @@ void MapReader::addLayerToList(const std::string &fileName)
         return;
     }
 
+    int cnt = 0;
     for_each_xml_child_node(childNode, node)
     {
         if (!xmlNameEqual(childNode, "layer"))
@@ -213,8 +214,10 @@ void MapReader::addLayerToList(const std::string &fileName)
         logger->log("found patch layer: " + name);
         mKnownLayers[name] = childNode;
         mKnownDocs.insert(doc);
+        cnt ++;
     }
-    delete doc;
+    if (!cnt)
+        delete doc;
 }
 
 Map *MapReader::readMap(const std::string &restrict filename,
