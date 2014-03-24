@@ -1100,7 +1100,7 @@ void NormalOpenGLGraphics::updateScreen()
     BLOCK_END("Graphics::updateScreen")
 }
 
-void NormalOpenGLGraphics::_beginDraw()
+void NormalOpenGLGraphics::beginDraw()
 {
     glMatrixMode(GL_TEXTURE);
     glLoadIdentity();
@@ -1154,7 +1154,7 @@ void NormalOpenGLGraphics::_beginDraw()
     pushClipArea(Rect(0, 0, w, h));
 }
 
-void NormalOpenGLGraphics::_endDraw()
+void NormalOpenGLGraphics::endDraw()
 {
     popClipArea();
 }

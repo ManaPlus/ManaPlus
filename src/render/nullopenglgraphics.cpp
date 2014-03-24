@@ -919,12 +919,12 @@ void NullOpenGLGraphics::updateScreen()
     BLOCK_END("Graphics::updateScreen")
 }
 
-void NullOpenGLGraphics::_beginDraw()
+void NullOpenGLGraphics::beginDraw()
 {
     pushClipArea(Rect(0, 0, 640, 480));
 }
 
-void NullOpenGLGraphics::_endDraw()
+void NullOpenGLGraphics::endDraw()
 {
     popClipArea();
 }

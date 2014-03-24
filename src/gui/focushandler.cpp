@@ -341,7 +341,7 @@ void FocusHandler::distributeFocusGainedEvent(const Event &focusEvent)
     Widget *const sourceWidget = focusEvent.getSource();
 
     std::list<FocusListener*> focusListeners
-        = sourceWidget->_getFocusListeners();
+        = sourceWidget->getFocusListeners();
 
     // Send the event to all focus listeners of the widget.
     for (std::list<FocusListener*>::const_iterator
@@ -553,7 +553,7 @@ void FocusHandler::distributeFocusLostEvent(const Event& focusEvent)
     Widget *const sourceWidget = focusEvent.getSource();
 
     std::list<FocusListener*> focusListeners
-        = sourceWidget->_getFocusListeners();
+        = sourceWidget->getFocusListeners();
 
     // Send the event to all focus listeners of the widget.
     for (std::list<FocusListener*>::const_iterator

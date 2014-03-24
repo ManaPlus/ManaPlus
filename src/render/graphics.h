@@ -81,6 +81,7 @@
 #endif
 
 #include <stack>
+#include <string>
 
 #include "localconsts.h"
 
@@ -461,21 +462,21 @@ class Graphics
           * NOTE: You will never need to call this function yourself, unless
           *       you use a Graphics object outside of Guichan.
           *
-          * @see _endDraw, Gui::draw
+          * @see endDraw, Gui::draw
           */
-        virtual void _beginDraw()
+        virtual void beginDraw()
         { }
 
         /**
           * Deinitializes drawing. Called by the Gui when a Gui::draw() is done.
-          * done. It should reset any state changes made by _beginDraw().
+          * done. It should reset any state changes made by beginDraw().
           *
           * NOTE: You will never need to call this function yourself, unless
           *       you use a Graphics object outside of Guichan.
           *
-          * @see _beginDraw, Gui::draw
+          * @see beginDraw, Gui::draw
           */
-        virtual void _endDraw()
+        virtual void endDraw()
         { }
 
         int mWidth;

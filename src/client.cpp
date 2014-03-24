@@ -585,7 +585,7 @@ void Client::initGraphics()
     applyGrabMode();
     applyGamma();
 
-    mainGraphics->_beginDraw();
+    mainGraphics->beginDraw();
 }
 
 void Client::initTitle()

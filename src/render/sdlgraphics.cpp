@@ -1112,12 +1112,12 @@ void SDLGraphics::fillRectangle(const Rect& rectangle)
     }
 }
 
-void SDLGraphics::_beginDraw()
+void SDLGraphics::beginDraw()
 {
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
 
-void SDLGraphics::_endDraw()
+void SDLGraphics::endDraw()
 {
     popClipArea();
 }

@@ -231,7 +231,7 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 
     SurfaceGraphics *const graphics = new SurfaceGraphics();
     graphics->setTarget(surface);
-    graphics->_beginDraw();
+    graphics->beginDraw();
 
     // drawing SDL images to surface
     FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)

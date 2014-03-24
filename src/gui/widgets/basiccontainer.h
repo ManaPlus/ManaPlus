@@ -85,7 +85,8 @@ class BasicContainer : public Widget,
         explicit BasicContainer(const Widget2 *const widget) :
             Widget(widget),
             DeathListener(),
-            mWidgets()
+            mWidgets(),
+            mLogicWidgets()
         { }
 
         A_DELETE_COPY(BasicContainer)
@@ -122,8 +123,8 @@ class BasicContainer : public Widget,
 
         virtual void logic() override;
 
-        virtual void _setFocusHandler(FocusHandler *const focusHandler)
-                                      override;
+        virtual void setFocusHandler(FocusHandler *const focusHandler)
+                                     override;
 
         void setInternalFocusHandler(FocusHandler* focusHandler);
 

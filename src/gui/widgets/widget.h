@@ -76,7 +76,6 @@
 #include "localconsts.h"
 
 class ActionListener;
-class BasicContainer;
 class DeathListener;
 class FocusHandler;
 class FocusListener;
@@ -482,10 +481,10 @@ class Widget : public Widget2
           *          are doing.
           *
           * @param focusHandler The focus handler to use.
-          * @see _getFocusHandler
+          * @see getFocusHandler
           * @since 0.1.0
           */
-        virtual void _setFocusHandler(FocusHandler *const focusHandler);
+        virtual void setFocusHandler(FocusHandler *const focusHandler);
 
         /**
           * Gets the focus handler used.
@@ -495,10 +494,10 @@ class Widget : public Widget2
           *          are doing.
           *
           * @return The focus handler used.
-          * @see _setFocusHandler
+          * @see setFocusHandler
           * @since 0.1.0
           */
-        virtual FocusHandler* _getFocusHandler() A_WARN_UNUSED
+        virtual FocusHandler* getFocusHandler() A_WARN_UNUSED
         { return mFocusHandler; }
 
         /**
@@ -666,7 +665,7 @@ class Widget : public Widget2
           * @see getParent
           * @since 0.1.0
           */
-        virtual void _setParent(Widget* parent)
+        virtual void setParent(Widget* parent)
         { mParent = parent; }
 
         /**
@@ -853,8 +852,8 @@ class Widget : public Widget2
           * @return The mouse listeners of the widget.
           * @since 0.6.0
           */
-        virtual const std::list<MouseListener*>& _getMouseListeners()
-                                                  A_WARN_UNUSED;
+        virtual const std::list<MouseListener*>& getMouseListeners()
+                                                 A_WARN_UNUSED;
 
         /**
           * Gets the key listeners of the widget.
@@ -862,8 +861,8 @@ class Widget : public Widget2
           * @return The key listeners of the widget.
           * @since 0.6.0
           */
-        virtual const std::list<KeyListener*>& _getKeyListeners()
-                                                A_WARN_UNUSED;
+        virtual const std::list<KeyListener*>& getKeyListeners()
+                                               A_WARN_UNUSED;
 
         /**
           * Gets the focus listeners of the widget.
@@ -871,8 +870,8 @@ class Widget : public Widget2
           * @return The focus listeners of the widget.
           * @since 0.7.0
           */
-        virtual const std::list<FocusListener*>& _getFocusListeners()
-                                                  A_WARN_UNUSED;
+        virtual const std::list<FocusListener*>& getFocusListeners()
+                                                 A_WARN_UNUSED;
 
         /**
           * Gets the area of the widget occupied by the widget's children.
@@ -904,7 +903,7 @@ class Widget : public Widget2
           * @see setInternalFocusHandler
           * @since 0.1.0
           */
-        virtual FocusHandler* _getInternalFocusHandler() A_WARN_UNUSED;
+        virtual FocusHandler* getInternalFocusHandler() A_WARN_UNUSED;
 
         /**
           * Sets the internal focus handler. An internal focus handler is

@@ -57,10 +57,10 @@ class SurfaceGraphics final : public Graphics
         SDL_Surface *getTarget() const
         { return mTarget; }
 
-        void _beginDraw() override final
+        void beginDraw() override final
         { }
 
-        void _endDraw() override final
+        void endDraw() override final
         { }
 
         bool pushClipArea(Rect rect A_UNUSED) override final

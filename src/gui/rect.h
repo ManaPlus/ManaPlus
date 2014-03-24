@@ -64,7 +64,7 @@
 #ifndef GUI_RECT_H
 #define GUI_RECT_H
 
-#include <iostream>
+//#include <iostream>
 
 #include "localconsts.h"
 

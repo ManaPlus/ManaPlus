@@ -45,7 +45,7 @@ class Widget2
         {
             if (!theme)
                 return Palette::BLACK;
-            const int colorId = theme->getIdByChar(c, valid);;
+            const int colorId = theme->getIdByChar(c, valid);
             if (valid)
                 return theme->getColor(mPaletteOffset + colorId, 255);
             else

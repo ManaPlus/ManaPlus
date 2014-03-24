@@ -73,7 +73,7 @@ GuiTableActionListener::GuiTableActionListener(GuiTable *restrict table,
     if (widget)
     {
         widget->addActionListener(this);
-        widget->_setParent(table);
+        widget->setParent(table);
     }
 }
 
@@ -82,7 +82,7 @@ GuiTableActionListener::~GuiTableActionListener()
     if (mWidget)
     {
         mWidget->removeActionListener(this);
-        mWidget->_setParent(nullptr);
+        mWidget->setParent(nullptr);
     }
 }
 
@@ -292,7 +292,7 @@ void GuiTable::installActionListeners()
         }
     }
 
-    _setFocusHandler(_getFocusHandler());
+    setFocusHandler(getFocusHandler());
 }
 
 // -- widget ops
@@ -590,14 +590,14 @@ int GuiTable::getColumnForX(int x) const
         return column;
 }
 
-void GuiTable::_setFocusHandler(FocusHandler *const focusHandler)
+void GuiTable::setFocusHandler(FocusHandler *const focusHandler)
 {
 // add check for focusHandler. may be need remove it?
 
     if (!mModel || !focusHandler)
         return;
 
-    Widget::_setFocusHandler(focusHandler);
+    Widget::setFocusHandler(focusHandler);
 
     const int rows = mModel->getRows();
     const int cols = mModel->getColumns();
@@ -607,7 +607,7 @@ void GuiTable::_setFocusHandler(FocusHandler *const focusHandler)
         {
             Widget *const w = mModel->getElementAt(r, c);
             if (w)
-                w->_setFocusHandler(focusHandler);
+                w->setFocusHandler(focusHandler);
         }
     }
 }

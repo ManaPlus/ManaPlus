@@ -873,7 +873,7 @@ void Gui::distributeMouseEvent(Widget *const source,
             event.setY(y - widgetY);
 
             std::list<MouseListener*> mouseListeners
-                = widget->_getMouseListeners();
+                = widget->getMouseListeners();
 
             unsigned int mouseType = event.getType();
             // Send the event to all mouse listeners of the widget.
@@ -1130,9 +1130,9 @@ uint32_t Gui::getMouseState(int *const x, int *const y)
 void Gui::setTop(Widget *const top)
 {
     if (mTop)
-        mTop->_setFocusHandler(nullptr);
+        mTop->setFocusHandler(nullptr);
     if (top)
-        top->_setFocusHandler(mFocusHandler);
+        top->setFocusHandler(mFocusHandler);
 
     mTop = top;
 }
@@ -1241,10 +1241,10 @@ Widget* Gui::getKeyEventSource() const
 {
     Widget* widget = mFocusHandler->getFocused();
 
-    while (widget && widget->_getInternalFocusHandler()
-           && widget->_getInternalFocusHandler()->getFocused())
+    while (widget && widget->getInternalFocusHandler()
+           && widget->getInternalFocusHandler()->getFocused())
     {
-        widget = widget->_getInternalFocusHandler()->getFocused();
+        widget = widget->getInternalFocusHandler()->getFocused();
     }
 
     return widget;
@@ -1276,7 +1276,7 @@ void Gui::distributeKeyEvent(KeyEvent &event) const
         if (widget->isEnabled())
         {
             std::list<KeyListener*> keyListeners
-                = widget->_getKeyListeners();
+                = widget->getKeyListeners();
 
             const unsigned int eventType = event.getType();
             // Send the event to all key listeners of the source widget.

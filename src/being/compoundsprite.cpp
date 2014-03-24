@@ -337,7 +337,7 @@ void CompoundSprite::redraw() const
     SurfaceGraphics *graphics = new SurfaceGraphics();
     graphics->setBlitMode(SurfaceGraphics::BLIT_GFX);
     graphics->setTarget(surface);
-    graphics->_beginDraw();
+    graphics->beginDraw();
 
     int tileX = mapTileSize / 2;
     int tileY = mapTileSize;

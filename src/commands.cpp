@@ -1379,7 +1379,7 @@ impHandler0(testsdlfont)
 
     for (int f = 0; f < 300; f ++)
         data.push_back("test " + toString(f) + "string");
-    nullGraphics->_beginDraw();
+    nullGraphics->beginDraw();
 
     clock_gettime(CLOCK_MONOTONIC, &time1);
     for (int f = 0; f < 500; f ++)

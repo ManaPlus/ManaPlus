@@ -431,7 +431,7 @@ void SafeOpenGLGraphics::calcWindow(ImageCollection *const vertCol A_UNUSED,
 {
 }
 
-void SafeOpenGLGraphics::_beginDraw()
+void SafeOpenGLGraphics::beginDraw()
 {
     glMatrixMode(GL_TEXTURE);
     glLoadIdentity();
@@ -462,7 +462,7 @@ void SafeOpenGLGraphics::_beginDraw()
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
 
-void SafeOpenGLGraphics::_endDraw()
+void SafeOpenGLGraphics::endDraw()
 {
     popClipArea();
 }

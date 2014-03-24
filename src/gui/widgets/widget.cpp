@@ -77,8 +77,6 @@
 #include "listeners/deathlistener.h"
 #include "listeners/widgetlistener.h"
 
-#include "render/graphics.h"
-
 #include "debug.h"
 
 Font* Widget::mGlobalFont = nullptr;
@@ -123,7 +121,7 @@ Widget::~Widget()
         (*iter)->death(event);
     }
 
-    _setFocusHandler(nullptr);
+    setFocusHandler(nullptr);
 
     mWidgets.remove(this);
     mWidgetsSet.erase(this);
@@ -234,7 +232,7 @@ void Widget::setVisible(bool visible)
     mVisible = visible;
 }
 
-void Widget::_setFocusHandler(FocusHandler *const focusHandler)
+void Widget::setFocusHandler(FocusHandler *const focusHandler)
 {
     if (mFocusHandler)
     {
@@ -426,17 +424,17 @@ bool Widget::isModalMouseInputFocused() const
     return mFocusHandler->getModalMouseInputFocused() == this;
 }
 
-const std::list<MouseListener*>& Widget::_getMouseListeners()
+const std::list<MouseListener*>& Widget::getMouseListeners()
 {
     return mMouseListeners;
 }
 
-const std::list<KeyListener*>& Widget::_getKeyListeners()
+const std::list<KeyListener*>& Widget::getKeyListeners()
 {
     return mKeyListeners;
 }
 
-const std::list<FocusListener*>& Widget::_getFocusListeners()
+const std::list<FocusListener*>& Widget::getFocusListeners()
 {
     return mFocusListeners;
 }
@@ -446,7 +444,7 @@ Rect Widget::getChildrenArea()
     return Rect(0, 0, 0, 0);
 }
 
-FocusHandler* Widget::_getInternalFocusHandler()
+FocusHandler* Widget::getInternalFocusHandler()
 {
     return mInternalFocusHandler;
 }

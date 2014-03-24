@@ -33,9 +33,9 @@ public:
                  const int x2, const int y2,
                  const int width, const int height) override final;
 
-    void _beginDraw();
+    void beginDraw();
 
-    void _endDraw();
+    void endDraw();
 
     bool pushClipArea(Rect area) override final;
 

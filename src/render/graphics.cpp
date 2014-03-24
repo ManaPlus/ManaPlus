@@ -129,7 +129,7 @@ Graphics::Graphics() :
 
 Graphics::~Graphics()
 {
-    _endDraw();
+    endDraw();
 #ifdef USE_SDL2
     if (mRenderer)
     {
@@ -470,7 +470,7 @@ bool Graphics::setFullscreen(const bool fs)
 bool Graphics::resizeScreen(const int width, const int height)
 {
 #ifdef USE_SDL2
-    _endDraw();
+    endDraw();
 
     mRect.w = width / mScale;
     mRect.h = height / mScale;
@@ -488,14 +488,14 @@ bool Graphics::resizeScreen(const int width, const int height)
     // +++ need impliment resize in soft mode
 #endif  // USE_OPENGL
 
-    _beginDraw();
+    beginDraw();
     return true;
 
 #else
     const int prevWidth = mWidth;
     const int prevHeight = mHeight;
 
-    _endDraw();
+    endDraw();
 
     const bool success = setVideoMode(width, height, mScale, mBpp,
         mFullscreen, mHWAccel, mEnableResize, mNoFrame);
@@ -511,7 +511,7 @@ bool Graphics::resizeScreen(const int width, const int height)
         }
     }
 
-    _beginDraw();
+    beginDraw();
 
     return success;
 #endif  // USE_SDL2

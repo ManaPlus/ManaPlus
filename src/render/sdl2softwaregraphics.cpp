@@ -1115,12 +1115,12 @@ void SDL2SoftwareGraphics::fillRectangle(const Rect &rectangle)
     }
 }
 
-void SDL2SoftwareGraphics::_beginDraw()
+void SDL2SoftwareGraphics::beginDraw()
 {
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
 
-void SDL2SoftwareGraphics::_endDraw()
+void SDL2SoftwareGraphics::endDraw()
 {
     popClipArea();
 }

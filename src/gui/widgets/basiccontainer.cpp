@@ -208,7 +208,7 @@ Widget *BasicContainer::getWidgetAt(int x, int y)
         if (widget->isVisible() && widget->getDimension()
             .isPointInRect(x, y))
         {
-            return *it;;
+            return *it;
         }
     }
 
@@ -227,15 +227,15 @@ void BasicContainer::logic()
     BLOCK_END("BasicContainer::logic")
 }
 
-void BasicContainer::_setFocusHandler(FocusHandler *const focusHandler)
+void BasicContainer::setFocusHandler(FocusHandler *const focusHandler)
 {
-    Widget::_setFocusHandler(focusHandler);
+    Widget::setFocusHandler(focusHandler);
 
     if (mInternalFocusHandler)
         return;
 
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
-        (*iter)->_setFocusHandler(focusHandler);
+        (*iter)->setFocusHandler(focusHandler);
 }
 
 void BasicContainer::add(Widget *const widget)
@@ -245,11 +245,11 @@ void BasicContainer::add(Widget *const widget)
         mLogicWidgets.push_back(widget);
 
     if (!mInternalFocusHandler)
-        widget->_setFocusHandler(_getFocusHandler());
+        widget->setFocusHandler(getFocusHandler());
     else
-        widget->_setFocusHandler(mInternalFocusHandler);
+        widget->setFocusHandler(mInternalFocusHandler);
 
-    widget->_setParent(this);
+    widget->setParent(this);
     widget->addDeathListener(this);
 }
 
@@ -260,8 +260,8 @@ void BasicContainer::remove(Widget* widget)
         if (*iter == widget)
         {
             mWidgets.erase(iter);
-            widget->_setFocusHandler(nullptr);
-            widget->_setParent(nullptr);
+            widget->setFocusHandler(nullptr);
+            widget->setParent(nullptr);
             widget->removeDeathListener(this);
             break;
         }
@@ -281,8 +281,8 @@ void BasicContainer::clear()
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
         Widget *const widget = *iter;
-        widget->_setFocusHandler(nullptr);
-        widget->_setParent(nullptr);
+        widget->setFocusHandler(nullptr);
+        widget->setParent(nullptr);
         widget->removeDeathListener(this);
     }
 
@@ -367,8 +367,8 @@ void BasicContainer::setInternalFocusHandler(FocusHandler* focusHandler)
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
         if (!mInternalFocusHandler)
-            (*iter)->_setFocusHandler(_getFocusHandler());
+            (*iter)->setFocusHandler(getFocusHandler());
         else
-            (*iter)->_setFocusHandler(mInternalFocusHandler);
+            (*iter)->setFocusHandler(mInternalFocusHandler);
     }
 }
