@@ -179,11 +179,17 @@ public:
      */
     void removeActorSpriteListener(ActorSpriteListener *const listener);
 
-    int getActorX() const
+    int getActorX() const A_WARN_UNUSED
     { return getPixelX() - mapTileSize / 2; }
 
-    int getActorY() const
+    int getActorY() const A_WARN_UNUSED
     { return getPixelY() - mapTileSize; }
+
+    void setPoison(const bool b)
+    { mPoison = b; }
+
+    bool getPoison() const A_WARN_UNUSED
+    { return mPoison; }
 
 protected:
     /**
@@ -244,6 +250,7 @@ private:
 
     /** Reset particle status effects on next redraw? */
     bool mMustResetParticles;
+    bool mPoison;
 };
 
 #endif  // BEING_ACTORSPRITE_H

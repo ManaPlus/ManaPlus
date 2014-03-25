@@ -568,6 +568,7 @@ public:
             avatar->setLevel(being->getLevel());
             avatar->setGender(being->getGender());
             avatar->setIp(being->getIp());
+            avatar->setPoison(being->getPoison());
         }
     }
 

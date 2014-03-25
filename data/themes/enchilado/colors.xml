@@ -125,6 +125,7 @@
     </palette>
 
     <progressbar id="HP" color="#ff0000,e28000,c38948,0f6a20" />
+    <progressbar id="HP_POISON" color="#ffff00,70ff00,50ff00,30ff00" />
     <progressbar id="MP" color="#1a66e6" />
     <progressbar id="NO_MP" color="#646464" />
     <progressbar id="EXP" color="#8fc0d3" />

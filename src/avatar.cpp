@@ -27,24 +27,25 @@
 #include "debug.h"
 
 Avatar::Avatar(const std::string &name):
-        mId(0),
-        mCharId(0),
-        mName(name),
-        mOriginalName(name),
-        mHp(0),
-        mMaxHp(0),
-        mDamageHp(0),
-        mLevel(1),
-        mMap(),
-        mX(-1),
-        mY(-1),
-        mType(AVATAR_PLAYER),
-        mExp(0),
-        mGender(GENDER_UNSPECIFIED),
-        mRace(-1),
-        mIp(),
-        mOnline(false),
-        mDisplayBold(false)
+    mId(0),
+    mCharId(0),
+    mName(name),
+    mOriginalName(name),
+    mHp(0),
+    mMaxHp(0),
+    mDamageHp(0),
+    mLevel(1),
+    mMap(),
+    mX(-1),
+    mY(-1),
+    mType(AVATAR_PLAYER),
+    mExp(0),
+    mGender(GENDER_UNSPECIFIED),
+    mRace(-1),
+    mIp(),
+    mOnline(false),
+    mDisplayBold(false),
+    mPoison(false)
 {
 }
 

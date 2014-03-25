@@ -47,7 +47,8 @@ StatusEffect::StatusEffect() :
     mParticleEffect(),
     mIcon(),
     mAction(),
-    mPersistentParticleEffect(false)
+    mPersistentParticleEffect(false),
+    mIsPoison(false)
 {
 }
 
@@ -153,9 +154,9 @@ void StatusEffect::loadXmlFile(const std::string &fileName)
     {
         if (xmlNameEqual(node, "include"))
         {
-            const std::string name = XML::getProperty(node, "name", "");
-            if (!name.empty())
-                loadXmlFile(name);
+            const std::string incName = XML::getProperty(node, "name", "");
+            if (!incName.empty())
+                loadXmlFile(incName);
             continue;
         }
 
@@ -181,11 +182,14 @@ void StatusEffect::loadXmlFile(const std::string &fileName)
         {
             StatusEffect *startEffect = (*the_map)[1][index];
             StatusEffect *endEffect = (*the_map)[0][index];
+            const std::string name = XML::getProperty(node, "name", "");
             if (!startEffect)
                 startEffect = new StatusEffect;
             if (!endEffect)
                 endEffect = new StatusEffect;
 
+            startEffect->mIsPoison =
+                (name == paths.getStringValue("poisonEffectName"));
             startEffect->mMessage = XML::getProperty(
                 node, "start-message", "");
             startEffect->mSFXEffect = XML::getProperty(
@@ -198,6 +202,7 @@ void StatusEffect::loadXmlFile(const std::string &fileName)
             startEffect->mPersistentParticleEffect = (XML::getProperty(
                 node, "persistent-particle-effect", "no")) != "no";
 
+            endEffect->mIsPoison = startEffect->mIsPoison;
             endEffect->mMessage = XML::getProperty(node, "end-message", "");
             endEffect->mSFXEffect = XML::getProperty(node, "end-audio", "");
             endEffect->mParticleEffect = XML::getProperty(

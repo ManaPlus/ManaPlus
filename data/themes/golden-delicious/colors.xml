@@ -358,14 +358,11 @@
         <color id="STATUSBAR_OFF" color="#ffff00" />
     </palette>
 
-<!-- DEFAULT progressbar is obsolete! This would be removed from
-future versions of theme, it only left here to keep compatibility
-with older versions for some time -->
-    <progressbar id="DEFAULT" color="#266091" />
     <progressbar id="UPDATE" color="#165081" />
     <progressbar id="STATUS" color="#888808" />
     <progressbar id="MONEY" color="#606060" />
     <progressbar id="HP" color="#D00000,C09800,779000,008710" />
+    <progressbar id="HP_POISON" color="#ffff00,70ff00,50ff00,30ff00" />
     <progressbar id="MP" color="#1250b0" />
     <progressbar id="NO_MP" color="#646464" />
     <progressbar id="EXP" color="#6080a0" />

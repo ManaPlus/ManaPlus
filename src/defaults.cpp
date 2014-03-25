@@ -535,6 +535,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("deadMessagesFile", "deadmessages.xml");
     AddDEF("deadMessagesPatchFile", "deadmessages_patch.xml");
     AddDEF("deadMessagesPatchDir", "deadmessages.d");
+    AddDEF("poisonEffectName", "poison");
 
     return configData;
 }

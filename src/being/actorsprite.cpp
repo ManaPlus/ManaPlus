@@ -57,7 +57,8 @@ ActorSprite::ActorSprite(const int id) :
     mActorSpriteListeners(),
     mCursorPaddingX(0),
     mCursorPaddingY(0),
-    mMustResetParticles(false)
+    mMustResetParticles(false),
+    mPoison(false)
 {
 }
 
@@ -197,7 +198,13 @@ void ActorSprite::updateStunMode(const int oldMode, const int newMode)
 
 void ActorSprite::updateStatusEffect(const int index, const bool newStatus)
 {
-    handleStatusEffect(StatusEffect::getStatusEffect(index, newStatus), index);
+    StatusEffect *const effect = StatusEffect::getStatusEffect(
+        index, newStatus);
+    if (!effect)
+        return;
+    if (effect->isPoison() && getType() == PLAYER)
+        setPoison(newStatus);
+    handleStatusEffect(effect, index);
 }
 
 void ActorSprite::handleStatusEffect(StatusEffect *const effect,

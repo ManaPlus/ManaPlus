@@ -154,14 +154,16 @@ void AvatarListBox::draw(Graphics *graphics)
                 text = strprintf("%s %d/%d", a->getComplexName().c_str(),
                                  a->getHp(), a->getMaxHp());
             }
-            if (parent && a->getMaxHp())
+            const bool isPoison = a->getPoison();
+            if (a->getMaxHp() && (isPoison || parent))
             {
+                const int themeColor = (isPoison
+                    ? Theme::PROG_HP_POISON : Theme::PROG_HP);
                 Color color = Theme::getProgressColor(
-                        Theme::PROG_HP, static_cast<float>(a->getHp())
-                        / static_cast<float>(a->getMaxHp()));
+                    themeColor, static_cast<float>(a->getHp())
+                    / static_cast<float>(a->getMaxHp()));
                 color.a = 80;
                 graphics->setColor(color);
-
                 graphics->fillRectangle(Rect(mPadding, y + mPadding,
                     parent->getWidth() * a->getHp() / a->getMaxHp()
                     - 2 * mPadding, fontHeight));
@@ -182,8 +184,9 @@ void AvatarListBox::draw(Graphics *graphics)
 
             if (parent)
             {
-                Color color = Theme::getProgressColor(Theme::PROG_HP, 1);
-
+                const int themeColor = (a->getPoison()
+                    ? Theme::PROG_HP_POISON : Theme::PROG_HP);
+                Color color = Theme::getProgressColor(themeColor, 1);
                 color.a = 80;
                 graphics->setColor(color);
                 graphics->fillRectangle(Rect(mPadding, y + mPadding,

@@ -73,6 +73,8 @@ public:
     bool particleEffectIsPersistent() const A_WARN_UNUSED
     { return mPersistentParticleEffect; }
 
+    bool isPoison() const A_WARN_UNUSED
+    { return mIsPoison; }
 
     /**
      * Retrieves a status effect.
@@ -118,6 +120,7 @@ private:
     std::string mIcon;
     std::string mAction;
     bool mPersistentParticleEffect;
+    bool mIsPoison;
 };
 
 #endif  // STATUSEFFECT_H

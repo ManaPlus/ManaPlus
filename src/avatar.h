@@ -172,6 +172,12 @@ public:
     void setIp(std::string ip)
     { mIp = ip; }
 
+    bool getPoison() const A_WARN_UNUSED
+    { return mPoison; }
+
+    void setPoison(const bool b)
+    { mPoison = b; }
+
 protected:
     int mId;
     int mCharId;
@@ -191,6 +197,7 @@ protected:
     std::string mIp;
     bool mOnline;
     bool mDisplayBold;
+    bool mPoison;
 };
 
 #endif  // AVATAR_H

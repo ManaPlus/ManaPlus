@@ -435,6 +435,7 @@ class Theme final : public Palette,
         enum ProgressPalette
         {
             PROG_HP = 0,
+            PROG_HP_POISON,
             PROG_MP,
             PROG_NO_MP,
             PROG_EXP,

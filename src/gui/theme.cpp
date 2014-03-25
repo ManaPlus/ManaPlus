@@ -1031,6 +1031,7 @@ static int readProgressType(const std::string &type)
     static const std::string colors[Theme::THEME_PROG_END] =
     {
         "HP",
+        "HP_POISON",
         "MP",
         "NO_MP",
         "EXP",
