@@ -334,6 +334,10 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         "serverAttack", this, "serverAttackEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Hide support page link on error"), "",
+        "hidesupport", this, "hidesupportEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable double clicks"), "",
         "doubleClick", this, "doubleClickEvent");
 

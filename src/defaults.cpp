@@ -361,6 +361,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("usepets", true);
     AddDEF("scale", 1);
     AddDEF("addwatermark", true);
+    AddDEF("hidesupport", false);
     return configData;
 }
 

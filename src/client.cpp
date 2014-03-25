@@ -2987,7 +2987,7 @@ Window *Client::openErrorDialog(const std::string &header,
                                 const std::string &message,
                                 const bool modal)
 {
-    if (getSupportUrl().empty())
+    if (getSupportUrl().empty() || config.getBoolValue("hidesupport"))
     {
         return new OkDialog(header, message, DIALOG_ERROR, modal);
     }
