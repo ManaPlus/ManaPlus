@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-03-09 22:58+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2014-03-17 19:44+0000\n"
+"Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -349,7 +349,7 @@ msgid "/addpriorityattack NAME - add monster to priority attack list."
 msgstr "/addpriorityattack NOMBRE - Agregar monstruo a la lista de ataque prioritario."
 
 msgid "For TMW support:"
-msgstr ""
+msgstr "Para ayuda de TMW:"
 
 msgid "/priceload - load shop price from disc."
 msgstr "/priceload - Cargar precios de la tienda desde disco."
@@ -363,7 +363,7 @@ msgid "\"Item shortcut 13\""
 msgstr "\"Atajo para objeto 13\"  "
 
 msgid "For other servers may exists other copyrights."
-msgstr ""
+msgstr "Para otros servidores podrían existir otros derechos de autor."
 
 msgid "\"Outfit shortcut 13\""
 msgstr "\"Atajo para vestimenta 13\""
@@ -482,7 +482,7 @@ msgid "\"Item shortcut 2\""
 msgstr "\"Atajo para objeto 2\"  "
 
 msgid "About current server"
-msgstr ""
+msgstr "Acerca del servidor actual"
 
 msgid "\"Quick heal target or self\""
 msgstr "\"Curar rápidamente al objetivo o a sí mismo\""
@@ -702,7 +702,7 @@ msgid "/magicattack - attack target with magic."
 msgstr "/magicattack - Ataca al objetivo con magia."
 
 msgid "For ManaPlus Online support:"
-msgstr ""
+msgstr "Para ayuda de ManaPlus Online:"
 
 msgid "\"Set direction right\""
 msgstr "\"Voltear a la derecha\""
@@ -844,7 +844,7 @@ msgid "\"Emote shortcut 8\""
 msgstr "\"Atajo para emoticono 8\""
 
 msgid "For Evol Online support:"
-msgstr ""
+msgstr "Para ayuda de Evol Online:"
 
 msgid "/follow NICK - start follow mode."
 msgstr "/follow NICK - iniciar el modo seguimiento."
@@ -915,7 +915,7 @@ msgid "\"Set direction up\""
 msgstr "\"Voltear hacia arriba\""
 
 msgid "or come visit us on our IRC channel:"
-msgstr ""
+msgstr "O ven a visitarnos en nuestro canal de IRC:"
 
 msgid "\"Toggle camera mode\""
 msgstr "\"Activar el modo de cámara\""
@@ -973,7 +973,7 @@ msgstr "Contribuyentes al desarrollo del cliente"
 msgid ""
 "Otherwise see the @@team|Development Team@@ section to have a list of\n"
 " developers and how to contact them."
-msgstr ""
+msgstr "Por otro lado, visita la sección @@team|Equipo de Desarrollo@@ para tener\nuna lista de desarrolladores y cómo contactarlos."
 
 msgid "\"Item shortcut 11\""
 msgstr "\"Atajo para objeto 11\"  "
@@ -1047,7 +1047,7 @@ msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend NICK, /befriend NICK - agregar nick a la lista de amigos."
 
 msgid "ABOUT THE MANA WORLD"
-msgstr ""
+msgstr "ACERCA DE THE MANA WORLD"
 
 msgid "\"Emote shortcut 14\""
 msgstr "\"Atajo para emoticono 14\""
