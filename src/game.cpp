@@ -263,8 +263,7 @@ static void createGuiWindows()
     killStats = new KillStats;
     socialWindow = new SocialWindow;
     socialWindow->postInit();
-    if (serverVersion >= 6)
-        questsWindow = new QuestsWindow;
+    questsWindow = new QuestsWindow;
 
     // TRANSLATORS: chat tab header
     localChatTab = new ChatTab(chatWindow, _("General"), GENERAL_CHANNEL);
