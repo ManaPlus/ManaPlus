@@ -362,6 +362,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("scale", 1);
     AddDEF("addwatermark", true);
     AddDEF("hidesupport", false);
+    AddDEF("showserverpos", false);
     return configData;
 }
 

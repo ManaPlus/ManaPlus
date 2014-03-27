@@ -651,6 +651,7 @@ class LocalPlayer final : public Being,
         bool mAwayMode;
         bool mPseudoAwayMode;
         bool mShowNavigePath;
+        bool mShowServerPos;
 };
 
 extern LocalPlayer *player_node;

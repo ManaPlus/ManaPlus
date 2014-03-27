@@ -182,6 +182,10 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         "autofixPos", this, "autofixPosEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Show server side position"), "",
+        "showserverpos", this, "showserverposEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Attack while moving"), "",
         "attackMoving", this, "attackMovingEvent");
 
