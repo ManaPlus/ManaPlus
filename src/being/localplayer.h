@@ -639,6 +639,7 @@ class LocalPlayer final : public Being,
         bool mAttackMoving;
         bool mAttackNext;
         bool mShowJobExp;
+        bool mShowServerPos;
         bool mNextStep;
         // temporary disable crazy moves in moves
         bool mDisableCrazyMove;
@@ -651,7 +652,6 @@ class LocalPlayer final : public Being,
         bool mAwayMode;
         bool mPseudoAwayMode;
         bool mShowNavigePath;
-        bool mShowServerPos;
 };
 
 extern LocalPlayer *player_node;
