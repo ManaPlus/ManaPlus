@@ -39,6 +39,7 @@
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/sdlcheckutils.h"
 
@@ -97,8 +98,7 @@ Minimap::~Minimap()
             mMapImage->decRef();
         mMapImage = nullptr;
     }
-    delete mTextPopup;
-    mTextPopup = nullptr;
+    delete2(mTextPopup);
 }
 
 void Minimap::setMap(const Map *const map)

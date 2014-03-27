@@ -38,6 +38,7 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/radiobutton.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -191,12 +192,9 @@ void TextCommandEditor::postInit()
 
 TextCommandEditor::~TextCommandEditor()
 {
-    delete mIconsModel;
-    mIconsModel = nullptr;
-    delete mTargetTypeModel;
-    mTargetTypeModel = nullptr;
-    delete mMagicSchoolModel;
-    mMagicSchoolModel = nullptr;
+    delete2(mIconsModel);
+    delete2(mTargetTypeModel);
+    delete2(mMagicSchoolModel);
 }
 
 void TextCommandEditor::action(const ActionEvent &event)

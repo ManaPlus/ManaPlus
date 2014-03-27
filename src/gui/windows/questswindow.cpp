@@ -38,6 +38,7 @@
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/scrollarea.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -178,8 +179,7 @@ QuestsWindow::QuestsWindow() :
 
 QuestsWindow::~QuestsWindow()
 {
-    delete mQuestsModel;
-    mQuestsModel = nullptr;
+    delete2(mQuestsModel);
 
     for (std::map<int, std::vector<QuestItem*> >::iterator it
          = mQuests.begin(), it_end = mQuests.end(); it != it_end; ++ it)
@@ -194,8 +194,7 @@ QuestsWindow::~QuestsWindow()
     delete_all(mAllEffects);
     mAllEffects.clear();
 
-    delete mItemLinkHandler;
-    mItemLinkHandler = nullptr;
+    delete2(mItemLinkHandler);
     mQuests.clear();
     mQuestLinks.clear();
     if (mCompleteIcon)

@@ -76,6 +76,8 @@
 
 #include "resources/image.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 ImageRect Slider::buttons[2];
@@ -130,8 +132,7 @@ Slider::~Slider()
     if (gui)
         gui->removeDragged(this);
 
-    delete mVertexes;
-    mVertexes = nullptr;
+    delete2(mVertexes);
     mInstances--;
     if (mInstances == 0)
     {

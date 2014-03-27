@@ -82,6 +82,8 @@
 #include "resources/cursor.h"
 #include "resources/image.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 const int resizeMask = 8 + 4 + 2 + 1;
@@ -219,8 +221,7 @@ Window::~Window()
 
     saveWindowState();
 
-    delete mLayout;
-    mLayout = nullptr;
+    delete2(mLayout);
 
     while (!mWidgets.empty())
         delete mWidgets.front();
@@ -228,8 +229,7 @@ Window::~Window()
     mWidgets.clear();
 
     removeWidgetListener(this);
-    delete mVertexes;
-    mVertexes = nullptr;
+    delete2(mVertexes);
 
     windowInstances--;
 
@@ -1262,8 +1262,7 @@ void Window::reflowLayout(int w, int h)
         return;
 
     mLayout->reflow(w, h);
-    delete mLayout;
-    mLayout = nullptr;
+    delete2(mLayout);
     setContentSize(w, h);
 }
 

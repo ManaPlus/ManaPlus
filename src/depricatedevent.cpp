@@ -25,6 +25,8 @@
 
 #include "listeners/depricatedlistener.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 DepricatedListenMap DepricatedEvent::mBindings;
@@ -34,8 +36,7 @@ DepricatedEvent::~DepricatedEvent()
     VariableMap::iterator it = mData.begin();
     while (it != mData.end())
     {
-        delete it->second;
-        it->second = nullptr;
+        delete2(it->second);
         ++it;
     }
 }

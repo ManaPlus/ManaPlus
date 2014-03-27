@@ -34,6 +34,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -99,8 +100,7 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
 
 Setup_Joystick::~Setup_Joystick()
 {
-    delete mNamesModel;
-    mNamesModel = nullptr;
+    delete2(mNamesModel);
 }
 
 void Setup_Joystick::action(const ActionEvent &event)

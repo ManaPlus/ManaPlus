@@ -48,6 +48,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -223,8 +224,7 @@ void SetupWindow::unloadModTab()
         mTabs.remove(mModsTab);
         Tab *const tab = mPanel->getTab(mModsTab->getName());
         mPanel->removeTab(tab);
-        delete mModsTab;
-        mModsTab = nullptr;
+        delete2(mModsTab)
     }
 }
 

@@ -45,6 +45,7 @@
 
 #include "resources/db/itemdb.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -85,10 +86,8 @@ ChatTab::~ChatTab()
     if (chatWindow)
         chatWindow->removeTab(this);
 
-    delete mTextOutput;
-    mTextOutput = nullptr;
-    delete mScrollArea;
-    mScrollArea = nullptr;
+    delete2(mTextOutput);
+    delete2(mScrollArea);
 }
 
 void ChatTab::chatLog(std::string line, Own own,

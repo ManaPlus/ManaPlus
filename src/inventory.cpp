@@ -30,6 +30,7 @@
 
 #include "resources/iteminfo.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include <algorithm>
@@ -153,8 +154,7 @@ void Inventory::removeItem(const int id)
 
 void Inventory::removeItemAt(const int index)
 {
-    delete mItems[index];
-    mItems[index] = nullptr;
+    delete2(mItems[index]);
     mUsed--;
     if (mUsed < 0)  // Already at 0, no need to distribute event
         mUsed = 0;

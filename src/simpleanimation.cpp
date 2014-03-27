@@ -32,6 +32,8 @@
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 SimpleAnimation::SimpleAnimation(Animation *const animation) :
@@ -62,8 +64,7 @@ SimpleAnimation::SimpleAnimation(const XmlNodePtr animationNode,
 
 SimpleAnimation::~SimpleAnimation()
 {
-    delete mAnimation;
-    mAnimation = nullptr;
+    delete2(mAnimation);
     if (mImageSet)
     {
         mImageSet->decRef();

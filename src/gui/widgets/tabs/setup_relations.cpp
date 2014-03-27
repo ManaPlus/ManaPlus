@@ -37,6 +37,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/guitable.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -81,10 +82,8 @@ public:
     ~PlayerTableModel()
     {
         freeWidgets();
-        delete mListModel;
-        mListModel = nullptr;
-        delete mPlayers;
-        mPlayers = nullptr;
+        delete2(mListModel)
+        delete2(mPlayers)
     }
 
     int getRows() const override final
@@ -159,9 +158,7 @@ public:
 
     void freeWidgets()
     {
-        delete mPlayers;
-        mPlayers = nullptr;
-
+        delete2(mPlayers)
         delete_all(mWidgets);
         mWidgets.clear();
     }
@@ -266,8 +263,7 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
 Setup_Relations::~Setup_Relations()
 {
     player_relations.removeListener(this);
-    delete mIgnoreActionChoicesModel;
-    mIgnoreActionChoicesModel = nullptr;
+    delete2(mIgnoreActionChoicesModel);
 }
 
 

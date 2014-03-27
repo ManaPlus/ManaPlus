@@ -46,6 +46,7 @@
 #include "net/loginhandler.h"
 #include "net/net.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/paths.h"
 #include "utils/process.h"
@@ -208,10 +209,8 @@ void LoginDialog::postInit()
 
 LoginDialog::~LoginDialog()
 {
-    delete mUpdateTypeModel;
-    mUpdateTypeModel = nullptr;
-    delete mUpdateListModel;
-    mUpdateListModel = nullptr;
+    delete2(mUpdateTypeModel);
+    delete2(mUpdateListModel);
 }
 
 void LoginDialog::action(const ActionEvent &event)

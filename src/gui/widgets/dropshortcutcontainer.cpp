@@ -28,6 +28,7 @@
 
 #include "being/playerinfo.h"
 
+#include "gui/font.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/itempopup.h"
@@ -36,7 +37,7 @@
 
 #include "resources/image.h"
 
-#include "gui/font.h"
+#include "utils/delete2.h"
 
 #include "debug.h"
 
@@ -81,8 +82,7 @@ DropShortcutContainer::~DropShortcutContainer()
         mBackgroundImg->decRef();
         mBackgroundImg = nullptr;
     }
-    delete mItemPopup;
-    mItemPopup = nullptr;
+    delete2(mItemPopup);
 }
 
 void DropShortcutContainer::setWidget2(const Widget2 *const widget)

@@ -77,6 +77,7 @@
 
 #include "resources/db/itemdb.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/process.h"
 #include "utils/timer.h"
@@ -1319,8 +1320,7 @@ static int uploadUpdate(void *ptr,
             }
         }
     }
-    delete info->upload;
-    info->upload = nullptr;
+    delete2(info->upload);
     delete info;
     return 0;
 }

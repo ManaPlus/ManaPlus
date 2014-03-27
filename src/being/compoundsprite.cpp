@@ -36,6 +36,7 @@
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
@@ -252,8 +253,7 @@ void CompoundSprite::removeSprite(const int layer)
     if (!mSprites.at(layer))
         return;
 
-    delete mSprites.at(layer);
-    mSprites.at(layer) = nullptr;
+    delete2(mSprites.at(layer));
     mNeedsRedraw = true;
 }
 
@@ -268,8 +268,7 @@ void CompoundSprite::clear()
     mNeedsRedraw = true;
     delete_all(imagesCache);
     imagesCache.clear();
-    delete mCacheItem;
-    mCacheItem = nullptr;
+    delete2(mCacheItem);
 }
 
 void CompoundSprite::ensureSize(size_t layerCount)
@@ -361,8 +360,7 @@ void CompoundSprite::redraw() const
 
     drawSpritesSDL(graphics, posX, posY);
 
-    delete graphics;
-    graphics = nullptr;
+    delete2(graphics);
 
     SDL_Surface *const surfaceA = MSDL_CreateRGBSurface(SDL_HWSURFACE,
         BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);

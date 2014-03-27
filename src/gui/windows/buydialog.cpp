@@ -47,6 +47,7 @@
 
 #include "resources/iteminfo.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include <algorithm>
@@ -302,9 +303,7 @@ void BuyDialog::init()
 
 BuyDialog::~BuyDialog()
 {
-    delete mShopItems;
-    mShopItems = nullptr;
-
+    delete2(mShopItems);
     instances.remove(this);
 }
 

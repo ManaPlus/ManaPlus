@@ -35,6 +35,8 @@
 
 #include "net/ea/gui/partytab.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 namespace Ea
@@ -52,8 +54,7 @@ PartyHandler::PartyHandler() :
 
 PartyHandler::~PartyHandler()
 {
-    delete partyTab;
-    partyTab = nullptr;
+    delete2(partyTab);
 }
 
 void PartyHandler::join(const int partyId A_UNUSED) const
@@ -347,8 +348,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
             Ea::taParty->clearMembers();
         }
         NotifyManager::notify(NotifyManager::PARTY_LEFT);
-        delete Ea::partyTab;
-        Ea::partyTab = nullptr;
+        delete2(Ea::partyTab)
 
         if (socialWindow && Ea::taParty)
             socialWindow->removeTab(Ea::taParty);

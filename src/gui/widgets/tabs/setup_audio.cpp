@@ -35,6 +35,7 @@
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -160,11 +161,8 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
 
 Setup_Audio::~Setup_Audio()
 {
-    delete mSoundModel;
-    mSoundModel = nullptr;
-
-    delete mChannelsList;
-    mChannelsList = nullptr;
+    delete2(mSoundModel);
+    delete2(mChannelsList);
 }
 
 void Setup_Audio::apply()

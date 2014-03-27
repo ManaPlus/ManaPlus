@@ -26,6 +26,8 @@
 
 #include "resources/db/palettedb.h"
 
+#include "utils/delete2.h"
+
 #include <cmath>
 #include <sstream>
 
@@ -442,10 +444,7 @@ Dye::Dye(const std::string &description)
 Dye::~Dye()
 {
     for (int i = 0; i < dyePalateSize; ++i)
-    {
-        delete mDyePalettes[i];
-        mDyePalettes[i] = nullptr;
-    }
+        delete2(mDyePalettes[i])
 }
 
 void Dye::instantiate(std::string &restrict target,

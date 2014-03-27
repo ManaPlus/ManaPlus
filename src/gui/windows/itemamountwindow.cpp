@@ -48,6 +48,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/slider.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -261,8 +262,7 @@ void ItemAmountWindow::postInit()
 
 ItemAmountWindow::~ItemAmountWindow()
 {
-    delete mItemPopup;
-    mItemPopup = nullptr;
+    delete2(mItemPopup);
 }
 
 // Show ItemTooltip

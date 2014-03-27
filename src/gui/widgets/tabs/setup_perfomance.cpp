@@ -28,6 +28,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/setupitem.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -159,6 +160,5 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
 
 Setup_Perfomance::~Setup_Perfomance()
 {
-    delete mTexturesList;
-    mTexturesList = nullptr;
+    delete2(mTexturesList);
 }

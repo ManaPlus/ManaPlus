@@ -27,6 +27,7 @@
 
 #include "listeners/configlistener.h"
 
+#include "utils/delete2.h"
 #include "utils/paths.h"
 
 #include "debug.h"
@@ -367,8 +368,7 @@ void Configuration::cleanDefaults()
             delete (iter->second);
         }
         mDefaultsData->clear();
-        delete mDefaultsData;
-        mDefaultsData = nullptr;
+        delete2(mDefaultsData);
     }
 }
 

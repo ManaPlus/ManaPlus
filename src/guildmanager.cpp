@@ -36,6 +36,7 @@
 #include "net/chathandler.h"
 #include "net/net.h"
 
+#include "utils/delete2.h"
 #include "utils/timer.h"
 
 #include "debug.h"
@@ -60,8 +61,7 @@ GuildManager::GuildManager() :
 
 GuildManager::~GuildManager()
 {
-    delete mTab;
-    mTab = nullptr;
+    delete2(mTab);
 }
 
 void GuildManager::init()
@@ -85,8 +85,7 @@ void GuildManager::init()
     }
     else if (guildManager)
     {
-        delete guildManager;
-        guildManager = nullptr;
+        delete2(guildManager);
     }
 }
 
@@ -108,8 +107,7 @@ void GuildManager::reload()
         if (guild && socialWindow)
             socialWindow->removeTab(guild);
     }
-    delete mTab;
-    mTab = nullptr;
+    delete2(mTab);
 }
 
 void GuildManager::send(const std::string &msg)
@@ -520,8 +518,7 @@ bool GuildManager::afterRemove()
         player_node->clearGuilds();
     }
     NotifyManager::notify(NotifyManager::GUILD_LEFT);
-    delete mTab;
-    mTab = nullptr;
+    delete2(mTab);
 
     if (socialWindow)
         socialWindow->removeTab(guild);

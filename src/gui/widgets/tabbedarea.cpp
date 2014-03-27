@@ -75,6 +75,8 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabs/tab.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 TabbedArea::TabbedArea(const Widget2 *const widget) :
@@ -127,21 +129,14 @@ TabbedArea::~TabbedArea()
     remove(mTabContainer);
     remove(mWidgetContainer);
 
-    delete mTabContainer;
-    mTabContainer = nullptr;
-    delete mWidgetContainer;
-    mWidgetContainer = nullptr;
+    delete2(mTabContainer);
+    delete2(mWidgetContainer);
 
     for (size_t i = 0, sz = mTabsToDelete.size(); i < sz; i++)
-    {
-        delete mTabsToDelete[i];
-        mTabsToDelete[i] = nullptr;
-    }
+        delete2(mTabsToDelete[i])
 
-    delete mArrowButton[0];
-    mArrowButton[0] = nullptr;
-    delete mArrowButton[1];
-    mArrowButton[1] = nullptr;
+    delete2(mArrowButton[0]);
+    delete2(mArrowButton[1]);
 }
 
 void TabbedArea::enableScrollButtons(const bool enable)

@@ -28,6 +28,7 @@
 #include "resources/beingcommon.h"
 #include "resources/iteminfo.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -543,8 +544,7 @@ void ItemDB::unload()
 {
     logger->log1("Unloading item database...");
 
-    delete mUnknown;
-    mUnknown = nullptr;
+    delete2(mUnknown);
 
     delete_all(mItemInfos);
     mItemInfos.clear();

@@ -25,6 +25,8 @@
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 namespace
@@ -55,8 +57,7 @@ EmotePage::~EmotePage()
         mEmotes->decRef();
         mEmotes = nullptr;
     }
-    delete mVertexes;
-    mVertexes = nullptr;
+    delete2(mVertexes);
 }
 
 void EmotePage::draw(Graphics *graphics)

@@ -28,6 +28,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabbedarea.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "resources/image.h"
@@ -121,20 +122,13 @@ EmoteWindow::~EmoteWindow()
 {
     mTabs->removeAll(false);
     mTabs->removeTab(mTabs->getTabByIndex(0));
-    delete mEmotePage;
-    mEmotePage = nullptr;
-    delete mColorPage;
-    mColorPage = nullptr;
-    delete mColorModel;
-    mColorModel = nullptr;
-    delete mScrollColorPage;
-    mScrollColorPage = nullptr;
-    delete mFontPage;
-    mFontPage = nullptr;
-    delete mFontModel;
-    mFontModel = nullptr;
-    delete mScrollFontPage;
-    mScrollFontPage = nullptr;
+    delete2(mEmotePage);
+    delete2(mColorPage);
+    delete2(mColorModel);
+    delete2(mScrollColorPage);
+    delete2(mFontPage);
+    delete2(mFontModel);
+    delete2(mScrollFontPage);
     if (mImageSet)
     {
         mImageSet->decRef();

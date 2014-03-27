@@ -39,6 +39,8 @@
 
 #include "input/mouseinput.h"
 
+#include "utils/delete2.h"
+
 #include <string>
 
 #include "debug.h"
@@ -74,8 +76,7 @@ ItemLinkHandler::ItemLinkHandler() :
 
 ItemLinkHandler::~ItemLinkHandler()
 {
-    delete mItemPopup;
-    mItemPopup = nullptr;
+    delete2(mItemPopup);
 }
 
 void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)

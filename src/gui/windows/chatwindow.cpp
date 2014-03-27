@@ -67,6 +67,7 @@
 #include "net/net.h"
 
 #include "utils/copynpaste.h"
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "resources/resourcemanager.h"
@@ -266,12 +267,9 @@ ChatWindow::~ChatWindow()
     saveState();
     config.setValue("ReturnToggles", mReturnToggles);
     removeAllWhispers();
-    delete mItemLinkHandler;
-    mItemLinkHandler = nullptr;
-    delete mColorPicker;
-    mColorPicker = nullptr;
-    delete mColorListModel;
-    mColorListModel = nullptr;
+    delete2(mItemLinkHandler);
+    delete2(mColorPicker);
+    delete2(mColorListModel);
 }
 
 void ChatWindow::postInit()
@@ -646,8 +644,7 @@ void ChatWindow::ignoreAllWhispers()
                                          PlayerRelation::IGNORED);
         }
 
-        delete (iter->second);
-        iter->second = nullptr;
+        delete2 (iter->second)
     }
 }
 

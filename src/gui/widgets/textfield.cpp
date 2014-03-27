@@ -78,6 +78,7 @@
 #include "resources/image.h"
 
 #include "utils/copynpaste.h"
+#include "utils/delete2.h"
 #include "utils/timer.h"
 
 #undef DELETE  // Win32 compatibility hack
@@ -154,8 +155,7 @@ TextField::~TextField()
     if (gui)
         gui->removeDragged(this);
 
-    delete mPopupMenu;
-    mPopupMenu = nullptr;
+    delete2(mPopupMenu);
 
     instances--;
     if (instances == 0)

@@ -42,6 +42,7 @@
 
 #include "resources/db/moddb.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
@@ -242,8 +243,7 @@ UpdaterWindow::~UpdaterWindow()
     {
         mDownload->cancel();
 
-        delete mDownload;
-        mDownload = nullptr;
+        delete2(mDownload)
     }
     free(mMemoryBuffer);
 }

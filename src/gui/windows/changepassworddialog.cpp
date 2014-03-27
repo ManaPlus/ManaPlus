@@ -36,6 +36,7 @@
 #include "net/loginhandler.h"
 #include "net/net.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include <string>
@@ -84,8 +85,7 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData *const data):
 
 ChangePasswordDialog::~ChangePasswordDialog()
 {
-    delete mWrongDataNoticeListener;
-    mWrongDataNoticeListener = nullptr;
+    delete2(mWrongDataNoticeListener);
 }
 
 void ChangePasswordDialog::action(const ActionEvent &event)

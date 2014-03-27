@@ -37,6 +37,7 @@
 
 #include "configuration.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "resources/resourcemanager.h"
@@ -371,26 +372,13 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
 
 Setup_Theme::~Setup_Theme()
 {
-    delete mInfo;
-    mInfo = nullptr;
-
-    delete mThemesModel;
-    mThemesModel = nullptr;
-
-    delete mFontsModel;
-    mFontsModel = nullptr;
-
-    delete mFontSizeListModel;
-    mFontSizeListModel = nullptr;
-
-    delete mNpcFontSizeListModel;
-    mNpcFontSizeListModel = nullptr;
-
-    delete mLangListModel;
-    mLangListModel = nullptr;
-
-    delete mInfo;
-    mInfo = nullptr;
+    delete2(mInfo);
+    delete2(mThemesModel);
+    delete2(mFontsModel);
+    delete2(mFontSizeListModel);
+    delete2(mNpcFontSizeListModel);
+    delete2(mLangListModel);
+    delete2(mInfo);
 }
 
 void Setup_Theme::updateInfo()

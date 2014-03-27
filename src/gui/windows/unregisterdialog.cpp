@@ -35,6 +35,7 @@
 #include "net/loginhandler.h"
 #include "net/net.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include <string>
@@ -97,8 +98,7 @@ void UnRegisterDialog::postInit()
 
 UnRegisterDialog::~UnRegisterDialog()
 {
-    delete mWrongDataNoticeListener;
-    mWrongDataNoticeListener = nullptr;
+    delete2(mWrongDataNoticeListener);
 }
 
 void UnRegisterDialog::action(const ActionEvent &event)

@@ -41,6 +41,8 @@
 
 #include "gui/models/listmodel.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 static int selectedData = 0;
@@ -169,21 +171,14 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
 
 Setup_Input::~Setup_Input()
 {
-    delete mKeyList;
-    mKeyList = nullptr;
-    delete mKeyListModel;
-    mKeyListModel = nullptr;
-
-    delete mAssignKeyButton;
-    mAssignKeyButton = nullptr;
-    delete mUnassignKeyButton;
-    mUnassignKeyButton = nullptr;
-    delete mResetKeysButton;
-    mResetKeysButton = nullptr;
+    delete2(mKeyList);
+    delete2(mKeyListModel);
+    delete2(mAssignKeyButton);
+    delete2(mUnassignKeyButton);
+    delete2(mResetKeysButton);
     delete [] mActionDataSize;
     mActionDataSize = nullptr;
-    delete mScrollArea;
-    mScrollArea = nullptr;
+    delete2(mScrollArea);
 }
 
 void Setup_Input::apply()

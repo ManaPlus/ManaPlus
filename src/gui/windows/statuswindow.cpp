@@ -49,6 +49,7 @@
 #include "net/playerhandler.h"
 #include "net/gamehandler.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include <SDL_timer.h>
@@ -791,8 +792,7 @@ AttrDisplay::AttrDisplay(const Widget2 *const widget,
 
 AttrDisplay::~AttrDisplay()
 {
-    delete mLayout;
-    mLayout = nullptr;
+    delete2(mLayout);
 }
 
 std::string AttrDisplay::update()

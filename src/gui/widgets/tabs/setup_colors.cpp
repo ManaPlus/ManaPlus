@@ -34,6 +34,7 @@
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/textpreview.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -198,15 +199,9 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
 Setup_Colors::~Setup_Colors()
 {
     if (mPreviewBox && mPreviewBox->getContent() == mPreview)
-    {
-        delete mTextPreview;
-        mTextPreview = nullptr;
-    }
+        delete2(mTextPreview)
     else
-    {
-        delete mPreview;
-        mPreview = nullptr;
-    }
+        delete2(mPreview)
 }
 
 void Setup_Colors::action(const ActionEvent &event)

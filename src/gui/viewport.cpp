@@ -35,6 +35,7 @@
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
+#include "gui/font.h"
 
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/popupmenu.h"
@@ -42,7 +43,7 @@
 
 #include "gui/windows/ministatuswindow.h"
 
-#include "gui/font.h"
+#include "utils/delete2.h"
 
 #include "debug.h"
 
@@ -104,12 +105,9 @@ Viewport::~Viewport()
 {
     config.removeListeners(this);
     CHECKLISTENERS
-    delete mPopupMenu;
-    mPopupMenu = nullptr;
-    delete mBeingPopup;
-    mBeingPopup = nullptr;
-    delete mTextPopup;
-    mTextPopup = nullptr;
+    delete2(mPopupMenu);
+    delete2(mBeingPopup);
+    delete2(mTextPopup);
 }
 
 void Viewport::setMap(Map *const map)

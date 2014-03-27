@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -168,10 +169,8 @@ void BeingInfo::addAttack(const int id, std::string action,
 
 void BeingInfo::clear()
 {
-    delete unknown;
-    unknown = nullptr;
-    delete empty;
-    empty = nullptr;
+    delete2(unknown);
+    delete2(empty);
 }
 
 void BeingInfo::init()

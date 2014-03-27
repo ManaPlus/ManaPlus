@@ -28,6 +28,7 @@
 
 #include "client.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -215,18 +216,12 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
 Setup_Visual::~Setup_Visual()
 {
-    delete mSpeachList;
-    mSpeachList = nullptr;
-    delete mAmbientFxList;
-    mAmbientFxList = nullptr;
-    delete mParticleList;
-    mParticleList = nullptr;
-    delete mParticleTypeList;
-    mParticleTypeList = nullptr;
-    delete mVSyncList;
-    mVSyncList = nullptr;
-    delete mScaleList;
-    mScaleList = nullptr;
+    delete2(mSpeachList);
+    delete2(mAmbientFxList);
+    delete2(mParticleList);
+    delete2(mParticleTypeList);
+    delete2(mVSyncList);
+    delete2(mScaleList);
 }
 
 void Setup_Visual::apply()

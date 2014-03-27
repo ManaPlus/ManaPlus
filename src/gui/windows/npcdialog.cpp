@@ -57,6 +57,7 @@
 #include "net/npchandler.h"
 
 #include "utils/copynpaste.h"
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -216,44 +217,23 @@ NpcDialog::~NpcDialog()
         delete mPlayerBox;
     }
 
-    delete mTextBox;
-    mTextBox = nullptr;
-    delete mClearButton;
-    mClearButton = nullptr;
-    delete mButton;
-    mButton = nullptr;
-    delete mButton2;
-    mButton2 = nullptr;
-    delete mButton3;
-    mButton3 = nullptr;
-
-    // These might not actually be in the layout, so lets be safe
-    delete mScrollArea;
-    mScrollArea = nullptr;
-    delete mItemList;
-    mItemList = nullptr;
-    delete mTextField;
-    mTextField = nullptr;
-    delete mIntField;
-    mIntField = nullptr;
-    delete mResetButton;
-    mResetButton = nullptr;
-    delete mPlusButton;
-    mPlusButton = nullptr;
-    delete mMinusButton;
-    mMinusButton = nullptr;
-    delete mItemLinkHandler;
-    mItemLinkHandler = nullptr;
-
-    delete mItemContainer;
-    mItemContainer = nullptr;
-    delete mInventory;
-    mInventory = nullptr;
-    delete mItemScrollArea;
-    mItemScrollArea = nullptr;
-
-    delete mListScrollArea;
-    mListScrollArea = nullptr;
+    delete2(mTextBox);
+    delete2(mClearButton);
+    delete2(mButton);
+    delete2(mButton2);
+    delete2(mButton3);
+    delete2(mScrollArea);
+    delete2(mItemList);
+    delete2(mTextField);
+    delete2(mIntField);
+    delete2(mResetButton);
+    delete2(mPlusButton);
+    delete2(mMinusButton);
+    delete2(mItemLinkHandler);
+    delete2(mItemContainer);
+    delete2(mInventory);
+    delete2(mItemScrollArea);
+    delete2(mListScrollArea);
 
     FOR_EACH (ImageVectorIter, it, mImages)
     {
@@ -896,8 +876,7 @@ void NpcDialog::showAvatar(const uint16_t avatarId)
     }
     else
     {
-        delete mAvatarBeing;
-        mAvatarBeing = nullptr;
+        delete2(mAvatarBeing)
         mPlayerBox->setPlayer(nullptr);
     }
     if (needShow != mShowAvatar)

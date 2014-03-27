@@ -28,6 +28,8 @@
 #include "net/tmwa/messagein.h"
 #include "net/tmwa/protocol.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 namespace TmwAthena
@@ -98,8 +100,7 @@ Network::Network() :
 Network::~Network()
 {
     clearHandlers();
-    delete mMessageHandlers;
-    mMessageHandlers = nullptr;
+    delete2(mMessageHandlers);
     mInstance = nullptr;
 }
 

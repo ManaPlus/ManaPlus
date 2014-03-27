@@ -25,6 +25,8 @@
 #include "net/inventoryhandler.h"
 #include "net/net.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 BeingEquipBackend::BeingEquipBackend(Being *const being)
@@ -51,19 +53,13 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
 BeingEquipBackend::~BeingEquipBackend()
 {
     for (int i = 0; i < EQUIPMENT_SIZE; i++)
-    {
-        delete mEquipment[i];
-        mEquipment[i] = nullptr;
-    }
+        delete2(mEquipment[i])
 }
 
 void BeingEquipBackend::clear()
 {
     for (int i = 0; i < EQUIPMENT_SIZE; i++)
-    {
-        delete mEquipment[i];
-        mEquipment[i] = nullptr;
-    }
+        delete2(mEquipment[i])
 }
 
 void BeingEquipBackend::setEquipment(const int index, Item *const item)

@@ -59,6 +59,8 @@
 #include "net/inventoryhandler.h"
 #include "net/net.h"
 
+#include "utils/delete2.h"
+
 #include <string>
 
 #include "debug.h"
@@ -274,8 +276,7 @@ InventoryWindow::~InventoryWindow()
         invInstances.front()->updateDropButton();
 
     mSortDropDown->hideDrop(false);
-    delete mSortModel;
-    mSortModel = nullptr;
+    delete2(mSortModel);
     mTextPopup = nullptr;
 }
 

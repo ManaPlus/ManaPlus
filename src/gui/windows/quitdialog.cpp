@@ -42,6 +42,7 @@
 #include "net/gamehandler.h"
 #include "net/net.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/process.h"
 
@@ -131,14 +132,10 @@ QuitDialog::~QuitDialog()
 {
     if (mMyPointer)
         *mMyPointer = nullptr;
-    delete mForceQuit;
-    mForceQuit = nullptr;
-    delete mLogoutQuit;
-    mLogoutQuit = nullptr;
-    delete mSwitchAccountServer;
-    mSwitchAccountServer = nullptr;
-    delete mSwitchCharacter;
-    mSwitchCharacter = nullptr;
+    delete2(mForceQuit);
+    delete2(mLogoutQuit);
+    delete2(mSwitchAccountServer);
+    delete2(mSwitchCharacter);
 }
 
 void QuitDialog::placeOption(ContainerPlacer &placer,

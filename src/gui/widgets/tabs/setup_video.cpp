@@ -41,6 +41,7 @@
 
 #include "render/rendererslistsdl.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 
@@ -309,14 +310,10 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
 
 Setup_Video::~Setup_Video()
 {
-    delete mModeListModel;
-    mModeListModel = nullptr;
-    delete mModeList;
-    mModeList = nullptr;
-    delete mOpenGLListModel;
-    mOpenGLListModel = nullptr;
-    delete mDialog;
-    mDialog = nullptr;
+    delete2(mModeListModel);
+    delete2(mModeList);
+    delete2(mOpenGLListModel);
+    delete2(mDialog);
 }
 
 void Setup_Video::apply()

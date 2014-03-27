@@ -98,6 +98,7 @@
 
 #include "resources/db/mapdb.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/langs.h"
 #include "utils/mkdir.h"
@@ -323,8 +324,6 @@ static void createGuiWindows()
     Net::getGeneralHandler()->gameStarted();
 }
 
-#define del_0(X) { delete X; X = nullptr; }
-
 /**
  * Destroy all the globally accessible gui windows
  */
@@ -341,37 +340,37 @@ static void destroyGuiWindows()
     if (guildManager)
         guildManager->clear();
 
-    del_0(windowMenu);
-    del_0(localChatTab)  // Need to do this first, so it can remove itself
-    del_0(debugChatTab)
-    del_0(tradeChatTab)
-    del_0(battleChatTab)
-    del_0(langChatTab)
-    del_0(gmChatTab);
+    delete2(windowMenu);
+    delete2(localChatTab)  // Need to do this first, so it can remove itself
+    delete2(debugChatTab)
+    delete2(tradeChatTab)
+    delete2(battleChatTab)
+    delete2(langChatTab)
+    delete2(gmChatTab);
     logger->log("start deleting");
-    del_0(emoteWindow);
-    del_0(chatWindow)
+    delete2(emoteWindow);
+    delete2(chatWindow)
     logger->log("end deleting");
-    del_0(statusWindow)
-    del_0(miniStatusWindow)
-    del_0(inventoryWindow)
-    del_0(shopWindow)
-    del_0(skillDialog)
-    del_0(minimap)
-    del_0(equipmentWindow)
-    del_0(beingEquipmentWindow)
-    del_0(tradeWindow)
-    del_0(debugWindow)
-    del_0(itemShortcutWindow)
-    del_0(emoteShortcutWindow)
-    del_0(outfitWindow)
-    del_0(socialWindow)
-    del_0(dropShortcutWindow);
-    del_0(spellShortcutWindow);
-    del_0(botCheckerWindow);
-    del_0(questsWindow);
-    del_0(whoIsOnline);
-    del_0(killStats);
+    delete2(statusWindow)
+    delete2(miniStatusWindow)
+    delete2(inventoryWindow)
+    delete2(shopWindow)
+    delete2(skillDialog)
+    delete2(minimap)
+    delete2(equipmentWindow)
+    delete2(beingEquipmentWindow)
+    delete2(tradeWindow)
+    delete2(debugWindow)
+    delete2(itemShortcutWindow)
+    delete2(emoteShortcutWindow)
+    delete2(outfitWindow)
+    delete2(socialWindow)
+    delete2(dropShortcutWindow);
+    delete2(spellShortcutWindow);
+    delete2(botCheckerWindow);
+    delete2(questsWindow);
+    delete2(whoIsOnline);
+    delete2(killStats);
 
     if (auctionManager && AuctionManager::getEnableAuctionBot())
         auctionManager->reload();
@@ -458,20 +457,20 @@ Game::~Game()
 
     AnimatedSprite::setEnableCache(false);
 
-    del_0(actorManager)
+    delete2(actorManager)
     if (client->getState() != STATE_CHANGE_MAP)
-        del_0(player_node)
-    del_0(commandHandler)
-    del_0(effectManager)
-    del_0(particleEngine)
-    del_0(viewport)
-    del_0(mCurrentMap)
-    del_0(spellManager)
-    del_0(spellShortcut)
-    del_0(auctionManager)
-    del_0(guildManager)
+        delete2(player_node)
+    delete2(commandHandler)
+    delete2(effectManager)
+    delete2(particleEngine)
+    delete2(viewport)
+    delete2(mCurrentMap)
+    delete2(spellManager)
+    delete2(spellShortcut)
+    delete2(auctionManager)
+    delete2(guildManager)
 #ifdef USE_MUMBLE
-    del_0(mumbleManager)
+    delete2(mumbleManager)
 #endif
 
     Being::clearCache();

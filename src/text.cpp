@@ -32,6 +32,8 @@
 
 #include "resources/image.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 int Text::mInstances = 0;
@@ -99,8 +101,7 @@ Text::~Text()
         textManager->removeText(this);
     if (--mInstances == 0)
     {
-        delete textManager;
-        textManager = nullptr;
+        delete2(textManager);
         for (int f = 0; f < 9; f ++)
         {
             if (mBubble.grid[f])

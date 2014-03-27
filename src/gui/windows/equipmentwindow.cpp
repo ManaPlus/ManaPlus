@@ -44,6 +44,7 @@
 
 #include "resources/imageset.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -132,14 +133,12 @@ void EquipmentWindow::postInit()
 
 EquipmentWindow::~EquipmentWindow()
 {
-    delete mItemPopup;
-    mItemPopup = nullptr;
+    delete2(mItemPopup);
     if (this == beingEquipmentWindow)
     {
         if (mEquipment)
             delete mEquipment->getBackend();
-        delete mEquipment;
-        mEquipment = nullptr;
+        delete2(mEquipment)
     }
     delete_all(mBoxes);
     mBoxes.clear();
@@ -152,8 +151,7 @@ EquipmentWindow::~EquipmentWindow()
         mSlotBackground->decRef();
     if (mSlotHighlightedBackground)
         mSlotHighlightedBackground->decRef();
-    delete mVertexes;
-    mVertexes = nullptr;
+    delete2(mVertexes);
 }
 
 void EquipmentWindow::draw(Graphics *graphics)

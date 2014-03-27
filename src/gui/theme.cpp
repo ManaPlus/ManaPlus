@@ -32,6 +32,7 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/files.h"
 #include "utils/physfstools.h"
@@ -121,10 +122,8 @@ Skin::~Skin()
         mStickyImageDown = nullptr;
     }
 
-    delete mOptions;
-    mOptions = nullptr;
-    delete mBorder;
-    mBorder = nullptr;
+    delete2(mOptions);
+    delete2(mBorder);
 }
 
 void Skin::updateAlpha(const float minimumOpacityAllowed)

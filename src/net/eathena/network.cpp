@@ -28,6 +28,8 @@
 #include "net/eathena/messagein.h"
 #include "net/eathena/protocol.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 namespace EAthena
@@ -120,8 +122,7 @@ Network::Network() :
 Network::~Network()
 {
     clearHandlers();
-    delete mMessageHandlers;
-    mMessageHandlers = nullptr;
+    delete2(mMessageHandlers);
     mInstance = nullptr;
 }
 

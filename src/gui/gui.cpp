@@ -95,6 +95,7 @@
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
+#include "utils/delete2.h"
 #include "utils/langs.h"
 #include "utils/timer.h"
 
@@ -290,8 +291,7 @@ void Gui::postInit(Graphics *const graphics)
 Gui::~Gui()
 {
     config.removeListeners(mConfigListener);
-    delete mConfigListener;
-    mConfigListener = nullptr;
+    delete2(mConfigListener);
 
     if (mMouseCursors)
     {
@@ -299,31 +299,22 @@ Gui::~Gui()
         mMouseCursors = nullptr;
     }
 
-    delete mGuiFont;
-    mGuiFont = nullptr;
-    delete boldFont;
-    boldFont = nullptr;
-    delete mHelpFont;
-    mHelpFont = nullptr;
-    delete mSecureFont;
-    mSecureFont = nullptr;
-    delete mInfoParticleFont;
-    mInfoParticleFont = nullptr;
-    delete mNpcFont;
-    mNpcFont = nullptr;
+    delete2(mGuiFont);
+    delete2(boldFont);
+    delete2(mHelpFont);
+    delete2(mSecureFont);
+    delete2(mInfoParticleFont);
+    delete2(mNpcFont);
     delete getTop();
 
-    delete guiInput;
-    guiInput = nullptr;
+    delete2(guiInput);
 
-    delete theme;
-    theme = nullptr;
+    delete2(theme);
 
     if (Widget::widgetExists(mTop))
         setTop(nullptr);
 
-    delete mFocusHandler;
-    mFocusHandler = nullptr;
+    delete2(mFocusHandler);
 }
 
 void Gui::logic()

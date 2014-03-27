@@ -812,9 +812,7 @@ void ActorManager::clear()
     }
 
     for_actors
-    {
         delete *it;
-    }
     mActors.clear();
     mDeleteActors.clear();
 

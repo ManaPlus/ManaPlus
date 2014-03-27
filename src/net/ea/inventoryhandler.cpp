@@ -33,6 +33,8 @@
 
 #include "net/ea/eaprotocol.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 extern int serverVersion;
@@ -95,14 +97,12 @@ InventoryHandler::~InventoryHandler()
         mStorageWindow = nullptr;
     }
 
-    delete mStorage;
-    mStorage = nullptr;
+    delete2(mStorage);
 }
 
 void InventoryHandler::clear()
 {
-    delete mStorage;
-    mStorage = nullptr;
+    delete2(mStorage);
 }
 
 bool InventoryHandler::canSplit(const Item *const item A_UNUSED) const
@@ -491,8 +491,7 @@ void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
     if (mStorage)
         mStorage->clear();
 
-    delete mStorage;
-    mStorage = nullptr;
+    delete2(mStorage);
 }
 
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)

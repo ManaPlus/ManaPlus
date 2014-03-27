@@ -27,6 +27,7 @@
 #include "gui/widgets/setuptouchitem.h"
 #include "gui/widgets/scrollarea.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -126,10 +127,7 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
 
 Setup_Touch::~Setup_Touch()
 {
-    delete mSizeList;
-    mSizeList = nullptr;
-    delete mFormatList;
-    mFormatList = nullptr;
-    delete mActionsList;
-    mActionsList = nullptr;
+    delete2(mSizeList);
+    delete2(mFormatList);
+    delete2(mActionsList);
 }

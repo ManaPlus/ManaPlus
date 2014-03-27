@@ -42,6 +42,7 @@
 #include "resources/resourcemanager.h"
 #include "resources/subimage.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/mkdir.h"
 #include "utils/physfstools.h"
@@ -98,8 +99,7 @@ TileAnimation::TileAnimation(Animation *const ani):
 
 TileAnimation::~TileAnimation()
 {
-    delete mAnimation;
-    mAnimation = nullptr;
+    delete2(mAnimation);
 }
 
 bool TileAnimation::update(const int ticks)
@@ -202,7 +202,6 @@ Map::~Map()
     config.removeListeners(this);
     CHECKLISTENERS
 
-    // delete metadata, layers, tilesets and overlays
     delete [] mMetaTiles;
     for (int i = 0; i < NB_BLOCKTYPES; i++)
         delete [] mOccupation[i];
@@ -218,20 +217,16 @@ Map::~Map()
     delete_all(mForegrounds);
     delete_all(mBackgrounds);
     delete_all(mTileAnimations);
-    delete mSpecialLayer;
-    mSpecialLayer = nullptr;
-    delete mTempLayer;
-    mTempLayer = nullptr;
-    delete mObjects;
-    mObjects = nullptr;
+    delete2(mSpecialLayer);
+    delete2(mTempLayer);
+    delete2(mObjects);
     delete_all(mMapPortals);
     if (mAtlas)
     {
         mAtlas->decRef();
         mAtlas = nullptr;
     }
-    delete mHeights;
-    mHeights = nullptr;
+    delete2(mHeights);
 }
 
 void Map::optionChanged(const std::string &value)

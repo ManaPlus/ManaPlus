@@ -37,6 +37,7 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/checkutils.h"
+#include "utils/delete2.h"
 #include "utils/timer.h"
 
 #include "debug.h"
@@ -379,10 +380,7 @@ void ActorSprite::cleanupTargetCursors()
         for (int type = TCT_NORMAL; type < NUM_TCT; type++)
         {
             if (targetCursor[type][size])
-            {
-                delete targetCursor[type][size];
-                targetCursor[type][size] = nullptr;
-            }
+                delete2(targetCursor[type][size])
         }
     }
 }

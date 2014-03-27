@@ -26,6 +26,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "utils/delete2.h"
+
 #include <string>
 #include <vector>
 
@@ -51,8 +53,7 @@ struct Character final
 
     ~Character()
     {
-        delete dummy;
-        dummy = nullptr;
+        delete2(dummy);
     }
 
     int slot;            /**< The index in the list of characters */

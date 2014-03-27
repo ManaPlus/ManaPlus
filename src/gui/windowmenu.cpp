@@ -34,6 +34,7 @@
 
 #include "gui/widgets/button.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -171,8 +172,7 @@ WindowMenu::~WindowMenu()
     config.removeListener("autohideButtons", this);
     CHECKLISTENERS
 
-    delete mTextPopup;
-    mTextPopup = nullptr;
+    delete2(mTextPopup);
     for (std::map <std::string, ButtonInfo*>::iterator
          it = mButtonNames.begin(),
          it_end = mButtonNames.end(); it != it_end; ++it)

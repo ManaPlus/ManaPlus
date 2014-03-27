@@ -25,6 +25,7 @@
 
 #include "client.h"
 
+#include "utils/delete2.h"
 #include "utils/paths.h"
 #include "utils/process.h"
 
@@ -46,8 +47,7 @@ TestMain::TestMain() :
 
 TestMain::~TestMain()
 {
-    delete log;
-    log = nullptr;
+    delete2(log);
 }
 
 void TestMain::initConfig()

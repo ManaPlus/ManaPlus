@@ -23,6 +23,8 @@
 #include "particle/particle.h"
 #include "particle/particlecontainer.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 typedef std::list<Particle *>::iterator ParticleListIter;
@@ -40,10 +42,7 @@ ParticleContainer::~ParticleContainer()
     // +++ call virtul method in destructor
     clearLocally();
     if (mDelParent)
-    {
-        delete mNext;
-        mNext = nullptr;
-    }
+        delete2(mNext)
 }
 
 void ParticleContainer::clear()

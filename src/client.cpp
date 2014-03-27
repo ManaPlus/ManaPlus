@@ -110,6 +110,7 @@
 
 #include "utils/base64.h"
 #include "utils/cpu.h"
+#include "utils/delete2.h"
 #include "utils/files.h"
 #include "utils/fuzzer.h"
 #include "utils/gettext.h"
@@ -821,12 +822,9 @@ void Client::gameClear()
 
     eventsManager.shutdown();
 
-    delete setupWindow;
-    setupWindow = nullptr;
-    delete helpWindow;
-    helpWindow = nullptr;
-    delete didYouKnowWindow;
-    didYouKnowWindow = nullptr;
+    delete2(setupWindow);
+    delete2(helpWindow);
+    delete2(didYouKnowWindow);
 
     stopTimers();
 
@@ -853,33 +851,24 @@ void Client::gameClear()
         Net::getChatHandler()->clear();
 
 #ifdef USE_MUMBLE
-    delete mumbleManager;
-    mumbleManager = nullptr;
+    delete2(mumbleManager);
 #endif
 
     PlayerInfo::deinit();
 
     // Before config.write() since it writes the shortcuts to the config
     for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
-    {
-        delete itemShortcut[f];
-        itemShortcut[f] = nullptr;
-    }
-    delete emoteShortcut;
-    emoteShortcut = nullptr;
-    delete dropShortcut;
-    dropShortcut = nullptr;
+        delete2(itemShortcut[f])
+    delete2(emoteShortcut);
+    delete2(dropShortcut);
 
     player_relations.store();
 
     if (logger)
         logger->log1("Quitting2");
 
-    delete mCurrentDialog;
-    mCurrentDialog = nullptr;
-
-    delete gui;
-    gui = nullptr;
+    delete2(mCurrentDialog);
+    delete2(gui);
 
     if (Net::getInventoryHandler())
         Net::getInventoryHandler()->clear();
@@ -887,14 +876,12 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting3");
 
-    delete mainGraphics;
-    mainGraphics = nullptr;
+    delete2(mainGraphics);
 
     if (imageHelper != surfaceImageHelper)
         delete surfaceImageHelper;
     surfaceImageHelper = nullptr;
-    delete imageHelper;
-    imageHelper = nullptr;
+    delete2(imageHelper);
 
     if (logger)
         logger->log1("Quitting4");
@@ -925,11 +912,8 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting9");
 
-    delete userPalette;
-    userPalette = nullptr;
-
-    delete joystick;
-    joystick = nullptr;
+    delete2(userPalette);
+    delete2(joystick);
 
     keyboard.deinit();
 
@@ -961,8 +945,7 @@ void Client::gameClear()
         logger->log("textures left: %d", textures_count);
 #endif
 
-    delete chatLogger;
-    chatLogger = nullptr;
+    delete2(chatLogger);
     TranslationManager::close();
 }
 
@@ -1174,8 +1157,7 @@ int Client::gameExec()
 
             if (mOldState == STATE_GAME)
             {
-                delete mGame;
-                mGame = nullptr;
+                delete2(mGame);
                 Game::clearInstance();
                 ResourceManager *const resman = ResourceManager::getInstance();
                 if (resman)
@@ -1198,8 +1180,7 @@ int Client::gameExec()
             mOldState = mState;
 
             // Get rid of the dialog of the previous state
-            delete mCurrentDialog;
-            mCurrentDialog = nullptr;
+            delete2(mCurrentDialog);
             // State has changed, while the quitDialog was active, it might
             // not be correct anymore
             if (mQuitDialog)
@@ -1577,23 +1558,15 @@ int Client::gameExec()
                         chatLogger->setServerName(mServerName);
 
 #ifdef ANDROID
-                    delete mCloseButton;
-                    mCloseButton = nullptr;
+                    delete2(mCloseButton);
 #endif
-                    delete mSetupButton;
-                    mSetupButton = nullptr;
-                    delete mVideoButton;
-                    mVideoButton = nullptr;
-                    delete mThemesButton;
-                    mThemesButton = nullptr;
-                    delete mAboutButton;
-                    mAboutButton = nullptr;
-                    delete mHelpButton;
-                    mHelpButton = nullptr;
-                    delete mPerfomanceButton;
-                    mPerfomanceButton = nullptr;
-                    delete mDesktop;
-                    mDesktop = nullptr;
+                    delete2(mSetupButton);
+                    delete2(mVideoButton);
+                    delete2(mThemesButton);
+                    delete2(mAboutButton);
+                    delete2(mHelpButton);
+                    delete2(mPerfomanceButton);
+                    delete2(mDesktop);
 
                     mCurrentDialog = nullptr;
 

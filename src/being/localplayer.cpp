@@ -69,6 +69,7 @@
 #include "resources/db/emotedb.h"
 #include "resources/db/weaponsdb.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/timer.h"
 
@@ -223,11 +224,9 @@ LocalPlayer::~LocalPlayer()
     if (mAwayDialog)
     {
         soundManager.volumeRestore();
-        delete mAwayDialog;
-        mAwayDialog = nullptr;
+        delete2(mAwayDialog)
     }
-    delete mAwayListener;
-    mAwayListener = nullptr;
+    delete2(mAwayListener);
 }
 
 void LocalPlayer::logic()

@@ -37,6 +37,8 @@
 
 #include "resources/image.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 TouchManager touchManager;
@@ -70,8 +72,7 @@ TouchManager::TouchManager() :
 TouchManager::~TouchManager()
 {
     clear();
-    delete mVertexes;
-    mVertexes = nullptr;
+    delete2(mVertexes);
     CHECKLISTENERS
 }
 
@@ -357,8 +358,7 @@ void TouchManager::unload(TouchItem *const item)
         if (item->images)
         {
             Theme::unloadRect(*item->images);
-            delete item->images;
-            item->images = nullptr;
+            delete2(item->images);
             if (item->icon)
             {
                 item->icon->decRef();

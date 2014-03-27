@@ -20,6 +20,7 @@
 
 #include "utils/translation/translationmanager.h"
 
+#include "utils/delete2.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"
@@ -46,8 +47,7 @@ void TranslationManager::loadCurrentLang()
 
 void TranslationManager::close()
 {
-    delete translator;
-    translator = nullptr;
+    delete2(translator);
 }
 
 PoDict *TranslationManager::loadLang(const LangVect &lang,

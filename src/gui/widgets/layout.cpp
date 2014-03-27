@@ -26,6 +26,8 @@
 
 #include "gui/widgets/basiccontainer2.h"
 
+#include "utils/delete2.h"
+
 #include <cassert>
 
 #include "debug.h"
@@ -45,10 +47,7 @@ LayoutCell &ContainerPlacer::operator()
 LayoutCell::~LayoutCell()
 {
     if (mType == ARRAY)
-    {
-        delete mArray;
-        mArray = nullptr;
-    }
+        delete2(mArray)
 }
 
 LayoutArray &LayoutCell::getArray()

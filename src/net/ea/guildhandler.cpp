@@ -34,6 +34,8 @@
 
 #include "net/ea/gui/guildtab.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 namespace Ea
@@ -48,8 +50,7 @@ GuildHandler::GuildHandler() :
 
 GuildHandler::~GuildHandler()
 {
-    delete guildTab;
-    guildTab = nullptr;
+    delete2(guildTab);
 }
 
 void GuildHandler::requestAlliance(const int guildId A_UNUSED,
@@ -462,8 +463,7 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg) const
             taGuild->clearMembers();
         }
         NotifyManager::notify(NotifyManager::GUILD_LEFT);
-        delete guildTab;
-        guildTab = nullptr;
+        delete2(guildTab)
 
         if (socialWindow && taGuild)
             socialWindow->removeTab(taGuild);
@@ -506,8 +506,7 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
             taGuild->clearMembers();
         }
         NotifyManager::notify(NotifyManager::GUILD_KICKED);
-        delete guildTab;
-        guildTab = nullptr;
+        delete2(guildTab)
 
         if (socialWindow && taGuild)
             socialWindow->removeTab(taGuild);

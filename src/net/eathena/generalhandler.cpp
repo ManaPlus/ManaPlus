@@ -54,6 +54,7 @@
 #include "net/eathena/tradehandler.h"
 #include "net/eathena/skillhandler.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -105,8 +106,7 @@ GeneralHandler::GeneralHandler() :
 
 GeneralHandler::~GeneralHandler()
 {
-    delete mNetwork;
-    mNetwork = nullptr;
+    delete2(mNetwork);
 }
 
 void GeneralHandler::handleMessage(Net::MessageIn &msg)
@@ -272,11 +272,8 @@ void GeneralHandler::gameEnded() const
         socialWindow->removeTab(Ea::taParty);
     }
 
-    delete Ea::guildTab;
-    Ea::guildTab = nullptr;
-
-    delete Ea::partyTab;
-    Ea::partyTab = nullptr;
+    delete2(Ea::guildTab);
+    delete2(Ea::partyTab);
 }
 
 }  // namespace EAthena

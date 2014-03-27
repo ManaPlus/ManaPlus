@@ -42,6 +42,7 @@
 
 #include "net/packetcounters.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 #include "utils/timer.h"
@@ -88,12 +89,9 @@ DebugWindow::DebugWindow() :
 
 DebugWindow::~DebugWindow()
 {
-    delete mMapWidget;
-    mMapWidget = nullptr;
-    delete mTargetWidget;
-    mTargetWidget = nullptr;
-    delete mNetWidget;
-    mNetWidget = nullptr;
+    delete2(mMapWidget);
+    delete2(mTargetWidget);
+    delete2(mNetWidget);
 }
 
 void DebugWindow::postInit()

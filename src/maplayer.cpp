@@ -39,6 +39,7 @@
 #include "gui/font.h"
 #include "gui/gui.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 
 #include "debug.h"
@@ -586,10 +587,7 @@ SpecialLayer::SpecialLayer(const int width, const int height) :
 SpecialLayer::~SpecialLayer()
 {
     for (int f = 0; f < mWidth * mHeight; f ++)
-    {
-        delete mTiles[f];
-        mTiles[f] = nullptr;
-    }
+        delete2(mTiles[f])
     delete [] mTiles;
 }
 

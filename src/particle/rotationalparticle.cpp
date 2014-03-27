@@ -24,6 +24,8 @@
 
 #include "simpleanimation.h"
 
+#include "utils/delete2.h"
+
 #include <cmath>
 
 #include "debug.h"
@@ -46,8 +48,7 @@ RotationalParticle::RotationalParticle(const XmlNodePtr animationNode,
 
 RotationalParticle::~RotationalParticle()
 {
-    delete mAnimation;
-    mAnimation = nullptr;
+    delete2(mAnimation);
     mImage = nullptr;
 }
 

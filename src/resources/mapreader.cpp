@@ -37,6 +37,7 @@
 #include "resources/db/mapdb.h"
 
 #include "utils/base64.h"
+#include "utils/delete2.h"
 
 #include <iostream>
 #include <zlib.h>
@@ -977,14 +978,9 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                 }
 
                 if (ani->getLength() > 0)
-                {
                     map->addAnimation(tileGID, new TileAnimation(ani));
-                }
                 else
-                {
-                    delete ani;
-                    ani = nullptr;
-                }
+                    delete2(ani)
             }
         }
     }

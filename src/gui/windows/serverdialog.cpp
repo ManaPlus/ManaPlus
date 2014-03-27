@@ -46,6 +46,7 @@
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/langs.h"
 
@@ -295,11 +296,9 @@ ServerDialog::~ServerDialog()
     if (mDownload)
     {
         mDownload->cancel();
-        delete mDownload;
-        mDownload = nullptr;
+        delete2(mDownload)
     }
-    delete mServersListModel;
-    mServersListModel = nullptr;
+    delete2(mServersListModel);
 }
 
 void ServerDialog::connectToSelectedServer()
@@ -517,8 +516,7 @@ void ServerDialog::downloadServerList()
     if (mDownload)
     {
         mDownload->cancel();
-        delete mDownload;
-        mDownload = nullptr;
+        delete2(mDownload)
     }
 
     mDownload = new Net::Download(this, listFile,

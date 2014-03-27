@@ -30,11 +30,12 @@
 
 #include "input/keydata.h"
 
-#include "utils/dtor.h"
-
 #include "listeners/actionlistener.h"
 
 #include "render/graphics.h"
+
+#include "utils/delete2.h"
+#include "utils/dtor.h"
 
 #include "debug.h"
 
@@ -126,8 +127,7 @@ GuiTable::~GuiTable()
         gui->removeDragged(this);
 
     uninstallActionListeners();
-    delete mModel;
-    mModel = nullptr;
+    delete2(mModel);
 }
 
 const TableModel *GuiTable::getModel() const

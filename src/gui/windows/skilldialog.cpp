@@ -50,6 +50,7 @@
 #include "net/playerhandler.h"
 #include "net/skillhandler.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -83,10 +84,8 @@ class SkillListBox final : public ListBox
 
         ~SkillListBox()
         {
-            delete mModel;
-            mModel = nullptr;
-            delete mPopup;
-            mPopup = nullptr;
+            delete2(mModel)
+            delete2(mPopup)
         }
 
         SkillInfo *getSelectedInfo() const
@@ -256,8 +255,7 @@ class SkillTab final : public Tab
 
         ~SkillTab()
         {
-            delete mListBox;
-            mListBox = nullptr;
+            delete2(mListBox)
         }
 
         SkillInfo *getSelectedInfo() const

@@ -45,6 +45,7 @@
 
 #include "resources/iteminfo.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -162,8 +163,7 @@ void SellDialog::init()
 
 SellDialog::~SellDialog()
 {
-    delete mShopItems;
-    mShopItems = nullptr;
+    delete2(mShopItems);
     instances.remove(this);
 }
 

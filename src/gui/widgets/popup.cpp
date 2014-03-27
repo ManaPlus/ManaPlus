@@ -27,6 +27,8 @@
 
 #include "gui/viewport.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 Popup::Popup(const std::string &name,
@@ -72,8 +74,7 @@ Popup::~Popup()
 {
     logger->log("Popup::~Popup(\"%s\")", mPopupName.c_str());
 
-    delete mVertexes;
-    mVertexes = nullptr;
+    delete2(mVertexes);
 
     if (mSkin)
     {

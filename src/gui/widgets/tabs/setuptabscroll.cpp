@@ -24,6 +24,8 @@
 #include "gui/widgets/setupitem.h"
 #include "gui/widgets/vertcontainer.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 SetupTabScroll::SetupTabScroll(const Widget2 *const widget) :
@@ -41,10 +43,7 @@ SetupTabScroll::SetupTabScroll(const Widget2 *const widget) :
 SetupTabScroll::~SetupTabScroll()
 {
     mScroll = nullptr;
-
-    delete mContainer;
-    mContainer = nullptr;
-
+    delete2(mContainer);
     removeItems();
 }
 

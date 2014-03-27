@@ -77,8 +77,9 @@
 
 #include "gui/font.h"
 #include "gui/gui.h"
-
 #include "gui/rect.h"
+
+#include "utils/delete2.h"
 
 #include "debug.h"
 
@@ -362,8 +363,7 @@ Button::~Button()
         for (int mode = 0; mode < BUTTON_COUNT; mode ++)
             theme->unload(button[mode]);
     }
-    delete mVertexes2;
-    mVertexes2 = nullptr;
+    delete2(mVertexes2);
     if (mImageSet)
     {
         mImageSet->decRef();

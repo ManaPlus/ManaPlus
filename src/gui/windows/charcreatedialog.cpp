@@ -45,6 +45,7 @@
 #include "resources/db/chardb.h"
 #include "resources/db/itemdb.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -313,8 +314,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
 CharCreateDialog::~CharCreateDialog()
 {
-    delete mPlayer;
-    mPlayer = nullptr;
+    delete2(mPlayer);
 
     if (Net::getCharServerHandler())
         Net::getCharServerHandler()->setCharCreateDialog(nullptr);
@@ -491,14 +491,11 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     for (unsigned i = 0; i < mAttributeLabel.size(); i++)
     {
         remove(mAttributeLabel[i]);
-        delete mAttributeLabel[i];
-        mAttributeLabel[i] = nullptr;
+        delete2(mAttributeLabel[i])
         remove(mAttributeSlider[i]);
-        delete mAttributeSlider[i];
-        mAttributeSlider[i] = nullptr;
+        delete2(mAttributeSlider[i])
         remove(mAttributeValue[i]);
-        delete mAttributeValue[i];
-        mAttributeValue[i] = nullptr;
+        delete2(mAttributeValue[i])
     }
 
     mAttributeLabel.resize(labels.size());

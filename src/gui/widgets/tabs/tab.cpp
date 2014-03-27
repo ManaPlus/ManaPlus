@@ -75,6 +75,8 @@
 
 #include "resources/image.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 int Tab::mInstances = 0;
@@ -129,16 +131,14 @@ Tab::~Tab()
             theme->unload(tabImg[mode]);
     }
 
-    delete mLabel;
-    mLabel = nullptr;
+    delete2(mLabel);
 
     if (mImage)
     {
         mImage->decRef();
         mImage = nullptr;
     }
-    delete mVertexes;
-    mVertexes = nullptr;
+    delete2(mVertexes);
 }
 
 void Tab::init()

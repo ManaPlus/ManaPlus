@@ -37,6 +37,7 @@
 #include "resources/soundeffect.h"
 #include "resources/spritedef.h"
 
+#include "utils/delete2.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/physfscheckutils.h"
@@ -953,8 +954,7 @@ void ResourceManager::deleteInstance()
         }
     }
 #endif
-    delete instance;
-    instance = nullptr;
+    delete2(instance);
 }
 
 void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)

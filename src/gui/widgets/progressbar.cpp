@@ -28,6 +28,8 @@
 #include "gui/font.h"
 #include "gui/gui.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 int ProgressBar::mInstances = 0;
@@ -100,8 +102,7 @@ ProgressBar::~ProgressBar()
         mSkin = nullptr;
     }
     Theme::unloadRect(mFillRect);
-    delete mVertexes;
-    mVertexes = nullptr;
+    delete2(mVertexes);
 }
 
 void ProgressBar::logic()

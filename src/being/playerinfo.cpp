@@ -37,6 +37,8 @@
 #include "net/net.h"
 #include "net/playerhandler.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 namespace PlayerInfo
@@ -422,10 +424,8 @@ bool isTalking()
 
 void gameDestroyed()
 {
-    delete mInventory;
-    mInventory = nullptr;
-    delete mEquipment;
-    mEquipment = nullptr;
+    delete2(mInventory);
+    delete2(mEquipment);
 }
 
 void stateChange(const int state)

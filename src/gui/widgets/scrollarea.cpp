@@ -72,6 +72,8 @@
 
 #include "resources/image.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 int ScrollArea::instances = 0;
@@ -164,10 +166,8 @@ ScrollArea::~ScrollArea()
         }
     }
 
-    delete mVertexes;
-    mVertexes = nullptr;
-    delete mVertexes2;
-    mVertexes2 = nullptr;
+    delete2(mVertexes);
+    delete2(mVertexes2);
 
     setContent(nullptr);
 }

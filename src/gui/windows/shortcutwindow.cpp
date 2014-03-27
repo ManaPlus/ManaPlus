@@ -30,6 +30,8 @@
 #include "gui/widgets/shortcutcontainer.h"
 #include "gui/widgets/tabs/tab.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 static const int SCROLL_PADDING = 0;
@@ -152,10 +154,8 @@ ShortcutWindow::~ShortcutWindow()
 {
     if (mTabs)
         mTabs->removeAll();
-    delete mTabs;
-    mTabs = nullptr;
-    delete mItems;
-    mItems = nullptr;
+    delete2(mTabs);
+    delete2(mItems);
 }
 
 void ShortcutWindow::addTab(const std::string &name,

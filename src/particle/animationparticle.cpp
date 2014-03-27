@@ -24,6 +24,8 @@
 
 #include "simpleanimation.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 AnimationParticle::AnimationParticle(Animation *const animation) :
@@ -41,8 +43,7 @@ AnimationParticle::AnimationParticle(XmlNodePtrConst animationNode,
 
 AnimationParticle::~AnimationParticle()
 {
-    delete mAnimation;
-    mAnimation = nullptr;
+    delete2(mAnimation);
     mImage = nullptr;
 }
 

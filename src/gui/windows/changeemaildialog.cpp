@@ -35,6 +35,7 @@
 #include "net/loginhandler.h"
 #include "net/net.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include <string>
@@ -105,8 +106,7 @@ ChangeEmailDialog::ChangeEmailDialog(LoginData *const data):
 
 ChangeEmailDialog::~ChangeEmailDialog()
 {
-    delete mWrongDataNoticeListener;
-    mWrongDataNoticeListener = nullptr;
+    delete2(mWrongDataNoticeListener);
 }
 
 void ChangeEmailDialog::action(const ActionEvent &event)

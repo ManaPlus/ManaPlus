@@ -42,6 +42,7 @@
 #include "net/playerhandler.h"
 #include "net/gamehandler.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -147,10 +148,8 @@ MiniStatusWindow::MiniStatusWindow() :
 
 MiniStatusWindow::~MiniStatusWindow()
 {
-    delete mTextPopup;
-    mTextPopup = nullptr;
-    delete mStatusPopup;
-    mStatusPopup = nullptr;
+    delete2(mTextPopup);
+    delete2(mStatusPopup);
     delete_all(mIcons);
     mIcons.clear();
 

@@ -28,6 +28,8 @@
 #include "resources/animation.h"
 #include "resources/imageset.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 ProgressIndicator::ProgressIndicator(Widget2 *const widget) :
@@ -54,8 +56,7 @@ ProgressIndicator::~ProgressIndicator()
     if (gui)
         gui->removeDragged(this);
 
-    delete mIndicator;
-    mIndicator = nullptr;
+    delete2(mIndicator);
 }
 
 void ProgressIndicator::logic()

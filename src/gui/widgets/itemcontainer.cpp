@@ -29,6 +29,7 @@
 
 #include "being/playerinfo.h"
 
+#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/viewport.h"
 
@@ -46,8 +47,9 @@
 
 #include "resources/image.h"
 
-#include "gui/font.h"
 #include "listeners/selectionlistener.h"
+
+#include "utils/delete2.h"
 
 #include <algorithm>
 
@@ -218,8 +220,7 @@ ItemContainer::~ItemContainer()
     if (theme)
         theme->unload(mSkin);
 
-    delete mItemPopup;
-    mItemPopup = nullptr;
+    delete2(mItemPopup);
     delete []mShowMatrix;
 }
 

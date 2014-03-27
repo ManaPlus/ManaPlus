@@ -57,6 +57,7 @@
 #include "net/guildhandler.h"
 #include "net/partyhandler.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -206,10 +207,8 @@ public:
 
     ~SocialGuildTab()
     {
-        delete mList;
-        mList = nullptr;
-        delete mScroll;
-        mScroll = nullptr;
+        delete2(mList)
+        delete2(mScroll)
     }
 
     void action(const ActionEvent &event) override final
@@ -342,10 +341,8 @@ public:
 
     ~SocialGuildTab2()
     {
-        delete mList;
-        mList = nullptr;
-        delete mScroll;
-        mScroll = nullptr;
+        delete2(mList)
+        delete2(mScroll)
     }
 
     void action(const ActionEvent &event A_UNUSED) override final
@@ -411,10 +408,8 @@ public:
 
     ~SocialPartyTab()
     {
-        delete mList;
-        mList = nullptr;
-        delete mScroll;
-        mScroll = nullptr;
+        delete2(mList)
+        delete2(mScroll)
     }
 
     void action(const ActionEvent &event) override final
@@ -530,12 +525,9 @@ public:
 
     ~SocialPlayersTab()
     {
-        delete mList;
-        mList = nullptr;
-        delete mScroll;
-        mScroll = nullptr;
-        delete mBeings;
-        mBeings = nullptr;
+        delete2(mList)
+        delete2(mScroll)
+        delete2(mBeings)
     }
 
     void updateList() override final
@@ -697,12 +689,9 @@ public:
 
     ~SocialNavigationTab()
     {
-        delete mList;
-        mList = nullptr;
-        delete mScroll;
-        mScroll = nullptr;
-        delete mBeings;
-        mBeings = nullptr;
+        delete2(mList)
+        delete2(mScroll)
+        delete2(mBeings)
     }
 
     void updateList() override final
@@ -1026,12 +1015,9 @@ public:
 
     ~SocialAttackTab()
     {
-        delete mList;
-        mList = nullptr;
-        delete mScroll;
-        mScroll = nullptr;
-        delete mBeings;
-        mBeings = nullptr;
+        delete2(mList)
+        delete2(mScroll)
+        delete2(mBeings)
     }
 
     void updateList() override final
@@ -1073,12 +1059,9 @@ public:
 
     ~SocialPickupTab()
     {
-        delete mList;
-        mList = nullptr;
-        delete mScroll;
-        mScroll = nullptr;
-        delete mBeings;
-        mBeings = nullptr;
+        delete2(mList)
+        delete2(mScroll)
+        delete2(mBeings)
     }
 
     void updateList() override final
@@ -1120,12 +1103,9 @@ public:
 
     ~SocialFriendsTab()
     {
-        delete mList;
-        mList = nullptr;
-        delete mScroll;
-        mScroll = nullptr;
-        delete mBeings;
-        mBeings = nullptr;
+        delete2(mList)
+        delete2(mScroll)
+        delete2(mBeings)
     }
 
     void updateList() override final
@@ -1371,18 +1351,12 @@ SocialWindow::~SocialWindow()
 
         mPartyInviter.clear();
     }
-    delete mCreatePopup;
-    mCreatePopup = nullptr;
-    delete mPlayers;
-    mPlayers = nullptr;
-    delete mNavigation;
-    mNavigation = nullptr;
-    delete mAttackFilter;
-    mAttackFilter = nullptr;
-    delete mPickupFilter;
-    mPickupFilter = nullptr;
-    delete mFriends;
-    mFriends = nullptr;
+    delete2(mCreatePopup);
+    delete2(mPlayers);
+    delete2(mNavigation);
+    delete2(mAttackFilter);
+    delete2(mPickupFilter);
+    delete2(mFriends);
 }
 
 bool SocialWindow::addTab(Guild *const guild)

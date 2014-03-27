@@ -29,6 +29,7 @@
 #include <iostream>
 #include <unistd.h>
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #ifdef ANDROID
 #include "utils/mkdir.h"
@@ -320,8 +321,7 @@ int main(int argc, char *argv[])
         client->testsInit();
         ret = client->testsExec();
     }
-    delete client;
-    client = nullptr;
+    delete2(client);
 
 #if SDL_MIXER_VERSION_ATLEAST(1, 2, 11)
     Mix_Quit();
