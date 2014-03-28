@@ -54,7 +54,6 @@
 #include "net/eathena/tradehandler.h"
 #include "net/eathena/skillhandler.h"
 
-#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"

@@ -644,7 +644,7 @@ void ChatWindow::ignoreAllWhispers()
                                          PlayerRelation::IGNORED);
         }
 
-        delete2 (iter->second)
+        delete2(iter->second)
     }
 }
 
