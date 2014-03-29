@@ -552,6 +552,7 @@ SET(SRCS
     utils/copynpaste.h
     utils/cpu.cpp
     utils/cpu.h
+    utils/delete2.h
     utils/dtor.h
     utils/files.cpp
     utils/files.h
