@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-03-26 00:29+0300\n"
-"PO-Revision-Date: 2014-03-26 08:13+0000\n"
+"POT-Creation-Date: 2014-03-27 13:33+0300\n"
+"PO-Revision-Date: 2014-03-28 08:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/manaplus/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -58,49 +58,49 @@ msgid "I"
 msgstr ""
 
 #. TRANSLATORS: chat message after death
-#: src/being/localplayer.cpp:376
+#: src/being/localplayer.cpp:378
 #, c-format
 msgid "You were killed by %s"
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:816
+#: src/being/localplayer.cpp:818
 msgid "Tried to pick up nonexistent item."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:820
+#: src/being/localplayer.cpp:822
 msgid "Item is too heavy."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:824
+#: src/being/localplayer.cpp:826
 msgid "Item is too far away."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:828
+#: src/being/localplayer.cpp:830
 msgid "Inventory is full."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:832
+#: src/being/localplayer.cpp:834
 msgid "Stack is too big."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:836
+#: src/being/localplayer.cpp:838
 msgid "Item belongs to someone else."
 msgstr ""
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:840
+#: src/being/localplayer.cpp:842
 msgid "Unknown problem picking up item."
 msgstr ""
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:864
+#: src/being/localplayer.cpp:866
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -108,387 +108,387 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1044 src/being/localplayer.cpp:1079
-#: src/being/localplayer.cpp:1080
+#: src/being/localplayer.cpp:1048 src/being/localplayer.cpp:1083
+#: src/being/localplayer.cpp:1084
 msgid "xp"
 msgstr ""
 
-#: src/being/localplayer.cpp:1085 src/being/localplayer.cpp:1092
-#: src/being/localplayer.cpp:1099
+#: src/being/localplayer.cpp:1089 src/being/localplayer.cpp:1096
+#: src/being/localplayer.cpp:1103
 msgid "job"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1285
+#: src/being/localplayer.cpp:1289
 msgid "(D) default moves"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1287
+#: src/being/localplayer.cpp:1291
 msgid "(I) invert moves"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1289
+#: src/being/localplayer.cpp:1293
 msgid "(c) moves with some crazy moves"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1291
+#: src/being/localplayer.cpp:1295
 msgid "(C) moves with crazy moves"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1293
+#: src/being/localplayer.cpp:1297
 msgid "(d) double normal + crazy"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1295
+#: src/being/localplayer.cpp:1299
 msgid "(?) unknown move"
 msgstr ""
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/being/localplayer.cpp:1318
+#: src/being/localplayer.cpp:1322
 #, c-format
 msgid "(%u) crazy move number %u"
 msgstr ""
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/being/localplayer.cpp:1324
+#: src/being/localplayer.cpp:1328
 msgid "(a) custom crazy move"
 msgstr ""
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/being/localplayer.cpp:1329
+#: src/being/localplayer.cpp:1333
 msgid "(?) crazy move"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1344
+#: src/being/localplayer.cpp:1348
 msgid "(0) default moves to target"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1346
+#: src/being/localplayer.cpp:1350
 msgid "(1) moves to target in distance 1"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1348
+#: src/being/localplayer.cpp:1352
 msgid "(2) moves to target in distance 2"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1350
+#: src/being/localplayer.cpp:1354
 msgid "(3) moves to target in distance 3"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1352
+#: src/being/localplayer.cpp:1356
 msgid "(5) moves to target in distance 5"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1354
+#: src/being/localplayer.cpp:1358
 msgid "(7) moves to target in distance 7"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1356
+#: src/being/localplayer.cpp:1360
 msgid "(A) moves to target in attack range"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1358
+#: src/being/localplayer.cpp:1362
 msgid "(a) archer attack range"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1360
+#: src/being/localplayer.cpp:1364
 msgid "(B) moves to target in attack range - 1"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1362
+#: src/being/localplayer.cpp:1366
 msgid "(?) move to target"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1382
+#: src/being/localplayer.cpp:1386
 msgid "(D) default follow"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1384
+#: src/being/localplayer.cpp:1388
 msgid "(R) relative follow"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1386
+#: src/being/localplayer.cpp:1390
 msgid "(M) mirror follow"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1388
+#: src/being/localplayer.cpp:1392
 msgid "(P) pet follow"
 msgstr ""
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1390
+#: src/being/localplayer.cpp:1394
 msgid "(?) unknown follow"
 msgstr ""
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1410 src/being/localplayer.cpp:1418
-#: src/being/localplayer.cpp:1446
+#: src/being/localplayer.cpp:1414 src/being/localplayer.cpp:1422
+#: src/being/localplayer.cpp:1450
 msgid "(?) attack"
 msgstr ""
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1412 src/being/localplayer.cpp:1438
+#: src/being/localplayer.cpp:1416 src/being/localplayer.cpp:1442
 msgid "(D) default attack"
 msgstr ""
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/being/localplayer.cpp:1414
+#: src/being/localplayer.cpp:1418
 msgid "(s) switch attack without shield"
 msgstr ""
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/being/localplayer.cpp:1416
+#: src/being/localplayer.cpp:1420
 msgid "(S) switch attack with shield"
 msgstr ""
 
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1440
+#: src/being/localplayer.cpp:1444
 msgid "(G) go and attack"
 msgstr ""
 
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1442
+#: src/being/localplayer.cpp:1446
 msgid "(A) go, attack, pickup"
 msgstr ""
 
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1444
+#: src/being/localplayer.cpp:1448
 msgid "(d) without auto attack"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1498
+#: src/being/localplayer.cpp:1502
 msgid "(S) small pick up 1x1 cells"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1500
+#: src/being/localplayer.cpp:1504
 msgid "(D) default pick up 2x1 cells"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1502
+#: src/being/localplayer.cpp:1506
 msgid "(F) forward pick up 2x3 cells"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1504
+#: src/being/localplayer.cpp:1508
 msgid "(3) pick up 3x3 cells"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1506
+#: src/being/localplayer.cpp:1510
 msgid "(g) go and pick up in distance 4"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1508
+#: src/being/localplayer.cpp:1512
 msgid "(G) go and pick up in distance 8"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1510
+#: src/being/localplayer.cpp:1514
 msgid "(A) go and pick up in max distance"
 msgstr ""
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1512
+#: src/being/localplayer.cpp:1516
 msgid "(?) pick up"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1526
+#: src/being/localplayer.cpp:1530
 msgid "(N) normal map view"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1528
+#: src/being/localplayer.cpp:1532
 msgid "(D) debug map view"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1530
+#: src/being/localplayer.cpp:1534
 msgid "(u) ultra map view"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1532
+#: src/being/localplayer.cpp:1536
 msgid "(U) ultra map view 2"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1534
+#: src/being/localplayer.cpp:1538
 msgid "(e) empty map view"
 msgstr ""
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1536
+#: src/being/localplayer.cpp:1540
 msgid "(b) black & white map view"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1556
+#: src/being/localplayer.cpp:1560
 msgid "(f) use #flar for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1558
+#: src/being/localplayer.cpp:1562
 msgid "(c) use #chiza for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1560
+#: src/being/localplayer.cpp:1564
 msgid "(I) use #ingrav for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1562
+#: src/being/localplayer.cpp:1566
 msgid "(F) use #frillyar for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1564
+#: src/being/localplayer.cpp:1568
 msgid "(U) use #upmarmu for magic attack"
 msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1566
+#: src/being/localplayer.cpp:1570
 msgid "(?) magic attack"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1586
+#: src/being/localplayer.cpp:1590
 msgid "(a) attack all players"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1588
+#: src/being/localplayer.cpp:1592
 msgid "(f) attack all except friends"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1590
+#: src/being/localplayer.cpp:1594
 msgid "(b) attack bad relations"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1592
+#: src/being/localplayer.cpp:1596
 msgid "(d) don't attack players"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1594
+#: src/being/localplayer.cpp:1598
 msgid "(?) pvp attack"
 msgstr ""
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:1614
+#: src/being/localplayer.cpp:1618
 msgid "(D) default imitation"
 msgstr ""
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:1616
+#: src/being/localplayer.cpp:1620
 msgid "(O) outfits imitation"
 msgstr ""
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:1618
+#: src/being/localplayer.cpp:1622
 msgid "(?) imitation"
 msgstr ""
 
 #. TRANSLATORS: away message box header
-#: src/being/localplayer.cpp:1647
+#: src/being/localplayer.cpp:1651
 msgid "Away"
 msgstr ""
 
 #. TRANSLATORS: away type in status bar
-#: src/being/localplayer.cpp:1670
+#: src/being/localplayer.cpp:1674
 msgid "(O) on keyboard"
 msgstr ""
 
 #. TRANSLATORS: away type in status bar
-#: src/being/localplayer.cpp:1672
+#: src/being/localplayer.cpp:1676
 msgid "(A) away"
 msgstr ""
 
 #. TRANSLATORS: away type in status bar
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:1674 src/being/localplayer.cpp:1692
+#: src/being/localplayer.cpp:1678 src/being/localplayer.cpp:1696
 msgid "(?) away"
 msgstr ""
 
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:1688
+#: src/being/localplayer.cpp:1692
 msgid "(G) game camera mode"
 msgstr ""
 
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:1690
+#: src/being/localplayer.cpp:1694
 msgid "(F) free camera mode"
 msgstr ""
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:1717
+#: src/being/localplayer.cpp:1721
 msgid "Game modifiers are enabled"
 msgstr ""
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:1719
+#: src/being/localplayer.cpp:1723
 msgid "Game modifiers are disabled"
 msgstr ""
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:1721
+#: src/being/localplayer.cpp:1725
 msgid "Game modifiers are unknown"
 msgstr ""
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:3287
+#: src/being/localplayer.cpp:3291
 #, c-format
 msgid "Follow: %s"
 msgstr ""
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3293 src/being/localplayer.cpp:3318
+#: src/being/localplayer.cpp:3297 src/being/localplayer.cpp:3322
 msgid "Follow canceled"
 msgstr ""
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:3303
+#: src/being/localplayer.cpp:3307
 #, c-format
 msgid "Imitation: %s"
 msgstr ""
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3309 src/being/localplayer.cpp:3323
+#: src/being/localplayer.cpp:3313 src/being/localplayer.cpp:3327
 msgid "Imitation canceled"
 msgstr ""
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:3666
+#: src/being/localplayer.cpp:3671
 #, c-format
 msgid "You see %s"
 msgstr ""
@@ -2693,7 +2693,7 @@ msgstr ""
 #: src/gui/setupactiondata.h:1876 src/gui/setupactiondata.h:2021
 #: src/gui/widgets/tabs/setup_audio.cpp:146
 #: src/gui/widgets/tabs/setup_chat.cpp:180
-#: src/gui/widgets/tabs/setup_other.cpp:330
+#: src/gui/widgets/tabs/setup_other.cpp:334
 #: src/gui/widgets/tabs/setup_visual.cpp:189
 #: src/gui/windows/charcreatedialog.cpp:109
 #: src/gui/windows/registerdialog.cpp:116
@@ -2762,7 +2762,7 @@ msgstr ""
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings group
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:2013 src/gui/widgets/tabs/setup_other.cpp:308
+#: src/gui/setupactiondata.h:2013 src/gui/widgets/tabs/setup_other.cpp:312
 #: src/gui/windowmenu.cpp:150
 msgid "Windows"
 msgstr ""
@@ -3754,89 +3754,94 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:185
-msgid "Attack while moving"
+msgid "Show server side position"
 msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:189
-msgid "Attack next target"
+msgid "Attack while moving"
 msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:193
-msgid "Sync player move"
+msgid "Attack next target"
 msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:197
-msgid "Crazy move A program"
+msgid "Sync player move"
 msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:201
+msgid "Crazy move A program"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_other.cpp:205
 msgid "Mouse relative moves (good for touch interfaces)"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:206
+#: src/gui/widgets/tabs/setup_other.cpp:210
 msgid "Player"
 msgstr ""
 
-#: src/gui/widgets/tabs/setup_other.cpp:208
+#: src/gui/widgets/tabs/setup_other.cpp:212
 msgid "Show own hp bar"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:212
+#: src/gui/widgets/tabs/setup_other.cpp:216
 msgid "Enable quick stats"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:216
+#: src/gui/widgets/tabs/setup_other.cpp:220
 msgid "Cycle player targets"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:220
+#: src/gui/widgets/tabs/setup_other.cpp:224
 msgid "Show job exp messages"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:224
+#: src/gui/widgets/tabs/setup_other.cpp:228
 msgid "Show players popups"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:228
+#: src/gui/widgets/tabs/setup_other.cpp:232
 msgid "Afk message"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:232
+#: src/gui/widgets/tabs/setup_other.cpp:236
 msgid "Show job"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:236
+#: src/gui/widgets/tabs/setup_other.cpp:240
 msgid "Enable attack filter"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:240
+#: src/gui/widgets/tabs/setup_other.cpp:244
 msgid "Enable pickup filter"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:244
+#: src/gui/widgets/tabs/setup_other.cpp:248
 msgid "Enable advert protocol"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:248
+#: src/gui/widgets/tabs/setup_other.cpp:252
 msgid "Enabled pets support"
 msgstr ""
 
-#: src/gui/widgets/tabs/setup_other.cpp:251
+#: src/gui/widgets/tabs/setup_other.cpp:255
 msgid "Enable weight notifications"
 msgstr ""
 
@@ -3844,167 +3849,167 @@ msgstr ""
 #. TRANSLATORS: full button name
 #. TRANSLATORS: shop window name
 #. TRANSLATORS: inventory button
-#: src/gui/widgets/tabs/setup_other.cpp:256 src/gui/windowmenu.cpp:133
+#: src/gui/widgets/tabs/setup_other.cpp:260 src/gui/windowmenu.cpp:133
 #: src/gui/windows/buyselldialog.cpp:39 src/gui/windows/buyselldialog.cpp:50
 #: src/gui/windows/inventorywindow.cpp:192
 msgid "Shop"
 msgstr "Winkel"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:259
+#: src/gui/widgets/tabs/setup_other.cpp:263
 msgid "Accept sell/buy requests"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:263
+#: src/gui/widgets/tabs/setup_other.cpp:267
 msgid "Enable shop mode"
 msgstr ""
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: npc dialog name
 #. TRANSLATORS: npc post dialog caption
-#: src/gui/widgets/tabs/setup_other.cpp:268 src/gui/windows/npcdialog.cpp:80
+#: src/gui/widgets/tabs/setup_other.cpp:272 src/gui/windows/npcdialog.cpp:80
 #: src/gui/windows/npcpostdialog.cpp:44
 msgid "NPC"
 msgstr "NPC"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:271
+#: src/gui/widgets/tabs/setup_other.cpp:275
 msgid "Cycle npc targets"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:275
+#: src/gui/widgets/tabs/setup_other.cpp:279
 msgid "Log NPC dialogue"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:280
+#: src/gui/widgets/tabs/setup_other.cpp:284
 msgid "Bots support"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:283
+#: src/gui/widgets/tabs/setup_other.cpp:287
 msgid "Enable auction bot support"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:287
+#: src/gui/widgets/tabs/setup_other.cpp:291
 msgid "Enable guild bot support and disable native guild support"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:293
+#: src/gui/widgets/tabs/setup_other.cpp:297
 msgid "Keyboard"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:296
+#: src/gui/widgets/tabs/setup_other.cpp:300
 msgid "Repeat delay"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:300
+#: src/gui/widgets/tabs/setup_other.cpp:304
 msgid "Repeat interval"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:304
+#: src/gui/widgets/tabs/setup_other.cpp:308
 msgid "Custom repeat interval"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:312
+#: src/gui/widgets/tabs/setup_other.cpp:316
 msgid "Shortcut buttons"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:317
+#: src/gui/widgets/tabs/setup_other.cpp:321
 msgid "Proxy server"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:321
+#: src/gui/widgets/tabs/setup_other.cpp:325
 msgid "Proxy type"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:325
+#: src/gui/widgets/tabs/setup_other.cpp:329
 msgid "Proxy address:port"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:333
+#: src/gui/widgets/tabs/setup_other.cpp:337
 msgid "Enable server side attack"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:337
+#: src/gui/widgets/tabs/setup_other.cpp:341
 msgid "Hide support page link on error"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:341
+#: src/gui/widgets/tabs/setup_other.cpp:345
 msgid "Enable double clicks"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:345
+#: src/gui/widgets/tabs/setup_other.cpp:349
 msgid "Enable bot checker"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:349
+#: src/gui/widgets/tabs/setup_other.cpp:353
 msgid "Enable buggy servers protection (do not disable)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:354
+#: src/gui/widgets/tabs/setup_other.cpp:358
 msgid "Enable debug log"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:358
+#: src/gui/widgets/tabs/setup_other.cpp:362
 msgid "Enable OpenGL log"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:362
+#: src/gui/widgets/tabs/setup_other.cpp:366
 msgid "Enable input log"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:366
+#: src/gui/widgets/tabs/setup_other.cpp:370
 msgid "Low traffic mode"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:370
+#: src/gui/widgets/tabs/setup_other.cpp:374
 msgid "Hide shield sprite"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:375
+#: src/gui/widgets/tabs/setup_other.cpp:379
 msgid "Use FBO for screenshots (only for opengl)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:381
+#: src/gui/widgets/tabs/setup_other.cpp:385
 msgid "Screenshot directory"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:386
+#: src/gui/widgets/tabs/setup_other.cpp:390
 msgid "Network delay between sub servers"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:390
+#: src/gui/widgets/tabs/setup_other.cpp:394
 msgid "Show background"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:395
+#: src/gui/widgets/tabs/setup_other.cpp:399
 msgid "Screen density override"
 msgstr ""
 
