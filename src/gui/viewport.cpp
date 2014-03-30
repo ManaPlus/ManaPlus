@@ -883,9 +883,9 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
     const int y = mMouseY + mPixelViewY;
 
     ActorSprite::Type type = ActorSprite::UNKNOWN;
+    mHoverBeing = actorManager->findBeingByPixel(x, y, true);
     if (mHoverBeing)
         type = mHoverBeing->getType();
-    mHoverBeing = actorManager->findBeingByPixel(x, y, true);
     if (mHoverBeing
         && (type == Being::PLAYER
         || type == Being::NPC
