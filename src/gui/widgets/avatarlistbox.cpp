@@ -99,13 +99,16 @@ void AvatarListBox::draw(Graphics *graphics)
         return;
     }
 
+    const Widget *const parent = mParent;
+    if (!parent)
+        return;
+
     AvatarListModel *const model = static_cast<AvatarListModel *const>(
         mListModel);
     updateAlpha();
 
     Font *const font = getFont();
     const int fontHeight = getFont()->getHeight();
-    const Widget *const parent = mParent;
     const std::string name = player_node->getName();
 
     // Draw the list elements
@@ -155,7 +158,7 @@ void AvatarListBox::draw(Graphics *graphics)
                                  a->getHp(), a->getMaxHp());
             }
             const bool isPoison = a->getPoison();
-            if (a->getMaxHp() && (isPoison || parent))
+            if (a->getMaxHp())
             {
                 const int themeColor = (isPoison
                     ? Theme::PROG_HP_POISON : Theme::PROG_HP);
@@ -182,28 +185,25 @@ void AvatarListBox::draw(Graphics *graphics)
                                  a->getDamageHp());
             }
 
-            if (parent)
+            const int themeColor = (a->getPoison()
+                ? Theme::PROG_HP_POISON : Theme::PROG_HP);
+            Color color = Theme::getProgressColor(themeColor, 1);
+            color.a = 80;
+            graphics->setColor(color);
+            graphics->fillRectangle(Rect(mPadding, y + mPadding,
+                parent->getWidth() * a->getDamageHp() / 1024
+                - 2 * mPadding, fontHeight));
+
+            if (a->getLevel() > 1)
             {
-                const int themeColor = (a->getPoison()
-                    ? Theme::PROG_HP_POISON : Theme::PROG_HP);
-                Color color = Theme::getProgressColor(themeColor, 1);
-                color.a = 80;
-                graphics->setColor(color);
-                graphics->fillRectangle(Rect(mPadding, y + mPadding,
-                    parent->getWidth() * a->getDamageHp() / 1024
-                    - 2 * mPadding, fontHeight));
+                graphics->setColor(mForegroundColor);
+                int minHp = 40 + ((a->getLevel() - 1) * 5);
+                if (minHp < 0)
+                    minHp = 40;
 
-                if (a->getLevel() > 1)
-                {
-                    graphics->setColor(mForegroundColor);
-                    int minHp = 40 + ((a->getLevel() - 1) * 5);
-                    if (minHp < 0)
-                        minHp = 40;
-
-                    graphics->drawLine(parent->getWidth()*minHp / 1024
-                        + mPadding, y + mPadding,
-                        parent->getWidth() * minHp / 1024, y + fontHeight);
-                }
+                graphics->drawLine(parent->getWidth()*minHp / 1024
+                    + mPadding, y + mPadding,
+                    parent->getWidth() * minHp / 1024, y + fontHeight);
             }
         }
         else
@@ -307,8 +307,7 @@ void AvatarListBox::draw(Graphics *graphics)
     if (useCaching)
         graphics->drawTileCollection(&vertexes);
 
-    if (parent)
-        setWidth(parent->getWidth() - 10);
+    setWidth(parent->getWidth() - 10);
     BLOCK_END("AvatarListBox::draw")
 }
 
