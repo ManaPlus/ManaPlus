@@ -519,6 +519,7 @@ int WhoIsOnline::downloadThread(void *ptr)
             curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
             curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 7);
             curl_easy_setopt(curl, CURLOPT_TIMEOUT, 30);
+            Net::Download::addHeaders(curl);
             Net::Download::addProxy(curl);
             Net::Download::secureCurl(curl);
 

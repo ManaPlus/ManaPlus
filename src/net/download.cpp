@@ -326,6 +326,7 @@ int Download::downloadThread(void *ptr)
                 curl_easy_setopt(d->mCurl, CURLOPT_NOSIGNAL, 1);
                 curl_easy_setopt(d->mCurl, CURLOPT_CONNECTTIMEOUT, 30);
                 curl_easy_setopt(d->mCurl, CURLOPT_TIMEOUT, 1800);
+                addHeaders(d->mCurl);
                 addProxy(d->mCurl);
                 secureCurl(d->mCurl);
             }
@@ -533,6 +534,13 @@ void Download::secureCurl(CURL *const curl)
 #endif
 #if CURLVERSION_ATLEAST(7, 15, 1)
     curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 3);
+#endif
+}
+
+void Download::addHeaders(CURL *const curl)
+{
+#if CURLVERSION_ATLEAST(7, 21, 7)
+    curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, "");
 #endif
 }
 
