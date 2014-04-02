@@ -368,7 +368,6 @@ void Slider::mousePressed(MouseEvent &event)
             setValue(markerPositionToValue(x - mMarkerLength / 2));
         else
             setValue(markerPositionToValue(height - y - mMarkerLength / 2));
-
         distributeActionEvent();
     }
 }
@@ -450,18 +449,13 @@ void Slider::setValue(const double value)
 {
     mRedraw = true;
     if (value > mScaleEnd)
-    {
         mValue = mScaleEnd;
-        return;
-    }
-
-    if (value < mScaleStart)
-    {
+    else if (value < mScaleStart)
         mValue = mScaleStart;
-        return;
-    }
-
-    mValue = value;
+    else
+        mValue = value;
+    mValue = static_cast<int>((mValue - mScaleStart) / mStepLength)
+        * mStepLength + mScaleStart;
 }
 
 double Slider::markerPositionToValue(const int v) const
