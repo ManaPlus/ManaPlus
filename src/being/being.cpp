@@ -1668,7 +1668,7 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
     // Draw speech above this being
     if (mSpeechTime == 0)
     {
-        if (mSpeechBubble->isVisible())
+        if (mSpeechBubble->isVisibleLocal())
             mSpeechBubble->setVisible(false);
     }
     else if (mSpeechTime > 0 && (speech == NAME_IN_BUBBLE ||

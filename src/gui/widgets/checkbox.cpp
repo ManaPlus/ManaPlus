@@ -189,7 +189,7 @@ void CheckBox::drawBox(Graphics *const graphics)
     const ImageRect &rect = mSkin->getBorder();
     int index = 0;
 
-    if (mEnabled && isVisible())
+    if (mEnabled && mVisible)
     {
         if (mSelected)
         {

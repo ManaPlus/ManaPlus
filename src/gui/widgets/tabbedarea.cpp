@@ -570,7 +570,7 @@ void TabbedArea::adjustTabPositions()
             maxTabHeight = tab->getHeight();
     }
 
-    int x = (mEnableScrollButtons && mArrowButton[0]->isVisible())
+    int x = (mEnableScrollButtons && mArrowButton[0]->isVisibleLocal())
         ? mArrowButton[0]->getWidth() : 0;
     for (size_t i = mTabScrollIndex; i < sz; ++i)
     {

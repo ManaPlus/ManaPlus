@@ -176,7 +176,7 @@ void RadioButton::drawBox(Graphics* graphics)
     const ImageRect &rect = mSkin->getBorder();
     int index = 0;
 
-    if (mEnabled && isVisible())
+    if (mEnabled && mVisible)
     {
         if (mSelected)
         {
