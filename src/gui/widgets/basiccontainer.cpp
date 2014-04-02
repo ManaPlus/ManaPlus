@@ -298,7 +298,7 @@ void BasicContainer::drawChildren(Graphics* graphics)
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
         Widget *const widget = *iter;
-        if (widget->isVisible())
+        if (widget->isVisibleLocal())
         {
             // If the widget has a frame,
             // draw it before drawing the widget

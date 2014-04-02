@@ -399,6 +399,9 @@ class Widget : public Widget2
         bool isVisible() const A_WARN_UNUSED
         { return mVisible && (!mParent || mParent->isVisible()); }
 
+        bool isVisibleLocal() const A_WARN_UNUSED
+        { return mVisible; }
+
         /**
           * Sets the base color of the widget.
           *
