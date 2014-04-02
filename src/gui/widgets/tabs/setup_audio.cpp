@@ -73,11 +73,13 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Sfx volume"), "", "sfxVolume",
-        this, "sfxVolumeEvent", 0, soundManager.getMaxVolume(), 150, true);
+        this, "sfxVolumeEvent", 0, soundManager.getMaxVolume(), 1,
+        150, true, true);
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Music volume"), "", "musicVolume",
-        this, "musicVolumeEvent", 0, soundManager.getMaxVolume(), 150, true);
+        this, "musicVolumeEvent", 0, soundManager.getMaxVolume(), 1,
+        150, true, true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable music fade out"), "",
@@ -97,7 +99,7 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
     mChannelsList->push_back(_("surround+center+lfe"));
     // TRANSLATORS: settings option
     new SetupItemSlider2(_("Audio channels"), "", "audioChannels", this,
-        "audioChannels", 1, 4, mChannelsList);
+        "audioChannels", 1, 4, 1, mChannelsList, false, true, false);
 
 
     // TRANSLATORS: settings group

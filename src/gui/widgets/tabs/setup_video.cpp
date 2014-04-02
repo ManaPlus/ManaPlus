@@ -192,9 +192,9 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mOpenGLDropDown(new DropDown(widget, mOpenGLListModel)),
     // TRANSLATORS: video settings checkbox
     mFpsCheckBox(new CheckBox(this, _("FPS limit:"))),
-    mFpsSlider(new Slider(this, 2, 160)),
+    mFpsSlider(new Slider(this, 2.0, 160.0, 1.0)),
     mFpsLabel(new Label(this)),
-    mAltFpsSlider(new Slider(this, 2, 160)),
+    mAltFpsSlider(new Slider(this, 2.0, 160.0, 1.0)),
     // TRANSLATORS: video settings label
     mAltFpsLabel(new Label(this, _("Alt FPS limit: "))),
 #if !defined(ANDROID) && !defined(__APPLE__)

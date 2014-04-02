@@ -713,8 +713,11 @@ SetupItemSlider::SetupItemSlider(const std::string &restrict text,
                                  const std::string &restrict keyName,
                                  SetupTabScroll *restrict const parent,
                                  const std::string &restrict eventName,
-                                 const double min, const double max,
-                                 const int width, const bool onTheFly,
+                                 const double min,
+                                 const double max,
+                                 const double step,
+                                 const int width,
+                                 const bool onTheFly,
                                  const bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
@@ -722,6 +725,7 @@ SetupItemSlider::SetupItemSlider(const std::string &restrict text,
     mSlider(nullptr),
     mMin(min),
     mMax(max),
+    mStep(step),
     mWidth(width),
     mOnTheFly(onTheFly)
 {
@@ -734,7 +738,9 @@ SetupItemSlider::SetupItemSlider(const std::string &restrict text,
                                  const std::string &restrict keyName,
                                  SetupTabScroll *restrict const parent,
                                  const std::string &restrict eventName,
-                                 const double min, const double max,
+                                 const double min,
+                                 const double max,
+                                 const double step,
                                  const std::string &restrict def,
                                  const int width,
                                  const bool onTheFly,
@@ -745,6 +751,7 @@ SetupItemSlider::SetupItemSlider(const std::string &restrict text,
     mSlider(nullptr),
     mMin(min),
     mMax(max),
+    mStep(step),
     mWidth(width),
     mOnTheFly(onTheFly)
 {
@@ -766,7 +773,7 @@ void SetupItemSlider::createControls()
     mHorizont = new HorizontContainer(this, 32, 2);
 
     mLabel = new Label(this, mText);
-    mSlider = new Slider(this, mMin, mMax);
+    mSlider = new Slider(this, mMin, mMax, mStep);
     mSlider->setActionEventId(mEventName);
     mSlider->addActionListener(mParent);
     mSlider->setValue(atof(mValue.c_str()));
@@ -823,7 +830,9 @@ SetupItemSlider2::SetupItemSlider2(const std::string &restrict text,
                                    const std::string &restrict keyName,
                                    SetupTabScroll *restrict const parent,
                                    const std::string &restrict eventName,
-                                   const int min, const int max,
+                                   const int min,
+                                   const int max,
+                                   const int step,
                                    SetupItemNames *restrict const values,
                                    const bool onTheFly,
                                    const bool mainConfig,
@@ -836,6 +845,7 @@ SetupItemSlider2::SetupItemSlider2(const std::string &restrict text,
     mValues(values),
     mMin(min),
     mMax(max),
+    mStep(step),
     mInvertValue(0),
     mInvert(false),
     mOnTheFly(onTheFly),
@@ -850,10 +860,13 @@ SetupItemSlider2::SetupItemSlider2(const std::string &restrict text,
                                    const std::string &restrict keyName,
                                    SetupTabScroll *restrict const parent,
                                    const std::string &restrict eventName,
-                                   const int min, const int max,
+                                   const int min,
+                                   const int max,
+                                   const int step,
                                    SetupItemNames *restrict const values,
                                    const std::string &restrict def,
-                                   const bool onTheFly, const bool mainConfig,
+                                   const bool onTheFly,
+                                   const bool mainConfig,
                                    const bool doNotAlign) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
@@ -863,6 +876,7 @@ SetupItemSlider2::SetupItemSlider2(const std::string &restrict text,
     mValues(values),
     mMin(min),
     mMax(max),
+    mStep(step),
     mInvertValue(0),
     mInvert(false),
     mOnTheFly(onTheFly),
@@ -890,7 +904,7 @@ void SetupItemSlider2::createControls()
     mLabel = new Label(this, mText);
     mLabel2 = new Label(this, "");
     mLabel2->setWidth(width);
-    mSlider = new Slider(this, mMin, mMax);
+    mSlider = new Slider(this, mMin, mMax, mStep);
     mSlider->setActionEventId(mEventName);
     mSlider->addActionListener(mParent);
     mSlider->setValue(atof(mValue.c_str()));

@@ -350,19 +350,25 @@ class SetupItemSlider final : public SetupItem
                         const std::string &restrict keyName,
                         SetupTabScroll *restrict const parent,
                         const std::string &restrict eventName,
-                        const double min, const double max,
-                        const int width = 150, const bool onTheFly = false,
-                        const bool mainConfig = true);
+                        const double min,
+                        const double max,
+                        const double step,
+                        const int width,
+                        const bool onTheFly,
+                        const bool mainConfig);
 
         SetupItemSlider(const std::string &restrict text,
                         const std::string &restrict description,
                         const std::string &restrict keyName,
                         SetupTabScroll *restrict const parent,
                         const std::string &restrict eventName,
-                        const double min, const double max,
-                        const std::string &restrict def, const int width = 150,
-                        const bool onTheFly = false,
-                        const bool mainConfig = true);
+                        const double min,
+                        const double max,
+                        const double step,
+                        const std::string &restrict def,
+                        const int width,
+                        const bool onTheFly,
+                        const bool mainConfig);
 
         A_DELETE_COPY(SetupItemSlider)
 
@@ -386,6 +392,7 @@ class SetupItemSlider final : public SetupItem
         Slider *mSlider;
         double mMin;
         double mMax;
+        double mStep;
         int mWidth;
         bool mOnTheFly;
 };
@@ -402,23 +409,23 @@ class SetupItemSlider2 final : public SetupItem
                          const std::string &restrict keyName,
                          SetupTabScroll *restrict const parent,
                          const std::string &restrict eventName,
-                         const int min, const int max,
+                         const int min, const int max, const int step,
                          SetupItemNames *restrict const values,
-                         const bool onTheFly = false,
-                         const bool mainConfig = true,
-                         const bool doNotAlign = false);
+                         const bool onTheFly,
+                         const bool mainConfig,
+                         const bool doNotAlign);
 
         SetupItemSlider2(const std::string &restrict text,
                          const std::string &restrict description,
                          const std::string &restrict keyName,
                          SetupTabScroll *restrict const parent,
                          const std::string &restrict eventName,
-                         const int min, const int max,
+                         const int min, const int max, const int step,
                          SetupItemNames *restrict const values,
                          const std::string &restrict def,
-                         const bool onTheFly = false,
-                         const bool mainConfig = true,
-                         const bool doNotAlign = false);
+                         const bool onTheFly,
+                         const bool mainConfig,
+                         const bool doNotAlign);
 
         A_DELETE_COPY(SetupItemSlider2)
 
@@ -448,6 +455,7 @@ class SetupItemSlider2 final : public SetupItem
         SetupItemNames *mValues;
         int mMin;
         int mMax;
+        int mStep;
         int mInvertValue;
         bool mInvert;
         bool mOnTheFly;

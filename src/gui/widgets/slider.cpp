@@ -91,12 +91,13 @@ static std::string const data[2] =
 };
 
 Slider::Slider(Widget2 *const widget,
-               const double scaleEnd) :
+               const double scaleEnd,
+               const double stepLength) :
     Widget(widget),
     MouseListener(),
     KeyListener(),
     mValue(0),
-    mStepLength(scaleEnd / 10),
+    mStepLength(stepLength),
     mScaleStart(0),
     mScaleEnd(scaleEnd),
     mOrientation(HORIZONTAL),
@@ -110,12 +111,13 @@ Slider::Slider(Widget2 *const widget,
 
 Slider::Slider(Widget2 *const widget,
                const double scaleStart,
-               const double scaleEnd) :
+               const double scaleEnd,
+               const double stepLength) :
     Widget(widget),
     MouseListener(),
     KeyListener(),
     mValue(scaleStart),
-    mStepLength((scaleEnd - scaleStart) / 10),
+    mStepLength(stepLength),
     mScaleStart(scaleStart),
     mScaleEnd(scaleEnd),
     mOrientation(HORIZONTAL),

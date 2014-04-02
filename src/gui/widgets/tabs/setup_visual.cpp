@@ -139,7 +139,7 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Gui opacity"), "", "guialpha",
-        this, "guialphaEvent", 0.1, 1.0, 150, true);
+        this, "guialphaEvent", 0.1, 1.0, 0.1, 150, true, true);
 
     mSpeachList->fillFromArray(&speachList[0], speachListSize);
     // TRANSLATORS: settings option
@@ -164,8 +164,8 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     // TRANSLATORS: particle details
     mParticleList->push_back(_("max"));
     (new SetupItemSlider2(_("Particle detail"), "", "particleEmitterSkip",
-        this, "particleEmitterSkipEvent", 0, 3,
-        mParticleList, true))->setInvertValue(3);
+        this, "particleEmitterSkipEvent", 0, 3, 1,
+        mParticleList, true, true, false))->setInvertValue(3);
 
     mParticleTypeList->fillFromArray(&particleTypeList[0],
         particleTypeListSize);
@@ -183,7 +183,7 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Gamma"), "", "gamma",
-        this, "gammeEvent", 1, 20, 350, true);
+        this, "gammeEvent", 1, 20, 1, 350, true, true);
 
 
     // TRANSLATORS: settings group

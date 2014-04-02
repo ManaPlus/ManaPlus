@@ -98,15 +98,17 @@ class Slider final : public Widget,
         /**
          * Constructor with scale start equal to 0.
          */
-        explicit Slider(Widget2 *const widget,
-                        const double scaleEnd = 1.0);
+        Slider(Widget2 *const widget,
+               const double scaleEnd,
+               const double stepLength);
 
         /**
          * Constructor.
          */
         Slider(Widget2 *const widget,
                const double scaleStart,
-               const double scaleEnd);
+               const double scaleEnd,
+               const double stepLength);
 
         A_DELETE_COPY(Slider)
 

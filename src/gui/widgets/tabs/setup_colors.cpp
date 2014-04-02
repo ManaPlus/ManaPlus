@@ -61,23 +61,23 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mSelected(-1),
     // TRANSLATORS: colors tab. label.
     mGradTypeLabel(new Label(this, _("Type:"))),
-    mGradTypeSlider(new Slider(this, 0, 3)),
+    mGradTypeSlider(new Slider(this, 0.0, 3.0, 1.0)),
     mGradTypeText(new Label(this)),
     // TRANSLATORS: colors tab. label.
     mGradDelayLabel(new Label(this, _("Delay:"))),
-    mGradDelaySlider(new Slider(this, 20, 100)),
+    mGradDelaySlider(new Slider(this, 20.0, 100.0, 1.0)),
     mGradDelayText(new TextField(this)),
     // TRANSLATORS: colors tab. label.
     mRedLabel(new Label(this, _("Red:"))),
-    mRedSlider(new Slider(this, 0, 255)),
+    mRedSlider(new Slider(this, 0.0, 255.0, 1.0)),
     mRedText(new TextField(this)),
     // TRANSLATORS: colors tab. label.
     mGreenLabel(new Label(this, _("Green:"))),
-    mGreenSlider(new Slider(this, 0, 255)),
+    mGreenSlider(new Slider(this, 0.0, 255.0, 1.0)),
     mGreenText(new TextField(this)),
     // TRANSLATORS: colors tab. label.
     mBlueLabel(new Label(this, _("Blue:"))),
-    mBlueSlider(new Slider(this, 0, 255)),
+    mBlueSlider(new Slider(this, 0.0, 255.0, 1.0)),
     mBlueText(new TextField(this))
 {
     mColorBox->postInit();

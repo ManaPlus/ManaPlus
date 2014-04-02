@@ -514,9 +514,8 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
         mAttributeLabel[i]->adjustSize();
         add(mAttributeLabel[i]);
 
-        mAttributeSlider[i] = new Slider(this, min, max);
-        mAttributeSlider[i]->setDimension(Rect(140, y + i * 24,
-                                                         150, 12));
+        mAttributeSlider[i] = new Slider(this, min, max, 1.0);
+        mAttributeSlider[i]->setDimension(Rect(140, y + i * 24, 150, 12));
         mAttributeSlider[i]->setActionEventId("statslider");
         mAttributeSlider[i]->addActionListener(this);
         add(mAttributeSlider[i]);

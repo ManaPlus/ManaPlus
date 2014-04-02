@@ -224,7 +224,7 @@ void BuyDialog::init()
         getOptionBool("showbackground"), "buy_background.xml");
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
-    mSlider = new Slider(this, 1.0);
+    mSlider = new Slider(this, 1.0, 1.0);
     mQuantityLabel = new Label(this, strprintf(
         "%d / %d", mAmountItems, mMaxItems));
     mQuantityLabel->setAlignment(Graphics::CENTER);
