@@ -107,7 +107,8 @@ Widget::Widget(const Widget2 *const widget) :
     mTabIn(true),
     mTabOut(true),
     mEnabled(true),
-    mAllowLogic(true)
+    mAllowLogic(true),
+    mMouseConsume(true)
 {
     mWidgets.push_back(this);
     mWidgetsSet.insert(this);

@@ -1009,8 +1009,14 @@ class Widget : public Widget2
           */
         virtual void showPart(const Rect &rectangle);
 
-        bool isAllowLogic() const
+        bool isAllowLogic() const A_WARN_UNUSED
         { return mAllowLogic; }
+
+        void setMouseConsume(const bool b)
+        { mMouseConsume = b; }
+
+        bool isMouseConsume() const A_WARN_UNUSED
+        { return mMouseConsume; }
 
     protected:
         /**
@@ -1221,6 +1227,8 @@ class Widget : public Widget2
         bool mEnabled;
 
         bool mAllowLogic;
+
+        bool mMouseConsume;
 
         /**
           * Holds the global font used by the widget.

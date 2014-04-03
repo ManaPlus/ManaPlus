@@ -275,7 +275,7 @@ void ListBox::mouseWheelMovedDown(MouseEvent &event A_UNUSED)
 void ListBox::mousePressed(MouseEvent &event)
 {
     mPressedIndex = getSelectionByMouse(event.getY());
-    if (mPressedIndex != -1)
+    if (mMouseConsume && mPressedIndex != -1)
         event.consume();
 }
 

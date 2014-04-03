@@ -43,6 +43,8 @@ PopupList::PopupList(DropDown *const widget,
     mModal(modal)
 {
     mListBox->postInit();
+    mListBox->setMouseConsume(false);
+    mScrollArea->setMouseConsume(false);
     mAllowLogic = false;
     setFocusable(true);
 
