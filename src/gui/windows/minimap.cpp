@@ -89,7 +89,12 @@ Minimap::~Minimap()
     config.setValue(getWindowName() + "Show", mShow);
     config.removeListeners(this);
     CHECKLISTENERS
+    deleteMapImage();
+    delete2(mTextPopup);
+}
 
+void Minimap::deleteMapImage()
+{
     if (mMapImage)
     {
         if (mCustomMapImage)
@@ -98,7 +103,6 @@ Minimap::~Minimap()
             mMapImage->decRef();
         mMapImage = nullptr;
     }
-    delete2(mTextPopup);
 }
 
 void Minimap::setMap(const Map *const map)
@@ -115,16 +119,7 @@ void Minimap::setMap(const Map *const map)
     }
 
     setCaption(caption);
-
-    // Adapt the image
-    if (mMapImage)
-    {
-        if (mCustomMapImage)
-            delete mMapImage;
-        else
-            mMapImage->decRef();
-        mMapImage = nullptr;
-    }
+    deleteMapImage();
 
     if (map)
     {

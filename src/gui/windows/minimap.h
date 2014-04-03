@@ -73,6 +73,8 @@ class Minimap final : public Window, public ConfigListener
         void optionChanged(const std::string &name);
 
     private:
+        void deleteMapImage();
+
         float mWidthProportion;
         float mHeightProportion;
         Image *mMapImage;
