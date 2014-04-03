@@ -1126,6 +1126,19 @@ void Theme::loadColors(std::string file)
     }
 }
 
+#define loadGrid() \
+    { \
+        const ImageRect &rect = skin->getBorder(); \
+        for (int f = start; f <= end; f ++) \
+        { \
+            if (rect.grid[f]) \
+            { \
+                image.grid[f] = rect.grid[f]; \
+                image.grid[f]->incRef(); \
+            } \
+        } \
+    }
+
 void Theme::loadRect(ImageRect &image,
                      const std::string &name,
                      const std::string &name2,
@@ -1135,15 +1148,7 @@ void Theme::loadRect(ImageRect &image,
     Skin *const skin = load(name, name2, false);
     if (skin)
     {
-        const ImageRect &rect = skin->getBorder();
-        for (int f = start; f <= end; f ++)
-        {
-            if (rect.grid[f])
-            {
-                image.grid[f] = rect.grid[f];
-                image.grid[f]->incRef();
-            }
-        }
+        loadGrid();
         unload(skin);
     }
 }
@@ -1156,17 +1161,7 @@ Skin *Theme::loadSkinRect(ImageRect &image,
 {
     Skin *const skin = load(name, name2);
     if (skin)
-    {
-        const ImageRect &rect = skin->getBorder();
-        for (int f = start; f <= end; f ++)
-        {
-            if (rect.grid[f])
-            {
-                image.grid[f] = rect.grid[f];
-                image.grid[f]->incRef();
-            }
-        }
-    }
+        loadGrid();
     return skin;
 }
 
