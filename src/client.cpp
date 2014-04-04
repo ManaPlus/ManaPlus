@@ -1282,7 +1282,7 @@ int Client::gameExec()
                     theme->setMinimumOpacity(0.8F);
 
                     loginData.updateType
-                        = serverConfig.getValue("updateType", 1);
+                        = serverConfig.getValue("updateType", 0);
 
                     mSearchHash = Net::Download::adlerBuffer(
                         const_cast<char*>(mCurrentServer.hostname.c_str()),
