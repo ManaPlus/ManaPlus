@@ -1301,6 +1301,7 @@ void Gui::distributeKeyEvent(KeyEvent &event) const
 
 void Gui::distributeKeyEventToGlobalKeyListeners(KeyEvent& event)
 {
+    BLOCK_START("Gui::distributeKeyEventToGlobalKeyListeners")
     const unsigned int eventType = event.getType();
     FOR_EACH (KeyListenerListIterator, it, mKeyListeners)
     {
@@ -1319,6 +1320,7 @@ void Gui::distributeKeyEventToGlobalKeyListeners(KeyEvent& event)
         if (event.isConsumed())
             break;
     }
+    BLOCK_END("Gui::distributeKeyEventToGlobalKeyListeners")
 }
 
 void Gui::handleModalMouseInputFocus()
