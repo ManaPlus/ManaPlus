@@ -13,7 +13,7 @@ export CXXFLAGS="-ggdb3 -O5 -pipe -ffast-math \
 -funswitch-loops -pedantic -Wall \
 -D_FORTIFY_SOURCE=2 -Wc++11-compat -std=c++0x \
 -funsafe-loop-optimizations -flto -fwhole-program \
--march=native"
+-march=native -fsched-pressure"
 
 autoreconf -i
 ./configure --prefix=$dir/run \
