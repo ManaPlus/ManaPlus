@@ -1021,6 +1021,10 @@ class Widget : public Widget2
         void setRedraw(const bool b)
         { mRedraw = b; }
 
+        static void distributeWindowResizeEvent();
+
+        void windowResized();
+
     protected:
         /**
           * Distributes an action event to all action listeners

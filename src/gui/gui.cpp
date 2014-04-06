@@ -535,6 +535,8 @@ void Gui::videoResized() const
         top->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
         top->adjustAfterResize(oldWidth, oldHeight);
     }
+
+    Widget::distributeWindowResizeEvent();
 }
 
 void Gui::setUseCustomCursor(const bool customCursor)

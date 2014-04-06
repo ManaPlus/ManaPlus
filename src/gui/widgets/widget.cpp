@@ -351,6 +351,12 @@ void Widget::setFont(Font *const font)
     fontChanged();
 }
 
+void Widget::distributeWindowResizeEvent()
+{
+    FOR_EACH (std::list<Widget*>::const_iterator, iter, mWidgets)
+        (*iter)->windowResized();
+}
+
 bool Widget::widgetExists(const Widget* widget)
 {
     return mWidgetsSet.find(const_cast<Widget*>(widget))
@@ -505,4 +511,9 @@ void Widget::showPart(const Rect &rectangle)
 {
     if (mParent)
         mParent->showWidgetPart(this, rectangle);
+}
+
+void Widget::windowResized()
+{
+    mRedraw = true;
 }
