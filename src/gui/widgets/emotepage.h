@@ -58,7 +58,6 @@ class EmotePage final : public Widget,
         ImageSet *mEmotes;
         ImageCollection *mVertexes;
         int mSelectedIndex;
-        bool mRedraw;
 };
 
 #endif  // GUI_WIDGETS_EMOTEPAGE_H

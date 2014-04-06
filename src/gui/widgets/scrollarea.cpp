@@ -131,8 +131,7 @@ ScrollArea::ScrollArea(Widget2 *const widget2,
     mIsVerticalMarkerDragged(false),
     mIsHorizontalMarkerDragged(false),
     mOpaque(true),
-    mHasMouse(false),
-    mRedraw(true)
+    mHasMouse(false)
 {
     setContent(widget);
     addMouseListener(this);

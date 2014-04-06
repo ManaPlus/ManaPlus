@@ -93,9 +93,6 @@ class ShortcutContainer : public Widget,
 
         void drawBackground(Graphics *g);
 
-        void setRedraw(bool b)
-        { mRedraw = b; }
-
     protected:
         /**
          * Constructor. Initializes the shortcut container.
@@ -121,7 +118,6 @@ class ShortcutContainer : public Widget,
         int mGridWidth;
         int mGridHeight;
         ImageCollection *mVertexes;
-        bool mRedraw;
 };
 
 #endif  // GUI_WIDGETS_SHORTCUTCONTAINER_H

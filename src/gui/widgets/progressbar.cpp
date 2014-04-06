@@ -56,8 +56,7 @@ ProgressBar::ProgressBar(const Widget2 *const widget,
     mFillPadding(3),
     mFillImage(false),
     mSmoothProgress(true),
-    mSmoothColorChange(true),
-    mRedraw(true)
+    mSmoothColorChange(true)
 {
     mBackgroundColor = Theme::getProgressColor(backColor >= 0
         ? backColor : 0, mProgress);

@@ -633,7 +633,6 @@ class Window : public BasicContainer2,
         int mDefaultY;                /**< Default window Y position */
         int mDefaultWidth;            /**< Default window width */
         int mDefaultHeight;           /**< Default window height */
-        bool mRedraw;
         bool mLastRedraw;
 
     private:

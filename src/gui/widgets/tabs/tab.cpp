@@ -113,7 +113,6 @@ Tab::Tab(const Widget2 *const widget) :
     mVertexes(new ImageCollection),
     mImage(nullptr),
     mMode(0),
-    mRedraw(true),
     mHasMouse(false)
 {
     init();

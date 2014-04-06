@@ -159,7 +159,6 @@ class ProgressBar final : public Widget,
         bool mFillImage;
         bool mSmoothProgress;
         bool mSmoothColorChange;
-        bool mRedraw;
 };
 
 #endif  // GUI_WIDGETS_PROGRESSBAR_H

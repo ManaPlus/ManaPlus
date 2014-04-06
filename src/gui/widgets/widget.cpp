@@ -108,7 +108,8 @@ Widget::Widget(const Widget2 *const widget) :
     mTabOut(true),
     mEnabled(true),
     mAllowLogic(true),
-    mMouseConsume(true)
+    mMouseConsume(true),
+    mRedraw(true)
 {
     mWidgets.push_back(this);
     mWidgetsSet.insert(this);

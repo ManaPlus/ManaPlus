@@ -586,7 +586,6 @@ class ScrollArea final : public BasicContainer,
         bool mOpaque;
 
         bool mHasMouse;
-        bool mRedraw;
 };
 
 #endif  // GUI_WIDGETS_SCROLLAREA_H

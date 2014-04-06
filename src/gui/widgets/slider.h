@@ -351,7 +351,6 @@ class Slider final : public Widget,
         int mMarkerLength;
 
         bool mHasMouse;
-        bool mRedraw;
 };
 
 #endif  // GUI_WIDGETS_SLIDER_H

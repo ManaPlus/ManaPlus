@@ -228,7 +228,6 @@ class Tab : public BasicContainer,
         ImageCollection *mVertexes;
         Image *mImage;
         int mMode;
-        bool mRedraw;
 
     protected:
         bool mHasMouse;

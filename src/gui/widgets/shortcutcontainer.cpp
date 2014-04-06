@@ -42,8 +42,7 @@ ShortcutContainer::ShortcutContainer(Widget2 *const widget) :
     mBoxHeight(1),
     mGridWidth(1),
     mGridHeight(1),
-    mVertexes(new ImageCollection),
-    mRedraw(true)
+    mVertexes(new ImageCollection)
 {
     mAllowLogic = false;
 }

@@ -187,7 +187,6 @@ class Popup : public Container,
         int mMaxHeight;               /**< Maximum popup height */
 
         ImageCollection *mVertexes;
-        bool mRedraw;
 };
 
 #endif  // GUI_WIDGETS_POPUP_H

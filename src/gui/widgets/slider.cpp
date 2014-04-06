@@ -103,8 +103,7 @@ Slider::Slider(Widget2 *const widget,
     mOrientation(HORIZONTAL),
     mVertexes(new ImageCollection),
     mMarkerLength(10),
-    mHasMouse(false),
-    mRedraw(true)
+    mHasMouse(false)
 {
     init();
 }
@@ -123,8 +122,7 @@ Slider::Slider(Widget2 *const widget,
     mOrientation(HORIZONTAL),
     mVertexes(new ImageCollection),
     mMarkerLength(10),
-    mHasMouse(false),
-    mRedraw(true)
+    mHasMouse(false)
 {
     init();
 }

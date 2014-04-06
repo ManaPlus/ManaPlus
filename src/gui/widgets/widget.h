@@ -1018,6 +1018,9 @@ class Widget : public Widget2
         bool isMouseConsume() const A_WARN_UNUSED
         { return mMouseConsume; }
 
+        void setRedraw(const bool b)
+        { mRedraw = b; }
+
     protected:
         /**
           * Distributes an action event to all action listeners
@@ -1229,6 +1232,8 @@ class Widget : public Widget2
         bool mAllowLogic;
 
         bool mMouseConsume;
+
+        bool mRedraw;
 
         /**
           * Holds the global font used by the widget.

@@ -335,7 +335,6 @@ class Button final : public Widget,
         int mYOffset;
         int mImageWidth;
         int mImageHeight;
-        bool mRedraw;
         bool mStick;
         bool mPressed;
 };

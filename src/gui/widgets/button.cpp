@@ -127,7 +127,6 @@ Button::Button(const Widget2 *const widget) :
     mYOffset(0),
     mImageWidth(0),
     mImageHeight(0),
-    mRedraw(true),
     mStick(false),
     mPressed(false)
 {
@@ -169,7 +168,6 @@ Button::Button(const Widget2 *const widget,
     mYOffset(0),
     mImageWidth(0),
     mImageHeight(0),
-    mRedraw(true),
     mStick(false),
     mPressed(false)
 {
@@ -217,7 +215,6 @@ Button::Button(const Widget2 *const widget,
     mYOffset(0),
     mImageWidth(imageWidth),
     mImageHeight(imageHeight),
-    mRedraw(true),
     mStick(false),
     mPressed(false)
 {
@@ -265,7 +262,6 @@ Button::Button(const Widget2 *const widget,
     mYOffset(0),
     mImageWidth(imageWidth),
     mImageHeight(imageHeight),
-    mRedraw(true),
     mStick(false),
     mPressed(false)
 {
@@ -313,7 +309,6 @@ Button::Button(const Widget2 *const widget,
     mYOffset(0),
     mImageWidth(0),
     mImageHeight(0),
-    mRedraw(true),
     mStick(false),
     mPressed(false)
 {

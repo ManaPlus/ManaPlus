@@ -43,8 +43,7 @@ Popup::Popup(const std::string &name,
     mMinHeight(40),
     mMaxWidth(mainGraphics->mWidth),
     mMaxHeight(mainGraphics->mHeight),
-    mVertexes(new ImageCollection),
-    mRedraw(true)
+    mVertexes(new ImageCollection)
 {
     logger->log("Popup::Popup(\"%s\")", name.c_str());
 
