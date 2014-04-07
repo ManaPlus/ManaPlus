@@ -74,6 +74,15 @@
 #define GL_DEBUG_SEVERITY_LOW             0x9148
 #endif
 
+#ifndef GL_EXT_debug_label
+#define GL_PROGRAM_PIPELINE_OBJECT_EXT    0x8A4F
+#define GL_PROGRAM_OBJECT_EXT             0x8B40
+#define GL_SHADER_OBJECT_EXT              0x8B48
+#define GL_BUFFER_OBJECT_EXT              0x9151
+#define GL_QUERY_OBJECT_EXT               0x9153
+#define GL_VERTEX_ARRAY_OBJECT_EXT        0x9154
+#endif
+
 #define defNameE(name) extern name##_t m##name
 
 typedef void (APIENTRY *glGenRenderbuffers_t)(GLsizei, GLuint *);
@@ -100,6 +109,10 @@ typedef void (APIENTRY *glSamplerParameteri_t)
 typedef void (APIENTRY *glDebugMessageControl_t) (GLenum source, GLenum type,
     GLenum severity, GLsizei count, const GLuint* ids, GLboolean enabled);
 typedef void (APIENTRY *glFrameTerminator_t) (void);
+typedef void (APIENTRY *glLabelObject_t) (GLenum type, GLuint object,
+    GLsizei length, const GLchar *label);
+typedef void (APIENTRY *glGetObjectLabel_t) (GLenum type, GLuint object,
+    GLsizei bufSize, GLsizei *length, GLchar *label);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,
@@ -125,6 +138,8 @@ defNameE(glSamplerParameteri);
 defNameE(glDebugMessageControl);
 defNameE(glDebugMessageCallback);
 defNameE(glFrameTerminator);
+defNameE(glLabelObject);
+defNameE(glGetObjectLabel);
 
 #ifdef WIN32
 typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);

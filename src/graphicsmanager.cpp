@@ -821,6 +821,18 @@ void GraphicsManager::initOpenGLFunctions()
         logger->log1("found GL_GREMEDY_frame_terminator");
         assignFunction(glFrameTerminator, "glFrameTerminatorGREMEDY");
     }
+    if (supportExtension("GL_EXT_debug_label"))
+    {
+        logger->log1("found GL_EXT_debug_label");
+        assignFunction(glLabelObject, "glLabelObjectEXT");
+        if (!mglLabelObject)
+            assignFunction(glLabelObject, "glLabelObject");
+        if (!mglLabelObject)
+            assignFunction(glLabelObject, "glObjectLabel");
+        assignFunction(glGetObjectLabel, "glGetObjectLabelEXT");
+        if (!mglGetObjectLabel)
+            assignFunction(glGetObjectLabel, "glGetObjectLabel");
+    }
 
 #ifdef WIN32
     assignFunction(wglGetExtensionsString, "wglGetExtensionsStringARB");
