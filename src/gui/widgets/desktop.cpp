@@ -28,6 +28,8 @@
 
 #include "input/inputmanager.h"
 
+#include "render/opengldebug.h"
+
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
@@ -111,6 +113,7 @@ void Desktop::widgetResized(const Event &event A_UNUSED)
 void Desktop::draw(Graphics *graphics)
 {
     BLOCK_START("Desktop::draw")
+    GLDEBUG_START("Desktop::draw")
 
     const Rect &rect = mDimension;
     const int width = rect.width;
@@ -144,6 +147,7 @@ void Desktop::draw(Graphics *graphics)
     }
 
     Container::draw(graphics);
+    GLDEBUG_END()
     BLOCK_END("Desktop::draw")
 }
 

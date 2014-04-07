@@ -806,6 +806,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      render/graphics_drawImageRect.hpp \
 	      render/nullopenglgraphics.cpp \
 	      render/nullopenglgraphics.h \
+	      render/opengldebug.h \
 	      render/openglgraphicsdef.hpp \
 	      render/openglgraphicsdefadvanced.hpp \
 	      render/renderers.cpp \

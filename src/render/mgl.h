@@ -113,6 +113,11 @@ typedef void (APIENTRY *glLabelObject_t) (GLenum type, GLuint object,
     GLsizei length, const GLchar *label);
 typedef void (APIENTRY *glGetObjectLabel_t) (GLenum type, GLuint object,
     GLsizei bufSize, GLsizei *length, GLchar *label);
+typedef void (APIENTRY *glInsertEventMarker_t)
+    (GLsizei length, const char *marker);
+typedef void (APIENTRY *glPushGroupMarker_t)
+    (GLsizei length, const char *marker);
+typedef void (APIENTRY *glPopGroupMarker_t) (void);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,
@@ -140,6 +145,9 @@ defNameE(glDebugMessageCallback);
 defNameE(glFrameTerminator);
 defNameE(glLabelObject);
 defNameE(glGetObjectLabel);
+defNameE(glInsertEventMarker);
+defNameE(glPushGroupMarker);
+defNameE(glPopGroupMarker);
 
 #ifdef WIN32
 typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);

@@ -45,6 +45,9 @@ defName(glDebugMessageCallback);
 defName(glFrameTerminator);
 defName(glLabelObject);
 defName(glGetObjectLabel);
+defName(glInsertEventMarker);
+defName(glPushGroupMarker);
+defName(glPopGroupMarker);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);

@@ -833,6 +833,19 @@ void GraphicsManager::initOpenGLFunctions()
         if (!mglGetObjectLabel)
             assignFunction(glGetObjectLabel, "glGetObjectLabel");
     }
+    if (supportExtension("GL_EXT_debug_marker"))
+    {
+        logger->log1("found GL_EXT_debug_marker");
+        assignFunction(glInsertEventMarker, "glInsertEventMarkerEXT");
+        if (!mglInsertEventMarker)
+            assignFunction(glInsertEventMarker, "glInsertEventMarker");
+        assignFunction(glPushGroupMarker, "glPushGroupMarkerEXT");
+        if (!mglPushGroupMarker)
+            assignFunction(glPushGroupMarker, "glPushGroupMarker");
+        assignFunction(glPopGroupMarker, "glPopGroupMarkerEXT");
+        if (!mglPopGroupMarker)
+            assignFunction(glPopGroupMarker, "glPopGroupMarker");
+    }
 
 #ifdef WIN32
     assignFunction(wglGetExtensionsString, "wglGetExtensionsStringARB");

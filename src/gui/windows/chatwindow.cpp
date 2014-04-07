@@ -62,6 +62,8 @@
 #include "gui/widgets/tabs/tradetab.h"
 #include "gui/widgets/tabs/whispertab.h"
 
+#include "render/opengldebug.h"
+
 #include "net/chathandler.h"
 #include "net/playerhandler.h"
 #include "net/net.h"
@@ -1867,7 +1869,11 @@ void ChatWindow::draw(Graphics* graphics)
 {
     BLOCK_START("ChatWindow::draw")
     if (!mAutoHide || mHaveMouse)
+    {
+        GLDEBUG_START("ChatWindow::draw");
         Window::draw(graphics);
+        GLDEBUG_END();
+    }
     BLOCK_END("ChatWindow::draw")
 }
 
