@@ -30,6 +30,8 @@
 #include "graphicsvertexes.h"
 #include "logger.h"
 
+#include "render/mgl.h"
+
 #include "resources/image.h"
 #include "resources/openglimagehelper.h"
 
@@ -1094,6 +1096,10 @@ void NormalOpenGLGraphics::updateScreen()
     SDL_GL_SwapWindow(mWindow);
 #else
     SDL_GL_SwapBuffers();
+#endif
+#ifdef DEBUG_OPENGL
+    if (mglFrameTerminator)
+        mglFrameTerminator();
 #endif
 // may be need clear?
 //  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);

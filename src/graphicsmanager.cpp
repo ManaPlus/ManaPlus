@@ -816,6 +816,12 @@ void GraphicsManager::initOpenGLFunctions()
         mSupportDebug = 0;
     }
 
+    if (supportExtension("GL_GREMEDY_frame_terminator"))
+    {
+        logger->log1("found GL_GREMEDY_frame_terminator");
+        assignFunction(glFrameTerminator, "glFrameTerminatorGREMEDY");
+    }
+
 #ifdef WIN32
     assignFunction(wglGetExtensionsString, "wglGetExtensionsStringARB");
 #endif

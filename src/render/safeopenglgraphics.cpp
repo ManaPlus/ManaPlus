@@ -28,6 +28,8 @@
 #include "configuration.h"
 #include "graphicsmanager.h"
 
+#include "render/mgl.h"
+
 #include "resources/image.h"
 #include "resources/openglimagehelper.h"
 
@@ -420,6 +422,10 @@ void SafeOpenGLGraphics::updateScreen()
     SDL_GL_SwapWindow(mWindow);
 #else
     SDL_GL_SwapBuffers();
+#endif
+#ifdef DEBUG_OPENGL
+    if (mglFrameTerminator)
+        mglFrameTerminator();
 #endif
     BLOCK_END("Graphics::updateScreen")
 }

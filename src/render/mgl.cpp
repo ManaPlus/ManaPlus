@@ -42,6 +42,7 @@ defName(glBindSampler);
 defName(glSamplerParameteri);
 defName(glDebugMessageControl);
 defName(glDebugMessageCallback);
+defName(glFrameTerminator);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);

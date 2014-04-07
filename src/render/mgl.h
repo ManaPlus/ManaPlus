@@ -99,6 +99,7 @@ typedef void (APIENTRY *glSamplerParameteri_t)
     (GLuint sampler, GLenum pname, GLint param);
 typedef void (APIENTRY *glDebugMessageControl_t) (GLenum source, GLenum type,
     GLenum severity, GLsizei count, const GLuint* ids, GLboolean enabled);
+typedef void (APIENTRY *glFrameTerminator_t) (void);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,
@@ -123,6 +124,7 @@ defNameE(glBindSampler);
 defNameE(glSamplerParameteri);
 defNameE(glDebugMessageControl);
 defNameE(glDebugMessageCallback);
+defNameE(glFrameTerminator);
 
 #ifdef WIN32
 typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);
