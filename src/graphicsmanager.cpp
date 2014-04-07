@@ -833,7 +833,12 @@ void GraphicsManager::initOpenGLFunctions()
         if (!mglGetObjectLabel)
             assignFunction(glGetObjectLabel, "glGetObjectLabel");
     }
-    if (supportExtension("GL_EXT_debug_marker"))
+    if (supportExtension("GL_GREMEDY_string_marker"))
+    {
+        logger->log1("found GL_GREMEDY_string_marker");
+        assignFunction(glPushGroupMarker, "glStringMarkerGREMEDY");
+    }
+    else if (supportExtension("GL_EXT_debug_marker"))
     {
         logger->log1("found GL_EXT_debug_marker");
         assignFunction(glInsertEventMarker, "glInsertEventMarkerEXT");
