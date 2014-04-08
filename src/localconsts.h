@@ -113,7 +113,7 @@
 // #define USE_FUZZER 1
 
 // use OpenGL debug features
-#define DEBUG_OPENGL 1
+// #define DEBUG_OPENGL 1
 
 #ifdef DYECMD
 #undef USE_FUZZER
