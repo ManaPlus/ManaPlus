@@ -245,11 +245,12 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         0, GL_RGBA, GL_UNSIGNED_BYTE, tmpImage->pixels);
 
 #ifdef DEBUG_OPENGL
-    if (mglLabelObject)
-    {
-        const char *const text = "image text";
+//  disabled for now, because debugger cant show it
+//    if (mglLabelObject)
+//    {
+//        const char *const text = "image text";
 //        mglLabelObject(GL_TEXTURE, texture, strlen(text), text);
-    }
+//    }
 #endif
 
 /*
