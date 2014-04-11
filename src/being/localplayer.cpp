@@ -3639,7 +3639,7 @@ void LocalPlayer::checkNewName(Being *const being)
     if (!being)
         return;
 
-    const std::string nick = being->getName();
+    const std::string &nick = being->getName();
     if (being->getType() == ActorSprite::PLAYER)
     {
         const Guild *const guild = getGuild();

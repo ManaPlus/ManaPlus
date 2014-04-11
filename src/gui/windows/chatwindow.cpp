@@ -1021,7 +1021,7 @@ void ChatWindow::processEvent(const Channels channel,
 void ChatWindow::addInputText(const std::string &text, const bool space)
 {
     const int caretPos = mChatInput->getCaretPosition();
-    const std::string inputText = mChatInput->getText();
+    const std::string &inputText = mChatInput->getText();
 
     std::ostringstream ss;
     ss << inputText.substr(0, caretPos) << text;
@@ -1275,7 +1275,7 @@ void ChatWindow::autoComplete()
 {
     const int caretPos = mChatInput->getCaretPosition();
     int startName = 0;
-    const std::string inputText = mChatInput->getText();
+    const std::string &inputText = mChatInput->getText();
     std::string name = inputText.substr(0, caretPos);
 
     for (int f = caretPos - 1; f > -1; f --)
@@ -1643,7 +1643,7 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers) const
         }
         else
         {
-            const std::string nick = tab->getNick();
+            const std::string &nick = tab->getNick();
             if (actorManager)
             {
                 const Being *const being = actorManager->findBeingByName(

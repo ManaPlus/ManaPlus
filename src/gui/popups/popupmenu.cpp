@@ -814,7 +814,7 @@ void PopupMenu::showChangePos(const int x, const int y)
     const Guild *const guild = player_node->getGuild();
     if (guild)
     {
-        const PositionsMap map = guild->getPositions();
+        const PositionsMap &map = guild->getPositions();
         FOR_EACH (PositionsMap::const_iterator, itr, map)
         {
             mBrowserBox->addRow(strprintf("@@guild-pos-%u|%s@@",

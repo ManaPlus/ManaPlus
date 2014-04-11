@@ -2003,7 +2003,7 @@ void Being::setSprite(const unsigned int slot, const int id,
     else
     {
         const ItemInfo &info = ItemDB::get(id);
-        const std::string filename = info.getSprite(mGender, mSubType);
+        const std::string &filename = info.getSprite(mGender, mSubType);
         AnimatedSprite *equipmentSprite = nullptr;
 
         if (!isTempSprite && mType == PLAYER)

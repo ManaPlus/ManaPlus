@@ -98,9 +98,9 @@ void ChangePasswordDialog::action(const ActionEvent &event)
     else if (eventId == "change_password")
     {
         const std::string username = mLoginData->username.c_str();
-        const std::string oldPassword = mOldPassField->getText();
-        const std::string newFirstPass = mFirstPassField->getText();
-        const std::string newSecondPass = mSecondPassField->getText();
+        const std::string &oldPassword = mOldPassField->getText();
+        const std::string &newFirstPass = mFirstPassField->getText();
+        const std::string &newSecondPass = mSecondPassField->getText();
         logger->log("ChangePasswordDialog::Password change, Username is %s",
                      username.c_str());
 

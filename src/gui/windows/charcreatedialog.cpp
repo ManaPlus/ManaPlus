@@ -321,7 +321,7 @@ CharCreateDialog::~CharCreateDialog()
 
 void CharCreateDialog::action(const ActionEvent &event)
 {
-    const std::string id = event.getId();
+    const std::string &id = event.getId();
     if (id == "create")
     {
         if (getName().length() >= 4)

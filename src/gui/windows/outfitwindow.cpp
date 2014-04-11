@@ -227,7 +227,7 @@ void OutfitWindow::save() const
 
 void OutfitWindow::action(const ActionEvent &event)
 {
-    const std::string eventId = event.getId();
+    const std::string &eventId = event.getId();
     if (eventId == "next")
     {
         next();

@@ -50,7 +50,7 @@ class ItemsModal final : public ListModel
                     continue;
 
                 const ItemInfo &info = *i->second;
-                const std::string name = info.getName();
+                const std::string &name = info.getName();
                 if (name != "unnamed" && !info.getName().empty()
                     && info.getName() != "unnamed")
                 {

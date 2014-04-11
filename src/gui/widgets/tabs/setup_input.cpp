@@ -212,7 +212,7 @@ void Setup_Input::cancel()
 
 void Setup_Input::action(const ActionEvent &event)
 {
-    const std::string id = event.getId();
+    const std::string &id = event.getId();
 
     if (event.getSource() == mKeyList)
     {

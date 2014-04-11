@@ -119,8 +119,8 @@ void ChangeEmailDialog::action(const ActionEvent &event)
     else if (eventId == "change_email")
     {
         const std::string username = mLoginData->username.c_str();
-        const std::string newFirstEmail = mFirstEmailField->getText();
-        const std::string newSecondEmail = mSecondEmailField->getText();
+        const std::string &newFirstEmail = mFirstEmailField->getText();
+        const std::string &newSecondEmail = mSecondEmailField->getText();
         logger->log("ChangeEmailDialog::Email change, Username is %s",
                      username.c_str());
 

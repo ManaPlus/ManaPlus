@@ -44,7 +44,7 @@ void SpellShortcut::load()
     if (!spellManager)
         return;
 
-    const std::vector<TextCommand*> spells = spellManager->getAll();
+    const std::vector<TextCommand*> &spells = spellManager->getAll();
     unsigned k = 0;
 
     for (std::vector<TextCommand*>::const_iterator i = spells.begin(),

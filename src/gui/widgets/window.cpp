@@ -1217,13 +1217,6 @@ bool Window::isResizeAllowed(const MouseEvent &event) const
     return false;
 }
 
-int Window::getGuiAlpha() const
-{
-    const float alpha = std::max(client->getGuiAlpha(),
-        theme->getMinimumOpacity());
-    return static_cast<int>(alpha * 255.0F);
-}
-
 Layout &Window::getLayout()
 {
     if (!mLayout)
