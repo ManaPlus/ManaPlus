@@ -1,3 +1,11 @@
+2014-04-12 New release 1.4.4.12
+fix: possible crash.
+fix: selection in dropdowns.
+fix: redraw graphics on game window resize.
+add: improve online list update speed.
+add: slider step in char creation dialog.
+add: improved gui draw speed.
+
 2014-03-29 New release 1.4.3.29
 fix: memory leak on window resize.
 fix: crash with map layer patches.
