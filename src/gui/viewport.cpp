@@ -276,6 +276,7 @@ void Viewport::logic()
 
 void Viewport::followMouse()
 {
+    return;
     if (!gui)
         return;
     const uint8_t button = Gui::getMouseState(&mMouseX, &mMouseY);
@@ -667,7 +668,10 @@ void Viewport::walkByMouse(const MouseEvent &event)
 void Viewport::mouseDragged(MouseEvent &event)
 {
     if (event.getSource() != this || event.isConsumed())
+    {
+        mPlayerFollowMouse = false;
         return;
+    }
     if (mMouseClicked)
     {
         if (abs(event.getX() - mMousePressX) > 32
@@ -878,6 +882,9 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
     // Check if we are on the map
     if (!mMap || !player_node || !actorManager)
         return;
+
+    if (mMouseDirectionMove)
+        mPlayerFollowMouse = false;
 
     const int x = mMouseX + mPixelViewX;
     const int y = mMouseY + mPixelViewY;
