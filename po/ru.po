@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Alexsl <alexlsh@mail.ru>, 2013
+# Alexsl <alexlsh@mail.ru>, 2013-2014
 # Andrei Karas <akaras@inbox.ru>, 2011-2014
 # Александр Иванов <bio_editor@mail.ru>, 2013
 # Александр Иванов <bio_editor@mail.ru>, 2013
@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-03-29 13:57+0300\n"
-"PO-Revision-Date: 2014-03-28 09:21+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2014-04-13 03:00+0300\n"
+"PO-Revision-Date: 2014-04-04 14:48+0000\n"
+"Last-Translator: Alexsl <alexlsh@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
 "language/ru/)\n"
 "Language: ru\n"
@@ -56,12 +56,12 @@ msgid "miss"
 msgstr "промах"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1794 src/gui/windows/whoisonline.cpp:838
+#: src/being/being.cpp:1794 src/gui/windows/whoisonline.cpp:839
 msgid "A"
 msgstr "О"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1799 src/gui/windows/whoisonline.cpp:843
+#: src/being/being.cpp:1799 src/gui/windows/whoisonline.cpp:844
 msgid "I"
 msgstr "Б"
 
@@ -687,7 +687,7 @@ msgstr "%s не существует, и не может быть создано
 #: src/client.cpp:2219
 #, c-format
 msgid "Invalid update host: %s."
-msgstr "Некорректный сервер обновленмй: %s."
+msgstr "Некорректный сервер обновлений: %s."
 
 #. TRANSLATORS: update server initialisation error
 #: src/client.cpp:2260 src/client.cpp:2267
@@ -939,7 +939,7 @@ msgstr ""
 
 #: src/dyetool/dyemain.cpp:49
 msgid "dyecmd srcfile dyestring dstfile"
-msgstr "dyecmd исходныйфайл строкацвета файлназначения"
+msgstr "dyecmd исходный_файл строка_цвета файл_назначения"
 
 #: src/dyetool/dyemain.cpp:50
 msgid "or"
@@ -947,7 +947,7 @@ msgstr "или"
 
 #: src/dyetool/dyemain.cpp:51
 msgid "dyecmd srcdyestring dstfile"
-msgstr "dyecmd файлстрокацвета файлназначения"
+msgstr "dyecmd файл_строка_цвета файл_назначения"
 
 #. TRANSLATORS: chat tab header
 #: src/game.cpp:270 src/gui/widgets/tabs/chattab.cpp:463
@@ -1359,7 +1359,7 @@ msgstr "Продать"
 #: src/gui/popups/popupmenu.cpp:252 src/gui/popups/popupmenu.cpp:376
 #: src/gui/popups/popupmenu.cpp:2722
 msgid "Add comment"
-msgstr "Добавить коментарий"
+msgstr "Добавить комментарий"
 
 #. TRANSLATORS: remove monster from attack list
 #. TRANSLATORS: popup menu item
@@ -2704,7 +2704,7 @@ msgstr "Страница вниз"
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
 #: src/gui/setupactiondata.h:1876 src/gui/setupactiondata.h:2021
-#: src/gui/widgets/tabs/setup_audio.cpp:147
+#: src/gui/widgets/tabs/setup_audio.cpp:149
 #: src/gui/widgets/tabs/setup_chat.cpp:180
 #: src/gui/widgets/tabs/setup_other.cpp:335
 #: src/gui/widgets/tabs/setup_visual.cpp:190
@@ -2792,7 +2792,7 @@ msgstr "Смайлы"
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
 #: src/gui/setupactiondata.h:2019 src/gui/widgets/tabs/setup_chat.cpp:41
-#: src/gui/windowmenu.cpp:85 src/gui/windows/chatwindow.cpp:154
+#: src/gui/windowmenu.cpp:85 src/gui/windows/chatwindow.cpp:156
 msgid "Chat"
 msgstr "Чат"
 
@@ -3134,107 +3134,107 @@ msgid "Sfx volume"
 msgstr "Громкость эффектов"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:79
+#: src/gui/widgets/tabs/setup_audio.cpp:80
 msgid "Music volume"
 msgstr "Громкость музыки"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:83
+#: src/gui/widgets/tabs/setup_audio.cpp:85
 msgid "Enable music fade out"
 msgstr "Включить плавный переход музыки"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:87
+#: src/gui/widgets/tabs/setup_audio.cpp:89
 msgid "Audio frequency"
 msgstr "Частота аудио"
 
 #. TRANSLATORS: audio type
-#: src/gui/widgets/tabs/setup_audio.cpp:91
+#: src/gui/widgets/tabs/setup_audio.cpp:93
 msgid "mono"
 msgstr "моно"
 
 #. TRANSLATORS: audio type
-#: src/gui/widgets/tabs/setup_audio.cpp:93
+#: src/gui/widgets/tabs/setup_audio.cpp:95
 msgid "stereo"
 msgstr "стерео"
 
 #. TRANSLATORS: audio type
-#: src/gui/widgets/tabs/setup_audio.cpp:95
+#: src/gui/widgets/tabs/setup_audio.cpp:97
 msgid "surround"
 msgstr "окружение"
 
 #. TRANSLATORS: audio type
-#: src/gui/widgets/tabs/setup_audio.cpp:97
+#: src/gui/widgets/tabs/setup_audio.cpp:99
 msgid "surround+center+lfe"
 msgstr "окружение+центр+lfe"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:99
+#: src/gui/widgets/tabs/setup_audio.cpp:101
 msgid "Audio channels"
 msgstr "Аудио каналы"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_audio.cpp:104
+#: src/gui/widgets/tabs/setup_audio.cpp:106
 msgid "Sound effects"
 msgstr "Звуковые эффекты"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:107
+#: src/gui/widgets/tabs/setup_audio.cpp:109
 msgid "Information dialog sound"
 msgstr "Звук информационного диалога"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:111
+#: src/gui/widgets/tabs/setup_audio.cpp:113
 msgid "Request dialog sound"
 msgstr "Звук вопроса"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:115
+#: src/gui/widgets/tabs/setup_audio.cpp:117
 msgid "Whisper message sound"
-msgstr "Звук криватного сообщения"
+msgstr "Звук приватного сообщения"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:119
+#: src/gui/widgets/tabs/setup_audio.cpp:121
 msgid "Guild / Party message sound"
 msgstr "Звук сообщения в гильдии или группе"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:123
+#: src/gui/widgets/tabs/setup_audio.cpp:125
 msgid "Highlight message sound"
 msgstr "Звук подсветки"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:127
+#: src/gui/widgets/tabs/setup_audio.cpp:129
 msgid "Global message sound"
 msgstr "Звук глобального сообщения"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:131
+#: src/gui/widgets/tabs/setup_audio.cpp:133
 msgid "Error message sound"
 msgstr "Звук ошибки"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:135
+#: src/gui/widgets/tabs/setup_audio.cpp:137
 msgid "Trade request sound"
 msgstr "Звук обмена"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:139
+#: src/gui/widgets/tabs/setup_audio.cpp:141
 msgid "Show window sound"
 msgstr "Звук открытия окна"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:143
+#: src/gui/widgets/tabs/setup_audio.cpp:145
 msgid "Hide window sound"
 msgstr "Звук закрытия окна"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:151
+#: src/gui/widgets/tabs/setup_audio.cpp:153
 msgid "Enable mumble voice chat"
 msgstr "Включить голосовой чат mumble"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:156
+#: src/gui/widgets/tabs/setup_audio.cpp:158
 msgid "Download music"
 msgstr "Скачать музыку"
 
@@ -3310,7 +3310,7 @@ msgstr "Включить лог чата"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:100
 msgid "Enable debug chat Log"
-msgstr "Включить логирование чата отладки"
+msgstr "Вести лог чата отладки"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:104
@@ -3320,7 +3320,7 @@ msgstr "Показать историю чата"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:108
 msgid "Show party online messages"
-msgstr "Показывать информацию о подкючениях в чате группы"
+msgstr "Показывать информацию о подключениях в чате группы"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:112
@@ -3651,12 +3651,12 @@ msgstr "выс."
 #. TRANSLATORS: screen density type
 #: src/gui/widgets/tabs/setup_other.cpp:83
 msgid "xhigh"
-msgstr "большой2"
+msgstr "большой_2"
 
 #. TRANSLATORS: screen density type
 #: src/gui/widgets/tabs/setup_other.cpp:85
 msgid "xxhigh"
-msgstr "большой3"
+msgstr "большой_3"
 
 #. TRANSLATORS: misc tab in settings
 #: src/gui/widgets/tabs/setup_other.cpp:95
@@ -3693,7 +3693,7 @@ msgstr "Прокручивать прицел по монстрам"
 #. TRANSLATORS: mini map window name
 #: src/gui/widgets/tabs/setup_other.cpp:127 src/gui/windowmenu.cpp:102
 #: src/gui/windows/debugwindow.cpp:73 src/gui/windows/minimap.cpp:52
-#: src/gui/windows/minimap.cpp:114
+#: src/gui/windows/minimap.cpp:118
 msgid "Map"
 msgstr "Карта"
 
@@ -3891,7 +3891,7 @@ msgstr "NPC"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:276
 msgid "Cycle npc targets"
-msgstr "Прокручивать прицел по НИП"
+msgstr "Прокручивать прицел по НИП (NPC)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:280
@@ -4463,7 +4463,7 @@ msgstr "Безопасный шрифт"
 #. TRANSLATORS: theme settings label
 #: src/gui/widgets/tabs/setup_theme.cpp:243
 msgid "Npc font"
-msgstr "Шрифт НИП"
+msgstr "Шрифт НИП (NPC)"
 
 #. TRANSLATORS: theme settings label
 #: src/gui/widgets/tabs/setup_theme.cpp:247
@@ -4618,7 +4618,7 @@ msgstr "Найти лучший режим"
 #. TRANSLATORS: video settings checkbox
 #: src/gui/widgets/tabs/setup_video.cpp:211
 msgid "Show cursor"
-msgstr "Показывать курсов"
+msgstr "Показывать курсор"
 
 #. TRANSLATORS: video settings checkbox
 #: src/gui/widgets/tabs/setup_video.cpp:214
@@ -5132,7 +5132,7 @@ msgstr "Новый адрес email должен содержать не мен�
 #: src/gui/windows/changeemaildialog.cpp:147
 #, c-format
 msgid "The new email address needs to be less than %u characters long."
-msgstr "Пароль должен содержать менее %u символов."
+msgstr "Новый адрес email должен содержать не более %u символов."
 
 #. TRANSLATORS: change email error
 #: src/gui/windows/changeemaildialog.cpp:155
@@ -5178,7 +5178,7 @@ msgstr "Пароль должен содержать не менее %u симв
 #: src/gui/windows/changepassworddialog.cpp:135
 #, c-format
 msgid "The new password needs to be less than %u characters long."
-msgstr "Пароль не должен содержать не более %u символов."
+msgstr "Пароль должен содержать не более %u символов."
 
 #. TRANSLATORS: change password error
 #: src/gui/windows/changepassworddialog.cpp:143
@@ -5373,19 +5373,19 @@ msgid "Enter password:"
 msgstr "Введите пароль:"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:703
+#: src/gui/windows/chatwindow.cpp:701
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Присутствуют: %s; Всего %d игроков."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1135
+#: src/gui/windows/chatwindow.cpp:1133
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Вы прошептали %s: %s"
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1579
+#: src/gui/windows/chatwindow.cpp:1577
 #, c-format
 msgid "%s's pet"
 msgstr "животное %s'а"
@@ -5496,7 +5496,7 @@ msgstr "%d FPS (мобильный OpenGL)"
 #: src/gui/windows/debugwindow.cpp:229
 #, c-format
 msgid "%d FPS (SDL2 default)"
-msgstr "%d FPS (SDL2 поумолчанию)"
+msgstr "%d FPS (SDL2 по_умолчанию)"
 
 #. TRANSLATORS: debug window label
 #: src/gui/windows/debugwindow.cpp:254 src/gui/windows/debugwindow.cpp:324
@@ -6669,27 +6669,27 @@ msgid "Show all news (can be slow)"
 msgstr "Показать все новости (может быть медленным)"
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:758
+#: src/gui/windows/updaterwindow.cpp:766
 msgid "##1  The update process is incomplete."
 msgstr "##1  Процесс обновления не завершен."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:760
+#: src/gui/windows/updaterwindow.cpp:768
 msgid "##1  It is strongly recommended that"
 msgstr "##1  Настоятельно рекомендуется"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:762
+#: src/gui/windows/updaterwindow.cpp:770
 msgid "##1  you try again later."
 msgstr "##1  попытаться еще раз немного погодя."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:940
+#: src/gui/windows/updaterwindow.cpp:948
 msgid "Completed"
 msgstr "Завершено"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:81 src/gui/windows/whoisonline.cpp:616
+#: src/gui/windows/whoisonline.cpp:81 src/gui/windows/whoisonline.cpp:617
 msgid "Who Is Online - Updating"
 msgstr "Кто онлайн - обновление"
 
@@ -6704,12 +6704,12 @@ msgid "Who Is Online - "
 msgstr "Кто онлайн - "
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:631
+#: src/gui/windows/whoisonline.cpp:632
 msgid "Who Is Online - error"
 msgstr "Кто онлайн - ошибка"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:673
+#: src/gui/windows/whoisonline.cpp:674
 msgid "Who Is Online - Update"
 msgstr "Кто онлайн - обновление"
 
@@ -7590,7 +7590,7 @@ msgstr "%s покинул Вашу гильдию."
 #. TRANSLATORS: notification message
 #: src/notifications.h:188
 msgid "You were kicked from guild."
-msgstr "Вы были кикнуты из гильдии."
+msgstr "Вас выгнали из гильдии."
 
 #. TRANSLATORS: notification message
 #: src/notifications.h:191
@@ -7830,7 +7830,7 @@ msgstr "Программно"
 #: src/render/rendererslistsdl2.h:47 src/render/rendererslistsdl2.h:81
 #: src/render/rendererslistsdl2.h:118
 msgid "SDL2 default"
-msgstr "SDL2 поумолчанию"
+msgstr "SDL2 по_умолчанию"
 
 #. TRANSLATORS: draw backend
 #: src/render/rendererslistsdl2.h:49 src/render/rendererslistsdl2.h:87

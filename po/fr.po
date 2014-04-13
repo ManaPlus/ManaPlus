@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-03-29 13:57+0300\n"
-"PO-Revision-Date: 2014-03-28 08:14+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2014-04-13 03:00+0300\n"
+"PO-Revision-Date: 2014-04-01 07:42+0000\n"
+"Last-Translator: Alige <aligetmw@hotmail.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
 "fr/)\n"
 "Language: fr\n"
@@ -57,12 +57,12 @@ msgid "miss"
 msgstr "raté"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1794 src/gui/windows/whoisonline.cpp:838
+#: src/being/being.cpp:1794 src/gui/windows/whoisonline.cpp:839
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1799 src/gui/windows/whoisonline.cpp:843
+#: src/being/being.cpp:1799 src/gui/windows/whoisonline.cpp:844
 msgid "I"
 msgstr "I"
 
@@ -2706,7 +2706,7 @@ msgstr "Page suivante"
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
 #: src/gui/setupactiondata.h:1876 src/gui/setupactiondata.h:2021
-#: src/gui/widgets/tabs/setup_audio.cpp:147
+#: src/gui/widgets/tabs/setup_audio.cpp:149
 #: src/gui/widgets/tabs/setup_chat.cpp:180
 #: src/gui/widgets/tabs/setup_other.cpp:335
 #: src/gui/widgets/tabs/setup_visual.cpp:190
@@ -2794,7 +2794,7 @@ msgstr "Emoticônes"
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
 #: src/gui/setupactiondata.h:2019 src/gui/widgets/tabs/setup_chat.cpp:41
-#: src/gui/windowmenu.cpp:85 src/gui/windows/chatwindow.cpp:154
+#: src/gui/windowmenu.cpp:85 src/gui/windows/chatwindow.cpp:156
 msgid "Chat"
 msgstr "Conversation"
 
@@ -3136,107 +3136,107 @@ msgid "Sfx volume"
 msgstr "Volume des effets sonores"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:79
+#: src/gui/widgets/tabs/setup_audio.cpp:80
 msgid "Music volume"
 msgstr "Volume de la musique"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:83
+#: src/gui/widgets/tabs/setup_audio.cpp:85
 msgid "Enable music fade out"
 msgstr "Activer l'effacement de la musique"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:87
+#: src/gui/widgets/tabs/setup_audio.cpp:89
 msgid "Audio frequency"
 msgstr "Fréquence audio"
 
 #. TRANSLATORS: audio type
-#: src/gui/widgets/tabs/setup_audio.cpp:91
+#: src/gui/widgets/tabs/setup_audio.cpp:93
 msgid "mono"
 msgstr "mono"
 
 #. TRANSLATORS: audio type
-#: src/gui/widgets/tabs/setup_audio.cpp:93
+#: src/gui/widgets/tabs/setup_audio.cpp:95
 msgid "stereo"
 msgstr "stéréo"
 
 #. TRANSLATORS: audio type
-#: src/gui/widgets/tabs/setup_audio.cpp:95
+#: src/gui/widgets/tabs/setup_audio.cpp:97
 msgid "surround"
 msgstr "surround"
 
 #. TRANSLATORS: audio type
-#: src/gui/widgets/tabs/setup_audio.cpp:97
+#: src/gui/widgets/tabs/setup_audio.cpp:99
 msgid "surround+center+lfe"
 msgstr "surround+centre+lfe"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:99
+#: src/gui/widgets/tabs/setup_audio.cpp:101
 msgid "Audio channels"
 msgstr "Canaux audio"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_audio.cpp:104
+#: src/gui/widgets/tabs/setup_audio.cpp:106
 msgid "Sound effects"
 msgstr "Effets de Son"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:107
+#: src/gui/widgets/tabs/setup_audio.cpp:109
 msgid "Information dialog sound"
 msgstr "Son des informations"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:111
+#: src/gui/widgets/tabs/setup_audio.cpp:113
 msgid "Request dialog sound"
 msgstr "Son des requêtes"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:115
+#: src/gui/widgets/tabs/setup_audio.cpp:117
 msgid "Whisper message sound"
 msgstr "Son des messages de chuchotements"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:119
+#: src/gui/widgets/tabs/setup_audio.cpp:121
 msgid "Guild / Party message sound"
 msgstr "Son des messages de Groupe / Guilde"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:123
+#: src/gui/widgets/tabs/setup_audio.cpp:125
 msgid "Highlight message sound"
 msgstr "Son des surlignages"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:127
+#: src/gui/widgets/tabs/setup_audio.cpp:129
 msgid "Global message sound"
 msgstr "Son des messages globaux"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:131
+#: src/gui/widgets/tabs/setup_audio.cpp:133
 msgid "Error message sound"
 msgstr "Son des messages d'erreur"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:135
+#: src/gui/widgets/tabs/setup_audio.cpp:137
 msgid "Trade request sound"
 msgstr "Son des demandes d'échange"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:139
+#: src/gui/widgets/tabs/setup_audio.cpp:141
 msgid "Show window sound"
 msgstr "Afficher le son des fenêtres"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:143
+#: src/gui/widgets/tabs/setup_audio.cpp:145
 msgid "Hide window sound"
 msgstr "Cacher le son des fenêtres"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:151
+#: src/gui/widgets/tabs/setup_audio.cpp:153
 msgid "Enable mumble voice chat"
 msgstr "Activer le chat avec mumble"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:156
+#: src/gui/widgets/tabs/setup_audio.cpp:158
 msgid "Download music"
 msgstr "Télécharger la musique"
 
@@ -3695,7 +3695,7 @@ msgstr "Sélectionner les monstres par ordre de distance"
 #. TRANSLATORS: mini map window name
 #: src/gui/widgets/tabs/setup_other.cpp:127 src/gui/windowmenu.cpp:102
 #: src/gui/windows/debugwindow.cpp:73 src/gui/windows/minimap.cpp:52
-#: src/gui/windows/minimap.cpp:114
+#: src/gui/windows/minimap.cpp:118
 msgid "Map"
 msgstr "Carte"
 
@@ -3772,7 +3772,7 @@ msgstr "Auto-correction de position"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:186
 msgid "Show server side position"
-msgstr ""
+msgstr "Afficher la position du côté du serveur"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:190
@@ -5379,19 +5379,19 @@ msgid "Enter password:"
 msgstr "Entrer le mot de passe :"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:703
+#: src/gui/windows/chatwindow.cpp:701
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Présents : %s ; %d joueurs sont présents."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1135
+#: src/gui/windows/chatwindow.cpp:1133
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Message envoyé à %s : %s"
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1579
+#: src/gui/windows/chatwindow.cpp:1577
 #, c-format
 msgid "%s's pet"
 msgstr "%s du familier"
@@ -6677,27 +6677,27 @@ msgid "Show all news (can be slow)"
 msgstr "Afficher toutes les nouvelles (peut être lent)"
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:758
+#: src/gui/windows/updaterwindow.cpp:766
 msgid "##1  The update process is incomplete."
 msgstr "##1 Le processus de mise à jour n'est pas achevé"
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:760
+#: src/gui/windows/updaterwindow.cpp:768
 msgid "##1  It is strongly recommended that"
 msgstr "##1 Il est fortement recommandé de"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:762
+#: src/gui/windows/updaterwindow.cpp:770
 msgid "##1  you try again later."
 msgstr "##1 Essayes de nouveau plus tard."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:940
+#: src/gui/windows/updaterwindow.cpp:948
 msgid "Completed"
 msgstr "Terminé"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:81 src/gui/windows/whoisonline.cpp:616
+#: src/gui/windows/whoisonline.cpp:81 src/gui/windows/whoisonline.cpp:617
 msgid "Who Is Online - Updating"
 msgstr "Qui est en ligne - Mise à jour"
 
@@ -6712,12 +6712,12 @@ msgid "Who Is Online - "
 msgstr "Qui est en ligne - "
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:631
+#: src/gui/windows/whoisonline.cpp:632
 msgid "Who Is Online - error"
 msgstr "Qui est en ligne - Erreur"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:673
+#: src/gui/windows/whoisonline.cpp:674
 msgid "Who Is Online - Update"
 msgstr "Qui est en ligne - Mise à jour"
 

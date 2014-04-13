@@ -1,6 +1,7 @@
 # en#
 # Translators:
 # Alexandr Uspensky <AlexandrUSP@yandex.com>, 2012
+# Alexsl <alexlsh@mail.ru>, 2014
 # Andrei Karas <akaras@inbox.ru>, 2012-2014
 # BoBaH <BoBaH4spam@ukr.net>, 2012
 # Dan Sagunov <danilka.pro@gmail.com>, 2012-2013
@@ -10,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-03-09 22:58+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2014-04-07 12:22+0000\n"
+"Last-Translator: Alexsl <alexlsh@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgid "/uploadserverconfig - upload server config into pastebin service."
 msgstr ""
 
 msgid "/atkhuman - select and attack nearest player."
-msgstr ""
+msgstr "/atkhuman - выбрать и атаковать ближайшего игрока."
 
 msgid "\"Outfit shortcut 12\""
 msgstr "\"Наряд 12\""
@@ -39,7 +40,7 @@ msgstr "Вы можете имитировать других игроков, в
 msgid ""
 " - ##2allow trading##9: Do you wish to allow trade requests from arbitrary\n"
 "   players?"
-msgstr ""
+msgstr "- ##2allow trading##9: Хотите ли вы принимать предложения о торговле\nот любых игроков?"
 
 msgid "\"Emote shortcut 9\""
 msgstr "\"Смайл 9\""
@@ -68,7 +69,7 @@ msgid "Content devs"
 msgstr "Разработчики контента"
 
 msgid "Guild chat commands"
-msgstr ""
+msgstr "Команды чата гильдии"
 
 msgid "/away, /away MSG - set away mode."
 msgstr "/away, /away СООБЩЕНИЕ - установить режим отсутствия."
@@ -83,13 +84,13 @@ msgid "\"Emote shortcut 2\""
 msgstr "\"Смайл 2\""
 
 msgid "/announce MESSAGE - show global message."
-msgstr ""
+msgstr "/announce MESSAGE - показать глобальное сообщение."
 
 msgid "/serverunignoreall - unignore all whispers on server side."
 msgstr "/serverunignoreall - отключить игнорирование всех\nприватных сообщений на сервере."
 
 msgid "/createparty NAME - create party with selected name."
-msgstr "/createparty "
+msgstr "/createparty NAME - создать группу с выбранным названием."
 
 msgid "/heal NICK - heal nick."
 msgstr "/heal ИГРОК - лечить игрока."
@@ -112,7 +113,7 @@ msgid "/wait NAME - wait for nick or moster with name."
 msgstr ""
 
 msgid "##2Trade:##9 enables the ability to trade with others."
-msgstr ""
+msgstr "##2Trade:##9 включает возможность торговли с другими игроками."
 
 msgid "\"Use magic attack\""
 msgstr "\"Использование магической атаки\""
@@ -164,7 +165,7 @@ msgid "\"Change move type\""
 msgstr "\"Изменение типа движения\""
 
 msgid "Tabs"
-msgstr ""
+msgstr "Вкладки"
 
 msgid "\"Outfit shortcut 4\""
 msgstr "\"Наряд 4\""
@@ -180,13 +181,13 @@ msgid "Download"
 msgstr "Скачать"
 
 msgid "/dropn - drop N items from any slot."
-msgstr ""
+msgstr "/dropn - бросить N предметов из любого слота."
 
 msgid "/enableaway - enable away messages in current tab."
 msgstr ""
 
 msgid "/enemy NICK - add nick to enemyes list."
-msgstr ""
+msgstr "/enemy NICK - добавить ник в список врагов."
 
 msgid "Support"
 msgstr "Поддержка"
@@ -213,13 +214,13 @@ msgid ""
 msgstr "/msg ИГРОК текст, /whisper ИГРОК текст, /w ИГРОК текст - шептать игроку."
 
 msgid "/movetotarget - move to target position."
-msgstr ""
+msgstr "/movetotarget - идти к целевой позиции."
 
 msgid "/outfit prev - wear previous outfit."
 msgstr "/outfit prev - надеть предыдущий костюм."
 
 msgid "##2Party level2:##9 enables a char to create a party."
-msgstr ""
+msgstr "##2Party level2:##9 позволяет персонажу создавать группу."
 
 msgid "/target NICK - select nick as target. Can be monster or player nick."
 msgstr "/target ИМЯ - выделить существо как цель. Может быть монстром или игроком."
@@ -341,7 +342,7 @@ msgid ""
 msgstr " По любым вопросам об игре в первую очередь обратитесь к FAQ.\nЕсли не удается найти решение вопроса, то пожалуйста, обращайтесь\nв раздел Ошибок/Тех.поддержки (Bugs/Support) нашего форума:"
 
 msgid "/help - show this help."
-msgstr ""
+msgstr "/help - показать справку."
 
 msgid "\"Outfit shortcut 7\""
 msgstr "\"Наряд 7\""
@@ -375,13 +376,13 @@ msgstr ""
 msgid ""
 " - ##2allow whispers##9: Do you wish to allow arbitrary players to send\n"
 "   private messages to you in-game?"
-msgstr ""
+msgstr "- ##2allow whispers##9: Хотите ли вы разрешить любым игрокам отправлять\nвам личные сообщения?"
 
 msgid "\"Copy outfit\""
 msgstr "\"Копировать наряд\""
 
 msgid "/present - print visible players number to chat."
-msgstr ""
+msgstr "/present - вывести в чат количество игроков в области видимости."
 
 msgid "/dumpogl - dump all OpenGL variables into log file."
 msgstr ""
@@ -459,7 +460,7 @@ msgid "\"Target player\""
 msgstr "\"Выбор игрока\""
 
 msgid "/invite NICK - invite a player to your party."
-msgstr ""
+msgstr "/invite NICK - пригласить игрока в свою группу."
 
 msgid ""
 " - ##2disregarded##9:  You wish to disregard this player, meaning that his or\n"
@@ -582,7 +583,7 @@ msgid "/emote N - use emotion number N."
 msgstr "/emote N - использовать эмоцию N."
 
 msgid "/item 0 - disable party item sharing options."
-msgstr ""
+msgstr "/item 0 - отключить общие предметы в группе."
 
 msgid "\"Target closest monster\""
 msgstr "\"Прицел на ближайшего монстра\""
@@ -591,7 +592,7 @@ msgid "\"Outfits window\""
 msgstr "\"Окно нарядов\""
 
 msgid "Party chat commands"
-msgstr ""
+msgstr "Команды чата группы"
 
 msgid ""
 "You can walk to warps automatically.\n"
@@ -655,7 +656,7 @@ msgid "/where - print current player position to chat."
 msgstr "/where - вывести текущее положение игрока в чат."
 
 msgid "/exp - show party experience sharing options."
-msgstr ""
+msgstr "/exp - показать настройки разделения опыта в группе."
 
 msgid "/dumpmods - dump all enabled mod names into chat."
 msgstr ""
@@ -700,7 +701,7 @@ msgid "\"Attack\""
 msgstr "\"Атака\""
 
 msgid "/magicattack - attack target with magic."
-msgstr ""
+msgstr "/magicattack - атаковать цель с помощью магии."
 
 msgid "For ManaPlus Online support:"
 msgstr ""
@@ -715,7 +716,7 @@ msgid "DOWNLOADS"
 msgstr "ЗАГРУЗКИ"
 
 msgid "/item 1 - enable party item sharing options."
-msgstr ""
+msgstr "/item 1 - включить общие предметы в группе."
 
 msgid "##9Magic skills can be obtain by doing quests and missions in game."
 msgstr ""
@@ -736,7 +737,7 @@ msgid "\"Change pickup type\""
 msgstr "\"Изменение типа подбора предметов\""
 
 msgid "/item - show party item sharing options."
-msgstr ""
+msgstr "/item - показать настройки общих предметов в группе."
 
 msgid "move key"
 msgstr "\"Кнопка движения\""
@@ -745,7 +746,7 @@ msgid "\"Emote shortcut 5\""
 msgstr "\"Смайл 5\""
 
 msgid "/open URL - open url in browser."
-msgstr ""
+msgstr "/open URL - открыть url в браузере."
 
 msgid ""
 " The player list lists all of your acquaintances.  They are categorised as one\n"
@@ -815,7 +816,7 @@ msgid ""
 msgstr ""
 
 msgid "/url URL - insert url into chat."
-msgstr ""
+msgstr "/url URL - вставить url в чат."
 
 msgid "\"Help window\""
 msgstr "\"Окно помощи\""
@@ -886,7 +887,7 @@ msgstr "\"Смайл 1\""
 msgid ""
 " - ##2ignored##9:  You wish to completely ignore this player.  You will not\n"
 "   even see floating text for him or her anymore, nor emotions."
-msgstr ""
+msgstr "- ##2ignored##9: Вы желаете полностью игнорировать этого игрока. Вы \nбольше не увидите у него/неё даже всплывающие сообщения и смайлы."
 
 msgid "/me text - send text to chat as /me command in irc."
 msgstr "/me текст - отправить текст в чат как командой /me в IRC"
@@ -957,7 +958,7 @@ msgid "/createitems - open dialog for creating items."
 msgstr ""
 
 msgid "##2Party Level1:##9 enables a char to join a party."
-msgstr ""
+msgstr "##2Party Level1:##9 позволяет персонажу присоединяться к группе."
 
 msgid "\"Outfit shortcut 5\""
 msgstr "\"Наряд 5\""
@@ -991,10 +992,10 @@ msgid ""
 msgstr "Все о желтой панели вы можете прочесть здесь:\n@@http://manaplus.org/yellowbar|http://manaplus.org/yellowbar@@"
 
 msgid "/drop - drop N items from 0 slot."
-msgstr ""
+msgstr "/drop - бросить N предметов из слота 0."
 
 msgid "/kick NICK - kick someone from the party you are in."
-msgstr ""
+msgstr "/kick NICK - выгнать кого либо из своей группы."
 
 msgid "\"Outfit shortcut 11\""
 msgstr "\"Наряд 11\""
@@ -1027,7 +1028,7 @@ msgid "Art or images contributors"
 msgstr "Художники"
 
 msgid "/exp 0 - disable party experience sharing options."
-msgstr ""
+msgstr "/exp 0 - отключить разделение опыта в группе."
 
 msgid "Basic skills:"
 msgstr "Основные умения:"
@@ -1036,7 +1037,7 @@ msgid "/uploadlog - upload log into pastebin service."
 msgstr ""
 
 msgid "/leave - leave the party you are in."
-msgstr ""
+msgstr "/leave - покинуть группу."
 
 msgid "\"Status window\""
 msgstr "\"Окно статуса\""
@@ -1096,7 +1097,7 @@ msgid "\"Use #itenplz spell\""
 msgstr "\"Использование заклинания #itenplz\""
 
 msgid "/exp 1 - enable party experience sharing options."
-msgstr ""
+msgstr "/exp 1 - включить разделение опыта в группе."
 
 msgid "/undress NICK - remove all clothes from nick. Local effect only."
 msgstr "/undress NICK - снять всю одежду с NICK. Только местное действие."
