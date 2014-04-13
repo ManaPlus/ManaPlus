@@ -270,13 +270,12 @@ void Viewport::logic()
     BLOCK_START("Viewport::logic")
     // Make the player follow the mouse position
     // if the mouse is dragged elsewhere than in a window.
-    followMouse();
+    Gui::getMouseState(&mMouseX, &mMouseY);
     BLOCK_END("Viewport::logic")
 }
 
 void Viewport::followMouse()
 {
-    return;
     if (!gui)
         return;
     const uint8_t button = Gui::getMouseState(&mMouseX, &mMouseY);
