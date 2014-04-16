@@ -399,6 +399,9 @@ void SpellManager::swap(const int id1, const int id2)
 {
     TextCommand *const spell1 = mSpells[id1];
     TextCommand *const spell2 = mSpells[id2];
+    if (!spell1 || !spell2)
+        return;
+
     // swap in map
     mSpells[id1] = spell2;
     mSpells[id2] = spell1;
