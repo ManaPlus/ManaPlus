@@ -4,8 +4,8 @@ cd ..
 
 dir=`pwd`
 
-export CC=gcc-4.8
-export CXX=g++-4.8
+export CC=gcc-4.9
+export CXX=g++-4.9
 
 export LANG=C
 
@@ -35,7 +35,8 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wsuggest-attribute=format -Wtype-limits -Wuninitialized \
 -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-function \
 -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable \
--fsched-pressure"
+-fsched-pressure \
+-Wconditionally-supported -Wdate-time"
 
 autoreconf -i
 ./configure --prefix=$dir/run \
