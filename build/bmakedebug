@@ -9,7 +9,7 @@ export CXX=g++-4.9
 
 export LANG=C
 
-export CXXFLAGS="-ggdb3 -Og -pipe -ffast-math \
+export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -fsanitize=address \
 -fno-omit-frame-pointer -funswitch-loops \
 -Wvariadic-macros -Wvla -Wredundant-decls \
@@ -37,7 +37,8 @@ export CXXFLAGS="-ggdb3 -Og -pipe -ffast-math \
 -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-function \
 -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable -ftrapv \
 -fsched-pressure \
--Wconditionally-supported -Wdate-time"
+-Wconditionally-supported -Wdate-time \
+-fno-var-tracking"
 
 autoreconf -i
 ./configure --prefix=$dir/run \

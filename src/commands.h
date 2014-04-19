@@ -107,7 +107,7 @@ namespace Commands
     decHandler(serverIgnoreAll);
     decHandler(serverUnIgnoreAll);
     decHandler(setDrop);
-    decHandler(error);
+    decHandler(error) __attribute__ ((noreturn));
     decHandler(url);
     decHandler(open);
     decHandler(dump);
