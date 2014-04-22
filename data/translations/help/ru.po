@@ -7,12 +7,13 @@
 # Dan Sagunov <danilka.pro@gmail.com>, 2012-2013
 # RatreX <ratrex@mail.ru>, 2013
 # RatreX <ratrex@mail.ru>, 2013
+# Александр Иванов <bio_editor@mail.ru>, 2014
 # lokosha <blashirk@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-04-07 12:22+0000\n"
-"Last-Translator: Alexsl <alexlsh@mail.ru>\n"
+"PO-Revision-Date: 2014-04-21 06:26+0000\n"
+"Last-Translator: Александр Иванов <bio_editor@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 msgid "/uploadserverconfig - upload server config into pastebin service."
-msgstr ""
+msgstr "/uploadserverconfig - загрузить конфигурацию сервера в сервис pastevbin."
 
 msgid "/atkhuman - select and attack nearest player."
 msgstr "/atkhuman - выбрать и атаковать ближайшего игрока."
@@ -99,7 +100,7 @@ msgid "\"Select OK\""
 msgstr "\"Выбор Ok\""
 
 msgid "/dumpe - dump environment variables into chat."
-msgstr ""
+msgstr "/dumpe - выгрузить переменные окружения в журнал."
 
 msgid ""
 "If client working very slow, you can improve speed\n"
@@ -110,7 +111,7 @@ msgid "\"Enable/disable trading\""
 msgstr "\"Разрешение/Запрет торговли\""
 
 msgid "/wait NAME - wait for nick or moster with name."
-msgstr ""
+msgstr "/wait ИМЯ - подождать персонажа с указанным именем."
 
 msgid "##2Trade:##9 enables the ability to trade with others."
 msgstr "##2Trade:##9 включает возможность торговли с другими игроками."
@@ -138,7 +139,7 @@ msgid ""
 " and open source MMORPG world. The Mana World uses 2D graphics and aims to be\n"
 " as much diverse and interactive as possible. All content is licensed\n"
 " under the GPL, making sure this game can't ever run away from you."
-msgstr ""
+msgstr "##2ManaPlus##0 - это серьезная работа по созданию инновационного\nсвободного MMORPG-клиента с открытым исходным кодом.\nИгра использует 2D графику и нацелена на создание огромных\nи разнообразных интерактивных миров. Лицензия GPL позволяет\nбыть уверенным в том, что игра никогда не отвернется от Вас."
 
 msgid "ABOUT MANAPLUS"
 msgstr "О MANAPLUS"
@@ -184,7 +185,7 @@ msgid "/dropn - drop N items from any slot."
 msgstr "/dropn - бросить N предметов из любого слота."
 
 msgid "/enableaway - enable away messages in current tab."
-msgstr ""
+msgstr "/enableaway - включить уведомления об AFK в этой вкладке."
 
 msgid "/enemy NICK - add nick to enemyes list."
 msgstr "/enemy NICK - добавить ник в список врагов."
@@ -200,7 +201,7 @@ msgstr "/outfit next - надеть следующий костюм."
 
 msgid ""
 "/cleangraphics - remove all cached graphics. Usefull for content developers."
-msgstr ""
+msgstr "/cleangraphics - стереть кэш графики. Удобен для разработчиков контента."
 
 msgid "\"Outfit shortcut 3\""
 msgstr "\"Наряд 3\""
@@ -238,7 +239,7 @@ msgid "\"Toggle chat\""
 msgstr "\"Переключение на чат\""
 
 msgid "/talkpet TEXT - talk from your pet."
-msgstr ""
+msgstr "/talkpet ТЕКСТ - говорить с помощью вашего животного."
 
 msgid "\"Change attack type\""
 msgstr "\"Изменение типа атаки\""
@@ -262,10 +263,10 @@ msgid "/disregard NICK - add nick to disregarded list."
 msgstr "/disregard NICK - добавляет NICK в список нехороших ников."
 
 msgid "/enablehighlight - enable highlight in current tab."
-msgstr ""
+msgstr "/enablehighlight - включит подсветку этой вкладки."
 
 msgid "/disableaway - disable away messages in current tab."
-msgstr ""
+msgstr "/disableaway - выключить уведомления об AFK в этой вкладке."
 
 msgid "\"Smilie\""
 msgstr "\"Смайлы\""
@@ -306,7 +307,7 @@ msgid "Mana Contributors"
 msgstr "В разработке Mana принимали участие"
 
 msgid "/dumpt - dump tests info into chat."
-msgstr ""
+msgstr "/dumpt - вывести информацию о тестах в чат."
 
 msgid "Different patches"
 msgstr "Различные патчи"
@@ -351,7 +352,7 @@ msgid "/addpriorityattack NAME - add monster to priority attack list."
 msgstr "/addpriorityattack МОНСТР - добавить монстра в приоритетный список атаки."
 
 msgid "For TMW support:"
-msgstr ""
+msgstr "Для поддержки TMW."
 
 msgid "/priceload - load shop price from disc."
 msgstr "/priceload - загружает список цен с диска."
@@ -359,19 +360,19 @@ msgstr "/priceload - загружает список цен с диска."
 msgid ""
 " - ##2friend##9:  You consider this player a friend.  The player may chat,\n"
 "   message your in private, or trade with you at any point."
-msgstr ""
+msgstr " - ##2друг##9:  Вы считаете этого игрока другом.  Игрок может писать в чат,\n   посылать вам приватные сообщения, торговать с вами в любом месте."
 
 msgid "\"Item shortcut 13\""
 msgstr "\"Горячая клавиша предмета 13\""
 
 msgid "For other servers may exists other copyrights."
-msgstr ""
+msgstr "Для других сервисов существуют другие авторские права."
 
 msgid "\"Outfit shortcut 13\""
 msgstr "\"Наряд 13\""
 
 msgid "/sethome - set home position."
-msgstr ""
+msgstr "/sethome - установить координаты дома."
 
 msgid ""
 " - ##2allow whispers##9: Do you wish to allow arbitrary players to send\n"
@@ -385,10 +386,10 @@ msgid "/present - print visible players number to chat."
 msgstr "/present - вывести в чат количество игроков в области видимости."
 
 msgid "/dumpogl - dump all OpenGL variables into log file."
-msgstr ""
+msgstr "/dumpogl - выгрузить все переменные OpenGL в журнал."
 
 msgid "/emotepet N - use emotion number N from your pet."
-msgstr ""
+msgstr "/emotepet N - использовать эмоцию номер N вашего питомца."
 
 msgid ""
 "You can do basic searching in help by using command\n"
@@ -466,7 +467,7 @@ msgid ""
 " - ##2disregarded##9:  You wish to disregard this player, meaning that his or\n"
 "   her chat messages are not logged and trade requests and whispers are\n"
 "   ignored."
-msgstr ""
+msgstr " - ##2проигнорированный##9:  Вы хотите проигнорировать этого игрока, это означает что его или\n   её чат сообщения не будут отображаться, также будут проигнорированы запросы на торговлю и \nприватные сообщения."
 
 msgid "\"Debug window\""
 msgstr "\"Окно отладки\""
@@ -504,7 +505,7 @@ msgstr "\"Движение влево\""
 msgid ""
 "##9 This file lists all contributors up to the current release. Check the wiki\n"
 "##9 for the currently active development team."
-msgstr ""
+msgstr "##9 Этот файл отображает всех разработчиков вплоть до текущей версии. Перейдите на wiki\n##9 чтобы узнать текущий активный состав команды разработчиков."
 
 msgid "\"Chat window\""
 msgstr "\"Окно чата\""
@@ -528,7 +529,7 @@ msgid ""
 " - ##2save player list##9: Should your acquaintance list be saved when you\n"
 "   quit the game?  If you enable this option, your list will survive when you\n"
 "   quit and re-start."
-msgstr ""
+msgstr " - ##2сохранить список игрока##9: Следует ли сохранять список знакомств, когда вы\n   выходите из игры?  Если включить эту опцию, ваш список не сбросится \nпосле выхода или перезапуска."
 
 msgid "Other"
 msgstr "Другое"
@@ -603,7 +604,7 @@ msgstr "Вы можете двигаться к Вратам автоматич�
 msgid ""
 "##2ManaPlus##9 is extended client based on old code from ##2Mana##9 client.\n"
 " Added many features, improved perfomance, stability, security and more."
-msgstr ""
+msgstr "##2ManaPlus##9 это расширенный клиент основанный на старом коде клиента ##2Mana##9.\n Добавлено много возможностей, улучшена производительность, стабильность, безопасность и многое другое."
 
 msgid ""
 "You can disable yellow bar,\n"
@@ -638,7 +639,7 @@ msgid ""
 " source MMORPG Client. ManaPlus uses 2D graphics and aims to create a large\n"
 " and diverse interactive world. It is licensed under the GPL, making\n"
 " sure this game can't ever run away from you."
-msgstr ""
+msgstr "##2ManaPlus##9 - это серьезная работа по созданию инновационного\nсвободного MMORPG-клиента с открытым исходным кодом.\nИгра использует 2D графику и нацелена на создание огромных\nи разнообразных интерактивных миров. Лицензия GPL позволяет\nбыть уверенным в том, что игра никогда не отвернется от Вас."
 
 msgid "\"Outfit shortcut 6\""
 msgstr "\"Наряд 6\""
@@ -659,7 +660,7 @@ msgid "/exp - show party experience sharing options."
 msgstr "/exp - показать настройки разделения опыта в группе."
 
 msgid "/dumpmods - dump all enabled mod names into chat."
-msgstr ""
+msgstr "/dumpmods - вывести названия всех включенных модов в чат."
 
 msgid "INDEX"
 msgstr "СОДЕРЖАНИЕ"
@@ -704,7 +705,7 @@ msgid "/magicattack - attack target with magic."
 msgstr "/magicattack - атаковать цель с помощью магии."
 
 msgid "For ManaPlus Online support:"
-msgstr ""
+msgstr "Для службы поддержки ManaPlus Online"
 
 msgid "\"Set direction right\""
 msgstr "\"Установить направление вправо\""
@@ -719,7 +720,7 @@ msgid "/item 1 - enable party item sharing options."
 msgstr "/item 1 - включить общие предметы в группе."
 
 msgid "##9Magic skills can be obtain by doing quests and missions in game."
-msgstr ""
+msgstr "##9Магические умения могут быть приобретены путем выполнения квестов и миссий в игре."
 
 msgid "/erase NICK - add nick to erased list."
 msgstr "/erase ИГРОК - добавить игрока в список стертых."
@@ -754,10 +755,10 @@ msgid ""
 msgstr " Список игрока отображает все ваши знакомства.  Они классифицируются как один\n из следующих:"
 
 msgid "/cleanfonts - remove all cached render strings."
-msgstr ""
+msgstr "/cleanfonts - стереть все кэшированные строки."
 
 msgid "/dumpgl - dump OpenGL version into chat."
-msgstr ""
+msgstr "/dumpgl - вывести версию OpenGL в чат."
 
 msgid "MOUSE:"
 msgstr "МЫШЬ:"
@@ -780,7 +781,7 @@ msgid "/dirs - show client dirs in debug chat tab."
 msgstr "/dirs - показывает расположение директорий вотладочном окне."
 
 msgid "/movetohome - move to home position."
-msgstr ""
+msgstr "/movetohome - телепортироваться домой."
 
 msgid "\"Switch quick drop counter\""
 msgstr "\"Переключение счётчика быстрого сброса\""
@@ -795,16 +796,16 @@ msgid "\"Change imitation mode\""
 msgstr "\"Изменение режима имитации\""
 
 msgid "##9Other skills can be obtain by doing quests and missions in game."
-msgstr ""
+msgstr "##9Другие умения могут быть получены при выполнении миссий и квестов в игре."
 
 msgid "\"Reset video mode to safe value\""
 msgstr "\"Сброс режима видео на безопасное значение\""
 
 msgid "/uploadconfig - upload main config into pastebin service."
-msgstr ""
+msgstr "/uploadconfig - загрузить основную конфигурацию в сервис pastebin."
 
 msgid "/testparticle FILENAME - set test particle on player."
-msgstr ""
+msgstr "/testparticiple ИМЯФАЙЛА - поставить тестовые частицы на игрока. "
 
 msgid "\"Bot checker window\""
 msgstr "\"Окно детектора ботов\""
@@ -813,7 +814,7 @@ msgid ""
 " - ##2neutral##9:  As far as the game is concerned, this is the same as not\n"
 "   having the player listed:  the player may chat with you, but may only trade\n"
 "   or whisper if you have this option allowed for everyone."
-msgstr ""
+msgstr " - ##2нейтрайльный##9:  Касаемо игры, это то же самое, что не\n   иметь игрока в списке:  игрок может общаться с вами в чате, но торговать\n или слать приватные сообщения только тогда, когда у вас эта опция разрешена для всех."
 
 msgid "/url URL - insert url into chat."
 msgstr "/url URL - вставить url в чат."
@@ -840,13 +841,13 @@ msgid "\"Move right\""
 msgstr "\"Движение вправо\""
 
 msgid "##2Emote:##9 enables the ability to express emotions."
-msgstr ""
+msgstr "##2Emote:##9 даёт возможность выражать эмоции."
 
 msgid "\"Emote shortcut 8\""
 msgstr "\"Смайл 8\""
 
 msgid "For Evol Online support:"
-msgstr ""
+msgstr "Для службы поддержки Evol Online."
 
 msgid "/follow NICK - start follow mode."
 msgstr "/follow НИК- следовать за данным игроком."
@@ -870,7 +871,7 @@ msgid "\"Target NPC\""
 msgstr "\"Выбрать NPC\""
 
 msgid "/info - show guild info. Only for native guilds only."
-msgstr ""
+msgstr "/info - Показывает информацию о гильдии. Только для нативных гильдий."
 
 msgid "/neutral NICK - add nick to neutral relation list."
 msgstr "/neutral ИГРОК - добавить игрока в нейтральный список."
@@ -917,7 +918,7 @@ msgid "\"Set direction up\""
 msgstr "\"Установить направление вверх\""
 
 msgid "or come visit us on our IRC channel:"
-msgstr ""
+msgstr "или посетите наш IRC канал."
 
 msgid "\"Toggle camera mode\""
 msgstr "\"Переключение режима камеры\""
@@ -955,7 +956,7 @@ msgid "/who - print online players number to chat."
 msgstr "/who - вывести количество пользователей онлайн в чат."
 
 msgid "/createitems - open dialog for creating items."
-msgstr ""
+msgstr "/createitems - открыть диалог создания вещей."
 
 msgid "##2Party Level1:##9 enables a char to join a party."
 msgstr "##2Party Level1:##9 позволяет персонажу присоединяться к группе."
@@ -975,7 +976,7 @@ msgstr "В разработке клиентской части принимал
 msgid ""
 "Otherwise see the @@team|Development Team@@ section to have a list of\n"
 " developers and how to contact them."
-msgstr ""
+msgstr " В противном случае смотрите секцию @@команда|Команда Разработчиков@@, чтобы получить список\n разработчиков и информацию, как с ними связаться."
 
 msgid "\"Item shortcut 11\""
 msgstr "\"Горячая клавиша предмета 11\""
@@ -1034,7 +1035,7 @@ msgid "Basic skills:"
 msgstr "Основные умения:"
 
 msgid "/uploadlog - upload log into pastebin service."
-msgstr ""
+msgstr "/uploadlog - загрузить журнал в сервис pastebin."
 
 msgid "/leave - leave the party you are in."
 msgstr "/leave - покинуть группу."
@@ -1043,13 +1044,13 @@ msgid "\"Status window\""
 msgstr "\"Окно статуса\""
 
 msgid "/notice TEXT - set notice guild text."
-msgstr ""
+msgstr "/notice ТЕКСТ - установить текст уведомления гильдии."
 
 msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend ИГРОК, /befriend ИГРОК - добавить игрока в список друзей."
 
 msgid "ABOUT THE MANA WORLD"
-msgstr ""
+msgstr "О THE MANA WORLD"
 
 msgid "\"Emote shortcut 14\""
 msgstr "\"Смайл 14\""
@@ -1106,7 +1107,7 @@ msgid "\"Quick drop N items from 0 slot\""
 msgstr "\"Быстрый сброс N предметов из 0 слота\""
 
 msgid "/disablehighlight - disable highlight in current tab."
-msgstr ""
+msgstr "/disablehighlight - выключить подсветку этой вкладки."
 
 msgid "\"Item shortcut 15\""
 msgstr "\"Горячая клавиша предмета 15\""

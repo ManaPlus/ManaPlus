@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-04-13 03:00+0300\n"
+"POT-Creation-Date: 2014-04-22 22:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -895,25 +895,25 @@ msgstr ""
 msgid "Environment variables dumped"
 msgstr ""
 
-#: src/commands.cpp:1348
+#: src/commands.cpp:1349
 msgid "Uploaded config into:"
 msgstr ""
 
-#: src/commands.cpp:1356
+#: src/commands.cpp:1357
 msgid "Uploaded server config into:"
 msgstr ""
 
-#: src/commands.cpp:1364
+#: src/commands.cpp:1365
 msgid "Uploaded log into:"
 msgstr ""
 
 #. TRANSLATORS: dump command
-#: src/commands.cpp:1485 src/commands.cpp:1494
+#: src/commands.cpp:1486 src/commands.cpp:1495
 msgid "Resource images:"
 msgstr ""
 
 #. TRANSLATORS: dump command
-#: src/commands.cpp:1488 src/commands.cpp:1497
+#: src/commands.cpp:1489 src/commands.cpp:1498
 msgid "Resource orphaned images:"
 msgstr ""
 
@@ -1663,7 +1663,7 @@ msgstr ""
 #. TRANSLATORS: setup button
 #: src/gui/popups/popupmenu.cpp:1954 src/gui/popups/popupmenu.cpp:2084
 #: src/gui/popups/popupmenu.cpp:2125 src/gui/windows/inventorywindow.cpp:222
-#: src/gui/windows/inventorywindow.cpp:744 src/gui/windows/setupwindow.cpp:97
+#: src/gui/windows/inventorywindow.cpp:748 src/gui/windows/setupwindow.cpp:97
 msgid "Store"
 msgstr ""
 
@@ -1728,7 +1728,7 @@ msgstr ""
 #. TRANSLATORS: skills dialog button
 #: src/gui/popups/popupmenu.cpp:2046 src/gui/popups/popupmenu.cpp:2824
 #: src/gui/windows/inventorywindow.cpp:173
-#: src/gui/windows/inventorywindow.cpp:654 src/gui/windows/skilldialog.cpp:289
+#: src/gui/windows/inventorywindow.cpp:655 src/gui/windows/skilldialog.cpp:289
 msgid "Use"
 msgstr ""
 
@@ -1920,7 +1920,7 @@ msgstr ""
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2809 src/gui/windows/equipmentwindow.cpp:67
 #: src/gui/windows/inventorywindow.cpp:175
-#: src/gui/windows/inventorywindow.cpp:643
+#: src/gui/windows/inventorywindow.cpp:644
 msgid "Unequip"
 msgstr ""
 
@@ -1929,7 +1929,7 @@ msgstr ""
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window button
 #: src/gui/popups/popupmenu.cpp:2815 src/gui/windows/inventorywindow.cpp:171
-#: src/gui/windows/inventorywindow.cpp:648 src/gui/windows/outfitwindow.cpp:60
+#: src/gui/windows/inventorywindow.cpp:649 src/gui/windows/outfitwindow.cpp:60
 msgid "Equip"
 msgstr ""
 
@@ -1937,7 +1937,7 @@ msgstr ""
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2835 src/gui/windows/inventorywindow.cpp:188
-#: src/gui/windows/inventorywindow.cpp:752
+#: src/gui/windows/inventorywindow.cpp:756
 msgid "Drop..."
 msgstr ""
 
@@ -1952,7 +1952,7 @@ msgstr ""
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2844 src/gui/windowmenu.cpp:126
-#: src/gui/windows/inventorywindow.cpp:757
+#: src/gui/windows/inventorywindow.cpp:761
 msgid "Drop"
 msgstr ""
 
@@ -3001,7 +3001,7 @@ msgstr ""
 
 #. TRANSLATORS: status window label
 #: src/gui/widgets/characterdisplay.cpp:136
-#: src/gui/windows/inventorywindow.cpp:567
+#: src/gui/windows/inventorywindow.cpp:568
 #: src/gui/windows/statuswindow.cpp:150 src/gui/windows/statuswindow.cpp:313
 #: src/gui/windows/statuswindow.cpp:366
 #, c-format
