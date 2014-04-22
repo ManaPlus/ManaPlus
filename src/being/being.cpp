@@ -441,7 +441,7 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
             mSpeech.erase(e, 1);
             mSpeech.erase(start, (position - start) + 1);
         }
-        position = mSpeech.find('@');
+        position = mSpeech.find("@@");
 
         while (position != std::string::npos)
         {
