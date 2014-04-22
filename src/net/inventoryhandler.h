@@ -71,6 +71,8 @@ class InventoryHandler
 
         virtual void closeStorage() = 0;
 
+        virtual void forgotStorage() = 0;
+
         virtual int convertFromServerSlot(const int eAthenaSlot) const = 0;
 };
 

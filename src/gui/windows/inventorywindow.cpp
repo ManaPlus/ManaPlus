@@ -271,7 +271,8 @@ void InventoryWindow::postInit()
 InventoryWindow::~InventoryWindow()
 {
     invInstances.remove(this);
-    mInventory->removeInventoyListener(this);
+    if (mInventory)
+        mInventory->removeInventoyListener(this);
     if (!invInstances.empty())
         invInstances.front()->updateDropButton();
 
@@ -681,7 +682,10 @@ void InventoryWindow::close()
     else
     {
         if (Net::getInventoryHandler())
+        {
             Net::getInventoryHandler()->closeStorage(Inventory::STORAGE);
+            Net::getInventoryHandler()->forgotStorage();
+        }
         scheduleDelete();
     }
 }
@@ -805,4 +809,15 @@ void InventoryWindow::setVisible(bool visible)
     if (!visible)
         mSortDropDown->hideDrop();
     Window::setVisible(visible);
+}
+
+void InventoryWindow::unsetInventory()
+{
+    if (mInventory)
+    {
+        mInventory->removeInventoyListener(this);
+        if (mItems)
+            mItems->unsetInventory();
+    }
+    mInventory = nullptr;
 }

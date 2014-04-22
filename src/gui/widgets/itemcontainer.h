@@ -131,6 +131,9 @@ class ItemContainer final : public Widget,
         bool getClickCount() const A_WARN_UNUSED
         { return mClicks; }
 
+        void unsetInventory()
+        { mInventory = nullptr; }
+
     private:
         enum Direction
         {

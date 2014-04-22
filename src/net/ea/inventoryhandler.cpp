@@ -486,6 +486,11 @@ void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
 {
     // Storage access has been closed
     // Storage window deletes itself
+    if (mStorageWindow)
+    {
+        mStorageWindow->unsetInventory();
+        mStorageWindow->close();
+    }
     mStorageWindow = nullptr;
 
     if (mStorage)
@@ -592,9 +597,15 @@ void InventoryHandler::closeStorage()
 {
     if (mStorageWindow)
     {
+        mStorageWindow->unsetInventory();
         mStorageWindow->close();
         mStorageWindow = nullptr;
     }
+}
+
+void InventoryHandler::forgotStorage()
+{
+    mStorageWindow = nullptr;
 }
 
 }  // namespace Ea

@@ -152,6 +152,8 @@ class InventoryWindow final : public Window,
 
         void setVisible(bool visible) override final;
 
+        void unsetInventory();
+
         static bool isAnyInputFocused();
 
     private:

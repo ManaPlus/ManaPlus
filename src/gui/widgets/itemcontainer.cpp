@@ -507,7 +507,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         Net::getInventoryHandler()->moveItem(mSelectedIndex, index);
         selectNone();
     }
-    else
+    else if (mInventory)
     {
         const DragDropSource src = dragDrop.getSource();
         DragDropSource dst = DRAGDROP_SOURCE_EMPTY;

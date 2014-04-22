@@ -210,6 +210,8 @@ class InventoryHandler : public Net::InventoryHandler
 
         void closeStorage() override final;
 
+        void forgotStorage() override final;
+
         Inventory *getStorage() const
         { return mStorage; }
 
