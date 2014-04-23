@@ -840,21 +840,11 @@ void UpdaterWindow::logic()
                 if (mUpdateIndex < mUpdateFiles.size())
                 {
                     UpdateFile thisFile = mUpdateFiles[mUpdateIndex];
-                    if (!thisFile.required)
+                    if (thisFile.type == "music"
+                        && !config.getBoolValue("download-music"))
                     {
-                        // This statement checks to see if the file type
-                        // is music, and if download-music is true
-                        // If it fails, this statement returns true,
-                        // and results in not downloading the file
-                        // Else it will ignore the break,
-                        // and download the file.
-
-                        if (!(thisFile.type == "music"
-                            && config.getBoolValue("download-music")))
-                        {
-                            mUpdateIndex++;
-                            break;
-                        }
+                        mUpdateIndex++;
+                        break;
                     }
                     mCurrentFile = thisFile.name;
                     std::string checksum;
