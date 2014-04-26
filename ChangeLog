@@ -1,3 +1,9 @@
+2014-04-26 New release 1.4.4.26
+fix: crash with dragging empty spell.
+fix: crash if open storage and start trade.
+fix: links drawing over player head.
+fix: downlod music option with incomplete configuration.
+
 2014-04-12 New release 1.4.4.12
 fix: possible crash.
 fix: selection in dropdowns.
