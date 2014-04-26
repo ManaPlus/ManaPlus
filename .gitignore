@@ -152,3 +152,9 @@ Xcode/Release/Manaplus_ssh.txt
 Xcode/DerivedData/
 Xcode/Build/
 Xcode/Release/Release*
+
+/manaplus.depend
+/manaplus.layout
+
+#english po
+/po/en.po
