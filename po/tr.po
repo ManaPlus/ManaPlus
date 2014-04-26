@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-04-22 22:21+0300\n"
+"POT-Creation-Date: 2014-04-26 12:00+0300\n"
 "PO-Revision-Date: 2014-03-28 08:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/manaplus/"
@@ -6658,7 +6658,7 @@ msgid "##1  you try again later."
 msgstr "##1 daha sonra tekrar deneyiniz."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:948
+#: src/gui/windows/updaterwindow.cpp:938
 msgid "Completed"
 msgstr "Tamamlandı"
 
