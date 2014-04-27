@@ -245,14 +245,9 @@ namespace PlayerInfo
 
     void stateChange(const int state);
 
-    void triggerAttr(int id);
-
     void triggerAttr(const int id, const int old);
 
-    void triggerStat(int id);
-
-    void triggerStat(const int id, const std::string &changed,
-                     const int old1, const int old2 = 0);
+    void triggerStat(const int id, const int old1, const int old2);
 
     void setEquipmentBackend(Equipment::Backend *const backend);
 

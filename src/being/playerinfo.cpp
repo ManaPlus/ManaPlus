@@ -62,8 +62,7 @@ void triggerAttr(const int id, const int old)
         mData.mAttributes.find(id)->second);
 }
 
-void triggerStat(const int id, const std::string &changed,
-                 const int old1, const int old2)
+void triggerStat(const int id, const int old1, const int old2)
 {
     const StatMap::const_iterator it = mData.mStats.find(id);
     if (it == mData.mStats.end())
@@ -72,11 +71,6 @@ void triggerStat(const int id, const std::string &changed,
     DepricatedEvent event(EVENT_UPDATESTAT);
     event.setInt("id", id);
     const Stat &stat = it->second;
-    event.setInt("base", stat.base);
-    event.setInt("mod", stat.mod);
-    event.setInt("exp", stat.exp);
-    event.setInt("expNeeded", stat.expNeed);
-    event.setString("changed", changed);
     event.setInt("oldValue1", old1);
     event.setInt("oldValue2", old2);
     DepricatedEvent::trigger(CHANNEL_ATTRIBUTES, event);
@@ -131,7 +125,7 @@ void setStatBase(const int id, const int value, const bool notify)
     const int old = mData.mStats[id].base;
     mData.mStats[id].base = value;
     if (notify)
-        triggerStat(id, "base", old);
+        triggerStat(id, old, 0);
 }
 
 int getStatMod(const int id)
@@ -148,7 +142,7 @@ void setStatMod(const int id, const int value, const bool notify)
     const int old = mData.mStats[id].mod;
     mData.mStats[id].mod = value;
     if (notify)
-        triggerStat(id, "mod", old);
+        triggerStat(id, old, 0);
 }
 
 int getStatEffective(const int id)
@@ -187,7 +181,7 @@ void setStatExperience(const int id, const int have,
     stat.exp = have;
     stat.expNeed = need;
     if (notify)
-        triggerStat(id, "exp", oldExp, oldExpNeed);
+        triggerStat(id, oldExp, oldExpNeed);
 }
 
 // --- Inventory / Equipment --------------------------------------------------
