@@ -641,10 +641,6 @@ SET(SRCS
     debug.h
     defaults.cpp
     defaults.h
-    depricatedevent.cpp
-    depricatedevent.h
-    listeners/depricatedlistener.cpp
-    listeners/depricatedlistener.h
     dragdrop.h
     effectmanager.cpp
     effectmanager.h

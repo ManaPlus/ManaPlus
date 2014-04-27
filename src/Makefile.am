@@ -725,10 +725,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      debug.h \
 	      defaults.cpp \
 	      defaults.h \
-	      depricatedevent.cpp \
-	      depricatedevent.h \
-	      listeners/depricatedlistener.cpp \
-	      listeners/depricatedlistener.h \
 	      dragdrop.h \
 	      dropshortcut.cpp \
 	      dropshortcut.h \
