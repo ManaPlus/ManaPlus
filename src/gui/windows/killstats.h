@@ -24,7 +24,7 @@
 #define GUI_WINDOWS_KILLSTATS_H
 
 #include "listeners/actionlistener.h"
-#include "listeners/depricatedlistener.h"
+#include "listeners/attributelistener.h"
 
 #include "gui/widgets/window.h"
 
@@ -32,8 +32,8 @@ class Label;
 class Button;
 
 class KillStats final : public Window,
-                        private ActionListener,
-                        public DepricatedListener
+                        public ActionListener,
+                        public AttributeListener
 {
     public:
         /**
@@ -75,10 +75,11 @@ class KillStats final : public Window,
 
         void jackoAlive(const int id);
 
-        void processEvent(const Channels channel A_UNUSED,
-                          const DepricatedEvent &event) override;
-
         void resetTimes();
+
+        void attributeChanged(const int id,
+                              const int oldVal,
+                              const int newVal) override final;
 
     private:
         void validateJacko();

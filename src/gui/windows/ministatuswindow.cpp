@@ -55,6 +55,7 @@ typedef std::vector <ProgressBar*>::const_iterator ProgressBarVectorCIter;
 MiniStatusWindow::MiniStatusWindow() :
     Window("MiniStatus", false, nullptr, "ministatus.xml"),
     InventoryListener(),
+    AttributeListener(),
     mBars(),
     mBarNames(),
     mIcons(),
@@ -253,35 +254,40 @@ void MiniStatusWindow::drawIcons(Graphics *const graphics)
 void MiniStatusWindow::processEvent(const Channels channel A_UNUSED,
                                     const DepricatedEvent &event)
 {
-    if (event.getName() == EVENT_UPDATEATTRIBUTE)
-    {
-        const int id = event.getInt("id");
-        if (id == PlayerInfo::HP || id == PlayerInfo::MAX_HP)
-        {
-            StatusWindow::updateHPBar(mHpBar);
-        }
-        else if (id == PlayerInfo::MP || id == PlayerInfo::MAX_MP)
-        {
-            statusWindow->updateMPBar(mMpBar);
-        }
-        else if (id == PlayerInfo::EXP || id == PlayerInfo::EXP_NEEDED)
-        {
-            StatusWindow::updateXPBar(mXpBar);
-        }
-        else if (id == PlayerInfo::TOTAL_WEIGHT
-                 || id == PlayerInfo::MAX_WEIGHT)
-        {
-            StatusWindow::updateWeightBar(mWeightBar);
-        }
-        else if (id == PlayerInfo::MONEY)
-        {
-            StatusWindow::updateMoneyBar(mMoneyBar);
-        }
-    }
-    else if (event.getName() == EVENT_UPDATESTAT)
+    if (event.getName() == EVENT_UPDATESTAT)
     {
         statusWindow->updateMPBar(mMpBar);
         StatusWindow::updateJobBar(mJobBar);
+    }
+}
+
+void MiniStatusWindow::attributeChanged(const int id,
+                                        const int oldVal A_UNUSED,
+                                        const int newVal A_UNUSED)
+{
+    switch (id)
+    {
+        case PlayerInfo::HP:
+        case PlayerInfo::MAX_HP:
+            StatusWindow::updateHPBar(mHpBar);
+            break;
+        case PlayerInfo::MP:
+        case PlayerInfo::MAX_MP:
+            statusWindow->updateMPBar(mMpBar);
+            break;
+        case PlayerInfo::EXP:
+        case PlayerInfo::EXP_NEEDED:
+            StatusWindow::updateXPBar(mXpBar);
+            break;
+        case PlayerInfo::TOTAL_WEIGHT:
+        case PlayerInfo::MAX_WEIGHT:
+            StatusWindow::updateWeightBar(mWeightBar);
+            break;
+        case PlayerInfo::MONEY:
+            StatusWindow::updateMoneyBar(mMoneyBar);
+            break;
+        default:
+            break;
     }
 }
 

@@ -31,6 +31,7 @@
 
 #include "listeners/actionlistener.h"
 #include "listeners/actorspritelistener.h"
+#include "listeners/attributelistener.h"
 
 #include <vector>
 
@@ -66,7 +67,8 @@ enum
  */
 class LocalPlayer final : public Being,
                           public ActorSpriteListener,
-                          public DepricatedListener
+                          public DepricatedListener,
+                          public AttributeListener
 {
     public:
         /**
@@ -508,6 +510,10 @@ class LocalPlayer final : public Being,
 
         int getLastAttackY() const override final
         { return mTarget ? mTarget->getTileY() : mLastAttackY; }
+
+        void attributeChanged(const int id,
+                              const int oldVal,
+                              const int newVal) override final;
 
     protected:
         void updateCoords() override final;

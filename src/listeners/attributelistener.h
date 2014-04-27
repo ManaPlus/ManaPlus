@@ -1,0 +1,51 @@
+/*
+ *  The ManaPlus Client
+ *  Copyright (C) 2014  The ManaPlus Developers
+ *
+ *  This file is part of The ManaPlus Client.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef LISTENERS_ATTRIBUTELISTENER_H
+#define LISTENERS_ATTRIBUTELISTENER_H
+
+#include <vector>
+
+#include "localconsts.h"
+
+class AttributeListener
+{
+    public:
+        AttributeListener();
+
+        virtual ~AttributeListener();
+
+        virtual void attributeChanged(const int id,
+                                      const int oldVal,
+                                      const int newVal) = 0;
+
+        static void addListener(AttributeListener *const listener);
+
+        static void removeListener(AttributeListener *const listener);
+
+        static void distributeEvent(const int id,
+                                    const int oldVal,
+                                    const int newVal);
+
+    private:
+        static std::vector<AttributeListener*> mListeners;
+};
+
+#endif  // LISTENERS_ATTRIBUTELISTENER_H

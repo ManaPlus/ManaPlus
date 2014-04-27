@@ -58,11 +58,8 @@ std::set<int> mProtectedItems;
 
 void triggerAttr(const int id, const int old)
 {
-    DepricatedEvent event(EVENT_UPDATEATTRIBUTE);
-    event.setInt("id", id);
-    event.setInt("oldValue", old);
-    event.setInt("newValue", mData.mAttributes.find(id)->second);
-    DepricatedEvent::trigger(CHANNEL_ATTRIBUTES, event);
+    AttributeListener::distributeEvent(id, old,
+        mData.mAttributes.find(id)->second);
 }
 
 void triggerStat(const int id, const std::string &changed,

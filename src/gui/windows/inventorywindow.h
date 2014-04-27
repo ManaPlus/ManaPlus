@@ -25,11 +25,10 @@
 
 #include "inventory.h"
 
-#include "listeners/depricatedlistener.h"
-
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
+#include "listeners/attributelistener.h"
 #include "listeners/keylistener.h"
 #include "listeners/selectionlistener.h"
 
@@ -54,7 +53,7 @@ class InventoryWindow final : public Window,
                               public KeyListener,
                               public SelectionListener,
                               public InventoryListener,
-                              public DepricatedListener
+                              public AttributeListener
 {
     public:
         /**
@@ -137,9 +136,6 @@ class InventoryWindow final : public Window,
 
         void updateDropButton();
 
-        void processEvent(const Channels channel,
-                          const DepricatedEvent &event) override final;
-
         void updateButtons(const Item *item = nullptr);
 
         bool isInputFocused() const A_WARN_UNUSED;
@@ -153,6 +149,10 @@ class InventoryWindow final : public Window,
         void setVisible(bool visible) override final;
 
         void unsetInventory();
+
+        void attributeChanged(const int id,
+                              const int oldVal,
+                              const int newVal) override final;
 
         static bool isAnyInputFocused();
 

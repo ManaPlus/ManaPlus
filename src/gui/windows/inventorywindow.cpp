@@ -73,6 +73,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     KeyListener(),
     SelectionListener(),
     InventoryListener(),
+    AttributeListener(),
     mInventory(inventory),
     mItems(new ItemContainer(this, mInventory)),
     mUseButton(nullptr),
@@ -130,8 +131,6 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
         setWindowName("Inventory");
         mSortDropDown->setSelected(0);
     }
-
-    listen(CHANNEL_ATTRIBUTES);
 
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
@@ -690,17 +689,6 @@ void InventoryWindow::close()
     }
 }
 
-void InventoryWindow::processEvent(const Channels channel A_UNUSED,
-                                   const DepricatedEvent &event)
-{
-    if (event.getName() == EVENT_UPDATEATTRIBUTE)
-    {
-        const int id = event.getInt("id");
-        if (id == PlayerInfo::TOTAL_WEIGHT || id == PlayerInfo::MAX_WEIGHT)
-            updateWeight();
-    }
-}
-
 void InventoryWindow::updateWeight()
 {
     if (!isMainInventory() || !mWeightBar)
@@ -820,4 +808,12 @@ void InventoryWindow::unsetInventory()
             mItems->unsetInventory();
     }
     mInventory = nullptr;
+}
+
+void InventoryWindow::attributeChanged(const int id,
+                                       const int oldVal A_UNUSED,
+                                       const int newVal A_UNUSED)
+{
+    if (id == PlayerInfo::TOTAL_WEIGHT || id == PlayerInfo::MAX_WEIGHT)
+        updateWeight();
 }

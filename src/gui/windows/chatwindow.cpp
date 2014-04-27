@@ -156,6 +156,7 @@ ChatWindow::ChatWindow():
     Window(_("Chat"), false, nullptr, "chat.xml"),
     ActionListener(),
     KeyListener(),
+    AttributeListener(),
     mItemLinkHandler(new ItemLinkHandler),
     mChatTabs(new TabbedArea(this)),
     mChatInput(new ChatInput(this)),
@@ -964,34 +965,7 @@ void ChatWindow::processEvent(const Channels channel,
         if (!mShowBattleEvents)
             return;
 
-        if (event.getName() == EVENT_UPDATEATTRIBUTE)
-        {
-            switch (event.getInt("id"))
-            {
-                case PlayerInfo::EXP:
-                {
-                    if (event.getInt("oldValue") > event.getInt("newValue"))
-                        break;
-
-                    const int change = event.getInt("newValue")
-                        - event.getInt("oldValue");
-
-                    if (change != 0)
-                    {
-                        battleChatLog(std::string("+").append(toString(
-                            change)).append(" xp"));
-                    }
-                    break;
-                }
-                case PlayerInfo::LEVEL:
-                    battleChatLog(std::string("Level: ").append(toString(
-                        event.getInt("newValue"))));
-                    break;
-                default:
-                    break;
-            };
-        }
-        else if (event.getName() == EVENT_UPDATESTAT)
+        if (event.getName() == EVENT_UPDATESTAT)
         {
             if (!config.getBoolValue("showJobExp"))
                 return;
@@ -1016,6 +990,32 @@ void ChatWindow::processEvent(const Channels channel,
             }
         }
     }
+}
+
+void ChatWindow::attributeChanged(const int id,
+                                  const int oldVal,
+                                  const int newVal)
+{
+    switch (id)
+    {
+        case PlayerInfo::EXP:
+        {
+            if (oldVal > newVal)
+                break;
+            const int change = newVal - oldVal;
+            if (change != 0)
+            {
+                battleChatLog(std::string("+").append(toString(
+                    change)).append(" xp"));
+            }
+            break;
+        }
+        case PlayerInfo::LEVEL:
+            battleChatLog(std::string("Level: ").append(toString(newVal)));
+            break;
+        default:
+            break;
+    };
 }
 
 void ChatWindow::addInputText(const std::string &text, const bool space)

@@ -23,9 +23,9 @@
 #ifndef GUI_WINDOWS_CHATWINDOW_H
 #define GUI_WINDOWS_CHATWINDOW_H
 
-#include "listeners/depricatedlistener.h"
-
+#include "listeners/attributelistener.h"
 #include "listeners/configlistener.h"
+#include "listeners/depricatedlistener.h"
 
 #include "gui/widgets/window.h"
 
@@ -86,7 +86,8 @@ class ChatWindow final : public Window,
                          public ActionListener,
                          public KeyListener,
                          public DepricatedListener,
-                         public ConfigListener
+                         public ConfigListener,
+                         public AttributeListener
 {
     public:
         /**
@@ -293,6 +294,10 @@ class ChatWindow final : public Window,
         void postInit() override final;
 
         bool isTabPresent(const ChatTab *const tab) const A_WARN_UNUSED;
+
+        void attributeChanged(const int id,
+                              const int oldVal,
+                              const int newVal) override final;
 
         static void localPetSay(const std::string &nick,
                                 const std::string &text);

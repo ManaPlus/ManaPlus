@@ -41,6 +41,7 @@ KillStats::KillStats() :
     // TRANSLATORS: kill stats window name
     Window(_("Kill stats"), false, nullptr, "killstats.xml"),
     ActionListener(),
+    AttributeListener(),
     mKillTimer(0),
     // TRANSLATORS: kill stats window button
     mResetButton(new Button(this, _("Reset stats"), "reset", this)),
@@ -108,7 +109,6 @@ KillStats::KillStats() :
     setStickyButtonLock(true);
     setDefaultSize(250, 250, 350, 300);
 
-    listen(CHANNEL_ATTRIBUTES);
     const int xp(PlayerInfo::getAttribute(PlayerInfo::EXP));
     int xpNextLevel(PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED));
 
@@ -489,18 +489,17 @@ void KillStats::validateJacko()
     }
 }
 
-void KillStats::processEvent(const Channels channel A_UNUSED,
-                             const DepricatedEvent &event)
+void KillStats::attributeChanged(const int id,
+                                 const int oldVal,
+                                 const int newVal)
 {
-    if (event.getName() == EVENT_UPDATEATTRIBUTE)
+    switch (id)
     {
-        const int id = event.getInt("id");
-        if (id == PlayerInfo::EXP || id == PlayerInfo::EXP_NEEDED)
-        {
-            gainXp(event.getInt("newValue") - event.getInt("oldValue"));
-        }
-        else if (id == PlayerInfo::LEVEL)
-        {
+        case PlayerInfo::EXP:
+        case PlayerInfo::EXP_NEEDED:
+            gainXp(newVal - oldVal);
+            break;
+        case PlayerInfo::LEVEL:
             mKillCounter = 0;
             mKillTCounter = 0;
             mExpCounter = 0;
@@ -520,6 +519,8 @@ void KillStats::processEvent(const Channels channel A_UNUSED,
                 _("Kills/Min: %s, Exp/Min: %s"), "?", "?"));
 
             resetTimes();
-        }
+            break;
+        default:
+            break;
     }
 }

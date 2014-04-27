@@ -23,11 +23,11 @@
 #ifndef GUI_WINDOWS_STATUSWINDOW_H
 #define GUI_WINDOWS_STATUSWINDOW_H
 
-#include "listeners/depricatedlistener.h"
-
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
+#include "listeners/attributelistener.h"
+#include "listeners/depricatedlistener.h"
 
 #include <map>
 
@@ -45,7 +45,8 @@ class VertContainer;
  */
 class StatusWindow final : public Window,
                            public ActionListener,
-                           public DepricatedListener
+                           public DepricatedListener,
+                           public AttributeListener
 {
     public:
         /**
@@ -86,6 +87,10 @@ class StatusWindow final : public Window,
         void action(const ActionEvent &event) override;
 
         void clearAttributes();
+
+        void attributeChanged(const int id,
+                              const int oldVal,
+                              const int newVal) override final;
 
     private:
         static std::string translateLetter(const char *const letters);

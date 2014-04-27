@@ -96,6 +96,7 @@ extern SkillDialog *skillDialog;
 
 LocalPlayer::LocalPlayer(const int id, const int subtype) :
     Being(id, PLAYER, subtype, nullptr),
+    AttributeListener(),
     mGMLevel(0),
     mInvertDirection(0),
     mCrazyMoveType(config.getIntValue("crazyMoveType")),
@@ -1029,33 +1030,7 @@ void LocalPlayer::processEvent(const Channels channel,
 {
     if (channel == CHANNEL_ATTRIBUTES)
     {
-        if (event.getName() == EVENT_UPDATEATTRIBUTE)
-        {
-            switch (event.getInt("id"))
-            {
-                case PlayerInfo::EXP:
-                {
-                    if (event.getInt("oldValue") > event.getInt("newValue"))
-                        break;
-
-                    const int change = event.getInt("newValue")
-                        - event.getInt("oldValue");
-
-                    if (change != 0)
-                    {
-                        // TRANSLATORS: get xp message
-                        addMessageToQueue(strprintf("%d %s", change, _("xp")));
-                    }
-                    break;
-                }
-                case PlayerInfo::LEVEL:
-                    mLevel = event.getInt("newValue");
-                    break;
-                default:
-                    break;
-            };
-        }
-        else if (event.getName() == EVENT_UPDATESTAT)
+        if (event.getName() == EVENT_UPDATESTAT)
         {
             if (!mShowJobExp)
                 return;
@@ -1104,6 +1079,33 @@ void LocalPlayer::processEvent(const Channels channel,
                 }
             }
         }
+    }
+}
+
+void LocalPlayer::attributeChanged(const int id,
+                                   const int oldVal,
+                                   const int newVal)
+{
+    switch (id)
+    {
+        case PlayerInfo::EXP:
+        {
+            if (oldVal > newVal)
+                break;
+
+            const int change = newVal - oldVal;
+            if (change != 0)
+            {
+                // TRANSLATORS: get xp message
+                addMessageToQueue(strprintf("%d %s", change, _("xp")));
+            }
+            break;
+        }
+        case PlayerInfo::LEVEL:
+            mLevel = newVal;
+            break;
+        default:
+            break;
     }
 }
 

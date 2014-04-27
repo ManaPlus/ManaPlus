@@ -25,6 +25,7 @@
 
 #include "inventory.h"
 
+#include "listeners/attributelistener.h"
 #include "listeners/depricatedlistener.h"
 
 #include "gui/widgets/window.h"
@@ -44,7 +45,8 @@ class TextPopup;
  */
 class MiniStatusWindow final : public Window,
                                public InventoryListener,
-                               public DepricatedListener
+                               public DepricatedListener,
+                               public AttributeListener
 {
     public:
         MiniStatusWindow();
@@ -89,6 +91,10 @@ class MiniStatusWindow final : public Window,
         { return mBars; }
 
         Rect getChildrenArea() override final A_WARN_UNUSED;
+
+        void attributeChanged(const int id,
+                              const int oldVal,
+                              const int newVal) override final;
 
 #ifdef USE_PROFILER
         void logicChildren();

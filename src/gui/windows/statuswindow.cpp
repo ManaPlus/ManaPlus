@@ -144,6 +144,7 @@ StatusWindow::StatusWindow() :
     Window(player_node ? player_node->getName() :
         "?", false, nullptr, "status.xml"),
     ActionListener(),
+    AttributeListener(),
     // TRANSLATORS: status window label
     mLvlLabel(new Label(this, strprintf(_("Level: %d"), 0))),
     // TRANSLATORS: status window label
@@ -342,73 +343,7 @@ void StatusWindow::processEvent(const Channels channel A_UNUSED,
         return;
 
     const DepricatedEvents &eventName = event.getName();
-    if (eventName == EVENT_UPDATEATTRIBUTE)
-    {
-        switch (event.getInt("id"))
-        {
-            case PlayerInfo::HP:
-            case PlayerInfo::MAX_HP:
-                updateHPBar(mHpBar, true);
-                break;
-
-            case PlayerInfo::MP:
-            case PlayerInfo::MAX_MP:
-                updateMPBar(mMpBar, true);
-                break;
-
-            case PlayerInfo::EXP:
-            case PlayerInfo::EXP_NEEDED:
-                updateXPBar(mXpBar, false);
-                break;
-
-            case PlayerInfo::MONEY:
-                // TRANSLATORS: status window label
-                mMoneyLabel->setCaption(strprintf(_("Money: %s"),
-                    Units::formatCurrency(event.getInt("newValue")).c_str()));
-                mMoneyLabel->adjustSize();
-                break;
-
-            case PlayerInfo::CHAR_POINTS:
-                mCharacterPointsLabel->setCaption(strprintf(
-                    // TRANSLATORS: status window label
-                    _("Character points: %d"), event.getInt("newValue")));
-
-                mCharacterPointsLabel->adjustSize();
-                // Update all attributes
-                for (Attrs::const_iterator it = mAttrs.begin();
-                     it != mAttrs.end(); ++it)
-                {
-                    if (it->second)
-                        it->second->update();
-                }
-            break;
-
-            case PlayerInfo::CORR_POINTS:
-                mCorrectionPointsLabel->setCaption(strprintf(
-                    // TRANSLATORS: status window label
-                    _("Correction points: %d"), event.getInt("newValue")));
-                mCorrectionPointsLabel->adjustSize();
-                // Update all attributes
-                for (Attrs::const_iterator it = mAttrs.begin();
-                     it != mAttrs.end(); ++it)
-                {
-                    if (it->second)
-                        it->second->update();
-                }
-            break;
-
-            case PlayerInfo::LEVEL:
-                // TRANSLATORS: status window label
-                mLvlLabel->setCaption(strprintf(_("Level: %d"),
-                    event.getInt("newValue")));
-                mLvlLabel->adjustSize();
-            break;
-
-            default:
-                break;
-        }
-    }
-    else if (eventName == EVENT_UPDATESTAT)
+    if (eventName == EVENT_UPDATESTAT)
     {
         const int id = event.getInt("id");
         if (id == Net::getPlayerHandler()->getJobLocation())
@@ -462,6 +397,74 @@ void StatusWindow::processEvent(const Channels channel A_UNUSED,
             if (it != mAttrs.end() && it->second)
                 it->second->update();
         }
+    }
+}
+
+void StatusWindow::attributeChanged(const int id,
+                                    const int oldVal A_UNUSED,
+                                    const int newVal)
+{
+    switch (id)
+    {
+        case PlayerInfo::HP:
+        case PlayerInfo::MAX_HP:
+            updateHPBar(mHpBar, true);
+            break;
+
+        case PlayerInfo::MP:
+        case PlayerInfo::MAX_MP:
+            updateMPBar(mMpBar, true);
+            break;
+
+        case PlayerInfo::EXP:
+        case PlayerInfo::EXP_NEEDED:
+            updateXPBar(mXpBar, false);
+            break;
+
+        case PlayerInfo::MONEY:
+            // TRANSLATORS: status window label
+            mMoneyLabel->setCaption(strprintf(_("Money: %s"),
+                Units::formatCurrency(newVal).c_str()));
+            mMoneyLabel->adjustSize();
+            break;
+
+        case PlayerInfo::CHAR_POINTS:
+            mCharacterPointsLabel->setCaption(strprintf(
+                // TRANSLATORS: status window label
+                _("Character points: %d"), newVal));
+
+            mCharacterPointsLabel->adjustSize();
+            // Update all attributes
+            for (Attrs::const_iterator it = mAttrs.begin();
+                 it != mAttrs.end(); ++it)
+            {
+                if (it->second)
+                    it->second->update();
+            }
+            break;
+
+        case PlayerInfo::CORR_POINTS:
+            mCorrectionPointsLabel->setCaption(strprintf(
+                // TRANSLATORS: status window label
+                _("Correction points: %d"), newVal));
+            mCorrectionPointsLabel->adjustSize();
+            // Update all attributes
+            for (Attrs::const_iterator it = mAttrs.begin();
+                 it != mAttrs.end(); ++it)
+            {
+                if (it->second)
+                    it->second->update();
+            }
+            break;
+
+        case PlayerInfo::LEVEL:
+            // TRANSLATORS: status window label
+            mLvlLabel->setCaption(strprintf(_("Level: %d"), newVal));
+            mLvlLabel->adjustSize();
+            break;
+
+        default:
+            break;
     }
 }
 
