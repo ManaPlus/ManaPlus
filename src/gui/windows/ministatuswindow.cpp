@@ -112,8 +112,6 @@ MiniStatusWindow::MiniStatusWindow() :
     mTextPopup->postInit();
     mStatusPopup->postInit();
 
-    listen(CHANNEL_ATTRIBUTES);
-
     StatusWindow::updateHPBar(mHpBar);
 
     if (Net::getGameHandler()->canUseMagicBar() && statusWindow)
@@ -251,14 +249,13 @@ void MiniStatusWindow::drawIcons(Graphics *const graphics)
     }
 }
 
-void MiniStatusWindow::processEvent(const Channels channel A_UNUSED,
-                                    const DepricatedEvent &event)
+void MiniStatusWindow::statChanged(const int id,
+                                   const int oldVal1 A_UNUSED,
+                                   const int oldVal2 A_UNUSED)
 {
-    if (event.getName() == EVENT_UPDATESTAT)
-    {
+    if (statusWindow)
         statusWindow->updateMPBar(mMpBar);
-        StatusWindow::updateJobBar(mJobBar);
-    }
+    StatusWindow::updateJobBar(mJobBar);
 }
 
 void MiniStatusWindow::attributeChanged(const int id,

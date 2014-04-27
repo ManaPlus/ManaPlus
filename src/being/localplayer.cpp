@@ -97,6 +97,7 @@ extern SkillDialog *skillDialog;
 LocalPlayer::LocalPlayer(const int id, const int subtype) :
     Being(id, PLAYER, subtype, nullptr),
     AttributeListener(),
+    StatListener(),
     mGMLevel(0),
     mInvertDirection(0),
     mCrazyMoveType(config.getIntValue("crazyMoveType")),
@@ -175,8 +176,6 @@ LocalPlayer::LocalPlayer(const int id, const int subtype) :
     mShowNavigePath(false)
 {
     logger->log1("LocalPlayer::LocalPlayer");
-
-    listen(CHANNEL_ATTRIBUTES);
 
     mAttackRange = 0;
     mLevel = 1;
@@ -1025,59 +1024,42 @@ void LocalPlayer::optionChanged(const std::string &value)
         mShowServerPos = config.getBoolValue("showserverpos");
 }
 
-void LocalPlayer::processEvent(const Channels channel,
-                               const DepricatedEvent &event)
+void LocalPlayer::statChanged(const int id,
+                              const int oldVal1,
+                              const int oldVal2)
 {
-    if (channel == CHANNEL_ATTRIBUTES)
+    if (!mShowJobExp || id != Net::getPlayerHandler()->getJobLocation())
+        return;
+
+    const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
+    if (oldVal1 > exp.first || !oldVal2)
+        return;
+
+    const int change = exp.first - oldVal1;
+    if (change != 0 && mMessages.size() < 20)
     {
-        if (event.getName() == EVENT_UPDATESTAT)
+        if (!mMessages.empty())
         {
-            if (!mShowJobExp)
-                return;
-
-            const int id = event.getInt("id");
-            if (id == Net::getPlayerHandler()->getJobLocation())
+            MessagePair pair = mMessages.back();
+            // TRANSLATORS: this is normal experience
+            if (pair.first.find(strprintf(" %s", _("xp")))
+                == pair.first.size() - strlen(_("xp")) - 1)
             {
-                const std::pair<int, int> exp
-                    = PlayerInfo::getStatExperience(id);
-                if (event.getInt("oldValue1") > exp.first
-                    || !event.getInt("oldValue2"))
-                {
-                    return;
-                }
-
-                const int change = exp.first - event.getInt("oldValue1");
-                if (change != 0 && mMessages.size() < 20)
-                {
-                    if (!mMessages.empty())
-                    {
-                        MessagePair pair = mMessages.back();
-                        // TRANSLATORS: this is normal experience
-                        if (pair.first.find(strprintf(" %s",
-                            _("xp"))) == pair.first.size()
-                            - strlen(_("xp")) - 1)
-                        {
-                            mMessages.pop_back();
-                            // TRANSLATORS: this is job experience
-                            pair.first.append(strprintf(", %d %s",
-                                change, _("job")));
-                            mMessages.push_back(pair);
-                        }
-                        else
-                        {
-                            // TRANSLATORS: this is job experience
-                            addMessageToQueue(strprintf("%d %s",
-                                change, _("job")));
-                        }
-                    }
-                    else
-                    {
-                        // TRANSLATORS: this is job experience
-                        addMessageToQueue(strprintf(
-                            "%d %s", change, _("job")));
-                    }
-                }
+                mMessages.pop_back();
+                // TRANSLATORS: this is job experience
+                pair.first.append(strprintf(", %d %s", change, _("job")));
+                mMessages.push_back(pair);
             }
+            else
+            {
+                // TRANSLATORS: this is job experience
+                addMessageToQueue(strprintf("%d %s", change, _("job")));
+            }
+        }
+        else
+        {
+            // TRANSLATORS: this is job experience
+            addMessageToQueue(strprintf("%d %s", change, _("job")));
         }
     }
 }

@@ -39,6 +39,8 @@
 
 #include "utils/delete2.h"
 
+#include "listeners/statlistener.h"
+
 #include "debug.h"
 
 namespace PlayerInfo
@@ -64,16 +66,7 @@ void triggerAttr(const int id, const int old)
 
 void triggerStat(const int id, const int old1, const int old2)
 {
-    const StatMap::const_iterator it = mData.mStats.find(id);
-    if (it == mData.mStats.end())
-        return;
-
-    DepricatedEvent event(EVENT_UPDATESTAT);
-    event.setInt("id", id);
-    const Stat &stat = it->second;
-    event.setInt("oldValue1", old1);
-    event.setInt("oldValue2", old2);
-    DepricatedEvent::trigger(CHANNEL_ATTRIBUTES, event);
+    StatListener::distributeEvent(id, old1, old2);
 }
 
 // --- Attributes -------------------------------------------------------------

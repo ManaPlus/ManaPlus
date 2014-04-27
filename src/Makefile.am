@@ -171,6 +171,8 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/rect.h \
 	      events/selectionevent.h \
 	      listeners/selectionlistener.h \
+	      listeners/statlistener.cpp \
+	      listeners/statlistener.h \
 	      utils/sdlpixel.h \
 	      gui/widgets/widget.h \
 	      listeners/widgetlistener.h \

@@ -145,6 +145,7 @@ StatusWindow::StatusWindow() :
         "?", false, nullptr, "status.xml"),
     ActionListener(),
     AttributeListener(),
+    StatListener(),
     // TRANSLATORS: status window label
     mLvlLabel(new Label(this, strprintf(_("Level: %d"), 0))),
     // TRANSLATORS: status window label
@@ -170,8 +171,6 @@ StatusWindow::StatusWindow() :
     mCopyButton(new Button(this, _("Copy to chat"), "copy", this)),
     mAttrs()
 {
-    listen(CHANNEL_ATTRIBUTES);
-
     setWindowName("Status");
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
@@ -335,68 +334,63 @@ StatusWindow::StatusWindow() :
     mLvlLabel->adjustSize();
 }
 
-void StatusWindow::processEvent(const Channels channel A_UNUSED,
-                                const DepricatedEvent &event)
+void StatusWindow::statChanged(const int id,
+                               const int oldVal1,
+                               const int oldVal2 A_UNUSED)
 {
     static bool blocked = false;
     if (blocked)
         return;
 
-    const DepricatedEvents &eventName = event.getName();
-    if (eventName == EVENT_UPDATESTAT)
+    if (id == Net::getPlayerHandler()->getJobLocation())
     {
-        const int id = event.getInt("id");
-        if (id == Net::getPlayerHandler()->getJobLocation())
+        if (mJobLvlLabel)
         {
-            if (mJobLvlLabel)
+            int lvl = PlayerInfo::getStatBase(id);
+            const int oldExp = oldVal1;
+            const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
+
+            if (!lvl)
             {
-                int lvl = PlayerInfo::getStatBase(id);
-                const int oldExp = event.getInt("oldValue1");
-                const std::pair<int, int> exp
-                    = PlayerInfo::getStatExperience(id);
-
-                if (!lvl)
+                // possible server broken and don't send job level,
+                // then we fixing it :)
+                if (exp.second < 20000)
                 {
-                    // possible server broken and don't send job level,
-                    // then we fixing it :)
-                    if (exp.second < 20000)
-                    {
-                        lvl = 0;
-                    }
-                    else
-                    {
-                        lvl = (exp.second - 20000) / 150;
-                        blocked = true;
-                        PlayerInfo::setStatBase(id, lvl);
-                        blocked = false;
-                    }
+                    lvl = 0;
                 }
-
-                if (exp.first < oldExp && exp.second >= 20000)
-                {   // possible job level up. but server broken and don't send
-                    // new job exp limit, we fixing it
-                    lvl ++;
+                else
+                {
+                    lvl = (exp.second - 20000) / 150;
                     blocked = true;
-                    PlayerInfo::setStatExperience(
-                        id, exp.first, 20000 + lvl * 150);
                     PlayerInfo::setStatBase(id, lvl);
                     blocked = false;
                 }
-
-                // TRANSLATORS: status window label
-                mJobLvlLabel->setCaption(strprintf(_("Job: %d"), lvl));
-                mJobLvlLabel->adjustSize();
-
-                updateProgressBar(mJobBar, id, false);
             }
+
+            if (exp.first < oldExp && exp.second >= 20000)
+            {   // possible job level up. but server broken and don't send
+                // new job exp limit, we fixing it
+                lvl ++;
+                blocked = true;
+                PlayerInfo::setStatExperience(
+                    id, exp.first, 20000 + lvl * 150);
+                PlayerInfo::setStatBase(id, lvl);
+                blocked = false;
+            }
+
+            // TRANSLATORS: status window label
+            mJobLvlLabel->setCaption(strprintf(_("Job: %d"), lvl));
+            mJobLvlLabel->adjustSize();
+
+            updateProgressBar(mJobBar, id, false);
         }
-        else
-        {
-            updateMPBar(mMpBar, true);
-            const Attrs::const_iterator it = mAttrs.find(id);
-            if (it != mAttrs.end() && it->second)
-                it->second->update();
-        }
+    }
+    else
+    {
+        updateMPBar(mMpBar, true);
+        const Attrs::const_iterator it = mAttrs.find(id);
+        if (it != mAttrs.end() && it->second)
+            it->second->update();
     }
 }
 

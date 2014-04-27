@@ -26,7 +26,7 @@
 #include "inventory.h"
 
 #include "listeners/attributelistener.h"
-#include "listeners/depricatedlistener.h"
+#include "listeners/statlistener.h"
 
 #include "gui/widgets/window.h"
 
@@ -45,8 +45,8 @@ class TextPopup;
  */
 class MiniStatusWindow final : public Window,
                                public InventoryListener,
-                               public DepricatedListener,
-                               public AttributeListener
+                               public AttributeListener,
+                               public StatListener
 {
     public:
         MiniStatusWindow();
@@ -63,9 +63,6 @@ class MiniStatusWindow final : public Window,
         void eraseIcon(const int index);
 
         void drawIcons(Graphics *const graphics);
-
-        void processEvent(const Channels channel,
-                          const DepricatedEvent &event) override final;
 
         void updateStatus();
 
@@ -95,6 +92,10 @@ class MiniStatusWindow final : public Window,
         void attributeChanged(const int id,
                               const int oldVal,
                               const int newVal) override final;
+
+        void statChanged(const int id,
+                         const int oldVal1,
+                         const int oldVal2) override final;
 
 #ifdef USE_PROFILER
         void logicChildren();

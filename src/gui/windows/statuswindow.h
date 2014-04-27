@@ -27,7 +27,7 @@
 
 #include "listeners/actionlistener.h"
 #include "listeners/attributelistener.h"
-#include "listeners/depricatedlistener.h"
+#include "listeners/statlistener.h"
 
 #include <map>
 
@@ -45,8 +45,8 @@ class VertContainer;
  */
 class StatusWindow final : public Window,
                            public ActionListener,
-                           public DepricatedListener,
-                           public AttributeListener
+                           public AttributeListener,
+                           public StatListener
 {
     public:
         /**
@@ -55,9 +55,6 @@ class StatusWindow final : public Window,
         StatusWindow();
 
         A_DELETE_COPY(StatusWindow)
-
-        void processEvent(const Channels channel,
-                          const DepricatedEvent &event) override;
 
         void setPointsNeeded(const int id, const int needed);
 
@@ -91,6 +88,10 @@ class StatusWindow final : public Window,
         void attributeChanged(const int id,
                               const int oldVal,
                               const int newVal) override final;
+
+        void statChanged(const int id,
+                         const int oldVal1,
+                         const int oldVal2) override final;
 
     private:
         static std::string translateLetter(const char *const letters);

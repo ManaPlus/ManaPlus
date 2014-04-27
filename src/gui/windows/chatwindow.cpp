@@ -185,8 +185,6 @@ ChatWindow::ChatWindow():
 {
     mChatTabs->postInit();
 
-    listen(CHANNEL_ATTRIBUTES);
-
     setWindowName("Chat");
 
     if (setupWindow)
@@ -957,38 +955,25 @@ void ChatWindow::keyPressed(KeyEvent &event)
 
 #undef ifKey
 
-void ChatWindow::processEvent(const Channels channel,
-                              const DepricatedEvent &event)
+void ChatWindow::statChanged(const int id,
+                             const int oldVal1,
+                             const int oldVal2)
 {
-    if (channel == CHANNEL_ATTRIBUTES)
+    if (!mShowBattleEvents || !config.getBoolValue("showJobExp"))
+        return;
+
+    if (id != Net::getPlayerHandler()->getJobLocation())
+        return;
+
+    const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
+    if (oldVal1 > exp.first || !oldVal2)
+        return;
+
+    const int change = exp.first - oldVal1;
+    if (change != 0)
     {
-        if (!mShowBattleEvents)
-            return;
-
-        if (event.getName() == EVENT_UPDATESTAT)
-        {
-            if (!config.getBoolValue("showJobExp"))
-                return;
-
-            const int id = event.getInt("id");
-            if (id == Net::getPlayerHandler()->getJobLocation())
-            {
-                const std::pair<int, int> exp
-                    = PlayerInfo::getStatExperience(id);
-                if (event.getInt("oldValue1") > exp.first
-                    || !event.getInt("oldValue2"))
-                {
-                    return;
-                }
-
-                const int change = exp.first - event.getInt("oldValue1");
-                if (change != 0)
-                {
-                    battleChatLog(std::string("+").append(
-                        toString(change)).append(" job"));
-                }
-            }
-        }
+        battleChatLog(std::string("+").append(toString(
+            change)).append(" job"));
     }
 }
 

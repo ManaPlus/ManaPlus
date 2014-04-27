@@ -23,8 +23,6 @@
 #ifndef BEING_LOCALPLAYER_H
 #define BEING_LOCALPLAYER_H
 
-#include "listeners/depricatedlistener.h"
-
 #include "being/being.h"
 
 #include "gui/userpalette.h"
@@ -32,6 +30,7 @@
 #include "listeners/actionlistener.h"
 #include "listeners/actorspritelistener.h"
 #include "listeners/attributelistener.h"
+#include "listeners/statlistener.h"
 
 #include <vector>
 
@@ -67,8 +66,8 @@ enum
  */
 class LocalPlayer final : public Being,
                           public ActorSpriteListener,
-                          public DepricatedListener,
-                          public AttributeListener
+                          public AttributeListener,
+                          public StatListener
 {
     public:
         /**
@@ -379,9 +378,6 @@ class LocalPlayer final : public Being,
          */
         void optionChanged(const std::string &value) override final;
 
-        void processEvent(const Channels channel,
-                          const DepricatedEvent &event) override final;
-
         /**
          * set a following player.
          */
@@ -514,6 +510,10 @@ class LocalPlayer final : public Being,
         void attributeChanged(const int id,
                               const int oldVal,
                               const int newVal) override final;
+
+        void statChanged(const int id,
+                         const int oldVal1,
+                         const int oldVal2) override final;
 
     protected:
         void updateCoords() override final;

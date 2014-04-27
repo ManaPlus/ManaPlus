@@ -23,14 +23,13 @@
 #ifndef GUI_WINDOWS_CHATWINDOW_H
 #define GUI_WINDOWS_CHATWINDOW_H
 
-#include "listeners/attributelistener.h"
-#include "listeners/configlistener.h"
-#include "listeners/depricatedlistener.h"
-
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
+#include "listeners/attributelistener.h"
+#include "listeners/configlistener.h"
 #include "listeners/keylistener.h"
+#include "listeners/statlistener.h"
 
 #include <list>
 #include <map>
@@ -85,9 +84,9 @@ struct CHATLOG final
 class ChatWindow final : public Window,
                          public ActionListener,
                          public KeyListener,
-                         public DepricatedListener,
                          public ConfigListener,
-                         public AttributeListener
+                         public AttributeListener,
+                         public StatListener
 {
     public:
         /**
@@ -194,9 +193,6 @@ class ChatWindow final : public Window,
          */
         void mousePressed(MouseEvent &event) override final;
 
-        void processEvent(const Channels channel,
-                          const DepricatedEvent &event) override final;
-
         /**
          * Scrolls the chat window
          *
@@ -298,6 +294,10 @@ class ChatWindow final : public Window,
         void attributeChanged(const int id,
                               const int oldVal,
                               const int newVal) override final;
+
+        void statChanged(const int id,
+                         const int oldVal1,
+                         const int oldVal2) override final;
 
         static void localPetSay(const std::string &nick,
                                 const std::string &text);
