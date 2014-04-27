@@ -20,31 +20,9 @@
 
 #include "listeners/attributelistener.h"
 
-#include "listeners/baselistener.hpp"
-
 #include "debug.h"
 
-std::vector<AttributeListener*> AttributeListener::mListeners;
-
-AttributeListener::AttributeListener()
-{
-    addListener(this);
-}
-
-AttributeListener::~AttributeListener()
-{
-    removeListener(this);
-}
-
-void AttributeListener::addListener(AttributeListener *const listener)
-{
-    mListeners.push_back(listener);
-}
-
-void AttributeListener::removeListener(AttributeListener *const listener)
-{
-    listenerRemoveListener;
-}
+defineListener(AttributeListener)
 
 void AttributeListener::distributeEvent(const int id,
                                         const int oldVal,
@@ -58,4 +36,3 @@ void AttributeListener::distributeEvent(const int id,
             listener->attributeChanged(id, oldVal, newVal);
     }
 }
-

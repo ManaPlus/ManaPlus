@@ -21,31 +21,22 @@
 #ifndef LISTENERS_ATTRIBUTELISTENER_H
 #define LISTENERS_ATTRIBUTELISTENER_H
 
-#include <vector>
+#include "listeners/baselistener.hpp"
 
 #include "localconsts.h"
 
 class AttributeListener
 {
     public:
-        AttributeListener();
-
-        virtual ~AttributeListener();
-
         virtual void attributeChanged(const int id,
                                       const int oldVal,
                                       const int newVal) = 0;
-
-        static void addListener(AttributeListener *const listener);
-
-        static void removeListener(AttributeListener *const listener);
 
         static void distributeEvent(const int id,
                                     const int oldVal,
                                     const int newVal);
 
-    private:
-        static std::vector<AttributeListener*> mListeners;
+    defineListenerHeader(AttributeListener)
 };
 
 #endif  // LISTENERS_ATTRIBUTELISTENER_H

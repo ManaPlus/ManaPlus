@@ -21,9 +21,29 @@
 #ifndef LISTENERS_BASELISTENER_HPP
 #define LISTENERS_BASELISTENER_HPP
 
-#define listenerRemoveListener \
+#include <vector>
+
+#define defineListener(name) \
+    std::vector<name*> name::mListeners; \
+    \
+    name::name() \
     { \
-        std::vector<AttributeListener*>::iterator it = mListeners.begin(); \
+        addListener(this); \
+    } \
+    \
+    name::~name() \
+    { \
+        removeListener(this); \
+    } \
+    \
+    void name::addListener(name *const listener) \
+    { \
+        mListeners.push_back(listener); \
+    } \
+    \
+    void name::removeListener(name *const listener) \
+    { \
+        std::vector<name*>::iterator it = mListeners.begin(); \
         while (it != mListeners.end()) \
         { \
             if (*it == listener) \
@@ -32,5 +52,18 @@
                 ++ it; \
         } \
     }
+
+#define defineListenerHeader(name) \
+    public: \
+        name(); \
+        \
+        virtual ~name(); \
+        \
+        static void addListener(name *const listener); \
+        \
+        static void removeListener(name *const listener); \
+        \
+    private: \
+        static std::vector<name*> mListeners;
 
 #endif  // LISTENERS_BASELISTENER_HPP
