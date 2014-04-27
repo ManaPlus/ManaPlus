@@ -815,6 +815,8 @@ SET(SRCS
     listeners/selectionlistener.h
     listeners/statlistener.cpp
     listeners/statlistener.h
+    listeners/updatestatuslistener.cpp
+    listeners/updatestatuslistener.h
     utils/sdlpixel.h
     gui/widgets/widget.h
     listeners/widgetlistener.h

@@ -69,6 +69,8 @@
 #include "resources/db/emotedb.h"
 #include "resources/db/weaponsdb.h"
 
+#include "listeners/updatestatuslistener.h"
+
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/timer.h"
@@ -1252,8 +1254,7 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
         *var = def;
     if (save)
         config.setValue(conf, *var);
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
+    UpdateStatusListener::distributeEvent();
     const std::string str = (this->*func)();
     if (str.size() > 4)
         debugMsg(str.substr(4));
@@ -1467,8 +1468,7 @@ void LocalPlayer::setQuickDropCounter(const int n)
         return;
     mQuickDropCounter = n;
     config.setValue("quickDropCounter", mQuickDropCounter);
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
+    UpdateStatusListener::distributeEvent();
 }
 
 const unsigned pickUpTypeSize = 7;
@@ -1619,8 +1619,7 @@ void LocalPlayer::changeAwayMode()
     mAfkTime = 0;
     mInactive = false;
     updateName();
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
+    UpdateStatusListener::distributeEvent();
     if (mAwayMode)
     {
         if (chatWindow)
@@ -1691,7 +1690,7 @@ void LocalPlayer::switchGameModifiers()
 {
     mDisableGameModifiers = !mDisableGameModifiers;
     config.setValue("disableGameModifiers", mDisableGameModifiers);
-    miniStatusWindow->updateStatus();
+    UpdateStatusListener::distributeEvent();
 
     const std::string str = getGameModifiersString();
     if (str.size() > 4)
@@ -3680,8 +3679,7 @@ void LocalPlayer::resetYellowBar()
     mImitationMode = config.resetIntValue("imitationMode");
     mDisableGameModifiers = config.resetBoolValue("disableGameModifiers");
 
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
+    UpdateStatusListener::distributeEvent();
 }
 
 unsigned char LocalPlayer::getWalkMask() const
@@ -3782,7 +3780,6 @@ void AwayListener::action(const ActionEvent &event)
         player_node->updateStatus();
         if (outfitWindow)
             outfitWindow->unwearAwayOutfit();
-        if (miniStatusWindow)
-            miniStatusWindow->updateStatus();
+        UpdateStatusListener::distributeEvent();
     }
 }

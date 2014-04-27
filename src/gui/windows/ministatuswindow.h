@@ -28,6 +28,7 @@
 #include "listeners/arrowslistener.h"
 #include "listeners/attributelistener.h"
 #include "listeners/statlistener.h"
+#include "listeners/updatestatuslistener.h"
 
 #include "gui/widgets/window.h"
 
@@ -48,7 +49,8 @@ class MiniStatusWindow final : public Window,
                                public InventoryListener,
                                public AttributeListener,
                                public StatListener,
-                               public ArrowsListener
+                               public ArrowsListener,
+                               public UpdateStatusListener
 {
     public:
         MiniStatusWindow();

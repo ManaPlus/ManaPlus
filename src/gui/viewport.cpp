@@ -43,6 +43,8 @@
 
 #include "gui/windows/ministatuswindow.h"
 
+#include "listeners/updatestatuslistener.h"
+
 #include "utils/delete2.h"
 
 #include "debug.h"
@@ -997,8 +999,7 @@ void Viewport::toggleCameraMode()
         mCameraRelativeX = 0;
         mCameraRelativeY = 0;
     }
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
+    UpdateStatusListener::distributeEvent();
 }
 
 void Viewport::hideBeingPopup()

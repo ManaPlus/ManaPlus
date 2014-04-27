@@ -58,6 +58,7 @@ MiniStatusWindow::MiniStatusWindow() :
     AttributeListener(),
     StatListener(),
     ArrowsListener(),
+    UpdateStatusListener(),
     mBars(),
     mBarNames(),
     mIcons(),

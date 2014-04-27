@@ -54,7 +54,6 @@
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/killstats.h"
 #include "gui/windows/minimap.h"
-#include "gui/windows/ministatuswindow.h"
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/setupwindow.h"
@@ -68,6 +67,8 @@
 #include "net/net.h"
 #include "net/playerhandler.h"
 #include "net/tradehandler.h"
+
+#include "listeners/updatestatuslistener.h"
 
 #include "utils/gettext.h"
 
@@ -863,8 +864,7 @@ impHandler0(changeMapMode)
 {
     if (viewport)
         viewport->toggleDebugPath();
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
+    UpdateStatusListener::distributeEvent();
     if (Game::instance())
     {
         if (Map *const map = Game::instance()->getCurrentMap())

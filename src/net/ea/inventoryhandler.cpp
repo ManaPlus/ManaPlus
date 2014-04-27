@@ -27,8 +27,6 @@
 
 #include "being/localplayer.h"
 
-#include "gui/windows/ministatuswindow.h"
-
 #include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"
@@ -36,6 +34,7 @@
 #include "utils/delete2.h"
 
 #include "listeners/arrowslistener.h"
+#include "listeners/updatestatuslistener.h"
 
 #include "debug.h"
 

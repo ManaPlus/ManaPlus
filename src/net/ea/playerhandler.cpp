@@ -33,13 +33,14 @@
 
 #include "gui/viewport.h"
 
-#include "gui/windows/ministatuswindow.h"
 #include "gui/windows/okdialog.h"
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/statuswindow.h"
 
 #include "resources/db/deaddb.h"
+
+#include "listeners/updatestatuslistener.h"
 
 #include "net/messagein.h"
 #include "net/net.h"
@@ -210,8 +211,7 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
     if (viewport)
     {
         viewport->returnCamera();
-        if (miniStatusWindow)
-            miniStatusWindow->updateStatus();
+        UpdateStatusListener::distributeEvent();
         viewport->scrollBy(scrollOffsetX, scrollOffsetY);
     }
     BLOCK_END("PlayerHandler::processPlayerWarp")
