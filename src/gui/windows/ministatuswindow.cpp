@@ -249,7 +249,7 @@ void MiniStatusWindow::drawIcons(Graphics *const graphics)
     }
 }
 
-void MiniStatusWindow::statChanged(const int id,
+void MiniStatusWindow::statChanged(const int id A_UNUSED,
                                    const int oldVal1 A_UNUSED,
                                    const int oldVal2 A_UNUSED)
 {
