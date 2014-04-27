@@ -35,6 +35,8 @@
 
 #include "utils/delete2.h"
 
+#include "listeners/arrowslistener.h"
+
 #include "debug.h"
 
 extern int serverVersion;
@@ -336,6 +338,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             inventory->setItem(index, itemId, amount, refine,
                 identified, equipType != 0);
         }
+        ArrowsListener::distributeEvent();
     }
 }
 
@@ -353,8 +356,7 @@ void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg)
             item->increaseQuantity(-amount);
             if (item->getQuantity() == 0)
                 inventory->removeItemAt(index);
-            if (miniStatusWindow)
-                miniStatusWindow->updateArrows();
+            ArrowsListener::distributeEvent();
         }
     }
 }
@@ -566,8 +568,8 @@ void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
 
     if (flag)
         mEquips.setEquipment(getSlot(equipType), -1);
-    if (miniStatusWindow && equipType & 0x8000)
-        miniStatusWindow->updateArrows();
+    if (equipType & 0x8000)
+        ArrowsListener::distributeEvent();
 }
 
 void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg)
@@ -586,11 +588,8 @@ void InventoryHandler::processPlayerArrowEquip(Net::MessageIn &msg)
         return;
 
     index -= INVENTORY_OFFSET;
-
     mEquips.setEquipment(Equipment::EQUIP_PROJECTILE_SLOT, index);
-
-    if (miniStatusWindow)
-        miniStatusWindow->updateArrows();
+    ArrowsListener::distributeEvent();
 }
 
 void InventoryHandler::closeStorage()

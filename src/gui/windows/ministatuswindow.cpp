@@ -56,6 +56,8 @@ MiniStatusWindow::MiniStatusWindow() :
     Window("MiniStatus", false, nullptr, "ministatus.xml"),
     InventoryListener(),
     AttributeListener(),
+    StatListener(),
+    ArrowsListener(),
     mBars(),
     mBarNames(),
     mIcons(),
@@ -532,11 +534,6 @@ void MiniStatusWindow::slotsChanged(Inventory *const inventory)
         StatusWindow::updateInvSlotsBar(mInvSlotsBar);
 }
 
-void MiniStatusWindow::updateArrows()
-{
-    StatusWindow::updateArrowsBar(mArrowsBar);
-}
-
 Rect MiniStatusWindow::getChildrenArea()
 {
     const int padding = mPadding;
@@ -545,6 +542,11 @@ Rect MiniStatusWindow::getChildrenArea()
     return Rect(padding, padding,
         rect.width - padding2,
         rect.height - padding2);
+}
+
+void MiniStatusWindow::arrowsChanged()
+{
+    StatusWindow::updateArrowsBar(mArrowsBar);
 }
 
 #ifdef USE_PROFILER

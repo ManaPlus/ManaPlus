@@ -25,6 +25,7 @@
 
 #include "inventory.h"
 
+#include "listeners/arrowslistener.h"
 #include "listeners/attributelistener.h"
 #include "listeners/statlistener.h"
 
@@ -46,7 +47,8 @@ class TextPopup;
 class MiniStatusWindow final : public Window,
                                public InventoryListener,
                                public AttributeListener,
-                               public StatListener
+                               public StatListener,
+                               public ArrowsListener
 {
     public:
         MiniStatusWindow();
@@ -80,8 +82,6 @@ class MiniStatusWindow final : public Window,
 
         void updateBars();
 
-        void updateArrows();
-
         void slotsChanged(Inventory *const inventory) override final;
 
         std::vector <ProgressBar*> &getBars() A_WARN_UNUSED
@@ -96,6 +96,8 @@ class MiniStatusWindow final : public Window,
         void statChanged(const int id,
                          const int oldVal1,
                          const int oldVal2) override final;
+
+        void arrowsChanged();
 
 #ifdef USE_PROFILER
         void logicChildren();

@@ -603,6 +603,8 @@ SET(SRCS
     being/actorsprite.cpp
     being/actorsprite.h
     listeners/actorspritelistener.h
+    listeners/arrowslistener.cpp
+    listeners/arrowslistener.h
     listeners/attributelistener.cpp
     listeners/attributelistener.h
     listeners/baselistener.hpp
