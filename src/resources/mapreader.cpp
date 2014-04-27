@@ -926,54 +926,80 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
         }
         else if (xmlNameEqual(childNode, "tile"))
         {
+            bool haveAnimation(false);
+
             for_each_xml_child_node(tileNode, childNode)
             {
-                if (!xmlNameEqual(tileNode, "properties"))
+                const bool isProps = xmlNameEqual(tileNode, "properties");
+                const bool isAnim = xmlNameEqual(tileNode, "animation");
+                if (!isProps && !isAnim)
                     continue;
 
                 const int tileGID = firstGid + XML::getProperty(
                     childNode, "id", 0);
 
-                // read tile properties to a map for simpler handling
-                std::map<std::string, int> tileProperties;
-                for_each_xml_child_node(propertyNode, tileNode)
-                {
-                    if (!xmlNameEqual(propertyNode, "property"))
-                        continue;
-                    const std::string name = XML::getProperty(
-                        propertyNode, "name", "");
-                    const int value = XML::getProperty(
-                        propertyNode, "value", 0);
-                    if (!name.empty())
-                    {
-                        tileProperties[name] = value;
-                        logger->log("Tile Prop of %d \"%s\" = \"%d\"",
-                            tileGID, name.c_str(), value);
-                    }
-                }
-
-                // create animation
-                if (!set || !config.getBoolValue("playMapAnimations"))
-                    continue;
-
                 Animation *ani = new Animation;
-                for (int i = 0; ; i++)
+
+                if (isProps)
                 {
-                    const std::string iStr(toString(i));
-                    const std::map<std::string, int>::const_iterator iFrame
-                        = tileProperties.find("animation-frame" + iStr);
-                    const std::map<std::string, int>::const_iterator iDelay
-                        = tileProperties.find("animation-delay" + iStr);
-                    // possible need add random attribute?
-                    if (iFrame != tileProperties.end()
-                        && iDelay != tileProperties.end())
+                    // read tile properties to a map for simpler handling
+                    std::map<std::string, int> tileProperties;
+                    for_each_xml_child_node(propertyNode, tileNode)
                     {
-                        ani->addFrame(set->get(iFrame->second),
-                            iDelay->second, 0, 0, 100);
+                        if (!xmlNameEqual(propertyNode, "property"))
+                            continue;
+
+                        haveAnimation = true;
+                        const std::string name = XML::getProperty(
+                            propertyNode, "name", "");
+                        const int value = XML::getProperty(
+                            propertyNode, "value", 0);
+                        if (!name.empty())
+                        {
+                            tileProperties[name] = value;
+                            logger->log("Tile Prop of %d \"%s\" = \"%d\"",
+                                tileGID, name.c_str(), value);
+                        }
                     }
-                    else
+
+                    // create animation
+                    if (!set || !config.getBoolValue("playMapAnimations"))
+                        continue;
+
+                    for (int i = 0; ; i++)
                     {
-                        break;
+                        const std::string iStr(toString(i));
+                        const std::map<std::string, int>::const_iterator iFrame
+                            = tileProperties.find("animation-frame" + iStr);
+                        const std::map<std::string, int>::const_iterator iDelay
+                            = tileProperties.find("animation-delay" + iStr);
+                        // possible need add random attribute?
+                        if (iFrame != tileProperties.end()
+                            && iDelay != tileProperties.end())
+                        {
+                            ani->addFrame(set->get(iFrame->second),
+                                iDelay->second, 0, 0, 100);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                }
+                else if (isAnim && !haveAnimation)
+                {
+                    for_each_xml_child_node(frameNode, tileNode)
+                    {
+                        if (!xmlNameEqual(frameNode, "frame"))
+                            continue;
+
+                        const int tileId = XML::getProperty(
+                            frameNode, "tileid", 0);
+                        const int duration = XML::getProperty(
+                            frameNode, "duration", 0) /  10;
+
+                        ani->addFrame(set->get(tileId), duration, 0, 0, 100);
                     }
                 }
 
