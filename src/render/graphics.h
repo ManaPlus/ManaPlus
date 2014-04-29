@@ -85,6 +85,14 @@
 
 #include "localconsts.h"
 
+#ifdef USE_SDL2
+#define RectPos int32_t
+#define RectSize int32_t
+#else
+#define RectPos int16_t
+#define RectSize uint16_t
+#endif
+
 class Image;
 class ImageCollection;
 class ImageVertexes;
@@ -165,8 +173,8 @@ class Graphics
                        const int width, const int height)
         {
             mWindow = window;
-            mRect.w = width;
-            mRect.h = height;
+            mRect.w = static_cast<RectSize>(width);
+            mRect.h = static_cast<RectSize>(height);
         }
 
         SDL_Window *getWindow() const

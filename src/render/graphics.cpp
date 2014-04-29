@@ -205,8 +205,8 @@ void Graphics::setScale(int scale)
         mWidth = mActualWidth;
         mHeight = mActualHeight;
     }
-    mRect.w = mWidth;
-    mRect.h = mHeight;
+    mRect.w = static_cast<RectSize>(mWidth);
+    mRect.h = static_cast<RectSize>(mHeight);
 }
 
 int Graphics::getOpenGLFlags() const
@@ -261,8 +261,8 @@ bool Graphics::setOpenGLMode()
     int w1 = 0;
     int h1 = 0;
     SDL_GetWindowSize(mWindow, &w1, &h1);
-    mRect.w = w1 / mScale;
-    mRect.h = h1 / mScale;
+    mRect.w = static_cast<int32_t>(w1 / mScale);
+    mRect.h = static_cast<int32_t>(h1 / mScale);
 
     mGLContext = SDL_GL_CreateContext(mWindow);
 
@@ -472,8 +472,8 @@ bool Graphics::resizeScreen(const int width, const int height)
 #ifdef USE_SDL2
     endDraw();
 
-    mRect.w = width / mScale;
-    mRect.h = height / mScale;
+    mRect.w = static_cast<int32_t>(width / mScale);
+    mRect.h = static_cast<int32_t>(height / mScale);
     mWidth = width / mScale;
     mHeight = height / mScale;
     mActualWidth = width;
