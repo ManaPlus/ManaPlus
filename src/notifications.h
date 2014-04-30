@@ -41,6 +41,16 @@ namespace NotifyManager
 
     struct NotificationInfo final
     {
+        NotificationInfo(const char *const sound0,
+                         const char *const text0,
+                         const NotifyFlags flags0) :
+            sound(sound0),
+            text(text0),
+            flags(flags0)
+        { }
+
+        A_DELETE_COPY(NotificationInfo)
+
         const char *sound;
         const char *text;
         const NotifyFlags flags;

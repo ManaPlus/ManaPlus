@@ -226,8 +226,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
                     if (frame->type == Frame::LABEL
                         && mFrame->nextAction == frame->nextAction)
                     {
-//                        mFrameTime = 0;
-                        mFrameIndex = i;
+                        mFrameIndex = static_cast<unsigned int>(i);
                         if (mFrameIndex >= mAnimation->getLength())
                             mFrameIndex = 0;
 

@@ -45,7 +45,8 @@ EmoteShortcut::~EmoteShortcut()
 
 void EmoteShortcut::load()
 {
-    for (unsigned char i = 0, j = 0, sz = EmoteDB::getLast();
+    for (unsigned char i = 0, j = 0,
+         sz = static_cast<unsigned char>(EmoteDB::getLast());
          i <= sz && j < SHORTCUT_EMOTES;
          i++)
     {

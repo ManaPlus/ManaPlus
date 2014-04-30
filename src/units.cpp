@@ -207,7 +207,7 @@ static std::string formatUnit(const int value, const int type)
     else
     {
         double amount = ud.conversion * value;
-        const unsigned int sz = ud.levels.size();
+        const unsigned int sz = static_cast<unsigned int>(ud.levels.size());
 
         // If only the first level is needed, act like mix if false
         if (ud.mix && !ud.levels.empty() && ud.levels[1].count < amount)

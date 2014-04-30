@@ -50,8 +50,8 @@ class SimpleAnimation final
         /**
          * Creates a simple animation that creates its animation from XML Data.
          */
-        explicit SimpleAnimation(const XmlNodePtr animationNode,
-                                 const std::string& dyePalettes);
+        SimpleAnimation(const XmlNodePtr animationNode,
+                        const std::string& dyePalettes);
 
         A_DELETE_COPY(SimpleAnimation)
 

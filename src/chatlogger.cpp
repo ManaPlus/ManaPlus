@@ -133,8 +133,8 @@ std::string ChatLogger::getDir() const
 
 std::string ChatLogger::secureName(std::string &name)
 {
-    const unsigned int sz = name.length();
-    for (unsigned int f = 0; f < sz; f ++)
+    const size_t sz = name.length();
+    for (size_t f = 0; f < sz; f ++)
     {
         const unsigned char ch = name[f];
         if ((ch < '0' || ch > '9')

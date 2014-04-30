@@ -297,8 +297,8 @@ void EventsManager::logEvent(const SDL_Event &event)
         {
             const char *const text = event.text.text;
             logger->log("event: SDL_TEXTINPUT: %s", text);
-            const int sz = strlen(event.text.text);
-            for (int f = 0; f < sz; f ++)
+            const size_t sz = strlen(event.text.text);
+            for (size_t f = 0; f < sz; f ++)
                 logger->log("dec: %d", text[f]);
             break;
         }

@@ -303,6 +303,6 @@ int TestLauncher::calcFps(const timeval *const start, const timeval *const end,
     if (mtime == 0)
         return 100000;
 
-    return static_cast<long>(calls) * 1000 / mtime;
+    return static_cast<int>(static_cast<long>(calls) * 1000 / mtime);
 }
 #endif

@@ -60,7 +60,7 @@ class DragDrop final
             mItem(item ? item->getId() : 0),
             mSelItem(0),
             mTag(-1),
-            mItemColor(item ? item->getColor() : 1),
+            mItemColor(item ? item->getColor() : static_cast<uint8_t>(1U)),
             mSelItemColor(1)
         {
             if (mItemImage)
@@ -78,7 +78,7 @@ class DragDrop final
         int getItem() const
         { return mItem; }
 
-        int getItemColor() const
+        uint8_t getItemColor() const
         { return mItemColor; }
 
         Image *getItemImage()
@@ -218,7 +218,7 @@ class DragDrop final
         int getSelected() const
         { return mSelItem; }
 
-        int getSelectedColor() const
+        uint8_t getSelectedColor() const
         { return mSelItemColor; }
 
         bool isSelected() const

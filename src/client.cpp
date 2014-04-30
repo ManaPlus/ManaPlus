@@ -1286,7 +1286,7 @@ int Client::gameExec()
 
                     mSearchHash = Net::Download::adlerBuffer(
                         const_cast<char*>(mCurrentServer.hostname.c_str()),
-                        mCurrentServer.hostname.size());
+                        static_cast<int>(mCurrentServer.hostname.size()));
                     if (mOptions.username.empty()
                         || mOptions.password.empty())
                     {
@@ -2198,7 +2198,7 @@ void Client::initUpdatesDir()
     if (mUpdateHost.length() < 2)
         return;
 
-    const int sz = mUpdateHost.size();
+    const size_t sz = mUpdateHost.size();
     // Remove any trailing slash at the end of the update host
     if (mUpdateHost.at(sz - 1) == '/')
         mUpdateHost.resize(sz - 1);

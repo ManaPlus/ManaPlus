@@ -408,18 +408,15 @@ void GraphicsManager::setVideoMode()
     }
 }
 
-SDL_Window *GraphicsManager::createWindow(const int w, const int h,
-                                          const int bpp, const int flags)
-{
 #ifdef USE_SDL2
+SDL_Window *GraphicsManager::createWindow(const int w, const int h,
+                                          const int bpp A_UNUSED,
+                                          const int flags)
+{
     return SDL_CreateWindow("ManaPlus", SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED, w, h, flags);
-#else
-    return SDL_SetVideoMode(w, h, bpp, flags);
-#endif
 }
 
-#ifdef USE_SDL2
 SDL_Renderer *GraphicsManager::createRenderer(SDL_Window *const window,
                                               const int flags)
 {
@@ -427,6 +424,12 @@ SDL_Renderer *GraphicsManager::createRenderer(SDL_Window *const window,
     SDL_Renderer *const renderer = SDL_CreateRenderer(window, -1, flags);
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     return renderer;
+}
+#else
+SDL_Window *GraphicsManager::createWindow(const int w, const int h,
+                                          const int bpp, const int flags)
+{
+    return SDL_SetVideoMode(w, h, bpp, flags);
 }
 #endif
 

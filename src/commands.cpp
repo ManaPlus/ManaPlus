@@ -1241,14 +1241,17 @@ impHandler0(createItems)
         if (id <= 500)
             continue;
 
-        const int colors = info->getColorsSize();
+        int colors = info->getColorsSize();
+        if (colors >= 255)
+            colors = 254;
+
         if (!colors || serverVersion < 1)
         {
             dialog->addItem(id, 1, 100, 0);
         }
         else
         {
-            for (int f = 0; f < colors; f ++)
+            for (unsigned char f = 0; f < colors; f ++)
             {
                 if (!info->getColor(f).empty())
                     dialog->addItem(id, f, 100, 0);
@@ -1309,7 +1312,7 @@ static int uploadUpdate(void *ptr,
         if (chatWindow && (!tab || chatWindow->isTabPresent(tab)))
         {
             std::string str = Net::Download::getUploadResponse();
-            const int sz = str.size();
+            const size_t sz = str.size();
             if (sz > 0)
             {
                 if (str[sz - 1] == '\n')
