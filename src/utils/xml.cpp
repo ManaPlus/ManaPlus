@@ -46,10 +46,10 @@ static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
 
 static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg, ...)
 {
-    unsigned size = 1024;
-    const unsigned msgSize = strlen(msg);
+    size_t size = 1024;
+    const size_t msgSize = strlen(msg);
     if (msgSize * 3 > size)
-        size = static_cast<unsigned>(msgSize * 3);
+        size = msgSize * 3;
 
     char* buf = new char[size + 1];
     va_list ap;
