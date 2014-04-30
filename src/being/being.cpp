@@ -179,8 +179,8 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mCriticalHit(0),
     mPvpRank(0),
     mNumber(100),
-    mLook(0),
     mUsageCounter(1),
+    mLook(0U),
     mHairColor(0),
     mErased(false),
     mEnemy(false),
@@ -1331,7 +1331,7 @@ void Being::nextTile()
 
     mActionTime += static_cast<int>(mSpeed / 10);
     if ((mType != PLAYER || mUseDiagonal) && mX != pos.x && mY != pos.y)
-        mSpeed = mWalkSpeed.x * 1.4;
+        mSpeed = static_cast<float>(mWalkSpeed.x * 1.4F);
     else
         mSpeed = mWalkSpeed.x;
 
@@ -1535,7 +1535,7 @@ void Being::petLogic()
             }
         }
 
-        const int walkMask = getWalkMask();
+        const unsigned char walkMask = getWalkMask();
         if (!mMap->getWalk(dstX, dstY, walkMask))
         {
             if (dstX != dstX0)
@@ -1592,7 +1592,7 @@ void Being::petLogic()
                 break;
         }
 
-        int newDir = 0;
+        uint8_t newDir = 0;
         switch (directionType)
         {
             case 0:
@@ -2783,7 +2783,7 @@ int Being::searchSlotValue(const std::vector<int> &slotRemap,
     for (size_t slot = 0; slot < sz; slot ++)
     {
         if (slotRemap[slot] == val)
-            return slot;
+            return static_cast<int>(slot);
     }
     return getNumberOfLayers() - 1;
 }
@@ -3271,7 +3271,7 @@ void Being::playSfx(const SoundInfo &sound, Being *const being,
     }
 }
 
-void Being::setLook(const int look)
+void Being::setLook(const uint8_t look)
 {
     if (mType == PLAYER)
         setSubtype(mSubType, look);

@@ -45,11 +45,13 @@
 
 #include "debug.h"
 
+#ifndef USE_SDL2
 static const int BUFFER_WIDTH = 100;
 static const int BUFFER_HEIGHT = 100;
-
 static const unsigned cache_max_size = 10;
 static const unsigned cache_clean_part = 3;
+#endif
+
 bool CompoundSprite::mEnableDelay = true;
 
 CompoundSprite::CompoundSprite() :

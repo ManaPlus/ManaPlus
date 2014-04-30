@@ -895,10 +895,10 @@ class Being : public ActorSprite, public ConfigListener
         void playSfx(const SoundInfo &sound, Being *const being,
                      const bool main, const int x, const int y) const;
 
-        int getLook() const
+        uint8_t getLook() const
         { return mLook; }
 
-        void setLook(const int look);
+        void setLook(const uint8_t look);
 
         static uint8_t genderToInt(const Gender sex) A_WARN_UNUSED;
 
@@ -1090,8 +1090,8 @@ class Being : public ActorSprite, public ConfigListener
         int mCriticalHit;
         unsigned int mPvpRank;
         unsigned int mNumber;
-        int mLook;
         int mUsageCounter;
+        uint8_t mLook;
         unsigned char mHairColor;
         bool mErased;
         bool mEnemy;

@@ -173,7 +173,7 @@ int PlayerRelationsManager::getPlayerIgnoreStrategyIndex(
     for (size_t i = 0; i < sz; i++)
     {
         if ((*strategies)[i]->mShortName == name)
-            return i;
+            return static_cast<int>(i);
     }
 
     return -1;

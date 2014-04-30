@@ -966,13 +966,13 @@ void LocalPlayer::handleStatusEffect(StatusEffect *const effect,
         {
             // replace sprite or append
             bool found = false;
-            const unsigned int sz = mStatusEffectIcons.size();
-            for (unsigned int i = 0; i < sz; i++)
+            const size_t sz = mStatusEffectIcons.size();
+            for (size_t i = 0; i < sz; i++)
             {
                 if (mStatusEffectIcons[i] == effectId)
                 {
                     if (miniStatusWindow)
-                        miniStatusWindow->setIcon(i, sprite);
+                        miniStatusWindow->setIcon(static_cast<int>(i), sprite);
                     found = true;
                     break;
                 }
@@ -1167,7 +1167,7 @@ void LocalPlayer::moveToTarget(int dist)
                 mTarget->getTileX(), mTarget->getTileY(), getWalkMask(), 0);
         }
 
-        const unsigned int sz = debugPath.size();
+        const size_t sz = debugPath.size();
         if (sz < static_cast<unsigned int>(dist))
             return;
         limit = static_cast<int>(sz) - dist;
