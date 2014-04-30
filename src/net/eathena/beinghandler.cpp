@@ -432,7 +432,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     const int16_t speed = msg.readInt16();
     const uint16_t stunMode = msg.readInt16();  // opt1
     uint32_t statusEffects = msg.readInt16();   // opt2
-    statusEffects |= (static_cast<uint32_t>(msg.readInt16()))
+    statusEffects |= (static_cast<uint16_t>(msg.readInt16()))
         << 16;  // status.options; Aethyra uses this as misc2
     const int16_t job = msg.readInt16();
     int disguiseId = 0;
@@ -506,7 +506,8 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
     msg.readInt8();   // karma
     // reserving bit for future usage
-    dstBeing->setGender(Being::intToGender(msg.readInt8() & 3));
+    dstBeing->setGender(Being::intToGender(
+        static_cast<uint8_t>(msg.readInt8() & 3)));
 
     if (!disguiseId)
     {
@@ -618,8 +619,9 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
-        (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, statusEffects & 0xffff);
+        (statusEffects >> 16) & 0xffffU));
+    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+        statusEffects & 0xffffU));
 
     if (msgType == 3 && dstBeing->getType() == Being::PLAYER)
         dstBeing->setMoveTime();
@@ -645,7 +647,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     int16_t speed = msg.readInt16();
     const uint16_t stunMode = msg.readInt16();  // opt1
     uint32_t statusEffects = msg.readInt16();   // opt2
-    statusEffects |= (static_cast<uint32_t>(msg.readInt16())) << 16;  // option
+    statusEffects |= (static_cast<uint16_t>(msg.readInt16())) << 16;  // option
     const int16_t job = msg.readInt16();  // class
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -733,7 +735,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     msg.readInt16();  // manner
     dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
     msg.readInt8();   // karma
-    int16_t gender = msg.readInt8();
+    uint8_t gender = msg.readInt8();
 
     if (dstBeing->getType() == ActorSprite::PLAYER)
     {
@@ -808,8 +810,9 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
-        (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, statusEffects & 0xffff);
+        (statusEffects >> 16) & 0xffffU));
+    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+        statusEffects & 0xffffU));
 }
 
 }  // namespace EAthena

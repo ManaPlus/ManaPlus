@@ -189,8 +189,8 @@ void PartyHandler::setShareExperience(const PartyShare share) const
         return;
 
     MessageOut outMsg(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(share);
-    outMsg.writeInt16(mShareItems);
+    outMsg.writeInt16(static_cast<int16_t>(share));
+    outMsg.writeInt16(static_cast<int16_t>(mShareItems));
 }
 
 void PartyHandler::setShareItems(const PartyShare share) const
@@ -199,8 +199,8 @@ void PartyHandler::setShareItems(const PartyShare share) const
         return;
 
     MessageOut outMsg(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(mShareExp);
-    outMsg.writeInt16(share);
+    outMsg.writeInt16(static_cast<int16_t>(mShareExp));
+    outMsg.writeInt16(static_cast<int16_t>(share));
 }
 
 }  // namespace EAthena

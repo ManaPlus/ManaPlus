@@ -301,7 +301,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
             break;
         case 1:     // eAthena LOOK_HAIR
         {
-            const int look = id / 256;
+            const uint8_t look = static_cast<uint8_t>(id / 256U);
             const int hair = id % 256;
             dstBeing->setHairStyle(SPRITE_HAIR, hair * -1);
             dstBeing->setLook(look);
@@ -378,7 +378,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
             player_node->imitateOutfit(dstBeing, SPRITE_EVOL2);
             break;
         case 16:
-            dstBeing->setLook(id);
+            dstBeing->setLook(static_cast<uint8_t>(id));
             break;
         default:
             logger->log("QQQ3 CHANGE_LOOKS: unsupported type: "
@@ -482,7 +482,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
 
     const int hairStyle = msg.readInt8();
-    const int look = msg.readInt8();
+    const uint8_t look = msg.readInt8();
     dstBeing->setSubtype(job, look);
     const uint16_t weapon = msg.readInt16();
     const uint16_t shield = msg.readInt16();
@@ -657,8 +657,8 @@ void BeingHandler::processBeingMove3(Net::MessageIn &msg)
     if (serverVersion < 10)
         return;
 
-    static const int dirx[8] = {0, -1, -1, -1,  0,  1, 1, 1};
-    static const int diry[8] = {1,  1,  0, -1, -1, -1, 0, 1};
+    static const int16_t dirx[8] = {0, -1, -1, -1,  0,  1, 1, 1};
+    static const int16_t diry[8] = {1,  1,  0, -1, -1, -1, 0, 1};
 
     const int len = msg.readInt16() - 14;
     Being *const dstBeing = actorManager->findBeing(msg.readInt32());

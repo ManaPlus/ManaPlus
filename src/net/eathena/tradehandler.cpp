@@ -110,7 +110,7 @@ void TradeHandler::respond(const bool accept) const
         PlayerInfo::setTrading(false);
 
     MessageOut outMsg(CMSG_TRADE_RESPONSE);
-    outMsg.writeInt8(accept ? 3 : 4);
+    outMsg.writeInt8(static_cast<int8_t>(accept ? 3 : 4));
 }
 
 void TradeHandler::addItem(const Item *const item, const int amount) const

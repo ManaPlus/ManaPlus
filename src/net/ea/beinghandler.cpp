@@ -194,7 +194,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
         speed = 150;
 
     const int hairStyle = msg.readInt8();
-    const int look = msg.readInt8();
+    const uint8_t look = msg.readInt8();
     dstBeing->setSubtype(job, look);
     if (dstBeing->getType() == ActorSprite::MONSTER && player_node)
         player_node->checkNewName(dstBeing);
@@ -678,7 +678,8 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg) const
 
     msg.readInt16();  // unused
 
-    const unsigned char dir = msg.readInt8() & 0x0f;
+    const unsigned char dir = static_cast<unsigned char>(
+        msg.readInt8() & 0x0f);
     dstBeing->setDirection(dir);
     if (player_node)
         player_node->imitateDirection(dstBeing, dir);
@@ -688,18 +689,6 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
 {
     if (!actorManager || !player_node)
         return;
-
-    /*
-      *  Instruction from server to stop walking at x, y.
-      *
-      *  Some people like having this enabled.  Others absolutely
-      *  despise it.  So I'm setting to so that it only affects the
-      *  local player if the person has set a key "EnableSync" to "1"
-      *  in their config.xml file.
-      *
-      *  This packet will be honored for all other beings, regardless
-      *  of the config setting.
-      */
 
     const int id = msg.readInt32();
 
