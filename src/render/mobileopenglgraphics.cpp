@@ -53,18 +53,18 @@
     tVar[vp + 9] = y2; \
     tVar[vp + 10] = x2; \
     tVar[vp + 11] = y2; \
-    vVar[vp + 0] = dstX; \
-    vVar[vp + 1] = dstY; \
-    vVar[vp + 2] = dstX + w; \
-    vVar[vp + 3] = dstY; \
-    vVar[vp + 4] = dstX + w; \
-    vVar[vp + 5] = dstY + h; \
-    vVar[vp + 6] = dstX; \
-    vVar[vp + 7] = dstY; \
-    vVar[vp + 8] = dstX; \
-    vVar[vp + 9] = dstY + h; \
-    vVar[vp + 10] = dstX + w; \
-    vVar[vp + 11] = dstY + h;
+    vVar[vp + 0] = static_cast<GLshort>(dstX); \
+    vVar[vp + 1] = static_cast<GLshort>(dstY); \
+    vVar[vp + 2] = static_cast<GLshort>(dstX + w); \
+    vVar[vp + 3] = static_cast<GLshort>(dstY); \
+    vVar[vp + 4] = static_cast<GLshort>(dstX + w); \
+    vVar[vp + 5] = static_cast<GLshort>(dstY + h); \
+    vVar[vp + 6] = static_cast<GLshort>(dstX); \
+    vVar[vp + 7] = static_cast<GLshort>(dstY); \
+    vVar[vp + 8] = static_cast<GLshort>(dstX); \
+    vVar[vp + 9] = static_cast<GLshort>(dstY + h); \
+    vVar[vp + 10] = static_cast<GLshort>(dstX + w); \
+    vVar[vp + 11] = static_cast<GLshort>(dstY + h);
 
 GLuint MobileOpenGLGraphics::mLastImage = 0;
 #ifdef DEBUG_DRAW_CALLS
@@ -1163,8 +1163,10 @@ bool MobileOpenGLGraphics::drawNet(const int x1, const int y1,
     const GLshort xs2 = static_cast<GLshort>(x2);
     const GLshort ys1 = static_cast<GLshort>(y1);
     const GLshort ys2 = static_cast<GLshort>(y2);
+    const int16_t width1 = static_cast<int16_t>(width);
+    const int16_t height1 = static_cast<int16_t>(height);
 
-    for (int16_t y = y1; y < y2; y += height)
+    for (int16_t y = static_cast<int16_t>(y1); y < y2; y += height1)
     {
         mShortVertArray[vp + 0] = xs1;
         mShortVertArray[vp + 1] = y;
@@ -1180,7 +1182,7 @@ bool MobileOpenGLGraphics::drawNet(const int x1, const int y1,
         }
     }
 
-    for (int16_t x = x1; x < x2; x += width)
+    for (int16_t x = static_cast<int16_t>(x1); x < x2; x += width1)
     {
         mShortVertArray[vp + 0] = x;
         mShortVertArray[vp + 1] = ys1;

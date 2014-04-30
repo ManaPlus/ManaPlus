@@ -110,6 +110,13 @@ static int FakeSDL_RenderCopy(SDL_Renderer *const renderer,
 
 #endif
 
+#define setRenderDrawColor(mColor) \
+    SDL_SetRenderDrawColor(mRenderer, \
+        static_cast<uint8_t>(mColor.r), \
+        static_cast<uint8_t>(mColor.g), \
+        static_cast<uint8_t>(mColor.b), \
+        static_cast<uint8_t>(mColor.a))
+
 SDLGraphics::SDLGraphics() :
     Graphics(),
     mRendererFlags(SDL_RENDERER_SOFTWARE),
@@ -649,7 +656,7 @@ void SDLGraphics::fillRectangle(const Rect &rectangle)
         static_cast<int32_t>(rectangle.height)
     };
 
-    SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
+    setRenderDrawColor(mColor);
     SDL_RenderFillRects(mRenderer, &rect, 1);
 }
 
@@ -711,7 +718,7 @@ void SDLGraphics::drawPoint(int x, int y)
     if (!top.isPointInRect(x, y))
         return;
 
-    SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
+    setRenderDrawColor(mColor);
     const SDL_Point point =
     {
         x,
@@ -725,8 +732,7 @@ void SDLGraphics::drawPoint(int x, int y)
 void SDLGraphics::drawRectangle(const Rect &rectangle)
 {
     const ClipRect &top = mClipStack.top();
-
-    SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
+    setRenderDrawColor(mColor);
 
     const int x1 = rectangle.x + top.xOffset;
     const int y1 = rectangle.y + top.yOffset;
@@ -747,8 +753,7 @@ void SDLGraphics::drawRectangle(const Rect &rectangle)
 void SDLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
     const ClipRect &top = mClipStack.top();
-
-    SDL_SetRenderDrawColor(mRenderer, mColor.r, mColor.g, mColor.b, mColor.a);
+    setRenderDrawColor(mColor);
 
     const int x0 = top.xOffset;
     const int y0 = top.yOffset;

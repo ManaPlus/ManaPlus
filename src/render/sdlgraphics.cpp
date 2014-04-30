@@ -1238,8 +1238,9 @@ void SDLGraphics::drawHLine(int x1, int y, int x2)
         case 2:
         {
             uint16_t* q = reinterpret_cast<uint16_t*>(p);
+            const uint16_t pixel1 = static_cast<uint16_t>(pixel);
             for (; x1 <= x2; ++x1)
-                *(q++) = pixel;
+                *(q++) = pixel1;
             break;
         }
 
@@ -1274,7 +1275,7 @@ void SDLGraphics::drawHLine(int x1, int y, int x2)
             if (mAlpha)
             {
                 unsigned char a = static_cast<unsigned char>(mColor.a);
-                unsigned char a1 = 255 - a;
+                unsigned char a1 = static_cast<unsigned char>(255U - a);
                 const int b0 = (pixel & 0xff) * a;
                 const int g0 = (pixel & 0xff00) * a;
                 const int r0 = (pixel & 0xff0000) * a;
@@ -1403,7 +1404,7 @@ void SDLGraphics::drawVLine(int x, int y1, int y2)
             if (mAlpha)
             {
                 unsigned char a = static_cast<unsigned char>(mColor.a);
-                unsigned char a1 = 255 - a;
+                unsigned char a1 = static_cast<unsigned char>(255U - a);
                 const int b0 = (pixel & 0xff) * a;
                 const int g0 = (pixel & 0xff00) * a;
                 const int r0 = (pixel & 0xff0000) * a;
