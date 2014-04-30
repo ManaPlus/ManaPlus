@@ -340,7 +340,8 @@ void CharCreateDialog::action(const ActionEvent &event)
 
             Net::getCharServerHandler()->newCharacter(getName(), characterSlot,
                 mFemale->isSelected(), mHairStyle, mHairColor,
-                static_cast<unsigned char>(mRace), mLook, atts);
+                static_cast<unsigned char>(mRace),
+                static_cast<unsigned char>(mLook), atts);
         }
         else
         {
@@ -620,7 +621,8 @@ void CharCreateDialog::updateLook()
     {
         mLook = 0;
     }
-    mPlayer->setSubtype(static_cast<uint16_t>(mRace), mLook);
+    mPlayer->setSubtype(static_cast<uint16_t>(mRace),
+        static_cast<uint8_t>(mLook));
     if (mRaceNameLabel)
     {
         mRaceNameLabel->setCaption(item.getName());

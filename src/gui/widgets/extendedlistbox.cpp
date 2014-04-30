@@ -89,14 +89,14 @@ void ExtendedListBox::draw(Graphics *graphics)
 
         if (insideWidth < strWidth)
         {
-            const int strSize = str.size();
-            int divPos = strSize / 2;
+            const size_t strSize = str.size();
+            size_t divPos = strSize / 2;
             if (divPos > 0 && static_cast<unsigned char>(
                 str[divPos - 1]) >= 0xc0)
             {
                 divPos --;
             }
-            for (int d = divPos; d > 10; d --)
+            for (size_t d = divPos; d > 10; d --)
             {
                 if (str[d] == 32)
                 {
@@ -116,11 +116,11 @@ void ExtendedListBox::draw(Graphics *graphics)
     }
     mHeight = y + height;
 
-    const int itemsSz = mListItems.size();
-    const int selSz = mSelectedItems.size();
+    const size_t itemsSz = mListItems.size();
+    const size_t selSz = mSelectedItems.size();
     int minY = -1;
     int maxY = -1;
-    for (int f = 0; f < selSz; f ++)
+    for (size_t f = 0; f < selSz; f ++)
     {
         const ExtendedListBoxItem &item = mSelectedItems[f];
         const int y1 = item.y;
@@ -138,7 +138,7 @@ void ExtendedListBox::draw(Graphics *graphics)
             width - pad2, maxY - minY + height));
     }
 
-    for (int f = 0; f < itemsSz; ++f)
+    for (size_t f = 0; f < itemsSz; ++f)
     {
         const ExtendedListBoxItem &item = mListItems[f];
         const int row1 = item.row;
@@ -156,7 +156,7 @@ void ExtendedListBox::draw(Graphics *graphics)
 
     graphics->setColorAll(mForegroundColor, mForegroundColor2);
 
-    for (int f = 0; f < itemsSz; ++f)
+    for (size_t f = 0; f < itemsSz; ++f)
     {
         const ExtendedListBoxItem &item = mListItems[f];
         const int row1 = item.row;
@@ -173,7 +173,7 @@ void ExtendedListBox::draw(Graphics *graphics)
         }
     }
 
-    for (int f = 0; f < selSz; ++f)
+    for (size_t f = 0; f < selSz; ++f)
     {
         const ExtendedListBoxItem &item = mSelectedItems[f];
         const int row1 = item.row;
@@ -191,7 +191,7 @@ void ExtendedListBox::draw(Graphics *graphics)
 
     graphics->setColorAll(mForegroundSelectedColor, mForegroundSelectedColor2);
 
-    for (int f = 0; f < selSz; ++f)
+    for (size_t f = 0; f < selSz; ++f)
     {
         const ExtendedListBoxItem &item = mSelectedItems[f];
         const int row1 = item.row;
@@ -225,8 +225,8 @@ int ExtendedListBox::getSelectionByMouse(const int y) const
         return ListBox::getSelectionByMouse(y);
 
     const int height = mRowHeight;
-    const int itemsSz = mListItems.size();
-    for (int f = 0; f < itemsSz; f ++)
+    const size_t itemsSz = mListItems.size();
+    for (size_t f = 0; f < itemsSz; f ++)
     {
         const ExtendedListBoxItem &item = mListItems[f];
         const int y2 = item.y;
@@ -234,8 +234,8 @@ int ExtendedListBox::getSelectionByMouse(const int y) const
             return item.row;
     }
 
-    const int selSz = mSelectedItems.size();
-    for (int f = 0; f < selSz; f ++)
+    const size_t selSz = mSelectedItems.size();
+    for (size_t f = 0; f < selSz; f ++)
     {
         const ExtendedListBoxItem &item = mSelectedItems[f];
         const int y2 = item.y;

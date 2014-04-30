@@ -434,7 +434,7 @@ void WhoIsOnline::loadWebList()
                     level = 0;
 
                 OnlinePlayer *const player = new OnlinePlayer(nick,
-                    static_cast<signed char>(255), level,
+                    static_cast<unsigned char>(255), level,
                     GENDER_UNSPECIFIED, -1);
                 mOnlinePlayers.insert(player);
                 mOnlineNicks.insert(nick);

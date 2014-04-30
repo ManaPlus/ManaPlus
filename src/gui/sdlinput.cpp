@@ -163,7 +163,7 @@ void SDLInput::pushInput(const SDL_Event &event)
 #ifdef ANDROID
                 mouseInput.setReal(0, 0);
 #endif
-                mouseInput.setButton(-1);
+                mouseInput.setButton(static_cast<uint32_t>(-1));
                 if (y > 0)
                     mouseInput.setType(MouseInput::WHEEL_MOVED_UP);
                 else

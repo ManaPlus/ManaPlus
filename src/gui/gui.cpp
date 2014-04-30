@@ -487,7 +487,7 @@ void Gui::draw()
 
     int mouseX;
     int mouseY;
-    const uint8_t button = getMouseState(&mouseX, &mouseY);
+    const MouseStateType button = getMouseState(&mouseX, &mouseY);
 
     if ((client->getMouseFocused() || button & SDL_BUTTON(1))
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0F)
@@ -1111,9 +1111,9 @@ void Gui::removeDragged(Widget *widget)
         mFocusHandler->setDraggedWidget(nullptr);
 }
 
-uint32_t Gui::getMouseState(int *const x, int *const y)
+MouseStateType Gui::getMouseState(int *const x, int *const y)
 {
-    const uint32_t res = SDL_GetMouseState(x, y);
+    const MouseStateType res = SDL_GetMouseState(x, y);
     const int scale = mainGraphics->getScale();
     (*x) /= scale;
     (*y) /= scale;

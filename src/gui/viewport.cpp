@@ -280,7 +280,7 @@ void Viewport::followMouse()
 {
     if (!gui)
         return;
-    const uint8_t button = Gui::getMouseState(&mMouseX, &mMouseY);
+    const MouseStateType button = Gui::getMouseState(&mMouseX, &mMouseY);
     // If the left button is dragged
     if (mPlayerFollowMouse && (button & SDL_BUTTON(1)))
     {

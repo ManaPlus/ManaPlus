@@ -456,7 +456,8 @@ void TextBox::draw(Graphics* graphics)
     for (size_t i = 0, sz = mTextRows.size(); i < sz; i++)
     {
         // Move the text one pixel so we can have a caret before a letter.
-        font->drawString(graphics, mTextRows[i], 1, i * fontHeight);
+        font->drawString(graphics, mTextRows[i], 1,
+            static_cast<int>(i * fontHeight));
     }
     BLOCK_END("TextBox::draw")
 }

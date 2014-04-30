@@ -256,12 +256,18 @@ void CharSelectDialog::action(const ActionEvent &event)
                 // TRANSLATORS: char select dialog. player info message.
                 _("Hp: %u/%u\nMp: %u/%u\nLevel: %u\n"
                 "Experience: %u\nMoney: %s"),
-                character->data.mAttributes[PlayerInfo::HP],
-                character->data.mAttributes[PlayerInfo::MAX_HP],
-                character->data.mAttributes[PlayerInfo::MP],
-                character->data.mAttributes[PlayerInfo::MAX_MP],
-                character->data.mAttributes[PlayerInfo::LEVEL],
-                character->data.mAttributes[PlayerInfo::EXP],
+                static_cast<uint32_t>(
+                character->data.mAttributes[PlayerInfo::HP]),
+                static_cast<uint32_t>(
+                character->data.mAttributes[PlayerInfo::MAX_HP]),
+                static_cast<uint32_t>(
+                character->data.mAttributes[PlayerInfo::MP]),
+                static_cast<uint32_t>(
+                character->data.mAttributes[PlayerInfo::MAX_MP]),
+                static_cast<uint32_t>(
+                character->data.mAttributes[PlayerInfo::LEVEL]),
+                static_cast<uint32_t>(
+                character->data.mAttributes[PlayerInfo::EXP]),
                 Units::formatCurrency(
                 character->data.mAttributes[PlayerInfo::MONEY]).c_str());
             new OkDialog(data->getName(), msg, DIALOG_SILENCE);

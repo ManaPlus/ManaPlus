@@ -33,6 +33,16 @@
 
 struct SetupActionData final
 {
+    SetupActionData(const std::string name0,
+                    const int actionId0,
+                    const std::string text0) :
+        name(name0),
+        actionId(actionId0),
+        text(text0)
+    { }
+
+    A_DELETE_COPY(SetupActionData)
+
     std::string name;
     const int actionId;
     std::string text;

@@ -253,7 +253,7 @@ void TextField::keyPressed(KeyEvent &event)
     {
         std::string str = event.getText();
         mText.insert(mCaretPosition, str);
-        mCaretPosition += str.size();
+        mCaretPosition += static_cast<unsigned int>(str.size());
         event.consume();
         fixScroll();
         if (mSendAlwaysEvents)
@@ -679,7 +679,7 @@ void TextField::fixScroll()
 
 void TextField::setCaretPosition(unsigned int position)
 {
-    const unsigned int sz = mText.size();
+    const unsigned int sz = static_cast<unsigned int>(mText.size());
     if (position > sz)
         mCaretPosition = static_cast<int>(sz);
     else
@@ -746,7 +746,7 @@ void TextField::setText(const std::string& text)
 {
     const size_t sz = text.size();
     if (sz < mCaretPosition)
-        mCaretPosition = sz;
+        mCaretPosition = static_cast<unsigned int>(sz);
     mText = text;
 }
 

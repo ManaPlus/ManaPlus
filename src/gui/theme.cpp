@@ -1235,8 +1235,8 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
             xmlNodeGetContent(infoNode)))
 
 #define readFloatValue(name) \
-        info->name = atof(reinterpret_cast<const char*>(\
-            xmlNodeGetContent(infoNode)))
+        info->name = static_cast<float>(atof(reinterpret_cast<const char*>(\
+            xmlNodeGetContent(infoNode))))
 
 ThemeInfo *Theme::loadInfo(const std::string &themeName)
 {

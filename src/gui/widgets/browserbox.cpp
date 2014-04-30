@@ -629,7 +629,8 @@ int BrowserBox::calcHeight()
                     const Color col[2] =
                     {
                         getThemeCharColor(c, valid),
-                        getThemeCharColor(c | 0x80, valid)
+                        getThemeCharColor(static_cast<signed char>(
+                            c | 0x80), valid)
                     };
 
                     if (c == '>')

@@ -45,10 +45,10 @@ class PlayerBox final : public Widget,
          * Constructor. Takes the initial player character that this box should
          * display, which defaults to <code>NULL</code>.
          */
-        explicit PlayerBox(Widget2 *const widget,
-                           Being *const being,
-                           const std::string &skin = "",
-                           const std::string &selectedSkin = "");
+        PlayerBox(Widget2 *const widget,
+                  Being *const being,
+                  const std::string &skin = "",
+                  const std::string &selectedSkin = "");
 
         explicit PlayerBox(Widget2 *const widget,
                            const std::string &skin = "",

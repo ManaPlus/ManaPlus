@@ -104,8 +104,10 @@ class Window : public BasicContainer2,
          *                a window will never go below its parent window.
          * @param skin    The location where the window's skin XML can be found.
          */
-        Window(const std::string &caption = "Window", const bool modal = false,
-               Window *const parent = nullptr, std::string skin = "");
+        explicit Window(const std::string &caption = "Window",
+                        const bool modal = false,
+                        Window *const parent = nullptr,
+                        std::string skin = "");
 
         A_DELETE_COPY(Window)
 

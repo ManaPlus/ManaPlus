@@ -88,6 +88,12 @@ class SDLInput;
 class Widget;
 class Window;
 
+#ifdef USE_SDL2
+#define MouseStateType uint32_t
+#else
+#define MouseStateType uint8_t
+#endif
+
 /**
  * \defgroup GUI Core GUI related classes (widgets)
  */
@@ -215,7 +221,7 @@ class Gui final
         int getLastMouseY() const
         { return mLastMouseY; }
 
-        static uint32_t getMouseState(int *const x, int *const y);
+        static MouseStateType getMouseState(int *const x, int *const y);
 
         /**
          * Sets the top widget. The top widget is the root widget

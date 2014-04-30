@@ -645,7 +645,7 @@ int Font::getStringIndexAt(const std::string& text, const int x) const
     for (size_t i = 0; i < sz; ++i)
     {
         if (getWidth(text.substr(0, i)) > x)
-            return i;
+            return static_cast<int>(i);
     }
 
     return static_cast<int>(sz);

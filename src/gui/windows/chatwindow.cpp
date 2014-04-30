@@ -1452,7 +1452,8 @@ bool ChatWindow::resortChatLog(std::string line, Own own,
                 {
                     const std::string nick = line.substr(0, idx2 - 1);
                     line = line.substr(idx2 + 6);
-                    localPetEmote(nick, atoi(line.c_str()));
+                    localPetEmote(nick, static_cast<uint8_t>(
+                        atoi(line.c_str())));
                 }
                 // ignore other special message formats.
                 return false;

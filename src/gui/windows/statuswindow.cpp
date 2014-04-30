@@ -114,7 +114,8 @@ class DerDisplay final : public AttrDisplay
         { return DERIVED; }
 };
 
-class ChangeDisplay final : public AttrDisplay, ActionListener
+class ChangeDisplay final : public AttrDisplay,
+                            public ActionListener
 {
     public:
         ChangeDisplay(const Widget2 *const widget,

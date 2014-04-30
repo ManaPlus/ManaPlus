@@ -45,9 +45,9 @@ class ShortcutWindow final : public Window
                        const std::string &restrict skinFile = "",
                        int width = 0, int height = 0);
 
-        ShortcutWindow(const std::string &restrict title,
-                       const std::string &restrict skinFile = "",
-                       const int width = 0, const int height = 0);
+        explicit ShortcutWindow(const std::string &restrict title,
+                                const std::string &restrict skinFile = "",
+                                const int width = 0, const int height = 0);
 
         A_DELETE_COPY(ShortcutWindow)
 

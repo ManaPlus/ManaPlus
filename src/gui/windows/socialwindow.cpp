@@ -277,7 +277,9 @@ public:
         if (online0 || total0)
         {
             // TRANSLATORS: social window label
-            mCounterString = strprintf(_("Members: %u/%u"), online0, total0);
+            mCounterString = strprintf(_("Members: %u/%u"),
+                static_cast<uint32_t>(online0),
+                static_cast<uint32_t>(total0));
         }
         else
         {
@@ -299,7 +301,9 @@ public:
             }
 
             // TRANSLATORS: social window label
-            mCounterString = strprintf(_("Players: %u/%u"), online, total);
+            mCounterString = strprintf(_("Players: %u/%u"),
+                static_cast<uint32_t>(online),
+                static_cast<uint32_t>(total));
         }
         updateCounter();
     }
@@ -369,7 +373,9 @@ public:
         }
 
         // TRANSLATORS: social window label
-        mCounterString = strprintf(_("Players: %u/%u"), online, total);
+        mCounterString = strprintf(_("Players: %u/%u"),
+            static_cast<uint32_t>(online),
+            static_cast<uint32_t>(total));
         updateCounter();
     }
 };
@@ -492,7 +498,9 @@ public:
         }
 
         // TRANSLATORS: social window label
-        mCounterString = strprintf(_("Players: %u/%u"), online, total);
+        mCounterString = strprintf(_("Players: %u/%u"),
+            static_cast<uint32_t>(online),
+            static_cast<uint32_t>(total));
         updateCounter();
     }
 
@@ -781,7 +789,9 @@ public:
             socialWindow->setProcessedPortals(true);
 
         // TRANSLATORS: social window label
-        mCounterString = strprintf(_("Portals: %u/%u"), online, total);
+        mCounterString = strprintf(_("Portals: %u/%u"),
+            static_cast<uint32_t>(online),
+            static_cast<uint32_t>(total));
         updateCounter();
     }
 
@@ -1157,7 +1167,9 @@ public:
         delete players;
 
         // TRANSLATORS: social window label
-        mCounterString = strprintf(_("Friends: %u/%u"), online, total);
+        mCounterString = strprintf(_("Friends: %u/%u"),
+            static_cast<uint32_t>(online),
+            static_cast<uint32_t>(total));
         updateCounter();
     }
 

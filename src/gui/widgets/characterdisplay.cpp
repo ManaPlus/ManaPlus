@@ -132,7 +132,8 @@ void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
     if (!name.empty())
     {
         mPopup->show(mouseX, mouseY, name, strprintf(_("Level: %u"),
-            mCharacter->data.mAttributes[PlayerInfo::LEVEL]),
+            static_cast<uint32_t>(
+            mCharacter->data.mAttributes[PlayerInfo::LEVEL])),
             strprintf(_("Money: %s"), Units::formatCurrency(
             mCharacter->data.mAttributes[PlayerInfo::MONEY]).c_str()));
     }
