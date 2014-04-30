@@ -33,6 +33,7 @@
 
 struct SetupActionData final
 {
+#ifdef ADVGCC
     SetupActionData(const std::string name0,
                     const int actionId0,
                     const std::string text0) :
@@ -42,6 +43,7 @@ struct SetupActionData final
     { }
 
     A_DELETE_COPY(SetupActionData)
+#endif
 
     std::string name;
     const int actionId;

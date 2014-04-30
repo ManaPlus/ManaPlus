@@ -41,6 +41,7 @@ namespace NotifyManager
 
     struct NotificationInfo final
     {
+#ifdef ADVGCC
         NotificationInfo(const char *const sound0,
                          const char *const text0,
                          const NotifyFlags flags0) :
@@ -50,6 +51,7 @@ namespace NotifyManager
         { }
 
         A_DELETE_COPY(NotificationInfo)
+#endif
 
         const char *sound;
         const char *text;

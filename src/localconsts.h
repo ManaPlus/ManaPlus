@@ -53,6 +53,8 @@
 #define noexcept
 // #define A_DELETE
 // #define A_DELETE_COPY
+#else
+#define ADVGCC
 #endif
 #undef Z_NULL
 #define Z_NULL nullptr

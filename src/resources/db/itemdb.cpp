@@ -67,14 +67,7 @@ namespace
 {
     struct FieldType
     {
-/*
-        FieldType() :
-            name(nullptr),
-            description(nullptr),
-            sign(false)
-        { }
-*/
-
+#ifdef ADVGCC
         FieldType(const char *const name0,
                   const char *const description0,
                   const bool sign0) :
@@ -84,6 +77,7 @@ namespace
         { }
 
         A_DELETE_COPY(FieldType)
+#endif
 
         const char *name;
         const char *description;
