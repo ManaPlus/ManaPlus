@@ -599,15 +599,15 @@ struct DyedImageLoader
         if (!rl->manager)
             return nullptr;
 
-        std::string path = rl->path;
-        const size_t p = path.find('|');
+        std::string path1 = rl->path;
+        const size_t p = path1.find('|');
         Dye *d = nullptr;
         if (p != std::string::npos)
         {
-            d = new Dye(path.substr(p + 1));
-            path = path.substr(0, p);
+            d = new Dye(path1.substr(p + 1));
+            path1 = path1.substr(0, p);
         }
-        SDL_RWops *const rw = MPHYSFSRWOPS_openRead(path.c_str());
+        SDL_RWops *const rw = MPHYSFSRWOPS_openRead(path1.c_str());
         if (!rw)
         {
             delete d;

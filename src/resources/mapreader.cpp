@@ -524,7 +524,8 @@ inline static void setTile(Map *const map, MapLayer *const layer,
                 break;
             if (map->getVersion() >= 2)
             {
-                heights->setHeight(x, y, gid - set->getFirstGid() + 1);
+                heights->setHeight(x, y, static_cast<uint8_t>(
+                    gid - set->getFirstGid() + 1));
             }
             else
             {

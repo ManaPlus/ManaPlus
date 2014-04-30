@@ -74,7 +74,7 @@ class SDLMusic final : public Resource
         /**
          * Constructor.
          */
-        explicit SDLMusic(Mix_Music *const music, SDL_RWops *const rw);
+        SDLMusic(Mix_Music *const music, SDL_RWops *const rw);
 
         Mix_Music *mMusic;
         SDL_RWops *mRw;

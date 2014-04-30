@@ -101,8 +101,8 @@ void AmbientLayer::update(const int timePassed, const float dx, const float dy)
     mPosY += dy * mParallaxY;
 
     const SDL_Rect &rect = mImage->mBounds;
-    const float imgW = rect.w;
-    const float imgH = rect.h;
+    const float imgW = static_cast<float>(rect.w);
+    const float imgH = static_cast<float>(rect.h);
 
     // Wrap values
     while (mPosX > imgW)

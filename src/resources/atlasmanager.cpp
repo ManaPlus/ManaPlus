@@ -202,15 +202,15 @@ void AtlasManager::simpleSort(const std::string &restrict name,
 SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    const int rmask = 0xff000000;
-    const int gmask = 0x00ff0000;
-    const int bmask = 0x0000ff00;
-    const int amask = 0x000000ff;
+    const unsigned int rmask = 0xff000000;
+    const unsigned int gmask = 0x00ff0000;
+    const unsigned int bmask = 0x0000ff00;
+    const unsigned int amask = 0x000000ff;
 #else
-    const int rmask = 0x000000ff;
-    const int gmask = 0x0000ff00;
-    const int bmask = 0x00ff0000;
-    const int amask = 0xff000000;
+    const unsigned int rmask = 0x000000ff;
+    const unsigned int gmask = 0x0000ff00;
+    const unsigned int bmask = 0x00ff0000;
+    const unsigned int amask = 0xff000000;
 #endif
 
     // do not create atlas based on only one image
@@ -225,7 +225,7 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     const int height = atlas->height;
     // temp SDL surface for atlas
     SDL_Surface *const surface = MSDL_CreateRGBSurface(SDL_SWSURFACE,
-        width, height, 32, rmask, gmask, bmask, amask);
+        width, height, 32U, rmask, gmask, bmask, amask);
     if (!surface)
         return nullptr;
 

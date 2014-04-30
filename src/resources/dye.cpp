@@ -203,7 +203,7 @@ void DyePalette::replaceSColor(uint32_t *restrict pixels,
                                const int bufSize) const
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
-    const int sz = mColors.size();
+    const size_t sz = mColors.size();
     if (!sz)
         return;
     if (sz % 2)
@@ -260,7 +260,7 @@ void DyePalette::replaceAColor(uint32_t *restrict pixels,
                                const int bufSize) const
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
-    const int sz = mColors.size();
+    const size_t sz = mColors.size();
     if (!sz)
         return;
     if (sz % 2)
@@ -304,7 +304,7 @@ void DyePalette::replaceSOGLColor(uint32_t *restrict pixels,
                                   const int bufSize) const
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
-    const int sz = mColors.size();
+    const size_t sz = mColors.size();
     if (!sz)
         return;
     if (sz % 2)
@@ -354,7 +354,7 @@ void DyePalette::replaceAOGLColor(uint32_t *restrict pixels,
                                   const int bufSize) const
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
-    const int sz = mColors.size();
+    const size_t sz = mColors.size();
     if (!sz)
         return;
     if (sz % 2)

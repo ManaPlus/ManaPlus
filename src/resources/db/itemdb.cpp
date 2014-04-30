@@ -67,6 +67,24 @@ namespace
 {
     struct FieldType
     {
+/*
+        FieldType() :
+            name(nullptr),
+            description(nullptr),
+            sign(false)
+        { }
+*/
+
+        FieldType(const char *const name0,
+                  const char *const description0,
+                  const bool sign0) :
+            name(name0),
+            description(description0),
+            sign(sign0)
+        { }
+
+        A_DELETE_COPY(FieldType)
+
         const char *name;
         const char *description;
         const bool sign;

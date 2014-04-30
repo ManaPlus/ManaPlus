@@ -298,7 +298,7 @@ class ItemInfo final
         { return mProtected; }
 
         int getColorsSize() const
-        { return mColors ? mColors->size() : 0; }
+        { return mColors ? static_cast<int>(mColors->size()) : 0; }
 
         std::string getColorName(const int idx) const;
 

@@ -89,7 +89,7 @@ void DeadDB::unload()
 
 std::string DeadDB::getRandomString()
 {
-    const int sz = mMessages.size();
+    const size_t sz = mMessages.size();
     if (!sz)
         return std::string();
     return translator->getStr(mMessages[rand() % sz]);
