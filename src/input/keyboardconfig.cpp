@@ -68,8 +68,8 @@ int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event)
         return event.key.keysym.sym;
     else if (event.key.keysym.scancode > 1)
         return -event.key.keysym.scancode;
-#endif
     return 0;
+#endif
 }
 
 int KeyboardConfig::getKeyIndex(const SDL_Event &event, const int grp)

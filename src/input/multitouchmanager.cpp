@@ -66,8 +66,8 @@ void MultiTouchManager::handleFingerUp(const SDL_Event &event)
     updateFinger(event, false);
 }
 
-void MultiTouchManager::checkDevice(const int touchId,
-                                    const int fingerId)
+void MultiTouchManager::checkDevice(const long touchId,
+                                    const long fingerId)
 {
     if (fingerId != 1 || !guiInput)
         return;

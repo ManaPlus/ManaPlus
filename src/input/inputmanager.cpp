@@ -122,7 +122,7 @@ void InputManager::retrieve()
             mNameMap[cf] = i;
             KeyFunction &kf = mKey[i];
             const std::string keyStr = config.getValue(cf, "");
-            const int keyStrSize = keyStr.size();
+            const size_t keyStrSize = keyStr.size();
             if (keyStr.empty())
                 continue;
 

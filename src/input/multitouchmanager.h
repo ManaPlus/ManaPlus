@@ -57,8 +57,8 @@ class MultiTouchManager final
 
         void handleFingerUp(const SDL_Event &event);
 
-        void checkDevice(const int touchId,
-                         const int fingerId);
+        void checkDevice(const long touchId,
+                         const long fingerId);
 #endif
 
     private:
