@@ -115,7 +115,7 @@ public:
     std::string getMap() const A_WARN_UNUSED
     { return mMap; }
 
-    void setMap(std::string map)
+    void setMap(const std::string &map)
     { mMap = map; }
 
     int getX() const A_WARN_UNUSED
@@ -169,7 +169,7 @@ public:
     const std::string &getIp() const A_WARN_UNUSED
     { return mIp; }
 
-    void setIp(std::string ip)
+    void setIp(const std::string &ip)
     { mIp = ip; }
 
     bool getPoison() const A_WARN_UNUSED

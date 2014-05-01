@@ -97,7 +97,7 @@ class BeingCacheEntry final
         std::string getIp() const
         { return mIp; }
 
-        void setIp(std::string ip)
+        void setIp(const std::string &ip)
         { mIp = ip; }
 
         bool isAdvanced() const

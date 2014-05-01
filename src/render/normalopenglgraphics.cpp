@@ -1223,7 +1223,7 @@ SDL_Surface* NormalOpenGLGraphics::getScreenshot()
     return screenshot;
 }
 
-bool NormalOpenGLGraphics::pushClipArea(Rect area)
+bool NormalOpenGLGraphics::pushClipArea(const Rect &area)
 {
     int transX = 0;
     int transY = 0;

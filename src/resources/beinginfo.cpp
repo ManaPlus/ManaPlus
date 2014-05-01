@@ -155,9 +155,12 @@ const Attack *BeingInfo::getAttack(const int id) const
     return (i == mAttacks.end()) ? empty : (*i).second;
 }
 
-void BeingInfo::addAttack(const int id, std::string action,
-                          std::string skyAction, std::string waterAction,
-                          const int effectId, const int hitEffectId,
+void BeingInfo::addAttack(const int id,
+                          const std::string &action,
+                          const std::string &skyAction,
+                          const std::string &waterAction,
+                          const int effectId,
+                          const int hitEffectId,
                           const int criticalHitEffectId,
                           const int missEffectId,
                           const std::string &missileParticle)

@@ -208,7 +208,7 @@ void ActorSprite::updateStatusEffect(const int index, const bool newStatus)
     handleStatusEffect(effect, index);
 }
 
-void ActorSprite::handleStatusEffect(StatusEffect *const effect,
+void ActorSprite::handleStatusEffect(const StatusEffect *const effect,
                                      const int effectId)
 {
     if (!effect)

@@ -283,13 +283,13 @@ class MapItem final
         const std::string &getComment() const A_WARN_UNUSED
         { return mComment; }
 
-        void setComment(std::string comment)
+        void setComment(const std::string &comment)
         { mComment = comment; }
 
         const std::string &getName() const A_WARN_UNUSED
         { return mName; }
 
-        void setName(std::string name)
+        void setName(const std::string &name)
         { mName = name; }
 
         void draw(Graphics *const graphics, const int x, const int y,
@@ -313,7 +313,7 @@ class ObjectsLayer final
 
         ~ObjectsLayer();
 
-        void addObject(std::string name, const int type,
+        void addObject(const std::string &name, const int type,
                        const unsigned x, const unsigned y,
                        unsigned dx, unsigned dy);
 

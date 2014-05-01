@@ -158,7 +158,7 @@ class Button final : public Widget,
 
         void mouseReleased(MouseEvent& event) override final;
 
-        void setDescription(std::string text)
+        void setDescription(const std::string &text)
         { mDescription = text; }
 
         std::string getDescription() const A_WARN_UNUSED

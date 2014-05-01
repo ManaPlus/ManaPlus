@@ -283,7 +283,7 @@ std::string removeSpriteIndex(std::string str)
     return str;
 }
 
-const char* getSafeUtf8String(std::string text)
+const char* getSafeUtf8String(const std::string &text)
 {
     const size_t sz = text.size();
     const size_t size = sz + UTF8_MAX_SIZE;

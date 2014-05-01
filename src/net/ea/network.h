@@ -42,7 +42,7 @@ class Network
 
         virtual ~Network();
 
-        bool connect(ServerInfo server);
+        bool connect(const ServerInfo &server);
 
         void disconnect();
 

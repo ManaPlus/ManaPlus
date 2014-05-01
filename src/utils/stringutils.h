@@ -149,7 +149,7 @@ std::string extractNameFromSprite(std::string str) A_WARN_UNUSED;
 
 std::string removeSpriteIndex(std::string str) A_WARN_UNUSED;
 
-const char* getSafeUtf8String(std::string text) A_WARN_UNUSED;
+const char* getSafeUtf8String(const std::string &text) A_WARN_UNUSED;
 
 void getSafeUtf8String(std::string text, char *const buf);
 

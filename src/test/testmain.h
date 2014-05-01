@@ -50,7 +50,7 @@ class TestMain final
     private:
         void initConfig();
 
-        int invokeTest(std::string test);
+        int invokeTest(const std::string &test);
 
         int invokeTest3();
 
@@ -58,13 +58,13 @@ class TestMain final
 
         int invokeTest7();
 
-        int invokeSoftwareRenderTest(std::string test);
+        int invokeSoftwareRenderTest(const std::string &test);
 
-        int invokeFastOpenGLRenderTest(std::string test);
+        int invokeFastOpenGLRenderTest(const std::string &test);
 
-        int invokeFastOpenBatchTest(std::string test);
+        int invokeFastOpenBatchTest(const std::string &test);
 
-        int invokeSafeOpenGLRenderTest(std::string test);
+        int invokeSafeOpenGLRenderTest(const std::string &test);
 
         void testsMain();
 

@@ -41,7 +41,7 @@ class AnimationDelayLoad final
 
         void load();
 
-        void setAction(std::string action)
+        void setAction(const std::string &action)
         { mAction = action; }
 
     private:

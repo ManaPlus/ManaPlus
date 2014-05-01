@@ -850,7 +850,7 @@ ObjectsLayer::~ObjectsLayer()
     mTiles = nullptr;
 }
 
-void ObjectsLayer::addObject(std::string name, const int type,
+void ObjectsLayer::addObject(const std::string &name, const int type,
                              const unsigned x, const unsigned y,
                              unsigned dx, unsigned dy)
 {

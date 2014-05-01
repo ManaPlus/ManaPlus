@@ -86,7 +86,7 @@ Network::~Network()
     TcpNet::quit();
 }
 
-bool Network::connect(ServerInfo server)
+bool Network::connect(const ServerInfo &server)
 {
     if (mState != IDLE && mState != NET_ERROR)
     {

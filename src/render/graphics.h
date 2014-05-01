@@ -419,7 +419,7 @@ class Graphics
          * @return False if the the new area lays outside the current clip 
          *         area.
          */
-        virtual bool pushClipArea(Rect area);
+        virtual bool pushClipArea(const Rect &area);
 
         /**
          * Removes the top most clip area from the stack.

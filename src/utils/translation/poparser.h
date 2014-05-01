@@ -39,15 +39,15 @@ class PoParser final
                      const std::string &restrict fileName = "",
                      PoDict *restrict const dict = nullptr);
 
-        static bool checkLang(std::string lang);
+        static bool checkLang(const std::string &lang);
 
         static PoDict *getEmptyDict();
 
     private:
-        void setLang(std::string lang)
+        void setLang(const std::string &lang)
         { mLang = lang; }
 
-        void openFile(std::string name);
+        void openFile(const std::string &name);
 
         bool readLine();
 
@@ -57,7 +57,7 @@ class PoParser final
 
         bool checkLine() const;
 
-        static std::string getFileName(std::string lang);
+        static std::string getFileName(const std::string &lang);
 
         PoDict *getDict() const;
 

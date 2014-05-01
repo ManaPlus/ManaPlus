@@ -37,7 +37,7 @@ public:
 
     void endDraw();
 
-    bool pushClipArea(Rect area) override final;
+    bool pushClipArea(const Rect &area) override final;
 
     void popClipArea() override final;
 

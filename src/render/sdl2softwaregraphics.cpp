@@ -1125,7 +1125,7 @@ void SDL2SoftwareGraphics::endDraw()
     popClipArea();
 }
 
-bool SDL2SoftwareGraphics::pushClipArea(Rect area)
+bool SDL2SoftwareGraphics::pushClipArea(const Rect &area)
 {
     const bool result = Graphics::pushClipArea(area);
 

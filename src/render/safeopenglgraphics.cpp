@@ -529,7 +529,7 @@ SDL_Surface* SafeOpenGLGraphics::getScreenshot()
     return screenshot;
 }
 
-bool SafeOpenGLGraphics::pushClipArea(Rect area)
+bool SafeOpenGLGraphics::pushClipArea(const Rect &area)
 {
     int transX = 0;
     int transY = 0;

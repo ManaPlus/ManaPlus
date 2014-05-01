@@ -368,7 +368,7 @@ private:
 
     void initScreenshotDir();
 
-    void initServerConfig(std::string serverName);
+    void initServerConfig(const std::string &serverName);
 
     static void initFeatures();
 

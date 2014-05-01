@@ -63,7 +63,7 @@ class SurfaceGraphics final : public Graphics
         void endDraw() override final
         { }
 
-        bool pushClipArea(Rect rect A_UNUSED) override final
+        bool pushClipArea(const Rect &rect A_UNUSED) override final
         { return true; }
 
         void popClipArea() override final

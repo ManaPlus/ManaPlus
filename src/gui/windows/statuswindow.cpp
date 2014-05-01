@@ -706,7 +706,7 @@ std::string StatusWindow::translateLetter(const char *const letters)
     return std::string(buf);
 }
 
-std::string StatusWindow::translateLetter2(std::string letters)
+std::string StatusWindow::translateLetter2(const std::string &letters)
 {
     if (letters.size() < 5)
         return "";

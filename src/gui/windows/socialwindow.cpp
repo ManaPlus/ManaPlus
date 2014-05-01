@@ -588,7 +588,7 @@ public:
             being->setDamageTaken(0);
     }
 
-    Avatar* findAvatarbyName(std::string name)
+    Avatar* findAvatarbyName(const std::string &name)
     {
         std::vector<Avatar*> *const avatars = mBeings->getMembers();
         if (!avatars)

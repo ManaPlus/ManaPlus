@@ -274,7 +274,7 @@ int TestMain::readValue(const int ver, int def)
     return def;
 }
 
-int TestMain::invokeTest(std::string test)
+int TestMain::invokeTest(const std::string &test)
 {
     mConfig.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
 
@@ -292,7 +292,7 @@ int TestMain::invokeTest4()
     return ret;
 }
 
-int TestMain::invokeSoftwareRenderTest(std::string test)
+int TestMain::invokeSoftwareRenderTest(const std::string &test)
 {
     mConfig.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
     mConfig.write();
@@ -301,7 +301,7 @@ int TestMain::invokeSoftwareRenderTest(std::string test)
     return ret;
 }
 
-int TestMain::invokeFastOpenGLRenderTest(std::string test)
+int TestMain::invokeFastOpenGLRenderTest(const std::string &test)
 {
     mConfig.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
     mConfig.write();
@@ -310,7 +310,7 @@ int TestMain::invokeFastOpenGLRenderTest(std::string test)
     return ret;
 }
 
-int TestMain::invokeFastOpenBatchTest(std::string test)
+int TestMain::invokeFastOpenBatchTest(const std::string &test)
 {
     mConfig.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
     mConfig.write();
@@ -319,7 +319,7 @@ int TestMain::invokeFastOpenBatchTest(std::string test)
     return ret;
 }
 
-int TestMain::invokeSafeOpenGLRenderTest(std::string test)
+int TestMain::invokeSafeOpenGLRenderTest(const std::string &test)
 {
     mConfig.setValue("opengl", static_cast<int>(RENDER_SAFE_OPENGL));
     mConfig.write();

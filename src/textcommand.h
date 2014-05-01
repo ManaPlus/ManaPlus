@@ -125,13 +125,13 @@ class TextCommand final
         TextCommandType getCommandType() const A_WARN_UNUSED
         { return mCommandType; }
 
-        void setCommand(std::string command)
+        void setCommand(const std::string &command)
         { mCommand = command; }
 
-        void setComment(std::string comment)
+        void setComment(const std::string &comment)
         { mComment = comment; }
 
-        void setSymbol(std::string symbol)
+        void setSymbol(const std::string &symbol)
         { mSymbol = symbol; }
 
         void setId(const unsigned int id)
@@ -140,7 +140,7 @@ class TextCommand final
         void setTargetType(const SpellTarget targetType)
         { mTargetType = targetType; }
 
-        void setIcon(std::string icon)
+        void setIcon(const std::string &icon)
         { mIcon = icon; loadImage(); }
 
         void setMana(const unsigned int mana)

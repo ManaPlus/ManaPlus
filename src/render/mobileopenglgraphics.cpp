@@ -961,7 +961,7 @@ SDL_Surface* MobileOpenGLGraphics::getScreenshot()
     return screenshot;
 }
 
-bool MobileOpenGLGraphics::pushClipArea(Rect area)
+bool MobileOpenGLGraphics::pushClipArea(const Rect &area)
 {
     int transX = 0;
     int transY = 0;

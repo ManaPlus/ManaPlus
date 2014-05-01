@@ -474,7 +474,7 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Sets the walk speed in pixels per second.
          */
-        void setWalkSpeed(Vector speed)
+        void setWalkSpeed(const Vector &speed)
         { mWalkSpeed = speed; mSpeed = speed.x; }
 
         /**
@@ -725,7 +725,7 @@ class Being : public ActorSprite, public ConfigListener
         const std::string &getIp() const A_WARN_UNUSED
         { return mIp; }
 
-        void setIp(std::string ip)
+        void setIp(const std::string &ip)
         { mIp = ip; }
 
         unsigned int getPvpRank() const A_WARN_UNUSED
@@ -791,7 +791,7 @@ class Being : public ActorSprite, public ConfigListener
         const std::string getComment() const A_WARN_UNUSED
         { return mComment; }
 
-        void setComment(std::string n)
+        void setComment(const std::string &n)
         { mComment = n; }
 
         static void clearCache();
@@ -829,7 +829,7 @@ class Being : public ActorSprite, public ConfigListener
 
         void updatePercentHP();
 
-        void setRaceName(std::string name)
+        void setRaceName(const std::string &name)
         { mRaceName = name; }
 
         std::string getRaceName() const A_WARN_UNUSED

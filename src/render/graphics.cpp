@@ -547,7 +547,7 @@ void Graphics::setWindowSize(const int width A_UNUSED,
 #endif
 }
 
-bool Graphics::pushClipArea(Rect area)
+bool Graphics::pushClipArea(const Rect &area)
 {
     // Ignore area with a negate width or height
     // by simple pushing an empty clip area

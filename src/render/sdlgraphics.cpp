@@ -1122,7 +1122,7 @@ void SDLGraphics::endDraw()
     popClipArea();
 }
 
-bool SDLGraphics::pushClipArea(Rect area)
+bool SDLGraphics::pushClipArea(const Rect &area)
 {
     const bool result = Graphics::pushClipArea(area);
     const ClipRect &carea = mClipStack.top();

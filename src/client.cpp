@@ -2053,7 +2053,7 @@ void Client::initConfigDir()
  * Initializes the home directory. On UNIX and FreeBSD, ~/.mana is used. On
  * Windows and other systems we use the current working directory.
  */
-void Client::initServerConfig(std::string serverName)
+void Client::initServerConfig(const std::string &serverName)
 {
     mServerConfigDir = mConfigDir + dirSeparator + serverName;
 

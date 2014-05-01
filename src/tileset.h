@@ -55,7 +55,7 @@ class Tileset final : public ImageSet
         /**
          * Set tileset property.
          */
-        void setProperties(std::map<std::string, std::string> props)
+        void setProperties(const std::map<std::string, std::string> &props)
         { mProperties = props; }
 
         /**

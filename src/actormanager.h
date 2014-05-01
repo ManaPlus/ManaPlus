@@ -251,10 +251,10 @@ class ActorManager final: public ConfigListener
 
         void addIgnorePickupItem(const std::string &name);
 
-        void setPriorityAttackMobs(std::list<std::string> mobs)
+        void setPriorityAttackMobs(const std::list<std::string> &mobs)
         { mPriorityAttackMobs = mobs; }
 
-        void setAttackMobs(std::list<std::string> mobs)
+        void setAttackMobs(const std::list<std::string> &mobs)
         { mAttackMobs = mobs; }
 
         int getPriorityAttackMobsSize() const A_WARN_UNUSED

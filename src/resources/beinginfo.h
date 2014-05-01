@@ -117,9 +117,13 @@ class BeingInfo final
         const SoundInfo &getSound(const ItemSoundEvent event)
                                   const A_WARN_UNUSED;
 
-        void addAttack(const int id, std::string action, std::string skyAttack,
-                       std::string waterAttack, const int effectId,
-                       const int hitEffectId, const int criticalHitEffectId,
+        void addAttack(const int id,
+                       const std::string &action,
+                       const std::string &skyAttack,
+                       const std::string &waterAttack,
+                       const int effectId,
+                       const int hitEffectId,
+                       const int criticalHitEffectId,
                        const int missEffectId,
                        const std::string &missileParticle);
 

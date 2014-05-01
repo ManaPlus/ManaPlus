@@ -210,7 +210,7 @@ protected:
      * \param The StatusEffect to effect
      * \param effectId -1 for stun, otherwise the effect index
      */
-    virtual void handleStatusEffect(StatusEffect *const effect,
+    virtual void handleStatusEffect(const StatusEffect *const effect,
                                     const int effectId);
 
     void setupSpriteDisplay(const SpriteDisplay &display,

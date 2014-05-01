@@ -42,7 +42,7 @@ PoParser::PoParser() :
 {
 }
 
-void PoParser::openFile(std::string name)
+void PoParser::openFile(const std::string &name)
 {
     const ResourceManager *const resman = ResourceManager::getInstance();
     if (!resman)
@@ -228,14 +228,14 @@ PoDict *PoParser::getEmptyDict()
     return new PoDict("");
 }
 
-bool PoParser::checkLang(std::string lang)
+bool PoParser::checkLang(const std::string &lang)
 {
     // check is po file exists
     const ResourceManager *const resman = ResourceManager::getInstance();
     return resman->exists(getFileName(lang));
 }
 
-std::string PoParser::getFileName(std::string lang)
+std::string PoParser::getFileName(const std::string &lang)
 {
     // get po file name from lang name
 //    logger->log("getFileName: translations/%s.po", lang.c_str());
