@@ -292,7 +292,7 @@ void WhoIsOnline::handlerPlayerRelation(const std::string &nick,
     }
 }
 
-void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
+void WhoIsOnline::loadList(const std::vector<OnlinePlayer*> &list)
 {
     mBrowserBox->clearRows();
     const size_t numOnline = list.size();

@@ -278,7 +278,7 @@ class ResourceManager final
                                  const std::string &restrict name,
                                  const std::string &restrict text);
 
-        Image *getRescaled(Image *const image,
+        Image *getRescaled(const Image *const image,
                            const int width, const int height) A_WARN_UNUSED;
 
         /**

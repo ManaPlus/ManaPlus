@@ -311,7 +311,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 }
 
 void PopupMenu::showPopup(const int x, const int y,
-                          std::vector<ActorSprite*> &beings)
+                          const std::vector<ActorSprite*> &beings)
 {
     mX = x;
     mY = y;
@@ -1543,7 +1543,7 @@ void PopupMenu::handleLink(const std::string &link,
                 std::list<std::string> mobs
                     = actorManager->getAttackMobs();
                 std::list<std::string>::iterator it = mobs.begin();
-                std::list<std::string>::iterator it2 = mobs.begin();
+                std::list<std::string>::iterator it2 = it;
                 while (it != mobs.end())
                 {
                     if (*it == mNick)
@@ -1574,7 +1574,7 @@ void PopupMenu::handleLink(const std::string &link,
                 std::list<std::string> mobs
                     = actorManager->getPriorityAttackMobs();
                 std::list<std::string>::iterator it = mobs.begin();
-                std::list<std::string>::iterator it2 = mobs.begin();
+                std::list<std::string>::iterator it2 = it;
                 while (it != mobs.end())
                 {
                     if (*it == mNick)
@@ -1605,7 +1605,7 @@ void PopupMenu::handleLink(const std::string &link,
                 std::list<std::string> mobs
                     = actorManager->getAttackMobs();
                 std::list<std::string>::iterator it = mobs.begin();
-                std::list<std::string>::iterator it2 = mobs.begin();
+                std::list<std::string>::iterator it2 = it;
                 while (it != mobs.end())
                 {
                     if (*it == mNick)
@@ -1640,7 +1640,7 @@ void PopupMenu::handleLink(const std::string &link,
                 std::list<std::string> mobs
                     = actorManager->getPriorityAttackMobs();
                 std::list<std::string>::iterator it = mobs.begin();
-                std::list<std::string>::iterator it2 = mobs.begin();
+                std::list<std::string>::iterator it2 = it;
                 while (it != mobs.end())
                 {
                     if (*it == mNick)
@@ -2906,7 +2906,7 @@ RenameListener::RenameListener() :
 {
 }
 
-void RenameListener::setMapItem(MapItem *const mapItem)
+void RenameListener::setMapItem(const MapItem *const mapItem)
 {
     if (mapItem)
     {

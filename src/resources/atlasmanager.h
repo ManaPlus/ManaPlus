@@ -104,7 +104,7 @@ class AtlasManager final
                                                const StringVect &files)
                                                A_WARN_UNUSED;
 
-        static void injectToResources(AtlasResource *const resource);
+        static void injectToResources(const AtlasResource *const resource);
 
         static void moveToDeleted(AtlasResource *const resource);
 
@@ -114,7 +114,8 @@ class AtlasManager final
 
         static void simpleSort(const std::string &restrict name,
                                std::vector<TextureAtlas*> &restrict atlases,
-                               std::vector<Image*> &restrict images, int size);
+                               const std::vector<Image*> &restrict images,
+                               int size);
 
         static SDL_Surface *createSDLAtlas(TextureAtlas *const atlas)
                                            A_WARN_UNUSED;

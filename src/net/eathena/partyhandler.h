@@ -44,7 +44,7 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
         void create(const std::string &name) const override final;
 
-        void invite(Being *const being) const override final;
+        void invite(const Being *const being) const override final;
 
         void invite(const std::string &name) const override final;
 
@@ -53,7 +53,7 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
         void leave() const override final;
 
-        void kick(Being *const being) const override final;
+        void kick(const Being *const being) const override final;
 
         void kick(const std::string &name) const override final;
 

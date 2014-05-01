@@ -3370,7 +3370,8 @@ void LocalPlayer::imitateDirection(const Being *const being,
     }
 }
 
-void LocalPlayer::imitateOutfit(Being *const player, const int sprite) const
+void LocalPlayer::imitateOutfit(const Being *const player,
+                                const int sprite) const
 {
     if (!player)
         return;

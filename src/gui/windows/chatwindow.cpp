@@ -1334,7 +1334,7 @@ void ChatWindow::autoComplete()
     }
 }
 
-std::string ChatWindow::autoComplete(StringVect &names,
+std::string ChatWindow::autoComplete(const StringVect &names,
                                      std::string partName)
 {
     StringVectCIter i = names.begin();
@@ -1365,7 +1365,7 @@ std::string ChatWindow::autoComplete(StringVect &names,
 }
 
 std::string ChatWindow::autoComplete(const std::string &partName,
-                                     History *const words) const
+                                     const History *const words) const
 {
     if (!words)
         return "";
@@ -1605,7 +1605,7 @@ void ChatWindow::initTradeFilter()
     }
 }
 
-void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers) const
+void ChatWindow::updateOnline(const std::set<std::string> &onlinePlayers) const
 {
     const Party *party = nullptr;
     const Guild *guild = nullptr;

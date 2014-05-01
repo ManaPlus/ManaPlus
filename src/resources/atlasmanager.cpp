@@ -133,13 +133,14 @@ void AtlasManager::loadImages(const StringVect &files,
 
 void AtlasManager::simpleSort(const std::string &restrict name,
                               std::vector<TextureAtlas*> &restrict atlases,
-                              std::vector<Image*> &restrict images, int size)
+                              const std::vector<Image*> &restrict images,
+                              int size)
 {
     int x = 0;
     int y = 0;
     int tempHeight = 0;
     TextureAtlas *atlas = new TextureAtlas();
-    std::vector<Image*>::iterator it = images.begin();
+    std::vector<Image*>::const_iterator it = images.begin();
     const std::vector<Image*>::const_iterator it_end = images.end();
     for (it = images.begin(); it != it_end; ++ it)
     {
@@ -297,10 +298,10 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
     }
 }
 
-void AtlasManager::injectToResources(AtlasResource *const resource)
+void AtlasManager::injectToResources(const AtlasResource *const resource)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
-    FOR_EACH (std::vector<TextureAtlas*>::iterator, it, resource->atlases)
+    FOR_EACH (std::vector<TextureAtlas*>::const_iterator, it, resource->atlases)
     {
         // add each atlas image to resources
         TextureAtlas *const atlas = *it;

@@ -138,7 +138,7 @@ bool isWordSeparator(const signed char chr) A_WARN_UNUSED;
 
 size_t findI(std::string str, std::string subStr) A_WARN_UNUSED;
 
-size_t findI(std::string text, StringVect &list) A_WARN_UNUSED;
+size_t findI(std::string text, const StringVect &list) A_WARN_UNUSED;
 
 const std::string encodeStr(unsigned int value,
                             const unsigned int size = 0) A_WARN_UNUSED;

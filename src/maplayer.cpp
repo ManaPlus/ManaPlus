@@ -178,7 +178,8 @@ void MapLayer::drawSDL(Graphics *const graphics)
 }
 
 #ifdef USE_OPENGL
-void MapLayer::updateSDL(Graphics *const graphics, int startX, int startY,
+void MapLayer::updateSDL(const Graphics *const graphics,
+                         int startX, int startY,
                          int endX, int endY,
                          const int scrollX, const int scrollY,
                          const int debugFlags)
@@ -242,7 +243,8 @@ void MapLayer::updateSDL(Graphics *const graphics, int startX, int startY,
     BLOCK_END("MapLayer::updateSDL")
 }
 
-void MapLayer::updateOGL(Graphics *const graphics, int startX, int startY,
+void MapLayer::updateOGL(const Graphics *const graphics,
+                         int startX, int startY,
                          int endX, int endY,
                          const int scrollX, const int scrollY,
                          const int debugFlags)

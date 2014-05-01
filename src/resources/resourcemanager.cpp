@@ -1099,7 +1099,7 @@ void ResourceManager::clearScheduled()
 struct RescaledLoader
 {
     ResourceManager *manager;
-    Image *image;
+    const Image *image;
     int width;
     int height;
     static Resource *load(const void *const v)
@@ -1118,7 +1118,7 @@ struct RescaledLoader
     }
 };
 
-Image *ResourceManager::getRescaled(Image *const image,
+Image *ResourceManager::getRescaled(const Image *const image,
                                     const int width, const int height)
 {
     if (!image)

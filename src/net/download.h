@@ -106,7 +106,7 @@ class Download final
 
         static void addHeaders(CURL *const curl);
 
-        static unsigned long adlerBuffer(char *const buffer, int size);
+        static unsigned long adlerBuffer(const char *const buffer, int size);
 
         static std::string getUploadResponse()
         { return mUploadResponse; }

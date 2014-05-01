@@ -440,8 +440,7 @@ void Client::gameInit()
 
     if (mCurrentServer.hostname.empty())
     {
-        mCurrentServer.hostname =
-            branding.getValue("defaultServer", "").c_str();
+        mCurrentServer.hostname = branding.getValue("defaultServer", "");
         mOptions.serverName = mCurrentServer.hostname;
     }
 
@@ -2996,12 +2995,12 @@ void Client::setIcon()
     // Attempt to load icon from .ico file
     HICON icon = (HICON) LoadImage(nullptr, iconFile.c_str(),
         IMAGE_ICON, 64, 64, LR_LOADFROMFILE);
-    if (!icon)
-        logger->log("icon load error");
     // If it's failing, we load the default resource file.
     if (!icon)
+    {
+        logger->log("icon load error");
         icon = LoadIcon(GetModuleHandle(nullptr), "A");
-
+    }
     if (icon)
         SetClassLong(pInfo.window, GCL_HICON, reinterpret_cast<LONG>(icon));
 #else

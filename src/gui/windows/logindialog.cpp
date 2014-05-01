@@ -302,7 +302,7 @@ void LoginDialog::prepareUpdate()
         if (checkPath(mUpdateHostText->getText()))
         {
             mLoginData->updateHost = mUpdateHostText->getText();
-            *mUpdateHost = mUpdateHostText->getText();
+            *mUpdateHost = mLoginData->updateHost;
         }
         else
         {

@@ -277,7 +277,7 @@ void MapReader::unloadTempLayers()
     mKnownDocs.clear();
 }
 
-static void loadReplaceLayer(LayerInfoIterator &it, Map *const map)
+static void loadReplaceLayer(const LayerInfoIterator &it, Map *const map)
 {
     MapReader::readLayer((*it).second, map);
 }

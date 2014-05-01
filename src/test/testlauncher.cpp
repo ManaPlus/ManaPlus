@@ -261,8 +261,7 @@ int TestLauncher::testDye()
             rw = MPHYSFSRWOPS_openRead(
                 "graphics/sprites/arrow_up.png");
             d = new Dye("S:#0000ff,00ff00,5c5cff,ff0000");
-            image = d ? surfaceImageHelper->load(rw, *d)
-                : surfaceImageHelper->load(rw);
+            image = surfaceImageHelper->load(rw, *d);
             if (image)
             {
                 surface = surfaceImageHelper->create32BitSurface(

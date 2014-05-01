@@ -97,7 +97,7 @@ class FocusHandler final
           * @param widget The widget to request focus for.
           * @see isFocused, Widget::requestFocus
           */
-        void requestFocus(Widget *const widget);
+        void requestFocus(const Widget *const widget);
 
         /**
           * Requests modal focus for a widget. Focus will only be granted
@@ -144,7 +144,7 @@ class FocusHandler final
           * @param widget the widget to release modal mouse input focus for.
           * @see requestModalMouseInputFocus, Widget::releaseModalMouseInputFocus
           */
-        void releaseModalMouseInputFocus(Widget *const widget);
+        void releaseModalMouseInputFocus(const Widget *const widget);
 
         /**
           * Checks if a widget is focused.

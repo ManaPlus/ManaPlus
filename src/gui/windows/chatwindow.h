@@ -240,7 +240,7 @@ class ChatWindow final : public Window,
                                   const bool ignoreRecord = false,
                                   const bool tryRemoveColors = true);
 
-        void updateOnline(std::set<std::string> &onlinePlayers) const;
+        void updateOnline(const std::set<std::string> &onlinePlayers) const;
 
         void loadState();
 
@@ -331,9 +331,9 @@ class ChatWindow final : public Window,
         std::string autoCompleteHistory(const std::string &partName) const;
 
         std::string autoComplete(const std::string &partName,
-                                 History *const words) const;
+                                 const History *const words) const;
 
-        static std::string autoComplete(StringVect &names,
+        static std::string autoComplete(const StringVect &names,
                                         std::string partName);
 
         /** Used for showing item popup on clicking links **/

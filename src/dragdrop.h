@@ -195,7 +195,7 @@ class DragDrop final
         bool isEmpty() const
         { return mSource == DRAGDROP_SOURCE_EMPTY; }
 
-        void select(Item *const item)
+        void select(const Item *const item)
         {
             if (item)
             {

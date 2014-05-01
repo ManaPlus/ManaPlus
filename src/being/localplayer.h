@@ -349,7 +349,8 @@ class LocalPlayer final : public Being,
         void imitateDirection(const Being *const being,
                               const unsigned char dir);
 
-        void imitateOutfit(Being *const player, const int sprite = -1) const;
+        void imitateOutfit(const Being *const player,
+                           const int sprite = -1) const;
 
         void followMoveTo(const Being *const being, const int x, const int y);
 

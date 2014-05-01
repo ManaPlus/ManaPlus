@@ -926,8 +926,6 @@ SDL_Surface* MobileOpenGLGraphics::getScreenshot()
 
     const unsigned int lineSize = 3 * w;
     GLubyte *const buf = new GLubyte[lineSize];
-    if (!buf)
-        return nullptr;
 
     // Grap the pixel buffer and write it to the SDL surface
     glGetIntegerv(GL_PACK_ALIGNMENT, &pack);

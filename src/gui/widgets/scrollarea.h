@@ -451,8 +451,8 @@ class ScrollArea final : public BasicContainer,
         void drawVMarker(Graphics *const graphics);
         void drawHMarker(Graphics *const graphics);
 
-        void calcVBar(Graphics *const graphics);
-        void calcHBar(Graphics *const graphics);
+        void calcVBar(const Graphics *const graphics);
+        void calcHBar(const Graphics *const graphics);
         void calcVMarker(Graphics *const graphics);
         void calcHMarker(Graphics *const graphics);
 

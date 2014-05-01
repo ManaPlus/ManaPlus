@@ -93,7 +93,7 @@ void LoginHandler::chooseServer(const unsigned int server) const
     client->setState(STATE_UPDATE);
 }
 
-void LoginHandler::registerAccount(LoginData *const loginData1) const
+void LoginHandler::registerAccount(const LoginData *const loginData1) const
 {
     if (!loginData1)
         return;

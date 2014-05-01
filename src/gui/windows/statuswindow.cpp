@@ -646,7 +646,7 @@ void StatusWindow::updateMoneyBar(ProgressBar *const bar)
         return;
 
     const int money = PlayerInfo::getAttribute(PlayerInfo::MONEY);
-    bar->setText(Units::formatCurrency(money).c_str());
+    bar->setText(Units::formatCurrency(money));
     if (money > 0)
     {
         const float progress = static_cast<float>(money)

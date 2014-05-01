@@ -35,7 +35,7 @@ static const char *getLangName()
 LangVect getLang()
 {
     LangVect langs;
-    std::string lang = config.getStringValue("lang").c_str();
+    std::string lang = config.getStringValue("lang");
     if (lang.empty())
     {
         const char *const lng = getLangName();
@@ -60,7 +60,7 @@ LangVect getLang()
 
 std::string getLangSimple()
 {
-    const std::string lang = config.getStringValue("lang").c_str();
+    const std::string lang = config.getStringValue("lang");
     if (lang.empty())
     {
         const char *const lng = getLangName();
@@ -77,7 +77,7 @@ std::string getLangSimple()
 
 std::string getLangShort()
 {
-    std::string lang = config.getStringValue("lang").c_str();
+    std::string lang = config.getStringValue("lang");
     if (lang.empty())
     {
         const char *const lng = getLangName();

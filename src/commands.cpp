@@ -98,7 +98,7 @@ extern char **environ;
 namespace Commands
 {
 
-static void outString(ChatTab *const tab,
+static void outString(const ChatTab *const tab,
                       const std::string &str,
                       const std::string &def)
 {

@@ -90,7 +90,8 @@ class LoginHandler
 
         virtual void chooseServer(unsigned int server) const = 0;
 
-        virtual void registerAccount(LoginData *const loginData) const = 0;
+        virtual void registerAccount(const LoginData *const loginData)
+                                     const = 0;
 
         virtual void unregisterAccount(const std::string &username,
                                        const std::string &password) const = 0;

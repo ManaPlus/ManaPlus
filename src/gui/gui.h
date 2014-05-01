@@ -213,7 +213,7 @@ class Gui final
 
         void distributeGlobalFocusGainedEvent(const Event &focusEvent);
 
-        void removeDragged(Widget *widget);
+        void removeDragged(const Widget *const widget);
 
         int getLastMouseX() const
         { return mLastMouseX; }

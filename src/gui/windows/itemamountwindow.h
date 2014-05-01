@@ -93,11 +93,15 @@ class ItemAmountWindow final : public Window,
         ~ItemAmountWindow();
 
     private:
-        static void finish(Item *const item, const int amount,
-                           const int price, const Usage usage);
+        static void finish(const Item *const item,
+                           const int amount,
+                           const int price,
+                           const Usage usage);
 
-        ItemAmountWindow(const Usage usage, Window *const parent,
-                         Item *const item, const int maxRange = 0);
+        ItemAmountWindow(const Usage usage,
+                         Window *const parent,
+                         Item *const item,
+                         const int maxRange = 0);
 
         IntTextField *mItemAmountTextField;   /**< Item amount caption. */
         IntTextField *mItemPriceTextField;   /**< Item price caption. */

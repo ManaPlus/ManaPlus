@@ -110,7 +110,7 @@ void PartyHandler::create(const std::string &name) const
     outMsg.writeString(name.substr(0, 23), 24);
 }
 
-void PartyHandler::invite(Being *const being) const
+void PartyHandler::invite(const Being *const being) const
 {
     if (being)
     {
@@ -149,7 +149,7 @@ void PartyHandler::leave() const
     MessageOut outMsg(CMSG_PARTY_LEAVE);
 }
 
-void PartyHandler::kick(Being *const being) const
+void PartyHandler::kick(const Being *const being) const
 {
     if (being)
     {

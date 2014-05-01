@@ -53,8 +53,10 @@
 
 #include "debug.h"
 
-void ItemAmountWindow::finish(Item *const item, const int amount,
-                              const int price, const Usage usage)
+void ItemAmountWindow::finish(const Item *const item,
+                              const int amount,
+                              const int price,
+                              const Usage usage)
 {
     switch (usage)
     {

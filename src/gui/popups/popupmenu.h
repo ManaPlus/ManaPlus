@@ -55,7 +55,7 @@ class RenameListener final : public ActionListener
 
         void action(const ActionEvent &event) override final;
 
-        void setMapItem(MapItem *const mapItem);
+        void setMapItem(const MapItem *const mapItem);
 
         void setDialog(TextDialog *dialog)
         { mDialog = dialog; }
@@ -75,13 +75,13 @@ class PlayerListener : public ActionListener
 
         void action(const ActionEvent &event) override final;
 
-        void setNick(std::string name)
+        void setNick(const std::string &name)
         { mNick = name; }
 
-        void setDialog(TextDialog *dialog)
+        void setDialog(TextDialog *const dialog)
         { mDialog = dialog; }
 
-        void setType(int type)
+        void setType(const int type)
         { mType = type; }
 
     private:
@@ -114,7 +114,7 @@ class PopupMenu final : public Popup, public LinkHandler
          * Shows the beings related popup menu at the specified mouse coords.
          */
         void showPopup(const int x, const int y,
-                       std::vector<ActorSprite*> &beings);
+                       const std::vector<ActorSprite*> &beings);
 
         void showPlayerPopup(const int x, const int y,
                              const std::string &nick);

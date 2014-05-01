@@ -109,8 +109,7 @@ void FocusHandler::releaseModalFocus(Widget *const widget)
 
     if (mModalFocusedWidget == widget)
     {
-        if (mModalFocusedWidget == widget)
-            mModalFocusedWidget = nullptr;
+        mModalFocusedWidget = nullptr;
 
         /* Check if there were any previously modal widgets that'd still like
          * to regain their modal focus.
@@ -353,7 +352,7 @@ void FocusHandler::distributeFocusGainedEvent(const Event &focusEvent)
     }
 }
 
-void FocusHandler::requestFocus(Widget *const widget)
+void FocusHandler::requestFocus(const Widget *const widget)
 {
     if (!widget || widget == mFocusedWidget)
         return;
@@ -400,7 +399,7 @@ void FocusHandler::requestModalMouseInputFocus(Widget *const widget)
     mModalMouseInputFocusedWidget = widget;
 }
 
-void FocusHandler::releaseModalMouseInputFocus(Widget *const widget)
+void FocusHandler::releaseModalMouseInputFocus(const Widget *const widget)
 {
     if (mModalMouseInputFocusedWidget == widget)
         mModalMouseInputFocusedWidget = nullptr;

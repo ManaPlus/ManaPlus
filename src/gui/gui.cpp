@@ -1102,7 +1102,7 @@ void Gui::distributeGlobalFocusGainedEvent(const Event &focusEvent)
     }
 }
 
-void Gui::removeDragged(Widget *widget)
+void Gui::removeDragged(const Widget *const widget)
 {
     if (!mFocusHandler)
         return;
@@ -1246,7 +1246,7 @@ Widget* Gui::getKeyEventSource() const
 void Gui::distributeKeyEvent(KeyEvent &event) const
 {
     Widget* parent = event.getSource();
-    Widget* widget = event.getSource();
+    Widget* widget = parent;
 
     if (mFocusHandler->getModalFocused() && !widget->isModalFocused())
         return;

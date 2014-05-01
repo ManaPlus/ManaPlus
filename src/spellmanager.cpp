@@ -193,7 +193,7 @@ std::string SpellManager::parseCommand(std::string command,
     if (target)
     {
         name = target->getName();
-        name2 = target->getName();
+        name2 = name;
         id = toString(target->getId());
     }
     else

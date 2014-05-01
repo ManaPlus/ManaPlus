@@ -141,14 +141,14 @@ class MapLayer final: public ConfigListener
 #ifdef USE_OPENGL
         void drawOGL(Graphics *const graphics);
 
-        void updateOGL(Graphics *const graphics,
+        void updateOGL(const Graphics *const graphics,
                        int startX, int startY,
                        int endX, int endY,
                        const int scrollX, const int scrollY,
                        const int mDebugFlags);
 #endif
 
-        void updateSDL(Graphics *const graphics,
+        void updateSDL(const Graphics *const graphics,
                        int startX, int startY,
                        int endX, int endY,
                        const int scrollX, const int scrollY,

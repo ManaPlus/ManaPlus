@@ -189,7 +189,7 @@ size_t findI(std::string str, std::string subStr)
     return str.find(subStr);
 }
 
-size_t findI(std::string text, StringVect &list)
+size_t findI(std::string text, const StringVect &list)
 {
     toLower(text);
     FOR_EACH (StringVectCIter, i, list)
