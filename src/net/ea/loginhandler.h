@@ -61,7 +61,8 @@ class LoginHandler : public Net::LoginHandler
         virtual void loginAccount(LoginData *const loginData)
                                   const override final;
 
-        virtual void chooseServer(const unsigned int server) const override;
+        virtual void chooseServer(const unsigned int server,
+                                  const bool persistentIp) const override;
 
         virtual void registerAccount(const LoginData *const loginData)
                                      const override final;

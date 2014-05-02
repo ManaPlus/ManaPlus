@@ -88,7 +88,8 @@ class LoginHandler
                                     const std::string &restrict newPassword)
                                     const = 0;
 
-        virtual void chooseServer(unsigned int server) const = 0;
+        virtual void chooseServer(unsigned int server,
+                                  const bool persistentIp) const = 0;
 
         virtual void registerAccount(const LoginData *const loginData)
                                      const = 0;

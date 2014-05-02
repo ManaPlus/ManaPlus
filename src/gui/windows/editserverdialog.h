@@ -23,6 +23,7 @@
 #define GUI_WINDOWS_EDITSERVERDIALOG_H
 
 class Button;
+class CheckBox;
 class TextField;
 class DropDown;
 class ServerDialog;
@@ -70,7 +71,7 @@ class EditServerDialog final : public Window,
         Button *mConnectButton;
         Button *mOkButton;
         Button *mCancelButton;
-
+        CheckBox *mPersistentIp;
         TypeListModel *mTypeListModel;
         DropDown *mTypeField;
 

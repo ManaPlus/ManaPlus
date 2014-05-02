@@ -273,6 +273,9 @@ public:
     std::string getSupportUrl() const A_WARN_UNUSED
     { return mCurrentServer.supportUrl; }
 
+    bool getPersistentIp() const A_WARN_UNUSED
+    { return mCurrentServer.persistentIp; }
+
     std::string getLogFileName() const A_WARN_UNUSED
     { return mLogFileName; }
 

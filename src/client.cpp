@@ -1328,7 +1328,8 @@ int Client::gameExec()
                         }
                         else if (worlds.size() == 1)
                         {
-                            Net::getLoginHandler()->chooseServer(0);
+                            Net::getLoginHandler()->chooseServer(
+                                0, mCurrentServer.persistentIp);
                             mState = STATE_UPDATE;
                         }
                         else

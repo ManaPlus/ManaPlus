@@ -75,7 +75,8 @@ void LoginHandler::loginAccount(LoginData *const loginData1) const
     }
 }
 
-void LoginHandler::chooseServer(const unsigned int server) const
+void LoginHandler::chooseServer(const unsigned int server,
+                                const bool persistentIp) const
 {
     if (server >= mWorlds.size() || !mWorlds[server])
         return;
@@ -83,7 +84,7 @@ void LoginHandler::chooseServer(const unsigned int server) const
     ServerInfo *const charServer = getCharServer();
     if (charServer)
     {
-        if (config.getBoolValue("usePersistentIP"))
+        if (config.getBoolValue("usePersistentIP") || persistentIp)
             charServer->hostname = client->getServerName();
         else
             charServer->hostname = ipToString(mWorlds[server]->address);

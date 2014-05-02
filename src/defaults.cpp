@@ -228,7 +228,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("showBattleEvents", false);
     AddDEF("showMobHP", true);
     AddDEF("showOwnHP", true);
-    AddDEF("usePersistentIP", false);
+    AddDEF("usePersistentIP", true);
     AddDEF("showJobExp", true);
     AddDEF("showExtMinimaps", false);
     AddDEF("hideChatInput", true);

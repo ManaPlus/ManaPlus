@@ -55,8 +55,8 @@ public:
     std::string supportUrl;
     uint16_t port;
     VersionString version;
-
     bool save;
+    bool persistentIp;
 
     ServerInfo() :
         type(TMWATHENA),
@@ -69,7 +69,8 @@ public:
         supportUrl(),
         port(6901),
         version(),
-        save(false)
+        save(false),
+        persistentIp(true)
     {
         version.first = 0;
     }
@@ -85,7 +86,8 @@ public:
         supportUrl(info.supportUrl),
         port(info.port),
         version(),
-        save(info.save)
+        save(info.save),
+        persistentIp(info.persistentIp)
     {
         version.first = info.version.first;
         version.second = info.version.second;
@@ -110,6 +112,7 @@ public:
         version.first = 0;
         version.second.clear();
         save = false;
+        persistentIp = true;
     }
 
     bool operator==(const ServerInfo &other) const

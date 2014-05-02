@@ -242,7 +242,7 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg,
     PlayerInfo::setCharId(msg.readInt32());
     GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
     gh->setMap(msg.readString(16));
-    if (config.getBoolValue("usePersistentIP"))
+    if (config.getBoolValue("usePersistentIP") || client->getPersistentIp())
     {
         msg.readInt32();
         server.hostname = client->getServerName();

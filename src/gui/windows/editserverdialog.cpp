@@ -31,6 +31,7 @@
 #include "gui/windows/serverdialog.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/checkbox.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
@@ -56,6 +57,9 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mOkButton(new Button(this, _("OK"), "addServer", this)),
     // TRANSLATORS: edit server dialog button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
+    // TRANSLATORS: edit server dialog label
+    mPersistentIp(new CheckBox(this, _("Use same ip"),
+                  true, this, "persistentIp")),
     mTypeListModel(new TypeListModel),
     mTypeField(new DropDown(this, mTypeListModel, false, true)),
     mServerDialog(parent),
@@ -96,9 +100,10 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     place(1, 4, mDescriptionField, 4).setPadding(3);
     place(0, 5, onlineListUrlLabel);
     place(1, 5, mOnlineListUrlField, 4).setPadding(3);
-    place(0, 6, mConnectButton);
-    place(4, 6, mOkButton);
-    place(3, 6, mCancelButton);
+    place(0, 6, mPersistentIp, 4).setPadding(3);
+    place(0, 7, mConnectButton);
+    place(4, 7, mOkButton);
+    place(3, 7, mCancelButton);
 
     // Do this manually instead of calling reflowLayout so we can enforce a
     // minimum width.
@@ -132,6 +137,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mOnlineListUrlField->setText(mServer.onlineListUrl);
     mServerAddressField->setText(mServer.hostname);
     mPortField->setText(toString(mServer.port));
+    mPersistentIp->setSelected(mServer.persistentIp);
 
     switch (mServer.type)
     {
@@ -200,6 +206,7 @@ void EditServerDialog::action(const ActionEvent &event)
             mServer.hostname = mServerAddressField->getText();
             mServer.port = static_cast<int16_t>(atoi(
                 mPortField->getText().c_str()));
+            mServer.persistentIp = mPersistentIp->isSelected();
 
             if (mTypeField)
             {
