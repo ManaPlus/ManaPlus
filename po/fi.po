@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-04-26 12:00+0300\n"
+"POT-Creation-Date: 2014-05-02 22:02+0300\n"
 "PO-Revision-Date: 2014-03-28 08:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/manaplus/"
@@ -59,437 +59,439 @@ msgid "I"
 msgstr "-"
 
 #. TRANSLATORS: chat message after death
-#: src/being/localplayer.cpp:377
+#: src/being/localplayer.cpp:379
 #, c-format
 msgid "You were killed by %s"
 msgstr "Sinut tappoi %s."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:817
+#: src/being/localplayer.cpp:819
 msgid "Tried to pick up nonexistent item."
 msgstr "Yritit poimia olemattoman tavaran."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:821
+#: src/being/localplayer.cpp:823
 msgid "Item is too heavy."
 msgstr "Tavara on liian painava."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:825
+#: src/being/localplayer.cpp:827
 msgid "Item is too far away."
 msgstr "Tavara on liian kaukana."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:829
+#: src/being/localplayer.cpp:831
 msgid "Inventory is full."
 msgstr "Sinulla on liikaa tavaraa ennestään."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:833
+#: src/being/localplayer.cpp:835
 msgid "Stack is too big."
 msgstr "Kasa on liian suuri."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:837
+#: src/being/localplayer.cpp:839
 msgid "Item belongs to someone else."
 msgstr "Tavara kuuluu jollekulle muulle."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:841
+#: src/being/localplayer.cpp:843
 msgid "Unknown problem picking up item."
 msgstr "Tuntematon ongelma esti tavaran poimimisen."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:865
+#: src/being/localplayer.cpp:867
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "[@@%2$d|%3$s@@] (%1$d kpl) poimittu."
 msgstr[1] "[@@%2$d|%3$s@@] (%1$d kpl) poimittu."
 
+#. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1047 src/being/localplayer.cpp:1082
-#: src/being/localplayer.cpp:1083
+#: src/being/localplayer.cpp:1047 src/being/localplayer.cpp:1048
+#: src/being/localplayer.cpp:1084
 msgid "xp"
 msgstr ""
 
-#: src/being/localplayer.cpp:1088 src/being/localplayer.cpp:1095
-#: src/being/localplayer.cpp:1102
+#. TRANSLATORS: this is job experience
+#: src/being/localplayer.cpp:1052 src/being/localplayer.cpp:1058
+#: src/being/localplayer.cpp:1064
 msgid "job"
 msgstr ""
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1288
+#: src/being/localplayer.cpp:1273
 msgid "(D) default moves"
 msgstr "(D) oletusliikkeet"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1290
+#: src/being/localplayer.cpp:1275
 msgid "(I) invert moves"
 msgstr "(I) käännetyt liikkeet"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1292
+#: src/being/localplayer.cpp:1277
 msgid "(c) moves with some crazy moves"
 msgstr "(c) liikkuu osin villiliikkein"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1294
+#: src/being/localplayer.cpp:1279
 msgid "(C) moves with crazy moves"
 msgstr "(C) liikkuu villiliikkein"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1296
+#: src/being/localplayer.cpp:1281
 msgid "(d) double normal + crazy"
 msgstr "(d) tuplaa tavallinen + villi"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1298
+#: src/being/localplayer.cpp:1283
 msgid "(?) unknown move"
 msgstr "(?) tuntematon liikkumistapa"
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/being/localplayer.cpp:1321
+#: src/being/localplayer.cpp:1306
 #, c-format
 msgid "(%u) crazy move number %u"
 msgstr ""
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/being/localplayer.cpp:1327
+#: src/being/localplayer.cpp:1312
 msgid "(a) custom crazy move"
 msgstr "(a) oma villiliike"
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/being/localplayer.cpp:1332
+#: src/being/localplayer.cpp:1317
 msgid "(?) crazy move"
 msgstr "(?) villiliike"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1347
+#: src/being/localplayer.cpp:1332
 msgid "(0) default moves to target"
 msgstr "(0) oletussiirtymä kohteen luo"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1349
+#: src/being/localplayer.cpp:1334
 msgid "(1) moves to target in distance 1"
 msgstr "(1) siirry kohteen luo etäisyydellä 1"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1351
+#: src/being/localplayer.cpp:1336
 msgid "(2) moves to target in distance 2"
 msgstr "(2) siirry kohteen luo etäisyydellä 2"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1353
+#: src/being/localplayer.cpp:1338
 msgid "(3) moves to target in distance 3"
 msgstr "(3) siirry kohteen luo etäisyydellä 3"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1355
+#: src/being/localplayer.cpp:1340
 msgid "(5) moves to target in distance 5"
 msgstr "(5) siirry kohteen luo etäisyydellä 5"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1357
+#: src/being/localplayer.cpp:1342
 msgid "(7) moves to target in distance 7"
 msgstr "(7) siirry kohteen luo etäisyydellä 7"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1359
+#: src/being/localplayer.cpp:1344
 msgid "(A) moves to target in attack range"
 msgstr "(A) siirry kohteen luo hyökkäyskantamalla"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1361
+#: src/being/localplayer.cpp:1346
 msgid "(a) archer attack range"
 msgstr "(a) jousiampujan hyökkäyskantama"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1363
+#: src/being/localplayer.cpp:1348
 msgid "(B) moves to target in attack range - 1"
 msgstr ""
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1365
+#: src/being/localplayer.cpp:1350
 msgid "(?) move to target"
 msgstr "(?) siirry kohteen luo"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1385
+#: src/being/localplayer.cpp:1370
 msgid "(D) default follow"
 msgstr "(D) oletusseuraaminen"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1387
+#: src/being/localplayer.cpp:1372
 msgid "(R) relative follow"
 msgstr "(R) suhteellinen seuraaminen"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1389
+#: src/being/localplayer.cpp:1374
 msgid "(M) mirror follow"
 msgstr "(M) peilikuvaseuraaminen"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1391
+#: src/being/localplayer.cpp:1376
 msgid "(P) pet follow"
 msgstr "(P) lemmikkiseuraaminen"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1393
+#: src/being/localplayer.cpp:1378
 msgid "(?) unknown follow"
 msgstr "(?) tuntematon seuraaminen"
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1413 src/being/localplayer.cpp:1421
-#: src/being/localplayer.cpp:1449
+#: src/being/localplayer.cpp:1398 src/being/localplayer.cpp:1406
+#: src/being/localplayer.cpp:1434
 msgid "(?) attack"
 msgstr "(?) hyökkäys"
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1415 src/being/localplayer.cpp:1441
+#: src/being/localplayer.cpp:1400 src/being/localplayer.cpp:1426
 msgid "(D) default attack"
 msgstr "(D) oletushyökkäys"
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/being/localplayer.cpp:1417
+#: src/being/localplayer.cpp:1402
 msgid "(s) switch attack without shield"
 msgstr "(s) vaihda hyökkäystä, ei kilpeä"
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/being/localplayer.cpp:1419
+#: src/being/localplayer.cpp:1404
 msgid "(S) switch attack with shield"
 msgstr "(S) vaihda hyökkäystä, kilpi mukana"
 
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1443
+#: src/being/localplayer.cpp:1428
 msgid "(G) go and attack"
 msgstr "(G) mene ja hyökkää"
 
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1445
+#: src/being/localplayer.cpp:1430
 msgid "(A) go, attack, pickup"
 msgstr "(A) mene, hyökkää, poimi"
 
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1447
+#: src/being/localplayer.cpp:1432
 msgid "(d) without auto attack"
 msgstr "(d) ei automaattista hyökkäystä"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1501
+#: src/being/localplayer.cpp:1485
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) pieni poiminta 1x1 ruutua"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1503
+#: src/being/localplayer.cpp:1487
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) oletuspoiminta 2x1 ruutua"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1505
+#: src/being/localplayer.cpp:1489
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) poiminta edestä 2x3 ruutua"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1507
+#: src/being/localplayer.cpp:1491
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) poiminta 3x3 ruutua"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1509
+#: src/being/localplayer.cpp:1493
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) mene ja poimi etäisyydellä 4"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1511
+#: src/being/localplayer.cpp:1495
 msgid "(G) go and pick up in distance 8"
 msgstr "(G) mene ja poimi etäisyydellä 8"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1513
+#: src/being/localplayer.cpp:1497
 msgid "(A) go and pick up in max distance"
 msgstr "(A) mene ja poimi maksimietäisyydellä"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1515
+#: src/being/localplayer.cpp:1499
 msgid "(?) pick up"
 msgstr "(?) poiminta"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1529
+#: src/being/localplayer.cpp:1513
 msgid "(N) normal map view"
 msgstr "(N) normaali karttanäkymä"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1531
+#: src/being/localplayer.cpp:1515
 msgid "(D) debug map view"
 msgstr "(D) debug-karttanäkymä"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1533
+#: src/being/localplayer.cpp:1517
 msgid "(u) ultra map view"
 msgstr "(u) ultra-karttanäkymä"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1535
+#: src/being/localplayer.cpp:1519
 msgid "(U) ultra map view 2"
 msgstr "(U) ultra-karttanäkymä 2"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1537
+#: src/being/localplayer.cpp:1521
 msgid "(e) empty map view"
 msgstr "(e) tyhjä karttanäkymä"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1539
+#: src/being/localplayer.cpp:1523
 msgid "(b) black & white map view"
 msgstr "(b) mustavalkoinen karttanäkymä"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1559
+#: src/being/localplayer.cpp:1543
 msgid "(f) use #flar for magic attack"
 msgstr "(f) #flar taikahyökkäyksenä"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1561
+#: src/being/localplayer.cpp:1545
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) #chiza taikahyökkäyksenä"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1563
+#: src/being/localplayer.cpp:1547
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) #ingrav taikahyökkäyksenä"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1565
+#: src/being/localplayer.cpp:1549
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) #frillyar taikahyökkäyksenä"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1567
+#: src/being/localplayer.cpp:1551
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) #upmarmu taikahyökkäyksenä"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1569
+#: src/being/localplayer.cpp:1553
 msgid "(?) magic attack"
 msgstr "(?) taikahyökkäys"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1589
+#: src/being/localplayer.cpp:1573
 msgid "(a) attack all players"
 msgstr "(a) hyökkää kaikkien pelaajien kimppuun"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1591
+#: src/being/localplayer.cpp:1575
 msgid "(f) attack all except friends"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1593
+#: src/being/localplayer.cpp:1577
 msgid "(b) attack bad relations"
 msgstr "(b) hyökkää jos huonot suhteet"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1595
+#: src/being/localplayer.cpp:1579
 msgid "(d) don't attack players"
 msgstr ""
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1597
+#: src/being/localplayer.cpp:1581
 msgid "(?) pvp attack"
 msgstr "(?) pelaajien kanssa taistelu"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:1617
+#: src/being/localplayer.cpp:1601
 msgid "(D) default imitation"
 msgstr "(D) oletusmatkinta"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:1619
+#: src/being/localplayer.cpp:1603
 msgid "(O) outfits imitation"
 msgstr "(O) asun matkinta"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:1621
+#: src/being/localplayer.cpp:1605
 msgid "(?) imitation"
 msgstr "(?) matkinta"
 
 #. TRANSLATORS: away message box header
-#: src/being/localplayer.cpp:1650
+#: src/being/localplayer.cpp:1633
 msgid "Away"
 msgstr "Poissa"
 
 #. TRANSLATORS: away type in status bar
-#: src/being/localplayer.cpp:1673
+#: src/being/localplayer.cpp:1656
 msgid "(O) on keyboard"
 msgstr "(O) paikalla"
 
 #. TRANSLATORS: away type in status bar
-#: src/being/localplayer.cpp:1675
+#: src/being/localplayer.cpp:1658
 msgid "(A) away"
 msgstr "(A) poissa"
 
 #. TRANSLATORS: away type in status bar
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:1677 src/being/localplayer.cpp:1695
+#: src/being/localplayer.cpp:1660 src/being/localplayer.cpp:1678
 msgid "(?) away"
 msgstr "(?) poissaolo"
 
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:1691
+#: src/being/localplayer.cpp:1674
 msgid "(G) game camera mode"
 msgstr "(G) pelin kameratila"
 
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:1693
+#: src/being/localplayer.cpp:1676
 msgid "(F) free camera mode"
 msgstr "(F) vapaa kamera"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:1720
+#: src/being/localplayer.cpp:1703
 msgid "Game modifiers are enabled"
 msgstr "Pelimuokkaimet käytössä"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:1722
+#: src/being/localplayer.cpp:1705
 msgid "Game modifiers are disabled"
 msgstr "Pelimuokkaimet poissa käytöstä"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:1724
+#: src/being/localplayer.cpp:1707
 msgid "Game modifiers are unknown"
 msgstr "Pelimuokkaimet ovat tuntemattomia"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:3290
+#: src/being/localplayer.cpp:3273
 #, c-format
 msgid "Follow: %s"
 msgstr ""
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3296 src/being/localplayer.cpp:3321
+#: src/being/localplayer.cpp:3279 src/being/localplayer.cpp:3304
 msgid "Follow canceled"
 msgstr "Seuraaminen keskeytetty"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:3306
+#: src/being/localplayer.cpp:3289
 #, c-format
 msgid "Imitation: %s"
 msgstr ""
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3312 src/being/localplayer.cpp:3326
+#: src/being/localplayer.cpp:3295 src/being/localplayer.cpp:3309
 msgid "Imitation canceled"
 msgstr "Matkiminen keskeytetty"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:3670
+#: src/being/localplayer.cpp:3654
 #, c-format
 msgid "You see %s"
 msgstr ""
@@ -527,37 +529,37 @@ msgstr "Leijuva puhekupla"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1124 src/gui/windowmenu.cpp:155
+#: src/client.cpp:1123 src/gui/windowmenu.cpp:155
 #: src/gui/windows/setupwindow.cpp:62
 msgid "Setup"
 msgstr "Asetukset"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1127 src/gui/widgets/tabs/setup_perfomance.cpp:52
+#: src/client.cpp:1126 src/gui/widgets/tabs/setup_perfomance.cpp:52
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1130 src/gui/widgets/tabs/setup_video.cpp:226
+#: src/client.cpp:1129 src/gui/widgets/tabs/setup_video.cpp:226
 msgid "Video"
 msgstr "Kuva"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1133 src/gui/widgets/tabs/setup_theme.cpp:269
+#: src/client.cpp:1132 src/gui/widgets/tabs/setup_theme.cpp:269
 msgid "Theme"
 msgstr "Teema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:1136
+#: src/client.cpp:1135
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:1139 src/gui/windowmenu.cpp:71
+#: src/client.cpp:1138 src/gui/windowmenu.cpp:71
 #: src/gui/windows/helpwindow.cpp:50
 msgid "Help"
 msgstr "Apua"
@@ -572,21 +574,21 @@ msgstr "Apua"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1143 src/gui/popups/popupmenu.cpp:619
+#: src/client.cpp:1142 src/gui/popups/popupmenu.cpp:619
 #: src/gui/popups/popupmenu.cpp:858 src/gui/windows/didyouknowwindow.cpp:78
-#: src/gui/windows/inventorywindow.cpp:226 src/gui/windows/npcdialog.cpp:70
+#: src/gui/windows/inventorywindow.cpp:225 src/gui/windows/npcdialog.cpp:70
 #: src/gui/windows/npcdialog.cpp:108 src/gui/windows/questswindow.cpp:125
 #: src/gui/windows/shopwindow.cpp:79
 msgid "Close"
 msgstr "Sulje"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1265
+#: src/client.cpp:1264
 msgid "Connecting to server"
 msgstr "Yhdistän palvelimeen"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1312
+#: src/client.cpp:1311
 msgid "Logging in"
 msgstr "Kirjaudun sisään"
 
@@ -624,9 +626,9 @@ msgstr "Vaihdan pelipalvelinta"
 #: src/client.cpp:1584 src/client.cpp:1595 src/client.cpp:1779
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
-#: src/gui/windows/charcreatedialog.cpp:348
-#: src/gui/windows/charselectdialog.cpp:299
-#: src/gui/windows/editserverdialog.cpp:186
+#: src/gui/windows/charcreatedialog.cpp:349
+#: src/gui/windows/charselectdialog.cpp:305
+#: src/gui/windows/editserverdialog.cpp:192
 #: src/gui/windows/registerdialog.cpp:260
 #: src/gui/windows/unregisterdialog.cpp:146
 #: src/net/ea/charserverhandler.cpp:202 src/net/ea/charserverhandler.cpp:226
@@ -899,25 +901,25 @@ msgstr ""
 msgid "Environment variables dumped"
 msgstr ""
 
-#: src/commands.cpp:1349
+#: src/commands.cpp:1352
 msgid "Uploaded config into:"
 msgstr ""
 
-#: src/commands.cpp:1357
+#: src/commands.cpp:1360
 msgid "Uploaded server config into:"
 msgstr ""
 
-#: src/commands.cpp:1365
+#: src/commands.cpp:1368
 msgid "Uploaded log into:"
 msgstr ""
 
 #. TRANSLATORS: dump command
-#: src/commands.cpp:1486 src/commands.cpp:1495
+#: src/commands.cpp:1489 src/commands.cpp:1498
 msgid "Resource images:"
 msgstr "Resurssikuvat:"
 
 #. TRANSLATORS: dump command
-#: src/commands.cpp:1489 src/commands.cpp:1498
+#: src/commands.cpp:1492 src/commands.cpp:1501
 msgid "Resource orphaned images:"
 msgstr "Orvot resurssikuvat:"
 
@@ -1244,7 +1246,7 @@ msgstr "Tee kaupat"
 #. TRANSLATORS: bot checker window table header
 #. TRANSLATORS: player stat
 #: src/gui/popups/popupmenu.cpp:156 src/gui/popups/popupmenu.cpp:260
-#: src/gui/popups/popupmenu.cpp:695 src/gui/setupactiondata.h:51
+#: src/gui/popups/popupmenu.cpp:695 src/gui/setupactiondata.h:63
 #: src/gui/windows/botcheckerwindow.cpp:302
 #: src/net/eathena/generalhandler.cpp:250 src/net/tmwa/generalhandler.cpp:288
 msgid "Attack"
@@ -1306,7 +1308,7 @@ msgstr "Pommita"
 #: src/gui/popups/popupmenu.cpp:228 src/gui/popups/popupmenu.cpp:249
 #: src/gui/popups/popupmenu.cpp:396 src/gui/popups/popupmenu.cpp:547
 #: src/gui/popups/popupmenu.cpp:706 src/gui/popups/popupmenu.cpp:787
-#: src/gui/setupactiondata.h:2009 src/gui/windows/botcheckerwindow.cpp:306
+#: src/gui/setupactiondata.h:2021 src/gui/windows/botcheckerwindow.cpp:306
 msgid "Move"
 msgstr "Liiku"
 
@@ -1314,7 +1316,7 @@ msgstr "Liiku"
 #. TRANSLATORS: talk with npc
 #. TRANSLATORS: input action name
 #. TRANSLATORS: bot checker window table header
-#: src/gui/popups/popupmenu.cpp:239 src/gui/setupactiondata.h:93
+#: src/gui/popups/popupmenu.cpp:239 src/gui/setupactiondata.h:105
 #: src/gui/windows/botcheckerwindow.cpp:304
 msgid "Talk"
 msgstr "Keskustele"
@@ -1419,16 +1421,16 @@ msgstr "Lisää nimi keskusteluun"
 #: src/gui/popups/popupmenu.cpp:2413 src/gui/popups/popupmenu.cpp:2436
 #: src/gui/popups/popupmenu.cpp:2463 src/gui/popups/popupmenu.cpp:2480
 #: src/gui/popups/popupmenu.cpp:2760 src/gui/popups/popupmenu.cpp:2896
-#: src/gui/setupactiondata.h:1894 src/gui/windows/buyselldialog.cpp:71
+#: src/gui/setupactiondata.h:1906 src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/changeemaildialog.cpp:56
 #: src/gui/windows/changepassworddialog.cpp:58
 #: src/gui/windows/charcreatedialog.cpp:119
 #: src/gui/windows/connectiondialog.cpp:50
-#: src/gui/windows/editserverdialog.cpp:58
-#: src/gui/windows/itemamountwindow.cpp:163
+#: src/gui/windows/editserverdialog.cpp:59
+#: src/gui/windows/itemamountwindow.cpp:165
 #: src/gui/windows/npcpostdialog.cpp:68 src/gui/windows/quitdialog.cpp:70
 #: src/gui/windows/registerdialog.cpp:78 src/gui/windows/setupwindow.cpp:95
-#: src/gui/windows/socialwindow.cpp:1186
+#: src/gui/windows/socialwindow.cpp:1198
 #: src/gui/windows/textcommandeditor.cpp:87 src/gui/windows/textdialog.cpp:55
 #: src/gui/windows/unregisterdialog.cpp:55
 #: src/gui/windows/updaterwindow.cpp:179
@@ -1500,8 +1502,8 @@ msgstr ""
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
-#: src/gui/popups/popupmenu.cpp:567 src/gui/setupactiondata.h:2017
-#: src/gui/windowmenu.cpp:138 src/gui/windows/inventorywindow.cpp:192
+#: src/gui/popups/popupmenu.cpp:567 src/gui/setupactiondata.h:2029
+#: src/gui/windowmenu.cpp:138 src/gui/windows/inventorywindow.cpp:191
 #: src/gui/windows/outfitwindow.cpp:53
 msgid "Outfits"
 msgstr "Asukokonaisuudet"
@@ -1570,7 +1572,7 @@ msgstr "Poista poissaolo käytöstä"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable away messages in chat tab
 #. TRANSLATORS: social window button
-#: src/gui/popups/popupmenu.cpp:668 src/gui/windows/socialwindow.cpp:1259
+#: src/gui/popups/popupmenu.cpp:668 src/gui/windows/socialwindow.cpp:1271
 msgid "Leave"
 msgstr "Eroa"
 
@@ -1668,8 +1670,8 @@ msgstr "Lisää kaikki kauppaan"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: setup button
 #: src/gui/popups/popupmenu.cpp:1954 src/gui/popups/popupmenu.cpp:2084
-#: src/gui/popups/popupmenu.cpp:2125 src/gui/windows/inventorywindow.cpp:222
-#: src/gui/windows/inventorywindow.cpp:748 src/gui/windows/setupwindow.cpp:97
+#: src/gui/popups/popupmenu.cpp:2125 src/gui/windows/inventorywindow.cpp:221
+#: src/gui/windows/inventorywindow.cpp:736 src/gui/windows/setupwindow.cpp:97
 msgid "Store"
 msgstr "Varastoi"
 
@@ -1700,7 +1702,7 @@ msgstr "Varastoi kaikki"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get item from storage
 #. TRANSLATORS: storage button
-#: src/gui/popups/popupmenu.cpp:1983 src/gui/windows/inventorywindow.cpp:224
+#: src/gui/popups/popupmenu.cpp:1983 src/gui/windows/inventorywindow.cpp:223
 msgid "Retrieve"
 msgstr "Ota"
 
@@ -1733,8 +1735,8 @@ msgstr "Ota kaikki"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: skills dialog button
 #: src/gui/popups/popupmenu.cpp:2046 src/gui/popups/popupmenu.cpp:2824
-#: src/gui/windows/inventorywindow.cpp:173
-#: src/gui/windows/inventorywindow.cpp:655 src/gui/windows/skilldialog.cpp:289
+#: src/gui/windows/inventorywindow.cpp:172
+#: src/gui/windows/inventorywindow.cpp:654 src/gui/windows/skilldialog.cpp:289
 msgid "Use"
 msgstr "Käytä"
 
@@ -1761,7 +1763,7 @@ msgstr "Palauta oletusmuokkaimet (keltainen palkki)"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy status to chat
 #. TRANSLATORS: status window button
-#: src/gui/popups/popupmenu.cpp:2250 src/gui/windows/statuswindow.cpp:169
+#: src/gui/popups/popupmenu.cpp:2250 src/gui/windows/statuswindow.cpp:172
 msgid "Copy to chat"
 msgstr "Kopioi keskusteluun"
 
@@ -1769,7 +1771,7 @@ msgstr "Kopioi keskusteluun"
 #. TRANSLATORS: language
 #: src/gui/popups/popupmenu.cpp:2274 src/gui/popups/popupmenu.cpp:2352
 #: src/gui/widgets/tabs/setup_theme.cpp:127
-#: src/gui/windows/socialwindow.cpp:960
+#: src/gui/windows/socialwindow.cpp:970
 msgid "(default)"
 msgstr "(oletus)"
 
@@ -1925,8 +1927,8 @@ msgstr ""
 #. TRANSLATORS: equipment window button
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2809 src/gui/windows/equipmentwindow.cpp:67
-#: src/gui/windows/inventorywindow.cpp:175
-#: src/gui/windows/inventorywindow.cpp:644
+#: src/gui/windows/inventorywindow.cpp:174
+#: src/gui/windows/inventorywindow.cpp:643
 msgid "Unequip"
 msgstr "Poista varuste käytöstä"
 
@@ -1934,16 +1936,16 @@ msgstr "Poista varuste käytöstä"
 #. TRANSLATORS: use item
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window button
-#: src/gui/popups/popupmenu.cpp:2815 src/gui/windows/inventorywindow.cpp:171
-#: src/gui/windows/inventorywindow.cpp:649 src/gui/windows/outfitwindow.cpp:60
+#: src/gui/popups/popupmenu.cpp:2815 src/gui/windows/inventorywindow.cpp:170
+#: src/gui/windows/inventorywindow.cpp:648 src/gui/windows/outfitwindow.cpp:60
 msgid "Equip"
 msgstr "Ota käyttöön"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2835 src/gui/windows/inventorywindow.cpp:188
-#: src/gui/windows/inventorywindow.cpp:756
+#: src/gui/popups/popupmenu.cpp:2835 src/gui/windows/inventorywindow.cpp:187
+#: src/gui/windows/inventorywindow.cpp:744
 msgid "Drop..."
 msgstr "Pudota..."
 
@@ -1958,14 +1960,14 @@ msgstr "Pudota kaikki"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2844 src/gui/windowmenu.cpp:126
-#: src/gui/windows/inventorywindow.cpp:761
+#: src/gui/windows/inventorywindow.cpp:749
 msgid "Drop"
 msgstr "Pudota"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: split items
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2852 src/gui/windows/inventorywindow.cpp:190
+#: src/gui/popups/popupmenu.cpp:2852 src/gui/windows/inventorywindow.cpp:189
 msgid "Split"
 msgstr "Jaa"
 
@@ -2011,107 +2013,107 @@ msgid "Kick"
 msgstr "Potki"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:45
+#: src/gui/setupactiondata.h:57
 msgid "Target and attack keys"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:57
+#: src/gui/setupactiondata.h:69
 msgid "Target & Attack"
 msgstr "Kohdista ja hyökkää"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:63
+#: src/gui/setupactiondata.h:75
 msgid "Move to Target"
 msgstr "Mene kohteen luo"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:69
+#: src/gui/setupactiondata.h:81
 msgid "Change Move to Target type"
 msgstr "Muuta kohteen luo liikkumisen tyyppiä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:75
+#: src/gui/setupactiondata.h:87
 msgid "Move to Home location"
 msgstr "Siirry kotipaikkaan"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:81
+#: src/gui/setupactiondata.h:93
 msgid "Set home location"
 msgstr "Aseta kotipaikka"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:87
+#: src/gui/setupactiondata.h:99
 msgid "Move to navigation point"
 msgstr "Siirry reittipisteeseen"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:99
+#: src/gui/setupactiondata.h:111
 msgid "Stop Attack / Modifier key"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:105
+#: src/gui/setupactiondata.h:117
 msgid "Untarget"
 msgstr "Poista kohdevalinta"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:111
+#: src/gui/setupactiondata.h:123
 msgid "Target monster"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:117
+#: src/gui/setupactiondata.h:129
 msgid "Target NPC"
 msgstr "NPC kohteeksi"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:123
+#: src/gui/setupactiondata.h:135
 msgid "Target Player"
 msgstr "Pelaaja kohteeksi"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:129
+#: src/gui/setupactiondata.h:141
 msgid "Other Keys"
 msgstr "Muut näppäimet"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:135
+#: src/gui/setupactiondata.h:147
 msgid "Pickup"
 msgstr "Poimi"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:141
+#: src/gui/setupactiondata.h:153
 msgid "Change Pickup Type"
 msgstr "Muuta poiminnan tyyppiä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:147
+#: src/gui/setupactiondata.h:159
 msgid "Sit"
 msgstr "Istu"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:153
+#: src/gui/setupactiondata.h:165
 msgid "Screenshot"
 msgstr "Kuvankaappaus"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:159
+#: src/gui/setupactiondata.h:171
 msgid "Enable/Disable Trading"
 msgstr "Salli/estä kaupankäynti"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:165
+#: src/gui/setupactiondata.h:177
 msgid "Open trade window"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:171
+#: src/gui/setupactiondata.h:183
 msgid "Change Map View Mode"
 msgstr "Vaihda karttanäkymää"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:177
+#: src/gui/setupactiondata.h:189
 msgid "Select OK"
 msgstr "Valitse OK"
 
@@ -2121,7 +2123,7 @@ msgstr "Valitse OK"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/setupactiondata.h:183 src/gui/windows/buydialog.cpp:255
+#: src/gui/setupactiondata.h:195 src/gui/windows/buydialog.cpp:255
 #: src/gui/windows/quitdialog.cpp:52 src/gui/windows/quitdialog.cpp:57
 #: src/gui/windows/quitdialog.cpp:59 src/gui/windows/selldialog.cpp:119
 #: src/gui/windows/serverdialog.cpp:201
@@ -2129,32 +2131,31 @@ msgid "Quit"
 msgstr "Sulje"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:189
+#: src/gui/setupactiondata.h:201
 msgid "Stop or sit"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:195
+#: src/gui/setupactiondata.h:207
 msgid "Return to safe video mode"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:210
+#: src/gui/setupactiondata.h:222
 msgid "Shortcuts modifiers keys"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:216
+#: src/gui/setupactiondata.h:228
 msgid "Item Shortcuts Key"
 msgstr "Tavaroiden pikavalintanäppäin"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:222
+#: src/gui/setupactiondata.h:234
 msgid "Shortcuts keys"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:228 src/gui/setupactiondata.h:234
 #: src/gui/setupactiondata.h:240 src/gui/setupactiondata.h:246
 #: src/gui/setupactiondata.h:252 src/gui/setupactiondata.h:258
 #: src/gui/setupactiondata.h:264 src/gui/setupactiondata.h:270
@@ -2164,177 +2165,177 @@ msgstr ""
 #: src/gui/setupactiondata.h:312 src/gui/setupactiondata.h:318
 #: src/gui/setupactiondata.h:324 src/gui/setupactiondata.h:330
 #: src/gui/setupactiondata.h:336 src/gui/setupactiondata.h:342
+#: src/gui/setupactiondata.h:348 src/gui/setupactiondata.h:354
 #, c-format
 msgid "Item Shortcut %d"
 msgstr "Tavarapikavalinta %d"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:357
+#: src/gui/setupactiondata.h:369
 msgid "Show Windows Menu"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:363
+#: src/gui/setupactiondata.h:375
 msgid "Hide Windows"
 msgstr "Piilota ikkunat"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:369
+#: src/gui/setupactiondata.h:381
 msgid "About Window"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:375
+#: src/gui/setupactiondata.h:387
 msgid "Help Window"
 msgstr "Ohjeikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:381
+#: src/gui/setupactiondata.h:393
 msgid "Status Window"
 msgstr "Tilaikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:387
+#: src/gui/setupactiondata.h:399
 msgid "Inventory Window"
 msgstr "Tavaraikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:393
+#: src/gui/setupactiondata.h:405
 msgid "Equipment Window"
 msgstr "Varusteikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:399
+#: src/gui/setupactiondata.h:411
 msgid "Skill Window"
 msgstr "Taitoikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:405
+#: src/gui/setupactiondata.h:417
 msgid "Minimap Window"
 msgstr "Karttaikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:411
+#: src/gui/setupactiondata.h:423
 msgid "Chat Window"
 msgstr "Keskusteluikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:417
+#: src/gui/setupactiondata.h:429
 msgid "Item Shortcut Window"
 msgstr "Tavaroiden pikavalintaikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:423
+#: src/gui/setupactiondata.h:435
 msgid "Setup Window"
 msgstr "Asetusikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:429
+#: src/gui/setupactiondata.h:441
 msgid "Debug Window"
 msgstr "Debug-ikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:435
+#: src/gui/setupactiondata.h:447
 msgid "Social Window"
 msgstr "Suhdeikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:441
+#: src/gui/setupactiondata.h:453
 msgid "Emote Shortcut Window"
 msgstr "Eleiden pikavalintaikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:447
+#: src/gui/setupactiondata.h:459
 msgid "Outfits Window"
 msgstr "Asukokonaisuusikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:453
+#: src/gui/setupactiondata.h:465
 msgid "Shop Window"
 msgstr "Kauppaikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:459
+#: src/gui/setupactiondata.h:471
 msgid "Quick drop Window"
 msgstr "Pikapudotusikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:465
+#: src/gui/setupactiondata.h:477
 msgid "Kill Stats Window"
 msgstr "Tappotilastoikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:471
+#: src/gui/setupactiondata.h:483
 msgid "Commands Window"
 msgstr "Komentoikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:477
+#: src/gui/setupactiondata.h:489
 msgid "Bot Checker Window"
 msgstr "Bottitutkaikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:483
+#: src/gui/setupactiondata.h:495
 msgid "Who Is Online Window"
 msgstr "Kuka on linjoilla -ikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:489
+#: src/gui/setupactiondata.h:501
 msgid "Did you know Window"
 msgstr "Tiesitkö-ikkuna"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:495
+#: src/gui/setupactiondata.h:507
 msgid "Quests Window"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:501
+#: src/gui/setupactiondata.h:513
 msgid "Previous Social Tab"
 msgstr "Edellinen sos. välilehti"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:507
+#: src/gui/setupactiondata.h:519
 msgid "Next Social Tab"
 msgstr "Seuraava sos. välilehti"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:513
+#: src/gui/setupactiondata.h:525
 msgid "Previous Shortcuts tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:519
+#: src/gui/setupactiondata.h:531
 msgid "Next Shortcuts tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:525
+#: src/gui/setupactiondata.h:537
 msgid "Previous Commands tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:531
+#: src/gui/setupactiondata.h:543
 msgid "Next Commands tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:546
+#: src/gui/setupactiondata.h:558
 msgid "Emote modifiers keys"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:552
+#: src/gui/setupactiondata.h:564
 msgid "Emote modifier key"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:558
+#: src/gui/setupactiondata.h:570
 msgid "Emote shortcuts"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:564 src/gui/setupactiondata.h:570
 #: src/gui/setupactiondata.h:576 src/gui/setupactiondata.h:582
 #: src/gui/setupactiondata.h:588 src/gui/setupactiondata.h:594
 #: src/gui/setupactiondata.h:600 src/gui/setupactiondata.h:606
@@ -2358,37 +2359,37 @@ msgstr ""
 #: src/gui/setupactiondata.h:816 src/gui/setupactiondata.h:822
 #: src/gui/setupactiondata.h:828 src/gui/setupactiondata.h:834
 #: src/gui/setupactiondata.h:840 src/gui/setupactiondata.h:846
+#: src/gui/setupactiondata.h:852 src/gui/setupactiondata.h:858
 #, c-format
 msgid "Emote Shortcut %d"
 msgstr "Eleen pikavalinta %d"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:861
+#: src/gui/setupactiondata.h:873
 msgid "Outfits keys"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:867
+#: src/gui/setupactiondata.h:879
 msgid "Wear Outfit"
 msgstr "Pue asu"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:873
+#: src/gui/setupactiondata.h:885
 msgid "Copy Outfit"
 msgstr "Kopioi asu"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:879
+#: src/gui/setupactiondata.h:891
 msgid "Copy equipped to Outfit"
 msgstr "Kopioi varusteet asuksi"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:885
+#: src/gui/setupactiondata.h:897
 msgid "Outfits shortcuts"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:891 src/gui/setupactiondata.h:897
 #: src/gui/setupactiondata.h:903 src/gui/setupactiondata.h:909
 #: src/gui/setupactiondata.h:915 src/gui/setupactiondata.h:921
 #: src/gui/setupactiondata.h:927 src/gui/setupactiondata.h:933
@@ -2412,232 +2413,232 @@ msgstr ""
 #: src/gui/setupactiondata.h:1143 src/gui/setupactiondata.h:1149
 #: src/gui/setupactiondata.h:1155 src/gui/setupactiondata.h:1161
 #: src/gui/setupactiondata.h:1167 src/gui/setupactiondata.h:1173
+#: src/gui/setupactiondata.h:1179 src/gui/setupactiondata.h:1185
 #, c-format
 msgid "Outfit Shortcut %d"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1188
+#: src/gui/setupactiondata.h:1200
 msgid "Toggle Chat"
 msgstr "Ota keskustelu käyttöön/pois käytöstä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1194
+#: src/gui/setupactiondata.h:1206
 msgid "Scroll Chat Up"
 msgstr "Vieritä keskustelua ylös"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1200
+#: src/gui/setupactiondata.h:1212
 msgid "Scroll Chat Down"
 msgstr "Vieritä keskustelua alas"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1206
+#: src/gui/setupactiondata.h:1218
 msgid "Previous Chat Tab"
 msgstr "Edellinen keskusteluvälilehti"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1212
+#: src/gui/setupactiondata.h:1224
 msgid "Next Chat Tab"
 msgstr "Seuraava keskusteluvälilehti"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1218
+#: src/gui/setupactiondata.h:1230
 msgid "Close current Chat Tab"
 msgstr "Sulje tämä keskusteluvälilehti"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1224
+#: src/gui/setupactiondata.h:1236
 msgid "Previous chat line"
 msgstr "Edellinen keskustelulinja"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1230
+#: src/gui/setupactiondata.h:1242
 msgid "Next chat line"
 msgstr "Seuraava keskustelulinja"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1236
+#: src/gui/setupactiondata.h:1248
 msgid "Chat modifier key"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1242
+#: src/gui/setupactiondata.h:1254
 msgid "Show smiles"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1312
+#: src/gui/setupactiondata.h:1324
 msgid "Ignore input 1"
 msgstr "Jätä huomiotta syöte 1"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1318
+#: src/gui/setupactiondata.h:1330
 msgid "Ignore input 2"
 msgstr "Jätä huomiotta syöte 2"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1324
+#: src/gui/setupactiondata.h:1336
 msgid "Direct Up"
 msgstr "Vie ylös"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1330
+#: src/gui/setupactiondata.h:1342
 msgid "Direct Down"
 msgstr "Vie alas"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1336
+#: src/gui/setupactiondata.h:1348
 msgid "Direct Left"
 msgstr "Vie vasemmalle"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1342
+#: src/gui/setupactiondata.h:1354
 msgid "Direct Right"
 msgstr "Vie oikealle"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1348
+#: src/gui/setupactiondata.h:1360
 msgid "Crazy moves"
 msgstr "Villiliikkeet"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1354
+#: src/gui/setupactiondata.h:1366
 msgid "Change Crazy Move mode"
 msgstr "Muuta villiliiketilaa"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1360
+#: src/gui/setupactiondata.h:1372
 msgid "Quick Drop N Items from 0 slot"
 msgstr "Pudota nopeasti N esinettä paikasta 0"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1366
+#: src/gui/setupactiondata.h:1378
 msgid "Quick Drop N Items"
 msgstr "Pudota nopeasti N esinettä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1372
+#: src/gui/setupactiondata.h:1384
 msgid "Switch Quick Drop Counter"
 msgstr "Vaihda nopean pudotuksen laskuria"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1378
+#: src/gui/setupactiondata.h:1390
 msgid "Quick heal target or self"
 msgstr "Pikaparanna kohde tai itse"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1384
+#: src/gui/setupactiondata.h:1396
 msgid "Use #itenplz spell"
 msgstr "Käytä #itenplz-loitsua"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1390
+#: src/gui/setupactiondata.h:1402
 msgid "Use magic attack"
 msgstr "Käytä magiahyökkäystä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1396
+#: src/gui/setupactiondata.h:1408
 msgid "Switch magic attack"
 msgstr "Vaihda magiahyökkäystä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1402
+#: src/gui/setupactiondata.h:1414
 msgid "Switch pvp attack"
 msgstr "Vaihda PvP-hyökkäystä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1408
+#: src/gui/setupactiondata.h:1420
 msgid "Change move type"
 msgstr "Vaihda liikkumistyyppiä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1414
+#: src/gui/setupactiondata.h:1426
 msgid "Change Attack Weapon Type"
 msgstr "Vaihda hyökkäysaseen tyyppiä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1420
+#: src/gui/setupactiondata.h:1432
 msgid "Change Attack Type"
 msgstr "Vaihda hyökkäystyyppiä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1426
+#: src/gui/setupactiondata.h:1438
 msgid "Change Follow mode"
 msgstr "Vaihda seuraustyyliä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1432
+#: src/gui/setupactiondata.h:1444
 msgid "Change Imitation mode"
 msgstr "Vaihda matkintatyyliä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1438
+#: src/gui/setupactiondata.h:1450
 msgid "Disable / Enable Game modifier keys"
 msgstr "Ota käyttöön / poista pelimuokkaimet"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1444
+#: src/gui/setupactiondata.h:1456
 msgid "On / Off audio"
 msgstr "Äänet päälle / pois"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1450
+#: src/gui/setupactiondata.h:1462
 msgid "Enable / Disable away mode"
 msgstr "Aseta / peru poissaolo"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1456
+#: src/gui/setupactiondata.h:1468
 msgid "Emulate right click from keyboard"
 msgstr "Kontekstivalikkoon \"klikkaus\" näppäimistöltä"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1462
+#: src/gui/setupactiondata.h:1474
 msgid "Toggle camera mode"
 msgstr "Vaihda kameran toimintaa"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1468
+#: src/gui/setupactiondata.h:1480
 msgid "Show onscreen keyboard"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1483
+#: src/gui/setupactiondata.h:1495
 msgid "Move Keys"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1489 src/gui/setupactiondata.h:1828
+#: src/gui/setupactiondata.h:1501 src/gui/setupactiondata.h:1840
 msgid "Move Up"
 msgstr "Ylöspäin"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1495 src/gui/setupactiondata.h:1834
+#: src/gui/setupactiondata.h:1507 src/gui/setupactiondata.h:1846
 msgid "Move Down"
 msgstr "Alaspäin"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1501 src/gui/setupactiondata.h:1840
+#: src/gui/setupactiondata.h:1513 src/gui/setupactiondata.h:1852
 msgid "Move Left"
 msgstr "Vasemmalle"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1507 src/gui/setupactiondata.h:1846
+#: src/gui/setupactiondata.h:1519 src/gui/setupactiondata.h:1858
 msgid "Move Right"
 msgstr "Oikealle"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1513
+#: src/gui/setupactiondata.h:1525
 msgid "Move Forward"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1519
+#: src/gui/setupactiondata.h:1531
 msgid "Move to navigation point shortcuts"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1525 src/gui/setupactiondata.h:1531
 #: src/gui/setupactiondata.h:1537 src/gui/setupactiondata.h:1543
 #: src/gui/setupactiondata.h:1549 src/gui/setupactiondata.h:1555
 #: src/gui/setupactiondata.h:1561 src/gui/setupactiondata.h:1567
@@ -2661,32 +2662,33 @@ msgstr ""
 #: src/gui/setupactiondata.h:1777 src/gui/setupactiondata.h:1783
 #: src/gui/setupactiondata.h:1789 src/gui/setupactiondata.h:1795
 #: src/gui/setupactiondata.h:1801 src/gui/setupactiondata.h:1807
+#: src/gui/setupactiondata.h:1813 src/gui/setupactiondata.h:1819
 #, c-format
 msgid "Move to point Shortcut %d"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1822
+#: src/gui/setupactiondata.h:1834
 msgid "Move & selection"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1852
+#: src/gui/setupactiondata.h:1864
 msgid "Move Home"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1858
+#: src/gui/setupactiondata.h:1870
 msgid "Move End"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1864
+#: src/gui/setupactiondata.h:1876
 msgid "Page up"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1870
+#: src/gui/setupactiondata.h:1882
 msgid "Page down"
 msgstr ""
 
@@ -2695,7 +2697,7 @@ msgstr ""
 #. TRANSLATORS: settings group
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
-#: src/gui/setupactiondata.h:1876 src/gui/setupactiondata.h:2021
+#: src/gui/setupactiondata.h:1888 src/gui/setupactiondata.h:2033
 #: src/gui/widgets/tabs/setup_audio.cpp:149
 #: src/gui/widgets/tabs/setup_chat.cpp:180
 #: src/gui/widgets/tabs/setup_other.cpp:335
@@ -2706,12 +2708,12 @@ msgid "Other"
 msgstr "Muu"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1882
+#: src/gui/setupactiondata.h:1894
 msgid "Select"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1888
+#: src/gui/setupactiondata.h:1900
 msgid "Select2"
 msgstr ""
 
@@ -2721,7 +2723,7 @@ msgstr ""
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: command editor button
-#: src/gui/setupactiondata.h:1900 src/gui/widgets/tabs/setup_relations.cpp:197
+#: src/gui/setupactiondata.h:1912 src/gui/widgets/tabs/setup_relations.cpp:197
 #: src/gui/windows/charselectdialog.cpp:108
 #: src/gui/windows/serverdialog.cpp:209 src/gui/windows/shopwindow.cpp:96
 #: src/gui/windows/shopwindow.cpp:103 src/gui/windows/textcommandeditor.cpp:91
@@ -2729,45 +2731,45 @@ msgid "Delete"
 msgstr "Poista"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1906
+#: src/gui/setupactiondata.h:1918
 msgid "Backspace"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1912
+#: src/gui/setupactiondata.h:1924
 msgid "Insert"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1918
+#: src/gui/setupactiondata.h:1930
 msgid "Tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1924
+#: src/gui/setupactiondata.h:1936
 msgid "Mod"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1930
+#: src/gui/setupactiondata.h:1942
 msgid "Ctrl"
 msgstr ""
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:2007
+#: src/gui/setupactiondata.h:2019
 msgid "Basic"
 msgstr ""
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:2011 src/gui/windowmenu.cpp:118
+#: src/gui/setupactiondata.h:2023 src/gui/windowmenu.cpp:118
 msgid "Shortcuts"
 msgstr "Pikavalinnat"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings group
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:2013 src/gui/widgets/tabs/setup_other.cpp:313
+#: src/gui/setupactiondata.h:2025 src/gui/widgets/tabs/setup_other.cpp:313
 #: src/gui/windowmenu.cpp:151
 msgid "Windows"
 msgstr ""
@@ -2775,7 +2777,7 @@ msgstr ""
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: emotes window name
 #. TRANSLATORS: emotes tab name
-#: src/gui/setupactiondata.h:2015 src/gui/windows/emotewindow.cpp:51
+#: src/gui/setupactiondata.h:2027 src/gui/windows/emotewindow.cpp:51
 #: src/gui/windows/emotewindow.cpp:109
 msgid "Emotes"
 msgstr ""
@@ -2783,13 +2785,13 @@ msgstr ""
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
-#: src/gui/setupactiondata.h:2019 src/gui/widgets/tabs/setup_chat.cpp:41
+#: src/gui/setupactiondata.h:2031 src/gui/widgets/tabs/setup_chat.cpp:41
 #: src/gui/windowmenu.cpp:85 src/gui/windows/chatwindow.cpp:156
 msgid "Chat"
 msgstr "Keskustelu"
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:2023
+#: src/gui/setupactiondata.h:2035
 msgid "Gui"
 msgstr ""
 
@@ -3006,10 +3008,10 @@ msgid "Level: %u"
 msgstr ""
 
 #. TRANSLATORS: status window label
-#: src/gui/widgets/characterdisplay.cpp:136
-#: src/gui/windows/inventorywindow.cpp:568
-#: src/gui/windows/statuswindow.cpp:150 src/gui/windows/statuswindow.cpp:313
-#: src/gui/windows/statuswindow.cpp:366
+#: src/gui/widgets/characterdisplay.cpp:137
+#: src/gui/windows/inventorywindow.cpp:567
+#: src/gui/windows/statuswindow.cpp:153 src/gui/windows/statuswindow.cpp:314
+#: src/gui/windows/statuswindow.cpp:421
 #, c-format
 msgid "Money: %s"
 msgstr "Rahat: %s"
@@ -3032,7 +3034,7 @@ msgid "Edit"
 msgstr "Muokkaa"
 
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:90 src/gui/windows/skilldialog.cpp:594
+#: src/gui/widgets/skillinfo.cpp:90 src/gui/windows/skilldialog.cpp:597
 #, c-format
 msgid "Lvl: %d"
 msgstr "Taso: %d"
@@ -3080,7 +3082,7 @@ msgstr ""
 #. TRANSLATORS: tab in social window
 #. TRANSLATORS: guild chat tab name
 #: src/gui/widgets/tabs/guildchattab.cpp:37
-#: src/gui/windows/socialwindow.cpp:187 src/gui/windows/socialwindow.cpp:321
+#: src/gui/windows/socialwindow.cpp:187 src/gui/windows/socialwindow.cpp:325
 #: src/net/ea/gui/guildtab.cpp:44
 msgid "Guild"
 msgstr "Kilta"
@@ -3858,7 +3860,7 @@ msgstr ""
 #. TRANSLATORS: inventory button
 #: src/gui/widgets/tabs/setup_other.cpp:261 src/gui/windowmenu.cpp:134
 #: src/gui/windows/buyselldialog.cpp:39 src/gui/windows/buyselldialog.cpp:50
-#: src/gui/windows/inventorywindow.cpp:194
+#: src/gui/windows/inventorywindow.cpp:193
 msgid "Shop"
 msgstr "Kauppa"
 
@@ -4905,7 +4907,7 @@ msgstr "Var"
 #. TRANSLATORS: equipment window name
 #. TRANSLATORS: inventory button
 #: src/gui/windowmenu.cpp:96 src/gui/windows/equipmentwindow.cpp:59
-#: src/gui/windows/inventorywindow.cpp:196
+#: src/gui/windows/inventorywindow.cpp:195
 msgid "Equipment"
 msgstr "Varusteet"
 
@@ -4916,7 +4918,7 @@ msgstr "Tav"
 
 #. TRANSLATORS: inventory window name
 #. TRANSLATORS: inventory type name
-#: src/gui/windowmenu.cpp:99 src/gui/windows/inventorywindow.cpp:129
+#: src/gui/windowmenu.cpp:99 src/gui/windows/inventorywindow.cpp:130
 #: src/inventory.cpp:257
 msgid "Inventory"
 msgstr "Tavarat"
@@ -4943,7 +4945,7 @@ msgstr "Sos"
 
 #. TRANSLATORS: full button name
 #. TRANSLATORS: social window name
-#: src/gui/windowmenu.cpp:114 src/gui/windows/socialwindow.cpp:1232
+#: src/gui/windowmenu.cpp:114 src/gui/windows/socialwindow.cpp:1244
 msgid "Social"
 msgstr "Suhteet"
 
@@ -5045,9 +5047,9 @@ msgstr "Määrä:"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (plus sign)
-#: src/gui/windows/buydialog.cpp:247 src/gui/windows/itemamountwindow.cpp:159
-#: src/gui/windows/itemamountwindow.cpp:194 src/gui/windows/npcdialog.cpp:101
-#: src/gui/windows/selldialog.cpp:113 src/gui/windows/statuswindow.cpp:830
+#: src/gui/windows/buydialog.cpp:247 src/gui/windows/itemamountwindow.cpp:161
+#: src/gui/windows/itemamountwindow.cpp:196 src/gui/windows/npcdialog.cpp:101
+#: src/gui/windows/selldialog.cpp:113 src/gui/windows/statuswindow.cpp:828
 msgid "+"
 msgstr "+"
 
@@ -5057,9 +5059,9 @@ msgstr "+"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (minus sign)
-#: src/gui/windows/buydialog.cpp:250 src/gui/windows/itemamountwindow.cpp:157
-#: src/gui/windows/itemamountwindow.cpp:191 src/gui/windows/npcdialog.cpp:103
-#: src/gui/windows/selldialog.cpp:115 src/gui/windows/statuswindow.cpp:843
+#: src/gui/windows/buydialog.cpp:250 src/gui/windows/itemamountwindow.cpp:159
+#: src/gui/windows/itemamountwindow.cpp:193 src/gui/windows/npcdialog.cpp:103
+#: src/gui/windows/selldialog.cpp:115 src/gui/windows/statuswindow.cpp:841
 msgid "-"
 msgstr "-"
 
@@ -5067,8 +5069,8 @@ msgstr "-"
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
 #: src/gui/windows/buydialog.cpp:253 src/gui/windows/charcreatedialog.cpp:117
-#: src/gui/windows/charselectdialog.cpp:585
-#: src/gui/windows/socialwindow.cpp:1255
+#: src/gui/windows/charselectdialog.cpp:591
+#: src/gui/windows/socialwindow.cpp:1267
 msgid "Create"
 msgstr "Luo"
 
@@ -5078,8 +5080,8 @@ msgstr "Luo"
 #. TRANSLATORS: status window label
 #. TRANSLATORS: status bar label
 #: src/gui/windows/buydialog.cpp:257 src/gui/windows/selldialog.cpp:121
-#: src/gui/windows/statuswindow.cpp:570 src/gui/windows/statuswindow.cpp:625
-#: src/gui/windows/statuswindow.cpp:827 src/gui/windows/statuswindow.cpp:859
+#: src/gui/windows/statuswindow.cpp:568 src/gui/windows/statuswindow.cpp:623
+#: src/gui/windows/statuswindow.cpp:825 src/gui/windows/statuswindow.cpp:857
 msgid "Max"
 msgstr "Max"
 
@@ -5176,7 +5178,7 @@ msgstr ""
 #. TRANSLATORS: login dialog label
 #. TRANSLATORS: register dialog. label.
 #: src/gui/windows/charcreatedialog.cpp:73
-#: src/gui/windows/editserverdialog.cpp:68 src/gui/windows/logindialog.cpp:122
+#: src/gui/windows/editserverdialog.cpp:72 src/gui/windows/logindialog.cpp:122
 #: src/gui/windows/registerdialog.cpp:90
 msgid "Name:"
 msgstr "Nimi:"
@@ -5237,7 +5239,7 @@ msgstr "Naispuolinen"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:115
-#: src/gui/windows/charcreatedialog.cpp:457
+#: src/gui/windows/charcreatedialog.cpp:458
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Jaa %d pistettä"
@@ -5253,17 +5255,17 @@ msgid "Look:"
 msgstr ""
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:350
+#: src/gui/windows/charcreatedialog.cpp:351
 msgid "Your name needs to be at least 4 characters."
 msgstr "Nimessäsi täytyy olla ainakin 4 merkkiä."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:447
+#: src/gui/windows/charcreatedialog.cpp:448
 msgid "Character stats OK"
 msgstr "Hahmon pistejako OK"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:463
+#: src/gui/windows/charcreatedialog.cpp:464
 #, c-format
 msgid "Please remove %d points"
 msgstr "%d pistettä liikaa, ole hyvä ja poista ylimäärä"
@@ -5292,7 +5294,7 @@ msgstr "Vaihda sisäänkirjautumistietoja"
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: updater window button
 #: src/gui/windows/charselectdialog.cpp:104
-#: src/gui/windows/charselectdialog.cpp:580
+#: src/gui/windows/charselectdialog.cpp:586
 #: src/gui/windows/updaterwindow.cpp:181
 msgid "Play"
 msgstr "Pelaa"
@@ -5335,33 +5337,33 @@ msgid ""
 "Money: %s"
 msgstr ""
 
-#: src/gui/windows/charselectdialog.cpp:299
+#: src/gui/windows/charselectdialog.cpp:305
 msgid "Incorrect password"
 msgstr "Väärä salasana"
 
 #. TRANSLATORS: char deletion question.
-#: src/gui/windows/charselectdialog.cpp:435
+#: src/gui/windows/charselectdialog.cpp:441
 msgid "Enter password for deleting character"
 msgstr "Anna salasana hahmon poistamiseksi"
 
-#: src/gui/windows/charselectdialog.cpp:435
+#: src/gui/windows/charselectdialog.cpp:441
 msgid "Enter password:"
 msgstr "Salasana:"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:701
+#: src/gui/windows/chatwindow.cpp:700
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Läsnä: %s; %d pelaajaa paikalla."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1133
+#: src/gui/windows/chatwindow.cpp:1118
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Kuiskaat pelaajalle %s: %s"
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1577
+#: src/gui/windows/chatwindow.cpp:1563
 #, c-format
 msgid "%s's pet"
 msgstr ""
@@ -5607,51 +5609,56 @@ msgstr "Avaa tämä ikkuna automaattisesti"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
-#: src/gui/windows/editdialog.cpp:47 src/gui/windows/editserverdialog.cpp:56
-#: src/gui/windows/itemamountwindow.cpp:161 src/gui/windows/okdialog.cpp:51
+#: src/gui/windows/editdialog.cpp:47 src/gui/windows/editserverdialog.cpp:57
+#: src/gui/windows/itemamountwindow.cpp:163 src/gui/windows/okdialog.cpp:51
 #: src/gui/windows/quitdialog.cpp:68 src/gui/windows/textdialog.cpp:48
 msgid "OK"
 msgstr "Ok"
 
 #. TRANSLATORS: edit server dialog name
-#: src/gui/windows/editserverdialog.cpp:45
+#: src/gui/windows/editserverdialog.cpp:46
 msgid "Edit Server"
 msgstr ""
 
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/editserverdialog.cpp:54
+#: src/gui/windows/editserverdialog.cpp:55
 #: src/gui/windows/serverdialog.cpp:203
 msgid "Connect"
 msgstr "Yhdistä"
 
 #. TRANSLATORS: edit server dialog label
-#: src/gui/windows/editserverdialog.cpp:70
+#: src/gui/windows/editserverdialog.cpp:61
+msgid "Use same ip"
+msgstr ""
+
+#. TRANSLATORS: edit server dialog label
+#: src/gui/windows/editserverdialog.cpp:74
 msgid "Address:"
 msgstr ""
 
 #. TRANSLATORS: edit server dialog label
-#: src/gui/windows/editserverdialog.cpp:72
+#: src/gui/windows/editserverdialog.cpp:76
 msgid "Port:"
 msgstr "Portti:"
 
 #. TRANSLATORS: edit server dialog label
-#: src/gui/windows/editserverdialog.cpp:74
+#: src/gui/windows/editserverdialog.cpp:78
 msgid "Server type:"
 msgstr "Palvelintyyppi:"
 
 #. TRANSLATORS: edit server dialog label
-#: src/gui/windows/editserverdialog.cpp:76
+#: src/gui/windows/editserverdialog.cpp:80
 msgid "Description:"
 msgstr ""
 
 #. TRANSLATORS: edit server dialog label
-#: src/gui/windows/editserverdialog.cpp:78
+#: src/gui/windows/editserverdialog.cpp:82
 msgid "Online list url:"
 msgstr ""
 
 #. TRANSLATORS: edit server dialog error message
-#: src/gui/windows/editserverdialog.cpp:188
+#: src/gui/windows/editserverdialog.cpp:194
 msgid "Please at least type both the address and the port of the server."
 msgstr ""
 
@@ -5671,93 +5678,93 @@ msgid "Did you know..."
 msgstr ""
 
 #. TRANSLATORS: item amount window button
-#: src/gui/windows/itemamountwindow.cpp:165
+#: src/gui/windows/itemamountwindow.cpp:167
 msgid "All"
 msgstr "Kaikki"
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:221
+#: src/gui/windows/itemamountwindow.cpp:223
 msgid "Select amount of items to trade."
 msgstr "Anna vaihtokaupattavien tavaroiden määrä."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:225
+#: src/gui/windows/itemamountwindow.cpp:227
 msgid "Select amount of items to drop."
 msgstr "Anna pudotettavien tavaroiden määrä."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:229
+#: src/gui/windows/itemamountwindow.cpp:231
 msgid "Select amount of items to store."
 msgstr "Anna varastoitavien tavaroiden määrä."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:233
+#: src/gui/windows/itemamountwindow.cpp:235
 msgid "Select amount of items to retrieve."
 msgstr "Anna varastosta otettavien tavaroiden määrä."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:237
+#: src/gui/windows/itemamountwindow.cpp:239
 msgid "Select amount of items to split."
 msgstr "Anna eri pinoon jaettavien tavaroiden määrä."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:241
+#: src/gui/windows/itemamountwindow.cpp:243
 msgid "Add to buy shop."
 msgstr "Lisää ostokauppaan."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:245
+#: src/gui/windows/itemamountwindow.cpp:247
 msgid "Add to sell shop."
 msgstr "Lisää myyntikauppaan."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:249
+#: src/gui/windows/itemamountwindow.cpp:251
 msgid "Unknown."
 msgstr "Tuntematon."
 
 #. TRANSLATORS: kill stats window button
-#: src/gui/windows/killstats.cpp:46
+#: src/gui/windows/killstats.cpp:47
 msgid "Reset stats"
 msgstr "Nollaa tiedot"
 
 #. TRANSLATORS: kill stats window button
-#: src/gui/windows/killstats.cpp:48
+#: src/gui/windows/killstats.cpp:49
 msgid "Reset timer"
 msgstr "Nollaa ajastin"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:53 src/gui/windows/killstats.cpp:165
-#: src/gui/windows/killstats.cpp:270 src/gui/windows/killstats.cpp:512
+#: src/gui/windows/killstats.cpp:54 src/gui/windows/killstats.cpp:165
+#: src/gui/windows/killstats.cpp:270 src/gui/windows/killstats.cpp:511
 #, c-format
 msgid "Kills: %s, total exp: %s"
 msgstr "Tappoja: %s, kp kaikkiaan: %s"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:56 src/gui/windows/killstats.cpp:167
+#: src/gui/windows/killstats.cpp:57 src/gui/windows/killstats.cpp:167
 #: src/gui/windows/killstats.cpp:247 src/gui/windows/killstats.cpp:262
-#: src/gui/windows/killstats.cpp:514
+#: src/gui/windows/killstats.cpp:513
 #, c-format
 msgid "Avg Exp: %s"
 msgstr ""
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:58 src/gui/windows/killstats.cpp:170
+#: src/gui/windows/killstats.cpp:59 src/gui/windows/killstats.cpp:170
 #: src/gui/windows/killstats.cpp:252 src/gui/windows/killstats.cpp:266
-#: src/gui/windows/killstats.cpp:517
+#: src/gui/windows/killstats.cpp:516
 #, c-format
 msgid "No. of avg mob to next level: %s"
 msgstr ""
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:61 src/gui/windows/killstats.cpp:181
-#: src/gui/windows/killstats.cpp:274 src/gui/windows/killstats.cpp:520
+#: src/gui/windows/killstats.cpp:62 src/gui/windows/killstats.cpp:181
+#: src/gui/windows/killstats.cpp:274 src/gui/windows/killstats.cpp:519
 #, c-format
 msgid "Kills/Min: %s, Exp/Min: %s"
 msgstr "Tappoa/min: %s, kp/min: %s"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:65 src/gui/windows/killstats.cpp:70
-#: src/gui/windows/killstats.cpp:75 src/gui/windows/killstats.cpp:340
+#: src/gui/windows/killstats.cpp:66 src/gui/windows/killstats.cpp:71
+#: src/gui/windows/killstats.cpp:76 src/gui/windows/killstats.cpp:340
 #: src/gui/windows/killstats.cpp:359 src/gui/windows/killstats.cpp:380
 #, c-format
 msgid "Exp speed per %d min: %s"
@@ -5765,8 +5772,8 @@ msgid_plural "Exp speed per %d min: %s"
 msgstr[0] "Kokemustahti / %d min: %s"
 msgstr[1] "Kokemustahti / %d min: %s<"
 
-#: src/gui/windows/killstats.cpp:67 src/gui/windows/killstats.cpp:72
-#: src/gui/windows/killstats.cpp:78
+#: src/gui/windows/killstats.cpp:68 src/gui/windows/killstats.cpp:73
+#: src/gui/windows/killstats.cpp:79
 #, c-format
 msgid "Time for next level per %d min: %s"
 msgid_plural "Time for next level per %d min: %s"
@@ -5774,12 +5781,12 @@ msgstr[0] "Aika ensi tasolle %d min perusteella: %s"
 msgstr[1] "Aika ensi tasolle %d min perusteella: %s"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:81 src/gui/windows/killstats.cpp:279
+#: src/gui/windows/killstats.cpp:82 src/gui/windows/killstats.cpp:279
 msgid "Last kill exp:"
 msgstr "Viime tapon kp:"
 
 #. TRANSLATORS: kill stats window label
-#: src/gui/windows/killstats.cpp:84 src/gui/windows/killstats.cpp:411
+#: src/gui/windows/killstats.cpp:85 src/gui/windows/killstats.cpp:411
 #: src/gui/windows/killstats.cpp:418 src/gui/windows/killstats.cpp:425
 #: src/gui/windows/killstats.cpp:431
 msgid "Time before jacko spawn:"
@@ -5871,74 +5878,74 @@ msgstr ""
 msgid "Open register url"
 msgstr ""
 
-#: src/gui/windows/ministatuswindow.cpp:64
+#: src/gui/windows/ministatuswindow.cpp:68
 msgid "health bar"
 msgstr "terveyspalkki"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:75
+#: src/gui/windows/ministatuswindow.cpp:79
 msgid "mana bar"
 msgstr "manapalkki"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:79
+#: src/gui/windows/ministatuswindow.cpp:83
 msgid "experience bar"
 msgstr "kokemuspalkki"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:84
+#: src/gui/windows/ministatuswindow.cpp:88
 msgid "weight bar"
 msgstr "painopalkki"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:90
+#: src/gui/windows/ministatuswindow.cpp:94
 msgid "inventory slots bar"
 msgstr "tavarapaikkapalkki"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:94
+#: src/gui/windows/ministatuswindow.cpp:98
 msgid "money bar"
 msgstr "rahapalkki"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:98
+#: src/gui/windows/ministatuswindow.cpp:102
 msgid "arrows bar"
 msgstr "nuolipalkki"
 
 #. TRANSLATORS: status bar name
-#: src/gui/windows/ministatuswindow.cpp:103
+#: src/gui/windows/ministatuswindow.cpp:107
 msgid "status bar"
 msgstr "tilapalkki"
 
-#: src/gui/windows/ministatuswindow.cpp:131
+#: src/gui/windows/ministatuswindow.cpp:133
 msgid "job bar"
 msgstr "työpalkki"
 
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
-#: src/gui/windows/ministatuswindow.cpp:335
-#: src/gui/windows/statuswindow.cpp:324
+#: src/gui/windows/ministatuswindow.cpp:341
+#: src/gui/windows/statuswindow.cpp:325
 #, c-format
 msgid "Level: %d (GM %d)"
 msgstr "Taso: %d (GM %d)"
 
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
-#: src/gui/windows/ministatuswindow.cpp:342
-#: src/gui/windows/statuswindow.cpp:148 src/gui/windows/statuswindow.cpp:331
-#: src/gui/windows/statuswindow.cpp:402
+#: src/gui/windows/ministatuswindow.cpp:348
+#: src/gui/windows/statuswindow.cpp:151 src/gui/windows/statuswindow.cpp:332
+#: src/gui/windows/statuswindow.cpp:457
 #, c-format
 msgid "Level: %d"
 msgstr "Taso: %d"
 
 #. TRANSLATORS: status bar label
-#: src/gui/windows/ministatuswindow.cpp:358
-#: src/gui/windows/ministatuswindow.cpp:396
+#: src/gui/windows/ministatuswindow.cpp:364
+#: src/gui/windows/ministatuswindow.cpp:402
 msgid "Need"
 msgstr "Tarvitaan"
 
 #. TRANSLATORS: job bar label
-#: src/gui/windows/ministatuswindow.cpp:382
+#: src/gui/windows/ministatuswindow.cpp:388
 #, c-format
 msgid "Job level: %d"
 msgstr ""
@@ -6085,33 +6092,33 @@ msgid "Use same ip for game sub servers"
 msgstr "Käytä samaa IP-osoitetta alipalvelimille"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:479
+#: src/gui/windows/serverdialog.cpp:480
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "Lataan palvelinluettelon...%2.2f%%"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:485
+#: src/gui/windows/serverdialog.cpp:486
 msgid "Waiting for server..."
 msgstr "Odotan palvelinta..."
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:490
+#: src/gui/windows/serverdialog.cpp:491
 msgid "Preparing download"
 msgstr "Valmistelen latausta"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:495
+#: src/gui/windows/serverdialog.cpp:496
 msgid "Error retreiving server list!"
 msgstr "Palvelinluettelon hakeminen epäonnistui!"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:585
+#: src/gui/windows/serverdialog.cpp:586
 msgid "requires a newer version"
 msgstr "vaatii uudemman version"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:590
+#: src/gui/windows/serverdialog.cpp:591
 #, c-format
 msgid "requires v%s"
 msgstr "vaatii version %s"
@@ -6174,19 +6181,19 @@ msgid "Up"
 msgstr "Ylös"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:407
+#: src/gui/windows/skilldialog.cpp:410
 #, c-format
 msgid "Skill points available: %d"
 msgstr "%d taitopistettä käyttämättä"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:467
+#: src/gui/windows/skilldialog.cpp:470
 #, c-format
 msgid "Skill Set %d"
 msgstr "Taitojoukko %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:501
+#: src/gui/windows/skilldialog.cpp:504
 #, c-format
 msgid "Skill %d"
 msgstr "Taito %d"
@@ -6232,274 +6239,274 @@ msgid "Members: %u/%u"
 msgstr ""
 
 #. TRANSLATORS: social window label
-#: src/gui/windows/socialwindow.cpp:302 src/gui/windows/socialwindow.cpp:372
-#: src/gui/windows/socialwindow.cpp:495
+#: src/gui/windows/socialwindow.cpp:304 src/gui/windows/socialwindow.cpp:376
+#: src/gui/windows/socialwindow.cpp:501
 #, c-format
 msgid "Players: %u/%u"
 msgstr ""
 
 #. TRANSLATORS: tab in social window
 #. TRANSLATORS: party chat tab name
-#: src/gui/windows/socialwindow.cpp:388 src/net/ea/gui/partytab.cpp:46
+#: src/gui/windows/socialwindow.cpp:394 src/net/ea/gui/partytab.cpp:46
 msgid "Party"
 msgstr "Ryhmä"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:426
+#: src/gui/windows/socialwindow.cpp:432
 #, c-format
 msgid "Invited user %s to party."
 msgstr "Käyttäjä %s kutsuttu ryhmään."
 
 #. TRANSLATORS: tab in social window
-#: src/gui/windows/socialwindow.cpp:441
+#: src/gui/windows/socialwindow.cpp:447
 #, c-format
 msgid "Party %s quit requested."
 msgstr "Ryhmästä %s eroamista pyydetty."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:455
+#: src/gui/windows/socialwindow.cpp:461
 msgid "Member Invite to Party"
 msgstr "Jäsenen kutsuminen ryhmään"
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:457
+#: src/gui/windows/socialwindow.cpp:463
 #, c-format
 msgid "Who would you like to invite to party %s?"
 msgstr "Kenet haluaisit kutsua ryhmään %s?"
 
 #. TRANSLATORS: party leave message
-#: src/gui/windows/socialwindow.cpp:467
+#: src/gui/windows/socialwindow.cpp:473
 msgid "Leave Party?"
 msgstr "Eroa ryhmästä?"
 
 #. TRANSLATORS: party leave message
-#: src/gui/windows/socialwindow.cpp:469
+#: src/gui/windows/socialwindow.cpp:475
 #, c-format
 msgid "Are you sure you want to leave party %s?"
 msgstr "Haluatko varmasti erota ryhmästä %s?"
 
 #. TRANSLATORS: social window label
-#: src/gui/windows/socialwindow.cpp:658
+#: src/gui/windows/socialwindow.cpp:666
 #, c-format
 msgid "Visible players: %d"
 msgstr ""
 
 #. TRANSLATORS: Navigation tab name in social window. Should be small
-#: src/gui/windows/socialwindow.cpp:685
+#: src/gui/windows/socialwindow.cpp:693
 msgid "Nav"
 msgstr "Nav"
 
 #. TRANSLATORS: social window label
-#: src/gui/windows/socialwindow.cpp:784
+#: src/gui/windows/socialwindow.cpp:792
 #, c-format
 msgid "Portals: %u/%u"
 msgstr ""
 
 #. TRANSLATORS: Attack filter tab name in social window. Should be small
-#: src/gui/windows/socialwindow.cpp:1011
+#: src/gui/windows/socialwindow.cpp:1021
 msgid "Atk"
 msgstr "Hyö"
 
 #. TRANSLATORS: mobs group name in social window
-#: src/gui/windows/socialwindow.cpp:1027
+#: src/gui/windows/socialwindow.cpp:1037
 msgid "Priority mobs"
 msgstr "Priorisoidut kohteet"
 
 #. TRANSLATORS: mobs group name in social window
-#: src/gui/windows/socialwindow.cpp:1029
+#: src/gui/windows/socialwindow.cpp:1039
 msgid "Attack mobs"
 msgstr "Hyökkäyskohteet"
 
 #. TRANSLATORS: mobs group name in social window
-#: src/gui/windows/socialwindow.cpp:1031
+#: src/gui/windows/socialwindow.cpp:1041
 msgid "Ignore mobs"
 msgstr "Ohitettavat kohteet"
 
 #. TRANSLATORS: Pickup filter tab name in social window. Should be small
-#: src/gui/windows/socialwindow.cpp:1055
+#: src/gui/windows/socialwindow.cpp:1065
 msgid "Pik"
 msgstr ""
 
 #. TRANSLATORS: items group name in social window
-#: src/gui/windows/socialwindow.cpp:1071
+#: src/gui/windows/socialwindow.cpp:1081
 msgid "Pickup items"
 msgstr ""
 
 #. TRANSLATORS: items group name in social window
-#: src/gui/windows/socialwindow.cpp:1073
+#: src/gui/windows/socialwindow.cpp:1083
 msgid "Ignore items"
 msgstr ""
 
 #. TRANSLATORS: social window label
-#: src/gui/windows/socialwindow.cpp:1160
+#: src/gui/windows/socialwindow.cpp:1170
 #, c-format
 msgid "Friends: %u/%u"
 msgstr ""
 
 #. TRANSLATORS: party popup item
 #. TRANSLATORS: party creation message
-#: src/gui/windows/socialwindow.cpp:1183 src/gui/windows/socialwindow.cpp:1669
+#: src/gui/windows/socialwindow.cpp:1195 src/gui/windows/socialwindow.cpp:1681
 msgid "Create Party"
 msgstr "Luo ryhmä"
 
 #. TRANSLATORS: here P is title for visible players tab in social window
-#: src/gui/windows/socialwindow.cpp:1246
+#: src/gui/windows/socialwindow.cpp:1258
 msgid "P"
 msgstr ""
 
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/windows/socialwindow.cpp:1251
+#: src/gui/windows/socialwindow.cpp:1263
 msgid "F"
 msgstr ""
 
 #. TRANSLATORS: social window button
-#: src/gui/windows/socialwindow.cpp:1257
+#: src/gui/windows/socialwindow.cpp:1269
 msgid "Invite"
 msgstr "Kutsu"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:1445
+#: src/gui/windows/socialwindow.cpp:1457
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr "Otit vastaan ryhmäkutsun pelaajalta %s."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:1456
+#: src/gui/windows/socialwindow.cpp:1468
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr "Kieltäydyit pelaajan %s ryhmäkutsusta."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:1473
+#: src/gui/windows/socialwindow.cpp:1485
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr "Otit vastaan kiltakutsun pelaajalta %s."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:1487
+#: src/gui/windows/socialwindow.cpp:1499
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr "Kieltäydyit pelaajan %s kiltakutsusta."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:1527
+#: src/gui/windows/socialwindow.cpp:1539
 #, c-format
 msgid "Creating guild called %s."
 msgstr "Luon killan %s."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:1548
+#: src/gui/windows/socialwindow.cpp:1560
 #, c-format
 msgid "Creating party called %s."
 msgstr "Luon ryhmän %s."
 
 #. TRANSLATORS: guild creation message
-#: src/gui/windows/socialwindow.cpp:1563
+#: src/gui/windows/socialwindow.cpp:1575
 msgid "Guild Name"
 msgstr "Killan nimi"
 
 #. TRANSLATORS: guild creation message
-#: src/gui/windows/socialwindow.cpp:1565
+#: src/gui/windows/socialwindow.cpp:1577
 msgid "Choose your guild's name."
 msgstr "Valitse killallesi nimi."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:1581
+#: src/gui/windows/socialwindow.cpp:1593
 msgid "Received guild request, but one already exists."
 msgstr "Vastaanotin kiltapyynnön, mutta sellainen on jo olemassa."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:1589
+#: src/gui/windows/socialwindow.cpp:1601
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr "%s on kutsunut sinut liittymään kiltaan %s."
 
 #. TRANSLATORS: guild invite message
-#: src/gui/windows/socialwindow.cpp:1596
+#: src/gui/windows/socialwindow.cpp:1608
 msgid "Accept Guild Invite"
 msgstr "Ota kiltakutsu vastaan"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:1612
+#: src/gui/windows/socialwindow.cpp:1624
 msgid "Received party request, but one already exists."
 msgstr "Sain ryhmäpyynnön, mutta sellainen on jo olemassa."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:1624
+#: src/gui/windows/socialwindow.cpp:1636
 msgid "You have been invited you to join a party."
 msgstr "Sinut on kutsuttu liittymään ryhmään."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:1629
+#: src/gui/windows/socialwindow.cpp:1641
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr "Sinut on kutsuttu liittymään ryhmään %s."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:1638
+#: src/gui/windows/socialwindow.cpp:1650
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%s on kutsunut sinut liittymään ryhmäänsä."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:1644
+#: src/gui/windows/socialwindow.cpp:1656
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%s on kutsunut sinut liittymään ryhmäänsä %s."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:1654
+#: src/gui/windows/socialwindow.cpp:1666
 msgid "Accept Party Invite"
 msgstr "Ota ryhmäkutsu vastaan"
 
-#: src/gui/windows/socialwindow.cpp:1670
+#: src/gui/windows/socialwindow.cpp:1682
 msgid "Cannot create party. You are already in a party"
 msgstr "Ryhmän luominen epäonnistui, olet jo ryhmän jäsen."
 
 #. TRANSLATORS: party creation message
-#: src/gui/windows/socialwindow.cpp:1676
+#: src/gui/windows/socialwindow.cpp:1688
 msgid "Party Name"
 msgstr "Ryhmän nimi"
 
 #. TRANSLATORS: party creation message
-#: src/gui/windows/socialwindow.cpp:1678
+#: src/gui/windows/socialwindow.cpp:1690
 msgid "Choose your party's name."
 msgstr "Anna ryhmällesi nimi."
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:152
+#: src/gui/windows/statuswindow.cpp:155
 msgid "HP:"
 msgstr "VP:"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:155
+#: src/gui/windows/statuswindow.cpp:158
 msgid "Exp:"
 msgstr "Kok:"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:216
+#: src/gui/windows/statuswindow.cpp:217
 msgid "MP:"
 msgstr "MP:"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:259 src/gui/windows/statuswindow.cpp:452
+#: src/gui/windows/statuswindow.cpp:260 src/gui/windows/statuswindow.cpp:383
 #, c-format
 msgid "Job: %d"
 msgstr "Työ: %d"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:261
+#: src/gui/windows/statuswindow.cpp:262
 msgid "Job:"
 msgstr "Työ:"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:317 src/gui/windows/statuswindow.cpp:374
+#: src/gui/windows/statuswindow.cpp:318 src/gui/windows/statuswindow.cpp:429
 #, c-format
 msgid "Character points: %d"
 msgstr "Hahmopisteitä: %d"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:389
+#: src/gui/windows/statuswindow.cpp:444
 #, c-format
 msgid "Correction points: %d"
 msgstr "Korjauspisteitä: %d"
@@ -6915,7 +6922,7 @@ msgid "Failed to create character. Most likely the name is already taken."
 msgstr "Hahmon luonti epäonnistui. Todennäköisesti hahmon nimi on jo käytössä."
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:178 src/net/ea/loginhandler.cpp:276
+#: src/net/ea/charserverhandler.cpp:178 src/net/ea/loginhandler.cpp:277
 msgid "Wrong name."
 msgstr "Väärä nimi."
 
@@ -7028,19 +7035,19 @@ msgstr "Killan linna: %s"
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:105 src/notifications.h:237
+#: src/net/ea/gui/partytab.cpp:105 src/notifications.h:249
 msgid "Item sharing enabled."
 msgstr "Saaliinjako käytössä."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:109 src/notifications.h:240
+#: src/net/ea/gui/partytab.cpp:109 src/notifications.h:252
 msgid "Item sharing disabled."
 msgstr "Saaliinjako poistettu käytöstä."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:113 src/notifications.h:243
+#: src/net/ea/gui/partytab.cpp:113 src/notifications.h:255
 msgid "Item sharing not possible."
 msgstr "Saaliinjako ei ole mahdollista."
 
@@ -7051,19 +7058,19 @@ msgstr "Saaliinjaon tila on tuntematon."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:149 src/notifications.h:228
+#: src/net/ea/gui/partytab.cpp:149 src/notifications.h:240
 msgid "Experience sharing enabled."
 msgstr "Kokemuksen jako käytössä."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:153 src/notifications.h:231
+#: src/net/ea/gui/partytab.cpp:153 src/notifications.h:243
 msgid "Experience sharing disabled."
 msgstr "Kokemuksen jako pois käytöstä."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:157 src/notifications.h:234
+#: src/net/ea/gui/partytab.cpp:157 src/notifications.h:246
 msgid "Experience sharing not possible."
 msgstr "Kokemuksen jako ei ole mahdollista."
 
@@ -7073,59 +7080,59 @@ msgid "Experience sharing unknown."
 msgstr "Kokemuksen jaon tila on tuntematon."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:149
+#: src/net/ea/loginhandler.cpp:150
 msgid "Account was not found. Please re-login."
 msgstr "Tunnusta ei löytynyt. Yritä uudelleen."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:153
+#: src/net/ea/loginhandler.cpp:154
 msgid "Old password incorrect."
 msgstr "Vanha salsana on väärä."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:157
+#: src/net/ea/loginhandler.cpp:158
 msgid "New password too short."
 msgstr "Uusi salasana on liian lyhyt."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:161 src/net/ea/loginhandler.cpp:288
+#: src/net/ea/loginhandler.cpp:162 src/net/ea/loginhandler.cpp:289
 msgid "Unknown error."
 msgstr "Tuntematon virhe."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:234
+#: src/net/ea/loginhandler.cpp:235
 msgid "Unregistered ID."
 msgstr "Rekisteröimätön tunniste."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:238
+#: src/net/ea/loginhandler.cpp:239
 msgid "Wrong password."
 msgstr "Väärä salasana."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:243
+#: src/net/ea/loginhandler.cpp:244
 msgid "Account expired."
 msgstr "Tili vanhentunut."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:247
+#: src/net/ea/loginhandler.cpp:248
 msgid "Rejected from server."
 msgstr "Palvelin ei kelpuuttanut yhteydenottoasi."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:251
+#: src/net/ea/loginhandler.cpp:252
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr ""
 "Pääsysi peliin on pysyvästi estetty. Ole hyvä ja ota yhteyttä GM-tiimiin."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:256
+#: src/net/ea/loginhandler.cpp:257
 msgid "Client too old."
 msgstr "Liian vanha asiakasohjelma."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:260
+#: src/net/ea/loginhandler.cpp:261
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
@@ -7135,22 +7142,22 @@ msgstr ""
 "Ole hyvä ja ota yhteyttä GM-tiimiin keskustelufoorumin kautta."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:268
+#: src/net/ea/loginhandler.cpp:269
 msgid "Server overpopulated."
 msgstr "Palvelin on täynnä."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:272
+#: src/net/ea/loginhandler.cpp:273
 msgid "This user name is already taken."
 msgstr "Käyttäjätunnus on jo käytössä."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:280
+#: src/net/ea/loginhandler.cpp:281
 msgid "Incorrect email."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:284
+#: src/net/ea/loginhandler.cpp:285
 msgid "Username permanently erased."
 msgstr "Käyttäjänimi pysyvästi poistettu."
 
@@ -7458,332 +7465,332 @@ msgid "Trade: You and %s"
 msgstr "Kauppa: sinä ja %s"
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:131
+#: src/notifications.h:143
 msgid "Thanks for buying."
 msgstr "Kiitos kaupoista."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:134
+#: src/notifications.h:146
 msgid "Unable to buy."
 msgstr "Ostaminen epäonnistui."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:137
+#: src/notifications.h:149
 msgid "Nothing to sell."
 msgstr "Ei mitään myytävää."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:140
+#: src/notifications.h:152
 msgid "Thanks for selling."
 msgstr "Kiitos kaupoista."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:143
+#: src/notifications.h:155
 msgid "Unable to sell."
 msgstr "Myyminen epäonnistui."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:146
+#: src/notifications.h:158
 msgid "Unable to sell while trading."
 msgstr "Kaupankäynnin aikana ei voi myydä kaupasta."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:149
+#: src/notifications.h:161
 msgid "Unable to sell unsellable item."
 msgstr "Myyntikelvotonta tavaraa ei voi myydä."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:152
+#: src/notifications.h:164
 #, c-format
 msgid "Online users: %d"
 msgstr "Käyttäjiä palvelimella: %d"
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:155
+#: src/notifications.h:167
 msgid "Guild created."
 msgstr "Kilta luotu."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:158
+#: src/notifications.h:170
 msgid "You are already in guild."
 msgstr "Olet jo killassa."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:161
+#: src/notifications.h:173
 msgid "Emperium check failed."
 msgstr "Emperium-tarkistus epäonnistui."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:164
+#: src/notifications.h:176
 msgid "Unknown server response."
 msgstr "Tuntematon palvelimen vastaus."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:167
+#: src/notifications.h:179
 msgid "You have left the guild."
 msgstr "Olet eronnut killasta."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:170
+#: src/notifications.h:182
 msgid "Could not invite user to guild."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:173
+#: src/notifications.h:185
 msgid "User rejected guild invite."
 msgstr "Käyttäjä ei ottanut kiltakutsua vastaan."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:176
+#: src/notifications.h:188
 msgid "User is now part of your guild."
 msgstr "Käyttäjä liittyi kiltaasi."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:179
+#: src/notifications.h:191
 msgid "Your guild is full."
 msgstr "Kiltasi on täynnä."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:182
+#: src/notifications.h:194
 msgid "Unknown guild invite response."
 msgstr "Tuntematon vastaus kiltakutsuun."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:185
+#: src/notifications.h:197
 #, c-format
 msgid "%s has left your guild."
 msgstr "%s on eronnut killastasi."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:188
+#: src/notifications.h:200
 msgid "You were kicked from guild."
 msgstr "Sinut potkittiin ulos killasta."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:191
+#: src/notifications.h:203
 #, c-format
 msgid "%s has kicked from your guild."
 msgstr "%s on potkittu ulos killastasi."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:194
+#: src/notifications.h:206
 msgid "Failed to use item."
 msgstr "Tavaran käyttö ei onnistunut."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:197
+#: src/notifications.h:209
 msgid "Unable to equip."
 msgstr "Käyttöönotto ei onnistunut."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:200
+#: src/notifications.h:212
 msgid "Could not create party."
 msgstr "Ryhmän luonti epäonnistui."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:203
+#: src/notifications.h:215
 msgid "Party successfully created."
 msgstr "Ryhmä luotu."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:206
+#: src/notifications.h:218
 msgid "You have left the party."
 msgstr "Erosit ryhmästä."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:209
+#: src/notifications.h:221
 #, c-format
 msgid "%s has joined your party."
 msgstr "%s on liittynyt ryhmääsi."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:212
+#: src/notifications.h:224
 #, c-format
 msgid "%s is already a member of a party."
 msgstr "%s kuuluu jo johonkin ryhmään."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:215
+#: src/notifications.h:227
 #, c-format
 msgid "%s refused your invitation."
 msgstr "%s ei ottanut kutsuasi vastaan."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:218
+#: src/notifications.h:230
 #, c-format
 msgid "%s is now a member of your party."
 msgstr "%s on nyt ryhmäsi jäsen."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:221
+#: src/notifications.h:233
 #, c-format
 msgid "%s can't join your party because party is full."
 msgstr "%s ei voi liittyä ryhmääsi, koska se on täynnä."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:225
+#: src/notifications.h:237
 #, c-format
 msgid "QQQ Unknown invite response for %s."
 msgstr "QQQ Tuntematon kutsuvastaus kohteella %s."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:246
+#: src/notifications.h:258
 #, c-format
 msgid "%s has left your party."
 msgstr "%s on eronnut ryhmästä."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:249
+#: src/notifications.h:261
 #, c-format
 msgid "An unknown member tried to say: %s"
 msgstr "Tuntematon jäsen yritti sanoa: %s"
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:252
+#: src/notifications.h:264
 #, c-format
 msgid "%s is not in your party!"
 msgstr "%s ei ole ryhmässäsi!"
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:255
+#: src/notifications.h:267
 #, c-format
 msgid "You picked up %s."
 msgstr "%s poimittu."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:258
+#: src/notifications.h:270
 #, c-format
 msgid "You spent %s."
 msgstr "Käytit %s."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:261
+#: src/notifications.h:273
 msgid "Cannot raise skill!"
 msgstr "Taidon korottaminen epäonnistui!"
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:264
+#: src/notifications.h:276
 msgid "Equip ammunition first."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:267
+#: src/notifications.h:279
 #, c-format
 msgid "Trading with %s isn't possible. Trade partner is too far away."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:271
+#: src/notifications.h:283
 #, c-format
 msgid "Trading with %s isn't possible. Character doesn't exist."
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:275
+#: src/notifications.h:287
 msgid "Trade cancelled due to an unknown reason."
 msgstr "Kaupanteko keskeytyi tuntemattomasta syystä."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:278
+#: src/notifications.h:290
 #, c-format
 msgid "Trade with %s cancelled."
 msgstr "Kaupanteko pelaajan %s kanssa peruttu."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:281
+#: src/notifications.h:293
 #, c-format
 msgid "Unhandled trade cancel packet with %s"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:284
+#: src/notifications.h:296
 msgid "Failed adding item. Trade partner is over weighted."
 msgstr ""
 "Tavaran lisääminen epäonnistui; kauppakumppanilla on liian painava lasti."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:287
+#: src/notifications.h:299
 msgid "Failed adding item. Trade partner has no free slot."
 msgstr "Tavaran lisääminen epäonnistui; kauppakumppanilla ei ole tilaa sille."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:290
+#: src/notifications.h:302
 msgid "Failed adding item. You can't trade this item."
 msgstr "Tavaran lisääminen epäonnistui. Et voi kaupitella sitä."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:293
+#: src/notifications.h:305
 msgid "Failed adding item for unknown reason."
 msgstr "Tavaran lisääminen epäonnistui tuntemattomasta syystä."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:296
+#: src/notifications.h:308
 msgid "Trade canceled."
 msgstr "Kaupat peruttu."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:299
+#: src/notifications.h:311
 msgid "Trade completed."
 msgstr "Kaupat tuli."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:302
+#: src/notifications.h:314
 msgid "Kick failed!"
 msgstr "Potkiminen epäonnistui!"
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:305
+#: src/notifications.h:317
 msgid "Kick succeeded!"
 msgstr "Potkiminen onnistui!"
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:308
+#: src/notifications.h:320
 #, c-format
 msgid "MVP player: %s"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:311
+#: src/notifications.h:323
 msgid "All whispers ignored."
 msgstr "Kaikki kuiskaukset jätetään huomiotta."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:314
+#: src/notifications.h:326
 msgid "All whispers ignore failed."
 msgstr "Kuiskausten huomiotta jättäminen epäonnistui."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:317
+#: src/notifications.h:329
 msgid "All whispers unignored."
 msgstr "Kaikki kuiskaukset huomioidaan taas."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:320
+#: src/notifications.h:332
 msgid "All whispers unignore failed."
 msgstr "Kuiskausten huomiointi epäonnistui."
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:325
+#: src/notifications.h:337
 msgid "pvp off, gvg off"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:328
+#: src/notifications.h:340
 msgid "pvp on"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:331
+#: src/notifications.h:343
 msgid "gvg on"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:334
+#: src/notifications.h:346
 msgid "pvp on, gvg on"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/notifications.h:337
+#: src/notifications.h:349
 msgid "unknown pvp"
 msgstr ""
 
@@ -7822,43 +7829,43 @@ msgstr "Turvallinen OpenGL"
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:42 src/resources/db/avatardb.cpp:87
-#: src/resources/db/itemdb.cpp:332 src/resources/db/moddb.cpp:78
+#: src/resources/db/itemdb.cpp:344 src/resources/db/moddb.cpp:78
 #: src/resources/db/monsterdb.cpp:103 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr "nimetön"
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:78
+#: src/resources/db/itemdb.cpp:90
 #, c-format
 msgid "Attack %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:80
+#: src/resources/db/itemdb.cpp:92
 #, c-format
 msgid "Defense %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:82
+#: src/resources/db/itemdb.cpp:94
 #, c-format
 msgid "HP %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:84
+#: src/resources/db/itemdb.cpp:96
 #, c-format
 msgid "MP %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:86
+#: src/resources/db/itemdb.cpp:98
 #, c-format
 msgid "Level %s"
 msgstr ""
 
 #. TRANSLATORS: item name
-#: src/resources/db/itemdb.cpp:210
+#: src/resources/db/itemdb.cpp:222
 msgid "Unknown item"
 msgstr "Tuntematon tavara"
 
