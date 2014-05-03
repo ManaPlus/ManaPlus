@@ -53,6 +53,7 @@ public:
     std::string registerUrl;
     std::string onlineListUrl;
     std::string supportUrl;
+    std::vector<std::string> updateMirrors;
     uint16_t port;
     VersionString version;
     bool save;
@@ -67,6 +68,7 @@ public:
         registerUrl(),
         onlineListUrl(),
         supportUrl(),
+        updateMirrors(),
         port(6901),
         version(),
         save(false),
@@ -84,6 +86,7 @@ public:
         registerUrl(info.registerUrl),
         onlineListUrl(info.onlineListUrl),
         supportUrl(info.supportUrl),
+        updateMirrors(info.updateMirrors),
         port(info.port),
         version(),
         save(info.save),
@@ -109,6 +112,7 @@ public:
         registerUrl.clear();
         onlineListUrl.clear();
         supportUrl.clear();
+        updateMirrors.clear();
         version.first = 0;
         version.second.clear();
         save = false;

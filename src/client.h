@@ -279,6 +279,9 @@ public:
     std::string getLogFileName() const A_WARN_UNUSED
     { return mLogFileName; }
 
+    const std::vector<std::string> &getMirrors() const A_WARN_UNUSED
+    { return mCurrentServer.updateMirrors; }
+
     bool isKeyboardVisible() const;
 
     void setGuiAlpha(const float n)

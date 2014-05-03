@@ -329,6 +329,7 @@ void ServerDialog::connectToSelectedServer()
     mServerInfo->supportUrl = server.supportUrl;
     mServerInfo->save = true;
     mServerInfo->persistentIp = server.persistentIp;
+    mServerInfo->updateMirrors = server.updateMirrors;
 
     if (chatLogger)
         chatLogger->setServerName(mServerInfo->hostname);
@@ -637,6 +638,11 @@ void ServerDialog::loadServers(const bool addNew)
                     subNode->xmlChildrenNode->content);
                 server.persistentIp = (text == "1" || text == "true");
             }
+            else if (xmlNameEqual(subNode, "updateMirror"))
+            {
+                server.updateMirrors.push_back(reinterpret_cast<const char*>(
+                    subNode->xmlChildrenNode->content));
+            }
         }
 
         server.version.first = font->getWidth(version);
@@ -659,6 +665,7 @@ void ServerDialog::loadServers(const bool addNew)
                 mServers[i].supportUrl = server.supportUrl;
                 mServers[i].althostname = server.althostname;
                 mServers[i].persistentIp = server.persistentIp;
+                mServers[i].updateMirrors = server.updateMirrors;
                 mServersListModel->setVersionString(i, version);
                 found = true;
                 break;

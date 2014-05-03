@@ -540,6 +540,10 @@ void UpdaterWindow::download()
             "/").append(mCurrentFile), &updateProgress, false, false);
     }
 
+    const std::vector<std::string> &mirrors = client->getMirrors();
+    FOR_EACH (std::vector<std::string>::const_iterator, it, mirrors)
+        mDownload->addMirror(*it);
+
     if (mStoreInMemory)
     {
         mDownload->setWriteFunction(&UpdaterWindow::memoryWrite);
