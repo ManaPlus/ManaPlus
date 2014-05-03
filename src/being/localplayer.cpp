@@ -933,7 +933,7 @@ void LocalPlayer::setGotoTarget(Being *const target)
     setDestination(target->getTileX(), target->getTileY());
 }
 
-void LocalPlayer::handleStatusEffect(StatusEffect *const effect,
+void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
                                      const int effectId)
 {
     Being::handleStatusEffect(effect, effectId);

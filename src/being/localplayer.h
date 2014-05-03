@@ -519,8 +519,8 @@ class LocalPlayer final : public Being,
     protected:
         void updateCoords() override final;
 
-        void handleStatusEffect(StatusEffect *const effect,
-                                const int effectId);
+        void handleStatusEffect(const StatusEffect *const effect,
+                                const int effectId) override final;
 
         void startWalking(const unsigned char dir);
 
