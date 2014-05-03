@@ -606,7 +606,6 @@ void Game::logic()
     if (mCurrentMap)
         mCurrentMap->update();
 
-    cur_time = static_cast<int>(time(nullptr));
     BLOCK_END("Game::logic")
 }
 

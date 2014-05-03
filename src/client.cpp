@@ -1002,6 +1002,7 @@ int Client::gameExec()
         BLOCK_START("Client::gameExec 4")
         if (gui)
             gui->logic();
+        cur_time = static_cast<int>(time(nullptr));
         int k = 0;
         while (lastTickTime != tick_time && k < 40)
         {
