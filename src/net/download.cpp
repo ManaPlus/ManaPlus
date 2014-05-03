@@ -276,6 +276,7 @@ int Download::downloadThread(void *ptr)
         d->mUrl = d->mUrlQueue.front();
         d->mUrlQueue.pop();
 
+        logger->log_r("selected url: %s", d->mUrl.c_str());
         while (attempts < 3 && !complete && !d->mOptions.cancel)
         {
             d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_STARTING, 0, 0);
@@ -347,14 +348,17 @@ int Download::downloadThread(void *ptr)
                             break;
                         case CURLE_COULDNT_CONNECT:
                         default:
-                        {
-                            if (d->mError)
-                            {
-                                logger->log_r("curl error %d: %s host: %s",
-                                    res, d->mError, d->mUrl.c_str());
-                            }
                             break;
+                    }
+
+                    if (res)
+                    {
+                        if (d->mError)
+                        {
+                            logger->log_r("curl error %d: %s host: %s",
+                                res, d->mError, d->mUrl.c_str());
                         }
+                        break;
                     }
 
                     if (d->mOptions.cancel)
@@ -462,8 +466,6 @@ int Download::downloadThread(void *ptr)
 
         if ((complete && attempts < 3) || d->mOptions.cancel)
             break;
-
-        logger->log_r("switch to next mirror: %s", d->mFileName.c_str());
     }
 
     d->mThread = nullptr;

@@ -533,16 +533,20 @@ void UpdaterWindow::download()
         mDownload = new Net::Download(this,
             "http://manaplus.org/update/" + mCurrentFile,
             &updateProgress, true, false);
+        mDownload->addMirror("http://www.manaplus.org/update/" + mCurrentFile);
     }
     else
     {
         mDownload = new Net::Download(this, std::string(mUpdateHost).append(
             "/").append(mCurrentFile), &updateProgress, false, false);
-    }
 
-    const std::vector<std::string> &mirrors = client->getMirrors();
-    FOR_EACH (std::vector<std::string>::const_iterator, it, mirrors)
-        mDownload->addMirror(*it);
+        const std::vector<std::string> &mirrors = client->getMirrors();
+        FOR_EACH (std::vector<std::string>::const_iterator, it, mirrors)
+        {
+            mDownload->addMirror(std::string(*it).append(
+                "/").append(mCurrentFile));
+        }
+    }
 
     if (mStoreInMemory)
     {
