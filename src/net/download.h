@@ -24,6 +24,7 @@
 #define NET_DOWNLOAD_H
 
 #include <string>
+#include <queue>
 
 #include "localconsts.h"
 
@@ -87,6 +88,9 @@ class Download final
          */
         void cancel();
 
+        void addMirror(const std::string &str)
+        { mUrlQueue.push(str); }
+
         const char *getError() const A_WARN_UNUSED;
 
         void setIgnoreError(const bool n)
@@ -126,6 +130,7 @@ class Download final
             unsigned checkAdler: 1;
         } mOptions;
         std::string mFileName;
+        std::queue<std::string> mUrlQueue;
         WriteFunction mWriteFunction;
         unsigned long mAdler;
         DownloadUpdate mUpdateFunction;

@@ -66,7 +66,8 @@ Download::Download(void *const ptr, const std::string &url,
     mPtr(ptr),
     mUrl(url),
     mOptions(),
-    mFileName(""),
+    mFileName(),
+    mUrlQueue(),
     mWriteFunction(nullptr),
     mAdler(0),
     mUpdateFunction(updateFunction),
@@ -96,6 +97,7 @@ Download::Download(void *const ptr, const std::string &url,
             mUrl.append(serverName);
         }
     }
+    mUrlQueue.push(url);
 }
 
 Download::~Download()
@@ -267,190 +269,201 @@ int Download::downloadThread(void *ptr)
             outFilename = "";
     }
 
-    while (attempts < 3 && !complete && !d->mOptions.cancel)
+    while (!d->mUrlQueue.empty())
     {
-        d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_STARTING, 0, 0);
+        attempts = 0;
+        complete = false;
+        d->mUrl = d->mUrlQueue.front();
+        d->mUrlQueue.pop();
 
-        if (d->mOptions.cancel)
+        while (attempts < 3 && !complete && !d->mOptions.cancel)
         {
-            // need terminate thread?
-            d->mThread = nullptr;
-            return 0;
-        }
-        d->mCurl = curl_easy_init();
+            d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_STARTING, 0, 0);
 
-        if (d->mCurl && !d->mOptions.cancel)
-        {
-            FILE *file = nullptr;
-
-            if (d->mUpload)
+            if (d->mOptions.cancel)
             {
-                logger->log("Uploading: %s", d->mUrl.c_str());
-                curl_easy_setopt(d->mCurl, CURLOPT_URL, d->mUrl.c_str());
-                curl_easy_setopt(d->mCurl, CURLOPT_HTTPPOST, d->mFormPost);
-                curl_easy_setopt(d->mCurl, CURLOPT_WRITEFUNCTION,
-                    &Download::writeFunction);
-                mUploadResponse.clear();
+                // need terminate thread?
+                d->mThread = nullptr;
+                return 0;
             }
-            else
+            d->mCurl = curl_easy_init();
+
+            if (d->mCurl && !d->mOptions.cancel)
             {
-                logger->log("Downloading: %s", d->mUrl.c_str());
-                curl_easy_setopt(d->mCurl, CURLOPT_FOLLOWLOCATION, 1);
-                curl_easy_setopt(d->mCurl, CURLOPT_HTTPHEADER, d->mHeaders);
-                if (d->mOptions.memoryWrite)
+                FILE *file = nullptr;
+
+                if (d->mUpload)
                 {
-                    curl_easy_setopt(d->mCurl, CURLOPT_FAILONERROR, 1);
+                    logger->log_r("Uploading: %s", d->mUrl.c_str());
+                    curl_easy_setopt(d->mCurl, CURLOPT_URL, d->mUrl.c_str());
+                    curl_easy_setopt(d->mCurl, CURLOPT_HTTPPOST, d->mFormPost);
                     curl_easy_setopt(d->mCurl, CURLOPT_WRITEFUNCTION,
-                                     d->mWriteFunction);
-                    curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA, d->mPtr);
+                        &Download::writeFunction);
+                    mUploadResponse.clear();
                 }
                 else
                 {
-                    file = fopen(outFilename.c_str(), "w+b");
-                    if (file)
-                        curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA, file);
-                }
-                curl_easy_setopt(d->mCurl, CURLOPT_USERAGENT,
-                    strprintf(PACKAGE_EXTENDED_VERSION,
-                    branding.getStringValue("appName").c_str()).c_str());
-
-
-                curl_easy_setopt(d->mCurl, CURLOPT_ERRORBUFFER, d->mError);
-                curl_easy_setopt(d->mCurl, CURLOPT_URL, d->mUrl.c_str());
-                curl_easy_setopt(d->mCurl, CURLOPT_NOPROGRESS, 0);
-                curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSFUNCTION,
-                    &downloadProgress);
-                curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSDATA, ptr);
-                curl_easy_setopt(d->mCurl, CURLOPT_NOSIGNAL, 1);
-                curl_easy_setopt(d->mCurl, CURLOPT_CONNECTTIMEOUT, 30);
-                curl_easy_setopt(d->mCurl, CURLOPT_TIMEOUT, 1800);
-                addHeaders(d->mCurl);
-                addProxy(d->mCurl);
-                secureCurl(d->mCurl);
-            }
-
-
-            if ((res = curl_easy_perform(d->mCurl)) != 0
-                && !d->mOptions.cancel)
-            {
-                switch (res)
-                {
-                    case CURLE_ABORTED_BY_CALLBACK:
-                        d->mOptions.cancel = true;
-                        break;
-                    case CURLE_COULDNT_CONNECT:
-                    default:
+                    logger->log_r("Downloading: %s", d->mUrl.c_str());
+                    curl_easy_setopt(d->mCurl, CURLOPT_FOLLOWLOCATION, 1);
+                    curl_easy_setopt(d->mCurl, CURLOPT_HTTPHEADER, d->mHeaders);
+                    if (d->mOptions.memoryWrite)
                     {
-                        if (d->mError)
-                        {
-                            logger->log_r("curl error %d: %s host: %s",
-                                res, d->mError, d->mUrl.c_str());
-                        }
-                        break;
+                        curl_easy_setopt(d->mCurl, CURLOPT_FAILONERROR, 1);
+                        curl_easy_setopt(d->mCurl, CURLOPT_WRITEFUNCTION,
+                                         d->mWriteFunction);
+                        curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA, d->mPtr);
                     }
-                }
-
-                if (d->mOptions.cancel)
-                    break;
-
-                d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_ERROR, 0, 0);
-
-                if (file)
-                {
-                    fclose(file);
-                    file = nullptr;
-                }
-                if (!d->mUpload && !d->mOptions.memoryWrite)
-                    ::remove(outFilename.c_str());
-                attempts++;
-                continue;
-            }
-
-            curl_easy_cleanup(d->mCurl);
-            d->mCurl = nullptr;
-
-            if (d->mUpload)
-            {
-                if (file)
-                {
-                    fclose(file);
-                    file = nullptr;
-                }
-                // need check first if we read data from server
-                complete = true;
-            }
-            else
-            {
-                if (!d->mOptions.memoryWrite)
-                {
-                    // Don't check resources.xml checksum
-                    if (d->mOptions.checkAdler)
+                    else
                     {
-                        const unsigned long adler = fadler32(file);
+                        file = fopen(outFilename.c_str(), "w+b");
+                        if (file)
+                            curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA, file);
+                    }
+                    curl_easy_setopt(d->mCurl, CURLOPT_USERAGENT,
+                        strprintf(PACKAGE_EXTENDED_VERSION,
+                        branding.getStringValue("appName").c_str()).c_str());
 
-                        if (d->mAdler != adler)
+                    curl_easy_setopt(d->mCurl, CURLOPT_ERRORBUFFER, d->mError);
+                    curl_easy_setopt(d->mCurl, CURLOPT_URL, d->mUrl.c_str());
+                    curl_easy_setopt(d->mCurl, CURLOPT_NOPROGRESS, 0);
+                    curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSFUNCTION,
+                        &downloadProgress);
+                    curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSDATA, ptr);
+                    curl_easy_setopt(d->mCurl, CURLOPT_NOSIGNAL, 1);
+                    curl_easy_setopt(d->mCurl, CURLOPT_CONNECTTIMEOUT, 30);
+                    curl_easy_setopt(d->mCurl, CURLOPT_TIMEOUT, 1800);
+                    addHeaders(d->mCurl);
+                    addProxy(d->mCurl);
+                    secureCurl(d->mCurl);
+                }
+
+                if ((res = curl_easy_perform(d->mCurl)) != 0
+                    && !d->mOptions.cancel)
+                {
+                    switch (res)
+                    {
+                        case CURLE_ABORTED_BY_CALLBACK:
+                            d->mOptions.cancel = true;
+                            break;
+                        case CURLE_COULDNT_CONNECT:
+                        default:
                         {
-                            if (file)
+                            if (d->mError)
                             {
-                                fclose(file);
-                                file = nullptr;
+                                logger->log_r("curl error %d: %s host: %s",
+                                    res, d->mError, d->mUrl.c_str());
                             }
-
-                            // Remove the corrupted file
-                            ::remove(d->mFileName.c_str());
-                            logger->log_r("Checksum for file %s failed:"
-                                " (%lx/%lx)",
-                                d->mFileName.c_str(),
-                                adler, d->mAdler);
-                            attempts++;
-                            continue;  // Bail out here to avoid the renaming
+                            break;
                         }
                     }
+
+                    if (d->mOptions.cancel)
+                        break;
+
+//                    d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_ERROR, 0, 0);
+
                     if (file)
                     {
                         fclose(file);
                         file = nullptr;
                     }
+                    if (!d->mUpload && !d->mOptions.memoryWrite)
+                        ::remove(outFilename.c_str());
+                    attempts++;
+                    continue;
+                }
 
-                    // Any existing file with this name is deleted first,
-                    // otherwise the rename will fail on Windows.
-                    if (!d->mOptions.cancel)
+                curl_easy_cleanup(d->mCurl);
+                d->mCurl = nullptr;
+
+                if (d->mUpload)
+                {
+                    if (file)
                     {
-                        ::remove(d->mFileName.c_str());
-                        Files::renameFile(outFilename, d->mFileName);
+                        fclose(file);
+                        file = nullptr;
+                    }
+                    // need check first if we read data from server
+                    complete = true;
+                }
+                else
+                {
+                    if (!d->mOptions.memoryWrite)
+                    {
+                        // Don't check resources.xml checksum
+                        if (d->mOptions.checkAdler)
+                        {
+                            const unsigned long adler = fadler32(file);
 
-                        // Check if we can open it and no errors were
-                        // encountered during renaming
-                        file = fopen(d->mFileName.c_str(), "rb");
+                            if (d->mAdler != adler)
+                            {
+                                if (file)
+                                {
+                                    fclose(file);
+                                    file = nullptr;
+                                }
+
+                                // Remove the corrupted file
+                                ::remove(d->mFileName.c_str());
+                                logger->log_r("Checksum for file %s failed:"
+                                    " (%lx/%lx)",
+                                    d->mFileName.c_str(),
+                                    adler, d->mAdler);
+                                attempts++;
+                                continue;  // Bail out here to avoid the renaming
+                            }
+                        }
                         if (file)
                         {
                             fclose(file);
                             file = nullptr;
-                            complete = true;
+                        }
+
+                        // Any existing file with this name is deleted first,
+                        // otherwise the rename will fail on Windows.
+                        if (!d->mOptions.cancel)
+                        {
+                            ::remove(d->mFileName.c_str());
+                            Files::renameFile(outFilename, d->mFileName);
+
+                            // Check if we can open it and no errors were
+                            // encountered during renaming
+                            file = fopen(d->mFileName.c_str(), "rb");
+                            if (file)
+                            {
+                                fclose(file);
+                                file = nullptr;
+                                complete = true;
+                            }
                         }
                     }
-                }
-                else
-                {
-                    // It's stored in memory, we're done
-                    complete = true;
+                    else
+                    {
+                        // It's stored in memory, we're done
+                        complete = true;
+                    }
                 }
             }
+
+            if (d->mCurl)
+            {
+                curl_easy_cleanup(d->mCurl);
+                d->mCurl = nullptr;
+            }
+
+            if (d->mOptions.cancel)
+            {
+                // need ternibate thread?
+                d->mThread = nullptr;
+                return 0;
+            }
+            attempts++;
         }
 
-        if (d->mCurl)
-        {
-            curl_easy_cleanup(d->mCurl);
-            d->mCurl = nullptr;
-        }
+        if ((complete && attempts < 3) || d->mOptions.cancel)
+            break;
 
-        if (d->mOptions.cancel)
-        {
-            // need ternibate thread?
-            d->mThread = nullptr;
-            return 0;
-        }
-        attempts++;
+        logger->log_r("switch to next mirror: %s", d->mFileName.c_str());
     }
 
     d->mThread = nullptr;
