@@ -27,12 +27,18 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/fuzzer.h"
+#include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"
 
 #include <fstream>
 
 #include "debug.h"
+
+namespace
+{
+    bool valid = false;
+}  // namespace
 
 static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
 #ifdef __GNUC__
@@ -61,12 +67,13 @@ static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg, ...)
     va_end(ap);
 
     if (logger)
-        logger->log1(buf);
+        logger->log_r("%s", buf);
     else
         puts(buf);
 
     // Delete temporary buffer
     delete [] buf;
+    valid = false;
 }
 
 namespace XML
@@ -80,6 +87,7 @@ namespace XML
 #endif
         int size = 0;
         char *data = nullptr;
+        valid = true;
         if (useResman)
         {
             const ResourceManager *const resman
@@ -122,6 +130,7 @@ namespace XML
         {
             logger->log("Error loading %s", filename.c_str());
         }
+        mIsValid = valid;
     }
 
     Document::Document(const char *const data, const int size) :
@@ -261,4 +270,31 @@ namespace XML
         xmlCleanupParser();
     }
 
+    bool Document::validateXml(const std::string &fileName)
+    {
+        xmlDocPtr doc = xmlReadFile(fileName.c_str(),
+            nullptr, XML_PARSE_PEDANTIC);
+        const bool valid(doc);
+        xmlFreeDoc(doc);
+        if (!valid)
+            return false;
+
+        std::ifstream file;
+        file.open(fileName.c_str(), std::ios::in);
+        if (!file.is_open())
+        {
+            file.close();
+            return false;
+        }
+        char line[101];
+        if (!file.getline(line, 100))
+            return false;
+        file.close();
+
+        const std::string str = line;
+        if (!strStartWith(str, "<?xml "))
+            return false;
+
+        return true;
+    }
 }  // namespace XML

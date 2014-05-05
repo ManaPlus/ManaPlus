@@ -93,8 +93,14 @@ namespace XML
             bool isLoaded() const
             { return mDoc != nullptr; }
 
+            bool isValid() const
+            { return mIsValid; }
+
+            static bool validateXml(const std::string &fileName);
+
         private:
             xmlDocPtr mDoc;
+            bool mIsValid;
     };
 
     /**

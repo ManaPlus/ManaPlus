@@ -268,6 +268,8 @@ private:
 
     /** Tells ~UpdaterWindow() if it should load updates */
     bool mLoadUpdates;
+
+    bool mValidateXml;
 };
 
 #endif  // GUI_WINDOWS_UPDATERWINDOW_H

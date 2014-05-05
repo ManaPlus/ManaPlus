@@ -1338,7 +1338,7 @@ static void uploadFile(const std::string &str,
     Net::Download *const upload = new Net::Download(info,
         "http://sprunge.us",
         &uploadUpdate,
-        false, true);
+        false, true, false);
     info->upload = upload;
     info->text = str;
     info->addStr = addStr;

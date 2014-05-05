@@ -55,9 +55,12 @@ namespace Net
 class Download final
 {
     public:
-        Download(void *const ptr, const std::string &url,
+        Download(void *const ptr,
+                 const std::string &url,
                  const DownloadUpdate updateFunction,
-                 const bool ignoreError, const bool isUpload);
+                 const bool ignoreError,
+                 const bool isUpload,
+                 const bool isXml);
 
         A_DELETE_COPY(Download)
 
@@ -141,6 +144,7 @@ class Download final
         char *mError;
         bool mIgnoreError;
         bool mUpload;
+        bool mIsXml;
 };
 
 }  // namespace Net

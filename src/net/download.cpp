@@ -60,9 +60,12 @@ namespace Net
 
 std::string Download::mUploadResponse = "";
 
-Download::Download(void *const ptr, const std::string &url,
+Download::Download(void *const ptr,
+                   const std::string &url,
                    const DownloadUpdate updateFunction,
-                   const bool ignoreError, const bool isUpload) :
+                   const bool ignoreError,
+                   const bool isUpload,
+                   const bool isXml) :
     mPtr(ptr),
     mUrl(url),
     mOptions(),
@@ -77,7 +80,8 @@ Download::Download(void *const ptr, const std::string &url,
     mFormPost(nullptr),
     mError(static_cast<char*>(calloc(CURL_ERROR_SIZE + 1, 1))),
     mIgnoreError(ignoreError),
-    mUpload(isUpload)
+    mUpload(isUpload),
+    mIsXml(isXml)
 {
     if (mError)
         mError[0] = 0;
@@ -417,6 +421,7 @@ int Download::downloadThread(void *ptr)
                                 continue;  // Bail out here to avoid the renaming
                             }
                         }
+
                         if (file)
                         {
                             fclose(file);
@@ -427,6 +432,16 @@ int Download::downloadThread(void *ptr)
                         // otherwise the rename will fail on Windows.
                         if (!d->mOptions.cancel)
                         {
+                            if (d->mIsXml)
+                            {
+                                if (!XML::Document::validateXml(outFilename))
+                                {
+                                    logger->log_r("Xml file validation error");
+                                    attempts++;
+                                    continue;
+                                }
+                            }
+
                             ::remove(d->mFileName.c_str());
                             Files::renameFile(outFilename, d->mFileName);
 

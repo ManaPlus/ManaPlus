@@ -193,7 +193,8 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     mStoreInMemory(true),
     mDownloadComplete(true),
     mUserCancel(false),
-    mLoadUpdates(applyUpdates)
+    mLoadUpdates(applyUpdates),
+    mValidateXml(false)
 {
     setWindowName("UpdaterWindow");
     setResizable(true);
@@ -532,13 +533,16 @@ void UpdaterWindow::download()
     {
         mDownload = new Net::Download(this,
             "http://manaplus.org/update/" + mCurrentFile,
-            &updateProgress, true, false);
+            &updateProgress,
+            true, false, mValidateXml);
         mDownload->addMirror("http://www.manaplus.org/update/" + mCurrentFile);
     }
     else
     {
-        mDownload = new Net::Download(this, std::string(mUpdateHost).append(
-            "/").append(mCurrentFile), &updateProgress, false, false);
+        mDownload = new Net::Download(this,
+            std::string(mUpdateHost).append("/").append(mCurrentFile),
+            &updateProgress,
+            false, false, mValidateXml);
 
         const std::vector<std::string> &mirrors = client->getMirrors();
         FOR_EACH (std::vector<std::string>::const_iterator, it, mirrors)
@@ -788,6 +792,7 @@ void UpdaterWindow::logic()
                 // Parse current memory buffer as news and dispose of the data
                 loadNews();
 
+                mValidateXml = true;
                 mCurrentFile = xmlUpdateFile;
                 mStoreInMemory = false;
                 mDownloadStatus = UPDATE_LIST;
@@ -803,6 +808,7 @@ void UpdaterWindow::logic()
                 mUpdateHost = updateServer2 + mUpdateServerPath;
                 mUpdatesDir.append("/fix");
                 mCurrentFile = xmlUpdateFile;
+                mValidateXml = true;
                 mStoreInMemory = false;
                 mDownloadStatus = UPDATE_LIST2;
                 download();
@@ -827,6 +833,7 @@ void UpdaterWindow::logic()
                         // If the resources.xml file fails,
                         // fall back onto a older version
                         mCurrentFile = txtUpdateFile;
+                        mValidateXml = false;
                         mStoreInMemory = false;
                         mDownloadStatus = UPDATE_LIST;
                         download();
@@ -835,6 +842,7 @@ void UpdaterWindow::logic()
                 }
                 else if (mCurrentFile == txtUpdateFile)
                 {
+                    mValidateXml = true;
                     mUpdateFiles = loadTxtFile(std::string(mUpdatesDir).append(
                         "/").append(txtUpdateFile));
                 }
@@ -863,6 +871,7 @@ void UpdaterWindow::logic()
                     std::ifstream temp((std::string(mUpdatesDir).append(
                         "/").append(mCurrentFile)).c_str());
 
+                    mValidateXml = false;
                     if (!temp.is_open() || !validateFile(std::string(
                         mUpdatesDir).append("/").append(mCurrentFile),
                         mCurrentChecksum))
@@ -883,6 +892,7 @@ void UpdaterWindow::logic()
                     mCurrentFile = "latest.txt";
                     mStoreInMemory = true;
                     mDownloadStatus = UPDATE_PATCH;
+                    mValidateXml = false;
                     download();  // download() changes
                                  // mDownloadComplete to false
                 }
@@ -898,6 +908,7 @@ void UpdaterWindow::logic()
                 }
                 mUpdateIndexOffset = mUpdateIndex;
                 mUpdateIndex = 0;
+                mValidateXml = true;
                 mStoreInMemory = false;
                 mDownloadStatus = UPDATE_RESOURCES2;
                 download();
@@ -906,6 +917,7 @@ void UpdaterWindow::logic()
         case UPDATE_RESOURCES2:
             if (mDownloadComplete)
             {
+                mValidateXml = false;
                 if (mUpdateIndex < mTempUpdateFiles.size())
                 {
                     const UpdateFile thisFile = mTempUpdateFiles[mUpdateIndex];
