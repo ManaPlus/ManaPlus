@@ -402,7 +402,7 @@ private:
 
 #ifdef ANDROID
 #ifdef USE_SDL2
-    void extractAssets();
+    static void extractAssets();
 #endif
 #endif
 
