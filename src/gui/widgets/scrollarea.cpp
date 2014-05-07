@@ -254,16 +254,13 @@ void ScrollArea::logic()
     Widget *const content = getContent();
     if (content)
     {
-        const int frameSize = content->getFrameSize();
+        unsigned int frameSize = content->getFrameSize();
         content->setPosition(-mHScroll + frameSize, -mVScroll + frameSize);
         content->logic();
-    }
 
-    // When no scrollbar in a certain direction, adapt content size to match
-    // the content dimension exactly.
-    if (content)
-    {
-        const unsigned int frameSize = 2 * content->getFrameSize();
+        // When no scrollbar in a certain direction,
+        // adapt content size to match the content dimension exactly.
+        frameSize = 2 * content->getFrameSize();
         if (mHPolicy == ScrollArea::SHOW_NEVER)
         {
             content->setWidth((mVBarVisible ? (mDimension.width

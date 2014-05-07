@@ -47,10 +47,10 @@ class PoDict final
         PoMap *getMap()
         { return &mPoLines; }
 
-        void set(std::string key, std::string value)
+        void set(const std::string &key, const std::string &value)
         { mPoLines[key] = value; }
 
-        void setLang(std::string lang)
+        void setLang(const std::string &lang)
         { mLang = lang; }
 
     private:

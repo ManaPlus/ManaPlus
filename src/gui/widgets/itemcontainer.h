@@ -123,7 +123,7 @@ class ItemContainer final : public Widget,
 
         void setSortType(const int sortType);
 
-        void setName(std::string str)
+        void setName(const std::string &str)
         { mName = str; }
 
         void updateMatrix();

@@ -41,7 +41,7 @@
         mListeners.push_back(listener); \
     } \
     \
-    void name::removeListener(name *const listener) \
+    void name::removeListener(const name *const listener) \
     { \
         std::vector<name*>::iterator it = mListeners.begin(); \
         while (it != mListeners.end()) \
@@ -61,7 +61,7 @@
         \
         static void addListener(name *const listener); \
         \
-        static void removeListener(name *const listener); \
+        static void removeListener(const name *const listener); \
         \
     private: \
         static std::vector<name*> mListeners;
