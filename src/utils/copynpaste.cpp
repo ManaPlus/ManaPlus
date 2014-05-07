@@ -77,7 +77,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
     HANDLE h = GetClipboardData(CF_UNICODETEXT);
     if (h)
     {
-        LPCWSTR data = (LPCWSTR)GlobalLock(h);
+        LPCWSTR data = static_cast<LPCWSTR>(GlobalLock(h));
 
         if (data)
         {
@@ -88,9 +88,9 @@ bool retrieveBuffer(std::string& text, size_t& pos)
                 // Convert from UTF-16 to UTF-8
                 void *temp = calloc(len, 1);
                 if (WideCharToMultiByte(CP_UTF8, 0, data, -1,
-                    (LPSTR)temp, len, nullptr, nullptr))
+                    static_cast<LPSTR>(temp), len, nullptr, nullptr))
                 {
-                    text.insert(pos, (char*)temp);
+                    text.insert(pos, static_cast<char*>(temp));
                     pos += len-1;
                 }
                 free(temp);
@@ -105,7 +105,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
 
         if (h)
         {
-            const char *const data = (char*)GlobalLock(h);
+            const char *const data = static_cast<char*>(GlobalLock(h));
             if (data)
             {
                 text.insert(pos, data);
@@ -129,7 +129,7 @@ bool sendBuffer(std::string& text)
 
     HANDLE h = GlobalAlloc(GMEM_MOVEABLE | GMEM_DDESHARE,
         wCharsLen * sizeof(WCHAR));
-    WCHAR *const out = (WCHAR*)GlobalLock(h);
+    WCHAR *const out = static_cast<WCHAR*>(GlobalLock(h));
 
     MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, out, wCharsLen);
 
