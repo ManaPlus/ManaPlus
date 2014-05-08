@@ -25,6 +25,8 @@
 
 #include "resources/beinginfo.h"
 
+#include "being/gender.h"
+
 #include <map>
 
 #include "localconsts.h"
@@ -54,15 +56,6 @@ class Text;
 struct ParticleInfo;
 
 extern volatile int cur_time;
-
-enum Gender
-{
-    GENDER_MALE = 0,
-    GENDER_FEMALE = 1,
-    GENDER_UNSPECIFIED = 2,
-    GENDER_OTHER = 3
-};
-
 
 struct NextSoundInfo
 {

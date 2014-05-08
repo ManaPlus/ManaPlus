@@ -23,10 +23,10 @@
 #define BEING_PLAYERINFO_H
 
 #include "equipment.h"
+#include "state.h"
 
 #include <map>
 #include <string>
-
 
 /**
  * Stat information storage structure.
@@ -243,7 +243,7 @@ namespace PlayerInfo
 
     void gameDestroyed();
 
-    void stateChange(const int state);
+    void stateChange(const State state);
 
     void triggerAttr(const int id, const int old);
 

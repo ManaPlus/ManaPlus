@@ -200,7 +200,7 @@ void setInventoryItem(const int index, const int id,
                       const int amount, const int refine)
 {
     bool equipment = false;
-    const int itemType = ItemDB::get(id).getType();
+    const ItemType itemType = ItemDB::get(id).getType();
     if (itemType != ITEM_UNUSABLE && itemType != ITEM_USABLE)
         equipment = true;
     if (mInventory)
@@ -411,7 +411,7 @@ void gameDestroyed()
     delete2(mEquipment);
 }
 
-void stateChange(const int state)
+void stateChange(const State state)
 {
     if (state == STATE_GAME)
     {

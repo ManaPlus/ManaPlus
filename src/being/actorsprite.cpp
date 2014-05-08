@@ -149,11 +149,11 @@ void ActorSprite::setTargetType(const TargetCursorType type)
     else
     {
         const TargetCursorSize sz = getTargetCursorSize();
-        mUsedTargetCursor = targetCursor[type][sz];
+        mUsedTargetCursor = targetCursor[static_cast<int>(type)][sz];
         if (mUsedTargetCursor)
         {
-            mCursorPaddingX = targetWidths[sz];
-            mCursorPaddingY = targetHeights[sz];
+            mCursorPaddingX = static_cast<int>(targetWidths[sz]);
+            mCursorPaddingY = static_cast<int>(targetHeights[sz]);
         }
     }
 }

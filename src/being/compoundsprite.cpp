@@ -288,7 +288,7 @@ void CompoundSprite::ensureSize(size_t layerCount)
  */
 unsigned int CompoundSprite::getCurrentFrame(unsigned int layer) const
 {
-    if (layer >= mSprites.size())
+    if (layer >= static_cast<unsigned int>(mSprites.size()))
         return 0;
 
     const Sprite *const s = getSprite(layer);
@@ -303,7 +303,7 @@ unsigned int CompoundSprite::getCurrentFrame(unsigned int layer) const
  */
 unsigned int CompoundSprite::getFrameCount(unsigned int layer)
 {
-    if (layer >= mSprites.size())
+    if (layer >= static_cast<unsigned int>(mSprites.size()))
         return 0;
 
     const Sprite *const s = getSprite(layer);

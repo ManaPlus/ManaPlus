@@ -1948,7 +1948,7 @@ void Being::updateSprite(const unsigned int slot, const int id,
     if (slot >= Net::getCharServerHandler()->maxSprite())
         return;
 
-    if (slot >= mSpriteIDs.size())
+    if (slot >= static_cast<unsigned int>(mSpriteIDs.size()))
         mSpriteIDs.resize(slot + 1, 0);
 
     if (slot && mSpriteIDs[slot] == id)
@@ -1963,16 +1963,16 @@ void Being::setSprite(const unsigned int slot, const int id,
     if (slot >= Net::getCharServerHandler()->maxSprite())
         return;
 
-    if (slot >= size())
+    if (slot >= static_cast<unsigned int>(size()))
         ensureSize(slot + 1);
 
-    if (slot >= mSpriteIDs.size())
+    if (slot >= static_cast<unsigned int>(mSpriteIDs.size()))
         mSpriteIDs.resize(slot + 1, 0);
 
-    if (slot >= mSpriteColors.size())
+    if (slot >= static_cast<unsigned int>(mSpriteColors.size()))
         mSpriteColors.resize(slot + 1, "");
 
-    if (slot >= mSpriteColorsIds.size())
+    if (slot >= static_cast<unsigned int>(mSpriteColorsIds.size()))
         mSpriteColorsIds.resize(slot + 1, 1);
 
     // disabled for now, because it may broke replace/reorder sprites logic
@@ -2258,7 +2258,9 @@ void Being::setGender(const Gender gender)
         mGender = gender;
 
         // Reload all subsprites
-        for (unsigned int i = 0; i < mSpriteIDs.size(); i++)
+        for (unsigned int i = 0;
+             i < static_cast<unsigned int>(mSpriteIDs.size());
+             i++)
         {
             if (mSpriteIDs.at(i) != 0)
                 setSprite(i, mSpriteIDs.at(i), mSpriteColors.at(i));
@@ -2317,8 +2319,8 @@ void Being::drawSprites(Graphics *const graphics,
 void Being::drawSpritesSDL(Graphics *const graphics,
                            int posX, int posY) const
 {
-    const size_t sz = size();
-    for (unsigned f = 0; f < sz; f ++)
+    const unsigned int sz = static_cast<unsigned int>(size());
+    for (unsigned int f = 0; f < sz; f ++)
     {
         const int rSprite = mSpriteHide[mSpriteRemap[f]];
         if (rSprite == 1)
@@ -2503,7 +2505,7 @@ void Being::recalcSpritesOrder()
         return;
 
 //    logger->log("recalcSpritesOrder");
-    const unsigned sz = static_cast<unsigned>(size());
+    const size_t sz = size();
     if (sz < 1)
         return;
 
@@ -2522,7 +2524,7 @@ void Being::recalcSpritesOrder()
 
     const unsigned int hairSlot = Net::getCharServerHandler()->hairSprite();
 
-    for (unsigned slot = 0; slot < sz; slot ++)
+    for (size_t slot = 0; slot < sz; slot ++)
     {
         oldHide[slot] = mSpriteHide[slot];
         mSpriteHide[slot] = 0;
@@ -2531,7 +2533,7 @@ void Being::recalcSpritesOrder()
 
     const size_t spriteIdSize = mSpriteIDs.size();
 
-    for (unsigned slot = 0; slot < sz; slot ++)
+    for (size_t slot = 0; slot < sz; slot ++)
     {
         slotRemap.push_back(slot);
 

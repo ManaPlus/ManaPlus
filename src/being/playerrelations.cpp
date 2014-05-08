@@ -268,8 +268,8 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
     else
     {
         const PlayerRelation *const r = (*it).second;
-        unsigned int permissions =
-            PlayerRelation::RELATION_PERMISSIONS[r->mRelation];
+        unsigned int permissions = PlayerRelation::RELATION_PERMISSIONS[
+            static_cast<int>(r->mRelation)];
 
         switch (r->mRelation)
         {

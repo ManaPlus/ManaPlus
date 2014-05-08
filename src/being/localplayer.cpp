@@ -948,7 +948,7 @@ void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
         if (!sprite)
         {
             // delete sprite, if necessary
-            for (unsigned int i = 0; i < mStatusEffectIcons.size(); )
+            for (size_t i = 0; i < mStatusEffectIcons.size(); )
             {
                 if (mStatusEffectIcons[i] == effectId)
                 {
@@ -1168,7 +1168,7 @@ void LocalPlayer::moveToTarget(int dist)
         }
 
         const size_t sz = debugPath.size();
-        if (sz < static_cast<unsigned int>(dist))
+        if (sz < static_cast<size_t>(dist))
             return;
         limit = static_cast<int>(sz) - dist;
         gotPos = true;
@@ -3766,7 +3766,7 @@ void LocalPlayer::setTestParticle(const std::string &fileName,
     }
     if (!fileName.empty())
     {
-        mTestParticle = particleEngine->addEffect(fileName, 0, 0, false);
+        mTestParticle = particleEngine->addEffect(fileName, 0, 0, 0);
         controlParticle(mTestParticle);
         if (updateHash)
             mTestParticleHash = UpdaterWindow::getFileHash(mTestParticleName);
