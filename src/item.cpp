@@ -71,7 +71,7 @@ void Item::setId(const int id, const unsigned char color)
     mColor = color;
 
     // Types 0 and 1 are not equippable items.
-    mEquipment = id && getInfo().getType() >= 2;
+    mEquipment = id && static_cast<int>(getInfo().getType()) >= 2;
 
     if (mImage)
         mImage->decRef();

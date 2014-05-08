@@ -36,7 +36,7 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
     {
         const size_t sz = being->mSpriteIDs.size();
 
-        for (unsigned f = 0; f < sz; f ++)
+        for (size_t f = 0; f < sz; f ++)
         {
             const int idx = Net::getInventoryHandler()->
                 convertFromServerSlot(f);

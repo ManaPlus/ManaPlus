@@ -23,9 +23,11 @@
 #ifndef AVATAR_H
 #define AVATAR_H
 
-#include "localconsts.h"
+#include "being/gender.h"
 
 #include <string>
+
+#include "localconsts.h"
 
 enum AvatarType
 {
@@ -154,10 +156,10 @@ public:
     void setCharId(const int id)
     { mCharId = id; }
 
-    int getGender() const A_WARN_UNUSED
+    Gender getGender() const A_WARN_UNUSED
     { return mGender; }
 
-    void setGender(const int g)
+    void setGender(const Gender g)
     { mGender = g; }
 
     int getRace() const A_WARN_UNUSED
@@ -192,7 +194,7 @@ protected:
     int mY;
     int mType;
     int mExp;
-    int mGender;
+    Gender mGender;
     int mRace;
     std::string mIp;
     bool mOnline;

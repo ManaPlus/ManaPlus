@@ -217,7 +217,8 @@ int GraphicsManager::detectGraphics()
         mode = RENDER_SOFTWARE;
     }
 
-    if (mode > 0 && findI(mGlVersionString, "Mesa") != std::string::npos)
+    if (mode != RENDER_SOFTWARE && findI(mGlVersionString, "Mesa")
+        != std::string::npos)
     {
         // Mesa detected. In latest Mesa look like compression broken.
         config.setValue("compresstextures", false);
@@ -229,7 +230,8 @@ int GraphicsManager::detectGraphics()
     config.write();
 
     logger->log("detection complete");
-    return mode | (1024 * textureSampler) | (2048 * compressTextures);
+    return static_cast<unsigned int>(mode)
+        | (1024 * textureSampler) | (2048 * compressTextures);
 }
 
 void GraphicsManager::initGraphics(const bool noOpenGL)
@@ -563,7 +565,8 @@ void GraphicsManager::updateTextureFormat() const
                 GLint num = 0;
                 glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &num);
                 logger->log("support %d compressed formats", num);
-                GLint *const formats = new GLint[num > 10 ? num : 10];
+                GLint *const formats = new GLint[num > 10
+                    ? static_cast<size_t>(num) : 10];
                 glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
                 for (int f = 0; f < num; f ++)
                     logger->log(" 0x%x", formats[f]);
@@ -1061,7 +1064,7 @@ static CALLBACK void debugCallback(GLenum source, GLenum type, GLuint id,
             message.append(" ?").append(toString(type));
             break;
     }
-    char *const buf = new char[length + 1];
+    char *const buf = new char[static_cast<size_t>(length + 1)];
     memcpy(buf, text, length);
     buf[length] = 0;
     message.append(" ").append(buf);

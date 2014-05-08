@@ -121,7 +121,7 @@ void MapLayer::draw(Graphics *const graphics,
 
         const int py0 = y32 + dy;
 
-        Image **tilePtr = mTiles + startX + yWidth;
+        Image **tilePtr = mTiles + static_cast<size_t>(startX + yWidth);
 
         for (int x = startX; x < endX; x++, tilePtr++)
         {
@@ -217,7 +217,7 @@ void MapLayer::updateSDL(const Graphics *const graphics,
 
         const int yWidth = y * mWidth;
         const int py0 = y * mapTileSize + dy;
-        Image **tilePtr = mTiles + startX + yWidth;
+        Image **tilePtr = mTiles + static_cast<size_t>(startX + yWidth);
 
         for (int x = startX; x < endX; x++, tilePtr++)
         {
@@ -282,7 +282,7 @@ void MapLayer::updateOGL(const Graphics *const graphics,
     {
         const int yWidth = y * mWidth;
         const int py0 = y * mapTileSize + dy;
-        Image **tilePtr = mTiles + startX + yWidth;
+        Image **tilePtr = mTiles + static_cast<size_t>(startX + yWidth);
         for (int x = startX; x < endX; x++, tilePtr++)
         {
             Image *const img = *tilePtr;
@@ -437,7 +437,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             const int py0 = y32 + dy;
             const int py1 = y32 - scrollY;
 
-            Image **tilePtr = mTiles + startX + yWidth;
+            Image **tilePtr = mTiles + static_cast<size_t>(startX + yWidth);
             for (int x = startX; x < endX; x++, tilePtr++)
             {
                 const int x32 = x * mapTileSize;

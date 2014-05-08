@@ -217,7 +217,8 @@ bool Particle::update()
     // create death effect when the particle died
     if (mAlive != ALIVE && mAlive != DEAD_LONG_AGO)
     {
-        if ((mAlive & mDeathEffectConditions) > 0x00  && !mDeathEffect.empty())
+        if ((static_cast<unsigned int>(mAlive) & mDeathEffectConditions)
+            > 0x00  && !mDeathEffect.empty())
         {
             Particle *const deathEffect = particleEngine->addEffect(
                 mDeathEffect, 0, 0);

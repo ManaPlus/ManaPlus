@@ -52,7 +52,7 @@ SpellManager::~SpellManager()
 
 TextCommand* SpellManager::getSpell(const int spellId) const
 {
-    if (spellId < 0 || static_cast<unsigned int>(spellId) >= mSpells.size())
+    if (spellId < 0 || static_cast<size_t>(spellId) >= mSpells.size())
         return nullptr;
 
     const std::map<unsigned int, TextCommand*>::const_iterator
@@ -142,8 +142,8 @@ void SpellManager::invoke(const int spellId) const
         || (Net::getPlayerHandler()->canUseMagic()
         && PlayerInfo::getSkillLevel(SKILL_MAGIC)
         >= static_cast<signed>(spell->getBaseLvl())
-        && PlayerInfo::getSkillLevel(
-        spell->getSchool()) >= static_cast<signed>(spell->getSchoolLvl())
+        && PlayerInfo::getSkillLevel(static_cast<int>(
+        spell->getSchool())) >= static_cast<signed>(spell->getSchoolLvl())
         && PlayerInfo::getAttribute(PlayerInfo::MP) >= spell->getMana()))
     {
         const Being *const target = player_node->getTarget();

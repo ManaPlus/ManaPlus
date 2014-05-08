@@ -195,15 +195,15 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
 
     mFrameTime += time;
 
-    while ((mFrameTime > static_cast<unsigned>(mFrame->delay)
+    while ((mFrameTime > static_cast<unsigned int>(mFrame->delay)
            && mFrame->delay > 0) || (mFrame->type != Frame::ANIMATION
            && mFrame->type != Frame::PAUSE))
     {
         bool fail(true);
-        mFrameTime -= static_cast<unsigned>(mFrame->delay);
+        mFrameTime -= static_cast<unsigned int>(mFrame->delay);
         mFrameIndex++;
 
-        if (mFrameIndex >= mAnimation->getLength())
+        if (mFrameIndex >= static_cast<unsigned int>(mAnimation->getLength()))
             mFrameIndex = 0;
 
         mFrame = &mAnimation->mFrames[mFrameIndex];
@@ -227,8 +227,11 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
                         && mFrame->nextAction == frame->nextAction)
                     {
                         mFrameIndex = static_cast<unsigned int>(i);
-                        if (mFrameIndex >= mAnimation->getLength())
+                        if (mFrameIndex >= static_cast<unsigned int>(
+                            mAnimation->getLength()))
+                        {
                             mFrameIndex = 0;
+                        }
 
                         mFrame = &mAnimation->mFrames[mFrameIndex];
 
@@ -262,7 +265,8 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time)
         }
         else
         {
-            if (mFrame->rand == 100 || mFrameIndex >= mAnimation->getLength())
+            if (mFrame->rand == 100 || mFrameIndex
+                >= static_cast<unsigned int>(mAnimation->getLength()))
             {
                 fail = false;
             }

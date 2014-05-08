@@ -1088,7 +1088,7 @@ void Game::updateHistory(const SDL_Event &event)
     if (!player_node || !player_node->getAttackType())
         return;
 
-    if (event.key.keysym.sym != -1)
+    if (static_cast<int>(event.key.keysym.sym) != -1)
     {
         bool old = false;
 

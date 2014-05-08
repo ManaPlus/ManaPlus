@@ -118,7 +118,7 @@ bool SimpleAnimation::update(const int timePassed)
         mAnimationTime -= mCurrentFrame->delay;
         mAnimationPhase++;
 
-        if (static_cast<unsigned>(mAnimationPhase) >= mAnimation->getLength())
+        if (static_cast<size_t>(mAnimationPhase) >= mAnimation->getLength())
             mAnimationPhase = 0;
 
         mCurrentFrame = &mAnimation->mFrames[mAnimationPhase];

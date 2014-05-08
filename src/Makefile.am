@@ -723,6 +723,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      commands.h \
 	      being/compoundsprite.cpp \
 	      being/compoundsprite.h \
+	      being/gender.h \
 	      listeners/configlistener.h \
 	      configuration.cpp \
 	      configuration.h \
@@ -856,6 +857,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      soundmanager.cpp \
 	      soundmanager.h \
 	      sprite.h \
+	      state.h \
 	      statuseffect.cpp \
 	      statuseffect.h \
 	      render/surfacegraphics.cpp \

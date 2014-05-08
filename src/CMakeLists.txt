@@ -637,6 +637,7 @@ SET(SRCS
     commands.h
     being/compoundsprite.cpp
     being/compoundsprite.h
+    being/gender.h
     listeners/configlistener.h
     configuration.cpp
     configuration.h
@@ -772,6 +773,7 @@ SET(SRCS
     soundmanager.cpp
     soundmanager.h
     sprite.h
+    state.h
     statuseffect.cpp
     statuseffect.h
     render/surfacegraphics.cpp

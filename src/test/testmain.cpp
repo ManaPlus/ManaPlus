@@ -96,7 +96,7 @@ int TestMain::exec(const bool testAudio)
     if (testAudio)
         soundTest = invokeTest4();
     else
-        soundTest = true;
+        soundTest = 1;
 
     info.append(strprintf("%d.%d,%d,%d.", soundTest, softwareTest,
         fastOpenGLTest, safeOpenGLTest));
@@ -204,7 +204,7 @@ int TestMain::exec(const bool testAudio)
     if (!(detectMode & 15))
         openGLMode = RENDER_SOFTWARE;
 
-    writeConfig(openGLMode, rescaleTest[openGLMode],
+    writeConfig(openGLMode, rescaleTest[static_cast<size_t>(openGLMode)],
         soundTest, info, batchSize, detectMode);
     return 0;
 }

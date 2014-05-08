@@ -183,8 +183,9 @@ Map::Map(const int width, const int height,
     const int size = mWidth * mHeight;
     for (int i = 0; i < NB_BLOCKTYPES; i++)
     {
-        mOccupation[i] = new unsigned[size];
-        memset(mOccupation[i], 0, size * sizeof(unsigned));
+        mOccupation[i] = new unsigned[static_cast<size_t>(size)];
+        memset(mOccupation[i], 0, static_cast<size_t>(size)
+            * sizeof(unsigned));
     }
 
     config.addListener("OverlayDetail", this);
@@ -679,8 +680,8 @@ void Map::blockTile(const int x, const int y, const BlockType type)
 
     const int tileNum = x + y * mWidth;
 
-    if (mOccupation[type][tileNum] < UINT_MAX &&
-        (++mOccupation[type][tileNum]) > 0)
+    if (mOccupation[static_cast<size_t>(type)][tileNum] < UINT_MAX &&
+        (++mOccupation[static_cast<size_t>(type)][tileNum]) > 0)
     {
         switch (type)
         {
@@ -1296,8 +1297,8 @@ void Map::indexTilesets()
     FOR_EACH (Tilesets::const_iterator, it, mTilesets)
     {
         const size_t sz = (*it)->size();
-        if (!s || s->getFirstGid() + sSz
-            < (*it)->getFirstGid() + sz)
+        if (!s || static_cast<size_t>(s->getFirstGid()) + sSz
+            < static_cast<size_t>((*it)->getFirstGid()) + sz)
         {
             s = *it;
             sSz = sz;
@@ -1313,7 +1314,7 @@ void Map::indexTilesets()
     const int size = static_cast<int>(s->getFirstGid())
         + static_cast<int>(s->size());
     mIndexedTilesetsSize = size;
-    mIndexedTilesets = new Tileset*[size];
+    mIndexedTilesets = new Tileset*[static_cast<size_t>(size)];
     std::fill_n(mIndexedTilesets, size, static_cast<Tileset*>(nullptr));
 
     FOR_EACH (Tilesets::const_iterator, it, mTilesets)
@@ -1322,7 +1323,7 @@ void Map::indexTilesets()
         if (s2)
         {
             const int start = s2->getFirstGid();
-            const int end = static_cast<int>(start + s2->size());
+            const int end = start + static_cast<int>(s2->size());
             for (int f = start; f < end; f ++)
             {
                 if (f < size)
@@ -1456,7 +1457,8 @@ void Map::reduce()
                     while (ri != mLayers.rend())
                     {
                         MapLayer *const layer2 = *ri;
-                        const size_t pos = x + y * layer2->mWidth;
+                        const size_t pos = static_cast<size_t>(
+                            x + y * layer2->mWidth);
                         img = layer2->mTiles[pos];
                         if (img)
                         {

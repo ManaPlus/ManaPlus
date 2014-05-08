@@ -116,28 +116,28 @@ void NormalOpenGLGraphicsVertexes::init()
 
 GLfloat *NormalOpenGLGraphicsVertexes::switchFloatTexArray()
 {
-    mFloatTexArray = new GLfloat[vertexBufSize * 4 + 30];
+    mFloatTexArray = new GLfloat[static_cast<size_t>(vertexBufSize * 4 + 30)];
     mFloatTexPool.push_back(mFloatTexArray);
     return mFloatTexArray;
 }
 
 GLint *NormalOpenGLGraphicsVertexes::switchIntVertArray()
 {
-    mIntVertArray = new GLint[vertexBufSize * 4 + 30];
+    mIntVertArray = new GLint[static_cast<size_t>(vertexBufSize * 4 + 30)];
     mIntVertPool.push_back(mIntVertArray);
     return mIntVertArray;
 }
 
 GLshort *NormalOpenGLGraphicsVertexes::switchShortVertArray()
 {
-    mShortVertArray = new GLshort[vertexBufSize * 4 + 30];
+    mShortVertArray = new GLshort[static_cast<size_t>(vertexBufSize * 4 + 30)];
     mShortVertPool.push_back(mShortVertArray);
     return mShortVertArray;
 }
 
 GLint *NormalOpenGLGraphicsVertexes::switchIntTexArray()
 {
-    mIntTexArray = new GLint[vertexBufSize * 4 + 30];
+    mIntTexArray = new GLint[static_cast<size_t>(vertexBufSize * 4 + 30)];
     mIntTexPool.push_back(mIntTexArray);
     return mIntTexArray;
 }
@@ -172,7 +172,8 @@ GLfloat *NormalOpenGLGraphicsVertexes::continueFloatTexArray()
 {
     if (mFloatTexPool.empty())
     {
-        mFloatTexArray = new GLfloat[vertexBufSize * 4 + 30];
+        mFloatTexArray = new GLfloat[static_cast<size_t>(
+            vertexBufSize * 4 + 30)];
         mFloatTexPool.push_back(mFloatTexArray);
     }
     else
@@ -186,7 +187,7 @@ GLint *NormalOpenGLGraphicsVertexes::continueIntVertArray()
 {
     if (mIntVertPool.empty())
     {
-        mIntVertArray = new GLint[vertexBufSize * 4 + 30];
+        mIntVertArray = new GLint[static_cast<size_t>(vertexBufSize * 4 + 30)];
         mIntVertPool.push_back(mIntVertArray);
     }
     else
@@ -200,7 +201,8 @@ GLshort *NormalOpenGLGraphicsVertexes::continueShortVertArray()
 {
     if (mShortVertPool.empty())
     {
-        mShortVertArray = new GLshort[vertexBufSize * 4 + 30];
+        mShortVertArray = new GLshort[static_cast<size_t>(
+            vertexBufSize * 4 + 30)];
         mShortVertPool.push_back(mShortVertArray);
     }
     else
@@ -214,7 +216,7 @@ GLint *NormalOpenGLGraphicsVertexes::continueIntTexArray()
 {
     if (mIntTexPool.empty())
     {
-        mIntTexArray = new GLint[vertexBufSize * 4 + 30];
+        mIntTexArray = new GLint[static_cast<size_t>(vertexBufSize * 4 + 30)];
         mIntTexPool.push_back(mIntTexArray);
     }
     else

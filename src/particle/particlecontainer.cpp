@@ -144,7 +144,7 @@ void ParticleVector::setLocally(const int index, Particle *const particle)
 
     delLocally(index);
 
-    if (mIndexedElements.size() <= static_cast<unsigned>(index))
+    if (mIndexedElements.size() <= static_cast<size_t>(index))
         mIndexedElements.resize(index + 1, nullptr);
 
     if (particle)
@@ -157,7 +157,7 @@ void ParticleVector::delLocally(const int index)
     if (index < 0)
         return;
 
-    if (mIndexedElements.size() <= static_cast<unsigned>(index))
+    if (mIndexedElements.size() <= static_cast<size_t>(index))
         return;
 
     Particle *const p = mIndexedElements[index];
@@ -170,8 +170,12 @@ void ParticleVector::delLocally(const int index)
 
 void ParticleVector::clearLocally()
 {
-    for (unsigned int i = 0; i < mIndexedElements.size(); i++)
+    for (unsigned int i = 0;
+         i < static_cast<unsigned int>(mIndexedElements.size());
+         i++)
+    {
         delLocally(i);
+    }
 }
 
 void ParticleVector::moveTo(const float x, const float y)

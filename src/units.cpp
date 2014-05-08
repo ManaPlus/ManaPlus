@@ -221,7 +221,7 @@ static std::string formatUnit(const int value, const int type)
             if (ul.count)
                 levelAmount /= ul.count;
 
-            amount -= levelAmount * ul.count;
+            amount -= static_cast<double>(levelAmount * ul.count);
 
             if (amount > 0)
             {

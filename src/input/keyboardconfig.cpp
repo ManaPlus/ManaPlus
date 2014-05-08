@@ -65,7 +65,7 @@ int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event)
     return event.key.keysym.scancode;
 #else
     if (event.key.keysym.sym)
-        return event.key.keysym.sym;
+        return static_cast<int>(event.key.keysym.sym);
     else if (event.key.keysym.scancode > 1)
         return -event.key.keysym.scancode;
     return 0;

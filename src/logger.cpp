@@ -146,7 +146,7 @@ void Logger::log(const char *const log_text, ...)
     if (strlen(log_text) * 3 > size)
         size = static_cast<unsigned>(strlen(log_text) * 3);
 
-    char* buf = new char[size + 1];
+    char* buf = new char[static_cast<size_t>(size + 1)];
     va_list ap;
 
     // Use a temporary buffer to fill in the variables
@@ -182,7 +182,7 @@ void Logger::log_r(const char *const log_text, ...)
     if (strlen(log_text) * 3 > size)
         size = static_cast<unsigned>(strlen(log_text) * 3);
 
-    char* buf = new char[size + 1];
+    char* buf = new char[static_cast<size_t>(size + 1)];
     va_list ap;
 
     // Use a temporary buffer to fill in the variables

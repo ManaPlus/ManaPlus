@@ -182,7 +182,7 @@ int Inventory::getFreeSlot() const
 {
     Item **const i = std::find_if(mItems, mItems + mSize,
         std::not1(SlotUsed()));
-    return (i == mItems + static_cast<int>(mSize)) ? -1
+    return (i == mItems + mSize) ? -1
         : static_cast<int>(i - mItems);
 }
 
@@ -280,6 +280,6 @@ void Inventory::resize(const unsigned int newSize)
     delete [] mItems;
 
     mSize = newSize;
-    mItems = new Item*[mSize];
+    mItems = new Item*[static_cast<size_t>(mSize)];
     std::fill_n(mItems, mSize, static_cast<Item*>(nullptr));
 }

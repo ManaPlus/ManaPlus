@@ -1429,7 +1429,7 @@ void ActorManager::parseLevels(std::string levels) const
                 being->addToCache();
             }
         }
-        f = static_cast<int>(pos + brkEnd.length());
+        f = static_cast<size_t>(pos + brkEnd.length());
         pos = levels.find(brkEnd, f);
     }
     updatePlayerNames();

@@ -23,6 +23,8 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
+#include "state.h"
+
 #include "listeners/configlistener.h"
 
 #include "net/serverinfo.h"
@@ -66,51 +68,6 @@ class ErrorListener : public ActionListener
 extern std::string errorMessage;
 extern ErrorListener errorListener;
 extern LoginData loginData;
-
-/**
- * All client states.
- */
-enum State
-{
-    STATE_ERROR = -1,
-    STATE_START = 0,
-    STATE_CHOOSE_SERVER,
-    STATE_CONNECT_SERVER,
-    STATE_PRE_LOGIN,
-    STATE_LOGIN,
-    STATE_LOGIN_ATTEMPT,
-    STATE_WORLD_SELECT,            // 5
-    STATE_WORLD_SELECT_ATTEMPT,
-    STATE_UPDATE,
-    STATE_LOAD_DATA,
-    STATE_GET_CHARACTERS,
-    STATE_CHAR_SELECT,             // 10
-    STATE_CONNECT_GAME,
-    STATE_GAME,
-    STATE_CHANGE_MAP,              // Switch map-server/gameserver
-    STATE_LOGIN_ERROR,
-    STATE_ACCOUNTCHANGE_ERROR,     // 15
-    STATE_REGISTER_PREP,
-    STATE_REGISTER,
-    STATE_REGISTER_ATTEMPT,
-    STATE_CHANGEPASSWORD,
-    STATE_CHANGEPASSWORD_ATTEMPT,  // 20
-    STATE_CHANGEPASSWORD_SUCCESS,
-    STATE_CHANGEEMAIL,
-    STATE_CHANGEEMAIL_ATTEMPT,
-    STATE_CHANGEEMAIL_SUCCESS,
-    STATE_UNREGISTER,              // 25
-    STATE_UNREGISTER_ATTEMPT,
-    STATE_UNREGISTER_SUCCESS,
-    STATE_SWITCH_SERVER,
-    STATE_SWITCH_LOGIN,
-    STATE_SWITCH_CHARACTER,        // 30
-    STATE_LOGOUT_ATTEMPT,
-    STATE_WAIT,
-    STATE_EXIT,
-    STATE_FORCE_QUIT,
-    STATE_AUTORECONNECT_SERVER = 1000
-};
 
 enum PacketTypes
 {
