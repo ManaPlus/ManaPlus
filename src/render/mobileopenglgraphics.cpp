@@ -113,7 +113,7 @@ void MobileOpenGLGraphics::initArrays()
         mMaxVertices = 1024;
 
     // need alocate small size, after if limit reached reallocate to double size
-    const int sz = mMaxVertices * 4 + 30;
+    const size_t sz = mMaxVertices * 4 + 30;
     vertexBufSize = mMaxVertices;
     if (!mFloatTexArray)
         mFloatTexArray = new GLfloat[sz];
@@ -924,7 +924,7 @@ SDL_Surface* MobileOpenGLGraphics::getScreenshot()
     if (SDL_MUSTLOCK(screenshot))
         SDL_LockSurface(screenshot);
 
-    const unsigned int lineSize = 3 * w;
+    const size_t lineSize = 3 * w;
     GLubyte *const buf = new GLubyte[lineSize];
 
     // Grap the pixel buffer and write it to the SDL surface

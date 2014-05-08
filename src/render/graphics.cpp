@@ -300,8 +300,10 @@ bool Graphics::setOpenGLMode()
     GLint texSize;
     bool rectTex = graphicsManager.supportExtension(
         "GL_ARB_texture_rectangle");
-    if (rectTex && OpenGLImageHelper::getInternalTextureType() == 4
-        && getOpenGL() != 3 && config.getBoolValue("rectangulartextures")
+    if (rectTex
+        && OpenGLImageHelper::getInternalTextureType() == 4
+        && getOpenGL() != RENDER_GLES_OPENGL
+        && config.getBoolValue("rectangulartextures")
         && !graphicsManager.isUseTextureSampler())
     {
         logger->log1("using GL_ARB_texture_rectangle");

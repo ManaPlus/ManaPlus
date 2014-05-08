@@ -500,7 +500,7 @@ SDL_Surface* SafeOpenGLGraphics::getScreenshot()
     glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, screenshot->pixels);
 
     // Flip the screenshot, as OpenGL has 0,0 in bottom left
-    unsigned int lineSize = 3 * w;
+    size_t lineSize = 3 * w;
     GLubyte* buf = new GLubyte[lineSize];
 
     const int h2 = h / 2;

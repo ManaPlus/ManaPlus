@@ -76,7 +76,7 @@ void NullOpenGLGraphics::initArrays()
 
     // need alocate small size, after if limit reached reallocate to double size
     vertexBufSize = mMaxVertices;
-    const int sz = mMaxVertices * 4 + 30;
+    const size_t sz = mMaxVertices * 4 + 30;
     if (!mFloatTexArray)
         mFloatTexArray = new GLfloat[sz];
     if (!mIntTexArray)

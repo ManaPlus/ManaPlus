@@ -132,7 +132,7 @@ void NormalOpenGLGraphics::initArrays()
 
     // need alocate small size, after if limit reached reallocate to double size
     vertexBufSize = mMaxVertices;
-    const int sz = mMaxVertices * 4 + 30;
+    const size_t sz = mMaxVertices * 4 + 30;
     if (!mFloatTexArray)
         mFloatTexArray = new GLfloat[sz];
     if (!mIntTexArray)
@@ -1194,7 +1194,7 @@ SDL_Surface* NormalOpenGLGraphics::getScreenshot()
     glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, screenshot->pixels);
 
     // Flip the screenshot, as OpenGL has 0,0 in bottom left
-    const unsigned int lineSize = 3 * w;
+    const size_t lineSize = 3 * w;
     GLubyte *const buf = new GLubyte[lineSize];
 
     const int h2 = h / 2;

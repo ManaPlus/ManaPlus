@@ -952,19 +952,22 @@ void SDLGraphics::fillRectangle(const Rect& rectangle)
                 for (y = y1; y < y2; y++)
                 {
                     uint8_t *const p = static_cast<uint8_t *>(mWindow->pixels)
-                        + y * mWindow->pitch;
+                        + static_cast<size_t>(y * mWindow->pitch);
                     for (x = x1; x < x2; x++)
-                        *(p + x) = static_cast<uint8_t>(pixel);
+                    {
+                        *(p + static_cast<size_t>(x))
+                            = static_cast<uint8_t>(pixel);
+                    }
                 }
                 break;
             case 2:
                 for (y = y1; y < y2; y++)
                 {
                     uint8_t *const p0 = static_cast<uint8_t *>(mWindow->pixels)
-                        + y * mWindow->pitch;
+                        + static_cast<size_t>(y * mWindow->pitch);
                     for (x = x1; x < x2; x++)
                     {
-                        uint8_t *const p = p0 + x * 2;
+                        uint8_t *const p = p0 + static_cast<size_t>(x * 2);
                         *reinterpret_cast<uint16_t *>(p) = SDLAlpha16(
                             static_cast<uint16_t>(pixel),
                             *reinterpret_cast<uint16_t *>(p),
@@ -982,10 +985,10 @@ void SDLGraphics::fillRectangle(const Rect& rectangle)
                 for (y = y1; y < y2; y++)
                 {
                     uint8_t *const p0 = static_cast<uint8_t *>(mWindow->pixels)
-                        + y * mWindow->pitch;
+                        + static_cast<size_t>(y * mWindow->pitch);
                     for (x = x1; x < x2; x++)
                     {
-                        uint8_t *const p = p0 + x * 3;
+                        uint8_t *const p = p0 + static_cast<size_t>(x * 3);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
                         p[2] = static_cast<uint8_t>((p[2] * ca + cb) >> 8);
                         p[1] = static_cast<uint8_t>((p[1] * ca + cg) >> 8);
@@ -1074,10 +1077,10 @@ void SDLGraphics::fillRectangle(const Rect& rectangle)
                 {
                     uint32_t *const p0 = reinterpret_cast<uint32_t*>(
                         static_cast<uint8_t*>(mWindow->pixels)
-                        + y * mWindow->pitch);
+                        + static_cast<size_t>(y * mWindow->pitch));
                     for (x = x1; x < x2; x++)
                     {
-                        uint32_t *const p = p0 + x;
+                        uint32_t *const p = p0 + static_cast<size_t>(x);
                         const uint32_t dst = *p;
                         *p = cB[dst & bMask / bShift]
                             | cG[(dst & gMask) / gShift]
@@ -1222,7 +1225,7 @@ void SDLGraphics::drawHLine(int x1, int y, int x2)
     SDL_LockSurface(mWindow);
 
     uint8_t *p = static_cast<uint8_t*>(mWindow->pixels)
-        + y * mWindow->pitch + x1 * bpp;
+        + static_cast<size_t>(y * mWindow->pitch + x1 * bpp);
 
     const uint32_t pixel = SDL_MapRGB(mWindow->format,
         static_cast<uint8_t>(mColor.r),
@@ -1347,7 +1350,7 @@ void SDLGraphics::drawVLine(int x, int y1, int y2)
     SDL_LockSurface(mWindow);
 
     uint8_t *p = static_cast<uint8_t*>(mWindow->pixels)
-        + y1 * mWindow->pitch + x * bpp;
+        + static_cast<size_t>(y1 * mWindow->pitch + x * bpp);
 
     const uint32_t pixel = SDL_MapRGB(mWindow->format,
         static_cast<uint8_t>(mColor.r),
