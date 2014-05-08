@@ -95,7 +95,7 @@ void MessageIn::readCoordinates(uint16_t &restrict x, uint16_t &restrict y,
     uint8_t serverDir = 0;
     if (mPos + 3 <= mLength)
     {
-        const char *const data = mData + mPos;
+        const char *const data = mData + static_cast<size_t>(mPos);
         uint16_t temp = MAKEWORD(data[1] & 0x00c0, data[0] & 0x00ff);
         x = static_cast<uint16_t>(temp >> 6);
         temp = MAKEWORD(data[2] & 0x00f0, data[1] & 0x003f);
@@ -127,7 +127,7 @@ void MessageIn::readCoordinatePair(uint16_t &restrict srcX,
 {
     if (mPos + 5 <= mLength)
     {
-        const char *const data = mData + mPos;
+        const char *const data = mData + static_cast<size_t>(mPos);
         uint16_t temp = MAKEWORD(data[3], data[2] & 0x000f);
         dstX = static_cast<uint16_t>(temp >> 2);
 
@@ -179,12 +179,12 @@ std::string MessageIn::readString(int length)
     }
 
     // Read the string
-    const char *const stringBeg = mData + mPos;
+    const char *const stringBeg = mData + static_cast<size_t>(mPos);
     const char *const stringEnd
         = static_cast<const char *const>(memchr(stringBeg, '\0', length));
 
     const std::string str(stringBeg, stringEnd
-        ? stringEnd - stringBeg : length);
+        ? stringEnd - stringBeg : static_cast<size_t>(length));
     mPos += length;
     PacketCounters::incInBytes(length);
     DEBUGLOG("readString: " + str);
@@ -205,11 +205,11 @@ std::string MessageIn::readRawString(int length)
     }
 
     // Read the string
-    const char *const stringBeg = mData + mPos;
+    const char *const stringBeg = mData + static_cast<size_t>(mPos);
     const char *const stringEnd
         = static_cast<const char *const>(memchr(stringBeg, '\0', length));
     std::string str(stringBeg, stringEnd
-        ? stringEnd - stringBeg : length);
+        ? stringEnd - stringBeg : static_cast<size_t>(length));
 
     mPos += length;
     PacketCounters::incInBytes(length);
@@ -217,7 +217,8 @@ std::string MessageIn::readRawString(int length)
 
     if (stringEnd)
     {
-        const size_t len2 = length - (stringEnd - stringBeg) - 1;
+        const size_t len2 = static_cast<size_t>(length)
+            - (stringEnd - stringBeg) - 1;
         const char *const stringBeg2 = stringEnd + 1;
         const char *const stringEnd2
             = static_cast<const char *const>(memchr(stringBeg2, '\0', len2));
@@ -247,9 +248,10 @@ unsigned char *MessageIn::readBytes(int length)
         return nullptr;
     }
 
-    unsigned char *const buf = new unsigned char[length + 2];
+    unsigned char *const buf
+        = new unsigned char[static_cast<size_t>(length + 2)];
 
-    memcpy(buf, mData + mPos, length);
+    memcpy(buf, mData + static_cast<size_t>(mPos), length);
     buf[length] = 0;
     buf[length + 1] = 0;
     mPos += length;

@@ -176,7 +176,7 @@ void Network::skip(const int len)
     if (mInSize >= mToSkip)
     {
         mInSize -= mToSkip;
-        memmove(mInBuffer, mInBuffer + mToSkip, mInSize);
+        memmove(mInBuffer, mInBuffer + static_cast<size_t>(mToSkip), mInSize);
         mToSkip = 0;
     }
     else
@@ -267,7 +267,8 @@ void Network::receive()
                     continue;
                 }
 
-                const int ret = TcpNet::recv(mSocket, mInBuffer + mInSize,
+                const int ret = TcpNet::recv(mSocket,
+                    mInBuffer + static_cast<size_t>(mInSize),
                     BUFFER_SIZE - mInSize);
 
                 if (!ret)
@@ -291,7 +292,9 @@ void Network::receive()
                         if (mInSize >= mToSkip)
                         {
                             mInSize -= mToSkip;
-                            memmove(mInBuffer, mInBuffer + mToSkip, mInSize);
+                            memmove(mInBuffer,
+                                mInBuffer + static_cast<size_t>(mToSkip),
+                                mInSize);
                             mToSkip = 0;
                         }
                         else
@@ -332,9 +335,11 @@ void Network::setError(const std::string &error)
 uint16_t Network::readWord(const int pos) const
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    return SDL_Swap16(*reinterpret_cast<uint16_t*>(mInBuffer + (pos)));
+    return SDL_Swap16(*reinterpret_cast<uint16_t*>(
+        mInBuffer + static_cast<size_t>(pos)));
 #else
-    return (*reinterpret_cast<uint16_t*>(mInBuffer + (pos)));
+    return (*reinterpret_cast<uint16_t*>(
+        mInBuffer + static_cast<size_t>(pos)));
 #endif
 }
 

@@ -53,10 +53,10 @@ int16_t MessageIn::readInt16()
     {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         int16_t swap;
-        memcpy(&swap, mData + mPos, sizeof(int16_t));
+        memcpy(&swap, mData + static_cast<size_t>(mPos), sizeof(int16_t));
         value = SDL_Swap16(swap);
 #else
-        memcpy(&value, mData + mPos, sizeof(int16_t));
+        memcpy(&value, mData + static_cast<size_t>(mPos), sizeof(int16_t));
 #endif
     }
     mPos += 2;
@@ -72,10 +72,10 @@ int32_t MessageIn::readInt32()
     {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         int32_t swap;
-        memcpy(&swap, mData + mPos, sizeof(int32_t));
+        memcpy(&swap, mData + static_cast<size_t>(mPos), sizeof(int32_t));
         value = SDL_Swap32(swap);
 #else
-        memcpy(&value, mData + mPos, sizeof(int32_t));
+        memcpy(&value, mData + static_cast<size_t>(mPos), sizeof(int32_t));
 #endif
     }
     mPos += 4;

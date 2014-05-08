@@ -71,11 +71,15 @@ void MessageOut::writeString(const std::string &string, int length)
     expand(length);
 
     // Write the actual string
-    memcpy(mData + mPos, string.c_str(), stringLength);
+    memcpy(mData + static_cast<size_t>(mPos), string.c_str(), stringLength);
 
     // Pad remaining space with zeros
     if (length > stringLength)
-        memset(mData + mPos + stringLength, '\0', length - stringLength);
+    {
+        memset(mData + static_cast<size_t>(mPos + stringLength),
+            '\0',
+            length - stringLength);
+    }
 
     mPos += length;
     DEBUGLOG("writeString: " + string);
@@ -99,11 +103,15 @@ void MessageOut::writeStringNoLog(const std::string &string, int length)
     expand(length);
 
     // Write the actual string
-    memcpy(mData + mPos, string.c_str(), stringLength);
+    memcpy(mData + static_cast<size_t>(mPos), string.c_str(), stringLength);
 
     // Pad remaining space with zeros
     if (length > stringLength)
-        memset(mData + mPos + stringLength, '\0', length - stringLength);
+    {
+        memset(mData + static_cast<size_t>(mPos + stringLength),
+            '\0',
+            length - stringLength);
+    }
 
     mPos += length;
     DEBUGLOG("writeString: ***");

@@ -43,7 +43,7 @@ MessageOut::MessageOut(const int16_t id):
     mNetwork(TmwAthena::Network::instance())
 {
     mNetwork->fixSendBuffer();
-    mData = mNetwork->mOutBuffer + mNetwork->mOutSize;
+    mData = mNetwork->mOutBuffer + static_cast<size_t>(mNetwork->mOutSize);
 
     // +++ can be issue. call to virtual member
     writeInt16(id);
@@ -61,9 +61,9 @@ void MessageOut::writeInt16(const int16_t value)
     expand(2);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int16_t swap = SDL_Swap16(value);
-    memcpy(mData + mPos, &swap, sizeof(int16_t));
+    memcpy(mData + static_cast<size_t>(mPos), &swap, sizeof(int16_t));
 #else
-    memcpy(mData + mPos, &value, sizeof(int16_t));
+    memcpy(mData + static_cast<size_t>(mPos), &value, sizeof(int16_t));
 #endif
     mPos += 2;
     PacketCounters::incOutBytes(2);
@@ -75,9 +75,9 @@ void MessageOut::writeInt32(const int32_t value)
     expand(4);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int32_t swap = SDL_Swap32(value);
-    memcpy(mData + mPos, &swap, sizeof(int32_t));
+    memcpy(mData + static_cast<size_t>(mPos), &swap, sizeof(int32_t));
 #else
-    memcpy(mData + mPos, &value, sizeof(int32_t));
+    memcpy(mData + static_cast<size_t>(mPos), &value, sizeof(int32_t));
 #endif
     mPos += 4;
     PacketCounters::incOutBytes(4);
@@ -94,7 +94,7 @@ void MessageOut::writeCoordinates(const uint16_t x,
     DEBUGLOG(strprintf("writeCoordinates: %u,%u %u",
         static_cast<unsigned>(x), static_cast<unsigned>(y),
         static_cast<unsigned>(direction)));
-    char *const data = mData + mPos;
+    char *const data = mData + static_cast<size_t>(mPos);
     mNetwork->mOutSize += 3;
     mPos += 3;
 

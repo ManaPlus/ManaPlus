@@ -150,7 +150,7 @@ int InventoryHandler::convertFromServerSlot(const int serverSlot) const
     if (serverSlot < 0 || serverSlot > 13)
         return 0;
 
-    return EQUIP_CONVERT[serverSlot];
+    return static_cast<int>(EQUIP_CONVERT[serverSlot]);
 }
 
 int InventoryHandler::getSlot(const int eAthenaSlot)
@@ -168,7 +168,7 @@ int InventoryHandler::getSlot(const int eAthenaSlot)
         mask <<= 1;
         position++;
     }
-    return EQUIP_POINTS[position];
+    return static_cast<int>(EQUIP_POINTS[position]);
 }
 
 void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
