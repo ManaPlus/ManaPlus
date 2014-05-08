@@ -215,7 +215,7 @@ bool ResourceManager::cleanOrphans(const bool always)
     timeval tv;
     gettimeofday(&tv, nullptr);
     // Delete orphaned resources after 30 seconds.
-    time_t oldest = tv.tv_sec;
+    time_t oldest = static_cast<time_t>(tv.tv_sec);
     const time_t threshold = oldest - 30;
 
     if (mOrphanedResources.empty() || (!always && mOldestOrphan >= threshold))
@@ -841,7 +841,7 @@ void ResourceManager::release(Resource *const res)
 
     timeval tv;
     gettimeofday(&tv, nullptr);
-    const time_t timestamp = tv.tv_sec;
+    const time_t timestamp = static_cast<time_t>(tv.tv_sec);
 
     res->mTimeStamp = timestamp;
     if (mOrphanedResources.empty())
@@ -999,7 +999,7 @@ bool ResourceManager::copyFile(const std::string &restrict src,
     }
 
     const int fileSize = static_cast<const int>(PHYSFS_fileLength(srcFile));
-    char *buf = new char[fileSize];
+    char *buf = new char[static_cast<size_t>(fileSize)];
     PHYSFS_read(srcFile, buf, 1, fileSize);
     PHYSFS_write(dstFile, buf, 1, fileSize);
 

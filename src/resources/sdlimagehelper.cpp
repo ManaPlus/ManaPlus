@@ -118,7 +118,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
         return nullptr;
 
     bool hasAlpha = false;
-    const int sz = tmpImage->w * tmpImage->h;
+    const size_t sz = tmpImage->w * tmpImage->h;
 
     // The alpha channel to be filled with alpha values
     uint8_t *alphaChannel = new uint8_t[sz];
@@ -126,7 +126,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
     const SDL_PixelFormat *const fmt = tmpImage->format;
     if (fmt->Amask)
     {
-        for (int i = 0; i < sz; ++ i)
+        for (size_t i = 0; i < sz; ++ i)
         {
             uint32_t c = (static_cast<uint32_t*>(tmpImage->pixels))[i];
 
@@ -202,7 +202,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
         converted = true;
     }
 
-    const int sz = tmpImage->w * tmpImage->h;
+    const size_t sz = tmpImage->w * tmpImage->h;
 
     // The alpha channel to be filled with alpha values
     uint8_t *alphaChannel = new uint8_t[sz];
@@ -217,7 +217,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
             const uint8_t ashift = fmt->Ashift;
             const uint8_t aloss = fmt->Aloss;
             const uint32_t *pixels = static_cast<uint32_t*>(tmpImage->pixels);
-            for (int i = 0; i < sz; ++ i)
+            for (size_t i = 0; i < sz; ++ i)
             {
                 const unsigned v = (pixels[i] & amask) >> ashift;
                 const uint8_t a = static_cast<const uint8_t>((v << aloss)

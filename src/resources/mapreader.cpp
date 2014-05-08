@@ -147,7 +147,7 @@ int inflateMemory(unsigned char *restrict const in,
                 return Z_MEM_ERROR;
             }
 
-            strm.next_out = out + bufferSize;
+            strm.next_out = out + static_cast<size_t>(bufferSize);
             strm.avail_out = bufferSize;
             bufferSize *= 2;
         }
@@ -576,8 +576,8 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
     if (!dataChild)
         return true;
 
-    const int len = static_cast<int>(strlen(
-        reinterpret_cast<const char*>(dataChild->content)) + 1);
+    const size_t len = strlen(
+        reinterpret_cast<const char*>(dataChild->content)) + 1;
     unsigned char *charData = new unsigned char[len + 1];
     xmlChar *const xmlChars = xmlNodeGetContent(dataChild);
     const char *charStart = reinterpret_cast<const char*>(xmlChars);

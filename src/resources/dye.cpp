@@ -36,10 +36,10 @@
 #include "debug.h"
 
 DyePalette::DyePalette(const std::string &description,
-                       const int8_t blockSize) :
+                       const uint8_t blockSize) :
     mColors()
 {
-    const size_t size = static_cast<int>(description.length());
+    const size_t size = static_cast<size_t>(description.length());
     if (size == 0)
         return;
 
@@ -53,7 +53,7 @@ DyePalette::DyePalette(const std::string &description,
 
             DyeColor color(0, 0, 0, 0);
 
-            for (int i = 0, colorIdx = 0; i < blockSize && colorIdx < 4;
+            for (size_t i = 0, colorIdx = 0; i < blockSize && colorIdx < 4;
                  i += 2, colorIdx ++)
             {
                 color.value[colorIdx] = static_cast<unsigned char>((
@@ -209,7 +209,9 @@ void DyePalette::replaceSColor(uint32_t *restrict pixels,
     if (sz % 2)
         -- it_end;
 
-    for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++pixels)
+    for (uint32_t *p_end = pixels + static_cast<size_t>(bufSize);
+         pixels != p_end;
+         ++pixels)
     {
         uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -266,7 +268,9 @@ void DyePalette::replaceAColor(uint32_t *restrict pixels,
     if (sz % 2)
         -- it_end;
 
-    for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++pixels)
+    for (uint32_t *p_end = pixels + static_cast<size_t>(bufSize);
+         pixels != p_end;
+         ++pixels)
     {
         uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
         const unsigned int data = *pixels;
@@ -310,7 +314,9 @@ void DyePalette::replaceSOGLColor(uint32_t *restrict pixels,
     if (sz % 2)
         -- it_end;
 
-    for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++pixels)
+    for (uint32_t *p_end = pixels + static_cast<size_t>(bufSize);
+         pixels != p_end;
+         ++pixels)
     {
         uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -360,7 +366,9 @@ void DyePalette::replaceAOGLColor(uint32_t *restrict pixels,
     if (sz % 2)
         -- it_end;
 
-    for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++pixels)
+    for (uint32_t *p_end = pixels + static_cast<size_t>(bufSize);
+         pixels != p_end;
+         ++pixels)
     {
         uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
         const unsigned int data = *pixels;
@@ -509,7 +517,9 @@ int Dye::getType() const
 
 void Dye::normalDye(uint32_t *restrict pixels, const int bufSize) const
 {
-    for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++ pixels)
+    for (uint32_t *p_end = pixels + static_cast<size_t>(bufSize);
+         pixels != p_end;
+         ++ pixels)
     {
         const uint32_t p = *pixels;
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -562,7 +572,9 @@ void Dye::normalDye(uint32_t *restrict pixels, const int bufSize) const
 
 void Dye::normalOGLDye(uint32_t *restrict pixels, const int bufSize) const
 {
-    for (uint32_t *p_end = pixels + bufSize; pixels != p_end; ++ pixels)
+    for (uint32_t *p_end = pixels + static_cast<size_t>(bufSize);
+         pixels != p_end;
+         ++ pixels)
     {
         const uint32_t p = *pixels;
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN

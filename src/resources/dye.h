@@ -45,7 +45,7 @@ class DyePalette final
          * The string is either a file name or a sequence of hexadecimal RGB
          * values separated by ',' and starting with '#'.
          */
-        DyePalette(const std::string &pallete, const int8_t blockSize);
+        DyePalette(const std::string &pallete, const uint8_t blockSize);
 
         A_DELETE_COPY(DyePalette)
 

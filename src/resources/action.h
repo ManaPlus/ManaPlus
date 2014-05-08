@@ -23,6 +23,8 @@
 #ifndef RESOURCES_ACTION_H
 #define RESOURCES_ACTION_H
 
+#include "resources/spritedef.h"
+
 #include <map>
 
 #include "localconsts.h"
@@ -41,10 +43,10 @@ class Action final
 
         ~Action();
 
-        void setAnimation(const int direction,
+        void setAnimation(const SpriteDirection direction,
                           Animation *const animation) noexcept;
 
-        const Animation *getAnimation(int direction) const
+        const Animation *getAnimation(SpriteDirection direction) const
                                       noexcept A_WARN_UNUSED;
 
         unsigned getNumber() const noexcept A_WARN_UNUSED

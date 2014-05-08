@@ -23,7 +23,6 @@
 #include "resources/action.h"
 
 #include "resources/animation.h"
-#include "resources/spritedef.h"
 
 #include "utils/dtor.h"
 
@@ -40,7 +39,7 @@ Action::~Action()
     delete_all(mAnimations);
 }
 
-const Animation *Action::getAnimation(int direction) const noexcept
+const Animation *Action::getAnimation(SpriteDirection direction) const noexcept
 {
     Animations::const_iterator i = mAnimations.find(direction);
 
@@ -66,7 +65,7 @@ const Animation *Action::getAnimation(int direction) const noexcept
     return (i == mAnimations.end()) ? nullptr : i->second;
 }
 
-void Action::setAnimation(const int direction,
+void Action::setAnimation(const SpriteDirection direction,
                           Animation *const animation) noexcept
 {
     mAnimations[direction] = animation;
