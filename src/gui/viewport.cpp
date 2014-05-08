@@ -577,8 +577,11 @@ void Viewport::walkByMouse(const MouseEvent &event)
                 int dy = 0;
                 if (x2 > y2)
                 {
-                    if (y2 && x2 / y2 / wh > diff)
+                    if (y2 && static_cast<float>(x2) / static_cast<float>(y2)
+                        / wh > diff)
+                    {
                         y = 0;
+                    }
                 }
                 else
                 {

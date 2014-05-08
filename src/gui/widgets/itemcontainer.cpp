@@ -145,12 +145,13 @@ namespace
                 if (!pair1 || !pair2)
                     return false;
 
-                const int t1 = pair1->mItem->getInfo().getType();
-                const int t2 = pair2->mItem->getInfo().getType();
+                const ItemInfo &info1 = pair1->mItem->getInfo();
+                const ItemInfo &info2 = pair2->mItem->getInfo();
+                const ItemType t1 = info1.getType();
+                const ItemType t2 = info2.getType();
                 if (t1 == t2)
                 {
-                    return (pair1->mItem->getInfo().getName()
-                            < pair2->mItem->getInfo().getName());
+                    return (info1.getName() < info2.getName());
                 }
                 return t1 < t2;
             }
@@ -645,7 +646,7 @@ void ItemContainer::updateMatrix()
         return;
 
     delete []mShowMatrix;
-    mShowMatrix = new int[mGridRows * mGridColumns];
+    mShowMatrix = new int[static_cast<size_t>(mGridRows * mGridColumns)];
 
     std::vector<ItemIdPair*> sortedItems;
     int i = 0;

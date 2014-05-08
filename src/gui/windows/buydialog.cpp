@@ -148,8 +148,8 @@ class SortItemTypeFunctor final
             if (!item1 || !item2)
                 return false;
 
-            const int type1 = item1->getInfo().getType();
-            const int type2 = item2->getInfo().getType();
+            const ItemType type1 = item1->getInfo().getType();
+            const ItemType type2 = item2->getInfo().getType();
             if (type1 == type2)
                 return item1->getPrice() < item2->getPrice();
             return type1 < type2;

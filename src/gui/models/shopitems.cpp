@@ -41,8 +41,8 @@ ShopItems::~ShopItems()
 
 std::string ShopItems::getElementAt(int i)
 {
-    if (i < 0 || static_cast<unsigned>(i) >= mShopItems.size()
-        || !mShopItems.at(i))
+    if (i < 0 || static_cast<unsigned>(i)
+        >= static_cast<unsigned int>(mShopItems.size()) || !mShopItems.at(i))
     {
         return "";
     }
@@ -85,7 +85,7 @@ void ShopItems::addItem2(const int inventoryIndex, const int id,
 
 ShopItem *ShopItems::at(unsigned int i) const
 {
-    if (i >= mShopItems.size())
+    if (i >= static_cast<unsigned int>(mShopItems.size()))
         return nullptr;
 
     return mShopItems.at(i);
@@ -93,7 +93,7 @@ ShopItem *ShopItems::at(unsigned int i) const
 
 void ShopItems::erase(const unsigned int i)
 {
-    if (i >= mShopItems.size())
+    if (i >= static_cast<unsigned int>(mShopItems.size()))
         return;
 
     mShopItems.erase(mShopItems.begin() + i);
@@ -101,7 +101,7 @@ void ShopItems::erase(const unsigned int i)
 
 void ShopItems::del(const unsigned int i)
 {
-    if (i >= mShopItems.size())
+    if (i >= static_cast<unsigned int>(mShopItems.size()))
         return;
 
     ShopItem *item = *(mShopItems.begin() + i);

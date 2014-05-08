@@ -142,7 +142,7 @@ class TabbedArea final : public ActionListener,
 
         void addTab(Image *const image, Widget *const widget);
 
-        bool isTabSelected(const unsigned int index) const A_WARN_UNUSED;
+        bool isTabSelected(const size_t index) const A_WARN_UNUSED;
 
         bool isTabSelected(const Tab *const tab) const A_WARN_UNUSED;
 
@@ -165,7 +165,7 @@ class TabbedArea final : public ActionListener,
 
         void setSelectedTab(Tab *const tab);
 
-        void setSelectedTabByIndex(const unsigned int index);
+        void setSelectedTabByIndex(const size_t index);
 
         int getSelectedTabIndex() const A_WARN_UNUSED;
 

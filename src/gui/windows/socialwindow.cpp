@@ -802,7 +802,7 @@ public:
             return;
 
         std::vector<Avatar*> *const avatars = mBeings->getMembers();
-        if (!avatars || avatars->size() <= num)
+        if (!avatars || avatars->size() <= static_cast<size_t>(num))
             return;
 
         const Avatar *const ava = avatars->at(num);

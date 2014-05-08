@@ -719,7 +719,7 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
     // Make sure the current server is mentioned first
     if (currentServer.isValid())
     {
-        if (index >= 0 && static_cast<unsigned>(index) < mServers.size())
+        if (index >= 0 && static_cast<size_t>(index) < mServers.size())
         {
             mServers[index] = currentServer;
         }
@@ -789,7 +789,7 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
     {
         finished = true;
     }
-    else if (status < 0)
+    else if (static_cast<int>(status) < 0)
     {
         logger->log("Error retreiving server list: %s\n",
                     sd->mDownload->getError());

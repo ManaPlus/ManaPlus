@@ -602,7 +602,7 @@ void Font::doClean()
     for (unsigned int f = 0; f < CACHES_NUMBER; f ++)
     {
         TextChunkList *const cache = &mCache[f];
-        const size_t size = cache->size;
+        const size_t size = static_cast<size_t>(cache->size);
 #ifdef DEBUG_FONT_COUNTERS
         logger->log("ptr: %d, size: %d", f, size);
 #endif

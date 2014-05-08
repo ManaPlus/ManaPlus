@@ -488,7 +488,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
 {
     mMaxPoints = available;
 
-    for (unsigned i = 0; i < mAttributeLabel.size(); i++)
+    for (size_t i = 0; i < mAttributeLabel.size(); i++)
     {
         remove(mAttributeLabel[i]);
         delete2(mAttributeLabel[i])

@@ -880,11 +880,11 @@ void ChatWindow::keyPressed(KeyEvent &event)
         {
             const std::list<std::string> &rows = tab->getRows();
             const size_t &tabSize = rows.size();
-            if (mChatHistoryIndex + 1 < tabSize)
+            if (static_cast<size_t>(mChatHistoryIndex) + 1 < tabSize)
             {
                 mChatHistoryIndex ++;
             }
-            else if (mChatHistoryIndex < tabSize)
+            else if (static_cast<size_t>(mChatHistoryIndex) < tabSize)
             {
                 mChatHistoryIndex ++;
                 mChatInput->setText("");
@@ -1423,7 +1423,7 @@ bool ChatWindow::resortChatLog(std::string line, Own own,
                                const bool ignoreRecord,
                                const bool tryRemoveColors)
 {
-    if (own == -1)
+    if (own == BY_UNKNOWN)
         own = BY_SERVER;
 
     std::string prefix;
@@ -1535,7 +1535,7 @@ void ChatWindow::battleChatLog(const std::string &line, Own own,
                                const bool ignoreRecord,
                                const bool tryRemoveColors)
 {
-    if (own == -1)
+    if (own == BY_UNKNOWN)
         own = BY_SERVER;
     if (battleChatTab)
         battleChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);

@@ -129,8 +129,8 @@ int EmotePage::getIndexFromGrid(const int x, const int y) const
     if (x < 0 || x > width || y < 0 || y > mDimension.height)
         return -1;
     const int cols = width / emoteWidth;
-    const unsigned int index = (y / emoteHeight) * cols + (x / emoteWidth);
-    if (index >= mEmotes->size())
+    const int index = (y / emoteHeight) * cols + (x / emoteWidth);
+    if (index >= static_cast<int>(mEmotes->size()))
         return -1;
     return index;
 }

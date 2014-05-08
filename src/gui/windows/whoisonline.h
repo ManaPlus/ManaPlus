@@ -189,7 +189,7 @@ private:
         UPDATE_LIST
     };
 
-    time_t mUpdateTimer;
+    int mUpdateTimer;
 
     /** A thread that use libcurl to download updates. */
     SDL_Thread *mThread;

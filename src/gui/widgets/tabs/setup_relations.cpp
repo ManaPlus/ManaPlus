@@ -134,7 +134,8 @@ public:
             mWidgets.push_back(widget);
 
             DropDown *const choicebox = new DropDown(this, mListModel);
-            choicebox->setSelected(player_relations.getRelation(name));
+            choicebox->setSelected(static_cast<int>(
+                player_relations.getRelation(name)));
             mWidgets.push_back(choicebox);
         }
 

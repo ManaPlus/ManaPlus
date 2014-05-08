@@ -266,7 +266,7 @@ void TabbedArea::addTab(Image *const image, Widget *const widget)
     addTab(tab, widget);
 }
 
-bool TabbedArea::isTabSelected(const unsigned int index) const
+bool TabbedArea::isTabSelected(const size_t index) const
 {
     if (index >= mTabs.size())
         return false;
@@ -289,7 +289,7 @@ bool TabbedArea::isTabSelected(const Tab *const tab) const
     return mSelectedTab == tab;
 }
 
-void TabbedArea::setSelectedTabByIndex(const unsigned int index)
+void TabbedArea::setSelectedTabByIndex(const size_t index)
 {
     if (index >= mTabs.size())
         return;
@@ -383,14 +383,13 @@ void TabbedArea::mousePressed(MouseEvent &event)
 
 void TabbedArea::setSelectedTab(Tab *const tab)
 {
-    unsigned int i;
-    for (i = 0; i < mTabs.size(); i++)
+    for (size_t i = 0; i < mTabs.size(); i++)
     {
         if (mTabs[i].first == mSelectedTab)
             mWidgetContainer->remove(mTabs[i].second);
     }
 
-    for (i = 0; i < mTabs.size(); i++)
+    for (size_t i = 0; i < mTabs.size(); i++)
     {
         if (mTabs[i].first == tab)
         {
@@ -518,7 +517,7 @@ void TabbedArea::updateVisibleTabsWidth()
     for (size_t i = mTabScrollIndex, sz = mTabs.size(); i < sz; ++i)
     {
         if (mTabs[i].first)
-            mVisibleTabsWidth += mTabs[i].first->getWidth();
+            mVisibleTabsWidth += static_cast<int>(mTabs[i].first->getWidth());
     }
 }
 
@@ -616,7 +615,7 @@ void TabbedArea::action(const ActionEvent& actionEvent)
         }
         else if (eventId == "shift_right")
         {
-            if (mTabScrollIndex < mTabs.size() - 1)
+            if (static_cast<size_t>(mTabScrollIndex) < mTabs.size() - 1)
                 ++mTabScrollIndex;
         }
         adjustTabPositions();

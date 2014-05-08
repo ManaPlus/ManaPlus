@@ -512,7 +512,7 @@ size_t UpdaterWindow::memoryWrite(void *ptr, size_t size,
     UpdaterWindow *const uw = reinterpret_cast<UpdaterWindow *>(stream);
     const size_t totalMem = size * nmemb;
     uw->mMemoryBuffer = static_cast<char*>(realloc(uw->mMemoryBuffer,
-                                           uw->mDownloadedBytes + totalMem));
+        static_cast<size_t>(uw->mDownloadedBytes) + totalMem));
     if (uw->mMemoryBuffer)
     {
         memcpy(&(uw->mMemoryBuffer[uw->mDownloadedBytes]), ptr, totalMem);
@@ -757,7 +757,8 @@ void UpdaterWindow::logic()
         }
 
         mProgressBar->setProgress(mDownloadProgress);
-        if (mUpdateFiles.size() && mUpdateIndex <= mUpdateFiles.size())
+        if (mUpdateFiles.size()
+            && static_cast<size_t>(mUpdateIndex) <= mUpdateFiles.size())
         {
             mProgressBar->setText(strprintf("%u/%u", mUpdateIndex
                 + mUpdateIndexOffset + 1, static_cast<unsigned>(
@@ -853,7 +854,7 @@ void UpdaterWindow::logic()
         case UPDATE_RESOURCES:
             if (mDownloadComplete)
             {
-                if (mUpdateIndex < mUpdateFiles.size())
+                if (static_cast<size_t>(mUpdateIndex) < mUpdateFiles.size())
                 {
                     UpdateFile thisFile = mUpdateFiles[mUpdateIndex];
                     if (thisFile.type == "music"
@@ -918,7 +919,8 @@ void UpdaterWindow::logic()
             if (mDownloadComplete)
             {
                 mValidateXml = false;
-                if (mUpdateIndex < mTempUpdateFiles.size())
+                if (static_cast<size_t>(mUpdateIndex)
+                    < mTempUpdateFiles.size())
                 {
                     const UpdateFile thisFile = mTempUpdateFiles[mUpdateIndex];
                     mCurrentFile = thisFile.name;

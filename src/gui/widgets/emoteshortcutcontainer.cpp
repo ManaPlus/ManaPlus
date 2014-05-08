@@ -220,7 +220,7 @@ void EmoteShortcutContainer::mouseMoved(MouseEvent &event)
 
     mEmotePopup->setVisible(false);
 
-    if (static_cast<unsigned>(index) < mEmoteImg.size() && mEmoteImg[index])
+    if (static_cast<size_t>(index) < mEmoteImg.size() && mEmoteImg[index])
     {
         const EmoteSprite *const sprite = mEmoteImg[index];
         mEmotePopup->show(viewport->getMouseX(), viewport->getMouseY(),

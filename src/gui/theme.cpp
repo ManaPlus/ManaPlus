@@ -461,7 +461,7 @@ struct SkinHelper final
 
     bool loadList(const SkinParameter *const params, const size_t size)
     {
-        for (unsigned f = 0; f < size; f ++)
+        for (size_t f = 0; f < size; f ++)
         {
             const SkinParameter &param = params[f];
             if (partType == param.name)

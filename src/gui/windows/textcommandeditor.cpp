@@ -138,9 +138,10 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     mCommandTextField->setText(command->getCommand());
     mCommentTextField->setText(command->getComment());
     mManaField->setValue(command->getMana());
-    mTypeDropDown->setSelected(command->getTargetType());
+    mTypeDropDown->setSelected(static_cast<int>(command->getTargetType()));
     mMagicLvlField->setValue(command->getBaseLvl());
-    mSchoolDropDown->setSelected(command->getSchool() - MAGIC_START_ID);
+    mSchoolDropDown->setSelected(static_cast<int>(command->getSchool())
+        - MAGIC_START_ID);
     mSchoolLvlField->setValue(command->getSchoolLvl());
 
     ContainerPlacer placer;

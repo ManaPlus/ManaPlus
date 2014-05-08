@@ -84,7 +84,7 @@ class KillStats final : public Window,
     private:
         void validateJacko();
 
-        time_t mKillTimer;  /**< Timer for kill stats. */
+        int mKillTimer;  /**< Timer for kill stats. */
         Button *mResetButton;
         Button *mTimerButton;
         Label *mLine1;

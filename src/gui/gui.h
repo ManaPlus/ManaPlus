@@ -68,6 +68,8 @@
 
 #include "gui/color.h"
 
+#include "resources/cursor.h"
+
 #include <deque>
 #include <list>
 
@@ -187,7 +189,7 @@ class Gui final
         /**
          * Sets which cursor should be used.
          */
-        void setCursorType(const int index)
+        void setCursorType(const Cursor::Cursor index)
         { mCursorType = index; }
 
         void setDoubleClick(const bool b)
@@ -508,7 +510,7 @@ class Gui final
         ImageSet *mMouseCursors;            /**< Mouse cursor images */
         float mMouseCursorAlpha;
         int mMouseInactivityTimer;
-        int mCursorType;
+        Cursor::Cursor mCursorType;
 #ifdef ANDROID
         uint16_t mLastMouseRealX;
         uint16_t mLastMouseRealY;

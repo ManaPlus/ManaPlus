@@ -289,7 +289,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
     // discard older rows when a row limit has been set
     if (mMaxRows > 0 && !mTextRows.empty())
     {
-        while (mTextRows.size() > mMaxRows)
+        while (mTextRows.size() > static_cast<size_t>(mMaxRows))
         {
             mTextRows.pop_front();
             int cnt = mTextRowLinksCount.front();
@@ -740,7 +740,7 @@ int BrowserBox::calcHeight()
                             if (mEmotes)
                             {
                                 const size_t sz = mEmotes->size();
-                                if (static_cast<unsigned>(cid) < sz)
+                                if (static_cast<size_t>(cid) < sz)
                                 {
                                     Image *const img = mEmotes->get(cid);
                                     if (img)

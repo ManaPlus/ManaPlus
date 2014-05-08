@@ -480,7 +480,7 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
           break;
     }
 
-    if (!(keysym.mod & KMOD_NUM))
+    if (!(static_cast<unsigned int>(keysym.mod) & KMOD_NUM))
     {
         switch (keysym.sym)
         {

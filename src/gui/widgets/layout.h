@@ -198,49 +198,52 @@ class LayoutCell
         /**
          * Sets the horizontal alignment of the cell content.
          */
-        LayoutCell &setHAlign(Alignment a)
+        LayoutCell &setHAlign(const Alignment a)
         { mAlign[0] = a; return *this; }
 
         /**
          * Sets the vertical alignment of the cell content.
          */
-        LayoutCell &setVAlign(Alignment a)
+        LayoutCell &setVAlign(const Alignment a)
         { mAlign[1] = a; return *this; }
 
         /**
          * @see LayoutArray::at
          */
-        LayoutCell &at(int x, int y) A_WARN_UNUSED
+        LayoutCell &at(const int x, const int y) A_WARN_UNUSED
         { return getArray().at(x, y); }
 
         /**
          * @see LayoutArray::place
          */
-        LayoutCell &place(Widget *wg, int x, int y, int w = 1, int h = 1)
+        LayoutCell &place(Widget *wg,
+                          const int x, const int y,
+                          const int w = 1, const int h = 1)
         { return getArray().place(wg, x, y, w, h); }
 
         /**
          * @see LayoutArray::matchColWidth
          */
-        void matchColWidth(int n1, int n2)
+        void matchColWidth(const int n1, const int n2)
         { getArray().matchColWidth(n1, n2); }
 
         /**
          * @see LayoutArray::setColWidth
          */
-        void setColWidth(int n, int w)
+        void setColWidth(const int n, const int w)
         { getArray().setColWidth(n, w); }
 
         /**
          * @see LayoutArray::setRowHeight
          */
-        void setRowHeight(int n, int h)
+        void setRowHeight(const int n, const int h)
         { getArray().setRowHeight(n, h); }
 
         /**
          * @see LayoutArray::extend.
          */
-        void extend(int x, int y, int w, int h)
+        void extend(const int x, const int y,
+                    const int w, const int h)
         { getArray().extend(x, y, w, h); }
 
         /**
@@ -258,10 +261,10 @@ class LayoutCell
         int getHeight() const A_WARN_UNUSED
         { return mExtent[1]; }
 
-        void setWidth(int w)
+        void setWidth(const int w)
         { mExtent[0] = w; }
 
-        void setHeight(int h)
+        void setHeight(const int h)
         { mExtent[1] = h; }
 
         enum
@@ -280,8 +283,8 @@ class LayoutCell
         {
             mExtent[0] = 0;
             mExtent[1] = 0;
-            mAlign[0] = 0;
-            mAlign[1] = 0;
+            mAlign[0] = LEFT;
+            mAlign[1] = LEFT;
             mNbFill[0] = 0;
             mNbFill[1] = 0;
             mSize[0] = 0;
@@ -313,7 +316,7 @@ class LayoutCell
         int mHPadding;
         int mVPadding;
         int mExtent[2];
-        int mAlign[2];
+        Alignment mAlign[2];
         int mNbFill[2];
         int mType;
 };

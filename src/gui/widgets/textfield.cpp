@@ -557,12 +557,12 @@ void TextField::caretDelete()
 void TextField::handlePaste()
 {
     std::string text = getText();
-    size_t caretPos = getCaretPosition();
+    size_t caretPos = static_cast<size_t>(getCaretPosition());
 
     if (retrieveBuffer(text, caretPos))
     {
         setText(text);
-        setCaretPosition(static_cast<unsigned>(caretPos));
+        setCaretPosition(static_cast<unsigned int>(caretPos));
     }
 }
 
@@ -744,9 +744,9 @@ void TextField::focusLost(const Event &event A_UNUSED)
 
 void TextField::setText(const std::string& text)
 {
-    const size_t sz = text.size();
+    const unsigned int sz = static_cast<unsigned int>(text.size());
     if (sz < mCaretPosition)
-        mCaretPosition = static_cast<unsigned int>(sz);
+        mCaretPosition = sz;
     mText = text;
 }
 

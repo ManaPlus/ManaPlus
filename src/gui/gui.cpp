@@ -658,7 +658,7 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
         }
 
         widgetWithMouseQueueCheckDone =
-            (iterations == mWidgetWithMouseQueue.size());
+            (static_cast<size_t>(iterations) == mWidgetWithMouseQueue.size());
     }
 
     // Check all widgets below the mouse to see if they are
