@@ -86,7 +86,7 @@ inline void SDLputPixel(SDL_Surface* surface, int x, int y,
     SDL_LockSurface(surface);
 
     Uint8 *const p = static_cast<uint8_t*>(surface->pixels)
-        + y * surface->pitch + x * bpp;
+        + static_cast<size_t>(y * surface->pitch + x * bpp);
 
     const Uint32 pixel = SDL_MapRGB(surface->format,
         static_cast<uint8_t>(color.r), static_cast<uint8_t>(color.g),
@@ -183,7 +183,7 @@ inline void SDLputPixelAlpha(SDL_Surface* surface, int x, int y,
     SDL_LockSurface(surface);
 
     Uint8 *const p = static_cast<uint8_t*>(surface->pixels)
-        + y * surface->pitch + x * bpp;
+        + static_cast<size_t>(y * surface->pitch + x * bpp);
 
     const Uint32 pixel = SDL_MapRGB(surface->format,
         static_cast<uint8_t>(color.r),

@@ -32,7 +32,7 @@
 
 #include "debug.h"
 
-static int UTF8_MAX_SIZE = 10;
+static size_t UTF8_MAX_SIZE = 10;
 
 std::string &trim(std::string &str)
 {
@@ -92,7 +92,7 @@ std::string strprintf(const char *const format, ...)
     char buf[257];
     va_list(args);
     va_start(args, format);
-    int nb = vsnprintf(buf, 256, format, args);
+    size_t nb = vsnprintf(buf, 256, format, args);
     buf[256] = 0;
     va_end(args);
     if (nb < 256)

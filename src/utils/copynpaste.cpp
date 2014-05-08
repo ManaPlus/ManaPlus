@@ -81,7 +81,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
 
         if (data)
         {
-            const int len = WideCharToMultiByte(CP_UTF8, 0, data, -1,
+            const size_t len = WideCharToMultiByte(CP_UTF8, 0, data, -1,
                 nullptr, 0, nullptr, nullptr);
             if (len > 0)
             {
@@ -91,7 +91,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
                     static_cast<LPSTR>(temp), len, nullptr, nullptr))
                 {
                     text.insert(pos, static_cast<char*>(temp));
-                    pos += len-1;
+                    pos += len - 1;
                 }
                 free(temp);
                 ret = true;
@@ -128,7 +128,7 @@ bool sendBuffer(std::string& text)
         return false;
 
     HANDLE h = GlobalAlloc(GMEM_MOVEABLE | GMEM_DDESHARE,
-        wCharsLen * sizeof(WCHAR));
+        static_cast<size_t>(wCharsLen) * sizeof(WCHAR));
     WCHAR *const out = static_cast<WCHAR*>(GlobalLock(h));
 
     MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, out, wCharsLen);

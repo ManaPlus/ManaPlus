@@ -48,8 +48,9 @@ unsigned char *php3_base64_encode(const unsigned char *restrict const string,
 {
     const unsigned char *current = string;
     int i = 0;
-    unsigned char *const result = static_cast<unsigned char *>(calloc(
-        ((length + 3 - length % 3) * 4 / 3 + 1) * sizeof(unsigned char), 1));
+    unsigned char *const result = static_cast<unsigned char *>(
+        calloc(static_cast<size_t>((length + 3 - length % 3) * 4 / 3 + 1)
+        * sizeof(unsigned char), 1));
     if (!result)
         return nullptr;
 
