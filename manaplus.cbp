@@ -101,6 +101,7 @@
 		<Unit filename="src/being/beingcacheentry.h" />
 		<Unit filename="src/being/compoundsprite.cpp" />
 		<Unit filename="src/being/compoundsprite.h" />
+		<Unit filename="src/being/gender.h" />
 		<Unit filename="src/being/localplayer.cpp" />
 		<Unit filename="src/being/localplayer.h" />
 		<Unit filename="src/being/playerinfo.cpp" />
@@ -865,6 +866,7 @@
 		<Unit filename="src/spellshortcut.cpp" />
 		<Unit filename="src/spellshortcut.h" />
 		<Unit filename="src/sprite.h" />
+		<Unit filename="src/state.h" />
 		<Unit filename="src/statuseffect.cpp" />
 		<Unit filename="src/statuseffect.h" />
 		<Unit filename="src/test/testlauncher.cpp" />
