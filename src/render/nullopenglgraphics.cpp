@@ -33,6 +33,10 @@
 
 #include "debug.h"
 
+#ifdef DEBUG_BIND_TEXTURE
+#include "logger.h"
+#endif
+
 GLuint NullOpenGLGraphics::mLastImage = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int NullOpenGLGraphics::mDrawCalls = 0;
