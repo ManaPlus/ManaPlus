@@ -986,7 +986,6 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                             break;
                         }
                     }
-
                 }
                 else if (isAnim && !haveAnimation)
                 {

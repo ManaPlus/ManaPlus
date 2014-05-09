@@ -51,6 +51,8 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
+#include <cmath>
+
 #include "debug.h"
 
 void ItemAmountWindow::finish(const Item *const item,

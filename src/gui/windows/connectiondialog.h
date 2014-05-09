@@ -23,7 +23,7 @@
 #ifndef GUI_WINDOWS_CONNECTIONDIALOG_H
 #define GUI_WINDOWS_CONNECTIONDIALOG_H
 
-#include "client.h"
+#include "state.h"
 
 #include "gui/widgets/window.h"
 

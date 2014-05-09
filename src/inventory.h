@@ -23,10 +23,12 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-#include "being/being.h"
+#include "being/gender.h"
 
 #include <list>
 #include <string>
+
+#include "localconsts.h"
 
 class Inventory;
 class Item;

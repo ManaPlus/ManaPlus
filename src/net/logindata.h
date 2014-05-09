@@ -23,9 +23,13 @@
 #ifndef NET_LOGINDATA_H
 #define NET_LOGINDATA_H
 
-#include "being/being.h"
+#include "being/gender.h"
+
+#include "utils/stringvector.h"
 
 #include <string>
+
+#include "localconsts.h"
 
 class LoginData final
 {

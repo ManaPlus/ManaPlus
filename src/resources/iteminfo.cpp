@@ -22,6 +22,9 @@
 
 #include "resources/iteminfo.h"
 
+#include "map.h"
+
+#include "resources/db/colordb.h"
 #include "resources/db/itemdb.h"
 
 #include "configuration.h"

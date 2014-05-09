@@ -301,7 +301,8 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
 void AtlasManager::injectToResources(const AtlasResource *const resource)
 {
     ResourceManager *const resman = ResourceManager::getInstance();
-    FOR_EACH (std::vector<TextureAtlas*>::const_iterator, it, resource->atlases)
+    FOR_EACH (std::vector<TextureAtlas*>::const_iterator,
+              it, resource->atlases)
     {
         // add each atlas image to resources
         TextureAtlas *const atlas = *it;

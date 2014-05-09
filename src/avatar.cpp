@@ -22,8 +22,6 @@
 
 #include "avatar.h"
 
-#include "being/being.h"
-
 #include "debug.h"
 
 Avatar::Avatar(const std::string &name):

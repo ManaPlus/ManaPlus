@@ -138,10 +138,6 @@ void ActorSprite::controlParticle(Particle *const particle)
 
 void ActorSprite::setTargetType(const TargetCursorType type)
 {
-    static const int targetWidths[ActorSprite::NUM_TC] = {0, 0, 0};
-    static const int targetHeights[ActorSprite::NUM_TC]
-        = {-mapTileSize / 2, -mapTileSize / 2, -mapTileSize};
-
     if (type == TCT_NONE)
     {
         untarget();
@@ -152,6 +148,10 @@ void ActorSprite::setTargetType(const TargetCursorType type)
         mUsedTargetCursor = targetCursor[static_cast<int>(type)][sz];
         if (mUsedTargetCursor)
         {
+            static const int targetWidths[ActorSprite::NUM_TC] = {0, 0, 0};
+            static const int targetHeights[ActorSprite::NUM_TC]
+                = {-mapTileSize / 2, -mapTileSize / 2, -mapTileSize};
+
             mCursorPaddingX = static_cast<int>(targetWidths[sz]);
             mCursorPaddingY = static_cast<int>(targetHeights[sz]);
         }

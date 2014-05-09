@@ -34,7 +34,6 @@
 #include "utils/delete2.h"
 
 #include "listeners/arrowslistener.h"
-#include "listeners/updatestatuslistener.h"
 
 #include "debug.h"
 

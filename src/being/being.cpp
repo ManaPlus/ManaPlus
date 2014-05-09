@@ -2535,7 +2535,7 @@ void Being::recalcSpritesOrder()
 
     for (size_t slot = 0; slot < sz; slot ++)
     {
-        slotRemap.push_back(slot);
+        slotRemap.push_back(static_cast<int>(slot));
 
         if (spriteIdSize <= slot)
             continue;

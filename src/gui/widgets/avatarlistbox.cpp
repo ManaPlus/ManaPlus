@@ -245,6 +245,8 @@ void AvatarListBox::draw(Graphics *graphics)
                         text.append(" \u2642 ");
                         break;
                     default:
+                    case GENDER_UNSPECIFIED:
+                    case GENDER_OTHER:
                         break;
                 }
             }
@@ -264,6 +266,8 @@ void AvatarListBox::draw(Graphics *graphics)
                             a->getAdditionString().c_str()));
                         break;
                     default:
+                    case GENDER_UNSPECIFIED:
+                    case GENDER_OTHER:
                         break;
                 }
             }

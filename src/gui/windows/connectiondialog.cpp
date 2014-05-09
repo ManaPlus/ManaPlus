@@ -29,6 +29,8 @@
 
 #include "utils/gettext.h"
 
+#include "client.h"
+
 #include "debug.h"
 
 extern bool mStatsReUpdated;

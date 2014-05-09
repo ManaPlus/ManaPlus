@@ -150,7 +150,7 @@ namespace XML
     /**
      * Finds the first child node with the given name
      */
-    XmlNodePtr findFirstChildByName(const XmlNodePtr parent,
+    XmlNodePtr findFirstChildByName(const XmlNodePtrConst parent,
                                     const char *const name) A_WARN_UNUSED;
 
     void initXML();

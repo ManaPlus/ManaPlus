@@ -79,7 +79,8 @@ static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg, ...)
 namespace XML
 {
     Document::Document(const std::string &filename, const bool useResman) :
-        mDoc(nullptr)
+        mDoc(nullptr),
+        mIsValid(false)
     {
 #ifdef USE_FUZZER
         if (Fuzzer::conditionTerminate(filename.c_str()))
@@ -134,7 +135,8 @@ namespace XML
     }
 
     Document::Document(const char *const data, const int size) :
-        mDoc(data ? xmlParseMemory(data, size) : nullptr)
+        mDoc(data ? xmlParseMemory(data, size) : nullptr),
+        mIsValid(true)
     {
     }
 
@@ -241,7 +243,7 @@ namespace XML
         return def;
     }
 
-    XmlNodePtr findFirstChildByName(const XmlNodePtr parent,
+    XmlNodePtr findFirstChildByName(const XmlNodePtrConst parent,
                                     const char *const name)
     {
         for_each_xml_child_node(child, parent)
@@ -272,11 +274,11 @@ namespace XML
 
     bool Document::validateXml(const std::string &fileName)
     {
-        xmlDocPtr doc = xmlReadFile(fileName.c_str(),
+        const xmlDocPtr doc = xmlReadFile(fileName.c_str(),
             nullptr, XML_PARSE_PEDANTIC);
-        const bool valid(doc);
+        const bool valid1(doc);
         xmlFreeDoc(doc);
-        if (!valid)
+        if (!valid1)
             return false;
 
         std::ifstream file;

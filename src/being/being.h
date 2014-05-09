@@ -530,7 +530,7 @@ class Being : public ActorSprite, public ConfigListener
         SpriteDirection getSpriteDirection() const A_WARN_UNUSED
         { return static_cast<SpriteDirection>(mSpriteDirection); }
 
-        void setPosition(const Vector &pos);
+        void setPosition(const Vector &pos) override;
 
         /**
          * Overloaded method provided for convenience.

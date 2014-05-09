@@ -698,7 +698,8 @@ void ServerDialog::loadCustomServers()
         server.onlineListUrl = config.getValue(onlineListUrlKey, "");
         server.hostname = config.getValue(hostKey, "");
         server.type = ServerInfo::parseType(config.getValue(typeKey, ""));
-        server.persistentIp = config.getValue(persistentIpKey, 0) ? true : false;
+        server.persistentIp = config.getValue(
+            persistentIpKey, 0) ? true : false;
 
         const int defaultPort = defaultPortForServerType(server.type);
         server.port = static_cast<uint16_t>(

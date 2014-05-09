@@ -23,11 +23,18 @@
 #ifndef RESOURCES_ITEMINFO_H
 #define RESOURCES_ITEMINFO_H
 
-#include "being/being.h"
+#include "being/gender.h"
 
-#include "resources/db/colordb.h"
+#include "resources/cursor.h"
+#include "resources/soundinfo.h"
+#include "resources/spritedef.h"
 
 #include <map>
+
+namespace ColorDB
+{
+    class ItemColor;
+}
 
 enum EquipmentSlot
 {

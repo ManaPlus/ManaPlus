@@ -23,13 +23,14 @@
 #ifndef GUI_WINDOWS_CHARCREATEDIALOG_H
 #define GUI_WINDOWS_CHARCREATEDIALOG_H
 
-#include "being/being.h"
+#include "being/gender.h"
 
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
 
+class Being;
 class Button;
 class CharSelectDialog;
 class Label;

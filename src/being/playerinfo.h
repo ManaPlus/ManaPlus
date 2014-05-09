@@ -26,7 +26,6 @@
 #include "state.h"
 
 #include <map>
-#include <string>
 
 /**
  * Stat information storage structure.

@@ -310,7 +310,8 @@ int Download::downloadThread(void *ptr)
                 {
                     logger->log_r("Downloading: %s", d->mUrl.c_str());
                     curl_easy_setopt(d->mCurl, CURLOPT_FOLLOWLOCATION, 1);
-                    curl_easy_setopt(d->mCurl, CURLOPT_HTTPHEADER, d->mHeaders);
+                    curl_easy_setopt(d->mCurl, CURLOPT_HTTPHEADER,
+                        d->mHeaders);
                     if (d->mOptions.memoryWrite)
                     {
                         curl_easy_setopt(d->mCurl, CURLOPT_FAILONERROR, 1);
@@ -322,7 +323,10 @@ int Download::downloadThread(void *ptr)
                     {
                         file = fopen(outFilename.c_str(), "w+b");
                         if (file)
-                            curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA, file);
+                        {
+                            curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA,
+                                file);
+                        }
                     }
                     curl_easy_setopt(d->mCurl, CURLOPT_USERAGENT,
                         strprintf(PACKAGE_EXTENDED_VERSION,
@@ -418,7 +422,7 @@ int Download::downloadThread(void *ptr)
                                     d->mFileName.c_str(),
                                     adler, d->mAdler);
                                 attempts++;
-                                continue;  // Bail out here to avoid the renaming
+                                continue;
                             }
                         }
 
