@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-05-02 22:02+0300\n"
+"POT-Creation-Date: 2014-05-10 12:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -527,37 +527,37 @@ msgstr ""
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1123 src/gui/windowmenu.cpp:155
+#: src/client.cpp:1124 src/gui/windowmenu.cpp:155
 #: src/gui/windows/setupwindow.cpp:62
 msgid "Setup"
 msgstr ""
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1126 src/gui/widgets/tabs/setup_perfomance.cpp:52
+#: src/client.cpp:1127 src/gui/widgets/tabs/setup_perfomance.cpp:52
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1129 src/gui/widgets/tabs/setup_video.cpp:226
+#: src/client.cpp:1130 src/gui/widgets/tabs/setup_video.cpp:226
 msgid "Video"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1132 src/gui/widgets/tabs/setup_theme.cpp:269
+#: src/client.cpp:1133 src/gui/widgets/tabs/setup_theme.cpp:269
 msgid "Theme"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:1135
+#: src/client.cpp:1136
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:1138 src/gui/windowmenu.cpp:71
+#: src/client.cpp:1139 src/gui/windowmenu.cpp:71
 #: src/gui/windows/helpwindow.cpp:50
 msgid "Help"
 msgstr ""
@@ -572,7 +572,7 @@ msgstr ""
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1142 src/gui/popups/popupmenu.cpp:619
+#: src/client.cpp:1143 src/gui/popups/popupmenu.cpp:619
 #: src/gui/popups/popupmenu.cpp:858 src/gui/windows/didyouknowwindow.cpp:78
 #: src/gui/windows/inventorywindow.cpp:225 src/gui/windows/npcdialog.cpp:70
 #: src/gui/windows/npcdialog.cpp:108 src/gui/windows/questswindow.cpp:125
@@ -581,32 +581,32 @@ msgid "Close"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1264
+#: src/client.cpp:1265
 msgid "Connecting to server"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1311
+#: src/client.cpp:1312
 msgid "Logging in"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1354
+#: src/client.cpp:1355
 msgid "Entering game world"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1477
+#: src/client.cpp:1478
 msgid "Requesting characters"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1517
+#: src/client.cpp:1518
 msgid "Connecting to the game server"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1529
+#: src/client.cpp:1530
 msgid "Changing game servers"
 msgstr ""
 
@@ -621,7 +621,7 @@ msgstr ""
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1584 src/client.cpp:1595 src/client.cpp:1779
+#: src/client.cpp:1585 src/client.cpp:1596 src/client.cpp:1780
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
 #: src/gui/windows/charcreatedialog.cpp:349
@@ -634,65 +634,65 @@ msgid "Error"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1607
+#: src/client.cpp:1608
 msgid "Requesting registration details"
 msgstr ""
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1648
+#: src/client.cpp:1649
 msgid "Password Change"
 msgstr ""
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1650
+#: src/client.cpp:1651
 msgid "Password changed successfully!"
 msgstr ""
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1672
+#: src/client.cpp:1673
 msgid "Email Change"
 msgstr ""
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1674
+#: src/client.cpp:1675
 msgid "Email changed successfully!"
 msgstr ""
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1697
+#: src/client.cpp:1698
 msgid "Unregister Successful"
 msgstr ""
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1699
+#: src/client.cpp:1700
 msgid "Farewell, come back any time..."
 msgstr ""
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1987 src/client.cpp:2002 src/client.cpp:2047
-#: src/client.cpp:2063 src/client.cpp:2490 src/client.cpp:2498
+#: src/client.cpp:1988 src/client.cpp:2003 src/client.cpp:2048
+#: src/client.cpp:2064 src/client.cpp:2491 src/client.cpp:2499
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2219
+#: src/client.cpp:2220
 #, c-format
 msgid "Invalid update host: %s."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2260 src/client.cpp:2267
+#: src/client.cpp:2261 src/client.cpp:2268
 msgid "Error creating updates directory!"
 msgstr ""
 
-#: src/client.cpp:2289 src/client.cpp:2306
+#: src/client.cpp:2290 src/client.cpp:2307
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2972
+#: src/client.cpp:2973
 msgid "Do you want to open support page?"
 msgstr ""
 
@@ -962,12 +962,12 @@ msgid "Saving screenshot failed!"
 msgstr ""
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:666
+#: src/game.cpp:665
 msgid "The connection to the server was lost."
 msgstr ""
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:669
+#: src/game.cpp:668
 msgid "Network Error"
 msgstr ""
 
@@ -1419,9 +1419,9 @@ msgstr ""
 #: src/gui/windows/changeemaildialog.cpp:56
 #: src/gui/windows/changepassworddialog.cpp:58
 #: src/gui/windows/charcreatedialog.cpp:119
-#: src/gui/windows/connectiondialog.cpp:50
+#: src/gui/windows/connectiondialog.cpp:52
 #: src/gui/windows/editserverdialog.cpp:59
-#: src/gui/windows/itemamountwindow.cpp:165
+#: src/gui/windows/itemamountwindow.cpp:167
 #: src/gui/windows/npcpostdialog.cpp:68 src/gui/windows/quitdialog.cpp:70
 #: src/gui/windows/registerdialog.cpp:78 src/gui/windows/setupwindow.cpp:95
 #: src/gui/windows/socialwindow.cpp:1198
@@ -2717,7 +2717,7 @@ msgstr ""
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: command editor button
-#: src/gui/setupactiondata.h:1912 src/gui/widgets/tabs/setup_relations.cpp:197
+#: src/gui/setupactiondata.h:1912 src/gui/widgets/tabs/setup_relations.cpp:198
 #: src/gui/windows/charselectdialog.cpp:108
 #: src/gui/windows/serverdialog.cpp:209 src/gui/windows/shopwindow.cpp:96
 #: src/gui/windows/shopwindow.cpp:103 src/gui/windows/textcommandeditor.cpp:91
@@ -3011,7 +3011,7 @@ msgid "Money: %s"
 msgstr ""
 
 #. TRANSLATORS: Text under equipped items (should be small)
-#: src/gui/widgets/itemcontainer.cpp:324
+#: src/gui/widgets/itemcontainer.cpp:325
 msgid "Eq."
 msgstr ""
 
@@ -4225,22 +4225,22 @@ msgid "Relation"
 msgstr ""
 
 #. TRANSLATORS: relation dialog button
-#: src/gui/widgets/tabs/setup_relations.cpp:192
+#: src/gui/widgets/tabs/setup_relations.cpp:193
 msgid "Allow trading"
 msgstr ""
 
 #. TRANSLATORS: relation dialog button
-#: src/gui/widgets/tabs/setup_relations.cpp:195
+#: src/gui/widgets/tabs/setup_relations.cpp:196
 msgid "Allow whispers"
 msgstr ""
 
 #. TRANSLATORS: relation dialog name
-#: src/gui/widgets/tabs/setup_relations.cpp:202
+#: src/gui/widgets/tabs/setup_relations.cpp:203
 msgid "Relations"
 msgstr ""
 
 #. TRANSLATORS: relation dialog label
-#: src/gui/widgets/tabs/setup_relations.cpp:227
+#: src/gui/widgets/tabs/setup_relations.cpp:228
 msgid "When ignoring:"
 msgstr ""
 
@@ -5038,8 +5038,8 @@ msgstr ""
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (plus sign)
-#: src/gui/windows/buydialog.cpp:247 src/gui/windows/itemamountwindow.cpp:161
-#: src/gui/windows/itemamountwindow.cpp:196 src/gui/windows/npcdialog.cpp:101
+#: src/gui/windows/buydialog.cpp:247 src/gui/windows/itemamountwindow.cpp:163
+#: src/gui/windows/itemamountwindow.cpp:198 src/gui/windows/npcdialog.cpp:101
 #: src/gui/windows/selldialog.cpp:113 src/gui/windows/statuswindow.cpp:828
 msgid "+"
 msgstr ""
@@ -5050,8 +5050,8 @@ msgstr ""
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (minus sign)
-#: src/gui/windows/buydialog.cpp:250 src/gui/windows/itemamountwindow.cpp:159
-#: src/gui/windows/itemamountwindow.cpp:193 src/gui/windows/npcdialog.cpp:103
+#: src/gui/windows/buydialog.cpp:250 src/gui/windows/itemamountwindow.cpp:161
+#: src/gui/windows/itemamountwindow.cpp:195 src/gui/windows/npcdialog.cpp:103
 #: src/gui/windows/selldialog.cpp:115 src/gui/windows/statuswindow.cpp:841
 msgid "-"
 msgstr ""
@@ -5601,7 +5601,7 @@ msgstr ""
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #: src/gui/windows/editdialog.cpp:47 src/gui/windows/editserverdialog.cpp:57
-#: src/gui/windows/itemamountwindow.cpp:163 src/gui/windows/okdialog.cpp:51
+#: src/gui/windows/itemamountwindow.cpp:165 src/gui/windows/okdialog.cpp:51
 #: src/gui/windows/quitdialog.cpp:68 src/gui/windows/textdialog.cpp:48
 msgid "OK"
 msgstr ""
@@ -5669,47 +5669,47 @@ msgid "Did you know..."
 msgstr ""
 
 #. TRANSLATORS: item amount window button
-#: src/gui/windows/itemamountwindow.cpp:167
+#: src/gui/windows/itemamountwindow.cpp:169
 msgid "All"
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:223
+#: src/gui/windows/itemamountwindow.cpp:225
 msgid "Select amount of items to trade."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:227
+#: src/gui/windows/itemamountwindow.cpp:229
 msgid "Select amount of items to drop."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:231
+#: src/gui/windows/itemamountwindow.cpp:233
 msgid "Select amount of items to store."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:235
+#: src/gui/windows/itemamountwindow.cpp:237
 msgid "Select amount of items to retrieve."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:239
+#: src/gui/windows/itemamountwindow.cpp:241
 msgid "Select amount of items to split."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:243
+#: src/gui/windows/itemamountwindow.cpp:245
 msgid "Add to buy shop."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:247
+#: src/gui/windows/itemamountwindow.cpp:249
 msgid "Add to sell shop."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:251
+#: src/gui/windows/itemamountwindow.cpp:253
 msgid "Unknown."
 msgstr ""
 
@@ -6083,33 +6083,33 @@ msgid "Use same ip for game sub servers"
 msgstr ""
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:480
+#: src/gui/windows/serverdialog.cpp:481
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr ""
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:486
+#: src/gui/windows/serverdialog.cpp:487
 msgid "Waiting for server..."
 msgstr ""
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:491
+#: src/gui/windows/serverdialog.cpp:492
 msgid "Preparing download"
 msgstr ""
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:496
+#: src/gui/windows/serverdialog.cpp:497
 msgid "Error retreiving server list!"
 msgstr ""
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:586
+#: src/gui/windows/serverdialog.cpp:587
 msgid "requires a newer version"
 msgstr ""
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:591
+#: src/gui/windows/serverdialog.cpp:592
 #, c-format
 msgid "requires v%s"
 msgstr ""
@@ -6634,27 +6634,27 @@ msgstr ""
 msgid "Connecting..."
 msgstr ""
 
-#: src/gui/windows/updaterwindow.cpp:370
+#: src/gui/windows/updaterwindow.cpp:371
 msgid "Show all news (can be slow)"
 msgstr ""
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:766
+#: src/gui/windows/updaterwindow.cpp:779
 msgid "##1  The update process is incomplete."
 msgstr ""
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:768
+#: src/gui/windows/updaterwindow.cpp:781
 msgid "##1  It is strongly recommended that"
 msgstr ""
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:770
+#: src/gui/windows/updaterwindow.cpp:783
 msgid "##1  you try again later."
 msgstr ""
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:938
+#: src/gui/windows/updaterwindow.cpp:960
 msgid "Completed"
 msgstr ""
 
@@ -7159,7 +7159,7 @@ msgid "Unable to resolve host \""
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/ea/network.cpp:282
+#: src/net/ea/network.cpp:283
 msgid "Connection to server terminated. "
 msgstr ""
 
@@ -7815,43 +7815,43 @@ msgstr ""
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:42 src/resources/db/avatardb.cpp:87
-#: src/resources/db/itemdb.cpp:344 src/resources/db/moddb.cpp:78
+#: src/resources/db/itemdb.cpp:346 src/resources/db/moddb.cpp:78
 #: src/resources/db/monsterdb.cpp:103 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:90
+#: src/resources/db/itemdb.cpp:92
 #, c-format
 msgid "Attack %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:92
+#: src/resources/db/itemdb.cpp:94
 #, c-format
 msgid "Defense %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:94
+#: src/resources/db/itemdb.cpp:96
 #, c-format
 msgid "HP %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:96
+#: src/resources/db/itemdb.cpp:98
 #, c-format
 msgid "MP %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:98
+#: src/resources/db/itemdb.cpp:100
 #, c-format
 msgid "Level %s"
 msgstr ""
 
 #. TRANSLATORS: item name
-#: src/resources/db/itemdb.cpp:222
+#: src/resources/db/itemdb.cpp:224
 msgid "Unknown item"
 msgstr ""
 

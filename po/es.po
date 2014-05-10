@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-05-02 22:02+0300\n"
-"PO-Revision-Date: 2014-04-05 12:21+0000\n"
+"POT-Creation-Date: 2014-05-10 12:54+0300\n"
+"PO-Revision-Date: 2014-05-03 18:16+0000\n"
 "Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/"
 "language/es/)\n"
@@ -431,7 +431,7 @@ msgstr "(?) imitación"
 #. TRANSLATORS: away message box header
 #: src/being/localplayer.cpp:1633
 msgid "Away"
-msgstr "Fuera del Teclado"
+msgstr "Lejos del Teclado"
 
 #. TRANSLATORS: away type in status bar
 #: src/being/localplayer.cpp:1656
@@ -537,37 +537,37 @@ msgstr "Burbuja flotante"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1123 src/gui/windowmenu.cpp:155
+#: src/client.cpp:1124 src/gui/windowmenu.cpp:155
 #: src/gui/windows/setupwindow.cpp:62
 msgid "Setup"
 msgstr "Configuración"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1126 src/gui/widgets/tabs/setup_perfomance.cpp:52
+#: src/client.cpp:1127 src/gui/widgets/tabs/setup_perfomance.cpp:52
 msgid "Performance"
 msgstr "Rendimiento"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1129 src/gui/widgets/tabs/setup_video.cpp:226
+#: src/client.cpp:1130 src/gui/widgets/tabs/setup_video.cpp:226
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1132 src/gui/widgets/tabs/setup_theme.cpp:269
+#: src/client.cpp:1133 src/gui/widgets/tabs/setup_theme.cpp:269
 msgid "Theme"
 msgstr "Tema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:1135
+#: src/client.cpp:1136
 msgid "About"
 msgstr "Acerca de..."
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:1138 src/gui/windowmenu.cpp:71
+#: src/client.cpp:1139 src/gui/windowmenu.cpp:71
 #: src/gui/windows/helpwindow.cpp:50
 msgid "Help"
 msgstr "Ayuda"
@@ -582,7 +582,7 @@ msgstr "Ayuda"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1142 src/gui/popups/popupmenu.cpp:619
+#: src/client.cpp:1143 src/gui/popups/popupmenu.cpp:619
 #: src/gui/popups/popupmenu.cpp:858 src/gui/windows/didyouknowwindow.cpp:78
 #: src/gui/windows/inventorywindow.cpp:225 src/gui/windows/npcdialog.cpp:70
 #: src/gui/windows/npcdialog.cpp:108 src/gui/windows/questswindow.cpp:125
@@ -591,32 +591,32 @@ msgid "Close"
 msgstr "Cerrar"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1264
+#: src/client.cpp:1265
 msgid "Connecting to server"
 msgstr "Conectando al servidor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1311
+#: src/client.cpp:1312
 msgid "Logging in"
 msgstr "Accediendo a la cuenta"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1354
+#: src/client.cpp:1355
 msgid "Entering game world"
 msgstr "Entrando al mundo del juego"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1477
+#: src/client.cpp:1478
 msgid "Requesting characters"
 msgstr "Cargando personajes"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1517
+#: src/client.cpp:1518
 msgid "Connecting to the game server"
 msgstr "Conectando al servidor del juego"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1529
+#: src/client.cpp:1530
 msgid "Changing game servers"
 msgstr "Cambiando servidores del juego"
 
@@ -631,7 +631,7 @@ msgstr "Cambiando servidores del juego"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1584 src/client.cpp:1595 src/client.cpp:1779
+#: src/client.cpp:1585 src/client.cpp:1596 src/client.cpp:1780
 #: src/gui/windows/changeemaildialog.cpp:167
 #: src/gui/windows/changepassworddialog.cpp:157
 #: src/gui/windows/charcreatedialog.cpp:349
@@ -644,65 +644,65 @@ msgid "Error"
 msgstr "Error"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1607
+#: src/client.cpp:1608
 msgid "Requesting registration details"
 msgstr "Solicitando detalles de registro"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1648
+#: src/client.cpp:1649
 msgid "Password Change"
 msgstr "Cambio de contraseña"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1650
+#: src/client.cpp:1651
 msgid "Password changed successfully!"
 msgstr "¡Contraseña cambiada exitosamente!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1672
+#: src/client.cpp:1673
 msgid "Email Change"
 msgstr "Cambio de Email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1674
+#: src/client.cpp:1675
 msgid "Email changed successfully!"
 msgstr "¡Email modificado exitosamente!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1697
+#: src/client.cpp:1698
 msgid "Unregister Successful"
 msgstr "Registro cancelado"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1699
+#: src/client.cpp:1700
 msgid "Farewell, come back any time..."
 msgstr "Adiós, vuelve cuando quieras..."
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1987 src/client.cpp:2002 src/client.cpp:2047
-#: src/client.cpp:2063 src/client.cpp:2490 src/client.cpp:2498
+#: src/client.cpp:1988 src/client.cpp:2003 src/client.cpp:2048
+#: src/client.cpp:2064 src/client.cpp:2491 src/client.cpp:2499
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "¡%s no existe y no puede ser creado! Saliendo."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2219
+#: src/client.cpp:2220
 #, c-format
 msgid "Invalid update host: %s."
 msgstr "Servidor de actualización inválido: %s."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2260 src/client.cpp:2267
+#: src/client.cpp:2261 src/client.cpp:2268
 msgid "Error creating updates directory!"
 msgstr "¡Error al crear la carpeta de actualizaciones!"
 
-#: src/client.cpp:2289 src/client.cpp:2306
+#: src/client.cpp:2290 src/client.cpp:2307
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Error: ¡%s no existe y no puede ser creado! Saliendo."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2972
+#: src/client.cpp:2973
 msgid "Do you want to open support page?"
 msgstr "¿Quieres abrir la página de soporte?"
 
@@ -806,7 +806,7 @@ msgstr "neutral"
 #. TRANSLATORS: unignore command
 #: src/commands.cpp:550
 msgid "Player wasn't ignored!"
-msgstr "¡El jugador no era ignorado!"
+msgstr "¡El jugador no fue ignorado!"
 
 #. TRANSLATORS: unignore command
 #: src/commands.cpp:560
@@ -975,12 +975,12 @@ msgid "Saving screenshot failed!"
 msgstr "¡El guardado de la captura de pantalla ha fallado!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:666
+#: src/game.cpp:665
 msgid "The connection to the server was lost."
 msgstr "Se ha perdido la conexión con el servidor."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:669
+#: src/game.cpp:668
 msgid "Network Error"
 msgstr "Error de Red"
 
@@ -1432,9 +1432,9 @@ msgstr "Agregar nombre al chat"
 #: src/gui/windows/changeemaildialog.cpp:56
 #: src/gui/windows/changepassworddialog.cpp:58
 #: src/gui/windows/charcreatedialog.cpp:119
-#: src/gui/windows/connectiondialog.cpp:50
+#: src/gui/windows/connectiondialog.cpp:52
 #: src/gui/windows/editserverdialog.cpp:59
-#: src/gui/windows/itemamountwindow.cpp:165
+#: src/gui/windows/itemamountwindow.cpp:167
 #: src/gui/windows/npcpostdialog.cpp:68 src/gui/windows/quitdialog.cpp:70
 #: src/gui/windows/registerdialog.cpp:78 src/gui/windows/setupwindow.cpp:95
 #: src/gui/windows/socialwindow.cpp:1198
@@ -2160,7 +2160,7 @@ msgstr "Tecla de atajo al elemento"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:234
 msgid "Shortcuts keys"
-msgstr "Teclas de atajo"
+msgstr "Teclas de atajos"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:240 src/gui/setupactiondata.h:246
@@ -2730,7 +2730,7 @@ msgstr "Select2"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: command editor button
-#: src/gui/setupactiondata.h:1912 src/gui/widgets/tabs/setup_relations.cpp:197
+#: src/gui/setupactiondata.h:1912 src/gui/widgets/tabs/setup_relations.cpp:198
 #: src/gui/windows/charselectdialog.cpp:108
 #: src/gui/windows/serverdialog.cpp:209 src/gui/windows/shopwindow.cpp:96
 #: src/gui/windows/shopwindow.cpp:103 src/gui/windows/textcommandeditor.cpp:91
@@ -3024,7 +3024,7 @@ msgid "Money: %s"
 msgstr "Dinero: %s"
 
 #. TRANSLATORS: Text under equipped items (should be small)
-#: src/gui/widgets/itemcontainer.cpp:324
+#: src/gui/widgets/itemcontainer.cpp:325
 msgid "Eq."
 msgstr "Eq."
 
@@ -4248,22 +4248,22 @@ msgid "Relation"
 msgstr "Relación"
 
 #. TRANSLATORS: relation dialog button
-#: src/gui/widgets/tabs/setup_relations.cpp:192
+#: src/gui/widgets/tabs/setup_relations.cpp:193
 msgid "Allow trading"
 msgstr "Permitir intercambios"
 
 #. TRANSLATORS: relation dialog button
-#: src/gui/widgets/tabs/setup_relations.cpp:195
+#: src/gui/widgets/tabs/setup_relations.cpp:196
 msgid "Allow whispers"
 msgstr "Permitir mensajes privados"
 
 #. TRANSLATORS: relation dialog name
-#: src/gui/widgets/tabs/setup_relations.cpp:202
+#: src/gui/widgets/tabs/setup_relations.cpp:203
 msgid "Relations"
 msgstr "Relaciones"
 
 #. TRANSLATORS: relation dialog label
-#: src/gui/widgets/tabs/setup_relations.cpp:227
+#: src/gui/widgets/tabs/setup_relations.cpp:228
 msgid "When ignoring:"
 msgstr "Cuando se ignora a alguien:"
 
@@ -4800,7 +4800,7 @@ msgstr "Opacidad de interfaz"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_visual.cpp:146
 msgid "Overhead text"
-msgstr "Sobrecarga de texto"
+msgstr "Texto sobre la cabeza"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_visual.cpp:151
@@ -5066,8 +5066,8 @@ msgstr "Cantidad:"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (plus sign)
-#: src/gui/windows/buydialog.cpp:247 src/gui/windows/itemamountwindow.cpp:161
-#: src/gui/windows/itemamountwindow.cpp:196 src/gui/windows/npcdialog.cpp:101
+#: src/gui/windows/buydialog.cpp:247 src/gui/windows/itemamountwindow.cpp:163
+#: src/gui/windows/itemamountwindow.cpp:198 src/gui/windows/npcdialog.cpp:101
 #: src/gui/windows/selldialog.cpp:113 src/gui/windows/statuswindow.cpp:828
 msgid "+"
 msgstr "+"
@@ -5078,8 +5078,8 @@ msgstr "+"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: status window label (minus sign)
-#: src/gui/windows/buydialog.cpp:250 src/gui/windows/itemamountwindow.cpp:159
-#: src/gui/windows/itemamountwindow.cpp:193 src/gui/windows/npcdialog.cpp:103
+#: src/gui/windows/buydialog.cpp:250 src/gui/windows/itemamountwindow.cpp:161
+#: src/gui/windows/itemamountwindow.cpp:195 src/gui/windows/npcdialog.cpp:103
 #: src/gui/windows/selldialog.cpp:115 src/gui/windows/statuswindow.cpp:841
 msgid "-"
 msgstr "-"
@@ -5638,7 +5638,7 @@ msgstr "Abrir automáticamente esta ventana"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #: src/gui/windows/editdialog.cpp:47 src/gui/windows/editserverdialog.cpp:57
-#: src/gui/windows/itemamountwindow.cpp:163 src/gui/windows/okdialog.cpp:51
+#: src/gui/windows/itemamountwindow.cpp:165 src/gui/windows/okdialog.cpp:51
 #: src/gui/windows/quitdialog.cpp:68 src/gui/windows/textdialog.cpp:48
 msgid "OK"
 msgstr "OK"
@@ -5658,7 +5658,7 @@ msgstr "Conectar"
 #. TRANSLATORS: edit server dialog label
 #: src/gui/windows/editserverdialog.cpp:61
 msgid "Use same ip"
-msgstr ""
+msgstr "Usar la misma IP"
 
 #. TRANSLATORS: edit server dialog label
 #: src/gui/windows/editserverdialog.cpp:74
@@ -5707,47 +5707,47 @@ msgid "Did you know..."
 msgstr "¿Sabías que..."
 
 #. TRANSLATORS: item amount window button
-#: src/gui/windows/itemamountwindow.cpp:167
+#: src/gui/windows/itemamountwindow.cpp:169
 msgid "All"
 msgstr "Todo"
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:223
+#: src/gui/windows/itemamountwindow.cpp:225
 msgid "Select amount of items to trade."
 msgstr "Selecciona la cantidad de artículos a intercambiar."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:227
+#: src/gui/windows/itemamountwindow.cpp:229
 msgid "Select amount of items to drop."
 msgstr "Seleccione la cantidad de artículos a tirar."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:231
+#: src/gui/windows/itemamountwindow.cpp:233
 msgid "Select amount of items to store."
 msgstr "Seleccione la cantidad de objetos a almacenar."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:235
+#: src/gui/windows/itemamountwindow.cpp:237
 msgid "Select amount of items to retrieve."
 msgstr "Seleccione la cantidad de artículos a recuperar."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:239
+#: src/gui/windows/itemamountwindow.cpp:241
 msgid "Select amount of items to split."
 msgstr "Seleccione la cantidad de artículos."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:243
+#: src/gui/windows/itemamountwindow.cpp:245
 msgid "Add to buy shop."
 msgstr "Agregar tienda (compra)."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:247
+#: src/gui/windows/itemamountwindow.cpp:249
 msgid "Add to sell shop."
 msgstr "Agregar a la tienda (venta)."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:251
+#: src/gui/windows/itemamountwindow.cpp:253
 msgid "Unknown."
 msgstr "Desconocido."
 
@@ -6123,33 +6123,33 @@ msgid "Use same ip for game sub servers"
 msgstr "Usar la misma ip para los subservidores del juego"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:480
+#: src/gui/windows/serverdialog.cpp:481
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "Descargando lista de servidores...%2.2f%%"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:486
+#: src/gui/windows/serverdialog.cpp:487
 msgid "Waiting for server..."
 msgstr "Esperando al servidor..."
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:491
+#: src/gui/windows/serverdialog.cpp:492
 msgid "Preparing download"
 msgstr "Preparando la descarga"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:496
+#: src/gui/windows/serverdialog.cpp:497
 msgid "Error retreiving server list!"
 msgstr "¡Error al recuperar la lista de servidores!"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:586
+#: src/gui/windows/serverdialog.cpp:587
 msgid "requires a newer version"
 msgstr "requiere una versión más nueva"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:591
+#: src/gui/windows/serverdialog.cpp:592
 #, c-format
 msgid "requires v%s"
 msgstr "requiere v%s"
@@ -6676,27 +6676,27 @@ msgstr "Actualizando..."
 msgid "Connecting..."
 msgstr "Conectando..."
 
-#: src/gui/windows/updaterwindow.cpp:370
+#: src/gui/windows/updaterwindow.cpp:371
 msgid "Show all news (can be slow)"
 msgstr "Mostrar todas las noticias (puede ser lento)"
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:766
+#: src/gui/windows/updaterwindow.cpp:779
 msgid "##1  The update process is incomplete."
 msgstr "##1 El proceso de actualización está incompleto."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:768
+#: src/gui/windows/updaterwindow.cpp:781
 msgid "##1  It is strongly recommended that"
 msgstr "##1 Se recomienda encarecidamente que"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:770
+#: src/gui/windows/updaterwindow.cpp:783
 msgid "##1  you try again later."
 msgstr "##1 lo intentes de nuevo más tarde."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:938
+#: src/gui/windows/updaterwindow.cpp:960
 msgid "Completed"
 msgstr "Completado"
 
@@ -7208,7 +7208,7 @@ msgid "Unable to resolve host \""
 msgstr "No se puede resolver el host \""
 
 #. TRANSLATORS: error message
-#: src/net/ea/network.cpp:282
+#: src/net/ea/network.cpp:283
 msgid "Connection to server terminated. "
 msgstr "Conexión al servidor terminada. "
 
@@ -7867,43 +7867,43 @@ msgstr "OpenGL Seguro"
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:42 src/resources/db/avatardb.cpp:87
-#: src/resources/db/itemdb.cpp:344 src/resources/db/moddb.cpp:78
+#: src/resources/db/itemdb.cpp:346 src/resources/db/moddb.cpp:78
 #: src/resources/db/monsterdb.cpp:103 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr "anónimo"
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:90
+#: src/resources/db/itemdb.cpp:92
 #, c-format
 msgid "Attack %s"
 msgstr "Ataque %s"
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:92
+#: src/resources/db/itemdb.cpp:94
 #, c-format
 msgid "Defense %s"
 msgstr "Defensa %s"
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:94
+#: src/resources/db/itemdb.cpp:96
 #, c-format
 msgid "HP %s"
 msgstr "PV %s"
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:96
+#: src/resources/db/itemdb.cpp:98
 #, c-format
 msgid "MP %s"
 msgstr "MP %s"
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:98
+#: src/resources/db/itemdb.cpp:100
 #, c-format
 msgid "Level %s"
 msgstr "Nivel %s"
 
 #. TRANSLATORS: item name
-#: src/resources/db/itemdb.cpp:222
+#: src/resources/db/itemdb.cpp:224
 msgid "Unknown item"
 msgstr "Elemento desconocido"
 
