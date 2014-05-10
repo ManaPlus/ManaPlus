@@ -1,3 +1,11 @@
+2014-05-10 New release 1.4.5.10
+fix: time events before connecting to game.
+fix: compilation for Android with SDL2.
+add: <animation> tag in maps.
+add: update project file for code blocks.
+add: option same ip, for individual servers.
+add: mirrors support for downloads.
+
 2014-04-26 New release 1.4.4.26
 fix: crash with dragging empty spell.
 fix: crash if open storage and start trade.
