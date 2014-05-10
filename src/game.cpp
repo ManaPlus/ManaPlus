@@ -107,6 +107,8 @@
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
 
+#include "listeners/errorlistener.h"
+
 #include <sstream>
 #include <string>
 

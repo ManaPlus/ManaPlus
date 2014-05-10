@@ -26,10 +26,9 @@
 #include "state.h"
 
 #include "listeners/configlistener.h"
+#include "listeners/errorlistener.h"
 
 #include "net/serverinfo.h"
-
-#include "listeners/actionlistener.h"
 
 #include <SDL.h>
 
@@ -59,14 +58,7 @@ extern unsigned int tmwServerVersion;
 extern int start_time;
 extern int textures_count;
 
-class ErrorListener : public ActionListener
-{
-    public:
-        void action(const ActionEvent &event) override final;
-};
-
 extern std::string errorMessage;
-extern ErrorListener errorListener;
 extern LoginData loginData;
 
 enum PacketTypes

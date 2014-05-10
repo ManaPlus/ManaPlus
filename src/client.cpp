@@ -117,7 +117,6 @@
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/physfstools.h"
-#include "utils/process.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
 #include "utils/timer.h"
@@ -164,7 +163,6 @@ int loadingProgressCounter = 1;
 #endif
 
 std::string errorMessage;
-ErrorListener errorListener;
 LoginData loginData;
 
 Client *client = nullptr;
@@ -174,13 +172,6 @@ UserPalette *userPalette = nullptr;
 
 SoundManager soundManager;
 RenderType openGLMode = RENDER_SOFTWARE;
-
-void ErrorListener::action(const ActionEvent &event)
-{
-    if (event.getId() == "yes")
-        openBrowser(client->getSupportUrl());
-    client->setState(STATE_CHOOSE_SERVER);
-}
 
 volatile bool runCounters;
 bool isSafeMode = false;

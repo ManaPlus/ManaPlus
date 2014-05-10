@@ -157,6 +157,8 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/cliprect.h \
 	      gui/color.h \
 	      listeners/deathlistener.h \
+	      listeners/errorlistener.cpp \
+	      listeners/errorlistener.h \
 	      events/event.h \
 	      listeners/focuslistener.h \
 	      render/graphics.h \

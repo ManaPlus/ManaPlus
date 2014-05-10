@@ -802,6 +802,8 @@ SET(SRCS
     gui/cliprect.h
     gui/color.h
     listeners/deathlistener.h
+    listeners/errorlistener.cpp
+    listeners/errorlistener.h
     events/event.h
     listeners/focuslistener.h
     events/inputguievent.h
