@@ -34,27 +34,10 @@
 #include <vector>
 
 class Image;
-class MapItem;
-class SpecialLayer;
 class ImageVertexes;
-
-typedef std::vector<ImageVertexes*> MepRowImages;
-
-class MapRowVertexes final
-{
-    public:
-        MapRowVertexes() :
-            images()
-        {
-            images.reserve(30);
-        }
-
-        A_DELETE_COPY(MapRowVertexes)
-
-        ~MapRowVertexes();
-
-        MepRowImages images;
-};
+class MapItem;
+class MapRowVertexes;
+class SpecialLayer;
 
 class MapObject final
 {

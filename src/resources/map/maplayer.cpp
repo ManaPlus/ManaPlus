@@ -36,6 +36,8 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
+#include "resources/map/maprowvertexes.h"
+
 #include "gui/font.h"
 #include "gui/gui.h"
 
@@ -164,9 +166,9 @@ void MapLayer::drawSDL(Graphics *const graphics)
     const MapRows::const_iterator rit_end = mTempRows.end();
     while (rit != rit_end)
     {
-        MepRowImages *const images = &(*rit)->images;
-        MepRowImages::const_iterator iit = images->begin();
-        const MepRowImages::const_iterator iit_end = images->end();
+        MapRowImages *const images = &(*rit)->images;
+        MapRowImages::const_iterator iit = images->begin();
+        const MapRowImages::const_iterator iit_end = images->end();
         while (iit != iit_end)
         {
             graphics->drawTileVertexes(*iit);
@@ -331,9 +333,9 @@ void MapLayer::drawOGL(Graphics *const graphics)
 //    int k = 0;
     while (rit != rit_end)
     {
-        const MepRowImages *const images = &(*rit)->images;
-        MepRowImages::const_iterator iit = images->begin();
-        const MepRowImages::const_iterator iit_end = images->end();
+        const MapRowImages *const images = &(*rit)->images;
+        MapRowImages::const_iterator iit = images->begin();
+        const MapRowImages::const_iterator iit_end = images->end();
         while (iit != iit_end)
         {
             graphics->drawTileVertexes(*iit);
@@ -883,10 +885,4 @@ MapObjectList *ObjectsLayer::getAt(const unsigned x, const unsigned y) const
     if (x >= mWidth || y >= mHeight)
         return nullptr;
     return mTiles[x + y * mWidth];
-}
-
-MapRowVertexes::~MapRowVertexes()
-{
-    delete_all(images);
-    images.clear();
 }
