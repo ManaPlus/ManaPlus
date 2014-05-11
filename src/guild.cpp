@@ -28,32 +28,35 @@
 
 #include "debug.h"
 
-static class SortGuildFunctor final
+namespace
 {
-    public:
-        bool operator() (const GuildMember *const m1,
-                         const GuildMember *const m2) const
-        {
-            if (!m1 || !m2)
-                return false;
-
-            if (m1->getOnline() != m2->getOnline())
-                return m1->getOnline() > m2->getOnline();
-
-            if (m1->getPos() != m2->getPos())
-                return m1->getPos() > m2->getPos();
-
-            if (m1->getName() != m2->getName())
+    static class SortGuildFunctor final
+    {
+        public:
+            bool operator() (const GuildMember *const m1,
+                             const GuildMember *const m2) const
             {
-                std::string s1 = m1->getName();
-                std::string s2 = m2->getName();
-                toLower(s1);
-                toLower(s2);
-                return s1 < s2;
+                if (!m1 || !m2)
+                    return false;
+
+                if (m1->getOnline() != m2->getOnline())
+                    return m1->getOnline() > m2->getOnline();
+
+                if (m1->getPos() != m2->getPos())
+                    return m1->getPos() > m2->getPos();
+
+                if (m1->getName() != m2->getName())
+                {
+                    std::string s1 = m1->getName();
+                    std::string s2 = m2->getName();
+                    toLower(s1);
+                    toLower(s2);
+                    return s1 < s2;
+                }
+                return false;
             }
-            return false;
-        }
-} guildSorter;
+    } guildSorter;
+}  // namespace
 
 GuildMember::GuildMember(Guild *const guild, const int accountId,
                          const int charId, const std::string &name):
