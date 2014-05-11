@@ -157,25 +157,4 @@ class MapLayer final: public ConfigListener
         bool mHighlightAttackRange;
 };
 
-class ObjectsLayer final
-{
-    public:
-        ObjectsLayer(const unsigned width, const unsigned height);
-
-        A_DELETE_COPY(ObjectsLayer)
-
-        ~ObjectsLayer();
-
-        void addObject(const std::string &name, const int type,
-                       const unsigned x, const unsigned y,
-                       unsigned dx, unsigned dy);
-
-        MapObjectList *getAt(const unsigned x,
-                             const unsigned y) const A_WARN_UNUSED;
-    private:
-        MapObjectList **mTiles;
-        unsigned mWidth;
-        unsigned mHeight;
-};
-
 #endif  // RESOURCES_MAP_MAPLAYER_H
