@@ -20,35 +20,34 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_MAP_LOCATION
-#define RESOURCES_MAP_LOCATION
-
-#include "resources/map/metatile.h"
+#ifndef RESOURCES_MAP_METATILE_H
+#define RESOURCES_MAP_METATILE_H
 
 #include "localconsts.h"
 
 /**
- * A location on a tile map. Used for pathfinding, open list.
+ * A meta tile stores additional information about a location on a tile map.
+ * This is information that doesn't need to be repeated for each tile in each
+ * layer of the map.
  */
-struct Location final
+struct MetaTile final
 {
     /**
      * Constructor.
      */
-    Location(const int px, const int py, MetaTile *const ptile):
-        x(px), y(py), tile(ptile)
+    MetaTile() : Fcost(0), Gcost(0), Hcost(0), whichList(0),
+        parentX(0), parentY(0), blockmask(0)
     {}
 
-    /**
-     * Comparison operator.
-     */
-    bool operator< (const Location &loc) const
-    {
-        return tile->Fcost > loc.tile->Fcost;
-    }
+    A_DELETE_COPY(MetaTile)
 
-    int x, y;
-    MetaTile *tile;
+    // Pathfinding members
+    int Fcost;               /**< Estimation of total path cost */
+    int Gcost;               /**< Cost from start to this location */
+    int Hcost;               /**< Estimated cost to goal */
+    unsigned whichList;      /**< No list, open list or closed list */
+    int parentX;             /**< X coordinate of parent tile */
+    int parentY;             /**< Y coordinate of parent tile */
+    unsigned char blockmask; /**< Blocking properties of this tile */
 };
-
-#endif  // RESOURCES_MAP_LOCATION
+#endif  // RESOURCES_MAP_METATILE_H

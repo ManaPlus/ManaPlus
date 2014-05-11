@@ -711,6 +711,7 @@ SET(SRCS
     resources/map/mapheights.h
     resources/map/maplayer.cpp
     resources/map/maplayer.h
+    resources/map/metatile.h
     render/mgl.cpp
     render/mgl.h
     render/mobileopenglgraphics.cpp

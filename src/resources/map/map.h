@@ -27,6 +27,7 @@
 
 #include "being/actor.h"
 
+#include "resources/map/metatile.h"
 #include "resources/map/properties.h"
 
 #include "listeners/configlistener.h"
@@ -62,32 +63,6 @@ typedef AmbientLayerVector::const_iterator AmbientLayerVectorCIter;
 typedef AmbientLayerVector::iterator AmbientLayerVectorIter;
 
 static const int mapTileSize = 32;
-
-/**
- * A meta tile stores additional information about a location on a tile map.
- * This is information that doesn't need to be repeated for each tile in each
- * layer of the map.
- */
-struct MetaTile final
-{
-    /**
-     * Constructor.
-     */
-    MetaTile() : Fcost(0), Gcost(0), Hcost(0), whichList(0),
-        parentX(0), parentY(0), blockmask(0)
-    {}
-
-    A_DELETE_COPY(MetaTile)
-
-    // Pathfinding members
-    int Fcost;               /**< Estimation of total path cost */
-    int Gcost;               /**< Cost from start to this location */
-    int Hcost;               /**< Estimated cost to goal */
-    unsigned whichList;      /**< No list, open list or closed list */
-    int parentX;             /**< X coordinate of parent tile */
-    int parentY;             /**< Y coordinate of parent tile */
-    unsigned char blockmask; /**< Blocking properties of this tile */
-};
 
 /**
  * Animation cycle of a tile image which changes the map accordingly.
