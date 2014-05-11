@@ -186,23 +186,26 @@ int textures_count = 0;
 extern "C" char const *_nl_locale_name_default(void);
 #endif
 
-class AccountListener final : public ActionListener
+namespace
 {
-    public:
-        void action(const ActionEvent &)
-        {
-            client->setState(STATE_CHAR_SELECT);
-        }
-} accountListener;
+    class AccountListener final : public ActionListener
+    {
+        public:
+            void action(const ActionEvent &)
+            {
+                client->setState(STATE_CHAR_SELECT);
+            }
+    } accountListener;
 
-class LoginListener final : public ActionListener
-{
-    public:
-        void action(const ActionEvent &)
-        {
-            client->setState(STATE_PRE_LOGIN);
-        }
-} loginListener;
+    class LoginListener final : public ActionListener
+    {
+        public:
+            void action(const ActionEvent &)
+            {
+                client->setState(STATE_PRE_LOGIN);
+            }
+    } loginListener;
+}  // namespace
 
 Client::Client(const Options &options) :
     ActionListener(),
