@@ -849,6 +849,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      party.h \
 	      being/playerinfo.cpp \
 	      being/playerinfo.h \
+	      being/playerrelation.cpp \
+	      being/playerrelation.h \
 	      being/playerrelations.cpp \
 	      being/playerrelations.h \
 	      listeners/playerrelationslistener.h \

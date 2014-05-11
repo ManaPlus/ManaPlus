@@ -25,6 +25,8 @@
 
 #include "utils/stringvector.h"
 
+#include "being/playerrelation.h"
+
 #include <list>
 #include <map>
 
@@ -32,44 +34,6 @@
 
 class Being;
 class PlayerRelationsListener;
-
-struct PlayerRelation final
-{
-    static const unsigned int EMOTE        = (1U << 0);
-    static const unsigned int SPEECH_FLOAT = (1U << 1);
-    static const unsigned int SPEECH_LOG   = (1U << 2);
-    static const unsigned int WHISPER      = (1U << 3);
-    static const unsigned int TRADE        = (1U << 4);
-    static const unsigned int INVISIBLE    = (1U << 5);
-    static const unsigned int BLACKLIST    = (1U << 6);
-    static const unsigned int ENEMY        = (1U << 7);
-
-    static const unsigned int RELATIONS_NR = 7;
-    static const unsigned int RELATION_PERMISSIONS[RELATIONS_NR];
-
-    static const unsigned int DEFAULT = EMOTE
-                                      | SPEECH_FLOAT
-                                      | SPEECH_LOG
-                                      | WHISPER
-                                      | TRADE;
-    enum Relation
-    {
-        NEUTRAL     = 0,
-        FRIEND      = 1,
-        DISREGARDED = 2,
-        IGNORED     = 3,
-        ERASED      = 4,
-        BLACKLISTED = 5,
-        ENEMY2      = 6
-    };
-
-    explicit PlayerRelation(const Relation relation);
-
-    A_DELETE_COPY(PlayerRelation)
-
-    Relation mRelation;  // bitmask for all of the above
-};
-
 
 /**
  * Ignore strategy: describes how we should handle ignores.
