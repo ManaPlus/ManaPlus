@@ -63,18 +63,6 @@ class Inventory;
 class Item;
 
 /**
- * Special information storage structure.
- */
-struct Special final
-{
-    int currentMana;
-    int neededMana;
-    int recharge;
-};
-
-typedef std::map<int, Special> SpecialsMap;
-
-/**
  * A database like namespace which holds global info about the localplayer
  *
  * NOTE: 'bool notify' is used to determine if a event is to be triggered.
