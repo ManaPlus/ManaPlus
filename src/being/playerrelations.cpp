@@ -36,82 +36,86 @@
 
 #include "debug.h"
 
-static const char *const PLAYER_IGNORE_STRATEGY_NOP = "nop";
-static const char *const PLAYER_IGNORE_STRATEGY_EMOTE0 = "emote0";
-static const char *const DEFAULT_IGNORE_STRATEGY
-    = PLAYER_IGNORE_STRATEGY_EMOTE0;
-
-static const char *const NAME = "name";
-static const char *const RELATION = "relation";
-
-static const unsigned int IGNORE_EMOTE_TIME = 100;
-
 typedef std::map<std::string, PlayerRelation *> PlayerRelations;
 typedef PlayerRelations::const_iterator PlayerRelationsCIter;
 typedef std::list<PlayerRelationsListener *> PlayerRelationListeners;
 typedef PlayerRelationListeners::const_iterator PlayerRelationListenersCIter;
 
-class SortPlayersFunctor final
+namespace
 {
-    public:
-        bool operator() (const std::string &str1,
-                         const std::string &str2) const
-        {
-            std::string s1 = str1;
-            std::string s2 = str2;
-            toLower(s1);
-            toLower(s2);
-            if (s1 == s2)
-                return str1 < str2;
-            return s1 < s2;
-        }
-} playersRelSorter;
+    static const char *const PLAYER_IGNORE_STRATEGY_NOP = "nop";
+    static const char *const PLAYER_IGNORE_STRATEGY_EMOTE0 = "emote0";
+    static const char *const DEFAULT_IGNORE_STRATEGY
+        = PLAYER_IGNORE_STRATEGY_EMOTE0;
 
-// (De)serialisation class
-class PlayerConfSerialiser final :
-    public ConfigurationListManager<std::pair<std::string, PlayerRelation *>,
-        std::map<std::string, PlayerRelation *> *>
-{
-public:
-    ConfigurationObject *writeConfigItem(
-        const std::pair<std::string, PlayerRelation *> &value,
-        ConfigurationObject *const cobj) const override final
+    static const char *const NAME = "name";
+    static const char *const RELATION = "relation";
+
+    static const unsigned int IGNORE_EMOTE_TIME = 100;
+
+    class SortPlayersFunctor final
     {
-        if (!cobj || !value.second)
-            return nullptr;
-        cobj->setValue(NAME, value.first);
-        cobj->setValue(RELATION, toString(
+        public:
+            bool operator() (const std::string &str1,
+                             const std::string &str2) const
+            {
+                std::string s1 = str1;
+                std::string s2 = str2;
+                toLower(s1);
+                toLower(s2);
+                if (s1 == s2)
+                    return str1 < str2;
+                return s1 < s2;
+            }
+    } playersRelSorter;
+
+    // (De)serialisation class
+    class PlayerConfSerialiser final :
+        public ConfigurationListManager<std::pair<std::string,
+            PlayerRelation *>, std::map<std::string, PlayerRelation *> *>
+    {
+    public:
+        ConfigurationObject *writeConfigItem(
+            const std::pair<std::string, PlayerRelation *> &value,
+            ConfigurationObject *const cobj) const override final
+        {
+            if (!cobj || !value.second)
+                return nullptr;
+            cobj->setValue(NAME, value.first);
+            cobj->setValue(RELATION, toString(
                 static_cast<int>(value.second->mRelation)));
 
-        return cobj;
-    }
-
-    std::map<std::string, PlayerRelation *> *
-    readConfigItem(const ConfigurationObject *const cobj,
-                   std::map<std::string, PlayerRelation *>
-                   *const container) const override final
-    {
-        if (!cobj)
-            return container;
-        const std::string name = cobj->getValue(NAME, "");
-        if (name.empty())
-            return container;
-
-        if (!(*container)[name])
-        {
-            const int v = cobj->getValueInt(RELATION,
-                static_cast<int>(PlayerRelation::NEUTRAL));
-
-            (*container)[name] = new PlayerRelation(
-                static_cast<PlayerRelation::Relation>(v));
+            return cobj;
         }
-        // otherwise ignore the duplicate entry
 
-        return container;
-    }
-};
+        std::map<std::string, PlayerRelation *> *
+        readConfigItem(const ConfigurationObject *const cobj,
+                       std::map<std::string, PlayerRelation *>
+                       *const container) const override final
+        {
+            if (!cobj)
+                return container;
+            const std::string name = cobj->getValue(NAME, "");
+            if (name.empty())
+                return container;
 
-static PlayerConfSerialiser player_conf_serialiser;  // stateless singleton
+            if (!(*container)[name])
+            {
+                const int v = cobj->getValueInt(RELATION,
+                    static_cast<int>(PlayerRelation::NEUTRAL));
+
+                (*container)[name] = new PlayerRelation(
+                    static_cast<PlayerRelation::Relation>(v));
+            }
+            // otherwise ignore the duplicate entry
+
+            return container;
+        }
+    };
+
+    static PlayerConfSerialiser player_conf_serialiser;  // stateless singleton
+
+}  // namespace
 
 const unsigned int PlayerRelation::RELATION_PERMISSIONS[RELATIONS_NR] =
 {
