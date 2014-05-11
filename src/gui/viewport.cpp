@@ -28,6 +28,7 @@
 #include "sdlshared.h"
 #include "textmanager.h"
 
+#include "resources/map/mapitem.h"
 #include "resources/map/maplayer.h"
 #include "resources/map/speciallayer.h"
 

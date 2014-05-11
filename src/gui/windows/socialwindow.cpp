@@ -27,6 +27,7 @@
 #include "guildmanager.h"
 #include "party.h"
 
+#include "resources/map/mapitem.h"
 #include "resources/map/maplayer.h"
 #include "resources/map/speciallayer.h"
 

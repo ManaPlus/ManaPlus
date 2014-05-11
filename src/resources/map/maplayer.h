@@ -37,7 +37,6 @@
 
 class Image;
 class ImageVertexes;
-class MapItem;
 class MapObjectList;
 class MapRowVertexes;
 class SpecialLayer;
@@ -156,81 +155,6 @@ class MapLayer final: public ConfigListener
         int mMask;
         bool mIsFringeLayer;    /**< Whether the actors are drawn. */
         bool mHighlightAttackRange;
-};
-
-class MapItem final
-{
-    public:
-        friend class Map;
-        friend class MapLayer;
-
-        enum ItemType
-        {
-            EMPTY = 0,
-            HOME = 1,
-            ROAD = 2,
-            CROSS = 3,
-            ARROW_UP = 4,
-            ARROW_DOWN = 5,
-            ARROW_LEFT = 6,
-            ARROW_RIGHT = 7,
-            PORTAL = 8,
-            MUSIC = 9,
-            ATTACK = 10,
-            PRIORITY = 11,
-            IGNORE_ = 12,
-            PICKUP = 13,
-            NOPICKUP = 14,
-            SEPARATOR = 15
-        };
-
-        MapItem();
-
-        explicit MapItem(const int type);
-
-        MapItem(const int type, std::string comment);
-
-        MapItem(const int type, std::string comment, const int x, const int y);
-
-        A_DELETE_COPY(MapItem)
-
-        ~MapItem();
-
-        int getType() const A_WARN_UNUSED
-        { return mType; }
-
-        void setType(const int type);
-
-        void setPos(const int x, const int y);
-
-        int getX() const A_WARN_UNUSED
-        { return mX; }
-
-        int getY() const A_WARN_UNUSED
-        { return mY; }
-
-        const std::string &getComment() const A_WARN_UNUSED
-        { return mComment; }
-
-        void setComment(const std::string &comment)
-        { mComment = comment; }
-
-        const std::string &getName() const A_WARN_UNUSED
-        { return mName; }
-
-        void setName(const std::string &name)
-        { mName = name; }
-
-        void draw(Graphics *const graphics, const int x, const int y,
-                  const int dx, const int dy) const;
-
-    private:
-        Image *mImage;
-        std::string mComment;
-        std::string mName;
-        int mType;
-        int mX;
-        int mY;
 };
 
 class ObjectsLayer final

@@ -68,6 +68,7 @@
 #include "resources/db/emotedb.h"
 #include "resources/db/weaponsdb.h"
 
+#include "resources/map/mapitem.h"
 #include "resources/map/maplayer.h"
 #include "resources/map/speciallayer.h"
 

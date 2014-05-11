@@ -709,6 +709,8 @@ SET(SRCS
     resources/map/map.h
     resources/map/mapheights.cpp
     resources/map/mapheights.h
+    resources/map/mapitem.cpp
+    resources/map/mapitem.h
     resources/map/maplayer.cpp
     resources/map/maplayer.h
     resources/map/mapobject.h

@@ -37,6 +37,7 @@
 
 #include "resources/db/mapdb.h"
 
+#include "resources/map/mapitem.h"
 #include "resources/map/tileanimation.h"
 
 #include "utils/base64.h"
