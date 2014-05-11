@@ -32,6 +32,7 @@
 #include "resources/map/mapheights.h"
 #include "resources/map/maplayer.h"
 #include "resources/map/mapitem.h"
+#include "resources/map/maptype.h"
 #include "resources/map/objectslayer.h"
 #include "resources/map/speciallayer.h"
 #include "resources/map/tileset.h"
@@ -86,7 +87,7 @@ Map::Map(const int width, const int height,
     mTilesets(),
     mActors(),
     mHasWarps(false),
-    mDebugFlags(MAP_NORMAL),
+    mDebugFlags(MapType::NORMAL),
     mOnClosedList(1),
     mOnOpenList(2),
     mBackgrounds(),
@@ -337,7 +338,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     // Draw backgrounds
     drawAmbientLayers(graphics, BACKGROUND_LAYERS, mOverlayDetail);
 
-    if (mDebugFlags == MAP_BLACKWHITE && userPalette)
+    if (mDebugFlags == MapType::BLACKWHITE && userPalette)
     {
         graphics->setColor(userPalette->getColorWithAlpha(
             UserPalette::WALKABLE_HIGHLIGHT));
@@ -373,7 +374,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     }
 #endif
 
-    if (mDebugFlags == MAP_SPECIAL3 || mDebugFlags == MAP_BLACKWHITE)
+    if (mDebugFlags == MapType::SPECIAL3 || mDebugFlags == MapType::BLACKWHITE)
     {
         if (mFringeLayer)
         {
@@ -398,7 +399,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
             {
                 layer->setSpecialLayer(mSpecialLayer);
                 layer->setTempLayer(mTempLayer);
-                if (mDebugFlags == MAP_SPECIAL2)
+                if (mDebugFlags == MapType::SPECIAL2)
                     overFringe = true;
 
                 layer->drawFringe(graphics, startX, startY, endX, endY,
@@ -507,7 +508,7 @@ void Map::drawCollision(Graphics *const graphics,
     if (endY > mHeight)
         endY = mHeight;
 
-    if (debugFlags < MAP_SPECIAL)
+    if (debugFlags < MapType::SPECIAL)
     {
         graphics->setColor(userPalette->getColorWithAlpha(UserPalette::NET));
         graphics->drawNet(

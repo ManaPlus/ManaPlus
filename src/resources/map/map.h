@@ -78,16 +78,6 @@ class Map final : public Properties, public ConfigListener
             COLLISION_MAX = 5           // count index
         };
 
-        enum DebugType
-        {
-            MAP_NORMAL  = 0,
-            MAP_DEBUG   = 1,
-            MAP_SPECIAL = 2,
-            MAP_SPECIAL2 = 3,
-            MAP_SPECIAL3 = 4,
-            MAP_BLACKWHITE = 5
-        };
-
         /**
          * Constructor, taking map and tile size as parameters.
          */

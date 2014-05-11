@@ -30,6 +30,7 @@
 
 #include "resources/map/mapitem.h"
 #include "resources/map/maplayer.h"
+#include "resources/map/maptype.h"
 #include "resources/map/speciallayer.h"
 
 #include "being/localplayer.h"
@@ -75,7 +76,7 @@ Viewport::Viewport() :
     mMousePressY(0),
     mPixelViewX(0),
     mPixelViewY(0),
-    mShowDebugPath(Map::MAP_NORMAL),
+    mShowDebugPath(MapType::NORMAL),
     mCameraMode(0),
     mLocalWalkTime(-1),
     mCameraRelativeX(0),
@@ -237,7 +238,7 @@ void Viewport::draw(Graphics *graphics)
     {
         mMap->drawCollision(graphics, mPixelViewX,
             mPixelViewY, mShowDebugPath);
-        if (mShowDebugPath == Map::MAP_DEBUG)
+        if (mShowDebugPath == MapType::DEBUG)
             drawDebugPath(graphics);
     }
 
@@ -989,8 +990,8 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
 void Viewport::toggleDebugPath()
 {
     mShowDebugPath++;
-    if (mShowDebugPath > Map::MAP_BLACKWHITE)
-        mShowDebugPath = Map::MAP_NORMAL;
+    if (mShowDebugPath > MapType::BLACKWHITE)
+        mShowDebugPath = MapType::NORMAL;
     if (mMap)
         mMap->setDebugFlags(mShowDebugPath);
 }

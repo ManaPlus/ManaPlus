@@ -39,6 +39,7 @@
 #include "resources/map/mapitem.h"
 #include "resources/map/mapobjectlist.h"
 #include "resources/map/maprowvertexes.h"
+#include "resources/map/maptype.h"
 #include "resources/map/speciallayer.h"
 
 #include "gui/font.h"
@@ -116,8 +117,8 @@ void MapLayer::draw(Graphics *const graphics,
 
     const int dx = (mX * mapTileSize) - scrollX;
     const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
-    const bool flag = (debugFlags != Map::MAP_SPECIAL
-        && debugFlags != Map::MAP_SPECIAL2);
+    const bool flag = (debugFlags != MapType::SPECIAL
+        && debugFlags != MapType::SPECIAL2);
 
     for (int y = startY; y < endY; y++)
     {
@@ -209,8 +210,8 @@ void MapLayer::updateSDL(const Graphics *const graphics,
 
     const int dx = (mX * mapTileSize) - scrollX;
     const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
-    const bool flag = (debugFlags != Map::MAP_SPECIAL
-        && debugFlags != Map::MAP_SPECIAL2);
+    const bool flag = (debugFlags != MapType::SPECIAL
+        && debugFlags != MapType::SPECIAL2);
 
     for (int y = startY; y < endY; y++)
     {
@@ -274,8 +275,8 @@ void MapLayer::updateOGL(const Graphics *const graphics,
 
     const int dx = (mX * mapTileSize) - scrollX;
     const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
-    const bool flag = (debugFlags != Map::MAP_SPECIAL
-        && debugFlags != Map::MAP_SPECIAL2);
+    const bool flag = (debugFlags != MapType::SPECIAL
+        && debugFlags != MapType::SPECIAL2);
 
     MapRowVertexes *const row = new MapRowVertexes();
     mTempRows.push_back(row);
@@ -404,8 +405,8 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
         }
         BLOCK_END("MapLayer::drawFringe drawmobs")
 
-        if (debugFlags == Map::MAP_SPECIAL3
-            || debugFlags == Map::MAP_BLACKWHITE)
+        if (debugFlags == MapType::SPECIAL3
+            || debugFlags == MapType::BLACKWHITE)
         {
             if (y < specialHeight)
             {
@@ -454,8 +455,8 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                 {
                     const int px = x32 + dx;
                     const int py = py0 - img->mBounds.h;
-                    if ((debugFlags != Map::MAP_SPECIAL
-                        && debugFlags != Map::MAP_SPECIAL2)
+                    if ((debugFlags != MapType::SPECIAL
+                        && debugFlags != MapType::SPECIAL2)
                         || img->mBounds.h <= mapTileSize)
                     {
                         int width = 0;
@@ -513,7 +514,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
     }
 
     // Draw any remaining actors
-    if (debugFlags != Map::MAP_SPECIAL3)
+    if (debugFlags != MapType::SPECIAL3)
     {
         BLOCK_START("MapLayer::drawFringe drawmobs")
         while (ai != ai_end)
