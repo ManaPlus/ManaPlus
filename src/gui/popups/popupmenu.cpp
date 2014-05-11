@@ -76,8 +76,8 @@
 
 #include "resources/iteminfo.h"
 
+#include "resources/map/map.h"
 #include "resources/map/mapitem.h"
-#include "resources/map/maplayer.h"
 #include "resources/map/speciallayer.h"
 
 #include "utils/copynpaste.h"

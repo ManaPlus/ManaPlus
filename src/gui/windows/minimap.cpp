@@ -39,6 +39,9 @@
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
 
+#include "resources/map/map.h"
+#include "resources/map/metatile.h"
+
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/sdlcheckutils.h"

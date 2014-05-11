@@ -29,7 +29,6 @@
 
 #include "resources/map/blockmask.h"
 #include "resources/map/blocktype.h"
-#include "resources/map/metatile.h"
 #include "resources/map/properties.h"
 
 #include "listeners/configlistener.h"
@@ -39,20 +38,19 @@
 #include <string>
 #include <vector>
 
-class Animation;
 class AmbientLayer;
-class Image;
 class MapHeights;
 class MapItem;
 class MapLayer;
 class ObjectsLayer;
 class Particle;
 class Resource;
-class SimpleAnimation;
 class SpecialLayer;
 class Tileset;
 class TileAnimation;
 class WalkLayer;
+
+struct MetaTile;
 
 typedef std::vector<Tileset*> Tilesets;
 typedef std::vector<MapLayer*> Layers;

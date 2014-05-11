@@ -34,18 +34,12 @@
 #include "render/graphics.h"
 
 #include "resources/image.h"
-#include "resources/resourcemanager.h"
 
 #include "resources/map/mapitem.h"
-#include "resources/map/mapobjectlist.h"
 #include "resources/map/maprowvertexes.h"
 #include "resources/map/maptype.h"
 #include "resources/map/speciallayer.h"
 
-#include "gui/font.h"
-#include "gui/gui.h"
-
-#include "utils/delete2.h"
 #include "utils/dtor.h"
 
 #include "debug.h"

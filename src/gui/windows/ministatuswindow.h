@@ -23,10 +23,9 @@
 #ifndef GUI_WINDOWS_MINISTATUSWINDOW_H
 #define GUI_WINDOWS_MINISTATUSWINDOW_H
 
-#include "inventory.h"
-
 #include "listeners/arrowslistener.h"
 #include "listeners/attributelistener.h"
+#include "listeners/inventorylistener.h"
 #include "listeners/statlistener.h"
 #include "listeners/updatestatuslistener.h"
 
@@ -36,6 +35,7 @@
 
 class AnimatedSprite;
 class Graphics;
+class Inventory;
 class ProgressBar;
 class StatusPopup;
 class TextPopup;

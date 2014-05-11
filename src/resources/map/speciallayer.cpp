@@ -22,7 +22,6 @@
 
 #include "resources/map/mapconsts.h"
 #include "resources/map/mapitem.h"
-#include "resources/map/maplayer.h"
 
 #include "utils/delete2.h"
 

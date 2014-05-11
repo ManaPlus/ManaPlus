@@ -21,6 +21,7 @@
 #include "navigationmanager.h"
 
 #include "resources/map/map.h"
+#include "resources/map/metatile.h"
 #include "resources/map/walklayer.h"
 
 static const int walkMask = (BlockMask::WALL | BlockMask::AIR

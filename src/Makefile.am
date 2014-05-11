@@ -893,7 +893,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      textmanager.h \
 	      particle/textparticle.cpp \
 	      particle/textparticle.h \
-	      tileset.h \
+	      resources/map/tileset.h \
 	      touchactions.cpp \
 	      touchactions.h \
 	      touchmanager.cpp \

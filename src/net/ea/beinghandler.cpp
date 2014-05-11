@@ -50,6 +50,8 @@
 
 #include "resources/db/itemdb.h"
 
+#include "resources/map/map.h"
+
 #include "debug.h"
 
 extern int serverVersion;

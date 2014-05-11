@@ -42,6 +42,8 @@
 #include "net/gamehandler.h"
 #include "net/net.h"
 
+#include "resources/map/map.h"
+
 #include "utils/gettext.h"
 #include "utils/process.h"
 

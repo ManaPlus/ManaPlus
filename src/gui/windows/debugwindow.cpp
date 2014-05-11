@@ -40,6 +40,8 @@
 
 #include "resources/imagehelper.h"
 
+#include "resources/map/map.h"
+
 #include "net/packetcounters.h"
 
 #include "utils/delete2.h"

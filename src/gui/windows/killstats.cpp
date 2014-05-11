@@ -34,6 +34,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "resources/map/map.h"
+
 #include "utils/gettext.h"
 
 #include "debug.h"

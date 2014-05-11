@@ -66,6 +66,8 @@
 #include "resources/db/npcdb.h"
 #include "resources/db/petdb.h"
 
+#include "resources/map/map.h"
+
 #include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"
 

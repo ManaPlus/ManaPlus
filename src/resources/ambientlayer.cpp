@@ -21,8 +21,6 @@
 
 #include "resources/ambientlayer.h"
 
-#include "resources/map/map.h"
-
 #include "render/graphics.h"
 
 #include "resources/image.h"

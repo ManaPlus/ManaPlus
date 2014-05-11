@@ -25,7 +25,7 @@
 #include "configuration.h"
 #include "logger.h"
 
-#include "resources/map/blocktype.h"
+#include "resources/map/blockmask.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"

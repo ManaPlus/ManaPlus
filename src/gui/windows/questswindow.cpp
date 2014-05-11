@@ -46,6 +46,8 @@
 
 #include "resources/beingcommon.h"
 
+#include "resources/map/map.h"
+
 #include "debug.h"
 
 enum QuestType

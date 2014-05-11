@@ -38,6 +38,8 @@
 
 #include "gui/viewport.h"
 
+#include "resources/map/map.h"
+
 #include "debug.h"
 
 extern Net::PlayerHandler *playerHandler;

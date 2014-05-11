@@ -23,12 +23,9 @@
 #ifndef RESOURCES_MAP_MAPLAYER_H
 #define RESOURCES_MAP_MAPLAYER_H
 
-#include "position.h"
 #include "main.h"
 
 #include "listeners/configlistener.h"
-
-#include "resources/map/mapobject.h"
 
 #include "being/actor.h"
 
@@ -36,8 +33,6 @@
 #include <vector>
 
 class Image;
-class ImageVertexes;
-class MapObjectList;
 class MapRowVertexes;
 class SpecialLayer;
 

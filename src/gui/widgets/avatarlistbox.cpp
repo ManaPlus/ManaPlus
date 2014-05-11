@@ -37,8 +37,8 @@
 
 #include "resources/image.h"
 
+#include "resources/map/map.h"
 #include "resources/map/mapitem.h"
-#include "resources/map/maplayer.h"
 
 #include "debug.h"
 

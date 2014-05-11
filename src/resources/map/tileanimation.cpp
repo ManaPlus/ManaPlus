@@ -24,8 +24,6 @@
 
 #include "simpleanimation.h"
 
-#include "resources/image.h"
-
 #include "resources/map/maplayer.h"
 
 #include "utils/delete2.h"

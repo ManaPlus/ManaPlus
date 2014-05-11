@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_BOTCHECKERWINDOW_H
-#define GUI_BOTCHECKERWINDOW_H
+#ifndef GUI_WINDOWS_BOTCHECKERWINDOW_H
+#define GUI_WINDOWS_BOTCHECKERWINDOW_H
 
 #include "listeners/configlistener.h"
 
@@ -91,4 +91,4 @@ class BotCheckerWindow final : public Window,
 
 extern BotCheckerWindow *botCheckerWindow;
 
-#endif  // GUI_BOTCHECKERWINDOW_H
+#endif  // GUI_WINDOWS_BOTCHECKERWINDOW_H

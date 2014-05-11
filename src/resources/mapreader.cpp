@@ -30,6 +30,7 @@
 #include "resources/map/blocktype.h"
 #include "resources/map/map.h"
 #include "resources/map/mapconsts.h"
+#include "resources/map/mapheights.h"
 #include "resources/map/tileset.h"
 
 #include "resources/animation.h"

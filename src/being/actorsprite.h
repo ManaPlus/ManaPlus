@@ -25,7 +25,6 @@
 #include "localconsts.h"
 
 #include "resources/map/blocktype.h"
-#include "resources/map/map.h"
 #include "resources/map/mapconsts.h"
 
 #include "being/actor.h"

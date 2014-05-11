@@ -25,14 +25,12 @@
 
 #include "being/gender.h"
 
-#include "listeners/inventorylistener.h"
-
 #include <list>
 #include <string>
 
 #include "localconsts.h"
 
-class Inventory;
+class InventoryListener;
 class Item;
 
 class Inventory final

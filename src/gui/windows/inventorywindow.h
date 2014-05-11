@@ -29,6 +29,7 @@
 
 #include "listeners/actionlistener.h"
 #include "listeners/attributelistener.h"
+#include "listeners/inventorylistener.h"
 #include "listeners/keylistener.h"
 #include "listeners/selectionlistener.h"
 

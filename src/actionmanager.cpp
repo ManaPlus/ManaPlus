@@ -71,6 +71,8 @@
 
 #include "listeners/updatestatuslistener.h"
 
+#include "resources/map/map.h"
+
 #include "utils/gettext.h"
 
 #ifdef ANDROID

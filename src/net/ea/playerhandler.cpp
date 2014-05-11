@@ -41,6 +41,8 @@
 
 #include "resources/db/deaddb.h"
 
+#include "resources/map/map.h"
+
 #include "listeners/updatestatuslistener.h"
 
 #include "net/messagein.h"

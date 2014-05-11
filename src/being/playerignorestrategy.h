@@ -27,6 +27,8 @@
 
 #include "localconsts.h"
 
+class Being;
+
 /**
  * Ignore strategy: describes how we should handle ignores.
  */

@@ -25,12 +25,12 @@
 
 #include "utils/xml.h"
 
-#include "resources/map/mapheights.h"
 #include "resources/map/maplayer.h"
 
 #include <string>
 
 class Map;
+class MapHeights;
 class MapLayer;
 class Properties;
 class Tileset;

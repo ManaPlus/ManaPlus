@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_MAP_TYPE_H
-#define RESOURCES_MAP_TYPE_H
+#ifndef RESOURCES_MAP_MAPTYPE_H
+#define RESOURCES_MAP_MAPTYPE_H
 
 namespace MapType
 {
@@ -36,4 +36,4 @@ namespace MapType
     };
 }
 
-#endif  // RESOURCES_MAP_TYPE_H
+#endif  // RESOURCES_MAP_MAPTYPE_H

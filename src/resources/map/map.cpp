@@ -27,7 +27,6 @@
 #include "render/graphics.h"
 #include "notifications.h"
 #include "notifymanager.h"
-#include "simpleanimation.h"
 
 #include "resources/map/mapheights.h"
 #include "resources/map/maplayer.h"

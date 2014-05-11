@@ -30,6 +30,8 @@
 
 #include "resources/iteminfo.h"
 
+#include "listeners/inventorylistener.h"
+
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 

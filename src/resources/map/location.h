@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_MAP_LOCATION
-#define RESOURCES_MAP_LOCATION
+#ifndef RESOURCES_MAP_LOCATION_H
+#define RESOURCES_MAP_LOCATION_H
 
 #include "resources/map/metatile.h"
 
@@ -51,4 +51,4 @@ struct Location final
     MetaTile *tile;
 };
 
-#endif  // RESOURCES_MAP_LOCATION
+#endif  // RESOURCES_MAP_LOCATION_H

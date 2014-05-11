@@ -24,6 +24,7 @@
 
 #include "animatedsprite.h"
 #include "configuration.h"
+#include "inventory.h"
 
 #include "being/attributes.h"
 #include "being/localplayer.h"

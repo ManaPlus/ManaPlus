@@ -23,11 +23,11 @@
 
 #include "utils/dtor.h"
 
+#include "graphicsvertexes.h"
+
 #include <vector>
 
 #include "localconsts.h"
-
-class ImageVertexes;
 
 typedef std::vector<ImageVertexes*> MapRowImages;
 

@@ -25,7 +25,9 @@
 
 #include "resources/beinginfo.h"
 
-#include "resources/map/blocktype.h"
+#include "position.h"
+
+#include "listeners/configlistener.h"
 
 #include "being/gender.h"
 
