@@ -66,11 +66,6 @@
 
 #include "events/inputguievent.h"
 
-namespace gcn
-{
-    class Gui;
-}
-
 class Widget;
 
 /**
