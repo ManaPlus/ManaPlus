@@ -807,6 +807,7 @@ SET(SRCS
     listeners/errorlistener.h
     events/event.h
     listeners/focuslistener.h
+    listeners/inventorylistener.h
     events/inputguievent.h
     input/key.h
     events/keyevent.h

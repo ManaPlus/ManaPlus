@@ -161,6 +161,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      listeners/errorlistener.h \
 	      events/event.h \
 	      listeners/focuslistener.h \
+	      listeners/inventorylistener.h \
 	      render/graphics.h \
 	      events/inputguievent.h \
 	      input/key.h \

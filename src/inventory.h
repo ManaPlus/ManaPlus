@@ -25,6 +25,8 @@
 
 #include "being/gender.h"
 
+#include "listeners/inventorylistener.h"
+
 #include <list>
 #include <string>
 
@@ -32,19 +34,6 @@
 
 class Inventory;
 class Item;
-
-class InventoryListener
-{
-    public:
-        virtual ~InventoryListener()
-        { }
-
-        virtual void slotsChanged(Inventory *const inventory) = 0;
-
-    protected:
-        InventoryListener()
-        { }
-};
 
 class Inventory final
 {
