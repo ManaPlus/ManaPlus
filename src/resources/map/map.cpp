@@ -527,10 +527,10 @@ void Map::drawCollision(Graphics *const graphics,
             int width = 0;
             const int x0 = x;
 
-            fillCollision(BLOCKMASK_WALL, COLLISION_HIGHLIGHT);
-            fillCollision(BLOCKMASK_AIR, AIR_COLLISION_HIGHLIGHT);
-            fillCollision(BLOCKMASK_WATER, WATER_COLLISION_HIGHLIGHT);
-            fillCollision(BLOCKMASK_GROUNDTOP, GROUNDTOP_COLLISION_HIGHLIGHT);
+            fillCollision(BlockMask::WALL, COLLISION_HIGHLIGHT);
+            fillCollision(BlockMask::AIR, AIR_COLLISION_HIGHLIGHT);
+            fillCollision(BlockMask::WATER, WATER_COLLISION_HIGHLIGHT);
+            fillCollision(BlockMask::GROUNDTOP, GROUNDTOP_COLLISION_HIGHLIGHT);
         }
     }
 }
@@ -636,25 +636,25 @@ void Map::blockTile(const int x, const int y,
         switch (type)
         {
             case BlockType::WALL:
-                mMetaTiles[tileNum].blockmask |= BLOCKMASK_WALL;
+                mMetaTiles[tileNum].blockmask |= BlockMask::WALL;
                 break;
             case BlockType::CHARACTER:
-                mMetaTiles[tileNum].blockmask |= BLOCKMASK_CHARACTER;
+                mMetaTiles[tileNum].blockmask |= BlockMask::CHARACTER;
                 break;
             case BlockType::MONSTER:
-                mMetaTiles[tileNum].blockmask |= BLOCKMASK_MONSTER;
+                mMetaTiles[tileNum].blockmask |= BlockMask::MONSTER;
                 break;
             case BlockType::AIR:
-                mMetaTiles[tileNum].blockmask |= BLOCKMASK_AIR;
+                mMetaTiles[tileNum].blockmask |= BlockMask::AIR;
                 break;
             case BlockType::WATER:
-                mMetaTiles[tileNum].blockmask |= BLOCKMASK_WATER;
+                mMetaTiles[tileNum].blockmask |= BlockMask::WATER;
                 break;
             case BlockType::GROUND:
-                mMetaTiles[tileNum].blockmask |= BLOCKMASK_GROUND;
+                mMetaTiles[tileNum].blockmask |= BlockMask::GROUND;
                 break;
             case BlockType::GROUNDTOP:
-                mMetaTiles[tileNum].blockmask |= BLOCKMASK_GROUNDTOP;
+                mMetaTiles[tileNum].blockmask |= BlockMask::GROUNDTOP;
                 break;
             default:
             case BlockType::NONE:
@@ -815,7 +815,7 @@ Path Map::findPath(const int startX, const int startY,
                 if (newTile->whichList == mOnClosedList ||
                     ((newTile->blockmask & walkmask)
                     && !(x == destX && y == destY))
-                    || (newTile->blockmask & BLOCKMASK_WALL))
+                    || (newTile->blockmask & BlockMask::WALL))
                 {
                     continue;
                 }
@@ -831,7 +831,7 @@ Path Map::findPath(const int startX, const int startY,
 
                     // +++ here need check block must depend
                     // on player abilities.
-                    if (((t1->blockmask | t2->blockmask) & BLOCKMASK_WALL))
+                    if (((t1->blockmask | t2->blockmask) & BlockMask::WALL))
                         continue;
                 }
 

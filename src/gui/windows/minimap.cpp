@@ -145,8 +145,8 @@ void Minimap::setMap(const Map *const map)
                 return;
             }
             const int size = surface->h * surface->w;
-            const int mask = (Map::BLOCKMASK_WALL | Map::BLOCKMASK_AIR
-                | Map::BLOCKMASK_WATER);
+            const int mask = (BlockMask::WALL | BlockMask::AIR
+                | BlockMask::WATER);
 
             for (int ptr = 0; ptr < size; ptr ++)
                 *(data ++) = -!(map->mMetaTiles[ptr].blockmask & mask);

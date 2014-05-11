@@ -3689,7 +3689,7 @@ void LocalPlayer::resetYellowBar()
 unsigned char LocalPlayer::getWalkMask() const
 {
     // for now blocking all types of collisions
-    return Map::BLOCKMASK_WALL | Map::BLOCKMASK_AIR | Map::BLOCKMASK_WATER;
+    return BlockMask::WALL | BlockMask::AIR | BlockMask::WATER;
 }
 
 void LocalPlayer::removeHome()

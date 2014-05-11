@@ -23,8 +23,8 @@
 #include "resources/map/map.h"
 #include "resources/map/walklayer.h"
 
-static const int walkMask = (Map::BLOCKMASK_WALL | Map::BLOCKMASK_AIR
-    | Map::BLOCKMASK_WATER);
+static const int walkMask = (BlockMask::WALL | BlockMask::AIR
+    | BlockMask::WATER);
 
 namespace
 {

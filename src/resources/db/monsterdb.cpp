@@ -96,8 +96,8 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
         if (!currentInfo)
             currentInfo = new BeingInfo;
 
-        currentInfo->setWalkMask(Map::BLOCKMASK_WALL
-            | Map::BLOCKMASK_CHARACTER | Map::BLOCKMASK_MONSTER);
+        currentInfo->setWalkMask(BlockMask::WALL
+            | BlockMask::CHARACTER | BlockMask::MONSTER);
         currentInfo->setBlockType(BlockType::MONSTER);
 
         currentInfo->setName(XML::langProperty(
@@ -118,16 +118,16 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
         std::string walkStr = XML::getProperty(
             monsterNode, "walkType", "walk");
         if (walkStr == "walk")
-            block = Map::BLOCKMASK_WATER | Map::BLOCKMASK_AIR;
+            block = BlockMask::WATER | BlockMask::AIR;
         else if (walkStr == "fly")
             block = 0;
         else if (walkStr == "swim")
-            block = Map::BLOCKMASK_GROUND | Map::BLOCKMASK_AIR;
+            block = BlockMask::GROUND | BlockMask::AIR;
         else if (walkStr == "walkswim" || walkStr == "swimwalk")
-            block = Map::BLOCKMASK_AIR;
+            block = BlockMask::AIR;
 
         currentInfo->setWalkMask(static_cast<unsigned char>(
-            Map::BLOCKMASK_WALL | block));
+            BlockMask::WALL | block));
 
         if (currentInfo->getMaxHP())
             currentInfo->setStaticMaxHP(true);

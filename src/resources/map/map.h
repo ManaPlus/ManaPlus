@@ -27,6 +27,7 @@
 
 #include "being/actor.h"
 
+#include "resources/map/blockmask.h"
 #include "resources/map/blocktype.h"
 #include "resources/map/metatile.h"
 #include "resources/map/properties.h"
@@ -75,17 +76,6 @@ class Map final : public Properties, public ConfigListener
             COLLISION_WATER = 3,        // water units can walk
             COLLISION_GROUNDTOP = 4,    // no collision (chair, bed, etc)
             COLLISION_MAX = 5           // count index
-        };
-
-        enum BlockMask
-        {
-            BLOCKMASK_WALL      = 0x80,  // 1000 0000
-            BLOCKMASK_CHARACTER = 0x01,  // 0000 0001
-            BLOCKMASK_MONSTER   = 0x02,  // 0000 0010
-            BLOCKMASK_AIR       = 0x04,  // 0000 0100
-            BLOCKMASK_WATER     = 0x08,  // 0000 1000
-            BLOCKMASK_GROUND    = 0x10,  // 0001 0000
-            BLOCKMASK_GROUNDTOP = 0x20   // 0010 0000
         };
 
         enum DebugType
@@ -171,8 +161,8 @@ class Map final : public Properties, public ConfigListener
          * without walkmask, only blocks against colliding tiles.
          */
         bool getWalk(const int x, const int y,
-                     const unsigned char walkmask = BLOCKMASK_WALL
-                     | BLOCKMASK_AIR | BLOCKMASK_WATER) const A_WARN_UNUSED;
+                     const unsigned char walkmask = BlockMask::WALL
+                     | BlockMask::AIR | BlockMask::WATER) const A_WARN_UNUSED;
 
         void setWalk(const int x, const int y, const bool walkable);
 
