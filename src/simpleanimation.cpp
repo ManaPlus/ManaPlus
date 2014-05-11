@@ -23,7 +23,8 @@
 #include "simpleanimation.h"
 
 #include "logger.h"
-#include "map.h"
+
+#include "resources/map/map.h"
 
 #include "render/graphics.h"
 

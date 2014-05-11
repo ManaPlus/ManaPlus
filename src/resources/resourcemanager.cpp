@@ -26,7 +26,8 @@
 #include "configuration.h"
 #include "logger.h"
 #include "navigationmanager.h"
-#include "walklayer.h"
+
+#include "resources/map/walklayer.h"
 
 #include "resources/atlasmanager.h"
 #include "resources/dye.h"

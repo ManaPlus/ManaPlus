@@ -21,7 +21,7 @@
 
 #include "being/actor.h"
 
-#include "map.h"
+#include "resources/map/map.h"
 
 #include "debug.h"
 

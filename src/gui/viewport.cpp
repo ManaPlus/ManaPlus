@@ -25,9 +25,10 @@
 #include "actormanager.h"
 #include "configuration.h"
 #include "game.h"
-#include "maplayer.h"
 #include "sdlshared.h"
 #include "textmanager.h"
+
+#include "resources/map/maplayer.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"

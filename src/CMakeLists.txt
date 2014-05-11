@@ -704,12 +704,12 @@ SET(SRCS
     logger.h
     main.cpp
     main.h
-    map.cpp
-    map.h
-    mapheights.cpp
-    mapheights.h
-    maplayer.cpp
-    maplayer.h
+    resources/map/map.cpp
+    resources/map/map.h
+    resources/map/mapheights.cpp
+    resources/map/mapheights.h
+    resources/map/maplayer.cpp
+    resources/map/maplayer.h
     render/mgl.cpp
     render/mgl.h
     render/mobileopenglgraphics.cpp
@@ -795,8 +795,8 @@ SET(SRCS
     variabledata.h
     vector.cpp
     vector.h
-    walklayer.cpp
-    walklayer.h
+    resources/map/walklayer.cpp
+    resources/map/walklayer.h
     events/actionevent.h
     listeners/actionlistener.h
     gui/widgets/basiccontainer.h

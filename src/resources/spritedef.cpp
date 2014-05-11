@@ -23,7 +23,8 @@
 #include "resources/spritedef.h"
 
 #include "logger.h"
-#include "map.h"
+
+#include "resources/map/map.h"
 
 #include "resources/action.h"
 #include "resources/animation.h"

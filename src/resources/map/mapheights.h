@@ -18,27 +18,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "walklayer.h"
+#ifndef RESOURCES_MAP_MAPHEIGHTS_H
+#define RESOURCES_MAP_MAPHEIGHTS_H
 
-#include "debug.h"
+#include "localconsts.h"
 
-WalkLayer::WalkLayer(const int width, const int height) :
-    Resource(),
-    mWidth(width),
-    mHeight(height),
-    mTiles(new int[width * height])
+class MapHeights final
 {
-    std::fill_n(mTiles, width * height, 0);
-}
+    public:
+        friend class Map;
 
-WalkLayer::~WalkLayer()
-{
-    delete [] mTiles;
-}
+        MapHeights(const int width, const int height);
 
-int WalkLayer::getDataAt(const int x, const int y) const
-{
-    if (x < 0 || x >= mWidth || y < 0 || y >= mHeight)
-        return 0;
-    return mTiles[x + y * mWidth];
-}
+        A_DELETE_COPY(MapHeights)
+
+        ~MapHeights();
+
+        void setHeight(const int x, const int y, const uint8_t height);
+
+        uint8_t getHeight(const int x, const int y) const
+        { return mTiles[x + y * mWidth]; }
+
+    private:
+        int mWidth;
+        int mHeight;
+        uint8_t *mTiles;
+};
+
+#endif  // RESOURCES_MAP_MAPHEIGHTS_H

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PROPERTIES_H
-#define PROPERTIES_H
+#ifndef RESOURCES_MAP_PROPERTIES_H
+#define RESOURCES_MAP_PROPERTIES_H
 
 #include "localconsts.h"
 
@@ -132,4 +132,4 @@ class Properties
         PropertyMap mProperties;
 };
 
-#endif  // PROPERTIES_H
+#endif  // RESOURCES_MAP_PROPERTIES_H

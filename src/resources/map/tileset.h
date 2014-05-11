@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TILESET_H
-#define TILESET_H
+#ifndef RESOURCES_MAP_TILESET_H
+#define RESOURCES_MAP_TILESET_H
 
 #include "resources/imageset.h"
 
@@ -76,4 +76,4 @@ class Tileset final : public ImageSet
         std::map<std::string, std::string> mProperties;
 };
 
-#endif  // TILESET_H
+#endif  // RESOURCES_MAP_TILESET_H

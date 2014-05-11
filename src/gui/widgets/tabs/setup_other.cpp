@@ -29,7 +29,8 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "configuration.h"
-#include "map.h"
+
+#include "resources/map/map.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"

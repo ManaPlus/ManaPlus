@@ -23,7 +23,8 @@
 #include "particle/particleemitter.h"
 
 #include "logger.h"
-#include "map.h"
+
+#include "resources/map/map.h"
 
 #include "particle/animationparticle.h"
 #include "particle/rotationalparticle.h"

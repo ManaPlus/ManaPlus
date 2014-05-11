@@ -26,8 +26,9 @@
 #include "graphicsmanager.h"
 #include "logger.h"
 #include "main.h"
-#include "map.h"
-#include "tileset.h"
+
+#include "resources/map/map.h"
+#include "resources/map/tileset.h"
 
 #include "resources/animation.h"
 #include "resources/beingcommon.h"

@@ -23,7 +23,8 @@
 #include "gui/widgets/tabs/setup_audio.h"
 
 #include "main.h"
-#include "map.h"
+
+#include "resources/map/map.h"
 
 #include "configuration.h"
 #include "soundmanager.h"

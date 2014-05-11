@@ -24,7 +24,6 @@
 #include "actormanager.h"
 #include "configuration.h"
 #include "graphicsvertexes.h"
-#include "maplayer.h"
 
 #include "being/localplayer.h"
 
@@ -37,6 +36,8 @@
 #include "gui/windows/chatwindow.h"
 
 #include "resources/image.h"
+
+#include "resources/map/maplayer.h"
 
 #include "debug.h"
 

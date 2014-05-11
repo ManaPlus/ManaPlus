@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MAPLAYER_H
-#define MAPLAYER_H
+#ifndef RESOURCES_MAP_MAPLAYER_H
+#define RESOURCES_MAP_MAPLAYER_H
 
 #include "position.h"
 #include "main.h"
@@ -325,4 +325,4 @@ class ObjectsLayer final
         unsigned mHeight;
 };
 
-#endif  // MAPLAYER_H
+#endif  // RESOURCES_MAP_MAPLAYER_H

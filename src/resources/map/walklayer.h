@@ -18,31 +18,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MAPHEIGHTS_H
-#define MAPHEIGHTS_H
+#ifndef RESOURCES_MAP_WALKLAYER_H
+#define RESOURCES_MAP_WALKLAYER_H
+
+#include "resources/resource.h"
 
 #include "localconsts.h"
 
-class MapHeights final
+class WalkLayer final : public Resource
 {
     public:
-        friend class Map;
+        WalkLayer(const int width, const int height);
 
-        MapHeights(const int width, const int height);
+        A_DELETE_COPY(WalkLayer)
 
-        A_DELETE_COPY(MapHeights)
+        ~WalkLayer();
 
-        ~MapHeights();
+        int *getData()
+        { return mTiles; }
 
-        void setHeight(const int x, const int y, const uint8_t height);
-
-        uint8_t getHeight(const int x, const int y) const
-        { return mTiles[x + y * mWidth]; }
+        int getDataAt(const int x, const int y) const;
 
     private:
         int mWidth;
         int mHeight;
-        uint8_t *mTiles;
+        int *mTiles;
 };
 
-#endif  // MAPHEIGHTS_H
+#endif  // RESOURCES_MAP_WALKLAYER_H

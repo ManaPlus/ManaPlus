@@ -28,8 +28,9 @@
 #include "main.h"
 #endif
 
-#include "map.h"
 #include "sdlshared.h"
+
+#include "resources/map/map.h"
 
 #include "render/surfacegraphics.h"
 

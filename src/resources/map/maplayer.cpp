@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "maplayer.h"
+#include "resources/map/maplayer.h"
 
 #include "configuration.h"
 #include "graphicsvertexes.h"

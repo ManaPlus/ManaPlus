@@ -23,7 +23,8 @@
 #define BEING_ACTORSPRITE_H
 
 #include "localconsts.h"
-#include "map.h"
+
+#include "resources/map/map.h"
 
 #include "being/actor.h"
 #include "being/compoundsprite.h"

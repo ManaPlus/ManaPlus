@@ -25,8 +25,9 @@
 #include "configuration.h"
 #include "guild.h"
 #include "guildmanager.h"
-#include "maplayer.h"
 #include "party.h"
+
+#include "resources/map/maplayer.h"
 
 #include "being/localplayer.h"
 #include "being/playerrelations.h"

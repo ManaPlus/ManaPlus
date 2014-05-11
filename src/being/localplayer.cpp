@@ -29,12 +29,11 @@
 #include "dropshortcut.h"
 #include "guild.h"
 #include "item.h"
-#include "maplayer.h"
 #include "party.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
-#include "walklayer.h"
+#include "resources/map/walklayer.h"
 
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
@@ -68,6 +67,8 @@
 
 #include "resources/db/emotedb.h"
 #include "resources/db/weaponsdb.h"
+
+#include "resources/map/maplayer.h"
 
 #include "listeners/updatestatuslistener.h"
 

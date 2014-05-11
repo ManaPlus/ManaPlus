@@ -31,7 +31,6 @@
 #include "guild.h"
 #include "guildmanager.h"
 #include "item.h"
-#include "maplayer.h"
 #include "party.h"
 #include "spellmanager.h"
 
@@ -76,6 +75,8 @@
 #include "net/tradehandler.h"
 
 #include "resources/iteminfo.h"
+
+#include "resources/map/maplayer.h"
 
 #include "utils/copynpaste.h"
 #include "utils/gettext.h"

@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mapheights.h"
+#include "resources/map/mapheights.h"
 
 #include "debug.h"
 

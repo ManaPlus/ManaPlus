@@ -20,8 +20,8 @@
 
 #include "navigationmanager.h"
 
-#include "map.h"
-#include "walklayer.h"
+#include "resources/map/map.h"
+#include "resources/map/walklayer.h"
 
 static const int walkMask = (Map::BLOCKMASK_WALL | Map::BLOCKMASK_AIR
     | Map::BLOCKMASK_WATER);

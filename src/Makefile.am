@@ -50,8 +50,8 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      logger.h \
 	      navigationmanager.cpp \
 	      navigationmanager.h \
-	      walklayer.cpp \
-	      walklayer.h \
+	      resources/map/walklayer.cpp \
+	      resources/map/walklayer.h \
 	      render/graphics.cpp \
 	      render/graphics.h \
 	      render/renderers.cpp \
@@ -793,12 +793,12 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      logger.h \
 	      main.cpp \
 	      main.h \
-	      map.cpp \
-	      map.h \
-	      mapheights.cpp \
-	      mapheights.h \
-	      maplayer.cpp \
-	      maplayer.h \
+	      resources/map/map.cpp \
+	      resources/map/map.h \
+	      resources/map/mapheights.cpp \
+	      resources/map/mapheights.h \
+	      resources/map/maplayer.cpp \
+	      resources/map/maplayer.h \
 	      render/mgl.cpp \
 	      render/mgl.h \
 	      render/mobileopenglgraphics.cpp \
@@ -882,8 +882,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      variabledata.h \
 	      vector.cpp \
 	      vector.h \
-	      walklayer.cpp \
-	      walklayer.h \
+	      resources/map/walklayer.cpp \
+	      resources/map/walklayer.h \
 	      winver.h
 
 manaplus_SOURCES += \

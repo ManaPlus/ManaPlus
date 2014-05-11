@@ -20,18 +20,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "map.h"
+#include "resources/map/map.h"
 
 #include "client.h"
 #include "configuration.h"
 #include "render/graphics.h"
-#include "mapheights.h"
-#include "maplayer.h"
 #include "notifications.h"
 #include "notifymanager.h"
 #include "simpleanimation.h"
-#include "tileset.h"
-#include "walklayer.h"
+
+#include "resources/map/mapheights.h"
+#include "resources/map/maplayer.h"
+#include "resources/map/tileset.h"
+#include "resources/map/walklayer.h"
 
 #include "being/localplayer.h"
 

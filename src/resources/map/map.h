@@ -20,13 +20,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MAP_H
-#define MAP_H
+#ifndef RESOURCES_MAP_MAP_H
+#define RESOURCES_MAP_MAP_H
 
 #include "position.h"
-#include "properties.h"
 
 #include "being/actor.h"
+
+#include "resources/map/properties.h"
 
 #include "listeners/configlistener.h"
 
@@ -536,4 +537,4 @@ class Map final : public Properties, public ConfigListener
         bool mCustom;
 };
 
-#endif  // MAP_H
+#endif  // RESOURCES_MAP_MAP_H

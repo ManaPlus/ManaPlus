@@ -25,8 +25,8 @@
 
 #include "utils/xml.h"
 
-#include "mapheights.h"
-#include "maplayer.h"
+#include "resources/map/mapheights.h"
+#include "resources/map/maplayer.h"
 
 #include <string>
 
