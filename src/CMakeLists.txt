@@ -704,6 +704,7 @@ SET(SRCS
     logger.h
     main.cpp
     main.h
+    resources/map/location.h
     resources/map/map.cpp
     resources/map/map.h
     resources/map/mapheights.cpp

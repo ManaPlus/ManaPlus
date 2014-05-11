@@ -43,6 +43,8 @@
 #include "resources/resourcemanager.h"
 #include "resources/subimage.h"
 
+#include "resources/map/location.h"
+
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/mkdir.h"
@@ -55,30 +57,6 @@
 #include <sys/stat.h>
 
 #include "debug.h"
-
-/**
- * A location on a tile map. Used for pathfinding, open list.
- */
-struct Location final
-{
-    /**
-     * Constructor.
-     */
-    Location(const int px, const int py, MetaTile *const ptile):
-        x(px), y(py), tile(ptile)
-    {}
-
-    /**
-     * Comparison operator.
-     */
-    bool operator< (const Location &loc) const
-    {
-        return tile->Fcost > loc.tile->Fcost;
-    }
-
-    int x, y;
-    MetaTile *tile;
-};
 
 class ActorFunctuator final
 {
