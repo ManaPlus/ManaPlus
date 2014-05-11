@@ -800,6 +800,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/map/mapheights.h \
 	      resources/map/maplayer.cpp \
 	      resources/map/maplayer.h \
+	      resources/map/mapobject.h \
 	      resources/map/maprowvertexes.h \
 	      resources/map/metatile.h \
 	      render/mgl.cpp \

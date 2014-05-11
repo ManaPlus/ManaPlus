@@ -28,6 +28,8 @@
 
 #include "listeners/configlistener.h"
 
+#include "resources/map/mapobject.h"
+
 #include "being/actor.h"
 
 #include <string>
@@ -38,18 +40,6 @@ class ImageVertexes;
 class MapItem;
 class MapRowVertexes;
 class SpecialLayer;
-
-class MapObject final
-{
-    public:
-        MapObject(const int type0, const std::string &data0) :
-            type(type0), data(data0)
-        {
-        }
-
-        int type;
-        std::string data;
-};
 
 class MapObjectList final
 {
