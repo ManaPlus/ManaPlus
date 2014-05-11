@@ -77,6 +77,7 @@
 #include "resources/iteminfo.h"
 
 #include "resources/map/maplayer.h"
+#include "resources/map/speciallayer.h"
 
 #include "utils/copynpaste.h"
 #include "utils/gettext.h"

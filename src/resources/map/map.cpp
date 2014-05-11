@@ -31,6 +31,7 @@
 
 #include "resources/map/mapheights.h"
 #include "resources/map/maplayer.h"
+#include "resources/map/speciallayer.h"
 #include "resources/map/tileset.h"
 #include "resources/map/walklayer.h"
 

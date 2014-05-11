@@ -759,6 +759,8 @@ SET(SRCS
     position.cpp
     position.h
     resources/map/properties.h
+    resources/map/speciallayer.cpp
+    resources/map/speciallayer.h
     resources/map/tileanimation.cpp
     resources/map/tileanimation.h
     particle/rotationalparticle.cpp

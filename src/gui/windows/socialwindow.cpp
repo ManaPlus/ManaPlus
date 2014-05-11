@@ -28,6 +28,7 @@
 #include "party.h"
 
 #include "resources/map/maplayer.h"
+#include "resources/map/speciallayer.h"
 
 #include "being/localplayer.h"
 #include "being/playerrelations.h"

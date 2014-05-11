@@ -69,6 +69,7 @@
 #include "resources/db/weaponsdb.h"
 
 #include "resources/map/maplayer.h"
+#include "resources/map/speciallayer.h"
 
 #include "listeners/updatestatuslistener.h"
 

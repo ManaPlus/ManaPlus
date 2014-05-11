@@ -158,38 +158,6 @@ class MapLayer final: public ConfigListener
         bool mHighlightAttackRange;
 };
 
-class SpecialLayer final
-{
-    public:
-        friend class Map;
-        friend class MapLayer;
-
-        SpecialLayer(const int width, const int height);
-
-        A_DELETE_COPY(SpecialLayer)
-
-        ~SpecialLayer();
-
-        void draw(Graphics *const graphics, int startX, int startY,
-                  int endX, int endY,
-                  const int scrollX, const int scrollY) const;
-
-        MapItem* getTile(const int x, const int y) const A_WARN_UNUSED;
-
-        void setTile(const int x, const int y, MapItem *const item);
-
-        void setTile(const int x, const int y, const int type);
-
-        void addRoad(const Path &road);
-
-        void clean() const;
-
-    private:
-        int mWidth;
-        int mHeight;
-        MapItem **mTiles;
-};
-
 class MapItem final
 {
     public:
