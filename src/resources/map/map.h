@@ -60,8 +60,6 @@ typedef std::vector<AmbientLayer*> AmbientLayerVector;
 typedef AmbientLayerVector::const_iterator AmbientLayerVectorCIter;
 typedef AmbientLayerVector::iterator AmbientLayerVectorIter;
 
-static const int mapTileSize = 32;
-
 /**
  * A tile map.
  */

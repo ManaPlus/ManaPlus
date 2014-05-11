@@ -25,6 +25,7 @@
 #include "localconsts.h"
 
 #include "resources/map/map.h"
+#include "resources/map/mapconsts.h"
 
 #include "being/actor.h"
 #include "being/compoundsprite.h"

@@ -30,7 +30,7 @@
 
 #include "configuration.h"
 
-#include "resources/map/map.h"
+#include "resources/map/mapconsts.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"

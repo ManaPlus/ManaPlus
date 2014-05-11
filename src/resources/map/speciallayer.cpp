@@ -20,7 +20,7 @@
 
 #include "resources/map/speciallayer.h"
 
-#include "resources/map/map.h"
+#include "resources/map/mapconsts.h"
 #include "resources/map/mapitem.h"
 #include "resources/map/maplayer.h"
 
