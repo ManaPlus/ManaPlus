@@ -37,6 +37,8 @@
 
 #include "resources/db/mapdb.h"
 
+#include "resources/map/tileanimation.h"
+
 #include "utils/base64.h"
 #include "utils/delete2.h"
 

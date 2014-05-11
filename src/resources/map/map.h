@@ -49,46 +49,18 @@ class Resource;
 class SimpleAnimation;
 class SpecialLayer;
 class Tileset;
+class TileAnimation;
 class WalkLayer;
 
 typedef std::vector<Tileset*> Tilesets;
 typedef std::vector<MapLayer*> Layers;
 typedef Layers::const_iterator LayersCIter;
 
-typedef std::vector<std::pair<MapLayer*, int> > TilePairVector;
-typedef TilePairVector::const_iterator TilePairVectorCIter;
-
 typedef std::vector<AmbientLayer*> AmbientLayerVector;
 typedef AmbientLayerVector::const_iterator AmbientLayerVectorCIter;
 typedef AmbientLayerVector::iterator AmbientLayerVectorIter;
 
 static const int mapTileSize = 32;
-
-/**
- * Animation cycle of a tile image which changes the map accordingly.
- */
-class TileAnimation final
-{
-    public:
-        explicit TileAnimation(Animation *const ani);
-
-        ~TileAnimation();
-
-        A_DELETE_COPY(TileAnimation)
-
-        bool update(const int ticks = 1);
-
-        void addAffectedTile(MapLayer *const layer, const int index)
-        { mAffected.push_back(std::make_pair(layer, index)); }
-
-    private:
-        TilePairVector mAffected;
-        SimpleAnimation *mAnimation;
-        Image *mLastImage;
-};
-
-typedef std::map<int, TileAnimation*> TileAnimationMap;
-typedef TileAnimationMap::const_iterator TileAnimationMapCIter;
 
 /**
  * A tile map.

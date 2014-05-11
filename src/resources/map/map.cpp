@@ -44,6 +44,7 @@
 #include "resources/subimage.h"
 
 #include "resources/map/location.h"
+#include "resources/map/tileanimation.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
@@ -68,41 +69,6 @@ class ActorFunctuator final
             return a->getSortPixelY() < b->getSortPixelY();
         }
 } actorCompare;
-
-TileAnimation::TileAnimation(Animation *const ani):
-    mAffected(),
-    mAnimation(new SimpleAnimation(ani)),
-    mLastImage(nullptr)
-{
-}
-
-TileAnimation::~TileAnimation()
-{
-    delete2(mAnimation);
-}
-
-bool TileAnimation::update(const int ticks)
-{
-    if (!mAnimation)
-        return false;
-
-    // update animation
-    if (!mAnimation->update(ticks))
-        return false;
-
-    // exchange images
-    Image *const img = mAnimation->getCurrentImage();
-    if (img != mLastImage)
-    {
-        FOR_EACH (TilePairVectorCIter, i, mAffected)
-        {
-            if (i->first)
-                i->first->setTile(i->second, img);
-        }
-        mLastImage = img;
-    }
-    return true;
-}
 
 Map::Map(const int width, const int height,
          const int tileWidth, const int tileHeight) :

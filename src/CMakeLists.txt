@@ -755,7 +755,9 @@ SET(SRCS
     listeners/playerrelationslistener.h
     position.cpp
     position.h
-    properties.h
+    resources/map/properties.h
+    resources/map/tileanimation.cpp
+    resources/map/tileanimation.h
     particle/rotationalparticle.cpp
     particle/rotationalparticle.h
     render/safeopenglgraphics.cpp
