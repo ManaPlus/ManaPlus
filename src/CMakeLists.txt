@@ -649,6 +649,7 @@ SET(SRCS
     effectmanager.h
     emoteshortcut.cpp
     emoteshortcut.h
+    emoteshortcutconsts.h
     equipment.h
     eventsmanager.cpp
     eventsmanager.h
