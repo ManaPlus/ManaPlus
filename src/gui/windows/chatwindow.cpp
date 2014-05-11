@@ -31,6 +31,7 @@
 #include "party.h"
 #include "spellshortcut.h"
 
+#include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
@@ -983,7 +984,7 @@ void ChatWindow::attributeChanged(const int id,
 {
     switch (id)
     {
-        case PlayerInfo::EXP:
+        case Attributes::EXP:
         {
             if (oldVal > newVal)
                 break;
@@ -995,7 +996,7 @@ void ChatWindow::attributeChanged(const int id,
             }
             break;
         }
-        case PlayerInfo::LEVEL:
+        case Attributes::LEVEL:
             battleChatLog(std::string("Level: ").append(toString(newVal)));
             break;
         default:

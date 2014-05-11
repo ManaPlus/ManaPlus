@@ -25,6 +25,7 @@
 #include "animatedsprite.h"
 #include "configuration.h"
 
+#include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
@@ -267,23 +268,23 @@ void MiniStatusWindow::attributeChanged(const int id,
 {
     switch (id)
     {
-        case PlayerInfo::HP:
-        case PlayerInfo::MAX_HP:
+        case Attributes::HP:
+        case Attributes::MAX_HP:
             StatusWindow::updateHPBar(mHpBar);
             break;
-        case PlayerInfo::MP:
-        case PlayerInfo::MAX_MP:
+        case Attributes::MP:
+        case Attributes::MAX_MP:
             statusWindow->updateMPBar(mMpBar);
             break;
-        case PlayerInfo::EXP:
-        case PlayerInfo::EXP_NEEDED:
+        case Attributes::EXP:
+        case Attributes::EXP_NEEDED:
             StatusWindow::updateXPBar(mXpBar);
             break;
-        case PlayerInfo::TOTAL_WEIGHT:
-        case PlayerInfo::MAX_WEIGHT:
+        case Attributes::TOTAL_WEIGHT:
+        case Attributes::MAX_WEIGHT:
             StatusWindow::updateWeightBar(mWeightBar);
             break;
-        case PlayerInfo::MONEY:
+        case Attributes::MONEY:
             StatusWindow::updateMoneyBar(mMoneyBar);
             break;
         default:
@@ -339,18 +340,18 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
         {
             // TRANSLATORS: status bar label
             level = strprintf(_("Level: %d (GM %d)"),
-                PlayerInfo::getAttribute(PlayerInfo::LEVEL),
+                PlayerInfo::getAttribute(Attributes::LEVEL),
                 player_node->getGMLevel());
         }
         else
         {
             // TRANSLATORS: status bar label
             level = strprintf(_("Level: %d"),
-                PlayerInfo::getAttribute(PlayerInfo::LEVEL));
+                PlayerInfo::getAttribute(Attributes::LEVEL));
         }
 
-        const int exp = PlayerInfo::getAttribute(PlayerInfo::EXP);
-        const int expNeed = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
+        const int exp = PlayerInfo::getAttribute(Attributes::EXP);
+        const int expNeed = PlayerInfo::getAttribute(Attributes::EXP_NEEDED);
         if (exp > expNeed)
         {
             mTextPopup->show(x + rect.x, y + rect.y, level, strprintf("%d/%d",
@@ -368,15 +369,15 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     else if (event.getSource() == mHpBar)
     {
         mTextPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
-            strprintf("%d/%d", PlayerInfo::getAttribute(PlayerInfo::HP),
-            PlayerInfo::getAttribute(PlayerInfo::MAX_HP)));
+            strprintf("%d/%d", PlayerInfo::getAttribute(Attributes::HP),
+            PlayerInfo::getAttribute(Attributes::MAX_HP)));
         mStatusPopup->hide();
     }
     else if (event.getSource() == mMpBar)
     {
         mTextPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
-            strprintf("%d/%d", PlayerInfo::getAttribute(PlayerInfo::MP),
-            PlayerInfo::getAttribute(PlayerInfo::MAX_MP)));
+            strprintf("%d/%d", PlayerInfo::getAttribute(Attributes::MP),
+            PlayerInfo::getAttribute(Attributes::MAX_MP)));
         mStatusPopup->hide();
     }
     else if (event.getSource() == mJobBar)
@@ -407,8 +408,8 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     {
         mTextPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
             strprintf("%d/%d", PlayerInfo::getAttribute(
-            PlayerInfo::TOTAL_WEIGHT),
-            PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT)));
+            Attributes::TOTAL_WEIGHT),
+            PlayerInfo::getAttribute(Attributes::MAX_WEIGHT)));
         mStatusPopup->hide();
     }
     else if (event.getSource() == mInvSlotsBar)
@@ -428,7 +429,7 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     {
         mTextPopup->show(x + rect.x, y + rect.y,
             event.getSource()->getId(),
-            toString(PlayerInfo::getAttribute(PlayerInfo::MONEY)));
+            toString(PlayerInfo::getAttribute(Attributes::MONEY)));
     }
     else
     {

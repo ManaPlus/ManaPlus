@@ -691,6 +691,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      being/actor.h \
 	      being/actorsprite.cpp \
 	      being/actorsprite.h \
+	      being/attributes.h \
 	      listeners/actorspritelistener.h \
 	      listeners/arrowslistener.cpp \
 	      listeners/arrowslistener.h \

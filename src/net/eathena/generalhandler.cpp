@@ -26,6 +26,8 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "being/attributes.h"
+
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
@@ -257,10 +259,10 @@ void GeneralHandler::gameStarted() const
     statusWindow->addAttribute(FLEE, _("% Evade"));
     // xgettext:no-c-format
     statusWindow->addAttribute(CRIT, _("% Critical"));
-    statusWindow->addAttribute(PlayerInfo::ATTACK_DELAY, _("Attack Delay"));
-    statusWindow->addAttribute(PlayerInfo::WALK_SPEED, _("Walk Delay"));
-    statusWindow->addAttribute(PlayerInfo::ATTACK_RANGE, _("Attack Range"));
-    statusWindow->addAttribute(PlayerInfo::ATTACK_SPEED, _("Damage per sec."));
+    statusWindow->addAttribute(Attributes::ATTACK_DELAY, _("Attack Delay"));
+    statusWindow->addAttribute(Attributes::WALK_SPEED, _("Walk Delay"));
+    statusWindow->addAttribute(Attributes::ATTACK_RANGE, _("Attack Range"));
+    statusWindow->addAttribute(Attributes::ATTACK_SPEED, _("Damage per sec."));
 }
 
 void GeneralHandler::gameEnded() const

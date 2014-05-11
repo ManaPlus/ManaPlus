@@ -24,6 +24,7 @@
 
 #include "configuration.h"
 
+#include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
@@ -144,7 +145,7 @@ void SpellManager::invoke(const int spellId) const
         >= static_cast<signed>(spell->getBaseLvl())
         && PlayerInfo::getSkillLevel(static_cast<int>(
         spell->getSchool())) >= static_cast<signed>(spell->getSchoolLvl())
-        && PlayerInfo::getAttribute(PlayerInfo::MP) >= spell->getMana()))
+        && PlayerInfo::getAttribute(Attributes::MP) >= spell->getMana()))
     {
         const Being *const target = player_node->getTarget();
         if (spell->getTargetType() == NOTARGET)

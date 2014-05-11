@@ -25,6 +25,7 @@
 #include "notifications.h"
 #include "notifymanager.h"
 
+#include "being/attributes.h"
 #include "being/playerinfo.h"
 
 #include "gui/windows/buydialog.h"
@@ -98,7 +99,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
         sz += 1;
     const int n_items = (msg.getLength() - 4) / sz;
     mBuyDialog = new BuyDialog(mNpcId);
-    mBuyDialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
+    mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
     for (int k = 0; k < n_items; k++)
     {

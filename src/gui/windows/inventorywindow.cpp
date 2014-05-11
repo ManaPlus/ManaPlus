@@ -26,6 +26,7 @@
 #include "item.h"
 #include "units.h"
 
+#include "being/attributes.h"
 #include "being/playerinfo.h"
 
 #include "events/keyevent.h"
@@ -566,7 +567,7 @@ void InventoryWindow::mouseMoved(MouseEvent &event)
         const Rect &rect = mDimension;
         mTextPopup->show(rect.x + x, rect.y + y, strprintf(_("Money: %s"),
             Units::formatCurrency(PlayerInfo::getAttribute(
-            PlayerInfo::MONEY)).c_str()));
+            Attributes::MONEY)).c_str()));
     }
     else
     {
@@ -694,8 +695,8 @@ void InventoryWindow::updateWeight()
     if (!isMainInventory() || !mWeightBar)
         return;
 
-    const int total = PlayerInfo::getAttribute(PlayerInfo::TOTAL_WEIGHT);
-    const int max = PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT);
+    const int total = PlayerInfo::getAttribute(Attributes::TOTAL_WEIGHT);
+    const int max = PlayerInfo::getAttribute(Attributes::MAX_WEIGHT);
 
     if (max <= 0)
         return;
@@ -814,6 +815,6 @@ void InventoryWindow::attributeChanged(const int id,
                                        const int oldVal A_UNUSED,
                                        const int newVal A_UNUSED)
 {
-    if (id == PlayerInfo::TOTAL_WEIGHT || id == PlayerInfo::MAX_WEIGHT)
+    if (id == Attributes::TOTAL_WEIGHT || id == Attributes::MAX_WEIGHT)
         updateWeight();
 }

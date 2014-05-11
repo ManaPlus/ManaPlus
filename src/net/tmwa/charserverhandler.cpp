@@ -25,6 +25,8 @@
 #include "client.h"
 #include "configuration.h"
 
+#include "being/attributes.h"
+
 #include "net/logindata.h"
 #include "net/net.h"
 
@@ -132,8 +134,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setGender(token.sex);
 
     PlayerInfoBackend &data = character->data;
-    data.mAttributes[PlayerInfo::EXP] = msg.readInt32();
-    data.mAttributes[PlayerInfo::MONEY] = msg.readInt32();
+    data.mAttributes[Attributes::EXP] = msg.readInt32();
+    data.mAttributes[Attributes::MONEY] = msg.readInt32();
     Stat &jobStat = data.mStats[static_cast<size_t>(JOB)];
     jobStat.exp = msg.readInt32();
 
@@ -151,10 +153,10 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt32();                       // manner
     msg.readInt16();                       // character points left
 
-    data.mAttributes[PlayerInfo::HP] = msg.readInt16();
-    data.mAttributes[PlayerInfo::MAX_HP] = msg.readInt16();
-    data.mAttributes[PlayerInfo::MP] = msg.readInt16();
-    data.mAttributes[PlayerInfo::MAX_MP] = msg.readInt16();
+    data.mAttributes[Attributes::HP] = msg.readInt16();
+    data.mAttributes[Attributes::MAX_HP] = msg.readInt16();
+    data.mAttributes[Attributes::MP] = msg.readInt16();
+    data.mAttributes[Attributes::MAX_MP] = msg.readInt16();
 
     msg.readInt16();                           // speed
     const uint16_t race = msg.readInt16();          // class (used for race)
@@ -164,7 +166,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const uint16_t weapon = msg.readInt16();  // unused on server. need use?
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
 
-    data.mAttributes[PlayerInfo::LEVEL] = msg.readInt16();
+    data.mAttributes[Attributes::LEVEL] = msg.readInt16();
 
     msg.readInt16();  // skill point
     const int bottomClothes = msg.readInt16();

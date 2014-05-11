@@ -30,6 +30,7 @@
 #include "client.h"
 #include "game.h"
 
+#include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
@@ -109,8 +110,8 @@ KillStats::KillStats() :
     setStickyButtonLock(true);
     setDefaultSize(250, 250, 350, 300);
 
-    const int xp(PlayerInfo::getAttribute(PlayerInfo::EXP));
-    int xpNextLevel(PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED));
+    const int xp(PlayerInfo::getAttribute(Attributes::EXP));
+    int xpNextLevel(PlayerInfo::getAttribute(Attributes::EXP_NEEDED));
 
     if (!xpNextLevel)
         xpNextLevel = 1;
@@ -160,7 +161,7 @@ void KillStats::action(const ActionEvent &event)
         mKillCounter = 0;
         mExpCounter = 0;
         mLine3->setCaption(strprintf("1%% = %d exp, avg mob for 1%%: %s",
-            PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED) / 100, "?"));
+            PlayerInfo::getAttribute(Attributes::EXP_NEEDED) / 100, "?"));
         // TRANSLATORS: kill stats window label
         mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"), "?", "?"));
         // TRANSLATORS: kill stats window label
@@ -199,7 +200,7 @@ void KillStats::resetTimes()
 
 void KillStats::gainXp(int xp)
 {
-    const int expNeed = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
+    const int expNeed = PlayerInfo::getAttribute(Attributes::EXP_NEEDED);
     if (xp == expNeed)
         xp = 0;
     else if (!xp)
@@ -227,7 +228,7 @@ void KillStats::gainXp(int xp)
     if (timeDiff <= 0.001)
         timeDiff = 1;
 
-    const int exp = PlayerInfo::getAttribute(PlayerInfo::EXP);
+    const int exp = PlayerInfo::getAttribute(Attributes::EXP);
     // TRANSLATORS: kill stats window label
     mLine1->setCaption(strprintf(_("Level: %d at %f%%"),
         player_node->getLevel(), static_cast<double>(exp)
@@ -290,7 +291,7 @@ void KillStats::recalcStats()
     // Need Update Exp Counter
     if (curTime - m1minExpTime > 60)
     {
-        const int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP);
+        const int newExp = PlayerInfo::getAttribute(Attributes::EXP);
         if (m1minExpTime != 0)
             m1minSpeed = newExp - m1minExpNum;
         else
@@ -301,7 +302,7 @@ void KillStats::recalcStats()
 
     if (curTime != 0 && mLastHost == 0xFF6B66 && cur_time > 1)
     {
-        const int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
+        const int newExp = PlayerInfo::getAttribute(Attributes::EXP_NEEDED);
         if (m1minExpTime != 0)
             m1minSpeed = newExp - m1minExpNum;
         mStatsReUpdated = true;
@@ -310,7 +311,7 @@ void KillStats::recalcStats()
 
     if (curTime - m5minExpTime > 60*5)
     {
-        const int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP);
+        const int newExp = PlayerInfo::getAttribute(Attributes::EXP);
         if (m5minExpTime != 0)
             m5minSpeed = newExp - m5minExpNum;
         else
@@ -321,7 +322,7 @@ void KillStats::recalcStats()
 
     if (curTime - m15minExpTime > 60*15)
     {
-        const int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP);
+        const int newExp = PlayerInfo::getAttribute(Attributes::EXP);
         if (m15minExpTime != 0)
             m15minSpeed = newExp - m15minExpNum;
         else
@@ -345,8 +346,8 @@ void KillStats::update()
         // TRANSLATORS: kill stats window label
         mExpTime1Label->setCaption(strprintf(_("  Time for next level: %s"),
             toString(static_cast<float>((PlayerInfo::getAttribute(
-            PlayerInfo::EXP_NEEDED) - PlayerInfo::getAttribute(
-            PlayerInfo::EXP)) / m1minSpeed)).c_str()));
+            Attributes::EXP_NEEDED) - PlayerInfo::getAttribute(
+            Attributes::EXP)) / m1minSpeed)).c_str()));
     }
     else
     {
@@ -365,8 +366,8 @@ void KillStats::update()
         // TRANSLATORS: kill stats window label
         mExpTime5Label->setCaption(strprintf(_("  Time for next level: %s"),
             toString(static_cast<float>((PlayerInfo::getAttribute(
-            PlayerInfo::EXP_NEEDED) - PlayerInfo::getAttribute(
-            PlayerInfo::EXP)) / m5minSpeed * 5)).c_str()));
+            Attributes::EXP_NEEDED) - PlayerInfo::getAttribute(
+            Attributes::EXP)) / m5minSpeed * 5)).c_str()));
     }
     else
     {
@@ -387,8 +388,8 @@ void KillStats::update()
         // TRANSLATORS: kill stats window label
         mExpTime15Label->setCaption(strprintf(_("  Time for next level: %s"),
             toString(static_cast<float>((PlayerInfo::getAttribute(
-            PlayerInfo::EXP_NEEDED) - PlayerInfo::getAttribute(
-            PlayerInfo::EXP)) / m15minSpeed * 15)).c_str()));
+            Attributes::EXP_NEEDED) - PlayerInfo::getAttribute(
+            Attributes::EXP)) / m15minSpeed * 15)).c_str()));
     }
     else
     {
@@ -495,17 +496,17 @@ void KillStats::attributeChanged(const int id,
 {
     switch (id)
     {
-        case PlayerInfo::EXP:
-        case PlayerInfo::EXP_NEEDED:
+        case Attributes::EXP:
+        case Attributes::EXP_NEEDED:
             gainXp(newVal - oldVal);
             break;
-        case PlayerInfo::LEVEL:
+        case Attributes::LEVEL:
             mKillCounter = 0;
             mKillTCounter = 0;
             mExpCounter = 0;
             mExpTCounter = 0;
             mLine3->setCaption(strprintf("1%% = %d exp, avg mob for 1%%: %s",
-                PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED) / 100, "?"));
+                PlayerInfo::getAttribute(Attributes::EXP_NEEDED) / 100, "?"));
             mLine4->setCaption(strprintf(
                 // TRANSLATORS: kill stats window label
                 _("Kills: %s, total exp: %s"), "?", "?"));

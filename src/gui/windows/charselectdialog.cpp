@@ -30,6 +30,8 @@
 
 #include "input/keydata.h"
 
+#include "being/attributes.h"
+
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/logindialog.h"
@@ -257,19 +259,19 @@ void CharSelectDialog::action(const ActionEvent &event)
                 _("Hp: %u/%u\nMp: %u/%u\nLevel: %u\n"
                 "Experience: %u\nMoney: %s"),
                 static_cast<uint32_t>(
-                character->data.mAttributes[PlayerInfo::HP]),
+                character->data.mAttributes[Attributes::HP]),
                 static_cast<uint32_t>(
-                character->data.mAttributes[PlayerInfo::MAX_HP]),
+                character->data.mAttributes[Attributes::MAX_HP]),
                 static_cast<uint32_t>(
-                character->data.mAttributes[PlayerInfo::MP]),
+                character->data.mAttributes[Attributes::MP]),
                 static_cast<uint32_t>(
-                character->data.mAttributes[PlayerInfo::MAX_MP]),
+                character->data.mAttributes[Attributes::MAX_MP]),
                 static_cast<uint32_t>(
-                character->data.mAttributes[PlayerInfo::LEVEL]),
+                character->data.mAttributes[Attributes::LEVEL]),
                 static_cast<uint32_t>(
-                character->data.mAttributes[PlayerInfo::EXP]),
+                character->data.mAttributes[Attributes::EXP]),
                 Units::formatCurrency(
-                character->data.mAttributes[PlayerInfo::MONEY]).c_str());
+                character->data.mAttributes[Attributes::MONEY]).c_str());
             new OkDialog(data->getName(), msg, DIALOG_SILENCE);
         }
     }

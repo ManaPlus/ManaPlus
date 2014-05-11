@@ -30,6 +30,7 @@
 
 #include "gui/windows/chatwindow.h"
 
+#include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
@@ -188,19 +189,19 @@ StatusWindow::StatusWindow() :
             player_node->getRaceName().c_str()));
     }
 
-    int max = PlayerInfo::getAttribute(PlayerInfo::MAX_HP);
+    int max = PlayerInfo::getAttribute(Attributes::MAX_HP);
     if (!max)
         max = 1;
 
     mHpBar = new ProgressBar(this, static_cast<float>(PlayerInfo::getAttribute(
-        PlayerInfo::HP)) / static_cast<float>(max), 80, 0, Theme::PROG_HP,
+        Attributes::HP)) / static_cast<float>(max), 80, 0, Theme::PROG_HP,
         "hpprogressbar.xml", "hpprogressbar_fill.xml");
     mHpBar->setColor(getThemeColor(Theme::HP_BAR),
         getThemeColor(Theme::HP_BAR_OUTLINE));
 
-    max = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
+    max = PlayerInfo::getAttribute(Attributes::EXP_NEEDED);
     mXpBar = new ProgressBar(this, max ?
-            static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::EXP))
+            static_cast<float>(PlayerInfo::getAttribute(Attributes::EXP))
             / static_cast<float>(max) : static_cast<float>(0), 80, 0,
             Theme::PROG_EXP, "xpprogressbar.xml", "xpprogressbar_fill.xml");
     mXpBar->setColor(getThemeColor(Theme::XP_BAR),
@@ -212,12 +213,12 @@ StatusWindow::StatusWindow() :
 
     if (magicBar)
     {
-        max = PlayerInfo::getAttribute(PlayerInfo::MAX_MP);
+        max = PlayerInfo::getAttribute(Attributes::MAX_MP);
         // TRANSLATORS: status window label
         mMpLabel = new Label(this, _("MP:"));
         const bool useMagic = Net::getPlayerHandler()->canUseMagic();
         mMpBar = new ProgressBar(this, max ? static_cast<float>(
-            PlayerInfo::getAttribute(PlayerInfo::MAX_MP))
+            PlayerInfo::getAttribute(Attributes::MAX_MP))
             / static_cast<float>(max) : static_cast<float>(0),
             80, 0, useMagic ? Theme::PROG_MP : Theme::PROG_NO_MP,
             useMagic ? "mpprogressbar.xml" : "nompprogressbar.xml",
@@ -312,25 +313,25 @@ StatusWindow::StatusWindow() :
 
     // TRANSLATORS: status window label
     mMoneyLabel->setCaption(strprintf(_("Money: %s"), Units::formatCurrency(
-        PlayerInfo::getAttribute(PlayerInfo::MONEY)).c_str()));
+        PlayerInfo::getAttribute(Attributes::MONEY)).c_str()));
     mMoneyLabel->adjustSize();
     // TRANSLATORS: status window label
     mCharacterPointsLabel->setCaption(strprintf(_("Character points: %d"),
-        PlayerInfo::getAttribute(PlayerInfo::CHAR_POINTS)));
+        PlayerInfo::getAttribute(Attributes::CHAR_POINTS)));
     mCharacterPointsLabel->adjustSize();
 
     if (player_node && player_node->isGM())
     {
         // TRANSLATORS: status window label
         mLvlLabel->setCaption(strprintf(_("Level: %d (GM %d)"),
-            PlayerInfo::getAttribute(PlayerInfo::LEVEL),
+            PlayerInfo::getAttribute(Attributes::LEVEL),
             player_node->getGMLevel()));
     }
     else
     {
         // TRANSLATORS: status window label
         mLvlLabel->setCaption(strprintf(_("Level: %d"),
-            PlayerInfo::getAttribute(PlayerInfo::LEVEL)));
+            PlayerInfo::getAttribute(Attributes::LEVEL)));
     }
     mLvlLabel->adjustSize();
 }
@@ -401,29 +402,29 @@ void StatusWindow::attributeChanged(const int id,
 {
     switch (id)
     {
-        case PlayerInfo::HP:
-        case PlayerInfo::MAX_HP:
+        case Attributes::HP:
+        case Attributes::MAX_HP:
             updateHPBar(mHpBar, true);
             break;
 
-        case PlayerInfo::MP:
-        case PlayerInfo::MAX_MP:
+        case Attributes::MP:
+        case Attributes::MAX_MP:
             updateMPBar(mMpBar, true);
             break;
 
-        case PlayerInfo::EXP:
-        case PlayerInfo::EXP_NEEDED:
+        case Attributes::EXP:
+        case Attributes::EXP_NEEDED:
             updateXPBar(mXpBar, false);
             break;
 
-        case PlayerInfo::MONEY:
+        case Attributes::MONEY:
             // TRANSLATORS: status window label
             mMoneyLabel->setCaption(strprintf(_("Money: %s"),
                 Units::formatCurrency(newVal).c_str()));
             mMoneyLabel->adjustSize();
             break;
 
-        case PlayerInfo::CHAR_POINTS:
+        case Attributes::CHAR_POINTS:
             mCharacterPointsLabel->setCaption(strprintf(
                 // TRANSLATORS: status window label
                 _("Character points: %d"), newVal));
@@ -438,7 +439,7 @@ void StatusWindow::attributeChanged(const int id,
             }
             break;
 
-        case PlayerInfo::CORR_POINTS:
+        case Attributes::CORR_POINTS:
             mCorrectionPointsLabel->setCaption(strprintf(
                 // TRANSLATORS: status window label
                 _("Correction points: %d"), newVal));
@@ -452,7 +453,7 @@ void StatusWindow::attributeChanged(const int id,
             }
             break;
 
-        case PlayerInfo::LEVEL:
+        case Attributes::LEVEL:
             // TRANSLATORS: status window label
             mLvlLabel->setCaption(strprintf(_("Level: %d"), newVal));
             mLvlLabel->adjustSize();
@@ -510,8 +511,8 @@ void StatusWindow::updateHPBar(ProgressBar *const bar, const bool showMax)
     if (!bar)
         return;
 
-    const int hp = PlayerInfo::getAttribute(PlayerInfo::HP);
-    const int maxHp = PlayerInfo::getAttribute(PlayerInfo::MAX_HP);
+    const int hp = PlayerInfo::getAttribute(Attributes::HP);
+    const int maxHp = PlayerInfo::getAttribute(Attributes::MAX_HP);
     if (showMax)
         bar->setText(toString(hp).append("/").append(toString(maxHp)));
     else
@@ -529,8 +530,8 @@ void StatusWindow::updateMPBar(ProgressBar *const bar,
     if (!bar)
         return;
 
-    const int mp = PlayerInfo::getAttribute(PlayerInfo::MP);
-    const int maxMp = PlayerInfo::getAttribute(PlayerInfo::MAX_MP);
+    const int mp = PlayerInfo::getAttribute(Attributes::MP);
+    const int maxMp = PlayerInfo::getAttribute(Attributes::MAX_MP);
     if (showMax)
         bar->setText(toString(mp).append("/").append(toString(maxMp)));
     else
@@ -591,8 +592,8 @@ void StatusWindow::updateXPBar(ProgressBar *const bar, const bool percent)
     if (!bar)
         return;
 
-    updateProgressBar(bar, PlayerInfo::getAttribute(PlayerInfo::EXP),
-        PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED), percent);
+    updateProgressBar(bar, PlayerInfo::getAttribute(Attributes::EXP),
+        PlayerInfo::getAttribute(Attributes::EXP_NEEDED), percent);
 }
 
 void StatusWindow::updateJobBar(ProgressBar *const bar, const bool percent)
@@ -617,7 +618,7 @@ void StatusWindow::updateWeightBar(ProgressBar *const bar)
     if (!bar)
         return;
 
-    if (PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT) == 0)
+    if (PlayerInfo::getAttribute(Attributes::MAX_WEIGHT) == 0)
     {
         // TRANSLATORS: status bar label
         bar->setText(_("Max"));
@@ -626,8 +627,8 @@ void StatusWindow::updateWeightBar(ProgressBar *const bar)
     else
     {
         const int totalWeight = PlayerInfo::getAttribute(
-            PlayerInfo::TOTAL_WEIGHT);
-        const int maxWeight = PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT);
+            Attributes::TOTAL_WEIGHT);
+        const int maxWeight = PlayerInfo::getAttribute(Attributes::MAX_WEIGHT);
         float progress = 1.0F;
         if (maxWeight)
         {
@@ -645,7 +646,7 @@ void StatusWindow::updateMoneyBar(ProgressBar *const bar)
     if (!bar)
         return;
 
-    const int money = PlayerInfo::getAttribute(PlayerInfo::MONEY);
+    const int money = PlayerInfo::getAttribute(Attributes::MONEY);
     bar->setText(Units::formatCurrency(money));
     if (money > 0)
     {
@@ -858,9 +859,9 @@ std::string ChangeDisplay::update()
     }
 
     if (mDec)
-        mDec->setEnabled(PlayerInfo::getAttribute(PlayerInfo::CORR_POINTS));
+        mDec->setEnabled(PlayerInfo::getAttribute(Attributes::CORR_POINTS));
 
-    mInc->setEnabled(PlayerInfo::getAttribute(PlayerInfo::CHAR_POINTS)
+    mInc->setEnabled(PlayerInfo::getAttribute(Attributes::CHAR_POINTS)
         >= mNeeded && mNeeded > 0);
 
     return AttrDisplay::update();
@@ -878,12 +879,12 @@ void ChangeDisplay::action(const ActionEvent &event)
         event.getSource() == mDec)
     {
         const int newcorrpoints = PlayerInfo::getAttribute(
-            PlayerInfo::CORR_POINTS);
-        PlayerInfo::setAttribute(PlayerInfo::CORR_POINTS, newcorrpoints - 1);
+            Attributes::CORR_POINTS);
+        PlayerInfo::setAttribute(Attributes::CORR_POINTS, newcorrpoints - 1);
 
         const int newpoints = PlayerInfo::getAttribute(
-            PlayerInfo::CHAR_POINTS) + 1;
-        PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, newpoints);
+            Attributes::CHAR_POINTS) + 1;
+        PlayerInfo::setAttribute(Attributes::CHAR_POINTS, newpoints);
 
         const int newbase = PlayerInfo::getStatBase(mId) - 1;
         PlayerInfo::setStatBase(mId, newbase);
@@ -901,8 +902,8 @@ void ChangeDisplay::action(const ActionEvent &event)
         }
 
         const int newpoints = PlayerInfo::getAttribute(
-            PlayerInfo::CHAR_POINTS) - cnt;
-        PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, newpoints);
+            Attributes::CHAR_POINTS) - cnt;
+        PlayerInfo::setAttribute(Attributes::CHAR_POINTS, newpoints);
 
         const int newbase = PlayerInfo::getStatBase(mId) + cnt;
         PlayerInfo::setStatBase(mId, newbase);

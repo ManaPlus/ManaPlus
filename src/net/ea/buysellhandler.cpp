@@ -27,6 +27,7 @@
 #include "notifications.h"
 #include "notifymanager.h"
 
+#include "being/attributes.h"
 #include "being/playerinfo.h"
 
 #include "gui/windows/chatwindow.h"
@@ -144,7 +145,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg,
     if (n_items > 0)
     {
         SellDialog *const dialog = new SellDialog(mNpcId);
-        dialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
+        dialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
         for (int k = 0; k < n_items; k++)
         {
@@ -176,7 +177,7 @@ void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg) const
         // Reset player money since buy dialog already assumed purchase
         // would go fine
         if (mBuyDialog)
-            mBuyDialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
+            mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
         NotifyManager::notify(NotifyManager::BUY_FAILED);
     }
 }

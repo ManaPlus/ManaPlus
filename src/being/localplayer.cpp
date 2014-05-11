@@ -35,6 +35,7 @@
 #include "statuseffect.h"
 #include "resources/map/walklayer.h"
 
+#include "being/attributes.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
@@ -191,9 +192,9 @@ LocalPlayer::LocalPlayer(const int id, const int subtype) :
     else
         mNameColor = nullptr;
 
-    PlayerInfo::setStatBase(PlayerInfo::WALK_SPEED,
+    PlayerInfo::setStatBase(Attributes::WALK_SPEED,
         static_cast<int>(getWalkSpeed().x));
-    PlayerInfo::setStatMod(PlayerInfo::WALK_SPEED, 0);
+    PlayerInfo::setStatMod(Attributes::WALK_SPEED, 0);
 
     loadHomes();
 
@@ -1075,7 +1076,7 @@ void LocalPlayer::attributeChanged(const int id,
 {
     switch (id)
     {
-        case PlayerInfo::EXP:
+        case Attributes::EXP:
         {
             if (oldVal > newVal)
                 break;
@@ -1088,7 +1089,7 @@ void LocalPlayer::attributeChanged(const int id,
             }
             break;
         }
-        case PlayerInfo::LEVEL:
+        case Attributes::LEVEL:
             mLevel = newVal;
             break;
         default:
@@ -2693,7 +2694,7 @@ void LocalPlayer::tryMagic(const std::string &spell, const int baseMagic,
     if (PlayerInfo::getSkillLevel(340) >= baseMagic
         && PlayerInfo::getSkillLevel(342) >= schoolMagic)
     {
-        if (PlayerInfo::getAttribute(PlayerInfo::MP) >= mana)
+        if (PlayerInfo::getAttribute(Attributes::MP) >= mana)
         {
             if (!client->limitPackets(PACKET_CHAT))
                 return;
@@ -3594,7 +3595,7 @@ void LocalPlayer::respawn()
 
 int LocalPlayer::getLevel() const
 {
-    return PlayerInfo::getAttribute(PlayerInfo::LEVEL);
+    return PlayerInfo::getAttribute(Attributes::LEVEL);
 }
 
 void LocalPlayer::updateNavigateList()

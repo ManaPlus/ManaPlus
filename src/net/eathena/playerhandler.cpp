@@ -22,6 +22,8 @@
 
 #include "net/eathena/playerhandler.h"
 
+#include "being/attributes.h"
+
 #include "net/net.h"
 
 #include "net/eathena/messageout.h"
@@ -145,7 +147,7 @@ void PlayerHandler::increaseAttribute(const int attr) const
 
 void PlayerHandler::increaseSkill(const uint16_t skillId) const
 {
-    if (PlayerInfo::getAttribute(PlayerInfo::SKILL_POINTS) <= 0)
+    if (PlayerInfo::getAttribute(Attributes::SKILL_POINTS) <= 0)
         return;
 
     MessageOut outMsg(CMSG_SKILL_LEVELUP_REQUEST);

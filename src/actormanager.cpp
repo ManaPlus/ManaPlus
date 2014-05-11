@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "main.h"
 
+#include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
@@ -1139,9 +1140,9 @@ void ActorManager::heal(const Being *const target) const
     // self
     if (target && player_node->getName() == target->getName())
     {
-        if (PlayerInfo::getAttribute(PlayerInfo::MP) >= 6
-            && PlayerInfo::getAttribute(PlayerInfo::HP)
-            != PlayerInfo::getAttribute(PlayerInfo::MAX_HP))
+        if (PlayerInfo::getAttribute(Attributes::MP) >= 6
+            && PlayerInfo::getAttribute(Attributes::HP)
+            != PlayerInfo::getAttribute(Attributes::MAX_HP))
         {
             if (!client->limitPackets(PACKET_CHAT))
                 return;
@@ -1152,7 +1153,7 @@ void ActorManager::heal(const Being *const target) const
     else if (PlayerInfo::getSkillLevel(340) < 2
              || PlayerInfo::getSkillLevel(341) < 2)
     {
-        if (PlayerInfo::getAttribute(PlayerInfo::MP) >= 6)
+        if (PlayerInfo::getAttribute(Attributes::MP) >= 6)
         {
             if (target && target->getType() != Being::MONSTER)
             {
@@ -1161,8 +1162,8 @@ void ActorManager::heal(const Being *const target) const
                 chatWindow->localChatInput(mSpellHeal1 + " "
                                            + target->getName());
             }
-            else if (PlayerInfo::getAttribute(PlayerInfo::HP)
-                     != PlayerInfo::getAttribute(PlayerInfo::MAX_HP))
+            else if (PlayerInfo::getAttribute(Attributes::HP)
+                     != PlayerInfo::getAttribute(Attributes::MAX_HP))
             {
                 if (!client->limitPackets(PACKET_CHAT))
                     return;
@@ -1174,7 +1175,7 @@ void ActorManager::heal(const Being *const target) const
     else
     {
         // mp > 10 and target not monster
-        if (PlayerInfo::getAttribute(PlayerInfo::MP) >= 10 && target
+        if (PlayerInfo::getAttribute(Attributes::MP) >= 10 && target
             && target->getType() != Being::MONSTER)
         {
             // target not enemy
@@ -1196,9 +1197,9 @@ void ActorManager::heal(const Being *const target) const
         }
         // heal self if selected monster or selection empty
         else if ((!target || target->getType() == Being::MONSTER)
-                 && PlayerInfo::getAttribute(PlayerInfo::MP) >= 6
-                 && PlayerInfo::getAttribute(PlayerInfo::HP)
-                 != PlayerInfo::getAttribute(PlayerInfo::MAX_HP))
+                 && PlayerInfo::getAttribute(Attributes::MP) >= 6
+                 && PlayerInfo::getAttribute(Attributes::HP)
+                 != PlayerInfo::getAttribute(Attributes::MAX_HP))
         {
             if (!client->limitPackets(PACKET_CHAT))
                 return;

@@ -24,6 +24,9 @@
 #include "client.h"
 #include "configuration.h"
 #include "inventory.h"
+
+#include "being/attributes.h"
+
 #include "itemsoundmanager.h"
 
 #include "gui/windows/inventorywindow.h"
@@ -363,18 +366,18 @@ void updateAttrs()
     if (!handler)
         return;
     const int attr = handler->getAttackLocation();
-    const int attackDelay = getStatBase(ATTACK_DELAY);
+    const int attackDelay = getStatBase(Attributes::ATTACK_DELAY);
     if (attr != -1 && attackDelay)
     {
-        setStatBase(ATTACK_SPEED, getStatBase(attr) * 1000
+        setStatBase(Attributes::ATTACK_SPEED, getStatBase(attr) * 1000
             / attackDelay, false);
-        setStatMod(ATTACK_SPEED, getStatMod(attr) * 1000
+        setStatMod(Attributes::ATTACK_SPEED, getStatMod(attr) * 1000
             / attackDelay, true);
     }
     else
     {
-        setStatBase(ATTACK_SPEED, 0, false);
-        setStatMod(ATTACK_SPEED, 0, true);
+        setStatBase(Attributes::ATTACK_SPEED, 0, false);
+        setStatMod(Attributes::ATTACK_SPEED, 0, true);
     }
 }
 

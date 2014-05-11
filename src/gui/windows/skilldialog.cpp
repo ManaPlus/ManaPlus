@@ -27,6 +27,7 @@
 #include "effectmanager.h"
 #include "itemshortcut.h"
 
+#include "being/attributes.h"
 #include "being/localplayer.h"
 
 #include "gui/font.h"
@@ -408,7 +409,7 @@ void SkillDialog::update()
 {
     // TRANSLATORS: skills dialog label
     mPointsLabel->setCaption(strprintf(_("Skill points available: %d"),
-        PlayerInfo::getAttribute(PlayerInfo::SKILL_POINTS)));
+        PlayerInfo::getAttribute(Attributes::SKILL_POINTS)));
     mPointsLabel->adjustSize();
 
     FOR_EACH (SkillMap::const_iterator, it, mSkills)

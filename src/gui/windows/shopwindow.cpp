@@ -48,6 +48,7 @@
 #include "soundconsts.h"
 #include "soundmanager.h"
 
+#include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
@@ -593,9 +594,9 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
         {
             int amount = item->getQuantity();
             if (item->getPrice() * amount > PlayerInfo::getAttribute(
-                PlayerInfo::MONEY))
+                Attributes::MONEY))
             {
-                amount = PlayerInfo::getAttribute(PlayerInfo::MONEY)
+                amount = PlayerInfo::getAttribute(Attributes::MONEY)
                     / item->getPrice();
             }
 
@@ -655,9 +656,9 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         return;
 
     if (buyDialog)
-        buyDialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
+        buyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
     if (sellDialog)
-        sellDialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
+        sellDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
     for (unsigned f = 0; f < data.length(); f += 9)
     {

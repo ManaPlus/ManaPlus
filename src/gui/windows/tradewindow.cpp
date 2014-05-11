@@ -27,6 +27,7 @@
 #include "item.h"
 #include "units.h"
 
+#include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
@@ -379,7 +380,7 @@ void TradeWindow::action(const ActionEvent &event)
             return;
 
         int v = atoi(mMoneyField->getText().c_str());
-        const int curMoney = PlayerInfo::getAttribute(PlayerInfo::MONEY);
+        const int curMoney = PlayerInfo::getAttribute(Attributes::MONEY);
         if (v > curMoney)
         {
             if (localChatTab)

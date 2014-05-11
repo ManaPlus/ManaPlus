@@ -25,6 +25,7 @@
 #include "notifications.h"
 #include "notifymanager.h"
 
+#include "being/attributes.h"
 #include "being/localplayer.h"
 
 #include "net/messagein.h"
@@ -575,8 +576,8 @@ void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg)
     const int range = msg.readInt16();
     if (player_node)
         player_node->setAttackRange(range);
-    PlayerInfo::setStatBase(PlayerInfo::ATTACK_RANGE, range);
-    PlayerInfo::setStatMod(PlayerInfo::ATTACK_RANGE, 0);
+    PlayerInfo::setStatBase(Attributes::ATTACK_RANGE, range);
+    PlayerInfo::setStatMod(Attributes::ATTACK_RANGE, 0);
 }
 
 void InventoryHandler::processPlayerArrowEquip(Net::MessageIn &msg)

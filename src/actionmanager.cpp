@@ -27,6 +27,7 @@
 #include "itemshortcut.h"
 #include "soundmanager.h"
 
+#include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
@@ -426,7 +427,7 @@ impHandler0(itenplz)
     if (actorManager)
     {
         if (Net::getPlayerHandler() && Net::getPlayerHandler()->canUseMagic()
-            && PlayerInfo::getAttribute(PlayerInfo::MP) >= 3)
+            && PlayerInfo::getAttribute(Attributes::MP) >= 3)
         {
             actorManager->itenplz();
         }

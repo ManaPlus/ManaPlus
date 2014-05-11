@@ -24,6 +24,8 @@
 
 #include "units.h"
 
+#include "being/attributes.h"
+
 #include "gui/gui.h"
 
 #include "gui/windows/charselectdialog.h"
@@ -133,9 +135,9 @@ void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
     {
         mPopup->show(mouseX, mouseY, name, strprintf(_("Level: %u"),
             static_cast<uint32_t>(
-            mCharacter->data.mAttributes[PlayerInfo::LEVEL])),
+            mCharacter->data.mAttributes[Attributes::LEVEL])),
             strprintf(_("Money: %s"), Units::formatCurrency(
-            mCharacter->data.mAttributes[PlayerInfo::MONEY]).c_str()));
+            mCharacter->data.mAttributes[Attributes::MONEY]).c_str()));
     }
     else
     {

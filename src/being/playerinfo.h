@@ -69,30 +69,6 @@ class Item;
  */
 namespace PlayerInfo
 {
-    /**
-     * Standard attributes for players.
-     */
-    enum Attribute
-    {
-        LEVEL = 0,
-        HP,
-        MAX_HP,
-        MP,
-        MAX_MP,
-        EXP,
-        EXP_NEEDED,
-        MONEY,
-        TOTAL_WEIGHT,
-        MAX_WEIGHT,
-        SKILL_POINTS,
-        CHAR_POINTS,
-        CORR_POINTS,
-        ATTACK_DELAY = 100,
-        ATTACK_RANGE = 101,
-        WALK_SPEED = 102,
-        ATTACK_SPEED = 103
-    };
-
 // --- Attributes -------------------------------------------------------------
 
     /**

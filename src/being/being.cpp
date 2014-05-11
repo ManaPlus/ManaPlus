@@ -33,6 +33,7 @@
 #include "soundmanager.h"
 #include "text.h"
 
+#include "being/attributes.h"
 #include "being/beingcacheentry.h"
 #include "being/playerrelations.h"
 
@@ -2392,8 +2393,8 @@ void Being::drawSpriteAt(Graphics *const graphics,
     }
     if (mShowOwnHP && mInfo && player_node == this && mAction != DEAD)
     {
-        drawHpBar(graphics, PlayerInfo::getAttribute(PlayerInfo::MAX_HP),
-                  PlayerInfo::getAttribute(PlayerInfo::HP), 0,
+        drawHpBar(graphics, PlayerInfo::getAttribute(Attributes::MAX_HP),
+                  PlayerInfo::getAttribute(Attributes::HP), 0,
                   UserPalette::PLAYER_HP, UserPalette::PLAYER_HP2,
                   x - 50 + mapTileSize / 2 + mInfo->getHpBarOffsetX(),
                   y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
