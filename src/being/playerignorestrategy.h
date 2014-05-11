@@ -20,38 +20,37 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_MODELS_IGNORECHOICESLISTMODEL_H
-#define GUI_MODELS_IGNORECHOICESLISTMODEL_H
+#ifndef BEING_PLAYERIGNORESTRATEGY_H
+#define BEING_PLAYERIGNORESTRATEGY_H
 
-#include "being/playerrelations.h"
+#include <string>
 
-#include "gui/models/playerrelationlistmodel.h"
-
-#include "being/playerignorestrategy.h"
+#include "localconsts.h"
 
 /**
- * Class for choosing one of the various `what to do when ignoring a player' options
+ * Ignore strategy: describes how we should handle ignores.
  */
-class IgnoreChoicesListModel final : public ListModel
+class PlayerIgnoreStrategy
 {
     public:
-        ~IgnoreChoicesListModel()
+        std::string mDescription;
+        std::string mShortName;
+
+        A_DELETE_COPY(PlayerIgnoreStrategy)
+
+        virtual ~PlayerIgnoreStrategy()
         { }
 
-        int getNumberOfElements() override final
+        /**
+         * Handle the ignoring of the indicated action by the indicated player.
+         */
+        virtual void ignore(Being *const being,
+                            const unsigned int flags) const = 0;
+    protected:
+        PlayerIgnoreStrategy() :
+            mDescription(),
+            mShortName()
         {
-            return static_cast<int>(player_relations.
-                getPlayerIgnoreStrategies()->size());
-        }
-
-        std::string getElementAt(int i) override final
-        {
-            if (i >= getNumberOfElements() || i < 0)
-                return "???";
-
-            return (*player_relations.getPlayerIgnoreStrategies())
-                [i]->mDescription;
         }
 };
-
-#endif  // GUI_MODELS_IGNORECHOICESLISTMODEL_H
+#endif  // BEING_PLAYERIGNORESTRATEGY_H

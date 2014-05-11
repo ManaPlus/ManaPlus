@@ -847,6 +847,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      particle/particleinfo.h \
 	      party.cpp \
 	      party.h \
+	      being/playerignorestrategy.h \
 	      being/playerinfo.cpp \
 	      being/playerinfo.h \
 	      being/playerrelation.cpp \

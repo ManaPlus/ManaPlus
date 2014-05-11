@@ -33,34 +33,8 @@
 #include "localconsts.h"
 
 class Being;
+class PlayerIgnoreStrategy;
 class PlayerRelationsListener;
-
-/**
- * Ignore strategy: describes how we should handle ignores.
- */
-class PlayerIgnoreStrategy
-{
-    public:
-        std::string mDescription;
-        std::string mShortName;
-
-        A_DELETE_COPY(PlayerIgnoreStrategy)
-
-        virtual ~PlayerIgnoreStrategy()
-        { }
-
-        /**
-         * Handle the ignoring of the indicated action by the indicated player.
-         */
-        virtual void ignore(Being *const being,
-                            const unsigned int flags) const = 0;
-    protected:
-        PlayerIgnoreStrategy() :
-            mDescription(),
-            mShortName()
-        {
-        }
-};
 
 /**
  * Player relations class, represents any particular relations and/or
