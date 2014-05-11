@@ -24,7 +24,7 @@
 
 #include "configuration.h"
 #include "dragdrop.h"
-#include "emoteshortcut.h"
+#include "emoteshortcutconsts.h"
 #include "game.h"
 #include "inventory.h"
 #include "item.h"

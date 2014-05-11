@@ -22,9 +22,9 @@
 #ifndef EMOTESHORTCUT_H
 #define EMOTESHORTCUT_H
 
-#include "localconsts.h"
+#include "emoteshortcutconsts.h"
 
-static const int SHORTCUT_EMOTES = 48;
+#include "localconsts.h"
 
 /**
  * The class which keeps track of the emote shortcuts.
