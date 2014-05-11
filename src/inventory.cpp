@@ -39,14 +39,17 @@
 
 #include "debug.h"
 
-struct SlotUsed final
+namespace
 {
-    bool operator()(const Item *const item) const
+    struct SlotUsed final
     {
-        return item && item->mId >= 0 && item->mQuantity > 0;
-    }
-    typedef Item *argument_type;
-};
+        bool operator()(const Item *const item) const
+        {
+            return item && item->mId >= 0 && item->mQuantity > 0;
+        }
+        typedef Item *argument_type;
+    };
+}  // namespace
 
 Inventory::Inventory(const int type, const int size1) :
     mInventoryListeners(),
