@@ -25,6 +25,8 @@
 
 #include "resources/beinginfo.h"
 
+#include "resources/map/blocktype.h"
+
 #include "being/gender.h"
 
 #include <map>
@@ -457,10 +459,10 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Gets the way the monster blocks pathfinding for other objects
          */
-        Map::BlockType getBlockType() const A_WARN_UNUSED
+        BlockType::BlockType getBlockType() const A_WARN_UNUSED
         {
             if (!mInfo)
-                return Map::BLOCKTYPE_NONE;
+                return BlockType::NONE;
             return mInfo->getBlockType();
         }
 

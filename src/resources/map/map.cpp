@@ -130,7 +130,7 @@ Map::Map(const int width, const int height,
     mCustom(false)
 {
     const int size = mWidth * mHeight;
-    for (int i = 0; i < NB_BLOCKTYPES; i++)
+    for (int i = 0; i < BlockType::NB_BLOCKTYPES; i++)
     {
         mOccupation[i] = new unsigned[static_cast<size_t>(size)];
         memset(mOccupation[i], 0, static_cast<size_t>(size)
@@ -153,7 +153,7 @@ Map::~Map()
     CHECKLISTENERS
 
     delete [] mMetaTiles;
-    for (int i = 0; i < NB_BLOCKTYPES; i++)
+    for (int i = 0; i < BlockType::NB_BLOCKTYPES; i++)
         delete [] mOccupation[i];
 
     if (mWalkLayer)
@@ -622,9 +622,10 @@ const Tileset *Map::getTilesetWithGid(const int gid) const
         return nullptr;
 }
 
-void Map::blockTile(const int x, const int y, const BlockType type)
+void Map::blockTile(const int x, const int y,
+                    const BlockType::BlockType type)
 {
-    if (type == BLOCKTYPE_NONE || !contains(x, y))
+    if (type == BlockType::NONE || !contains(x, y))
         return;
 
     const int tileNum = x + y * mWidth;
@@ -634,30 +635,30 @@ void Map::blockTile(const int x, const int y, const BlockType type)
     {
         switch (type)
         {
-            case BLOCKTYPE_WALL:
+            case BlockType::WALL:
                 mMetaTiles[tileNum].blockmask |= BLOCKMASK_WALL;
                 break;
-            case BLOCKTYPE_CHARACTER:
+            case BlockType::CHARACTER:
                 mMetaTiles[tileNum].blockmask |= BLOCKMASK_CHARACTER;
                 break;
-            case BLOCKTYPE_MONSTER:
+            case BlockType::MONSTER:
                 mMetaTiles[tileNum].blockmask |= BLOCKMASK_MONSTER;
                 break;
-            case BLOCKTYPE_AIR:
+            case BlockType::AIR:
                 mMetaTiles[tileNum].blockmask |= BLOCKMASK_AIR;
                 break;
-            case BLOCKTYPE_WATER:
+            case BlockType::WATER:
                 mMetaTiles[tileNum].blockmask |= BLOCKMASK_WATER;
                 break;
-            case BLOCKTYPE_GROUND:
+            case BlockType::GROUND:
                 mMetaTiles[tileNum].blockmask |= BLOCKMASK_GROUND;
                 break;
-            case BLOCKTYPE_GROUNDTOP:
+            case BlockType::GROUNDTOP:
                 mMetaTiles[tileNum].blockmask |= BLOCKMASK_GROUNDTOP;
                 break;
             default:
-            case BLOCKTYPE_NONE:
-            case NB_BLOCKTYPES:
+            case BlockType::NONE:
+            case BlockType::NB_BLOCKTYPES:
                 // Do nothing.
                 break;
         }
@@ -686,7 +687,7 @@ unsigned char Map::getBlockMask(const int x, const int y) const
 
 void Map::setWalk(const int x, const int y, const bool walkable A_UNUSED)
 {
-    blockTile(x, y, Map::BLOCKTYPE_GROUNDTOP);
+    blockTile(x, y, BlockType::GROUNDTOP);
 }
 
 bool Map::contains(const int x, const int y) const

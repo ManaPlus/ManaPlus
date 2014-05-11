@@ -24,6 +24,7 @@
 
 #include "localconsts.h"
 
+#include "resources/map/blocktype.h"
 #include "resources/map/map.h"
 #include "resources/map/mapconsts.h"
 
@@ -103,8 +104,8 @@ public:
     /**
      * Gets the way the object blocks pathfinding for other objects
      */
-    virtual Map::BlockType getBlockType() const A_WARN_UNUSED
-    { return Map::BLOCKTYPE_NONE; }
+    virtual BlockType::BlockType getBlockType() const A_WARN_UNUSED
+    { return BlockType::NONE; }
 
     /**
      * Take control of a particle.

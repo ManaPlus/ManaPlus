@@ -27,6 +27,8 @@
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 
+#include "resources/map/blocktype.h"
+
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -96,7 +98,7 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
 
         currentInfo->setWalkMask(Map::BLOCKMASK_WALL
             | Map::BLOCKMASK_CHARACTER | Map::BLOCKMASK_MONSTER);
-        currentInfo->setBlockType(Map::BLOCKTYPE_MONSTER);
+        currentInfo->setBlockType(BlockType::MONSTER);
 
         currentInfo->setName(XML::langProperty(
             // TRANSLATORS: unknown info name

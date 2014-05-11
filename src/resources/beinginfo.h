@@ -138,10 +138,10 @@ class BeingInfo final
         unsigned char getWalkMask() const A_WARN_UNUSED
         { return mWalkMask; }
 
-        void setBlockType(const Map::BlockType &blockType)
+        void setBlockType(const BlockType::BlockType &blockType)
         { mBlockType = blockType; }
 
-        Map::BlockType getBlockType() const A_WARN_UNUSED
+        BlockType::BlockType getBlockType() const A_WARN_UNUSED
         { return mBlockType; }
 
         void setTargetOffsetX(const int n)
@@ -346,7 +346,7 @@ class BeingInfo final
         ItemSoundEvents mSounds;
         Attacks mAttacks;
         unsigned char mWalkMask;
-        Map::BlockType mBlockType;
+        BlockType::BlockType mBlockType;
         const std::map <int, ColorDB::ItemColor> *mColors;
         int mTargetOffsetX;
         int mTargetOffsetY;

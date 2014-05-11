@@ -27,6 +27,7 @@
 
 #include "being/actor.h"
 
+#include "resources/map/blocktype.h"
 #include "resources/map/metatile.h"
 #include "resources/map/properties.h"
 
@@ -66,19 +67,6 @@ typedef AmbientLayerVector::iterator AmbientLayerVectorIter;
 class Map final : public Properties, public ConfigListener
 {
     public:
-        enum BlockType
-        {
-            BLOCKTYPE_NONE = -1,
-            BLOCKTYPE_WALL,
-            BLOCKTYPE_CHARACTER,
-            BLOCKTYPE_MONSTER,
-            BLOCKTYPE_AIR,
-            BLOCKTYPE_WATER,
-            BLOCKTYPE_GROUND,
-            BLOCKTYPE_GROUNDTOP,
-            NB_BLOCKTYPES
-        };
-
         enum CollisionTypes
         {
             COLLISION_EMPTY = 0,        // no collision
@@ -175,7 +163,8 @@ class Map final : public Properties, public ConfigListener
         /**
          * Marks a tile as occupied.
          */
-        void blockTile(const int x, const int y, const BlockType type);
+        void blockTile(const int x, const int y,
+                       const BlockType::BlockType type);
 
         /**
          * Gets walkability for a tile with a blocking bitmask. When called
@@ -399,7 +388,7 @@ class Map final : public Properties, public ConfigListener
         /**
          * Blockmasks for different entities
          */
-        unsigned *mOccupation[NB_BLOCKTYPES];
+        unsigned *mOccupation[BlockType::NB_BLOCKTYPES];
 
         int mWidth;
         int mHeight;

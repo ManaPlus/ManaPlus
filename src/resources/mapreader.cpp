@@ -27,6 +27,7 @@
 #include "logger.h"
 #include "main.h"
 
+#include "resources/map/blocktype.h"
 #include "resources/map/map.h"
 #include "resources/map/mapconsts.h"
 #include "resources/map/tileset.h"
@@ -496,19 +497,19 @@ inline static void setTile(Map *const map, MapLayer *const layer,
                     switch (gid - set->getFirstGid())
                     {
                         case Map::COLLISION_EMPTY:
-                            map->blockTile(x, y, Map::BLOCKTYPE_GROUND);
+                            map->blockTile(x, y, BlockType::GROUND);
                             break;
                         case Map::COLLISION_WALL:
-                            map->blockTile(x, y, Map::BLOCKTYPE_WALL);
+                            map->blockTile(x, y, BlockType::WALL);
                             break;
                         case Map::COLLISION_AIR:
-                            map->blockTile(x, y, Map::BLOCKTYPE_AIR);
+                            map->blockTile(x, y, BlockType::AIR);
                             break;
                         case Map::COLLISION_WATER:
-                            map->blockTile(x, y, Map::BLOCKTYPE_WATER);
+                            map->blockTile(x, y, BlockType::WATER);
                             break;
                         case Map::COLLISION_GROUNDTOP:
-                            map->blockTile(x, y, Map::BLOCKTYPE_GROUNDTOP);
+                            map->blockTile(x, y, BlockType::GROUNDTOP);
                             break;
                         default:
                             break;
@@ -517,7 +518,7 @@ inline static void setTile(Map *const map, MapLayer *const layer,
                 else
                 {
                     if (gid - set->getFirstGid() != 0)
-                        map->blockTile(x, y, Map::BLOCKTYPE_WALL);
+                        map->blockTile(x, y, BlockType::WALL);
                 }
             }
             break;

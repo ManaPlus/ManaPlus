@@ -25,6 +25,8 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "resources/map/blocktype.h"
+
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
@@ -47,7 +49,7 @@ BeingInfo::BeingInfo() :
     mWalkMask(Map::BLOCKMASK_WALL | Map::BLOCKMASK_CHARACTER
               | Map::BLOCKMASK_MONSTER | Map::BLOCKMASK_AIR
               | Map::BLOCKMASK_WATER),
-    mBlockType(Map::BLOCKTYPE_CHARACTER),
+    mBlockType(BlockType::CHARACTER),
     mColors(nullptr),
     mTargetOffsetX(0),
     mTargetOffsetY(0),
