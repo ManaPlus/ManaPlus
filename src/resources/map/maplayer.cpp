@@ -36,6 +36,7 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
+#include "resources/map/mapobjectlist.h"
 #include "resources/map/maprowvertexes.h"
 
 #include "gui/font.h"

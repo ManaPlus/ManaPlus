@@ -38,21 +38,9 @@
 class Image;
 class ImageVertexes;
 class MapItem;
+class MapObjectList;
 class MapRowVertexes;
 class SpecialLayer;
-
-class MapObjectList final
-{
-    public:
-        MapObjectList() :
-            objects()
-        {
-        }
-
-        A_DELETE_COPY(MapObjectList)
-
-        std::vector<MapObject> objects;
-};
 
 /**
  * A map layer. Stores a grid of tiles and their offset, and implements layer

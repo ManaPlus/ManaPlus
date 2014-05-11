@@ -44,6 +44,7 @@
 #include "resources/subimage.h"
 
 #include "resources/map/location.h"
+#include "resources/map/mapobjectlist.h"
 #include "resources/map/tileanimation.h"
 
 #include "utils/delete2.h"
