@@ -27,30 +27,33 @@
 
 #include "debug.h"
 
-static class SortPartyFunctor final
+namespace
 {
-    public:
-        bool operator() (const PartyMember *const p1,
-                         const PartyMember *const p2) const
-        {
-            if (!p1 || !p2)
-                return false;
-            if (p1->getLeader())
-                return true;
-            if (p2->getLeader())
-                return false;
-
-            if (p1->getName() != p2->getName())
+    static class SortPartyFunctor final
+    {
+        public:
+            bool operator() (const PartyMember *const p1,
+                             const PartyMember *const p2) const
             {
-                std::string s1 = p1->getName();
-                std::string s2 = p2->getName();
-                toLower(s1);
-                toLower(s2);
-                return s1 < s2;
+                if (!p1 || !p2)
+                    return false;
+                if (p1->getLeader())
+                    return true;
+                if (p2->getLeader())
+                    return false;
+
+                if (p1->getName() != p2->getName())
+                {
+                    std::string s1 = p1->getName();
+                    std::string s2 = p2->getName();
+                    toLower(s1);
+                    toLower(s2);
+                    return s1 < s2;
+                }
+                return false;
             }
-            return false;
-        }
-} partySorter;
+    } partySorter;
+}  // namespace
 
 PartyMember::PartyMember(Party *const party, const int id,
                          const std::string &name) :
