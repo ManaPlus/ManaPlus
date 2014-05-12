@@ -288,7 +288,7 @@ void Minimap::draw(Graphics *graphics)
     const ActorSprites &actors = actorManager->getAll();
     FOR_EACH (ActorSpritesConstIterator, it, actors)
     {
-        if (!(*it) || (*it)->getType() == ActorSprite::FLOOR_ITEM)
+        if (!(*it) || (*it)->getType() == ActorType::FLOOR_ITEM)
             continue;
 
         const Being *const being = static_cast<const Being *const>(*it);
@@ -316,20 +316,20 @@ void Minimap::draw(Graphics *graphics)
         {
             switch (being->getType())
             {
-                case ActorSprite::MONSTER:
+                case ActorType::MONSTER:
                     type = UserPalette::MONSTER;
                     break;
 
-                case ActorSprite::NPC:
+                case ActorType::NPC:
                     type = UserPalette::NPC;
                     break;
 
-                case ActorSprite::AVATAR:
-                case ActorSprite::UNKNOWN:
-                case ActorSprite::PLAYER:
-                case ActorSprite::FLOOR_ITEM:
-                case ActorSprite::PORTAL:
-                case ActorSprite::PET:
+                case ActorType::AVATAR:
+                case ActorType::UNKNOWN:
+                case ActorType::PLAYER:
+                case ActorType::FLOOR_ITEM:
+                case ActorType::PORTAL:
+                case ActorType::PET:
                 default:
                     continue;
             }

@@ -222,7 +222,7 @@ void PartyHandler::processPartyInvited(Net::MessageIn &msg) const
         const Being *const being = actorManager->findBeing(id);
         if (being)
         {
-            if (being->getType() == Being::PLAYER)
+            if (being->getType() == ActorType::PLAYER)
                 nick = being->getName();
         }
     }
@@ -360,7 +360,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
         if (actorManager)
         {
             Being *const b = actorManager->findBeing(id);
-            if (b && b->getType() == Being::PLAYER)
+            if (b && b->getType() == ActorType::PLAYER)
             {
                 b->setParty(nullptr);
                 b->setPartyName("");

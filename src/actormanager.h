@@ -58,7 +58,8 @@ class ActorManager final: public ConfigListener
         /**
          * Create a Being and add it to the list of ActorSprites.
          */
-        Being *createBeing(const int id, const ActorSprite::Type type,
+        Being *createBeing(const int id,
+                           const ActorType::Type type,
                            const uint16_t subtype) A_WARN_UNUSED;
 
         /**
@@ -87,8 +88,8 @@ class ActorManager final: public ConfigListener
         /**
          * Returns a being at specific coordinates.
          */
-        Being *findBeing(const int x, const int y, const ActorSprite::Type
-                         type = ActorSprite::UNKNOWN) const A_WARN_UNUSED;
+        Being *findBeing(const int x, const int y, const ActorType::Type
+                         type = ActorType::UNKNOWN) const A_WARN_UNUSED;
 
         /**
          * Returns a being at the specific pixel.
@@ -130,8 +131,8 @@ class ActorManager final: public ConfigListener
          */
         Being *findNearestLivingBeing(const int x, const int y,
                                       int maxTileDist,
-                                      const ActorSprite::Type
-                                      type = Being::UNKNOWN,
+                                      const ActorType::Type
+                                      type = ActorType::UNKNOWN,
                                       const Being *const
                                       excluded = nullptr) const A_WARN_UNUSED;
 
@@ -145,22 +146,22 @@ class ActorManager final: public ConfigListener
          */
         Being *findNearestLivingBeing(const Being *const aroundBeing,
                                       const int maxTileDist,
-                                      const ActorSprite::Type
-                                      type = Being::UNKNOWN)
+                                      const ActorType::Type
+                                      type = ActorType::UNKNOWN)
                                       const A_WARN_UNUSED;
 
         /**
          * Finds a being by name and (optionally) by type.
          */
         Being *findBeingByName(const std::string &name,
-                               const ActorSprite::Type
-                               type = Being::UNKNOWN) const A_WARN_UNUSED;
+                               const ActorType::Type
+                               type = ActorType::UNKNOWN) const A_WARN_UNUSED;
 
        /**
         * Finds a nearest being by name and (optionally) by type.
         */
         Being *findNearestByName(const std::string &name,
-                                 const Being::Type &type = Being::UNKNOWN)
+                                 const ActorType::Type &type = ActorType::UNKNOWN)
                                  const A_WARN_UNUSED;
 
        /**
@@ -170,7 +171,7 @@ class ActorManager final: public ConfigListener
         *                no being is returned
         */
 //        void HealAllTargets(Being *aroundBeing, int maxdist,
-//                                            Being::Type type) const;
+//                                            ActorType::Type type) const;
 
         void healTarget() const;
 
@@ -308,13 +309,13 @@ class ActorManager final: public ConfigListener
     protected:
         bool validateBeing(const Being *const aroundBeing,
                            Being *const being,
-                           const Being::Type &type,
+                           const ActorType::Type &type,
                            const Being *const excluded = nullptr,
                            const int maxCost = 20) const A_WARN_UNUSED;
 
         Being *findNearestLivingBeing(const Being *const aroundBeing,
                                       const int maxdist,
-                                      const Being::Type &type,
+                                      const ActorType::Type &type,
                                       const int x, const int y,
                                       const Being *const
                                       excluded = nullptr) const A_WARN_UNUSED;

@@ -192,7 +192,7 @@ void WhoIsOnline::handleLink(const std::string& link, MouseEvent *event)
             {
                 const std::string text = decodeLinkText(link);
                 Being *const being = actorManager->findBeingByName(
-                    text, Being::PLAYER);
+                    text, ActorType::PLAYER);
 
                 if (being && viewport)
                 {
@@ -414,7 +414,7 @@ void WhoIsOnline::loadWebList()
                 if (actorManager)
                 {
                     Being *const being = actorManager->findBeingByName(
-                        nick, Being::PLAYER);
+                        nick, ActorType::PLAYER);
                     if (being)
                     {
                         if (level > 0)
@@ -808,7 +808,7 @@ void OnlinePlayer::setText(std::string color)
     if (mStatus != 255 && actorManager)
     {
         Being *const being = actorManager->findBeingByName(
-            mNick, Being::PLAYER);
+            mNick, ActorType::PLAYER);
         if (being)
         {
             being->setState(mStatus);

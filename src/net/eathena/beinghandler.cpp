@@ -286,7 +286,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
 //        color.clear();
     }
 
-    if (dstBeing->getType() == Being::PLAYER)
+    if (dstBeing->getType() == ActorType::PLAYER)
         dstBeing->setOtherTime();
 
     if (!player_node)
@@ -401,7 +401,7 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
             dstBeing->updateGuild();
             dstBeing->addToCache();
 
-            if (dstBeing->getType() == Being::PLAYER)
+            if (dstBeing->getType() == ActorType::PLAYER)
                 dstBeing->updateColors();
 
             if (player_node)
@@ -611,7 +611,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     msg.readInt8();  // unknown
 
-    if (dstBeing->getType() != Being::PLAYER
+    if (dstBeing->getType() != ActorType::PLAYER
         || msgType != 3)
     {
         dstBeing->setActionTime(tick_time);
@@ -623,7 +623,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffffU));
 
-    if (msgType == 3 && dstBeing->getType() == Being::PLAYER)
+    if (msgType == 3 && dstBeing->getType() == ActorType::PLAYER)
         dstBeing->setMoveTime();
 }
 
@@ -652,7 +652,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
 
     Being *dstBeing = actorManager->findBeing(id);
 
-    if (dstBeing && dstBeing->getType() == Being::MONSTER
+    if (dstBeing && dstBeing->getType() == ActorType::MONSTER
         && !dstBeing->isAlive())
     {
         actorManager->destroy(dstBeing);
@@ -681,11 +681,11 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     else
     {
         // undeleting marked for deletion being
-        if (dstBeing->getType() == Being::NPC)
+        if (dstBeing->getType() == ActorType::NPC)
             actorManager->undelete(dstBeing);
     }
 
-    if (dstBeing->getType() == Being::PLAYER)
+    if (dstBeing->getType() == ActorType::PLAYER)
         dstBeing->setMoveTime();
 
     if (spawnId)
@@ -705,7 +705,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
 
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
     dstBeing->setSubtype(job, 0);
-    if (dstBeing->getType() == ActorSprite::MONSTER && player_node)
+    if (dstBeing->getType() == ActorType::MONSTER && player_node)
         player_node->checkNewName(dstBeing);
 
     const int hairStyle = msg.readInt16();
@@ -719,7 +719,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     const uint16_t shoes = msg.readInt16();  // clothes color
 
     uint16_t gloves;
-    if (dstBeing->getType() == ActorSprite::MONSTER)
+    if (dstBeing->getType() == ActorType::MONSTER)
     {
         msg.readInt32();
         msg.readInt32();
@@ -737,7 +737,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     msg.readInt8();   // karma
     uint8_t gender = msg.readInt8();
 
-    if (dstBeing->getType() == ActorSprite::PLAYER)
+    if (dstBeing->getType() == ActorType::PLAYER)
     {
         gender &= 3;
         dstBeing->setGender(Being::intToGender(gender));
@@ -753,7 +753,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
         if (!mHideShield)
             setSprite(dstBeing, SPRITE_SHIELD, shield);
     }
-    else if (dstBeing->getType() == ActorSprite::NPC)
+    else if (dstBeing->getType() == ActorType::NPC)
     {
         switch (gender)
         {

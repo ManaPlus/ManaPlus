@@ -112,7 +112,7 @@ PopupMenu::PopupMenu() :
     mButton(nullptr),
     mNick(),
     mTextField(nullptr),
-    mType(static_cast<int>(Being::UNKNOWN)),
+    mType(static_cast<int>(ActorType::UNKNOWN)),
     mX(0),
     mY(0)
 {
@@ -122,7 +122,7 @@ PopupMenu::PopupMenu() :
     mRenameListener.setDialog(nullptr);
     mPlayerListener.setNick("");
     mPlayerListener.setDialog(nullptr);
-    mPlayerListener.setType(static_cast<int>(Being::UNKNOWN));
+    mPlayerListener.setType(static_cast<int>(ActorType::UNKNOWN));
     mScrollArea = new ScrollArea(this, mBrowserBox, false);
     mScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
 }
@@ -149,7 +149,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 
     switch (being->getType())
     {
-        case ActorSprite::PLAYER:
+        case ActorType::PLAYER:
         {
             // TRANSLATORS: popup menu item
             // TRANSLATORS: trade with player
@@ -234,7 +234,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             break;
         }
 
-        case ActorSprite::NPC:
+        case ActorType::NPC:
             // NPCs can be talked to (single option, candidate for removal
             // unless more options would be added)
             // TRANSLATORS: popup menu item
@@ -255,7 +255,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("addcomment", _("Add comment"));
             break;
 
-        case ActorSprite::MONSTER:
+        case ActorType::MONSTER:
         {
             // Monsters can be attacked
             // TRANSLATORS: popup menu item
@@ -293,11 +293,11 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             break;
         }
 
-        case ActorSprite::AVATAR:
-        case ActorSprite::UNKNOWN:
-        case ActorSprite::FLOOR_ITEM:
-        case ActorSprite::PORTAL:
-        case ActorSprite::PET:
+        case ActorType::AVATAR:
+        case ActorType::UNKNOWN:
+        case ActorType::FLOOR_ITEM:
+        case ActorType::PORTAL:
+        case ActorType::PET:
         default:
             break;
     }
@@ -331,7 +331,7 @@ void PopupMenu::showPopup(const int x, const int y,
                 static_cast<unsigned>(being->getId()), (being->getName()
                 + being->getGenderSignWithSpace()).c_str()));
         }
-        else if (actor->getType() == ActorSprite::FLOOR_ITEM)
+        else if (actor->getType() == ActorType::FLOOR_ITEM)
         {
             const FloorItem *const floorItem
                 = static_cast<const FloorItem*>(actor);
@@ -355,7 +355,7 @@ void PopupMenu::showPlayerPopup(const int x, const int y,
 
     mNick = nick;
     mBeingId = 0;
-    mType = static_cast<int>(Being::PLAYER);
+    mType = static_cast<int>(ActorType::PLAYER);
     mX = x;
     mY = y;
     mBrowserBox->clearRows();
@@ -455,7 +455,7 @@ void PopupMenu::showPopup(const int x, const int y,
     mFloorItemId = floorItem->getId();
     mX = x;
     mY = y;
-    mType = static_cast<int>(Being::FLOOR_ITEM);
+    mType = static_cast<int>(ActorType::FLOOR_ITEM);
     mBrowserBox->clearRows();
     const std::string name = floorItem->getName();
     mNick = name;
@@ -682,7 +682,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
         std::string name = wTab->getNick();
 
         const Being* const being  = actorManager->findBeingByName(
-            name, Being::PLAYER);
+            name, ActorType::PLAYER);
 
         if (being)
         {
@@ -772,7 +772,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
         else
         {
             mNick = name;
-            mType = static_cast<int>(Being::PLAYER);
+            mType = static_cast<int>(ActorType::PLAYER);
             addPlayerRelation(name);
             mBrowserBox->addRow("##3---");
             addFollow();
@@ -836,7 +836,7 @@ void PopupMenu::showChangePos(const int x, const int y)
         mItem = nullptr;
         mMapItem = nullptr;
         mNick.clear();
-        mType = static_cast<int>(Being::UNKNOWN);
+        mType = static_cast<int>(ActorType::UNKNOWN);
         mX = 0;
         mY = 0;
         setVisible(false);
@@ -898,7 +898,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     // Trade action
     else if (link == "trade" && being &&
-             being->getType() == ActorSprite::PLAYER)
+             being->getType() == ActorType::PLAYER)
     {
         Net::getTradeHandler()->request(being);
         tradePartnerName = being->getName();
@@ -907,9 +907,9 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "buy" && being && mBeingId != 0)
     {
-        if (being->getType() == Being::NPC)
+        if (being->getType() == ActorType::NPC)
             Net::getNpcHandler()->buy(mBeingId);
-        else if (being->getType() == Being::PLAYER)
+        else if (being->getType() == ActorType::PLAYER)
             Net::getBuySellHandler()->requestSellList(being->getName());
     }
     else if (link == "buy" && !mNick.empty())
@@ -918,9 +918,9 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "sell" && being && mBeingId != 0)
     {
-        if (being->getType() == Being::NPC)
+        if (being->getType() == ActorType::NPC)
             Net::getNpcHandler()->sell(mBeingId);
-        else if (being->getType() == Being::PLAYER)
+        else if (being->getType() == ActorType::PLAYER)
             Net::getBuySellHandler()->requestBuyList(being->getName());
     }
     else if (link == "sell" && !mNick.empty())
@@ -932,13 +932,13 @@ void PopupMenu::handleLink(const std::string &link,
         if (player_node)
             player_node->attack(being, true);
     }
-    else if (link == "heal" && being && being->getType() != Being::MONSTER)
+    else if (link == "heal" && being && being->getType() != ActorType::MONSTER)
     {
         if (actorManager)
             actorManager->heal(being);
     }
     else if (link == "unignore" && being &&
-             being->getType() == ActorSprite::PLAYER)
+             being->getType() == ActorType::PLAYER)
     {
         player_relations.setRelation(being->getName(),
             PlayerRelation::NEUTRAL);
@@ -948,7 +948,7 @@ void PopupMenu::handleLink(const std::string &link,
         player_relations.setRelation(mNick, PlayerRelation::NEUTRAL);
     }
     else if (link == "ignore" && being &&
-             being->getType() == ActorSprite::PLAYER)
+             being->getType() == ActorType::PLAYER)
     {
         player_relations.setRelation(being->getName(),
                                      PlayerRelation::IGNORED);
@@ -959,7 +959,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
 
     else if (link == "blacklist" && being &&
-             being->getType() == ActorSprite::PLAYER)
+             being->getType() == ActorType::PLAYER)
     {
         player_relations.setRelation(being->getName(),
             PlayerRelation::BLACKLISTED);
@@ -969,7 +969,7 @@ void PopupMenu::handleLink(const std::string &link,
         player_relations.setRelation(mNick, PlayerRelation::BLACKLISTED);
     }
     else if (link == "enemy" && being &&
-             being->getType() == ActorSprite::PLAYER)
+             being->getType() == ActorType::PLAYER)
     {
         player_relations.setRelation(being->getName(),
             PlayerRelation::ENEMY2);
@@ -979,7 +979,7 @@ void PopupMenu::handleLink(const std::string &link,
         player_relations.setRelation(mNick, PlayerRelation::ENEMY2);
     }
     else if (link == "erase" && being &&
-             being->getType() == ActorSprite::PLAYER)
+             being->getType() == ActorType::PLAYER)
     {
         player_relations.setRelation(being->getName(), PlayerRelation::ERASED);
         being->updateName();
@@ -989,7 +989,7 @@ void PopupMenu::handleLink(const std::string &link,
         player_relations.setRelation(mNick, PlayerRelation::ERASED);
     }
     else if (link == "disregard" && being &&
-             being->getType() == ActorSprite::PLAYER)
+             being->getType() == ActorType::PLAYER)
     {
         player_relations.setRelation(being->getName(),
                                      PlayerRelation::DISREGARDED);
@@ -999,7 +999,7 @@ void PopupMenu::handleLink(const std::string &link,
         player_relations.setRelation(mNick, PlayerRelation::DISREGARDED);
     }
     else if (link == "friend" && being &&
-             being->getType() == ActorSprite::PLAYER)
+             being->getType() == ActorType::PLAYER)
     {
         player_relations.setRelation(being->getName(), PlayerRelation::FRIEND);
     }
@@ -1282,12 +1282,12 @@ void PopupMenu::handleLink(const std::string &link,
         PlayerInfo::unprotectItem(mItemId);
     }
     else if (link == "party" && being &&
-             being->getType() == ActorSprite::PLAYER)
+             being->getType() == ActorType::PLAYER)
     {
         Net::getPartyHandler()->invite(being);
     }
     else if (link == "kick party" && being
-             && being->getType() == Being::PLAYER)
+             && being->getType() == ActorType::PLAYER)
     {
         Net::getPartyHandler()->kick(being);
     }
@@ -1308,8 +1308,8 @@ void PopupMenu::handleLink(const std::string &link,
             chatWindow->addInputText(name);
     }
     else if (link == "admin-kick" && being &&
-             (being->getType() == ActorSprite::PLAYER ||
-             being->getType() == ActorSprite::MONSTER))
+             (being->getType() == ActorType::PLAYER ||
+             being->getType() == ActorType::MONSTER))
     {
         Net::getAdminHandler()->kick(being->getId());
     }
@@ -1475,7 +1475,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "remove attack" && being)
     {
-        if (actorManager && being->getType() == Being::MONSTER)
+        if (actorManager && being->getType() == ActorType::MONSTER)
         {
             actorManager->removeAttackMob(being->getName());
             if (socialWindow)
@@ -1484,7 +1484,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "add attack" && being)
     {
-        if (actorManager && being->getType() == Being::MONSTER)
+        if (actorManager && being->getType() == ActorType::MONSTER)
         {
             actorManager->addAttackMob(being->getName());
             if (socialWindow)
@@ -1493,7 +1493,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "add attack priority" && being)
     {
-        if (actorManager && being->getType() == Being::MONSTER)
+        if (actorManager && being->getType() == ActorType::MONSTER)
         {
             actorManager->addPriorityAttackMob(being->getName());
             if (socialWindow)
@@ -1502,7 +1502,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "add attack ignore" && being)
     {
-        if (actorManager && being->getType() == Being::MONSTER)
+        if (actorManager && being->getType() == ActorType::MONSTER)
         {
             actorManager->addIgnoreAttackMob(being->getName());
             if (socialWindow)
@@ -1900,7 +1900,7 @@ void PopupMenu::handleLink(const std::string &link,
     mButton = nullptr;
     mNick.clear();
     mTextField = nullptr;
-    mType = static_cast<int>(Being::UNKNOWN);
+    mType = static_cast<int>(ActorType::UNKNOWN);
     mX = 0;
     mY = 0;
 }
@@ -2265,7 +2265,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
         return;
 
     mNick = name;
-    mType = static_cast<int>(Being::MONSTER);
+    mType = static_cast<int>(ActorType::MONSTER);
     mX = x;
     mY = y;
 
@@ -2343,7 +2343,7 @@ void PopupMenu::showPickupItemPopup(const int x, const int y,
         return;
 
     mNick = name;
-    mType = static_cast<int>(Being::FLOOR_ITEM);
+    mType = static_cast<int>(ActorType::FLOOR_ITEM);
     mX = x;
     mY = y;
 
@@ -2953,7 +2953,7 @@ PlayerListener::PlayerListener() :
     ActionListener(),
     mNick(),
     mDialog(nullptr),
-    mType(static_cast<int>(Being::UNKNOWN))
+    mType(static_cast<int>(ActorType::UNKNOWN))
 {
 }
 
@@ -2963,7 +2963,7 @@ void PlayerListener::action(const ActionEvent &event)
     {
         std::string comment = mDialog->getText();
         Being *const being  = actorManager->findBeingByName(
-            mNick, static_cast<ActorSprite::Type>(mType));
+            mNick, static_cast<ActorType::Type>(mType));
         if (being)
             being->setComment(comment);
         Being::saveComment(mNick, comment, mType);

@@ -477,7 +477,7 @@ void KillStats::validateJacko()
             {
                 const Being *const dstBeing
                     = actorManager->findBeingByName(
-                    "Jack O", Being::MONSTER);
+                    "Jack O", ActorType::MONSTER);
                 if (mIsJackoAlive && !dstBeing)
                 {
                     mIsJackoAlive = false;

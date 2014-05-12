@@ -111,14 +111,16 @@ class Being : public ActorSprite, public ConfigListener
          * @param subtype partly determines the type of the being
          * @param map     the map the being is on
          */
-        Being(const int id, const Type type, const uint16_t subtype,
+        Being(const int id,
+              const ActorType::Type type,
+              const uint16_t subtype,
               Map *const map);
 
         A_DELETE_COPY(Being)
 
         virtual ~Being();
 
-        Type getType() const A_WARN_UNUSED
+        ActorType::Type getType() const override final A_WARN_UNUSED
         { return mType; }
 
         /**
@@ -630,7 +632,7 @@ class Being : public ActorSprite, public ConfigListener
         void setGM(const bool gm);
 
         bool canTalk() const A_WARN_UNUSED
-        { return mType == NPC; }
+        { return mType == ActorType::NPC; }
 
         void talkTo() const;
 
@@ -981,7 +983,7 @@ class Being : public ActorSprite, public ConfigListener
 
         void dumpSprites() const;
 
-        const Type mType;
+        const ActorType::Type mType;
 
         /** Speech Bubble components */
         SpeechBubble *mSpeechBubble;

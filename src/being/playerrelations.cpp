@@ -249,9 +249,9 @@ void PlayerRelationsManager::signalUpdate(const std::string &name)
     if (actorManager)
     {
         Being *const being = actorManager->findBeingByName(
-            name, Being::PLAYER);
+            name, ActorType::PLAYER);
 
-        if (being && being->getType() == Being::PLAYER)
+        if (being && being->getType() == ActorType::PLAYER)
             being->updateColors();
     }
 }
@@ -300,7 +300,7 @@ bool PlayerRelationsManager::hasPermission(const Being *const being,
     if (!being)
         return false;
 
-    if (being->getType() == ActorSprite::PLAYER)
+    if (being->getType() == ActorType::PLAYER)
         return hasPermission(being->getName(), flags) == flags;
     return true;
 }
@@ -321,9 +321,9 @@ bool PlayerRelationsManager::hasPermission(const std::string &name,
         if (mIgnoreStrategy)
         {
             Being *const b = actorManager->findBeingByName(
-                name, ActorSprite::PLAYER);
+                name, ActorType::PLAYER);
 
-            if (b && b->getType() == ActorSprite::PLAYER)
+            if (b && b->getType() == ActorType::PLAYER)
                 mIgnoreStrategy->ignore(b, rejections);
         }
     }

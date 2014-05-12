@@ -206,7 +206,7 @@ void GuildHandler::invite(const int guildId A_UNUSED,
         return;
 
     const Being *const being = actorManager->findBeingByName(
-        name, Being::PLAYER);
+        name, ActorType::PLAYER);
     if (being)
     {
         MessageOut msg(CMSG_GUILD_INVITE);

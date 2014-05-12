@@ -397,10 +397,10 @@ impHandler0(heal)
         if (inputManager.isActionActive(Input::KEY_STOP_ATTACK))
         {
             Being *target = player_node->getTarget();
-            if (!target || target->getType() != ActorSprite::PLAYER)
+            if (!target || target->getType() != ActorType::PLAYER)
             {
                 target = actorManager->findNearestLivingBeing(
-                    player_node, 10, ActorSprite::PLAYER);
+                    player_node, 10, ActorType::PLAYER);
                 if (target)
                     player_node->setTarget(target);
             }
@@ -1004,7 +1004,7 @@ impHandler0(talk)
         if (!target && actorManager)
         {
             target = actorManager->findNearestLivingBeing(
-                player_node, 1, ActorSprite::NPC);
+                player_node, 1, ActorType::NPC);
             // ignore closest target if distance in each direction more than 1
             if (target)
             {
@@ -1019,7 +1019,7 @@ impHandler0(talk)
         {
             if (target->canTalk())
                 target->talkTo();
-            else if (target->getType() == Being::PLAYER)
+            else if (target->getType() == ActorType::PLAYER)
                 new BuySellDialog(target->getName());
         }
         return true;
@@ -1075,7 +1075,7 @@ impHandler0(targetAttack)
         {
             // Only auto target Monsters
             target = actorManager->findNearestLivingBeing(
-                player_node, 90, ActorSprite::MONSTER);
+                player_node, 90, ActorType::MONSTER);
         }
         else
         {
@@ -1088,7 +1088,7 @@ impHandler0(targetAttack)
     return false;
 }
 
-static bool setTarget(const ActorSprite::Type type)
+static bool setTarget(const ActorType::Type type)
 {
     if (actorManager && player_node)
     {
@@ -1105,17 +1105,17 @@ static bool setTarget(const ActorSprite::Type type)
 
 impHandler0(targetPlayer)
 {
-    return setTarget(ActorSprite::PLAYER);
+    return setTarget(ActorType::PLAYER);
 }
 
 impHandler0(targetMonster)
 {
-    return setTarget(ActorSprite::MONSTER);
+    return setTarget(ActorType::MONSTER);
 }
 
 impHandler0(targetNPC)
 {
-    return setTarget(ActorSprite::NPC);
+    return setTarget(ActorType::NPC);
 }
 
 impHandler0(safeVideoMode)
@@ -1216,7 +1216,7 @@ impHandler0(prevCommandsTab)
 impHandler0(openTrade)
 {
     const Being *const being = player_node->getTarget();
-    if (being && being->getType() == ActorSprite::PLAYER)
+    if (being && being->getType() == ActorType::PLAYER)
     {
         Net::getTradeHandler()->request(being);
         tradePartnerName = being->getName();

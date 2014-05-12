@@ -94,7 +94,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
 
     b->updateComment();
 
-    if (b->getType() == Being::NPC && b->getComment().empty())
+    if (b->getType() == ActorType::NPC && b->getComment().empty())
     {
         setVisible(false);
         return;

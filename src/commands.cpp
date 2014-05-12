@@ -670,7 +670,7 @@ impHandler0(attackHuman)
         return;
 
     Being *const target = actorManager->findNearestLivingBeing(
-        player_node, 10, ActorSprite::PLAYER);
+        player_node, 10, ActorType::PLAYER);
     if (target)
     {
         if (player_node->checAttackPermissions(target))
@@ -783,7 +783,7 @@ impHandler1(heal)
     if (!args.empty())
     {
         const Being *const being = actorManager->findBeingByName(
-            args, Being::PLAYER);
+            args, ActorType::PLAYER);
         if (being)
             actorManager->heal(being);
     }
@@ -848,7 +848,7 @@ impHandler1(trade)
         return;
 
     const Being *const being = actorManager->findBeingByName(
-        args, Being::PLAYER);
+        args, ActorType::PLAYER);
     if (being)
     {
         Net::getTradeHandler()->request(being);
@@ -1530,10 +1530,10 @@ void replaceVars(std::string &str)
     if (str.find("<PLAYER>") != std::string::npos)
     {
         const Being *target = player_node->getTarget();
-        if (!target || target->getType() != ActorSprite::PLAYER)
+        if (!target || target->getType() != ActorType::PLAYER)
         {
             target = actorManager->findNearestLivingBeing(
-                player_node, 20, ActorSprite::PLAYER);
+                player_node, 20, ActorType::PLAYER);
         }
         if (target)
             replaceAll(str, "<PLAYER>", target->getName());
@@ -1543,10 +1543,10 @@ void replaceVars(std::string &str)
     if (str.find("<MONSTER>") != std::string::npos)
     {
         const Being *target = player_node->getTarget();
-        if (!target || target->getType() != ActorSprite::MONSTER)
+        if (!target || target->getType() != ActorType::MONSTER)
         {
             target = actorManager->findNearestLivingBeing(
-                player_node, 20, ActorSprite::MONSTER);
+                player_node, 20, ActorType::MONSTER);
         }
         if (target)
             replaceAll(str, "<MONSTER>", target->getName());

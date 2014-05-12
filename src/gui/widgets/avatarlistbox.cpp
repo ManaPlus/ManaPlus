@@ -347,7 +347,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
         if (ava->getType() == AVATAR_PLAYER)
         {
             const Being *const being = actorManager->findBeingByName(
-                ava->getName(), Being::PLAYER);
+                ava->getName(), ActorType::PLAYER);
             if (being)
                 actorManager->heal(being);
         }
@@ -366,8 +366,8 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 const Avatar *const avatar = model->getAvatarAt(selected);
                 if (avatar)
                 {
-                    const Being *const being = actorManager
-                        ->findBeingByName(avatar->getName(), Being::PLAYER);
+                    const Being *const being = actorManager->findBeingByName(
+                        avatar->getName(), ActorType::PLAYER);
                     if (being)
                         viewport->showPopup(being);
                     else

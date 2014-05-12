@@ -291,7 +291,7 @@ void ShopWindow::startTrade()
         return;
 
     const Being *const being = actorManager->findBeingByName(
-        mTradeNick, Being::PLAYER);
+        mTradeNick, ActorType::PLAYER);
     tradeWindow->clear();
     if (mTradeMoney)
     {
@@ -695,7 +695,7 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
 {
     if (!player_node || !mTradeNick.empty() || PlayerInfo::isTrading()
         || !actorManager
-        || !actorManager->findBeingByName(nick, Being::PLAYER))
+        || !actorManager->findBeingByName(nick, ActorType::PLAYER))
     {
         return;
     }

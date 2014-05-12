@@ -852,7 +852,7 @@ void NpcDialog::showAvatar(const uint16_t avatarId)
     if (needShow)
     {
         delete mAvatarBeing;
-        mAvatarBeing = new Being(0, ActorSprite::AVATAR, avatarId, nullptr);
+        mAvatarBeing = new Being(0, ActorType::AVATAR, avatarId, nullptr);
         mPlayerBox->setPlayer(mAvatarBeing);
         if (!mAvatarBeing->empty())
         {

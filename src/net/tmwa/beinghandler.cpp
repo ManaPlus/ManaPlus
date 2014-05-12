@@ -287,7 +287,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
             id2 = 1;
     }
 
-    if (dstBeing->getType() == Being::PLAYER)
+    if (dstBeing->getType() == ActorType::PLAYER)
         dstBeing->setOtherTime();
 
     if (!player_node)
@@ -410,7 +410,7 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
             dstBeing->updateGuild();
             dstBeing->addToCache();
 
-            if (dstBeing->getType() == Being::PLAYER)
+            if (dstBeing->getType() == ActorType::PLAYER)
                 dstBeing->updateColors();
 
             if (player_node)
@@ -636,7 +636,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     msg.readInt8();  // unknown
 
-    if (dstBeing->getType() != Being::PLAYER
+    if (dstBeing->getType() != ActorType::PLAYER
         || msgType != 3)
     {
         dstBeing->setActionTime(tick_time);
@@ -648,7 +648,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffff));
 
-    if (msgType == 3 && dstBeing->getType() == Being::PLAYER)
+    if (msgType == 3 && dstBeing->getType() == ActorType::PLAYER)
         dstBeing->setMoveTime();
 }
 

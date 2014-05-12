@@ -28,6 +28,7 @@
 #include "resources/map/mapconsts.h"
 
 #include "being/actor.h"
+#include "being/actortype.h"
 #include "being/compoundsprite.h"
 
 #include "particle/particlecontainer.h"
@@ -44,18 +45,6 @@ class ActorSpriteListener;
 class ActorSprite : public CompoundSprite, public Actor
 {
 public:
-    enum Type
-    {
-        UNKNOWN = 0,
-        PLAYER,
-        NPC,
-        MONSTER,
-        FLOOR_ITEM,
-        PORTAL,
-        PET,
-        AVATAR
-    };
-
     enum TargetCursorSize
     {
         TC_SMALL = 0,
@@ -87,8 +76,8 @@ public:
     /**
      * Returns the type of the ActorSprite.
      */
-    virtual Type getType() const A_WARN_UNUSED
-    { return UNKNOWN; }
+    virtual ActorType::Type getType() const A_WARN_UNUSED
+    { return ActorType::UNKNOWN; }
 
     void draw1(Graphics *const graphics,
                const int offsetX,

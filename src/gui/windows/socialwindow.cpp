@@ -564,7 +564,7 @@ public:
             }
         }
         const Being *const being = actorManager->findBeingByName(
-            name, Being::PLAYER);
+            name, ActorType::PLAYER);
         if (being)
         {
             avatar->setDamageHp(being->getDamageTaken());
@@ -585,7 +585,7 @@ public:
             return;
         avatar->setDamageHp(0);
         Being *const being = actorManager->findBeingByName(
-            name, Being::PLAYER);
+            name, ActorType::PLAYER);
 
         if (being)
             being->setDamageTaken(0);
@@ -1157,7 +1157,7 @@ public:
         FOR_EACHP (StringVectCIter, it, players)
         {
             Avatar *const ava = new Avatar(*it);
-            if (actorManager->findBeingByName(*it, Being::PLAYER)
+            if (actorManager->findBeingByName(*it, ActorType::PLAYER)
                 || players2.find(*it) != players2.end())
             {
                 ava->setOnline(true);
