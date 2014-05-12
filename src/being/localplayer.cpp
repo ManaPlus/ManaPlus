@@ -342,15 +342,15 @@ void LocalPlayer::slowLogic()
     if (serverVersion < 4 && mEnableAdvert && !mBlockAdvert
         && mAdvertTime < cur_time)
     {
-        uint8_t smile = FLAG_SPECIAL;
+        uint8_t smile = BeingFlag::SPECIAL;
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
-            smile |= FLAG_SHOP;
+            smile |= BeingFlag::SHOP;
 
         if (mAwayMode || mPseudoAwayMode)
-            smile |= FLAG_AWAY;
+            smile |= BeingFlag::AWAY;
 
         if (mInactive)
-            smile |= FLAG_INACTIVE;
+            smile |= BeingFlag::INACTIVE;
 
         if (emote(smile))
             mAdvertTime = time + 60;
@@ -3782,13 +3782,13 @@ void LocalPlayer::updateStatus() const
     {
         uint8_t status = 0;
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
-            status |= FLAG_SHOP;
+            status |= BeingFlag::SHOP;
 
         if (mAwayMode || mPseudoAwayMode)
-            status |= FLAG_AWAY;
+            status |= BeingFlag::AWAY;
 
         if (mInactive)
-            status |= FLAG_INACTIVE;
+            status |= BeingFlag::INACTIVE;
 
         Net::getPlayerHandler()->updateStatus(status);
     }

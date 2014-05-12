@@ -2167,9 +2167,9 @@ bool Being::updateFromCache()
         if (mAdvanced)
         {
             const int flags = entry->getFlags();
-            mShop = ((flags & FLAG_SHOP) != 0);
-            mAway = ((flags & FLAG_AWAY) != 0);
-            mInactive = ((flags & FLAG_INACTIVE) != 0);
+            mShop = ((flags & BeingFlag::SHOP) != 0);
+            mAway = ((flags & BeingFlag::AWAY) != 0);
+            mInactive = ((flags & BeingFlag::INACTIVE) != 0);
             if (mShop || mAway || mInactive)
                 updateName();
         }
@@ -2220,11 +2220,11 @@ void Being::addToCache() const
     {
         int flags = 0;
         if (mShop)
-            flags += FLAG_SHOP;
+            flags += BeingFlag::SHOP;
         if (mAway)
-            flags += FLAG_AWAY;
+            flags += BeingFlag::AWAY;
         if (mInactive)
-            flags += FLAG_INACTIVE;
+            flags += BeingFlag::INACTIVE;
         entry->setFlags(flags);
     }
     else
@@ -2916,9 +2916,9 @@ void Being::saveComment(const std::string &restrict name,
 
 void Being::setState(const uint8_t state)
 {
-    const bool shop = ((state & FLAG_SHOP) != 0);
-    const bool away = ((state & FLAG_AWAY) != 0);
-    const bool inactive = ((state & FLAG_INACTIVE) != 0);
+    const bool shop = ((state & BeingFlag::SHOP) != 0);
+    const bool away = ((state & BeingFlag::AWAY) != 0);
+    const bool inactive = ((state & BeingFlag::INACTIVE) != 0);
     const bool needUpdate = (shop != mShop || away != mAway
         || inactive != mInactive);
 
@@ -2938,7 +2938,7 @@ void Being::setState(const uint8_t state)
 
 void Being::setEmote(const uint8_t emotion, const int emote_time)
 {
-    if ((emotion & FLAG_SPECIAL) == FLAG_SPECIAL)
+    if ((emotion & BeingFlag::SPECIAL) == BeingFlag::SPECIAL)
     {
         setState(emotion);
         mAdvanced = true;

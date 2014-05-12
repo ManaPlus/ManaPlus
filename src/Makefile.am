@@ -714,6 +714,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      being/being.h \
 	      being/beingcacheentry.h \
 	      being/beingdirection.h \
+	      being/beingflag.h \
 	      beingequipbackend.cpp \
 	      beingequipbackend.h \
 	      spellmanager.cpp \

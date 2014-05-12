@@ -818,7 +818,7 @@ void OnlinePlayer::setText(std::string color)
         }
     }
 
-    if ((mStatus != 255 && mStatus & Being::FLAG_GM) || mIsGM)
+    if ((mStatus != 255 && mStatus & BeingFlag::GM) || mIsGM)
         mText.append("(GM) ");
 
     if (mLevel > 0)
@@ -831,20 +831,20 @@ void OnlinePlayer::setText(std::string color)
 
     if (mStatus > 0 && mStatus != 255)
     {
-        if (mStatus & Being::FLAG_SHOP)
+        if (mStatus & BeingFlag::SHOP)
             mText.append("$");
-        if (mStatus & Being::FLAG_AWAY)
+        if (mStatus & BeingFlag::AWAY)
         {
             // TRANSLATORS: this away status writed in player nick
             mText.append(_("A"));
         }
-        if (mStatus & Being::FLAG_INACTIVE)
+        if (mStatus & BeingFlag::INACTIVE)
         {
             // TRANSLATORS: this inactive status writed in player nick
             mText.append(_("I"));
         }
 
-        if (mStatus & Being::FLAG_GM && color == "0")
+        if (mStatus & BeingFlag::GM && color == "0")
             color = "2";
     }
     else if (mIsGM && color == "0")

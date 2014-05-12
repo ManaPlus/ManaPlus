@@ -30,6 +30,7 @@
 #include "listeners/configlistener.h"
 
 #include "being/beingdirection.h"
+#include "being/beingflag.h"
 #include "being/gender.h"
 
 #include <map>
@@ -83,17 +84,6 @@ class Being : public ActorSprite, public ConfigListener
     public:
         friend class BeingEquipBackend;
         friend class LocalPlayer;
-
-        enum FLAGS
-        {
-            FLAG_SHOP = 1,
-            FLAG_AWAY = 2,
-            FLAG_INACTIVE = 4,
-            FLAG_GENDER_OTHER = 32,
-            FLAG_GM = 64,
-            FLAG_GENDER_MALE = 128,
-            FLAG_SPECIAL = 128 + 64
-        };
 
         /**
          * Action the being is currently performing
