@@ -24,28 +24,14 @@
 
 #include "sprite.h"
 
+#include "being/compounditem.h"
+
 #include <list>
 #include <vector>
 
 #include "localconsts.h"
 
 class Image;
-
-typedef std::list <const void*> VectorPointers;
-
-class CompoundItem final
-{
-    public:
-        CompoundItem();
-
-        A_DELETE_COPY(CompoundItem)
-
-        ~CompoundItem();
-
-        VectorPointers data;
-        Image *image;
-        Image *alphaImage;
-};
 
 class CompoundSprite : public Sprite
 {

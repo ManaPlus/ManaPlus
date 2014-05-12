@@ -636,6 +636,7 @@ SET(SRCS
     commandhandler.h
     commands.cpp
     commands.h
+    being/compounditem.h
     being/compoundsprite.cpp
     being/compoundsprite.h
     being/gender.h
