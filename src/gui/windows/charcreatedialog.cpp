@@ -58,7 +58,8 @@ static const Being::Action actions[] =
 
 static const uint8_t directions[] =
 {
-    Being::DOWN, Being::RIGHT, Being::UP, Being::LEFT
+    BeingDirection::DOWN, BeingDirection::RIGHT,
+    BeingDirection::UP, BeingDirection::LEFT
 };
 
 CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,

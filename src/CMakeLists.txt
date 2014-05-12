@@ -624,6 +624,7 @@ SET(SRCS
     being/being.cpp
     being/being.h
     being/beingcacheentry.h
+    being/beingdirection.h
     beingequipbackend.cpp
     beingequipbackend.h
     spellmanager.cpp

@@ -29,6 +29,7 @@
 
 #include "listeners/configlistener.h"
 
+#include "being/beingdirection.h"
 #include "being/gender.h"
 
 #include <map>
@@ -137,17 +138,6 @@ class Being : public ActorSprite, public ConfigListener
         };
 
         /**
-         * Directions, to be used as bitmask values
-         */
-        enum BeingDirection
-        {
-            DOWN = 1,
-            LEFT = 2,
-            UP = 4,
-            RIGHT = 8
-        };
-
-        /**
          * Constructor.
          *
          * @param id      a unique being id
@@ -193,14 +183,14 @@ class Being : public ActorSprite, public ConfigListener
          * TODO: Used by eAthena only?
          */
         int getXOffset() const A_WARN_UNUSED
-        { return getOffset(LEFT, RIGHT); }
+        { return getOffset(BeingDirection::LEFT, BeingDirection::RIGHT); }
 
         /**
          * Get the current Y pixel offset.
          * TODO: Used by eAthena only?
          */
         int getYOffset() const A_WARN_UNUSED
-        { return getOffset(UP, DOWN); }
+        { return getOffset(BeingDirection::UP, BeingDirection::DOWN); }
 
         /**
          * Creates a path for the being from current position to ex and ey

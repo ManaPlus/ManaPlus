@@ -568,14 +568,14 @@ void LocalPlayer::setDestination(const int x, const int y)
         else
         {
             uint8_t newDir = 0;
-            if (mDirection & UP)
-                newDir |= DOWN;
-            if (mDirection & LEFT)
-                newDir |= RIGHT;
-            if (mDirection & DOWN)
-                newDir |= UP;
-            if (mDirection & RIGHT)
-                newDir |= LEFT;
+            if (mDirection & BeingDirection::UP)
+                newDir |= BeingDirection::DOWN;
+            if (mDirection & BeingDirection::LEFT)
+                newDir |= BeingDirection::RIGHT;
+            if (mDirection & BeingDirection::DOWN)
+                newDir |= BeingDirection::UP;
+            if (mDirection & BeingDirection::RIGHT)
+                newDir |= BeingDirection::LEFT;
 
             Net::getPlayerHandler()->setDestination(x, y, newDir);
 
@@ -617,13 +617,13 @@ void LocalPlayer::startWalking(const unsigned char dir)
     }
 
     int dx = 0, dy = 0;
-    if (dir & UP)
+    if (dir & BeingDirection::UP)
         dy--;
-    if (dir & DOWN)
+    if (dir & BeingDirection::DOWN)
         dy++;
-    if (dir & LEFT)
+    if (dir & BeingDirection::LEFT)
         dx--;
-    if (dir & RIGHT)
+    if (dir & BeingDirection::RIGHT)
         dx++;
 
     const unsigned char walkMask = getWalkMask();
@@ -746,16 +746,16 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     if (abs(dist_y) >= abs(dist_x))
     {
         if (dist_y > 0)
-            setDirection(DOWN);
+            setDirection(BeingDirection::DOWN);
         else
-            setDirection(UP);
+            setDirection(BeingDirection::UP);
     }
     else
     {
         if (dist_x > 0)
-            setDirection(RIGHT);
+            setDirection(BeingDirection::RIGHT);
         else
-            setDirection(LEFT);
+            setDirection(BeingDirection::LEFT);
     }
 
     mActionTime = tick_time;
@@ -1844,29 +1844,29 @@ void LocalPlayer::crazyMove1()
 //    if (!client->limitPackets(PACKET_DIRECTION))
 //        return;
 
-    if (mDirection == Being::UP)
+    if (mDirection == BeingDirection::UP)
     {
-        setWalkingDir(Being::UP);
-        setDirection(Being::LEFT);
-        Net::getPlayerHandler()->setDirection(Being::LEFT);
+        setWalkingDir(BeingDirection::UP);
+        setDirection(BeingDirection::LEFT);
+        Net::getPlayerHandler()->setDirection(BeingDirection::LEFT);
     }
-    else if (mDirection == Being::LEFT)
+    else if (mDirection == BeingDirection::LEFT)
     {
-        setWalkingDir(Being::LEFT);
-        setDirection(Being::DOWN);
-        Net::getPlayerHandler()->setDirection(Being::DOWN);
+        setWalkingDir(BeingDirection::LEFT);
+        setDirection(BeingDirection::DOWN);
+        Net::getPlayerHandler()->setDirection(BeingDirection::DOWN);
     }
-    else if (mDirection == Being::DOWN)
+    else if (mDirection == BeingDirection::DOWN)
     {
-        setWalkingDir(Being::DOWN);
-        setDirection(Being::RIGHT);
-        Net::getPlayerHandler()->setDirection(Being::RIGHT);
+        setWalkingDir(BeingDirection::DOWN);
+        setDirection(BeingDirection::RIGHT);
+        Net::getPlayerHandler()->setDirection(BeingDirection::RIGHT);
     }
-    else if (mDirection == Being::RIGHT)
+    else if (mDirection == BeingDirection::RIGHT)
     {
-        setWalkingDir(Being::RIGHT);
-        setDirection(Being::UP);
-        Net::getPlayerHandler()->setDirection(Being::UP);
+        setWalkingDir(BeingDirection::RIGHT);
+        setDirection(BeingDirection::UP);
+        Net::getPlayerHandler()->setDirection(BeingDirection::UP);
     }
 }
 
@@ -1878,29 +1878,33 @@ void LocalPlayer::crazyMove2()
 //    if (!client->limitPackets(PACKET_DIRECTION))
 //        return;
 
-    if (mDirection == Being::UP)
+    if (mDirection == BeingDirection::UP)
     {
-        setWalkingDir(Being::UP | Being::LEFT);
-        setDirection(Being::RIGHT);
-        Net::getPlayerHandler()->setDirection(Being::DOWN | Being::RIGHT);
+        setWalkingDir(BeingDirection::UP | BeingDirection::LEFT);
+        setDirection(BeingDirection::RIGHT);
+        Net::getPlayerHandler()->setDirection(
+            BeingDirection::DOWN | BeingDirection::RIGHT);
     }
-    else if (mDirection == Being::RIGHT)
+    else if (mDirection == BeingDirection::RIGHT)
     {
-        setWalkingDir(Being::UP | Being::RIGHT);
-        setDirection(Being::DOWN);
-        Net::getPlayerHandler()->setDirection(Being::DOWN | Being::LEFT);
+        setWalkingDir(BeingDirection::UP | BeingDirection::RIGHT);
+        setDirection(BeingDirection::DOWN);
+        Net::getPlayerHandler()->setDirection(
+            BeingDirection::DOWN | BeingDirection::LEFT);
     }
-    else if (mDirection == Being::DOWN)
+    else if (mDirection == BeingDirection::DOWN)
     {
-        setWalkingDir(Being::DOWN | Being::RIGHT);
-        setDirection(Being::LEFT);
-        Net::getPlayerHandler()->setDirection(Being::UP | Being::LEFT);
+        setWalkingDir(BeingDirection::DOWN | BeingDirection::RIGHT);
+        setDirection(BeingDirection::LEFT);
+        Net::getPlayerHandler()->setDirection(
+            BeingDirection::UP | BeingDirection::LEFT);
     }
-    else if (mDirection == Being::LEFT)
+    else if (mDirection == BeingDirection::LEFT)
     {
-        setWalkingDir(Being::DOWN | Being::LEFT);
-        setDirection(Being::UP);
-        Net::getPlayerHandler()->setDirection(Being::UP | Being::RIGHT);
+        setWalkingDir(BeingDirection::DOWN | BeingDirection::LEFT);
+        setDirection(BeingDirection::UP);
+        Net::getPlayerHandler()->setDirection(
+            BeingDirection::UP | BeingDirection::RIGHT);
     }
 }
 
@@ -1934,8 +1938,8 @@ void LocalPlayer::crazyMove3()
 //    if (!client->limitPackets(PACKET_DIRECTION))
 //        return;
 
-    setDirection(Being::DOWN);
-    Net::getPlayerHandler()->setDirection(Being::DOWN);
+    setDirection(BeingDirection::DOWN);
+    Net::getPlayerHandler()->setDirection(BeingDirection::DOWN);
 }
 
 void LocalPlayer::crazyMove4()
@@ -2077,13 +2081,13 @@ void LocalPlayer::crazyMove8()
         { 1,  0, -1,  0}    // move down
     };
 
-    if (mDirection == Being::UP)
+    if (mDirection == BeingDirection::UP)
         idx = 0;
-    else if (mDirection == Being::RIGHT)
+    else if (mDirection == BeingDirection::RIGHT)
         idx = 1;
-    else if (mDirection == Being::DOWN)
+    else if (mDirection == BeingDirection::DOWN)
         idx = 2;
-    else if (mDirection == Being::LEFT)
+    else if (mDirection == BeingDirection::LEFT)
         idx = 3;
 
 
@@ -2148,10 +2152,10 @@ void LocalPlayer::crazyMove9()
         case 0:
             switch (mDirection)
             {
-                case UP   : dy = -1; break;
-                case DOWN : dy = 1; break;
-                case LEFT : dx = -1; break;
-                case RIGHT: dx = 1; break;
+                case BeingDirection::UP   : dy = -1; break;
+                case BeingDirection::DOWN : dy = 1; break;
+                case BeingDirection::LEFT : dx = -1; break;
+                case BeingDirection::RIGHT: dx = 1; break;
                 default: break;
             }
             move(dx, dy);
@@ -2230,24 +2234,24 @@ void LocalPlayer::crazyMoveA()
                     move(1, -1);
                     break;
                 case 'f':
-                    if (mDirection & UP)
+                    if (mDirection & BeingDirection::UP)
                         dy = -1;
-                    else if (mDirection & DOWN)
+                    else if (mDirection & BeingDirection::DOWN)
                         dy = 1;
-                    if (mDirection & LEFT)
+                    if (mDirection & BeingDirection::LEFT)
                         dx = -1;
-                    else if (mDirection & RIGHT)
+                    else if (mDirection & BeingDirection::RIGHT)
                         dx = 1;
                     move(dx, dy);
                     break;
                 case 'b':
-                    if (mDirection & UP)
+                    if (mDirection & BeingDirection::UP)
                         dy = 1;
-                    else if (mDirection & DOWN)
+                    else if (mDirection & BeingDirection::DOWN)
                         dy = -1;
-                    if (mDirection & LEFT)
+                    if (mDirection & BeingDirection::LEFT)
                         dx = 1;
-                    else if (mDirection & RIGHT)
+                    else if (mDirection & BeingDirection::RIGHT)
                         dx = -1;
                     move(dx, dy);
                     break;
@@ -2276,29 +2280,29 @@ void LocalPlayer::crazyMoveA()
 
 //                    if (client->limitPackets(PACKET_DIRECTION))
                     {
-                        setDirection(Being::DOWN);
-                        Net::getPlayerHandler()->setDirection(Being::DOWN);
+                        setDirection(BeingDirection::DOWN);
+                        Net::getPlayerHandler()->setDirection(BeingDirection::DOWN);
                     }
                     break;
                 case 'u':
 //                    if (client->limitPackets(PACKET_DIRECTION))
                     {
-                        setDirection(Being::UP);
-                        Net::getPlayerHandler()->setDirection(Being::UP);
+                        setDirection(BeingDirection::UP);
+                        Net::getPlayerHandler()->setDirection(BeingDirection::UP);
                     }
                     break;
                 case 'l':
 //                    if (client->limitPackets(PACKET_DIRECTION))
                     {
-                        setDirection(Being::LEFT);
-                        Net::getPlayerHandler()->setDirection(Being::LEFT);
+                        setDirection(BeingDirection::LEFT);
+                        Net::getPlayerHandler()->setDirection(BeingDirection::LEFT);
                     }
                     break;
                 case 'r':
 //                    if (client->limitPackets(PACKET_DIRECTION))
                     {
-                        setDirection(Being::RIGHT);
-                        Net::getPlayerHandler()->setDirection(Being::RIGHT);
+                        setDirection(BeingDirection::RIGHT);
+                        Net::getPlayerHandler()->setDirection(BeingDirection::RIGHT);
                     }
                     break;
                 case 'L':
@@ -2307,11 +2311,20 @@ void LocalPlayer::crazyMoveA()
                         uint8_t dir = 0;
                         switch (mDirection)
                         {
-                            case UP    : dir = Being::LEFT; break;
-                            case DOWN  : dir = Being::RIGHT; break;
-                            case LEFT  : dir = Being::DOWN; break;
-                            case RIGHT : dir = Being::UP; break;
-                            default: break;
+                            case BeingDirection::UP:
+                                dir = BeingDirection::LEFT;
+                                break;
+                            case BeingDirection::DOWN:
+                                dir = BeingDirection::RIGHT;
+                                break;
+                            case BeingDirection::LEFT:
+                                dir = BeingDirection::DOWN;
+                                break;
+                            case BeingDirection::RIGHT:
+                                dir = BeingDirection::UP;
+                                break;
+                            default:
+                                break;
                         }
                         setDirection(dir);
                         Net::getPlayerHandler()->setDirection(dir);
@@ -2323,11 +2336,20 @@ void LocalPlayer::crazyMoveA()
                         uint8_t dir = 0;
                         switch (mDirection)
                         {
-                            case UP    : dir = Being::RIGHT; break;
-                            case DOWN  : dir = Being::LEFT; break;
-                            case LEFT  : dir = Being::UP; break;
-                            case RIGHT : dir = Being::DOWN; break;
-                            default: break;
+                            case BeingDirection::UP:
+                                dir = BeingDirection::RIGHT;
+                                break;
+                            case BeingDirection::DOWN:
+                                dir = BeingDirection::LEFT;
+                                break;
+                            case BeingDirection::LEFT:
+                                dir = BeingDirection::UP;
+                                break;
+                            case BeingDirection::RIGHT:
+                                dir = BeingDirection::DOWN;
+                                break;
+                            default:
+                                break;
                         }
                         setDirection(dir);
                         Net::getPlayerHandler()->setDirection(dir);
@@ -2339,11 +2361,20 @@ void LocalPlayer::crazyMoveA()
                         uint8_t dir = 0;
                         switch (mDirection)
                         {
-                            case UP    : dir = Being::DOWN; break;
-                            case DOWN  : dir = Being::UP; break;
-                            case LEFT  : dir = Being::RIGHT; break;
-                            case RIGHT : dir = Being::LEFT; break;
-                            default: break;
+                            case BeingDirection::UP:
+                                dir = BeingDirection::DOWN;
+                                break;
+                            case BeingDirection::DOWN:
+                                dir = BeingDirection::UP;
+                                break;
+                            case BeingDirection::LEFT:
+                                dir = BeingDirection::RIGHT;
+                                break;
+                            case BeingDirection::RIGHT:
+                                dir = BeingDirection::LEFT;
+                                break;
+                            default:
+                                break;
                         }
                         setDirection(dir);
                         Net::getPlayerHandler()->setDirection(dir);
@@ -2522,10 +2553,10 @@ bool LocalPlayer::pickUpItems(int pickUpType)
         case 1:
             switch (mDirection)
             {
-                case UP   : --y; break;
-                case DOWN : ++y; break;
-                case LEFT : --x; break;
-                case RIGHT: ++x; break;
+                case BeingDirection::UP   : --y; break;
+                case BeingDirection::DOWN : ++y; break;
+                case BeingDirection::LEFT : --x; break;
+                case BeingDirection::RIGHT: ++x; break;
                 default: break;
             }
             item = actorManager->findItem(x, y);
@@ -2535,11 +2566,16 @@ bool LocalPlayer::pickUpItems(int pickUpType)
         case 2:
             switch (mDirection)
             {
-                case UP   : x1 = x - 1; y1 = y - 1; x2 = x + 1; y2 = y; break;
-                case DOWN : x1 = x - 1; y1 = y; x2 = x + 1; y2 = y + 1; break;
-                case LEFT : x1 = x - 1; y1 = y - 1; x2 = x; y2 = y + 1; break;
-                case RIGHT: x1 = x; y1 = y - 1; x2 = x + 1; y2 = y + 1; break;
-                default: x1 = x; x2 = x; y1 = y; y2 = y; break;
+                case BeingDirection::UP:
+                    x1 = x - 1; y1 = y - 1; x2 = x + 1; y2 = y; break;
+                case BeingDirection::DOWN:
+                    x1 = x - 1; y1 = y; x2 = x + 1; y2 = y + 1; break;
+                case BeingDirection::LEFT:
+                    x1 = x - 1; y1 = y - 1; x2 = x; y2 = y + 1; break;
+                case BeingDirection::RIGHT:
+                    x1 = x; y1 = y - 1; x2 = x + 1; y2 = y + 1; break;
+                default:
+                    x1 = x; x2 = x; y1 = y; y2 = y; break;
             }
             if (actorManager->pickUpAll(x1, y1, x2, y2))
                 status = true;
@@ -2595,13 +2631,13 @@ bool LocalPlayer::pickUpItems(int pickUpType)
 void LocalPlayer::moveByDirection(const unsigned char dir)
 {
     int dx = 0, dy = 0;
-    if (dir & UP)
+    if (dir & BeingDirection::UP)
         dy--;
-    if (dir & DOWN)
+    if (dir & BeingDirection::DOWN)
         dy++;
-    if (dir & LEFT)
+    if (dir & BeingDirection::LEFT)
         dx--;
-    if (dir & RIGHT)
+    if (dir & BeingDirection::RIGHT)
         dx++;
     move(dx, dy);
 }
@@ -2808,13 +2844,13 @@ void LocalPlayer::setHome()
 
         if (!mapItem || mapItem->getType() == MapItem::EMPTY)
         {
-            if (mDirection & UP)
+            if (mDirection & BeingDirection::UP)
                 type = MapItem::ARROW_UP;
-            else if (mDirection & LEFT)
+            else if (mDirection & BeingDirection::LEFT)
                 type = MapItem::ARROW_LEFT;
-            else if (mDirection & DOWN)
+            else if (mDirection & BeingDirection::DOWN)
                 type = MapItem::ARROW_DOWN;
-            else if (mDirection & RIGHT)
+            else if (mDirection & BeingDirection::RIGHT)
                 type = MapItem::ARROW_RIGHT;
         }
         else
@@ -3354,14 +3390,14 @@ void LocalPlayer::imitateDirection(const Being *const being,
         if (mFollowMode == 2)
         {
             uint8_t dir2 = 0;
-            if (dir & Being::LEFT)
-                dir2 |= Being::RIGHT;
-            else if (dir & Being::RIGHT)
-                dir2 |= Being::LEFT;
-            if (dir & Being::UP)
-                dir2 |= Being::DOWN;
-            else if (dir & Being::DOWN)
-                dir2 |= Being::UP;
+            if (dir & BeingDirection::LEFT)
+                dir2 |= BeingDirection::RIGHT;
+            else if (dir & BeingDirection::RIGHT)
+                dir2 |= BeingDirection::LEFT;
+            if (dir & BeingDirection::UP)
+                dir2 |= BeingDirection::DOWN;
+            else if (dir & BeingDirection::DOWN)
+                dir2 |= BeingDirection::UP;
 
             setDirection(dir2);
             Net::getPlayerHandler()->setDirection(dir2);

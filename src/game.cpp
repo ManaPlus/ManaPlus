@@ -865,14 +865,14 @@ void Game::handleMove()
         if (inputManager.isActionActive(Input::KEY_MOVE_UP) ||
             (joystick && joystick->isUp()))
         {
-            direction |= Being::UP;
+            direction |= BeingDirection::UP;
             setValidSpeed();
             player_node->cancelFollow();
         }
         else if (inputManager.isActionActive(Input::KEY_MOVE_DOWN) ||
                  (joystick && joystick->isDown()))
         {
-            direction |= Being::DOWN;
+            direction |= BeingDirection::DOWN;
             setValidSpeed();
             player_node->cancelFollow();
         }
@@ -880,14 +880,14 @@ void Game::handleMove()
         if (inputManager.isActionActive(Input::KEY_MOVE_LEFT) ||
             (joystick && joystick->isLeft()))
         {
-            direction |= Being::LEFT;
+            direction |= BeingDirection::LEFT;
             setValidSpeed();
             player_node->cancelFollow();
         }
         else if (inputManager.isActionActive(Input::KEY_MOVE_RIGHT) ||
                  (joystick && joystick->isRight()))
         {
-            direction |= Being::RIGHT;
+            direction |= BeingDirection::RIGHT;
             setValidSpeed();
             player_node->cancelFollow();
         }
@@ -917,14 +917,14 @@ void Game::moveInDirection(const unsigned char direction)
     {
         int dx = 0;
         int dy = 0;
-        if (direction & Being::LEFT)
+        if (direction & BeingDirection::LEFT)
             dx = -5;
-        else if (direction & Being::RIGHT)
+        else if (direction & BeingDirection::RIGHT)
             dx = 5;
 
-        if (direction & Being::UP)
+        if (direction & BeingDirection::UP)
             dy = -5;
-        else if (direction & Being::DOWN)
+        else if (direction & BeingDirection::DOWN)
             dy = 5;
         viewport->moveCamera(dx, dy);
     }

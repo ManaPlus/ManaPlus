@@ -143,7 +143,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mGender(GENDER_UNSPECIFIED),
     mAction(STAND),
     mSubType(0xFFFF),
-    mDirection(DOWN),
+    mDirection(BeingDirection::DOWN),
     mDirectionDelayed(0),
     mSpriteDirection(DIRECTION_DOWN),
     mShowName(false),
@@ -1247,25 +1247,25 @@ void Being::setDirection(const uint8_t direction)
         mFaceDirection = direction;
 
     SpriteDirection dir;
-    if (mFaceDirection & UP)
+    if (mFaceDirection & BeingDirection::UP)
     {
-        if (mFaceDirection & LEFT)
+        if (mFaceDirection & BeingDirection::LEFT)
             dir = DIRECTION_UPLEFT;
-        else if (mFaceDirection & RIGHT)
+        else if (mFaceDirection & BeingDirection::RIGHT)
             dir = DIRECTION_UPRIGHT;
         else
             dir = DIRECTION_UP;
     }
-    else if (mFaceDirection & DOWN)
+    else if (mFaceDirection & BeingDirection::DOWN)
     {
-        if (mFaceDirection & LEFT)
+        if (mFaceDirection & BeingDirection::LEFT)
             dir = DIRECTION_DOWNLEFT;
-        else if (mFaceDirection & RIGHT)
+        else if (mFaceDirection & BeingDirection::RIGHT)
             dir = DIRECTION_DOWNRIGHT;
         else
             dir = DIRECTION_DOWN;
     }
-    else if (mFaceDirection & RIGHT)
+    else if (mFaceDirection & BeingDirection::RIGHT)
     {
         dir = DIRECTION_RIGHT;
     }
@@ -1287,13 +1287,13 @@ uint8_t Being::calcDirection() const
 {
     uint8_t dir = 0;
     if (mDest.x > mX)
-        dir |= RIGHT;
+        dir |= BeingDirection::RIGHT;
     else if (mDest.x < mX)
-        dir |= LEFT;
+        dir |= BeingDirection::LEFT;
     if (mDest.y > mY)
-        dir |= DOWN;
+        dir |= BeingDirection::DOWN;
     else if (mDest.y < mY)
-        dir |= UP;
+        dir |= BeingDirection::UP;
     return dir;
 }
 
@@ -1301,13 +1301,13 @@ uint8_t Being::calcDirection(const int dstX, const int dstY) const
 {
     uint8_t dir = 0;
     if (dstX > mX)
-        dir |= RIGHT;
+        dir |= BeingDirection::RIGHT;
     else if (dstX < mX)
-        dir |= LEFT;
+        dir |= BeingDirection::LEFT;
     if (dstY > mY)
-        dir |= DOWN;
+        dir |= BeingDirection::DOWN;
     else if (dstY < mY)
-        dir |= UP;
+        dir |= BeingDirection::UP;
     return dir;
 }
 
@@ -1608,24 +1608,24 @@ void Being::petLogic()
 
             case 2:
                 if (dstX > dstX0)
-                    newDir |= LEFT;
+                    newDir |= BeingDirection::LEFT;
                 else if (dstX < dstX0)
-                    newDir |= RIGHT;
+                    newDir |= BeingDirection::RIGHT;
                 if (dstY > dstY0)
-                    newDir |= UP;
+                    newDir |= BeingDirection::UP;
                 else if (dstY < dstY0)
-                    newDir |= DOWN;
+                    newDir |= BeingDirection::DOWN;
                 break;
 
             case 3:
                 if (dstX > dstX0)
-                    newDir |= RIGHT;
+                    newDir |= BeingDirection::RIGHT;
                 else if (dstX < dstX0)
-                    newDir |= LEFT;
+                    newDir |= BeingDirection::LEFT;
                 if (dstY > dstY0)
-                    newDir |= DOWN;
+                    newDir |= BeingDirection::DOWN;
                 else if (dstY < dstY0)
-                    newDir |= UP;
+                    newDir |= BeingDirection::UP;
                 break;
 
             case 4:
@@ -1633,13 +1633,13 @@ void Being::petLogic()
                 const int dstX2 = mOwner->getLastAttackX();
                 const int dstY2 = mOwner->getLastAttackY();
                 if (dstX > dstX2)
-                    newDir |= LEFT;
+                    newDir |= BeingDirection::LEFT;
                 else if (dstX < dstX2)
-                    newDir |= RIGHT;
+                    newDir |= BeingDirection::RIGHT;
                 if (dstY > dstY2)
-                    newDir |= UP;
+                    newDir |= BeingDirection::UP;
                 else if (dstY < dstY2)
-                    newDir |= DOWN;
+                    newDir |= BeingDirection::DOWN;
                 break;
             }
         }
@@ -1713,7 +1713,8 @@ int Being::getOffset(const signed char pos, const signed char neg) const
     if (mMap)
     {
         const int time = get_elapsed_time(mActionTime);
-        offset = (pos == LEFT && neg == RIGHT) ?
+        offset = (pos == BeingDirection::LEFT
+            && neg == BeingDirection::RIGHT) ?
             static_cast<int>((static_cast<float>(time)
             * static_cast<float>(mMap->getTileWidth())) / mSpeed) :
             static_cast<int>((static_cast<float>(time)
@@ -3216,20 +3217,20 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
     int offsetY = offsetY1;
     switch (mOwner->getDirection())
     {
-        case LEFT:
+        case BeingDirection::LEFT:
             offsetX = -offsetY1;
             offsetY = offsetX1;
             break;
-        case RIGHT:
+        case BeingDirection::RIGHT:
             offsetX = offsetY1;
             offsetY = -offsetX1;
             break;
-        case UP:
+        case BeingDirection::UP:
             offsetY = -offsetY;
             offsetX = -offsetX;
             break;
         default:
-        case DOWN:
+        case BeingDirection::DOWN:
             break;
     }
     dstX += offsetX;

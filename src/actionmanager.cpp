@@ -919,13 +919,13 @@ impHandler0(directUp)
 {
     if (player_node)
     {
-        if (player_node->getDirection() != Being::UP)
+        if (player_node->getDirection() != BeingDirection::UP)
         {
 //            if (client->limitPackets(PACKET_DIRECTION))
             {
-                player_node->setDirection(Being::UP);
+                player_node->setDirection(BeingDirection::UP);
                 if (Net::getPlayerHandler())
-                    Net::getPlayerHandler()->setDirection(Being::UP);
+                    Net::getPlayerHandler()->setDirection(BeingDirection::UP);
             }
         }
         return true;
@@ -937,13 +937,16 @@ impHandler0(directDown)
 {
     if (player_node)
     {
-        if (player_node->getDirection() != Being::DOWN)
+        if (player_node->getDirection() != BeingDirection::DOWN)
         {
 //            if (client->limitPackets(PACKET_DIRECTION))
             {
-                player_node->setDirection(Being::DOWN);
+                player_node->setDirection(BeingDirection::DOWN);
                 if (Net::getPlayerHandler())
-                    Net::getPlayerHandler()->setDirection(Being::DOWN);
+                {
+                    Net::getPlayerHandler()->setDirection(
+                        BeingDirection::DOWN);
+                }
             }
         }
         return true;
@@ -955,13 +958,16 @@ impHandler0(directLeft)
 {
     if (player_node)
     {
-        if (player_node->getDirection() != Being::LEFT)
+        if (player_node->getDirection() != BeingDirection::LEFT)
         {
 //            if (client->limitPackets(PACKET_DIRECTION))
             {
-                player_node->setDirection(Being::LEFT);
+                player_node->setDirection(BeingDirection::LEFT);
                 if (Net::getPlayerHandler())
-                    Net::getPlayerHandler()->setDirection(Being::LEFT);
+                {
+                    Net::getPlayerHandler()->setDirection(
+                        BeingDirection::LEFT);
+                }
             }
         }
         return true;
@@ -973,13 +979,16 @@ impHandler0(directRight)
 {
     if (player_node)
     {
-        if (player_node->getDirection() != Being::RIGHT)
+        if (player_node->getDirection() != BeingDirection::RIGHT)
         {
 //            if (client->limitPackets(PACKET_DIRECTION))
             {
-                player_node->setDirection(Being::RIGHT);
+                player_node->setDirection(BeingDirection::RIGHT);
                 if (Net::getPlayerHandler())
-                    Net::getPlayerHandler()->setDirection(Being::RIGHT);
+                {
+                    Net::getPlayerHandler()->setDirection(
+                        BeingDirection::RIGHT);
+                }
             }
         }
         return true;
