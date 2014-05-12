@@ -24,7 +24,7 @@
 #include "graphicsmanager.h"
 #include "variabledata.h"
 
-#include "being/being.h"
+#include "being/beingspeech.h"
 
 #include "input/keydata.h"
 
@@ -79,7 +79,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("speechBubbleAlpha", 1.0F);
     AddDEF("MostUsedServerName0", "server.themanaworld.org");
     AddDEF("visiblenames", true);
-    AddDEF("speech", static_cast<int>(Being::NO_NAME_IN_BUBBLE));
+    AddDEF("speech", static_cast<int>(BeingSpeech::NO_NAME_IN_BUBBLE));
     AddDEF("showgender", true);
     AddDEF("showlevel", false);
     AddDEF("showMonstersTakedDamage", true);

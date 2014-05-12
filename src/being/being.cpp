@@ -35,6 +35,7 @@
 
 #include "being/attributes.h"
 #include "being/beingcacheentry.h"
+#include "being/beingspeech.h"
 #include "being/playerrelations.h"
 
 #include "particle/particle.h"
@@ -463,7 +464,7 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
     }
 
     const int speech = mSpeechType;
-    if (speech == TEXT_OVERHEAD && userPalette)
+    if (speech == BeingSpeech::TEXT_OVERHEAD && userPalette)
     {
         delete mText;
         mText = new Text(mSpeech,
@@ -474,7 +475,7 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
     }
     else
     {
-        const bool isShowName = (speech == NAME_IN_BUBBLE);
+        const bool isShowName = (speech == BeingSpeech::NAME_IN_BUBBLE);
         mSpeechBubble->setCaption(isShowName ? mName : "");
         mSpeechBubble->setText(mSpeech, isShowName);
     }
@@ -1674,8 +1675,8 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
         if (mSpeechBubble->isVisibleLocal())
             mSpeechBubble->setVisible(false);
     }
-    else if (mSpeechTime > 0 && (speech == NAME_IN_BUBBLE ||
-             speech == NO_NAME_IN_BUBBLE))
+    else if (mSpeechTime > 0 && (speech == BeingSpeech::NAME_IN_BUBBLE ||
+             speech == BeingSpeech::NO_NAME_IN_BUBBLE))
     {
         delete2(mText)
 
@@ -1684,7 +1685,7 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
         mSpeechBubble->setVisible(true);
         mSpeechBubble->requestMoveToBackground();
     }
-    else if (mSpeechTime > 0 && speech == TEXT_OVERHEAD)
+    else if (mSpeechTime > 0 && speech == BeingSpeech::TEXT_OVERHEAD)
     {
         mSpeechBubble->setVisible(false);
 
@@ -1695,7 +1696,7 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
                 Theme::BUBBLE_TEXT, 255), true);
         }
     }
-    else if (speech == NO_SPEECH)
+    else if (speech == BeingSpeech::NO_SPEECH)
     {
         mSpeechBubble->setVisible(false);
         delete2(mText)

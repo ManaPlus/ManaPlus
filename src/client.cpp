@@ -42,6 +42,7 @@
 #include "units.h"
 #include "touchmanager.h"
 
+#include "being/beingspeech.h"
 #include "being/playerrelations.h"
 
 #include "input/inputmanager.h"
@@ -2936,10 +2937,10 @@ void Client::checkConfigVersion()
     }
     if (version < 5)
     {
-        if (config.getIntValue("speech") == Being::TEXT_OVERHEAD)
+        if (config.getIntValue("speech") == BeingSpeech::TEXT_OVERHEAD)
         {
             config.setValue("speech", static_cast<int>(
-                Being::NO_NAME_IN_BUBBLE));
+                BeingSpeech::NO_NAME_IN_BUBBLE));
         }
     }
     if (version < 6)
