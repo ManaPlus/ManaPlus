@@ -29,6 +29,7 @@
 
 #include "listeners/configlistener.h"
 
+#include "being/beingaction.h"
 #include "being/beingdirection.h"
 #include "being/beingflag.h"
 #include "being/gender.h"
@@ -84,22 +85,6 @@ class Being : public ActorSprite, public ConfigListener
     public:
         friend class BeingEquipBackend;
         friend class LocalPlayer;
-
-        /**
-         * Action the being is currently performing
-         * WARNING: Has to be in sync with the same enum in the Being class
-         * of the server!
-         */
-        enum Action
-        {
-            STAND = 0,
-            MOVE,
-            ATTACK,
-            SIT,
-            DEAD,
-            HURT,
-            SPAWN
-        };
 
         enum AttackType
         {
@@ -469,19 +454,20 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Sets the current action.
          */
-        virtual void setAction(const Action &action, const int attackType);
+        virtual void setAction(const BeingAction::Action &action,
+                               const int attackType);
 
         /**
          * Get the being's action currently performed.
          */
-        Action getCurrentAction() const A_WARN_UNUSED
+        BeingAction::Action getCurrentAction() const A_WARN_UNUSED
         { return mAction; }
 
         /**
          * Returns whether this being is still alive.
          */
         bool isAlive() const A_WARN_UNUSED
-        { return mAction != DEAD; }
+        { return mAction != BeingAction::DEAD; }
 
         /**
          * Returns the current direction.
@@ -968,7 +954,7 @@ class Being : public ActorSprite, public ConfigListener
         int mLastAttackX;
         int mLastAttackY;
         Gender mGender;
-        Action mAction;       /**< Action the being is performing */
+        BeingAction::Action mAction;
         uint16_t mSubType;      /**< Subtype (graphical view, basically) */
         uint8_t mDirection;               /**< Facing direction */
         uint8_t mDirectionDelayed;        /**< Facing direction */

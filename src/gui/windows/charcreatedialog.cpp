@@ -51,15 +51,21 @@
 
 extern int serverVersion;
 
-static const Being::Action actions[] =
+static const BeingAction::Action actions[] =
 {
-    Being::STAND, Being::SIT, Being::MOVE, Being::ATTACK, Being::DEAD
+    BeingAction::STAND,
+    BeingAction::SIT,
+    BeingAction::MOVE,
+    BeingAction::ATTACK,
+    BeingAction::DEAD
 };
 
 static const uint8_t directions[] =
 {
-    BeingDirection::DOWN, BeingDirection::RIGHT,
-    BeingDirection::UP, BeingDirection::LEFT
+    BeingDirection::DOWN,
+    BeingDirection::RIGHT,
+    BeingDirection::UP,
+    BeingDirection::LEFT
 };
 
 CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,

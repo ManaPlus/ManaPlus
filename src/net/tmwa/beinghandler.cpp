@@ -567,8 +567,8 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
                 dstBeing->setDirectionDelayed(static_cast<uint8_t>(d));
         }
 
-        if (player_node->getCurrentAction() != Being::STAND)
-            player_node->imitateAction(dstBeing, Being::STAND);
+        if (player_node->getCurrentAction() != BeingAction::STAND)
+            player_node->imitateAction(dstBeing, BeingAction::STAND);
         if (player_node->getDirection() != dstBeing->getDirection())
         {
             player_node->imitateDirection(dstBeing,
@@ -597,21 +597,21 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
         switch (type)
         {
             case 0:
-                dstBeing->setAction(Being::STAND, 0);
-                player_node->imitateAction(dstBeing, Being::STAND);
+                dstBeing->setAction(BeingAction::STAND, 0);
+                player_node->imitateAction(dstBeing, BeingAction::STAND);
                 break;
 
             case 1:
-                if (dstBeing->getCurrentAction() != Being::DEAD)
+                if (dstBeing->getCurrentAction() != BeingAction::DEAD)
                 {
-                    dstBeing->setAction(Being::DEAD, 0);
+                    dstBeing->setAction(BeingAction::DEAD, 0);
                     dstBeing->recalcSpritesOrder();
                 }
                 break;
 
             case 2:
-                dstBeing->setAction(Being::SIT, 0);
-                player_node->imitateAction(dstBeing, Being::SIT);
+                dstBeing->setAction(BeingAction::SIT, 0);
+                player_node->imitateAction(dstBeing, BeingAction::SIT);
                 break;
 
             default:

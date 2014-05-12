@@ -623,6 +623,7 @@ SET(SRCS
     avatar.h
     being/being.cpp
     being/being.h
+    being/beingaction.h
     being/beingcacheentry.h
     being/beingdirection.h
     being/beingflag.h

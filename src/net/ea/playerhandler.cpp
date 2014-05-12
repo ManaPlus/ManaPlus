@@ -203,7 +203,7 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
             }
         }
 
-        player_node->setAction(Being::STAND, 0);
+        player_node->setAction(BeingAction::STAND, 0);
         player_node->setTileCoords(x, y);
         player_node->updatePets();
         player_node->navigateClean();
@@ -400,9 +400,9 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
         deathNotice = new OkDialog(_("Message"),
             DeadDB::getRandomString(), DIALOG_OK, false);
         deathNotice->addActionListener(&deathListener);
-        if (player_node->getCurrentAction() != Being::DEAD)
+        if (player_node->getCurrentAction() != BeingAction::DEAD)
         {
-            player_node->setAction(Being::DEAD, 0);
+            player_node->setAction(BeingAction::DEAD, 0);
             player_node->recalcSpritesOrder();
         }
     }

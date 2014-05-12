@@ -183,23 +183,23 @@ void PlayerHandler::setDestination(const int x, const int y,
         static_cast<unsigned char>(direction));
 }
 
-void PlayerHandler::changeAction(const Being::Action &action) const
+void PlayerHandler::changeAction(const BeingAction::Action &action) const
 {
     unsigned char type;
     switch (action)
     {
-        case Being::SIT:
+        case BeingAction::SIT:
             type = 2;
             break;
-        case Being::STAND:
+        case BeingAction::STAND:
             type = 3;
             break;
         default:
-        case Being::MOVE:
-        case Being::ATTACK:
-        case Being::DEAD:
-        case Being::HURT:
-        case Being::SPAWN:
+        case BeingAction::MOVE:
+        case BeingAction::ATTACK:
+        case BeingAction::DEAD:
+        case BeingAction::HURT:
+        case BeingAction::SPAWN:
             return;
     }
 

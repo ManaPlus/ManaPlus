@@ -250,7 +250,7 @@ void LocalPlayer::logic()
     if (mActivityTime == 0 || mLastAction != -1)
         mActivityTime = cur_time;
 
-    if ((mAction != MOVE || mNextStep) && !mNavigatePath.empty())
+    if ((mAction != BeingAction::MOVE || mNextStep) && !mNavigatePath.empty())
     {
         mNextStep = false;
         int dist = 5;
@@ -373,9 +373,10 @@ void LocalPlayer::slowLogic()
     BLOCK_END("LocalPlayer::slowLogic")
 }
 
-void LocalPlayer::setAction(const Action &action, const int attackType)
+void LocalPlayer::setAction(const BeingAction::Action &action,
+                            const int attackType)
 {
-    if (action == DEAD)
+    if (action == BeingAction::DEAD)
     {
         if (!mLastHitFrom.empty())
         {
@@ -439,7 +440,7 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
 
     if (mGoingToTarget && mTarget && withinAttackRange(mTarget))
     {
-        mAction = Being::STAND;
+        mAction = BeingAction::STAND;
         attack(mTarget, true);
         mGoingToTarget = false;
         mPath.clear();
@@ -453,8 +454,8 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
 
     if (mPath.empty())
     {
-        if (mNavigatePath.empty() || mAction != MOVE)
-            setAction(STAND);
+        if (mNavigatePath.empty() || mAction != BeingAction::MOVE)
+            setAction(BeingAction::STAND);
         else
             mNextStep = true;
     }
@@ -597,7 +598,7 @@ void LocalPlayer::setWalkingDir(const unsigned char dir)
     mWalkingDir = dir;
 
     // If we're not already walking, start walking.
-    if (mAction != MOVE && dir)
+    if (mAction != BeingAction::MOVE && dir)
         startWalking(dir);
 }
 
@@ -609,7 +610,7 @@ void LocalPlayer::startWalking(const unsigned char dir)
         return;
 
     mPickUpTarget = nullptr;
-    if (mAction == MOVE && !mPath.empty())
+    if (mAction == BeingAction::MOVE && !mPath.empty())
     {
         // Just finish the current action, otherwise we get out of sync
         Being::setDestination(mX, mY);
@@ -656,7 +657,7 @@ void LocalPlayer::startWalking(const unsigned char dir)
 
 void LocalPlayer::stopWalking(const bool sendToServer)
 {
-    if (mAction == MOVE && mWalkingDir)
+    if (mAction == BeingAction::MOVE && mWalkingDir)
     {
         mWalkingDir = 0;
         mLocalWalkTime = 0;
@@ -670,7 +671,7 @@ void LocalPlayer::stopWalking(const bool sendToServer)
                     static_cast<int>(getPosition().x),
                     static_cast<int>(getPosition().y), -1);
         }
-        setAction(STAND);
+        setAction(BeingAction::STAND);
     }
 
     // No path set anymore, so we reset the path by mouse flag
@@ -685,20 +686,20 @@ bool LocalPlayer::toggleSit() const
     if (!client->limitPackets(PACKET_SIT))
         return false;
 
-    Being::Action newAction;
+    BeingAction::Action newAction;
     switch (mAction)
     {
-        case STAND:
-        case SPAWN:
-            newAction = SIT;
+        case BeingAction::STAND:
+        case BeingAction::SPAWN:
+            newAction = BeingAction::SIT;
             break;
-        case SIT:
-            newAction = STAND;
+        case BeingAction::SIT:
+            newAction = BeingAction::STAND;
             break;
-        case MOVE:
-        case ATTACK:
-        case DEAD:
-        case HURT:
+        case BeingAction::MOVE:
+        case BeingAction::ATTACK:
+        case BeingAction::DEAD:
+        case BeingAction::HURT:
         default:
             return true;
     }
@@ -740,7 +741,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     const int dist_y = target->getTileY() - mY;
 
     // Must be standing or sitting to attack
-    if (mAction != STAND && mAction != SIT)
+    if (mAction != BeingAction::STAND && mAction != BeingAction::SIT)
         return;
 
     if (abs(dist_y) >= abs(dist_x))
@@ -762,7 +763,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
 
     if (target->getType() != Being::PLAYER || checAttackPermissions(target))
     {
-        setAction(ATTACK);
+        setAction(BeingAction::ATTACK);
 
         if (!client->limitPackets(PACKET_ATTACK))
             return;
@@ -782,7 +783,7 @@ void LocalPlayer::stopAttack(const bool keepAttack)
     if (!client->limitPackets(PACKET_STOPATTACK))
         return;
 
-    if (mServerAttack && mAction == ATTACK)
+    if (mServerAttack && mAction == BeingAction::ATTACK)
         Net::getPlayerHandler()->stopAttack();
 
     untarget();
@@ -792,8 +793,8 @@ void LocalPlayer::stopAttack(const bool keepAttack)
 
 void LocalPlayer::untarget()
 {
-    if (mAction == ATTACK)
-        setAction(STAND);
+    if (mAction == BeingAction::ATTACK)
+        setAction(BeingAction::STAND);
 
     if (mTarget)
         setTarget(nullptr);
@@ -1838,7 +1839,7 @@ void LocalPlayer::crazyMove()
 
 void LocalPlayer::crazyMove1()
 {
-    if (mAction == MOVE)
+    if (mAction == BeingAction::MOVE)
         return;
 
 //    if (!client->limitPackets(PACKET_DIRECTION))
@@ -1872,7 +1873,7 @@ void LocalPlayer::crazyMove1()
 
 void LocalPlayer::crazyMove2()
 {
-    if (mAction == MOVE)
+    if (mAction == BeingAction::MOVE)
         return;
 
 //    if (!client->limitPackets(PACKET_DIRECTION))
@@ -1910,7 +1911,7 @@ void LocalPlayer::crazyMove2()
 
 void LocalPlayer::crazyMove3()
 {
-    if (mAction == MOVE)
+    if (mAction == BeingAction::MOVE)
         return;
 
     switch (mCrazyMoveState)
@@ -1944,7 +1945,7 @@ void LocalPlayer::crazyMove3()
 
 void LocalPlayer::crazyMove4()
 {
-    if (mAction == MOVE)
+    if (mAction == BeingAction::MOVE)
         return;
 
     switch (mCrazyMoveState)
@@ -1964,7 +1965,7 @@ void LocalPlayer::crazyMove4()
 
 void LocalPlayer::crazyMove5()
 {
-    if (mAction == MOVE)
+    if (mAction == BeingAction::MOVE)
         return;
 
     switch (mCrazyMoveState)
@@ -1984,7 +1985,7 @@ void LocalPlayer::crazyMove5()
 
 void LocalPlayer::crazyMove6()
 {
-    if (mAction == MOVE)
+    if (mAction == BeingAction::MOVE)
         return;
 
     switch (mCrazyMoveState)
@@ -2028,7 +2029,7 @@ void LocalPlayer::crazyMove6()
 
 void LocalPlayer::crazyMove7()
 {
-    if (mAction == MOVE)
+    if (mAction == BeingAction::MOVE)
         return;
 
     switch (mCrazyMoveState)
@@ -2056,7 +2057,7 @@ void LocalPlayer::crazyMove7()
 
 void LocalPlayer::crazyMove8()
 {
-    if (mAction == MOVE || !mMap)
+    if (mAction == BeingAction::MOVE || !mMap)
         return;
     int idx = 0;
     const int dist = 1;
@@ -2144,7 +2145,7 @@ void LocalPlayer::crazyMove9()
     int dx = 0;
     int dy = 0;
 
-    if (mAction == MOVE)
+    if (mAction == BeingAction::MOVE)
         return;
 
     switch (mCrazyMoveState)
@@ -2165,7 +2166,7 @@ void LocalPlayer::crazyMove9()
             mCrazyMoveState = 2;
             if (!allowAction())
                 return;
-            Net::getPlayerHandler()->changeAction(SIT);
+            Net::getPlayerHandler()->changeAction(BeingAction::SIT);
             break;
         case 2:
             mCrazyMoveState = 3;
@@ -2182,7 +2183,7 @@ void LocalPlayer::crazyMoveA()
 {
     const std::string mMoveProgram(config.getStringValue("crazyMoveProgram"));
 
-    if (mAction == MOVE)
+    if (mAction == BeingAction::MOVE)
         return;
 
     if (mMoveProgram.empty())
@@ -2651,7 +2652,7 @@ void LocalPlayer::specialMove(const unsigned char direction)
         && mInvertDirection <= 4)
         && !mIsServerBuggy)
     {
-        if (mAction == MOVE)
+        if (mAction == BeingAction::MOVE)
             return;
 
         int max;
@@ -2785,7 +2786,7 @@ void LocalPlayer::setHome()
     const std::string key = mMap->getProperty("_realfilename");
     Vector pos = mHomes[key];
 
-    if (mAction == SIT)
+    if (mAction == BeingAction::SIT)
     {
         const std::map<std::string, Vector>::const_iterator
             iter = mHomes.find(key);
@@ -3364,7 +3365,7 @@ void LocalPlayer::imitateEmote(const Being *const being,
 }
 
 void LocalPlayer::imitateAction(const Being *const being,
-                                const Being::Action &action)
+                                const BeingAction::Action &action)
 {
     if (!being)
         return;

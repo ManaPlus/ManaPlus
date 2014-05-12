@@ -34,6 +34,7 @@
 #include "text.h"
 
 #include "being/attributes.h"
+#include "being/beingaction.h"
 #include "being/beingcacheentry.h"
 #include "being/beingspeech.h"
 #include "being/playerrelations.h"
@@ -142,7 +143,7 @@ Being::Being(const int id, const Type type, const uint16_t subtype,
     mLastAttackX(0),
     mLastAttackY(0),
     mGender(GENDER_UNSPECIFIED),
-    mAction(STAND),
+    mAction(BeingAction::STAND),
     mSubType(0xFFFF),
     mDirection(BeingDirection::DOWN),
     mDirectionDelayed(0),
@@ -383,7 +384,7 @@ void Being::setPath(const Path &path)
     if (mPath.empty())
         return;
 
-    if (mAction != MOVE && mAction != DEAD)
+    if (mAction != BeingAction::MOVE && mAction != BeingAction::DEAD)
     {
         nextTile();
         mActionTime = tick_time;
@@ -710,7 +711,7 @@ void Being::handleAttack(Being *const victim, const int damage,
         return;
 
     if (this != player_node)
-        setAction(Being::ATTACK, attackId);
+        setAction(BeingAction::ATTACK, attackId);
 
     mLastAttackX = victim->getTileX();
     mLastAttackY = victim->getTileY();
@@ -730,8 +731,11 @@ void Being::handleAttack(Being *const victim, const int damage,
         if (dir)
             setDirection(dir);
     }
-    if (damage && victim->mType == PLAYER && victim->mAction == SIT)
-        victim->setAction(STAND, 0);
+    if (damage && victim->mType == PLAYER
+        && victim->mAction == BeingAction::SIT)
+    {
+        victim->setAction(BeingAction::STAND, 0);
+    }
 
     if (mType == PLAYER)
     {
@@ -760,7 +764,7 @@ void Being::handleSkill(Being *const victim, const int damage,
         return;
 
     if (this != player_node)
-        setAction(Being::ATTACK, 1);
+        setAction(BeingAction::ATTACK, 1);
 
     const SkillInfo *const skill = skillDialog->getSkill(skillId);
     const SkillData *const data = skill
@@ -778,8 +782,11 @@ void Being::handleSkill(Being *const victim, const int damage,
         if (dir)
             setDirection(dir);
     }
-    if (damage && victim->mType == PLAYER && victim->mAction == SIT)
-        victim->setAction(STAND, 0);
+    if (damage && victim->mType == PLAYER
+        && victim->mAction == BeingAction::SIT)
+    {
+        victim->setAction(BeingAction::STAND, 0);
+    }
     if (data)
     {
         if (damage > 0)
@@ -1111,13 +1118,13 @@ getSpriteAction(Dead, DEAD)
 getSpriteAction(Stand, STAND)
 getSpriteAction(Spawn, SPAWN)
 
-void Being::setAction(const Action &action, const int attackId)
+void Being::setAction(const BeingAction::Action &action, const int attackId)
 {
     std::string currentAction = SpriteAction::INVALID;
 
     switch (action)
     {
-        case MOVE:
+        case BeingAction::MOVE:
             if (mInfo)
             {
                 playSfx(mInfo->getSound(
@@ -1128,7 +1135,7 @@ void Being::setAction(const Action &action, const int attackId)
             // Differentiate walk and run with action name,
             // while using only the ACTION_MOVE.
             break;
-        case SIT:
+        case BeingAction::SIT:
             currentAction = getSitAction();
             if (mInfo)
             {
@@ -1140,7 +1147,7 @@ void Being::setAction(const Action &action, const int attackId)
                 playSfx(mInfo->getSound(event), nullptr, true, mX, mY);
             }
             break;
-        case ATTACK:
+        case BeingAction::ATTACK:
             if (mEquippedWeapon)
             {
                 currentAction = getWeaponAttackAction(mEquippedWeapon);
@@ -1181,14 +1188,14 @@ void Being::setAction(const Action &action, const int attackId)
                 }
             }
             break;
-        case HURT:
+        case BeingAction::HURT:
             if (mInfo)
             {
                 playSfx(mInfo->getSound(SOUND_EVENT_HURT),
                     this, false, mX, mY);
             }
             break;
-        case DEAD:
+        case BeingAction::DEAD:
             currentAction = getDeadAction();
             if (mInfo)
             {
@@ -1197,10 +1204,10 @@ void Being::setAction(const Action &action, const int attackId)
                     mYDiff = mInfo->getDeadSortOffsetY();
             }
             break;
-        case STAND:
+        case BeingAction::STAND:
             currentAction = getStandAction();
             break;
-        case SPAWN:
+        case BeingAction::SPAWN:
             if (mInfo)
             {
                 playSfx(mInfo->getSound(SOUND_EVENT_SPAWN),
@@ -1316,7 +1323,7 @@ void Being::nextTile()
 {
     if (mPath.empty())
     {
-        setAction(STAND, 0);
+        setAction(BeingAction::STAND, 0);
         return;
     }
 
@@ -1329,7 +1336,7 @@ void Being::nextTile()
 
     if (!mMap || !mMap->getWalk(pos.x, pos.y, getWalkMask()))
     {
-        setAction(STAND, 0);
+        setAction(BeingAction::STAND, 0);
         return;
     }
 
@@ -1345,7 +1352,7 @@ void Being::nextTile()
     mY = pos.y;
     const uint8_t height = mMap->getHeightOffset(mX, mY);
     mOffsetY = height - mOldHeight;
-    setAction(MOVE, 0);
+    setAction(BeingAction::MOVE, 0);
 }
 
 void Being::logic()
@@ -1374,15 +1381,15 @@ void Being::logic()
 
     switch (mAction)
     {
-        case STAND:
-        case SIT:
-        case DEAD:
-        case HURT:
-        case SPAWN:
+        case BeingAction::STAND:
+        case BeingAction::SIT:
+        case BeingAction::DEAD:
+        case BeingAction::HURT:
+        case BeingAction::SPAWN:
         default:
             break;
 
-        case MOVE:
+        case BeingAction::MOVE:
         {
             if (static_cast<float>(get_elapsed_time(
                 mActionTime)) >= mSpeed)
@@ -1392,7 +1399,7 @@ void Being::logic()
             break;
         }
 
-        case ATTACK:
+        case BeingAction::ATTACK:
         {
             if (!mActionTime)
                 break;
@@ -1411,7 +1418,7 @@ void Being::logic()
         }
     }
 
-    if (mAction == MOVE)
+    if (mAction == BeingAction::MOVE)
     {
         const int xOffset = getXOffset();
         const int yOffset = getYOffset();
@@ -1502,7 +1509,7 @@ void Being::petLogic()
 
     if (divX >= warpDist || divY >= warpDist)
     {
-        setAction(Being::STAND, 0);
+        setAction(BeingAction::STAND, 0);
         fixPetSpawnPos(dstX, dstY);
         setTileCoords(dstX, dstY);
         Net::getPetHandler()->spawn(mOwner, mId, dstX, dstY);
@@ -1562,36 +1569,36 @@ void Being::petLogic()
             return;
         }
     }
-    if (mOwner->getCurrentAction() != ATTACK)
+    if (mOwner->getCurrentAction() != BeingAction::ATTACK)
     {
-        if (mAction == ATTACK)
-            setAction(STAND, 0);
+        if (mAction == BeingAction::ATTACK)
+            setAction(BeingAction::STAND, 0);
     }
     else
     {
-        if (mAction == STAND || mAction == ATTACK)
-            setAction(ATTACK, 0);
+        if (mAction == BeingAction::STAND || mAction == BeingAction::ATTACK)
+            setAction(BeingAction::ATTACK, 0);
     }
 
-    if (mAction == STAND || mAction == ATTACK)
+    if (mAction == BeingAction::STAND || mAction == BeingAction::ATTACK)
     {
         int directionType = 0;
         switch (mOwner->getCurrentAction())
         {
-            case STAND:
-            case MOVE:
-            case HURT:
-            case SPAWN:
+            case BeingAction::STAND:
+            case BeingAction::MOVE:
+            case BeingAction::HURT:
+            case BeingAction::SPAWN:
             default:
                 directionType = mInfo->getDirectionType();
                 break;
-            case SIT:
+            case BeingAction::SIT:
                 directionType = mInfo->getSitDirectionType();
                 break;
-            case DEAD:
+            case BeingAction::DEAD:
                 directionType = mInfo->getDeadDirectionType();
                 break;
-            case ATTACK:
+            case BeingAction::ATTACK:
                 directionType = mInfo->getAttackDirectionType();
                 break;
         }
@@ -1706,7 +1713,7 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
 int Being::getOffset(const signed char pos, const signed char neg) const
 {
     // Check whether we're walking in the requested direction
-    if (mAction != MOVE ||  !(mDirection & (pos | neg)))
+    if (mAction != BeingAction::MOVE ||  !(mDirection & (pos | neg)))
         return 0;
 
     int offset = 0;
@@ -2395,7 +2402,10 @@ void Being::drawSpriteAt(Graphics *const graphics,
                   y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
                   2 * 50, 4);
     }
-    if (mShowOwnHP && mInfo && player_node == this && mAction != DEAD)
+    if (mShowOwnHP
+        && mInfo
+        && player_node == this
+        && mAction != BeingAction::DEAD)
     {
         drawHpBar(graphics, PlayerInfo::getAttribute(Attributes::MAX_HP),
                   PlayerInfo::getAttribute(Attributes::HP), 0,
@@ -2524,7 +2534,7 @@ void Being::recalcSpritesOrder()
     if (dir < 0 || dir >= 9)
         dir = 0;
     // hack for allow different logic in dead player
-    if (mAction == DEAD)
+    if (mAction == BeingAction::DEAD)
         dir = 9;
 
     const unsigned int hairSlot = Net::getCharServerHandler()->hairSprite();
@@ -3185,29 +3195,29 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
     int offsetY1;
     switch (mOwner->getCurrentAction())
     {
-        case SIT:
+        case BeingAction::SIT:
             offsetX1 = mInfo->getSitOffsetX();
             offsetY1 = mInfo->getSitOffsetY();
             break;
 
-        case MOVE:
+        case BeingAction::MOVE:
             offsetX1 = mInfo->getMoveOffsetX();
             offsetY1 = mInfo->getMoveOffsetY();
             break;
 
-        case DEAD:
+        case BeingAction::DEAD:
             offsetX1 = mInfo->getDeadOffsetX();
             offsetY1 = mInfo->getDeadOffsetY();
             break;
 
-        case ATTACK:
+        case BeingAction::ATTACK:
             offsetX1 = mInfo->getAttackOffsetX();
             offsetY1 = mInfo->getAttackOffsetY();
             break;
 
-        case SPAWN:
-        case HURT:
-        case STAND:
+        case BeingAction::SPAWN:
+        case BeingAction::HURT:
+        case BeingAction::STAND:
         default:
             offsetX1 = mInfo->getTargetOffsetX();
             offsetY1 = mInfo->getTargetOffsetY();

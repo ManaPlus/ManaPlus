@@ -182,13 +182,13 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
 
     if (spawnId)
     {
-        dstBeing->setAction(Being::SPAWN, 0);
+        dstBeing->setAction(BeingAction::SPAWN, 0);
     }
     else if (visible)
     {
         dstBeing->clearPath();
         dstBeing->setActionTime(tick_time);
-        dstBeing->setAction(Being::STAND, 0);
+        dstBeing->setAction(BeingAction::STAND, 0);
     }
 
     // Prevent division by 0 when calculating frame
@@ -300,7 +300,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
         msg.readCoordinatePair(srcX, srcY, dstX, dstY);
         if (!disguiseId)
         {
-            dstBeing->setAction(Being::STAND, 0);
+            dstBeing->setAction(BeingAction::STAND, 0);
             dstBeing->setTileCoords(srcX, srcY);
             if (serverVersion < 10)
                 dstBeing->setDestination(dstX, dstY);
@@ -366,7 +366,7 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
     msg.readCoordinatePair(srcX, srcY, dstX, dstY);
     msg.readInt32();  // Server tick
 
-    dstBeing->setAction(Being::STAND, 0);
+    dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(srcX, srcY);
     dstBeing->setDestination(dstX, dstY);
     if (dstBeing->getType() == Being::PLAYER)
@@ -405,9 +405,9 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
 
     if (msg.readInt8() == 1)
     {
-        if (dstBeing->getCurrentAction() != Being::DEAD)
+        if (dstBeing->getCurrentAction() != BeingAction::DEAD)
         {
-            dstBeing->setAction(Being::DEAD, 0);
+            dstBeing->setAction(BeingAction::DEAD, 0);
             dstBeing->recalcSpritesOrder();
         }
         if (dstBeing->getName() == "Jack O" && killStats)
@@ -443,7 +443,7 @@ void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
         player_node->stopAttack();
 
     if (msg.readInt8() == 1)
-        dstBeing->setAction(Being::STAND, 0);
+        dstBeing->setAction(BeingAction::STAND, 0);
 }
 
 
@@ -511,17 +511,17 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
             break;
             // tmw server can send here garbage?
 //            if (srcBeing)
-//                srcBeing->setAction(Being::DEAD, 0);
+//                srcBeing->setAction(BeingAction::DEAD, 0);
 
         case 0x02:  // Sit
             if (srcBeing)
             {
-                srcBeing->setAction(Being::SIT, 0);
+                srcBeing->setAction(BeingAction::SIT, 0);
                 if (srcBeing->getType() == Being::PLAYER)
                 {
                     srcBeing->setMoveTime();
                     if (player_node)
-                        player_node->imitateAction(srcBeing, Being::SIT);
+                        player_node->imitateAction(srcBeing, BeingAction::SIT);
                 }
             }
             break;
@@ -529,12 +529,15 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
         case 0x03:  // Stand up
             if (srcBeing)
             {
-                srcBeing->setAction(Being::STAND, 0);
+                srcBeing->setAction(BeingAction::STAND, 0);
                 if (srcBeing->getType() == Being::PLAYER)
                 {
                     srcBeing->setMoveTime();
                     if (player_node)
-                        player_node->imitateAction(srcBeing, Being::STAND);
+                    {
+                        player_node->imitateAction(srcBeing,
+                            BeingAction::STAND);
+                    }
                 }
             }
             break;
@@ -702,8 +705,8 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
             const uint16_t x = msg.readInt16();
             const uint16_t y = msg.readInt16();
             dstBeing->setTileCoords(x, y);
-            if (dstBeing->getCurrentAction() == Being::MOVE)
-                dstBeing->setAction(Being::STAND, 0);
+            if (dstBeing->getCurrentAction() == BeingAction::MOVE)
+                dstBeing->setAction(BeingAction::STAND, 0);
         }
     }
 }
