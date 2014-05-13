@@ -86,16 +86,3 @@
 #define MPHYSFSRWOPS_openRead(name) PHYSFSRWOPS_openRead(name)
 
 #endif  // DEBUG_PHYSFS
-
-
-#ifdef ENABLE_CHECKS
-
-#define CHECKLISTENERS \
-    config.checkListeners(this, __FILE__, __LINE__); \
-    serverConfig.checkListeners(this, __FILE__, __LINE__);
-
-#else  // ENABLE_CHECKS
-
-#define CHECKLISTENERS
-
-#endif  // ENABLE_CHECKS

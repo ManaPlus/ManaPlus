@@ -86,6 +86,18 @@
 #define FOR_EACHP(type, iter, array) for (type iter = array->begin(), \
     iter##_end = array->end(); iter != iter##_end; ++ iter)
 
+#ifdef ENABLE_CHECKS
+
+#define CHECKLISTENERS \
+    config.checkListeners(this, __FILE__, __LINE__); \
+    serverConfig.checkListeners(this, __FILE__, __LINE__);
+
+#else  // ENABLE_CHECKS
+
+#define CHECKLISTENERS
+
+#endif  // ENABLE_CHECKS
+
 // #define DEBUG_CONFIG 1
 // #define DEBUG_BIND_TEXTURE 1
 // #define DISABLE_RESOURCE_CACHING 1
