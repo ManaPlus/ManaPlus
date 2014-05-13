@@ -29,6 +29,7 @@
 #include "graphicsmanager.h"
 
 #include "gui/skin.h"
+#include "gui/themeinfo.h"
 
 #include "resources/dye.h"
 #include "resources/image.h"

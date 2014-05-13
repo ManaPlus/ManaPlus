@@ -493,6 +493,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/skin.h \
 	      gui/theme.cpp \
 	      gui/theme.h \
+	      gui/themeinfo.h \
 	      gui/windows/tradewindow.cpp \
 	      gui/windows/tradewindow.h \
 	      gui/windows/unregisterdialog.cpp \

@@ -407,6 +407,7 @@ SET(SRCS
     gui/skin.h
     gui/theme.cpp
     gui/theme.h
+    gui/themeinfo.h
     gui/windows/tradewindow.cpp
     gui/windows/tradewindow.h
     gui/windows/unregisterdialog.cpp

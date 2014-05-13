@@ -43,42 +43,11 @@ class ImageSet;
 class Skin;
 class Theme;
 
+struct ThemeInfo;
+
 const int THEME_PALETTES = 5;
 
 extern Theme *theme;
-
-struct ThemeInfo final
-{
-    ThemeInfo() :
-        name(),
-        copyright(),
-        font(),
-        boldFont(),
-        particleFont(),
-        helpFont(),
-        secureFont(),
-        npcFont(),
-        japanFont(),
-        chinaFont(),
-        fontSize(0),
-        npcfontSize(0),
-        guiAlpha(0.0F)
-    {
-    }
-    std::string name;
-    std::string copyright;
-    std::string font;
-    std::string boldFont;
-    std::string particleFont;
-    std::string helpFont;
-    std::string secureFont;
-    std::string npcFont;
-    std::string japanFont;
-    std::string chinaFont;
-    int fontSize;
-    int npcfontSize;
-    float guiAlpha;
-};
 
 class Theme final : public Palette,
                     public ConfigListener
