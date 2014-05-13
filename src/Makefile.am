@@ -698,6 +698,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      listeners/arrowslistener.h \
 	      listeners/attributelistener.cpp \
 	      listeners/attributelistener.h \
+	      listeners/awaylistener.cpp \
+	      listeners/awaylistener.h \
 	      listeners/baselistener.hpp \
 	      actormanager.cpp \
 	      actormanager.h \

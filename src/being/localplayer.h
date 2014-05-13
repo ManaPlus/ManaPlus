@@ -36,16 +36,11 @@
 
 #include "localconsts.h"
 
+class AwayListener;
 class ChatTab;
 class FloorItem;
 class Map;
 class OkDialog;
-
-class AwayListener final : public ActionListener
-{
-    public:
-        void action(const ActionEvent &event) override final;
-};
 
 /**
  * Reasons an item can fail to be picked up.

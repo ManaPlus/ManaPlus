@@ -73,6 +73,7 @@
 #include "resources/map/mapitem.h"
 #include "resources/map/speciallayer.h"
 
+#include "listeners/awaylistener.h"
 #include "listeners/updatestatuslistener.h"
 
 #include "utils/delete2.h"
@@ -3811,17 +3812,5 @@ void LocalPlayer::setTestParticle(const std::string &fileName,
         controlParticle(mTestParticle);
         if (updateHash)
             mTestParticleHash = UpdaterWindow::getFileHash(mTestParticleName);
-    }
-}
-
-void AwayListener::action(const ActionEvent &event)
-{
-    if (event.getId() == "ok" && player_node && player_node->getAway())
-    {
-        player_node->changeAwayMode();
-        player_node->updateStatus();
-        if (outfitWindow)
-            outfitWindow->unwearAwayOutfit();
-        UpdateStatusListener::distributeEvent();
     }
 }
