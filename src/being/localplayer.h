@@ -27,7 +27,6 @@
 
 #include "gui/userpalette.h"
 
-#include "listeners/actionlistener.h"
 #include "listeners/actorspritelistener.h"
 #include "listeners/attributelistener.h"
 #include "listeners/statlistener.h"

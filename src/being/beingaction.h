@@ -40,6 +40,6 @@ namespace BeingAction
         HURT,
         SPAWN
     };
-}  // BeingAction
+}  // namespace BeingAction
 
 #endif  // BEING_BEINGACTION_H

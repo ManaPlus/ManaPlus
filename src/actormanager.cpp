@@ -1038,7 +1038,8 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
             const bool valid = validateBeing(aroundBeing, being,
                                              type, excluded, 50);
             int d = being->getDistance();
-            if (being->getType() != ActorType::MONSTER || !mTargetOnlyReachable)
+            if (being->getType() != ActorType::MONSTER
+                || !mTargetOnlyReachable)
             {   // if distance not calculated, use old distance
                 d = (being->getTileX() - x) * (being->getTileX() - x)
                     + (being->getTileY() - y) * (being->getTileY() - y);

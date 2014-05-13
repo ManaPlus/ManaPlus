@@ -40,6 +40,6 @@ namespace Pickup
         STACK_FULL,
         DROP_STEAL
     };
-}
+}  // namespace Pickup
 
 #endif  // BEING_PICKUP_H

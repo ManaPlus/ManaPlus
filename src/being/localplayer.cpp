@@ -36,6 +36,7 @@
 #include "resources/map/walklayer.h"
 
 #include "being/attributes.h"
+#include "being/beingflag.h"
 #include "being/pickup.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
@@ -763,7 +764,8 @@ void LocalPlayer::attack(Being *const target, const bool keep,
 
     mActionTime = tick_time;
 
-    if (target->getType() != ActorType::PLAYER || checAttackPermissions(target))
+    if (target->getType() != ActorType::PLAYER
+        || checAttackPermissions(target))
     {
         setAction(BeingAction::ATTACK);
 
@@ -2284,28 +2286,32 @@ void LocalPlayer::crazyMoveA()
 //                    if (client->limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(BeingDirection::DOWN);
-                        Net::getPlayerHandler()->setDirection(BeingDirection::DOWN);
+                        Net::getPlayerHandler()->setDirection(
+                            BeingDirection::DOWN);
                     }
                     break;
                 case 'u':
 //                    if (client->limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(BeingDirection::UP);
-                        Net::getPlayerHandler()->setDirection(BeingDirection::UP);
+                        Net::getPlayerHandler()->setDirection(
+                            BeingDirection::UP);
                     }
                     break;
                 case 'l':
 //                    if (client->limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(BeingDirection::LEFT);
-                        Net::getPlayerHandler()->setDirection(BeingDirection::LEFT);
+                        Net::getPlayerHandler()->setDirection(
+                            BeingDirection::LEFT);
                     }
                     break;
                 case 'r':
 //                    if (client->limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(BeingDirection::RIGHT);
-                        Net::getPlayerHandler()->setDirection(BeingDirection::RIGHT);
+                        Net::getPlayerHandler()->setDirection(
+                            BeingDirection::RIGHT);
                     }
                     break;
                 case 'L':

@@ -23,6 +23,8 @@
 
 #include "actormanager.h"
 
+#include "being/being.h"
+
 #include "utils/stringutils.h"
 
 #include "debug.h"

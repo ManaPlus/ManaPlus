@@ -31,8 +31,9 @@
 
 #include "being/beingaction.h"
 #include "being/beingdirection.h"
-#include "being/beingflag.h"
 #include "being/gender.h"
+
+#include "being/actorsprite.h"
 
 #include <map>
 

@@ -25,10 +25,11 @@
 
 #include "flooritem.h"
 
-#include "being/being.h"
+#include "listeners/configlistener.h"
 
 #include "localconsts.h"
 
+class Being;
 class LocalPlayer;
 class Map;
 
@@ -161,8 +162,8 @@ class ActorManager final: public ConfigListener
         * Finds a nearest being by name and (optionally) by type.
         */
         Being *findNearestByName(const std::string &name,
-                                 const ActorType::Type &type = ActorType::UNKNOWN)
-                                 const A_WARN_UNUSED;
+                                 const ActorType::Type &type
+                                 = ActorType::UNKNOWN) const A_WARN_UNUSED;
 
        /**
         * Heal all players in distance.

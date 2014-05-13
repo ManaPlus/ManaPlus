@@ -24,13 +24,12 @@
 
 #include "sprite.h"
 
-#include "being/compounditem.h"
-
 #include <list>
 #include <vector>
 
 #include "localconsts.h"
 
+class CompoundItem;
 class Image;
 
 class CompoundSprite : public Sprite

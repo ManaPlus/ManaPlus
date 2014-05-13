@@ -27,6 +27,7 @@
 #include "soundmanager.h"
 
 #include "being/attributes.h"
+#include "being/beingflag.h"
 
 #include "net/net.h"
 

@@ -39,6 +39,7 @@
 #include "configuration.h"
 #include "main.h"
 
+#include "being/beingflag.h"
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
 

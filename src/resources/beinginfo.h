@@ -23,12 +23,16 @@
 #ifndef RESOURCES_BEINGINFO_H
 #define RESOURCES_BEINGINFO_H
 
-#include "being/actorsprite.h"
-
 #include "resources/cursor.h"
+
+#include "being/targetcursorsize.h"
+
 #include "resources/soundinfo.h"
+#include "resources/spritedef.h"
 
 #include "resources/db/colordb.h"
+
+#include "resources/map/blocktype.h"
 
 #include <map>
 

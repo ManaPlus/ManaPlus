@@ -33,5 +33,5 @@ namespace BeingFlag
         GENDER_MALE = 128,
         SPECIAL = 128 + 64
     };
-}
+}  // namespace BeingFlag
 #endif  // BEING_BEINGFLAG_H

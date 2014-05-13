@@ -35,6 +35,6 @@ namespace BeingDirection
         UP = 4,
         RIGHT = 8
     };
-}
+}  // namespace BeingDirection
 
 #endif  // BEING_BEINGDIRECTION_H

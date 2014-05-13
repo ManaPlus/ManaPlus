@@ -30,6 +30,8 @@
 
 #include "sdlshared.h"
 
+#include "being/compounditem.h"
+
 #include "resources/map/map.h"
 #include "resources/map/mapconsts.h"
 

@@ -35,6 +35,6 @@ namespace ActorType
         PET,
         AVATAR
     };
-}
+}  // namespace ActorType
 
 #endif  // BEING_ACTORTYPE_H
