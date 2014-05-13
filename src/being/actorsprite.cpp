@@ -42,7 +42,8 @@
 
 #include "debug.h"
 
-AnimatedSprite *ActorSprite::targetCursor[NUM_TCT][TargetCursorSize::NUM_TC];
+AnimatedSprite *ActorSprite::targetCursor[TargetCursorType::NUM_TCT]
+    [TargetCursorSize::NUM_TC];
 bool ActorSprite::loaded = false;
 
 ActorSprite::ActorSprite(const int id) :
@@ -136,9 +137,9 @@ void ActorSprite::controlParticle(Particle *const particle)
     mChildParticleEffects.addLocally(particle);
 }
 
-void ActorSprite::setTargetType(const TargetCursorType type)
+void ActorSprite::setTargetType(const TargetCursorType::Type type)
 {
-    if (type == TCT_NONE)
+    if (type == TargetCursorType::NONE)
     {
         untarget();
     }
@@ -334,10 +335,10 @@ static const char *cursorType(const int type)
 {
     switch (type)
     {
-        case ActorSprite::TCT_IN_RANGE:
+        case TargetCursorType::IN_RANGE:
             return "in-range";
         default:
-        case ActorSprite::TCT_NORMAL:
+        case TargetCursorType::NORMAL:
             return "normal";
     }
 }
@@ -365,7 +366,9 @@ void ActorSprite::initTargetCursor()
          size < TargetCursorSize::NUM_TC;
          size ++)
     {
-        for (int type = TCT_NORMAL; type < NUM_TCT; type++)
+        for (int type = TargetCursorType::NORMAL;
+             type < TargetCursorType::NUM_TCT;
+             type ++)
         {
             targetCursor[type][size] = AnimatedSprite::load(
                 Theme::resolveThemePath(strprintf(
@@ -382,7 +385,9 @@ void ActorSprite::cleanupTargetCursors()
          size < TargetCursorSize::NUM_TC;
          size ++)
     {
-        for (int type = TCT_NORMAL; type < NUM_TCT; type++)
+        for (int type = TargetCursorType::NORMAL;
+             type < TargetCursorType::NUM_TCT;
+             type ++)
         {
             if (targetCursor[type][size])
                 delete2(targetCursor[type][size])

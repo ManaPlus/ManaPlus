@@ -31,6 +31,7 @@
 #include "being/actortype.h"
 #include "being/compoundsprite.h"
 #include "being/targetcursorsize.h"
+#include "being/targetcursortype.h"
 
 #include "particle/particlecontainer.h"
 
@@ -46,14 +47,6 @@ class ActorSpriteListener;
 class ActorSprite : public CompoundSprite, public Actor
 {
 public:
-    enum TargetCursorType
-    {
-        TCT_NONE = -1,
-        TCT_NORMAL = 0,
-        TCT_IN_RANGE,
-        NUM_TCT
-    };
-
     explicit ActorSprite(const int id);
 
     A_DELETE_COPY(ActorSprite)
@@ -108,7 +101,7 @@ public:
     /**
      * Sets the target animation for this actor.
      */
-    void setTargetType(const TargetCursorType type);
+    void setTargetType(const TargetCursorType::Type type);
 
     /**
      * Untargets the actor.
@@ -218,7 +211,8 @@ private:
     static void cleanupTargetCursors();
 
     /** Animated target cursors. */
-    static AnimatedSprite *targetCursor[NUM_TCT][TargetCursorSize::NUM_TC];
+    static AnimatedSprite *targetCursor[TargetCursorType::NUM_TCT]
+        [TargetCursorSize::NUM_TC];
 
     static bool loaded;
 

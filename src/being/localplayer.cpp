@@ -298,7 +298,7 @@ void LocalPlayer::logic()
         if (mTarget->getType() == ActorType::NPC)
         {
             // NPCs are always in range
-            mTarget->setTargetType(TCT_IN_RANGE);
+            mTarget->setTargetType(TargetCursorType::IN_RANGE);
         }
         else
         {
@@ -308,9 +308,9 @@ void LocalPlayer::logic()
             const int rangeY = static_cast<int>(
                 abs(mTarget->getTileY() - getTileY()));
             const int attackRange = getAttackRange();
-            const TargetCursorType targetType = rangeX > attackRange ||
-                                                rangeY > attackRange ?
-                                                TCT_NORMAL : TCT_IN_RANGE;
+            const TargetCursorType::Type targetType
+                = rangeX > attackRange || rangeY > attackRange
+                ? TargetCursorType::NORMAL : TargetCursorType::IN_RANGE;
             mTarget->setTargetType(targetType);
 
             if (!mTarget->isAlive() && (!mTargetDeadPlayers
