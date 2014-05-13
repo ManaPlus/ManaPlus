@@ -36,6 +36,7 @@
 #include "resources/map/walklayer.h"
 
 #include "being/attributes.h"
+#include "being/pickup.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
@@ -820,27 +821,27 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
         const char* msg = nullptr;
         switch (fail)
         {
-            case PICKUP_BAD_ITEM:
+            case Pickup::BAD_ITEM:
                 // TRANSLATORS: pickup error message
                 msg = N_("Tried to pick up nonexistent item.");
                 break;
-            case PICKUP_TOO_HEAVY:
+            case Pickup::TOO_HEAVY:
                 // TRANSLATORS: pickup error message
                 msg = N_("Item is too heavy.");
                 break;
-            case PICKUP_TOO_FAR:
+            case Pickup::TOO_FAR:
                 // TRANSLATORS: pickup error message
                 msg = N_("Item is too far away.");
                 break;
-            case PICKUP_INV_FULL:
+            case Pickup::INV_FULL:
                 // TRANSLATORS: pickup error message
                 msg = N_("Inventory is full.");
                 break;
-            case PICKUP_STACK_FULL:
+            case Pickup::STACK_FULL:
                 // TRANSLATORS: pickup error message
                 msg = N_("Stack is too big.");
                 break;
-            case PICKUP_DROP_STEAL:
+            case Pickup::DROP_STEAL:
                 // TRANSLATORS: pickup error message
                 msg = N_("Item belongs to someone else.");
                 break;

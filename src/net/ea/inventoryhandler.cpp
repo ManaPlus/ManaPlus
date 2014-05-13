@@ -27,6 +27,7 @@
 
 #include "being/attributes.h"
 #include "being/localplayer.h"
+#include "being/pickup.h"
 
 #include "net/messagein.h"
 
@@ -321,7 +322,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
         if (player_node)
         {
             player_node->pickedUp(itemInfo, amount,
-                identified, floorId, PICKUP_OKAY);
+                identified, floorId, Pickup::OKAY);
         }
 
         if (inventory)

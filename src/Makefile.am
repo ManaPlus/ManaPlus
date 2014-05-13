@@ -798,6 +798,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      localconsts.h \
 	      being/localplayer.cpp \
 	      being/localplayer.h \
+	      being/pickup.h \
 	      logger.cpp \
 	      logger.h \
 	      main.cpp \
