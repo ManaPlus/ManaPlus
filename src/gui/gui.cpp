@@ -82,6 +82,7 @@
 #include "events/keyevent.h"
 
 #include "listeners/focuslistener.h"
+#include "listeners/guiconfiglistener.h"
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
 
@@ -107,33 +108,6 @@ SDLInput *guiInput = nullptr;
 
 // Bolded font
 Font *boldFont = nullptr;
-
-class GuiConfigListener final : public ConfigListener
-{
-    public:
-        explicit GuiConfigListener(Gui *const g):
-            mGui(g)
-        {}
-
-        A_DELETE_COPY(GuiConfigListener)
-
-        virtual ~GuiConfigListener()
-        {
-            CHECKLISTENERS
-        }
-
-        void optionChanged(const std::string &name)
-        {
-            if (!mGui)
-                return;
-            if (name == "customcursor")
-                mGui->setUseCustomCursor(config.getBoolValue("customcursor"));
-            else if (name == "doubleClick")
-                mGui->setDoubleClick(config.getBoolValue("doubleClick"));
-        }
-    private:
-        Gui *mGui;
-};
 
 Gui::Gui() :
     mTop(nullptr),
