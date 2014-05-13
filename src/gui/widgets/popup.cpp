@@ -25,6 +25,7 @@
 
 #include "graphicsvertexes.h"
 
+#include "gui/skin.h"
 #include "gui/viewport.h"
 
 #include "utils/delete2.h"

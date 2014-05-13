@@ -403,6 +403,8 @@ SET(SRCS
     gui/windows/textdialog.h
     gui/popups/textpopup.cpp
     gui/popups/textpopup.h
+    gui/skin.cpp
+    gui/skin.h
     gui/theme.cpp
     gui/theme.h
     gui/windows/tradewindow.cpp

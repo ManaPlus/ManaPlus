@@ -26,6 +26,7 @@
 
 #include "input/inputmanager.h"
 
+#include "gui/skin.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/textpopup.h"

@@ -69,6 +69,7 @@
 #include "graphicsvertexes.h"
 
 #include "gui/gui.h"
+#include "gui/skin.h"
 
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"

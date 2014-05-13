@@ -40,6 +40,7 @@
 class DyePalette;
 class Image;
 class ImageSet;
+class Skin;
 class Theme;
 
 const int THEME_PALETTES = 5;
@@ -77,106 +78,6 @@ struct ThemeInfo final
     int fontSize;
     int npcfontSize;
     float guiAlpha;
-};
-
-class Skin final
-{
-    public:
-        Skin(ImageRect *const restrict skin,
-             const ImageRect *const restrict images,
-             const std::string &filePath,
-             const std::string &name = "",
-             const int padding = 3,
-             const int titlePadding = 4,
-             std::map<std::string, int> *restrict const options = nullptr);
-
-        A_DELETE_COPY(Skin)
-
-        ~Skin();
-
-        /**
-         * Returns the skin's name. Useful for giving a human friendly skin
-         * name if a dialog for skin selection for a specific window type is
-         * done.
-         */
-        const std::string &getName() const A_WARN_UNUSED
-        { return mName; }
-
-        /**
-         * Returns the skin's xml file path.
-         */
-        const std::string &getFilePath() const A_WARN_UNUSED
-        { return mFilePath; }
-
-        /**
-         * Returns the background skin.
-         */
-        const ImageRect &getBorder() const A_WARN_UNUSED
-        { return *mBorder; }
-
-        /**
-         * Returns the image used by a close button for this skin.
-         */
-        const Image *getCloseImage(const bool state) const A_WARN_UNUSED
-        { return state ? mCloseImageHighlighted : mCloseImage; }
-
-        /**
-         * Returns the image used by a sticky button for this skin.
-         */
-        const Image *getStickyImage(const bool state) const A_WARN_UNUSED
-        { return state ? mStickyImageDown : mStickyImageUp; }
-
-        /**
-         * Returns the minimum width which can be used with this skin.
-         */
-        int getMinWidth() const A_WARN_UNUSED;
-
-        /**
-         * Returns the minimum height which can be used with this skin.
-         */
-        int getMinHeight() const A_WARN_UNUSED;
-
-        /**
-         * Updates the alpha value of the skin
-         */
-        void updateAlpha(const float minimumOpacityAllowed = 0.0F);
-
-        int getPadding() const A_WARN_UNUSED
-        { return mPadding; }
-
-        int getTitlePadding() const A_WARN_UNUSED
-        { return mTitlePadding; }
-
-        int getOption(const std::string &name) const A_WARN_UNUSED
-        {
-            if (mOptions->find(name) != mOptions->end())
-                return (*mOptions)[name];
-            else
-                return 0;
-        }
-
-        int getOption(const std::string &name,
-                      const int def) const A_WARN_UNUSED
-        {
-            if (mOptions->find(name) != mOptions->end())
-                return (*mOptions)[name];
-            else
-                return def;
-        }
-
-        int instances;
-
-    private:
-        std::string mFilePath;     /**< File name path for the skin */
-        std::string mName;         /**< Name of the skin to use */
-        ImageRect *mBorder;        /**< The window border and background */
-        Image *mCloseImage;        /**< Close Button Image */
-        Image *mCloseImageHighlighted; /**< Highlighted close Button Image */
-        Image *mStickyImageUp;     /**< Sticky Button Image */
-        Image *mStickyImageDown;   /**< Sticky Button Image */
-        int mPadding;
-        int mTitlePadding;
-        std::map<std::string, int> *mOptions;
 };
 
 class Theme final : public Palette,

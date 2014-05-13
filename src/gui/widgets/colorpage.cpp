@@ -23,6 +23,7 @@
 #include "gui/models/colormodel.h"
 
 #include "gui/font.h"
+#include "gui/skin.h"
 
 #include "debug.h"
 

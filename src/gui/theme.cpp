@@ -28,6 +28,8 @@
 #include "configuration.h"
 #include "graphicsmanager.h"
 
+#include "gui/skin.h"
+
 #include "resources/dye.h"
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
@@ -60,119 +62,6 @@ static void initDefaultThemePath()
         return;
     else
         defaultThemePath = "themes/";
-}
-
-Skin::Skin(ImageRect *const restrict skin,
-           const ImageRect *const restrict images,
-           const std::string &filePath, const std::string &name,
-           const int padding, const int titlePadding,
-           std::map<std::string, int> *restrict const options):
-    instances(1),
-    mFilePath(filePath),
-    mName(name),
-    mBorder(skin),
-    mCloseImage(images->grid[0]),
-    mCloseImageHighlighted(images->grid[1]),
-    mStickyImageUp(images->grid[2]),
-    mStickyImageDown(images->grid[3]),
-    mPadding(padding),
-    mTitlePadding(titlePadding),
-    mOptions(options)
-{
-    if (!mCloseImageHighlighted)
-    {
-        mCloseImageHighlighted = mCloseImage;
-        if (mCloseImageHighlighted)
-            mCloseImageHighlighted->incRef();
-    }
-}
-
-Skin::~Skin()
-{
-    for (int i = 0; i < 9; i++)
-    {
-        if (mBorder && mBorder->grid[i])
-        {
-            mBorder->grid[i]->decRef();
-            mBorder->grid[i] = nullptr;
-        }
-    }
-
-    if (mCloseImage)
-    {
-        mCloseImage->decRef();
-        mCloseImage = nullptr;
-    }
-
-    if (mCloseImageHighlighted)
-    {
-        mCloseImageHighlighted->decRef();
-        mCloseImageHighlighted = nullptr;
-    }
-
-    if (mStickyImageUp)
-    {
-        mStickyImageUp->decRef();
-        mStickyImageUp = nullptr;
-    }
-
-    if (mStickyImageDown)
-    {
-        mStickyImageDown->decRef();
-        mStickyImageDown = nullptr;
-    }
-
-    delete2(mOptions);
-    delete2(mBorder);
-}
-
-void Skin::updateAlpha(const float minimumOpacityAllowed)
-{
-    const float alpha = static_cast<float>(
-        std::max(static_cast<double>(minimumOpacityAllowed),
-        static_cast<double>(client->getGuiAlpha())));
-
-    if (mBorder)
-    {
-        for (int i = 0; i < 9; i++)
-        {
-            if (mBorder->grid[i])
-                mBorder->grid[i]->setAlpha(alpha);
-        }
-    }
-
-    if (mCloseImage)
-        mCloseImage->setAlpha(alpha);
-    if (mCloseImageHighlighted)
-        mCloseImageHighlighted->setAlpha(alpha);
-    if (mStickyImageUp)
-        mStickyImageUp->setAlpha(alpha);
-    if (mStickyImageDown)
-        mStickyImageDown->setAlpha(alpha);
-}
-
-int Skin::getMinWidth() const
-{
-    if (!mBorder || !mBorder->grid[ImageRect::UPPER_LEFT]
-        || !mBorder->grid[ImageRect::UPPER_RIGHT])
-    {
-        return 1;
-    }
-
-    return mBorder->grid[ImageRect::UPPER_LEFT]->getWidth() +
-           mBorder->grid[ImageRect::UPPER_RIGHT]->getWidth();
-}
-
-int Skin::getMinHeight() const
-{
-    if (!mBorder || !mBorder->grid[ImageRect::UPPER_LEFT]
-        || !mBorder->grid[ImageRect::LOWER_LEFT])
-    {
-        return 1;
-    }
-
-    return mBorder->grid[ImageRect::UPPER_LEFT]->getHeight() +
-           mBorder->grid[ImageRect::LOWER_LEFT]->getHeight();
 }
 
 Theme::Theme() :

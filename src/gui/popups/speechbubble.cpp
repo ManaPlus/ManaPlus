@@ -25,6 +25,7 @@
 
 #include "gui/font.h"
 #include "gui/gui.h"
+#include "gui/skin.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/browserbox.h"

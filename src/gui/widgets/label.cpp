@@ -66,6 +66,7 @@
 
 #include "gui/font.h"
 #include "gui/gui.h"
+#include "gui/skin.h"
 
 #include "debug.h"
 

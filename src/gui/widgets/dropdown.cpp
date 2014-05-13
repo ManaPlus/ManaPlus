@@ -28,14 +28,15 @@
 
 #include "input/keydata.h"
 
+#include "gui/font.h"
+#include "gui/gui.h"
+#include "gui/skin.h"
+
 #include "gui/models/extendedlistmodel.h"
 
 #include "gui/widgets/popuplist.h"
 
 #include "resources/image.h"
-
-#include "gui/font.h"
-#include "gui/gui.h"
 
 #include <algorithm>
 

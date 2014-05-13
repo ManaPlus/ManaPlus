@@ -22,6 +22,8 @@
 
 #include "gui/widgets/passwordfield.h"
 
+#include "gui/skin.h"
+
 #include "debug.h"
 
 PasswordField::PasswordField(const Widget2 *const widget,

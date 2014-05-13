@@ -30,6 +30,7 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "gui/skin.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/textpopup.h"

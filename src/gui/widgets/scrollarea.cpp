@@ -69,6 +69,7 @@
 #include "graphicsvertexes.h"
 
 #include "gui/gui.h"
+#include "gui/skin.h"
 
 #include "resources/image.h"
 

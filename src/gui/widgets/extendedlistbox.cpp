@@ -23,6 +23,7 @@
 #include "gui/models/extendedlistmodel.h"
 
 #include "gui/font.h"
+#include "gui/skin.h"
 
 #include "gui/models/listmodel.h"
 
