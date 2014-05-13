@@ -42,7 +42,7 @@
 
 #include "debug.h"
 
-AnimatedSprite *ActorSprite::targetCursor[NUM_TCT][NUM_TC];
+AnimatedSprite *ActorSprite::targetCursor[NUM_TCT][TargetCursorSize::NUM_TC];
 bool ActorSprite::loaded = false;
 
 ActorSprite::ActorSprite(const int id) :
@@ -144,12 +144,13 @@ void ActorSprite::setTargetType(const TargetCursorType type)
     }
     else
     {
-        const TargetCursorSize sz = getTargetCursorSize();
+        const TargetCursorSize::Size sz = getTargetCursorSize();
         mUsedTargetCursor = targetCursor[static_cast<int>(type)][sz];
         if (mUsedTargetCursor)
         {
-            static const int targetWidths[ActorSprite::NUM_TC] = {0, 0, 0};
-            static const int targetHeights[ActorSprite::NUM_TC]
+            static const int targetWidths[TargetCursorSize::NUM_TC]
+                = {0, 0, 0};
+            static const int targetHeights[TargetCursorSize::NUM_TC]
                 = {-mapTileSize / 2, -mapTileSize / 2, -mapTileSize};
 
             mCursorPaddingX = static_cast<int>(targetWidths[sz]);
@@ -345,12 +346,12 @@ static const char *cursorSize(const int size)
 {
     switch (size)
     {
-        case ActorSprite::TC_LARGE:
+        case TargetCursorSize::LARGE:
             return "l";
-        case ActorSprite::TC_MEDIUM:
+        case TargetCursorSize::MEDIUM:
             return "m";
         default:
-        case ActorSprite::TC_SMALL:
+        case TargetCursorSize::SMALL:
             return "s";
     }
 }
@@ -360,7 +361,9 @@ void ActorSprite::initTargetCursor()
     static const std::string targetCursorFile("target-cursor-%s-%s.xml");
 
     // Load target cursors
-    for (int size = TC_SMALL; size < NUM_TC; size++)
+    for (int size = TargetCursorSize::SMALL;
+         size < TargetCursorSize::NUM_TC;
+         size ++)
     {
         for (int type = TCT_NORMAL; type < NUM_TCT; type++)
         {
@@ -375,7 +378,9 @@ void ActorSprite::initTargetCursor()
 
 void ActorSprite::cleanupTargetCursors()
 {
-    for (int size = TC_SMALL; size < NUM_TC; size++)
+    for (int size = TargetCursorSize::SMALL;
+         size < TargetCursorSize::NUM_TC;
+         size ++)
     {
         for (int type = TCT_NORMAL; type < NUM_TCT; type++)
         {

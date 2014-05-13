@@ -860,6 +860,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      being/playerrelation.h \
 	      being/playerrelations.cpp \
 	      being/playerrelations.h \
+	      being/targetcursorsize.h \
 	      listeners/playerrelationslistener.h \
 	      position.cpp \
 	      position.h \

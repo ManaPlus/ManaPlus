@@ -345,10 +345,10 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
     }
 }
 
-ActorSprite::TargetCursorSize Being::getTargetCursorSize() const
+TargetCursorSize::Size Being::getTargetCursorSize() const
 {
     if (!mInfo)
-        return ActorSprite::TC_SMALL;
+        return TargetCursorSize::SMALL;
 
     return mInfo->getTargetCursorSize();
 }

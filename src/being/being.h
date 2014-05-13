@@ -390,8 +390,8 @@ class Being : public ActorSprite, public ConfigListener
         const BeingInfo *getInfo() const A_WARN_UNUSED
         { return mInfo; }
 
-        TargetCursorSize getTargetCursorSize() const override final
-                                             A_WARN_UNUSED;
+        TargetCursorSize::Size getTargetCursorSize() const override final
+                                                     A_WARN_UNUSED;
 
         int getTargetOffsetX() const A_WARN_UNUSED
         {

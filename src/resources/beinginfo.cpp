@@ -42,7 +42,7 @@ BeingInfo::BeingInfo() :
     mDisplay(),
     // TRANSLATORS: being info default name
     mName(_("unnamed")),
-    mTargetCursorSize(ActorSprite::TC_MEDIUM),
+    mTargetCursorSize(TargetCursorSize::MEDIUM),
     mHoverCursor(Cursor::CURSOR_POINTER),
     mSounds(),
     mAttacks(),
@@ -106,21 +106,21 @@ void BeingInfo::setTargetCursorSize(const std::string &size)
 {
     if (size == "small")
     {
-        setTargetCursorSize(ActorSprite::TC_SMALL);
+        setTargetCursorSize(TargetCursorSize::SMALL);
     }
     else if (size == "medium")
     {
-        setTargetCursorSize(ActorSprite::TC_MEDIUM);
+        setTargetCursorSize(TargetCursorSize::MEDIUM);
     }
     else if (size == "large")
     {
-        setTargetCursorSize(ActorSprite::TC_LARGE);
+        setTargetCursorSize(TargetCursorSize::LARGE);
     }
     else
     {
         logger->log("Unknown target cursor type \"%s\" for %s - using medium "
                     "sized one", size.c_str(), getName().c_str());
-        setTargetCursorSize(ActorSprite::TC_MEDIUM);
+        setTargetCursorSize(TargetCursorSize::MEDIUM);
     }
 }
 

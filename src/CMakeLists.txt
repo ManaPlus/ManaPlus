@@ -773,6 +773,7 @@ SET(SRCS
     being/playerrelation.h
     being/playerrelations.cpp
     being/playerrelations.h
+    being/targetcursorsize.h
     listeners/playerrelationslistener.h
     position.cpp
     position.h

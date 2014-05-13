@@ -30,6 +30,7 @@
 #include "being/actor.h"
 #include "being/actortype.h"
 #include "being/compoundsprite.h"
+#include "being/targetcursorsize.h"
 
 #include "particle/particlecontainer.h"
 
@@ -45,14 +46,6 @@ class ActorSpriteListener;
 class ActorSprite : public CompoundSprite, public Actor
 {
 public:
-    enum TargetCursorSize
-    {
-        TC_SMALL = 0,
-        TC_MEDIUM,
-        TC_LARGE,
-        NUM_TC
-    };
-
     enum TargetCursorType
     {
         TCT_NONE = -1,
@@ -103,8 +96,8 @@ public:
     /**
      * Returns the required size of a target cursor for this being.
      */
-    virtual TargetCursorSize getTargetCursorSize() const A_WARN_UNUSED
-    { return TC_MEDIUM; }
+    virtual TargetCursorSize::Size getTargetCursorSize() const A_WARN_UNUSED
+    { return TargetCursorSize::MEDIUM; }
 
     virtual int getTargetOffsetX() const A_WARN_UNUSED
     { return 0; }
@@ -225,7 +218,7 @@ private:
     static void cleanupTargetCursors();
 
     /** Animated target cursors. */
-    static AnimatedSprite *targetCursor[NUM_TCT][NUM_TC];
+    static AnimatedSprite *targetCursor[NUM_TCT][TargetCursorSize::NUM_TC];
 
     static bool loaded;
 
