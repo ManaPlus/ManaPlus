@@ -26,6 +26,7 @@
 
 #include "listeners/mouselistener.h"
 
+#include "gui/widgets/linepart.h"
 #include "gui/widgets/widget.h"
 
 #include <list>
@@ -54,47 +55,6 @@ struct BrowserLink final
     int y2;
     std::string link;
     std::string caption;
-};
-
-class LinePart final
-{
-    public:
-        LinePart(const int x, const int y, const Color &color,
-                 const Color &color2, const std::string &text,
-                 const bool bold) :
-            mX(x),
-            mY(y),
-            mColor(color),
-            mColor2(color2),
-            mText(text),
-            mType(0),
-            mImage(nullptr),
-            mBold(bold)
-        {
-        }
-
-        LinePart(const int x, const int y, const Color &color,
-                 const Color &color2, Image *const image) :
-            mX(x),
-            mY(y),
-            mColor(color),
-            mColor2(color2),
-            mText(),
-            mType(1),
-            mImage(image),
-            mBold(false)
-        {
-        }
-
-        ~LinePart();
-
-        int mX, mY;
-        Color mColor;
-        Color mColor2;
-        std::string mText;
-        unsigned char mType;
-        Image *mImage;
-        bool mBold;
 };
 
 /**

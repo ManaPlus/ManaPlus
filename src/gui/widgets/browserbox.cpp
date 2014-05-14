@@ -910,10 +910,3 @@ void BrowserBox::setForegroundColorAll(const Color &color1,
     mForegroundColor = color1;
     mForegroundColor2 = color2;
 }
-
-LinePart::~LinePart()
-{
-    if (mImage)
-        mImage->decRef();
-    mImage = nullptr;
-}

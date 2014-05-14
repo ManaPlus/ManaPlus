@@ -270,6 +270,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/layout.h \
 	      gui/widgets/layouthelper.cpp \
 	      gui/widgets/layouthelper.h \
+	      gui/widgets/linepart.cpp \
+	      gui/widgets/linepart.h \
 	      gui/widgets/linkhandler.h \
 	      gui/widgets/listbox.cpp \
 	      gui/widgets/listbox.h \
