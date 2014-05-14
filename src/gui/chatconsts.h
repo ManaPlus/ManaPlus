@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2008-2009  The Mana World Development Team
+ *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
@@ -20,34 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/tabs/tradetab.h"
+#ifndef GUI_CHATCONSTS_H
+#define GUI_CHATCONSTS_H
 
-#include "chatlogger.h"
+#include <string>
 
-#include "gui/chatconsts.h"
+const std::string GENERAL_CHANNEL = "";
+const std::string TRADE_CHANNEL = "";
 
-#include "utils/gettext.h"
-
-#include "debug.h"
-
-TradeTab::TradeTab(const Widget2 *const widget) :
-    // TRANSLATORS: trade chat tab name
-    ChatTab(widget, _("Trade"), TRADE_CHANNEL)
-{
-}
-
-TradeTab::~TradeTab()
-{
-}
-
-void TradeTab::handleInput(const std::string &msg)
-{
-    std::string str("\302\202" + msg);
-    ChatTab::handleInput(str);
-}
-
-void TradeTab::saveToLogFile(const std::string &msg) const
-{
-    if (chatLogger)
-        chatLogger->log(std::string("#Trade"), std::string(msg));
-}
+#endif  // GUI_CHATCONSTS_H

@@ -20,6 +20,8 @@
 
 #include "net/tmwa/pethandler.h"
 
+#include "gui/chatconsts.h"
+
 #include "gui/widgets/tabs/chattab.h"
 
 #include "net/net.h"

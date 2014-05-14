@@ -40,6 +40,7 @@
 
 #include "input/inputmanager.h"
 
+#include "gui/chatconsts.h"
 #include "gui/focushandler.h"
 #include "gui/gui.h"
 #include "gui/skin.h"

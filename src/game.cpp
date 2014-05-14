@@ -48,6 +48,7 @@
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
 
+#include "gui/chatconsts.h"
 #include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/viewport.h"

@@ -20,10 +20,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "gui/windows/shopwindow.h"
+
+#include "gui/chatconsts.h"
+
 #include "gui/windows/buydialog.h"
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/itemamountwindow.h"
-#include "gui/windows/shopwindow.h"
 #include "gui/windows/selldialog.h"
 #include "gui/windows/tradewindow.h"
 
