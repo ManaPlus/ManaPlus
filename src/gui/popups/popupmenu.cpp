@@ -2901,54 +2901,6 @@ void PopupMenu::showGMPopup()
     showPopup(getX(), getY());
 }
 
-RenameListener::RenameListener() :
-    ActionListener(),
-    mMapItemX(0),
-    mMapItemY(0),
-    mDialog(nullptr)
-{
-}
-
-void RenameListener::setMapItem(const MapItem *const mapItem)
-{
-    if (mapItem)
-    {
-        mMapItemX = mapItem->getX();
-        mMapItemY = mapItem->getY();
-    }
-    else
-    {
-        mMapItemX = 0;
-        mMapItemY = 0;
-    }
-}
-
-void RenameListener::action(const ActionEvent &event)
-{
-    if (event.getId() == "ok" && viewport && mDialog)
-    {
-        Map *const map = viewport->getMap();
-        if (!map)
-            return;
-
-        SpecialLayer *const sl = map->getSpecialLayer();
-        MapItem *item = nullptr;
-        if (sl)
-        {
-            item = sl->getTile(mMapItemX, mMapItemY);
-            if (item)
-                item->setComment(mDialog->getText());
-        }
-        item = map->findPortalXY(mMapItemX, mMapItemY);
-        if (item)
-            item->setComment(mDialog->getText());
-
-        if (socialWindow)
-            socialWindow->updatePortalNames();
-    }
-    mDialog = nullptr;
-}
-
 PlayerListener::PlayerListener() :
     ActionListener(),
     mNick(),

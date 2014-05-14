@@ -27,6 +27,7 @@
 #include "gui/widgets/popup.h"
 
 #include "listeners/actionlistener.h"
+#include "listeners/renamelistener.h"
 
 #include "localconsts.h"
 
@@ -45,26 +46,6 @@ class TextDialog;
 class TextField;
 class ProgressBar;
 class Window;
-
-class RenameListener final : public ActionListener
-{
-    public:
-        RenameListener();
-
-        A_DELETE_COPY(RenameListener)
-
-        void action(const ActionEvent &event) override final;
-
-        void setMapItem(const MapItem *const mapItem);
-
-        void setDialog(TextDialog *dialog)
-        { mDialog = dialog; }
-
-    private:
-        int mMapItemX;
-        int mMapItemY;
-        TextDialog *mDialog;
-};
 
 class PlayerListener : public ActionListener
 {

@@ -869,6 +869,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      being/playerrelations.h \
 	      being/targetcursorsize.h \
 	      listeners/playerrelationslistener.h \
+	      listeners/renamelistener.cpp \
+	      listeners/renamelistener.h \
 	      position.cpp \
 	      position.h \
 	      resources/map/properties.h \
