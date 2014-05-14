@@ -29,7 +29,6 @@
 #include "input/keyboardconfig.h"
 
 #include "gui/gui.h"
-#include "gui/setupactiondata.h"
 
 #include "gui/windows/okdialog.h"
 
@@ -40,59 +39,13 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabstrip.h"
 
-#include "gui/models/listmodel.h"
+#include "gui/models/keylistmodel.h"
 
 #include "utils/delete2.h"
 
 #include "debug.h"
 
-static int selectedData = 0;
 static const int setupGroups = 9;
-
-/**
- * The list model for key function list.
- *
- * \ingroup Interface
- */
-class KeyListModel final : public ListModel
-{
-    public:
-        KeyListModel() :
-            mDataNum(0),
-            mSize(0)
-        {
-        }
-
-        A_DELETE_COPY(KeyListModel)
-
-        /**
-         * Returns the number of elements in container.
-         */
-        int getNumberOfElements() override final
-        { return mSize; }
-
-        /**
-         * Returns element from container.
-         */
-        std::string getElementAt(int i) override final
-        { return setupActionData[selectedData][i].text; }
-
-        /**
-         * Sets element from container.
-         */
-        void setElementAt(const int i, const std::string &caption)
-        { setupActionData[selectedData][i].text = caption; }
-
-        void setSize(const int size)
-        { mSize = size; }
-
-        void setDataNum(const int num)
-        { mDataNum = num; }
-
-    private:
-        int mDataNum;
-        int mSize;
-};
 
 Setup_Input::Setup_Input(const Widget2 *const widget) :
     SetupTab(widget),
@@ -117,7 +70,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     // TRANSLATORS: setting tab name
     setName(_("Input"));
 
-    selectedData = 0;
+    mKeyListModel->setSelectedData(0);
 
     for (int f = 0; f < setupGroups; f ++)
     {
@@ -214,6 +167,7 @@ void Setup_Input::cancel()
 void Setup_Input::action(const ActionEvent &event)
 {
     const std::string &id = event.getId();
+    const int selectedData = mKeyListModel->getSelectedData();
 
     if (event.getSource() == mKeyList)
     {
@@ -294,7 +248,7 @@ void Setup_Input::action(const ActionEvent &event)
         }
         if (pages[k] && str + pages[k] == id)
         {
-            selectedData = k;
+            mKeyListModel->setSelectedData(k);
             mKeyListModel->setSize(mActionDataSize[k]);
             refreshKeys();
             mKeyList->setSelected(0);
@@ -304,6 +258,7 @@ void Setup_Input::action(const ActionEvent &event)
 
 void Setup_Input::refreshAssignedKey(const int index)
 {
+    const int selectedData = mKeyListModel->getSelectedData();
     const SetupActionData &key = setupActionData[selectedData][index];
     if (key.actionId == static_cast<int>(Input::KEY_NO_VALUE))
     {
@@ -336,6 +291,7 @@ void Setup_Input::newKeyCallback(const int index)
 
 int Setup_Input::keyToSetupData(const int index) const
 {
+    const int selectedData = mKeyListModel->getSelectedData();
     for (int i = 0; i < mActionDataSize[selectedData]; i++)
     {
         const SetupActionData &key = setupActionData[selectedData][i];
@@ -362,6 +318,7 @@ std::string Setup_Input::keyToString(const int index) const
 
 void Setup_Input::refreshKeys()
 {
+    const int selectedData = mKeyListModel->getSelectedData();
     for (int i = 0; i < mActionDataSize[selectedData]; i++)
         refreshAssignedKey(i);
 }
