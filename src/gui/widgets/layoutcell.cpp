@@ -23,6 +23,7 @@
 #include "gui/widgets/layoutcell.h"
 
 #include "gui/widgets/layout.h"
+#include "gui/widgets/layoutarray.h"
 #include "gui/widgets/widget.h"
 
 #include "utils/delete2.h"

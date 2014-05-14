@@ -273,6 +273,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/tabs/langtab.h \
 	      gui/widgets/layout.cpp \
 	      gui/widgets/layout.h \
+	      gui/widgets/layoutarray.cpp \
+	      gui/widgets/layoutarray.h \
 	      gui/widgets/layoutcell.cpp \
 	      gui/widgets/layoutcell.h \
 	      gui/widgets/layouthelper.cpp \
