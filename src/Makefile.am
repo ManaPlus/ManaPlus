@@ -172,6 +172,8 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/models/magicschoolmodel.h \
 	      events/mouseevent.h \
 	      listeners/mouselistener.h \
+	      listeners/playerlistener.cpp \
+	      listeners/playerlistener.h \
 	      gui/rect.h \
 	      events/selectionevent.h \
 	      listeners/selectionlistener.h \

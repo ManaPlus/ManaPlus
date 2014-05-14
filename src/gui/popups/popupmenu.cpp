@@ -2900,25 +2900,3 @@ void PopupMenu::showGMPopup()
 
     showPopup(getX(), getY());
 }
-
-PlayerListener::PlayerListener() :
-    ActionListener(),
-    mNick(),
-    mDialog(nullptr),
-    mType(static_cast<int>(ActorType::UNKNOWN))
-{
-}
-
-void PlayerListener::action(const ActionEvent &event)
-{
-    if (event.getId() == "ok" && !mNick.empty() && mDialog)
-    {
-        std::string comment = mDialog->getText();
-        Being *const being  = actorManager->findBeingByName(
-            mNick, static_cast<ActorType::Type>(mType));
-        if (being)
-            being->setComment(comment);
-        Being::saveComment(mNick, comment, mType);
-    }
-    mDialog = nullptr;
-}

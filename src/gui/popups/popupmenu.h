@@ -27,6 +27,7 @@
 #include "gui/widgets/popup.h"
 
 #include "listeners/actionlistener.h"
+#include "listeners/playerlistener.h"
 #include "listeners/renamelistener.h"
 
 #include "localconsts.h"
@@ -46,30 +47,6 @@ class TextDialog;
 class TextField;
 class ProgressBar;
 class Window;
-
-class PlayerListener : public ActionListener
-{
-    public:
-        PlayerListener();
-
-        A_DELETE_COPY(PlayerListener)
-
-        void action(const ActionEvent &event) override final;
-
-        void setNick(const std::string &name)
-        { mNick = name; }
-
-        void setDialog(TextDialog *const dialog)
-        { mDialog = dialog; }
-
-        void setType(const int type)
-        { mType = type; }
-
-    private:
-        std::string mNick;
-        TextDialog *mDialog;
-        int mType;
-};
 
 /**
  * Window showing popup menu.
