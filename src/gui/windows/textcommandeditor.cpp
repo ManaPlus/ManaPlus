@@ -32,6 +32,7 @@
 #include "gui/models/targettypemodel.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/containerplacer.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"

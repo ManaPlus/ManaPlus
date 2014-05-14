@@ -42,6 +42,7 @@
 #include "gui/widgets/characterdisplay.h"
 #include "gui/widgets/characterviewnormal.h"
 #include "gui/widgets/characterviewsmall.h"
+#include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layout.h"
 
 #include "net/logindata.h"

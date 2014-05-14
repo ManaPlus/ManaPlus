@@ -27,6 +27,8 @@
 
 #include "listeners/widgetlistener.h"
 
+class ContainerPlacer;
+
 /**
  * A helper class for adding a layout to a Guichan container widget. The layout
  * will register itself as a widget listener and relayout the widgets in the

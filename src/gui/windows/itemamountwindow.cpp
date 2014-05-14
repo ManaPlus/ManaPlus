@@ -41,6 +41,7 @@
 #include "gui/windows/tradewindow.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/containerplacer.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/icon.h"
 #include "gui/widgets/inttextfield.h"

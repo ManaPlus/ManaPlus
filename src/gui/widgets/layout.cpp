@@ -32,18 +32,6 @@
 
 #include "debug.h"
 
-ContainerPlacer ContainerPlacer::at(const int x, const int y)
-{
-    return ContainerPlacer(mContainer, &mCell->at(x, y));
-}
-
-LayoutCell &ContainerPlacer::operator()
-    (const int x, const int y, Widget *const wg, const int w, const int h)
-{
-    mContainer->add(wg);
-    return mCell->place(wg, x, y, w, h);
-}
-
 LayoutCell::~LayoutCell()
 {
     if (mType == ARRAY)

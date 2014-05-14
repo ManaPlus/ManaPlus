@@ -26,6 +26,7 @@
 #include "gui/userpalette.h"
 
 #include "gui/widgets/browserbox.h"
+#include "gui/widgets/containerplacer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/listbox.h"

@@ -33,6 +33,7 @@
 
 #include "gui/windows/setupwindow.h"
 
+#include "gui/widgets/containerplacer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouthelper.h"

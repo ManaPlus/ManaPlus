@@ -32,6 +32,7 @@
 
 #include "gui/popups/textpopup.h"
 
+#include "gui/widgets/containerplacer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 

@@ -33,6 +33,7 @@
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
+#include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/itemlinkhandler.h"

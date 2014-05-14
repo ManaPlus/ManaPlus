@@ -23,6 +23,7 @@
 #include "gui/widgets/layouthelper.h"
 
 #include "gui/widgets/basiccontainer2.h"
+#include "gui/widgets/containerplacer.h"
 
 #include "debug.h"
 

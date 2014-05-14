@@ -34,6 +34,7 @@
 #include "gui/windows/okdialog.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"

@@ -24,6 +24,7 @@
 
 #include "gui/models/namesmodel.h"
 
+#include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/setupitem.h"

@@ -32,40 +32,6 @@ class LayoutCell;
 class Widget;
 
 /**
- * This class is a helper for adding widgets to nested tables in a window.
- */
-class ContainerPlacer final
-{
-    public:
-        explicit ContainerPlacer(BasicContainer2 *c = nullptr,
-                                 LayoutCell *lc = nullptr) :
-            mContainer(c), mCell(lc)
-        {}
-
-        /**
-         * Gets the pointed cell.
-         */
-        LayoutCell &getCell() A_WARN_UNUSED
-        { return *mCell; }
-
-        /**
-         * Returns a placer for the same container but to an inner cell.
-         */
-        ContainerPlacer at(const int x, const int y) A_WARN_UNUSED;
-
-        /**
-         * Adds the given widget to the container and places it in the layout.
-         * @see LayoutArray::place
-         */
-        LayoutCell &operator()(const int x, const int y, Widget *const wg,
-            const int w = 1, const int h = 1);
-
-    private:
-        BasicContainer2 *mContainer;
-        LayoutCell *mCell;
-};
-
-/**
  * This class contains a rectangular array of cells.
  */
 class LayoutArray final
