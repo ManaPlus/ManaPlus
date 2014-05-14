@@ -20,6 +20,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef LISTENERS_GUICONFIGLISTENER_H
+#define LISTENERS_GUICONFIGLISTENER_H
+
 #include "configuration.h"
 
 #include "gui/gui.h"
@@ -54,3 +57,5 @@ class GuiConfigListener final : public ConfigListener
     private:
         Gui *mGui;
 };
+
+#endif  // LISTENERS_GUICONFIGLISTENER_H
