@@ -34,6 +34,7 @@
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
+#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shoplistbox.h"
 
@@ -181,7 +182,7 @@ ShopWindow::ShopWindow():
     }
 
     Layout &layout = getLayout();
-    layout.setRowHeight(0, Layout::AUTO_SET);
+    layout.setRowHeight(0, LayoutType::SET);
 
     center();
     loadWindowState();

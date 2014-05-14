@@ -32,6 +32,7 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/layout.h"
+#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "utils/gettext.h"
@@ -92,7 +93,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
     place(4, 4, okButton);
 
     Layout &layout = getLayout();
-    layout.setRowHeight(0, Layout::AUTO_SET);
+    layout.setRowHeight(0, LayoutType::SET);
 
     loadWindowState();
     enableVisibleSound(true);

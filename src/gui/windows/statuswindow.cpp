@@ -43,6 +43,7 @@
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/layouttype.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/vertcontainer.h"
@@ -292,7 +293,7 @@ StatusWindow::StatusWindow() :
     mDAttrScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
     place(6, 3, mDAttrScroll, 5, 3);
 
-    getLayout().setRowHeight(3, Layout::AUTO_SET);
+    getLayout().setRowHeight(3, LayoutType::SET);
 
     place(0, 6, mCharacterPointsLabel, 5);
     place(0, 5, mCopyButton);

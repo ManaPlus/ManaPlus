@@ -44,6 +44,7 @@
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/layout.h"
+#include "gui/widgets/layouttype.h"
 #include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/scrollarea.h"
@@ -811,7 +812,7 @@ void NpcDialog::buildLayout()
     }
 
     Layout &layout = getLayout();
-    layout.setRowHeight(1, Layout::AUTO_SET);
+    layout.setRowHeight(1, LayoutType::SET);
     redraw();
     mScrollArea->setVerticalScrollAmount(mScrollArea->getVerticalMaxScroll());
 }

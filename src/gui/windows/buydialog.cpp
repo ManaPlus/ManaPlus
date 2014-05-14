@@ -37,6 +37,7 @@
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
+#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"
@@ -289,7 +290,7 @@ void BuyDialog::init()
     placer(8, 8, mQuitButton);
 
     Layout &layout = getLayout();
-    layout.setRowHeight(0, Layout::AUTO_SET);
+    layout.setRowHeight(0, LayoutType::SET);
 
     center();
     loadWindowState();

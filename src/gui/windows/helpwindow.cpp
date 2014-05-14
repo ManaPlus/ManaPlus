@@ -32,6 +32,7 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/layout.h"
+#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "resources/resourcemanager.h"
@@ -84,7 +85,7 @@ HelpWindow::HelpWindow() :
     place(0, 0, mScrollArea, 5, 3).setPadding(3);
 
     Layout &layout = getLayout();
-    layout.setRowHeight(0, Layout::AUTO_SET);
+    layout.setRowHeight(0, LayoutType::SET);
 
     loadWindowState();
     loadTags();

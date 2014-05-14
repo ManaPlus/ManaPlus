@@ -43,9 +43,10 @@
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/label.h"
+#include "gui/widgets/layout.h"
+#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
-#include "gui/widgets/layout.h"
 
 #include "gui/widgets/tabs/chattab.h"
 
@@ -141,10 +142,10 @@ TradeWindow::TradeWindow():
     placer(1, 0, mOkButton);
     Layout &layout = getLayout();
     layout.extend(0, 2, 2, 1);
-    layout.setRowHeight(1, Layout::AUTO_SET);
+    layout.setRowHeight(1, LayoutType::SET);
     layout.setRowHeight(2, 0);
-    layout.setColWidth(0, Layout::AUTO_SET);
-    layout.setColWidth(1, Layout::AUTO_SET);
+    layout.setColWidth(0, LayoutType::SET);
+    layout.setColWidth(1, LayoutType::SET);
 
     loadWindowState();
     enableVisibleSound(true);

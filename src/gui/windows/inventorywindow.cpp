@@ -52,6 +52,7 @@
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/layout.h"
+#include "gui/widgets/layouttype.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabstrip.h"
@@ -238,7 +239,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory):
     }
 
     Layout &layout = getLayout();
-    layout.setRowHeight(2, Layout::AUTO_SET);
+    layout.setRowHeight(2, LayoutType::SET);
 
     mInventory->addInventoyListener(this);
 

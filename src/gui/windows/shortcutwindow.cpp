@@ -26,6 +26,7 @@
 #include "gui/widgets/tabbedarea.h"
 
 #include "gui/widgets/layout.h"
+#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shortcutcontainer.h"
 #include "gui/widgets/tabs/tab.h"
@@ -104,7 +105,7 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
     place(0, 0, mScrollArea, 5, 5).setPadding(0);
 
     Layout &layout = getLayout();
-    layout.setRowHeight(0, Layout::AUTO_SET);
+    layout.setRowHeight(0, LayoutType::SET);
     layout.setMargin(0);
 
     loadWindowState();
@@ -143,7 +144,7 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
     place(0, 0, mTabs, 5, 5);
 
     Layout &layout = getLayout();
-    layout.setRowHeight(0, Layout::AUTO_SET);
+    layout.setRowHeight(0, LayoutType::SET);
     layout.setMargin(0);
 
     loadWindowState();

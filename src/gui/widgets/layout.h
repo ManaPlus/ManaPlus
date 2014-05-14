@@ -64,17 +64,6 @@ class Layout final : public LayoutCell
          */
         void reflow(int &restrict nW, int &restrict nH);
 
-        /**
-         * When the minimum size of the layout is less than the available size,
-         * the remaining pixels are equally split amongst the FILL items.
-         */
-        enum
-        {
-            AUTO_DEF = -42, /**< Default value, behaves like AUTO_ADD. */
-            AUTO_SET = -43, /**< Uses the share as the new size. */
-            AUTO_ADD = -44  /**< Adds the share to the current size. */
-        };
-
     private:
         bool mComputed;
 };

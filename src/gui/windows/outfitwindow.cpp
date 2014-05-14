@@ -39,6 +39,7 @@
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
+#include "gui/widgets/layouttype.h"
 
 #include "resources/image.h"
 
@@ -109,7 +110,7 @@ OutfitWindow::OutfitWindow():
     place(0, 7, mAwayOutfitCheck, 4);
 
     Layout &layout = getLayout();
-    layout.setRowHeight(0, Layout::AUTO_SET);
+    layout.setRowHeight(0, LayoutType::SET);
     layout.setColWidth(4, Layout::CENTER);
 
     loadWindowState();

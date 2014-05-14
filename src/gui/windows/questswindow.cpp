@@ -35,6 +35,7 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layout.h"
+#include "gui/widgets/layouttype.h"
 #include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/scrollarea.h"
@@ -171,7 +172,7 @@ QuestsWindow::QuestsWindow() :
     placer(7, 3, mCloseButton);
 
     Layout &layout = getLayout();
-    layout.setRowHeight(0, Layout::AUTO_SET);
+    layout.setRowHeight(0, LayoutType::SET);
 
     loadWindowState();
     enableVisibleSound(true);

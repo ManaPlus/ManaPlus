@@ -34,6 +34,7 @@
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
+#include "gui/widgets/layouttype.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 
@@ -220,7 +221,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     placer(4, 5, mPlayButton);
 
     Layout &layout = getLayout();
-    layout.setRowHeight(0, Layout::AUTO_SET);
+    layout.setRowHeight(0, LayoutType::SET);
 
     addKeyListener(this);
 
