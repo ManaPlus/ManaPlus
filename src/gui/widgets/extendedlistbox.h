@@ -21,25 +21,8 @@
 #ifndef GUI_WIDGETS_EXTENDEDLISTBOX_H
 #define GUI_WIDGETS_EXTENDEDLISTBOX_H
 
+#include "gui/widgets/extendedlistboxitem.h"
 #include "gui/widgets/listbox.h"
-
-struct ExtendedListBoxItem
-{
-    ExtendedListBoxItem(const int row0,
-                        const std::string &text0,
-                        const bool image0,
-                        const int y0) :
-        row(row0),
-        text(text0),
-        image(image0),
-        y(y0)
-    {
-    }
-    int row;
-    std::string text;
-    bool image;
-    int y;
-};
 
 class ExtendedListBox final : public ListBox
 {
