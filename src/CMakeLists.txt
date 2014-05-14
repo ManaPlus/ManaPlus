@@ -847,6 +847,8 @@ SET(SRCS
     events/event.h
     listeners/focuslistener.h
     listeners/guiconfiglistener.h
+    listeners/guitableactionlistener.cpp
+    listeners/guitableactionlistener.h
     listeners/inventorylistener.h
     events/inputguievent.h
     input/key.h

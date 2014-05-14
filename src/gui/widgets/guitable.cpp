@@ -31,6 +31,7 @@
 #include "input/keydata.h"
 
 #include "listeners/actionlistener.h"
+#include "listeners/guitableactionlistener.h"
 
 #include "render/graphics.h"
 
@@ -40,59 +41,6 @@
 #include "debug.h"
 
 float GuiTable::mAlpha = 1.0;
-
-class GuiTableActionListener final : public ActionListener
-{
-public:
-    GuiTableActionListener(GuiTable *restrict _table,
-                           Widget *restrict _widget,
-                           int _row, int _column);
-
-    A_DELETE_COPY(GuiTableActionListener)
-
-    ~GuiTableActionListener();
-
-    void action(const ActionEvent& actionEvent) override final;
-
-protected:
-    GuiTable *mTable;
-    int mRow;
-    int mColumn;
-    Widget *mWidget;
-};
-
-
-GuiTableActionListener::GuiTableActionListener(GuiTable *restrict table,
-                                               Widget *restrict widget,
-                                               int row, int column) :
-    ActionListener(),
-    mTable(table),
-    mRow(row),
-    mColumn(column),
-    mWidget(widget)
-{
-    if (widget)
-    {
-        widget->addActionListener(this);
-        widget->setParent(table);
-    }
-}
-
-GuiTableActionListener::~GuiTableActionListener()
-{
-    if (mWidget)
-    {
-        mWidget->removeActionListener(this);
-        mWidget->setParent(nullptr);
-    }
-}
-
-void GuiTableActionListener::action(const ActionEvent &actionEvent A_UNUSED)
-{
-    mTable->setSelected(mRow, mColumn);
-    mTable->distributeActionEvent();
-}
-
 
 GuiTable::GuiTable(const Widget2 *const widget,
                    TableModel *const initial_model,

@@ -162,6 +162,8 @@ manaplus_SOURCES += events/actionevent.h \
 	      events/event.h \
 	      listeners/focuslistener.h \
 	      listeners/guiconfiglistener.h \
+	      listeners/guitableactionlistener.cpp \
+	      listeners/guitableactionlistener.h \
 	      listeners/inventorylistener.h \
 	      render/graphics.h \
 	      events/inputguievent.h \
