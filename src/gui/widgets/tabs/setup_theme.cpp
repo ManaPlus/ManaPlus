@@ -28,6 +28,7 @@
 #include "gui/windows/okdialog.h"
 
 #include "gui/models/extendedlistmodel.h"
+#include "gui/models/fontsizechoicelistmodel.h"
 #include "gui/models/fontsmodel.h"
 #include "gui/models/themesmodel.h"
 
@@ -57,62 +58,6 @@ const char* ACTION_NPC_FONT = "npc font";
 const char* ACTION_JAPAN_FONT = "japanese font";
 const char* ACTION_CHINA_FONT = "chinese font";
 const char* ACTION_INFO = "info";
-
-const int maxFontSizes = 16;
-
-const char *SIZE_NAME[maxFontSizes] =
-{
-    // TRANSLATORS: font size
-    N_("Very small (8)"),
-    // TRANSLATORS: font size
-    N_("Very small (9)"),
-    // TRANSLATORS: font size
-    N_("Tiny (10)"),
-    // TRANSLATORS: font size
-    N_("Small (11)"),
-    // TRANSLATORS: font size
-    N_("Medium (12)"),
-    // TRANSLATORS: font size
-    N_("Normal (13)"),
-    // TRANSLATORS: font size
-    N_("Large (14)"),
-    // TRANSLATORS: font size
-    N_("Large (15)"),
-    // TRANSLATORS: font size
-    N_("Large (16)"),
-    // TRANSLATORS: font size
-    N_("Big (17)"),
-    // TRANSLATORS: font size
-    N_("Big (18)"),
-    // TRANSLATORS: font size
-    N_("Big (19)"),
-    // TRANSLATORS: font size
-    N_("Very big (20)"),
-    // TRANSLATORS: font size
-    N_("Very big (21)"),
-    // TRANSLATORS: font size
-    N_("Very big (22)"),
-    // TRANSLATORS: font size
-    N_("Huge (23)"),
-};
-
-class FontSizeChoiceListModel final : public ListModel
-{
-public:
-    ~FontSizeChoiceListModel()
-    { }
-
-    int getNumberOfElements() override final A_WARN_UNUSED
-    { return maxFontSizes; }
-
-    std::string getElementAt(int i) override final A_WARN_UNUSED
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return "???";
-
-        return gettext(SIZE_NAME[i]);
-    }
-};
 
 struct Language final
 {

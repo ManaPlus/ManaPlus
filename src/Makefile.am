@@ -239,6 +239,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/models/extendedlistmodel.h \
 	      gui/models/extendednamesmodel.cpp \
 	      gui/models/extendednamesmodel.h \
+	      gui/models/fontsizechoicelistmodel.h \
 	      gui/models/fontsmodel.h \
 	      gui/models/iconsmodel.h \
 	      gui/models/ignorechoiceslistmodel.h \
