@@ -48,118 +48,13 @@
 
 #include "test/testmain.h"
 
-#include "gui/models/listmodel.h"
+#include "gui/models/modelistmodel.h"
 
 #include <algorithm>
 
 #include "debug.h"
 
 extern Graphics *mainGraphics;
-
-class ModeListModel final : public ListModel
-{
-    public:
-        ModeListModel();
-
-        A_DELETE_COPY(ModeListModel)
-
-        ~ModeListModel()
-        { }
-
-        /**
-         * Returns the number of elements in container.
-         */
-        int getNumberOfElements() override final
-        { return static_cast<int>(mVideoModes.size()); }
-
-        /**
-         * Returns element from container.
-         */
-        std::string getElementAt(int i)
-        { return mVideoModes[i]; }
-
-        /**
-         * Returns the index corresponding to the given video mode.
-         * E.g.: "800x600".
-         * or -1 if not found.
-         */
-        int getIndexOf(const std::string &widthXHeightMode);
-
-    private:
-#ifndef ANDROID
-        void addCustomMode(const std::string &mode);
-#endif
-
-        StringVect mVideoModes;
-};
-
-#ifndef ANDROID
-static bool modeSorter(const std::string &mode1, const std::string &mode2)
-{
-    const int width1 = atoi(mode1.substr(0, mode1.find("x")).c_str());
-    const int height1 = atoi(mode1.substr(mode1.find("x") + 1).c_str());
-    if (!width1 || !height1)
-        return false;
-
-    const int width2 = atoi(mode2.substr(0, mode2.find("x")).c_str());
-    const int height2 = atoi(mode2.substr(mode2.find("x") + 1).c_str());
-    if (!width2 || !height2)
-        return false;
-    if (width1 != width2)
-        return width1 < width2;
-
-    if (height1 != height2)
-        return height1 < height2;
-
-    return false;
-}
-#endif
-
-ModeListModel::ModeListModel() :
-    mVideoModes()
-{
-    SDL::getAllVideoModes(mVideoModes);
-#ifndef ANDROID
-    addCustomMode("640x480");
-    addCustomMode("800x600");
-    addCustomMode("1024x768");
-    addCustomMode("1280x1024");
-    addCustomMode("1400x900");
-    addCustomMode("1500x990");
-    addCustomMode(toString(mainGraphics->mActualWidth).append("x")
-        .append(toString(mainGraphics->mActualHeight)));
-
-    std::sort(mVideoModes.begin(), mVideoModes.end(), &modeSorter);
-    mVideoModes.push_back("custom");
-#endif
-}
-
-#ifndef ANDROID
-void ModeListModel::addCustomMode(const std::string &mode)
-{
-    StringVectCIter it = mVideoModes.begin();
-    const StringVectCIter it_end = mVideoModes.end();
-    while (it != it_end)
-    {
-        if (*it == mode)
-            return;
-        ++ it;
-    }
-    mVideoModes.push_back(mode);
-}
-#endif
-
-int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
-{
-    std::string currentMode("");
-    for (int i = 0; i < getNumberOfElements(); i++)
-    {
-        currentMode = getElementAt(i);
-        if (currentMode == widthXHeightMode)
-            return i;
-    }
-    return -1;
-}
 
 class OpenGLListModel final : public ListModel
 {

@@ -290,6 +290,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/linkhandler.h \
 	      gui/widgets/listbox.cpp \
 	      gui/widgets/listbox.h \
+	      gui/models/modelistmodel.cpp \
+	      gui/models/modelistmodel.h \
 	      gui/models/namesmodel.cpp \
 	      gui/models/namesmodel.h \
 	      gui/models/playerrelationlistmodel.h \
