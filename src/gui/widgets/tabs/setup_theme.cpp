@@ -30,6 +30,7 @@
 #include "gui/models/extendedlistmodel.h"
 #include "gui/models/fontsizechoicelistmodel.h"
 #include "gui/models/fontsmodel.h"
+#include "gui/models/langlistmodel.h"
 #include "gui/models/themesmodel.h"
 
 #include "gui/widgets/button.h"
@@ -58,99 +59,6 @@ const char* ACTION_NPC_FONT = "npc font";
 const char* ACTION_JAPAN_FONT = "japanese font";
 const char* ACTION_CHINA_FONT = "chinese font";
 const char* ACTION_INFO = "info";
-
-struct Language final
-{
-    std::string name;
-    std::string value;
-    std::string icon;
-};
-
-const int langs_count = 17;
-
-const Language LANG_NAME[langs_count] =
-{
-    // TRANSLATORS: language
-    {N_("(default)"), "", ""},
-    // TRANSLATORS: language
-    {N_("Chinese (China)"), "zh_CN", "cn.png"},
-    // TRANSLATORS: language
-    {N_("Czech"), "cs_CZ", "cz.png"},
-    // TRANSLATORS: language
-    {N_("English"), "C", "en.png"},
-    // TRANSLATORS: language
-    {N_("Finnish"), "fi_FI", "fi.png"},
-    // TRANSLATORS: language
-    {N_("French"), "fr_FR", "fr.png"},
-    // TRANSLATORS: language
-    {N_("German"), "de_DE", "de.png"},
-    // TRANSLATORS: language
-    {N_("Indonesian"), "id_ID", "id.png"},
-    // TRANSLATORS: language
-    {N_("Italian"), "it_IT", "it.png"},
-    // TRANSLATORS: language
-    {N_("Polish"), "pl_PL", "pl.png"},
-    // TRANSLATORS: language
-    {N_("Japanese"), "ja_JP", "jp.png"},
-    // TRANSLATORS: language
-    {N_("Dutch (Belgium/Flemish)"), "nl_BE", "nl_BE.png"},
-    // TRANSLATORS: language
-    {N_("Portuguese"), "pt_PT", "pt.png"},
-    // TRANSLATORS: language
-    {N_("Portuguese (Brazilian)"), "pt_BR", "pt_BR.png"},
-    // TRANSLATORS: language
-    {N_("Russian"), "ru_RU", "ru.png"},
-    // TRANSLATORS: language
-    {N_("Spanish (Castilian)"), "es_ES", "es.png"},
-    // TRANSLATORS: language
-    {N_("Turkish"), "tr_TR", "tr.png"}
-};
-
-class LangListModel final : public ExtendedListModel
-{
-public:
-    LangListModel()
-    {
-        ResourceManager *const resman = ResourceManager::getInstance();
-        for (int f = 0; f < langs_count; f ++)
-        {
-            mIcons[f] = resman->getImage("graphics/flags/"
-                + LANG_NAME[f].icon);
-        }
-    }
-
-    A_DELETE_COPY(LangListModel)
-
-    ~LangListModel()
-    {
-        for (int f = 0; f < langs_count; f ++)
-        {
-            Image *const img = mIcons[f];
-            if (img)
-                img->decRef();
-        }
-    }
-
-    int getNumberOfElements() override final A_WARN_UNUSED
-    { return langs_count; }
-
-    std::string getElementAt(int i) override final A_WARN_UNUSED
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return "???";
-
-        return gettext(LANG_NAME[i].name.c_str());
-    }
-
-    const Image *getImageAt(int i) override final A_WARN_UNUSED
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return nullptr;
-        return mIcons[i];
-    }
-
-    Image *mIcons[langs_count];
-};
 
 Setup_Theme::Setup_Theme(const Widget2 *const widget) :
     SetupTab(widget),

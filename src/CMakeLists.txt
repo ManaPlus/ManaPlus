@@ -154,6 +154,7 @@ SET(SRCS
     gui/models/ignorechoiceslistmodel.h
     gui/models/itemsmodel.h
     gui/models/keylistmodel.h
+    gui/models/langlistmodel.h
     gui/widgets/flowcontainer.cpp
     gui/widgets/flowcontainer.h
     gui/widgets/tabs/gmtab.cpp
