@@ -49,29 +49,13 @@
 #include "test/testmain.h"
 
 #include "gui/models/modelistmodel.h"
+#include "gui/models/opengllistmodel.h"
 
 #include <algorithm>
 
 #include "debug.h"
 
 extern Graphics *mainGraphics;
-
-class OpenGLListModel final : public ListModel
-{
-public:
-    ~OpenGLListModel()
-    { }
-
-    int getNumberOfElements() override final
-    { return renderModesListSize; }
-
-    std::string getElementAt(int i) override final
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return "???";
-        return gettext(OPENGL_NAME[i]);
-    }
-};
 
 Setup_Video::Setup_Video(const Widget2 *const widget) :
     SetupTab(widget),
