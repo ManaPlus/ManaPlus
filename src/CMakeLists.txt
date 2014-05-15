@@ -198,6 +198,8 @@ SET(SRCS
     gui/models/namesmodel.cpp
     gui/models/namesmodel.h
     gui/models/playerrelationlistmodel.h
+    gui/models/playertablemodel.cpp
+    gui/models/playertablemodel.h
     gui/models/questsmodel.h
     gui/models/serverslistmodel.h
     gui/widgets/passwordfield.cpp

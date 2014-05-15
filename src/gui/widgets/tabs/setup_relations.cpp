@@ -28,6 +28,7 @@
 
 #include "gui/models/ignorechoiceslistmodel.h"
 #include "gui/models/playerrelationlistmodel.h"
+#include "gui/models/playertablemodel.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
@@ -42,20 +43,17 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 static const int COLUMNS_NR = 2;  // name plus listbox
 static const int NAME_COLUMN = 0;
-static const unsigned int RELATION_CHOICE_COLUMN = 1;
-
-static const unsigned int ROW_HEIGHT = 12;
-// The following column widths really shouldn't be hardcoded
-// but should scale with the size of the widget... except
-// that, right now, the widget doesn't exactly scale either.
 static const unsigned int NAME_COLUMN_WIDTH = 230;
+static const unsigned int RELATION_CHOICE_COLUMN = 1;
 static const unsigned int RELATION_CHOICE_COLUMN_WIDTH = 80;
 
-#define WIDGET_AT(row, column) (((row) * COLUMNS_NR) + column)
-
-#include "debug.h"
+static const std::string ACTION_DELETE("delete");
+static const std::string ACTION_TABLE("table");
+static const std::string ACTION_STRATEGY("strategy");
 
 static const char *const table_titles[COLUMNS_NR] =
 {
@@ -64,123 +62,6 @@ static const char *const table_titles[COLUMNS_NR] =
     // TRANSLATORS: relations table header
     N_("Relation")
 };
-
-class PlayerTableModel final : public Widget2, public TableModel
-{
-public:
-    explicit PlayerTableModel(const Widget2 *const widget) :
-        Widget2(widget),
-        TableModel(),
-        mPlayers(nullptr),
-        mWidgets(),
-        mListModel(new PlayerRelationListModel)
-    {
-        playerRelationsUpdated();
-    }
-
-    A_DELETE_COPY(PlayerTableModel)
-
-    ~PlayerTableModel()
-    {
-        freeWidgets();
-        delete2(mListModel)
-        delete2(mPlayers)
-    }
-
-    int getRows() const override final
-    {
-        if (mPlayers)
-            return static_cast<int>(mPlayers->size());
-        else
-            return 0;
-    }
-
-    int getColumns() const override final
-    {
-        return COLUMNS_NR;
-    }
-
-    int getRowHeight() const override final
-    {
-        return ROW_HEIGHT;
-    }
-
-    int getColumnWidth(const int index) const override final
-    {
-        if (index == NAME_COLUMN)
-            return NAME_COLUMN_WIDTH;
-        else
-            return RELATION_CHOICE_COLUMN_WIDTH;
-    }
-
-    void playerRelationsUpdated()
-    {
-        signalBeforeUpdate();
-
-        freeWidgets();
-        StringVect *const player_names = player_relations.getPlayers();
-
-        if (!player_names)
-            return;
-
-        delete mPlayers;
-        mPlayers = player_names;
-
-        // set up widgets
-        for (unsigned int r = 0, sz = static_cast<unsigned int>(
-             player_names->size()); r < sz; ++r)
-        {
-            const std::string name = (*player_names)[r];
-            Widget *const widget = new Label(this, name);
-            mWidgets.push_back(widget);
-
-            DropDown *const choicebox = new DropDown(this, mListModel);
-            choicebox->setSelected(static_cast<int>(
-                player_relations.getRelation(name)));
-            mWidgets.push_back(choicebox);
-        }
-
-        signalAfterUpdate();
-    }
-
-    void updateModelInRow(const int row) const
-    {
-        const DropDown *const choicebox = static_cast<DropDown *>(
-            getElementAt(row, RELATION_CHOICE_COLUMN));
-        player_relations.setRelation(getPlayerAt(row),
-            static_cast<PlayerRelation::Relation>(
-            choicebox->getSelected()));
-    }
-
-
-    Widget *getElementAt(int row, int column) const override final
-    {
-        return mWidgets[WIDGET_AT(row, column)];
-    }
-
-    void freeWidgets()
-    {
-        delete2(mPlayers)
-        delete_all(mWidgets);
-        mWidgets.clear();
-    }
-
-    std::string getPlayerAt(const int index) const
-    {
-        if (index < 0 || index >= static_cast<signed>(mPlayers->size()))
-            return "";
-        return (*mPlayers)[index];
-    }
-
-protected:
-    StringVect *mPlayers;
-    std::vector<Widget *> mWidgets;
-    PlayerRelationListModel *mListModel;
-};
-
-static const std::string ACTION_DELETE("delete");
-static const std::string ACTION_TABLE("table");
-static const std::string ACTION_STRATEGY("strategy");
 
 Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     SetupTab(widget),
