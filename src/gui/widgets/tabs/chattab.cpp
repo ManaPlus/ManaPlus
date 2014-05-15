@@ -38,6 +38,8 @@
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/tabbedarea.h"
 
+#include "gui/widgets/tabs/chattabtype.h"
+
 #include "net/chathandler.h"
 #include "net/net.h"
 
@@ -276,8 +278,8 @@ void ChatTab::chatLog(std::string line, Own own,
     mScrollArea->logic();
     if (own != BY_PLAYER)
     {
-        if (own == BY_SERVER && (getType() == TAB_PARTY
-            || getType() == TAB_GUILD))
+        if (own == BY_SERVER && (getType() == ChatTabType::PARTY
+            || getType() == ChatTabType::GUILD))
         {
             return;
         }
@@ -446,11 +448,11 @@ void ChatTab::saveToLogFile(const std::string &msg) const
 {
     if (chatLogger)
     {
-        if (getType() == TAB_INPUT)
+        if (getType() == ChatTabType::INPUT)
         {
             chatLogger->log(msg);
         }
-        else if (getType() == TAB_DEBUG
+        else if (getType() == ChatTabType::DEBUG
                  && config.getBoolValue("enableDebugLog"))
         {
             chatLogger->log("#Debug", msg);
@@ -461,11 +463,11 @@ void ChatTab::saveToLogFile(const std::string &msg) const
 int ChatTab::getType() const
 {
     if (getCaption() == "General" || getCaption() == _("General"))
-        return TAB_INPUT;
+        return ChatTabType::INPUT;
     else if (getCaption() == "Debug" || getCaption() == _("Debug"))
-        return TAB_DEBUG;
+        return ChatTabType::DEBUG;
     else
-        return TAB_UNKNOWN;
+        return ChatTabType::UNKNOWN;
 }
 
 void ChatTab::addRow(std::string &line)

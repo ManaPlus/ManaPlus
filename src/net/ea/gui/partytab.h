@@ -24,6 +24,7 @@
 #define NET_EA_GUI_PARTYTAB_H
 
 #include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chattabtype.h"
 
 namespace Ea
 {
@@ -45,7 +46,7 @@ class PartyTab : public ChatTab,
                            const std::string &restrict args) override final;
 
         int getType() const override final A_WARN_UNUSED
-        { return ChatTab::TAB_PARTY; }
+        { return ChatTabType::PARTY; }
 
         void saveToLogFile(const std::string &msg) const override final;
 

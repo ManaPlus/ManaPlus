@@ -22,6 +22,7 @@
 #define GUI_WIDGETS_TABS_GMTAB_H
 
 #include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chattabtype.h"
 
 /**
  * A tab for whispers from a single player.
@@ -36,7 +37,7 @@ class GmTab final : public ChatTab
         ~GmTab();
 
         int getType() const override final A_WARN_UNUSED
-        { return ChatTab::TAB_GM; }
+        { return ChatTabType::GM; }
 
         void saveToLogFile(const std::string &msg) const override final;
 

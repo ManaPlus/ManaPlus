@@ -24,6 +24,7 @@
 #define GUI_WIDGETS_TABS_GUILDCHATTAB_H
 
 #include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chattabtype.h"
 
 /**
  * A tab for a guild chat channel.
@@ -44,7 +45,7 @@ class GuildChatTab final : public ChatTab,
         void saveToLogFile(const std::string &msg) const override final;
 
         int getType() const override A_WARN_UNUSED
-        { return ChatTab::TAB_GUILD; }
+        { return ChatTabType::GUILD; }
 
         void playNewMessageSound() const override final;
 

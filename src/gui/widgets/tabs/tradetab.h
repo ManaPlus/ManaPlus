@@ -24,6 +24,7 @@
 #define GUI_WIDGETS_TABS_TRADETAB_H
 
 #include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chattabtype.h"
 
 /**
  * A tab for a party chat channel.
@@ -38,7 +39,7 @@ class TradeTab final : public ChatTab
         ~TradeTab();
 
         int getType() const override final A_WARN_UNUSED
-        { return ChatTab::TAB_TRADE; }
+        { return ChatTabType::TRADE; }
 
         void saveToLogFile(const std::string &msg) const override final;
 

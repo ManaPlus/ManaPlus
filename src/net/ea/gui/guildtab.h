@@ -24,6 +24,7 @@
 #define NET_EA_GUI_GUILDTAB_H
 
 #include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chattabtype.h"
 
 namespace Ea
 {
@@ -47,7 +48,7 @@ class GuildTab : public ChatTab,
         void saveToLogFile(const std::string &msg) const override final;
 
         int getType() const override final A_WARN_UNUSED
-        { return ChatTab::TAB_GUILD; }
+        { return ChatTabType::GUILD; }
 
         void playNewMessageSound() const override final;
 

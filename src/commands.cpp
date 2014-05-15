@@ -111,12 +111,12 @@ static void outString(const ChatTab *const tab,
 
     switch (tab->getType())
     {
-        case ChatTab::TAB_PARTY:
+        case ChatTabType::PARTY:
         {
             Net::getPartyHandler()->chat(str);
             break;
         }
-        case ChatTab::TAB_GUILD:
+        case ChatTabType::GUILD:
         {
             if (!player_node)
                 return;
@@ -214,12 +214,12 @@ static void outStringNormal(ChatTab *const tab,
 
     switch (tab->getType())
     {
-        case ChatTab::TAB_PARTY:
+        case ChatTabType::PARTY:
         {
             Net::getPartyHandler()->chat(str);
             break;
         }
-        case ChatTab::TAB_GUILD:
+        case ChatTabType::GUILD:
         {
             const Guild *const guild = player_node->getGuild();
             if (guild)
@@ -237,7 +237,7 @@ static void outStringNormal(ChatTab *const tab,
             }
             break;
         }
-        case ChatTab::TAB_WHISPER:
+        case ChatTabType::WHISPER:
         {
             const WhisperTab *const whisper
                 = static_cast<const WhisperTab *const>(tab);
@@ -270,12 +270,12 @@ impHandler2(help)
     }
     switch (tab->getType())
     {
-        case ChatTab::TAB_PARTY:
+        case ChatTabType::PARTY:
         {
             helpWindow->loadHelp("chatparty");
             break;
         }
-        case ChatTab::TAB_GUILD:
+        case ChatTabType::GUILD:
         {
             helpWindow->loadHelp("chatguild");
             break;
@@ -759,7 +759,7 @@ impHandler(follow)
 
     if (!args.empty())
         player_node->setFollow(args);
-    else if (tab && tab->getType() == ChatTab::TAB_WHISPER)
+    else if (tab && tab->getType() == ChatTabType::WHISPER)
         player_node->setFollow(static_cast<WhisperTab*>(tab)->getNick());
 }
 
@@ -770,7 +770,7 @@ impHandler(imitation)
 
     if (!args.empty())
         player_node->setImitate(args);
-    else if (tab && tab->getType() == ChatTab::TAB_WHISPER)
+    else if (tab && tab->getType() == ChatTabType::WHISPER)
         player_node->setImitate(static_cast<WhisperTab*>(tab)->getNick());
     else
         player_node->setImitate("");
@@ -881,7 +881,7 @@ impHandler2(info)
 
     switch (tab->getType())
     {
-        case ChatTab::TAB_GUILD:
+        case ChatTabType::GUILD:
         {
             const Guild *const guild = player_node->getGuild();
             if (guild)

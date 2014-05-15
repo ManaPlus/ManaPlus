@@ -38,20 +38,6 @@ class ScrollArea;
 class ChatTab : public Tab
 {
     public:
-        enum Type
-        {
-            TAB_UNKNOWN = 0,
-            TAB_INPUT,
-            TAB_WHISPER,
-            TAB_PARTY,
-            TAB_GUILD,
-            TAB_DEBUG,
-            TAB_TRADE,
-            TAB_BATTLE,
-            TAB_LANG,
-            TAB_GM
-        };
-
         /**
          * Constructor.
          */

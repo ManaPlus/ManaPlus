@@ -1,7 +1,5 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -20,30 +18,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_BATTLETAB_H
-#define GUI_WIDGETS_TABS_BATTLETAB_H
+#ifndef GUI_WIDGETS_TABS_CHATTABTYPE_H
+#define GUI_WIDGETS_TABS_CHATTABTYPE_H
 
-#include "gui/widgets/tabs/chattab.h"
-#include "gui/widgets/tabs/chattabtype.h"
-
-/**
- * A tab for a party chat channel.
- */
-class BattleTab final : public ChatTab
+namespace ChatTabType
 {
-    public:
-        explicit BattleTab(const Widget2 *const widget);
+    enum Type
+    {
+        UNKNOWN = 0,
+        INPUT,
+        WHISPER,
+        PARTY,
+        GUILD,
+        DEBUG,
+        TRADE,
+        BATTLE,
+        LANG,
+        GM
+    };
+}  // namespace ChatTabType
 
-        A_DELETE_COPY(BattleTab)
-
-        ~BattleTab();
-
-        int getType() const override final A_WARN_UNUSED
-        { return ChatTabType::BATTLE; }
-
-        void saveToLogFile(const std::string &msg) const override final;
-};
-
-extern BattleTab *battleChatTab;
-
-#endif  // GUI_WIDGETS_TABS_BATTLETAB_H
+#endif  // GUI_WIDGETS_TABS_CHATTABTYPE_H

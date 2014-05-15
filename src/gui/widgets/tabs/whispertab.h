@@ -24,6 +24,7 @@
 #define GUI_WIDGETS_TABS_WHISPERTAB_H
 
 #include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chattabtype.h"
 
 /**
  * A tab for whispers from a single player.
@@ -40,7 +41,7 @@ class WhisperTab final : public ChatTab
                            const std::string &restrict args) override final;
 
         int getType() const override final A_WARN_UNUSED
-        { return ChatTab::TAB_WHISPER; }
+        { return ChatTabType::WHISPER; }
 
         void saveToLogFile(const std::string &msg) const override final;
 

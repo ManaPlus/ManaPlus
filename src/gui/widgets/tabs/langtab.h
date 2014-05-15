@@ -22,6 +22,7 @@
 #define GUI_WIDGETS_TABS_LANGTAB_H
 
 #include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chattabtype.h"
 
 class LangTab final : public ChatTab
 {
@@ -34,7 +35,7 @@ class LangTab final : public ChatTab
         ~LangTab();
 
         int getType() const override final A_WARN_UNUSED
-        { return ChatTab::TAB_LANG; }
+        { return ChatTabType::LANG; }
 
         void saveToLogFile(const std::string &msg) const override final;
 };
