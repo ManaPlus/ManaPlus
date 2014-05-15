@@ -60,6 +60,10 @@ const std::string xmlUpdateFile("resources.xml");
 const std::string txtUpdateFile("resources2.txt");
 const std::string updateServer2
     ("http://download.evolonline.org/manaplus/updates/");
+const std::string updateServer3
+    ("http://download.manaplus.org/manaplus/updates/");
+const std::string updateServer4
+    ("http://download2.manaplus.org/manaplus/updates/");
 
 /**
  * Load the given file into a vector of updateFiles.
@@ -537,7 +541,10 @@ void UpdaterWindow::download()
             "http://manaplus.org/update/" + mCurrentFile,
             &updateProgress,
             true, false, mValidateXml);
-        mDownload->addMirror("http://www.manaplus.org/update/" + mCurrentFile);
+        mDownload->addMirror("http://www.manaplus.org/update/"
+            + mCurrentFile);
+        mDownload->addMirror("http://www2.manaplus.org/update/"
+            + mCurrentFile);
     }
     else
     {
@@ -546,11 +553,22 @@ void UpdaterWindow::download()
             &updateProgress,
             false, false, mValidateXml);
 
-        const std::vector<std::string> &mirrors = client->getMirrors();
-        FOR_EACH (std::vector<std::string>::const_iterator, it, mirrors)
+        if (mDownloadStatus == UPDATE_LIST2
+            || mDownloadStatus == UPDATE_RESOURCES2)
         {
-            mDownload->addMirror(std::string(*it).append(
-                "/").append(mCurrentFile));
+            mDownload->addMirror(updateServer3 + mUpdateServerPath
+                + "/" + mCurrentFile);
+            mDownload->addMirror(updateServer4 + mUpdateServerPath
+                + "/" + mCurrentFile);
+        }
+        else
+        {
+            const std::vector<std::string> &mirrors = client->getMirrors();
+            FOR_EACH (std::vector<std::string>::const_iterator, it, mirrors)
+            {
+                mDownload->addMirror(std::string(*it).append(
+                    "/").append(mCurrentFile));
+            }
         }
     }
 
