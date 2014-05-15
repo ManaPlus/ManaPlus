@@ -83,13 +83,16 @@
 int Tab::mInstances = 0;
 float Tab::mAlpha = 1.0;
 
-static std::string const data[Tab::TAB_COUNT] =
+namespace
 {
-    "tab.xml",
-    "tab_highlighted.xml",
-    "tab_selected.xml",
-    "tab_unused.xml"
-};
+    static std::string const data[Tab::TAB_COUNT] =
+    {
+        "tab.xml",
+        "tab_highlighted.xml",
+        "tab_selected.xml",
+        "tab_unused.xml"
+    };
+}  // namespace
 
 Skin *Tab::tabImg[Tab::TAB_COUNT];
 
