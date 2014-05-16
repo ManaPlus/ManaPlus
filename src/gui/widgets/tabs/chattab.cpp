@@ -32,6 +32,8 @@
 
 #include "being/localplayer.h"
 
+#include "gui/chatlog.h"
+
 #include "gui/windows/helpwindow.h"
 
 #include "gui/widgets/scrollarea.h"

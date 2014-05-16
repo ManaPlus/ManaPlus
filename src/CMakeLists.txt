@@ -859,6 +859,7 @@ SET(SRCS
     listeners/actionlistener.h
     gui/widgets/basiccontainer.h
     gui/chatconsts.h
+    gui/chatlog.h
     gui/cliprect.h
     gui/color.h
     listeners/deathlistener.h
