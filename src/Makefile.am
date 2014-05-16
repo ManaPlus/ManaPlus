@@ -355,6 +355,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/slider.h \
 	      gui/widgets/sliderlist.cpp \
 	      gui/widgets/sliderlist.h \
+	      gui/widgets/tabs/shortcuttab.h \
 	      gui/widgets/tabs/tab.cpp \
 	      gui/widgets/tabs/tab.h \
 	      gui/widgets/tabbedarea.cpp \

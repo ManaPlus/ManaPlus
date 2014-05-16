@@ -29,6 +29,8 @@
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shortcutcontainer.h"
+
+#include "gui/widgets/tabs/shortcuttab.h"
 #include "gui/widgets/tabs/tab.h"
 
 #include "utils/delete2.h"
@@ -38,23 +40,6 @@
 static const int SCROLL_PADDING = 0;
 
 int ShortcutWindow::mBoxesWidth = 0;
-
-class ShortcutTab final : public Tab
-{
-    public:
-        ShortcutTab(const Widget2 *const widget,
-                    std::string name,
-                    ShortcutContainer *const content) :
-            Tab(widget),
-            mContent(content)
-        {
-            setCaption(name);
-        }
-
-        A_DELETE_COPY(ShortcutTab)
-
-        ShortcutContainer* mContent;
-};
 
 ShortcutWindow::ShortcutWindow(const std::string &restrict title,
                                ShortcutContainer *restrict const content,
