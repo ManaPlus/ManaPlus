@@ -47,6 +47,7 @@
 #include "utils/translation/podict.h"
 
 #include "resources/beingcommon.h"
+#include "resources/questitemtext.h"
 
 #include "resources/map/map.h"
 
@@ -57,17 +58,6 @@ enum QuestType
     QUEST_TEXT = 0,
     QUEST_NAME = 1,
     QUEST_REWARD = 2
-};
-
-struct QuestItemText final
-{
-    QuestItemText(const std::string &text0, const int type0) :
-        text(text0), type(type0)
-    {
-    }
-
-    std::string text;
-    int type;
 };
 
 struct QuestItem final
