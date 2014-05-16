@@ -27,101 +27,10 @@
 #include "gui/widgets/window.h"
 
 class Label;
+class MapDebugTab;
+class NetDebugTab;
 class TabbedArea;
-
-class DebugTab : public Container
-{
-    friend class DebugWindow;
-
-    public:
-        A_DELETE_COPY(DebugTab)
-
-        void logic() override
-        {
-        }
-
-        void resize(const int x, const int y)
-        { setDimension(Rect(0, 0, x, y)); }
-
-    protected:
-        explicit DebugTab(const Widget2 *const widget) :
-            Container(widget)
-        { }
-};
-
-class MapDebugTab final : public DebugTab
-{
-    friend class DebugWindow;
-
-    public:
-        explicit MapDebugTab(const Widget2 *const widget);
-
-        A_DELETE_COPY(MapDebugTab)
-
-        void logic() override final;
-
-    private:
-        Label *mMusicFileLabel;
-        Label *mMapLabel;
-        Label *mMinimapLabel;
-        Label *mTileMouseLabel;
-        Label *mParticleCountLabel;
-        Label *mMapActorCountLabel;
-        Label *mXYLabel;
-        Label *mTexturesLabel;
-        int mUpdateTime;
-#ifdef DEBUG_DRAW_CALLS
-        Label *mDrawCallsLabel;
-#endif
-#ifdef DEBUG_BIND_TEXTURE
-        Label *mBindsLabel;
-#endif
-        Label *mFPSLabel;
-        Label *mLPSLabel;
-        std::string mFPSText;
-};
-
-class TargetDebugTab final : public DebugTab
-{
-    friend class DebugWindow;
-
-    public:
-        explicit TargetDebugTab(const Widget2 *const widget);
-
-        A_DELETE_COPY(TargetDebugTab)
-
-        void logic() override final;
-
-    private:
-        Label *mTargetLabel;
-        Label *mTargetIdLabel;
-        Label *mTargetTypeLabel;
-        Label *mTargetLevelLabel;
-        Label *mTargetRaceLabel;
-        Label *mTargetPartyLabel;
-        Label *mTargetGuildLabel;
-        Label *mAttackDelayLabel;
-        Label *mMinHitLabel;
-        Label *mMaxHitLabel;
-        Label *mCriticalHitLabel;
-};
-
-class NetDebugTab final : public DebugTab
-{
-    friend class DebugWindow;
-
-    public:
-        explicit NetDebugTab(const Widget2 *const widget);
-
-        A_DELETE_COPY(NetDebugTab)
-
-        void logic() override final;
-
-    private:
-        Label *mPingLabel;
-        Label *mInPackets1Label;
-        Label *mOutPackets1Label;
-};
+class TargetDebugTab;
 
 /**
  * The debug window.
