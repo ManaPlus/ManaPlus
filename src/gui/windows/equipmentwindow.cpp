@@ -40,6 +40,7 @@
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/equipmentbox.h"
 #include "gui/widgets/playerbox.h"
 
 #include "resources/imageset.h"

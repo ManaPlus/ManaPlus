@@ -237,6 +237,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/dropdown.h \
 	      gui/widgets/emoteshortcutcontainer.cpp \
 	      gui/widgets/emoteshortcutcontainer.h \
+	      gui/widgets/equipmentbox.h \
 	      gui/widgets/extendedlistbox.cpp \
 	      gui/widgets/extendedlistbox.h \
 	      gui/widgets/extendedlistboxitem.h \

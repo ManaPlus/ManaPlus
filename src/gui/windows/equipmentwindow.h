@@ -42,18 +42,7 @@ class Item;
 class ItemPopup;
 class PlayerBox;
 
-struct EquipmentBox final
-{
-    EquipmentBox(const int x0, const int y0, Image *const img) :
-        x(x0), y(y0), image(img)
-    { }
-
-    A_DELETE_COPY(EquipmentBox)
-
-    int x;
-    int y;
-    Image *image;
-};
+struct EquipmentBox;
 
 /**
  * Equipment dialog.
