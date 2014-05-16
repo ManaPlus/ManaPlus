@@ -242,7 +242,7 @@ void CharSelectDialog::action(const ActionEvent &event)
                 character->data.mAttributes[Attributes::EXP]),
                 Units::formatCurrency(
                 character->data.mAttributes[Attributes::MONEY]).c_str());
-            new OkDialog(data->getName(), msg, DIALOG_SILENCE);
+            new OkDialog(data->getName(), msg, DialogType::SILENCE);
         }
     }
     if (eventId == "switch")
@@ -274,7 +274,8 @@ void CharSelectDialog::action(const ActionEvent &event)
         else
         {
             // TRANSLATORS: error message
-            new OkDialog(_("Error"), _("Incorrect password"), DIALOG_ERROR);
+            new OkDialog(_("Error"), _("Incorrect password"),
+                DialogType::ERROR);
         }
         mDeleteIndex = -1;
     }

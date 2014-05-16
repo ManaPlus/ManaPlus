@@ -1579,7 +1579,7 @@ int Client::gameExec()
                     logger->log1("State: LOGIN ERROR");
                     // TRANSLATORS: error dialog header
                     mCurrentDialog = new OkDialog(_("Error"),
-                        errorMessage, DIALOG_ERROR);
+                        errorMessage, DialogType::ERROR);
                     mCurrentDialog->addActionListener(&loginListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     BLOCK_END("Client::gameExec STATE_LOGIN_ERROR")
@@ -1590,7 +1590,7 @@ int Client::gameExec()
                     logger->log1("State: ACCOUNT CHANGE ERROR");
                     // TRANSLATORS: error dialog header
                     mCurrentDialog = new OkDialog(_("Error"),
-                        errorMessage, DIALOG_ERROR);
+                        errorMessage, DialogType::ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     BLOCK_END("Client::gameExec STATE_ACCOUNTCHANGE_ERROR")
@@ -1644,7 +1644,7 @@ int Client::gameExec()
                     // TRANSLATORS: password change message header
                     mCurrentDialog = new OkDialog(_("Password Change"),
                         // TRANSLATORS: password change message text
-                        _("Password changed successfully!"), DIALOG_ERROR);
+                        _("Password changed successfully!"), DialogType::ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     loginData.password = loginData.newPassword;
@@ -1668,7 +1668,7 @@ int Client::gameExec()
                     // TRANSLATORS: email change message header
                     mCurrentDialog = new OkDialog(_("Email Change"),
                         // TRANSLATORS: email change message text
-                        _("Email changed successfully!"), DIALOG_ERROR);
+                        _("Email changed successfully!"), DialogType::ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     break;
@@ -2959,7 +2959,7 @@ Window *Client::openErrorDialog(const std::string &header,
 {
     if (getSupportUrl().empty() || config.getBoolValue("hidesupport"))
     {
-        return new OkDialog(header, message, DIALOG_ERROR, modal);
+        return new OkDialog(header, message, DialogType::ERROR, modal);
     }
     else
     {

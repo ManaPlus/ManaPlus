@@ -192,7 +192,7 @@ void EditServerDialog::action(const ActionEvent &event)
             OkDialog *const dlg = new OkDialog(_("Error"),
                 // TRANSLATORS: edit server dialog error message
                 _("Please at least type both the address and the port "
-                  "of the server."), DIALOG_ERROR);
+                  "of the server."), DialogType::ERROR);
             dlg->addActionListener(this);
         }
         else

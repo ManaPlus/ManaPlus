@@ -199,7 +199,7 @@ void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
             break;
     }
     // TRANSLATORS: error message header
-    new OkDialog(_("Error"), errorMessage, DIALOG_ERROR);
+    new OkDialog(_("Error"), errorMessage, DialogType::ERROR);
     if (mCharCreateDialog)
         mCharCreateDialog->unlock();
     BLOCK_END("CharServerHandler::processCharCreateFailed")
@@ -223,7 +223,8 @@ void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg A_UNUSED)
     BLOCK_START("CharServerHandler::processCharDeleteFailed")
     unlockCharSelectDialog();
     // TRANSLATORS: error message
-    new OkDialog(_("Error"), _("Failed to delete character."), DIALOG_ERROR);
+    new OkDialog(_("Error"), _("Failed to delete character."),
+        DialogType::ERROR);
     BLOCK_END("CharServerHandler::processCharDeleteFailed")
 }
 

@@ -155,7 +155,7 @@ void ChangePasswordDialog::action(const ActionEvent &event)
 
             // TRANSLATORS: change password error header
             OkDialog *const dlg = new OkDialog(_("Error"),
-                errorMsg.str(), DIALOG_ERROR);
+                errorMsg.str(), DialogType::ERROR);
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

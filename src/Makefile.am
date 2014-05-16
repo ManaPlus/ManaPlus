@@ -158,6 +158,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/chatlog.h \
 	      gui/cliprect.h \
 	      gui/color.h \
+	      gui/dialogtype.h \
 	      listeners/deathlistener.h \
 	      listeners/errorlistener.cpp \
 	      listeners/errorlistener.h \

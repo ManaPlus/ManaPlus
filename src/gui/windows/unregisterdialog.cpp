@@ -144,7 +144,7 @@ void UnRegisterDialog::action(const ActionEvent &event)
 
             // TRANSLATORS: unregister dialog. error message.
             OkDialog *const dlg = new OkDialog(_("Error"),
-                errorMsg.str(), DIALOG_ERROR);
+                errorMsg.str(), DialogType::ERROR);
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

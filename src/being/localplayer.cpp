@@ -1642,7 +1642,7 @@ void LocalPlayer::changeAwayMode()
         // TRANSLATORS: away message box header
         mAwayDialog = new OkDialog(_("Away"),
             config.getStringValue("afkMessage"),
-            DIALOG_SILENCE, true, false);
+            DialogType::SILENCE, true, false);
         mAwayDialog->addActionListener(mAwayListener);
         soundManager.volumeOff();
         addAfkEffect();

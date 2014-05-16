@@ -306,7 +306,7 @@ void Setup_Theme::action(const ActionEvent &event)
     else if (eventId == ACTION_INFO)
     {
         // TRANSLATORS: theme info dialog header
-        new OkDialog(_("Theme info"), mThemeInfo, DIALOG_OK,
+        new OkDialog(_("Theme info"), mThemeInfo, DialogType::OK,
             false, true, nullptr, 600);
     }
 }

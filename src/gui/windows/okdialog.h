@@ -23,20 +23,15 @@
 #ifndef GUI_WINDOWS_OKDIALOG_H
 #define GUI_WINDOWS_OKDIALOG_H
 
-#include "localconsts.h"
+#include "gui/dialogtype.h"
 
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
 
-class TextBox;
+#include "localconsts.h"
 
-enum
-{
-    DIALOG_OK = 0,
-    DIALOG_ERROR,
-    DIALOG_SILENCE
-};
+class TextBox;
 
 /**
  * An 'Ok' button dialog.
@@ -54,8 +49,10 @@ class OkDialog final : public Window,
          */
         OkDialog(const std::string &restrict title,
                  const std::string &restrict msg,
-                 const int soundEvent = DIALOG_OK, const bool modal = true,
-                 const bool showCenter = true, Window *const parent = nullptr,
+                 const int soundEvent = DialogType::OK,
+                 const bool modal = true,
+                 const bool showCenter = true,
+                 Window *const parent = nullptr,
                  const int minWidth = 260);
 
         A_DELETE_COPY(OkDialog)

@@ -85,7 +85,10 @@ void GameHandler::processCharSwitchResponse(Net::MessageIn &msg) const
 void GameHandler::processMapQuitResponse(Net::MessageIn &msg) const
 {
     if (msg.readInt8())
-        new OkDialog(_("Game"), _("Request to quit denied!"), DIALOG_ERROR);
+    {
+        new OkDialog(_("Game"), _("Request to quit denied!"),
+            DialogType::ERROR);
+    }
 }
 
 void GameHandler::clear()

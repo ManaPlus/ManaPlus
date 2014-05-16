@@ -356,7 +356,7 @@ void CharCreateDialog::action(const ActionEvent &event)
             new OkDialog(_("Error"),
                 // TRANSLATORS: char creation error
                 _("Your name needs to be at least 4 characters."),
-                DIALOG_ERROR, true,  this);
+                DialogType::ERROR, true,  this);
         }
     }
     else if (id == "cancel")
