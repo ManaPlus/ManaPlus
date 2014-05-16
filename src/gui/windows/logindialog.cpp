@@ -29,6 +29,8 @@
 
 #include "input/keydata.h"
 
+#include "listeners/openurllistener.h"
+
 #include "gui/models/updatelistmodel.h"
 #include "gui/models/updatetypemodel.h"
 
@@ -57,24 +59,7 @@ std::string LoginDialog::savedPasswordKey("");
 
 namespace
 {
-    struct OpenUrlListener : public ActionListener
-    {
-        OpenUrlListener() :
-            ActionListener(),
-            url()
-        {
-        }
-
-        A_DELETE_COPY(OpenUrlListener)
-
-        void action(const ActionEvent &event) override final
-        {
-            if (event.getId() == "yes")
-                openBrowser(url);
-        }
-
-        std::string url;
-    } urlListener;
+    OpenUrlListener urlListener;
 }  // namespace
 
 LoginDialog::LoginDialog(LoginData *const data, std::string serverName,

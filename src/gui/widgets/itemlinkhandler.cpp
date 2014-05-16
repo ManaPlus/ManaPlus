@@ -35,7 +35,7 @@
 
 #include "resources/db/itemdb.h"
 
-#include "listeners/actionlistener.h"
+#include "listeners/openurllistener.h"
 
 #include "input/mouseinput.h"
 
@@ -47,24 +47,7 @@
 
 namespace
 {
-    struct OpenUrlListener : public ActionListener
-    {
-        OpenUrlListener() :
-            ActionListener(),
-            url()
-        {
-        }
-
-        A_DELETE_COPY(OpenUrlListener)
-
-        void action(const ActionEvent &event) override final
-        {
-            if (event.getId() == "yes")
-                openBrowser(url);
-        }
-
-        std::string url;
-    } listener;
+    OpenUrlListener listener;
 }  // namespace
 
 ItemLinkHandler::ItemLinkHandler() :
