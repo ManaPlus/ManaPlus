@@ -52,9 +52,9 @@ namespace NotifyManager
     static void chatLog(ChatTab *const tab, const std::string &str)
     {
         if (tab)
-            tab->chatLog(str, BY_SERVER);
+            tab->chatLog(str, ChatMsgType::BY_SERVER);
         else if (debugChatTab)
-            debugChatTab->chatLog(str, BY_SERVER);
+            debugChatTab->chatLog(str, ChatMsgType::BY_SERVER);
     }
 
     void notify(const unsigned int message)
@@ -66,7 +66,7 @@ namespace NotifyManager
         {
             case EMPTY:
                 localChatTab->chatLog(gettext(info.text),
-                    BY_SERVER);
+                    ChatMsgType::BY_SERVER);
                 break;
 
             case GUILD:
@@ -110,7 +110,7 @@ namespace NotifyManager
         if (info.flags == INT)
         {
             localChatTab->chatLog(strprintf(gettext(info.text),
-                num), BY_SERVER);
+                num), ChatMsgType::BY_SERVER);
         }
         soundManager.playSfx(SoundDB::getSound(message));
     }
@@ -125,7 +125,7 @@ namespace NotifyManager
             case STRING:
             {
                 localChatTab->chatLog(strprintf(gettext(info.text),
-                    str.c_str()), BY_SERVER);
+                    str.c_str()), ChatMsgType::BY_SERVER);
                 break;
             }
             case GUILD_STRING:

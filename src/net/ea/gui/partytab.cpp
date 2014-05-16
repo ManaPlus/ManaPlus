@@ -75,7 +75,7 @@ bool PartyTab::handleCommand(const std::string &restrict type,
         if (args.empty())
         {
             // TRANSLATORS: chat error message
-            chatLog(_("Party name is missing."), BY_SERVER);
+            chatLog(_("Party name is missing."), ChatMsgType::BY_SERVER);
         }
         else
         {
@@ -102,19 +102,23 @@ bool PartyTab::handleCommand(const std::string &restrict type,
             {
                 case PARTY_SHARE:
                     // TRANSLATORS: chat message
-                    chatLog(_("Item sharing enabled."), BY_SERVER);
+                    chatLog(_("Item sharing enabled."),
+                        ChatMsgType::BY_SERVER);
                     return true;
                 case PARTY_SHARE_NO:
                     // TRANSLATORS: chat message
-                    chatLog(_("Item sharing disabled."), BY_SERVER);
+                    chatLog(_("Item sharing disabled."),
+                        ChatMsgType::BY_SERVER);
                     return true;
                 case PARTY_SHARE_NOT_POSSIBLE:
                     // TRANSLATORS: chat message
-                    chatLog(_("Item sharing not possible."), BY_SERVER);
+                    chatLog(_("Item sharing not possible."),
+                        ChatMsgType::BY_SERVER);
                     return true;
                 case PARTY_SHARE_UNKNOWN:
                     // TRANSLATORS: chat message
-                    chatLog(_("Item sharing unknown."), BY_SERVER);
+                    chatLog(_("Item sharing unknown."),
+                        ChatMsgType::BY_SERVER);
                     return true;
                 default:
                     break;
@@ -146,19 +150,23 @@ bool PartyTab::handleCommand(const std::string &restrict type,
             {
                 case PARTY_SHARE:
                     // TRANSLATORS: chat message
-                    chatLog(_("Experience sharing enabled."), BY_SERVER);
+                    chatLog(_("Experience sharing enabled."),
+                        ChatMsgType::BY_SERVER);
                     return true;
                 case PARTY_SHARE_NO:
                     // TRANSLATORS: chat message
-                    chatLog(_("Experience sharing disabled."), BY_SERVER);
+                    chatLog(_("Experience sharing disabled."),
+                        ChatMsgType::BY_SERVER);
                     return true;
                 case PARTY_SHARE_NOT_POSSIBLE:
                     // TRANSLATORS: chat message
-                    chatLog(_("Experience sharing not possible."), BY_SERVER);
+                    chatLog(_("Experience sharing not possible."),
+                        ChatMsgType::BY_SERVER);
                     return true;
                 case PARTY_SHARE_UNKNOWN:
                     // TRANSLATORS: chat message
-                    chatLog(_("Experience sharing unknown."), BY_SERVER);
+                    chatLog(_("Experience sharing unknown."),
+                        ChatMsgType::BY_SERVER);
                     return true;
                 default:
                     break;

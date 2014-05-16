@@ -1275,7 +1275,7 @@ void ActorManager::printBeingsToChat(const ActorSprites &beings,
 
         debugChatTab->chatLog(strprintf("%s (%d,%d) %d",
             being->getName().c_str(), being->getTileX(), being->getTileY(),
-            being->getSubType()), BY_SERVER);
+            being->getSubType()), ChatMsgType::BY_SERVER);
     }
     debugChatTab->chatLog("---------------------------------------");
 }
@@ -1298,7 +1298,7 @@ void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,
 
         debugChatTab->chatLog(strprintf("%s (%d,%d) %d",
             being->getName().c_str(), being->getTileX(), being->getTileY(),
-            being->getSubType()), BY_SERVER);
+            being->getSubType()), ChatMsgType::BY_SERVER);
     }
     debugChatTab->chatLog("---------------------------------------");
 }

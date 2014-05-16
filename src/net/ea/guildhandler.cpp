@@ -183,29 +183,31 @@ void GuildHandler::processGuildBasicInfo(Net::MessageIn &msg)
         showBasicInfo = false;
         // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild name: %s"),
-            name.c_str()), BY_SERVER);
+            name.c_str()), ChatMsgType::BY_SERVER);
         // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild master: %s"),
-            master.c_str()), BY_SERVER);
+            master.c_str()), ChatMsgType::BY_SERVER);
         // TRANSLATORS: guild info message
-        guildTab->chatLog(strprintf(_("Guild level: %d"), level), BY_SERVER);
+        guildTab->chatLog(strprintf(_("Guild level: %d"), level),
+            ChatMsgType::BY_SERVER);
         // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Online members: %d"),
-            members), BY_SERVER);
+            members), ChatMsgType::BY_SERVER);
         // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Max members: %d"),
-            maxMembers), BY_SERVER);
+            maxMembers), ChatMsgType::BY_SERVER);
         // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Average level: %d"),
-            avgLevel), BY_SERVER);
+            avgLevel), ChatMsgType::BY_SERVER);
         // TRANSLATORS: guild info message
-        guildTab->chatLog(strprintf(_("Guild exp: %d"), exp), BY_SERVER);
+        guildTab->chatLog(strprintf(_("Guild exp: %d"), exp),
+            ChatMsgType::BY_SERVER);
         // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild next exp: %d"),
-            nextExp), BY_SERVER);
+            nextExp), ChatMsgType::BY_SERVER);
         // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild castle: %s"),
-            castle.c_str()), BY_SERVER);
+            castle.c_str()), ChatMsgType::BY_SERVER);
     }
 
     Guild *const g = Guild::getGuild(static_cast<int16_t>(guildId));
@@ -400,8 +402,8 @@ void GuildHandler::processGuildNotice(Net::MessageIn &msg) const
     const std::string msg2 = msg.readString(120);  // Mes2
     if (guildTab)
     {
-        guildTab->chatLog(msg1, BY_SERVER);
-        guildTab->chatLog(msg2, BY_SERVER);
+        guildTab->chatLog(msg1, ChatMsgType::BY_SERVER);
+        guildTab->chatLog(msg2, ChatMsgType::BY_SERVER);
     }
 }
 

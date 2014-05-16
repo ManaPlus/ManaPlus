@@ -66,7 +66,7 @@ bool GuildTab::handleCommand(const std::string &restrict type,
     else if (type == "create" || type == "new")
     {
         if (args.empty())
-            chatLog(_("Guild name is missing."), BY_SERVER);
+            chatLog(_("Guild name is missing."), ChatMsgType::BY_SERVER);
         else
             Net::getGuildHandler()->create(args);
     }

@@ -636,7 +636,7 @@ void ChatWindow::doPresent() const
         response.c_str(), playercount);
 
     if (getFocused())
-        getFocused()->chatLog(log, BY_SERVER);
+        getFocused()->chatLog(log, ChatMsgType::BY_SERVER);
 }
 
 void ChatWindow::scroll(const int amount) const
@@ -974,7 +974,8 @@ void ChatWindow::setVisible(bool visible)
 }
 
 void ChatWindow::addWhisper(const std::string &restrict nick,
-                            const std::string &restrict mes, const Own own)
+                            const std::string &restrict mes,
+                            const ChatMsgType::Type own)
 {
     if (mes.empty() || !player_node)
         return;
@@ -1004,11 +1005,11 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
 
     if (tab)
     {
-        if (own == BY_PLAYER)
+        if (own == ChatMsgType::BY_PLAYER)
         {
             tab->chatInput(mes);
         }
-        else if (own == BY_SERVER)
+        else if (own == ChatMsgType::BY_SERVER)
         {
             tab->chatLog(mes);
         }
@@ -1033,7 +1034,7 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
                 {
                     if (config.getBoolValue("removeColors"))
                         msg = removeColors(msg);
-                    tab->chatLog(msg, BY_SERVER);
+                    tab->chatLog(msg, ChatMsgType::BY_SERVER);
                 }
             }
             else
@@ -1045,18 +1046,18 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
     }
     else if (localChatTab)
     {
-        if (own == BY_PLAYER)
+        if (own == ChatMsgType::BY_PLAYER)
         {
             Net::getChatHandler()->privateMessage(nick, mes);
 
             // TRANSLATORS: chat message
             localChatTab->chatLog(strprintf(_("Whispering to %s: %s"),
-                nick.c_str(), mes.c_str()), BY_PLAYER);
+                nick.c_str(), mes.c_str()), ChatMsgType::BY_PLAYER);
         }
         else
         {
             localChatTab->chatLog(std::string(nick).append(
-                " : ").append(mes), ACT_WHISPER, false);
+                " : ").append(mes), ChatMsgType::ACT_WHISPER, false);
             if (player_node)
                 player_node->afkRespond(nullptr, nick);
         }
@@ -1353,13 +1354,13 @@ std::string ChatWindow::autoCompleteHistory(const std::string &partName) const
     return autoComplete(nameList, partName);
 }
 
-bool ChatWindow::resortChatLog(std::string line, Own own,
+bool ChatWindow::resortChatLog(std::string line, ChatMsgType::Type own,
                                const std::string &channel,
                                const bool ignoreRecord,
                                const bool tryRemoveColors)
 {
-    if (own == BY_UNKNOWN)
-        own = BY_SERVER;
+    if (own == ChatMsgType::BY_UNKNOWN)
+        own = ChatMsgType::BY_SERVER;
 
     std::string prefix;
     if (!channel.empty())
@@ -1466,12 +1467,12 @@ bool ChatWindow::resortChatLog(std::string line, Own own,
     return true;
 }
 
-void ChatWindow::battleChatLog(const std::string &line, Own own,
+void ChatWindow::battleChatLog(const std::string &line, ChatMsgType::Type own,
                                const bool ignoreRecord,
                                const bool tryRemoveColors)
 {
-    if (own == BY_UNKNOWN)
-        own = BY_SERVER;
+    if (own == ChatMsgType::BY_UNKNOWN)
+        own = ChatMsgType::BY_SERVER;
     if (battleChatTab)
         battleChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
     else if (debugChatTab)
@@ -1837,9 +1838,9 @@ void ChatWindow::logicChildren()
 void ChatWindow::addGlobalMessage(const std::string &line)
 {
     if (debugChatTab && findI(line, mGlobalsFilter) != std::string::npos)
-        debugChatTab->chatLog(line, BY_OTHER);
+        debugChatTab->chatLog(line, ChatMsgType::BY_OTHER);
     else
-        localChatTab->chatLog(line, BY_GM);
+        localChatTab->chatLog(line, ChatMsgType::BY_GM);
 }
 
 bool ChatWindow::isTabPresent(const ChatTab *const tab) const

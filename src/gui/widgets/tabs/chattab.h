@@ -58,7 +58,8 @@ class ChatTab : public Tab
          * @param ignoreRecord should this not be recorded?
          * @param removeColors try remove color if configured
          */
-        void chatLog(std::string line, Own own = BY_SERVER,
+        void chatLog(std::string line,
+                     ChatMsgType::Type own = ChatMsgType::BY_SERVER,
                      const bool ignoreRecord = false,
                      const bool tryRemoveColors = true);
 

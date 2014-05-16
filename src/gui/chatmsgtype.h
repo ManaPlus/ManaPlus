@@ -20,29 +20,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_CHATLOG_H
-#define GUI_CHATLOG_H
+#ifndef GUI_CHATMSGTYPE_H
+#define GUI_CHATMSGTYPE_H
 
-#include "gui/chatmsgtype.h"
-
-#include <string>
-
-#include "localconsts.h"
-
-/** One item in the chat log */
-struct CHATLOG final
+namespace ChatMsgType
 {
-    CHATLOG() :
-        nick(),
-        text(),
-        own(ChatMsgType::BY_UNKNOWN)
+    enum Type
     {
-    }
+        BY_GM = 0,
+        BY_PLAYER,
+        BY_OTHER,
+        BY_SERVER,
+        BY_CHANNEL,
+        ACT_WHISPER,      // getting whispered at
+        ACT_IS,           // equivalent to "/me" on IRC
+        BY_LOGGER,
+        BY_UNKNOWN = -1
+    };
+}
 
-    A_DELETE_COPY(CHATLOG)
-
-    std::string nick;
-    std::string text;
-    ChatMsgType::Type own;
-};
-#endif  // GUI_CHATLOG_H
+#endif  // GUI_CHATMSGTYPE_H

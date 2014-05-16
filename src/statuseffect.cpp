@@ -65,7 +65,7 @@ void StatusEffect::playSFX() const
 void StatusEffect::deliverMessage() const
 {
     if (!mMessage.empty() && localChatTab)
-        localChatTab->chatLog(mMessage, BY_SERVER);
+        localChatTab->chatLog(mMessage, ChatMsgType::BY_SERVER);
 }
 
 Particle *StatusEffect::getParticle() const

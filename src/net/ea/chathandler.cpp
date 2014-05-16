@@ -107,7 +107,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
                 chatWindow->addWhisper(nick,
                     // TRANSLATORS: chat message
                     strprintf(_("Whisper could not be "
-                    "sent, %s is offline."), nick.c_str()), BY_SERVER);
+                    "sent, %s is offline."), nick.c_str()), ChatMsgType::BY_SERVER);
             }
             break;
         case 0x02:
@@ -117,7 +117,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
                     // TRANSLATORS: chat message
                     strprintf(_("Whisper could not "
                     "be sent, ignored by %s."), nick.c_str()),
-                    BY_SERVER);
+                    ChatMsgType::BY_SERVER);
             }
             break;
         default:
@@ -256,7 +256,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg) const
         }
         else
         {
-            localChatTab->chatLog(chatMsg, BY_SERVER);
+            localChatTab->chatLog(chatMsg, ChatMsgType::BY_SERVER);
         }
     }
     BLOCK_END("ChatHandler::processWhisper")
@@ -329,7 +329,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg,
         PlayerRelation::SPEECH_LOG) && chatWindow)
     {
         allow = chatWindow->resortChatLog(removeColors(sender_name)
-            .append(" : ").append(chatMsg), BY_OTHER, channel, false, true);
+            .append(" : ").append(chatMsg), ChatMsgType::BY_OTHER, channel, false, true);
     }
 
     if (allow && player_relations.hasPermission(sender_name,
@@ -367,7 +367,7 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
         bool allow(true);
         if (chatWindow)
         {
-            allow = chatWindow->resortChatLog(chatMsg, BY_PLAYER,
+            allow = chatWindow->resortChatLog(chatMsg, ChatMsgType::BY_PLAYER,
                 channel, false, true);
         }
 

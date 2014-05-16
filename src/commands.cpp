@@ -153,7 +153,7 @@ static void changeRelation(const std::string &args,
     if (args.empty())
     {
         // TRANSLATORS: change relation
-        tab->chatLog(_("Please specify a name."), BY_SERVER);
+        tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
         return;
     }
 
@@ -161,7 +161,7 @@ static void changeRelation(const std::string &args,
     {
         // TRANSLATORS: change relation
         tab->chatLog(strprintf(_("Player already %s!"),
-                     relationText.c_str()), BY_SERVER);
+                     relationText.c_str()), ChatMsgType::BY_SERVER);
         return;
     }
     else
@@ -173,13 +173,13 @@ static void changeRelation(const std::string &args,
     {
         // TRANSLATORS: change relation
         tab->chatLog(strprintf(_("Player successfully %s!"),
-                     relationText.c_str()), BY_SERVER);
+                     relationText.c_str()), ChatMsgType::BY_SERVER);
     }
     else
     {
         // TRANSLATORS: change relation
         tab->chatLog(strprintf(_("Player could not be %s!"),
-                     relationText.c_str()), BY_SERVER);
+                     relationText.c_str()), ChatMsgType::BY_SERVER);
     }
 }
 
@@ -293,7 +293,7 @@ impHandler2(where)
     where << Game::instance()->getCurrentMapName() << ", coordinates: "
         << ((player_node->getPixelX() - mapTileSize / 2) / mapTileSize)
         << ", " << ((player_node->getPixelY() - mapTileSize) / mapTileSize);
-    tab->chatLog(where.str(), BY_SERVER);
+    tab->chatLog(where.str(), ChatMsgType::BY_SERVER);
 }
 
 impHandler0(who)
@@ -345,12 +345,12 @@ impHandler(msg)
         if (tempNick.compare(playerName) == 0 || args.empty())
             return;
 
-        chatWindow->addWhisper(recvnick, msg, BY_PLAYER);
+        chatWindow->addWhisper(recvnick, msg, ChatMsgType::BY_PLAYER);
     }
     else
     {
         // TRANSLATORS: whisper send
-        tab->chatLog(_("Cannot send empty whispers!"), BY_SERVER);
+        tab->chatLog(_("Cannot send empty whispers!"), ChatMsgType::BY_SERVER);
     }
 }
 
@@ -370,7 +370,7 @@ impHandler(query)
         // TRANSLATORS: new whisper query
         tab->chatLog(strprintf(_("Cannot create a whisper tab for nick "
             "\"%s\"! It either already exists, or is you."),
-            args.c_str()), BY_SERVER);
+            args.c_str()), ChatMsgType::BY_SERVER);
     }
 }
 
@@ -410,7 +410,7 @@ impHandler(createParty)
     if (args.empty())
     {
         // TRANSLATORS: create party message
-        tab->chatLog(_("Party name is missing."), BY_SERVER);
+        tab->chatLog(_("Party name is missing."), ChatMsgType::BY_SERVER);
     }
     else
     {
@@ -426,7 +426,7 @@ impHandler(createGuild)
     if (args.empty())
     {
         // TRANSLATORS: create guild message
-        tab->chatLog(_("Guild name is missing."), BY_SERVER);
+        tab->chatLog(_("Guild name is missing."), ChatMsgType::BY_SERVER);
     }
     else
     {
@@ -446,7 +446,7 @@ impHandler(party)
     else
     {
         // TRANSLATORS: party invite message
-        tab->chatLog(_("Please specify a name."), BY_SERVER);
+        tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
     }
 }
 
@@ -533,7 +533,7 @@ impHandler(unignore)
         if (tab)
         {
             // TRANSLATORS: unignore command
-            tab->chatLog(_("Please specify a name."), BY_SERVER);
+            tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
         }
         return;
     }
@@ -548,7 +548,7 @@ impHandler(unignore)
         if (tab)
         {
             // TRANSLATORS: unignore command
-            tab->chatLog(_("Player wasn't ignored!"), BY_SERVER);
+            tab->chatLog(_("Player wasn't ignored!"), ChatMsgType::BY_SERVER);
         }
         return;
     }
@@ -558,12 +558,13 @@ impHandler(unignore)
         if (player_relations.getRelation(args) == PlayerRelation::NEUTRAL)
         {
             // TRANSLATORS: unignore command
-            tab->chatLog(_("Player no longer ignored!"), BY_SERVER);
+            tab->chatLog(_("Player no longer ignored!"), ChatMsgType::BY_SERVER);
         }
         else
         {
             // TRANSLATORS: unignore command
-            tab->chatLog(_("Player could not be unignored!"), BY_SERVER);
+            tab->chatLog(_("Player could not be unignored!"),
+                ChatMsgType::BY_SERVER);
         }
     }
 }
@@ -587,7 +588,7 @@ impHandler(erase)
         if (tab)
         {
             // TRANSLATORS: erase command
-            tab->chatLog(_("Please specify a name."), BY_SERVER);
+            tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
         }
         return;
     }
@@ -597,7 +598,7 @@ impHandler(erase)
         if (tab)
         {
             // TRANSLATORS: erase command
-            tab->chatLog(_("Player already erased!"), BY_SERVER);
+            tab->chatLog(_("Player already erased!"), ChatMsgType::BY_SERVER);
         }
         return;
     }
@@ -611,12 +612,14 @@ impHandler(erase)
         if (player_relations.getRelation(args) == PlayerRelation::ERASED)
         {
             // TRANSLATORS: erase command
-            tab->chatLog(_("Player successfully erased!"), BY_SERVER);
+            tab->chatLog(_("Player successfully erased!"),
+                ChatMsgType::BY_SERVER);
         }
         else
         {
             // TRANSLATORS: erase command
-            tab->chatLog(_("Player could not be erased!"), BY_SERVER);
+            tab->chatLog(_("Player could not be erased!"),
+                ChatMsgType::BY_SERVER);
         }
     }
 }

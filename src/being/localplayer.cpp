@@ -853,7 +853,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
                 break;
         }
         if (localChatTab && config.getBoolValue("showpickupchat"))
-            localChatTab->chatLog(gettext(msg), BY_SERVER);
+            localChatTab->chatLog(gettext(msg), ChatMsgType::BY_SERVER);
 
         if (mMap && config.getBoolValue("showpickupparticle"))
         {
@@ -875,7 +875,8 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
             // [@@%d|%s@@] - here player can see link to item
             localChatTab->chatLog(strprintf(ngettext("You picked up %d "
                 "[@@%d|%s@@].", "You picked up %d [@@%d|%s@@].", amount),
-                amount, itemInfo.getId(), str.c_str()), BY_SERVER);
+                amount, itemInfo.getId(), str.c_str()),
+                ChatMsgType::BY_SERVER);
         }
 
         if (mMap && config.getBoolValue("showpickupparticle"))
@@ -3023,7 +3024,7 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
                 if (localChatTab)
                 {
                     localChatTab->chatLog(std::string(getName()).append(
-                        " : ").append(msg), ACT_WHISPER, false);
+                        " : ").append(msg), ChatMsgType::ACT_WHISPER, false);
                 }
             }
             else

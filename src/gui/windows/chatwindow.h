@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_CHATWINDOW_H
 #define GUI_WINDOWS_CHATWINDOW_H
 
+#include "gui/chatmsgtype.h"
+
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
@@ -45,19 +47,6 @@ class ItemLinkHandler;
 class WhisperTab;
 
 const int DEFAULT_CHAT_WINDOW_SCROLL = 7;
-
-enum Own
-{
-    BY_GM = 0,
-    BY_PLAYER,
-    BY_OTHER,
-    BY_SERVER,
-    BY_CHANNEL,
-    ACT_WHISPER,      // getting whispered at
-    ACT_IS,           // equivalent to "/me" on IRC
-    BY_LOGGER,
-    BY_UNKNOWN = -1
-};
 
 /**
  * The chat window.
@@ -202,7 +191,7 @@ class ChatWindow final : public Window,
 
         void addWhisper(const std::string &restrict nick,
                         const std::string &restrict mes,
-                        const Own own = BY_OTHER);
+                        const ChatMsgType::Type own = ChatMsgType::BY_OTHER);
 
         WhisperTab *addWhisperTab(const std::string &nick,
                                   const bool switchTo = false) A_WARN_UNUSED;
@@ -213,13 +202,14 @@ class ChatWindow final : public Window,
 
         void ignoreAllWhispers();
 
-        bool resortChatLog(std::string line, Own own,
+        bool resortChatLog(std::string line, ChatMsgType::Type own,
                            const std::string &channel,
                            const bool ignoreRecord,
                            const bool tryRemoveColors);
 
         static void battleChatLog(const std::string &line,
-                                  Own own = BY_UNKNOWN,
+                                  ChatMsgType::Type own
+                                  = ChatMsgType::BY_UNKNOWN,
                                   const bool ignoreRecord = false,
                                   const bool tryRemoveColors = true);
 

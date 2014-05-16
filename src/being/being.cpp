@@ -562,14 +562,15 @@ void Being::takeDamage(Being *const attacker, const int amount,
             if (attacker->mType == ActorType::PLAYER || amount)
             {
                 chatWindow->battleChatLog(strprintf("%s : Hit you  -%d",
-                    attacker->getName().c_str(), amount), BY_OTHER);
+                    attacker->getName().c_str(), amount),
+                    ChatMsgType::BY_OTHER);
             }
         }
         else if (attacker == player_node && amount)
         {
             chatWindow->battleChatLog(strprintf("%s : You hit %s -%d",
                 attacker->getName().c_str(), getName().c_str(), amount),
-                BY_PLAYER);
+                ChatMsgType::BY_PLAYER);
         }
     }
     if (font && particleEngine)

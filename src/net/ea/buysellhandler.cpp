@@ -68,7 +68,7 @@ void BuySellHandler::requestSellList(const std::string &nick) const
     else
     {
         if (chatWindow)
-            chatWindow->addWhisper(nick, data, BY_PLAYER);
+            chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
     }
 }
 
@@ -87,7 +87,7 @@ void BuySellHandler::requestBuyList(const std::string &nick) const
     else
     {
         if (chatWindow)
-            chatWindow->addWhisper(nick, data, BY_PLAYER);
+            chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
     }
 }
 
@@ -106,7 +106,7 @@ void BuySellHandler::sendBuyRequest(const std::string &nick,
     if (config.getBoolValue("hideShopMessages"))
         Net::getChatHandler()->privateMessage(nick, data);
     else
-        chatWindow->addWhisper(nick, data, BY_PLAYER);
+        chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
 }
 
 void BuySellHandler::sendSellRequest(const std::string &nick,
@@ -125,7 +125,7 @@ void BuySellHandler::sendSellRequest(const std::string &nick,
     if (config.getBoolValue("hideShopMessages"))
         Net::getChatHandler()->privateMessage(nick, data);
     else
-        chatWindow->addWhisper(nick, data, BY_PLAYER);
+        chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
 }
 
 void BuySellHandler::processNpcBuySellChoice(Net::MessageIn &msg)

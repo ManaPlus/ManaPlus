@@ -227,7 +227,7 @@ public:
                 localChatTab->chatLog(strprintf(
                     // TRANSLATORS: chat message
                     _("Invited user %s to guild %s."),
-                    name.c_str(), mGuild->getName().c_str()), BY_SERVER);
+                    name.c_str(), mGuild->getName().c_str()), ChatMsgType::BY_SERVER);
             }
             mInviteDialog = nullptr;
         }
@@ -242,7 +242,7 @@ public:
             {
                 // TRANSLATORS: chat message
                 localChatTab->chatLog(strprintf(_("Guild %s quit requested."),
-                    mGuild->getName().c_str()), BY_SERVER);
+                    mGuild->getName().c_str()), ChatMsgType::BY_SERVER);
             }
             mConfirmDialog = nullptr;
         }
@@ -433,7 +433,7 @@ public:
             {
                 // TRANSLATORS: chat message
                 localChatTab->chatLog(strprintf(_("Invited user %s to party."),
-                    name.c_str()), BY_SERVER);
+                    name.c_str()), ChatMsgType::BY_SERVER);
             }
             mInviteDialog = nullptr;
         }
@@ -448,7 +448,7 @@ public:
             {
                 // TRANSLATORS: tab in social window
                 localChatTab->chatLog(strprintf(_("Party %s quit requested."),
-                    mParty->getName().c_str()), BY_SERVER);
+                    mParty->getName().c_str()), ChatMsgType::BY_SERVER);
             }
             mConfirmDialog = nullptr;
         }
@@ -1540,7 +1540,7 @@ void SocialWindow::action(const ActionEvent &event)
         {
             // TRANSLATORS: chat message
             localChatTab->chatLog(strprintf(_("Creating guild called %s."),
-                name.c_str()), BY_SERVER);
+                name.c_str()), ChatMsgType::BY_SERVER);
         }
 
         mGuildCreateDialog = nullptr;
@@ -1561,7 +1561,7 @@ void SocialWindow::action(const ActionEvent &event)
         {
             // TRANSLATORS: chat message
             localChatTab->chatLog(strprintf(_("Creating party called %s."),
-                name.c_str()), BY_SERVER);
+                name.c_str()), ChatMsgType::BY_SERVER);
         }
 
         mPartyCreateDialog = nullptr;
@@ -1594,7 +1594,7 @@ void SocialWindow::showGuildInvite(const std::string &restrict guildName,
         {
             // TRANSLATORS: chat message
             localChatTab->chatLog(_("Received guild request, but one already "
-                "exists."), BY_SERVER);
+                "exists."), ChatMsgType::BY_SERVER);
         }
         return;
     }
@@ -1605,7 +1605,7 @@ void SocialWindow::showGuildInvite(const std::string &restrict guildName,
         inviterName.c_str(), guildName.c_str());
 
     if (localChatTab)
-        localChatTab->chatLog(msg, BY_SERVER);
+        localChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
 
     // TRANSLATORS: guild invite message
     mGuildAcceptDialog = new ConfirmDialog(_("Accept Guild Invite"),
@@ -1625,7 +1625,7 @@ void SocialWindow::showPartyInvite(const std::string &restrict partyName,
         {
             // TRANSLATORS: chat message
             localChatTab->chatLog(_("Received party request, but one already "
-                "exists."), BY_SERVER);
+                "exists."), ChatMsgType::BY_SERVER);
         }
         return;
     }
@@ -1662,7 +1662,7 @@ void SocialWindow::showPartyInvite(const std::string &restrict partyName,
     }
 
     if (localChatTab)
-        localChatTab->chatLog(msg, BY_SERVER);
+        localChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
 
     // show invite
     // TRANSLATORS: party invite message

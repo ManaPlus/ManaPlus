@@ -94,7 +94,7 @@ ChatTab::~ChatTab()
     delete2(mScrollArea);
 }
 
-void ChatTab::chatLog(std::string line, Own own,
+void ChatTab::chatLog(std::string line, ChatMsgType::Type own,
                       const bool ignoreRecord, const bool tryRemoveColors)
 {
     // Trim whitespace
@@ -103,7 +103,7 @@ void ChatTab::chatLog(std::string line, Own own,
     if (line.empty())
         return;
 
-    if (tryRemoveColors && own == BY_OTHER &&
+    if (tryRemoveColors && own == ChatMsgType::BY_OTHER &&
         config.getBoolValue("removeColors"))
     {
         line = removeColors(line);
@@ -136,23 +136,23 @@ void ChatTab::chatLog(std::string line, Own own,
     {
         // Fix the owner of welcome message.
         if (line.length() > 7 && line.substr(0, 7) == "Welcome")
-            own = BY_SERVER;
+            own = ChatMsgType::BY_SERVER;
     }
 
     // *implements actions in a backwards compatible way*
-    if ((own == BY_PLAYER || own == BY_OTHER) &&
+    if ((own == ChatMsgType::BY_PLAYER || own == ChatMsgType::BY_OTHER) &&
         tmp.text.at(0) == '*' &&
         tmp.text.at(tmp.text.length()-1) == '*')
     {
         tmp.text[0] = ' ';
         tmp.text.erase(tmp.text.length() - 1);
-        own = ACT_IS;
+        own = ChatMsgType::ACT_IS;
     }
 
     std::string lineColor("##C");
     switch (own)
     {
-        case BY_GM:
+        case ChatMsgType::BY_GM:
             if (tmp.nick.empty())
             {
                 // TRANSLATORS: chat message
@@ -167,34 +167,34 @@ void ChatTab::chatLog(std::string line, Own own,
                 lineColor = "##g";  // Equiv. to BrowserBox::RED
             }
             break;
-        case BY_PLAYER:
+        case ChatMsgType::BY_PLAYER:
             tmp.nick.append(": ");
             lineColor = "##Y";
             break;
-        case BY_OTHER:
-        case BY_UNKNOWN:
+        case ChatMsgType::BY_OTHER:
+        case ChatMsgType::BY_UNKNOWN:
             tmp.nick.append(": ");
             lineColor = "##C";
             break;
-        case BY_SERVER:
+        case ChatMsgType::BY_SERVER:
             // TRANSLATORS: chat message
             tmp.nick.clear();
             tmp.text = line;
             lineColor = "##S";
             break;
-        case BY_CHANNEL:
+        case ChatMsgType::BY_CHANNEL:
             tmp.nick.clear();
             lineColor = "##2";  // Equiv. to BrowserBox::GREEN
             break;
-        case ACT_WHISPER:
+        case ChatMsgType::ACT_WHISPER:
             // TRANSLATORS: chat message
             tmp.nick = strprintf(_("%s whispers: %s"), tmp.nick.c_str(), "");
             lineColor = "##W";
             break;
-        case ACT_IS:
+        case ChatMsgType::ACT_IS:
             lineColor = "##I";
             break;
-        case BY_LOGGER:
+        case ChatMsgType::BY_LOGGER:
             tmp.nick.clear();
             tmp.text = line;
             lineColor = "##L";
@@ -211,10 +211,10 @@ void ChatTab::chatLog(std::string line, Own own,
 
     // if configured, move magic messages log to debug chat tab
     if (localChatTab && this == localChatTab
-        && ((config.getBoolValue("showMagicInDebug") && own == BY_PLAYER
+        && ((config.getBoolValue("showMagicInDebug") && own == ChatMsgType::BY_PLAYER
         && tmp.text.length() > 1 && tmp.text.at(0) == '#'
         && tmp.text.at(1) != '#')
-        || (config.getBoolValue("serverMsgInDebug") && (own == BY_SERVER
+        || (config.getBoolValue("serverMsgInDebug") && (own == ChatMsgType::BY_SERVER
         || tmp.nick.empty()))))
     {
         if (debugChatTab)
@@ -278,9 +278,9 @@ void ChatTab::chatLog(std::string line, Own own,
         chatWindow->addToAwayLog(line);
 
     mScrollArea->logic();
-    if (own != BY_PLAYER)
+    if (own != ChatMsgType::BY_PLAYER)
     {
-        if (own == BY_SERVER && (getType() == ChatTabType::PARTY
+        if (own == ChatMsgType::BY_SERVER && (getType() == ChatTabType::PARTY
             || getType() == ChatTabType::GUILD))
         {
             return;
@@ -311,18 +311,18 @@ void ChatTab::chatLog(std::string line, Own own,
             }
         }
 
-        if ((getAllowHighlight() || own == BY_GM)
+        if ((getAllowHighlight() || own == ChatMsgType::BY_GM)
             && (this != tabArea->getSelectedTab()
             || (client->getIsMinimized() || (!client->getMouseFocused()
             && !client->getInputFocused()))))
         {
-            if (own == BY_GM)
+            if (own == ChatMsgType::BY_GM)
             {
                 if (chatWindow)
                     chatWindow->unHideWindow();
                 soundManager.playGuiSound(SOUND_GLOBAL);
             }
-            else if (own != BY_SERVER)
+            else if (own != ChatMsgType::BY_SERVER)
             {
                 if (chatWindow)
                     chatWindow->unHideWindow();
@@ -338,8 +338,9 @@ void ChatTab::chatLog(const std::string &nick, std::string msg)
     if (!player_node)
         return;
 
-    const Own byWho = (nick == player_node->getName() ? BY_PLAYER : BY_OTHER);
-    if (byWho == BY_OTHER && config.getBoolValue("removeColors"))
+    const ChatMsgType::Type byWho = (nick == player_node->getName()
+        ? ChatMsgType::BY_PLAYER : ChatMsgType::BY_OTHER);
+    if (byWho == ChatMsgType::BY_OTHER && config.getBoolValue("removeColors"))
         msg = removeColors(msg);
     chatLog(std::string(nick).append(" : ").append(msg), byWho, false, false);
 }

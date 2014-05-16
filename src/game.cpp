@@ -579,7 +579,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
             // TRANSLATORS: save file message
             std::string str = strprintf(_("Screenshot saved as %s"),
                 fileNameStr.c_str());
-            localChatTab->chatLog(str, BY_SERVER);
+            localChatTab->chatLog(str, ChatMsgType::BY_SERVER);
         }
     }
     else
@@ -588,7 +588,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
         {
             // TRANSLATORS: save file message
             localChatTab->chatLog(_("Saving screenshot failed!"),
-                                  BY_SERVER);
+                                  ChatMsgType::BY_SERVER);
         }
         logger->log1("Error: could not save screenshot.");
     }
@@ -759,7 +759,7 @@ void Game::adjustPerfomance()
                         if (localChatTab)
                         {
                             localChatTab->chatLog("Auto disable Show "
-                                "beings transparency", BY_SERVER);
+                                "beings transparency", ChatMsgType::BY_SERVER);
                         }
                     }
                     else
@@ -776,7 +776,7 @@ void Game::adjustPerfomance()
                         if (localChatTab)
                         {
                             localChatTab->chatLog("Auto lower Particle "
-                                "effects", BY_SERVER);
+                                "effects", ChatMsgType::BY_SERVER);
                         }
                     }
                     else
@@ -793,7 +793,7 @@ void Game::adjustPerfomance()
                         if (localChatTab)
                         {
                             localChatTab->chatLog("Auto enable opacity cache",
-                                BY_SERVER);
+                                ChatMsgType::BY_SERVER);
                         }
                     }
                     break;
