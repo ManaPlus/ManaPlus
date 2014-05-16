@@ -47,6 +47,7 @@
 #include "utils/translation/podict.h"
 
 #include "resources/beingcommon.h"
+#include "resources/questeffect.h"
 #include "resources/questitem.h"
 
 #include "resources/map/map.h"
@@ -58,24 +59,6 @@ enum QuestType
     QUEST_TEXT = 0,
     QUEST_NAME = 1,
     QUEST_REWARD = 2
-};
-
-struct QuestEffect final
-{
-    QuestEffect() :
-        map(),
-        var(0),
-        id(0),
-        effectId(0),
-        values()
-    {
-    }
-
-    std::string map;
-    int var;
-    int id;
-    int effectId;
-    std::set<int> values;
 };
 
 QuestsWindow::QuestsWindow() :

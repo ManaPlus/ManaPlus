@@ -631,6 +631,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/db/npcdb.h \
 	      resources/openglimagehelper.cpp \
 	      resources/openglimagehelper.h \
+	      resources/questeffect.h \
 	      resources/questitem.h \
 	      resources/questitemtext.h \
 	      resources/db/palettedb.cpp \
