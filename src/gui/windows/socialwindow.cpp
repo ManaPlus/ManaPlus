@@ -56,6 +56,7 @@
 
 #include "gui/widgets/tabs/chattab.h"
 #include "gui/widgets/tabs/socialguildtab.h"
+#include "gui/widgets/tabs/socialguildtab2.h"
 
 #include "net/net.h"
 #include "net/guildhandler.h"
@@ -94,74 +95,6 @@ namespace
             }
     } friendSorter;
 }  // namespace
-
-class SocialGuildTab2 final : public SocialTab, public ActionListener
-{
-public:
-    SocialGuildTab2(const Widget2 *const widget,
-                    Guild *const guild,
-                    const bool showBackground) :
-        SocialTab(widget),
-        ActionListener()
-    {
-        // TRANSLATORS: tab in social window
-        setCaption(_("Guild"));
-
-        setTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB),
-            &getThemeColor(Theme::GUILD_SOCIAL_TAB_OUTLINE));
-        setHighlightedTabColor(&getThemeColor(
-            Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED), &getThemeColor(
-            Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE));
-        setSelectedTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED),
-            &getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
-
-        mList = new AvatarListBox(this, guild);
-        mList->postInit();
-        mScroll = new ScrollArea(this, mList, showBackground,
-            "social_background.xml");
-
-        mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
-        mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
-    }
-
-    A_DELETE_COPY(SocialGuildTab2)
-
-    ~SocialGuildTab2()
-    {
-        delete2(mList)
-        delete2(mScroll)
-    }
-
-    void action(const ActionEvent &event A_UNUSED) override final
-    {
-    }
-
-    void buildCounter(const int online0 A_UNUSED, const int total0 A_UNUSED)
-    {
-        if (!player_node)
-            return;
-
-        const Guild *const guild = player_node->getGuild();
-        if (!guild)
-            return;
-
-        const Guild::MemberList *const members = guild->getMembers();
-        int online = 0;
-        int total = 0;
-        FOR_EACHP (Guild::MemberList::const_iterator, it, members)
-        {
-            if ((*it)->getOnline())
-                online ++;
-            total ++;
-        }
-
-        // TRANSLATORS: social window label
-        mCounterString = strprintf(_("Players: %u/%u"),
-            static_cast<uint32_t>(online),
-            static_cast<uint32_t>(total));
-        updateCounter();
-    }
-};
 
 class SocialPartyTab final : public SocialTab, public ActionListener
 {
