@@ -27,6 +27,7 @@
 
 #include "listeners/widgetlistener.h"
 
+class BasicContainer2;
 class ContainerPlacer;
 
 /**

@@ -24,7 +24,6 @@
 
 #include "gui/theme.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "graphicsmanager.h"
 
@@ -35,12 +34,9 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
-#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/files.h"
 #include "utils/physfstools.h"
-
-#include <algorithm>
 
 #include "debug.h"
 

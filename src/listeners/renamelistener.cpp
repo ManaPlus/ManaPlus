@@ -20,16 +20,10 @@
 
 #include "listeners/renamelistener.h"
 
-#include "actormanager.h"
-
-#include "being/being.h"
-
 #include "gui/viewport.h"
 
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/textdialog.h"
-
-#include "gui/popups/popupmenu.h"
 
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"

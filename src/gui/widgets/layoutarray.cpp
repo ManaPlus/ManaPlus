@@ -24,11 +24,9 @@
 
 #include "logger.h"
 
-#include "gui/widgets/basiccontainer2.h"
-#include "gui/widgets/layout.h"
+#include "gui/widgets/layoutcell.h"
 #include "gui/widgets/layouttype.h"
-
-#include "utils/delete2.h"
+#include "gui/widgets/widget.h"
 
 #include <cassert>
 

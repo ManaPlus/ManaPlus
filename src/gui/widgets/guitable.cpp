@@ -30,7 +30,6 @@
 
 #include "input/keydata.h"
 
-#include "listeners/actionlistener.h"
 #include "listeners/guitableactionlistener.h"
 
 #include "render/graphics.h"

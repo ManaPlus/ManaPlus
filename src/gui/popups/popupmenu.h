@@ -26,7 +26,6 @@
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
 
-#include "listeners/actionlistener.h"
 #include "listeners/playerlistener.h"
 #include "listeners/renamelistener.h"
 

@@ -25,11 +25,7 @@
 
 #include "localconsts.h"
 
-#include <vector>
-
-class BasicContainer2;
 class LayoutArray;
-class LayoutCell;
 class Widget;
 
 /**
@@ -93,7 +89,7 @@ class LayoutCell
         /**
          * @see LayoutArray::place
          */
-        LayoutCell &place(Widget *wg,
+        LayoutCell &place(Widget *const wg,
                           const int x, const int y,
                           const int w = 1, const int h = 1);
 

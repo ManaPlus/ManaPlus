@@ -25,14 +25,11 @@
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/label.h"
 
-#include "gui/widgets/tabs/setup_relations.h"
-
 #include "gui/models/playerrelationlistmodel.h"
 #include "gui/models/tablemodel.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
-#include "utils/gettext.h"
 
 #include "debug.h"
 
@@ -145,7 +142,10 @@ void PlayerTableModel::freeWidgets()
 
 std::string PlayerTableModel::getPlayerAt(const int index) const
 {
-    if (index < 0 || index >= static_cast<signed>(mPlayers->size()))
-        return "";
+    if (!mPlayers || index < 0
+        || index >= static_cast<signed>(mPlayers->size()))
+    {
+        return std::string();
+    }
     return (*mPlayers)[index];
 }

@@ -25,6 +25,7 @@
 #include "gui/chatconsts.h"
 
 #include "gui/windows/buydialog.h"
+#include "gui/windows/chatwindow.h"
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/itemamountwindow.h"
 #include "gui/windows/selldialog.h"
@@ -40,8 +41,6 @@
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shoplistbox.h"
-
-#include "gui/widgets/tabs/chattab.h"
 
 #include "actormanager.h"
 #include "auctionmanager.h"

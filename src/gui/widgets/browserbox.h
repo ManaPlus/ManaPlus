@@ -34,7 +34,6 @@
 
 #include "localconsts.h"
 
-class Image;
 class LinkHandler;
 
 struct BrowserLink final

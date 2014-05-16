@@ -49,4 +49,4 @@ class GuiTableActionListener final : public ActionListener
         Widget *mWidget;
 };
 
-#endif  // GUITABLEACTIONLISTENER_H
+#endif  // LISTENERS_GUITABLEACTIONLISTENER_H

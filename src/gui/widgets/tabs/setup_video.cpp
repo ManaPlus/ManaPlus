@@ -44,14 +44,11 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
-#include "utils/sdlhelper.h"
 
 #include "test/testmain.h"
 
 #include "gui/models/modelistmodel.h"
 #include "gui/models/opengllistmodel.h"
-
-#include <algorithm>
 
 #include "debug.h"
 

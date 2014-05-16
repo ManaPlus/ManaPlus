@@ -36,7 +36,7 @@
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/layout.h"
+#include "gui/widgets/layoutcell.h"
 #include "gui/widgets/radiobutton.h"
 
 #include "utils/delete2.h"

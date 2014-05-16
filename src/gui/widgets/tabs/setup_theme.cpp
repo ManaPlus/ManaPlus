@@ -27,7 +27,6 @@
 
 #include "gui/windows/okdialog.h"
 
-#include "gui/models/extendedlistmodel.h"
 #include "gui/models/fontsizechoicelistmodel.h"
 #include "gui/models/fontsmodel.h"
 #include "gui/models/langlistmodel.h"
@@ -43,8 +42,6 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
-
-#include "resources/resourcemanager.h"
 
 #include "debug.h"
 

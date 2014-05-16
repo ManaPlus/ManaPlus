@@ -43,7 +43,7 @@
 #include "gui/widgets/characterviewnormal.h"
 #include "gui/widgets/characterviewsmall.h"
 #include "gui/widgets/containerplacer.h"
-#include "gui/widgets/layout.h"
+#include "gui/widgets/layoutcell.h"
 
 #include "net/logindata.h"
 #include "net/loginhandler.h"

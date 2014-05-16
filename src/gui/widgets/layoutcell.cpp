@@ -22,7 +22,6 @@
 
 #include "gui/widgets/layoutcell.h"
 
-#include "gui/widgets/layout.h"
 #include "gui/widgets/layoutarray.h"
 #include "gui/widgets/widget.h"
 
@@ -103,7 +102,7 @@ LayoutCell &LayoutCell::at(const int x, const int y)
     return getArray().at(x, y);
 }
 
-LayoutCell &LayoutCell::place(Widget *wg,
+LayoutCell &LayoutCell::place(Widget *const wg,
                               const int x, const int y,
                               const int w, const int h)
 {

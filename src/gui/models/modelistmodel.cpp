@@ -98,4 +98,3 @@ int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
     }
     return -1;
 }
-

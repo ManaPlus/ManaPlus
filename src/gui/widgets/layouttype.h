@@ -37,6 +37,6 @@ namespace LayoutType
         SET = -43, /**< Uses the share as the new size. */
         ADD = -44  /**< Adds the share to the current size. */
     };
-}
+}  // namespace LayoutType
 
 #endif  // GUI_WIDGETS_LAYOUTTYPE_H

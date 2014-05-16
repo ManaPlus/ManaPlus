@@ -23,13 +23,11 @@
 #ifndef GUI_WIDGETS_LAYOUTARRAY_H
 #define GUI_WIDGETS_LAYOUTARRAY_H
 
-#include "gui/widgets/layoutcell.h"
-
 #include <vector>
 
 #include "localconsts.h"
 
-class BasicContainer2;
+class LayoutCell;
 class Widget;
 
 /**

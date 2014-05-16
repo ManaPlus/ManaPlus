@@ -19,7 +19,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/models/listmodel.h"
+#ifndef GUI_MODELS_LANGLISTMODEL_H
+#define GUI_MODELS_LANGLISTMODEL_H
+
+#include "gui/models/extendedlistmodel.h"
 
 #include "resources/resourcemanager.h"
 
@@ -119,3 +122,5 @@ public:
 
     Image *mIcons[langs_count];
 };
+
+#endif  // GUI_MODELS_LANGLISTMODEL_H

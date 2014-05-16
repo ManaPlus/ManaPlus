@@ -25,12 +25,7 @@
 
 #include "gui/widgets/layoutcell.h"
 
-#include <vector>
-
 #include "localconsts.h"
-
-class BasicContainer2;
-class Widget;
 
 /**
  * This class is an helper for setting the position of widgets. They are

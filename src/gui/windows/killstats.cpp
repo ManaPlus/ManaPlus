@@ -24,7 +24,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/layout.h"
+#include "gui/widgets/layoutcell.h"
 
 #include "actormanager.h"
 #include "client.h"

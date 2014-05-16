@@ -27,7 +27,6 @@
 #include "being/localplayer.h"
 
 #include "gui/models/ignorechoiceslistmodel.h"
-#include "gui/models/playerrelationlistmodel.h"
 #include "gui/models/playertablemodel.h"
 
 #include "gui/widgets/button.h"
@@ -40,7 +39,6 @@
 #include "gui/widgets/guitable.h"
 
 #include "utils/delete2.h"
-#include "utils/dtor.h"
 #include "utils/gettext.h"
 
 #include "debug.h"

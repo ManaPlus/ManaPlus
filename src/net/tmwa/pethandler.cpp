@@ -22,8 +22,6 @@
 
 #include "gui/chatconsts.h"
 
-#include "gui/widgets/tabs/chattab.h"
-
 #include "net/net.h"
 
 #include "net/chathandler.h"
