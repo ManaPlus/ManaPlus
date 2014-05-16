@@ -56,107 +56,110 @@
 
 #include "debug.h"
 
-class SortItemPriceFunctor final
+namespace
 {
-    public:
-        bool operator() (const ShopItem *const item1,
-                         const ShopItem *const item2) const
-        {
-            if (!item1 || !item2)
-                return false;
+    class SortItemPriceFunctor final
+    {
+        public:
+            bool operator() (const ShopItem *const item1,
+                             const ShopItem *const item2) const
+            {
+                if (!item1 || !item2)
+                    return false;
 
-            const int price1 = item1->getPrice();
-            const int price2 = item2->getPrice();
-            if (price1 == price2)
-                return item1->getDisplayName() < item2->getDisplayName();
-            return price1 < price2;
-        }
-} itemPriceBuySorter;
+                const int price1 = item1->getPrice();
+                const int price2 = item2->getPrice();
+                if (price1 == price2)
+                    return item1->getDisplayName() < item2->getDisplayName();
+                return price1 < price2;
+            }
+    } itemPriceBuySorter;
 
-class SortItemNameFunctor final
-{
-    public:
-        bool operator() (const ShopItem *const item1,
-                         const ShopItem *const item2) const
-        {
-            if (!item1 || !item2)
-                return false;
+    class SortItemNameFunctor final
+    {
+        public:
+            bool operator() (const ShopItem *const item1,
+                             const ShopItem *const item2) const
+            {
+                if (!item1 || !item2)
+                    return false;
 
-            const std::string &name1 = item1->getDisplayName();
-            const std::string &name2 = item2->getDisplayName();
-            if (name1 == name2)
-                return item1->getPrice() < item2->getPrice();
-            return name1 < name2;
-        }
-} itemNameBuySorter;
+                const std::string &name1 = item1->getDisplayName();
+                const std::string &name2 = item2->getDisplayName();
+                if (name1 == name2)
+                    return item1->getPrice() < item2->getPrice();
+                return name1 < name2;
+            }
+    } itemNameBuySorter;
 
-class SortItemIdFunctor final
-{
-    public:
-        bool operator() (const ShopItem *const item1,
-                         const ShopItem *const item2) const
-        {
-            if (!item1 || !item2)
-                return false;
+    class SortItemIdFunctor final
+    {
+        public:
+            bool operator() (const ShopItem *const item1,
+                             const ShopItem *const item2) const
+            {
+                if (!item1 || !item2)
+                    return false;
 
-            const int id1 = item1->getId();
-            const int id2 = item2->getId();
-            if (id1 == id2)
-                return item1->getPrice() < item2->getPrice();
-            return id1 < id2;
-        }
-} itemIdBuySorter;
+                const int id1 = item1->getId();
+                const int id2 = item2->getId();
+                if (id1 == id2)
+                    return item1->getPrice() < item2->getPrice();
+                return id1 < id2;
+            }
+    } itemIdBuySorter;
 
-class SortItemWeightFunctor final
-{
-    public:
-        bool operator() (const ShopItem *const item1,
-                         const ShopItem *const item2) const
-        {
-            if (!item1 || !item2)
-                return false;
+    class SortItemWeightFunctor final
+    {
+        public:
+            bool operator() (const ShopItem *const item1,
+                             const ShopItem *const item2) const
+            {
+                if (!item1 || !item2)
+                    return false;
 
-            const int weight1 = item1->getInfo().getWeight();
-            const int weight2 = item2->getInfo().getWeight();
-            if (weight1 == weight2)
-                return item1->getPrice() < item2->getPrice();
-            return weight1 < weight2;
-        }
-} itemWeightBuySorter;
+                const int weight1 = item1->getInfo().getWeight();
+                const int weight2 = item2->getInfo().getWeight();
+                if (weight1 == weight2)
+                    return item1->getPrice() < item2->getPrice();
+                return weight1 < weight2;
+            }
+    } itemWeightBuySorter;
 
-class SortItemAmountFunctor final
-{
-    public:
-        bool operator() (const ShopItem *const item1,
-                         const ShopItem *const item2) const
-        {
-            if (!item1 || !item2)
-                return false;
+    class SortItemAmountFunctor final
+    {
+        public:
+            bool operator() (const ShopItem *const item1,
+                             const ShopItem *const item2) const
+            {
+                if (!item1 || !item2)
+                    return false;
 
-            const int amount1 = item1->getQuantity();
-            const int amount2 = item2->getQuantity();
-            if (amount1 == amount2)
-                return item1->getPrice() < item2->getPrice();
-            return amount1 < amount2;
-        }
-} itemAmountBuySorter;
+                const int amount1 = item1->getQuantity();
+                const int amount2 = item2->getQuantity();
+                if (amount1 == amount2)
+                    return item1->getPrice() < item2->getPrice();
+                return amount1 < amount2;
+            }
+    } itemAmountBuySorter;
 
-class SortItemTypeFunctor final
-{
-    public:
-        bool operator() (const ShopItem *const item1,
-                         const ShopItem *const item2) const
-        {
-            if (!item1 || !item2)
-                return false;
+    class SortItemTypeFunctor final
+    {
+        public:
+            bool operator() (const ShopItem *const item1,
+                             const ShopItem *const item2) const
+            {
+                if (!item1 || !item2)
+                    return false;
 
-            const ItemType type1 = item1->getInfo().getType();
-            const ItemType type2 = item2->getInfo().getType();
-            if (type1 == type2)
-                return item1->getPrice() < item2->getPrice();
-            return type1 < type2;
-        }
-} itemTypeBuySorter;
+                const ItemType type1 = item1->getInfo().getType();
+                const ItemType type2 = item2->getInfo().getType();
+                if (type1 == type2)
+                    return item1->getPrice() < item2->getPrice();
+                return type1 < type2;
+            }
+    } itemTypeBuySorter;
+}
 
 BuyDialog::DialogList BuyDialog::instances;
 
