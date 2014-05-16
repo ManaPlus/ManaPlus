@@ -304,6 +304,7 @@ SET(SRCS
     gui/windows/charselectdialog.h
     gui/windows/charcreatedialog.cpp
     gui/windows/charcreatedialog.h
+    gui/windows/chardeleteconfirm.h
     gui/windows/chatwindow.cpp
     gui/windows/chatwindow.h
     gui/windows/confirmdialog.cpp

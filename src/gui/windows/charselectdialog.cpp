@@ -33,6 +33,7 @@
 #include "being/attributes.h"
 
 #include "gui/windows/charcreatedialog.h"
+#include "gui/windows/chardeleteconfirm.h"
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/logindialog.h"
 #include "gui/windows/okdialog.h"
@@ -55,38 +56,6 @@
 
 // Character slots per row in the dialog
 static const int SLOTS_PER_ROW = 5;
-
-/**
- * Listener for confirming character deletion.
- */
-class CharDeleteConfirm final : public ConfirmDialog
-{
-    public:
-        CharDeleteConfirm(CharSelectDialog *const m, const int index) :
-            // TRANSLATORS: char deletion message
-            ConfirmDialog(_("Confirm Character Delete"),
-                          // TRANSLATORS: char deletion message
-                          _("Are you sure you want to delete this character?"),
-                          SOUND_REQUEST, false, false, m),
-            mMaster(m),
-            mIndex(index)
-        {
-        }
-
-        A_DELETE_COPY(CharDeleteConfirm)
-
-        void action(const ActionEvent &event)
-        {
-            if (event.getId() == "yes" && mMaster)
-                mMaster->askPasswordForDeletion(mIndex);
-
-            ConfirmDialog::action(event);
-        }
-
-    private:
-        CharSelectDialog *mMaster;
-        int mIndex;
-};
 
 CharSelectDialog::CharSelectDialog(LoginData *const data):
     // TRANSLATORS: char select dialog name
