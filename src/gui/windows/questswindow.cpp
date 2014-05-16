@@ -49,17 +49,11 @@
 #include "resources/beingcommon.h"
 #include "resources/questeffect.h"
 #include "resources/questitem.h"
+#include "resources/questtype.h"
 
 #include "resources/map/map.h"
 
 #include "debug.h"
-
-enum QuestType
-{
-    QUEST_TEXT = 0,
-    QUEST_NAME = 1,
-    QUEST_REWARD = 2
-};
 
 QuestsWindow::QuestsWindow() :
     // TRANSLATORS: quests window name
@@ -230,11 +224,11 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
         std::string str = translator->getStr(data);
 
         if (xmlNameEqual(dataNode, "text"))
-            quest->texts.push_back(QuestItemText(str, QUEST_TEXT));
+            quest->texts.push_back(QuestItemText(str, QuestType::TEXT));
         else if (xmlNameEqual(dataNode, "name"))
-            quest->texts.push_back(QuestItemText(str, QUEST_NAME));
+            quest->texts.push_back(QuestItemText(str, QuestType::NAME));
         else if (xmlNameEqual(dataNode, "reward"))
-            quest->texts.push_back(QuestItemText(str, QUEST_REWARD));
+            quest->texts.push_back(QuestItemText(str, QuestType::REWARD));
     }
     mQuests[var].push_back(quest);
 }
@@ -406,12 +400,12 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
         const QuestItemText &data = *it;
         switch (data.type)
         {
-            case QUEST_TEXT:
-            case QUEST_REWARD:
+            case QuestType::TEXT:
+            case QuestType::REWARD:
             default:
                 mText->addRow(translator->getStr(data.text));
                 break;
-            case QUEST_NAME:
+            case QuestType::NAME:
                 mText->addRow(std::string("[").append(translator->getStr(
                     data.text)).append("]"));
                 break;

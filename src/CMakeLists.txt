@@ -538,6 +538,7 @@ SET(SRCS
     resources/questeffect.h
     resources/questitem.h
     resources/questitemtext.h
+    resources/questtype.h
     resources/db/palettedb.cpp
     resources/db/palettedb.h
     resources/db/petdb.cpp
