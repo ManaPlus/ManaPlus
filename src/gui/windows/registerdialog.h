@@ -32,25 +32,7 @@ class Button;
 class LoginData;
 class RadioButton;
 class TextField;
-
-/**
- * Listener used while dealing with wrong data. It is used to direct the focus
- * to the field which contained wrong data when the Ok button was pressed on
- * the error notice.
- */
-class WrongDataNoticeListener final : public ActionListener
-{
-    public:
-        WrongDataNoticeListener();
-
-        A_DELETE_COPY(WrongDataNoticeListener)
-
-        void setTarget(TextField *const textField);
-
-        void action(const ActionEvent &event) override final;
-    private:
-        TextField *mTarget;
-};
+class WrongDataNoticeListener;
 
 /**
  * The registration dialog.

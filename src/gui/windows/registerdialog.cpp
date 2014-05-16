@@ -28,6 +28,8 @@
 
 #include "input/keydata.h"
 
+#include "listeners/wrongdatanoticelistener.h"
+
 #include "gui/windows/okdialog.h"
 
 #include "gui/widgets/button.h"
@@ -45,23 +47,6 @@
 #include "utils/gettext.h"
 
 #include "debug.h"
-
-WrongDataNoticeListener::WrongDataNoticeListener():
-    ActionListener(),
-    mTarget(nullptr)
-{
-}
-
-void WrongDataNoticeListener::setTarget(TextField *const textField)
-{
-    mTarget = textField;
-}
-
-void WrongDataNoticeListener::action(const ActionEvent &event)
-{
-    if (event.getId() == "ok" && mTarget)
-        mTarget->requestFocus();
-}
 
 RegisterDialog::RegisterDialog(LoginData *const data) :
     // TRANSLATORS: register dialog name

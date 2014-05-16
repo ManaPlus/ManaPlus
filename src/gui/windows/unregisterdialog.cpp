@@ -31,6 +31,8 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/passwordfield.h"
 
+#include "listeners/wrongdatanoticelistener.h"
+
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/net.h"

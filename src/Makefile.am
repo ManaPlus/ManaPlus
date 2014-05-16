@@ -190,6 +190,8 @@ manaplus_SOURCES += events/actionevent.h \
 	      utils/sdlpixel.h \
 	      gui/widgets/widget.h \
 	      listeners/widgetlistener.h \
+	      listeners/wrongdatanoticelistener.cpp \
+	      listeners/wrongdatanoticelistener.h \
 	      gui/widgets/basiccontainer2.h \
 	      gui/widgets/basiccontainer.cpp \
 	      gui/cliprect.cpp \
