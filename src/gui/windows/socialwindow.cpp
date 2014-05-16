@@ -55,6 +55,7 @@
 #include "gui/widgets/tabbedarea.h"
 
 #include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/socialtab.h"
 
 #include "net/net.h"
 #include "net/guildhandler.h"
@@ -93,88 +94,6 @@ namespace
             }
     } friendSorter;
 }  // namespace
-
-class SocialTab : public Tab
-{
-public:
-    A_DELETE_COPY(SocialTab)
-
-    virtual void invite()
-    {
-    }
-
-    virtual void leave()
-    {
-    }
-
-    virtual void updateList()
-    {
-    }
-
-    virtual void updateAvatar(const std::string &name A_UNUSED)
-    {
-    }
-
-    virtual void resetDamage(const std::string &name A_UNUSED)
-    {
-    }
-
-    virtual void selectIndex(const unsigned num A_UNUSED)
-    { }
-
-    virtual void buildCounter(const int online A_UNUSED = 0,
-                              const int total A_UNUSED = 0)
-    {
-    }
-
-protected:
-    friend class SocialWindow;
-
-    explicit SocialTab(const Widget2 *const widget):
-        Tab(widget),
-        mInviteDialog(nullptr),
-        mConfirmDialog(nullptr),
-        mScroll(nullptr),
-        mList(nullptr),
-        mCounterString()
-    {
-    }
-
-    virtual ~SocialTab()
-    {
-        // Cleanup dialogs
-        if (mInviteDialog)
-        {
-            mInviteDialog->close();
-            mInviteDialog->scheduleDelete();
-            mInviteDialog = nullptr;
-        }
-
-        if (mConfirmDialog)
-        {
-            mConfirmDialog->close();
-            mConfirmDialog->scheduleDelete();
-            mConfirmDialog = nullptr;
-        }
-    }
-
-    void setCurrent() override final
-    {
-        updateCounter();
-    }
-
-    void updateCounter() const
-    {
-        if (socialWindow)
-            socialWindow->setCounter(this, mCounterString);
-    }
-
-    TextDialog *mInviteDialog;
-    ConfirmDialog *mConfirmDialog;
-    ScrollArea *mScroll;
-    AvatarListBox *mList;
-    std::string mCounterString;
-};
 
 class SocialGuildTab final : public SocialTab, public ActionListener
 {
