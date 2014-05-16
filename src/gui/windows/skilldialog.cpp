@@ -46,8 +46,10 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/tabs/tab.h"
 #include "gui/widgets/tabbedarea.h"
+
+#include "gui/widgets/tabs/skilltab.h"
+#include "gui/widgets/tabs/tab.h"
 
 #include "net/net.h"
 #include "net/playerhandler.h"
@@ -60,44 +62,6 @@
 #include "resources/beingcommon.h"
 
 #include "debug.h"
-
-class SkillTab final : public Tab
-{
-    public:
-        SkillTab(const Widget2 *const widget,
-                 const std::string &name,
-                 SkillListBox *const listBox) :
-            Tab(widget),
-            mListBox(listBox)
-        {
-            setCaption(name);
-        }
-
-        A_DELETE_COPY(SkillTab)
-
-        ~SkillTab()
-        {
-            delete2(mListBox)
-        }
-
-        SkillInfo *getSelectedInfo() const
-        {
-            if (mListBox)
-                return mListBox->getSelectedInfo();
-            else
-                return nullptr;
-        }
-
-    protected:
-        void setCurrent() override
-        {
-            if (skillDialog)
-                skillDialog->updateTabSelection();
-        }
-
-    private:
-        SkillListBox *mListBox;
-};
 
 SkillDialog::SkillDialog() :
     // TRANSLATORS: skills dialog name
