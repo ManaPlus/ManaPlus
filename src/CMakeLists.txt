@@ -126,6 +126,7 @@ SET(SRCS
     gui/widgets/tabs/chattab.cpp
     gui/widgets/tabs/chattab.h
     gui/widgets/tabs/chattabtype.h
+    gui/widgets/chatinput.h
     gui/widgets/checkbox.cpp
     gui/widgets/checkbox.h
     gui/models/colormodel.cpp

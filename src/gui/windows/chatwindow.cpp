@@ -56,6 +56,7 @@
 #include "gui/widgets/tabs/battletab.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/chatinput.h"
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/scrollarea.h"
@@ -82,75 +83,6 @@
 #include <sys/stat.h>
 
 #include "debug.h"
-
-/**
- * The chat input hides when it loses focus. It is also invisible by default.
- */
-class ChatInput final : public TextField
-{
-    public:
-        explicit ChatInput(ChatWindow *const window):
-            TextField(window, "", false),
-            mWindow(window),
-            mFocusGaining(false)
-        {
-            setVisible(false);
-            addFocusListener(this);
-        }
-
-        A_DELETE_COPY(ChatInput)
-
-        /**
-         * Called if the chat input loses focus. It will set itself to
-         * invisible as result.
-         */
-        void focusLost(const Event &event)
-        {
-            TextField::focusLost(event);
-            if (mFocusGaining || !config.getBoolValue("protectChatFocus"))
-            {
-                processVisible(false);
-                if (chatWindow)
-                    chatWindow->updateVisibility();
-                mFocusGaining = false;
-                return;
-            }
-            mFocusGaining = true;
-            requestFocus();
-            mFocusGaining = false;
-        }
-
-        void processVisible(const bool n)
-        {
-            if (!mWindow || isVisible() == n)
-                return;
-
-            if (!n)
-                mFocusGaining = true;
-            setVisible(n);
-            if (config.getBoolValue("hideChatInput")
-                || config.getBoolValue("showEmotesButton"))
-            {
-                mWindow->adjustTabSize();
-            }
-            if (emoteWindow)
-            {
-                emoteWindow->hide();
-            }
-        }
-
-        void unprotectFocus()
-        { mFocusGaining = true; }
-
-        void setVisible(bool visible)
-        {
-            TextField::setVisible(visible);
-        }
-
-    private:
-        ChatWindow *mWindow;
-        bool mFocusGaining;
-};
 
 static const char *const ACTION_COLOR_PICKER = "color picker";
 
