@@ -47,7 +47,7 @@
 #include "utils/translation/podict.h"
 
 #include "resources/beingcommon.h"
-#include "resources/questitemtext.h"
+#include "resources/questitem.h"
 
 #include "resources/map/map.h"
 
@@ -58,30 +58,6 @@ enum QuestType
     QUEST_TEXT = 0,
     QUEST_NAME = 1,
     QUEST_REWARD = 2
-};
-
-struct QuestItem final
-{
-    QuestItem() :
-        var(0),
-        name(),
-        group(),
-        incomplete(),
-        complete(),
-        texts(),
-        completeFlag(-1),
-        broken(false)
-    {
-    }
-
-    int var;
-    std::string name;
-    std::string group;
-    std::set<int> incomplete;
-    std::set<int> complete;
-    std::vector<QuestItemText> texts;
-    int completeFlag;
-    bool broken;
 };
 
 struct QuestEffect final

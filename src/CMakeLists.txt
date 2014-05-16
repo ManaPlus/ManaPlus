@@ -535,6 +535,7 @@ SET(SRCS
     resources/db/npcdb.h
     resources/openglimagehelper.cpp
     resources/openglimagehelper.h
+    resources/questitem.h
     resources/questitemtext.h
     resources/db/palettedb.cpp
     resources/db/palettedb.h
