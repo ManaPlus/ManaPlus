@@ -229,6 +229,7 @@ SET(SRCS
     gui/widgets/radiogroup.h
     gui/widgets/scrollarea.cpp
     gui/widgets/scrollarea.h
+    gui/widgets/serverslistbox.h
     gui/widgets/setupitem.cpp
     gui/widgets/setupitem.h
     gui/widgets/tabs/setuptab.cpp
