@@ -69,6 +69,7 @@
 
 #include "gui/color.h"
 
+#include "gui/fonts/textchunklist.h"
 #include "gui/fonts/textchunksmall.h"
 
 #include <SDL_ttf.h>
@@ -84,30 +85,6 @@ class Image;
 class TextChunk;
 
 const unsigned int CACHES_NUMBER = 256;
-
-class TextChunkList final
-{
-    public:
-        TextChunkList();
-
-        A_DELETE_COPY(TextChunkList)
-
-        void insertFirst(TextChunk *const item);
-
-        void moveToFirst(TextChunk *const item);
-
-        void removeBack();
-
-        void removeBack(int n);
-
-        void clear();
-
-        TextChunk *start;
-        TextChunk *end;
-        uint32_t size;
-        std::map<TextChunkSmall, TextChunk*> search;
-        std::map<std::string, TextChunk*> searchWidth;
-};
 
 /**
  * A wrapper around SDL_ttf for allowing the use of TrueType fonts.
