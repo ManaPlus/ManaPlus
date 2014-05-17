@@ -25,6 +25,7 @@
 #include "guild.h"
 #include "party.h"
 
+#include "gui/onlineplayer.h"
 #include "gui/viewport.h"
 
 #include "gui/windows/chatwindow.h"

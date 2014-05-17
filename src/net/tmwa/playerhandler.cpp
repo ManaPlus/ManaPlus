@@ -37,6 +37,7 @@
 
 #include "gui/windows/whoisonline.h"
 
+#include "gui/onlineplayer.h"
 #include "gui/viewport.h"
 
 #include "resources/map/map.h"
