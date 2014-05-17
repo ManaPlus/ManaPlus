@@ -261,6 +261,7 @@ SET(SRCS
     gui/widgets/tabs/shortcuttab.h
     gui/widgets/tabs/skilltab.h
     gui/widgets/tabs/socialattacktab.h
+    gui/widgets/tabs/socialfriendstab.h
     gui/widgets/tabs/socialguildtab.h
     gui/widgets/tabs/socialguildtab2.h
     gui/widgets/tabs/socialnavigationtab.h
