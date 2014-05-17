@@ -81,32 +81,9 @@
 class Color;
 class Graphics;
 class Image;
+class TextChunk;
 
 const unsigned int CACHES_NUMBER = 256;
-
-class TextChunk final
-{
-    public:
-        TextChunk(const std::string &text0,
-                  const Color &color0,
-                  const Color &color1);
-
-        A_DELETE_COPY(TextChunk)
-
-        ~TextChunk();
-
-        bool operator==(const TextChunk &chunk) const;
-
-        void generate(TTF_Font *const font, const float alpha);
-
-        Image *img;
-        std::string text;
-        Color color;
-        Color color2;
-        TextChunk *prev;
-        TextChunk *next;
-};
-
 
 class TextChunkList final
 {
