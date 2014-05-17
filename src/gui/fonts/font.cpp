@@ -99,56 +99,7 @@ char *strBuf = nullptr;
 int sdlTextChunkCnt = 0;
 #endif
 
-SDLTextChunkSmall::SDLTextChunkSmall(const std::string &text0,
-                                     const Color &color0,
-                                     const Color &color1) :
-    text(text0),
-    color(color0),
-    color2(color1)
-{
-}
-
-SDLTextChunkSmall::SDLTextChunkSmall(const SDLTextChunkSmall &old) :
-    text(old.text),
-    color(old.color),
-    color2(old.color2)
-{
-}
-
-bool SDLTextChunkSmall::operator==(const SDLTextChunkSmall &chunk) const
-{
-    return (chunk.text == text && chunk.color == color
-            && chunk.color2 == color2);
-}
-
-bool SDLTextChunkSmall::operator<(const SDLTextChunkSmall &chunk) const
-{
-    if (chunk.text != text)
-        return chunk.text > text;
-
-    const Color &c = chunk.color;
-    if (c.r != color.r)
-        return c.r > color.r;
-    if (c.g != color.g)
-        return c.g > color.g;
-    if (c.b != color.b)
-        return c.b > color.b;
-
-    const Color &c2 = chunk.color2;
-    if (c2.r != color2.r)
-        return c2.r > color2.r;
-    if (c2.g != color2.g)
-        return c2.g > color2.g;
-    if (c2.b != color2.b)
-        return c2.b > color2.b;
-
-    if (c.a != color.a && Font::mSoftMode)
-        return c.a > color.a;
-
-    return false;
-}
-
-SDLTextChunk::SDLTextChunk(const std::string &text0, const Color &color0,
+TextChunk::TextChunk(const std::string &text0, const Color &color0,
                            const Color &color1) :
     img(nullptr),
     text(text0),
@@ -162,7 +113,7 @@ SDLTextChunk::SDLTextChunk(const std::string &text0, const Color &color0,
 #endif
 }
 
-SDLTextChunk::~SDLTextChunk()
+TextChunk::~TextChunk()
 {
     delete2(img);
 #ifdef UNITTESTS
@@ -170,15 +121,15 @@ SDLTextChunk::~SDLTextChunk()
 #endif
 }
 
-bool SDLTextChunk::operator==(const SDLTextChunk &chunk) const
+bool TextChunk::operator==(const TextChunk &chunk) const
 {
     return (chunk.text == text && chunk.color == color
             && chunk.color2 == color2);
 }
 
-void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
+void TextChunk::generate(TTF_Font *const font, const float alpha)
 {
-    BLOCK_START("SDLTextChunk::generate")
+    BLOCK_START("TextChunk::generate")
     SDL_Color sdlCol;
     sdlCol.b = static_cast<uint8_t>(color.b);
     sdlCol.r = static_cast<uint8_t>(color.r);
@@ -197,7 +148,7 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
     if (!surface)
     {
         img = nullptr;
-        BLOCK_END("SDLTextChunk::generate")
+        BLOCK_END("TextChunk::generate")
         return;
     }
 
@@ -214,7 +165,7 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
         {
             img = nullptr;
             MSDL_FreeSurface(surface);
-            BLOCK_END("SDLTextChunk::generate")
+            BLOCK_END("TextChunk::generate")
             return;
         }
         sdlCol2.b = static_cast<uint8_t>(color2.b);
@@ -231,7 +182,7 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
         {
             img = nullptr;
             MSDL_FreeSurface(surface);
-            BLOCK_END("SDLTextChunk::generate")
+            BLOCK_END("TextChunk::generate")
             return;
         }
         SDL_Rect rect =
@@ -265,7 +216,7 @@ void SDLTextChunk::generate(TTF_Font *const font, const float alpha)
         surface, width, height, alpha);
     MSDL_FreeSurface(surface);
 
-    BLOCK_END("SDLTextChunk::generate")
+    BLOCK_END("TextChunk::generate")
 }
 
 
@@ -278,9 +229,9 @@ TextChunkList::TextChunkList() :
 {
 }
 
-void TextChunkList::insertFirst(SDLTextChunk *const item)
+void TextChunkList::insertFirst(TextChunk *const item)
 {
-    SDLTextChunk *const oldFirst = start;
+    TextChunk *const oldFirst = start;
     if (start)
         start->prev = item;
     item->prev = nullptr;
@@ -290,24 +241,24 @@ void TextChunkList::insertFirst(SDLTextChunk *const item)
         end = item;
     start = item;
     size ++;
-    search[SDLTextChunkSmall(item->text, item->color, item->color2)] = item;
+    search[TextChunkSmall(item->text, item->color, item->color2)] = item;
     searchWidth[item->text] = item;
 }
 
-void TextChunkList::moveToFirst(SDLTextChunk *const item)
+void TextChunkList::moveToFirst(TextChunk *const item)
 {
     if (item == start)
         return;
 
-    SDLTextChunk *oldPrev = item->prev;
+    TextChunk *oldPrev = item->prev;
     if (oldPrev)
         oldPrev->next = item->next;
-    SDLTextChunk *oldNext = item->next;
+    TextChunk *oldNext = item->next;
     if (oldNext)
         oldNext->prev = item->prev;
     else
         end = oldPrev;
-    SDLTextChunk *const oldFirst = start;
+    TextChunk *const oldFirst = start;
     if (start)
         start->prev = item;
     item->prev = nullptr;
@@ -317,7 +268,7 @@ void TextChunkList::moveToFirst(SDLTextChunk *const item)
 
 void TextChunkList::removeBack()
 {
-    SDLTextChunk *oldEnd = end;
+    TextChunk *oldEnd = end;
     if (oldEnd)
     {
         end = oldEnd->prev;
@@ -325,7 +276,7 @@ void TextChunkList::removeBack()
             end->next = nullptr;
         else
             start = nullptr;
-        search.erase(SDLTextChunkSmall(oldEnd->text,
+        search.erase(TextChunkSmall(oldEnd->text,
             oldEnd->color, oldEnd->color2));
         searchWidth.erase(oldEnd->text);
         delete oldEnd;
@@ -335,13 +286,13 @@ void TextChunkList::removeBack()
 
 void TextChunkList::removeBack(int n)
 {
-    SDLTextChunk *item = end;
+    TextChunk *item = end;
     while (n && item)
     {
         n --;
-        SDLTextChunk *oldEnd = item;
+        TextChunk *oldEnd = item;
         item = item->prev;
-        search.erase(SDLTextChunkSmall(oldEnd->text,
+        search.erase(TextChunkSmall(oldEnd->text,
             oldEnd->color, oldEnd->color2));
         searchWidth.erase(oldEnd->text);
         delete oldEnd;
@@ -363,10 +314,10 @@ void TextChunkList::clear()
 {
     search.clear();
     searchWidth.clear();
-    SDLTextChunk *item = start;
+    TextChunk *item = start;
     while (item)
     {
-        SDLTextChunk *item2 = item->next;
+        TextChunk *item2 = item->next;
         delete item;
         item = item2;
     }
@@ -511,12 +462,12 @@ void Font::drawString(Graphics *const graphics,
     const unsigned char chr = text[0];
     TextChunkList *const cache = &mCache[chr];
 
-    std::map<SDLTextChunkSmall, SDLTextChunk*> &search = cache->search;
-    std::map<SDLTextChunkSmall, SDLTextChunk*>::iterator i
-        = search.find(SDLTextChunkSmall(text, col, col2));
+    std::map<TextChunkSmall, TextChunk*> &search = cache->search;
+    std::map<TextChunkSmall, TextChunk*>::iterator i
+        = search.find(TextChunkSmall(text, col, col2));
     if (i != search.end())
     {
-        SDLTextChunk *const chunk2 = (*i).second;
+        TextChunk *const chunk2 = (*i).second;
         cache->moveToFirst(chunk2);
         Image *const image = chunk2->img;
         if (image)
@@ -537,7 +488,7 @@ void Font::drawString(Graphics *const graphics,
 #ifdef DEBUG_FONT_COUNTERS
         mCreateCounter ++;
 #endif
-        SDLTextChunk *chunk2 = new SDLTextChunk(text, col, col2);
+        TextChunk *chunk2 = new TextChunk(text, col, col2);
 
         chunk2->generate(mFont, alpha);
         cache->insertFirst(chunk2);
@@ -572,11 +523,11 @@ int Font::getWidth(const std::string &text) const
     const unsigned char chr = text[0];
     TextChunkList *const cache = &mCache[chr];
 
-    std::map<std::string, SDLTextChunk*> &search = cache->searchWidth;
-    std::map<std::string, SDLTextChunk*>::iterator i = search.find(text);
+    std::map<std::string, TextChunk*> &search = cache->searchWidth;
+    std::map<std::string, TextChunk*>::iterator i = search.find(text);
     if (i != search.end())
     {
-        SDLTextChunk *const chunk = (*i).second;
+        TextChunk *const chunk = (*i).second;
         cache->moveToFirst(chunk);
         const Image *const image = chunk->img;
         if (image)

@@ -524,6 +524,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/setupactiondata.h \
 	      gui/fonts/font.cpp \
 	      gui/fonts/font.h \
+	      gui/fonts/textchunksmall.cpp \
+	      gui/fonts/textchunksmall.h \
 	      gui/windows/shopwindow.cpp \
 	      gui/windows/shopwindow.h \
 	      gui/windows/shortcutwindow.cpp \

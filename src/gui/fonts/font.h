@@ -69,6 +69,8 @@
 
 #include "gui/color.h"
 
+#include "gui/fonts/textchunksmall.h"
+
 #include <SDL_ttf.h>
 
 #include <map>
@@ -82,33 +84,18 @@ class Image;
 
 const unsigned int CACHES_NUMBER = 256;
 
-class SDLTextChunkSmall
+class TextChunk final
 {
     public:
-        SDLTextChunkSmall(const std::string &text0, const Color &color0,
-                          const Color &color1);
+        TextChunk(const std::string &text0,
+                  const Color &color0,
+                  const Color &color1);
 
-        SDLTextChunkSmall(const SDLTextChunkSmall &old);
+        A_DELETE_COPY(TextChunk)
 
-        bool operator==(const SDLTextChunkSmall &chunk) const;
-        bool operator<(const SDLTextChunkSmall &chunk) const;
+        ~TextChunk();
 
-        std::string text;
-        Color color;
-        Color color2;
-};
-
-class SDLTextChunk final
-{
-    public:
-        SDLTextChunk(const std::string &text0, const Color &color0,
-                     const Color &color1);
-
-        A_DELETE_COPY(SDLTextChunk)
-
-        ~SDLTextChunk();
-
-        bool operator==(const SDLTextChunk &chunk) const;
+        bool operator==(const TextChunk &chunk) const;
 
         void generate(TTF_Font *const font, const float alpha);
 
@@ -116,8 +103,8 @@ class SDLTextChunk final
         std::string text;
         Color color;
         Color color2;
-        SDLTextChunk *prev;
-        SDLTextChunk *next;
+        TextChunk *prev;
+        TextChunk *next;
 };
 
 
@@ -128,9 +115,9 @@ class TextChunkList final
 
         A_DELETE_COPY(TextChunkList)
 
-        void insertFirst(SDLTextChunk *const item);
+        void insertFirst(TextChunk *const item);
 
-        void moveToFirst(SDLTextChunk *const item);
+        void moveToFirst(TextChunk *const item);
 
         void removeBack();
 
@@ -138,11 +125,11 @@ class TextChunkList final
 
         void clear();
 
-        SDLTextChunk *start;
-        SDLTextChunk *end;
+        TextChunk *start;
+        TextChunk *end;
         uint32_t size;
-        std::map<SDLTextChunkSmall, SDLTextChunk*> search;
-        std::map<std::string, SDLTextChunk*> searchWidth;
+        std::map<TextChunkSmall, TextChunk*> search;
+        std::map<std::string, TextChunk*> searchWidth;
 };
 
 /**
