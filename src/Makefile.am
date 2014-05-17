@@ -155,6 +155,7 @@ endif
 manaplus_SOURCES += events/actionevent.h \
 	      listeners/actionlistener.h \
 	      gui/widgets/basiccontainer.h \
+	      gui/buttoninfo.h \
 	      gui/chatconsts.h \
 	      gui/chatlog.h \
 	      gui/cliprect.h \

@@ -37,23 +37,8 @@
 #include <vector>
 
 class Button;
+class ButtonInfo;
 class TextPopup;
-
-struct ButtonInfo final
-{
-    ButtonInfo(Button *const button0, const int key0, const bool visible0) :
-        button(button0),
-        key(key0),
-        visible(visible0)
-    {
-    }
-
-    A_DELETE_COPY(ButtonInfo)
-
-    Button *button;
-    int key;
-    bool visible;
-};
 
 struct ButtonText final
 {
