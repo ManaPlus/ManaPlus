@@ -405,6 +405,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/windowcontainer.h \
 	      gui/popups/beingpopup.cpp \
 	      gui/popups/beingpopup.h \
+	      gui/popups/createpartypopup.h \
 	      gui/windows/buydialog.cpp \
 	      gui/windows/buydialog.h \
 	      gui/windows/buyselldialog.cpp \

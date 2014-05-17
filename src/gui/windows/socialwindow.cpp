@@ -64,6 +64,8 @@
 #include "gui/widgets/tabs/socialpickuptab.h"
 #include "gui/widgets/tabs/socialplayerstab.h"
 
+#include "gui/popups/createpartypopup.h"
+
 #include "net/net.h"
 #include "net/guildhandler.h"
 #include "net/partyhandler.h"
@@ -74,67 +76,6 @@
 #include "debug.h"
 
 extern unsigned int tmwServerVersion;
-
-class CreatePopup final : public Popup, public LinkHandler
-{
-public:
-    CreatePopup() :
-        Popup("SocialCreatePopup"),
-        LinkHandler(),
-        mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
-            "popupbrowserbox.xml"))
-    {
-        mBrowserBox->setPosition(4, 4);
-        mBrowserBox->setOpaque(false);
-        mBrowserBox->setLinkHandler(this);
-
-        // TRANSLATORS: party popup item
-        mBrowserBox->addRow(strprintf("@@party|%s@@", _("Create Party")));
-        mBrowserBox->addRow("##3---");
-        // TRANSLATORS: party popup item
-        mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
-    }
-
-    void postInit()
-    {
-        add(mBrowserBox);
-        setContentSize(mBrowserBox->getWidth() + 8,
-                       mBrowserBox->getHeight() + 8);
-    }
-
-    A_DELETE_COPY(CreatePopup)
-
-    void handleLink(const std::string &link,
-                    MouseEvent *event A_UNUSED) override final
-    {
-        if (link == "guild" && socialWindow)
-        {
-            socialWindow->showGuildCreate();
-        }
-        else if (link == "party" && socialWindow)
-        {
-            socialWindow->showPartyCreate();
-        }
-
-        setVisible(false);
-    }
-
-    void show(Widget *parent)
-    {
-        if (!parent)
-            return;
-
-        int x, y;
-        parent->getAbsolutePosition(x, y);
-        y += parent->getHeight();
-        setPosition(x, y);
-        setVisible(true);
-        requestMoveToTop();
-    }
-
-private:
-    BrowserBox* mBrowserBox;
-};
 
 SocialWindow::SocialWindow() :
     // TRANSLATORS: social window name
@@ -159,7 +100,7 @@ SocialWindow::SocialWindow() :
     // TRANSLATORS: here F is title for friends tab in social window
     mFriends(new SocialFriendsTab(this, _("F"),
         getOptionBool("showtabbackground"))),
-    mCreatePopup(new CreatePopup),
+    mCreatePopup(new CreatePartyPopup),
     // TRANSLATORS: social window button
     mCreateButton(new Button(this, _("Create"), "create", this)),
     // TRANSLATORS: social window button

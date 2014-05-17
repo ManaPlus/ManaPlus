@@ -32,7 +32,7 @@
 
 class Button;
 class ConfirmDialog;
-class CreatePopup;
+class CreatePartyPopup;
 class Guild;
 class Label;
 class Map;
@@ -159,7 +159,7 @@ protected:
     SocialTab *mNavigation;
     SocialTab *mFriends;
 
-    CreatePopup *mCreatePopup;
+    CreatePartyPopup *mCreatePopup;
 
     Button *mCreateButton;
     Button *mInviteButton;
