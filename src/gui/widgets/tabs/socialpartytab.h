@@ -54,13 +54,7 @@ class SocialPartyTab final : public SocialTab,
             setSelectedTabColor(&getThemeColor(Theme::PARTY_SOCIAL_TAB_SELECTED),
                 &getThemeColor(Theme::PARTY_SOCIAL_TAB_SELECTED_OUTLINE));
 
-            mList = new AvatarListBox(this, party);
-            mList->postInit();
-            mScroll = new ScrollArea(this, mList, showBackground,
-                "social_background.xml");
-
-            mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
-            mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
+            createControls(party, showBackground);
         }
 
         A_DELETE_COPY(SocialPartyTab)

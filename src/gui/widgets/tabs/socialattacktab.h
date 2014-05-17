@@ -28,6 +28,8 @@
 
 #include "localconsts.h"
 
+class BeingsListModel;
+
 #define addAvatars(mob, str, type) \
 {\
     ava = new Avatar(str);\
@@ -88,13 +90,7 @@ class SocialAttackTab final : public SocialTab
             SocialTab(widget),
             mBeings(new BeingsListModel)
         {
-            mList = new AvatarListBox(this, mBeings);
-            mList->postInit();
-            mScroll = new ScrollArea(this, mList, showBackground,
-                "social_background.xml");
-
-            mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
-            mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
+            createControls(mBeings, showBackground);
 
             // TRANSLATORS: Attack filter tab name in social window.
             // TRANSLATORS: Should be small

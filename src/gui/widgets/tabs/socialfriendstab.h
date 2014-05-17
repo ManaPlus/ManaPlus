@@ -64,13 +64,7 @@ class SocialFriendsTab final : public SocialTab
             SocialTab(widget),
             mBeings(new BeingsListModel)
         {
-            mList = new AvatarListBox(this, mBeings);
-            mList->postInit();
-            mScroll = new ScrollArea(this, mList, showBackground,
-                "social_background.xml");
-
-            mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
-            mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
+            createControls(mBeings, showBackground);
 
             getPlayersAvatars();
             setCaption(name);

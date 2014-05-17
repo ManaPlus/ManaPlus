@@ -36,13 +36,7 @@ class SocialPickupTab final : public SocialTab
             SocialTab(widget),
             mBeings(new BeingsListModel)
         {
-            mList = new AvatarListBox(this, mBeings);
-            mList->postInit();
-            mScroll = new ScrollArea(this, mList, showBackground,
-                "social_background.xml");
-
-            mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
-            mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
+            createControls(mBeings, showBackground);
 
             // TRANSLATORS: Pickup filter tab name in social window. Should be small
             setCaption(_("Pik"));

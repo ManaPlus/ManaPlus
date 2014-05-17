@@ -24,9 +24,16 @@
 
 #include "gui/windows/socialwindow.h"
 
+#include "gui/widgets/avatarlistbox.h"
+#include "gui/widgets/scrollarea.h"
+
 #include "gui/widgets/tabs/tab.h"
 
 #include "localconsts.h"
+
+class AvatarListModel;
+class ConfirmDialog;
+class TextDialog;
 
 class SocialTab : public Tab
 {
@@ -91,6 +98,18 @@ class SocialTab : public Tab
                 mConfirmDialog->scheduleDelete();
                 mConfirmDialog = nullptr;
             }
+        }
+
+        void createControls(AvatarListModel *const listModel,
+                            const bool showBackground)
+        {
+            mList = new AvatarListBox(this, listModel);
+            mList->postInit();
+            mScroll = new ScrollArea(this, mList, showBackground,
+                "social_background.xml");
+
+            mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
+            mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
         }
 
         void setCurrent() override final

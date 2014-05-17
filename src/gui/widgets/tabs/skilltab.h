@@ -31,6 +31,8 @@
 
 #include "localconsts.h"
 
+class SkillListBox;
+
 class SkillTab final : public Tab
 {
     public:

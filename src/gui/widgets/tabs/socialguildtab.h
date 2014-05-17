@@ -54,13 +54,7 @@ class SocialGuildTab final : public SocialTab,
             setSelectedTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED),
                 &getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
 
-            mList = new AvatarListBox(this, guild);
-            mList->postInit();
-            mScroll = new ScrollArea(this, mList, showBackground,
-                "social_background.xml");
-
-            mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
-            mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
+            createControls(guild, showBackground);
         }
 
         A_DELETE_COPY(SocialGuildTab)
