@@ -60,6 +60,7 @@
 #include "gui/widgets/tabs/socialguildtab2.h"
 #include "gui/widgets/tabs/socialnavigationtab.h"
 #include "gui/widgets/tabs/socialpartytab.h"
+#include "gui/widgets/tabs/socialpickuptab.h"
 #include "gui/widgets/tabs/socialplayerstab.h"
 
 #include "net/net.h"
@@ -99,49 +100,6 @@ namespace
             }
     } friendSorter;
 }  // namespace
-
-class SocialPickupTab final : public SocialTab
-{
-public:
-    SocialPickupTab(const Widget2 *const widget,
-                    const bool showBackground) :
-        SocialTab(widget),
-        mBeings(new BeingsListModel)
-    {
-        mList = new AvatarListBox(this, mBeings);
-        mList->postInit();
-        mScroll = new ScrollArea(this, mList, showBackground,
-            "social_background.xml");
-
-        mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
-        mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
-
-        // TRANSLATORS: Pickup filter tab name in social window. Should be small
-        setCaption(_("Pik"));
-    }
-
-    A_DELETE_COPY(SocialPickupTab)
-
-    ~SocialPickupTab()
-    {
-        delete2(mList)
-        delete2(mScroll)
-        delete2(mBeings)
-    }
-
-    void updateList() override final
-    {
-        updateAtkListStart();
-        // TRANSLATORS: items group name in social window
-        addAvatars(PickupItem, _("Pickup items"), PICKUP);
-        // TRANSLATORS: items group name in social window
-        addAvatars(IgnorePickupItem, _("Ignore items"), NOPICKUP);
-    }
-
-private:
-    BeingsListModel *mBeings;
-};
-
 
 class SocialFriendsTab final : public SocialTab
 {
