@@ -360,6 +360,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/tabs/skilltab.h \
 	      gui/widgets/tabs/socialguildtab.h \
 	      gui/widgets/tabs/socialguildtab2.h \
+	      gui/widgets/tabs/socialnavigationtab.h \
 	      gui/widgets/tabs/socialpartytab.h \
 	      gui/widgets/tabs/socialplayerstab.h \
 	      gui/widgets/tabs/socialtab.h \
