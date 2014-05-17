@@ -97,6 +97,7 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      resources/subimage.h \
 	      resources/surfaceimagehelper.cpp \
 	      resources/surfaceimagehelper.h \
+	      resources/updatefile.h \
 	      resources/spritedef.cpp \
 	      resources/spritedef.h \
 	      utils/mkdir.cpp \

@@ -28,6 +28,8 @@
 
 #include "net/download.h"
 
+#include "resources/updatefile.h"
+
 #include "utils/mutex.h"
 
 #include "listeners/actionlistener.h"
@@ -42,26 +44,6 @@ class Label;
 class ProgressBar;
 class ResourceManager;
 class ScrollArea;
-
-struct UpdateFile final
-{
-    public:
-        UpdateFile() :
-            name(),
-            hash(),
-            type(),
-            desc(),
-            group(),
-            required(false)
-        {
-        }
-        std::string name;
-        std::string hash;
-        std::string type;
-        std::string desc;
-        std::string group;
-        bool required;
-};
 
 /**
  * Update progress window GUI
