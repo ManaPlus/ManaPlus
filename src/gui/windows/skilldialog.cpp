@@ -23,19 +23,11 @@
 #include "gui/windows/skilldialog.h"
 
 #include "configuration.h"
-#include "dragdrop.h"
 #include "effectmanager.h"
 #include "itemshortcut.h"
 
 #include "being/attributes.h"
 #include "being/localplayer.h"
-
-#include "gui/skin.h"
-#include "gui/viewport.h"
-
-#include "gui/fonts/font.h"
-
-#include "gui/popups/textpopup.h"
 
 #include "gui/models/skillmodel.h"
 
@@ -45,22 +37,20 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/skilllistbox.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabbedarea.h"
 
 #include "gui/widgets/tabs/skilltab.h"
-#include "gui/widgets/tabs/tab.h"
 
 #include "net/net.h"
 #include "net/playerhandler.h"
 #include "net/skillhandler.h"
 
-#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
 #include "resources/beingcommon.h"
+#include "resources/skillconsts.h"
 
 #include "debug.h"
 

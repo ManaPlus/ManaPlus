@@ -35,7 +35,6 @@
 #include "gui/viewport.h"
 
 #include "gui/widgets/containerplacer.h"
-#include "gui/widgets/layoutcell.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/radiobutton.h"
 

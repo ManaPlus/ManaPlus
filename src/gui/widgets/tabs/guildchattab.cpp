@@ -28,6 +28,8 @@
 #include "soundconsts.h"
 #include "soundmanager.h"
 
+#include "gui/windows/chatwindow.h"
+
 #include "utils/gettext.h"
 
 #include "debug.h"

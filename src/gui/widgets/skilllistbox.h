@@ -25,9 +25,24 @@
 
 #include "gui/widgets/listbox.h"
 
+#include "dragdrop.h"
+
+#include "gui/skin.h"
+#include "gui/viewport.h"
+
+#include "gui/fonts/font.h"
+
+#include "gui/widgets/skilldata.h"
+
+#include "gui/models/skillmodel.h"
+
+#include "gui/popups/textpopup.h"
+
 #include "render/graphics.h"
 
 #include "utils/delete2.h"
+
+#include "resources/skillconsts.h"
 
 #include "localconsts.h"
 

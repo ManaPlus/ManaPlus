@@ -50,7 +50,6 @@
 
 #include "utils/gettext.h"
 #include "utils/paths.h"
-#include "utils/process.h"
 
 #include "debug.h"
 

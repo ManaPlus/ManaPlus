@@ -27,6 +27,8 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 
+#include "gui/models/tablemodel.h"
+
 #include "actormanager.h"
 
 #include "being/localplayer.h"

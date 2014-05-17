@@ -23,10 +23,8 @@
 #ifndef GUI_WINDOWS_DEBUGWINDOW_H
 #define GUI_WINDOWS_DEBUGWINDOW_H
 
-#include "gui/widgets/container.h"
 #include "gui/widgets/window.h"
 
-class Label;
 class MapDebugTab;
 class NetDebugTab;
 class TabbedArea;

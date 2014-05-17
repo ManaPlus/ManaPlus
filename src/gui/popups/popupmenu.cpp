@@ -76,6 +76,7 @@
 #include "net/tradehandler.h"
 
 #include "resources/iteminfo.h"
+#include "resources/skillconsts.h"
 
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"

@@ -25,7 +25,6 @@
 #include "client.h"
 
 #include "gui/windows/okdialog.h"
-#include "gui/windows/registerdialog.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"

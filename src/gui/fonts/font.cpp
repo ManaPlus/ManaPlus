@@ -71,14 +71,12 @@
 
 #include "gui/fonts/textchunk.h"
 
-#include "render/sdlgraphics.h"
+#include "render/graphics.h"
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
-#include "resources/surfaceimagehelper.h"
 
-#include "utils/delete2.h"
 #include "utils/paths.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/stringutils.h"

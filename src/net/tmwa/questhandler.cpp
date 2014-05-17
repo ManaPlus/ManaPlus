@@ -25,6 +25,8 @@
 
 #include "net/tmwa/protocol.h"
 
+#include "resources/skillconsts.h"
+
 #include "debug.h"
 
 namespace TmwAthena

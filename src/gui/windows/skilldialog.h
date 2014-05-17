@@ -27,9 +27,6 @@
 
 #include "listeners/actionlistener.h"
 
-const int SKILL_MIN_ID = 200000;
-const unsigned int SKILL_VAR_MIN_ID = 1000000;
-
 class Button;
 class Label;
 class SkillModel;

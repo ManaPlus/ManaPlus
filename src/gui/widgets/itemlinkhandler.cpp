@@ -29,8 +29,8 @@
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/helpwindow.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
-#include "utils/process.h"
 #include "utils/stringutils.h"
 
 #include "resources/db/itemdb.h"
@@ -38,8 +38,6 @@
 #include "listeners/openurllistener.h"
 
 #include "input/mouseinput.h"
-
-#include "utils/delete2.h"
 
 #include <string>
 

@@ -31,6 +31,8 @@
 #include "net/guildhandler.h"
 #include "net/net.h"
 
+#include "gui/windows/chatwindow.h"
+
 #include "utils/gettext.h"
 
 #include "debug.h"

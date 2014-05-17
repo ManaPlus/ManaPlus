@@ -30,6 +30,8 @@
 #include "net/chathandler.h"
 #include "net/net.h"
 
+#include "gui/windows/chatwindow.h"
+
 #include "gui/widgets/windowcontainer.h"
 
 #include "debug.h"

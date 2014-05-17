@@ -56,6 +56,7 @@
 #include "gui/fonts/font.h"
 
 #include "gui/windows/botcheckerwindow.h"
+#include "gui/windows/chatwindow.h"
 #include "gui/windows/debugwindow.h"
 #include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/emotewindow.h"

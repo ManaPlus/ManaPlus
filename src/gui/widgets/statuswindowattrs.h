@@ -25,7 +25,16 @@
 
 #include "gui/widgets/container.h"
 
+#include "gui/widgets/label.h"
+
+#include "events/actionevent.h"
+
+#include "listeners/actionlistener.h"
+
 #include "localconsts.h"
+
+class Button;
+class LayoutHelper;
 
 class AttrDisplay : public Container
 {

@@ -23,10 +23,27 @@
 
 #include "gui/widgets/tabs/socialtab.h"
 
+#include "actormanager.h"
+#include "configuration.h"
+
+#include "gui/models/beingslistmodel.h"
+
+#include "gui/windows/outfitwindow.h"
+
+#include "being/localplayer.h"
+
+#include "input/keyboardconfig.h"
+
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
+#include "resources/map/map.h"
+#include "resources/map/mapitem.h"
+#include "resources/map/speciallayer.h"
+
 #include "localconsts.h"
+
+class Avatar;
 
 class SocialNavigationTab final : public SocialTab
 {

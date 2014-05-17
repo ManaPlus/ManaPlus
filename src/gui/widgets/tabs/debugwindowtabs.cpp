@@ -23,7 +23,6 @@
 #include "gui/widgets/tabs/debugwindowtabs.h"
 
 #include "game.h"
-#include "main.h"
 
 #include "being/localplayer.h"
 
@@ -31,13 +30,10 @@
 
 #include "gui/viewport.h"
 
-#include "gui/windows/setupwindow.h"
-
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layoutcell.h"
 #include "gui/widgets/layouthelper.h"
-#include "gui/widgets/tabbedarea.h"
 
 #include "resources/imagehelper.h"
 
@@ -45,7 +41,6 @@
 
 #include "net/packetcounters.h"
 
-#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 #include "utils/timer.h"

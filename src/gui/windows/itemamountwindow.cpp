@@ -45,7 +45,6 @@
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/icon.h"
 #include "gui/widgets/inttextfield.h"
-#include "gui/widgets/layoutcell.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/slider.h"
 

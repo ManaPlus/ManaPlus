@@ -49,6 +49,7 @@
 
 #include "gui/popups/speechbubble.h"
 
+#include "gui/windows/chatwindow.h"
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"

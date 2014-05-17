@@ -37,9 +37,10 @@
 #include <vector>
 
 class Button;
-class ButtonInfo;
-class ButtonText;
 class TextPopup;
+
+struct ButtonInfo;
+struct ButtonText;
 
 /**
  * The window menu. Allows showing and hiding many of the different windows

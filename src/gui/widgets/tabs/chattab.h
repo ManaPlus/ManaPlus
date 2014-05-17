@@ -23,9 +23,10 @@
 #ifndef GUI_WIDGETS_TABS_CHATTAB_H
 #define GUI_WIDGETS_TABS_CHATTAB_H
 
-#include "gui/windows/chatwindow.h"
+#include "gui/chatmsgtype.h"
 
 #include "gui/widgets/browserbox.h"
+
 #include "gui/widgets/tabs/tab.h"
 
 #include "localconsts.h"

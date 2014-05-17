@@ -34,7 +34,6 @@
 
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/chardeleteconfirm.h"
-#include "gui/windows/confirmdialog.h"
 #include "gui/windows/logindialog.h"
 #include "gui/windows/okdialog.h"
 #include "gui/windows/textdialog.h"
@@ -44,7 +43,6 @@
 #include "gui/widgets/characterviewnormal.h"
 #include "gui/widgets/characterviewsmall.h"
 #include "gui/widgets/containerplacer.h"
-#include "gui/widgets/layoutcell.h"
 
 #include "net/logindata.h"
 #include "net/loginhandler.h"

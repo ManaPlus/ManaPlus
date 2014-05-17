@@ -22,9 +22,11 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
+#include "gui/windows/socialwindow.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

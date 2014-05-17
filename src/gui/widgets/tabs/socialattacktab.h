@@ -23,64 +23,20 @@
 
 #include "gui/widgets/tabs/socialtab.h"
 
+#include "actormanager.h"
+
+#include "being/localplayer.h"
+
+#include "gui/models/beingslistmodel.h"
+
+#include "gui/widgets/tabs/socialtabbase.h"
+
+#include "resources/map/mapitem.h"
+
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "localconsts.h"
-
-class BeingsListModel;
-
-#define addAvatars(mob, str, type) \
-{\
-    ava = new Avatar(str);\
-    ava->setOnline(false);\
-    ava->setLevel(-1);\
-    ava->setType(MapItem::SEPARATOR);\
-    ava->setX(0);\
-    ava->setY(0);\
-    avatars->push_back(ava);\
-    mobs = actorManager->get##mob##s();\
-    i = mobs.begin();\
-    i_end = mobs.end();\
-    while (i != i_end)\
-    {\
-        std::string name;\
-        int level = -1;\
-        if (*i == "")\
-        {\
-            name = _("(default)");\
-            level = 0;\
-        }\
-        else\
-        {\
-            name = *i;\
-        }\
-        ava = new Avatar(name);\
-        ava->setOnline(true);\
-        ava->setLevel(level);\
-        ava->setType(MapItem::type);\
-        ava->setX(0);\
-        ava->setY(0);\
-        avatars->push_back(ava);\
-        ++ i;\
-    }\
-}
-
-#define updateAtkListStart() \
-    if (!socialWindow || !player_node || !actorManager)\
-        return;\
-    std::vector<Avatar*> *const avatars = mBeings->getMembers();\
-    std::vector<Avatar*>::iterator ia = avatars->begin();\
-    while (ia != avatars->end())\
-    {\
-        delete *ia;\
-        ++ ia;\
-    }\
-    avatars->clear();\
-    Avatar *ava = nullptr;\
-    std::list<std::string> mobs;\
-    std::list<std::string>::const_iterator i;\
-    std::list<std::string>::const_iterator i_end;
 
 class SocialAttackTab final : public SocialTab
 {

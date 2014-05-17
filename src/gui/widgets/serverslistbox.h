@@ -25,6 +25,10 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/theme.h"
+
+#include "gui/widgets/listbox.h"
+
 #include "gui/models/serverslistmodel.h"
 
 #include "localconsts.h"

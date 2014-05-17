@@ -25,13 +25,13 @@
 
 #include "gui/windows/skilldialog.h"
 
+#include "gui/widgets/skilllistbox.h"
+
 #include "gui/widgets/tabs/tab.h"
 
 #include "utils/delete2.h"
 
 #include "localconsts.h"
-
-class SkillListBox;
 
 class SkillTab final : public Tab
 {

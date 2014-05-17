@@ -23,8 +23,21 @@
 
 #include "gui/widgets/tabs/socialtab.h"
 
+#include "actormanager.h"
+#include "avatar.h"
+
+#include "being/actortype.h"
+#include "being/playerrelations.h"
+
+#include "gui/models/beingslistmodel.h"
+
+#include "gui/windows/whoisonline.h"
+
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
+
+#include <algorithm>
 
 #include "localconsts.h"
 

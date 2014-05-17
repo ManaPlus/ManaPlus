@@ -24,6 +24,9 @@
 
 #include "gui/windows/socialwindow.h"
 
+#include "gui/windows/confirmdialog.h"
+#include "gui/windows/textdialog.h"
+
 #include "gui/widgets/avatarlistbox.h"
 #include "gui/widgets/scrollarea.h"
 
@@ -32,8 +35,6 @@
 #include "localconsts.h"
 
 class AvatarListModel;
-class ConfirmDialog;
-class TextDialog;
 
 class SocialTab : public Tab
 {

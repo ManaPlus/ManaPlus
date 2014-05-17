@@ -32,6 +32,8 @@
 
 #include "gui/windows/skilldialog.h"
 
+#include "resources/skillconsts.h"
+
 #include "debug.h"
 
 ItemShortcut *itemShortcut[SHORTCUT_TABS];

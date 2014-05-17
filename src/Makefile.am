@@ -91,6 +91,7 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      resources/sdlimagehelper.h \
 	      resources/sdlmusic.cpp \
 	      resources/sdlmusic.h \
+	      resources/skillconsts.h \
 	      resources/soundeffect.cpp \
 	      resources/soundeffect.h \
 	      resources/subimage.cpp \
@@ -371,6 +372,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/tabs/socialpickuptab.h \
 	      gui/widgets/tabs/socialplayerstab.h \
 	      gui/widgets/tabs/socialtab.h \
+	      gui/widgets/tabs/socialtabbase.h \
 	      gui/widgets/tabs/tab.cpp \
 	      gui/widgets/tabs/tab.h \
 	      gui/widgets/tabbedarea.cpp \

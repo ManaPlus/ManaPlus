@@ -28,6 +28,7 @@
 
 #include "being/localplayer.h"
 
+#include "gui/windows/chatwindow.h"
 #include "gui/windows/socialwindow.h"
 
 #include "net/messagein.h"

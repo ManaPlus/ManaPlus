@@ -46,6 +46,7 @@
 #include "gui/widgets/skillinfo.h"
 
 #include "resources/image.h"
+#include "resources/skillconsts.h"
 
 #include "utils/delete2.h"
 

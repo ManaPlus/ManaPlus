@@ -35,12 +35,12 @@
 
 #include "gui/widgets/tabs/chattab.h"
 
+#include "gui/windows/chatwindow.h"
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/socialwindow.h"
 
 #include "input/inputmanager.h"
 
-#include "utils/checkutils.h"
 #include "utils/gettext.h"
 
 #include "net/net.h"

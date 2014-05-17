@@ -67,22 +67,15 @@
 #ifndef GUI_FONTS_FONT_H
 #define GUI_FONTS_FONT_H
 
-#include "gui/color.h"
-
 #include "gui/fonts/textchunklist.h"
-#include "gui/fonts/textchunksmall.h"
 
 #include <SDL_ttf.h>
 
-#include <map>
 #include <string>
 
 #include "localconsts.h"
 
-class Color;
 class Graphics;
-class Image;
-class TextChunk;
 
 const unsigned int CACHES_NUMBER = 256;
 

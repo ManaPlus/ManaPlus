@@ -31,7 +31,6 @@
 #include "gui/widgets/shortcutcontainer.h"
 
 #include "gui/widgets/tabs/shortcuttab.h"
-#include "gui/widgets/tabs/tab.h"
 
 #include "utils/delete2.h"
 

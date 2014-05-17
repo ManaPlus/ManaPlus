@@ -24,6 +24,10 @@
 
 #include "gui/widgets/tabs/socialtab.h"
 
+#include "party.h"
+
+#include "being/localplayer.h"
+
 #include "net/net.h"
 #include "net/partyhandler.h"
 

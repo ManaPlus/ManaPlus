@@ -27,6 +27,8 @@
 
 #include "configuration.h"
 
+#include "gui/windows/emotewindow.h"
+
 #include "gui/widgets/textfield.h"
 
 #include "localconsts.h"

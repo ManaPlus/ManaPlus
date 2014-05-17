@@ -24,8 +24,13 @@
 
 #include "gui/widgets/tabs/socialtab.h"
 
+#include "guild.h"
+
+#include "being/localplayer.h"
+
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "localconsts.h"
 

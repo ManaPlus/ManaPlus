@@ -23,6 +23,14 @@
 
 #include "gui/widgets/tabs/socialtab.h"
 
+#include "actormanager.h"
+
+#include "being/localplayer.h"
+
+#include "gui/models/beingslistmodel.h"
+
+#include "gui/widgets/tabs/socialtabbase.h"
+
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 

@@ -23,7 +23,21 @@
 
 #include "gui/widgets/tabs/socialtab.h"
 
+#include "actormanager.h"
+#include "party.h"
+
+#include "being/being.h"
+
+#include "gui/models/beingslistmodel.h"
+
+#include "utils/gettext.h"
+#include "utils/delete2.h"
+#include "utils/stringutils.h"
+
 #include "localconsts.h"
+
+class Avatar;
+class Being;
 
 class SocialPlayersTab final : public SocialTab
 {

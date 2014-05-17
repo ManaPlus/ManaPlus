@@ -21,36 +21,20 @@
 
 #include "gui/windows/socialwindow.h"
 
-#include "actormanager.h"
 #include "configuration.h"
 #include "guild.h"
 #include "guildmanager.h"
-#include "party.h"
-
-#include "resources/map/map.h"
-#include "resources/map/mapitem.h"
-#include "resources/map/speciallayer.h"
 
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
-
-#include "input/keyboardconfig.h"
-
-#include "gui/models/beingslistmodel.h"
 
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/okdialog.h"
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/textdialog.h"
-#include "gui/windows/whoisonline.h"
 
-#include "gui/windows/outfitwindow.h"
-
-#include "gui/widgets/avatarlistbox.h"
 #include "gui/widgets/button.h"
-#include "gui/widgets/browserbox.h"
 #include "gui/widgets/label.h"
-#include "gui/widgets/popup.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabbedarea.h"
 

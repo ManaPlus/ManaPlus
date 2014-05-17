@@ -34,6 +34,8 @@
 #include "net/net.h"
 #include "net/partyhandler.h"
 
+#include "gui/windows/chatwindow.h"
+
 #include "utils/gettext.h"
 
 #include "debug.h"

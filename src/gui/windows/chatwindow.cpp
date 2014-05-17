@@ -60,7 +60,6 @@
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/textfield.h"
 
 #include "gui/widgets/tabs/langtab.h"
 #include "gui/widgets/tabs/tradetab.h"

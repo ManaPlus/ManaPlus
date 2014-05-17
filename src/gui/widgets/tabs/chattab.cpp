@@ -34,6 +34,7 @@
 
 #include "gui/chatlog.h"
 
+#include "gui/windows/chatwindow.h"
 #include "gui/windows/helpwindow.h"
 
 #include "gui/widgets/scrollarea.h"

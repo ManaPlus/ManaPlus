@@ -32,7 +32,6 @@
 
 #include "localconsts.h"
 
-class Color;
 class Image;
 
 class TextChunk final
