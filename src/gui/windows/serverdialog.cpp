@@ -31,8 +31,9 @@
 
 #include "input/keydata.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/models/serverslistmodel.h"
 

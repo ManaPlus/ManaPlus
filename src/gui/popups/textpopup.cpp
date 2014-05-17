@@ -25,7 +25,7 @@
 
 #include "gui/widgets/label.h"
 
-#include "gui/font.h"
+#include "gui/fonts/font.h"
 
 #include "debug.h"
 

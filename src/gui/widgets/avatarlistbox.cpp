@@ -27,10 +27,11 @@
 
 #include "being/localplayer.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/skin.h"
 #include "gui/viewport.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/models/avatarlistmodel.h"
 

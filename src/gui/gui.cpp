@@ -66,11 +66,12 @@
 #include "gui/gui.h"
 
 #include "gui/focushandler.h"
-#include "gui/font.h"
 #include "gui/palette.h"
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
 #include "gui/viewport.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/widgets/window.h"
 

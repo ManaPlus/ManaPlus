@@ -425,8 +425,8 @@ SET(SRCS
     gui/widgets/tabs/setup_visual.cpp
     gui/widgets/tabs/setup_visual.h
     gui/setupactiondata.h
-    gui/font.cpp
-    gui/font.h
+    gui/fonts/font.cpp
+    gui/fonts/font.h
     gui/windows/shopwindow.cpp
     gui/windows/shopwindow.h
     gui/windows/shortcutwindow.cpp

@@ -72,9 +72,10 @@
 #include "listeners/selectionlistener.h"
 
 #include "gui/focushandler.h"
-#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/skin.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/models/listmodel.h"
 

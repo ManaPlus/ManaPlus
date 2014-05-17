@@ -27,8 +27,9 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/font.h"
 #include "gui/viewport.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/popups/textpopup.h"
 

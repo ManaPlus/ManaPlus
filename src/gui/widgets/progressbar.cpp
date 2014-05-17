@@ -25,9 +25,10 @@
 #include "client.h"
 #include "graphicsvertexes.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/skin.h"
+
+#include "gui/fonts/font.h"
 
 #include "utils/delete2.h"
 

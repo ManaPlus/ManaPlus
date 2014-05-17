@@ -28,9 +28,10 @@
 
 #include "input/keydata.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/skin.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/models/extendedlistmodel.h"
 

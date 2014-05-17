@@ -25,8 +25,9 @@
 
 #include "net/serverinfo.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/windows/serverdialog.h"
 

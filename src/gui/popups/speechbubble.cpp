@@ -23,10 +23,11 @@
 
 #include "gui/popups/speechbubble.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/skin.h"
 #include "gui/viewport.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/label.h"

@@ -26,9 +26,10 @@
 #include "configuration.h"
 #include "textmanager.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/theme.h"
+
+#include "gui/fonts/font.h"
 
 #include "resources/image.h"
 

@@ -39,7 +39,8 @@
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
-#include "gui/font.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/popupmenu.h"

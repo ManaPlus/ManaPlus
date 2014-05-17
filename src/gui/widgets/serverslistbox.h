@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_SERVERSLISTBOX_H
 #define GUI_WIDGETS_SERVERSLISTBOX_H
 
-#include "gui/font.h"
+#include "gui/fonts/font.h"
 
 #include "gui/models/serverslistmodel.h"
 

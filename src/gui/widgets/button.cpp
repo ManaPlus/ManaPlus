@@ -75,10 +75,11 @@
 #include "resources/image.h"
 #include "resources/imageset.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/skin.h"
 #include "gui/rect.h"
+
+#include "gui/fonts/font.h"
 
 #include "utils/delete2.h"
 

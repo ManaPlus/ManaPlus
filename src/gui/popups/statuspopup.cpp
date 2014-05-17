@@ -33,7 +33,7 @@
 
 #include "utils/stringutils.h"
 
-#include "gui/font.h"
+#include "gui/fonts/font.h"
 
 #include "debug.h"
 

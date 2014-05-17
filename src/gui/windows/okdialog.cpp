@@ -28,9 +28,9 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/textbox.h"
 
-#include "utils/gettext.h"
+#include "gui/fonts/font.h"
 
-#include "gui/font.h"
+#include "utils/gettext.h"
 
 #include "debug.h"
 

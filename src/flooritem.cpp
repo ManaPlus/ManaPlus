@@ -26,9 +26,10 @@
 
 #include "render/graphics.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/userpalette.h"
+
+#include "gui/fonts/font.h"
 
 #include "resources/iteminfo.h"
 

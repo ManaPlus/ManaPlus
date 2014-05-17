@@ -27,8 +27,9 @@
 #include "item.h"
 #include "units.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/widgets/icon.h"
 #include "gui/widgets/label.h"

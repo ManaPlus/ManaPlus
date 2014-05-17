@@ -49,10 +49,11 @@
 #include "input/keyboardconfig.h"
 
 #include "gui/chatconsts.h"
-#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/viewport.h"
 #include "gui/windowmenu.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/debugwindow.h"

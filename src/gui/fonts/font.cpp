@@ -64,7 +64,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "gui/font.h"
+#include "gui/fonts/font.h"
 
 #include "logger.h"
 #include "main.h"

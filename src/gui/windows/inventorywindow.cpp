@@ -33,9 +33,10 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/viewport.h"
+
+#include "gui/fonts/font.h"
 
 #include "gui/models/sortlistmodelinv.h"
 

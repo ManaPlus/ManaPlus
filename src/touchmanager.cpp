@@ -26,9 +26,10 @@
 
 #include "input/mouseinput.h"
 
-#include "gui/font.h"
 #include "gui/gui.h"
 #include "gui/skin.h"
+
+#include "gui/fonts/font.h"
 
 #include "input/inputmanager.h"
 

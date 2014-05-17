@@ -64,8 +64,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GUI_FONT_H
-#define GUI_FONT_H
+#ifndef GUI_FONTS_FONT_H
+#define GUI_FONTS_FONT_H
 
 #include "gui/color.h"
 
@@ -211,4 +211,4 @@ class Font final
 extern int sdlTextChunkCnt;
 #endif
 
-#endif  // GUI_FONT_H
+#endif  // GUI_FONTS_FONT_H
