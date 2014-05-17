@@ -40,6 +40,9 @@
 
 #include "input/inputmanager.h"
 
+#include "gui/buttontext.h"
+#include "gui/viewport.h"
+
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/inventorywindow.h"
@@ -53,8 +56,6 @@
 #include "gui/windows/textdialog.h"
 #include "gui/windows/tradewindow.h"
 #include "gui/windowmenu.h"
-
-#include "gui/viewport.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"

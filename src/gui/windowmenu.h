@@ -38,21 +38,8 @@
 
 class Button;
 class ButtonInfo;
+class ButtonText;
 class TextPopup;
-
-struct ButtonText final
-{
-    ButtonText(const std::string &text0, const int key0) :
-        text(text0),
-        key(key0)
-    {
-    }
-
-    A_DELETE_COPY(ButtonText)
-
-    std::string text;
-    int key;
-};
 
 /**
  * The window menu. Allows showing and hiding many of the different windows

@@ -27,6 +27,7 @@
 #include "input/inputmanager.h"
 
 #include "gui/buttoninfo.h"
+#include "gui/buttontext.h"
 #include "gui/skin.h"
 #include "gui/viewport.h"
 
