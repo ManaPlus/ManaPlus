@@ -46,6 +46,7 @@
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/statuswindowattrs.h"
 #include "gui/widgets/vertcontainer.h"
 
 #include "net/net.h"
@@ -58,91 +59,6 @@
 #include <SDL_timer.h>
 
 #include "debug.h"
-
-class AttrDisplay : public Container
-{
-    public:
-        enum Type
-        {
-            DERIVED = 0,
-            CHANGEABLE,
-            UNKNOWN
-        };
-
-        A_DELETE_COPY(AttrDisplay)
-
-        virtual ~AttrDisplay();
-
-        virtual std::string update();
-
-        virtual Type getType() const
-        { return UNKNOWN; }
-
-        std::string getValue() const
-        {
-            if (!mValue)
-                return "-";
-            else
-                return mValue->getCaption();
-        }
-
-        const std::string &getShortName() const
-        { return mShortName; }
-
-    protected:
-        AttrDisplay(const Widget2 *const widget,
-                    const int id,
-                    const std::string &restrict name,
-                    const std::string &restrict shortName);
-
-        const int mId;
-        const std::string mName;
-        const std::string mShortName;
-
-        LayoutHelper *mLayout;
-        Label *mLabel;
-        Label *mValue;
-};
-
-class DerDisplay final : public AttrDisplay
-{
-    public:
-        DerDisplay(const Widget2 *const widget,
-                   const int id, const std::string &restrict name,
-                   const std::string &restrict shortName);
-
-        A_DELETE_COPY(DerDisplay)
-
-        Type getType() const override final
-        { return DERIVED; }
-};
-
-class ChangeDisplay final : public AttrDisplay,
-                            public ActionListener
-{
-    public:
-        ChangeDisplay(const Widget2 *const widget,
-                      const int id, const std::string &restrict name,
-                      const std::string &restrict shortName);
-
-        A_DELETE_COPY(ChangeDisplay)
-
-        std::string update() override final;
-
-        Type getType() const override final
-        { return CHANGEABLE; }
-
-        void setPointsNeeded(const int needed);
-
-        void action(const ActionEvent &event) override final;
-
-    private:
-        int mNeeded;
-
-        Label *mPoints;
-        Button *mDec;
-        Button *mInc;
-};
 
 StatusWindow::StatusWindow() :
     Window(player_node ? player_node->getName() :

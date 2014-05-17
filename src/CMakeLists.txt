@@ -183,6 +183,7 @@ SET(SRCS
     gui/widgets/itemshortcutcontainer.h
     gui/widgets/spellshortcutcontainer.cpp
     gui/widgets/spellshortcutcontainer.h
+    gui/widgets/statuswindowattrs.h
     gui/widgets/label.cpp
     gui/widgets/label.h
     gui/widgets/tabs/langtab.cpp
