@@ -55,6 +55,7 @@
 #include "gui/widgets/tabbedarea.h"
 
 #include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/socialattacktab.h"
 #include "gui/widgets/tabs/socialguildtab.h"
 #include "gui/widgets/tabs/socialguildtab2.h"
 #include "gui/widgets/tabs/socialnavigationtab.h"
@@ -98,102 +99,6 @@ namespace
             }
     } friendSorter;
 }  // namespace
-
-#define addAvatars(mob, str, type) \
-{\
-    ava = new Avatar(str);\
-    ava->setOnline(false);\
-    ava->setLevel(-1);\
-    ava->setType(MapItem::SEPARATOR);\
-    ava->setX(0);\
-    ava->setY(0);\
-    avatars->push_back(ava);\
-    mobs = actorManager->get##mob##s();\
-    i = mobs.begin();\
-    i_end = mobs.end();\
-    while (i != i_end)\
-    {\
-        std::string name;\
-        int level = -1;\
-        if (*i == "")\
-        {\
-            name = _("(default)");\
-            level = 0;\
-        }\
-        else\
-        {\
-            name = *i;\
-        }\
-        ava = new Avatar(name);\
-        ava->setOnline(true);\
-        ava->setLevel(level);\
-        ava->setType(MapItem::type);\
-        ava->setX(0);\
-        ava->setY(0);\
-        avatars->push_back(ava);\
-        ++ i;\
-    }\
-}
-
-#define updateAtkListStart() \
-    if (!socialWindow || !player_node || !actorManager)\
-        return;\
-    std::vector<Avatar*> *const avatars = mBeings->getMembers();\
-    std::vector<Avatar*>::iterator ia = avatars->begin();\
-    while (ia != avatars->end())\
-    {\
-        delete *ia;\
-        ++ ia;\
-    }\
-    avatars->clear();\
-    Avatar *ava = nullptr;\
-    std::list<std::string> mobs;\
-    std::list<std::string>::const_iterator i;\
-    std::list<std::string>::const_iterator i_end;
-
-class SocialAttackTab final : public SocialTab
-{
-public:
-    SocialAttackTab(const Widget2 *const widget,
-                    const bool showBackground) :
-        SocialTab(widget),
-        mBeings(new BeingsListModel)
-    {
-        mList = new AvatarListBox(this, mBeings);
-        mList->postInit();
-        mScroll = new ScrollArea(this, mList, showBackground,
-            "social_background.xml");
-
-        mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_AUTO);
-        mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
-
-        // TRANSLATORS: Attack filter tab name in social window. Should be small
-        setCaption(_("Atk"));
-    }
-
-    A_DELETE_COPY(SocialAttackTab)
-
-    ~SocialAttackTab()
-    {
-        delete2(mList)
-        delete2(mScroll)
-        delete2(mBeings)
-    }
-
-    void updateList() override final
-    {
-        updateAtkListStart();
-        // TRANSLATORS: mobs group name in social window
-        addAvatars(PriorityAttackMob, _("Priority mobs"), PRIORITY);
-        // TRANSLATORS: mobs group name in social window
-        addAvatars(AttackMob, _("Attack mobs"), ATTACK);
-        // TRANSLATORS: mobs group name in social window
-        addAvatars(IgnoreAttackMob, _("Ignore mobs"), IGNORE_);
-    }
-
-private:
-    BeingsListModel *mBeings;
-};
 
 class SocialPickupTab final : public SocialTab
 {
