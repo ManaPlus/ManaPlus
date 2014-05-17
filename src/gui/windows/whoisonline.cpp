@@ -67,15 +67,18 @@
 #undef malloc
 #endif
 
-class NameFunctuator final
+namespace
 {
-    public:
-        bool operator()(const OnlinePlayer *left,
-                        const OnlinePlayer *right) const
-        {
-            return (compareStrI(left->getNick(), right->getNick()) < 0);
-        }
-} nameCompare;
+    class NameFunctuator final
+    {
+        public:
+            bool operator()(const OnlinePlayer *left,
+                            const OnlinePlayer *right) const
+            {
+                return (compareStrI(left->getNick(), right->getNick()) < 0);
+            }
+    } nameCompare;
+}  // namespace
 
 WhoIsOnline::WhoIsOnline() :
     // TRANSLATORS: who is online window name
