@@ -283,13 +283,13 @@ bool TouchManager::processEvent(const MouseInput &mouseInput)
 
             switch (mouseInput.getType())
             {
-                case MouseInput::PRESSED:
+                case MouseEventType::PRESSED:
                     if (!item->eventPressed.empty())
                         executeAction(item->eventPressed);
                     else if (item->funcPressed)
                         item->funcPressed(event);
                     break;
-                case MouseInput::RELEASED:
+                case MouseEventType::RELEASED:
                     if (!item->eventReleased.empty())
                         executeAction(item->eventReleased);
                     else if (item->funcReleased)

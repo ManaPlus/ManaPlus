@@ -109,7 +109,7 @@ impHandler(padClick)
 
 impHandler(padEvents)
 {
-    if (mouseInput.getType() == MouseInput::MOVED)
+    if (mouseInput.getType() == MouseEventType::MOVED)
     {
         if (padClicked)
             moveChar(mouseInput.getX(), mouseInput.getY());

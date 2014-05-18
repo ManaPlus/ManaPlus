@@ -166,9 +166,9 @@ void SDLInput::pushInput(const SDL_Event &event)
 #endif
                 mouseInput.setButton(static_cast<uint32_t>(-1));
                 if (y > 0)
-                    mouseInput.setType(MouseInput::WHEEL_MOVED_UP);
+                    mouseInput.setType(MouseEventType::WHEEL_MOVED_UP);
                 else
-                    mouseInput.setType(MouseInput::WHEEL_MOVED_DOWN);
+                    mouseInput.setType(MouseEventType::WHEEL_MOVED_DOWN);
                 mouseInput.setTimeStamp(SDL_GetTicks());
                 mMouseInputQueue.push(mouseInput);
             }
@@ -204,12 +204,12 @@ void SDLInput::pushInput(const SDL_Event &event)
 
 #ifndef USE_SDL2
             if (event.button.button == SDL_BUTTON_WHEELDOWN)
-                mouseInput.setType(MouseInput::WHEEL_MOVED_DOWN);
+                mouseInput.setType(MouseEventType::WHEEL_MOVED_DOWN);
             else if (event.button.button == SDL_BUTTON_WHEELUP)
-                mouseInput.setType(MouseInput::WHEEL_MOVED_UP);
+                mouseInput.setType(MouseEventType::WHEEL_MOVED_UP);
             else
 #endif
-                mouseInput.setType(MouseInput::PRESSED);
+                mouseInput.setType(MouseEventType::PRESSED);
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
             break;
@@ -231,7 +231,7 @@ void SDLInput::pushInput(const SDL_Event &event)
 #endif
 #endif
             mouseInput.setButton(convertMouseButton(event.button.button));
-            mouseInput.setType(MouseInput::RELEASED);
+            mouseInput.setType(MouseEventType::RELEASED);
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
             break;
@@ -252,7 +252,7 @@ void SDLInput::pushInput(const SDL_Event &event)
 #endif
 #endif
             mouseInput.setButton(MouseButton::EMPTY);
-            mouseInput.setType(MouseInput::MOVED);
+            mouseInput.setType(MouseEventType::MOVED);
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
             break;
@@ -272,7 +272,7 @@ void SDLInput::pushInput(const SDL_Event &event)
                     mouseInput.setX(-1);
                     mouseInput.setY(-1);
                     mouseInput.setButton(MouseButton::EMPTY);
-                    mouseInput.setType(MouseInput::MOVED);
+                    mouseInput.setType(MouseEventType::MOVED);
                     mMouseInputQueue.push(mouseInput);
                 }
             }
@@ -531,10 +531,10 @@ void SDLInput::simulateMouseClick(const int x, const int y,
     mouseInput.setY(y);
     mouseInput.setReal(x, y);
     mouseInput.setButton(button);
-    mouseInput.setType(MouseInput::PRESSED);
+    mouseInput.setType(MouseEventType::PRESSED);
     mouseInput.setTimeStamp(SDL_GetTicks());
     mMouseInputQueue.push(mouseInput);
-    mouseInput.setType(MouseInput::RELEASED);
+    mouseInput.setType(MouseEventType::RELEASED);
     mouseInput.setTimeStamp(SDL_GetTicks());
     mMouseInputQueue.push(mouseInput);
 }

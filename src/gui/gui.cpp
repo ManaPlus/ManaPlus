@@ -984,19 +984,19 @@ void Gui::handleMouseInput()
 #endif
         switch (mouseInput.getType())
         {
-            case MouseInput::PRESSED:
+            case MouseEventType::PRESSED:
                 handleMousePressed(mouseInput);
                 break;
-            case MouseInput::RELEASED:
+            case MouseEventType::RELEASED:
                 handleMouseReleased(mouseInput);
                 break;
-            case MouseInput::MOVED:
+            case MouseEventType::MOVED:
                 handleMouseMoved(mouseInput);
                 break;
-            case MouseInput::WHEEL_MOVED_DOWN:
+            case MouseEventType::WHEEL_MOVED_DOWN:
                 handleMouseWheelMovedDown(mouseInput);
                 break;
-            case MouseInput::WHEEL_MOVED_UP:
+            case MouseEventType::WHEEL_MOVED_UP:
                 handleMouseWheelMovedUp(mouseInput);
                 break;
             default:

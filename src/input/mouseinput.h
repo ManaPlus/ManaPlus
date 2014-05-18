@@ -67,6 +67,7 @@
 #include "input/mouseinput.h"
 
 #include "events/mousebutton.h"
+#include "events/mouseeventtype.h"
 
 #include "localconsts.h"
 
@@ -74,7 +75,7 @@ class MouseInput final
 {
     public:
         MouseInput() :
-            mType(0),
+            mType(MouseEventType::MOVED),
             mButton(MouseButton::EMPTY),
             mTimeStamp(0),
             mX(0),
@@ -86,25 +87,12 @@ class MouseInput final
         ~MouseInput()
         { }
 
-        /**
-         * Mouse input event types. This enum partially corresponds
-         * to the enum with event types in MouseEvent for easy mapping.
-         */
-        enum
-        {
-            MOVED = 0,
-            PRESSED,
-            RELEASED,
-            WHEEL_MOVED_DOWN,
-            WHEEL_MOVED_UP
-        };
-
-        void setType(unsigned int type)
+        void setType(MouseEventType::Type type)
         {
             mType = type;
         }
 
-        unsigned int getType() const
+        MouseEventType::Type getType() const
         {
             return mType;
         }
@@ -176,7 +164,7 @@ class MouseInput final
         /**
          * Holds the type of the mouse input.
          */
-        unsigned int mType;
+        MouseEventType::Type mType;
 
         /**
          * Holds the button of the mouse input.
