@@ -18,13 +18,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_RENDERERS_H
-#define RENDER_RENDERERS_H
+#ifndef RENDER_RENDERTYPE_H
+#define RENDER_RENDERTYPE_H
 
-#include "render/rendertype.h"
+enum RenderType
+{
+    RENDER_SOFTWARE = 0,
+    RENDER_NORMAL_OPENGL = 1,
+    RENDER_SAFE_OPENGL = 2,
+    RENDER_GLES_OPENGL = 3,
+    RENDER_SDL2_DEFAULT = 4,
+    RENDER_NULL = 5,
+    RENDER_LAST
+};
 
-RenderType intToRenderType(const int mode);
-
-#define isBatchDrawRenders(val) (val) != RENDER_SAFE_OPENGL
-
-#endif  // RENDER_RENDERERS_H
+#endif  // RENDER_RENDERTYPE_H
