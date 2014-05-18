@@ -45,6 +45,7 @@
 #include "gui/widgets/playerbox.h"
 
 #include "resources/imageset.h"
+#include "resources/itemslot.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
@@ -240,7 +241,7 @@ void EquipmentWindow::draw(Graphics *graphics)
                                         // with maximum opacity
                 graphics->drawImage(image, box->x + mItemPadding,
                     box->y + mItemPadding);
-                if (i == EQUIP_PROJECTILE_SLOT)
+                if (i == ItemSlot::PROJECTILE_SLOT)
                 {
                     graphics->setColorAll(mLabelsColor, mLabelsColor2);
                     const std::string str = toString(item->getQuantity());

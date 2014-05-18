@@ -67,6 +67,7 @@
 #include "net/playerhandler.h"
 
 #include "resources/iteminfo.h"
+#include "resources/itemslot.h"
 
 #include "resources/db/emotedb.h"
 #include "resources/db/weaponsdb.h"
@@ -903,7 +904,7 @@ int LocalPlayer::getAttackRange() const
     }
     else
     {
-        const Item *const weapon = PlayerInfo::getEquipment(EQUIP_FIGHT1_SLOT);
+        const Item *const weapon = PlayerInfo::getEquipment(ItemSlot::FIGHT1_SLOT);
         if (weapon)
         {
             const ItemInfo &info = weapon->getInfo();
@@ -3459,7 +3460,7 @@ void LocalPlayer::imitateOutfit(const Being *const player,
             const int equipmentSlot = Net::getInventoryHandler()
                 ->convertFromServerSlot(sprite);
 //            logger->log("equipmentSlot: " + toString(equipmentSlot));
-            if (equipmentSlot == EQUIP_PROJECTILE_SLOT)
+            if (equipmentSlot == ItemSlot::PROJECTILE_SLOT)
                 return;
 
             const Item *const item = PlayerInfo::getEquipment(equipmentSlot);

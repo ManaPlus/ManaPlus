@@ -36,37 +36,6 @@ namespace ColorDB
     class ItemColor;
 }
 
-enum EquipmentSlot
-{
-    // Equipment rules:
-    // 1 Brest equipment
-    EQUIP_TORSO_SLOT = 0,
-    // 1 arms equipment
-    EQUIP_ARMS_SLOT = 1,
-    // 1 head equipment
-    EQUIP_HEAD_SLOT = 2,
-    // 1 legs equipment
-    EQUIP_LEGS_SLOT = 3,
-    // 1 feet equipment
-    EQUIP_FEET_SLOT = 4,
-    // 2 rings
-    EQUIP_RING1_SLOT = 5,
-    EQUIP_RING2_SLOT = 6,
-    // 1 necklace
-    EQUIP_NECKLACE_SLOT = 7,
-    // Fight:
-    //   2 one-handed weapons
-    //   or 1 two-handed weapon
-    //   or 1 one-handed weapon + 1 shield.
-    EQUIP_FIGHT1_SLOT = 8,
-    EQUIP_FIGHT2_SLOT = 9,
-    // Projectile:
-    //   this item does not amount to one, it only
-    //   indicates the chosen projectile.
-    EQUIP_PROJECTILE_SLOT = 10
-};
-
-
 /**
  * Enumeration of available Item types.
  */
