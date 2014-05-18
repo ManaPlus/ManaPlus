@@ -31,6 +31,7 @@
 #include "gui/themeinfo.h"
 
 #include "resources/dye.h"
+#include "resources/dyepalette.h"
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 

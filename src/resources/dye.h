@@ -30,63 +30,11 @@
 
 #include "localconsts.h"
 
+class DyePalette;
+
 const int dyePalateSize = 9;
 const int sPaleteIndex = 7;
 const int aPaleteIndex = 8;
-
-/**
- * Class for performing a linear interpolation between colors.
- */
-class DyePalette final
-{
-    public:
-        /**
-         * Creates a palette based on the given string.
-         * The string is either a file name or a sequence of hexadecimal RGB
-         * values separated by ',' and starting with '#'.
-         */
-        DyePalette(const std::string &pallete, const uint8_t blockSize);
-
-        A_DELETE_COPY(DyePalette)
-
-        /**
-         * Gets a pixel color depending on its intensity. First color is
-         * implicitly black (0, 0, 0).
-         */
-        void getColor(const int intensity, int color[3]) const;
-
-        /**
-         * Gets a pixel color depending on its intensity.
-         */
-        void getColor(double intensity, int color[3]) const;
-
-        /**
-         * replace colors for SDL for S dye.
-         */
-        void replaceSColor(uint32_t *restrict pixels, const int bufSize) const;
-
-        /**
-         * replace colors for SDL for S dye.
-         */
-        void replaceAColor(uint32_t *restrict pixels, const int bufSize) const;
-
-        /**
-         * replace colors for OpenGL for S dye.
-         */
-        void replaceSOGLColor(uint32_t *restrict pixels,
-                              const int bufSize) const;
-
-        /**
-         * replace colors for OpenGL for A dye.
-         */
-        void replaceAOGLColor(uint32_t *restrict pixels,
-                              const int bufSize) const;
-
-        static unsigned int hexDecode(const signed char c) A_WARN_UNUSED;
-
-    private:
-        std::vector<DyeColor> mColors;
-};
 
 /**
  * Class for dispatching pixel-recoloring amongst several palettes.

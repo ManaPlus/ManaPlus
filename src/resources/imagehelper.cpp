@@ -26,6 +26,7 @@
 #include "main.h"
 
 #include "resources/dye.h"
+#include "resources/dyepalette.h"
 
 #include "utils/sdlcheckutils.h"
 

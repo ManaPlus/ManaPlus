@@ -71,6 +71,8 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      resources/db/palettedb.h \
 	      resources/dye.cpp \
 	      resources/dye.h \
+	      resources/dyepalette.cpp \
+	      resources/dyepalette.h \
 	      resources/image.cpp \
 	      resources/image.h \
 	      resources/imagehelper.cpp \
@@ -639,6 +641,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/dye.cpp \
 	      resources/dye.h \
 	      resources/dyecolor.h \
+	      resources/dyepalette.cpp \
+	      resources/dyepalette.h \
 	      resources/db/emotedb.cpp \
 	      resources/db/emotedb.h \
 	      resources/fboinfo.h \

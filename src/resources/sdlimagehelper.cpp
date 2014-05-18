@@ -24,11 +24,11 @@
 
 #include "resources/sdlimagehelper.h"
 
-#include "resources/dye.h"
-
 #include "logger.h"
 #include "main.h"
 
+#include "resources/dye.h"
+#include "resources/dyepalette.h"
 #include "resources/image.h"
 
 #include "utils/sdlcheckutils.h"

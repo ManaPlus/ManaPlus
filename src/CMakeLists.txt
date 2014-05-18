@@ -533,6 +533,8 @@ SET(SRCS
     resources/dye.cpp
     resources/dye.h
     resources/dyecolor.h
+    resources/dyepalette.cpp
+    resources/dyepalette.h
     resources/db/emotedb.cpp
     resources/db/emotedb.h
     resources/fboinfo.h
