@@ -23,6 +23,8 @@
 #ifndef RESOURCES_ANIMATION_H
 #define RESOURCES_ANIMATION_H
 
+#include "resources/frame.h"
+
 #include <vector>
 #include <string>
 
@@ -30,28 +32,7 @@
 
 class Image;
 
-/**
- * A single frame in an animation, with a delay and an offset.
- */
-struct Frame final
-{
-    enum FrameType
-    {
-        ANIMATION = 0,
-        JUMP,
-        GOTO,
-        LABEL,
-        PAUSE
-    };
-
-    Image *image;
-    int delay;
-    int offsetX;
-    int offsetY;
-    int rand;
-    FrameType type;
-    std::string nextAction;
-};
+struct Frame;
 
 /**
  * An animation consists of several frames, each with their own delay and

@@ -637,6 +637,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/db/emotedb.cpp \
 	      resources/db/emotedb.h \
 	      resources/fboinfo.h \
+	      resources/frame.h \
 	      resources/image.cpp \
 	      resources/image.h \
 	      resources/imagehelper.cpp \
