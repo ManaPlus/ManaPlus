@@ -35,6 +35,7 @@
 
 #include "particle/particlecontainer.h"
 #include "particle/particlelist.h"
+#include "particle/particlevector.h"
 
 #include <set>
 #include <list>

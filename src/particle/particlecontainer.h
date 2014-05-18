@@ -23,12 +23,7 @@
 #ifndef PARTICLE_PARTICLECONTAINER_H
 #define PARTICLE_PARTICLECONTAINER_H
 
-#include <list>
-#include <vector>
-
 #include "localconsts.h"
-
-class Particle;
 
 /**
  * Set of particle effects.  May be stacked with other ParticleContainers.  All
@@ -37,71 +32,40 @@ class Particle;
  */
 class ParticleContainer
 {
-public:
-    /**
-     * Constructs a new particle container and assumes responsibility for
-     * its parent (for all operations defined herein, except when ending in `Locally')
-     *
-     * delParent means that the destructor should also free the parent.
-     */
-    explicit ParticleContainer(ParticleContainer *const parent = nullptr,
-                               const bool delParent = true);
+    public:
+        /**
+         * Constructs a new particle container and assumes responsibility for
+         * its parent (for all operations defined herein,
+         * except when ending in `Locally')
+         *
+         * delParent means that the destructor should also free the parent.
+         */
+        explicit ParticleContainer(ParticleContainer *const parent = nullptr,
+                                   const bool delParent = true);
 
-    A_DELETE_COPY(ParticleContainer)
+        A_DELETE_COPY(ParticleContainer)
 
-    virtual ~ParticleContainer();
+        virtual ~ParticleContainer();
 
-    /**
-     * Kills and removes all particle effects
-     */
-    void clear();
+        /**
+         * Kills and removes all particle effects
+         */
+        void clear();
 
-    /**
-     * Kills and removes all particle effects (only in this container)
-     */
-    virtual void clearLocally()
-    { }
+        /**
+         * Kills and removes all particle effects (only in this container)
+         */
+        virtual void clearLocally()
+        { }
 
-    /**
-     * Sets the positions of all elements
-     */
-    virtual void moveTo(const float x, const float y);
+        /**
+         * Sets the positions of all elements
+         */
+        virtual void moveTo(const float x, const float y);
 
-protected:
-    ParticleContainer *mNext;           /**< Contained container, if any */
-    bool mDelParent;                    /**< Delete mNext in destructor */
-};
-
-/**
- * Particle container with indexing facilities
- */
-class ParticleVector final : public ParticleContainer
-{
-public:
-    explicit ParticleVector(ParticleContainer *const parent = nullptr,
-                            const bool delParent = true);
-
-    A_DELETE_COPY(ParticleVector)
-
-    ~ParticleVector();
-
-    /**
-     * Sets a particle at a specified index.  Kills the previous particle
-     * there, if needed.
-     */
-    void setLocally(const int index, Particle *const particle);
-
-    /**
-     * Removes a particle at a specified index
-     */
-    void delLocally(const int index);
-
-    void clearLocally() override final;
-
-    void moveTo(const float x, const float y) override final;
-
-protected:
-    std::vector<Particle *> mIndexedElements;
+    protected:
+        ParticleContainer *mNext;           /**< Contained container, if any */
+        bool mDelParent;                    /**< Delete mNext in destructor */
 };
 
 #endif  // PARTICLE_PARTICLECONTAINER_H

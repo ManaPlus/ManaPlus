@@ -20,8 +20,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "particle/particle.h"
 #include "particle/particlecontainer.h"
+
+#include "particle/particle.h"
 
 #include "utils/delete2.h"
 
@@ -53,77 +54,4 @@ void ParticleContainer::moveTo(const float x, const float y)
 {
     if (mNext)
         mNext->moveTo(x, y);
-}
-
-// -- particle vector ----------------------------------------
-
-ParticleVector::ParticleVector(ParticleContainer *const parent,
-                               const bool delParent) :
-    ParticleContainer(parent, delParent),
-    mIndexedElements()
-{}
-
-ParticleVector::~ParticleVector()
-{}
-
-void ParticleVector::setLocally(const int index, Particle *const particle)
-{
-    if (index < 0)
-        return;
-
-    delLocally(index);
-
-    if (mIndexedElements.size() <= static_cast<size_t>(index))
-        mIndexedElements.resize(index + 1, nullptr);
-
-    if (particle)
-        particle->disableAutoDelete();
-    mIndexedElements[index] = particle;
-}
-
-void ParticleVector::delLocally(const int index)
-{
-    if (index < 0)
-        return;
-
-    if (mIndexedElements.size() <= static_cast<size_t>(index))
-        return;
-
-    Particle *const p = mIndexedElements[index];
-    if (p)
-    {
-        mIndexedElements[index] = nullptr;
-        p->kill();
-    }
-}
-
-void ParticleVector::clearLocally()
-{
-    for (unsigned int i = 0;
-         i < static_cast<unsigned int>(mIndexedElements.size());
-         i++)
-    {
-        delLocally(i);
-    }
-}
-
-void ParticleVector::moveTo(const float x, const float y)
-{
-    ParticleContainer::moveTo(x, y);
-
-    for (std::vector<Particle *>::iterator it = mIndexedElements.begin();
-         it != mIndexedElements.end(); ++it)
-    {
-        Particle *const p = *it;
-        if (p)
-        {
-            p->moveTo(x, y);
-
-            if (p->isExtinct())
-            {
-                p->kill();
-                *it = nullptr;
-            }
-        }
-    }
 }
