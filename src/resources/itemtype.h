@@ -1,0 +1,52 @@
+/*
+ *  The ManaPlus Client
+ *  Copyright (C) 2004-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
+ *  Copyright (C) 2011-2014  The ManaPlus Developers
+ *
+ *  This file is part of The ManaPlus Client.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef RESOURCES_ITEMTYPE_H
+#define RESOURCES_ITEMTYPE_H
+
+namespace ItemType
+{
+    /**
+     * Enumeration of available Item types.
+     */
+    enum Type
+    {
+        UNUSABLE = 0,
+        USABLE,
+        EQUIPMENT_ONE_HAND_WEAPON,
+        EQUIPMENT_TWO_HANDS_WEAPON,
+        EQUIPMENT_TORSO,
+        EQUIPMENT_ARMS,  // 5
+        EQUIPMENT_HEAD,
+        EQUIPMENT_LEGS,
+        EQUIPMENT_SHIELD,
+        EQUIPMENT_RING,
+        EQUIPMENT_NECKLACE,  // 10
+        EQUIPMENT_FEET,
+        EQUIPMENT_AMMO,
+        EQUIPMENT_CHARM,
+        SPRITE_RACE,
+        SPRITE_HAIR  // 15
+    };
+}  // namespace ItemType
+
+#endif  // RESOURCES_ITEMTYPE_H

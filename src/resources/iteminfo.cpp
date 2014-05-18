@@ -43,7 +43,7 @@ ItemInfo::ItemInfo() :
     mName(),
     mDescription(),
     mEffect(),
-    mType(ITEM_UNUSABLE),
+    mType(ItemType::UNUSABLE),
     mWeight(0),
     mView(0),
     mId(0),

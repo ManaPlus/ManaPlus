@@ -68,13 +68,13 @@ class ItemPopup final : public Popup
         TextBox *mItemDesc;
         TextBox *mItemEffect;
         TextBox *mItemWeight;
-        ItemType mItemType;
+        ItemType::Type mItemType;
         Icon *mIcon;
         std::string mLastName;
         int mLastId;
         unsigned char mLastColor;
 
-        void setLabelColor(Label *label, const ItemType type) const;
+        void setLabelColor(Label *label, const ItemType::Type type) const;
 };
 
 #endif  // GUI_POPUPS_ITEMPOPUP_H

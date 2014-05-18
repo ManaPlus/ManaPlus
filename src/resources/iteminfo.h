@@ -26,6 +26,7 @@
 #include "being/gender.h"
 
 #include "resources/cursor.h"
+#include "resources/itemtype.h"
 #include "resources/soundinfo.h"
 #include "resources/spritedef.h"
 
@@ -35,29 +36,6 @@ namespace ColorDB
 {
     class ItemColor;
 }
-
-/**
- * Enumeration of available Item types.
- */
-enum ItemType
-{
-    ITEM_UNUSABLE = 0,
-    ITEM_USABLE,
-    ITEM_EQUIPMENT_ONE_HAND_WEAPON,
-    ITEM_EQUIPMENT_TWO_HANDS_WEAPON,
-    ITEM_EQUIPMENT_TORSO,
-    ITEM_EQUIPMENT_ARMS,  // 5
-    ITEM_EQUIPMENT_HEAD,
-    ITEM_EQUIPMENT_LEGS,
-    ITEM_EQUIPMENT_SHIELD,
-    ITEM_EQUIPMENT_RING,
-    ITEM_EQUIPMENT_NECKLACE,  // 10
-    ITEM_EQUIPMENT_FEET,
-    ITEM_EQUIPMENT_AMMO,
-    ITEM_EQUIPMENT_CHARM,
-    ITEM_SPRITE_RACE,
-    ITEM_SPRITE_HAIR  // 15
-};
 
 // sprite, <itemfrom, itemto>
 typedef std::map<int, std::map<int, int> > SpriteToItemMap;
@@ -115,10 +93,10 @@ class ItemInfo final
         const std::string &getEffect() const A_WARN_UNUSED
         { return mEffect; }
 
-        void setType(const ItemType type)
+        void setType(const ItemType::Type type)
         { mType = type; }
 
-        ItemType getType() const A_WARN_UNUSED
+        ItemType::Type getType() const A_WARN_UNUSED
         { return mType; }
 
         void setWeight(const int weight)
@@ -289,7 +267,7 @@ class ItemInfo final
         std::string mName;
         std::string mDescription;   /**< Short description. */
         std::string mEffect;        /**< Description of effects. */
-        ItemType mType;             /**< Item type. */
+        ItemType::Type mType;       /**< Item type. */
         int mWeight;                /**< Weight in grams. */
         int mView;                  /**< Item ID of how this item looks. */
         int mId;                    /**< Item ID */

@@ -203,8 +203,8 @@ void setInventoryItem(const int index, const int id,
                       const int amount, const int refine)
 {
     bool equipment = false;
-    const ItemType itemType = ItemDB::get(id).getType();
-    if (itemType != ITEM_UNUSABLE && itemType != ITEM_USABLE)
+    const ItemType::Type itemType = ItemDB::get(id).getType();
+    if (itemType != ItemType::UNUSABLE && itemType != ItemType::USABLE)
         equipment = true;
     if (mInventory)
         mInventory->setItem(index, id, amount, refine, equipment);

@@ -553,6 +553,7 @@ SET(SRCS
     resources/iteminfo.h
     resources/iteminfo.cpp
     resources/itemslot.h
+    resources/itemtype.h
     resources/db/mapdb.cpp
     resources/db/mapdb.h
     resources/db/moddb.cpp

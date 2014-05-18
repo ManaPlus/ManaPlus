@@ -108,76 +108,76 @@ void ItemDB::setStatsList(const std::vector<ItemDB::Stat> &stats)
     extraStats = stats;
 }
 
-static ItemType itemTypeFromString(const std::string &name)
+static ItemType::Type itemTypeFromString(const std::string &name)
 {
     if (name == "generic" || name == "other")
     {
-        return ITEM_UNUSABLE;
+        return ItemType::UNUSABLE;
     }
     else if (name == "usable")
     {
-        return ITEM_USABLE;
+        return ItemType::USABLE;
     }
     else if (name == "equip-1hand")
     {
-        return ITEM_EQUIPMENT_ONE_HAND_WEAPON;
+        return ItemType::EQUIPMENT_ONE_HAND_WEAPON;
     }
     else if (name == "equip-2hand")
     {
-        return ITEM_EQUIPMENT_TWO_HANDS_WEAPON;
+        return ItemType::EQUIPMENT_TWO_HANDS_WEAPON;
     }
     else if (name == "equip-torso")
     {
-        return ITEM_EQUIPMENT_TORSO;
+        return ItemType::EQUIPMENT_TORSO;
     }
     else if (name == "equip-arms")
     {
-        return ITEM_EQUIPMENT_ARMS;
+        return ItemType::EQUIPMENT_ARMS;
     }
     else if (name == "equip-head")
     {
-        return ITEM_EQUIPMENT_HEAD;
+        return ItemType::EQUIPMENT_HEAD;
     }
     else if (name == "equip-legs")
     {
-        return ITEM_EQUIPMENT_LEGS;
+        return ItemType::EQUIPMENT_LEGS;
     }
     else if (name == "equip-shield")
     {
-        return ITEM_EQUIPMENT_SHIELD;
+        return ItemType::EQUIPMENT_SHIELD;
     }
     else if (name == "equip-ring")
     {
-        return ITEM_EQUIPMENT_RING;
+        return ItemType::EQUIPMENT_RING;
     }
     else if (name == "equip-charm")
     {
-        return ITEM_EQUIPMENT_CHARM;
+        return ItemType::EQUIPMENT_CHARM;
     }
     else if (name == "equip-necklace" || name == "equip-neck")
     {
-        return ITEM_EQUIPMENT_NECKLACE;
+        return ItemType::EQUIPMENT_NECKLACE;
     }
     else if (name == "equip-feet")
     {
-        return ITEM_EQUIPMENT_FEET;
+        return ItemType::EQUIPMENT_FEET;
     }
     else if (name == "equip-ammo")
     {
-        return ITEM_EQUIPMENT_AMMO;
+        return ItemType::EQUIPMENT_AMMO;
     }
     else if (name == "racesprite")
     {
-        return ITEM_SPRITE_RACE;
+        return ItemType::SPRITE_RACE;
     }
     else if (name == "hairsprite")
     {
-        return ITEM_SPRITE_HAIR;
+        return ItemType::SPRITE_HAIR;
     }
     else
     {
         logger->log("Unknown item type: " + name);
-        return ITEM_UNUSABLE;
+        return ItemType::UNUSABLE;
     }
 }
 
@@ -353,27 +353,27 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
 
         switch (itemInfo->getType())
         {
-            case ITEM_USABLE:
+            case ItemType::USABLE:
                 itemInfo->addTag(mTags["Usable"]);
                 break;
-            case ITEM_UNUSABLE:
+            case ItemType::UNUSABLE:
                 itemInfo->addTag(mTags["Unusable"]);
                 break;
             default:
-            case ITEM_EQUIPMENT_ONE_HAND_WEAPON:
-            case ITEM_EQUIPMENT_TWO_HANDS_WEAPON:
-            case ITEM_EQUIPMENT_TORSO:
-            case ITEM_EQUIPMENT_ARMS:
-            case ITEM_EQUIPMENT_HEAD:
-            case ITEM_EQUIPMENT_LEGS:
-            case ITEM_EQUIPMENT_SHIELD:
-            case ITEM_EQUIPMENT_RING:
-            case ITEM_EQUIPMENT_NECKLACE:
-            case ITEM_EQUIPMENT_FEET:
-            case ITEM_EQUIPMENT_AMMO:
-            case ITEM_EQUIPMENT_CHARM:
-            case ITEM_SPRITE_RACE:
-            case ITEM_SPRITE_HAIR:
+            case ItemType::EQUIPMENT_ONE_HAND_WEAPON:
+            case ItemType::EQUIPMENT_TWO_HANDS_WEAPON:
+            case ItemType::EQUIPMENT_TORSO:
+            case ItemType::EQUIPMENT_ARMS:
+            case ItemType::EQUIPMENT_HEAD:
+            case ItemType::EQUIPMENT_LEGS:
+            case ItemType::EQUIPMENT_SHIELD:
+            case ItemType::EQUIPMENT_RING:
+            case ItemType::EQUIPMENT_NECKLACE:
+            case ItemType::EQUIPMENT_FEET:
+            case ItemType::EQUIPMENT_AMMO:
+            case ItemType::EQUIPMENT_CHARM:
+            case ItemType::SPRITE_RACE:
+            case ItemType::SPRITE_HAIR:
                 itemInfo->addTag(mTags["Equipment"]);
                 break;
         }
