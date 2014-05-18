@@ -41,7 +41,7 @@ namespace
 char *strBuf = nullptr;
 
 #ifdef UNITTESTS
-int sdlTextChunkCnt = 0;
+int textChunkCnt = 0;
 #endif
 
 TextChunk::TextChunk(const std::string &text0, const Color &color0,
@@ -54,7 +54,7 @@ TextChunk::TextChunk(const std::string &text0, const Color &color0,
     next(nullptr)
 {
 #ifdef UNITTESTS
-    sdlTextChunkCnt ++;
+    textChunkCnt ++;
 #endif
 }
 
@@ -62,7 +62,7 @@ TextChunk::~TextChunk()
 {
     delete2(img);
 #ifdef UNITTESTS
-    sdlTextChunkCnt --;
+    textChunkCnt --;
 #endif
 }
 

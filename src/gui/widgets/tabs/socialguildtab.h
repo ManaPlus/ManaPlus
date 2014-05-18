@@ -54,7 +54,8 @@ class SocialGuildTab final : public SocialTab,
             setHighlightedTabColor(&getThemeColor(
                 Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED), &getThemeColor(
                 Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE));
-            setSelectedTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED),
+            setSelectedTabColor(&getThemeColor(
+                Theme::GUILD_SOCIAL_TAB_SELECTED),
                 &getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
 
             createControls(guild, showBackground);
@@ -81,7 +82,9 @@ class SocialGuildTab final : public SocialTab,
                     localChatTab->chatLog(strprintf(
                         // TRANSLATORS: chat message
                         _("Invited user %s to guild %s."),
-                        name.c_str(), mGuild->getName().c_str()), ChatMsgType::BY_SERVER);
+                        name.c_str(),
+                        mGuild->getName().c_str()),
+                        ChatMsgType::BY_SERVER);
                 }
                 mInviteDialog = nullptr;
             }
@@ -95,8 +98,10 @@ class SocialGuildTab final : public SocialTab,
                 if (localChatTab)
                 {
                     // TRANSLATORS: chat message
-                    localChatTab->chatLog(strprintf(_("Guild %s quit requested."),
-                        mGuild->getName().c_str()), ChatMsgType::BY_SERVER);
+                    localChatTab->chatLog(strprintf(
+                        _("Guild %s quit requested."),
+                        mGuild->getName().c_str()),
+                        ChatMsgType::BY_SERVER);
                 }
                 mConfirmDialog = nullptr;
             }

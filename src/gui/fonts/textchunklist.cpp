@@ -54,10 +54,10 @@ void TextChunkList::moveToFirst(TextChunk *const item)
     if (item == start)
         return;
 
-    TextChunk *oldPrev = item->prev;
+    TextChunk *const oldPrev = item->prev;
     if (oldPrev)
         oldPrev->next = item->next;
-    TextChunk *oldNext = item->next;
+    TextChunk *const oldNext = item->next;
     if (oldNext)
         oldNext->prev = item->prev;
     else
@@ -121,7 +121,7 @@ void TextChunkList::clear()
     TextChunk *item = start;
     while (item)
     {
-        TextChunk *item2 = item->next;
+        TextChunk *const item2 = item->next;
         delete item;
         item = item2;
     }

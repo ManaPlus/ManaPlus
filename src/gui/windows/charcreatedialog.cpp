@@ -148,7 +148,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     setSticky(true);
     setWindowName("NewCharacter");
 
-    mPlayer->setGender(GENDER_MALE);
+    mPlayer->setGender(Gender::MALE);
     const std::vector<int> &items = CharDB::getDefaultItems();
     int i = 1;
     for (std::vector<int>::const_iterator it = items.begin(),
@@ -410,9 +410,9 @@ void CharCreateDialog::action(const ActionEvent &event)
     else if (id == "gender")
     {
         if (mMale->isSelected())
-            mPlayer->setGender(GENDER_MALE);
+            mPlayer->setGender(Gender::MALE);
         else
-            mPlayer->setGender(GENDER_FEMALE);
+            mPlayer->setGender(Gender::FEMALE);
     }
     else if (id == "action")
     {
@@ -537,15 +537,16 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     setButtonsPosition(w, h);
 }
 
-void CharCreateDialog::setFixedGender(const bool fixed, const Gender gender)
+void CharCreateDialog::setFixedGender(const bool fixed,
+                                      const Gender::Type gender)
 {
-    if (gender == GENDER_FEMALE)
+    if (gender == Gender::FEMALE)
     {
         mFemale->setSelected(true);
         mMale->setSelected(false);
         mOther->setSelected(false);
     }
-    else if (gender == GENDER_MALE)
+    else if (gender == Gender::MALE)
     {
         mFemale->setSelected(false);
         mMale->setSelected(true);

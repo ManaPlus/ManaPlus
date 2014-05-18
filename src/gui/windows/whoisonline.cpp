@@ -22,6 +22,9 @@
 
 #include "gui/windows/whoisonline.h"
 
+#include "actormanager.h"
+#include "client.h"
+#include "configuration.h"
 #include "guild.h"
 #include "party.h"
 
@@ -34,11 +37,6 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/scrollarea.h"
-
-#include "actormanager.h"
-#include "client.h"
-#include "configuration.h"
-#include "main.h"
 
 #include "being/beingflag.h"
 #include "being/localplayer.h"
@@ -440,7 +438,7 @@ void WhoIsOnline::loadWebList()
 
                 OnlinePlayer *const player = new OnlinePlayer(nick,
                     static_cast<unsigned char>(255), level,
-                    GENDER_UNSPECIFIED, -1);
+                    Gender::UNSPECIFIED, -1);
                 mOnlinePlayers.insert(player);
                 mOnlineNicks.insert(nick);
 
@@ -829,9 +827,9 @@ void OnlinePlayer::setText(std::string color)
     if (mLevel > 0)
         mText.append(strprintf("%d", mLevel));
 
-    if (mGender == GENDER_FEMALE)
+    if (mGender == Gender::FEMALE)
         mText.append("\u2640");
-    else if (mGender == GENDER_MALE)
+    else if (mGender == Gender::MALE)
         mText.append("\u2642");
 
     if (mStatus > 0 && mStatus != 255)

@@ -224,9 +224,9 @@ void ItemDB::load()
     mUnknown->setName(_("Unknown item"));
     mUnknown->setDisplay(SpriteDisplay());
     std::string errFile = paths.getStringValue("spriteErrorFile");
-    mUnknown->setSprite(errFile, GENDER_MALE, 0);
-    mUnknown->setSprite(errFile, GENDER_FEMALE, 0);
-    mUnknown->setSprite(errFile, GENDER_OTHER, 0);
+    mUnknown->setSprite(errFile, Gender::MALE, 0);
+    mUnknown->setSprite(errFile, Gender::FEMALE, 0);
+    mUnknown->setSprite(errFile, Gender::OTHER, 0);
     mUnknown->addTag(mTags["All"]);
     loadXmlFile(paths.getStringValue("itemsFile"), tagNum);
     loadXmlFile(paths.getStringValue("itemsPatchFile"), tagNum);
@@ -749,11 +749,11 @@ void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 
     const int race = XML::getProperty(node, "race", 0);
     if (gender == "male" || gender == "unisex")
-        itemInfo->setSprite(filename, GENDER_MALE, race);
+        itemInfo->setSprite(filename, Gender::MALE, race);
     if (gender == "female" || gender == "unisex")
-        itemInfo->setSprite(filename, GENDER_FEMALE, race);
+        itemInfo->setSprite(filename, Gender::FEMALE, race);
     if (gender == "other" || gender == "unisex")
-        itemInfo->setSprite(filename, GENDER_OTHER, race);
+        itemInfo->setSprite(filename, Gender::OTHER, race);
 }
 
 void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)

@@ -364,6 +364,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/tabs/shortcuttab.h \
 	      gui/widgets/tabs/skilltab.h \
 	      gui/widgets/tabs/socialattacktab.h \
+	      gui/widgets/tabs/socialfriendsfunctor.h \
 	      gui/widgets/tabs/socialfriendstab.h \
 	      gui/widgets/tabs/socialguildtab.h \
 	      gui/widgets/tabs/socialguildtab2.h \
@@ -1134,7 +1135,7 @@ if ENABLE_UNITTESTS
 manaplus_CXXFLAGS += -DUNITTESTS
 manaplus_SOURCES += \
 	      animatedsprite_unittest.cc \
-	      gui/sdlfont_unittest.cc \
+	      gui/fonts/font_unittest.cc \
 	      gui/widgets/browserbox_unittest.cc \
 	      utils/files_unittest.cc \
 	      utils/stringutils_unittest.cc \

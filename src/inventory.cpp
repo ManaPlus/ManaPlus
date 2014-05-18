@@ -219,7 +219,7 @@ void Inventory::distributeSlotsChangedEvent()
 }
 
 const Item *Inventory::findItemBySprite(std::string spritePath,
-                                        const Gender gender,
+                                        const Gender::Type gender,
                                         const int race) const
 {
     spritePath = removeSpriteIndex(spritePath);

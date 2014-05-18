@@ -37,6 +37,6 @@ namespace ChatMsgType
         BY_LOGGER,
         BY_UNKNOWN = -1
     };
-}
+}  // namespace ChatMsgType
 
 #endif  // GUI_CHATMSGTYPE_H

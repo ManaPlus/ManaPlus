@@ -38,7 +38,7 @@ Avatar::Avatar(const std::string &name):
     mY(-1),
     mType(AVATAR_PLAYER),
     mExp(0),
-    mGender(GENDER_UNSPECIFIED),
+    mGender(Gender::UNSPECIFIED),
     mRace(-1),
     mIp(),
     mOnline(false),

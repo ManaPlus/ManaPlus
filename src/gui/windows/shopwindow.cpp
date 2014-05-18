@@ -49,7 +49,6 @@
 #include "inventory.h"
 #include "item.h"
 #include "shopitem.h"
-#include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "being/attributes.h"

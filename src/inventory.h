@@ -144,7 +144,7 @@ class Inventory final
         { return mType == INVENTORY; }
 
         const Item *findItemBySprite(std::string spritePath,
-                                     const Gender gender,
+                                     const Gender::Type gender,
                                      const int race) const A_WARN_UNUSED;
 
         std::string getName() const A_WARN_UNUSED;

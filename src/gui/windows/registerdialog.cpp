@@ -253,11 +253,11 @@ void RegisterDialog::action(const ActionEvent &event)
             mLoginData->username = mUserField->getText();
             mLoginData->password = mPasswordField->getText();
             if (mFemaleButton && mFemaleButton->isSelected())
-                mLoginData->gender = GENDER_FEMALE;
+                mLoginData->gender = Gender::FEMALE;
             else if (mOtherButton && mOtherButton->isSelected())
-                mLoginData->gender = GENDER_OTHER;
+                mLoginData->gender = Gender::OTHER;
             else
-                mLoginData->gender = GENDER_MALE;
+                mLoginData->gender = Gender::MALE;
 
             if (mEmailField)
                 mLoginData->email = mEmailField->getText();

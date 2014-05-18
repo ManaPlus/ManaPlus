@@ -285,17 +285,17 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
         }
         buf ++;
 
-        int gender = GENDER_UNSPECIFIED;
+        int gender = Gender::UNSPECIFIED;
         if (serverVersion >= 4)
         {
             if (config.getBoolValue("showgender"))
             {
                 if (status & BeingFlag::GENDER_MALE)
-                    gender = GENDER_MALE;
+                    gender = Gender::MALE;
                 else if (status & BeingFlag::GENDER_OTHER)
-                    gender = GENDER_OTHER;
+                    gender = Gender::OTHER;
                 else
-                    gender = GENDER_FEMALE;
+                    gender = Gender::FEMALE;
             }
         }
         arr.push_back(new OnlinePlayer(static_cast<const char*>(buf),

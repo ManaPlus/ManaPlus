@@ -48,8 +48,6 @@
 
 #include "gui/windows/ministatuswindow.h"
 
-#include "listeners/updatestatuslistener.h"
-
 #include "utils/delete2.h"
 
 #include "debug.h"

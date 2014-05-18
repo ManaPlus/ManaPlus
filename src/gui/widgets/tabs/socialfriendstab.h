@@ -24,14 +24,14 @@
 #include "gui/widgets/tabs/socialtab.h"
 
 #include "actormanager.h"
-#include "avatar.h"
 
-#include "being/actortype.h"
 #include "being/playerrelations.h"
 
 #include "gui/models/beingslistmodel.h"
 
 #include "gui/windows/whoisonline.h"
+
+#include "gui/widgets/tabs/socialfriendsfunctor.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -41,33 +41,6 @@
 
 #include "localconsts.h"
 
-namespace
-{
-    static class SortFriendsFunctor final
-    {
-        public:
-            bool operator() (const Avatar *const m1,
-                             const Avatar *const m2) const
-            {
-                if (!m1 || !m2)
-                    return false;
-
-                if (m1->getOnline() != m2->getOnline())
-                    return m1->getOnline() > m2->getOnline();
-
-                if (m1->getName() != m2->getName())
-                {
-                    std::string s1 = m1->getName();
-                    std::string s2 = m2->getName();
-                    toLower(s1);
-                    toLower(s2);
-                    return s1 < s2;
-                }
-                return false;
-            }
-    } friendSorter;
-}  // namespace
-
 class SocialFriendsTab final : public SocialTab
 {
     public:
@@ -75,7 +48,8 @@ class SocialFriendsTab final : public SocialTab
                          std::string name,
                          const bool showBackground) :
             SocialTab(widget),
-            mBeings(new BeingsListModel)
+            mBeings(new BeingsListModel),
+            mFriendSorter()
         {
             createControls(mBeings, showBackground);
 
@@ -139,7 +113,7 @@ class SocialFriendsTab final : public SocialTab
                 total ++;
                 avatars->push_back(ava);
             }
-            std::sort(avatars->begin(), avatars->end(), friendSorter);
+            std::sort(avatars->begin(), avatars->end(), mFriendSorter);
             delete players;
 
             // TRANSLATORS: social window label
@@ -151,6 +125,7 @@ class SocialFriendsTab final : public SocialTab
 
     private:
         BeingsListModel *mBeings;
+        SortFriendsFunctor mFriendSorter;
 };
 
 #endif  // GUI_WIDGETS_TABS_SOCIALFRIENDSTAB_H

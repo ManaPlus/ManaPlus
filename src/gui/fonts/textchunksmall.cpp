@@ -72,4 +72,3 @@ bool TextChunkSmall::operator<(const TextChunkSmall &chunk) const
 
     return false;
 }
-

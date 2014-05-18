@@ -29,11 +29,8 @@
 
 #include "gui/models/userstablemodel.h"
 
-#include "actormanager.h"
 #include "client.h"
 #include "configuration.h"
-
-#include "being/localplayer.h"
 
 #include "utils/gettext.h"
 

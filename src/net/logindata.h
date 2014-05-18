@@ -45,7 +45,7 @@ class LoginData final
             email(),
             captchaResponse(),
             registerUrl(),
-            gender(GENDER_UNSPECIFIED),
+            gender(Gender::UNSPECIFIED),
             remember(false),
             registerLogin(false),
             characterSlots(9)
@@ -74,7 +74,7 @@ class LoginData final
         std::string captchaResponse;
         std::string registerUrl;
 
-        Gender gender;
+        Gender::Type gender;
 
         bool remember;       // Whether to store the username.
         bool registerLogin;  // Whether an account is being registered.
@@ -92,7 +92,7 @@ class LoginData final
             email.clear();
             captchaResponse.clear();
             registerUrl.clear();
-            gender = GENDER_UNSPECIFIED;
+            gender = Gender::UNSPECIFIED;
             lastLogin.clear();
             resetCharacterSlots();
         }

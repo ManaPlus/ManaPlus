@@ -31,8 +31,6 @@
 
 #include "gui/windows/serverdialog.h"
 
-#include "utils/mutex.h"
-
 #include "gui/models/listmodel.h"
 
 #include <string>

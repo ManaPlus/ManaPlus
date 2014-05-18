@@ -142,7 +142,7 @@ class Font final
 };
 
 #ifdef UNITTESTS
-extern int sdlTextChunkCnt;
+extern int textChunkCnt;
 #endif
 
 #endif  // GUI_FONTS_FONT_H

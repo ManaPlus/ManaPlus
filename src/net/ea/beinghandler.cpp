@@ -280,16 +280,16 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
         switch (gender)
         {
             case 2:
-                dstBeing->setGender(GENDER_FEMALE);
+                dstBeing->setGender(Gender::FEMALE);
                 break;
             case 3:
-                dstBeing->setGender(GENDER_MALE);
+                dstBeing->setGender(Gender::MALE);
                 break;
             case 4:
-                dstBeing->setGender(GENDER_OTHER);
+                dstBeing->setGender(Gender::OTHER);
                 break;
             default:
-                dstBeing->setGender(GENDER_UNSPECIFIED);
+                dstBeing->setGender(Gender::UNSPECIFIED);
                 break;
         }
     }

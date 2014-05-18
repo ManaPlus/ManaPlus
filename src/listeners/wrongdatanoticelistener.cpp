@@ -42,4 +42,3 @@ void WrongDataNoticeListener::action(const ActionEvent &event)
     if (event.getId() == "ok" && mTarget)
         mTarget->requestFocus();
 }
-

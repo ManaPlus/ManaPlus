@@ -113,7 +113,7 @@ void AvatarListBox::draw(Graphics *graphics)
 
     Font *const font = getFont();
     const int fontHeight = getFont()->getHeight();
-    const std::string name = player_node->getName();
+    const std::string &name = player_node->getName();
 
     // Draw the list elements
     graphics->setColorAll(mForegroundColor, mForegroundColor2);
@@ -242,15 +242,15 @@ void AvatarListBox::draw(Graphics *graphics)
             {
                 switch (a->getGender())
                 {
-                    case GENDER_FEMALE:
+                    case Gender::FEMALE:
                         text.append(" \u2640 ");
                         break;
-                    case GENDER_MALE:
+                    case Gender::MALE:
                         text.append(" \u2642 ");
                         break;
                     default:
-                    case GENDER_UNSPECIFIED:
-                    case GENDER_OTHER:
+                    case Gender::UNSPECIFIED:
+                    case Gender::OTHER:
                         break;
                 }
             }
@@ -261,17 +261,17 @@ void AvatarListBox::draw(Graphics *graphics)
             {
                 switch (a->getGender())
                 {
-                    case GENDER_FEMALE:
+                    case Gender::FEMALE:
                         text.append(strprintf(" \u2640 %s",
                             a->getAdditionString().c_str()));
                         break;
-                    case GENDER_MALE:
+                    case Gender::MALE:
                         text.append(strprintf(" \u2642 %s",
                             a->getAdditionString().c_str()));
                         break;
                     default:
-                    case GENDER_UNSPECIFIED:
-                    case GENDER_OTHER:
+                    case Gender::UNSPECIFIED:
+                    case Gender::OTHER:
                         break;
                 }
             }

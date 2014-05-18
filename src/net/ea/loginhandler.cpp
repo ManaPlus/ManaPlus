@@ -102,16 +102,16 @@ void LoginHandler::registerAccount(const LoginData *const loginData1) const
     std::string username = loginData1->username;
     switch (loginData1->gender)
     {
-        case GENDER_FEMALE:
+        case Gender::FEMALE:
             username.append("_F");
             break;
-        case GENDER_MALE:
+        case Gender::MALE:
             username.append("_M");
             break;
-        case GENDER_OTHER:
+        case Gender::OTHER:
             username.append("_O");
             break;
-        case GENDER_UNSPECIFIED:
+        case Gender::UNSPECIFIED:
         default:
             break;
     }

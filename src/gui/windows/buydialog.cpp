@@ -159,7 +159,7 @@ namespace
                 return type1 < type2;
             }
     } itemTypeBuySorter;
-}
+}  // namespace
 
 BuyDialog::DialogList BuyDialog::instances;
 

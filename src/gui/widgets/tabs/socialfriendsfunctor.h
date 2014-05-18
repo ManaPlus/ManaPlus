@@ -1,7 +1,5 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -20,34 +18,35 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LISTENERS_OPENURLLISTENER_H
-#define LISTENERS_OPENURLLISTENER_H
+#ifndef GUI_WIDGETS_TABS_SOCIALFRIENDSFUNCTOR_H
+#define GUI_WIDGETS_TABS_SOCIALFRIENDSFUNCTOR_H
 
-#include "listeners/actionlistener.h"
-
-#include "utils/process.h"
-
-#include <string>
+#include "avatar.h"
 
 #include "localconsts.h"
 
-struct OpenUrlListener final : public ActionListener
+class SortFriendsFunctor final
 {
-    OpenUrlListener() :
-        ActionListener(),
-        url()
-    {
-    }
+    public:
+        bool operator() (const Avatar *const m1,
+                         const Avatar *const m2) const
+        {
+            if (!m1 || !m2)
+                return false;
 
-    A_DELETE_COPY(OpenUrlListener)
+            if (m1->getOnline() != m2->getOnline())
+                return m1->getOnline() > m2->getOnline();
 
-    void action(const ActionEvent &event) override final
-    {
-        if (event.getId() == "yes")
-            openBrowser(url);
-    }
-
-    std::string url;
+            if (m1->getName() != m2->getName())
+            {
+                std::string s1 = m1->getName();
+                std::string s2 = m2->getName();
+                toLower(s1);
+                toLower(s2);
+                return s1 < s2;
+            }
+            return false;
+        }
 };
 
-#endif  // LISTENERS_OPENURLLISTENER_H
+#endif  // GUI_WIDGETS_TABS_SOCIALFRIENDSFUNCTOR_H

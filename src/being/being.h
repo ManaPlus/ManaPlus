@@ -599,9 +599,9 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Sets the gender of this being.
          */
-        virtual void setGender(const Gender gender);
+        virtual void setGender(const Gender::Type gender);
 
-        Gender getGender() const A_WARN_UNUSED
+        Gender::Type getGender() const A_WARN_UNUSED
         { return mGender; }
 
         /**
@@ -858,9 +858,9 @@ class Being : public ActorSprite, public ConfigListener
 
         void setLook(const uint8_t look);
 
-        static uint8_t genderToInt(const Gender sex) A_WARN_UNUSED;
+        static uint8_t genderToInt(const Gender::Type sex) A_WARN_UNUSED;
 
-        static Gender intToGender(const uint8_t sex) A_WARN_UNUSED;
+        static Gender::Type intToGender(const uint8_t sex) A_WARN_UNUSED;
 
         NextSoundInfo mNextSound;
 
@@ -956,7 +956,7 @@ class Being : public ActorSprite, public ConfigListener
         int mAttackRange;
         int mLastAttackX;
         int mLastAttackY;
-        Gender mGender;
+        Gender::Type mGender;
         BeingAction::Action mAction;
         uint16_t mSubType;      /**< Subtype (graphical view, basically) */
         uint8_t mDirection;               /**< Facing direction */

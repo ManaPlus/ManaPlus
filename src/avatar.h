@@ -156,10 +156,10 @@ public:
     void setCharId(const int id)
     { mCharId = id; }
 
-    Gender getGender() const A_WARN_UNUSED
+    Gender::Type getGender() const A_WARN_UNUSED
     { return mGender; }
 
-    void setGender(const Gender g)
+    void setGender(const Gender::Type g)
     { mGender = g; }
 
     int getRace() const A_WARN_UNUSED
@@ -194,7 +194,7 @@ protected:
     int mY;
     int mType;
     int mExp;
-    Gender mGender;
+    Gender::Type mGender;
     int mRace;
     std::string mIp;
     bool mOnline;

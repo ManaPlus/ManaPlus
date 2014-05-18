@@ -52,7 +52,8 @@ class SocialGuildTab2 final : public SocialTab,
             setHighlightedTabColor(&getThemeColor(
                 Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED), &getThemeColor(
                 Theme::GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE));
-            setSelectedTabColor(&getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED),
+            setSelectedTabColor(&getThemeColor(
+                Theme::GUILD_SOCIAL_TAB_SELECTED),
                 &getThemeColor(Theme::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
 
             createControls(guild, showBackground);
@@ -70,7 +71,8 @@ class SocialGuildTab2 final : public SocialTab,
         {
         }
 
-        void buildCounter(const int online0 A_UNUSED, const int total0 A_UNUSED)
+        void buildCounter(const int online0 A_UNUSED,
+                          const int total0 A_UNUSED)
         {
             if (!player_node)
                 return;

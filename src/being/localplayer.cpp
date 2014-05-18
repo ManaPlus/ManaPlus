@@ -964,7 +964,7 @@ void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
                 {
                     mStatusEffectIcons.erase(mStatusEffectIcons.begin() + i);
                     if (miniStatusWindow)
-                        miniStatusWindow->eraseIcon(i);
+                        miniStatusWindow->eraseIcon(static_cast<int>(i));
                 }
                 else
                 {

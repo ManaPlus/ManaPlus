@@ -147,7 +147,7 @@ Being::Being(const int id,
     mAttackRange(1),
     mLastAttackX(0),
     mLastAttackY(0),
-    mGender(GENDER_UNSPECIFIED),
+    mGender(Gender::UNSPECIFIED),
     mAction(BeingAction::STAND),
     mSubType(0xFFFF),
     mDirection(BeingDirection::DOWN),
@@ -1802,9 +1802,9 @@ std::string Being::getGenderSign() const
     std::string str;
     if (mShowGender)
     {
-        if (getGender() == GENDER_FEMALE)
+        if (getGender() == Gender::FEMALE)
             str = "\u2640";
-        else if (getGender() == GENDER_MALE)
+        else if (getGender() == Gender::MALE)
             str = "\u2642";
     }
     if (mShowPlayersStatus && mAdvanced)
@@ -2118,7 +2118,7 @@ void Being::load()
     // Hairstyles are encoded as negative numbers. Count how far negative
     // we can go.
     int hairstyles = 1;
-    while (ItemDB::get(-hairstyles).getSprite(GENDER_MALE, 0) !=
+    while (ItemDB::get(-hairstyles).getSprite(Gender::MALE, 0) !=
            paths.getStringValue("spriteErrorFile"))
     {
         hairstyles ++;
@@ -2126,7 +2126,7 @@ void Being::load()
     mNumberOfHairstyles = hairstyles;
 
     int races = 100;
-    while (ItemDB::get(-races).getSprite(GENDER_MALE, 0) !=
+    while (ItemDB::get(-races).getSprite(Gender::MALE, 0) !=
            paths.getStringValue("spriteErrorFile"))
     {
         races ++;
@@ -2275,7 +2275,7 @@ BeingCacheEntry* Being::getCacheEntry(const int id)
 }
 
 
-void Being::setGender(const Gender gender)
+void Being::setGender(const Gender::Type gender)
 {
     if (gender != mGender)
     {
@@ -3016,32 +3016,32 @@ void Being::updatePercentHP()
     }
 }
 
-uint8_t Being::genderToInt(const Gender sex)
+uint8_t Being::genderToInt(const Gender::Type sex)
 {
     switch (sex)
     {
-        case GENDER_FEMALE:
-        case GENDER_UNSPECIFIED:
+        case Gender::FEMALE:
+        case Gender::UNSPECIFIED:
         default:
             return 0;
-        case GENDER_MALE:
+        case Gender::MALE:
             return 1;
-        case GENDER_OTHER:
+        case Gender::OTHER:
             return 3;
     }
 }
 
-Gender Being::intToGender(const uint8_t sex)
+Gender::Type Being::intToGender(const uint8_t sex)
 {
     switch (sex)
     {
         case 0:
         default:
-            return GENDER_FEMALE;
+            return Gender::FEMALE;
         case 1:
-            return GENDER_MALE;
+            return Gender::MALE;
         case 3:
-            return GENDER_OTHER;
+            return Gender::OTHER;
     }
 }
 

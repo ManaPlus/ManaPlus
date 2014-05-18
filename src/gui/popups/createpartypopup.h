@@ -19,6 +19,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef GUI_POPUPS_CREATEPARTYPOPUP_H
+#define GUI_POPUPS_CREATEPARTYPOPUP_H
+
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
@@ -91,3 +94,5 @@ class CreatePartyPopup final : public Popup,
     private:
         BrowserBox* mBrowserBox;
 };
+
+#endif  // GUI_POPUPS_CREATEPARTYPOPUP_H

@@ -106,8 +106,9 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
             {
                 chatWindow->addWhisper(nick,
                     // TRANSLATORS: chat message
-                    strprintf(_("Whisper could not be "
-                    "sent, %s is offline."), nick.c_str()), ChatMsgType::BY_SERVER);
+                    strprintf(_("Whisper could not be sent, %s is offline."),
+                        nick.c_str()),
+                        ChatMsgType::BY_SERVER);
             }
             break;
         case 0x02:
@@ -328,8 +329,9 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg,
     if (player_relations.checkPermissionSilently(sender_name,
         PlayerRelation::SPEECH_LOG) && chatWindow)
     {
-        allow = chatWindow->resortChatLog(removeColors(sender_name)
-            .append(" : ").append(chatMsg), ChatMsgType::BY_OTHER, channel, false, true);
+        allow = chatWindow->resortChatLog(
+            removeColors(sender_name).append(" : ").append(chatMsg),
+            ChatMsgType::BY_OTHER, channel, false, true);
     }
 
     if (allow && player_relations.hasPermission(sender_name,

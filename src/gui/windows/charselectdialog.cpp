@@ -48,8 +48,6 @@
 #include "net/loginhandler.h"
 #include "net/net.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 // Character slots per row in the dialog

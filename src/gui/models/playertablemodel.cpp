@@ -26,7 +26,6 @@
 #include "gui/widgets/label.h"
 
 #include "gui/models/playerrelationlistmodel.h"
-#include "gui/models/tablemodel.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"

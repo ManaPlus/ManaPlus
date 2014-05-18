@@ -20,8 +20,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_DIALOG_TYPE_H
-#define GUI_DIALOG_TYPE_H
+#ifndef GUI_DIALOGTYPE_H
+#define GUI_DIALOGTYPE_H
+
+#undef ERROR
 
 namespace DialogType
 {
@@ -33,4 +35,4 @@ namespace DialogType
     };
 }
 
-#endif  // GUI_DIALOG_TYPE_H
+#endif  // GUI_DIALOGTYPE_H

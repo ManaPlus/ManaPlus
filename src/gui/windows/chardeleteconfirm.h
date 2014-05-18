@@ -20,6 +20,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef GUI_WINDOWS_CHARDELETECONFIRM_H
+#define GUI_WINDOWS_CHARDELETECONFIRM_H
+
 #include "gui/windows/charselectdialog.h"
 #include "gui/windows/confirmdialog.h"
 
@@ -58,3 +61,5 @@ class CharDeleteConfirm final : public ConfirmDialog
         CharSelectDialog *mMaster;
         int mIndex;
 };
+
+#endif  // GUI_WINDOWS_CHARDELETECONFIRM_H

@@ -78,7 +78,8 @@ class SocialPlayersTab final : public SocialTab
                 return;
             if (Party::getParty(1))
             {
-                const PartyMember *const pm = Party::getParty(1)->getMember(name);
+                const PartyMember *const
+                    pm = Party::getParty(1)->getMember(name);
                 if (pm && pm->getMaxHp() > 0)
                 {
                     avatar->setMaxHp(pm->getMaxHp());

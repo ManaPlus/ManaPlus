@@ -30,14 +30,14 @@ struct Token
     int account_ID;
     int session_ID1;
     int session_ID2;
-    Gender sex;
+    Gender::Type sex;
 
     void clear()
     {
         account_ID = 0;
         session_ID1 = 0;
         session_ID2 = 0;
-        sex = GENDER_UNSPECIFIED;
+        sex = Gender::UNSPECIFIED;
     }
 };
 

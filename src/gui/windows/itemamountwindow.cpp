@@ -49,7 +49,6 @@
 #include "gui/widgets/slider.h"
 
 #include "utils/delete2.h"
-#include "utils/gettext.h"
 
 #include <cmath>
 

@@ -558,7 +558,8 @@ impHandler(unignore)
         if (player_relations.getRelation(args) == PlayerRelation::NEUTRAL)
         {
             // TRANSLATORS: unignore command
-            tab->chatLog(_("Player no longer ignored!"), ChatMsgType::BY_SERVER);
+            tab->chatLog(_("Player no longer ignored!"),
+                ChatMsgType::BY_SERVER);
         }
         else
         {

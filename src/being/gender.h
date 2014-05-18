@@ -23,12 +23,15 @@
 #ifndef BEING_GENDER_H
 #define BEING_GENDER_H
 
-enum Gender
+namespace Gender
 {
-    GENDER_MALE = 0,
-    GENDER_FEMALE = 1,
-    GENDER_UNSPECIFIED = 2,
-    GENDER_OTHER = 3
-};
+    enum Type
+    {
+        MALE = 0,
+        FEMALE = 1,
+        UNSPECIFIED = 2,
+        OTHER = 3
+    };
+}  // nemespace Gender
 
 #endif  // BEING_GENDER_H

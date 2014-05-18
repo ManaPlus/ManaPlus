@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WINDOWS_STATUSWINDOWATTRS_H
-#define GUI_WINDOWS_STATUSWINDOWATTRS_H
+#ifndef GUI_WIDGETS_STATUSWINDOWATTRS_H
+#define GUI_WIDGETS_STATUSWINDOWATTRS_H
 
 #include "gui/widgets/container.h"
 
@@ -121,4 +121,4 @@ class ChangeDisplay final : public AttrDisplay,
         Button *mInc;
 };
 
-#endif  // GUI_WINDOWS_STATUSWINDOWATTRS_H
+#endif  // GUI_WIDGETS_STATUSWINDOWATTRS_H

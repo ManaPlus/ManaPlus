@@ -204,7 +204,8 @@ class SocialNavigationTab final : public SocialTab
                 if (item)
                 {
                     const std::string name = strprintf("%s [%d %d]",
-                        item->getComment().c_str(), item->getX(), item->getY());
+                        item->getComment().c_str(),
+                        item->getX(), item->getY());
                     ava->setName(name);
                     ava->setOriginalName(name);
                 }

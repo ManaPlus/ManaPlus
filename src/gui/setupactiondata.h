@@ -34,9 +34,9 @@
 struct SetupActionData final
 {
 #ifdef ADVGCC
-    SetupActionData(const std::string name0,
+    SetupActionData(const std::string &name0,
                     const int actionId0,
-                    const std::string text0) :
+                    const std::string &text0) :
         name(name0),
         actionId(actionId0),
         text(text0)

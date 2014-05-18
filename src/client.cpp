@@ -1644,7 +1644,8 @@ int Client::gameExec()
                     // TRANSLATORS: password change message header
                     mCurrentDialog = new OkDialog(_("Password Change"),
                         // TRANSLATORS: password change message text
-                        _("Password changed successfully!"), DialogType::ERROR);
+                        _("Password changed successfully!"),
+                        DialogType::ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     loginData.password = loginData.newPassword;

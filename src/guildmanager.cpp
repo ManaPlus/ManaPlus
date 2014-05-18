@@ -192,7 +192,7 @@ void GuildManager::updateList()
                 if (m)
                 {
                     m->setOnline(status & 1);
-                    m->setGender(GENDER_UNSPECIFIED);
+                    m->setGender(Gender::UNSPECIFIED);
                     if (status & 2)
                         m->setPos(10);
                     else

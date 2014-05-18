@@ -165,9 +165,9 @@ class ItemInfo final
         { mView = view; }
 
         void setSprite(const std::string &animationFile,
-                       const Gender gender, const int race);
+                       const Gender::Type gender, const int race);
 
-        const std::string &getSprite(const Gender gender,
+        const std::string &getSprite(const Gender::Type gender,
                                      const int race) const A_WARN_UNUSED;
 
         void setAttackAction(const std::string &attackAction);

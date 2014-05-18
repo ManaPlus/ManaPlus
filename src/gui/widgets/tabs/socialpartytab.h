@@ -55,7 +55,8 @@ class SocialPartyTab final : public SocialTab,
             setHighlightedTabColor(&getThemeColor(
                 Theme::PARTY_SOCIAL_TAB_HIGHLIGHTED), &getThemeColor(
                 Theme::PARTY_SOCIAL_TAB_HIGHLIGHTED_OUTLINE));
-            setSelectedTabColor(&getThemeColor(Theme::PARTY_SOCIAL_TAB_SELECTED),
+            setSelectedTabColor(&getThemeColor(
+                Theme::PARTY_SOCIAL_TAB_SELECTED),
                 &getThemeColor(Theme::PARTY_SOCIAL_TAB_SELECTED_OUTLINE));
 
             createControls(party, showBackground);
@@ -80,8 +81,10 @@ class SocialPartyTab final : public SocialTab,
                 if (localChatTab)
                 {
                     // TRANSLATORS: chat message
-                    localChatTab->chatLog(strprintf(_("Invited user %s to party."),
-                        name.c_str()), ChatMsgType::BY_SERVER);
+                    localChatTab->chatLog(strprintf(
+                        _("Invited user %s to party."),
+                        name.c_str()),
+                        ChatMsgType::BY_SERVER);
                 }
                 mInviteDialog = nullptr;
             }
@@ -95,8 +98,10 @@ class SocialPartyTab final : public SocialTab,
                 if (localChatTab)
                 {
                     // TRANSLATORS: tab in social window
-                    localChatTab->chatLog(strprintf(_("Party %s quit requested."),
-                        mParty->getName().c_str()), ChatMsgType::BY_SERVER);
+                    localChatTab->chatLog(strprintf(
+                        _("Party %s quit requested."),
+                        mParty->getName().c_str()),
+                        ChatMsgType::BY_SERVER);
                 }
                 mConfirmDialog = nullptr;
             }
@@ -129,7 +134,8 @@ class SocialPartyTab final : public SocialTab,
             mConfirmDialog->addActionListener(this);
         }
 
-        void buildCounter(const int online0 A_UNUSED, const int total0 A_UNUSED)
+        void buildCounter(const int online0 A_UNUSED,
+                          const int total0 A_UNUSED)
         {
             if (!player_node)
                 return;

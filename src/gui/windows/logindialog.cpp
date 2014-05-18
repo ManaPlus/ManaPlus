@@ -44,11 +44,9 @@
 #include "gui/widgets/layoutcell.h"
 
 #include "net/charserverhandler.h"
-#include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
 
-#include "utils/gettext.h"
 #include "utils/paths.h"
 
 #include "debug.h"

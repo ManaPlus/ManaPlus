@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_RESOURCES_UPDATEFILE_H
-#define GUI_RESOURCES_UPDATEFILE_H
+#ifndef RESOURCES_UPDATEFILE_H
+#define RESOURCES_UPDATEFILE_H
 
 #include <string>
 
@@ -45,4 +45,4 @@ struct UpdateFile final
         bool required;
 };
 
-#endif  // GUI_RESOURCES_UPDATEFILE_H
+#endif  // RESOURCES_UPDATEFILE_H

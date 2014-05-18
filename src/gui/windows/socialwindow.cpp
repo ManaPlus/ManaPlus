@@ -50,13 +50,6 @@
 
 #include "gui/popups/createpartypopup.h"
 
-#include "net/net.h"
-#include "net/guildhandler.h"
-#include "net/partyhandler.h"
-
-#include "utils/delete2.h"
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 extern unsigned int tmwServerVersion;

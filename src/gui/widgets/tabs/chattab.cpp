@@ -212,10 +212,13 @@ void ChatTab::chatLog(std::string line, ChatMsgType::Type own,
 
     // if configured, move magic messages log to debug chat tab
     if (localChatTab && this == localChatTab
-        && ((config.getBoolValue("showMagicInDebug") && own == ChatMsgType::BY_PLAYER
-        && tmp.text.length() > 1 && tmp.text.at(0) == '#'
+        && ((config.getBoolValue("showMagicInDebug")
+        && own == ChatMsgType::BY_PLAYER
+        && tmp.text.length() > 1
+        && tmp.text.at(0) == '#'
         && tmp.text.at(1) != '#')
-        || (config.getBoolValue("serverMsgInDebug") && (own == ChatMsgType::BY_SERVER
+        || (config.getBoolValue("serverMsgInDebug")
+        && (own == ChatMsgType::BY_SERVER
         || tmp.nick.empty()))))
     {
         if (debugChatTab)

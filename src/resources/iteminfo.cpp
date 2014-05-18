@@ -84,7 +84,7 @@ ItemInfo::~ItemInfo()
         mSpriteToItemReplaceMap[f] = nullptr;
 }
 
-const std::string &ItemInfo::getSprite(const Gender gender,
+const std::string &ItemInfo::getSprite(const Gender::Type gender,
                                        const int race) const
 {
     if (mView)
@@ -346,7 +346,8 @@ int ItemInfo::getDrawPriority(const int direction) const
 }
 
 void ItemInfo::setSprite(const std::string &animationFile,
-                         const Gender gender, const int race)
+                         const Gender::Type gender,
+                         const int race)
 {
     mAnimationFiles[static_cast<int>(gender) + race * 4] = animationFile;
 }
