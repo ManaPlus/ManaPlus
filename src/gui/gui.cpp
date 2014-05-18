@@ -564,7 +564,7 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
             if (Widget::widgetExists(widget))
             {
                 distributeMouseEvent(widget,
-                                     MouseEvent::EXITED,
+                                     MouseEventType::EXITED,
                                      mouseInput.getButton(),
                                      mouseInput.getX(),
                                      mouseInput.getY(),
@@ -616,7 +616,7 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
                     || !widget->isVisible())
                 {
                     distributeMouseEvent(widget,
-                                         MouseEvent::EXITED,
+                                         MouseEventType::EXITED,
                                          button,
                                          mouseX,
                                          mouseY,
@@ -686,7 +686,7 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
             && Widget::widgetExists(widget))
         {
             distributeMouseEvent(widget,
-                                 MouseEvent::ENTERED,
+                                 MouseEventType::ENTERED,
                                  button,
                                  mouseX,
                                  mouseY,
@@ -703,7 +703,7 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
     if (mFocusHandler->getDraggedWidget())
     {
         distributeMouseEvent(mFocusHandler->getDraggedWidget(),
-                             MouseEvent::DRAGGED,
+                             MouseEventType::DRAGGED,
                              mLastMouseDragButton,
                              mouseX,
                              mouseY);
@@ -712,7 +712,7 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
     {
         Widget *const sourceWidget = getMouseEventSource(mouseX, mouseY);
         distributeMouseEvent(sourceWidget,
-                             MouseEvent::MOVED,
+                             MouseEventType::MOVED,
                              button,
                              mouseX,
                              mouseY);
@@ -753,7 +753,7 @@ void Gui::handleMousePressed(const MouseInput &mouseInput)
         mClickCount = 1;
     }
 
-    distributeMouseEvent(sourceWidget, MouseEvent::PRESSED, button, x, y);
+    distributeMouseEvent(sourceWidget, MouseEventType::PRESSED, button, x, y);
     mFocusHandler->setLastWidgetPressed(sourceWidget);
     mFocusHandler->setDraggedWidget(sourceWidget);
     mLastMouseDragButton = button;
@@ -792,7 +792,7 @@ void Gui::updateFonts()
 }
 
 void Gui::distributeMouseEvent(Widget *const source,
-                               const int type,
+                               const MouseEventType::Type type,
                                const int button,
                                const int x, const int y,
                                const bool force,
@@ -850,32 +850,32 @@ void Gui::distributeMouseEvent(Widget *const source,
             {
                 switch (mouseType)
                 {
-                    case MouseEvent::ENTERED:
+                    case MouseEventType::ENTERED:
                         (*it)->mouseEntered(event);
                         break;
-                    case MouseEvent::EXITED:
+                    case MouseEventType::EXITED:
                         (*it)->mouseExited(event);
                         break;
-                    case MouseEvent::MOVED:
+                    case MouseEventType::MOVED:
                         (*it)->mouseMoved(event);
                         break;
-                    case MouseEvent::PRESSED:
+                    case MouseEventType::PRESSED:
                         (*it)->mousePressed(event);
                         break;
-                    case MouseEvent::RELEASED:
-                    case 100:  // manual hack for release on target after drag
+                    case MouseEventType::RELEASED:
+                    case MouseEventType::RELEASED2:
                         (*it)->mouseReleased(event);
                         break;
-                    case MouseEvent::WHEEL_MOVED_UP:
+                    case MouseEventType::WHEEL_MOVED_UP:
                         (*it)->mouseWheelMovedUp(event);
                         break;
-                    case MouseEvent::WHEEL_MOVED_DOWN:
+                    case MouseEventType::WHEEL_MOVED_DOWN:
                         (*it)->mouseWheelMovedDown(event);
                         break;
-                    case MouseEvent::DRAGGED:
+                    case MouseEventType::DRAGGED:
                         (*it)->mouseDragged(event);
                         break;
-                    case MouseEvent::CLICKED:
+                    case MouseEventType::CLICKED:
                         (*it)->mouseClicked(event);
                         break;
                     default:
@@ -891,7 +891,7 @@ void Gui::distributeMouseEvent(Widget *const source,
         widget = parent;
         parent = swap->getParent();
 
-        if (type == MouseEvent::RELEASED)
+        if (type == MouseEventType::RELEASED)
             dragDrop.clear();
 
         if (event.isConsumed())
@@ -935,8 +935,10 @@ MouseEvent *Gui::createMouseEvent(Window *const widget)
     getMouseState(&mouseX, &mouseY);
 
     return new MouseEvent(widget,
-        0, 0,
-        mouseX - x, mouseY - y,
+        MouseEventType::MOVED,
+        0,
+        mouseX - x,
+        mouseY - y,
         mClickCount);
 }
 
@@ -1022,7 +1024,7 @@ void Gui::handleMouseReleased(const MouseInput &mouseInput)
         {
             oldWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
             distributeMouseEvent(oldWidget,
-                100,
+                MouseEventType::RELEASED2,
                 mouseInput.getButton(),
                 mouseInput.getX(),
                 mouseInput.getY());
@@ -1031,7 +1033,7 @@ void Gui::handleMouseReleased(const MouseInput &mouseInput)
 
     sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
     distributeMouseEvent(sourceWidget,
-                         MouseEvent::RELEASED,
+                         MouseEventType::RELEASED,
                          mouseInput.getButton(),
                          mouseInput.getX(),
                          mouseInput.getY());
@@ -1040,7 +1042,7 @@ void Gui::handleMouseReleased(const MouseInput &mouseInput)
         && mFocusHandler->getLastWidgetPressed() == sourceWidget)
     {
         distributeMouseEvent(sourceWidget,
-                             MouseEvent::CLICKED,
+                             MouseEventType::CLICKED,
                              mouseInput.getButton(),
                              mouseInput.getX(),
                              mouseInput.getY());
@@ -1148,7 +1150,7 @@ void Gui::handleMouseWheelMovedDown(const MouseInput& mouseInput)
     sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
 
     distributeMouseEvent(sourceWidget,
-                         MouseEvent::WHEEL_MOVED_DOWN,
+                         MouseEventType::WHEEL_MOVED_DOWN,
                          mouseInput.getButton(),
                          mouseInput.getX(),
                          mouseInput.getY());
@@ -1166,7 +1168,7 @@ void Gui::handleMouseWheelMovedUp(const MouseInput& mouseInput)
     sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
 
     distributeMouseEvent(sourceWidget,
-                         MouseEvent::WHEEL_MOVED_UP,
+                         MouseEventType::WHEEL_MOVED_UP,
                          mouseInput.getButton(),
                          mouseInput.getX(),
                          mouseInput.getY());
@@ -1359,7 +1361,7 @@ void Gui::handleModalFocusGained()
         if (Widget::widgetExists(widget))
         {
             distributeMouseEvent(widget,
-                                 MouseEvent::EXITED,
+                                 MouseEventType::EXITED,
                                  mLastMousePressButton,
                                  mLastMouseX,
                                  mLastMouseY,
@@ -1404,7 +1406,7 @@ void Gui::handleModalFocusReleased()
         if (!widgetIsPresentInQueue && Widget::widgetExists(widget))
         {
             distributeMouseEvent(widget,
-                                 MouseEvent::ENTERED,
+                                 MouseEventType::ENTERED,
                                  mLastMousePressButton,
                                  mLastMouseX,
                                  mLastMouseY,

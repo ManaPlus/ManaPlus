@@ -180,6 +180,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/models/listmodel.h \
 	      gui/models/magicschoolmodel.h \
 	      events/mouseevent.h \
+	      events/mouseeventtype.h \
 	      listeners/mouselistener.h \
 	      listeners/openurllistener.h \
 	      listeners/playerlistener.cpp \

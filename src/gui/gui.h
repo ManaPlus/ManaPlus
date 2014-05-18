@@ -68,6 +68,8 @@
 
 #include "gui/color.h"
 
+#include "events/mouseeventtype.h"
+
 #include "resources/cursor.h"
 
 #include <deque>
@@ -325,7 +327,7 @@ class Gui final
         void handleMouseInput();
 
         void distributeMouseEvent(Widget *const source,
-                                  const int type,
+                                  const MouseEventType::Type type,
                                   const int button,
                                   const int x, const int y,
                                   const bool force = false,
