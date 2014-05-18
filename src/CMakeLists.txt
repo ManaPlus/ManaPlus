@@ -597,6 +597,7 @@ SET(SRCS
     resources/subimage.h
     resources/surfaceimagehelper.cpp
     resources/surfaceimagehelper.h
+    resources/textureatlas.h
     resources/updatefile.h
     resources/wallpaper.cpp
     resources/wallpaper.h

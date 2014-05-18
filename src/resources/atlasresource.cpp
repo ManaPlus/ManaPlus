@@ -27,6 +27,7 @@
 #include "resources/atlasitem.h"
 #include "resources/atlasmanager.h"
 #include "resources/resourcemanager.h"
+#include "resources/textureatlas.h"
 
 #include "debug.h"
 

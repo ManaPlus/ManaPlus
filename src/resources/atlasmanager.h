@@ -33,28 +33,7 @@ class AtlasResource;
 class Resource;
 
 struct AtlasItem;
-
-struct TextureAtlas final
-{
-    TextureAtlas() :
-        name(),
-        atlasImage(nullptr),
-        surface(nullptr),
-        width(0),
-        height(0),
-        items()
-    {
-    }
-
-    A_DELETE_COPY(TextureAtlas)
-
-    std::string name;
-    Image *atlasImage;
-    SDL_Surface *surface;
-    int width;
-    int height;
-    std::vector <AtlasItem*> items;
-};
+struct TextureAtlas;
 
 class AtlasManager final
 {
