@@ -18,30 +18,29 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_SOUNDINFO_H
-#define RESOURCES_SOUNDINFO_H
+#ifndef RESOURCES_ITEMSOUNDEVENT_H
+#define RESOURCES_ITEMSOUNDEVENT_H
 
-#include "resources/itemsoundevent.h"
-
-#include <map>
-#include <string>
-#include <vector>
-
-#include "localconsts.h"
-
-struct SoundInfo final
+namespace ItemSoundEvent
 {
-    SoundInfo(const std::string &sound0, const int delay0) :
-        sound(sound0),
-        delay(delay0)
+    enum Type
     {
-    }
+        HIT = 0,
+        MISS,
+        HURT,
+        DIE,
+        MOVE,
+        SIT,
+        SITTOP,
+        SPAWN,
+        DROP,
+        PICKUP,
+        TAKE,   // take from container
+        PUT,    // put into container
+        EQUIP,
+        UNEQUIP,
+        USE
+    };
+}
 
-    std::string sound;
-    int delay;
-};
-
-typedef std::vector<SoundInfo> SoundInfoVect;
-typedef std::map<ItemSoundEvent::Type, SoundInfoVect*> ItemSoundEvents;
-
-#endif  // RESOURCES_SOUNDINFO_H
+#endif  // RESOURCES_ITEMSOUNDEVENT_H

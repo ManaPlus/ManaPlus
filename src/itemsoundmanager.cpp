@@ -31,7 +31,7 @@
 #include "debug.h"
 
 void ItemSoundManager::playSfx(const Item *const item,
-                               const ItemSoundEvent sound)
+                               const ItemSoundEvent::Type sound)
 {
     if (!item)
         return;
@@ -39,7 +39,7 @@ void ItemSoundManager::playSfx(const Item *const item,
 }
 
 void ItemSoundManager::playSfx(const int itemId,
-                               const ItemSoundEvent sound)
+                               const ItemSoundEvent::Type sound)
 {
     const ItemInfo &info = ItemDB::get(itemId);
     std::string sfx = info.getSound(sound).sound;
@@ -54,7 +54,7 @@ void ItemSoundManager::playSfx(const int itemId,
 }
 
 void ItemSoundManager::playSfx(const FloorItem *const item,
-                               const ItemSoundEvent sound)
+                               const ItemSoundEvent::Type sound)
 {
     if (!item)
         return;

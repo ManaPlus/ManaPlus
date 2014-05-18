@@ -594,7 +594,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
         mDamageTaken += amount;
         if (mInfo)
         {
-            playSfx(mInfo->getSound(SOUND_EVENT_HURT), this, false, mX, mY);
+            playSfx(mInfo->getSound(ItemSoundEvent::HURT), this, false, mX, mY);
 
             if (!mInfo->isStaticMaxHP())
             {
@@ -754,13 +754,13 @@ void Being::handleAttack(Being *const victim, const int damage,
                 weaponId = -100 - mSubType;
             const ItemInfo &info = ItemDB::get(weaponId);
             playSfx(info.getSound((damage > 0) ?
-                SOUND_EVENT_HIT : SOUND_EVENT_MISS), victim, true, mX, mY);
+                ItemSoundEvent::HIT : ItemSoundEvent::MISS), victim, true, mX, mY);
         }
     }
     else
     {
         playSfx(mInfo->getSound((damage > 0) ?
-            SOUND_EVENT_HIT : SOUND_EVENT_MISS), victim, true, mX, mY);
+            ItemSoundEvent::HIT : ItemSoundEvent::MISS), victim, true, mX, mY);
     }
 }
 
@@ -804,7 +804,7 @@ void Being::handleSkill(Being *const victim, const int damage,
     else
     {
         playSfx(mInfo->getSound((damage > 0) ?
-            SOUND_EVENT_HIT : SOUND_EVENT_MISS), victim, true, mX, mY);
+            ItemSoundEvent::HIT : ItemSoundEvent::MISS), victim, true, mX, mY);
     }
 }
 
@@ -1135,7 +1135,7 @@ void Being::setAction(const BeingAction::Action &action, const int attackId)
             if (mInfo)
             {
                 playSfx(mInfo->getSound(
-                    SOUND_EVENT_MOVE), nullptr, true, mX, mY);
+                    ItemSoundEvent::MOVE), nullptr, true, mX, mY);
             }
             currentAction = getMoveAction();
             // Note: When adding a run action,
@@ -1146,11 +1146,11 @@ void Being::setAction(const BeingAction::Action &action, const int attackId)
             currentAction = getSitAction();
             if (mInfo)
             {
-                ItemSoundEvent event;
+                ItemSoundEvent::Type event;
                 if (currentAction == SpriteAction::SITTOP)
-                    event = SOUND_EVENT_SITTOP;
+                    event = ItemSoundEvent::SITTOP;
                 else
-                    event = SOUND_EVENT_SIT;
+                    event = ItemSoundEvent::SIT;
                 playSfx(mInfo->getSound(event), nullptr, true, mX, mY);
             }
             break;
@@ -1198,7 +1198,7 @@ void Being::setAction(const BeingAction::Action &action, const int attackId)
         case BeingAction::HURT:
             if (mInfo)
             {
-                playSfx(mInfo->getSound(SOUND_EVENT_HURT),
+                playSfx(mInfo->getSound(ItemSoundEvent::HURT),
                     this, false, mX, mY);
             }
             break;
@@ -1206,7 +1206,7 @@ void Being::setAction(const BeingAction::Action &action, const int attackId)
             currentAction = getDeadAction();
             if (mInfo)
             {
-                playSfx(mInfo->getSound(SOUND_EVENT_DIE), this, false, mX, mY);
+                playSfx(mInfo->getSound(ItemSoundEvent::DIE), this, false, mX, mY);
                 if (mType == ActorType::MONSTER || mType == ActorType::NPC)
                     mYDiff = mInfo->getDeadSortOffsetY();
             }
@@ -1217,7 +1217,7 @@ void Being::setAction(const BeingAction::Action &action, const int attackId)
         case BeingAction::SPAWN:
             if (mInfo)
             {
-                playSfx(mInfo->getSound(SOUND_EVENT_SPAWN),
+                playSfx(mInfo->getSound(ItemSoundEvent::SPAWN),
                     nullptr, true, mX, mY);
             }
             currentAction = getSpawnAction();

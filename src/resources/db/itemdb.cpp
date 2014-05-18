@@ -45,7 +45,7 @@ namespace
     bool mConstructed = false;
     StringVect mTagNames;
     std::map<std::string, int> mTags;
-    std::map<std::string, ItemSoundEvent> mSoundNames;
+    std::map<std::string, ItemSoundEvent::Type> mSoundNames;
 }  // namespace
 
 extern int serverVersion;
@@ -184,16 +184,16 @@ static ItemType::Type itemTypeFromString(const std::string &name)
 static void initStatic()
 {
     mConstructed = true;
-    mSoundNames["hit"] = SOUND_EVENT_HIT;
-    mSoundNames["strike"] = SOUND_EVENT_MISS;
-    mSoundNames["miss"] = SOUND_EVENT_MISS;
-    mSoundNames["use"] = SOUND_EVENT_USE;
-    mSoundNames["equip"] = SOUND_EVENT_EQUIP;
-    mSoundNames["unequip"] = SOUND_EVENT_UNEQUIP;
-    mSoundNames["drop"] = SOUND_EVENT_DROP;
-    mSoundNames["pickup"] = SOUND_EVENT_PICKUP;
-    mSoundNames["take"] = SOUND_EVENT_TAKE;
-    mSoundNames["put"] = SOUND_EVENT_PUT;
+    mSoundNames["hit"] = ItemSoundEvent::HIT;
+    mSoundNames["strike"] = ItemSoundEvent::MISS;
+    mSoundNames["miss"] = ItemSoundEvent::MISS;
+    mSoundNames["use"] = ItemSoundEvent::USE;
+    mSoundNames["equip"] = ItemSoundEvent::EQUIP;
+    mSoundNames["unequip"] = ItemSoundEvent::UNEQUIP;
+    mSoundNames["drop"] = ItemSoundEvent::DROP;
+    mSoundNames["pickup"] = ItemSoundEvent::PICKUP;
+    mSoundNames["take"] = ItemSoundEvent::TAKE;
+    mSoundNames["put"] = ItemSoundEvent::PUT;
 }
 
 void ItemDB::load()
@@ -763,7 +763,7 @@ void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
         node->xmlChildrenNode->content);
     const int delay = XML::getProperty(node, "delay", 0);
 
-    const std::map<std::string, ItemSoundEvent>::const_iterator
+    const std::map<std::string, ItemSoundEvent::Type>::const_iterator
         it = mSoundNames.find(event);
     if (it != mSoundNames.end())
     {

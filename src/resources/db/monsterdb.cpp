@@ -164,35 +164,43 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
 
                 if (event == "hit")
                 {
-                    currentInfo->addSound(SOUND_EVENT_HIT, filename, delay);
+                    currentInfo->addSound(ItemSoundEvent::HIT,
+                        filename, delay);
                 }
                 else if (event == "miss")
                 {
-                    currentInfo->addSound(SOUND_EVENT_MISS, filename, delay);
+                    currentInfo->addSound(ItemSoundEvent::MISS,
+                        filename, delay);
                 }
                 else if (event == "hurt")
                 {
-                    currentInfo->addSound(SOUND_EVENT_HURT, filename, delay);
+                    currentInfo->addSound(ItemSoundEvent::HURT,
+                        filename, delay);
                 }
                 else if (event == "die")
                 {
-                    currentInfo->addSound(SOUND_EVENT_DIE, filename, delay);
+                    currentInfo->addSound(ItemSoundEvent::DIE,
+                        filename, delay);
                 }
                 else if (event == "move")
                 {
-                    currentInfo->addSound(SOUND_EVENT_MOVE, filename, delay);
+                    currentInfo->addSound(ItemSoundEvent::MOVE,
+                        filename, delay);
                 }
                 else if (event == "sit")
                 {
-                    currentInfo->addSound(SOUND_EVENT_SIT, filename, delay);
+                    currentInfo->addSound(ItemSoundEvent::SIT,
+                        filename, delay);
                 }
                 else if (event == "sittop")
                 {
-                    currentInfo->addSound(SOUND_EVENT_SITTOP, filename, delay);
+                    currentInfo->addSound(ItemSoundEvent::SITTOP,
+                        filename, delay);
                 }
                 else if (event == "spawn")
                 {
-                    currentInfo->addSound(SOUND_EVENT_SPAWN, filename, delay);
+                    currentInfo->addSound(ItemSoundEvent::SPAWN,
+                        filename, delay);
                 }
                 else
                 {

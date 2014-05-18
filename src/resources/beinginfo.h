@@ -88,10 +88,11 @@ class BeingInfo final
         TargetCursorSize::Size getTargetCursorSize() const A_WARN_UNUSED
         { return mTargetCursorSize; }
 
-        void addSound(const ItemSoundEvent event, const std::string &filename,
+        void addSound(const ItemSoundEvent::Type event,
+                      const std::string &filename,
                       const int delay);
 
-        const SoundInfo &getSound(const ItemSoundEvent event)
+        const SoundInfo &getSound(const ItemSoundEvent::Type event)
                                   const A_WARN_UNUSED;
 
         void addAttack(const int id,

@@ -34,13 +34,13 @@ class ItemSoundManager final
         A_DELETE_COPY(ItemSoundManager)
 
         static void playSfx(const int item,
-                            const ItemSoundEvent sound);
+                            const ItemSoundEvent::Type sound);
 
         static void playSfx(const Item *const item,
-                            const ItemSoundEvent sound);
+                            const ItemSoundEvent::Type sound);
 
         static void playSfx(const FloorItem *const item,
-                            const ItemSoundEvent sound);
+                            const ItemSoundEvent::Type sound);
 };
 
 #endif  // ITEMSOUNDMANAGER_H

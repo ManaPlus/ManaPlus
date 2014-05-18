@@ -104,7 +104,7 @@ class DragDrop final
                     mItemImage->incRef();
                 mSource = source;
                 mTag = tag;
-                ItemSoundManager::playSfx(item, SOUND_EVENT_TAKE);
+                ItemSoundManager::playSfx(item, ItemSoundEvent::TAKE);
             }
             else
             {
@@ -183,7 +183,7 @@ class DragDrop final
             if (mItemImage)
                 mItemImage->decRef();
             if (mItem)
-                ItemSoundManager::playSfx(mItem, SOUND_EVENT_PUT);
+                ItemSoundManager::playSfx(mItem, ItemSoundEvent::PUT);
             mItem = 0;
             mItemColor = 1;
             mItemImage = nullptr;
