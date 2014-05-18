@@ -125,7 +125,7 @@ void EmoteShortcutContainer::draw(Graphics *graphics)
 
         // Draw emote keyboard shortcut.
         const std::string key = inputManager.getKeyValueString(
-            Input::KEY_EMOTE_1 + i);
+            InputAction::EMOTE_1 + i);
 
         font->drawString(graphics, key, emoteX + 2, emoteY + 2);
     }

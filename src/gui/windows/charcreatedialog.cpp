@@ -26,6 +26,7 @@
 
 #include "events/keyevent.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "gui/windows/okdialog.h"
@@ -665,7 +666,7 @@ void CharCreateDialog::keyPressed(KeyEvent &event)
     const int actionId = event.getActionId();
     switch (actionId)
     {
-        case Input::KEY_GUI_CANCEL:
+        case InputAction::GUI_CANCEL:
             event.consume();
             action(ActionEvent(mCancelButton,
                 mCancelButton->getActionEventId()));

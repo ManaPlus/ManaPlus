@@ -26,6 +26,7 @@
 
 #include "events/keyevent.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "gui/gui.h"
@@ -317,24 +318,24 @@ void DropDown::keyPressed(KeyEvent& event)
     const int actionId = event.getActionId();
     switch (actionId)
     {
-        case Input::KEY_GUI_SELECT:
-        case Input::KEY_GUI_SELECT2:
+        case InputAction::GUI_SELECT:
+        case InputAction::GUI_SELECT2:
             dropDown();
             break;
 
-        case Input::KEY_GUI_UP:
+        case InputAction::GUI_UP:
             setSelected(getSelected() - 1);
             break;
 
-        case Input::KEY_GUI_DOWN:
+        case InputAction::GUI_DOWN:
             setSelected(getSelected() + 1);
             break;
 
-        case Input::KEY_GUI_HOME:
+        case InputAction::GUI_HOME:
             setSelected(0);
             break;
 
-        case Input::KEY_GUI_END:
+        case InputAction::GUI_END:
             if (mPopup->getListModel())
             {
                 setSelected(mPopup->getListModel()->

@@ -327,7 +327,7 @@ void TextField::keyPressed(KeyEvent &event)
 
     const int action = event.getActionId();
     if (!inputManager.isActionActive(static_cast<int>(
-        Input::KEY_GUI_CTRL)))
+        InputAction::GUI_CTRL)))
     {
         if (!handleNormalKeys(action, consumed))
         {
@@ -353,7 +353,7 @@ bool TextField::handleNormalKeys(const int action, bool &consumed)
 {
     switch (action)
     {
-        case Input::KEY_GUI_LEFT:
+        case InputAction::GUI_LEFT:
         {
             consumed = true;
             while (mCaretPosition > 0)
@@ -365,7 +365,7 @@ bool TextField::handleNormalKeys(const int action, bool &consumed)
             break;
         }
 
-        case Input::KEY_GUI_RIGHT:
+        case InputAction::GUI_RIGHT:
         {
             consumed = true;
             const unsigned sz = static_cast<unsigned>(mText.size());
@@ -381,7 +381,7 @@ bool TextField::handleNormalKeys(const int action, bool &consumed)
             break;
         }
 
-        case Input::KEY_GUI_DELETE:
+        case InputAction::GUI_DELETE:
         {
             consumed = true;
             unsigned sz = static_cast<unsigned>(mText.size());
@@ -398,28 +398,28 @@ bool TextField::handleNormalKeys(const int action, bool &consumed)
             break;
         }
 
-        case Input::KEY_GUI_BACKSPACE:
+        case InputAction::GUI_BACKSPACE:
             consumed = true;
             deleteCharLeft(mText, &mCaretPosition);
             break;
 
-        case Input::KEY_GUI_SELECT2:
+        case InputAction::GUI_SELECT2:
             distributeActionEvent();
             consumed = true;
             fixScroll();
             return false;
 
-        case Input::KEY_GUI_HOME:
+        case InputAction::GUI_HOME:
             mCaretPosition = 0;
             consumed = true;
             break;
 
-        case Input::KEY_GUI_END:
+        case InputAction::GUI_END:
             mCaretPosition = static_cast<unsigned>(mText.size());
             consumed = true;
             break;
 
-        case Input::KEY_GUI_TAB:
+        case InputAction::GUI_TAB:
             if (mLoseFocusOnTab)
                 return false;
             consumed = true;
@@ -435,19 +435,19 @@ void TextField::handleCtrlKeys(const int action, bool &consumed)
 {
     switch (action)
     {
-        case Input::KEY_GUI_LEFT:
+        case InputAction::GUI_LEFT:
         {
             moveCaretWordBack();
             consumed = true;
             break;
         }
-        case Input::KEY_GUI_RIGHT:
+        case InputAction::GUI_RIGHT:
         {
             moveCaretWordForward();
             consumed = true;
             break;
         }
-        case Input::KEY_GUI_B:
+        case InputAction::GUI_B:
         {
             if (mAllowSpecialActions)
             {
@@ -456,49 +456,49 @@ void TextField::handleCtrlKeys(const int action, bool &consumed)
             }
             break;
         }
-        case Input::KEY_GUI_F:
+        case InputAction::GUI_F:
         {
             moveCaretForward();
             consumed = true;
             break;
         }
-        case Input::KEY_GUI_D:
+        case InputAction::GUI_D:
         {
             caretDelete();
             consumed = true;
             break;
         }
-        case Input::KEY_GUI_E:
+        case InputAction::GUI_E:
         {
             mCaretPosition = static_cast<int>(mText.size());
             consumed = true;
             break;
         }
-        case Input::KEY_GUI_H:
+        case InputAction::GUI_H:
         {
             deleteCharLeft(mText, &mCaretPosition);
             consumed = true;
             break;
         }
-        case Input::KEY_GUI_K:
+        case InputAction::GUI_K:
         {
             mText = mText.substr(0, mCaretPosition);
             consumed = true;
             break;
         }
-        case Input::KEY_GUI_U:
+        case InputAction::GUI_U:
         {
             caretDeleteToStart();
             consumed = true;
             break;
         }
-        case Input::KEY_GUI_C:
+        case InputAction::GUI_C:
         {
             handleCopy();
             consumed = true;
             break;
         }
-        case Input::KEY_GUI_V:
+        case InputAction::GUI_V:
         {
 #ifdef USE_SDL2
             handlePaste();
@@ -512,7 +512,7 @@ void TextField::handleCtrlKeys(const int action, bool &consumed)
             consumed = true;
             break;
         }
-        case Input::KEY_GUI_W:
+        case InputAction::GUI_W:
         {
             caretDeleteWord();
             consumed = true;
@@ -699,7 +699,7 @@ void TextField::mousePressed(MouseEvent &event)
 {
 #ifdef ANDROID
     if (!client->isKeyboardVisible())
-        inputManager.executeAction(Input::KEY_SHOW_KEYBOARD);
+        inputManager.executeAction(InputAction::SHOW_KEYBOARD);
 #endif
     event.consume();
     if (event.getButton() == MouseButton::RIGHT)
@@ -736,7 +736,7 @@ void TextField::focusGained(const Event &event A_UNUSED)
 {
 #ifdef ANDROID
     if (!client->isKeyboardVisible())
-        inputManager.executeAction(Input::KEY_SHOW_KEYBOARD);
+        inputManager.executeAction(InputAction::SHOW_KEYBOARD);
 #endif
 }
 

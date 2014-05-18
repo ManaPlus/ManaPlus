@@ -23,6 +23,7 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include <string>
@@ -322,12 +323,12 @@ static const CommandInfo commands[] =
     {"", &Commands::removeName, -1, false},
     {"disableaway", &Commands::disableAway, -1, false},
     {"enableaway", &Commands::enableAway, -1, false},
-    {"drop", nullptr, Input::KEY_QUICK_DROP, false},
-    {"dropn", nullptr, Input::KEY_QUICK_DROPN, false},
-    {"movetotarget", nullptr, Input::KEY_MOVE_TO_TARGET, false},
-    {"movetohome", nullptr, Input::KEY_MOVE_TO_HOME, false},
-    {"sethome", nullptr, Input::KEY_SET_HOME, false},
-    {"magicattack", nullptr, Input::KEY_MAGIC_ATTACK, false},
+    {"drop", nullptr, InputAction::QUICK_DROP, false},
+    {"dropn", nullptr, InputAction::QUICK_DROPN, false},
+    {"movetotarget", nullptr, InputAction::MOVE_TO_TARGET, false},
+    {"movetohome", nullptr, InputAction::MOVE_TO_HOME, false},
+    {"sethome", nullptr, InputAction::SET_HOME, false},
+    {"magicattack", nullptr, InputAction::MAGIC_ATTACK, false},
     {"testparticle", &Commands::testParticle, -1, true},
     {"createitems", &Commands::createItems, -1, false},
     {"talkraw", &Commands::talkRaw, -1, true},

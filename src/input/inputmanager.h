@@ -21,6 +21,7 @@
 #ifndef INPUT_INPUTMANAGER_H
 #define INPUT_INPUTMANAGER_H
 
+#include "input/inputaction.h"
 #include "input/keyfunction.h"
 #include "input/keydata.h"
 
@@ -129,7 +130,7 @@ class InputManager final
 
         std::map<std::string, int> mNameMap;
 
-        KeyFunction mKey[Input::KEY_TOTAL]; /**< Pointer to all the key data */
+        KeyFunction mKey[InputAction::TOTAL];
 };
 
 extern InputManager inputManager;

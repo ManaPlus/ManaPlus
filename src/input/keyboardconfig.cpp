@@ -86,7 +86,7 @@ void KeyboardConfig::refreshActiveKeys()
 
 std::string KeyboardConfig::getKeyName(const int key)
 {
-    if (key == Input::KEY_NO_VALUE)
+    if (key == InputAction::NO_VALUE)
         return "";
     if (key >= 0)
     {

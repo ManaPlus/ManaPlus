@@ -396,7 +396,7 @@ void InventoryWindow::action(const ActionEvent &event)
                 return;
 
             if (inputManager.isActionActive(static_cast<int>(
-                Input::KEY_STOP_ATTACK)))
+                InputAction::STOP_ATTACK)))
             {
                 PlayerInfo::dropItem(item, item->getQuantity(), true);
             }
@@ -445,11 +445,11 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
         gui->resetClickCount();
 
     const bool mod = (isStorageActive() && inputManager.isActionActive(
-        static_cast<int>(Input::KEY_STOP_ATTACK)));
+        static_cast<int>(InputAction::STOP_ATTACK)));
 
     const bool mod2 = (tradeWindow && tradeWindow->isWindowVisible()
         && inputManager.isActionActive(static_cast<int>(
-        Input::KEY_STOP_ATTACK)));
+        InputAction::STOP_ATTACK)));
 
     if (!mod && !mod2 && event.getButton() == MouseButton::RIGHT)
     {
@@ -584,13 +584,13 @@ void InventoryWindow::mouseExited(MouseEvent &event A_UNUSED)
 
 void InventoryWindow::keyPressed(KeyEvent &event)
 {
-    if (event.getActionId() == static_cast<int>(Input::KEY_GUI_MOD))
+    if (event.getActionId() == static_cast<int>(InputAction::GUI_MOD))
         mSplit = true;
 }
 
 void InventoryWindow::keyReleased(KeyEvent &event)
 {
-    if (event.getActionId() == static_cast<int>(Input::KEY_GUI_MOD))
+    if (event.getActionId() == static_cast<int>(InputAction::GUI_MOD))
         mSplit = false;
 }
 

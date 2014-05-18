@@ -439,10 +439,10 @@ bool Gui::handleKeyInput()
             // tabbing is enable check for tab press and
             // change focus.
             if (!eventConsumed && keyInput.getActionId()
-                == static_cast<int>(Input::KEY_GUI_TAB)
+                == static_cast<int>(InputAction::GUI_TAB)
                 && keyInput.getType() == KeyInput::PRESSED)
             {
-                if (inputManager.isActionActive(Input::KEY_GUI_MOD))
+                if (inputManager.isActionActive(InputAction::GUI_MOD))
                     mFocusHandler->tabPrevious();
                 else
                     mFocusHandler->tabNext();

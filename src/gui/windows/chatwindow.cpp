@@ -662,7 +662,7 @@ void ChatWindow::mousePressed(MouseEvent &event)
             {
                 event.consume();
                 if (inputManager.isActionActive(static_cast<int>(
-                    Input::KEY_CHAT_MOD)))
+                    InputAction::CHAT_MOD)))
                 {
                     ChatTab *const wTab = dynamic_cast<WhisperTab*>(tab);
                     if (wTab)
@@ -721,7 +721,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
 {
     const int actionId = event.getActionId();
     std::string temp;
-    if (actionId == static_cast<int>(Input::KEY_GUI_DOWN))
+    if (actionId == static_cast<int>(InputAction::GUI_DOWN))
     {
         if (mCurHist != mHistory.end())
         {
@@ -745,7 +745,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
             mChatInput->setText("");
         }
     }
-    else if (actionId == static_cast<int>(Input::KEY_GUI_UP) &&
+    else if (actionId == static_cast<int>(InputAction::GUI_UP) &&
              mCurHist != mHistory.begin() && !mHistory.empty())
     {
         // Move backward through the history
@@ -754,7 +754,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
         mChatInput->setCaretPosition(static_cast<unsigned>(
                 mChatInput->getText().length()));
     }
-    else if (actionId == static_cast<int>(Input::KEY_GUI_INSERT) &&
+    else if (actionId == static_cast<int>(InputAction::GUI_INSERT) &&
              mChatInput->getText() != "")
     {
         // Add the current message to the history and clear the text
@@ -763,18 +763,18 @@ void ChatWindow::keyPressed(KeyEvent &event)
         mCurHist = mHistory.end();
         mChatInput->setText("");
     }
-    else if (actionId == static_cast<int>(Input::KEY_GUI_TAB) &&
+    else if (actionId == static_cast<int>(InputAction::GUI_TAB) &&
              !mChatInput->getText().empty())
     {
         autoComplete();
         return;
     }
-    else if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL) &&
+    else if (actionId == static_cast<int>(InputAction::GUI_CANCEL) &&
              mChatInput->isVisibleLocal())
     {
         mChatInput->processVisible(false);
     }
-    else if (actionId == static_cast<int>(Input::KEY_CHAT_PREV_HISTORY) &&
+    else if (actionId == static_cast<int>(InputAction::CHAT_PREV_HISTORY) &&
              mChatInput->isVisibleLocal())
     {
         const ChatTab *const tab = getFocused();
@@ -806,7 +806,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
                 mChatInput->getText().length()));
         }
     }
-    else if (actionId == static_cast<int>(Input::KEY_CHAT_NEXT_HISTORY) &&
+    else if (actionId == static_cast<int>(InputAction::CHAT_NEXT_HISTORY) &&
              mChatInput->isVisibleLocal())
     {
         const ChatTab *const tab = getFocused();
@@ -842,7 +842,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
                     mChatInput->getText().length()));
         }
     }
-    else if (actionId == static_cast<int>(Input::KEY_GUI_F1))
+    else if (actionId == static_cast<int>(InputAction::GUI_F1))
     {
         if (emoteWindow)
         {
@@ -852,21 +852,21 @@ void ChatWindow::keyPressed(KeyEvent &event)
                 emoteWindow->show();
         }
     }
-    ifKey(Input::KEY_GUI_F2, "\u2318")
-    ifKey(Input::KEY_GUI_F3, "\u263A")
-    ifKey(Input::KEY_GUI_F4, "\u2665")
-    ifKey(Input::KEY_GUI_F5, "\u266A")
-    ifKey(Input::KEY_GUI_F6, "\u266B")
-    ifKey(Input::KEY_GUI_F7, "\u26A0")
-    ifKey(Input::KEY_GUI_F8, "\u2622")
-    ifKey(Input::KEY_GUI_F9, "\u262E")
-    ifKey(Input::KEY_GUI_F10, "\u2605")
-    ifKey(Input::KEY_GUI_F11, "\u2618")
-    ifKey(Input::KEY_GUI_F12, "\u2592")
+    ifKey(InputAction::GUI_F2, "\u2318")
+    ifKey(InputAction::GUI_F3, "\u263A")
+    ifKey(InputAction::GUI_F4, "\u2665")
+    ifKey(InputAction::GUI_F5, "\u266A")
+    ifKey(InputAction::GUI_F6, "\u266B")
+    ifKey(InputAction::GUI_F7, "\u26A0")
+    ifKey(InputAction::GUI_F8, "\u2622")
+    ifKey(InputAction::GUI_F9, "\u262E")
+    ifKey(InputAction::GUI_F10, "\u2605")
+    ifKey(InputAction::GUI_F11, "\u2618")
+    ifKey(InputAction::GUI_F12, "\u2592")
 
-    if (inputManager.isActionActive(static_cast<int>(Input::KEY_GUI_CTRL)))
+    if (inputManager.isActionActive(static_cast<int>(InputAction::GUI_CTRL)))
     {
-        if (actionId == static_cast<int>(Input::KEY_GUI_B))
+        if (actionId == static_cast<int>(InputAction::GUI_B))
         {
             std::string inputText = mChatInput->getTextBeforeCaret();
             toLower(inputText);

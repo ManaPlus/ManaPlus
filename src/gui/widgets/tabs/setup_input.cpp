@@ -177,7 +177,7 @@ void Setup_Input::action(const ActionEvent &event)
             if (i >= 0 && i < mActionDataSize[selectedData])
             {
                 if (setupActionData[selectedData][i].actionId
-                    == static_cast<int>(Input::KEY_NO_VALUE))
+                    == static_cast<int>(InputAction::NO_VALUE))
                 {
                     mAssignKeyButton->setEnabled(false);
                     mUnassignKeyButton->setEnabled(false);
@@ -215,7 +215,7 @@ void Setup_Input::action(const ActionEvent &event)
             inputManager.setNewKeyIndex(ik);
             refreshAssignedKey(mKeyList->getSelected());
             inputManager.unassignKey();
-            inputManager.setNewKeyIndex(static_cast<int>(Input::KEY_NO_VALUE));
+            inputManager.setNewKeyIndex(static_cast<int>(InputAction::NO_VALUE));
         }
         mAssignKeyButton->setEnabled(true);
     }
@@ -260,7 +260,7 @@ void Setup_Input::refreshAssignedKey(const int index)
 {
     const int selectedData = mKeyListModel->getSelectedData();
     const SetupActionData &key = setupActionData[selectedData][index];
-    if (key.actionId == static_cast<int>(Input::KEY_NO_VALUE))
+    if (key.actionId == static_cast<int>(InputAction::NO_VALUE))
     {
         const std::string str(" \342\200\225\342\200\225\342\200\225"
             "\342\200\225\342\200\225 ");
@@ -328,7 +328,7 @@ void Setup_Input::keyUnresolved()
     if (mKeySetting)
     {
         newKeyCallback(inputManager.getNewKeyIndex());
-        inputManager.setNewKeyIndex(static_cast<int>(Input::KEY_NO_VALUE));
+        inputManager.setNewKeyIndex(static_cast<int>(InputAction::NO_VALUE));
     }
 }
 
@@ -355,17 +355,17 @@ void Setup_Input::fixTranslation(SetupActionData *const actionDatas,
 
 void Setup_Input::fixTranslations()
 {
-    fixTranslation(setupActionData1, static_cast<int>(Input::KEY_SHORTCUT_1),
-        static_cast<int>(Input::KEY_SHORTCUT_20), "Item Shortcut %d");
+    fixTranslation(setupActionData1, static_cast<int>(InputAction::SHORTCUT_1),
+        static_cast<int>(InputAction::SHORTCUT_20), "Item Shortcut %d");
 
-    fixTranslation(setupActionData3, static_cast<int>(Input::KEY_EMOTE_1),
-        static_cast<int>(Input::KEY_EMOTE_48), "Emote Shortcut %d");
+    fixTranslation(setupActionData3, static_cast<int>(InputAction::EMOTE_1),
+        static_cast<int>(InputAction::EMOTE_48), "Emote Shortcut %d");
 
-    fixTranslation(setupActionData4, static_cast<int>(Input::KEY_OUTFIT_1),
-        static_cast<int>(Input::KEY_OUTFIT_48), "Outfit Shortcut %d");
+    fixTranslation(setupActionData4, static_cast<int>(InputAction::OUTFIT_1),
+        static_cast<int>(InputAction::OUTFIT_48), "Outfit Shortcut %d");
 
     fixTranslation(setupActionData7, static_cast<int>(
-        Input::KEY_MOVE_TO_POINT_1),
-        static_cast<int>(Input::KEY_MOVE_TO_POINT_48),
+        InputAction::MOVE_TO_POINT_1),
+        static_cast<int>(InputAction::MOVE_TO_POINT_48),
         "Move to point Shortcut %d");
 }

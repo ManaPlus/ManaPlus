@@ -28,6 +28,7 @@
 
 #include "events/keyevent.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "being/attributes.h"
@@ -297,13 +298,13 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
     const int actionId = event.getActionId();
     switch (actionId)
     {
-        case Input::KEY_GUI_CANCEL:
+        case InputAction::GUI_CANCEL:
             event.consume();
             action(ActionEvent(mSwitchLoginButton,
                 mSwitchLoginButton->getActionEventId()));
             break;
 
-        case Input::KEY_GUI_RIGHT:
+        case InputAction::GUI_RIGHT:
         {
             event.consume();
             int idx = mCharacterView->getSelected();
@@ -318,7 +319,7 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
             break;
         }
 
-        case Input::KEY_GUI_LEFT:
+        case InputAction::GUI_LEFT:
         {
             event.consume();
             int idx = mCharacterView->getSelected();
@@ -333,7 +334,7 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
             break;
         }
 
-        case Input::KEY_GUI_UP:
+        case InputAction::GUI_UP:
         {
             event.consume();
             int idx = mCharacterView->getSelected();
@@ -348,7 +349,7 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
             break;
         }
 
-        case Input::KEY_GUI_DOWN:
+        case InputAction::GUI_DOWN:
         {
             event.consume();
             int idx = mCharacterView->getSelected();
@@ -363,7 +364,7 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
             break;
         }
 
-        case Input::KEY_GUI_DELETE:
+        case InputAction::GUI_DELETE:
         {
             event.consume();
             const int idx = mCharacterView->getSelected();
@@ -375,7 +376,7 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
             break;
         }
 
-        case Input::KEY_GUI_SELECT:
+        case InputAction::GUI_SELECT:
         {
             event.consume();
             use(mCharacterView->getSelected());

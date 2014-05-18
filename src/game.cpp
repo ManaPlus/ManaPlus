@@ -856,8 +856,8 @@ void Game::handleMove()
         // Ignore input if either "ignore" key is pressed
         // Stops the character moving about if the user's window manager
         // uses "ignore+arrow key" to switch virtual desktops.
-        if (inputManager.isActionActive(Input::KEY_IGNORE_INPUT_1) ||
-            inputManager.isActionActive(Input::KEY_IGNORE_INPUT_2))
+        if (inputManager.isActionActive(InputAction::IGNORE_INPUT_1) ||
+            inputManager.isActionActive(InputAction::IGNORE_INPUT_2))
         {
             return;
         }
@@ -865,14 +865,14 @@ void Game::handleMove()
         unsigned char direction = 0;
 
         // Translate pressed keys to movement and direction
-        if (inputManager.isActionActive(Input::KEY_MOVE_UP) ||
+        if (inputManager.isActionActive(InputAction::MOVE_UP) ||
             (joystick && joystick->isUp()))
         {
             direction |= BeingDirection::UP;
             setValidSpeed();
             player_node->cancelFollow();
         }
-        else if (inputManager.isActionActive(Input::KEY_MOVE_DOWN) ||
+        else if (inputManager.isActionActive(InputAction::MOVE_DOWN) ||
                  (joystick && joystick->isDown()))
         {
             direction |= BeingDirection::DOWN;
@@ -880,28 +880,28 @@ void Game::handleMove()
             player_node->cancelFollow();
         }
 
-        if (inputManager.isActionActive(Input::KEY_MOVE_LEFT) ||
+        if (inputManager.isActionActive(InputAction::MOVE_LEFT) ||
             (joystick && joystick->isLeft()))
         {
             direction |= BeingDirection::LEFT;
             setValidSpeed();
             player_node->cancelFollow();
         }
-        else if (inputManager.isActionActive(Input::KEY_MOVE_RIGHT) ||
+        else if (inputManager.isActionActive(InputAction::MOVE_RIGHT) ||
                  (joystick && joystick->isRight()))
         {
             direction |= BeingDirection::RIGHT;
             setValidSpeed();
             player_node->cancelFollow();
         }
-        else if (inputManager.isActionActive(Input::KEY_MOVE_FORWARD))
+        else if (inputManager.isActionActive(InputAction::MOVE_FORWARD))
         {
             direction = player_node->getDirection();
             setValidSpeed();
             player_node->cancelFollow();
         }
 
-        if (!inputManager.isActionActive(Input::KEY_EMOTE) || direction == 0)
+        if (!inputManager.isActionActive(InputAction::EMOTE) || direction == 0)
             moveInDirection(direction);
     }
 }
@@ -972,8 +972,8 @@ void Game::handleInput()
     }
 
     // If pressed outfits keys, stop processing keys.
-    if (inputManager.isActionActive(Input::KEY_WEAR_OUTFIT)
-        || inputManager.isActionActive(Input::KEY_COPY_OUTFIT)
+    if (inputManager.isActionActive(InputAction::WEAR_OUTFIT)
+        || inputManager.isActionActive(InputAction::COPY_OUTFIT)
         || (setupWindow && setupWindow->isWindowVisible()))
     {
         BLOCK_END("Game::handleInput 1")

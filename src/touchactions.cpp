@@ -70,33 +70,33 @@ static void moveChar(int x, int y)
     // detecting direction
     if (x > 0)
     {
-        touchManager.setActionActive(Input::KEY_MOVE_LEFT, false);
-        touchManager.setActionActive(Input::KEY_MOVE_RIGHT, true);
+        touchManager.setActionActive(InputAction::MOVE_LEFT, false);
+        touchManager.setActionActive(InputAction::MOVE_RIGHT, true);
     }
     else if (x < 0)
     {
-        touchManager.setActionActive(Input::KEY_MOVE_LEFT, true);
-        touchManager.setActionActive(Input::KEY_MOVE_RIGHT, false);
+        touchManager.setActionActive(InputAction::MOVE_LEFT, true);
+        touchManager.setActionActive(InputAction::MOVE_RIGHT, false);
     }
     else
     {
-        touchManager.setActionActive(Input::KEY_MOVE_LEFT, false);
-        touchManager.setActionActive(Input::KEY_MOVE_RIGHT, false);
+        touchManager.setActionActive(InputAction::MOVE_LEFT, false);
+        touchManager.setActionActive(InputAction::MOVE_RIGHT, false);
     }
     if (y > 0)
     {
-        touchManager.setActionActive(Input::KEY_MOVE_DOWN, true);
-        touchManager.setActionActive(Input::KEY_MOVE_UP, false);
+        touchManager.setActionActive(InputAction::MOVE_DOWN, true);
+        touchManager.setActionActive(InputAction::MOVE_UP, false);
     }
     else if (y < 0)
     {
-        touchManager.setActionActive(Input::KEY_MOVE_DOWN, false);
-        touchManager.setActionActive(Input::KEY_MOVE_UP, true);
+        touchManager.setActionActive(InputAction::MOVE_DOWN, false);
+        touchManager.setActionActive(InputAction::MOVE_UP, true);
     }
     else
     {
-        touchManager.setActionActive(Input::KEY_MOVE_DOWN, false);
-        touchManager.setActionActive(Input::KEY_MOVE_UP, false);
+        touchManager.setActionActive(InputAction::MOVE_DOWN, false);
+        touchManager.setActionActive(InputAction::MOVE_UP, false);
     }
     inputManager.updateConditionMask();
 }

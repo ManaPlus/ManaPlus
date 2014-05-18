@@ -1846,12 +1846,12 @@ void Client::action(const ActionEvent &event)
     }
     else if (eventId == "help")
     {
-        inputManager.executeAction(Input::KEY_WINDOW_HELP);
+        inputManager.executeAction(InputAction::WINDOW_HELP);
         return;
     }
     else if (eventId == "about")
     {
-        inputManager.executeAction(Input::KEY_WINDOW_ABOUT);
+        inputManager.executeAction(InputAction::WINDOW_ABOUT);
         return;
     }
     else if (eventId == "Video")

@@ -24,6 +24,7 @@
 #ifndef GUI_POPUPS_STATUSPOPUP_H
 #define GUI_POPUPS_STATUSPOPUP_H
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "gui/widgets/popup.h"
@@ -63,7 +64,7 @@ class StatusPopup final : public Popup
         void updateLabels() const;
 
         void setLabelText(const int num, const std::string &text,
-                          const Input::KeyAction key) const;
+                          const InputAction::Type key) const;
 
         Label *mLabels[STATUSPOPUP_NUM_LABELS];
 };

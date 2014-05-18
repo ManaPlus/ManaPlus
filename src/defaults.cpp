@@ -26,6 +26,7 @@
 
 #include "being/beingspeech.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "render/graphics.h"
@@ -321,19 +322,19 @@ DefaultsData* getConfigDefaults()
     AddDEF("selfMouseHeal", true);
     AddDEF("serverslistupdate", "");
     AddDEF("fadeoutmusic", true);
-    AddDEF("screenActionKeyboard", Input::KEY_SHOW_KEYBOARD);
-    AddDEF("screenActionButton0", Input::KEY_TALK);
-    AddDEF("screenActionButton1", Input::KEY_TARGET_ATTACK);
-    AddDEF("screenActionButton2", Input::KEY_PICKUP);
-    AddDEF("screenActionButton3", Input::KEY_STOP_SIT);
-    AddDEF("screenActionButton4", Input::KEY_TARGET_NPC);
-    AddDEF("screenActionButton5", Input::KEY_WINDOW_STATUS);
-    AddDEF("screenActionButton6", Input::KEY_WINDOW_INVENTORY);
-    AddDEF("screenActionButton7", Input::KEY_WINDOW_SKILL);
-    AddDEF("screenActionButton8", Input::KEY_WINDOW_SOCIAL);
-    AddDEF("screenActionButton9", Input::KEY_WINDOW_DEBUG);
-    AddDEF("screenActionButton10", Input::KEY_TRADE);
-    AddDEF("screenActionButton11", Input::KEY_DIRECT_DOWN);
+    AddDEF("screenActionKeyboard", InputAction::SHOW_KEYBOARD);
+    AddDEF("screenActionButton0", InputAction::TALK);
+    AddDEF("screenActionButton1", InputAction::TARGET_ATTACK);
+    AddDEF("screenActionButton2", InputAction::PICKUP);
+    AddDEF("screenActionButton3", InputAction::STOP_SIT);
+    AddDEF("screenActionButton4", InputAction::TARGET_NPC);
+    AddDEF("screenActionButton5", InputAction::WINDOW_STATUS);
+    AddDEF("screenActionButton6", InputAction::WINDOW_INVENTORY);
+    AddDEF("screenActionButton7", InputAction::WINDOW_SKILL);
+    AddDEF("screenActionButton8", InputAction::WINDOW_SOCIAL);
+    AddDEF("screenActionButton9", InputAction::WINDOW_DEBUG);
+    AddDEF("screenActionButton10", InputAction::TRADE);
+    AddDEF("screenActionButton11", InputAction::DIRECT_DOWN);
     AddDEF("screenButtonsFormat", 0);
     AddDEF("autoresizeminimaps", false);
     AddDEF("showGuildOnline", false);

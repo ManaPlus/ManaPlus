@@ -28,6 +28,7 @@
 
 #include "events/keyevent.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "utils/stringutils.h"
@@ -57,7 +58,8 @@ void IntTextField::keyPressed(KeyEvent &event)
 {
     const int action = event.getActionId();
 
-    if (action == Input::KEY_GUI_DELETE || action == Input::KEY_GUI_BACKSPACE)
+    if (action == InputAction::GUI_DELETE
+        || action == InputAction::GUI_BACKSPACE)
     {
         setText(std::string());
         if (mSendAlwaysEvents)

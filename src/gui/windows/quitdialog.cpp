@@ -30,6 +30,7 @@
 
 #include "events/keyevent.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "gui/viewport.h"
@@ -208,17 +209,17 @@ void QuitDialog::keyPressed(KeyEvent &event)
 
     switch (actionId)
     {
-        case Input::KEY_GUI_SELECT:
-        case Input::KEY_GUI_SELECT2:
+        case InputAction::GUI_SELECT:
+        case InputAction::GUI_SELECT2:
             action(ActionEvent(nullptr, mOkButton->getActionEventId()));
             break;
-        case Input::KEY_GUI_CANCEL:
+        case InputAction::GUI_CANCEL:
             action(ActionEvent(nullptr, mCancelButton->getActionEventId()));
             break;
-        case Input::KEY_GUI_UP:
+        case InputAction::GUI_UP:
             dir = -1;
             break;
-        case Input::KEY_GUI_DOWN:
+        case InputAction::GUI_DOWN:
             dir = 1;
             break;
         default:

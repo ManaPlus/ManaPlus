@@ -23,6 +23,7 @@
 
 #include "listeners/configlistener.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "gui/rect.h"
@@ -39,7 +40,7 @@ class MouseInput;
 
 typedef void (*TouchFuncPtr) (const MouseInput &mouseInput);
 
-const int actionsSize = Input::KEY_TOTAL;
+const int actionsSize = InputAction::TOTAL;
 const int buttonsCount = 12;
 
 struct TouchItem final

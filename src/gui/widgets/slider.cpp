@@ -70,6 +70,7 @@
 
 #include "events/keyevent.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "gui/gui.h"
@@ -409,13 +410,13 @@ void Slider::keyPressed(KeyEvent& event)
 
     if (mOrientation == HORIZONTAL)
     {
-        if (action == Input::KEY_GUI_RIGHT)
+        if (action == InputAction::GUI_RIGHT)
         {
             setValue(mValue + mStepLength);
             distributeActionEvent();
             event.consume();
         }
-        else if (action == Input::KEY_GUI_LEFT)
+        else if (action == InputAction::GUI_LEFT)
         {
             setValue(mValue - mStepLength);
             distributeActionEvent();
@@ -424,13 +425,13 @@ void Slider::keyPressed(KeyEvent& event)
     }
     else
     {
-        if (action == Input::KEY_GUI_UP)
+        if (action == InputAction::GUI_UP)
         {
             setValue(mValue + mStepLength);
             distributeActionEvent();
             event.consume();
         }
-        else if (action == Input::KEY_GUI_DOWN)
+        else if (action == InputAction::GUI_DOWN)
         {
             setValue(mValue - mStepLength);
             distributeActionEvent();

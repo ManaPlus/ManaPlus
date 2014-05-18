@@ -70,6 +70,7 @@
 
 #include "events/keyevent.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "resources/image.h"
@@ -674,7 +675,7 @@ void Button::keyPressed(KeyEvent& event)
 {
     const int action = event.getActionId();
 
-    if (action == Input::KEY_GUI_SELECT)
+    if (action == InputAction::GUI_SELECT)
     {
         mKeyPressed = true;
         event.consume();
@@ -685,7 +686,7 @@ void Button::keyReleased(KeyEvent& event)
 {
     const int action = event.getActionId();
 
-    if (action == Input::KEY_GUI_SELECT && mKeyPressed)
+    if (action == InputAction::GUI_SELECT && mKeyPressed)
     {
         mKeyPressed = false;
         if (mStick)

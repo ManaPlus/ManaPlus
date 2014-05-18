@@ -441,19 +441,19 @@ bool Viewport::leftMouseAction()
             {
                 if (player_node->withinAttackRange(mHoverBeing) ||
                     inputManager.isActionActive(static_cast<int>(
-                    Input::KEY_ATTACK)))
+                    InputAction::ATTACK)))
                 {
                     validateSpeed();
                     if (!mStatsReUpdated && player_node != mHoverBeing)
                     {
                         player_node->attack(mHoverBeing,
                             !inputManager.isActionActive(
-                            static_cast<int>(Input::KEY_STOP_ATTACK)));
+                            static_cast<int>(InputAction::STOP_ATTACK)));
                         return true;
                     }
                 }
                 else if (!inputManager.isActionActive(static_cast<int>(
-                         Input::KEY_ATTACK)))
+                         InputAction::ATTACK)))
                 {
                     validateSpeed();
                     if (!mStatsReUpdated && player_node != mHoverBeing)
@@ -473,7 +473,7 @@ bool Viewport::leftMouseAction()
     }
     // Just walk around
     else if (!inputManager.isActionActive(static_cast<int>(
-             Input::KEY_ATTACK)))
+             InputAction::ATTACK)))
     {
         validateSpeed();
         player_node->stopAttack();
@@ -552,8 +552,8 @@ void Viewport::walkByMouse(const MouseEvent &event)
     if (!mMap || !player_node)
         return;
     if (mPlayerFollowMouse
-        && !inputManager.isActionActive(Input::KEY_STOP_ATTACK)
-        && !inputManager.isActionActive(Input::KEY_UNTARGET))
+        && !inputManager.isActionActive(InputAction::STOP_ATTACK)
+        && !inputManager.isActionActive(InputAction::UNTARGET))
     {
         if (!mMouseDirectionMove)
             mPlayerFollowMouse = false;
@@ -1088,8 +1088,8 @@ void Viewport::returnCamera()
 void Viewport::validateSpeed()
 {
     if (!inputManager.isActionActive(static_cast<int>(
-        Input::KEY_TARGET_ATTACK)) && !inputManager.isActionActive(
-        static_cast<int>(Input::KEY_ATTACK)))
+        InputAction::TARGET_ATTACK)) && !inputManager.isActionActive(
+        static_cast<int>(InputAction::ATTACK)))
     {
         if (Game::instance())
             Game::instance()->setValidSpeed();

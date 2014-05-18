@@ -67,6 +67,7 @@
 
 #include "events/keyevent.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "gui/gui.h"
@@ -728,7 +729,7 @@ void TabbedArea::keyPressed(KeyEvent& event)
 
     const int actionId = event.getActionId();
 
-    if (actionId == Input::KEY_GUI_LEFT)
+    if (actionId == InputAction::GUI_LEFT)
     {
         int index = getSelectedTabIndex();
         index--;
@@ -740,7 +741,7 @@ void TabbedArea::keyPressed(KeyEvent& event)
 
         event.consume();
     }
-    else if (actionId == Input::KEY_GUI_RIGHT)
+    else if (actionId == InputAction::GUI_RIGHT)
     {
         int index = getSelectedTabIndex();
         index++;

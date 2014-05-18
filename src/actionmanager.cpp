@@ -113,56 +113,56 @@ static bool closeMoveNpcDialog(bool focus)
 
 impHandler(moveUp)
 {
-    if (inputManager.isActionActive(Input::KEY_EMOTE))
+    if (inputManager.isActionActive(InputAction::EMOTE))
         return directUp(event);
     return closeMoveNpcDialog(false);
 }
 
 impHandler(moveDown)
 {
-    if (inputManager.isActionActive(Input::KEY_EMOTE))
+    if (inputManager.isActionActive(InputAction::EMOTE))
         return directDown(event);
     return closeMoveNpcDialog(false);
 }
 
 impHandler(moveLeft)
 {
-    if (outfitWindow && inputManager.isActionActive(Input::KEY_WEAR_OUTFIT))
+    if (outfitWindow && inputManager.isActionActive(InputAction::WEAR_OUTFIT))
     {
         outfitWindow->wearPreviousOutfit();
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
     }
-    if (inputManager.isActionActive(Input::KEY_EMOTE))
+    if (inputManager.isActionActive(InputAction::EMOTE))
         return directLeft(event);
     return closeMoveNpcDialog(false);
 }
 
 impHandler(moveRight)
 {
-    if (outfitWindow && inputManager.isActionActive(Input::KEY_WEAR_OUTFIT))
+    if (outfitWindow && inputManager.isActionActive(InputAction::WEAR_OUTFIT))
     {
         outfitWindow->wearNextOutfit();
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
     }
-    if (inputManager.isActionActive(Input::KEY_EMOTE))
+    if (inputManager.isActionActive(InputAction::EMOTE))
         return directRight(event);
     return closeMoveNpcDialog(false);
 }
 
 impHandler(moveForward)
 {
-    if (inputManager.isActionActive(Input::KEY_EMOTE))
+    if (inputManager.isActionActive(InputAction::EMOTE))
         return directRight(event);
     return closeMoveNpcDialog(false);
 }
 
 impHandler(emote)
 {
-    const int emotion = 1 + event.action - Input::KEY_EMOTE_1;
+    const int emotion = 1 + event.action - InputAction::EMOTE_1;
     if (emotion > 0)
     {
         if (emoteShortcut)
@@ -177,7 +177,7 @@ impHandler(emote)
 
 impHandler(moveToPoint)
 {
-    const int num = event.action - Input::KEY_MOVE_TO_POINT_1;
+    const int num = event.action - InputAction::MOVE_TO_POINT_1;
     if (socialWindow && num >= 0)
     {
         socialWindow->selectPortal(num);
@@ -189,9 +189,9 @@ impHandler(moveToPoint)
 
 impHandler(outfit)
 {
-    if (inputManager.isActionActive(Input::KEY_WEAR_OUTFIT))
+    if (inputManager.isActionActive(InputAction::WEAR_OUTFIT))
     {
-        const int num = event.action - Input::KEY_OUTFIT_1;
+        const int num = event.action - InputAction::OUTFIT_1;
         if (outfitWindow && num >= 0)
         {
             outfitWindow->wearOutfit(num);
@@ -200,9 +200,9 @@ impHandler(outfit)
             return true;
         }
     }
-    else if (inputManager.isActionActive(Input::KEY_COPY_OUTFIT))
+    else if (inputManager.isActionActive(InputAction::COPY_OUTFIT))
     {
-        const int num = event.action - Input::KEY_OUTFIT_1;
+        const int num = event.action - InputAction::OUTFIT_1;
         if (outfitWindow && num >= 0)
         {
             outfitWindow->copyOutfit(num);
@@ -258,7 +258,7 @@ impHandler(shortcut)
             if (itemShortcut[num])
             {
                 itemShortcut[num]->useItem(event.action
-                    - Input::KEY_SHORTCUT_1);
+                    - InputAction::SHORTCUT_1);
             }
         }
         return true;
@@ -394,7 +394,7 @@ impHandler0(heal)
 {
     if (actorManager)
     {
-        if (inputManager.isActionActive(Input::KEY_STOP_ATTACK))
+        if (inputManager.isActionActive(InputAction::STOP_ATTACK))
         {
             Being *target = player_node->getTarget();
             if (!target || target->getType() != ActorType::PLAYER)
@@ -460,8 +460,8 @@ impHandler0(changePickupType)
 
 impHandler0(moveToTarget)
 {
-    if (player_node && !inputManager.isActionActive(Input::KEY_TARGET_ATTACK)
-        && !inputManager.isActionActive(Input::KEY_ATTACK))
+    if (player_node && !inputManager.isActionActive(InputAction::TARGET_ATTACK)
+        && !inputManager.isActionActive(InputAction::ATTACK))
     {
         player_node->moveToTarget();
         return true;
@@ -471,8 +471,8 @@ impHandler0(moveToTarget)
 
 impHandler0(moveToHome)
 {
-    if (player_node && !inputManager.isActionActive(Input::KEY_TARGET_ATTACK)
-        && !inputManager.isActionActive(Input::KEY_ATTACK))
+    if (player_node && !inputManager.isActionActive(InputAction::TARGET_ATTACK)
+        && !inputManager.isActionActive(InputAction::ATTACK))
     {
         player_node->moveToHome();
         if (Game::instance())
@@ -665,7 +665,7 @@ impHandler0(sit)
 {
     if (player_node)
     {
-        if (inputManager.isActionActive(Input::KEY_EMOTE))
+        if (inputManager.isActionActive(InputAction::EMOTE))
             player_node->updateSit();
         else
             player_node->toggleSit();
@@ -1033,7 +1033,7 @@ impHandler0(stopAttack)
     {
         player_node->stopAttack();
         // not consume if target attack key pressed
-        if (inputManager.isActionActive(Input::KEY_TARGET_ATTACK))
+        if (inputManager.isActionActive(InputAction::TARGET_ATTACK))
             return false;
         return true;
     }
@@ -1069,7 +1069,7 @@ impHandler0(targetAttack)
         Being *target = nullptr;
 
         const bool newTarget = !inputManager.isActionActive(
-            Input::KEY_STOP_ATTACK);
+            InputAction::STOP_ATTACK);
         // A set target has highest priority
         if (!player_node->getTarget())
         {
@@ -1132,11 +1132,11 @@ impHandler0(stopSit)
     {
         player_node->stopAttack();
         // not consume if target attack key pressed
-        if (inputManager.isActionActive(Input::KEY_TARGET_ATTACK))
+        if (inputManager.isActionActive(InputAction::TARGET_ATTACK))
             return false;
         if (!player_node->getTarget())
         {
-            if (inputManager.isActionActive(Input::KEY_EMOTE))
+            if (inputManager.isActionActive(InputAction::EMOTE))
                 player_node->updateSit();
             else
                 player_node->toggleSit();

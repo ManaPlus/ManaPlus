@@ -67,6 +67,7 @@
 
 #include "client.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "resources/image.h"
@@ -241,7 +242,7 @@ void CheckBox::keyPressed(KeyEvent& event)
 {
     const int action = event.getActionId();
 
-    if (action == Input::KEY_GUI_SELECT)
+    if (action == InputAction::GUI_SELECT)
     {
         toggleSelected();
         event.consume();

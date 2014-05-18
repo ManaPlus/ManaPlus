@@ -209,5 +209,5 @@ void Desktop::setBestFittingWallpaper()
 void Desktop::handleLink(const std::string &link, MouseEvent *event A_UNUSED)
 {
     if (link == "copyright")
-        inputManager.executeAction(Input::KEY_WINDOW_ABOUT);
+        inputManager.executeAction(InputAction::WINDOW_ABOUT);
 }

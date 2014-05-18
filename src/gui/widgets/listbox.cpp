@@ -67,6 +67,7 @@
 
 #include "client.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "listeners/selectionlistener.h"
@@ -230,12 +231,12 @@ void ListBox::draw(Graphics *graphics)
 void ListBox::keyPressed(KeyEvent &event)
 {
     const int action = event.getActionId();
-    if (action == Input::KEY_GUI_SELECT)
+    if (action == InputAction::GUI_SELECT)
     {
         distributeActionEvent();
         event.consume();
     }
-    else if (action == Input::KEY_GUI_UP)
+    else if (action == InputAction::GUI_UP)
     {
         if (mSelected > 0)
             setSelected(mSelected - 1);
@@ -243,7 +244,7 @@ void ListBox::keyPressed(KeyEvent &event)
             setSelected(getListModel()->getNumberOfElements() - 1);
         event.consume();
     }
-    else if (action == Input::KEY_GUI_DOWN)
+    else if (action == InputAction::GUI_DOWN)
     {
         const int num = getListModel()->getNumberOfElements() - 1;
         if (mSelected < num)
@@ -252,12 +253,12 @@ void ListBox::keyPressed(KeyEvent &event)
             setSelected(0);
         event.consume();
     }
-    else if (action == Input::KEY_GUI_HOME)
+    else if (action == InputAction::GUI_HOME)
     {
         setSelected(0);
         event.consume();
     }
-    else if (action == Input::KEY_GUI_END && getListModel())
+    else if (action == InputAction::GUI_END && getListModel())
     {
         setSelected(getListModel()->getNumberOfElements() - 1);
         event.consume();

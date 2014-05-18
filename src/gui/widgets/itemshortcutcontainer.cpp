@@ -149,7 +149,7 @@ void ItemShortcutContainer::draw(Graphics *graphics)
 
         // Draw item keyboard shortcut.
         const std::string key = inputManager.getKeyValueString(
-            Input::KEY_SHORTCUT_1 + i);
+            InputAction::SHORTCUT_1 + i);
         graphics->setColorAll(mForegroundColor, mForegroundColor);
         font->drawString(graphics, key, itemX + 2, itemY + 2);
 

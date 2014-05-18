@@ -125,7 +125,7 @@ void StatusPopup::view(const int x, const int y)
 
 void StatusPopup::setLabelText(const int num,
                                const std::string &text,
-                               const Input::KeyAction key) const
+                               const InputAction::Type key) const
 {
     Label *const label = mLabels[num];
     label->setCaption(strprintf("%s  %s", text.c_str(),
@@ -139,33 +139,33 @@ void StatusPopup::updateLabels() const
         return;
 
     setLabelText(0, player_node->getInvertDirectionString(),
-        Input::KEY_INVERT_DIRECTION);
+        InputAction::INVERT_DIRECTION);
     setLabelText(1, player_node->getCrazyMoveTypeString(),
-        Input::KEY_CHANGE_CRAZY_MOVES_TYPE);
+        InputAction::CHANGE_CRAZY_MOVES_TYPE);
     setLabelText(2, player_node->getMoveToTargetTypeString(),
-        Input::KEY_CHANGE_MOVE_TO_TARGET);
+        InputAction::CHANGE_MOVE_TO_TARGET);
     setLabelText(3, player_node->getFollowModeString(),
-        Input::KEY_CHANGE_FOLLOW_MODE);
+        InputAction::CHANGE_FOLLOW_MODE);
     setLabelText(4, player_node->getAttackWeaponTypeString(),
-        Input::KEY_CHANGE_ATTACK_WEAPON_TYPE);
+        InputAction::CHANGE_ATTACK_WEAPON_TYPE);
     setLabelText(5, player_node->getAttackTypeString(),
-        Input::KEY_CHANGE_ATTACK_TYPE);
+        InputAction::CHANGE_ATTACK_TYPE);
     setLabelText(6, player_node->getQuickDropCounterString(),
-        Input::KEY_SWITCH_QUICK_DROP);
+        InputAction::SWITCH_QUICK_DROP);
     setLabelText(7, player_node->getPickUpTypeString(),
-        Input::KEY_CHANGE_PICKUP_TYPE);
+        InputAction::CHANGE_PICKUP_TYPE);
     setLabelText(8, LocalPlayer::getDebugPathString(),
-        Input::KEY_PATHFIND);
+        InputAction::PATHFIND);
     setLabelText(9, player_node->getMagicAttackString(),
-        Input::KEY_SWITCH_MAGIC_ATTACK);
+        InputAction::SWITCH_MAGIC_ATTACK);
     setLabelText(10, player_node->getPvpAttackString(),
-        Input::KEY_SWITCH_PVP_ATTACK);
+        InputAction::SWITCH_PVP_ATTACK);
     setLabelText(11, player_node->getGameModifiersString(),
-        Input::KEY_DISABLE_GAME_MODIFIERS);
+        InputAction::DISABLE_GAME_MODIFIERS);
     setLabelText(12, player_node->getImitationModeString(),
-        Input::KEY_CHANGE_IMITATION_MODE);
+        InputAction::CHANGE_IMITATION_MODE);
     setLabelText(13, player_node->getAwayModeString(),
-        Input::KEY_AWAY);
+        InputAction::AWAY);
     setLabelText(14, LocalPlayer::getCameraModeString(),
-        Input::KEY_CAMERA);
+        InputAction::CAMERA);
 }

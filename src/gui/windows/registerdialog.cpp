@@ -26,6 +26,7 @@
 
 #include "events/keyevent.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "listeners/wrongdatanoticelistener.h"
@@ -276,12 +277,12 @@ void RegisterDialog::keyPressed(KeyEvent &event)
         return;
     }
     const int actionId = event.getActionId();
-    if (actionId == static_cast<int>(Input::KEY_GUI_CANCEL))
+    if (actionId == static_cast<int>(InputAction::GUI_CANCEL))
     {
         action(ActionEvent(nullptr, mCancelButton->getActionEventId()));
     }
-    else if (actionId == static_cast<int>(Input::KEY_GUI_SELECT)
-             || actionId == static_cast<int>(Input::KEY_GUI_SELECT2))
+    else if (actionId == static_cast<int>(InputAction::GUI_SELECT)
+             || actionId == static_cast<int>(InputAction::GUI_SELECT2))
     {
         action(ActionEvent(nullptr, mRegisterButton->getActionEventId()));
     }

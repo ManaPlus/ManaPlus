@@ -28,6 +28,7 @@
 
 #include "events/keyevent.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "listeners/guitableactionlistener.h"
@@ -370,38 +371,38 @@ void GuiTable::keyPressed(KeyEvent& event)
 {
     const int action = event.getActionId();
 
-    if (action == Input::KEY_GUI_SELECT)
+    if (action == InputAction::GUI_SELECT)
     {
         distributeActionEvent();
         event.consume();
     }
-    else if (action == Input::KEY_GUI_UP)
+    else if (action == InputAction::GUI_UP)
     {
         setSelectedRow(mSelectedRow - 1);
         event.consume();
     }
-    else if (action == Input::KEY_GUI_DOWN)
+    else if (action == InputAction::GUI_DOWN)
     {
         setSelectedRow(mSelectedRow + 1);
         event.consume();
     }
-    else if (action == Input::KEY_GUI_LEFT)
+    else if (action == InputAction::GUI_LEFT)
     {
         setSelectedColumn(mSelectedColumn - 1);
         event.consume();
     }
-    else if (action == Input::KEY_GUI_RIGHT)
+    else if (action == InputAction::GUI_RIGHT)
     {
         setSelectedColumn(mSelectedColumn + 1);
         event.consume();
     }
-    else if (action == Input::KEY_GUI_HOME)
+    else if (action == InputAction::GUI_HOME)
     {
         setSelectedRow(0);
         setSelectedColumn(0);
         event.consume();
     }
-    else if (action == Input::KEY_GUI_END && mModel)
+    else if (action == InputAction::GUI_END && mModel)
     {
         setSelectedRow(mModel->getRows() - 1);
         setSelectedColumn(mModel->getColumns() - 1);

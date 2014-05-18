@@ -29,6 +29,7 @@
 
 #include "events/keyevent.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "gui/gui.h"
@@ -300,23 +301,23 @@ void ServerDialog::keyPressed(KeyEvent &event)
 {
     switch (event.getActionId())
     {
-        case Input::KEY_GUI_CANCEL:
+        case InputAction::GUI_CANCEL:
             event.consume();
             client->setState(STATE_EXIT);
             return;
 
-        case Input::KEY_GUI_SELECT:
-        case Input::KEY_GUI_SELECT2:
+        case InputAction::GUI_SELECT:
+        case InputAction::GUI_SELECT2:
             event.consume();
             action(ActionEvent(nullptr,
                 mConnectButton->getActionEventId()));
             return;
 
-        case Input::KEY_GUI_INSERT:
+        case InputAction::GUI_INSERT:
             (new EditServerDialog(this, ServerInfo(), -1))->postInit();
             return;
 
-        case Input::KEY_GUI_DELETE:
+        case InputAction::GUI_DELETE:
         {
             const int index = mServersList->getSelected();
             if (index >= 0)
@@ -328,7 +329,7 @@ void ServerDialog::keyPressed(KeyEvent &event)
             return;
         }
 
-        case Input::KEY_GUI_BACKSPACE:
+        case InputAction::GUI_BACKSPACE:
         {
             const int index = mServersList->getSelected();
             if (index >= 0)

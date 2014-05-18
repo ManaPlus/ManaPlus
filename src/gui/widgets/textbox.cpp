@@ -65,6 +65,7 @@
 
 #include "gui/widgets/textbox.h"
 
+#include "input/inputaction.h"
 #include "input/keydata.h"
 
 #include "gui/gui.h"
@@ -256,7 +257,7 @@ void TextBox::keyPressed(KeyEvent& event)
 
     switch (action)
     {
-        case Input::KEY_GUI_LEFT:
+        case InputAction::GUI_LEFT:
         {
             --mCaretColumn;
             if (mCaretColumn < 0)
@@ -277,7 +278,7 @@ void TextBox::keyPressed(KeyEvent& event)
             break;
         }
 
-        case Input::KEY_GUI_RIGHT:
+        case InputAction::GUI_RIGHT:
         {
             ++mCaretColumn;
             if (mCaretColumn > static_cast<int>(mTextRows[mCaretRow].size()))
@@ -302,28 +303,28 @@ void TextBox::keyPressed(KeyEvent& event)
             break;
         }
 
-        case Input::KEY_GUI_DOWN:
+        case InputAction::GUI_DOWN:
         {
             setCaretRow(mCaretRow + 1);
             break;
         }
-        case Input::KEY_GUI_UP:
+        case InputAction::GUI_UP:
         {
             setCaretRow(mCaretRow - 1);
             break;
         }
-        case Input::KEY_GUI_HOME:
+        case InputAction::GUI_HOME:
         {
             mCaretColumn = 0;
             break;
         }
-        case Input::KEY_GUI_END:
+        case InputAction::GUI_END:
         {
             mCaretColumn = static_cast<int>(mTextRows[mCaretRow].size());
             break;
         }
 
-        case Input::KEY_GUI_SELECT2:
+        case InputAction::GUI_SELECT2:
         {
             if (mEditable)
             {
@@ -337,7 +338,7 @@ void TextBox::keyPressed(KeyEvent& event)
             break;
         }
 
-        case Input::KEY_GUI_BACKSPACE:
+        case InputAction::GUI_BACKSPACE:
         {
             if (mCaretColumn != 0 && mEditable)
             {
@@ -355,7 +356,7 @@ void TextBox::keyPressed(KeyEvent& event)
             break;
         }
 
-        case Input::KEY_GUI_DELETE:
+        case InputAction::GUI_DELETE:
         {
             if (mCaretColumn < static_cast<int>(
                 mTextRows[mCaretRow].size()) && mEditable)
@@ -373,7 +374,7 @@ void TextBox::keyPressed(KeyEvent& event)
             break;
         }
 
-        case Input::KEY_GUI_PAGE_UP:
+        case InputAction::GUI_PAGE_UP:
         {
             Widget *const par = getParent();
 
@@ -389,7 +390,7 @@ void TextBox::keyPressed(KeyEvent& event)
             break;
         }
 
-        case Input::KEY_GUI_PAGE_DOWN:
+        case InputAction::GUI_PAGE_DOWN:
         {
             Widget *const par = getParent();
 
@@ -406,7 +407,7 @@ void TextBox::keyPressed(KeyEvent& event)
             break;
         }
 
-        case Input::KEY_GUI_TAB:
+        case InputAction::GUI_TAB:
         {
             if (mEditable)
             {

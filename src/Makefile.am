@@ -856,6 +856,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      textcommand.cpp \
 	      textcommand.h \
 	      events/inputevent.h \
+	      input/inputaction.h \
 	      input/inputcondition.h \
 	      input/inputmanager.cpp \
 	      input/inputmanager.h \
