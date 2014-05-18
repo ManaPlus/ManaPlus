@@ -26,7 +26,7 @@
 #include <string>
 #include <vector>
 
-struct ParticleInfo
+struct ParticleInfo final
 {
     ParticleInfo() :
         files(),
