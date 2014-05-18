@@ -866,6 +866,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      input/keyboarddata.h \
 	      input/keydata.h \
 	      input/keyinput.h \
+	      input/keyitem.h \
 	      input/keysortfunctor.h \
 	      input/multitouchmanager.cpp \
 	      input/multitouchmanager.h \

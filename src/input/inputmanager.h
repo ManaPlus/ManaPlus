@@ -24,6 +24,7 @@
 #include "events/inputevent.h"
 
 #include "input/keydata.h"
+#include "input/keyitem.h"
 
 #include <string>
 #include <map>
@@ -33,21 +34,6 @@
 const unsigned int KeyFunctionSize = 3;
 
 class Setup_Input;
-
-struct KeyItem final
-{
-    KeyItem() :
-        type(-1), value(-1)
-    { }
-
-    KeyItem(const int type0, const int value0) :
-        type(type0), value(value0)
-    { }
-
-    int type;
-
-    int value;
-};
 
 struct KeyFunction final
 {
