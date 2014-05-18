@@ -31,6 +31,7 @@
 #include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
 
+#include "resources/atlasitem.h"
 #include "resources/atlasresource.h"
 #include "resources/dye.h"
 #include "resources/imagehelper.h"

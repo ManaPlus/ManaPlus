@@ -32,27 +32,7 @@
 class AtlasResource;
 class Resource;
 
-struct AtlasItem final
-{
-    explicit AtlasItem(Image *const image0) :
-        image(image0),
-        name(),
-        x(0),
-        y(0),
-        width(image0->mBounds.w),
-        height(image0->mBounds.h)
-    {
-    }
-
-    A_DELETE_COPY(AtlasItem)
-
-    Image *image;
-    std::string name;
-    int x;
-    int y;
-    int width;
-    int height;
-};
+struct AtlasItem;
 
 struct TextureAtlas final
 {

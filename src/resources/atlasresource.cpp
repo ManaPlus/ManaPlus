@@ -24,6 +24,7 @@
 
 #include "resources/atlasresource.h"
 
+#include "resources/atlasitem.h"
 #include "resources/atlasmanager.h"
 #include "resources/resourcemanager.h"
 

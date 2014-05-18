@@ -510,6 +510,7 @@ SET(SRCS
     resources/ambientlayer.h
     resources/animation.cpp
     resources/animation.h
+    resources/atlasitem.h
     resources/atlasmanager.cpp
     resources/atlasmanager.h
     resources/atlasresource.cpp

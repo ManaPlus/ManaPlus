@@ -615,6 +615,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/ambientlayer.h \
 	      resources/animation.cpp \
 	      resources/animation.h \
+	      resources/atlasitem.h \
 	      resources/atlasmanager.cpp \
 	      resources/atlasmanager.h \
 	      resources/atlasresource.cpp \
