@@ -71,6 +71,7 @@ namespace MouseButton
       */
     enum Type
     {
+        WHEEL = -1,
         EMPTY = 0,
         LEFT,
         RIGHT,
