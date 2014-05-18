@@ -28,6 +28,7 @@
 #include "sdlshared.h"
 
 #include "input/inputmanager.h"
+#include "input/inputtype.h"
 
 #include "utils/timer.h"
 
@@ -278,7 +279,7 @@ void Joystick::getNames(std::vector <std::string> &names)
 void Joystick::update()
 {
     inputManager.updateKeyActionMap(mKeyToAction, mKeyToId,
-        mKeyTimeMap, INPUT_JOYSTICK);
+        mKeyTimeMap, InputType::JOYSTICK);
 }
 
 KeysVector *Joystick::getActionVector(const SDL_Event &event)
@@ -319,7 +320,7 @@ bool Joystick::isActionActive(const int index) const
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
         const KeyItem &val = key.values[i];
-        if (val.type != INPUT_JOYSTICK)
+        if (val.type != InputType::JOYSTICK)
             continue;
         const int value = val.value;
         if (value >= 0 && value < mButtonsNumber)

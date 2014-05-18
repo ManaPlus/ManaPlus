@@ -753,6 +753,7 @@ SET(SRCS
     textcommand.h
     input/inputmanager.cpp
     input/inputmanager.h
+    input/inputtype.h
     events/inputevent.h
     input/joystick.cpp
     input/joystick.h

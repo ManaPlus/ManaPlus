@@ -83,7 +83,7 @@ void InputManager::init()
         for (unsigned int f = 0; f < KeyFunctionSize; f ++)
         {
             KeyItem &ki = kf.values[f];
-            ki.type = INPUT_UNKNOWN;
+            ki.type = InputType::UNKNOWN;
             ki.value = -1;
         }
     }
@@ -129,17 +129,17 @@ void InputManager::retrieve()
                 std::string keyStr2 = *it;
                 if (keyStrSize < 2)
                     continue;
-                int type = INPUT_KEYBOARD;
+                int type = InputType::KEYBOARD;
                 if ((keyStr2[0] < '0' || keyStr2[0] > '9')
                     && keyStr2[0] != '-')
                 {
                     switch (keyStr2[0])
                     {
                         case 'm':
-                            type = INPUT_MOUSE;
+                            type = InputType::MOUSE;
                             break;
                         case 'j':
-                            type = INPUT_JOYSTICK;
+                            type = InputType::JOYSTICK;
                             break;
                         default:
                             break;
@@ -174,15 +174,15 @@ void InputManager::store() const
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
                 const KeyItem &key = kf.values[i2];
-                if (key.type != INPUT_UNKNOWN)
+                if (key.type != InputType::UNKNOWN)
                 {
                     std::string tmp("k");
                     switch (key.type)
                     {
-                        case INPUT_MOUSE:
+                        case InputType::MOUSE:
                             tmp = "m";
                             break;
-                        case INPUT_JOYSTICK:
+                        case InputType::JOYSTICK:
                             tmp = "j";
                             break;
                         default:
@@ -216,7 +216,7 @@ void InputManager::resetKey(const int i)
     for (size_t i2 = 1; i2 < KeyFunctionSize; i2 ++)
     {
         KeyItem &ki2 = key.values[i2];
-        ki2.type = INPUT_UNKNOWN;
+        ki2.type = InputType::UNKNOWN;
         ki2.value = -1;
     }
     const KeyData &kd = keyData[i];
@@ -225,11 +225,11 @@ void InputManager::resetKey(const int i)
     KeyItem &val1 = key.values[1];
     val1.type = kd.defaultType2;
 #ifdef USE_SDL2
-    if (kd.defaultType1 == INPUT_KEYBOARD)
+    if (kd.defaultType1 == InputType::KEYBOARD)
         val0.value = SDL_GetScancodeFromKey(kd.defaultValue1);
     else
         val0.value = kd.defaultValue1;
-    if (kd.defaultType2 == INPUT_KEYBOARD)
+    if (kd.defaultType2 == InputType::KEYBOARD)
         val1.value = SDL_GetScancodeFromKey(kd.defaultValue2);
     else
         val1.value = kd.defaultValue2;
@@ -284,7 +284,7 @@ bool InputManager::hasConflicts(int &restrict key1, int &restrict key2) const
                     const KeyItem &valj2 = mKey[j].values[j2];
                     // Allow for item shortcut and emote keys to overlap
                     // as well as emote and ignore keys, but no other keys
-                    if (valj2.type != INPUT_UNKNOWN
+                    if (valj2.type != InputType::UNKNOWN
                         && vali2.value == valj2.value
                         && vali2.type == valj2.type)
                     {
@@ -342,7 +342,7 @@ std::string InputManager::getKeyStringLong(const int index) const
     {
         const KeyItem &key = ki.values[i];
         std::string str;
-        if (key.type == INPUT_KEYBOARD)
+        if (key.type == InputType::KEYBOARD)
         {
             if (key.value >= 0)
             {
@@ -354,7 +354,7 @@ std::string InputManager::getKeyStringLong(const int index) const
                 str = strprintf(_("key_%d"), -key.value);
             }
         }
-        else if (key.type == INPUT_JOYSTICK)
+        else if (key.type == InputType::JOYSTICK)
         {
             // TRANSLATORS: long joystick button name. must be short.
             str = strprintf(_("JButton%d"), key.value + 1);
@@ -385,7 +385,7 @@ std::string InputManager::getKeyValueString(const int index) const
     {
         const KeyItem &key = ki.values[i];
         std::string str;
-        if (key.type == INPUT_KEYBOARD)
+        if (key.type == InputType::KEYBOARD)
         {
             if (key.value >= 0)
             {
@@ -398,7 +398,7 @@ std::string InputManager::getKeyValueString(const int index) const
                 str = strprintf(_("key_%d"), -key.value);
             }
         }
-        else if (key.type == INPUT_JOYSTICK)
+        else if (key.type == InputType::JOYSTICK)
         {
             // TRANSLATORS: short joystick button name. muse be very short
             str = strprintf(_("JB%d"), key.value + 1);
@@ -441,7 +441,7 @@ void InputManager::addActionKey(const int action, const int type,
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
         const KeyItem &val2 = key.values[i];
-        if (val2.type == INPUT_UNKNOWN || (val2.type == type
+        if (val2.type == InputType::UNKNOWN || (val2.type == type
             && val2.value == val))
         {
             idx = static_cast<int>(i);
@@ -466,9 +466,9 @@ void InputManager::addActionKey(const int action, const int type,
 void InputManager::setNewKey(const SDL_Event &event, const int type)
 {
     int val = -1;
-    if (type == INPUT_KEYBOARD)
+    if (type == InputType::KEYBOARD)
         val = KeyboardConfig::getKeyValueFromEvent(event);
-    else if (type == INPUT_JOYSTICK && joystick)
+    else if (type == InputType::JOYSTICK && joystick)
         val = joystick->getButtonFromEvent(event);
 
     if (val != -1)
@@ -484,7 +484,7 @@ void InputManager::unassignKey()
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
         KeyItem &val = key.values[i];
-        val.type = INPUT_UNKNOWN;
+        val.type = InputType::UNKNOWN;
         val.value = -1;
     }
     update();
@@ -511,7 +511,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
         {
             keyboard.refreshActiveKeys();
             updateConditionMask();
-            if (handleAssignKey(event, INPUT_KEYBOARD))
+            if (handleAssignKey(event, InputType::KEYBOARD))
                 return true;
 
             keyboard.handleActicateKey(event);
@@ -538,7 +538,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
         {
             updateConditionMask();
 //            joystick.handleActicateButton(event);
-            if (handleAssignKey(event, INPUT_JOYSTICK))
+            if (handleAssignKey(event, InputType::JOYSTICK))
                 return true;
             break;
         }

@@ -25,6 +25,7 @@
 #include "configuration.h"
 
 #include "input/inputmanager.h"
+#include "input/inputtype.h"
 
 #include "utils/gettext.h"
 
@@ -75,7 +76,7 @@ int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event)
 int KeyboardConfig::getKeyIndex(const SDL_Event &event, const int grp)
 {
     const int keyValue = getKeyValueFromEvent(event);
-    return inputManager.getKeyIndex(keyValue, grp, INPUT_KEYBOARD);
+    return inputManager.getKeyIndex(keyValue, grp, InputType::KEYBOARD);
 }
 
 void KeyboardConfig::refreshActiveKeys()
@@ -191,7 +192,7 @@ bool KeyboardConfig::isActionActive(const int index) const
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
         const KeyItem &val = key.values[i];
-        if (val.type != INPUT_KEYBOARD)
+        if (val.type != InputType::KEYBOARD)
             continue;
 
         const int value = val.value;
@@ -212,7 +213,7 @@ bool KeyboardConfig::isActionActive(const int index) const
 void KeyboardConfig::update()
 {
     inputManager.updateKeyActionMap(mKeyToAction, mKeyToId,
-        mKeyTimeMap, INPUT_KEYBOARD);
+        mKeyTimeMap, InputType::KEYBOARD);
 }
 
 void KeyboardConfig::handleActicateKey(const SDL_Event &event)
