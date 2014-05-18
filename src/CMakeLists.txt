@@ -761,6 +761,7 @@ SET(SRCS
     input/keyboarddata.h
     input/keydata.h
     input/keyinput.h
+    input/keysortfunctor.h
     input/multitouchmanager.cpp
     input/multitouchmanager.h
     localconsts.h

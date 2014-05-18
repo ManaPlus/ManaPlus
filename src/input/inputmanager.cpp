@@ -27,6 +27,7 @@
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
 #include "input/keyboarddata.h"
+#include "input/keysortfunctor.h"
 #include "being/localplayer.h"
 #ifdef USE_SDL2
 #include "input/multitouchmanager.h"
@@ -61,17 +62,10 @@ class QuitDialog;
 
 extern QuitDialog *quitDialog;
 
-static class KeyFunctor final
+namespace
 {
-    public:
-        bool operator() (const int key1, const int key2) const
-        {
-            return keys[key1].priority >= keys[key2].priority;
-        }
-
-        const KeyData *keys;
-} keyDataSorter;
-
+    KeySortFunctor keyDataSorter;
+}  // namespace
 
 InputManager::InputManager() :
     mSetupInput(nullptr),
