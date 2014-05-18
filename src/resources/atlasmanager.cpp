@@ -31,6 +31,7 @@
 #include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
 
+#include "resources/atlasresource.h"
 #include "resources/dye.h"
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
@@ -353,48 +354,6 @@ void AtlasManager::moveToDeleted(AtlasResource *const resource)
             }
         }
     }
-}
-
-AtlasResource::~AtlasResource()
-{
-    FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
-    {
-        TextureAtlas *const atlas = *it;
-        if (atlas)
-        {
-            FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
-            {
-                AtlasItem *const item = *it2;
-                if (item)
-                {
-                    Image *const image2 = item->image;
-                    if (image2)
-                        image2->decRef();
-                    delete item;
-                }
-            }
-            Image *const image = atlas->atlasImage;
-            if (image)
-                image->decRef();
-            delete atlas;
-        }
-    }
-    ResourceManager *const resman = ResourceManager::getInstance();
-    resman->clearDeleted(false);
-}
-
-void AtlasResource::incRef()
-{
-    if (!getRefCount())
-        AtlasManager::injectToResources(this);
-    Resource::incRef();
-}
-
-void AtlasResource::decRef()
-{
-    Resource::decRef();
-    if (!getRefCount())
-        AtlasManager::moveToDeleted(this);
 }
 
 #endif

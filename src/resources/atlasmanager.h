@@ -29,6 +29,7 @@
 
 #include <SDL.h>
 
+class AtlasResource;
 class Resource;
 
 struct AtlasItem final
@@ -73,24 +74,6 @@ struct TextureAtlas final
     int width;
     int height;
     std::vector <AtlasItem*> items;
-};
-
-class AtlasResource final : public Resource
-{
-    public:
-        AtlasResource() :
-            atlases()
-        { }
-
-        A_DELETE_COPY(AtlasResource)
-
-        ~AtlasResource();
-
-        void incRef() override final;
-
-        void decRef() override final;
-
-        std::vector<TextureAtlas*> atlases;
 };
 
 class AtlasManager final

@@ -30,6 +30,7 @@
 #include "resources/map/walklayer.h"
 
 #include "resources/atlasmanager.h"
+#include "resources/atlasresource.h"
 #include "resources/dye.h"
 #include "resources/image.h"
 #include "resources/imagehelper.h"

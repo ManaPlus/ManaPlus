@@ -512,6 +512,8 @@ SET(SRCS
     resources/animation.h
     resources/atlasmanager.cpp
     resources/atlasmanager.h
+    resources/atlasresource.cpp
+    resources/atlasresource.h
     resources/db/avatardb.cpp
     resources/db/avatardb.h
     resources/beingcommon.cpp
