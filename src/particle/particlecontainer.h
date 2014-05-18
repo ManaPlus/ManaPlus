@@ -73,37 +73,6 @@ protected:
 };
 
 /**
- * Linked list of particle effects.
- */
-class ParticleList final : public ParticleContainer
-{
-public:
-    explicit ParticleList(ParticleContainer *const parent = nullptr,
-                          const bool delParent = true);
-
-    A_DELETE_COPY(ParticleList)
-
-    ~ParticleList();
-
-    /**
-     * Takes control of and adds a particle
-     */
-    void addLocally(Particle *const particle);
-
-    /**
-     * `kills' and removes a particle
-     */
-    void removeLocally(const Particle *const particle);
-
-    void clearLocally() override final;
-
-    void moveTo(const float x, const float y) override final;
-
-protected:
-    std::list<Particle *> mElements;    /**< Contained particle effects */
-};
-
-/**
  * Particle container with indexing facilities
  */
 class ParticleVector final : public ParticleContainer

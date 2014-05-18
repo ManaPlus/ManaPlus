@@ -27,9 +27,6 @@
 
 #include "debug.h"
 
-typedef std::list<Particle *>::iterator ParticleListIter;
-typedef std::list<Particle *>::const_iterator ParticleListCIter;
-
 ParticleContainer::ParticleContainer(ParticleContainer *const parent,
                                      const bool delParent):
     mNext(parent),
@@ -56,74 +53,6 @@ void ParticleContainer::moveTo(const float x, const float y)
 {
     if (mNext)
         mNext->moveTo(x, y);
-}
-
-// -- particle list ----------------------------------------
-
-ParticleList::ParticleList(ParticleContainer *const parent,
-                           const bool delParent) :
-    ParticleContainer(parent, delParent),
-    mElements()
-{}
-
-ParticleList::~ParticleList()
-{}
-
-void ParticleList::addLocally(Particle *const particle)
-{
-    if (particle)
-    {
-        // The effect may not die without the beings permission or we segfault
-        particle->disableAutoDelete();
-        mElements.push_back(particle);
-    }
-}
-
-void ParticleList::removeLocally(const Particle *const particle)
-{
-    for (std::list<Particle *>::iterator it = mElements.begin();
-         it != mElements.end(); )
-    {
-        Particle *const p = *it;
-        if (p == particle)
-        {
-            p->kill();
-            it = mElements.erase(it);
-        }
-        else
-        {
-            ++it;
-        }
-    }
-}
-
-void ParticleList::clearLocally()
-{
-    FOR_EACH (ParticleListCIter, it, mElements)
-        (*it)->kill();
-
-    mElements.clear();
-}
-
-void ParticleList::moveTo(const float x, const float y)
-{
-    ParticleContainer::moveTo(x, y);
-
-    for (std::list<Particle *>::iterator it = mElements.begin();
-         it != mElements.end(); )
-    {
-        Particle *const p = *it;
-        p->moveTo(x, y);
-        if (p->isExtinct())
-        {
-            p->kill();
-            it = mElements.erase(it);
-        }
-        else
-        {
-            ++it;
-        }
-    }
 }
 
 // -- particle vector ----------------------------------------

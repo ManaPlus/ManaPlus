@@ -34,6 +34,7 @@
 #include "being/targetcursortype.h"
 
 #include "particle/particlecontainer.h"
+#include "particle/particlelist.h"
 
 #include <set>
 #include <list>

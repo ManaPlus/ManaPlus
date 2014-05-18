@@ -830,6 +830,8 @@ SET(SRCS
     particle/particleemitter.h
     particle/particleemitterprop.h
     particle/particleinfo.h
+    particle/particlelist.cpp
+    particle/particlelist.h
     party.cpp
     party.h
     being/playerignorestrategy.h
