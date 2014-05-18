@@ -803,7 +803,7 @@ void ScrollArea::mousePressed(MouseEvent& event)
         event.consume();
     }
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         mClickX = event.getX();
         mClickY = event.getY();
@@ -812,7 +812,7 @@ void ScrollArea::mousePressed(MouseEvent& event)
 
 void ScrollArea::mouseReleased(MouseEvent& event)
 {
-    if (event.getButton() == MouseEvent::LEFT && mClickX && mClickY)
+    if (event.getButton() == MouseButton::LEFT && mClickX && mClickY)
     {
         if (!event.isConsumed())
         {

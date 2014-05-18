@@ -306,7 +306,7 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
     const int x = event.getX();
     const int y = event.getY();
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         if (mForing)
         {
@@ -342,7 +342,7 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
                 return;
         }
     }
-    else if (event.getButton() == MouseEvent::RIGHT)
+    else if (event.getButton() == MouseButton::RIGHT)
     {
         if (Item *const item = getItem(x, y))
         {

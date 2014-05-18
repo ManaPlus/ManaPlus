@@ -188,7 +188,7 @@ void ShortcutWindow::mousePressed(MouseEvent &event)
     if (event.isConsumed())
         return;
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         mDragOffsetX = event.getX();
         mDragOffsetY = event.getY();

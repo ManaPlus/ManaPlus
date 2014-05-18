@@ -70,7 +70,7 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         replaceAll(url, " ", "");
         listener.url = url;
         const int button = event->getButton();
-        if (button == MouseInput::LEFT)
+        if (button == MouseButton::LEFT)
         {
             ConfirmDialog *const confirmDlg = new ConfirmDialog(
                 // TRANSLATORS: dialog message
@@ -78,7 +78,7 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
             confirmDlg->postInit();
             confirmDlg->addActionListener(&listener);
         }
-        else if (button == MouseInput::RIGHT)
+        else if (button == MouseButton::RIGHT)
         {
             if (viewport)
                 viewport->showLinkPopup(url);

@@ -360,7 +360,7 @@ void Slider::mousePressed(MouseEvent &event)
     const int width = mDimension.width;
     const int height = mDimension.height;
 
-    if (event.getButton() == MouseEvent::LEFT
+    if (event.getButton() == MouseButton::LEFT
         && x >= 0 && x <= width && y >= 0 && y <= height)
     {
         event.consume();

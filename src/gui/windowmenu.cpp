@@ -242,7 +242,7 @@ void WindowMenu::mousePressed(MouseEvent &event)
     if (!viewport)
         return;
 
-    if (event.getButton() == MouseEvent::RIGHT)
+    if (event.getButton() == MouseButton::RIGHT)
     {
         if (mSmallWindow)
             return;

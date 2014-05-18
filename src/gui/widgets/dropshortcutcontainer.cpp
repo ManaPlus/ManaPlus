@@ -163,7 +163,7 @@ void DropShortcutContainer::mouseDragged(MouseEvent &event)
     if (!dropShortcut)
         return;
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         if (dragDrop.isEmpty() && mItemClicked)
         {
@@ -210,7 +210,7 @@ void DropShortcutContainer::mousePressed(MouseEvent &event)
     event.consume();
 
     const int eventButton = event.getButton();
-    if (eventButton == MouseEvent::LEFT)
+    if (eventButton == MouseButton::LEFT)
     {
         if (dropShortcut->getItem(index) > 0)
         {
@@ -226,7 +226,7 @@ void DropShortcutContainer::mousePressed(MouseEvent &event)
             }
         }
     }
-    else if (eventButton == MouseEvent::RIGHT)
+    else if (eventButton == MouseButton::RIGHT)
     {
         const Inventory *const inv = PlayerInfo::getInventory();
         if (!inv)
@@ -245,7 +245,7 @@ void DropShortcutContainer::mouseReleased(MouseEvent &event)
     if (!dropShortcut)
         return;
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         if (dropShortcut->isItemSelected())
             dropShortcut->setItemSelected(-1);

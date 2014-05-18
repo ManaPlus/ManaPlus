@@ -168,7 +168,7 @@ WhoIsOnline::~WhoIsOnline()
 
 void WhoIsOnline::handleLink(const std::string& link, MouseEvent *event)
 {
-    if (!event || event->getButton() == MouseEvent::LEFT)
+    if (!event || event->getButton() == MouseButton::LEFT)
     {
         if (chatWindow)
         {
@@ -184,7 +184,7 @@ void WhoIsOnline::handleLink(const std::string& link, MouseEvent *event)
             }
         }
     }
-    else if (event->getButton() == MouseEvent::RIGHT)
+    else if (event->getButton() == MouseButton::RIGHT)
     {
         if (player_node && link == player_node->getName())
             return;

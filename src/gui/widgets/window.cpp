@@ -721,7 +721,7 @@ void Window::mousePressed(MouseEvent &event)
     }
 
     const unsigned int button = event.getButton();
-    if (button == MouseEvent::LEFT)
+    if (button == MouseButton::LEFT)
     {
         const int x = event.getX();
         const int y = event.getY();
@@ -755,7 +755,7 @@ void Window::mousePressed(MouseEvent &event)
         else
             mMoved = false;
     }
-    else if (button == MouseEvent::RIGHT)
+    else if (button == MouseButton::RIGHT)
     {
         if (viewport)
         {

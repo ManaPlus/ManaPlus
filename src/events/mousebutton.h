@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2012-2014  The ManaPlus Developers
+ *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -61,147 +61,21 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef INPUT_MOUSEINPUT_H
-#define INPUT_MOUSEINPUT_H
+#ifndef EVENTS_MOUSEBUTTON_H
+#define EVENTS_MOUSEBUTTON_H
 
-#include "input/mouseinput.h"
-
-#include "events/mousebutton.h"
-
-#include "localconsts.h"
-
-class MouseInput final
+namespace MouseButton
 {
-    public:
-        MouseInput() :
-            mType(0),
-            mButton(MouseButton::EMPTY),
-            mTimeStamp(0),
-            mX(0),
-            mY(0),
-            mRealX(0),
-            mRealY(0)
-        { }
+    /**
+      * Mouse button types.
+      */
+    enum Type
+    {
+        EMPTY = 0,
+        LEFT,
+        RIGHT,
+        MIDDLE
+    };
+}
 
-        ~MouseInput()
-        { }
-
-        /**
-         * Mouse input event types. This enum partially corresponds
-         * to the enum with event types in MouseEvent for easy mapping.
-         */
-        enum
-        {
-            MOVED = 0,
-            PRESSED,
-            RELEASED,
-            WHEEL_MOVED_DOWN,
-            WHEEL_MOVED_UP
-        };
-
-        void setType(unsigned int type)
-        {
-            mType = type;
-        }
-
-        unsigned int getType() const
-        {
-            return mType;
-        }
-
-        void setButton(MouseButton::Type button)
-        {
-            mButton = button;
-        }
-
-        MouseButton::Type getButton() const
-        {
-            return mButton;
-        }
-
-        int getTimeStamp() const
-        {
-            return mTimeStamp;
-        }
-
-        void setTimeStamp(int timeStamp)
-        {
-            mTimeStamp = timeStamp;
-        }
-
-        void setX(int x)
-        {
-            mX = x;
-        }
-
-        int getX() const
-        {
-            return mX;
-        }
-
-        void setY(int y)
-        {
-            mY = y;
-        }
-
-        int getY() const
-        {
-            return mY;
-        }
-
-        void setReal(const int x, const int y)
-        { mRealX = x; mRealY = y; }
-
-        int getRealX() const A_WARN_UNUSED
-        { return mRealX; }
-
-        int getRealY() const A_WARN_UNUSED
-        { return mRealY; }
-
-#ifdef ANDROID
-        int getTouchX() const A_WARN_UNUSED
-        { return mRealX; }
-
-        int getTouchY() const A_WARN_UNUSED
-        { return mRealY; }
-#else
-        int getTouchX() const A_WARN_UNUSED
-        { return mX; }
-
-        int getTouchY() const A_WARN_UNUSED
-        { return mY; }
-#endif
-
-    protected:
-        /**
-         * Holds the type of the mouse input.
-         */
-        unsigned int mType;
-
-        /**
-         * Holds the button of the mouse input.
-         */
-        MouseButton::Type mButton;
-
-        /** 
-         * Holds the timestamp of the mouse input. Used to 
-         * check for double clicks.
-         */
-        int mTimeStamp;
-
-        /** 
-         * Holds the x coordinate of the mouse input.
-         */
-        int mX;
-
-        /** 
-         * Holds the y coordinate of the mouse input.
-         */
-        int mY;
-
-        int mRealX;
-
-        int mRealY;
-};
-
-#endif  // INPUT_MOUSEINPUT_H
+#endif  // EVENTS_MOUSEBUTTON_H

@@ -586,7 +586,7 @@ void TextBox::addRow(const std::string &row)
 
 void TextBox::mousePressed(MouseEvent& event)
 {
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         const int height = getFont()->getHeight();
         if (!height)

@@ -275,7 +275,7 @@ void RadioButton::setSelected(const bool selected)
 
 void RadioButton::mouseClicked(MouseEvent& event)
 {
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         setSelected(true);
         event.consume();

@@ -612,7 +612,7 @@ void Button::draw(Graphics *graphics)
 
 void Button::mouseReleased(MouseEvent& event)
 {
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         if (mStick)
             mPressed = !mPressed;
@@ -716,7 +716,7 @@ void Button::focusLost(const Event& event A_UNUSED)
 
 void Button::mousePressed(MouseEvent& event)
 {
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         mMousePressed = true;
         event.consume();

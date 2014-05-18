@@ -359,7 +359,7 @@ void ServerDialog::valueChanged(const SelectionEvent &)
 
 void ServerDialog::mouseClicked(MouseEvent &event)
 {
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         event.consume();
         if (event.getClickCount() == 2 &&

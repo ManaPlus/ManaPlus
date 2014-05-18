@@ -182,7 +182,7 @@ void EmoteShortcutContainer::mouseReleased(MouseEvent &event)
     if (!emoteShortcut)
         return;
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         const int index = getIndexFromGrid(event.getX(), event.getY());
 

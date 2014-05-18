@@ -653,7 +653,7 @@ void ChatWindow::mousePressed(MouseEvent &event)
     if (event.isConsumed())
         return;
 
-    if (event.getButton() == MouseEvent::RIGHT)
+    if (event.getButton() == MouseButton::RIGHT)
     {
         if (viewport)
         {
@@ -683,7 +683,7 @@ void ChatWindow::mousePressed(MouseEvent &event)
     if (event.isConsumed())
         return;
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         const ChatTab *const tab = getFocused();
         if (tab)

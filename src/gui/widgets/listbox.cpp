@@ -318,7 +318,7 @@ void ListBox::mouseReleased(MouseEvent &event)
 
 void ListBox::mouseReleased1(const MouseEvent &event)
 {
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         setSelected(std::max(0, getSelectionByMouse(event.getY())));
         distributeActionEvent();
@@ -327,7 +327,7 @@ void ListBox::mouseReleased1(const MouseEvent &event)
 
 void ListBox::mouseDragged(MouseEvent &event)
 {
-    if (event.getButton() != MouseEvent::LEFT || getRowHeight() == 0)
+    if (event.getButton() != MouseButton::LEFT || getRowHeight() == 0)
         return;
 
     // Make list selection update on drag, but guard against negative y

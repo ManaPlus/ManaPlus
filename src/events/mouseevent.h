@@ -66,6 +66,7 @@
 
 #include "events/inputguievent.h"
 
+#include "events/mousebutton.h"
 #include "events/mouseeventtype.h"
 
 class Widget;
@@ -91,8 +92,8 @@ class MouseEvent: public InputGuiEvent
           *                   It's set to zero if another button is used.
           */
         MouseEvent(Widget *const source,
-                   MouseEventType::Type type,
-                   const unsigned int button,
+                   const MouseEventType::Type type,
+                   const MouseButton::Type button,
                    const int x,
                    const int y,
                    const int clickCount) :
@@ -110,7 +111,7 @@ class MouseEvent: public InputGuiEvent
           *
           * @return The button of the mouse event.
           */
-        unsigned int getButton() const A_WARN_UNUSED
+        MouseButton::Type getButton() const A_WARN_UNUSED
         { return mButton; }
 
         /**
@@ -158,17 +159,6 @@ class MouseEvent: public InputGuiEvent
         void setY(int n)
         { mY = n; }
 
-        /**
-          * Mouse button types.
-          */
-        enum
-        {
-            EMPTY = 0,
-            LEFT,
-            RIGHT,
-            MIDDLE
-        };
-
     protected:
         /**
           * Holds the type of the mouse event.
@@ -178,7 +168,7 @@ class MouseEvent: public InputGuiEvent
         /**
           * Holds the button of the mouse event.
           */
-        unsigned int mButton;
+        MouseButton::Type mButton;
 
         /**
           * Holds the x-coordinate of the mouse event.

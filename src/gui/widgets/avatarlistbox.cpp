@@ -344,7 +344,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
 
     event.consume();
     const unsigned int eventButton = event.getButton();
-    if (eventButton == MouseEvent::LEFT)
+    if (eventButton == MouseButton::LEFT)
     {
         if (ava->getType() == AVATAR_PLAYER)
         {
@@ -358,7 +358,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
             player_node->navigateTo(ava->getX(), ava->getY());
         }
     }
-    else if (eventButton == MouseEvent::RIGHT)
+    else if (eventButton == MouseButton::RIGHT)
     {
         switch (ava->getType())
         {
@@ -417,7 +417,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
             }
         }
     }
-    else if (eventButton == MouseEvent::MIDDLE)
+    else if (eventButton == MouseButton::MIDDLE)
     {
         if (ava->getType() == AVATAR_PLAYER && chatWindow)
         {

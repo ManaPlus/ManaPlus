@@ -415,7 +415,7 @@ void GuiTable::mousePressed(MouseEvent& event)
     if (!mModel || !mSelectable)
         return;
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         const int row = getRowForY(event.getY());
         const int column = getColumnForX(event.getX());
@@ -454,7 +454,7 @@ void GuiTable::mouseWheelMovedDown(MouseEvent& event)
 
 void GuiTable::mouseDragged(MouseEvent& event)
 {
-    if (event.getButton() != MouseEvent::LEFT)
+    if (event.getButton() != MouseButton::LEFT)
         return;
 
     // Make table selection update on drag

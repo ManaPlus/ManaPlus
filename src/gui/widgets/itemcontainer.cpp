@@ -405,7 +405,7 @@ void ItemContainer::mousePressed(MouseEvent &event)
     const int button = event.getButton();
     mClicks = event.getClickCount();
 
-    if (button == MouseEvent::LEFT || button == MouseEvent::RIGHT)
+    if (button == MouseButton::LEFT || button == MouseButton::RIGHT)
     {
         event.consume();
         const int index = getSlotIndex(event.getX(), event.getY());

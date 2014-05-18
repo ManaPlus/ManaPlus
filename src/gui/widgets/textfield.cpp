@@ -702,7 +702,7 @@ void TextField::mousePressed(MouseEvent &event)
         inputManager.executeAction(Input::KEY_SHOW_KEYBOARD);
 #endif
     event.consume();
-    if (event.getButton() == MouseEvent::RIGHT)
+    if (event.getButton() == MouseButton::RIGHT)
     {
         if (viewport)
         {
@@ -724,7 +724,7 @@ void TextField::mousePressed(MouseEvent &event)
             }
         }
     }
-    else if (event.getButton() == MouseEvent::LEFT)
+    else if (event.getButton() == MouseButton::LEFT)
     {
         mCaretPosition = getFont()->getStringIndexAt(
             mText, event.getX() + mXScroll);

@@ -360,7 +360,7 @@ void DropDown::mousePressed(MouseEvent& event)
 {
     event.consume();
     // If we have a mouse press on the widget.
-    if (event.getButton() == MouseEvent::LEFT
+    if (event.getButton() == MouseButton::LEFT
         && !mDroppedDown && event.getSource() == this)
     {
         mPushed = true;
@@ -385,12 +385,12 @@ void DropDown::mouseReleased(MouseEvent &event)
     // Released outside of widget. Can happen when we have modal
     // input focus.
     if ((0 > y || y >= mDimension.height || x < 0 || x >= mDimension.width)
-        && button == MouseEvent::LEFT)
+        && button == MouseButton::LEFT)
     {
         if (mIsDragged)
             foldUp();
     }
-    else if (button == MouseEvent::LEFT)
+    else if (button == MouseButton::LEFT)
     {
         mPushed = false;
     }

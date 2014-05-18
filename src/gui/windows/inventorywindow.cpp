@@ -451,7 +451,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
         && inputManager.isActionActive(static_cast<int>(
         Input::KEY_STOP_ATTACK)));
 
-    if (!mod && !mod2 && event.getButton() == MouseEvent::RIGHT)
+    if (!mod && !mod2 && event.getButton() == MouseButton::RIGHT)
     {
         Item *const item = mItems->getSelectedItem();
 
@@ -471,8 +471,8 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
     if (!mInventory)
         return;
 
-    if (event.getButton() == MouseEvent::LEFT
-        || event.getButton() == MouseEvent::RIGHT)
+    if (event.getButton() == MouseButton::LEFT
+        || event.getButton() == MouseButton::RIGHT)
     {
         Item *const item = mItems->getSelectedItem();
 
@@ -483,7 +483,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
         {
             if (mInventory->isMainInventory())
             {
-                if (event.getButton() == MouseEvent::RIGHT)
+                if (event.getButton() == MouseButton::RIGHT)
                 {
                     ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
                         inventoryWindow, item);
@@ -497,7 +497,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
             }
             else
             {
-                if (event.getButton() == MouseEvent::RIGHT)
+                if (event.getButton() == MouseButton::RIGHT)
                 {
                     ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
                         inventoryWindow, item);
@@ -514,7 +514,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
         {
             if (PlayerInfo::isItemProtected(item->getId()))
                 return;
-            if (event.getButton() == MouseEvent::RIGHT)
+            if (event.getButton() == MouseButton::RIGHT)
             {
                 ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
                     tradeWindow, item);

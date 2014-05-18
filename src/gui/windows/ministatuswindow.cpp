@@ -445,7 +445,7 @@ void MiniStatusWindow::mousePressed(MouseEvent &event)
     if (!viewport)
         return;
 
-    if (event.getButton() == MouseEvent::RIGHT)
+    if (event.getButton() == MouseButton::RIGHT)
     {
         const ProgressBar *const bar = dynamic_cast<ProgressBar*>(
             event.getSource());

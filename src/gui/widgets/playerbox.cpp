@@ -157,7 +157,7 @@ void PlayerBox::drawFrame(Graphics *graphics)
 
 void PlayerBox::mouseReleased(MouseEvent& event)
 {
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         if (!mActionEventId.empty())
             distributeActionEvent();

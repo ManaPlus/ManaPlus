@@ -68,6 +68,7 @@
 
 #include "gui/color.h"
 
+#include "events/mousebutton.h"
 #include "events/mouseeventtype.h"
 
 #include "resources/cursor.h"
@@ -328,7 +329,7 @@ class Gui final
 
         void distributeMouseEvent(Widget *const source,
                                   const MouseEventType::Type type,
-                                  const int button,
+                                  const MouseButton::Type button,
                                   const int x, const int y,
                                   const bool force = false,
                                   const bool toSourceOnly = false);
@@ -467,7 +468,7 @@ class Gui final
         /**
          * Holds the last mouse button pressed.
          */
-        unsigned int mLastMousePressButton;
+        MouseButton::Type mLastMousePressButton;
 
         /**
          * Holds the last mouse press time stamp.
@@ -495,7 +496,7 @@ class Gui final
          * was initiated. Used to be able to release a drag
          * when the same button is released.
          */
-        int mLastMouseDragButton;
+        MouseButton::Type mLastMouseDragButton;
 
         /**
          * Holds a stack with all the widgets with the mouse.

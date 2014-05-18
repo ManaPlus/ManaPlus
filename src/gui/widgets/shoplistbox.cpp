@@ -225,7 +225,7 @@ void ShopListBox::mouseMoved(MouseEvent &event)
 void ShopListBox::mouseReleased(MouseEvent& event)
 {
     ListBox::mouseReleased(event);
-    if (event.getButton() == MouseEvent::RIGHT)
+    if (event.getButton() == MouseButton::RIGHT)
     {
         setSelected(std::max(0, getSelectionByMouse(event.getY())));
 

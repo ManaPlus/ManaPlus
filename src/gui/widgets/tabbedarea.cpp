@@ -366,7 +366,7 @@ void TabbedArea::mousePressed(MouseEvent &event)
     if (event.isConsumed())
         return;
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         Widget *const widget = mTabContainer->getWidgetAt(
             event.getX(), event.getY());

@@ -290,7 +290,7 @@ void Viewport::followMouse()
         // We create a mouse event and send it to mouseDragged.
         MouseEvent event(nullptr,
             MouseEventType::DRAGGED,
-            MouseEvent::LEFT,
+            MouseButton::LEFT,
             mMouseX,
             mMouseY,
             0);
@@ -508,7 +508,7 @@ void Viewport::mousePressed(MouseEvent &event)
     const int pixelY = mMousePressY + mPixelViewY;
 
     // Right click might open a popup
-    if (eventButton == MouseEvent::RIGHT)
+    if (eventButton == MouseButton::RIGHT)
     {
         if (openContextMenu(event))
             return;
@@ -523,7 +523,7 @@ void Viewport::mousePressed(MouseEvent &event)
     }
 
     // Left click can cause different actions
-    if (!mLongMouseClick && eventButton == MouseEvent::LEFT)
+    if (!mLongMouseClick && eventButton == MouseButton::LEFT)
     {
         if (leftMouseAction())
         {
@@ -531,7 +531,7 @@ void Viewport::mousePressed(MouseEvent &event)
             return;
         }
     }
-    else if (eventButton == MouseEvent::MIDDLE)
+    else if (eventButton == MouseButton::MIDDLE)
     {
         mPlayerFollowMouse = false;
         validateSpeed();
@@ -701,7 +701,7 @@ void Viewport::mouseReleased(MouseEvent &event)
         if (event.getSource() != this || event.isConsumed())
             return;
         const unsigned int eventButton = event.getButton();
-        if (eventButton == MouseEvent::LEFT)
+        if (eventButton == MouseButton::LEFT)
         {
             // long button press
             if (gui && gui->isLongPress())

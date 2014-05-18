@@ -116,12 +116,12 @@ Gui::Gui() :
     mInput(nullptr),
     mFocusHandler(new FocusHandler),
     mKeyListeners(),
-    mLastMousePressButton(0),
+    mLastMousePressButton(MouseButton::EMPTY),
     mLastMousePressTimeStamp(0),
     mLastMouseX(0),
     mLastMouseY(0),
     mClickCount(1),
-    mLastMouseDragButton(0),
+    mLastMouseDragButton(MouseButton::EMPTY),
     mWidgetWithMouseQueue(),
     mConfigListener(new GuiConfigListener(this)),
     mGuiFont(),
@@ -581,7 +581,7 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
 
     const int mouseX = mouseInput.getX();
     const int mouseY = mouseInput.getY();
-    const int button = mouseInput.getButton();
+    const MouseButton::Type button = mouseInput.getButton();
 
     // Check if there is a need to send mouse exited events by
     // traversing the "widget with mouse" queue.
@@ -724,7 +724,7 @@ void Gui::handleMousePressed(const MouseInput &mouseInput)
 {
     const int x = mouseInput.getX();
     const int y = mouseInput.getY();
-    const unsigned int button = mouseInput.getButton();
+    const MouseButton::Type button = mouseInput.getButton();
     const int timeStamp = mouseInput.getTimeStamp();
 
     Widget *sourceWidget = getMouseEventSource(x, y);
@@ -793,7 +793,7 @@ void Gui::updateFonts()
 
 void Gui::distributeMouseEvent(Widget *const source,
                                const MouseEventType::Type type,
-                               const int button,
+                               const MouseButton::Type button,
                                const int x, const int y,
                                const bool force,
                                const bool toSourceOnly)
@@ -936,7 +936,7 @@ MouseEvent *Gui::createMouseEvent(Window *const widget)
 
     return new MouseEvent(widget,
         MouseEventType::MOVED,
-        0,
+        MouseButton::EMPTY,
         mouseX - x,
         mouseY - y,
         mClickCount);
@@ -1051,7 +1051,7 @@ void Gui::handleMouseReleased(const MouseInput &mouseInput)
     }
     else
     {
-        mLastMousePressButton = 0;
+        mLastMousePressButton = MouseButton::EMPTY;
         mClickCount = 0;
     }
 

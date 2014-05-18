@@ -439,7 +439,7 @@ void Minimap::mouseReleased(MouseEvent &event)
     if (!player_node || !viewport)
         return;
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         int x = event.getX();
         int y = event.getY();
@@ -447,7 +447,7 @@ void Minimap::mouseReleased(MouseEvent &event)
 
         player_node->navigateTo(x, y);
     }
-    else if (event.getButton() == MouseEvent::RIGHT)
+    else if (event.getButton() == MouseButton::RIGHT)
     {
         int x = event.getX();
         int y = event.getY();

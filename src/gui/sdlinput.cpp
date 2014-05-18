@@ -75,6 +75,7 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include "logger.h"
 #include "sdlshared.h"
 
 #include "input/inputmanager.h"
@@ -250,7 +251,7 @@ void SDLInput::pushInput(const SDL_Event &event)
                 event.motion.realy / scale);
 #endif
 #endif
-            mouseInput.setButton(MouseInput::EMPTY);
+            mouseInput.setButton(MouseButton::EMPTY);
             mouseInput.setType(MouseInput::MOVED);
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
@@ -270,7 +271,7 @@ void SDLInput::pushInput(const SDL_Event &event)
                 {
                     mouseInput.setX(-1);
                     mouseInput.setY(-1);
-                    mouseInput.setButton(MouseInput::EMPTY);
+                    mouseInput.setButton(MouseButton::EMPTY);
                     mouseInput.setType(MouseInput::MOVED);
                     mMouseInputQueue.push(mouseInput);
                 }
@@ -293,19 +294,20 @@ void SDLInput::convertKeyEventToKey(const SDL_Event &event, KeyInput &keyInput)
         keyInput.setActionId(actionId);
 }
 
-int SDLInput::convertMouseButton(const int button)
+MouseButton::Type SDLInput::convertMouseButton(const int button)
 {
     switch (button)
     {
-      case SDL_BUTTON_LEFT:
-          return MouseInput::LEFT;
-      case SDL_BUTTON_RIGHT:
-          return MouseInput::RIGHT;
-      case SDL_BUTTON_MIDDLE:
-          return MouseInput::MIDDLE;
-      default:
-          // We have an unknown mouse type which is ignored.
-          return button;
+        case SDL_BUTTON_LEFT:
+            return MouseButton::LEFT;
+        case SDL_BUTTON_RIGHT:
+            return MouseButton::RIGHT;
+        case SDL_BUTTON_MIDDLE:
+            return MouseButton::MIDDLE;
+        default:
+            // We have an unknown mouse type which is ignored.
+            logger->log("unknown button type: %u", button);
+            return MouseButton::EMPTY;
     }
 }
 
@@ -522,7 +524,7 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
 }
 
 void SDLInput::simulateMouseClick(const int x, const int y,
-                                  const unsigned int button)
+                                  const MouseButton::Type button)
 {
     MouseInput mouseInput;
     mouseInput.setX(x);

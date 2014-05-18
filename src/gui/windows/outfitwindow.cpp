@@ -369,7 +369,7 @@ void OutfitWindow::draw(Graphics *graphics)
 
 void OutfitWindow::mouseDragged(MouseEvent &event)
 {
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         if (dragDrop.isEmpty() && mItemClicked)
         {
@@ -415,7 +415,7 @@ void OutfitWindow::mousePressed(MouseEvent &event)
     const int index = getIndexFromGrid(event.getX(), event.getY());
     if (index == -1)
     {
-        if (event.getButton() == MouseEvent::RIGHT && viewport)
+        if (event.getButton() == MouseButton::RIGHT && viewport)
         {
             viewport->showOutfitsPopup();
             event.consume();
@@ -449,7 +449,7 @@ void OutfitWindow::mousePressed(MouseEvent &event)
 
 void OutfitWindow::mouseReleased(MouseEvent &event)
 {
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         if (mCurrentOutfit < 0 || mCurrentOutfit
             >= static_cast<signed int>(OUTFITS_COUNT))

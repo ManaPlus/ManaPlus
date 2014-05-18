@@ -241,7 +241,7 @@ void ItemShortcutContainer::mouseDragged(MouseEvent &event)
     if (!selShortcut)
         return;
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         if (dragDrop.isEmpty() && mItemClicked)
         {
@@ -334,7 +334,7 @@ void ItemShortcutContainer::mousePressed(MouseEvent &event)
     if (index == -1)
         return;
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         event.consume();
         // Stores the selected item if theirs one.
@@ -353,7 +353,7 @@ void ItemShortcutContainer::mousePressed(MouseEvent &event)
             mItemClicked = true;
         }
     }
-    else if (event.getButton() == MouseEvent::RIGHT)
+    else if (event.getButton() == MouseButton::RIGHT)
     {
         event.consume();
         if (viewport && selShortcut)
@@ -370,7 +370,7 @@ void ItemShortcutContainer::mouseReleased(MouseEvent &event)
     if (!selShortcut)
         return;
 
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         if (selShortcut->isItemSelected())
             selShortcut->setItemSelected(-1);

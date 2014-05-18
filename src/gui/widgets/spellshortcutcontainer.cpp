@@ -149,7 +149,7 @@ void SpellShortcutContainer::draw(Graphics *graphics)
 
 void SpellShortcutContainer::mouseDragged(MouseEvent &event)
 {
-    if (event.getButton() == MouseEvent::LEFT)
+    if (event.getButton() == MouseButton::LEFT)
     {
         if (dragDrop.isEmpty() && mSpellClicked)
         {
@@ -186,17 +186,17 @@ void SpellShortcutContainer::mousePressed(MouseEvent &event)
         return;
 
     const unsigned int eventButton = event.getButton();
-    if (eventButton == MouseEvent::LEFT)
+    if (eventButton == MouseButton::LEFT)
     {
         const int itemId = getItemByIndex(index);
         if (itemId > 0)
             mSpellClicked = true;
         event.consume();
     }
-    else if (eventButton == MouseEvent::RIGHT)
+    else if (eventButton == MouseButton::RIGHT)
     {
     }
-    else if (eventButton == MouseEvent::MIDDLE)
+    else if (eventButton == MouseButton::MIDDLE)
     {
         if (!spellShortcut || !spellManager)
             return;
@@ -223,7 +223,7 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
     const int itemId = getItemByIndex(index);
     const unsigned int eventButton = event.getButton();
 
-    if (eventButton == MouseEvent::LEFT)
+    if (eventButton == MouseButton::LEFT)
     {
         mSpellClicked = false;
 
@@ -275,7 +275,7 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
             }
         }
     }
-    else if (eventButton == MouseEvent::RIGHT)
+    else if (eventButton == MouseButton::RIGHT)
     {
         TextCommand *spell = nullptr;
         if (itemId >= 0)

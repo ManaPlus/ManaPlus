@@ -947,7 +947,7 @@ void NpcDialog::clearDialogs()
 void NpcDialog::mousePressed(MouseEvent &event)
 {
     Window::mousePressed(event);
-    if (event.getButton() == MouseEvent::RIGHT
+    if (event.getButton() == MouseButton::RIGHT
         && event.getSource() == mTextBox)
     {
         event.consume();

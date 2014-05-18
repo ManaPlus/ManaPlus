@@ -174,7 +174,7 @@ class SkillListBox final : public ListBox
 
         void mouseDragged(MouseEvent &event)
         {
-            if (event.getButton() == MouseEvent::LEFT)
+            if (event.getButton() == MouseButton::LEFT)
             {
                 if (dragDrop.isEmpty())
                 {
@@ -199,7 +199,7 @@ class SkillListBox final : public ListBox
         void mousePressed(MouseEvent &event)
         {
             ListBox::mousePressed(event);
-            if (event.getButton() == MouseEvent::LEFT)
+            if (event.getButton() == MouseButton::LEFT)
             {
                 const SkillInfo *const skill = getSkillByEvent(event);
                 if (!skill)
