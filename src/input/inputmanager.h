@@ -21,24 +21,17 @@
 #ifndef INPUT_INPUTMANAGER_H
 #define INPUT_INPUTMANAGER_H
 
-#include "events/inputevent.h"
-
+#include "input/keyfunction.h"
 #include "input/keydata.h"
-#include "input/keyitem.h"
 
 #include <string>
 #include <map>
 
 #include <SDL_events.h>
 
-const unsigned int KeyFunctionSize = 3;
-
 class Setup_Input;
 
-struct KeyFunction final
-{
-    KeyItem values[KeyFunctionSize];
-};
+struct KeyData;
 
 enum KeyCondition
 {
