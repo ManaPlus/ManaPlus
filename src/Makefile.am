@@ -621,6 +621,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/atlasmanager.h \
 	      resources/atlasresource.cpp \
 	      resources/atlasresource.h \
+	      resources/attack.h \
 	      resources/db/avatardb.cpp \
 	      resources/db/avatardb.h \
 	      resources/beingcommon.cpp \

@@ -61,6 +61,7 @@
 #include "net/pethandler.h"
 #include "net/playerhandler.h"
 
+#include "resources/attack.h"
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
 

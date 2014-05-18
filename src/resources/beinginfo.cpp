@@ -25,6 +25,8 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "resources/attack.h"
+
 #include "resources/map/blockmask.h"
 
 #include "utils/delete2.h"

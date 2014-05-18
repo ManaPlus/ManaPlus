@@ -36,34 +36,7 @@
 
 #include <map>
 
-struct Attack final
-{
-    std::string mAction;
-    std::string mSkyAction;
-    std::string mWaterAction;
-    int mEffectId;
-    int mHitEffectId;
-    int mCriticalHitEffectId;
-    int mMissEffectId;
-    std::string mMissileParticle;
-
-    Attack(const std::string &action, const std::string &skyAction,
-           const std::string &waterAction, const int effectId,
-           const int hitEffectId, const int criticalHitEffectId,
-           const int missEffectId, const std::string &missileParticle) :
-        mAction(action),
-        mSkyAction(skyAction),
-        mWaterAction(waterAction),
-        mEffectId(effectId),
-        mHitEffectId(hitEffectId),
-        mCriticalHitEffectId(criticalHitEffectId),
-        mMissEffectId(missEffectId),
-        mMissileParticle(missileParticle)
-    {
-    }
-
-    A_DELETE_COPY(Attack)
-};
+struct Attack;
 
 typedef std::map<int, Attack*> Attacks;
 
