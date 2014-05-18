@@ -915,6 +915,8 @@ void ChatWindow::attributeChanged(const int id,
                                   const int oldVal,
                                   const int newVal)
 {
+    if (!mShowBattleEvents)
+        return;
     switch (id)
     {
         case Attributes::EXP:
