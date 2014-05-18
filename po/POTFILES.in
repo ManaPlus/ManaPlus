@@ -11,6 +11,8 @@ src/dyetool/dyemain.cpp
 src/game.cpp
 src/gui/models/colorlistmodel.h
 src/gui/models/colormodel.cpp
+src/gui/models/fontsizechoicelistmodel.h
+src/gui/models/langlistmodel.h
 src/gui/models/magicschoolmodel.h
 src/gui/models/playerrelationlistmodel.h
 src/gui/models/sortlistmodelbuy.h
@@ -18,6 +20,7 @@ src/gui/models/sortlistmodelinv.h
 src/gui/models/targettypemodel.h
 src/gui/models/updatetypemodel.h
 src/gui/popups/beingpopup.cpp
+src/gui/popups/createpartypopup.h
 src/gui/popups/itempopup.cpp
 src/gui/popups/popupmenu.cpp
 src/gui/sdlinput.cpp
@@ -31,6 +34,7 @@ src/gui/widgets/setupitem.cpp
 src/gui/widgets/skillinfo.cpp
 src/gui/widgets/tabs/battletab.cpp
 src/gui/widgets/tabs/chattab.cpp
+src/gui/widgets/tabs/debugwindowtabs.cpp
 src/gui/widgets/tabs/gmtab.cpp
 src/gui/widgets/tabs/guildchattab.cpp
 src/gui/widgets/tabs/langtab.cpp
@@ -48,6 +52,15 @@ src/gui/widgets/tabs/setup_theme.cpp
 src/gui/widgets/tabs/setup_touch.cpp
 src/gui/widgets/tabs/setup_video.cpp
 src/gui/widgets/tabs/setup_visual.cpp
+src/gui/widgets/tabs/socialattacktab.h
+src/gui/widgets/tabs/socialfriendstab.h
+src/gui/widgets/tabs/socialguildtab2.h
+src/gui/widgets/tabs/socialguildtab.h
+src/gui/widgets/tabs/socialnavigationtab.h
+src/gui/widgets/tabs/socialpartytab.h
+src/gui/widgets/tabs/socialpickuptab.h
+src/gui/widgets/tabs/socialplayerstab.h
+src/gui/widgets/tabs/socialtabbase.h
 src/gui/widgets/tabs/tradetab.cpp
 src/gui/windowmenu.cpp
 src/gui/windows/botcheckerwindow.cpp
@@ -56,6 +69,7 @@ src/gui/windows/buyselldialog.cpp
 src/gui/windows/changeemaildialog.cpp
 src/gui/windows/changepassworddialog.cpp
 src/gui/windows/charcreatedialog.cpp
+src/gui/windows/chardeleteconfirm.h
 src/gui/windows/charselectdialog.cpp
 src/gui/windows/chatwindow.cpp
 src/gui/windows/confirmdialog.cpp
