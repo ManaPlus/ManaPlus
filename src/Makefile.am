@@ -75,6 +75,7 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      resources/image.h \
 	      resources/imagehelper.cpp \
 	      resources/imagehelper.h \
+	      resources/imagerect.h \
 	      resources/imageset.cpp \
 	      resources/imageset.h \
 	      resources/imagewriter.cpp \

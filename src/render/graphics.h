@@ -76,6 +76,8 @@
 
 #include "gui/cliprect.h"
 
+#include "resources/imagerect.h"
+
 #ifdef USE_SDL2
 #include <SDL_render.h>
 #endif
@@ -101,50 +103,6 @@ struct SDL_Window;
 
 static const int defaultScreenWidth = 800;
 static const int defaultScreenHeight = 600;
-
-/**
- * 9 images defining a rectangle. 4 corners, 4 sides and a middle area. The
- * topology is as follows:
- *
- * <pre>
- *  !-----!-----------------!-----!
- *  !  0  !        1        !  2  !
- *  !-----!-----------------!-----!
- *  !  3  !        4        !  5  !
- *  !-----!-----------------!-----!
- *  !  6  !        7        !  8  !
- *  !-----!-----------------!-----!
- * </pre>
- *
- * Sections 0, 2, 6 and 8 will remain as is. 1, 3, 4, 5 and 7 will be
- * repeated to fit the size of the widget.
- */
-class ImageRect final
-{
-    public:
-        ImageRect()
-        {
-            for (int f = 0; f < 9; f ++)
-                grid[f] = nullptr;
-        }
-
-        A_DELETE_COPY(ImageRect)
-
-        enum ImagePosition
-        {
-            UPPER_LEFT = 0,
-            UPPER_CENTER = 1,
-            UPPER_RIGHT = 2,
-            LEFT = 3,
-            CENTER = 4,
-            RIGHT = 5,
-            LOWER_LEFT = 6,
-            LOWER_CENTER = 7,
-            LOWER_RIGHT = 8
-        };
-
-        Image *grid[9];
-};
 
 /**
  * A central point of control for graphics.

@@ -536,6 +536,7 @@ SET(SRCS
     resources/image.h
     resources/imagehelper.cpp
     resources/imagehelper.h
+    resources/imagerect.h
     resources/imageset.h
     resources/imageset.cpp
     resources/imagewriter.cpp
