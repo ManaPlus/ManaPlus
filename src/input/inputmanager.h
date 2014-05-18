@@ -33,33 +33,6 @@ class Setup_Input;
 
 struct KeyData;
 
-enum KeyCondition
-{
-    COND_DEFAULT = 1,                         // default condition
-    COND_ENABLED = 2,                         // keyboard must be enabled
-    COND_NOINPUT = 4,                         // input items must be unfocused
-    COND_NOAWAY = 8,                          // player not in away mode
-    COND_NOSETUP = 16,                        // setup window is hidde
-    COND_VALIDSPEED = 32,                     // valid speed
-    COND_NOMODAL = 64,                        // modal windows inactive
-    COND_NONPCINPUT = 128,                    // npc input field inactive
-    COND_EMODS = 256,                         // game modifiers enabled
-    COND_NOTARGET = 512,                      // no target/untarget keys
-                                              // pressed
-    COND_NOFOLLOW = 1024,                     // follow mode disabled
-    COND_INGAME = 2048,                       // game must be started
-    COND_NOBUYSELL = 4096,                    // no active buy or sell dialogs
-    COND_NONPCDIALOG = 8192,                  // no active npc dialog or
-                                              // dialog almost closed
-    COND_NOTALKING = 16384,                   // player have no opened
-                                              // dialogs what prevent moving
-    COND_SHORTCUT = 2 + 4 + 16 + 512 + 2048,  // flags for shortcut keys
-    COND_SHORTCUT0 = 2 + 4 + 16 + 512,        // flags for shortcut keys
-    COND_GAME = 2 + 4 + 8 + 16 + 64 + 2048,   // main game key
-    COND_GAME2 = 2 + 8 + 16 + 64 + 2048,
-    COND_ARROWKEYS = 2 + 8 + 16 + 64 + 2048 + 4096 + 16384
-};
-
 class InputManager final
 {
     public:

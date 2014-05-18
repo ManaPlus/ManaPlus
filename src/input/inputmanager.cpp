@@ -617,53 +617,53 @@ void InputManager::updateConditionMask()
 {
     mMask = 1;
     if (keyboard.isEnabled())
-        mMask |= COND_ENABLED;
+        mMask |= InputCondition::ENABLED;
     if ((!chatWindow || !chatWindow->isInputFocused()) &&
         !NpcDialog::isAnyInputFocused() &&
         !InventoryWindow::isAnyInputFocused() &&
         (!tradeWindow || !tradeWindow->isInpupFocused()))
     {
-        mMask |= COND_NOINPUT;
+        mMask |= InputCondition::NOINPUT;
     }
 
     if (!BuyDialog::isActive() && !SellDialog::isActive())
-        mMask |= COND_NOBUYSELL;
+        mMask |= InputCondition::NOBUYSELL;
 
     if (!player_node || !player_node->getAway())
-        mMask |= COND_NOAWAY;
+        mMask |= InputCondition::NOAWAY;
 
     if (!setupWindow || !setupWindow->isWindowVisible())
-        mMask |= COND_NOSETUP;
+        mMask |= InputCondition::NOSETUP;
 
     if (Game::instance() && Game::instance()->getValidSpeed())
-        mMask |= COND_VALIDSPEED;
+        mMask |= InputCondition::VALIDSPEED;
 
     if (gui && !gui->getFocusHandler()->getModalFocused())
-        mMask |= COND_NOMODAL;
+        mMask |= InputCondition::NOMODAL;
 
     const NpcDialog *const dialog = NpcDialog::getActive();
     if (!dialog || !dialog->isTextInputFocused())
-        mMask |= COND_NONPCINPUT;
+        mMask |= InputCondition::NONPCINPUT;
     if (!dialog || dialog->isCloseState())
     {
-        mMask |= COND_NONPCDIALOG;
+        mMask |= InputCondition::NONPCDIALOG;
         if (!InventoryWindow::isStorageActive())
-            mMask |= COND_NOTALKING;
+            mMask |= InputCondition::NOTALKING;
     }
 
     if (!player_node || !player_node->getDisableGameModifiers())
-        mMask |= COND_EMODS;
+        mMask |= InputCondition::EMODS;
 
     if (!isActionActive0(Input::KEY_STOP_ATTACK)
         && !isActionActive0(Input::KEY_UNTARGET))
     {
-        mMask |= COND_NOTARGET;
+        mMask |= InputCondition::NOTARGET;
     }
     if (Game::instance())
-        mMask |= COND_INGAME;
+        mMask |= InputCondition::INGAME;
 
     if (!player_node || player_node->getFollow().empty())
-        mMask |= COND_NOFOLLOW;
+        mMask |= InputCondition::NOFOLLOW;
 }
 
 bool InputManager::checkKey(const KeyData *const key) const

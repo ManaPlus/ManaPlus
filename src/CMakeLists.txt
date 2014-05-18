@@ -751,6 +751,7 @@ SET(SRCS
     spellshortcut.h
     textcommand.cpp
     textcommand.h
+    input/inputcondition.h
     input/inputmanager.cpp
     input/inputmanager.h
     input/inputtype.h
