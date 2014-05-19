@@ -196,7 +196,7 @@ const Image *CompoundSprite::getImage() const
     return mImage;
 }
 
-bool CompoundSprite::setSpriteDirection(const SpriteDirection direction)
+bool CompoundSprite::setSpriteDirection(const SpriteDirection::Type direction)
 {
     bool ret = false;
     FOR_EACH (SpriteIterator, it, mSprites)

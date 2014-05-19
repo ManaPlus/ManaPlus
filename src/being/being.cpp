@@ -154,7 +154,7 @@ Being::Being(const int id,
     mSubType(0xFFFF),
     mDirection(BeingDirection::DOWN),
     mDirectionDelayed(0),
-    mSpriteDirection(DIRECTION_DOWN),
+    mSpriteDirection(SpriteDirection::DOWN),
     mShowName(false),
     mIsGM(false),
     mType(type),
@@ -1177,17 +1177,17 @@ void Being::setAction(const BeingAction::Action &action, const int attackId)
                     int rotation;
                     switch (mSpriteDirection)
                     {
-                        case DIRECTION_DOWN:
+                        case SpriteDirection::DOWN:
                         default:
                             rotation = 0;
                             break;
-                        case DIRECTION_LEFT:
+                        case SpriteDirection::LEFT:
                             rotation = 90;
                             break;
-                        case DIRECTION_UP:
+                        case SpriteDirection::UP:
                             rotation = 180;
                             break;
-                        case DIRECTION_RIGHT:
+                        case SpriteDirection::RIGHT:
                             rotation = 270;
                             break;
                     }
@@ -1262,32 +1262,32 @@ void Being::setDirection(const uint8_t direction)
     if (!mFaceDirection)
         mFaceDirection = direction;
 
-    SpriteDirection dir;
+    SpriteDirection::Type dir;
     if (mFaceDirection & BeingDirection::UP)
     {
         if (mFaceDirection & BeingDirection::LEFT)
-            dir = DIRECTION_UPLEFT;
+            dir = SpriteDirection::UPLEFT;
         else if (mFaceDirection & BeingDirection::RIGHT)
-            dir = DIRECTION_UPRIGHT;
+            dir = SpriteDirection::UPRIGHT;
         else
-            dir = DIRECTION_UP;
+            dir = SpriteDirection::UP;
     }
     else if (mFaceDirection & BeingDirection::DOWN)
     {
         if (mFaceDirection & BeingDirection::LEFT)
-            dir = DIRECTION_DOWNLEFT;
+            dir = SpriteDirection::DOWNLEFT;
         else if (mFaceDirection & BeingDirection::RIGHT)
-            dir = DIRECTION_DOWNRIGHT;
+            dir = SpriteDirection::DOWNRIGHT;
         else
-            dir = DIRECTION_DOWN;
+            dir = SpriteDirection::DOWN;
     }
     else if (mFaceDirection & BeingDirection::RIGHT)
     {
-        dir = DIRECTION_RIGHT;
+        dir = SpriteDirection::RIGHT;
     }
     else
     {
-        dir = DIRECTION_LEFT;
+        dir = SpriteDirection::LEFT;
     }
     mSpriteDirection = static_cast<uint8_t>(dir);
 
@@ -2992,8 +2992,8 @@ void Being::setEmote(const uint8_t emotion, const int emote_time)
         if (mEmotionSprite)
         {
             mEmotionSprite->play(mSpriteAction);
-            mEmotionSprite->setSpriteDirection(static_cast<SpriteDirection>(
-                mSpriteDirection));
+            mEmotionSprite->setSpriteDirection(
+                static_cast<SpriteDirection::Type>(mSpriteDirection));
         }
         else
         {

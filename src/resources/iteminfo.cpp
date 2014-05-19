@@ -249,11 +249,11 @@ const SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(const int direction)
     SpriteToItemMap *const spMap = mSpriteToItemReplaceMap[direction];
     if (spMap)
         return spMap;
-    if (direction == DIRECTION_UPLEFT || direction == DIRECTION_UPRIGHT)
-        return mSpriteToItemReplaceMap[DIRECTION_UP];
+    if (direction == SpriteDirection::UPLEFT || direction == SpriteDirection::UPRIGHT)
+        return mSpriteToItemReplaceMap[SpriteDirection::UP];
 
-    if (direction == DIRECTION_DOWNLEFT || direction == DIRECTION_DOWNRIGHT)
-        return mSpriteToItemReplaceMap[DIRECTION_DOWN];
+    if (direction == SpriteDirection::DOWNLEFT || direction == SpriteDirection::DOWNRIGHT)
+        return mSpriteToItemReplaceMap[SpriteDirection::DOWN];
 
     return nullptr;
 }
@@ -276,16 +276,16 @@ void ItemInfo::setSpriteOrder(int *const ptr,
         }
         case -2:
         {
-            ptr[DIRECTION_DOWN] = n;
-            ptr[DIRECTION_DOWNLEFT] = n;
-            ptr[DIRECTION_DOWNRIGHT] = n;
+            ptr[SpriteDirection::DOWN] = n;
+            ptr[SpriteDirection::DOWNLEFT] = n;
+            ptr[SpriteDirection::DOWNRIGHT] = n;
             return;
         }
         case -3:
         {
-            ptr[DIRECTION_UP] = n;
-            ptr[DIRECTION_UPLEFT] = n;
-            ptr[DIRECTION_UPRIGHT] = n;
+            ptr[SpriteDirection::UP] = n;
+            ptr[SpriteDirection::UPLEFT] = n;
+            ptr[SpriteDirection::UPRIGHT] = n;
             return;
         }
         default:
@@ -294,19 +294,19 @@ void ItemInfo::setSpriteOrder(int *const ptr,
     if (direction < 0 || direction >= 9)
         return;
 
-    if (direction == DIRECTION_UP)
+    if (direction == SpriteDirection::UP)
     {
-        if (ptr[DIRECTION_UPLEFT] == def)
-            ptr[DIRECTION_UPLEFT] = n;
-        if (ptr[DIRECTION_UPRIGHT] == def)
-            ptr[DIRECTION_UPRIGHT] = n;
+        if (ptr[SpriteDirection::UPLEFT] == def)
+            ptr[SpriteDirection::UPLEFT] = n;
+        if (ptr[SpriteDirection::UPRIGHT] == def)
+            ptr[SpriteDirection::UPRIGHT] = n;
     }
-    else if (direction == DIRECTION_DOWN)
+    else if (direction == SpriteDirection::DOWN)
     {
-        if (ptr[DIRECTION_DOWNLEFT] == def)
-            ptr[DIRECTION_DOWNLEFT] = n;
-        if (ptr[DIRECTION_DOWNRIGHT] == def)
-            ptr[DIRECTION_DOWNRIGHT] = n;
+        if (ptr[SpriteDirection::DOWNLEFT] == def)
+            ptr[SpriteDirection::DOWNLEFT] = n;
+        if (ptr[SpriteDirection::DOWNRIGHT] == def)
+            ptr[SpriteDirection::DOWNRIGHT] = n;
     }
     ptr[direction] = n;
 }

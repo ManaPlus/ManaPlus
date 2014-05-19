@@ -43,10 +43,10 @@ class Action final
 
         ~Action();
 
-        void setAnimation(const SpriteDirection direction,
+        void setAnimation(const SpriteDirection::Type direction,
                           Animation *const animation) noexcept;
 
-        const Animation *getAnimation(SpriteDirection direction) const
+        const Animation *getAnimation(SpriteDirection::Type direction) const
                                       noexcept A_WARN_UNUSED;
 
         unsigned getNumber() const noexcept A_WARN_UNUSED

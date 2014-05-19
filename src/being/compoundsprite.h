@@ -65,7 +65,7 @@ public:
 
     virtual const Image *getImage() const override final A_WARN_UNUSED;
 
-    virtual bool setSpriteDirection(const SpriteDirection direction)
+    virtual bool setSpriteDirection(const SpriteDirection::Type direction)
                                     override final;
 
     int getNumberOfLayers() const A_WARN_UNUSED;

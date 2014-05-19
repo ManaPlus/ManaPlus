@@ -281,9 +281,9 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
 
     const std::string directionName =
         XML::getProperty(animationNode, "direction", "");
-    const SpriteDirection directionType = makeSpriteDirection(directionName);
+    const SpriteDirection::Type directionType = makeSpriteDirection(directionName);
 
-    if (directionType == DIRECTION_INVALID)
+    if (directionType == SpriteDirection::INVALID)
     {
         logger->log("Warning: Unknown direction \"%s\" used in %s",
                 directionName.c_str(), getIdPath().c_str());
@@ -462,28 +462,29 @@ SpriteDef::~SpriteDef()
     mImageSets.clear();
 }
 
-SpriteDirection SpriteDef::makeSpriteDirection(const std::string &direction)
+SpriteDirection::Type SpriteDef::makeSpriteDirection(const std::string
+                                                     &direction)
 {
     if (direction.empty() || direction == "default")
-        return DIRECTION_DEFAULT;
+        return SpriteDirection::DEFAULT;
     else if (direction == "up")
-        return DIRECTION_UP;
+        return SpriteDirection::UP;
     else if (direction == "left")
-        return DIRECTION_LEFT;
+        return SpriteDirection::LEFT;
     else if (direction == "right")
-        return DIRECTION_RIGHT;
+        return SpriteDirection::RIGHT;
     else if (direction == "down")
-        return DIRECTION_DOWN;
+        return SpriteDirection::DOWN;
     else if (direction == "upleft")
-        return DIRECTION_UPLEFT;
+        return SpriteDirection::UPLEFT;
     else if (direction == "upright")
-        return DIRECTION_UPRIGHT;
+        return SpriteDirection::UPRIGHT;
     else if (direction == "downleft")
-        return DIRECTION_DOWNLEFT;
+        return SpriteDirection::DOWNLEFT;
     else if (direction == "downright")
-        return DIRECTION_DOWNRIGHT;
+        return SpriteDirection::DOWNRIGHT;
     else
-        return DIRECTION_INVALID;
+        return SpriteDirection::INVALID;
 }
 
 void SpriteDef::addAction(const unsigned hp, const std::string &name,

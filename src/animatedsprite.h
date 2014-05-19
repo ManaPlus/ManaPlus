@@ -78,7 +78,7 @@ class AnimatedSprite final : public Sprite
 
         const Image* getImage() const A_WARN_UNUSED;
 
-        bool setSpriteDirection(const SpriteDirection direction);
+        bool setSpriteDirection(const SpriteDirection::Type direction);
 
         int getNumberOfLayers() const A_WARN_UNUSED
         { return 1; }
@@ -128,7 +128,7 @@ class AnimatedSprite final : public Sprite
 
         void setDelayLoad(const std::string &filename, const int variant);
 
-        SpriteDirection mDirection;    /**< The sprite direction. */
+        SpriteDirection::Type mDirection;  /**< The sprite direction. */
         int mLastTime;                 /**< The last time update was called. */
 
         unsigned int mFrameIndex;      /**< The index of the current frame. */

@@ -84,7 +84,8 @@ class Sprite
          *
          * @returns true if the sprite changed, false otherwise
          */
-        virtual bool setSpriteDirection(const SpriteDirection direction) = 0;
+        virtual bool setSpriteDirection(const SpriteDirection::Type
+                                        direction) = 0;
 
         /**
          * Sets the alpha value of the animated sprite

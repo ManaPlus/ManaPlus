@@ -690,40 +690,40 @@ int parseDirectionName(const std::string &name)
     if (name == "down")
     {
         if (serverVersion > 0)
-            id = DIRECTION_DOWN;
+            id = SpriteDirection::DOWN;
         else
             id = -2;
     }
     else if (name == "downleft" || name == "leftdown")
     {
-        id = DIRECTION_DOWNLEFT;
+        id = SpriteDirection::DOWNLEFT;
     }
     else if (name == "left")
     {
-        id = DIRECTION_LEFT;
+        id = SpriteDirection::LEFT;
     }
     else if (name == "upleft" || name == "leftup")
     {
-        id = DIRECTION_UPLEFT;
+        id = SpriteDirection::UPLEFT;
     }
     else if (name == "up")
     {
         if (serverVersion > 0)
-            id = DIRECTION_UP;
+            id = SpriteDirection::UP;
         else
             id = -3;
     }
     else if (name == "upright" || name == "rightup")
     {
-        id = DIRECTION_UPRIGHT;
+        id = SpriteDirection::UPRIGHT;
     }
     else if (name == "right")
     {
-        id = DIRECTION_RIGHT;
+        id = SpriteDirection::RIGHT;
     }
     else if (name == "downright" || name == "rightdown")
     {
-        id = DIRECTION_DOWNRIGHT;
+        id = SpriteDirection::DOWNRIGHT;
     }
     else if (name == "downall")
     {
@@ -848,11 +848,11 @@ void loadReplaceSprite(ItemInfo *const itemInfo,
         case -2:
         {
             itemInfo->addReplaceSprite(parseSpriteName(
-                removeSprite), DIRECTION_DOWN);
+                removeSprite), SpriteDirection::DOWN);
             itemInfo->addReplaceSprite(parseSpriteName(
-                removeSprite), DIRECTION_DOWNLEFT);
+                removeSprite), SpriteDirection::DOWNLEFT);
             itemInfo->addReplaceSprite(parseSpriteName(
-                removeSprite), DIRECTION_DOWNRIGHT);
+                removeSprite), SpriteDirection::DOWNRIGHT);
 
             for_each_xml_child_node(itemNode, replaceNode)
             {
@@ -861,17 +861,17 @@ void loadReplaceSprite(ItemInfo *const itemInfo,
                     const int from = XML::getProperty(itemNode, "from", 0);
                     const int to = XML::getProperty(itemNode, "to", 1);
                     std::map<int, int> *mapList = itemInfo->addReplaceSprite(
-                        parseSpriteName(removeSprite), DIRECTION_DOWN);
+                        parseSpriteName(removeSprite), SpriteDirection::DOWN);
                     if (mapList)
                         (*mapList)[from] = to;
 
                     mapList = itemInfo->addReplaceSprite(parseSpriteName(
-                        removeSprite), DIRECTION_DOWNLEFT);
+                        removeSprite), SpriteDirection::DOWNLEFT);
                     if (mapList)
                         (*mapList)[from] = to;
 
                     mapList = itemInfo->addReplaceSprite(parseSpriteName(
-                        removeSprite), DIRECTION_DOWNRIGHT);
+                        removeSprite), SpriteDirection::DOWNRIGHT);
                     if (mapList)
                         (*mapList)[from] = to;
                 }
@@ -881,11 +881,11 @@ void loadReplaceSprite(ItemInfo *const itemInfo,
         case -3:
         {
             itemInfo->addReplaceSprite(parseSpriteName(
-                removeSprite), DIRECTION_UP);
+                removeSprite), SpriteDirection::UP);
             itemInfo->addReplaceSprite(parseSpriteName(
-                removeSprite), DIRECTION_UPLEFT);
+                removeSprite), SpriteDirection::UPLEFT);
             itemInfo->addReplaceSprite(parseSpriteName(
-                removeSprite), DIRECTION_UPRIGHT);
+                removeSprite), SpriteDirection::UPRIGHT);
 
             for_each_xml_child_node(itemNode, replaceNode)
             {
@@ -894,17 +894,17 @@ void loadReplaceSprite(ItemInfo *const itemInfo,
                     const int from = XML::getProperty(itemNode, "from", 0);
                     const int to = XML::getProperty(itemNode, "to", 1);
                     std::map<int, int> *mapList = itemInfo->addReplaceSprite(
-                        parseSpriteName(removeSprite), DIRECTION_UP);
+                        parseSpriteName(removeSprite), SpriteDirection::UP);
                     if (mapList)
                         (*mapList)[from] = to;
 
                     mapList = itemInfo->addReplaceSprite(parseSpriteName(
-                        removeSprite), DIRECTION_UPLEFT);
+                        removeSprite), SpriteDirection::UPLEFT);
                     if (mapList)
                         (*mapList)[from] = to;
 
                     mapList = itemInfo->addReplaceSprite(parseSpriteName(
-                        removeSprite), DIRECTION_UPRIGHT);
+                        removeSprite), SpriteDirection::UPRIGHT);
                     if (mapList)
                         (*mapList)[from] = to;
                 }

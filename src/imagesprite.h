@@ -58,7 +58,7 @@ public:
     const Image* getImage() const A_WARN_UNUSED
     { return mImage; }
 
-    bool setSpriteDirection(const SpriteDirection
+    bool setSpriteDirection(const SpriteDirection::Type
                             direction A_UNUSED) override final
     { return false; }
 

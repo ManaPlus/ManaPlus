@@ -600,6 +600,7 @@ SET(SRCS
     resources/spriteaction.h
     resources/spritedef.h
     resources/spritedef.cpp
+    resources/spritedirection.h
     resources/spritedisplay.h
     resources/spritereference.h
     resources/subimage.cpp

@@ -39,7 +39,7 @@
 bool AnimatedSprite::mEnableCache = false;
 
 AnimatedSprite::AnimatedSprite(SpriteDef *const sprite):
-    mDirection(DIRECTION_DOWN),
+    mDirection(SpriteDirection::DOWN),
     mLastTime(0),
     mFrameIndex(0),
     mFrameTime(0),
@@ -303,7 +303,7 @@ void AnimatedSprite::draw(Graphics *const graphics,
         posX + mFrame->offsetX, posY + mFrame->offsetY);
 }
 
-bool AnimatedSprite::setSpriteDirection(const SpriteDirection direction)
+bool AnimatedSprite::setSpriteDirection(const SpriteDirection::Type direction)
 {
     if (mDirection != direction)
     {

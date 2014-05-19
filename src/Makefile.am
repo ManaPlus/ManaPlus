@@ -708,6 +708,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/spriteaction.h \
 	      resources/spritedef.cpp \
 	      resources/spritedef.h \
+	      resources/spritedirection.h \
 	      resources/subimage.cpp \
 	      resources/subimage.h \
 	      resources/surfaceimagehelper.cpp \

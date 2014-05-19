@@ -39,20 +39,21 @@ Action::~Action()
     delete_all(mAnimations);
 }
 
-const Animation *Action::getAnimation(SpriteDirection direction) const noexcept
+const Animation *Action::getAnimation(SpriteDirection::Type direction)
+                                      const noexcept
 {
     Animations::const_iterator i = mAnimations.find(direction);
 
     if (i == mAnimations.end())
     {
-        if (direction == DIRECTION_UPLEFT || direction == DIRECTION_UPRIGHT)
+        if (direction == SpriteDirection::UPLEFT || direction == SpriteDirection::UPRIGHT)
         {
-            direction = DIRECTION_UP;
+            direction = SpriteDirection::UP;
         }
-        else if (direction == DIRECTION_DOWNLEFT
-                 || direction == DIRECTION_DOWNRIGHT)
+        else if (direction == SpriteDirection::DOWNLEFT
+                 || direction == SpriteDirection::DOWNRIGHT)
         {
-            direction = DIRECTION_DOWN;
+            direction = SpriteDirection::DOWN;
         }
         i = mAnimations.find(direction);
 
@@ -65,7 +66,7 @@ const Animation *Action::getAnimation(SpriteDirection direction) const noexcept
     return (i == mAnimations.end()) ? nullptr : i->second;
 }
 
-void Action::setAnimation(const SpriteDirection direction,
+void Action::setAnimation(const SpriteDirection::Type direction,
                           Animation *const animation) noexcept
 {
     mAnimations[direction] = animation;

@@ -25,6 +25,8 @@
 
 #include "resources/resource.h"
 
+#include "resources/spritedirection.h"
+
 #include "utils/stringvector.h"
 #include "utils/xml.h"
 
@@ -35,20 +37,6 @@
 class Action;
 class Animation;
 class ImageSet;
-
-enum SpriteDirection
-{
-    DIRECTION_DEFAULT = 0,
-    DIRECTION_UP = 1,
-    DIRECTION_DOWN = 2,
-    DIRECTION_LEFT = 3,
-    DIRECTION_RIGHT = 4,
-    DIRECTION_UPLEFT = 5,
-    DIRECTION_UPRIGHT = 6,
-    DIRECTION_DOWNLEFT = 7,
-    DIRECTION_DOWNRIGHT = 8,
-    DIRECTION_INVALID
-};
 
 /**
  * Defines a class to load an animation.
@@ -76,7 +64,7 @@ class SpriteDef final : public Resource
         /**
          * Converts a string into a SpriteDirection enum.
          */
-        static SpriteDirection
+        static SpriteDirection::Type
             makeSpriteDirection(const std::string &direction) A_WARN_UNUSED;
 
         void addAction(const unsigned hp, const std::string &name,
