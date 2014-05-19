@@ -92,8 +92,9 @@
 
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
-#include "resources/surfaceimagehelper.h"
 #include "resources/resourcemanager.h"
+#include "resources/surfaceimagehelper.h"
+#include "resources/spritereference.h"
 
 #include "resources/db/avatardb.h"
 #include "resources/db/chardb.h"

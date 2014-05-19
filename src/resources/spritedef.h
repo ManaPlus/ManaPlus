@@ -36,24 +36,7 @@ class Action;
 class Animation;
 class ImageSet;
 
-struct SpriteReference final
-{
-    static SpriteReference *Empty;
-
-    SpriteReference():
-        sprite(""), variant(0)
-    {}
-
-    SpriteReference(const std::string &sprite0, const int variant0) :
-        sprite(sprite0), variant(variant0)
-    {
-    }
-
-    A_DELETE_COPY(SpriteReference)
-
-    std::string sprite;
-    int variant;
-};
+struct SpriteReference;
 
 struct SpriteDisplay final
 {

@@ -27,6 +27,7 @@
 
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
+#include "resources/spritereference.h"
 
 #include "utils/gettext.h"
 #include "utils/dtor.h"

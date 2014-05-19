@@ -105,6 +105,7 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      resources/updatefile.h \
 	      resources/spritedef.cpp \
 	      resources/spritedef.h \
+	      resources/spritereference.h \
 	      utils/mkdir.cpp \
 	      utils/mkdir.h \
 	      utils/paths.cpp \

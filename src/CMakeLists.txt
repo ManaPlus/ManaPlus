@@ -599,6 +599,7 @@ SET(SRCS
     resources/soundinfo.h
     resources/spritedef.h
     resources/spritedef.cpp
+    resources/spritereference.h
     resources/subimage.cpp
     resources/subimage.h
     resources/surfaceimagehelper.cpp

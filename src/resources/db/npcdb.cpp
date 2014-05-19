@@ -26,6 +26,7 @@
 
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
+#include "resources/spritereference.h"
 
 #include "utils/dtor.h"
 #include "configuration.h"
