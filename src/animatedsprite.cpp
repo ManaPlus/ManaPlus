@@ -30,6 +30,7 @@
 #include "resources/animation.h"
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
+#include "resources/spriteaction.h"
 
 #include "utils/delete2.h"
 

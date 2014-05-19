@@ -32,6 +32,7 @@
 #include "particle/particle.h"
 
 #include "resources/beingcommon.h"
+#include "resources/spriteaction.h"
 
 #include <map>
 

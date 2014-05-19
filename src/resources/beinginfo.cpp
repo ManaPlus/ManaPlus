@@ -26,6 +26,7 @@
 #include "logger.h"
 
 #include "resources/attack.h"
+#include "resources/spriteaction.h"
 #include "resources/spritereference.h"
 
 #include "resources/map/blockmask.h"

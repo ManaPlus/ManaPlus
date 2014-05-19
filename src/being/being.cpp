@@ -64,6 +64,7 @@
 #include "resources/attack.h"
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
+#include "resources/spriteaction.h"
 
 #include "resources/db/avatardb.h"
 #include "resources/db/emotedb.h"

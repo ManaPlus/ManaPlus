@@ -22,6 +22,8 @@
 
 #include "resources/iteminfo.h"
 
+#include "resources/spriteaction.h"
+
 #include "resources/map/mapconsts.h"
 
 #include "resources/db/colordb.h"

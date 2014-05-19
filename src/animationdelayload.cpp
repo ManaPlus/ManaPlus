@@ -23,6 +23,7 @@
 #include "animatedsprite.h"
 
 #include "resources/resourcemanager.h"
+#include "resources/spriteaction.h"
 
 #include "debug.h"
 

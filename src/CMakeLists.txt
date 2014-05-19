@@ -597,6 +597,7 @@ SET(SRCS
     resources/soundeffect.cpp
     resources/soundeffect.h
     resources/soundinfo.h
+    resources/spriteaction.h
     resources/spritedef.h
     resources/spritedef.cpp
     resources/spritedisplay.h

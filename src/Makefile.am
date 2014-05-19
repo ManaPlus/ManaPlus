@@ -705,6 +705,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/soundeffect.cpp \
 	      resources/soundeffect.h \
 	      resources/soundinfo.h \
+	      resources/spriteaction.h \
 	      resources/spritedef.cpp \
 	      resources/spritedef.h \
 	      resources/subimage.cpp \
