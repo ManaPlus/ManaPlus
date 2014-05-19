@@ -30,7 +30,6 @@
 #include "render/mgl.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/normalopenglgraphics.h"
-#include "render/renderers.h"
 #include "render/safeopenglgraphics.h"
 
 #include "resources/dye.h"

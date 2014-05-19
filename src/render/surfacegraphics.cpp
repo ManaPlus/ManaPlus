@@ -25,6 +25,7 @@
 #include "main.h"
 
 #include "resources/image.h"
+#include "resources/imagerect.h"
 #include "resources/surfaceimagehelper.h"
 
 #include "debug.h"

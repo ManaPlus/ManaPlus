@@ -41,7 +41,6 @@
 #include "resources/mapitemtype.h"
 
 #include "resources/map/map.h"
-#include "resources/map/mapitem.h"
 
 #include "debug.h"
 

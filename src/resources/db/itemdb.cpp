@@ -29,7 +29,10 @@
 
 #include "resources/beingcommon.h"
 #include "resources/iteminfo.h"
+#include "resources/spritedef.h"
 #include "resources/spritereference.h"
+
+#include "resources/db/itemdbstat.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"

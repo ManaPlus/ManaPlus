@@ -25,13 +25,16 @@
 
 #include "utils/stringvector.h"
 
-#include "resources/db/itemdbstat.h"
-
 #include <map>
 
 #include "localconsts.h"
 
 class ItemInfo;
+
+namespace ItemDB
+{
+    struct Stat;
+}
 
 /**
  * Item information database.

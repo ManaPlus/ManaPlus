@@ -78,6 +78,7 @@
 #include "gui/popups/popupmenu.h"
 
 #include "resources/image.h"
+#include "resources/imagerect.h"
 
 #include "utils/copynpaste.h"
 #include "utils/delete2.h"

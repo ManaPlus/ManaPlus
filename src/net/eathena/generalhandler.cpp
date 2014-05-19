@@ -56,6 +56,8 @@
 #include "net/eathena/tradehandler.h"
 #include "net/eathena/skillhandler.h"
 
+#include "resources/db/itemdbstat.h"
+
 #include "utils/gettext.h"
 
 #include "debug.h"

@@ -41,6 +41,6 @@ namespace ItemSoundEvent
         UNEQUIP,
         USE
     };
-}
+}  // namespace ItemSoundEvent
 
 #endif  // RESOURCES_ITEMSOUNDEVENT_H

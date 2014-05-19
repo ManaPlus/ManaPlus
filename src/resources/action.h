@@ -23,7 +23,7 @@
 #ifndef RESOURCES_ACTION_H
 #define RESOURCES_ACTION_H
 
-#include "resources/spritedef.h"
+#include "resources/spritedirection.h"
 
 #include <map>
 

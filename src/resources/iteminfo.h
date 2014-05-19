@@ -28,7 +28,6 @@
 #include "resources/cursor.h"
 #include "resources/itemtype.h"
 #include "resources/soundinfo.h"
-#include "resources/spritedef.h"
 #include "resources/spritedisplay.h"
 
 #include <map>

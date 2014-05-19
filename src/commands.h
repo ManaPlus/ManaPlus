@@ -24,7 +24,6 @@
 #define COMMANDS_H
 
 #include "input/inputaction.h"
-#include "input/keydata.h"
 
 #include <string>
 

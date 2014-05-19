@@ -29,7 +29,6 @@
 #include "events/keyevent.h"
 
 #include "input/inputaction.h"
-#include "input/keydata.h"
 
 #include "utils/stringutils.h"
 #include "debug.h"

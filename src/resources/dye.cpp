@@ -26,11 +26,8 @@
 
 #include "resources/dyepalette.h"
 
-#include "resources/db/palettedb.h"
-
 #include "utils/delete2.h"
 
-#include <cmath>
 #include <sstream>
 
 #include <SDL_endian.h>

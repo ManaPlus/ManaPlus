@@ -34,6 +34,7 @@
 #include "render/mgl.h"
 
 #include "resources/image.h"
+#include "resources/imagerect.h"
 #include "resources/openglimagehelper.h"
 
 #include "utils/sdlcheckutils.h"

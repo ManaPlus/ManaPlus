@@ -41,7 +41,6 @@
 
 #include "resources/db/mapdb.h"
 
-#include "resources/map/mapitem.h"
 #include "resources/map/tileanimation.h"
 
 #include "utils/base64.h"
@@ -428,8 +427,9 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
                     }
                     else if (objType == "SPAWN")
                     {
-//                      map->addPortal(_("Spawn: ") + objName, MapItemType::PORTAL,
-//                                     objX, objY, objW, objH);
+//                      map->addPortal(_("Spawn: ") + objName,
+//                            MapItemType::PORTAL,
+//                            objX, objY, objW, objH);
                     }
                     else if (objType == "MUSIC")
                     {

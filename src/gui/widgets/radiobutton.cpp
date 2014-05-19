@@ -68,9 +68,9 @@
 #include "client.h"
 
 #include "input/inputaction.h"
-#include "input/keydata.h"
 
 #include "resources/image.h"
+#include "resources/imagerect.h"
 
 #include "gui/gui.h"
 #include "gui/skin.h"

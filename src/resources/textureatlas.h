@@ -29,6 +29,8 @@
 
 #include <SDL.h>
 
+#include "localconsts.h"
+
 class AtlasResource;
 class Image;
 class Resource;

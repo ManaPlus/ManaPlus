@@ -756,8 +756,11 @@ void Being::handleAttack(Being *const victim, const int damage,
             if (!weaponId)
                 weaponId = -100 - mSubType;
             const ItemInfo &info = ItemDB::get(weaponId);
-            playSfx(info.getSound((damage > 0) ?
-                ItemSoundEvent::HIT : ItemSoundEvent::MISS), victim, true, mX, mY);
+            playSfx(info.getSound(
+                (damage > 0) ? ItemSoundEvent::HIT : ItemSoundEvent::MISS),
+                victim,
+                true,
+                mX, mY);
         }
     }
     else
@@ -1209,7 +1212,10 @@ void Being::setAction(const BeingAction::Action &action, const int attackId)
             currentAction = getDeadAction();
             if (mInfo)
             {
-                playSfx(mInfo->getSound(ItemSoundEvent::DIE), this, false, mX, mY);
+                playSfx(mInfo->getSound(ItemSoundEvent::DIE),
+                    this,
+                    false,
+                    mX, mY);
                 if (mType == ActorType::MONSTER || mType == ActorType::NPC)
                     mYDiff = mInfo->getDeadSortOffsetY();
             }

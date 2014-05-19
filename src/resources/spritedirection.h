@@ -38,6 +38,6 @@ namespace SpriteDirection
         DOWNRIGHT = 8,
         INVALID
     };
-}
+}  // namespace SpriteDirection
 
 #endif  // RESOURCES_SPRITEDIRECTION_H

@@ -78,7 +78,6 @@
 #include "resources/map/speciallayer.h"
 
 #include "listeners/awaylistener.h"
-#include "listeners/updatestatuslistener.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"

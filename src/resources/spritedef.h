@@ -27,10 +27,8 @@
 
 #include "resources/spritedirection.h"
 
-#include "utils/stringvector.h"
 #include "utils/xml.h"
 
-#include <list>
 #include <map>
 #include <set>
 

@@ -27,6 +27,8 @@
 
 #include "listeners/mouselistener.h"
 
+#include "resources/imagerect.h"
+
 #include "localconsts.h"
 
 class Being;

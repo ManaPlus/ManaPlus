@@ -82,6 +82,6 @@ namespace MouseEventType
         DRAGGED,
         RELEASED2 = 100
     };
-}  // namespace
+}  // namespace MouseEventType
 
 #endif  // EVENTS_MOUSEEVENTTYPE_H

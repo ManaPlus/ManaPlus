@@ -58,6 +58,8 @@
 #include "net/tmwa/skillhandler.h"
 #include "net/tmwa/questhandler.h"
 
+#include "resources/db/itemdbstat.h"
+
 #include "utils/gettext.h"
 
 #include "debug.h"

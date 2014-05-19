@@ -29,6 +29,7 @@
 #include "graphicsvertexes.h"
 
 #include "resources/image.h"
+#include "resources/imagerect.h"
 #include "resources/openglimagehelper.h"
 
 #include "debug.h"

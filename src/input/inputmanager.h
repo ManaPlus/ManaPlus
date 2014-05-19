@@ -23,7 +23,8 @@
 
 #include "input/inputaction.h"
 #include "input/keyfunction.h"
-#include "input/keydata.h"
+
+#include "events/inputevent.h"
 
 #include <string>
 #include <map>

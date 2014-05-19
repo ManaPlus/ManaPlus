@@ -27,7 +27,6 @@
 #include "events/keyevent.h"
 
 #include "input/inputaction.h"
-#include "input/keydata.h"
 
 #include "gui/windows/okdialog.h"
 
@@ -44,6 +43,7 @@
 #include "resources/iteminfo.h"
 
 #include "resources/db/chardb.h"
+#include "resources/db/colordb.h"
 #include "resources/db/itemdb.h"
 
 #include "utils/gettext.h"

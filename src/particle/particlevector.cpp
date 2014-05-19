@@ -23,8 +23,6 @@
 #include "particle/particle.h"
 #include "particle/particlevector.h"
 
-#include "utils/delete2.h"
-
 #include "debug.h"
 
 ParticleVector::ParticleVector(ParticleContainer *const parent,

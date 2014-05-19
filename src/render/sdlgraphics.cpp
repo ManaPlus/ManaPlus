@@ -34,6 +34,7 @@
 #include "utils/sdlpixel.h"
 
 #include "resources/image.h"
+#include "resources/imagerect.h"
 
 #include "debug.h"
 

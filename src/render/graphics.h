@@ -72,11 +72,9 @@
 
 #include "gui/color.h"
 
-#include "render/renderers.h"
-
 #include "gui/cliprect.h"
 
-#include "resources/imagerect.h"
+#include "render/rendertype.h"
 
 #ifdef USE_SDL2
 #include <SDL_render.h>
@@ -97,6 +95,7 @@
 
 class Image;
 class ImageCollection;
+class ImageRect;
 class ImageVertexes;
 
 struct SDL_Window;

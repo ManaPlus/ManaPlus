@@ -54,6 +54,6 @@ namespace ItemSlot
         //   indicates the chosen projectile.
         PROJECTILE_SLOT = 10
     };
-}
+}  // namespace ItemSlot
 
 #endif  // RESOURCES_ITEMSLOT_H

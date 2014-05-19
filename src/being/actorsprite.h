@@ -22,10 +22,6 @@
 #ifndef BEING_ACTORSPRITE_H
 #define BEING_ACTORSPRITE_H
 
-#include "localconsts.h"
-
-#include "resources/spritedisplay.h"
-
 #include "resources/map/blocktype.h"
 #include "resources/map/mapconsts.h"
 
@@ -35,7 +31,6 @@
 #include "being/targetcursorsize.h"
 #include "being/targetcursortype.h"
 
-#include "particle/particlecontainer.h"
 #include "particle/particlelist.h"
 #include "particle/particlevector.h"
 
@@ -47,6 +42,8 @@
 class AnimatedSprite;
 class StatusEffect;
 class ActorSpriteListener;
+
+struct SpriteDisplay;
 
 class ActorSprite : public CompoundSprite, public Actor
 {

@@ -26,10 +26,11 @@
 
 #include "gui/widgets/popup.h"
 
-#include "resources/iteminfo.h"
+#include "resources/itemtype.h"
 
 class Icon;
 class Item;
+class ItemInfo;
 class Label;
 class TextBox;
 

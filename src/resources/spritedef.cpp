@@ -281,7 +281,8 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
 
     const std::string directionName =
         XML::getProperty(animationNode, "direction", "");
-    const SpriteDirection::Type directionType = makeSpriteDirection(directionName);
+    const SpriteDirection::Type directionType
+        = makeSpriteDirection(directionName);
 
     if (directionType == SpriteDirection::INVALID)
     {

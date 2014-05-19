@@ -30,9 +30,9 @@
 #include "gui/skin.h"
 #include "gui/themeinfo.h"
 
-#include "resources/dye.h"
 #include "resources/dyepalette.h"
 #include "resources/image.h"
+#include "resources/imagerect.h"
 #include "resources/resourcemanager.h"
 
 #include "utils/dtor.h"

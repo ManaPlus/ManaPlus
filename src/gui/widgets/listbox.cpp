@@ -68,7 +68,6 @@
 #include "client.h"
 
 #include "input/inputaction.h"
-#include "input/keydata.h"
 
 #include "listeners/selectionlistener.h"
 

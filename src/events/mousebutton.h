@@ -77,6 +77,6 @@ namespace MouseButton
         RIGHT,
         MIDDLE
     };
-}
+}  // namespace MouseButton
 
 #endif  // EVENTS_MOUSEBUTTON_H

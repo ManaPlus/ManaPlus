@@ -23,6 +23,8 @@
 
 #include "avatar.h"
 
+#include "utils/stringutils.h"
+
 #include "localconsts.h"
 
 class SortFriendsFunctor final

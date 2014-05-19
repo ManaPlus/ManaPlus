@@ -28,16 +28,18 @@
 #include "being/targetcursorsize.h"
 
 #include "resources/soundinfo.h"
-#include "resources/spritedef.h"
 #include "resources/spritedisplay.h"
-
-#include "resources/db/colordb.h"
 
 #include "resources/map/blocktype.h"
 
 #include <map>
 
 struct Attack;
+
+namespace ColorDB
+{
+    class ItemColor;
+}
 
 typedef std::map<int, Attack*> Attacks;
 

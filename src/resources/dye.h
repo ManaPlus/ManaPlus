@@ -23,10 +23,7 @@
 #ifndef RESOURCES_DYE_H
 #define RESOURCES_DYE_H
 
-#include "resources/dyecolor.h"
-
 #include <string>
-#include <vector>
 
 #include "localconsts.h"
 

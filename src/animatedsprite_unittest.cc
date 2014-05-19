@@ -27,6 +27,7 @@
 #include "resources/animation.h"
 #include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
+#include "resources/spriteaction.h"
 
 #include "gtest/gtest.h"
 

@@ -46,7 +46,8 @@ const Animation *Action::getAnimation(SpriteDirection::Type direction)
 
     if (i == mAnimations.end())
     {
-        if (direction == SpriteDirection::UPLEFT || direction == SpriteDirection::UPRIGHT)
+        if (direction == SpriteDirection::UPLEFT
+            || direction == SpriteDirection::UPRIGHT)
         {
             direction = SpriteDirection::UP;
         }

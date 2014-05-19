@@ -23,6 +23,7 @@
 #include "resources/iteminfo.h"
 
 #include "resources/spriteaction.h"
+#include "resources/spritedef.h"
 
 #include "resources/map/mapconsts.h"
 
@@ -249,11 +250,17 @@ const SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(const int direction)
     SpriteToItemMap *const spMap = mSpriteToItemReplaceMap[direction];
     if (spMap)
         return spMap;
-    if (direction == SpriteDirection::UPLEFT || direction == SpriteDirection::UPRIGHT)
+    if (direction == SpriteDirection::UPLEFT
+        || direction == SpriteDirection::UPRIGHT)
+    {
         return mSpriteToItemReplaceMap[SpriteDirection::UP];
+    }
 
-    if (direction == SpriteDirection::DOWNLEFT || direction == SpriteDirection::DOWNRIGHT)
+    if (direction == SpriteDirection::DOWNLEFT
+        || direction == SpriteDirection::DOWNRIGHT)
+    {
         return mSpriteToItemReplaceMap[SpriteDirection::DOWN];
+    }
 
     return nullptr;
 }

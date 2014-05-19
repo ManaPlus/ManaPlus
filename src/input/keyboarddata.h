@@ -30,6 +30,7 @@
 #include "input/inputcondition.h"
 #include "input/inputmanager.h"
 #include "input/inputtype.h"
+#include "input/keydata.h"
 
 #include "utils/gettext.h"
 

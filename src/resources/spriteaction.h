@@ -23,6 +23,8 @@
 #ifndef RESOURCES_SPRITEACTION_H
 #define RESOURCES_SPRITEACTION_H
 
+#include <string>
+
 /*
  * Remember those are the main action.
  * Action subtypes, e.g.: "attack_bow" are to be passed by items.xml after

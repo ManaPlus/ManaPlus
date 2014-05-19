@@ -27,8 +27,7 @@
 #include "client.h"
 
 #include "resources/image.h"
-
-#include "render/graphics.h"
+#include "resources/imagerect.h"
 
 #include "utils/delete2.h"
 

@@ -24,7 +24,6 @@
 #include "listeners/configlistener.h"
 
 #include "input/inputaction.h"
-#include "input/keydata.h"
 
 #include "gui/rect.h"
 

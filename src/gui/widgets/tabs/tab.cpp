@@ -75,6 +75,7 @@
 #include "gui/widgets/tabbedarea.h"
 
 #include "resources/image.h"
+#include "resources/imagerect.h"
 
 #include "utils/delete2.h"
 

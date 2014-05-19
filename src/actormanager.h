@@ -27,6 +27,8 @@
 
 #include "listeners/configlistener.h"
 
+#include "utils/stringvector.h"
+
 #include "localconsts.h"
 
 class Being;

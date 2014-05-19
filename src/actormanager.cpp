@@ -317,7 +317,8 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
         return nullptr;
 
     const bool targetDead = mTargetDeadPlayers;
-    const bool modActive = inputManager.isActionActive(InputAction::STOP_ATTACK);
+    const bool modActive = inputManager.isActionActive(
+        InputAction::STOP_ATTACK);
 
     if (mExtMouseTargeting)
     {
@@ -427,7 +428,8 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
 
     const int xtol = mapTileSize / 2;
     const int uptol = mapTileSize;
-    const bool modActive = inputManager.isActionActive(InputAction::STOP_ATTACK);
+    const bool modActive = inputManager.isActionActive(
+        InputAction::STOP_ATTACK);
 
     for_actors
     {
@@ -875,7 +877,8 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
 
     const bool filtered = config.getBoolValue("enableAttackFilter")
         && type == ActorType::MONSTER;
-    const bool modActive = inputManager.isActionActive(InputAction::STOP_ATTACK);
+    const bool modActive = inputManager.isActionActive(
+        InputAction::STOP_ATTACK);
 
     bool ignoreDefault = false;
     if (filtered)

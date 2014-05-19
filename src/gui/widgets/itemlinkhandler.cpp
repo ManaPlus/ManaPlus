@@ -37,8 +37,6 @@
 
 #include "listeners/openurllistener.h"
 
-#include "input/mouseinput.h"
-
 #include <string>
 
 #include "debug.h"

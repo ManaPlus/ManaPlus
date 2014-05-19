@@ -33,7 +33,7 @@
 
 #include "listeners/configlistener.h"
 
-#include "render/renderers.h"
+#include "render/rendertype.h"
 
 #include <string>
 #include <vector>

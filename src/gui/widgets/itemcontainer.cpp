@@ -48,6 +48,7 @@
 #include "utils/gettext.h"
 
 #include "resources/image.h"
+#include "resources/iteminfo.h"
 
 #include "listeners/selectionlistener.h"
 

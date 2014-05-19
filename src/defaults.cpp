@@ -27,7 +27,6 @@
 #include "being/beingspeech.h"
 
 #include "input/inputaction.h"
-#include "input/keydata.h"
 
 #include "render/graphics.h"
 

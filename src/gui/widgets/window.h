@@ -73,6 +73,8 @@
 
 #include "gui/widgets/basiccontainer2.h"
 
+#include "resources/imagerect.h"
+
 #include "localconsts.h"
 
 class ContainerPlacer;

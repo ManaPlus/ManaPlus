@@ -27,6 +27,8 @@
 
 #include "listeners/widgetlistener.h"
 
+#include "resources/imagerect.h"
+
 #include <string>
 
 #include "localconsts.h"

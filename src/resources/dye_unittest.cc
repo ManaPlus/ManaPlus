@@ -20,6 +20,8 @@
 
 #include "resources/dye.h"
 
+#include "resources/dyepalette.h"
+
 #include "gtest/gtest.h"
 
 #include "debug.h"

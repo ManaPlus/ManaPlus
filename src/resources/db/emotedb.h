@@ -22,14 +22,9 @@
 #ifndef RESOURCES_DB_EMOTEDB_H
 #define RESOURCES_DB_EMOTEDB_H
 
-#include "utils/stringvector.h"
-
-#include <list>
 #include <map>
 
 #include "localconsts.h"
-
-class AnimatedSprite;
 
 struct EmoteInfo;
 struct EmoteSprite;

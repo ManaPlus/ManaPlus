@@ -34,10 +34,12 @@
 #include "input/inputmanager.h"
 
 #include "render/graphics.h"
+#include "render/renderers.h"
 
 #include "gui/theme.h"
 
 #include "resources/image.h"
+#include "resources/imagerect.h"
 
 #include "utils/delete2.h"
 

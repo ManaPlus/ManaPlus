@@ -29,6 +29,8 @@
 #include "resources/spriteaction.h"
 #include "resources/spritereference.h"
 
+#include "resources/db/colordb.h"
+
 #include "resources/map/blockmask.h"
 
 #include "utils/delete2.h"

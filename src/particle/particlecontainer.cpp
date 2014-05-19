@@ -22,8 +22,6 @@
 
 #include "particle/particlecontainer.h"
 
-#include "particle/particle.h"
-
 #include "utils/delete2.h"
 
 #include "debug.h"

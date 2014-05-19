@@ -28,7 +28,6 @@
 #include "events/keyevent.h"
 
 #include "input/inputaction.h"
-#include "input/keydata.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"

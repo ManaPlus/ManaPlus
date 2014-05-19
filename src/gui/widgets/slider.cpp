@@ -71,11 +71,11 @@
 #include "events/keyevent.h"
 
 #include "input/inputaction.h"
-#include "input/keydata.h"
 
 #include "gui/gui.h"
 
 #include "resources/image.h"
+#include "resources/imagerect.h"
 
 #include "utils/delete2.h"
 
