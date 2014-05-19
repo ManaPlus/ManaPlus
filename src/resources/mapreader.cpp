@@ -36,6 +36,7 @@
 #include "resources/animation.h"
 #include "resources/beingcommon.h"
 #include "resources/image.h"
+#include "resources/mapitemtype.h"
 #include "resources/resourcemanager.h"
 
 #include "resources/db/mapdb.h"
@@ -422,17 +423,17 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
                             map->addParticleEffect(warpPath,
                                 objX, objY, objW, objH);
                         }
-                        map->addPortal(objName, MapItem::PORTAL,
+                        map->addPortal(objName, MapItemType::PORTAL,
                                        objX, objY, objW, objH);
                     }
                     else if (objType == "SPAWN")
                     {
-//                      map->addPortal(_("Spawn: ") + objName, MapItem::PORTAL,
+//                      map->addPortal(_("Spawn: ") + objName, MapItemType::PORTAL,
 //                                     objX, objY, objW, objH);
                     }
                     else if (objType == "MUSIC")
                     {
-                        map->addRange(objName, MapItem::MUSIC,
+                        map->addRange(objName, MapItemType::MUSIC,
                             objX, objY, objW, objH);
                     }
                     else

@@ -20,6 +20,8 @@
 
 #include "resources/map/speciallayer.h"
 
+#include "resources/mapitemtype.h"
+
 #include "resources/map/mapconsts.h"
 #include "resources/map/mapitem.h"
 
@@ -96,9 +98,9 @@ void SpecialLayer::addRoad(const Path &road)
         const Position &pos = (*i);
         MapItem *const item = getTile(pos.x, pos.y);
         if (!item)
-            setTile(pos.x, pos.y, new MapItem(MapItem::ROAD));
+            setTile(pos.x, pos.y, new MapItem(MapItemType::ROAD));
         else
-            item->setType(MapItem::ROAD);
+            item->setType(MapItemType::ROAD);
     }
 }
 
@@ -111,7 +113,7 @@ void SpecialLayer::clean() const
     {
         MapItem *const item = mTiles[f];
         if (item)
-            item->setType(MapItem::EMPTY);
+            item->setType(MapItemType::EMPTY);
     }
 }
 

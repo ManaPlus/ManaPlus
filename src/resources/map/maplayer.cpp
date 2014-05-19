@@ -34,6 +34,7 @@
 #include "render/graphics.h"
 
 #include "resources/image.h"
+#include "resources/mapitemtype.h"
 
 #include "resources/map/mapitem.h"
 #include "resources/map/maprowvertexes.h"
@@ -488,13 +489,13 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                         if (item1 || item2)
                         {
                             const int px2 = px1 + (x1 * mapTileSize);
-                            if (item1 && item1->mType != MapItem::EMPTY)
+                            if (item1 && item1->mType != MapItemType::EMPTY)
                             {
                                 item1->draw(graphics, px2, py1,
                                     mapTileSize, mapTileSize);
                             }
 
-                            if (item2 && item2->mType != MapItem::EMPTY)
+                            if (item2 && item2->mType != MapItemType::EMPTY)
                             {
                                 item2->draw(graphics, px2, py1,
                                     mapTileSize, mapTileSize);

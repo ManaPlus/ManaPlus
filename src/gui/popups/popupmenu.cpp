@@ -76,6 +76,7 @@
 #include "net/tradehandler.h"
 
 #include "resources/iteminfo.h"
+#include "resources/mapitemtype.h"
 #include "resources/skillconsts.h"
 
 #include "resources/map/map.h"
@@ -1356,11 +1357,11 @@ void PopupMenu::handleLink(const std::string &link,
                 if (specialLayer)
                 {
                     const bool isHome = (mMapItem->getType()
-                        == static_cast<int>(MapItem::HOME));
+                        == static_cast<int>(MapItemType::HOME));
                     const int x = static_cast<const int>(mMapItem->getX());
                     const int y = static_cast<const int>(mMapItem->getY());
                     specialLayer->setTile(x, y,
-                        static_cast<int>(MapItem::EMPTY));
+                        static_cast<int>(MapItemType::EMPTY));
                     if (socialWindow)
                         socialWindow->removePortal(x, y);
                     if (isHome && player_node)
@@ -2284,7 +2285,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
     }
     switch (type)
     {
-        case MapItem::ATTACK:
+        case MapItemType::ATTACK:
         {
             const int idx = actorManager->getAttackMobIndex(name);
             const int size = actorManager->getAttackMobsSize();
@@ -2302,7 +2303,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
             }
             break;
         }
-        case MapItem::PRIORITY:
+        case MapItemType::PRIORITY:
         {
             const int idx = actorManager->
                 getPriorityAttackMobIndex(name);
@@ -2321,7 +2322,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
             }
             break;
         }
-        case MapItem::IGNORE_:
+        case MapItemType::IGNORE_:
             break;
         default:
             break;

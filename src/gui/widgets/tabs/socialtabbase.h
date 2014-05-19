@@ -23,6 +23,8 @@
 
 #include "actormanager.h"
 
+#include "resources/mapitemtype.h"
+
 #include "resources/map/mapitem.h"
 
 #define addAvatars(mob, str, type) \
@@ -30,7 +32,7 @@
     ava = new Avatar(str);\
     ava->setOnline(false);\
     ava->setLevel(-1);\
-    ava->setType(MapItem::SEPARATOR);\
+    ava->setType(MapItemType::SEPARATOR);\
     ava->setX(0);\
     ava->setY(0);\
     avatars->push_back(ava);\
@@ -53,7 +55,7 @@
         ava = new Avatar(name);\
         ava->setOnline(true);\
         ava->setLevel(level);\
-        ava->setType(MapItem::type);\
+        ava->setType(MapItemType::type);\
         ava->setX(0);\
         ava->setY(0);\
         avatars->push_back(ava);\

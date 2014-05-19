@@ -38,6 +38,7 @@
 #include "gui/windows/chatwindow.h"
 
 #include "resources/image.h"
+#include "resources/mapitemtype.h"
 
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"
@@ -128,7 +129,7 @@ void AvatarListBox::draw(Graphics *graphics)
         if (!a)
             continue;
 
-        if (a->getType() != MapItem::SEPARATOR)
+        if (a->getType() != MapItemType::SEPARATOR)
         {
             // Draw online status
             const Image *const icon = a->getOnline()
@@ -286,7 +287,7 @@ void AvatarListBox::draw(Graphics *graphics)
         // Draw Name
         if (a->getDisplayBold())
         {
-            if (a->getType() == MapItem::SEPARATOR)
+            if (a->getType() == MapItemType::SEPARATOR)
             {
                 boldFont->drawString(graphics, text,
                     mImagePadding + mPadding, y + mPadding);
@@ -299,7 +300,7 @@ void AvatarListBox::draw(Graphics *graphics)
         }
         else
         {
-            if (a->getType() == MapItem::SEPARATOR)
+            if (a->getType() == MapItemType::SEPARATOR)
             {
                 font->drawString(graphics, text, mImagePadding + mPadding,
                     y + mPadding);
@@ -363,7 +364,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
         switch (ava->getType())
         {
             // AVATAR_PLAYER
-            case MapItem::EMPTY:
+            case MapItemType::EMPTY:
             {
                 const Avatar *const avatar = model->getAvatarAt(selected);
                 if (avatar)
@@ -377,9 +378,9 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 }
                 break;
             }
-            case MapItem::ATTACK:
-            case MapItem::PRIORITY:
-            case MapItem::IGNORE_:
+            case MapItemType::ATTACK:
+            case MapItemType::PRIORITY:
+            case MapItemType::IGNORE_:
             {
                 std::string name;
                 if (model->getAvatarAt(selected)->getLevel() == 0)
@@ -391,8 +392,8 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                     model->getAvatarAt(selected)->getType());
                 break;
             }
-            case MapItem::PICKUP:
-            case MapItem::NOPICKUP:
+            case MapItemType::PICKUP:
+            case MapItemType::NOPICKUP:
             {
                 std::string name;
                 if (model->getAvatarAt(selected)->getLevel() == 0)

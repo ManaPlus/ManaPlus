@@ -26,6 +26,7 @@
 #include "gui/fonts/font.h"
 
 #include "resources/image.h"
+#include "resources/mapitemtype.h"
 #include "resources/resourcemanager.h"
 
 #include "render/graphics.h"
@@ -36,11 +37,11 @@ MapItem::MapItem():
     mImage(nullptr),
     mComment(),
     mName(),
-    mType(EMPTY),
+    mType(MapItemType::EMPTY),
     mX(-1),
     mY(-1)
 {
-    setType(EMPTY);
+    setType(MapItemType::EMPTY);
 }
 
 MapItem::MapItem(const int type):
@@ -95,16 +96,16 @@ void MapItem::setType(const int type)
 
     switch (type)
     {
-        case ARROW_UP:
+        case MapItemType::ARROW_UP:
             name = "graphics/sprites/arrow_up.png";
             break;
-        case ARROW_DOWN:
+        case MapItemType::ARROW_DOWN:
             name = "graphics/sprites/arrow_down.png";
             break;
-        case ARROW_LEFT:
+        case MapItemType::ARROW_LEFT:
             name = "graphics/sprites/arrow_left.png";
             break;
-        case ARROW_RIGHT:
+        case MapItemType::ARROW_RIGHT:
             name = "graphics/sprites/arrow_right.png";
             break;
         default:
@@ -137,14 +138,14 @@ void MapItem::draw(Graphics *const graphics, const int x, const int y,
 
     switch (mType)
     {
-        case ROAD:
-        case CROSS:
+        case MapItemType::ROAD:
+        case MapItemType::CROSS:
             graphics->setColor(userPalette->getColorWithAlpha(
                                UserPalette::ROAD_POINT));
             graphics->fillRectangle(Rect(x + dx / 3, y + dy / 3,
                                     dx / 3, dy / 3));
             break;
-        case HOME:
+        case MapItemType::HOME:
         {
             graphics->setColor(userPalette->getColorWithAlpha(
                                UserPalette::HOME_PLACE));
@@ -157,7 +158,9 @@ void MapItem::draw(Graphics *const graphics, const int x, const int y,
         default:
             break;
     }
-    if (!mName.empty() && mType != PORTAL && mType != EMPTY)
+    if (!mName.empty()
+        && mType != MapItemType::PORTAL
+        && mType != MapItemType::EMPTY)
     {
         Font *const font = gui->getFont();
         if (font)

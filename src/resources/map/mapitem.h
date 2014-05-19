@@ -34,26 +34,6 @@ class MapItem final
         friend class Map;
         friend class MapLayer;
 
-        enum ItemType
-        {
-            EMPTY = 0,
-            HOME = 1,
-            ROAD = 2,
-            CROSS = 3,
-            ARROW_UP = 4,
-            ARROW_DOWN = 5,
-            ARROW_LEFT = 6,
-            ARROW_RIGHT = 7,
-            PORTAL = 8,
-            MUSIC = 9,
-            ATTACK = 10,
-            PRIORITY = 11,
-            IGNORE_ = 12,
-            PICKUP = 13,
-            NOPICKUP = 14,
-            SEPARATOR = 15
-        };
-
         MapItem();
 
         explicit MapItem(const int type);

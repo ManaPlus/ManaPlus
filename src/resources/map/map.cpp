@@ -43,6 +43,7 @@
 
 #include "resources/ambientlayer.h"
 #include "resources/image.h"
+#include "resources/mapitemtype.h"
 #include "resources/resourcemanager.h"
 #include "resources/subimage.h"
 
@@ -1031,18 +1032,18 @@ void Map::addExtraLayer()
 
                 if (comment.empty())
                 {
-                    if (type < MapItem::ARROW_UP
-                        || type > MapItem::ARROW_RIGHT)
+                    if (type < MapItemType::ARROW_UP
+                        || type > MapItemType::ARROW_RIGHT)
                     {
                         comment = "unknown";
                     }
                 }
-                if (type == MapItem::PORTAL)
+                if (type == MapItemType::PORTAL)
                 {
                     updatePortalTile(comment, type, atoi(x.c_str()),
                                      atoi(y.c_str()), false);
                 }
-                else if (type == MapItem::HOME)
+                else if (type == MapItemType::HOME)
                 {
                     updatePortalTile(comment, type, atoi(x.c_str()),
                                      atoi(y.c_str()));
@@ -1092,8 +1093,8 @@ void Map::saveExtraLayer() const
         for (int y = 0; y < height; y ++)
         {
             const MapItem *const item = mSpecialLayer->getTile(x, y);
-            if (item && item->mType != MapItem::EMPTY
-                && item->mType != MapItem::HOME)
+            if (item && item->mType != MapItemType::EMPTY
+                && item->mType != MapItemType::HOME)
             {
                 mapFile << x << " " << y << " "
                     << static_cast<int>(item->mType) << " "

@@ -28,6 +28,8 @@
 #include "sdlshared.h"
 #include "textmanager.h"
 
+#include "resources/mapitemtype.h"
+
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"
 #include "resources/map/maptype.h"
@@ -928,7 +930,7 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
                 / mMap->getTileHeight();
 
             mHoverSign = specialLayer->getTile(mouseTileX, mouseTileY);
-            if (mHoverSign && mHoverSign->getType() != MapItem::EMPTY)
+            if (mHoverSign && mHoverSign->getType() != MapItemType::EMPTY)
             {
                 if (!mHoverSign->getComment().empty())
                 {

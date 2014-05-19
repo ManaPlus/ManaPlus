@@ -68,6 +68,7 @@
 
 #include "resources/iteminfo.h"
 #include "resources/itemslot.h"
+#include "resources/mapitemtype.h"
 
 #include "resources/db/emotedb.h"
 #include "resources/db/weaponsdb.h"
@@ -2810,7 +2811,7 @@ void LocalPlayer::setHome()
         if (iter != mHomes.end() && mX == static_cast<int>(pos.x)
             && mY == static_cast<int>(pos.y))
         {
-            mMap->updatePortalTile("", MapItem::EMPTY,
+            mMap->updatePortalTile("", MapItemType::EMPTY,
                 static_cast<int>(pos.x), static_cast<int>(pos.y));
 
             mHomes.erase(key);
@@ -2822,13 +2823,13 @@ void LocalPlayer::setHome()
             if (iter != mHomes.end())
             {
                 specialLayer->setTile(static_cast<int>(pos.x),
-                    static_cast<int>(pos.y), MapItem::EMPTY);
+                    static_cast<int>(pos.y), MapItemType::EMPTY);
             }
 
             pos.x = static_cast<float>(mX);
             pos.y = static_cast<float>(mY);
             mHomes[key] = pos;
-            mMap->updatePortalTile("home", MapItem::HOME,
+            mMap->updatePortalTile("home", MapItemType::HOME,
                                    mX, mY);
             socialWindow->addPortal(mX, mY);
         }
@@ -2853,24 +2854,24 @@ void LocalPlayer::setHome()
             saveHomes();
         }
 
-        if (!mapItem || mapItem->getType() == MapItem::EMPTY)
+        if (!mapItem || mapItem->getType() == MapItemType::EMPTY)
         {
             if (mDirection & BeingDirection::UP)
-                type = MapItem::ARROW_UP;
+                type = MapItemType::ARROW_UP;
             else if (mDirection & BeingDirection::LEFT)
-                type = MapItem::ARROW_LEFT;
+                type = MapItemType::ARROW_LEFT;
             else if (mDirection & BeingDirection::DOWN)
-                type = MapItem::ARROW_DOWN;
+                type = MapItemType::ARROW_DOWN;
             else if (mDirection & BeingDirection::RIGHT)
-                type = MapItem::ARROW_RIGHT;
+                type = MapItemType::ARROW_RIGHT;
         }
         else
         {
-            type = MapItem::EMPTY;
+            type = MapItemType::EMPTY;
         }
         mMap->updatePortalTile("", type, mX, mY);
 
-        if (type != MapItem::EMPTY)
+        if (type != MapItemType::EMPTY)
         {
             socialWindow->addPortal(mX, mY);
             mapItem = specialLayer->getTile(mX, mY);
@@ -2883,7 +2884,7 @@ void LocalPlayer::setHome()
         }
         else
         {
-            specialLayer->setTile(mX, mY, MapItem::EMPTY);
+            specialLayer->setTile(mX, mY, MapItemType::EMPTY);
             socialWindow->removePortal(mX, mY);
         }
     }
@@ -3138,7 +3139,7 @@ void LocalPlayer::updateCoords()
         if (mMap)
         {
             std::string str = mMap->getObjectData(mX, mY,
-                MapItem::MUSIC);
+                MapItemType::MUSIC);
             if (str.empty())
                 str = mMap->getMusicFile();
             if (str != soundManager.getCurrentMusicFile())
@@ -3592,16 +3593,16 @@ void LocalPlayer::setRealPos(const int x, const int y)
 
         if ((mCrossX || mCrossY)
             && layer->getTile(mCrossX, mCrossY)
-            && layer->getTile(mCrossX, mCrossY)->getType() == MapItem::CROSS)
+            && layer->getTile(mCrossX, mCrossY)->getType() == MapItemType::CROSS)
         {
-            layer->setTile(mCrossX, mCrossY, MapItem::EMPTY);
+            layer->setTile(mCrossX, mCrossY, MapItemType::EMPTY);
         }
 
         if (mShowServerPos && (!layer->getTile(x, y)
-            || layer->getTile(x, y)->getType() == MapItem::EMPTY))
+            || layer->getTile(x, y)->getType() == MapItemType::EMPTY))
         {
             if (getTileX() != x && getTileY() != y)
-                layer->setTile(x, y, MapItem::CROSS);
+                layer->setTile(x, y, MapItemType::CROSS);
         }
 
         mCrossX = x;
@@ -3657,7 +3658,7 @@ void LocalPlayer::updateNavigateList()
             const Vector &pos = mHomes[(*iter).first];
             if (pos.x && pos.y)
             {
-                mMap->addPortalTile("home", MapItem::HOME,
+                mMap->addPortalTile("home", MapItemType::HOME,
                     static_cast<int>(pos.x), static_cast<int>(pos.y));
             }
         }
