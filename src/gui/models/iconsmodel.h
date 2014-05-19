@@ -29,6 +29,8 @@
 
 #include "resources/db/itemdb.h"
 
+#include <list>
+
 #include "localconsts.h"
 
 class IconsModel final : public ListModel

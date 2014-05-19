@@ -31,6 +31,8 @@
 
 #include "utils/gettext.h"
 
+#include <list>
+
 #include "localconsts.h"
 
 class ItemsModal final : public ListModel
