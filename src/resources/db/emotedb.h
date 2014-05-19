@@ -23,6 +23,7 @@
 #define RESOURCES_DB_EMOTEDB_H
 
 #include <map>
+#include <string>
 
 #include "localconsts.h"
 

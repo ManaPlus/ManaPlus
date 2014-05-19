@@ -27,6 +27,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 class ChatTab;
 
 extern ChatTab *localChatTab;
