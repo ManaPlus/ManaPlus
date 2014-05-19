@@ -611,6 +611,7 @@ SET(SRCS
     resources/updatefile.h
     resources/wallpaper.cpp
     resources/wallpaper.h
+    resources/wallpaperdata.h
     utils/translation/podict.cpp
     utils/translation/podict.h
     utils/translation/poparser.cpp

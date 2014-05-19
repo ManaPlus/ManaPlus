@@ -25,6 +25,7 @@
 #include "configuration.h"
 
 #include "resources/resourcemanager.h"
+#include "resources/wallpaperdata.h"
 
 #include "utils/physfstools.h"
 
@@ -33,19 +34,6 @@
 #include <ctime>
 
 #include "debug.h"
-
-struct WallpaperData
-{
-    WallpaperData() :
-        filename(),
-        width(0),
-        height(0)
-    {
-    }
-    std::string filename;
-    int width;
-    int height;
-};
 
 static bool wallpaperCompare(const WallpaperData &a, const WallpaperData &b);
 

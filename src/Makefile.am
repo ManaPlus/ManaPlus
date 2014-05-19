@@ -715,6 +715,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/surfaceimagehelper.h \
 	      resources/wallpaper.cpp \
 	      resources/wallpaper.h \
+	      resources/wallpaperdata.h \
 	      utils/translation/podict.cpp \
 	      utils/translation/podict.h \
 	      utils/translation/poparser.cpp \
