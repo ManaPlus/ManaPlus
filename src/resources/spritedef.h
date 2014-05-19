@@ -36,26 +36,6 @@ class Action;
 class Animation;
 class ImageSet;
 
-struct SpriteReference;
-
-struct SpriteDisplay final
-{
-    SpriteDisplay() :
-        image(),
-        floor(),
-        sprites(),
-        particles()
-    {
-    }
-
-    std::string image;
-    std::string floor;
-    std::vector<SpriteReference*> sprites;
-    StringVect particles;
-};
-
-typedef std::vector<SpriteReference*>::const_iterator SpriteRefs;
-
 /*
  * Remember those are the main action.
  * Action subtypes, e.g.: "attack_bow" are to be passed by items.xml after

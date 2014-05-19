@@ -24,6 +24,8 @@
 
 #include "localconsts.h"
 
+#include "resources/spritedisplay.h"
+
 #include "resources/map/blocktype.h"
 #include "resources/map/mapconsts.h"
 

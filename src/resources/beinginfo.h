@@ -29,6 +29,7 @@
 
 #include "resources/soundinfo.h"
 #include "resources/spritedef.h"
+#include "resources/spritedisplay.h"
 
 #include "resources/db/colordb.h"
 
