@@ -296,6 +296,14 @@ bool TouchManager::processEvent(const MouseInput &mouseInput)
                         item->funcReleased(event);
                     break;
                 default:
+                case MouseEventType::MOVED:
+                case MouseEventType::WHEEL_MOVED_DOWN:
+                case MouseEventType::WHEEL_MOVED_UP:
+                case MouseEventType::CLICKED:
+                case MouseEventType::ENTERED:
+                case MouseEventType::EXITED:
+                case MouseEventType::DRAGGED:
+                case MouseEventType::RELEASED2:
                     break;
             }
             return true;

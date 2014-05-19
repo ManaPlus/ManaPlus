@@ -999,6 +999,11 @@ void Gui::handleMouseInput()
             case MouseEventType::WHEEL_MOVED_UP:
                 handleMouseWheelMovedUp(mouseInput);
                 break;
+            case MouseEventType::CLICKED:
+            case MouseEventType::ENTERED:
+            case MouseEventType::EXITED:
+            case MouseEventType::DRAGGED:
+            case MouseEventType::RELEASED2:
             default:
                 break;
         }
