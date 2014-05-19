@@ -661,6 +661,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/imagewriter.h \
 	      resources/db/itemdb.cpp \
 	      resources/db/itemdb.h \
+	      resources/db/itemdbstat.h \
 	      resources/iteminfo.h \
 	      resources/iteminfo.cpp \
 	      resources/itemslot.h \

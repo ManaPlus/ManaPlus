@@ -20,46 +20,29 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_DB_ITEMDB_H
-#define RESOURCES_DB_ITEMDB_H
+#ifndef RESOURCES_DB_ITEMDBSTAT_H
+#define RESOURCES_DB_ITEMDBSTAT_H
 
-#include "utils/stringvector.h"
-
-#include "resources/db/itemdbstat.h"
-
-#include <map>
+#include <string>
 
 #include "localconsts.h"
-
-class ItemInfo;
 
 /**
  * Item information database.
  */
 namespace ItemDB
 {
-    void load();
+    struct Stat final
+    {
+        Stat(const std::string &tag0,
+             const std::string &format0) :
+            tag(tag0),
+            format(format0)
+        {}
 
-    void unload();
-
-    void loadXmlFile(const std::string &fileName, int &tagNum);
-
-    const StringVect &getTags();
-
-    bool exists(const int id) A_WARN_UNUSED;
-
-    const ItemInfo &get(const int id) A_WARN_UNUSED;
-    const ItemInfo &get(const std::string &name) A_WARN_UNUSED;
-
-    // Items database
-    typedef std::map<int, ItemInfo*> ItemInfos;
-    typedef std::map<std::string, ItemInfo*> NamedItemInfos;
-
-    const ItemDB::ItemInfos &getItemInfos();
-
-    int getTagId(const std::string &tagName) A_WARN_UNUSED;
-
-    void setStatsList(const std::vector<Stat> &stats);
+        std::string tag;
+        std::string format;
+    };
 }  // namespace ItemDB
 
-#endif  // RESOURCES_DB_ITEMDB_H
+#endif  // RESOURCES_DB_ITEMDBSTAT_H
