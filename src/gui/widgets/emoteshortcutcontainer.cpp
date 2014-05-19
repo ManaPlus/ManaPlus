@@ -33,6 +33,7 @@
 
 #include "gui/popups/textpopup.h"
 
+#include "resources/emotesprite.h"
 #include "resources/image.h"
 
 #include "resources/db/emotedb.h"

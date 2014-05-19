@@ -31,20 +31,7 @@
 
 class AnimatedSprite;
 
-struct EmoteSprite final
-{
-    EmoteSprite() :
-        sprite(nullptr),
-        id(0),
-        name()
-    { }
-
-    A_DELETE_COPY(EmoteSprite)
-
-    const AnimatedSprite *sprite;
-    int id;
-    std::string name;
-};
+struct EmoteSprite;
 
 struct EmoteInfo final
 {

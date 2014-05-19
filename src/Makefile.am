@@ -73,6 +73,7 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      resources/dye.h \
 	      resources/dyepalette.cpp \
 	      resources/dyepalette.h \
+	      resources/emotesprite.h \
 	      resources/image.cpp \
 	      resources/image.h \
 	      resources/imagehelper.cpp \

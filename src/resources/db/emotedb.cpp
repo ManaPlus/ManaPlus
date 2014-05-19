@@ -28,6 +28,7 @@
 #include "configuration.h"
 
 #include "resources/beingcommon.h"
+#include "resources/emotesprite.h"
 
 #include "debug.h"
 
