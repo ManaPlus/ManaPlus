@@ -31,22 +31,8 @@
 
 class AnimatedSprite;
 
+struct EmoteInfo;
 struct EmoteSprite;
-
-struct EmoteInfo final
-{
-    EmoteInfo() :
-        sprites(),
-        particles(),
-        time(400)
-    { }
-
-    A_DELETE_COPY(EmoteInfo)
-
-    std::list<EmoteSprite*> sprites;
-    StringVect particles;
-    int time;
-};
 
 typedef std::map<int, EmoteInfo*> EmoteInfos;
 typedef std::map<int, int> EmoteToEmote;

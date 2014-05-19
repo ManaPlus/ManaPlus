@@ -62,6 +62,7 @@
 #include "net/playerhandler.h"
 
 #include "resources/attack.h"
+#include "resources/emoteinfo.h"
 #include "resources/emotesprite.h"
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"

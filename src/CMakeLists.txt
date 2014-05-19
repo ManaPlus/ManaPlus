@@ -535,6 +535,7 @@ SET(SRCS
     resources/dyecolor.h
     resources/dyepalette.cpp
     resources/dyepalette.h
+    resources/emoteinfo.h
     resources/emotesprite.h
     resources/db/emotedb.cpp
     resources/db/emotedb.h
