@@ -177,7 +177,7 @@ const std::string MapDB::getMapName(const std::string &name)
     return name;
 }
 
-const MapDB::MapInfo *MapDB::getMapAtlas(const std::string &name)
+const MapInfo *MapDB::getMapAtlas(const std::string &name)
 {
     const MapInfoIter it = mInfos.find(name);
     if (it == mInfos.end())

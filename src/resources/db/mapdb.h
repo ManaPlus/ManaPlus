@@ -24,6 +24,8 @@
 
 #include "utils/stringvector.h"
 
+#include "resources/mapinfo.h"
+
 #include <map>
 
 #include "localconsts.h"
@@ -33,18 +35,6 @@
  */
 namespace MapDB
 {
-    struct MapInfo
-    {
-        MapInfo() :
-            atlas(),
-            files(nullptr)
-        {
-        }
-
-        std::string atlas;
-        const StringVect *files;
-    };
-
     /**
      * Loads the map remap data from <code>maps\remap.xml</code>.
      */

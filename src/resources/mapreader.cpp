@@ -326,7 +326,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
 #ifdef USE_OPENGL
     if (graphicsManager.getUseAtlases())
     {
-        const MapDB::MapInfo *const info = MapDB::getMapAtlas(fileName);
+        const MapInfo *const info = MapDB::getMapAtlas(fileName);
         if (info)
         {
             map->setAtlas(resman->getAtlas(
