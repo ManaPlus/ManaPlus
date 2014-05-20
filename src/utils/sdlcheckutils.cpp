@@ -24,6 +24,7 @@
 
 #include "logger.h"
 
+#include "utils/sdlmemoryobject.h"
 #include "utils/stringutils.h"
 
 #include <map>
@@ -35,24 +36,7 @@
 
 #define DEBUG_SURFACE_ALLOCATION 1
 
-struct MemoryObject
-{
-    MemoryObject(const std::string &name, const char *const file,
-                 const unsigned int line) :
-        mName(name),
-        mAddFile(strprintf("%s:%u", file, line)),
-        mRemoveFile(),
-        mCnt(1)
-    {
-    }
-
-    std::string mName;
-    std::string mAddFile;
-    std::string mRemoveFile;
-    int mCnt;
-};
-
-std::map<void*, MemoryObject*> mSurfaces;
+std::map<void*, SDLMemoryObject*> mSurfaces;
 
 static SDL_Surface *addSurface(const char *restrict const name,
                                SDL_Surface *restrict const surface,
@@ -63,11 +47,11 @@ static SDL_Surface *addSurface(const char *restrict const name,
     logger->log("add surface: %s %s:%u %p", name,
         file, line, static_cast<void*>(surface));
 #endif
-    std::map<void*, MemoryObject*>::iterator
+    std::map<void*, SDLMemoryObject*>::iterator
         it = mSurfaces.find(surface);
     if (it != mSurfaces.end())
     {
-        MemoryObject *const obj = (*it).second;
+        SDLMemoryObject *const obj = (*it).second;
         if (obj)
         {   // found some time ago created surface
 #ifdef DEBUG_SURFACE_ALLOCATION
@@ -80,7 +64,7 @@ static SDL_Surface *addSurface(const char *restrict const name,
     }
     else
     {   // creating surface object
-        mSurfaces[surface] = new MemoryObject(name, file, line);
+        mSurfaces[surface] = new SDLMemoryObject(name, file, line);
     }
     return surface;
 }
@@ -93,7 +77,7 @@ static void deleteSurface(const char *restrict const name A_UNUSED,
 #ifdef DEBUG_SURFACE_ALLOCATION
     logger->log("delete surface: %s %s:%u %p", name, file, line, surface);
 #endif
-    std::map<void*, MemoryObject*>::iterator
+    std::map<void*, SDLMemoryObject*>::iterator
         it = mSurfaces.find(surface);
     if (it == mSurfaces.end())
     {
@@ -102,7 +86,7 @@ static void deleteSurface(const char *restrict const name A_UNUSED,
     }
     else
     {
-        MemoryObject *const obj = (*it).second;
+        SDLMemoryObject *const obj = (*it).second;
         if (obj)
         {
             const int cnt = obj->mCnt;

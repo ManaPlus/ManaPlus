@@ -123,6 +123,7 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      utils/sdl2helper.h \
 	      utils/sdlhelper.cpp \
 	      utils/sdlhelper.h \
+	      utils/sdlmemoryobject.h \
 	      utils/stringutils.cpp \
 	      utils/stringutils.h \
 	      utils/timer.cpp \
