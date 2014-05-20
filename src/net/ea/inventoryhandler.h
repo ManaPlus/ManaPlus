@@ -35,6 +35,7 @@
 #include "net/inventoryhandler.h"
 
 #include "net/ea/equipbackend.h"
+#include "net/ea/inventoryitem.h"
 
 #include <vector>
 #include <queue>
@@ -46,32 +47,6 @@ namespace Net
 
 namespace Ea
 {
-
-/**
- * Used to cache storage data until we get size data for it.
- */
-class InventoryItem
-{
-    public:
-        int slot;
-        int id;
-        int quantity;
-        int refine;
-        unsigned char color;
-        bool equip;
-
-        InventoryItem(const int slot0, const int id0, const int quantity0,
-                      const int refine0, const unsigned char color0,
-                      const bool equip0) :
-            slot(slot0),
-            id(id0),
-            quantity(quantity0),
-            refine(refine0),
-            color(color0),
-            equip(equip0)
-        {
-        }
-};
 
 typedef std::vector<InventoryItem> InventoryItems;
 

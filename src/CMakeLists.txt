@@ -484,6 +484,7 @@ SET(SRCS
     net/generalhandler.h
     net/guildhandler.h
     net/inventoryhandler.h
+    net/inventoryitem.h
     net/logindata.h
     net/loginhandler.h
     net/messagehandler.h
