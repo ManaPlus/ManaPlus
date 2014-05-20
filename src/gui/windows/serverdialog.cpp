@@ -680,10 +680,10 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
         config.setValue("MostUsedServerName" + toString(savedServerCount), "");
 }
 
-int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
+int ServerDialog::downloadUpdate(void *ptr, DownloadStatus::Type status,
                                  size_t total, size_t remaining)
 {
-    if (!ptr || status == DOWNLOAD_STATUS_CANCELLED)
+    if (!ptr || status == DownloadStatus::CANCELLED)
         return -1;
 
     ServerDialog *const sd = reinterpret_cast<ServerDialog*>(ptr);
@@ -692,7 +692,7 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
     if (!sd->mDownload)
         return -1;
 
-    if (status == DOWNLOAD_STATUS_COMPLETE)
+    if (status == DownloadStatus::COMPLETE)
     {
         finished = true;
     }

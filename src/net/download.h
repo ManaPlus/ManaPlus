@@ -19,26 +19,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #ifndef NET_DOWNLOAD_H
 #define NET_DOWNLOAD_H
+
+#include "net/downloadstatus.h"
 
 #include <string>
 #include <queue>
 
 #include "localconsts.h"
 
-enum DownloadStatus
-{
-    DOWNLOAD_STATUS_CANCELLED = -3,
-    DOWNLOAD_STATUS_THREAD_ERROR = -2,
-    DOWNLOAD_STATUS_ERROR = -1,
-    DOWNLOAD_STATUS_STARTING = 0,
-    DOWNLOAD_STATUS_IDLE,
-    DOWNLOAD_STATUS_COMPLETE
-};
-
-typedef int (*DownloadUpdate)(void *ptr, DownloadStatus status,
+typedef int (*DownloadUpdate)(void *ptr, DownloadStatus::Type status,
                               size_t total, size_t remaining);
 
 // Matches what CURL expects

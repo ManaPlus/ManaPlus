@@ -456,19 +456,19 @@ void UpdaterWindow::loadPatch()
     mScrollArea->setVerticalScrollAmount(0);
 }
 
-int UpdaterWindow::updateProgress(void *ptr, DownloadStatus status,
+int UpdaterWindow::updateProgress(void *ptr, DownloadStatus::Type status,
                                   size_t dt, size_t dn)
 {
     UpdaterWindow *const uw = reinterpret_cast<UpdaterWindow *>(ptr);
     if (!uw)
         return -1;
 
-    if (status == DOWNLOAD_STATUS_COMPLETE)
+    if (status == DownloadStatus::COMPLETE)
     {
         uw->mDownloadComplete = true;
     }
-    else if (status == DOWNLOAD_STATUS_ERROR ||
-             status == DOWNLOAD_STATUS_CANCELLED)
+    else if (status == DownloadStatus::ERROR ||
+             status == DownloadStatus::CANCELLED)
     {
         if (uw->mDownloadStatus == UPDATE_COMPLETE)
         {   // ignoring error in last state (was UPDATE_PATCH)

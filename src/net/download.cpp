@@ -202,7 +202,7 @@ bool Download::start()
         logger->log1(DOWNLOAD_ERROR_MESSAGE_THREAD);
         if (mError)
             strcpy(mError, DOWNLOAD_ERROR_MESSAGE_THREAD);
-        mUpdateFunction(mPtr, DOWNLOAD_STATUS_THREAD_ERROR, 0, 0);
+        mUpdateFunction(mPtr, DownloadStatus::THREAD_ERROR, 0, 0);
         if (!mIgnoreError)
             return false;
     }
@@ -239,12 +239,12 @@ int Download::downloadProgress(void *clientp, double dltotal, double dlnow,
 
     if (d->mOptions.cancel)
     {
-        return d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_CANCELLED,
+        return d->mUpdateFunction(d->mPtr, DownloadStatus::CANCELLED,
                                   static_cast<size_t>(dltotal),
                                   static_cast<size_t>(dlnow));
     }
 
-    return d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_IDLE,
+    return d->mUpdateFunction(d->mPtr, DownloadStatus::IDLE,
                               static_cast<size_t>(dltotal),
                               static_cast<size_t>(dlnow));
 }
@@ -283,7 +283,7 @@ int Download::downloadThread(void *ptr)
         logger->log_r("selected url: %s", d->mUrl.c_str());
         while (attempts < 3 && !complete && !d->mOptions.cancel)
         {
-            d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_STARTING, 0, 0);
+            d->mUpdateFunction(d->mPtr, DownloadStatus::STARTING, 0, 0);
 
             if (d->mOptions.cancel)
             {
@@ -372,7 +372,7 @@ int Download::downloadThread(void *ptr)
                     if (d->mOptions.cancel)
                         break;
 
-//                    d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_ERROR, 0, 0);
+//                    d->mUpdateFunction(d->mPtr, DownloadStatus::ERROR, 0, 0);
 
                     if (file)
                     {
@@ -495,11 +495,11 @@ int Download::downloadThread(void *ptr)
     }
     else if (!complete || attempts >= 3)
     {
-        d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_ERROR, 0, 0);
+        d->mUpdateFunction(d->mPtr, DownloadStatus::ERROR, 0, 0);
     }
     else
     {
-        d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_COMPLETE, 0, 0);
+        d->mUpdateFunction(d->mPtr, DownloadStatus::COMPLETE, 0, 0);
     }
 
     return 0;

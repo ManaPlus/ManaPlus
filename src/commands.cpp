@@ -1303,15 +1303,15 @@ struct UploadChatInfo
 };
 
 static int uploadUpdate(void *ptr,
-                        DownloadStatus status,
+                        DownloadStatus::Type status,
                         size_t total A_UNUSED,
                         size_t remaining A_UNUSED)
 {
-    if (status == DOWNLOAD_STATUS_IDLE || status == DOWNLOAD_STATUS_STARTING)
+    if (status == DownloadStatus::IDLE || status == DownloadStatus::STARTING)
         return 0;
 
     UploadChatInfo *const info = reinterpret_cast<UploadChatInfo*>(ptr);
-    if (status == DOWNLOAD_STATUS_COMPLETE)
+    if (status == DownloadStatus::COMPLETE)
     {
         ChatTab *const tab = info->tab;
         if (chatWindow && (!tab || chatWindow->isTabPresent(tab)))

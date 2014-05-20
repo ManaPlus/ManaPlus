@@ -155,7 +155,7 @@ private:
     /**
      * A download callback for progress updates.
      */
-    static int updateProgress(void *ptr, DownloadStatus status,
+    static int updateProgress(void *ptr, DownloadStatus::Type status,
                               size_t dt, size_t dn);
 
     /**
