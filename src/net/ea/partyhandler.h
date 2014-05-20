@@ -46,10 +46,12 @@ class PartyHandler : public Net::PartyHandler
 
         void join(const int partyId) const override final;
 
-        Net::PartyShare getShareExperience() const override final A_WARN_UNUSED
+        Net::PartyShare::Type getShareExperience()
+                              const override final A_WARN_UNUSED
         { return mShareExp; }
 
-        Net::PartyShare getShareItems() const override final A_WARN_UNUSED
+        Net::PartyShare::Type getShareItems()
+                              const override final A_WARN_UNUSED
         { return mShareItems; }
 
         static void reload();
@@ -79,8 +81,8 @@ class PartyHandler : public Net::PartyHandler
         virtual void processPartyMessage(Net::MessageIn &msg) const;
 
     protected:
-        Net::PartyShare mShareExp;
-        Net::PartyShare mShareItems;
+        Net::PartyShare::Type mShareExp;
+        Net::PartyShare::Type mShareItems;
 };
 
 extern PartyTab *partyTab;

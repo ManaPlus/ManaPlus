@@ -183,7 +183,7 @@ void PartyHandler::chat(const std::string &text) const
     outMsg.writeString(text, static_cast<int>(text.length()));
 }
 
-void PartyHandler::setShareExperience(const Net::PartyShare share) const
+void PartyHandler::setShareExperience(const Net::PartyShare::Type share) const
 {
     if (share == Net::PartyShare::NOT_POSSIBLE)
         return;
@@ -193,7 +193,7 @@ void PartyHandler::setShareExperience(const Net::PartyShare share) const
     outMsg.writeInt16(static_cast<int16_t>(mShareItems));
 }
 
-void PartyHandler::setShareItems(const Net::PartyShare share) const
+void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
 {
     if (share == Net::PartyShare::NOT_POSSIBLE)
         return;

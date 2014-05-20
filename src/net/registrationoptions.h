@@ -25,13 +25,16 @@
 
 namespace Net
 {
-    enum RegistrationOptions
+    namespace RegistrationOptions
     {
-        Unregister          = 0x1,
-        ChangeEmail         = 0x2,
-        SetEmailOnRegister  = 0x4,
-        SetGenderOnRegister = 0x8
-    };
+        enum
+        {
+            Unregister          = 0x1,
+            ChangeEmail         = 0x2,
+            SetEmailOnRegister  = 0x4,
+            SetGenderOnRegister = 0x8
+        };
+    }
 }  // namespace Net
 
 #endif  // NET_REGISTRATIONOPTIONS_H

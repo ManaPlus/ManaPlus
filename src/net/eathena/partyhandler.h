@@ -59,10 +59,11 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
         void chat(const std::string &text) const override final;
 
-        void setShareExperience(const Net::PartyShare share)
+        void setShareExperience(const Net::PartyShare::Type share)
                                 const override final;
 
-        void setShareItems(const Net::PartyShare share) const override final;
+        void setShareItems(const Net::PartyShare::Type share)
+                           const override final;
 };
 
 }  // namespace EAthena

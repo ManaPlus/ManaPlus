@@ -25,13 +25,16 @@
 
 namespace Net
 {
-    enum PartyShare
+    namespace PartyShare
     {
-        UNKNOWN = -1,
-        NO,
-        YES,
-        NOT_POSSIBLE = 2
-    };
+        enum Type
+        {
+            UNKNOWN = -1,
+            NO,
+            YES,
+            NOT_POSSIBLE = 2
+        };
+    }
 }  // namespace Net
 
 #endif  // NET_PARTYSHARE_H
