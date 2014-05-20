@@ -42,6 +42,7 @@
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
+#include "net/registrationoptions.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -91,7 +92,7 @@ RegisterDialog::RegisterDialog(LoginData *const data) :
 
     int row = 3;
 
-    if (optionalActions & Net::LoginHandler::SetGenderOnRegister)
+    if (optionalActions & Net::RegistrationOptions::SetGenderOnRegister)
     {
         // TRANSLATORS: register dialog. button.
         mMaleButton = new RadioButton(this, _("Male"), "sex", true);
@@ -114,7 +115,7 @@ RegisterDialog::RegisterDialog(LoginData *const data) :
         row++;
     }
 
-    if (optionalActions & Net::LoginHandler::SetEmailOnRegister)
+    if (optionalActions & Net::RegistrationOptions::SetEmailOnRegister)
     {
         // TRANSLATORS: register dialog. label.
         Label *const emailLabel = new Label(this, _("Email:"));

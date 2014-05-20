@@ -498,6 +498,7 @@ SET(SRCS
     net/partyhandler.h
     net/pethandler.h
     net/playerhandler.h
+    net/registrationoptions.h
     net/sdltcpnet.cpp
     net/sdltcpnet.h
     net/serverinfo.h

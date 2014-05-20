@@ -48,6 +48,7 @@
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
+#include "net/registrationoptions.h"
 
 #include "debug.h"
 
@@ -96,7 +97,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     placer(0, 0, mSwitchLoginButton);
 
     int n = 1;
-    if (optionalActions & Net::LoginHandler::Unregister)
+    if (optionalActions & Net::RegistrationOptions::Unregister)
     {
         // TRANSLATORS: char select dialog. button.
         mUnregisterButton = new Button(this, _("Unregister"),
@@ -108,7 +109,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data):
     placer(n, 0, mChangePasswordButton);
     n ++;
 
-    if (optionalActions & Net::LoginHandler::ChangeEmail)
+    if (optionalActions & Net::RegistrationOptions::ChangeEmail)
     {
         // TRANSLATORS: char select dialog. button.
         mChangeEmailButton = new Button(this, _("Change Email"),

@@ -25,6 +25,8 @@
 
 #include "net/loginhandler.h"
 
+#include "net/registrationoptions.h"
+
 #include "net/ea/token.h"
 
 #include <string>
@@ -47,7 +49,7 @@ class LoginHandler : public Net::LoginHandler
         virtual ~LoginHandler();
 
         int supportedOptionalActions() const override A_WARN_UNUSED
-        { return SetGenderOnRegister; }
+        { return Net::RegistrationOptions::SetGenderOnRegister; }
 
         virtual bool isRegistrationEnabled() const
                                            override final A_WARN_UNUSED;

@@ -52,7 +52,7 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
         void disconnect() override final;
 
         int supportedOptionalActions() const override final A_WARN_UNUSED
-        { return SetGenderOnRegister; }
+        { return Net::RegistrationOptions::SetGenderOnRegister; }
 
         unsigned int getMaxPasswordLength() const override final A_WARN_UNUSED
         { return 24; }

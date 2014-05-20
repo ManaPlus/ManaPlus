@@ -25,6 +25,8 @@
 #include "client.h"
 #include "logger.h"
 
+#include "net/registrationoptions.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
@@ -264,8 +266,10 @@ void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
 
 int LoginHandler::supportedOptionalActions() const
 {
-    return serverVersion >= 7 ? SetEmailOnRegister | SetGenderOnRegister
-        : SetGenderOnRegister;
+    return serverVersion >= 7
+        ? Net::RegistrationOptions::SetEmailOnRegister
+        | Net::RegistrationOptions::SetGenderOnRegister
+        : Net::RegistrationOptions::SetGenderOnRegister;
 }
 
 }  // namespace TmwAthena
