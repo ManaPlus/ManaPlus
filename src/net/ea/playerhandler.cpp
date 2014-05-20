@@ -45,6 +45,7 @@
 
 #include "listeners/updatestatuslistener.h"
 #include "listeners/playerdeathlistener.h"
+#include "listeners/weightlistener.h"
 
 #include "net/messagein.h"
 #include "net/net.h"
@@ -53,7 +54,6 @@
 
 #include "debug.h"
 
-extern OkDialog *weightNotice;
 extern int weightNoticeTime;
 
 // Max. distance we are willing to scroll after a teleport;
@@ -62,19 +62,8 @@ static const int MAP_TELEPORT_SCROLL_DISTANCE = 8;
 
 namespace
 {
-    /**
-     * Listener used for handling the overweigth message.
-     */
-    struct WeightListener final : public ActionListener
-    {
-        void action(const ActionEvent &event A_UNUSED)
-        {
-            weightNotice = nullptr;
-        }
-    } weightListener;
-
+    WeightListener weightListener;
     PlayerDeathListener deathListener;
-
 }  // anonymous namespace
 
 namespace Ea

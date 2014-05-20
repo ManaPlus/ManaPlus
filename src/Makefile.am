@@ -204,6 +204,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      listeners/updatestatuslistener.h \
 	      utils/sdlpixel.h \
 	      gui/widgets/widget.h \
+	      listeners/weightlistener.h \
 	      listeners/widgetlistener.h \
 	      listeners/wrongdatanoticelistener.cpp \
 	      listeners/wrongdatanoticelistener.h \
