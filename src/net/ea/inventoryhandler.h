@@ -34,6 +34,8 @@
 
 #include "net/inventoryhandler.h"
 
+#include "net/ea/equipbackend.h"
+
 #include <vector>
 #include <queue>
 
@@ -44,74 +46,6 @@ namespace Net
 
 namespace Ea
 {
-
-class EquipBackend : public Equipment::Backend
-{
-    public:
-        EquipBackend()
-        {
-            memset(mEquipment, -1, sizeof(mEquipment));
-        }
-
-        A_DELETE_COPY(EquipBackend)
-
-        Item *getEquipment(const int index) const override final A_WARN_UNUSED
-        {
-            int invyIndex = mEquipment[index];
-            if (invyIndex == -1)
-                return nullptr;
-
-            const Inventory *const inv = PlayerInfo::getInventory();
-            if (inv)
-                return inv->getItem(invyIndex);
-            else
-                return nullptr;
-        }
-
-        void clear()
-        {
-            Inventory *const inv = PlayerInfo::getInventory();
-            if (!inv)
-                return;
-            for (int i = 0; i < EQUIPMENT_SIZE; i++)
-            {
-                if (mEquipment[i] != -1)
-                {
-                    Item* item = inv->getItem(i);
-                    if (item)
-                        item->setEquipped(false);
-                }
-
-                mEquipment[i] = -1;
-            }
-        }
-
-        void setEquipment(const int index, const int inventoryIndex)
-        {
-            Inventory *const inv = PlayerInfo::getInventory();
-            if (!inv)
-                return;
-
-            // Unequip existing item
-            Item *item = inv->getItem(mEquipment[index]);
-
-            if (item)
-                item->setEquipped(false);
-
-            // not checking index because it must be safe
-            mEquipment[index] = inventoryIndex;
-
-            item = inv->getItem(inventoryIndex);
-            if (item)
-                item->setEquipped(true);
-
-            if (inventoryWindow)
-                inventoryWindow->updateButtons();
-        }
-
-    private:
-        int mEquipment[EQUIPMENT_SIZE];
-};
 
 /**
  * Used to cache storage data until we get size data for it.
