@@ -39,6 +39,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "net/character.h"
+
 #include "debug.h"
 
 CharacterDisplay::CharacterDisplay(const Widget2 *const widget,

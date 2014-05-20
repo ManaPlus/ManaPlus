@@ -473,6 +473,7 @@ SET(SRCS
     gui/windows/worldselectdialog.cpp
     gui/windows/worldselectdialog.h
     net/adminhandler.h
+    net/character.h
     net/charserverhandler.cpp
     net/charserverhandler.h
     net/chathandler.h

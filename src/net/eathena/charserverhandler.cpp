@@ -27,6 +27,7 @@
 
 #include "being/attributes.h"
 
+#include "net/character.h"
 #include "net/logindata.h"
 #include "net/net.h"
 

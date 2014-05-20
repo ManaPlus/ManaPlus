@@ -585,6 +585,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/adminhandler.h \
 	      net/beinghandler.h \
 	      net/buysellhandler.h \
+	      net/character.h \
 	      net/charserverhandler.cpp \
 	      net/charserverhandler.h \
 	      net/chathandler.h \

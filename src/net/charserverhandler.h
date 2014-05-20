@@ -37,29 +37,7 @@ class CharSelectDialog;
 namespace Net
 {
 
-/**
- * A structure to hold information about a character.
- */
-struct Character final
-{
-    Character() :
-        slot(0),
-        dummy(nullptr),
-        data()
-    {
-    }
-
-    A_DELETE_COPY(Character)
-
-    ~Character()
-    {
-        delete2(dummy);
-    }
-
-    int slot;            /**< The index in the list of characters */
-    LocalPlayer *dummy;  /**< A dummy representing this character */
-    PlayerInfoBackend data;
-};
+struct Character;
 
 typedef std::list<Character*> Characters;
 

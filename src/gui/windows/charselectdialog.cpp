@@ -44,6 +44,7 @@
 #include "gui/widgets/characterviewsmall.h"
 #include "gui/widgets/containerplacer.h"
 
+#include "net/character.h"
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
