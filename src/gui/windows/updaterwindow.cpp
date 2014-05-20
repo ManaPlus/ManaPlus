@@ -275,7 +275,7 @@ void UpdaterWindow::enable()
     mPlayButton->setEnabled(true);
     mPlayButton->requestFocus();
 
-    if (mUpdateType & LoginData::Upd_Close)
+    if (mUpdateType & UpdateType::Close)
         client->setState(STATE_LOAD_DATA);
 }
 

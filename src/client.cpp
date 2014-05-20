@@ -1373,7 +1373,7 @@ int Client::gameExec()
                         mOldUpdates = "";
                         UpdaterWindow::loadDirMods(mOptions.dataPath);
                     }
-                    else if (loginData.updateType & LoginData::Upd_Skip)
+                    else if (loginData.updateType & UpdateType::Skip)
                     {
                         mOldUpdates = mLocalDataDir
                             + dirSeparator + mUpdatesDir;

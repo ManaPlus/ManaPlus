@@ -503,6 +503,7 @@ SET(SRCS
     net/serverinfo.h
     net/skillhandler.h
     net/tradehandler.h
+    net/updatetype.h
     net/worldinfo.h
     net/packetcounters.cpp
     net/packetcounters.h

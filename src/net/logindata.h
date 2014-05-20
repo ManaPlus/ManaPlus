@@ -27,6 +27,8 @@
 
 #include "utils/stringvector.h"
 
+#include "net/updatetype.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -54,14 +56,6 @@ class LoginData final
 
         A_DELETE_COPY(LoginData)
 
-        enum UpdateType
-        {
-            Upd_Normal = 0,
-            Upd_Close = 1,
-            Upd_Skip = 2,
-            Upd_Custom = 4
-        };
-
         std::string username;
         std::string password;
         std::string newPassword;
@@ -88,7 +82,7 @@ class LoginData final
             newPassword.clear();
             updateHost.clear();
             updateHosts.clear();
-            updateType = Upd_Normal;
+            updateType = UpdateType::Normal;
             email.clear();
             captchaResponse.clear();
             registerUrl.clear();

@@ -84,7 +84,7 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
     mRegisterButton(new Button(this, _("Register"), "register", this)),
     // TRANSLATORS: login dialog checkbox
     mCustomUpdateHost(new CheckBox(this, _("Custom update host"),
-        mLoginData->updateType & LoginData::Upd_Custom, this, "customhost")),
+        mLoginData->updateType & UpdateType::Custom, this, "customhost")),
     mUpdateHostText(new TextField(this, serverConfig.getValue(
         "customUpdateHost", ""))),
     mUpdateListModel(nullptr),
@@ -129,7 +129,7 @@ LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
 
     mUpdateTypeDropDown->setActionEventId("updatetype");
     mUpdateTypeDropDown->setSelected((mLoginData->updateType
-        | LoginData::Upd_Custom) ^ LoginData::Upd_Custom);
+        | UpdateType::Custom) ^ UpdateType::Custom);
 
     if (!mCustomUpdateHost->isSelected())
         mUpdateHostText->setVisible(false);
@@ -277,7 +277,7 @@ void LoginDialog::prepareUpdate()
     if (mCustomUpdateHost->isSelected()
         && !mUpdateHostText->getText().empty())
     {
-        updateType |= LoginData::Upd_Custom;
+        updateType |= UpdateType::Custom;
         serverConfig.setValue("customUpdateHost",
             mUpdateHostText->getText());
 
