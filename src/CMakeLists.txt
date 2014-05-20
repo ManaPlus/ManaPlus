@@ -956,6 +956,7 @@ SET(SRCS
     events/mouseeventtype.h
     listeners/mouselistener.h
     listeners/openurllistener.h
+    listeners/playerdeathlistener.h
     listeners/playerlistener.cpp
     listeners/playerlistener.h
     gui/rect.h

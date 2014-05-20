@@ -44,6 +44,7 @@
 #include "resources/map/map.h"
 
 #include "listeners/updatestatuslistener.h"
+#include "listeners/playerdeathlistener.h"
 
 #include "net/messagein.h"
 #include "net/net.h"
@@ -53,7 +54,6 @@
 #include "debug.h"
 
 extern OkDialog *weightNotice;
-extern OkDialog *deathNotice;
 extern int weightNoticeTime;
 
 // Max. distance we are willing to scroll after a teleport;
@@ -73,27 +73,7 @@ namespace
         }
     } weightListener;
 
-    /**
-     * Listener used for handling death message.
-     */
-    struct DeathListener final : public ActionListener
-    {
-        void action(const ActionEvent &event A_UNUSED)
-        {
-            if (Net::getPlayerHandler())
-                Net::getPlayerHandler()->respawn();
-            deathNotice = nullptr;
-
-            Game::closeDialogs();
-
-            if (viewport)
-                viewport->closePopupMenu();
-
-            NpcDialog::clearDialogs();
-            if (player_node)
-                player_node->respawn();
-        }
-    } deathListener;
+    PlayerDeathListener deathListener;
 
 }  // anonymous namespace
 
