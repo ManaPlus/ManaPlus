@@ -183,9 +183,9 @@ void PartyHandler::chat(const std::string &text) const
     outMsg.writeString(text, static_cast<int>(text.length()));
 }
 
-void PartyHandler::setShareExperience(const PartyShare share) const
+void PartyHandler::setShareExperience(const Net::PartyShare share) const
 {
-    if (share == PARTY_SHARE_NOT_POSSIBLE)
+    if (share == Net::PartyShare::NOT_POSSIBLE)
         return;
 
     MessageOut outMsg(CMSG_PARTY_SETTINGS);
@@ -193,9 +193,9 @@ void PartyHandler::setShareExperience(const PartyShare share) const
     outMsg.writeInt16(static_cast<int16_t>(mShareItems));
 }
 
-void PartyHandler::setShareItems(const PartyShare share) const
+void PartyHandler::setShareItems(const Net::PartyShare share) const
 {
-    if (share == PARTY_SHARE_NOT_POSSIBLE)
+    if (share == Net::PartyShare::NOT_POSSIBLE)
         return;
 
     MessageOut outMsg(CMSG_PARTY_SETTINGS);

@@ -102,22 +102,22 @@ bool PartyTab::handleCommand(const std::string &restrict type,
         {
             switch (Net::getPartyHandler()->getShareItems())
             {
-                case PARTY_SHARE:
+                case Net::PartyShare::YES:
                     // TRANSLATORS: chat message
                     chatLog(_("Item sharing enabled."),
                         ChatMsgType::BY_SERVER);
                     return true;
-                case PARTY_SHARE_NO:
+                case Net::PartyShare::NO:
                     // TRANSLATORS: chat message
                     chatLog(_("Item sharing disabled."),
                         ChatMsgType::BY_SERVER);
                     return true;
-                case PARTY_SHARE_NOT_POSSIBLE:
+                case Net::PartyShare::NOT_POSSIBLE:
                     // TRANSLATORS: chat message
                     chatLog(_("Item sharing not possible."),
                         ChatMsgType::BY_SERVER);
                     return true;
-                case PARTY_SHARE_UNKNOWN:
+                case Net::PartyShare::UNKNOWN:
                     // TRANSLATORS: chat message
                     chatLog(_("Item sharing unknown."),
                         ChatMsgType::BY_SERVER);
@@ -132,10 +132,12 @@ bool PartyTab::handleCommand(const std::string &restrict type,
         switch (opt)
         {
             case 1:
-                Net::getPartyHandler()->setShareItems(PARTY_SHARE);
+                Net::getPartyHandler()->setShareItems(
+                    Net::PartyShare::YES);
                 break;
             case 0:
-                Net::getPartyHandler()->setShareItems(PARTY_SHARE_NO);
+                Net::getPartyHandler()->setShareItems(
+                    Net::PartyShare::NO);
                 break;
             case -1:
                 chatLog(strprintf(BOOLEAN_OPTIONS, "item"));
@@ -150,22 +152,22 @@ bool PartyTab::handleCommand(const std::string &restrict type,
         {
             switch (Net::getPartyHandler()->getShareExperience())
             {
-                case PARTY_SHARE:
+                case Net::PartyShare::YES:
                     // TRANSLATORS: chat message
                     chatLog(_("Experience sharing enabled."),
                         ChatMsgType::BY_SERVER);
                     return true;
-                case PARTY_SHARE_NO:
+                case Net::PartyShare::NO:
                     // TRANSLATORS: chat message
                     chatLog(_("Experience sharing disabled."),
                         ChatMsgType::BY_SERVER);
                     return true;
-                case PARTY_SHARE_NOT_POSSIBLE:
+                case Net::PartyShare::NOT_POSSIBLE:
                     // TRANSLATORS: chat message
                     chatLog(_("Experience sharing not possible."),
                         ChatMsgType::BY_SERVER);
                     return true;
-                case PARTY_SHARE_UNKNOWN:
+                case Net::PartyShare::UNKNOWN:
                     // TRANSLATORS: chat message
                     chatLog(_("Experience sharing unknown."),
                         ChatMsgType::BY_SERVER);
@@ -180,10 +182,12 @@ bool PartyTab::handleCommand(const std::string &restrict type,
         switch (opt)
         {
             case 1:
-                Net::getPartyHandler()->setShareExperience(PARTY_SHARE);
+                Net::getPartyHandler()->setShareExperience(
+                    Net::PartyShare::YES);
                 break;
             case 0:
-                Net::getPartyHandler()->setShareExperience(PARTY_SHARE_NO);
+                Net::getPartyHandler()->setShareExperience(
+                    Net::PartyShare::NO);
                 break;
             case -1:
                 chatLog(strprintf(BOOLEAN_OPTIONS, "exp"));

@@ -47,8 +47,8 @@ PartyTab *partyTab = nullptr;
 Party *taParty = nullptr;
 
 PartyHandler::PartyHandler() :
-    mShareExp(PARTY_SHARE_UNKNOWN),
-    mShareItems(PARTY_SHARE_UNKNOWN)
+    mShareExp(Net::PartyShare::UNKNOWN),
+    mShareItems(Net::PartyShare::UNKNOWN)
 {
     taParty = Party::getParty(1);
 }
@@ -253,22 +253,22 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
 
     switch (exp)
     {
-        case PARTY_SHARE:
-            if (mShareExp == PARTY_SHARE)
+        case Net::PartyShare::YES:
+            if (mShareExp == Net::PartyShare::YES)
                 break;
-            mShareExp = PARTY_SHARE;
+            mShareExp = Net::PartyShare::YES;
             NotifyManager::notify(NotifyManager::PARTY_EXP_SHARE_ON);
             break;
-        case PARTY_SHARE_NO:
-            if (mShareExp == PARTY_SHARE_NO)
+        case Net::PartyShare::NO:
+            if (mShareExp == Net::PartyShare::NO)
                 break;
-            mShareExp = PARTY_SHARE_NO;
+            mShareExp = Net::PartyShare::NO;
             NotifyManager::notify(NotifyManager::PARTY_EXP_SHARE_OFF);
             break;
-        case PARTY_SHARE_NOT_POSSIBLE:
-            if (mShareExp == PARTY_SHARE_NOT_POSSIBLE)
+        case Net::PartyShare::NOT_POSSIBLE:
+            if (mShareExp == Net::PartyShare::NOT_POSSIBLE)
                 break;
-            mShareExp = PARTY_SHARE_NOT_POSSIBLE;
+            mShareExp = Net::PartyShare::NOT_POSSIBLE;
             NotifyManager::notify(NotifyManager::PARTY_EXP_SHARE_ERROR);
             break;
         default:
@@ -278,22 +278,22 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
 
     switch (item)
     {
-        case PARTY_SHARE:
-            if (mShareItems == PARTY_SHARE)
+        case Net::PartyShare::YES:
+            if (mShareItems == Net::PartyShare::YES)
                 break;
-            mShareItems = PARTY_SHARE;
+            mShareItems = Net::PartyShare::YES;
             NotifyManager::notify(NotifyManager::PARTY_ITEM_SHARE_ON);
             break;
-        case PARTY_SHARE_NO:
-            if (mShareItems == PARTY_SHARE_NO)
+        case Net::PartyShare::NO:
+            if (mShareItems == Net::PartyShare::NO)
                 break;
-            mShareItems = PARTY_SHARE_NO;
+            mShareItems = Net::PartyShare::NO;
             NotifyManager::notify(NotifyManager::PARTY_ITEM_SHARE_OFF);
             break;
-        case PARTY_SHARE_NOT_POSSIBLE:
-            if (mShareItems == PARTY_SHARE_NOT_POSSIBLE)
+        case Net::PartyShare::NOT_POSSIBLE:
+            if (mShareItems == Net::PartyShare::NOT_POSSIBLE)
                 break;
-            mShareItems = PARTY_SHARE_NOT_POSSIBLE;
+            mShareItems = Net::PartyShare::NOT_POSSIBLE;
             NotifyManager::notify(NotifyManager::PARTY_ITEM_SHARE_ERROR);
             break;
         default:

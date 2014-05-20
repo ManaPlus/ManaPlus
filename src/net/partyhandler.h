@@ -27,17 +27,11 @@
 
 #include "gui/widgets/tabs/chattab.h"
 
+#include "net/partyshare.h"
+
 #include <string>
 
 class Being;
-
-enum PartyShare
-{
-    PARTY_SHARE_UNKNOWN = -1,
-    PARTY_SHARE_NO,
-    PARTY_SHARE,
-    PARTY_SHARE_NOT_POSSIBLE = 2
-};
 
 namespace Net
 {
@@ -67,13 +61,13 @@ class PartyHandler
 
         virtual void chat(const std::string &text) const = 0;
 
-        virtual PartyShare getShareExperience() const A_WARN_UNUSED = 0;
+        virtual Net::PartyShare getShareExperience() const A_WARN_UNUSED = 0;
 
-        virtual void setShareExperience(const PartyShare share) const = 0;
+        virtual void setShareExperience(const Net::PartyShare share) const = 0;
 
-        virtual PartyShare getShareItems() const A_WARN_UNUSED = 0;
+        virtual Net::PartyShare getShareItems() const A_WARN_UNUSED = 0;
 
-        virtual void setShareItems(const PartyShare share) const = 0;
+        virtual void setShareItems(const Net::PartyShare share) const = 0;
 
         virtual void clear() const = 0;
 
