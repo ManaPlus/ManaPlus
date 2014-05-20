@@ -761,6 +761,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/perfomance.h \
 	      utils/physfscheckutils.cpp \
 	      utils/physfscheckutils.h \
+	      utils/physfsmemoryobject.h \
 	      utils/physfsrwops.cpp \
 	      utils/physfsrwops.h \
 	      utils/physfstools.cpp \

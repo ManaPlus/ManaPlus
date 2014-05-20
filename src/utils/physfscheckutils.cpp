@@ -26,6 +26,7 @@
 
 #include "utils/stringutils.h"
 
+#include "utils/physfsmemoryobject.h"
 #include "utils/physfsrwops.h"
 
 #include <map>
@@ -34,21 +35,7 @@
 
 namespace
 {
-    struct MemoryObject
-    {
-        MemoryObject(const char *const name,
-                     const char *const file,
-                     const unsigned int line) :
-            mName(name),
-            mAddFile(strprintf("%s:%u", file, line))
-        {
-        }
-
-        std::string mName;
-        std::string mAddFile;
-    };
-
-    std::map<void*, MemoryObject*> mRWops;
+    std::map<void*, PHYSFSMemoryObject*> mRWops;
 }  // namespace
 
 static SDL_RWops *addRWops(SDL_RWops *restrict const rwops,
@@ -59,7 +46,7 @@ static SDL_RWops *addRWops(SDL_RWops *restrict const rwops,
     if (!rwops)
         return nullptr;
 
-    mRWops[rwops] = new MemoryObject(name, file, line);
+    mRWops[rwops] = new PHYSFSMemoryObject(name, file, line);
     return rwops;
 }
 
@@ -68,14 +55,14 @@ static void deleteRWops(SDL_RWops *const rwops)
     if (!rwops)
         return;
 
-    std::map<void*, MemoryObject*>::iterator it = mRWops.find(rwops);
+    std::map<void*, PHYSFSMemoryObject*>::iterator it = mRWops.find(rwops);
     if (it == mRWops.end())
     {
         logger->log("bad RWops delete: %p", static_cast<void*>(rwops));
     }
     else
     {
-        MemoryObject *const obj = (*it).second;
+        PHYSFSMemoryObject *const obj = (*it).second;
         if (obj)
         {
             mRWops.erase(rwops);
@@ -101,11 +88,12 @@ void reportPhysfsLeaks()
     if (!mRWops.empty())
     {
         logger->log("RWops leaks detected");
-        std::map<void*, MemoryObject*>::iterator it = mRWops.begin();
-        const std::map<void*, MemoryObject*>::iterator it_end = mRWops.end();
+        std::map<void*, PHYSFSMemoryObject*>::iterator it = mRWops.begin();
+        const std::map<void*, PHYSFSMemoryObject*>::iterator
+            it_end = mRWops.end();
         for (; it != it_end; ++it)
         {
-            MemoryObject *obj = (*it).second;
+            PHYSFSMemoryObject *obj = (*it).second;
             if (obj)
             {
                 logger->log("file: %s at %s", obj->mName.c_str(),
