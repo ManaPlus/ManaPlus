@@ -876,6 +876,7 @@ SET(SRCS
     listeners/playerrelationslistener.h
     listeners/renamelistener.cpp
     listeners/renamelistener.h
+    listeners/requesttradelistener.h
     position.cpp
     position.h
     resources/map/properties.h

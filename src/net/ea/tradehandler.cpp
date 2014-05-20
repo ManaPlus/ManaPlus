@@ -39,6 +39,8 @@
 
 #include "net/ea/eaprotocol.h"
 
+#include "listeners/requesttradelistener.h"
+
 #include "debug.h"
 
 extern std::string tradePartnerName;
@@ -49,17 +51,7 @@ ConfirmDialog *confirmDlg = nullptr;
  */
 namespace
 {
-    struct RequestTradeListener : public ActionListener
-    {
-        void action(const ActionEvent &event)
-        {
-            confirmDlg = nullptr;
-            const std::string &eventId = event.getId();
-            if (eventId == "ignore")
-                player_relations.ignoreTrade(tradePartnerName);
-            Net::getTradeHandler()->respond(eventId == "yes");
-        }
-    } listener;
+    RequestTradeListener listener;
 }  // namespace
 
 namespace Ea
