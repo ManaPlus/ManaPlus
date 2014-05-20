@@ -1122,6 +1122,7 @@ manaplus_SOURCES += \
 	      net/tmwa/questhandler.h \
 	      net/tmwa/skillhandler.cpp \
 	      net/tmwa/skillhandler.h \
+	      net/tmwa/sprite.h \
 	      net/tmwa/tradehandler.cpp \
 	      net/tmwa/tradehandler.h
 
@@ -1170,6 +1171,7 @@ manaplus_SOURCES += net/eathena/gui/guildtab.cpp \
 	      net/eathena/protocol.h \
 	      net/eathena/skillhandler.cpp \
 	      net/eathena/skillhandler.h \
+	      net/eathena/sprite.h \
 	      net/eathena/tradehandler.cpp \
 	      net/eathena/tradehandler.h
 endif

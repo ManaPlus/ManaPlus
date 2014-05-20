@@ -49,25 +49,6 @@ namespace TmwAthena
     };
 }  // namespace TmwAthena
 
-enum
-{
-    SPRITE_BASE = 0,
-    SPRITE_SHOE,
-    SPRITE_BOTTOMCLOTHES,
-    SPRITE_TOPCLOTHES,
-    SPRITE_MISC1,
-    SPRITE_MISC2,
-    SPRITE_HAIR,
-    SPRITE_HAT,
-    SPRITE_CAPE,
-    SPRITE_GLOVES,
-    SPRITE_WEAPON,
-    SPRITE_SHIELD,
-    SPRITE_EVOL1,
-    SPRITE_EVOL2,
-    SPRITE_VECTOREND
-};
-
 /*********************************
  * Packets from server to client *
  *********************************/

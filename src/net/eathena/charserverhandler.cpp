@@ -35,6 +35,7 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
 #include "net/eathena/protocol.h"
+#include "net/eathena/sprite.h"
 
 #include "resources/iteminfo.h"
 

@@ -1073,6 +1073,7 @@ SET(SRCS_TMWA
     net/tmwa/questhandler.h
     net/tmwa/skillhandler.cpp
     net/tmwa/skillhandler.h
+    net/tmwa/sprite.h
     net/tmwa/tradehandler.cpp
     net/tmwa/tradehandler.h
     )
@@ -1121,6 +1122,7 @@ SET(SRCS_EATHENA
     net/eathena/protocol.h
     net/eathena/skillhandler.cpp
     net/eathena/skillhandler.h
+    net/eathena/sprite.h
     net/eathena/tradehandler.cpp
     net/eathena/tradehandler.h
     )

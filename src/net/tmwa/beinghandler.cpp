@@ -32,6 +32,7 @@
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
+#include "net/tmwa/sprite.h"
 
 #include "resources/iteminfo.h"
 
