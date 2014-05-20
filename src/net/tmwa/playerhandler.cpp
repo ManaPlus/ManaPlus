@@ -31,6 +31,7 @@
 
 #include "net/net.h"
 
+#include "net/tmwa/attrs.h"
 #include "net/tmwa/inventoryhandler.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"

@@ -1032,6 +1032,7 @@ SET(SRCS_TMWA
     net/tmwa/gui/partytab.h
     net/tmwa/adminhandler.cpp
     net/tmwa/adminhandler.h
+    net/tmwa/attrs.h
     net/tmwa/beinghandler.cpp
     net/tmwa/beinghandler.h
     net/tmwa/buysellhandler.cpp
@@ -1085,6 +1086,7 @@ SET(SRCS_EATHENA
     net/eathena/gui/partytab.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
+    net/eathena/attrs.h
     net/eathena/beinghandler.cpp
     net/eathena/beinghandler.h
     net/eathena/buysellhandler.cpp

@@ -23,32 +23,6 @@
 #ifndef NET_TMWA_PROTOCOL_H
 #define NET_TMWA_PROTOCOL_H
 
-namespace TmwAthena
-{
-    enum
-    {
-        JOB = 0xa,
-
-        STR = 0xd,
-        AGI,
-        VIT,
-        INT,
-        DEX,
-        LUK,
-
-        ATK,
-        DEF,
-        MATK,
-        MDEF,
-        HIT,
-        FLEE,
-        CRIT
-
-//        KARMA,
-//        MANNER
-    };
-}  // namespace TmwAthena
-
 /*********************************
  * Packets from server to client *
  *********************************/

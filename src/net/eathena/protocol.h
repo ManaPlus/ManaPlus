@@ -23,32 +23,6 @@
 #ifndef NET_EATHENA_PROTOCOL_H
 #define NET_EATHENA_PROTOCOL_H
 
-namespace EAthena
-{
-    enum
-    {
-        JOB = 0xa,
-
-        STR = 0xd,
-        AGI,
-        VIT,
-        INT,
-        DEX,
-        LUK,
-
-        ATK,
-        DEF,
-        MATK,
-        MDEF,
-        HIT,
-        FLEE,
-        CRIT
-
-//        KARMA,
-//        MANNER
-    };
-}  // namespace EAthena
-
 /*********************************
  * Packets from server to client *
  *********************************/

@@ -39,6 +39,7 @@
 #include "net/ea/gui/partytab.h"
 
 #include "net/eathena/adminhandler.h"
+#include "net/eathena/attrs.h"
 #include "net/eathena/beinghandler.h"
 #include "net/eathena/buysellhandler.h"
 #include "net/eathena/chathandler.h"
