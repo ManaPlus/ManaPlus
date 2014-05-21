@@ -902,6 +902,8 @@ class Being : public ActorSprite, public ConfigListener
 
         void removeItemParticles(const int id);
 
+        void createSpeechBubble();
+
         static int getDefaultEffectId(const int type);
 
         BeingInfo *mInfo;

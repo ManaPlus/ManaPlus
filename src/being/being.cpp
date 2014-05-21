@@ -161,7 +161,7 @@ Being::Being(const int id,
     mShowName(false),
     mIsGM(false),
     mType(type),
-    mSpeechBubble(new SpeechBubble),
+    mSpeechBubble(nullptr),
     mWalkSpeed(Net::getPlayerHandler()->getDefaultWalkSpeed()),
     mSpeed(Net::getPlayerHandler()->getDefaultWalkSpeed().x),
     mIp(),
@@ -205,7 +205,6 @@ Being::Being(const int id,
     mAway(false),
     mInactive(false)
 {
-    mSpeechBubble->postInit();
 
     for (int f = 0; f < 20; f ++)
     {
@@ -268,6 +267,12 @@ Being::~Being()
     mPets.clear();
 
     removeAllItemsParticles();
+}
+
+void Being::createSpeechBubble()
+{
+    mSpeechBubble = new SpeechBubble;
+    mSpeechBubble->postInit();
 }
 
 void Being::setSubtype(const uint16_t subtype, const uint8_t look)
@@ -487,6 +492,8 @@ void Being::setSpeech(const std::string &text, const std::string &channel,
     else
     {
         const bool isShowName = (speech == BeingSpeech::NAME_IN_BUBBLE);
+        if (!mSpeechBubble)
+            createSpeechBubble();
         mSpeechBubble->setCaption(isShowName ? mName : "");
         mSpeechBubble->setText(mSpeech, isShowName);
     }
@@ -1695,7 +1702,7 @@ void Being::drawEmotion(Graphics *const graphics, const int offsetX,
 
 void Being::drawSpeech(const int offsetX, const int offsetY)
 {
-    if (!mSpeechBubble || mSpeech.empty())
+    if (mSpeech.empty())
         return;
 
     const int px = getPixelX() - offsetX;
@@ -1705,22 +1712,27 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
     // Draw speech above this being
     if (mSpeechTime == 0)
     {
-        if (mSpeechBubble->isVisibleLocal())
+        if (mSpeechBubble && mSpeechBubble->isVisibleLocal())
             mSpeechBubble->setVisible(false);
+        mSpeech.clear();
     }
     else if (mSpeechTime > 0 && (speech == BeingSpeech::NAME_IN_BUBBLE ||
              speech == BeingSpeech::NO_NAME_IN_BUBBLE))
     {
         delete2(mText)
 
-        mSpeechBubble->setPosition(px - (mSpeechBubble->getWidth() / 2),
-            py - getHeight() - (mSpeechBubble->getHeight()));
-        mSpeechBubble->setVisible(true);
-        mSpeechBubble->requestMoveToBackground();
+        if (mSpeechBubble)
+        {
+            mSpeechBubble->setPosition(px - (mSpeechBubble->getWidth() / 2),
+                py - getHeight() - (mSpeechBubble->getHeight()));
+            mSpeechBubble->setVisible(true);
+            mSpeechBubble->requestMoveToBackground();
+        }
     }
     else if (mSpeechTime > 0 && speech == BeingSpeech::TEXT_OVERHEAD)
     {
-        mSpeechBubble->setVisible(false);
+        if (mSpeechBubble)
+            mSpeechBubble->setVisible(false);
 
         if (!mText && userPalette)
         {
@@ -1731,7 +1743,8 @@ void Being::drawSpeech(const int offsetX, const int offsetY)
     }
     else if (speech == BeingSpeech::NO_SPEECH)
     {
-        mSpeechBubble->setVisible(false);
+        if (mSpeechBubble)
+            mSpeechBubble->setVisible(false);
         delete2(mText)
     }
 }
