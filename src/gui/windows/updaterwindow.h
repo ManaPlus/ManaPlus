@@ -117,6 +117,8 @@ class UpdaterWindow final : public Window,
 
     void loadFile(std::string file);
 
+    void deleteSelf();
+
     static void loadLocalUpdates(const std::string &dir);
 
     static void unloadUpdates(const std::string &dir);
@@ -155,7 +157,6 @@ private:
      * Loads the updates this window has gotten into the resource manager
      */
     void loadUpdates();
-
 
     /**
      * A download callback for progress updates.
@@ -258,5 +259,7 @@ private:
 
     bool mValidateXml;
 };
+
+extern UpdaterWindow *updaterWindow;
 
 #endif  // GUI_WINDOWS_UPDATERWINDOW_H

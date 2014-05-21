@@ -77,6 +77,7 @@
 #include "gui/windows/statuswindow.h"
 #include "gui/windows/tradewindow.h"
 #include "gui/windows/questswindow.h"
+#include "gui/windows/updaterwindow.h"
 #include "gui/windows/whoisonline.h"
 
 #include "gui/widgets/tabs/battletab.h"
@@ -154,6 +155,7 @@ BotCheckerWindow *botCheckerWindow = nullptr;
 SocialWindow *socialWindow = nullptr;
 QuestsWindow *questsWindow = nullptr;
 WindowMenu *windowMenu = nullptr;
+UpdaterWindow *updaterWindow = nullptr;
 
 ActorManager *actorManager = nullptr;
 CommandHandler *commandHandler = nullptr;
@@ -1200,4 +1202,13 @@ void Game::videoResized(const int width, const int height)
         viewport->setSize(width, height);
     if (windowMenu)
         windowMenu->setPosition(width - windowMenu->getWidth(), 0);
+}
+
+void Game::createUpdaterWindow()
+{
+    updaterWindow = new UpdaterWindow(client->getUpdateHost(),
+        client->getOldUpdates(),
+        false,
+        0);
+    updaterWindow->postInit();
 }

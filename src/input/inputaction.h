@@ -339,6 +339,7 @@ namespace InputAction
         GUI_F11,
         GUI_F12,
         WINDOW_ABOUT,
+        WINDOW_UPDATER,
         TOTAL
     };
 }  // namespace InputAction

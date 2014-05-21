@@ -2202,6 +2202,13 @@ static const KeyData keyData[InputAction::TOTAL] = {
         &ActionManager::aboutWindowShow,
         InputAction::NO_VALUE, 50,
         InputCondition::SHORTCUT0},
+    {"keyWindowUpdater",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT | Input::GRP_GUI,
+        &ActionManager::updaterWindowShow,
+        InputAction::NO_VALUE, 50,
+        InputCondition::GAME}
 };
 
 #endif  // INPUT_KEYBOARDDATA_H

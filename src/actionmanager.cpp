@@ -60,6 +60,7 @@
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
+#include "gui/windows/updaterwindow.h"
 
 #include "gui/widgets/tabs/chattab.h"
 
@@ -860,6 +861,15 @@ impHandler0(didYouKnowWindowShow)
 impHandler0(questsWindowShow)
 {
     showHideWindow(questsWindow);
+    return true;
+}
+
+impHandler0(updaterWindowShow)
+{
+    if (updaterWindow)
+        updaterWindow->deleteSelf();
+    else
+        Game::createUpdaterWindow();
     return true;
 }
 

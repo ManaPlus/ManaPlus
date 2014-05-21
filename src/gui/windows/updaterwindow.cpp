@@ -276,8 +276,15 @@ void UpdaterWindow::enable()
     mPlayButton->setEnabled(true);
     mPlayButton->requestFocus();
 
-    if (mUpdateType & UpdateType::Close)
-        client->setState(STATE_LOAD_DATA);
+    if (client->getState() != STATE_GAME)
+    {
+        if (mUpdateType & UpdateType::Close)
+            client->setState(STATE_LOAD_DATA);
+    }
+    else
+    {
+        deleteSelf();
+    }
 }
 
 void UpdaterWindow::action(const ActionEvent &event)
@@ -296,7 +303,10 @@ void UpdaterWindow::action(const ActionEvent &event)
     }
     else if (eventId == "play")
     {
-        client->setState(STATE_LOAD_DATA);
+        if (client->getState() != STATE_GAME)
+            client->setState(STATE_LOAD_DATA);
+        else
+            deleteSelf();
     }
 }
 
@@ -306,7 +316,10 @@ void UpdaterWindow::keyPressed(KeyEvent &event)
     if (actionId == static_cast<int>(InputAction::GUI_CANCEL))
     {
         action(ActionEvent(nullptr, mCancelButton->getActionEventId()));
-        client->setState(STATE_LOGIN);
+        if (client->getState() != STATE_GAME)
+            client->setState(STATE_LOGIN);
+        else
+            deleteSelf();
     }
     else if (actionId == static_cast<int>(InputAction::GUI_SELECT)
              || actionId == static_cast<int>(InputAction::GUI_SELECT2))
@@ -503,7 +516,8 @@ int UpdaterWindow::updateProgress(void *ptr, DownloadStatus::Type status,
 
     uw->setProgress(progress);
 
-    if (client->getState() != STATE_UPDATE
+    if ((client->getState() != STATE_UPDATE
+        && client->getState() != STATE_GAME)
         || uw->mDownloadStatus == UPDATE_ERROR)
     {
         // If the action was canceled return an error code to stop the mThread
@@ -1133,4 +1147,10 @@ void UpdaterWindow::unloadMods(const std::string &dir)
                 resman->removeFromSearchPath(dir + "/" + localDir);
         }
     }
+}
+
+void UpdaterWindow::deleteSelf()
+{
+    scheduleDelete();
+    updaterWindow = nullptr;
 }

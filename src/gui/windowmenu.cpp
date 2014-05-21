@@ -139,6 +139,10 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     addButton(N_("OU"),
         // TRANSLATORS: full button name
         _("Outfits"), x, h, InputAction::WINDOW_OUTFIT, false);
+    // TRANSLATORS: short button name for updates window.
+    addButton(N_("UP"),
+        // TRANSLATORS: full button name
+        _("Updates"), x, h, InputAction::WINDOW_UPDATER, false);
     // TRANSLATORS: short button name for debug window.
     addButton(N_("DBG"),
         // TRANSLATORS: full button name

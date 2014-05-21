@@ -120,6 +120,8 @@ class Game final
 
         static bool saveScreenshot(SDL_Surface *const screenshot);
 
+        static void createUpdaterWindow();
+
         void updateHistory(const SDL_Event &event);
 
         void checkKeys();

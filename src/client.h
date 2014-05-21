@@ -228,6 +228,15 @@ public:
     std::string getLogFileName() const A_WARN_UNUSED
     { return mLogFileName; }
 
+    std::string getUpdateHost() const A_WARN_UNUSED
+    { return mUpdateHost; }
+
+    std::string getOldUpdates() const A_WARN_UNUSED
+    { return mOldUpdates; }
+
+    const Options &getOptions() const A_WARN_UNUSED
+    { return mOptions; }
+
     const std::vector<std::string> &getMirrors() const A_WARN_UNUSED
     { return mCurrentServer.updateMirrors; }
 
