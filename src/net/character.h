@@ -23,14 +23,15 @@
 #ifndef NET_CHARACTER_H
 #define NET_CHARACTER_H
 
+#include "being/localplayer.h"
+#include "being/playerinfo.h"
+
 #include "utils/delete2.h"
 
 #include <string>
 #include <vector>
 
-class LocalPlayer;
-
-struct PlayerInfoBackend;
+#include "localconsts.h"
 
 namespace Net
 {

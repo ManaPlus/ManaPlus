@@ -47,6 +47,7 @@
 #include "net/loginhandler.h"
 #include "net/net.h"
 
+#include "utils/delete2.h"
 #include "utils/paths.h"
 
 #include "debug.h"

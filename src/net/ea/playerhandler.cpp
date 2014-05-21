@@ -35,7 +35,6 @@
 #include "gui/viewport.h"
 
 #include "gui/windows/okdialog.h"
-#include "gui/windows/npcdialog.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/statuswindow.h"
 
@@ -48,7 +47,6 @@
 #include "listeners/weightlistener.h"
 
 #include "net/messagein.h"
-#include "net/net.h"
 
 #include "net/ea/eaprotocol.h"
 

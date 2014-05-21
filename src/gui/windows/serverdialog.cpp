@@ -31,6 +31,7 @@
 
 #include "input/inputaction.h"
 
+#include "net/download.h"
 #include "gui/gui.h"
 
 #include "gui/fonts/font.h"
@@ -683,7 +684,7 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
 int ServerDialog::downloadUpdate(void *ptr, DownloadStatus::Type status,
                                  size_t total, size_t remaining)
 {
-    if (!ptr || status == DownloadStatus::CANCELLED)
+    if (!ptr || status == DownloadStatus::Cancelled)
         return -1;
 
     ServerDialog *const sd = reinterpret_cast<ServerDialog*>(ptr);
@@ -692,7 +693,7 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus::Type status,
     if (!sd->mDownload)
         return -1;
 
-    if (status == DownloadStatus::COMPLETE)
+    if (status == DownloadStatus::Complete)
     {
         finished = true;
     }

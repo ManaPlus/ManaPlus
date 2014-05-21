@@ -29,7 +29,7 @@
 
 #include "resources/beingcommon.h"
 #include "resources/iteminfo.h"
-#include "resources/spritedef.h"
+#include "resources/spritedirection.h"
 #include "resources/spritereference.h"
 
 #include "resources/db/itemdbstat.h"

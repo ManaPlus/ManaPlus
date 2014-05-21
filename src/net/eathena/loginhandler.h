@@ -23,8 +23,6 @@
 #ifndef NET_EATHENA_LOGINHANDLER_H
 #define NET_EATHENA_LOGINHANDLER_H
 
-#include "net/loginhandler.h"
-
 #include "net/ea/loginhandler.h"
 
 #include "net/eathena/messagehandler.h"

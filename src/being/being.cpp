@@ -82,6 +82,7 @@
 
 #include "gui/widgets/tabs/langtab.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/timer.h"
 
@@ -597,7 +598,11 @@ void Being::takeDamage(Being *const attacker, const int amount,
         mDamageTaken += amount;
         if (mInfo)
         {
-            playSfx(mInfo->getSound(ItemSoundEvent::HURT), this, false, mX, mY);
+            playSfx(mInfo->getSound(ItemSoundEvent::HURT),
+                this,
+                false,
+                mX,
+                mY);
 
             if (!mInfo->isStaticMaxHP())
             {

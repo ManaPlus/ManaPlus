@@ -27,6 +27,9 @@
 #include "inventory.h"
 #include "item.h"
 
+#include "being/playerinfo.h"
+
+#include "gui/windows/inventorywindow.h"
 namespace Ea
 {
 

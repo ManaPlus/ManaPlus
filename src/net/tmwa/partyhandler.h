@@ -22,8 +22,6 @@
 #ifndef NET_TMWA_PARTYHANDLER_H
 #define NET_TMWA_PARTYHANDLER_H
 
-#include "net/partyhandler.h"
-
 #include "net/tmwa/messagehandler.h"
 
 #include "net/ea/partyhandler.h"

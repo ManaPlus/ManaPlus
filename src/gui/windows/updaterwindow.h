@@ -26,14 +26,14 @@
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
-#include "net/download.h"
-
 #include "resources/updatefile.h"
 
 #include "utils/mutex.h"
 
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
+
+#include "net/downloadstatus.h"
 
 #include <string>
 #include <vector>
@@ -44,6 +44,11 @@ class Label;
 class ProgressBar;
 class ResourceManager;
 class ScrollArea;
+
+namespace Net
+{
+    class Download;
+}
 
 /**
  * Update progress window GUI

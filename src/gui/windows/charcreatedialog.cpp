@@ -46,6 +46,7 @@
 #include "resources/db/colordb.h"
 #include "resources/db/itemdb.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"

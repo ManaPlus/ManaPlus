@@ -23,7 +23,7 @@
 #include "resources/iteminfo.h"
 
 #include "resources/spriteaction.h"
-#include "resources/spritedef.h"
+#include "resources/spritedirection.h"
 
 #include "resources/map/mapconsts.h"
 

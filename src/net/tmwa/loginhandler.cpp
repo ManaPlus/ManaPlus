@@ -25,8 +25,6 @@
 #include "client.h"
 #include "logger.h"
 
-#include "net/registrationoptions.h"
-
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"

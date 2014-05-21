@@ -1307,11 +1307,11 @@ static int uploadUpdate(void *ptr,
                         size_t total A_UNUSED,
                         size_t remaining A_UNUSED)
 {
-    if (status == DownloadStatus::IDLE || status == DownloadStatus::STARTING)
+    if (status == DownloadStatus::Idle || status == DownloadStatus::Starting)
         return 0;
 
     UploadChatInfo *const info = reinterpret_cast<UploadChatInfo*>(ptr);
-    if (status == DownloadStatus::COMPLETE)
+    if (status == DownloadStatus::Complete)
     {
         ChatTab *const tab = info->tab;
         if (chatWindow && (!tab || chatWindow->isTabPresent(tab)))

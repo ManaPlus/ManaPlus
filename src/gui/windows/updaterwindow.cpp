@@ -38,7 +38,8 @@
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 
-#include "net/logindata.h"
+#include "net/download.h"
+#include "net/updatetype.h"
 
 #include "resources/resourcemanager.h"
 
@@ -463,12 +464,12 @@ int UpdaterWindow::updateProgress(void *ptr, DownloadStatus::Type status,
     if (!uw)
         return -1;
 
-    if (status == DownloadStatus::COMPLETE)
+    if (status == DownloadStatus::Complete)
     {
         uw->mDownloadComplete = true;
     }
-    else if (status == DownloadStatus::ERROR ||
-             status == DownloadStatus::CANCELLED)
+    else if (status == DownloadStatus::Error ||
+             status == DownloadStatus::Cancelled)
     {
         if (uw->mDownloadStatus == UPDATE_COMPLETE)
         {   // ignoring error in last state (was UPDATE_PATCH)

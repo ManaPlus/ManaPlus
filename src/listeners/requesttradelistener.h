@@ -20,10 +20,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef LISTENERS_REQUESTTRADELISTENER_H
+#define LISTENERS_REQUESTTRADELISTENER_H
+
 #include "being/playerrelations.h"
 
 #include "gui/windows/confirmdialog.h"
 
+#include "net/net.h"
 #include "net/tradehandler.h"
 
 #include "listeners/actionlistener.h"
@@ -49,3 +53,5 @@ struct RequestTradeListener final : public ActionListener
         Net::getTradeHandler()->respond(eventId == "yes");
     }
 };
+
+#endif  // LISTENERS_REQUESTTRADELISTENER_H

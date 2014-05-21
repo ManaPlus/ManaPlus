@@ -23,14 +23,8 @@
 #ifndef NET_EA_INVENTORYHANDLER_H
 #define NET_EA_INVENTORYHANDLER_H
 
-#include "equipment.h"
 #include "inventory.h"
-#include "item.h"
 #include "localconsts.h"
-
-#include "being/playerinfo.h"
-
-#include "gui/windows/inventorywindow.h"
 
 #include "net/inventoryhandler.h"
 

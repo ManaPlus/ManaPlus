@@ -22,8 +22,6 @@
 #ifndef NET_EATHENA_PARTYHANDLER_H
 #define NET_EATHENA_PARTYHANDLER_H
 
-#include "net/partyhandler.h"
-
 #include "net/eathena/messagehandler.h"
 
 #include "net/ea/partyhandler.h"

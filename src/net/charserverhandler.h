@@ -24,9 +24,6 @@
 #define NET_CHARSERVERHANDLER_H
 
 #include "being/localplayer.h"
-#include "being/playerinfo.h"
-
-#include "utils/delete2.h"
 
 #include <string>
 #include <vector>

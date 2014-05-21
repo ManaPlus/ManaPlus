@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "net/download.h"
+#include "net/downloadstatus.h"
 #include "net/serverinfo.h"
 
 #include "utils/mutex.h"
@@ -41,6 +41,11 @@ class CheckBox;
 class Label;
 class ListBox;
 class ServersListModel;
+
+namespace Net
+{
+    class Download;
+}
 
 /**
  * The server choice dialog.

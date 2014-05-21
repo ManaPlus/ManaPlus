@@ -43,6 +43,7 @@
 #include "touchmanager.h"
 
 #include "being/beingspeech.h"
+#include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
 #include "input/inputmanager.h"

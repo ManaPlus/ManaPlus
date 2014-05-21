@@ -49,4 +49,4 @@ namespace EAthena
     };
 }  // namespace EAthena
 
-#endif  // NET_EATHENA_PROTOCOL_H
+#endif  // NET_EATHENA_ATTRS_H

@@ -26,13 +26,13 @@ namespace DownloadStatus
 {
     enum Type
     {
-        CANCELLED = -3,
-        THREAD_ERROR = -2,
-        ERROR = -1,
-        STARTING = 0,
-        IDLE,
-        COMPLETE
+        Cancelled = -3,
+        ThreadError = -2,
+        Error = -1,
+        Starting = 0,
+        Idle,
+        Complete
     };
-}  // namespace Net
+}  // namespace DownloadStatus
 
 #endif  // NET_DOWNLOADSTATUS_H

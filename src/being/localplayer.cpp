@@ -904,7 +904,8 @@ int LocalPlayer::getAttackRange() const
     }
     else
     {
-        const Item *const weapon = PlayerInfo::getEquipment(ItemSlot::FIGHT1_SLOT);
+        const Item *const weapon = PlayerInfo::getEquipment(
+            ItemSlot::FIGHT1_SLOT);
         if (weapon)
         {
             const ItemInfo &info = weapon->getInfo();
@@ -3592,7 +3593,8 @@ void LocalPlayer::setRealPos(const int x, const int y)
 
         if ((mCrossX || mCrossY)
             && layer->getTile(mCrossX, mCrossY)
-            && layer->getTile(mCrossX, mCrossY)->getType() == MapItemType::CROSS)
+            && layer->getTile(mCrossX, mCrossY)->getType()
+            == MapItemType::CROSS)
         {
             layer->setTile(mCrossX, mCrossY, MapItemType::EMPTY);
         }
