@@ -511,6 +511,12 @@ static SetupActionData setupActionData2[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Updates Window"),
+        InputAction::WINDOW_UPDATER,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Previous Social Tab"),
         InputAction::PREV_SOCIAL_TAB,
         "",
