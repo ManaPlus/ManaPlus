@@ -304,6 +304,11 @@ MouseButton::Type SDLInput::convertMouseButton(const int button)
             return MouseButton::RIGHT;
         case SDL_BUTTON_MIDDLE:
             return MouseButton::MIDDLE;
+#ifndef USE_SDL2
+        case SDL_BUTTON_WHEELUP:
+        case SDL_BUTTON_WHEELDOWN:
+            return MouseButton::EMPTY;
+#endif
         default:
             // We have an unknown mouse type which is ignored.
             logger->log("unknown button type: %u", button);
