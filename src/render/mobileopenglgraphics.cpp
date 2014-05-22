@@ -1318,6 +1318,11 @@ void MobileOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
     #include "render/graphics_calcImageRect.hpp"
 }
 
+void MobileOpenGLGraphics::clearScreen() const
+{
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+}
+
 #ifdef DEBUG_BIND_TEXTURE
 void MobileOpenGLGraphics::debugBindTexture(const Image *const image)
 {

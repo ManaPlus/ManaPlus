@@ -49,6 +49,8 @@ public:
     bool isAllowScale() const override final
     { return true; }
 
+    void clearScreen() const override final;
+
     static void bindTexture(const GLenum target, const GLuint texture);
 
     static GLuint mLastImage;

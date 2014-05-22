@@ -722,6 +722,11 @@ void SafeOpenGLGraphics::restoreColor()
     mByteColor = mColor;
 }
 
+void SafeOpenGLGraphics::clearScreen() const
+{
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+}
+
 void SafeOpenGLGraphics::drawImageRect(const int x, const int y,
                                        const int w, const int h,
                                        const ImageRect &imgRect)

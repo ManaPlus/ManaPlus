@@ -444,6 +444,9 @@ class Graphics
         virtual void endDraw()
         { }
 
+        virtual void clearScreen() const
+        { }
+
         int mWidth;
         int mHeight;
         int mActualWidth;

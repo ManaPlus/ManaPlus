@@ -1185,6 +1185,10 @@ void NullOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
     #include "render/graphics_calcImageRect.hpp"
 }
 
+void NullOpenGLGraphics::clearScreen() const
+{
+}
+
 #ifdef DEBUG_BIND_TEXTURE
 void NullOpenGLGraphics::debugBindTexture(const Image *const image)
 {
