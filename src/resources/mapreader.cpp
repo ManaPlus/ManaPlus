@@ -973,7 +973,10 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
 
                     // create animation
                     if (!set || !config.getBoolValue("playMapAnimations"))
+                    {
+                        delete ani;
                         continue;
+                    }
 
                     for (int i = 0; ; i++)
                     {
