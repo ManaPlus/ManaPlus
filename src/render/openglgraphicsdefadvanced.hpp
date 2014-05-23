@@ -23,7 +23,7 @@
 public:
     inline void drawVertexes(const NormalOpenGLGraphicsVertexes &ogl);
 
-    void initArrays() override final;
+    void initArrays(const int vertCount) override final;
 
 #ifdef DEBUG_DRAW_CALLS
     unsigned int getDrawCalls() const
@@ -36,3 +36,5 @@ public:
 
 protected:
     void debugBindTexture(const Image *const image);
+
+    void deleteArraysInternal();

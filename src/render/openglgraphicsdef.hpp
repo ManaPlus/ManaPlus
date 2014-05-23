@@ -51,6 +51,8 @@ public:
 
     void clearScreen() const override final;
 
+    void deleteArrays() override final;
+
     static void bindTexture(const GLenum target, const GLuint texture);
 
     static GLuint mLastImage;

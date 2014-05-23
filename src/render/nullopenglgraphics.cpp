@@ -71,9 +71,9 @@ NullOpenGLGraphics::~NullOpenGLGraphics()
     delete [] mIntVertArray;
 }
 
-void NullOpenGLGraphics::initArrays()
+void NullOpenGLGraphics::initArrays(const int vertCount)
 {
-    mMaxVertices = graphicsManager.getMaxVertices();
+    mMaxVertices = vertCount;
     if (mMaxVertices < 500)
         mMaxVertices = 500;
     else if (mMaxVertices > 1024)
@@ -88,6 +88,10 @@ void NullOpenGLGraphics::initArrays()
         mIntTexArray = new GLint[sz];
     if (!mIntVertArray)
         mIntVertArray = new GLint[sz];
+}
+
+void NullOpenGLGraphics::deleteArrays()
+{
 }
 
 bool NullOpenGLGraphics::setVideoMode(const int w, const int h,

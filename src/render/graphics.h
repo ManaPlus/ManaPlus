@@ -295,7 +295,7 @@ class Graphics
         const std::string &getName() const A_WARN_UNUSED
         { return mName; }
 
-        virtual void initArrays()
+        virtual void initArrays(const int vertCount A_UNUSED)
         { }
 
         virtual void setColor(const Color &color)
@@ -445,6 +445,9 @@ class Graphics
         { }
 
         virtual void clearScreen() const
+        { }
+
+        virtual void deleteArrays()
         { }
 
         int mWidth;

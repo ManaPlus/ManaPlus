@@ -293,7 +293,7 @@ bool Graphics::setOpenGLMode()
                 (gotDoubleBuffer ? "with" : "without"));
 
     graphicsManager.initOpenGL();
-    initArrays();
+    initArrays(graphicsManager.getMaxVertices());
     graphicsManager.updateTextureFormat();
     updateMemoryInfo();
 

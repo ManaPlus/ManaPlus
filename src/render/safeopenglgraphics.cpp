@@ -56,6 +56,10 @@ SafeOpenGLGraphics::~SafeOpenGLGraphics()
 {
 }
 
+void SafeOpenGLGraphics::deleteArrays()
+{
+}
+
 bool SafeOpenGLGraphics::setVideoMode(const int w, const int h,
                                       const int scale,
                                       const int bpp,

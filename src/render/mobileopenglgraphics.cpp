@@ -99,15 +99,12 @@ MobileOpenGLGraphics::MobileOpenGLGraphics():
 
 MobileOpenGLGraphics::~MobileOpenGLGraphics()
 {
-    delete [] mFloatTexArray;
-    delete [] mShortVertArray;
-    delete [] mFloatTexArrayCached;
-    delete [] mShortVertArrayCached;
+    deleteArraysInternal();
 }
 
-void MobileOpenGLGraphics::initArrays()
+void MobileOpenGLGraphics::initArrays(const int vertCount)
 {
-    mMaxVertices = graphicsManager.getMaxVertices();
+    mMaxVertices = vertCount;
     if (mMaxVertices < 500)
         mMaxVertices = 500;
     else if (mMaxVertices > 1024)
@@ -124,6 +121,23 @@ void MobileOpenGLGraphics::initArrays()
         mFloatTexArrayCached = new GLfloat[sz];
     if (!mShortVertArrayCached)
         mShortVertArrayCached = new GLshort[sz];
+}
+
+void MobileOpenGLGraphics::deleteArrays()
+{
+    deleteArraysInternal();
+}
+
+void MobileOpenGLGraphics::deleteArraysInternal()
+{
+    delete [] mFloatTexArray;
+    mFloatTexArray = nullptr;
+    delete [] mShortVertArray;
+    mShortVertArray = nullptr;
+    delete [] mFloatTexArrayCached;
+    mFloatTexArrayCached = nullptr;
+    delete [] mShortVertArrayCached;
+    mShortVertArrayCached = nullptr;
 }
 
 bool MobileOpenGLGraphics::setVideoMode(const int w, const int h,

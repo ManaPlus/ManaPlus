@@ -115,17 +115,12 @@ NormalOpenGLGraphics::NormalOpenGLGraphics():
 
 NormalOpenGLGraphics::~NormalOpenGLGraphics()
 {
-    delete [] mFloatTexArray;
-    delete [] mIntTexArray;
-    delete [] mIntVertArray;
-    delete [] mFloatTexArrayCached;
-    delete [] mIntTexArrayCached;
-    delete [] mIntVertArrayCached;
+    deleteArraysInternal();
 }
 
-void NormalOpenGLGraphics::initArrays()
+void NormalOpenGLGraphics::initArrays(const int vertCount)
 {
-    mMaxVertices = graphicsManager.getMaxVertices();
+    mMaxVertices = vertCount;
     if (mMaxVertices < 500)
         mMaxVertices = 500;
     else if (mMaxVertices > 1024)
@@ -146,6 +141,27 @@ void NormalOpenGLGraphics::initArrays()
         mIntTexArrayCached = new GLint[sz];
     if (!mIntVertArrayCached)
         mIntVertArrayCached = new GLint[sz];
+}
+
+void NormalOpenGLGraphics::deleteArrays()
+{
+    deleteArraysInternal();
+}
+
+void NormalOpenGLGraphics::deleteArraysInternal()
+{
+    delete [] mFloatTexArray;
+    mFloatTexArray = nullptr;
+    delete [] mIntTexArray;
+    mIntTexArray = nullptr;
+    delete [] mIntVertArray;
+    mIntVertArray = nullptr;
+    delete [] mFloatTexArrayCached;
+    mFloatTexArrayCached = nullptr;
+    delete [] mIntTexArrayCached;
+    mIntTexArrayCached = nullptr;
+    delete [] mIntVertArrayCached;
+    mIntVertArrayCached = nullptr;
 }
 
 bool NormalOpenGLGraphics::setVideoMode(const int w, const int h,
