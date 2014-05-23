@@ -205,7 +205,6 @@ Being::Being(const int id,
     mAway(false),
     mInactive(false)
 {
-
     for (int f = 0; f < 20; f ++)
     {
         mSpriteRemap[f] = f;
