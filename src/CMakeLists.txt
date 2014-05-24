@@ -380,6 +380,7 @@ SET(SRCS
     gui/windows/botcheckerwindow.h
     gui/windows/textcommandeditor.cpp
     gui/windows/textcommandeditor.h
+    gui/onlineplayer.h
     gui/palette.cpp
     gui/palette.h
     gui/popups/popupmenu.cpp
@@ -875,6 +876,7 @@ SET(SRCS
     being/playerrelations.cpp
     being/playerrelations.h
     being/targetcursorsize.h
+    being/targetcursortype.h
     listeners/playerrelationslistener.h
     listeners/renamelistener.cpp
     listeners/renamelistener.h
@@ -936,6 +938,7 @@ SET(SRCS
     gui/buttontext.h
     gui/chatconsts.h
     gui/chatlog.h
+    gui/chatmsgtype.h
     gui/cliprect.h
     gui/color.h
     gui/dialogtype.h
