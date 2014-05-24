@@ -1,5 +1,5 @@
 /*
- *  Custom keyboard shortcuts configuration
+ *  The ManaPlus Client
  *  Copyright (C) 2007  Joshua Langley <joshlangley@optusnet.com.au>
  *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2014  The ManaPlus Developers

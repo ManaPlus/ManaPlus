@@ -1,5 +1,5 @@
 /*
- *  Extended support for activating emotes
+ *  The ManaPlus Client
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.

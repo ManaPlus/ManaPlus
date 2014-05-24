@@ -1,5 +1,5 @@
 /*
- *  Configurable text colors
+ *  The ManaPlus Client
  *  Copyright (C) 2008  Douglas Boffey <dougaboffey@netscape.net>
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers

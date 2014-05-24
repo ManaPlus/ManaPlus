@@ -1,5 +1,5 @@
 /*
- *  Emote database
+ *  The ManaPlus Client
  *  Copyright (C) 2009  Aethyra Development Team
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *

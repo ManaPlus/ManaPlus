@@ -1,5 +1,5 @@
 /*
- *  The Mana Client
+ *  The ManaPlus Client
  *  Copyright (C) 2011-2012  The Mana Developers
  *  Copyright (C) 2012-2014  The ManaPlus Developers
  *

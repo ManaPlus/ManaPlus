@@ -1,5 +1,5 @@
 /*
- *  Support for custom units
+ *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2014  The ManaPlus Developers

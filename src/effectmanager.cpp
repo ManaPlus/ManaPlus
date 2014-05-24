@@ -1,5 +1,5 @@
 /*
- *  An effects manager
+ *  The ManaPlus Client
  *  Copyright (C) 2008  Fate <fate.tmw@googlemail.com>
  *  Copyright (C) 2008  Chuck Miller <shadowmil@gmail.com>
  *  Copyright (C) 2011-2014  The ManaPlus Developers

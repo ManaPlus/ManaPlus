@@ -1,5 +1,5 @@
 /*
- *  Gui Skinning
+ *  The ManaPlus Client
  *  Copyright (C) 2008  The Legend of Mazzeroth Development Team
  *  Copyright (C) 2009  Aethyra Development Team
  *  Copyright (C) 2009  The Mana World Development Team

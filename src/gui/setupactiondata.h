@@ -1,5 +1,5 @@
 /*
- *  Setup action data configuration
+ *  The ManaPlus Client
  *  Copyright (C) 2007  Joshua Langley <joshlangley@optusnet.com.au>
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers

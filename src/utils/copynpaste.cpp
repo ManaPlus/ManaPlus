@@ -1,5 +1,5 @@
 /*
- *  Retrieve string pasted depending on OS mechanisms.
+ *  The ManaPlus Client
  *  Copyright (C) 2001-2010  Wormux Team
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
