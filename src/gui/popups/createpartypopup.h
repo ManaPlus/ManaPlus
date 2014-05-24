@@ -31,7 +31,7 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include "debug.h"
+#include "localconsts.h"
 
 class CreatePartyPopup final : public Popup,
                                public LinkHandler

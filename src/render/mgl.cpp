@@ -22,7 +22,7 @@
 
 #ifdef USE_OPENGL
 
-#include "localconsts.h"
+#include "debug.h"
 
 #define defName(name) name##_t m##name = nullptr
 

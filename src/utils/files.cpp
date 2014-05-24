@@ -28,7 +28,7 @@
 
 #include "utils/physfstools.h"
 
-#include "localconsts.h"
+#include "debug.h"
 
 #ifdef ANDROID
 void Files::extractLocale()

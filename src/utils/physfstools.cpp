@@ -27,7 +27,7 @@
 #include "utils/paths.h"
 #endif
 
-#include "localconsts.h"
+#include "debug.h"
 
 const char *dirSeparator = nullptr;
 

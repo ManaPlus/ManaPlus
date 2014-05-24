@@ -24,6 +24,8 @@
 #include "resources/map/metatile.h"
 #include "resources/map/walklayer.h"
 
+#include "debug.h"
+
 static const int walkMask = (BlockMask::WALL | BlockMask::AIR
     | BlockMask::WATER);
 

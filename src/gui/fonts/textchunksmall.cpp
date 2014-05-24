@@ -22,7 +22,7 @@
 
 #include "gui/fonts/font.h"
 
-#include "localconsts.h"
+#include "debug.h"
 
 TextChunkSmall::TextChunkSmall(const std::string &text0,
                                const Color &color0,

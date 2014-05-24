@@ -20,6 +20,8 @@
 
 #include "resources/cursor.h"
 
+#include "debug.h"
+
 namespace Cursor
 {
     static const StrToCursor hoverCursors[] =

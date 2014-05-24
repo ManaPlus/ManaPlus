@@ -20,6 +20,8 @@
 
 #include "render/renderers.h"
 
+#include "debug.h"
+
 static RenderType getDefault()
 {
 #ifdef USE_OPENGL

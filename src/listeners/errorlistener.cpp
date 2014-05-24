@@ -26,6 +26,8 @@
 
 #include "utils/process.h"
 
+#include "debug.h"
+
 ErrorListener errorListener;
 
 void ErrorListener::action(const ActionEvent &event)

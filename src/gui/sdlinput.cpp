@@ -91,6 +91,8 @@
 #include <SDL_keyboard.h>
 #include <SDL_timer.h>
 
+#include "debug.h"
+
 SDLInput::SDLInput() :
     mKeyInputQueue(),
     mMouseInputQueue(),

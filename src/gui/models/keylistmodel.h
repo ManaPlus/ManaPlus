@@ -28,7 +28,7 @@
 
 #include "gui/models/listmodel.h"
 
-#include "debug.h"
+#include "localconsts.h"
 
 /**
  * The list model for key function list.

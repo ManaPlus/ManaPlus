@@ -34,6 +34,8 @@
 
 #include "resources/db/sounddb.h"
 
+#include "debug.h"
+
 namespace NotifyManager
 {
     static ChatTab *getGuildTab()

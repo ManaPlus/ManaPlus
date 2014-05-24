@@ -39,6 +39,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 EditServerDialog::EditServerDialog(ServerDialog *const parent,
                                    ServerInfo server,
                                    const int index) :
