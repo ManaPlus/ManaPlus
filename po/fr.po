@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-05-18 14:52+0300\n"
+"POT-Creation-Date: 2014-05-24 13:07+0300\n"
 "PO-Revision-Date: 2014-05-08 09:08+0000\n"
 "Last-Translator: Alige <aligetmw@hotmail.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
@@ -29,87 +29,87 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. TRANSLATORS: disable trades message
-#: src/actionmanager.cpp:887
+#: src/actionmanager.cpp:897
 msgid "Ignoring incoming trade requests"
 msgstr "Ignorer les requêtes d'échanges entrantes"
 
 #. TRANSLATORS: enable trades message
-#: src/actionmanager.cpp:897
+#: src/actionmanager.cpp:907
 msgid "Accepting incoming trade requests"
 msgstr "Accepter les requêtes d'échanges entrantes"
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1255
+#: src/actormanager.cpp:1259
 msgid "Visible on map"
 msgstr "Visible sur la carte"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:334
+#: src/being/being.cpp:343
 msgid "Human"
 msgstr "Humain"
 
-#: src/being/being.cpp:499
+#: src/being/being.cpp:510
 msgid "dodge"
 msgstr "esquive"
 
-#: src/being/being.cpp:499
+#: src/being/being.cpp:510
 msgid "miss"
 msgstr "raté"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:1817 src/gui/windows/whoisonline.cpp:842
+#: src/being/being.cpp:1844 src/gui/windows/whoisonline.cpp:842
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:1822 src/gui/windows/whoisonline.cpp:847
+#: src/being/being.cpp:1849 src/gui/windows/whoisonline.cpp:847
 msgid "I"
 msgstr "I"
 
 #. TRANSLATORS: chat message after death
-#: src/being/localplayer.cpp:387
+#: src/being/localplayer.cpp:388
 #, c-format
 msgid "You were killed by %s"
 msgstr "Vous avez été tué par %s."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:828
+#: src/being/localplayer.cpp:829
 msgid "Tried to pick up nonexistent item."
 msgstr "Vous avez essayé de prendre un objet qui n'existe pas."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:832
+#: src/being/localplayer.cpp:833
 msgid "Item is too heavy."
 msgstr "L'objet est trop lourd."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:836
+#: src/being/localplayer.cpp:837
 msgid "Item is too far away."
 msgstr "L'objet est trop éloigné"
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:840
+#: src/being/localplayer.cpp:841
 msgid "Inventory is full."
 msgstr "L'inventaire est plein"
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:844
+#: src/being/localplayer.cpp:845
 msgid "Stack is too big."
 msgstr "La pile est trop grande"
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:848
+#: src/being/localplayer.cpp:849
 msgid "Item belongs to someone else."
 msgstr "L'objet appartient a quelqu'un d'autre"
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:852
+#: src/being/localplayer.cpp:853
 msgid "Unknown problem picking up item."
 msgstr "Problème inconnu pour ramasser l'objet."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:876
+#: src/being/localplayer.cpp:877
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -118,388 +118,388 @@ msgstr[1] "Vous avez ramassé %d [@@%d|%s@@]."
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1057 src/being/localplayer.cpp:1058
-#: src/being/localplayer.cpp:1094
+#: src/being/localplayer.cpp:1059 src/being/localplayer.cpp:1060
+#: src/being/localplayer.cpp:1096
 msgid "xp"
 msgstr "xp"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1062 src/being/localplayer.cpp:1068
-#: src/being/localplayer.cpp:1074
+#: src/being/localplayer.cpp:1064 src/being/localplayer.cpp:1070
+#: src/being/localplayer.cpp:1076
 msgid "job"
 msgstr "job"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1283
+#: src/being/localplayer.cpp:1285
 msgid "(D) default moves"
 msgstr "(D) Mouvements par défaut"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1285
+#: src/being/localplayer.cpp:1287
 msgid "(I) invert moves"
 msgstr "(I) Mouvements inversés"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1287
+#: src/being/localplayer.cpp:1289
 msgid "(c) moves with some crazy moves"
 msgstr "(c) mouvements un peu fous"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1289
+#: src/being/localplayer.cpp:1291
 msgid "(C) moves with crazy moves"
 msgstr "(C) mouvements complètements fous"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1291
+#: src/being/localplayer.cpp:1293
 msgid "(d) double normal + crazy"
 msgstr "(d) double normal et fou"
 
 #. TRANSLATORS: move type in status bar
-#: src/being/localplayer.cpp:1293
+#: src/being/localplayer.cpp:1295
 msgid "(?) unknown move"
 msgstr "(?) déplacement inconnu"
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/being/localplayer.cpp:1316
+#: src/being/localplayer.cpp:1318
 #, c-format
 msgid "(%u) crazy move number %u"
 msgstr "(%u) mouvement fou numéro %u"
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/being/localplayer.cpp:1322
+#: src/being/localplayer.cpp:1324
 msgid "(a) custom crazy move"
 msgstr "(a) mouvements fous personnalisés"
 
 #. TRANSLATORS: crazy move type in status bar
-#: src/being/localplayer.cpp:1327
+#: src/being/localplayer.cpp:1329
 msgid "(?) crazy move"
 msgstr "(?) mouvements fous"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1342
+#: src/being/localplayer.cpp:1344
 msgid "(0) default moves to target"
 msgstr "(0) Aller à la cible distante par défaut"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1344
+#: src/being/localplayer.cpp:1346
 msgid "(1) moves to target in distance 1"
 msgstr "(1) Aller à la cible distante de 1"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1346
+#: src/being/localplayer.cpp:1348
 msgid "(2) moves to target in distance 2"
 msgstr "(2) Aller à la cible jusqu'à 2 de distance"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1348
+#: src/being/localplayer.cpp:1350
 msgid "(3) moves to target in distance 3"
 msgstr "(3)  Aller à la cible distante de 3"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1350
+#: src/being/localplayer.cpp:1352
 msgid "(5) moves to target in distance 5"
 msgstr "(5)  Aller à la cible distante de 5"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1352
+#: src/being/localplayer.cpp:1354
 msgid "(7) moves to target in distance 7"
 msgstr "(7) Aller à la cible distante de 7"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1354
+#: src/being/localplayer.cpp:1356
 msgid "(A) moves to target in attack range"
 msgstr "(A) Aller à la cible dans le champ d'attaque"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1356
+#: src/being/localplayer.cpp:1358
 msgid "(a) archer attack range"
 msgstr "(a) Portée de l'attaque des archers"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1358
+#: src/being/localplayer.cpp:1360
 msgid "(B) moves to target in attack range - 1"
 msgstr "(B) aller jusqu'à cible à portée - 1"
 
 #. TRANSLATORS: move to target type in status bar
-#: src/being/localplayer.cpp:1360
+#: src/being/localplayer.cpp:1362
 msgid "(?) move to target"
 msgstr "(?) aller à la cible"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1380
+#: src/being/localplayer.cpp:1382
 msgid "(D) default follow"
 msgstr "(D) Suivre : défaut"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1382
+#: src/being/localplayer.cpp:1384
 msgid "(R) relative follow"
 msgstr "(R) Suivre: mouvement relatif"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1384
+#: src/being/localplayer.cpp:1386
 msgid "(M) mirror follow"
 msgstr "(M) Suivre effet miroir"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1386
+#: src/being/localplayer.cpp:1388
 msgid "(P) pet follow"
 msgstr "(P) Suivre comme un toutou"
 
 #. TRANSLATORS: folow mode in status bar
-#: src/being/localplayer.cpp:1388
+#: src/being/localplayer.cpp:1390
 msgid "(?) unknown follow"
 msgstr "(?) suivre : mode inconnu"
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1408 src/being/localplayer.cpp:1416
-#: src/being/localplayer.cpp:1444
+#: src/being/localplayer.cpp:1410 src/being/localplayer.cpp:1418
+#: src/being/localplayer.cpp:1446
 msgid "(?) attack"
 msgstr "(?) attaque"
 
 #. TRANSLATORS: switch attack type in status bar
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1410 src/being/localplayer.cpp:1436
+#: src/being/localplayer.cpp:1412 src/being/localplayer.cpp:1438
 msgid "(D) default attack"
 msgstr "(D) Attaque : défaut"
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/being/localplayer.cpp:1412
+#: src/being/localplayer.cpp:1414
 msgid "(s) switch attack without shield"
 msgstr "(s) Attaquer sans bouclier"
 
 #. TRANSLATORS: switch attack type in status bar
-#: src/being/localplayer.cpp:1414
+#: src/being/localplayer.cpp:1416
 msgid "(S) switch attack with shield"
 msgstr "(S) Attaquer avec bouclier"
 
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1438
+#: src/being/localplayer.cpp:1440
 msgid "(G) go and attack"
 msgstr "(G) Se déplacer et attaquer"
 
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1440
+#: src/being/localplayer.cpp:1442
 msgid "(A) go, attack, pickup"
 msgstr "(A) Se déplacer, attaquer et ramasser"
 
 #. TRANSLATORS: attack type in status bar
-#: src/being/localplayer.cpp:1442
+#: src/being/localplayer.cpp:1444
 msgid "(d) without auto attack"
 msgstr "(d) Sans attaque automatique"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1495
+#: src/being/localplayer.cpp:1497
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) Ramassage sur 1x1 case"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1497
+#: src/being/localplayer.cpp:1499
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) Ramassage par défaut sur 2x1 cases"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1499
+#: src/being/localplayer.cpp:1501
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) Ramassage avant sur  2x3 cases"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1501
+#: src/being/localplayer.cpp:1503
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) Ramassage sur 3x3 cases"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1503
+#: src/being/localplayer.cpp:1505
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) Aller et ramasser jusqu'à 4 de distance"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1505
+#: src/being/localplayer.cpp:1507
 msgid "(G) go and pick up in distance 8"
 msgstr "(G) Aller et ramasser jusqu'à 8 de distance"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1507
+#: src/being/localplayer.cpp:1509
 msgid "(A) go and pick up in max distance"
 msgstr "(A) Aller et ramasser jusqu'à la distance max"
 
 #. TRANSLATORS: pickup size in status bar
-#: src/being/localplayer.cpp:1509
+#: src/being/localplayer.cpp:1511
 msgid "(?) pick up"
 msgstr "(?) ramassage"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1523
+#: src/being/localplayer.cpp:1525
 msgid "(N) normal map view"
 msgstr "(N) Vue normale du jeu"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1525
+#: src/being/localplayer.cpp:1527
 msgid "(D) debug map view"
 msgstr "(D) Vue du jeu mode déverminage"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1527
+#: src/being/localplayer.cpp:1529
 msgid "(u) ultra map view"
 msgstr "(u) Vue du jeu mode Ultra 1"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1529
+#: src/being/localplayer.cpp:1531
 msgid "(U) ultra map view 2"
 msgstr "(u) Vue du jeu mode Ultra 2"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1531
+#: src/being/localplayer.cpp:1533
 msgid "(e) empty map view"
 msgstr "(e) Vue de la carte vide"
 
 #. TRANSLATORS: map view type in status bar
-#: src/being/localplayer.cpp:1533
+#: src/being/localplayer.cpp:1535
 msgid "(b) black & white map view"
 msgstr "(b) Vue de la carte en N&B"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1553
+#: src/being/localplayer.cpp:1555
 msgid "(f) use #flar for magic attack"
 msgstr "(f) Utiliser #flar comme sort d'attaque"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1555
+#: src/being/localplayer.cpp:1557
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) Utiliser #chiza comme sort d'attaque"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1557
+#: src/being/localplayer.cpp:1559
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) Utiliser #ingrav comme sort d'attaque"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1559
+#: src/being/localplayer.cpp:1561
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) Utiliser #frillyar comme sort d'attaque"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1561
+#: src/being/localplayer.cpp:1563
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) Utiliser #upmarmu comme sort d'attaque"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1563
+#: src/being/localplayer.cpp:1565
 msgid "(?) magic attack"
 msgstr "(?) sorts d'attaque"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1583
+#: src/being/localplayer.cpp:1585
 msgid "(a) attack all players"
 msgstr "(a) attaquer tous les joueurs"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1585
+#: src/being/localplayer.cpp:1587
 msgid "(f) attack all except friends"
 msgstr "(f) attaquer tous, sauf les amis"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1587
+#: src/being/localplayer.cpp:1589
 msgid "(b) attack bad relations"
 msgstr "(b) attaque les mauvaises relations"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1589
+#: src/being/localplayer.cpp:1591
 msgid "(d) don't attack players"
 msgstr "(d) Ne pas attaquer les joueurs"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1591
+#: src/being/localplayer.cpp:1593
 msgid "(?) pvp attack"
 msgstr "(?) attaque en PVP"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:1611
+#: src/being/localplayer.cpp:1613
 msgid "(D) default imitation"
 msgstr "(D) Imitation par défaut"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:1613
+#: src/being/localplayer.cpp:1615
 msgid "(O) outfits imitation"
 msgstr "(O) Imiter les équipements"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:1615
+#: src/being/localplayer.cpp:1617
 msgid "(?) imitation"
 msgstr "(?) imitation"
 
 #. TRANSLATORS: away message box header
-#: src/being/localplayer.cpp:1643
+#: src/being/localplayer.cpp:1645
 msgid "Away"
 msgstr "Inactif"
 
 #. TRANSLATORS: away type in status bar
-#: src/being/localplayer.cpp:1666
+#: src/being/localplayer.cpp:1668
 msgid "(O) on keyboard"
 msgstr "(O) Présent sur le jeu"
 
 #. TRANSLATORS: away type in status bar
-#: src/being/localplayer.cpp:1668
+#: src/being/localplayer.cpp:1670
 msgid "(A) away"
 msgstr "(A) Absent"
 
 #. TRANSLATORS: away type in status bar
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:1670 src/being/localplayer.cpp:1688
+#: src/being/localplayer.cpp:1672 src/being/localplayer.cpp:1690
 msgid "(?) away"
 msgstr "(?) absent"
 
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:1684
+#: src/being/localplayer.cpp:1686
 msgid "(G) game camera mode"
 msgstr "(G) Mode camera du jeu"
 
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:1686
+#: src/being/localplayer.cpp:1688
 msgid "(F) free camera mode"
 msgstr "(F) Mode camera libre"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:1713
+#: src/being/localplayer.cpp:1715
 msgid "Game modifiers are enabled"
 msgstr "Modificateurs de mode de jeu activés"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:1715
+#: src/being/localplayer.cpp:1717
 msgid "Game modifiers are disabled"
 msgstr "Modificateurs de mode de jeu désactivés"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:1717
+#: src/being/localplayer.cpp:1719
 msgid "Game modifiers are unknown"
 msgstr "Les modificateurs de jeux sont inconnus"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:3323
+#: src/being/localplayer.cpp:3325
 #, c-format
 msgid "Follow: %s"
 msgstr "Suivre : %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3329 src/being/localplayer.cpp:3354
+#: src/being/localplayer.cpp:3331 src/being/localplayer.cpp:3356
 msgid "Follow canceled"
 msgstr "Suivi annulé"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:3339
+#: src/being/localplayer.cpp:3341
 #, c-format
 msgid "Imitation: %s"
 msgstr "Imiter : %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3345 src/being/localplayer.cpp:3359
+#: src/being/localplayer.cpp:3347 src/being/localplayer.cpp:3361
 msgid "Imitation canceled"
 msgstr "Imitation annulée"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:3704
+#: src/being/localplayer.cpp:3707
 #, c-format
 msgid "You see %s"
 msgstr "Tu vois %s"
@@ -509,8 +509,8 @@ msgstr "Tu vois %s"
 #. TRANSLATORS: add player to completle ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
-#: src/being/playerrelations.cpp:468 src/gui/popups/popupmenu.cpp:2590
-#: src/gui/popups/popupmenu.cpp:2632
+#: src/being/playerrelations.cpp:468 src/gui/popups/popupmenu.cpp:2591
+#: src/gui/popups/popupmenu.cpp:2633
 msgid "Completely ignore"
 msgstr "Ignorer complètement"
 
@@ -537,37 +537,37 @@ msgstr "Bulle flottante"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:1120 src/gui/windowmenu.cpp:158
+#: src/client.cpp:1122 src/gui/windowmenu.cpp:162
 #: src/gui/windows/setupwindow.cpp:62
 msgid "Setup"
 msgstr "Configuration"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:1123 src/gui/widgets/tabs/setup_perfomance.cpp:53
+#: src/client.cpp:1125 src/gui/widgets/tabs/setup_perfomance.cpp:53
 msgid "Performance"
 msgstr "Performance"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:1126 src/gui/widgets/tabs/setup_video.cpp:103
+#: src/client.cpp:1128 src/gui/widgets/tabs/setup_video.cpp:103
 msgid "Video"
 msgstr "Vidéo"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:1129 src/gui/widgets/tabs/setup_theme.cpp:121
+#: src/client.cpp:1131 src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Thème"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:1132
+#: src/client.cpp:1134
 msgid "About"
 msgstr "À propos"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:1135 src/gui/windowmenu.cpp:74
+#: src/client.cpp:1137 src/gui/windowmenu.cpp:74
 #: src/gui/windows/helpwindow.cpp:51
 msgid "Help"
 msgstr "Aide"
@@ -582,8 +582,8 @@ msgstr "Aide"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:1139 src/gui/popups/popupmenu.cpp:624
-#: src/gui/popups/popupmenu.cpp:863 src/gui/windows/didyouknowwindow.cpp:79
+#: src/client.cpp:1141 src/gui/popups/popupmenu.cpp:625
+#: src/gui/popups/popupmenu.cpp:864 src/gui/windows/didyouknowwindow.cpp:79
 #: src/gui/windows/inventorywindow.cpp:228 src/gui/windows/npcdialog.cpp:72
 #: src/gui/windows/npcdialog.cpp:110 src/gui/windows/questswindow.cpp:73
 #: src/gui/windows/shopwindow.cpp:83
@@ -591,32 +591,32 @@ msgid "Close"
 msgstr "Fermer"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1261
+#: src/client.cpp:1263
 msgid "Connecting to server"
 msgstr "Connexion au serveur"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1308
+#: src/client.cpp:1310
 msgid "Logging in"
 msgstr "Connexion"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1351
+#: src/client.cpp:1353
 msgid "Entering game world"
 msgstr "Entrée dans le monde de jeu"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1474
+#: src/client.cpp:1476
 msgid "Requesting characters"
 msgstr "Téléchargement des personnages"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1514
+#: src/client.cpp:1516
 msgid "Connecting to the game server"
 msgstr "Connexion au serveur de jeu"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1526
+#: src/client.cpp:1528
 msgid "Changing game servers"
 msgstr "Changement de serveur de jeu"
 
@@ -631,79 +631,79 @@ msgstr "Changement de serveur de jeu"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1581 src/client.cpp:1592 src/client.cpp:1777
+#: src/client.cpp:1583 src/client.cpp:1594 src/client.cpp:1779
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:158
-#: src/gui/windows/charcreatedialog.cpp:356
-#: src/gui/windows/charselectdialog.cpp:273
+#: src/gui/windows/charcreatedialog.cpp:358
+#: src/gui/windows/charselectdialog.cpp:275
 #: src/gui/windows/editserverdialog.cpp:192
-#: src/gui/windows/registerdialog.cpp:246
+#: src/gui/windows/registerdialog.cpp:247
 #: src/gui/windows/unregisterdialog.cpp:147
-#: src/net/ea/charserverhandler.cpp:202 src/net/ea/charserverhandler.cpp:226
+#: src/net/ea/charserverhandler.cpp:203 src/net/ea/charserverhandler.cpp:227
 msgid "Error"
 msgstr "Erreur"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1604
+#: src/client.cpp:1606
 msgid "Requesting registration details"
 msgstr "Demande des paramètres d'inscription"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1645
+#: src/client.cpp:1647
 msgid "Password Change"
 msgstr "Changement de mot de passe"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1647
+#: src/client.cpp:1649
 msgid "Password changed successfully!"
 msgstr "Le mot de passe a été changé avec succès !"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1670
+#: src/client.cpp:1672
 msgid "Email Change"
 msgstr "Changer d'e-mail"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1672
+#: src/client.cpp:1674
 msgid "Email changed successfully!"
 msgstr "L'adresse e-mail a été changée avec succès !"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1695
+#: src/client.cpp:1697
 msgid "Unregister Successful"
 msgstr "Désinscription réussie"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1697
+#: src/client.cpp:1699
 msgid "Farewell, come back any time..."
 msgstr "À bientôt, Revenez quand vous voulez..."
 
 #. TRANSLATORS: directory creation error
-#: src/client.cpp:1985 src/client.cpp:2000 src/client.cpp:2045
-#: src/client.cpp:2061 src/client.cpp:2488 src/client.cpp:2496
+#: src/client.cpp:1987 src/client.cpp:2002 src/client.cpp:2047
+#: src/client.cpp:2063 src/client.cpp:2490 src/client.cpp:2498
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s n'existe pas et ne peut pas être créé ! Fermeture du programme."
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2217
+#: src/client.cpp:2219
 #, c-format
 msgid "Invalid update host: %s."
 msgstr "Hôte de mise à jour invalide : %s"
 
 #. TRANSLATORS: update server initialisation error
-#: src/client.cpp:2258 src/client.cpp:2265
+#: src/client.cpp:2260 src/client.cpp:2267
 msgid "Error creating updates directory!"
 msgstr "Impossible de créer le dossier de mise à jour !"
 
-#: src/client.cpp:2287 src/client.cpp:2304
+#: src/client.cpp:2289 src/client.cpp:2306
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
 "Erreur : %s n'existe pas et ne peut pas être créé ! Fermeture du programme."
 
 #. TRANSLATORS: error message question
-#: src/client.cpp:2970
+#: src/client.cpp:2972
 msgid "Do you want to open support page?"
 msgstr "Veux-tu ouvrir la page d'aide ?"
 
@@ -934,7 +934,7 @@ msgid "Resource orphaned images:"
 msgstr "Images des ressources non affectées :"
 
 #. TRANSLATORS: chat option changed message
-#: src/commands.h:35
+#: src/commands.h:37
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
@@ -953,37 +953,37 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr "dyecmd srcdyestring dstfile"
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:277 src/gui/widgets/tabs/chattab.cpp:472
+#: src/game.cpp:279 src/gui/widgets/tabs/chattab.cpp:472
 msgid "General"
 msgstr "Général"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: full button name
 #. TRANSLATORS: debug window name
-#: src/game.cpp:293 src/gui/widgets/tabs/chattab.cpp:474
-#: src/gui/windowmenu.cpp:145 src/gui/windows/debugwindow.cpp:40
+#: src/game.cpp:295 src/gui/widgets/tabs/chattab.cpp:474
+#: src/gui/windowmenu.cpp:149 src/gui/windows/debugwindow.cpp:40
 msgid "Debug"
 msgstr "Débogage"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:582
+#: src/game.cpp:584
 #, c-format
 msgid "Screenshot saved as %s"
 msgstr "Capture d'écran sauvegardée sous %s"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:592
+#: src/game.cpp:594
 msgid "Saving screenshot failed!"
 msgstr "La  capture d'écran a échoué !"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:672
+#: src/game.cpp:674
 msgid "The connection to the server was lost."
 msgstr ""
 "La connexion au serveur a été coupée, le programme va maintenant se fermer."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:675
+#: src/game.cpp:677
 msgid "Network Error"
 msgstr "Erreur Réseau"
 
@@ -1154,8 +1154,8 @@ msgstr "Énorme (23)"
 
 #. TRANSLATORS: language
 #. TRANSLATORS: popup menu header
-#: src/gui/models/langlistmodel.h:45 src/gui/popups/popupmenu.cpp:2279
-#: src/gui/popups/popupmenu.cpp:2357 src/gui/widgets/tabs/socialtabbase.h:46
+#: src/gui/models/langlistmodel.h:45 src/gui/popups/popupmenu.cpp:2280
+#: src/gui/popups/popupmenu.cpp:2358 src/gui/widgets/tabs/socialtabbase.h:48
 msgid "(default)"
 msgstr "(défaut)"
 
@@ -1424,37 +1424,37 @@ msgstr "Créer un groupe"
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: unregister dialog. button.
 #. TRANSLATORS: updater window button
-#: src/gui/popups/createpartypopup.h:54 src/gui/popups/popupmenu.cpp:313
-#: src/gui/popups/popupmenu.cpp:348 src/gui/popups/popupmenu.cpp:446
-#: src/gui/popups/popupmenu.cpp:493 src/gui/popups/popupmenu.cpp:528
-#: src/gui/popups/popupmenu.cpp:559 src/gui/popups/popupmenu.cpp:579
-#: src/gui/popups/popupmenu.cpp:604 src/gui/popups/popupmenu.cpp:803
-#: src/gui/popups/popupmenu.cpp:830 src/gui/popups/popupmenu.cpp:884
-#: src/gui/popups/popupmenu.cpp:2021 src/gui/popups/popupmenu.cpp:2057
-#: src/gui/popups/popupmenu.cpp:2107 src/gui/popups/popupmenu.cpp:2149
-#: src/gui/popups/popupmenu.cpp:2190 src/gui/popups/popupmenu.cpp:2258
-#: src/gui/popups/popupmenu.cpp:2336 src/gui/popups/popupmenu.cpp:2370
-#: src/gui/popups/popupmenu.cpp:2396 src/gui/popups/popupmenu.cpp:2418
-#: src/gui/popups/popupmenu.cpp:2441 src/gui/popups/popupmenu.cpp:2468
-#: src/gui/popups/popupmenu.cpp:2485 src/gui/popups/popupmenu.cpp:2765
-#: src/gui/popups/popupmenu.cpp:2901 src/gui/setupactiondata.h:1906
+#: src/gui/popups/createpartypopup.h:54 src/gui/popups/popupmenu.cpp:314
+#: src/gui/popups/popupmenu.cpp:349 src/gui/popups/popupmenu.cpp:447
+#: src/gui/popups/popupmenu.cpp:494 src/gui/popups/popupmenu.cpp:529
+#: src/gui/popups/popupmenu.cpp:560 src/gui/popups/popupmenu.cpp:580
+#: src/gui/popups/popupmenu.cpp:605 src/gui/popups/popupmenu.cpp:804
+#: src/gui/popups/popupmenu.cpp:831 src/gui/popups/popupmenu.cpp:885
+#: src/gui/popups/popupmenu.cpp:2022 src/gui/popups/popupmenu.cpp:2058
+#: src/gui/popups/popupmenu.cpp:2108 src/gui/popups/popupmenu.cpp:2150
+#: src/gui/popups/popupmenu.cpp:2191 src/gui/popups/popupmenu.cpp:2259
+#: src/gui/popups/popupmenu.cpp:2337 src/gui/popups/popupmenu.cpp:2371
+#: src/gui/popups/popupmenu.cpp:2397 src/gui/popups/popupmenu.cpp:2419
+#: src/gui/popups/popupmenu.cpp:2442 src/gui/popups/popupmenu.cpp:2469
+#: src/gui/popups/popupmenu.cpp:2486 src/gui/popups/popupmenu.cpp:2766
+#: src/gui/popups/popupmenu.cpp:2902 src/gui/setupactiondata.h:1913
 #: src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/changeemaildialog.cpp:57
 #: src/gui/windows/changepassworddialog.cpp:59
-#: src/gui/windows/charcreatedialog.cpp:126
+#: src/gui/windows/charcreatedialog.cpp:128
 #: src/gui/windows/connectiondialog.cpp:52
 #: src/gui/windows/editserverdialog.cpp:59
 #: src/gui/windows/itemamountwindow.cpp:166
-#: src/gui/windows/npcpostdialog.cpp:68 src/gui/windows/quitdialog.cpp:72
-#: src/gui/windows/registerdialog.cpp:64 src/gui/windows/setupwindow.cpp:95
+#: src/gui/windows/npcpostdialog.cpp:68 src/gui/windows/quitdialog.cpp:73
+#: src/gui/windows/registerdialog.cpp:65 src/gui/windows/setupwindow.cpp:95
 #: src/gui/windows/textcommandeditor.cpp:88 src/gui/windows/textdialog.cpp:55
 #: src/gui/windows/unregisterdialog.cpp:56
-#: src/gui/windows/updaterwindow.cpp:185
+#: src/gui/windows/updaterwindow.cpp:186
 msgid "Cancel"
 msgstr "Annuler"
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:196
+#: src/gui/popups/itempopup.cpp:197
 #, c-format
 msgid "Weight: %s"
 msgstr "Poids : %s"
@@ -1462,7 +1462,7 @@ msgstr "Poids : %s"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
 #. TRANSLATORS: trade chat tab name
-#: src/gui/popups/popupmenu.cpp:158 src/gui/popups/popupmenu.cpp:697
+#: src/gui/popups/popupmenu.cpp:159 src/gui/popups/popupmenu.cpp:698
 #: src/gui/widgets/tabs/tradetab.cpp:35
 msgid "Trade"
 msgstr "Échange"
@@ -1476,49 +1476,49 @@ msgstr "Échange"
 #. TRANSLATORS: input action name
 #. TRANSLATORS: bot checker window table header
 #. TRANSLATORS: player stat
-#: src/gui/popups/popupmenu.cpp:161 src/gui/popups/popupmenu.cpp:265
-#: src/gui/popups/popupmenu.cpp:700 src/gui/setupactiondata.h:63
+#: src/gui/popups/popupmenu.cpp:162 src/gui/popups/popupmenu.cpp:266
+#: src/gui/popups/popupmenu.cpp:701 src/gui/setupactiondata.h:64
 #: src/gui/windows/botcheckerwindow.cpp:82
-#: src/net/eathena/generalhandler.cpp:252 src/net/tmwa/generalhandler.cpp:290
+#: src/net/eathena/generalhandler.cpp:256 src/net/tmwa/generalhandler.cpp:294
 msgid "Attack"
 msgstr "Attaquer"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: send whisper to player
-#: src/gui/popups/popupmenu.cpp:164 src/gui/popups/popupmenu.cpp:371
+#: src/gui/popups/popupmenu.cpp:165 src/gui/popups/popupmenu.cpp:372
 msgid "Whisper"
 msgstr "Message"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: heal player
-#: src/gui/popups/popupmenu.cpp:170 src/gui/popups/popupmenu.cpp:704
+#: src/gui/popups/popupmenu.cpp:171 src/gui/popups/popupmenu.cpp:705
 msgid "Heal"
 msgstr "Soigner"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player from guild
-#: src/gui/popups/popupmenu.cpp:190 src/gui/popups/popupmenu.cpp:206
-#: src/gui/popups/popupmenu.cpp:417 src/gui/popups/popupmenu.cpp:751
+#: src/gui/popups/popupmenu.cpp:191 src/gui/popups/popupmenu.cpp:207
+#: src/gui/popups/popupmenu.cpp:418 src/gui/popups/popupmenu.cpp:752
 msgid "Kick from guild"
 msgstr "Sortir de la guilde"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: change player position in guild
-#: src/gui/popups/popupmenu.cpp:197 src/gui/popups/popupmenu.cpp:213
-#: src/gui/popups/popupmenu.cpp:424 src/gui/popups/popupmenu.cpp:758
+#: src/gui/popups/popupmenu.cpp:198 src/gui/popups/popupmenu.cpp:214
+#: src/gui/popups/popupmenu.cpp:425 src/gui/popups/popupmenu.cpp:759
 msgid "Change pos in guild"
 msgstr "Changer la position dans la guilde"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: invite player to guild
-#: src/gui/popups/popupmenu.cpp:223 src/gui/popups/popupmenu.cpp:434
-#: src/gui/popups/popupmenu.cpp:769
+#: src/gui/popups/popupmenu.cpp:224 src/gui/popups/popupmenu.cpp:435
+#: src/gui/popups/popupmenu.cpp:770
 msgid "Invite to guild"
 msgstr "Inviter dans la guilde"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: set player invisible for self by id
-#: src/gui/popups/popupmenu.cpp:230
+#: src/gui/popups/popupmenu.cpp:231
 msgid "Nuke"
 msgstr "Annihiler"
 
@@ -1536,10 +1536,10 @@ msgstr "Annihiler"
 #. TRANSLATORS: move to player location
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: bot checker window table header
-#: src/gui/popups/popupmenu.cpp:233 src/gui/popups/popupmenu.cpp:254
-#: src/gui/popups/popupmenu.cpp:401 src/gui/popups/popupmenu.cpp:552
-#: src/gui/popups/popupmenu.cpp:711 src/gui/popups/popupmenu.cpp:792
-#: src/gui/setupactiondata.h:2021 src/gui/windows/botcheckerwindow.cpp:86
+#: src/gui/popups/popupmenu.cpp:234 src/gui/popups/popupmenu.cpp:255
+#: src/gui/popups/popupmenu.cpp:402 src/gui/popups/popupmenu.cpp:553
+#: src/gui/popups/popupmenu.cpp:712 src/gui/popups/popupmenu.cpp:793
+#: src/gui/setupactiondata.h:2028 src/gui/windows/botcheckerwindow.cpp:86
 msgid "Move"
 msgstr "Déplacement"
 
@@ -1547,7 +1547,7 @@ msgstr "Déplacement"
 #. TRANSLATORS: talk with npc
 #. TRANSLATORS: input action name
 #. TRANSLATORS: bot checker window table header
-#: src/gui/popups/popupmenu.cpp:244 src/gui/setupactiondata.h:105
+#: src/gui/popups/popupmenu.cpp:245 src/gui/setupactiondata.h:106
 #: src/gui/windows/botcheckerwindow.cpp:84
 msgid "Talk"
 msgstr "Parler"
@@ -1558,7 +1558,7 @@ msgstr "Parler"
 #. TRANSLATORS: buy item
 #. TRANSLATORS: buy dialog name
 #. TRANSLATORS: shop window button
-#: src/gui/popups/popupmenu.cpp:247 src/gui/popups/popupmenu.cpp:2663
+#: src/gui/popups/popupmenu.cpp:248 src/gui/popups/popupmenu.cpp:2664
 #: src/gui/windows/buydialog.cpp:184 src/gui/windows/buydialog.cpp:200
 #: src/gui/windows/buydialog.cpp:258 src/gui/windows/buyselldialog.cpp:67
 msgid "Buy"
@@ -1571,7 +1571,7 @@ msgstr "Acheter"
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: sell dialog name
 #. TRANSLATORS: sell dialog button
-#: src/gui/popups/popupmenu.cpp:250 src/gui/popups/popupmenu.cpp:2666
+#: src/gui/popups/popupmenu.cpp:251 src/gui/popups/popupmenu.cpp:2667
 #: src/gui/windows/buyselldialog.cpp:69 src/gui/windows/selldialog.cpp:59
 #: src/gui/windows/selldialog.cpp:73 src/gui/windows/selldialog.cpp:119
 msgid "Sell"
@@ -1581,26 +1581,26 @@ msgstr "Vendre"
 #. TRANSLATORS: add comment to npc
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add comment to player
-#: src/gui/popups/popupmenu.cpp:257 src/gui/popups/popupmenu.cpp:381
-#: src/gui/popups/popupmenu.cpp:2727
+#: src/gui/popups/popupmenu.cpp:258 src/gui/popups/popupmenu.cpp:382
+#: src/gui/popups/popupmenu.cpp:2728
 msgid "Add comment"
 msgstr "Ajouter commentaire"
 
 #. TRANSLATORS: remove monster from attack list
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:277
+#: src/gui/popups/popupmenu.cpp:278
 msgid "Remove from attack list"
 msgstr "Enlever de la liste d'attaque"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add monster to priotiry attack list
-#: src/gui/popups/popupmenu.cpp:284
+#: src/gui/popups/popupmenu.cpp:285
 msgid "Add to priority attack list"
 msgstr "Ajouter à la liste de priorités d'attaque"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add monster to attack list
-#: src/gui/popups/popupmenu.cpp:288
+#: src/gui/popups/popupmenu.cpp:289
 msgid "Add to attack list"
 msgstr "Ajouter à la liste d'attaque"
 
@@ -1608,7 +1608,7 @@ msgstr "Ajouter à la liste d'attaque"
 #. TRANSLATORS: add monster to ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to pickup list
-#: src/gui/popups/popupmenu.cpp:292 src/gui/popups/popupmenu.cpp:2747
+#: src/gui/popups/popupmenu.cpp:293 src/gui/popups/popupmenu.cpp:2748
 msgid "Add to ignore list"
 msgstr "Ajouter à la liste d'ignorés"
 
@@ -1616,44 +1616,44 @@ msgstr "Ajouter à la liste d'ignorés"
 #. TRANSLATORS: add being name to chat
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player name to chat
-#: src/gui/popups/popupmenu.cpp:308 src/gui/popups/popupmenu.cpp:442
+#: src/gui/popups/popupmenu.cpp:309 src/gui/popups/popupmenu.cpp:443
 msgid "Add name to chat"
 msgstr "Ajouter le nom dans la boite de dialogue"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: settings tab name
-#: src/gui/popups/popupmenu.cpp:325 src/gui/widgets/tabs/setup_players.cpp:38
+#: src/gui/popups/popupmenu.cpp:326 src/gui/widgets/tabs/setup_players.cpp:38
 msgid "Players"
 msgstr "Joueurs"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player from party
-#: src/gui/popups/popupmenu.cpp:393 src/gui/popups/popupmenu.cpp:732
-#: src/gui/popups/popupmenu.cpp:2711
+#: src/gui/popups/popupmenu.cpp:394 src/gui/popups/popupmenu.cpp:733
+#: src/gui/popups/popupmenu.cpp:2712
 msgid "Kick from party"
 msgstr "Sortir du groupe"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: pickup item from ground
-#: src/gui/popups/popupmenu.cpp:475 src/gui/popups/popupmenu.cpp:484
+#: src/gui/popups/popupmenu.cpp:476 src/gui/popups/popupmenu.cpp:485
 msgid "Pick up"
 msgstr "Ramasser"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item name to chat
-#: src/gui/popups/popupmenu.cpp:489 src/gui/popups/popupmenu.cpp:2017
-#: src/gui/popups/popupmenu.cpp:2093 src/gui/popups/popupmenu.cpp:2135
+#: src/gui/popups/popupmenu.cpp:490 src/gui/popups/popupmenu.cpp:2018
+#: src/gui/popups/popupmenu.cpp:2094 src/gui/popups/popupmenu.cpp:2136
 msgid "Add to chat"
 msgstr "Ajouter à la conversation"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:510 src/gui/popups/popupmenu.cpp:542
+#: src/gui/popups/popupmenu.cpp:511 src/gui/popups/popupmenu.cpp:543
 msgid "Map Item"
 msgstr "Objet de carte"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: rename map item
-#: src/gui/popups/popupmenu.cpp:513
+#: src/gui/popups/popupmenu.cpp:514
 msgid "Rename"
 msgstr "Renommer"
 
@@ -1663,20 +1663,20 @@ msgstr "Renommer"
 #. TRANSLATORS: remove attack target
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove item from pickup filter
-#: src/gui/popups/popupmenu.cpp:516 src/gui/popups/popupmenu.cpp:2332
-#: src/gui/popups/popupmenu.cpp:2366
+#: src/gui/popups/popupmenu.cpp:517 src/gui/popups/popupmenu.cpp:2333
+#: src/gui/popups/popupmenu.cpp:2367
 msgid "Remove"
 msgstr "Enlever"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: warp to map item
-#: src/gui/popups/popupmenu.cpp:523 src/gui/popups/popupmenu.cpp:548
+#: src/gui/popups/popupmenu.cpp:524 src/gui/popups/popupmenu.cpp:549
 msgid "Warp"
 msgstr "Téléportation"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move camera to map item
-#: src/gui/popups/popupmenu.cpp:555
+#: src/gui/popups/popupmenu.cpp:556
 msgid "Move camera"
 msgstr "Bouger la caméra"
 
@@ -1685,7 +1685,7 @@ msgstr "Bouger la caméra"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
-#: src/gui/popups/popupmenu.cpp:572 src/gui/setupactiondata.h:2029
+#: src/gui/popups/popupmenu.cpp:573 src/gui/setupactiondata.h:2036
 #: src/gui/windowmenu.cpp:141 src/gui/windows/inventorywindow.cpp:194
 #: src/gui/windows/outfitwindow.cpp:54
 msgid "Outfits"
@@ -1693,69 +1693,69 @@ msgstr "Costumes"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: clear selected outfit
-#: src/gui/popups/popupmenu.cpp:575
+#: src/gui/popups/popupmenu.cpp:576
 msgid "Clear outfit"
 msgstr "Effacer la tenue"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: full button name
-#: src/gui/popups/popupmenu.cpp:597 src/gui/windowmenu.cpp:125
+#: src/gui/popups/popupmenu.cpp:598 src/gui/windowmenu.cpp:125
 msgid "Spells"
 msgstr "Sortilèges"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: edit selected spell
-#: src/gui/popups/popupmenu.cpp:600
+#: src/gui/popups/popupmenu.cpp:601
 msgid "Edit spell"
 msgstr "Éditer le sortilège"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove all text from chat tab
 #. TRANSLATORS: npc dialog button
-#: src/gui/popups/popupmenu.cpp:629 src/gui/windows/npcdialog.cpp:107
+#: src/gui/popups/popupmenu.cpp:630 src/gui/windows/npcdialog.cpp:107
 msgid "Clear"
 msgstr "Effacer"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: disable chat tab highlight
-#: src/gui/popups/popupmenu.cpp:636
+#: src/gui/popups/popupmenu.cpp:637
 msgid "Disable highlight"
 msgstr "Désactiver la surbrillance"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable chat tab highlight
-#: src/gui/popups/popupmenu.cpp:642
+#: src/gui/popups/popupmenu.cpp:643
 msgid "Enable highlight"
 msgstr "Activer la surbrillance"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: do not remove player names from chat tab
-#: src/gui/popups/popupmenu.cpp:648
+#: src/gui/popups/popupmenu.cpp:649
 msgid "Don't remove name"
 msgstr "Ne pas enlever les noms"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove player names from chat tab
-#: src/gui/popups/popupmenu.cpp:654
+#: src/gui/popups/popupmenu.cpp:655
 msgid "Remove name"
 msgstr "Enlève le nom"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable away messages in chat tab
-#: src/gui/popups/popupmenu.cpp:660
+#: src/gui/popups/popupmenu.cpp:661
 msgid "Enable away"
 msgstr "Active la fonction Absence"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: disable away messages in chat tab
-#: src/gui/popups/popupmenu.cpp:666
+#: src/gui/popups/popupmenu.cpp:667
 msgid "Disable away"
 msgstr "Désactive la fonction Absence"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable away messages in chat tab
 #. TRANSLATORS: social window button
-#: src/gui/popups/popupmenu.cpp:673 src/gui/windows/socialwindow.cpp:86
+#: src/gui/popups/popupmenu.cpp:674 src/gui/windows/socialwindow.cpp:86
 msgid "Leave"
 msgstr "Quitter"
 
@@ -1765,85 +1765,85 @@ msgstr "Quitter"
 #. TRANSLATORS: copy link to clipboard
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy npc text to clipboard
-#: src/gui/popups/popupmenu.cpp:678 src/gui/popups/popupmenu.cpp:2437
-#: src/gui/popups/popupmenu.cpp:2481
+#: src/gui/popups/popupmenu.cpp:679 src/gui/popups/popupmenu.cpp:2438
+#: src/gui/popups/popupmenu.cpp:2482
 msgid "Copy to clipboard"
 msgstr "Copier vers le presse-papier"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: invite player to party
-#: src/gui/popups/popupmenu.cpp:725 src/gui/popups/popupmenu.cpp:2705
+#: src/gui/popups/popupmenu.cpp:726 src/gui/popups/popupmenu.cpp:2706
 msgid "Invite to party"
 msgstr "Inviter dans le groupe"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:812
+#: src/gui/popups/popupmenu.cpp:813
 msgid "Change guild position"
 msgstr "Changer de position dans la guilde"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:857
+#: src/gui/popups/popupmenu.cpp:858
 msgid "window"
 msgstr "fenêtre"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: unlock window
-#: src/gui/popups/popupmenu.cpp:872
+#: src/gui/popups/popupmenu.cpp:873
 msgid "Unlock"
 msgstr "Déverouiller"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: lock window
-#: src/gui/popups/popupmenu.cpp:878
+#: src/gui/popups/popupmenu.cpp:879
 msgid "Lock"
 msgstr "Verouiller"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1379
+#: src/gui/popups/popupmenu.cpp:1380
 msgid "Rename map sign          "
 msgstr "Renommer le panneau de carte"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1381
+#: src/gui/popups/popupmenu.cpp:1382
 msgid "Name:                    "
 msgstr "Nom : "
 
-#: src/gui/popups/popupmenu.cpp:1405
+#: src/gui/popups/popupmenu.cpp:1406
 msgid "Player comment            "
 msgstr "Le joueur commente            "
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1407
+#: src/gui/popups/popupmenu.cpp:1408
 msgid "Comment:                      "
 msgstr "Commentaire :                      "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
-#: src/gui/popups/popupmenu.cpp:1934
+#: src/gui/popups/popupmenu.cpp:1935
 msgid "Add to trade"
 msgstr "Ajouter à la transaction"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add 10 item amount to trade
-#: src/gui/popups/popupmenu.cpp:1941
+#: src/gui/popups/popupmenu.cpp:1942
 msgid "Add to trade 10"
 msgstr "Ajouter 10 dans l'échange"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add half item amount to trade
-#: src/gui/popups/popupmenu.cpp:1945
+#: src/gui/popups/popupmenu.cpp:1946
 msgid "Add to trade half"
 msgstr "Ajouter la moitié dans l'échange"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all amount except one item to trade
-#: src/gui/popups/popupmenu.cpp:1948
+#: src/gui/popups/popupmenu.cpp:1949
 msgid "Add to trade all-1"
 msgstr "Ajouter pour échanger tout-1"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all amount item to trade
-#: src/gui/popups/popupmenu.cpp:1951
+#: src/gui/popups/popupmenu.cpp:1952
 msgid "Add to trade all"
 msgstr "Ajouter tout dans l'échange"
 
@@ -1852,64 +1852,64 @@ msgstr "Ajouter tout dans l'échange"
 #. TRANSLATORS: storage button
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: setup button
-#: src/gui/popups/popupmenu.cpp:1959 src/gui/popups/popupmenu.cpp:2089
-#: src/gui/popups/popupmenu.cpp:2130 src/gui/windows/inventorywindow.cpp:224
+#: src/gui/popups/popupmenu.cpp:1960 src/gui/popups/popupmenu.cpp:2090
+#: src/gui/popups/popupmenu.cpp:2131 src/gui/windows/inventorywindow.cpp:224
 #: src/gui/windows/inventorywindow.cpp:739 src/gui/windows/setupwindow.cpp:97
 msgid "Store"
 msgstr "Entreposer"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add 10 item amount to storage
-#: src/gui/popups/popupmenu.cpp:1966
+#: src/gui/popups/popupmenu.cpp:1967
 msgid "Store 10"
 msgstr "Entreposer 10"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add half item amount to storage
-#: src/gui/popups/popupmenu.cpp:1970
+#: src/gui/popups/popupmenu.cpp:1971
 msgid "Store half"
 msgstr "Entreposer la moitié"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all except one item amount to storage
-#: src/gui/popups/popupmenu.cpp:1973
+#: src/gui/popups/popupmenu.cpp:1974
 msgid "Store all-1"
 msgstr "Tout entreposer-1"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all item amount to storage
-#: src/gui/popups/popupmenu.cpp:1976
+#: src/gui/popups/popupmenu.cpp:1977
 msgid "Store all"
 msgstr "Entreposer tout"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get item from storage
 #. TRANSLATORS: storage button
-#: src/gui/popups/popupmenu.cpp:1988 src/gui/windows/inventorywindow.cpp:226
+#: src/gui/popups/popupmenu.cpp:1989 src/gui/windows/inventorywindow.cpp:226
 msgid "Retrieve"
 msgstr "Récupérer"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get 10 item amount from storage
-#: src/gui/popups/popupmenu.cpp:1995
+#: src/gui/popups/popupmenu.cpp:1996
 msgid "Retrieve 10"
 msgstr "Reprendre 10"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get half item amount from storage
-#: src/gui/popups/popupmenu.cpp:1999
+#: src/gui/popups/popupmenu.cpp:2000
 msgid "Retrieve half"
 msgstr "Reprendre la moitié"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get all except one item amount from storage
-#: src/gui/popups/popupmenu.cpp:2002
+#: src/gui/popups/popupmenu.cpp:2003
 msgid "Retrieve all-1"
 msgstr "Tout retirer-1"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get all item amount from storage
-#: src/gui/popups/popupmenu.cpp:2005
+#: src/gui/popups/popupmenu.cpp:2006
 msgid "Retrieve all"
 msgstr "Reprendre tout"
 
@@ -1917,48 +1917,48 @@ msgstr "Reprendre tout"
 #. TRANSLATORS: use item
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: skills dialog button
-#: src/gui/popups/popupmenu.cpp:2051 src/gui/popups/popupmenu.cpp:2829
+#: src/gui/popups/popupmenu.cpp:2052 src/gui/popups/popupmenu.cpp:2830
 #: src/gui/windows/inventorywindow.cpp:175
 #: src/gui/windows/inventorywindow.cpp:657 src/gui/windows/skilldialog.cpp:66
 msgid "Use"
 msgstr "Utiliser"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2145
+#: src/gui/popups/popupmenu.cpp:2146
 msgid "Clear drop window"
 msgstr "Vider la fenêtre de dépôt"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2176 src/gui/popups/popupmenu.cpp:2237
+#: src/gui/popups/popupmenu.cpp:2177 src/gui/popups/popupmenu.cpp:2238
 msgid "Hide"
 msgstr "Cacher"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2183 src/gui/popups/popupmenu.cpp:2244
+#: src/gui/popups/popupmenu.cpp:2184 src/gui/popups/popupmenu.cpp:2245
 msgid "Show"
 msgstr "Montrer"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2251
+#: src/gui/popups/popupmenu.cpp:2252
 msgid "Reset yellow bar"
 msgstr "Remise aux valeurs de défaut de la barre jaune"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy status to chat
 #. TRANSLATORS: status window button
-#: src/gui/popups/popupmenu.cpp:2255 src/gui/windows/statuswindow.cpp:91
+#: src/gui/popups/popupmenu.cpp:2256 src/gui/windows/statuswindow.cpp:91
 msgid "Copy to chat"
 msgstr "Copier dans la conversation"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move attack target up
-#: src/gui/popups/popupmenu.cpp:2295 src/gui/popups/popupmenu.cpp:2314
+#: src/gui/popups/popupmenu.cpp:2296 src/gui/popups/popupmenu.cpp:2315
 msgid "Move up"
 msgstr "Aller vers le haut"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move attack target down
-#: src/gui/popups/popupmenu.cpp:2301 src/gui/popups/popupmenu.cpp:2320
+#: src/gui/popups/popupmenu.cpp:2302 src/gui/popups/popupmenu.cpp:2321
 msgid "Move down"
 msgstr "Aller vers le bas"
 
@@ -1966,134 +1966,134 @@ msgstr "Aller vers le bas"
 #. TRANSLATORS: undress item from player
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: undress player
-#: src/gui/popups/popupmenu.cpp:2392 src/gui/popups/popupmenu.cpp:2724
+#: src/gui/popups/popupmenu.cpp:2393 src/gui/popups/popupmenu.cpp:2725
 msgid "Undress"
 msgstr "Déshabiller"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy text to clipboard
-#: src/gui/popups/popupmenu.cpp:2411
+#: src/gui/popups/popupmenu.cpp:2412
 msgid "Copy"
 msgstr "Copier"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: paste text from clipboard
-#: src/gui/popups/popupmenu.cpp:2414
+#: src/gui/popups/popupmenu.cpp:2415
 msgid "Paste"
 msgstr "Coller"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: open link in browser
-#: src/gui/popups/popupmenu.cpp:2434
+#: src/gui/popups/popupmenu.cpp:2435
 msgid "Open link"
 msgstr "Ouvrir lien"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2454
+#: src/gui/popups/popupmenu.cpp:2455
 msgid "Show window"
 msgstr "Afficher la fenêtre"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to friends list
-#: src/gui/popups/popupmenu.cpp:2530
+#: src/gui/popups/popupmenu.cpp:2531
 msgid "Be friend"
 msgstr "Être ami"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to disregarded list
-#: src/gui/popups/popupmenu.cpp:2533 src/gui/popups/popupmenu.cpp:2551
-#: src/gui/popups/popupmenu.cpp:2572 src/gui/popups/popupmenu.cpp:2611
-#: src/gui/popups/popupmenu.cpp:2629
+#: src/gui/popups/popupmenu.cpp:2534 src/gui/popups/popupmenu.cpp:2552
+#: src/gui/popups/popupmenu.cpp:2573 src/gui/popups/popupmenu.cpp:2612
+#: src/gui/popups/popupmenu.cpp:2630
 msgid "Disregard"
 msgstr "Éviter"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
 #. TRANSLATORS: confirm dialog button
-#: src/gui/popups/popupmenu.cpp:2536 src/gui/popups/popupmenu.cpp:2554
-#: src/gui/popups/popupmenu.cpp:2575 src/gui/popups/popupmenu.cpp:2614
+#: src/gui/popups/popupmenu.cpp:2537 src/gui/popups/popupmenu.cpp:2555
+#: src/gui/popups/popupmenu.cpp:2576 src/gui/popups/popupmenu.cpp:2615
 #: src/gui/windows/confirmdialog.cpp:60
 msgid "Ignore"
 msgstr "Ignorer"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to black list
-#: src/gui/popups/popupmenu.cpp:2539 src/gui/popups/popupmenu.cpp:2557
-#: src/gui/popups/popupmenu.cpp:2617
+#: src/gui/popups/popupmenu.cpp:2540 src/gui/popups/popupmenu.cpp:2558
+#: src/gui/popups/popupmenu.cpp:2618
 msgid "Black list"
 msgstr "Liste noire"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to enemy list
-#: src/gui/popups/popupmenu.cpp:2542 src/gui/popups/popupmenu.cpp:2560
-#: src/gui/popups/popupmenu.cpp:2578
+#: src/gui/popups/popupmenu.cpp:2543 src/gui/popups/popupmenu.cpp:2561
+#: src/gui/popups/popupmenu.cpp:2579
 msgid "Set as enemy"
 msgstr "Définir comme ennemi"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to erased list
-#: src/gui/popups/popupmenu.cpp:2545 src/gui/popups/popupmenu.cpp:2563
-#: src/gui/popups/popupmenu.cpp:2581 src/gui/popups/popupmenu.cpp:2593
-#: src/gui/popups/popupmenu.cpp:2602 src/gui/popups/popupmenu.cpp:2620
+#: src/gui/popups/popupmenu.cpp:2546 src/gui/popups/popupmenu.cpp:2564
+#: src/gui/popups/popupmenu.cpp:2582 src/gui/popups/popupmenu.cpp:2594
+#: src/gui/popups/popupmenu.cpp:2603 src/gui/popups/popupmenu.cpp:2621
 msgid "Erase"
 msgstr "Éliminer"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove player from ignore list
-#: src/gui/popups/popupmenu.cpp:2569 src/gui/popups/popupmenu.cpp:2587
-#: src/gui/popups/popupmenu.cpp:2599 src/gui/popups/popupmenu.cpp:2608
-#: src/gui/popups/popupmenu.cpp:2626
+#: src/gui/popups/popupmenu.cpp:2570 src/gui/popups/popupmenu.cpp:2588
+#: src/gui/popups/popupmenu.cpp:2600 src/gui/popups/popupmenu.cpp:2609
+#: src/gui/popups/popupmenu.cpp:2627
 msgid "Unignore"
 msgstr "Ne plus ignorer"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2645
+#: src/gui/popups/popupmenu.cpp:2646
 msgid "Follow"
 msgstr "Suivre"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: imitate player
-#: src/gui/popups/popupmenu.cpp:2649
+#: src/gui/popups/popupmenu.cpp:2650
 msgid "Imitation"
 msgstr "Imiter"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: buy item
-#: src/gui/popups/popupmenu.cpp:2673 src/gui/popups/popupmenu.cpp:2688
+#: src/gui/popups/popupmenu.cpp:2674 src/gui/popups/popupmenu.cpp:2689
 msgid "Buy (?)"
 msgstr "Acheter (?)"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: sell item
-#: src/gui/popups/popupmenu.cpp:2676 src/gui/popups/popupmenu.cpp:2691
+#: src/gui/popups/popupmenu.cpp:2677 src/gui/popups/popupmenu.cpp:2692
 msgid "Sell (?)"
 msgstr "Vendre (?)"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2721
+#: src/gui/popups/popupmenu.cpp:2722
 msgid "Show Items"
 msgstr "Montrer les objets"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove item from pickup list
-#: src/gui/popups/popupmenu.cpp:2738
+#: src/gui/popups/popupmenu.cpp:2739
 msgid "Remove from pickup list"
 msgstr "Retirer de la liste de ramassage"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2743
+#: src/gui/popups/popupmenu.cpp:2744
 msgid "Add to pickup list"
 msgstr "Ajouter à la liste de ramassage"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove protection from item
-#: src/gui/popups/popupmenu.cpp:2792
+#: src/gui/popups/popupmenu.cpp:2793
 msgid "Unprotect item"
 msgstr "Objet non protégé"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add protection to item
-#: src/gui/popups/popupmenu.cpp:2801
+#: src/gui/popups/popupmenu.cpp:2802
 msgid "Protect item"
 msgstr "Objet protégé"
 
@@ -2101,7 +2101,7 @@ msgstr "Objet protégé"
 #. TRANSLATORS: unequip item
 #. TRANSLATORS: equipment window button
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2814 src/gui/windows/equipmentwindow.cpp:69
+#: src/gui/popups/popupmenu.cpp:2815 src/gui/windows/equipmentwindow.cpp:70
 #: src/gui/windows/inventorywindow.cpp:177
 #: src/gui/windows/inventorywindow.cpp:646
 msgid "Unequip"
@@ -2111,7 +2111,7 @@ msgstr "Retirer"
 #. TRANSLATORS: use item
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window button
-#: src/gui/popups/popupmenu.cpp:2820 src/gui/windows/inventorywindow.cpp:173
+#: src/gui/popups/popupmenu.cpp:2821 src/gui/windows/inventorywindow.cpp:173
 #: src/gui/windows/inventorywindow.cpp:651 src/gui/windows/outfitwindow.cpp:61
 msgid "Equip"
 msgstr "Équiper"
@@ -2119,14 +2119,14 @@ msgstr "Équiper"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2840 src/gui/windows/inventorywindow.cpp:190
+#: src/gui/popups/popupmenu.cpp:2841 src/gui/windows/inventorywindow.cpp:190
 #: src/gui/windows/inventorywindow.cpp:747
 msgid "Drop..."
 msgstr "Jeter..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop all item amount
-#: src/gui/popups/popupmenu.cpp:2843
+#: src/gui/popups/popupmenu.cpp:2844
 msgid "Drop all"
 msgstr "Jeter tout"
 
@@ -2134,7 +2134,7 @@ msgstr "Jeter tout"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2849 src/gui/windowmenu.cpp:129
+#: src/gui/popups/popupmenu.cpp:2850 src/gui/windowmenu.cpp:129
 #: src/gui/windows/inventorywindow.cpp:752
 msgid "Drop"
 msgstr "Jeter"
@@ -2142,153 +2142,153 @@ msgstr "Jeter"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: split items
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2857 src/gui/windows/inventorywindow.cpp:192
+#: src/gui/popups/popupmenu.cpp:2858 src/gui/windows/inventorywindow.cpp:192
 msgid "Split"
 msgstr "Partager"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm commands
-#: src/gui/popups/popupmenu.cpp:2867
+#: src/gui/popups/popupmenu.cpp:2868
 msgid "GM..."
 msgstr "MJ..."
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2875
+#: src/gui/popups/popupmenu.cpp:2876
 msgid "GM commands"
 msgstr "Commandes de MJ"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: check player ip
-#: src/gui/popups/popupmenu.cpp:2880
+#: src/gui/popups/popupmenu.cpp:2881
 msgid "Check ip"
 msgstr "Vérifier ip"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: go to player position
-#: src/gui/popups/popupmenu.cpp:2883
+#: src/gui/popups/popupmenu.cpp:2884
 msgid "Goto"
 msgstr "Aller à"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: recall player to current position
-#: src/gui/popups/popupmenu.cpp:2886
+#: src/gui/popups/popupmenu.cpp:2887
 msgid "Recall"
 msgstr "Rappeler"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/popups/popupmenu.cpp:2889
+#: src/gui/popups/popupmenu.cpp:2890
 msgid "Revive"
 msgstr "Ressusciter"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player
-#: src/gui/popups/popupmenu.cpp:2894
+#: src/gui/popups/popupmenu.cpp:2895
 msgid "Kick"
 msgstr "Virer"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:57
+#: src/gui/setupactiondata.h:58
 msgid "Target and attack keys"
 msgstr "Touches de visée et d'attaque"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:69
+#: src/gui/setupactiondata.h:70
 msgid "Target & Attack"
 msgstr "Viser et Attaquer"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:75
+#: src/gui/setupactiondata.h:76
 msgid "Move to Target"
 msgstr "Aller à la cible"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:81
+#: src/gui/setupactiondata.h:82
 msgid "Change Move to Target type"
 msgstr "Changer le type de déplacement vers les cibles"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:87
+#: src/gui/setupactiondata.h:88
 msgid "Move to Home location"
 msgstr "Aller à l'emplacement de base"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:93
+#: src/gui/setupactiondata.h:94
 msgid "Set home location"
 msgstr "Définir l'emplacement de base"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:99
+#: src/gui/setupactiondata.h:100
 msgid "Move to navigation point"
 msgstr "Aller jusqu'au point de navigation"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:111
+#: src/gui/setupactiondata.h:112
 msgid "Stop Attack / Modifier key"
 msgstr "Arrêter d’Attaquer / Touche modificatrice"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:117
+#: src/gui/setupactiondata.h:118
 msgid "Untarget"
 msgstr "Désélectionner"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:123
+#: src/gui/setupactiondata.h:124
 msgid "Target monster"
 msgstr "Monstre visé"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:129
+#: src/gui/setupactiondata.h:130
 msgid "Target NPC"
 msgstr "Sélectionner le PNJ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:135
+#: src/gui/setupactiondata.h:136
 msgid "Target Player"
 msgstr "Viser le Joueur"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:141
+#: src/gui/setupactiondata.h:142
 msgid "Other Keys"
 msgstr "Autres touches"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:147
+#: src/gui/setupactiondata.h:148
 msgid "Pickup"
 msgstr "Ramasser"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:153
+#: src/gui/setupactiondata.h:154
 msgid "Change Pickup Type"
 msgstr "Changer le type de ramassage"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:159
+#: src/gui/setupactiondata.h:160
 msgid "Sit"
 msgstr "S'asseoir"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:165
+#: src/gui/setupactiondata.h:166
 msgid "Screenshot"
 msgstr "Capture d'écran"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:171
+#: src/gui/setupactiondata.h:172
 msgid "Enable/Disable Trading"
 msgstr "Activer / Désactiver les échanges"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:177
+#: src/gui/setupactiondata.h:178
 msgid "Open trade window"
 msgstr "Ouvrir la fenêtre d'échanges"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:183
+#: src/gui/setupactiondata.h:184
 msgid "Change Map View Mode"
 msgstr "Changer le mode de vision de carte"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:189
+#: src/gui/setupactiondata.h:190
 msgid "Select OK"
 msgstr "Sélectionner OK"
 
@@ -2298,572 +2298,578 @@ msgstr "Sélectionner OK"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/setupactiondata.h:195 src/gui/windows/buydialog.cpp:260
-#: src/gui/windows/quitdialog.cpp:54 src/gui/windows/quitdialog.cpp:59
-#: src/gui/windows/quitdialog.cpp:61 src/gui/windows/selldialog.cpp:121
-#: src/gui/windows/serverdialog.cpp:107
+#: src/gui/setupactiondata.h:196 src/gui/windows/buydialog.cpp:260
+#: src/gui/windows/quitdialog.cpp:55 src/gui/windows/quitdialog.cpp:60
+#: src/gui/windows/quitdialog.cpp:62 src/gui/windows/selldialog.cpp:121
+#: src/gui/windows/serverdialog.cpp:108
 msgid "Quit"
 msgstr "Quitter"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:201
+#: src/gui/setupactiondata.h:202
 msgid "Stop or sit"
 msgstr "S'arrêter et s’asseoir"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:207
+#: src/gui/setupactiondata.h:208
 msgid "Return to safe video mode"
 msgstr "Revenir au mode vidéo sécurisé"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:222
+#: src/gui/setupactiondata.h:223
 msgid "Shortcuts modifiers keys"
 msgstr "Touches des modificateurs de raccourcis"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:228
+#: src/gui/setupactiondata.h:229
 msgid "Item Shortcuts Key"
 msgstr "Touche de raccourcis objets"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:234
+#: src/gui/setupactiondata.h:235
 msgid "Shortcuts keys"
 msgstr "Touches de raccourcis"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:240 src/gui/setupactiondata.h:246
-#: src/gui/setupactiondata.h:252 src/gui/setupactiondata.h:258
-#: src/gui/setupactiondata.h:264 src/gui/setupactiondata.h:270
-#: src/gui/setupactiondata.h:276 src/gui/setupactiondata.h:282
-#: src/gui/setupactiondata.h:288 src/gui/setupactiondata.h:294
-#: src/gui/setupactiondata.h:300 src/gui/setupactiondata.h:306
-#: src/gui/setupactiondata.h:312 src/gui/setupactiondata.h:318
-#: src/gui/setupactiondata.h:324 src/gui/setupactiondata.h:330
-#: src/gui/setupactiondata.h:336 src/gui/setupactiondata.h:342
-#: src/gui/setupactiondata.h:348 src/gui/setupactiondata.h:354
+#: src/gui/setupactiondata.h:241 src/gui/setupactiondata.h:247
+#: src/gui/setupactiondata.h:253 src/gui/setupactiondata.h:259
+#: src/gui/setupactiondata.h:265 src/gui/setupactiondata.h:271
+#: src/gui/setupactiondata.h:277 src/gui/setupactiondata.h:283
+#: src/gui/setupactiondata.h:289 src/gui/setupactiondata.h:295
+#: src/gui/setupactiondata.h:301 src/gui/setupactiondata.h:307
+#: src/gui/setupactiondata.h:313 src/gui/setupactiondata.h:319
+#: src/gui/setupactiondata.h:325 src/gui/setupactiondata.h:331
+#: src/gui/setupactiondata.h:337 src/gui/setupactiondata.h:343
+#: src/gui/setupactiondata.h:349 src/gui/setupactiondata.h:355
 #, c-format
 msgid "Item Shortcut %d"
 msgstr "Raccourci Objet %d"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:369
+#: src/gui/setupactiondata.h:370
 msgid "Show Windows Menu"
 msgstr "Afficher le Menu des Fenêtres"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:375
+#: src/gui/setupactiondata.h:376
 msgid "Hide Windows"
 msgstr "Cacher les fenêtres"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:381
+#: src/gui/setupactiondata.h:382
 msgid "About Window"
 msgstr "À propos Fenêtre"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:387
+#: src/gui/setupactiondata.h:388
 msgid "Help Window"
 msgstr "Fenêtre d'aide"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:393
+#: src/gui/setupactiondata.h:394
 msgid "Status Window"
 msgstr "Fenêtre d'état"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:399
+#: src/gui/setupactiondata.h:400
 msgid "Inventory Window"
 msgstr "Fenêtre de l'inventaire"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:405
+#: src/gui/setupactiondata.h:406
 msgid "Equipment Window"
 msgstr "Fenêtre d'équipement"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:411
+#: src/gui/setupactiondata.h:412
 msgid "Skill Window"
 msgstr "Fenêtre de compétences"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:417
+#: src/gui/setupactiondata.h:418
 msgid "Minimap Window"
 msgstr "Fenêtre de mini carte"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:423
+#: src/gui/setupactiondata.h:424
 msgid "Chat Window"
 msgstr "Chat"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:429
+#: src/gui/setupactiondata.h:430
 msgid "Item Shortcut Window"
 msgstr "Fenêtre de raccourcis objets"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:435
+#: src/gui/setupactiondata.h:436
 msgid "Setup Window"
 msgstr "Fenêtre de configuration"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:441
+#: src/gui/setupactiondata.h:442
 msgid "Debug Window"
 msgstr "Fenêtre de déboguage"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:447
+#: src/gui/setupactiondata.h:448
 msgid "Social Window"
 msgstr "Groupes et Guildes"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:453
+#: src/gui/setupactiondata.h:454
 msgid "Emote Shortcut Window"
 msgstr "Fenêtre de raccourcis d’émoticônes"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:459
+#: src/gui/setupactiondata.h:460
 msgid "Outfits Window"
 msgstr "Fenêtre des tenues"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:465
+#: src/gui/setupactiondata.h:466
 msgid "Shop Window"
 msgstr "Fenêtre du magasin"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:471
+#: src/gui/setupactiondata.h:472
 msgid "Quick drop Window"
 msgstr "Fenêtre  jet rapide d'objets"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:477
+#: src/gui/setupactiondata.h:478
 msgid "Kill Stats Window"
 msgstr "Fenêtre de statistiques"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:483
+#: src/gui/setupactiondata.h:484
 msgid "Commands Window"
 msgstr "Fenêtre de commandes"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:489
+#: src/gui/setupactiondata.h:490
 msgid "Bot Checker Window"
 msgstr "Fenêtre du testeur de robot"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:495
+#: src/gui/setupactiondata.h:496
 msgid "Who Is Online Window"
 msgstr "Fenêtre - Qui est en ligne ?"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:501
+#: src/gui/setupactiondata.h:502
 msgid "Did you know Window"
 msgstr "Connaissais-tu la fenêtre ?"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:507
+#: src/gui/setupactiondata.h:508
 msgid "Quests Window"
 msgstr "Fenêtre de Quêtes"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:513
+#: src/gui/setupactiondata.h:514
+#, fuzzy
+msgid "Updates Window"
+msgstr "Fenêtre d'état"
+
+#. TRANSLATORS: input action name
+#: src/gui/setupactiondata.h:520
 msgid "Previous Social Tab"
 msgstr "Onglet de dialogue précédent"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:519
+#: src/gui/setupactiondata.h:526
 msgid "Next Social Tab"
 msgstr "Onglet de dialogue suivant"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:525
+#: src/gui/setupactiondata.h:532
 msgid "Previous Shortcuts tab"
 msgstr "Onglet de Raccourcis Précédent"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:531
+#: src/gui/setupactiondata.h:538
 msgid "Next Shortcuts tab"
 msgstr "Onglet de Raccourcis Suivant"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:537
+#: src/gui/setupactiondata.h:544
 msgid "Previous Commands tab"
 msgstr "Onglet de Commandes Précédent"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:543
+#: src/gui/setupactiondata.h:550
 msgid "Next Commands tab"
 msgstr "Onglet de Commandes Suivant"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:558
+#: src/gui/setupactiondata.h:565
 msgid "Emote modifiers keys"
 msgstr "Touches des modificateurs d'émoticône"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:564
+#: src/gui/setupactiondata.h:571
 msgid "Emote modifier key"
 msgstr "Touche du modificateur d'émoticône"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:570
+#: src/gui/setupactiondata.h:577
 msgid "Emote shortcuts"
 msgstr "Raccourcis des émoticônes"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:576 src/gui/setupactiondata.h:582
-#: src/gui/setupactiondata.h:588 src/gui/setupactiondata.h:594
-#: src/gui/setupactiondata.h:600 src/gui/setupactiondata.h:606
-#: src/gui/setupactiondata.h:612 src/gui/setupactiondata.h:618
-#: src/gui/setupactiondata.h:624 src/gui/setupactiondata.h:630
-#: src/gui/setupactiondata.h:636 src/gui/setupactiondata.h:642
-#: src/gui/setupactiondata.h:648 src/gui/setupactiondata.h:654
-#: src/gui/setupactiondata.h:660 src/gui/setupactiondata.h:666
-#: src/gui/setupactiondata.h:672 src/gui/setupactiondata.h:678
-#: src/gui/setupactiondata.h:684 src/gui/setupactiondata.h:690
-#: src/gui/setupactiondata.h:696 src/gui/setupactiondata.h:702
-#: src/gui/setupactiondata.h:708 src/gui/setupactiondata.h:714
-#: src/gui/setupactiondata.h:720 src/gui/setupactiondata.h:726
-#: src/gui/setupactiondata.h:732 src/gui/setupactiondata.h:738
-#: src/gui/setupactiondata.h:744 src/gui/setupactiondata.h:750
-#: src/gui/setupactiondata.h:756 src/gui/setupactiondata.h:762
-#: src/gui/setupactiondata.h:768 src/gui/setupactiondata.h:774
-#: src/gui/setupactiondata.h:780 src/gui/setupactiondata.h:786
-#: src/gui/setupactiondata.h:792 src/gui/setupactiondata.h:798
-#: src/gui/setupactiondata.h:804 src/gui/setupactiondata.h:810
-#: src/gui/setupactiondata.h:816 src/gui/setupactiondata.h:822
-#: src/gui/setupactiondata.h:828 src/gui/setupactiondata.h:834
-#: src/gui/setupactiondata.h:840 src/gui/setupactiondata.h:846
-#: src/gui/setupactiondata.h:852 src/gui/setupactiondata.h:858
+#: src/gui/setupactiondata.h:583 src/gui/setupactiondata.h:589
+#: src/gui/setupactiondata.h:595 src/gui/setupactiondata.h:601
+#: src/gui/setupactiondata.h:607 src/gui/setupactiondata.h:613
+#: src/gui/setupactiondata.h:619 src/gui/setupactiondata.h:625
+#: src/gui/setupactiondata.h:631 src/gui/setupactiondata.h:637
+#: src/gui/setupactiondata.h:643 src/gui/setupactiondata.h:649
+#: src/gui/setupactiondata.h:655 src/gui/setupactiondata.h:661
+#: src/gui/setupactiondata.h:667 src/gui/setupactiondata.h:673
+#: src/gui/setupactiondata.h:679 src/gui/setupactiondata.h:685
+#: src/gui/setupactiondata.h:691 src/gui/setupactiondata.h:697
+#: src/gui/setupactiondata.h:703 src/gui/setupactiondata.h:709
+#: src/gui/setupactiondata.h:715 src/gui/setupactiondata.h:721
+#: src/gui/setupactiondata.h:727 src/gui/setupactiondata.h:733
+#: src/gui/setupactiondata.h:739 src/gui/setupactiondata.h:745
+#: src/gui/setupactiondata.h:751 src/gui/setupactiondata.h:757
+#: src/gui/setupactiondata.h:763 src/gui/setupactiondata.h:769
+#: src/gui/setupactiondata.h:775 src/gui/setupactiondata.h:781
+#: src/gui/setupactiondata.h:787 src/gui/setupactiondata.h:793
+#: src/gui/setupactiondata.h:799 src/gui/setupactiondata.h:805
+#: src/gui/setupactiondata.h:811 src/gui/setupactiondata.h:817
+#: src/gui/setupactiondata.h:823 src/gui/setupactiondata.h:829
+#: src/gui/setupactiondata.h:835 src/gui/setupactiondata.h:841
+#: src/gui/setupactiondata.h:847 src/gui/setupactiondata.h:853
+#: src/gui/setupactiondata.h:859 src/gui/setupactiondata.h:865
 #, c-format
 msgid "Emote Shortcut %d"
 msgstr "Raccourci d'émoticône %d"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:873
+#: src/gui/setupactiondata.h:880
 msgid "Outfits keys"
 msgstr "Touches des tenues"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:879
+#: src/gui/setupactiondata.h:886
 msgid "Wear Outfit"
 msgstr "Mettre la tenue"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:885
+#: src/gui/setupactiondata.h:892
 msgid "Copy Outfit"
 msgstr "Copier la tenue"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:891
+#: src/gui/setupactiondata.h:898
 msgid "Copy equipped to Outfit"
 msgstr "Copier l'équipement porté dans les tenues"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:897
+#: src/gui/setupactiondata.h:904
 msgid "Outfits shortcuts"
 msgstr "Raccourcis des tenues"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:903 src/gui/setupactiondata.h:909
-#: src/gui/setupactiondata.h:915 src/gui/setupactiondata.h:921
-#: src/gui/setupactiondata.h:927 src/gui/setupactiondata.h:933
-#: src/gui/setupactiondata.h:939 src/gui/setupactiondata.h:945
-#: src/gui/setupactiondata.h:951 src/gui/setupactiondata.h:957
-#: src/gui/setupactiondata.h:963 src/gui/setupactiondata.h:969
-#: src/gui/setupactiondata.h:975 src/gui/setupactiondata.h:981
-#: src/gui/setupactiondata.h:987 src/gui/setupactiondata.h:993
-#: src/gui/setupactiondata.h:999 src/gui/setupactiondata.h:1005
-#: src/gui/setupactiondata.h:1011 src/gui/setupactiondata.h:1017
-#: src/gui/setupactiondata.h:1023 src/gui/setupactiondata.h:1029
-#: src/gui/setupactiondata.h:1035 src/gui/setupactiondata.h:1041
-#: src/gui/setupactiondata.h:1047 src/gui/setupactiondata.h:1053
-#: src/gui/setupactiondata.h:1059 src/gui/setupactiondata.h:1065
-#: src/gui/setupactiondata.h:1071 src/gui/setupactiondata.h:1077
-#: src/gui/setupactiondata.h:1083 src/gui/setupactiondata.h:1089
-#: src/gui/setupactiondata.h:1095 src/gui/setupactiondata.h:1101
-#: src/gui/setupactiondata.h:1107 src/gui/setupactiondata.h:1113
-#: src/gui/setupactiondata.h:1119 src/gui/setupactiondata.h:1125
-#: src/gui/setupactiondata.h:1131 src/gui/setupactiondata.h:1137
-#: src/gui/setupactiondata.h:1143 src/gui/setupactiondata.h:1149
-#: src/gui/setupactiondata.h:1155 src/gui/setupactiondata.h:1161
-#: src/gui/setupactiondata.h:1167 src/gui/setupactiondata.h:1173
-#: src/gui/setupactiondata.h:1179 src/gui/setupactiondata.h:1185
+#: src/gui/setupactiondata.h:910 src/gui/setupactiondata.h:916
+#: src/gui/setupactiondata.h:922 src/gui/setupactiondata.h:928
+#: src/gui/setupactiondata.h:934 src/gui/setupactiondata.h:940
+#: src/gui/setupactiondata.h:946 src/gui/setupactiondata.h:952
+#: src/gui/setupactiondata.h:958 src/gui/setupactiondata.h:964
+#: src/gui/setupactiondata.h:970 src/gui/setupactiondata.h:976
+#: src/gui/setupactiondata.h:982 src/gui/setupactiondata.h:988
+#: src/gui/setupactiondata.h:994 src/gui/setupactiondata.h:1000
+#: src/gui/setupactiondata.h:1006 src/gui/setupactiondata.h:1012
+#: src/gui/setupactiondata.h:1018 src/gui/setupactiondata.h:1024
+#: src/gui/setupactiondata.h:1030 src/gui/setupactiondata.h:1036
+#: src/gui/setupactiondata.h:1042 src/gui/setupactiondata.h:1048
+#: src/gui/setupactiondata.h:1054 src/gui/setupactiondata.h:1060
+#: src/gui/setupactiondata.h:1066 src/gui/setupactiondata.h:1072
+#: src/gui/setupactiondata.h:1078 src/gui/setupactiondata.h:1084
+#: src/gui/setupactiondata.h:1090 src/gui/setupactiondata.h:1096
+#: src/gui/setupactiondata.h:1102 src/gui/setupactiondata.h:1108
+#: src/gui/setupactiondata.h:1114 src/gui/setupactiondata.h:1120
+#: src/gui/setupactiondata.h:1126 src/gui/setupactiondata.h:1132
+#: src/gui/setupactiondata.h:1138 src/gui/setupactiondata.h:1144
+#: src/gui/setupactiondata.h:1150 src/gui/setupactiondata.h:1156
+#: src/gui/setupactiondata.h:1162 src/gui/setupactiondata.h:1168
+#: src/gui/setupactiondata.h:1174 src/gui/setupactiondata.h:1180
+#: src/gui/setupactiondata.h:1186 src/gui/setupactiondata.h:1192
 #, c-format
 msgid "Outfit Shortcut %d"
 msgstr "Raccourci de tenue %d"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1200
+#: src/gui/setupactiondata.h:1207
 msgid "Toggle Chat"
 msgstr "Afficher / Cacher le chat"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1206
+#: src/gui/setupactiondata.h:1213
 msgid "Scroll Chat Up"
 msgstr "Défiler le chat vers le haut"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1212
+#: src/gui/setupactiondata.h:1219
 msgid "Scroll Chat Down"
 msgstr "Défiler le chat vers le bas"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1218
+#: src/gui/setupactiondata.h:1225
 msgid "Previous Chat Tab"
 msgstr "Onglet de conversation précédent"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1224
+#: src/gui/setupactiondata.h:1231
 msgid "Next Chat Tab"
 msgstr "Onglet de conversation suivant"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1230
+#: src/gui/setupactiondata.h:1237
 msgid "Close current Chat Tab"
 msgstr "Fermer l'onglet de dialogue courant"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1236
+#: src/gui/setupactiondata.h:1243
 msgid "Previous chat line"
 msgstr "Ligne de conversation précédente"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1242
+#: src/gui/setupactiondata.h:1249
 msgid "Next chat line"
 msgstr "Ligne de conversation suivante"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1248
+#: src/gui/setupactiondata.h:1255
 msgid "Chat modifier key"
 msgstr "Touche de modification du chat"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1254
+#: src/gui/setupactiondata.h:1261
 msgid "Show smiles"
 msgstr "Afficher les sourires"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1324
+#: src/gui/setupactiondata.h:1331
 msgid "Ignore input 1"
 msgstr "Ignorer l'entrée 1"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1330
+#: src/gui/setupactiondata.h:1337
 msgid "Ignore input 2"
 msgstr "Ignorer l'entrée 2"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1336
+#: src/gui/setupactiondata.h:1343
 msgid "Direct Up"
 msgstr "Vers le haut"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1342
+#: src/gui/setupactiondata.h:1349
 msgid "Direct Down"
 msgstr "Vers le bas"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1348
+#: src/gui/setupactiondata.h:1355
 msgid "Direct Left"
 msgstr "Vers la gauche"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1354
+#: src/gui/setupactiondata.h:1361
 msgid "Direct Right"
 msgstr "Vers la droite"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1360
+#: src/gui/setupactiondata.h:1367
 msgid "Crazy moves"
 msgstr "Mouvements fous"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1366
+#: src/gui/setupactiondata.h:1373
 msgid "Change Crazy Move mode"
 msgstr "Changer le mode de Mouvements Fous"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1372
+#: src/gui/setupactiondata.h:1379
 msgid "Quick Drop N Items from 0 slot"
 msgstr "Jeter rapidement N objets depuis l'emplacement 0"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1378
+#: src/gui/setupactiondata.h:1385
 msgid "Quick Drop N Items"
 msgstr "Jeter rapidement N objets"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1384
+#: src/gui/setupactiondata.h:1391
 msgid "Switch Quick Drop Counter"
 msgstr "Changer le compteur de jet rapide d'objets"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1390
+#: src/gui/setupactiondata.h:1397
 msgid "Quick heal target or self"
 msgstr "Soins rapides de la cible ou de soi-même"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1396
+#: src/gui/setupactiondata.h:1403
 msgid "Use #itenplz spell"
 msgstr "Utiliser le sort #itenplz"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1402
+#: src/gui/setupactiondata.h:1409
 msgid "Use magic attack"
 msgstr "Utiliser l'attaque magique"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1408
+#: src/gui/setupactiondata.h:1415
 msgid "Switch magic attack"
 msgstr "Changer d'attaque magique"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1414
+#: src/gui/setupactiondata.h:1421
 msgid "Switch pvp attack"
 msgstr "Commutateur d'attaque en PVP"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1420
+#: src/gui/setupactiondata.h:1427
 msgid "Change move type"
 msgstr "Changer de type de mouvement"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1426
+#: src/gui/setupactiondata.h:1433
 msgid "Change Attack Weapon Type"
 msgstr "Changer de type d'arme d'attaque"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1432
+#: src/gui/setupactiondata.h:1439
 msgid "Change Attack Type"
 msgstr "Changer de type d'attaque"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1438
+#: src/gui/setupactiondata.h:1445
 msgid "Change Follow mode"
 msgstr "Changer de type de suivi"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1444
+#: src/gui/setupactiondata.h:1451
 msgid "Change Imitation mode"
 msgstr "Changer de type d'imitation"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1450
+#: src/gui/setupactiondata.h:1457
 msgid "Disable / Enable Game modifier keys"
 msgstr "Désactiver / Activer les touches de modifications du jeu"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1456
+#: src/gui/setupactiondata.h:1463
 msgid "On / Off audio"
 msgstr "Son On / Off"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1462
+#: src/gui/setupactiondata.h:1469
 msgid "Enable / Disable away mode"
 msgstr "Activer / Désactiver le mode en absence"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1468
+#: src/gui/setupactiondata.h:1475
 msgid "Emulate right click from keyboard"
 msgstr "Emuler le clic droit à partir du clavier"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1474
+#: src/gui/setupactiondata.h:1481
 msgid "Toggle camera mode"
 msgstr "Changer le mode caméra"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1480
+#: src/gui/setupactiondata.h:1487
 msgid "Show onscreen keyboard"
 msgstr "Afficher le clavier d'écran"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1495
+#: src/gui/setupactiondata.h:1502
 msgid "Move Keys"
 msgstr "Touches de déplacement"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1501 src/gui/setupactiondata.h:1840
+#: src/gui/setupactiondata.h:1508 src/gui/setupactiondata.h:1847
 msgid "Move Up"
 msgstr "Monter"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1507 src/gui/setupactiondata.h:1846
+#: src/gui/setupactiondata.h:1514 src/gui/setupactiondata.h:1853
 msgid "Move Down"
 msgstr "Descendre"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1513 src/gui/setupactiondata.h:1852
+#: src/gui/setupactiondata.h:1520 src/gui/setupactiondata.h:1859
 msgid "Move Left"
 msgstr "Aller à gauche"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1519 src/gui/setupactiondata.h:1858
+#: src/gui/setupactiondata.h:1526 src/gui/setupactiondata.h:1865
 msgid "Move Right"
 msgstr "Aller à droite"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1525
+#: src/gui/setupactiondata.h:1532
 msgid "Move Forward"
 msgstr "Aller devant"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1531
+#: src/gui/setupactiondata.h:1538
 msgid "Move to navigation point shortcuts"
 msgstr "Raccourcis de \"Aller au point de navigation\""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1537 src/gui/setupactiondata.h:1543
-#: src/gui/setupactiondata.h:1549 src/gui/setupactiondata.h:1555
-#: src/gui/setupactiondata.h:1561 src/gui/setupactiondata.h:1567
-#: src/gui/setupactiondata.h:1573 src/gui/setupactiondata.h:1579
-#: src/gui/setupactiondata.h:1585 src/gui/setupactiondata.h:1591
-#: src/gui/setupactiondata.h:1597 src/gui/setupactiondata.h:1603
-#: src/gui/setupactiondata.h:1609 src/gui/setupactiondata.h:1615
-#: src/gui/setupactiondata.h:1621 src/gui/setupactiondata.h:1627
-#: src/gui/setupactiondata.h:1633 src/gui/setupactiondata.h:1639
-#: src/gui/setupactiondata.h:1645 src/gui/setupactiondata.h:1651
-#: src/gui/setupactiondata.h:1657 src/gui/setupactiondata.h:1663
-#: src/gui/setupactiondata.h:1669 src/gui/setupactiondata.h:1675
-#: src/gui/setupactiondata.h:1681 src/gui/setupactiondata.h:1687
-#: src/gui/setupactiondata.h:1693 src/gui/setupactiondata.h:1699
-#: src/gui/setupactiondata.h:1705 src/gui/setupactiondata.h:1711
-#: src/gui/setupactiondata.h:1717 src/gui/setupactiondata.h:1723
-#: src/gui/setupactiondata.h:1729 src/gui/setupactiondata.h:1735
-#: src/gui/setupactiondata.h:1741 src/gui/setupactiondata.h:1747
-#: src/gui/setupactiondata.h:1753 src/gui/setupactiondata.h:1759
-#: src/gui/setupactiondata.h:1765 src/gui/setupactiondata.h:1771
-#: src/gui/setupactiondata.h:1777 src/gui/setupactiondata.h:1783
-#: src/gui/setupactiondata.h:1789 src/gui/setupactiondata.h:1795
-#: src/gui/setupactiondata.h:1801 src/gui/setupactiondata.h:1807
-#: src/gui/setupactiondata.h:1813 src/gui/setupactiondata.h:1819
+#: src/gui/setupactiondata.h:1544 src/gui/setupactiondata.h:1550
+#: src/gui/setupactiondata.h:1556 src/gui/setupactiondata.h:1562
+#: src/gui/setupactiondata.h:1568 src/gui/setupactiondata.h:1574
+#: src/gui/setupactiondata.h:1580 src/gui/setupactiondata.h:1586
+#: src/gui/setupactiondata.h:1592 src/gui/setupactiondata.h:1598
+#: src/gui/setupactiondata.h:1604 src/gui/setupactiondata.h:1610
+#: src/gui/setupactiondata.h:1616 src/gui/setupactiondata.h:1622
+#: src/gui/setupactiondata.h:1628 src/gui/setupactiondata.h:1634
+#: src/gui/setupactiondata.h:1640 src/gui/setupactiondata.h:1646
+#: src/gui/setupactiondata.h:1652 src/gui/setupactiondata.h:1658
+#: src/gui/setupactiondata.h:1664 src/gui/setupactiondata.h:1670
+#: src/gui/setupactiondata.h:1676 src/gui/setupactiondata.h:1682
+#: src/gui/setupactiondata.h:1688 src/gui/setupactiondata.h:1694
+#: src/gui/setupactiondata.h:1700 src/gui/setupactiondata.h:1706
+#: src/gui/setupactiondata.h:1712 src/gui/setupactiondata.h:1718
+#: src/gui/setupactiondata.h:1724 src/gui/setupactiondata.h:1730
+#: src/gui/setupactiondata.h:1736 src/gui/setupactiondata.h:1742
+#: src/gui/setupactiondata.h:1748 src/gui/setupactiondata.h:1754
+#: src/gui/setupactiondata.h:1760 src/gui/setupactiondata.h:1766
+#: src/gui/setupactiondata.h:1772 src/gui/setupactiondata.h:1778
+#: src/gui/setupactiondata.h:1784 src/gui/setupactiondata.h:1790
+#: src/gui/setupactiondata.h:1796 src/gui/setupactiondata.h:1802
+#: src/gui/setupactiondata.h:1808 src/gui/setupactiondata.h:1814
+#: src/gui/setupactiondata.h:1820 src/gui/setupactiondata.h:1826
 #, c-format
 msgid "Move to point Shortcut %d"
 msgstr "Raccourci de \"Aller au point de navigation\" %d"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1834
+#: src/gui/setupactiondata.h:1841
 msgid "Move & selection"
 msgstr "Déplacement & sélection"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1864
+#: src/gui/setupactiondata.h:1871
 msgid "Move Home"
 msgstr "Aller au point de repos"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1870
+#: src/gui/setupactiondata.h:1877
 msgid "Move End"
 msgstr "Arrêt du déplacement"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1876
+#: src/gui/setupactiondata.h:1883
 msgid "Page up"
 msgstr "Page précédente"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1882
+#: src/gui/setupactiondata.h:1889
 msgid "Page down"
 msgstr "Page suivante"
 
@@ -2872,23 +2878,23 @@ msgstr "Page suivante"
 #. TRANSLATORS: settings group
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
-#: src/gui/setupactiondata.h:1888 src/gui/setupactiondata.h:2033
+#: src/gui/setupactiondata.h:1895 src/gui/setupactiondata.h:2040
 #: src/gui/widgets/tabs/setup_audio.cpp:151
 #: src/gui/widgets/tabs/setup_chat.cpp:181
 #: src/gui/widgets/tabs/setup_other.cpp:337
 #: src/gui/widgets/tabs/setup_visual.cpp:191
-#: src/gui/windows/charcreatedialog.cpp:116
-#: src/gui/windows/registerdialog.cpp:103
+#: src/gui/windows/charcreatedialog.cpp:118
+#: src/gui/windows/registerdialog.cpp:104
 msgid "Other"
 msgstr "Autre"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1894
+#: src/gui/setupactiondata.h:1901
 msgid "Select"
 msgstr "Sélectionner"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1900
+#: src/gui/setupactiondata.h:1907
 msgid "Select2"
 msgstr "Sélectionner2"
 
@@ -2898,61 +2904,61 @@ msgstr "Sélectionner2"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: command editor button
-#: src/gui/setupactiondata.h:1912 src/gui/widgets/tabs/setup_relations.cpp:77
-#: src/gui/windows/charselectdialog.cpp:76
-#: src/gui/windows/serverdialog.cpp:115 src/gui/windows/shopwindow.cpp:100
+#: src/gui/setupactiondata.h:1919 src/gui/widgets/tabs/setup_relations.cpp:77
+#: src/gui/windows/charselectdialog.cpp:78
+#: src/gui/windows/serverdialog.cpp:116 src/gui/windows/shopwindow.cpp:100
 #: src/gui/windows/shopwindow.cpp:107 src/gui/windows/textcommandeditor.cpp:92
 msgid "Delete"
 msgstr "Supprimer"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1918
+#: src/gui/setupactiondata.h:1925
 msgid "Backspace"
 msgstr "Retour arrière"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1924
+#: src/gui/setupactiondata.h:1931
 msgid "Insert"
 msgstr "Insérer"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1930
+#: src/gui/setupactiondata.h:1937
 msgid "Tab"
 msgstr "Tab"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1936
+#: src/gui/setupactiondata.h:1943
 msgid "Mod"
 msgstr "Modif."
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1942
+#: src/gui/setupactiondata.h:1949
 msgid "Ctrl"
 msgstr "Ctrl"
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:2019
+#: src/gui/setupactiondata.h:2026
 msgid "Basic"
 msgstr "Basique"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:2023 src/gui/windowmenu.cpp:121
+#: src/gui/setupactiondata.h:2030 src/gui/windowmenu.cpp:121
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings group
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:2025 src/gui/widgets/tabs/setup_other.cpp:315
-#: src/gui/windowmenu.cpp:154
+#: src/gui/setupactiondata.h:2032 src/gui/widgets/tabs/setup_other.cpp:315
+#: src/gui/windowmenu.cpp:158
 msgid "Windows"
 msgstr "Fenêtres"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: emotes window name
 #. TRANSLATORS: emotes tab name
-#: src/gui/setupactiondata.h:2027 src/gui/windows/emotewindow.cpp:51
+#: src/gui/setupactiondata.h:2034 src/gui/windows/emotewindow.cpp:51
 #: src/gui/windows/emotewindow.cpp:109
 msgid "Emotes"
 msgstr "Emoticônes"
@@ -2960,13 +2966,13 @@ msgstr "Emoticônes"
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
-#: src/gui/setupactiondata.h:2031 src/gui/widgets/tabs/setup_chat.cpp:42
+#: src/gui/setupactiondata.h:2038 src/gui/widgets/tabs/setup_chat.cpp:42
 #: src/gui/windowmenu.cpp:88 src/gui/windows/chatwindow.cpp:90
 msgid "Chat"
 msgstr "Conversation"
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:2035
+#: src/gui/setupactiondata.h:2042
 msgid "Gui"
 msgstr "Interface utilisateur (IU)"
 
@@ -3177,13 +3183,13 @@ msgstr "Point de route"
 msgid "Tiles border"
 msgstr "Bord des tiles"
 
-#: src/gui/widgets/characterdisplay.cpp:137
+#: src/gui/widgets/characterdisplay.cpp:139
 #, c-format
 msgid "Level: %u"
 msgstr "Niveau : %u"
 
 #. TRANSLATORS: status window label
-#: src/gui/widgets/characterdisplay.cpp:140
+#: src/gui/widgets/characterdisplay.cpp:142
 #: src/gui/windows/inventorywindow.cpp:570 src/gui/windows/statuswindow.cpp:72
 #: src/gui/windows/statuswindow.cpp:233 src/gui/windows/statuswindow.cpp:340
 #, c-format
@@ -3191,19 +3197,19 @@ msgid "Money: %s"
 msgstr "Argent : %s"
 
 #. TRANSLATORS: Text under equipped items (should be small)
-#: src/gui/widgets/itemcontainer.cpp:327
+#: src/gui/widgets/itemcontainer.cpp:328
 msgid "Eq."
 msgstr "Eq."
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:77
+#: src/gui/widgets/itemlinkhandler.cpp:75
 msgid "Open url"
 msgstr "Ouvrir l'adresse"
 
 #. TRANSLATORS: setup item button
 #. TRANSLATORS: servers dialog button
 #: src/gui/widgets/setupitem.cpp:366 src/gui/widgets/setupitem.cpp:502
-#: src/gui/windows/serverdialog.cpp:113
+#: src/gui/windows/serverdialog.cpp:114
 msgid "Edit"
 msgstr "Éditer"
 
@@ -3923,7 +3929,7 @@ msgstr ""
 
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
-#: src/gui/widgets/tabs/setup_input.cpp:316
+#: src/gui/widgets/tabs/setup_input.cpp:317
 #: src/gui/windows/questswindow.cpp:196
 msgid "unknown"
 msgstr "inconnu"
@@ -5113,7 +5119,7 @@ msgid "Ignore mobs"
 msgstr "Ignorer les monstres"
 
 #. TRANSLATORS: social window label
-#: src/gui/widgets/tabs/socialfriendstab.h:120
+#: src/gui/widgets/tabs/socialfriendstab.h:119
 #, c-format
 msgid "Friends: %u/%u"
 msgstr "Amis : %u/%u"
@@ -5305,7 +5311,7 @@ msgstr "Equ"
 
 #. TRANSLATORS: equipment window name
 #. TRANSLATORS: inventory button
-#: src/gui/windowmenu.cpp:99 src/gui/windows/equipmentwindow.cpp:61
+#: src/gui/windowmenu.cpp:99 src/gui/windows/equipmentwindow.cpp:62
 #: src/gui/windows/inventorywindow.cpp:198
 msgid "Equipment"
 msgstr "Équipement"
@@ -5383,24 +5389,36 @@ msgstr "BTQ"
 msgid "OU"
 msgstr "TNU"
 
-#. TRANSLATORS: short button name for debug window.
+#. TRANSLATORS: short button name for updates window.
 #: src/gui/windowmenu.cpp:143
+#, fuzzy
+msgid "UP"
+msgstr "P"
+
+#. TRANSLATORS: full button name
+#: src/gui/windowmenu.cpp:145
+#, fuzzy
+msgid "Updates"
+msgstr "Mise à jour"
+
+#. TRANSLATORS: short button name for debug window.
+#: src/gui/windowmenu.cpp:147
 msgid "DBG"
 msgstr "DBG"
 
 #. TRANSLATORS: short button name for windows list menu.
-#: src/gui/windowmenu.cpp:152
+#: src/gui/windowmenu.cpp:156
 msgid "WIN"
 msgstr "FEN"
 
 #. TRANSLATORS: short button name for setup window.
-#: src/gui/windowmenu.cpp:156
+#: src/gui/windowmenu.cpp:160
 msgid "SET"
 msgstr "Cfg"
 
 #. TRANSLATORS: short key name
 #. TRANSLATORS: outfits window label
-#: src/gui/windowmenu.cpp:292 src/gui/windows/outfitwindow.cpp:71
+#: src/gui/windowmenu.cpp:296 src/gui/windows/outfitwindow.cpp:71
 #: src/gui/windows/outfitwindow.cpp:562
 #, c-format
 msgid "Key: %s"
@@ -5467,8 +5485,8 @@ msgstr "-"
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
-#: src/gui/windows/buydialog.cpp:258 src/gui/windows/charcreatedialog.cpp:124
-#: src/gui/windows/charselectdialog.cpp:560
+#: src/gui/windows/buydialog.cpp:258 src/gui/windows/charcreatedialog.cpp:126
+#: src/gui/windows/charselectdialog.cpp:562
 #: src/gui/windows/socialwindow.cpp:82
 msgid "Create"
 msgstr "Créer"
@@ -5526,7 +5544,7 @@ msgstr "Les deux adresses e-mail ne correspondent pas."
 #. TRANSLATORS: char select dialog. button.
 #: src/gui/windows/changepassworddialog.cpp:50
 #: src/gui/windows/changepassworddialog.cpp:56
-#: src/gui/windows/charselectdialog.cpp:67
+#: src/gui/windows/charselectdialog.cpp:69
 msgid "Change Password"
 msgstr "Changer le mot de passe"
 
@@ -5535,7 +5553,7 @@ msgstr "Changer le mot de passe"
 #. TRANSLATORS: register dialog. label.
 #. TRANSLATORS: unregister dialog. label.
 #: src/gui/windows/changepassworddialog.cpp:69
-#: src/gui/windows/logindialog.cpp:106 src/gui/windows/registerdialog.cpp:78
+#: src/gui/windows/logindialog.cpp:107 src/gui/windows/registerdialog.cpp:79
 #: src/gui/windows/unregisterdialog.cpp:67
 msgid "Password:"
 msgstr "Mot de passe :"
@@ -5568,7 +5586,7 @@ msgid "The new password entries mismatch."
 msgstr "Les nouveaux mots de passe ne correspondent pas."
 
 #. TRANSLATORS: char create dialog name
-#: src/gui/windows/charcreatedialog.cpp:74
+#: src/gui/windows/charcreatedialog.cpp:76
 msgid "New Character"
 msgstr "Nouveau Personnage"
 
@@ -5576,9 +5594,9 @@ msgstr "Nouveau Personnage"
 #. TRANSLATORS: edit server dialog label
 #. TRANSLATORS: login dialog label
 #. TRANSLATORS: register dialog. label.
-#: src/gui/windows/charcreatedialog.cpp:80
-#: src/gui/windows/editserverdialog.cpp:72 src/gui/windows/logindialog.cpp:104
-#: src/gui/windows/registerdialog.cpp:76
+#: src/gui/windows/charcreatedialog.cpp:82
+#: src/gui/windows/editserverdialog.cpp:72 src/gui/windows/logindialog.cpp:105
+#: src/gui/windows/registerdialog.cpp:77
 msgid "Name:"
 msgstr "Nom :"
 
@@ -5586,11 +5604,11 @@ msgstr "Nom :"
 #. You may change this symbol if your language uses another.
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: outfits window button
-#: src/gui/windows/charcreatedialog.cpp:84
-#: src/gui/windows/charcreatedialog.cpp:93
-#: src/gui/windows/charcreatedialog.cpp:110
-#: src/gui/windows/charcreatedialog.cpp:180
-#: src/gui/windows/charcreatedialog.cpp:190
+#: src/gui/windows/charcreatedialog.cpp:86
+#: src/gui/windows/charcreatedialog.cpp:95
+#: src/gui/windows/charcreatedialog.cpp:112
+#: src/gui/windows/charcreatedialog.cpp:182
+#: src/gui/windows/charcreatedialog.cpp:192
 #: src/gui/windows/outfitwindow.cpp:59
 msgid ">"
 msgstr ">"
@@ -5599,72 +5617,72 @@ msgstr ">"
 #. You may change this symbol if your language uses another.
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: outfits window button
-#: src/gui/windows/charcreatedialog.cpp:88
-#: src/gui/windows/charcreatedialog.cpp:95
-#: src/gui/windows/charcreatedialog.cpp:182
-#: src/gui/windows/charcreatedialog.cpp:192
+#: src/gui/windows/charcreatedialog.cpp:90
+#: src/gui/windows/charcreatedialog.cpp:97
+#: src/gui/windows/charcreatedialog.cpp:184
+#: src/gui/windows/charcreatedialog.cpp:194
 #: src/gui/windows/outfitwindow.cpp:57
 msgid "<"
 msgstr "<"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:90
+#: src/gui/windows/charcreatedialog.cpp:92
 msgid "Hair color:"
 msgstr "Couleur :"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:97
+#: src/gui/windows/charcreatedialog.cpp:99
 msgid "Hair style:"
 msgstr "Coupe :"
 
 #. TRANSLATORS: char create dialog button
-#: src/gui/windows/charcreatedialog.cpp:108
+#: src/gui/windows/charcreatedialog.cpp:110
 msgid "^"
 msgstr "^"
 
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
-#: src/gui/windows/charcreatedialog.cpp:112
-#: src/gui/windows/registerdialog.cpp:97
+#: src/gui/windows/charcreatedialog.cpp:114
+#: src/gui/windows/registerdialog.cpp:98
 msgid "Male"
 msgstr "Masculin"
 
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
-#: src/gui/windows/charcreatedialog.cpp:114
-#: src/gui/windows/registerdialog.cpp:99
+#: src/gui/windows/charcreatedialog.cpp:116
+#: src/gui/windows/registerdialog.cpp:100
 msgid "Female"
 msgstr "Féminin"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:122
-#: src/gui/windows/charcreatedialog.cpp:465
+#: src/gui/windows/charcreatedialog.cpp:124
+#: src/gui/windows/charcreatedialog.cpp:467
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Distribues %d points"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:184
+#: src/gui/windows/charcreatedialog.cpp:186
 msgid "Race:"
 msgstr "Race :"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:194
+#: src/gui/windows/charcreatedialog.cpp:196
 msgid "Look:"
 msgstr "Apparence :"
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:358
+#: src/gui/windows/charcreatedialog.cpp:360
 msgid "Your name needs to be at least 4 characters."
 msgstr "Ton nom doit comporter un minimum de 4 caractères."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:455
+#: src/gui/windows/charcreatedialog.cpp:457
 msgid "Character stats OK"
 msgstr "Caractéristiques du personnage Ok"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:471
+#: src/gui/windows/charcreatedialog.cpp:473
 #, c-format
 msgid "Please remove %d points"
 msgstr "Retires %d points"
@@ -5680,53 +5698,53 @@ msgid "Are you sure you want to delete this character?"
 msgstr "Etes-vous certain de vouloir supprimer ce personnage ?"
 
 #. TRANSLATORS: char select dialog name
-#: src/gui/windows/charselectdialog.cpp:58
+#: src/gui/windows/charselectdialog.cpp:60
 #, c-format
 msgid "Account %s (last login time %s)"
 msgstr "Compte %s (dernier ouverture le %s)"
 
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/charselectdialog.cpp:65
+#: src/gui/windows/charselectdialog.cpp:67
 msgid "Switch Login"
 msgstr "Changer de compte"
 
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: updater window button
-#: src/gui/windows/charselectdialog.cpp:72
-#: src/gui/windows/charselectdialog.cpp:555
-#: src/gui/windows/updaterwindow.cpp:187
+#: src/gui/windows/charselectdialog.cpp:74
+#: src/gui/windows/charselectdialog.cpp:557
+#: src/gui/windows/updaterwindow.cpp:188
 msgid "Play"
 msgstr "Jouer"
 
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: info message
-#: src/gui/windows/charselectdialog.cpp:74
-#: src/net/ea/charserverhandler.cpp:217
+#: src/gui/windows/charselectdialog.cpp:76
+#: src/net/ea/charserverhandler.cpp:218
 msgid "Info"
 msgstr "Informations"
 
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: unregister dialog name
 #. TRANSLATORS: unregister dialog. button.
-#: src/gui/windows/charselectdialog.cpp:101
+#: src/gui/windows/charselectdialog.cpp:103
 #: src/gui/windows/unregisterdialog.cpp:49
 #: src/gui/windows/unregisterdialog.cpp:54
 msgid "Unregister"
 msgstr "Se désinscrire"
 
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/charselectdialog.cpp:113
+#: src/gui/windows/charselectdialog.cpp:115
 msgid "Change Email"
 msgstr "Modifier l'adresse e-mail"
 
 #. TRANSLATORS: char select dialog name
-#: src/gui/windows/charselectdialog.cpp:151
+#: src/gui/windows/charselectdialog.cpp:153
 #, c-format
 msgid "Account %s"
 msgstr "Compte %s"
 
 #. TRANSLATORS: char select dialog. player info message.
-#: src/gui/windows/charselectdialog.cpp:225
+#: src/gui/windows/charselectdialog.cpp:227
 #, c-format
 msgid ""
 "Hp: %u/%u\n"
@@ -5741,16 +5759,16 @@ msgstr ""
 "Expérience : %u\n"
 "Argent : %s"
 
-#: src/gui/windows/charselectdialog.cpp:273
+#: src/gui/windows/charselectdialog.cpp:275
 msgid "Incorrect password"
 msgstr "Mot de passe incorrect"
 
 #. TRANSLATORS: char deletion question.
-#: src/gui/windows/charselectdialog.cpp:410
+#: src/gui/windows/charselectdialog.cpp:412
 msgid "Enter password for deleting character"
 msgstr "Entrer le mot de passe pour effacer le personnage"
 
-#: src/gui/windows/charselectdialog.cpp:410
+#: src/gui/windows/charselectdialog.cpp:412
 msgid "Enter password:"
 msgstr "Entrer le mot de passe :"
 
@@ -5761,13 +5779,13 @@ msgid "Present: %s; %d players are present."
 msgstr "Présents : %s ; %d joueurs sont présents."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1053
+#: src/gui/windows/chatwindow.cpp:1055
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Message envoyé à %s : %s"
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1498
+#: src/gui/windows/chatwindow.cpp:1500
 #, c-format
 msgid "%s's pet"
 msgstr "%s du familier"
@@ -5815,7 +5833,7 @@ msgstr "Ouverture automatique de cette fenêtre"
 #. TRANSLATORS: text dialog button
 #: src/gui/windows/editdialog.cpp:47 src/gui/windows/editserverdialog.cpp:57
 #: src/gui/windows/itemamountwindow.cpp:164 src/gui/windows/okdialog.cpp:51
-#: src/gui/windows/quitdialog.cpp:70 src/gui/windows/textdialog.cpp:48
+#: src/gui/windows/quitdialog.cpp:71 src/gui/windows/textdialog.cpp:48
 msgid "OK"
 msgstr "Ok"
 
@@ -5827,7 +5845,7 @@ msgstr "Éditer le Serveur"
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
 #: src/gui/windows/editserverdialog.cpp:55
-#: src/gui/windows/serverdialog.cpp:109
+#: src/gui/windows/serverdialog.cpp:110
 msgid "Connect"
 msgstr "Connexion..."
 
@@ -6035,50 +6053,50 @@ msgstr "Arrivée de Jack0"
 
 #. TRANSLATORS: login dialog name
 #. TRANSLATORS: login dialog button
-#: src/gui/windows/logindialog.cpp:65 src/gui/windows/logindialog.cpp:82
+#: src/gui/windows/logindialog.cpp:66 src/gui/windows/logindialog.cpp:83
 msgid "Login"
 msgstr "Compte"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:72
+#: src/gui/windows/logindialog.cpp:73
 msgid "Remember username"
 msgstr "Se souvenir du nom d'utilisateur"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:75
+#: src/gui/windows/logindialog.cpp:76
 msgid "Update:"
 msgstr "Mise à jour : "
 
 #. TRANSLATORS: login dialog button
-#: src/gui/windows/logindialog.cpp:80
+#: src/gui/windows/logindialog.cpp:81
 msgid "Change Server"
 msgstr "Changer de Serveur"
 
 #. TRANSLATORS: login dialog button
 #. TRANSLATORS: register dialog name
 #. TRANSLATORS: register dialog. button.
-#: src/gui/windows/logindialog.cpp:84 src/gui/windows/registerdialog.cpp:53
-#: src/gui/windows/registerdialog.cpp:62
+#: src/gui/windows/logindialog.cpp:85 src/gui/windows/registerdialog.cpp:54
+#: src/gui/windows/registerdialog.cpp:63
 msgid "Register"
 msgstr "S'inscrire"
 
 #. TRANSLATORS: login dialog checkbox
-#: src/gui/windows/logindialog.cpp:86
+#: src/gui/windows/logindialog.cpp:87
 msgid "Custom update host"
 msgstr "Serveur de mise à jour personnalisé"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:100
+#: src/gui/windows/logindialog.cpp:101
 msgid "Server:"
 msgstr "Serveur :"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:110
+#: src/gui/windows/logindialog.cpp:111
 #, c-format
 msgid "Update host: %s"
 msgstr "Hôte de mise à jour : %s"
 
-#: src/gui/windows/logindialog.cpp:223
+#: src/gui/windows/logindialog.cpp:224
 msgid "Open register url"
 msgstr "Ouvrir l'URL d'inscription"
 
@@ -6174,7 +6192,7 @@ msgstr "Soumettre"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: trade window button
-#: src/gui/windows/npcdialog.cpp:112 src/gui/windows/serverdialog.cpp:111
+#: src/gui/windows/npcdialog.cpp:112 src/gui/windows/serverdialog.cpp:112
 #: src/gui/windows/shopwindow.cpp:98 src/gui/windows/shopwindow.cpp:105
 #: src/gui/windows/tradewindow.cpp:82
 msgid "Add"
@@ -6212,40 +6230,40 @@ msgid "Away outfit"
 msgstr "Équipement en absence"
 
 #. TRANSLATORS: quit dialog button
-#: src/gui/windows/quitdialog.cpp:64
+#: src/gui/windows/quitdialog.cpp:65
 msgid "Switch server"
 msgstr "Changer de serveur"
 
 #. TRANSLATORS: quit dialog button
-#: src/gui/windows/quitdialog.cpp:67
+#: src/gui/windows/quitdialog.cpp:68
 msgid "Switch character"
 msgstr "Changer de personnage"
 
 #. TRANSLATORS: register dialog. label.
-#: src/gui/windows/registerdialog.cpp:80
+#: src/gui/windows/registerdialog.cpp:81
 msgid "Confirm:"
 msgstr "Vérification :"
 
 #. TRANSLATORS: register dialog. label.
-#: src/gui/windows/registerdialog.cpp:120
+#: src/gui/windows/registerdialog.cpp:121
 msgid "Email:"
 msgstr "E-mail :"
 
 #. TRANSLATORS: error message
-#: src/gui/windows/registerdialog.cpp:191
+#: src/gui/windows/registerdialog.cpp:192
 #, c-format
 msgid "The username needs to be at least %u characters long."
 msgstr "Le nom d'utilisateur doit être long d'au moins %u caractères."
 
 #. TRANSLATORS: error message
-#: src/gui/windows/registerdialog.cpp:200
+#: src/gui/windows/registerdialog.cpp:201
 #, c-format
 msgid "The username needs to be less than %u characters long."
 msgstr "Le nom d'utilisateur doit être long d'au plus %u caractères."
 
 #. TRANSLATORS: error message
 #. TRANSLATORS: unregister dialog. error message.
-#: src/gui/windows/registerdialog.cpp:209
+#: src/gui/windows/registerdialog.cpp:210
 #: src/gui/windows/unregisterdialog.cpp:130
 #, c-format
 msgid "The password needs to be at least %u characters long."
@@ -6253,14 +6271,14 @@ msgstr " Le mot de passe doit être long d'au moins %u caractères."
 
 #. TRANSLATORS: error message
 #. TRANSLATORS: unregister dialog. error message.
-#: src/gui/windows/registerdialog.cpp:218
+#: src/gui/windows/registerdialog.cpp:219
 #: src/gui/windows/unregisterdialog.cpp:137
 #, c-format
 msgid "The password needs to be less than %u characters long."
 msgstr " Le mot de passe doit être long d'au plus %u caractères."
 
 #. TRANSLATORS: error message
-#: src/gui/windows/registerdialog.cpp:226
+#: src/gui/windows/registerdialog.cpp:227
 msgid "Passwords do not match."
 msgstr "Les deux mots de passe sont différents"
 
@@ -6276,53 +6294,53 @@ msgid "Do you really want to sell %s?"
 msgstr "Veux-tu vraiment vendre %s ?"
 
 #. TRANSLATORS: servers dialog name
-#: src/gui/windows/serverdialog.cpp:98
+#: src/gui/windows/serverdialog.cpp:99
 msgid "Choose Your Server"
 msgstr "Choisis le serveur"
 
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/serverdialog.cpp:117
+#: src/gui/windows/serverdialog.cpp:118
 msgid "Load"
 msgstr "Charger"
 
 #. TRANSLATORS: servers dialog name
-#: src/gui/windows/serverdialog.cpp:131
+#: src/gui/windows/serverdialog.cpp:132
 msgid "Choose Your Server  *** SAFE MODE ***"
 msgstr "Choisis ton serveur  *** Mode Sûr ***"
 
 #. TRANSLATORS: servers dialog checkbox
-#: src/gui/windows/serverdialog.cpp:140
+#: src/gui/windows/serverdialog.cpp:141
 msgid "Use same ip for game sub servers"
 msgstr "Utiliser la même ip pour les sous-serveurs de jeu"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:387
+#: src/gui/windows/serverdialog.cpp:388
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "Téléchargement de la liste des serveurs...%2.2f%%"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:393
+#: src/gui/windows/serverdialog.cpp:394
 msgid "Waiting for server..."
 msgstr "En attente du serveur..."
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:398
+#: src/gui/windows/serverdialog.cpp:399
 msgid "Preparing download"
 msgstr "Préparation du téléchargement"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:403
+#: src/gui/windows/serverdialog.cpp:404
 msgid "Error retreiving server list!"
 msgstr "Erreur lors du téléchargement de la liste de serveurs !"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:493
+#: src/gui/windows/serverdialog.cpp:494
 msgid "requires a newer version"
 msgstr "requiert une nouvelle version"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:498
+#: src/gui/windows/serverdialog.cpp:499
 #, c-format
 msgid "requires v%s"
 msgstr "requiert la v%s"
@@ -6370,7 +6388,7 @@ msgstr "Enchères"
 
 #. TRANSLATORS: shop window dialog
 #. TRANSLATORS: trade message
-#: src/gui/windows/shopwindow.cpp:786 src/net/ea/tradehandler.cpp:106
+#: src/gui/windows/shopwindow.cpp:786 src/net/ea/tradehandler.cpp:97
 msgid "Request for Trade"
 msgstr "Demande d'échange"
 
@@ -6693,36 +6711,36 @@ msgid "Name: %s"
 msgstr "Nom : %s"
 
 #. TRANSLATORS: updater window name
-#: src/gui/windows/updaterwindow.cpp:166
+#: src/gui/windows/updaterwindow.cpp:167
 msgid "Updating..."
 msgstr "Mise à jour en cours..."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:183
+#: src/gui/windows/updaterwindow.cpp:184
 msgid "Connecting..."
 msgstr "Connexion..."
 
-#: src/gui/windows/updaterwindow.cpp:377
+#: src/gui/windows/updaterwindow.cpp:391
 msgid "Show all news (can be slow)"
 msgstr "Afficher toutes les nouvelles (peut être lent)"
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:799
+#: src/gui/windows/updaterwindow.cpp:814
 msgid "##1  The update process is incomplete."
 msgstr "##1 Le processus de mise à jour n'est pas achevé"
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:801
+#: src/gui/windows/updaterwindow.cpp:816
 msgid "##1  It is strongly recommended that"
 msgstr "##1 Il est fortement recommandé de"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:803
+#: src/gui/windows/updaterwindow.cpp:818
 msgid "##1  you try again later."
 msgstr "##1 Essayes de nouveau plus tard."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:980
+#: src/gui/windows/updaterwindow.cpp:995
 msgid "Completed"
 msgstr "Terminé"
 
@@ -6752,42 +6770,42 @@ msgid "Who Is Online - Update"
 msgstr "Qui est en ligne - Mise à jour"
 
 #. TRANSLATORS: world select dialog name
-#: src/gui/windows/worldselectdialog.cpp:50
+#: src/gui/windows/worldselectdialog.cpp:48
 msgid "Select World"
 msgstr "Sélection du monde"
 
 #. TRANSLATORS: world dialog button
-#: src/gui/windows/worldselectdialog.cpp:56
+#: src/gui/windows/worldselectdialog.cpp:54
 msgid "Change Login"
 msgstr "Changer de Compte"
 
 #. TRANSLATORS: world dialog button
-#: src/gui/windows/worldselectdialog.cpp:58
+#: src/gui/windows/worldselectdialog.cpp:56
 msgid "Choose World"
 msgstr "Choix du monde"
 
 #. TRANSLATORS: long key name. must be short.
 #. TRANSLATORS: short key name. must be very short.
 #. TRANSLATORS: long key name, should be short
-#: src/input/inputmanager.cpp:360 src/input/inputmanager.cpp:404
-#: src/input/keyboardconfig.cpp:101
+#: src/input/inputmanager.cpp:354 src/input/inputmanager.cpp:398
+#: src/input/keyboardconfig.cpp:102
 #, c-format
 msgid "key_%d"
 msgstr "touche_%d"
 
 #. TRANSLATORS: long joystick button name. must be short.
-#: src/input/inputmanager.cpp:366
+#: src/input/inputmanager.cpp:360
 #, c-format
 msgid "JButton%d"
 msgstr "JBoutton%d"
 
 #. TRANSLATORS: unknown long key type
-#: src/input/inputmanager.cpp:380
+#: src/input/inputmanager.cpp:374
 msgid "unknown key"
 msgstr "touche inconnue"
 
 #. TRANSLATORS: short joystick button name. muse be very short
-#: src/input/inputmanager.cpp:410
+#: src/input/inputmanager.cpp:404
 #, c-format
 msgid "JB%d"
 msgstr "JB%d"
@@ -6795,7 +6813,7 @@ msgstr "JB%d"
 #. TRANSLATORS: unknown short key type. must be short
 #. TRANSLATORS: Unknown key short string.
 #. TRANSLATORS: This string must be maximum 5 chars
-#: src/input/inputmanager.cpp:424 src/input/keyboardconfig.cpp:145
+#: src/input/inputmanager.cpp:418 src/input/keyboardconfig.cpp:146
 msgid "u key"
 msgstr "touche u"
 
@@ -6936,92 +6954,92 @@ msgid "  -O --no-opengl      : Disable OpenGL for this session"
 msgstr " -O --no-opengl : Désactiver OpenGL pour cette session"
 
 #. TRANSLATORS: playe stat
-#: src/net/ea/charserverhandler.cpp:73
+#: src/net/ea/charserverhandler.cpp:74
 msgid "Strength:"
 msgstr "Force :"
 
 #. TRANSLATORS: playe stat
-#: src/net/ea/charserverhandler.cpp:75
+#: src/net/ea/charserverhandler.cpp:76
 msgid "Agility:"
 msgstr "Agilité :"
 
 #. TRANSLATORS: playe stat
-#: src/net/ea/charserverhandler.cpp:77
+#: src/net/ea/charserverhandler.cpp:78
 msgid "Vitality:"
 msgstr "Vitalité :"
 
 #. TRANSLATORS: playe stat
-#: src/net/ea/charserverhandler.cpp:79
+#: src/net/ea/charserverhandler.cpp:80
 msgid "Intelligence:"
 msgstr "Intelligence :"
 
 #. TRANSLATORS: playe stat
-#: src/net/ea/charserverhandler.cpp:81
+#: src/net/ea/charserverhandler.cpp:82
 msgid "Dexterity:"
 msgstr "Dextérité :"
 
 #. TRANSLATORS: playe stat
-#: src/net/ea/charserverhandler.cpp:83
+#: src/net/ea/charserverhandler.cpp:84
 msgid "Luck:"
 msgstr "Chance :"
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:129
+#: src/net/ea/charserverhandler.cpp:130
 msgid "Access denied. Most likely, there are too many players on this server."
 msgstr "Accès refusé. Il y a probablement trop de joueurs sur le serveur."
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:134
+#: src/net/ea/charserverhandler.cpp:135
 msgid "Cannot use this ID."
 msgstr "Tu ne peux pas utiliser cette identification."
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:138
+#: src/net/ea/charserverhandler.cpp:139
 msgid "Unknown char-server failure."
 msgstr "Erreur inconnue du serveur de personnage."
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:173
+#: src/net/ea/charserverhandler.cpp:174
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr ""
 "Impossible de créer ce personnage. Il est probable que ce nom soit déjà "
 "utilisé."
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:178 src/net/ea/loginhandler.cpp:277
+#: src/net/ea/charserverhandler.cpp:179 src/net/ea/loginhandler.cpp:277
 msgid "Wrong name."
 msgstr "Mauvais nom."
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:182
+#: src/net/ea/charserverhandler.cpp:183
 msgid "Incorrect stats."
 msgstr "Stats incorrectes."
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:186
+#: src/net/ea/charserverhandler.cpp:187
 msgid "Incorrect hair."
 msgstr "Cheveux incorrects."
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:190
+#: src/net/ea/charserverhandler.cpp:191
 msgid "Incorrect slot."
 msgstr "Case incorrecte."
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:194
+#: src/net/ea/charserverhandler.cpp:195
 msgid "Incorrect race."
 msgstr "Race incorrecte."
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:198
+#: src/net/ea/charserverhandler.cpp:199
 msgid "Incorrect look."
 msgstr "Apparence incorrecte."
 
-#: src/net/ea/charserverhandler.cpp:217
+#: src/net/ea/charserverhandler.cpp:218
 msgid "Character deleted."
 msgstr "Personnage supprimé."
 
-#: src/net/ea/charserverhandler.cpp:226
+#: src/net/ea/charserverhandler.cpp:227
 msgid "Failed to delete character."
 msgstr "La suppression du personnage n'a pu s'effectuer."
 
@@ -7124,24 +7142,24 @@ msgstr "Paramètre de partage d'objets inconnu."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:155 src/notifications.h:240
+#: src/net/ea/gui/partytab.cpp:157 src/notifications.h:240
 msgid "Experience sharing enabled."
 msgstr "Partage d'expérience autorisé."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:160 src/notifications.h:243
+#: src/net/ea/gui/partytab.cpp:162 src/notifications.h:243
 msgid "Experience sharing disabled."
 msgstr "Partage d'expérience non autorisé."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:165 src/notifications.h:246
+#: src/net/ea/gui/partytab.cpp:167 src/notifications.h:246
 msgid "Experience sharing not possible."
 msgstr "Partage d'expérience impossible."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/gui/partytab.cpp:170
+#: src/net/ea/gui/partytab.cpp:172
 msgid "Experience sharing unknown."
 msgstr "Paramètre de partage d'expérience inconnu."
 
@@ -7244,13 +7262,13 @@ msgid "Connection to server terminated. "
 msgstr "Connexion au serveur terminée."
 
 #. TRANSLATORS: message header
-#: src/net/ea/playerhandler.cpp:304 src/net/ea/playerhandler.cpp:316
-#: src/net/ea/playerhandler.cpp:400
+#: src/net/ea/playerhandler.cpp:271 src/net/ea/playerhandler.cpp:283
+#: src/net/ea/playerhandler.cpp:367
 msgid "Message"
 msgstr "Message"
 
 #. TRANSLATORS: weight message
-#: src/net/ea/playerhandler.cpp:306
+#: src/net/ea/playerhandler.cpp:273
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
@@ -7258,7 +7276,7 @@ msgstr ""
 "n'êtes plus en mesure de récupérer votre santé."
 
 #. TRANSLATORS: weight message
-#: src/net/ea/playerhandler.cpp:318
+#: src/net/ea/playerhandler.cpp:285
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 "Vous portez moins de la moitié du poids maximal de votre inventaire. Vous "
@@ -7365,172 +7383,172 @@ msgid "Poison had no effect..."
 msgstr "Le poison n'a pas eu d'effet..."
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:98 src/net/tmwa/generalhandler.cpp:103
+#: src/net/eathena/generalhandler.cpp:102 src/net/tmwa/generalhandler.cpp:107
 #, c-format
 msgid "Strength %s"
 msgstr "Force %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:99 src/net/tmwa/generalhandler.cpp:105
+#: src/net/eathena/generalhandler.cpp:103 src/net/tmwa/generalhandler.cpp:109
 #, c-format
 msgid "Agility %s"
 msgstr "Agilité %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:100 src/net/tmwa/generalhandler.cpp:107
+#: src/net/eathena/generalhandler.cpp:104 src/net/tmwa/generalhandler.cpp:111
 #, c-format
 msgid "Vitality %s"
 msgstr "Vitalité %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:101 src/net/tmwa/generalhandler.cpp:109
+#: src/net/eathena/generalhandler.cpp:105 src/net/tmwa/generalhandler.cpp:113
 #, c-format
 msgid "Intelligence %s"
 msgstr "Intelligence %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:102 src/net/tmwa/generalhandler.cpp:111
+#: src/net/eathena/generalhandler.cpp:106 src/net/tmwa/generalhandler.cpp:115
 #, c-format
 msgid "Dexterity %s"
 msgstr "Dextérité %s"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:103 src/net/tmwa/generalhandler.cpp:113
+#: src/net/eathena/generalhandler.cpp:107 src/net/tmwa/generalhandler.cpp:117
 #, c-format
 msgid "Luck %s"
 msgstr "Chance %s"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:125 src/net/tmwa/generalhandler.cpp:138
+#: src/net/eathena/generalhandler.cpp:129 src/net/tmwa/generalhandler.cpp:142
 msgid "Authentication failed."
 msgstr "Échec de l'authentification."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:128 src/net/tmwa/generalhandler.cpp:142
+#: src/net/eathena/generalhandler.cpp:132 src/net/tmwa/generalhandler.cpp:146
 msgid "No servers available."
 msgstr "Aucun serveur n'est disponible."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:133 src/net/tmwa/generalhandler.cpp:148
+#: src/net/eathena/generalhandler.cpp:137 src/net/tmwa/generalhandler.cpp:152
 msgid "Someone else is trying to use this account."
 msgstr "Quelqu'un d'autre essaie d'utiliser ce compte."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:138 src/net/tmwa/generalhandler.cpp:154
+#: src/net/eathena/generalhandler.cpp:142 src/net/tmwa/generalhandler.cpp:158
 msgid "This account is already logged in."
 msgstr "Ce compte est déjà connecté."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:142 src/net/tmwa/generalhandler.cpp:159
+#: src/net/eathena/generalhandler.cpp:146 src/net/tmwa/generalhandler.cpp:163
 msgid "Speed hack detected."
 msgstr "Speed hack détecté."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:145 src/net/tmwa/generalhandler.cpp:163
+#: src/net/eathena/generalhandler.cpp:149 src/net/tmwa/generalhandler.cpp:167
 msgid "Duplicated login."
 msgstr "Authentification déjà effectuée."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:148 src/net/tmwa/generalhandler.cpp:167
+#: src/net/eathena/generalhandler.cpp:152 src/net/tmwa/generalhandler.cpp:171
 msgid "Unknown connection error."
 msgstr "Erreur de connexion inconnue."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:220 src/net/tmwa/generalhandler.cpp:249
+#: src/net/eathena/generalhandler.cpp:224 src/net/tmwa/generalhandler.cpp:253
 msgid "Got disconnected from server!"
 msgstr "Vous avez été déconnecté du serveur !"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:245 src/net/tmwa/generalhandler.cpp:277
+#: src/net/eathena/generalhandler.cpp:249 src/net/tmwa/generalhandler.cpp:281
 msgid "Strength"
 msgstr "Force"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:246 src/net/tmwa/generalhandler.cpp:279
+#: src/net/eathena/generalhandler.cpp:250 src/net/tmwa/generalhandler.cpp:283
 msgid "Agility"
 msgstr "Agilité"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:247 src/net/tmwa/generalhandler.cpp:281
+#: src/net/eathena/generalhandler.cpp:251 src/net/tmwa/generalhandler.cpp:285
 msgid "Vitality"
 msgstr "Vitalité"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:248 src/net/tmwa/generalhandler.cpp:283
+#: src/net/eathena/generalhandler.cpp:252 src/net/tmwa/generalhandler.cpp:287
 msgid "Intelligence"
 msgstr "Intelligence"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:249 src/net/tmwa/generalhandler.cpp:285
+#: src/net/eathena/generalhandler.cpp:253 src/net/tmwa/generalhandler.cpp:289
 msgid "Dexterity"
 msgstr "Dextérité"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:250 src/net/tmwa/generalhandler.cpp:287
+#: src/net/eathena/generalhandler.cpp:254 src/net/tmwa/generalhandler.cpp:291
 msgid "Luck"
 msgstr "Chance"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:253 src/net/tmwa/generalhandler.cpp:292
+#: src/net/eathena/generalhandler.cpp:257 src/net/tmwa/generalhandler.cpp:296
 msgid "Defense"
 msgstr "Défense"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:254 src/net/tmwa/generalhandler.cpp:294
+#: src/net/eathena/generalhandler.cpp:258 src/net/tmwa/generalhandler.cpp:298
 msgid "M.Attack"
 msgstr "Attaque M."
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:255 src/net/tmwa/generalhandler.cpp:296
+#: src/net/eathena/generalhandler.cpp:259 src/net/tmwa/generalhandler.cpp:300
 msgid "M.Defense"
 msgstr "Défense M."
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:257 src/net/tmwa/generalhandler.cpp:299
+#: src/net/eathena/generalhandler.cpp:261 src/net/tmwa/generalhandler.cpp:303
 #, no-c-format
 msgid "% Accuracy"
 msgstr "% Précision"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:259 src/net/tmwa/generalhandler.cpp:302
+#: src/net/eathena/generalhandler.cpp:263 src/net/tmwa/generalhandler.cpp:306
 #, no-c-format
 msgid "% Evade"
 msgstr "% Esquive"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:261 src/net/tmwa/generalhandler.cpp:305
+#: src/net/eathena/generalhandler.cpp:265 src/net/tmwa/generalhandler.cpp:309
 #, no-c-format
 msgid "% Critical"
 msgstr "% Coup critique"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:262 src/net/tmwa/generalhandler.cpp:307
+#: src/net/eathena/generalhandler.cpp:266 src/net/tmwa/generalhandler.cpp:311
 msgid "Attack Delay"
 msgstr "Temps de l'attaque"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:263 src/net/tmwa/generalhandler.cpp:309
+#: src/net/eathena/generalhandler.cpp:267 src/net/tmwa/generalhandler.cpp:313
 msgid "Walk Delay"
 msgstr "Temps de déplacement"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:264 src/net/tmwa/generalhandler.cpp:311
+#: src/net/eathena/generalhandler.cpp:268 src/net/tmwa/generalhandler.cpp:315
 msgid "Attack Range"
 msgstr "Portée de l'attaque"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:265 src/net/tmwa/generalhandler.cpp:313
+#: src/net/eathena/generalhandler.cpp:269 src/net/tmwa/generalhandler.cpp:317
 msgid "Damage per sec."
 msgstr "Dégâts par s."
 
 #. TRANSLATORS: trade message
-#: src/net/ea/tradehandler.cpp:108
+#: src/net/ea/tradehandler.cpp:99
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s souhaite réaliser un échange avec vous. Acceptez-vous ?"
 
 #. TRANSLATORS: trade header
-#: src/net/ea/tradehandler.cpp:155
+#: src/net/ea/tradehandler.cpp:146
 #, c-format
 msgid "Trade: You and %s"
 msgstr "Échange : Toi et %s"
@@ -7899,48 +7917,48 @@ msgstr "OpenGL sécurisé"
 #. TRANSLATORS: item info name
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
-#: src/resources/beinginfo.cpp:44 src/resources/db/avatardb.cpp:87
-#: src/resources/db/itemdb.cpp:346 src/resources/db/moddb.cpp:78
-#: src/resources/db/monsterdb.cpp:105 src/resources/modinfo.cpp:29
+#: src/resources/beinginfo.cpp:50 src/resources/db/avatardb.cpp:88
+#: src/resources/db/itemdb.cpp:350 src/resources/db/moddb.cpp:78
+#: src/resources/db/monsterdb.cpp:106 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr "anonyme"
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:92
+#: src/resources/db/itemdb.cpp:96
 #, c-format
 msgid "Attack %s"
 msgstr "Attaque %s"
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:94
+#: src/resources/db/itemdb.cpp:98
 #, c-format
 msgid "Defense %s"
 msgstr "Défense %s"
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:96
+#: src/resources/db/itemdb.cpp:100
 #, c-format
 msgid "HP %s"
 msgstr "PV %s"
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:98
+#: src/resources/db/itemdb.cpp:102
 #, c-format
 msgid "MP %s"
 msgstr "PM %s"
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:100
+#: src/resources/db/itemdb.cpp:104
 #, c-format
 msgid "Level %s"
 msgstr "Niveau %s"
 
 #. TRANSLATORS: item name
-#: src/resources/db/itemdb.cpp:224
+#: src/resources/db/itemdb.cpp:228
 msgid "Unknown item"
 msgstr "Objet inconnu"
 
 #. TRANSLATORS: unknown info name
-#: src/resources/db/petdb.cpp:99
+#: src/resources/db/petdb.cpp:100
 msgid "pet"
 msgstr "familier"
