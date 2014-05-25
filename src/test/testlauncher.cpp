@@ -193,22 +193,66 @@ int TestLauncher::testTextures()
     if (sz > 16500)
         sz = 16500;
 
+    const uint32_t bytes1[] =
+    {
+        0xFFFF0000U, 0xFFFFFF00U, 0xFF00FFFFU, 0xFF0000FFU,
+        0xFF000000U, 0xFFFF00FFU
+    };
+
+    const uint32_t bytes2[] =
+    {
+        0x00FF0000U, 0xFFFFFFFFU, 0x0000FF00U, 0xFF000000U,
+        0x0000FF00U, 0x00000000U
+    };
+
     for (nextSize = 512; nextSize < sz; nextSize *= 2)
     {
+        mainGraphics->clearScreen();
         SDL_Surface *const surface = imageHelper->create32BitSurface(
             nextSize, nextSize);
         if (!surface)
             break;
+        uint32_t *pixels = static_cast<uint32_t*>(surface->pixels);
+        for (int f = 0; f < 6; f ++)
+            pixels[f] = bytes1[f];
         graphicsManager.getLastError();
         graphicsManager.resetCachedError();
         Image *const image = imageHelper->load(surface);
+        SDL_FreeSurface(surface);
         if (!image)
             break;
-        if (graphicsManager.getLastErrorCached() != GL_NO_ERROR)
-            break;
 
-        delete image;
-        SDL_FreeSurface(surface);
+        if (graphicsManager.getLastErrorCached() != GL_NO_ERROR)
+        {
+            delete image;
+            break;
+        }
+        Image *const subImage = image->getSubImage(0, 0, 10, 10);
+        if (!subImage)
+        {
+            delete image;
+            break;
+        }
+        mainGraphics->drawImage(subImage, 0, 0);
+        mainGraphics->updateScreen();
+        mainGraphics->drawImage(subImage, 0, 0);
+        delete subImage;
+        SDL_Surface *const screen = mainGraphics->getScreenshot();
+        pixels = static_cast<uint32_t*>(screen->pixels);
+        bool fail(false);
+        for (int f = 0; f < 6; f ++)
+        {
+//            printf("diff: %d, %x and %x\n", f, pixels[f], bytes2[f]);
+            if (pixels[f] != bytes2[f])
+            {
+                fail = true;
+                break;
+            }
+        }
+
+        SDL_FreeSurface(screen);
+        if (fail)
+            break;
 
         maxSize = nextSize;
     }
