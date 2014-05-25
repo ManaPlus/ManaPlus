@@ -455,6 +455,7 @@ void Setup_Video::action(const ActionEvent &event)
             }
             config.setValue("textureSize",
                 conf.getValueInt("textureSize", 1024));
+            config.setValue("testInfo", conf.getValue("testInfo", ""));
             delete test;
         }
     }

@@ -990,6 +990,8 @@ void GraphicsManager::detectVideoSettings()
             if (val != -1)
                 config.setValue("compresstextures", val);
         }
+        config.setValue("textureSize", conf.getValueInt("textureSize", 1024));
+        config.setValue("testInfo", conf.getValue("testInfo", ""));
         delete test;
     }
 }

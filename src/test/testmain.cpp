@@ -206,6 +206,7 @@ int TestMain::exec(const bool testAudio)
             textureSize1 = readValue2(14);
         if (!invokeFastOpenBatchTest("15"))
             textureSize2 = readValue2(15);
+        info.append(strprintf(",%d,%d", textureSize1, textureSize2));
         textureSize1 = std::min(textureSize1, textureSize2);
         if (textureSize1 < 1024)
             textureSize1 = 1024;

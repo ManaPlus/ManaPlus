@@ -190,7 +190,7 @@ int TestLauncher::testTextures()
     int maxSize = 1024;
     int nextSize = 1024;
     int sz = OpenGLImageHelper::getTextureSize() + 1;
-    if (sz < 16500)
+    if (sz > 16500)
         sz = 16500;
 
     for (nextSize = 512; nextSize < sz; nextSize *= 2)
