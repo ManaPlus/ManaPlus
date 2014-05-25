@@ -80,7 +80,6 @@ int TestMain::exec(const bool testAudio)
     int fastOpenGLFps = 0;
     int safeOpenGLFps = 0;
     int textureSize1 = 1024;
-    int textureSize2 = 1024;
     int textureSize3 = 1024;
 
     RenderType openGLMode = RENDER_SOFTWARE;
