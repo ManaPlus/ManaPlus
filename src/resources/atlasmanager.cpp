@@ -56,9 +56,11 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
 
     loadImages(files, images);
     int maxSize = OpenGLImageHelper::getTextureSize();
+#if !defined(ANDROID) && !defined(__APPLE__)
     const int sz = config.getIntValue("textureSize");
     if (maxSize > sz)
         maxSize = sz;
+#endif
 
     // sorting images on atlases.
     simpleSort(name, atlases, images, maxSize);
