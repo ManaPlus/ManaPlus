@@ -187,8 +187,8 @@ int TestLauncher::testBatches()
 
 int TestLauncher::testTextures()
 {
-    int maxSize = 1024;
-    int nextSize = 1024;
+    int maxSize = 512;
+    int nextSize = 512;
     int sz = OpenGLImageHelper::getTextureSize() + 1;
     if (sz > 16500)
         sz = 16500;
@@ -201,8 +201,8 @@ int TestLauncher::testTextures()
 
     const uint32_t bytes2[] =
     {
-        0x00FF0000U, 0xFFFFFFFFU, 0x0000FF00U, 0xFF000000U,
-        0x0000FF00U, 0x00000000U
+        0xFF0000FFU, 0xFF00FFFFU, 0xFFFFFF00U, 0xFFFF0000U,
+        0xFF000000U, 0xFFFF00FFU
     };
 
     for (nextSize = 512; nextSize < sz; nextSize *= 2)
@@ -237,12 +237,13 @@ int TestLauncher::testTextures()
         mainGraphics->updateScreen();
         mainGraphics->drawImage(subImage, 0, 0);
         delete subImage;
-        SDL_Surface *const screen = mainGraphics->getScreenshot();
-        pixels = static_cast<uint32_t*>(screen->pixels);
+        SDL_Surface *const screen1 = mainGraphics->getScreenshot();
+        SDL_Surface *const screen2 = imageHelper->convertTo32Bit(screen1);
+        SDL_FreeSurface(screen1);
+        pixels = static_cast<uint32_t*>(screen2->pixels);
         bool fail(false);
         for (int f = 0; f < 6; f ++)
         {
-//            printf("diff: %d, %x and %x\n", f, pixels[f], bytes2[f]);
             if (pixels[f] != bytes2[f])
             {
                 fail = true;
@@ -250,7 +251,7 @@ int TestLauncher::testTextures()
             }
         }
 
-        SDL_FreeSurface(screen);
+        SDL_FreeSurface(screen2);
         if (fail)
             break;
 
