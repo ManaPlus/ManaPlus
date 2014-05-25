@@ -67,7 +67,7 @@
 // TRANSLATORS: trade window button
 #define CAPTION_ACCEPTED _("Agreed. Waiting...")
 
-TradeWindow::TradeWindow():
+TradeWindow::TradeWindow() :
     // TRANSLATORS: trade window caption
     Window(_("Trade: You"), false, nullptr, "trade.xml"),
     ActionListener(),

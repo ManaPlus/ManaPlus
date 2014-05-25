@@ -37,7 +37,7 @@
 namespace Net
 {
 
-MessageIn::MessageIn(const char *const data, const unsigned int length):
+MessageIn::MessageIn(const char *const data, const unsigned int length) :
     mData(data),
     mLength(length),
     mId(0),

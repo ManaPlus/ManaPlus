@@ -61,15 +61,19 @@ namespace
 }  // namespace
 
 GuildMember::GuildMember(Guild *const guild, const int accountId,
-                         const int charId, const std::string &name):
-        Avatar(name), mGuild(guild), mPos(0)
+                         const int charId, const std::string &name) :
+    Avatar(name),
+    mGuild(guild),
+    mPos(0)
 {
     mId = accountId;
     mCharId = charId;
 }
 
-GuildMember::GuildMember(Guild *const guild, const std::string &name):
-        Avatar(name), mGuild(guild), mPos(0)
+GuildMember::GuildMember(Guild *const guild, const std::string &name) :
+    Avatar(name),
+    mGuild(guild),
+    mPos(0)
 {
 }
 
@@ -83,7 +87,7 @@ std::string GuildMember::getAdditionString() const
 
 Guild::GuildMap Guild::guilds;
 
-Guild::Guild(const int16_t id):
+Guild::Guild(const int16_t id) :
     mMembers(),
     mName(),
     mId(id),

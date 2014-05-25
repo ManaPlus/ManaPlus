@@ -31,7 +31,7 @@
 
 EmoteShortcut *emoteShortcut = nullptr;
 
-EmoteShortcut::EmoteShortcut():
+EmoteShortcut::EmoteShortcut() :
     mEmoteSelected(0)
 {
     for (int i = 0; i < SHORTCUT_EMOTES; i++)

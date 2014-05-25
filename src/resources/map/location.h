@@ -35,7 +35,7 @@ struct Location final
     /**
      * Constructor.
      */
-    Location(const int px, const int py, MetaTile *const ptile):
+    Location(const int px, const int py, MetaTile *const ptile) :
         x(px), y(py), tile(ptile)
     {}
 

@@ -39,7 +39,7 @@ DragDrop dragDrop(nullptr, DRAGDROP_SOURCE_EMPTY);
 
 Item::Item(const int id, const int quantity, const int refine,
            const unsigned char color, const bool equipment,
-           const bool equipped):
+           const bool equipped) :
     mId(0),
     mColor(0),
     mQuantity(quantity),

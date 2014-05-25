@@ -97,8 +97,8 @@ std::string UserPalette::getConfigName(const std::string &typeName)
     return res;
 }
 
-UserPalette::UserPalette():
-        Palette(USER_COLOR_LAST)
+UserPalette::UserPalette() :
+    Palette(USER_COLOR_LAST)
 {
     mColors[BEING] = ColorElem();
     mColors[PC] = ColorElem();

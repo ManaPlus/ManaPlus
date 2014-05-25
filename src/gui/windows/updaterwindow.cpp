@@ -162,7 +162,7 @@ static std::vector<UpdateFile> loadTxtFile(const std::string &fileName)
 UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
                              const std::string &restrict updatesDir,
                              const bool applyUpdates,
-                             const int updateType):
+                             const int updateType) :
     // TRANSLATORS: updater window name
     Window(_("Updating..."), false, nullptr, "update.xml"),
     ActionListener(),

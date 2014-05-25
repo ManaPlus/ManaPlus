@@ -25,7 +25,7 @@
 
 #include "debug.h"
 
-Actor::Actor():
+Actor::Actor() :
     mMap(nullptr),
     mPos(),
     mYDiff(0),

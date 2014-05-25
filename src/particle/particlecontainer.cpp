@@ -27,7 +27,7 @@
 #include "debug.h"
 
 ParticleContainer::ParticleContainer(ParticleContainer *const parent,
-                                     const bool delParent):
+                                     const bool delParent) :
     mNext(parent),
     mDelParent(delParent)
 {

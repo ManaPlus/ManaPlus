@@ -44,7 +44,7 @@ unsigned int NullOpenGLGraphics::mDrawCalls = 0;
 unsigned int NullOpenGLGraphics::mLastDrawCalls = 0;
 #endif
 
-NullOpenGLGraphics::NullOpenGLGraphics():
+NullOpenGLGraphics::NullOpenGLGraphics() :
     mFloatTexArray(nullptr),
     mIntTexArray(nullptr),
     mIntVertArray(nullptr),

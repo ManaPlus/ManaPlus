@@ -36,7 +36,7 @@
 
 #include "debug.h"
 
-BotCheckerWindow::BotCheckerWindow():
+BotCheckerWindow::BotCheckerWindow() :
     // TRANSLATORS: bot checker window header
     Window(_("Bot Checker"), false, nullptr, "botchecker.xml"),
     ActionListener(),

@@ -59,7 +59,9 @@ namespace
 
 PartyMember::PartyMember(Party *const party, const int id,
                          const std::string &name) :
-        Avatar(name), mParty(party), mLeader(false)
+    Avatar(name),
+    mParty(party),
+    mLeader(false)
 {
     mId = id;
 }

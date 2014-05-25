@@ -24,7 +24,7 @@
 
 #include "debug.h"
 
-Avatar::Avatar(const std::string &name):
+Avatar::Avatar(const std::string &name) :
     mId(0),
     mCharId(0),
     mName(name),

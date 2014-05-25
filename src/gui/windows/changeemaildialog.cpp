@@ -44,7 +44,7 @@
 
 #include "debug.h"
 
-ChangeEmailDialog::ChangeEmailDialog(LoginData *const data):
+ChangeEmailDialog::ChangeEmailDialog(LoginData *const data) :
     // TRANSLATORS: change email dialog header
     Window(_("Change Email Address"), true, nullptr, "changeemail.xml"),
     ActionListener(),

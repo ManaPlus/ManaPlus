@@ -61,7 +61,7 @@ DropDown::DropDown(const Widget2 *const widget,
                    const bool extended,
                    const bool modal,
                    ActionListener *const listener,
-                   const std::string &eventId):
+                   const std::string &eventId) :
     ActionListener(),
     BasicContainer(widget),
     KeyListener(),

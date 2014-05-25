@@ -38,7 +38,7 @@
 
 ItemShortcut *itemShortcut[SHORTCUT_TABS];
 
-ItemShortcut::ItemShortcut(const int number):
+ItemShortcut::ItemShortcut(const int number) :
     mItemSelected(-1),
     mItemColorSelected(1),
     mNumber(number)

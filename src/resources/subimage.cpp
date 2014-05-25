@@ -136,7 +136,7 @@ SubImage::SubImage(Image *const parent, SDL_Surface *const image,
 #ifdef USE_OPENGL
 SubImage::SubImage(Image *const parent, const GLuint image,
                    const int x, const int y, const int width, const int height,
-                   const int texWidth, const int texHeight):
+                   const int texWidth, const int texHeight) :
     Image(image, width, height, texWidth, texHeight),
     mInternalBounds(),
     mParent(parent)

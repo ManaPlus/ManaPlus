@@ -26,7 +26,7 @@
 
 #include "debug.h"
 
-WrongDataNoticeListener::WrongDataNoticeListener():
+WrongDataNoticeListener::WrongDataNoticeListener() :
     ActionListener(),
     mTarget(nullptr)
 {

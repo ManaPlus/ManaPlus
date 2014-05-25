@@ -88,7 +88,7 @@ RadioButton::GroupMap RadioButton::mGroupMap;
 RadioButton::RadioButton(const Widget2 *const widget,
                          const std::string &restrict caption,
                          const std::string &restrict group,
-                         const bool marked):
+                         const bool marked) :
     Widget(widget),
     MouseListener(),
     KeyListener(),

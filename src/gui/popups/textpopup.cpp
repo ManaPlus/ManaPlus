@@ -29,7 +29,7 @@
 
 #include "debug.h"
 
-TextPopup::TextPopup():
+TextPopup::TextPopup() :
     Popup("TextPopup", "textpopup.xml"),
     mText()
 {

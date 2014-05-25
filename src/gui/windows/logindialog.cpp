@@ -60,8 +60,9 @@ namespace
     OpenUrlListener urlListener;
 }  // namespace
 
-LoginDialog::LoginDialog(LoginData *const data, std::string serverName,
-                         std::string *const updateHost):
+LoginDialog::LoginDialog(LoginData *const data,
+                         std::string serverName,
+                         std::string *const updateHost) :
     // TRANSLATORS: login dialog name
     Window(_("Login"), false, nullptr, "login.xml"),
     ActionListener(),

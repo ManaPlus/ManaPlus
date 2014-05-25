@@ -38,7 +38,7 @@
 namespace EAthena
 {
 
-MessageOut::MessageOut(const int16_t id):
+MessageOut::MessageOut(const int16_t id) :
     Net::MessageOut(id),
     mNetwork(EAthena::Network::instance())
 {

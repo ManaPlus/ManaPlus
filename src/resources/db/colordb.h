@@ -35,7 +35,7 @@ namespace ColorDB
     class ItemColor final
     {
         public:
-            ItemColor():
+            ItemColor() :
                 id(0),
                 name(),
                 color()

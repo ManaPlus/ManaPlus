@@ -39,7 +39,7 @@
 class ChatInput final : public TextField
 {
     public:
-        explicit ChatInput(ChatWindow *const window):
+        explicit ChatInput(ChatWindow *const window) :
             TextField(window, "", false),
             mWindow(window),
             mFocusGaining(false)

@@ -74,7 +74,7 @@
 extern std::string tradePartnerName;
 ShopWindow::DialogList ShopWindow::instances;
 
-ShopWindow::ShopWindow():
+ShopWindow::ShopWindow() :
     // TRANSLATORS: shop window name
     Window(_("Personal Shop"), false, nullptr, "shop.xml"),
     ActionListener(),

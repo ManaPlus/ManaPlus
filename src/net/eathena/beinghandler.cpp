@@ -55,7 +55,7 @@ extern int serverVersion;
 namespace EAthena
 {
 
-BeingHandler::BeingHandler(const bool enableSync):
+BeingHandler::BeingHandler(const bool enableSync) :
     MessageHandler(),
     Ea::BeingHandler(enableSync)
 {

@@ -31,7 +31,7 @@ struct SpriteReference final
 {
     static SpriteReference *Empty;
 
-    SpriteReference():
+    SpriteReference() :
         sprite(),
         variant(0)
     {}

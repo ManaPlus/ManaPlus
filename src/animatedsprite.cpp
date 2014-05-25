@@ -38,7 +38,7 @@
 
 bool AnimatedSprite::mEnableCache = false;
 
-AnimatedSprite::AnimatedSprite(SpriteDef *const sprite):
+AnimatedSprite::AnimatedSprite(SpriteDef *const sprite) :
     mDirection(SpriteDirection::DOWN),
     mLastTime(0),
     mFrameIndex(0),

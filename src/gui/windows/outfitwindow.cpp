@@ -49,7 +49,7 @@
 
 #include "debug.h"
 
-OutfitWindow::OutfitWindow():
+OutfitWindow::OutfitWindow() :
     // TRANSLATORS: outfits window name
     Window(_("Outfits"), false, nullptr, "outfits.xml"),
     ActionListener(),

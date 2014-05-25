@@ -28,7 +28,7 @@
 class BeingCacheEntry final
 {
     public:
-        explicit BeingCacheEntry(const int id):
+        explicit BeingCacheEntry(const int id) :
             mName(),
             mPartyName(),
             mGuildName(),

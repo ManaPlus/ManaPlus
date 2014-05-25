@@ -37,7 +37,7 @@ Skin::Skin(ImageRect *const restrict skin,
            const ImageRect *const restrict images,
            const std::string &filePath, const std::string &name,
            const int padding, const int titlePadding,
-           std::map<std::string, int> *restrict const options):
+           std::map<std::string, int> *restrict const options) :
     instances(1),
     mFilePath(filePath),
     mName(name),

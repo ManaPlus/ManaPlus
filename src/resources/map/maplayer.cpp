@@ -45,8 +45,10 @@
 
 #include "debug.h"
 
-MapLayer::MapLayer(const int x, const int y, const int width, const int height,
-                   const bool fringeLayer, const int mask):
+MapLayer::MapLayer(const int x, const int y,
+                   const int width, const int height,
+                   const bool fringeLayer,
+                   const int mask) :
     mX(x),
     mY(y),
     mWidth(width),

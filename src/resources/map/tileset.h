@@ -36,8 +36,12 @@ class Tileset final : public ImageSet
         /**
          * Constructor.
          */
-        Tileset(Image *const img, const int w, const int h, const int firstGid,
-                const int margin, const int spacing):
+        Tileset(Image *const img,
+                const int w,
+                const int h,
+                const int firstGid,
+                const int margin,
+                const int spacing) :
             ImageSet(img, w, h, margin, spacing),
             mFirstGid(firstGid),
             mProperties()

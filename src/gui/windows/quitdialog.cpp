@@ -50,7 +50,7 @@
 
 #include "debug.h"
 
-QuitDialog::QuitDialog(QuitDialog **const pointerToMe):
+QuitDialog::QuitDialog(QuitDialog **const pointerToMe) :
     // TRANSLATORS: quit dialog name
     Window(_("Quit"), true, nullptr, "quit.xml"),
     ActionListener(),

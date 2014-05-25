@@ -33,7 +33,7 @@
 
 #include "debug.h"
 
-MapItem::MapItem():
+MapItem::MapItem() :
     mImage(nullptr),
     mComment(),
     mName(),
@@ -44,7 +44,7 @@ MapItem::MapItem():
     setType(MapItemType::EMPTY);
 }
 
-MapItem::MapItem(const int type):
+MapItem::MapItem(const int type) :
     mImage(nullptr),
     mComment(),
     mName(),
@@ -55,7 +55,7 @@ MapItem::MapItem(const int type):
     setType(type);
 }
 
-MapItem::MapItem(const int type, std::string comment):
+MapItem::MapItem(const int type, std::string comment) :
     mImage(nullptr),
     mComment(comment),
     mName(),
@@ -67,7 +67,7 @@ MapItem::MapItem(const int type, std::string comment):
 }
 
 MapItem::MapItem(const int type, std::string comment,
-                 const int x, const int y):
+                 const int x, const int y) :
     mImage(nullptr),
     mComment(comment),
     mName(),

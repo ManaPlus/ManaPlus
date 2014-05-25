@@ -57,7 +57,7 @@ static const int BOX_COUNT = 13;
 
 EquipmentWindow::EquipmentWindow(Equipment *const equipment,
                                  Being *const being,
-                                 const bool foring):
+                                 const bool foring) :
     // TRANSLATORS: equipment window name
     Window(_("Equipment"), false, nullptr, "equipment.xml"),
     ActionListener(),

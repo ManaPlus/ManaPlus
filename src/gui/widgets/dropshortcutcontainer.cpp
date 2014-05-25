@@ -42,7 +42,7 @@
 
 #include "debug.h"
 
-DropShortcutContainer::DropShortcutContainer(Widget2 *const widget):
+DropShortcutContainer::DropShortcutContainer(Widget2 *const widget) :
     ShortcutContainer(widget),
     mItemClicked(false),
     mItemPopup(new ItemPopup),

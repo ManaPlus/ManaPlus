@@ -390,7 +390,7 @@ static void destroyGuiWindows()
 
 Game *Game::mInstance = nullptr;
 
-Game::Game():
+Game::Game() :
     mCurrentMap(nullptr),
     mMapName(""),
     mValidSpeed(true),

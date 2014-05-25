@@ -68,7 +68,7 @@ SellDialog::SellDialog(const int npcId) :
     init();
 }
 
-SellDialog::SellDialog(const std::string &nick):
+SellDialog::SellDialog(const std::string &nick) :
     // TRANSLATORS: sell dialog name
     Window(_("Sell"), false, nullptr, "sell.xml"),
     ActionListener(),

@@ -87,7 +87,7 @@ unsigned int NormalOpenGLGraphics::mBinds = 0;
 unsigned int NormalOpenGLGraphics::mLastBinds = 0;
 #endif
 
-NormalOpenGLGraphics::NormalOpenGLGraphics():
+NormalOpenGLGraphics::NormalOpenGLGraphics() :
     mFloatTexArray(nullptr),
     mIntTexArray(nullptr),
     mIntVertArray(nullptr),

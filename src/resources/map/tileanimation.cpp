@@ -30,7 +30,7 @@
 
 #include "debug.h"
 
-TileAnimation::TileAnimation(Animation *const ani):
+TileAnimation::TileAnimation(Animation *const ani) :
     mAffected(),
     mAnimation(new SimpleAnimation(ani)),
     mLastImage(nullptr)

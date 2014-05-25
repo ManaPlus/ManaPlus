@@ -98,7 +98,7 @@ TextField::TextField(const Widget2 *restrict const widget,
                      const bool loseFocusOnTab,
                      ActionListener *restrict const listener,
                      const std::string &restrict eventId,
-                     const bool sendAlwaysEvents):
+                     const bool sendAlwaysEvents) :
     Widget(widget),
     FocusListener(),
     KeyListener(),

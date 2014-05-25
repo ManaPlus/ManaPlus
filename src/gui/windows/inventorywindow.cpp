@@ -70,7 +70,7 @@
 
 InventoryWindow::WindowList InventoryWindow::invInstances;
 
-InventoryWindow::InventoryWindow(Inventory *const inventory):
+InventoryWindow::InventoryWindow(Inventory *const inventory) :
     Window("Inventory", false, nullptr, "inventory.xml"),
     ActionListener(),
     KeyListener(),

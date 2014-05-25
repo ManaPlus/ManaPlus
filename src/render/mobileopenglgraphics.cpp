@@ -73,7 +73,7 @@ unsigned int MobileOpenGLGraphics::mDrawCalls = 0;
 unsigned int MobileOpenGLGraphics::mLastDrawCalls = 0;
 #endif
 
-MobileOpenGLGraphics::MobileOpenGLGraphics():
+MobileOpenGLGraphics::MobileOpenGLGraphics() :
     mFloatTexArray(nullptr),
     mShortVertArray(nullptr),
     mFloatTexArrayCached(nullptr),

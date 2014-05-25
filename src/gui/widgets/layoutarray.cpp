@@ -32,7 +32,7 @@
 
 #include "debug.h"
 
-LayoutArray::LayoutArray():
+LayoutArray::LayoutArray() :
     mCells(),
     mSpacing(4)
 {

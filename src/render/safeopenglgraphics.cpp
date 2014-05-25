@@ -40,7 +40,7 @@
 
 GLuint SafeOpenGLGraphics::mLastImage = 0;
 
-SafeOpenGLGraphics::SafeOpenGLGraphics():
+SafeOpenGLGraphics::SafeOpenGLGraphics() :
     mTexture(false),
     mIsByteColor(false),
     mByteColor(),

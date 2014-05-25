@@ -45,7 +45,7 @@
 
 #include "debug.h"
 
-ChangePasswordDialog::ChangePasswordDialog(LoginData *const data):
+ChangePasswordDialog::ChangePasswordDialog(LoginData *const data) :
     // TRANSLATORS: change password window name
     Window(_("Change Password"), true, nullptr, "changepassword.xml"),
     ActionListener(),

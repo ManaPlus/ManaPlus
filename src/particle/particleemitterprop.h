@@ -44,7 +44,7 @@ enum ChangeFunc
 
 template <typename T> struct ParticleEmitterProp final
 {
-    ParticleEmitterProp():
+    ParticleEmitterProp() :
         minVal(0), maxVal(0), changeFunc(FUNC_NONE),
         changeAmplitude(0), changePeriod(0), changePhase(0)
     {

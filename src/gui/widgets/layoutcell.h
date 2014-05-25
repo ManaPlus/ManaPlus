@@ -143,7 +143,7 @@ class LayoutCell
         };
 
     private:
-        LayoutCell():
+        LayoutCell() :
             mWidget(nullptr),
             mHPadding(0),
             mVPadding(0),

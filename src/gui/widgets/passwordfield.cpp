@@ -27,7 +27,7 @@
 #include "debug.h"
 
 PasswordField::PasswordField(const Widget2 *const widget,
-                             const std::string &text):
+                             const std::string &text) :
     TextField(widget, text),
     mPasswordChar(mSkin ? mSkin->getOption("passwordChar", 42) : 42)
 {

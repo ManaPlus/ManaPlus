@@ -36,7 +36,7 @@
 namespace Net
 {
 
-MessageOut::MessageOut(const int16_t id A_UNUSED):
+MessageOut::MessageOut(const int16_t id A_UNUSED) :
     mData(nullptr),
     mDataSize(0),
     mPos(0)

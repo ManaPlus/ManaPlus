@@ -34,7 +34,7 @@
 class GuiConfigListener final : public ConfigListener
 {
     public:
-        explicit GuiConfigListener(Gui *const g):
+        explicit GuiConfigListener(Gui *const g) :
             mGui(g)
         {}
 
