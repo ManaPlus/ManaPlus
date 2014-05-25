@@ -484,7 +484,8 @@ int UpdaterWindow::updateProgress(void *ptr, DownloadStatus::Type status,
     else if (status == DownloadStatus::Error ||
              status == DownloadStatus::Cancelled)
     {
-        if (uw->mDownloadStatus == UPDATE_COMPLETE)
+        if (uw->mDownloadStatus == UPDATE_COMPLETE
+            || uw->mDownloadStatus == UPDATE_NEWS)
         {   // ignoring error in last state (was UPDATE_PATCH)
             uw->mDownloadStatus = UPDATE_COMPLETE;
             uw->mDownloadComplete = true;
