@@ -104,6 +104,10 @@ const std::string densityNames[] =
     "xxhigh"
 };
 
+#ifdef USE_OPENGL
+GLenum GraphicsManager::mLastError(GL_NO_ERROR);
+#endif
+
 GraphicsManager::GraphicsManager() :
     mExtensions(),
     mPlatformExtensions(),
@@ -928,6 +932,7 @@ GLenum GraphicsManager::getLastError()
     while (tmp != GL_NO_ERROR)
     {
         error = tmp;
+        mLastError = tmp;
         tmp = glGetError();
     }
     return error;

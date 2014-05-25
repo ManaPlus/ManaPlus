@@ -64,13 +64,19 @@ class TestMain final
 
         int invokeFastOpenBatchTest(const std::string &test);
 
+        int invokeMobileOpenBatchTest(const std::string &test);
+
         int invokeSafeOpenGLRenderTest(const std::string &test);
 
         void testsMain();
 
-        void writeConfig(const RenderType openGLMode, const int rescale,
-                         const int sound, const std::string &info,
-                         const int batchSize, const int detectMode);
+        void writeConfig(const RenderType openGLMode,
+                         const int rescale,
+                         const int sound,
+                         const std::string &info,
+                         const int batchSize,
+                         const int textureSize,
+                         const int detectMode);
 
         int readValue2(const int ver);
 

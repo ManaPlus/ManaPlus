@@ -133,7 +133,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         return nullptr;
 
     // Flush current error flag.
-    glGetError();
+    graphicsManager.getLastError();
 
     if (!width)
         width = tmpImage->w;
@@ -273,7 +273,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     if (oldImage)
         MSDL_FreeSurface(tmpImage);
 
-    GLenum error = glGetError();
+    GLenum error = graphicsManager.getLastError();
     if (error)
     {
         std::string errmsg = GraphicsManager::errorToString(error);

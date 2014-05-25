@@ -363,6 +363,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("addwatermark", true);
     AddDEF("hidesupport", false);
     AddDEF("showserverpos", false);
+    AddDEF("textureSize", 1024);
     return configData;
 }
 

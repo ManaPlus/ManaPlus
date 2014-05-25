@@ -79,6 +79,8 @@ int TestMain::exec(const bool testAudio)
     int softFps = 0;
     int fastOpenGLFps = 0;
     int safeOpenGLFps = 0;
+    int textureSize1 = 1024;
+    int textureSize2 = 1024;
 
     RenderType openGLMode = RENDER_SOFTWARE;
     int detectMode = 0;
@@ -199,6 +201,14 @@ int TestMain::exec(const bool testAudio)
             batchSize = readValue2(11);
         if (batchSize < 256)
             batchSize = 256;
+
+        if (!invokeFastOpenBatchTest("14"))
+            textureSize1 = readValue2(14);
+        if (!invokeFastOpenBatchTest("15"))
+            textureSize2 = readValue2(15);
+        textureSize1 = std::min(textureSize1, textureSize2);
+        if (textureSize1 < 1024)
+            textureSize1 = 1024;
     }
 
     // if OpenGL implimentation is not good, disable it.
@@ -206,13 +216,17 @@ int TestMain::exec(const bool testAudio)
         openGLMode = RENDER_SOFTWARE;
 
     writeConfig(openGLMode, rescaleTest[static_cast<size_t>(openGLMode)],
-        soundTest, info, batchSize, detectMode);
+        soundTest, info, batchSize, textureSize1, detectMode);
     return 0;
 }
 
-void TestMain::writeConfig(const RenderType openGLMode, const int rescale,
-                           const int sound, const std::string &info,
-                           const int batchSize A_UNUSED, const int detectMode)
+void TestMain::writeConfig(const RenderType openGLMode,
+                           const int rescale,
+                           const int sound,
+                           const std::string &info,
+                           const int batchSize A_UNUSED,
+                           const int textureSize,
+                           const int detectMode)
 {
     mConfig.init(client->getConfigDirectory() + "/config.xml");
 
@@ -229,6 +243,7 @@ void TestMain::writeConfig(const RenderType openGLMode, const int rescale,
     mConfig.setValue("altfpslimit", 2);
     mConfig.setValue("safemode", false);
     mConfig.setValue("enableMapReduce", true);
+    mConfig.setValue("textureSize", textureSize);
 
     // max batch size
 //    mConfig.setValue("batchsize", batchSize);
@@ -314,6 +329,15 @@ int TestMain::invokeFastOpenGLRenderTest(const std::string &test)
 int TestMain::invokeFastOpenBatchTest(const std::string &test)
 {
     mConfig.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
+    mConfig.write();
+    const int ret = execFileWait(fileName, fileName, "-t", test, 30);
+//    log->log("%s: %d", test.c_str(), ret);
+    return ret;
+}
+
+int TestMain::invokeMobileOpenBatchTest(const std::string &test)
+{
+    mConfig.setValue("opengl", static_cast<int>(RENDER_GLES_OPENGL));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
 //    log->log("%s: %d", test.c_str(), ret);

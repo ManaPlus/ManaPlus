@@ -24,6 +24,8 @@
 
 #include "resources/atlasmanager.h"
 
+#include "configuration.h"
+
 #include "render/surfacegraphics.h"
 
 #include "utils/mathutils.h"
@@ -53,7 +55,10 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
     AtlasResource *resource = new AtlasResource;
 
     loadImages(files, images);
-    const int maxSize = OpenGLImageHelper::getTextureSize();
+    int maxSize = OpenGLImageHelper::getTextureSize();
+    const int sz = config.getIntValue("textureSize");
+    if (maxSize > sz)
+        maxSize = sz;
 
     // sorting images on atlases.
     simpleSort(name, atlases, images, maxSize);

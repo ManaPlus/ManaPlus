@@ -35,8 +35,8 @@
 
 #include "resources/dye.h"
 #include "resources/image.h"
-#include "resources/imagehelper.h"
 #include "resources/imagewriter.h"
+#include "resources/openglimagehelper.h"
 #include "resources/surfaceimagehelper.h"
 #include "resources/wallpaper.h"
 
@@ -74,6 +74,8 @@ int TestLauncher::exec()
         return testFps();
     else if (mTest == "11")
         return testBatches();
+    else if (mTest == "14" || mTest == "15")
+        return testTextures();
     else if (mTest == "99")
         return testVideoDetection();
     else if (mTest == "100")
@@ -180,6 +182,39 @@ int TestLauncher::testBatches()
 
     file << mTest << std::endl;
     file << batches << std::endl;
+    return 0;
+}
+
+int TestLauncher::testTextures()
+{
+    int maxSize = 1024;
+    int nextSize = 1024;
+    int sz = OpenGLImageHelper::getTextureSize() + 1;
+    if (sz < 16500)
+        sz = 16500;
+
+    for (nextSize = 512; nextSize < sz; nextSize *= 2)
+    {
+        SDL_Surface *const surface = imageHelper->create32BitSurface(
+            nextSize, nextSize);
+        if (!surface)
+            break;
+        graphicsManager.getLastError();
+        graphicsManager.resetCachedError();
+        Image *const image = imageHelper->load(surface);
+        if (!image)
+            break;
+        if (graphicsManager.getLastErrorCached() != GL_NO_ERROR)
+            break;
+
+        delete image;
+        SDL_FreeSurface(surface);
+
+        maxSize = nextSize;
+    }
+
+    file << mTest << std::endl;
+    file << maxSize << std::endl;
     return 0;
 }
 

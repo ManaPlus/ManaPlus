@@ -148,7 +148,7 @@ class GraphicsManager final
         bool isUseTextureSampler() const A_WARN_UNUSED
         { return mUseTextureSampler; }
 
-        static GLenum getLastError() A_WARN_UNUSED;
+        static GLenum getLastError();
 
         static std::string errorToString(const GLenum error) A_WARN_UNUSED;
 
@@ -156,6 +156,12 @@ class GraphicsManager final
 
         std::string getGLVersion() const
         { return mGlVersionString; }
+
+        GLenum getLastErrorCached() const
+        { return mLastError; }
+
+        void resetCachedError()
+        { mLastError = GL_NO_ERROR; }
 #endif
 
     private:
@@ -168,6 +174,10 @@ class GraphicsManager final
         std::string mGlVendor;
 
         std::string mGlRenderer;
+
+#ifdef USE_OPENGL
+        static GLenum mLastError;
+#endif
 
         int mMinor;
 

@@ -446,12 +446,15 @@ void Setup_Video::action(const ActionEvent &event)
         TestMain *test = graphicsManager.startDetection();
         if (test)
         {
-            const int val = test->getConfig().getValueInt("opengl", -1);
+            Configuration &conf = test->getConfig();
+            const int val = conf.getValueInt("opengl", -1);
             if (val >= 0 && static_cast<unsigned int>(val)
                 < sizeof(renderToIndex) / sizeof(int))
             {
                 mOpenGLDropDown->setSelected(renderToIndex[val]);
             }
+            config.setValue("textureSize",
+                conf.getValueInt("textureSize", 1024));
             delete test;
         }
     }
