@@ -81,6 +81,7 @@ int TestMain::exec(const bool testAudio)
     int safeOpenGLFps = 0;
     int textureSize1 = 1024;
     int textureSize2 = 1024;
+    int textureSize3 = 1024;
 
     RenderType openGLMode = RENDER_SOFTWARE;
     int detectMode = 0;
@@ -204,10 +205,27 @@ int TestMain::exec(const bool testAudio)
 
         if (!invokeFastOpenBatchTest("14"))
             textureSize1 = readValue2(14);
-        if (!invokeFastOpenBatchTest("15"))
-            textureSize2 = readValue2(15);
-        info.append(strprintf(",%d,%d", textureSize1, textureSize2));
-        textureSize1 = std::min(textureSize1, textureSize2);
+//        if (!invokeMobileOpenBatchTest("15"))
+//            textureSize2 = readValue2(15);
+        if (!invokeSafeOpenBatchTest("16"))
+            textureSize3 = readValue2(16);
+        info.append(strprintf(",%d,%d,-", textureSize1, textureSize3));
+        textureSize1 = std::min(textureSize1, textureSize3);
+        if (textureSize1 < 1024)
+            textureSize1 = 1024;
+    }
+    else if (openGLMode == RENDER_SAFE_OPENGL)
+    {
+        if (!invokeSafeOpenBatchTest("16"))
+            textureSize3 = readValue2(16);
+        textureSize1 = textureSize3;
+        if (fastOpenGLTest != -1)
+        {
+            if (!invokeFastOpenBatchTest("14"))
+                textureSize1 = readValue2(14);
+        }
+        info.append(strprintf(",%d,%d,-", textureSize1, textureSize3));
+        textureSize1 = std::min(textureSize1, textureSize3);
         if (textureSize1 < 1024)
             textureSize1 = 1024;
     }
@@ -339,6 +357,15 @@ int TestMain::invokeFastOpenBatchTest(const std::string &test)
 int TestMain::invokeMobileOpenBatchTest(const std::string &test)
 {
     mConfig.setValue("opengl", static_cast<int>(RENDER_GLES_OPENGL));
+    mConfig.write();
+    const int ret = execFileWait(fileName, fileName, "-t", test, 30);
+//    log->log("%s: %d", test.c_str(), ret);
+    return ret;
+}
+
+int TestMain::invokeSafeOpenBatchTest(const std::string &test)
+{
+    mConfig.setValue("opengl", static_cast<int>(RENDER_SAFE_OPENGL));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
 //    log->log("%s: %d", test.c_str(), ret);

@@ -74,7 +74,7 @@ int TestLauncher::exec()
         return testFps();
     else if (mTest == "11")
         return testBatches();
-    else if (mTest == "14" || mTest == "15")
+    else if (mTest == "14" || mTest == "15" || mTest == "16")
         return testTextures();
     else if (mTest == "99")
         return testVideoDetection();
