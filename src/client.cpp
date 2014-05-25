@@ -537,6 +537,8 @@ void Client::createWindows()
 
 void Client::initGraphics()
 {
+    checkConfigVersion();
+
 #if defined(USE_OPENGL) 
 #if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
     if (!mOptions.safeMode && mOptions.test.empty()
@@ -547,7 +549,6 @@ void Client::initGraphics()
 #endif
 #endif
 
-    checkConfigVersion();
 #if defined(WIN32) || defined(__APPLE__)
     if (config.getBoolValue("centerwindow"))
         setEnv("SDL_VIDEO_CENTERED", "1");
@@ -2953,7 +2954,10 @@ void Client::checkConfigVersion()
     if (version < 7)
         config.setValue("download-music", true);
 
-    config.setValue("cfgver", 7);
+    if (version < 8)
+        config.deleteKey("videodetected");
+
+    config.setValue("cfgver", 8);
 }
 
 Window *Client::openErrorDialog(const std::string &header,
