@@ -28,15 +28,15 @@
 #include "graphicsmanager.h"
 #include "graphicsvertexes.h"
 
+#ifdef DEBUG_BIND_TEXTURE
+#include "logger.h"
+#endif
+
 #include "resources/image.h"
 #include "resources/imagerect.h"
 #include "resources/openglimagehelper.h"
 
 #include "debug.h"
-
-#ifdef DEBUG_BIND_TEXTURE
-#include "logger.h"
-#endif
 
 GLuint NullOpenGLGraphics::mLastImage = 0;
 #ifdef DEBUG_DRAW_CALLS
