@@ -196,7 +196,7 @@ static const KeyData keyData[InputAction::TOTAL] = {
         Input::GRP_DEFAULT,
         &ActionManager::screenshot,
         InputAction::NO_VALUE, 50,
-        InputCondition::NOTARGET},
+        InputCondition::NOTARGET | InputCondition::NOINPUT},
     {"keyTrade",
         InputType::KEYBOARD, SDLK_r,
         InputType::UNKNOWN, InputAction::NO_VALUE,
