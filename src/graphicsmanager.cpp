@@ -238,7 +238,7 @@ int GraphicsManager::detectGraphics()
         | (1024 * textureSampler) | (2048 * compressTextures);
 }
 
-void GraphicsManager::initGraphics(const bool noOpenGL)
+void GraphicsManager::createRenderers(const bool noOpenGL)
 {
     RenderType useOpenGL = RENDER_SOFTWARE;
     if (!noOpenGL)
@@ -304,7 +304,7 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
 
 #else  // USE_OPENGL
 
-void GraphicsManager::initGraphics(const bool noOpenGL)
+void GraphicsManager::createRenderers(const bool noOpenGL)
 {
     RenderType useOpenGL = RENDER_SOFTWARE;
     if (!noOpenGL)

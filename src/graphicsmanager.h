@@ -76,7 +76,7 @@ class GraphicsManager final
 
         ~GraphicsManager();
 
-        void initGraphics(const bool noOpenGL);
+        void createRenderers(const bool noOpenGL);
 
         static void setVideoMode();
 

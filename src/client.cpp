@@ -365,9 +365,15 @@ void Client::gameInit()
     extractDataDir();
     mountDataDir();
     setIcon();
+    checkConfigVersion();
+    logVars();
+    Cpu::detect();
     initGraphics();
 #else
     setIcon();
+    checkConfigVersion();
+    logVars();
+    Cpu::detect();
     initGraphics();
     extractDataDir();
     mountDataDir();
@@ -537,8 +543,6 @@ void Client::createWindows()
 
 void Client::initGraphics()
 {
-    checkConfigVersion();
-
 #if defined(USE_OPENGL) 
 #if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
     if (!mOptions.safeMode && mOptions.test.empty()
@@ -573,9 +577,7 @@ void Client::initGraphics()
         config.getBoolValue("alphaCache"));
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F);
 #endif
-    logVars();
-    Cpu::detect();
-    graphicsManager.initGraphics(mOptions.noOpenGL);
+    graphicsManager.createRenderers(mOptions.noOpenGL);
     graphicsManager.detectPixelSize();
     runCounters = config.getBoolValue("packetcounters");
     applyVSync();
