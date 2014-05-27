@@ -175,7 +175,6 @@ KeyboardConfig keyboard;
 UserPalette *userPalette = nullptr;
 
 SoundManager soundManager;
-RenderType openGLMode = RENDER_SOFTWARE;
 
 volatile bool runCounters;
 bool isSafeMode = false;
@@ -364,35 +363,30 @@ void Client::gameInit()
 #ifdef WIN32
     extractDataDir();
     mountDataDir();
+#endif
+
     setIcon();
     checkConfigVersion();
     logVars();
     Cpu::detect();
+#if defined(USE_OPENGL) 
+#if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
+    if (!mOptions.safeMode && mOptions.test.empty()
+        && !config.getBoolValue("videodetected"))
+    {
+        graphicsManager.detectVideoSettings();
+    }
+#endif
+#endif
+    updateEnv();
     initGraphics();
-#else
-    setIcon();
-    checkConfigVersion();
-    logVars();
-    Cpu::detect();
-    initGraphics();
+
+#ifndef WIN32
     extractDataDir();
     mountDataDir();
 #endif
 
-    if (mOptions.dataPath.empty()
-        && !branding.getStringValue("dataPath").empty())
-    {
-        if (isRealPath(branding.getStringValue("dataPath")))
-        {
-            mOptions.dataPath = branding.getStringValue("dataPath");
-        }
-        else
-        {
-            mOptions.dataPath = branding.getDirectory().append(dirSeparator)
-                + branding.getStringValue("dataPath");
-        }
-        mOptions.skipUpdate = true;
-    }
+    updateDataPath();
 
     // Add the main data directories to our PhysicsFS search path
     if (!mOptions.dataPath.empty())
@@ -541,18 +535,8 @@ void Client::createWindows()
     didYouKnowWindow->postInit();
 }
 
-void Client::initGraphics()
+void Client::updateEnv()
 {
-#if defined(USE_OPENGL) 
-#if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
-    if (!mOptions.safeMode && mOptions.test.empty()
-        && !config.getBoolValue("videodetected"))
-    {
-        graphicsManager.detectVideoSettings();
-    }
-#endif
-#endif
-
 #if defined(WIN32) || defined(__APPLE__)
     if (config.getBoolValue("centerwindow"))
         setEnv("SDL_VIDEO_CENTERED", "1");
@@ -564,21 +548,30 @@ void Client::initGraphics()
         setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "1");
     else
         setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "0");
+}
 
-    openGLMode = intToRenderType(config.getIntValue("opengl"));
-#ifdef USE_OPENGL
-    OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
-    SurfaceImageHelper::SDLSetEnableAlphaCache(
-        config.getBoolValue("alphaCache") && !openGLMode);
-    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F
-        || openGLMode);
-#else
-    SurfaceImageHelper::SDLSetEnableAlphaCache(
-        config.getBoolValue("alphaCache"));
-    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F);
-#endif
-    graphicsManager.createRenderers(mOptions.noOpenGL);
-    graphicsManager.detectPixelSize();
+void Client::updateDataPath()
+{
+    if (mOptions.dataPath.empty()
+        && !branding.getStringValue("dataPath").empty())
+    {
+        if (isRealPath(branding.getStringValue("dataPath")))
+        {
+            mOptions.dataPath = branding.getStringValue("dataPath");
+        }
+        else
+        {
+            mOptions.dataPath = branding.getDirectory().append(dirSeparator)
+                + branding.getStringValue("dataPath");
+        }
+        mOptions.skipUpdate = true;
+    }
+}
+
+void Client::initGraphics()
+{
+    graphicsManager.initGraphics(mOptions.noOpenGL);
+
     runCounters = config.getBoolValue("packetcounters");
     applyVSync();
     graphicsManager.setVideoMode();

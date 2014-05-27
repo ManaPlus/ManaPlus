@@ -92,6 +92,8 @@
 
 GraphicsManager graphicsManager;
 
+RenderType openGLMode = RENDER_SOFTWARE;
+
 const int densitySize = 6;
 
 const std::string densityNames[] =
@@ -412,6 +414,24 @@ void GraphicsManager::setVideoMode()
             }
         }
     }
+}
+
+void GraphicsManager::initGraphics(const bool noOpenGL)
+{
+    openGLMode = intToRenderType(config.getIntValue("opengl"));
+#ifdef USE_OPENGL
+    OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
+    SurfaceImageHelper::SDLSetEnableAlphaCache(
+        config.getBoolValue("alphaCache") && !openGLMode);
+    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F
+        || openGLMode);
+#else
+    SurfaceImageHelper::SDLSetEnableAlphaCache(
+        config.getBoolValue("alphaCache"));
+    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F);
+#endif
+    createRenderers(noOpenGL);
+    detectPixelSize();
 }
 
 #ifdef USE_SDL2

@@ -78,6 +78,8 @@ class GraphicsManager final
 
         void createRenderers(const bool noOpenGL);
 
+        void initGraphics(const bool noOpenGL);
+
         static void setVideoMode();
 
         SDL_Window *createWindow(const int w, const int h,

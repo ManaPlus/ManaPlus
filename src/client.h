@@ -310,7 +310,11 @@ private:
 
     void initGraphics();
 
+    void updateEnv();
+
     void initTitle();
+
+    void updateDataPath();
 
     static void extractDataDir();
 
