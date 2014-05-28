@@ -51,6 +51,7 @@
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
 
+#include "gui/dialogsmanager.h"
 #include "gui/gui.h"
 #include "gui/skin.h"
 #include "gui/theme.h"
@@ -1686,7 +1687,7 @@ int Client::gameExec()
                     logger->log1("State: UNREGISTER SUCCESS");
                     Net::getLoginHandler()->disconnect();
 
-                    mCurrentDialog = openErrorDialog(
+                    mCurrentDialog = DialogsManager::openErrorDialog(
                         // TRANSLATORS: unregister message header
                         _("Unregister Successful"),
                         // TRANSLATORS: unregister message text
@@ -1770,8 +1771,10 @@ int Client::gameExec()
                     logger->log1("State: ERROR");
                     logger->log("Error: %s\n", errorMessage.c_str());
                     // TRANSLATORS: error message header
-                    mCurrentDialog = openErrorDialog(_("Error"),
-                        errorMessage, true);
+                    mCurrentDialog = DialogsManager::openErrorDialog(
+                        _("Error"),
+                        errorMessage,
+                        true);
                     mCurrentDialog->addActionListener(&errorListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     Net::getGameHandler()->disconnect();
@@ -2943,26 +2946,6 @@ void Client::checkConfigVersion()
         config.deleteKey("videodetected");
 
     config.setValue("cfgver", 8);
-}
-
-Window *Client::openErrorDialog(const std::string &header,
-                                const std::string &message,
-                                const bool modal)
-{
-    if (settings.supportUrl.empty() || config.getBoolValue("hidesupport"))
-    {
-        return new OkDialog(header, message, DialogType::ERROR, modal);
-    }
-    else
-    {
-        ConfirmDialog *const dialog = new ConfirmDialog(
-            header, strprintf("%s %s", message.c_str(),
-            // TRANSLATORS: error message question
-            _("Do you want to open support page?")),
-            SOUND_ERROR, false, modal);
-        dialog->postInit();
-        return dialog;
-    }
 }
 
 void Client::setIcon()

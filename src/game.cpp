@@ -674,7 +674,7 @@ void Game::slowLogic()
             {
                 // TRANSLATORS: error message text
                 errorMessage = _("The connection to the server was lost.");
-                disconnectedDialog = client->openErrorDialog(
+                disconnectedDialog = DialogsManager::openErrorDialog(
                     // TRANSLATORS: error message header
                     _("Network Error"), errorMessage, false);
                 disconnectedDialog->addActionListener(&errorListener);

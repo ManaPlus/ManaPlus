@@ -245,10 +245,6 @@ public:
 
     void reloadWallpaper();
 
-    Window *openErrorDialog(const std::string &header,
-                            const std::string &message,
-                            const bool modal);
-
 private:
     static void createWindows();
 

@@ -23,12 +23,20 @@
 #ifndef DIALOGMANAGER_H
 #define DIALOGMANAGER_H
 
+#include <string>
+
+class Window;
+
 class DialogsManager final
 {
     public:
         static void closeDialogs();
 
         static void createUpdaterWindow();
+
+        static Window *openErrorDialog(const std::string &header,
+                                       const std::string &message,
+                                       const bool modal);
 };
 
 #endif  // DIALOGMANAGER_H

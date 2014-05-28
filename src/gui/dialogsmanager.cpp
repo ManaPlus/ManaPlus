@@ -22,8 +22,10 @@
 
 #include "gui/dialogsmanager.h"
 
+#include "configuration.h"
 #include "settings.h"
 
+#include "gui/windows/confirmdialog.h"
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/buydialog.h"
 #include "gui/windows/npcdialog.h"
@@ -33,6 +35,8 @@
 
 #include "net/inventoryhandler.h"
 #include "net/net.h"
+
+#include "utils/gettext.h"
 
 #include "debug.h"
 
@@ -61,4 +65,24 @@ void DialogsManager::createUpdaterWindow()
         false,
         0);
     updaterWindow->postInit();
+}
+
+Window *DialogsManager::openErrorDialog(const std::string &header,
+                                        const std::string &message,
+                                        const bool modal)
+{
+    if (settings.supportUrl.empty() || config.getBoolValue("hidesupport"))
+    {
+        return new OkDialog(header, message, DialogType::ERROR, modal);
+    }
+    else
+    {
+        ConfirmDialog *const dialog = new ConfirmDialog(
+            header, strprintf("%s %s", message.c_str(),
+            // TRANSLATORS: error message question
+            _("Do you want to open support page?")),
+            SOUND_ERROR, false, modal);
+        dialog->postInit();
+        return dialog;
+    }
 }
