@@ -125,58 +125,10 @@
 
 #include "debug.h"
 
-Joystick *joystick = nullptr;
-
-OkDialog *weightNotice = nullptr;
-int weightNoticeTime = 0;
-OkDialog *deathNotice = nullptr;
 QuitDialog *quitDialog = nullptr;
 Window *disconnectedDialog = nullptr;
 
-ChatWindow *chatWindow = nullptr;
-EmoteWindow *emoteWindow = nullptr;
-StatusWindow *statusWindow = nullptr;
-MiniStatusWindow *miniStatusWindow = nullptr;
-InventoryWindow *inventoryWindow = nullptr;
-ShopWindow *shopWindow = nullptr;
-SkillDialog *skillDialog = nullptr;
-Minimap *minimap = nullptr;
-EquipmentWindow *equipmentWindow = nullptr;
-EquipmentWindow *beingEquipmentWindow = nullptr;
-TradeWindow *tradeWindow = nullptr;
-HelpWindow *helpWindow = nullptr;
-DebugWindow *debugWindow = nullptr;
-ShortcutWindow *itemShortcutWindow = nullptr;
-ShortcutWindow *emoteShortcutWindow = nullptr;
-OutfitWindow *outfitWindow = nullptr;
-ShortcutWindow *dropShortcutWindow = nullptr;
-ShortcutWindow *spellShortcutWindow = nullptr;
-WhoIsOnline *whoIsOnline = nullptr;
-DidYouKnowWindow *didYouKnowWindow = nullptr;
-KillStats *killStats = nullptr;
-BotCheckerWindow *botCheckerWindow = nullptr;
-SocialWindow *socialWindow = nullptr;
-QuestsWindow *questsWindow = nullptr;
-WindowMenu *windowMenu = nullptr;
-
-ActorManager *actorManager = nullptr;
-CommandHandler *commandHandler = nullptr;
-#ifdef USE_MUMBLE
-MumbleManager *mumbleManager = nullptr;
-#endif
-Particle *particleEngine = nullptr;
-EffectManager *effectManager = nullptr;
-SpellManager *spellManager = nullptr;
-Viewport *viewport = nullptr;                    /**< Viewport on the map. */
-GuildManager *guildManager = nullptr;
-AuctionManager *auctionManager = nullptr;
-
-ChatTab *localChatTab = nullptr;
-ChatTab *debugChatTab = nullptr;
-TradeTab *tradeChatTab = nullptr;
-BattleTab *battleChatTab = nullptr;
-GmTab *gmChatTab = nullptr;
-LangTab *langChatTab = nullptr;
+int weightNoticeTime = 0;
 
 bool mStatsReUpdated = false;
 const unsigned adjustDelay = 10;

@@ -85,6 +85,8 @@
 
 #include "debug.h"
 
+ChatWindow *chatWindow = nullptr;
+
 static const char *const ACTION_COLOR_PICKER = "color picker";
 
 ChatWindow::ChatWindow() :

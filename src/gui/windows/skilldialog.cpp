@@ -54,6 +54,8 @@
 
 #include "debug.h"
 
+SkillDialog *skillDialog = nullptr;
+
 SkillDialog::SkillDialog() :
     // TRANSLATORS: skills dialog name
     Window(_("Skills"), false, nullptr, "skills.xml"),

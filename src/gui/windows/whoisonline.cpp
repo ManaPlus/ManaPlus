@@ -67,6 +67,8 @@
 #undef malloc
 #endif
 
+WhoIsOnline *whoIsOnline = nullptr;
+
 namespace
 {
     class NameFunctuator final

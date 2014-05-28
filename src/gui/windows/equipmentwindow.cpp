@@ -53,6 +53,8 @@
 
 #include "debug.h"
 
+EquipmentWindow *equipmentWindow = nullptr;
+EquipmentWindow *beingEquipmentWindow = nullptr;
 static const int BOX_COUNT = 13;
 
 EquipmentWindow::EquipmentWindow(Equipment *const equipment,

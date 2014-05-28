@@ -30,6 +30,8 @@
 
 #include "debug.h"
 
+TradeTab *tradeChatTab = nullptr;
+
 TradeTab::TradeTab(const Widget2 *const widget) :
     // TRANSLATORS: trade chat tab name
     ChatTab(widget, _("Trade"), TRADE_CHANNEL)

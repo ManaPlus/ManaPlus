@@ -34,6 +34,8 @@
 
 #include "debug.h"
 
+EffectManager *effectManager = nullptr;
+
 EffectManager::EffectManager() :
     mEffects()
 {

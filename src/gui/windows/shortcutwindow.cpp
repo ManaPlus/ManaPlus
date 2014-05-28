@@ -36,6 +36,10 @@
 
 #include "debug.h"
 
+ShortcutWindow *dropShortcutWindow = nullptr;
+ShortcutWindow *emoteShortcutWindow = nullptr;
+ShortcutWindow *itemShortcutWindow = nullptr;
+ShortcutWindow *spellShortcutWindow = nullptr;
 static const int SCROLL_PADDING = 0;
 
 int ShortcutWindow::mBoxesWidth = 0;

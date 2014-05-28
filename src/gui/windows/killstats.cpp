@@ -40,6 +40,8 @@
 
 #include "debug.h"
 
+KillStats *killStats = nullptr;
+
 KillStats::KillStats() :
     // TRANSLATORS: kill stats window name
     Window(_("Kill stats"), false, nullptr, "killstats.xml"),

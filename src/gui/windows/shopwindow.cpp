@@ -72,6 +72,7 @@
 
 #include "debug.h"
 
+ShopWindow *shopWindow = nullptr;
 extern std::string tradePartnerName;
 ShopWindow::DialogList ShopWindow::instances;
 

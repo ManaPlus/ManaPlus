@@ -43,6 +43,8 @@
 
 #include "debug.h"
 
+DidYouKnowWindow *didYouKnowWindow = nullptr;
+
 static const int minTip = 1;
 static const int maxTip = 18;
 

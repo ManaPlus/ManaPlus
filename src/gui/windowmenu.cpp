@@ -45,6 +45,8 @@
 
 #include "debug.h"
 
+WindowMenu *windowMenu = nullptr;
+
 WindowMenu::WindowMenu(const Widget2 *const widget) :
     Container(widget),
     ActionListener(),

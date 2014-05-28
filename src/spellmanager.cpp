@@ -37,6 +37,8 @@
 
 #include "debug.h"
 
+SpellManager *spellManager = nullptr;
+
 SpellManager::SpellManager() :
     mSpells(),
     mSpellsVector()

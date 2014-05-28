@@ -56,6 +56,8 @@
 
 #include "debug.h"
 
+QuestsWindow *questsWindow = nullptr;
+
 QuestsWindow::QuestsWindow() :
     // TRANSLATORS: quests window name
     Window(_("Quests"), false, nullptr, "quests.xml"),

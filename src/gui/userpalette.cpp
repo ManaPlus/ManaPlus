@@ -29,6 +29,8 @@
 
 #include "debug.h"
 
+UserPalette *userPalette = nullptr;
+
 const std::string ColorTypeNames[] =
 {
     "ColorBeing",

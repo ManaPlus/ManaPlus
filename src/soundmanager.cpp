@@ -34,6 +34,8 @@
 
 #include "debug.h"
 
+SoundManager soundManager;
+
 /**
  * This will be set to true, when a music can be freed after a fade out
  * Currently used by fadeOutCallBack()

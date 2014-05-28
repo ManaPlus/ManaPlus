@@ -38,6 +38,8 @@
 
 #include "debug.h"
 
+ChatLogger *chatLogger = nullptr;
+
 ChatLogger::ChatLogger() :
     mLogFile(),
     mLogDir(),

@@ -36,6 +36,7 @@
 
 #include "debug.h"
 
+EmoteWindow *emoteWindow = nullptr;
 static const int fontSizeListSize = 2;
 
 static const char *const fontSizeList[] =

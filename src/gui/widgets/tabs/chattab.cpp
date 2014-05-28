@@ -55,6 +55,9 @@
 
 #include "debug.h"
 
+ChatTab *localChatTab = nullptr;
+ChatTab *debugChatTab = nullptr;
+
 static const unsigned int MAX_WORD_SIZE = 50;
 
 ChatTab::ChatTab(const Widget2 *const widget,

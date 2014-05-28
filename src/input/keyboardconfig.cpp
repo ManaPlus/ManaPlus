@@ -35,6 +35,8 @@
 
 extern volatile int tick_time;
 
+KeyboardConfig keyboard;
+
 KeyboardConfig::KeyboardConfig() :
     mEnabled(true),
     mActiveKeys(nullptr),

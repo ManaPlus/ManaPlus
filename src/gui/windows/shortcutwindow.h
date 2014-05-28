@@ -87,8 +87,9 @@ class ShortcutWindow final : public Window
         static int mBoxesWidth;
 };
 
-extern ShortcutWindow *itemShortcutWindow;
-extern ShortcutWindow *emoteShortcutWindow;
 extern ShortcutWindow *dropShortcutWindow;
+extern ShortcutWindow *emoteShortcutWindow;
+extern ShortcutWindow *itemShortcutWindow;
+extern ShortcutWindow *spellShortcutWindow;
 
 #endif  // GUI_WINDOWS_SHORTCUTWINDOW_H

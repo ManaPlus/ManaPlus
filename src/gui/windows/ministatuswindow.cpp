@@ -51,6 +51,7 @@
 
 #include "debug.h"
 
+MiniStatusWindow *miniStatusWindow = nullptr;
 extern volatile int tick_time;
 
 typedef std::vector <ProgressBar*>::const_iterator ProgressBarVectorCIter;

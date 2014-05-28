@@ -34,6 +34,7 @@
 
 #include "debug.h"
 
+Joystick *joystick = nullptr;
 int Joystick::joystickCount = 0;
 bool Joystick::mEnabled = false;
 

@@ -49,6 +49,7 @@
 
 #include "debug.h"
 
+Minimap *minimap = nullptr;
 bool Minimap::mShow = true;
 
 Minimap::Minimap() :

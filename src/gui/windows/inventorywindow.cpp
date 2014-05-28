@@ -68,6 +68,7 @@
 
 #include "debug.h"
 
+InventoryWindow *inventoryWindow = nullptr;
 InventoryWindow::WindowList InventoryWindow::invInstances;
 
 InventoryWindow::InventoryWindow(Inventory *const inventory) :

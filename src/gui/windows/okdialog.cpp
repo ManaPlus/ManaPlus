@@ -34,6 +34,9 @@
 
 #include "debug.h"
 
+OkDialog *weightNotice = nullptr;
+OkDialog *deathNotice = nullptr;
+
 OkDialog::OkDialog(const std::string &restrict title,
                    const std::string &restrict msg,
                    const int soundEvent, const bool modal,

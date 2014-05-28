@@ -42,6 +42,8 @@
 
 #include "debug.h"
 
+GuildManager *guildManager = nullptr;
+
 static const int requestTimeout = 5;
 
 bool GuildManager::mEnableGuildBot = false;

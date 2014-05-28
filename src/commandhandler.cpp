@@ -33,6 +33,8 @@
 
 #include "debug.h"
 
+CommandHandler *commandHandler = nullptr;
+
 CommandHandler::CommandHandler() :
     mCommands()
 {

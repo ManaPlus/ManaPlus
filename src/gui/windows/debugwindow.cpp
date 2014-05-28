@@ -35,6 +35,8 @@
 
 #include "debug.h"
 
+DebugWindow *debugWindow = nullptr;
+
 DebugWindow::DebugWindow() :
     // TRANSLATORS: debug window name
     Window(_("Debug"), false, nullptr, "debug.xml"),

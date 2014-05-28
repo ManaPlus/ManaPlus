@@ -26,6 +26,8 @@
 
 #include "debug.h"
 
+GmTab *gmChatTab = nullptr;
+
 GmTab::GmTab(const Widget2 *const widget) :
     // TRANSLATORS: gb tab name
     ChatTab(widget, _("GM"), "")

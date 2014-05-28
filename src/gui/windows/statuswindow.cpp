@@ -60,6 +60,8 @@
 
 #include "debug.h"
 
+StatusWindow *statusWindow = nullptr;
+
 StatusWindow::StatusWindow() :
     Window(player_node ? player_node->getName() :
         "?", false, nullptr, "status.xml"),

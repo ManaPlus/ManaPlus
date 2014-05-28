@@ -58,6 +58,8 @@
 
 #include "debug.h"
 
+TradeWindow *tradeWindow = nullptr;
+
 // TRANSLATORS: trade window button
 #define CAPTION_PROPOSE _("Propose trade")
 // TRANSLATORS: trade window button

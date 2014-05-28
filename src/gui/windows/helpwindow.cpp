@@ -47,6 +47,8 @@
 
 #include "debug.h"
 
+HelpWindow *helpWindow = nullptr;
+
 HelpWindow::HelpWindow() :
     // TRANSLATORS: help window name
     Window(_("Help"), false, nullptr, "help.xml"),

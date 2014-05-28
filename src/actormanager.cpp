@@ -58,6 +58,8 @@
 #define for_actorsm for (ActorSpritesIterator it = mActors.begin(), \
     it_end = mActors.end() ; it != it_end; ++it)
 
+ActorManager *actorManager = nullptr;
+
 class FindBeingFunctor final
 {
     public:

@@ -29,6 +29,8 @@
 
 #include "debug.h"
 
+BattleTab *battleChatTab = nullptr;
+
 BattleTab::BattleTab(const Widget2 *const widget) :
     // TRANSLATORS: battle chat tab name
     ChatTab(widget, _("Battle"), "")

@@ -49,6 +49,8 @@
 
 #include "debug.h"
 
+OutfitWindow *outfitWindow = nullptr;
+
 OutfitWindow::OutfitWindow() :
     // TRANSLATORS: outfits window name
     Window(_("Outfits"), false, nullptr, "outfits.xml"),

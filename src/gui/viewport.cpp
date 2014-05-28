@@ -54,6 +54,8 @@
 
 #include "debug.h"
 
+Viewport *viewport = nullptr;
+
 extern volatile int tick_time;
 extern MiniStatusWindow *miniStatusWindow;
 

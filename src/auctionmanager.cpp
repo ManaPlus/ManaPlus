@@ -28,6 +28,8 @@
 
 #include "debug.h"
 
+AuctionManager *auctionManager = nullptr;
+
 bool AuctionManager::mEnableAuctionBot = false;
 
 AuctionManager::AuctionManager()

@@ -172,11 +172,6 @@ std::string errorMessage;
 LoginData loginData;
 
 Client *client = nullptr;
-ChatLogger *chatLogger = nullptr;  // Chat log object
-KeyboardConfig keyboard;
-UserPalette *userPalette = nullptr;
-
-SoundManager soundManager;
 
 volatile bool runCounters;
 bool isSafeMode = false;

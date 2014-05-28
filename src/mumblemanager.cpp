@@ -34,6 +34,10 @@
 
 #include "debug.h"
 
+#ifdef USE_MUMBLE
+MumbleManager *mumbleManager = nullptr;
+#endif
+
 MumbleManager::MumbleManager() :
     mLinkedMem(nullptr),
     mLinkedMemCache()
