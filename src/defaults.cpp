@@ -297,7 +297,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("repeateInterval2", SDL_DEFAULT_REPEAT_DELAY);
 #endif
     AddDEF("compresstextures", 0);
-    AddDEF("rectangulartextures", true);
+    AddDEF("rectangulartextures", false);
     AddDEF("networksleep", 0);
     AddDEF("newtextures", true);
     AddDEF("videodetected", false);
