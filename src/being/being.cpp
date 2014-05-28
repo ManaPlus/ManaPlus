@@ -83,6 +83,7 @@
 #include "gui/widgets/tabs/langtab.h"
 
 #include "utils/delete2.h"
+#include "utils/files.h"
 #include "utils/gettext.h"
 #include "utils/timer.h"
 
@@ -2932,16 +2933,14 @@ std::string Being::loadComment(const std::string &name, const int type)
     }
 
     str.append(stringToHexPath(name)).append("/comment.txt");
-
-    const ResourceManager *const resman = ResourceManager::getInstance();
-    if (ResourceManager::existsLocal(str))
+    if (Files::existsLocal(str))
     {
         StringVect lines;
-        resman->loadTextFileLocal(str, lines);
+        Files::loadTextFileLocal(str, lines);
         if (lines.size() >= 2)
             return lines[1];
     }
-    return "";
+    return std::string();
 }
 
 void Being::saveComment(const std::string &restrict name,
@@ -2960,7 +2959,8 @@ void Being::saveComment(const std::string &restrict name,
             return;
     }
     dir.append(stringToHexPath(name));
-    ResourceManager::saveTextFile(dir, "comment.txt",
+    Files::saveTextFile(dir,
+        "comment.txt",
         (name + "\n").append(comment));
 }
 

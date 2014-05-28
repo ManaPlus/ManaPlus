@@ -20,6 +20,8 @@
 
 #include "utils/physfstools.h"
 
+#include "logger.h"
+
 #include <iostream>
 #include <unistd.h>
 
@@ -133,5 +135,29 @@ namespace PhysFs
     bool mkdir(const char *const dirname)
     {
         return PHYSFS_mkdir(dirname);
+    }
+
+    void *loadFile(const std::string &fileName, int &fileSize)
+    {
+        // Attempt to open the specified file using PhysicsFS
+        PHYSFS_file *const file = PhysFs::openRead(fileName.c_str());
+
+        if (!file)
+        {
+            logger->log("Warning: Failed to load %s: %s",
+                        fileName.c_str(), PHYSFS_getLastError());
+            return nullptr;
+        }
+
+        logger->log("Loaded %s/%s", PhysFs::getRealDir(fileName.c_str()),
+            fileName.c_str());
+
+        fileSize = static_cast<int>(PHYSFS_fileLength(file));
+        // Allocate memory and load the file
+        void *const buffer = calloc(fileSize, 1);
+        PHYSFS_read(file, buffer, 1, fileSize);
+        PHYSFS_close(file);
+
+        return buffer;
     }
 }  // namespace PhysFs

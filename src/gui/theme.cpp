@@ -52,14 +52,18 @@ Theme *theme = nullptr;
 // Set the theme path...
 static void initDefaultThemePath()
 {
-    const ResourceManager *const resman = ResourceManager::getInstance();
     defaultThemePath = branding.getStringValue("guiThemePath");
 
     logger->log("defaultThemePath: " + defaultThemePath);
-    if (!defaultThemePath.empty() && resman->isDirectory(defaultThemePath))
+    if (!defaultThemePath.empty() && PhysFs::isDirectory(
+        defaultThemePath.c_str()))
+    {
         return;
+    }
     else
+    {
         defaultThemePath = "themes/";
+    }
 }
 
 Theme::Theme() :

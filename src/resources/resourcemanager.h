@@ -106,36 +106,6 @@ class ResourceManager final
                                      const std::string &restrict ext) const;
 
         /**
-         * Creates a directory in the write path
-         */
-        bool mkdir(const std::string &path) const;
-
-        /**
-         * Checks whether the given file or directory exists in the search path
-         * (PhysFS)
-         */
-        bool exists(const std::string &path) const A_WARN_UNUSED;
-
-        /**
-         * Checks whether the given file or directory exists
-         */
-        static bool existsLocal(const std::string &path) A_WARN_UNUSED;
-
-        /**
-         * Checks whether the given path is a directory.
-         */
-        bool isDirectory(const std::string &path) const A_WARN_UNUSED;
-
-        /**
-         * Returns the real path to a file. Note that this method will always
-         * return a path, it does not check whether the file exists.
-         *
-         * @param file The file to get the real path to.
-         * @return The real path.
-         */
-        static std::string getPath(const std::string &file) A_WARN_UNUSED;
-
-        /**
          * Creates a resource and adds it to the resource map.
          *
          * @param idPath The resource identifier path.
@@ -171,18 +141,6 @@ class ResourceManager final
          * @return true if successfull, false otherwise.
          */
         bool addResource(const std::string &idPath, Resource *const resource);
-
-        /**
-        * Copies a file from one place to another (useful for extracting
-        * raw files from a zip archive, for example)
-        *
-        * @param src Source file name
-        * @param dst Destination file name
-        * @return true on success, false on failure. An error message should be
-        *         in the log file.
-        */
-        static bool copyFile(const std::string &restrict src,
-                             const std::string &restrict dst);
 
         /**
          * Convenience wrapper around ResourceManager::get for loading
@@ -246,37 +204,9 @@ class ResourceManager final
          */
         void moveToDeleted(Resource *const res);
 
-        /**
-         * Allocates data into a buffer pointer for raw data loading. The
-         * returned data is expected to be freed using <code>free()</code>.
-         *
-         * @param fileName The name of the file to be loaded.
-         * @param fileSize The size of the file that was loaded.
-         *
-         * @return An allocated byte array containing the data that was loaded,
-         *         or <code>NULL</code> on fail.
-         */
-        static void *loadFile(const std::string &fileName,
-                              int &fileSize) A_WARN_UNUSED;
-
-        /**
-         * Retrieves the contents of a text file (PhysFS).
-         */
-        static bool loadTextFile(const std::string &fileName,
-                                 StringVect &lines);
-
-        /**
-         * Retrieves the contents of a text file.
-         */
-        static bool loadTextFileLocal(const std::string &fileName,
-                                      StringVect &lines);
-
-        static void saveTextFile(std::string path,
-                                 const std::string &restrict name,
-                                 const std::string &restrict text);
-
         Image *getRescaled(const Image *const image,
-                           const int width, const int height) A_WARN_UNUSED;
+                           const int width,
+                           const int height) A_WARN_UNUSED;
 
         /**
          * Loads the given filename as an SDL surface. The returned surface is
@@ -324,8 +254,6 @@ class ResourceManager final
         Resource *getTempResource(const std::string &idPath) A_WARN_UNUSED;
 
         void clearCache();
-
-        static void deleteFilesInDirectory(std::string path);
 
     private:
         /**

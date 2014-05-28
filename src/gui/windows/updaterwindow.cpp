@@ -46,6 +46,8 @@
 #include "resources/db/moddb.h"
 
 #include "utils/delete2.h"
+#include "utils/files.h"
+#include "utils/physfstools.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
@@ -1020,8 +1022,7 @@ bool UpdaterWindow::validateFile(const std::string &filePath,
 unsigned long UpdaterWindow::getFileHash(const std::string &filePath)
 {
     int size = 0;
-    char *const buf = static_cast<char*>(ResourceManager::loadFile(
-        filePath, size));
+    char *const buf = static_cast<char*>(PhysFs::loadFile(filePath, size));
     if (!buf)
         return 0;
     return Net::Download::adlerBuffer(buf, size);
@@ -1042,8 +1043,7 @@ void UpdaterWindow::loadFile(std::string file)
     trim(file);
 
     StringVect lines;
-    const ResourceManager *const resman = ResourceManager::getInstance();
-    resman->loadTextFileLocal(mUpdatesDir + "/local/help/news.txt", lines);
+    Files::loadTextFileLocal(mUpdatesDir + "/local/help/news.txt", lines);
 
     for (size_t i = 0, sz = lines.size(); i < sz; ++i)
         mBrowserBox->addRow(lines[i]);

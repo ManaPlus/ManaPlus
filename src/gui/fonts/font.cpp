@@ -76,6 +76,7 @@
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
 
+#include "utils/files.h"
 #include "utils/paths.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/stringutils.h"
@@ -162,7 +163,7 @@ TTF_Font *Font::openFont(const char *const name, const int size)
 //        return nullptr;
 //    return TTF_OpenFontIndexRW(rw, 1, size, 0);
 // #else
-    return TTF_OpenFontIndex(ResourceManager::getPath(name).c_str(),
+    return TTF_OpenFontIndex(Files::getPath(name).c_str(),
         size, 0);
 // #endif
 }

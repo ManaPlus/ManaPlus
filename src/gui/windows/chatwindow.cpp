@@ -73,6 +73,7 @@
 
 #include "utils/copynpaste.h"
 #include "utils/delete2.h"
+#include "utils/files.h"
 #include "utils/gettext.h"
 
 #include "resources/resourcemanager.h"
@@ -219,7 +220,7 @@ void ChatWindow::postInit()
 void ChatWindow::loadCommandsFile(const std::string &name)
 {
     StringVect list;
-    ResourceManager::loadTextFile(name, list);
+    Files::loadTextFile(name, list);
     StringVectCIter it = list.begin();
     const StringVectCIter it_end = list.end();
 

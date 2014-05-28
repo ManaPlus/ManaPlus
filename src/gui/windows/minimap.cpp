@@ -44,6 +44,7 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#include "utils/physfstools.h"
 #include "utils/sdlcheckutils.h"
 
 #include "debug.h"
@@ -169,14 +170,14 @@ void Minimap::setMap(const Map *const map)
 
             std::string minimapName = map->getProperty("minimap");
 
-            if (minimapName.empty() && resman->exists(tempname))
+            if (minimapName.empty() && PhysFs::exists(tempname.c_str()))
                 minimapName = tempname;
 
             if (minimapName.empty())
             {
                 tempname = std::string("graphics/minimaps/").append(
                     map->getFilename()).append(".png");
-                if (resman->exists(tempname))
+                if (PhysFs::exists(tempname.c_str()))
                     minimapName = tempname;
             }
 

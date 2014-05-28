@@ -27,6 +27,7 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/fuzzer.h"
+#include "utils/physfstools.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"
@@ -91,9 +92,7 @@ namespace XML
         valid = true;
         if (useResman)
         {
-            const ResourceManager *const resman
-                = ResourceManager::getInstance();
-            data = static_cast<char*>(resman->loadFile(
+            data = static_cast<char*>(PhysFs::loadFile(
                 filename.c_str(), size));
         }
         else

@@ -25,6 +25,8 @@
 #endif
 
 #include "utils/paths.h"
+
+#include "utils/files.h"
 #include "utils/physfstools.h"
 #include "utils/stringutils.h"
 
@@ -174,7 +176,7 @@ std::string getPicturesDir()
     }
 
     StringVect arr;
-    ResourceManager::loadTextFileLocal(file, arr);
+    Files::loadTextFileLocal(file, arr);
     FOR_EACH (StringVectCIter, it, arr)
     {
         std::string str = *it;

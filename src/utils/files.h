@@ -61,6 +61,22 @@ namespace Files
 
     void getFilesWithDir(const std::string &restrict path,
                          StringVect &restrict list);
+
+    bool existsLocal(const std::string &path);
+
+    std::string getPath(const std::string &file);
+
+    bool loadTextFile(const std::string &fileName,
+                      StringVect &lines);
+
+    bool loadTextFileLocal(const std::string &fileName,
+                           StringVect &lines);
+
+    void saveTextFile(std::string path,
+                      const std::string &restrict name,
+                      const std::string &restrict text);
+
+    void deleteFilesInDirectory(std::string path);
 }  // namespace Files
 
 #endif  // UTILS_FILES_H

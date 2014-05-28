@@ -2229,13 +2229,12 @@ void Client::initUpdatesDir()
         replaceAll(mUpdatesDir, ":", "_");
 #endif
 
-    const ResourceManager *const resman = ResourceManager::getInstance();
     const std::string updateDir("/" + mUpdatesDir);
 
     // Verify that the updates directory exists. Create if necessary.
-    if (!resman->isDirectory(updateDir))
+    if (!PhysFs::isDirectory(updateDir.c_str()))
     {
-        if (!resman->mkdir(updateDir))
+        if (!PhysFs::mkdir(updateDir.c_str()))
         {
 #if defined WIN32
             std::string newDir = mLocalDataDir + "\\" + mUpdatesDir;
@@ -2267,10 +2266,10 @@ void Client::initUpdatesDir()
     }
     const std::string updateLocal = updateDir + "/local";
     const std::string updateFix = updateDir + "/fix";
-    if (!resman->isDirectory(updateLocal))
-        resman->mkdir(updateLocal);
-    if (!resman->isDirectory(updateFix))
-        resman->mkdir(updateFix);
+    if (!PhysFs::isDirectory(updateLocal.c_str()))
+        PhysFs::mkdir(updateLocal.c_str());
+    if (!PhysFs::isDirectory(updateFix.c_str()))
+        PhysFs::mkdir(updateFix.c_str());
 }
 
 void Client::initScreenshotDir()
@@ -2983,7 +2982,7 @@ void Client::setIcon()
 #else
     iconFile.append(".png");
 #endif
-    iconFile = ResourceManager::getPath(iconFile);
+    iconFile = Files::getPath(iconFile);
     logger->log("Loading icon from file: %s", iconFile.c_str());
 
 #ifdef WIN32

@@ -38,6 +38,7 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
+#include "utils/files.h"
 #include "utils/paths.h"
 #include "utils/process.h"
 
@@ -153,7 +154,7 @@ void HelpWindow::loadTags()
     if (helpPath.empty())
         helpPath = paths.getStringValue("help");
     StringVect lines;
-    ResourceManager::loadTextFile(helpPath.append("tags.idx"), lines);
+    Files::loadTextFile(helpPath.append("tags.idx"), lines);
     FOR_EACH (StringVectCIter, it, lines)
     {
         const std::string &str = *it;

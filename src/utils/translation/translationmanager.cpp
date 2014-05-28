@@ -21,6 +21,7 @@
 #include "utils/translation/translationmanager.h"
 
 #include "utils/delete2.h"
+#include "utils/physfstools.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"
@@ -85,9 +86,8 @@ bool TranslationManager::translateFile(const std::string &fileName,
         return false;
 
     int contentsLength;
-    const ResourceManager *const resman = ResourceManager::getInstance();
     char *fileContents = static_cast<char*>(
-        resman->loadFile(fileName, contentsLength));
+        PhysFs::loadFile(fileName, contentsLength));
 
     if (!fileContents)
     {

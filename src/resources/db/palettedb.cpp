@@ -22,6 +22,8 @@
 
 #include "logger.h"
 
+#include "utils/files.h"
+
 #include "resources/dyecolor.h"
 #include "resources/resourcemanager.h"
 
@@ -48,7 +50,7 @@ void PaletteDB::loadPalette()
 {
     mLoaded = true;
     StringVect lines;
-    ResourceManager::loadTextFile("palette.gpl", lines);
+    Files::loadTextFile("palette.gpl", lines);
     StringVectCIter it = lines.begin();
     if (it == lines.end())
     {

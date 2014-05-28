@@ -20,13 +20,21 @@
 
 #include "utils/files.h"
 
+#include "logger.h"
+
 #if defined(ANDROID) || defined(__native_client__)
 #include "resources/resourcemanager.h"
 
 #include "utils/mkdir.h"
 #endif
 
+#include "utils/mkdir.h"
+#include "utils/paths.h"
 #include "utils/physfstools.h"
+
+#include <dirent.h>
+#include <fstream>
+#include <sstream>
 
 #include "debug.h"
 
@@ -229,4 +237,108 @@ void Files::getFilesWithDir(const std::string &path, StringVect &list)
             list.push_back(path + *i);
     }
     PhysFs::freeList(fonts);
+}
+
+bool Files::existsLocal(const std::string &path)
+{
+    bool flg(false);
+    std::fstream file;
+    file.open(path.c_str(), std::ios::in);
+    if (file.is_open())
+        flg = true;
+    file.close();
+    return flg;
+}
+
+std::string Files::getPath(const std::string &file)
+{
+    // get the real path to the file
+    const char *const tmp = PhysFs::getRealDir(file.c_str());
+    std::string path;
+
+    // if the file is not in the search path, then its nullptr
+    if (tmp)
+    {
+        path = std::string(tmp).append(dirSeparator).append(file);
+    }
+    else
+    {
+        // if not found in search path return the default path
+        path = getPackageDir().append(dirSeparator).append(file);
+    }
+
+    return path;
+}
+
+bool Files::loadTextFile(const std::string &fileName,
+                         StringVect &lines)
+{
+    int contentsLength;
+    char *fileContents = static_cast<char*>(
+        PhysFs::loadFile(fileName, contentsLength));
+
+    if (!fileContents)
+    {
+        logger->log("Couldn't load text file: %s", fileName.c_str());
+        return false;
+    }
+
+    std::istringstream iss(std::string(fileContents, contentsLength));
+    std::string line;
+
+    while (getline(iss, line))
+        lines.push_back(line);
+
+    free(fileContents);
+    return true;
+}
+
+bool Files::loadTextFileLocal(const std::string &fileName,
+                              StringVect &lines)
+{
+    std::ifstream file;
+    char line[501];
+
+    file.open(fileName.c_str(), std::ios::in);
+
+    if (!file.is_open())
+    {
+        logger->log("Couldn't load text file: %s", fileName.c_str());
+        return false;
+    }
+
+    while (file.getline(line, 500))
+        lines.push_back(line);
+
+    return true;
+}
+
+void Files::saveTextFile(std::string path,
+                         const std::string &restrict name,
+                         const std::string &restrict text)
+{
+    if (!mkdir_r(path.c_str()))
+    {
+        std::ofstream file;
+        file.open((path.append("/").append(name)).c_str(), std::ios::out);
+        if (file.is_open())
+            file << text << std::endl;
+        file.close();
+    }
+}
+
+void Files::deleteFilesInDirectory(std::string path)
+{
+    path += "/";
+    struct dirent *next_file = nullptr;
+    DIR *const dir = opendir(path.c_str());
+
+    while ((next_file = readdir(dir)))
+    {
+        const std::string file = next_file->d_name;
+        if (file != "." && file != "..")
+            remove((path + file).c_str());
+    }
+    if (dir)
+        closedir(dir);
 }

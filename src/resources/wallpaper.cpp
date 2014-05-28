@@ -46,26 +46,24 @@ static std::string wallpaperFile;
 // Search for the wallpaper path values sequentially..
 static void initDefaultWallpaperPaths()
 {
-    const ResourceManager *const resman = ResourceManager::getInstance();
-
     // Init the path
     wallpaperPath = branding.getStringValue("wallpapersPath");
 
-    if (wallpaperPath.empty() || !resman->isDirectory(wallpaperPath))
+    if (wallpaperPath.empty() || !PhysFs::isDirectory(wallpaperPath.c_str()))
         wallpaperPath = paths.getValue("wallpapers", "");
 
-    if (wallpaperPath.empty() || !resman->isDirectory(wallpaperPath))
+    if (wallpaperPath.empty() || !PhysFs::isDirectory(wallpaperPath.c_str()))
         wallpaperPath = "graphics/images/";
 
     // Init the default file
     wallpaperFile = branding.getStringValue("wallpaperFile");
 
-    if (!wallpaperFile.empty() && !resman->isDirectory(wallpaperFile))
+    if (!wallpaperFile.empty() && !PhysFs::isDirectory(wallpaperFile.c_str()))
         return;
     else
         wallpaperFile = paths.getValue("wallpaperFile", "");
 
-    if (wallpaperFile.empty() || resman->isDirectory(wallpaperFile))
+    if (wallpaperFile.empty() || PhysFs::isDirectory(wallpaperFile.c_str()))
         wallpaperFile = "login_wallpaper.png";
 }
 

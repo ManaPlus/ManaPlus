@@ -22,6 +22,7 @@
 #define UTILS_PHYSFSTOOLS_H
 
 #include <physfs.h>
+#include <string>
 
 namespace PhysFs
 {
@@ -42,6 +43,7 @@ namespace PhysFs
     bool removeFromSearchPath(const char *const oldDir);
     const char *getRealDir(const char *const filename);
     bool mkdir(const char *const dirName);
+    void *loadFile(const std::string &fileName, int &fileSize);
 }  // namespace PhysFs
 
 extern const char *dirSeparator;

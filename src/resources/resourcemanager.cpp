@@ -48,8 +48,6 @@
 #include "utils/timer.h"
 
 #include <SDL_image.h>
-#include <dirent.h>
-#include <fstream>
 
 #include <sys/time.h>
 
@@ -389,52 +387,6 @@ void ResourceManager::searchAndRemoveArchives(const std::string &restrict path,
     }
 
     PhysFs::freeList(list);
-}
-
-bool ResourceManager::mkdir(const std::string &path) const
-{
-    return static_cast<bool>(PhysFs::mkdir(path.c_str()));
-}
-
-bool ResourceManager::exists(const std::string &path) const
-{
-    return PhysFs::exists(path.c_str());
-}
-
-bool ResourceManager::existsLocal(const std::string &path)
-{
-    bool flg(false);
-    std::fstream file;
-    file.open(path.c_str(), std::ios::in);
-    if (file.is_open())
-        flg = true;
-    file.close();
-    return flg;
-}
-
-bool ResourceManager::isDirectory(const std::string &path) const
-{
-    return PhysFs::isDirectory(path.c_str());
-}
-
-std::string ResourceManager::getPath(const std::string &file)
-{
-    // get the real path to the file
-    const char *const tmp = PhysFs::getRealDir(file.c_str());
-    std::string path;
-
-    // if the file is not in the search path, then its nullptr
-    if (tmp)
-    {
-        path = std::string(tmp).append(dirSeparator).append(file);
-    }
-    else
-    {
-        // if not found in search path return the default path
-        path = getPackageDir().append(dirSeparator).append(file);
-    }
-
-    return path;
 }
 
 bool ResourceManager::addResource(const std::string &idPath,
@@ -958,115 +910,6 @@ void ResourceManager::deleteInstance()
     delete2(instance);
 }
 
-void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
-{
-    // Attempt to open the specified file using PhysicsFS
-    PHYSFS_file *const file = PhysFs::openRead(fileName.c_str());
-
-    if (!file)
-    {
-        logger->log("Warning: Failed to load %s: %s",
-                    fileName.c_str(), PHYSFS_getLastError());
-        return nullptr;
-    }
-
-    logger->log("Loaded %s/%s", PhysFs::getRealDir(fileName.c_str()),
-                fileName.c_str());
-
-    fileSize = static_cast<int>(PHYSFS_fileLength(file));
-    // Allocate memory and load the file
-    void *const buffer = calloc(fileSize, 1);
-    PHYSFS_read(file, buffer, 1, fileSize);
-    PHYSFS_close(file);
-
-    return buffer;
-}
-
-bool ResourceManager::copyFile(const std::string &restrict src,
-                               const std::string &restrict dst)
-{
-    PHYSFS_file *const srcFile = PhysFs::openRead(src.c_str());
-    if (!srcFile)
-    {
-        logger->log("Read error: %s", PHYSFS_getLastError());
-        return false;
-    }
-    PHYSFS_file *const dstFile = PhysFs::openWrite(dst.c_str());
-    if (!dstFile)
-    {
-        logger->log("Write error: %s", PHYSFS_getLastError());
-        PHYSFS_close(srcFile);
-        return false;
-    }
-
-    const int fileSize = static_cast<const int>(PHYSFS_fileLength(srcFile));
-    char *buf = new char[static_cast<size_t>(fileSize)];
-    PHYSFS_read(srcFile, buf, 1, fileSize);
-    PHYSFS_write(dstFile, buf, 1, fileSize);
-
-    PHYSFS_close(srcFile);
-    PHYSFS_close(dstFile);
-    delete [] buf;
-    return true;
-}
-
-bool ResourceManager::loadTextFile(const std::string &fileName,
-                                   StringVect &lines)
-{
-    int contentsLength;
-    char *fileContents = static_cast<char*>(
-        loadFile(fileName, contentsLength));
-
-    if (!fileContents)
-    {
-        logger->log("Couldn't load text file: %s", fileName.c_str());
-        return false;
-    }
-
-    std::istringstream iss(std::string(fileContents, contentsLength));
-    std::string line;
-
-    while (getline(iss, line))
-        lines.push_back(line);
-
-    free(fileContents);
-    return true;
-}
-
-bool ResourceManager::loadTextFileLocal(const std::string &fileName,
-                                        StringVect &lines)
-{
-    std::ifstream file;
-    char line[501];
-
-    file.open(fileName.c_str(), std::ios::in);
-
-    if (!file.is_open())
-    {
-        logger->log("Couldn't load text file: %s", fileName.c_str());
-        return false;
-    }
-
-    while (file.getline(line, 500))
-        lines.push_back(line);
-
-    return true;
-}
-
-void ResourceManager::saveTextFile(std::string path,
-                                   const std::string &restrict name,
-                                   const std::string &restrict text)
-{
-    if (!mkdir_r(path.c_str()))
-    {
-        std::ofstream file;
-        file.open((path.append("/").append(name)).c_str(), std::ios::out);
-        if (file.is_open())
-            file << text << std::endl;
-        file.close();
-    }
-}
-
 SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename) const
 {
     if (SDL_RWops *const rw = MPHYSFSRWOPS_openRead(filename.c_str()))
@@ -1131,22 +974,6 @@ Image *ResourceManager::getRescaled(const Image *const image,
     Image *const img = static_cast<Image *const>(
         get(idPath, &RescaledLoader::load, &rl));
     return img;
-}
-
-void ResourceManager::deleteFilesInDirectory(std::string path)
-{
-    path += "/";
-    struct dirent *next_file = nullptr;
-    DIR *const dir = opendir(path.c_str());
-
-    while ((next_file = readdir(dir)))
-    {
-        const std::string file = next_file->d_name;
-        if (file != "." && file != "..")
-            remove((path + file).c_str());
-    }
-    if (dir)
-        closedir(dir);
 }
 
 void ResourceManager::clearCache()
