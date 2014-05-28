@@ -96,6 +96,7 @@
 #include "net/net.h"
 #include "net/packetcounters.h"
 
+#include "resources/delayedmanager.h"
 #include "resources/imagewriter.h"
 #include "resources/mapreader.h"
 #include "resources/resourcemanager.h"
@@ -655,7 +656,7 @@ void Game::slowLogic()
     if (shopWindow)
         shopWindow->updateTimes();
     if (mainGraphics->getOpenGL())
-        ResourceManager::delayedLoad();
+        DelayedManager::delayedLoad();
     if (guildManager)
         guildManager->slowLogic();
     PacketCounters::update();

@@ -56,7 +56,6 @@
 #include "debug.h"
 
 ResourceManager *ResourceManager::instance = nullptr;
-DelayedAnim ResourceManager::mDelayedAnimations;
 
 ResourceManager::ResourceManager() :
     deletedSurfaces(),
@@ -1132,47 +1131,6 @@ Image *ResourceManager::getRescaled(const Image *const image,
     Image *const img = static_cast<Image *const>(
         get(idPath, &RescaledLoader::load, &rl));
     return img;
-}
-
-void ResourceManager::delayedLoad()
-{
-    BLOCK_START("ResourceManager::delayedLoad")
-    static int loadTime = 0;
-    if (loadTime < cur_time)
-    {
-        loadTime = tick_time;
-
-        int k = 0;
-        DelayedAnimIter it = mDelayedAnimations.begin();
-        const DelayedAnimIter it_end = mDelayedAnimations.end();
-        while (it != it_end && k < 1)
-        {
-            (*it)->load();
-            AnimationDelayLoad *tmp = *it;
-            it = mDelayedAnimations.erase(it);
-            delete tmp;
-            k ++;
-        }
-        const int time2 = tick_time;
-        if (time2 > loadTime)
-            loadTime = time2 + (time2 - loadTime) * 2 + 10;
-        else
-            loadTime = time2 + 3;
-    }
-    BLOCK_END("ResourceManager::delayedLoad")
-}
-
-void ResourceManager::removeDelayLoad(const AnimationDelayLoad
-                                      *const delayedLoad)
-{
-    FOR_EACH (DelayedAnimIter, it, mDelayedAnimations)
-    {
-        if (*it == delayedLoad)
-        {
-            mDelayedAnimations.erase(it);
-            return;
-        }
-    }
 }
 
 void ResourceManager::deleteFilesInDirectory(std::string path)

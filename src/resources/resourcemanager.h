@@ -47,9 +47,6 @@ class WalkLayer;
 struct SDL_Surface;
 struct SDL_RWops;
 
-typedef std::list<AnimationDelayLoad*> DelayedAnim;
-typedef DelayedAnim::iterator DelayedAnimIter;
-
 /**
  * A class for loading and managing resources.
  */
@@ -328,14 +325,6 @@ class ResourceManager final
 
         void clearCache();
 
-        static void addDelayedAnimation(AnimationDelayLoad *const animation)
-        { mDelayedAnimations.push_back(animation); }
-
-        static void delayedLoad();
-
-        static void removeDelayLoad(const AnimationDelayLoad
-                                    *const delayedLoad);
-
         static void deleteFilesInDirectory(std::string path);
 
     private:
@@ -352,7 +341,6 @@ class ResourceManager final
         time_t mOldestOrphan;
         bool mDestruction;
         bool mUseLongLiveSprites;
-        static DelayedAnim mDelayedAnimations;
 };
 
 #endif  // RESOURCES_RESOURCEMANAGER_H

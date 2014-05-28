@@ -28,6 +28,7 @@
 
 #include "resources/action.h"
 #include "resources/animation.h"
+#include "resources/delayedmanager.h"
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 #include "resources/spriteaction.h"
@@ -110,7 +111,7 @@ AnimatedSprite::~AnimatedSprite()
     if (mDelayLoad)
     {
         mDelayLoad->clearSprite();
-        ResourceManager::removeDelayLoad(mDelayLoad);
+        DelayedManager::removeDelayLoad(mDelayLoad);
         delete2(mDelayLoad);
     }
 }
@@ -416,11 +417,11 @@ void AnimatedSprite::setDelayLoad(const std::string &filename,
     if (mDelayLoad)
     {
         mDelayLoad->clearSprite();
-        ResourceManager::removeDelayLoad(mDelayLoad);
+        DelayedManager::removeDelayLoad(mDelayLoad);
         delete mDelayLoad;
     }
     mDelayLoad = new AnimationDelayLoad(filename, variant, this);
-    ResourceManager::addDelayedAnimation(mDelayLoad);
+    DelayedManager::addDelayedAnimation(mDelayLoad);
 }
 
 void AnimatedSprite::clearDelayLoad()

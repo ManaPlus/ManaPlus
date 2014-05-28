@@ -535,6 +535,8 @@ SET(SRCS
     resources/db/colordb.h
     resources/cursor.cpp
     resources/cursor.h
+    resources/delayedmanager.cpp
+    resources/delayedmanager.h
     resources/db/deaddb.cpp
     resources/db/deaddb.h
     resources/dye.cpp

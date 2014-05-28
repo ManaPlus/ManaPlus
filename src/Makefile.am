@@ -69,6 +69,8 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      resources/animation.h \
 	      resources/db/palettedb.cpp \
 	      resources/db/palettedb.h \
+	      resources/delayedmanager.cpp \
+	      resources/delayedmanager.h \
 	      resources/dye.cpp \
 	      resources/dye.h \
 	      resources/dyepalette.cpp \
@@ -651,6 +653,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/db/colordb.h \
 	      resources/cursor.cpp \
 	      resources/cursor.h \
+	      resources/delayedmanager.cpp \
+	      resources/delayedmanager.h \
 	      resources/db/deaddb.cpp \
 	      resources/db/deaddb.h \
 	      resources/dye.cpp \
