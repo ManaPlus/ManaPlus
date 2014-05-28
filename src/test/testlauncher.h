@@ -66,6 +66,8 @@ class TestLauncher final
 
         int testTextures();
 
+        int testDraw();
+
     private:
         std::string mTest;
 

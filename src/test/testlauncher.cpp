@@ -24,11 +24,14 @@
 
 #include "client.h"
 #include "graphicsmanager.h"
+#include "graphicsvertexes.h"
 #include "soundmanager.h"
 
 #include "render/sdlgraphics.h"
 
 #include "gui/theme.h"
+
+#include "gui/fonts/font.h"
 
 #include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
@@ -48,6 +51,8 @@
 #endif
 
 #include "debug.h"
+
+extern Font *boldFont;
 
 TestLauncher::TestLauncher(std::string test) :
     mTest(test),
@@ -82,6 +87,8 @@ int TestLauncher::exec()
         return testInternal();
     else if (mTest == "101")
         return testDye();
+    else if (mTest == "102")
+        return testDraw();
 
     return -1;
 }
@@ -358,6 +365,40 @@ int TestLauncher::testDye()
             }
         }
     }
+    return 0;
+}
+
+int TestLauncher::testDraw()
+{
+    Image *img[2];
+    img[0] = Theme::getImageFromTheme("graphics/sprites/arrow_left.png");
+    img[1] = Theme::getImageFromTheme("graphics/sprites/arrow_right.png");
+    ImageCollection *const col = new ImageCollection;
+
+    mainGraphics->pushClipArea(Rect(10, 20, 790, 580));
+    mainGraphics->setColor(Color(0xFFU, 0xFFU, 0x00U, 0xFFU));
+    mainGraphics->drawRectangle(Rect(0, 0, 400, 200));
+
+    mainGraphics->setColor(Color(0x00U, 0x00U, 0xFFU, 0x90U));
+    mainGraphics->fillRectangle(Rect(200, 100, 300, 300));
+    mainGraphics->popClipArea();
+
+    mainGraphics->setColor(Color(0xFFU, 0x00U, 0x00U, 0xB0U));
+    boldFont->drawString(mainGraphics,
+        "test test test test test test test test ", 300, 100);
+
+    mainGraphics->drawPattern(img[0], 10, 400, 100, 200);
+
+    mainGraphics->calcPattern(col, img[1], 500, 400, 150, 100);
+    mainGraphics->drawTileCollection(col);
+
+    mainGraphics->setColor(Color(0x00U, 0xFFU, 0x00U, 0x90U));
+    mainGraphics->drawNet(450, 10, 600, 300, 32, 20);
+
+    mainGraphics->updateScreen();
+    sleep(10);
+
+    delete col;
     return 0;
 }
 
