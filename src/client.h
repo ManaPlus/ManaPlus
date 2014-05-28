@@ -248,8 +248,6 @@ public:
     float getGuiAlpha() const A_WARN_UNUSED
     { return mGuiAlpha; }
 
-    static void closeDialogs();
-
     void setFramerate(const int fpsLimit) const;
 
     int getFramerate() const A_WARN_UNUSED;

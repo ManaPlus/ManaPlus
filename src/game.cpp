@@ -49,6 +49,7 @@
 #include "input/keyboardconfig.h"
 
 #include "gui/chatconsts.h"
+#include "gui/dialogsmanager.h"
 #include "gui/gui.h"
 #include "gui/viewport.h"
 #include "gui/windowmenu.h"
@@ -156,7 +157,6 @@ BotCheckerWindow *botCheckerWindow = nullptr;
 SocialWindow *socialWindow = nullptr;
 QuestsWindow *questsWindow = nullptr;
 WindowMenu *windowMenu = nullptr;
-UpdaterWindow *updaterWindow = nullptr;
 
 ActorManager *actorManager = nullptr;
 CommandHandler *commandHandler = nullptr;
@@ -690,7 +690,7 @@ void Game::slowLogic()
                 map->saveExtraLayer();
             }
         }
-        closeDialogs();
+        DialogsManager::closeDialogs();
         client->setFramerate(config.getIntValue("fpslimit"));
         mNextAdjustTime = cur_time + adjustDelay;
         if (client->getState() != STATE_ERROR)
@@ -1187,29 +1187,10 @@ void Game::clearKeysArray()
     }
 }
 
-void Game::closeDialogs()
-{
-    Client::closeDialogs();
-    if (deathNotice)
-    {
-        deathNotice->scheduleDelete();
-        deathNotice = nullptr;
-    }
-}
-
 void Game::videoResized(const int width, const int height)
 {
     if (viewport)
         viewport->setSize(width, height);
     if (windowMenu)
         windowMenu->setPosition(width - windowMenu->getWidth(), 0);
-}
-
-void Game::createUpdaterWindow()
-{
-    updaterWindow = new UpdaterWindow(client->getUpdateHost(),
-        client->getOldUpdates(),
-        false,
-        0);
-    updaterWindow->postInit();
 }

@@ -2738,17 +2738,6 @@ int Client::getFramerate() const
     return SDL_getFramerate(&client->mFpsManager);
 }
 
-void Client::closeDialogs()
-{
-    NpcDialog::clearDialogs();
-    BuyDialog::closeAll();
-    BuySellDialog::closeAll();
-    NpcDialog::closeAll();
-    SellDialog::closeAll();
-    if (Net::getInventoryHandler())
-        Net::getInventoryHandler()->closeStorage();
-}
-
 bool Client::isTmw() const
 {
     const std::string &name = getServerName();

@@ -105,8 +105,6 @@ class Game final
         void setAdjustLevel(const int n)
         { mAdjustLevel = n; }
 
-        static void closeDialogs();
-
         static void videoResized(const int width, const int height);
 
         bool getValidSpeed() const A_WARN_UNUSED
@@ -119,8 +117,6 @@ class Game final
         static void addWatermark();
 
         static bool saveScreenshot(SDL_Surface *const screenshot);
-
-        static void createUpdaterWindow();
 
         void updateHistory(const SDL_Event &event);
 

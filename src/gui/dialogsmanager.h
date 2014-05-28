@@ -20,44 +20,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LISTENERS_PLAYERDEATHLISTENER_H
-#define LISTENERS_PLAYERDEATHLISTENER_H
+#ifndef DIALOGMANAGER_H
+#define DIALOGMANAGER_H
 
-#include "being/localplayer.h"
-
-#include "gui/dialogsmanager.h"
-#include "gui/viewport.h"
-
-#include "gui/windows/okdialog.h"
-#include "gui/windows/npcdialog.h"
-
-#include "net/net.h"
-#include "net/playerhandler.h"
-
-#include "localconsts.h"
-
-extern OkDialog *deathNotice;
-
-/**
-  * Listener used for handling death message.
-  */
-struct PlayerDeathListener final : public ActionListener
+class DialogsManager final
 {
-    void action(const ActionEvent &event A_UNUSED)
-    {
-        if (Net::getPlayerHandler())
-            Net::getPlayerHandler()->respawn();
-        deathNotice = nullptr;
+    public:
+        static void closeDialogs();
 
-        DialogsManager::closeDialogs();
-
-        if (viewport)
-            viewport->closePopupMenu();
-
-        NpcDialog::clearDialogs();
-        if (player_node)
-            player_node->respawn();
-    }
+        static void createUpdaterWindow();
 };
 
-#endif  // LISTENERS_PLAYERDEATHLISTENER_H
+#endif  // DIALOGMANAGER_H

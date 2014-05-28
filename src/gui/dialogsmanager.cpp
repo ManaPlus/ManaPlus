@@ -20,44 +20,45 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LISTENERS_PLAYERDEATHLISTENER_H
-#define LISTENERS_PLAYERDEATHLISTENER_H
-
-#include "being/localplayer.h"
-
 #include "gui/dialogsmanager.h"
-#include "gui/viewport.h"
 
-#include "gui/windows/okdialog.h"
+#include "client.h"
+
+#include "gui/windows/buyselldialog.h"
+#include "gui/windows/buydialog.h"
 #include "gui/windows/npcdialog.h"
+#include "gui/windows/okdialog.h"
+#include "gui/windows/selldialog.h"
+#include "gui/windows/updaterwindow.h"
 
+#include "net/inventoryhandler.h"
 #include "net/net.h"
-#include "net/playerhandler.h"
 
-#include "localconsts.h"
+#include "debug.h"
 
 extern OkDialog *deathNotice;
 
-/**
-  * Listener used for handling death message.
-  */
-struct PlayerDeathListener final : public ActionListener
+void DialogsManager::closeDialogs()
 {
-    void action(const ActionEvent &event A_UNUSED)
+    NpcDialog::clearDialogs();
+    BuyDialog::closeAll();
+    BuySellDialog::closeAll();
+    NpcDialog::closeAll();
+    SellDialog::closeAll();
+    if (Net::getInventoryHandler())
+        Net::getInventoryHandler()->closeStorage();
+    if (deathNotice)
     {
-        if (Net::getPlayerHandler())
-            Net::getPlayerHandler()->respawn();
+        deathNotice->scheduleDelete();
         deathNotice = nullptr;
-
-        DialogsManager::closeDialogs();
-
-        if (viewport)
-            viewport->closePopupMenu();
-
-        NpcDialog::clearDialogs();
-        if (player_node)
-            player_node->respawn();
     }
-};
+}
 
-#endif  // LISTENERS_PLAYERDEATHLISTENER_H
+void DialogsManager::createUpdaterWindow()
+{
+    updaterWindow = new UpdaterWindow(client->getUpdateHost(),
+        client->getOldUpdates(),
+        false,
+        0);
+    updaterWindow->postInit();
+}

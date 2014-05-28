@@ -34,6 +34,7 @@
 
 #include "input/inputmanager.h"
 
+#include "gui/dialogsmanager.h"
 #include "gui/gui.h"
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"
@@ -869,7 +870,7 @@ impHandler0(updaterWindowShow)
     if (updaterWindow)
         updaterWindow->deleteSelf();
     else
-        Game::createUpdaterWindow();
+        DialogsManager::createUpdaterWindow();
     return true;
 }
 

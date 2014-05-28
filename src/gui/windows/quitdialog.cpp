@@ -32,6 +32,7 @@
 
 #include "input/inputaction.h"
 
+#include "gui/dialogsmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/containerplacer.h"
@@ -165,7 +166,7 @@ void QuitDialog::action(const ActionEvent &event)
         }
         else if (mLogoutQuit->isSelected())
         {
-            Game::closeDialogs();
+            DialogsManager::closeDialogs();
             client->setState(STATE_EXIT);
         }
         else if (mRate && mRate->isSelected())
@@ -179,14 +180,14 @@ void QuitDialog::action(const ActionEvent &event)
             }
             else
             {
-                Game::closeDialogs();
+                DialogsManager::closeDialogs();
                 client->setState(STATE_EXIT);
             }
         }
         else if (Net::getGameHandler()->isConnected()
                  && mSwitchAccountServer->isSelected())
         {
-            Game::closeDialogs();
+            DialogsManager::closeDialogs();
             client->setState(STATE_SWITCH_SERVER);
         }
         else if (mSwitchCharacter->isSelected())
@@ -194,7 +195,7 @@ void QuitDialog::action(const ActionEvent &event)
             if (client->getState() == STATE_GAME)
             {
                 Net::getCharServerHandler()->switchCharacter();
-                Game::closeDialogs();
+                DialogsManager::closeDialogs();
                 serverConfig.write();
             }
         }

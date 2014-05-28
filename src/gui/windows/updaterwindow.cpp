@@ -59,6 +59,8 @@
 
 #include "debug.h"
 
+UpdaterWindow *updaterWindow = nullptr;
+
 const std::string xmlUpdateFile("resources.xml");
 const std::string txtUpdateFile("resources2.txt");
 const std::string updateServer2

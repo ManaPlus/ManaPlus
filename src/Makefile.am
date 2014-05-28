@@ -218,6 +218,8 @@ manaplus_SOURCES += events/actionevent.h \
 	      gui/widgets/basiccontainer.cpp \
 	      gui/cliprect.cpp \
 	      gui/color.cpp \
+	      gui/dialogsmanager.cpp \
+	      gui/dialogsmanager.h \
 	      input/key.cpp \
 	      gui/rect.cpp \
 	      gui/widgets/widget.cpp \
