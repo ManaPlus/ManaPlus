@@ -45,6 +45,7 @@
 
 #include "net/download.h"
 #include "net/net.h"
+#include "net/packetlimiter.h"
 #include "net/playerhandler.h"
 
 #include "utils/gettext.h"
@@ -590,7 +591,7 @@ void WhoIsOnline::download()
     }
     else
     {
-        if (client->limitPackets(PACKET_ONLINELIST))
+        if (PacketLimiter::limitPackets(PACKET_ONLINELIST))
             Net::getPlayerHandler()->requestOnlineList();
     }
 }
@@ -688,7 +689,7 @@ void WhoIsOnline::action(const ActionEvent &event)
         }
         else
         {
-            if (client->limitPackets(PACKET_ONLINELIST))
+            if (PacketLimiter::limitPackets(PACKET_ONLINELIST))
             {
                 mUpdateTimer = cur_time;
                 Net::getPlayerHandler()->requestOnlineList();

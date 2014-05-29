@@ -59,6 +59,7 @@
 #include "net/gamehandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
+#include "net/packetlimiter.h"
 #include "net/pethandler.h"
 #include "net/playerhandler.h"
 
@@ -2332,7 +2333,7 @@ void Being::setGM(const bool gm)
 
 void Being::talkTo() const
 {
-    if (!client->limitPackets(PACKET_NPC_TALK))
+    if (!PacketLimiter::limitPackets(PACKET_NPC_TALK))
         return;
 
     Net::getNpcHandler()->talk(mId);

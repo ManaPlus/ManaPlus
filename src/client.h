@@ -61,32 +61,6 @@ extern int textures_count;
 extern std::string errorMessage;
 extern LoginData loginData;
 
-enum PacketTypes
-{
-    PACKET_CHAT = 0,
-    PACKET_PICKUP = 1,
-    PACKET_DROP = 2,
-    PACKET_NPC_NEXT = 3,
-    PACKET_NPC_TALK = 4,
-    PACKET_NPC_INPUT = 5,
-    PACKET_EMOTE = 6,
-    PACKET_SIT = 7,
-    PACKET_DIRECTION = 8,
-    PACKET_ATTACK = 9,
-    PACKET_STOPATTACK = 10,
-    PACKET_ONLINELIST = 11,
-    PACKET_WHISPER = 12,
-    PACKET_SIZE
-};
-
-struct PacketLimit
-{
-    int lastTime;
-    int timeLimit;
-    int cnt;
-    int cntLimit;
-};
-
 /**
  * The core part of the client. This class initializes all subsystems, runs
  * the event loop, and shuts everything down again.
@@ -162,21 +136,11 @@ public:
 
     void initTradeFilter() const;
 
-    void initPacketLimiter();
-
-    void writePacketLimits(const std::string &packetLimitsName) const;
-
     void resizeVideo(int actualWidth,
                      int actualHeight,
                      const bool always);
 
     void applyScale();
-
-    bool limitPackets(const int type) A_WARN_UNUSED;
-
-    bool checkPackets(const int type) const A_WARN_UNUSED;
-
-    PacketLimit mPacketLimits[PACKET_SIZE + 1];
 
     void windowRemoved(const Window *const window);
 

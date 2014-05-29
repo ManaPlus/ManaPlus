@@ -63,6 +63,7 @@
 #include "net/chathandler.h"
 #include "net/inventoryhandler.h"
 #include "net/net.h"
+#include "net/packetlimiter.h"
 #include "net/pethandler.h"
 #include "net/playerhandler.h"
 
@@ -474,7 +475,7 @@ bool LocalPlayer::pickUp(FloorItem *const item)
     if (!item)
         return false;
 
-    if (!client->limitPackets(PACKET_PICKUP))
+    if (!PacketLimiter::limitPackets(PACKET_PICKUP))
         return false;
 
     const int dx = item->getTileX() - mX;
@@ -584,7 +585,7 @@ void LocalPlayer::setDestination(const int x, const int y)
 
             Net::getPlayerHandler()->setDestination(x, y, newDir);
 
-//            if (client->limitPackets(PACKET_DIRECTION))
+//            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
             {
                 setDirection(newDir);
                 Net::getPlayerHandler()->setDirection(newDir);
@@ -651,7 +652,7 @@ void LocalPlayer::startWalking(const unsigned char dir)
     {
         // If the being can't move, just change direction
 
-//            if (client->limitPackets(PACKET_DIRECTION))
+//            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
         {
             Net::getPlayerHandler()->setDirection(dir);
             setDirection(dir);
@@ -687,7 +688,7 @@ void LocalPlayer::stopWalking(const bool sendToServer)
 
 bool LocalPlayer::toggleSit() const
 {
-    if (!client->limitPackets(PACKET_SIT))
+    if (!PacketLimiter::limitPackets(PACKET_SIT))
         return false;
 
     BeingAction::Action newAction;
@@ -714,7 +715,7 @@ bool LocalPlayer::toggleSit() const
 
 bool LocalPlayer::updateSit() const
 {
-    if (!client->limitPackets(PACKET_SIT))
+    if (!PacketLimiter::limitPackets(PACKET_SIT))
         return false;
 
     Net::getPlayerHandler()->changeAction(mAction);
@@ -723,7 +724,7 @@ bool LocalPlayer::updateSit() const
 
 bool LocalPlayer::emote(const uint8_t emotion)
 {
-    if (!client->limitPackets(PACKET_EMOTE))
+    if (!PacketLimiter::limitPackets(PACKET_EMOTE))
         return false;
 
     Net::getPlayerHandler()->emote(emotion);
@@ -770,7 +771,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     {
         setAction(BeingAction::ATTACK);
 
-        if (!client->limitPackets(PACKET_ATTACK))
+        if (!PacketLimiter::limitPackets(PACKET_ATTACK))
             return;
 
         if (!dontChangeEquipment)
@@ -785,7 +786,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
 
 void LocalPlayer::stopAttack(const bool keepAttack)
 {
-    if (!client->limitPackets(PACKET_STOPATTACK))
+    if (!PacketLimiter::limitPackets(PACKET_STOPATTACK))
         return;
 
     if (mServerAttack && mAction == BeingAction::ATTACK)
@@ -1849,7 +1850,7 @@ void LocalPlayer::crazyMove1()
     if (mAction == BeingAction::MOVE)
         return;
 
-//    if (!client->limitPackets(PACKET_DIRECTION))
+//    if (!PacketLimiter::limitPackets(PACKET_DIRECTION))
 //        return;
 
     if (mDirection == BeingDirection::UP)
@@ -1883,7 +1884,7 @@ void LocalPlayer::crazyMove2()
     if (mAction == BeingAction::MOVE)
         return;
 
-//    if (!client->limitPackets(PACKET_DIRECTION))
+//    if (!PacketLimiter::limitPackets(PACKET_DIRECTION))
 //        return;
 
     if (mDirection == BeingDirection::UP)
@@ -1943,7 +1944,7 @@ void LocalPlayer::crazyMove3()
             break;
     }
 
-//    if (!client->limitPackets(PACKET_DIRECTION))
+//    if (!PacketLimiter::limitPackets(PACKET_DIRECTION))
 //        return;
 
     setDirection(BeingDirection::DOWN);
@@ -2286,7 +2287,7 @@ void LocalPlayer::crazyMoveA()
             {
                 case 'd':
 
-//                    if (client->limitPackets(PACKET_DIRECTION))
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(BeingDirection::DOWN);
                         Net::getPlayerHandler()->setDirection(
@@ -2294,7 +2295,7 @@ void LocalPlayer::crazyMoveA()
                     }
                     break;
                 case 'u':
-//                    if (client->limitPackets(PACKET_DIRECTION))
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(BeingDirection::UP);
                         Net::getPlayerHandler()->setDirection(
@@ -2302,7 +2303,7 @@ void LocalPlayer::crazyMoveA()
                     }
                     break;
                 case 'l':
-//                    if (client->limitPackets(PACKET_DIRECTION))
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(BeingDirection::LEFT);
                         Net::getPlayerHandler()->setDirection(
@@ -2310,7 +2311,7 @@ void LocalPlayer::crazyMoveA()
                     }
                     break;
                 case 'r':
-//                    if (client->limitPackets(PACKET_DIRECTION))
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(BeingDirection::RIGHT);
                         Net::getPlayerHandler()->setDirection(
@@ -2318,7 +2319,7 @@ void LocalPlayer::crazyMoveA()
                     }
                     break;
                 case 'L':
-//                    if (client->limitPackets(PACKET_DIRECTION))
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
                     {
                         uint8_t dir = 0;
                         switch (mDirection)
@@ -2343,7 +2344,7 @@ void LocalPlayer::crazyMoveA()
                     }
                     break;
                 case 'R':
-//                    if (client->limitPackets(PACKET_DIRECTION))
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
                     {
                         uint8_t dir = 0;
                         switch (mDirection)
@@ -2368,7 +2369,7 @@ void LocalPlayer::crazyMoveA()
                     }
                     break;
                 case 'b':
-//                    if (client->limitPackets(PACKET_DIRECTION))
+//                    if (PacketLimiter::limitPackets(PACKET_DIRECTION))
                     {
                         uint8_t dir = 0;
                         switch (mDirection)
@@ -2465,7 +2466,7 @@ void LocalPlayer::crazyMoveA()
         }
         if (mMoveProgram[mCrazyMoveState - 1] == 'e')
             emote(emoteId);
-        else if (client->limitPackets(PACKET_CHAT))
+        else if (PacketLimiter::limitPackets(PACKET_CHAT))
             Net::getPetHandler()->emote(emoteId, 0);
 
         mCrazyMoveState ++;
@@ -2744,7 +2745,7 @@ void LocalPlayer::tryMagic(const std::string &spell, const int baseMagic,
     {
         if (PlayerInfo::getAttribute(Attributes::MP) >= mana)
         {
-            if (!client->limitPackets(PACKET_CHAT))
+            if (!PacketLimiter::limitPackets(PACKET_CHAT))
                 return;
 
             chatWindow->localChatInput(spell);
@@ -3222,7 +3223,7 @@ void LocalPlayer::targetMoved() const
         if (mTarget && mServerAttack)
         {
             logger->log("LocalPlayer::targetMoved0");
-            if (!client->limitPackets(PACKET_ATTACK))
+            if (!PacketLimiter::limitPackets(PACKET_ATTACK))
                 return;
             logger->log("LocalPlayer::targetMoved");
             Net::getPlayerHandler()->attack(mTarget->getId(), mServerAttack);
@@ -3396,7 +3397,7 @@ void LocalPlayer::imitateDirection(const Being *const being,
 
     if (!mPlayerImitated.empty() && being->getName() == mPlayerImitated)
     {
-        if (!client->limitPackets(PACKET_DIRECTION))
+        if (!PacketLimiter::limitPackets(PACKET_DIRECTION))
             return;
 
         if (mFollowMode == 2)

@@ -30,6 +30,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "net/packetlimiter.h"
+
 #include "debug.h"
 
 DropShortcut *dropShortcut = nullptr;
@@ -94,7 +96,7 @@ void DropShortcut::dropFirst() const
     if (!player_node)
         return;
 
-    if (!client->limitPackets(PACKET_DROP))
+    if (!PacketLimiter::limitPackets(PACKET_DROP))
         return;
 
     const int itemId = getItem(0);
@@ -139,7 +141,7 @@ void DropShortcut::dropItems(const int cnt)
     {
         for (int i = 0; i < sz; i++)
         {
-            if (!client->limitPackets(PACKET_DROP))
+            if (!PacketLimiter::limitPackets(PACKET_DROP))
                 return;
             if (dropItem())
                 n++;

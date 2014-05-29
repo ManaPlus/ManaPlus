@@ -57,6 +57,7 @@
 
 #include "net/net.h"
 #include "net/npchandler.h"
+#include "net/packetlimiter.h"
 
 #include "utils/copynpaste.h"
 #include "utils/delete2.h"
@@ -282,7 +283,7 @@ void NpcDialog::action(const ActionEvent &event)
     {
         if (mActionState == NPC_ACTION_NEXT)
         {
-            if (!client->limitPackets(PACKET_NPC_NEXT))
+            if (!PacketLimiter::limitPackets(PACKET_NPC_NEXT))
                 return;
 
             nextDialog();
@@ -307,7 +308,7 @@ void NpcDialog::action(const ActionEvent &event)
 
                     if (selectedIndex >= static_cast<int>(mItems.size())
                         || selectedIndex < 0
-                        || !client->limitPackets(PACKET_NPC_INPUT))
+                        || !PacketLimiter::limitPackets(PACKET_NPC_INPUT))
                     {
                         return;
                     }
@@ -320,7 +321,7 @@ void NpcDialog::action(const ActionEvent &event)
                 }
                 case NPC_INPUT_STRING:
                 {
-                    if (!client->limitPackets(PACKET_NPC_INPUT))
+                    if (!PacketLimiter::limitPackets(PACKET_NPC_INPUT))
                         return;
                     printText = mTextField->getText();
                     Net::getNpcHandler()->stringInput(mNpcId, printText);
@@ -328,7 +329,7 @@ void NpcDialog::action(const ActionEvent &event)
                 }
                 case NPC_INPUT_INTEGER:
                 {
-                    if (!client->limitPackets(PACKET_NPC_INPUT))
+                    if (!PacketLimiter::limitPackets(PACKET_NPC_INPUT))
                         return;
                     printText = strprintf("%d", mIntField->getValue());
                     Net::getNpcHandler()->integerInput(
@@ -337,7 +338,7 @@ void NpcDialog::action(const ActionEvent &event)
                 }
                 case NPC_INPUT_ITEM:
                 {
-                    if (!client->limitPackets(PACKET_NPC_INPUT))
+                    if (!PacketLimiter::limitPackets(PACKET_NPC_INPUT))
                         return;
 
                     std::string str;

@@ -511,6 +511,8 @@ SET(SRCS
     net/worldinfo.h
     net/packetcounters.cpp
     net/packetcounters.h
+    net/packetlimiter.cpp
+    net/packetlimiter.h
     resources/action.cpp
     resources/action.h
     resources/ambientlayer.cpp
