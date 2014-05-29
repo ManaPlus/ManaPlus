@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "settings.h"
 
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/okdialog.h"
@@ -244,10 +245,10 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg,
     PlayerInfo::setCharId(msg.readInt32());
     GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
     gh->setMap(msg.readString(16));
-    if (config.getBoolValue("usePersistentIP") || client->getPersistentIp())
+    if (config.getBoolValue("usePersistentIP") || settings.persistentIp)
     {
         msg.readInt32();
-        server.hostname = client->getServerName();
+        server.hostname = settings.serverName;
     }
     else
     {

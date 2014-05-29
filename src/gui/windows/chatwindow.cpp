@@ -29,6 +29,7 @@
 #include "game.h"
 #include "guild.h"
 #include "party.h"
+#include "settings.h"
 #include "spellshortcut.h"
 
 #include "being/attributes.h"
@@ -1520,7 +1521,7 @@ void ChatWindow::localPetEmote(const std::string &nick, const uint8_t emoteId)
 
 void ChatWindow::initTradeFilter()
 {
-    const std::string tradeListName = client->getServerConfigDirectory()
+    const std::string tradeListName = settings.serverConfigDir
         + "/tradefilter.txt";
 
     std::ifstream tradeFile;
@@ -1670,7 +1671,7 @@ void ChatWindow::loadCustomList()
     std::ifstream listFile;
     struct stat statbuf;
 
-    std::string listName = client->getServerConfigDirectory()
+    std::string listName = settings.serverConfigDir
         + "/customwords.txt";
 
     if (!stat(listName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))

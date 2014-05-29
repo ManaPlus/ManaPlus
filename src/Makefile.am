@@ -1015,6 +1015,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      render/sdlgraphics.h \
 	      render/softwaregraphicsdef.hpp \
 	      sdlshared.h \
+	      settings.cpp \
+	      settings.h \
 	      shopitem.cpp \
 	      shopitem.h \
 	      simpleanimation.cpp \

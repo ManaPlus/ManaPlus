@@ -23,6 +23,7 @@
 #include "gui/windows/worldselectdialog.h"
 
 #include "client.h"
+#include "settings.h"
 
 #include "input/inputaction.h"
 
@@ -105,7 +106,7 @@ void WorldSelectDialog::action(const ActionEvent &event)
         mChangeLoginButton->setEnabled(false);
         mChooseWorld->setEnabled(false);
         Net::getLoginHandler()->chooseServer(mWorldList->getSelected(),
-            client->getPersistentIp());
+            settings.persistentIp);
 
         // Check in case netcode moves us forward
         if (client->getState() == STATE_WORLD_SELECT)

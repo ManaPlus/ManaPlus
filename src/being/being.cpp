@@ -30,6 +30,7 @@
 #include "effectmanager.h"
 #include "guild.h"
 #include "party.h"
+#include "settings.h"
 #include "soundmanager.h"
 #include "text.h"
 
@@ -2923,10 +2924,10 @@ std::string Being::loadComment(const std::string &name, const int type)
     switch (type)
     {
         case ActorType::PLAYER:
-            str = client->getUsersDirectory();
+            str = settings.usersDir;
             break;
         case ActorType::NPC:
-            str = client->getNpcsDirectory();
+            str = settings.npcsDir;
             break;
         default:
             return "";
@@ -2950,10 +2951,10 @@ void Being::saveComment(const std::string &restrict name,
     switch (type)
     {
         case ActorType::PLAYER:
-            dir = client->getUsersDirectory();
+            dir = settings.usersDir;
             break;
         case ActorType::NPC:
-            dir = client->getNpcsDirectory();
+            dir = settings.npcsDir;
             break;
         default:
             return;

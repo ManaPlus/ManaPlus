@@ -36,6 +36,7 @@
 #include "graphicsmanager.h"
 #include "itemshortcut.h"
 #include "party.h"
+#include "settings.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
@@ -213,19 +214,7 @@ namespace
 Client::Client(const Options &options) :
     ActionListener(),
     mOptions(options),
-    mConfigDir(),
-    mServerConfigDir(),
-    mLocalDataDir(),
-    mTempDir(),
-    mUpdateHost(),
-    mUpdatesDir(),
-    mScreenshotDir(),
-    mUsersDir(),
-    mNpcsDir(),
     mRootDir(),
-    mServerName(),
-    mOnlineListUrl(),
-    mLogFileName(),
     mCurrentServer(),
     mGame(nullptr),
     mCurrentDialog(nullptr),
@@ -244,7 +233,6 @@ Client::Client(const Options &options) :
     mOldState(STATE_START),
     mIcon(nullptr),
     mCaption(),
-    mOldUpdates(),
     mFpsManager(),
     mSkin(nullptr),
     mGuiAlpha(1.0F),
@@ -294,10 +282,10 @@ void Client::gameInit()
 
     // Configure logger
     if (!mOptions.logFileName.empty())
-        mLogFileName = mOptions.logFileName;
+        settings.logFileName = mOptions.logFileName;
     else
-        mLogFileName = mLocalDataDir + "/manaplus.log";
-    logger->setLogFile(mLogFileName);
+        settings.logFileName = settings.localDataDir + "/manaplus.log";
+    logger->setLogFile(settings.logFileName);
 
 #ifdef USE_FUZZER
     Fuzzer::init();
@@ -316,19 +304,24 @@ void Client::gameInit()
 #endif
 
     const ResourceManager *const resman = ResourceManager::getInstance();
-    if (!resman->setWriteDir(mLocalDataDir))
+    if (!resman->setWriteDir(settings.localDataDir))
     {
         logger->error(strprintf("%s couldn't be set as home directory! "
-                                "Exiting.", mLocalDataDir.c_str()));
+            "Exiting.", settings.localDataDir.c_str()));
     }
 
     initLang();
 
     chatLogger = new ChatLogger;
     if (mOptions.chatLogDir.empty())
-        chatLogger->setBaseLogDir(mLocalDataDir + std::string("/logs/"));
+    {
+        chatLogger->setBaseLogDir(settings.localDataDir
+            + std::string("/logs/"));
+    }
     else
+    {
         chatLogger->setBaseLogDir(mOptions.chatLogDir);
+    }
 
     logger->setLogToStandardOut(config.getBoolValue("logToStandardOut"));
 
@@ -393,7 +386,7 @@ void Client::gameInit()
         resman->addToSearchPath(mOptions.dataPath, false);
 
     // Add the local data directory to PhysicsFS search path
-    resman->addToSearchPath(mLocalDataDir, false);
+    resman->addToSearchPath(settings.localDataDir, false);
     TranslationManager::loadCurrentLang();
 
     initTitle();
@@ -1047,15 +1040,18 @@ int Client::gameExec()
         else if (mState == STATE_CONNECT_SERVER &&
                  mOldState == STATE_CHOOSE_SERVER)
         {
-            mServerName = mCurrentServer.hostname;
+            settings.serverName = mCurrentServer.hostname;
             initServerConfig(mCurrentServer.hostname);
             initFeatures();
             PlayerInfo::loadData();
             loginData.registerUrl = mCurrentServer.registerUrl;
             if (!mCurrentServer.onlineListUrl.empty())
-                mOnlineListUrl = mCurrentServer.onlineListUrl;
+                settings.onlineListUrl = mCurrentServer.onlineListUrl;
             else
-                mOnlineListUrl = mServerName;
+                settings.onlineListUrl = settings.serverName;
+            settings.persistentIp = mCurrentServer.persistentIp;
+            settings.supportUrl = mCurrentServer.supportUrl;
+            settings.updateMirrors = mCurrentServer.updateMirrors;
 
             if (mOptions.username.empty())
             {
@@ -1166,9 +1162,9 @@ int Client::gameExec()
                 if (!mOptions.dataPath.empty())
                     UpdaterWindow::unloadMods(mOptions.dataPath);
                 else
-                    UpdaterWindow::unloadMods(mOldUpdates);
+                    UpdaterWindow::unloadMods(settings.oldUpdates);
                 if (!mOptions.skipUpdate)
-                    UpdaterWindow::unloadMods(mOldUpdates + "/fix/");
+                    UpdaterWindow::unloadMods(settings.oldUpdates + "/fix/");
             }
 
             mOldState = mState;
@@ -1192,6 +1188,7 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_CHOOSE_SERVER")
                     logger->log1("State: CHOOSE SERVER");
                     mCurrentServer.supportUrl.clear();
+                    settings.supportUrl.clear();
                     ResourceManager *const resman
                         = ResourceManager::getInstance();
                     if (mOptions.dataPath.empty())
@@ -1202,20 +1199,20 @@ int Client::gameExec()
                             "zip");
                     }
 
-                    if (!mOldUpdates.empty())
+                    if (!settings.oldUpdates.empty())
                     {
-                        UpdaterWindow::unloadUpdates(mOldUpdates);
-                        mOldUpdates.clear();
+                        UpdaterWindow::unloadUpdates(settings.oldUpdates);
+                        settings.oldUpdates.clear();
                     }
 
                     if (!mOptions.skipUpdate)
                     {
                         resman->searchAndRemoveArchives(
-                            mUpdatesDir + "/local/",
+                            settings.updatesDir + "/local/",
                             "zip");
 
-                        resman->removeFromSearchPath(mLocalDataDir
-                            + dirSeparator + mUpdatesDir + "/local/");
+                        resman->removeFromSearchPath(settings.localDataDir
+                            + dirSeparator + settings.updatesDir + "/local/");
                     }
 
                     resman->clearCache();
@@ -1234,7 +1231,7 @@ int Client::gameExec()
                         theme->setMinimumOpacity(0.8F);
 
                         mCurrentDialog = new ServerDialog(&mCurrentServer,
-                                                          mConfigDir);
+                            settings.configDir);
                         mCurrentDialog->postInit();
                     }
                     else
@@ -1356,33 +1353,33 @@ int Client::gameExec()
                     logger->log1("State: UPDATE");
                     // Determine which source to use for the update host
                     if (!mOptions.updateHost.empty())
-                        mUpdateHost = mOptions.updateHost;
+                        settings.updateHost = mOptions.updateHost;
                     else
-                        mUpdateHost = loginData.updateHost;
+                        settings.updateHost = loginData.updateHost;
                     initUpdatesDir();
 
-                    if (!mOldUpdates.empty())
-                        UpdaterWindow::unloadUpdates(mOldUpdates);
+                    if (!settings.oldUpdates.empty())
+                        UpdaterWindow::unloadUpdates(settings.oldUpdates);
 
                     if (mOptions.skipUpdate)
                     {
                         mState = STATE_LOAD_DATA;
-                        mOldUpdates = "";
+                        settings.oldUpdates.clear();
                         UpdaterWindow::loadDirMods(mOptions.dataPath);
                     }
                     else if (loginData.updateType & UpdateType::Skip)
                     {
-                        mOldUpdates = mLocalDataDir
-                            + dirSeparator + mUpdatesDir;
-                        UpdaterWindow::loadLocalUpdates(mOldUpdates);
+                        settings.oldUpdates = settings.localDataDir
+                            + dirSeparator + settings.updatesDir;
+                        UpdaterWindow::loadLocalUpdates(settings.oldUpdates);
                         mState = STATE_LOAD_DATA;
                     }
                     else
                     {
-                        mOldUpdates = mLocalDataDir
-                            + dirSeparator + mUpdatesDir;
-                        mCurrentDialog = new UpdaterWindow(mUpdateHost,
-                            mOldUpdates,
+                        settings.oldUpdates = settings.localDataDir
+                            + dirSeparator + settings.updatesDir;
+                        mCurrentDialog = new UpdaterWindow(settings.updateHost,
+                            settings.oldUpdates,
                             mOptions.dataPath.empty(),
                             loginData.updateType);
                         mCurrentDialog->postInit();
@@ -1412,12 +1409,13 @@ int Client::gameExec()
                     if (!mOptions.skipUpdate)
                     {
                         resman->searchAndAddArchives(
-                            mUpdatesDir + "/local/",
+                            settings.updatesDir + "/local/",
                             "zip",
                             false);
 
-                        resman->addToSearchPath(mLocalDataDir + dirSeparator
-                            + mUpdatesDir + "/local/", false);
+                        resman->addToSearchPath(settings.localDataDir
+                            + dirSeparator + settings.updatesDir + "/local/",
+                            false);
                     }
 
                     logger->log("Init paths");
@@ -1550,7 +1548,7 @@ int Client::gameExec()
                     theme->setMinimumOpacity(-1.0F);
 
                     if (chatLogger)
-                        chatLogger->setServerName(mServerName);
+                        chatLogger->setServerName(settings.serverName);
 
 #ifdef ANDROID
                     delete2(mCloseButton);
@@ -1706,7 +1704,7 @@ int Client::gameExec()
                     Net::getLoginHandler()->disconnect();
                     Net::getGameHandler()->disconnect();
                     Net::getGameHandler()->clear();
-                    mServerName.clear();
+                    settings.serverName.clear();
                     serverConfig.write();
                     serverConfig.unload();
                     if (setupWindow)
@@ -1949,99 +1947,99 @@ void Client::initHomeDir()
 
 void Client::initLocalDataDir()
 {
-    mLocalDataDir = mOptions.localDataDir;
+    settings.localDataDir = mOptions.localDataDir;
 
-    if (mLocalDataDir.empty())
+    if (settings.localDataDir.empty())
     {
 #ifdef __APPLE__
         // Use Application Directory instead of .mana
-        mLocalDataDir = std::string(PhysFs::getUserDir()) +
+        settings.localDataDir = std::string(PhysFs::getUserDir()) +
             "/Library/Application Support/" +
             branding.getValue("appName", "ManaPlus");
 #elif defined __HAIKU__
-        mLocalDataDir = std::string(PhysFs::getUserDir()) +
+        settings.localDataDir = std::string(PhysFs::getUserDir()) +
            "/config/data/Mana";
 #elif defined WIN32
-        mLocalDataDir = getSpecialFolderLocation(CSIDL_LOCAL_APPDATA);
-        if (mLocalDataDir.empty())
-            mLocalDataDir = std::string(PhysFs::getUserDir());
-        mLocalDataDir.append("/Mana");
+        settings.localDataDir = getSpecialFolderLocation(CSIDL_LOCAL_APPDATA);
+        if (settings.localDataDir.empty())
+            settings.localDataDir = std::string(PhysFs::getUserDir());
+        settings.localDataDir.append("/Mana");
 #elif defined __ANDROID__
-        mLocalDataDir = getSdStoragePath() + branding.getValue(
+        settings.localDataDir = getSdStoragePath() + branding.getValue(
             "appShort", "ManaPlus") + "/local";
 #elif defined __native_client__
-        mLocalDataDir = _nacl_dir.append("/local");
+        settings.localDataDir = _nacl_dir.append("/local");
 #else
-        mLocalDataDir = std::string(PhysFs::getUserDir()) +
+        settings.localDataDir = std::string(PhysFs::getUserDir()) +
             ".local/share/mana";
 #endif
     }
 
-    if (mkdir_r(mLocalDataDir.c_str()))
+    if (mkdir_r(settings.localDataDir.c_str()))
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
-            "Exiting."), mLocalDataDir.c_str()));
+            "Exiting."), settings.localDataDir.c_str()));
     }
 #ifdef USE_PROFILER
-    Perfomance::init(mLocalDataDir + "/profiler.log");
+    Perfomance::init(settings.localDataDir + "/profiler.log");
 #endif
 }
 
 void Client::initTempDir()
 {
-    mTempDir = mLocalDataDir + dirSeparator + "temp";
+    settings.tempDir = settings.localDataDir + dirSeparator + "temp";
 
-    if (mkdir_r(mTempDir.c_str()))
+    if (mkdir_r(settings.tempDir.c_str()))
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
-            "Exiting."), mTempDir.c_str()));
+            "Exiting."), settings.tempDir.c_str()));
     }
-//    ResourceManager::deleteFilesInDirectory(mTempDir);
+//    ResourceManager::deleteFilesInDirectory(settings.tempDir);
 }
 
 void Client::initConfigDir()
 {
-    mConfigDir = mOptions.configDir;
+    settings.configDir = mOptions.configDir;
 
-    if (mConfigDir.empty())
+    if (settings.configDir.empty())
     {
 #ifdef __APPLE__
-        mConfigDir = mLocalDataDir + dirSeparator
+        settings.configDir = settings.localDataDir + dirSeparator
             + branding.getValue("appShort", "mana");
 #elif defined __HAIKU__
-        mConfigDir = std::string(PhysFs::getUserDir()) +
+        settings.configDir = std::string(PhysFs::getUserDir()) +
            "/config/settings/Mana" +
            branding.getValue("appName", "ManaPlus");
 #elif defined WIN32
-        mConfigDir = getSpecialFolderLocation(CSIDL_APPDATA);
-        if (mConfigDir.empty())
+        settings.configDir = getSpecialFolderLocation(CSIDL_APPDATA);
+        if (settings.configDir.empty())
         {
-            mConfigDir = mLocalDataDir;
+            settings.configDir = settings.localDataDir;
         }
         else
         {
-            mConfigDir.append("/mana/").append(branding.getValue(
+            settings.configDir.append("/mana/").append(branding.getValue(
                 "appShort", "mana"));
         }
 #elif defined __ANDROID__
-        mConfigDir = getSdStoragePath() + branding.getValue(
+        settings.configDir = getSdStoragePath() + branding.getValue(
             "appShort", "ManaPlus").append("/config");
 #elif defined __native_client__
-        mConfigDir = _nacl_dir.append("/config");
+        settings.configDir = _nacl_dir.append("/config");
 #else
-        mConfigDir = std::string(PhysFs::getUserDir()).append(
+        settings.configDir = std::string(PhysFs::getUserDir()).append(
             "/.config/mana/").append(branding.getValue("appShort", "mana"));
 #endif
-        logger->log("Generating config dir: " + mConfigDir);
+        logger->log("Generating config dir: " + settings.configDir);
     }
 
-    if (mkdir_r(mConfigDir.c_str()))
+    if (mkdir_r(settings.configDir.c_str()))
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
-                                  "Exiting."), mConfigDir.c_str()));
+            "Exiting."), settings.configDir.c_str()));
     }
 }
 
@@ -2051,15 +2049,15 @@ void Client::initConfigDir()
  */
 void Client::initServerConfig(const std::string &serverName)
 {
-    mServerConfigDir = mConfigDir + dirSeparator + serverName;
+    settings.serverConfigDir = settings.configDir + dirSeparator + serverName;
 
-    if (mkdir_r(mServerConfigDir.c_str()))
+    if (mkdir_r(settings.serverConfigDir.c_str()))
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
-                                  "Exiting."), mServerConfigDir.c_str()));
+            "Exiting."), settings.serverConfigDir.c_str()));
     }
-    const std::string configPath = mServerConfigDir + "/config.xml";
+    const std::string configPath = settings.serverConfigDir + "/config.xml";
     FILE *configFile = fopen(configPath.c_str(), "r");
     if (!configFile)
     {
@@ -2136,9 +2134,9 @@ void Client::initConfiguration() const
     std::string configPath;
 
     if (mOptions.test.empty())
-        configPath = mConfigDir + "/config.xml";
+        configPath = settings.configDir + "/config.xml";
     else
-        configPath = mConfigDir + "/test.xml";
+        configPath = settings.configDir + "/test.xml";
 
     FILE *configFile = fopen(configPath.c_str(), "r");
     if (!configFile)
@@ -2162,7 +2160,7 @@ void Client::initConfiguration() const
 
 void Client::backupConfig() const
 {
-    const std::string confName = mConfigDir + "/config.xml.bak";
+    const std::string confName = settings.configDir + "/config.xml.bak";
     const int maxFileIndex = 5;
     ::remove((confName + toString(maxFileIndex)).c_str());
     for (int f = maxFileIndex; f > 1; f --)
@@ -2171,7 +2169,7 @@ void Client::backupConfig() const
         const std::string fileName2 = confName + toString(f);
         Files::renameFile(fileName1, fileName2);
     }
-    const std::string fileName3 = mConfigDir + "/config.xml";
+    const std::string fileName3 = settings.configDir + "/config.xml";
     const std::string fileName4 = confName + toString(1);
     Files::copyFile(fileName3, fileName4);
 }
@@ -2185,51 +2183,53 @@ void Client::initUpdatesDir()
     std::stringstream updates;
 
     // If updatesHost is currently empty, fill it from config file
-    if (mUpdateHost.empty())
-        mUpdateHost = config.getStringValue("updatehost");
-    if (!checkPath(mUpdateHost))
+    if (settings.updateHost.empty())
+        settings.updateHost = config.getStringValue("updatehost");
+    if (!checkPath(settings.updateHost))
         return;
 
     // Don't go out of range int he next check
-    if (mUpdateHost.length() < 2)
+    if (settings.updateHost.length() < 2)
         return;
 
-    const size_t sz = mUpdateHost.size();
+    const size_t sz = settings.updateHost.size();
     // Remove any trailing slash at the end of the update host
-    if (mUpdateHost.at(sz - 1) == '/')
-        mUpdateHost.resize(sz - 1);
+    if (settings.updateHost.at(sz - 1) == '/')
+        settings.updateHost.resize(sz - 1);
 
     // Parse out any "http://" or "https://", and set the updates directory
-    const size_t pos = mUpdateHost.find("://");
-    if (pos != mUpdateHost.npos)
+    const size_t pos = settings.updateHost.find("://");
+    if (pos != settings.updateHost.npos)
     {
-        if (pos + 3 < mUpdateHost.length() && !mUpdateHost.empty())
+        if (pos + 3 < settings.updateHost.length()
+            && !settings.updateHost.empty())
         {
-            updates << "updates/" << mUpdateHost.substr(pos + 3);
-            mUpdatesDir = updates.str();
+            updates << "updates/" << settings.updateHost.substr(pos + 3);
+            settings.updatesDir = updates.str();
         }
         else
         {
-            logger->log("Error: Invalid update host: %s", mUpdateHost.c_str());
+            logger->log("Error: Invalid update host: %s",
+                settings.updateHost.c_str());
             // TRANSLATORS: update server initialisation error
             errorMessage = strprintf(_("Invalid update host: %s."),
-                                     mUpdateHost.c_str());
+                settings.updateHost.c_str());
             mState = STATE_ERROR;
         }
     }
     else
     {
         logger->log1("Warning: no protocol was specified for the update host");
-        updates << "updates/" << mUpdateHost;
-        mUpdatesDir = updates.str();
+        updates << "updates/" << settings.updateHost;
+        settings.updatesDir = updates.str();
     }
 
 #ifdef WIN32
-    if (mUpdatesDir.find(":") != std::string::npos)
-        replaceAll(mUpdatesDir, ":", "_");
+    if (settings.updatesDir.find(":") != std::string::npos)
+        replaceAll(settings.updatesDir, ":", "_");
 #endif
 
-    const std::string updateDir("/" + mUpdatesDir);
+    const std::string updateDir("/" + settings.updatesDir);
 
     // Verify that the updates directory exists. Create if necessary.
     if (!PhysFs::isDirectory(updateDir.c_str()))
@@ -2237,7 +2237,8 @@ void Client::initUpdatesDir()
         if (!PhysFs::mkdir(updateDir.c_str()))
         {
 #if defined WIN32
-            std::string newDir = mLocalDataDir + "\\" + mUpdatesDir;
+            std::string newDir = settings.localDataDir
+                + "\\" + settings.updatesDir;
             size_t loc = newDir.find("/", 0);
 
             while (loc != std::string::npos)
@@ -2257,7 +2258,7 @@ void Client::initUpdatesDir()
             }
 #else
             logger->log("Error: %s/%s can't be made, but doesn't exist!",
-                        mLocalDataDir.c_str(), mUpdatesDir.c_str());
+                settings.localDataDir.c_str(), settings.updatesDir.c_str());
             // TRANSLATORS: update server initialisation error
             errorMessage = _("Error creating updates directory!");
             mState = STATE_ERROR;
@@ -2276,33 +2277,34 @@ void Client::initScreenshotDir()
 {
     if (!mOptions.screenshotDir.empty())
     {
-        mScreenshotDir = mOptions.screenshotDir;
-        if (mkdir_r(mScreenshotDir.c_str()))
+        settings.screenshotDir = mOptions.screenshotDir;
+        if (mkdir_r(settings.screenshotDir.c_str()))
         {
             // TRANSLATORS: directory creation error
             logger->log(strprintf(
                 _("Error: %s doesn't exist and can't be created! "
-                "Exiting."), mScreenshotDir.c_str()));
+                "Exiting."), settings.screenshotDir.c_str()));
         }
     }
-    else if (mScreenshotDir.empty())
+    else if (settings.screenshotDir.empty())
     {
-        mScreenshotDir = decodeBase64String(
+        settings.screenshotDir = decodeBase64String(
             config.getStringValue("screenshotDirectory3"));
-        if (mScreenshotDir.empty())
+        if (settings.screenshotDir.empty())
         {
 #ifdef __ANDROID__
-            mScreenshotDir = getSdStoragePath() + std::string("/images");
+            settings.screenshotDir = getSdStoragePath()
+                + std::string("/images");
 
-            if (mkdir_r(mScreenshotDir.c_str()))
+            if (mkdir_r(settings.screenshotDir.c_str()))
             {
                 // TRANSLATORS: directory creation error
                 logger->log(strprintf(
                     _("Error: %s doesn't exist and can't be created! "
-                    "Exiting."), mScreenshotDir.c_str()));
+                    "Exiting."), settings.screenshotDir.c_str()));
             }
 #else
-            mScreenshotDir = getPicturesDir();
+            settings.screenshotDir = getPicturesDir();
 #endif
             if (config.getBoolValue("useScreenshotDirectorySuffix"))
             {
@@ -2311,15 +2313,15 @@ void Client::initScreenshotDir()
 
                 if (!configScreenshotSuffix.empty())
                 {
-                    mScreenshotDir.append(dirSeparator).append(
+                    settings.screenshotDir.append(dirSeparator).append(
                         configScreenshotSuffix);
                 }
             }
             config.setValue("screenshotDirectory3",
-                encodeBase64String(mScreenshotDir));
+                encodeBase64String(settings.screenshotDir));
         }
     }
-    logger->log("screenshotDirectory: " + mScreenshotDir);
+    logger->log("screenshotDirectory: " + settings.screenshotDir);
 }
 
 #ifndef ANDROID
@@ -2446,7 +2448,7 @@ void Client::storeSafeParameters() const
 void Client::initTradeFilter() const
 {
     const std::string tradeListName =
-        getServerConfigDirectory() + "/tradefilter.txt";
+        settings.serverConfigDir + "/tradefilter.txt";
 
     std::ofstream tradeFile;
     struct stat statbuf;
@@ -2478,20 +2480,20 @@ void Client::initTradeFilter() const
 
 void Client::initUsersDir()
 {
-    mUsersDir = getServerConfigDirectory() + "/users/";
-    if (mkdir_r(mUsersDir.c_str()))
+    settings.usersDir = settings.serverConfigDir + "/users/";
+    if (mkdir_r(settings.usersDir.c_str()))
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
-            "Exiting."), mUsersDir.c_str()));
+            "Exiting."), settings.usersDir.c_str()));
     }
 
-    mNpcsDir = getServerConfigDirectory() + "/npcs/";
-    if (mkdir_r(mNpcsDir.c_str()))
+    settings.npcsDir = settings.serverConfigDir + "/npcs/";
+    if (mkdir_r(settings.npcsDir.c_str()))
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
-            "Exiting."), mNpcsDir.c_str()));
+            "Exiting."), settings.npcsDir.c_str()));
     }
 }
 
@@ -2573,9 +2575,9 @@ void Client::initPacketLimiter()
     mPacketLimits[PACKET_WHISPER].cntLimit = 1;
     mPacketLimits[PACKET_WHISPER].cnt = 0;
 
-    if (!mServerConfigDir.empty())
+    if (!settings.serverConfigDir.empty())
     {
-        const std::string packetLimitsName = getServerConfigDirectory()
+        const std::string packetLimitsName = settings.serverConfigDir
             + "/packetlimiter.txt";
 
         std::ifstream inPacketFile;
@@ -2740,7 +2742,7 @@ int Client::getFramerate() const
 
 bool Client::isTmw() const
 {
-    const std::string &name = getServerName();
+    const std::string &name = settings.serverName;
     if (name == "server.themanaworld.org"
         || name == "themanaworld.org"
         || name == "192.31.187.185")
@@ -2947,7 +2949,7 @@ Window *Client::openErrorDialog(const std::string &header,
                                 const std::string &message,
                                 const bool modal)
 {
-    if (getSupportUrl().empty() || config.getBoolValue("hidesupport"))
+    if (settings.supportUrl.empty() || config.getBoolValue("hidesupport"))
     {
         return new OkDialog(header, message, DialogType::ERROR, modal);
     }

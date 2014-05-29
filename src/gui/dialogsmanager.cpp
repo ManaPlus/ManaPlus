@@ -22,7 +22,7 @@
 
 #include "gui/dialogsmanager.h"
 
-#include "client.h"
+#include "settings.h"
 
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/buydialog.h"
@@ -56,8 +56,8 @@ void DialogsManager::closeDialogs()
 
 void DialogsManager::createUpdaterWindow()
 {
-    updaterWindow = new UpdaterWindow(client->getUpdateHost(),
-        client->getOldUpdates(),
+    updaterWindow = new UpdaterWindow(settings.updateHost,
+        settings.oldUpdates,
         false,
         0);
     updaterWindow->postInit();

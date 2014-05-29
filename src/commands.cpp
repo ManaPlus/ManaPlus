@@ -31,6 +31,7 @@
 #include "guildmanager.h"
 #include "main.h"
 #include "party.h"
+#include "settings.h"
 
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
@@ -869,13 +870,13 @@ impHandler0(dirs)
         return;
 
     debugChatTab->chatLog("config directory: "
-        + client->getConfigDirectory());
+        + settings.configDir);
     debugChatTab->chatLog("logs directory: "
-        + client->getLocalDataDirectory());
+        + settings.localDataDir);
     debugChatTab->chatLog("screenshots directory: "
-        + client->getScreenshotDirectory());
+        + settings.screenshotDir);
     debugChatTab->chatLog("temp directory: "
-        + client->getTempDirectory());
+        + settings.tempDir);
 }
 
 impHandler2(info)
@@ -1371,7 +1372,7 @@ impHandler2(uploadServerConfig)
 impHandler2(uploadLog)
 {
     uploadFile(_("Uploaded log into:"),
-        client->getLogFileName(),
+        settings.logFileName,
         "?txt",
         tab);
 }

@@ -27,6 +27,7 @@
 #include "render/graphics.h"
 #include "notifications.h"
 #include "notifymanager.h"
+#include "settings.h"
 
 #include "resources/map/mapheights.h"
 #include "resources/map/maplayer.h"
@@ -1109,7 +1110,7 @@ void Map::saveExtraLayer() const
 
 std::string Map::getUserMapDirectory() const
 {
-    return client->getServerConfigDirectory() +
+    return settings.serverConfigDir +
         dirSeparator + getProperty("_realfilename");
 }
 

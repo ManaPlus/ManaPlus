@@ -25,6 +25,7 @@
 #include "client.h"
 #include "logger.h"
 #include "main.h"
+#include "settings.h"
 
 #include "utils/files.h"
 #include "utils/sdlhelper.h"
@@ -91,7 +92,7 @@ Download::Download(void *const ptr,
     mOptions.checkAdler = true;
     if (!mUpload)
     {
-        const std::string serverName = client->getServerName();
+        const std::string serverName = settings.serverName;
         if (!serverName.empty())
         {
             if (mUrl.find("?") == std::string::npos)

@@ -26,6 +26,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "main.h"
+#include "settings.h"
 
 #include "events/keyevent.h"
 
@@ -237,6 +238,10 @@ void ServerDialog::connectToSelectedServer()
     mServerInfo->save = true;
     mServerInfo->persistentIp = server.persistentIp;
     mServerInfo->updateMirrors = server.updateMirrors;
+
+    settings.persistentIp = mServerInfo->persistentIp;
+    settings.supportUrl = mServerInfo->supportUrl;
+    settings.updateMirrors = mServerInfo->updateMirrors;
 
     if (chatLogger)
         chatLogger->setServerName(mServerInfo->hostname);

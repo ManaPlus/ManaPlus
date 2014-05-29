@@ -25,6 +25,7 @@
 #include "client.h"
 #include "graphicsmanager.h"
 #include "graphicsvertexes.h"
+#include "settings.h"
 #include "soundmanager.h"
 
 #include "render/sdlgraphics.h"
@@ -58,8 +59,8 @@ TestLauncher::TestLauncher(std::string test) :
     mTest(test),
     file()
 {
-    file.open((client->getLocalDataDirectory()
-        + std::string("/test.log")).c_str(), std::ios::out);
+    file.open((settings.localDataDir + std::string("/test.log")).c_str(),
+        std::ios::out);
 }
 
 TestLauncher::~TestLauncher()
@@ -340,9 +341,9 @@ int TestLauncher::testDye()
                 SurfaceImageHelper::combineSurface(image->mSDLSurface, nullptr,
                     surface, nullptr);
                 ImageWriter::writePNG(image->mSDLSurface,
-                    client->getTempDirectory() + "/testimage1.png");
+                    settings.tempDir + "/testimage1.png");
                 ImageWriter::writePNG(surface,
-                    client->getTempDirectory() + "/testimage2.png");
+                    settings.tempDir + "/testimage2.png");
             }
 
             rw = MPHYSFSRWOPS_openRead(
@@ -358,9 +359,9 @@ int TestLauncher::testDye()
                     SurfaceImageHelper::combineSurface(image->mSDLSurface,
                         nullptr, surface, nullptr);
                     ImageWriter::writePNG(image->mSDLSurface,
-                        client->getTempDirectory() + "/testimage3.png");
+                        settings.tempDir + "/testimage3.png");
                     ImageWriter::writePNG(surface,
-                        client->getTempDirectory() + "/testimage4.png");
+                        settings.tempDir + "/testimage4.png");
                 }
             }
         }

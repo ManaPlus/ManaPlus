@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2013-2014  The ManaPlus Developers
+ *  Copyright (C) 2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,43 +18,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/fuzzer.h"
-
-#ifdef USE_FUZZER
-
-#include "client.h"
-#include "logger.h"
 #include "settings.h"
 
-#include "utils/stringutils.h"
+#include "configuration.h"
 
 #include "debug.h"
 
-namespace
-{
-    Logger *fuzz = nullptr;
-    int fuzzRand = 50;
-}  // namespace
-
-void Fuzzer::init()
-{
-    fuzz = new Logger;
-    fuzz->setLogFile(settings.localDataDir + "/fuzzer.log");
-    unsigned int sr = time(nullptr);
-
-    fuzz->log("Srand: %u", sr);
-    srand(sr);
-}
-
-bool Fuzzer::conditionTerminate(const char *const name)
-{
-    if ((rand() % 100) <= fuzzRand)
-    {
-        fuzz->log("deleted: %s", name);
-        return true;
-    }
-    fuzz->log("passed: %s", name);
-    return false;
-}
-
-#endif
+Settings settings;

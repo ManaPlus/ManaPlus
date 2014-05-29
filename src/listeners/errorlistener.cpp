@@ -23,6 +23,7 @@
 #include "listeners/errorlistener.h"
 
 #include "client.h"
+#include "settings.h"
 
 #include "utils/process.h"
 
@@ -33,6 +34,6 @@ ErrorListener errorListener;
 void ErrorListener::action(const ActionEvent &event)
 {
     if (event.getId() == "yes")
-        openBrowser(client->getSupportUrl());
+        openBrowser(settings.supportUrl);
     client->setState(STATE_CHOOSE_SERVER);
 }

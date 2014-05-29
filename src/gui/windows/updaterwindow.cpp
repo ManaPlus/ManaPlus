@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "settings.h"
 
 #include "events/keyevent.h"
 
@@ -583,7 +584,7 @@ void UpdaterWindow::download()
         }
         else
         {
-            const std::vector<std::string> &mirrors = client->getMirrors();
+            const std::vector<std::string> &mirrors = settings.updateMirrors;
             FOR_EACH (std::vector<std::string>::const_iterator, it, mirrors)
             {
                 mDownload->addMirror(std::string(*it).append(

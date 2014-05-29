@@ -25,6 +25,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "logger.h"
+#include "settings.h"
 
 #include "gui/windows/logindialog.h"
 
@@ -85,7 +86,7 @@ void LoginHandler::chooseServer(const unsigned int server,
     if (charServer)
     {
         if (config.getBoolValue("usePersistentIP") || persistentIp)
-            charServer->hostname = client->getServerName();
+            charServer->hostname = settings.serverName;
         else
             charServer->hostname = ipToString(mWorlds[server]->address);
         charServer->port = mWorlds[server]->port;

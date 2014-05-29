@@ -24,6 +24,7 @@
 #ifdef USE_OPENGL
 
 #include "client.h"
+#include "settings.h"
 
 #include "utils/delete2.h"
 #include "utils/paths.h"
@@ -41,8 +42,7 @@ TestMain::TestMain() :
     mConfig()
 {
     fileName = getSelfName();
-    log->setLogFile(client->getLocalDataDirectory()
-        + std::string("/manaplustest.log"));
+    log->setLogFile(settings.localDataDir + std::string("/manaplustest.log"));
 }
 
 TestMain::~TestMain()
@@ -52,7 +52,7 @@ TestMain::~TestMain()
 
 void TestMain::initConfig()
 {
-    mConfig.init(client->getConfigDirectory() + "/test.xml");
+    mConfig.init(settings.configDir + "/test.xml");
 //    mConfig.setDefaultValues(getConfigDefaults());
 
     mConfig.setValue("hwaccel", false);
@@ -246,7 +246,7 @@ void TestMain::writeConfig(const RenderType openGLMode,
                            const int textureSize,
                            const int detectMode)
 {
-    mConfig.init(client->getConfigDirectory() + "/config.xml");
+    mConfig.init(settings.configDir + "/config.xml");
 
     log->log("set mode to %d", static_cast<int>(openGLMode));
 
@@ -290,8 +290,8 @@ int TestMain::readValue(const int ver, int def)
     std::string tmp;
     int var;
     std::ifstream file;
-    file.open((client->getLocalDataDirectory()
-        + std::string("/test.log")).c_str(), std::ios::in);
+    file.open((settings.localDataDir + std::string("/test.log")).c_str(),
+        std::ios::in);
     if (!getline(file, tmp))
     {
         file.close();

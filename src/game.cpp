@@ -36,6 +36,7 @@
 #include "guildmanager.h"
 #include "itemshortcut.h"
 #include "soundmanager.h"
+#include "settings.h"
 #include "spellshortcut.h"
 #include "touchmanager.h"
 
@@ -494,7 +495,7 @@ void Game::addWatermark()
         return;
     mainGraphics->setColorAll(theme->getColor(Theme::TEXT, 255),
         theme->getColor(Theme::TEXT_OUTLINE, 255));
-    boldFont->drawString(mainGraphics, client->getServerName(), 100, 50);
+    boldFont->drawString(mainGraphics, settings.serverName, 100, 50);
 }
 
 bool Game::createScreenshot()
@@ -527,7 +528,7 @@ bool Game::createScreenshot()
 
 bool Game::saveScreenshot(SDL_Surface *const screenshot)
 {
-    std::string screenshotDirectory = client->getScreenshotDirectory();
+    std::string screenshotDirectory = settings.screenshotDir;
     if (mkdir_r(screenshotDirectory.c_str()) != 0)
     {
         logger->log("Directory %s doesn't exist and can't be created! "
@@ -548,7 +549,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
     struct tm *const timeinfo = localtime(&rawtime);
     strftime(buffer, 99, "%Y-%m-%d_%H-%M-%S", timeinfo);
 
-    const std::string serverName = client->getServerName();
+    const std::string serverName = settings.serverName;
     std::string screenShortStr;
     if (serverName.empty())
     {

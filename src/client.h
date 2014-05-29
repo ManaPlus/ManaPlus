@@ -170,27 +170,6 @@ public:
     State getState() const A_WARN_UNUSED
     { return mState; }
 
-    const std::string &getConfigDirectory() const A_WARN_UNUSED
-    { return mConfigDir; }
-
-    const std::string &getLocalDataDirectory() const A_WARN_UNUSED
-    { return mLocalDataDir; }
-
-    const std::string &getTempDirectory() const A_WARN_UNUSED
-    { return mTempDir; }
-
-    const std::string &getScreenshotDirectory() const A_WARN_UNUSED
-    { return mScreenshotDir; }
-
-    const std::string getServerConfigDirectory() const A_WARN_UNUSED
-    { return mServerConfigDir; }
-
-    const std::string getUsersDirectory() const A_WARN_UNUSED
-    { return mUsersDir; }
-
-    const std::string getNpcsDirectory() const A_WARN_UNUSED
-    { return mNpcsDir; }
-
     bool getIsMinimized() const A_WARN_UNUSED
     { return mIsMinimized; }
 
@@ -210,35 +189,8 @@ public:
     void setMouseFocused(const bool n)
     { mMouseFocused = n; }
 
-    std::string getUpdatesDir() const A_WARN_UNUSED
-    { return mUpdatesDir; }
-
-    std::string getServerName() const A_WARN_UNUSED
-    { return mServerName; }
-
-    std::string getOnlineUrl() const A_WARN_UNUSED
-    { return mOnlineListUrl; }
-
-    std::string getSupportUrl() const A_WARN_UNUSED
-    { return mCurrentServer.supportUrl; }
-
-    bool getPersistentIp() const A_WARN_UNUSED
-    { return mCurrentServer.persistentIp; }
-
-    std::string getLogFileName() const A_WARN_UNUSED
-    { return mLogFileName; }
-
-    std::string getUpdateHost() const A_WARN_UNUSED
-    { return mUpdateHost; }
-
-    std::string getOldUpdates() const A_WARN_UNUSED
-    { return mOldUpdates; }
-
     const Options &getOptions() const A_WARN_UNUSED
     { return mOptions; }
-
-    const std::vector<std::string> &getMirrors() const A_WARN_UNUSED
-    { return mCurrentServer.updateMirrors; }
 
     bool isKeyboardVisible() const;
 
@@ -368,18 +320,7 @@ private:
 
     Options mOptions;
 
-    std::string mConfigDir;
-    std::string mServerConfigDir;
-    std::string mLocalDataDir;
-    std::string mTempDir;
-    std::string mUpdateHost;
-    std::string mUpdatesDir;
-    std::string mScreenshotDir;
-    std::string mUsersDir;
-    std::string mNpcsDir;
     std::string mRootDir;
-    std::string mServerName;
-    std::string mOnlineListUrl;
     std::string mLogFileName;
 
     ServerInfo mCurrentServer;
@@ -404,7 +345,6 @@ private:
     SDL_Surface *mIcon;
 
     std::string mCaption;
-    std::string mOldUpdates;
     FPSmanager mFpsManager;
     Skin *mSkin;
     float mGuiAlpha;

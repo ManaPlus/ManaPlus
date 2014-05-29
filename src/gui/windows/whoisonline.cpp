@@ -27,6 +27,7 @@
 #include "configuration.h"
 #include "guild.h"
 #include "party.h"
+#include "settings.h"
 
 #include "gui/onlineplayer.h"
 #include "gui/viewport.h"
@@ -492,7 +493,7 @@ int WhoIsOnline::downloadThread(void *ptr)
     int attempts = 0;
     WhoIsOnline *const wio = reinterpret_cast<WhoIsOnline *>(ptr);
     CURLcode res;
-    const std::string url(client->getOnlineUrl() + "/online.txt");
+    const std::string url(settings.onlineListUrl + "/online.txt");
 
     while (attempts < 1 && !wio->mDownloadComplete)
     {

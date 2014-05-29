@@ -48,6 +48,7 @@
 #include "configuration.h"
 #include "inventory.h"
 #include "item.h"
+#include "settings.h"
 #include "shopitem.h"
 #include "soundmanager.h"
 
@@ -371,7 +372,7 @@ void ShopWindow::loadList()
     mBuyShopItems->clear();
     mSellShopItems->clear();
 
-    const std::string shopListName = client->getServerConfigDirectory()
+    const std::string shopListName = settings.serverConfigDir
         + "/shoplist.txt";
 
     if (!stat(shopListName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
@@ -421,7 +422,7 @@ void ShopWindow::saveList() const
         return;
 
     std::ofstream shopFile;
-    const std::string shopListName = client->getServerConfigDirectory()
+    const std::string shopListName = settings.serverConfigDir
         + "/shoplist.txt";
     std::map<int, ShopItem*> mapItems;
 
