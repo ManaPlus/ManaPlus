@@ -95,62 +95,7 @@ class Client final : public ConfigListener,
                      public ActionListener
 {
 public:
-    /**
-     * A structure holding the values of various options that can be passed
-     * from the command line.
-     */
-    struct Options
-    {
-        Options() :
-            username(),
-            password(),
-            character(),
-            brandingPath(),
-            updateHost(),
-            dataPath(),
-            homeDir(),
-            logFileName(),
-            chatLogDir(),
-            configDir(),
-            localDataDir(),
-            screenshotDir(),
-            test(),
-            serverName(),
-            serverPort(0),
-            printHelp(false),
-            printVersion(false),
-            skipUpdate(false),
-            chooseDefault(false),
-            noOpenGL(false),
-            safeMode(false),
-            testMode(false)
-        {}
-
-        std::string username;
-        std::string password;
-        std::string character;
-        std::string brandingPath;
-        std::string updateHost;
-        std::string dataPath;
-        std::string homeDir;
-        std::string logFileName;
-        std::string chatLogDir;
-        std::string configDir;
-        std::string localDataDir;
-        std::string screenshotDir;
-        std::string test;
-        std::string serverName;
-        uint16_t serverPort;
-        bool printHelp;
-        bool printVersion;
-        bool skipUpdate;
-        bool chooseDefault;
-        bool noOpenGL;
-        bool safeMode;
-        bool testMode;
-    };
-
-    explicit Client(const Options &options);
+    explicit Client();
 
     A_DELETE_COPY(Client)
 
@@ -188,9 +133,6 @@ public:
 
     void setMouseFocused(const bool n)
     { mMouseFocused = n; }
-
-    const Options &getOptions() const A_WARN_UNUSED
-    { return mOptions; }
 
     bool isKeyboardVisible() const;
 
@@ -313,8 +255,6 @@ private:
     static void extractAssets();
 #endif
 #endif
-
-    Options mOptions;
 
     std::string mRootDir;
     std::string mLogFileName;

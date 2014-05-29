@@ -843,6 +843,7 @@ SET(SRCS
     notifications.h
     notifymanager.cpp
     notifymanager.h
+    options.h
     render/graphicsdef.hpp
     render/graphics_calcImageRect.hpp
     render/graphics_drawImageRect.hpp

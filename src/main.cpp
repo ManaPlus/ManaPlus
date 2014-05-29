@@ -24,10 +24,7 @@
 #include "main.h"
 
 #include "client.h"
-
-#include <getopt.h>
-#include <iostream>
-#include <unistd.h>
+#include "settings.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -48,6 +45,10 @@
 #ifdef __MINGW32__
 #include <windows.h>
 #endif
+
+#include <getopt.h>
+#include <iostream>
+#include <unistd.h>
 
 #include <SDL_image.h>
 #include <SDL_mixer.h>
@@ -141,8 +142,7 @@ static void printVersion()
     std::cout << strprintf("ManaPlus client %s", FULL_VERSION) << std::endl;
 }
 
-static void parseOptions(const int argc, char *const argv[],
-                         Client::Options &options)
+static void parseOptions(const int argc, char *const argv[])
 {
     const char *const optstring = "hvud:U:P:Dc:p:l:L:C:s:t:T:a";
 
@@ -170,6 +170,8 @@ static void parseOptions(const int argc, char *const argv[],
         { "test",           required_argument, nullptr, 't' },
         { nullptr,          0,                 nullptr, 0 }
     };
+
+    Options &options = settings.options;
 
     while (optind < argc)
     {
@@ -277,16 +279,14 @@ int main(int argc, char *argv[])
 
     selfName = argv[0];
 
-    // Parse command line options
-    Client::Options options;
-    parseOptions(argc, argv, options);
+    parseOptions(argc, argv);
 
-    if (options.printHelp)
+    if (settings.options.printHelp)
     {
         printHelp();
         _exit(0);
     }
-    else if (options.printVersion)
+    else if (settings.options.printVersion)
     {
         printVersion();
         _exit(0);
@@ -309,9 +309,9 @@ int main(int argc, char *argv[])
     SetCurrentDirectory(PhysFs::getBaseDir());
 #endif
     setPriority(true);
-    client = new Client(options);
+    client = new Client;
     int ret = 0;
-    if (!options.testMode)
+    if (!settings.options.testMode)
     {
         client->gameInit();
         ret = client->gameExec();

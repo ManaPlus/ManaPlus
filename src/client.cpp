@@ -207,9 +207,8 @@ namespace
     } loginListener;
 }  // namespace
 
-Client::Client(const Options &options) :
+Client::Client() :
     ActionListener(),
-    mOptions(options),
     mRootDir(),
     mCurrentServer(),
     mGame(nullptr),
@@ -251,7 +250,7 @@ Client::Client(const Options &options) :
 
 void Client::testsInit()
 {
-    if (!mOptions.test.empty() && mOptions.test != "99")
+    if (!settings.options.test.empty() && settings.options.test != "99")
     {
         gameInit();
     }
@@ -269,16 +268,16 @@ void Client::gameInit()
     logger = new Logger;
 
     // Load branding information
-    if (!mOptions.brandingPath.empty())
-        branding.init(mOptions.brandingPath);
+    if (!settings.options.brandingPath.empty())
+        branding.init(settings.options.brandingPath);
     branding.setDefaultValues(getBrandingDefaults());
 
     initRootDir();
     initHomeDir();
 
     // Configure logger
-    if (!mOptions.logFileName.empty())
-        settings.logFileName = mOptions.logFileName;
+    if (!settings.options.logFileName.empty())
+        settings.logFileName = settings.options.logFileName;
     else
         settings.logFileName = settings.localDataDir + "/manaplus.log";
     logger->setLogFile(settings.logFileName);
@@ -309,14 +308,14 @@ void Client::gameInit()
     initLang();
 
     chatLogger = new ChatLogger;
-    if (mOptions.chatLogDir.empty())
+    if (settings.options.chatLogDir.empty())
     {
         chatLogger->setBaseLogDir(settings.localDataDir
             + std::string("/logs/"));
     }
     else
     {
-        chatLogger->setBaseLogDir(mOptions.chatLogDir);
+        chatLogger->setBaseLogDir(settings.options.chatLogDir);
     }
 
     logger->setLogToStandardOut(config.getBoolValue("logToStandardOut"));
@@ -360,7 +359,7 @@ void Client::gameInit()
     Cpu::detect();
 #if defined(USE_OPENGL) 
 #if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
-    if (!mOptions.safeMode && mOptions.test.empty()
+    if (!settings.options.safeMode && settings.options.test.empty()
         && !config.getBoolValue("videodetected"))
     {
         graphicsManager.detectVideoSettings();
@@ -378,8 +377,8 @@ void Client::gameInit()
     updateDataPath();
 
     // Add the main data directories to our PhysicsFS search path
-    if (!mOptions.dataPath.empty())
-        resman->addToSearchPath(mOptions.dataPath, false);
+    if (!settings.options.dataPath.empty())
+        resman->addToSearchPath(settings.options.dataPath, false);
 
     // Add the local data directory to PhysicsFS search path
     resman->addToSearchPath(settings.localDataDir, false);
@@ -417,18 +416,18 @@ void Client::gameInit()
         joystick->update();
 
     // Initialize default server
-    mCurrentServer.hostname = mOptions.serverName;
-    mCurrentServer.port = mOptions.serverPort;
+    mCurrentServer.hostname = settings.options.serverName;
+    mCurrentServer.port = settings.options.serverPort;
 
-    loginData.username = mOptions.username;
-    loginData.password = mOptions.password;
+    loginData.username = settings.options.username;
+    loginData.password = settings.options.password;
     loginData.remember = serverConfig.getValue("remember", 1);
     loginData.registerLogin = false;
 
     if (mCurrentServer.hostname.empty())
     {
         mCurrentServer.hostname = branding.getValue("defaultServer", "");
-        mOptions.serverName = mCurrentServer.hostname;
+        settings.options.serverName = mCurrentServer.hostname;
     }
 
     if (mCurrentServer.port == 0)
@@ -473,7 +472,7 @@ void Client::gameInit()
 
 Client::~Client()
 {
-    if (!mOptions.testMode)
+    if (!settings.options.testMode)
         gameClear();
     else
         testsClear();
@@ -541,25 +540,25 @@ void Client::updateEnv()
 
 void Client::updateDataPath()
 {
-    if (mOptions.dataPath.empty()
+    if (settings.options.dataPath.empty()
         && !branding.getStringValue("dataPath").empty())
     {
         if (isRealPath(branding.getStringValue("dataPath")))
         {
-            mOptions.dataPath = branding.getStringValue("dataPath");
+            settings.options.dataPath = branding.getStringValue("dataPath");
         }
         else
         {
-            mOptions.dataPath = branding.getDirectory().append(dirSeparator)
+            settings.options.dataPath = branding.getDirectory().append(dirSeparator)
                 + branding.getStringValue("dataPath");
         }
-        mOptions.skipUpdate = true;
+        settings.options.skipUpdate = true;
     }
 }
 
 void Client::initGraphics()
 {
-    graphicsManager.initGraphics(mOptions.noOpenGL);
+    graphicsManager.initGraphics(settings.options.noOpenGL);
 
     runCounters = config.getBoolValue("packetcounters");
     applyVSync();
@@ -573,7 +572,7 @@ void Client::initGraphics()
 
 void Client::initTitle()
 {
-    if (mOptions.test.empty())
+    if (settings.options.test.empty())
     {
         mCaption = strprintf("%s %s",
             branding.getStringValue("appName").c_str(),
@@ -679,9 +678,9 @@ void Client::mountDataDir()
 #endif
 
     // Add branding/data to PhysFS search path
-    if (!mOptions.brandingPath.empty())
+    if (!settings.options.brandingPath.empty())
     {
-        std::string path = mOptions.brandingPath;
+        std::string path = settings.options.brandingPath;
 
         // Strip blah.manaplus from the path
 #ifdef WIN32
@@ -790,7 +789,7 @@ void Client::setEnv(const char *const name, const char *const value)
 
 void Client::testsClear()
 {
-    if (!mOptions.test.empty())
+    if (!settings.options.test.empty())
         gameClear();
     else
         BeingInfo::clear();
@@ -934,14 +933,14 @@ void Client::gameClear()
 int Client::testsExec() const
 {
 #ifdef USE_OPENGL
-    if (mOptions.test.empty())
+    if (settings.options.test.empty())
     {
         TestMain test;
         return test.exec();
     }
     else
     {
-        TestLauncher launcher(mOptions.test);
+        TestLauncher launcher(settings.options.test);
         return launcher.exec();
     }
 #else
@@ -1049,7 +1048,7 @@ int Client::gameExec()
             settings.supportUrl = mCurrentServer.supportUrl;
             settings.updateMirrors = mCurrentServer.updateMirrors;
 
-            if (mOptions.username.empty())
+            if (settings.options.username.empty())
             {
                 if (loginData.remember)
                     loginData.username = serverConfig.getValue("username", "");
@@ -1058,7 +1057,7 @@ int Client::gameExec()
             }
             else
             {
-                loginData.username = mOptions.username;
+                loginData.username = settings.options.username;
             }
 
             loginData.remember = serverConfig.getValue("remember", 1);
@@ -1155,11 +1154,11 @@ int Client::gameExec()
                 Net::getPartyHandler()->clear();
                 if (chatLogger)
                     chatLogger->clear();
-                if (!mOptions.dataPath.empty())
-                    UpdaterWindow::unloadMods(mOptions.dataPath);
+                if (!settings.options.dataPath.empty())
+                    UpdaterWindow::unloadMods(settings.options.dataPath);
                 else
                     UpdaterWindow::unloadMods(settings.oldUpdates);
-                if (!mOptions.skipUpdate)
+                if (!settings.options.skipUpdate)
                     UpdaterWindow::unloadMods(settings.oldUpdates + "/fix/");
             }
 
@@ -1187,7 +1186,7 @@ int Client::gameExec()
                     settings.supportUrl.clear();
                     ResourceManager *const resman
                         = ResourceManager::getInstance();
-                    if (mOptions.dataPath.empty())
+                    if (settings.options.dataPath.empty())
                     {
                         // Add customdata directory
                         resman->searchAndRemoveArchives(
@@ -1201,7 +1200,7 @@ int Client::gameExec()
                         settings.oldUpdates.clear();
                     }
 
-                    if (!mOptions.skipUpdate)
+                    if (!settings.options.skipUpdate)
                     {
                         resman->searchAndRemoveArchives(
                             settings.updatesDir + "/local/",
@@ -1219,7 +1218,7 @@ int Client::gameExec()
                     // Allow changing this using a server choice dialog
                     // We show the dialog box only if the command-line
                     // options weren't set.
-                    if (mOptions.serverName.empty() && mOptions.serverPort == 0
+                    if (settings.options.serverName.empty() && settings.options.serverPort == 0
                         && !branding.getValue("onlineServerList", "a").empty())
                     {
                         // Don't allow an alpha opacity
@@ -1236,8 +1235,8 @@ int Client::gameExec()
 
                         // Reset options so that cancelling or connect
                         // timeout will show the server dialog.
-                        mOptions.serverName.clear();
-                        mOptions.serverPort = 0;
+                        settings.options.serverName.clear();
+                        settings.options.serverPort = 0;
                     }
                     BLOCK_END("Client::gameExec STATE_CHOOSE_SERVER")
                     break;
@@ -1274,11 +1273,11 @@ int Client::gameExec()
                     mSearchHash = Net::Download::adlerBuffer(
                         const_cast<char*>(mCurrentServer.hostname.c_str()),
                         static_cast<int>(mCurrentServer.hostname.size()));
-                    if (mOptions.username.empty()
-                        || mOptions.password.empty())
+                    if (settings.options.username.empty()
+                        || settings.options.password.empty())
                     {
                         mCurrentDialog = new LoginDialog(&loginData,
-                            mCurrentServer.hostname, &mOptions.updateHost);
+                            mCurrentServer.hostname, &settings.options.updateHost);
                         mCurrentDialog->postInit();
                     }
                     else
@@ -1286,7 +1285,7 @@ int Client::gameExec()
                         mState = STATE_LOGIN_ATTEMPT;
                         // Clear the password so that when login fails, the
                         // dialog will show up next time.
-                        mOptions.password.clear();
+                        settings.options.password.clear();
                     }
                     BLOCK_END("Client::gameExec STATE_LOGIN")
                     break;
@@ -1324,7 +1323,7 @@ int Client::gameExec()
                         {
                             mCurrentDialog = new WorldSelectDialog(worlds);
                             mCurrentDialog->postInit();
-                            if (mOptions.chooseDefault)
+                            if (settings.options.chooseDefault)
                             {
                                 static_cast<WorldSelectDialog*>(mCurrentDialog)
                                     ->action(ActionEvent(nullptr, "ok"));
@@ -1348,8 +1347,8 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_UPDATE")
                     logger->log1("State: UPDATE");
                     // Determine which source to use for the update host
-                    if (!mOptions.updateHost.empty())
-                        settings.updateHost = mOptions.updateHost;
+                    if (!settings.options.updateHost.empty())
+                        settings.updateHost = settings.options.updateHost;
                     else
                         settings.updateHost = loginData.updateHost;
                     initUpdatesDir();
@@ -1357,11 +1356,11 @@ int Client::gameExec()
                     if (!settings.oldUpdates.empty())
                         UpdaterWindow::unloadUpdates(settings.oldUpdates);
 
-                    if (mOptions.skipUpdate)
+                    if (settings.options.skipUpdate)
                     {
                         mState = STATE_LOAD_DATA;
                         settings.oldUpdates.clear();
-                        UpdaterWindow::loadDirMods(mOptions.dataPath);
+                        UpdaterWindow::loadDirMods(settings.options.dataPath);
                     }
                     else if (loginData.updateType & UpdateType::Skip)
                     {
@@ -1376,7 +1375,7 @@ int Client::gameExec()
                             + dirSeparator + settings.updatesDir;
                         mCurrentDialog = new UpdaterWindow(settings.updateHost,
                             settings.oldUpdates,
-                            mOptions.dataPath.empty(),
+                            settings.options.dataPath.empty(),
                             loginData.updateType);
                         mCurrentDialog->postInit();
                     }
@@ -1393,7 +1392,7 @@ int Client::gameExec()
 
                     // If another data path has been set,
                     // we don't load any other files...
-                    if (mOptions.dataPath.empty())
+                    if (settings.options.dataPath.empty())
                     {
                         // Add customdata directory
                         resman->searchAndAddArchives(
@@ -1402,7 +1401,7 @@ int Client::gameExec()
                             false);
                     }
 
-                    if (!mOptions.skipUpdate)
+                    if (!settings.options.skipUpdate)
                     {
                         resman->searchAndAddArchives(
                             settings.updatesDir + "/local/",
@@ -1481,20 +1480,20 @@ int Client::gameExec()
                     mCurrentDialog->postInit();
 
                     if (!(static_cast<CharSelectDialog*>(mCurrentDialog))
-                        ->selectByName(mOptions.character,
+                        ->selectByName(settings.options.character,
                         CharSelectDialog::Choose))
                     {
                         (static_cast<CharSelectDialog*>(mCurrentDialog))
                             ->selectByName(
                             serverConfig.getValue("lastCharacter", ""),
-                            mOptions.chooseDefault ?
+                            settings.options.chooseDefault ?
                             CharSelectDialog::Choose :
                             CharSelectDialog::Focus);
                     }
 
                     // Choosing character on the command line should work only
                     // once, clear it so that 'switch character' works.
-                    mOptions.character.clear();
+                    settings.options.character.clear();
                     BLOCK_END("Client::gameExec STATE_CHAR_SELECT")
                     break;
 
@@ -1889,7 +1888,7 @@ void Client::initRootDir()
         Configuration portable;
         portable.init(portableName);
 
-        if (mOptions.brandingPath.empty())
+        if (settings.options.brandingPath.empty())
         {
             branding.init(portableName);
             branding.setDefaultValues(getBrandingDefaults());
@@ -1897,36 +1896,36 @@ void Client::initRootDir()
 
         logger->log("Portable file: %s", portableName.c_str());
 
-        if (mOptions.localDataDir.empty())
+        if (settings.options.localDataDir.empty())
         {
             dir = portable.getValue("dataDir", "");
             if (!dir.empty())
             {
-                mOptions.localDataDir = mRootDir + dir;
+                settings.options.localDataDir = mRootDir + dir;
                 logger->log("Portable data dir: %s",
-                    mOptions.localDataDir.c_str());
+                    settings.options.localDataDir.c_str());
             }
         }
 
-        if (mOptions.configDir.empty())
+        if (settings.options.configDir.empty())
         {
             dir = portable.getValue("configDir", "");
             if (!dir.empty())
             {
-                mOptions.configDir = mRootDir + dir;
+                settings.options.configDir = mRootDir + dir;
                 logger->log("Portable config dir: %s",
-                    mOptions.configDir.c_str());
+                    settings.options.configDir.c_str());
             }
         }
 
-        if (mOptions.screenshotDir.empty())
+        if (settings.options.screenshotDir.empty())
         {
             dir = portable.getValue("screenshotDir", "");
             if (!dir.empty())
             {
-                mOptions.screenshotDir = mRootDir + dir;
+                settings.options.screenshotDir = mRootDir + dir;
                 logger->log("Portable screenshot dir: %s",
-                    mOptions.screenshotDir.c_str());
+                    settings.options.screenshotDir.c_str());
             }
         }
     }
@@ -1945,7 +1944,7 @@ void Client::initHomeDir()
 
 void Client::initLocalDataDir()
 {
-    settings.localDataDir = mOptions.localDataDir;
+    settings.localDataDir = settings.options.localDataDir;
 
     if (settings.localDataDir.empty())
     {
@@ -1999,7 +1998,7 @@ void Client::initTempDir()
 
 void Client::initConfigDir()
 {
-    settings.configDir = mOptions.configDir;
+    settings.configDir = settings.options.configDir;
 
     if (settings.configDir.empty())
     {
@@ -2131,7 +2130,7 @@ void Client::initConfiguration() const
 
     std::string configPath;
 
-    if (mOptions.test.empty())
+    if (settings.options.test.empty())
         configPath = settings.configDir + "/config.xml";
     else
         configPath = settings.configDir + "/test.xml";
@@ -2273,9 +2272,9 @@ void Client::initUpdatesDir()
 
 void Client::initScreenshotDir()
 {
-    if (!mOptions.screenshotDir.empty())
+    if (!settings.options.screenshotDir.empty())
     {
-        settings.screenshotDir = mOptions.screenshotDir;
+        settings.screenshotDir = settings.options.screenshotDir;
         if (mkdir_r(settings.screenshotDir.c_str()))
         {
             // TRANSLATORS: directory creation error
@@ -2371,7 +2370,7 @@ void Client::storeSafeParameters() const
     enableMumble = config.getBoolValue("enableMumble");
     enableMapReduce = config.getBoolValue("enableMapReduce");
 
-    if (!mOptions.safeMode && !tmpOpengl)
+    if (!settings.options.safeMode && !tmpOpengl)
     {
         // if video mode configured reset most settings to safe
         config.setValue("hwaccel", false);
@@ -2406,7 +2405,7 @@ void Client::storeSafeParameters() const
 
     config.write();
 
-    if (mOptions.safeMode)
+    if (settings.options.safeMode)
     {
         isSafeMode = true;
         return;
