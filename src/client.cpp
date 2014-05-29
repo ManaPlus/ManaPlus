@@ -209,7 +209,6 @@ namespace
 
 Client::Client() :
     ActionListener(),
-    mRootDir(),
     mCurrentServer(),
     mGame(nullptr),
     mCurrentDialog(nullptr),
@@ -227,7 +226,6 @@ Client::Client() :
     mState(STATE_CHOOSE_SERVER),
     mOldState(STATE_START),
     mIcon(nullptr),
-    mCaption(),
     mFpsManager(),
     mSkin(nullptr),
     mGuiAlpha(1.0F),
@@ -574,19 +572,19 @@ void Client::initTitle()
 {
     if (settings.options.test.empty())
     {
-        mCaption = strprintf("%s %s",
+        settings.windowCaption = strprintf("%s %s",
             branding.getStringValue("appName").c_str(),
             SMALL_VERSION);
     }
     else
     {
-        mCaption = strprintf(
+        settings.windowCaption = strprintf(
             "Please wait - VIDEO MODE TEST - %s %s - Please wait",
             branding.getStringValue("appName").c_str(),
             SMALL_VERSION);
     }
 
-    SDL::SetWindowTitle(mainGraphics->getWindow(), mCaption.c_str());
+    SDL::SetWindowTitle(mainGraphics->getWindow(), settings.windowCaption.c_str());
 #ifndef WIN32
     setIcon();
 #endif
@@ -1878,8 +1876,8 @@ void Client::action(const ActionEvent &event)
 
 void Client::initRootDir()
 {
-    mRootDir = PhysFs::getBaseDir();
-    const std::string portableName = mRootDir + "portable.xml";
+    settings.rootDir = PhysFs::getBaseDir();
+    const std::string portableName = settings.rootDir + "portable.xml";
     struct stat statbuf;
 
     if (!stat(portableName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
@@ -1901,7 +1899,7 @@ void Client::initRootDir()
             dir = portable.getValue("dataDir", "");
             if (!dir.empty())
             {
-                settings.options.localDataDir = mRootDir + dir;
+                settings.options.localDataDir = settings.rootDir + dir;
                 logger->log("Portable data dir: %s",
                     settings.options.localDataDir.c_str());
             }
@@ -1912,7 +1910,7 @@ void Client::initRootDir()
             dir = portable.getValue("configDir", "");
             if (!dir.empty())
             {
-                settings.options.configDir = mRootDir + dir;
+                settings.options.configDir = settings.rootDir + dir;
                 logger->log("Portable config dir: %s",
                     settings.options.configDir.c_str());
             }
@@ -1923,7 +1921,7 @@ void Client::initRootDir()
             dir = portable.getValue("screenshotDir", "");
             if (!dir.empty())
             {
-                settings.options.screenshotDir = mRootDir + dir;
+                settings.options.screenshotDir = settings.rootDir + dir;
                 logger->log("Portable screenshot dir: %s",
                     settings.options.screenshotDir.c_str());
             }
@@ -2863,7 +2861,8 @@ void Client::setIsMinimized(const bool n)
     if (!n && mNewMessageFlag)
     {
         mNewMessageFlag = false;
-        SDL::SetWindowTitle(mainGraphics->getWindow(), mCaption.c_str());
+        SDL::SetWindowTitle(mainGraphics->getWindow(),
+            settings.windowCaption.c_str());
     }
 }
 
@@ -2873,7 +2872,7 @@ void Client::newChatMessage()
     {
         // show * on window caption
         SDL::SetWindowTitle(mainGraphics->getWindow(),
-            ("*" + client->mCaption).c_str());
+            ("*" + settings.windowCaption).c_str());
         mNewMessageFlag = true;
     }
 }

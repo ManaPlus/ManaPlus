@@ -46,6 +46,8 @@ class Settings final
             npcsDir(),
             supportUrl(),
             logFileName(),
+            rootDir(),
+            windowCaption(),
             updateMirrors(),
             options(),
             persistentIp(true)
@@ -65,6 +67,8 @@ class Settings final
         std::string npcsDir;
         std::string supportUrl;
         std::string logFileName;
+        std::string rootDir;
+        std::string windowCaption;
         std::vector<std::string> updateMirrors;
         Options options;
         bool persistentIp;

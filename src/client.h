@@ -256,9 +256,6 @@ private:
 #endif
 #endif
 
-    std::string mRootDir;
-    std::string mLogFileName;
-
     ServerInfo mCurrentServer;
 
     Game *mGame;
@@ -280,7 +277,6 @@ private:
 
     SDL_Surface *mIcon;
 
-    std::string mCaption;
     FPSmanager mFpsManager;
     Skin *mSkin;
     float mGuiAlpha;
