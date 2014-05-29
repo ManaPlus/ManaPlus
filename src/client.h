@@ -188,8 +188,6 @@ public:
 private:
     static void createWindows();
 
-    static void initLang();
-
     void initSoundManager();
 
     void initConfigListeners();
@@ -223,8 +221,6 @@ private:
     void setIcon();
 
     static Client *mInstance;
-
-    static void bindTextDomain(const char *const path);
 
     static void setEnv(const char *const name, const char *const value);
 

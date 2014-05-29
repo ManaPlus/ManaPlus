@@ -647,6 +647,8 @@ SET(SRCS
     utils/fuzzer.cpp
     utils/fuzzer.h
     utils/gettext.h
+    utils/gettexthelper.cpp
+    utils/gettexthelper.h
     utils/langs.cpp
     utils/langs.h
     utils/mathutils.h
