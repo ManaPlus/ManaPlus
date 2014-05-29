@@ -858,6 +858,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      debug.h \
 	      defaults.cpp \
 	      defaults.h \
+	      dirs.cpp \
+	      dirs.h \
 	      dragdrop.h \
 	      dropshortcut.cpp \
 	      dropshortcut.h \

@@ -743,6 +743,8 @@ SET(SRCS
     debug.h
     defaults.cpp
     defaults.h
+    dirs.cpp
+    dirs.h
     dragdrop.h
     effectmanager.cpp
     effectmanager.h

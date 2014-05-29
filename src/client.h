@@ -162,8 +162,6 @@ public:
 
     void initTradeFilter() const;
 
-    void initUsersDir();
-
     void initPacketLimiter();
 
     void writePacketLimits(const std::string &packetLimitsName) const;
@@ -202,27 +200,7 @@ private:
 
     void initTitle();
 
-    void updateDataPath();
-
-    static void extractDataDir();
-
-    void mountDataDir();
-
-    void initRootDir();
-
-    void initHomeDir();
-
     void initConfiguration() const;
-
-    void initLocalDataDir();
-
-    void initTempDir();
-
-    void initConfigDir();
-
-    void initUpdatesDir();
-
-    void initScreenshotDir();
 
     void initServerConfig(const std::string &serverName);
 
