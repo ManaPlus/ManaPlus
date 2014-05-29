@@ -198,17 +198,7 @@ private:
 
     void initTitle();
 
-    void initConfiguration() const;
-
-    void initServerConfig(const std::string &serverName);
-
     static void initFeatures();
-
-#ifndef ANDROID
-    void storeSafeParameters() const;
-#endif
-
-    void backupConfig() const;
 
     void gameClear();
 
@@ -216,11 +206,7 @@ private:
 
     static void logVars();
 
-    static void checkConfigVersion();
-
     void setIcon();
-
-    static Client *mInstance;
 
     static void setEnv(const char *const name, const char *const value);
 

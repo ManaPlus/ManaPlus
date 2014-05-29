@@ -850,6 +850,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      commandhandler.h \
 	      commands.cpp \
 	      commands.h \
+	      configmanager.cpp \
+	      configmanager.h \
 	      being/compounditem.h \
 	      being/compoundsprite.cpp \
 	      being/compoundsprite.h \
