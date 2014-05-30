@@ -67,6 +67,7 @@
 
 #include "client.h"
 #include "graphicsvertexes.h"
+#include "settings.h"
 
 #include "events/keyevent.h"
 
@@ -414,7 +415,7 @@ void Button::loadImageSet(const std::string &imageName)
 
 void Button::updateAlpha()
 {
-    const float alpha = std::max(client->getGuiAlpha(),
+    const float alpha = std::max(settings.guiAlpha,
         theme->getMinimumOpacity());
 
     if (mAlpha != alpha)

@@ -25,7 +25,10 @@
 #include "client.h"
 #include "configuration.h"
 #include "logger.h"
+#include "settings.h"
 #include "sdlshared.h"
+
+#include "gui/windowmanager.h"
 
 #include "input/inputmanager.h"
 #include "input/inputtype.h"
@@ -169,7 +172,7 @@ void Joystick::logic()
 
     mDirection = 0;
 
-    if (mUseInactive || client->getInputFocused())
+    if (mUseInactive || settings.inputFocused)
     {
         // X-Axis
         int position = SDL_JoystickGetAxis(mJoystick, 0);
@@ -338,7 +341,7 @@ bool Joystick::validate() const
     if (mCalibrating || !mEnabled || !mCalibrated)
         return false;
 
-    return (mUseInactive || client->getInputFocused());
+    return (mUseInactive || settings.inputFocused);
 }
 
 void Joystick::handleRepeat(const int time)

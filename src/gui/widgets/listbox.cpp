@@ -66,6 +66,7 @@
 #include "gui/widgets/listbox.h"
 
 #include "client.h"
+#include "settings.h"
 
 #include "input/inputaction.h"
 
@@ -145,7 +146,7 @@ ListBox::~ListBox()
 
 void ListBox::updateAlpha()
 {
-    const float alpha = std::max(client->getGuiAlpha(),
+    const float alpha = std::max(settings.guiAlpha,
         theme->getMinimumOpacity());
 
     if (mAlpha != alpha)

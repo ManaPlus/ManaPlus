@@ -66,6 +66,7 @@
 #include "gui/widgets/checkbox.h"
 
 #include "client.h"
+#include "settings.h"
 
 #include "input/inputaction.h"
 
@@ -165,7 +166,7 @@ void CheckBox::draw(Graphics *const graphics)
 
 void CheckBox::updateAlpha()
 {
-    const float alpha = std::max(client->getGuiAlpha(),
+    const float alpha = std::max(settings.guiAlpha,
         theme->getMinimumOpacity());
 
     if (mAlpha != alpha)

@@ -67,6 +67,7 @@
 
 #include "client.h"
 #include "graphicsvertexes.h"
+#include "settings.h"
 
 #include "gui/gui.h"
 #include "gui/skin.h"
@@ -288,7 +289,7 @@ void ScrollArea::logic()
 
 void ScrollArea::updateAlpha()
 {
-    const float alpha = std::max(client->getGuiAlpha(),
+    const float alpha = std::max(settings.guiAlpha,
         theme->getMinimumOpacity());
 
     if (alpha != mAlpha)

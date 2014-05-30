@@ -1099,17 +1099,17 @@ impHandler2(dumpGraphics)
     str.append(",0");
 #endif
 
-    str.append(strprintf(",%f,", static_cast<double>(client->getGuiAlpha())))
-    .append(config.getBoolValue("adjustPerfomance") ? "1" : "0")
-    .append(config.getBoolValue("alphaCache") ? "1" : "0")
-    .append(config.getBoolValue("enableMapReduce") ? "1" : "0")
-    .append(config.getBoolValue("beingopacity") ? "1" : "0")
-    .append(",")
-    .append(config.getBoolValue("enableAlphaFix") ? "1" : "0")
-    .append(config.getBoolValue("disableAdvBeingCaching") ? "1" : "0")
-    .append(config.getBoolValue("disableBeingCaching") ? "1" : "0")
-    .append(config.getBoolValue("particleeffects") ? "1" : "0")
-    .append(strprintf(",%d-%d", fps, config.getIntValue("fpslimit")));
+    str.append(strprintf(",%f,", static_cast<double>(settings.guiAlpha)))
+        .append(config.getBoolValue("adjustPerfomance") ? "1" : "0")
+        .append(config.getBoolValue("alphaCache") ? "1" : "0")
+        .append(config.getBoolValue("enableMapReduce") ? "1" : "0")
+        .append(config.getBoolValue("beingopacity") ? "1" : "0")
+        .append(",")
+        .append(config.getBoolValue("enableAlphaFix") ? "1" : "0")
+        .append(config.getBoolValue("disableAdvBeingCaching") ? "1" : "0")
+        .append(config.getBoolValue("disableBeingCaching") ? "1" : "0")
+        .append(config.getBoolValue("particleeffects") ? "1" : "0")
+        .append(strprintf(",%d-%d", fps, config.getIntValue("fpslimit")));
     outStringNormal(tab, str, str);
 }
 

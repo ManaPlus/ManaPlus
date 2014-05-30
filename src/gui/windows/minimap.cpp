@@ -26,6 +26,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "party.h"
+#include "settings.h"
 
 #include "being/localplayer.h"
 
@@ -159,7 +160,7 @@ void Minimap::setMap(const Map *const map)
             SDL_UnlockSurface(surface);
 
             mMapImage = imageHelper->load(surface);
-            mMapImage->setAlpha(client->getGuiAlpha());
+            mMapImage->setAlpha(settings.guiAlpha);
             mCustomMapImage = true;
             MSDL_FreeSurface(surface);
         }

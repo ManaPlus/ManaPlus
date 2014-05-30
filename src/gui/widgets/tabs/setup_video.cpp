@@ -27,6 +27,8 @@
 
 #include "graphicsmanager.h"
 
+#include "gui/windowmanager.h"
+
 #include "gui/windows/okdialog.h"
 #include "gui/windows/textdialog.h"
 
@@ -360,7 +362,7 @@ void Setup_Video::action(const ActionEvent &event)
             if (intToRenderType(config.getIntValue("opengl"))
                 == RENDER_SOFTWARE)
             {
-                client->resizeVideo(width, height, false);
+                WindowManager::resizeVideo(width, height, false);
             }
             else
             {
@@ -385,7 +387,7 @@ void Setup_Video::action(const ActionEvent &event)
             }
 #else
             mainGraphics->setWindowSize(width, height);
-            client->resizeVideo(width, height, false);
+            WindowManager::resizeVideo(width, height, false);
 #endif
         }
 

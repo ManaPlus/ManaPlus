@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "graphicsvertexes.h"
+#include "settings.h"
 
 #include "gui/gui.h"
 #include "gui/skin.h"
@@ -141,7 +142,7 @@ void ProgressBar::logic()
 
 void ProgressBar::updateAlpha()
 {
-    const float alpha = std::max(client->getGuiAlpha(),
+    const float alpha = std::max(settings.guiAlpha,
         theme->getMinimumOpacity());
     mAlpha = alpha;
 }

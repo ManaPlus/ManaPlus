@@ -89,46 +89,7 @@ public:
     State getState() const A_WARN_UNUSED
     { return mState; }
 
-    bool getIsMinimized() const A_WARN_UNUSED
-    { return mIsMinimized; }
-
-    void setIsMinimized(const bool n);
-
-    void newChatMessage();
-
-    bool getInputFocused() const A_WARN_UNUSED
-    { return mInputFocused; }
-
-    void setInputFocused(const bool n)
-    { mInputFocused = n; }
-
-    bool getMouseFocused() const A_WARN_UNUSED
-    { return mMouseFocused; }
-
-    void setMouseFocused(const bool n)
-    { mMouseFocused = n; }
-
-    bool isKeyboardVisible() const;
-
-    void setGuiAlpha(const float n)
-    { mGuiAlpha = n; }
-
-    float getGuiAlpha() const A_WARN_UNUSED
-    { return mGuiAlpha; }
-
-    void setFramerate(const int fpsLimit) const;
-
-    int getFramerate() const A_WARN_UNUSED;
-
     bool isTmw() const A_WARN_UNUSED;
-
-    static void applyGrabMode();
-
-    static void applyGamma();
-
-    static void applyVSync();
-
-    static void applyKeyRepeat();
 
     void optionChanged(const std::string &name) override final;
 
@@ -136,22 +97,11 @@ public:
 
     void initTradeFilter() const;
 
-    void resizeVideo(int actualWidth,
-                     int actualHeight,
-                     const bool always);
-
-    void applyScale();
+    void moveButtons(const int width);
 
     void windowRemoved(const Window *const window);
 
-    void updateScreenKeyboard(const int height)
-    { mKeyboardHeight = height; }
-
-    void reloadWallpaper();
-
 private:
-    static void createWindows();
-
     void initSoundManager();
 
     void initConfigListeners();
@@ -160,8 +110,6 @@ private:
 
     void updateEnv();
 
-    void initTitle();
-
     static void initFeatures();
 
     void gameClear();
@@ -169,8 +117,6 @@ private:
     void testsClear();
 
     static void logVars();
-
-    void setIcon();
 
     static void setEnv(const char *const name, const char *const value);
 
@@ -199,20 +145,12 @@ private:
     State mState;
     State mOldState;
 
-    SDL_Surface *mIcon;
-
-    FPSmanager mFpsManager;
     Skin *mSkin;
     float mGuiAlpha;
     int mButtonPadding;
     int mButtonSpacing;
     int mKeyboardHeight;
-    bool mLimitFps;
     bool mConfigAutoSaved;
-    bool mIsMinimized;
-    bool mInputFocused;
-    bool mMouseFocused;
-    bool mNewMessageFlag;
 };
 
 extern Client *client;

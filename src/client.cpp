@@ -57,6 +57,7 @@
 #include "gui/gui.h"
 #include "gui/skin.h"
 #include "gui/theme.h"
+#include "gui/windowmanager.h"
 
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/buydialog.h"
@@ -173,6 +174,8 @@ LoginData loginData;
 
 Client *client = nullptr;
 
+extern FPSmanager fpsManager;
+
 volatile bool runCounters;
 bool isSafeMode = false;
 int serverVersion = 0;
@@ -209,7 +212,6 @@ Client::Client() :
     mGame(nullptr),
     mCurrentDialog(nullptr),
     mQuitDialog(nullptr),
-    mDesktop(nullptr),
     mSetupButton(nullptr),
     mVideoButton(nullptr),
     mHelpButton(nullptr),
@@ -221,25 +223,12 @@ Client::Client() :
 #endif
     mState(STATE_CHOOSE_SERVER),
     mOldState(STATE_START),
-    mIcon(nullptr),
-    mFpsManager(),
     mSkin(nullptr),
-    mGuiAlpha(1.0F),
     mButtonPadding(1),
     mButtonSpacing(3),
-    mKeyboardHeight(0),
-    mLimitFps(false),
-    mConfigAutoSaved(false),
-    mIsMinimized(false),
-    mInputFocused(true),
-    mMouseFocused(true),
-    mNewMessageFlag(false)
+    mConfigAutoSaved(false)
 {
-    // Initialize frame limiting
-    mFpsManager.framecount = 0;
-    mFpsManager.rateticks = 0;
-    mFpsManager.lastticks = 0;
-    mFpsManager.rate = 0;
+    WindowManager::init();
 }
 
 void Client::testsInit()
@@ -333,7 +322,7 @@ void Client::gameInit()
 #ifndef USE_SDL2
     SDL_EnableUNICODE(1);
 #endif
-    applyKeyRepeat();
+    WindowManager::applyKeyRepeat();
 
     // disable unused SDL events
 #ifndef USE_SDL2
@@ -347,7 +336,7 @@ void Client::gameInit()
     Dirs::mountDataDir();
 #endif
 
-    setIcon();
+    WindowManager::setIcon();
     ConfigManager::checkConfigVersion();
     logVars();
     Cpu::detect();
@@ -378,7 +367,7 @@ void Client::gameInit()
     resman->addToSearchPath(settings.localDataDir, false);
     TranslationManager::loadCurrentLang();
 
-    initTitle();
+    WindowManager::initTitle();
 
     theme = new Theme;
     Theme::selectSkin();
@@ -403,7 +392,7 @@ void Client::gameInit()
     // Initialise player relations
     player_relations.init();
     Joystick::init();
-    createWindows();
+    WindowManager::createWindows();
 
     keyboard.update();
     if (joystick)
@@ -444,13 +433,13 @@ void Client::gameInit()
     startTimers();
 
     const int fpsLimit = config.getIntValue("fpslimit");
-    mLimitFps = fpsLimit > 0;
+    settings.limitFps = fpsLimit > 0;
 
-    SDL_initFramerate(&mFpsManager);
-    setFramerate(fpsLimit);
+    SDL_initFramerate(&fpsManager);
+    WindowManager::setFramerate(fpsLimit);
     initConfigListeners();
 
-    setGuiAlpha(config.getFloatValue("guialpha"));
+    settings.guiAlpha = config.getFloatValue("guialpha");
     optionChanged("fpslimit");
 
     start_time = static_cast<int>(time(nullptr));
@@ -507,16 +496,6 @@ void Client::initSoundManager()
         "loginMusic", "Magick - Real.ogg"));
 }
 
-void Client::createWindows()
-{
-    userPalette = new UserPalette;
-    setupWindow = new SetupWindow;
-    setupWindow->postInit();
-    helpWindow = new HelpWindow;
-    didYouKnowWindow = new DidYouKnowWindow;
-    didYouKnowWindow->postInit();
-}
-
 void Client::updateEnv()
 {
 #if defined(WIN32) || defined(__APPLE__)
@@ -537,35 +516,13 @@ void Client::initGraphics()
     graphicsManager.initGraphics(settings.options.noOpenGL);
 
     runCounters = config.getBoolValue("packetcounters");
-    applyVSync();
+    WindowManager::applyVSync();
     graphicsManager.setVideoMode();
     getConfigDefaults2(config.getDefaultValues());
-    applyGrabMode();
-    applyGamma();
+    WindowManager::applyGrabMode();
+    WindowManager::applyGamma();
 
     mainGraphics->beginDraw();
-}
-
-void Client::initTitle()
-{
-    if (settings.options.test.empty())
-    {
-        settings.windowCaption = strprintf("%s %s",
-            branding.getStringValue("appName").c_str(),
-            SMALL_VERSION);
-    }
-    else
-    {
-        settings.windowCaption = strprintf(
-            "Please wait - VIDEO MODE TEST - %s %s - Please wait",
-            branding.getStringValue("appName").c_str(),
-            SMALL_VERSION);
-    }
-
-    SDL::SetWindowTitle(mainGraphics->getWindow(), settings.windowCaption.c_str());
-#ifndef WIN32
-    setIcon();
-#endif
 }
 
 #ifdef ANDROID
@@ -705,7 +662,7 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting8");
 
-    MSDL_FreeSurface(mIcon);
+    WindowManager::deleteIcon();
 
     if (logger)
         logger->log1("Quitting9");
@@ -826,7 +783,7 @@ int Client::gameExec()
         lastTickTime = tick_time;
 
         // Update the screen when application is visible, delay otherwise.
-        if (!mIsMinimized)
+        if (!WindowManager::getIsMinimized())
         {
             frame_count++;
             if (gui)
@@ -839,8 +796,8 @@ int Client::gameExec()
         }
 
         BLOCK_START("~Client::SDL_framerateDelay")
-        if (mLimitFps)
-            SDL_framerateDelay(&mFpsManager);
+        if (settings.limitFps)
+            SDL_framerateDelay(&fpsManager);
         BLOCK_END("~Client::SDL_framerateDelay")
 
         BLOCK_START("Client::gameExec 6")
@@ -935,34 +892,34 @@ int Client::gameExec()
             if (!top)
                 break;
 
-            mDesktop = new Desktop(nullptr);
-            mDesktop->postInit();
-            top->add(mDesktop);
+            desktop = new Desktop(nullptr);
+            desktop->postInit();
+            top->add(desktop);
             int x = top->getWidth() - mButtonPadding;
-            ADDBUTTON(mSetupButton, new Button(mDesktop,
+            ADDBUTTON(mSetupButton, new Button(desktop,
                 // TRANSLATORS: setup tab quick button
                 _("Setup"), "Setup", this))
-            ADDBUTTON(mPerfomanceButton, new Button(mDesktop,
+            ADDBUTTON(mPerfomanceButton, new Button(desktop,
                 // TRANSLATORS: perfoamance tab quick button
                 _("Performance"), "Perfomance", this))
-            ADDBUTTON(mVideoButton, new Button(mDesktop,
+            ADDBUTTON(mVideoButton, new Button(desktop,
                 // TRANSLATORS: video tab quick button
                 _("Video"), "Video", this))
-            ADDBUTTON(mThemesButton, new Button(mDesktop,
+            ADDBUTTON(mThemesButton, new Button(desktop,
                 // TRANSLATORS: theme tab quick button
                 _("Theme"), "Themes", this))
-            ADDBUTTON(mAboutButton, new Button(mDesktop,
+            ADDBUTTON(mAboutButton, new Button(desktop,
                 // TRANSLATORS: theme tab quick button
                 _("About"), "about", this))
-            ADDBUTTON(mHelpButton, new Button(mDesktop,
+            ADDBUTTON(mHelpButton, new Button(desktop,
                 // TRANSLATORS: theme tab quick button
                 _("Help"), "help", this))
 #ifdef ANDROID
-            ADDBUTTON(mCloseButton, new Button(mDesktop,
+            ADDBUTTON(mCloseButton, new Button(desktop,
                 // TRANSLATORS: close quick button
                 _("Close"), "close", this))
 #endif
-            mDesktop->setSize(mainGraphics->getWidth(),
+            desktop->setSize(mainGraphics->getWidth(),
                 mainGraphics->getHeight());
         }
         BLOCK_END("Client::gameExec 6")
@@ -1285,8 +1242,8 @@ int Client::gameExec()
 
                     ActorSprite::load();
 
-                    if (mDesktop)
-                        mDesktop->reloadWallpaper();
+                    if (desktop)
+                        desktop->reloadWallpaper();
 
                     mState = STATE_GET_CHARACTERS;
                     BLOCK_END("Client::gameExec STATE_LOAD_DATA")
@@ -1389,7 +1346,7 @@ int Client::gameExec()
                     delete2(mAboutButton);
                     delete2(mHelpButton);
                     delete2(mPerfomanceButton);
-                    delete2(mDesktop);
+                    delete2(desktop);
 
                     mCurrentDialog = nullptr;
 
@@ -1631,18 +1588,18 @@ void Client::optionChanged(const std::string &name)
     if (name == "fpslimit")
     {
         const int fpsLimit = config.getIntValue("fpslimit");
-        mLimitFps = fpsLimit > 0;
-        setFramerate(fpsLimit);
+        settings.limitFps = fpsLimit > 0;
+        WindowManager::setFramerate(fpsLimit);
     }
     else if (name == "guialpha")
     {
         const float alpha = config.getFloatValue("guialpha");
-        setGuiAlpha(alpha);
+        settings.guiAlpha = alpha;
         ImageHelper::setEnableAlpha(alpha != 1.0F);
     }
     else if (name == "gamma" || name == "enableGamma")
     {
-        applyGamma();
+        WindowManager::applyGamma();
     }
     else if (name == "particleEmitterSkip")
     {
@@ -1650,11 +1607,11 @@ void Client::optionChanged(const std::string &name)
     }
     else if (name == "vsync")
     {
-        applyVSync();
+        WindowManager::applyVSync();
     }
     else if (name == "repeateInterval" || name == "repeateDelay")
     {
-        applyKeyRepeat();
+        WindowManager::applyKeyRepeat();
     }
 }
 
@@ -1750,25 +1707,6 @@ void Client::initTradeFilter() const
     }
 }
 
-void Client::setFramerate(const int fpsLimit) const
-{
-    if (!fpsLimit)
-        return;
-
-    if (!mLimitFps)
-        return;
-
-    SDL_setFramerate(&client->mFpsManager, fpsLimit);
-}
-
-int Client::getFramerate() const
-{
-    if (!mLimitFps)
-        return 0;
-
-    return SDL_getFramerate(&client->mFpsManager);
-}
-
 bool Client::isTmw() const
 {
     const std::string &name = settings.serverName;
@@ -1781,142 +1719,33 @@ bool Client::isTmw() const
     return false;
 }
 
-void Client::resizeVideo(int actualWidth,
-                         int actualHeight,
-                         const bool always)
+void Client::moveButtons(const int width)
 {
-    // Keep a minimum size. This isn't adhered to by the actual window, but
-    // it keeps some window positions from getting messed up.
-    actualWidth = std::max(470, actualWidth);
-    actualHeight = std::max(320, actualHeight);
-
-    if (!mainGraphics)
-        return;
-    if (!always
-        && mainGraphics->mActualWidth == actualWidth
-        && mainGraphics->mActualHeight == actualHeight)
+    if (mSetupButton)
     {
-        return;
-    }
-
-    if (mainGraphics->resizeScreen(actualWidth, actualHeight))
-    {
-        const int width = mainGraphics->mWidth;
-        const int height = mainGraphics->mHeight;
-        touchManager.resize(width, height);
-
-        if (gui)
-            gui->videoResized();
-
-        if (mDesktop)
-            mDesktop->setSize(width, height);
-
-        if (mSetupButton)
-        {
-            int x = width - mSetupButton->getWidth() - mButtonPadding;
-            mSetupButton->setPosition(x, mButtonPadding);
+        int x = width - mSetupButton->getWidth() - mButtonPadding;
+        mSetupButton->setPosition(x, mButtonPadding);
 #ifndef WIN32
-            x -= mPerfomanceButton->getWidth() + mButtonSpacing;
-            mPerfomanceButton->setPosition(x, mButtonPadding);
+        x -= mPerfomanceButton->getWidth() + mButtonSpacing;
+        mPerfomanceButton->setPosition(x, mButtonPadding);
 
-            x -= mVideoButton->getWidth() + mButtonSpacing;
-            mVideoButton->setPosition(x, mButtonPadding);
+        x -= mVideoButton->getWidth() + mButtonSpacing;
+        mVideoButton->setPosition(x, mButtonPadding);
 
-            x -= mThemesButton->getWidth() + mButtonSpacing;
-            mThemesButton->setPosition(x, mButtonPadding);
+        x -= mThemesButton->getWidth() + mButtonSpacing;
+        mThemesButton->setPosition(x, mButtonPadding);
 
-            x -= mAboutButton->getWidth() + mButtonSpacing;
-            mAboutButton->setPosition(x, mButtonPadding);
+        x -= mAboutButton->getWidth() + mButtonSpacing;
+        mAboutButton->setPosition(x, mButtonPadding);
 
-            x -= mHelpButton->getWidth() + mButtonSpacing;
-            mHelpButton->setPosition(x, mButtonPadding);
+        x -= mHelpButton->getWidth() + mButtonSpacing;
+        mHelpButton->setPosition(x, mButtonPadding);
 #ifdef ANDROID
-            x -= mCloseButton->getWidth() + mButtonSpacing;
-            mCloseButton->setPosition(x, mButtonPadding);
+        x -= mCloseButton->getWidth() + mButtonSpacing;
+        mCloseButton->setPosition(x, mButtonPadding);
 #endif
 #endif
-        }
-
-        if (mGame)
-            mGame->videoResized(width, height);
-
-        if (gui)
-            gui->draw();
-
-        config.setValue("screenwidth", actualWidth);
-        config.setValue("screenheight", actualHeight);
     }
-}
-
-void Client::applyGrabMode()
-{
-    SDL::grabInput(mainGraphics->getWindow(),
-        config.getBoolValue("grabinput"));
-}
-
-void Client::applyGamma()
-{
-    if (config.getFloatValue("enableGamma"))
-    {
-        SDL::setGamma(mainGraphics->getWindow(),
-            config.getFloatValue("gamma"));
-    }
-}
-
-void Client::applyVSync()
-{
-    const int val = config.getIntValue("vsync");
-    if (val > 0 && val < 2)
-        SDL::setVsync(val);
-}
-
-void Client::applyKeyRepeat()
-{
-#ifndef USE_SDL2
-    SDL_EnableKeyRepeat(config.getIntValue("repeateDelay"),
-        config.getIntValue("repeateInterval"));
-#endif
-}
-
-void Client::applyScale()
-{
-    const int scale = config.getIntValue("scale");
-    if (mainGraphics->getScale() == scale)
-        return;
-    mainGraphics->setScale(scale);
-    resizeVideo(mainGraphics->mActualWidth,
-        mainGraphics->mActualHeight,
-        true);
-}
-
-void Client::setIsMinimized(const bool n)
-{
-    mIsMinimized = n;
-    if (!n && mNewMessageFlag)
-    {
-        mNewMessageFlag = false;
-        SDL::SetWindowTitle(mainGraphics->getWindow(),
-            settings.windowCaption.c_str());
-    }
-}
-
-void Client::newChatMessage()
-{
-    if (!mNewMessageFlag && mIsMinimized)
-    {
-        // show * on window caption
-        SDL::SetWindowTitle(mainGraphics->getWindow(),
-            ("*" + settings.windowCaption).c_str());
-        mNewMessageFlag = true;
-    }
-}
-
-void Client::logVars()
-{
-#ifdef ANDROID
-    logger->log("APPDIR: %s", getenv("APPDIR"));
-    logger->log("DATADIR2: %s", getSdStoragePath().c_str());
-#endif
 }
 
 void Client::windowRemoved(const Window *const window)
@@ -1925,61 +1754,12 @@ void Client::windowRemoved(const Window *const window)
         mCurrentDialog = nullptr;
 }
 
-void Client::setIcon()
+void Client::logVars()
 {
-    std::string iconFile = branding.getValue("appIcon", "icons/manaplus");
-#ifdef WIN32
-    iconFile.append(".ico");
-#else
-    iconFile.append(".png");
+#ifdef ANDROID
+    logger->log("APPDIR: %s", getenv("APPDIR"));
+    logger->log("DATADIR2: %s", getSdStoragePath().c_str());
 #endif
-    iconFile = Files::getPath(iconFile);
-    logger->log("Loading icon from file: %s", iconFile.c_str());
-
-#ifdef WIN32
-    static SDL_SysWMinfo pInfo;
-    if (mainGraphics)
-        SDL::getWindowWMInfo(mainGraphics->getWindow(), &pInfo);
-    else
-        SDL::getWindowWMInfo(nullptr, &pInfo);
-    // Attempt to load icon from .ico file
-    HICON icon = (HICON) LoadImage(nullptr, iconFile.c_str(),
-        IMAGE_ICON, 64, 64, LR_LOADFROMFILE);
-    // If it's failing, we load the default resource file.
-    if (!icon)
-    {
-        logger->log("icon load error");
-        icon = LoadIcon(GetModuleHandle(nullptr), "A");
-    }
-    if (icon)
-        SetClassLong(pInfo.window, GCL_HICON, reinterpret_cast<LONG>(icon));
-#else
-    mIcon = MIMG_Load(iconFile.c_str());
-    if (mIcon)
-    {
-#ifdef USE_SDL2
-        SDL_SetSurfaceAlphaMod(mIcon, SDL_ALPHA_OPAQUE);
-#else
-        SDL_SetAlpha(mIcon, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-#endif
-        SDL::SetWindowIcon(mainGraphics->getWindow(), mIcon);
-    }
-#endif
-}
-
-bool Client::isKeyboardVisible() const
-{
-#ifdef USE_SDL2
-    return SDL_IsTextInputActive();
-#else
-    return mKeyboardHeight > 1;
-#endif
-}
-
-void Client::reloadWallpaper()
-{
-    if (mDesktop)
-        mDesktop->reloadWallpaper();
 }
 
 #ifdef ANDROID

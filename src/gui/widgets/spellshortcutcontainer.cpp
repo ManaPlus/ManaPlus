@@ -25,6 +25,7 @@
 #include "client.h"
 #include "dragdrop.h"
 #include "itemshortcut.h"
+#include "settings.h"
 #include "spellshortcut.h"
 
 #include "gui/viewport.h"
@@ -64,7 +65,7 @@ SpellShortcutContainer::SpellShortcutContainer(Widget2 *const widget,
 
     if (mBackgroundImg)
     {
-        mBackgroundImg->setAlpha(client->getGuiAlpha());
+        mBackgroundImg->setAlpha(settings.guiAlpha);
         mBoxHeight = mBackgroundImg->getHeight();
         mBoxWidth = mBackgroundImg->getWidth();
     }
@@ -97,9 +98,9 @@ void SpellShortcutContainer::draw(Graphics *graphics)
         return;
 
     BLOCK_START("SpellShortcutContainer::draw")
-    if (client->getGuiAlpha() != mAlpha)
+    if (settings.guiAlpha != mAlpha)
     {
-        mAlpha = client->getGuiAlpha();
+        mAlpha = settings.guiAlpha;
         if (mBackgroundImg)
             mBackgroundImg->setAlpha(mAlpha);
     }

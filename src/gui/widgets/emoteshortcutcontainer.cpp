@@ -24,6 +24,7 @@
 #include "animatedsprite.h"
 #include "client.h"
 #include "emoteshortcut.h"
+#include "settings.h"
 
 #include "input/inputmanager.h"
 
@@ -59,7 +60,7 @@ EmoteShortcutContainer::EmoteShortcutContainer(Widget2 *const widget) :
         "item_shortcut_background.xml", "background.xml");
 
     if (mBackgroundImg)
-        mBackgroundImg->setAlpha(client->getGuiAlpha());
+        mBackgroundImg->setAlpha(settings.guiAlpha);
 
     // Setup emote sprites
     for (int i = 0; i <= EmoteDB::getLast(); i++)
@@ -108,11 +109,11 @@ void EmoteShortcutContainer::draw(Graphics *graphics)
         return;
 
     BLOCK_START("EmoteShortcutContainer::draw")
-    if (client->getGuiAlpha() != mAlpha)
+    if (settings.guiAlpha != mAlpha)
     {
         if (mBackgroundImg)
             mBackgroundImg->setAlpha(mAlpha);
-        mAlpha = client->getGuiAlpha();
+        mAlpha = settings.guiAlpha;
     }
 
     Font *const font = getFont();

@@ -53,6 +53,7 @@
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
 #include "gui/viewport.h"
+#include "gui/windowmanager.h"
 #include "gui/windowmenu.h"
 
 #include "gui/fonts/font.h"
@@ -644,7 +645,7 @@ void Game::slowLogic()
             }
         }
         DialogsManager::closeDialogs();
-        client->setFramerate(config.getIntValue("fpslimit"));
+        WindowManager::setFramerate(config.getIntValue("fpslimit"));
         mNextAdjustTime = cur_time + adjustDelay;
         if (client->getState() != STATE_ERROR)
             errorMessage.clear();
@@ -687,7 +688,7 @@ void Game::adjustPerfomance()
             return;
         }
 
-        int maxFps = client->getFramerate();
+        int maxFps = WindowManager::getFramerate();
         if (maxFps != config.getIntValue("fpslimit"))
             return;
 
@@ -895,7 +896,7 @@ void Game::updateFrameRate(int fpsLimit)
     {
         if (player_node && player_node->getAway())
         {
-            if (client->getInputFocused() || client->getMouseFocused())
+            if (settings.inputFocused || settings.mouseFocused)
                 fpsLimit = config.getIntValue("fpslimit");
             else
                 fpsLimit = config.getIntValue("altfpslimit");
@@ -905,7 +906,7 @@ void Game::updateFrameRate(int fpsLimit)
             fpsLimit = config.getIntValue("fpslimit");
         }
     }
-    client->setFramerate(fpsLimit);
+    WindowManager::setFramerate(fpsLimit);
     mNextAdjustTime = cur_time + adjustDelay;
 }
 

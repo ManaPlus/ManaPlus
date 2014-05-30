@@ -39,6 +39,8 @@
 
 #include "debug.h"
 
+Desktop *desktop = nullptr;
+
 Desktop::Desktop(const Widget2 *const widget) :
     Container(widget),
     LinkHandler(),

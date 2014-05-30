@@ -66,6 +66,7 @@
 #include "gui/widgets/radiobutton.h"
 
 #include "client.h"
+#include "settings.h"
 
 #include "input/inputaction.h"
 
@@ -152,7 +153,7 @@ RadioButton::~RadioButton()
 
 void RadioButton::updateAlpha()
 {
-    const float alpha = std::max(client->getGuiAlpha(),
+    const float alpha = std::max(settings.guiAlpha,
         theme->getMinimumOpacity());
 
     if (mAlpha != alpha)

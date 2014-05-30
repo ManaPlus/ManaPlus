@@ -67,6 +67,7 @@
 
 #include "client.h"
 #include "graphicsvertexes.h"
+#include "settings.h"
 
 #include "events/keyevent.h"
 
@@ -172,7 +173,7 @@ void Slider::init()
 
 void Slider::updateAlpha()
 {
-    const float alpha = std::max(client->getGuiAlpha(),
+    const float alpha = std::max(settings.guiAlpha,
         theme->getMinimumOpacity());
 
     if (alpha != mAlpha)

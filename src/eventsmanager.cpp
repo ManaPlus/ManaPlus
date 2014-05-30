@@ -28,6 +28,9 @@
 #endif
 #include "logger.h"
 #include "mumblemanager.h"
+#include "settings.h"
+
+#include "gui/windowmanager.h"
 
 #include "being/localplayer.h"
 
@@ -77,7 +80,9 @@ bool EventsManager::handleCommonEvents(const SDL_Event &event) const
             return true;
 #else
         case SDL_VIDEORESIZE:
-            client->resizeVideo(event.resize.w, event.resize.h, false);
+            WindowManager::resizeVideo(event.resize.w,
+                event.resize.h,
+                false);
             return true;
         case SDL_ACTIVEEVENT:
             handleActive(event);
@@ -404,22 +409,24 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
     switch (eventType)
     {
         case SDL_WINDOWEVENT_RESIZED:
-            client->resizeVideo(event.window.data1, event.window.data2, false);
+            WindowManager::resizeVideo(event.window.data1,
+                event.window.data2,
+                false);
             break;
         case SDL_WINDOWEVENT_ENTER:
-            client->setMouseFocused(true);
+            settings.mouseFocused = true;
             break;
         case SDL_WINDOWEVENT_LEAVE:
-            client->setMouseFocused(false);
+            settings.mouseFocused = false;
             break;
         case SDL_WINDOWEVENT_FOCUS_GAINED:
-            client->setInputFocused(true);
+            settings.inputFocused = true;
             break;
         case SDL_WINDOWEVENT_FOCUS_LOST:
-            client->setInputFocused(false);
+            settings.inputFocused = false;
             break;
         case SDL_WINDOWEVENT_MINIMIZED:
-            client->setIsMinimized(true);
+            WindowManager::setIsMinimized(true);
             if (inGame)
             {
                 if (player_node && !player_node->getAway())
@@ -432,7 +439,7 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
             break;
         case SDL_WINDOWEVENT_RESTORED:
         case SDL_WINDOWEVENT_MAXIMIZED:
-            client->setIsMinimized(false);
+            WindowManager::setIsMinimized(false);
             if (inGame)
             {
                 if (player_node)
@@ -472,7 +479,7 @@ void EventsManager::handleActive(const SDL_Event &event)
     {
         if (event.active.gain)
         {   // window restore
-            client->setIsMinimized(false);
+            WindowManager::setIsMinimized(false);
             if (inGame && player_node)
             {
                 if (!player_node->getAway())
@@ -486,7 +493,7 @@ void EventsManager::handleActive(const SDL_Event &event)
 #ifdef ANDROID
             client->setState(STATE_EXIT);
 #else
-            client->setIsMinimized(true);
+            WindowManager::setIsMinimized(true);
             if (inGame && player_node && !player_node->getAway())
             {
                 fpsLimit = config.getIntValue("altfpslimit");
@@ -502,9 +509,9 @@ void EventsManager::handleActive(const SDL_Event &event)
         player_node->updateName();
 
     if (event.active.state & SDL_APPINPUTFOCUS)
-        client->setInputFocused(event.active.gain);
+        settings.inputFocused = event.active.gain;
     if (event.active.state & SDL_APPMOUSEFOCUS)
-        client->setMouseFocused(event.active.gain);
+        settings.mouseFocused = event.active.gain;
     if (inGame)
         Game::instance()->updateFrameRate(fpsLimit);
 }

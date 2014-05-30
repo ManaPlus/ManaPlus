@@ -23,6 +23,7 @@
 #include "gui/widgets/dropdown.h"
 
 #include "client.h"
+#include "settings.h"
 
 #include "events/keyevent.h"
 
@@ -191,7 +192,7 @@ DropDown::~DropDown()
 
 void DropDown::updateAlpha()
 {
-    const float alpha = std::max(client->getGuiAlpha(),
+    const float alpha = std::max(settings.guiAlpha,
         theme->getMinimumOpacity());
 
     if (mAlpha != alpha)

@@ -33,13 +33,16 @@
 #include "input/inputaction.h"
 
 #include "net/download.h"
+
 #include "gui/gui.h"
+#include "gui/windowmanager.h"
 
 #include "gui/fonts/font.h"
 
 #include "gui/models/serverslistmodel.h"
 
 #include "gui/widgets/checkbox.h"
+#include "gui/widgets/desktop.h"
 #include "gui/windows/editserverdialog.h"
 #include "gui/windows/logindialog.h"
 
@@ -253,7 +256,8 @@ void ServerDialog::connectToSelectedServer()
         if (mServerInfo->hostname != LoginDialog::savedPasswordKey)
         {
             LoginDialog::savedPassword.clear();
-            client->reloadWallpaper();
+            if (desktop)
+                desktop->reloadWallpaper();
         }
     }
 

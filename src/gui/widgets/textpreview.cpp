@@ -23,6 +23,7 @@
 #include "gui/widgets/textpreview.h"
 
 #include "client.h"
+#include "settings.h"
 
 #include "gui/gui.h"
 #include "gui/skin.h"
@@ -85,8 +86,8 @@ void TextPreview::draw(Graphics* graphics)
         return;
 
     BLOCK_START("TextPreview::draw")
-    if (client->getGuiAlpha() != mAlpha)
-        mAlpha = client->getGuiAlpha();
+    if (settings.guiAlpha != mAlpha)
+        mAlpha = settings.guiAlpha;
 
     const int intAlpha = static_cast<int>(mAlpha * 255.0F);
     const int alpha = mTextAlpha ? intAlpha : 255;

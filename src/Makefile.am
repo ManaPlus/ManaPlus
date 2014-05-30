@@ -587,6 +587,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/userpalette.h \
 	      gui/viewport.cpp \
 	      gui/viewport.h \
+	      gui/windowmanager.cpp \
+	      gui/windowmanager.h \
 	      gui/windows/whoisonline.cpp \
 	      gui/windows/whoisonline.h \
 	      gui/windowmenu.cpp \

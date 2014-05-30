@@ -23,6 +23,7 @@
 #include "gui/widgets/shoplistbox.h"
 
 #include "client.h"
+#include "settings.h"
 #include "shopitem.h"
 
 #include "being/playerinfo.h"
@@ -92,8 +93,8 @@ void ShopListBox::draw(Graphics *graphics)
         return;
     }
 
-    if (client->getGuiAlpha() != mAlpha)
-        mAlpha = client->getGuiAlpha();
+    if (settings.guiAlpha != mAlpha)
+        mAlpha = settings.guiAlpha;
 
     const int alpha = static_cast<int>(mAlpha * 255.0F);
     Font *const font = getFont();

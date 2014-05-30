@@ -27,6 +27,7 @@
 #include "inventory.h"
 #include "item.h"
 #include "itemshortcut.h"
+#include "settings.h"
 #include "spellshortcut.h"
 
 #include "being/playerinfo.h"
@@ -80,7 +81,7 @@ ItemShortcutContainer::ItemShortcutContainer(Widget2 *const widget,
 
     if (mBackgroundImg)
     {
-        mBackgroundImg->setAlpha(client->getGuiAlpha());
+        mBackgroundImg->setAlpha(settings.guiAlpha);
         mBoxHeight = mBackgroundImg->getHeight();
         mBoxWidth = mBackgroundImg->getWidth();
     }
@@ -124,11 +125,11 @@ void ItemShortcutContainer::draw(Graphics *graphics)
         return;
     }
 
-    if (client->getGuiAlpha() != mAlpha)
+    if (settings.guiAlpha != mAlpha)
     {
         if (mBackgroundImg)
             mBackgroundImg->setAlpha(mAlpha);
-        mAlpha = client->getGuiAlpha();
+        mAlpha = settings.guiAlpha;
     }
 
     Font *const font = getFont();

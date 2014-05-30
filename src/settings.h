@@ -50,7 +50,11 @@ class Settings final
             windowCaption(),
             updateMirrors(),
             options(),
-            persistentIp(true)
+            guiAlpha(1.0F),
+            persistentIp(true),
+            limitFps(false),
+            inputFocused(true),
+            mouseFocused(true)
         { }
 
         std::string updateHost;
@@ -71,7 +75,11 @@ class Settings final
         std::string windowCaption;
         std::vector<std::string> updateMirrors;
         Options options;
+        float guiAlpha;
         bool persistentIp;
+        bool limitFps;
+        bool inputFocused;
+        bool mouseFocused;
 };
 
 extern Settings settings;

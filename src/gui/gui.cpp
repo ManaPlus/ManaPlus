@@ -70,6 +70,7 @@
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
 #include "gui/viewport.h"
+#include "gui/windowmanager.h"
 
 #include "gui/fonts/font.h"
 
@@ -78,6 +79,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "dragdrop.h"
+#include "settings.h"
 #include "touchmanager.h"
 
 #include "events/keyevent.h"
@@ -463,7 +465,7 @@ void Gui::draw()
     int mouseY;
     const MouseStateType button = getMouseState(&mouseX, &mouseY);
 
-    if ((client->getMouseFocused() || button & SDL_BUTTON(1))
+    if ((settings.mouseFocused || button & SDL_BUTTON(1))
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0F)
     {
         const Image *const image = dragDrop.getItemImage();

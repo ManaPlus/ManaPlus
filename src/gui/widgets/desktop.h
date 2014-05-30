@@ -82,4 +82,6 @@ class Desktop final : public Container,
         bool mShowBackground;
 };
 
+extern Desktop *desktop;
+
 #endif  // GUI_WIDGETS_DESKTOP_H

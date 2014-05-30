@@ -27,12 +27,14 @@
 #include "commands.h"
 #include "commandhandler.h"
 #include "configuration.h"
+#include "settings.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 
 #include "being/localplayer.h"
 
 #include "gui/chatlog.h"
+#include "gui/windowmanager.h"
 
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/helpwindow.h"
@@ -320,8 +322,9 @@ void ChatTab::chatLog(std::string line, ChatMsgType::Type own,
 
         if ((getAllowHighlight() || own == ChatMsgType::BY_GM)
             && (this != tabArea->getSelectedTab()
-            || (client->getIsMinimized() || (!client->getMouseFocused()
-            && !client->getInputFocused()))))
+            || (WindowManager::getIsMinimized()
+            || (!settings.mouseFocused
+            && !settings.inputFocused))))
         {
             if (own == ChatMsgType::BY_GM)
             {
@@ -335,7 +338,7 @@ void ChatTab::chatLog(std::string line, ChatMsgType::Type own,
                     chatWindow->unHideWindow();
                 playNewMessageSound();
             }
-            client->newChatMessage();
+            WindowManager::newChatMessage();
         }
     }
 }

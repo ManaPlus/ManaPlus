@@ -66,6 +66,7 @@
 #include "gui/widgets/textfield.h"
 
 #include "client.h"
+#include "settings.h"
 
 #include "input/inputmanager.h"
 
@@ -173,7 +174,7 @@ TextField::~TextField()
 
 void TextField::updateAlpha()
 {
-    const float alpha = std::max(client->getGuiAlpha(),
+    const float alpha = std::max(settings.guiAlpha,
         theme->getMinimumOpacity());
 
     if (alpha != mAlpha)

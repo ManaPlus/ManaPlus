@@ -21,6 +21,8 @@
 
 #include "gui/widgets/tabs/setup_visual.h"
 
+#include "gui/windowmanager.h"
+
 #include "gui/models/namesmodel.h"
 
 #include "gui/widgets/containerplacer.h"
@@ -228,8 +230,8 @@ Setup_Visual::~Setup_Visual()
 void Setup_Visual::apply()
 {
     SetupTabScroll::apply();
-    Client::applyGrabMode();
+    WindowManager::applyGrabMode();
 #ifndef WIN32
-    client->applyScale();
+    WindowManager::applyScale();
 #endif
 }

@@ -23,6 +23,7 @@
 #include "gui/widgets/playerbox.h"
 
 #include "client.h"
+#include "settings.h"
 
 #include "being/being.h"
 
@@ -126,9 +127,9 @@ void PlayerBox::draw(Graphics *graphics)
         mBeing->drawSpriteAt(graphics, x, y);
     }
 
-    if (client->getGuiAlpha() != mAlpha)
+    if (settings.guiAlpha != mAlpha)
     {
-        const float alpha = client->getGuiAlpha();
+        const float alpha = settings.guiAlpha;
         for (int a = 0; a < 9; a++)
         {
             if (mBackground.grid[a])

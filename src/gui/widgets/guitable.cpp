@@ -23,6 +23,7 @@
 #include "gui/widgets/guitable.h"
 
 #include "client.h"
+#include "settings.h"
 
 #include "gui/gui.h"
 
@@ -247,8 +248,8 @@ void GuiTable::draw(Graphics* graphics)
         return;
 
     BLOCK_START("GuiTable::draw")
-    if (client->getGuiAlpha() != mAlpha)
-        mAlpha = client->getGuiAlpha();
+    if (settings.guiAlpha != mAlpha)
+        mAlpha = settings.guiAlpha;
 
     const Rect &rect = mDimension;
     const int width = rect.width;

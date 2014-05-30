@@ -25,6 +25,7 @@
 #include "gui/skin.h"
 
 #include "client.h"
+#include "settings.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"
@@ -101,7 +102,7 @@ void Skin::updateAlpha(const float minimumOpacityAllowed)
 {
     const float alpha = static_cast<float>(
         std::max(static_cast<double>(minimumOpacityAllowed),
-        static_cast<double>(client->getGuiAlpha())));
+        static_cast<double>(settings.guiAlpha)));
 
     if (mBorder)
     {
