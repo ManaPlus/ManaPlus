@@ -23,17 +23,7 @@
 #ifndef GUI_WINDOWMANAGER_H
 #define GUI_WINDOWMANAGER_H
 
-#ifdef USE_SDL2
-#include <SDL2_framerate.h>
-#else
-#include <SDL_framerate.h>
-#endif
-
-#include <string>
-
 #include "localconsts.h"
-
-class Window;
 
 namespace WindowManager
 {
@@ -65,7 +55,9 @@ namespace WindowManager
 
     void applyScale();
 
+#ifndef USE_SDL2
     void updateScreenKeyboard(const int height);
+#endif
 
     void reloadWallpaper();
 
@@ -76,6 +68,6 @@ namespace WindowManager
     void setIcon();
 
     void deleteIcon();
-}
+}  // namespace WindowManager
 
 #endif  // GUI_WINDOWMANAGER_H

@@ -22,129 +22,24 @@
 
 #include "gui/windowmanager.h"
 
-#include "auctionmanager.h"
-#include "chatlogger.h"
 #include "client.h"
-#include "configmanager.h"
 #include "configuration.h"
-#include "dirs.h"
-#include "dropshortcut.h"
-#include "emoteshortcut.h"
-#include "eventsmanager.h"
 #include "game.h"
-#include "guild.h"
-#include "guildmanager.h"
-#include "graphicsmanager.h"
-#include "itemshortcut.h"
-#include "party.h"
 #include "settings.h"
-#include "soundconsts.h"
-#include "soundmanager.h"
-#include "statuseffect.h"
-#include "units.h"
 #include "touchmanager.h"
 
-#include "being/beingspeech.h"
-#include "being/playerinfo.h"
-#include "being/playerrelations.h"
-
-#include "input/inputmanager.h"
-#include "input/joystick.h"
-#include "input/keyboardconfig.h"
-
-#include "gui/dialogsmanager.h"
 #include "gui/gui.h"
-#include "gui/skin.h"
-#include "gui/theme.h"
+#include "gui/userpalette.h"
 
-#include "gui/windows/buyselldialog.h"
-#include "gui/windows/buydialog.h"
-#include "gui/windows/changeemaildialog.h"
-#include "gui/windows/changepassworddialog.h"
-#include "gui/windows/charselectdialog.h"
-#include "gui/windows/confirmdialog.h"
-#include "gui/windows/connectiondialog.h"
 #include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/helpwindow.h"
-#include "gui/windows/logindialog.h"
-#include "gui/windows/npcdialog.h"
-#include "gui/windows/okdialog.h"
-#include "gui/windows/registerdialog.h"
-#include "gui/windows/selldialog.h"
-#include "gui/windows/serverdialog.h"
 #include "gui/windows/setupwindow.h"
-#include "gui/windows/unregisterdialog.h"
-#include "gui/windows/updaterwindow.h"
-#include "gui/windows/quitdialog.h"
-#include "gui/windows/worldselectdialog.h"
 
-#include "gui/widgets/button.h"
 #include "gui/widgets/desktop.h"
 
-#include "net/chathandler.h"
-#include "net/download.h"
-#include "net/gamehandler.h"
-#include "net/generalhandler.h"
-#include "net/guildhandler.h"
-#include "net/inventoryhandler.h"
-#include "net/loginhandler.h"
-#include "net/net.h"
-#include "net/netconsts.h"
-#include "net/packetlimiter.h"
-#include "net/partyhandler.h"
-
-#include "particle/particle.h"
-
-#include "resources/imagehelper.h"
-#include "resources/openglimagehelper.h"
-#include "resources/resourcemanager.h"
-#include "resources/surfaceimagehelper.h"
-#include "resources/spritereference.h"
-
-#include "resources/db/avatardb.h"
-#include "resources/db/chardb.h"
-#include "resources/db/colordb.h"
-#include "resources/db/deaddb.h"
-#include "resources/db/emotedb.h"
-#include "resources/db/sounddb.h"
-#include "resources/db/itemdb.h"
-#include "resources/db/mapdb.h"
-#include "resources/db/moddb.h"
-#include "resources/db/monsterdb.h"
-#include "resources/db/npcdb.h"
-#include "resources/db/palettedb.h"
-#include "resources/db/petdb.h"
-#include "resources/db/weaponsdb.h"
-
-#include "utils/base64.h"
-#include "utils/cpu.h"
-#include "utils/delete2.h"
 #include "utils/files.h"
-#include "utils/fuzzer.h"
-#include "utils/gettext.h"
-#include "utils/gettexthelper.h"
-#include "utils/mkdir.h"
-#include "utils/paths.h"
-#include "utils/physfstools.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
-#include "utils/timer.h"
-
-#include "utils/translation/translationmanager.h"
-
-#include "test/testlauncher.h"
-#include "test/testmain.h"
-
-#ifdef __APPLE__
-#include <CoreFoundation/CFBundle.h>
-#endif
-
-#include <SDL_image.h>
-
-#ifdef WIN32
-#include <SDL_syswm.h>
-#include "utils/specialfolder.h"
-#endif
 
 #ifdef ANDROID
 #ifndef USE_SDL2
@@ -152,12 +47,17 @@
 #endif
 #endif
 
-#include <sys/stat.h>
+#ifdef USE_SDL2
+#include <SDL2_framerate.h>
+#else
+#include <SDL_framerate.h>
+#endif
 
-#include <climits>
-#include <fstream>
+#include <SDL_image.h>
 
-#include "mumblemanager.h"
+#ifdef WIN32
+#include <SDL_syswm.h>
+#endif
 
 #include "debug.h"
 
@@ -166,7 +66,9 @@ FPSmanager fpsManager;
 namespace
 {
     SDL_Surface *mIcon(nullptr);
+#ifndef USE_SDL2
     int mKeyboardHeight(0);
+#endif
     bool mIsMinimized(false);
     bool mNewMessageFlag(false);
 }  // namespace
@@ -206,7 +108,8 @@ void WindowManager::initTitle()
             SMALL_VERSION);
     }
 
-    SDL::SetWindowTitle(mainGraphics->getWindow(), settings.windowCaption.c_str());
+    SDL::SetWindowTitle(mainGraphics->getWindow(),
+        settings.windowCaption.c_str());
 #ifndef WIN32
     setIcon();
 #endif
@@ -394,10 +297,12 @@ bool WindowManager::getIsMinimized()
     return mIsMinimized;
 }
 
+#ifndef USE_SDL2
 void WindowManager::updateScreenKeyboard(const int height)
 {
     mKeyboardHeight = height;
 }
+#endif
 
 void WindowManager::deleteIcon()
 {

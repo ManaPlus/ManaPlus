@@ -24,8 +24,6 @@
 
 #include "logger.h"
 
-#include "resources/resourcemanager.h"
-
 #include "utils/fuzzer.h"
 #include "utils/physfstools.h"
 #include "utils/stringutils.h"

@@ -25,7 +25,6 @@
 #include "utils/files.h"
 
 #include "resources/dyecolor.h"
-#include "resources/resourcemanager.h"
 
 #include <map>
 

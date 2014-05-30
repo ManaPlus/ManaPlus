@@ -84,7 +84,9 @@
 #include "utils/gettext.h"
 #include "utils/timer.h"
 
+#ifdef USE_MUMBLE
 #include "mumblemanager.h"
+#endif
 
 #include <climits>
 

@@ -70,13 +70,11 @@
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
 #include "gui/viewport.h"
-#include "gui/windowmanager.h"
 
 #include "gui/fonts/font.h"
 
 #include "gui/widgets/window.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "dragdrop.h"
 #include "settings.h"

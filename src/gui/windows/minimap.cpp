@@ -23,7 +23,6 @@
 #include "gui/windows/minimap.h"
 
 #include "actormanager.h"
-#include "client.h"
 #include "configuration.h"
 #include "party.h"
 #include "settings.h"

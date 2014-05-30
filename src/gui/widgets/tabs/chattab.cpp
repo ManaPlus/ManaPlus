@@ -23,7 +23,6 @@
 #include "gui/widgets/tabs/chattab.h"
 
 #include "chatlogger.h"
-#include "client.h"
 #include "commands.h"
 #include "commandhandler.h"
 #include "configuration.h"

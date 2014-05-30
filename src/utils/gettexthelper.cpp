@@ -20,12 +20,21 @@
 
 #include "utils/gettexthelper.h"
 
+#include "client.h"
+#include "configuration.h"
+
 #include "debug.h"
 
-#ifdef WIN32
-extern "C" char const *_nl_locale_name_default(void);
+#ifdef ENABLE_NLS
+#include "logger.h"
+
+#include <libintl.h>
 #endif
 
+#ifdef WIN32
+#include <string>
+extern "C" char const *_nl_locale_name_default(void);
+#endif
 
 void GettextHelper::initLang()
 {
@@ -44,8 +53,8 @@ void GettextHelper::initLang()
 
     if (!lang.empty())
     {
-        setEnv("LANG", lang.c_str());
-        setEnv("LANGUAGE", lang.c_str());
+        Client::setEnv("LANG", lang.c_str());
+        Client::setEnv("LANGUAGE", lang.c_str());
     }
 #ifdef ANDROID
 #ifdef USE_SDL2
@@ -87,16 +96,19 @@ void GettextHelper::initLang()
     bind_textdomain_codeset("manaplus", "UTF-8");
     textdomain("manaplus");
 #endif  // ENABLE_NLS
-
 }
 
+#ifdef ENABLE_NLS
 void GettextHelper::bindTextDomain(const char *const path)
 {
-#ifdef ENABLE_NLS
     const char *const dir = bindtextdomain("manaplus", path);
     if (dir)
         logger->log("bindtextdomain: %s", dir);
     else
         logger->log("bindtextdomain failed");
-#endif
 }
+#else
+void GettextHelper::bindTextDomain(const char *const path A_UNUSED)
+{
+}
+#endif

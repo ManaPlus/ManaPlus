@@ -22,7 +22,6 @@
 
 #include "gui/widgets/tabs/setup_video.h"
 
-#include "client.h"
 #include "configuration.h"
 
 #include "graphicsmanager.h"

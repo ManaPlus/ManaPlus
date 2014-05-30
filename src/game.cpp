@@ -64,13 +64,11 @@
 #include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/emotewindow.h"
 #include "gui/windows/equipmentwindow.h"
-#include "gui/windows/helpwindow.h"
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/killstats.h"
 #include "gui/windows/minimap.h"
 #include "gui/windows/ministatuswindow.h"
 #include "gui/windows/npcdialog.h"
-#include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/shopwindow.h"
@@ -80,7 +78,6 @@
 #include "gui/windows/statuswindow.h"
 #include "gui/windows/tradewindow.h"
 #include "gui/windows/questswindow.h"
-#include "gui/windows/updaterwindow.h"
 #include "gui/windows/whoisonline.h"
 
 #include "gui/widgets/tabs/battletab.h"
@@ -113,7 +110,6 @@
 #include "utils/langs.h"
 #include "utils/mkdir.h"
 #include "utils/physfstools.h"
-#include "utils/process.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
 
@@ -122,7 +118,9 @@
 #include <sstream>
 #include <string>
 
+#ifdef USE_MUMBLE
 #include "mumblemanager.h"
+#endif
 
 #include "debug.h"
 

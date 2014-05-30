@@ -22,7 +22,6 @@
 
 #include "gui/widgets/playerbox.h"
 
-#include "client.h"
 #include "settings.h"
 
 #include "being/being.h"

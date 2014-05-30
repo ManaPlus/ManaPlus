@@ -74,7 +74,6 @@
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
-#include "resources/resourcemanager.h"
 
 #include "utils/files.h"
 #include "utils/paths.h"

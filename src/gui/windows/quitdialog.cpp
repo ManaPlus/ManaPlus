@@ -24,7 +24,6 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "game.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 

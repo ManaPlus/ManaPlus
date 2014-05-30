@@ -65,7 +65,6 @@
 
 #include "gui/widgets/button.h"
 
-#include "client.h"
 #include "graphicsvertexes.h"
 #include "settings.h"
 

@@ -52,8 +52,7 @@ static void init()
 
 TEST(AnimatedSprite, basic)
 {
-    Client::Options options;
-    client = new Client(options);
+    client = new Client;
 
     init();
     AnimatedSprite *sprite = AnimatedSprite::load(
@@ -77,9 +76,7 @@ TEST(AnimatedSprite, basic)
 
 TEST(AnimatedSprite, basic2)
 {
-    Client::Options options;
-    client = new Client(options);
-
+    client = new Client;
     init();
     AnimatedSprite *sprite = AnimatedSprite::load(
         "graphics/sprites/test.xml", 0);

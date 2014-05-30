@@ -20,10 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DIALOGMANAGER_H
-#define DIALOGMANAGER_H
+#ifndef GUI_DIALOGSMANAGER_H
+#define GUI_DIALOGSMANAGER_H
 
 #include <string>
+
+#include "localconsts.h"
 
 class Window;
 
@@ -39,4 +41,4 @@ class DialogsManager final
                                        const bool modal);
 };
 
-#endif  // DIALOGMANAGER_H
+#endif  // GUI_DIALOGSMANAGER_H

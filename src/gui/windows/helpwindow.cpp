@@ -35,8 +35,6 @@
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 
-#include "resources/resourcemanager.h"
-
 #include "utils/gettext.h"
 #include "utils/files.h"
 #include "utils/paths.h"

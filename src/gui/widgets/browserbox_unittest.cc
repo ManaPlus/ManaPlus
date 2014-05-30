@@ -46,9 +46,7 @@ TEST(browserbox, test1)
 {
     PHYSFS_init("manaplus");
     dirSeparator = "/";
-    Client::Options options;
-    client = new Client(options);
-
+    client = new Client;
     logger = new Logger();
     imageHelper = new SDLImageHelper();
     theme = new Theme;

@@ -22,7 +22,6 @@
 
 #include "resources/map/map.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "render/graphics.h"
 #include "notifications.h"

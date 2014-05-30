@@ -22,7 +22,6 @@
 
 #include "gui/widgets/dropdown.h"
 
-#include "client.h"
 #include "settings.h"
 
 #include "events/keyevent.h"

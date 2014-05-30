@@ -27,8 +27,6 @@
 #include "utils/translation/podict.h"
 #include "utils/translation/poparser.h"
 
-#include "resources/resourcemanager.h"
-
 #include "logger.h"
 
 #include "debug.h"

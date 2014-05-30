@@ -22,7 +22,6 @@
 
 #include "gui/widgets/progressbar.h"
 
-#include "client.h"
 #include "graphicsvertexes.h"
 #include "settings.h"
 

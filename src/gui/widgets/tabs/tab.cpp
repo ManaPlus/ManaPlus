@@ -65,7 +65,6 @@
 
 #include "gui/widgets/tabs/tab.h"
 
-#include "client.h"
 #include "graphicsvertexes.h"
 #include "settings.h"
 

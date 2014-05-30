@@ -23,7 +23,6 @@
 
 #ifdef USE_OPENGL
 
-#include "client.h"
 #include "settings.h"
 
 #include "utils/delete2.h"

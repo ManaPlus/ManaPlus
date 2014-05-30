@@ -65,7 +65,6 @@
 
 #include "gui/widgets/checkbox.h"
 
-#include "client.h"
 #include "settings.h"
 
 #include "input/inputaction.h"

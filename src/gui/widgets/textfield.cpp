@@ -65,7 +65,6 @@
 
 #include "gui/widgets/textfield.h"
 
-#include "client.h"
 #include "settings.h"
 
 #include "input/inputmanager.h"
@@ -73,6 +72,9 @@
 #include "gui/gui.h"
 #include "gui/skin.h"
 #include "gui/viewport.h"
+#ifdef ANDROID
+#include "gui/windowmanager.h"
+#endif
 
 #include "gui/fonts/font.h"
 
@@ -83,6 +85,7 @@
 
 #include "utils/copynpaste.h"
 #include "utils/delete2.h"
+#include "utils/stringutils.h"
 #include "utils/timer.h"
 
 #undef DELETE  // Win32 compatibility hack
@@ -700,7 +703,7 @@ void TextField::fontChanged()
 void TextField::mousePressed(MouseEvent &event)
 {
 #ifdef ANDROID
-    if (!client->isKeyboardVisible())
+    if (!WindowManager::isKeyboardVisible())
         inputManager.executeAction(InputAction::SHOW_KEYBOARD);
 #endif
     event.consume();
@@ -737,7 +740,7 @@ void TextField::mousePressed(MouseEvent &event)
 void TextField::focusGained(const Event &event A_UNUSED)
 {
 #ifdef ANDROID
-    if (!client->isKeyboardVisible())
+    if (!WindowManager::isKeyboardVisible())
         inputManager.executeAction(InputAction::SHOW_KEYBOARD);
 #endif
 }

@@ -39,13 +39,11 @@
 #include "itemshortcut.h"
 #include "party.h"
 #include "settings.h"
-#include "soundconsts.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
 #include "units.h"
 #include "touchmanager.h"
 
-#include "being/beingspeech.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
@@ -59,12 +57,9 @@
 #include "gui/theme.h"
 #include "gui/windowmanager.h"
 
-#include "gui/windows/buyselldialog.h"
-#include "gui/windows/buydialog.h"
 #include "gui/windows/changeemaildialog.h"
 #include "gui/windows/changepassworddialog.h"
 #include "gui/windows/charselectdialog.h"
-#include "gui/windows/confirmdialog.h"
 #include "gui/windows/connectiondialog.h"
 #include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/helpwindow.h"
@@ -72,7 +67,6 @@
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/okdialog.h"
 #include "gui/windows/registerdialog.h"
-#include "gui/windows/selldialog.h"
 #include "gui/windows/serverdialog.h"
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/unregisterdialog.h"
@@ -118,15 +112,14 @@
 #include "resources/db/petdb.h"
 #include "resources/db/weaponsdb.h"
 
-#include "utils/base64.h"
 #include "utils/cpu.h"
 #include "utils/delete2.h"
-#include "utils/files.h"
 #include "utils/fuzzer.h"
 #include "utils/gettext.h"
 #include "utils/gettexthelper.h"
-#include "utils/mkdir.h"
+#ifdef ANDROID
 #include "utils/paths.h"
+#endif
 #include "utils/physfstools.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
@@ -134,14 +127,14 @@
 
 #include "utils/translation/translationmanager.h"
 
+#include "listeners/errorlistener.h"
+
 #include "test/testlauncher.h"
 #include "test/testmain.h"
 
 #ifdef __APPLE__
 #include <CoreFoundation/CFBundle.h>
 #endif
-
-#include <SDL_image.h>
 
 #ifdef WIN32
 #include <SDL_syswm.h>
@@ -159,7 +152,9 @@
 #include <climits>
 #include <fstream>
 
+#ifdef USE_MUMBLE
 #include "mumblemanager.h"
+#endif
 
 #include "debug.h"
 
@@ -448,7 +443,7 @@ void Client::gameInit()
 
 #ifdef ANDROID
 #ifndef USE_SDL2
-    updateScreenKeyboard(SDL_GetScreenKeyboardHeight(nullptr));
+    WindowManager::updateScreenKeyboard(SDL_GetScreenKeyboardHeight(nullptr));
 #endif
 #endif
 }
@@ -1010,7 +1005,8 @@ int Client::gameExec()
                     // Allow changing this using a server choice dialog
                     // We show the dialog box only if the command-line
                     // options weren't set.
-                    if (settings.options.serverName.empty() && settings.options.serverPort == 0
+                    if (settings.options.serverName.empty()
+                        && settings.options.serverPort == 0
                         && !branding.getValue("onlineServerList", "a").empty())
                     {
                         // Don't allow an alpha opacity
@@ -1069,7 +1065,8 @@ int Client::gameExec()
                         || settings.options.password.empty())
                     {
                         mCurrentDialog = new LoginDialog(&loginData,
-                            mCurrentServer.hostname, &settings.options.updateHost);
+                            mCurrentServer.hostname,
+                            &settings.options.updateHost);
                         mCurrentDialog->postInit();
                     }
                     else

@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GETTEXTHELPER_H
-#define GETTEXTHELPER_H
+#ifndef UTILS_GETTEXTHELPER_H
+#define UTILS_GETTEXTHELPER_H
 
 #include "localconsts.h"
 
@@ -29,7 +29,11 @@ class GettextHelper final
         static void initLang();
 
     private:
+#ifdef ENABLE_NLS
         static void bindTextDomain(const char *const path);
+#else
+        static void bindTextDomain(const char *const path A_UNUSED);
+#endif
 };
 
-#endif  // GETTEXTHELPER_H
+#endif  // UTILS_GETTEXTHELPER_H

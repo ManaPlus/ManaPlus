@@ -22,7 +22,6 @@
 #include "gui/widgets/emoteshortcutcontainer.h"
 
 #include "animatedsprite.h"
-#include "client.h"
 #include "emoteshortcut.h"
 #include "settings.h"
 
@@ -38,6 +37,8 @@
 #include "resources/image.h"
 
 #include "resources/db/emotedb.h"
+
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

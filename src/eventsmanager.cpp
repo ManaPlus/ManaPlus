@@ -89,7 +89,7 @@ bool EventsManager::handleCommonEvents(const SDL_Event &event) const
             return true;
 #ifdef ANDROID
         case SDL_KEYBOARDSHOW:
-            client->updateScreenKeyboard(event.user.code);
+            WindowManager::updateScreenKeyboard(event.user.code);
             return true;
         case SDL_ACCELEROMETER:
             break;

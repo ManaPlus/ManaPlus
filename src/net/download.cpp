@@ -22,7 +22,6 @@
 #include "net/download.h"
 
 #include "configuration.h"
-#include "client.h"
 #include "logger.h"
 #include "main.h"
 #include "settings.h"

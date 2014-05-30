@@ -25,6 +25,12 @@
 
 #include <string>
 
+#if defined(__GXX_EXPERIMENTAL_CXX0X__)
+#include <cstdint>
+#else
+#include <stdint.h>
+#endif
+
 /**
  * A structure holding the values of various options that can be passed
  * from the command line.

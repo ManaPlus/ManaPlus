@@ -20,8 +20,6 @@
 
 #include "settings.h"
 
-#include "configuration.h"
-
 #include "debug.h"
 
 Settings settings;

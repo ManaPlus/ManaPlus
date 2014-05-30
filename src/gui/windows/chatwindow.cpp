@@ -23,7 +23,6 @@
 #include "gui/windows/chatwindow.h"
 
 #include "actormanager.h"
-#include "client.h"
 #include "commandhandler.h"
 #include "configuration.h"
 #include "game.h"
@@ -76,8 +75,6 @@
 #include "utils/delete2.h"
 #include "utils/files.h"
 #include "utils/gettext.h"
-
-#include "resources/resourcemanager.h"
 
 #include <sstream>
 

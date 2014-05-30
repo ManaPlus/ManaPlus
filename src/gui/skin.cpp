@@ -24,7 +24,6 @@
 
 #include "gui/skin.h"
 
-#include "client.h"
 #include "settings.h"
 
 #include "resources/image.h"

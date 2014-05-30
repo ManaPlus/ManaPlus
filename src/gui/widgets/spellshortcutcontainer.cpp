@@ -22,7 +22,6 @@
 
 #include "gui/widgets/spellshortcutcontainer.h"
 
-#include "client.h"
 #include "dragdrop.h"
 #include "itemshortcut.h"
 #include "settings.h"

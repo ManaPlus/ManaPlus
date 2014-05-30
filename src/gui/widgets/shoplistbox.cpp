@@ -22,7 +22,6 @@
 
 #include "gui/widgets/shoplistbox.h"
 
-#include "client.h"
 #include "settings.h"
 #include "shopitem.h"
 

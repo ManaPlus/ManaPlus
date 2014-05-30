@@ -22,7 +22,6 @@
 
 #include "resources/resourcemanager.h"
 
-#include "animationdelayload.h"
 #include "configuration.h"
 #include "logger.h"
 #include "navigationmanager.h"
@@ -40,12 +39,9 @@
 #include "resources/spritedef.h"
 
 #include "utils/delete2.h"
-#include "utils/mkdir.h"
-#include "utils/paths.h"
 #include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
-#include "utils/timer.h"
 
 #include <SDL_image.h>
 

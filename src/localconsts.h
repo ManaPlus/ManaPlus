@@ -133,3 +133,7 @@
 #undef USE_FUZZER
 #endif
 #include "utils/perfomance.h"
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif

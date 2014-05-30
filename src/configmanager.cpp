@@ -28,7 +28,6 @@
 #include "settings.h"
 
 #include "being/beingspeech.h"
-#include "being/playerrelations.h"
 
 #include "utils/files.h"
 #include "utils/gettext.h"

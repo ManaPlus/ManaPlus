@@ -48,8 +48,7 @@ static void init()
 
 TEST(xmlutils, readXmlIntVector1)
 {
-    Client::Options options;
-    client = new Client(options);
+    client = new Client;
     init();
 
     std::vector<int> arr;

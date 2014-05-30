@@ -67,7 +67,6 @@
 #include "resources/emoteinfo.h"
 #include "resources/emotesprite.h"
 #include "resources/iteminfo.h"
-#include "resources/resourcemanager.h"
 #include "resources/spriteaction.h"
 
 #include "resources/db/avatardb.h"

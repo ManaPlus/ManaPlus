@@ -22,13 +22,10 @@
 
 #ifdef USE_OPENGL
 
-#include "client.h"
 #include "graphicsmanager.h"
 #include "graphicsvertexes.h"
 #include "settings.h"
 #include "soundmanager.h"
-
-#include "render/sdlgraphics.h"
 
 #include "gui/theme.h"
 
@@ -50,6 +47,8 @@
 #include <windows.h>
 #define sleep(seconds) Sleep((seconds) * 1000)
 #endif
+
+#include <sys/time.h>
 
 #include "debug.h"
 

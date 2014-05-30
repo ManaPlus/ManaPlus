@@ -22,7 +22,6 @@
 
 #include "actormanager.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "main.h"
 

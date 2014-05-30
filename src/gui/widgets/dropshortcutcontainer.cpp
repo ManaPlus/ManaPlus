@@ -22,7 +22,6 @@
 
 #include "gui/widgets/dropshortcutcontainer.h"
 
-#include "client.h"
 #include "dragdrop.h"
 #include "dropshortcut.h"
 #include "settings.h"
@@ -40,6 +39,7 @@
 #include "resources/image.h"
 
 #include "utils/delete2.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

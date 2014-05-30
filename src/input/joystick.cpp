@@ -22,18 +22,17 @@
 
 #include "input/joystick.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "logger.h"
 #include "settings.h"
 #include "sdlshared.h"
 
-#include "gui/windowmanager.h"
-
 #include "input/inputmanager.h"
 #include "input/inputtype.h"
 
 #include "utils/timer.h"
+
+#include <SDL.h>
 
 #include "debug.h"
 

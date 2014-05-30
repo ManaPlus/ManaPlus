@@ -35,7 +35,6 @@
 #include "net/download.h"
 
 #include "gui/gui.h"
-#include "gui/windowmanager.h"
 
 #include "gui/fonts/font.h"
 

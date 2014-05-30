@@ -39,8 +39,6 @@
 #include <CoreFoundation/CFBundle.h>
 #endif
 
-#include <SDL_image.h>
-
 #ifdef WIN32
 #include <SDL_syswm.h>
 #include "utils/specialfolder.h"
@@ -65,8 +63,8 @@ void Dirs::updateDataPath()
         }
         else
         {
-            settings.options.dataPath = branding.getDirectory().append(dirSeparator)
-                + branding.getStringValue("dataPath");
+            settings.options.dataPath = branding.getDirectory().append(
+                dirSeparator) + branding.getStringValue("dataPath");
         }
         settings.options.skipUpdate = true;
     }

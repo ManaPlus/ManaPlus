@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 
-#include "resources/resourcemanager.h"
 #include "resources/wallpaperdata.h"
 
 #include "utils/physfstools.h"

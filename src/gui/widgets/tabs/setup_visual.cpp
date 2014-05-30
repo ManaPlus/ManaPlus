@@ -29,10 +29,9 @@
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 
-#include "client.h"
-
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

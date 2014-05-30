@@ -88,7 +88,7 @@ void Files::copyPhysFsFile(const std::string &restrict inFile,
                            const std::string &restrict outFile)
 {
     int size = 0;
-    void *const buf = ResourceManager::loadFile(inFile, size);
+    void *const buf = PhysFs::loadFile(inFile, size);
     FILE *const file = fopen(outFile.c_str(), "w");
     fwrite(buf, 1, size, file);
     fclose(file);

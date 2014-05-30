@@ -28,13 +28,11 @@
 #include "utils/stringvector.h"
 
 #include <ctime>
-#include <list>
 #include <map>
 #include <set>
 
 #include "localconsts.h"
 
-class AnimationDelayLoad;
 class Image;
 class ImageSet;
 class Map;

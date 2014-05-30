@@ -22,7 +22,6 @@
 
 #include "gui/widgets/guitable.h"
 
-#include "client.h"
 #include "settings.h"
 
 #include "gui/gui.h"

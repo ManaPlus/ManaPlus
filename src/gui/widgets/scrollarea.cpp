@@ -65,7 +65,6 @@
 
 #include "gui/widgets/scrollarea.h"
 
-#include "client.h"
 #include "graphicsvertexes.h"
 #include "settings.h"
 
@@ -76,6 +75,7 @@
 #include "resources/imagerect.h"
 
 #include "utils/delete2.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

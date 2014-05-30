@@ -23,8 +23,6 @@
 #ifndef DIRS_H
 #define DIRS_H
 
-#include <string>
-
 #include "localconsts.h"
 
 class Dirs final

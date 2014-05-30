@@ -25,8 +25,8 @@
 
 #include "state.h"
 
+#include "listeners/actionlistener.h"
 #include "listeners/configlistener.h"
-#include "listeners/errorlistener.h"
 
 #include "net/serverinfo.h"
 
@@ -69,7 +69,7 @@ class Client final : public ConfigListener,
                      public ActionListener
 {
 public:
-    explicit Client();
+    Client();
 
     A_DELETE_COPY(Client)
 
@@ -101,6 +101,8 @@ public:
 
     void windowRemoved(const Window *const window);
 
+    static void setEnv(const char *const name, const char *const value);
+
 private:
     void initSoundManager();
 
@@ -118,8 +120,6 @@ private:
 
     static void logVars();
 
-    static void setEnv(const char *const name, const char *const value);
-
 #ifdef ANDROID
 #ifdef USE_SDL2
     static void extractAssets();
@@ -131,7 +131,6 @@ private:
     Game *mGame;
     Window *mCurrentDialog;
     QuitDialog *mQuitDialog;
-    Desktop *mDesktop;
     Button *mSetupButton;
     Button *mVideoButton;
     Button *mHelpButton;
@@ -146,10 +145,8 @@ private:
     State mOldState;
 
     Skin *mSkin;
-    float mGuiAlpha;
     int mButtonPadding;
     int mButtonSpacing;
-    int mKeyboardHeight;
     bool mConfigAutoSaved;
 };
 
