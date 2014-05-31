@@ -23,24 +23,14 @@
 
 #include "utils/stringvector.h"
 
+#include "gui/colorpair.h"
+
 #include "gui/models/listmodel.h"
 
 #include "localconsts.h"
 
 class Color;
 class Widget2;
-
-struct ColorPair
-{
-    ColorPair(const Color* c1, const Color* c2) :
-        color1(c1),
-        color2(c2)
-    {
-    }
-
-    const Color* color1;
-    const Color* color2;
-};
 
 class ColorModel : public ListModel
 {

@@ -956,7 +956,9 @@ SET(SRCS
     gui/chatlog.h
     gui/chatmsgtype.h
     gui/cliprect.h
+    gui/color.cpp
     gui/color.h
+    gui/colorpair.h
     gui/dialogtype.h
     listeners/deathlistener.h
     listeners/errorlistener.cpp
