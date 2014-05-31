@@ -80,6 +80,8 @@
 #define gnu_printf printf
 #endif
 
+#define notfinal
+
 #define FOR_EACH(type, iter, array) for (type iter = array.begin(), \
     iter##_end = array.end(); iter != iter##_end; ++ iter)
 
