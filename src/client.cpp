@@ -1575,6 +1575,7 @@ int Client::gameExec()
             }
             BLOCK_END("Client::gameExec 8")
         }
+        PROFILER_END();
     }
 
     return 0;

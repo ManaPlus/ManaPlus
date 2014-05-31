@@ -31,6 +31,7 @@
 #include "localconsts.h"
 
 #define PROFILER_START() Perfomance::start();
+#define PROFILER_END() Perfomance::flush();
 #define BLOCK_START(name) Perfomance::blockStart(name);
 #define BLOCK_END(name) Perfomance::blockEnd(name);
 #define FUNC_BLOCK(name, id) Perfomance::Func PerfomanceFunc##id(name);
@@ -46,6 +47,8 @@ namespace Perfomance
     void blockStart(const std::string &name);
 
     void blockEnd(const std::string &name);
+
+    void flush();
 
     class Func final
     {
@@ -68,6 +71,7 @@ namespace Perfomance
 #else  // USE_PROFILER
 
 #define PROFILER_START()
+#define PROFILER_END()
 #define BLOCK_START(name)
 #define BLOCK_END(name)
 #define FUNC_BLOCK(name, id)

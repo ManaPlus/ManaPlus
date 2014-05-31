@@ -231,13 +231,13 @@ void MapReader::addLayerToList(const std::string &fileName)
 Map *MapReader::readMap(const std::string &restrict filename,
                         const std::string &restrict realFilename)
 {
-    BLOCK_START("MapReader::readMap")
+    BLOCK_START("MapReader::readMap str")
     logger->log("Attempting to read map %s", realFilename.c_str());
 
     XML::Document doc(realFilename);
     if (!doc.isLoaded())
     {
-        BLOCK_END("MapReader::readMap")
+        BLOCK_END("MapReader::readMap str")
         return createEmptyMap(filename, realFilename);
     }
 
@@ -267,7 +267,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
             updateMusic(map);
     }
 
-    BLOCK_END("MapReader::readMap")
+    BLOCK_END("MapReader::readMap str")
     return map;
 }
 
@@ -294,6 +294,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     if (!node)
         return nullptr;
 
+    BLOCK_START("MapReader::readMap xml")
     // Take the filename off the path
     const std::string pathDir = path.substr(0, path.rfind("/") + 1);
 
@@ -311,6 +312,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
         logger->log("MapReader: Warning: "
                     "Unitialized tile width or height value for map: %s",
                     path.c_str());
+        BLOCK_END("MapReader::readMap xml")
         return nullptr;
     }
 
@@ -451,6 +453,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     map->reduce();
     map->setWalkLayer(resman->getWalkLayer(fileName, map));
     unloadTempLayers();
+    BLOCK_END("MapReader::readMap xml")
     return map;
 }
 
