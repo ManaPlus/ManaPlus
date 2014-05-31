@@ -23,6 +23,8 @@
 #ifndef EFFECTMANAGER_H
 #define EFFECTMANAGER_H
 
+#include "resources/effectdescription.h"
+
 #include <string>
 #include <vector>
 
@@ -34,23 +36,6 @@ class Particle;
 class EffectManager final
 {
     public:
-        struct EffectDescription
-        {
-            EffectDescription(const int id0, const std::string &gfx0,
-                              const std::string &sfx0,
-                              const std::string &sprite0) :
-                id(id0),
-                gfx(gfx0),
-                sfx(sfx0),
-                sprite(sprite0)
-            {
-            }
-            int id;
-            std::string gfx;
-            std::string sfx;
-            std::string sprite;
-        };
-
         EffectManager();
 
         A_DELETE_COPY(EffectManager)
