@@ -439,7 +439,7 @@ bool Gui::handleKeyInput()
             // change focus.
             if (!eventConsumed && keyInput.getActionId()
                 == static_cast<int>(InputAction::GUI_TAB)
-                && keyInput.getType() == KeyInput::PRESSED)
+                && keyInput.getType() == KeyEventType::PRESSED)
             {
                 if (inputManager.isActionActive(InputAction::GUI_MOD))
                     mFocusHandler->tabPrevious();
@@ -1252,17 +1252,17 @@ void Gui::distributeKeyEvent(KeyEvent &event) const
             std::list<KeyListener*> keyListeners
                 = widget->getKeyListeners();
 
-            const unsigned int eventType = event.getType();
+            const KeyEventType::Type eventType = event.getType();
             // Send the event to all key listeners of the source widget.
             FOR_EACH (std::list<KeyListener*>::const_iterator,
                  it, keyListeners)
             {
                 switch (eventType)
                 {
-                    case KeyEvent::PRESSED:
+                    case KeyEventType::PRESSED:
                         (*it)->keyPressed(event);
                         break;
-                    case KeyEvent::RELEASED:
+                    case KeyEventType::RELEASED:
                         (*it)->keyReleased(event);
                         break;
                     default:
@@ -1285,15 +1285,15 @@ void Gui::distributeKeyEvent(KeyEvent &event) const
 void Gui::distributeKeyEventToGlobalKeyListeners(KeyEvent& event)
 {
     BLOCK_START("Gui::distributeKeyEventToGlobalKeyListeners")
-    const unsigned int eventType = event.getType();
+    const KeyEventType::Type eventType = event.getType();
     FOR_EACH (KeyListenerListIterator, it, mKeyListeners)
     {
         switch (eventType)
         {
-            case KeyEvent::PRESSED:
+            case KeyEventType::PRESSED:
                 (*it)->keyPressed(event);
                 break;
-            case KeyEvent::RELEASED:
+            case KeyEventType::RELEASED:
                 (*it)->keyReleased(event);
                 break;
             default:

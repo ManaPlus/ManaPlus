@@ -134,7 +134,7 @@ void SDLInput::pushInput(const SDL_Event &event)
     {
         case SDL_KEYDOWN:
         {
-            keyInput.setType(KeyInput::PRESSED);
+            keyInput.setType(KeyEventType::PRESSED);
             convertKeyEventToKey(event, keyInput);
             mKeyInputQueue.push(keyInput);
             break;
@@ -142,7 +142,7 @@ void SDLInput::pushInput(const SDL_Event &event)
 
         case SDL_KEYUP:
         {
-            keyInput.setType(KeyInput::RELEASED);
+            keyInput.setType(KeyEventType::RELEASED);
             convertKeyEventToKey(event, keyInput);
             mKeyInputQueue.push(keyInput);
             break;
@@ -150,7 +150,7 @@ void SDLInput::pushInput(const SDL_Event &event)
 
 #ifdef USE_SDL2
         case SDL_TEXTINPUT:
-            keyInput.setType(KeyInput::PRESSED);
+            keyInput.setType(KeyEventType::PRESSED);
             keyInput.setKey(Key(Key::TEXTINPUT));
             keyInput.setText(event.text.text);
             mKeyInputQueue.push(keyInput);

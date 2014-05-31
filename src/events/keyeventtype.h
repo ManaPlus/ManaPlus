@@ -61,94 +61,19 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef EVENTS_KEYEVENT_H
-#define EVENTS_KEYEVENT_H
+#ifndef EVENTS_KEYEVENTTYPE_H
+#define EVENTS_KEYEVENTTYPE_H
 
-#include "events/keyeventtype.h"
-#include "events/inputguievent.h"
-
-#include "input/key.h"
-
-#include <string>
-
-class Widget;
-
-/**
-  * Represents a key event.
-  */
-class KeyEvent: public InputGuiEvent
+namespace KeyEventType
 {
-    public:
-        /**
-          * Constructor.
-          *
-          * @param source The source widget of the event.
-          * @param type The type of the event. A value from KeyEventType.
-          *                     false otherwise.
-          * @param key The key of the event.
-          */
-        KeyEvent(Widget *const source,
-                 KeyEventType::Type type,
-                 const int actionId,
-                 const Key &key) :
-            InputGuiEvent(source),
-            mKey(key),
-#ifdef USE_SDL2
-            mText(),
-#endif
-            mType(type),
-            mActionId(actionId)
-        { }
+    /**
+      * Key event types.
+      */
+    enum Type
+    {
+        PRESSED = 0,
+        RELEASED
+    };
+}  // namespace KeyEventType
 
-        /**
-          * Destructor.
-          */
-        virtual ~KeyEvent()
-        { }
-
-        /**
-          * Gets the type of the event.
-          *
-          * @return The type of the event.
-          */
-        KeyEventType::Type getType() const A_WARN_UNUSED
-        { return mType; }
-
-        /**
-          * Gets the key of the event.
-          *
-          * @return The key of the event.
-          */
-        const Key &getKey() const A_WARN_UNUSED
-        { return mKey; }
-
-        int getActionId() const A_WARN_UNUSED
-        { return mActionId; }
-
-#ifdef USE_SDL2
-        void setText(const std::string &text)
-        { mText = text; }
-
-        std::string getText() const
-        { return mText; }
-#endif
-
-    protected:
-        /** 
-          * Holds the key of the key event.
-          */
-        Key mKey;
-
-#ifdef USE_SDL2
-        std::string mText;
-#endif
-
-        /**
-          * Holds the type of the key event.
-          */
-        KeyEventType::Type mType;
-
-        int mActionId;
-};
-
-#endif  // EVENTS_KEYEVENT_H
+#endif  // EVENTS_KEYEVENTTYPE_H

@@ -64,6 +64,8 @@
 #ifndef INPUT_KEYINPUT_H
 #define INPUT_KEYINPUT_H
 
+#include "events/keyeventtype.h"
+
 #include "input/key.h"
 
 #include <string>
@@ -75,7 +77,7 @@ class KeyInput final
     public:
         KeyInput() :
             mKey(0),
-            mType(0),
+            mType(KeyEventType::PRESSED),
 #ifdef USE_SDL2
             mText(),
 #endif
@@ -85,22 +87,12 @@ class KeyInput final
         ~KeyInput()
         { }
 
-        /**
-         * Key input types. This enum corresponds to the enum with event
-         * types on KeyEvent for easy mapping.
-         */
-        enum
-        {
-            PRESSED = 0,
-            RELEASED
-        };
-
-        void setType(unsigned int type)
+        void setType(KeyEventType::Type type)
         {
             mType = type;
         }
 
-        int getType() const
+        KeyEventType::Type getType() const
         {
             return mType;
         }
@@ -146,7 +138,7 @@ class KeyInput final
         /**
          * Holds the type of the key input.
          */
-        unsigned int mType;
+        KeyEventType::Type mType;
 
 #ifdef USE_SDL2
         std::string mText;

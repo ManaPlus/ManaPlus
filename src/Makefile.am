@@ -190,6 +190,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      events/inputguievent.h \
 	      input/key.h \
 	      events/keyevent.h \
+	      events/keyeventtype.h \
 	      listeners/keylistener.h \
 	      gui/models/listmodel.h \
 	      gui/models/magicschoolmodel.h \
