@@ -329,6 +329,8 @@ class ChatWindow final : public Window,
 
         void updateTabsMargin();
 
+        bool addCurrentToHistory();
+
         typedef std::map<const std::string, WhisperTab*> TabMap;
         /** Manage whisper tabs */
         TabMap mWhispers;

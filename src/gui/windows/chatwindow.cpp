@@ -728,6 +728,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
         {
             // Move forward through the history
             const HistoryIterator prevHist = mCurHist++;
+            addCurrentToHistory();
 
             if (mCurHist != mHistory.end())
             {
@@ -743,6 +744,8 @@ void ChatWindow::keyPressed(KeyEvent &event)
         }
         else if (!mChatInput->getText().empty())
         {
+            if (addCurrentToHistory())
+                mCurHist = mHistory.end();
             mChatInput->setText("");
         }
     }
@@ -751,6 +754,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
     {
         // Move backward through the history
         --mCurHist;
+        addCurrentToHistory();
         mChatInput->setText(*mCurHist);
         mChatInput->setCaretPosition(static_cast<unsigned>(
                 mChatInput->getText().length()));
@@ -889,6 +893,20 @@ void ChatWindow::keyPressed(KeyEvent &event)
 }
 
 #undef ifKey
+
+bool ChatWindow::addCurrentToHistory()
+{
+    const std::string str = mChatInput->getText();
+    if (str.empty())
+        return false;
+    FOR_EACH (HistoryIterator, it, mHistory)
+    {
+        if (*it == str)
+            return false;
+    }
+    mHistory.push_back(str);
+    return true;
+}
 
 void ChatWindow::statChanged(const int id,
                              const int oldVal1,
