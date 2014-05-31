@@ -23,8 +23,6 @@
 #include "client.h"
 #include "configuration.h"
 
-#include "debug.h"
-
 #ifdef ENABLE_NLS
 #include "logger.h"
 
@@ -35,6 +33,8 @@
 #include <string>
 extern "C" char const *_nl_locale_name_default(void);
 #endif
+
+#include "debug.h"
 
 void GettextHelper::initLang()
 {
