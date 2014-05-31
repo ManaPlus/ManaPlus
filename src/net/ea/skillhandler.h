@@ -35,7 +35,7 @@ namespace Net
 namespace Ea
 {
 
-class SkillHandler : public Net::SkillHandler
+class SkillHandler notfinal : public Net::SkillHandler
 {
     public:
         SkillHandler();

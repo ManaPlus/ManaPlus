@@ -30,7 +30,7 @@ class BuyDialog;
 namespace Ea
 {
 
-class BuySellHandler : public Net::BuySellHandler
+class BuySellHandler notfinal : public Net::BuySellHandler
 {
     public:
         BuySellHandler();

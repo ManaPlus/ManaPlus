@@ -81,7 +81,8 @@ struct NextSoundInfo
     int time;
 };
 
-class Being : public ActorSprite, public ConfigListener
+class Being notfinal : public ActorSprite,
+                       public ConfigListener
 {
     public:
         friend class BeingEquipBackend;

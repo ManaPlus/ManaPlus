@@ -29,8 +29,8 @@
 
 #include "localconsts.h"
 
-class CharacterViewBase : public Container,
-                          public ActionListener
+class CharacterViewBase notfinal : public Container,
+                                   public ActionListener
 {
     public:
         A_DELETE_COPY(CharacterViewBase)

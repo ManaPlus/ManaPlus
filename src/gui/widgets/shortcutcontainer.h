@@ -36,9 +36,9 @@ class ImageCollection;
  *
  * \ingroup GUI
  */
-class ShortcutContainer : public Widget,
-                          public WidgetListener,
-                          public MouseListener
+class ShortcutContainer notfinal : public Widget,
+                                   public WidgetListener,
+                                   public MouseListener
 {
     public:
         A_DELETE_COPY(ShortcutContainer)

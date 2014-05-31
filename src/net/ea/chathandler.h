@@ -35,7 +35,7 @@ namespace Net
 namespace Ea
 {
 
-class ChatHandler : public Net::ChatHandler
+class ChatHandler notfinal : public Net::ChatHandler
 {
     public:
         ChatHandler();

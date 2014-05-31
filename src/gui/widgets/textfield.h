@@ -81,10 +81,10 @@ class PopupMenu;
  *
  * \ingroup GUI
  */
-class TextField : public Widget,
-                  public FocusListener,
-                  public KeyListener,
-                  public MouseListener
+class TextField notfinal : public Widget,
+                           public FocusListener,
+                           public KeyListener,
+                           public MouseListener
 {
     public:
         /**

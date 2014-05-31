@@ -25,7 +25,7 @@
 
 #include "gui/models/extendedlistmodel.h"
 
-class ExtendedNamesModel : public ExtendedListModel
+class ExtendedNamesModel notfinal : public ExtendedListModel
 {
     public:
         ExtendedNamesModel();

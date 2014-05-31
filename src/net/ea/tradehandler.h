@@ -33,7 +33,7 @@ namespace Net
 namespace Ea
 {
 
-class TradeHandler : public Net::TradeHandler
+class TradeHandler notfinal : public Net::TradeHandler
 {
     public:
         TradeHandler();

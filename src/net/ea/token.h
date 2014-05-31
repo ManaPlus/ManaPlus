@@ -20,12 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "being/being.h"
+#include "being/gender.h"
 
 #ifndef NET_EA_TOKEN_H
 #define NET_EA_TOKEN_H
 
-struct Token
+struct Token final
 {
     int account_ID;
     int session_ID1;

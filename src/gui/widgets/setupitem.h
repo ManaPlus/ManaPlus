@@ -42,8 +42,8 @@ class Slider;
 class SliderList;
 class TextField;
 
-class SetupItem : public ActionListener,
-                  public Widget2
+class SetupItem notfinal : public ActionListener,
+                           public Widget2
 {
     public:
         enum
@@ -462,7 +462,7 @@ class SetupItemSlider2 final : public SetupItem
         bool mDoNotAlign;
 };
 
-class SetupItemSliderList : public SetupItem
+class SetupItemSliderList notfinal : public SetupItem
 {
     public:
         A_DELETE_COPY(SetupItemSliderList)

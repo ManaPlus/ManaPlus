@@ -32,7 +32,7 @@
 class Color;
 class Widget2;
 
-class ColorModel : public ListModel
+class ColorModel final : public ListModel
 {
     public:
         ColorModel();

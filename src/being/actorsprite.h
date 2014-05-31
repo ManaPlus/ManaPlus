@@ -45,7 +45,7 @@ class ActorSpriteListener;
 
 struct SpriteDisplay;
 
-class ActorSprite : public CompoundSprite, public Actor
+class ActorSprite notfinal : public CompoundSprite, public Actor
 {
 public:
     explicit ActorSprite(const int id);

@@ -27,7 +27,7 @@
 
 class Label;
 
-class DebugTab : public Container
+class DebugTab notfinal : public Container
 {
     friend class DebugWindow;
 

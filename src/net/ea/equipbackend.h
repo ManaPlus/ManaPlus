@@ -33,7 +33,7 @@
 namespace Ea
 {
 
-class EquipBackend : public Equipment::Backend
+class EquipBackend final : public Equipment::Backend
 {
     public:
         EquipBackend()

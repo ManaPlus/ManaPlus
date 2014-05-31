@@ -33,7 +33,7 @@ namespace Ea
 {
 class GuildTab;
 
-class GuildHandler : public Net::GuildHandler
+class GuildHandler notfinal : public Net::GuildHandler
 {
     public:
         GuildHandler();

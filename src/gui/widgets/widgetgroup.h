@@ -28,9 +28,9 @@
 
 #include "localconsts.h"
 
-class WidgetGroup : public Container,
-                    public WidgetListener,
-                    public ActionListener
+class WidgetGroup notfinal : public Container,
+                             public WidgetListener,
+                             public ActionListener
 {
     public:
         A_DELETE_COPY(WidgetGroup)

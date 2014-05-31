@@ -41,7 +41,7 @@ namespace Net
 namespace Ea
 {
 
-class LoginHandler : public Net::LoginHandler
+class LoginHandler notfinal : public Net::LoginHandler
 {
     public:
         A_DELETE_COPY(LoginHandler)

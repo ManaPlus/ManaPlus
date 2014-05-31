@@ -31,7 +31,7 @@ namespace EAthena
 /**
  * A tab for a guild chat channel.
  */
-class GuildTab : public Ea::GuildTab
+class GuildTab final : public Ea::GuildTab
 {
     public:
         explicit GuildTab(const Widget2 *const widget);

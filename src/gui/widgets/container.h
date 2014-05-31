@@ -34,7 +34,7 @@
  *
  * This container is also non-opaque by default.
  */
-class Container : public BasicContainer2
+class Container notfinal : public BasicContainer2
 {
     public:
         explicit Container(const Widget2 *const widget);

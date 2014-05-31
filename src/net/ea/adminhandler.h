@@ -30,7 +30,7 @@
 namespace Ea
 {
 
-class AdminHandler : public Net::AdminHandler
+class AdminHandler notfinal : public Net::AdminHandler
 {
     public:
         AdminHandler()

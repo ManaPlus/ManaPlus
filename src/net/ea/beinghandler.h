@@ -28,7 +28,7 @@
 namespace Ea
 {
 
-class BeingHandler : public Net::BeingHandler
+class BeingHandler notfinal : public Net::BeingHandler
 {
     public:
         A_DELETE_COPY(BeingHandler)

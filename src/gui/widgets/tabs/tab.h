@@ -81,9 +81,9 @@ class TabbedArea;
 /**
  * A tab, the same as the Guichan tab in 0.8, but extended
  */
-class Tab : public BasicContainer,
-            public MouseListener,
-            public WidgetListener
+class Tab notfinal : public BasicContainer,
+                     public MouseListener,
+                     public WidgetListener
 {
     public:
         explicit Tab(const Widget2 *const widget);

@@ -31,7 +31,7 @@ namespace EAthena
 /**
  * A tab for a party chat channel.
  */
-class PartyTab : public Ea::PartyTab
+class PartyTab final : public Ea::PartyTab
 {
     public:
         explicit PartyTab(const Widget2 *const widget);

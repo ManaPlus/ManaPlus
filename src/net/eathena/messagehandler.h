@@ -35,7 +35,7 @@ class Network;
 /**
  * \ingroup Network
  */
-class MessageHandler : public Net::MessageHandler
+class MessageHandler notfinal : public Net::MessageHandler
 {
     public:
         MessageHandler();

@@ -27,7 +27,7 @@
 
 #include "localconsts.h"
 
-class NamesModel : public ListModel
+class NamesModel notfinal : public ListModel
 {
     public:
         NamesModel();

@@ -29,7 +29,7 @@
 
 class TextDialog;
 
-class PlayerListener : public ActionListener
+class PlayerListener final : public ActionListener
 {
     public:
         PlayerListener();

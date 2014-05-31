@@ -51,7 +51,7 @@
 /**
  * Defines a class for loading and storing images.
  */
-class Image : public Resource
+class Image notfinal : public Resource
 {
     friend class CompoundSprite;
     friend class Graphics;

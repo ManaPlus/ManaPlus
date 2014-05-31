@@ -36,7 +36,7 @@ class ScrollArea;
 /**
  * A tab for the chat window. This is special to ease chat handling.
  */
-class ChatTab : public Tab
+class ChatTab notfinal : public Tab
 {
     public:
         /**

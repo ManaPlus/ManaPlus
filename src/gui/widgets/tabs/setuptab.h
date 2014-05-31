@@ -35,9 +35,9 @@
 /**
  * A container for the contents of a tab in the setup window.
  */
-class SetupTab : public Container,
-                 public ActionListener,
-                 public WidgetListener
+class SetupTab notfinal : public Container,
+                          public ActionListener,
+                          public WidgetListener
 {
     public:
         A_DELETE_COPY(SetupTab)

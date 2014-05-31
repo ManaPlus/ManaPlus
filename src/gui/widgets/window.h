@@ -90,9 +90,9 @@ class WindowContainer;
  *
  * \ingroup GUI
  */
-class Window : public BasicContainer2,
-               public MouseListener,
-               private WidgetListener
+class Window notfinal : public BasicContainer2,
+                        public MouseListener,
+                        public WidgetListener
 {
     public:
         /**

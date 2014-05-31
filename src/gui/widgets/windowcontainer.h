@@ -33,7 +33,7 @@
  *
  * \ingroup GUI
  */
-class WindowContainer : public Container
+class WindowContainer notfinal : public Container
 {
     public:
         explicit WindowContainer(const Widget2 *const widget);

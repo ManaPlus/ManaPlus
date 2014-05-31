@@ -78,8 +78,8 @@
   * @see Container
   * @since 0.6.0
   */
-class BasicContainer : public Widget,
-                       public DeathListener
+class BasicContainer notfinal : public Widget,
+                                public DeathListener
 {
     public:
         explicit BasicContainer(const Widget2 *const widget) :

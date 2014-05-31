@@ -35,7 +35,7 @@ namespace Ea
 {
 class PartyTab;
 
-class PartyHandler : public Net::PartyHandler
+class PartyHandler notfinal : public Net::PartyHandler
 {
     public:
         PartyHandler();

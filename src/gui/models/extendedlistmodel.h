@@ -25,7 +25,7 @@
 
 #include "gui/models/listmodel.h"
 
-class ExtendedListModel : public ListModel
+class ExtendedListModel notfinal : public ListModel
 {
     public:
         virtual const Image *getImageAt(int i) A_WARN_UNUSED = 0;

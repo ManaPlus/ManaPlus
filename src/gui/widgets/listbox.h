@@ -89,9 +89,9 @@ class Widget2;
  *
  * \ingroup GUI
  */
-class ListBox : public Widget,
-                public MouseListener,
-                public KeyListener
+class ListBox notfinal : public Widget,
+                         public MouseListener,
+                         public KeyListener
 {
     public:
         /**

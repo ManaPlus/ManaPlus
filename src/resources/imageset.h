@@ -34,7 +34,7 @@ class Image;
 /**
  * Stores a set of subimages originating from a single image.
  */
-class ImageSet : public Resource
+class ImageSet notfinal : public Resource
 {
     public:
         /**

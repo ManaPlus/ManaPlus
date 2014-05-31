@@ -45,7 +45,7 @@ typedef Emitters::const_iterator EmitterConstIterator;
 /**
  * A particle spawned by a ParticleEmitter.
  */
-class Particle : public Actor
+class Particle notfinal : public Actor
 {
     public:
         enum AliveStatus

@@ -32,7 +32,7 @@ class Image;
 /**
  * A particle that uses an image for its visualization.
  */
-class ImageParticle : public Particle
+class ImageParticle notfinal : public Particle
 {
     public:
         /**

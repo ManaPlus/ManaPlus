@@ -36,7 +36,7 @@
 class Button;
 class LayoutHelper;
 
-class AttrDisplay : public Container
+class AttrDisplay notfinal : public Container
 {
     public:
         enum Type

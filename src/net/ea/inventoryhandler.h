@@ -44,7 +44,7 @@ namespace Ea
 
 typedef std::vector<InventoryItem> InventoryItems;
 
-class InventoryHandler : public Net::InventoryHandler
+class InventoryHandler notfinal : public Net::InventoryHandler
 {
     public:
         enum

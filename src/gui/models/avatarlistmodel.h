@@ -28,7 +28,7 @@
 
 #include <string>
 
-class AvatarListModel : public ListModel
+class AvatarListModel notfinal : public ListModel
 {
     public:
         virtual Avatar *getAvatarAt(const int i) A_WARN_UNUSED = 0;

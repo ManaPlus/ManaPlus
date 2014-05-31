@@ -27,8 +27,10 @@
 #include <functional>
 #include <utility>
 
+#include "localconsts.h"
+
 template<typename T>
-struct dtor : public std::unary_function <T, void>
+struct dtor final : public std::unary_function <T, void>
 {
     void operator()(T &ptr)
     { delete ptr; }

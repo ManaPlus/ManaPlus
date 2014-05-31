@@ -96,7 +96,7 @@ class WidgetListener;
   * @author Per Larsson.
   * @since 0.1.0
   */
-class Widget : public Widget2
+class Widget notfinal : public Widget2
 {
     public:
         friend class BasicContainer;

@@ -45,9 +45,9 @@ class WindowContainer;
  *
  * \ingroup GUI
  */
-class Popup : public Container,
-              public MouseListener,
-              public WidgetListener
+class Popup notfinal : public Container,
+                       public MouseListener,
+                       public WidgetListener
 {
     public:
         /**

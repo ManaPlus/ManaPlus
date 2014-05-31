@@ -32,7 +32,7 @@
 class CompoundItem;
 class Image;
 
-class CompoundSprite : public Sprite
+class CompoundSprite notfinal : public Sprite
 {
 public:
     typedef std::vector<Sprite*>::iterator SpriteIterator;

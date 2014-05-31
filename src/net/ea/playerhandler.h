@@ -33,7 +33,7 @@ namespace Net
 namespace Ea
 {
 
-class PlayerHandler : public Net::PlayerHandler
+class PlayerHandler notfinal : public Net::PlayerHandler
 {
     public:
         PlayerHandler();

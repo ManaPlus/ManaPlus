@@ -38,8 +38,8 @@ class TextBox;
  *
  * \ingroup GUI
  */
-class ConfirmDialog : public Window,
-                      public ActionListener
+class ConfirmDialog notfinal : public Window,
+                               public ActionListener
 {
     public:
         /**

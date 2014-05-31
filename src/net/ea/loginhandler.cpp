@@ -27,6 +27,8 @@
 #include "logger.h"
 #include "settings.h"
 
+#include "being/being.h"
+
 #include "gui/windows/logindialog.h"
 
 #include "utils/dtor.h"

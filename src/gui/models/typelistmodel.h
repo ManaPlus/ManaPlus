@@ -27,7 +27,7 @@
 /**
  * Server Type List Model
  */
-class TypeListModel : public ListModel
+class TypeListModel final : public ListModel
 {
     public:
         TypeListModel()

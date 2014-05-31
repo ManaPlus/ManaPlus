@@ -37,7 +37,7 @@ namespace Net
 namespace Ea
 {
 
-class NpcHandler : public Net::NpcHandler
+class NpcHandler notfinal : public Net::NpcHandler
 {
     public:
         A_DELETE_COPY(NpcHandler)

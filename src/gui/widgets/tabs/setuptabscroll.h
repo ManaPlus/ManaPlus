@@ -32,7 +32,7 @@ class SetupItem;
 class ScrollArea;
 class VertContainer;
 
-class SetupTabScroll : public SetupTab
+class SetupTabScroll notfinal : public SetupTab
 {
     public:
         explicit SetupTabScroll(const Widget2 *const widget);

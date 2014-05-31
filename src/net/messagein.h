@@ -35,7 +35,7 @@ namespace Net
  *
  * \ingroup Network
  */
-class MessageIn
+class MessageIn notfinal
 {
     public:
         A_DELETE_COPY(MessageIn)

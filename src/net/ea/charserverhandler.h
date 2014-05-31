@@ -40,7 +40,7 @@ class Network;
 /**
  * Deals with incoming messages from the character server.
  */
-class CharServerHandler : public Net::CharServerHandler
+class CharServerHandler notfinal : public Net::CharServerHandler
 {
     public:
         A_DELETE_COPY(CharServerHandler)

@@ -36,7 +36,7 @@
 
 class AvatarListModel;
 
-class SocialTab : public Tab
+class SocialTab notfinal : public Tab
 {
     public:
         A_DELETE_COPY(SocialTab)
