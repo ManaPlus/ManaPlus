@@ -593,7 +593,10 @@ void GraphicsManager::updateTextureFormat() const
                     ? static_cast<size_t>(num) : 10];
                 glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
                 for (int f = 0; f < num; f ++)
-                    logger->log(" 0x%x", formats[f]);
+                {
+                    logger->log(" 0x%x", static_cast<unsigned int>(
+                        formats[f]));
+                }
 
                 for (int f = 0; f < num; f ++)
                 {
@@ -1171,8 +1174,8 @@ void GraphicsManager::detectPixelSize()
         &mWidthMM, &mHeightMM, &mDensity);
 #endif
 #endif
-    logger->log("screen size in pixels: %dx%d", mMaxWidth, mMaxHeight);
-    logger->log("screen size in millimeters: %dx%d", mWidthMM, mHeightMM);
+    logger->log("screen size in pixels: %ux%u", mMaxWidth, mMaxHeight);
+    logger->log("screen size in millimeters: %ux%u", mWidthMM, mHeightMM);
     logger->log("actual screen density: " + getDensityString());
     const int density = config.getIntValue("screenDensity");
     if (density > 0 && density <= densitySize)

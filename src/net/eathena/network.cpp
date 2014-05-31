@@ -165,7 +165,7 @@ void Network::dispatchMessages()
     while (messageReady())
     {
         SDL_mutexP(mMutexIn);
-        const int msgId = readWord(0);
+        const unsigned int msgId = readWord(0);
         int len = -1;
         if (msgId == SMSG_SERVER_VERSION_RESPONSE)
         {
@@ -177,7 +177,7 @@ void Network::dispatchMessages()
         }
         else
         {
-            if (msgId >= 0 && msgId < packet_lengths_size)
+            if (msgId < packet_lengths_size)
                 len = packet_lengths[msgId];
         }
 
@@ -191,12 +191,12 @@ void Network::dispatchMessages()
         if (len == 0)
         {
             // need copy data for safty
-            std::string str = strprintf("Wrong packet %d ""received. Exiting.",
+            std::string str = strprintf("Wrong packet %u ""received. Exiting.",
                 msgId);
             logger->safeError(str);
         }
 
-        if (msgId >= 0 && msgId < messagesSize)
+        if (msgId < messagesSize)
         {
             MessageHandler *const handler = mMessageHandlers[msgId];
             if (handler)

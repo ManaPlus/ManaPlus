@@ -169,7 +169,7 @@ void ResourceManager::cleanUp(Resource *const res)
 
     if (res->mRefCount > 0)
     {
-        logger->log("ResourceManager::~ResourceManager() cleaning up %d "
+        logger->log("ResourceManager::~ResourceManager() cleaning up %u "
                 "reference%s to %s",
                 res->mRefCount,
                 (res->mRefCount == 1) ? "" : "s",

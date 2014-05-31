@@ -313,7 +313,7 @@ MouseButton::Type SDLInput::convertMouseButton(const int button)
 #endif
         default:
             // We have an unknown mouse type which is ignored.
-            logger->log("unknown button type: %u", button);
+            logger->log("unknown button type: %d", button);
             return MouseButton::EMPTY;
     }
 }

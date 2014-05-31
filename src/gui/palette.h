@@ -204,7 +204,7 @@ class Palette
                 gradientIndex = rand();
             }
 
-            inline int getRGB() const A_WARN_UNUSED
+            inline unsigned int getRGB() const A_WARN_UNUSED
             {
                 return (committedColor.r << 16) | (committedColor.g << 8) |
                         committedColor.b;
