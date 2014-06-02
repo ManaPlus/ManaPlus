@@ -64,6 +64,7 @@
 #include "net/gamehandler.h"
 #include "net/guildhandler.h"
 #include "net/net.h"
+#include "net/uploadcharinfo.h"
 #include "net/partyhandler.h"
 #include "net/pethandler.h"
 #include "net/tradehandler.h"
@@ -1285,23 +1286,6 @@ impHandler1(gm)
 {
     Net::getChatHandler()->talk("@wgm " + args, GENERAL_CHANNEL);
 }
-
-struct UploadChatInfo
-{
-    UploadChatInfo() :
-        tab(nullptr),
-        upload(nullptr),
-        text(),
-        addStr()
-    { }
-
-    A_DELETE_COPY(UploadChatInfo)
-
-    ChatTab *tab;
-    Net::Download *upload;
-    std::string text;
-    std::string addStr;
-};
 
 static int uploadUpdate(void *ptr,
                         DownloadStatus::Type status,
