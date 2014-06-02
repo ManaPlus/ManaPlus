@@ -21,6 +21,17 @@
 #ifndef NET_UPLOADCHRINFO_H
 #define NET_UPLOADCHRINFO_H
 
+#include <string>
+
+#include "localconsts.h"
+
+class ChatTab;
+
+namespace Net
+{
+    class Download;
+}
+
 struct UploadChatInfo final
 {
     UploadChatInfo() :

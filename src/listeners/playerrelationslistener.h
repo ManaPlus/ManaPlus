@@ -25,6 +25,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 class PlayerRelationsListener notfinal
 {
     public:

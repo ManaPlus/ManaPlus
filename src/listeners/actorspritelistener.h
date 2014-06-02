@@ -22,6 +22,8 @@
 #ifndef LISTENERS_ACTORSPRITELISTENER_H
 #define LISTENERS_ACTORSPRITELISTENER_H
 
+#include "localconsts.h"
+
 class ActorSprite;
 
 class ActorSpriteListener notfinal

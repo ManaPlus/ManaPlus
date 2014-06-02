@@ -31,6 +31,8 @@
 #include <stdint.h>
 #endif
 
+#include "localconsts.h"
+
 /**
  * A structure holding the values of various options that can be passed
  * from the command line.
