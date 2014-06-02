@@ -45,7 +45,7 @@
 #include "debug.h"
 
 // because actual struct is hidden in SDL_net we reinroducing it here
-struct TCPsocketHack
+struct TCPsocketHack final
 {
     int ready;
     int channel;

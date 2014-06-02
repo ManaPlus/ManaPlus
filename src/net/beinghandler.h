@@ -29,7 +29,7 @@
 namespace Net
 {
 
-class BeingHandler
+class BeingHandler notfinal
 {
     public:
         virtual ~BeingHandler()

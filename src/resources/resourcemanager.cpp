@@ -498,7 +498,7 @@ Resource *ResourceManager::get(const std::string &idPath, const generator fun,
     return resource;
 }
 
-struct ResourceLoader
+struct ResourceLoader final
 {
     ResourceManager *manager;
     std::string path;
@@ -534,7 +534,7 @@ SoundEffect *ResourceManager::getSoundEffect(const std::string &idPath)
     return static_cast<SoundEffect*>(load(idPath, &SoundEffect::load));
 }
 
-struct DyedImageLoader
+struct DyedImageLoader final
 {
     ResourceManager *manager;
     std::string path;
@@ -575,7 +575,7 @@ Image *ResourceManager::getImage(const std::string &idPath)
     return static_cast<Image*>(get(idPath, &DyedImageLoader::load, &rl));
 }
 
-struct ImageSetLoader
+struct ImageSetLoader final
 {
     ResourceManager *manager;
     std::string path;
@@ -609,7 +609,7 @@ ImageSet *ResourceManager::getImageSet(const std::string &imagePath,
 }
 
 
-struct SubImageSetLoader
+struct SubImageSetLoader final
 {
     ResourceManager *manager;
     Image *parent;
@@ -644,7 +644,7 @@ ImageSet *ResourceManager::getSubImageSet(Image *const parent,
         &SubImageSetLoader::load, &rl));
 }
 
-struct SubImageLoader
+struct SubImageLoader final
 {
     ResourceManager *manager;
     Image *parent;
@@ -682,7 +682,7 @@ Image *ResourceManager::getSubImage(Image *const parent,
 }
 
 #ifdef USE_OPENGL
-struct AtlasLoader
+struct AtlasLoader final
 {
     const std::string name;
     const StringVect *files;
@@ -708,7 +708,7 @@ Resource *ResourceManager::getAtlas(const std::string &name,
 }
 #endif
 
-struct WalkLayerLoader
+struct WalkLayerLoader final
 {
     const std::string name;
     Map *map;
@@ -733,7 +733,7 @@ WalkLayer *ResourceManager::getWalkLayer(const std::string &name,
         &WalkLayerLoader::load, &rl));
 }
 
-struct SpriteDefLoader
+struct SpriteDefLoader final
 {
     std::string path;
     int variant;
@@ -936,7 +936,7 @@ void ResourceManager::clearScheduled()
     BLOCK_END("ResourceManager::clearScheduled")
 }
 
-struct RescaledLoader
+struct RescaledLoader final
 {
     ResourceManager *manager;
     const Image *image;

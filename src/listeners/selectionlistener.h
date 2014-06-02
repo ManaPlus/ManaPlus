@@ -80,7 +80,7 @@
   * @author Olof Naessén
   * @since 0.8.0
   */
-class SelectionListener
+class SelectionListener notfinal
 {
     public:
         /**

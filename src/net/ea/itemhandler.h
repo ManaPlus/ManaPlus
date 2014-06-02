@@ -35,7 +35,7 @@ namespace Net
 namespace Ea
 {
 
-class ItemHandler
+class ItemHandler notfinal
 {
     public:
         ItemHandler();

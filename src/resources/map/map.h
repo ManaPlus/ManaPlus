@@ -393,7 +393,7 @@ class Map final : public Properties, public ConfigListener
         float mLastAScrollY;
 
         // Particle effect data
-        struct ParticleEffectData
+        struct ParticleEffectData final
         {
             ParticleEffectData() :
                 file(),

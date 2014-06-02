@@ -32,7 +32,7 @@
 
 class Font;
 
-class Text
+class Text notfinal
 {
     friend class TextManager;
 

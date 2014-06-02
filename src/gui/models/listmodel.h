@@ -75,7 +75,7 @@
   * like ListBox, make a derived class from this class that 
   * represents your list.
   */
-class ListModel
+class ListModel notfinal
 {
     public:
         /**

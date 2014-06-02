@@ -32,7 +32,7 @@
 namespace Net
 {
 
-class InventoryHandler
+class InventoryHandler notfinal
 {
     public:
         virtual ~InventoryHandler()

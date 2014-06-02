@@ -34,7 +34,7 @@ enum AvatarType
     AVATAR_PLAYER = 0
 };
 
-class Avatar
+class Avatar notfinal
 {
 public:
     explicit Avatar(const std::string &name = "");

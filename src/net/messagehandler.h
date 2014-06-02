@@ -35,7 +35,7 @@ namespace Net
 /**
  * \ingroup Network
  */
-class MessageHandler
+class MessageHandler notfinal
 {
     public:
         const uint16_t *handledMessages;

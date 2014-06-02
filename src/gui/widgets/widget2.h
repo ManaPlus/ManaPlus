@@ -25,7 +25,7 @@
 
 #include "render/renderers.h"
 
-class Widget2
+class Widget2 notfinal
 {
     public:
         virtual ~Widget2()

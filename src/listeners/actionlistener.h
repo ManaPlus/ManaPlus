@@ -76,7 +76,7 @@
   * @author Olof Naessén
   * @author Per Larsson
   */
-class ActionListener
+class ActionListener notfinal
 {
     public:
         /**

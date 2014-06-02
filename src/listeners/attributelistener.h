@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-class AttributeListener
+class AttributeListener notfinal
 {
     public:
         virtual void attributeChanged(const int id,

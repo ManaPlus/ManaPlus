@@ -29,7 +29,7 @@
 class Graphics;
 class Image;
 
-class Sprite
+class Sprite notfinal
 {
     public:
         virtual ~Sprite()

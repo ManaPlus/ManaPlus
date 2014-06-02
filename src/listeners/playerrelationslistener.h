@@ -25,7 +25,7 @@
 
 #include <string>
 
-class PlayerRelationsListener
+class PlayerRelationsListener notfinal
 {
     public:
         virtual ~PlayerRelationsListener()

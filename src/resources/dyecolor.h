@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-struct DyeColor
+struct DyeColor final
 {
     DyeColor()
     {

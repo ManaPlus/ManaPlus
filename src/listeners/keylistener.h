@@ -75,7 +75,7 @@ class Key;
   *
   * @see Widget::addKeyListener, Widget::removeKeyListener
   */
-class KeyListener
+class KeyListener notfinal
 {
     public:
         /**

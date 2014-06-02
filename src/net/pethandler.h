@@ -26,7 +26,7 @@
 namespace Net
 {
 
-class PetHandler
+class PetHandler notfinal
 {
     public:
         virtual ~PetHandler()

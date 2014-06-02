@@ -35,7 +35,7 @@ namespace Net
  *
  * \ingroup Network
  */
-class MessageOut
+class MessageOut notfinal
 {
     public:
         A_DELETE_COPY(MessageOut)

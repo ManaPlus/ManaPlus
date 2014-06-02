@@ -25,10 +25,12 @@
 
 #include <iosfwd>
 
+#include "localconsts.h"
+
 namespace Net
 {
 
-class NpcHandler
+class NpcHandler notfinal
 {
     public:
         virtual ~NpcHandler()

@@ -34,7 +34,7 @@ class Image;
 /**
  * Represents one or more instances of a certain item type.
  */
-class Item
+class Item notfinal
 {
     public:
         /**

@@ -64,7 +64,7 @@ class Equipment final
             EQUIP_VECTOREND
         };
 
-        class Backend
+        class Backend notfinal
         {
             public:
                 virtual Item *getEquipment(const int index)

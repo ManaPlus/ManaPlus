@@ -77,7 +77,7 @@
   * @author Olof Naessén
   * @since 0.7.0
   */
-class FocusListener
+class FocusListener notfinal
 {
     public:
         /**

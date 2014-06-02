@@ -33,7 +33,7 @@ class Item;
 
 namespace Net
 {
-class TradeHandler
+class TradeHandler notfinal
 {
     public:
         virtual ~TradeHandler()

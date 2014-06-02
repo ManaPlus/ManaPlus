@@ -25,7 +25,7 @@
 
 class Color;
 
-struct ColorPair
+struct ColorPair final
 {
     ColorPair(const Color* c1, const Color* c2) :
         color1(c1),

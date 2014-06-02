@@ -23,10 +23,12 @@
 #ifndef NET_GENERALHANDLER_H
 #define NET_GENERALHANDLER_H
 
+#include "localconsts.h"
+
 namespace Net
 {
 
-class GeneralHandler
+class GeneralHandler notfinal
 {
     public:
         virtual ~GeneralHandler()

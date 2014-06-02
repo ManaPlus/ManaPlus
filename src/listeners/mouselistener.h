@@ -74,7 +74,7 @@
   * @see Widget::addMouseListener, Widget::removeMouseListener
   * @since 0.1.0
   */
-class MouseListener
+class MouseListener notfinal
 {
     public:
         /**

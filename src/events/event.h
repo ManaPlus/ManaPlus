@@ -75,7 +75,7 @@ class Widget;
   * @author Olof Naessén
   * @since 0.6.0
   */
-class Event
+class Event notfinal
 {
     public:
         /**

@@ -37,7 +37,7 @@ class Image;
 /**
  * Defines a class for loading and storing images.
  */
-class ImageHelper
+class ImageHelper notfinal
 {
     friend class CompoundSprite;
     friend class Image;

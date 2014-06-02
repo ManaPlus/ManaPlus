@@ -25,13 +25,15 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 /**
  * The listener interface for receiving notifications about changes to
  * configuration options.
  *
  * \ingroup CORE
  */
-class ConfigListener
+class ConfigListener notfinal
 {
     public:
         /**

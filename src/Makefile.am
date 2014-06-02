@@ -208,6 +208,7 @@ manaplus_SOURCES += events/actionevent.h \
 	      listeners/selectionlistener.h \
 	      listeners/statlistener.cpp \
 	      listeners/statlistener.h \
+	      listeners/tablemodellistener.h \
 	      listeners/updatestatuslistener.cpp \
 	      listeners/updatestatuslistener.h \
 	      utils/sdlpixel.h \

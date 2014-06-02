@@ -33,7 +33,7 @@
 /**
  * A generic reference counted resource object.
  */
-class Resource
+class Resource notfinal
 {
     friend class ResourceManager;
 

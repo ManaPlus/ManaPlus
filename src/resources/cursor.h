@@ -50,7 +50,7 @@ namespace Cursor
         CURSOR_TOTAL
     };
 
-    struct StrToCursor
+    struct StrToCursor final
     {
         std::string str;
         Cursor cursor;

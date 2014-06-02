@@ -30,28 +30,12 @@
 
 class Widget;
 
-class TableModelListener
-{
-public:
-    /**
-     * Must be invoked by the TableModel whenever a global change is about to
-     * occur or has occurred (e.g., when a row or column is being removed or
-     * added).
-     *
-     * This method is triggered twice, once before and once after the update.
-     *
-     * \param completed whether we are signalling the end of the update
-     */
-    virtual void modelUpdated(const bool completed) = 0;
-
-    virtual ~TableModelListener()
-    { }
-};
+class TableModelListener;
 
 /**
  * A model for a regular table of widgets.
  */
-class TableModel
+class TableModel notfinal
 {
 public:
     virtual ~TableModel()

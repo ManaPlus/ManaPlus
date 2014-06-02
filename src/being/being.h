@@ -65,7 +65,7 @@ struct ParticleInfo;
 
 extern volatile int cur_time;
 
-struct NextSoundInfo
+struct NextSoundInfo final
 {
     NextSoundInfo() :
         sound(nullptr),

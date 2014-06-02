@@ -27,7 +27,7 @@
 
 #include "localconsts.h"
 
-class TextChunkSmall
+class TextChunkSmall final
 {
     public:
         TextChunkSmall(const std::string &text0,

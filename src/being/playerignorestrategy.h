@@ -32,7 +32,7 @@ class Being;
 /**
  * Ignore strategy: describes how we should handle ignores.
  */
-class PlayerIgnoreStrategy
+class PlayerIgnoreStrategy notfinal
 {
     public:
         std::string mDescription;

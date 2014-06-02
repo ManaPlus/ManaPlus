@@ -38,7 +38,7 @@ struct Character;
 
 typedef std::list<Character*> Characters;
 
-class CharServerHandler
+class CharServerHandler notfinal
 {
     public:
         A_DELETE_COPY(CharServerHandler)

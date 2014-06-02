@@ -30,7 +30,7 @@
 namespace Net
 {
 
-class BuySellHandler
+class BuySellHandler notfinal
 {
     public:
         virtual ~BuySellHandler()

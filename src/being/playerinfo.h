@@ -30,7 +30,7 @@
 /**
  * Stat information storage structure.
  */
-struct Stat
+struct Stat final
 {
     int base;
     int mod;

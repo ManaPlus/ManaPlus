@@ -21,7 +21,7 @@
 
 #include "localconsts.h"
 
-struct LinkedMem
+struct LinkedMem final
 {
     uint32_t uiVersion;
     uint32_t uiTick;

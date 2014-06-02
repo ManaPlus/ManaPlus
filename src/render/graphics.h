@@ -106,7 +106,7 @@ static const int defaultScreenHeight = 600;
 /**
  * A central point of control for graphics.
  */
-class Graphics
+class Graphics notfinal
 {
     public:
         A_DELETE_COPY(Graphics)

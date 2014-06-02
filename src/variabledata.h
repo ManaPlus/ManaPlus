@@ -26,7 +26,7 @@
 
 #include "localconsts.h"
 
-class VariableData
+class VariableData notfinal
 {
     public:
         enum DataType

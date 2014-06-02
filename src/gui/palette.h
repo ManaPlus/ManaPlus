@@ -45,7 +45,7 @@
 /**
  * Class controlling the game's color palette.
  */
-class Palette
+class Palette notfinal
 {
     public:
         /** Black Color Constant */
@@ -164,7 +164,7 @@ class Palette
 
         void advanceGradient();
 
-        struct ColorElem
+        struct ColorElem final
         {
             ColorElem() :
                 type(0),

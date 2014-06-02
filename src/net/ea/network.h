@@ -33,7 +33,7 @@
 namespace Ea
 {
 
-class Network
+class Network notfinal
 {
     public:
         Network();

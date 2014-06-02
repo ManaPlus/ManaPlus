@@ -26,10 +26,12 @@
 #include <iosfwd>
 #include <string>
 
+#include "localconsts.h"
+
 namespace Net
 {
 
-class AdminHandler
+class AdminHandler notfinal
 {
     public:
         virtual ~AdminHandler()

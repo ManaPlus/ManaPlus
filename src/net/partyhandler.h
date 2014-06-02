@@ -36,7 +36,7 @@ class Being;
 namespace Net
 {
 
-class PartyHandler
+class PartyHandler notfinal
 {
     public:
         virtual ~PartyHandler()

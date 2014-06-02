@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-class UpdateStatusListener
+class UpdateStatusListener notfinal
 {
     public:
         virtual void updateStatus() = 0;

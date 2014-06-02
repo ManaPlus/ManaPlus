@@ -47,6 +47,23 @@
 
 #include "debug.h"
 
+namespace
+{
+    struct MouseOverLink final
+    {
+        MouseOverLink(const int x, const int y) :
+            mX(x), mY(y)
+        { }
+
+        bool operator() (const BrowserLink &link) const
+        {
+            return (mX >= link.x1 && mX < link.x2 &&
+                    mY >= link.y1 && mY < link.y2);
+        }
+        int mX, mY;
+    };
+}  // namespace
+
 ImageSet *BrowserBox::mEmotes = nullptr;
 int BrowserBox::mInstances = 0;
 
@@ -408,20 +425,6 @@ void BrowserBox::clearRows()
     mDataWidth = 0;
     updateHeight();
 }
-
-struct MouseOverLink
-{
-    MouseOverLink(const int x, const int y) :
-        mX(x), mY(y)
-    { }
-
-    bool operator() (const BrowserLink &link) const
-    {
-        return (mX >= link.x1 && mX < link.x2 &&
-                mY >= link.y1 && mY < link.y2);
-    }
-    int mX, mY;
-};
 
 void BrowserBox::mousePressed(MouseEvent &event)
 {

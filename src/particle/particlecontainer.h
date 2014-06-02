@@ -30,7 +30,7 @@
  * operations herein affect such stacked containers, unless the operations end
  * in `Locally'.
  */
-class ParticleContainer
+class ParticleContainer notfinal
 {
     public:
         /**

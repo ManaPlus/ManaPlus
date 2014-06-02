@@ -31,7 +31,7 @@
  * A simple interface to windows that need to handle links from BrowserBox
  * widget.
  */
-class LinkHandler
+class LinkHandler notfinal
 {
     public:
         virtual ~LinkHandler()

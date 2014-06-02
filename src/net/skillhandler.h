@@ -25,9 +25,11 @@
 
 #include <iosfwd>
 
+#include "localconsts.h"
+
 namespace Net
 {
-class SkillHandler
+class SkillHandler notfinal
 {
     public:
         virtual ~SkillHandler()

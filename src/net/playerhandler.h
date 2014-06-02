@@ -31,7 +31,7 @@
 namespace Net
 {
 
-class PlayerHandler
+class PlayerHandler notfinal
 {
     public:
         virtual ~PlayerHandler()

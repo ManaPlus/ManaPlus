@@ -75,7 +75,7 @@
   * @author Olof Naessén
   * @since 0.6.0
   */
-class DeathListener
+class DeathListener notfinal
 {
     public:
         /**

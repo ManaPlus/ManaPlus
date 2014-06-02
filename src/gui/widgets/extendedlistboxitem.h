@@ -23,7 +23,9 @@
 
 #include <string>
 
-struct ExtendedListBoxItem
+#include "localconsts.h"
+
+struct ExtendedListBoxItem final
 {
     ExtendedListBoxItem(const int row0,
                         const std::string &text0,

@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
+ *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
@@ -20,38 +20,33 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EA_INVENTORYITEM_H
-#define NET_EA_INVENTORYITEM_H
+#ifndef GUI_LISTENERS_TABLEMODELLISTENER_H
+#define GUI_LISTENERS_TABLEMODELLISTENER_H
 
-namespace Ea
-{
+#include <set>
+#include <vector>
 
-/**
- * Used to cache storage data until we get size data for it.
- */
-class InventoryItem final
+#include "localconsts.h"
+
+class Widget;
+
+class TableModelListener notfinal
 {
     public:
-        int slot;
-        int id;
-        int quantity;
-        int refine;
-        unsigned char color;
-        bool equip;
+        /**
+         * Must be invoked by the TableModel whenever a global change is about
+         * to occur or has occurred (e.g., when a row or column is being
+         * removed or added).
+         *
+         * This method is triggered twice, once before and once after
+         * the update.
+         *
+         * \param completed whether we are signalling the end of the update
+         */
+        virtual void modelUpdated(const bool completed) = 0;
 
-        InventoryItem(const int slot0, const int id0, const int quantity0,
-                      const int refine0, const unsigned char color0,
-                      const bool equip0) :
-            slot(slot0),
-            id(id0),
-            quantity(quantity0),
-            refine(refine0),
-            color(color0),
-            equip(equip0)
-        {
-        }
+        virtual ~TableModelListener()
+        { }
 };
 
-}  // namespace Ea
-
-#endif  // NET_EA_INVENTORYITEM_H
+#endif  // GUI_LISTENERS_TABLEMODELLISTENER_H

@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-class StatListener
+class StatListener notfinal
 {
     public:
         virtual void statChanged(const int id,

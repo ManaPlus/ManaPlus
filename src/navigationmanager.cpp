@@ -31,7 +31,7 @@ static const int walkMask = (BlockMask::WALL | BlockMask::AIR
 
 namespace
 {
-    struct Cell
+    struct Cell final
     {
         Cell(const int x0, const int y0) :
             x(x0),

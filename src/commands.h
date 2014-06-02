@@ -41,7 +41,7 @@ extern ChatTab *localChatTab;
 
 typedef void (*CommandFuncPtr) (const std::string &args, ChatTab *const tab);
 
-struct CommandInfo
+struct CommandInfo final
 {
     const char *name;
     CommandFuncPtr func;

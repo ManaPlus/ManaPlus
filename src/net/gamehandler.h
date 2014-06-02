@@ -30,7 +30,7 @@
 namespace Net
 {
 
-class GameHandler
+class GameHandler notfinal
 {
     public:
         virtual ~GameHandler()

@@ -32,7 +32,7 @@
 /**
  * A class holding a set of properties.
  */
-class Properties
+class Properties notfinal
 {
     public:
         Properties() :

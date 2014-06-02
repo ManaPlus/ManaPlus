@@ -27,7 +27,7 @@
 
 class Inventory;
 
-class InventoryListener
+class InventoryListener notfinal
 {
     public:
         virtual ~InventoryListener()

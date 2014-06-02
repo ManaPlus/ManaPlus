@@ -71,7 +71,7 @@
   *
   * @since 0.1.0
   */
-class Rect
+class Rect notfinal
 {
     public:
         /**

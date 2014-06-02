@@ -24,7 +24,7 @@
 
 class ActorSprite;
 
-class ActorSpriteListener
+class ActorSpriteListener notfinal
 {
     public:
         /**

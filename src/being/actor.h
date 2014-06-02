@@ -35,7 +35,7 @@ class Map;
 typedef std::list<Actor*> Actors;
 typedef Actors::const_iterator ActorsCIter;
 
-class Actor
+class Actor notfinal
 {
 public:
     A_DELETE_COPY(Actor)

@@ -29,7 +29,7 @@
 union SDL_Event;
 #endif
 
-struct MultiTouchEvent
+struct MultiTouchEvent final
 {
     bool active;
     float x;

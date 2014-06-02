@@ -35,7 +35,7 @@ class Widget;
  * right, or centered in the cell. The process is similar for the vertical
  * alignment, except that top is represented by LEFT and bottom by RIGHT.
  */
-class LayoutCell
+class LayoutCell notfinal
 {
     friend class Layout;
     friend class LayoutArray;

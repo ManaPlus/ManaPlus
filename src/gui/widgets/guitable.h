@@ -29,6 +29,7 @@
 
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
+#include "listeners/tablemodellistener.h"
 
 #include "gui/widgets/widget.h"
 

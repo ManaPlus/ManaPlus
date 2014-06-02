@@ -34,7 +34,7 @@ class Being;
 namespace Net
 {
 
-class GuildHandler
+class GuildHandler notfinal
 {
     public:
         virtual ~GuildHandler()

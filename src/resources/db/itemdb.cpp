@@ -71,7 +71,7 @@ static int parseDirectionName(const std::string &name);
 
 namespace
 {
-    struct FieldType
+    struct FieldType final
     {
 #ifdef ADVGCC
         FieldType(const char *const name0,

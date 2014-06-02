@@ -30,7 +30,7 @@
 
 namespace Net
 {
-class ChatHandler
+class ChatHandler notfinal
 {
     public:
         virtual ~ChatHandler()

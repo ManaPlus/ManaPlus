@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-class ArrowsListener
+class ArrowsListener notfinal
 {
     public:
         virtual void arrowsChanged() = 0;

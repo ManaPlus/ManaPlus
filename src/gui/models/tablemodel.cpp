@@ -26,6 +26,8 @@
 
 #include "gui/widgets/widget.h"
 
+#include "listeners/tablemodellistener.h"
+
 #include "debug.h"
 
 void TableModel::installListener(TableModelListener *const listener)

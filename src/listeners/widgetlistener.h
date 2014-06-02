@@ -79,7 +79,7 @@
   * @author Olof Naessén
   * @since 0.8.0
   */
-class WidgetListener
+class WidgetListener notfinal
 {
     public:
         /**

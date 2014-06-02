@@ -44,7 +44,7 @@ class ConfigurationObject;
  * \param CONT Type of the container we (de)serialise
  */
 template <class T, class CONT>
-class ConfigurationListManager
+class ConfigurationListManager notfinal
 {
     public:
         /**
@@ -78,7 +78,7 @@ class ConfigurationListManager
  *
  * \ingroup CORE
  */
-class ConfigurationObject
+class ConfigurationObject notfinal
 {
     friend class Configuration;
 

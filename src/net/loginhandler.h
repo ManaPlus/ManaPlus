@@ -33,7 +33,7 @@
 namespace Net
 {
 
-class LoginHandler
+class LoginHandler notfinal
 {
     public:
         void setServer(const ServerInfo &server)
