@@ -76,7 +76,7 @@ int TestMain::exec(const bool testAudio)
     int soundTest = -1;
     int rescaleTest[3];
     int softFps = 0;
-    int fastOpenGLFps = 0;
+    int normalOpenGLFps = 0;
     int safeOpenGLFps = 0;
     int textureSize1 = 1024;
     int textureSize3 = 1024;
@@ -92,7 +92,7 @@ int TestMain::exec(const bool testAudio)
     if (!videoDetectTest)
         detectMode = readValue2(99);
 
-    int fastOpenGLTest = invokeFastOpenGLRenderTest("2");
+    int normalOpenGLTest = invokeNormalOpenGLRenderTest("2");
     int safeOpenGLTest = invokeSafeOpenGLRenderTest("3");
     if (testAudio)
         soundTest = invokeTest4();
@@ -100,7 +100,7 @@ int TestMain::exec(const bool testAudio)
         soundTest = 1;
 
     info.append(strprintf("%d.%d,%d,%d.", soundTest, softwareTest,
-        fastOpenGLTest, safeOpenGLTest));
+        normalOpenGLTest, safeOpenGLTest));
 
     if (!softwareTest)
     {
@@ -127,28 +127,28 @@ int TestMain::exec(const bool testAudio)
         }
     }
     info.append(".");
-    if (!fastOpenGLTest)
+    if (!normalOpenGLTest)
     {
-        int fastOpenGLFpsTest = invokeFastOpenGLRenderTest("9");
-        info.append(strprintf("%d", fastOpenGLFpsTest));
-        if (!fastOpenGLFpsTest)
+        int normalOpenGLFpsTest = invokeNormalOpenGLRenderTest("9");
+        info.append(strprintf("%d", normalOpenGLFpsTest));
+        if (!normalOpenGLFpsTest)
         {
-            fastOpenGLFps = readValue2(9);
-            info.append(strprintf(",%d", fastOpenGLFps));
-            if (!fastOpenGLFps)
+            normalOpenGLFps = readValue2(9);
+            info.append(strprintf(",%d", normalOpenGLFps));
+            if (!normalOpenGLFps)
             {
-                fastOpenGLTest = -1;
-                fastOpenGLFpsTest = -1;
+                normalOpenGLTest = -1;
+                normalOpenGLFpsTest = -1;
             }
             else
             {
-                rescaleTest[1] = invokeFastOpenGLRenderTest("6");
+                rescaleTest[1] = invokeNormalOpenGLRenderTest("6");
                 info.append(strprintf(",%d", rescaleTest[1]));
             }
         }
         else
         {
-            fastOpenGLTest = -1;
+            normalOpenGLTest = -1;
         }
     }
     info.append(".");
@@ -179,10 +179,10 @@ int TestMain::exec(const bool testAudio)
     info.append(".");
 
     int maxFps = softFps;
-    if (maxFps < fastOpenGLFps)
+    if (maxFps < normalOpenGLFps)
     {
         openGLMode = RENDER_NORMAL_OPENGL;
-        maxFps = fastOpenGLFps;
+        maxFps = normalOpenGLFps;
     }
     if (maxFps < safeOpenGLFps)
     {
@@ -196,12 +196,12 @@ int TestMain::exec(const bool testAudio)
     if (openGLMode == RENDER_NORMAL_OPENGL
         || openGLMode == RENDER_GLES_OPENGL)
     {
-        if (!invokeFastOpenBatchTest("11"))
+        if (!invokeNormalOpenBatchTest("11"))
             batchSize = readValue2(11);
         if (batchSize < 256)
             batchSize = 256;
 
-        if (!invokeFastOpenBatchTest("14"))
+        if (!invokeNormalOpenBatchTest("14"))
             textureSize1 = readValue2(14);
 //        if (!invokeMobileOpenBatchTest("15"))
 //            textureSize2 = readValue2(15);
@@ -217,9 +217,9 @@ int TestMain::exec(const bool testAudio)
         if (!invokeSafeOpenBatchTest("16"))
             textureSize3 = readValue2(16);
         textureSize1 = textureSize3;
-        if (fastOpenGLTest != -1)
+        if (normalOpenGLTest != -1)
         {
-            if (!invokeFastOpenBatchTest("14"))
+            if (!invokeNormalOpenBatchTest("14"))
                 textureSize1 = readValue2(14);
         }
         info.append(strprintf(",%d,%d,-", textureSize1, textureSize3));
@@ -334,7 +334,7 @@ int TestMain::invokeSoftwareRenderTest(const std::string &test)
     return ret;
 }
 
-int TestMain::invokeFastOpenGLRenderTest(const std::string &test)
+int TestMain::invokeNormalOpenGLRenderTest(const std::string &test)
 {
     mConfig.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
     mConfig.write();
@@ -343,7 +343,7 @@ int TestMain::invokeFastOpenGLRenderTest(const std::string &test)
     return ret;
 }
 
-int TestMain::invokeFastOpenBatchTest(const std::string &test)
+int TestMain::invokeNormalOpenBatchTest(const std::string &test)
 {
     mConfig.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
     mConfig.write();

@@ -60,9 +60,9 @@ class TestMain final
 
         int invokeSoftwareRenderTest(const std::string &test);
 
-        int invokeFastOpenGLRenderTest(const std::string &test);
+        int invokeNormalOpenGLRenderTest(const std::string &test);
 
-        int invokeFastOpenBatchTest(const std::string &test);
+        int invokeNormalOpenBatchTest(const std::string &test);
 
         int invokeMobileOpenBatchTest(const std::string &test);
 
