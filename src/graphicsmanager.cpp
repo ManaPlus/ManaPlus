@@ -31,7 +31,7 @@
 #include <SDL_android.h>
 #endif
 #else
-#include "GL/glx.h"
+#include <GL/glx.h>
 #endif
 #else
 #endif

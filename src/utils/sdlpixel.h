@@ -66,7 +66,7 @@
 
 #include "gui/color.h"
 
-#include "SDL.h"
+#include <SDL.h>
 
 /**
   * Puts a pixel on an SDL_Surface.

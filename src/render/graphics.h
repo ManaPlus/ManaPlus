@@ -66,8 +66,6 @@
 #ifndef RENDER_GRAPHICS_H
 #define RENDER_GRAPHICS_H
 
-#include "SDL_video.h"
-
 #include "sdlshared.h"
 
 #include "gui/color.h"
@@ -75,6 +73,8 @@
 #include "gui/cliprect.h"
 
 #include "render/rendertype.h"
+
+#include <SDL_video.h>
 
 #ifdef USE_SDL2
 #include <SDL_render.h>

@@ -24,7 +24,7 @@
 #define RESOURCES_SDLIMAGEHELPER_H
 
 #ifdef USE_SDL2
-#include "sdl2imagehelper.h"
+#include "resources/sdl2imagehelper.h"
 
 #else
 

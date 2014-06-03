@@ -194,7 +194,7 @@
  * is defined to \c 0 to disable the redefinition of \c new.
  */
 #define M_DEBUG_NEW_REDEFINE_NEW 0
-#include "debug_new.h"
+#include "debug/debug_new.h"
 
 /**
  * Gets the aligned value of memory block size.
