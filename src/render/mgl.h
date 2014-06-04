@@ -238,7 +238,6 @@ defNameE(glBindFragDataLocation);
 defNameE(glUseProgram);
 defNameE(glValidateProgram);
 defNameE(glGetAttribLocation);
-defNameE(glActiveTexture);
 defNameE(glUniform1f);
 defNameE(glUniform2f);
 defNameE(glUniform3f);

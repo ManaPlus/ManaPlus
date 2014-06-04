@@ -87,7 +87,12 @@
 #endif
 
 #define assignFunction(func, name) m##func \
-    = reinterpret_cast<func##_t>(getFunction(name))
+    = reinterpret_cast<func##_t>(getFunction(name)); \
+    if (m##func == nullptr) \
+        logger->log(std::string("function not found: ") + name); \
+    else \
+        logger->log(std::string("assigned function: ") + name);
+
 #endif
 
 GraphicsManager graphicsManager;
@@ -886,6 +891,7 @@ void GraphicsManager::initOpenGLFunctions()
     }
     if (checkGLVersion(2, 1) && supportExtension("GL_ARB_vertex_array_object"))
     {
+        logger->log1("found GL_ARB_vertex_array_object");
         assignFunction(glGenVertexArrays, "glGenVertexArrays");
         assignFunction(glBindVertexArray, "glBindVertexArray");
         assignFunction(glDeleteVertexArrays, "glDeleteVertexArrays");
@@ -930,6 +936,7 @@ void GraphicsManager::initOpenGLFunctions()
     if (checkGLVersion(4, 0)
         || supportExtension("GL_ARB_separate_shader_objects"))
     {
+        logger->log1("found GL_ARB_separate_shader_objects");
         assignFunction(glUniform1f, "glUniform1f");
         assignFunction(glUniform2f, "glUniform2f");
         assignFunction(glUniform3f, "glUniform3f");
