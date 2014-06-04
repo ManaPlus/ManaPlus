@@ -118,6 +118,13 @@ typedef void (APIENTRY *glInsertEventMarker_t)
 typedef void (APIENTRY *glPushGroupMarker_t)
     (GLsizei length, const char *marker);
 typedef void (APIENTRY *glPopGroupMarker_t) (void);
+typedef void (APIENTRY *glGenVertexArrays_t) (GLsizei n, GLuint *arrays);
+typedef void (APIENTRY *glBindVertexArray_t) (GLuint array);
+typedef void (APIENTRY *glDeleteVertexArrays_t) (GLsizei n, GLuint *arrays);
+typedef void (APIENTRY *glVertexAttribPointer_t) (GLuint index, GLint size,
+    GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
+typedef void (APIENTRY *glEnableVertexAttribArray_t) (GLuint index);
+typedef void (APIENTRY *glDisableVertexAttribArray_t) (GLuint index);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,
@@ -148,6 +155,12 @@ defNameE(glGetObjectLabel);
 defNameE(glInsertEventMarker);
 defNameE(glPushGroupMarker);
 defNameE(glPopGroupMarker);
+defNameE(glGenVertexArrays);
+defNameE(glBindVertexArray);
+defNameE(glDeleteVertexArrays);
+defNameE(glVertexAttribPointer);
+defNameE(glEnableVertexAttribArray);
+defNameE(glDisableVertexAttribArray);
 
 #ifdef WIN32
 typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);

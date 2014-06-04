@@ -48,6 +48,12 @@ defName(glGetObjectLabel);
 defName(glInsertEventMarker);
 defName(glPushGroupMarker);
 defName(glPopGroupMarker);
+defName(glGenVertexArrays);
+defName(glBindVertexArray);
+defName(glDeleteVertexArrays);
+defName(glVertexAttribPointer);
+defName(glEnableVertexAttribArray);
+defName(glDisableVertexAttribArray);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);

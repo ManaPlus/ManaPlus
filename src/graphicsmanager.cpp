@@ -885,6 +885,17 @@ void GraphicsManager::initOpenGLFunctions()
             assignFunction(glPopGroupMarker, "glPopGroupMarker");
     }
 
+    if (checkGLVersion(3, 0) || supportExtension("GL_ARB_vertex_array_object"))
+    {
+        assignFunction(glGenVertexArrays, "glGenVertexArrays");
+        assignFunction(glBindVertexArray, "glBindVertexArray");
+        assignFunction(glDeleteVertexArrays, "glDeleteVertexArrays");
+        assignFunction(glVertexAttribPointer, "glVertexAttribPointer");
+        assignFunction(glEnableVertexAttribArray, "glEnableVertexAttribArray");
+        assignFunction(glDisableVertexAttribArray,
+            "glDisableVertexAttribArray");
+    }
+
 #ifdef WIN32
     assignFunction(wglGetExtensionsString, "wglGetExtensionsStringARB");
 #endif
