@@ -125,6 +125,11 @@ typedef void (APIENTRY *glVertexAttribPointer_t) (GLuint index, GLint size,
     GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
 typedef void (APIENTRY *glEnableVertexAttribArray_t) (GLuint index);
 typedef void (APIENTRY *glDisableVertexAttribArray_t) (GLuint index);
+typedef void (APIENTRY *glGenBuffers_t) (GLsizei n, GLuint *buffers);
+typedef void (APIENTRY *glDeleteBuffers_t) (GLsizei n, GLuint *buffers);
+typedef void (APIENTRY *glBindBuffer_t) (GLenum target, GLuint buffer);
+typedef void (APIENTRY *glBufferData_t) (GLenum target, GLsizeiptr size,
+    const GLvoid *data, GLenum usage);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,
@@ -161,6 +166,10 @@ defNameE(glDeleteVertexArrays);
 defNameE(glVertexAttribPointer);
 defNameE(glEnableVertexAttribArray);
 defNameE(glDisableVertexAttribArray);
+defNameE(glGenBuffers);
+defNameE(glDeleteBuffers);
+defNameE(glBindBuffer);
+defNameE(glBufferData);
 
 #ifdef WIN32
 typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);

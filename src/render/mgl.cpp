@@ -54,6 +54,10 @@ defName(glDeleteVertexArrays);
 defName(glVertexAttribPointer);
 defName(glEnableVertexAttribArray);
 defName(glDisableVertexAttribArray);
+defName(glGenBuffers);
+defName(glDeleteBuffers);
+defName(glBindBuffer);
+defName(glBufferData);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);

@@ -884,8 +884,7 @@ void GraphicsManager::initOpenGLFunctions()
         if (!mglPopGroupMarker)
             assignFunction(glPopGroupMarker, "glPopGroupMarker");
     }
-
-    if (checkGLVersion(3, 0) || supportExtension("GL_ARB_vertex_array_object"))
+    if (checkGLVersion(2, 1) && supportExtension("GL_ARB_vertex_array_object"))
     {
         assignFunction(glGenVertexArrays, "glGenVertexArrays");
         assignFunction(glBindVertexArray, "glBindVertexArray");
@@ -894,6 +893,13 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glEnableVertexAttribArray, "glEnableVertexAttribArray");
         assignFunction(glDisableVertexAttribArray,
             "glDisableVertexAttribArray");
+    }
+    if (checkGLVersion(1, 5))
+    {
+        assignFunction(glGenBuffers, "glGenBuffers");
+        assignFunction(glDeleteBuffers, "glDeleteBuffers");
+        assignFunction(glBindBuffer, "glBindBuffer");
+        assignFunction(glBufferData, "glBufferData");
     }
 
 #ifdef WIN32
