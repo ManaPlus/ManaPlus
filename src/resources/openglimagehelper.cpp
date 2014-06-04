@@ -48,7 +48,13 @@ int OpenGLImageHelper::mTextureSize = 0;
 bool OpenGLImageHelper::mBlur = true;
 bool OpenGLImageHelper::mUseTextureSampler = false;
 
-Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
+OpenGLImageHelper::~OpenGLImageHelper()
+{
+    glDeleteTextures(texturesSize - mFreeTextureIndex,
+        &mTextures[mFreeTextureIndex]);
+}
+
+Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 {
     SDL_Surface *const tmpImage = loadPng(rw);
     if (!tmpImage)
@@ -92,14 +98,14 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
     return image;
 }
 
-Image *OpenGLImageHelper::load(SDL_Surface *const tmpImage) const
+Image *OpenGLImageHelper::load(SDL_Surface *const tmpImage)
 {
     return glLoad(tmpImage);
 }
 
 Image *OpenGLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
                                             const int width, const int height,
-                                            const float alpha) const
+                                            const float alpha)
 {
     if (!tmpImage)
         return nullptr;
@@ -127,7 +133,7 @@ int OpenGLImageHelper::powerOfTwo(const int input)
 }
 
 Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
-                                 int width, int height) const
+                                 int width, int height)
 {
     if (!tmpImage)
         return nullptr;
@@ -191,8 +197,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         SDL_BlitSurface(oldImage, nullptr, tmpImage, nullptr);
     }
 
-    GLuint texture;
-    glGenTextures(1, &texture);
+    const GLuint texture = getNewTexture();
     switch (mUseOpenGL)
     {
 #ifndef ANDROID
@@ -319,6 +324,23 @@ SDL_Surface *OpenGLImageHelper::create32BitSurface(int width,
 
     return MSDL_CreateRGBSurface(SDL_SWSURFACE,
         width, height, 32, rmask, gmask, bmask, amask);
+}
+
+GLuint OpenGLImageHelper::getNewTexture()
+{
+    GLuint texture = mTextures[mFreeTextureIndex];
+    mFreeTextureIndex ++;
+    if (mFreeTextureIndex == texturesSize)
+    {
+        mFreeTextureIndex = 0;
+        postInit();
+    }
+    return texture;
+}
+
+void OpenGLImageHelper::postInit()
+{
+    glGenTextures(texturesSize, &mTextures[mFreeTextureIndex]);
 }
 
 #endif

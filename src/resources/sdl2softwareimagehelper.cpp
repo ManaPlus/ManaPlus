@@ -41,7 +41,7 @@
 bool SDL2SoftwareImageHelper::mEnableAlphaCache = false;
 SDL_PixelFormat *SDL2SoftwareImageHelper::mFormat = nullptr;
 
-Image *SDL2SoftwareImageHelper::load(SDL_Surface *const tmpImage) const
+Image *SDL2SoftwareImageHelper::load(SDL_Surface *const tmpImage)
 {
     return _SDLload(tmpImage);
 }
@@ -49,7 +49,7 @@ Image *SDL2SoftwareImageHelper::load(SDL_Surface *const tmpImage) const
 Image *SDL2SoftwareImageHelper::createTextSurface(SDL_Surface *const tmpImage,
                                                   const int width A_UNUSED,
                                                   const int height A_UNUSED,
-                                                  const float alpha) const
+                                                  const float alpha)
 {
     if (!tmpImage)
         return nullptr;
@@ -69,7 +69,7 @@ SDL_Surface* SDL2SoftwareImageHelper::SDLDuplicateSurface(SDL_Surface *const
     return MSDL_ConvertSurface(tmpImage, tmpImage->format, SDL_SWSURFACE);
 }
 
-Image *SDL2SoftwareImageHelper::_SDLload(SDL_Surface *tmpImage) const
+Image *SDL2SoftwareImageHelper::_SDLload(SDL_Surface *tmpImage)
 {
     if (!tmpImage)
         return nullptr;

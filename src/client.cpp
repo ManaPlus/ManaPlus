@@ -513,6 +513,7 @@ void Client::initGraphics()
     runCounters = config.getBoolValue("packetcounters");
     WindowManager::applyVSync();
     graphicsManager.setVideoMode();
+    imageHelper->postInit();
     getConfigDefaults2(config.getDefaultValues());
     WindowManager::applyGrabMode();
     WindowManager::applyGamma();

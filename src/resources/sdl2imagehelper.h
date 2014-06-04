@@ -54,7 +54,7 @@ class SDLImageHelper final : public ImageHelper
         /**
          * Loads an image from an SDL surface.
          */
-        Image *load(SDL_Surface *const tmpImage) const
+        Image *load(SDL_Surface *const tmpImage)
                     override final A_WARN_UNUSED;
 
         Image *createTextSurface(SDL_Surface *const tmpImage,
@@ -83,7 +83,7 @@ class SDLImageHelper final : public ImageHelper
 
     protected:
         /** SDL_Surface to SDL_Surface Image loader */
-        Image *_SDLload(SDL_Surface *tmpImage) const A_WARN_UNUSED;
+        Image *_SDLload(SDL_Surface *tmpImage) A_WARN_UNUSED;
 
         static bool mEnableAlphaCache;
 #ifdef USE_SDL2

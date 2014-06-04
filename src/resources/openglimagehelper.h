@@ -58,14 +58,14 @@ class OpenGLImageHelper final : public ImageHelper
     friend class Image;
 
     public:
-        OpenGLImageHelper()
+        OpenGLImageHelper() :
+            mFreeTextureIndex(0)
         {
         }
 
         A_DELETE_COPY(OpenGLImageHelper)
 
-        ~OpenGLImageHelper()
-        { }
+        ~OpenGLImageHelper();
 
         /**
          * Loads an image from an SDL_RWops structure and recolors it.
@@ -77,18 +77,18 @@ class OpenGLImageHelper final : public ImageHelper
          *         otherwise.
          */
         Image *load(SDL_RWops *const rw,
-                    Dye const &dye) const override final A_WARN_UNUSED;
+                    Dye const &dye) override final A_WARN_UNUSED;
 
         /**
          * Loads an image from an SDL surface.
          */
-        Image *load(SDL_Surface *const tmpImage) const
+        Image *load(SDL_Surface *const tmpImage)
                     override final A_WARN_UNUSED;
 
         Image *createTextSurface(SDL_Surface *const tmpImage,
                                  const int width, const int height,
                                  const float alpha)
-                                 const override final A_WARN_UNUSED;
+                                 override final A_WARN_UNUSED;
 
         // OpenGL only public functions
 
@@ -119,6 +119,8 @@ class OpenGLImageHelper final : public ImageHelper
         SDL_Surface *create32BitSurface(int width,
                                         int height) const override final;
 
+        void postInit() override final;
+
     protected:
         /**
          * Returns the first power of two equal or bigger than the input.
@@ -126,7 +128,13 @@ class OpenGLImageHelper final : public ImageHelper
         static int powerOfTwo(const int input) A_WARN_UNUSED;
 
         Image *glLoad(SDL_Surface *tmpImage,
-                      int width = 0, int height = 0) const A_WARN_UNUSED;
+                      int width = 0, int height = 0) A_WARN_UNUSED;
+
+        GLuint getNewTexture();
+
+        static const size_t texturesSize = 10;
+        size_t mFreeTextureIndex;
+        GLuint mTextures[texturesSize];
 
         static int mTextureSize;
         static bool mBlur;

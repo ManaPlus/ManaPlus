@@ -40,7 +40,7 @@ ImageHelper *surfaceImageHelper = nullptr;
 bool ImageHelper::mEnableAlpha = true;
 RenderType ImageHelper::mUseOpenGL = RENDER_SOFTWARE;
 
-Image *ImageHelper::load(SDL_RWops *const rw) const
+Image *ImageHelper::load(SDL_RWops *const rw)
 {
     SDL_Surface *const tmpImage = loadPng(rw);
     if (!tmpImage)
@@ -55,7 +55,7 @@ Image *ImageHelper::load(SDL_RWops *const rw) const
     return image;
 }
 
-Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye) const
+Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 {
     SDL_Surface *const tmpImage = loadPng(rw);
     if (!tmpImage)

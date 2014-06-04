@@ -56,19 +56,18 @@ class ImageHelper notfinal
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        Image *load(SDL_RWops *const rw) const A_WARN_UNUSED;
+        Image *load(SDL_RWops *const rw) A_WARN_UNUSED;
 
-        virtual Image *load(SDL_RWops *const rw, Dye
-                            const &dye) const A_WARN_UNUSED;
+        virtual Image *load(SDL_RWops *const rw, Dye const &dye) A_WARN_UNUSED;
 
 #ifdef __GNUC__
-        virtual Image *load(SDL_Surface *const) const A_WARN_UNUSED = 0;
+        virtual Image *load(SDL_Surface *const) A_WARN_UNUSED = 0;
 
         virtual Image *createTextSurface(SDL_Surface *const tmpImage,
                                          const int width, const int height,
-                                         float alpha) const A_WARN_UNUSED = 0;
+                                         float alpha) A_WARN_UNUSED = 0;
 #else
-        virtual Image *load(SDL_Surface *) const A_WARN_UNUSED
+        virtual Image *load(SDL_Surface *) A_WARN_UNUSED
         { return nullptr; }
 
         virtual Image *createTextSurface(SDL_Surface *const tmpImage,
@@ -95,6 +94,9 @@ class ImageHelper notfinal
 
         virtual RenderType useOpenGL() const A_WARN_UNUSED
         { return mUseOpenGL; }
+
+        virtual void postInit()
+        { }
 
     protected:
         ImageHelper()

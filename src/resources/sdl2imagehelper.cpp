@@ -44,7 +44,7 @@ bool SDLImageHelper::mEnableAlphaCache = false;
 SDL_Renderer *SDLImageHelper::mRenderer = nullptr;
 #endif
 
-Image *SDLImageHelper::load(SDL_Surface *const tmpImage) const
+Image *SDLImageHelper::load(SDL_Surface *const tmpImage)
 {
     return _SDLload(tmpImage);
 }
@@ -71,7 +71,7 @@ SDL_Surface* SDLImageHelper::SDLDuplicateSurface(SDL_Surface *const tmpImage)
     return MSDL_ConvertSurface(tmpImage, tmpImage->format, SDL_SWSURFACE);
 }
 
-Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage) const
+Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
 {
     if (!tmpImage)
         return nullptr;
