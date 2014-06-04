@@ -901,6 +901,40 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glBindBuffer, "glBindBuffer");
         assignFunction(glBufferData, "glBufferData");
     }
+    if (checkGLVersion(2, 0))
+    {
+        assignFunction(glCreateShader, "glCreateShader");
+        assignFunction(glDeleteShader, "glDeleteShader");
+        assignFunction(glGetShaderiv, "glGetShaderiv");
+        assignFunction(glGetShaderInfoLog, "glGetShaderInfoLog");
+        assignFunction(glGetShaderSource, "glGetShaderSource");
+        assignFunction(glShaderSource, "glShaderSource");
+        assignFunction(glCompileShader, "glCompileShader");
+        assignFunction(glLinkProgram, "glLinkProgram");
+        assignFunction(glDeleteProgram, "glDeleteProgram");
+        assignFunction(glCreateProgram, "glCreateProgram");
+        assignFunction(glAttachShader, "glAttachShader");
+        assignFunction(glDetachShader, "glDetachShader");
+        assignFunction(glGetAttachedShaders, "glGetAttachedShaders");
+        assignFunction(glGetUniformLocation, "glGetUniformLocation");
+        assignFunction(glGetActiveUniform, "glGetActiveUniform");
+        assignFunction(glGetProgramiv, "glGetProgramiv");
+        assignFunction(glUseProgram, "glUseProgram");
+        assignFunction(glValidateProgram, "glValidateProgram");
+        assignFunction(glGetAttribLocation, "glGetAttribLocation");
+    }
+    if (checkGLVersion(3, 0))
+    {
+        assignFunction(glBindFragDataLocation, "glBindFragDataLocation");
+    }
+    if (checkGLVersion(4, 0)
+        || supportExtension("GL_ARB_separate_shader_objects"))
+    {
+        assignFunction(glUniform1f, "glUniform1f");
+        assignFunction(glUniform2f, "glUniform2f");
+        assignFunction(glUniform3f, "glUniform3f");
+        assignFunction(glUniform4f, "glUniform4f");
+    }
 
 #ifdef WIN32
     assignFunction(wglGetExtensionsString, "wglGetExtensionsStringARB");

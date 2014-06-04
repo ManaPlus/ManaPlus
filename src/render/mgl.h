@@ -83,6 +83,17 @@
 #define GL_VERTEX_ARRAY_OBJECT_EXT        0x9154
 #endif
 
+#ifndef GL_ARRAY_BUFFER
+#define GL_ARRAY_BUFFER                   0x8892
+#define GL_ELEMENT_ARRAY_BUFFER           0x8893
+#endif
+
+#ifndef GL_STREAM_DRAW
+#define GL_STREAM_DRAW                    0x88E0
+#define GL_STATIC_DRAW                    0x88E4
+#define GL_DYNAMIC_DRAW                   0x88E8
+#endif
+
 #define defNameE(name) extern name##_t m##name
 
 typedef void (APIENTRY *glGenRenderbuffers_t)(GLsizei, GLuint *);
@@ -130,6 +141,43 @@ typedef void (APIENTRY *glDeleteBuffers_t) (GLsizei n, GLuint *buffers);
 typedef void (APIENTRY *glBindBuffer_t) (GLenum target, GLuint buffer);
 typedef void (APIENTRY *glBufferData_t) (GLenum target, GLsizeiptr size,
     const GLvoid *data, GLenum usage);
+typedef void (APIENTRY *glCreateShader_t) (GLenum shaderType);
+typedef void (APIENTRY *glDeleteShader_t) (GLenum shader);
+typedef void (APIENTRY *glGetShaderiv_t) (GLuint shader,
+    GLenum pname, GLint *params);
+typedef void (APIENTRY *glGetShaderInfoLog_t) (GLuint shader,
+    GLsizei maxLength, GLsizei *length, GLchar *infoLog);
+typedef void (APIENTRY *glGetShaderSource_t) (GLuint shader,
+    GLsizei bufSize, GLsizei *length, GLchar *source);
+typedef void (APIENTRY *glShaderSource_t) (GLuint shader,
+    GLsizei count, const GLchar **string, const GLint *length);
+typedef void (APIENTRY *glCompileShader_t) (GLuint shader);
+typedef void (APIENTRY *glLinkProgram_t) (GLuint program);
+typedef void (APIENTRY *glDeleteProgram_t) (GLuint program);
+typedef GLuint (APIENTRY *glCreateProgram_t) (void);
+typedef void (APIENTRY *glAttachShader_t) (GLuint program, GLuint shader);
+typedef void (APIENTRY *glDetachShader_t) (GLuint program, GLuint shader);
+typedef void (APIENTRY *glGetAttachedShaders_t) (GLuint program,
+    GLsizei maxCount, GLsizei *count, GLuint *shaders);
+typedef void (APIENTRY *glGetUniformLocation_t) (GLuint program,
+    const GLchar *name);
+typedef void (APIENTRY *glGetActiveUniform_t) (GLuint program, GLuint index,
+    GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
+typedef void (APIENTRY *glGetProgramiv_t) (GLuint program,
+    GLenum pname, GLint *params);
+typedef GLint (APIENTRY *glBindFragDataLocation_t) (GLuint program,
+    GLuint colorNumber, const char *name);
+typedef void (APIENTRY *glUseProgram_t) (GLuint program);
+typedef void (APIENTRY *glValidateProgram_t) (GLuint program);
+typedef GLint (APIENTRY *glGetAttribLocation_t) (GLuint program,
+    const GLchar *name);
+typedef void (APIENTRY *glUniform1f_t) (GLint location, GLfloat v0);
+typedef void (APIENTRY *glUniform2f_t) (GLint location,
+    GLfloat v0, GLfloat v1);
+typedef void (APIENTRY *glUniform3f_t) (GLint location,
+    GLfloat v0, GLfloat v1, GLfloat v2);
+typedef void (APIENTRY *glUniform4f_t) (GLint location,
+    GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,
@@ -170,6 +218,31 @@ defNameE(glGenBuffers);
 defNameE(glDeleteBuffers);
 defNameE(glBindBuffer);
 defNameE(glBufferData);
+defNameE(glCreateShader);
+defNameE(glDeleteShader);
+defNameE(glGetShaderiv);
+defNameE(glGetShaderInfoLog);
+defNameE(glGetShaderSource);
+defNameE(glShaderSource);
+defNameE(glCompileShader);
+defNameE(glLinkProgram);
+defNameE(glDeleteProgram);
+defNameE(glCreateProgram);
+defNameE(glAttachShader);
+defNameE(glDetachShader);
+defNameE(glGetAttachedShaders);
+defNameE(glGetUniformLocation);
+defNameE(glGetActiveUniform);
+defNameE(glGetProgramiv);
+defNameE(glBindFragDataLocation);
+defNameE(glUseProgram);
+defNameE(glValidateProgram);
+defNameE(glGetAttribLocation);
+defNameE(glActiveTexture);
+defNameE(glUniform1f);
+defNameE(glUniform2f);
+defNameE(glUniform3f);
+defNameE(glUniform4f);
 
 #ifdef WIN32
 typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);
