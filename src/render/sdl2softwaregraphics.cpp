@@ -800,20 +800,6 @@ SDL_Surface *SDL2SoftwareGraphics::getScreenshot()
     return screenshot;
 }
 
-bool SDL2SoftwareGraphics::drawNet(const int x1, const int y1,
-                                   const int x2, const int y2,
-                                   const int width, const int height)
-{
-    // +++ need use SDL_RenderDrawLines
-    for (int y = y1; y < y2; y += height)
-        drawLine(x1, y, x2, y);
-
-    for (int x = x1; x < x2; x += width)
-        drawLine(x, y1, x, y2);
-
-    return true;
-}
-
 void SDL2SoftwareGraphics::calcWindow(ImageCollection *const vertCol,
                                       const int x, const int y,
                                       const int w, const int h,
