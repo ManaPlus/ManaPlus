@@ -43,6 +43,17 @@
 
 #include "debug.h"
 
+#define for_each_cursors() \
+    for (int size = TargetCursorSize::SMALL; \
+         size < TargetCursorSize::NUM_TC; \
+         size ++) \
+    { \
+        for (int type = TargetCursorType::NORMAL; \
+             type < TargetCursorType::NUM_TCT; \
+             type ++) \
+
+#define end_foreach }
+
 AnimatedSprite *ActorSprite::targetCursor[TargetCursorType::NUM_TCT]
     [TargetCursorSize::NUM_TC];
 bool ActorSprite::loaded = false;
@@ -363,35 +374,23 @@ void ActorSprite::initTargetCursor()
     static const std::string targetCursorFile("target-cursor-%s-%s.xml");
 
     // Load target cursors
-    for (int size = TargetCursorSize::SMALL;
-         size < TargetCursorSize::NUM_TC;
-         size ++)
+    for_each_cursors()
     {
-        for (int type = TargetCursorType::NORMAL;
-             type < TargetCursorType::NUM_TCT;
-             type ++)
-        {
-            targetCursor[type][size] = AnimatedSprite::load(
-                Theme::resolveThemePath(strprintf(
-                targetCursorFile.c_str(),
-                cursorType(type),
-                cursorSize(size))));
-        }
+        targetCursor[type][size] = AnimatedSprite::load(
+            Theme::resolveThemePath(strprintf(
+            targetCursorFile.c_str(),
+            cursorType(type),
+            cursorSize(size))));
     }
+    end_foreach
 }
 
 void ActorSprite::cleanupTargetCursors()
 {
-    for (int size = TargetCursorSize::SMALL;
-         size < TargetCursorSize::NUM_TC;
-         size ++)
+    for_each_cursors()
     {
-        for (int type = TargetCursorType::NORMAL;
-             type < TargetCursorType::NUM_TCT;
-             type ++)
-        {
-            if (targetCursor[type][size])
-                delete2(targetCursor[type][size])
-        }
+        if (targetCursor[type][size])
+            delete2(targetCursor[type][size])
     }
+    end_foreach
 }
