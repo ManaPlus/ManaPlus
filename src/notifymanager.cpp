@@ -21,7 +21,6 @@
 #include "notifymanager.h"
 
 #include "guildmanager.h"
-#include "notifications.h"
 #include "soundmanager.h"
 
 #include "being/localplayer.h"
@@ -31,6 +30,9 @@
 #include "net/guildhandler.h"
 #include "net/net.h"
 #include "net/partyhandler.h"
+
+#include "resources/notifications.h"
+#include "resources/notifytypes.h"
 
 #include "resources/db/sounddb.h"
 
@@ -61,17 +63,17 @@ namespace NotifyManager
 
     void notify(const unsigned int message)
     {
-        if (message >= TYPE_END || !localChatTab)
+        if (message >= NotifyTypes::TYPE_END || !localChatTab)
             return;
         const NotificationInfo &info = notifications[message];
         switch (info.flags)
         {
-            case EMPTY:
+            case NotifyFlags::EMPTY:
                 localChatTab->chatLog(gettext(info.text),
                     ChatMsgType::BY_SERVER);
                 break;
 
-            case GUILD:
+            case NotifyFlags::GUILD:
             {
                 if (!player_node)
                     return;
@@ -80,24 +82,24 @@ namespace NotifyManager
                 break;
             }
 
-            case PARTY:
+            case NotifyFlags::PARTY:
             {
                 ChatTab *const tab = Net::getPartyHandler()->getTab();
                 chatLog(tab, gettext(info.text));
                 break;
             }
 
-            case SPEECH:
+            case NotifyFlags::SPEECH:
             {
                 if (player_node)
                     player_node->setSpeech(gettext(info.text));
                 break;
             }
 
-            case INT:
-            case STRING:
-            case GUILD_STRING:
-            case PARTY_STRING:
+            case NotifyFlags::INT:
+            case NotifyFlags::STRING:
+            case NotifyFlags::GUILD_STRING:
+            case NotifyFlags::PARTY_STRING:
             default:
                 break;
         }
@@ -106,10 +108,10 @@ namespace NotifyManager
 
     void notify(const unsigned int message, const int num)
     {
-        if (message >= TYPE_END || !localChatTab)
+        if (message >= NotifyTypes::TYPE_END || !localChatTab)
             return;
         const NotificationInfo &info = notifications[message];
-        if (info.flags == INT)
+        if (info.flags == NotifyFlags::INT)
         {
             localChatTab->chatLog(strprintf(gettext(info.text),
                 num), ChatMsgType::BY_SERVER);
@@ -119,34 +121,34 @@ namespace NotifyManager
 
     void notify(const unsigned int message, const std::string &str)
     {
-        if (message >= TYPE_END || !localChatTab)
+        if (message >= NotifyTypes::TYPE_END || !localChatTab)
             return;
         const NotificationInfo &info = notifications[message];
         switch (info.flags)
         {
-            case STRING:
+            case NotifyFlags::STRING:
             {
                 localChatTab->chatLog(strprintf(gettext(info.text),
                     str.c_str()), ChatMsgType::BY_SERVER);
                 break;
             }
-            case GUILD_STRING:
+            case NotifyFlags::GUILD_STRING:
             {
                 ChatTab *const tab = getGuildTab();
                 chatLog(tab, strprintf(gettext(info.text), str.c_str()));
                 break;
             }
-            case PARTY_STRING:
+            case NotifyFlags::PARTY_STRING:
             {
                 ChatTab *const tab = Net::getPartyHandler()->getTab();
                 chatLog(tab, strprintf(gettext(info.text), str.c_str()));
                 break;
             }
-            case EMPTY:
-            case INT:
-            case GUILD:
-            case PARTY:
-            case SPEECH:
+            case NotifyFlags::EMPTY:
+            case NotifyFlags::INT:
+            case NotifyFlags::GUILD:
+            case NotifyFlags::PARTY:
+            case NotifyFlags::SPEECH:
             default:
                 break;
         }
@@ -155,7 +157,7 @@ namespace NotifyManager
 
     int getIndexBySound(const std::string &sound)
     {
-        for (int f = 0; f < TYPE_END; f ++)
+        for (int f = 0; f < NotifyTypes::TYPE_END; f ++)
         {
             if (notifications[f].sound == sound)
                 return f;

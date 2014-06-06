@@ -24,7 +24,6 @@
 
 #include "client.h"
 #include "game.h"
-#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"
@@ -32,6 +31,10 @@
 #include "gui/windows/okdialog.h"
 
 #include "net/messagein.h"
+
+#include "resources/notifytypes.h"
+
+#include "utils/gettext.h"
 
 #include "debug.h"
 
@@ -73,7 +76,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg) const
 
 void GameHandler::processWhoAnswer(Net::MessageIn &msg) const
 {
-    NotifyManager::notify(NotifyManager::ONLINE_USERS, msg.readInt32());
+    NotifyManager::notify(NotifyTypes::ONLINE_USERS, msg.readInt32());
 }
 
 void GameHandler::processCharSwitchResponse(Net::MessageIn &msg) const

@@ -569,12 +569,16 @@ void Download::secureCurl(CURL *const curl)
 #endif
 }
 
+#if CURLVERSION_ATLEAST(7, 21, 7)
 void Download::addHeaders(CURL *const curl)
 {
-#if CURLVERSION_ATLEAST(7, 21, 7)
     curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, "");
-#endif
 }
+#else
+void Download::addHeaders(CURL *const curl A_UNUSED)
+{
+}
+#endif
 
 void Download::prepareForm(curl_httppost **form, const std::string &fileName)
 {

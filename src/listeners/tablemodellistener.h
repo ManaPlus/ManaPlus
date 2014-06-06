@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_LISTENERS_TABLEMODELLISTENER_H
-#define GUI_LISTENERS_TABLEMODELLISTENER_H
+#ifndef LISTENERS_TABLEMODELLISTENER_H
+#define LISTENERS_TABLEMODELLISTENER_H
 
 #include <set>
 #include <vector>
@@ -49,4 +49,4 @@ class TableModelListener notfinal
         { }
 };
 
-#endif  // GUI_LISTENERS_TABLEMODELLISTENER_H
+#endif  // LISTENERS_TABLEMODELLISTENER_H

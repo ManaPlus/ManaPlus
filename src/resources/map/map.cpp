@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "render/graphics.h"
-#include "notifications.h"
 #include "notifymanager.h"
 #include "settings.h"
 
@@ -44,6 +43,7 @@
 #include "resources/ambientlayer.h"
 #include "resources/image.h"
 #include "resources/mapitemtype.h"
+#include "resources/notifytypes.h"
 #include "resources/resourcemanager.h"
 #include "resources/subimage.h"
 
@@ -1198,19 +1198,19 @@ void Map::setPvpMode(const int mode)
         switch (mPvp)
         {
             case 0:
-                NotifyManager::notify(NotifyManager::PVP_OFF_GVG_OFF);
+                NotifyManager::notify(NotifyTypes::PVP_OFF_GVG_OFF);
                 break;
             case 1:
-                NotifyManager::notify(NotifyManager::PVP_ON);
+                NotifyManager::notify(NotifyTypes::PVP_ON);
                 break;
             case 2:
-                NotifyManager::notify(NotifyManager::GVG_ON);
+                NotifyManager::notify(NotifyTypes::GVG_ON);
                 break;
             case 3:
-                NotifyManager::notify(NotifyManager::PVP_ON_GVG_ON);
+                NotifyManager::notify(NotifyTypes::PVP_ON_GVG_ON);
                 break;
             default:
-                NotifyManager::notify(NotifyManager::PVP_UNKNOWN);
+                NotifyManager::notify(NotifyTypes::PVP_UNKNOWN);
                 break;
         }
     }

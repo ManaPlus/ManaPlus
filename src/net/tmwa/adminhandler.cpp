@@ -22,11 +22,12 @@
 
 #include "net/tmwa/adminhandler.h"
 
-#include "notifications.h"
 #include "notifymanager.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
+
+#include "resources/notifytypes.h"
 
 #include <string>
 
@@ -56,9 +57,9 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_ADMIN_KICK_ACK:
             if (msg.readInt32() == 0)
-                NotifyManager::notify(NotifyManager::KICK_FAIL);
+                NotifyManager::notify(NotifyTypes::KICK_FAIL);
             else
-                NotifyManager::notify(NotifyManager::KICK_SUCCEED);
+                NotifyManager::notify(NotifyTypes::KICK_SUCCEED);
             break;
 
         default:

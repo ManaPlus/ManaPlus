@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2014  The ManaPlus Developers
+ *  Copyright (C) 2013-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,35 +18,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_UPLOADCHARINFO_H
-#define NET_UPLOADCHARINFO_H
-
-#include <string>
+#ifndef RESOURCES_NOTIFYFLAGS_H
+#define RESOURCES_NOTIFYFLAGS_H
 
 #include "localconsts.h"
 
-class ChatTab;
-
-namespace Net
+namespace NotifyFlags
 {
-    class Download;
-}
-
-struct UploadChatInfo final
-{
-    UploadChatInfo() :
-        tab(nullptr),
-        upload(nullptr),
-        text(),
-        addStr()
-    { }
-
-    A_DELETE_COPY(UploadChatInfo)
-
-    ChatTab *tab;
-    Net::Download *upload;
-    std::string text;
-    std::string addStr;
-};
-
-#endif  // NET_UPLOADCHARINFO_H
+    enum Type
+    {
+        EMPTY = 0,
+        INT,
+        STRING,
+        GUILD,
+        GUILD_STRING,
+        PARTY,
+        PARTY_STRING,
+        SPEECH
+    };
+}  // namespace NotifyFlags
+#endif  // RESOURCES_NOTIFYFLAGS_H

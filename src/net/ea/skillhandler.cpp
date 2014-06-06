@@ -23,7 +23,6 @@
 #include "net/ea/skillhandler.h"
 
 #include "logger.h"
-#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"
@@ -31,9 +30,12 @@
 
 #include "gui/windows/skilldialog.h"
 
+#include "utils/gettext.h"
 #include "utils/stringutils.h"
 
 #include "net/messagein.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -254,6 +256,6 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
         }
     }
 
-    NotifyManager::notify(NotifyManager::SKILL_FAIL_MESSAGE, txt);
+    NotifyManager::notify(NotifyTypes::SKILL_FAIL_MESSAGE, txt);
 }
 }  // namespace Ea

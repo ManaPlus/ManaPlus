@@ -23,7 +23,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "notifications.h"
 #include "notifymanager.h"
 #include "party.h"
 
@@ -37,6 +36,8 @@
 #include "net/ea/gui/partytab.h"
 
 #include "utils/delete2.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -75,9 +76,9 @@ void PartyHandler::clear() const
 void PartyHandler::processPartyCreate(Net::MessageIn &msg) const
 {
     if (msg.readInt8())
-        NotifyManager::notify(NotifyManager::PARTY_CREATE_FAILED);
+        NotifyManager::notify(NotifyTypes::PARTY_CREATE_FAILED);
     else
-        NotifyManager::notify(NotifyManager::PARTY_CREATED);
+        NotifyManager::notify(NotifyTypes::PARTY_CREATED);
 }
 
 void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
@@ -139,7 +140,7 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
             {
                 if (names.find(nick) == names.end())
                 {
-                    NotifyManager::notify(NotifyManager::PARTY_USER_JOINED,
+                    NotifyManager::notify(NotifyTypes::PARTY_USER_JOINED,
                         nick);
                     joined = true;
                 }
@@ -193,21 +194,21 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
     switch (msg.readInt8())
     {
         case 0:
-            NotifyManager::notify(NotifyManager::PARTY_INVITE_ALREADY_MEMBER,
+            NotifyManager::notify(NotifyTypes::PARTY_INVITE_ALREADY_MEMBER,
                 nick);
             break;
         case 1:
-            NotifyManager::notify(NotifyManager::PARTY_INVITE_REFUSED, nick);
+            NotifyManager::notify(NotifyTypes::PARTY_INVITE_REFUSED, nick);
             break;
         case 2:
-            NotifyManager::notify(NotifyManager::PARTY_INVITE_DONE, nick);
+            NotifyManager::notify(NotifyTypes::PARTY_INVITE_DONE, nick);
             break;
         case 3:
-            NotifyManager::notify(NotifyManager::PARTY_INVITE_PARTY_FULL,
+            NotifyManager::notify(NotifyTypes::PARTY_INVITE_PARTY_FULL,
                 nick);
             break;
         default:
-            NotifyManager::notify(NotifyManager::PARTY_INVITE_ERROR, nick);
+            NotifyManager::notify(NotifyTypes::PARTY_INVITE_ERROR, nick);
             break;
     }
 }
@@ -257,19 +258,19 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
             if (mShareExp == Net::PartyShare::YES)
                 break;
             mShareExp = Net::PartyShare::YES;
-            NotifyManager::notify(NotifyManager::PARTY_EXP_SHARE_ON);
+            NotifyManager::notify(NotifyTypes::PARTY_EXP_SHARE_ON);
             break;
         case Net::PartyShare::NO:
             if (mShareExp == Net::PartyShare::NO)
                 break;
             mShareExp = Net::PartyShare::NO;
-            NotifyManager::notify(NotifyManager::PARTY_EXP_SHARE_OFF);
+            NotifyManager::notify(NotifyTypes::PARTY_EXP_SHARE_OFF);
             break;
         case Net::PartyShare::NOT_POSSIBLE:
             if (mShareExp == Net::PartyShare::NOT_POSSIBLE)
                 break;
             mShareExp = Net::PartyShare::NOT_POSSIBLE;
-            NotifyManager::notify(NotifyManager::PARTY_EXP_SHARE_ERROR);
+            NotifyManager::notify(NotifyTypes::PARTY_EXP_SHARE_ERROR);
             break;
         default:
             logger->log("QQQ Unknown party exp option: %d\n", exp);
@@ -282,19 +283,19 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
             if (mShareItems == Net::PartyShare::YES)
                 break;
             mShareItems = Net::PartyShare::YES;
-            NotifyManager::notify(NotifyManager::PARTY_ITEM_SHARE_ON);
+            NotifyManager::notify(NotifyTypes::PARTY_ITEM_SHARE_ON);
             break;
         case Net::PartyShare::NO:
             if (mShareItems == Net::PartyShare::NO)
                 break;
             mShareItems = Net::PartyShare::NO;
-            NotifyManager::notify(NotifyManager::PARTY_ITEM_SHARE_OFF);
+            NotifyManager::notify(NotifyTypes::PARTY_ITEM_SHARE_OFF);
             break;
         case Net::PartyShare::NOT_POSSIBLE:
             if (mShareItems == Net::PartyShare::NOT_POSSIBLE)
                 break;
             mShareItems = Net::PartyShare::NOT_POSSIBLE;
-            NotifyManager::notify(NotifyManager::PARTY_ITEM_SHARE_ERROR);
+            NotifyManager::notify(NotifyTypes::PARTY_ITEM_SHARE_ERROR);
             break;
         default:
             logger->log("QQQ Unknown party item option: %d\n", exp);
@@ -348,7 +349,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
             Ea::taParty->removeFromMembers();
             Ea::taParty->clearMembers();
         }
-        NotifyManager::notify(NotifyManager::PARTY_LEFT);
+        NotifyManager::notify(NotifyTypes::PARTY_LEFT);
         delete2(Ea::partyTab)
 
         if (socialWindow && Ea::taParty)
@@ -357,7 +358,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
     }
     else
     {
-        NotifyManager::notify(NotifyManager::PARTY_USER_LEFT, nick);
+        NotifyManager::notify(NotifyTypes::PARTY_USER_LEFT, nick);
         if (actorManager)
         {
             Being *const b = actorManager->findBeing(id);
@@ -431,7 +432,7 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
         }
         else
         {
-            NotifyManager::notify(NotifyManager::PARTY_UNKNOWN_USER_MSG,
+            NotifyManager::notify(NotifyTypes::PARTY_UNKNOWN_USER_MSG,
                 chatMsg);
         }
     }

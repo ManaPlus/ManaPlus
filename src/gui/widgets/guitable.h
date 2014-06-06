@@ -25,8 +25,6 @@
 
 #include "localconsts.h"
 
-#include "gui/models/tablemodel.h"
-
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
 #include "listeners/tablemodellistener.h"
@@ -36,6 +34,7 @@
 #include <vector>
 
 class GuiTableActionListener;
+class TableModel;
 
 /**
  * A table, with rows and columns made out of sub-widgets. Largely inspired by

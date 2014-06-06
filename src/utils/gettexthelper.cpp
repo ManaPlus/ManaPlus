@@ -20,20 +20,19 @@
 
 #include "utils/gettexthelper.h"
 
+#ifdef ENABLE_NLS
 #include "client.h"
 #include "configuration.h"
-
-#ifdef ENABLE_NLS
 #include "logger.h"
 
-#include <libintl.h>
-#endif
-
 #include "utils/physfstools.h"
+
+#include <libintl.h>
 
 #ifdef WIN32
 #include <string>
 extern "C" char const *_nl_locale_name_default(void);
+#endif
 #endif
 
 #include "debug.h"

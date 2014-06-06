@@ -22,7 +22,6 @@
 #include "net/eathena/partyhandler.h"
 
 #include "actormanager.h"
-#include "notifications.h"
 #include "notifymanager.h"
 #include "party.h"
 
@@ -30,6 +29,8 @@
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -167,7 +168,7 @@ void PartyHandler::kick(const std::string &name) const
     const PartyMember *const m = Ea::taParty->getMember(name);
     if (!m)
     {
-        NotifyManager::notify(NotifyManager::PARTY_USER_NOT_IN_PARTY, name);
+        NotifyManager::notify(NotifyTypes::PARTY_USER_NOT_IN_PARTY, name);
         return;
     }
 

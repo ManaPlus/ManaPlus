@@ -22,7 +22,6 @@
 
 #include "net/ea/inventoryhandler.h"
 
-#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/attributes.h"
@@ -36,6 +35,8 @@
 #include "utils/delete2.h"
 
 #include "listeners/arrowslistener.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -394,7 +395,7 @@ void InventoryHandler::processItemUseResponse(Net::MessageIn &msg)
 
     if (msg.readInt8() == 0)
     {
-        NotifyManager::notify(NotifyManager::USE_FAILED);
+        NotifyManager::notify(NotifyTypes::USE_FAILED);
     }
     else
     {
@@ -555,7 +556,7 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
     const int flag = msg.readInt8();
 
     if (!flag)
-        NotifyManager::notify(NotifyManager::EQUIP_FAILED);
+        NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
     else
         mEquips.setEquipment(getSlot(equipType), index);
 }

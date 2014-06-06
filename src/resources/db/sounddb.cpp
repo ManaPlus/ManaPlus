@@ -21,12 +21,10 @@
 #include "resources/db/sounddb.h"
 
 #include "configuration.h"
-#include "notifications.h"
 #include "notifymanager.h"
 
-#include "utils/xml.h"
-
 #include "resources/beingcommon.h"
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -81,14 +79,14 @@ void SoundDB::loadXmlFile(const std::string &fileName)
 
 void SoundDB::unload()
 {
-    mSounds.resize(NotifyManager::TYPE_END);
-    for (int f = 0; f < NotifyManager::TYPE_END; f ++)
+    mSounds.resize(NotifyTypes::TYPE_END);
+    for (int f = 0; f < NotifyTypes::TYPE_END; f ++)
         mSounds[f] = "";
 }
 
 std::string &SoundDB::getSound(const int id)
 {
-    if (id < 0 || id >= NotifyManager::TYPE_END)
+    if (id < 0 || id >= NotifyTypes::TYPE_END)
         return mDefault;
     return mSounds[id];
 }

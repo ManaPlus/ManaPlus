@@ -25,7 +25,6 @@
 #include "configuration.h"
 #include "game.h"
 #include "party.h"
-#include "notifications.h"
 #include "notifymanager.h"
 #include "units.h"
 
@@ -38,6 +37,8 @@
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/statuswindow.h"
 
+#include "resources/notifytypes.h"
+
 #include "resources/db/deaddb.h"
 
 #include "resources/map/map.h"
@@ -49,6 +50,8 @@
 #include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"
+
+#include "utils/gettext.h"
 
 #include "debug.h"
 
@@ -395,12 +398,12 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
             const int newMoney = msg.readInt32();
             if (newMoney > oldMoney)
             {
-                NotifyManager::notify(NotifyManager::MONEY_GET,
+                NotifyManager::notify(NotifyTypes::MONEY_GET,
                     Units::formatCurrency(newMoney - oldMoney));
             }
             else if (newMoney < oldMoney)
             {
-                NotifyManager::notify(NotifyManager::MONEY_SPENT,
+                NotifyManager::notify(NotifyTypes::MONEY_SPENT,
                     Units::formatCurrency(oldMoney - newMoney).c_str());
             }
 
@@ -448,7 +451,7 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
         const int points = PlayerInfo::getAttribute(Attributes::CHAR_POINTS)
             + oldValue - value;
         PlayerInfo::setAttribute(Attributes::CHAR_POINTS, points);
-        NotifyManager::notify(NotifyManager::SKILL_RAISE_ERROR);
+        NotifyManager::notify(NotifyTypes::SKILL_RAISE_ERROR);
     }
 
     PlayerInfo::setStatBase(type, value);
@@ -571,7 +574,7 @@ void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg)
     switch (type)
     {
         case 0:
-            NotifyManager::notify(NotifyManager::ARROWS_EQUIP_NEEDED);
+            NotifyManager::notify(NotifyTypes::ARROWS_EQUIP_NEEDED);
             break;
         case 3:
             // arrows equiped

@@ -26,7 +26,7 @@
 
 #include "gui/gui.h"
 
-#include "events/keyevent.h"
+#include "gui/models/tablemodel.h"
 
 #include "input/inputaction.h"
 

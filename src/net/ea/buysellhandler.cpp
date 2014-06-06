@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "inventory.h"
-#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/attributes.h"
@@ -41,6 +40,8 @@
 #include "net/net.h"
 
 #include "utils/timer.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -162,7 +163,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg,
     }
     else
     {
-        NotifyManager::notify(NotifyManager::SELL_LIST_EMPTY);
+        NotifyManager::notify(NotifyTypes::SELL_LIST_EMPTY);
     }
 }
 
@@ -170,7 +171,7 @@ void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg) const
 {
     if (msg.readInt8() == 0)
     {
-        NotifyManager::notify(NotifyManager::BUY_DONE);
+        NotifyManager::notify(NotifyTypes::BUY_DONE);
     }
     else
     {
@@ -178,7 +179,7 @@ void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg) const
         // would go fine
         if (mBuyDialog)
             mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
-        NotifyManager::notify(NotifyManager::BUY_FAILED);
+        NotifyManager::notify(NotifyTypes::BUY_FAILED);
     }
 }
 

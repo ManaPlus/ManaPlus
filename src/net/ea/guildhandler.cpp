@@ -23,7 +23,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"
@@ -36,6 +35,9 @@
 #include "net/ea/gui/guildtab.h"
 
 #include "utils/delete2.h"
+#include "utils/gettext.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -78,27 +80,27 @@ void GuildHandler::processGuildCreateResponse(Net::MessageIn &msg) const
     {
         case 0:
             // Success
-            NotifyManager::notify(NotifyManager::GUILD_CREATED);
+            NotifyManager::notify(NotifyTypes::GUILD_CREATED);
             break;
 
         case 1:
             // Already in a guild
-            NotifyManager::notify(NotifyManager::GUILD_ALREADY);
+            NotifyManager::notify(NotifyTypes::GUILD_ALREADY);
             break;
 
         case 2:
             // Unable to make (likely name already in use)
-            NotifyManager::notify(NotifyManager::GUILD_ALREADY);
+            NotifyManager::notify(NotifyTypes::GUILD_ALREADY);
             break;
 
         case 3:
             // Emperium check failed
-            NotifyManager::notify(NotifyManager::GUILD_EMPERIUM_CHECK_FAILED);
+            NotifyManager::notify(NotifyTypes::GUILD_EMPERIUM_CHECK_FAILED);
             break;
 
         default:
             // Unknown response
-            NotifyManager::notify(NotifyManager::GUILD_ERROR);
+            NotifyManager::notify(NotifyTypes::GUILD_ERROR);
             break;
     }
 }
@@ -426,23 +428,23 @@ void GuildHandler::processGuildInviteAck(Net::MessageIn &msg) const
     switch (flag)
     {
         case 0:
-            NotifyManager::notify(NotifyManager::GUILD_INVITE_FAILED);
+            NotifyManager::notify(NotifyTypes::GUILD_INVITE_FAILED);
             break;
 
         case 1:
-            NotifyManager::notify(NotifyManager::GUILD_INVITE_REJECTED);
+            NotifyManager::notify(NotifyTypes::GUILD_INVITE_REJECTED);
             break;
 
         case 2:
-            NotifyManager::notify(NotifyManager::GUILD_INVITE_JOINED);
+            NotifyManager::notify(NotifyTypes::GUILD_INVITE_JOINED);
             break;
 
         case 3:
-            NotifyManager::notify(NotifyManager::GUILD_INVITE_FULL);
+            NotifyManager::notify(NotifyTypes::GUILD_INVITE_FULL);
             break;
 
         default:
-            NotifyManager::notify(NotifyManager::GUILD_INVITE_ERROR);
+            NotifyManager::notify(NotifyTypes::GUILD_INVITE_ERROR);
             break;
     }
 }
@@ -465,7 +467,7 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg) const
             taGuild->removeFromMembers();
             taGuild->clearMembers();
         }
-        NotifyManager::notify(NotifyManager::GUILD_LEFT);
+        NotifyManager::notify(NotifyTypes::GUILD_LEFT);
         delete2(guildTab)
 
         if (socialWindow && taGuild)
@@ -475,7 +477,7 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg) const
     }
     else
     {
-        NotifyManager::notify(NotifyManager::GUILD_USER_LEFT, nick);
+        NotifyManager::notify(NotifyTypes::GUILD_USER_LEFT, nick);
         if (actorManager)
         {
             Being *const b = actorManager->findBeingByName(
@@ -508,7 +510,7 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
             taGuild->removeFromMembers();
             taGuild->clearMembers();
         }
-        NotifyManager::notify(NotifyManager::GUILD_KICKED);
+        NotifyManager::notify(NotifyTypes::GUILD_KICKED);
         delete2(guildTab)
 
         if (socialWindow && taGuild)
@@ -518,7 +520,7 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
     }
     else
     {
-        NotifyManager::notify(NotifyManager::GUILD_USER_KICKED, nick);
+        NotifyManager::notify(NotifyTypes::GUILD_USER_KICKED, nick);
         if (actorManager)
         {
             Being *const b = actorManager->findBeingByName(

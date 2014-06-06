@@ -50,7 +50,7 @@ bool OpenGLImageHelper::mUseTextureSampler = false;
 
 OpenGLImageHelper::~OpenGLImageHelper()
 {
-    glDeleteTextures(texturesSize - mFreeTextureIndex,
+    glDeleteTextures(static_cast<GLsizei>(texturesSize - mFreeTextureIndex),
         &mTextures[mFreeTextureIndex]);
 }
 

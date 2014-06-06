@@ -22,7 +22,6 @@
 
 #include "net/tmwa/buysellhandler.h"
 
-#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/attributes.h"
@@ -33,6 +32,8 @@
 #include "net/ea/eaprotocol.h"
 
 #include "net/tmwa/protocol.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -120,17 +121,17 @@ void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg)
     switch (msg.readInt8())
     {
         case 0:
-            NotifyManager::notify(NotifyManager::SOLD);
+            NotifyManager::notify(NotifyTypes::SOLD);
             break;
         case 1:
         default:
-            NotifyManager::notify(NotifyManager::SELL_FAILED);
+            NotifyManager::notify(NotifyTypes::SELL_FAILED);
             break;
         case 2:
-            NotifyManager::notify(NotifyManager::SELL_TRADE_FAILED);
+            NotifyManager::notify(NotifyTypes::SELL_TRADE_FAILED);
             break;
         case 3:
-            NotifyManager::notify(NotifyManager::SELL_UNSELLABLE_FAILED);
+            NotifyManager::notify(NotifyTypes::SELL_UNSELLABLE_FAILED);
             break;
     }
 }

@@ -705,6 +705,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/mapreader.h \
 	      resources/modinfo.cpp \
 	      resources/modinfo.h \
+	      resources/notificationinfo.h \
+	      resources/notifications.h \
+	      resources/notifyflags.h \
+	      resources/notifytypes.h \
 	      resources/db/monsterdb.cpp \
 	      resources/db/monsterdb.h \
 	      resources/db/npcdb.cpp \
@@ -968,7 +972,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      navigationmanager.h \
 	      render/normalopenglgraphics.cpp \
 	      render/normalopenglgraphics.h \
-	      notifications.h \
 	      notifymanager.cpp \
 	      notifymanager.h \
 	      options.h \

@@ -25,7 +25,6 @@
 #include "actormanager.h"
 #include "configuration.h"
 #include "guildmanager.h"
-#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"
@@ -36,9 +35,11 @@
 
 #include "gui/widgets/tabs/gmtab.h"
 
-#include "gui/widgets/tabs/chattab.h"
-
 #include "net/messagein.h"
+
+#include "resources/notifytypes.h"
+
+#include "utils/gettext.h"
 
 #include <string>
 
@@ -423,9 +424,9 @@ void ChatHandler::processMVP(Net::MessageIn &msg) const
     {
         const Being *const being = actorManager->findBeing(id);
         if (!being)
-            NotifyManager::notify(NotifyManager::MVP_PLAYER, "");
+            NotifyManager::notify(NotifyTypes::MVP_PLAYER, "");
         else
-            NotifyManager::notify(NotifyManager::MVP_PLAYER, being->getName());
+            NotifyManager::notify(NotifyTypes::MVP_PLAYER, being->getName());
     }
     BLOCK_END("ChatHandler::processMVP")
 }
@@ -448,10 +449,10 @@ void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg) const
             switch (fail)
             {
                 case 0:
-                    NotifyManager::notify(NotifyManager::WHISPERS_IGNORED);
+                    NotifyManager::notify(NotifyTypes::WHISPERS_IGNORED);
                     break;
                 default:
-                    NotifyManager::notify(NotifyManager::
+                    NotifyManager::notify(NotifyTypes::
                         WHISPERS_IGNORE_FAILED);
                     break;
             }
@@ -462,10 +463,10 @@ void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg) const
             switch (fail)
             {
                 case 0:
-                    NotifyManager::notify(NotifyManager::WHISPERS_UNIGNORED);
+                    NotifyManager::notify(NotifyTypes::WHISPERS_UNIGNORED);
                     break;
                 default:
-                    NotifyManager::notify(NotifyManager::
+                    NotifyManager::notify(NotifyTypes::
                         WHISPERS_UNIGNORE_FAILED);
                     break;
             }

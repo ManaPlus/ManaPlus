@@ -18,335 +18,298 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NOTIFICATIONS_H
-#define NOTIFICATIONS_H
+#ifndef RESOURCES_NOTIFICATIONS_H
+#define RESOURCES_NOTIFICATIONS_H
 
 #include "localconsts.h"
+
+#include "resources/notificationinfo.h"
+#include "resources/notifyflags.h"
 
 #include "utils/gettext.h"
 
 namespace NotifyManager
 {
-    enum NotifyFlags
-    {
-        EMPTY = 0,
-        INT,
-        STRING,
-        GUILD,
-        GUILD_STRING,
-        PARTY,
-        PARTY_STRING,
-        SPEECH
-    };
-
-    struct NotificationInfo final
-    {
-#ifdef ADVGCC
-        NotificationInfo(const char *const sound0,
-                         const char *const text0,
-                         const NotifyFlags flags0) :
-            sound(sound0),
-            text(text0),
-            flags(flags0)
-        { }
-
-        A_DELETE_COPY(NotificationInfo)
-#endif
-
-        const char *sound;
-        const char *text;
-        const NotifyFlags flags;
-    };
-
-    enum NotifyTypes
-    {
-        NONE = 0,
-        BUY_DONE,
-        BUY_FAILED,
-        SELL_LIST_EMPTY,
-        SOLD,
-        SELL_FAILED,
-        SELL_TRADE_FAILED,
-        SELL_UNSELLABLE_FAILED,
-        ONLINE_USERS,
-        GUILD_CREATED,
-        GUILD_ALREADY,
-        GUILD_EMPERIUM_CHECK_FAILED,
-        GUILD_ERROR,
-        GUILD_LEFT,
-        GUILD_INVITE_FAILED,
-        GUILD_INVITE_REJECTED,
-        GUILD_INVITE_JOINED,
-        GUILD_INVITE_FULL,
-        GUILD_INVITE_ERROR,
-        GUILD_USER_LEFT,
-        GUILD_KICKED,
-        GUILD_USER_KICKED,
-        USE_FAILED,
-        EQUIP_FAILED,
-        PARTY_CREATE_FAILED,
-        PARTY_CREATED,
-        PARTY_LEFT,
-        PARTY_USER_JOINED,
-        PARTY_INVITE_ALREADY_MEMBER,
-        PARTY_INVITE_REFUSED,
-        PARTY_INVITE_DONE,
-        PARTY_INVITE_PARTY_FULL,
-        PARTY_INVITE_ERROR,
-        PARTY_EXP_SHARE_ON,
-        PARTY_EXP_SHARE_OFF,
-        PARTY_EXP_SHARE_ERROR,
-        PARTY_ITEM_SHARE_ON,
-        PARTY_ITEM_SHARE_OFF,
-        PARTY_ITEM_SHARE_ERROR,
-        PARTY_USER_LEFT,
-        PARTY_UNKNOWN_USER_MSG,
-        PARTY_USER_NOT_IN_PARTY,
-        MONEY_GET,
-        MONEY_SPENT,
-        SKILL_RAISE_ERROR,
-        ARROWS_EQUIP_NEEDED,
-        TRADE_FAIL_FAR_AWAY,
-        TRADE_FAIL_CHAR_NOT_EXISTS,
-        TRADE_CANCELLED_ERROR,
-        TRADE_CANCELLED_NAME,
-        TRADE_ERROR_UNKNOWN,
-        TRADE_ADD_PARTNER_OVER_WEIGHT,
-        TRADE_ADD_PARTNER_NO_SLOTS,
-        TRADE_ADD_UNTRADABLE_ITEM,
-        TRADE_ADD_ERROR,
-        TRADE_CANCELLED,
-        TRADE_COMPLETE,
-        KICK_FAIL,
-        KICK_SUCCEED,
-        MVP_PLAYER,
-        WHISPERS_IGNORED,
-        WHISPERS_IGNORE_FAILED,
-        WHISPERS_UNIGNORED,
-        WHISPERS_UNIGNORE_FAILED,
-        SKILL_FAIL_MESSAGE,
-        PVP_OFF_GVG_OFF,
-        PVP_ON,
-        GVG_ON,
-        PVP_ON_GVG_ON,
-        PVP_UNKNOWN,
-
-        TYPE_END
-    };
-
     static const NotificationInfo notifications[] =
     {
         {"",
-            "", EMPTY},
+            "", NotifyFlags::EMPTY},
         {"buy done",
             // TRANSLATORS: notification message
-            N_("Thanks for buying."), EMPTY},
+            N_("Thanks for buying."),
+            NotifyFlags::EMPTY},
         {"buy fail",
             // TRANSLATORS: notification message
-            N_("Unable to buy."), EMPTY},
+            N_("Unable to buy."),
+            NotifyFlags::EMPTY},
         {"sell empty",
             // TRANSLATORS: notification message
-            N_("Nothing to sell."), EMPTY},
+            N_("Nothing to sell."),
+            NotifyFlags::EMPTY},
         {"sell done",
             // TRANSLATORS: notification message
-            N_("Thanks for selling."), EMPTY},
+            N_("Thanks for selling."),
+            NotifyFlags::EMPTY},
         {"sell fail",
             // TRANSLATORS: notification message
-            N_("Unable to sell."), EMPTY},
+            N_("Unable to sell."),
+            NotifyFlags::EMPTY},
         {"sell trade fail",
             // TRANSLATORS: notification message
-            N_("Unable to sell while trading."), EMPTY},
+            N_("Unable to sell while trading."),
+            NotifyFlags::EMPTY},
         {"sell unsellable fail",
             // TRANSLATORS: notification message
-            N_("Unable to sell unsellable item."), EMPTY},
+            N_("Unable to sell unsellable item."),
+            NotifyFlags::EMPTY},
         {"online users",
             // TRANSLATORS: notification message
-            N_("Online users: %d"), INT},
+            N_("Online users: %d"),
+            NotifyFlags::INT},
         {"guild created",
             // TRANSLATORS: notification message
-            N_("Guild created."), EMPTY},
+            N_("Guild created."),
+            NotifyFlags::EMPTY},
         {"guild already",
             // TRANSLATORS: notification message
-            N_("You are already in guild."), EMPTY},
+            N_("You are already in guild."),
+            NotifyFlags::EMPTY},
         {"guild create fail",
             // TRANSLATORS: notification message
-            N_("Emperium check failed."), EMPTY},
+            N_("Emperium check failed."),
+            NotifyFlags::EMPTY},
         {"guild error",
             // TRANSLATORS: notification message
-            N_("Unknown server response."), EMPTY},
+            N_("Unknown server response."),
+            NotifyFlags::EMPTY},
         {"guild left",
             // TRANSLATORS: notification message
-            N_("You have left the guild."), EMPTY},
+            N_("You have left the guild."),
+            NotifyFlags::EMPTY},
         {"guild invite fail",
             // TRANSLATORS: notification message
-            N_("Could not invite user to guild."), GUILD},
+            N_("Could not invite user to guild."),
+            NotifyFlags::GUILD},
         {"guild invite rejected",
             // TRANSLATORS: notification message
-            N_("User rejected guild invite."), GUILD},
+            N_("User rejected guild invite."),
+            NotifyFlags::GUILD},
         {"guild invite joined",
             // TRANSLATORS: notification message
-            N_("User is now part of your guild."), GUILD},
+            N_("User is now part of your guild."),
+            NotifyFlags::GUILD},
         {"guild invite full",
             // TRANSLATORS: notification message
-            N_("Your guild is full."), GUILD},
+            N_("Your guild is full."),
+            NotifyFlags::GUILD},
         {"guild invite error",
             // TRANSLATORS: notification message
-            N_("Unknown guild invite response."), GUILD},
+            N_("Unknown guild invite response."),
+            NotifyFlags::GUILD},
         {"guild user left",
             // TRANSLATORS: notification message
-            N_("%s has left your guild."), GUILD_STRING},
+            N_("%s has left your guild."),
+            NotifyFlags::GUILD_STRING},
         {"guild kicked",
             // TRANSLATORS: notification message
-            N_("You were kicked from guild."), EMPTY},
+            N_("You were kicked from guild."),
+            NotifyFlags::EMPTY},
         {"guild user kicked",
             // TRANSLATORS: notification message
-            N_("%s has kicked from your guild."), GUILD_STRING},
+            N_("%s has kicked from your guild."),
+            NotifyFlags::GUILD_STRING},
         {"use failed",
             // TRANSLATORS: notification message
-            N_("Failed to use item."), EMPTY},
+            N_("Failed to use item."),
+            NotifyFlags::EMPTY},
         {"equip failed",
             // TRANSLATORS: notification message
-            N_("Unable to equip."), EMPTY},
+            N_("Unable to equip."),
+            NotifyFlags::EMPTY},
         {"party create failed",
             // TRANSLATORS: notification message
-            N_("Could not create party."), EMPTY},
+            N_("Could not create party."),
+            NotifyFlags::EMPTY},
         {"party created",
             // TRANSLATORS: notification message
-            N_("Party successfully created."), EMPTY},
+            N_("Party successfully created."),
+            NotifyFlags::EMPTY},
         {"party left",
             // TRANSLATORS: notification message
-            N_("You have left the party."), EMPTY},
+            N_("You have left the party."),
+            NotifyFlags::EMPTY},
         {"party user joined",
             // TRANSLATORS: notification message
-            N_("%s has joined your party."), PARTY_STRING},
+            N_("%s has joined your party."),
+            NotifyFlags::PARTY_STRING},
         {"party invite already member",
             // TRANSLATORS: notification message
-            N_("%s is already a member of a party."), PARTY_STRING},
+            N_("%s is already a member of a party."),
+            NotifyFlags::PARTY_STRING},
         {"party invite refused",
             // TRANSLATORS: notification message
-            N_("%s refused your invitation."), PARTY_STRING},
+            N_("%s refused your invitation."),
+            NotifyFlags::PARTY_STRING},
         {"party invite done",
             // TRANSLATORS: notification message
-            N_("%s is now a member of your party."), PARTY_STRING},
+            N_("%s is now a member of your party."),
+            NotifyFlags::PARTY_STRING},
         {"party invite full",
             // TRANSLATORS: notification message
             N_("%s can't join your party because party is full."),
-            PARTY_STRING},
+            NotifyFlags::PARTY_STRING},
         {"party invite error",
             // TRANSLATORS: notification message
-            N_("QQQ Unknown invite response for %s."), PARTY_STRING},
+            N_("QQQ Unknown invite response for %s."),
+            NotifyFlags::PARTY_STRING},
         {"party exp sharing on",
             // TRANSLATORS: notification message
-            N_("Experience sharing enabled."), PARTY},
+            N_("Experience sharing enabled."),
+            NotifyFlags::PARTY},
         {"party exp sharing off",
             // TRANSLATORS: notification message
-            N_("Experience sharing disabled."), PARTY},
+            N_("Experience sharing disabled."),
+            NotifyFlags::PARTY},
         {"party exp sharing error",
             // TRANSLATORS: notification message
-            N_("Experience sharing not possible."), PARTY},
+            N_("Experience sharing not possible."),
+            NotifyFlags::PARTY},
         {"party item sharing on",
             // TRANSLATORS: notification message
-            N_("Item sharing enabled."), PARTY},
+            N_("Item sharing enabled."),
+            NotifyFlags::PARTY},
         {"party item sharing off",
             // TRANSLATORS: notification message
-            N_("Item sharing disabled."), PARTY},
+            N_("Item sharing disabled."),
+            NotifyFlags::PARTY},
         {"party item sharing error",
             // TRANSLATORS: notification message
-            N_("Item sharing not possible."), PARTY},
+            N_("Item sharing not possible."),
+            NotifyFlags::PARTY},
         {"party user left",
             // TRANSLATORS: notification message
-            N_("%s has left your party."), PARTY_STRING},
+            N_("%s has left your party."),
+            NotifyFlags::PARTY_STRING},
         {"party unknown user msg",
             // TRANSLATORS: notification message
-            N_("An unknown member tried to say: %s"), PARTY_STRING},
+            N_("An unknown member tried to say: %s"),
+            NotifyFlags::PARTY_STRING},
         {"party user not in party",
             // TRANSLATORS: notification message
-            N_("%s is not in your party!"), PARTY_STRING},
+            N_("%s is not in your party!"),
+            NotifyFlags::PARTY_STRING},
         {"money get",
             // TRANSLATORS: notification message
-            N_("You picked up %s."), STRING},
+            N_("You picked up %s."),
+            NotifyFlags::STRING},
         {"money spend",
             // TRANSLATORS: notification message
-            N_("You spent %s."), STRING},
+            N_("You spent %s."),
+            NotifyFlags::STRING},
         {"skill raise error",
             // TRANSLATORS: notification message
-            N_("Cannot raise skill!"), EMPTY},
+            N_("Cannot raise skill!"),
+            NotifyFlags::EMPTY},
         {"arrow equip needed",
             // TRANSLATORS: notification message
-            N_("Equip ammunition first."), EMPTY},
+            N_("Equip ammunition first."),
+            NotifyFlags::EMPTY},
         {"trade fail far away",
             // TRANSLATORS: notification message
             N_("Trading with %s isn't possible. Trade partner is "
-            "too far away."), STRING},
+            "too far away."),
+            NotifyFlags::STRING},
         {"trade fail chat not exists",
             // TRANSLATORS: notification message
             N_("Trading with %s isn't possible. Character doesn't exist."),
-            STRING},
+            NotifyFlags::STRING},
         {"trade cancelled error",
             // TRANSLATORS: notification message
-            N_("Trade cancelled due to an unknown reason."), EMPTY},
+            N_("Trade cancelled due to an unknown reason."),
+            NotifyFlags::EMPTY},
         {"trade cancelled user",
             // TRANSLATORS: notification message
-            N_("Trade with %s cancelled."), STRING},
+            N_("Trade with %s cancelled."),
+            NotifyFlags::STRING},
         {"trade error unknown",
             // TRANSLATORS: notification message
-            N_("Unhandled trade cancel packet with %s"), STRING},
+            N_("Unhandled trade cancel packet with %s"),
+            NotifyFlags::STRING},
         {"trade add partner over weighted",
             // TRANSLATORS: notification message
-            N_("Failed adding item. Trade partner is over weighted."), EMPTY},
+            N_("Failed adding item. Trade partner is over weighted."),
+            NotifyFlags::EMPTY},
         {"trade add partned has no free slots",
             // TRANSLATORS: notification message
-            N_("Failed adding item. Trade partner has no free slot."), EMPTY},
+            N_("Failed adding item. Trade partner has no free slot."),
+            NotifyFlags::EMPTY},
         {"trade add untradable item",
             // TRANSLATORS: notification message
-            N_("Failed adding item. You can't trade this item."), EMPTY},
+            N_("Failed adding item. You can't trade this item."),
+            NotifyFlags::EMPTY},
         {"trade add error",
             // TRANSLATORS: notification message
-            N_("Failed adding item for unknown reason."), EMPTY},
+            N_("Failed adding item for unknown reason."),
+            NotifyFlags::EMPTY},
         {"trade cancelled",
             // TRANSLATORS: notification message
-            N_("Trade canceled."), EMPTY},
+            N_("Trade canceled."),
+            NotifyFlags::EMPTY},
         {"trade complete",
             // TRANSLATORS: notification message
-            N_("Trade completed."), EMPTY},
+            N_("Trade completed."),
+            NotifyFlags::EMPTY},
         {"kick fail",
             // TRANSLATORS: notification message
-            N_("Kick failed!"), EMPTY},
+            N_("Kick failed!"),
+            NotifyFlags::EMPTY},
         {"kick succeed",
             // TRANSLATORS: notification message
-            N_("Kick succeeded!"), EMPTY},
+            N_("Kick succeeded!"),
+            NotifyFlags::EMPTY},
         {"mvp player",
             // TRANSLATORS: notification message
-            N_("MVP player: %s"), STRING},
+            N_("MVP player: %s"),
+            NotifyFlags::STRING},
         {"whispers ignored",
             // TRANSLATORS: notification message
-            N_("All whispers ignored."), EMPTY},
+            N_("All whispers ignored."),
+            NotifyFlags::EMPTY},
         {"whispers ignore failed",
             // TRANSLATORS: notification message
-            N_("All whispers ignore failed."), EMPTY},
+            N_("All whispers ignore failed."),
+            NotifyFlags::EMPTY},
         {"whispers unignored",
             // TRANSLATORS: notification message
-            N_("All whispers unignored."), EMPTY},
+            N_("All whispers unignored."),
+            NotifyFlags::EMPTY},
         {"whispers unignore failed",
             // TRANSLATORS: notification message
-            N_("All whispers unignore failed."), EMPTY},
+            N_("All whispers unignore failed."),
+            NotifyFlags::EMPTY},
         {"skill fail message",
-            "%s", STRING},
+            "%s",
+            NotifyFlags::STRING},
         {"pvp off gvg off",
             // TRANSLATORS: notification message
-            N_("pvp off, gvg off"), SPEECH},
+            N_("pvp off, gvg off"),
+            NotifyFlags::SPEECH},
         {"pvp on",
             // TRANSLATORS: notification message
-            N_("pvp on"), SPEECH},
+            N_("pvp on"),
+            NotifyFlags::SPEECH},
         {"gvg on",
             // TRANSLATORS: notification message
-            N_("gvg on"), SPEECH},
+            N_("gvg on"),
+            NotifyFlags::SPEECH},
         {"pvp on gvg on",
             // TRANSLATORS: notification message
-            N_("pvp on, gvg on"), SPEECH},
+            N_("pvp on, gvg on"),
+            NotifyFlags::SPEECH},
         {"unknown pvp",
             // TRANSLATORS: notification message
-            N_("unknown pvp"), SPEECH},
+            N_("unknown pvp"),
+            NotifyFlags::SPEECH},
     };
 }  // namespace NotifyManager
-#endif  // NOTIFICATIONS_H
+#endif  // RESOURCES_NOTIFICATIONS_H

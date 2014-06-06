@@ -25,7 +25,6 @@
 #include "inventory.h"
 #include "item.h"
 #include "logger.h"
-#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/playerinfo.h"
@@ -37,6 +36,10 @@
 #include "net/messagein.h"
 
 #include "net/ea/eaprotocol.h"
+
+#include "utils/gettext.h"
+
+#include "resources/notifytypes.h"
 
 #include "listeners/requesttradelistener.h"
 
@@ -128,15 +131,15 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg) const
     switch (msg.readInt8())
     {
         case 0:  // Too far away
-            NotifyManager::notify(NotifyManager::TRADE_FAIL_FAR_AWAY,
+            NotifyManager::notify(NotifyTypes::TRADE_FAIL_FAR_AWAY,
                 tradePartnerName);
             break;
         case 1:  // Character doesn't exist
-            NotifyManager::notify(NotifyManager::TRADE_FAIL_CHAR_NOT_EXISTS,
+            NotifyManager::notify(NotifyTypes::TRADE_FAIL_CHAR_NOT_EXISTS,
                 tradePartnerName);
             break;
         case 2:  // Invite request check failed...
-            NotifyManager::notify(NotifyManager::TRADE_CANCELLED_ERROR);
+            NotifyManager::notify(NotifyTypes::TRADE_CANCELLED_ERROR);
             break;
         case 3:  // Trade accepted
             if (tradeWindow)
@@ -153,7 +156,7 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg) const
             if (player_relations.hasPermission(tradePartnerName,
                 PlayerRelation::SPEECH_LOG))
             {
-                NotifyManager::notify(NotifyManager::TRADE_CANCELLED_NAME,
+                NotifyManager::notify(NotifyTypes::TRADE_CANCELLED_NAME,
                     tradePartnerName);
             }
             // otherwise ignore silently
@@ -166,7 +169,7 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg) const
             PlayerInfo::setTrading(false);
             break;
         default:  // Shouldn't happen as well, but to be sure
-            NotifyManager::notify(NotifyManager::TRADE_ERROR_UNKNOWN,
+            NotifyManager::notify(NotifyTypes::TRADE_ERROR_UNKNOWN,
                 tradePartnerName);
             if (tradeWindow)
                 tradeWindow->clear();
@@ -228,19 +231,19 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
             break;
         case 1:
             // Add item failed - player overweighted
-            NotifyManager::notify(NotifyManager::
+            NotifyManager::notify(NotifyTypes::
                 TRADE_ADD_PARTNER_OVER_WEIGHT);
             break;
         case 2:
             // Add item failed - player has no free slot
-            NotifyManager::notify(NotifyManager::TRADE_ADD_PARTNER_NO_SLOTS);
+            NotifyManager::notify(NotifyTypes::TRADE_ADD_PARTNER_NO_SLOTS);
             break;
         case 3:
             // Add item failed - non tradable item
-            NotifyManager::notify(NotifyManager::TRADE_ADD_UNTRADABLE_ITEM);
+            NotifyManager::notify(NotifyTypes::TRADE_ADD_UNTRADABLE_ITEM);
             break;
         default:
-            NotifyManager::notify(NotifyManager::TRADE_ADD_ERROR);
+            NotifyManager::notify(NotifyTypes::TRADE_ADD_ERROR);
             logger->log("QQQ SMSG_TRADE_ITEM_ADD_RESPONSE: "
                         + toString(res));
             break;
@@ -258,7 +261,7 @@ void TradeHandler::processTradeOk(Net::MessageIn &msg)
 
 void TradeHandler::processTradeCancel(Net::MessageIn &msg A_UNUSED)
 {
-    NotifyManager::notify(NotifyManager::TRADE_CANCELLED);
+    NotifyManager::notify(NotifyTypes::TRADE_CANCELLED);
     if (tradeWindow)
     {
         tradeWindow->setVisible(false);
@@ -269,7 +272,7 @@ void TradeHandler::processTradeCancel(Net::MessageIn &msg A_UNUSED)
 
 void TradeHandler::processTradeComplete(Net::MessageIn &msg A_UNUSED)
 {
-    NotifyManager::notify(NotifyManager::TRADE_COMPLETE);
+    NotifyManager::notify(NotifyTypes::TRADE_COMPLETE);
     if (tradeWindow)
     {
         tradeWindow->setVisible(false);

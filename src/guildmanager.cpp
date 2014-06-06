@@ -24,7 +24,6 @@
 #include "client.h"
 #include "configuration.h"
 #include "guild.h"
-#include "notifications.h"
 #include "notifymanager.h"
 
 #include "being/localplayer.h"
@@ -40,6 +39,8 @@
 
 #include "utils/delete2.h"
 #include "utils/timer.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -521,7 +522,7 @@ bool GuildManager::afterRemove()
         player_node->setGuildName("");
         player_node->clearGuilds();
     }
-    NotifyManager::notify(NotifyManager::GUILD_LEFT);
+    NotifyManager::notify(NotifyTypes::GUILD_LEFT);
     delete2(mTab);
 
     if (socialWindow)
