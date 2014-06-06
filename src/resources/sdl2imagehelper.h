@@ -60,7 +60,7 @@ class SDLImageHelper final : public ImageHelper
         Image *createTextSurface(SDL_Surface *const tmpImage,
                                  const int width, const int height,
                                  const float alpha)
-                                 const override final A_WARN_UNUSED;
+                                 override final A_WARN_UNUSED;
 
         static void SDLSetEnableAlphaCache(const bool n)
         { mEnableAlphaCache = n; }

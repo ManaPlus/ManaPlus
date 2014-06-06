@@ -29,6 +29,8 @@
 #include <libintl.h>
 #endif
 
+#include "utils/physfstools.h"
+
 #ifdef WIN32
 #include <string>
 extern "C" char const *_nl_locale_name_default(void);

@@ -52,7 +52,7 @@ Image *SDLImageHelper::load(SDL_Surface *const tmpImage)
 Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
                                          const int width A_UNUSED,
                                          const int height A_UNUSED,
-                                         const float alpha) const
+                                         const float alpha)
 {
     if (!tmpImage)
         return nullptr;
