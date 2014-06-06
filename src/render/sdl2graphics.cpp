@@ -118,6 +118,15 @@ static int FakeSDL_RenderCopy(SDL_Renderer *const renderer,
         static_cast<uint8_t>(mColor.b), \
         static_cast<uint8_t>(mColor.a))
 
+#define defRectFromArea(rect, area) \
+    const SDL_Rect rect = \
+    { \
+        static_cast<int32_t>(area.x), \
+        static_cast<int32_t>(area.y), \
+        static_cast<int32_t>(area.width), \
+        static_cast<int32_t>(area.height) \
+    }
+
 SDLGraphics::SDLGraphics() :
     Graphics(),
     mRendererFlags(SDL_RENDERER_SOFTWARE),
@@ -662,13 +671,7 @@ bool SDLGraphics::pushClipArea(const Rect &area)
     const bool result = Graphics::pushClipArea(area);
 
     const ClipRect &carea = mClipStack.top();
-    const SDL_Rect rect =
-    {
-        static_cast<int32_t>(carea.x),
-        static_cast<int32_t>(carea.y),
-        static_cast<int32_t>(carea.width),
-        static_cast<int32_t>(carea.height)
-    };
+    defRectFromArea(rect, carea);
     SDL_RenderSetClipRect(mRenderer, &rect);
     return result;
 }
@@ -681,14 +684,7 @@ void SDLGraphics::popClipArea()
         return;
 
     const ClipRect &carea = mClipStack.top();
-    const SDL_Rect rect =
-    {
-        static_cast<int32_t>(carea.x),
-        static_cast<int32_t>(carea.y),
-        static_cast<int32_t>(carea.width),
-        static_cast<int32_t>(carea.height)
-    };
-
+    defRectFromArea(rect, carea);
     SDL_RenderSetClipRect(mRenderer, &rect);
 }
 

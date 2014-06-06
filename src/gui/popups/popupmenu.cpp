@@ -2521,6 +2521,25 @@ void PopupMenu::showPopup(int x, int y)
     requestMoveToTop();
 }
 
+void PopupMenu::addNormalRelations()
+{
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: add player to disregarded list
+    mBrowserBox->addRow("disregard", _("Disregard"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: add player to ignore list
+    mBrowserBox->addRow("ignore", _("Ignore"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: add player to black list
+    mBrowserBox->addRow("blacklist", _("Black list"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: add player to enemy list
+    mBrowserBox->addRow("enemy", _("Set as enemy"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: add player to erased list
+    mBrowserBox->addRow("erase", _("Erase"));
+}
+
 void PopupMenu::addPlayerRelation(const std::string &name)
 {
     switch (player_relations.getRelation(name))
@@ -2529,39 +2548,11 @@ void PopupMenu::addPlayerRelation(const std::string &name)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add player to friends list
             mBrowserBox->addRow("friend", _("Be friend"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: add player to disregarded list
-            mBrowserBox->addRow("disregard", _("Disregard"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: add player to ignore list
-            mBrowserBox->addRow("ignore", _("Ignore"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: add player to black list
-            mBrowserBox->addRow("blacklist", _("Black list"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: add player to enemy list
-            mBrowserBox->addRow("enemy", _("Set as enemy"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: add player to erased list
-            mBrowserBox->addRow("erase", _("Erase"));
+            addNormalRelations();
             break;
 
         case PlayerRelation::FRIEND:
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: add player to disregarded list
-            mBrowserBox->addRow("disregard", _("Disregard"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: add player to ignore list
-            mBrowserBox->addRow("ignore", _("Ignore"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: add player to black list
-            mBrowserBox->addRow("blacklist", _("Black list"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: add player to enemy list
-            mBrowserBox->addRow("enemy", _("Set as enemy"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: add player to erased list
-            mBrowserBox->addRow("erase", _("Erase"));
+            addNormalRelations();
             break;
 
         case PlayerRelation::BLACKLISTED:

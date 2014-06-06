@@ -23,8 +23,11 @@
 #include "gui/widgets/shortcutcontainer.h"
 
 #include "graphicsvertexes.h"
+#include "settings.h"
 
 #include "gui/gui.h"
+
+#include "resources/image.h"
 
 #include "utils/delete2.h"
 
@@ -45,10 +48,37 @@ ShortcutContainer::ShortcutContainer(Widget2 *const widget) :
     mVertexes(new ImageCollection)
 {
     mAllowLogic = false;
+
+    addMouseListener(this);
+    addWidgetListener(this);
+
+    mForegroundColor = getThemeColor(Theme::TEXT);
+    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
+
+    mBackgroundImg = Theme::getImageFromThemeXml(
+        "item_shortcut_background.xml", "background.xml");
+
+    if (mBackgroundImg)
+    {
+        mBackgroundImg->setAlpha(settings.guiAlpha);
+        mBoxHeight = mBackgroundImg->getHeight();
+        mBoxWidth = mBackgroundImg->getWidth();
+    }
+    else
+    {
+        mBoxHeight = 1;
+        mBoxWidth = 1;
+    }
 }
 
 ShortcutContainer::~ShortcutContainer()
 {
+    if (mBackgroundImg)
+    {
+        mBackgroundImg->decRef();
+        mBackgroundImg = nullptr;
+    }
+
     if (gui)
         gui->removeDragged(this);
 

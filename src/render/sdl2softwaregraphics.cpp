@@ -48,6 +48,15 @@ static unsigned int *cG = nullptr;
 static unsigned int *cB = nullptr;
 #endif
 
+#define defRectFromArea(rect, area) \
+    const SDL_Rect rect = \
+    { \
+        static_cast<int32_t>(area.x), \
+        static_cast<int32_t>(area.y), \
+        static_cast<int32_t>(area.width), \
+        static_cast<int32_t>(area.height) \
+    }
+
 SDL2SoftwareGraphics::SDL2SoftwareGraphics() :
     Graphics(),
     mRendererFlags(SDL_RENDERER_SOFTWARE),
@@ -1085,14 +1094,7 @@ void SDL2SoftwareGraphics::fillRectangle(const Rect &rectangle)
     }
     else
     {
-        SDL_Rect rect =
-        {
-            static_cast<int16_t>(area.x),
-            static_cast<int16_t>(area.y),
-            static_cast<uint16_t>(area.width),
-            static_cast<uint16_t>(area.height)
-        };
-
+        defRectFromArea(rect, area);
         const uint32_t color = SDL_MapRGBA(mSurface->format,
             static_cast<int8_t>(mColor.r),
             static_cast<int8_t>(mColor.g),
@@ -1117,13 +1119,7 @@ bool SDL2SoftwareGraphics::pushClipArea(const Rect &area)
     const bool result = Graphics::pushClipArea(area);
 
     const ClipRect &carea = mClipStack.top();
-    const SDL_Rect rect =
-    {
-        static_cast<int32_t>(carea.x),
-        static_cast<int32_t>(carea.y),
-        static_cast<int32_t>(carea.width),
-        static_cast<int32_t>(carea.height)
-    };
+    defRectFromArea(rect, carea);
     SDL_SetClipRect(mSurface, &rect);
     return result;
 }
@@ -1136,14 +1132,7 @@ void SDL2SoftwareGraphics::popClipArea()
         return;
 
     const ClipRect &carea = mClipStack.top();
-    const SDL_Rect rect =
-    {
-        static_cast<int32_t>(carea.x),
-        static_cast<int32_t>(carea.y),
-        static_cast<int32_t>(carea.width),
-        static_cast<int32_t>(carea.height)
-    };
-
+    defRectFromArea(rect, carea);
     SDL_SetClipRect(mSurface, &rect);
 }
 

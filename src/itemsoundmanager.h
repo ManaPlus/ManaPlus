@@ -27,6 +27,7 @@
 
 class FloorItem;
 class Item;
+class ItemInfo;
 
 class ItemSoundManager final
 {
@@ -40,6 +41,9 @@ class ItemSoundManager final
                             const ItemSoundEvent::Type sound);
 
         static void playSfx(const FloorItem *const item,
+                            const ItemSoundEvent::Type sound);
+
+        static void playSfx(const ItemInfo &info,
                             const ItemSoundEvent::Type sound);
 };
 

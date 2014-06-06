@@ -54,36 +54,14 @@ DropShortcutContainer::DropShortcutContainer(Widget2 *const widget) :
 {
     mItemPopup->postInit();
 
-    addMouseListener(this);
-    addWidgetListener(this);
-
-    mBackgroundImg = Theme::getImageFromThemeXml(
-        "item_shortcut_background.xml", "background.xml");
     if (dropShortcut)
         mMaxItems = dropShortcut->getItemCount();
     else
         mMaxItems = 0;
-
-    if (mBackgroundImg)
-    {
-        mBackgroundImg->setAlpha(settings.guiAlpha);
-        mBoxHeight = mBackgroundImg->getHeight();
-        mBoxWidth = mBackgroundImg->getWidth();
-    }
-    else
-    {
-        mBoxHeight = 1;
-        mBoxWidth = 1;
-    }
 }
 
 DropShortcutContainer::~DropShortcutContainer()
 {
-    if (mBackgroundImg)
-    {
-        mBackgroundImg->decRef();
-        mBackgroundImg = nullptr;
-    }
     delete2(mItemPopup);
 }
 

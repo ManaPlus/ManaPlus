@@ -23,11 +23,9 @@
 #include "configuration.h"
 #include "client.h"
 #include "game.h"
-#ifdef USE_SDL2
-#include "render/graphics.h"
-#endif
 #include "logger.h"
 #include "mumblemanager.h"
+#include "sdlshared.h"
 #include "settings.h"
 
 #include "gui/windowmanager.h"
@@ -35,6 +33,10 @@
 #include "being/localplayer.h"
 
 #include "input/inputmanager.h"
+
+#ifdef USE_SDL2
+#include "render/graphics.h"
+#endif
 
 #include "utils/process.h"
 
@@ -115,13 +117,8 @@ bool EventsManager::handleEvents() const
     else
     {
         SDL_Event event;
-
         // Handle SDL events
-#ifdef USE_SDL2
         while (SDL_WaitEventTimeout(&event, 0))
-#else
-        while (SDL_PollEvent(&event))
-#endif
         {
             if (!handleCommonEvents(event))
             {
@@ -168,11 +165,7 @@ void EventsManager::handleGameEvents() const
 
     // Events
     SDL_Event event;
-#ifdef USE_SDL2
     while (SDL_WaitEventTimeout(&event, 0))
-#else
-    while (SDL_PollEvent(&event))
-#endif
     {
         if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
             game->updateHistory(event);

@@ -68,38 +68,14 @@ ItemShortcutContainer::ItemShortcutContainer(Widget2 *const widget,
     mItemPopup->postInit();
     mSpellPopup->postInit();
 
-    addMouseListener(this);
-    addWidgetListener(this);
-
-    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
-    mBackgroundImg = Theme::getImageFromThemeXml(
-        "item_shortcut_background.xml", "background.xml");
     if (itemShortcut[mNumber])
         mMaxItems = itemShortcut[mNumber]->getItemCount();
     else
         mMaxItems = 0;
-
-    if (mBackgroundImg)
-    {
-        mBackgroundImg->setAlpha(settings.guiAlpha);
-        mBoxHeight = mBackgroundImg->getHeight();
-        mBoxWidth = mBackgroundImg->getWidth();
-    }
-    else
-    {
-        mBoxHeight = 1;
-        mBoxWidth = 1;
-    }
-    mForegroundColor = getThemeColor(Theme::TEXT);
 }
 
 ItemShortcutContainer::~ItemShortcutContainer()
 {
-    if (mBackgroundImg)
-    {
-        mBackgroundImg->decRef();
-        mBackgroundImg = nullptr;
-    }
     delete2(mItemPopup);
     delete2(mSpellPopup);
 }

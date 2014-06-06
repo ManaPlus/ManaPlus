@@ -663,14 +663,19 @@ impHandler0(pickup)
     return false;
 }
 
+static void doSit()
+{
+    if (inputManager.isActionActive(InputAction::EMOTE))
+        player_node->updateSit();
+    else
+        player_node->toggleSit();
+}
+
 impHandler0(sit)
 {
     if (player_node)
     {
-        if (inputManager.isActionActive(InputAction::EMOTE))
-            player_node->updateSit();
-        else
-            player_node->toggleSit();
+        doSit();
         return true;
     }
     return false;
@@ -1147,10 +1152,8 @@ impHandler0(stopSit)
             return false;
         if (!player_node->getTarget())
         {
-            if (inputManager.isActionActive(InputAction::EMOTE))
-                player_node->updateSit();
-            else
-                player_node->toggleSit();
+            doSit();
+            return true;
         }
         return true;
     }

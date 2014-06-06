@@ -59,6 +59,7 @@
 #define SDL_Window SDL_Surface
 #define SDL_JoystickNameForIndex SDL_JoystickName
 #define SurfaceImageHelper SDLImageHelper
+#define SDL_WaitEventTimeout(event, time) SDL_PollEvent(event)
 
 #endif  // USE_SDL2
 

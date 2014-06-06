@@ -39,6 +39,7 @@
 #include "resources/db/emotedb.h"
 
 #include "utils/stringutils.h"
+#include "utils/delete2.h"
 
 #include "debug.h"
 
@@ -53,13 +54,6 @@ EmoteShortcutContainer::EmoteShortcutContainer(Widget2 *const widget) :
 {
     mEmotePopup->postInit();
 
-    addMouseListener(this);
-    addWidgetListener(this);
-
-    mForegroundColor2 = getThemeColor(Theme::TEXT_OUTLINE);
-    mBackgroundImg = Theme::getImageFromThemeXml(
-        "item_shortcut_background.xml", "background.xml");
-
     if (mBackgroundImg)
         mBackgroundImg->setAlpha(settings.guiAlpha);
 
@@ -72,29 +66,11 @@ EmoteShortcutContainer::EmoteShortcutContainer(Widget2 *const widget) :
     }
 
     mMaxItems = MAX_ITEMS;
-
-    if (mBackgroundImg)
-    {
-        mBoxHeight = mBackgroundImg->getHeight();
-        mBoxWidth = mBackgroundImg->getWidth();
-    }
-    else
-    {
-        mBoxHeight = 1;
-        mBoxWidth = 1;
-    }
-    mForegroundColor = getThemeColor(Theme::TEXT);
 }
 
 EmoteShortcutContainer::~EmoteShortcutContainer()
 {
-    delete mEmotePopup;
-
-    if (mBackgroundImg)
-    {
-        mBackgroundImg->decRef();
-        mBackgroundImg = nullptr;
-    }
+    delete2(mEmotePopup);
 }
 
 void EmoteShortcutContainer::setWidget2(const Widget2 *const widget)
