@@ -965,6 +965,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/map/objectslayer.h \
 	      render/mgl.cpp \
 	      render/mgl.h \
+	      render/mgldefines.h \
+	      render/mgltypes.h \
 	      render/mobileopenglgraphics.cpp \
 	      render/mobileopenglgraphics.h \
 	      input/mouseinput.h \
