@@ -970,6 +970,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      render/mgltypes.h \
 	      render/mobileopenglgraphics.cpp \
 	      render/mobileopenglgraphics.h \
+	      render/modernopenglgraphics.cpp \
+	      render/modernopenglgraphics.h \
 	      input/mouseinput.h \
 	      navigationmanager.cpp \
 	      navigationmanager.h \

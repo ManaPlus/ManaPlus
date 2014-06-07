@@ -69,6 +69,7 @@ class Image notfinal : public Resource
 #ifdef USE_OPENGL
     friend class AtlasManager;
     friend class MobileOpenGLGraphics;
+    friend class ModernOpenGLGraphics;
     friend class NormalOpenGLGraphics;
     friend class NullOpenGLGraphics;
     friend class SafeOpenGLGraphics;

@@ -851,6 +851,8 @@ SET(SRCS
     render/mgltypes.h
     render/mobileopenglgraphics.cpp
     render/mobileopenglgraphics.h
+    render/modernopenglgraphics.cpp
+    render/modernopenglgraphics.h
     input/mouseinput.h
     mumblemanager.cpp
     mumblemanager.h

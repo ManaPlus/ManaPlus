@@ -29,6 +29,7 @@
 
 #include "render/mgl.h"
 #include "render/mobileopenglgraphics.h"
+#include "render/modernopenglgraphics.h"
 #include "render/normalopenglgraphics.h"
 #include "render/safeopenglgraphics.h"
 
@@ -202,8 +203,10 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     {
 #ifndef ANDROID
         case RENDER_NORMAL_OPENGL:
-        case RENDER_MODERN_OPENGL:
             NormalOpenGLGraphics::bindTexture(mTextureType, texture);
+            break;
+        case RENDER_MODERN_OPENGL:
+            ModernOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
         case RENDER_SAFE_OPENGL:
             SafeOpenGLGraphics::bindTexture(mTextureType, texture);
