@@ -7,8 +7,11 @@ src/client.cpp
 src/commandhandler.cpp
 src/commands.cpp
 src/commands.h
+src/configmanager.cpp
+src/dirs.cpp
 src/dyetool/dyemain.cpp
 src/game.cpp
+src/gui/dialogsmanager.cpp
 src/gui/models/colorlistmodel.h
 src/gui/models/colormodel.cpp
 src/gui/models/fontsizechoicelistmodel.h
@@ -126,7 +129,6 @@ src/net/ea/skillhandler.cpp
 src/net/eathena/generalhandler.cpp
 src/net/ea/tradehandler.cpp
 src/net/tmwa/generalhandler.cpp
-src/notifications.h
 src/render/rendererslistsdl2.h
 src/render/rendererslistsdl.h
 src/resources/beinginfo.cpp
@@ -137,6 +139,7 @@ src/resources/db/monsterdb.cpp
 src/resources/db/petdb.cpp
 src/resources/mapreader.cpp
 src/resources/modinfo.cpp
+src/resources/notifications.h
 src/utils/gettext.h
 src/utils/stringutils.h
 src/utils/xml.cpp
