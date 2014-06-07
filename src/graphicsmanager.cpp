@@ -40,6 +40,7 @@
 
 #include "configuration.h"
 #include "logger.h"
+#include "settings.h"
 
 #include "render/graphics.h"
 #include "render/mgl.h"
@@ -245,10 +246,10 @@ int GraphicsManager::detectGraphics()
         | (1024 * textureSampler) | (2048 * compressTextures);
 }
 
-void GraphicsManager::createRenderers(const bool noOpenGL)
+void GraphicsManager::createRenderers()
 {
     RenderType useOpenGL = RENDER_SOFTWARE;
-    if (!noOpenGL)
+    if (!settings.options.noOpenGL)
         useOpenGL = intToRenderType(config.getIntValue("opengl"));
 
     // Setup image loading for the right image format
@@ -311,10 +312,10 @@ void GraphicsManager::createRenderers(const bool noOpenGL)
 
 #else  // USE_OPENGL
 
-void GraphicsManager::createRenderers(const bool noOpenGL)
+void GraphicsManager::createRenderers()
 {
     RenderType useOpenGL = RENDER_SOFTWARE;
-    if (!noOpenGL)
+    if (!settings.options.noOpenGL)
         useOpenGL = intToRenderType(config.getIntValue("opengl"));
 
     // Setup image loading for the right image format
@@ -421,7 +422,7 @@ void GraphicsManager::setVideoMode()
     }
 }
 
-void GraphicsManager::initGraphics(const bool noOpenGL)
+void GraphicsManager::initGraphics()
 {
     openGLMode = intToRenderType(config.getIntValue("opengl"));
 #ifdef USE_OPENGL
@@ -435,8 +436,9 @@ void GraphicsManager::initGraphics(const bool noOpenGL)
         config.getBoolValue("alphaCache"));
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F);
 #endif
-    createRenderers(noOpenGL);
+    createRenderers();
     detectPixelSize();
+    setVideoMode();
 }
 
 #ifdef USE_SDL2

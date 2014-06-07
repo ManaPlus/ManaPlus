@@ -33,9 +33,8 @@ dyecmd_SOURCES = gui/cliprect.cpp \
 	      gui/cliprect.h \
 	      gui/color.h \
 	      events/event.h \
-	      gui/rect.h
-
-dyecmd_SOURCES += dyetool/dyemain.cpp \
+	      gui/rect.h \
+	      dyetool/dyemain.cpp \
 	      animatedsprite.cpp \
 	      animatedsprite.h \
 	      animationdelayload.cpp \
@@ -50,6 +49,8 @@ dyecmd_SOURCES += dyetool/dyemain.cpp \
 	      logger.h \
 	      navigationmanager.cpp \
 	      navigationmanager.h \
+	      settings.cpp \
+	      settings.h \
 	      resources/map/walklayer.cpp \
 	      resources/map/walklayer.h \
 	      render/graphics.cpp \

@@ -508,11 +508,11 @@ void Client::updateEnv()
 
 void Client::initGraphics()
 {
-    graphicsManager.initGraphics(settings.options.noOpenGL);
-
-    runCounters = config.getBoolValue("packetcounters");
     WindowManager::applyVSync();
-    graphicsManager.setVideoMode();
+    runCounters = config.getBoolValue("packetcounters");
+
+    graphicsManager.initGraphics();
+
     imageHelper->postInit();
     getConfigDefaults2(config.getDefaultValues());
     WindowManager::applyGrabMode();
