@@ -886,6 +886,10 @@ void GraphicsManager::initOpenGLFunctions()
         logger->log1("found GL_GREMEDY_frame_terminator");
         assignFunction(glFrameTerminator, "glFrameTerminatorGREMEDY");
     }
+    else
+    {
+        logger->log1("GL_GREMEDY_frame_terminator not found");
+    }
     if (supportExtension("GL_EXT_debug_label"))
     {
         logger->log1("found GL_EXT_debug_label");
@@ -898,12 +902,20 @@ void GraphicsManager::initOpenGLFunctions()
         if (!mglGetObjectLabel)
             assignFunction(glGetObjectLabel, "glGetObjectLabel");
     }
+    else
+    {
+        logger->log1("GL_EXT_debug_label not found");
+    }
     if (supportExtension("GL_GREMEDY_string_marker"))
     {
         logger->log1("found GL_GREMEDY_string_marker");
         assignFunction(glPushGroupMarker, "glStringMarkerGREMEDY");
     }
-    else if (supportExtension("GL_EXT_debug_marker"))
+    else
+    {
+        logger->log1("GL_GREMEDY_string_marker not found");
+    }
+    if (supportExtension("GL_EXT_debug_marker"))
     {
         logger->log1("found GL_EXT_debug_marker");
         assignFunction(glInsertEventMarker, "glInsertEventMarkerEXT");
@@ -916,6 +928,10 @@ void GraphicsManager::initOpenGLFunctions()
         if (!mglPopGroupMarker)
             assignFunction(glPopGroupMarker, "glPopGroupMarker");
     }
+    else
+    {
+        logger->log1("GL_EXT_debug_marker not found");
+    }
     if (checkGLVersion(2, 1) && supportExtension("GL_ARB_vertex_array_object"))
     {
         logger->log1("found GL_ARB_vertex_array_object");
@@ -927,12 +943,20 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glDisableVertexAttribArray,
             "glDisableVertexAttribArray");
     }
+    else
+    {
+        logger->log1("GL_ARB_vertex_array_object not found");
+    }
     if (checkGLVersion(1, 5))
     {
         assignFunction(glGenBuffers, "glGenBuffers");
         assignFunction(glDeleteBuffers, "glDeleteBuffers");
         assignFunction(glBindBuffer, "glBindBuffer");
         assignFunction(glBufferData, "glBufferData");
+    }
+    else
+    {
+        logger->log1("buffers extension not found");
     }
     if (checkGLVersion(2, 0))
     {
@@ -955,19 +979,32 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glUseProgram, "glUseProgram");
         assignFunction(glValidateProgram, "glValidateProgram");
         assignFunction(glGetAttribLocation, "glGetAttribLocation");
+
+        if (checkGLVersion(3, 0))
+        {
+            assignFunction(glBindFragDataLocation, "glBindFragDataLocation");
+        }
+        else
+        {
+            logger->log1("shaders functions incomplete (OpenGL < 3.0)");
+        }
+        if (checkGLVersion(4, 0)
+            || supportExtension("GL_ARB_separate_shader_objects"))
+        {
+            logger->log1("found GL_ARB_separate_shader_objects");
+            assignFunction(glUniform1f, "glUniform1f");
+            assignFunction(glUniform2f, "glUniform2f");
+            assignFunction(glUniform3f, "glUniform3f");
+            assignFunction(glUniform4f, "glUniform4f");
+        }
+        else
+        {
+            logger->log1("GL_ARB_separate_shader_objects not supported");
+        }
     }
-    if (checkGLVersion(3, 0))
+    else
     {
-        assignFunction(glBindFragDataLocation, "glBindFragDataLocation");
-    }
-    if (checkGLVersion(4, 0)
-        || supportExtension("GL_ARB_separate_shader_objects"))
-    {
-        logger->log1("found GL_ARB_separate_shader_objects");
-        assignFunction(glUniform1f, "glUniform1f");
-        assignFunction(glUniform2f, "glUniform2f");
-        assignFunction(glUniform3f, "glUniform3f");
-        assignFunction(glUniform4f, "glUniform4f");
+        logger->log1("shaders not supported");
     }
 
 #ifdef WIN32
