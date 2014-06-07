@@ -62,6 +62,7 @@
 #include "resources/surfaceimagehelper.h"
 #endif
 
+#include "utils/delete2.h"
 #include "utils/sdlhelper.h"
 #include "utils/stringutils.h"
 
@@ -356,6 +357,15 @@ void GraphicsManager::createRenderers()
 #endif  // USE_OPENGL
 }
 
+void GraphicsManager::deleteRenderers()
+{
+    delete2(mainGraphics);
+    if (imageHelper != surfaceImageHelper)
+        delete surfaceImageHelper;
+    surfaceImageHelper = nullptr;
+    delete2(imageHelper);
+}
+
 void GraphicsManager::setVideoMode()
 {
     const int bpp = 0;
@@ -439,6 +449,20 @@ void GraphicsManager::initGraphics()
     createRenderers();
     detectPixelSize();
     setVideoMode();
+#ifdef USE_OPENGL
+    if (openGLMode == RENDER_NORMAL_OPENGL || openGLMode == RENDER_GLES_OPENGL)
+    {
+        if (!checkGLVersion(2, 0))
+        {
+            logger->log("Fallback to safe OpenGL mode");
+            openGLMode = RENDER_SAFE_OPENGL;
+            deleteRenderers();
+            createRenderers();
+            detectPixelSize();
+            setVideoMode();
+        }
+    }
+#endif
 }
 
 #ifdef USE_SDL2

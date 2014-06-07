@@ -78,6 +78,8 @@ class GraphicsManager final
 
         void createRenderers();
 
+        void deleteRenderers();
+
         void initGraphics();
 
         static void setVideoMode();

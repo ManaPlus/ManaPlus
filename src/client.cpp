@@ -627,12 +627,7 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting3");
 
-    delete2(mainGraphics);
-
-    if (imageHelper != surfaceImageHelper)
-        delete surfaceImageHelper;
-    surfaceImageHelper = nullptr;
-    delete2(imageHelper);
+    graphicsManager.deleteRenderers();
 
     if (logger)
         logger->log1("Quitting4");
