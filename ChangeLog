@@ -1,3 +1,9 @@
+2014-06-07 New release 1.4.6.7
+fix: screenshot key in input fields in SDL2 builds.
+fix: missing text while chat scrolling (up/down).
+add: max texture size detection in video mode test.
+add: improve profiler speed.
+
 2014-05-24 New release 1.4.5.24
 fix: memory leak.
 add: mirrors support for generic manaplus downloads.
