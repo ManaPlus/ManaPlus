@@ -120,6 +120,7 @@ typedef void (APIENTRY *glUniform3f_t) (GLint location,
     GLfloat v0, GLfloat v1, GLfloat v2);
 typedef void (APIENTRY *glUniform4f_t) (GLint location,
     GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+typedef GLenum (APIENTRY *glCheckFramebufferStatus_t) (GLenum target);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,

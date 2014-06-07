@@ -812,6 +812,7 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glFramebufferRenderbuffer, "glFramebufferRenderbuffer");
         assignFunction(glDeleteFramebuffers, "glDeleteFramebuffers");
         assignFunction(glDeleteRenderbuffers, "glDeleteRenderbuffers");
+        assignFunction(glCheckFramebufferStatus, "glCheckFramebufferStatus");
     }
     else if (supportExtension("GL_EXT_framebuffer_object"))
     {   // old frame buffer extension
