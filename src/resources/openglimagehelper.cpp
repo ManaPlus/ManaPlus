@@ -202,6 +202,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     {
 #ifndef ANDROID
         case RENDER_NORMAL_OPENGL:
+        case RENDER_MODERN_OPENGL:
             NormalOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
         case RENDER_SAFE_OPENGL:
@@ -210,6 +211,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
 #else
         case RENDER_NORMAL_OPENGL:
         case RENDER_SAFE_OPENGL:
+        case RENDER_MODERN_OPENGL:
 #endif
         case RENDER_GLES_OPENGL:
             MobileOpenGLGraphics::bindTexture(mTextureType, texture);

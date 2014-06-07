@@ -303,6 +303,7 @@ bool Graphics::setOpenGLMode()
     if (rectTex
         && OpenGLImageHelper::getInternalTextureType() == 4
         && getOpenGL() != RENDER_GLES_OPENGL
+        && getOpenGL() != RENDER_MODERN_OPENGL
         && config.getBoolValue("rectangulartextures")
         && !graphicsManager.isUseTextureSampler())
     {

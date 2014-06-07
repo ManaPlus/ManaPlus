@@ -352,7 +352,9 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
 #ifdef USE_OPENGL
     int updateFlag = 0;
 
-    if (mOpenGL == RENDER_NORMAL_OPENGL || mOpenGL == RENDER_GLES_OPENGL)
+    if (mOpenGL == RENDER_NORMAL_OPENGL
+        || mOpenGL == RENDER_GLES_OPENGL
+        || mOpenGL == RENDER_MODERN_OPENGL)
     {
         if (mLastX != startX || mLastY != startY || mLastScrollX != scrollX
             || mLastScrollY != scrollY)
@@ -411,7 +413,8 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
             {
 #ifdef USE_OPENGL
                 if (mOpenGL == RENDER_NORMAL_OPENGL
-                    || mOpenGL == RENDER_GLES_OPENGL)
+                    || mOpenGL == RENDER_GLES_OPENGL
+                    || mOpenGL == RENDER_MODERN_OPENGL)
                 {
                     if (updateFlag)
                     {

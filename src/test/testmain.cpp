@@ -192,9 +192,10 @@ int TestMain::exec(const bool testAudio)
 
     int batchSize = 256;
 
-    // if OpenGL mode is fast mode we can try detect max batch sizes
+    // if OpenGL mode is normal mode we can try detect max batch sizes
     if (openGLMode == RENDER_NORMAL_OPENGL
-        || openGLMode == RENDER_GLES_OPENGL)
+        || openGLMode == RENDER_GLES_OPENGL
+        || openGLMode == RENDER_MODERN_OPENGL)
     {
         if (!invokeNormalOpenBatchTest("11"))
             batchSize = readValue2(11);

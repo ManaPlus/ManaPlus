@@ -42,18 +42,24 @@ RenderType intToRenderType(const int mode)
 
     if (mode != RENDER_SOFTWARE
 #if defined(USE_OPENGL) && defined(ANDROID) && defined(USE_SDL2)
-        && mode != RENDER_GLES_OPENGL && mode != RENDER_SDL2_DEFAULT)
+        && mode != RENDER_GLES_OPENGL
+        && mode != RENDER_SDL2_DEFAULT)
 #elif defined(USE_OPENGL) && defined(ANDROID) && !defined(USE_SDL2)
         && mode != RENDER_GLES_OPENGL)
 #elif defined(USE_OPENGL) && !defined(ANDROID) && defined(USE_SDL2)
-        && mode != RENDER_NORMAL_OPENGL && mode != RENDER_SAFE_OPENGL
-        && mode != RENDER_GLES_OPENGL && mode != RENDER_SDL2_DEFAULT)
+        && mode != RENDER_NORMAL_OPENGL
+        && mode != RENDER_MODERN_OPENGL
+        && mode != RENDER_SAFE_OPENGL
+        && mode != RENDER_GLES_OPENGL
+        && mode != RENDER_SDL2_DEFAULT)
 #elif !defined(USE_OPENGL) && defined(USE_SDL2)
         && mode != RENDER_SDL2_DEFAULT)
 #elif !defined(USE_OPENGL) && !defined(USE_SDL2)
         )
 #elif defined(USE_OPENGL) && !defined(ANDROID) && !defined(USE_SDL2)
-        && mode != RENDER_NORMAL_OPENGL && mode != RENDER_SAFE_OPENGL
+        && mode != RENDER_NORMAL_OPENGL
+        && mode != RENDER_MODERN_OPENGL
+        && mode != RENDER_SAFE_OPENGL
         && mode != RENDER_GLES_OPENGL)
 #endif
     {

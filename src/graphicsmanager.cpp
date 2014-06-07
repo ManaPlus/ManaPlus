@@ -272,6 +272,7 @@ void GraphicsManager::createRenderers()
             mUseTextureSampler = false;
             break;
         case RENDER_NORMAL_OPENGL:
+        case RENDER_MODERN_OPENGL:
 #ifndef USE_SDL2
         case RENDER_SDL2_DEFAULT:
 #endif
@@ -328,6 +329,7 @@ void GraphicsManager::createRenderers()
         case RENDER_SOFTWARE:
         case RENDER_SAFE_OPENGL:
         case RENDER_GLES_OPENGL:
+        case RENDER_MODERN_OPENGL:
         case RENDER_NORMAL_OPENGL:
         case RENDER_NULL:
         case RENDER_LAST:
@@ -450,17 +452,29 @@ void GraphicsManager::initGraphics()
     detectPixelSize();
     setVideoMode();
 #ifdef USE_OPENGL
+    const RenderType oldOpenGLMode = openGLMode;
+    if (openGLMode == RENDER_MODERN_OPENGL)
+    {
+        if (!checkGLVersion(3, 0))
+        {
+            logger->log("Fallback to normal OpenGL mode");
+            openGLMode = RENDER_NORMAL_OPENGL;
+        }
+    }
     if (openGLMode == RENDER_NORMAL_OPENGL || openGLMode == RENDER_GLES_OPENGL)
     {
         if (!checkGLVersion(2, 0))
         {
             logger->log("Fallback to safe OpenGL mode");
             openGLMode = RENDER_SAFE_OPENGL;
-            deleteRenderers();
-            createRenderers();
-            detectPixelSize();
-            setVideoMode();
         }
+    }
+    if (openGLMode != oldOpenGLMode)
+    {
+        deleteRenderers();
+        createRenderers();
+        detectPixelSize();
+        setVideoMode();
     }
 #endif
 }
@@ -688,9 +702,6 @@ void GraphicsManager::updateTextureFormat() const
         logger->log1("using 4 texture format");
     }
 }
-#endif
-
-#ifdef USE_OPENGL
 
 void GraphicsManager::logString(const char *const format, const int num)
 {
