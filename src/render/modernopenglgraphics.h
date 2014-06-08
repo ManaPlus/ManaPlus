@@ -46,6 +46,7 @@
 #include <set>
 
 class NormalOpenGLGraphicsVertexes;
+class ShaderProgram;
 
 class ModernOpenGLGraphics final : public Graphics
 {
@@ -55,6 +56,8 @@ class ModernOpenGLGraphics final : public Graphics
         A_DELETE_COPY(ModernOpenGLGraphics)
 
         ~ModernOpenGLGraphics();
+
+        void postInit() override final;
 
         #include "render/graphicsdef.hpp"
 
@@ -67,6 +70,7 @@ class ModernOpenGLGraphics final : public Graphics
         GLshort *mShortVertArray;
         GLfloat *mFloatTexArrayCached;
         GLshort *mShortVertArrayCached;
+        ShaderProgram *mSimpleProgram;
         float mAlphaCached;
         int mVpCached;
         bool mTexture;

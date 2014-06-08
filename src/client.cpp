@@ -364,6 +364,8 @@ void Client::gameInit()
 
     WindowManager::initTitle();
 
+    mainGraphics->postInit();
+
     theme = new Theme;
     Theme::selectSkin();
     touchManager.init();

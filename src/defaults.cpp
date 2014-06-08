@@ -460,7 +460,11 @@ DefaultsData* getPathsDefaults()
     AddDEF("sprites", "graphics/sprites/");
     AddDEF("spriteErrorFile", "error.xml");
     AddDEF("guiIcons", "graphics/guiicons/");
+    AddDEF("shaders", "graphics/shaders/");
+    AddDEF("help", "help/");
 
+    AddDEF("simpleVertexShader", "simple_vertex.glsl");
+    AddDEF("simpleFragmentShader", "simple_frag.glsl");
     AddDEF("particles", "graphics/particles/");
     AddDEF("portalEffectFile", "warparea.particle.xml");
     AddDEF("effectId", -1);
@@ -479,8 +483,6 @@ DefaultsData* getPathsDefaults()
 
     AddDEF("wallpapers", "graphics/images/");
     AddDEF("wallpaperFile", "login_wallpaper.png");
-
-    AddDEF("help", "help/");
 
     AddDEF("statusEffectsFile", "status-effects.xml");
     AddDEF("statusEffectsPatchFile", "status-effects_patch.xml");

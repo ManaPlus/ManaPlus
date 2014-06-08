@@ -39,6 +39,8 @@ class ShadersManager final
         ShaderProgram *createProgram(const std::string &vertex,
                                      const std::string &fragment)
                                      A_WARN_UNUSED;
+
+        ShaderProgram *getSimpleProgram();
 };
 
 extern ShadersManager shaders;

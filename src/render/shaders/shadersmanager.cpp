@@ -22,6 +22,7 @@
 
 #ifdef USE_OPENGL
 
+#include "configuration.h"
 #include "logger.h"
 #include "settings.h"
 
@@ -111,4 +112,10 @@ ShaderProgram *ShadersManager::createProgram(const std::string &vertex,
     return nullptr;
 }
 
+ShaderProgram *ShadersManager::getSimpleProgram()
+{
+    const std::string dir = paths.getStringValue("shaders");
+    return createProgram(dir + paths.getStringValue("simpleVertexShader"),
+        dir + paths.getStringValue("simpleFragmentShader"));
+}
 #endif

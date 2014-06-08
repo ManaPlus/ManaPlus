@@ -33,6 +33,9 @@
 
 #include "render/mgl.h"
 
+#include "render/shaders/shaderprogram.h"
+#include "render/shaders/shadersmanager.h"
+
 #include "resources/image.h"
 #include "resources/imagerect.h"
 #include "resources/openglimagehelper.h"
@@ -52,6 +55,7 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
     mShortVertArray(nullptr),
     mFloatTexArrayCached(nullptr),
     mShortVertArrayCached(nullptr),
+    mSimpleProgram(nullptr),
     mAlphaCached(1.0F),
     mVpCached(0),
     mTexture(false),
@@ -95,6 +99,16 @@ void ModernOpenGLGraphics::initArrays(const int vertCount)
         mFloatTexArrayCached = new GLfloat[sz];
     if (!mShortVertArrayCached)
         mShortVertArrayCached = new GLshort[sz];
+}
+
+void ModernOpenGLGraphics::postInit()
+{
+    logger->log("Compiling shaders");
+    mSimpleProgram = shaders.getSimpleProgram();
+    if (mSimpleProgram)
+        logger->log("Shaders compilation done.");
+    else
+        logger->error("Shaders compilation error.");
 }
 
 void ModernOpenGLGraphics::deleteArrays()

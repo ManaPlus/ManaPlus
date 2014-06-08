@@ -450,6 +450,9 @@ class Graphics notfinal
         virtual void deleteArrays()
         { }
 
+        virtual void postInit()
+        { }
+
         int mWidth;
         int mHeight;
         int mActualWidth;
