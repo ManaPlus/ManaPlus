@@ -90,6 +90,7 @@ ShaderProgram *ShadersManager::createProgram(const std::string &vertex,
 
     mglAttachShader(programId, vertexShader->getShaderId());
     mglAttachShader(programId, fragmentShader->getShaderId());
+    mglBindFragDataLocation(programId, 0, "outColor");
     mglLinkProgram(programId);
     GLint isLinked = 0;
     mglGetProgramiv(programId, GL_LINK_STATUS, &isLinked);
