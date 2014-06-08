@@ -44,6 +44,7 @@
 #include "utils/sdlcheckutils.h"
 
 #include "render/shaders/shader.h"
+#include "render/shaders/shaderprogram.h"
 #include "render/shaders/shadersmanager.h"
 
 #include <SDL_image.h>
@@ -731,6 +732,32 @@ Resource *ResourceManager::getShader(const unsigned int type,
 {
     ShaderLoader rl = { name, type };
     return get("shader_" + name, &ShaderLoader::load, &rl);
+}
+
+struct ShaderProgramLoader final
+{
+    const std::string vertex;
+    const std::string fragment;
+
+    static Resource *load(const void *const v)
+    {
+        if (!v)
+            return nullptr;
+
+        const ShaderProgramLoader *const rl
+            = static_cast<const ShaderProgramLoader *const>(v);
+        ShaderProgram *const resource = shaders.createProgram(
+            rl->vertex, rl->fragment);
+        return resource;
+    }
+};
+
+Resource *ResourceManager::getShaderProgram(const std::string &vertex,
+                                            const std::string &fragment)
+{
+    ShaderProgramLoader rl = { vertex, fragment };
+    return get("program_" + vertex + " + " + fragment,
+        &ShaderProgramLoader::load, &rl);
 }
 #endif
 

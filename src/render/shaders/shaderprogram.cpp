@@ -18,28 +18,32 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_SHADER_H
-#define RENDER_SHADER_H
-
 #ifdef USE_OPENGL
 
-#include "resources/resource.h"
+#include "render/shaders/shaderprogram.h"
 
-class Shader final : public Resource
+#include "render/mgl.h"
+
+#include "render/shaders/shader.h"
+
+ShaderProgram::ShaderProgram(const unsigned int id,
+                             Shader *const vertex,
+                             Shader *const fragment) :
+    Resource(),
+    mProgramId(id),
+    mVertex(vertex),
+    mFragment(fragment)
 {
-    public:
-        Shader(const unsigned int id);
+}
 
-        ~Shader();
-
-        A_DELETE_COPY(Shader)
-
-        unsigned int getShaderId() const
-        { return mShaderId; }
-
-    protected:
-        unsigned int mShaderId;
-};
+ShaderProgram::~ShaderProgram()
+{
+    if (mProgramId)
+        mglDeleteProgram(mProgramId);
+    if (mVertex)
+        mVertex->decRef();
+    if (mFragment)
+        mFragment->decRef();
+}
 
 #endif  // USE_OPENGL
-#endif  // RENDER_SHADER_H

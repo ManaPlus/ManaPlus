@@ -985,6 +985,7 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glShaderSource, "glShaderSource");
         assignFunction(glCompileShader, "glCompileShader");
         assignFunction(glLinkProgram, "glLinkProgram");
+        assignFunction(glGetProgramInfoLog, "glGetProgramInfoLog");
         assignFunction(glDeleteProgram, "glDeleteProgram");
         assignFunction(glCreateProgram, "glCreateProgram");
         assignFunction(glAttachShader, "glAttachShader");

@@ -1056,6 +1056,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      render/surfacegraphics.h \
 	      render/shaders/shader.cpp \
 	      render/shaders/shader.h \
+	      render/shaders/shaderprogram.cpp \
+	      render/shaders/shaderprogram.h \
 	      render/shaders/shadersmanager.cpp \
 	      render/shaders/shadersmanager.h \
 	      text.cpp \

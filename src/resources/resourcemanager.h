@@ -178,6 +178,9 @@ class ResourceManager final
 
         Resource *getShader(const unsigned int type,
                             const std::string &name) A_WARN_UNUSED;
+
+        Resource *getShaderProgram(const std::string &vertex,
+                                   const std::string &fragment) A_WARN_UNUSED;
 #endif
 
         WalkLayer *getWalkLayer(const std::string &name, Map *const map);

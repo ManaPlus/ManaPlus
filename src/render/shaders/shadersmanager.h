@@ -27,13 +27,18 @@
 
 #include "localconsts.h"
 
-struct Shader;
+class Shader;
+class ShaderProgram;
 
 class ShadersManager final
 {
     public:
         Shader *createShader(const unsigned int type,
                              const std::string &fileName) A_WARN_UNUSED;
+
+        ShaderProgram *createProgram(const std::string &vertex,
+                                     const std::string &fragment)
+                                     A_WARN_UNUSED;
 };
 
 extern ShadersManager shaders;

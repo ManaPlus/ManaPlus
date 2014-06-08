@@ -28,6 +28,9 @@
 #include "render/mgl.h"
 
 #include "render/shaders/shader.h"
+#include "render/shaders/shaderprogram.h"
+
+#include "resources/resourcemanager.h"
 
 #include "utils/files.h"
 
@@ -56,6 +59,54 @@ Shader *ShadersManager::createShader(const unsigned int type,
     logger->log("Shader '%s' compilation error: %s", fileName.c_str(), buf);
     delete [] buf;
     mglDeleteShader(shaderId);
+    return nullptr;
+}
+
+ShaderProgram *ShadersManager::createProgram(const std::string &vertex,
+                                             const std::string &fragment)
+{
+    ResourceManager *const resman = ResourceManager::getInstance();
+    Shader *const vertexShader = static_cast<Shader*>(
+        resman->getShader(GL_VERTEX_SHADER, vertex));
+    if (!vertexShader)
+        return nullptr;
+
+    Shader *const fragmentShader = static_cast<Shader*>(
+        resman->getShader(GL_FRAGMENT_SHADER, fragment));
+
+    if (!fragmentShader)
+    {
+        vertexShader->decRef();
+        return nullptr;
+    }
+
+    GLuint programId = mglCreateProgram();
+    if (!programId)
+    {
+        vertexShader->decRef();
+        fragmentShader->decRef();
+        return nullptr;
+    }
+
+    mglAttachShader(programId, vertexShader->getShaderId());
+    mglAttachShader(programId, fragmentShader->getShaderId());
+    mglLinkProgram(programId);
+    GLint isLinked = 0;
+    mglGetProgramiv(programId, GL_LINK_STATUS, &isLinked);
+    if (isLinked == GL_TRUE)
+        return new ShaderProgram(programId, vertexShader, fragmentShader);
+
+    GLint len = 0;
+    mglGetProgramiv(programId, GL_INFO_LOG_LENGTH, &len);
+    char *buf = new char[len + 1];
+    mglGetProgramInfoLog(programId, len, &len, buf);
+    buf[len] = 0;
+    logger->log("Program '%s, %s' compilation error: %s",
+        vertexShader->getIdPath().c_str(),
+        fragmentShader->getIdPath().c_str(),
+        buf);
+    delete [] buf;
+    mglDeleteProgram(programId);
     return nullptr;
 }
 
