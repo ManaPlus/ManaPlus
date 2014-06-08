@@ -24,7 +24,7 @@
 #define RENDER_MODERNOPENGLGRAPHICS_H
 
 #include "main.h"
-#ifdef USE_OPENGL
+#if defined USE_OPENGL && !defined ANDROID
 
 #include "localconsts.h"
 #include "render/graphics.h"
@@ -55,16 +55,6 @@ class ModernOpenGLGraphics final : public Graphics
         A_DELETE_COPY(ModernOpenGLGraphics)
 
         ~ModernOpenGLGraphics();
-
-        inline void drawTriangleArrayfs(const GLshort *const shortVertArray,
-                                        const GLfloat *const floatTexArray,
-                                        const int size);
-
-        inline void drawTriangleArrayfs(const int size);
-
-        inline void drawTriangleArrayfsCached(const int size);
-
-        inline void drawLineArrays(const int size);
 
         #include "render/graphicsdef.hpp"
 
