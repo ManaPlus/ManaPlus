@@ -370,6 +370,7 @@ data/graphics/Makefile
 data/graphics/flags/Makefile
 data/graphics/gui/Makefile
 data/graphics/images/Makefile
+data/graphics/shaders/Makefile
 data/graphics/sprites/Makefile
 data/sfx/Makefile
 data/sfx/system/Makefile
