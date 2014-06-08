@@ -175,6 +175,9 @@ class ResourceManager final
 #ifdef USE_OPENGL
         Resource *getAtlas(const std::string &name,
                            const StringVect &files) A_WARN_UNUSED;
+
+        Resource *getShader(const unsigned int type,
+                            const std::string &name) A_WARN_UNUSED;
 #endif
 
         WalkLayer *getWalkLayer(const std::string &name, Map *const map);

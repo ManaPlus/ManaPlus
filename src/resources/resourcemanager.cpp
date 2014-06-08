@@ -43,6 +43,9 @@
 #include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
 
+#include "render/shaders/shader.h"
+#include "render/shaders/shadersmanager.h"
+
 #include <SDL_image.h>
 
 #include <sys/time.h>
@@ -703,8 +706,31 @@ Resource *ResourceManager::getAtlas(const std::string &name,
                                     const StringVect &files)
 {
     AtlasLoader rl = { name, &files };
-
     return get("atlas_" + name, &AtlasLoader::load, &rl);
+}
+
+struct ShaderLoader final
+{
+    const std::string name;
+    const unsigned int type;
+
+    static Resource *load(const void *const v)
+    {
+        if (!v)
+            return nullptr;
+
+        const ShaderLoader *const rl
+            = static_cast<const ShaderLoader *const>(v);
+        Shader *const resource = shaders.createShader(rl->type, rl->name);
+        return resource;
+    }
+};
+
+Resource *ResourceManager::getShader(const unsigned int type,
+                                     const std::string &name)
+{
+    ShaderLoader rl = { name, type };
+    return get("shader_" + name, &ShaderLoader::load, &rl);
 }
 #endif
 

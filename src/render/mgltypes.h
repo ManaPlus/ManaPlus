@@ -83,7 +83,7 @@ typedef void (APIENTRY *glDeleteBuffers_t) (GLsizei n, GLuint *buffers);
 typedef void (APIENTRY *glBindBuffer_t) (GLenum target, GLuint buffer);
 typedef void (APIENTRY *glBufferData_t) (GLenum target, GLsizeiptr size,
     const GLvoid *data, GLenum usage);
-typedef void (APIENTRY *glCreateShader_t) (GLenum shaderType);
+typedef GLuint (APIENTRY *glCreateShader_t) (GLenum shaderType);
 typedef void (APIENTRY *glDeleteShader_t) (GLenum shader);
 typedef void (APIENTRY *glGetShaderiv_t) (GLuint shader,
     GLenum pname, GLint *params);

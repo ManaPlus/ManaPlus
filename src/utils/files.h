@@ -69,6 +69,8 @@ namespace Files
     bool loadTextFile(const std::string &fileName,
                       StringVect &lines);
 
+    std::string loadTextFileString(const std::string &fileName);
+
     bool loadTextFileLocal(const std::string &fileName,
                            StringVect &lines);
 

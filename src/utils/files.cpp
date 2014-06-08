@@ -270,6 +270,22 @@ std::string Files::getPath(const std::string &file)
     return path;
 }
 
+std::string Files::loadTextFileString(const std::string &fileName)
+{
+    int contentsLength;
+    char *fileContents = static_cast<char*>(
+        PhysFs::loadFile(fileName, contentsLength));
+
+    if (!fileContents)
+    {
+        logger->log("Couldn't load text file: %s", fileName.c_str());
+        return std::string();
+    }
+    const std::string str = std::string(fileContents, contentsLength);
+    free(fileContents);
+    return str;
+}
+
 bool Files::loadTextFile(const std::string &fileName,
                          StringVect &lines)
 {
