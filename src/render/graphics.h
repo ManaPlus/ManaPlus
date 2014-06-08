@@ -308,7 +308,8 @@ class Graphics notfinal
         void setColor2(const Color &color)
         { mColor2 = color; }
 
-        void setColorAll(const Color &color, const Color &color2)
+        virtual void setColorAll(const Color &color,
+                                 const Color &color2)
         {
             mColor = color;
             mColor2 = color2;

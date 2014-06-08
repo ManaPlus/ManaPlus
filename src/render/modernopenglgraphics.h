@@ -59,6 +59,13 @@ class ModernOpenGLGraphics final : public Graphics
 
         void postInit() override final;
 
+        void setColor(const Color &color) override final;
+
+        void setColorAll(const Color &color,
+                         const Color &color2) override final;
+
+        void screenResized();
+
         #include "render/graphicsdef.hpp"
 
         #include "render/openglgraphicsdef.hpp"
@@ -80,6 +87,10 @@ class ModernOpenGLGraphics final : public Graphics
         GLuint mImageCached;
         float mFloatColor;
         int mMaxVertices;
+        GLuint mSimpleId;
+        GLuint mSimpleColor;
+        GLint mSimplePos;
+        GLuint mScreenUniform;
         bool mColorAlpha;
 #ifdef DEBUG_BIND_TEXTURE
         std::string mOldTexture;

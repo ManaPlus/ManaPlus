@@ -21,36 +21,17 @@
  */
 
 public:
-    void drawRectangle(const Rect &rect,
-                       const bool filled);
+    void setColor(const Color &color) override final
+    {
+        mColor = color;
+        mColor2 = color;
+        mColorAlpha = (color.a != 255);
+    }
 
-    bool drawNet(const int x1, const int y1,
-                 const int x2, const int y2,
-                 const int width, const int height) override final;
-
-    static void dumpSettings();
-
-    void prepareScreenshot() override final;
-
-    int getMemoryUsage() A_WARN_UNUSED;
-
-    void updateTextureFormat();
-
-    bool isAllowScale() const override final
-    { return true; }
-
-    void clearScreen() const override final;
-
-    void deleteArrays() override final;
-
-    static void bindTexture(const GLenum target, const GLuint texture);
-
-    static GLuint mLastImage;
-
-protected:
-    void setTexturingAndBlending(const bool enable);
-
-private:
-    void inline setColorAlpha(const float alpha);
-
-    void inline restoreColor();
+    void setColorAll(const Color &color,
+                     const Color &color2) override final
+    {
+        mColor = color;
+        mColor2 = color2;
+        mColorAlpha = (color.a != 255);
+    }

@@ -80,6 +80,8 @@ class NormalOpenGLGraphics final : public Graphics
 
         #include "render/openglgraphicsdef.hpp"
 
+        #include "render/openglgraphicsdef1.hpp"
+
         #include "render/openglgraphicsdefadvanced.hpp"
 
 #ifdef DEBUG_BIND_TEXTURE

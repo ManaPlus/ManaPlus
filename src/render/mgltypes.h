@@ -101,7 +101,7 @@ typedef void (APIENTRY *glAttachShader_t) (GLuint program, GLuint shader);
 typedef void (APIENTRY *glDetachShader_t) (GLuint program, GLuint shader);
 typedef void (APIENTRY *glGetAttachedShaders_t) (GLuint program,
     GLsizei maxCount, GLsizei *count, GLuint *shaders);
-typedef void (APIENTRY *glGetUniformLocation_t) (GLuint program,
+typedef GLint (APIENTRY *glGetUniformLocation_t) (GLuint program,
     const GLchar *name);
 typedef void (APIENTRY *glGetActiveUniform_t) (GLuint program, GLuint index,
     GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);

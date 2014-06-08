@@ -76,6 +76,8 @@ class NullOpenGLGraphics final : public Graphics
 
         #include "render/openglgraphicsdef.hpp"
 
+        #include "render/openglgraphicsdef1.hpp"
+
         #include "render/openglgraphicsdefadvanced.hpp"
 
     private:

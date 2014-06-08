@@ -68,6 +68,8 @@ class MobileOpenGLGraphics final : public Graphics
 
         #include "render/graphicsdef.hpp"
 
+        #include "render/openglgraphicsdef1.hpp"
+
         #include "render/openglgraphicsdef.hpp"
 
         #include "render/openglgraphicsdefadvanced.hpp"

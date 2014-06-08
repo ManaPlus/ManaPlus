@@ -54,6 +54,8 @@ class SafeOpenGLGraphics final : public Graphics
 
         #include "render/openglgraphicsdef.hpp"
 
+        #include "render/openglgraphicsdef1.hpp"
+
     private:
         bool mTexture;
         bool mIsByteColor;

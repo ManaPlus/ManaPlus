@@ -38,6 +38,9 @@ class ShaderProgram final : public Resource
 
         A_DELETE_COPY(ShaderProgram)
 
+        unsigned int getProgramId() const
+        { return mProgramId; }
+
     protected:
         unsigned int mProgramId;
         Shader *mVertex;
