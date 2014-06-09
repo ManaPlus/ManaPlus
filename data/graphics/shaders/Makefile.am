@@ -2,7 +2,9 @@ shadersdir = $(pkgdatadir)/data/graphics/shaders
 
 shaders_DATA =				\
 	simple_frag.glsl		\
-	simple_vertex.glsl
+	simple_vertex.glsl		\
+	texture_frag.glsl		\
+	texture_vertex.glsl
 
 EXTRA_DIST =				\
 	$(shaders_DATA)			\
