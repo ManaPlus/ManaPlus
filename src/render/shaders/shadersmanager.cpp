@@ -118,4 +118,11 @@ ShaderProgram *ShadersManager::getSimpleProgram()
     return createProgram(dir + paths.getStringValue("simpleVertexShader"),
         dir + paths.getStringValue("simpleFragmentShader"));
 }
+
+ShaderProgram *ShadersManager::getTextureProgram()
+{
+    const std::string dir = paths.getStringValue("shaders");
+    return createProgram(dir + paths.getStringValue("textureVertexShader"),
+        dir + paths.getStringValue("textureFragmentShader"));
+}
 #endif

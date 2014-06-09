@@ -273,7 +273,8 @@ void Client::gameInit()
     config.incValue("runcount");
 
 #ifndef ANDROID
-    ConfigManager::storeSafeParameters();
+    if (settings.options.test.empty())
+        ConfigManager::storeSafeParameters();
 #endif
 
     const ResourceManager *const resman = ResourceManager::getInstance();

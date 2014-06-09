@@ -73,11 +73,17 @@ class ModernOpenGLGraphics final : public Graphics
         #include "render/openglgraphicsdefadvanced.hpp"
 
     private:
+        void drawQuad(const Image *const image,
+                      const int srcX, const int srcY,
+                      const int dstX, const int dstY,
+                      const int width, const int height);
+
         GLfloat *mFloatTexArray;
         GLshort *mShortVertArray;
         GLfloat *mFloatTexArrayCached;
         GLshort *mShortVertArrayCached;
         ShaderProgram *mSimpleProgram;
+        ShaderProgram *mTextureProgram;
         float mAlphaCached;
         int mVpCached;
         bool mTexture;
@@ -87,11 +93,16 @@ class ModernOpenGLGraphics final : public Graphics
         GLuint mImageCached;
         float mFloatColor;
         int mMaxVertices;
-        GLuint mSimpleId;
-        GLuint mSimpleColor;
-        GLint mSimplePos;
-        GLuint mScreenUniform;
+        GLuint mSimpleProgramId;
+        GLuint mTextureProgramId;
+        GLuint mSimpleColorUniform;
+        GLint mSimplePosAttrib;
+        GLint mTexturePosAttrib;
+        GLint mTexAttrib;
+        GLuint mSimpleScreenUniform;
+        GLuint mTextureScreenUniform;
         bool mColorAlpha;
+        bool mTextureDraw;
 #ifdef DEBUG_BIND_TEXTURE
         std::string mOldTexture;
         unsigned mOldTextureId;

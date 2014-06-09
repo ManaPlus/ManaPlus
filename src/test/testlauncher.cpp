@@ -379,7 +379,10 @@ int TestLauncher::testDraw()
     mainGraphics->setColor(Color(0xFFU, 0xFFU, 0x00U, 0xFFU));
     mainGraphics->drawRectangle(Rect(0, 0, 400, 200));
 
-    mainGraphics->setColor(Color(0x00U, 0x00U, 0xFFU, 0x90U));
+    mainGraphics->setColor(Color(0xFFU, 0x00U, 0x00U, 0xB0U));
+    mainGraphics->drawImage(img[0], 190, 403);
+
+    mainGraphics->setColor(Color(0x80U, 0x00U, 0xA0U, 0x90U));
     mainGraphics->fillRectangle(Rect(200, 100, 300, 300));
     mainGraphics->popClipArea();
 
