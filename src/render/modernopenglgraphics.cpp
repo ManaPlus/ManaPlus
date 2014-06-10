@@ -44,6 +44,38 @@
 
 #include "debug.h"
 
+#define vertFill2D(var, x1, y1, x2, y2, dstX, dstY, w, h) \
+    var[vp + 0] = dstX; \
+    var[vp + 1] = dstY; \
+    var[vp + 2] = x1; \
+    var[vp + 3] = y1; \
+    \
+    var[vp + 4] = dstX + w; \
+    var[vp + 5] = dstY; \
+    var[vp + 6] = x2; \
+    var[vp + 7] = y1; \
+    \
+    var[vp + 8] = dstX + w; \
+    var[vp + 9] = dstY + h; \
+    var[vp + 10] = x2; \
+    var[vp + 11] = y2; \
+    \
+    var[vp + 12] = dstX; \
+    var[vp + 13] = dstY; \
+    var[vp + 14] = x1; \
+    var[vp + 15] = y1; \
+    \
+    var[vp + 16] = dstX; \
+    var[vp + 17] = dstY + h; \
+    var[vp + 18] = x1; \
+    var[vp + 19] = y2; \
+    \
+    var[vp + 20] = dstX + w; \
+    var[vp + 21] = dstY + h; \
+    var[vp + 22] = x2; \
+    var[vp + 23] = y2;
+
+
 GLuint ModernOpenGLGraphics::mLastImage = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int ModernOpenGLGraphics::mDrawCalls = 0;
@@ -340,7 +372,65 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *const image,
                                              const int x, const int y,
                                              const int w, const int h)
 {
+    if (!image)
+        return;
 
+    const SDL_Rect &imageRect = image->mBounds;
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
+    const int iw = imageRect.w;
+    const int ih = imageRect.h;
+
+    if (iw == 0 || ih == 0)
+        return;
+
+    const float tw = static_cast<float>(image->mTexWidth);
+    const float th = static_cast<float>(image->mTexHeight);
+    const ClipRect &clipArea = mClipStack.top();
+    const int x2 = x + clipArea.xOffset;
+    const int y2 = y + clipArea.yOffset;
+
+    setColorAlpha(image->mAlpha);
+
+#ifdef DEBUG_BIND_TEXTURE
+    debugBindTexture(image);
+#endif
+    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+
+    setTexturingAndBlending(true);
+
+    unsigned int vp = 0;
+    const unsigned int vLimit = mMaxVertices * 4;
+
+    const float texX1 = static_cast<float>(srcX) / tw;
+    const float texY1 = static_cast<float>(srcY) / th;
+
+    for (int py = 0; py < h; py += ih)
+    {
+        const int height = (py + ih >= h) ? h - py : ih;
+        const float texY2 = static_cast<float>(srcY + height) / th;
+        const int dstY = y2 + py;
+        for (int px = 0; px < w; px += iw)
+        {
+            const int width = (px + iw >= w) ? w - px : iw;
+            const int dstX = x2 + px;
+
+            const float texX2 = static_cast<float>(srcX + width) / tw;
+
+            vertFill2D(mFloatArray,
+                texX1, texY1, texX2, texY2,
+                dstX, dstY, width, height);
+
+            if (vp >= vLimit)
+            {
+                drawTriangleArray(vp);
+                vp = 0;
+            }
+            vp += 24;
+        }
+    }
+    if (vp > 0)
+        drawTriangleArray(vp);
 }
 
 void ModernOpenGLGraphics::drawRescaledPattern(const Image *const image,
@@ -752,6 +842,16 @@ void ModernOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
 void ModernOpenGLGraphics::clearScreen() const
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+}
+
+void ModernOpenGLGraphics::drawTriangleArray(const int size)
+{
+    mglBufferData(GL_ARRAY_BUFFER, size, mFloatArray, GL_DYNAMIC_DRAW);
+    mglVertexAttribPointer(mTexturePosAttrib, 2, GL_FLOAT, GL_FALSE,
+        4 * sizeof(GLfloat), 0);
+    mglVertexAttribPointer(mTexAttrib, 2, GL_FLOAT, GL_FALSE,
+        4 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
+    glDrawArrays(GL_TRIANGLES, 0, size / 2);;
 }
 
 #ifdef DEBUG_BIND_TEXTURE

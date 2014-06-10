@@ -73,10 +73,12 @@ class ModernOpenGLGraphics final : public Graphics
         #include "render/openglgraphicsdefadvanced.hpp"
 
     private:
-        void drawQuad(const Image *const image,
-                      const int srcX, const int srcY,
-                      const int dstX, const int dstY,
-                      const int width, const int height);
+        inline void drawQuad(const Image *const image,
+                             const int srcX, const int srcY,
+                             const int dstX, const int dstY,
+                             const int width, const int height);
+
+        inline void drawTriangleArray(const int size);
 
         GLfloat *mFloatArray;
         GLfloat *mFloatArrayCached;
