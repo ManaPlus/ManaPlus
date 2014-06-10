@@ -667,11 +667,6 @@ void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
             mglUseProgram(mTextureProgramId);
             mglEnableVertexAttribArray(mTexturePosAttrib);
             mglEnableVertexAttribArray(mTexAttrib);
-/*
-            mglUniform2f(mTextureScreenUniform,
-                static_cast<float>(mWidth) / 2.0f,
-                static_cast<float>(mHeight) / 2.0f);
-*/
         }
         if (!mAlpha)
         {
@@ -688,16 +683,6 @@ void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
             mglDisableVertexAttribArray(mTexAttrib);
             mglUseProgram(mSimpleProgramId);
             mglEnableVertexAttribArray(mSimplePosAttrib);
-/*
-            mglUniform2f(mSimpleScreenUniform,
-                static_cast<float>(mWidth) / 2.0f,
-                static_cast<float>(mHeight) / 2.0f);
-            mglUniform4f(mSimpleColorUniform,
-                static_cast<float>(mColor.r) / 255.0F,
-                static_cast<float>(mColor.g) / 255.0F,
-                static_cast<float>(mColor.b) / 255.0F,
-                static_cast<float>(mColor.a) / 255.0F);
-*/
         }
         if (mAlpha && !mColorAlpha)
         {
