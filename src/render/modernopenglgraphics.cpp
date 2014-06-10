@@ -166,10 +166,13 @@ void ModernOpenGLGraphics::postInit()
     mglEnableVertexAttribArray(mSimplePosAttrib);
     mSimpleColorUniform = mglGetUniformLocation(mSimpleProgramId, "color");
     mSimpleScreenUniform = mglGetUniformLocation(mSimpleProgramId, "screen");
+    mglVertexAttribFormat(mSimplePosAttrib, 2, GL_FLOAT, GL_FALSE, 0);
 
     mTexturePosAttrib = mglGetAttribLocation(mTextureProgramId, "position");
     mTexAttrib = mglGetAttribLocation(mTextureProgramId, "texcoord");
     mTextureScreenUniform = mglGetUniformLocation(mTextureProgramId, "screen");
+    mglVertexAttribFormat(mTexturePosAttrib, 2, GL_FLOAT, GL_FALSE, 0);
+    mglVertexAttribFormat(mTexAttrib, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat));
 
     screenResized();
 }
@@ -284,15 +287,14 @@ void ModernOpenGLGraphics::drawQuad(const Image *const image,
         x2, y2, texX2, texY2
     };
 
+    mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLfloat));
+    mglBindVertexBuffer(1, mVbo, 0, 4 * sizeof(GLfloat));
+
+    mglVertexAttribBinding(mTexturePosAttrib, 0);
+    mglVertexAttribBinding(mTexAttrib, 1);
+
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_DYNAMIC_DRAW);
-
-//    mglEnableVertexAttribArray(mTexturePosAttrib);
-    mglVertexAttribPointer(mTexturePosAttrib, 2, GL_FLOAT, GL_FALSE,
-        4 * sizeof(GLfloat), 0);
-//    mglEnableVertexAttribArray(mTexAttrib);
-    mglVertexAttribPointer(mTexAttrib, 2, GL_FLOAT, GL_FALSE,
-        4 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
 
 #ifdef DEBUG_DRAW_CALLS
     MobileOpenGLGraphics::mDrawCalls ++;
@@ -712,10 +714,13 @@ void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
         x2, y2,
         x2, y1
     };
+
+    mglBindVertexBuffer(3, mVbo, 0, 2 * sizeof(GLfloat));
+
+    mglVertexAttribBinding(mSimplePosAttrib, 3);
+
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_DYNAMIC_DRAW);
-//    mglEnableVertexAttribArray(mSimplePosAttrib);
-    mglVertexAttribPointer(mSimplePosAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
     glDrawArrays(GL_LINE_LOOP, 0, 4);
 }
@@ -735,10 +740,13 @@ void ModernOpenGLGraphics::fillRectangle(const Rect& rect)
         x1, y2,
         x2, y2
     };
+
+    mglBindVertexBuffer(3, mVbo, 0, 2 * sizeof(GLfloat));
+
+    mglVertexAttribBinding(mSimplePosAttrib, 3);
+
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_DYNAMIC_DRAW);
-//    mglEnableVertexAttribArray(mSimplePosAttrib);
-    mglVertexAttribPointer(mSimplePosAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
@@ -846,11 +854,14 @@ void ModernOpenGLGraphics::clearScreen() const
 
 void ModernOpenGLGraphics::drawTriangleArray(const int size)
 {
+    mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLfloat));
+    mglBindVertexBuffer(1, mVbo, 0, 4 * sizeof(GLfloat));
+
+    mglVertexAttribBinding(mTexturePosAttrib, 0);
+    mglVertexAttribBinding(mTexAttrib, 1);
+
     mglBufferData(GL_ARRAY_BUFFER, size, mFloatArray, GL_DYNAMIC_DRAW);
-    mglVertexAttribPointer(mTexturePosAttrib, 2, GL_FLOAT, GL_FALSE,
-        4 * sizeof(GLfloat), 0);
-    mglVertexAttribPointer(mTexAttrib, 2, GL_FLOAT, GL_FALSE,
-        4 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
+
     glDrawArrays(GL_TRIANGLES, 0, size / 2);;
 }
 
