@@ -124,12 +124,12 @@ void ModernOpenGLGraphics::postInit()
     {
         logger->log("Shaders compilation done.");
         mglUseProgram(mSimpleProgramId);
-        mSimplePosAttrib = mglGetAttribLocation(mSimpleProgramId, "simplePos");
+        mSimplePosAttrib = mglGetAttribLocation(mSimpleProgramId, "position");
         mglEnableVertexAttribArray(mSimplePosAttrib);
-        mSimpleColorUniform = mglGetUniformLocation(mSimpleProgramId, "simpleColor");
+        mSimpleColorUniform = mglGetUniformLocation(mSimpleProgramId, "color");
         mSimpleScreenUniform = mglGetUniformLocation(mSimpleProgramId, "screen");
 
-        mTexturePosAttrib = mglGetAttribLocation(mTextureProgramId, "texturePos");
+        mTexturePosAttrib = mglGetAttribLocation(mTextureProgramId, "position");
         mTexAttrib = mglGetAttribLocation(mTextureProgramId, "texcoord");
         mTextureScreenUniform = mglGetUniformLocation(mTextureProgramId, "screen");
 
