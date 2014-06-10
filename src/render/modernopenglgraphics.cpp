@@ -188,25 +188,28 @@ void ModernOpenGLGraphics::setColor(const Color &color)
 void ModernOpenGLGraphics::setColorAll(const Color &color,
                                        const Color &color2)
 {
-    mColor = color;
     mColor2 = color2;
     mColorAlpha = (color.a != 255);
-    if (mTextureDraw)
+    if (mColor != color)
     {
-        mglProgramUniform4f(mSimpleProgramId,
-            mSimpleColorUniform,
-            static_cast<float>(color.r) / 255.0F,
-            static_cast<float>(color.g) / 255.0F,
-            static_cast<float>(color.b) / 255.0F,
-            static_cast<float>(color.a) / 255.0F);
-    }
-    else
-    {
-        mglUniform4f(mSimpleColorUniform,
-            static_cast<float>(color.r) / 255.0F,
-            static_cast<float>(color.g) / 255.0F,
-            static_cast<float>(color.b) / 255.0F,
-            static_cast<float>(color.a) / 255.0F);
+        mColor = color;
+        if (mTextureDraw)
+        {
+            mglProgramUniform4f(mSimpleProgramId,
+                mSimpleColorUniform,
+                static_cast<float>(color.r) / 255.0F,
+                static_cast<float>(color.g) / 255.0F,
+                static_cast<float>(color.b) / 255.0F,
+                static_cast<float>(color.a) / 255.0F);
+        }
+        else
+        {
+            mglUniform4f(mSimpleColorUniform,
+                static_cast<float>(color.r) / 255.0F,
+                static_cast<float>(color.g) / 255.0F,
+                static_cast<float>(color.b) / 255.0F,
+                static_cast<float>(color.a) / 255.0F);
+        }
     }
 }
 
