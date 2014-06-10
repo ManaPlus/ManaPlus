@@ -78,10 +78,8 @@ class ModernOpenGLGraphics final : public Graphics
                       const int dstX, const int dstY,
                       const int width, const int height);
 
-        GLfloat *mFloatTexArray;
-        GLshort *mShortVertArray;
-        GLfloat *mFloatTexArrayCached;
-        GLshort *mShortVertArrayCached;
+        GLfloat *mFloatArray;
+        GLfloat *mFloatArrayCached;
         ShaderProgram *mSimpleProgram;
         ShaderProgram *mTextureProgram;
         float mAlphaCached;

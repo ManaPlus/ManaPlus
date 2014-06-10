@@ -51,10 +51,8 @@ unsigned int ModernOpenGLGraphics::mLastDrawCalls = 0;
 #endif
 
 ModernOpenGLGraphics::ModernOpenGLGraphics() :
-    mFloatTexArray(nullptr),
-    mShortVertArray(nullptr),
-    mFloatTexArrayCached(nullptr),
-    mShortVertArrayCached(nullptr),
+    mFloatArray(nullptr),
+    mFloatArrayCached(nullptr),
     mSimpleProgram(nullptr),
     mTextureProgram(nullptr),
     mAlphaCached(1.0F),
@@ -103,14 +101,10 @@ void ModernOpenGLGraphics::initArrays(const int vertCount)
     // need alocate small size, after if limit reached reallocate to double size
     const size_t sz = mMaxVertices * 4 + 30;
     vertexBufSize = mMaxVertices;
-    if (!mFloatTexArray)
-        mFloatTexArray = new GLfloat[sz];
-    if (!mShortVertArray)
-        mShortVertArray = new GLshort[sz];
-    if (!mFloatTexArrayCached)
-        mFloatTexArrayCached = new GLfloat[sz];
-    if (!mShortVertArrayCached)
-        mShortVertArrayCached = new GLshort[sz];
+    if (!mFloatArray)
+        mFloatArray = new GLfloat[sz];
+    if (!mFloatArrayCached)
+        mFloatArrayCached = new GLfloat[sz];
 }
 
 void ModernOpenGLGraphics::postInit()
@@ -158,14 +152,10 @@ void ModernOpenGLGraphics::deleteArrays()
 
 void ModernOpenGLGraphics::deleteArraysInternal()
 {
-    delete [] mFloatTexArray;
-    mFloatTexArray = nullptr;
-    delete [] mShortVertArray;
-    mShortVertArray = nullptr;
-    delete [] mFloatTexArrayCached;
-    mFloatTexArrayCached = nullptr;
-    delete [] mShortVertArrayCached;
-    mShortVertArrayCached = nullptr;
+    delete [] mFloatArray;
+    mFloatArray = nullptr;
+    delete [] mFloatArrayCached;
+    mFloatArrayCached = nullptr;
 }
 
 bool ModernOpenGLGraphics::setVideoMode(const int w, const int h,
@@ -340,6 +330,7 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *const image,
                                              const int x, const int y,
                                              const int w, const int h)
 {
+
 }
 
 void ModernOpenGLGraphics::drawRescaledPattern(const Image *const image,
