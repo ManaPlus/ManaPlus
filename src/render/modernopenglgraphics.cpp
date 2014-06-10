@@ -297,9 +297,12 @@ bool ModernOpenGLGraphics::drawImageInline(const Image *const image,
     bindTexture(GL_TEXTURE_2D, image->mGLImage);
     setTexturingAndBlending(true);
 
+    const ClipRect &clipArea = mClipStack.top();
     const SDL_Rect &imageRect = image->mBounds;
-    drawQuad(image, imageRect.x, imageRect.y,
-        dstX, dstY, imageRect.w, imageRect.h);
+    drawQuad(image,
+        imageRect.x, imageRect.y,
+        dstX + clipArea.xOffset, dstY + clipArea.yOffset,
+        imageRect.w, imageRect.h);
     return true;
 }
 
