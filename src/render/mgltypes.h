@@ -123,6 +123,14 @@ typedef void (APIENTRY *glUniform4f_t) (GLint location,
 typedef GLenum (APIENTRY *glCheckFramebufferStatus_t) (GLenum target);
 typedef void (APIENTRY *glGetProgramInfoLog_t) (GLuint program,
     GLsizei maxLength, GLsizei *length, GLchar *infoLog);
+typedef void (APIENTRY *glProgramUniform1f_t) (GLuint program,
+    GLint location, GLfloat v0);
+typedef void (APIENTRY *glProgramUniform2f_t) (GLuint program,
+    GLint location, GLfloat v0, GLfloat v1);
+typedef void (APIENTRY *glProgramUniform3f_t) (GLuint program,
+    GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+typedef void (APIENTRY *glProgramUniform4f_t) (GLuint program,
+    GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,

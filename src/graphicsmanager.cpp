@@ -1021,6 +1021,14 @@ void GraphicsManager::initOpenGLFunctions()
         {
             logger->log1("GL_ARB_separate_shader_objects not supported");
         }
+        if (checkGLVersion(4, 1)
+            || supportExtension("GL_ARB_separate_shader_objects"))
+        {
+            assignFunction(glProgramUniform1f, "glProgramUniform1f");
+            assignFunction(glProgramUniform2f, "glProgramUniform2f");
+            assignFunction(glProgramUniform3f, "glProgramUniform3f");
+            assignFunction(glProgramUniform4f, "glProgramUniform4f");
+        }
     }
     else
     {

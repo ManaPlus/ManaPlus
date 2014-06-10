@@ -84,6 +84,10 @@ defName(glUniform3f);
 defName(glUniform4f);
 defName(glCheckFramebufferStatus);
 defName(glGetProgramInfoLog);
+defName(glProgramUniform1f);
+defName(glProgramUniform2f);
+defName(glProgramUniform3f);
+defName(glProgramUniform4f);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);
