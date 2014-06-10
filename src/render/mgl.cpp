@@ -88,6 +88,9 @@ defName(glProgramUniform1f);
 defName(glProgramUniform2f);
 defName(glProgramUniform3f);
 defName(glProgramUniform4f);
+defName(glBindVertexBuffer);
+defName(glVertexAttribBinding);
+defName(glVertexAttribFormat);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);

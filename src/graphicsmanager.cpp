@@ -1029,6 +1029,13 @@ void GraphicsManager::initOpenGLFunctions()
             assignFunction(glProgramUniform3f, "glProgramUniform3f");
             assignFunction(glProgramUniform4f, "glProgramUniform4f");
         }
+        if (checkGLVersion(4, 3)
+            || supportExtension("GL_ARB_vertex_attrib_binding"))
+        {
+            assignFunction(glBindVertexBuffer, "glBindVertexBuffer");
+            assignFunction(glVertexAttribBinding, "glVertexAttribBinding");
+            assignFunction(glVertexAttribFormat, "glVertexAttribFormat");
+        }
     }
     else
     {

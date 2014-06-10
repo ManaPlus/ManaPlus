@@ -131,6 +131,12 @@ typedef void (APIENTRY *glProgramUniform3f_t) (GLuint program,
     GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
 typedef void (APIENTRY *glProgramUniform4f_t) (GLuint program,
     GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+typedef void (APIENTRY *glBindVertexBuffer_t) (GLuint bindingindex,
+    GLuint buffer, GLintptr offset, GLintptr stride);
+typedef void (APIENTRY *glVertexAttribBinding_t) (GLuint attribindex,
+    GLuint bindingindex);
+typedef void (APIENTRY *glVertexAttribFormat_t) (GLuint attribindex,
+    GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,
