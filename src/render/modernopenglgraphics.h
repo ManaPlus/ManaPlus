@@ -100,6 +100,7 @@ class ModernOpenGLGraphics final : public Graphics
         GLuint mSimpleScreenUniform;
         GLuint mTextureScreenUniform;
         GLuint mVao;
+        GLuint mVbo;
         bool mColorAlpha;
         bool mTextureDraw;
 #ifdef DEBUG_BIND_TEXTURE

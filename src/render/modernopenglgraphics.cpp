@@ -72,6 +72,7 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
     mSimpleScreenUniform(0U),
     mTextureScreenUniform(0U),
     mVao(0U),
+    mVbo(0U),
     mColorAlpha(false),
     mTextureDraw(false),
 #ifdef DEBUG_BIND_TEXTURE
@@ -89,6 +90,8 @@ ModernOpenGLGraphics::~ModernOpenGLGraphics()
     deleteArraysInternal();
     if (mSimpleProgram)
         mSimpleProgram->decRef();
+    if (mVbo)
+        mglDeleteBuffers(1, &mVbo);
     if (mVao)
         mglDeleteVertexArrays(1, &mVao);
 }
@@ -114,6 +117,8 @@ void ModernOpenGLGraphics::postInit()
 {
     mglGenVertexArrays(1, &mVao);
     mglBindVertexArray(mVao);
+    mglGenBuffers(1, &mVbo);
+    mglBindBuffer(GL_ARRAY_BUFFER, mVbo);
 
     logger->log("Compiling shaders");
     mSimpleProgram = shaders.getSimpleProgram();
@@ -244,9 +249,6 @@ void ModernOpenGLGraphics::drawQuad(const Image *const image,
         x2, y2, texX2, texY2
     };
 
-    GLuint vbo;
-    mglGenBuffers(1, &vbo);
-    mglBindBuffer(GL_ARRAY_BUFFER, vbo);
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_DYNAMIC_DRAW);
 
@@ -617,17 +619,12 @@ void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
         x2, y2,
         x2, y1
     };
-    GLuint vbo;
-    mglGenBuffers(1, &vbo);
-    mglBindBuffer(GL_ARRAY_BUFFER, vbo);
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_DYNAMIC_DRAW);
 //    mglEnableVertexAttribArray(mSimplePosAttrib);
     mglVertexAttribPointer(mSimplePosAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
     glDrawArrays(GL_LINE_LOOP, 0, 4);
-
-    mglDeleteBuffers(1, &vbo);
 }
 
 void ModernOpenGLGraphics::fillRectangle(const Rect& rect)
@@ -645,17 +642,12 @@ void ModernOpenGLGraphics::fillRectangle(const Rect& rect)
         x1, y2,
         x2, y2
     };
-    GLuint vbo;
-    mglGenBuffers(1, &vbo);
-    mglBindBuffer(GL_ARRAY_BUFFER, vbo);
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_DYNAMIC_DRAW);
 //    mglEnableVertexAttribArray(mSimplePosAttrib);
     mglVertexAttribPointer(mSimplePosAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
-    mglDeleteBuffers(1, &vbo);
 }
 
 void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
