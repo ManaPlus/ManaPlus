@@ -137,10 +137,12 @@ void ModernOpenGLGraphics::postInit()
 
 void ModernOpenGLGraphics::screenResized()
 {
-    mglUniform2f(mSimpleScreenUniform,
+    mglProgramUniform2f(mSimpleProgramId,
+        mSimpleScreenUniform,
         static_cast<float>(mWidth) / 2.0f,
         static_cast<float>(mHeight) / 2.0f);
-    mglUniform2f(mTextureScreenUniform,
+    mglProgramUniform2f(mTextureProgramId,
+        mTextureScreenUniform,
         static_cast<float>(mWidth) / 2.0f,
         static_cast<float>(mHeight) / 2.0f);
 }
@@ -182,9 +184,10 @@ void ModernOpenGLGraphics::setColorAll(const Color &color,
     mColor = color;
     mColor2 = color2;
     mColorAlpha = (color.a != 255);
-    if (mColorAlpha)
+    if (mTextureDraw)
     {
-        mglUniform4f(mSimpleColorUniform,
+        mglProgramUniform4f(mSimpleProgramId,
+            mSimpleColorUniform,
             static_cast<float>(color.r) / 255.0F,
             static_cast<float>(color.g) / 255.0F,
             static_cast<float>(color.b) / 255.0F,
@@ -196,7 +199,7 @@ void ModernOpenGLGraphics::setColorAll(const Color &color,
             static_cast<float>(color.r) / 255.0F,
             static_cast<float>(color.g) / 255.0F,
             static_cast<float>(color.b) / 255.0F,
-            1.0F);
+            static_cast<float>(color.a) / 255.0F);
     }
 }
 
@@ -664,9 +667,11 @@ void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
             mglUseProgram(mTextureProgramId);
             mglEnableVertexAttribArray(mTexturePosAttrib);
             mglEnableVertexAttribArray(mTexAttrib);
+/*
             mglUniform2f(mTextureScreenUniform,
                 static_cast<float>(mWidth) / 2.0f,
                 static_cast<float>(mHeight) / 2.0f);
+*/
         }
         if (!mAlpha)
         {
@@ -683,6 +688,7 @@ void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
             mglDisableVertexAttribArray(mTexAttrib);
             mglUseProgram(mSimpleProgramId);
             mglEnableVertexAttribArray(mSimplePosAttrib);
+/*
             mglUniform2f(mSimpleScreenUniform,
                 static_cast<float>(mWidth) / 2.0f,
                 static_cast<float>(mHeight) / 2.0f);
@@ -691,6 +697,7 @@ void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
                 static_cast<float>(mColor.g) / 255.0F,
                 static_cast<float>(mColor.b) / 255.0F,
                 static_cast<float>(mColor.a) / 255.0F);
+*/
         }
         if (mAlpha && !mColorAlpha)
         {
