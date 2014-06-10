@@ -71,6 +71,7 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
     mTexAttrib(0),
     mSimpleScreenUniform(0U),
     mTextureScreenUniform(0U),
+    mVao(0U),
     mColorAlpha(false),
     mTextureDraw(false),
 #ifdef DEBUG_BIND_TEXTURE
@@ -88,6 +89,8 @@ ModernOpenGLGraphics::~ModernOpenGLGraphics()
     deleteArraysInternal();
     if (mSimpleProgram)
         mSimpleProgram->decRef();
+    if (mVao)
+        mglDeleteVertexArrays(1, &mVao);
 }
 
 void ModernOpenGLGraphics::initArrays(const int vertCount)
@@ -109,30 +112,29 @@ void ModernOpenGLGraphics::initArrays(const int vertCount)
 
 void ModernOpenGLGraphics::postInit()
 {
+    mglGenVertexArrays(1, &mVao);
+    mglBindVertexArray(mVao);
+
     logger->log("Compiling shaders");
     mSimpleProgram = shaders.getSimpleProgram();
     mSimpleProgramId = mSimpleProgram->getProgramId();
     mTextureProgram = shaders.getTextureProgram();
     mTextureProgramId = mTextureProgram->getProgramId();
-    if (mSimpleProgram && mTextureProgram)
-    {
-        logger->log("Shaders compilation done.");
-        mglUseProgram(mSimpleProgramId);
-        mSimplePosAttrib = mglGetAttribLocation(mSimpleProgramId, "position");
-        mglEnableVertexAttribArray(mSimplePosAttrib);
-        mSimpleColorUniform = mglGetUniformLocation(mSimpleProgramId, "color");
-        mSimpleScreenUniform = mglGetUniformLocation(mSimpleProgramId, "screen");
-
-        mTexturePosAttrib = mglGetAttribLocation(mTextureProgramId, "position");
-        mTexAttrib = mglGetAttribLocation(mTextureProgramId, "texcoord");
-        mTextureScreenUniform = mglGetUniformLocation(mTextureProgramId, "screen");
-
-        screenResized();
-    }
-    else
-    {
+    if (!mSimpleProgram || !mTextureProgram)
         logger->error("Shaders compilation error.");
-    }
+
+    logger->log("Shaders compilation done.");
+    mglUseProgram(mSimpleProgramId);
+    mSimplePosAttrib = mglGetAttribLocation(mSimpleProgramId, "position");
+    mglEnableVertexAttribArray(mSimplePosAttrib);
+    mSimpleColorUniform = mglGetUniformLocation(mSimpleProgramId, "color");
+    mSimpleScreenUniform = mglGetUniformLocation(mSimpleProgramId, "screen");
+
+    mTexturePosAttrib = mglGetAttribLocation(mTextureProgramId, "position");
+    mTexAttrib = mglGetAttribLocation(mTextureProgramId, "texcoord");
+    mTextureScreenUniform = mglGetUniformLocation(mTextureProgramId, "screen");
+
+    screenResized();
 }
 
 void ModernOpenGLGraphics::screenResized()
