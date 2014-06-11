@@ -100,7 +100,6 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
     mSimpleColorUniform(0U),
     mSimplePosAttrib(0),
     mTexturePosAttrib(0),
-    mTexAttrib(0),
     mSimpleScreenUniform(0U),
     mTextureScreenUniform(0U),
     mVao(0U),
@@ -169,10 +168,8 @@ void ModernOpenGLGraphics::postInit()
     mglVertexAttribFormat(mSimplePosAttrib, 2, GL_FLOAT, GL_FALSE, 0);
 
     mTexturePosAttrib = mglGetAttribLocation(mTextureProgramId, "position");
-    mTexAttrib = mglGetAttribLocation(mTextureProgramId, "texcoord");
     mTextureScreenUniform = mglGetUniformLocation(mTextureProgramId, "screen");
-    mglVertexAttribFormat(mTexturePosAttrib, 2, GL_FLOAT, GL_FALSE, 0);
-    mglVertexAttribFormat(mTexAttrib, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat));
+    mglVertexAttribFormat(mTexturePosAttrib, 4, GL_FLOAT, GL_FALSE, 0);
 
     screenResized();
 }
@@ -288,11 +285,7 @@ void ModernOpenGLGraphics::drawQuad(const Image *const image,
     };
 
     mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLfloat));
-    mglBindVertexBuffer(1, mVbo, 0, 4 * sizeof(GLfloat));
-
     mglVertexAttribBinding(mTexturePosAttrib, 0);
-    mglVertexAttribBinding(mTexAttrib, 1);
-
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_DYNAMIC_DRAW);
 
@@ -761,7 +754,6 @@ void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
             mglDisableVertexAttribArray(mSimplePosAttrib);
             mglUseProgram(mTextureProgramId);
             mglEnableVertexAttribArray(mTexturePosAttrib);
-            mglEnableVertexAttribArray(mTexAttrib);
         }
         if (!mAlpha)
         {
@@ -775,7 +767,6 @@ void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
         {
             mTextureDraw = false;
             mglDisableVertexAttribArray(mTexturePosAttrib);
-            mglDisableVertexAttribArray(mTexAttrib);
             mglUseProgram(mSimpleProgramId);
             mglEnableVertexAttribArray(mSimplePosAttrib);
         }
@@ -855,13 +846,8 @@ void ModernOpenGLGraphics::clearScreen() const
 void ModernOpenGLGraphics::drawTriangleArray(const int size)
 {
     mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLfloat));
-    mglBindVertexBuffer(1, mVbo, 0, 4 * sizeof(GLfloat));
-
     mglVertexAttribBinding(mTexturePosAttrib, 0);
-    mglVertexAttribBinding(mTexAttrib, 1);
-
     mglBufferData(GL_ARRAY_BUFFER, size, mFloatArray, GL_DYNAMIC_DRAW);
-
     glDrawArrays(GL_TRIANGLES, 0, size / 2);;
 }
 
