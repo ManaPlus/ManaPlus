@@ -271,13 +271,40 @@ void ModernOpenGLGraphics::drawQuad(const Image *const image,
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-static inline void drawRescaledQuad(const Image *const image,
-                                    const int srcX, const int srcY,
-                                    const int dstX, const int dstY,
-                                    const int width, const int height,
-                                    const int desiredWidth,
-                                    const int desiredHeight)
+void ModernOpenGLGraphics::drawRescaledQuad(const Image *const image,
+                                            const int srcX, const int srcY,
+                                            const int dstX, const int dstY,
+                                            const int width, const int height,
+                                            const int desiredWidth,
+                                            const int desiredHeight)
 {
+    const float tw = static_cast<float>(image->mTexWidth);
+    const float th = static_cast<float>(image->mTexHeight);
+    // Find OpenGL normalized texture coordinates.
+    const float texX1 = static_cast<float>(srcX) / tw;
+    const float texY1 = static_cast<float>(srcY) / th;
+    const float texX2 = static_cast<float>(srcX + width) / tw;
+    const float texY2 = static_cast<float>(srcY + height) / th;
+
+    const float x1 = static_cast<GLfloat>(dstX);
+    const float y1 = static_cast<GLfloat>(dstY);
+    const float x2 = x1 + static_cast<GLfloat>(desiredWidth);
+    const float y2 = y1 + static_cast<GLfloat>(desiredHeight);
+
+    GLfloat vertices[] =
+    {
+        x1, y1, texX1, texY1,
+        x2, y1, texX2, texY1,
+        x1, y2, texX1, texY2,
+        x2, y2, texX2, texY2
+    };
+
+    mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
+        vertices, GL_DYNAMIC_DRAW);
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 bool ModernOpenGLGraphics::drawImage(const Image *const image,
@@ -329,6 +356,30 @@ bool ModernOpenGLGraphics::drawRescaledImage(const Image *const image,
                                              const int desiredWidth,
                                              const int desiredHeight)
 {
+    if (!image)
+        return false;
+
+    const SDL_Rect &imageRect = image->mBounds;
+
+    // Just draw the image normally when no resizing is necessary,
+    if (imageRect.w == desiredWidth && imageRect.h == desiredHeight)
+        return drawImageInline(image, dstX, dstY);
+
+    setColorAlpha(image->mAlpha);
+#ifdef DEBUG_BIND_TEXTURE
+    debugBindTexture(image);
+#endif
+    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    setTexturingAndBlending(true);
+
+    const ClipRect &clipArea = mClipStack.top();
+    // Draw a textured quad.
+    drawRescaledQuad(image,
+        imageRect.x, imageRect.y,
+        dstX + clipArea.xOffset, dstY + clipArea.yOffset,
+        imageRect.w, imageRect.h,
+        desiredWidth, desiredHeight);
+
     return true;
 }
 

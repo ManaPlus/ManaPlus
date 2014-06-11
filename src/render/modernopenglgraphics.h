@@ -78,6 +78,13 @@ class ModernOpenGLGraphics final : public Graphics
                              const int dstX, const int dstY,
                              const int width, const int height);
 
+        inline void drawRescaledQuad(const Image *const image,
+                                     const int srcX, const int srcY,
+                                     const int dstX, const int dstY,
+                                     const int width, const int height,
+                                     const int desiredWidth,
+                                     const int desiredHeight);
+
         inline void drawTriangleArray(const int size);
 
         GLfloat *mFloatArray;
