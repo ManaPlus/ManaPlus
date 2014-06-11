@@ -401,6 +401,13 @@ int TestLauncher::testDraw()
     mainGraphics->setColor(Color(0x00U, 0xFFU, 0x00U, 0x90U));
     mainGraphics->drawNet(450, 10, 600, 300, 32, 20);
 
+    for (int f = 0; f < 255; f ++)
+    {
+        mainGraphics->setColor(Color(0x20U, 0x60U, f, 0x90U));
+        mainGraphics->drawLine(300 + f, 490, 300 + f, 480);
+        for (int d = 0; d < 10; d ++)
+            mainGraphics->drawPoint(300 + f, 500 + d);
+    }
     mainGraphics->updateScreen();
     sleep(10);
 
