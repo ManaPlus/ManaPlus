@@ -661,10 +661,35 @@ void ModernOpenGLGraphics::popClipArea()
 
 void ModernOpenGLGraphics::drawPoint(int x, int y)
 {
+    setTexturingAndBlending(false);
+    const ClipRect &clipArea = mClipStack.top();
+    GLfloat vertices[] =
+    {
+        x + clipArea.xOffset, y + clipArea.yOffset, 0.0f, 0.0f
+    };
+    mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
+        vertices, GL_DYNAMIC_DRAW);
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
+    glDrawArrays(GL_POINTS, 0, 1);
 }
 
 void ModernOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
+    setTexturingAndBlending(false);
+    const ClipRect &clipArea = mClipStack.top();
+    GLfloat vertices[] =
+    {
+        x1 + clipArea.xOffset, y1 + clipArea.yOffset, 0.0f, 0.0f,
+        x2 + clipArea.xOffset, y2 + clipArea.yOffset, 0.0f, 0.0f
+    };
+    mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
+        vertices, GL_DYNAMIC_DRAW);
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
+    glDrawArrays(GL_LINES, 0, 2);
 }
 
 void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
