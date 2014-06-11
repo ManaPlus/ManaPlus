@@ -1024,17 +1024,36 @@ void GraphicsManager::initOpenGLFunctions()
         if (checkGLVersion(4, 1)
             || supportExtension("GL_ARB_separate_shader_objects"))
         {
+            logger->log1("found GL_ARB_separate_shader_objects");
             assignFunction(glProgramUniform1f, "glProgramUniform1f");
             assignFunction(glProgramUniform2f, "glProgramUniform2f");
             assignFunction(glProgramUniform3f, "glProgramUniform3f");
             assignFunction(glProgramUniform4f, "glProgramUniform4f");
         }
+        else
+        {
+            logger->log1("GL_ARB_separate_shader_objects not supported");
+        }
         if (checkGLVersion(4, 3)
             || supportExtension("GL_ARB_vertex_attrib_binding"))
         {
+            logger->log1("found GL_ARB_vertex_attrib_binding");
             assignFunction(glBindVertexBuffer, "glBindVertexBuffer");
             assignFunction(glVertexAttribBinding, "glVertexAttribBinding");
             assignFunction(glVertexAttribFormat, "glVertexAttribFormat");
+        }
+        else
+        {
+            logger->log1("GL_ARB_vertex_attrib_binding not supported");
+        }
+        if (checkGLVersion(4, 4) || supportExtension("GL_ARB_multi_bind"))
+        {
+            logger->log1("found GL_ARB_multi_bind");
+            assignFunction(glBindVertexBuffers, "glBindVertexBuffers");
+        }
+        else
+        {
+            logger->log1("GL_ARB_multi_bind not supported");
         }
     }
     else

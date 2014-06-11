@@ -94,6 +94,7 @@ defNameE(glProgramUniform4f);
 defNameE(glBindVertexBuffer);
 defNameE(glVertexAttribBinding);
 defNameE(glVertexAttribFormat);
+defNameE(glBindVertexBuffers);
 
 #ifdef WIN32
 defNameE(wglGetExtensionsString);
