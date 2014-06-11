@@ -380,7 +380,9 @@ int TestLauncher::testDraw()
     mainGraphics->drawRectangle(Rect(0, 0, 400, 200));
 
     mainGraphics->setColor(Color(0xFFU, 0x00U, 0x00U, 0xB0U));
+    img[0]->setAlpha(0.5f);
     mainGraphics->drawImage(img[0], 190, 383);
+    img[0]->setAlpha(1.0f);
 
     mainGraphics->setColor(Color(0x80U, 0x00U, 0xA0U, 0x90U));
     mainGraphics->fillRectangle(Rect(200, 100, 300, 300));

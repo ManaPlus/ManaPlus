@@ -98,6 +98,7 @@ class ModernOpenGLGraphics final : public Graphics
         GLuint mSimpleColorUniform;
         GLint mSimplePosAttrib;
         GLint mTexturePosAttrib;
+        GLint mTextureColorUniform;
         GLuint mSimpleScreenUniform;
         GLuint mTextureScreenUniform;
         GLuint mVao;

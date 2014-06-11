@@ -100,6 +100,7 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
     mSimpleColorUniform(0U),
     mSimplePosAttrib(0),
     mTexturePosAttrib(0),
+    mTextureColorUniform(0U),
     mSimpleScreenUniform(0U),
     mTextureScreenUniform(0U),
     mVao(0U),
@@ -168,6 +169,8 @@ void ModernOpenGLGraphics::postInit()
     mglVertexAttribFormat(mSimplePosAttrib, 2, GL_FLOAT, GL_FALSE, 0);
 
     mTexturePosAttrib = mglGetAttribLocation(mTextureProgramId, "position");
+    mTextureColorUniform = mglGetUniformLocation(mTextureProgramId, "color");
+    mglUniform1f(mTextureColorUniform, 1.0f);
     mTextureScreenUniform = mglGetUniformLocation(mTextureProgramId, "screen");
     mglVertexAttribFormat(mTexturePosAttrib, 4, GL_FLOAT, GL_FALSE, 0);
 
@@ -247,15 +250,11 @@ void ModernOpenGLGraphics::setColorAll(const Color &color,
 
 void ModernOpenGLGraphics::setColorAlpha(const float alpha)
 {
-    // here need set alpha uniform for textures only
-/*
-    if (!mIsByteColor && mFloatColor == alpha)
-        return;
-
-    glColor4f(1.0F, 1.0F, 1.0F, alpha);
-    mIsByteColor = false;
-    mFloatColor = alpha;
-*/
+    if (mAlphaCached != alpha)
+    {
+        mAlphaCached = alpha;
+        mglUniform1f(mTextureColorUniform, alpha);
+    }
 }
 
 void ModernOpenGLGraphics::drawQuad(const Image *const image,
@@ -317,12 +316,12 @@ bool ModernOpenGLGraphics::drawImageInline(const Image *const image,
     if (!image)
         return false;
 
-    setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
 #endif
     bindTexture(GL_TEXTURE_2D, image->mGLImage);
     setTexturingAndBlending(true);
+    setColorAlpha(image->mAlpha);
 
     const ClipRect &clipArea = mClipStack.top();
     const SDL_Rect &imageRect = image->mBounds;
@@ -385,14 +384,13 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *const image,
     const int x2 = x + clipArea.xOffset;
     const int y2 = y + clipArea.yOffset;
 
-    setColorAlpha(image->mAlpha);
-
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
 #endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
+    setColorAlpha(image->mAlpha);
 
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
