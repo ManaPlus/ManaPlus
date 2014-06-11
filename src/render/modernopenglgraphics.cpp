@@ -85,24 +85,20 @@ unsigned int ModernOpenGLGraphics::mLastDrawCalls = 0;
 ModernOpenGLGraphics::ModernOpenGLGraphics() :
     mFloatArray(nullptr),
     mFloatArrayCached(nullptr),
-    mSimpleProgram(nullptr),
-    mTextureProgram(nullptr),
+    mProgram(nullptr),
     mAlphaCached(1.0F),
     mVpCached(0),
-    mTexture(false),
     mIsByteColor(false),
     mByteColor(),
     mImageCached(0),
     mFloatColor(1.0F),
     mMaxVertices(500),
-    mSimpleProgramId(0U),
-    mTextureProgramId(0U),
+    mProgramId(0U),
     mSimpleColorUniform(0U),
-    mSimplePosAttrib(0),
-    mTexturePosAttrib(0),
+    mPosAttrib(0),
     mTextureColorUniform(0U),
-    mSimpleScreenUniform(0U),
-    mTextureScreenUniform(0U),
+    mScreenUniform(0U),
+    mDrawTypeUniform(0U),
     mVao(0U),
     mVbo(0U),
     mColorAlpha(false),
@@ -120,8 +116,8 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
 ModernOpenGLGraphics::~ModernOpenGLGraphics()
 {
     deleteArraysInternal();
-    if (mSimpleProgram)
-        mSimpleProgram->decRef();
+    if (mProgram)
+        mProgram->decRef();
     if (mVbo)
         mglDeleteBuffers(1, &mVbo);
     if (mVao)
@@ -153,38 +149,34 @@ void ModernOpenGLGraphics::postInit()
     mglBindBuffer(GL_ARRAY_BUFFER, mVbo);
 
     logger->log("Compiling shaders");
-    mSimpleProgram = shaders.getSimpleProgram();
-    mSimpleProgramId = mSimpleProgram->getProgramId();
-    mTextureProgram = shaders.getTextureProgram();
-    mTextureProgramId = mTextureProgram->getProgramId();
-    if (!mSimpleProgram || !mTextureProgram)
+    mProgram = shaders.getSimpleProgram();
+    mProgramId = mProgram->getProgramId();
+    if (!mProgram)
         logger->error("Shaders compilation error.");
 
     logger->log("Shaders compilation done.");
-    mglUseProgram(mSimpleProgramId);
-    mSimplePosAttrib = mglGetAttribLocation(mSimpleProgramId, "position");
-    mglEnableVertexAttribArray(mSimplePosAttrib);
-    mSimpleColorUniform = mglGetUniformLocation(mSimpleProgramId, "color");
-    mSimpleScreenUniform = mglGetUniformLocation(mSimpleProgramId, "screen");
-    mglVertexAttribFormat(mSimplePosAttrib, 2, GL_FLOAT, GL_FALSE, 0);
+    mglUseProgram(mProgramId);
 
-    mTexturePosAttrib = mglGetAttribLocation(mTextureProgramId, "position");
-    mTextureColorUniform = mglGetUniformLocation(mTextureProgramId, "color");
+    mPosAttrib = mglGetAttribLocation(mProgramId, "position");
+    mglEnableVertexAttribArray(mPosAttrib);
+    mglVertexAttribFormat(mPosAttrib, 4, GL_FLOAT, GL_FALSE, 0);
+
+    mSimpleColorUniform = mglGetUniformLocation(mProgramId, "color");
+    mScreenUniform = mglGetUniformLocation(mProgramId, "screen");
+    mDrawTypeUniform = mglGetUniformLocation(mProgramId, "drawType");
+    mTextureColorUniform = mglGetUniformLocation(mProgramId, "alpha");
+
     mglUniform1f(mTextureColorUniform, 1.0f);
-    mTextureScreenUniform = mglGetUniformLocation(mTextureProgramId, "screen");
-    mglVertexAttribFormat(mTexturePosAttrib, 4, GL_FLOAT, GL_FALSE, 0);
+
+    mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLfloat));
+    mglVertexAttribBinding(mPosAttrib, 0);
 
     screenResized();
 }
 
 void ModernOpenGLGraphics::screenResized()
 {
-    mglProgramUniform2f(mSimpleProgramId,
-        mSimpleScreenUniform,
-        static_cast<float>(mWidth) / 2.0f,
-        static_cast<float>(mHeight) / 2.0f);
-    mglProgramUniform2f(mTextureProgramId,
-        mTextureScreenUniform,
+    mglUniform2f(mScreenUniform,
         static_cast<float>(mWidth) / 2.0f,
         static_cast<float>(mHeight) / 2.0f);
 }
@@ -228,23 +220,11 @@ void ModernOpenGLGraphics::setColorAll(const Color &color,
     if (mColor != color)
     {
         mColor = color;
-        if (mTextureDraw)
-        {
-            mglProgramUniform4f(mSimpleProgramId,
-                mSimpleColorUniform,
-                static_cast<float>(color.r) / 255.0F,
-                static_cast<float>(color.g) / 255.0F,
-                static_cast<float>(color.b) / 255.0F,
-                static_cast<float>(color.a) / 255.0F);
-        }
-        else
-        {
-            mglUniform4f(mSimpleColorUniform,
-                static_cast<float>(color.r) / 255.0F,
-                static_cast<float>(color.g) / 255.0F,
-                static_cast<float>(color.b) / 255.0F,
-                static_cast<float>(color.a) / 255.0F);
-        }
+        mglUniform4f(mSimpleColorUniform,
+            static_cast<float>(color.r) / 255.0F,
+            static_cast<float>(color.g) / 255.0F,
+            static_cast<float>(color.b) / 255.0F,
+            static_cast<float>(color.a) / 255.0F);
     }
 }
 
@@ -283,13 +263,10 @@ void ModernOpenGLGraphics::drawQuad(const Image *const image,
         x2, y2, texX2, texY2
     };
 
-    mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLfloat));
-    mglVertexAttribBinding(mTexturePosAttrib, 0);
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_DYNAMIC_DRAW);
-
 #ifdef DEBUG_DRAW_CALLS
-    MobileOpenGLGraphics::mDrawCalls ++;
+    mDrawCalls ++;
 #endif
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
@@ -700,19 +677,17 @@ void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
     const int y2 = y1 + rect.height;
     GLfloat vertices[] =
     {
-        x1, y1,
-        x1, y2,
-        x2, y2,
-        x2, y1
+        x1, y1, 0.0f, 0.0f,
+        x1, y2, 0.0f, 0.0f,
+        x2, y2, 0.0f, 0.0f,
+        x2, y1, 0.0f, 0.0f
     };
-
-    mglBindVertexBuffer(3, mVbo, 0, 2 * sizeof(GLfloat));
-
-    mglVertexAttribBinding(mSimplePosAttrib, 3);
 
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_DYNAMIC_DRAW);
-
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
     glDrawArrays(GL_LINE_LOOP, 0, 4);
 }
 
@@ -726,19 +701,17 @@ void ModernOpenGLGraphics::fillRectangle(const Rect& rect)
     const int y2 = y1 + rect.height;
     GLfloat vertices[] =
     {
-        x1, y1,
-        x2, y1,
-        x1, y2,
-        x2, y2
+        x1, y1, 0.0f, 0.0f,
+        x2, y1, 0.0f, 0.0f,
+        x1, y2, 0.0f, 0.0f,
+        x2, y2, 0.0f, 0.0f
     };
-
-    mglBindVertexBuffer(3, mVbo, 0, 2 * sizeof(GLfloat));
-
-    mglVertexAttribBinding(mSimplePosAttrib, 3);
 
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_DYNAMIC_DRAW);
-
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
@@ -749,9 +722,7 @@ void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
         if (!mTextureDraw)
         {
             mTextureDraw = true;
-            mglDisableVertexAttribArray(mSimplePosAttrib);
-            mglUseProgram(mTextureProgramId);
-            mglEnableVertexAttribArray(mTexturePosAttrib);
+            mglUniform1f(mDrawTypeUniform, 1.0f);
         }
         if (!mAlpha)
         {
@@ -764,9 +735,7 @@ void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable)
         if (mTextureDraw)
         {
             mTextureDraw = false;
-            mglDisableVertexAttribArray(mTexturePosAttrib);
-            mglUseProgram(mSimpleProgramId);
-            mglEnableVertexAttribArray(mSimplePosAttrib);
+            mglUniform1f(mDrawTypeUniform, 0.0f);
         }
         if (mAlpha && !mColorAlpha)
         {
@@ -843,9 +812,10 @@ void ModernOpenGLGraphics::clearScreen() const
 
 void ModernOpenGLGraphics::drawTriangleArray(const int size)
 {
-    mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLfloat));
-    mglVertexAttribBinding(mTexturePosAttrib, 0);
     mglBufferData(GL_ARRAY_BUFFER, size, mFloatArray, GL_DYNAMIC_DRAW);
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
     glDrawArrays(GL_TRIANGLES, 0, size / 2);;
 }
 

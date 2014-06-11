@@ -82,25 +82,21 @@ class ModernOpenGLGraphics final : public Graphics
 
         GLfloat *mFloatArray;
         GLfloat *mFloatArrayCached;
-        ShaderProgram *mSimpleProgram;
-        ShaderProgram *mTextureProgram;
+        ShaderProgram *mProgram;
         float mAlphaCached;
         int mVpCached;
-        bool mTexture;
 
         bool mIsByteColor;
         Color mByteColor;
         GLuint mImageCached;
         float mFloatColor;
         int mMaxVertices;
-        GLuint mSimpleProgramId;
-        GLuint mTextureProgramId;
+        GLuint mProgramId;
         GLuint mSimpleColorUniform;
-        GLint mSimplePosAttrib;
-        GLint mTexturePosAttrib;
+        GLint mPosAttrib;
         GLint mTextureColorUniform;
-        GLuint mSimpleScreenUniform;
-        GLuint mTextureScreenUniform;
+        GLuint mScreenUniform;
+        GLuint mDrawTypeUniform;
         GLuint mVao;
         GLuint mVbo;
         bool mColorAlpha;

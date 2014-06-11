@@ -41,8 +41,6 @@ class ShadersManager final
                                      A_WARN_UNUSED;
 
         ShaderProgram *getSimpleProgram();
-
-        ShaderProgram *getTextureProgram();
 };
 
 extern ShadersManager shaders;
