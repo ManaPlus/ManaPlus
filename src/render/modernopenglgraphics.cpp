@@ -749,15 +749,12 @@ SDL_Surface* ModernOpenGLGraphics::getScreenshot()
 bool ModernOpenGLGraphics::pushClipArea(const Rect &area)
 {
     const bool result = Graphics::pushClipArea(area);
-
     const ClipRect &clipArea = mClipStack.top();
 
-/*
     glScissor(clipArea.x * mScale,
         (mRect.h - clipArea.y - clipArea.height) * mScale,
         clipArea.width * mScale,
         clipArea.height * mScale);
-*/
     return result;
 }
 
@@ -770,12 +767,10 @@ void ModernOpenGLGraphics::popClipArea()
         return;
 
     const ClipRect &clipArea = mClipStack.top();
-/*
     glScissor(clipArea.x * mScale,
         (mRect.h - clipArea.y - clipArea.height) * mScale,
         clipArea.width * mScale,
         clipArea.height * mScale);
-*/
 }
 
 void ModernOpenGLGraphics::drawPoint(int x, int y)
