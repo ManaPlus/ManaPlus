@@ -88,9 +88,6 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
     mProgram(nullptr),
     mAlphaCached(1.0F),
     mVpCached(0),
-    mIsByteColor(false),
-    mByteColor(),
-    mImageCached(0),
     mFloatColor(1.0F),
     mMaxVertices(500),
     mProgramId(0U),
@@ -101,6 +98,7 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
     mDrawTypeUniform(0U),
     mVao(0U),
     mVbo(0U),
+    mVboCached(0U),
     mColorAlpha(false),
     mTextureDraw(false),
 #ifdef DEBUG_BIND_TEXTURE
@@ -146,7 +144,7 @@ void ModernOpenGLGraphics::postInit()
     mglGenVertexArrays(1, &mVao);
     mglBindVertexArray(mVao);
     mglGenBuffers(1, &mVbo);
-    mglBindBuffer(GL_ARRAY_BUFFER, mVbo);
+    bindArrayBuffer(mVbo);
 
     logger->log("Compiling shaders");
     mProgram = shaders.getSimpleProgram();
@@ -964,6 +962,15 @@ void ModernOpenGLGraphics::bindTexture(const GLenum target,
     {
         mLastImage = texture;
         glBindTexture(target, texture);
+    }
+}
+
+void ModernOpenGLGraphics::bindArrayBuffer(const GLuint vbo)
+{
+    if (mVboCached != vbo)
+    {
+        mVboCached = vbo;
+        mglBindBuffer(GL_ARRAY_BUFFER, vbo);
     }
 }
 

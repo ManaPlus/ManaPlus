@@ -89,15 +89,14 @@ class ModernOpenGLGraphics final : public Graphics
 
         inline void drawLineArrays(const int size);
 
+        inline void bindArrayBuffer(const GLuint vbo);
+
         GLfloat *mFloatArray;
         GLfloat *mFloatArrayCached;
         ShaderProgram *mProgram;
         float mAlphaCached;
         int mVpCached;
 
-        bool mIsByteColor;
-        Color mByteColor;
-        GLuint mImageCached;
         float mFloatColor;
         int mMaxVertices;
         GLuint mProgramId;
@@ -108,6 +107,7 @@ class ModernOpenGLGraphics final : public Graphics
         GLuint mDrawTypeUniform;
         GLuint mVao;
         GLuint mVbo;
+        GLuint mVboCached;
         bool mColorAlpha;
         bool mTextureDraw;
 #ifdef DEBUG_BIND_TEXTURE
