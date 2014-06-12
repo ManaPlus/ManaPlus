@@ -25,6 +25,7 @@
 
 RenderType intToRenderType(const int mode);
 
-#define isBatchDrawRenders(val) (val) != RENDER_SAFE_OPENGL
+#define isBatchDrawRenders(val) ((val) != RENDER_SAFE_OPENGL \
+    && (val) != RENDER_MODERN_OPENGL)
 
 #endif  // RENDER_RENDERERS_H
