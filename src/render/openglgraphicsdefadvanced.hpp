@@ -21,7 +21,7 @@
  */
 
 public:
-    inline void drawVertexes(const NormalOpenGLGraphicsVertexes &ogl);
+    inline void drawVertexes(const OpenGLGraphicsVertexes &ogl);
 
     void initArrays(const int vertCount) override final;
 

@@ -45,7 +45,7 @@
 
 #include <set>
 
-class NormalOpenGLGraphicsVertexes;
+class OpenGLGraphicsVertexes;
 
 class MobileOpenGLGraphics final : public Graphics
 {

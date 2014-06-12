@@ -529,8 +529,7 @@ void ModernOpenGLGraphics::drawRescaledPattern(const Image *const image,
 }
 
 inline void ModernOpenGLGraphics::drawVertexes(const
-                                               NormalOpenGLGraphicsVertexes
-                                               &ogl)
+                                               OpenGLGraphicsVertexes &ogl)
 {
 }
 
@@ -547,6 +546,7 @@ void ModernOpenGLGraphics::calcPatternInline(ImageVertexes *const vert,
                                              const int x, const int y,
                                              const int w, const int h) const
 {
+
 }
 
 void ModernOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,

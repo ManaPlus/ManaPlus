@@ -45,7 +45,7 @@
 
 #include <set>
 
-class NormalOpenGLGraphicsVertexes;
+class OpenGLGraphicsVertexes;
 
 class NormalOpenGLGraphics final : public Graphics
 {

@@ -40,7 +40,7 @@ SDLGraphicsVertexes::~SDLGraphicsVertexes()
 }
 
 #ifdef USE_OPENGL
-NormalOpenGLGraphicsVertexes::NormalOpenGLGraphicsVertexes() :
+OpenGLGraphicsVertexes::OpenGLGraphicsVertexes() :
     ptr(0),
     mFloatTexArray(nullptr),
     mIntTexArray(nullptr),
@@ -59,12 +59,12 @@ NormalOpenGLGraphicsVertexes::NormalOpenGLGraphicsVertexes() :
     mVp.reserve(30);
 }
 
-NormalOpenGLGraphicsVertexes::~NormalOpenGLGraphicsVertexes()
+OpenGLGraphicsVertexes::~OpenGLGraphicsVertexes()
 {
     clear();
 }
 
-void NormalOpenGLGraphicsVertexes::clear()
+void OpenGLGraphicsVertexes::clear()
 {
     for (std::vector<GLfloat*>::iterator it = mFloatTexPool.begin();
         it != mFloatTexPool.end(); ++ it)
@@ -109,45 +109,45 @@ void NormalOpenGLGraphicsVertexes::clear()
     }
 }
 
-void NormalOpenGLGraphicsVertexes::init()
+void OpenGLGraphicsVertexes::init()
 {
     clear();
 }
 
-GLfloat *NormalOpenGLGraphicsVertexes::switchFloatTexArray()
+GLfloat *OpenGLGraphicsVertexes::switchFloatTexArray()
 {
     mFloatTexArray = new GLfloat[static_cast<size_t>(vertexBufSize * 4 + 30)];
     mFloatTexPool.push_back(mFloatTexArray);
     return mFloatTexArray;
 }
 
-GLint *NormalOpenGLGraphicsVertexes::switchIntVertArray()
+GLint *OpenGLGraphicsVertexes::switchIntVertArray()
 {
     mIntVertArray = new GLint[static_cast<size_t>(vertexBufSize * 4 + 30)];
     mIntVertPool.push_back(mIntVertArray);
     return mIntVertArray;
 }
 
-GLshort *NormalOpenGLGraphicsVertexes::switchShortVertArray()
+GLshort *OpenGLGraphicsVertexes::switchShortVertArray()
 {
     mShortVertArray = new GLshort[static_cast<size_t>(vertexBufSize * 4 + 30)];
     mShortVertPool.push_back(mShortVertArray);
     return mShortVertArray;
 }
 
-GLint *NormalOpenGLGraphicsVertexes::switchIntTexArray()
+GLint *OpenGLGraphicsVertexes::switchIntTexArray()
 {
     mIntTexArray = new GLint[static_cast<size_t>(vertexBufSize * 4 + 30)];
     mIntTexPool.push_back(mIntTexArray);
     return mIntTexArray;
 }
 
-void NormalOpenGLGraphicsVertexes::switchVp(const int n)
+void OpenGLGraphicsVertexes::switchVp(const int n)
 {
     mVp.push_back(n);
 }
 
-int NormalOpenGLGraphicsVertexes::continueVp()
+int OpenGLGraphicsVertexes::continueVp()
 {
     if (mVp.empty())
     {
@@ -161,14 +161,14 @@ int NormalOpenGLGraphicsVertexes::continueVp()
     }
 }
 
-void NormalOpenGLGraphicsVertexes::updateVp(const int n)
+void OpenGLGraphicsVertexes::updateVp(const int n)
 {
     if (!mVp.empty())
         mVp.pop_back();
     mVp.push_back(n);
 }
 
-GLfloat *NormalOpenGLGraphicsVertexes::continueFloatTexArray()
+GLfloat *OpenGLGraphicsVertexes::continueFloatTexArray()
 {
     if (mFloatTexPool.empty())
     {
@@ -183,7 +183,7 @@ GLfloat *NormalOpenGLGraphicsVertexes::continueFloatTexArray()
     return mFloatTexArray;
 }
 
-GLint *NormalOpenGLGraphicsVertexes::continueIntVertArray()
+GLint *OpenGLGraphicsVertexes::continueIntVertArray()
 {
     if (mIntVertPool.empty())
     {
@@ -197,7 +197,7 @@ GLint *NormalOpenGLGraphicsVertexes::continueIntVertArray()
     return mIntVertArray;
 }
 
-GLshort *NormalOpenGLGraphicsVertexes::continueShortVertArray()
+GLshort *OpenGLGraphicsVertexes::continueShortVertArray()
 {
     if (mShortVertPool.empty())
     {
@@ -212,7 +212,7 @@ GLshort *NormalOpenGLGraphicsVertexes::continueShortVertArray()
     return mShortVertArray;
 }
 
-GLint *NormalOpenGLGraphicsVertexes::continueIntTexArray()
+GLint *OpenGLGraphicsVertexes::continueIntTexArray()
 {
     if (mIntTexPool.empty())
     {

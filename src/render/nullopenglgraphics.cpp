@@ -516,7 +516,7 @@ void NullOpenGLGraphics::drawRescaledPattern(const Image *const image,
 }
 
 inline void NullOpenGLGraphics::drawVertexes(const
-                                             NormalOpenGLGraphicsVertexes
+                                             OpenGLGraphicsVertexes
                                              &ogl)
 {
     const std::vector<GLint*> &intVertPool = ogl.mIntVertPool;
@@ -588,7 +588,7 @@ void NullOpenGLGraphics::calcPatternInline(ImageVertexes* const vert,
 
     const unsigned int vLimit = mMaxVertices * 4;
 
-    NormalOpenGLGraphicsVertexes &ogl = vert->ogl;
+    OpenGLGraphicsVertexes &ogl = vert->ogl;
     unsigned int vp = ogl.continueVp();
 
     // Draw a set of textured rectangles
@@ -788,7 +788,7 @@ void NullOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
 
     const unsigned int vLimit = mMaxVertices * 4;
 
-    NormalOpenGLGraphicsVertexes &ogl = vert->ogl;
+    OpenGLGraphicsVertexes &ogl = vert->ogl;
 
 //    std::vector<int> *vps = ogl.getVp();
     unsigned int vp = ogl.continueVp();

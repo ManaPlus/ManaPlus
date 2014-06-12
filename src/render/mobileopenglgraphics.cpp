@@ -580,7 +580,7 @@ void MobileOpenGLGraphics::drawRescaledPattern(const Image *const image,
 }
 
 inline void MobileOpenGLGraphics::drawVertexes(const
-                                               NormalOpenGLGraphicsVertexes
+                                               OpenGLGraphicsVertexes
                                                &ogl)
 {
     const std::vector<GLshort*> &shortVertPool = ogl.mShortVertPool;
@@ -638,7 +638,7 @@ void MobileOpenGLGraphics::calcPatternInline(ImageVertexes *const vert,
 
     const unsigned int vLimit = mMaxVertices * 4;
 
-    NormalOpenGLGraphicsVertexes &ogl = vert->ogl;
+    OpenGLGraphicsVertexes &ogl = vert->ogl;
     unsigned int vp = ogl.continueVp();
 
     // Draw a set of textured rectangles
@@ -768,7 +768,7 @@ void MobileOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
 
     const unsigned int vLimit = mMaxVertices * 4;
 
-    NormalOpenGLGraphicsVertexes &ogl = vert->ogl;
+    OpenGLGraphicsVertexes &ogl = vert->ogl;
 
 //    std::vector<int> *vps = ogl.getVp();
     unsigned int vp = ogl.continueVp();

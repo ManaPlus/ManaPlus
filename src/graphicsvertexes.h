@@ -63,14 +63,14 @@ class SDLGraphicsVertexes final
 };
 
 #ifdef USE_OPENGL
-class NormalOpenGLGraphicsVertexes final
+class OpenGLGraphicsVertexes final
 {
     public:
-        NormalOpenGLGraphicsVertexes();
+        OpenGLGraphicsVertexes();
 
-        A_DELETE_COPY(NormalOpenGLGraphicsVertexes)
+        A_DELETE_COPY(OpenGLGraphicsVertexes)
 
-        ~NormalOpenGLGraphicsVertexes();
+        ~OpenGLGraphicsVertexes();
 
         GLfloat *switchFloatTexArray();
 
@@ -140,7 +140,7 @@ class ImageVertexes final
 
         const Image *image;
 #ifdef USE_OPENGL
-        NormalOpenGLGraphicsVertexes ogl;
+        OpenGLGraphicsVertexes ogl;
 #endif
         DoubleRects sdl;
 };
