@@ -996,6 +996,7 @@ void ModernOpenGLGraphics::drawImageRect(const int x, const int y,
                                          const int w, const int h,
                                          const ImageRect &imgRect)
 {
+    #include "render/graphics_drawImageRect.hpp"
 }
 
 void ModernOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
