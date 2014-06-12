@@ -87,6 +87,8 @@ class ModernOpenGLGraphics final : public Graphics
 
         inline void drawTriangleArray(const int size);
 
+        inline void drawLineArrays(const int size);
+
         GLfloat *mFloatArray;
         GLfloat *mFloatArrayCached;
         ShaderProgram *mProgram;

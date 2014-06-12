@@ -903,6 +903,62 @@ bool ModernOpenGLGraphics::drawNet(const int x1, const int y1,
                                    const int x2, const int y2,
                                    const int width, const int height)
 {
+    unsigned int vp = 0;
+    const unsigned int vLimit = mMaxVertices * 4;
+
+    setTexturingAndBlending(false);
+    const ClipRect &clipArea = mClipStack.top();
+    const GLfloat dx = clipArea.xOffset;
+    const GLfloat dy = clipArea.yOffset;
+
+    const GLfloat xs1 = static_cast<GLfloat>(x1) + dx;
+    const GLfloat xs2 = static_cast<GLfloat>(x2) + dx;
+    const GLfloat ys1 = static_cast<GLfloat>(y1) + dy;
+    const GLfloat ys2 = static_cast<GLfloat>(y2) + dy;
+
+    for (int y = y1; y < y2; y += height)
+    {
+        mFloatArray[vp + 0] = xs1;
+        mFloatArray[vp + 1] = y;
+        mFloatArray[vp + 2] = 0.0f;
+        mFloatArray[vp + 3] = 0.0f;
+
+        mFloatArray[vp + 4] = xs2;
+        mFloatArray[vp + 5] = y;
+        mFloatArray[vp + 6] = 0.0f;
+        mFloatArray[vp + 7] = 0.0f;
+
+        vp += 8;
+        if (vp >= vLimit)
+        {
+            drawLineArrays(vp);
+            vp = 0;
+        }
+    }
+
+    for (int x = x1; x < x2; x += width)
+    {
+        mFloatArray[vp + 0] = x;
+        mFloatArray[vp + 1] = ys1;
+        mFloatArray[vp + 2] = 0.0f;
+        mFloatArray[vp + 3] = 0.0f;
+
+        mFloatArray[vp + 4] = x;
+        mFloatArray[vp + 5] = ys2;
+        mFloatArray[vp + 6] = 0.0f;
+        mFloatArray[vp + 7] = 0.0f;
+
+        vp += 8;
+        if (vp >= vLimit)
+        {
+            drawLineArrays(vp);
+            vp = 0;
+        }
+    }
+
+    if (vp > 0)
+        drawLineArrays(vp);
+
     return true;
 }
 
@@ -962,6 +1018,16 @@ void ModernOpenGLGraphics::drawTriangleArray(const int size)
     mDrawCalls ++;
 #endif
     glDrawArrays(GL_TRIANGLES, 0, size / 4);
+}
+
+void ModernOpenGLGraphics::drawLineArrays(const int size)
+{
+    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
+        mFloatArray, GL_DYNAMIC_DRAW);
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
+    glDrawArrays(GL_LINES, 0, size / 4);
 }
 
 #ifdef DEBUG_BIND_TEXTURE
