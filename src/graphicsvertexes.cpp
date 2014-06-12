@@ -20,6 +20,8 @@
 
 #include "graphicsvertexes.h"
 
+#include "render/mgl.h"
+
 #include "utils/dtor.h"
 
 #include "debug.h"
@@ -57,6 +59,7 @@ OpenGLGraphicsVertexes::OpenGLGraphicsVertexes() :
     mShortVertPool.reserve(30);
     mIntTexPool.reserve(30);
     mVp.reserve(30);
+    mVbo.reserve(30);
 }
 
 OpenGLGraphicsVertexes::~OpenGLGraphicsVertexes()
@@ -93,6 +96,9 @@ void OpenGLGraphicsVertexes::clear()
         delete [] (*it);
     }
     mIntTexPool.clear();
+
+    mglDeleteBuffers(mVbo.size(), &mVbo[0]);
+    mVbo.clear();
 
     mVp.clear();
     if (ptr)

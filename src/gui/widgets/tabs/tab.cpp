@@ -278,6 +278,7 @@ void Tab::draw(Graphics *graphics)
                         padding);
                 }
             }
+            graphics->finalize(mVertexes);
         }
 
         graphics->drawTileCollection(mVertexes);

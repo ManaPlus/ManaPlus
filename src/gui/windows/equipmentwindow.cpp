@@ -196,6 +196,7 @@ void EquipmentWindow::draw(Graphics *graphics)
                 }
                 i ++;
             }
+            graphics->finalize(mVertexes);
         }
         graphics->drawTileCollection(mVertexes);
     }

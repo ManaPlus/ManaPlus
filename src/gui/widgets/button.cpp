@@ -586,6 +586,7 @@ void Button::draw(Graphics *graphics)
                         imageX, imageY);
                 }
             }
+            graphics->finalize(mVertexes2);
         }
         graphics->drawTileCollection(mVertexes2);
     }

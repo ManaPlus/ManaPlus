@@ -66,6 +66,10 @@ class ModernOpenGLGraphics final : public Graphics
 
         void screenResized();
 
+        void finalize(ImageCollection *const col) override final;
+
+        void finalize(ImageVertexes *const vert) override final;
+
         #include "render/graphicsdef.hpp"
 
         #include "render/openglgraphicsdef.hpp"
@@ -87,9 +91,16 @@ class ModernOpenGLGraphics final : public Graphics
 
         inline void drawTriangleArray(const int size);
 
+        inline void drawTriangleArray(const GLfloat *const array,
+                                      const int size);
+
         inline void drawLineArrays(const int size);
 
         inline void bindArrayBuffer(const GLuint vbo);
+
+        inline void bindArrayBufferAndAttributes(const GLuint vbo);
+
+        inline void bindAttributes();
 
         GLfloat *mFloatArray;
         GLfloat *mFloatArrayCached;
@@ -108,6 +119,7 @@ class ModernOpenGLGraphics final : public Graphics
         GLuint mVao;
         GLuint mVbo;
         GLuint mVboCached;
+        GLuint mAttributesCached;
         bool mColorAlpha;
         bool mTextureDraw;
 #ifdef DEBUG_BIND_TEXTURE

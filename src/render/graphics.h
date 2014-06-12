@@ -454,6 +454,12 @@ class Graphics notfinal
         virtual void postInit()
         { }
 
+        virtual void finalize(ImageCollection *const col)
+        { }
+
+        virtual void finalize(ImageVertexes *const vert)
+        { }
+
         int mWidth;
         int mHeight;
         int mActualWidth;

@@ -246,7 +246,7 @@ void MapLayer::updateSDL(const Graphics *const graphics,
     BLOCK_END("MapLayer::updateSDL")
 }
 
-void MapLayer::updateOGL(const Graphics *const graphics,
+void MapLayer::updateOGL(Graphics *const graphics,
                          int startX, int startY,
                          int endX, int endY,
                          const int scrollX, const int scrollY,
@@ -323,6 +323,7 @@ void MapLayer::updateOGL(const Graphics *const graphics,
             }
         }
     }
+    graphics->finalize(imgVert);
     BLOCK_END("MapLayer::updateOGL")
 }
 

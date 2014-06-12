@@ -226,6 +226,7 @@ void ProgressBar::render(Graphics *graphics)
                         width, mDimension.height - pad, mFillRect);
                 }
             }
+            graphics->finalize(mVertexes);
         }
 
         graphics->drawTileCollection(mVertexes);

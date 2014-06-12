@@ -313,6 +313,7 @@ void Window::draw(Graphics *graphics)
                     mGripRect.x,
                     mGripRect.y);
             }
+            graphics->finalize(mVertexes);
         }
         else
         {

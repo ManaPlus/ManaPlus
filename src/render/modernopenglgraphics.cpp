@@ -99,6 +99,7 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
     mVao(0U),
     mVbo(0U),
     mVboCached(0U),
+    mAttributesCached(0U),
     mColorAlpha(false),
     mTextureDraw(false),
 #ifdef DEBUG_BIND_TEXTURE
@@ -168,6 +169,7 @@ void ModernOpenGLGraphics::postInit()
 
     mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLfloat));
     mglVertexAttribBinding(mPosAttrib, 0);
+    mAttributesCached = mVbo;
 
     screenResized();
 }
@@ -323,6 +325,7 @@ bool ModernOpenGLGraphics::drawImageInline(const Image *const image,
 #endif
     bindTexture(GL_TEXTURE_2D, image->mGLImage);
     setTexturingAndBlending(true);
+    bindArrayBufferAndAttributes(mVbo);
     setColorAlpha(image->mAlpha);
 
     const ClipRect &clipArea = mClipStack.top();
@@ -369,6 +372,7 @@ bool ModernOpenGLGraphics::drawRescaledImage(const Image *const image,
 #endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
+    bindArrayBufferAndAttributes(mVbo);
 
     const ClipRect &clipArea = mClipStack.top();
     // Draw a textured quad.
@@ -416,6 +420,7 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *const image,
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
+    bindArrayBufferAndAttributes(mVbo);
     setColorAlpha(image->mAlpha);
 
     unsigned int vp = 0;
@@ -478,6 +483,7 @@ void ModernOpenGLGraphics::drawRescaledPattern(const Image *const image,
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
+    bindArrayBufferAndAttributes(mVbo);
     setColorAlpha(image->mAlpha);
 
     unsigned int vp = 0;
@@ -531,6 +537,26 @@ void ModernOpenGLGraphics::drawRescaledPattern(const Image *const image,
 inline void ModernOpenGLGraphics::drawVertexes(const
                                                OpenGLGraphicsVertexes &ogl)
 {
+    const std::vector<int> &vp = ogl.mVp;
+    const std::vector<GLuint> &vbos = ogl.mVbo;
+    std::vector<int>::const_iterator ivp;
+    std::vector<GLuint>::const_iterator ivbo;
+    const std::vector<int>::const_iterator ivp_end = vp.end();
+
+    logger->log("drawVertexes start");
+    for (ivp = vp.begin(), ivbo = vbos.begin();
+         ivp != ivp_end;
+         ++ ivp, ++ ivbo)
+    {
+        logger->log("bind vbo: %d", *ivbo);
+        logger->log("buf size in vetexes: %d", (*ivp) / 4);
+        bindArrayBufferAndAttributes(*ivbo);
+#ifdef DEBUG_DRAW_CALLS
+        mDrawCalls ++;
+#endif
+        glDrawArrays(GL_TRIANGLES, 0, *ivp / 4);
+    }
+    logger->log("drawVertexes end");
 }
 
 void ModernOpenGLGraphics::calcPattern(ImageVertexes *const vert,
@@ -546,7 +572,59 @@ void ModernOpenGLGraphics::calcPatternInline(ImageVertexes *const vert,
                                              const int x, const int y,
                                              const int w, const int h) const
 {
+    if (!image || !vert)
+        return;
 
+    const SDL_Rect &imageRect = image->mBounds;
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
+    const int iw = imageRect.w;
+    const int ih = imageRect.h;
+
+    if (iw == 0 || ih == 0)
+        return;
+
+    const float tw = static_cast<float>(image->mTexWidth);
+    const float th = static_cast<float>(image->mTexHeight);
+    const ClipRect &clipArea = mClipStack.top();
+    const int x2 = x + clipArea.xOffset;
+    const int y2 = y + clipArea.yOffset;
+
+    const unsigned int vLimit = mMaxVertices * 4;
+
+    OpenGLGraphicsVertexes &ogl = vert->ogl;
+    unsigned int vp = ogl.continueVp();
+
+    const float texX1 = static_cast<float>(srcX) / tw;
+    const float texY1 = static_cast<float>(srcY) / th;
+
+    GLfloat *floatArray = ogl.continueFloatTexArray();
+
+    for (int py = 0; py < h; py += ih)
+    {
+        const int height = (py + ih >= h) ? h - py : ih;
+        const int dstY = y2 + py;
+        const float texY2 = static_cast<float>(srcY + height) / th;
+        for (int px = 0; px < w; px += iw)
+        {
+            const int width = (px + iw >= w) ? w - px : iw;
+            const int dstX = x2 + px;
+            const float texX2 = static_cast<float>(srcX + width) / tw;
+
+            vertFill2D(floatArray,
+                texX1, texY1, texX2, texY2,
+                dstX, dstY, width, height);
+
+            vp += 24;
+            if (vp >= vLimit)
+            {
+                floatArray = ogl.switchFloatTexArray();
+                ogl.switchVp(vp);
+                vp = 0;
+            }
+        }
+    }
+    ogl.switchVp(vp);
 }
 
 void ModernOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
@@ -571,6 +649,22 @@ void ModernOpenGLGraphics::calcTileCollection(ImageCollection *const vertCol,
 void ModernOpenGLGraphics::drawTileCollection(const ImageCollection
                                               *const vertCol)
 {
+    setTexturingAndBlending(true);
+//    bindArrayBuffer(vbo);
+    const ImageVertexesVector &draws = vertCol->draws;
+    const ImageCollectionCIter it_end = draws.end();
+    for (ImageCollectionCIter it = draws.begin(); it != it_end; ++ it)
+    {
+        const ImageVertexes *const vert = *it;
+        const Image *const image = vert->image;
+
+        setColorAlpha(image->mAlpha);
+#ifdef DEBUG_BIND_TEXTURE
+        debugBindTexture(image);
+#endif
+        bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+        drawVertexes(vert->ogl);
+    }
 }
 
 void ModernOpenGLGraphics::calcPattern(ImageCollection* const vertCol,
@@ -774,6 +868,7 @@ void ModernOpenGLGraphics::popClipArea()
 void ModernOpenGLGraphics::drawPoint(int x, int y)
 {
     setTexturingAndBlending(false);
+    bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     GLfloat vertices[] =
     {
@@ -790,6 +885,7 @@ void ModernOpenGLGraphics::drawPoint(int x, int y)
 void ModernOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
     setTexturingAndBlending(false);
+    bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     GLfloat vertices[] =
     {
@@ -807,6 +903,7 @@ void ModernOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
 {
     setTexturingAndBlending(false);
+    bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     const int x1 = rect.x + clipArea.xOffset;
     const int y1 = rect.y + clipArea.yOffset;
@@ -831,6 +928,7 @@ void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
 void ModernOpenGLGraphics::fillRectangle(const Rect& rect)
 {
     setTexturingAndBlending(false);
+    bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     const int x1 = rect.x + clipArea.xOffset;
     const int y1 = rect.y + clipArea.yOffset;
@@ -900,6 +998,7 @@ bool ModernOpenGLGraphics::drawNet(const int x1, const int y1,
     const unsigned int vLimit = mMaxVertices * 4;
 
     setTexturingAndBlending(false);
+    bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     const GLfloat dx = clipArea.xOffset;
     const GLfloat dy = clipArea.yOffset;
@@ -971,6 +1070,36 @@ void ModernOpenGLGraphics::bindArrayBuffer(const GLuint vbo)
     {
         mVboCached = vbo;
         mglBindBuffer(GL_ARRAY_BUFFER, vbo);
+        mAttributesCached = 0U;
+    }
+}
+
+void ModernOpenGLGraphics::bindArrayBufferAndAttributes(const GLuint vbo)
+{
+    if (mVboCached != vbo)
+    {
+        mVboCached = vbo;
+        mglBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+        mAttributesCached = mVboCached;
+        mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLfloat));
+//        mglVertexAttribBinding(mPosAttrib, 0);
+    }
+    else if (mAttributesCached != mVboCached)
+    {
+        mAttributesCached = mVboCached;
+        mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLfloat));
+//        mglVertexAttribBinding(mPosAttrib, 0);
+    }
+}
+
+void ModernOpenGLGraphics::bindAttributes()
+{
+    if (mAttributesCached != mVboCached)
+    {
+        mAttributesCached = mVboCached;
+        mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLfloat));
+//        mglVertexAttribBinding(mPosAttrib, 0);
     }
 }
 
@@ -1013,10 +1142,66 @@ void ModernOpenGLGraphics::clearScreen() const
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 
+void ModernOpenGLGraphics::finalize(ImageCollection *const col)
+{
+    FOR_EACH (ImageCollectionIter, it, col->draws)
+        finalize(*it);
+}
+
+void ModernOpenGLGraphics::finalize(ImageVertexes *const vert)
+{
+    // in future need convert in each switchVp/continueVp
+
+    OpenGLGraphicsVertexes &ogl = vert->ogl;
+    const std::vector<int> &vp = ogl.mVp;
+    std::vector<int>::const_iterator ivp;
+    const std::vector<int>::const_iterator ivp_end = vp.end();
+    std::vector<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
+    std::vector<GLfloat*>::const_iterator ft;
+    const std::vector<GLfloat*>::const_iterator ft_end = floatTexPool.end();
+    std::vector<GLuint> &vbos = ogl.mVbo;
+    std::vector<GLuint>::const_iterator ivbo;
+
+    const int sz = floatTexPool.size();
+    vbos.resize(sz);
+    mglGenBuffers(sz, &vbos[0]);
+
+    logger->log("finalize start");
+    for (ft = floatTexPool.begin(), ivp = vp.begin(), ivbo = vbos.begin();
+         ft != ft_end && ivp != ivp_end;
+         ++ ft, ++ ivp, ++ ivbo)
+    {
+        logger->log("bind vbo: %d", *ivbo);
+        logger->log("buf size in vetexes: %d", *ivp / 4);
+        bindArrayBuffer(*ivbo);
+        mglBufferData(GL_ARRAY_BUFFER, (*ivp) * sizeof(GLfloat),
+            *ft, GL_DYNAMIC_DRAW);
+    }
+
+    for (std::vector<GLfloat*>::iterator it = floatTexPool.begin();
+        it != floatTexPool.end(); ++ it)
+    {
+        delete [] (*it);
+    }
+    floatTexPool.clear();
+    logger->log("finalize end");
+}
+
 void ModernOpenGLGraphics::drawTriangleArray(const int size)
 {
     mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
         mFloatArray, GL_DYNAMIC_DRAW);
+#ifdef DEBUG_DRAW_CALLS
+    mDrawCalls ++;
+#endif
+    glDrawArrays(GL_TRIANGLES, 0, size / 4);
+}
+
+void ModernOpenGLGraphics::drawTriangleArray(const GLfloat *const array,
+                                             const int size)
+{
+    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
+        array, GL_DYNAMIC_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif

@@ -139,6 +139,7 @@ void AvatarListBox::draw(Graphics *graphics)
                 {
                     graphics->calcTileCollection(&vertexes, icon,
                         mImagePadding, y + mPadding);
+                    graphics->finalize(&vertexes);
                 }
                 else
                 {

@@ -282,6 +282,7 @@ void Slider::draw(Graphics *graphics)
                         (mDimension.height - img->getHeight()) / 2);
                 }
             }
+            graphics->finalize(mVertexes);
         }
         graphics->drawTileCollection(mVertexes);
     }

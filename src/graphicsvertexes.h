@@ -124,6 +124,7 @@ class OpenGLGraphicsVertexes final
         std::vector<GLint*> mIntVertPool;
         std::vector<GLshort*> mShortVertPool;
         std::vector<GLint*> mIntTexPool;
+        std::vector<GLuint> mVbo;
 };
 #endif
 
@@ -146,6 +147,7 @@ class ImageVertexes final
 };
 
 typedef std::vector<ImageVertexes*> ImageVertexesVector;
+typedef ImageVertexesVector::iterator ImageCollectionIter;
 typedef ImageVertexesVector::const_iterator ImageCollectionCIter;
 
 class ImageCollection final

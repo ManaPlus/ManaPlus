@@ -92,6 +92,7 @@ void EmotePage::draw(Graphics *graphics)
                     }
                 }
             }
+            graphics->finalize(mVertexes);
         }
         graphics->drawTileCollection(mVertexes);
     }

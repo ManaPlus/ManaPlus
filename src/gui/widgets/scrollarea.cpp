@@ -320,6 +320,7 @@ void ScrollArea::draw(Graphics *graphics)
         {
             if (!mOpaque)
                 updateCalcFlag(graphics);
+            // need add caching or remove calc calls.
 //            if (mRedraw)
             {
                 mVertexes->clear();
@@ -344,6 +345,7 @@ void ScrollArea::draw(Graphics *graphics)
                     calcHBar(graphics);
                     calcHMarker(graphics);
                 }
+                graphics->finalize(mVertexes);
             }
             graphics->drawTileCollection(mVertexes);
         }
@@ -436,6 +438,7 @@ void ScrollArea::drawFrame(Graphics *graphics)
                     0, 0,
                     w, h,
                     background);
+                graphics->finalize(mVertexes2);
             }
             graphics->drawTileCollection(mVertexes2);
         }

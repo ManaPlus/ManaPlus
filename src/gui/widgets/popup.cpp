@@ -106,7 +106,8 @@ void Popup::draw(Graphics *graphics)
                     mDimension.width, mDimension.height,
                     mSkin->getBorder());
             }
-
+            // need cache or remove calc call.
+            graphics->finalize(mVertexes);
             graphics->drawTileCollection(mVertexes);
         }
         else

@@ -134,6 +134,7 @@ void ShortcutContainer::drawBackground(Graphics *g)
                         (i % mGridWidth) * mBoxWidth,
                         (i / mGridWidth) * mBoxHeight);
                 }
+                g->finalize(mVertexes);
             }
             g->drawTileCollection(mVertexes);
         }

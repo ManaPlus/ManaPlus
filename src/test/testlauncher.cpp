@@ -396,12 +396,14 @@ int TestLauncher::testDraw()
     mainGraphics->drawPattern(img[0], 10, 400, 300, 180);
 
     mainGraphics->calcPattern(col, img[1], 500, 400, 150, 100);
-    mainGraphics->drawTileCollection(col);
+    mainGraphics->finalize(col);
 
     mainGraphics->drawRescaledImage(img[0], 250, 350, 35, 90);
 
     mainGraphics->setColor(Color(0x00U, 0xFFU, 0x00U, 0x90U));
     mainGraphics->drawNet(450, 10, 600, 300, 32, 20);
+
+    mainGraphics->drawTileCollection(col);
 
     img[0]->setAlpha(0.3f);
     mainGraphics->drawRescaledPattern(img[0], 250, 150, 250, 300, 30, 100);
