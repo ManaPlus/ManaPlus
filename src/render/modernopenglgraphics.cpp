@@ -442,12 +442,12 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *const image,
                 texX1, texY1, texX2, texY2,
                 dstX, dstY, width, height);
 
+            vp += 24;
             if (vp >= vLimit)
             {
                 drawTriangleArray(vp);
                 vp = 0;
             }
-            vp += 24;
         }
     }
     if (vp > 0)
@@ -460,6 +460,74 @@ void ModernOpenGLGraphics::drawRescaledPattern(const Image *const image,
                                                const int scaledWidth,
                                                const int scaledHeight)
 {
+    if (!image)
+        return;
+
+    if (scaledWidth == 0 || scaledHeight == 0)
+        return;
+
+    const SDL_Rect &imageRect = image->mBounds;
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
+    const int iw = imageRect.w;
+    const int ih = imageRect.h;
+    if (iw == 0 || ih == 0)
+        return;
+
+#ifdef DEBUG_BIND_TEXTURE
+    debugBindTexture(image);
+#endif
+    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+
+    setTexturingAndBlending(true);
+    setColorAlpha(image->mAlpha);
+
+    unsigned int vp = 0;
+    const unsigned int vLimit = mMaxVertices * 4;
+
+    const float tw = static_cast<float>(image->mTexWidth);
+    const float th = static_cast<float>(image->mTexHeight);
+    const ClipRect &clipArea = mClipStack.top();
+    const int x2 = x + clipArea.xOffset;
+    const int y2 = y + clipArea.yOffset;
+
+    const float texX1 = static_cast<float>(srcX) / tw;
+    const float texY1 = static_cast<float>(srcY) / th;
+
+    const float tFractionW = iw / tw;
+    const float tFractionH = ih / th;
+
+    for (int py = 0; py < h; py += scaledHeight)
+    {
+        const int height = (py + scaledHeight >= h)
+            ? h - py : scaledHeight;
+        const int dstY = y2 + py;
+        const float visibleFractionH = static_cast<float>(height)
+            / scaledHeight;
+        const float texY2 = texY1 + tFractionH * visibleFractionH;
+        for (int px = 0; px < w; px += scaledWidth)
+        {
+            const int width = (px + scaledWidth >= w)
+                ? w - px : scaledWidth;
+            const int dstX = x2 + px;
+            const float visibleFractionW = static_cast<float>(width)
+                / scaledWidth;
+            const float texX2 = texX1 + tFractionW * visibleFractionW;
+
+            vertFill2D(mFloatArray,
+                texX1, texY1, texX2, texY2,
+                dstX, dstY, width, height);
+
+            vp += 24;
+            if (vp >= vLimit)
+            {
+                drawTriangleArray(vp);
+                vp = 0;
+            }
+        }
+    }
+    if (vp > 0)
+        drawTriangleArray(vp);
 }
 
 inline void ModernOpenGLGraphics::drawVertexes(const
@@ -888,11 +956,12 @@ void ModernOpenGLGraphics::clearScreen() const
 
 void ModernOpenGLGraphics::drawTriangleArray(const int size)
 {
-    mglBufferData(GL_ARRAY_BUFFER, size, mFloatArray, GL_DYNAMIC_DRAW);
+    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
+        mFloatArray, GL_DYNAMIC_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
-    glDrawArrays(GL_TRIANGLES, 0, size / 2);;
+    glDrawArrays(GL_TRIANGLES, 0, size / 4);
 }
 
 #ifdef DEBUG_BIND_TEXTURE

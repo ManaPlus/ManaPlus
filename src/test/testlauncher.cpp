@@ -393,7 +393,7 @@ int TestLauncher::testDraw()
     boldFont->drawString(mainGraphics,
         "test test test test test test test test ", 300, 100);
 
-    mainGraphics->drawPattern(img[0], 10, 400, 100, 200);
+    mainGraphics->drawPattern(img[0], 10, 400, 300, 180);
 
     mainGraphics->calcPattern(col, img[1], 500, 400, 150, 100);
     mainGraphics->drawTileCollection(col);
@@ -402,6 +402,9 @@ int TestLauncher::testDraw()
 
     mainGraphics->setColor(Color(0x00U, 0xFFU, 0x00U, 0x90U));
     mainGraphics->drawNet(450, 10, 600, 300, 32, 20);
+
+    img[0]->setAlpha(0.3f);
+    mainGraphics->drawRescaledPattern(img[0], 250, 150, 250, 300, 30, 100);
 
     for (int f = 0; f < 255; f ++)
     {
