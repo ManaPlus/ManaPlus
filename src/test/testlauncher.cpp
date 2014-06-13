@@ -27,6 +27,7 @@
 #include "settings.h"
 #include "soundmanager.h"
 
+#include "gui/skin.h"
 #include "gui/theme.h"
 
 #include "gui/fonts/font.h"
@@ -375,8 +376,10 @@ int TestLauncher::testDraw()
     img[1] = Theme::getImageFromTheme("graphics/sprites/arrow_right.png");
     img[2] = Theme::getImageFromTheme("graphics/sprites/arrow_up.png");
     ImageCollection *const col = new ImageCollection;
+    ImageCollection *const col2 = new ImageCollection;
     ImageVertexes *const vert = new ImageVertexes;
     vert->image = img[2];
+    Skin *skin = theme->load("button.xml", "button.xml");
 
     mainGraphics->pushClipArea(Rect(10, 20, 790, 580));
     mainGraphics->setColor(Color(0xFFU, 0xFFU, 0x00U, 0xFFU));
@@ -386,6 +389,12 @@ int TestLauncher::testDraw()
     img[0]->setAlpha(0.5f);
     mainGraphics->drawImage(img[0], 190, 383);
     img[0]->setAlpha(1.0f);
+
+    mainGraphics->calcWindow(col2,
+                5, 40,
+                500, 40,
+                skin->getBorder());
+    mainGraphics->finalize(col2);
 
     mainGraphics->calcTileVertexes(vert, img[2], 10, 10);
     mainGraphics->calcTileVertexes(vert, img[2], 40, 10);
@@ -399,6 +408,8 @@ int TestLauncher::testDraw()
         Color(0x00U, 0xFFU, 0x00U, 0xB0U));
     boldFont->drawString(mainGraphics,
         "test test test test test test test test ", 300, 100);
+
+    mainGraphics->drawTileCollection(col2);
 
     mainGraphics->drawPattern(img[0], 10, 400, 300, 180);
 

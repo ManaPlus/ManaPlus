@@ -1190,6 +1190,7 @@ void ModernOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
                                          const int w, const int h,
                                          const ImageRect &imgRect)
 {
+    #include "render/graphics_calcImageRect.hpp"
 }
 
 void ModernOpenGLGraphics::clearScreen() const
