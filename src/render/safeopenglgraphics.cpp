@@ -176,6 +176,32 @@ bool SafeOpenGLGraphics::drawImageInline(const Image *const image,
     return true;
 }
 
+void SafeOpenGLGraphics::testDraw()
+{
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    {
+        glTexCoord2f(0.0f, 0.0f);
+        glVertex2i(0, 0);
+        glTexCoord2f(1.0f, 0.0f);
+        glVertex2i(800, 0);
+        glTexCoord2f(1.0f, 1.0f);
+        glVertex2i(800, 600);
+        glTexCoord2f(0.0f, 1.0f);
+        glVertex2i(0, 600);
+    }
+    else
+    {
+        glTexCoord2i(0, 0);
+        glVertex2i(0, 0);
+        glTexCoord2i(800, 0);
+        glVertex2i(800, 0);
+        glTexCoord2i(800, 600);
+        glVertex2i(800, 600);
+        glTexCoord2i(0, 600);
+        glVertex2i(0, 600);
+    }
+}
+
 void SafeOpenGLGraphics::drawImageCached(const Image *const image,
                                          int x, int y)
 {

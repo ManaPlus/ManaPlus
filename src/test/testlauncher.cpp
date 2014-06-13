@@ -90,6 +90,8 @@ int TestLauncher::exec()
         return testDye();
     else if (mTest == "102")
         return testDraw();
+    else if (mTest == "103")
+        return testFps2();
 
     return -1;
 }
@@ -172,6 +174,39 @@ int TestLauncher::testFps()
                     idx = 0;
             }
         }
+        mainGraphics->updateScreen();
+    }
+
+    gettimeofday(&end, nullptr);
+    const int tFps = calcFps(&start, &end, cnt);
+    file << mTest << std::endl;
+    file << tFps << std::endl;
+
+    sleep(1);
+    return 0;
+}
+
+int TestLauncher::testFps2()
+{
+    timeval start;
+    timeval end;
+
+    Wallpaper::loadWallpapers();
+    Wallpaper::getWallpaper(800, 600);
+    Image *img[1];
+    const int sz = 4;
+
+    img[0] = Theme::getImageFromTheme("graphics/images/login_wallpaper.png");
+    mainGraphics->drawImage(img[0], 0, 0);
+    int idx = 0;
+
+    const int cnt = 500;
+
+    gettimeofday(&start, nullptr);
+    for (int k = 0; k < cnt; k ++)
+    {
+        for (int f = 0; f < 300; f ++)
+            mainGraphics->testDraw();
         mainGraphics->updateScreen();
     }
 

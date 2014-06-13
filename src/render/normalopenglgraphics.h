@@ -76,6 +76,8 @@ class NormalOpenGLGraphics final : public Graphics
 
         inline void drawLineArrayf(const int size);
 
+        void testDraw() override final;
+
         #include "render/graphicsdef.hpp"
 
         #include "render/openglgraphicsdef.hpp"

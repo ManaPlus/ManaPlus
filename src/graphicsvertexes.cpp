@@ -20,7 +20,9 @@
 
 #include "graphicsvertexes.h"
 
-#include "render/mgl.h"
+#include "logger.h"
+
+#include "render/graphics.h"
 
 #include "utils/dtor.h"
 
@@ -97,14 +99,11 @@ void OpenGLGraphicsVertexes::clear()
     }
     mIntTexPool.clear();
 
-    if (mglDeleteBuffers)
+    const int sz = mVbo.size();
+    if (sz > 0)
     {
-        const int sz = mVbo.size();
-        if (sz > 0)
-        {
-            mglDeleteBuffers(sz, &mVbo[0]);
-            mVbo.clear();
-        }
+        mainGraphics->removeArray(sz, &mVbo[0]);
+        mVbo.clear();
     }
 
     mVp.clear();

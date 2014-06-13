@@ -460,6 +460,13 @@ class Graphics notfinal
         virtual void finalize(ImageVertexes *const vert A_UNUSED)
         { }
 
+        virtual void testDraw()
+        { }
+
+        virtual void removeArray(const uint32_t sz A_UNUSED,
+                                 uint32_t *const arr A_UNUSED)
+        { }
+
         int mWidth;
         int mHeight;
         int mActualWidth;

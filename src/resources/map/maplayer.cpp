@@ -276,10 +276,12 @@ void MapLayer::updateOGL(Graphics *const graphics,
         && debugFlags != MapType::SPECIAL2);
 
     MapRowVertexes *const row = new MapRowVertexes();
+    logger->log("mTempRows size: %u", (int)mTempRows.size());
     mTempRows.push_back(row);
     Image *lastImage = nullptr;
     ImageVertexes *imgVert = nullptr;
-    std::map<int, ImageVertexes*> imgSet;
+    typedef std::map<int, ImageVertexes*> ImageVertexesMap;
+    ImageVertexesMap imgSet;
 
     for (int y = startY; y < endY; y++)
     {
@@ -323,7 +325,16 @@ void MapLayer::updateOGL(Graphics *const graphics,
             }
         }
     }
-    graphics->finalize(imgVert);
+    FOR_EACH (MapRowImages::iterator, it, row->images)
+    {
+        graphics->finalize(*it);
+    }
+/*
+    FOR_EACH (ImageVertexesMap::iterator, it, imgSet)
+    {
+        graphics->finalize((*it).second);
+    }
+*/
     BLOCK_END("MapLayer::updateOGL")
 }
 

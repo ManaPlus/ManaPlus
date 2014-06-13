@@ -56,6 +56,8 @@ class TestLauncher final
 
         int testFps();
 
+        int testFps2();
+
         int testInternal();
 
         int testDye();

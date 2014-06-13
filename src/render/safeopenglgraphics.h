@@ -50,6 +50,8 @@ class SafeOpenGLGraphics final : public Graphics
 
         ~SafeOpenGLGraphics();
 
+        void testDraw();
+
         #include "render/graphicsdef.hpp"
 
         #include "render/openglgraphicsdef.hpp"

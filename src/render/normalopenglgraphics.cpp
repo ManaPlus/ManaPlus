@@ -339,6 +339,62 @@ bool NormalOpenGLGraphics::drawImageInline(const Image *const image,
     return true;
 }
 
+void NormalOpenGLGraphics::testDraw()
+{
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
+    {
+        GLfloat tex[] =
+        {
+            0.0f, 0.0f,
+            1.0f, 0.0f,
+            1.0f, 1.0f,
+            0.0f, 1.0f
+        };
+
+        GLint vert[] =
+        {
+            0, 0,
+            800, 0,
+            800, 600,
+            0, 600
+        };
+
+        glVertexPointer(2, GL_INT, 0, &vert);
+        glTexCoordPointer(2, GL_FLOAT, 0, &tex);
+
+#ifdef DEBUG_DRAW_CALLS
+        NormalOpenGLGraphics::mDrawCalls ++;
+#endif
+        glDrawArrays(GL_QUADS, 0, 4);
+    }
+    else
+    {
+        GLint tex[] =
+        {
+            0, 0,
+            800, 0,
+            800, 600,
+            0, 600
+        };
+
+        GLint vert[] =
+        {
+            0, 0,
+            800, 0,
+            800, 600,
+            0, 600
+        };
+
+        glVertexPointer(2, GL_INT, 0, &vert);
+        glTexCoordPointer(2, GL_INT, 0, &tex);
+
+#ifdef DEBUG_DRAW_CALLS
+        NormalOpenGLGraphics::mDrawCalls ++;
+#endif
+        glDrawArrays(GL_QUADS, 0, 4);
+    }
+}
+
 void NormalOpenGLGraphics::drawImageCached(const Image *const image,
                                            int x, int y)
 {

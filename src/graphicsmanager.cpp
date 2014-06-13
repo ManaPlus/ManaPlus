@@ -972,6 +972,7 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glDeleteBuffers, "glDeleteBuffers");
         assignFunction(glBindBuffer, "glBindBuffer");
         assignFunction(glBufferData, "glBufferData");
+        assignFunction(glIsBuffer, "glIsBuffer");
     }
     else
     {
