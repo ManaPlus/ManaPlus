@@ -97,8 +97,15 @@ void OpenGLGraphicsVertexes::clear()
     }
     mIntTexPool.clear();
 
-    mglDeleteBuffers(mVbo.size(), &mVbo[0]);
-    mVbo.clear();
+    if (mglDeleteBuffers)
+    {
+        const int sz = mVbo.size();
+        if (sz > 0)
+        {
+            mglDeleteBuffers(sz, &mVbo[0]);
+            mVbo.clear();
+        }
+    }
 
     mVp.clear();
     if (ptr)
