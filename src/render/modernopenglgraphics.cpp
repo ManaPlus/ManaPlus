@@ -698,10 +698,67 @@ void ModernOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
                                                   const Image *const image,
                                                   int dstX, int dstY) const
 {
+    if (!vert || !image)
+        return;
+
+    const SDL_Rect &imageRect = image->mBounds;
+    const int srcX = imageRect.x;
+    const int srcY = imageRect.y;
+    const int w = imageRect.w;
+    const int h = imageRect.h;
+
+    if (w == 0 || h == 0)
+        return;
+
+    const float tw = static_cast<float>(image->mTexWidth);
+    const float th = static_cast<float>(image->mTexHeight);
+    const ClipRect &clipArea = mClipStack.top();
+    const int x2 = dstX + clipArea.xOffset;
+    const int y2 = dstY + clipArea.yOffset;
+
+    const unsigned int vLimit = mMaxVertices * 4;
+
+    OpenGLGraphicsVertexes &ogl = vert->ogl;
+
+    unsigned int vp = ogl.continueVp();
+
+    float texX1 = static_cast<float>(srcX) / tw;
+    float texY1 = static_cast<float>(srcY) / th;
+    float texX2 = static_cast<float>(srcX + w) / tw;
+    float texY2 = static_cast<float>(srcY + h) / th;
+
+    GLfloat *const floatArray = ogl.continueFloatTexArray();
+
+    vertFill2D(floatArray,
+        texX1, texY1, texX2, texY2,
+        x2, y2, w, h);
+
+    vp += 24;
+    if (vp >= vLimit)
+    {
+        ogl.switchFloatTexArray();
+        ogl.switchVp(vp);
+        vp = 0;
+    }
+
+    ogl.switchVp(vp);
 }
 
 void ModernOpenGLGraphics::drawTileVertexes(const ImageVertexes *const vert)
 {
+    if (!vert)
+        return;
+    const Image *const image = vert->image;
+
+    setColorAlpha(image->mAlpha);
+#ifdef DEBUG_BIND_TEXTURE
+    debugBindTexture(image);
+#endif
+    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
+    setTexturingAndBlending(true);
+    bindArrayBufferAndAttributes(mVbo);
+
+    drawVertexes(vert->ogl);
 }
 
 void ModernOpenGLGraphics::calcWindow(ImageCollection *const vertCol,

@@ -370,10 +370,13 @@ int TestLauncher::testDye()
 
 int TestLauncher::testDraw()
 {
-    Image *img[2];
+    Image *img[3];
     img[0] = Theme::getImageFromTheme("graphics/sprites/arrow_left.png");
     img[1] = Theme::getImageFromTheme("graphics/sprites/arrow_right.png");
+    img[2] = Theme::getImageFromTheme("graphics/sprites/arrow_up.png");
     ImageCollection *const col = new ImageCollection;
+    ImageVertexes *const vert = new ImageVertexes;
+    vert->image = img[2];
 
     mainGraphics->pushClipArea(Rect(10, 20, 790, 580));
     mainGraphics->setColor(Color(0xFFU, 0xFFU, 0x00U, 0xFFU));
@@ -383,6 +386,10 @@ int TestLauncher::testDraw()
     img[0]->setAlpha(0.5f);
     mainGraphics->drawImage(img[0], 190, 383);
     img[0]->setAlpha(1.0f);
+
+    mainGraphics->calcTileVertexes(vert, img[2], 10, 10);
+    mainGraphics->calcTileVertexes(vert, img[2], 40, 10);
+    mainGraphics->finalize(vert);
 
     mainGraphics->setColor(Color(0x80U, 0x00U, 0xA0U, 0x90U));
     mainGraphics->fillRectangle(Rect(200, 100, 300, 300));
@@ -397,6 +404,8 @@ int TestLauncher::testDraw()
 
     mainGraphics->calcPattern(col, img[1], 500, 400, 150, 100);
     mainGraphics->finalize(col);
+
+    mainGraphics->drawTileVertexes(vert);
 
     mainGraphics->drawRescaledImage(img[0], 250, 350, 35, 90);
 
