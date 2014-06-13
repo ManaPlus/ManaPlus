@@ -337,14 +337,16 @@ bool ModernOpenGLGraphics::drawImageInline(const Image *const image,
     return true;
 }
 
-void ModernOpenGLGraphics::drawImageCached(const Image *const image,
-                                           int x, int y)
+void ModernOpenGLGraphics::drawImageCached(const Image *const image A_UNUSED,
+                                           int A_UNUSED x, int y A_UNUSED)
 {
 }
 
-void ModernOpenGLGraphics::drawPatternCached(const Image *const image,
-                                             const int x, const int y,
-                                             const int w, const int h)
+void ModernOpenGLGraphics::drawPatternCached(const Image *const image A_UNUSED,
+                                             const int x A_UNUSED,
+                                             const int y A_UNUSED,
+                                             const int w A_UNUSED,
+                                             const int h A_UNUSED)
 {
 }
 
