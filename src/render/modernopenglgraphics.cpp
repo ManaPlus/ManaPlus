@@ -545,20 +545,16 @@ inline void ModernOpenGLGraphics::drawVertexes(const
     std::vector<GLuint>::const_iterator ivbo;
     const std::vector<int>::const_iterator ivp_end = vp.end();
 
-    logger->log("drawVertexes start");
     for (ivp = vp.begin(), ivbo = vbos.begin();
          ivp != ivp_end;
          ++ ivp, ++ ivbo)
     {
-        logger->log("bind vbo: %d", *ivbo);
-        logger->log("buf size in vetexes: %d", (*ivp) / 4);
         bindArrayBufferAndAttributes(*ivbo);
 #ifdef DEBUG_DRAW_CALLS
         mDrawCalls ++;
 #endif
         glDrawArrays(GL_TRIANGLES, 0, *ivp / 4);
     }
-    logger->log("drawVertexes end");
 }
 
 void ModernOpenGLGraphics::calcPattern(ImageVertexes *const vert,
@@ -1168,13 +1164,10 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *const vert)
     vbos.resize(sz);
     mglGenBuffers(sz, &vbos[0]);
 
-    logger->log("finalize start");
     for (ft = floatTexPool.begin(), ivp = vp.begin(), ivbo = vbos.begin();
          ft != ft_end && ivp != ivp_end;
          ++ ft, ++ ivp, ++ ivbo)
     {
-        logger->log("bind vbo: %d", *ivbo);
-        logger->log("buf size in vetexes: %d", *ivp / 4);
         bindArrayBuffer(*ivbo);
         mglBufferData(GL_ARRAY_BUFFER, (*ivp) * sizeof(GLfloat),
             *ft, GL_DYNAMIC_DRAW);
@@ -1186,7 +1179,6 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *const vert)
         delete [] (*it);
     }
     floatTexPool.clear();
-    logger->log("finalize end");
 }
 
 void ModernOpenGLGraphics::drawTriangleArray(const int size)
