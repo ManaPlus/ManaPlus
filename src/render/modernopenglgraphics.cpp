@@ -264,7 +264,7 @@ void ModernOpenGLGraphics::drawQuad(const Image *const image,
     };
 
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
-        vertices, GL_DYNAMIC_DRAW);
+        vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -300,7 +300,7 @@ void ModernOpenGLGraphics::drawRescaledQuad(const Image *const image,
     };
 
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
-        vertices, GL_DYNAMIC_DRAW);
+        vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -930,7 +930,7 @@ void ModernOpenGLGraphics::drawPoint(int x, int y)
         x + clipArea.xOffset, y + clipArea.yOffset, 0.0f, 0.0f
     };
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
-        vertices, GL_DYNAMIC_DRAW);
+        vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -948,7 +948,7 @@ void ModernOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
         x2 + clipArea.xOffset, y2 + clipArea.yOffset, 0.0f, 0.0f
     };
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
-        vertices, GL_DYNAMIC_DRAW);
+        vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -973,7 +973,7 @@ void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
     };
 
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
-        vertices, GL_DYNAMIC_DRAW);
+        vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -998,7 +998,7 @@ void ModernOpenGLGraphics::fillRectangle(const Rect& rect)
     };
 
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
-        vertices, GL_DYNAMIC_DRAW);
+        vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -1228,7 +1228,7 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *const vert)
     {
         bindArrayBuffer(*ivbo);
         mglBufferData(GL_ARRAY_BUFFER, (*ivp) * sizeof(GLfloat),
-            *ft, GL_DYNAMIC_DRAW);
+            *ft, GL_STATIC_DRAW);
     }
 
     for (std::vector<GLfloat*>::iterator it = floatTexPool.begin();
@@ -1242,7 +1242,7 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *const vert)
 void ModernOpenGLGraphics::drawTriangleArray(const int size)
 {
     mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
-        mFloatArray, GL_DYNAMIC_DRAW);
+        mFloatArray, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -1253,7 +1253,7 @@ void ModernOpenGLGraphics::drawTriangleArray(const GLfloat *const array,
                                              const int size)
 {
     mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
-        array, GL_DYNAMIC_DRAW);
+        array, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -1263,7 +1263,7 @@ void ModernOpenGLGraphics::drawTriangleArray(const GLfloat *const array,
 void ModernOpenGLGraphics::drawLineArrays(const int size)
 {
     mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
-        mFloatArray, GL_DYNAMIC_DRAW);
+        mFloatArray, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
