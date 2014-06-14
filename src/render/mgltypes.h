@@ -140,6 +140,8 @@ typedef void (APIENTRY *glVertexAttribFormat_t) (GLuint attribindex,
 typedef void (APIENTRY *glBindVertexBuffers_t) (GLuint first, GLsizei count,
     const GLuint *buffers, const GLuint *offsets, const GLsizei *strides);
 typedef GLboolean (APIENTRY *glIsBuffer_t) (GLuint buffer);
+typedef void (APIENTRY *glVertexAttribIFormat_t) (GLuint attribindex,
+    GLint size, GLenum type, GLuint relativeoffset);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,

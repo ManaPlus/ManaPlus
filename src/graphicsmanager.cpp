@@ -1042,6 +1042,7 @@ void GraphicsManager::initOpenGLFunctions()
             assignFunction(glBindVertexBuffer, "glBindVertexBuffer");
             assignFunction(glVertexAttribBinding, "glVertexAttribBinding");
             assignFunction(glVertexAttribFormat, "glVertexAttribFormat");
+            assignFunction(glVertexAttribIFormat, "glVertexAttribIFormat");
         }
         else
         {

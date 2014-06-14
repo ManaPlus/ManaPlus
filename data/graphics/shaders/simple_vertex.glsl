@@ -1,5 +1,5 @@
 #version 150 core
-in vec4 position;
+in ivec4 position;
 out vec2 Texcoord;
 uniform vec2 screen;
 void main()

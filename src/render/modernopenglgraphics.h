@@ -96,7 +96,7 @@ class ModernOpenGLGraphics final : public Graphics
 
         inline void drawTriangleArray(const int size);
 
-        inline void drawTriangleArray(const GLfloat *const array,
+        inline void drawTriangleArray(const GLint *const array,
                                       const int size);
 
         inline void drawLineArrays(const int size);
@@ -107,8 +107,8 @@ class ModernOpenGLGraphics final : public Graphics
 
         inline void bindAttributes();
 
-        GLfloat *mFloatArray;
-        GLfloat *mFloatArrayCached;
+        GLint *mIntArray;
+        GLint *mIntArrayCached;
         ShaderProgram *mProgram;
         float mAlphaCached;
         int mVpCached;

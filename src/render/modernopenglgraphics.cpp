@@ -75,7 +75,6 @@
     var[vp + 22] = x2; \
     var[vp + 23] = y2;
 
-
 GLuint ModernOpenGLGraphics::mLastImage = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int ModernOpenGLGraphics::mDrawCalls = 0;
@@ -83,8 +82,8 @@ unsigned int ModernOpenGLGraphics::mLastDrawCalls = 0;
 #endif
 
 ModernOpenGLGraphics::ModernOpenGLGraphics() :
-    mFloatArray(nullptr),
-    mFloatArrayCached(nullptr),
+    mIntArray(nullptr),
+    mIntArrayCached(nullptr),
     mProgram(nullptr),
     mAlphaCached(1.0F),
     mVpCached(0),
@@ -137,10 +136,10 @@ void ModernOpenGLGraphics::initArrays(const int vertCount)
     // need alocate small size, after if limit reached reallocate to double size
     const size_t sz = mMaxVertices * 4 + 30;
     vertexBufSize = mMaxVertices;
-    if (!mFloatArray)
-        mFloatArray = new GLfloat[sz];
-    if (!mFloatArrayCached)
-        mFloatArrayCached = new GLfloat[sz];
+    if (!mIntArray)
+        mIntArray = new GLint[sz];
+    if (!mIntArrayCached)
+        mIntArrayCached = new GLint[sz];
 }
 
 void ModernOpenGLGraphics::postInit()
@@ -162,7 +161,7 @@ void ModernOpenGLGraphics::postInit()
 
     mPosAttrib = mglGetAttribLocation(mProgramId, "position");
     mglEnableVertexAttribArray(mPosAttrib);
-    mglVertexAttribFormat(mPosAttrib, 4, GL_FLOAT, GL_FALSE, 0);
+    mglVertexAttribIFormat(mPosAttrib, 4, GL_INT, 0);
 
     mSimpleColorUniform = mglGetUniformLocation(mProgramId, "color");
     mScreenUniform = mglGetUniformLocation(mProgramId, "screen");
@@ -171,7 +170,7 @@ void ModernOpenGLGraphics::postInit()
 
     mglUniform1f(mTextureColorUniform, 1.0f);
 
-    mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLfloat));
+    mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLint));
     mglVertexAttribBinding(mPosAttrib, 0);
     mAttributesCached = mVbo;
 
@@ -192,10 +191,10 @@ void ModernOpenGLGraphics::deleteArrays()
 
 void ModernOpenGLGraphics::deleteArraysInternal()
 {
-    delete [] mFloatArray;
-    mFloatArray = nullptr;
-    delete [] mFloatArrayCached;
-    mFloatArrayCached = nullptr;
+    delete [] mIntArray;
+    mIntArray = nullptr;
+    delete [] mIntArrayCached;
+    mIntArrayCached = nullptr;
 }
 
 bool ModernOpenGLGraphics::setVideoMode(const int w, const int h,
@@ -247,19 +246,19 @@ void ModernOpenGLGraphics::drawQuad(const Image *const image,
                                     const int width, const int height)
 {
 
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
+    const int tw = image->mTexWidth;
+    const int th = image->mTexHeight;
     // Find OpenGL normalized texture coordinates.
-    const float texX1 = static_cast<float>(srcX) / tw;
-    const float texY1 = static_cast<float>(srcY) / th;
-    const float texX2 = static_cast<float>(srcX + width) / tw;
-    const float texY2 = static_cast<float>(srcY + height) / th;
-    const float x1 = static_cast<GLfloat>(dstX);
-    const float y1 = static_cast<GLfloat>(dstY);
-    const float x2 = x1 + static_cast<GLfloat>(width);
-    const float y2 = y1 + static_cast<GLfloat>(height);
+    const int texX1 = srcX;
+    const int texY1 = srcY;
+    const int texX2 = srcX + width;
+    const int texY2 = srcY + height;
+    const int x1 = dstX;
+    const int y1 = dstY;
+    const int x2 = x1 + width;
+    const int y2 = y1 + height;
 
-    GLfloat vertices[] =
+    GLint vertices[] =
     {
         x1, y1, texX1, texY1,
         x2, y1, texX2, texY1,
@@ -283,20 +282,20 @@ void ModernOpenGLGraphics::drawRescaledQuad(const Image *const image,
                                             const int desiredWidth,
                                             const int desiredHeight)
 {
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
+    const float tw = image->mTexWidth;
+    const float th = image->mTexHeight;
     // Find OpenGL normalized texture coordinates.
-    const float texX1 = static_cast<float>(srcX) / tw;
-    const float texY1 = static_cast<float>(srcY) / th;
-    const float texX2 = static_cast<float>(srcX + width) / tw;
-    const float texY2 = static_cast<float>(srcY + height) / th;
+    const int texX1 = srcX;
+    const int texY1 = srcY;
+    const int texX2 = srcX + width;
+    const int texY2 = srcY + height;
 
-    const float x1 = static_cast<GLfloat>(dstX);
-    const float y1 = static_cast<GLfloat>(dstY);
-    const float x2 = x1 + static_cast<GLfloat>(desiredWidth);
-    const float y2 = y1 + static_cast<GLfloat>(desiredHeight);
+    const int x1 = dstX;
+    const int y1 = dstY;
+    const int x2 = x1 + desiredWidth;
+    const int y2 = y1 + desiredHeight;
 
-    GLfloat vertices[] =
+    GLint vertices[] =
     {
         x1, y1, texX1, texY1,
         x2, y1, texX2, texY1,
@@ -345,12 +344,17 @@ bool ModernOpenGLGraphics::drawImageInline(const Image *const image,
 
 void ModernOpenGLGraphics::testDraw()
 {
-    GLfloat vertices[] =
+    GLint vertices[] =
     {
-        0.0f, 0.0f, 0.0f, 0.0f,
-        800.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 600.0f, 0.0f, 1.0f,
-        800.0f, 600.0f, 1.0f, 1.0f
+        0, 0, 0, 0,
+        800, 0, 800, 0,
+        0, 600, 0, 600,
+        800, 600, 800, 600
+
+//        0.0f, 0.0f, 0.0f, 0.0f,
+//        800.0f, 0.0f, 1.0f, 0.0f,
+//        0.0f, 600.0f, 0.0f, 1.0f,
+//        800.0f, 600.0f, 1.0f, 1.0f
     };
 
     //logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
@@ -435,8 +439,8 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *const image,
     if (iw == 0 || ih == 0)
         return;
 
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
+//    const float tw = static_cast<float>(image->mTexWidth);
+//    const float th = static_cast<float>(image->mTexHeight);
     const ClipRect &clipArea = mClipStack.top();
     const int x2 = x + clipArea.xOffset;
     const int y2 = y + clipArea.yOffset;
@@ -453,22 +457,22 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *const image,
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
 
-    const float texX1 = static_cast<float>(srcX) / tw;
-    const float texY1 = static_cast<float>(srcY) / th;
+    const int texX1 = srcX;
+    const int texY1 = srcY;
 
     for (int py = 0; py < h; py += ih)
     {
         const int height = (py + ih >= h) ? h - py : ih;
-        const float texY2 = static_cast<float>(srcY + height) / th;
+        const int texY2 = srcY + height;
         const int dstY = y2 + py;
         for (int px = 0; px < w; px += iw)
         {
             const int width = (px + iw >= w) ? w - px : iw;
             const int dstX = x2 + px;
 
-            const float texX2 = static_cast<float>(srcX + width) / tw;
+            const int texX2 = srcX + width;
 
-            vertFill2D(mFloatArray,
+            vertFill2D(mIntArray,
                 texX1, texY1, texX2, texY2,
                 dstX, dstY, width, height);
 
@@ -516,37 +520,33 @@ void ModernOpenGLGraphics::drawRescaledPattern(const Image *const image,
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
 
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
+//    const float tw = static_cast<float>(image->mTexWidth);
+//    const float th = static_cast<float>(image->mTexHeight);
     const ClipRect &clipArea = mClipStack.top();
     const int x2 = x + clipArea.xOffset;
     const int y2 = y + clipArea.yOffset;
 
-    const float texX1 = static_cast<float>(srcX) / tw;
-    const float texY1 = static_cast<float>(srcY) / th;
+    const int texX1 = srcX;
+    const int texY1 = srcY;
 
-    const float tFractionW = iw / tw;
-    const float tFractionH = ih / th;
+    const float scaleFactorW = static_cast<float>(scaledWidth) / iw;
+    const float scaleFactorH = static_cast<float>(scaledHeight) / ih;
 
     for (int py = 0; py < h; py += scaledHeight)
     {
         const int height = (py + scaledHeight >= h)
             ? h - py : scaledHeight;
-        const int dstY = y2 + py;
-        const float visibleFractionH = static_cast<float>(height)
-            / scaledHeight;
-        const float texY2 = texY1 + tFractionH * visibleFractionH;
+        const int dstY = y + py;
+        const int scaledY = srcY + height / scaleFactorH;
         for (int px = 0; px < w; px += scaledWidth)
         {
             const int width = (px + scaledWidth >= w)
                 ? w - px : scaledWidth;
-            const int dstX = x2 + px;
-            const float visibleFractionW = static_cast<float>(width)
-                / scaledWidth;
-            const float texX2 = texX1 + tFractionW * visibleFractionW;
+            const int dstX = x + px;
+            const int scaledX = srcX + width / scaleFactorW;
 
-            vertFill2D(mFloatArray,
-                texX1, texY1, texX2, texY2,
+            vertFill2D(mIntArray,
+                texX1, texY1, scaledX, scaledY,
                 dstX, dstY, width, height);
 
             vp += 24;
@@ -613,8 +613,8 @@ void ModernOpenGLGraphics::calcPatternInline(ImageVertexes *const vert,
     if (iw == 0 || ih == 0)
         return;
 
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
+//    const float tw = static_cast<float>(image->mTexWidth);
+//    const float th = static_cast<float>(image->mTexHeight);
     const ClipRect &clipArea = mClipStack.top();
     const int x2 = x + clipArea.xOffset;
     const int y2 = y + clipArea.yOffset;
@@ -624,30 +624,30 @@ void ModernOpenGLGraphics::calcPatternInline(ImageVertexes *const vert,
     OpenGLGraphicsVertexes &ogl = vert->ogl;
     unsigned int vp = ogl.continueVp();
 
-    const float texX1 = static_cast<float>(srcX) / tw;
-    const float texY1 = static_cast<float>(srcY) / th;
+    const int texX1 = srcX;
+    const int texY1 = srcY;
 
-    GLfloat *floatArray = ogl.continueFloatTexArray();
+    GLint *intArray = ogl.continueIntTexArray();
 
     for (int py = 0; py < h; py += ih)
     {
         const int height = (py + ih >= h) ? h - py : ih;
         const int dstY = y2 + py;
-        const float texY2 = static_cast<float>(srcY + height) / th;
+        const int texY2 = srcY + height;
         for (int px = 0; px < w; px += iw)
         {
             const int width = (px + iw >= w) ? w - px : iw;
             const int dstX = x2 + px;
-            const float texX2 = static_cast<float>(srcX + width) / tw;
+            const int texX2 = srcX + width;
 
-            vertFill2D(floatArray,
+            vertFill2D(intArray,
                 texX1, texY1, texX2, texY2,
                 dstX, dstY, width, height);
 
             vp += 24;
             if (vp >= vLimit)
             {
-                floatArray = ogl.switchFloatTexArray();
+                intArray = ogl.switchIntTexArray();
                 ogl.switchVp(vp);
                 vp = 0;
             }
@@ -748,8 +748,8 @@ void ModernOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
     if (w == 0 || h == 0)
         return;
 
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
+//    const float tw = static_cast<float>(image->mTexWidth);
+//    const float th = static_cast<float>(image->mTexHeight);
     const ClipRect &clipArea = mClipStack.top();
     const int x2 = dstX + clipArea.xOffset;
     const int y2 = dstY + clipArea.yOffset;
@@ -760,21 +760,21 @@ void ModernOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
 
     unsigned int vp = ogl.continueVp();
 
-    float texX1 = static_cast<float>(srcX) / tw;
-    float texY1 = static_cast<float>(srcY) / th;
-    float texX2 = static_cast<float>(srcX + w) / tw;
-    float texY2 = static_cast<float>(srcY + h) / th;
+    int texX1 = srcX;
+    int texY1 = srcY;
+    int texX2 = srcX + w;
+    int texY2 = srcY + h;
 
-    GLfloat *const floatArray = ogl.continueFloatTexArray();
+    GLint *const intArray = ogl.continueIntTexArray();
 
-    vertFill2D(floatArray,
+    vertFill2D(intArray,
         texX1, texY1, texX2, texY2,
         x2, y2, w, h);
 
     vp += 24;
     if (vp >= vLimit)
     {
-        ogl.switchFloatTexArray();
+        ogl.switchIntTexArray();
         ogl.switchVp(vp);
         vp = 0;
     }
@@ -963,9 +963,9 @@ void ModernOpenGLGraphics::drawPoint(int x, int y)
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
-    GLfloat vertices[] =
+    GLint vertices[] =
     {
-        x + clipArea.xOffset, y + clipArea.yOffset, 0.0f, 0.0f
+        x + clipArea.xOffset, y + clipArea.yOffset, 0, 0
     };
     //logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
@@ -981,10 +981,10 @@ void ModernOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
-    GLfloat vertices[] =
+    GLint vertices[] =
     {
-        x1 + clipArea.xOffset, y1 + clipArea.yOffset, 0.0f, 0.0f,
-        x2 + clipArea.xOffset, y2 + clipArea.yOffset, 0.0f, 0.0f
+        x1 + clipArea.xOffset, y1 + clipArea.yOffset, 0, 0,
+        x2 + clipArea.xOffset, y2 + clipArea.yOffset, 0, 0
     };
     //logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
@@ -1004,12 +1004,12 @@ void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
     const int y1 = rect.y + clipArea.yOffset;
     const int x2 = x1 + rect.width;
     const int y2 = y1 + rect.height;
-    GLfloat vertices[] =
+    GLint vertices[] =
     {
-        x1, y1, 0.0f, 0.0f,
-        x1, y2, 0.0f, 0.0f,
-        x2, y2, 0.0f, 0.0f,
-        x2, y1, 0.0f, 0.0f
+        x1, y1, 0, 0,
+        x1, y2, 0, 0,
+        x2, y2, 0, 0,
+        x2, y1, 0, 0
     };
 
     //logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
@@ -1030,12 +1030,12 @@ void ModernOpenGLGraphics::fillRectangle(const Rect& rect)
     const int y1 = rect.y + clipArea.yOffset;
     const int x2 = x1 + rect.width;
     const int y2 = y1 + rect.height;
-    GLfloat vertices[] =
+    GLint vertices[] =
     {
-        x1, y1, 0.0f, 0.0f,
-        x2, y1, 0.0f, 0.0f,
-        x1, y2, 0.0f, 0.0f,
-        x2, y2, 0.0f, 0.0f
+        x1, y1, 0, 0,
+        x2, y1, 0, 0,
+        x1, y2, 0, 0,
+        x2, y2, 0, 0
     };
 
     //logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
@@ -1097,25 +1097,25 @@ bool ModernOpenGLGraphics::drawNet(const int x1, const int y1,
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
-    const GLfloat dx = clipArea.xOffset;
-    const GLfloat dy = clipArea.yOffset;
+    const GLint dx = clipArea.xOffset;
+    const GLint dy = clipArea.yOffset;
 
-    const GLfloat xs1 = static_cast<GLfloat>(x1) + dx;
-    const GLfloat xs2 = static_cast<GLfloat>(x2) + dx;
-    const GLfloat ys1 = static_cast<GLfloat>(y1) + dy;
-    const GLfloat ys2 = static_cast<GLfloat>(y2) + dy;
+    const GLint xs1 = x1 + dx;
+    const GLint xs2 = x2 + dx;
+    const GLint ys1 = y1 + dy;
+    const GLint ys2 = y2 + dy;
 
     for (int y = y1; y < y2; y += height)
     {
-        mFloatArray[vp + 0] = xs1;
-        mFloatArray[vp + 1] = y;
-        mFloatArray[vp + 2] = 0.0f;
-        mFloatArray[vp + 3] = 0.0f;
+        mIntArray[vp + 0] = xs1;
+        mIntArray[vp + 1] = y;
+        mIntArray[vp + 2] = 0;
+        mIntArray[vp + 3] = 0;
 
-        mFloatArray[vp + 4] = xs2;
-        mFloatArray[vp + 5] = y;
-        mFloatArray[vp + 6] = 0.0f;
-        mFloatArray[vp + 7] = 0.0f;
+        mIntArray[vp + 4] = xs2;
+        mIntArray[vp + 5] = y;
+        mIntArray[vp + 6] = 0;
+        mIntArray[vp + 7] = 0;
 
         vp += 8;
         if (vp >= vLimit)
@@ -1127,15 +1127,15 @@ bool ModernOpenGLGraphics::drawNet(const int x1, const int y1,
 
     for (int x = x1; x < x2; x += width)
     {
-        mFloatArray[vp + 0] = x;
-        mFloatArray[vp + 1] = ys1;
-        mFloatArray[vp + 2] = 0.0f;
-        mFloatArray[vp + 3] = 0.0f;
+        mIntArray[vp + 0] = x;
+        mIntArray[vp + 1] = ys1;
+        mIntArray[vp + 2] = 0.0f;
+        mIntArray[vp + 3] = 0.0f;
 
-        mFloatArray[vp + 4] = x;
-        mFloatArray[vp + 5] = ys2;
-        mFloatArray[vp + 6] = 0.0f;
-        mFloatArray[vp + 7] = 0.0f;
+        mIntArray[vp + 4] = x;
+        mIntArray[vp + 5] = ys2;
+        mIntArray[vp + 6] = 0.0f;
+        mIntArray[vp + 7] = 0.0f;
 
         vp += 8;
         if (vp >= vLimit)
@@ -1202,14 +1202,14 @@ void ModernOpenGLGraphics::bindArrayBufferAndAttributes(const GLuint vbo)
 
         mAttributesCached = mVboCached;
 //        logger->log("bind vertex buffer: %u", mVboCached);
-        mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLfloat));
+        mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLint));
 //        mglVertexAttribBinding(mPosAttrib, 0);
     }
     else if (mAttributesCached != mVboCached)
     {
         mAttributesCached = mVboCached;
 //        logger->log("bind vertex buffer: %u", mVboCached);
-        mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLfloat));
+        mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLint));
 //        mglVertexAttribBinding(mPosAttrib, 0);
     }
 }
@@ -1219,7 +1219,7 @@ void ModernOpenGLGraphics::bindAttributes()
     if (mAttributesCached != mVboCached)
     {
         mAttributesCached = mVboCached;
-        mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLfloat));
+        mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLint));
 //        mglVertexAttribBinding(mPosAttrib, 0);
     }
 }
@@ -1278,13 +1278,13 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *const vert)
     const std::vector<int> &vp = ogl.mVp;
     std::vector<int>::const_iterator ivp;
     const std::vector<int>::const_iterator ivp_end = vp.end();
-    std::vector<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
-    std::vector<GLfloat*>::const_iterator ft;
-    const std::vector<GLfloat*>::const_iterator ft_end = floatTexPool.end();
+    std::vector<GLint*> &intTexPool = ogl.mIntTexPool;
+    std::vector<GLint*>::const_iterator ft;
+    const std::vector<GLint*>::const_iterator ft_end = intTexPool.end();
     std::vector<GLuint> &vbos = ogl.mVbo;
     std::vector<GLuint>::const_iterator ivbo;
 
-    const int sz = floatTexPool.size();
+    const int sz = intTexPool.size();
     vbos.resize(sz);
     mglGenBuffers(sz, &vbos[0]);
 /*
@@ -1292,43 +1292,43 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *const vert)
         logger->log("gen buffers: %u", vbos[f]);
 */
 
-    for (ft = floatTexPool.begin(), ivp = vp.begin(), ivbo = vbos.begin();
+    for (ft = intTexPool.begin(), ivp = vp.begin(), ivbo = vbos.begin();
          ft != ft_end && ivp != ivp_end;
          ++ ft, ++ ivp, ++ ivbo)
     {
         bindArrayBuffer(*ivbo);
 /*
         logger->log("allocate: %d, %ld", mVboCached,
-            (*ivp) * sizeof(GLfloat));
+            (*ivp) * sizeof(GLint));
 */
-        mglBufferData(GL_ARRAY_BUFFER, (*ivp) * sizeof(GLfloat),
+        mglBufferData(GL_ARRAY_BUFFER, (*ivp) * sizeof(GLint),
             *ft, GL_STATIC_DRAW);
     }
 
-    for (std::vector<GLfloat*>::iterator it = floatTexPool.begin();
-        it != floatTexPool.end(); ++ it)
+    for (std::vector<GLint*>::iterator it = intTexPool.begin();
+        it != intTexPool.end(); ++ it)
     {
         delete [] (*it);
     }
-    floatTexPool.clear();
+    intTexPool.clear();
 }
 
 void ModernOpenGLGraphics::drawTriangleArray(const int size)
 {
-    //logger->log("allocate: %d, %ld", mVboCached, size * sizeof(GLfloat));
-    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
-        mFloatArray, GL_STREAM_DRAW);
+    //logger->log("allocate: %d, %ld", mVboCached, size * sizeof(GLint));
+    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLint),
+        mIntArray, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
     glDrawArrays(GL_TRIANGLES, 0, size / 4);
 }
 
-void ModernOpenGLGraphics::drawTriangleArray(const GLfloat *const array,
+void ModernOpenGLGraphics::drawTriangleArray(const GLint *const array,
                                              const int size)
 {
-    //logger->log("allocate: %d, %ld", mVboCached, size * sizeof(GLfloat));
-    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
+    //logger->log("allocate: %d, %ld", mVboCached, size * sizeof(GLint));
+    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLint),
         array, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
@@ -1338,9 +1338,9 @@ void ModernOpenGLGraphics::drawTriangleArray(const GLfloat *const array,
 
 void ModernOpenGLGraphics::drawLineArrays(const int size)
 {
-    //logger->log("allocate: %d, %ld", mVboCached, size * sizeof(GLfloat));
-    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat),
-        mFloatArray, GL_STREAM_DRAW);
+    //logger->log("allocate: %d, %ld", mVboCached, size * sizeof(GLint));
+    mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLint),
+        mIntArray, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif

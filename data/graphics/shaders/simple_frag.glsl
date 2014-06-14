@@ -8,9 +8,12 @@ uniform float alpha;
 
 void main()
 {
-    outColor = texture(tex, Texcoord);
     if (drawType >= 0.1)
-        outColor = texture(tex, Texcoord) * vec4(1.0, 1.0, 1.0, alpha);
+    {
+        outColor = texelFetch(tex, ivec2(Texcoord.x, Texcoord.y), 0) * vec4(1.0, 1.0, 1.0, alpha);
+    }
     else
+    {
         outColor = color;
+    }
 }

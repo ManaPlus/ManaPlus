@@ -93,6 +93,7 @@ defName(glVertexAttribBinding);
 defName(glVertexAttribFormat);
 defName(glBindVertexBuffers);
 defName(glIsBuffer);
+defName(glVertexAttribIFormat);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);
