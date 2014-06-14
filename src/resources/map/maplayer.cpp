@@ -276,7 +276,6 @@ void MapLayer::updateOGL(Graphics *const graphics,
         && debugFlags != MapType::SPECIAL2);
 
     MapRowVertexes *const row = new MapRowVertexes();
-    logger->log("mTempRows size: %u", (int)mTempRows.size());
     mTempRows.push_back(row);
     Image *lastImage = nullptr;
     ImageVertexes *imgVert = nullptr;
