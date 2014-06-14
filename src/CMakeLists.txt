@@ -870,6 +870,7 @@ SET(SRCS
     render/nullopenglgraphics.h
     render/opengldebug.h
     render/openglgraphicsdef.hpp
+    render/openglgraphicsdef1.hpp
     render/openglgraphicsdefadvanced.hpp
     render/renderers.cpp
     render/renderers.h
