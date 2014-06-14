@@ -1054,6 +1054,16 @@ void GraphicsManager::initOpenGLFunctions()
         {
             logger->log1("GL_ARB_vertex_attrib_binding not supported");
         }
+        if (checkGLVersion(4, 3)
+            || supportExtension("GL_ARB_invalidate_subdata"))
+        {
+            logger->log1("found GL_ARB_invalidate_subdata");
+            assignFunction(glInvalidateTexImage, "glInvalidateTexImage");
+        }
+        else
+        {
+            logger->log1("GL_ARB_invalidate_subdata not supported");
+        }
         if (checkGLVersion(4, 4) || supportExtension("GL_ARB_multi_bind"))
         {
             logger->log1("found GL_ARB_multi_bind");

@@ -116,6 +116,8 @@ class OpenGLImageHelper final : public ImageHelper
         static void setUseTextureSampler(const bool b)
         { mUseTextureSampler = b; }
 
+        static void invalidate(const GLuint textureId);
+
         SDL_Surface *create32BitSurface(int width,
                                         int height) const override final;
 

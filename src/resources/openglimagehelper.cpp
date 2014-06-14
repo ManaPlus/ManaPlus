@@ -348,4 +348,13 @@ void OpenGLImageHelper::postInit()
     glGenTextures(texturesSize, &mTextures[mFreeTextureIndex]);
 }
 
+void OpenGLImageHelper::invalidate(const GLuint textureId)
+{
+    if (mglInvalidateTexImage)
+    {
+        logger->log("invalidate: %u", textureId);
+        mglInvalidateTexImage(textureId, 0);
+    }
+}
+
 #endif

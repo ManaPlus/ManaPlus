@@ -211,3 +211,10 @@ Image *SubImage::getSubImage(const int x, const int y,
     else
         return nullptr;
 }
+
+#ifdef USE_OPENGL
+void SubImage::decRef()
+{
+    Resource::decRef();
+}
+#endif

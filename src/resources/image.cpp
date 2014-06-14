@@ -467,3 +467,12 @@ void Image::SDLTerminateAlphaCache()
     SDLCleanCache();
     mUseAlphaCache = false;
 }
+
+#ifdef USE_OPENGL
+void Image::decRef()
+{
+    if (getRefCount() <= 1)
+        OpenGLImageHelper::invalidate(mGLImage);
+    Resource::decRef();
+}
+#endif

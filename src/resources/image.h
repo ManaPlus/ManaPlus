@@ -167,6 +167,8 @@ class Image notfinal : public Resource
         GLuint getGLImage() const A_WARN_UNUSED
         { return mGLImage; }
 
+        void decRef() override;
+
         GLuint mGLImage;
         int mTexWidth;
         int mTexHeight;
