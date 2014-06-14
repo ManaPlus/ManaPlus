@@ -92,6 +92,8 @@ int TestLauncher::exec()
         return testDraw();
     else if (mTest == "103")
         return testFps2();
+    else if (mTest == "104")
+        return testFps3();
 
     return -1;
 }
@@ -206,6 +208,53 @@ int TestLauncher::testFps2()
     {
         for (int f = 0; f < 300; f ++)
             mainGraphics->testDraw();
+        mainGraphics->updateScreen();
+    }
+
+    gettimeofday(&end, nullptr);
+    const int tFps = calcFps(&start, &end, cnt);
+    file << mTest << std::endl;
+    file << tFps << std::endl;
+
+    printf("fps: %u\n", tFps);
+    sleep(1);
+    return 0;
+}
+
+int TestLauncher::testFps3()
+{
+    timeval start;
+    timeval end;
+
+    Wallpaper::loadWallpapers();
+    Wallpaper::getWallpaper(800, 600);
+    Image *img[2];
+
+    img[0] = Theme::getImageFromTheme("graphics/sprites/arrow_up.png");
+    img[1] = Theme::getImageFromTheme("graphics/sprites/arrow_left.png");
+    ImageVertexes *const vert1 = new ImageVertexes;
+    vert1->image = img[0];
+    ImageVertexes *const vert2 = new ImageVertexes;
+    vert2->image = img[1];
+
+    for (int f = 0; f < 50; f ++)
+    {
+        for (int d = 0; d < 50; d ++)
+        {
+            mainGraphics->calcTileVertexes(vert1, img[0], f * 16, d * 12);
+            mainGraphics->calcTileVertexes(vert1, img[1], f * 16 + 5, d * 12);
+        }
+    }
+    mainGraphics->finalize(vert1);
+    mainGraphics->finalize(vert2);
+
+    const int cnt = 2000;
+
+    gettimeofday(&start, nullptr);
+    for (int k = 0; k < cnt; k ++)
+    {
+        mainGraphics->drawTileVertexes(vert1);
+        mainGraphics->drawTileVertexes(vert2);
         mainGraphics->updateScreen();
     }
 
