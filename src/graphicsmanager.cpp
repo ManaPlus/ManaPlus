@@ -961,6 +961,7 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glEnableVertexAttribArray, "glEnableVertexAttribArray");
         assignFunction(glDisableVertexAttribArray,
             "glDisableVertexAttribArray");
+        assignFunction(glVertexAttribIPointer, "glVertexAttribIPointer");
     }
     else
     {

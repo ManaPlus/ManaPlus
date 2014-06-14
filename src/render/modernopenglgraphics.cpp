@@ -172,6 +172,7 @@ void ModernOpenGLGraphics::postInit()
 
     mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLint));
     mglVertexAttribBinding(mPosAttrib, 0);
+//    mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
     mAttributesCached = mVbo;
 
     screenResized();
@@ -1203,6 +1204,7 @@ void ModernOpenGLGraphics::bindArrayBufferAndAttributes(const GLuint vbo)
         mAttributesCached = mVboCached;
 //        logger->log("bind vertex buffer: %u", mVboCached);
         mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLint));
+//        mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
 //        mglVertexAttribBinding(mPosAttrib, 0);
     }
     else if (mAttributesCached != mVboCached)
@@ -1210,6 +1212,7 @@ void ModernOpenGLGraphics::bindArrayBufferAndAttributes(const GLuint vbo)
         mAttributesCached = mVboCached;
 //        logger->log("bind vertex buffer: %u", mVboCached);
         mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLint));
+//        mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
 //        mglVertexAttribBinding(mPosAttrib, 0);
     }
 }
@@ -1220,6 +1223,7 @@ void ModernOpenGLGraphics::bindAttributes()
     {
         mAttributesCached = mVboCached;
         mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLint));
+//        mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
 //        mglVertexAttribBinding(mPosAttrib, 0);
     }
 }
