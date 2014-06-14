@@ -241,29 +241,21 @@ void ModernOpenGLGraphics::setColorAlpha(const float alpha)
     }
 }
 
-void ModernOpenGLGraphics::drawQuad(const Image *const image,
+void ModernOpenGLGraphics::drawQuad(const Image *const image A_UNUSED,
                                     const int srcX, const int srcY,
                                     const int dstX, const int dstY,
                                     const int width, const int height)
 {
-
-    const int tw = image->mTexWidth;
-    const int th = image->mTexHeight;
-    // Find OpenGL normalized texture coordinates.
-    const int texX1 = srcX;
-    const int texY1 = srcY;
     const int texX2 = srcX + width;
     const int texY2 = srcY + height;
-    const int x1 = dstX;
-    const int y1 = dstY;
-    const int x2 = x1 + width;
-    const int y2 = y1 + height;
+    const int x2 = dstX + width;
+    const int y2 = dstY + height;
 
     GLint vertices[] =
     {
-        x1, y1, texX1, texY1,
-        x2, y1, texX2, texY1,
-        x1, y2, texX1, texY2,
+        dstX, dstY, srcX, srcY,
+        x2, dstY, texX2, srcY,
+        dstX, y2, srcX, texY2,
         x2, y2, texX2, texY2
     };
 
@@ -276,31 +268,23 @@ void ModernOpenGLGraphics::drawQuad(const Image *const image,
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-void ModernOpenGLGraphics::drawRescaledQuad(const Image *const image,
+void ModernOpenGLGraphics::drawRescaledQuad(const Image *const image A_UNUSED,
                                             const int srcX, const int srcY,
                                             const int dstX, const int dstY,
                                             const int width, const int height,
                                             const int desiredWidth,
                                             const int desiredHeight)
 {
-    const float tw = image->mTexWidth;
-    const float th = image->mTexHeight;
-    // Find OpenGL normalized texture coordinates.
-    const int texX1 = srcX;
-    const int texY1 = srcY;
     const int texX2 = srcX + width;
     const int texY2 = srcY + height;
-
-    const int x1 = dstX;
-    const int y1 = dstY;
-    const int x2 = x1 + desiredWidth;
-    const int y2 = y1 + desiredHeight;
+    const int x2 = dstX + desiredWidth;
+    const int y2 = dstY + desiredHeight;
 
     GLint vertices[] =
     {
-        x1, y1, texX1, texY1,
-        x2, y1, texX2, texY1,
-        x1, y2, texX1, texY2,
+        dstX, dstY, srcX, srcY,
+        x2, dstY, texX2, srcY,
+        dstX, y2, srcX, texY2,
         x2, y2, texX2, texY2
     };
 
@@ -336,7 +320,7 @@ bool ModernOpenGLGraphics::drawImageInline(const Image *const image,
 
     const ClipRect &clipArea = mClipStack.top();
     const SDL_Rect &imageRect = image->mBounds;
-    drawQuad(image,
+    drawQuad(nullptr,
         imageRect.x, imageRect.y,
         dstX + clipArea.xOffset, dstY + clipArea.yOffset,
         imageRect.w, imageRect.h);
@@ -351,11 +335,6 @@ void ModernOpenGLGraphics::testDraw()
         800, 0, 800, 0,
         0, 600, 0, 600,
         800, 600, 800, 600
-
-//        0.0f, 0.0f, 0.0f, 0.0f,
-//        800.0f, 0.0f, 1.0f, 0.0f,
-//        0.0f, 600.0f, 0.0f, 1.0f,
-//        800.0f, 600.0f, 1.0f, 1.0f
     };
 
     //logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
@@ -408,7 +387,7 @@ bool ModernOpenGLGraphics::drawRescaledImage(const Image *const image,
 
     const ClipRect &clipArea = mClipStack.top();
     // Draw a textured quad.
-    drawRescaledQuad(image,
+    drawRescaledQuad(nullptr,
         imageRect.x, imageRect.y,
         dstX + clipArea.xOffset, dstY + clipArea.yOffset,
         imageRect.w, imageRect.h,
@@ -440,8 +419,6 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *const image,
     if (iw == 0 || ih == 0)
         return;
 
-//    const float tw = static_cast<float>(image->mTexWidth);
-//    const float th = static_cast<float>(image->mTexHeight);
     const ClipRect &clipArea = mClipStack.top();
     const int x2 = x + clipArea.xOffset;
     const int y2 = y + clipArea.yOffset;
@@ -458,9 +435,6 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *const image,
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
 
-    const int texX1 = srcX;
-    const int texY1 = srcY;
-
     for (int py = 0; py < h; py += ih)
     {
         const int height = (py + ih >= h) ? h - py : ih;
@@ -474,7 +448,7 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *const image,
             const int texX2 = srcX + width;
 
             vertFill2D(mIntArray,
-                texX1, texY1, texX2, texY2,
+                srcX, srcY, texX2, texY2,
                 dstX, dstY, width, height);
 
             vp += 24;
@@ -521,14 +495,9 @@ void ModernOpenGLGraphics::drawRescaledPattern(const Image *const image,
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
 
-//    const float tw = static_cast<float>(image->mTexWidth);
-//    const float th = static_cast<float>(image->mTexHeight);
     const ClipRect &clipArea = mClipStack.top();
     const int x2 = x + clipArea.xOffset;
     const int y2 = y + clipArea.yOffset;
-
-    const int texX1 = srcX;
-    const int texY1 = srcY;
 
     const float scaleFactorW = static_cast<float>(scaledWidth) / iw;
     const float scaleFactorH = static_cast<float>(scaledHeight) / ih;
@@ -537,17 +506,17 @@ void ModernOpenGLGraphics::drawRescaledPattern(const Image *const image,
     {
         const int height = (py + scaledHeight >= h)
             ? h - py : scaledHeight;
-        const int dstY = y + py;
+        const int dstY = y2 + py;
         const int scaledY = srcY + height / scaleFactorH;
         for (int px = 0; px < w; px += scaledWidth)
         {
             const int width = (px + scaledWidth >= w)
                 ? w - px : scaledWidth;
-            const int dstX = x + px;
+            const int dstX = x2 + px;
             const int scaledX = srcX + width / scaleFactorW;
 
             vertFill2D(mIntArray,
-                texX1, texY1, scaledX, scaledY,
+                srcX, srcY, scaledX, scaledY,
                 dstX, dstY, width, height);
 
             vp += 24;
@@ -614,8 +583,6 @@ void ModernOpenGLGraphics::calcPatternInline(ImageVertexes *const vert,
     if (iw == 0 || ih == 0)
         return;
 
-//    const float tw = static_cast<float>(image->mTexWidth);
-//    const float th = static_cast<float>(image->mTexHeight);
     const ClipRect &clipArea = mClipStack.top();
     const int x2 = x + clipArea.xOffset;
     const int y2 = y + clipArea.yOffset;
@@ -624,9 +591,6 @@ void ModernOpenGLGraphics::calcPatternInline(ImageVertexes *const vert,
 
     OpenGLGraphicsVertexes &ogl = vert->ogl;
     unsigned int vp = ogl.continueVp();
-
-    const int texX1 = srcX;
-    const int texY1 = srcY;
 
     GLint *intArray = ogl.continueIntTexArray();
 
@@ -642,7 +606,7 @@ void ModernOpenGLGraphics::calcPatternInline(ImageVertexes *const vert,
             const int texX2 = srcX + width;
 
             vertFill2D(intArray,
-                texX1, texY1, texX2, texY2,
+                srcX, srcY, texX2, texY2,
                 dstX, dstY, width, height);
 
             vp += 24;
@@ -680,7 +644,6 @@ void ModernOpenGLGraphics::drawTileCollection(const ImageCollection
                                               *const vertCol)
 {
     setTexturingAndBlending(true);
-//    bindArrayBuffer(vbo);
 /*
     if (!vertCol)
     {
@@ -749,8 +712,6 @@ void ModernOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
     if (w == 0 || h == 0)
         return;
 
-//    const float tw = static_cast<float>(image->mTexWidth);
-//    const float th = static_cast<float>(image->mTexHeight);
     const ClipRect &clipArea = mClipStack.top();
     const int x2 = dstX + clipArea.xOffset;
     const int y2 = dstY + clipArea.yOffset;
@@ -761,15 +722,13 @@ void ModernOpenGLGraphics::calcTileVertexesInline(ImageVertexes *const vert,
 
     unsigned int vp = ogl.continueVp();
 
-    int texX1 = srcX;
-    int texY1 = srcY;
     int texX2 = srcX + w;
     int texY2 = srcY + h;
 
     GLint *const intArray = ogl.continueIntTexArray();
 
     vertFill2D(intArray,
-        texX1, texY1, texX2, texY2,
+        srcX, srcY, texX2, texY2,
         x2, y2, w, h);
 
     vp += 24;
@@ -1166,7 +1125,7 @@ void ModernOpenGLGraphics::removeArray(const uint32_t sz,
                                        uint32_t *const arr)
 {
     mglDeleteBuffers(sz, arr);
-    for (int f = 0; f < sz; f ++)
+    for (size_t f = 0; f < sz; f ++)
     {
         if (arr[f] == mVboCached)
             mVboCached = 0;

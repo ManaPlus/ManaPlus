@@ -195,11 +195,9 @@ int TestLauncher::testFps2()
     Wallpaper::loadWallpapers();
     Wallpaper::getWallpaper(800, 600);
     Image *img[1];
-    const int sz = 4;
 
     img[0] = Theme::getImageFromTheme("graphics/images/login_wallpaper.png");
     mainGraphics->drawImage(img[0], 0, 0);
-    int idx = 0;
 
     const int cnt = 500;
 
