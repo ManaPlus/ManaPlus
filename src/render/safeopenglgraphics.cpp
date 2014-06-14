@@ -180,17 +180,20 @@ void SafeOpenGLGraphics::testDraw()
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
-        glTexCoord2f(0.0f, 0.0f);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0.0f, 0.781250f);
         glVertex2i(0, 0);
-        glTexCoord2f(1.0f, 0.0f);
+        glTexCoord2f(0.0f, 0.781250f);
         glVertex2i(800, 0);
-        glTexCoord2f(1.0f, 1.0f);
+        glTexCoord2f(0.0f, 0.585938f);
         glVertex2i(800, 600);
-        glTexCoord2f(0.0f, 1.0f);
+        glTexCoord2f(0.0f, 0.585938f);
         glVertex2i(0, 600);
+        glEnd();
     }
     else
     {
+        glBegin(GL_QUADS);
         glTexCoord2i(0, 0);
         glVertex2i(0, 0);
         glTexCoord2i(800, 0);
@@ -199,6 +202,7 @@ void SafeOpenGLGraphics::testDraw()
         glVertex2i(800, 600);
         glTexCoord2i(0, 600);
         glVertex2i(0, 600);
+        glEnd();
     }
 }
 

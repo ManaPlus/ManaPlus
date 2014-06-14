@@ -345,10 +345,10 @@ void NormalOpenGLGraphics::testDraw()
     {
         GLfloat tex[] =
         {
-            0.0f, 0.0f,
-            1.0f, 0.0f,
-            1.0f, 1.0f,
-            0.0f, 1.0f
+            0.0f, 0.781250f,
+            0.0f, 0.781250f,
+            0.0f, 0.585938f,
+            0.0f, 0.585938f
         };
 
         GLint vert[] =
