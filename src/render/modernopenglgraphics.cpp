@@ -97,7 +97,9 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
     mDrawTypeUniform(0U),
     mVao(0U),
     mVbo(0U),
+    mEbo(0U),
     mVboCached(0U),
+    mEboCached(0U),
     mAttributesCached(0U),
     mColorAlpha(false),
     mTextureDraw(false),
@@ -118,8 +120,13 @@ ModernOpenGLGraphics::~ModernOpenGLGraphics()
         mProgram->decRef();
     if (mVbo)
     {
-//        logger->log("delete buffer: %u", mVbo);
+//        logger->log("delete buffer vbo: %u", mVbo);
         mglDeleteBuffers(1, &mVbo);
+    }
+    if (mEbo)
+    {
+//        logger->log("delete buffer ebo: %u", mEbo);
+        mglDeleteBuffers(1, &mEbo);
     }
     if (mVao)
         mglDeleteVertexArrays(1, &mVao);
@@ -147,8 +154,11 @@ void ModernOpenGLGraphics::postInit()
     mglGenVertexArrays(1, &mVao);
     mglBindVertexArray(mVao);
     mglGenBuffers(1, &mVbo);
-    //logger->log("gen buffer: %u", mVbo);
+    //logger->log("gen vbo buffer: %u", mVbo);
     bindArrayBuffer(mVbo);
+    mglGenBuffers(1, &mEbo);
+    //logger->log("gen ebo buffer: %u", mEbo);
+    bindElementBuffer(mEbo);
 
     logger->log("Compiling shaders");
     mProgram = shaders.getSimpleProgram();
@@ -338,12 +348,16 @@ void ModernOpenGLGraphics::testDraw()
     };
 
     //logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
+    //logger->log("allocate ebo: %d, %ld", mEboCached, sizeof(elements));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
+//    mglBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements),
+//        elements, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+//    glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
 }
 
 void ModernOpenGLGraphics::drawImageCached(const Image *const image A_UNUSED,
@@ -1145,6 +1159,20 @@ void ModernOpenGLGraphics::bindArrayBuffer(const GLuint vbo)
             logger->log("bind wrong buffer: %u", vbo);
 */
         mAttributesCached = 0U;
+    }
+}
+
+void ModernOpenGLGraphics::bindElementBuffer(const GLuint ebo)
+{
+    if (mEboCached != ebo)
+    {
+        mEboCached = ebo;
+        logger->log("bind element: %u", ebo);
+        mglBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+/*
+        if (mglIsBuffer(ebo) != GL_TRUE)
+            logger->log("bind wrong buffer: %u", vbo);
+*/
     }
 }
 

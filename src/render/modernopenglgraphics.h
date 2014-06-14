@@ -107,6 +107,8 @@ class ModernOpenGLGraphics final : public Graphics
 
         inline void bindAttributes();
 
+        inline void bindElementBuffer(const GLuint ebo);
+
         GLint *mIntArray;
         GLint *mIntArrayCached;
         ShaderProgram *mProgram;
@@ -123,7 +125,9 @@ class ModernOpenGLGraphics final : public Graphics
         GLuint mDrawTypeUniform;
         GLuint mVao;
         GLuint mVbo;
+        GLuint mEbo;
         GLuint mVboCached;
+        GLuint mEboCached;
         GLuint mAttributesCached;
         bool mColorAlpha;
         bool mTextureDraw;
