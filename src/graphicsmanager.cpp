@@ -254,7 +254,12 @@ void GraphicsManager::createRenderers()
 {
     RenderType useOpenGL = RENDER_SOFTWARE;
     if (!settings.options.noOpenGL)
-        useOpenGL = intToRenderType(config.getIntValue("opengl"));
+    {
+        if (settings.options.renderer < 0)
+            useOpenGL = intToRenderType(config.getIntValue("opengl"));
+        else
+            useOpenGL = intToRenderType(settings.options.renderer);
+    }
 
     // Setup image loading for the right image format
     ImageHelper::setOpenGlMode(useOpenGL);

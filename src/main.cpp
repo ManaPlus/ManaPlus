@@ -127,6 +127,8 @@ static void printHelp()
         // TRANSLATORS: command line help
         << _("     --safemode       : Start game in safe mode") << std::endl
         // TRANSLATORS: command line help
+        << _("     --renderer       : Set renderer type") << std::endl
+        // TRANSLATORS: command line help
         << _("  -T --tests          : Start testing drivers and "
                                      "auto configuring") << std::endl
 #ifdef USE_OPENGL
@@ -144,7 +146,7 @@ static void printVersion()
 
 static void parseOptions(const int argc, char *const argv[])
 {
-    const char *const optstring = "hvud:U:P:Dc:p:l:L:C:s:t:T:a";
+    const char *const optstring = "hvud:U:P:Dc:p:l:L:C:s:t:T:a:r";
 
     const struct option long_options[] =
     {
@@ -168,6 +170,7 @@ static void parseOptions(const int argc, char *const argv[])
         { "safemode",       no_argument,       nullptr, 'm' },
         { "tests",          no_argument,       nullptr, 'T' },
         { "test",           required_argument, nullptr, 't' },
+        { "renderer",       required_argument, nullptr, 'r' },
         { nullptr,          0,                 nullptr, 0 }
     };
 
@@ -249,6 +252,9 @@ static void parseOptions(const int argc, char *const argv[])
             case 't':
                 options.testMode = true;
                 options.test = std::string(optarg);
+                break;
+            case 'r':
+                options.renderer = static_cast<int>(atoi(optarg));
                 break;
             default:
                 break;
