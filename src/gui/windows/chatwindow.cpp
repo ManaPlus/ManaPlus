@@ -299,6 +299,7 @@ void ChatWindow::adjustTabSize()
     }
     else
     {
+        mChatInput->setWidth(awFrame2);
         mChatButton->setVisible(false);
     }
 
