@@ -77,6 +77,12 @@
     vVar[vp + 6] = dstX; \
     vVar[vp + 7] = dstY + h;
 
+namespace
+{
+    const void *vertPtr = nullptr;
+    const void *texPtr = nullptr;
+}
+
 GLuint NormalOpenGLGraphics::mLastImage = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int NormalOpenGLGraphics::mDrawCalls = 0;
@@ -177,6 +183,28 @@ bool NormalOpenGLGraphics::setVideoMode(const int w, const int h,
     return setOpenGLMode();
 }
 
+static inline void bindPointerIntFloat(const GLint *const vert,
+                                       const GLfloat *const tex)
+{
+    if (vertPtr != vert)
+    {
+        vertPtr = vert;
+        glVertexPointer(2, GL_INT, 0, vert);
+        glTexCoordPointer(2, GL_FLOAT, 0, tex);
+    }
+}
+
+static inline void bindPointerInt(const GLint *const vert,
+                                  const GLint *const tex)
+{
+    if (vertPtr != vert)
+    {
+        vertPtr = vert;
+        glVertexPointer(2, GL_INT, 0, vert);
+        glTexCoordPointer(2, GL_INT, 0, tex);
+    }
+}
+
 static inline void drawQuad(const Image *const image,
                             const int srcX, const int srcY,
                             const int dstX, const int dstY,
@@ -208,9 +236,7 @@ static inline void drawQuad(const Image *const image,
             dstX, dstY + height
         };
 
-        glVertexPointer(2, GL_INT, 0, &vert);
-        glTexCoordPointer(2, GL_FLOAT, 0, &tex);
-
+        bindPointerIntFloat(&vert[0], &tex[0]);
 #ifdef DEBUG_DRAW_CALLS
         NormalOpenGLGraphics::mDrawCalls ++;
 #endif
@@ -233,9 +259,7 @@ static inline void drawQuad(const Image *const image,
             dstX, dstY + height
         };
 
-        glVertexPointer(2, GL_INT, 0, &vert);
-        glTexCoordPointer(2, GL_INT, 0, &tex);
-
+        bindPointerInt(&vert[0], &tex[0]);
 #ifdef DEBUG_DRAW_CALLS
         NormalOpenGLGraphics::mDrawCalls ++;
 #endif
@@ -276,9 +300,7 @@ static inline void drawRescaledQuad(const Image *const image,
             dstX, dstY + desiredHeight
         };
 
-        glVertexPointer(2, GL_INT, 0, &vert);
-        glTexCoordPointer(2, GL_FLOAT, 0, &tex);
-
+        bindPointerIntFloat(&vert[0], &tex[0]);
 #ifdef DEBUG_DRAW_CALLS
         NormalOpenGLGraphics::mDrawCalls ++;
 #endif
@@ -301,9 +323,7 @@ static inline void drawRescaledQuad(const Image *const image,
             dstX, dstY + desiredHeight
         };
 
-        glVertexPointer(2, GL_INT, 0, &vert);
-        glTexCoordPointer(2, GL_INT, 0, &tex);
-
+        bindPointerInt(&vert[0], &tex[0]);
 #ifdef DEBUG_DRAW_CALLS
         NormalOpenGLGraphics::mDrawCalls ++;
 #endif
@@ -359,9 +379,7 @@ void NormalOpenGLGraphics::testDraw()
             0, 600
         };
 
-        glVertexPointer(2, GL_INT, 0, &vert);
-        glTexCoordPointer(2, GL_FLOAT, 0, &tex);
-
+        bindPointerIntFloat(&vert[0], &tex[0]);
 #ifdef DEBUG_DRAW_CALLS
         NormalOpenGLGraphics::mDrawCalls ++;
 #endif
@@ -385,9 +403,7 @@ void NormalOpenGLGraphics::testDraw()
             0, 600
         };
 
-        glVertexPointer(2, GL_INT, 0, &vert);
-        glTexCoordPointer(2, GL_INT, 0, &tex);
-
+        bindPointerInt(&vert[0], &tex[0]);
 #ifdef DEBUG_DRAW_CALLS
         NormalOpenGLGraphics::mDrawCalls ++;
 #endif
@@ -559,7 +575,7 @@ void NormalOpenGLGraphics::completeCache()
 
     setColorAlpha(mAlphaCached);
 #ifdef DEBUG_BIND_TEXTURE
-//    debugBindTexture(image);
+    debugBindTexture(image);
 #endif
     bindTexture(OpenGLImageHelper::mTextureType, mImageCached);
     setTexturingAndBlending(true);
@@ -1454,6 +1470,7 @@ void NormalOpenGLGraphics::drawRectangle(const Rect& rect,
     };
 
     glVertexPointer(2, GL_FLOAT, 0, &vert);
+    vertPtr = nullptr;
 #ifdef DEBUG_DRAW_CALLS
         mDrawCalls ++;
 #endif
@@ -1529,9 +1546,7 @@ void NormalOpenGLGraphics::bindTexture(const GLenum target,
 
 inline void NormalOpenGLGraphics::drawQuadArrayfi(const int size)
 {
-    glVertexPointer(2, GL_INT, 0, mIntVertArray);
-    glTexCoordPointer(2, GL_FLOAT, 0, mFloatTexArray);
-
+    bindPointerIntFloat(&mIntVertArray[0], &mFloatTexArray[0]);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -1540,9 +1555,7 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(const int size)
 
 inline void NormalOpenGLGraphics::drawQuadArrayfiCached(const int size)
 {
-    glVertexPointer(2, GL_INT, 0, mIntVertArrayCached);
-    glTexCoordPointer(2, GL_FLOAT, 0, mFloatTexArrayCached);
-
+    bindPointerIntFloat(&mIntVertArrayCached[0], &mFloatTexArrayCached[0]);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -1555,9 +1568,9 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *const
                                                   floatTexArray,
                                                   const int size)
 {
+    vertPtr = intVertArray;
     glVertexPointer(2, GL_INT, 0, intVertArray);
     glTexCoordPointer(2, GL_FLOAT, 0, floatTexArray);
-
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -1566,9 +1579,7 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *const
 
 inline void NormalOpenGLGraphics::drawQuadArrayii(const int size)
 {
-    glVertexPointer(2, GL_INT, 0, mIntVertArray);
-    glTexCoordPointer(2, GL_INT, 0, mIntTexArray);
-
+    bindPointerInt(&mIntVertArray[0], &mIntTexArray[0]);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -1577,9 +1588,7 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(const int size)
 
 inline void NormalOpenGLGraphics::drawQuadArrayiiCached(const int size)
 {
-    glVertexPointer(2, GL_INT, 0, mIntVertArrayCached);
-    glTexCoordPointer(2, GL_INT, 0, mIntTexArrayCached);
-
+    bindPointerInt(&mIntVertArrayCached[0], &mIntTexArrayCached[0]);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -1592,9 +1601,9 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(const GLint *const
                                                   intTexArray,
                                                   const int size)
 {
+    vertPtr = intVertArray;
     glVertexPointer(2, GL_INT, 0, intVertArray);
     glTexCoordPointer(2, GL_INT, 0, intTexArray);
-
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -1604,7 +1613,7 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(const GLint *const
 inline void NormalOpenGLGraphics::drawLineArrayi(const int size)
 {
     glVertexPointer(2, GL_INT, 0, mIntVertArray);
-
+    vertPtr = nullptr;
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
@@ -1614,7 +1623,7 @@ inline void NormalOpenGLGraphics::drawLineArrayi(const int size)
 inline void NormalOpenGLGraphics::drawLineArrayf(const int size)
 {
     glVertexPointer(2, GL_FLOAT, 0, mFloatTexArray);
-
+    vertPtr = nullptr;
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
 #endif
