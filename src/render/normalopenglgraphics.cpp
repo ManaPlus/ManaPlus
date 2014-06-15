@@ -80,8 +80,7 @@
 namespace
 {
     const void *vertPtr = nullptr;
-    const void *texPtr = nullptr;
-}
+}  // namespace
 
 GLuint NormalOpenGLGraphics::mLastImage = 0;
 #ifdef DEBUG_DRAW_CALLS
