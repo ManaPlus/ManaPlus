@@ -228,6 +228,7 @@ Section "Core files (required)" SecCore
   CreateDirectory "$INSTDIR\data\graphics\gui"
   CreateDirectory "$INSTDIR\data\graphics\flags"
   CreateDirectory "$INSTDIR\data\graphics\images"
+  CreateDirectory "$INSTDIR\data\graphics\shaders"
   CreateDirectory "$INSTDIR\data\graphics\sprites"
   CreateDirectory "$INSTDIR\data\sfx"
   CreateDirectory "$INSTDIR\data\sfx\system"
@@ -284,6 +285,8 @@ Section "Core files (required)" SecCore
   SetOutPath "$INSTDIR\data\graphics\images"
   File /x minimap_*.png ${SRCDIR}\data\graphics\images\*.png
   File "${SRCDIR}\data\graphics\images\error.png"
+  SetOutPath "$INSTDIR\data\graphics\shaders"
+  File "${SRCDIR}\data\graphics\shaders\*.glsl"
   SetOutPath "$INSTDIR\data\graphics\sprites"
   File "${SRCDIR}\data\graphics\sprites\*.png"
   File "${SRCDIR}\data\graphics\sprites\*.xml"
