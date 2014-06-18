@@ -829,8 +829,15 @@ void GraphicsManager::deleteFBO(FBOInfo *const fbo)
 
 void GraphicsManager::initOpenGLFunctions()
 {
+    const bool is10 = checkGLVersion(1, 0);
+    const bool is11 = checkGLVersion(1, 1);
+    const bool is15 = checkGLVersion(1, 5);
+    const bool is20 = checkGLVersion(2, 0);
+    const bool is21 = checkGLVersion(2, 1);
+    const bool is30 = checkGLVersion(3, 0);
+
     // Texture sampler
-    if (checkGLVersion(1, 0) && supportExtension("GL_ARB_sampler_objects"))
+    if (is10 && supportExtension("GL_ARB_sampler_objects"))
     {
         logger->log1("found GL_ARB_sampler_objects");
         assignFunction(glGenSamplers, "glGenSamplers");
@@ -848,7 +855,7 @@ void GraphicsManager::initOpenGLFunctions()
         mUseTextureSampler = false;
     }
 
-    if (!checkGLVersion(1, 1))
+    if (!is11)
         return;
 
     if (supportExtension("GL_ARB_framebuffer_object"))
@@ -881,7 +888,8 @@ void GraphicsManager::initOpenGLFunctions()
     }
     else
     {   // no frame buffer support
-        logger->log1("frame buffer not found");
+        logger->log1("GL_ARB_framebuffer_object or "
+            "GL_EXT_framebuffer_object not found");
         config.setValue("usefbo", false);
     }
 
@@ -957,7 +965,7 @@ void GraphicsManager::initOpenGLFunctions()
     {
         logger->log1("GL_EXT_debug_marker not found");
     }
-    if (checkGLVersion(2, 1) && supportExtension("GL_ARB_vertex_array_object"))
+    if (is21 && supportExtension("GL_ARB_vertex_array_object"))
     {
         logger->log1("found GL_ARB_vertex_array_object");
         assignFunction(glGenVertexArrays, "glGenVertexArrays");
@@ -973,7 +981,7 @@ void GraphicsManager::initOpenGLFunctions()
     {
         logger->log1("GL_ARB_vertex_array_object not found");
     }
-    if (checkGLVersion(1, 5))
+    if (is15)
     {
         assignFunction(glGenBuffers, "glGenBuffers");
         assignFunction(glDeleteBuffers, "glDeleteBuffers");
@@ -985,7 +993,7 @@ void GraphicsManager::initOpenGLFunctions()
     {
         logger->log1("buffers extension not found");
     }
-    if (checkGLVersion(2, 0))
+    if (is20)
     {
         assignFunction(glCreateShader, "glCreateShader");
         assignFunction(glDeleteShader, "glDeleteShader");
@@ -1008,7 +1016,7 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glValidateProgram, "glValidateProgram");
         assignFunction(glGetAttribLocation, "glGetAttribLocation");
 
-        if (checkGLVersion(3, 0))
+        if (is30)
         {
             assignFunction(glBindFragDataLocation, "glBindFragDataLocation");
         }
@@ -1016,8 +1024,7 @@ void GraphicsManager::initOpenGLFunctions()
         {
             logger->log1("shaders functions incomplete (OpenGL < 3.0)");
         }
-        if (checkGLVersion(4, 0)
-            || supportExtension("GL_ARB_separate_shader_objects"))
+        if (supportExtension("GL_ARB_separate_shader_objects"))
         {
             logger->log1("found GL_ARB_separate_shader_objects");
             assignFunction(glUniform1f, "glUniform1f");
@@ -1029,8 +1036,7 @@ void GraphicsManager::initOpenGLFunctions()
         {
             logger->log1("GL_ARB_separate_shader_objects not supported");
         }
-        if (checkGLVersion(4, 1)
-            || supportExtension("GL_ARB_separate_shader_objects"))
+        if (supportExtension("GL_ARB_separate_shader_objects"))
         {
             logger->log1("found GL_ARB_separate_shader_objects");
             assignFunction(glProgramUniform1f, "glProgramUniform1f");
@@ -1042,8 +1048,7 @@ void GraphicsManager::initOpenGLFunctions()
         {
             logger->log1("GL_ARB_separate_shader_objects not supported");
         }
-        if (checkGLVersion(4, 3)
-            || supportExtension("GL_ARB_vertex_attrib_binding"))
+        if (supportExtension("GL_ARB_vertex_attrib_binding"))
         {
             logger->log1("found GL_ARB_vertex_attrib_binding");
             assignFunction(glBindVertexBuffer, "glBindVertexBuffer");
@@ -1055,8 +1060,7 @@ void GraphicsManager::initOpenGLFunctions()
         {
             logger->log1("GL_ARB_vertex_attrib_binding not supported");
         }
-        if (checkGLVersion(4, 3)
-            || supportExtension("GL_ARB_invalidate_subdata"))
+        if (supportExtension("GL_ARB_invalidate_subdata"))
         {
             logger->log1("found GL_ARB_invalidate_subdata");
             assignFunction(glInvalidateTexImage, "glInvalidateTexImage");
@@ -1065,7 +1069,7 @@ void GraphicsManager::initOpenGLFunctions()
         {
             logger->log1("GL_ARB_invalidate_subdata not supported");
         }
-        if (checkGLVersion(4, 4) || supportExtension("GL_ARB_multi_bind"))
+        if (supportExtension("GL_ARB_multi_bind"))
         {
             logger->log1("found GL_ARB_multi_bind");
             assignFunction(glBindVertexBuffers, "glBindVertexBuffers");
