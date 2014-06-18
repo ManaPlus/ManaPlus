@@ -141,6 +141,7 @@ GraphicsManager::GraphicsManager() :
     mUseTextureSampler(true),
     mTextureSampler(0),
     mSupportDebug(0),
+    mSupportModernOpengl(false),
 #endif
     mUseAtlases(false)
 {
@@ -468,7 +469,7 @@ void GraphicsManager::initGraphics()
     const RenderType oldOpenGLMode = openGLMode;
     if (openGLMode == RENDER_MODERN_OPENGL)
     {
-        if (!checkGLVersion(3, 0))
+        if (!mSupportModernOpengl || !checkGLVersion(3, 0))
         {
             logger->log("Fallback to normal OpenGL mode");
             openGLMode = RENDER_NORMAL_OPENGL;
@@ -835,6 +836,7 @@ void GraphicsManager::initOpenGLFunctions()
     const bool is20 = checkGLVersion(2, 0);
     const bool is21 = checkGLVersion(2, 1);
     const bool is30 = checkGLVersion(3, 0);
+    mSupportModernOpengl = true;
 
     // Texture sampler
     if (is10 && supportExtension("GL_ARB_sampler_objects"))
@@ -979,6 +981,7 @@ void GraphicsManager::initOpenGLFunctions()
     }
     else
     {
+        mSupportModernOpengl = false;
         logger->log1("GL_ARB_vertex_array_object not found");
     }
     if (is15)
@@ -991,6 +994,7 @@ void GraphicsManager::initOpenGLFunctions()
     }
     else
     {
+        mSupportModernOpengl = false;
         logger->log1("buffers extension not found");
     }
     if (is20)
@@ -1022,6 +1026,7 @@ void GraphicsManager::initOpenGLFunctions()
         }
         else
         {
+            mSupportModernOpengl = false;
             logger->log1("shaders functions incomplete (OpenGL < 3.0)");
         }
         if (supportExtension("GL_ARB_separate_shader_objects"))
@@ -1034,6 +1039,7 @@ void GraphicsManager::initOpenGLFunctions()
         }
         else
         {
+            mSupportModernOpengl = false;
             logger->log1("GL_ARB_separate_shader_objects not supported");
         }
         if (supportExtension("GL_ARB_separate_shader_objects"))
@@ -1058,6 +1064,7 @@ void GraphicsManager::initOpenGLFunctions()
         }
         else
         {
+            mSupportModernOpengl = false;
             logger->log1("GL_ARB_vertex_attrib_binding not supported");
         }
         if (supportExtension("GL_ARB_invalidate_subdata"))
@@ -1081,6 +1088,7 @@ void GraphicsManager::initOpenGLFunctions()
     }
     else
     {
+        mSupportModernOpengl = false;
         logger->log1("shaders not supported");
     }
 

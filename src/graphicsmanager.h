@@ -213,6 +213,8 @@ class GraphicsManager final
         GLuint mTextureSampler;
 
         int mSupportDebug;
+
+        bool mSupportModernOpengl;
 #endif
         bool mUseAtlases;
 };
