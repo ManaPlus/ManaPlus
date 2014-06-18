@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-06-07 13:21+0300\n"
+"POT-Creation-Date: 2014-06-18 13:59+0300\n"
 "PO-Revision-Date: 2014-05-26 07:06+0000\n"
 "Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/"
@@ -537,37 +537,37 @@ msgstr "Burbuja flotante"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:897 src/gui/windowmenu.cpp:164
+#: src/client.cpp:895 src/gui/windowmenu.cpp:164
 #: src/gui/windows/setupwindow.cpp:62
 msgid "Setup"
 msgstr "Configuración"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:900 src/gui/widgets/tabs/setup_perfomance.cpp:53
+#: src/client.cpp:898 src/gui/widgets/tabs/setup_perfomance.cpp:53
 msgid "Performance"
 msgstr "Rendimiento"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:903 src/gui/widgets/tabs/setup_video.cpp:104
+#: src/client.cpp:901 src/gui/widgets/tabs/setup_video.cpp:104
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:906 src/gui/widgets/tabs/setup_theme.cpp:121
+#: src/client.cpp:904 src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Tema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:909
+#: src/client.cpp:907
 msgid "About"
 msgstr "Acerca de..."
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:912 src/gui/windowmenu.cpp:76
+#: src/client.cpp:910 src/gui/windowmenu.cpp:76
 #: src/gui/windows/helpwindow.cpp:52
 msgid "Help"
 msgstr "Ayuda"
@@ -582,7 +582,7 @@ msgstr "Ayuda"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:916 src/gui/popups/popupmenu.cpp:625
+#: src/client.cpp:914 src/gui/popups/popupmenu.cpp:625
 #: src/gui/popups/popupmenu.cpp:864 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:229 src/gui/windows/npcdialog.cpp:72
 #: src/gui/windows/npcdialog.cpp:110 src/gui/windows/questswindow.cpp:75
@@ -591,32 +591,32 @@ msgid "Close"
 msgstr "Cerrar"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1040
+#: src/client.cpp:1038
 msgid "Connecting to server"
 msgstr "Conectando al servidor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1088
+#: src/client.cpp:1086
 msgid "Logging in"
 msgstr "Accediendo a la cuenta"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1131
+#: src/client.cpp:1129
 msgid "Entering game world"
 msgstr "Entrando al mundo del juego"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1255
+#: src/client.cpp:1253
 msgid "Requesting characters"
 msgstr "Cargando personajes"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1295
+#: src/client.cpp:1293
 msgid "Connecting to the game server"
 msgstr "Conectando al servidor del juego"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1307
+#: src/client.cpp:1305
 msgid "Changing game servers"
 msgstr "Cambiando servidores del juego"
 
@@ -630,7 +630,7 @@ msgstr "Cambiando servidores del juego"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1362 src/client.cpp:1373 src/client.cpp:1559
+#: src/client.cpp:1360 src/client.cpp:1371 src/client.cpp:1557
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:158
 #: src/gui/windows/charcreatedialog.cpp:358
@@ -643,37 +643,37 @@ msgid "Error"
 msgstr "Error"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1385
+#: src/client.cpp:1383
 msgid "Requesting registration details"
 msgstr "Solicitando detalles de registro"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1426
+#: src/client.cpp:1424
 msgid "Password Change"
 msgstr "Cambio de contraseña"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1428
+#: src/client.cpp:1426
 msgid "Password changed successfully!"
 msgstr "¡Contraseña cambiada exitosamente!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1451
+#: src/client.cpp:1449
 msgid "Email Change"
 msgstr "Cambio de Email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1453
+#: src/client.cpp:1451
 msgid "Email changed successfully!"
 msgstr "¡Email modificado exitosamente!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1476
+#: src/client.cpp:1474
 msgid "Unregister Successful"
 msgstr "Registro cancelado"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1478
+#: src/client.cpp:1476
 msgid "Farewell, come back any time..."
 msgstr "Adiós, vuelve cuando quieras..."
 
@@ -3246,29 +3246,29 @@ msgstr "%s ahora está Desconectado."
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:53
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:184
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:235
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:188
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:239
 msgid "Music:"
 msgstr "Música:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:55
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:190
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:239
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:194
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:243
 msgid "Map:"
 msgstr "Mapa:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:57
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:187
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:237
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:191
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:241
 msgid "Minimap:"
 msgstr "Minimapa:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:60
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:181
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:233
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:185
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:237
 msgid "Cursor:"
 msgstr "Cursor:"
 
@@ -3279,27 +3279,27 @@ msgstr "Recuento de partículas:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:66
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:203
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:243
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:207
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:247
 msgid "Map actors count:"
 msgstr "Numero de agentes en el mapa:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:68
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:162
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:168
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:166
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:172
 msgid "Player Position:"
 msgstr "Posición del jugador:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:74
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:216
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:220
 msgid "Draw calls:"
 msgstr "Dibujar llamadas:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:79
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:224
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:228
 msgid "Texture binds:"
 msgstr "Enlaces de texturas:"
 
@@ -3311,14 +3311,14 @@ msgstr "%d FPS"
 
 #. TRANSLATORS: debug window label, logic per second
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:84
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:251
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:255
 #, c-format
 msgid "%d LPS"
 msgstr "%d LPS"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:95
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:119
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:123
 #, c-format
 msgid "%d FPS (Software)"
 msgstr "%d FPS (Software)"
@@ -3343,127 +3343,133 @@ msgstr "%d FPS (OpenGL móvil)"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:114
+#, fuzzy, c-format
+msgid "%d FPS (modern OpenGL)"
+msgstr "%d FPS (OpenGL móvil)"
+
+#. TRANSLATORS: debug window label
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:118
 #, c-format
 msgid "%d FPS (SDL2 default)"
 msgstr "%d FPS (SDL2 predeterminado)"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:139
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:209
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:143
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:213
 msgid "Textures count:"
 msgstr "Contador de Texturas:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:198
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:202
 #, c-format
 msgid "Particle count: %d"
 msgstr "Recuento de partículas: %d"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:258
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:309
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:371
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:262
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:313
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:375
 msgid "Target:"
 msgstr "Objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:260
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:315
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:373
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:264
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:319
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:377
 msgid "Target Id:"
 msgstr "Id de Objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:263
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:318
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:375
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:267
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:322
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:379
 msgid "Target type:"
 msgstr "Tipo de objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:265
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:269
 msgid "Target level:"
 msgstr "Nivel del objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:267
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:334
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:271
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:338
 msgid "Target race:"
 msgstr "Raza del objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:269
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:273
 msgid "Target party:"
 msgstr "Grupo de objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:271
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:275
 msgid "Target guild:"
 msgstr "Gremio del objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:273
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:359
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:365
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:383
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:277
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:363
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:369
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:387
 msgid "Attack delay:"
 msgstr "Retraso de ataque:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:275
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:346
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:385
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:279
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:350
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:389
 msgid "Minimal hit:"
 msgstr "Golpe mínimo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:277
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:349
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:387
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:281
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:353
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:391
 msgid "Maximum hit:"
 msgstr "Golpe máximo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:279
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:352
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:389
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:283
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:356
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:393
 msgid "Critical hit:"
 msgstr "Golpe crítico:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:323
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:329
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:377
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:327
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:333
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:381
 msgid "Target Level:"
 msgstr "Nivel del objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:337
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:379
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:341
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:383
 msgid "Target Party:"
 msgstr "Grupo del Objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:341
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:381
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:345
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:385
 msgid "Target Guild:"
 msgstr "Gremio del objetivo:"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:426
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:432
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:430
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:436
 #, c-format
 msgid "Ping: %s ms"
 msgstr "Ping: %s ms"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:435
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:439
 #, c-format
 msgid "In: %d bytes/s"
 msgstr "Recibiendo: %d bytes/s"
 
 #. TRANSLATORS: debug window label
-#: src/gui/widgets/tabs/debugwindowtabs.cpp:438
+#: src/gui/widgets/tabs/debugwindowtabs.cpp:442
 #, c-format
 msgid "Out: %d bytes/s"
 msgstr "Enviando: %d bytes/s"
@@ -5763,19 +5769,19 @@ msgid "Enter password:"
 msgstr "Ingrese contraseña:"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:635
+#: src/gui/windows/chatwindow.cpp:636
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Presentes: %s; %d jugadores están presentes."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1074
+#: src/gui/windows/chatwindow.cpp:1075
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Susurrando a %s: %s"
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
-#: src/gui/windows/chatwindow.cpp:1519
+#: src/gui/windows/chatwindow.cpp:1520
 #, c-format
 msgid "%s's pet"
 msgstr "Mascota de %s"
@@ -6928,12 +6934,18 @@ msgstr "--safemode : Iniciar el juego en modo seguro"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:130
+#, fuzzy
+msgid "     --renderer       : Set renderer type"
+msgstr "--safemode : Iniciar el juego en modo seguro"
+
+#. TRANSLATORS: command line help
+#: src/main.cpp:132
 msgid "  -T --tests          : Start testing drivers and auto configuring"
 msgstr ""
 "  -T --tests          : Comenzar a probar controladores y auto configurar"
 
 #. TRANSLATORS: command line help
-#: src/main.cpp:134
+#: src/main.cpp:136
 msgid "  -O --no-opengl      : Disable OpenGL for this session"
 msgstr "  -O --no-opengl: Deshabilitar OpenGL para esta sesión"
 
@@ -7537,33 +7549,39 @@ msgid "Trade: You and %s"
 msgstr "Intercambio: Tú y %s"
 
 #. TRANSLATORS: draw backend
-#: src/render/rendererslistsdl2.h:45 src/render/rendererslistsdl2.h:79
-#: src/render/rendererslistsdl2.h:116 src/render/rendererslistsdl.h:47
-#: src/render/rendererslistsdl.h:78 src/render/rendererslistsdl.h:112
+#: src/render/rendererslistsdl2.h:45 src/render/rendererslistsdl2.h:81
+#: src/render/rendererslistsdl2.h:121 src/render/rendererslistsdl.h:47
+#: src/render/rendererslistsdl.h:80 src/render/rendererslistsdl.h:117
 msgid "Software"
 msgstr "Software"
 
 #. TRANSLATORS: draw backend
-#: src/render/rendererslistsdl2.h:47 src/render/rendererslistsdl2.h:81
-#: src/render/rendererslistsdl2.h:118
+#: src/render/rendererslistsdl2.h:47 src/render/rendererslistsdl2.h:83
+#: src/render/rendererslistsdl2.h:123
 msgid "SDL2 default"
 msgstr "SDL2 predeterminado"
 
 #. TRANSLATORS: draw backend
-#: src/render/rendererslistsdl2.h:49 src/render/rendererslistsdl2.h:87
-#: src/render/rendererslistsdl.h:49 src/render/rendererslistsdl.h:84
+#: src/render/rendererslistsdl2.h:49 src/render/rendererslistsdl2.h:89
+#: src/render/rendererslistsdl.h:49 src/render/rendererslistsdl.h:86
 msgid "Mobile OpenGL"
 msgstr "OpenGL móvil"
 
 #. TRANSLATORS: draw backend
-#: src/render/rendererslistsdl2.h:83 src/render/rendererslistsdl.h:80
+#: src/render/rendererslistsdl2.h:85 src/render/rendererslistsdl.h:82
 msgid "Normal OpenGL"
 msgstr "OpenGL Normal"
 
 #. TRANSLATORS: draw backend
-#: src/render/rendererslistsdl2.h:85 src/render/rendererslistsdl.h:82
+#: src/render/rendererslistsdl2.h:87 src/render/rendererslistsdl.h:84
 msgid "Safe OpenGL"
 msgstr "OpenGL Seguro"
+
+#. TRANSLATORS: draw backend
+#: src/render/rendererslistsdl2.h:91 src/render/rendererslistsdl.h:88
+#, fuzzy
+msgid "Modern OpenGL"
+msgstr "OpenGL móvil"
 
 #. TRANSLATORS: being info default name
 #. TRANSLATORS: unknown info name

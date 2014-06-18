@@ -2,12 +2,13 @@
 # Translators:
 # alastrim <alasmirt@gmail.com>, 2012
 # freya <freya.df@gmail.com>, 2012
+# Jonatas L. Nogueira <cpntb1@ymail.com>, 2014
 # Luciano Zago <lcnzg7@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-03-09 22:58+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2014-06-12 00:09+0000\n"
+"Last-Translator: Jonatas L. Nogueira <cpntb1@ymail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/manaplus/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -157,7 +158,7 @@ msgid "\"Item shortcut 3\""
 msgstr ""
 
 msgid "\"Change move type\""
-msgstr ""
+msgstr "\"Mudar tipo de movimento\""
 
 msgid "Tabs"
 msgstr ""
@@ -166,11 +167,11 @@ msgid "\"Outfit shortcut 4\""
 msgstr ""
 
 msgid "\"Did you know window\""
-msgstr ""
+msgstr "\"Janela Você Sabia\""
 
 msgid ""
 "/mail NICK MSG - send offline message to NICK. Working only in tmw server."
-msgstr ""
+msgstr "/mail NICK MSG - envia mensagem offline para NICK. Funciona apenas no servidor tmw."
 
 msgid "Download"
 msgstr ""
@@ -230,7 +231,7 @@ msgid "For other server look servers pages for support."
 msgstr "Para outros servidores veja a página do servidor para suporte."
 
 msgid "\"Toggle chat\""
-msgstr ""
+msgstr "\"Alternar para chat\""
 
 msgid "/talkpet TEXT - talk from your pet."
 msgstr ""
@@ -242,7 +243,7 @@ msgid "Manaplus Developers"
 msgstr "Desenvolvedores do Manaplus"
 
 msgid "\"On / off audio\""
-msgstr ""
+msgstr "\"Ligar / Desligar áudio\""
 
 msgid "You can change any key in keyboard settings."
 msgstr "Você pode mudar qualquer tecla nas configurações de teclado."
@@ -266,7 +267,7 @@ msgid "\"Smilie\""
 msgstr ""
 
 msgid "Main development"
-msgstr ""
+msgstr "Desenvolvimento principal"
 
 msgid ""
 " Left click to execute default action: walk, pick up an item, attack a monster\n"
@@ -275,7 +276,7 @@ msgid ""
 msgstr ""
 
 msgid "Search string not found."
-msgstr ""
+msgstr "Linha procurada não localizada."
 
 msgid "\"Emote shortcut 7\""
 msgstr ""
@@ -286,7 +287,7 @@ msgid ""
 msgstr ""
 
 msgid "/attack - attack target."
-msgstr ""
+msgstr "/attack - ataca alvo."
 
 msgid "\"Set home location/set arrow\""
 msgstr ""
@@ -337,7 +338,7 @@ msgid ""
 msgstr ""
 
 msgid "/help - show this help."
-msgstr ""
+msgstr "/help - mostra essa ajuda."
 
 msgid "\"Outfit shortcut 7\""
 msgstr "\"Atalho de roupa 7\""
@@ -374,7 +375,7 @@ msgid ""
 msgstr ""
 
 msgid "\"Copy outfit\""
-msgstr ""
+msgstr "\"Copiar roupas\""
 
 msgid "/present - print visible players number to chat."
 msgstr ""
@@ -423,7 +424,7 @@ msgid "\"Enable / disable away mode\""
 msgstr ""
 
 msgid "\"Commands window\""
-msgstr ""
+msgstr "\"Janela de comandos\""
 
 msgid "Android porting"
 msgstr ""
@@ -443,16 +444,16 @@ msgid "/clear - clear current chat tab."
 msgstr "/clear - Limpa a aba atual de Bate-Papo."
 
 msgid "\"Social window\""
-msgstr ""
+msgstr "\"Janela social\""
 
 msgid "\"Emote shortcut 4\""
 msgstr ""
 
 msgid "\"Close chat tab\""
-msgstr ""
+msgstr "\"Fechar aba de chat\""
 
 msgid "\"Target player\""
-msgstr ""
+msgstr "\"Selecionar jogador\""
 
 msgid "/invite NICK - invite a player to your party."
 msgstr ""
@@ -464,10 +465,10 @@ msgid ""
 msgstr ""
 
 msgid "\"Debug window\""
-msgstr ""
+msgstr "\"Janela debug\""
 
 msgid "\"Next chat tab\""
-msgstr ""
+msgstr "\"Próxima aba de chat\""
 
 msgid "\"Change move to target type\""
 msgstr ""
@@ -538,7 +539,7 @@ msgid "\"Wear outfit\""
 msgstr ""
 
 msgid "\"Change map view mode\""
-msgstr ""
+msgstr "\"Mudar o modo de visualização de mapas\""
 
 msgid "Instructions"
 msgstr ""
@@ -563,7 +564,7 @@ msgid ""
 msgstr ""
 
 msgid "\"Sit\""
-msgstr ""
+msgstr "\"Sentar\""
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
 msgstr ""
@@ -581,7 +582,7 @@ msgid "/item 0 - disable party item sharing options."
 msgstr ""
 
 msgid "\"Target closest monster\""
-msgstr ""
+msgstr "\"Selecionar monstro mais próximo\""
 
 msgid "\"Outfits window\""
 msgstr "\"Janela de roupas\""
@@ -651,7 +652,7 @@ msgid "/where - print current player position to chat."
 msgstr "/where - imprimir a posição atual do jogador."
 
 msgid "/exp - show party experience sharing options."
-msgstr ""
+msgstr "/exp - mostra opções de compartilhamento de experiência do grupo."
 
 msgid "/dumpmods - dump all enabled mod names into chat."
 msgstr ""
@@ -663,7 +664,7 @@ msgid "\"Outfit shortcut 10\""
 msgstr ""
 
 msgid "\"Crazy moves\""
-msgstr ""
+msgstr "\"Movimentos loucos\""
 
 msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
 msgstr ""
@@ -681,19 +682,19 @@ msgid "\"Scroll chat down\""
 msgstr ""
 
 msgid "\"Move to target\""
-msgstr ""
+msgstr "\"Mover para o alvo\""
 
 msgid "/ignoreall - add all whispers to ignore list."
 msgstr "/ignoreall - adiciona todos sussurros a lista de ignorados."
 
 msgid "\"Chat auto complete\""
-msgstr ""
+msgstr "\"Chat auto completar\""
 
 msgid "/ignore NICK - add nick to ignore list."
 msgstr "/ignore NICK - adiciona NICK a lista de ignorados."
 
 msgid "\"Attack\""
-msgstr ""
+msgstr "\"Atacar\""
 
 msgid "/magicattack - attack target with magic."
 msgstr ""
@@ -732,7 +733,7 @@ msgid "\"Change pickup type\""
 msgstr ""
 
 msgid "/item - show party item sharing options."
-msgstr ""
+msgstr "/item - mostra opções de compartilhamento de itens do grupo."
 
 msgid "move key"
 msgstr ""
@@ -832,7 +833,7 @@ msgid "\"Outfit shortcut 15\""
 msgstr ""
 
 msgid "\"Move right\""
-msgstr ""
+msgstr "\"Mover para direita\""
 
 msgid "##2Emote:##9 enables the ability to express emotions."
 msgstr ""
@@ -915,7 +916,7 @@ msgid "or come visit us on our IRC channel:"
 msgstr ""
 
 msgid "\"Toggle camera mode\""
-msgstr ""
+msgstr "\"Alterar modo de camera\""
 
 msgid "WINDOWS"
 msgstr "JANELAS"
@@ -938,10 +939,10 @@ msgid ""
 msgstr "Você pode utilizar o bate-papo de voz mumble para conversar com outras pessoas. Começa mumble antes de iniciar o cliente e habilite as configurações do mumble."
 
 msgid "\"Move up\""
-msgstr ""
+msgstr "\"Mover para cima\""
 
 msgid "Here contributors from parent projects"
-msgstr ""
+msgstr "Aqui estão os contribuidores dos projetos pais"
 
 msgid "\"Item shortcut 4\""
 msgstr ""
@@ -999,7 +1000,7 @@ msgid "\"Disable / enable game modifier keys\""
 msgstr ""
 
 msgid "\"Quit\""
-msgstr ""
+msgstr "\"Sair\""
 
 msgid "/move X Y - move to X,Y position in short distance."
 msgstr "/move X Y - mover para as posições X,Y. em curta distância."
@@ -1008,7 +1009,7 @@ msgid "Themes:"
 msgstr "\"Temas\""
 
 msgid "\"Hide windows\""
-msgstr ""
+msgstr "\"Esconder janelas\""
 
 msgid "Chat commands"
 msgstr "Comandos de Bata-Papo"
@@ -1020,10 +1021,10 @@ msgid "/blacklist NICK - add nick to blacklist relation list."
 msgstr "/blacklist NICK - adiciona o NICK a lista negra de relações."
 
 msgid "Art or images contributors"
-msgstr ""
+msgstr "Contribuidores de arte ou imagens"
 
 msgid "/exp 0 - disable party experience sharing options."
-msgstr ""
+msgstr "/exp 0 - desabilita opções de compartilhamento de experiência do grupo."
 
 msgid "Basic skills:"
 msgstr "Habilidades básicas:"
@@ -1032,7 +1033,7 @@ msgid "/uploadlog - upload log into pastebin service."
 msgstr ""
 
 msgid "/leave - leave the party you are in."
-msgstr ""
+msgstr "/leave - sai do grupo em que você está."
 
 msgid "\"Status window\""
 msgstr ""
@@ -1053,7 +1054,7 @@ msgid "Commands"
 msgstr "Comandos"
 
 msgid "\"Stop Attack\""
-msgstr ""
+msgstr "\"Parar Ataque\""
 
 msgid "Contributors to client/server development"
 msgstr "Contribuidores para o desenvolvimento do Cliente/Servidor"
@@ -1077,7 +1078,7 @@ msgid "Powered By"
 msgstr "Mantido por"
 
 msgid "\"Skill window\""
-msgstr ""
+msgstr "\"Janela de habilidade\""
 
 msgid "\"Emote shortcut 6\""
 msgstr ""
