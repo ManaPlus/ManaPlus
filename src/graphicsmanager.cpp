@@ -1188,6 +1188,13 @@ std::string GraphicsManager::errorToString(const GLenum error)
     return "";
 }
 
+void GraphicsManager::logError()
+{
+    const GLenum error = GraphicsManager::getLastError();
+    if (error != GL_NO_ERROR)
+        logger->log(errorToString(error));
+}
+
 void GraphicsManager::detectVideoSettings()
 {
     config.setValue("videodetected", true);

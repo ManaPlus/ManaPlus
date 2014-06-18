@@ -162,6 +162,11 @@ void ModernOpenGLGraphics::postInit()
 
     logger->log("Compiling shaders");
     mProgram = shaders.getSimpleProgram();
+    if (!mProgram)
+    {
+        graphicsManager.logError();
+        logger->safeError("Shader creation error. See manaplus.log.");
+    }
     mProgramId = mProgram->getProgramId();
     if (!mProgram)
         logger->error("Shaders compilation error.");
