@@ -832,10 +832,8 @@ void GraphicsManager::initOpenGLFunctions()
 {
     const bool is10 = checkGLVersion(1, 0);
     const bool is11 = checkGLVersion(1, 1);
-    const bool is15 = checkGLVersion(1, 5);
     const bool is20 = checkGLVersion(2, 0);
     const bool is21 = checkGLVersion(2, 1);
-    const bool is30 = checkGLVersion(3, 0);
     mSupportModernOpengl = true;
 
     // Texture sampler
@@ -967,6 +965,15 @@ void GraphicsManager::initOpenGLFunctions()
     {
         logger->log1("GL_EXT_debug_marker not found");
     }
+    if (is20 && supportExtension("GL_ARB_invalidate_subdata"))
+    {
+        logger->log1("found GL_ARB_invalidate_subdata");
+        assignFunction(glInvalidateTexImage, "glInvalidateTexImage");
+    }
+    else
+    {
+        logger->log1("GL_ARB_invalidate_subdata not supported");
+    }
     if (is21 && supportExtension("GL_ARB_vertex_array_object"))
     {
         logger->log1("found GL_ARB_vertex_array_object");
@@ -984,7 +991,7 @@ void GraphicsManager::initOpenGLFunctions()
         mSupportModernOpengl = false;
         logger->log1("GL_ARB_vertex_array_object not found");
     }
-    if (is15)
+    if (supportExtension("GL_ARB_vertex_buffer_object"))
     {
         assignFunction(glGenBuffers, "glGenBuffers");
         assignFunction(glDeleteBuffers, "glDeleteBuffers");
@@ -997,7 +1004,7 @@ void GraphicsManager::initOpenGLFunctions()
         mSupportModernOpengl = false;
         logger->log1("buffers extension not found");
     }
-    if (is20)
+    if (supportExtension("GL_ARB_shader_objects"))
     {
         assignFunction(glCreateShader, "glCreateShader");
         assignFunction(glDeleteShader, "glDeleteShader");
@@ -1019,28 +1026,19 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glUseProgram, "glUseProgram");
         assignFunction(glValidateProgram, "glValidateProgram");
         assignFunction(glGetAttribLocation, "glGetAttribLocation");
+        assignFunction(glUniform1f, "glUniform1f");
+        assignFunction(glUniform2f, "glUniform2f");
+        assignFunction(glUniform3f, "glUniform3f");
+        assignFunction(glUniform4f, "glUniform4f");
 
-        if (is30)
+        if (supportExtension("GL_EXT_gpu_shader4"))
         {
             assignFunction(glBindFragDataLocation, "glBindFragDataLocation");
         }
         else
         {
             mSupportModernOpengl = false;
-            logger->log1("shaders functions incomplete (OpenGL < 3.0)");
-        }
-        if (supportExtension("GL_ARB_separate_shader_objects"))
-        {
-            logger->log1("found GL_ARB_separate_shader_objects");
-            assignFunction(glUniform1f, "glUniform1f");
-            assignFunction(glUniform2f, "glUniform2f");
-            assignFunction(glUniform3f, "glUniform3f");
-            assignFunction(glUniform4f, "glUniform4f");
-        }
-        else
-        {
-            mSupportModernOpengl = false;
-            logger->log1("GL_ARB_separate_shader_objects not supported");
+            logger->log1("GL_EXT_gpu_shader4 not supported");
         }
         if (supportExtension("GL_ARB_separate_shader_objects"))
         {
@@ -1066,15 +1064,6 @@ void GraphicsManager::initOpenGLFunctions()
         {
             mSupportModernOpengl = false;
             logger->log1("GL_ARB_vertex_attrib_binding not supported");
-        }
-        if (supportExtension("GL_ARB_invalidate_subdata"))
-        {
-            logger->log1("found GL_ARB_invalidate_subdata");
-            assignFunction(glInvalidateTexImage, "glInvalidateTexImage");
-        }
-        else
-        {
-            logger->log1("GL_ARB_invalidate_subdata not supported");
         }
         if (supportExtension("GL_ARB_multi_bind"))
         {
