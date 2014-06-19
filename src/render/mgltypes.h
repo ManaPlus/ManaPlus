@@ -145,6 +145,12 @@ typedef void (APIENTRY *glVertexAttribIFormat_t) (GLuint attribindex,
 typedef void (APIENTRY *glVertexAttribIPointer_t) (GLuint index, GLint size,
     GLenum type, GLsizei stride, const GLvoid * pointer);
 typedef void (APIENTRY *glInvalidateTexImage_t) (GLuint texture, GLint level);
+typedef void (APIENTRY *glCopyImageSubData_t) (GLuint srcName,
+    GLenum srcTarget, GLint srcLevel,
+    GLint srcX, GLint srcY, GLint srcZ,
+    GLuint dstName, GLenum dstTarget, GLint dstLevel,
+    GLint dstX, GLint dstY, GLint dstZ,
+    GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,

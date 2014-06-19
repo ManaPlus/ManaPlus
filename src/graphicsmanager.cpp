@@ -1004,6 +1004,14 @@ void GraphicsManager::initOpenGLFunctions()
         mSupportModernOpengl = false;
         logger->log1("buffers extension not found");
     }
+    if (supportExtension("GL_ARB_copy_image"))
+    {
+        assignFunction(glCopyImageSubData, "glCopyImageSubData");
+    }
+    else
+    {
+        logger->log1("GL_ARB_copy_image not found");
+    }
     if (supportExtension("GL_ARB_shader_objects"))
     {
         assignFunction(glCreateShader, "glCreateShader");

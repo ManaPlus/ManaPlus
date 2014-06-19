@@ -99,6 +99,7 @@ defNameE(glIsBuffer);
 defNameE(glVertexAttribIFormat);
 defNameE(glVertexAttribIPointer);
 defNameE(glInvalidateTexImage);
+defNameE(glCopyImageSubData);
 
 #ifdef WIN32
 defNameE(wglGetExtensionsString);
