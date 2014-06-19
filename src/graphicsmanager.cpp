@@ -899,6 +899,9 @@ void GraphicsManager::initOpenGLFunctions()
         logger->log1("found GL_KHR_debug");
         assignFunction(glDebugMessageControl, "glDebugMessageControl");
         assignFunction(glDebugMessageCallback, "glDebugMessageCallback");
+        assignFunction(glPushDebugGroup, "glPushDebugGroup");
+        assignFunction(glPopDebugGroup, "glPopDebugGroup");
+        assignFunction(glObjectLabel, "glObjectLabel");
         mSupportDebug = 2;
     }
     else if (supportExtension("GL_ARB_debug_output"))
@@ -1281,6 +1284,12 @@ static CALLBACK void debugCallback(GLenum source, GLenum type, GLuint id,
             break;
         case GL_DEBUG_TYPE_MARKER:
             message.append(" MARKER");
+            break;
+        case GL_DEBUG_TYPE_PUSH_GROUP:
+            message.append(" PUSH GROUP");
+            break;
+        case GL_DEBUG_TYPE_POP_GROUP:
+            message.append(" POP GROUP");
             break;
         default:
             message.append(" ?").append(toString(type));

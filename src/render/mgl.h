@@ -100,6 +100,9 @@ defNameE(glVertexAttribIFormat);
 defNameE(glVertexAttribIPointer);
 defNameE(glInvalidateTexImage);
 defNameE(glCopyImageSubData);
+defNameE(glPushDebugGroup);
+defNameE(glPopDebugGroup);
+defNameE(glObjectLabel);
 
 #ifdef WIN32
 defNameE(wglGetExtensionsString);

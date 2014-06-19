@@ -55,6 +55,8 @@
 #define GL_DEBUG_TYPE_PERFORMANCE         0x8250
 #define GL_DEBUG_TYPE_OTHER               0x8251
 #define GL_DEBUG_TYPE_MARKER              0x8268
+#define GL_DEBUG_TYPE_PUSH_GROUP          0x8269
+#define GL_DEBUG_TYPE_POP_GROUP           0x826a
 #define GL_DEBUG_SEVERITY_NOTIFICATION    0x826B
 #define GL_DEBUG_SEVERITY_HIGH            0x9146
 #define GL_DEBUG_SEVERITY_MEDIUM          0x9147

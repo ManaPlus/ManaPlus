@@ -97,6 +97,9 @@ defName(glVertexAttribIFormat);
 defName(glVertexAttribIPointer);
 defName(glInvalidateTexImage);
 defName(glCopyImageSubData);
+defName(glPushDebugGroup);
+defName(glPopDebugGroup);
+defName(glObjectLabel);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);

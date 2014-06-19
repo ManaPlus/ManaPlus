@@ -151,6 +151,11 @@ typedef void (APIENTRY *glCopyImageSubData_t) (GLuint srcName,
     GLuint dstName, GLenum dstTarget, GLint dstLevel,
     GLint dstX, GLint dstY, GLint dstZ,
     GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
+typedef void (APIENTRY *glPushDebugGroup_t) (GLenum source, GLuint id,
+        GLsizei length, const GLchar * message);
+typedef void (APIENTRY *glPopDebugGroup_t) (void);
+typedef void (APIENTRY *glObjectLabel_t) (GLenum identifier, GLuint name,
+    GLsizei length, const GLchar *label);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,
