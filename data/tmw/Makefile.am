@@ -7,8 +7,8 @@ tmw:
 	     mkdir -p "$(DESTDIR)$(desktopdir)"
 	     cp tmw.desktop "$(DESTDIR)$(desktopdir)"
 	     cp tmw.manaplus "$(DESTDIR)$(pkgdatadir)/data/tmw"
-	     cp icons/tmw.png "$(DESTDIR)$(pkgdatadir)/data/tmw/icons"
-	     cp icons/tmw.png "$(DESTDIR)$(datarootdir)/icons"
+	     cp icons/tmw-client.png "$(DESTDIR)$(pkgdatadir)/data/tmw/icons/tmw.png"
+	     cp icons/tmw-client.png "$(DESTDIR)$(datarootdir)/icons/tmw.png"
 	     cp -r images "$(DESTDIR)$(pkgdatadir)/data/tmw"
 
 EXTRA_DIST = tmw.desktop \
