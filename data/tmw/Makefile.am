@@ -1,7 +1,7 @@
 
 desktopdir = $(datarootdir)/applications
 
-tmw:
+branding:
 	     mkdir -p "$(DESTDIR)$(pkgdatadir)/data/tmw/icons"
 	     mkdir -p "$(DESTDIR)$(datarootdir)/icons"
 	     mkdir -p "$(DESTDIR)$(desktopdir)"
@@ -11,7 +11,8 @@ tmw:
 	     cp icons/tmw-client.png "$(DESTDIR)$(datarootdir)/icons/tmw.png"
 	     cp -r images "$(DESTDIR)$(pkgdatadir)/data/tmw"
 
-EXTRA_DIST = tmw.desktop \
+EXTRA_DIST = tmw.desktop.in \
+	    tmw.in \
 	    tmw.manaplus \
 	    icons/tmw-client.ico \
 	    icons/tmw-client.png \

@@ -39,6 +39,8 @@ stamp-h1
 PKGBUILD
 data/evol/evol.desktop
 data/tmw/tmw.desktop
+data/evol/evol
+data/tmw/tmw
 
 # files created by CMake
 CMakeFiles/

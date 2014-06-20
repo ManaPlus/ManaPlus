@@ -398,6 +398,9 @@ docs/Makefile
 po/Makefile.in
 ])
 
+AC_CONFIG_FILES([data/evol/evol], [chmod +x data/evol/evol])
+AC_CONFIG_FILES([data/tmw/tmw], [chmod +x data/tmw/tmw])
+
 AC_OUTPUT
 
 echo

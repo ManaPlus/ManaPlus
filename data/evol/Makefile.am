@@ -1,7 +1,7 @@
 
 desktopdir = $(datarootdir)/applications
 
-evol-client:
+branding:
 	     mkdir -p "$(DESTDIR)$(pkgdatadir)/data/evol/icons"
 	     mkdir -p "$(DESTDIR)$(datarootdir)/icons"
 	     mkdir -p "$(DESTDIR)$(desktopdir)"
@@ -11,7 +11,8 @@ evol-client:
 	     cp icons/evol-client.png "$(DESTDIR)$(datarootdir)/icons"
 	     cp -r images "$(DESTDIR)$(pkgdatadir)/data/evol"
 
-EXTRA_DIST = evol.desktop \
+EXTRA_DIST = evol.desktop.in \
+	    evol.in \
 	    evol.manaplus \
 	    icons/evol-client.ico \
 	    icons/evol-client.png \
