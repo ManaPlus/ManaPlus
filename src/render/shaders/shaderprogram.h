@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_SHADERPROGRAM_H
-#define RENDER_SHADERPROGRAM_H
+#ifndef RENDER_SHADERS_SHADERPROGRAM_H
+#define RENDER_SHADERS_SHADERPROGRAM_H
 
 #ifdef USE_OPENGL
 
@@ -48,4 +48,4 @@ class ShaderProgram final : public Resource
 };
 
 #endif  // USE_OPENGL
-#endif  // RENDER_SHADERPROGRAM_H
+#endif  // RENDER_SHADERS_SHADERPROGRAM_H

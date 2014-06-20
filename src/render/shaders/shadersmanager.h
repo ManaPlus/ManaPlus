@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_SHADERSMANAGER_H
-#define RENDER_SHADERSMANAGER_H
+#ifndef RENDER_SHADERS_SHADERSMANAGER_H
+#define RENDER_SHADERS_SHADERSMANAGER_H
 
 #ifdef USE_OPENGL
 
@@ -46,4 +46,4 @@ class ShadersManager final
 extern ShadersManager shaders;
 
 #endif  // USE_OPENGL
-#endif  // RENDER_SHADERSMANAGER_H
+#endif  // RENDER_SHADERS_SHADERSMANAGER_H

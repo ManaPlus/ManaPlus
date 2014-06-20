@@ -81,7 +81,7 @@ public:
 
     int gameExec();
 
-    int testsExec() const;
+    static int testsExec();
 
     void setState(const State state)
     { mState = state; }
@@ -89,13 +89,13 @@ public:
     State getState() const A_WARN_UNUSED
     { return mState; }
 
-    bool isTmw() const A_WARN_UNUSED;
+    static bool isTmw() A_WARN_UNUSED;
 
     void optionChanged(const std::string &name) override final;
 
     void action(const ActionEvent &event) override final;
 
-    void initTradeFilter() const;
+    static void initTradeFilter();
 
     void moveButtons(const int width);
 
@@ -108,9 +108,9 @@ private:
 
     void initConfigListeners();
 
-    void initGraphics();
+    static void initGraphics();
 
-    void updateEnv();
+    static void updateEnv();
 
     static void initFeatures();
 

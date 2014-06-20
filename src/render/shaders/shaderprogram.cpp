@@ -26,6 +26,8 @@
 
 #include "render/shaders/shader.h"
 
+#include "debug.h"
+
 ShaderProgram::ShaderProgram(const unsigned int id,
                              Shader *const vertex,
                              Shader *const fragment) :

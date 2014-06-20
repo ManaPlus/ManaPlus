@@ -163,10 +163,10 @@ class GraphicsManager final
         std::string getGLVersion() const
         { return mGlVersionString; }
 
-        GLenum getLastErrorCached() const
+        static GLenum getLastErrorCached()
         { return mLastError; }
 
-        void resetCachedError()
+        static void resetCachedError()
         { mLastError = GL_NO_ERROR; }
 #endif
 

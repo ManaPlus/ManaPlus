@@ -24,6 +24,8 @@
 
 #include "render/mgl.h"
 
+#include "debug.h"
+
 Shader::Shader(const unsigned int id) :
     Resource(),
     mShaderId(id)

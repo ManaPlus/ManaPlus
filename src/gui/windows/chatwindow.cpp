@@ -897,7 +897,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
 
 bool ChatWindow::addCurrentToHistory()
 {
-    const std::string str = mChatInput->getText();
+    const std::string &str = mChatInput->getText();
     if (str.empty())
         return false;
     FOR_EACH (HistoryIterator, it, mHistory)

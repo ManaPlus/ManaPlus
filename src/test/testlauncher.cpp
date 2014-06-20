@@ -184,7 +184,7 @@ int TestLauncher::testFps()
     file << mTest << std::endl;
     file << tFps << std::endl;
 
-    printf("fps: %u\n", tFps);
+    printf("fps: %d\n", tFps);
     sleep(1);
     return 0;
 }
@@ -216,7 +216,7 @@ int TestLauncher::testFps2()
     file << mTest << std::endl;
     file << tFps << std::endl;
 
-    printf("fps: %u\n", tFps);
+    printf("fps: %d\n", tFps);
     sleep(1);
     return 0;
 }
@@ -263,7 +263,7 @@ int TestLauncher::testFps3()
     file << mTest << std::endl;
     file << tFps << std::endl;
 
-    printf("fps: %u\n", tFps);
+    printf("fps: %d\n", tFps);
     sleep(1);
     return 0;
 }

@@ -83,6 +83,14 @@
 #define GL_DYNAMIC_DRAW                   0x88E8
 #endif
 
+#ifndef GL_COMPILE_STATUS
+#define GL_FRAGMENT_SHADER                0x8B30
+#define GL_VERTEX_SHADER                  0x8B31
+#define GL_COMPILE_STATUS                 0x8B81
+#define GL_LINK_STATUS                    0x8B82
+#define GL_INFO_LOG_LENGTH                0x8B84
+#endif
+
 #endif  // USE_OPENGL
 
 #endif  // RENDER_MGLDEFINES_H

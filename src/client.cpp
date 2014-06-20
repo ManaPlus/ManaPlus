@@ -698,7 +698,7 @@ void Client::gameClear()
     TranslationManager::close();
 }
 
-int Client::testsExec() const
+int Client::testsExec()
 {
 #ifdef USE_OPENGL
     if (settings.options.test.empty())
@@ -1671,7 +1671,7 @@ void Client::initFeatures()
     features.setDefaultValues(getFeaturesDefaults());
 }
 
-void Client::initTradeFilter() const
+void Client::initTradeFilter()
 {
     const std::string tradeListName =
         settings.serverConfigDir + "/tradefilter.txt";
@@ -1704,7 +1704,7 @@ void Client::initTradeFilter() const
     }
 }
 
-bool Client::isTmw() const
+bool Client::isTmw()
 {
     const std::string &name = settings.serverName;
     if (name == "server.themanaworld.org"

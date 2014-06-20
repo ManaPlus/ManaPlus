@@ -203,8 +203,8 @@ size_t findI(std::string text, const StringVect &list)
     return std::string::npos;
 }
 
-int base = 94;
-int start = 33;
+unsigned int base = 94;
+unsigned int start = 33;
 
 const std::string encodeStr(unsigned int value, const unsigned int size)
 {

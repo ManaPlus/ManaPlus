@@ -20,8 +20,6 @@
 
 #include "graphicsvertexes.h"
 
-#include "logger.h"
-
 #include "render/graphics.h"
 
 #include "utils/dtor.h"
@@ -54,7 +52,8 @@ OpenGLGraphicsVertexes::OpenGLGraphicsVertexes() :
     mFloatTexPool(),
     mIntVertPool(),
     mShortVertPool(),
-    mIntTexPool()
+    mIntTexPool(),
+    mVbo()
 {
     mFloatTexPool.reserve(30);
     mIntVertPool.reserve(30);
@@ -99,7 +98,7 @@ void OpenGLGraphicsVertexes::clear()
     }
     mIntTexPool.clear();
 
-    const int sz = mVbo.size();
+    const int sz = static_cast<int>(mVbo.size());
     if (sz > 0)
     {
         mainGraphics->removeArray(sz, &mVbo[0]);

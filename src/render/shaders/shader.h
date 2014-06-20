@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_SHADER_H
-#define RENDER_SHADER_H
+#ifndef RENDER_SHADERS_SHADER_H
+#define RENDER_SHADERS_SHADER_H
 
 #ifdef USE_OPENGL
 
@@ -28,7 +28,7 @@
 class Shader final : public Resource
 {
     public:
-        Shader(const unsigned int id);
+        explicit Shader(const unsigned int id);
 
         ~Shader();
 
@@ -42,4 +42,4 @@ class Shader final : public Resource
 };
 
 #endif  // USE_OPENGL
-#endif  // RENDER_SHADER_H
+#endif  // RENDER_SHADERS_SHADER_H

@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "logger.h"
-#include "settings.h"
 
 #include "render/mgl.h"
 

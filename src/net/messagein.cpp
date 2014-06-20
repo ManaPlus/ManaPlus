@@ -92,7 +92,6 @@ uint8_t MessageIn::fromServerDirection(const uint8_t serverDir)
 void MessageIn::readCoordinates(uint16_t &restrict x, uint16_t &restrict y,
                                 uint8_t &restrict direction)
 {
-    uint8_t serverDir = 0;
     if (mPos + 3 <= mLength)
     {
         const char *const data = mData + static_cast<size_t>(mPos);
@@ -101,7 +100,7 @@ void MessageIn::readCoordinates(uint16_t &restrict x, uint16_t &restrict y,
         temp = MAKEWORD(data[2] & 0x00f0, data[1] & 0x003f);
         y = static_cast<uint16_t>(temp >> 4);
 
-        serverDir = static_cast<uint8_t>(data[2] & 0x000f);
+        const uint8_t serverDir = static_cast<uint8_t>(data[2] & 0x000f);
         direction = fromServerDirection(serverDir);
 
         DEBUGLOG(std::string("readCoordinates: ").append(toString(

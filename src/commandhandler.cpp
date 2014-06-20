@@ -65,7 +65,7 @@ void CommandHandler::addChatCommands(std::list<std::string> &arr)
 }
 
 void CommandHandler::handleCommands(const std::string &command,
-                                    ChatTab *const tab)
+                                    ChatTab *const tab) const
 {
     // here need add splitting commands
     handleCommand(command, tab);
