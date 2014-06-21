@@ -266,7 +266,7 @@ void TestMain::writeConfig(const RenderType openGLMode,
     // max batch size
 //    mConfig.setValue("batchsize", batchSize);
 
-    // additinal modes
+    // additional modes
     mConfig.setValue("useTextureSampler",
         static_cast<bool>(detectMode & 1024));
     mConfig.setValue("compresstextures",

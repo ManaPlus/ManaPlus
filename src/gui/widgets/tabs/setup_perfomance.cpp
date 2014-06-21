@@ -148,7 +148,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Cache all sprites per map (can use "
-        "additinal memory)"), "", "uselonglivesprites", this,
+        "additional memory)"), "", "uselonglivesprites", this,
         "uselonglivespritesEvent");
 
     // TRANSLATORS: settings option
