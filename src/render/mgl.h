@@ -103,6 +103,7 @@ defNameE(glCopyImageSubData);
 defNameE(glPushDebugGroup);
 defNameE(glPopDebugGroup);
 defNameE(glObjectLabel);
+defNameE(glTexStorage2D);
 
 #ifdef WIN32
 defNameE(wglGetExtensionsString);

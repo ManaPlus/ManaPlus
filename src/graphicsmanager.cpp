@@ -830,6 +830,7 @@ void GraphicsManager::initOpenGLFunctions()
 {
     const bool is10 = checkGLVersion(1, 0);
     const bool is11 = checkGLVersion(1, 1);
+    const bool is12 = checkGLVersion(1, 2);
     const bool is20 = checkGLVersion(2, 0);
     const bool is21 = checkGLVersion(2, 1);
     mSupportModernOpengl = true;
@@ -856,6 +857,15 @@ void GraphicsManager::initOpenGLFunctions()
     if (!is11)
         return;
 
+    if (is12 && supportExtension("GL_ARB_texture_storage"))
+    {
+        logger->log1("found GL_ARB_texture_storage");
+        assignFunction(glTexStorage2D, "glTexStorage2D");
+    }
+    else
+    {
+        logger->log1("GL_ARB_texture_storage not found");
+    }
     if (supportExtension("GL_ARB_framebuffer_object"))
     {   // frame buffer supported
         logger->log1("found GL_ARB_framebuffer_object");

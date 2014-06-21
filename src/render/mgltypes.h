@@ -156,6 +156,8 @@ typedef void (APIENTRY *glPushDebugGroup_t) (GLenum source, GLuint id,
 typedef void (APIENTRY *glPopDebugGroup_t) (void);
 typedef void (APIENTRY *glObjectLabel_t) (GLenum identifier, GLuint name,
     GLsizei length, const GLchar *label);
+typedef void (APIENTRY *glTexStorage2D_t) (GLenum target, GLsizei levels,
+    GLenum internalformat, GLsizei width, GLsizei height);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,

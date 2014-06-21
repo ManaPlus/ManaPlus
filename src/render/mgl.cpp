@@ -100,6 +100,7 @@ defName(glCopyImageSubData);
 defName(glPushDebugGroup);
 defName(glPopDebugGroup);
 defName(glObjectLabel);
+defName(glTexStorage2D);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);
