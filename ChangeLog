@@ -1,3 +1,12 @@
+2014-06-21 New release 1.4.6.21
+fix: chat window input field size if smiles button disabled.
+fix: make file for tmw branding.
+fix: some spelling errors.
+add: fallback OpenGL renderer if OpenGL version too small.
+add: modern OpenGL renderer.
+add: improve speed in normalopengl renderer.
+add: shell script into tmw/evol branding.
+
 2014-06-07 New release 1.4.6.7
 fix: screenshot key in input fields in SDL2 builds.
 fix: missing text while chat scrolling (up/down).
