@@ -507,6 +507,21 @@ void Client::updateEnv()
         setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "1");
     else
         setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "0");
+
+#ifndef WIN32
+    const int vsync = config.getIntValue("vsync");
+    switch (vsync)
+    {
+        case 1:
+            Client::setEnv("__GL_SYNC_TO_VBLANK", "0");
+            break;
+        case 2:
+            Client::setEnv("__GL_SYNC_TO_VBLANK", "1");
+            break;
+        default:
+            break;
+    }
+#endif
 }
 
 void Client::initGraphics()
