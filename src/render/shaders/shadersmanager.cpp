@@ -95,7 +95,15 @@ ShaderProgram *ShadersManager::createProgram(const std::string &vertex,
     GLint isLinked = 0;
     mglGetProgramiv(programId, GL_LINK_STATUS, &isLinked);
     if (isLinked == GL_TRUE)
-        return new ShaderProgram(programId, vertexShader, fragmentShader);
+    {
+        mglValidateProgram(programId);
+        GLint isValidated = 0;
+        mglGetProgramiv(programId,  GL_VALIDATE_STATUS, &isValidated);
+        if (isValidated == GL_TRUE)
+            return new ShaderProgram(programId, vertexShader, fragmentShader);
+        mglDeleteProgram(programId);
+        return nullptr;
+    }
 
     GLint len = 0;
     mglGetProgramiv(programId, GL_INFO_LOG_LENGTH, &len);
