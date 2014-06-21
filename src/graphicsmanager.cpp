@@ -831,6 +831,7 @@ void GraphicsManager::initOpenGLFunctions()
     const bool is10 = checkGLVersion(1, 0);
     const bool is11 = checkGLVersion(1, 1);
     const bool is12 = checkGLVersion(1, 2);
+    const bool is15 = checkGLVersion(1, 5);
     const bool is20 = checkGLVersion(2, 0);
     const bool is21 = checkGLVersion(2, 1);
     mSupportModernOpengl = true;
@@ -975,6 +976,20 @@ void GraphicsManager::initOpenGLFunctions()
     else
     {
         logger->log1("GL_EXT_debug_marker not found");
+    }
+    if (is15 && supportExtension("GL_EXT_timer_query"))
+    {
+        logger->log1("found GL_EXT_timer_query");
+        assignFunction(glGenQueries, "glGenQueries");
+        assignFunction(glBeginQuery, "glBeginQuery");
+        assignFunction(glEndQuery, "glEndQuery");
+        assignFunction(glDeleteQueries, "glDeleteQueries");
+        assignFunction(glGetQueryObjectiv, "glGetQueryObjectiv");
+        assignFunction(glGetQueryObjectui64v, "glGetQueryObjectui64vEXT");
+    }
+    else
+    {
+        logger->log1("GL_EXT_timer_query not supported");
     }
     if (is20 && supportExtension("GL_ARB_invalidate_subdata"))
     {

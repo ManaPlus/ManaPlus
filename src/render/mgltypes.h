@@ -38,6 +38,12 @@
 #include <GL/glext.h>
 #endif
 
+#if defined(__GXX_EXPERIMENTAL_CXX0X__)
+#include <cstdint>
+#else
+#include <stdint.h>
+#endif
+
 typedef void (APIENTRY *glGenRenderbuffers_t)(GLsizei, GLuint *);
 typedef void (APIENTRY *glBindRenderbuffer_t)(GLenum target,
     GLuint renderbuffer);
@@ -158,6 +164,14 @@ typedef void (APIENTRY *glObjectLabel_t) (GLenum identifier, GLuint name,
     GLsizei length, const GLchar *label);
 typedef void (APIENTRY *glTexStorage2D_t) (GLenum target, GLsizei levels,
     GLenum internalformat, GLsizei width, GLsizei height);
+typedef void (APIENTRY *glGenQueries_t) (GLsizei n, GLuint *ids);
+typedef void (APIENTRY *glBeginQuery_t) (GLenum target, GLuint id);
+typedef void (APIENTRY *glEndQuery_t) (GLenum target);
+typedef void (APIENTRY *glDeleteQueries_t) (GLsizei n, const GLuint *ids);
+typedef void (APIENTRY *glGetQueryObjectiv_t) (GLuint id,
+    GLenum pname, GLint *params);
+typedef void (APIENTRY *glGetQueryObjectui64v_t) (GLuint id,
+    GLenum pname, uint64_t *params);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,

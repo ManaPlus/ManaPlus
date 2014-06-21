@@ -104,6 +104,12 @@ defNameE(glPushDebugGroup);
 defNameE(glPopDebugGroup);
 defNameE(glObjectLabel);
 defNameE(glTexStorage2D);
+defNameE(glGenQueries);
+defNameE(glBeginQuery);
+defNameE(glEndQuery);
+defNameE(glDeleteQueries);
+defNameE(glGetQueryObjectiv);
+defNameE(glGetQueryObjectui64v);
 
 #ifdef WIN32
 defNameE(wglGetExtensionsString);
