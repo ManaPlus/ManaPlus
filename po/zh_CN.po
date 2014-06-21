@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-06-18 13:59+0300\n"
-"PO-Revision-Date: 2014-05-25 08:14+0000\n"
+"POT-Creation-Date: 2014-06-21 13:04+0300\n"
+"PO-Revision-Date: 2014-06-19 09:50+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/manaplus/"
 "language/zh_CN/)\n"
@@ -3334,9 +3334,9 @@ msgstr ""
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:114
-#, fuzzy, c-format
+#, c-format
 msgid "%d FPS (modern OpenGL)"
-msgstr "%d FPS (软件)"
+msgstr ""
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:118
@@ -4521,7 +4521,7 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:150
-msgid "Cache all sprites per map (can use additinal memory)"
+msgid "Cache all sprites per map (can use additional memory)"
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -7530,9 +7530,8 @@ msgstr "安全的OpenGL"
 
 #. TRANSLATORS: draw backend
 #: src/render/rendererslistsdl2.h:91 src/render/rendererslistsdl.h:88
-#, fuzzy
 msgid "Modern OpenGL"
-msgstr "安全的OpenGL"
+msgstr ""
 
 #. TRANSLATORS: being info default name
 #. TRANSLATORS: unknown info name

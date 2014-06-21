@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-06-18 13:59+0300\n"
-"PO-Revision-Date: 2014-05-25 08:14+0000\n"
+"POT-Creation-Date: 2014-06-21 13:04+0300\n"
+"PO-Revision-Date: 2014-06-19 09:50+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/manaplus/language/"
 "pl/)\n"
@@ -3338,9 +3338,9 @@ msgstr "%d FPS (mobilny OpenGL)"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:114
-#, fuzzy, c-format
+#, c-format
 msgid "%d FPS (modern OpenGL)"
-msgstr "%d FPS (mobilny OpenGL)"
+msgstr ""
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:118
@@ -4527,7 +4527,8 @@ msgstr "Aktywuj atlasy tekstur (OpenGL)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:150
-msgid "Cache all sprites per map (can use additinal memory)"
+#, fuzzy
+msgid "Cache all sprites per map (can use additional memory)"
 msgstr "Umieszczaj w cache wszystkie sprite'y mapy (może zużyć więcej pamięci)"
 
 #. TRANSLATORS: settings option
@@ -6916,9 +6917,8 @@ msgstr "     --safemode       : Rozpocznij grę w trybie bezpieczeństwa"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:130
-#, fuzzy
 msgid "     --renderer       : Set renderer type"
-msgstr "     --safemode       : Rozpocznij grę w trybie bezpieczeństwa"
+msgstr ""
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:132
@@ -7558,9 +7558,8 @@ msgstr "Bezpieczny OpenGL"
 
 #. TRANSLATORS: draw backend
 #: src/render/rendererslistsdl2.h:91 src/render/rendererslistsdl.h:88
-#, fuzzy
 msgid "Modern OpenGL"
-msgstr "Mobilny OpenGL"
+msgstr ""
 
 #. TRANSLATORS: being info default name
 #. TRANSLATORS: unknown info name

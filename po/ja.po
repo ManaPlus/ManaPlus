@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-06-18 13:59+0300\n"
-"PO-Revision-Date: 2014-05-25 08:14+0000\n"
+"POT-Creation-Date: 2014-06-21 13:04+0300\n"
+"PO-Revision-Date: 2014-06-19 09:50+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/"
 "language/ja/)\n"
@@ -3338,9 +3338,9 @@ msgstr "%d FPS (モバイルOpenGL)"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:114
-#, fuzzy, c-format
+#, c-format
 msgid "%d FPS (modern OpenGL)"
-msgstr "%d FPS (モバイルOpenGL)"
+msgstr ""
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:118
@@ -4527,7 +4527,7 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:150
-msgid "Cache all sprites per map (can use additinal memory)"
+msgid "Cache all sprites per map (can use additional memory)"
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -6904,9 +6904,8 @@ msgstr "     --safemode       : セーフモードでゲームを始める"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:130
-#, fuzzy
 msgid "     --renderer       : Set renderer type"
-msgstr "     --safemode       : セーフモードでゲームを始める"
+msgstr ""
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:132
@@ -7544,9 +7543,8 @@ msgstr "セーフ OpenGL"
 
 #. TRANSLATORS: draw backend
 #: src/render/rendererslistsdl2.h:91 src/render/rendererslistsdl.h:88
-#, fuzzy
 msgid "Modern OpenGL"
-msgstr "モバイルOpenGL"
+msgstr ""
 
 #. TRANSLATORS: being info default name
 #. TRANSLATORS: unknown info name

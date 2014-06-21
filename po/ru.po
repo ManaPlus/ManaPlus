@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-06-18 13:59+0300\n"
-"PO-Revision-Date: 2014-05-25 08:14+0000\n"
+"POT-Creation-Date: 2014-06-21 13:04+0300\n"
+"PO-Revision-Date: 2014-06-19 16:51+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
 "language/ru/)\n"
@@ -2461,7 +2461,7 @@ msgstr "Окно квестов"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:514
 msgid "Updates Window"
-msgstr ""
+msgstr "Окно обновлений"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:520
@@ -3344,9 +3344,9 @@ msgstr "%d FPS (мобильный OpenGL)"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:114
-#, fuzzy, c-format
+#, c-format
 msgid "%d FPS (modern OpenGL)"
-msgstr "%d FPS (мобильный OpenGL)"
+msgstr "%d FPS (новый OpenGL)"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:118
@@ -4539,7 +4539,8 @@ msgstr "Включить атласы текстур (OpenGL)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:150
-msgid "Cache all sprites per map (can use additinal memory)"
+#, fuzzy
+msgid "Cache all sprites per map (can use additional memory)"
 msgstr "Кэшировать все спрайты на карте (может быть использовано много памяти)"
 
 #. TRANSLATORS: settings option
@@ -5386,12 +5387,12 @@ msgstr "НАР"
 #. TRANSLATORS: short button name for updates window.
 #: src/gui/windowmenu.cpp:145
 msgid "UP"
-msgstr ""
+msgstr "ОБ"
 
 #. TRANSLATORS: full button name
 #: src/gui/windowmenu.cpp:147
 msgid "Updates"
-msgstr ""
+msgstr "Обновления"
 
 #. TRANSLATORS: short button name for debug window.
 #: src/gui/windowmenu.cpp:149
@@ -6930,9 +6931,8 @@ msgstr "     --safemode       : Запуск игры в безопасном р
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:130
-#, fuzzy
 msgid "     --renderer       : Set renderer type"
-msgstr "     --safemode       : Запуск игры в безопасном режиме"
+msgstr "     --renderer       : Устанавливает тип рендера"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:132
@@ -7573,9 +7573,8 @@ msgstr "Безопасный OpenGL"
 
 #. TRANSLATORS: draw backend
 #: src/render/rendererslistsdl2.h:91 src/render/rendererslistsdl.h:88
-#, fuzzy
 msgid "Modern OpenGL"
-msgstr "Мобильный OpenGL"
+msgstr "Новый OpenGL"
 
 #. TRANSLATORS: being info default name
 #. TRANSLATORS: unknown info name
