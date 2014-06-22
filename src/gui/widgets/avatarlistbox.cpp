@@ -146,6 +146,23 @@ void AvatarListBox::draw(Graphics *graphics)
                 }
             }
         }
+    }
+
+    if (useCaching)
+    {
+        graphics->finalize(&vertexes);
+        graphics->drawTileCollection(&vertexes);
+    }
+
+    graphics->setColorAll(mForegroundColor, mForegroundColor2);
+
+    for (int i = 0, y = 0;
+         i < model->getNumberOfElements();
+         ++i, y += fontHeight)
+    {
+        const Avatar *const a = model->getAvatarAt(i);
+        if (!a)
+            continue;
 
         std::string text;
 
@@ -281,8 +298,6 @@ void AvatarListBox::draw(Graphics *graphics)
             }
         }
 
-        graphics->setColorAll(mForegroundColor, mForegroundColor2);
-
         // Draw Name
         if (a->getDisplayBold())
         {
@@ -310,12 +325,6 @@ void AvatarListBox::draw(Graphics *graphics)
                     y + mPadding);
             }
         }
-    }
-
-    if (useCaching)
-    {
-        graphics->finalize(&vertexes);
-        graphics->drawTileCollection(&vertexes);
     }
 
     setWidth(parent->getWidth() - 10);

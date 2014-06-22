@@ -96,18 +96,6 @@ void EmoteShortcutContainer::draw(Graphics *graphics)
     Font *const font = getFont();
     drawBackground(graphics);
 
-    graphics->setColorAll(mForegroundColor, mForegroundColor2);
-    for (unsigned i = 0; i < mMaxItems; i++)
-    {
-        const int emoteX = (i % mGridWidth) * mBoxWidth;
-        const int emoteY = (i / mGridWidth) * mBoxHeight;
-
-        // Draw emote keyboard shortcut.
-        const std::string key = inputManager.getKeyValueString(
-            InputAction::EMOTE_1 + i);
-
-        font->drawString(graphics, key, emoteX + 2, emoteY + 2);
-    }
     unsigned sz = static_cast<unsigned>(mEmoteImg.size());
     if (sz > mMaxItems)
         sz = mMaxItems;
@@ -124,6 +112,18 @@ void EmoteShortcutContainer::draw(Graphics *graphics)
                     (i / mGridWidth) * mBoxHeight + 10);
             }
         }
+    }
+    graphics->setColorAll(mForegroundColor, mForegroundColor2);
+    for (unsigned i = 0; i < mMaxItems; i++)
+    {
+        const int emoteX = (i % mGridWidth) * mBoxWidth;
+        const int emoteY = (i / mGridWidth) * mBoxHeight;
+
+        // Draw emote keyboard shortcut.
+        const std::string key = inputManager.getKeyValueString(
+            InputAction::EMOTE_1 + i);
+
+        font->drawString(graphics, key, emoteX + 2, emoteY + 2);
     }
 
     BLOCK_END("EmoteShortcutContainer::draw")

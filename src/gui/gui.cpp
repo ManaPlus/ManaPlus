@@ -467,12 +467,6 @@ void Gui::draw()
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0F)
     {
         const Image *const image = dragDrop.getItemImage();
-        if (image)
-        {
-            const int posX = mouseX - (image->mBounds.w / 2);
-            const int posY = mouseY - (image->mBounds.h / 2);
-            mGraphics->drawImage(image, posX, posY);
-        }
         if (mGuiFont)
         {
             const std::string &str = dragDrop.getText();
@@ -484,7 +478,12 @@ void Gui::draw()
                 mGuiFont->drawString(mGraphics, str, posX, posY);
             }
         }
-
+        if (image)
+        {
+            const int posX = mouseX - (image->mBounds.w / 2);
+            const int posY = mouseY - (image->mBounds.h / 2);
+            mGraphics->drawImage(image, posX, posY);
+        }
         Image *const mouseCursor = mMouseCursors->get(mCursorType);
         if (mouseCursor)
         {

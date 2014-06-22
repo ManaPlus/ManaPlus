@@ -175,22 +175,6 @@ void ExtendedListBox::draw(Graphics *graphics)
         }
     }
 
-    for (size_t f = 0; f < selSz; ++f)
-    {
-        const ExtendedListBoxItem &item = mSelectedItems[f];
-        const int row1 = item.row;
-        if (item.image)
-        {
-            const Image *const image = model->getImageAt(row1);
-            if (image)
-            {
-                graphics->drawImage(image,
-                    mImagePadding,
-                    item.y + (height - image->getHeight()) / 2 + mPadding);
-            }
-        }
-    }
-
     graphics->setColorAll(mForegroundSelectedColor, mForegroundSelectedColor2);
 
     for (size_t f = 0; f < selSz; ++f)
@@ -207,6 +191,22 @@ void ExtendedListBox::draw(Graphics *graphics)
         {
             font->drawString(graphics, item.text,
                 image->getWidth() + mImagePadding + mSpacing, y1 + textPos);
+        }
+    }
+
+    for (size_t f = 0; f < selSz; ++f)
+    {
+        const ExtendedListBoxItem &item = mSelectedItems[f];
+        const int row1 = item.row;
+        if (item.image)
+        {
+            const Image *const image = model->getImageAt(row1);
+            if (image)
+            {
+                graphics->drawImage(image,
+                    mImagePadding,
+                    item.y + (height - image->getHeight()) / 2 + mPadding);
+            }
         }
     }
 

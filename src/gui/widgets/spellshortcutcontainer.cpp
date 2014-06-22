@@ -87,6 +87,7 @@ void SpellShortcutContainer::draw(Graphics *graphics)
     graphics->setColorAll(mForegroundColor, mForegroundColor2);
     drawBackground(graphics);
 
+    // +++ in future need reorder images and string drawing.
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         const int itemX = (i % mGridWidth) * mBoxWidth;
