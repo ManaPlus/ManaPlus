@@ -273,7 +273,9 @@ Map *MapReader::readMap(const std::string &restrict filename,
 
 void MapReader::loadLayers(const std::string &path)
 {
+    BLOCK_START("MapReader::loadLayers")
     loadXmlDir2(path, addLayerToList, ".tmx");
+    BLOCK_END("MapReader::loadLayers")
 }
 
 void MapReader::unloadTempLayers()
@@ -326,6 +328,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     ResourceManager *const resman = ResourceManager::getInstance();
 
 #ifdef USE_OPENGL
+    BLOCK_START("MapReader::readMap load atlas")
     if (graphicsManager.getUseAtlases())
     {
         const MapInfo *const info = MapDB::getMapAtlas(fileName);
@@ -335,6 +338,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
                 info->atlas, *info->files));
         }
     }
+    BLOCK_END("MapReader::readMap load atlas")
 #endif
 
     for_each_xml_child_node(childNode, node)
@@ -460,8 +464,12 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
 void MapReader::readProperties(const XmlNodePtrConst node,
                                Properties *const props)
 {
+    BLOCK_START("MapReader::readProperties")
     if (!node || !props)
+    {
+        BLOCK_END("MapReader::readProperties")
         return;
+    }
 
     for_each_xml_child_node(childNode, node)
     {
@@ -475,6 +483,7 @@ void MapReader::readProperties(const XmlNodePtrConst node,
         if (!name.empty() && !value.empty())
             props->setProperty(name, value);
     }
+    BLOCK_END("MapReader::readProperties")
 }
 
 inline static void setTile(Map *const map, MapLayer *const layer,
@@ -863,8 +872,12 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                                 const std::string &path,
                                 Map *const map)
 {
+    BLOCK_START("MapReader::readTileset")
     if (!map)
+    {
+        BLOCK_END("MapReader::readTileset")
         return nullptr;
+    }
 
     const int firstGid = XML::getProperty(node, "firstgid", 0);
     const int margin = XML::getProperty(node, "margin", 0);
@@ -884,6 +897,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
         if (!node)
         {
             delete doc;
+            BLOCK_END("MapReader::readTileset")
             return nullptr;
         }
 
@@ -1029,6 +1043,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
 
     if (set)
         set->setProperties(props);
+    BLOCK_END("MapReader::readTileset")
     return set;
 }
 

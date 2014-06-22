@@ -250,6 +250,7 @@ void KeyboardConfig::handleDeActicateKey(const int key)
 
 void KeyboardConfig::handleRepeat(const int time)
 {
+    BLOCK_START("KeyboardConfig::handleRepeat")
     FOR_EACH (KeyTimeMapIter, it, mKeyTimeMap)
     {
         bool repeat(false);
@@ -275,6 +276,7 @@ void KeyboardConfig::handleRepeat(const int time)
             }
         }
     }
+    BLOCK_END("KeyboardConfig::handleRepeat")
 }
 
 void KeyboardConfig::resetRepeat(const int key)

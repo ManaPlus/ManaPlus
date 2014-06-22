@@ -176,6 +176,7 @@ int InventoryHandler::getSlot(const int eAthenaSlot)
 void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
                                               const bool playerInvintory)
 {
+    BLOCK_START("InventoryHandler::processPlayerInventory")
     Inventory *const inventory = player_node
         ? PlayerInfo::getInventory() : nullptr;
     if (playerInvintory)
@@ -239,10 +240,12 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
                 amount, 0, identified, false));
         }
     }
+    BLOCK_END("InventoryHandler::processPlayerInventory")
 }
 
 void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processPlayerStorageEquip")
     msg.readInt16();  // length
     const int number = (msg.getLength() - 4) / 20;
 
@@ -276,10 +279,12 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         mInventoryItems.push_back(Ea::InventoryItem(index,
             itemId, amount, refine, identified, false));
     }
+    BLOCK_END("InventoryHandler::processPlayerStorageEquip")
 }
 
 void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processPlayerInventoryAdd")
     Inventory *const inventory = player_node
         ? PlayerInfo::getInventory() : nullptr;
 
@@ -341,10 +346,12 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
         }
         ArrowsListener::distributeEvent();
     }
+    BLOCK_END("InventoryHandler::processPlayerInventoryAdd")
 }
 
 void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processPlayerInventoryRemove")
     Inventory *const inventory = player_node
         ? PlayerInfo::getInventory() : nullptr;
 
@@ -360,10 +367,12 @@ void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg)
             ArrowsListener::distributeEvent();
         }
     }
+    BLOCK_END("InventoryHandler::processPlayerInventoryRemove")
 }
 
 void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processPlayerInventoryUse")
     Inventory *const inventory = player_node
         ? PlayerInfo::getInventory() : nullptr;
 
@@ -383,10 +392,12 @@ void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg)
                 inventory->removeItemAt(index);
         }
     }
+    BLOCK_END("InventoryHandler::processPlayerInventoryUse")
 }
 
 void InventoryHandler::processItemUseResponse(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processItemUseResponse")
     Inventory *const inventory = player_node
         ? PlayerInfo::getInventory() : nullptr;
 
@@ -410,10 +421,12 @@ void InventoryHandler::processItemUseResponse(Net::MessageIn &msg)
             }
         }
     }
+    BLOCK_END("InventoryHandler::processItemUseResponse")
 }
 
 void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processPlayerStorageStatus")
     /*
       * This is the closest we get to an "Open Storage" packet from the
       * server. It always comes after the two SMSG_PLAYER_STORAGE_...
@@ -437,10 +450,12 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
         mStorageWindow = new InventoryWindow(mStorage);
         mStorageWindow->postInit();
     }
+    BLOCK_END("InventoryHandler::processPlayerStorageStatus")
 }
 
 void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processPlayerStorageAdd")
     // Move an item into storage
     const int index = msg.readInt16() - STORAGE_OFFSET;
     const int amount = msg.readInt32();
@@ -467,10 +482,12 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
                 refine, identified, false);
         }
     }
+    BLOCK_END("InventoryHandler::processPlayerStorageAdd")
 }
 
 void InventoryHandler::processPlayerStorageRemove(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processPlayerStorageRemove")
     // Move an item out of storage
     const int index = msg.readInt16() - STORAGE_OFFSET;
     const int amount = msg.readInt16();
@@ -483,10 +500,12 @@ void InventoryHandler::processPlayerStorageRemove(Net::MessageIn &msg)
                 mStorage->removeItemAt(index);
         }
     }
+    BLOCK_END("InventoryHandler::processPlayerStorageRemove")
 }
 
 void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
 {
+    BLOCK_START("InventoryHandler::processPlayerStorageClose")
     // Storage access has been closed
     // Storage window deletes itself
     if (mStorageWindow)
@@ -500,10 +519,12 @@ void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
         mStorage->clear();
 
     delete2(mStorage);
+    BLOCK_END("InventoryHandler::processPlayerStorageClose")
 }
 
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processPlayerEquipment")
     Inventory *const inventory = player_node
         ? PlayerInfo::getInventory() : nullptr;
 
@@ -547,10 +568,12 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         if (equipType)
             mEquips.setEquipment(getSlot(equipType), index);
     }
+    BLOCK_END("InventoryHandler::processPlayerEquipment")
 }
 
 void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processPlayerEquip")
     const int index = msg.readInt16() - INVENTORY_OFFSET;
     const int equipType = msg.readInt16();
     const int flag = msg.readInt8();
@@ -559,10 +582,12 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
         NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
     else
         mEquips.setEquipment(getSlot(equipType), index);
+    BLOCK_END("InventoryHandler::processPlayerEquip")
 }
 
 void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processPlayerUnEquip")
     msg.readInt16();  // inder val - INVENTORY_OFFSET;
     const int equipType = msg.readInt16();
     const int flag = msg.readInt8();
@@ -571,19 +596,23 @@ void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
         mEquips.setEquipment(getSlot(equipType), -1);
     if (equipType & 0x8000)
         ArrowsListener::distributeEvent();
+    BLOCK_END("InventoryHandler::processPlayerUnEquip")
 }
 
 void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processPlayerAttackRange")
     const int range = msg.readInt16();
     if (player_node)
         player_node->setAttackRange(range);
     PlayerInfo::setStatBase(Attributes::ATTACK_RANGE, range);
     PlayerInfo::setStatMod(Attributes::ATTACK_RANGE, 0);
+    BLOCK_END("InventoryHandler::processPlayerAttackRange")
 }
 
 void InventoryHandler::processPlayerArrowEquip(Net::MessageIn &msg)
 {
+    BLOCK_START("InventoryHandler::processPlayerArrowEquip")
     int index = msg.readInt16();
     if (index <= 1)
         return;
@@ -591,16 +620,19 @@ void InventoryHandler::processPlayerArrowEquip(Net::MessageIn &msg)
     index -= INVENTORY_OFFSET;
     mEquips.setEquipment(Equipment::EQUIP_PROJECTILE_SLOT, index);
     ArrowsListener::distributeEvent();
+    BLOCK_END("InventoryHandler::processPlayerArrowEquip")
 }
 
 void InventoryHandler::closeStorage()
 {
+    BLOCK_START("InventoryHandler::closeStorage")
     if (mStorageWindow)
     {
         mStorageWindow->unsetInventory();
         mStorageWindow->close();
         mStorageWindow = nullptr;
     }
+    BLOCK_END("InventoryHandler::closeStorage")
 }
 
 void InventoryHandler::forgotStorage()

@@ -127,6 +127,7 @@ MouseInput SDLInput::dequeueMouseInput()
 
 void SDLInput::pushInput(const SDL_Event &event)
 {
+    BLOCK_START("SDLInput::pushInput")
     KeyInput keyInput;
     MouseInput mouseInput;
 
@@ -286,6 +287,7 @@ void SDLInput::pushInput(const SDL_Event &event)
         default:
             break;
     }  // end switch
+    BLOCK_END("SDLInput::pushInput")
 }
 
 void SDLInput::convertKeyEventToKey(const SDL_Event &event, KeyInput &keyInput)

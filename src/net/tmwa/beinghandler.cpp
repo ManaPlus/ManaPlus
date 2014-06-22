@@ -250,8 +250,12 @@ void BeingHandler::undress(Being *const being) const
 void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
                                           const bool look2) const
 {
+    BLOCK_START("BeingHandler::processBeingChangeLook")
     if (!actorManager)
+    {
+        BLOCK_END("BeingHandler::processBeingChangeLook")
         return;
+    }
 
     /*
       * SMSG_BEING_CHANGE_LOOKS (0x00c3) and
@@ -267,7 +271,10 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
 
     Being *const dstBeing = actorManager->findBeing(msg.readInt32());
     if (!dstBeing)
+    {
+        BLOCK_END("BeingHandler::processBeingChangeLook")
         return;
+    }
 
     const int type = msg.readInt8();
     int id = 0;
@@ -292,7 +299,10 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
         dstBeing->setOtherTime();
 
     if (!player_node)
+    {
+        BLOCK_END("BeingHandler::processBeingChangeLook")
         return;
+    }
 
     switch (type)
     {
@@ -388,12 +398,17 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
             logger->log("name: " + toString(dstBeing->getName()));
             break;
     }
+    BLOCK_END("BeingHandler::processBeingChangeLook")
 }
 
 void BeingHandler::processNameResponse2(Net::MessageIn &msg)
 {
+    BLOCK_START("BeingHandler::processNameResponse2")
     if (!actorManager || !player_node)
+    {
+        BLOCK_END("BeingHandler::processNameResponse2")
         return;
+    }
 
     const int len = msg.readInt16();
     const int beingId = msg.readInt32();
@@ -429,13 +444,18 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
             }
         }
     }
+    BLOCK_END("BeingHandler::processNameResponse2")
 }
 
 void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
                                            const int msgType) const
 {
+    BLOCK_START("BeingHandler::processPlayerMoveUpdate")
     if (!actorManager || !player_node)
+    {
+        BLOCK_END("BeingHandler::processPlayerMoveUpdate")
         return;
+    }
 
     // An update about a player, potentially including movement.
     const int id = msg.readInt32();
@@ -453,12 +473,18 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     if (!dstBeing)
     {
         if (actorManager->isBlocked(id) == true)
+        {
+            BLOCK_END("BeingHandler::processPlayerMoveUpdate")
             return;
+        }
 
         dstBeing = createBeing(id, job);
 
         if (!dstBeing)
+        {
+            BLOCK_END("BeingHandler::processPlayerMoveUpdate")
             return;
+        }
     }
     else if (disguiseId)
     {
@@ -651,12 +677,17 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     if (msgType == 3 && dstBeing->getType() == ActorType::PLAYER)
         dstBeing->setMoveTime();
+    BLOCK_END("BeingHandler::processPlayerMoveUpdate")
 }
 
 void BeingHandler::processBeingMove3(Net::MessageIn &msg)
 {
+    BLOCK_START("BeingHandler::processBeingMove3")
     if (serverVersion < 10)
+    {
+        BLOCK_END("BeingHandler::processBeingMove3")
         return;
+    }
 
     static const int16_t dirx[8] = {0, -1, -1, -1,  0,  1, 1, 1};
     static const int16_t diry[8] = {1,  1,  0, -1, -1, -1, 0, 1};
@@ -664,7 +695,10 @@ void BeingHandler::processBeingMove3(Net::MessageIn &msg)
     const int len = msg.readInt16() - 14;
     Being *const dstBeing = actorManager->findBeing(msg.readInt32());
     if (!dstBeing)
+    {
+        BLOCK_END("BeingHandler::processBeingMove3")
         return;
+    }
     const int16_t speed = msg.readInt16();
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
     int16_t x = msg.readInt16();
@@ -690,6 +724,7 @@ void BeingHandler::processBeingMove3(Net::MessageIn &msg)
         delete [] moves;
     }
     dstBeing->setPath(path);
+    BLOCK_END("BeingHandler::processBeingMove3")
 }
 
 }  // namespace TmwAthena

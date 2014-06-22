@@ -505,6 +505,7 @@ bool InputManager::handleAssignKey(const SDL_Event &event, const int type)
 
 bool InputManager::handleEvent(const SDL_Event &event)
 {
+    BLOCK_START("InputManager::handleEvent")
     switch (event.type)
     {
         case SDL_KEYDOWN:
@@ -512,7 +513,10 @@ bool InputManager::handleEvent(const SDL_Event &event)
             keyboard.refreshActiveKeys();
             updateConditionMask();
             if (handleAssignKey(event, InputType::KEYBOARD))
+            {
+                BLOCK_END("InputManager::handleEvent")
                 return true;
+            }
 
             keyboard.handleActicateKey(event);
             // send straight to gui for certain windows
@@ -523,6 +527,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
                     guiInput->pushInput(event);
                 if (gui)
                     gui->handleInput();
+                BLOCK_END("InputManager::handleEvent")
                 return true;
             }
             break;
@@ -539,7 +544,10 @@ bool InputManager::handleEvent(const SDL_Event &event)
             updateConditionMask();
 //            joystick.handleActicateButton(event);
             if (handleAssignKey(event, InputType::JOYSTICK))
+            {
+                BLOCK_END("InputManager::handleEvent")
                 return true;
+            }
             break;
         }
         case SDL_JOYBUTTONUP:
@@ -573,21 +581,30 @@ bool InputManager::handleEvent(const SDL_Event &event)
     {
         const bool res = gui->handleInput();
         if (res && event.type == SDL_KEYDOWN)
+        {
+            BLOCK_END("InputManager::handleEvent")
             return true;
+        }
     }
 
     switch (event.type)
     {
         case SDL_KEYDOWN:
             if (triggerAction(keyboard.getActionVector(event)))
+            {
+                BLOCK_END("InputManager::handleEvent")
                 return true;
+            }
             break;
 
         case SDL_JOYBUTTONDOWN:
             if (joystick && joystick->validate())
             {
                 if (triggerAction(joystick->getActionVector(event)))
+                {
                     return true;
+                    BLOCK_END("InputManager::handleEvent")
+                }
             }
             break;
 #ifdef ANDROID
@@ -602,6 +619,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
             break;
     }
 
+    BLOCK_END("InputManager::handleEvent")
     return false;
 }
 

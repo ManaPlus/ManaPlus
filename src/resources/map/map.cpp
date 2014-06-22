@@ -743,6 +743,7 @@ Path Map::findPath(const int startX, const int startY,
                    const int destX, const int destY,
                    const unsigned char walkmask, const int maxCost)
 {
+    BLOCK_START("Map::findPath")
     // The basic walking cost of a tile.
     static const int basicCost = 100;
     const int basicCost2 = 100 * 362 / 256;
@@ -752,16 +753,25 @@ Path Map::findPath(const int startX, const int startY,
     Path path;
 
     if (startX >= mWidth || startY >= mHeight || startX < 0 || startY < 0)
+    {
+        BLOCK_END("Map::findPath")
         return path;
+    }
 
     // Return when destination not walkable
     if (!getWalk(destX, destY, walkmask))
+    {
+        BLOCK_END("Map::findPath")
         return path;
+    }
 
     // Reset starting tile's G cost to 0
     MetaTile *const startTile = &mMetaTiles[startX + startY * mWidth];
     if (!startTile)
+    {
+        BLOCK_END("Map::findPath")
         return path;
+    }
 
     startTile->Gcost = 0;
 
@@ -960,6 +970,7 @@ Path Map::findPath(const int startX, const int startY,
         }
     }
 
+    BLOCK_END("Map::findPath")
     return path;
 }
 
@@ -977,8 +988,12 @@ void Map::addParticleEffect(const std::string &effectFile,
 
 void Map::initializeParticleEffects(Particle *const engine)
 {
+    BLOCK_START("Map::initializeParticleEffects")
     if (!engine)
+    {
+        BLOCK_END("Map::initializeParticleEffects")
         return;
+    }
 
     if (config.getBoolValue("particleeffects"))
     {
@@ -991,13 +1006,16 @@ void Map::initializeParticleEffects(Particle *const engine)
                 p->adjustEmitterSize(i->w, i->h);
         }
     }
+     BLOCK_END("Map::initializeParticleEffects")
 }
 
 void Map::addExtraLayer()
 {
+    BLOCK_START("Map::addExtraLayer")
     if (!mSpecialLayer)
     {
         logger->log1("No special layer");
+        BLOCK_END("Map::addExtraLayer")
         return;
     }
     const std::string mapFileName = getUserMapDirectory().append(
@@ -1011,6 +1029,7 @@ void Map::addExtraLayer()
         if (!mapFile.is_open())
         {
             mapFile.close();
+            BLOCK_END("Map::addExtraLayer")
             return;
         }
         char line[201];
@@ -1062,6 +1081,7 @@ void Map::addExtraLayer()
         }
         mapFile.close();
     }
+    BLOCK_END("Map::addExtraLayer")
 }
 
 void Map::saveExtraLayer() const

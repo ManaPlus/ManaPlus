@@ -159,15 +159,20 @@ void Joystick::setNumber(const int n)
 
 void Joystick::logic()
 {
+    BLOCK_START("Joystick::logic")
     // When calibrating, don't bother the outside with our state
     if (mCalibrating)
     {
         doCalibration();
+        BLOCK_END("Joystick::logic")
         return;
     };
 
     if (!mEnabled || !mCalibrated)
+    {
+        BLOCK_END("Joystick::logic")
         return;
+    }
 
     mDirection = 0;
 
@@ -228,6 +233,7 @@ void Joystick::logic()
         for (int i = 0; i < mButtonsNumber; i++)
             mActiveButtons[i] = false;
     }
+    BLOCK_END("Joystick::logic")
 }
 
 void Joystick::startCalibration()
@@ -345,6 +351,7 @@ bool Joystick::validate() const
 
 void Joystick::handleRepeat(const int time)
 {
+    BLOCK_START("Joystick::handleRepeat")
     FOR_EACH (KeyTimeMapIter, it, mKeyTimeMap)
     {
         bool repeat(false);
@@ -365,6 +372,7 @@ void Joystick::handleRepeat(const int time)
             }
         }
     }
+    BLOCK_END("Joystick::handleRepeat")
 }
 
 void Joystick::resetRepeat(const int key)

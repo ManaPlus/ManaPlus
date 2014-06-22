@@ -813,8 +813,12 @@ void Configuration::writeUpdated()
 
 void Configuration::write()
 {
+    BLOCK_START("Configuration::write")
     if (mConfigPath.empty())
+    {
+        BLOCK_END("Configuration::write")
         return;
+    }
 
     mUpdated = false;
     // Do not attempt to write to file that cannot be opened for writing
@@ -823,6 +827,7 @@ void Configuration::write()
     {
         logger->log("Configuration::write() couldn't open %s for writing",
                     mConfigPath.c_str());
+        BLOCK_END("Configuration::write")
         return;
     }
     else
@@ -836,6 +841,7 @@ void Configuration::write()
     if (!writer)
     {
         logger->log1("Configuration::write() error while creating writer");
+        BLOCK_END("Configuration::write")
         return;
     }
 
@@ -850,6 +856,7 @@ void Configuration::write()
 
     xmlTextWriterEndDocument(writer);
     xmlFreeTextWriter(writer);
+    BLOCK_END("Configuration::write")
 }
 
 void Configuration::addListener(const std::string &key,

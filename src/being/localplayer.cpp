@@ -2774,6 +2774,7 @@ void LocalPlayer::loadHomes()
 
 void LocalPlayer::setMap(Map *const map)
 {
+    BLOCK_START("LocalPlayer::setMap")
     if (map)
     {
         if (socialWindow)
@@ -2785,6 +2786,7 @@ void LocalPlayer::setMap(Map *const map)
 
     Being::setMap(map);
     updateNavigateList();
+    BLOCK_END("LocalPlayer::setMap")
 }
 
 void LocalPlayer::setHome()

@@ -69,6 +69,7 @@ void EventsManager::shutdown()
 
 bool EventsManager::handleCommonEvents(const SDL_Event &event) const
 {
+    BLOCK_START("EventsManager::handleCommonEvents")
     if (mLogInput)
         logEvent(event);
 
@@ -77,23 +78,28 @@ bool EventsManager::handleCommonEvents(const SDL_Event &event) const
         case SDL_QUIT:
             client->setState(STATE_EXIT);
             logger->log1("force exit");
+            BLOCK_END("EventsManager::handleCommonEvents")
             return true;
 #ifdef USE_SDL2
         case SDL_WINDOWEVENT:
             handleSDL2WindowEvent(event);
+            BLOCK_END("EventsManager::handleCommonEvents")
             return true;
 #else
         case SDL_VIDEORESIZE:
             WindowManager::resizeVideo(event.resize.w,
                 event.resize.h,
                 false);
+            BLOCK_END("EventsManager::handleCommonEvents")
             return true;
         case SDL_ACTIVEEVENT:
             handleActive(event);
+            BLOCK_END("EventsManager::handleCommonEvents")
             return true;
 #ifdef ANDROID
         case SDL_KEYBOARDSHOW:
             WindowManager::updateScreenKeyboard(event.user.code);
+            BLOCK_END("EventsManager::handleCommonEvents")
             return true;
         case SDL_ACCELEROMETER:
             break;
@@ -104,13 +110,18 @@ bool EventsManager::handleCommonEvents(const SDL_Event &event) const
     }
 
     if (inputManager.handleEvent(event))
+    {
+        BLOCK_END("EventsManager::handleCommonEvents")
         return true;
+    }
 
+    BLOCK_END("EventsManager::handleCommonEvents")
     return false;
 }
 
 bool EventsManager::handleEvents() const
 {
+    BLOCK_START("EventsManager::handleEvents")
     if (Game::instance())
     {
         // Let the game handle the events while it is active
@@ -156,13 +167,18 @@ bool EventsManager::handleEvents() const
 #endif
         }
         if (client->getState() == STATE_EXIT)
+        {
+            BLOCK_END("EventsManager::handleEvents")
             return true;
+        }
     }
+    BLOCK_END("EventsManager::handleEvents")
     return false;
 }
 
 void EventsManager::handleGameEvents() const
 {
+    BLOCK_START("EventsManager::handleGameEvents")
     Game *const game = Game::instance();
 
     // Events
@@ -176,6 +192,7 @@ void EventsManager::handleGameEvents() const
         if (handleCommonEvents(event))
             break;
     }  // End while
+    BLOCK_END("EventsManager::handleGameEvents")
 }
 
 void EventsManager::optionChanged(const std::string &name)

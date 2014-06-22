@@ -57,10 +57,12 @@ Image *ImageHelper::load(SDL_RWops *const rw)
 
 Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 {
+    BLOCK_START("ImageHelper::load")
     SDL_Surface *const tmpImage = loadPng(rw);
     if (!tmpImage)
     {
         logger->log("Error, image load failed: %s", IMG_GetError());
+        BLOCK_END("ImageHelper::load")
         return nullptr;
     }
 
@@ -114,6 +116,7 @@ Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 
     Image *const image = load(surf);
     MSDL_FreeSurface(surf);
+    BLOCK_END("ImageHelper::load")
     return image;
 }
 

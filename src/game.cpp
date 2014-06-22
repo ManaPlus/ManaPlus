@@ -794,8 +794,12 @@ void Game::resetAdjustLevel()
 
 void Game::handleMove()
 {
+    BLOCK_START("Game::handleMove")
     if (!player_node)
+    {
+        BLOCK_END("Game::handleMove")
         return;
+    }
 
     // Moving player around
     if (player_node->isAlive()
@@ -806,7 +810,10 @@ void Game::handleMove()
     {
         NpcDialog *const dialog = NpcDialog::getActive();
         if (dialog)
+        {
+            BLOCK_END("Game::handleMove")
             return;
+        }
 
         // Ignore input if either "ignore" key is pressed
         // Stops the character moving about if the user's window manager
@@ -814,6 +821,7 @@ void Game::handleMove()
         if (inputManager.isActionActive(InputAction::IGNORE_INPUT_1) ||
             inputManager.isActionActive(InputAction::IGNORE_INPUT_2))
         {
+            BLOCK_END("Game::handleMove")
             return;
         }
 
@@ -859,6 +867,7 @@ void Game::handleMove()
         if (!inputManager.isActionActive(InputAction::EMOTE) || direction == 0)
             moveInDirection(direction);
     }
+    BLOCK_END("Game::handleMove")
 }
 
 void Game::moveInDirection(const unsigned char direction)

@@ -112,6 +112,7 @@ void Minimap::deleteMapImage()
 
 void Minimap::setMap(const Map *const map)
 {
+    BLOCK_START("Minimap::setMap")
     std::string caption;
 
     if (map)
@@ -137,6 +138,7 @@ void Minimap::setMap(const Map *const map)
             {
                 if (!isSticky())
                     setVisible(false);
+                BLOCK_END("Minimap::setMap")
                 return;
             }
 
@@ -147,6 +149,7 @@ void Minimap::setMap(const Map *const map)
             {
                 if (!isSticky())
                     setVisible(false);
+                BLOCK_END("Minimap::setMap")
                 return;
             }
             const int size = surface->h * surface->w;
@@ -225,6 +228,7 @@ void Minimap::setMap(const Map *const map)
         if (!isSticky())
             setVisible(false);
     }
+    BLOCK_END("Minimap::setMap")
 }
 
 void Minimap::toggle()

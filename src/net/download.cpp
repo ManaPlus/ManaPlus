@@ -154,6 +154,7 @@ unsigned long Download::fadler32(FILE *const file)
 
 unsigned long Download::adlerBuffer(const char *const buffer, int size)
 {
+    FUNC_BLOCK("Download::adlerBuffer", 1)
     unsigned long adler = adler32(0L, Z_NULL, 0);
     return adler32(static_cast<uInt>(adler),
         reinterpret_cast<const Bytef*>(buffer), size);

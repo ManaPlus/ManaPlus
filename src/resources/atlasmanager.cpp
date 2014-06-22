@@ -50,6 +50,7 @@ AtlasManager::AtlasManager()
 AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
                                               const StringVect &files)
 {
+    BLOCK_START("AtlasManager::loadTextureAtlas")
     std::vector<TextureAtlas*> atlases;
     std::vector<Image*> images;
     AtlasResource *resource = new AtlasResource;
@@ -91,12 +92,14 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
         resource->atlases.push_back(atlas);
     }
 
+    BLOCK_END("AtlasManager::loadTextureAtlas")
     return resource;
 }
 
 void AtlasManager::loadImages(const StringVect &files,
                               std::vector<Image*> &images)
 {
+    BLOCK_START("AtlasManager::loadImages")
     ResourceManager *const resman = ResourceManager::getInstance();
 
     FOR_EACH (StringVectCIter, it, files)
@@ -139,6 +142,7 @@ void AtlasManager::loadImages(const StringVect &files,
         }
         delete d;
     }
+    BLOCK_END("AtlasManager::loadImages")
 }
 
 void AtlasManager::simpleSort(const std::string &restrict name,
@@ -146,6 +150,7 @@ void AtlasManager::simpleSort(const std::string &restrict name,
                               const std::vector<Image*> &restrict images,
                               int size)
 {
+    BLOCK_START("AtlasManager::simpleSort")
     int x = 0;
     int y = 0;
     int tempHeight = 0;
@@ -208,10 +213,12 @@ void AtlasManager::simpleSort(const std::string &restrict name,
         atlases.push_back(atlas);
     else
         delete atlas;
+    BLOCK_END("AtlasManager::simpleSort")
 }
 
 SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 {
+    BLOCK_START("AtlasManager::createSDLAtlas")
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     const unsigned int rmask = 0xff000000;
     const unsigned int gmask = 0x00ff0000;
@@ -226,7 +233,10 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 
     // do not create atlas based on only one image
     if (atlas->items.size() == 1)
+    {
+        BLOCK_END("AtlasManager::createSDLAtlas")
         return nullptr;
+    }
 
     // using only power of two sizes.
     atlas->width = powerOfTwo(atlas->width);
@@ -234,11 +244,16 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 
     const int width = atlas->width;
     const int height = atlas->height;
+    BLOCK_START("AtlasManager::createSDLAtlas create surface")
     // temp SDL surface for atlas
     SDL_Surface *const surface = MSDL_CreateRGBSurface(SDL_SWSURFACE,
         width, height, 32U, rmask, gmask, bmask, amask);
     if (!surface)
+    {
+        BLOCK_END("AtlasManager::createSDLAtlas")
         return nullptr;
+    }
+    BLOCK_END("AtlasManager::createSDLAtlas create surface")
 
     SurfaceGraphics *const graphics = new SurfaceGraphics();
     graphics->setTarget(surface);
@@ -254,6 +269,7 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
         {
             if (image->mSDLSurface)
             {
+                BLOCK_START("AtlasManager::createSDLAtlas set surface attr")
 #ifdef USE_SDL2
                 SDL_SetSurfaceAlphaMod(image->mSDLSurface, SDL_ALPHA_OPAQUE);
                 SDL_SetSurfaceBlendMode(image->mSDLSurface,
@@ -261,6 +277,7 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 #else
                 SDL_SetAlpha(image->mSDLSurface, 0, SDL_ALPHA_OPAQUE);
 #endif
+                BLOCK_END("AtlasManager::createSDLAtlas set surface attr")
                 graphics->drawImage(image, item->x, item->y);
             }
         }
@@ -268,6 +285,7 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 
     delete graphics;
     atlas->surface = surface;
+    BLOCK_END("AtlasManager::createSDLAtlas")
     return surface;
 }
 

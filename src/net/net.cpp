@@ -137,6 +137,7 @@ ServerInfo::Type networkType = ServerInfo::UNKNOWN;
 
 void connectToServer(const ServerInfo &server)
 {
+    BLOCK_START("Net::connectToServer")
     if (networkType == server.type && getGeneralHandler())
     {
         getGeneralHandler()->reload();
@@ -175,6 +176,7 @@ void connectToServer(const ServerInfo &server)
         getLoginHandler()->setServer(server);
         getLoginHandler()->connect();
     }
+    BLOCK_END("Net::connectToServer")
 }
 
 void unload()
