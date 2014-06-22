@@ -834,6 +834,7 @@ void GraphicsManager::initOpenGLFunctions()
     const bool is15 = checkGLVersion(1, 5);
     const bool is20 = checkGLVersion(2, 0);
     const bool is21 = checkGLVersion(2, 1);
+    const bool is30 = checkGLVersion(3, 0);
     mSupportModernOpengl = true;
 
     // Texture sampler
@@ -1065,7 +1066,7 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glUniform3f, "glUniform3f");
         assignFunction(glUniform4f, "glUniform4f");
 
-        if (supportExtension("GL_EXT_gpu_shader4"))
+        if (is30 || supportExtension("GL_EXT_gpu_shader4"))
         {
             assignFunction(glBindFragDataLocation, "glBindFragDataLocation");
         }
