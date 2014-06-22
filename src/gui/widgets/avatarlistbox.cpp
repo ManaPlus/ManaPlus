@@ -139,7 +139,6 @@ void AvatarListBox::draw(Graphics *graphics)
                 {
                     graphics->calcTileCollection(&vertexes, icon,
                         mImagePadding, y + mPadding);
-                    graphics->finalize(&vertexes);
                 }
                 else
                 {
@@ -314,7 +313,10 @@ void AvatarListBox::draw(Graphics *graphics)
     }
 
     if (useCaching)
+    {
+        graphics->finalize(&vertexes);
         graphics->drawTileCollection(&vertexes);
+    }
 
     setWidth(parent->getWidth() - 10);
     BLOCK_END("AvatarListBox::draw")
