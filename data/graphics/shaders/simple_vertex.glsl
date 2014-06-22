@@ -1,4 +1,4 @@
-#version 150 core
+#version 130
 in ivec4 position;
 out vec2 Texcoord;
 uniform vec2 screen;
