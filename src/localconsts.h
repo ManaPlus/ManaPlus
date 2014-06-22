@@ -111,7 +111,7 @@
 // #define ANDROID_LOG 1
 
 // profiler
-#define USE_PROFILER 1
+// #define USE_PROFILER 1
 
 // draw calls
 // #define DEBUG_DRAW_CALLS 1
