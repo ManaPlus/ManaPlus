@@ -115,5 +115,7 @@ defNameE(glGetQueryObjectui64v);
 defNameE(wglGetExtensionsString);
 #endif
 
+#undef defNameE
+
 #endif  // USE_OPENGL
 #endif  // RENDER_MGL_H

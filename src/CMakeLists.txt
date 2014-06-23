@@ -848,7 +848,13 @@ SET(SRCS
     render/mgl.cpp
     render/mgl.h
     render/mgldefines.h
+    render/mglfunctions.h
     render/mgltypes.h
+    render/mglx.cpp
+    render/mglx.h
+    render/mglxinit.cpp
+    render/mglxinit.h
+    render/mglxtypes.h
     render/mobileopenglgraphics.cpp
     render/mobileopenglgraphics.h
     render/modernopenglgraphics.cpp

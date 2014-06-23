@@ -23,20 +23,20 @@
 #ifdef USE_OPENGL
 
 #ifndef WIN32
+
 #ifdef ANDROID
 #include <GLES2/gl2.h>
 #include <GLES/glext.h>
 #include <EGL/egl.h>
 #ifndef USE_SDL2
 #include <SDL_android.h>
-#endif
-#else
+#endif  // USE_SDL2
+#else  // ANDROID
 #include <GL/glx.h>
+#endif  // ANDROID
+#else  // WIN32
 #endif
-#else
-#endif
-
-#endif
+#endif  // USE_OPENGL
 
 #include "configuration.h"
 #include "logger.h"
@@ -55,6 +55,8 @@
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
 #include "resources/sdlimagehelper.h"
+
+#include "render/mglfunctions.h"
 
 #ifdef USE_SDL2
 #include "render/sdl2softwaregraphics.h"
@@ -77,25 +79,6 @@
 #ifndef GL_MAX_RENDERBUFFER_SIZE
 #define GL_MAX_RENDERBUFFER_SIZE 0x84E8
 #endif
-
-#ifdef WIN32
-#define getFunction(name) wglGetProcAddress(name)
-#elif defined ANDROID
-#define getFunction(name) eglGetProcAddress(name)
-#elif defined __APPLE__
-#define getFunction(name) nullptr
-#else
-#define getFunction(name) glXGetProcAddress(\
-    reinterpret_cast<const GLubyte*>(name))
-#endif
-
-#define assignFunction(func, name) m##func \
-    = reinterpret_cast<func##_t>(getFunction(name)); \
-    if (m##func == nullptr) \
-        logger->log(std::string("function not found: ") + name); \
-    else \
-        logger->log(std::string("assigned function: ") + name);
-
 #endif
 
 GraphicsManager graphicsManager;
