@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-06-21 13:04+0300\n"
-"PO-Revision-Date: 2014-06-19 09:51+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2014-06-24 00:40+0300\n"
+"PO-Revision-Date: 2014-06-22 23:39+0000\n"
+"Last-Translator: Alige <aligetmw@hotmail.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
 "fr/)\n"
 "Language: fr\n"
@@ -475,31 +475,31 @@ msgid "Game modifiers are unknown"
 msgstr "Les modificateurs de jeux sont inconnus"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:3328
+#: src/being/localplayer.cpp:3330
 #, c-format
 msgid "Follow: %s"
 msgstr "Suivre : %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3334 src/being/localplayer.cpp:3359
+#: src/being/localplayer.cpp:3336 src/being/localplayer.cpp:3361
 msgid "Follow canceled"
 msgstr "Suivi annulé"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:3344
+#: src/being/localplayer.cpp:3346
 #, c-format
 msgid "Imitation: %s"
 msgstr "Imiter : %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3350 src/being/localplayer.cpp:3364
+#: src/being/localplayer.cpp:3352 src/being/localplayer.cpp:3366
 msgid "Imitation canceled"
 msgstr "Imitation annulée"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:3710
+#: src/being/localplayer.cpp:3712
 #, c-format
 msgid "You see %s"
 msgstr "Tu vois %s"
@@ -537,37 +537,37 @@ msgstr "Bulle flottante"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:895 src/gui/windowmenu.cpp:164
+#: src/client.cpp:910 src/gui/windowmenu.cpp:164
 #: src/gui/windows/setupwindow.cpp:62
 msgid "Setup"
 msgstr "Configuration"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:898 src/gui/widgets/tabs/setup_perfomance.cpp:53
+#: src/client.cpp:913 src/gui/widgets/tabs/setup_perfomance.cpp:53
 msgid "Performance"
 msgstr "Performance"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:901 src/gui/widgets/tabs/setup_video.cpp:104
+#: src/client.cpp:916 src/gui/widgets/tabs/setup_video.cpp:104
 msgid "Video"
 msgstr "Vidéo"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:904 src/gui/widgets/tabs/setup_theme.cpp:121
+#: src/client.cpp:919 src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Thème"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:907
+#: src/client.cpp:922
 msgid "About"
 msgstr "À propos"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:910 src/gui/windowmenu.cpp:76
+#: src/client.cpp:925 src/gui/windowmenu.cpp:76
 #: src/gui/windows/helpwindow.cpp:52
 msgid "Help"
 msgstr "Aide"
@@ -582,7 +582,7 @@ msgstr "Aide"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:914 src/gui/popups/popupmenu.cpp:625
+#: src/client.cpp:929 src/gui/popups/popupmenu.cpp:625
 #: src/gui/popups/popupmenu.cpp:864 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:229 src/gui/windows/npcdialog.cpp:72
 #: src/gui/windows/npcdialog.cpp:110 src/gui/windows/questswindow.cpp:75
@@ -591,32 +591,32 @@ msgid "Close"
 msgstr "Fermer"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1038
+#: src/client.cpp:1053
 msgid "Connecting to server"
 msgstr "Connexion au serveur"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1086
+#: src/client.cpp:1101
 msgid "Logging in"
 msgstr "Connexion"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1129
+#: src/client.cpp:1144
 msgid "Entering game world"
 msgstr "Entrée dans le monde de jeu"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1253
+#: src/client.cpp:1268
 msgid "Requesting characters"
 msgstr "Téléchargement des personnages"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1293
+#: src/client.cpp:1308
 msgid "Connecting to the game server"
 msgstr "Connexion au serveur de jeu"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1305
+#: src/client.cpp:1320
 msgid "Changing game servers"
 msgstr "Changement de serveur de jeu"
 
@@ -630,7 +630,7 @@ msgstr "Changement de serveur de jeu"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1360 src/client.cpp:1371 src/client.cpp:1557
+#: src/client.cpp:1375 src/client.cpp:1386 src/client.cpp:1572
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:158
 #: src/gui/windows/charcreatedialog.cpp:358
@@ -643,37 +643,37 @@ msgid "Error"
 msgstr "Erreur"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1383
+#: src/client.cpp:1398
 msgid "Requesting registration details"
 msgstr "Demande des paramètres d'inscription"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1424
+#: src/client.cpp:1439
 msgid "Password Change"
 msgstr "Changement de mot de passe"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1426
+#: src/client.cpp:1441
 msgid "Password changed successfully!"
 msgstr "Le mot de passe a été changé avec succès !"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1449
+#: src/client.cpp:1464
 msgid "Email Change"
 msgstr "Changer d'e-mail"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1451
+#: src/client.cpp:1466
 msgid "Email changed successfully!"
 msgstr "L'adresse e-mail a été changée avec succès !"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1474
+#: src/client.cpp:1489
 msgid "Unregister Successful"
 msgstr "Désinscription réussie"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1476
+#: src/client.cpp:1491
 msgid "Farewell, come back any time..."
 msgstr "À bientôt, Revenez quand vous voulez..."
 
@@ -3348,7 +3348,7 @@ msgstr "%d FPS (mobile OpenGL)"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:114
 #, c-format
 msgid "%d FPS (modern OpenGL)"
-msgstr ""
+msgstr "%d IPS (OpenGL moderne)"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:118
@@ -4091,7 +4091,7 @@ msgstr "Sélectionner les monstres par ordre de distance"
 #. TRANSLATORS: mini map window name
 #: src/gui/widgets/tabs/setup_other.cpp:129 src/gui/windowmenu.cpp:107
 #: src/gui/windows/debugwindow.cpp:61 src/gui/windows/minimap.cpp:57
-#: src/gui/windows/minimap.cpp:123
+#: src/gui/windows/minimap.cpp:124
 msgid "Map"
 msgstr "Carte"
 
@@ -4539,10 +4539,10 @@ msgstr "Activer les atlas de textures (OpenGL)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:150
-#, fuzzy
 msgid "Cache all sprites per map (can use additional memory)"
 msgstr ""
-"Mettre en cache toutes les sprites par carte (peut utiliser plus de mémoire)"
+"Mettre en cache tous les sprites par carte (peut utiliser de la mémoire "
+"supplémentaire)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:155
@@ -6943,7 +6943,7 @@ msgstr "     --safemode       : Démarrer le jeu en mode sûr"
 #. TRANSLATORS: command line help
 #: src/main.cpp:130
 msgid "     --renderer       : Set renderer type"
-msgstr ""
+msgstr "--renderer : Définir le type de rendu"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:132
@@ -7589,7 +7589,7 @@ msgstr "OpenGL sécurisé"
 #. TRANSLATORS: draw backend
 #: src/render/rendererslistsdl2.h:91 src/render/rendererslistsdl.h:88
 msgid "Modern OpenGL"
-msgstr ""
+msgstr "OpenGL Moderne"
 
 #. TRANSLATORS: being info default name
 #. TRANSLATORS: unknown info name
