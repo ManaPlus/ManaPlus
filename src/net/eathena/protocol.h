@@ -28,6 +28,8 @@
  *********************************/
 #define SMSG_SERVER_VERSION_RESPONSE 0x7531
 
+#define CMSG_LOGIN_REGISTER          0x0064
+
 #define SMSG_SERVER_PING             0x007f /**< Contains server tick */
 #define SMSG_CONNECTION_PROBLEM      0x0081
 

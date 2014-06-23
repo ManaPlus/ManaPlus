@@ -134,7 +134,7 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
                                      const std::string &restrict email
                                      A_UNUSED) const
 {
-    MessageOut outMsg(0x0064);
+    MessageOut outMsg(CMSG_LOGIN_REGISTER);
     outMsg.writeInt32(0);  // client version
     outMsg.writeString(username, 24);
     outMsg.writeStringNoLog(password, 24);
