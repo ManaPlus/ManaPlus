@@ -95,7 +95,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
 
 void BeingHandler::requestNameById(const int id) const
 {
-    MessageOut outMsg(0x0094);
+    MessageOut outMsg(CMSG_NAME_REQUEST);
     outMsg.writeInt32(id);  // readLong(2));
 }
 

@@ -100,6 +100,7 @@
 #define SMSG_BEING_ACTION            0x008a /**< Attack, sit, stand up, ... */
 #define SMSG_BEING_CHAT              0x008d /**< A being talks */
 #define SMSG_BEING_CHAT2             0x0223 /**< A being talks in channels */
+#define CMSG_NAME_REQUEST            0x0094
 #define SMSG_BEING_NAME_RESPONSE     0x0095 /**< Has to be requested */
 #define SMSG_BEING_NAME_RESPONSE2    0x0220 /**< Has to be requested */
 #define SMSG_BEING_CHANGE_DIRECTION  0x009c
