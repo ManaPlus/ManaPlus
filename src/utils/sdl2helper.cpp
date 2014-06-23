@@ -94,4 +94,36 @@ SDL_Thread *SDL::createThread(SDL_ThreadFunction fn,
     return SDL_CreateThread(fn, name, data);
 }
 
+void *SDL::createGLContext(SDL_Window *const window,
+                           const int major,
+                           const int minor)
+{
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, major);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, minor);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
+        SDL_GL_CONTEXT_PROFILE_CORE);
+//    SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
+    SDL_ClearError();
+    void *context = SDL_GL_CreateContext(window);
+    if (SDL_GetError())
+    {
+        if (!context && (major > 3 || (major == 3 && minor > 3)))
+        {
+            logger->log("Try fallback to OpenGL 3.3 context");
+            SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+            SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+            SDL_ClearError();
+            context = SDL_GL_CreateContext(window);
+            if (SDL_GetError())
+            {
+                logger->log("Try fallback to OpenGL 3.0 context");
+                SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+                SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+                context = SDL_GL_CreateContext(window);
+            }
+        }
+    }
+    return context;
+}
+
 #endif  // USE_SDL2

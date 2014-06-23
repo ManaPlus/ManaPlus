@@ -496,6 +496,9 @@ class Graphics notfinal
 
         bool videoInfo();
 
+#ifdef USE_OPENGL
+        virtual void createGLContext();
+#endif
         /**
          * Holds the clip area stack.
          */
@@ -505,10 +508,16 @@ class Graphics notfinal
 
 #ifdef USE_SDL2
         SDL_Renderer *mRenderer;
+#endif  // USE_SDL2
 #ifdef USE_OPENGL
+#ifdef USE_SDL2
         SDL_GLContext mGLContext;
-#endif
-#endif
+#else  // USE_SDL2
+
+        void *mGLContext;
+#endif  // USE_SDL2
+#endif  // USE_OPENGL
+
         int mBpp;
         bool mAlpha;
         bool mFullscreen;

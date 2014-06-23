@@ -71,6 +71,8 @@
 #include "graphicsmanager.h"
 #include "logger.h"
 
+#include "render/mglxinit.h"
+
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
 
@@ -99,9 +101,9 @@ Graphics::Graphics() :
     mWindow(nullptr),
 #ifdef USE_SDL2
     mRenderer(nullptr),
+#endif
 #ifdef USE_OPENGL
     mGLContext(nullptr),
-#endif
 #endif
     mBpp(0),
     mAlpha(false),
@@ -252,11 +254,15 @@ bool Graphics::setOpenGLMode()
         mActualWidth, mActualHeight,
         mBpp, getOpenGLFlags())))
     {
+        logger->log("Window/context creation failed");
         mRect.w = 0;
         mRect.h = 0;
         return false;
     }
 
+#if defined(USE_OPENGL) && defined(USE_X11)
+    Glx::initFunctions();
+#endif
 #ifdef USE_SDL2
     int w1 = 0;
     int h1 = 0;
@@ -264,10 +270,10 @@ bool Graphics::setOpenGLMode()
     mRect.w = static_cast<int32_t>(w1 / mScale);
     mRect.h = static_cast<int32_t>(h1 / mScale);
 
-    mGLContext = SDL_GL_CreateContext(mWindow);
-
+    createGLContext();
 #else  // USE_SDL2
 
+    createGLContext();
     mRect.w = static_cast<uint16_t>(mWindow->w / mScale);
     mRect.h = static_cast<uint16_t>(mWindow->h / mScale);
 
@@ -353,6 +359,14 @@ int Graphics::getSoftwareFlags() const
     return displayFlags;
 }
 
+#ifdef USE_OPENGL
+void Graphics::createGLContext()
+{
+#ifdef USE_SDL2
+    mGLContext = SDL_GL_CreateContext(mWindow);
+#endif
+}
+#endif
 
 void Graphics::updateMemoryInfo()
 {

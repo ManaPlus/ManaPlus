@@ -30,5 +30,7 @@ defName(glXCreateContext);
 defName(glXGetCurrentContext);
 defName(glXCreateContextAttribs);
 defName(glXChooseFBConfig);
+defName(glXDestroyContext);
+defName(glXMakeCurrent);
 
 #endif

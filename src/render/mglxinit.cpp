@@ -34,6 +34,8 @@ void Glx::initFunctions()
     assignFunction(glXGetCurrentContext, "glXGetCurrentContext");
     assignFunction(glXCreateContextAttribs, "glXCreateContextAttribsARB");
     assignFunction(glXChooseFBConfig, "glXChooseFBConfig");
+    assignFunction(glXDestroyContext, "glXDestroyContext");
+    assignFunction(glXMakeCurrent, "glXMakeCurrent");
 }
 
 #endif

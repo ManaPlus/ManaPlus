@@ -41,6 +41,7 @@
 #include "resources/openglimagehelper.h"
 
 #include "utils/sdlcheckutils.h"
+#include "utils/sdlhelper.h"
 
 #include "debug.h"
 
@@ -1258,6 +1259,11 @@ void ModernOpenGLGraphics::calcImageRect(ImageVertexes *const vert,
 void ModernOpenGLGraphics::clearScreen() const
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+}
+
+void ModernOpenGLGraphics::createGLContext()
+{
+    mGLContext = SDL::createGLContext(mWindow, 3, 3);
 }
 
 void ModernOpenGLGraphics::finalize(ImageCollection *const col)

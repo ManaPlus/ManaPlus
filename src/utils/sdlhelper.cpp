@@ -23,8 +23,13 @@
 #include "utils/sdlhelper.h"
 
 #include "logger.h"
+#include "main.h"
 
 #include "utils/stringutils.h"
+
+#ifdef USE_X11
+#include "utils/glxhelper.h"
+#endif  // USE_X11
 
 #include <SDL_syswm.h>
 #include <SDL_video.h>
@@ -110,5 +115,38 @@ SDL_Thread *SDL::createThread(int (SDLCALL *fn)(void *),
 {
     return SDL_CreateThread(fn, data);
 }
+
+#if defined(USE_X11) && defined(USE_OPENGL)
+void *SDL::createGLContext(SDL_Surface *const window A_UNUSED,
+                           const int major,
+                           const int minor)
+{
+    SDL_SysWMinfo info;
+    SDL_VERSION(&info.version);
+    SDL_GetWMInfo(&info);
+    void *context = GlxHelper::createContext(info.info.x11.window,
+        info.info.x11.display, major, minor);
+    if (!context && (major > 3 || (major == 3 && minor > 3)))
+    {
+        logger->log("Try fallback to OpenGL 3.3 context");
+        context = GlxHelper::createContext(info.info.x11.window,
+            info.info.x11.display, 3, 3);
+        if (!context)
+        {
+            logger->log("Try fallback to OpenGL 3.0 context");
+            context = GlxHelper::createContext(info.info.x11.window,
+                info.info.x11.display, 3, 0);
+        }
+    }
+    return context;
+}
+#else
+void *SDL::createGLContext(SDL_Surface *const window A_UNUSED,
+                           const int major A_UNUSED,
+                           const int minor A_UNUSED)
+{
+    return nullptr;
+}
+#endif
 
 #endif  // USE_SDL2

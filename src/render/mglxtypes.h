@@ -37,10 +37,13 @@
 typedef void *(*glXCreateContext_t) (Display *dpy, XVisualInfo *vis,
     void *shareList, bool direct);
 typedef void *(*glXGetCurrentContext_t) (void);
-typedef void (*glXCreateContextAttribs_t) (Display *dpy, GLXFBConfig config,
+typedef void *(*glXCreateContextAttribs_t) (Display *dpy, GLXFBConfig config,
     void *share_context, bool direct, const int *attrib_list);
 typedef GLXFBConfig *(*glXChooseFBConfig_t) (Display *dpy, int screen,
     const int *attrib_list, int *nelements);
+typedef void (*glXDestroyContext_t) (Display *dpy, void *ctx);
+typedef bool (*glXMakeCurrent_t) (Display *dpy,
+    GLXDrawable drawable, void *ctx);
 
 #endif  // USE_OPENGL
 #endif  // RENDER_MGLXTYPES_H

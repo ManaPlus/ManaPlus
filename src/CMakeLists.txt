@@ -659,6 +659,8 @@ SET(SRCS
     utils/gettext.h
     utils/gettexthelper.cpp
     utils/gettexthelper.h
+    utils/glxhelper.cpp
+    utils/glxhelper.h
     utils/langs.cpp
     utils/langs.h
     utils/mathutils.h

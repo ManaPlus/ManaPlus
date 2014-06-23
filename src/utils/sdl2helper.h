@@ -51,6 +51,10 @@ namespace SDL
     SDL_Thread *createThread(SDL_ThreadFunction fn,
                              const char *restrict const name,
                              void *restrict const data);
+
+    void *createGLContext(SDL_Window *const window,
+                          const int major,
+                          const int minor);
 }  // namespace SDL
 
 #endif  // USE_SDL2

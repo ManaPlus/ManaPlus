@@ -81,6 +81,9 @@ class ModernOpenGLGraphics final : public Graphics
 
         #include "render/openglgraphicsdefadvanced.hpp"
 
+    protected:
+        virtual void createGLContext() override final;
+
     private:
         inline void drawQuad(const Image *const image,
                              const int srcX, const int srcY,

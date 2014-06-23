@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2012-2014  The ManaPlus Developers
+ *  Copyright (C) 2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,24 +18,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_MGLX_H
-#define RENDER_MGLX_H
+#ifndef UTILS_GLXHELPER_H
+#define UTILS_GLXHELPER_H
 
 #include "main.h"
+
 #if defined(USE_OPENGL) && defined(USE_X11)
 
-#include "render/mglxtypes.h"
+#include "localconsts.h"
 
-#define defNameE(name) extern name##_t m##name
+//struct Display;
 
-defNameE(glXCreateContext);
-defNameE(glXGetCurrentContext);
-defNameE(glXCreateContextAttribs);
-defNameE(glXChooseFBConfig);
-defNameE(glXDestroyContext);
-defNameE(glXMakeCurrent);
-
-#undef defNameE
+namespace GlxHelper
+{
+    void *createContext(unsigned int window,
+                        void *const display,
+                        const int major,
+                        const int minor);
+}  // namespace Glx
 
 #endif  // defined(USE_OPENGL) && defined(USE_X11)
-#endif  // RENDER_MGLX_H
+#endif  // UTILS_GLXHELPER_H
