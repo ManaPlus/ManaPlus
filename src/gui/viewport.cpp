@@ -543,7 +543,7 @@ void Viewport::mousePressed(MouseEvent &event)
         if (actorManager)
         {
             Being *const target = actorManager->findNearestLivingBeing(
-                pixelX, pixelY, 20, ActorType::MONSTER);
+                pixelX, pixelY, 20, ActorType::MONSTER, nullptr);
 
             if (target)
                 player_node->setTarget(target);

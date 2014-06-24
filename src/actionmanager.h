@@ -89,6 +89,7 @@ namespace ActionManager
     decHandler(targetAttack);
     decHandler(targetPlayer);
     decHandler(targetMonster);
+    decHandler(targetClosestMonster);
     decHandler(targetNPC);
     decHandler(safeVideoMode);
     decHandler(stopSit);

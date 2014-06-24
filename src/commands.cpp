@@ -677,7 +677,7 @@ impHandler0(attackHuman)
         return;
 
     Being *const target = actorManager->findNearestLivingBeing(
-        player_node, 10, ActorType::PLAYER);
+        player_node, 10, ActorType::PLAYER, true);
     if (target)
     {
         if (player_node->checAttackPermissions(target))
@@ -1523,7 +1523,7 @@ void replaceVars(std::string &str)
         if (!target || target->getType() != ActorType::PLAYER)
         {
             target = actorManager->findNearestLivingBeing(
-                player_node, 20, ActorType::PLAYER);
+                player_node, 20, ActorType::PLAYER, true);
         }
         if (target)
             replaceAll(str, "<PLAYER>", target->getName());
@@ -1536,7 +1536,7 @@ void replaceVars(std::string &str)
         if (!target || target->getType() != ActorType::MONSTER)
         {
             target = actorManager->findNearestLivingBeing(
-                player_node, 20, ActorType::MONSTER);
+                player_node, 20, ActorType::MONSTER, true);
         }
         if (target)
             replaceAll(str, "<MONSTER>", target->getName());

@@ -127,6 +127,12 @@ static SetupActionData setupActionData0[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Target closest monster (without filters)"),
+        InputAction::TARGET_CLOSEST_MONSTER,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Target NPC"),
         InputAction::TARGET_NPC,
         "",

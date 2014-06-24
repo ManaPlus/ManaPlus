@@ -134,10 +134,9 @@ class ActorManager final: public ConfigListener
          */
         Being *findNearestLivingBeing(const int x, const int y,
                                       int maxTileDist,
-                                      const ActorType::Type
-                                      type = ActorType::UNKNOWN,
-                                      const Being *const
-                                      excluded = nullptr) const A_WARN_UNUSED;
+                                      const ActorType::Type type,
+                                      const Being *const excluded)
+                                      const A_WARN_UNUSED;
 
         /**
          * Returns a being nearest to another being.
@@ -149,8 +148,8 @@ class ActorManager final: public ConfigListener
          */
         Being *findNearestLivingBeing(const Being *const aroundBeing,
                                       const int maxTileDist,
-                                      const ActorType::Type
-                                      type = ActorType::UNKNOWN)
+                                      const ActorType::Type type,
+                                      const bool allowSort)
                                       const A_WARN_UNUSED;
 
         /**
@@ -158,7 +157,8 @@ class ActorManager final: public ConfigListener
          */
         Being *findBeingByName(const std::string &name,
                                const ActorType::Type
-                               type = ActorType::UNKNOWN) const A_WARN_UNUSED;
+                               type = ActorType::UNKNOWN)
+                               const A_WARN_UNUSED;
 
        /**
         * Finds a nearest being by name and (optionally) by type.
@@ -320,8 +320,9 @@ class ActorManager final: public ConfigListener
                                       const int maxdist,
                                       const ActorType::Type &type,
                                       const int x, const int y,
-                                      const Being *const
-                                      excluded = nullptr) const A_WARN_UNUSED;
+                                      const Being *const excluded,
+                                      const bool allowSort)
+                                      const A_WARN_UNUSED;
 
         void loadAttackList();
 

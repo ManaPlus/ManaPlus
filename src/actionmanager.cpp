@@ -402,7 +402,7 @@ impHandler0(heal)
             if (!target || target->getType() != ActorType::PLAYER)
             {
                 target = actorManager->findNearestLivingBeing(
-                    player_node, 10, ActorType::PLAYER);
+                    player_node, 10, ActorType::PLAYER, true);
                 if (target)
                     player_node->setTarget(target);
             }
@@ -1020,7 +1020,7 @@ impHandler0(talk)
         if (!target && actorManager)
         {
             target = actorManager->findNearestLivingBeing(
-                player_node, 1, ActorType::NPC);
+                player_node, 1, ActorType::NPC, true);
             // ignore closest target if distance in each direction more than 1
             if (target)
             {
@@ -1091,7 +1091,7 @@ impHandler0(targetAttack)
         {
             // Only auto target Monsters
             target = actorManager->findNearestLivingBeing(
-                player_node, 90, ActorType::MONSTER);
+                player_node, 90, ActorType::MONSTER, true);
         }
         else
         {
@@ -1104,12 +1104,12 @@ impHandler0(targetAttack)
     return false;
 }
 
-static bool setTarget(const ActorType::Type type)
+static bool setTarget(const ActorType::Type type, const bool allowSort)
 {
     if (actorManager && player_node)
     {
         Being *const target = actorManager->findNearestLivingBeing(
-            player_node, 20, type);
+            player_node, 20, type, allowSort);
 
         if (target && target != player_node->getTarget())
             player_node->setTarget(target);
@@ -1121,17 +1121,22 @@ static bool setTarget(const ActorType::Type type)
 
 impHandler0(targetPlayer)
 {
-    return setTarget(ActorType::PLAYER);
+    return setTarget(ActorType::PLAYER, true);
 }
 
 impHandler0(targetMonster)
 {
-    return setTarget(ActorType::MONSTER);
+    return setTarget(ActorType::MONSTER, true);
+}
+
+impHandler0(targetClosestMonster)
+{
+    return setTarget(ActorType::MONSTER, false);
 }
 
 impHandler0(targetNPC)
 {
-    return setTarget(ActorType::NPC);
+    return setTarget(ActorType::NPC, true);
 }
 
 impHandler0(safeVideoMode)

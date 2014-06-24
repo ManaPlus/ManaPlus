@@ -2208,7 +2208,15 @@ static const KeyData keyData[InputAction::TOTAL] = {
         Input::GRP_DEFAULT | Input::GRP_GUI,
         &ActionManager::updaterWindowShow,
         InputAction::NO_VALUE, 50,
-        InputCondition::GAME}
+        InputCondition::GAME},
+    {"keyTargetClosestMonster",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT | Input::GRP_REPEAT,
+        &ActionManager::targetClosestMonster,
+        InputAction::NO_VALUE, 50,
+        InputCondition::GAME | InputCondition::NOTARGET
+            | InputCondition::VALIDSPEED}
 };
 
 #endif  // INPUT_KEYBOARDDATA_H

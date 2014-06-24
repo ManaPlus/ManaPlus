@@ -833,25 +833,36 @@ Being *ActorManager::findNearestLivingBeing(const int x, const int y,
 {
     const int maxDist = maxTileDist * mapTileSize;
 
-    return findNearestLivingBeing(nullptr, maxDist, type, x, y, excluded);
+    return findNearestLivingBeing(nullptr, maxDist,
+        type,
+        x, y,
+        excluded,
+        true);
 }
 
 Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                                             const int maxDist,
-                                            const ActorType::Type type) const
+                                            const ActorType::Type type,
+                                            const bool allowSort) const
 {
     if (!aroundBeing)
         return nullptr;
 
-    return findNearestLivingBeing(aroundBeing, maxDist, type,
-        aroundBeing->getTileX(), aroundBeing->getTileY(), aroundBeing);
+    return findNearestLivingBeing(aroundBeing,
+        maxDist,
+        type,
+        aroundBeing->getTileX(),
+        aroundBeing->getTileY(),
+        aroundBeing,
+        allowSort);
 }
 
 Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                                             int maxDist,
                                             const ActorType::Type &type,
                                             const int x, const int y,
-                                            const Being *const excluded) const
+                                            const Being *const excluded,
+                                            const bool allowSort) const
 {
     if (!aroundBeing || !player_node)
         return nullptr;
@@ -874,11 +885,13 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
 
     maxDist = maxDist * maxDist;
 
-    const bool cycleSelect = (mCyclePlayers && type == ActorType::PLAYER)
+    const bool cycleSelect = allowSort
+        && ((mCyclePlayers && type == ActorType::PLAYER)
         || (mCycleMonsters && type == ActorType::MONSTER)
-        || (mCycleNPC && type == ActorType::NPC);
+        || (mCycleNPC && type == ActorType::NPC));
 
-    const bool filtered = config.getBoolValue("enableAttackFilter")
+    const bool filtered = allowSort
+        && config.getBoolValue("enableAttackFilter")
         && type == ActorType::MONSTER;
     const bool modActive = inputManager.isActionActive(
         InputAction::STOP_ATTACK);

@@ -340,6 +340,7 @@ namespace InputAction
         GUI_F12,
         WINDOW_ABOUT,
         WINDOW_UPDATER,
+        TARGET_CLOSEST_MONSTER,
         TOTAL
     };
 }  // namespace InputAction
