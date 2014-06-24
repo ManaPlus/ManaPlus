@@ -36,6 +36,7 @@ void Glx::initFunctions()
     assignFunction(glXChooseFBConfig, "glXChooseFBConfig");
     assignFunction(glXDestroyContext, "glXDestroyContext");
     assignFunction(glXMakeCurrent, "glXMakeCurrent");
+    assignFunction(glXSwapBuffers, "glXSwapBuffers");
 }
 
 #endif

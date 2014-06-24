@@ -34,6 +34,7 @@ defNameE(glXCreateContextAttribs);
 defNameE(glXChooseFBConfig);
 defNameE(glXDestroyContext);
 defNameE(glXMakeCurrent);
+defNameE(glXSwapBuffers);
 
 #undef defNameE
 

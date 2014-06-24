@@ -44,6 +44,7 @@ typedef GLXFBConfig *(*glXChooseFBConfig_t) (Display *dpy, int screen,
 typedef void (*glXDestroyContext_t) (Display *dpy, void *ctx);
 typedef bool (*glXMakeCurrent_t) (Display *dpy,
     GLXDrawable drawable, void *ctx);
+typedef void (*glXSwapBuffers_t) (Display *dpy, GLXDrawable drawable);
 
 #endif  // USE_OPENGL
 #endif  // RENDER_MGLXTYPES_H
