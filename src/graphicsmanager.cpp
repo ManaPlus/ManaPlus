@@ -238,9 +238,14 @@ void GraphicsManager::createRenderers()
     if (!settings.options.noOpenGL)
     {
         if (settings.options.renderer < 0)
+        {
             useOpenGL = intToRenderType(config.getIntValue("opengl"));
+            settings.options.renderer = useOpenGL;
+        }
         else
+        {
             useOpenGL = intToRenderType(settings.options.renderer);
+        }
     }
 
     // Setup image loading for the right image format
@@ -686,8 +691,12 @@ void GraphicsManager::updateTextureFormat() const
         }
     }
 
+    const int renderer = settings.options.renderer;
+
     // using default formats
-    if (config.getBoolValue("newtextures"))
+    if (renderer == RENDER_MODERN_OPENGL
+        || renderer == RENDER_GLES_OPENGL
+        || config.getBoolValue("newtextures"))
     {
         OpenGLImageHelper::setInternalTextureType(GL_RGBA);
         logger->log1("using RGBA texture format");
