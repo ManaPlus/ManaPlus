@@ -113,6 +113,9 @@ class GraphicsManager final
         bool checkGLVersion(const int major, const int minor)
                             const A_WARN_UNUSED;
 
+        bool checkSLVersion(const int major, const int minor)
+                            const A_WARN_UNUSED;
+
         bool checkPlatformVersion(const int major, const int minor)
                                   const A_WARN_UNUSED;
 
@@ -181,13 +184,17 @@ class GraphicsManager final
 
         std::string mGlRenderer;
 
+        std::string mGlShaderVersionString;
 #ifdef USE_OPENGL
         static GLenum mLastError;
 #endif
-
         int mMinor;
 
         int mMajor;
+
+        int mSLMinor;
+
+        int mSLMajor;
 
         int mPlatformMinor;
 

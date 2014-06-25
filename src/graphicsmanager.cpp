@@ -107,8 +107,11 @@ GraphicsManager::GraphicsManager() :
     mGlVersionString(),
     mGlVendor(),
     mGlRenderer(),
+    mGlShaderVersionString(),
     mMinor(0),
     mMajor(0),
+    mSLMinor(0),
+    mSLMajor(0),
     mPlatformMinor(0),
     mPlatformMajor(0),
     mMaxVertices(500),
@@ -729,6 +732,8 @@ void GraphicsManager::setGLVersion()
     sscanf(mGlVersionString.c_str(), "%5d.%5d", &mMajor, &mMinor);
     mGlVendor = getGLString(GL_VENDOR);
     mGlRenderer = getGLString(GL_RENDERER);
+    mGlShaderVersionString = getGLString(GL_SHADING_LANGUAGE_VERSION);
+    sscanf(mGlShaderVersionString.c_str(), "%5d.%5d", &mSLMajor, &mSLMinor);
 }
 
 void GraphicsManager::logVersion() const
@@ -736,11 +741,17 @@ void GraphicsManager::logVersion() const
     logger->log("gl vendor: " + mGlVendor);
     logger->log("gl renderer: " + mGlRenderer);
     logger->log("gl version: " + mGlVersionString);
+    logger->log("glsl version: " + mGlShaderVersionString);
 }
 
 bool GraphicsManager::checkGLVersion(const int major, const int minor) const
 {
     return mMajor > major || (mMajor == major && mMinor >= minor);
+}
+
+bool GraphicsManager::checkSLVersion(const int major, const int minor) const
+{
+    return mSLMajor > major || (mSLMajor == major && mSLMinor >= minor);
 }
 
 bool GraphicsManager::checkPlatformVersion(const int major,
