@@ -298,6 +298,8 @@ void AvatarListBox::draw(Graphics *graphics)
             }
         }
 
+        graphics->setColor(mForegroundColor);
+
         // Draw Name
         if (a->getDisplayBold())
         {
