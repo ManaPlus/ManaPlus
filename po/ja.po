@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-06-24 00:40+0300\n"
+"POT-Creation-Date: 2014-06-26 20:52+0300\n"
 "PO-Revision-Date: 2014-06-21 10:13+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/"
@@ -35,7 +35,7 @@ msgid "Accepting incoming trade requests"
 msgstr "トレードリクエストを有効にしました"
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1261
+#: src/actormanager.cpp:1274
 msgid "Visible on map"
 msgstr "マップに表示させる"
 
@@ -1428,7 +1428,7 @@ msgstr "パーティを作る"
 #: src/gui/popups/popupmenu.cpp:2397 src/gui/popups/popupmenu.cpp:2419
 #: src/gui/popups/popupmenu.cpp:2442 src/gui/popups/popupmenu.cpp:2469
 #: src/gui/popups/popupmenu.cpp:2486 src/gui/popups/popupmenu.cpp:2757
-#: src/gui/popups/popupmenu.cpp:2893 src/gui/setupactiondata.h:1913
+#: src/gui/popups/popupmenu.cpp:2893 src/gui/setupactiondata.h:1919
 #: src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/changeemaildialog.cpp:57
 #: src/gui/windows/changepassworddialog.cpp:59
@@ -1530,7 +1530,7 @@ msgstr "消す"
 #: src/gui/popups/popupmenu.cpp:234 src/gui/popups/popupmenu.cpp:255
 #: src/gui/popups/popupmenu.cpp:402 src/gui/popups/popupmenu.cpp:553
 #: src/gui/popups/popupmenu.cpp:712 src/gui/popups/popupmenu.cpp:793
-#: src/gui/setupactiondata.h:2028 src/gui/windows/botcheckerwindow.cpp:88
+#: src/gui/setupactiondata.h:2034 src/gui/windows/botcheckerwindow.cpp:88
 msgid "Move"
 msgstr "動く"
 
@@ -1676,7 +1676,7 @@ msgstr "カメラを動かす"
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
-#: src/gui/popups/popupmenu.cpp:573 src/gui/setupactiondata.h:2036
+#: src/gui/popups/popupmenu.cpp:573 src/gui/setupactiondata.h:2042
 #: src/gui/windowmenu.cpp:143 src/gui/windows/inventorywindow.cpp:195
 #: src/gui/windows/outfitwindow.cpp:56
 msgid "Outfits"
@@ -2226,56 +2226,61 @@ msgstr "モブをターゲット"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:130
+msgid "Target closest monster (without filters)"
+msgstr ""
+
+#. TRANSLATORS: input action name
+#: src/gui/setupactiondata.h:136
 msgid "Target NPC"
 msgstr "NPCを狙う"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:136
+#: src/gui/setupactiondata.h:142
 msgid "Target Player"
 msgstr "プレイヤーをターゲット"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:142
+#: src/gui/setupactiondata.h:148
 msgid "Other Keys"
 msgstr "その他のキー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:148
+#: src/gui/setupactiondata.h:154
 msgid "Pickup"
 msgstr "拾う"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:154
+#: src/gui/setupactiondata.h:160
 msgid "Change Pickup Type"
 msgstr "拾い方を変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:160
+#: src/gui/setupactiondata.h:166
 msgid "Sit"
 msgstr "座る"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:166
+#: src/gui/setupactiondata.h:172
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:172
+#: src/gui/setupactiondata.h:178
 msgid "Enable/Disable Trading"
 msgstr "取引を有効/無効にする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:178
+#: src/gui/setupactiondata.h:184
 msgid "Open trade window"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:184
+#: src/gui/setupactiondata.h:190
 msgid "Change Map View Mode"
 msgstr "マップビューモード変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:190
+#: src/gui/setupactiondata.h:196
 msgid "Select OK"
 msgstr "OKを選択する"
 
@@ -2285,7 +2290,7 @@ msgstr "OKを選択する"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/setupactiondata.h:196 src/gui/windows/buydialog.cpp:260
+#: src/gui/setupactiondata.h:202 src/gui/windows/buydialog.cpp:260
 #: src/gui/windows/quitdialog.cpp:55 src/gui/windows/quitdialog.cpp:60
 #: src/gui/windows/quitdialog.cpp:62 src/gui/windows/selldialog.cpp:121
 #: src/gui/windows/serverdialog.cpp:111
@@ -2293,569 +2298,569 @@ msgid "Quit"
 msgstr "終了"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:202
+#: src/gui/setupactiondata.h:208
 msgid "Stop or sit"
 msgstr "止まる・座る"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:208
+#: src/gui/setupactiondata.h:214
 msgid "Return to safe video mode"
 msgstr "セーフビデオモードへ戻る"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:223
+#: src/gui/setupactiondata.h:229
 msgid "Shortcuts modifiers keys"
 msgstr "ショートカット編集キー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:229
+#: src/gui/setupactiondata.h:235
 msgid "Item Shortcuts Key"
 msgstr "アイテムショートカットキー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:235
+#: src/gui/setupactiondata.h:241
 msgid "Shortcuts keys"
 msgstr "ショートカットキー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:241 src/gui/setupactiondata.h:247
-#: src/gui/setupactiondata.h:253 src/gui/setupactiondata.h:259
-#: src/gui/setupactiondata.h:265 src/gui/setupactiondata.h:271
-#: src/gui/setupactiondata.h:277 src/gui/setupactiondata.h:283
-#: src/gui/setupactiondata.h:289 src/gui/setupactiondata.h:295
-#: src/gui/setupactiondata.h:301 src/gui/setupactiondata.h:307
-#: src/gui/setupactiondata.h:313 src/gui/setupactiondata.h:319
-#: src/gui/setupactiondata.h:325 src/gui/setupactiondata.h:331
-#: src/gui/setupactiondata.h:337 src/gui/setupactiondata.h:343
-#: src/gui/setupactiondata.h:349 src/gui/setupactiondata.h:355
+#: src/gui/setupactiondata.h:247 src/gui/setupactiondata.h:253
+#: src/gui/setupactiondata.h:259 src/gui/setupactiondata.h:265
+#: src/gui/setupactiondata.h:271 src/gui/setupactiondata.h:277
+#: src/gui/setupactiondata.h:283 src/gui/setupactiondata.h:289
+#: src/gui/setupactiondata.h:295 src/gui/setupactiondata.h:301
+#: src/gui/setupactiondata.h:307 src/gui/setupactiondata.h:313
+#: src/gui/setupactiondata.h:319 src/gui/setupactiondata.h:325
+#: src/gui/setupactiondata.h:331 src/gui/setupactiondata.h:337
+#: src/gui/setupactiondata.h:343 src/gui/setupactiondata.h:349
+#: src/gui/setupactiondata.h:355 src/gui/setupactiondata.h:361
 #, c-format
 msgid "Item Shortcut %d"
 msgstr "アイテムショートカット: %d"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:370
+#: src/gui/setupactiondata.h:376
 msgid "Show Windows Menu"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:376
+#: src/gui/setupactiondata.h:382
 msgid "Hide Windows"
 msgstr "ウィンドウを隠す"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:382
+#: src/gui/setupactiondata.h:388
 msgid "About Window"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:388
+#: src/gui/setupactiondata.h:394
 msgid "Help Window"
 msgstr "ヘルプウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:394
+#: src/gui/setupactiondata.h:400
 msgid "Status Window"
 msgstr "ステータスウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:400
+#: src/gui/setupactiondata.h:406
 msgid "Inventory Window"
 msgstr "インベントリーウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:406
+#: src/gui/setupactiondata.h:412
 msgid "Equipment Window"
 msgstr "装着ウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:412
+#: src/gui/setupactiondata.h:418
 msgid "Skill Window"
 msgstr "スキルウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:418
+#: src/gui/setupactiondata.h:424
 msgid "Minimap Window"
 msgstr "ミニマップウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:424
+#: src/gui/setupactiondata.h:430
 msgid "Chat Window"
 msgstr "チャットウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:430
+#: src/gui/setupactiondata.h:436
 msgid "Item Shortcut Window"
 msgstr "アイテムショートカットウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:436
+#: src/gui/setupactiondata.h:442
 msgid "Setup Window"
 msgstr "設定ウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:442
+#: src/gui/setupactiondata.h:448
 msgid "Debug Window"
 msgstr "デバグウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:448
+#: src/gui/setupactiondata.h:454
 msgid "Social Window"
 msgstr "ソーシャルウインドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:454
+#: src/gui/setupactiondata.h:460
 msgid "Emote Shortcut Window"
 msgstr "スマイリーショートカットウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:460
+#: src/gui/setupactiondata.h:466
 msgid "Outfits Window"
 msgstr "服装ウインドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:466
+#: src/gui/setupactiondata.h:472
 msgid "Shop Window"
 msgstr "ショップウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:472
+#: src/gui/setupactiondata.h:478
 msgid "Quick drop Window"
 msgstr "クイックドロップウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:478
+#: src/gui/setupactiondata.h:484
 msgid "Kill Stats Window"
 msgstr "キルスタッツ窓"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:484
+#: src/gui/setupactiondata.h:490
 msgid "Commands Window"
 msgstr "コマンドウインドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:490
+#: src/gui/setupactiondata.h:496
 msgid "Bot Checker Window"
 msgstr "ボットチェッカーウィンドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:496
+#: src/gui/setupactiondata.h:502
 msgid "Who Is Online Window"
 msgstr "オンラインユーザーウインドウ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:502
+#: src/gui/setupactiondata.h:508
 msgid "Did you know Window"
 msgstr "豆知識窓"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:508
+#: src/gui/setupactiondata.h:514
 msgid "Quests Window"
 msgstr "クエスト窓"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:514
+#: src/gui/setupactiondata.h:520
 msgid "Updates Window"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:520
+#: src/gui/setupactiondata.h:526
 msgid "Previous Social Tab"
 msgstr "前ソーシャルタブ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:526
+#: src/gui/setupactiondata.h:532
 msgid "Next Social Tab"
 msgstr "次ソーシャルタブ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:532
+#: src/gui/setupactiondata.h:538
 msgid "Previous Shortcuts tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:538
+#: src/gui/setupactiondata.h:544
 msgid "Next Shortcuts tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:544
+#: src/gui/setupactiondata.h:550
 msgid "Previous Commands tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:550
+#: src/gui/setupactiondata.h:556
 msgid "Next Commands tab"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:565
+#: src/gui/setupactiondata.h:571
 msgid "Emote modifiers keys"
 msgstr "スマイリー編集キー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:571
+#: src/gui/setupactiondata.h:577
 msgid "Emote modifier key"
 msgstr "スマイリー編集キー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:577
+#: src/gui/setupactiondata.h:583
 msgid "Emote shortcuts"
 msgstr "スマイリーショートカット"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:583 src/gui/setupactiondata.h:589
-#: src/gui/setupactiondata.h:595 src/gui/setupactiondata.h:601
-#: src/gui/setupactiondata.h:607 src/gui/setupactiondata.h:613
-#: src/gui/setupactiondata.h:619 src/gui/setupactiondata.h:625
-#: src/gui/setupactiondata.h:631 src/gui/setupactiondata.h:637
-#: src/gui/setupactiondata.h:643 src/gui/setupactiondata.h:649
-#: src/gui/setupactiondata.h:655 src/gui/setupactiondata.h:661
-#: src/gui/setupactiondata.h:667 src/gui/setupactiondata.h:673
-#: src/gui/setupactiondata.h:679 src/gui/setupactiondata.h:685
-#: src/gui/setupactiondata.h:691 src/gui/setupactiondata.h:697
-#: src/gui/setupactiondata.h:703 src/gui/setupactiondata.h:709
-#: src/gui/setupactiondata.h:715 src/gui/setupactiondata.h:721
-#: src/gui/setupactiondata.h:727 src/gui/setupactiondata.h:733
-#: src/gui/setupactiondata.h:739 src/gui/setupactiondata.h:745
-#: src/gui/setupactiondata.h:751 src/gui/setupactiondata.h:757
-#: src/gui/setupactiondata.h:763 src/gui/setupactiondata.h:769
-#: src/gui/setupactiondata.h:775 src/gui/setupactiondata.h:781
-#: src/gui/setupactiondata.h:787 src/gui/setupactiondata.h:793
-#: src/gui/setupactiondata.h:799 src/gui/setupactiondata.h:805
-#: src/gui/setupactiondata.h:811 src/gui/setupactiondata.h:817
-#: src/gui/setupactiondata.h:823 src/gui/setupactiondata.h:829
-#: src/gui/setupactiondata.h:835 src/gui/setupactiondata.h:841
-#: src/gui/setupactiondata.h:847 src/gui/setupactiondata.h:853
-#: src/gui/setupactiondata.h:859 src/gui/setupactiondata.h:865
+#: src/gui/setupactiondata.h:589 src/gui/setupactiondata.h:595
+#: src/gui/setupactiondata.h:601 src/gui/setupactiondata.h:607
+#: src/gui/setupactiondata.h:613 src/gui/setupactiondata.h:619
+#: src/gui/setupactiondata.h:625 src/gui/setupactiondata.h:631
+#: src/gui/setupactiondata.h:637 src/gui/setupactiondata.h:643
+#: src/gui/setupactiondata.h:649 src/gui/setupactiondata.h:655
+#: src/gui/setupactiondata.h:661 src/gui/setupactiondata.h:667
+#: src/gui/setupactiondata.h:673 src/gui/setupactiondata.h:679
+#: src/gui/setupactiondata.h:685 src/gui/setupactiondata.h:691
+#: src/gui/setupactiondata.h:697 src/gui/setupactiondata.h:703
+#: src/gui/setupactiondata.h:709 src/gui/setupactiondata.h:715
+#: src/gui/setupactiondata.h:721 src/gui/setupactiondata.h:727
+#: src/gui/setupactiondata.h:733 src/gui/setupactiondata.h:739
+#: src/gui/setupactiondata.h:745 src/gui/setupactiondata.h:751
+#: src/gui/setupactiondata.h:757 src/gui/setupactiondata.h:763
+#: src/gui/setupactiondata.h:769 src/gui/setupactiondata.h:775
+#: src/gui/setupactiondata.h:781 src/gui/setupactiondata.h:787
+#: src/gui/setupactiondata.h:793 src/gui/setupactiondata.h:799
+#: src/gui/setupactiondata.h:805 src/gui/setupactiondata.h:811
+#: src/gui/setupactiondata.h:817 src/gui/setupactiondata.h:823
+#: src/gui/setupactiondata.h:829 src/gui/setupactiondata.h:835
+#: src/gui/setupactiondata.h:841 src/gui/setupactiondata.h:847
+#: src/gui/setupactiondata.h:853 src/gui/setupactiondata.h:859
+#: src/gui/setupactiondata.h:865 src/gui/setupactiondata.h:871
 #, c-format
 msgid "Emote Shortcut %d"
 msgstr "スマイリーショートカット: %d"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:880
+#: src/gui/setupactiondata.h:886
 msgid "Outfits keys"
 msgstr "服装キー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:886
+#: src/gui/setupactiondata.h:892
 msgid "Wear Outfit"
 msgstr "服を着る"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:892
+#: src/gui/setupactiondata.h:898
 msgid "Copy Outfit"
 msgstr "服をコピーする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:898
+#: src/gui/setupactiondata.h:904
 msgid "Copy equipped to Outfit"
 msgstr "装着品を服装にコピー"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:904
+#: src/gui/setupactiondata.h:910
 msgid "Outfits shortcuts"
 msgstr "服装ショートカット"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:910 src/gui/setupactiondata.h:916
-#: src/gui/setupactiondata.h:922 src/gui/setupactiondata.h:928
-#: src/gui/setupactiondata.h:934 src/gui/setupactiondata.h:940
-#: src/gui/setupactiondata.h:946 src/gui/setupactiondata.h:952
-#: src/gui/setupactiondata.h:958 src/gui/setupactiondata.h:964
-#: src/gui/setupactiondata.h:970 src/gui/setupactiondata.h:976
-#: src/gui/setupactiondata.h:982 src/gui/setupactiondata.h:988
-#: src/gui/setupactiondata.h:994 src/gui/setupactiondata.h:1000
-#: src/gui/setupactiondata.h:1006 src/gui/setupactiondata.h:1012
-#: src/gui/setupactiondata.h:1018 src/gui/setupactiondata.h:1024
-#: src/gui/setupactiondata.h:1030 src/gui/setupactiondata.h:1036
-#: src/gui/setupactiondata.h:1042 src/gui/setupactiondata.h:1048
-#: src/gui/setupactiondata.h:1054 src/gui/setupactiondata.h:1060
-#: src/gui/setupactiondata.h:1066 src/gui/setupactiondata.h:1072
-#: src/gui/setupactiondata.h:1078 src/gui/setupactiondata.h:1084
-#: src/gui/setupactiondata.h:1090 src/gui/setupactiondata.h:1096
-#: src/gui/setupactiondata.h:1102 src/gui/setupactiondata.h:1108
-#: src/gui/setupactiondata.h:1114 src/gui/setupactiondata.h:1120
-#: src/gui/setupactiondata.h:1126 src/gui/setupactiondata.h:1132
-#: src/gui/setupactiondata.h:1138 src/gui/setupactiondata.h:1144
-#: src/gui/setupactiondata.h:1150 src/gui/setupactiondata.h:1156
-#: src/gui/setupactiondata.h:1162 src/gui/setupactiondata.h:1168
-#: src/gui/setupactiondata.h:1174 src/gui/setupactiondata.h:1180
-#: src/gui/setupactiondata.h:1186 src/gui/setupactiondata.h:1192
+#: src/gui/setupactiondata.h:916 src/gui/setupactiondata.h:922
+#: src/gui/setupactiondata.h:928 src/gui/setupactiondata.h:934
+#: src/gui/setupactiondata.h:940 src/gui/setupactiondata.h:946
+#: src/gui/setupactiondata.h:952 src/gui/setupactiondata.h:958
+#: src/gui/setupactiondata.h:964 src/gui/setupactiondata.h:970
+#: src/gui/setupactiondata.h:976 src/gui/setupactiondata.h:982
+#: src/gui/setupactiondata.h:988 src/gui/setupactiondata.h:994
+#: src/gui/setupactiondata.h:1000 src/gui/setupactiondata.h:1006
+#: src/gui/setupactiondata.h:1012 src/gui/setupactiondata.h:1018
+#: src/gui/setupactiondata.h:1024 src/gui/setupactiondata.h:1030
+#: src/gui/setupactiondata.h:1036 src/gui/setupactiondata.h:1042
+#: src/gui/setupactiondata.h:1048 src/gui/setupactiondata.h:1054
+#: src/gui/setupactiondata.h:1060 src/gui/setupactiondata.h:1066
+#: src/gui/setupactiondata.h:1072 src/gui/setupactiondata.h:1078
+#: src/gui/setupactiondata.h:1084 src/gui/setupactiondata.h:1090
+#: src/gui/setupactiondata.h:1096 src/gui/setupactiondata.h:1102
+#: src/gui/setupactiondata.h:1108 src/gui/setupactiondata.h:1114
+#: src/gui/setupactiondata.h:1120 src/gui/setupactiondata.h:1126
+#: src/gui/setupactiondata.h:1132 src/gui/setupactiondata.h:1138
+#: src/gui/setupactiondata.h:1144 src/gui/setupactiondata.h:1150
+#: src/gui/setupactiondata.h:1156 src/gui/setupactiondata.h:1162
+#: src/gui/setupactiondata.h:1168 src/gui/setupactiondata.h:1174
+#: src/gui/setupactiondata.h:1180 src/gui/setupactiondata.h:1186
+#: src/gui/setupactiondata.h:1192 src/gui/setupactiondata.h:1198
 #, c-format
 msgid "Outfit Shortcut %d"
 msgstr "服装ショートカット %d"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1207
+#: src/gui/setupactiondata.h:1213
 msgid "Toggle Chat"
 msgstr "トグルチャット"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1213
+#: src/gui/setupactiondata.h:1219
 msgid "Scroll Chat Up"
 msgstr "チャットを上へスクロールする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1219
+#: src/gui/setupactiondata.h:1225
 msgid "Scroll Chat Down"
 msgstr "チャットを下へスクロールする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1225
+#: src/gui/setupactiondata.h:1231
 msgid "Previous Chat Tab"
 msgstr "前のチャットタブ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1231
+#: src/gui/setupactiondata.h:1237
 msgid "Next Chat Tab"
 msgstr "次のチャットタブ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1237
+#: src/gui/setupactiondata.h:1243
 msgid "Close current Chat Tab"
 msgstr "このチャットタブを閉じる"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1243
+#: src/gui/setupactiondata.h:1249
 msgid "Previous chat line"
 msgstr "前チャット文"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1249
+#: src/gui/setupactiondata.h:1255
 msgid "Next chat line"
 msgstr "次チャット文"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1255
+#: src/gui/setupactiondata.h:1261
 msgid "Chat modifier key"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1261
+#: src/gui/setupactiondata.h:1267
 msgid "Show smiles"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1331
+#: src/gui/setupactiondata.h:1337
 msgid "Ignore input 1"
 msgstr "インプット１完全無視"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1337
+#: src/gui/setupactiondata.h:1343
 msgid "Ignore input 2"
 msgstr "インプット２完全無視"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1343
+#: src/gui/setupactiondata.h:1349
 msgid "Direct Up"
 msgstr "上方向"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1349
+#: src/gui/setupactiondata.h:1355
 msgid "Direct Down"
 msgstr "下方向"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1355
+#: src/gui/setupactiondata.h:1361
 msgid "Direct Left"
 msgstr "左方向"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1361
+#: src/gui/setupactiondata.h:1367
 msgid "Direct Right"
 msgstr "右方向"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1367
+#: src/gui/setupactiondata.h:1373
 msgid "Crazy moves"
 msgstr "クレイジームーブ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1373
+#: src/gui/setupactiondata.h:1379
 msgid "Change Crazy Move mode"
 msgstr "クレイジームーブモード変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1379
+#: src/gui/setupactiondata.h:1385
 msgid "Quick Drop N Items from 0 slot"
 msgstr "Nアイテムを 0スロットからクイックドロップ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1385
+#: src/gui/setupactiondata.h:1391
 msgid "Quick Drop N Items"
 msgstr "Nアイテムをクイックドロップ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1391
+#: src/gui/setupactiondata.h:1397
 msgid "Switch Quick Drop Counter"
 msgstr "クイックドロップカウンター変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1397
+#: src/gui/setupactiondata.h:1403
 msgid "Quick heal target or self"
 msgstr "ターゲット又は自分をHP回復させる"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1403
+#: src/gui/setupactiondata.h:1409
 msgid "Use #itenplz spell"
 msgstr "呪文 #itenplz を唱える"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1409
+#: src/gui/setupactiondata.h:1415
 msgid "Use magic attack"
 msgstr "魔法攻撃を使用"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1415
+#: src/gui/setupactiondata.h:1421
 msgid "Switch magic attack"
 msgstr "マジックアタック変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1421
+#: src/gui/setupactiondata.h:1427
 msgid "Switch pvp attack"
 msgstr "PvP攻撃変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1427
+#: src/gui/setupactiondata.h:1433
 msgid "Change move type"
 msgstr "ムーブタイプ変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1433
+#: src/gui/setupactiondata.h:1439
 msgid "Change Attack Weapon Type"
 msgstr "武器変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1439
+#: src/gui/setupactiondata.h:1445
 msgid "Change Attack Type"
 msgstr "攻撃方法変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1445
+#: src/gui/setupactiondata.h:1451
 msgid "Change Follow mode"
 msgstr "フォローモード変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1451
+#: src/gui/setupactiondata.h:1457
 msgid "Change Imitation mode"
 msgstr "真似モード変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1457
+#: src/gui/setupactiondata.h:1463
 msgid "Disable / Enable Game modifier keys"
 msgstr "ゲームモディファイアキーを無効 / 有効にする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1463
+#: src/gui/setupactiondata.h:1469
 msgid "On / Off audio"
 msgstr "オーディオ　オン/オフ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1469
+#: src/gui/setupactiondata.h:1475
 msgid "Enable / Disable away mode"
 msgstr "AFKモードを有効 / 無効にする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1475
+#: src/gui/setupactiondata.h:1481
 msgid "Emulate right click from keyboard"
 msgstr "右クリックをエミュレートする"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1481
+#: src/gui/setupactiondata.h:1487
 msgid "Toggle camera mode"
 msgstr "カメラモード変更"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1487
+#: src/gui/setupactiondata.h:1493
 msgid "Show onscreen keyboard"
 msgstr "オンスクリーンキーボード"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1502
+#: src/gui/setupactiondata.h:1508
 msgid "Move Keys"
 msgstr "キーを移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1508 src/gui/setupactiondata.h:1847
+#: src/gui/setupactiondata.h:1514 src/gui/setupactiondata.h:1853
 msgid "Move Up"
 msgstr "上へ移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1514 src/gui/setupactiondata.h:1853
+#: src/gui/setupactiondata.h:1520 src/gui/setupactiondata.h:1859
 msgid "Move Down"
 msgstr "下へ移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1520 src/gui/setupactiondata.h:1859
+#: src/gui/setupactiondata.h:1526 src/gui/setupactiondata.h:1865
 msgid "Move Left"
 msgstr "左へ移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1526 src/gui/setupactiondata.h:1865
+#: src/gui/setupactiondata.h:1532 src/gui/setupactiondata.h:1871
 msgid "Move Right"
 msgstr "右へ移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1532
+#: src/gui/setupactiondata.h:1538
 msgid "Move Forward"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1538
+#: src/gui/setupactiondata.h:1544
 msgid "Move to navigation point shortcuts"
 msgstr "ナビポイントショートカットまで移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1544 src/gui/setupactiondata.h:1550
-#: src/gui/setupactiondata.h:1556 src/gui/setupactiondata.h:1562
-#: src/gui/setupactiondata.h:1568 src/gui/setupactiondata.h:1574
-#: src/gui/setupactiondata.h:1580 src/gui/setupactiondata.h:1586
-#: src/gui/setupactiondata.h:1592 src/gui/setupactiondata.h:1598
-#: src/gui/setupactiondata.h:1604 src/gui/setupactiondata.h:1610
-#: src/gui/setupactiondata.h:1616 src/gui/setupactiondata.h:1622
-#: src/gui/setupactiondata.h:1628 src/gui/setupactiondata.h:1634
-#: src/gui/setupactiondata.h:1640 src/gui/setupactiondata.h:1646
-#: src/gui/setupactiondata.h:1652 src/gui/setupactiondata.h:1658
-#: src/gui/setupactiondata.h:1664 src/gui/setupactiondata.h:1670
-#: src/gui/setupactiondata.h:1676 src/gui/setupactiondata.h:1682
-#: src/gui/setupactiondata.h:1688 src/gui/setupactiondata.h:1694
-#: src/gui/setupactiondata.h:1700 src/gui/setupactiondata.h:1706
-#: src/gui/setupactiondata.h:1712 src/gui/setupactiondata.h:1718
-#: src/gui/setupactiondata.h:1724 src/gui/setupactiondata.h:1730
-#: src/gui/setupactiondata.h:1736 src/gui/setupactiondata.h:1742
-#: src/gui/setupactiondata.h:1748 src/gui/setupactiondata.h:1754
-#: src/gui/setupactiondata.h:1760 src/gui/setupactiondata.h:1766
-#: src/gui/setupactiondata.h:1772 src/gui/setupactiondata.h:1778
-#: src/gui/setupactiondata.h:1784 src/gui/setupactiondata.h:1790
-#: src/gui/setupactiondata.h:1796 src/gui/setupactiondata.h:1802
-#: src/gui/setupactiondata.h:1808 src/gui/setupactiondata.h:1814
-#: src/gui/setupactiondata.h:1820 src/gui/setupactiondata.h:1826
+#: src/gui/setupactiondata.h:1550 src/gui/setupactiondata.h:1556
+#: src/gui/setupactiondata.h:1562 src/gui/setupactiondata.h:1568
+#: src/gui/setupactiondata.h:1574 src/gui/setupactiondata.h:1580
+#: src/gui/setupactiondata.h:1586 src/gui/setupactiondata.h:1592
+#: src/gui/setupactiondata.h:1598 src/gui/setupactiondata.h:1604
+#: src/gui/setupactiondata.h:1610 src/gui/setupactiondata.h:1616
+#: src/gui/setupactiondata.h:1622 src/gui/setupactiondata.h:1628
+#: src/gui/setupactiondata.h:1634 src/gui/setupactiondata.h:1640
+#: src/gui/setupactiondata.h:1646 src/gui/setupactiondata.h:1652
+#: src/gui/setupactiondata.h:1658 src/gui/setupactiondata.h:1664
+#: src/gui/setupactiondata.h:1670 src/gui/setupactiondata.h:1676
+#: src/gui/setupactiondata.h:1682 src/gui/setupactiondata.h:1688
+#: src/gui/setupactiondata.h:1694 src/gui/setupactiondata.h:1700
+#: src/gui/setupactiondata.h:1706 src/gui/setupactiondata.h:1712
+#: src/gui/setupactiondata.h:1718 src/gui/setupactiondata.h:1724
+#: src/gui/setupactiondata.h:1730 src/gui/setupactiondata.h:1736
+#: src/gui/setupactiondata.h:1742 src/gui/setupactiondata.h:1748
+#: src/gui/setupactiondata.h:1754 src/gui/setupactiondata.h:1760
+#: src/gui/setupactiondata.h:1766 src/gui/setupactiondata.h:1772
+#: src/gui/setupactiondata.h:1778 src/gui/setupactiondata.h:1784
+#: src/gui/setupactiondata.h:1790 src/gui/setupactiondata.h:1796
+#: src/gui/setupactiondata.h:1802 src/gui/setupactiondata.h:1808
+#: src/gui/setupactiondata.h:1814 src/gui/setupactiondata.h:1820
+#: src/gui/setupactiondata.h:1826 src/gui/setupactiondata.h:1832
 #, c-format
 msgid "Move to point Shortcut %d"
 msgstr "ショートカット %dまで移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1841
+#: src/gui/setupactiondata.h:1847
 msgid "Move & selection"
 msgstr ""
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1871
+#: src/gui/setupactiondata.h:1877
 msgid "Move Home"
 msgstr "ホームへ移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1877
+#: src/gui/setupactiondata.h:1883
 msgid "Move End"
 msgstr "最後まで移動"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1883
+#: src/gui/setupactiondata.h:1889
 msgid "Page up"
 msgstr "ページ上へ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1889
+#: src/gui/setupactiondata.h:1895
 msgid "Page down"
 msgstr "ページ下へ"
 
@@ -2864,7 +2869,7 @@ msgstr "ページ下へ"
 #. TRANSLATORS: settings group
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: register dialog. button.
-#: src/gui/setupactiondata.h:1895 src/gui/setupactiondata.h:2040
+#: src/gui/setupactiondata.h:1901 src/gui/setupactiondata.h:2046
 #: src/gui/widgets/tabs/setup_audio.cpp:151
 #: src/gui/widgets/tabs/setup_chat.cpp:181
 #: src/gui/widgets/tabs/setup_other.cpp:337
@@ -2875,12 +2880,12 @@ msgid "Other"
 msgstr "その他"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1901
+#: src/gui/setupactiondata.h:1907
 msgid "Select"
 msgstr "選択"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1907
+#: src/gui/setupactiondata.h:1913
 msgid "Select2"
 msgstr "選択2"
 
@@ -2890,7 +2895,7 @@ msgstr "選択2"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: command editor button
-#: src/gui/setupactiondata.h:1919 src/gui/widgets/tabs/setup_relations.cpp:77
+#: src/gui/setupactiondata.h:1925 src/gui/widgets/tabs/setup_relations.cpp:77
 #: src/gui/windows/charselectdialog.cpp:78
 #: src/gui/windows/serverdialog.cpp:119 src/gui/windows/shopwindow.cpp:101
 #: src/gui/windows/shopwindow.cpp:108 src/gui/windows/textcommandeditor.cpp:92
@@ -2898,45 +2903,45 @@ msgid "Delete"
 msgstr "削除"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1925
+#: src/gui/setupactiondata.h:1931
 msgid "Backspace"
 msgstr "バックスペース"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1931
+#: src/gui/setupactiondata.h:1937
 msgid "Insert"
 msgstr "挿入"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1937
+#: src/gui/setupactiondata.h:1943
 msgid "Tab"
 msgstr "タブ"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1943
+#: src/gui/setupactiondata.h:1949
 msgid "Mod"
 msgstr "モッド"
 
 #. TRANSLATORS: input action name
-#: src/gui/setupactiondata.h:1949
+#: src/gui/setupactiondata.h:1955
 msgid "Ctrl"
 msgstr ""
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:2026
+#: src/gui/setupactiondata.h:2032
 msgid "Basic"
 msgstr "基本"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:2030 src/gui/windowmenu.cpp:123
+#: src/gui/setupactiondata.h:2036 src/gui/windowmenu.cpp:123
 msgid "Shortcuts"
 msgstr "ショートカット"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings group
 #. TRANSLATORS: full button name
-#: src/gui/setupactiondata.h:2032 src/gui/widgets/tabs/setup_other.cpp:315
+#: src/gui/setupactiondata.h:2038 src/gui/widgets/tabs/setup_other.cpp:315
 #: src/gui/windowmenu.cpp:160
 msgid "Windows"
 msgstr "ウィンドウ"
@@ -2944,7 +2949,7 @@ msgstr "ウィンドウ"
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: emotes window name
 #. TRANSLATORS: emotes tab name
-#: src/gui/setupactiondata.h:2034 src/gui/windows/emotewindow.cpp:52
+#: src/gui/setupactiondata.h:2040 src/gui/windows/emotewindow.cpp:52
 #: src/gui/windows/emotewindow.cpp:110
 msgid "Emotes"
 msgstr "スマイリー"
@@ -2952,13 +2957,13 @@ msgstr "スマイリー"
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: chat window name
-#: src/gui/setupactiondata.h:2038 src/gui/widgets/tabs/setup_chat.cpp:42
+#: src/gui/setupactiondata.h:2044 src/gui/widgets/tabs/setup_chat.cpp:42
 #: src/gui/windowmenu.cpp:90 src/gui/windows/chatwindow.cpp:91
 msgid "Chat"
 msgstr "チャット"
 
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/setupactiondata.h:2042
+#: src/gui/setupactiondata.h:2048
 msgid "Gui"
 msgstr "GUI"
 
