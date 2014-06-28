@@ -826,23 +826,15 @@ void ModernOpenGLGraphics::beginDraw()
 {
     glEnable(GL_SCISSOR_TEST);
     glDisable(GL_DITHER);
-    glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
-    glDisable(GL_FOG);
     glDisable(GL_COLOR_LOGIC_OP);
-    glDisable(GL_COLOR_MATERIAL);
     glDisable(GL_STENCIL_TEST);
-//    glEnable(GL_TEXTURE_2D);
     glDisable(GL_LINE_SMOOTH);
     glDisable(GL_POLYGON_SMOOTH);
-
-    glShadeModel(GL_FLAT);
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 #ifndef ANDROID
-//    glHint(GL_LINE_SMOOTH_HINT, GL_FASTEST);
-//    glHint(GL_POLYGON_SMOOTH_HINT, GL_FASTEST);
 #ifndef __MINGW32__
     glHint(GL_TEXTURE_COMPRESSION_HINT, GL_FASTEST);
 #endif

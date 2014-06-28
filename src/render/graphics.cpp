@@ -292,7 +292,6 @@ bool Graphics::setOpenGLMode()
 
     // Setup OpenGL
     glViewport(0, 0, mActualWidth, mActualHeight);
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
     int gotDoubleBuffer = 0;
     SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &gotDoubleBuffer);
     logger->log("Using OpenGL %s double buffering.",

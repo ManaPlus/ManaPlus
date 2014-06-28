@@ -1235,6 +1235,7 @@ void NormalOpenGLGraphics::beginDraw()
     glShadeModel(GL_FLAT);
     glDepthMask(GL_FALSE);
 
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
 #ifndef ANDROID
     glHint(GL_LINE_SMOOTH_HINT, GL_FASTEST);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
