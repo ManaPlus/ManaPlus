@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-06-26 20:52+0300\n"
-"PO-Revision-Date: 2014-06-21 10:13+0000\n"
+"POT-Creation-Date: 2014-06-29 02:02+0300\n"
+"PO-Revision-Date: 2014-06-27 09:41+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/manaplus/"
 "language/fi/)\n"
@@ -529,37 +529,37 @@ msgstr "Leijuva puhekupla"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:910 src/gui/windowmenu.cpp:164
+#: src/client.cpp:914 src/gui/windowmenu.cpp:164
 #: src/gui/windows/setupwindow.cpp:62
 msgid "Setup"
 msgstr "Asetukset"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:913 src/gui/widgets/tabs/setup_perfomance.cpp:53
+#: src/client.cpp:917 src/gui/widgets/tabs/setup_perfomance.cpp:53
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:916 src/gui/widgets/tabs/setup_video.cpp:104
+#: src/client.cpp:920 src/gui/widgets/tabs/setup_video.cpp:104
 msgid "Video"
 msgstr "Kuva"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:919 src/gui/widgets/tabs/setup_theme.cpp:121
+#: src/client.cpp:923 src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Teema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:922
+#: src/client.cpp:926
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:925 src/gui/windowmenu.cpp:76
+#: src/client.cpp:929 src/gui/windowmenu.cpp:76
 #: src/gui/windows/helpwindow.cpp:52
 msgid "Help"
 msgstr "Apua"
@@ -574,7 +574,7 @@ msgstr "Apua"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:929 src/gui/popups/popupmenu.cpp:625
+#: src/client.cpp:933 src/gui/popups/popupmenu.cpp:625
 #: src/gui/popups/popupmenu.cpp:864 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:229 src/gui/windows/npcdialog.cpp:72
 #: src/gui/windows/npcdialog.cpp:110 src/gui/windows/questswindow.cpp:75
@@ -583,32 +583,32 @@ msgid "Close"
 msgstr "Sulje"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1053
+#: src/client.cpp:1057
 msgid "Connecting to server"
 msgstr "Yhdistän palvelimeen"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1101
+#: src/client.cpp:1105
 msgid "Logging in"
 msgstr "Kirjaudun sisään"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1144
+#: src/client.cpp:1148
 msgid "Entering game world"
 msgstr "Siirryn pelimaailmaan"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1268
+#: src/client.cpp:1272
 msgid "Requesting characters"
 msgstr "Pyydän hahmoja"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1308
+#: src/client.cpp:1312
 msgid "Connecting to the game server"
 msgstr "Yhdistän pelipalvelimeen"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1320
+#: src/client.cpp:1324
 msgid "Changing game servers"
 msgstr "Vaihdan pelipalvelinta"
 
@@ -622,7 +622,7 @@ msgstr "Vaihdan pelipalvelinta"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1375 src/client.cpp:1386 src/client.cpp:1572
+#: src/client.cpp:1379 src/client.cpp:1390 src/client.cpp:1576
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:158
 #: src/gui/windows/charcreatedialog.cpp:358
@@ -635,37 +635,37 @@ msgid "Error"
 msgstr "Virhe"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1398
+#: src/client.cpp:1402
 msgid "Requesting registration details"
 msgstr "Pyydän rekisteröitymisen yksityiskohtia"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1439
+#: src/client.cpp:1443
 msgid "Password Change"
 msgstr "Salasanan vaihto"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1441
+#: src/client.cpp:1445
 msgid "Password changed successfully!"
 msgstr "Salasana vaihdettu onnistuneesti!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1464
+#: src/client.cpp:1468
 msgid "Email Change"
 msgstr "Sähköpostin vaihto"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1466
+#: src/client.cpp:1470
 msgid "Email changed successfully!"
 msgstr "Sähköpostiosoite vaihdettu onnistuneesti!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1489
+#: src/client.cpp:1493
 msgid "Unregister Successful"
 msgstr "Tietojen poisto onnistui"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1491
+#: src/client.cpp:1495
 msgid "Farewell, come back any time..."
 msgstr "Näkemisiin, tule pian takaisin..."
 
