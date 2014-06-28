@@ -627,26 +627,23 @@ bool GraphicsManager::supportExtension(const std::string &ext) const
 void GraphicsManager::updateTextureFormat() const
 {
     const int compressionFormat = config.getIntValue("compresstextures");
-    if (compressionFormat)
+    // using extensions if can
+    if (checkGLVersion(3, 1) || supportExtension("GL_ARB_texture_compression"))
     {
-        // using extensions if can
-        if (supportExtension("GL_ARB_texture_compression"))
+        GLint num = 0;
+        glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &num);
+        logger->log("support %d compressed formats", num);
+        GLint *const formats = new GLint[num > 10
+            ? static_cast<size_t>(num) : 10];
+        glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
+        for (int f = 0; f < num; f ++)
+            logger->log(" 0x%x", static_cast<unsigned int>(formats[f]));
+
+        if (compressionFormat)
         {
             if (supportExtension("GL_EXT_texture_compression_s3tc")
                 || supportExtension("3DFX_texture_compression_FXT1"))
             {
-                GLint num = 0;
-                glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &num);
-                logger->log("support %d compressed formats", num);
-                GLint *const formats = new GLint[num > 10
-                    ? static_cast<size_t>(num) : 10];
-                glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
-                for (int f = 0; f < num; f ++)
-                {
-                    logger->log(" 0x%x", static_cast<unsigned int>(
-                        formats[f]));
-                }
-
                 for (int f = 0; f < num; f ++)
                 {
                     if (formats[f] == GL_COMPRESSED_RGBA_S3TC_DXT5_EXT
@@ -688,10 +685,10 @@ void GraphicsManager::updateTextureFormat() const
                 }
             }
         }
-        else
-        {
-            logger->log1("no correct compression format found");
-        }
+    }
+    else
+    {
+        logger->log1("no correct compression format found");
     }
 
     const int renderer = settings.options.renderer;
