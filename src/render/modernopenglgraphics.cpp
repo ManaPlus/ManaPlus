@@ -345,6 +345,7 @@ bool ModernOpenGLGraphics::drawImageInline(const Image *const image,
 
 void ModernOpenGLGraphics::testDraw()
 {
+/*
     GLint vertices[] =
     {
         0, 0, 0, 0,
@@ -352,7 +353,7 @@ void ModernOpenGLGraphics::testDraw()
         0, 600, 0, 600,
         800, 600, 800, 600
     };
-
+*/
 //    logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
 //    logger->log("allocate ebo: %d, %ld", mEboCached, sizeof(elements));
 //    mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
