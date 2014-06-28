@@ -355,8 +355,8 @@ void ModernOpenGLGraphics::testDraw()
 
 //    logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
 //    logger->log("allocate ebo: %d, %ld", mEboCached, sizeof(elements));
-    mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
-        vertices, GL_STREAM_DRAW);
+//    mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
+//        vertices, GL_STREAM_DRAW);
 //    mglBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements),
 //        elements, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -832,15 +832,17 @@ void ModernOpenGLGraphics::beginDraw()
     glDisable(GL_COLOR_LOGIC_OP);
     glDisable(GL_COLOR_MATERIAL);
     glDisable(GL_STENCIL_TEST);
-    glEnable(GL_TEXTURE_2D);
+//    glEnable(GL_TEXTURE_2D);
+    glDisable(GL_LINE_SMOOTH);
+    glDisable(GL_POLYGON_SMOOTH);
 
     glShadeModel(GL_FLAT);
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 #ifndef ANDROID
-    glHint(GL_LINE_SMOOTH_HINT, GL_FASTEST);
-    glHint(GL_POLYGON_SMOOTH_HINT, GL_FASTEST);
+//    glHint(GL_LINE_SMOOTH_HINT, GL_FASTEST);
+//    glHint(GL_POLYGON_SMOOTH_HINT, GL_FASTEST);
 #ifndef __MINGW32__
     glHint(GL_TEXTURE_COMPRESSION_HINT, GL_FASTEST);
 #endif
