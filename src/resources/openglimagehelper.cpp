@@ -290,7 +290,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         std::string errmsg = GraphicsManager::errorToString(error);
         logger->log("Error: Image GL import failed: %s (%u)",
             errmsg.c_str(), error);
-        return nullptr;
+//        return nullptr;
     }
 
     return new Image(texture, width, height, realWidth, realHeight);
