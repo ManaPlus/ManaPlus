@@ -510,13 +510,17 @@ void Client::updateEnv()
 
 #ifndef WIN32
     const int vsync = config.getIntValue("vsync");
+    // __GL_SYNC_TO_VBLANK is nvidia variable.
+    // vblank_mode is MESA variable.
     switch (vsync)
     {
         case 1:
             Client::setEnv("__GL_SYNC_TO_VBLANK", "0");
+            Client::setEnv("vblank_mode", "0");
             break;
         case 2:
             Client::setEnv("__GL_SYNC_TO_VBLANK", "1");
+            Client::setEnv("vblank_mode", "1");
             break;
         default:
             break;
