@@ -42,20 +42,17 @@ ImegeGraphics::~ImegeGraphics()
 {
 }
 
-bool ImegeGraphics::drawImage(const Image *const image A_UNUSED,
+void ImegeGraphics::drawImage(const Image *const image A_UNUSED,
                               int dstX A_UNUSED, int dstY A_UNUSED)
 {
     // for now not implimented
-    return false;
 }
 
-bool ImegeGraphics::copyImage(const Image *const image,
+void ImegeGraphics::copyImage(const Image *const image,
                               int dstX A_UNUSED, int dstY A_UNUSED)
 {
     if (!mTarget || !image)
-        return false;
-
-    return false;
+        return;
 }
 
 void ImegeGraphics::drawImageCached(const Image *const image,

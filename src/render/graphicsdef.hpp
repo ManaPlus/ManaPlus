@@ -33,14 +33,14 @@ public:
 
     void endDraw();
 
-    bool pushClipArea(const Rect &area) override final;
+    void pushClipArea(const Rect &area) override final;
 
     void popClipArea() override final;
 
     /**
     * Draws a resclaled version of the image
     */
-    bool drawRescaledImage(const Image *const image,
+    void drawRescaledImage(const Image *const image,
                            int dstX, int dstY,
                            const int desiredWidth,
                            const int desiredHeight) override final;
@@ -111,10 +111,10 @@ public:
                       const bool resize,
                       const bool noFrame) override final;
 
-    bool drawImage(const Image *const image,
+    void drawImage(const Image *const image,
                    int dstX, int dstY) override final;
 
-    bool copyImage(const Image *const image,
+    void copyImage(const Image *const image,
                    int dstX, int dstY) override final;
 
     void drawImageCached(const Image *const image,
@@ -141,5 +141,5 @@ private:
                                        const Image *const image,
                                        int x, int y) const;
 
-    bool inline drawImageInline(const Image *const image,
+    void inline drawImageInline(const Image *const image,
                                 int dstX, int dstY);

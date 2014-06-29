@@ -24,7 +24,7 @@ public:
     void drawRectangle(const Rect &rect,
                        const bool filled);
 
-    bool drawNet(const int x1, const int y1,
+    void drawNet(const int x1, const int y1,
                  const int x2, const int y2,
                  const int width, const int height) override final;
 

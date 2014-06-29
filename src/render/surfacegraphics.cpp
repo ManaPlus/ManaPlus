@@ -42,13 +42,13 @@ SurfaceGraphics::~SurfaceGraphics()
 {
 }
 
-bool SurfaceGraphics::drawImage(const Image *const image,
+void SurfaceGraphics::drawImage(const Image *const image,
                                 int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     // Check that preconditions for blitting are met.
     if (!mTarget || !image || !image->mSDLSurface)
-        return false;
+        return;
 
     const SDL_Rect &imageRect = image->mBounds;
     SDL_Rect dstRect;
@@ -66,24 +66,23 @@ bool SurfaceGraphics::drawImage(const Image *const image,
 #else
     if (mBlitMode == BLIT_NORMAL)
     {
-        return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,
-                                 mTarget, &dstRect) < 0);
+        SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
     }
     else
     {
-        return !(SurfaceImageHelper::combineSurface(
-            image->mSDLSurface, &srcRect, mTarget, &dstRect) < 0);
+        SurfaceImageHelper::combineSurface(image->mSDLSurface,
+            &srcRect, mTarget, &dstRect);
     }
 #endif
 }
 
-bool SurfaceGraphics::copyImage(const Image *const image,
+void SurfaceGraphics::copyImage(const Image *const image,
                                 int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     // Check that preconditions for blitting are met.
     if (!mTarget || !image || !image->mSDLSurface)
-        return false;
+        return;
 
     const SDL_Rect &imageRect = image->mBounds;
     SDL_Rect dstRect;
@@ -97,11 +96,9 @@ bool SurfaceGraphics::copyImage(const Image *const image,
 
 #ifdef USE_SDL2
     // probably need change some flags
-    return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,
-                             mTarget, &dstRect) < 0);
+    SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
 #else
-    return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,
-                             mTarget, &dstRect) < 0);
+    SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
 #endif
 }
 

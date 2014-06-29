@@ -151,24 +151,24 @@ static inline void drawRescaledQuad(const Image *const image A_UNUSED,
     }
 }
 
-bool NullOpenGLGraphics::drawImage(const Image *const image,
+void NullOpenGLGraphics::drawImage(const Image *const image,
                                    int dstX, int dstY)
 {
-    return drawImageInline(image, dstX, dstY);
+    drawImageInline(image, dstX, dstY);
 }
 
-bool NullOpenGLGraphics::copyImage(const Image *const image,
+void NullOpenGLGraphics::copyImage(const Image *const image,
                                    int dstX, int dstY)
 {
-    return drawImageInline(image, dstX, dstY);
+    drawImageInline(image, dstX, dstY);
 }
 
-bool NullOpenGLGraphics::drawImageInline(const Image *const image,
+void NullOpenGLGraphics::drawImageInline(const Image *const image,
                                          int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     if (!image)
-        return false;
+        return;
 
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
@@ -180,8 +180,6 @@ bool NullOpenGLGraphics::drawImageInline(const Image *const image,
     const SDL_Rect &imageRect = image->mBounds;
     drawQuad(image, imageRect.x, imageRect.y, dstX, dstY,
         imageRect.w, imageRect.h);
-
-    return true;
 }
 
 void NullOpenGLGraphics::drawImageCached(const Image *const image A_UNUSED,
@@ -201,20 +199,23 @@ void NullOpenGLGraphics::completeCache()
 {
 }
 
-bool NullOpenGLGraphics::drawRescaledImage(const Image *const image,
+void NullOpenGLGraphics::drawRescaledImage(const Image *const image,
                                            int dstX, int dstY,
                                            const int desiredWidth,
                                            const int desiredHeight)
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     if (!image)
-        return false;
+        return;
 
     const SDL_Rect &imageRect = image->mBounds;
 
     // Just draw the image normally when no resizing is necessary,
     if (imageRect.w == desiredWidth && imageRect.h == desiredHeight)
-        return drawImageInline(image, dstX, dstY);
+    {
+        drawImageInline(image, dstX, dstY);
+        return;
+    }
 
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
@@ -226,8 +227,6 @@ bool NullOpenGLGraphics::drawRescaledImage(const Image *const image,
     // Draw a textured quad.
     drawRescaledQuad(image, imageRect.x, imageRect.y, dstX, dstY,
         imageRect.w, imageRect.h, desiredWidth, desiredHeight);
-
-    return true;
 }
 
 void NullOpenGLGraphics::drawPattern(const Image *const image,
@@ -953,7 +952,7 @@ SDL_Surface* NullOpenGLGraphics::getScreenshot()
     return nullptr;
 }
 
-bool NullOpenGLGraphics::pushClipArea(const Rect &area)
+void NullOpenGLGraphics::pushClipArea(const Rect &area)
 {
     int transX = 0;
     int transY = 0;
@@ -965,13 +964,11 @@ bool NullOpenGLGraphics::pushClipArea(const Rect &area)
         transY = -clipArea.yOffset;
     }
 
-    const bool result = Graphics::pushClipArea(area);
+    Graphics::pushClipArea(area);
 
     const ClipRect &clipArea = mClipStack.top();
     transX += clipArea.xOffset;
     transY += clipArea.yOffset;
-
-    return result;
 }
 
 void NullOpenGLGraphics::popClipArea()
@@ -1048,7 +1045,7 @@ void NullOpenGLGraphics::drawRectangle(const Rect& rect A_UNUSED,
     BLOCK_END("Graphics::drawRectangle")
 }
 
-bool NullOpenGLGraphics::drawNet(const int x1, const int y1,
+void NullOpenGLGraphics::drawNet(const int x1, const int y1,
                                  const int x2, const int y2,
                                  const int width, const int height)
 {
@@ -1097,8 +1094,6 @@ bool NullOpenGLGraphics::drawNet(const int x1, const int y1,
 
     if (vp > 0)
         drawLineArrayf(vp);
-
-    return true;
 }
 
 void NullOpenGLGraphics::bindTexture(const GLenum target A_UNUSED,

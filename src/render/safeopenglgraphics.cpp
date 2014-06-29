@@ -149,18 +149,18 @@ static inline void drawRescaledQuad(const Image *const image,
     }
 }
 
-bool SafeOpenGLGraphics::drawImage(const Image *const image,
+void SafeOpenGLGraphics::drawImage(const Image *const image,
                                    int dstX, int dstY)
 {
-    return drawImageInline(image, dstX, dstY);
+    drawImageInline(image, dstX, dstY);
 }
 
-bool SafeOpenGLGraphics::drawImageInline(const Image *const image,
+void SafeOpenGLGraphics::drawImageInline(const Image *const image,
                                          int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     if (!image)
-        return false;
+        return;
 
     setColorAlpha(image->mAlpha);
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
@@ -172,14 +172,12 @@ bool SafeOpenGLGraphics::drawImageInline(const Image *const image,
     drawQuad(image, bounds.x, bounds.y,
         dstX, dstY, bounds.w, bounds.h);
     glEnd();
-
-    return true;
 }
 
-bool SafeOpenGLGraphics::copyImage(const Image *const image,
+void SafeOpenGLGraphics::copyImage(const Image *const image,
                                    int dstX, int dstY)
 {
-    return drawImageInline(image, dstX, dstY);
+    drawImageInline(image, dstX, dstY);
 }
 
 void SafeOpenGLGraphics::testDraw()
@@ -273,20 +271,23 @@ void SafeOpenGLGraphics::completeCache()
 {
 }
 
-bool SafeOpenGLGraphics::drawRescaledImage(const Image *const image,
+void SafeOpenGLGraphics::drawRescaledImage(const Image *const image,
                                            int dstX, int dstY,
                                            const int desiredWidth,
                                            const int desiredHeight)
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     if (!image)
-        return false;
+        return;
 
     const SDL_Rect &imageRect = image->mBounds;
 
     // Just draw the image normally when no resizing is necessary,
     if (imageRect.w == desiredWidth && imageRect.h == desiredHeight)
-        return drawImageInline(image, dstX, dstY);
+    {
+        drawImageInline(image, dstX, dstY);
+        return;
+    }
 
     setColorAlpha(image->mAlpha);
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
@@ -297,8 +298,6 @@ bool SafeOpenGLGraphics::drawRescaledImage(const Image *const image,
     drawRescaledQuad(image, imageRect.x, imageRect.y, dstX, dstY,
         imageRect.w, imageRect.h, desiredWidth, desiredHeight);
     glEnd();
-
-    return true;
 }
 
 void SafeOpenGLGraphics::drawPattern(const Image *const image,
@@ -570,7 +569,7 @@ SDL_Surface* SafeOpenGLGraphics::getScreenshot()
     return screenshot;
 }
 
-bool SafeOpenGLGraphics::pushClipArea(const Rect &area)
+void SafeOpenGLGraphics::pushClipArea(const Rect &area)
 {
     int transX = 0;
     int transY = 0;
@@ -582,7 +581,7 @@ bool SafeOpenGLGraphics::pushClipArea(const Rect &area)
         transY = -clipArea.yOffset;
     }
 
-    const bool result = Graphics::pushClipArea(area);
+    Graphics::pushClipArea(area);
 
     const ClipRect &clipArea = mClipStack.top();
 
@@ -593,7 +592,6 @@ bool SafeOpenGLGraphics::pushClipArea(const Rect &area)
         (mRect.h - clipArea.y - clipArea.height) * mScale,
         clipArea.width * mScale,
         clipArea.height * mScale);
-    return result;
 }
 
 void SafeOpenGLGraphics::popClipArea()
@@ -621,7 +619,7 @@ void SafeOpenGLGraphics::drawPoint(int x, int y)
     glEnd();
 }
 
-bool SafeOpenGLGraphics::drawNet(const int x1, const int y1,
+void SafeOpenGLGraphics::drawNet(const int x1, const int y1,
                                  const int x2, const int y2,
                                  const int width, const int height)
 {
@@ -645,8 +643,6 @@ bool SafeOpenGLGraphics::drawNet(const int x1, const int y1,
             static_cast<float>(y2) + 0.5F);
     }
     glEnd();
-
-    return true;
 }
 
 void SafeOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)

@@ -72,25 +72,21 @@ SDL2SoftwareGraphics::~SDL2SoftwareGraphics()
 {
 }
 
-bool SDL2SoftwareGraphics::drawRescaledImage(const Image *const image,
+void SDL2SoftwareGraphics::drawRescaledImage(const Image *const image,
                                              int dstX, int dstY,
                                              const int desiredWidth,
                                              const int desiredHeight)
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     // Check that preconditions for blitting are met.
-    if (!mSurface || !image)
-        return false;
-    if (!image->mSDLSurface)
-        return false;
+    if (!mSurface || !image || !image->mSDLSurface)
+        return;
 
     Image *const tmpImage = image->SDLgetScaledImage(
         desiredWidth, desiredHeight);
 
-    if (!tmpImage)
-        return false;
-    if (!tmpImage->mSDLSurface)
-        return false;
+    if (!tmpImage || !tmpImage->mSDLSurface)
+        return;
 
     const ClipRect &top = mClipStack.top();
     const SDL_Rect &bounds = image->mBounds;
@@ -111,27 +107,23 @@ bool SDL2SoftwareGraphics::drawRescaledImage(const Image *const image,
         0
     };
 
-    const bool returnValue = !(SDL_BlitSurface(tmpImage->mSDLSurface,
-        &srcRect, mSurface, &dstRect) < 0);
-
+    SDL_BlitSurface(tmpImage->mSDLSurface, &srcRect, mSurface, &dstRect);
     delete tmpImage;
-
-    return returnValue;
 }
 
-bool SDL2SoftwareGraphics::drawImage(const Image *const image,
+void SDL2SoftwareGraphics::drawImage(const Image *const image,
                                      int dstX, int dstY)
 {
-    return drawImageInline(image, dstX, dstY);
+    drawImageInline(image, dstX, dstY);
 }
 
-bool SDL2SoftwareGraphics::drawImageInline(const Image *const image,
+void SDL2SoftwareGraphics::drawImageInline(const Image *const image,
                                            int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     // Check that preconditions for blitting are met.
     if (!mSurface || !image || !image->mSDLSurface)
-        return false;
+        return;
 
     const ClipRect &top = mClipStack.top();
     const SDL_Rect &bounds = image->mBounds;
@@ -208,15 +200,14 @@ bool SDL2SoftwareGraphics::drawImageInline(const Image *const image,
             static_cast<uint16_t>(h)
         };
 
-        return SDL_LowerBlit(src, &srcRect, mSurface, &dstRect);
+        SDL_LowerBlit(src, &srcRect, mSurface, &dstRect);
     }
-    return 0;
 }
 
-bool SDL2SoftwareGraphics::copyImage(const Image *const image,
+void SDL2SoftwareGraphics::copyImage(const Image *const image,
                                      int dstX, int dstY)
 {
-    return drawImageInline(image, dstX, dstY);
+    drawImageInline(image, dstX, dstY);
 }
 
 void SDL2SoftwareGraphics::drawImageCached(const Image *const image,
@@ -1120,14 +1111,13 @@ void SDL2SoftwareGraphics::endDraw()
     popClipArea();
 }
 
-bool SDL2SoftwareGraphics::pushClipArea(const Rect &area)
+void SDL2SoftwareGraphics::pushClipArea(const Rect &area)
 {
-    const bool result = Graphics::pushClipArea(area);
+    Graphics::pushClipArea(area);
 
     const ClipRect &carea = mClipStack.top();
     defRectFromArea(rect, carea);
     SDL_SetClipRect(mSurface, &rect);
-    return result;
 }
 
 void SDL2SoftwareGraphics::popClipArea()

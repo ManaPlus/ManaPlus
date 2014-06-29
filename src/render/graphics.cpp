@@ -543,7 +543,8 @@ int Graphics::getHeight() const
     return mHeight;
 }
 
-bool Graphics::drawNet(const int x1, const int y1, const int x2, const int y2,
+void Graphics::drawNet(const int x1, const int y1,
+                       const int x2, const int y2,
                        const int width, const int height)
 {
     for (int y = y1; y < y2; y += height)
@@ -551,8 +552,6 @@ bool Graphics::drawNet(const int x1, const int y1, const int x2, const int y2,
 
     for (int x = x1; x < x2; x += width)
         drawLine(x, y1, x, y2);
-
-    return true;
 }
 
 void Graphics::setWindowSize(const int width A_UNUSED,
@@ -563,7 +562,7 @@ void Graphics::setWindowSize(const int width A_UNUSED,
 #endif
 }
 
-bool Graphics::pushClipArea(const Rect &area)
+void Graphics::pushClipArea(const Rect &area)
 {
     // Ignore area with a negate width or height
     // by simple pushing an empty clip area
@@ -572,7 +571,7 @@ bool Graphics::pushClipArea(const Rect &area)
     {
         ClipRect carea;
         mClipStack.push(carea);
-        return true;
+        return;
     }
 
     if (mClipStack.empty())
@@ -585,7 +584,7 @@ bool Graphics::pushClipArea(const Rect &area)
         carea.xOffset = area.x;
         carea.yOffset = area.y;
         mClipStack.push(carea);
-        return true;
+        return;
     }
 
     const ClipRect &top = mClipStack.top();
@@ -619,11 +618,7 @@ bool Graphics::pushClipArea(const Rect &area)
             carea.height = 0;
     }
 
-    const bool result = carea.isIntersecting(top);
-
     mClipStack.push(carea);
-
-    return result;
 }
 
 void Graphics::popClipArea()

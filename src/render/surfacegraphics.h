@@ -63,18 +63,18 @@ class SurfaceGraphics final : public Graphics
         void endDraw() override final
         { }
 
-        bool pushClipArea(const Rect &rect A_UNUSED) override final
-        { return true; }
+        void pushClipArea(const Rect &rect A_UNUSED) override final
+        { }
 
         void popClipArea() override final
         { }
 
-        bool drawRescaledImage(const Image *const image A_UNUSED,
+        void drawRescaledImage(const Image *const image A_UNUSED,
                                int dstX A_UNUSED, int dstY A_UNUSED,
                                const int desiredWidth A_UNUSED,
                                const int desiredHeight A_UNUSED)
                                override final
-        { return false; }
+        { }
 
         void drawPattern(const Image *const image A_UNUSED,
                          const int x A_UNUSED,
@@ -138,13 +138,13 @@ class SurfaceGraphics final : public Graphics
         SDL_Surface *getScreenshot() override final A_WARN_UNUSED
         { return nullptr; }
 
-        bool drawNet(const int x1 A_UNUSED,
+        void drawNet(const int x1 A_UNUSED,
                      const int y1 A_UNUSED,
                      const int x2 A_UNUSED,
                      const int y2 A_UNUSED,
                      const int width A_UNUSED,
                      const int height A_UNUSED) override final
-        { return false; }
+        { }
 
         void calcWindow(ImageCollection *const vertCol A_UNUSED,
                         const int x A_UNUSED, const int y A_UNUSED,
@@ -179,10 +179,10 @@ class SurfaceGraphics final : public Graphics
                           const bool noFrame A_UNUSED) override final
         { return false; }
 
-        bool drawImage(const Image *const image,
+        void drawImage(const Image *const image,
                        int dstX, int dstY) override final;
 
-        bool copyImage(const Image *const image,
+        void copyImage(const Image *const image,
                        int dstX, int dstY) override final;
 
         void drawImageCached(const Image *const image,

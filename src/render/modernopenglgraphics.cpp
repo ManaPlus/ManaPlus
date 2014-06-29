@@ -313,18 +313,18 @@ void ModernOpenGLGraphics::drawRescaledQuad(const Image *const image A_UNUSED,
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-bool ModernOpenGLGraphics::drawImage(const Image *const image,
+void ModernOpenGLGraphics::drawImage(const Image *const image,
                                      int dstX, int dstY)
 {
-    return drawImageInline(image, dstX, dstY);
+    drawImageInline(image, dstX, dstY);
 }
 
-bool ModernOpenGLGraphics::drawImageInline(const Image *const image,
+void ModernOpenGLGraphics::drawImageInline(const Image *const image,
                                            int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     if (!image)
-        return false;
+        return;
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
@@ -340,13 +340,12 @@ bool ModernOpenGLGraphics::drawImageInline(const Image *const image,
         imageRect.x, imageRect.y,
         dstX + clipArea.xOffset, dstY + clipArea.yOffset,
         imageRect.w, imageRect.h);
-    return true;
 }
 
-bool ModernOpenGLGraphics::copyImage(const Image *const image,
+void ModernOpenGLGraphics::copyImage(const Image *const image,
                                      int dstX, int dstY)
 {
-    return drawImageInline(image, dstX, dstY);
+    drawImageInline(image, dstX, dstY);
 }
 
 void ModernOpenGLGraphics::testDraw()
@@ -390,19 +389,22 @@ void ModernOpenGLGraphics::completeCache()
 {
 }
 
-bool ModernOpenGLGraphics::drawRescaledImage(const Image *const image,
+void ModernOpenGLGraphics::drawRescaledImage(const Image *const image,
                                              int dstX, int dstY,
                                              const int desiredWidth,
                                              const int desiredHeight)
 {
     if (!image)
-        return false;
+        return;
 
     const SDL_Rect &imageRect = image->mBounds;
 
     // Just draw the image normally when no resizing is necessary,
     if (imageRect.w == desiredWidth && imageRect.h == desiredHeight)
-        return drawImageInline(image, dstX, dstY);
+    {
+        drawImageInline(image, dstX, dstY);
+        return;
+    }
 
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
@@ -419,8 +421,6 @@ bool ModernOpenGLGraphics::drawRescaledImage(const Image *const image,
         dstX + clipArea.xOffset, dstY + clipArea.yOffset,
         imageRect.w, imageRect.h,
         desiredWidth, desiredHeight);
-
-    return true;
 }
 
 void ModernOpenGLGraphics::drawPattern(const Image *const image,
@@ -912,16 +912,15 @@ SDL_Surface* ModernOpenGLGraphics::getScreenshot()
     return screenshot;
 }
 
-bool ModernOpenGLGraphics::pushClipArea(const Rect &area)
+void ModernOpenGLGraphics::pushClipArea(const Rect &area)
 {
-    const bool result = Graphics::pushClipArea(area);
+    Graphics::pushClipArea(area);
     const ClipRect &clipArea = mClipStack.top();
 
     glScissor(clipArea.x * mScale,
         (mRect.h - clipArea.y - clipArea.height) * mScale,
         clipArea.width * mScale,
         clipArea.height * mScale);
-    return result;
 }
 
 void ModernOpenGLGraphics::popClipArea()
@@ -1068,7 +1067,7 @@ void ModernOpenGLGraphics::drawRectangle(const Rect& rect A_UNUSED,
 {
 }
 
-bool ModernOpenGLGraphics::drawNet(const int x1, const int y1,
+void ModernOpenGLGraphics::drawNet(const int x1, const int y1,
                                    const int x2, const int y2,
                                    const int width, const int height)
 {
@@ -1128,8 +1127,6 @@ bool ModernOpenGLGraphics::drawNet(const int x1, const int y1,
 
     if (vp > 0)
         drawLineArrays(vp);
-
-    return true;
 }
 
 void ModernOpenGLGraphics::bindTexture(const GLenum target,

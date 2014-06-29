@@ -170,7 +170,7 @@ class Graphics notfinal
         /**
          * Draws a resclaled version of the image
          */
-        virtual bool drawRescaledImage(const Image *const image,
+        virtual void drawRescaledImage(const Image *const image,
                                        int dstX, int dstY,
                                        const int desiredWidth,
                                        const int desiredHeight) = 0;
@@ -255,7 +255,7 @@ class Graphics notfinal
 
         int getMemoryUsage() const A_WARN_UNUSED;
 
-        virtual bool drawNet(const int x1, const int y1,
+        virtual void drawNet(const int x1, const int y1,
                              const int x2, const int y2,
                              const int width, const int height);
 
@@ -344,10 +344,10 @@ class Graphics notfinal
          * @return <code>true</code> if the image was blitted properly
          *         <code>false</code> otherwise.
          */
-        virtual bool drawImage(const Image *const image,
+        virtual void drawImage(const Image *const image,
                                int dstX, int dstY) = 0;
 
-        virtual bool copyImage(const Image *const image,
+        virtual void copyImage(const Image *const image,
                                int dstX, int dstY) = 0;
 
         virtual void drawImageCached(const Image *const image,
@@ -377,10 +377,8 @@ class Graphics notfinal
          * zero width and height will be pushed.
          *
          * @param area The clip area to be pushed onto the stack.
-         * @return False if the the new area lays outside the current clip 
-         *         area.
          */
-        virtual bool pushClipArea(const Rect &area);
+        virtual void pushClipArea(const Rect &area);
 
         /**
          * Removes the top most clip area from the stack.

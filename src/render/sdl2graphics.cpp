@@ -141,17 +141,15 @@ SDLGraphics::~SDLGraphics()
 {
 }
 
-bool SDLGraphics::drawRescaledImage(const Image *const image,
+void SDLGraphics::drawRescaledImage(const Image *const image,
                                     int dstX, int dstY,
                                     const int desiredWidth,
                                     const int desiredHeight)
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     // Check that preconditions for blitting are met.
-    if (!mWindow || !image)
-        return false;
-    if (!image->mTexture)
-        return false;
+    if (!mWindow || !image || !image->mTexture)
+        return;
 
     const ClipRect &top = mClipStack.top();
     const SDL_Rect &bounds = image->mBounds;
@@ -170,27 +168,26 @@ bool SDLGraphics::drawRescaledImage(const Image *const image,
         static_cast<int32_t>(desiredHeight)
     };
 
-    return (MSDL_RenderCopy(mRenderer, image->mTexture,
-        &srcRect, &dstRect) < 0);
+    MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
 }
 
-bool SDLGraphics::drawImage(const Image *const image,
+void SDLGraphics::drawImage(const Image *const image,
                             int dstX, int dstY)
 {
-    return drawImageInline(image, dstX, dstY);
+    drawImageInline(image, dstX, dstY);
 }
 
-bool SDLGraphics::drawImageInline(const Image *const image,
+void SDLGraphics::drawImageInline(const Image *const image,
                                   int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     // Check that preconditions for blitting are met.
     if (!mWindow || !image || !image->mTexture)
-        return false;
+        return;
 
     const ClipRect &top = mClipStack.top();
     if (!top.width || !top.height)
-        return false;
+        return;
 
     const SDL_Rect &bounds = image->mBounds;
     const SDL_Rect srcRect =
@@ -209,13 +206,13 @@ bool SDLGraphics::drawImageInline(const Image *const image,
         static_cast<int32_t>(bounds.h)
     };
 
-    return !MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
+    MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
 }
 
-bool SDLGraphics::copyImage(const Image *const image,
+void SDLGraphics::copyImage(const Image *const image,
                             int dstX, int dstY)
 {
-    return drawImageInline(image, dstX, dstY);
+    drawImageInline(image, dstX, dstY);
 }
 
 void SDLGraphics::drawImageCached(const Image *const image,
@@ -672,14 +669,13 @@ void SDLGraphics::endDraw()
     popClipArea();
 }
 
-bool SDLGraphics::pushClipArea(const Rect &area)
+void SDLGraphics::pushClipArea(const Rect &area)
 {
-    const bool result = Graphics::pushClipArea(area);
+    Graphics::pushClipArea(area);
 
     const ClipRect &carea = mClipStack.top();
     defRectFromArea(rect, carea);
     SDL_RenderSetClipRect(mRenderer, &rect);
-    return result;
 }
 
 void SDLGraphics::popClipArea()

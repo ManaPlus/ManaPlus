@@ -240,18 +240,18 @@ static inline void drawRescaledQuad(const Image *const image,
     }
 }
 
-bool MobileOpenGLGraphics::drawImage(const Image *const image,
+void MobileOpenGLGraphics::drawImage(const Image *const image,
                                      int dstX, int dstY)
 {
-    return drawImageInline(image, dstX, dstY);
+    drawImageInline(image, dstX, dstY);
 }
 
-bool MobileOpenGLGraphics::drawImageInline(const Image *const image,
+void MobileOpenGLGraphics::drawImageInline(const Image *const image,
                                            int dstX, int dstY)
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     if (!image)
-        return false;
+        return;
 
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
@@ -263,14 +263,12 @@ bool MobileOpenGLGraphics::drawImageInline(const Image *const image,
     const SDL_Rect &imageRect = image->mBounds;
     drawQuad(image, imageRect.x, imageRect.y,
         dstX, dstY, imageRect.w, imageRect.h);
-
-    return true;
 }
 
-bool MobileOpenGLGraphics::copyImage(const Image *const image,
+void MobileOpenGLGraphics::copyImage(const Image *const image,
                                      int dstX, int dstY)
 {
-    return drawImageInline(image, dstX, dstY);
+    drawImageInline(image, dstX, dstY);
 }
 
 void MobileOpenGLGraphics::drawImageCached(const Image *const image,
@@ -405,20 +403,23 @@ void MobileOpenGLGraphics::completeCache()
     mVpCached = 0;
 }
 
-bool MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
+void MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
                                              int dstX, int dstY,
                                              const int desiredWidth,
                                              const int desiredHeight)
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     if (!image)
-        return false;
+        return;
 
     const SDL_Rect &imageRect = image->mBounds;
 
     // Just draw the image normally when no resizing is necessary,
     if (imageRect.w == desiredWidth && imageRect.h == desiredHeight)
-        return drawImageInline(image, dstX, dstY);
+    {
+        drawImageInline(image, dstX, dstY);
+        return;
+    }
 
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
@@ -430,8 +431,6 @@ bool MobileOpenGLGraphics::drawRescaledImage(const Image *const image,
     // Draw a textured quad.
     drawRescaledQuad(image, imageRect.x, imageRect.y, dstX, dstY,
         imageRect.w, imageRect.h, desiredWidth, desiredHeight);
-
-    return true;
 }
 
 void MobileOpenGLGraphics::drawPattern(const Image *const image,
@@ -980,7 +979,7 @@ SDL_Surface* MobileOpenGLGraphics::getScreenshot()
     return screenshot;
 }
 
-bool MobileOpenGLGraphics::pushClipArea(const Rect &area)
+void MobileOpenGLGraphics::pushClipArea(const Rect &area)
 {
     int transX = 0;
     int transY = 0;
@@ -992,7 +991,7 @@ bool MobileOpenGLGraphics::pushClipArea(const Rect &area)
         transY = -clipArea.yOffset;
     }
 
-    const bool result = Graphics::pushClipArea(area);
+    Graphics::pushClipArea(area);
 
     const ClipRect &clipArea = mClipStack.top();
     transX += clipArea.xOffset;
@@ -1007,7 +1006,6 @@ bool MobileOpenGLGraphics::pushClipArea(const Rect &area)
         (mRect.h - clipArea.y - clipArea.height) * mScale,
         clipArea.width * mScale,
         clipArea.height * mScale);
-    return result;
 }
 
 void MobileOpenGLGraphics::popClipArea()
@@ -1168,7 +1166,7 @@ void MobileOpenGLGraphics::drawRectangle(const Rect& rect,
     BLOCK_END("Graphics::drawRectangle")
 }
 
-bool MobileOpenGLGraphics::drawNet(const int x1, const int y1,
+void MobileOpenGLGraphics::drawNet(const int x1, const int y1,
                                    const int x2, const int y2,
                                    const int width, const int height)
 {
@@ -1219,8 +1217,6 @@ bool MobileOpenGLGraphics::drawNet(const int x1, const int y1,
 
     if (vp > 0)
         drawLineArrays(vp);
-
-    return true;
 }
 
 void MobileOpenGLGraphics::bindTexture(const GLenum target,
