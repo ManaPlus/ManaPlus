@@ -343,6 +343,12 @@ bool ModernOpenGLGraphics::drawImageInline(const Image *const image,
     return true;
 }
 
+bool ModernOpenGLGraphics::copyImage(const Image *const image,
+                                     int dstX, int dstY)
+{
+    return drawImageInline(image, dstX, dstY);
+}
+
 void ModernOpenGLGraphics::testDraw()
 {
 /*

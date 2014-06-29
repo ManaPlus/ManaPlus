@@ -77,6 +77,34 @@ bool SurfaceGraphics::drawImage(const Image *const image,
 #endif
 }
 
+bool SurfaceGraphics::copyImage(const Image *const image,
+                                int dstX, int dstY)
+{
+    FUNC_BLOCK("Graphics::drawImage", 1)
+    // Check that preconditions for blitting are met.
+    if (!mTarget || !image || !image->mSDLSurface)
+        return false;
+
+    const SDL_Rect &imageRect = image->mBounds;
+    SDL_Rect dstRect;
+    SDL_Rect srcRect;
+    dstRect.x = static_cast<int16_t>(dstX);
+    dstRect.y = static_cast<int16_t>(dstY);
+    srcRect.x = static_cast<int16_t>(imageRect.x);
+    srcRect.y = static_cast<int16_t>(imageRect.y);
+    srcRect.w = static_cast<uint16_t>(imageRect.w);
+    srcRect.h = static_cast<uint16_t>(imageRect.h);
+
+#ifdef USE_SDL2
+    // probably need change some flags
+    return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,
+                             mTarget, &dstRect) < 0);
+#else
+    return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,
+                             mTarget, &dstRect) < 0);
+#endif
+}
+
 void SurfaceGraphics::drawImageCached(const Image *const image,
                                       int x, int y)
 {

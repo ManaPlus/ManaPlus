@@ -198,6 +198,12 @@ bool SDLGraphics::drawImageInline(const Image *const image,
     return 0;
 }
 
+bool SDLGraphics::copyImage(const Image *const image,
+                            int dstX, int dstY)
+{
+    return drawImageInline(image, dstX, dstY);
+}
+
 void SDLGraphics::drawImageCached(const Image *const image,
                                   int x, int y)
 {

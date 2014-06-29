@@ -176,6 +176,12 @@ bool SafeOpenGLGraphics::drawImageInline(const Image *const image,
     return true;
 }
 
+bool SafeOpenGLGraphics::copyImage(const Image *const image,
+                                   int dstX, int dstY)
+{
+    return drawImageInline(image, dstX, dstY);
+}
+
 void SafeOpenGLGraphics::testDraw()
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)

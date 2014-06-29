@@ -267,6 +267,12 @@ bool MobileOpenGLGraphics::drawImageInline(const Image *const image,
     return true;
 }
 
+bool MobileOpenGLGraphics::copyImage(const Image *const image,
+                                     int dstX, int dstY)
+{
+    return drawImageInline(image, dstX, dstY);
+}
+
 void MobileOpenGLGraphics::drawImageCached(const Image *const image,
                                            int x, int y)
 {

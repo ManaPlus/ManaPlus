@@ -157,6 +157,12 @@ bool NullOpenGLGraphics::drawImage(const Image *const image,
     return drawImageInline(image, dstX, dstY);
 }
 
+bool NullOpenGLGraphics::copyImage(const Image *const image,
+                                   int dstX, int dstY)
+{
+    return drawImageInline(image, dstX, dstY);
+}
+
 bool NullOpenGLGraphics::drawImageInline(const Image *const image,
                                          int dstX, int dstY)
 {

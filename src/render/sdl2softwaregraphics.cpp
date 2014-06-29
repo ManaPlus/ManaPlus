@@ -213,6 +213,12 @@ bool SDL2SoftwareGraphics::drawImageInline(const Image *const image,
     return 0;
 }
 
+bool SDL2SoftwareGraphics::copyImage(const Image *const image,
+                                     int dstX, int dstY)
+{
+    return drawImageInline(image, dstX, dstY);
+}
+
 void SDL2SoftwareGraphics::drawImageCached(const Image *const image,
                                            int x, int y)
 {

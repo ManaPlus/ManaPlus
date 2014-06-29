@@ -358,6 +358,12 @@ bool NormalOpenGLGraphics::drawImageInline(const Image *const image,
     return true;
 }
 
+bool NormalOpenGLGraphics::copyImage(const Image *const image,
+                                     int dstX, int dstY)
+{
+    return drawImageInline(image, dstX, dstY);
+}
+
 void NormalOpenGLGraphics::testDraw()
 {
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)

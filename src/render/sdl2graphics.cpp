@@ -212,6 +212,12 @@ bool SDLGraphics::drawImageInline(const Image *const image,
     return !MSDL_RenderCopy(mRenderer, image->mTexture, &srcRect, &dstRect);
 }
 
+bool SDLGraphics::copyImage(const Image *const image,
+                            int dstX, int dstY)
+{
+    return drawImageInline(image, dstX, dstY);
+}
+
 void SDLGraphics::drawImageCached(const Image *const image,
                                   int x, int y)
 {

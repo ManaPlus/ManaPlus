@@ -182,6 +182,9 @@ class SurfaceGraphics final : public Graphics
         bool drawImage(const Image *const image,
                        int dstX, int dstY) override final;
 
+        bool copyImage(const Image *const image,
+                       int dstX, int dstY) override final;
+
         void drawImageCached(const Image *const image,
                              int x, int y) override final;
 
