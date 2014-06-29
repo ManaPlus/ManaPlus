@@ -509,7 +509,8 @@ void Client::updateEnv()
         setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "0");
 
 #ifndef WIN32
-    const int vsync = config.getIntValue("vsync");
+    const int vsync = settings.options.test.empty()
+        ? config.getIntValue("vsync") : 1;
     // __GL_SYNC_TO_VBLANK is nvidia variable.
     // vblank_mode is MESA variable.
     switch (vsync)
