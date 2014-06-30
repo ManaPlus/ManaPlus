@@ -312,7 +312,9 @@ void GraphicsManager::createRenderers()
 #endif
     };
     mUseAtlases = (useOpenGL == RENDER_NORMAL_OPENGL
-        || useOpenGL == RENDER_SAFE_OPENGL || useOpenGL == RENDER_GLES_OPENGL)
+        || useOpenGL == RENDER_SAFE_OPENGL
+        || useOpenGL == RENDER_MODERN_OPENGL
+        || useOpenGL == RENDER_GLES_OPENGL)
         && config.getBoolValue("useAtlases");
 
 #else  // USE_OPENGL
