@@ -294,8 +294,8 @@ void SDLImageHelper::copySurfaceToImage(Image *const image,
     SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
     SDL_Rect rect =
     {
-        x, y,
-        surface->w, surface->h
+        static_cast<int16_t>(x), static_cast<int16_t>(y),
+        static_cast<uint16_t>(surface->w), static_cast<uint16_t>(surface->h)
     };
 
     SDL_BlitSurface(surface, nullptr, image->mSDLSurface, &rect);
