@@ -61,8 +61,7 @@ void SurfaceGraphics::drawImage(const Image *const image,
     srcRect.h = static_cast<uint16_t>(imageRect.h);
 
 #ifdef USE_SDL2
-    return !(SDL_BlitSurface(image->mSDLSurface, &srcRect,
-                             mTarget, &dstRect) < 0);
+    SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
 #else
     if (mBlitMode == BLIT_NORMAL)
     {
