@@ -193,27 +193,8 @@ SDL_Surface *OpenGLImageHelper::convertSurface(SDL_Surface *tmpImage,
     return tmpImage;
 }
 
-Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
-                                 int width, int height)
+void OpenGLImageHelper::bindTexture(const GLuint texture)
 {
-    if (!tmpImage)
-        return nullptr;
-
-    // Flush current error flag.
-    graphicsManager.getLastError();
-
-    if (!width)
-        width = tmpImage->w;
-    if (!height)
-        height = tmpImage->h;
-
-    SDL_Surface *oldImage = tmpImage;
-    tmpImage = convertSurface(tmpImage, width, height);
-
-    const int realWidth = tmpImage->w;
-    const int realHeight = tmpImage->h;
-
-    const GLuint texture = getNewTexture();
     switch (mUseOpenGL)
     {
 #ifndef ANDROID
@@ -242,6 +223,30 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
             logger->log("Unknown OpenGL backend: %d", mUseOpenGL);
             break;
     }
+}
+
+Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
+                                 int width, int height)
+{
+    if (!tmpImage)
+        return nullptr;
+
+    // Flush current error flag.
+    graphicsManager.getLastError();
+
+    if (!width)
+        width = tmpImage->w;
+    if (!height)
+        height = tmpImage->h;
+
+    SDL_Surface *oldImage = tmpImage;
+    tmpImage = convertSurface(tmpImage, width, height);
+
+    const int realWidth = tmpImage->w;
+    const int realHeight = tmpImage->h;
+
+    const GLuint texture = getNewTexture();
+    bindTexture(texture);
 
     if (SDL_MUSTLOCK(tmpImage))
         SDL_LockSurface(tmpImage);
@@ -377,12 +382,13 @@ void OpenGLImageHelper::copySurfaceToImage(Image *const image,
                                            const int x, const int y,
                                            SDL_Surface *surface) const
 {
-    if (!surface)
+    if (!surface || !image)
         return;
 
     SDL_Surface *const oldSurface = surface;
     surface = convertSurface(surface, surface->w, surface->h);
 
+    bindTexture(image->mGLImage);
     glTexSubImage2D(mTextureType, 0,
         x, y,
         surface->w, surface->h,

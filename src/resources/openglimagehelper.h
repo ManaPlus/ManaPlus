@@ -118,6 +118,8 @@ class OpenGLImageHelper final : public ImageHelper
 
         static void invalidate(const GLuint textureId);
 
+        static void bindTexture(const GLuint texture);
+
         SDL_Surface *create32BitSurface(int width,
                                         int height) const override final;
 
