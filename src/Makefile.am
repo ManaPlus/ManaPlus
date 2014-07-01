@@ -127,6 +127,8 @@ dyecmd_SOURCES = gui/cliprect.cpp \
 	      utils/physfstools.h \
 	      utils/sdl2helper.cpp \
 	      utils/sdl2helper.h \
+	      utils/sdlcheckutils.cpp \
+	      utils/sdlcheckutils.h \
 	      utils/sdlhelper.cpp \
 	      utils/sdlhelper.h \
 	      utils/sdlmemoryobject.h \

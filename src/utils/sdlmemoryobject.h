@@ -25,6 +25,8 @@
 
 #include "logger.h"
 
+#include "utils/stringutils.h"
+
 #include <string>
 
 #include "localconsts.h"
