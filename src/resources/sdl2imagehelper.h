@@ -62,6 +62,11 @@ class SDLImageHelper final : public ImageHelper
                                  const float alpha)
                                  override final A_WARN_UNUSED;
 
+        void copySurfaceToImage(Image *const image,
+                                const int x, const int y,
+                                SDL_Surface *const surface)
+                                const override final;
+
         static void SDLSetEnableAlphaCache(const bool n)
         { mEnableAlphaCache = n; }
 

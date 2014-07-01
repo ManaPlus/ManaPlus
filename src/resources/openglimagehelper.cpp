@@ -133,19 +133,12 @@ int OpenGLImageHelper::powerOfTwo(const int input)
     return value >= mTextureSize ? mTextureSize : value;
 }
 
-Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
-                                 int width, int height)
+SDL_Surface *OpenGLImageHelper::convertSurface(SDL_Surface *tmpImage,
+                                               int width, int height)
 {
     if (!tmpImage)
         return nullptr;
 
-    // Flush current error flag.
-    graphicsManager.getLastError();
-
-    if (!width)
-        width = tmpImage->w;
-    if (!height)
-        height = tmpImage->h;
     int realWidth = powerOfTwo(width);
     int realHeight = powerOfTwo(height);
 
@@ -197,6 +190,28 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         }
         SDL_BlitSurface(oldImage, nullptr, tmpImage, nullptr);
     }
+    return tmpImage;
+}
+
+Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
+                                 int width, int height)
+{
+    if (!tmpImage)
+        return nullptr;
+
+    // Flush current error flag.
+    graphicsManager.getLastError();
+
+    if (!width)
+        width = tmpImage->w;
+    if (!height)
+        height = tmpImage->h;
+
+    SDL_Surface *oldImage = tmpImage;
+    tmpImage = convertSurface(tmpImage, width, height);
+
+    const int realWidth = tmpImage->w;
+    const int realHeight = tmpImage->h;
 
     const GLuint texture = getNewTexture();
     switch (mUseOpenGL)
@@ -281,7 +296,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     if (SDL_MUSTLOCK(tmpImage))
         SDL_UnlockSurface(tmpImage);
 
-    if (oldImage)
+    if (oldImage != tmpImage)
         MSDL_FreeSurface(tmpImage);
 
     GLenum error = graphicsManager.getLastError();
@@ -356,6 +371,25 @@ void OpenGLImageHelper::invalidate(const GLuint textureId)
         logger->log("invalidate: %u", textureId);
         mglInvalidateTexImage(textureId, 0);
     }
+}
+
+void OpenGLImageHelper::copySurfaceToImage(Image *const image,
+                                           const int x, const int y,
+                                           SDL_Surface *surface) const
+{
+    if (!surface)
+        return;
+
+    SDL_Surface *const oldSurface = surface;
+    surface = convertSurface(surface, surface->w, surface->h);
+
+    glTexSubImage2D(mTextureType, 0,
+        x, y,
+        surface->w, surface->h,
+        GL_RGBA, GL_UNSIGNED_BYTE, surface->pixels);
+
+    if (surface != oldSurface)
+        MSDL_FreeSurface(surface);
 }
 
 #endif

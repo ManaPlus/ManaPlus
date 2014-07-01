@@ -284,4 +284,21 @@ int SDLImageHelper::combineSurface(SDL_Surface *restrict const src,
     return SDL_gfxBlitRGBA(src, srcrect, dst, dstrect);
 }
 
+void SDLImageHelper::copySurfaceToImage(Image *const image,
+                                        const int x, const int y,
+                                        SDL_Surface *const surface) const
+{
+    if (!image || !surface)
+        return;
+
+    SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
+    SDL_Rect rect =
+    {
+        x, y,
+        surface->w, surface->h
+    };
+
+    SDL_BlitSurface(surface, nullptr, image->mSDLSurface, &rect);
+}
+
 #endif  // USE_SDL2

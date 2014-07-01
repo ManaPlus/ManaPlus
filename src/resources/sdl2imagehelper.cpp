@@ -94,4 +94,22 @@ int SDLImageHelper::combineSurface(SDL_Surface *restrict const src,
     return 1;
 }
 
+void SDLImageHelper::copySurfaceToImage(Image *const image,
+                                        const int x, const int y,
+                                        SDL_Surface *const surface) const
+{
+    if (!image || !surface)
+        return;
+
+    SDL_SetSurfaceAlphaMod(surface, SDL_ALPHA_OPAQUE);
+    SDL_SetSurfaceBlendMode(surface, SDL_BLENDMODE_NONE);
+
+    SDL_Rect rect =
+    {
+        x, y,
+        surface->w, surface->h
+    };
+
+    SDL_BlitSurface(surface, nullptr, image->mSDLSurface, &rect);
+}
 #endif  // USE_SDL2

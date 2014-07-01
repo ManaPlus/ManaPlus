@@ -123,11 +123,18 @@ class OpenGLImageHelper final : public ImageHelper
 
         void postInit() override final;
 
+        void copySurfaceToImage(Image *const image,
+                                const int x, const int y,
+                                SDL_Surface *surface) const;
+
     protected:
         /**
          * Returns the first power of two equal or bigger than the input.
          */
         static int powerOfTwo(const int input) A_WARN_UNUSED;
+
+        static SDL_Surface *convertSurface(SDL_Surface *tmpImage,
+                                           int width, int height);
 
         Image *glLoad(SDL_Surface *tmpImage,
                       int width = 0, int height = 0) A_WARN_UNUSED;
