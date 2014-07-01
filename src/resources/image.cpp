@@ -471,7 +471,7 @@ void Image::SDLTerminateAlphaCache()
 #ifdef USE_OPENGL
 void Image::decRef()
 {
-    if (getRefCount() <= 1)
+    if (mGLImage && getRefCount() <= 1)
         OpenGLImageHelper::invalidate(mGLImage);
     Resource::decRef();
 }
