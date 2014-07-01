@@ -26,7 +26,9 @@
 
 #include "configuration.h"
 
-#include "render/surfacegraphics.h"
+#ifdef DEBUG_IMAGES
+#include "logger.h"
+#endif
 
 #include "utils/mathutils.h"
 #include "utils/physfscheckutils.h"
@@ -39,6 +41,7 @@
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
 #include "resources/resourcemanager.h"
+#include "resources/sdlimagehelper.h"
 #include "resources/textureatlas.h"
 
 #include "debug.h"
@@ -255,36 +258,19 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     }
     BLOCK_END("AtlasManager::createSDLAtlas create surface")
 
-    SurfaceGraphics *const graphics = new SurfaceGraphics();
-    graphics->setTarget(surface);
-    graphics->beginDraw();
+    Image *image = imageHelper->load(surface);
 
     // drawing SDL images to surface
     FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
     {
         AtlasItem *const item = *it;
-        Image *const image = item->image;
-
         if (image)
         {
-            if (image->mSDLSurface)
-            {
-                BLOCK_START("AtlasManager::createSDLAtlas set surface attr")
-#ifdef USE_SDL2
-                SDL_SetSurfaceAlphaMod(image->mSDLSurface, SDL_ALPHA_OPAQUE);
-                SDL_SetSurfaceBlendMode(image->mSDLSurface,
-                    SDL_BLENDMODE_NONE);
-#else
-                SDL_SetAlpha(image->mSDLSurface, 0, SDL_ALPHA_OPAQUE);
-#endif
-                BLOCK_END("AtlasManager::createSDLAtlas set surface attr")
-                graphics->drawImage(image, item->x, item->y);
-            }
+            imageHelper->copySurfaceToImage(image, item->x, item->y,
+                item->image->mSDLSurface);
         }
     }
-
-    delete graphics;
-    atlas->surface = surface;
+    atlas->atlasImage = image;
     BLOCK_END("AtlasManager::createSDLAtlas")
     return surface;
 }
@@ -293,7 +279,14 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
 {
     // no check for null pointer in atlas because it was in caller
     // convert surface to OpemGL image
-    atlas->atlasImage = imageHelper->load(atlas->surface);
+    Image *const oldImage = atlas->atlasImage;
+
+    if (oldImage->mSDLSurface)
+    {
+        atlas->atlasImage = imageHelper->load(atlas->atlasImage->mSDLSurface);
+        oldImage->decRef();
+    }
+
     Image *const image = atlas->atlasImage;
     if (!image)
         return;

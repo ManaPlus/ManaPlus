@@ -42,7 +42,6 @@ struct TextureAtlas final
     TextureAtlas() :
         name(),
         atlasImage(nullptr),
-        surface(nullptr),
         width(0),
         height(0),
         items()
@@ -53,7 +52,6 @@ struct TextureAtlas final
 
     std::string name;
     Image *atlasImage;
-    SDL_Surface *surface;
     int width;
     int height;
     std::vector <AtlasItem*> items;
