@@ -76,7 +76,7 @@
     var[vp + 22] = x2; \
     var[vp + 23] = y2;
 
-GLuint ModernOpenGLGraphics::mLastImage = 0;
+GLuint ModernOpenGLGraphics::mTextureBinded = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int ModernOpenGLGraphics::mDrawCalls = 0;
 unsigned int ModernOpenGLGraphics::mLastDrawCalls = 0;
@@ -99,9 +99,9 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
     mVao(0U),
     mVbo(0U),
     mEbo(0U),
-    mVboCached(0U),
-    mEboCached(0U),
-    mAttributesCached(0U),
+    mVboBinded(0U),
+    mEboBinded(0U),
+    mAttributesBinded(0U),
     mColorAlpha(false),
     mTextureDraw(false),
 #ifdef DEBUG_BIND_TEXTURE
@@ -194,7 +194,7 @@ void ModernOpenGLGraphics::postInit()
     mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLint));
     mglVertexAttribBinding(mPosAttrib, 0);
 //    mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
-    mAttributesCached = mVbo;
+    mAttributesBinded = mVbo;
 
     mglUniform2f(mScreenUniform,
         static_cast<float>(mWidth) / 2.0f,
@@ -204,9 +204,9 @@ void ModernOpenGLGraphics::postInit()
 void ModernOpenGLGraphics::screenResized()
 {
     deleteGLObjects();
-    mVboCached = 0U;
-    mEboCached = 0U;
-    mAttributesCached = 0U;
+    mVboBinded = 0U;
+    mEboBinded = 0U;
+    mAttributesBinded = 0U;
     postInit();
 }
 
@@ -284,7 +284,7 @@ void ModernOpenGLGraphics::drawQuad(const Image *const image A_UNUSED,
         x2, y2, texX2, texY2
     };
 
-//    logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
+//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -313,7 +313,7 @@ void ModernOpenGLGraphics::drawRescaledQuad(const Image *const image A_UNUSED,
         x2, y2, texX2, texY2
     };
 
-//    logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
+//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -368,8 +368,8 @@ void ModernOpenGLGraphics::testDraw()
         800, 600, 800, 600
     };
 */
-//    logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
-//    logger->log("allocate ebo: %d, %ld", mEboCached, sizeof(elements));
+//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
+//    logger->log("allocate ebo: %d, %ld", mEboBinded, sizeof(elements));
 //    mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
 //        vertices, GL_STREAM_DRAW);
 //    mglBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements),
@@ -956,7 +956,7 @@ void ModernOpenGLGraphics::drawPoint(int x, int y)
     {
         x + clipArea.xOffset, y + clipArea.yOffset, 0, 0
     };
-//    logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
+//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -975,7 +975,7 @@ void ModernOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
         x1 + clipArea.xOffset, y1 + clipArea.yOffset, 0, 0,
         x2 + clipArea.xOffset, y2 + clipArea.yOffset, 0, 0
     };
-//    logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
+//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -1001,7 +1001,7 @@ void ModernOpenGLGraphics::drawRectangle(const Rect& rect)
         x2, y1, 0, 0
     };
 
-//    logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
+//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -1027,7 +1027,7 @@ void ModernOpenGLGraphics::fillRectangle(const Rect& rect)
         x2, y2, 0, 0
     };
 
-//    logger->log("allocate: %d, %ld", mVboCached, sizeof(vertices));
+//    logger->log("allocate: %d, %ld", mVboBinded, sizeof(vertices));
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -1141,9 +1141,9 @@ void ModernOpenGLGraphics::drawNet(const int x1, const int y1,
 void ModernOpenGLGraphics::bindTexture(const GLenum target,
                                        const GLuint texture)
 {
-    if (mLastImage != texture)
+    if (mTextureBinded != texture)
     {
-        mLastImage = texture;
+        mTextureBinded = texture;
         glBindTexture(target, texture);
     }
 }
@@ -1154,32 +1154,32 @@ void ModernOpenGLGraphics::removeArray(const uint32_t sz,
     mglDeleteBuffers(sz, arr);
     for (size_t f = 0; f < sz; f ++)
     {
-        if (arr[f] == mVboCached)
-            mVboCached = 0;
+        if (arr[f] == mVboBinded)
+            mVboBinded = 0;
 //        logger->log("delete buffers: %u", arr[f]);
     }
 }
 
 void ModernOpenGLGraphics::bindArrayBuffer(const GLuint vbo)
 {
-    if (mVboCached != vbo)
+    if (mVboBinded != vbo)
     {
-        mVboCached = vbo;
+        mVboBinded = vbo;
 //        logger->log("bind array: %u", vbo);
         mglBindBuffer(GL_ARRAY_BUFFER, vbo);
 /*
         if (mglIsBuffer(vbo) != GL_TRUE)
             logger->log("bind wrong buffer: %u", vbo);
 */
-        mAttributesCached = 0U;
+        mAttributesBinded = 0U;
     }
 }
 
 void ModernOpenGLGraphics::bindElementBuffer(const GLuint ebo)
 {
-    if (mEboCached != ebo)
+    if (mEboBinded != ebo)
     {
-        mEboCached = ebo;
+        mEboBinded = ebo;
         logger->log("bind element: %u", ebo);
         mglBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 /*
@@ -1191,9 +1191,9 @@ void ModernOpenGLGraphics::bindElementBuffer(const GLuint ebo)
 
 void ModernOpenGLGraphics::bindArrayBufferAndAttributes(const GLuint vbo)
 {
-    if (mVboCached != vbo)
+    if (mVboBinded != vbo)
     {
-        mVboCached = vbo;
+        mVboBinded = vbo;
 //        logger->log("bind array: %u", vbo);
         mglBindBuffer(GL_ARRAY_BUFFER, vbo);
 /*
@@ -1201,17 +1201,17 @@ void ModernOpenGLGraphics::bindArrayBufferAndAttributes(const GLuint vbo)
             logger->log("bind wrong buffer: %u", vbo);
 */
 
-        mAttributesCached = mVboCached;
-//        logger->log("bind vertex buffer: %u", mVboCached);
-        mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLint));
+        mAttributesBinded = mVboBinded;
+//        logger->log("bind vertex buffer: %u", mVboBinded);
+        mglBindVertexBuffer(0, mVboBinded, 0, 4 * sizeof(GLint));
 //        mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
 //        mglVertexAttribBinding(mPosAttrib, 0);
     }
-    else if (mAttributesCached != mVboCached)
+    else if (mAttributesBinded != mVboBinded)
     {
-        mAttributesCached = mVboCached;
-//        logger->log("bind vertex buffer: %u", mVboCached);
-        mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLint));
+        mAttributesBinded = mVboBinded;
+//        logger->log("bind vertex buffer: %u", mVboBinded);
+        mglBindVertexBuffer(0, mVboBinded, 0, 4 * sizeof(GLint));
 //        mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
 //        mglVertexAttribBinding(mPosAttrib, 0);
     }
@@ -1219,10 +1219,10 @@ void ModernOpenGLGraphics::bindArrayBufferAndAttributes(const GLuint vbo)
 
 void ModernOpenGLGraphics::bindAttributes()
 {
-    if (mAttributesCached != mVboCached)
+    if (mAttributesBinded != mVboBinded)
     {
-        mAttributesCached = mVboCached;
-        mglBindVertexBuffer(0, mVboCached, 0, 4 * sizeof(GLint));
+        mAttributesBinded = mVboBinded;
+        mglBindVertexBuffer(0, mVboBinded, 0, 4 * sizeof(GLint));
 //        mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
 //        mglVertexAttribBinding(mPosAttrib, 0);
     }
@@ -1310,7 +1310,7 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *const vert)
     {
         bindArrayBuffer(*ivbo);
 /*
-        logger->log("allocate: %d, %ld", mVboCached,
+        logger->log("allocate: %d, %ld", mVboBinded,
             (*ivp) * sizeof(GLint));
 */
         mglBufferData(GL_ARRAY_BUFFER, (*ivp) * sizeof(GLint),
@@ -1327,7 +1327,7 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *const vert)
 
 void ModernOpenGLGraphics::drawTriangleArray(const int size)
 {
-//    logger->log("allocate: %d, %ld", mVboCached, size * sizeof(GLint));
+//    logger->log("allocate: %d, %ld", mVboBinded, size * sizeof(GLint));
     mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLint),
         mIntArray, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -1339,7 +1339,7 @@ void ModernOpenGLGraphics::drawTriangleArray(const int size)
 void ModernOpenGLGraphics::drawTriangleArray(const GLint *const array,
                                              const int size)
 {
-//    logger->log("allocate: %d, %ld", mVboCached, size * sizeof(GLint));
+//    logger->log("allocate: %d, %ld", mVboBinded, size * sizeof(GLint));
     mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLint),
         array, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
@@ -1350,7 +1350,7 @@ void ModernOpenGLGraphics::drawTriangleArray(const GLint *const array,
 
 void ModernOpenGLGraphics::drawLineArrays(const int size)
 {
-//    logger->log("allocate: %d, %ld", mVboCached, size * sizeof(GLint));
+//    logger->log("allocate: %d, %ld", mVboBinded, size * sizeof(GLint));
     mglBufferData(GL_ARRAY_BUFFER, size * sizeof(GLint),
         mIntArray, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS

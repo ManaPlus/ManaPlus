@@ -67,7 +67,7 @@
     vVar[vp + 10] = static_cast<GLshort>(dstX + w); \
     vVar[vp + 11] = static_cast<GLshort>(dstY + h);
 
-GLuint MobileOpenGLGraphics::mLastImage = 0;
+GLuint MobileOpenGLGraphics::mTextureBinded = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int MobileOpenGLGraphics::mDrawCalls = 0;
 unsigned int MobileOpenGLGraphics::mLastDrawCalls = 0;
@@ -1096,7 +1096,7 @@ void MobileOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
     else
     {
-        mLastImage = 0;
+        mTextureBinded = 0;
         if (mAlpha && !mColorAlpha)
         {
             glDisable(GL_BLEND);
@@ -1222,9 +1222,9 @@ void MobileOpenGLGraphics::drawNet(const int x1, const int y1,
 void MobileOpenGLGraphics::bindTexture(const GLenum target,
                                        const GLuint texture)
 {
-    if (mLastImage != texture)
+    if (mTextureBinded != texture)
     {
-        mLastImage = texture;
+        mTextureBinded = texture;
         glBindTexture(target, texture);
     }
 }

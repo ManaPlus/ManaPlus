@@ -38,7 +38,7 @@
 
 #include "debug.h"
 
-GLuint SafeOpenGLGraphics::mLastImage = 0;
+GLuint SafeOpenGLGraphics::mTextureBinded = 0;
 
 SafeOpenGLGraphics::SafeOpenGLGraphics() :
     mTexture(false),
@@ -684,7 +684,7 @@ void SafeOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
     else
     {
-        mLastImage = 0;
+        mTextureBinded = 0;
         if (mAlpha && !mColorAlpha)
         {
             glDisable(GL_BLEND);
@@ -728,9 +728,9 @@ void SafeOpenGLGraphics::drawRectangle(const Rect& rect,
 
 void SafeOpenGLGraphics::bindTexture(const GLenum target, const GLuint texture)
 {
-    if (mLastImage != texture)
+    if (mTextureBinded != texture)
     {
-        mLastImage = texture;
+        mTextureBinded = texture;
         glBindTexture(target, texture);
     }
 }

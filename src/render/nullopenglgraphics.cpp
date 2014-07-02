@@ -38,7 +38,7 @@
 
 #include "debug.h"
 
-GLuint NullOpenGLGraphics::mLastImage = 0;
+GLuint NullOpenGLGraphics::mTextureBinded = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int NullOpenGLGraphics::mDrawCalls = 0;
 unsigned int NullOpenGLGraphics::mLastDrawCalls = 0;
@@ -1021,7 +1021,7 @@ void NullOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
     else
     {
-        mLastImage = 0;
+        mTextureBinded = 0;
         if (mAlpha && !mColorAlpha)
             mAlpha = false;
         else if (!mAlpha && mColorAlpha)
@@ -1099,8 +1099,8 @@ void NullOpenGLGraphics::drawNet(const int x1, const int y1,
 void NullOpenGLGraphics::bindTexture(const GLenum target A_UNUSED,
                                      const GLuint texture)
 {
-    if (mLastImage != texture)
-        mLastImage = texture;
+    if (mTextureBinded != texture)
+        mTextureBinded = texture;
 }
 
 inline void NullOpenGLGraphics::drawQuadArrayfi(const int size A_UNUSED)

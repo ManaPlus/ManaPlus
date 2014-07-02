@@ -131,9 +131,9 @@ class ModernOpenGLGraphics final : public Graphics
         GLuint mVao;
         GLuint mVbo;
         GLuint mEbo;
-        GLuint mVboCached;
-        GLuint mEboCached;
-        GLuint mAttributesCached;
+        GLuint mVboBinded;
+        GLuint mEboBinded;
+        GLuint mAttributesBinded;
         bool mColorAlpha;
         bool mTextureDraw;
 #ifdef DEBUG_BIND_TEXTURE

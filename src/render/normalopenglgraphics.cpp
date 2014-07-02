@@ -82,7 +82,7 @@ namespace
     const void *vertPtr = nullptr;
 }  // namespace
 
-GLuint NormalOpenGLGraphics::mLastImage = 0;
+GLuint NormalOpenGLGraphics::mTextureBinded = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int NormalOpenGLGraphics::mDrawCalls = 0;
 unsigned int NormalOpenGLGraphics::mLastDrawCalls = 0;
@@ -1429,7 +1429,7 @@ void NormalOpenGLGraphics::setTexturingAndBlending(const bool enable)
     }
     else
     {
-        mLastImage = 0;
+        mTextureBinded = 0;
         if (mAlpha && !mColorAlpha)
         {
             glDisable(GL_BLEND);
@@ -1534,9 +1534,9 @@ void NormalOpenGLGraphics::drawNet(const int x1, const int y1,
 void NormalOpenGLGraphics::bindTexture(const GLenum target,
                                        const GLuint texture)
 {
-    if (mLastImage != texture)
+    if (mTextureBinded != texture)
     {
-        mLastImage = texture;
+        mTextureBinded = texture;
         glBindTexture(target, texture);
 #ifdef DEBUG_BIND_TEXTURE
         mBinds ++;

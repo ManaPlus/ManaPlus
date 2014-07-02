@@ -45,7 +45,7 @@ public:
 
     static void bindTexture(const GLenum target, const GLuint texture);
 
-    static GLuint mLastImage;
+    static GLuint mTextureBinded;
 
 protected:
     void setTexturingAndBlending(const bool enable);
