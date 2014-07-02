@@ -304,7 +304,11 @@ DefaultsData* getConfigDefaults()
     AddDEF("hideErased", false);
     AddDEF("enableDelayedAnimations", true);
     AddDEF("enableCompoundSpriteDelay", true);
+#ifdef ANDROID
+    AddDEF("useAtlases", false);
+#else
     AddDEF("useAtlases", true);
+#endif
     AddDEF("useTextureSampler", false);
     AddDEF("ministatussaved", 0);
     AddDEF("allowscreensaver", false);
