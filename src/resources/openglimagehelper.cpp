@@ -388,8 +388,8 @@ void OpenGLImageHelper::copySurfaceToImage(Image *const image,
     SDL_Surface *const oldSurface = surface;
     surface = convertSurface(surface, surface->w, surface->h);
 
-    bindTexture(image->mGLImage);
-    glTexSubImage2D(mTextureType, 0,
+    mglTextureSubImage2D(image->mGLImage,
+        mTextureType, 0,
         x, y,
         surface->w, surface->h,
         GL_RGBA, GL_UNSIGNED_BYTE, surface->pixels);
