@@ -607,6 +607,8 @@ impHandler0(changeGameModifier)
 impHandler0(changeAudio)
 {
     soundManager.changeAudio();
+    if (player_node)
+        player_node->updateMusic();
     return true;
 }
 

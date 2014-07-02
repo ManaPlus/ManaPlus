@@ -3126,6 +3126,23 @@ void LocalPlayer::navigateClean()
     tmpLayer->clean();
 }
 
+void LocalPlayer::updateMusic()
+{
+    if (mMap)
+    {
+        std::string str = mMap->getObjectData(mX, mY, MapItemType::MUSIC);
+        if (str.empty())
+            str = mMap->getMusicFile();
+        if (str != soundManager.getCurrentMusicFile())
+        {
+            if (str.empty())
+                soundManager.fadeOutMusic();
+            else
+                soundManager.fadeOutAndPlayMusic(str);
+        }
+    }
+}
+
 void LocalPlayer::updateCoords()
 {
     Being::updateCoords();
@@ -3141,20 +3158,7 @@ void LocalPlayer::updateCoords()
             socialWindow->updatePortals();
         if (viewport)
             viewport->hideBeingPopup();
-        if (mMap)
-        {
-            std::string str = mMap->getObjectData(mX, mY,
-                MapItemType::MUSIC);
-            if (str.empty())
-                str = mMap->getMusicFile();
-            if (str != soundManager.getCurrentMusicFile())
-            {
-                if (str.empty())
-                    soundManager.fadeOutMusic();
-                else
-                    soundManager.fadeOutAndPlayMusic(str);
-            }
-        }
+        updateMusic();
     }
 
     if (mShowNavigePath)

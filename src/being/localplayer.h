@@ -496,6 +496,8 @@ class LocalPlayer final : public Being,
                          const int oldVal1,
                          const int oldVal2) override final;
 
+        void updateMusic();
+
     protected:
         void updateCoords() override final;
 
