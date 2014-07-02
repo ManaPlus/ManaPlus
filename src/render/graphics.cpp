@@ -504,6 +504,7 @@ bool Graphics::resizeScreen(const int width, const int height)
     // +++ need impliment resize in soft mode
 #endif  // USE_OPENGL
 
+    screenResized();
     beginDraw();
     return true;
 
@@ -527,6 +528,7 @@ bool Graphics::resizeScreen(const int width, const int height)
         }
     }
 
+    screenResized();
     beginDraw();
 
     return success;

@@ -60,6 +60,8 @@ namespace SDL
     void *createGLContext(SDL_Surface *const window A_UNUSED,
                           const int major,
                           const int minor);
+
+    void makeCurrentContext(void *const context);
 }  // namespace SDL
 
 #endif  // USE_SDL2

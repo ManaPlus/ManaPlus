@@ -31,10 +31,14 @@
 
 namespace GlxHelper
 {
-    void *createContext(unsigned int window,
+    void *createContext(const unsigned int window,
                         void *const display,
                         const int major,
                         const int minor);
+
+    bool makeCurrent(const unsigned int window,
+                     void *const display,
+                     void *const context);
 }  // namespace Glx
 
 #endif  // defined(USE_OPENGL) && defined(USE_X11)

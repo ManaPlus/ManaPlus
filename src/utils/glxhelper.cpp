@@ -36,7 +36,7 @@ static int ErrorHandler(Display *d A_UNUSED, XErrorEvent *e A_UNUSED)
     return 0;
 }
 
-void *GlxHelper::createContext(unsigned int window,
+void *GlxHelper::createContext(const unsigned int window,
                                void *const display0,
                                const int major,
                                const int minor)
@@ -115,6 +115,13 @@ void *GlxHelper::createContext(unsigned int window,
 //    mglXDestroyContext(display, context);
     logger->log("Context for %d.%d created", major, minor);
     return context2;
+}
+
+bool GlxHelper::makeCurrent(const unsigned int window,
+                            void *const display,
+                            void *const context)
+{
+    return mglXMakeCurrent(static_cast<Display*>(display), window, context);
 }
 
 #endif  // defined(USE_OPENGL) && defined(USE_X11)

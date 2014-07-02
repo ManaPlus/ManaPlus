@@ -117,6 +117,11 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
 ModernOpenGLGraphics::~ModernOpenGLGraphics()
 {
     deleteArraysInternal();
+    deleteGLObjects();
+}
+
+void ModernOpenGLGraphics::deleteGLObjects()
+{
     if (mProgram)
         mProgram->decRef();
     if (mVbo)
@@ -191,14 +196,18 @@ void ModernOpenGLGraphics::postInit()
 //    mglVertexAttribIPointer(mPosAttrib, 4, GL_INT, 4 * sizeof(GLint), 0);
     mAttributesCached = mVbo;
 
-    screenResized();
+    mglUniform2f(mScreenUniform,
+        static_cast<float>(mWidth) / 2.0f,
+        static_cast<float>(mHeight) / 2.0f);
 }
 
 void ModernOpenGLGraphics::screenResized()
 {
-    mglUniform2f(mScreenUniform,
-        static_cast<float>(mWidth) / 2.0f,
-        static_cast<float>(mHeight) / 2.0f);
+    deleteGLObjects();
+    mVboCached = 0U;
+    mEboCached = 0U;
+    mAttributesCached = 0U;
+    postInit();
 }
 
 void ModernOpenGLGraphics::deleteArrays()
@@ -1261,7 +1270,10 @@ void ModernOpenGLGraphics::clearScreen() const
 
 void ModernOpenGLGraphics::createGLContext()
 {
-    mGLContext = SDL::createGLContext(mWindow, 3, 3);
+    if (mGLContext)
+        SDL::makeCurrentContext(mGLContext);
+    else
+        mGLContext = SDL::createGLContext(mWindow, 3, 3);
 }
 
 void ModernOpenGLGraphics::finalize(ImageCollection *const col)

@@ -167,6 +167,9 @@ class Graphics notfinal
          */
         virtual bool resizeScreen(const int width, const int height);
 
+        virtual void restoreContext()
+        { }
+
         /**
          * Draws a resclaled version of the image
          */
@@ -466,6 +469,9 @@ class Graphics notfinal
 
         virtual void removeArray(const uint32_t sz A_UNUSED,
                                  uint32_t *const arr A_UNUSED)
+        { }
+
+        virtual void screenResized()
         { }
 
         int mWidth;

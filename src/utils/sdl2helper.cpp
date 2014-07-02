@@ -126,4 +126,8 @@ void *SDL::createGLContext(SDL_Window *const window,
     return context;
 }
 
+void SDL::makeCurrentContext(void *const context A_UNUSED)
+{
+}
+
 #endif  // USE_SDL2

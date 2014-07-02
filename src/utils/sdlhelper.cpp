@@ -140,12 +140,26 @@ void *SDL::createGLContext(SDL_Surface *const window A_UNUSED,
     }
     return context;
 }
+
+void SDL::makeCurrentContext(void *const context)
+{
+    SDL_SysWMinfo info;
+    SDL_VERSION(&info.version);
+    SDL_GetWMInfo(&info);
+    GlxHelper::makeCurrent(info.info.x11.window,
+        info.info.x11.display,
+        context);
+}
 #else
 void *SDL::createGLContext(SDL_Surface *const window A_UNUSED,
                            const int major A_UNUSED,
                            const int minor A_UNUSED)
 {
     return nullptr;
+}
+
+void SDL::makeCurrentContext(void *const context A_UNUSED)
+{
 }
 #endif
 

@@ -64,7 +64,7 @@ class ModernOpenGLGraphics final : public Graphics
         void setColorAll(const Color &color,
                          const Color &color2) override final;
 
-        void screenResized();
+        void screenResized() override final;
 
         void finalize(ImageCollection *const col) override final;
 
@@ -85,6 +85,8 @@ class ModernOpenGLGraphics final : public Graphics
         virtual void createGLContext() override final;
 
     private:
+        void deleteGLObjects();
+
         inline void drawQuad(const Image *const image,
                              const int srcX, const int srcY,
                              const int dstX, const int dstY,
