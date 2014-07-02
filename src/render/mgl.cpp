@@ -107,6 +107,7 @@ defName(glEndQuery);
 defName(glDeleteQueries);
 defName(glGetQueryObjectiv);
 defName(glGetQueryObjectui64v);
+defName(glTextureSubImage2D);
 
 #ifdef WIN32
 defName(wglGetExtensionsString);

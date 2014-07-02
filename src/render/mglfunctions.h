@@ -43,5 +43,20 @@
     else \
         logger->log(std::string("assigned function: ") + name);
 
+#define assignFunctionEmu(func, name) m##func \
+    = reinterpret_cast<func##_t>(getFunction(name)); \
+    if (m##func == nullptr) \
+    { \
+        m##func = emu##func; \
+        logger->log(std::string("emulated function: ") + name); \
+    } \
+    else \
+    { \
+        logger->log(std::string("assigned function: ") + name); \
+    }
+
+#define emulateFunction(func) m##func = emu##func; \
+    logger->log("emulated function: #func")
+
 #endif  // USE_OPENGL
 #endif  // RENDER_MGLFUNCTIONS_H

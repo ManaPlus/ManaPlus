@@ -44,6 +44,7 @@
 
 #include "render/graphics.h"
 #include "render/mgl.h"
+#include "render/mglemu.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/modernopenglgraphics.h"
 #include "render/normalopenglgraphics.h"
@@ -842,6 +843,7 @@ void GraphicsManager::initOpenGLFunctions()
     const bool is42 = checkGLVersion(4, 2);
     const bool is43 = checkGLVersion(4, 3);
     const bool is44 = checkGLVersion(4, 4);
+    const bool isDao = supportExtension("GL_EXT_direct_state_access");
     mSupportModernOpengl = true;
 
     // Texture sampler
@@ -865,6 +867,17 @@ void GraphicsManager::initOpenGLFunctions()
 
     if (!is11)
         return;
+
+    if (isDao)
+    {
+        logger->log1("found GL_EXT_direct_state_access");
+        assignFunctionEmu(glTextureSubImage2D, "glTextureSubImage2DEXT");
+    }
+    else
+    {
+        logger->log1("GL_EXT_direct_state_access not found");
+        emulateFunction(glTextureSubImage2D);
+    }
 
     if (is12 && (is42 || supportExtension("GL_ARB_texture_storage")))
     {

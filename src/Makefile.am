@@ -971,6 +971,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      render/mgl.cpp \
 	      render/mgl.h \
 	      render/mgldefines.h \
+	      render/mglemu.cpp \
+	      render/mglemu.h \
 	      render/mglfunctions.h \
 	      render/mgltypes.h \
 	      render/mglx.cpp \
