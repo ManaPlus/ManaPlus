@@ -62,6 +62,10 @@
 #include "net/inventoryhandler.h"
 #include "net/net.h"
 
+#include "resources/iteminfo.h"
+
+#include "resources/db/itemdb.h"
+
 #include "utils/delete2.h"
 
 #include <string>
@@ -639,24 +643,8 @@ void InventoryWindow::updateButtons(const Item *item)
 
     if (mUseButton)
     {
-        if (item->isEquipment())
-        {
-            if (item->isEquipped())
-            {
-                // TRANSLATORS: inventory button
-                mUseButton->setCaption(_("Unequip"));
-            }
-            else
-            {
-                // TRANSLATORS: inventory button
-                mUseButton->setCaption(_("Equip"));
-            }
-        }
-        else
-        {
-            // TRANSLATORS: inventory button
-            mUseButton->setCaption(_("Use"));
-        }
+        const ItemInfo &info = item->getInfo();
+        mUseButton->setCaption(info.getUseButton());
     }
 
     updateDropButton();
