@@ -39,6 +39,8 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
+#include "utils/translation/podict.h"
+
 #include "debug.h"
 
 namespace
@@ -133,7 +135,7 @@ static std::string useButtonFromItemType(const ItemType::Type &type)
     {
         const ItemTypeMap &item = itemTypeMap[f];
         if (item.type == type)
-            return gettext(item.useButton.c_str());
+            return translator->getStr(item.useButton.c_str());
     }
     logger->log("Unknown item type");
     return std::string();
@@ -146,7 +148,7 @@ static std::string useButton2FromItemType(const ItemType::Type &type)
     {
         const ItemTypeMap &item = itemTypeMap[f];
         if (item.type == type)
-            return gettext(item.useButton2.c_str());
+            return translator->getStr(item.useButton2.c_str());
     }
     logger->log("Unknown item type");
     return std::string();
