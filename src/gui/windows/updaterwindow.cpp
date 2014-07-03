@@ -70,6 +70,8 @@ const std::string updateServer3
     ("http://download.manaplus.org/manaplus/updates/");
 const std::string updateServer4
     ("http://download2.manaplus.org/manaplus/updates/");
+const std::string updateServer5
+    ("http://download3.manaplus.org/manaplus/updates/");
 
 /**
  * Load the given file into a vector of updateFiles.
@@ -566,6 +568,8 @@ void UpdaterWindow::download()
             + mCurrentFile);
         mDownload->addMirror("http://www2.manaplus.org/update/"
             + mCurrentFile);
+        mDownload->addMirror("http://www3.manaplus.org/update/"
+            + mCurrentFile);
     }
     else
     {
@@ -577,10 +581,10 @@ void UpdaterWindow::download()
         if (mDownloadStatus == UPDATE_LIST2
             || mDownloadStatus == UPDATE_RESOURCES2)
         {
-            mDownload->addMirror(updateServer3 + mUpdateServerPath
-                + "/" + mCurrentFile);
-            mDownload->addMirror(updateServer4 + mUpdateServerPath
-                + "/" + mCurrentFile);
+            const std::string str = mUpdateServerPath + "/" + mCurrentFile;
+            mDownload->addMirror(updateServer3 + str);
+            mDownload->addMirror(updateServer4 + str);
+            mDownload->addMirror(updateServer5 + str);
         }
         else
         {
