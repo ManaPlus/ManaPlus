@@ -642,7 +642,8 @@ void InventoryWindow::updateButtons(const Item *item)
     if (mUseButton)
     {
         const ItemInfo &info = item->getInfo();
-        const std::string &str = info.getUseButton();
+        const std::string &str = (item->isEquipment() && item->isEquipped())
+            ? info.getUseButton2() : info.getUseButton();
         if (str.empty())
         {
             mUseButton->setEnabled(false);

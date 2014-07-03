@@ -102,6 +102,12 @@ class ItemInfo final
         const std::string &getUseButton() const A_WARN_UNUSED
         { return mUseButton; }
 
+        void setUseButton2(const std::string &str)
+        { mUseButton2 = str; }
+
+        const std::string &getUseButton2() const A_WARN_UNUSED
+        { return mUseButton2; }
+
         ItemType::Type getType() const A_WARN_UNUSED
         { return mType; }
 
@@ -274,6 +280,7 @@ class ItemInfo final
         std::string mDescription;   /**< Short description. */
         std::string mEffect;        /**< Description of effects. */
         std::string mUseButton;
+        std::string mUseButton2;
         ItemType::Type mType;       /**< Item type. */
         int mWeight;                /**< Weight in grams. */
         int mView;                  /**< Item ID of how this item looks. */

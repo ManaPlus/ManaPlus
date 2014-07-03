@@ -47,6 +47,7 @@ ItemInfo::ItemInfo() :
     mDescription(),
     mEffect(),
     mUseButton(),
+    mUseButton2(),
     mType(ItemType::UNUSABLE),
     mWeight(0),
     mView(0),

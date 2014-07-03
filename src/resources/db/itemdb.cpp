@@ -139,6 +139,19 @@ static std::string useButtonFromItemType(const ItemType::Type &type)
     return std::string();
 }
 
+static std::string useButton2FromItemType(const ItemType::Type &type)
+{
+    const size_t sz = sizeof(itemTypeMap) / sizeof(itemTypeMap[0]);
+    for (size_t f = 0; f < sz; f ++)
+    {
+        const ItemTypeMap &item = itemTypeMap[f];
+        if (item.type == type)
+            return gettext(item.useButton2.c_str());
+    }
+    logger->log("Unknown item type");
+    return std::string();
+}
+
 static void initStatic()
 {
     mConstructed = true;
@@ -257,6 +270,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         const int maxFloorOffset = XML::getIntProperty(
             node, "maxFloorOffset", mapTileSize, 0, mapTileSize);
         std::string useButton = XML::getProperty(node, "useButton", "");
+        std::string useButton2 = XML::getProperty(node, "useButton2", "");
         std::string colors;
         if (serverVersion >= 1)
         {
@@ -308,6 +322,9 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         if (useButton.empty())
             useButton = useButtonFromItemType(itemInfo->getType());
         itemInfo->setUseButton(useButton);
+        if (useButton2.empty())
+            useButton2 = useButton2FromItemType(itemInfo->getType());
+        itemInfo->setUseButton2(useButton2);
         itemInfo->addTag(mTags["All"]);
         itemInfo->setPet(pet);
         itemInfo->setProtected(XML::getBoolProperty(

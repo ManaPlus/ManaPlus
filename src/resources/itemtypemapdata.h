@@ -29,42 +29,75 @@
 
 ItemTypeMap itemTypeMap[] =
 {
-    // TRANSLATORS: inventory button
-    {"generic", ItemType::UNUSABLE, std::string()},
-    // TRANSLATORS: inventory button
-    {"other", ItemType::UNUSABLE, N_("Use")},
-    // TRANSLATORS: inventory button
-    {"usable", ItemType::USABLE, N_("Use")},
-    // TRANSLATORS: inventory button
-    {"equip-1hand", ItemType::EQUIPMENT_ONE_HAND_WEAPON, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"equip-2hand", ItemType::EQUIPMENT_TWO_HANDS_WEAPON, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"equip-torso", ItemType::EQUIPMENT_TORSO, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"equip-arms", ItemType::EQUIPMENT_ARMS, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"equip-head", ItemType::EQUIPMENT_HEAD, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"equip-legs", ItemType::EQUIPMENT_LEGS, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"equip-shield", ItemType::EQUIPMENT_SHIELD, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"equip-ring", ItemType::EQUIPMENT_RING, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"equip-charm", ItemType::EQUIPMENT_CHARM, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"equip-necklace", ItemType::EQUIPMENT_NECKLACE, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"equip-neck", ItemType::EQUIPMENT_NECKLACE, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"equip-feet", ItemType::EQUIPMENT_FEET, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"equip-ammo", ItemType::EQUIPMENT_AMMO, N_("Equip")},
-    // TRANSLATORS: inventory button
-    {"racesprite", ItemType::SPRITE_RACE, std::string()},
-    // TRANSLATORS: inventory button
-    {"hairsprite", ItemType::SPRITE_HAIR, std::string()},
+    {"generic", ItemType::UNUSABLE,
+        std::string(), std::string()
+    },
+    {"other", ItemType::UNUSABLE,
+        // TRANSLATORS: inventory button
+        N_("Use"), N_("Use")
+    },
+    {"usable", ItemType::USABLE,
+        // TRANSLATORS: inventory button
+        N_("Use"), N_("Use")
+    },
+    {"equip-1hand", ItemType::EQUIPMENT_ONE_HAND_WEAPON,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"equip-2hand", ItemType::EQUIPMENT_TWO_HANDS_WEAPON,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"equip-torso", ItemType::EQUIPMENT_TORSO,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"equip-arms", ItemType::EQUIPMENT_ARMS,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"equip-head", ItemType::EQUIPMENT_HEAD,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"equip-legs", ItemType::EQUIPMENT_LEGS,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"equip-shield", ItemType::EQUIPMENT_SHIELD,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"equip-ring", ItemType::EQUIPMENT_RING,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"equip-charm", ItemType::EQUIPMENT_CHARM,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"equip-necklace", ItemType::EQUIPMENT_NECKLACE,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"equip-neck", ItemType::EQUIPMENT_NECKLACE,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"equip-feet", ItemType::EQUIPMENT_FEET,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"equip-ammo", ItemType::EQUIPMENT_AMMO,
+        // TRANSLATORS: inventory button
+        N_("Equip"), N_("Unequip")
+    },
+    {"racesprite", ItemType::SPRITE_RACE,
+        std::string(), std::string()
+    },
+    {"hairsprite", ItemType::SPRITE_HAIR,
+        std::string(), std::string()
+    }
 };
 
 #endif  // RESOURCES_ITEMTYPEMAPDATA_H
