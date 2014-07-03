@@ -21,12 +21,15 @@
 #ifndef RESOURCES_ITEMTYPEMAP_H
 #define RESOURCES_ITEMTYPEMAP_H
 
+#include "resources/itemtype.h"
+
 #include "localconsts.h"
 
 struct ItemTypeMap final
 {
     std::string name;
     ItemType::Type type;
+    std::string useButton;
 };
 
 #endif  // RESOURCES_ITEMTYPEMAP_H
