@@ -698,6 +698,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/itemslot.h \
 	      resources/itemsoundevent.h \
 	      resources/itemtype.h \
+	      resources/itemtypemap.h \
+	      resources/itemtypemapdata.h \
 	      resources/db/mapdb.cpp \
 	      resources/db/mapdb.h \
 	      resources/db/moddb.cpp \

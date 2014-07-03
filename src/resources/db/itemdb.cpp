@@ -29,6 +29,7 @@
 
 #include "resources/beingcommon.h"
 #include "resources/iteminfo.h"
+#include "resources/itemtypemapdata.h"
 #include "resources/spritedirection.h"
 #include "resources/spritereference.h"
 
@@ -114,75 +115,15 @@ void ItemDB::setStatsList(const std::vector<ItemDB::Stat> &stats)
 
 static ItemType::Type itemTypeFromString(const std::string &name)
 {
-    if (name == "generic" || name == "other")
+    const size_t sz = sizeof(itemTypeMap) / sizeof(itemTypeMap[0]);
+    for (size_t f = 0; f < sz; f ++)
     {
-        return ItemType::UNUSABLE;
+        const ItemTypeMap &type = itemTypeMap[f];
+        if (type.name == name)
+            return type.type;
     }
-    else if (name == "usable")
-    {
-        return ItemType::USABLE;
-    }
-    else if (name == "equip-1hand")
-    {
-        return ItemType::EQUIPMENT_ONE_HAND_WEAPON;
-    }
-    else if (name == "equip-2hand")
-    {
-        return ItemType::EQUIPMENT_TWO_HANDS_WEAPON;
-    }
-    else if (name == "equip-torso")
-    {
-        return ItemType::EQUIPMENT_TORSO;
-    }
-    else if (name == "equip-arms")
-    {
-        return ItemType::EQUIPMENT_ARMS;
-    }
-    else if (name == "equip-head")
-    {
-        return ItemType::EQUIPMENT_HEAD;
-    }
-    else if (name == "equip-legs")
-    {
-        return ItemType::EQUIPMENT_LEGS;
-    }
-    else if (name == "equip-shield")
-    {
-        return ItemType::EQUIPMENT_SHIELD;
-    }
-    else if (name == "equip-ring")
-    {
-        return ItemType::EQUIPMENT_RING;
-    }
-    else if (name == "equip-charm")
-    {
-        return ItemType::EQUIPMENT_CHARM;
-    }
-    else if (name == "equip-necklace" || name == "equip-neck")
-    {
-        return ItemType::EQUIPMENT_NECKLACE;
-    }
-    else if (name == "equip-feet")
-    {
-        return ItemType::EQUIPMENT_FEET;
-    }
-    else if (name == "equip-ammo")
-    {
-        return ItemType::EQUIPMENT_AMMO;
-    }
-    else if (name == "racesprite")
-    {
-        return ItemType::SPRITE_RACE;
-    }
-    else if (name == "hairsprite")
-    {
-        return ItemType::SPRITE_HAIR;
-    }
-    else
-    {
-        logger->log("Unknown item type: " + name);
-        return ItemType::UNUSABLE;
-    }
+    logger->log("Unknown item type: " + name);
+    return ItemType::UNUSABLE;
 }
 
 static void initStatic()
