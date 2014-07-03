@@ -2797,29 +2797,19 @@ void PopupMenu::addProtection()
 
 void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
 {
-    if (item->isEquipment())
+    const ItemInfo &info = item->getInfo();
+    const std::string &str = (item->isEquipment() && item->isEquipped())
+        ? info.getUseButton2() : info.getUseButton();
+
+    if (str.empty())
     {
-        if (item->isEquipped())
-        {
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: unequip item
-            mBrowserBox->addRow("use", _("Unequip"));
-        }
-        else
-        {
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: use item
-            mBrowserBox->addRow("use", _("Equip"));
-        }
+        // TRANSLATORS: popup menu item
+        mBrowserBox->addRow("use", _("Use"));
     }
     else
     {
-        if (!isProtected)
-        {
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: use item
-            mBrowserBox->addRow("use", _("Use"));
-        }
+        // TRANSLATORS: popup menu item
+        mBrowserBox->addRow("use", str.c_str());
     }
 
     if (!isProtected)
