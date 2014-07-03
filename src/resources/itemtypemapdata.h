@@ -30,7 +30,7 @@
 ItemTypeMap itemTypeMap[] =
 {
     // TRANSLATORS: inventory button
-    {"generic", ItemType::UNUSABLE, N_("Use")},
+    {"generic", ItemType::UNUSABLE, std::string()},
     // TRANSLATORS: inventory button
     {"other", ItemType::UNUSABLE, N_("Use")},
     // TRANSLATORS: inventory button
@@ -62,9 +62,9 @@ ItemTypeMap itemTypeMap[] =
     // TRANSLATORS: inventory button
     {"equip-ammo", ItemType::EQUIPMENT_AMMO, N_("Equip")},
     // TRANSLATORS: inventory button
-    {"racesprite", ItemType::SPRITE_RACE, N_("Use")},
+    {"racesprite", ItemType::SPRITE_RACE, std::string()},
     // TRANSLATORS: inventory button
-    {"hairsprite", ItemType::SPRITE_HAIR, N_("Use")},
+    {"hairsprite", ItemType::SPRITE_HAIR, std::string()},
 };
 
 #endif  // RESOURCES_ITEMTYPEMAPDATA_H

@@ -630,21 +630,29 @@ void InventoryWindow::updateButtons(const Item *item)
     if (!item || item->getQuantity() == 0)
     {
         if (mUseButton)
-            mUseButton->setEnabled(true);
+            mUseButton->setEnabled(false);
         if (mDropButton)
-            mDropButton->setEnabled(true);
+            mDropButton->setEnabled(false);
         return;
     }
 
-    if (mUseButton)
-        mUseButton->setEnabled(true);
     if (mDropButton)
         mDropButton->setEnabled(true);
 
     if (mUseButton)
     {
         const ItemInfo &info = item->getInfo();
-        mUseButton->setCaption(info.getUseButton());
+        const std::string &str = info.getUseButton();
+        if (str.empty())
+        {
+            mUseButton->setEnabled(false);
+            mUseButton->setCaption(_("Use"));
+        }
+        else
+        {
+            mUseButton->setEnabled(true);
+            mUseButton->setCaption(str);
+        }
     }
 
     updateDropButton();
