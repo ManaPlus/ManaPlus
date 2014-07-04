@@ -23,6 +23,8 @@
 
 #include "resources/itemtype.h"
 
+#include <string>
+
 #include "localconsts.h"
 
 struct ItemTypeMap final

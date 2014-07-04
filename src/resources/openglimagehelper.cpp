@@ -169,14 +169,13 @@ SDL_Surface *OpenGLImageHelper::convertSurface(SDL_Surface *tmpImage,
     amask = 0xff000000;
 #endif
 
-    SDL_Surface *oldImage = nullptr;
     if (tmpImage->format->BitsPerPixel != 32
         || realWidth != width || realHeight != height
         || rmask != tmpImage->format->Rmask
         || gmask != tmpImage->format->Gmask
         || amask != tmpImage->format->Amask)
     {
-        oldImage = tmpImage;
+        SDL_Surface *oldImage = tmpImage;
 #ifdef USE_SDL2
         SDL_SetSurfaceBlendMode(oldImage, SDL_BLENDMODE_NONE);
 #endif

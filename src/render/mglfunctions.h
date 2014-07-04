@@ -36,23 +36,27 @@
     reinterpret_cast<const GLubyte*>(name))
 #endif
 
-#define assignFunction(func, name) m##func \
-    = reinterpret_cast<func##_t>(getFunction(name)); \
-    if (m##func == nullptr) \
-        logger->log(std::string("function not found: ") + name); \
-    else \
-        logger->log(std::string("assigned function: ") + name);
+#define assignFunction(func, name) \
+    { \
+        m##func = reinterpret_cast<func##_t>(getFunction(name)); \
+        if (m##func == nullptr) \
+            logger->log(std::string("function not found: ") + name); \
+        else \
+            logger->log(std::string("assigned function: ") + name); \
+    }
 
-#define assignFunctionEmu(func, name) m##func \
-    = reinterpret_cast<func##_t>(getFunction(name)); \
-    if (m##func == nullptr) \
+#define assignFunctionEmu(func, name) \
     { \
-        m##func = emu##func; \
-        logger->log(std::string("emulated function: ") + name); \
-    } \
-    else \
-    { \
-        logger->log(std::string("assigned function: ") + name); \
+        m##func = reinterpret_cast<func##_t>(getFunction(name)); \
+        if (m##func == nullptr) \
+        { \
+            m##func = emu##func; \
+            logger->log(std::string("emulated function: ") + name); \
+        } \
+        else \
+        { \
+            logger->log(std::string("assigned function: ") + name); \
+        } \
     }
 
 #define emulateFunction(func) m##func = emu##func; \

@@ -36,7 +36,7 @@ static int ErrorHandler(Display *d A_UNUSED, XErrorEvent *e A_UNUSED)
     return 0;
 }
 
-void *GlxHelper::createContext(const unsigned int window,
+void *GlxHelper::createContext(const unsigned long window,
                                void *const display0,
                                const int major,
                                const int minor)
@@ -61,7 +61,7 @@ void *GlxHelper::createContext(const unsigned int window,
         XSetErrorHandler(handler);
         return context;
     }
-    int glxAttribs[] = 
+    int glxAttribs[] =
     {
         GLX_RENDER_TYPE, GLX_RGBA_BIT,
         GLX_RED_SIZE, 3,
@@ -117,7 +117,7 @@ void *GlxHelper::createContext(const unsigned int window,
     return context2;
 }
 
-bool GlxHelper::makeCurrent(const unsigned int window,
+bool GlxHelper::makeCurrent(const unsigned long window,
                             void *const display,
                             void *const context)
 {

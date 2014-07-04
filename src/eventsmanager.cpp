@@ -205,16 +205,16 @@ void EventsManager::logEvent(const SDL_Event &event)
 {
     switch (event.type)
     {
-        case SDL_MOUSEMOTION:
-            logger->log("event: SDL_MOUSEMOTION: %d,%d,%d",
-                event.motion.state, event.motion.x, event.motion.y);
-            break;
 #ifdef USE_SDL2
 #define winEventLog(name, name2) \
     case name: \
         str = name2; \
         break
 
+        case SDL_MOUSEMOTION:
+            logger->log("event: SDL_MOUSEMOTION: %u,%u,%u",
+                event.motion.state, event.motion.x, event.motion.y);
+            break;
         case SDL_FINGERDOWN:
         {
             const SDL_TouchFingerEvent &touch = event.tfinger;
@@ -338,6 +338,10 @@ void EventsManager::logEvent(const SDL_Event &event)
             logger->log("SDL_APP_DIDENTERBACKGROUND");
             break;
 #else
+        case SDL_MOUSEMOTION:
+            logger->log("event: SDL_MOUSEMOTION: %u,%d,%d",
+                event.motion.state, event.motion.x, event.motion.y);
+            break;
         case SDL_KEYDOWN:
             logger->log("event: SDL_KEYDOWN: %d,%d,%d", event.key.state,
                 event.key.keysym.scancode, event.key.keysym.unicode);
@@ -407,7 +411,7 @@ void EventsManager::logEvent(const SDL_Event &event)
 #endif
 #endif
         default:
-            logger->log("event: other: %d", event.type);
+            logger->log("event: other: %u", event.type);
             break;
     };
 }

@@ -21,11 +21,13 @@
 #ifndef RESOURCES_ITEMTYPEMAPDATA_H
 #define RESOURCES_ITEMTYPEMAPDATA_H
 
-#include "localconsts.h"
-
 #include "utils/gettext.h"
 
 #include "resources/itemtypemap.h"
+
+#include <string>
+
+#include "localconsts.h"
 
 ItemTypeMap itemTypeMap[] =
 {

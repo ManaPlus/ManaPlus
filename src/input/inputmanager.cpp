@@ -602,8 +602,8 @@ bool InputManager::handleEvent(const SDL_Event &event)
             {
                 if (triggerAction(joystick->getActionVector(event)))
                 {
-                    return true;
                     BLOCK_END("InputManager::handleEvent")
+                    return true;
                 }
             }
             break;

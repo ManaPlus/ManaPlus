@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RENDER_MXGLINIT_H
-#define RENDER_MXGLINIT_H
+#ifndef RENDER_MGLXINIT_H
+#define RENDER_MGLXINIT_H
 
 #include "main.h"
 #if defined(USE_OPENGL) && defined(USE_X11)
@@ -30,4 +30,4 @@ namespace Glx
 }  // namespace Glx
 
 #endif  // defined(USE_OPENGL) && defined(USE_X11)
-#endif  // RENDER_MXGLINIT_H
+#endif  // RENDER_MGLXINIT_H

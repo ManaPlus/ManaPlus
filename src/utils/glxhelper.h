@@ -27,19 +27,17 @@
 
 #include "localconsts.h"
 
-//struct Display;
-
 namespace GlxHelper
 {
-    void *createContext(const unsigned int window,
+    void *createContext(const unsigned long window,
                         void *const display,
                         const int major,
                         const int minor);
 
-    bool makeCurrent(const unsigned int window,
+    bool makeCurrent(const unsigned long window,
                      void *const display,
                      void *const context);
-}  // namespace Glx
+}  // namespace GlxHelper
 
 #endif  // defined(USE_OPENGL) && defined(USE_X11)
 #endif  // UTILS_GLXHELPER_H

@@ -26,8 +26,6 @@
 
 #include "main.h"
 
-#include "resources/image.h"
-
 #include "debug.h"
 
 ImegeGraphics::ImegeGraphics() :
