@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-06-29 02:02+0300\n"
+"POT-Creation-Date: 2014-07-05 00:21+0300\n"
 "PO-Revision-Date: 2014-06-27 09:41+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/manaplus/"
@@ -21,12 +21,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. TRANSLATORS: disable trades message
-#: src/actionmanager.cpp:903
+#: src/actionmanager.cpp:905
 msgid "Ignoring incoming trade requests"
 msgstr "Et huomioi kaupankäyntipyyntöjä"
 
 #. TRANSLATORS: enable trades message
-#: src/actionmanager.cpp:913
+#: src/actionmanager.cpp:915
 msgid "Accepting incoming trade requests"
 msgstr "Hyväksyt kaupankäyntipyynnöt"
 
@@ -467,31 +467,31 @@ msgid "Game modifiers are unknown"
 msgstr "Pelimuokkaimet ovat tuntemattomia"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:3330
+#: src/being/localplayer.cpp:3334
 #, c-format
 msgid "Follow: %s"
 msgstr ""
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3336 src/being/localplayer.cpp:3361
+#: src/being/localplayer.cpp:3340 src/being/localplayer.cpp:3365
 msgid "Follow canceled"
 msgstr "Seuraaminen keskeytetty"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:3346
+#: src/being/localplayer.cpp:3350
 #, c-format
 msgid "Imitation: %s"
 msgstr ""
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3352 src/being/localplayer.cpp:3366
+#: src/being/localplayer.cpp:3356 src/being/localplayer.cpp:3370
 msgid "Imitation canceled"
 msgstr "Matkiminen keskeytetty"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:3712
+#: src/being/localplayer.cpp:3716
 #, c-format
 msgid "You see %s"
 msgstr ""
@@ -529,37 +529,37 @@ msgstr "Leijuva puhekupla"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: full button name
 #. TRANSLATORS: setup window name
-#: src/client.cpp:914 src/gui/windowmenu.cpp:164
+#: src/client.cpp:915 src/gui/windowmenu.cpp:164
 #: src/gui/windows/setupwindow.cpp:62
 msgid "Setup"
 msgstr "Asetukset"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:917 src/gui/widgets/tabs/setup_perfomance.cpp:53
+#: src/client.cpp:918 src/gui/widgets/tabs/setup_perfomance.cpp:53
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:920 src/gui/widgets/tabs/setup_video.cpp:104
+#: src/client.cpp:921 src/gui/widgets/tabs/setup_video.cpp:104
 msgid "Video"
 msgstr "Kuva"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:923 src/gui/widgets/tabs/setup_theme.cpp:121
+#: src/client.cpp:924 src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Teema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:926
+#: src/client.cpp:927
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: help window name
-#: src/client.cpp:929 src/gui/windowmenu.cpp:76
+#: src/client.cpp:930 src/gui/windowmenu.cpp:76
 #: src/gui/windows/helpwindow.cpp:52
 msgid "Help"
 msgstr "Apua"
@@ -574,41 +574,41 @@ msgstr "Apua"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:933 src/gui/popups/popupmenu.cpp:625
+#: src/client.cpp:934 src/gui/popups/popupmenu.cpp:625
 #: src/gui/popups/popupmenu.cpp:864 src/gui/windows/didyouknowwindow.cpp:81
-#: src/gui/windows/inventorywindow.cpp:229 src/gui/windows/npcdialog.cpp:72
+#: src/gui/windows/inventorywindow.cpp:231 src/gui/windows/npcdialog.cpp:72
 #: src/gui/windows/npcdialog.cpp:110 src/gui/windows/questswindow.cpp:75
 #: src/gui/windows/shopwindow.cpp:84
 msgid "Close"
 msgstr "Sulje"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1057
+#: src/client.cpp:1058
 msgid "Connecting to server"
 msgstr "Yhdistän palvelimeen"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1105
+#: src/client.cpp:1106
 msgid "Logging in"
 msgstr "Kirjaudun sisään"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1148
+#: src/client.cpp:1149
 msgid "Entering game world"
 msgstr "Siirryn pelimaailmaan"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1272
+#: src/client.cpp:1273
 msgid "Requesting characters"
 msgstr "Pyydän hahmoja"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1312
+#: src/client.cpp:1313
 msgid "Connecting to the game server"
 msgstr "Yhdistän pelipalvelimeen"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1324
+#: src/client.cpp:1325
 msgid "Changing game servers"
 msgstr "Vaihdan pelipalvelinta"
 
@@ -622,7 +622,7 @@ msgstr "Vaihdan pelipalvelinta"
 #. TRANSLATORS: unregister dialog. error message.
 #. TRANSLATORS: error message header
 #. TRANSLATORS: error message
-#: src/client.cpp:1379 src/client.cpp:1390 src/client.cpp:1576
+#: src/client.cpp:1380 src/client.cpp:1391 src/client.cpp:1577
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:158
 #: src/gui/windows/charcreatedialog.cpp:358
@@ -635,37 +635,37 @@ msgid "Error"
 msgstr "Virhe"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1402
+#: src/client.cpp:1403
 msgid "Requesting registration details"
 msgstr "Pyydän rekisteröitymisen yksityiskohtia"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1443
+#: src/client.cpp:1444
 msgid "Password Change"
 msgstr "Salasanan vaihto"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1445
+#: src/client.cpp:1446
 msgid "Password changed successfully!"
 msgstr "Salasana vaihdettu onnistuneesti!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1468
+#: src/client.cpp:1469
 msgid "Email Change"
 msgstr "Sähköpostin vaihto"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1470
+#: src/client.cpp:1471
 msgid "Email changed successfully!"
 msgstr "Sähköpostiosoite vaihdettu onnistuneesti!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1493
+#: src/client.cpp:1494
 msgid "Unregister Successful"
 msgstr "Tietojen poisto onnistui"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1495
+#: src/client.cpp:1496
 msgid "Farewell, come back any time..."
 msgstr "Näkemisiin, tule pian takaisin..."
 
@@ -1426,7 +1426,7 @@ msgstr "Luo ryhmä"
 #: src/gui/popups/popupmenu.cpp:2397 src/gui/popups/popupmenu.cpp:2419
 #: src/gui/popups/popupmenu.cpp:2442 src/gui/popups/popupmenu.cpp:2469
 #: src/gui/popups/popupmenu.cpp:2486 src/gui/popups/popupmenu.cpp:2757
-#: src/gui/popups/popupmenu.cpp:2893 src/gui/setupactiondata.h:1919
+#: src/gui/popups/popupmenu.cpp:2883 src/gui/setupactiondata.h:1919
 #: src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/changeemaildialog.cpp:57
 #: src/gui/windows/changepassworddialog.cpp:59
@@ -1438,7 +1438,7 @@ msgstr "Luo ryhmä"
 #: src/gui/windows/registerdialog.cpp:65 src/gui/windows/setupwindow.cpp:95
 #: src/gui/windows/textcommandeditor.cpp:88 src/gui/windows/textdialog.cpp:55
 #: src/gui/windows/unregisterdialog.cpp:56
-#: src/gui/windows/updaterwindow.cpp:191
+#: src/gui/windows/updaterwindow.cpp:193
 msgid "Cancel"
 msgstr "Peru"
 
@@ -1675,7 +1675,7 @@ msgstr ""
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
 #: src/gui/popups/popupmenu.cpp:573 src/gui/setupactiondata.h:2042
-#: src/gui/windowmenu.cpp:143 src/gui/windows/inventorywindow.cpp:195
+#: src/gui/windowmenu.cpp:143 src/gui/windows/inventorywindow.cpp:197
 #: src/gui/windows/outfitwindow.cpp:56
 msgid "Outfits"
 msgstr "Asukokonaisuudet"
@@ -1842,8 +1842,8 @@ msgstr "Lisää kaikki kauppaan"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: setup button
 #: src/gui/popups/popupmenu.cpp:1960 src/gui/popups/popupmenu.cpp:2090
-#: src/gui/popups/popupmenu.cpp:2131 src/gui/windows/inventorywindow.cpp:225
-#: src/gui/windows/inventorywindow.cpp:740 src/gui/windows/setupwindow.cpp:97
+#: src/gui/popups/popupmenu.cpp:2131 src/gui/windows/inventorywindow.cpp:227
+#: src/gui/windows/inventorywindow.cpp:735 src/gui/windows/setupwindow.cpp:97
 msgid "Store"
 msgstr "Varastoi"
 
@@ -1874,7 +1874,7 @@ msgstr "Varastoi kaikki"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get item from storage
 #. TRANSLATORS: storage button
-#: src/gui/popups/popupmenu.cpp:1989 src/gui/windows/inventorywindow.cpp:227
+#: src/gui/popups/popupmenu.cpp:1989 src/gui/windows/inventorywindow.cpp:229
 msgid "Retrieve"
 msgstr "Ota"
 
@@ -1904,11 +1904,14 @@ msgstr "Ota kaikki"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: use item
+#. TRANSLATORS: popup menu item
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: skills dialog button
-#: src/gui/popups/popupmenu.cpp:2052 src/gui/popups/popupmenu.cpp:2821
-#: src/gui/windows/inventorywindow.cpp:176
-#: src/gui/windows/inventorywindow.cpp:658 src/gui/windows/skilldialog.cpp:68
+#. TRANSLATORS: inventory button
+#: src/gui/popups/popupmenu.cpp:2052 src/gui/popups/popupmenu.cpp:2807
+#: src/gui/windows/inventorywindow.cpp:178
+#: src/gui/windows/inventorywindow.cpp:648 src/gui/windows/skilldialog.cpp:68
+#: src/resources/itemtypemapdata.h:39 src/resources/itemtypemapdata.h:43
 msgid "Use"
 msgstr "Käytä"
 
@@ -2083,35 +2086,16 @@ msgid "Protect item"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#. TRANSLATORS: unequip item
-#. TRANSLATORS: equipment window button
-#. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2806 src/gui/windows/equipmentwindow.cpp:72
-#: src/gui/windows/inventorywindow.cpp:178
-#: src/gui/windows/inventorywindow.cpp:647
-msgid "Unequip"
-msgstr "Poista varuste käytöstä"
-
-#. TRANSLATORS: popup menu item
-#. TRANSLATORS: use item
-#. TRANSLATORS: inventory button
-#. TRANSLATORS: outfits window button
-#: src/gui/popups/popupmenu.cpp:2812 src/gui/windows/inventorywindow.cpp:174
-#: src/gui/windows/inventorywindow.cpp:652 src/gui/windows/outfitwindow.cpp:63
-msgid "Equip"
-msgstr "Ota käyttöön"
-
-#. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2832 src/gui/windows/inventorywindow.cpp:191
-#: src/gui/windows/inventorywindow.cpp:748
+#: src/gui/popups/popupmenu.cpp:2822 src/gui/windows/inventorywindow.cpp:193
+#: src/gui/windows/inventorywindow.cpp:743
 msgid "Drop..."
 msgstr "Pudota..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop all item amount
-#: src/gui/popups/popupmenu.cpp:2835
+#: src/gui/popups/popupmenu.cpp:2825
 msgid "Drop all"
 msgstr "Pudota kaikki"
 
@@ -2119,56 +2103,56 @@ msgstr "Pudota kaikki"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2841 src/gui/windowmenu.cpp:131
-#: src/gui/windows/inventorywindow.cpp:753
+#: src/gui/popups/popupmenu.cpp:2831 src/gui/windowmenu.cpp:131
+#: src/gui/windows/inventorywindow.cpp:748
 msgid "Drop"
 msgstr "Pudota"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: split items
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2849 src/gui/windows/inventorywindow.cpp:193
+#: src/gui/popups/popupmenu.cpp:2839 src/gui/windows/inventorywindow.cpp:195
 msgid "Split"
 msgstr "Jaa"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm commands
-#: src/gui/popups/popupmenu.cpp:2859
+#: src/gui/popups/popupmenu.cpp:2849
 msgid "GM..."
 msgstr ""
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2867
+#: src/gui/popups/popupmenu.cpp:2857
 msgid "GM commands"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: check player ip
-#: src/gui/popups/popupmenu.cpp:2872
+#: src/gui/popups/popupmenu.cpp:2862
 msgid "Check ip"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: go to player position
-#: src/gui/popups/popupmenu.cpp:2875
+#: src/gui/popups/popupmenu.cpp:2865
 msgid "Goto"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: recall player to current position
-#: src/gui/popups/popupmenu.cpp:2878
+#: src/gui/popups/popupmenu.cpp:2868
 msgid "Recall"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/popups/popupmenu.cpp:2881
+#: src/gui/popups/popupmenu.cpp:2871
 msgid "Revive"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player
-#: src/gui/popups/popupmenu.cpp:2886
+#: src/gui/popups/popupmenu.cpp:2876
 msgid "Kick"
 msgstr "Potki"
 
@@ -3179,7 +3163,7 @@ msgstr ""
 
 #. TRANSLATORS: status window label
 #: src/gui/widgets/characterdisplay.cpp:142
-#: src/gui/windows/inventorywindow.cpp:571 src/gui/windows/statuswindow.cpp:74
+#: src/gui/windows/inventorywindow.cpp:573 src/gui/windows/statuswindow.cpp:74
 #: src/gui/windows/statuswindow.cpp:235 src/gui/windows/statuswindow.cpp:342
 #, c-format
 msgid "Money: %s"
@@ -4259,7 +4243,7 @@ msgstr ""
 #. TRANSLATORS: inventory button
 #: src/gui/widgets/tabs/setup_other.cpp:263 src/gui/windowmenu.cpp:139
 #: src/gui/windows/buyselldialog.cpp:39 src/gui/windows/buyselldialog.cpp:50
-#: src/gui/windows/inventorywindow.cpp:197
+#: src/gui/windows/inventorywindow.cpp:199
 msgid "Shop"
 msgstr "Kauppa"
 
@@ -5292,7 +5276,7 @@ msgstr "Var"
 #. TRANSLATORS: equipment window name
 #. TRANSLATORS: inventory button
 #: src/gui/windowmenu.cpp:101 src/gui/windows/equipmentwindow.cpp:64
-#: src/gui/windows/inventorywindow.cpp:199
+#: src/gui/windows/inventorywindow.cpp:201
 msgid "Equipment"
 msgstr "Varusteet"
 
@@ -5303,7 +5287,7 @@ msgstr "Tav"
 
 #. TRANSLATORS: inventory window name
 #. TRANSLATORS: inventory type name
-#: src/gui/windowmenu.cpp:104 src/gui/windows/inventorywindow.cpp:134
+#: src/gui/windowmenu.cpp:104 src/gui/windows/inventorywindow.cpp:136
 #: src/inventory.cpp:262
 msgid "Inventory"
 msgstr "Tavarat"
@@ -5690,7 +5674,7 @@ msgstr "Vaihda sisäänkirjautumistietoja"
 #. TRANSLATORS: updater window button
 #: src/gui/windows/charselectdialog.cpp:74
 #: src/gui/windows/charselectdialog.cpp:557
-#: src/gui/windows/updaterwindow.cpp:193
+#: src/gui/windows/updaterwindow.cpp:195
 msgid "Play"
 msgstr "Pelaa"
 
@@ -5867,10 +5851,37 @@ msgstr ""
 msgid "Fonts"
 msgstr ""
 
+#. TRANSLATORS: equipment window button
+#. TRANSLATORS: inventory button
+#: src/gui/windows/equipmentwindow.cpp:72
+#: src/gui/windows/inventorywindow.cpp:180 src/resources/itemtypemapdata.h:47
+#: src/resources/itemtypemapdata.h:51 src/resources/itemtypemapdata.h:55
+#: src/resources/itemtypemapdata.h:59 src/resources/itemtypemapdata.h:63
+#: src/resources/itemtypemapdata.h:67 src/resources/itemtypemapdata.h:71
+#: src/resources/itemtypemapdata.h:75 src/resources/itemtypemapdata.h:79
+#: src/resources/itemtypemapdata.h:83 src/resources/itemtypemapdata.h:87
+#: src/resources/itemtypemapdata.h:91 src/resources/itemtypemapdata.h:95
+msgid "Unequip"
+msgstr "Poista varuste käytöstä"
+
 #. TRANSLATORS: help window. button.
 #: src/gui/windows/helpwindow.cpp:55
 msgid "Did you know..."
 msgstr ""
+
+#. TRANSLATORS: inventory button
+#. TRANSLATORS: outfits window button
+#. TRANSLATORS: inventory button
+#: src/gui/windows/inventorywindow.cpp:176 src/gui/windows/outfitwindow.cpp:63
+#: src/resources/itemtypemapdata.h:47 src/resources/itemtypemapdata.h:51
+#: src/resources/itemtypemapdata.h:55 src/resources/itemtypemapdata.h:59
+#: src/resources/itemtypemapdata.h:63 src/resources/itemtypemapdata.h:67
+#: src/resources/itemtypemapdata.h:71 src/resources/itemtypemapdata.h:75
+#: src/resources/itemtypemapdata.h:79 src/resources/itemtypemapdata.h:83
+#: src/resources/itemtypemapdata.h:87 src/resources/itemtypemapdata.h:91
+#: src/resources/itemtypemapdata.h:95
+msgid "Equip"
+msgstr "Ota käyttöön"
 
 #. TRANSLATORS: item amount window button
 #: src/gui/windows/itemamountwindow.cpp:168
@@ -6678,36 +6689,36 @@ msgid "Name: %s"
 msgstr "Nimi: %s"
 
 #. TRANSLATORS: updater window name
-#: src/gui/windows/updaterwindow.cpp:172
+#: src/gui/windows/updaterwindow.cpp:174
 msgid "Updating..."
 msgstr "Päivitetään..."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:189
+#: src/gui/windows/updaterwindow.cpp:191
 msgid "Connecting..."
 msgstr "Yhdistetään..."
 
-#: src/gui/windows/updaterwindow.cpp:396
+#: src/gui/windows/updaterwindow.cpp:398
 msgid "Show all news (can be slow)"
 msgstr ""
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:820
+#: src/gui/windows/updaterwindow.cpp:824
 msgid "##1  The update process is incomplete."
 msgstr "##1  Päivitysprosessi keskeytyi"
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:822
+#: src/gui/windows/updaterwindow.cpp:826
 msgid "##1  It is strongly recommended that"
 msgstr "##1  Suosittelemme vahvasti että"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:824
+#: src/gui/windows/updaterwindow.cpp:828
 msgid "##1  you try again later."
 msgstr "##1  yrität myöhemmin uudelleen"
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:1001
+#: src/gui/windows/updaterwindow.cpp:1005
 msgid "Completed"
 msgstr "Valmis"
 
@@ -7553,43 +7564,43 @@ msgstr ""
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:50 src/resources/db/avatardb.cpp:88
-#: src/resources/db/itemdb.cpp:350 src/resources/db/moddb.cpp:78
+#: src/resources/db/itemdb.cpp:320 src/resources/db/moddb.cpp:78
 #: src/resources/db/monsterdb.cpp:106 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr "nimetön"
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:96
+#: src/resources/db/itemdb.cpp:98
 #, c-format
 msgid "Attack %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:98
+#: src/resources/db/itemdb.cpp:100
 #, c-format
 msgid "Defense %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:100
+#: src/resources/db/itemdb.cpp:102
 #, c-format
 msgid "HP %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:102
+#: src/resources/db/itemdb.cpp:104
 #, c-format
 msgid "MP %s"
 msgstr ""
 
 #. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:104
+#: src/resources/db/itemdb.cpp:106
 #, c-format
 msgid "Level %s"
 msgstr ""
 
 #. TRANSLATORS: item name
-#: src/resources/db/itemdb.cpp:228
+#: src/resources/db/itemdb.cpp:196
 msgid "Unknown item"
 msgstr "Tuntematon tavara"
 

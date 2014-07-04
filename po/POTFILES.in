@@ -137,6 +137,7 @@ src/resources/db/itemdb.cpp
 src/resources/db/moddb.cpp
 src/resources/db/monsterdb.cpp
 src/resources/db/petdb.cpp
+src/resources/itemtypemapdata.h
 src/resources/mapreader.cpp
 src/resources/modinfo.cpp
 src/resources/notifications.h
