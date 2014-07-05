@@ -866,7 +866,11 @@ void GraphicsManager::initOpenGLFunctions()
     }
 
     if (!is11)
+    {
+        mSupportModernOpengl = false;
+        emulateFunction(glTextureSubImage2D);
         return;
+    }
 
     if (isDao)
     {
