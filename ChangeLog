@@ -1,3 +1,20 @@
+2014-07-05 New release 1.4.7.5
+fix: vsync control on nvidia closed source drivers.
+fix: vsync control on Mesa.
+fix: social window drawing.
+fix: not use depricated OpenGL api in moder and mobile opengl.
+fix: possible crash with missing images.
+fix: OpenGL texture compression detection.
+fix: window resize in modern OpenGL.
+fix: background music if it was enabled by quick enable action ([3]).
+add: manual context creation in modern OpenGL.
+add: action for select closest monster without filter or priority.
+add: GPU way to copy images to atlases.
+add: use GL_EXT_direct_state_access OpenGL extension in atlases.
+add: disable by default texture atlases on Android.
+add: own action names for using items.
+add: another manaplus mirror in files downloading.
+
 2014-06-21 New release 1.4.6.21
 fix: chat window input field size if smiles button disabled.
 fix: make file for tmw branding.
