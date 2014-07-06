@@ -616,6 +616,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/generalhandler.h \
 	      net/guildhandler.h \
 	      net/inventoryhandler.h \
+	      net/ipc.cpp \
+	      net/ipc.h \
 	      net/ea/inventoryitem.h \
 	      net/logindata.h \
 	      net/loginhandler.h \

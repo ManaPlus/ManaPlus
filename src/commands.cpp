@@ -63,6 +63,7 @@
 #include "net/download.h"
 #include "net/gamehandler.h"
 #include "net/guildhandler.h"
+#include "net/ipc.h"
 #include "net/net.h"
 #include "net/uploadcharinfo.h"
 #include "net/partyhandler.h"
@@ -287,6 +288,26 @@ impHandler2(help)
             break;
     }
     helpWindow->requestMoveToTop();
+}
+
+impHandler0(ipcToggle)
+{
+    if (ipc)
+    {
+        IPC::stop();
+        if (!ipc)
+            debugChatTab->chatLog("IPC service stopped.");
+        else
+            debugChatTab->chatLog("Unable to stop IPC service.");
+    }
+    else
+    {
+        IPC::start();
+        if (ipc)
+            debugChatTab->chatLog(strprintf("IPC service available on port %d", ipc->port()));
+        else
+            debugChatTab->chatLog("Unable to start IPC service");
+    }
 }
 
 impHandler2(where)

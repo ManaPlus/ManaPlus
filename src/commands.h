@@ -53,6 +53,7 @@ namespace Commands
 {
     decHandler(announce);
     decHandler(help);
+    decHandler(ipcToggle);
     decHandler(where);
     decHandler(who);
     decHandler(msg);
@@ -146,6 +147,7 @@ enum
     COMMAND_IGNOREALL,
     COMMAND_HELP,
     COMMAND_ANNOUNCE,
+    COMMAND_IPC_TOGGLE,
     COMMAND_WHERE,
     COMMAND_WHO,
     COMMAND_MSG,
@@ -247,6 +249,7 @@ static const CommandInfo commands[] =
     {"ignoreall", &Commands::ignoreAll, -1, false},
     {"help", &Commands::help, -1, false},
     {"announce", &Commands::announce, -1, true},
+    {"ipctoggle", &Commands::ipcToggle, -1, false},
     {"where", &Commands::where, -1, false},
     {"who", &Commands::who, -1, false},
     {"msg", Commands::msg, -1, true},
