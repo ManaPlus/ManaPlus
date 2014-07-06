@@ -94,16 +94,30 @@ namespace
 
     static const FieldType fields[] =
     {
-        // TRANSLATORS: item info label
-        { "attack",  N_("Attack %s"),  true },
-        // TRANSLATORS: item info label
-        { "defense", N_("Defense %s"), true },
-        // TRANSLATORS: item info label
-        { "hp",      N_("HP %s"),      true },
-        // TRANSLATORS: item info label
-        { "mp",      N_("MP %s"),      true },
-        // TRANSLATORS: item info label
-        { "level",   N_("Level %s"),   false }
+        // TRANSLATORS: item info label (attack)
+        { "attack",   N_("Attack %s"),     true },
+        // TRANSLATORS: item info label (attack)
+        { "criticalattack", N_("Critical attack %s"), true },
+        // TRANSLATORS: item info label (magic attack)
+        { "mattack",  N_("M. Attack %s"),  true },
+        // TRANSLATORS: item info label (defence)
+        { "defense",  N_("Defense %s"),    true },
+        // TRANSLATORS: item info label (defence)
+        { "criticaldefense", N_("Critical defense %s"), true },
+        // TRANSLATORS: item info label (magic defence)
+        { "mdefense", N_("M. Defense %s"), true },
+        // TRANSLATORS: item info label (health)
+        { "hp",       N_("HP %s"),         true },
+        // TRANSLATORS: item info label (mana)
+        { "mp",       N_("MP %s"),         true },
+        // TRANSLATORS: item info label (level)
+        { "level",    N_("Level %s"),      false },
+        // TRANSLATORS: item info label (moving speed)
+        { "speed",    N_("Speed %s"),      true },
+        // TRANSLATORS: item info label (health)
+        { "range",    N_("Range %s"),      true },
+        // TRANSLATORS: item info label (health)
+        { "flee",     N_("Flee %s"),       true }
     };
 }  // namespace
 
