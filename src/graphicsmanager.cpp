@@ -681,6 +681,7 @@ void GraphicsManager::updateTextureFormat() const
             {
                 if (compressionFormat == 3)
                 {
+                    delete []formats;
                     OpenGLImageHelper::setInternalTextureType(
                         GL_COMPRESSED_RGBA_ARB);
                     logger->log1("using ARB texture compression");
