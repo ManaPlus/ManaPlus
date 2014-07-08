@@ -322,6 +322,7 @@ Section "Core files (required)" SecCore
   File "${SRCDIR}\data\translations\help\*.po"
   SetOutPath "$INSTDIR\data\help"
   File "${SRCDIR}\data\help\*.txt"
+  File "${SRCDIR}\data\help\*.idx"
   SetOutPath "$INSTDIR\data\help\tips"
   File "${SRCDIR}\data\help\tips\*.txt"
   File "${SRCDIR}\data\help\tips\*.jpg"
