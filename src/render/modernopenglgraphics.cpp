@@ -840,22 +840,9 @@ void ModernOpenGLGraphics::updateScreen()
 
 void ModernOpenGLGraphics::beginDraw()
 {
-    glEnable(GL_SCISSOR_TEST);
-    glDisable(GL_DITHER);
-    glDisable(GL_DEPTH_TEST);
-    glDisable(GL_COLOR_LOGIC_OP);
-    glDisable(GL_STENCIL_TEST);
-    glDisable(GL_LINE_SMOOTH);
-    glDisable(GL_POLYGON_SMOOTH);
-
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-#ifndef ANDROID
-#ifndef __MINGW32__
-    glHint(GL_TEXTURE_COMPRESSION_HINT, GL_FASTEST);
-#endif
-#endif
-
+    setOpenGLFlags();
+    glDisable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
+    glHint(GL_FRAGMENT_SHADER_DERIVATIVE_HINT_ARB, GL_FASTEST);
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
 

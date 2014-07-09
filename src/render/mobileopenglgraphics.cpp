@@ -886,18 +886,12 @@ void MobileOpenGLGraphics::beginDraw()
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    glEnable(GL_SCISSOR_TEST);
-    glDisable(GL_DITHER);
+    setOpenGLFlags();
     glDisable(GL_LIGHTING);
-    glDisable(GL_DEPTH_TEST);
     glDisable(GL_FOG);
-    glDisable(GL_COLOR_LOGIC_OP);
     glDisable(GL_COLOR_MATERIAL);
-    glDisable(GL_STENCIL_TEST);
 
     glShadeModel(GL_FLAT);
-
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glEnableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -907,12 +901,7 @@ void MobileOpenGLGraphics::beginDraw()
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
     glHint(GL_POINT_SMOOTH_HINT, GL_FASTEST);
     glHint(GL_POLYGON_SMOOTH_HINT, GL_FASTEST);
-#ifndef __MINGW32__
-    glHint(GL_TEXTURE_COMPRESSION_HINT, GL_FASTEST);
 #endif
-#endif
-
-//    glScalef(0.5F, 0.5F, 0.5F);
 
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }

@@ -492,18 +492,12 @@ void SafeOpenGLGraphics::beginDraw()
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    glEnable(GL_SCISSOR_TEST);
-    glDisable(GL_DITHER);
+    setOpenGLFlags();
     glDisable(GL_LIGHTING);
-    glDisable(GL_DEPTH_TEST);
     glDisable(GL_FOG);
-    glDisable(GL_COLOR_LOGIC_OP);
     glDisable(GL_COLOR_MATERIAL);
-    glDisable(GL_STENCIL_TEST);
 
     glShadeModel(GL_FLAT);
-
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }

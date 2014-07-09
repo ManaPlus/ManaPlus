@@ -92,6 +92,12 @@
 #define GL_INFO_LOG_LENGTH                0x8B84
 #endif
 
+#ifndef GL_DEPTH_CLAMP
+#define GL_DEPTH_CLAMP                    0x864F
+#define GL_RASTERIZER_DISCARD             0x8C89
+#define GL_SAMPLE_MASK                    0x8E51
+#endif
+
 #endif  // USE_OPENGL
 
 #endif  // RENDER_MGLDEFINES_H

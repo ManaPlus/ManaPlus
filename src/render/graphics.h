@@ -505,6 +505,8 @@ class Graphics notfinal
 
 #ifdef USE_OPENGL
         virtual void createGLContext();
+
+        void setOpenGLFlags();
 #endif
         /**
          * Holds the clip area stack.

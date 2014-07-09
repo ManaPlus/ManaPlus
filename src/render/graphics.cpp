@@ -80,6 +80,7 @@
 #ifdef __APPLE__
 #include <OpenGL/OpenGL.h>
 #endif
+#include "render/mgldefines.h"
 #endif
 
 #include "debug.h"
@@ -638,3 +639,31 @@ const ClipRect *Graphics::getCurrentClipArea() const
 
     return &mClipStack.top();
 }
+
+#ifdef USE_OPENGL
+void Graphics::setOpenGLFlags()
+{
+    glEnable(GL_SCISSOR_TEST);
+
+    glDisable(GL_MULTISAMPLE);
+    glDisable(GL_DITHER);
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_LINE_SMOOTH);
+    glDisable(GL_POLYGON_SMOOTH);
+    glDisable(GL_STENCIL_TEST);
+    glDisable(GL_COLOR_LOGIC_OP);
+    glDisable(GL_DEPTH_BOUNDS_TEST_EXT);
+    glDisable(GL_DEPTH_CLAMP);
+    glDisable(GL_RASTERIZER_DISCARD);
+    glDisable(GL_SAMPLE_MASK);
+
+#ifndef ANDROID
+#ifndef __MINGW32__
+    glHint(GL_TEXTURE_COMPRESSION_HINT, GL_FASTEST);
+#endif
+#endif
+    glHint(GL_TEXTURE_COMPRESSION_HINT_ARB, GL_FASTEST);
+
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+}
+#endif
