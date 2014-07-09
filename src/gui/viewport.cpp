@@ -79,7 +79,7 @@ Viewport::Viewport() :
     mMousePressY(0),
     mPixelViewX(0),
     mPixelViewY(0),
-    mShowDebugPath(MapType::NORMAL),
+    mMapDrawType(MapType::NORMAL),
     mCameraMode(0),
     mLocalWalkTime(-1),
     mCameraRelativeX(0),
@@ -122,7 +122,7 @@ Viewport::~Viewport()
 void Viewport::setMap(Map *const map)
 {
     if (mMap && map)
-        map->setDebugFlags(mMap->getDebugFlags());
+        map->setDrawLayersFlags(mMap->getDrawLayersFlags());
     mMap = map;
 }
 
@@ -237,11 +237,14 @@ void Viewport::draw(Graphics *graphics)
     // Draw tiles and sprites
     mMap->draw(graphics, mPixelViewX, mPixelViewY);
 
-    if (mShowDebugPath)
+    if (mMapDrawType != MapType::NORMAL)
     {
-        mMap->drawCollision(graphics, mPixelViewX,
-            mPixelViewY, mShowDebugPath);
-        if (mShowDebugPath == MapType::DEBUG)
+        if (mMapDrawType != MapType::SPECIAL4)
+        {
+            mMap->drawCollision(graphics, mPixelViewX,
+                mPixelViewY, mMapDrawType);
+        }
+        if (mMapDrawType == MapType::DEBUG)
             drawDebugPath(graphics);
     }
 
@@ -990,13 +993,13 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
     }
 }
 
-void Viewport::toggleDebugPath()
+void Viewport::toggleMapDrawType()
 {
-    mShowDebugPath++;
-    if (mShowDebugPath > MapType::BLACKWHITE)
-        mShowDebugPath = MapType::NORMAL;
+    mMapDrawType++;
+    if (mMapDrawType > MapType::BLACKWHITE)
+        mMapDrawType = MapType::NORMAL;
     if (mMap)
-        mMap->setDebugFlags(mShowDebugPath);
+        mMap->setDrawLayersFlags(mMapDrawType);
 }
 
 void Viewport::toggleCameraMode()

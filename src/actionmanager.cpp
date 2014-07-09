@@ -884,7 +884,7 @@ impHandler0(updaterWindowShow)
 impHandler0(changeMapMode)
 {
     if (viewport)
-        viewport->toggleDebugPath();
+        viewport->toggleMapDrawType();
     UpdateStatusListener::distributeEvent();
     if (Game::instance())
     {

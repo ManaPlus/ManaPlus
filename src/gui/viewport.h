@@ -96,7 +96,7 @@ class Viewport final : public WindowContainer,
          * debug with all images and grid, debug with out big images
          * and with out grid.
          */
-        void toggleDebugPath();
+        void toggleMapDrawType();
 
         void toggleCameraMode();
 
@@ -242,11 +242,11 @@ class Viewport final : public WindowContainer,
         void scrollBy(const int x, const int y)
         { mPixelViewX += x; mPixelViewY += y; }
 
-        int getDebugPath() const A_WARN_UNUSED
-        { return mShowDebugPath; }
+        int getMapDrawType() const A_WARN_UNUSED
+        { return mMapDrawType; }
 
-        void setDebugPath(const int n)
-        { mShowDebugPath = n; }
+        void setMapDrawType(const int n)
+        { mMapDrawType = n; }
 
         int getCameraMode() const A_WARN_UNUSED
         { return mCameraMode; }
@@ -344,7 +344,7 @@ class Viewport final : public WindowContainer,
         int mMousePressY;
         int mPixelViewX;            /**< Current viewpoint in pixels. */
         int mPixelViewY;            /**< Current viewpoint in pixels. */
-        int mShowDebugPath;         /**< Show a path from player to pointer. */
+        int mMapDrawType;         /**< Show a path from player to pointer. */
         int mCameraMode;            /**< Camera mode. */
 
         int mLocalWalkTime; /**< Timestamp before the next walk can be sent. */

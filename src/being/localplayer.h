@@ -468,7 +468,7 @@ class LocalPlayer final : public Being,
 
         std::string getPickUpTypeString();
 
-        static std::string getDebugPathString();
+        static std::string getMapDrawTypeString();
 
         std::string getMagicAttackString();
 

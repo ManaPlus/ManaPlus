@@ -32,7 +32,8 @@ namespace MapType
         SPECIAL = 2,
         SPECIAL2 = 3,
         SPECIAL3 = 4,
-        BLACKWHITE = 5
+        SPECIAL4 = 5,
+        BLACKWHITE = 6
     };
 }
 

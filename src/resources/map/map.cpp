@@ -89,7 +89,7 @@ Map::Map(const int width, const int height,
     mTilesets(),
     mActors(),
     mHasWarps(false),
-    mDebugFlags(MapType::NORMAL),
+    mDrawLayersFlags(MapType::NORMAL),
     mOnClosedList(1),
     mOnOpenList(2),
     mBackgrounds(),
@@ -340,7 +340,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     // Draw backgrounds
     drawAmbientLayers(graphics, BACKGROUND_LAYERS, mOverlayDetail);
 
-    if (mDebugFlags == MapType::BLACKWHITE && userPalette)
+    if (mDrawLayersFlags == MapType::BLACKWHITE && userPalette)
     {
         graphics->setColor(userPalette->getColorWithAlpha(
             UserPalette::WALKABLE_HIGHLIGHT));
@@ -378,14 +378,16 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
     }
 #endif
 
-    if (mDebugFlags == MapType::SPECIAL3 || mDebugFlags == MapType::BLACKWHITE)
+    if (mDrawLayersFlags == MapType::SPECIAL3
+        || mDrawLayersFlags == MapType::SPECIAL4
+        || mDrawLayersFlags == MapType::BLACKWHITE)
     {
         if (mFringeLayer)
         {
             mFringeLayer->setSpecialLayer(mSpecialLayer);
             mFringeLayer->setTempLayer(mTempLayer);
             mFringeLayer->drawFringe(graphics, startX, startY, endX, endY,
-                scrollX, scrollY, &mActors, mDebugFlags, mActorFixY);
+                scrollX, scrollY, &mActors, mDrawLayersFlags, mActorFixY);
         }
     }
     else
@@ -403,11 +405,11 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
             {
                 layer->setSpecialLayer(mSpecialLayer);
                 layer->setTempLayer(mTempLayer);
-                if (mDebugFlags == MapType::SPECIAL2)
+                if (mDrawLayersFlags == MapType::SPECIAL2)
                     overFringe = true;
 
                 layer->drawFringe(graphics, startX, startY, endX, endY,
-                    scrollX, scrollY, &mActors, mDebugFlags, mActorFixY);
+                    scrollX, scrollY, &mActors, mDrawLayersFlags, mActorFixY);
             }
             else
             {
@@ -419,7 +421,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
                     if (updateFlag)
                     {
                         layer->updateOGL(graphics, startX, startY,
-                            endX, endY, scrollX, scrollY, mDebugFlags);
+                            endX, endY, scrollX, scrollY, mDrawLayersFlags);
                     }
 
                     layer->drawOGL(graphics);
@@ -428,7 +430,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
 #endif
                 {
                     layer->draw(graphics, startX, startY, endX, endY,
-                        scrollX, scrollY, mDebugFlags);
+                        scrollX, scrollY, mDrawLayersFlags);
                 }
             }
         }

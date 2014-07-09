@@ -1520,7 +1520,7 @@ std::string LocalPlayer::getPickUpTypeString()
         mPickUpType, pickUpTypeSize));
 }
 
-const unsigned debugPathSize = 5;
+const unsigned debugPathSize = 7;
 
 static const char *const debugPathStrings[] =
 {
@@ -1533,15 +1533,19 @@ static const char *const debugPathStrings[] =
     // TRANSLATORS: map view type in status bar
     N_("(U) ultra map view 2"),
     // TRANSLATORS: map view type in status bar
-    N_("(e) empty map view"),
+    N_("(e) empty map view with collision"),
     // TRANSLATORS: map view type in status bar
-    N_("(b) black & white map view")
+    N_("(E) empty map view"),
+    // TRANSLATORS: map view type in status bar
+    N_("(b) black & white map view"),
+    // TRANSLATORS: pickup size in status bar
+    N_("(?) map view")
 };
 
-std::string LocalPlayer::getDebugPathString()
+std::string LocalPlayer::getMapDrawTypeString()
 {
     return gettext(getVarItem(&debugPathStrings[0],
-        viewport->getDebugPath(), debugPathSize));
+        viewport->getMapDrawType(), debugPathSize));
 }
 
 const unsigned magicAttackSize = 5;
@@ -3733,12 +3737,12 @@ void LocalPlayer::resetYellowBar()
     mPickUpType = config.resetIntValue("pickUpType");
     if (viewport)
     {
-        viewport->setDebugPath(0);
+        viewport->setMapDrawType(0);
         if (viewport->getCameraMode())
             viewport->toggleCameraMode();
     }
     if (mMap)
-        mMap->setDebugFlags(0);
+        mMap->setDrawLayersFlags(0);
     mImitationMode = config.resetIntValue("imitationMode");
     mDisableGameModifiers = config.resetBoolValue("disableGameModifiers");
 

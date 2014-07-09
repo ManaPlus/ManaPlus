@@ -217,11 +217,11 @@ class Map final : public Properties, public ConfigListener
         void addAnimation(const int gid, TileAnimation *const animation)
         { mTileAnimations[gid] = animation; }
 
-        void setDebugFlags(const int n)
-        { mDebugFlags = n; }
+        void setDrawLayersFlags(const int n)
+        { mDrawLayersFlags = n; }
 
-        int getDebugFlags() const A_WARN_UNUSED
-        { return mDebugFlags; }
+        int getDrawLayersFlags() const A_WARN_UNUSED
+        { return mDrawLayersFlags; }
 
         void addExtraLayer();
 
@@ -380,7 +380,7 @@ class Map final : public Properties, public ConfigListener
         bool mHasWarps;
 
         // debug flags
-        int mDebugFlags;
+        int mDrawLayersFlags;
 
         // Pathfinding members
         unsigned int mOnClosedList;

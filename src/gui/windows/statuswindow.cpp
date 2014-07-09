@@ -654,7 +654,7 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
         player_node->getQuickDropCounterString()))
         .append(translateLetter2(player_node->getPickUpTypeString()))
         .append(" ").append(translateLetter2(
-        LocalPlayer::getDebugPathString()))
+        LocalPlayer::getMapDrawTypeString()))
         .append(" ").append(translateLetter2(
         player_node->getImitationModeString()))
         .append(translateLetter2(LocalPlayer::getCameraModeString()))

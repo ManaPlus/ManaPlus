@@ -89,7 +89,7 @@ class MapLayer final: public ConfigListener
         void draw(Graphics *const graphics,
                   int startX, int startY, int endX, int endY,
                   const int scrollX, const int scrollY,
-                  const int mDebugFlags) const;
+                  const int layerDrawFlags) const;
 
         void drawSDL(Graphics *const graphics);
 
@@ -100,21 +100,21 @@ class MapLayer final: public ConfigListener
                        int startX, int startY,
                        int endX, int endY,
                        const int scrollX, const int scrollY,
-                       const int mDebugFlags);
+                       const int layerDrawFlags);
 #endif
 
         void updateSDL(const Graphics *const graphics,
                        int startX, int startY,
                        int endX, int endY,
                        const int scrollX, const int scrollY,
-                       const int mDebugFlags);
+                       const int layerDrawFlags);
 
         void drawFringe(Graphics *const graphics,
                         int startX, int startY,
                         int endX, int endY,
                         const int scrollX, const int scrollY,
                         const Actors *const actors,
-                        const int mDebugFlags, const int yFix) const;
+                        const int layerDrawFlags, const int yFix) const;
 
         bool isFringeLayer() const A_WARN_UNUSED
         { return mIsFringeLayer; }
