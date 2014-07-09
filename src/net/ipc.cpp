@@ -26,14 +26,9 @@
 #include "utils/stringutils.h"
 #include <iostream>
 
-#include "commandhandler.h"
 #include "logger.h"
 
 IPC *ipc = nullptr;
-
-const std::string IPC_TYPE_CMD = "CMD";
-const std::string IPC_TYPE_TALK = "TALK";
-const std::string IPC_TYPE_LTALK = "LTALK";
 
 IPC::IPC(unsigned short port) :
     mListen(false),
@@ -95,7 +90,7 @@ int IPC::acceptLoop(void *ptr)
             sock = SDLNet_TCP_Accept(ipc->mSocket);
             if (!sock)
             {
-                logger->log("IPC: unable to accept connection");
+                logger->log_r("IPC: unable to accept connection");
                 continue;
             }
             char data[max_length] = {0};
@@ -103,42 +98,18 @@ int IPC::acceptLoop(void *ptr)
             result = SDLNet_TCP_Recv(sock, data, max_length);
             if (result <= 0)
             {
-                logger->log("IPC: unable to accept connection");
+                logger->log_r("IPC: unable to accept connection");
                 SDLNet_TCP_Close(sock);
                 continue;
             }
 
-            // Parse input: TYPE args
-            const std::string req(data);
-            const size_t pos = req.find(' ');
-            const std::string type(req, 0, pos);
-            std::string args(req, pos == std::string::npos
-                     ? req.size() : pos + 1);
-            args = trim(args);
-      
+            std::string req(data);
+            req = trim(req);
+
             std::string resp;
-            if (type == IPC_TYPE_CMD)
-            {
-                commandHandler->handleCommand(args, debugChatTab);
-                ipc->mNumReqs++;
-                resp = strprintf("[%s](%d) OK\n", IPC_TYPE_CMD.c_str(), ipc->mNumReqs);
-            }
-            else if (type == IPC_TYPE_LTALK)
-            {
-                chatWindow->localChatInput(args);
-                ipc->mNumReqs++;
-                resp = strprintf("[%s](%d) OK\n", IPC_TYPE_LTALK.c_str(), ipc->mNumReqs);
-            }
-            else if (type == IPC_TYPE_TALK)
-            {
-                chatWindow->chatInput(args);
-                ipc->mNumReqs++;
-                resp = strprintf("[%s](%d) OK\n", IPC_TYPE_TALK.c_str(), ipc->mNumReqs);
-            }
-            else
-            {
-                resp = type + ": no handler for this IPC type\n";
-            }
+            chatWindow->chatInput(req);
+            ipc->mNumReqs++;
+            resp = strprintf("[%d] %s\n", ipc->mNumReqs, req.c_str());
       
             int len;
             const char *respc;
@@ -147,7 +118,7 @@ int IPC::acceptLoop(void *ptr)
             result = SDLNet_TCP_Send(sock, respc, len);
             if (result < len)
             {
-                logger->log("IPC: SDLNet_TCP_Send: %s\n", SDLNet_GetError());
+                logger->log_r("IPC: SDLNet_TCP_Send: %s\n", SDLNet_GetError());
                 SDLNet_TCP_Close(sock);
                 continue;
             }
