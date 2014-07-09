@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2014  Vincent Petithory <vincent.petithory@gmail.com>
+ *  Copyright (C) 2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *

@@ -22,6 +22,7 @@
 ##9Helmut Grohne (gnurfk) <helmut subdivi de>
 ##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>
 ##9Mihail Barer (Necromonger) <>
+##9Vincent Petithory (V0id) <vincent.petithory gmail com>
 
 ##3== <<Translators>> ==
 ##3Czech
