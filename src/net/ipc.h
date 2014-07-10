@@ -24,7 +24,7 @@
 #include "net/sdltcpnet.h"
 #include <SDL_thread.h>
 
-class IPC
+class IPC final
 {
 public:
     /**

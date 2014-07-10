@@ -28,6 +28,8 @@
 
 #include "logger.h"
 
+#include "debug.h"
+
 IPC *ipc = nullptr;
 
 IPC::IPC(unsigned short port) :
