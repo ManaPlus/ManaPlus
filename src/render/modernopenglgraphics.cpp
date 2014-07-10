@@ -1260,7 +1260,7 @@ void ModernOpenGLGraphics::createGLContext()
     if (mGLContext)
         SDL::makeCurrentContext(mGLContext);
     else
-        mGLContext = SDL::createGLContext(mWindow, 3, 3);
+        mGLContext = SDL::createGLContext(mWindow, 3, 3, 0x01);
 }
 
 void ModernOpenGLGraphics::finalize(ImageCollection *const col)

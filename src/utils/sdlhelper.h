@@ -59,7 +59,8 @@ namespace SDL
 
     void *createGLContext(SDL_Surface *const window A_UNUSED,
                           const int major,
-                          const int minor);
+                          const int minor,
+                          const int profile);
 
     void makeCurrentContext(void *const context);
 }  // namespace SDL

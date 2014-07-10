@@ -32,7 +32,8 @@ namespace GlxHelper
     void *createContext(const unsigned long window,
                         void *const display,
                         const int major,
-                        const int minor);
+                        const int minor,
+                        const int profile);
 
     bool makeCurrent(const unsigned long window,
                      void *const display,

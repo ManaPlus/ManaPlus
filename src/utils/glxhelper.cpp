@@ -39,7 +39,8 @@ static int ErrorHandler(Display *d A_UNUSED, XErrorEvent *e A_UNUSED)
 void *GlxHelper::createContext(const unsigned long window,
                                void *const display0,
                                const int major,
-                               const int minor)
+                               const int minor,
+                               const int profile)
 {
     Display *const display = static_cast<Display*>(display0);
     XSync(display, false);
@@ -88,7 +89,7 @@ void *GlxHelper::createContext(const unsigned long window,
     {
         GLX_CONTEXT_MAJOR_VERSION_ARB, major,
         GLX_CONTEXT_MINOR_VERSION_ARB, minor,
-        GLX_CONTEXT_PROFILE_MASK_ARB, 0x01,   // core profile
+        GLX_CONTEXT_PROFILE_MASK_ARB, profile,
         0, 0
     };
 

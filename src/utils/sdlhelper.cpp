@@ -119,24 +119,37 @@ SDL_Thread *SDL::createThread(int (SDLCALL *fn)(void *),
 #if defined(USE_X11) && defined(USE_OPENGL)
 void *SDL::createGLContext(SDL_Surface *const window A_UNUSED,
                            const int major,
-                           const int minor)
+                           const int minor,
+                           const int profile)
 {
     SDL_SysWMinfo info;
     SDL_VERSION(&info.version);
     SDL_GetWMInfo(&info);
     void *context = GlxHelper::createContext(info.info.x11.window,
-        info.info.x11.display, major, minor);
+        info.info.x11.display, major, minor, profile);
     if (!context && (major > 3 || (major == 3 && minor > 3)))
     {
-        logger->log("Try fallback to OpenGL 3.3 context");
+        logger->log("Try fallback to OpenGL 3.3 core context");
         context = GlxHelper::createContext(info.info.x11.window,
-            info.info.x11.display, 3, 3);
-        if (!context)
+            info.info.x11.display, 3, 3, profile);
+        if (!context && profile == 0x01)
         {
-            logger->log("Try fallback to OpenGL 3.0 context");
+            logger->log("Try fallback to OpenGL 3.3 compatibility context");
             context = GlxHelper::createContext(info.info.x11.window,
-                info.info.x11.display, 3, 0);
+                info.info.x11.display, 3, 3, 0x02);
         }
+    }
+    if (!context && (major > 3 || (major == 3 && minor > 0)))
+    {
+        logger->log("Try fallback to OpenGL 3.0 core context");
+        context = GlxHelper::createContext(info.info.x11.window,
+            info.info.x11.display, 3, 0, profile);
+    }
+    if (!context && (major > 2 || (major == 2 && minor > 1)))
+    {
+        logger->log("Try fallback to OpenGL 2.1 compatibility context");
+        context = GlxHelper::createContext(info.info.x11.window,
+            info.info.x11.display, 2, 1, 0x02);
     }
     return context;
 }
@@ -153,7 +166,8 @@ void SDL::makeCurrentContext(void *const context)
 #else
 void *SDL::createGLContext(SDL_Surface *const window A_UNUSED,
                            const int major A_UNUSED,
-                           const int minor A_UNUSED)
+                           const int minor A_UNUSED,
+                           const int profile A_UNUSED)
 {
     return nullptr;
 }
