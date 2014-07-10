@@ -478,7 +478,8 @@ void GraphicsManager::initGraphics()
     if (openGLMode != oldOpenGLMode)
     {
         deleteRenderers();
-        config.setValue("opengl", static_cast<int>(openGLMode));
+        settings.options.renderer = static_cast<int>(openGLMode);
+        config.setValue("opengl", settings.options.renderer);
         createRenderers();
         detectPixelSize();
         setVideoMode();
