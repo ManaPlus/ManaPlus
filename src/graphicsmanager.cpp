@@ -475,7 +475,7 @@ void GraphicsManager::initGraphics()
             openGLMode = RENDER_SAFE_OPENGL;
         }
     }
-    if (openGLMode != oldOpenGLMode)
+    if (openGLMode != oldOpenGLMode && !settings.options.test.empty())
     {
         deleteRenderers();
         settings.options.renderer = static_cast<int>(openGLMode);
