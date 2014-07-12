@@ -911,16 +911,15 @@ void GraphicsManager::initOpenGLFunctions()
     else if (supportExtension("GL_EXT_framebuffer_object"))
     {   // old frame buffer extension
         logger->log1("found GL_EXT_framebuffer_object");
-        assignFunction2(glGenRenderbuffers, "glGenRenderbuffersEXT");
-        assignFunction2(glBindRenderbuffer, "glBindRenderbufferEXT");
-        assignFunction2(glRenderbufferStorage, "glRenderbufferStorageEXT");
-        assignFunction2(glGenFramebuffers, "glGenFramebuffersEXT");
-        assignFunction2(glBindFramebuffer, "glBindFramebufferEXT");
-        assignFunction2(glFramebufferTexture2D, "glFramebufferTexture2DEXT");
-        assignFunction2(glFramebufferRenderbuffer,
-            "glFramebufferRenderbufferEXT");
-        assignFunction2(glDeleteFramebuffers, "glDeleteFramebuffersEXT");
-        assignFunction2(glDeleteRenderbuffers, "glDeleteRenderbuffersEXT");
+        assignFunctionEXT(glGenRenderbuffers);
+        assignFunctionEXT(glBindRenderbuffer);
+        assignFunctionEXT(glRenderbufferStorage);
+        assignFunctionEXT(glGenFramebuffers);
+        assignFunctionEXT(glBindFramebuffer);
+        assignFunctionEXT(glFramebufferTexture2D);
+        assignFunctionEXT(glFramebufferRenderbuffer);
+        assignFunctionEXT(glDeleteFramebuffers);
+        assignFunctionEXT(glDeleteRenderbuffers);
     }
     else
     {   // no frame buffer support
@@ -943,8 +942,8 @@ void GraphicsManager::initOpenGLFunctions()
     else if (supportExtension("GL_ARB_debug_output"))
     {
         logger->log1("found GL_ARB_debug_output");
-        assignFunction2(glDebugMessageControl, "glDebugMessageControlARB");
-        assignFunction2(glDebugMessageCallback, "glDebugMessageCallbackARB");
+        assignFunctionARB(glDebugMessageControl);
+        assignFunctionARB(glDebugMessageCallback);
         mSupportDebug = 1;
     }
     else
@@ -965,14 +964,10 @@ void GraphicsManager::initOpenGLFunctions()
     if (supportExtension("GL_EXT_debug_label"))
     {
         logger->log1("found GL_EXT_debug_label");
-        assignFunction2(glLabelObject, "glLabelObjectEXT");
-        if (!mglLabelObject)
-            assignFunction2(glLabelObject, "glLabelObject");
+        assignFunctionEXT(glLabelObject);
         if (!mglLabelObject)
             assignFunction2(glLabelObject, "glObjectLabel");
-        assignFunction2(glGetObjectLabel, "glGetObjectLabelEXT");
-        if (!mglGetObjectLabel)
-            assignFunction2(glGetObjectLabel, "glGetObjectLabel");
+        assignFunctionEXT(glGetObjectLabel);
     }
     else
     {
@@ -990,15 +985,9 @@ void GraphicsManager::initOpenGLFunctions()
     if (supportExtension("GL_EXT_debug_marker"))
     {
         logger->log1("found GL_EXT_debug_marker");
-        assignFunction2(glInsertEventMarker, "glInsertEventMarkerEXT");
-        if (!mglInsertEventMarker)
-            assignFunction2(glInsertEventMarker, "glInsertEventMarker");
-        assignFunction2(glPushGroupMarker, "glPushGroupMarkerEXT");
-        if (!mglPushGroupMarker)
-            assignFunction2(glPushGroupMarker, "glPushGroupMarker");
-        assignFunction2(glPopGroupMarker, "glPopGroupMarkerEXT");
-        if (!mglPopGroupMarker)
-            assignFunction2(glPopGroupMarker, "glPopGroupMarker");
+        assignFunctionEXT(glInsertEventMarker);
+        assignFunctionEXT(glPushGroupMarker);
+        assignFunctionEXT(glPopGroupMarker);
     }
     else
     {
@@ -1012,7 +1001,7 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glEndQuery);
         assignFunction(glDeleteQueries);
         assignFunction(glGetQueryObjectiv);
-        assignFunction2(glGetQueryObjectui64v, "glGetQueryObjectui64vEXT");
+        assignFunctionEXT(glGetQueryObjectui64v);
     }
     else
     {
@@ -1142,7 +1131,7 @@ void GraphicsManager::initOpenGLFunctions()
     }
 
 #ifdef WIN32
-    assignFunction2(wglGetExtensionsString, "wglGetExtensionsStringARB");
+    assignFunctionARB(wglGetExtensionsString);
 #endif
 }
 

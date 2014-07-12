@@ -45,6 +45,28 @@
             logger->log("assigned function: " #func); \
     }
 
+#define assignFunction3(func, ext) \
+    { \
+        m##func = reinterpret_cast<func##_t>(getFunction(#func#ext)); \
+        if (m##func == nullptr) \
+        { \
+            logger->log("function not found: " #func#ext); \
+            m##func = reinterpret_cast<func##_t>(getFunction(#func)); \
+            if (m##func == nullptr) \
+                logger->log("function not found: " #func); \
+            else \
+                logger->log("assigned function: " #func); \
+        } \
+        else \
+        { \
+            logger->log("assigned function: " #func#ext); \
+        } \
+    }
+
+#define assignFunctionARB(func) assignFunction3(func, ARB)
+
+#define assignFunctionEXT(func) assignFunction3(func, EXT)
+
 #define assignFunction2(func, name) \
     { \
         m##func = reinterpret_cast<func##_t>(getFunction(name)); \
