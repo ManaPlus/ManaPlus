@@ -851,6 +851,7 @@ SET(SRCS
     resources/map/objectslayer.h
     render/mgl.cpp
     render/mgl.h
+    render/mglcheck.h
     render/mgldefines.h
     render/mglemu.cpp
     render/mglemu.h

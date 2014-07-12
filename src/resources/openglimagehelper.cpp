@@ -28,6 +28,7 @@
 #include "logger.h"
 
 #include "render/mgl.h"
+#include "render/mglcheck.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/modernopenglgraphics.h"
 #include "render/normalopenglgraphics.h"
@@ -276,7 +277,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
 
 #ifdef DEBUG_OPENGL
 //  disabled for now, because debugger cant show it
-//    if (mglLabelObject)
+//    if (isGLNotNull(mglLabelObject))
 //    {
 //        const char *const text = "image text";
 //        mglLabelObject(GL_TEXTURE, texture, strlen(text), text);
@@ -370,7 +371,7 @@ void OpenGLImageHelper::postInit()
 
 void OpenGLImageHelper::invalidate(const GLuint textureId)
 {
-    if (mglInvalidateTexImage)
+    if (isGLNotNull(mglInvalidateTexImage))
     {
         logger->log("invalidate: %u", textureId);
         mglInvalidateTexImage(textureId, 0);

@@ -43,6 +43,7 @@
 #include "settings.h"
 
 #include "render/graphics.h"
+#include "render/mglcheck.h"
 #include "render/mgl.h"
 #include "render/mglemu.h"
 #include "render/mobileopenglgraphics.h"
@@ -135,7 +136,7 @@ GraphicsManager::GraphicsManager() :
 GraphicsManager::~GraphicsManager()
 {
 #ifdef USE_OPENGL
-    if (mglGenSamplers && mTextureSampler)
+    if (isGLNotNull(mglGenSamplers) && mTextureSampler)
         mglDeleteSamplers(1, &mTextureSampler);
 #endif
 }
@@ -856,10 +857,15 @@ void GraphicsManager::initOpenGLFunctions()
         assignFunction(glDeleteSamplers);
         assignFunction(glBindSampler);
         assignFunction(glSamplerParameteri);
-        if (mglGenSamplers && config.getBoolValue("useTextureSampler"))
+        if (isGLNotNull(mglGenSamplers)
+            && config.getBoolValue("useTextureSampler"))
+        {
             mUseTextureSampler &= true;
+        }
         else
+        {
             mUseTextureSampler = false;
+        }
     }
     else
     {
@@ -965,7 +971,7 @@ void GraphicsManager::initOpenGLFunctions()
     {
         logger->log1("found GL_EXT_debug_label");
         assignFunctionEXT(glLabelObject);
-        if (!mglLabelObject)
+        if (isGLNull(mglLabelObject))
             assignFunction2(glLabelObject, "glObjectLabel");
         assignFunctionEXT(glGetObjectLabel);
     }

@@ -24,6 +24,7 @@
 
 #include "logger.h"
 
+#include "render/mglcheck.h"
 #include "render/mglx.h"
 #include "render/mglxtypes.h"
 
@@ -46,9 +47,9 @@ void *GlxHelper::createContext(const unsigned long window,
     XSync(display, false);
     int (*handler) (Display *, XErrorEvent *) = XSetErrorHandler(ErrorHandler);
     void *context = mglXGetCurrentContext();
-    if (!mglXGetCurrentContext
-        || !mglXCreateContextAttribs
-        || !mglXChooseFBConfig)
+    if (isGLNull(mglXGetCurrentContext)
+        || isGLNull(mglXCreateContextAttribs)
+        || isGLNull(mglXChooseFBConfig))
     {
         logger->log("Cant change context, functions in driver "
             "not implimented");

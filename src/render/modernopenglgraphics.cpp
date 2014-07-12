@@ -830,7 +830,7 @@ void ModernOpenGLGraphics::updateScreen()
     SDL_GL_SwapBuffers();
 #endif
 #ifdef DEBUG_OPENGL
-    if (mglFrameTerminator)
+    if (isGLNotNull(mglFrameTerminator))
         mglFrameTerminator();
 #endif
 // may be need clear?
