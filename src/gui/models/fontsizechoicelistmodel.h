@@ -62,7 +62,7 @@ const char *SIZE_NAME[maxFontSizes] =
     // TRANSLATORS: font size
     N_("Very big (22)"),
     // TRANSLATORS: font size
-    N_("Huge (23)"),
+    N_("Huge (23)")
 };
 
 class FontSizeChoiceListModel final : public ListModel

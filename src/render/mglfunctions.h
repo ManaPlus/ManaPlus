@@ -36,7 +36,16 @@
     reinterpret_cast<const GLubyte*>(name))
 #endif
 
-#define assignFunction(func, name) \
+#define assignFunction(func) \
+    { \
+        m##func = reinterpret_cast<func##_t>(getFunction(#func)); \
+        if (m##func == nullptr) \
+            logger->log("function not found: " #func); \
+        else \
+            logger->log("assigned function: " #func); \
+    }
+
+#define assignFunction2(func, name) \
     { \
         m##func = reinterpret_cast<func##_t>(getFunction(name)); \
         if (m##func == nullptr) \
@@ -45,7 +54,7 @@
             logger->log(std::string("assigned function: ") + name); \
     }
 
-#define assignFunctionEmu(func, name) \
+#define assignFunctionEmu2(func, name) \
     { \
         m##func = reinterpret_cast<func##_t>(getFunction(name)); \
         if (m##func == nullptr) \

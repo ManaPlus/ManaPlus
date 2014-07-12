@@ -30,13 +30,13 @@
 
 void Glx::initFunctions()
 {
-    assignFunction(glXCreateContext, "glXCreateContext");
-    assignFunction(glXGetCurrentContext, "glXGetCurrentContext");
-    assignFunction(glXCreateContextAttribs, "glXCreateContextAttribsARB");
-    assignFunction(glXChooseFBConfig, "glXChooseFBConfig");
-    assignFunction(glXDestroyContext, "glXDestroyContext");
-    assignFunction(glXMakeCurrent, "glXMakeCurrent");
-    assignFunction(glXSwapBuffers, "glXSwapBuffers");
+    assignFunction2(glXCreateContext, "glXCreateContext");
+    assignFunction2(glXGetCurrentContext, "glXGetCurrentContext");
+    assignFunction2(glXCreateContextAttribs, "glXCreateContextAttribsARB");
+    assignFunction2(glXChooseFBConfig, "glXChooseFBConfig");
+    assignFunction2(glXDestroyContext, "glXDestroyContext");
+    assignFunction2(glXMakeCurrent, "glXMakeCurrent");
+    assignFunction2(glXSwapBuffers, "glXSwapBuffers");
 }
 
 #endif
