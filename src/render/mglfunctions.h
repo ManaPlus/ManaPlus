@@ -60,7 +60,7 @@
     }
 
 #define emulateFunction(func) m##func = emu##func; \
-    logger->log("emulated function: #func")
+    logger->log("emulated function: " #func)
 
 #endif  // USE_OPENGL
 #endif  // RENDER_MGLFUNCTIONS_H
