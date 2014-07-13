@@ -99,7 +99,8 @@ unsigned int DyePalette::hexDecode(const signed char c)
         return 0;
 }
 
-void DyePalette::getColor(const int intensity, int color[3]) const
+void DyePalette::getColor(const unsigned int intensity,
+                          unsigned int color[3]) const
 {
     if (intensity == 0)
     {
