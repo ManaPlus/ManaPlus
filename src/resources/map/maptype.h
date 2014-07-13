@@ -35,6 +35,6 @@ namespace MapType
         SPECIAL4 = 5,
         BLACKWHITE = 6
     };
-}
+}  // namespace MapType
 
 #endif  // RESOURCES_MAP_MAPTYPE_H

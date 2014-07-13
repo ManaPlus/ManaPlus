@@ -90,8 +90,8 @@ TcpNet::Socket TcpNet::open(IPaddress *const ip)
 {
     const TcpNet::Socket sock = SDLNet_TCP_Open(ip);
 #if !defined(__native_client__) \
-    || defined(TCP_THIN_LINEAR_TIMEOUTS) \
-    || defined(TCP_THIN_DUPACK)
+    && (defined(TCP_THIN_LINEAR_TIMEOUTS) \
+    || defined(TCP_THIN_DUPACK))
     if (sock && ip)
     {
         const TCPsocketHack *const hack

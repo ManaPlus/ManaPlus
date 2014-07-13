@@ -30,7 +30,8 @@ PasswordField::PasswordField(const Widget2 *const widget,
                              const std::string &text) :
     TextField(widget, text),
     mPasswordChar(mSkin ? static_cast<unsigned char>(
-                  mSkin->getOption("passwordChar", 42)) : 42U)
+                  mSkin->getOption("passwordChar", 42))
+                  : static_cast<unsigned char>(42U))
 {
 }
 

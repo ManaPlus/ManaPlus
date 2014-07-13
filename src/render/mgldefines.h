@@ -98,6 +98,18 @@
 #define GL_SAMPLE_MASK                    0x8E51
 #endif
 
+#ifndef GL_POLYGON_SMOOTH
+#define GL_POLYGON_SMOOTH                 0x0B41
+#endif
+
+#ifndef GL_DEPTH_BOUNDS_TEST_EXT
+#define GL_DEPTH_BOUNDS_TEST_EXT          0x8890
+#endif
+
+#ifndef GL_TEXTURE_COMPRESSION_HINT_ARB
+#define GL_TEXTURE_COMPRESSION_HINT_ARB   0x84EF
+#endif
+
 #endif  // USE_OPENGL
 
 #endif  // RENDER_MGLDEFINES_H

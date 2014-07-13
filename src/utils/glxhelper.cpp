@@ -45,7 +45,7 @@ void *GlxHelper::createContext(const unsigned long window,
 {
     Display *const display = static_cast<Display*>(display0);
     XSync(display, false);
-    int (*handler) (Display *, XErrorEvent *) = XSetErrorHandler(ErrorHandler);
+    int (*handler)(Display *, XErrorEvent *) = XSetErrorHandler(ErrorHandler);
     void *context = mglXGetCurrentContext();
     if (isGLNull(mglXGetCurrentContext)
         || isGLNull(mglXCreateContextAttribs)
