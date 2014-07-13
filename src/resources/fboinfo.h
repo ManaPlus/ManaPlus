@@ -26,8 +26,6 @@
 
 #include "render/graphics.h"
 
-#include "resources/fboinfo.h"
-
 #ifdef ANDROID
 #include <GLES/gl.h>
 #include <GLES/glext.h>

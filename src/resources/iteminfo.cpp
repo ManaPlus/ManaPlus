@@ -152,7 +152,7 @@ const SoundInfo &ItemInfo::getSound(const ItemSoundEvent::Type event) const
 
     if (i == mSounds.end())
         return empty;
-    return (!i->second.empty()) ? i->second[rand()
+    return (!i->second.empty()) ? i->second[static_cast<unsigned int>(rand())
         % i->second.size()] : empty;
 }
 

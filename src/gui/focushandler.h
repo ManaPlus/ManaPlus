@@ -66,8 +66,6 @@
 #ifndef GUI_FOCUSHANDLER_H
 #define GUI_FOCUSHANDLER_H
 
-#include "gui/focushandler.h"
-
 #include <list>
 #include <vector>
 

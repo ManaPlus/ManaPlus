@@ -82,13 +82,14 @@ void PaletteDB::loadPalette()
         if (line.empty() || line[0] == '#')
             continue;
 
-        unsigned int r;
-        unsigned int g;
-        unsigned int b;
+        unsigned char r;
+        unsigned char g;
+        unsigned char b;
 
-        if (sscanf(line.c_str(), "%10u %10u %10u\t%100s",
+        if (sscanf(line.c_str(), "%10hhu %10hhu %10hhu\t%100s",
             &r, &g, &b, name) == 4)
         {
+            name[100] = 0;
             mColors[name] = DyeColor(r, g, b);
         }
     }

@@ -107,7 +107,7 @@ extern int weightNoticeTime;
 extern MiniStatusWindow *miniStatusWindow;
 extern SkillDialog *skillDialog;
 
-LocalPlayer::LocalPlayer(const int id, const int subtype) :
+LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     Being(id, ActorType::PLAYER, subtype, nullptr),
     AttributeListener(),
     StatListener(),

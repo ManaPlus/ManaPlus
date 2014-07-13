@@ -111,9 +111,9 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         splitToIntVector(str, link, ',');
         if (str.empty())
             return;
-        int color = 1;
+        unsigned char color = 1;
         if (str.size() > 1)
-            color = str[1];
+            color = static_cast<unsigned char>(str[1]);
         const int id = str[0];
         if (id > 0)
         {

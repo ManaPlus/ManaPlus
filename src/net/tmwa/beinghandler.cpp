@@ -277,7 +277,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
     }
 
     const int type = msg.readInt8();
-    int id = 0;
+    int16_t id = 0;
     int id2 = 0;
     const std::string color;
 
@@ -312,7 +312,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
             break;
         case 1:     // eAthena LOOK_HAIR
         {
-            const uint8_t look = static_cast<uint8_t>(id / 256U);
+            const uint8_t look = static_cast<uint8_t>(id / 256);
             const int hair = id % 256;
             dstBeing->setHairStyle(SPRITE_HAIR, hair * -1);
             dstBeing->setLook(look);
@@ -340,7 +340,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
             player_node->imitateOutfit(dstBeing, SPRITE_TOPCLOTHES);
             break;
         case 6:     // eAthena LOOK_HAIR_COLOR
-            dstBeing->setHairColor(SPRITE_HAIR, id);
+            dstBeing->setHairColor(SPRITE_HAIR, static_cast<uint8_t>(id));
             break;
         case 7:     // Clothes color
             // ignoring it
@@ -520,7 +520,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     const uint16_t headTop = msg.readInt16();
     const uint16_t headMid = msg.readInt16();
-    const int hairColor = msg.readInt8();
+    const uint8_t hairColor = msg.readInt8();
     msg.readInt8();  // free
 
     unsigned char colors[9];

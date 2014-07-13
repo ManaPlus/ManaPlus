@@ -64,8 +64,6 @@
 #ifndef INPUT_MOUSEINPUT_H
 #define INPUT_MOUSEINPUT_H
 
-#include "input/mouseinput.h"
-
 #include "events/mousebutton.h"
 #include "events/mouseeventtype.h"
 

@@ -2130,8 +2130,9 @@ void Being::dumpSprites() const
     const std::vector<int>::const_iterator it1_end = mSpriteIDs.end();
     StringVectCIter it2 = mSpriteColors.begin();
     const StringVectCIter it2_end = mSpriteColors.end();
-    std::vector<int>::const_iterator it3 = mSpriteColorsIds.begin();
-    const std::vector<int>::const_iterator it3_end = mSpriteColorsIds.end();
+    std::vector<unsigned char>::const_iterator it3 = mSpriteColorsIds.begin();
+    const std::vector<unsigned char>::const_iterator
+        it3_end = mSpriteColorsIds.end();
 
     logger->log("sprites");
     for (; it1 != it1_end && it2 != it2_end && it3 != it3_end;

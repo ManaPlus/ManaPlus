@@ -234,11 +234,11 @@ void DyePalette::replaceSColor(uint32_t *restrict pixels,
             const DyeColor &col2 = *it;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int coldata = (col.value[2] << 16)
-                | (col.value[1] << 8) | (col.value[0]);
+            const unsigned int coldata = (col.value[2] << 16U)
+                | (col.value[1] << 8U) | (col.value[0]);
 #else
-            const unsigned int coldata = (col.value[2] << 8)
-                | (col.value[1] << 16) | (col.value[0] << 24);
+            const unsigned int coldata = (col.value[2] << 8U)
+                | (col.value[1] << 16U) | (col.value[0] << 24U);
 #endif
 //            logger->log("coldata: %08x", coldata);
             if (data == coldata)
@@ -280,11 +280,15 @@ void DyePalette::replaceAColor(uint32_t *restrict pixels,
             const DyeColor &col2 = *it;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int coldata = (col.value[3] << 24)
-                | (col.value[2] << 16) | (col.value[1] << 8) | (col.value[0]);
+            const unsigned int coldata = (col.value[3] << 24U)
+                | (col.value[2] << 16U)
+                | (col.value[1] << 8U)
+                | (col.value[0]);
 #else
-            const unsigned int coldata = (col.value[3]) | (col.value[2] << 8)
-                | (col.value[1] << 16) | (col.value[0] << 24);
+            const unsigned int coldata = (col.value[3])
+                | (col.value[2] << 8U)
+                | (col.value[1] << 16U) |
+                (col.value[0] << 24U);
 #endif
 
             if (data == coldata)
@@ -378,11 +382,15 @@ void DyePalette::replaceAOGLColor(uint32_t *restrict pixels,
             const DyeColor &col2 = *it;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int coldata = (col.value[0] << 24)
-                | (col.value[1] << 16) | (col.value[2] << 8) | col.value[3];
+            const unsigned int coldata = (col.value[0] << 24U)
+                | (col.value[1] << 16U)
+                | (col.value[2] << 8U)
+                | col.value[3];
 #else
-            const unsigned int coldata = (col.value[0]) | (col.value[1] << 8)
-                | (col.value[2] << 16) | (col.value[3] << 24);
+            const unsigned int coldata = (col.value[0])
+                | (col.value[1] << 8U)
+                | (col.value[2] << 16U)
+                | (col.value[3] << 24U);
 #endif
             if (data == coldata)
             {

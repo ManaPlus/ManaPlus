@@ -202,7 +202,7 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
             retval->hidden.unknown.data1 = handle;
         } /* if */
 #ifdef DUMP_LEAKED_RESOURCES
-    openedRWops ++;
+        openedRWops ++;
 #endif
     } /* else */
 

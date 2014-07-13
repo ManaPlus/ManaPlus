@@ -130,15 +130,15 @@ unsigned char *php3_base64_decode(const unsigned char *restrict const string,
         switch (i % 4)
         {
             case 0:
-                result[j] = static_cast<unsigned char>(ch << 2);
+                result[j] = static_cast<unsigned char>(ch << 2U);
                 break;
             case 1:
-                result[j++] |= static_cast<unsigned char>(ch >> 4);
-                result[j] = static_cast<unsigned char>((ch & 0x0f) << 4);
+                result[j++] |= static_cast<unsigned char>(ch >> 4U);
+                result[j] = static_cast<unsigned char>((ch & 0x0f) << 4U);
                 break;
             case 2:
-                result[j++] |= static_cast<unsigned char>(ch >>2);
-                result[j] = static_cast<unsigned char>((ch & 0x03) << 6);
+                result[j++] |= static_cast<unsigned char>(ch >>2U);
+                result[j] = static_cast<unsigned char>((ch & 0x03) << 6U);
                 break;
             case 3:
                 result[j++] |= static_cast<unsigned char>(ch);

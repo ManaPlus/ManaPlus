@@ -366,7 +366,7 @@ int ListBox::getSelectionByMouse(const int y) const
 {
     if (y < mPadding)
         return -1;
-    return (y - mPadding) / getRowHeight();
+    return static_cast<unsigned int>(y - mPadding) / getRowHeight();
 }
 
 void ListBox::setSelected(const int selected)

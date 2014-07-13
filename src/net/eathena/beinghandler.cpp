@@ -434,7 +434,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     const uint16_t stunMode = msg.readInt16();  // opt1
     uint32_t statusEffects = msg.readInt16();   // opt2
     statusEffects |= (static_cast<uint16_t>(msg.readInt16()))
-        << 16;  // status.options; Aethyra uses this as misc2
+        << 16U;  // status.options; Aethyra uses this as misc2
     const int16_t job = msg.readInt16();
     int disguiseId = 0;
     if (id < 110000000 && job >= 1000)
@@ -648,7 +648,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     int16_t speed = msg.readInt16();
     const uint16_t stunMode = msg.readInt16();  // opt1
     uint32_t statusEffects = msg.readInt16();   // opt2
-    statusEffects |= (static_cast<uint16_t>(msg.readInt16())) << 16;  // option
+    statusEffects |= (static_cast<uint16_t>(
+        msg.readInt16())) << 16U;  // option
     const int16_t job = msg.readInt16();  // class
 
     Being *dstBeing = actorManager->findBeing(id);

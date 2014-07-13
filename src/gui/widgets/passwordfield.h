@@ -47,7 +47,7 @@ class PasswordField final : public TextField
         void draw(Graphics *graphics) override final;
 
     protected:
-        int mPasswordChar;
+        char mPasswordChar;
 };
 
 #endif  // GUI_WIDGETS_PASSWORDFIELD_H

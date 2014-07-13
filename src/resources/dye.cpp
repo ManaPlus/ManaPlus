@@ -162,23 +162,25 @@ void Dye::normalDye(uint32_t *restrict pixels, const int bufSize) const
 #endif
         if (!alpha)
             continue;
-        int color[3];
+        unsigned int color[3];
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-        color[0] = (p) & 255;
-        color[1] = (p >> 8) & 255;
-        color[2] = (p >> 16) & 255;
+        color[0] = (p) & 255U;
+        color[1] = (p >> 8U) & 255U;
+        color[2] = (p >> 16U) & 255U;
 #else
-        color[0] = (p >> 24) & 255;
-        color[1] = (p >> 16) & 255;
-        color[2] = (p >> 8) & 255;
+        color[0] = (p >> 24U) & 255U;
+        color[1] = (p >> 16U) & 255U;
+        color[2] = (p >> 8U) & 255U;
 #endif
 
-        const int cmax = std::max(color[0], std::max(color[1], color[2]));
+        const unsigned int cmax = std::max(
+            color[0], std::max(color[1], color[2]));
         if (cmax == 0)
             continue;
 
-        const int cmin = std::min(color[0], std::min(color[1], color[2]));
-        const int intensity = color[0] + color[1] + color[2];
+        const unsigned int cmin = std::min(
+            color[0], std::min(color[1], color[2]));
+        const unsigned int intensity = color[0] + color[1] + color[2];
 
         if (cmin != cmax && (cmin != 0 || (intensity != cmax
             && intensity != 2 * cmax)))
@@ -187,7 +189,7 @@ void Dye::normalDye(uint32_t *restrict pixels, const int bufSize) const
             continue;
         }
 
-        const int i = (color[0] != 0) | ((color[1] != 0) << 1)
+        const unsigned int i = (color[0] != 0) | ((color[1] != 0) << 1)
             | ((color[2] != 0) << 2);
 
         if (mDyePalettes[i - 1])
@@ -217,23 +219,25 @@ void Dye::normalOGLDye(uint32_t *restrict pixels, const int bufSize) const
 #endif
         if (!alpha)
             continue;
-        int color[3];
+        unsigned int color[3];
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-        color[0] = (p >> 24) & 255;
-        color[1] = (p >> 16) & 255;
-        color[2] = (p >> 8) & 255;
+        color[0] = (p >> 24U) & 255U;
+        color[1] = (p >> 16U) & 255U;
+        color[2] = (p >> 8U) & 255U;
 #else
-        color[0] = (p) & 255;
-        color[1] = (p >> 8) & 255;
-        color[2] = (p >> 16) & 255;
+        color[0] = (p) & 255U;
+        color[1] = (p >> 8U) & 255U;
+        color[2] = (p >> 16U) & 255U;
 #endif
 
-        const int cmax = std::max(color[0], std::max(color[1], color[2]));
+        const unsigned int cmax = std::max(
+            color[0], std::max(color[1], color[2]));
         if (cmax == 0)
             continue;
 
-        const int cmin = std::min(color[0], std::min(color[1], color[2]));
-        const int intensity = color[0] + color[1] + color[2];
+        const unsigned int cmin = std::min(
+            color[0], std::min(color[1], color[2]));
+        const unsigned int intensity = color[0] + color[1] + color[2];
 
         if (cmin != cmax && (cmin != 0 || (intensity != cmax
             && intensity != 2 * cmax)))
@@ -242,7 +246,7 @@ void Dye::normalOGLDye(uint32_t *restrict pixels, const int bufSize) const
             continue;
         }
 
-        const int i = (color[0] != 0) | ((color[1] != 0) << 1)
+        const unsigned int i = (color[0] != 0) | ((color[1] != 0) << 1)
             | ((color[2] != 0) << 2);
 
         if (mDyePalettes[i - 1])

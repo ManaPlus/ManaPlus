@@ -95,14 +95,14 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
 void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
 {
     msg.readInt16();  // length
-    int sz = 11;
+    unsigned int sz = 11;
     if (serverVersion > 0)
         sz += 1;
-    const int n_items = (msg.getLength() - 4) / sz;
+    const unsigned int n_items = (msg.getLength() - 4U) / sz;
     mBuyDialog = new BuyDialog(mNpcId);
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
-    for (int k = 0; k < n_items; k++)
+    for (unsigned int k = 0; k < n_items; k++)
     {
         const int value = msg.readInt32();
         msg.readInt32();  // DCvalue

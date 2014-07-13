@@ -286,7 +286,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
         }
         buf ++;
 
-        int gender = Gender::UNSPECIFIED;
+        unsigned char gender = Gender::UNSPECIFIED;
         if (serverVersion >= 4)
         {
             if (config.getBoolValue("showgender"))

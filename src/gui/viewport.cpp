@@ -166,27 +166,31 @@ void Viewport::draw(Graphics *graphics)
         {
             if (player_x > mPixelViewX + mScrollRadius)
             {
-                mPixelViewX += static_cast<float>(player_x
+                mPixelViewX += static_cast<int>(
+                    static_cast<float>(player_x
                     - mPixelViewX - mScrollRadius) /
-                    static_cast<float>(mScrollLaziness);
+                    static_cast<float>(mScrollLaziness));
             }
             if (player_x < mPixelViewX - mScrollRadius)
             {
-                mPixelViewX += static_cast<float>(player_x
+                mPixelViewX += static_cast<int>(
+                    static_cast<float>(player_x
                     - mPixelViewX + mScrollRadius) /
-                    static_cast<float>(mScrollLaziness);
+                    static_cast<float>(mScrollLaziness));
             }
             if (player_y > mPixelViewY + mScrollRadius)
             {
-                mPixelViewY += static_cast<float>(player_y
-                - mPixelViewY - mScrollRadius) /
-                static_cast<float>(mScrollLaziness);
+                mPixelViewY += static_cast<int>(
+                    static_cast<float>(player_y
+                    - mPixelViewY - mScrollRadius) /
+                    static_cast<float>(mScrollLaziness));
             }
             if (player_y < mPixelViewY - mScrollRadius)
             {
-                mPixelViewY += static_cast<float>(player_y
-                - mPixelViewY + mScrollRadius) /
-                static_cast<float>(mScrollLaziness);
+                mPixelViewY += static_cast<int>(
+                    static_cast<float>(player_y
+                    - mPixelViewY + mScrollRadius) /
+                    static_cast<float>(mScrollLaziness));
             }
             lastTick ++;
             cnt ++;
@@ -407,6 +411,8 @@ bool Viewport::openContextMenu(const MouseEvent &event)
     }
     else if (mCameraMode)
     {
+        if (!mMap)
+            return false;
         mPopupMenu->showMapPopup(eventX, eventY,
             (mMouseX + mPixelViewX) / mMap->getTileWidth(),
             (mMouseY + mPixelViewY) / mMap->getTileHeight());
@@ -654,10 +660,10 @@ void Viewport::walkByMouse(const MouseEvent &event)
             }
             else
             {
-                const int destX = (event.getX() + mPixelViewX)
-                    / static_cast<float>(mMap->getTileWidth());
-                const int destY = (event.getY() + mPixelViewY)
-                    / static_cast<float>(mMap->getTileHeight());
+                const int destX = static_cast<int>((event.getX() + mPixelViewX)
+                    / static_cast<float>(mMap->getTileWidth()));
+                const int destY = static_cast<int>((event.getY() + mPixelViewY)
+                    / static_cast<float>(mMap->getTileHeight()));
                 if (playerX != destX || playerY != destY)
                 {
                     if (!player_node->navigateTo(destX, destY))
@@ -1062,8 +1068,8 @@ void Viewport::moveCameraToActor(const int actorId,
     const Vector &actorPos = actor->getPosition();
     const Vector &playerPos = player_node->getPosition();
     mCameraMode = 1;
-    mCameraRelativeX = actorPos.x - playerPos.x + x;
-    mCameraRelativeY = actorPos.y - playerPos.y + y;
+    mCameraRelativeX = static_cast<int>(actorPos.x - playerPos.x) + x;
+    mCameraRelativeY = static_cast<int>(actorPos.y - playerPos.y) + y;
 }
 
 void Viewport::moveCameraToPosition(const int x, const int y)
@@ -1074,8 +1080,8 @@ void Viewport::moveCameraToPosition(const int x, const int y)
     const Vector &playerPos = player_node->getPosition();
     mCameraMode = 1;
 
-    mCameraRelativeX = x - playerPos.x;
-    mCameraRelativeY = y - playerPos.y;
+    mCameraRelativeX = x - static_cast<int>(playerPos.x);
+    mCameraRelativeY = y - static_cast<int>(playerPos.y);
 }
 
 void Viewport::moveCameraRelative(const int x, const int y)

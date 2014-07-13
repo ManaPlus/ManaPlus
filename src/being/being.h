@@ -941,7 +941,7 @@ class Being notfinal : public ActorSprite,
 
         StringVect mSpriteColors;
         std::vector<int> mSpriteIDs;
-        std::vector<int> mSpriteColorsIds;
+        std::vector<unsigned char> mSpriteColorsIds;
         SpriteParticleInfo mSpriteParticles;
 
         // Character guild information

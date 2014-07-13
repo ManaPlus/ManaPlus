@@ -43,7 +43,7 @@
 #define M_DEBUG_NEW_H
 
 #include <new>
-#include <stdio.h>
+#include <stdio>
 
 /**
  * @def HAVE_PLACEMENT_DELETE
