@@ -106,8 +106,8 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
         "beingopacity", this, "beingopacityEvent");
 
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Enable reorder sprites."), "",
-        "enableReorderSprites", this, "enableReorderSpritesEvent");
+    new SetupItemCheckBox(_("Enable reorder sprites (need for mods support)."),
+        "", "enableReorderSprites", this, "enableReorderSpritesEvent");
 
 
     // TRANSLATORS: settings option
