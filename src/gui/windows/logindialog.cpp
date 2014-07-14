@@ -95,6 +95,7 @@ LoginDialog::LoginDialog(LoginData *const data,
     mServerName(serverName)
 {
     setCloseButton(true);
+    setWindowName("Login");
 
     Net::getCharServerHandler()->clear();
 
@@ -167,18 +168,24 @@ LoginDialog::LoginDialog(LoginData *const data,
     place(3, n + 3, mLoginButton);
 
     addKeyListener(this);
-    if (mUpdateHostLabel)
-        setContentSize(310, 250);
-    else
-        setContentSize(310, 200);
-
-    reflowLayout();
-    center();
 }
 
 void LoginDialog::postInit()
 {
     setVisible(true);
+
+    int h = 200;
+    if (mUpdateHostLabel)
+        setContentSize(310, 250);
+    setContentSize(310, h);
+#ifdef ANDROID
+    setDefaultSize(310, h, ImageRect::UPPER_CENTER, 0, 0);
+#else
+    setDefaultSize(310, h, ImageRect::CENTER, 0, 0);
+#endif
+    center();
+    loadWindowState();
+    reflowLayout();
 
     if (mUserField->getText().empty())
         mUserField->requestFocus();
