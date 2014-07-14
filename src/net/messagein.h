@@ -60,6 +60,8 @@ class MessageIn notfinal
 
         virtual unsigned char readUInt8();  /**< Reads a byte. */
 
+        virtual signed char readInt8();     /**< Reads a byte. */
+
         virtual int16_t readInt16() = 0;    /**< Reads a short. */
 
         virtual int readInt32() = 0;        /**< Reads a long. */

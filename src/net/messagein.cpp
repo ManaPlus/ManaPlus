@@ -55,6 +55,18 @@ unsigned char MessageIn::readUInt8()
 
     mPos += 1;
     PacketCounters::incInBytes(1);
+    DEBUGLOG("readUInt8: " + toStringPrint(static_cast<int>(value)));
+    return value;
+}
+
+signed char MessageIn::readInt8()
+{
+    signed char value = static_cast<signed char>(-1);
+    if (mPos < mLength)
+        value = static_cast<signed char>(mData[mPos]);
+
+    mPos += 1;
+    PacketCounters::incInBytes(1);
     DEBUGLOG("readInt8: " + toStringPrint(static_cast<int>(value)));
     return value;
 }
