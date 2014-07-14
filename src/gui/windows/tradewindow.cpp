@@ -191,8 +191,11 @@ void TradeWindow::setMoney(const int amount)
     mMoneyLabel->adjustSize();
 }
 
-void TradeWindow::addItem(const int id, const bool own, const int quantity,
-                          const int refine, const unsigned char color) const
+void TradeWindow::addItem(const int id,
+                          const bool own,
+                          const int quantity,
+                          const uint8_t refine,
+                          const unsigned char color) const
 {
     if (own)
         mMyInventory->addItem(id, quantity, refine, color);
@@ -201,7 +204,7 @@ void TradeWindow::addItem(const int id, const bool own, const int quantity,
 }
 
 void TradeWindow::addItem2(const int id, const bool own, const int quantity,
-                           const int refine, const unsigned char color,
+                           const uint8_t refine, const unsigned char color,
                            const bool equipment) const
 {
     if (own)

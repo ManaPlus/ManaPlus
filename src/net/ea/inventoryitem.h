@@ -35,12 +35,12 @@ class InventoryItem final
         int slot;
         int id;
         int quantity;
-        int refine;
+        uint8_t refine;
         unsigned char color;
         bool equip;
 
         InventoryItem(const int slot0, const int id0, const int quantity0,
-                      const int refine0, const unsigned char color0,
+                      const uint8_t refine0, const unsigned char color0,
                       const bool equip0) :
             slot(slot0),
             id(id0),

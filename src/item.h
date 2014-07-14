@@ -40,8 +40,10 @@ class Item notfinal
         /**
          * Constructor.
          */
-        explicit Item(const int id = -1, const int quantity = 0,
-                      const int refine = 0, const unsigned char color = 1,
+        explicit Item(const int id = -1,
+                      const int quantity = 0,
+                      const uint8_t refine = 0,
+                      const uint8_t color = 1,
                       const bool equipment = false,
                       const bool equipped = false);
 
@@ -114,13 +116,13 @@ class Item notfinal
         /**
          * Sets this item refine level.
          */
-        void setRefine(const int refine)
+        void setRefine(const uint8_t refine)
         { mRefine = refine; }
 
         /**
          * Returns this item refine level.
          */
-        int getRefine() const A_WARN_UNUSED
+        uint8_t getRefine() const A_WARN_UNUSED
         { return mRefine; }
 
         /**
@@ -174,7 +176,7 @@ class Item notfinal
         Image *mImage;        /**< Item image. */
         std::string mDescription;
         std::map <int, int> mTags;
-        int mRefine;          /**< Item refine level. */
+        uint8_t mRefine;      /**< Item refine level. */
         int mInvIndex;        /**< Inventory index. */
         bool mEquipment;      /**< Item is equipment. */
         bool mEquipped;       /**< Item is equipped. */

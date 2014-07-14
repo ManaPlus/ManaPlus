@@ -68,7 +68,7 @@ class TradeWindow final : public Window,
          * Add an item to the trade window.
          */
         void addItem(const int id, const bool own, const int quantity,
-                     const int refine, const unsigned char color) const;
+                     const uint8_t refine, const unsigned char color) const;
 
         /**
          * Reset both item containers
@@ -79,7 +79,7 @@ class TradeWindow final : public Window,
          * Add an item to the trade window.
          */
         void addItem2(const int id, const bool own, const int quantity,
-                      const int refine, const unsigned char color,
+                      const uint8_t refine, const unsigned char color,
                       const bool equipment) const;
 
         /**

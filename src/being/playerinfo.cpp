@@ -200,7 +200,7 @@ void clearInventory()
 }
 
 void setInventoryItem(const int index, const int id,
-                      const int amount, const int refine)
+                      const int amount, const uint8_t refine)
 {
     bool equipment = false;
     const ItemType::Type itemType = ItemDB::get(id).getType();

@@ -267,10 +267,10 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         if (mDebugInventory)
         {
             logger->log("Index: %d, ID: %d, Type: %d, Identified: %d, "
-                        "Qty: %d, Cards: %d, %d, %d, %d, Refine: %d",
-                        index, itemId, itemType, identified, amount,
-                        cards[0], cards[1], cards[2], cards[3],
-                        refine);
+                "Qty: %d, Cards: %d, %d, %d, %d, Refine: %u",
+                index, itemId, itemType,
+                static_cast<unsigned int>(identified), amount,
+                cards[0], cards[1], cards[2], cards[3], refine);
         }
 
         if (serverVersion < 1 && identified > 1U)
@@ -299,7 +299,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     const int itemId = msg.readInt16();
     uint8_t identified = msg.readUInt8();
     msg.readUInt8();  // attribute
-    const int refine = msg.readUInt8();
+    const uint8_t refine = msg.readUInt8();
     for (int i = 0; i < 4; i++)
         msg.readInt16();  // cards[i]
     const int equipType = msg.readInt16();

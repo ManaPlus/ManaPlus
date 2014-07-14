@@ -103,14 +103,14 @@ Item *Inventory::findItem(const int itemId, const unsigned char color) const
     return nullptr;
 }
 
-void Inventory::addItem(const int id, const int quantity, const int refine,
-                        const unsigned char color, const bool equipment)
+void Inventory::addItem(const int id, const int quantity, const uint8_t refine,
+                        const uint8_t color, const bool equipment)
 {
     setItem(getFreeSlot(), id, quantity, refine, color, equipment);
 }
 
 void Inventory::setItem(const int index, const int id, const int quantity,
-                        const int refine, const unsigned char color,
+                        const uint8_t refine, const unsigned char color,
                         const bool equipment)
 {
     if (index < 0 || index >= static_cast<int>(mSize))

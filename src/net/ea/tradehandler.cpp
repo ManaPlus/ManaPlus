@@ -183,7 +183,7 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
     const int type = msg.readInt16();
     const uint8_t identify = msg.readUInt8();  // identified flag
     msg.readUInt8();  // attribute
-    const int refine = msg.readUInt8();  // refine
+    const uint8_t refine = msg.readUInt8();  // refine
     msg.skip(8);      // card (4 shorts)
 
     if (tradeWindow)

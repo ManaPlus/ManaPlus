@@ -37,7 +37,7 @@ extern int serverVersion;
 
 DragDrop dragDrop(nullptr, DRAGDROP_SOURCE_EMPTY);
 
-Item::Item(const int id, const int quantity, const int refine,
+Item::Item(const int id, const int quantity, const uint8_t refine,
            const unsigned char color, const bool equipment,
            const bool equipped) :
     mId(0),

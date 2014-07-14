@@ -117,13 +117,17 @@ void ItemPopup::setItem(const Item *const item, const bool showImage)
         mLastId = item->getId();
         if (serverVersion > 0)
         {
-            mItemName->setCaption(strprintf("%s (+%d), %d", ii.getName(
-                item->getColor()).c_str(), item->getRefine(), ii.getId()));
+            mItemName->setCaption(strprintf("%s (+%u), %d",
+                ii.getName(item->getColor()).c_str(),
+                static_cast<unsigned int>(item->getRefine()),
+                ii.getId()));
         }
         else
         {
             mItemName->setCaption(strprintf("%s (+%d), %d",
-                ii.getName().c_str(), item->getRefine(), ii.getId()));
+                ii.getName().c_str(),
+                static_cast<unsigned int>(item->getRefine()),
+                ii.getId()));
         }
         mItemName->adjustSize();
         const unsigned minWidth = mItemName->getWidth() + 8;

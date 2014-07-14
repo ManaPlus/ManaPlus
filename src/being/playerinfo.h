@@ -152,7 +152,7 @@ namespace PlayerInfo
      * Changes the inventory item at the given slot.
      */
     void setInventoryItem(const int index, const int id,
-                          const int amount, const int refine);
+                          const int amount, const uint8_t refine);
 
     /**
      * Returns the player's equipment.
