@@ -96,7 +96,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
         mSentWhispers.pop();
     }
 
-    const int type = msg.readInt8();
+    const uint8_t type = msg.readUInt8();
     switch (type)
     {
         case 0x00:
@@ -283,9 +283,9 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg,
     if (channels)
     {
         chatMsgLength -= 3;
-        channel = msg.readInt8();
-        channel += msg.readInt8();
-        channel += msg.readInt8();
+        channel = msg.readUInt8();
+        channel += msg.readUInt8();
+        channel += msg.readUInt8();
     }
 
     if (chatMsgLength <= 0)
@@ -352,9 +352,9 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
     if (channels)
     {
         chatMsgLength -= 3;
-        channel = msg.readInt8();
-        channel += msg.readInt8();
-        channel += msg.readInt8();
+        channel = msg.readUInt8();
+        channel += msg.readUInt8();
+        channel += msg.readUInt8();
     }
     if (chatMsgLength <= 0)
     {
@@ -434,8 +434,8 @@ void ChatHandler::processMVP(Net::MessageIn &msg) const
 void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg) const
 {
     BLOCK_START("ChatHandler::processIgnoreAllResponse")
-    const int action = msg.readInt8();
-    const int fail = msg.readInt8();
+    const uint8_t action = msg.readUInt8();
+    const uint8_t fail = msg.readUInt8();
     if (!localChatTab)
     {
         BLOCK_END("ChatHandler::processIgnoreAllResponse")

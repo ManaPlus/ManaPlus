@@ -163,8 +163,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
 
     msg.readInt16();                           // speed
     const uint16_t race = msg.readInt16();          // class (used for race)
-    const int hairStyle = msg.readInt8();
-    const uint8_t look = msg.readInt8();
+    const uint8_t hairStyle = msg.readUInt8();
+    const uint8_t look = msg.readUInt8();
     tempPlayer->setSubtype(race, look);
     const uint16_t weapon = msg.readInt16();  // unused on server. need use?
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
@@ -178,10 +178,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const int hat = msg.readInt16();  // head option top
     const int topClothes = msg.readInt16();
 
-    int hairColor = msg.readInt8();
-    if (hairColor > 255)
-        hairColor = 255;
-    msg.readInt8();  // free
+    uint8_t hairColor = msg.readUInt8();
+    msg.readUInt8();  // free
     tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,
         ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
     tempPlayer->setHairColor(static_cast<unsigned char>(hairColor));
@@ -192,29 +190,29 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     character->dummy = tempPlayer;
 
     for (int i = 0; i < 6; i++)
-        character->data.mStats[i + STR].base = msg.readInt8();
+        character->data.mStats[i + STR].base = msg.readUInt8();
 
     if (withColors)
     {
-        tempPlayer->setSprite(SPRITE_SHOE, shoes, "", msg.readInt8());
-        tempPlayer->setSprite(SPRITE_GLOVES, gloves, "", msg.readInt8());
-        tempPlayer->setSprite(SPRITE_CAPE, cape, "", msg.readInt8());
-        tempPlayer->setSprite(SPRITE_MISC1, misc1, "", msg.readInt8());
+        tempPlayer->setSprite(SPRITE_SHOE, shoes, "", msg.readUInt8());
+        tempPlayer->setSprite(SPRITE_GLOVES, gloves, "", msg.readUInt8());
+        tempPlayer->setSprite(SPRITE_CAPE, cape, "", msg.readUInt8());
+        tempPlayer->setSprite(SPRITE_MISC1, misc1, "", msg.readUInt8());
         tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes,
-            "", msg.readInt8());
+            "", msg.readUInt8());
         // to avoid show error (error.xml) need remove this sprite
         if (!config.getBoolValue("hideShield"))
-            tempPlayer->setSprite(SPRITE_SHIELD, shield, "", msg.readInt8());
+            tempPlayer->setSprite(SPRITE_SHIELD, shield, "", msg.readUInt8());
         else
-            msg.readInt8();
+            msg.readUInt8();
 
         tempPlayer->setSprite(SPRITE_HAT, hat, "",
-            msg.readInt8());  // head option top
+            msg.readUInt8());  // head option top
         tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes, "",
-            msg.readInt8());
-        tempPlayer->setSprite(SPRITE_MISC2, misc2, "", msg.readInt8());
+            msg.readUInt8());
+        tempPlayer->setSprite(SPRITE_MISC2, misc2, "", msg.readUInt8());
         msg.skip(5);
-        character->slot = msg.readInt8();  // character slot
+        character->slot = msg.readUInt8();  // character slot
     }
     else
     {
@@ -230,9 +228,9 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         tempPlayer->setSprite(SPRITE_HAT, hat);  // head option top
         tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
         tempPlayer->setSprite(SPRITE_MISC2, misc2);
-        character->slot = msg.readInt8();  // character slot
+        character->slot = msg.readUInt8();  // character slot
     }
-    msg.readInt8();  // unknown
+    msg.readUInt8();  // unknown
 }
 
 void CharServerHandler::chooseCharacter(Net::Character *const character)
@@ -326,7 +324,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     if (slots > 0 && slots < 30)
         loginData.characterSlots = static_cast<uint16_t>(slots);
 
-    const bool version = msg.readInt8() == 1 && serverVersion > 0;
+    const bool version = msg.readUInt8() == 1 && serverVersion > 0;
     msg.skip(17);  // 0 Unused
 
     delete_all(mCharacters);

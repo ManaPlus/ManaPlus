@@ -183,7 +183,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     character->dummy = tempPlayer;
 
     for (int i = 0; i < 6; i++)
-        character->data.mStats[i + STR].base = msg.readInt8();
+        character->data.mStats[i + STR].base = msg.readUInt8();
 
     tempPlayer->setSprite(SPRITE_SHOE, shoes);
     tempPlayer->setSprite(SPRITE_GLOVES, gloves);
@@ -197,9 +197,9 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setSprite(SPRITE_HAT, hat);  // head option top
     tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
     tempPlayer->setSprite(SPRITE_MISC2, misc2);
-    character->slot = msg.readInt8();  // character slot
+    character->slot = msg.readUInt8();  // character slot
 
-    msg.readInt8();  // unknown
+    msg.readUInt8();  // unknown
 }
 
 void CharServerHandler::chooseCharacter(Net::Character *const character)

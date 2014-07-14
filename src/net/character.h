@@ -42,7 +42,7 @@ namespace Net
 struct Character final
 {
     Character() :
-        slot(0),
+        slot(0U),
         dummy(nullptr),
         data()
     {
@@ -55,7 +55,7 @@ struct Character final
         delete2(dummy);
     }
 
-    int slot;            /**< The index in the list of characters */
+    uint8_t slot;        /**< The index in the list of characters */
     LocalPlayer *dummy;  /**< A dummy representing this character */
     PlayerInfoBackend data;
 };

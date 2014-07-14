@@ -187,16 +187,16 @@ void LoginHandler::requestUpdateHosts()
 
 void LoginHandler::processServerVersion(Net::MessageIn &msg)
 {
-    const uint8_t b1 = msg.readInt8();  // -1
-    const uint8_t b2 = msg.readInt8();  // E
-    const uint8_t b3 = msg.readInt8();  // V
-    const uint8_t b4 = msg.readInt8();  // L
+    const uint8_t b1 = msg.readUInt8();  // -1
+    const uint8_t b2 = msg.readUInt8();  // E
+    const uint8_t b3 = msg.readUInt8();  // V
+    const uint8_t b4 = msg.readUInt8();  // L
     if (b1 == 255 && b2 == 'E' && b3 == 'V' && b4 == 'L')
     {
-        const unsigned int options = msg.readInt8();
+        const unsigned int options = msg.readUInt8();
         mRegistrationEnabled = options & FLAG_REGISTRATION;
         msg.skip(2);  // 0 unused
-        serverVersion = msg.readInt8();
+        serverVersion = msg.readUInt8();
         tmwServerVersion = 0;
         if (serverVersion >= 5)
             requestUpdateHosts();

@@ -75,7 +75,7 @@ void PartyHandler::clear() const
 
 void PartyHandler::processPartyCreate(Net::MessageIn &msg) const
 {
-    if (msg.readInt8())
+    if (msg.readUInt8())
         NotifyManager::notify(NotifyTypes::PARTY_CREATE_FAILED);
     else
         NotifyManager::notify(NotifyTypes::PARTY_CREATED);
@@ -129,8 +129,8 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
         const int id = msg.readInt32();
         std::string nick = msg.readString(24);
         std::string map = msg.readString(16);
-        const bool leader = msg.readInt8() == 0;
-        const bool online = msg.readInt8() == 0;
+        const bool leader = msg.readUInt8() == 0U;
+        const bool online = msg.readUInt8() == 0U;
 
         if (Ea::taParty)
         {
@@ -191,7 +191,7 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
 
     const std::string nick = msg.readString(24);
 
-    switch (msg.readInt8())
+    switch (msg.readUInt8())
     {
         case 0:
             NotifyManager::notify(NotifyTypes::PARTY_INVITE_ALREADY_MEMBER,
@@ -314,7 +314,7 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg) const
         msg.skip(4);                    // 0
         m->setX(msg.readInt16());       // x
         m->setY(msg.readInt16());       // y
-        const int online = msg.readInt8();
+        const bool online = msg.readUInt8() != 0;
         if (m->getOnline() != online)
             Ea::partyTab->showOnline(m->getName(), online);
         m->setOnline(online);           // online (if 0)
@@ -327,7 +327,7 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg) const
         msg.skip(4);         // 0
         msg.readInt16();     // x
         msg.readInt16();     // y
-        msg.readInt8();      // online (if 0)
+        msg.readUInt8();     // online (if 0)
         msg.readString(24);  // party
         msg.readString(24);  // nick
         msg.readString(16);  // map
@@ -338,7 +338,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
 {
     const int id = msg.readInt32();
     const std::string nick = msg.readString(24);
-    msg.readInt8();     // fail
+    msg.readUInt8();     // fail
     if (!player_node)
         return;
 

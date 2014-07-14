@@ -58,9 +58,9 @@ class MessageIn notfinal
         unsigned int getUnreadLength() const A_WARN_UNUSED
         { return mLength > mPos ? mLength - mPos : 0; }
 
-        virtual unsigned char readInt8();             /**< Reads a byte. */
+        virtual unsigned char readUInt8();  /**< Reads a byte. */
 
-        virtual int16_t readInt16() = 0;        /**< Reads a short. */
+        virtual int16_t readInt16() = 0;    /**< Reads a short. */
 
         virtual int readInt32() = 0;        /**< Reads a long. */
 

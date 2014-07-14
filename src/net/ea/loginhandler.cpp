@@ -136,7 +136,7 @@ void LoginHandler::clearWorlds()
 void LoginHandler::procecessCharPasswordResponse(Net::MessageIn &msg) const
 {
     // 0: acc not found, 1: success, 2: password mismatch, 3: pass too short
-    const int errMsg = msg.readInt8();
+    const uint8_t errMsg = msg.readUInt8();
     // Successful pass change
     if (errMsg == 1)
     {
@@ -203,7 +203,8 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
 
 //    msg.skip(30);                           // unknown
     // reserve bits for future usage
-    mToken.sex = Being::intToGender(static_cast<uint8_t>(msg.readInt8() & 3));
+    mToken.sex = Being::intToGender(static_cast<uint8_t>(
+        msg.readUInt8() & 3U));
 
     for (int i = 0; i < worldCount; i++)
     {
@@ -228,8 +229,8 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
 
 void LoginHandler::processLoginError(Net::MessageIn &msg) const
 {
-    const int code = msg.readInt8();
-    logger->log("Login::error code: %i", code);
+    const uint8_t code = msg.readUInt8();
+    logger->log("Login::error code: %u", static_cast<unsigned int>(code));
 
     switch (code)
     {

@@ -47,7 +47,7 @@ MessageIn::MessageIn(const char *const data, const unsigned int length) :
     DEBUGLOG("MessageIn");
 }
 
-unsigned char MessageIn::readInt8()
+unsigned char MessageIn::readUInt8()
 {
     unsigned char value = static_cast<unsigned char>(-1);
     if (mPos < mLength)

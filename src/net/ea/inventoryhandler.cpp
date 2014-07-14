@@ -205,8 +205,8 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
         const int index = msg.readInt16() - (playerInvintory
             ? INVENTORY_OFFSET : STORAGE_OFFSET);
         const int itemId = msg.readInt16();
-        const int itemType = msg.readInt8();
-        unsigned char identified = msg.readInt8();
+        const uint8_t itemType = msg.readUInt8();
+        uint8_t identified = msg.readUInt8();
         const int amount = msg.readInt16();
         const int arrow = msg.readInt16();
         for (int i = 0; i < 4; i++)
@@ -254,13 +254,13 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         int cards[4];
         const int index = msg.readInt16() - STORAGE_OFFSET;
         const int itemId = msg.readInt16();
-        const int itemType = msg.readInt8();
-        unsigned char identified = msg.readInt8();
+        const uint8_t itemType = msg.readUInt8();
+        uint8_t identified = msg.readUInt8();
         const int amount = 1;
         msg.readInt16();    // Equip Point?
         msg.readInt16();    // Another Equip Point?
-        msg.readInt8();   // Attribute (broken)
-        const int refine = msg.readInt8();
+        msg.readUInt8();   // Attribute (broken)
+        const uint8_t refine = msg.readUInt8();
         for (int i = 0; i < 4; i++)
             cards[i] = msg.readInt16();
 
@@ -273,8 +273,8 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
                         refine);
         }
 
-        if (serverVersion < 1 && identified > 1)
-            identified = 1;
+        if (serverVersion < 1 && identified > 1U)
+            identified = 1U;
 
         mInventoryItems.push_back(Ea::InventoryItem(index,
             itemId, amount, refine, identified, false));
@@ -297,16 +297,16 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     const int index = msg.readInt16() - INVENTORY_OFFSET;
     int amount = msg.readInt16();
     const int itemId = msg.readInt16();
-    unsigned char identified = msg.readInt8();
-    msg.readInt8();  // attribute
-    const int refine = msg.readInt8();
+    uint8_t identified = msg.readUInt8();
+    msg.readUInt8();  // attribute
+    const int refine = msg.readUInt8();
     for (int i = 0; i < 4; i++)
         msg.readInt16();  // cards[i]
     const int equipType = msg.readInt16();
-    msg.readInt8();  // itemType
+    msg.readUInt8();  // itemType
 
     const ItemInfo &itemInfo = ItemDB::get(itemId);
-    const unsigned char err = msg.readInt8();
+    const unsigned char err = msg.readUInt8();
     int floorId;
     if (mSentPickups.empty())
     {
@@ -380,7 +380,7 @@ void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg)
     msg.readInt16();  // item id
     msg.readInt32();  // id
     const int amount = msg.readInt16();
-    msg.readInt8();  // type
+    msg.readUInt8();  // type
 
     if (inventory)
     {
@@ -404,7 +404,7 @@ void InventoryHandler::processItemUseResponse(Net::MessageIn &msg)
     const int index = msg.readInt16() - INVENTORY_OFFSET;
     const int amount = msg.readInt16();
 
-    if (msg.readInt8() == 0)
+    if (msg.readUInt8() == 0)
     {
         NotifyManager::notify(NotifyTypes::USE_FAILED);
     }
@@ -460,9 +460,9 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     const int index = msg.readInt16() - STORAGE_OFFSET;
     const int amount = msg.readInt32();
     const int itemId = msg.readInt16();
-    unsigned char identified = msg.readInt8();
-    msg.readInt8();  // attribute
-    const int refine = msg.readInt8();
+    unsigned char identified = msg.readUInt8();
+    msg.readUInt8();  // attribute
+    const uint8_t refine = msg.readUInt8();
     for (int i = 0; i < 4; i++)
         msg.readInt16();  // card i
 
@@ -541,13 +541,13 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
     {
         const int index = msg.readInt16() - INVENTORY_OFFSET;
         const int itemId = msg.readInt16();
-        const int itemType = msg.readInt8();  // type
-        unsigned char identified = msg.readInt8();  // identify flag
+        const uint8_t itemType = msg.readUInt8();  // type
+        uint8_t identified = msg.readUInt8();      // identify flag
 
         msg.readInt16();  // equip type
         const int equipType = msg.readInt16();
-        msg.readInt8();  // attribute
-        const int refine = msg.readInt8();
+        msg.readUInt8();  // attribute
+        const uint8_t refine = msg.readUInt8();
         msg.skip(8);  // card
 
         if (mDebugInventory)
@@ -576,7 +576,7 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
     BLOCK_START("InventoryHandler::processPlayerEquip")
     const int index = msg.readInt16() - INVENTORY_OFFSET;
     const int equipType = msg.readInt16();
-    const int flag = msg.readInt8();
+    const uint8_t flag = msg.readUInt8();
 
     if (!flag)
         NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
@@ -590,7 +590,7 @@ void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
     BLOCK_START("InventoryHandler::processPlayerUnEquip")
     msg.readInt16();  // inder val - INVENTORY_OFFSET;
     const int equipType = msg.readInt16();
-    const int flag = msg.readInt8();
+    const uint8_t flag = msg.readUInt8();
 
     if (flag)
         mEquips.setEquipment(getSlot(equipType), -1);

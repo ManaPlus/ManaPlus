@@ -245,7 +245,7 @@ void NpcHandler::processNpcCutin(Net::MessageIn &msg A_UNUSED,
                                  const int npcId A_UNUSED)
 {
     msg.readString(64);  // image name
-    msg.readInt8();      // type
+    msg.readUInt8();     // type
 }
 
 void NpcHandler::processNpcViewPoint(Net::MessageIn &msg A_UNUSED,
@@ -254,7 +254,7 @@ void NpcHandler::processNpcViewPoint(Net::MessageIn &msg A_UNUSED,
     msg.readInt32();  // type
     msg.readInt32();  // x
     msg.readInt32();  // y
-    msg.readInt8();   // byte
+    msg.readUInt8();  // byte
     msg.readInt32();  // color
 }
 

@@ -90,7 +90,7 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
         msg.readInt16();  // sp
         const int range = msg.readInt16();
         msg.skip(24);  // 0 unused
-        const int up = msg.readInt8();
+        const int up = msg.readUInt8();
         const int oldLevel = PlayerInfo::getSkillLevel(skillId);
         if (oldLevel && oldLevel != level)
             updateSkill = skillId;
@@ -111,7 +111,7 @@ void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg)
     const int level = msg.readInt16();
     msg.readInt16();  // sp
     const int range = msg.readInt16();
-    const int up = msg.readInt8();
+    const int up = msg.readUInt8();
 
     if (skillDialog && PlayerInfo::getSkillLevel(skillId) != level)
         skillDialog->playUpdateEffect(skillId);
@@ -130,8 +130,8 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
     const int skillId   = msg.readInt16();
     const int16_t bskill  = msg.readInt16();
     msg.readInt16();  // btype
-    const signed char success = msg.readInt8();
-    const signed char reason  = msg.readInt8();
+    const signed char success = msg.readUInt8();
+    const signed char reason  = msg.readUInt8();
     if (success != static_cast<int>(SKILL_FAILED)
         && bskill == static_cast<int>(BSKILL_EMOTE))
     {

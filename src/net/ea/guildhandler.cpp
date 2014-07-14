@@ -74,7 +74,7 @@ void GuildHandler::endAlliance(const int guildId A_UNUSED,
 
 void GuildHandler::processGuildCreateResponse(Net::MessageIn &msg) const
 {
-    const int flag = msg.readInt8();
+    const uint8_t flag = msg.readUInt8();
 
     switch (flag)
     {
@@ -111,7 +111,7 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
     const int emblem =  msg.readInt32();
     const int posMode =  msg.readInt32();
     msg.readInt32();  // Unused
-    msg.readInt8();  // Unused
+    msg.readUInt8();  // Unused
     std::string guildName = msg.readString(24);
 
     Guild *const g = Guild::getGuild(static_cast<int16_t>(guildId));
@@ -395,7 +395,7 @@ void GuildHandler::processGuildSkillInfo(Net::MessageIn &msg) const
         msg.readInt16();  // SP
         msg.readInt16();  // 'Range'
         msg.skip(24);     // 0 unused
-        msg.readInt8();   // Can be increased
+        msg.readUInt8();  // Can be increased
     }
 }
 
@@ -421,7 +421,7 @@ void GuildHandler::processGuildInvite(Net::MessageIn &msg) const
 
 void GuildHandler::processGuildInviteAck(Net::MessageIn &msg) const
 {
-    const int flag = msg.readInt8();
+    const uint8_t flag = msg.readUInt8();
     if (!guildTab)
         return;
 
@@ -580,7 +580,7 @@ void GuildHandler::processGuildSkillUp(Net::MessageIn &msg) const
     msg.readInt16();  // Level
     msg.readInt16();  // SP
     msg.readInt16();  // 'Range'
-    msg.readInt8();   // unused? (always 1)
+    msg.readUInt8();  // unused? (always 1)
 }
 
 void GuildHandler::processGuildReqAlliance(Net::MessageIn &msg) const
@@ -602,7 +602,7 @@ void GuildHandler::processGuildDelAlliance(Net::MessageIn &msg) const
 
 void GuildHandler::processGuildOppositionAck(Net::MessageIn &msg) const
 {
-    msg.readInt8();  // Flag
+    msg.readUInt8();  // Flag
 }
 
 void GuildHandler::processGuildBroken(Net::MessageIn &msg) const

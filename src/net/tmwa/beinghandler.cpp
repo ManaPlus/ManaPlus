@@ -276,14 +276,14 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
         return;
     }
 
-    const int type = msg.readInt8();
+    const uint8_t type = msg.readUInt8();
     int16_t id = 0;
     int id2 = 0;
     const std::string color;
 
     if (!look2)
     {
-        id = msg.readInt8();
+        id = static_cast<int16_t>(msg.readUInt8());
         id2 = 1;    // default color
     }
     else
@@ -508,8 +508,8 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
 
-    const int hairStyle = msg.readInt8();
-    const uint8_t look = msg.readInt8();
+    const uint8_t hairStyle = msg.readUInt8();
+    const uint8_t look = msg.readUInt8();
     dstBeing->setSubtype(job, look);
     const uint16_t weapon = msg.readInt16();
     const uint16_t shield = msg.readInt16();
@@ -520,15 +520,15 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     const uint16_t headTop = msg.readInt16();
     const uint16_t headMid = msg.readInt16();
-    const uint8_t hairColor = msg.readInt8();
-    msg.readInt8();  // free
+    const uint8_t hairColor = msg.readUInt8();
+    msg.readUInt8();  // free
 
-    unsigned char colors[9];
-    colors[0] = msg.readInt8();
-    colors[1] = msg.readInt8();
-    colors[2] = msg.readInt8();
+    uint8_t colors[9];
+    colors[0] = msg.readUInt8();
+    colors[1] = msg.readUInt8();
+    colors[2] = msg.readUInt8();
 
-    msg.readInt8();  // unused
+    msg.readUInt8();  // unused
 
     const int guild = msg.readInt32();  // guild
 
@@ -543,10 +543,10 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     msg.readInt16();  // emblem
     msg.readInt16();  // manner
     dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
-    msg.readInt8();   // karma
+    msg.readUInt8();   // karma
     // reserving bit for future usage
     dstBeing->setGender(Being::intToGender(
-        static_cast<uint8_t>(msg.readInt8() & 3)));
+        static_cast<uint8_t>(msg.readUInt8() & 3)));
 
     if (!disguiseId)
     {
@@ -620,7 +620,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     if (msgType == 1 || msgType == 2)
     {
-        const int type = msg.readInt8();
+        const uint8_t type = msg.readUInt8();
         switch (type)
         {
             case 0:
@@ -654,14 +654,14 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     }
     else if (msgType == 3)
     {
-        msg.readInt8();  // unknown
+        msg.readUInt8();  // unknown
     }
 
-    const int level = msg.readInt8();   // Lv
+    const int level = static_cast<int>(msg.readUInt8());   // Lv
     if (level)
         dstBeing->setLevel(level);
 
-    msg.readInt8();  // unknown
+    msg.readUInt8();  // unknown
 
     if (dstBeing->getType() != ActorType::PLAYER
         || msgType != 3)

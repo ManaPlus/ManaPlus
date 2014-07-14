@@ -208,8 +208,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     if (speed == 0)
         speed = 150;
 
-    const int hairStyle = msg.readInt8();
-    const uint8_t look = msg.readInt8();
+    const uint8_t hairStyle = msg.readUInt8();
+    const uint8_t look = msg.readUInt8();
     dstBeing->setSubtype(job, look);
     if (dstBeing->getType() == ActorType::MONSTER && player_node)
         player_node->checkNewName(dstBeing);
@@ -223,8 +223,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     const uint16_t shield = msg.readInt16();
     const uint16_t headTop = msg.readInt16();
     const uint16_t headMid = msg.readInt16();
-    const unsigned char hairColor = msg.readInt8();
-    msg.readInt8();  // free
+    const uint8_t hairColor = msg.readUInt8();
+    msg.readUInt8();  // free
     const uint16_t shoes = msg.readInt16();  // clothes color
 
     uint16_t gloves;
@@ -261,14 +261,14 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
     if (serverVersion > 0 && dstBeing->getType() == ActorType::MONSTER)
     {
-        const int attackRange = msg.readInt8();   // karma
+        const int attackRange = static_cast<int>(msg.readUInt8());   // karma
         dstBeing->setAttackRange(attackRange);
     }
     else
     {
-        msg.readInt8();   // karma
+        msg.readUInt8();   // karma
     }
-    uint8_t gender = msg.readInt8();
+    uint8_t gender = msg.readUInt8();
 
     if (!disguiseId && dstBeing->getType() == ActorType::PLAYER)
     {
@@ -343,8 +343,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
         dstBeing->setDirection(dir);
     }
 
-    msg.readInt8();   // unknown
-    msg.readInt8();   // unknown
+    msg.readUInt8();   // unknown
+    msg.readUInt8();   // unknown
     msg.readInt16();
 
     dstBeing->setStunMode(stunMode);
@@ -434,7 +434,7 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
     if (dstBeing == player_node->getTarget())
         player_node->stopAttack(true);
 
-    if (msg.readInt8() == 1)
+    if (msg.readUInt8() == 1U)
     {
         if (dstBeing->getCurrentAction() != BeingAction::DEAD)
         {
@@ -481,7 +481,7 @@ void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
     if (dstBeing == player_node->getTarget())
         player_node->stopAttack();
 
-    if (msg.readInt8() == 1)
+    if (msg.readUInt8() == 1U)
         dstBeing->setAction(BeingAction::STAND, 0);
     BLOCK_END("BeingHandler::processBeingResurrect")
 }
@@ -504,7 +504,7 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg) const
     const int param1 = msg.readInt32();  // Damage
     const int level = msg.readInt16();  // Skill level
     msg.readInt16();  // Div
-    msg.readInt8();  // Skill hit/type (?)
+    msg.readUInt8();  // Skill hit/type (?)
     if (srcBeing)
         srcBeing->handleSkill(dstBeing, param1, id, level);
     if (dstBeing)
@@ -529,7 +529,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
     msg.readInt32();   // dst speed
     const int param1 = msg.readInt16();
     msg.readInt16();  // param 2
-    const int type = msg.readInt8();
+    const uint8_t type = msg.readUInt8();
     msg.readInt16();  // param 3
 
     switch (type)
@@ -650,7 +650,7 @@ void BeingHandler::processBeingEmotion(Net::MessageIn &msg) const
 
     if (player_relations.hasPermission(dstBeing, PlayerRelation::EMOTE))
     {
-        const unsigned char emote = msg.readInt8();
+        const uint8_t emote = msg.readUInt8();
         if (emote)
         {
             dstBeing->setEmote(emote, 0);
@@ -770,8 +770,7 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg) const
 
     msg.readInt16();  // unused
 
-    const unsigned char dir = static_cast<unsigned char>(
-        msg.readInt8() & 0x0f);
+    const uint8_t dir = static_cast<uint8_t>(msg.readUInt8() & 0x0FU);
     dstBeing->setDirection(dir);
     if (player_node)
         player_node->imitateDirection(dstBeing, dir);
@@ -837,7 +836,7 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
     const uint16_t stunMode = msg.readInt16();
     uint32_t statusEffects = msg.readInt16();
     statusEffects |= (static_cast<uint32_t>(msg.readInt16())) << 16;
-    msg.readInt8();  // Unused?
+    msg.readUInt8();  // Unused?
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
@@ -859,7 +858,7 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg) const
     // Status change
     const uint16_t status = msg.readInt16();
     const int id = msg.readInt32();
-    const int flag = msg.readInt8();  // 0: stop, 1: start
+    const bool flag = msg.readUInt8();  // 0: stop, 1: start
 
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
@@ -884,7 +883,7 @@ void BeingHandler::processSkillNoDamage(Net::MessageIn &msg) const
     msg.readInt16();    // heal
     msg.readInt32();    // dst id
     msg.readInt32();    // src id
-    msg.readInt8();     // fail
+    msg.readUInt8();    // fail
 }
 
 void BeingHandler::processPvpMapMode(Net::MessageIn &msg) const

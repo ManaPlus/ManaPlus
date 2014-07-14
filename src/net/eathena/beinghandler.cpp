@@ -267,15 +267,15 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
     if (!dstBeing)
         return;
 
-    const int type = msg.readInt8();
+    const uint8_t type = msg.readUInt8();
     int id = 0;
-    int id2 = 0;
+    unsigned int id2 = 0U;
     const std::string color;
 
     if (!look2)
     {
-        id = msg.readInt8();
-        id2 = 1;    // default color
+        id = static_cast<int>(msg.readUInt8());
+        id2 = 1U;    // default color
     }
     else
     {        // SMSG_BEING_CHANGE_LOOKS2
@@ -487,10 +487,10 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     const uint16_t headMid = msg.readInt16();
     const int hairColor = msg.readInt16();
 
-    msg.readInt8();
-    msg.readInt8();
-    msg.readInt8();
-    msg.readInt8();  // unused
+    msg.readUInt8();
+    msg.readUInt8();
+    msg.readUInt8();
+    msg.readUInt8();  // unused
 
     const int guild = msg.readInt32();  // guild
 
@@ -505,10 +505,10 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     msg.readInt16();  // emblem
     msg.readInt16();  // manner
     dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
-    msg.readInt8();   // karma
+    msg.readUInt8();  // karma
     // reserving bit for future usage
     dstBeing->setGender(Being::intToGender(
-        static_cast<uint8_t>(msg.readInt8() & 3)));
+        static_cast<uint8_t>(msg.readUInt8() & 3U)));
 
     if (!disguiseId)
     {
@@ -570,7 +570,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
     if (msgType == 1 || msgType == 2)
     {
-        const int type = msg.readInt8();
+        const uint8_t type = msg.readUInt8();
         switch (type)
         {
             case 0:
@@ -602,15 +602,15 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
     }
     else if (msgType == 3)
     {
-        msg.readInt8();  // unknown
+        msg.readUInt8();  // unknown
     }
 
-    const int level = msg.readInt8();  // Lv
+    const int level = static_cast<int>(msg.readUInt8());  // Lv
 
     if (level)
         dstBeing->setLevel(level);
 
-    msg.readInt8();  // unknown
+    msg.readUInt8();  // unknown
 
     if (dstBeing->getType() != ActorType::PLAYER
         || msgType != 3)
@@ -635,7 +635,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
         return;
 
     if (visible)
-        msg.readInt8();  // padding?
+        msg.readUInt8();  // padding?
 
     // Information about a being in range
     const int id = msg.readInt32();
@@ -736,8 +736,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
 
     msg.readInt16();  // manner
     dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
-    msg.readInt8();   // karma
-    uint8_t gender = msg.readInt8();
+    msg.readUInt8();   // karma
+    uint8_t gender = msg.readUInt8();
 
     if (dstBeing->getType() == ActorType::PLAYER)
     {
@@ -806,8 +806,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
         dstBeing->setDirection(dir);
     }
 
-    msg.readInt8();   // unknown
-    msg.readInt8();   // state / sit
+    msg.readUInt8();  // unknown
+    msg.readUInt8();  // state / sit
     msg.readInt16();  // level
 
     dstBeing->setStunMode(stunMode);

@@ -169,7 +169,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg,
 
 void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg) const
 {
-    if (msg.readInt8() == 0)
+    if (msg.readUInt8() == 0U)
     {
         NotifyManager::notify(NotifyTypes::BUY_DONE);
     }

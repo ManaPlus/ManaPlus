@@ -106,11 +106,11 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
     {
         const int value = msg.readInt32();
         msg.readInt32();  // DCvalue
-        msg.readInt8();  // type
+        msg.readUInt8();  // type
         const int itemId = msg.readInt16();
-        unsigned char color = 1;
+        uint8_t color = 1;
         if (serverVersion > 0)
-            color = msg.readInt8();
+            color = msg.readUInt8();
         mBuyDialog->addItem(itemId, color, 0, value);
     }
     mBuyDialog->sort();
@@ -118,7 +118,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
 
 void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg)
 {
-    switch (msg.readInt8())
+    switch (msg.readUInt8())
     {
         case 0:
             NotifyManager::notify(NotifyTypes::SOLD);

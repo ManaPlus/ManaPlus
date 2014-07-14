@@ -442,8 +442,8 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate4")
     const int type = msg.readInt16();
-    const int ok = msg.readInt8();
-    const int value = msg.readInt8();
+    const uint8_t ok = msg.readUInt8();
+    const int value = msg.readUInt8();
 
     if (ok != 1)
     {
@@ -463,47 +463,47 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
     BLOCK_START("PlayerHandler::processPlayerStatUpdate5")
     PlayerInfo::setAttribute(Attributes::CHAR_POINTS, msg.readInt16());
 
-    int val = msg.readInt8();
+    unsigned int val = msg.readUInt8();
     PlayerInfo::setStatBase(EA_STR, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(EA_STR, msg.readInt8());
+        statusWindow->setPointsNeeded(EA_STR, msg.readUInt8());
     else
-        msg.readInt8();
+        msg.readUInt8();
 
-    val = msg.readInt8();
+    val = msg.readUInt8();
     PlayerInfo::setStatBase(EA_AGI, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(EA_AGI, msg.readInt8());
+        statusWindow->setPointsNeeded(EA_AGI, msg.readUInt8());
     else
-        msg.readInt8();
+        msg.readUInt8();
 
-    val = msg.readInt8();
+    val = msg.readUInt8();
     PlayerInfo::setStatBase(EA_VIT, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(EA_VIT, msg.readInt8());
+        statusWindow->setPointsNeeded(EA_VIT, msg.readUInt8());
     else
-        msg.readInt8();
+        msg.readUInt8();
 
-    val = msg.readInt8();
+    val = msg.readUInt8();
     PlayerInfo::setStatBase(EA_INT, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(EA_INT, msg.readInt8());
+        statusWindow->setPointsNeeded(EA_INT, msg.readUInt8());
     else
-        msg.readInt8();
+        msg.readUInt8();
 
-    val = msg.readInt8();
+    val = msg.readUInt8();
     PlayerInfo::setStatBase(EA_DEX, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(EA_DEX, msg.readInt8());
+        statusWindow->setPointsNeeded(EA_DEX, msg.readUInt8());
     else
-        msg.readInt8();
+        msg.readUInt8();
 
-    val = msg.readInt8();
+    val = msg.readUInt8();
     PlayerInfo::setStatBase(EA_LUK, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(EA_LUK, msg.readInt8());
+        statusWindow->setPointsNeeded(EA_LUK, msg.readUInt8());
     else
-        msg.readInt8();
+        msg.readUInt8();
 
     PlayerInfo::setStatBase(EA_ATK, msg.readInt16(), false);
     PlayerInfo::setStatMod(EA_ATK, msg.readInt16());
@@ -541,22 +541,22 @@ void PlayerHandler::processPlayerStatUpdate6(Net::MessageIn &msg)
         switch (type)
         {
             case 0x0020:
-                statusWindow->setPointsNeeded(EA_STR, msg.readInt8());
+                statusWindow->setPointsNeeded(EA_STR, msg.readUInt8());
                 break;
             case 0x0021:
-                statusWindow->setPointsNeeded(EA_AGI, msg.readInt8());
+                statusWindow->setPointsNeeded(EA_AGI, msg.readUInt8());
                 break;
             case 0x0022:
-                statusWindow->setPointsNeeded(EA_VIT, msg.readInt8());
+                statusWindow->setPointsNeeded(EA_VIT, msg.readUInt8());
                 break;
             case 0x0023:
-                statusWindow->setPointsNeeded(EA_INT, msg.readInt8());
+                statusWindow->setPointsNeeded(EA_INT, msg.readUInt8());
                 break;
             case 0x0024:
-                statusWindow->setPointsNeeded(EA_DEX, msg.readInt8());
+                statusWindow->setPointsNeeded(EA_DEX, msg.readUInt8());
                 break;
             case 0x0025:
-                statusWindow->setPointsNeeded(EA_LUK, msg.readInt8());
+                statusWindow->setPointsNeeded(EA_LUK, msg.readUInt8());
                 break;
             default:
                 logger->log("QQQQ PLAYER_STAT_UPDATE_6 "

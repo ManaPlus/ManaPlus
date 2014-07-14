@@ -162,10 +162,10 @@ void LoginHandler::requestUpdateHosts()
 
 void LoginHandler::processServerVersion(Net::MessageIn &msg)
 {
-    msg.readInt8();
-    msg.readInt8();
-    msg.readInt8();
-    msg.readInt8();
+    msg.readUInt8();
+    msg.readUInt8();
+    msg.readUInt8();
+    msg.readUInt8();
     msg.readInt32();
     mRegistrationEnabled = true;
     serverVersion = 0;

@@ -124,7 +124,7 @@ unsigned int CharServerHandler::maxSprite() const
 void CharServerHandler::processCharLoginError(Net::MessageIn &msg) const
 {
     BLOCK_START("CharServerHandler::processCharLoginError")
-    switch (msg.readInt8())
+    switch (msg.readUInt8())
     {
         case 0:
             // TRANSLATORS: error message
@@ -166,7 +166,7 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg,
 void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharCreateFailed")
-    switch (msg.readInt8())
+    switch (msg.readUInt8())
     {
         case 1:
         case 0:

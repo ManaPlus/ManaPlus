@@ -43,12 +43,12 @@ void ItemHandler::processItemVisible(Net::MessageIn &msg)
 {
     const int id = msg.readInt32();
     const int itemId = msg.readInt16();
-    const unsigned char identify = msg.readInt8();  // identify flag
+    const uint8_t identify = msg.readUInt8();  // identify flag
     const int x = msg.readInt16();
     const int y = msg.readInt16();
     const int amount = msg.readInt16();
-    const int subX = msg.readInt8();
-    const int subY = msg.readInt8();
+    const int subX = msg.readUInt8();
+    const int subY = msg.readUInt8();
 
     if (actorManager)
     {
@@ -61,11 +61,11 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
 {
     const int id = msg.readInt32();
     const int itemId = msg.readInt16();
-    const unsigned char identify = msg.readInt8();  // identify flag
+    const uint8_t identify = msg.readUInt8();  // identify flag
     const int x = msg.readInt16();
     const int y = msg.readInt16();
-    const int subX = msg.readInt8();
-    const int subY = msg.readInt8();
+    const int subX = static_cast<int>(msg.readUInt8());
+    const int subY = static_cast<int>(msg.readUInt8());
     const int amount = msg.readInt16();
 
     if (actorManager)

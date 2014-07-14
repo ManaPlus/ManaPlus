@@ -128,7 +128,7 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg) const
         return;
     }
 
-    switch (msg.readInt8())
+    switch (msg.readUInt8())
     {
         case 0:  // Too far away
             NotifyManager::notify(NotifyTypes::TRADE_FAIL_FAR_AWAY,
@@ -181,10 +181,10 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
 {
     const int amount = msg.readInt32();
     const int type = msg.readInt16();
-    const int identify = msg.readInt8();  // identified flag
-    msg.readInt8();  // attribute
-    const int refine = msg.readInt8();  // refine
-    msg.skip(8);     // card (4 shorts)
+    const uint8_t identify = msg.readUInt8();  // identified flag
+    msg.readUInt8();  // attribute
+    const int refine = msg.readUInt8();  // refine
+    msg.skip(8);      // card (4 shorts)
 
     if (tradeWindow)
     {
@@ -194,8 +194,8 @@ void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
         }
         else
         {
-            tradeWindow->addItem2(type, false, amount, refine,
-                static_cast<unsigned char>(identify), false);
+            tradeWindow->addItem2(type, false, amount,
+                refine, identify, false);
         }
     }
 }
@@ -216,7 +216,7 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
     }
     const int quantity = msg.readInt16();
 
-    const int res = msg.readInt8();
+    const uint8_t res = msg.readUInt8();
     switch (res)
     {
         case 0:
@@ -254,9 +254,9 @@ void TradeHandler::processTradeOk(Net::MessageIn &msg)
 {
     // 0 means ok from myself, 1 means ok from other;
     if (tradeWindow)
-        tradeWindow->receivedOk(msg.readInt8() == 0);
+        tradeWindow->receivedOk(msg.readUInt8() == 0U);
     else
-        msg.readInt8();
+        msg.readUInt8();
 }
 
 void TradeHandler::processTradeCancel(Net::MessageIn &msg A_UNUSED)
