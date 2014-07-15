@@ -38,6 +38,7 @@
 SkillInfo::SkillInfo() :
     skillLevel(),
     skillExp(),
+    useButton(),
     progress(0.0F),
     color(),
     dataMap(),

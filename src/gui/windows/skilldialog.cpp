@@ -126,6 +126,7 @@ void SkillDialog::action(const ActionEvent &event)
             if (const SkillInfo *const info = tab->getSelectedInfo())
             {
                 mUseButton->setEnabled(info->range > 0);
+                mUseButton->setCaption(info->useButton);
                 mIncreaseButton->setEnabled(info->id < SKILL_VAR_MIN_ID);
                 const int num = itemShortcutWindow->getTabIndex();
                 if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
@@ -139,6 +140,7 @@ void SkillDialog::action(const ActionEvent &event)
             {
                 mUseButton->setEnabled(false);
                 mIncreaseButton->setEnabled(false);
+                mUseButton->setCaption(_("Use"));
             }
         }
     }
@@ -274,6 +276,8 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                         skill->visible = false;
                         skill->model = model;
                         skill->update();
+                        skill->useButton = XML::getProperty(
+                            node, "useButton", _("Use"));
                         model->addSkill(skill);
                         mSkills[id] = skill;
                     }
@@ -437,10 +441,12 @@ void SkillDialog::updateTabSelection()
         {
             mUseButton->setEnabled(info->range > 0);
             mIncreaseButton->setEnabled(info->id < SKILL_VAR_MIN_ID);
+            mUseButton->setCaption(info->useButton);
         }
         else
         {
             mUseButton->setEnabled(false);
+            mUseButton->setCaption(_("Use"));
         }
     }
 }
