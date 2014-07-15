@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-15 02:58+0300\n"
-"PO-Revision-Date: 2014-06-27 09:41+0000\n"
+"POT-Creation-Date: 2014-07-15 22:53+0300\n"
+"PO-Revision-Date: 2014-07-15 09:43+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/manaplus/"
 "language/id/)\n"
@@ -342,15 +342,13 @@ msgstr ""
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1536
-#, fuzzy
 msgid "(e) empty map view with collision"
-msgstr "(e) penampilan peta kosong"
+msgstr ""
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1538
-#, fuzzy
 msgid "(E) empty map view"
-msgstr "(e) penampilan peta kosong"
+msgstr ""
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1540
@@ -359,9 +357,8 @@ msgstr "(b)penampilan peta hitam & putih"
 
 #. TRANSLATORS: pickup size in status bar
 #: src/being/localplayer.cpp:1542
-#, fuzzy
 msgid "(?) map view"
-msgstr "(e) penampilan peta kosong"
+msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
 #: src/being/localplayer.cpp:1562
@@ -1923,7 +1920,9 @@ msgstr "Ambil semua"
 #: src/gui/popups/popupmenu.cpp:2052 src/gui/popups/popupmenu.cpp:2807
 #: src/gui/windows/inventorywindow.cpp:178
 #: src/gui/windows/inventorywindow.cpp:648 src/gui/windows/skilldialog.cpp:68
-#: src/resources/itemtypemapdata.h:39 src/resources/itemtypemapdata.h:43
+#: src/gui/windows/skilldialog.cpp:143 src/gui/windows/skilldialog.cpp:280
+#: src/gui/windows/skilldialog.cpp:449 src/resources/itemtypemapdata.h:39
+#: src/resources/itemtypemapdata.h:43
 msgid "Use"
 msgstr "Gunakan"
 
@@ -3199,7 +3198,7 @@ msgid "Edit"
 msgstr "Ganti"
 
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:90 src/gui/windows/skilldialog.cpp:376
+#: src/gui/widgets/skillinfo.cpp:91 src/gui/windows/skilldialog.cpp:380
 #, c-format
 msgid "Lvl: %d"
 msgstr "Level: %d"
@@ -6394,19 +6393,19 @@ msgid "Up"
 msgstr "Naik"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:189
+#: src/gui/windows/skilldialog.cpp:191
 #, c-format
 msgid "Skill points available: %d"
 msgstr "poin Skill yang tersedia: %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:249
+#: src/gui/windows/skilldialog.cpp:251
 #, c-format
 msgid "Skill Set %d"
 msgstr ""
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:283
+#: src/gui/windows/skilldialog.cpp:287
 #, c-format
 msgid "Skill %d"
 msgstr "Skill %d"
@@ -7582,15 +7581,15 @@ msgstr ""
 
 #. TRANSLATORS: item info label (attack)
 #: src/resources/db/itemdb.cpp:100
-#, fuzzy, c-format
+#, c-format
 msgid "Critical attack %s"
-msgstr "Pukulan kritis:"
+msgstr ""
 
 #. TRANSLATORS: item info label (magic attack)
 #: src/resources/db/itemdb.cpp:102
-#, fuzzy, c-format
+#, c-format
 msgid "M. Attack %s"
-msgstr "serang mob"
+msgstr ""
 
 #. TRANSLATORS: item info label (defence)
 #: src/resources/db/itemdb.cpp:104

@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-15 02:58+0300\n"
-"PO-Revision-Date: 2014-07-10 18:01+0000\n"
-"Last-Translator: samuraiii <samurai.no.dojo@gmail.com>\n"
+"POT-Creation-Date: 2014-07-15 22:53+0300\n"
+"PO-Revision-Date: 2014-07-15 09:43+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/"
 "cs/)\n"
 "Language: cs\n"
@@ -346,15 +346,13 @@ msgstr "(U) ultra zobrazení mapy 2"
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1536
-#, fuzzy
 msgid "(e) empty map view with collision"
-msgstr "(e) zobrazen prázdné mapy"
+msgstr ""
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1538
-#, fuzzy
 msgid "(E) empty map view"
-msgstr "(e) zobrazen prázdné mapy"
+msgstr ""
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1540
@@ -363,9 +361,8 @@ msgstr "(b) zobrazení černobílé mapy"
 
 #. TRANSLATORS: pickup size in status bar
 #: src/being/localplayer.cpp:1542
-#, fuzzy
 msgid "(?) map view"
-msgstr "(D) debug zobrazení mapy"
+msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
 #: src/being/localplayer.cpp:1562
@@ -1926,7 +1923,9 @@ msgstr "Vzít všechny"
 #: src/gui/popups/popupmenu.cpp:2052 src/gui/popups/popupmenu.cpp:2807
 #: src/gui/windows/inventorywindow.cpp:178
 #: src/gui/windows/inventorywindow.cpp:648 src/gui/windows/skilldialog.cpp:68
-#: src/resources/itemtypemapdata.h:39 src/resources/itemtypemapdata.h:43
+#: src/gui/windows/skilldialog.cpp:143 src/gui/windows/skilldialog.cpp:280
+#: src/gui/windows/skilldialog.cpp:449 src/resources/itemtypemapdata.h:39
+#: src/resources/itemtypemapdata.h:43
 msgid "Use"
 msgstr "Použít"
 
@@ -3202,7 +3201,7 @@ msgid "Edit"
 msgstr "Upravit"
 
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:90 src/gui/windows/skilldialog.cpp:376
+#: src/gui/widgets/skillinfo.cpp:91 src/gui/windows/skilldialog.cpp:380
 #, c-format
 msgid "Lvl: %d"
 msgstr "Úroveň: %d"
@@ -4486,9 +4485,8 @@ msgstr "Zobrazit objekty průhledné"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:109
-#, fuzzy
 msgid "Enable reorder sprites (need for mods support)."
-msgstr "Povolit přeřazení obrázků."
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:114
@@ -6419,19 +6417,19 @@ msgid "Up"
 msgstr "Zvýšit"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:189
+#: src/gui/windows/skilldialog.cpp:191
 #, c-format
 msgid "Skill points available: %d"
 msgstr "Dovednostních bodů: %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:249
+#: src/gui/windows/skilldialog.cpp:251
 #, c-format
 msgid "Skill Set %d"
 msgstr "Dovednost nastavena %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:283
+#: src/gui/windows/skilldialog.cpp:287
 #, c-format
 msgid "Skill %d"
 msgstr "Dovednost %d"
@@ -7610,15 +7608,15 @@ msgstr "Útok %s"
 
 #. TRANSLATORS: item info label (attack)
 #: src/resources/db/itemdb.cpp:100
-#, fuzzy, c-format
+#, c-format
 msgid "Critical attack %s"
-msgstr "Kritický zásah"
+msgstr ""
 
 #. TRANSLATORS: item info label (magic attack)
 #: src/resources/db/itemdb.cpp:102
-#, fuzzy, c-format
+#, c-format
 msgid "M. Attack %s"
-msgstr "Útok %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (defence)
 #: src/resources/db/itemdb.cpp:104
@@ -7628,15 +7626,15 @@ msgstr "Obrana %s"
 
 #. TRANSLATORS: item info label (defence)
 #: src/resources/db/itemdb.cpp:106
-#, fuzzy, c-format
+#, c-format
 msgid "Critical defense %s"
-msgstr "Obrana %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (magic defence)
 #: src/resources/db/itemdb.cpp:108
-#, fuzzy, c-format
+#, c-format
 msgid "M. Defense %s"
-msgstr "Obrana %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (health)
 #: src/resources/db/itemdb.cpp:110

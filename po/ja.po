@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-15 02:58+0300\n"
-"PO-Revision-Date: 2014-06-27 09:41+0000\n"
+"POT-Creation-Date: 2014-07-15 22:53+0300\n"
+"PO-Revision-Date: 2014-07-15 09:43+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/"
 "language/ja/)\n"
@@ -345,15 +345,13 @@ msgstr "(U) ウルトラマップビュー2"
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1536
-#, fuzzy
 msgid "(e) empty map view with collision"
-msgstr "(e) 空マップビュー"
+msgstr ""
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1538
-#, fuzzy
 msgid "(E) empty map view"
-msgstr "(e) 空マップビュー"
+msgstr ""
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1540
@@ -362,9 +360,8 @@ msgstr "(b) 白黒マップビュー"
 
 #. TRANSLATORS: pickup size in status bar
 #: src/being/localplayer.cpp:1542
-#, fuzzy
 msgid "(?) map view"
-msgstr "(D) デバッグマップビュー"
+msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
 #: src/being/localplayer.cpp:1562
@@ -1926,7 +1923,9 @@ msgstr "全部取出す"
 #: src/gui/popups/popupmenu.cpp:2052 src/gui/popups/popupmenu.cpp:2807
 #: src/gui/windows/inventorywindow.cpp:178
 #: src/gui/windows/inventorywindow.cpp:648 src/gui/windows/skilldialog.cpp:68
-#: src/resources/itemtypemapdata.h:39 src/resources/itemtypemapdata.h:43
+#: src/gui/windows/skilldialog.cpp:143 src/gui/windows/skilldialog.cpp:280
+#: src/gui/windows/skilldialog.cpp:449 src/resources/itemtypemapdata.h:39
+#: src/resources/itemtypemapdata.h:43
 msgid "Use"
 msgstr "使用"
 
@@ -3202,7 +3201,7 @@ msgid "Edit"
 msgstr "編集"
 
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:90 src/gui/windows/skilldialog.cpp:376
+#: src/gui/widgets/skillinfo.cpp:91 src/gui/windows/skilldialog.cpp:380
 #, c-format
 msgid "Lvl: %d"
 msgstr "Lvl: %d"
@@ -4484,9 +4483,8 @@ msgstr "透過を表示する"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:109
-#, fuzzy
 msgid "Enable reorder sprites (need for mods support)."
-msgstr "スプライトリオーダーを有効にする."
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:114
@@ -6400,19 +6398,19 @@ msgid "Up"
 msgstr "上"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:189
+#: src/gui/windows/skilldialog.cpp:191
 #, c-format
 msgid "Skill points available: %d"
 msgstr "スキルポイント: %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:249
+#: src/gui/windows/skilldialog.cpp:251
 #, c-format
 msgid "Skill Set %d"
 msgstr "スキルセット %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:283
+#: src/gui/windows/skilldialog.cpp:287
 #, c-format
 msgid "Skill %d"
 msgstr "スキル %d"
@@ -7595,15 +7593,15 @@ msgstr ""
 
 #. TRANSLATORS: item info label (attack)
 #: src/resources/db/itemdb.cpp:100
-#, fuzzy, c-format
+#, c-format
 msgid "Critical attack %s"
-msgstr "クリティカルヒット"
+msgstr ""
 
 #. TRANSLATORS: item info label (magic attack)
 #: src/resources/db/itemdb.cpp:102
-#, fuzzy, c-format
+#, c-format
 msgid "M. Attack %s"
-msgstr "M.Attack"
+msgstr ""
 
 #. TRANSLATORS: item info label (defence)
 #: src/resources/db/itemdb.cpp:104
@@ -7619,9 +7617,9 @@ msgstr ""
 
 #. TRANSLATORS: item info label (magic defence)
 #: src/resources/db/itemdb.cpp:108
-#, fuzzy, c-format
+#, c-format
 msgid "M. Defense %s"
-msgstr "M.Defense"
+msgstr ""
 
 #. TRANSLATORS: item info label (health)
 #: src/resources/db/itemdb.cpp:110

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-15 02:58+0300\n"
+"POT-Creation-Date: 2014-07-15 22:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1915,7 +1915,9 @@ msgstr ""
 #: src/gui/popups/popupmenu.cpp:2052 src/gui/popups/popupmenu.cpp:2807
 #: src/gui/windows/inventorywindow.cpp:178
 #: src/gui/windows/inventorywindow.cpp:648 src/gui/windows/skilldialog.cpp:68
-#: src/resources/itemtypemapdata.h:39 src/resources/itemtypemapdata.h:43
+#: src/gui/windows/skilldialog.cpp:143 src/gui/windows/skilldialog.cpp:280
+#: src/gui/windows/skilldialog.cpp:449 src/resources/itemtypemapdata.h:39
+#: src/resources/itemtypemapdata.h:43
 msgid "Use"
 msgstr ""
 
@@ -3191,7 +3193,7 @@ msgid "Edit"
 msgstr ""
 
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:90 src/gui/windows/skilldialog.cpp:376
+#: src/gui/widgets/skillinfo.cpp:91 src/gui/windows/skilldialog.cpp:380
 #, c-format
 msgid "Lvl: %d"
 msgstr ""
@@ -6388,19 +6390,19 @@ msgid "Up"
 msgstr ""
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:189
+#: src/gui/windows/skilldialog.cpp:191
 #, c-format
 msgid "Skill points available: %d"
 msgstr ""
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:249
+#: src/gui/windows/skilldialog.cpp:251
 #, c-format
 msgid "Skill Set %d"
 msgstr ""
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:283
+#: src/gui/windows/skilldialog.cpp:287
 #, c-format
 msgid "Skill %d"
 msgstr ""

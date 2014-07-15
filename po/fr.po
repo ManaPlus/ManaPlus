@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-15 02:58+0300\n"
-"PO-Revision-Date: 2014-06-29 01:16+0000\n"
-"Last-Translator: Alige <aligetmw@hotmail.fr>\n"
+"POT-Creation-Date: 2014-07-15 22:53+0300\n"
+"PO-Revision-Date: 2014-07-15 09:43+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
 "fr/)\n"
 "Language: fr\n"
@@ -350,15 +350,13 @@ msgstr "(u) Vue du jeu mode Ultra 2"
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1536
-#, fuzzy
 msgid "(e) empty map view with collision"
-msgstr "(e) Vue de la carte vide"
+msgstr ""
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1538
-#, fuzzy
 msgid "(E) empty map view"
-msgstr "(e) Vue de la carte vide"
+msgstr ""
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1540
@@ -367,9 +365,8 @@ msgstr "(b) Vue de la carte en N&B"
 
 #. TRANSLATORS: pickup size in status bar
 #: src/being/localplayer.cpp:1542
-#, fuzzy
 msgid "(?) map view"
-msgstr "(D) Vue du jeu mode déverminage"
+msgstr ""
 
 #. TRANSLATORS: magic attack in status bar
 #: src/being/localplayer.cpp:1562
@@ -1934,7 +1931,9 @@ msgstr "Reprendre tout"
 #: src/gui/popups/popupmenu.cpp:2052 src/gui/popups/popupmenu.cpp:2807
 #: src/gui/windows/inventorywindow.cpp:178
 #: src/gui/windows/inventorywindow.cpp:648 src/gui/windows/skilldialog.cpp:68
-#: src/resources/itemtypemapdata.h:39 src/resources/itemtypemapdata.h:43
+#: src/gui/windows/skilldialog.cpp:143 src/gui/windows/skilldialog.cpp:280
+#: src/gui/windows/skilldialog.cpp:449 src/resources/itemtypemapdata.h:39
+#: src/resources/itemtypemapdata.h:43
 msgid "Use"
 msgstr "Utiliser"
 
@@ -3210,7 +3209,7 @@ msgid "Edit"
 msgstr "Éditer"
 
 #. TRANSLATORS: skills dialog. skill level
-#: src/gui/widgets/skillinfo.cpp:90 src/gui/windows/skilldialog.cpp:376
+#: src/gui/widgets/skillinfo.cpp:91 src/gui/windows/skilldialog.cpp:380
 #, c-format
 msgid "Lvl: %d"
 msgstr "Niveau : %d"
@@ -4495,9 +4494,8 @@ msgstr "Afficher les créatures en transparence"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:109
-#, fuzzy
 msgid "Enable reorder sprites (need for mods support)."
-msgstr "Autoriser la réorganisation des cartes éléments de dessin"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:114
@@ -6432,19 +6430,19 @@ msgid "Up"
 msgstr "Augmenter"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:189
+#: src/gui/windows/skilldialog.cpp:191
 #, c-format
 msgid "Skill points available: %d"
 msgstr "Points de compétences : %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:249
+#: src/gui/windows/skilldialog.cpp:251
 #, c-format
 msgid "Skill Set %d"
 msgstr "Compétence choisie : %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:283
+#: src/gui/windows/skilldialog.cpp:287
 #, c-format
 msgid "Skill %d"
 msgstr "Compétence %d"
@@ -7640,15 +7638,15 @@ msgstr "Attaque %s"
 
 #. TRANSLATORS: item info label (attack)
 #: src/resources/db/itemdb.cpp:100
-#, fuzzy, c-format
+#, c-format
 msgid "Critical attack %s"
-msgstr "Coup critique"
+msgstr ""
 
 #. TRANSLATORS: item info label (magic attack)
 #: src/resources/db/itemdb.cpp:102
-#, fuzzy, c-format
+#, c-format
 msgid "M. Attack %s"
-msgstr "Attaque %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (defence)
 #: src/resources/db/itemdb.cpp:104
@@ -7658,15 +7656,15 @@ msgstr "Défense %s"
 
 #. TRANSLATORS: item info label (defence)
 #: src/resources/db/itemdb.cpp:106
-#, fuzzy, c-format
+#, c-format
 msgid "Critical defense %s"
-msgstr "Défense %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (magic defence)
 #: src/resources/db/itemdb.cpp:108
-#, fuzzy, c-format
+#, c-format
 msgid "M. Defense %s"
-msgstr "Défense %s"
+msgstr ""
 
 #. TRANSLATORS: item info label (health)
 #: src/resources/db/itemdb.cpp:110
