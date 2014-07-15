@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-05 00:21+0300\n"
-"PO-Revision-Date: 2014-06-27 09:41+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2014-07-15 02:58+0300\n"
+"PO-Revision-Date: 2014-07-10 18:01+0000\n"
+"Last-Translator: samuraiii <samurai.no.dojo@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/"
 "cs/)\n"
 "Language: cs\n"
@@ -346,156 +346,169 @@ msgstr "(U) ultra zobrazení mapy 2"
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1536
-msgid "(e) empty map view"
+#, fuzzy
+msgid "(e) empty map view with collision"
 msgstr "(e) zobrazen prázdné mapy"
 
 #. TRANSLATORS: map view type in status bar
 #: src/being/localplayer.cpp:1538
+#, fuzzy
+msgid "(E) empty map view"
+msgstr "(e) zobrazen prázdné mapy"
+
+#. TRANSLATORS: map view type in status bar
+#: src/being/localplayer.cpp:1540
 msgid "(b) black & white map view"
 msgstr "(b) zobrazení černobílé mapy"
 
+#. TRANSLATORS: pickup size in status bar
+#: src/being/localplayer.cpp:1542
+#, fuzzy
+msgid "(?) map view"
+msgstr "(D) debug zobrazení mapy"
+
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1558
+#: src/being/localplayer.cpp:1562
 msgid "(f) use #flar for magic attack"
 msgstr "(f) použij #flar pro magický útok"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1560
+#: src/being/localplayer.cpp:1564
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) použij #chiza pro magický útok"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1562
+#: src/being/localplayer.cpp:1566
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) použij #ingrav pro magický útok"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1564
+#: src/being/localplayer.cpp:1568
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) použij #frillyar pro magický útok"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1566
+#: src/being/localplayer.cpp:1570
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) použij #upmarmu pro magický útok"
 
 #. TRANSLATORS: magic attack in status bar
-#: src/being/localplayer.cpp:1568
+#: src/being/localplayer.cpp:1572
 msgid "(?) magic attack"
 msgstr "(?) magický útok attack"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1588
+#: src/being/localplayer.cpp:1592
 msgid "(a) attack all players"
 msgstr "(a) útoč na všecky hráče"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1590
+#: src/being/localplayer.cpp:1594
 msgid "(f) attack all except friends"
 msgstr "(f) útočit na všecky krom přátel"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1592
+#: src/being/localplayer.cpp:1596
 msgid "(b) attack bad relations"
 msgstr "(b) útoč na ty se špatnými vztahy"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1594
+#: src/being/localplayer.cpp:1598
 msgid "(d) don't attack players"
 msgstr "(d) neútočit na hráče"
 
 #. TRANSLATORS: player attack type in status bar
-#: src/being/localplayer.cpp:1596
+#: src/being/localplayer.cpp:1600
 msgid "(?) pvp attack"
 msgstr "(?) útok hráče proti hráči"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:1616
+#: src/being/localplayer.cpp:1620
 msgid "(D) default imitation"
 msgstr "(D) výchozí imitace"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:1618
+#: src/being/localplayer.cpp:1622
 msgid "(O) outfits imitation"
 msgstr "(O) imitace výstroje"
 
 #. TRANSLATORS: imitation type in status bar
-#: src/being/localplayer.cpp:1620
+#: src/being/localplayer.cpp:1624
 msgid "(?) imitation"
 msgstr "(?) imitace"
 
 #. TRANSLATORS: away message box header
-#: src/being/localplayer.cpp:1648
+#: src/being/localplayer.cpp:1652
 msgid "Away"
 msgstr "Pryč"
 
 #. TRANSLATORS: away type in status bar
-#: src/being/localplayer.cpp:1671
+#: src/being/localplayer.cpp:1675
 msgid "(O) on keyboard"
 msgstr "(O) u počítače"
 
 #. TRANSLATORS: away type in status bar
-#: src/being/localplayer.cpp:1673
+#: src/being/localplayer.cpp:1677
 msgid "(A) away"
 msgstr "(A) pryč (away)"
 
 #. TRANSLATORS: away type in status bar
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:1675 src/being/localplayer.cpp:1693
+#: src/being/localplayer.cpp:1679 src/being/localplayer.cpp:1697
 msgid "(?) away"
 msgstr "(?) away"
 
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:1689
+#: src/being/localplayer.cpp:1693
 msgid "(G) game camera mode"
 msgstr "(G) mód herní kamery"
 
 #. TRANSLATORS: camera mode in status bar
-#: src/being/localplayer.cpp:1691
+#: src/being/localplayer.cpp:1695
 msgid "(F) free camera mode"
 msgstr "(F) mód volné kamery"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:1718
+#: src/being/localplayer.cpp:1722
 msgid "Game modifiers are enabled"
 msgstr "Modifikátory hry jsou zapnuty"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:1720
+#: src/being/localplayer.cpp:1724
 msgid "Game modifiers are disabled"
 msgstr "Modifikátory hry jsou vypnuty"
 
 #. TRANSLATORS: game modifiers state in status bar
-#: src/being/localplayer.cpp:1722
+#: src/being/localplayer.cpp:1726
 msgid "Game modifiers are unknown"
 msgstr "Modifikátory hry nejsou známy"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:3334
+#: src/being/localplayer.cpp:3338
 #, c-format
 msgid "Follow: %s"
 msgstr "Nasledovat: %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3340 src/being/localplayer.cpp:3365
+#: src/being/localplayer.cpp:3344 src/being/localplayer.cpp:3369
 msgid "Follow canceled"
 msgstr "Následování zrušeno."
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:3350
+#: src/being/localplayer.cpp:3354
 #, c-format
 msgid "Imitation: %s"
 msgstr "Imitace: %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:3356 src/being/localplayer.cpp:3370
+#: src/being/localplayer.cpp:3360 src/being/localplayer.cpp:3374
 msgid "Imitation canceled"
 msgstr "Imitace zrušena."
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:3716
+#: src/being/localplayer.cpp:3720
 #, c-format
 msgid "You see %s"
 msgstr "Vidíš %s"
@@ -629,7 +642,7 @@ msgstr "Vyměňuji herní servery"
 #: src/client.cpp:1380 src/client.cpp:1391 src/client.cpp:1577
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:158
-#: src/gui/windows/charcreatedialog.cpp:358
+#: src/gui/windows/charcreatedialog.cpp:368
 #: src/gui/windows/charselectdialog.cpp:275
 #: src/gui/windows/editserverdialog.cpp:194
 #: src/gui/windows/registerdialog.cpp:247
@@ -1445,7 +1458,7 @@ msgid "Cancel"
 msgstr "Zrušit"
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:197
+#: src/gui/popups/itempopup.cpp:201
 #, c-format
 msgid "Weight: %s"
 msgstr "Váha: %s"
@@ -1470,7 +1483,7 @@ msgstr "Obchod"
 #: src/gui/popups/popupmenu.cpp:162 src/gui/popups/popupmenu.cpp:266
 #: src/gui/popups/popupmenu.cpp:701 src/gui/setupactiondata.h:64
 #: src/gui/windows/botcheckerwindow.cpp:84
-#: src/net/eathena/generalhandler.cpp:256 src/net/tmwa/generalhandler.cpp:294
+#: src/net/eathena/generalhandler.cpp:257 src/net/tmwa/generalhandler.cpp:294
 msgid "Attack"
 msgstr "Útok"
 
@@ -2211,7 +2224,7 @@ msgstr "Zaměřit monstrum"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:130
 msgid "Target closest monster (without filters)"
-msgstr ""
+msgstr "Zaměřit nejbližší monstrum (bez filtrů)"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:136
@@ -4473,7 +4486,8 @@ msgstr "Zobrazit objekty průhledné"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:109
-msgid "Enable reorder sprites."
+#, fuzzy
+msgid "Enable reorder sprites (need for mods support)."
 msgstr "Povolit přeřazení obrázků."
 
 #. TRANSLATORS: settings option
@@ -5526,7 +5540,7 @@ msgstr "Změnit heslo"
 #. TRANSLATORS: register dialog. label.
 #. TRANSLATORS: unregister dialog. label.
 #: src/gui/windows/changepassworddialog.cpp:69
-#: src/gui/windows/logindialog.cpp:108 src/gui/windows/registerdialog.cpp:79
+#: src/gui/windows/logindialog.cpp:109 src/gui/windows/registerdialog.cpp:79
 #: src/gui/windows/unregisterdialog.cpp:67
 msgid "Password:"
 msgstr "Heslo:"
@@ -5568,7 +5582,7 @@ msgstr "Nová postava"
 #. TRANSLATORS: login dialog label
 #. TRANSLATORS: register dialog. label.
 #: src/gui/windows/charcreatedialog.cpp:82
-#: src/gui/windows/editserverdialog.cpp:74 src/gui/windows/logindialog.cpp:106
+#: src/gui/windows/editserverdialog.cpp:74 src/gui/windows/logindialog.cpp:107
 #: src/gui/windows/registerdialog.cpp:77
 msgid "Name:"
 msgstr "Jméno:"
@@ -5580,8 +5594,8 @@ msgstr "Jméno:"
 #: src/gui/windows/charcreatedialog.cpp:86
 #: src/gui/windows/charcreatedialog.cpp:95
 #: src/gui/windows/charcreatedialog.cpp:112
-#: src/gui/windows/charcreatedialog.cpp:182
 #: src/gui/windows/charcreatedialog.cpp:192
+#: src/gui/windows/charcreatedialog.cpp:202
 #: src/gui/windows/outfitwindow.cpp:61
 msgid ">"
 msgstr ">"
@@ -5592,8 +5606,8 @@ msgstr ">"
 #. TRANSLATORS: outfits window button
 #: src/gui/windows/charcreatedialog.cpp:90
 #: src/gui/windows/charcreatedialog.cpp:97
-#: src/gui/windows/charcreatedialog.cpp:184
 #: src/gui/windows/charcreatedialog.cpp:194
+#: src/gui/windows/charcreatedialog.cpp:204
 #: src/gui/windows/outfitwindow.cpp:59
 msgid "<"
 msgstr "<"
@@ -5629,33 +5643,33 @@ msgstr "Žena"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:124
-#: src/gui/windows/charcreatedialog.cpp:467
+#: src/gui/windows/charcreatedialog.cpp:477
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Rozdělte prosím %d bodů"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:186
+#: src/gui/windows/charcreatedialog.cpp:196
 msgid "Race:"
 msgstr "Rasa:"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:196
+#: src/gui/windows/charcreatedialog.cpp:206
 msgid "Look:"
 msgstr "Vzhled:"
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:360
+#: src/gui/windows/charcreatedialog.cpp:370
 msgid "Your name needs to be at least 4 characters."
 msgstr "Vaše jméno musí mít nejméně 4 znaky."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:457
+#: src/gui/windows/charcreatedialog.cpp:467
 msgid "Character stats OK"
 msgstr "Stav postavy je v pořádku"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:473
+#: src/gui/windows/charcreatedialog.cpp:483
 #, c-format
 msgid "Please remove %d points"
 msgstr "Odstraňte prosím %d bodů"
@@ -6088,17 +6102,17 @@ msgid "Custom update host"
 msgstr "Vlastní host updatů"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:102
+#: src/gui/windows/logindialog.cpp:103
 msgid "Server:"
 msgstr "Server:"
 
 #. TRANSLATORS: login dialog label
-#: src/gui/windows/logindialog.cpp:112
+#: src/gui/windows/logindialog.cpp:113
 #, c-format
 msgid "Update host: %s"
 msgstr "Host updatu: %s"
 
-#: src/gui/windows/logindialog.cpp:225
+#: src/gui/windows/logindialog.cpp:232
 msgid "Open register url"
 msgstr "Otevřít registrační url"
 
@@ -6691,12 +6705,12 @@ msgid "You give:"
 msgstr "Dáváš:"
 
 #. TRANSLATORS: trade error
-#: src/gui/windows/tradewindow.cpp:394
+#: src/gui/windows/tradewindow.cpp:397
 msgid "You don't have enough money."
 msgstr "Nemáš dost peněz."
 
 #. TRANSLATORS: trade error
-#: src/gui/windows/tradewindow.cpp:480
+#: src/gui/windows/tradewindow.cpp:483
 msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr "Přidání věci selhalo. Nelze předávat stejný předmět v jednom okně."
 
@@ -7001,7 +7015,7 @@ msgstr ""
 "existuje. "
 
 #. TRANSLATORS: error message
-#: src/net/ea/charserverhandler.cpp:180 src/net/ea/loginhandler.cpp:280
+#: src/net/ea/charserverhandler.cpp:180 src/net/ea/loginhandler.cpp:281
 msgid "Wrong name."
 msgstr "Špatné jméno."
 
@@ -7174,43 +7188,43 @@ msgid "New password too short."
 msgstr "Nové heslo je příliš krátké."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:165 src/net/ea/loginhandler.cpp:292
+#: src/net/ea/loginhandler.cpp:165 src/net/ea/loginhandler.cpp:293
 msgid "Unknown error."
 msgstr "Neznámá chyba."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:238
+#: src/net/ea/loginhandler.cpp:239
 msgid "Unregistered ID."
 msgstr "Neregistované ID."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:242
+#: src/net/ea/loginhandler.cpp:243
 msgid "Wrong password."
 msgstr "Špatné heslo."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:247
+#: src/net/ea/loginhandler.cpp:248
 msgid "Account expired."
 msgstr "Platnost účtu vypršela."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:251
+#: src/net/ea/loginhandler.cpp:252
 msgid "Rejected from server."
 msgstr "Odmítnutí od serveru."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:255
+#: src/net/ea/loginhandler.cpp:256
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr "Byl jste trvale vyloučen ze hry. Prosím kontaktujte GM team."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:260
+#: src/net/ea/loginhandler.cpp:261
 msgid "Client too old."
 msgstr "Klientský software je příliš starý."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:264
+#: src/net/ea/loginhandler.cpp:265
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
@@ -7220,22 +7234,22 @@ msgstr ""
 "Prosím kontaktujte GM team přes fórum."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:272
+#: src/net/ea/loginhandler.cpp:273
 msgid "Server overpopulated."
 msgstr "Server je přelidněný."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:276
+#: src/net/ea/loginhandler.cpp:277
 msgid "This user name is already taken."
 msgstr "Toto uživatelské jméno je již používáno."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:284
+#: src/net/ea/loginhandler.cpp:285
 msgid "Incorrect email."
 msgstr "Špatný e-mail."
 
 #. TRANSLATORS: error message
-#: src/net/ea/loginhandler.cpp:288
+#: src/net/ea/loginhandler.cpp:289
 msgid "Username permanently erased."
 msgstr "Uživatelské jméno bylo trvale odstraněno."
 
@@ -7409,125 +7423,125 @@ msgid "Luck %s"
 msgstr "Štěstí %s"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:129 src/net/tmwa/generalhandler.cpp:142
+#: src/net/eathena/generalhandler.cpp:130 src/net/tmwa/generalhandler.cpp:142
 msgid "Authentication failed."
 msgstr "Ověření selhalo."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:132 src/net/tmwa/generalhandler.cpp:146
+#: src/net/eathena/generalhandler.cpp:133 src/net/tmwa/generalhandler.cpp:146
 msgid "No servers available."
 msgstr "Nejsou dostupné žádné servery."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:137 src/net/tmwa/generalhandler.cpp:152
+#: src/net/eathena/generalhandler.cpp:138 src/net/tmwa/generalhandler.cpp:152
 msgid "Someone else is trying to use this account."
 msgstr "Někdo jiný se pokouší používat tento účet."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:142 src/net/tmwa/generalhandler.cpp:158
+#: src/net/eathena/generalhandler.cpp:143 src/net/tmwa/generalhandler.cpp:158
 msgid "This account is already logged in."
 msgstr "Tento účet je již přihlášen."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:146 src/net/tmwa/generalhandler.cpp:163
+#: src/net/eathena/generalhandler.cpp:147 src/net/tmwa/generalhandler.cpp:163
 msgid "Speed hack detected."
 msgstr "Detekován podvod s rychlostí."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:149 src/net/tmwa/generalhandler.cpp:167
+#: src/net/eathena/generalhandler.cpp:150 src/net/tmwa/generalhandler.cpp:167
 msgid "Duplicated login."
 msgstr "Duplicitní přihlášení."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:152 src/net/tmwa/generalhandler.cpp:171
+#: src/net/eathena/generalhandler.cpp:153 src/net/tmwa/generalhandler.cpp:171
 msgid "Unknown connection error."
 msgstr "Neznámá chyba připojení."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:224 src/net/tmwa/generalhandler.cpp:253
+#: src/net/eathena/generalhandler.cpp:225 src/net/tmwa/generalhandler.cpp:253
 msgid "Got disconnected from server!"
 msgstr "Byl jsem odpojen od server!"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:249 src/net/tmwa/generalhandler.cpp:281
+#: src/net/eathena/generalhandler.cpp:250 src/net/tmwa/generalhandler.cpp:281
 msgid "Strength"
 msgstr "Síla"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:250 src/net/tmwa/generalhandler.cpp:283
+#: src/net/eathena/generalhandler.cpp:251 src/net/tmwa/generalhandler.cpp:283
 msgid "Agility"
 msgstr "Hbitost"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:251 src/net/tmwa/generalhandler.cpp:285
+#: src/net/eathena/generalhandler.cpp:252 src/net/tmwa/generalhandler.cpp:285
 msgid "Vitality"
 msgstr "Vitalita"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:252 src/net/tmwa/generalhandler.cpp:287
+#: src/net/eathena/generalhandler.cpp:253 src/net/tmwa/generalhandler.cpp:287
 msgid "Intelligence"
 msgstr "Inteligence"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:253 src/net/tmwa/generalhandler.cpp:289
+#: src/net/eathena/generalhandler.cpp:254 src/net/tmwa/generalhandler.cpp:289
 msgid "Dexterity"
 msgstr "Obratnost"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:254 src/net/tmwa/generalhandler.cpp:291
+#: src/net/eathena/generalhandler.cpp:255 src/net/tmwa/generalhandler.cpp:291
 msgid "Luck"
 msgstr "Štěstí"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:257 src/net/tmwa/generalhandler.cpp:296
+#: src/net/eathena/generalhandler.cpp:258 src/net/tmwa/generalhandler.cpp:296
 msgid "Defense"
 msgstr "Obrana"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:258 src/net/tmwa/generalhandler.cpp:298
+#: src/net/eathena/generalhandler.cpp:259 src/net/tmwa/generalhandler.cpp:298
 msgid "M.Attack"
 msgstr "Magický útok"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:259 src/net/tmwa/generalhandler.cpp:300
+#: src/net/eathena/generalhandler.cpp:260 src/net/tmwa/generalhandler.cpp:300
 msgid "M.Defense"
 msgstr "Magická Obr."
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:261 src/net/tmwa/generalhandler.cpp:303
+#: src/net/eathena/generalhandler.cpp:262 src/net/tmwa/generalhandler.cpp:303
 #, no-c-format
 msgid "% Accuracy"
 msgstr "% Přesnost"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:263 src/net/tmwa/generalhandler.cpp:306
+#: src/net/eathena/generalhandler.cpp:264 src/net/tmwa/generalhandler.cpp:306
 #, no-c-format
 msgid "% Evade"
 msgstr "% Uhnutí"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:265 src/net/tmwa/generalhandler.cpp:309
+#: src/net/eathena/generalhandler.cpp:266 src/net/tmwa/generalhandler.cpp:309
 #, no-c-format
 msgid "% Critical"
 msgstr "% Kritický zásah"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:266 src/net/tmwa/generalhandler.cpp:311
+#: src/net/eathena/generalhandler.cpp:267 src/net/tmwa/generalhandler.cpp:311
 msgid "Attack Delay"
 msgstr "Zpoždění útoku"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:267 src/net/tmwa/generalhandler.cpp:313
+#: src/net/eathena/generalhandler.cpp:268 src/net/tmwa/generalhandler.cpp:313
 msgid "Walk Delay"
 msgstr "Zpoždění chůze"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:268 src/net/tmwa/generalhandler.cpp:315
+#: src/net/eathena/generalhandler.cpp:269 src/net/tmwa/generalhandler.cpp:315
 msgid "Attack Range"
 msgstr "Dosah útoku"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:269 src/net/tmwa/generalhandler.cpp:317
+#: src/net/eathena/generalhandler.cpp:270 src/net/tmwa/generalhandler.cpp:317
 msgid "Damage per sec."
 msgstr "Poškození za vteř."
 
@@ -7583,43 +7597,85 @@ msgstr "Moderní OpenGL"
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:50 src/resources/db/avatardb.cpp:88
-#: src/resources/db/itemdb.cpp:320 src/resources/db/moddb.cpp:78
+#: src/resources/db/itemdb.cpp:334 src/resources/db/moddb.cpp:78
 #: src/resources/db/monsterdb.cpp:106 src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr "nepojmenovaný"
 
-#. TRANSLATORS: item info label
+#. TRANSLATORS: item info label (attack)
 #: src/resources/db/itemdb.cpp:98
 #, c-format
 msgid "Attack %s"
 msgstr "Útok %s"
 
-#. TRANSLATORS: item info label
+#. TRANSLATORS: item info label (attack)
 #: src/resources/db/itemdb.cpp:100
+#, fuzzy, c-format
+msgid "Critical attack %s"
+msgstr "Kritický zásah"
+
+#. TRANSLATORS: item info label (magic attack)
+#: src/resources/db/itemdb.cpp:102
+#, fuzzy, c-format
+msgid "M. Attack %s"
+msgstr "Útok %s"
+
+#. TRANSLATORS: item info label (defence)
+#: src/resources/db/itemdb.cpp:104
 #, c-format
 msgid "Defense %s"
 msgstr "Obrana %s"
 
-#. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:102
+#. TRANSLATORS: item info label (defence)
+#: src/resources/db/itemdb.cpp:106
+#, fuzzy, c-format
+msgid "Critical defense %s"
+msgstr "Obrana %s"
+
+#. TRANSLATORS: item info label (magic defence)
+#: src/resources/db/itemdb.cpp:108
+#, fuzzy, c-format
+msgid "M. Defense %s"
+msgstr "Obrana %s"
+
+#. TRANSLATORS: item info label (health)
+#: src/resources/db/itemdb.cpp:110
 #, c-format
 msgid "HP %s"
 msgstr "BŽ %s"
 
-#. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:104
+#. TRANSLATORS: item info label (mana)
+#: src/resources/db/itemdb.cpp:112
 #, c-format
 msgid "MP %s"
 msgstr "BM %s"
 
-#. TRANSLATORS: item info label
-#: src/resources/db/itemdb.cpp:106
+#. TRANSLATORS: item info label (level)
+#: src/resources/db/itemdb.cpp:114
 #, c-format
 msgid "Level %s"
 msgstr "Úroveň %s"
 
+#. TRANSLATORS: item info label (moving speed)
+#: src/resources/db/itemdb.cpp:116
+#, c-format
+msgid "Speed %s"
+msgstr ""
+
+#. TRANSLATORS: item info label (health)
+#: src/resources/db/itemdb.cpp:118
+#, c-format
+msgid "Range %s"
+msgstr ""
+
+#. TRANSLATORS: item info label (health)
+#: src/resources/db/itemdb.cpp:120
+#, c-format
+msgid "Flee %s"
+msgstr ""
+
 #. TRANSLATORS: item name
-#: src/resources/db/itemdb.cpp:196
+#: src/resources/db/itemdb.cpp:210
 msgid "Unknown item"
 msgstr "Neznámý předmět"
 

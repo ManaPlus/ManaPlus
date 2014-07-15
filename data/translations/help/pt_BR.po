@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-06-12 00:09+0000\n"
+"PO-Revision-Date: 2014-07-05 17:09+0000\n"
 "Last-Translator: Jonatas L. Nogueira <cpntb1@ymail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/manaplus/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,7 @@ msgid ""
 msgstr " Você pode melhorar suas habilidades, aumentando o nível de job. Cada nível de job dá-lhe 1 ponto para gastar em habilidades básicas."
 
 msgid "\"Emote shortcut 10\""
-msgstr ""
+msgstr "\"Atalho para emoticon 10\""
 
 msgid "Content devs"
 msgstr ""
@@ -77,7 +77,7 @@ msgid "/addattack NAME - add monster to attack list."
 msgstr "/addattack NAME - adiciona monstro na lista de ataque."
 
 msgid "\"Emote shortcut 2\""
-msgstr ""
+msgstr "\"Atalho para emoticon 2\""
 
 msgid "/announce MESSAGE - show global message."
 msgstr ""
@@ -100,10 +100,10 @@ msgstr ""
 msgid ""
 "If client working very slow, you can improve speed\n"
 "by reading this: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
-msgstr ""
+msgstr "Se o cliente está rodando muito lentamente, você pode melhorar a velocidade\nlendo isso: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
 
 msgid "\"Enable/disable trading\""
-msgstr ""
+msgstr "\"Habilitar/desabilitar troca\""
 
 msgid "/wait NAME - wait for nick or moster with name."
 msgstr ""
@@ -279,12 +279,12 @@ msgid "Search string not found."
 msgstr "Linha procurada não localizada."
 
 msgid "\"Emote shortcut 7\""
-msgstr ""
+msgstr "\"Atalho para emoticon 7\""
 
 msgid ""
 "You can set any client resolution. In settings in video tab,\n"
 "click on \"custom\" and enter for example: 900x500 and press ok."
-msgstr ""
+msgstr "Você pode definir qualquer resolução. Na aba de video nas preferências,\nclique em \"personalizado\" e entre por exemplo: 900x500 e pressione ok."
 
 msgid "/attack - attack target."
 msgstr "/attack - ataca alvo."
@@ -364,7 +364,7 @@ msgid "For other servers may exists other copyrights."
 msgstr ""
 
 msgid "\"Outfit shortcut 13\""
-msgstr ""
+msgstr "\"Atalho de roupa 13\""
 
 msgid "/sethome - set home position."
 msgstr ""
@@ -427,7 +427,7 @@ msgid "\"Commands window\""
 msgstr "\"Janela de comandos\""
 
 msgid "Android porting"
-msgstr ""
+msgstr "portabilidade para Android"
 
 msgid ""
 "You can set away mode,\n"
@@ -567,7 +567,7 @@ msgid "\"Sit\""
 msgstr "\"Sentar\""
 
 msgid "/navigate x y - move to position x,y in current map in any distance."
-msgstr ""
+msgstr "/navigate x y - mover para a posição x,y no mapa atual em qualquer distância."
 
 msgid "SKILLS"
 msgstr "HABILIDADES"
@@ -637,7 +637,7 @@ msgid ""
 msgstr ""
 
 msgid "\"Outfit shortcut 6\""
-msgstr ""
+msgstr "\"Atalho de roupa 6\""
 
 msgid "Visit IRC channel:"
 msgstr "Visite o canal IRC:"
@@ -661,7 +661,7 @@ msgid "INDEX"
 msgstr "ÍNDICE"
 
 msgid "\"Outfit shortcut 10\""
-msgstr ""
+msgstr "\"Atalho de roupa 10\""
 
 msgid "\"Crazy moves\""
 msgstr "\"Movimentos loucos\""
@@ -898,19 +898,19 @@ msgid "/setdrop N - set drop counter to requested value."
 msgstr "/setdrop N - Seleciona o contador de jogadas requisitadas."
 
 msgid "\"Shop window\""
-msgstr ""
+msgstr "\"Janela loja\""
 
 msgid "\"Move down\""
-msgstr ""
+msgstr "\"Mover para baixo\""
 
 msgid "\"Setup window\""
-msgstr ""
+msgstr "\"Janela de configurações\""
 
 msgid "/removeattack NAME - remove monster from attack list."
 msgstr "/removeattack NAME - remover o monstro da lista de atques."
 
 msgid "\"Set direction up\""
-msgstr ""
+msgstr "\"Definir direção para cima\""
 
 msgid "or come visit us on our IRC channel:"
 msgstr ""
@@ -980,7 +980,7 @@ msgid "\"Emulate right click from keyboard\""
 msgstr ""
 
 msgid "MacOSX porting"
-msgstr ""
+msgstr "portabilidade para MacOSX"
 
 msgid ""
 "About yellow bar you can read here:\n"
@@ -1113,7 +1113,7 @@ msgstr "Comandos de mensagens particulares"
 msgid ""
 "You can see other player equiped items,\n"
 "by right click on player and select in context menu \"Show Items\"."
-msgstr ""
+msgstr "Você pode ver os itens equipados por outros jogadores,\nclicando com o botão direito e selecionando no menu \"Mostrar Itens\"."
 
 msgid "Whispers"
 msgstr "Sussurros"
