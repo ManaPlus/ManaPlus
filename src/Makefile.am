@@ -1260,7 +1260,6 @@ endif
 EXTRA_DIST = CMakeLists.txt \
 	     winver.h.in \
 	     manaplus.rc \
-	     SDLMain.h \
 	     SDLMain.m
 
 # set the include path found by configure
