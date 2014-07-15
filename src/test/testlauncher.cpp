@@ -70,13 +70,13 @@ TestLauncher::~TestLauncher()
 
 int TestLauncher::exec()
 {
-    if (mTest == "1" || mTest == "2" || mTest == "3")
+    if (mTest == "1" || mTest == "2" || mTest == "3" || mTest == "19")
         return testBackend();
     else if (mTest == "4")
         return testSound();
-    else if (mTest == "5" || mTest == "6" || mTest == "7")
+    else if (mTest == "5" || mTest == "6" || mTest == "7" || mTest == "18")
         return testRescale();
-    else if (mTest == "8" || mTest == "9" || mTest == "10")
+    else if (mTest == "8" || mTest == "9" || mTest == "10" || mTest == "17")
         return testFps();
     else if (mTest == "11")
         return testBatches();

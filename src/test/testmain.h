@@ -64,6 +64,10 @@ class TestMain final
 
         int invokeNormalOpenBatchTest(const std::string &test);
 
+        int invokeModernOpenGLRenderTest(const std::string &test);
+
+        int invokeModernOpenBatchTest(const std::string &test);
+
         int invokeMobileOpenBatchTest(const std::string &test);
 
         int invokeSafeOpenBatchTest(const std::string &test);
