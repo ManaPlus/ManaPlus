@@ -314,8 +314,8 @@ void ConfigManager::checkConfigVersion()
     if (version < 7)
         config.setValue("download-music", true);
 
-    if (version < 8)
+    if (version < 9)
         config.deleteKey("videodetected");
 
-    config.setValue("cfgver", 8);
+    config.setValue("cfgver", 9);
 }
