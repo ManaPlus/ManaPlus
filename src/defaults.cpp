@@ -462,6 +462,13 @@ DefaultsData* getBrandingDefaults()
     AddDEF("windowsDownloadUrl", "http://download.evolonline.org/"
         "manaplus/download/manaplus-win32.exe");
     AddDEF("windowsDownloadText", "download here");
+    AddDEF("updateMirror1", "http://manaplus.org/update/");
+    AddDEF("updateMirror2", "http://www.manaplus.org/update/");
+    AddDEF("updateMirror3", "http://www2.manaplus.org/update/");
+    AddDEF("updateMirror4", "http://www3.manaplus.org/update/");
+    AddDEF("updateMirror5", "");
+    AddDEF("updateMirror6", "");
+    AddDEF("updateMirror7", "");
     return configData;
 }
 

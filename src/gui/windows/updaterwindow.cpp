@@ -560,15 +560,16 @@ void UpdaterWindow::download()
     if (mDownloadStatus == UPDATE_PATCH)
     {
         mDownload = new Net::Download(this,
-            "http://manaplus.org/update/" + mCurrentFile,
+            branding.getStringValue("updateMirror1") + mCurrentFile,
             &updateProgress,
             true, false, mValidateXml);
-        mDownload->addMirror("http://www.manaplus.org/update/"
-            + mCurrentFile);
-        mDownload->addMirror("http://www2.manaplus.org/update/"
-            + mCurrentFile);
-        mDownload->addMirror("http://www3.manaplus.org/update/"
-            + mCurrentFile);
+        for (int f = 2; f < 8; f ++)
+        {
+            const std::string url = branding.getStringValue(
+                "updateMirror" + toString(f));
+            if (!url.empty())
+                mDownload->addMirror(url + mCurrentFile);
+        }
     }
     else
     {
