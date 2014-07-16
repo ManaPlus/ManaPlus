@@ -74,19 +74,21 @@ int TestMain::exec(const bool testAudio)
     initConfig();
     int softwareTest = invokeSoftwareRenderTest("1");
     int soundTest = -1;
-    int rescaleTest[5];
+    int rescaleTest[6];
     int softFps = 0;
     int normalOpenGLFps = 0;
     int safeOpenGLFps = 0;
     int modernOpenGLFps = 0;
-    int textureSize1 = 1024;
-    int textureSize2 = 1024;
-    int textureSize3 = 1024;
+    int textureSize[6];
+    std::string textureSizeStr;
 
     RenderType openGLMode = RENDER_SOFTWARE;
     int detectMode = 0;
-    for (int f = 0; f < f; f ++)
+    for (int f = 0; f < 6; f ++)
+    {
         rescaleTest[f] = -1;
+        textureSize[f] = 1024;
+    }
     std::string info;
 
     const int videoDetectTest = invokeTest("99");
@@ -224,51 +226,45 @@ int TestMain::exec(const bool testAudio)
 
     int batchSize = 256;
 
-    // if OpenGL mode is normal mode we can try detect max batch sizes
-    if (openGLMode == RENDER_NORMAL_OPENGL
-        || openGLMode == RENDER_GLES_OPENGL
-        || openGLMode == RENDER_MODERN_OPENGL)
-    {
-        if (!invokeNormalOpenBatchTest("11"))
-            batchSize = readValue2(11);
-        if (batchSize < 256)
-            batchSize = 256;
+    if (!invokeNormalOpenBatchTest("11"))
+        batchSize = readValue2(11);
+    if (batchSize < 256)
+        batchSize = 256;
 
-        if (!invokeNormalOpenBatchTest("14"))
-            textureSize1 = readValue2(14);
-        if (!invokeModernOpenBatchTest("15"))
-            textureSize2 = readValue2(15);
-        if (!invokeSafeOpenBatchTest("16"))
-            textureSize3 = readValue2(16);
-        info.append(strprintf(",%d,%d,%d,-",
-            textureSize1, textureSize2, textureSize3));
-        textureSize1 = std::min(textureSize1, textureSize2);
-        textureSize1 = std::min(textureSize1, textureSize3);
-        if (textureSize1 < 1024)
-            textureSize1 = 1024;
-    }
-    else if (openGLMode == RENDER_SAFE_OPENGL)
+    if (!invokeNormalOpenBatchTest("14"))
     {
-        if (!invokeSafeOpenBatchTest("16"))
-            textureSize3 = readValue2(16);
-        textureSize1 = textureSize3;
-        if (normalOpenGLTest != -1)
-        {
-            if (!invokeNormalOpenBatchTest("14"))
-                textureSize1 = readValue2(14);
-        }
-        info.append(strprintf(",%d,%d,-", textureSize1, textureSize3));
-        textureSize1 = std::min(textureSize1, textureSize3);
-        if (textureSize1 < 1024)
-            textureSize1 = 1024;
+        textureSize[static_cast<size_t>(RENDER_NORMAL_OPENGL)]
+            = readValue2(14);
     }
+    if (!invokeModernOpenBatchTest("15"))
+    {
+        textureSize[static_cast<size_t>(RENDER_MODERN_OPENGL)]
+            = readValue2(15);
+    }
+    if (!invokeSafeOpenBatchTest("16"))
+    {
+        textureSize[static_cast<size_t>(RENDER_SAFE_OPENGL)]
+            = readValue2(16);
+    }
+    if (!invokeMobileOpenBatchTest("20"))
+    {
+        textureSize[static_cast<size_t>(RENDER_GLES_OPENGL)]
+            = readValue2(20);
+    }
+    for (int f = 0; f < 6; f ++)
+        info.append(strprintf(",%d", textureSize[f]));
+    info.append(",-");
+
+    textureSizeStr = toString(textureSize[0]);
+    for (int f = 1; f < 6; f ++)
+        textureSizeStr.append(strprintf(",%d", textureSize[f]));
 
     // if OpenGL implimentation is not good, disable it.
     if (!(detectMode & 15))
         openGLMode = RENDER_SOFTWARE;
 
     writeConfig(openGLMode, rescaleTest[static_cast<size_t>(openGLMode)],
-        soundTest, info, batchSize, textureSize1, detectMode);
+        soundTest, info, batchSize, textureSizeStr, detectMode);
     return 0;
 }
 
@@ -277,7 +273,7 @@ void TestMain::writeConfig(const RenderType openGLMode,
                            const int sound,
                            const std::string &info,
                            const int batchSize A_UNUSED,
-                           const int textureSize,
+                           const std::string &textureSize,
                            const int detectMode)
 {
     mConfig.init(settings.configDir + "/config.xml");

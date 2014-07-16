@@ -81,7 +81,7 @@ class TestMain final
                          const int sound,
                          const std::string &info,
                          const int batchSize,
-                         const int textureSize,
+                         const std::string &textureSize,
                          const int detectMode);
 
         int readValue2(const int ver);

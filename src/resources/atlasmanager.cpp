@@ -25,6 +25,7 @@
 #include "resources/atlasmanager.h"
 
 #include "configuration.h"
+#include "settings.h"
 
 #ifdef DEBUG_IMAGES
 #include "logger.h"
@@ -61,7 +62,7 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
     loadImages(files, images);
     int maxSize = OpenGLImageHelper::getTextureSize();
 #if !defined(ANDROID) && !defined(__APPLE__)
-    const int sz = config.getIntValue("textureSize");
+    int sz = settings.textureSize;
     if (maxSize > sz)
         maxSize = sz;
 #endif

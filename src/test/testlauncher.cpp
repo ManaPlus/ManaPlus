@@ -80,7 +80,7 @@ int TestLauncher::exec()
         return testFps();
     else if (mTest == "11")
         return testBatches();
-    else if (mTest == "14" || mTest == "15" || mTest == "16")
+    else if (mTest == "14" || mTest == "15" || mTest == "16" || mTest == "20")
         return testTextures();
     else if (mTest == "99")
         return testVideoDetection();
@@ -352,6 +352,8 @@ int TestLauncher::testTextures()
 
     file << mTest << std::endl;
     file << maxSize << std::endl;
+    printf("OpenGL max size: %d\n", sz);
+    printf("actual max size: %d\n", maxSize);
     return 0;
 }
 

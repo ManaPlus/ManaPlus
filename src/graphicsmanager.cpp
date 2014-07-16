@@ -485,6 +485,17 @@ void GraphicsManager::initGraphics()
         detectPixelSize();
         setVideoMode();
     }
+#if !defined(ANDROID) && !defined(__APPLE__)
+    const std::string str = config.getStringValue("textureSize");
+    std::vector<int> sizes;
+    splitToIntVector(sizes, str, ',');
+    const size_t pos = static_cast<size_t>(openGLMode);
+    if (sizes.size() <= pos)
+        settings.textureSize = 1024;
+    else
+        settings.textureSize = sizes[pos];
+    logger->log("Detected max texture size: %d", settings.textureSize);
+#endif  // !defined(ANDROID) && !defined(__APPLE__)
 #endif
 }
 
@@ -1271,7 +1282,8 @@ void GraphicsManager::detectVideoSettings()
             if (val != -1)
                 config.setValue("compresstextures", val);
         }
-        config.setValue("textureSize", conf.getValueInt("textureSize", 1024));
+        config.setValue("textureSize", conf.getValue("textureSize",
+            "1024,1024,1024"));
         config.setValue("testInfo", conf.getValue("testInfo", ""));
         delete test;
     }

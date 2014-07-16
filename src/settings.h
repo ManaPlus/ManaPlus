@@ -51,6 +51,7 @@ class Settings final
             updateMirrors(),
             options(),
             guiAlpha(1.0F),
+            textureSize(1024),
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
@@ -76,6 +77,7 @@ class Settings final
         std::vector<std::string> updateMirrors;
         Options options;
         float guiAlpha;
+        unsigned int textureSize;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;
