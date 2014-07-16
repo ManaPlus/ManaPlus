@@ -453,6 +453,15 @@ DefaultsData* getBrandingDefaults()
 
     AddDEF("wallpaperFile", "");
     AddDEF("dataPath", "");
+
+    AddDEF("androidDownloadUrl", "https://play.google.com/store/apps/details"
+        "?id=org.evolonline.beta.manaplus");
+    AddDEF("androidDownloadText", "Google Play");
+    AddDEF("otherDownloadUrl", "http://manaplus.org/");
+    AddDEF("otherDownloadText", "http://manaplus.org/");
+    AddDEF("windowsDownloadUrl", "http://download.evolonline.org/"
+        "manaplus/download/manaplus-win32.exe");
+    AddDEF("windowsDownloadText", "download here");
     return configData;
 }
 

@@ -445,23 +445,22 @@ void UpdaterWindow::loadPatch()
         }
         if (version > CHECK_VERSION)
         {
+            mBrowserBox->addRow("", true);
 #if defined(ANDROID)
-            mBrowserBox->addRow("", true);
-            mBrowserBox->addRow("##1You can download from [[@@"
-                "https://play.google.com/store/apps/details?id=org.evolonline"
-                ".beta.manaplus|Google Play@@]", true);
-            mBrowserBox->addRow("##1ManaPlus updated.", true);
+            const std::string url = "androidDownloadUrl";
+            const std::string text = "androidDownloadUrl";
 #elif defined(WIN32)
-            mBrowserBox->addRow("", true);
-            mBrowserBox->addRow("  ##1[@@http://download.evolonline.org/"
-                "manaplus/download/manaplus-win32.exe|download here@@]", true);
+            const std::string url = "windowsDownloadUrl";
+            const std::string text = "windowsDownloadUrl";
 #else
-            mBrowserBox->addRow("", true);
-            mBrowserBox->addRow("  ##1@@http://manaplus.org/|"
-                "http://manaplus.org/@@", true);
+            const std::string url = "otherDownloadUrl";
+            const std::string text = "otherDownloadUrl";
+#endif
+            mBrowserBox->addRow(std::string("  ##1[@@").append(
+                branding.getStringValue(url)).append("|").append(
+                branding.getStringValue(text)).append("@@]"), true);
             mBrowserBox->addRow("##1You can download it from", true);
             mBrowserBox->addRow("##1ManaPlus updated.", true);
-#endif
         }
         else
         {
