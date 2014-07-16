@@ -52,6 +52,7 @@ TestMain::~TestMain()
 void TestMain::initConfig()
 {
     mConfig.init(settings.configDir + "/test.xml");
+    mConfig.clear();
 //    mConfig.setDefaultValues(getConfigDefaults());
 
     mConfig.setValue("hwaccel", false);
