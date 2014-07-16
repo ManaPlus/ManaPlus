@@ -184,7 +184,7 @@ int TestLauncher::testFps()
     file << mTest << std::endl;
     file << tFps << std::endl;
 
-    printf("fps: %d\n", tFps);
+    printf("fps: %d\n", tFps / 10);
     sleep(1);
     return 0;
 }
@@ -216,7 +216,7 @@ int TestLauncher::testFps2()
     file << mTest << std::endl;
     file << tFps << std::endl;
 
-    printf("fps: %d\n", tFps);
+    printf("fps: %d\n", tFps / 10);
     sleep(1);
     return 0;
 }
@@ -263,7 +263,7 @@ int TestLauncher::testFps3()
     file << mTest << std::endl;
     file << tFps << std::endl;
 
-    printf("fps: %d\n", tFps);
+    printf("fps: %d\n", tFps / 10);
     sleep(1);
     return 0;
 }
@@ -549,6 +549,6 @@ int TestLauncher::calcFps(const timeval *const start, const timeval *const end,
     if (mtime == 0)
         return 100000;
 
-    return static_cast<int>(static_cast<long>(calls) * 1000 / mtime);
+    return static_cast<int>(static_cast<long>(calls) * 10000 / mtime);
 }
 #endif
