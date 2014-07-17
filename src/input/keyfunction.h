@@ -21,7 +21,7 @@
 #ifndef INPUT_KEYFUNCTION_H
 #define INPUT_KEYFUNCTION_H
 
-#include "input/keyitem.h"
+#include "input/inputitem.h"
 
 #include "localconsts.h"
 
@@ -29,7 +29,7 @@ const unsigned int KeyFunctionSize = 3;
 
 struct KeyFunction final
 {
-    KeyItem values[KeyFunctionSize];
+    InputItem values[KeyFunctionSize];
 };
 
 #endif  // INPUT_KEYFUNCTION_H

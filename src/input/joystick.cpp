@@ -328,7 +328,7 @@ bool Joystick::isActionActive(const int index) const
     const KeyFunction &key = inputManager.getKey(index);
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
-        const KeyItem &val = key.values[i];
+        const InputItem &val = key.values[i];
         if (val.type != InputType::JOYSTICK)
             continue;
         const int value = val.value;

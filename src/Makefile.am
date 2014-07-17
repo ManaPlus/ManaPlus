@@ -930,6 +930,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      input/inputactiondata.h \
 	      input/inputactionmap.h \
 	      input/inputcondition.h \
+	      input/inputitem.h \
 	      input/inputmanager.cpp \
 	      input/inputmanager.h \
 	      input/inputtype.h \
@@ -939,7 +940,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      input/keyboardconfig.h \
 	      input/keyfunction.h \
 	      input/keyinput.h \
-	      input/keyitem.h \
 	      input/keysortfunctor.h \
 	      input/multitouchmanager.cpp \
 	      input/multitouchmanager.h \

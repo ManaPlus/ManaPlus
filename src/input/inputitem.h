@@ -18,25 +18,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_KEYITEM_H
-#define INPUT_KEYITEM_H
+#ifndef INPUT_INPUTITEM_H
+#define INPUT_INPUTITEM_H
 
 #include "localconsts.h"
 
-struct KeyItem final
+struct InputItem final
 {
-    KeyItem() :
+    InputItem() :
         type(-1),
         value(-1)
     { }
 
-    KeyItem(const int type0, const int value0) :
+    InputItem(const int type0, const int value0) :
         type(type0), value(value0)
     { }
 
     int type;
-
     int value;
 };
 
-#endif  // INPUT_KEYITEM_H
+#endif  // INPUT_INPUTITEM_H

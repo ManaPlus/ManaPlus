@@ -82,7 +82,7 @@ void InputManager::init()
         KeyFunction &kf = mKey[i];
         for (unsigned int f = 0; f < KeyFunctionSize; f ++)
         {
-            KeyItem &ki = kf.values[f];
+            InputItem &ki = kf.values[f];
             ki.type = InputType::UNKNOWN;
             ki.value = -1;
         }
@@ -149,7 +149,7 @@ void InputManager::retrieve()
                 const int key = atoi(keyStr2.c_str());
                 if (key >= -255 && key < SDLK_LAST)
                 {
-                    kf.values[i2] = KeyItem(type, key);
+                    kf.values[i2] = InputItem(type, key);
                     i2 ++;
                 }
             }
@@ -173,7 +173,7 @@ void InputManager::store() const
 
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
-                const KeyItem &key = kf.values[i2];
+                const InputItem &key = kf.values[i2];
                 if (key.type != InputType::UNKNOWN)
                 {
                     std::string tmp("k");
@@ -215,14 +215,14 @@ void InputManager::resetKey(const int i)
     KeyFunction &key = mKey[i];
     for (size_t i2 = 1; i2 < KeyFunctionSize; i2 ++)
     {
-        KeyItem &ki2 = key.values[i2];
+        InputItem &ki2 = key.values[i2];
         ki2.type = InputType::UNKNOWN;
         ki2.value = -1;
     }
     const InputActionData &kd = inputActionData[i];
-    KeyItem &val0 = key.values[0];
+    InputItem &val0 = key.values[0];
     val0.type = kd.defaultType1;
-    KeyItem &val1 = key.values[1];
+    InputItem &val1 = key.values[1];
     val1.type = kd.defaultType2;
 #ifdef USE_SDL2
     if (kd.defaultType1 == InputType::KEYBOARD)
@@ -269,7 +269,7 @@ bool InputManager::hasConflicts(int &restrict key1, int &restrict key2) const
         const KeyFunction &ki = mKey[i];
         for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
         {
-            const KeyItem &vali2 = ki.values[i2];
+            const InputItem &vali2 = ki.values[i2];
             if (vali2.value == InputAction::NO_VALUE)
                 continue;
 
@@ -281,7 +281,7 @@ bool InputManager::hasConflicts(int &restrict key1, int &restrict key2) const
 
                 for (size_t j2 = 0; j2 < KeyFunctionSize; j2 ++)
                 {
-                    const KeyItem &valj2 = mKey[j].values[j2];
+                    const InputItem &valj2 = mKey[j].values[j2];
                     // Allow for item shortcut and emote keys to overlap
                     // as well as emote and ignore keys, but no other keys
                     if (valj2.type != InputType::UNKNOWN
@@ -340,7 +340,7 @@ std::string InputManager::getKeyStringLong(const int index) const
 
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
-        const KeyItem &key = ki.values[i];
+        const InputItem &key = ki.values[i];
         std::string str;
         if (key.type == InputType::KEYBOARD)
         {
@@ -383,7 +383,7 @@ std::string InputManager::getKeyValueString(const int index) const
 
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
-        const KeyItem &key = ki.values[i];
+        const InputItem &key = ki.values[i];
         std::string str;
         if (key.type == InputType::KEYBOARD)
         {
@@ -440,7 +440,7 @@ void InputManager::addActionKey(const int action, const int type,
     KeyFunction &key = mKey[action];
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
-        const KeyItem &val2 = key.values[i];
+        const InputItem &val2 = key.values[i];
         if (val2.type == InputType::UNKNOWN || (val2.type == type
             && val2.value == val))
         {
@@ -452,15 +452,15 @@ void InputManager::addActionKey(const int action, const int type,
     {
         for (size_t i = 1; i < KeyFunctionSize; i ++)
         {
-            KeyItem &val1 = key.values[i - 1];
-            KeyItem &val2 = key.values[i];
+            InputItem &val1 = key.values[i - 1];
+            InputItem &val2 = key.values[i];
             val1.type = val2.type;
             val1.value = val2.value;
         }
         idx = KeyFunctionSize - 1;
     }
 
-    key.values[idx] = KeyItem(type, val);
+    key.values[idx] = InputItem(type, val);
 }
 
 void InputManager::setNewKey(const SDL_Event &event, const int type)
@@ -483,7 +483,7 @@ void InputManager::unassignKey()
     KeyFunction &key = mKey[mNewKeyIndex];
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
-        KeyItem &val = key.values[i];
+        InputItem &val = key.values[i];
         val.type = InputType::UNKNOWN;
         val.value = -1;
     }
@@ -735,7 +735,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
         {
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
-                const KeyItem &ki = key.values[i2];
+                const InputItem &ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
                     actionMap[ki.value].push_back(static_cast<int>(i));
             }
@@ -744,7 +744,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
         {
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
-                const KeyItem &ki = key.values[i2];
+                const InputItem &ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
                     idMap[ki.value] = static_cast<int>(i);
             }
@@ -753,7 +753,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
         {
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
-                const KeyItem &ki = key.values[i2];
+                const InputItem &ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
                     keyTimeMap[ki.value] = 0;
             }
@@ -797,7 +797,7 @@ int InputManager::getKeyIndex(const int value, const int grp,
         const InputActionData &kd = inputActionData[i];
         for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
         {
-            const KeyItem &vali2 = key.values[i2];
+            const InputItem &vali2 = key.values[i2];
             if (value == vali2.value && (grp & kd.grp) != 0
                 && vali2.type == type)
             {
