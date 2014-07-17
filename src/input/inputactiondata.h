@@ -45,7 +45,7 @@ struct InputActionData final
 
 namespace Input
 {
-    enum KeyGroup
+    enum InputGroup
     {
         GRP_DEFAULT = 1,           // default game key
         GRP_CHAT = 2,              // chat key
