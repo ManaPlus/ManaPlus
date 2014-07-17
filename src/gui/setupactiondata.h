@@ -25,7 +25,7 @@
 #define GUI_SETUPACTIONDATA_H
 
 #include "input/inputaction.h"
-#include "input/keydata.h"
+#include "input/inputactiondata.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"

@@ -64,7 +64,7 @@ extern QuitDialog *quitDialog;
 
 namespace
 {
-    KeySortFunctor keyDataSorter;
+    KeySortFunctor inputActionDataSorter;
 }  // namespace
 
 InputManager::InputManager() :
@@ -107,9 +107,9 @@ void InputManager::retrieve()
     for (int i = 0; i < InputAction::TOTAL; i++)
     {
 #ifdef USE_SDL2
-        const std::string cf = std::string("sdl2") + keyData[i].configField;
+        const std::string cf = std::string("sdl2") + inputActionData[i].configField;
 #else
-        const std::string cf = keyData[i].configField;
+        const std::string cf = inputActionData[i].configField;
 #endif
         if (!cf.empty())
         {
@@ -162,9 +162,9 @@ void InputManager::store() const
     for (int i = 0; i < InputAction::TOTAL; i++)
     {
 #ifdef USE_SDL2
-        const std::string cf = std::string("sdl2") + keyData[i].configField;
+        const std::string cf = std::string("sdl2") + inputActionData[i].configField;
 #else
-        const std::string cf = keyData[i].configField;
+        const std::string cf = inputActionData[i].configField;
 #endif
         if (!cf.empty())
         {
@@ -219,7 +219,7 @@ void InputManager::resetKey(const int i)
         ki2.type = InputType::UNKNOWN;
         ki2.value = -1;
     }
-    const KeyData &kd = keyData[i];
+    const InputActionData &kd = inputActionData[i];
     KeyItem &val0 = key.values[0];
     val0.type = kd.defaultType1;
     KeyItem &val1 = key.values[1];
@@ -262,7 +262,7 @@ bool InputManager::hasConflicts(int &restrict key1, int &restrict key2) const
      */
     for (int i = 0; i < InputAction::TOTAL; i++)
     {
-        const KeyData &kdi = keyData[i];
+        const InputActionData &kdi = inputActionData[i];
         if (!*kdi.configField)
             continue;
 
@@ -276,7 +276,7 @@ bool InputManager::hasConflicts(int &restrict key1, int &restrict key2) const
             size_t j;
             for (j = i, j++; j < InputAction::TOTAL; j++)
             {
-                if ((kdi.grp & keyData[j].grp) == 0 || !*kdi.configField)
+                if ((kdi.grp & inputActionData[j].grp) == 0 || !*kdi.configField)
                     continue;
 
                 for (size_t j2 = 0; j2 < KeyFunctionSize; j2 ++)
@@ -309,7 +309,7 @@ bool InputManager::isActionActive(const int index) const
     if (!isActionActive0(index))
         return false;
 
-    const KeyData &key = keyData[index];
+    const InputActionData &key = inputActionData[index];
 //    logger->log("isActionActive mask=%d, condition=%d, index=%d",
 //        mMask, key.condition, index);
     if ((key.condition & mMask) != key.condition)
@@ -684,7 +684,7 @@ void InputManager::updateConditionMask()
         mMask |= InputCondition::NOFOLLOW;
 }
 
-bool InputManager::checkKey(const KeyData *const key) const
+bool InputManager::checkKey(const InputActionData *const key) const
 {
     // logger->log("checkKey mask=%d, condition=%d", mMask, key->condition);
     if (!key || (key->condition & mMask) != key->condition)
@@ -694,14 +694,14 @@ bool InputManager::checkKey(const KeyData *const key) const
         || isActionActive0(key->modKeyIndex));
 }
 
-bool InputManager::invokeKey(const KeyData *const key, const int keyNum)
+bool InputManager::invokeKey(const InputActionData *const key, const int keyNum)
 {
     // no validation to keyNum because it validated in caller
 
     if (checkKey(key))
     {
         InputEvent evt(keyNum, mMask);
-        ActionFuncPtr func = *(keyData[keyNum].action);
+        ActionFuncPtr func = *(inputActionData[keyNum].action);
         if (func && func(evt))
             return true;
     }
@@ -714,7 +714,7 @@ void InputManager::executeAction(const int keyNum)
         return;
 
     InputEvent evt(keyNum, mMask);
-    ActionFuncPtr func = *(keyData[keyNum].action);
+    ActionFuncPtr func = *(inputActionData[keyNum].action);
     if (func)
         func(evt);
 }
@@ -730,7 +730,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
     for (size_t i = 0; i < InputAction::TOTAL; i ++)
     {
         const KeyFunction &key = mKey[i];
-        const KeyData &kd = keyData[i];
+        const InputActionData &kd = inputActionData[i];
         if (kd.action)
         {
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
@@ -760,12 +760,12 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
         }
     }
 
-    keyDataSorter.keys = &keyData[0];
+    inputActionDataSorter.keys = &inputActionData[0];
     FOR_EACH (KeyToActionMapIter, it, actionMap)
     {
         KeysVector *const keys = &it->second;
         if (keys && keys->size() > 1)
-            std::sort(keys->begin(), keys->end(), keyDataSorter);
+            std::sort(keys->begin(), keys->end(), inputActionDataSorter);
     }
 }
 
@@ -782,7 +782,7 @@ bool InputManager::triggerAction(const KeysVector *const ptrs)
         if (keyNum < 0 || keyNum >= InputAction::TOTAL)
             continue;
 
-        if (invokeKey(&keyData[keyNum], keyNum))
+        if (invokeKey(&inputActionData[keyNum], keyNum))
             return true;
     }
     return false;
@@ -794,7 +794,7 @@ int InputManager::getKeyIndex(const int value, const int grp,
     for (size_t i = 0; i < InputAction::TOTAL; i++)
     {
         const KeyFunction &key = mKey[i];
-        const KeyData &kd = keyData[i];
+        const InputActionData &kd = inputActionData[i];
         for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
         {
             const KeyItem &vali2 = key.values[i2];
@@ -814,7 +814,7 @@ int InputManager::getActionByKey(const SDL_Event &event) const
     if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
     {
         const int idx = keyboard.getActionId(event);
-        if (idx >= 0 && checkKey(&keyData[idx]))
+        if (idx >= 0 && checkKey(&inputActionData[idx]))
             return idx;
     }
     return InputAction::NO_VALUE;

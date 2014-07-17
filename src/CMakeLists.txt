@@ -805,6 +805,7 @@ SET(SRCS
     textcommand.cpp
     textcommand.h
     input/inputaction.h
+    input/inputactiondata.h
     input/inputactionmap.h
     input/inputcondition.h
     input/inputmanager.cpp
@@ -815,7 +816,6 @@ SET(SRCS
     input/joystick.h
     input/keyboardconfig.cpp
     input/keyboardconfig.h
-    input/keydata.h
     input/keyfunction.h
     input/keyinput.h
     input/keyitem.h

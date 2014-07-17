@@ -33,7 +33,7 @@
 
 class Setup_Input;
 
-struct KeyData;
+struct InputActionData;
 
 class InputManager final
 {
@@ -46,7 +46,7 @@ class InputManager final
 
         bool handleEvent(const SDL_Event &event);
 
-        bool checkKey(const KeyData *const key) const A_WARN_UNUSED;
+        bool checkKey(const InputActionData *const key) const A_WARN_UNUSED;
 
         void retrieve();
 
@@ -99,7 +99,7 @@ class InputManager final
                                 KeyToIdMap &idMap, KeyTimeMap &keyTimeMap,
                                 const int type) const;
 
-        bool invokeKey(const KeyData *const key, const int keyNum);
+        bool invokeKey(const InputActionData *const key, const int keyNum);
 
         bool handleAssignKey(const SDL_Event &event, const int type);
 

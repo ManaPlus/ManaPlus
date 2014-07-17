@@ -27,17 +27,17 @@
 #include "localconsts.h"
 
 #include "input/inputaction.h"
+#include "input/inputactiondata.h"
 #include "input/inputcondition.h"
 #include "input/inputmanager.h"
 #include "input/inputtype.h"
-#include "input/keydata.h"
 
 #include "utils/gettext.h"
 
 #include <string>
 
 // keyData must be in same order as enum keyAction.
-static const KeyData keyData[InputAction::TOTAL] = {
+static const InputActionData inputActionData[InputAction::TOTAL] = {
     {"keyMoveUp",
         InputType::KEYBOARD, SDLK_UP,
         InputType::UNKNOWN, InputAction::NO_VALUE,

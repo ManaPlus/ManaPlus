@@ -21,7 +21,7 @@
 #ifndef INPUT_KEYSORTFUNCTOR_H
 #define INPUT_KEYSORTFUNCTOR_H
 
-#include "input/keydata.h"
+#include "input/inputactiondata.h"
 
 #include "localconsts.h"
 
@@ -33,7 +33,7 @@ class KeySortFunctor final
             return keys[key1].priority >= keys[key2].priority;
         }
 
-        const KeyData *keys;
+        const InputActionData *keys;
 };
 
 #endif  // INPUT_KEYSORTFUNCTOR_H
