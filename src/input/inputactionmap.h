@@ -24,7 +24,7 @@
 #define INPUT_KEYBOARDDATA_H
 
 #include "actionmanager.h"
-#include "localconsts.h"
+#include "sdlshared.h"
 
 #include "input/inputaction.h"
 #include "input/inputactiondata.h"
@@ -35,6 +35,8 @@
 #include "utils/gettext.h"
 
 #include <string>
+
+#include "localconsts.h"
 
 // keyData must be in same order as enum keyAction.
 static const InputActionData inputActionData[InputAction::TOTAL] = {
