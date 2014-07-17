@@ -18,18 +18,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_KEYFUNCTION_H
-#define INPUT_KEYFUNCTION_H
+#ifndef INPUT_INPUTFUNCTION_H
+#define INPUT_INPUTFUNCTION_H
 
 #include "input/inputitem.h"
 
 #include "localconsts.h"
 
-const unsigned int KeyFunctionSize = 3;
+const unsigned int inputFunctionSize = 3;
 
-struct KeyFunction final
+struct InputFunction final
 {
-    InputItem values[KeyFunctionSize];
+    InputItem values[inputFunctionSize];
 };
 
-#endif  // INPUT_KEYFUNCTION_H
+#endif  // INPUT_INPUTFUNCTION_H

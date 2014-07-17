@@ -190,8 +190,8 @@ bool KeyboardConfig::isActionActive(const int index) const
     if (!mActiveKeys)
         return false;
 
-    const KeyFunction &key = inputManager.getKey(index);
-    for (size_t i = 0; i < KeyFunctionSize; i ++)
+    const InputFunction &key = inputManager.getKey(index);
+    for (size_t i = 0; i < inputFunctionSize; i ++)
     {
         const InputItem &val = key.values[i];
         if (val.type != InputType::KEYBOARD)

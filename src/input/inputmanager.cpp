@@ -79,8 +79,8 @@ void InputManager::init()
 {
     for (unsigned int i = 0; i < InputAction::TOTAL; i++)
     {
-        KeyFunction &kf = mKey[i];
-        for (unsigned int f = 0; f < KeyFunctionSize; f ++)
+        InputFunction &kf = mKey[i];
+        for (unsigned int f = 0; f < inputFunctionSize; f ++)
         {
             InputItem &ki = kf.values[f];
             ki.type = InputType::UNKNOWN;
@@ -114,7 +114,7 @@ void InputManager::retrieve()
         if (!cf.empty())
         {
             mNameMap[cf] = i;
-            KeyFunction &kf = mKey[i];
+            InputFunction &kf = mKey[i];
             const std::string keyStr = config.getValue(cf, "");
             const size_t keyStrSize = keyStr.size();
             if (keyStr.empty())
@@ -124,7 +124,7 @@ void InputManager::retrieve()
             splitToStringVector(keys, keyStr, ',');
             unsigned int i2 = 0;
             for (StringVectCIter it = keys.begin(), it_end = keys.end();
-                 it != it_end && i2 < KeyFunctionSize; ++ it)
+                 it != it_end && i2 < inputFunctionSize; ++ it)
             {
                 std::string keyStr2 = *it;
                 if (keyStrSize < 2)
@@ -169,9 +169,9 @@ void InputManager::store() const
         if (!cf.empty())
         {
             std::string keyStr;
-            const KeyFunction &kf = mKey[i];
+            const InputFunction &kf = mKey[i];
 
-            for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
+            for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
             {
                 const InputItem &key = kf.values[i2];
                 if (key.type != InputType::UNKNOWN)
@@ -212,8 +212,8 @@ void InputManager::store() const
 
 void InputManager::resetKey(const int i)
 {
-    KeyFunction &key = mKey[i];
-    for (size_t i2 = 1; i2 < KeyFunctionSize; i2 ++)
+    InputFunction &key = mKey[i];
+    for (size_t i2 = 1; i2 < inputFunctionSize; i2 ++)
     {
         InputItem &ki2 = key.values[i2];
         ki2.type = InputType::UNKNOWN;
@@ -266,8 +266,8 @@ bool InputManager::hasConflicts(int &restrict key1, int &restrict key2) const
         if (!*kdi.configField)
             continue;
 
-        const KeyFunction &ki = mKey[i];
-        for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
+        const InputFunction &ki = mKey[i];
+        for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
         {
             const InputItem &vali2 = ki.values[i2];
             if (vali2.value == InputAction::NO_VALUE)
@@ -279,7 +279,7 @@ bool InputManager::hasConflicts(int &restrict key1, int &restrict key2) const
                 if ((kdi.grp & inputActionData[j].grp) == 0 || !*kdi.configField)
                     continue;
 
-                for (size_t j2 = 0; j2 < KeyFunctionSize; j2 ++)
+                for (size_t j2 = 0; j2 < inputFunctionSize; j2 ++)
                 {
                     const InputItem &valj2 = mKey[j].values[j2];
                     // Allow for item shortcut and emote keys to overlap
@@ -326,7 +326,7 @@ bool InputManager::isActionActive0(const int index)
     return touchManager.isActionActive(index);
 }
 
-KeyFunction &InputManager::getKey(int index)
+InputFunction &InputManager::getKey(int index)
 {
     if (index < 0 || index >= InputAction::TOTAL)
         index = 0;
@@ -336,9 +336,9 @@ KeyFunction &InputManager::getKey(int index)
 std::string InputManager::getKeyStringLong(const int index) const
 {
     std::string keyStr;
-    const KeyFunction &ki = mKey[index];
+    const InputFunction &ki = mKey[index];
 
-    for (size_t i = 0; i < KeyFunctionSize; i ++)
+    for (size_t i = 0; i < inputFunctionSize; i ++)
     {
         const InputItem &key = ki.values[i];
         std::string str;
@@ -379,9 +379,9 @@ std::string InputManager::getKeyStringLong(const int index) const
 std::string InputManager::getKeyValueString(const int index) const
 {
     std::string keyStr;
-    const KeyFunction &ki = mKey[index];
+    const InputFunction &ki = mKey[index];
 
-    for (size_t i = 0; i < KeyFunctionSize; i ++)
+    for (size_t i = 0; i < inputFunctionSize; i ++)
     {
         const InputItem &key = ki.values[i];
         std::string str;
@@ -437,8 +437,8 @@ void InputManager::addActionKey(const int action, const int type,
         return;
 
     int idx = -1;
-    KeyFunction &key = mKey[action];
-    for (size_t i = 0; i < KeyFunctionSize; i ++)
+    InputFunction &key = mKey[action];
+    for (size_t i = 0; i < inputFunctionSize; i ++)
     {
         const InputItem &val2 = key.values[i];
         if (val2.type == InputType::UNKNOWN || (val2.type == type
@@ -450,14 +450,14 @@ void InputManager::addActionKey(const int action, const int type,
     }
     if (idx == -1)
     {
-        for (size_t i = 1; i < KeyFunctionSize; i ++)
+        for (size_t i = 1; i < inputFunctionSize; i ++)
         {
             InputItem &val1 = key.values[i - 1];
             InputItem &val2 = key.values[i];
             val1.type = val2.type;
             val1.value = val2.value;
         }
-        idx = KeyFunctionSize - 1;
+        idx = inputFunctionSize - 1;
     }
 
     key.values[idx] = InputItem(type, val);
@@ -480,8 +480,8 @@ void InputManager::setNewKey(const SDL_Event &event, const int type)
 
 void InputManager::unassignKey()
 {
-    KeyFunction &key = mKey[mNewKeyIndex];
-    for (size_t i = 0; i < KeyFunctionSize; i ++)
+    InputFunction &key = mKey[mNewKeyIndex];
+    for (size_t i = 0; i < inputFunctionSize; i ++)
     {
         InputItem &val = key.values[i];
         val.type = InputType::UNKNOWN;
@@ -729,11 +729,11 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
 
     for (size_t i = 0; i < InputAction::TOTAL; i ++)
     {
-        const KeyFunction &key = mKey[i];
+        const InputFunction &key = mKey[i];
         const InputActionData &kd = inputActionData[i];
         if (kd.action)
         {
-            for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
+            for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
             {
                 const InputItem &ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
@@ -742,7 +742,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
         }
         if (kd.configField && (kd.grp & Input::GRP_GUICHAN))
         {
-            for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
+            for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
             {
                 const InputItem &ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
@@ -751,7 +751,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
         }
         if (kd.configField && (kd.grp & Input::GRP_REPEAT))
         {
-            for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
+            for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
             {
                 const InputItem &ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
@@ -793,9 +793,9 @@ int InputManager::getKeyIndex(const int value, const int grp,
 {
     for (size_t i = 0; i < InputAction::TOTAL; i++)
     {
-        const KeyFunction &key = mKey[i];
+        const InputFunction &key = mKey[i];
         const InputActionData &kd = inputActionData[i];
-        for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
+        for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
         {
             const InputItem &vali2 = key.values[i2];
             if (value == vali2.value && (grp & kd.grp) != 0

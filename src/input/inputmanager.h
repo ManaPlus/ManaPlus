@@ -22,7 +22,7 @@
 #define INPUT_INPUTMANAGER_H
 
 #include "input/inputaction.h"
-#include "input/keyfunction.h"
+#include "input/inputfunction.h"
 
 #include "events/inputevent.h"
 
@@ -61,7 +61,7 @@ class InputManager final
 
         void callbackNewKey();
 
-        KeyFunction &getKey(int index) A_WARN_UNUSED;
+        InputFunction &getKey(int index) A_WARN_UNUSED;
 
         std::string getKeyValueString(const int index) const A_WARN_UNUSED;
 
@@ -131,7 +131,7 @@ class InputManager final
 
         std::map<std::string, int> mNameMap;
 
-        KeyFunction mKey[InputAction::TOTAL];
+        InputFunction mKey[InputAction::TOTAL];
 };
 
 extern InputManager inputManager;
