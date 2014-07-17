@@ -99,7 +99,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("imitationMode", 0);
     AddDEF("syncPlayerMove", false);
     AddDEF("drawPath", false);
-    AddDEF("moveToTargetType", 6);
+    AddDEF("moveToTargetType", 10);
     AddDEF("crazyMoveProgram", "mumrsonmdmlon");
     AddDEF("disableGameModifiers", false);
     AddDEF("targetDeadPlayers", false);

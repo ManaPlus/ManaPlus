@@ -1138,28 +1138,12 @@ void LocalPlayer::moveToTarget(int dist)
         {
             switch (mMoveToTargetType)
             {
-                case 1:
-                    dist = 1;
-                    break;
-                case 2:
-                    dist = 2;
-                    break;
-                case 3:
-                    dist = 3;
-                    break;
-                case 4:
-                    dist = 5;
-                    break;
-                case 5:
-                    dist = 7;
-                    break;
-                case 6:
-                case 7:
+                case 10:
                     dist = mAttackRange;
                     if (dist == 1 && serverVersion < 1)
                         dist = 2;
                     break;
-                case 8:
+                case 11:
                     dist = mAttackRange - 1;
                     if (dist < 1)
                         dist = 1;
@@ -1167,6 +1151,7 @@ void LocalPlayer::moveToTarget(int dist)
                         dist = 2;
                     break;
                 default:
+                    dist = mMoveToTargetType;
                     break;
             }
         }
@@ -1333,7 +1318,7 @@ std::string LocalPlayer::getCrazyMoveTypeString()
     }
 }
 
-static const unsigned moveToTargetTypeSize = 9;
+static const unsigned moveToTargetTypeSize = 13;
 
 void LocalPlayer::changeMoveToTargetType()
 {
@@ -1352,9 +1337,17 @@ static const char *const moveToTargetTypeStrings[] =
     // TRANSLATORS: move to target type in status bar
     N_("(3) moves to target in distance 3"),
     // TRANSLATORS: move to target type in status bar
+    N_("(4) moves to target in distance 4"),
+    // TRANSLATORS: move to target type in status bar
     N_("(5) moves to target in distance 5"),
     // TRANSLATORS: move to target type in status bar
+    N_("(6) moves to target in distance 6"),
+    // TRANSLATORS: move to target type in status bar
     N_("(7) moves to target in distance 7"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(8) moves to target in distance 8"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(9) moves to target in distance 9"),
     // TRANSLATORS: move to target type in status bar
     N_("(A) moves to target in attack range"),
     // TRANSLATORS: move to target type in status bar
