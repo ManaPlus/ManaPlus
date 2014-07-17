@@ -25,9 +25,9 @@
 #include "touchmanager.h"
 
 #include "input/inputactionmap.h"
+#include "input/inputactionsortfunctor.h"
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
-#include "input/keysortfunctor.h"
 #include "being/localplayer.h"
 #ifdef USE_SDL2
 #include "input/multitouchmanager.h"
@@ -64,7 +64,7 @@ extern QuitDialog *quitDialog;
 
 namespace
 {
-    KeySortFunctor inputActionDataSorter;
+    InputActionSortFunctor inputActionDataSorter;
 }  // namespace
 
 InputManager::InputManager() :

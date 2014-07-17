@@ -18,14 +18,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_KEYSORTFUNCTOR_H
-#define INPUT_KEYSORTFUNCTOR_H
+#ifndef INPUT_INPUTACTIONSORTFUNCTOR_H
+#define INPUT_INPUTACTIONSORTFUNCTOR_H
 
 #include "input/inputactiondata.h"
 
 #include "localconsts.h"
 
-class KeySortFunctor final
+class InputActionSortFunctor final
 {
     public:
         bool operator() (const int key1, const int key2) const
@@ -36,4 +36,4 @@ class KeySortFunctor final
         const InputActionData *keys;
 };
 
-#endif  // INPUT_KEYSORTFUNCTOR_H
+#endif  // INPUT_INPUTACTIONSORTFUNCTOR_H
