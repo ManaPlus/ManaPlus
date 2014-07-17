@@ -1272,7 +1272,7 @@ void GraphicsManager::detectVideoSettings()
     {
         const Configuration &conf = test->getConfig();
         int val = conf.getValueInt("opengl", -1);
-        if (val >= 0 && val <= 2)
+        if (val >= 0 && val < static_cast<int>(RENDER_LAST))
         {
             config.setValue("opengl", val);
             val = conf.getValue("useTextureSampler", -1);
