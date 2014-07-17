@@ -1295,7 +1295,7 @@ void LocalPlayer::changeCrazyMoveType()
 {
     mCrazyMoveState = 0;
     changeMode(&mCrazyMoveType, crazyMoveTypeSize, "crazyMoveType",
-        &LocalPlayer::getCrazyMoveTypeString, 1);
+        &LocalPlayer::getCrazyMoveTypeString, 1, true);
 }
 
 std::string LocalPlayer::getCrazyMoveTypeString()
@@ -1323,7 +1323,7 @@ static const unsigned moveToTargetTypeSize = 13;
 void LocalPlayer::changeMoveToTargetType()
 {
     changeMode(&mMoveToTargetType, moveToTargetTypeSize, "moveToTargetType",
-        &LocalPlayer::getMoveToTargetTypeString);
+        &LocalPlayer::getMoveToTargetTypeString, 0, true);
 }
 
 static const char *const moveToTargetTypeStrings[] =
@@ -1369,7 +1369,7 @@ static const unsigned followModeSize = 4;
 void LocalPlayer::changeFollowMode()
 {
     changeMode(&mFollowMode, followModeSize, "followMode",
-        &LocalPlayer::getFollowModeString);
+        &LocalPlayer::getFollowModeString, 0, true);
 }
 
 static const char *const followModeStrings[] =
@@ -1397,7 +1397,7 @@ const unsigned attackWeaponTypeSize = 4;
 void LocalPlayer::changeAttackWeaponType()
 {
     changeMode(&mAttackWeaponType, attackWeaponTypeSize, "attackWeaponType",
-        &LocalPlayer::getAttackWeaponTypeString, 1);
+        &LocalPlayer::getAttackWeaponTypeString, 1, true);
 }
 
 static const char *const attackWeaponTypeStrings[] =
@@ -1425,7 +1425,7 @@ const unsigned attackTypeSize = 4;
 void LocalPlayer::changeAttackType()
 {
     changeMode(&mAttackType, attackTypeSize, "attackType",
-        &LocalPlayer::getAttackTypeString);
+        &LocalPlayer::getAttackTypeString, 0, true);
 }
 
 static const char *const attackTypeStrings[] =
@@ -1453,7 +1453,7 @@ const unsigned quickDropCounterSize = 31;
 void LocalPlayer::changeQuickDropCounter()
 {
     changeMode(&mQuickDropCounter, quickDropCounterSize, "quickDropCounter",
-        &LocalPlayer::getQuickDropCounterString, 1);
+        &LocalPlayer::getQuickDropCounterString, 1, true);
 }
 
 std::string LocalPlayer::getQuickDropCounterString()
@@ -1484,7 +1484,7 @@ const unsigned pickUpTypeSize = 7;
 void LocalPlayer::changePickUpType()
 {
     changeMode(&mPickUpType, pickUpTypeSize, "pickUpType",
-        &LocalPlayer::getPickUpTypeString);
+        &LocalPlayer::getPickUpTypeString, 0, true);
 }
 
 static const char *const pickUpTypeStrings[] =
@@ -1546,7 +1546,7 @@ const unsigned magicAttackSize = 5;
 void LocalPlayer::switchMagicAttack()
 {
     changeMode(&mMagicAttackType, magicAttackSize, "magicAttackType",
-        &LocalPlayer::getMagicAttackString);
+        &LocalPlayer::getMagicAttackString, 0, true);
 }
 
 static const char *const magicAttackStrings[] =
@@ -1576,7 +1576,7 @@ const unsigned pvpAttackSize = 4;
 void LocalPlayer::switchPvpAttack()
 {
     changeMode(&mPvpAttackType, pvpAttackSize, "pvpAttackType",
-        &LocalPlayer::getPvpAttackString);
+        &LocalPlayer::getPvpAttackString, 0, true);
 }
 
 static const char *const pvpAttackStrings[] =
@@ -1604,7 +1604,7 @@ const unsigned imitationModeSize = 2;
 void LocalPlayer::changeImitationMode()
 {
     changeMode(&mImitationMode, imitationModeSize, "imitationMode",
-        &LocalPlayer::getImitationModeString);
+        &LocalPlayer::getImitationModeString, 0, true);
 }
 
 static const char *const imitationModeStrings[] =

@@ -520,8 +520,8 @@ class LocalPlayer final : public Being,
                         const unsigned limit,
                         const char *restrict const conf,
                         std::string (LocalPlayer::*const func)(),
-                        const unsigned def = 0,
-                        const bool save = true);
+                        const unsigned def,
+                        const bool save);
 
         void crazyMove1();
         void crazyMove2();
