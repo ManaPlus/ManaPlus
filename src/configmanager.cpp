@@ -315,7 +315,10 @@ void ConfigManager::checkConfigVersion()
         config.setValue("download-music", true);
 
     if (version < 9)
+    {
         config.deleteKey("videodetected");
+        config.setValue("moveToTargetType", 10);
+    }
 
     config.setValue("cfgver", 9);
 }
