@@ -161,6 +161,7 @@ int GraphicsManager::detectGraphics()
     SDL_Window *const window = createWindow(100, 100, 0,
         SDL_ANYFORMAT | SDL_OPENGL);
     mainGraphics->setWindow(window, 100, 100);
+    mainGraphics->createGLContext();
 
     initOpenGL();
     logVersion();
