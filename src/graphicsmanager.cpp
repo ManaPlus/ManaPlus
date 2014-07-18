@@ -495,7 +495,7 @@ void GraphicsManager::initGraphics()
         settings.textureSize = 1024;
     else
         settings.textureSize = sizes[pos];
-    logger->log("Detected max texture size: %d", settings.textureSize);
+    logger->log("Detected max texture size: %u", settings.textureSize);
 #endif  // !defined(ANDROID) && !defined(__APPLE__)
 #endif
 }

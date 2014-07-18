@@ -266,11 +266,12 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
 
         if (mDebugInventory)
         {
-            logger->log("Index: %d, ID: %d, Type: %d, Identified: %d, "
+            logger->log("Index: %d, ID: %d, Type: %d, Identified: %u, "
                 "Qty: %d, Cards: %d, %d, %d, %d, Refine: %u",
                 index, itemId, itemType,
                 static_cast<unsigned int>(identified), amount,
-                cards[0], cards[1], cards[2], cards[3], refine);
+                cards[0], cards[1], cards[2], cards[3],
+                static_cast<unsigned int>(refine));
         }
 
         if (serverVersion < 1 && identified > 1U)

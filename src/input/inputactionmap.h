@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_KEYBOARDDATA_H
-#define INPUT_KEYBOARDDATA_H
+#ifndef INPUT_INPUTACTIONMAP_H
+#define INPUT_INPUTACTIONMAP_H
 
 #include "actionmanager.h"
 #include "sdlshared.h"
@@ -2221,4 +2221,4 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
             | InputCondition::VALIDSPEED}
 };
 
-#endif  // INPUT_KEYBOARDDATA_H
+#endif  // INPUT_INPUTACTIONMAP_H

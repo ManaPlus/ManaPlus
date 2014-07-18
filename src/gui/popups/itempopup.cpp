@@ -124,7 +124,7 @@ void ItemPopup::setItem(const Item *const item, const bool showImage)
         }
         else
         {
-            mItemName->setCaption(strprintf("%s (+%d), %d",
+            mItemName->setCaption(strprintf("%s (+%u), %d",
                 ii.getName().c_str(),
                 static_cast<unsigned int>(item->getRefine()),
                 ii.getId()));

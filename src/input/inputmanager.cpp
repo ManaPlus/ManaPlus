@@ -107,7 +107,8 @@ void InputManager::retrieve()
     for (int i = 0; i < InputAction::TOTAL; i++)
     {
 #ifdef USE_SDL2
-        const std::string cf = std::string("sdl2") + inputActionData[i].configField;
+        const std::string cf = std::string("sdl2")
+            + inputActionData[i].configField;
 #else
         const std::string cf = inputActionData[i].configField;
 #endif
@@ -162,7 +163,8 @@ void InputManager::store() const
     for (int i = 0; i < InputAction::TOTAL; i++)
     {
 #ifdef USE_SDL2
-        const std::string cf = std::string("sdl2") + inputActionData[i].configField;
+        const std::string cf = std::string("sdl2")
+            + inputActionData[i].configField;
 #else
         const std::string cf = inputActionData[i].configField;
 #endif
@@ -276,8 +278,11 @@ bool InputManager::hasConflicts(int &restrict key1, int &restrict key2) const
             size_t j;
             for (j = i, j++; j < InputAction::TOTAL; j++)
             {
-                if ((kdi.grp & inputActionData[j].grp) == 0 || !*kdi.configField)
+                if ((kdi.grp & inputActionData[j].grp) == 0
+                    || !*kdi.configField)
+                {
                     continue;
+                }
 
                 for (size_t j2 = 0; j2 < inputFunctionSize; j2 ++)
                 {

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_KEYDATA_H
-#define INPUT_KEYDATA_H
+#ifndef INPUT_INPUTACTIONDATA_H
+#define INPUT_INPUTACTIONDATA_H
 
 #include "events/inputevent.h"
 
@@ -59,4 +59,4 @@ namespace Input
 
 }  // namespace Input
 
-#endif  // INPUT_KEYDATA_H
+#endif  // INPUT_INPUTACTIONDATA_H

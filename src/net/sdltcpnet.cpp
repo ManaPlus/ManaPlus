@@ -44,6 +44,9 @@
 
 #include "debug.h"
 
+#if !defined(__native_client__) \
+    && (defined(TCP_THIN_LINEAR_TIMEOUTS) \
+    || defined(TCP_THIN_DUPACK))
 // because actual struct is hidden in SDL_net we reinroducing it here
 struct TCPsocketHack final
 {
@@ -53,6 +56,7 @@ struct TCPsocketHack final
     IPaddress localAddress;
     int sflag;
 };
+#endif
 
 void TcpNet::init()
 {

@@ -174,7 +174,7 @@ void LoginDialog::postInit()
 {
     setVisible(true);
 
-    int h = 200;
+    const int h = 200;
     if (mUpdateHostLabel)
         setContentSize(310, 250);
     setContentSize(310, h);

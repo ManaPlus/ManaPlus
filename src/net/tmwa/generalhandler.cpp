@@ -133,7 +133,8 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
         case SMSG_CONNECTION_PROBLEM:
         {
             const uint8_t code = msg.readUInt8();
-            logger->log("Connection problem: %u", static_cast<int>(code));
+            logger->log("Connection problem: %u",
+                static_cast<unsigned int>(code));
 
             switch (code)
             {

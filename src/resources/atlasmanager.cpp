@@ -24,7 +24,6 @@
 
 #include "resources/atlasmanager.h"
 
-#include "configuration.h"
 #include "settings.h"
 
 #ifdef DEBUG_IMAGES
