@@ -75,14 +75,13 @@ class ModernOpenGLGraphics final : public Graphics
         void removeArray(const uint32_t id,
                          uint32_t *const arr) override final;
 
+        virtual void createGLContext() override final;
+
         #include "render/graphicsdef.hpp"
 
         #include "render/openglgraphicsdef.hpp"
 
         #include "render/openglgraphicsdefadvanced.hpp"
-
-    protected:
-        virtual void createGLContext() override final;
 
     private:
         void deleteGLObjects();

@@ -415,6 +415,10 @@ class Graphics notfinal
          */
         virtual const ClipRect *getCurrentClipArea() const;
 
+#ifdef USE_OPENGL
+        virtual void createGLContext();
+#endif
+
         /**
          * Draws a single point/pixel.
          *
@@ -504,8 +508,6 @@ class Graphics notfinal
         bool videoInfo();
 
 #ifdef USE_OPENGL
-        virtual void createGLContext();
-
         void setOpenGLFlags();
 #endif
         /**
