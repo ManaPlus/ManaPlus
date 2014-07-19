@@ -1,3 +1,21 @@
+2014-07-19 New release 1.4.7.19
+fix: possible memory leak in texture compression.
+fix: OpenGL renderers fallback.
+fix: logging about emulated OpenGL functions.
+fix: OpenGL renderer detection with SDL2.
+add: new item visible attributes.
+add: missing idx file in windows installers.
+add: empty map mode without collisions.
+add: in OpenGL context creation add support for compatibility context.
+add: disable OpenGL fallback mode while running tests.
+add: on Android move login dialog to top.
+add: useButton option into skills.
+add: modern OpenGL into renderers tests.
+add: max texture size detection for all supported modes.
+add: urls for download client update into branding file.
+add: move manaplus mirror urls into branding file.
+add: allow set "move to target" distance from 1 to 9.
+
 2014-07-05 New release 1.4.7.5
 fix: vsync control on nvidia closed source drivers.
 fix: vsync control on Mesa.
