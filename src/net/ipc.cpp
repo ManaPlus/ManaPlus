@@ -20,19 +20,21 @@
 
 #include "net/ipc.h"
 
+#include "logger.h"
+
 #include "gui/widgets/tabs/chattab.h"
 #include "gui/windows/chatwindow.h"
+
 #include "utils/sdlhelper.h"
 #include "utils/stringutils.h"
-#include <iostream>
 
-#include "logger.h"
+#include <iostream>
 
 #include "debug.h"
 
 IPC *ipc = nullptr;
 
-IPC::IPC(unsigned short port) :
+IPC::IPC(const unsigned short port) :
     mListen(false),
     mNumReqs(0),
     mPort(port),
@@ -49,7 +51,7 @@ bool IPC::init()
 {
     IPaddress ip;
 
-    if(SDLNet_ResolveHost(&ip,NULL,mPort) == -1)
+    if(SDLNet_ResolveHost(&ip, nullptr, mPort) == -1)
     {
         logger->log("IPC: SDLNet_ResolveHost: %s\n", SDLNet_GetError());
         return false;
@@ -62,7 +64,7 @@ bool IPC::init()
         return false;
     }
 
-    mThread = SDL::createThread(&IPC::acceptLoop, "ipc", this);
+    mThread = SDL::createThread(&acceptLoop, "ipc", this);
     if (!mThread)
     {
         logger->log("IPC: unable to create acceptLoop thread");
@@ -73,31 +75,30 @@ bool IPC::init()
 
 int IPC::acceptLoop(void *ptr)
 {
-    IPC *const ipc = reinterpret_cast<IPC*>(ptr);
-    const int max_length = 1024;
-    SDLNet_SocketSet set;
+    if (!ptr)
+        return 1;
 
-    set = SDLNet_AllocSocketSet(1);
-    SDLNet_TCP_AddSocket(set, ipc->mSocket);
+    IPC *const ipc1 = reinterpret_cast<IPC*>(ptr);
+    const int max_length = 1024;
+    SDLNet_SocketSet set = SDLNet_AllocSocketSet(1);
+    SDLNet_TCP_AddSocket(set, ipc1->mSocket);
     ipc->mListen = true;
     try
     {
-        while (ipc->mListen)
+        while (ipc1->mListen)
         {
             SDLNet_CheckSockets(set, 250);
-            if (!SDLNet_SocketReady(ipc->mSocket))
+            if (!SDLNet_SocketReady(ipc1->mSocket))
                 continue;
 
-            TCPsocket sock;
-            sock = SDLNet_TCP_Accept(ipc->mSocket);
+            TCPsocket sock = SDLNet_TCP_Accept(ipc1->mSocket);
             if (!sock)
             {
                 logger->log_r("IPC: unable to accept connection");
                 continue;
             }
             char data[max_length] = {0};
-            int result;
-            result = SDLNet_TCP_Recv(sock, data, max_length);
+            int result = SDLNet_TCP_Recv(sock, data, max_length);
             if (result <= 0)
             {
                 logger->log_r("IPC: unable to accept connection");
@@ -108,15 +109,13 @@ int IPC::acceptLoop(void *ptr)
             std::string req(data);
             req = trim(req);
 
-            std::string resp;
             chatWindow->chatInput(req);
-            ipc->mNumReqs++;
-            resp = strprintf("[%d] %s\n", ipc->mNumReqs, req.c_str());
-      
-            int len;
-            const char *respc;
-            respc = resp.c_str();
-            len = strlen(respc)+1;
+            ipc1->mNumReqs ++;
+            const std::string resp = strprintf("[%d] %s\n",
+                ipc1->mNumReqs, req.c_str());
+
+            const char *respc = resp.c_str();
+            const int len = strlen(respc) + 1;
             result = SDLNet_TCP_Send(sock, respc, len);
             if (result < len)
             {
@@ -130,16 +129,11 @@ int IPC::acceptLoop(void *ptr)
     catch (std::exception& e)
     {
         std::cerr << e.what() << std::endl;
-        SDLNet_TCP_Close(ipc->mSocket);
+        SDLNet_TCP_Close(ipc1->mSocket);
         return 1;
     }
-    SDLNet_TCP_Close(ipc->mSocket);
+    SDLNet_TCP_Close(ipc1->mSocket);
     return 0;
-}
-
-unsigned short IPC::port()
-{
-    return mPort;
 }
 
 void IPC::stop()
@@ -166,16 +160,16 @@ void IPC::start()
     logger->log("Starting IPC...");
     while (true)
     {
-        logger->log(strprintf("  -> trying port %d...", ipc_port));
+        logger->log("  -> trying port %d...", ipc_port);
         ipc = new IPC(ipc_port);
         if (ipc->init())
         {
-            logger->log(strprintf("  -> Port %d selected", ipc_port));
+            logger->log("  -> Port %d selected", ipc_port);
             break;
         }
         else
         {
-            ipc_port++;
+            ipc_port ++;
         }
     }
 }

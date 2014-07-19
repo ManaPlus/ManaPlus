@@ -304,9 +304,14 @@ impHandler0(ipcToggle)
     {
         IPC::start();
         if (ipc)
-            debugChatTab->chatLog(strprintf("IPC service available on port %d", ipc->port()));
+        {
+            debugChatTab->chatLog(strprintf("IPC service available on port %d",
+                ipc->getPort()));
+        }
         else
+        {
             debugChatTab->chatLog("Unable to start IPC service");
+        }
     }
 }
 

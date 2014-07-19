@@ -30,19 +30,24 @@ public:
     /**
      * Constructor.
      */
-    IPC(unsigned short port);
-  
+    IPC(const unsigned short port);
+
     /**
      * Destructor.
      */
     ~IPC();
-  
+
     bool init();
-    unsigned short port();
+
+    unsigned short getPort() const A_WARN_UNUSED
+    { return mPort; }
+
     static int acceptLoop(void *ptr);
+
     static void start();
+
     static void stop();
-  
+
 private:
     bool mListen;
     unsigned int mNumReqs;
