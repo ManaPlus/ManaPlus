@@ -139,6 +139,11 @@ int TcpNet::addSocket(const TcpNet::SocketSet set, const TcpNet::Socket sock)
     return SDLNet_TCP_AddSocket(set, sock);
 }
 
+int TcpNet::socketReady(const TcpNet::Socket sock)
+{
+    return SDLNet_SocketReady(sock);
+}
+
 int TcpNet::checkSockets(const TcpNet::SocketSet set, const Uint32 timeout)
 {
     return SDLNet_CheckSockets(set, timeout);
@@ -157,4 +162,9 @@ int TcpNet::delSocket(const TcpNet::SocketSet set, const TcpNet::Socket sock)
 void TcpNet::freeSocketSet(const TcpNet::SocketSet set)
 {
     SDLNet_FreeSocketSet(set);
+}
+
+TcpNet::Socket TcpNet::accept(const TcpNet::Socket sock)
+{
+    return SDLNet_TCP_Accept(sock);
 }

@@ -49,6 +49,8 @@ namespace TcpNet
 
     int addSocket(const TcpNet::SocketSet set, const TcpNet::Socket sock);
 
+    int socketReady(const TcpNet::Socket sock);
+
     int checkSockets(const TcpNet::SocketSet set, const Uint32 timeout);
 
     int recv(const TcpNet::Socket sock, void *const data, const int maxlen);
@@ -56,6 +58,8 @@ namespace TcpNet
     int delSocket(const TcpNet::SocketSet set, const TcpNet::Socket sock);
 
     void freeSocketSet(const TcpNet::SocketSet set);
+
+    TcpNet::Socket accept(const TcpNet::Socket sock);
 }  // namespace TcpNet
 
 #endif  // NET_SDLTCPNET_H
