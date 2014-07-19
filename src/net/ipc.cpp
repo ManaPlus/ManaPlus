@@ -145,15 +145,15 @@ void IPC::start()
     if (ipc)
         return;
 
-    unsigned short ipc_port(44007);
+    unsigned short port(44007);
     if (getenv("IPC_PORT"))
-        ipc_port = atoi(getenv("IPC_PORT"));
+        port = atoi(getenv("IPC_PORT"));
 
     logger->log("Starting IPC...");
-    while (true)
+    for (int port = 44007; port < 65535; port ++)
     {
         logger->log("  -> trying port %d...", ipc_port);
-        ipc = new IPC(ipc_port);
+        ipc = new IPC(port);
         if (ipc->init())
         {
             logger->log("  -> Port %d selected", ipc_port);
@@ -161,7 +161,7 @@ void IPC::start()
         }
         else
         {
-            ipc_port ++;
+            port ++;
         }
     }
 }
