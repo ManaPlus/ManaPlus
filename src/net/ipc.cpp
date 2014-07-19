@@ -47,6 +47,16 @@ IPC::IPC() :
 
 IPC::~IPC()
 {
+    mListen = false;
+    if (mSocket)
+    {
+        TcpNet::closeSocket(mSocket);
+        mSocket = nullptr;
+    }
+    int status;
+    if (mThread && SDL_GetThreadID(mThread))
+        SDL_WaitThread(mThread, &status);
+    mThread = nullptr;
 }
 
 bool IPC::init()
@@ -127,6 +137,8 @@ int IPC::acceptLoop(void *ptr)
         TcpNet::closeSocket(sock);
     }
     TcpNet::closeSocket(ipc1->mSocket);
+    ipc1->mSocket = nullptr;
+    ipc->mThread = nullptr;
     return 0;
 }
 
@@ -136,10 +148,7 @@ void IPC::stop()
         return;
 
     logger->log("Stopping IPC...");
-    ipc->mListen = false;
-    int loopRet;
-    SDL_WaitThread(ipc->mThread, &loopRet);
-    ipc = nullptr;
+    delete2(ipc);
 }
 
 void IPC::start()

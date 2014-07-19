@@ -83,6 +83,7 @@
 #include "net/generalhandler.h"
 #include "net/guildhandler.h"
 #include "net/inventoryhandler.h"
+#include "net/ipc.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
 #include "net/netconsts.h"
@@ -623,6 +624,8 @@ void Client::gameClear()
 
     if (Net::getChatHandler())
         Net::getChatHandler()->clear();
+
+    delete2(ipc);
 
 #ifdef USE_MUMBLE
     delete2(mumbleManager);
