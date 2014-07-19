@@ -88,6 +88,22 @@
 #define impHandler(name) bool name(const InputEvent &event)
 #define impHandler0(name) bool name(const InputEvent &event A_UNUSED)
 
+#define callYellowBar(name) \
+    if (player_node) \
+    { \
+        player_node->name(true); \
+        return true; \
+    } \
+    return false;
+
+#define callYellowBarCond(name) \
+    if (player_node && !player_node->getDisableGameModifiers()) \
+    { \
+        player_node->name(true); \
+        return true; \
+    } \
+    return false;
+
 extern ShortcutWindow *spellShortcutWindow;
 extern std::string tradePartnerName;
 extern QuitDialog *quitDialog;
@@ -384,12 +400,7 @@ impHandler0(dropItem)
 
 impHandler0(switchQuickDrop)
 {
-    if (player_node && !player_node->getDisableGameModifiers())
-    {
-        player_node->changeQuickDropCounter(true);
-        return true;
-    }
-    return false;
+    callYellowBarCond(changeQuickDropCounter)
 }
 
 impHandler0(heal)
@@ -442,22 +453,12 @@ impHandler0(itenplz)
 
 impHandler0(changeCrazyMove)
 {
-    if (player_node)
-    {
-        player_node->changeCrazyMoveType(true);
-        return true;
-    }
-    return false;
+    callYellowBar(changeCrazyMoveType);
 }
 
 impHandler0(changePickupType)
 {
-    if (player_node)
-    {
-        player_node->changePickUpType(true);
-        return true;
-    }
-    return false;
+    callYellowBar(changePickUpType);
 }
 
 impHandler0(moveToTarget)
@@ -496,52 +497,27 @@ impHandler0(setHome)
 
 impHandler0(changeMoveType)
 {
-    if (player_node)
-    {
-        player_node->invertDirection(true);
-        return true;
-    }
-    return false;
+    callYellowBar(invertDirection);
 }
 
 impHandler0(changeAttackWeaponType)
 {
-    if (player_node)
-    {
-        player_node->changeAttackWeaponType(true);
-        return true;
-    }
-    return false;
+    callYellowBar(changeAttackWeaponType);
 }
 
 impHandler0(changeAttackType)
 {
-    if (player_node)
-    {
-        player_node->changeAttackType(true);
-        return true;
-    }
-    return false;
+    callYellowBar(changeAttackType);
 }
 
 impHandler0(changeFollowMode)
 {
-    if (player_node)
-    {
-        player_node->changeFollowMode(true);
-        return true;
-    }
-    return false;
+    callYellowBar(changeFollowMode);
 }
 
 impHandler0(changeImitationMode)
 {
-    if (player_node)
-    {
-        player_node->changeImitationMode(true);
-        return true;
-    }
-    return false;
+    callYellowBar(changeImitationMode);
 }
 
 impHandler0(magicAttack)
@@ -556,32 +532,17 @@ impHandler0(magicAttack)
 
 impHandler0(changeMagicAttack)
 {
-    if (player_node)
-    {
-        player_node->switchMagicAttack(true);
-        return true;
-    }
-    return false;
+    callYellowBar(switchMagicAttack);
 }
 
 impHandler0(changePvpMode)
 {
-    if (player_node)
-    {
-        player_node->switchPvpAttack(true);
-        return true;
-    }
-    return false;
+    callYellowBar(switchPvpAttack);
 }
 
 impHandler0(changeMoveToTarget)
 {
-    if (player_node)
-    {
-        player_node->changeMoveToTargetType(true);
-        return true;
-    }
-    return false;
+    callYellowBar(changeMoveToTargetType);
 }
 
 impHandler0(copyEquippedToOutfit)
