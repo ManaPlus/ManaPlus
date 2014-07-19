@@ -25,6 +25,7 @@
 #include "logger.h"
 
 #include "render/mglcheck.h"
+#include "render/mgldefines.h"
 #include "render/mglx.h"
 #include "render/mglxtypes.h"
 
