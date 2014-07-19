@@ -55,11 +55,11 @@ private:
     void setPort(const unsigned short port)
     { mPort = port; }
 
-    bool mListen;
     unsigned int mNumReqs;
-    unsigned short mPort;
     TcpNet::Socket mSocket;
     SDL_Thread *mThread;
+    unsigned short mPort;
+    bool mListen;
 };
 
 extern IPC *ipc;

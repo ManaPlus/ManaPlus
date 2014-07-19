@@ -37,11 +37,11 @@
 IPC *ipc = nullptr;
 
 IPC::IPC() :
-    mListen(false),
     mNumReqs(0),
-    mPort(44007),
     mSocket(nullptr),
-    mThread(nullptr)
+    mThread(nullptr),
+    mPort(44007U),
+    mListen(false)
 {
 }
 
