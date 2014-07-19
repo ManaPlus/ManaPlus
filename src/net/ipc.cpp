@@ -24,8 +24,6 @@
 
 #include "gui/windows/chatwindow.h"
 
-#include "gui/widgets/tabs/chattab.h"
-
 #include "utils/delete2.h"
 #include "utils/sdlhelper.h"
 #include "utils/stringutils.h"
