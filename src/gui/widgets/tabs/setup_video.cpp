@@ -455,7 +455,7 @@ void Setup_Video::action(const ActionEvent &event)
                 mOpenGLDropDown->setSelected(renderToIndex[val]);
             }
             config.setValue("textureSize",
-                conf.getValue("textureSize", "1024,1024,1024"));
+                conf.getValue("textureSize", "1024,1024,1024,1024,1024,1024"));
             config.setValue("testInfo", conf.getValue("testInfo", ""));
             delete test;
         }
