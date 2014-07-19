@@ -22,9 +22,11 @@
 
 #include "logger.h"
 
-#include "gui/widgets/tabs/chattab.h"
 #include "gui/windows/chatwindow.h"
 
+#include "gui/widgets/tabs/chattab.h"
+
+#include "utils/delete2.h"
 #include "utils/sdlhelper.h"
 #include "utils/stringutils.h"
 
@@ -150,18 +152,20 @@ void IPC::start()
         port = atoi(getenv("IPC_PORT"));
 
     logger->log("Starting IPC...");
+    ipc = new IPC;
     for (int port = 44007; port < 65535; port ++)
     {
+        ipc->setPort(port);
         logger->log("  -> trying port %d...", ipc_port);
-        ipc = new IPC(port);
         if (ipc->init())
         {
             logger->log("  -> Port %d selected", ipc_port);
-            break;
+            return;
         }
         else
         {
             port ++;
         }
     }
+    delete2(ipc);
 }

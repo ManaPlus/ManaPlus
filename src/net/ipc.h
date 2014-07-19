@@ -49,6 +49,9 @@ public:
     static void stop();
 
 private:
+    void setPort(const unsigned short port)
+    { mPort = port; }
+
     bool mListen;
     unsigned int mNumReqs;
     unsigned short mPort;
