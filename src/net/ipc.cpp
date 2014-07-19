@@ -83,54 +83,46 @@ int IPC::acceptLoop(void *ptr)
     SDLNet_SocketSet set = SDLNet_AllocSocketSet(1);
     SDLNet_TCP_AddSocket(set, ipc1->mSocket);
     ipc->mListen = true;
-    try
+    while (ipc1->mListen)
     {
-        while (ipc1->mListen)
+        SDLNet_CheckSockets(set, 250);
+        if (!SDLNet_SocketReady(ipc1->mSocket))
+            continue;
+
+        TCPsocket sock = SDLNet_TCP_Accept(ipc1->mSocket);
+        if (!sock)
         {
-            SDLNet_CheckSockets(set, 250);
-            if (!SDLNet_SocketReady(ipc1->mSocket))
-                continue;
-
-            TCPsocket sock = SDLNet_TCP_Accept(ipc1->mSocket);
-            if (!sock)
-            {
-                logger->log_r("IPC: unable to accept connection");
-                continue;
-            }
-            char data[max_length] = {0};
-            int result = SDLNet_TCP_Recv(sock, data, max_length);
-            if (result <= 0)
-            {
-                logger->log_r("IPC: unable to accept connection");
-                SDLNet_TCP_Close(sock);
-                continue;
-            }
-
-            std::string req(data);
-            req = trim(req);
-
-            chatWindow->chatInput(req);
-            ipc1->mNumReqs ++;
-            const std::string resp = strprintf("[%d] %s\n",
-                ipc1->mNumReqs, req.c_str());
-
-            const char *respc = resp.c_str();
-            const int len = strlen(respc) + 1;
-            result = SDLNet_TCP_Send(sock, respc, len);
-            if (result < len)
-            {
-                logger->log_r("IPC: SDLNet_TCP_Send: %s\n", SDLNet_GetError());
-                SDLNet_TCP_Close(sock);
-                continue;
-            }
-            SDLNet_TCP_Close(sock);
+            logger->log_r("IPC: unable to accept connection");
+            continue;
         }
-    }
-    catch (std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-        SDLNet_TCP_Close(ipc1->mSocket);
-        return 1;
+        char data[max_length] = {0};
+        int result = SDLNet_TCP_Recv(sock, data, max_length);
+        if (result <= 0)
+        {
+            logger->log_r("IPC: unable to accept connection");
+            SDLNet_TCP_Close(sock);
+            continue;
+        }
+
+        std::string req(data);
+        req = trim(req);
+
+        if (chatWindow)
+            chatWindow->chatInput(req);
+        ipc1->mNumReqs ++;
+        const std::string resp = strprintf("[%d] %s\n",
+            ipc1->mNumReqs, req.c_str());
+
+        const char *respc = resp.c_str();
+        const int len = strlen(respc) + 1;
+        result = SDLNet_TCP_Send(sock, respc, len);
+        if (result < len)
+        {
+            logger->log_r("IPC: SDLNet_TCP_Send: %s\n", SDLNet_GetError());
+            SDLNet_TCP_Close(sock);
+            continue;
+        }
+        SDLNet_TCP_Close(sock);
     }
     SDLNet_TCP_Close(ipc1->mSocket);
     return 0;
