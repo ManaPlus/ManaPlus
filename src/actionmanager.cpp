@@ -386,7 +386,7 @@ impHandler0(switchQuickDrop)
 {
     if (player_node && !player_node->getDisableGameModifiers())
     {
-        player_node->changeQuickDropCounter();
+        player_node->changeQuickDropCounter(true);
         return true;
     }
     return false;
@@ -444,7 +444,7 @@ impHandler0(changeCrazyMove)
 {
     if (player_node)
     {
-        player_node->changeCrazyMoveType();
+        player_node->changeCrazyMoveType(true);
         return true;
     }
     return false;
@@ -454,7 +454,7 @@ impHandler0(changePickupType)
 {
     if (player_node)
     {
-        player_node->changePickUpType();
+        player_node->changePickUpType(true);
         return true;
     }
     return false;
@@ -498,7 +498,7 @@ impHandler0(changeMoveType)
 {
     if (player_node)
     {
-        player_node->invertDirection();
+        player_node->invertDirection(true);
         return true;
     }
     return false;
@@ -508,7 +508,7 @@ impHandler0(changeAttackWeaponType)
 {
     if (player_node)
     {
-        player_node->changeAttackWeaponType();
+        player_node->changeAttackWeaponType(true);
         return true;
     }
     return false;
@@ -518,7 +518,7 @@ impHandler0(changeAttackType)
 {
     if (player_node)
     {
-        player_node->changeAttackType();
+        player_node->changeAttackType(true);
         return true;
     }
     return false;
@@ -528,7 +528,7 @@ impHandler0(changeFollowMode)
 {
     if (player_node)
     {
-        player_node->changeFollowMode();
+        player_node->changeFollowMode(true);
         return true;
     }
     return false;
@@ -538,7 +538,7 @@ impHandler0(changeImitationMode)
 {
     if (player_node)
     {
-        player_node->changeImitationMode();
+        player_node->changeImitationMode(true);
         return true;
     }
     return false;
@@ -558,7 +558,7 @@ impHandler0(changeMagicAttack)
 {
     if (player_node)
     {
-        player_node->switchMagicAttack();
+        player_node->switchMagicAttack(true);
         return true;
     }
     return false;
@@ -568,7 +568,7 @@ impHandler0(changePvpMode)
 {
     if (player_node)
     {
-        player_node->switchPvpAttack();
+        player_node->switchPvpAttack(true);
         return true;
     }
     return false;
@@ -578,7 +578,7 @@ impHandler0(changeMoveToTarget)
 {
     if (player_node)
     {
-        player_node->changeMoveToTargetType();
+        player_node->changeMoveToTargetType(true);
         return true;
     }
     return false;

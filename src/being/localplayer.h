@@ -192,7 +192,7 @@ class LocalPlayer final : public Being,
         void setInvertDirection(const int n)
         { mInvertDirection = n; }
 
-        void invertDirection();
+        void invertDirection(const bool forward);
 
         int getAttackWeaponType() const A_WARN_UNUSED
         { return mAttackWeaponType; }
@@ -206,15 +206,15 @@ class LocalPlayer final : public Being,
         int getImitationMode() const A_WARN_UNUSED
         { return mImitationMode; }
 
-        void changeAttackWeaponType();
+        void changeAttackWeaponType(const bool forward);
 
-        void changeAttackType();
+        void changeAttackType(const bool forward);
 
-        void changeFollowMode();
+        void changeFollowMode(const bool forward);
 
-        void changeImitationMode();
+        void changeImitationMode(const bool forward);
 
-        void changePickUpType();
+        void changePickUpType(const bool forward);
 
         int getCrazyMoveType() const A_WARN_UNUSED
         { return mCrazyMoveType; }
@@ -227,7 +227,7 @@ class LocalPlayer final : public Being,
 
         void setQuickDropCounter(const int n);
 
-        void changeQuickDropCounter();
+        void changeQuickDropCounter(const bool forward);
 
         int getMoveState() const A_WARN_UNUSED
         { return mMoveState; }
@@ -235,9 +235,9 @@ class LocalPlayer final : public Being,
         void setMoveState(const int n)
         { mMoveState = n; }
 
-        void switchMagicAttack();
+        void switchMagicAttack(const bool forward);
 
-        void switchPvpAttack();
+        void switchPvpAttack(const bool forward);
 
         int getMagicAttackType() const A_WARN_UNUSED
         { return mMagicAttackType; }
@@ -255,7 +255,7 @@ class LocalPlayer final : public Being,
 
         void tryPingRequest();
 
-        void changeMoveToTargetType();
+        void changeMoveToTargetType(const bool forward);
 
         void switchGameModifiers();
 
@@ -267,7 +267,7 @@ class LocalPlayer final : public Being,
 
         bool pickUpItems(int pickUpType = 0);
 
-        void changeCrazyMoveType();
+        void changeCrazyMoveType(const bool forward);
 
         void crazyMove();
 
@@ -521,7 +521,8 @@ class LocalPlayer final : public Being,
                         const char *restrict const conf,
                         std::string (LocalPlayer::*const func)(),
                         const unsigned def,
-                        const bool save);
+                        const bool save,
+                        const bool forward);
 
         void crazyMove1();
         void crazyMove2();

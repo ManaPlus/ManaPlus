@@ -1244,14 +1244,26 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
                              const char *restrict const conf,
                              std::string (LocalPlayer::*const func)(),
                              const unsigned def,
-                             const bool save)
+                             const bool save,
+                             const bool forward)
 {
     if (!var)
         return;
 
-    (*var) ++;
-    if (*var >= limit)
-        *var = def;
+    if (forward)
+    {
+        (*var) ++;
+        if (*var >= limit)
+            *var = def;
+    }
+    else
+    {
+        if (!*var)
+            *var = limit - 1;
+        else
+            (*var) --;
+    }
+
     if (save)
         config.setValue(conf, *var);
     UpdateStatusListener::distributeEvent();
@@ -1260,11 +1272,11 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
         debugMsg(str.substr(4));
 }
 
-void LocalPlayer::invertDirection()
+void LocalPlayer::invertDirection(const bool forward)
 {
     mMoveState = 0;
     changeMode(&mInvertDirection, invertDirectionSize, "invertMoveDirection",
-        &LocalPlayer::getInvertDirectionString, 0, false);
+        &LocalPlayer::getInvertDirectionString, 0, false, forward);
 }
 
 static const char *const invertDirectionStrings[] =
@@ -1291,11 +1303,11 @@ std::string LocalPlayer::getInvertDirectionString()
 
 static const unsigned crazyMoveTypeSize = 11;
 
-void LocalPlayer::changeCrazyMoveType()
+void LocalPlayer::changeCrazyMoveType(const bool forward)
 {
     mCrazyMoveState = 0;
     changeMode(&mCrazyMoveType, crazyMoveTypeSize, "crazyMoveType",
-        &LocalPlayer::getCrazyMoveTypeString, 1, true);
+        &LocalPlayer::getCrazyMoveTypeString, 1, true, forward);
 }
 
 std::string LocalPlayer::getCrazyMoveTypeString()
@@ -1320,10 +1332,10 @@ std::string LocalPlayer::getCrazyMoveTypeString()
 
 static const unsigned moveToTargetTypeSize = 13;
 
-void LocalPlayer::changeMoveToTargetType()
+void LocalPlayer::changeMoveToTargetType(const bool forward)
 {
     changeMode(&mMoveToTargetType, moveToTargetTypeSize, "moveToTargetType",
-        &LocalPlayer::getMoveToTargetTypeString, 0, true);
+        &LocalPlayer::getMoveToTargetTypeString, 0, true, forward);
 }
 
 static const char *const moveToTargetTypeStrings[] =
@@ -1366,10 +1378,10 @@ std::string LocalPlayer::getMoveToTargetTypeString()
 
 static const unsigned followModeSize = 4;
 
-void LocalPlayer::changeFollowMode()
+void LocalPlayer::changeFollowMode(const bool forward)
 {
     changeMode(&mFollowMode, followModeSize, "followMode",
-        &LocalPlayer::getFollowModeString, 0, true);
+        &LocalPlayer::getFollowModeString, 0, true, forward);
 }
 
 static const char *const followModeStrings[] =
@@ -1394,10 +1406,10 @@ std::string LocalPlayer::getFollowModeString()
 
 const unsigned attackWeaponTypeSize = 4;
 
-void LocalPlayer::changeAttackWeaponType()
+void LocalPlayer::changeAttackWeaponType(const bool forward)
 {
     changeMode(&mAttackWeaponType, attackWeaponTypeSize, "attackWeaponType",
-        &LocalPlayer::getAttackWeaponTypeString, 1, true);
+        &LocalPlayer::getAttackWeaponTypeString, 1, true, forward);
 }
 
 static const char *const attackWeaponTypeStrings[] =
@@ -1422,10 +1434,10 @@ std::string LocalPlayer::getAttackWeaponTypeString()
 
 const unsigned attackTypeSize = 4;
 
-void LocalPlayer::changeAttackType()
+void LocalPlayer::changeAttackType(const bool forward)
 {
     changeMode(&mAttackType, attackTypeSize, "attackType",
-        &LocalPlayer::getAttackTypeString, 0, true);
+        &LocalPlayer::getAttackTypeString, 0, true, forward);
 }
 
 static const char *const attackTypeStrings[] =
@@ -1450,10 +1462,10 @@ std::string LocalPlayer::getAttackTypeString()
 
 const unsigned quickDropCounterSize = 31;
 
-void LocalPlayer::changeQuickDropCounter()
+void LocalPlayer::changeQuickDropCounter(const bool forward)
 {
     changeMode(&mQuickDropCounter, quickDropCounterSize, "quickDropCounter",
-        &LocalPlayer::getQuickDropCounterString, 1, true);
+        &LocalPlayer::getQuickDropCounterString, 1, true, forward);
 }
 
 std::string LocalPlayer::getQuickDropCounterString()
@@ -1481,10 +1493,10 @@ void LocalPlayer::setQuickDropCounter(const int n)
 
 const unsigned pickUpTypeSize = 7;
 
-void LocalPlayer::changePickUpType()
+void LocalPlayer::changePickUpType(const bool forward)
 {
     changeMode(&mPickUpType, pickUpTypeSize, "pickUpType",
-        &LocalPlayer::getPickUpTypeString, 0, true);
+        &LocalPlayer::getPickUpTypeString, 0, true, forward);
 }
 
 static const char *const pickUpTypeStrings[] =
@@ -1543,10 +1555,10 @@ std::string LocalPlayer::getMapDrawTypeString()
 
 const unsigned magicAttackSize = 5;
 
-void LocalPlayer::switchMagicAttack()
+void LocalPlayer::switchMagicAttack(const bool forward)
 {
     changeMode(&mMagicAttackType, magicAttackSize, "magicAttackType",
-        &LocalPlayer::getMagicAttackString, 0, true);
+        &LocalPlayer::getMagicAttackString, 0, true, forward);
 }
 
 static const char *const magicAttackStrings[] =
@@ -1573,10 +1585,10 @@ std::string LocalPlayer::getMagicAttackString()
 
 const unsigned pvpAttackSize = 4;
 
-void LocalPlayer::switchPvpAttack()
+void LocalPlayer::switchPvpAttack(const bool forward)
 {
     changeMode(&mPvpAttackType, pvpAttackSize, "pvpAttackType",
-        &LocalPlayer::getPvpAttackString, 0, true);
+        &LocalPlayer::getPvpAttackString, 0, true, forward);
 }
 
 static const char *const pvpAttackStrings[] =
@@ -1601,10 +1613,10 @@ std::string LocalPlayer::getPvpAttackString()
 
 const unsigned imitationModeSize = 2;
 
-void LocalPlayer::changeImitationMode()
+void LocalPlayer::changeImitationMode(const bool forward)
 {
     changeMode(&mImitationMode, imitationModeSize, "imitationMode",
-        &LocalPlayer::getImitationModeString, 0, true);
+        &LocalPlayer::getImitationModeString, 0, true, forward);
 }
 
 static const char *const imitationModeStrings[] =
