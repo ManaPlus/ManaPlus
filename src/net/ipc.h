@@ -33,6 +33,8 @@ public:
      */
     IPC();
 
+    A_DELETE_COPY(IPC)
+
     /**
      * Destructor.
      */
