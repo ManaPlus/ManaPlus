@@ -63,7 +63,7 @@ bool IPC::init()
 
     if(TcpNet::resolveHost(&ip, nullptr, mPort) == -1)
     {
-        logger->log("IPC: resolveHost error: %s\n", SDLNet_GetError());
+        logger->log("IPC: resolveHost error: %s\n", TcpNet::getError());
         return false;
     }
 
@@ -128,7 +128,7 @@ int IPC::acceptLoop(void *ptr)
         result = TcpNet::send(sock, respc, len);
         if (result < len)
         {
-            logger->log_r("IPC: send error: %s\n", SDLNet_GetError());
+            logger->log_r("IPC: send error: %s\n", TcpNet::getError());
             TcpNet::closeSocket(sock);
             continue;
         }
