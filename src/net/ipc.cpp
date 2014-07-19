@@ -36,10 +36,10 @@
 
 IPC *ipc = nullptr;
 
-IPC::IPC(const unsigned short port) :
+IPC::IPC() :
     mListen(false),
     mNumReqs(0),
-    mPort(port),
+    mPort(44007),
     mSocket(nullptr),
     mThread(nullptr)
 {
@@ -53,16 +53,16 @@ bool IPC::init()
 {
     IPaddress ip;
 
-    if(SDLNet_ResolveHost(&ip, nullptr, mPort) == -1)
+    if(TcpNet::resolveHost(&ip, nullptr, mPort) == -1)
     {
-        logger->log("IPC: SDLNet_ResolveHost: %s\n", SDLNet_GetError());
+        logger->log("IPC: resolveHost error: %s\n", SDLNet_GetError());
         return false;
     }
 
-    mSocket = SDLNet_TCP_Open(&ip);
+    mSocket = TcpNet::open(&ip);
     if (!mSocket)
     {
-        logger->log("IPC: Error in TcpNet::open(): %s", TcpNet::getError());
+        logger->log("IPC: open error: %s", TcpNet::getError());
         return false;
     }
 
@@ -82,27 +82,27 @@ int IPC::acceptLoop(void *ptr)
 
     IPC *const ipc1 = reinterpret_cast<IPC*>(ptr);
     const int max_length = 1024;
-    SDLNet_SocketSet set = SDLNet_AllocSocketSet(1);
-    SDLNet_TCP_AddSocket(set, ipc1->mSocket);
+    TcpNet::SocketSet set = TcpNet::allocSocketSet(1);
+    TcpNet::addSocket(set, ipc1->mSocket);
     ipc->mListen = true;
     while (ipc1->mListen)
     {
-        SDLNet_CheckSockets(set, 250);
-        if (!SDLNet_SocketReady(ipc1->mSocket))
+        TcpNet::checkSockets(set, 250);
+        if (!TcpNet::socketReady(ipc1->mSocket))
             continue;
 
-        TCPsocket sock = SDLNet_TCP_Accept(ipc1->mSocket);
+        TcpNet::Socket sock = TcpNet::accept(ipc1->mSocket);
         if (!sock)
         {
             logger->log_r("IPC: unable to accept connection");
             continue;
         }
         char data[max_length] = {0};
-        int result = SDLNet_TCP_Recv(sock, data, max_length);
+        int result = TcpNet::recv(sock, data, max_length);
         if (result <= 0)
         {
             logger->log_r("IPC: unable to accept connection");
-            SDLNet_TCP_Close(sock);
+            TcpNet::closeSocket(sock);
             continue;
         }
 
@@ -117,16 +117,16 @@ int IPC::acceptLoop(void *ptr)
 
         const char *respc = resp.c_str();
         const int len = strlen(respc) + 1;
-        result = SDLNet_TCP_Send(sock, respc, len);
+        result = TcpNet::send(sock, respc, len);
         if (result < len)
         {
-            logger->log_r("IPC: SDLNet_TCP_Send: %s\n", SDLNet_GetError());
-            SDLNet_TCP_Close(sock);
+            logger->log_r("IPC: send error: %s\n", SDLNet_GetError());
+            TcpNet::closeSocket(sock);
             continue;
         }
-        SDLNet_TCP_Close(sock);
+        TcpNet::closeSocket(sock);
     }
-    SDLNet_TCP_Close(ipc1->mSocket);
+    TcpNet::closeSocket(ipc1->mSocket);
     return 0;
 }
 
@@ -153,13 +153,13 @@ void IPC::start()
 
     logger->log("Starting IPC...");
     ipc = new IPC;
-    for (int port = 44007; port < 65535; port ++)
+    for (int f = port; f < 65535; f ++)
     {
-        ipc->setPort(port);
-        logger->log("  -> trying port %d...", ipc_port);
+        ipc->setPort(f);
+        logger->log("  -> trying port %d...", f);
         if (ipc->init())
         {
-            logger->log("  -> Port %d selected", ipc_port);
+            logger->log("  -> Port %d selected", f);
             return;
         }
         else

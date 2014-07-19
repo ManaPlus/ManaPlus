@@ -22,6 +22,7 @@
 #define IPC_H
 
 #include "net/sdltcpnet.h"
+
 #include <SDL_thread.h>
 
 class IPC final
@@ -30,7 +31,7 @@ public:
     /**
      * Constructor.
      */
-    IPC(const unsigned short port);
+    IPC();
 
     /**
      * Destructor.
