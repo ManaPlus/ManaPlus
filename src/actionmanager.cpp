@@ -499,7 +499,7 @@ impHandler0(setHome)
 
 impHandler0(changeMoveType)
 {
-    callYellowBar(invertDirection);
+    callYellowBar(moveType);
 }
 
 impHandler0(changeAttackWeaponType)

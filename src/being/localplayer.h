@@ -186,13 +186,13 @@ class LocalPlayer final : public Being,
         bool isPathSetByMouse() const A_WARN_UNUSED
         { return mPathSetByMouse; }
 
-        int getInvertDirection() const A_WARN_UNUSED
-        { return mInvertDirection; }
+        int getMoveType() const A_WARN_UNUSED
+        { return mMoveType; }
 
-        void setInvertDirection(const int n)
-        { mInvertDirection = n; }
+        void setMoveType(const int n)
+        { mMoveType = n; }
 
-        void invertDirection(const bool forward);
+        void moveType(const bool forward);
 
         int getAttackWeaponType() const A_WARN_UNUSED
         { return mAttackWeaponType; }
@@ -451,7 +451,7 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        std::string getInvertDirectionString();
+        std::string getMoveTypeString();
 
         std::string getCrazyMoveTypeString();
 
@@ -538,7 +538,7 @@ class LocalPlayer final : public Being,
         int mGMLevel;
 
         // move type
-        unsigned int mInvertDirection;
+        unsigned int mMoveType;
         // crazy move type
         unsigned int mCrazyMoveType;
         // crazy move state
@@ -547,7 +547,7 @@ class LocalPlayer final : public Being,
         unsigned int mAttackWeaponType;
         // quick drop counter
         unsigned int mQuickDropCounter;
-        // move state. used if mInvertDirection == 2
+        // move state. used if mMoveType == 2
         unsigned int mMoveState;
         // pick up type 1x1, normal aka 2x1, forward aka 2x3, 3x3, 3x3 + 1
         unsigned int mPickUpType;

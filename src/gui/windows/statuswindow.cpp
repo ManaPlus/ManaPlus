@@ -641,7 +641,7 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
     if (!player_node || !viewport)
         return;
 
-    bar->setText(translateLetter2(player_node->getInvertDirectionString())
+    bar->setText(translateLetter2(player_node->getMoveTypeString())
         .append(translateLetter2(player_node->getCrazyMoveTypeString()))
         .append(translateLetter2(player_node->getMoveToTargetTypeString()))
         .append(translateLetter2(player_node->getFollowModeString()))

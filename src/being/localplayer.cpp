@@ -112,7 +112,7 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     AttributeListener(),
     StatListener(),
     mGMLevel(0),
-    mInvertDirection(0),
+    mMoveType(0),
     mCrazyMoveType(config.getIntValue("crazyMoveType")),
     mCrazyMoveState(0),
     mAttackWeaponType(config.getIntValue("attackWeaponType")),
@@ -568,7 +568,7 @@ void LocalPlayer::setDestination(const int x, const int y)
     // Only send a new message to the server when destination changes
     if (x != mDest.x || y != mDest.y)
     {
-        if (mInvertDirection != 1)
+        if (mMoveType != 1)
         {
             Net::getPlayerHandler()->setDestination(x, y, mDirection);
             Being::setDestination(x, y);
@@ -1237,7 +1237,7 @@ void LocalPlayer::moveToHome()
     }
 }
 
-static const unsigned invertDirectionSize = 5;
+static const unsigned moveTypeSize = 5;
 
 void LocalPlayer::changeMode(unsigned *restrict const var,
                              const unsigned limit,
@@ -1272,14 +1272,14 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
         debugMsg(str.substr(4));
 }
 
-void LocalPlayer::invertDirection(const bool forward)
+void LocalPlayer::moveType(const bool forward)
 {
     mMoveState = 0;
-    changeMode(&mInvertDirection, invertDirectionSize, "invertMoveDirection",
-        &LocalPlayer::getInvertDirectionString, 0, false, forward);
+    changeMode(&mMoveType, moveTypeSize, "invertMoveDirection",
+        &LocalPlayer::getMoveTypeString, 0, false, forward);
 }
 
-static const char *const invertDirectionStrings[] =
+static const char *const moveTypeStrings[] =
 {
     // TRANSLATORS: move type in status bar
     N_("(D) default moves"),
@@ -1295,10 +1295,10 @@ static const char *const invertDirectionStrings[] =
     N_("(?) unknown move")
 };
 
-std::string LocalPlayer::getInvertDirectionString()
+std::string LocalPlayer::getMoveTypeString()
 {
-    return gettext(getVarItem(&invertDirectionStrings[0],
-        mInvertDirection, invertDirectionSize));
+    return gettext(getVarItem(&moveTypeStrings[0],
+        mMoveType, moveTypeSize));
 }
 
 static const unsigned crazyMoveTypeSize = 11;
@@ -2671,8 +2671,8 @@ void LocalPlayer::specialMove(const unsigned char direction)
     if (direction && (mNavigateX || mNavigateY))
         navigateClean();
 
-    if (direction && (mInvertDirection >= 2
-        && mInvertDirection <= 4)
+    if (direction && (mMoveType >= 2
+        && mMoveType <= 4)
         && !mIsServerBuggy)
     {
         if (mAction == BeingAction::MOVE)
@@ -2680,9 +2680,9 @@ void LocalPlayer::specialMove(const unsigned char direction)
 
         int max;
 
-        if (mInvertDirection == 2)
+        if (mMoveType == 2)
             max = 5;
-        else if (mInvertDirection == 4)
+        else if (mMoveType == 4)
             max = 1;
         else
             max = 3;
@@ -3724,7 +3724,7 @@ void LocalPlayer::checkNewName(Being *const being)
 
 void LocalPlayer::resetYellowBar()
 {
-    mInvertDirection = 0;
+    mMoveType = 0;
     mCrazyMoveType = config.resetIntValue("crazyMoveType");
     mMoveToTargetType = config.resetIntValue("moveToTargetType");
     mFollowMode = config.resetIntValue("followMode");
