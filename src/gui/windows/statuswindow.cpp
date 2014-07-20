@@ -643,7 +643,7 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
         return;
 
     bar->setText(translateLetter2(modifiers->getMoveTypeString())
-        .append(translateLetter2(player_node->getCrazyMoveTypeString()))
+        .append(translateLetter2(modifiers->getCrazyMoveTypeString()))
         .append(translateLetter2(player_node->getMoveToTargetTypeString()))
         .append(translateLetter2(player_node->getFollowModeString()))
         .append(" ").append(translateLetter2(

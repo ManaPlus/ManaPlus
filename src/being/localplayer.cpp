@@ -113,7 +113,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     AttributeListener(),
     StatListener(),
     mGMLevel(0),
-    mCrazyMoveType(config.getIntValue("crazyMoveType")),
     mCrazyMoveState(0),
     mAttackWeaponType(config.getIntValue("attackWeaponType")),
     mQuickDropCounter(config.getIntValue("quickDropCounter")),
@@ -1270,35 +1269,6 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
         debugMsg(str.substr(4));
 }
 
-static const unsigned crazyMoveTypeSize = 11;
-
-void LocalPlayer::changeCrazyMoveType(const bool forward)
-{
-    mCrazyMoveState = 0;
-    changeMode(&mCrazyMoveType, crazyMoveTypeSize, "crazyMoveType",
-        &LocalPlayer::getCrazyMoveTypeString, 1, true, forward);
-}
-
-std::string LocalPlayer::getCrazyMoveTypeString()
-{
-    if (mCrazyMoveType < crazyMoveTypeSize - 1)
-    {
-        // TRANSLATORS: crazy move type in status bar
-        return strprintf(_("(%u) crazy move number %u"),
-            mCrazyMoveType, mCrazyMoveType);
-    }
-    else if (mCrazyMoveType == crazyMoveTypeSize - 1)
-    {
-        // TRANSLATORS: crazy move type in status bar
-        return _("(a) custom crazy move");
-    }
-    else
-    {
-        // TRANSLATORS: crazy move type in status bar
-        return _("(?) crazy move");
-    }
-}
-
 static const unsigned moveToTargetTypeSize = 13;
 
 void LocalPlayer::changeMoveToTargetType(const bool forward)
@@ -1787,7 +1757,7 @@ void LocalPlayer::crazyMove()
 {
     const bool oldDisableCrazyMove = mDisableCrazyMove;
     mDisableCrazyMove = true;
-    switch (mCrazyMoveType)
+    switch (settings.crazyMoveType)
     {
         case 1:
             crazyMove1();
@@ -3693,7 +3663,7 @@ void LocalPlayer::checkNewName(Being *const being)
 void LocalPlayer::resetYellowBar()
 {
     settings.moveType = 0;
-    mCrazyMoveType = config.resetIntValue("crazyMoveType");
+    settings.crazyMoveType = config.resetIntValue("crazyMoveType");
     mMoveToTargetType = config.resetIntValue("moveToTargetType");
     mFollowMode = config.resetIntValue("followMode");
     mAttackWeaponType = config.resetIntValue("attackWeaponType");

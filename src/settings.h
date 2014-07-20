@@ -53,6 +53,7 @@ class Settings final
             guiAlpha(1.0F),
             textureSize(1024),
             moveType(0U),
+            crazyMoveType(0U),
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
@@ -80,6 +81,7 @@ class Settings final
         float guiAlpha;
         unsigned int textureSize;
         unsigned int moveType;
+        unsigned int crazyMoveType;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;

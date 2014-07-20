@@ -465,7 +465,7 @@ impHandler0(itenplz)
 
 impHandler0(changeCrazyMove)
 {
-    callYellowBar(changeCrazyMoveType);
+    callYellowBar2(changeCrazyMoveType);
 }
 
 impHandler0(changePickupType)

@@ -37,6 +37,7 @@ GameModifiers *modifiers = nullptr;
 
 GameModifiers::GameModifiers()
 {
+    settings.crazyMoveType = config.getIntValue("crazyMoveType");
 }
 
 GameModifiers::~GameModifiers()
@@ -114,4 +115,34 @@ std::string GameModifiers::getMoveTypeString()
 {
     return gettext(getVarItem(&moveTypeStrings[0],
         settings.moveType, moveTypeSize));
+}
+
+static const unsigned crazyMoveTypeSize = 11;
+
+void GameModifiers::changeCrazyMoveType(const bool forward)
+{
+    player_node->setCrazyMoveState(0U);
+    changeMode(&settings.crazyMoveType, crazyMoveTypeSize, "crazyMoveType",
+        &GameModifiers::getCrazyMoveTypeString, 1, true, forward);
+}
+
+std::string GameModifiers::getCrazyMoveTypeString()
+{
+    const unsigned int crazyMoveType = settings.crazyMoveType;
+    if (crazyMoveType < crazyMoveTypeSize - 1)
+    {
+        // TRANSLATORS: crazy move type in status bar
+        return strprintf(_("(%u) crazy move number %u"),
+            crazyMoveType, crazyMoveType);
+    }
+    else if (crazyMoveType == crazyMoveTypeSize - 1)
+    {
+        // TRANSLATORS: crazy move type in status bar
+        return _("(a) custom crazy move");
+    }
+    else
+    {
+        // TRANSLATORS: crazy move type in status bar
+        return _("(?) crazy move");
+    }
 }

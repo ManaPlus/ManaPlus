@@ -208,9 +208,6 @@ class LocalPlayer final : public Being,
 
         void changePickUpType(const bool forward);
 
-        int getCrazyMoveType() const A_WARN_UNUSED
-        { return mCrazyMoveType; }
-
         int getPickUpType() const A_WARN_UNUSED
         { return mPickUpType; }
 
@@ -221,11 +218,17 @@ class LocalPlayer final : public Being,
 
         void changeQuickDropCounter(const bool forward);
 
-        int getMoveState() const A_WARN_UNUSED
+        unsigned int getMoveState() const A_WARN_UNUSED
         { return mMoveState; }
 
-        void setMoveState(const int n)
+        void setMoveState(const unsigned int n)
         { mMoveState = n; }
+
+        unsigned int getCrazyMoveState() const A_WARN_UNUSED
+        { return mCrazyMoveState; }
+
+        void setCrazyMoveState(const unsigned int n)
+        { mCrazyMoveState = n; }
 
         void switchMagicAttack(const bool forward);
 
@@ -258,8 +261,6 @@ class LocalPlayer final : public Being,
         void moveByDirection(const unsigned char dir);
 
         bool pickUpItems(int pickUpType = 0);
-
-        void changeCrazyMoveType(const bool forward);
 
         void crazyMove();
 
@@ -443,8 +444,6 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        std::string getCrazyMoveTypeString();
-
         std::string getMoveToTargetTypeString();
 
         std::string getFollowModeString();
@@ -527,8 +526,6 @@ class LocalPlayer final : public Being,
 
         int mGMLevel;
 
-        // crazy move type
-        unsigned int mCrazyMoveType;
         // crazy move state
         unsigned int mCrazyMoveState;
         // attack weapon type

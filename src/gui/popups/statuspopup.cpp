@@ -142,7 +142,7 @@ void StatusPopup::updateLabels() const
 
     setLabelText(0, modifiers->getMoveTypeString(),
         InputAction::INVERT_DIRECTION);
-    setLabelText(1, player_node->getCrazyMoveTypeString(),
+    setLabelText(1, modifiers->getCrazyMoveTypeString(),
         InputAction::CHANGE_CRAZY_MOVES_TYPE);
     setLabelText(2, player_node->getMoveToTargetTypeString(),
         InputAction::CHANGE_MOVE_TO_TARGET);
