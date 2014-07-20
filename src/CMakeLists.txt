@@ -778,6 +778,8 @@ SET(SRCS
     flooritem.h
     game.cpp
     game.h
+    gamemodifiers.cpp
+    gamemodifiers.h
     render/graphics.cpp
     render/graphics.h
     graphicsmanager.cpp

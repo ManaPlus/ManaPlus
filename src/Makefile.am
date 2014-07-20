@@ -901,6 +901,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      flooritem.h \
 	      game.cpp \
 	      game.h \
+	      gamemodifiers.cpp \
+	      gamemodifiers.h \
 	      render/graphics.cpp \
 	      render/graphics.h \
 	      graphicsmanager.cpp \
