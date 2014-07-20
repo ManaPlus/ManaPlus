@@ -192,7 +192,7 @@ class LocalPlayer final : public Being,
         void setMoveType(const int n)
         { mMoveType = n; }
 
-        void moveType(const bool forward);
+        void changeMoveType(const bool forward);
 
         int getAttackWeaponType() const A_WARN_UNUSED
         { return mAttackWeaponType; }

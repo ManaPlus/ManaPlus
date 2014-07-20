@@ -1272,7 +1272,7 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
         debugMsg(str.substr(4));
 }
 
-void LocalPlayer::moveType(const bool forward)
+void LocalPlayer::changeMoveType(const bool forward)
 {
     mMoveState = 0;
     changeMode(&mMoveType, moveTypeSize, "invertMoveDirection",
