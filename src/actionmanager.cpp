@@ -91,7 +91,8 @@
 #define callYellowBar(name) \
     if (player_node) \
     { \
-        player_node->name(true); \
+        player_node->name(!inputManager.isActionActive( \
+            InputAction::STOP_ATTACK)); \
         return true; \
     } \
     return false;
@@ -99,7 +100,8 @@
 #define callYellowBarCond(name) \
     if (player_node && !player_node->getDisableGameModifiers()) \
     { \
-        player_node->name(true); \
+        player_node->name(!inputManager.isActionActive( \
+            InputAction::STOP_ATTACK)); \
         return true; \
     } \
     return false;
