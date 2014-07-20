@@ -52,6 +52,7 @@ class Settings final
             options(),
             guiAlpha(1.0F),
             textureSize(1024),
+            moveType(0U),
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
@@ -78,6 +79,7 @@ class Settings final
         Options options;
         float guiAlpha;
         unsigned int textureSize;
+        unsigned int moveType;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;

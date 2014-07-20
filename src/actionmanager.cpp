@@ -24,6 +24,7 @@
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
+#include "gamemodifiers.h"
 #include "itemshortcut.h"
 #include "soundmanager.h"
 
@@ -92,6 +93,15 @@
     if (player_node) \
     { \
         player_node->name(!inputManager.isActionActive( \
+            InputAction::STOP_ATTACK)); \
+        return true; \
+    } \
+    return false;
+
+#define callYellowBar2(name) \
+    if (modifiers) \
+    { \
+        modifiers->name(!inputManager.isActionActive( \
             InputAction::STOP_ATTACK)); \
         return true; \
     } \
@@ -499,7 +509,7 @@ impHandler0(setHome)
 
 impHandler0(changeMoveType)
 {
-    callYellowBar(changeMoveType);
+    callYellowBar2(changeMoveType);
 }
 
 impHandler0(changeAttackWeaponType)

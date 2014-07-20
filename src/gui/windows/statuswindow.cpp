@@ -24,6 +24,7 @@
 
 #include "configuration.h"
 #include "equipment.h"
+#include "gamemodifiers.h"
 #include "inventory.h"
 #include "item.h"
 #include "units.h"
@@ -641,7 +642,7 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
     if (!player_node || !viewport)
         return;
 
-    bar->setText(translateLetter2(player_node->getMoveTypeString())
+    bar->setText(translateLetter2(modifiers->getMoveTypeString())
         .append(translateLetter2(player_node->getCrazyMoveTypeString()))
         .append(translateLetter2(player_node->getMoveToTargetTypeString()))
         .append(translateLetter2(player_node->getFollowModeString()))

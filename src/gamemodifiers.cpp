@@ -21,10 +21,15 @@
 #include "gamemodifiers.h"
 
 #include "configuration.h"
+#include "settings.h"
+
+#include "being/localplayer.h"
 
 #include "gui/widgets/tabs/chattab.h"
 
 #include "listeners/updatestatuslistener.h"
+
+#include "utils/gettext.h"
 
 #include "debug.h"
 
@@ -39,12 +44,12 @@ GameModifiers::~GameModifiers()
 }
 
 void GameModifiers::changeMode(unsigned *restrict const var,
-                              const unsigned limit,
-                              const char *restrict const conf,
-                              std::string (GameModifiers::*const func)(),
-                              const unsigned def,
-                              const bool save,
-                              const bool forward)
+                               const unsigned limit,
+                               const char *restrict const conf,
+                               std::string (GameModifiers::*const func)(),
+                               const unsigned def,
+                               const bool save,
+                               const bool forward)
 {
     if (!var)
         return;
@@ -69,4 +74,44 @@ void GameModifiers::changeMode(unsigned *restrict const var,
     const std::string str = (this->*func)();
     if (str.size() > 4)
         debugMsg(str.substr(4));
+}
+
+const char *GameModifiers::getVarItem(const char *const *const arr,
+                                      const unsigned index,
+                                      const unsigned sz)
+{
+    if (index < sz)
+        return arr[index];
+    return arr[sz];
+}
+
+static const unsigned moveTypeSize = 5;
+
+void GameModifiers::changeMoveType(const bool forward)
+{
+    player_node->setMoveState(0);
+    changeMode(&settings.moveType, moveTypeSize, "invertMoveDirection",
+        &GameModifiers::getMoveTypeString, 0, false, forward);
+}
+
+static const char *const moveTypeStrings[] =
+{
+    // TRANSLATORS: move type in status bar
+    N_("(D) default moves"),
+    // TRANSLATORS: move type in status bar
+    N_("(I) invert moves"),
+    // TRANSLATORS: move type in status bar
+    N_("(c) moves with some crazy moves"),
+    // TRANSLATORS: move type in status bar
+    N_("(C) moves with crazy moves"),
+    // TRANSLATORS: move type in status bar
+    N_("(d) double normal + crazy"),
+    // TRANSLATORS: move type in status bar
+    N_("(?) unknown move")
+};
+
+std::string GameModifiers::getMoveTypeString()
+{
+    return gettext(getVarItem(&moveTypeStrings[0],
+        settings.moveType, moveTypeSize));
 }

@@ -30,6 +30,7 @@
 #include "guild.h"
 #include "item.h"
 #include "party.h"
+#include "settings.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
@@ -112,7 +113,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     AttributeListener(),
     StatListener(),
     mGMLevel(0),
-    mMoveType(0),
     mCrazyMoveType(config.getIntValue("crazyMoveType")),
     mCrazyMoveState(0),
     mAttackWeaponType(config.getIntValue("attackWeaponType")),
@@ -568,7 +568,7 @@ void LocalPlayer::setDestination(const int x, const int y)
     // Only send a new message to the server when destination changes
     if (x != mDest.x || y != mDest.y)
     {
-        if (mMoveType != 1)
+        if (settings.moveType != 1)
         {
             Net::getPlayerHandler()->setDestination(x, y, mDirection);
             Being::setDestination(x, y);
@@ -1237,8 +1237,6 @@ void LocalPlayer::moveToHome()
     }
 }
 
-static const unsigned moveTypeSize = 5;
-
 void LocalPlayer::changeMode(unsigned *restrict const var,
                              const unsigned limit,
                              const char *restrict const conf,
@@ -1270,35 +1268,6 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
     const std::string str = (this->*func)();
     if (str.size() > 4)
         debugMsg(str.substr(4));
-}
-
-void LocalPlayer::changeMoveType(const bool forward)
-{
-    mMoveState = 0;
-    changeMode(&mMoveType, moveTypeSize, "invertMoveDirection",
-        &LocalPlayer::getMoveTypeString, 0, false, forward);
-}
-
-static const char *const moveTypeStrings[] =
-{
-    // TRANSLATORS: move type in status bar
-    N_("(D) default moves"),
-    // TRANSLATORS: move type in status bar
-    N_("(I) invert moves"),
-    // TRANSLATORS: move type in status bar
-    N_("(c) moves with some crazy moves"),
-    // TRANSLATORS: move type in status bar
-    N_("(C) moves with crazy moves"),
-    // TRANSLATORS: move type in status bar
-    N_("(d) double normal + crazy"),
-    // TRANSLATORS: move type in status bar
-    N_("(?) unknown move")
-};
-
-std::string LocalPlayer::getMoveTypeString()
-{
-    return gettext(getVarItem(&moveTypeStrings[0],
-        mMoveType, moveTypeSize));
 }
 
 static const unsigned crazyMoveTypeSize = 11;
@@ -2671,18 +2640,17 @@ void LocalPlayer::specialMove(const unsigned char direction)
     if (direction && (mNavigateX || mNavigateY))
         navigateClean();
 
-    if (direction && (mMoveType >= 2
-        && mMoveType <= 4)
-        && !mIsServerBuggy)
+    if (direction && (settings.moveType >= 2
+        && settings.moveType <= 4))
     {
         if (mAction == BeingAction::MOVE)
             return;
 
         int max;
 
-        if (mMoveType == 2)
+        if (settings.moveType == 2)
             max = 5;
-        else if (mMoveType == 4)
+        else if (settings.moveType == 4)
             max = 1;
         else
             max = 3;
@@ -3724,7 +3692,7 @@ void LocalPlayer::checkNewName(Being *const being)
 
 void LocalPlayer::resetYellowBar()
 {
-    mMoveType = 0;
+    settings.moveType = 0;
     mCrazyMoveType = config.resetIntValue("crazyMoveType");
     mMoveToTargetType = config.resetIntValue("moveToTargetType");
     mFollowMode = config.resetIntValue("followMode");

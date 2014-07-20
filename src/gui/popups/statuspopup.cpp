@@ -23,6 +23,8 @@
 
 #include "gui/viewport.h"
 
+#include "gamemodifiers.h"
+
 #include "gui/popups/statuspopup.h"
 
 #include "gui/widgets/label.h"
@@ -135,10 +137,10 @@ void StatusPopup::setLabelText(const int num,
 
 void StatusPopup::updateLabels() const
 {
-    if (!player_node || !viewport)
+    if (!player_node || !viewport || !modifiers)
         return;
 
-    setLabelText(0, player_node->getMoveTypeString(),
+    setLabelText(0, modifiers->getMoveTypeString(),
         InputAction::INVERT_DIRECTION);
     setLabelText(1, player_node->getCrazyMoveTypeString(),
         InputAction::CHANGE_CRAZY_MOVES_TYPE);

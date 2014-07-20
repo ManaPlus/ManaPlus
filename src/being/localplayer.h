@@ -186,14 +186,6 @@ class LocalPlayer final : public Being,
         bool isPathSetByMouse() const A_WARN_UNUSED
         { return mPathSetByMouse; }
 
-        int getMoveType() const A_WARN_UNUSED
-        { return mMoveType; }
-
-        void setMoveType(const int n)
-        { mMoveType = n; }
-
-        void changeMoveType(const bool forward);
-
         int getAttackWeaponType() const A_WARN_UNUSED
         { return mAttackWeaponType; }
 
@@ -451,8 +443,6 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        std::string getMoveTypeString();
-
         std::string getCrazyMoveTypeString();
 
         std::string getMoveToTargetTypeString();
@@ -537,8 +527,6 @@ class LocalPlayer final : public Being,
 
         int mGMLevel;
 
-        // move type
-        unsigned int mMoveType;
         // crazy move type
         unsigned int mCrazyMoveType;
         // crazy move state

@@ -42,8 +42,14 @@ class GameModifiers final
                         const bool save,
                         const bool forward);
 
-    protected:
+        void changeMoveType(const bool forward);
 
+        std::string getMoveTypeString();
+
+    protected:
+        static const char *getVarItem(const char *const *const arr,
+                                      const unsigned index,
+                                      const unsigned sz) A_WARN_UNUSED;
 };
 
 extern GameModifiers *modifiers;
