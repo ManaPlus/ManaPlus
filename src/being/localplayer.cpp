@@ -2704,12 +2704,6 @@ void LocalPlayer::specialMove(const unsigned char direction)
     }
 }
 
-void LocalPlayer::debugMsg(const std::string &str)
-{
-    if (debugChatTab)
-        debugChatTab->chatLog(str);
-}
-
 void LocalPlayer::magicAttack() const
 {
     if (!chatWindow || !isAlive()

@@ -279,8 +279,6 @@ class LocalPlayer final : public Being,
 
         void moveToHome();
 
-        static void debugMsg(const std::string &str);
-
         bool isReachable(Being *const being,
                          const int maxCost = 0) A_WARN_UNUSED;
 

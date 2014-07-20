@@ -33,6 +33,10 @@
 
 class ScrollArea;
 
+#define debugMsg(str) \
+    if (debugChatTab) \
+        debugChatTab->chatLog(str);
+
 /**
  * A tab for the chat window. This is special to ease chat handling.
  */
