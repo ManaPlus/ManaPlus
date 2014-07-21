@@ -47,6 +47,8 @@ GameModifiers::GameModifiers()
     settings.magicAttackType = config.getIntValue("magicAttackType");
     settings.pvpAttackType = config.getIntValue("pvpAttackType");
     settings.imitationMode = config.getIntValue("imitationMode");
+    settings.disableGameModifiers = config.getBoolValue(
+        "disableGameModifiers");
 }
 
 GameModifiers::~GameModifiers()
@@ -434,4 +436,29 @@ std::string GameModifiers::getImitationModeString()
 {
     return gettext(getVarItem(&imitationModeStrings[0],
         settings.imitationMode, imitationModeSize));
+}
+
+const unsigned gameModifiersSize = 2;
+
+void GameModifiers::changeGameModifiers()
+{
+    settings.disableGameModifiers = !settings.disableGameModifiers;
+    config.setValue("disableGameModifiers", settings.disableGameModifiers);
+    UpdateStatusListener::distributeEvent();
+}
+
+static const char *const gameModifiersStrings[] =
+{
+    // TRANSLATORS: game modifiers state in status bar
+    N_("Game modifiers are enabled"),
+    // TRANSLATORS: game modifiers state in status bar
+    N_("Game modifiers are disabled"),
+    // TRANSLATORS: game modifiers state in status bar
+    N_("Game modifiers are unknown")
+};
+
+std::string GameModifiers::getGameModifiersString()
+{
+    return gettext(getVarItem(&gameModifiersStrings[0],
+        settings.disableGameModifiers, gameModifiersSize));
 }

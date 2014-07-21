@@ -198,14 +198,9 @@ class LocalPlayer final : public Being,
         void setCrazyMoveState(const unsigned int n)
         { mCrazyMoveState = n; }
 
-        int getDisableGameModifiers() const A_WARN_UNUSED
-        { return mDisableGameModifiers; }
-
         std::string getPingTime() const A_WARN_UNUSED;
 
         void tryPingRequest();
-
-        void switchGameModifiers();
 
         void magicAttack() const;
 
@@ -403,8 +398,6 @@ class LocalPlayer final : public Being,
 
         static std::string getCameraModeString();
 
-        std::string getGameModifiersString();
-
         int getLastAttackX() const override final
         { return mTarget ? mTarget->getTileX() : mLastAttackX; }
 
@@ -527,7 +520,6 @@ class LocalPlayer final : public Being,
         bool mEnableAdvert;
         bool mTradebot;
         bool mTargetOnlyReachable;
-        bool mDisableGameModifiers;
         bool mIsServerBuggy;
         bool mSyncPlayerMove;
         bool mDrawPath;

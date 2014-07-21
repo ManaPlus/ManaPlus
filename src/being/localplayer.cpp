@@ -160,7 +160,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mEnableAdvert(config.getBoolValue("enableAdvert")),
     mTradebot(config.getBoolValue("tradebot")),
     mTargetOnlyReachable(config.getBoolValue("targetOnlyReachable")),
-    mDisableGameModifiers(config.getBoolValue("disableGameModifiers")),
     mIsServerBuggy(serverConfig.getValueBool("enableBuggyServers", true)),
     mSyncPlayerMove(config.getBoolValue("syncPlayerMove")),
     mDrawPath(config.getBoolValue("drawPath")),
@@ -1356,36 +1355,6 @@ std::string LocalPlayer::getCameraModeString()
     return gettext(getVarItem(&cameraModeStrings[0],
         viewport->getCameraMode(), cameraModeSize));
 }
-
-const unsigned gameModifiersSize = 2;
-
-void LocalPlayer::switchGameModifiers()
-{
-    mDisableGameModifiers = !mDisableGameModifiers;
-    config.setValue("disableGameModifiers", mDisableGameModifiers);
-    UpdateStatusListener::distributeEvent();
-
-    const std::string str = getGameModifiersString();
-    if (str.size() > 4)
-        debugMsg(str.substr(4));
-}
-
-static const char *const gameModifiersStrings[] =
-{
-    // TRANSLATORS: game modifiers state in status bar
-    N_("Game modifiers are enabled"),
-    // TRANSLATORS: game modifiers state in status bar
-    N_("Game modifiers are disabled"),
-    // TRANSLATORS: game modifiers state in status bar
-    N_("Game modifiers are unknown")
-};
-
-std::string LocalPlayer::getGameModifiersString()
-{
-    return gettext(getVarItem(&gameModifiersStrings[0],
-        mDisableGameModifiers, gameModifiersSize));
-}
-
 
 void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
 {
@@ -3391,7 +3360,8 @@ void LocalPlayer::resetYellowBar()
     if (mMap)
         mMap->setDrawLayersFlags(0);
     settings.imitationMode = config.resetIntValue("imitationMode");
-    mDisableGameModifiers = config.resetBoolValue("disableGameModifiers");
+    settings.disableGameModifiers = config.resetBoolValue(
+        "disableGameModifiers");
 
     UpdateStatusListener::distributeEvent();
 }

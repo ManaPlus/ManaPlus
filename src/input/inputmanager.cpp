@@ -22,6 +22,7 @@
 
 #include "configuration.h"
 #include "game.h"
+#include "settings.h"
 #include "touchmanager.h"
 
 #include "input/inputactionmap.h"
@@ -674,7 +675,7 @@ void InputManager::updateConditionMask()
             mMask |= InputCondition::NOTALKING;
     }
 
-    if (!player_node || !player_node->getDisableGameModifiers())
+    if (!settings.disableGameModifiers)
         mMask |= InputCondition::EMODS;
 
     if (!isActionActive0(InputAction::STOP_ATTACK)

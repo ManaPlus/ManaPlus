@@ -66,7 +66,8 @@ class Settings final
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
-            mouseFocused(true)
+            mouseFocused(true),
+            disableGameModifiers(false)
         { }
 
         std::string updateHost;
@@ -104,6 +105,7 @@ class Settings final
         bool limitFps;
         bool inputFocused;
         bool mouseFocused;
+        bool disableGameModifiers;
 };
 
 extern Settings settings;

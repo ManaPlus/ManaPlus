@@ -26,6 +26,7 @@
 #include "game.h"
 #include "gamemodifiers.h"
 #include "itemshortcut.h"
+#include "settings.h"
 #include "soundmanager.h"
 
 #include "being/attributes.h"
@@ -99,7 +100,7 @@
     return false;
 
 #define callYellowBarCond(name) \
-    if (modifiers && !player_node->getDisableGameModifiers()) \
+    if (modifiers && !settings.disableGameModifiers) \
     { \
         modifiers->name(!inputManager.isActionActive( \
             InputAction::STOP_ATTACK)); \
@@ -562,7 +563,7 @@ impHandler0(changeGameModifier)
 {
     if (player_node)
     {
-        player_node->switchGameModifiers();
+        modifiers->changeGameModifiers();
         return true;
     }
     return false;

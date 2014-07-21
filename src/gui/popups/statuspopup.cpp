@@ -162,7 +162,7 @@ void StatusPopup::updateLabels() const
         InputAction::SWITCH_MAGIC_ATTACK);
     setLabelText(10, modifiers->getPvpAttackTypeString(),
         InputAction::SWITCH_PVP_ATTACK);
-    setLabelText(11, player_node->getGameModifiersString(),
+    setLabelText(11, modifiers->getGameModifiersString(),
         InputAction::DISABLE_GAME_MODIFIERS);
     setLabelText(12, modifiers->getImitationModeString(),
         InputAction::CHANGE_IMITATION_MODE);

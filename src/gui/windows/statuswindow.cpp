@@ -27,6 +27,7 @@
 #include "gamemodifiers.h"
 #include "inventory.h"
 #include "item.h"
+#include "settings.h"
 #include "units.h"
 
 #include "gui/windows/chatwindow.h"
@@ -639,7 +640,7 @@ std::string StatusWindow::translateLetter2(const std::string &letters)
 void StatusWindow::updateStatusBar(ProgressBar *const bar,
                                    const bool percent A_UNUSED) const
 {
-    if (!player_node || !viewport)
+    if (!player_node || !viewport || !modifiers)
         return;
 
     bar->setText(translateLetter2(modifiers->getMoveTypeString())
@@ -662,7 +663,7 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
         .append(translateLetter2(player_node->getAwayModeString())));
 
     bar->setProgress(50);
-    if (player_node->getDisableGameModifiers())
+    if (settings.disableGameModifiers)
         bar->setBackgroundColor(getThemeColor(Theme::STATUSBAR_ON));
     else
         bar->setBackgroundColor(getThemeColor(Theme::STATUSBAR_OFF));
