@@ -115,7 +115,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mGMLevel(0),
     mCrazyMoveState(0),
     mMoveState(0),
-    mMagicAttackType(config.getIntValue("magicAttackType")),
     mPvpAttackType(config.getIntValue("pvpAttackType")),
     mImitationMode(config.getIntValue("imitationMode")),
     mLastTargetX(0),
@@ -1287,36 +1286,6 @@ std::string LocalPlayer::getMapDrawTypeString()
         viewport->getMapDrawType(), debugPathSize));
 }
 
-const unsigned magicAttackSize = 5;
-
-void LocalPlayer::switchMagicAttack(const bool forward)
-{
-    changeMode(&mMagicAttackType, magicAttackSize, "magicAttackType",
-        &LocalPlayer::getMagicAttackString, 0, true, forward);
-}
-
-static const char *const magicAttackStrings[] =
-{
-    // TRANSLATORS: magic attack in status bar
-    N_("(f) use #flar for magic attack"),
-    // TRANSLATORS: magic attack in status bar
-    N_("(c) use #chiza for magic attack"),
-    // TRANSLATORS: magic attack in status bar
-    N_("(I) use #ingrav for magic attack"),
-    // TRANSLATORS: magic attack in status bar
-    N_("(F) use #frillyar for magic attack"),
-    // TRANSLATORS: magic attack in status bar
-    N_("(U) use #upmarmu for magic attack"),
-    // TRANSLATORS: magic attack in status bar
-    N_("(?) magic attack")
-};
-
-std::string LocalPlayer::getMagicAttackString()
-{
-    return gettext(getVarItem(&magicAttackStrings[0],
-        mMagicAttackType, magicAttackSize));
-}
-
 const unsigned pvpAttackSize = 4;
 
 void LocalPlayer::switchPvpAttack(const bool forward)
@@ -2445,7 +2414,7 @@ void LocalPlayer::magicAttack() const
         return;
     }
 
-    switch (mMagicAttackType)
+    switch (settings.magicAttackType)
     {
         // flar W00
         case 0:
@@ -3463,7 +3432,7 @@ void LocalPlayer::resetYellowBar()
     settings.followMode = config.resetIntValue("followMode");
     settings.attackWeaponType = config.resetIntValue("attackWeaponType");
     settings.attackType = config.resetIntValue("attackType");
-    mMagicAttackType = config.resetIntValue("magicAttackType");
+    settings.magicAttackType = config.resetIntValue("magicAttackType");
     mPvpAttackType = config.resetIntValue("pvpAttackType");
     settings.quickDropCounter = config.resetIntValue("quickDropCounter");
     settings.pickUpType = config.resetIntValue("pickUpType");

@@ -1746,7 +1746,7 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputType::KEYBOARD, SDLK_COMMA,
         InputType::UNKNOWN, InputAction::NO_VALUE,
         Input::GRP_DEFAULT,
-        &ActionManager::changeMagicAttack,
+        &ActionManager::changeMagicAttackType,
         InputAction::NO_VALUE, 50,
         InputCondition::GAME | InputCondition::VALIDSPEED
             | InputCondition::EMODS},

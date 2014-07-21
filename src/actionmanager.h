@@ -64,7 +64,7 @@ namespace ActionManager
     decHandler(changeFollowMode);
     decHandler(changeImitationMode);
     decHandler(magicAttack);
-    decHandler(changeMagicAttack);
+    decHandler(changeMagicAttackType);
     decHandler(changePvpMode);
     decHandler(changeMoveToTarget);
     decHandler(copyEquippedToOutfit);

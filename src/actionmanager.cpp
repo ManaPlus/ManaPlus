@@ -542,9 +542,9 @@ impHandler0(magicAttack)
     return false;
 }
 
-impHandler0(changeMagicAttack)
+impHandler0(changeMagicAttackType)
 {
-    callYellowBar(switchMagicAttack);
+    callYellowBar2(changeMagicAttackType);
 }
 
 impHandler0(changePvpMode)

@@ -44,6 +44,7 @@ GameModifiers::GameModifiers()
     settings.attackType = config.getIntValue("attackType");
     settings.quickDropCounter = config.getIntValue("quickDropCounter");
     settings.pickUpType = config.getIntValue("pickUpType");
+    settings.magicAttackType = config.getIntValue("magicAttackType");
 }
 
 GameModifiers::~GameModifiers()
@@ -349,4 +350,34 @@ std::string GameModifiers::getPickUpTypeString()
 {
     return gettext(getVarItem(&pickUpTypeStrings[0],
         settings.pickUpType, pickUpTypeSize));
+}
+
+const unsigned magicAttackSize = 5;
+
+void GameModifiers::changeMagicAttackType(const bool forward)
+{
+    changeMode(&settings.magicAttackType, magicAttackSize, "magicAttackType",
+        &GameModifiers::getMagicAttackString, 0, true, forward);
+}
+
+static const char *const magicAttackStrings[] =
+{
+    // TRANSLATORS: magic attack in status bar
+    N_("(f) use #flar for magic attack"),
+    // TRANSLATORS: magic attack in status bar
+    N_("(c) use #chiza for magic attack"),
+    // TRANSLATORS: magic attack in status bar
+    N_("(I) use #ingrav for magic attack"),
+    // TRANSLATORS: magic attack in status bar
+    N_("(F) use #frillyar for magic attack"),
+    // TRANSLATORS: magic attack in status bar
+    N_("(U) use #upmarmu for magic attack"),
+    // TRANSLATORS: magic attack in status bar
+    N_("(?) magic attack")
+};
+
+std::string GameModifiers::getMagicAttackString()
+{
+    return gettext(getVarItem(&magicAttackStrings[0],
+        settings.magicAttackType, magicAttackSize));
 }

@@ -158,7 +158,7 @@ void StatusPopup::updateLabels() const
         InputAction::CHANGE_PICKUP_TYPE);
     setLabelText(8, LocalPlayer::getMapDrawTypeString(),
         InputAction::PATHFIND);
-    setLabelText(9, player_node->getMagicAttackString(),
+    setLabelText(9, modifiers->getMagicAttackString(),
         InputAction::SWITCH_MAGIC_ATTACK);
     setLabelText(10, player_node->getPvpAttackString(),
         InputAction::SWITCH_PVP_ATTACK);

@@ -58,6 +58,8 @@ class GameModifiers final
 
         void changePickUpType(const bool forward);
 
+        void changeMagicAttackType(const bool forward);
+
         void setQuickDropCounter(const int n);
 
         std::string getMoveTypeString();
@@ -75,6 +77,8 @@ class GameModifiers final
         std::string getQuickDropCounterString();
 
         std::string getPickUpTypeString();
+
+        std::string getMagicAttackString();
 
     protected:
         static const char *getVarItem(const char *const *const arr,

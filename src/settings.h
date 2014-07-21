@@ -60,6 +60,7 @@ class Settings final
             attackType(0U),
             quickDropCounter(0U),
             pickUpType(0U),
+            magicAttackType(0U),
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
@@ -94,6 +95,7 @@ class Settings final
         unsigned int attackType;
         unsigned int quickDropCounter;
         unsigned int pickUpType;
+        unsigned int magicAttackType;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;
