@@ -42,6 +42,7 @@ GameModifiers::GameModifiers()
     settings.followMode = config.getIntValue("followMode");
     settings.attackWeaponType = config.getIntValue("attackWeaponType");
     settings.attackType = config.getIntValue("attackType");
+    settings.quickDropCounter = config.getIntValue("quickDropCounter");
 }
 
 GameModifiers::~GameModifiers()
@@ -281,4 +282,36 @@ std::string GameModifiers::getAttackTypeString()
 {
     return gettext(getVarItem(&attackTypeStrings[0],
         settings.attackType, attackTypeSize));
+}
+
+const unsigned quickDropCounterSize = 31;
+
+void GameModifiers::changeQuickDropCounter(const bool forward)
+{
+    changeMode(&settings.quickDropCounter, quickDropCounterSize,
+        "quickDropCounter",
+        &GameModifiers::getQuickDropCounterString, 1, true, forward);
+}
+
+std::string GameModifiers::getQuickDropCounterString()
+{
+    const unsigned int cnt = settings.quickDropCounter;
+    if (cnt > 9)
+    {
+        return strprintf("(%c) drop counter %u", static_cast<signed char>(
+            'a' + cnt - 10), cnt);
+    }
+    else
+    {
+        return strprintf("(%u) drop counter %u", cnt, cnt);
+    }
+}
+
+void GameModifiers::setQuickDropCounter(const int n)
+{
+    if (n < 1 || n >= static_cast<signed>(quickDropCounterSize))
+        return;
+    settings.quickDropCounter = n;
+    config.setValue("quickDropCounter", n);
+    UpdateStatusListener::distributeEvent();
 }

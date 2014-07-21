@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "inventory.h"
 #include "item.h"
+#include "settings.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -109,7 +110,7 @@ void DropShortcut::dropFirst() const
             ->findItem(itemId, itemColor);
         if (item && item->getQuantity())
         {
-            const int cnt = player_node->getQuickDropCounter();
+            const int cnt = settings.quickDropCounter;
             if (player_node->isServerBuggy())
             {
                 PlayerInfo::dropItem(item, cnt, true);
@@ -130,12 +131,12 @@ void DropShortcut::dropItems(const int cnt)
 
     if (player_node->isServerBuggy())
     {
-        dropItem(player_node->getQuickDropCounter());
+        dropItem(settings.quickDropCounter);
         return;
     }
 
     int n = 0;
-    const int sz = player_node->getQuickDropCounter();
+    const int sz = settings.quickDropCounter;
     for (int f = 0; f < 9; f++)
     {
         for (int i = 0; i < sz; i++)

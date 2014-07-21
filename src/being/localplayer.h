@@ -196,13 +196,6 @@ class LocalPlayer final : public Being,
         int getPickUpType() const A_WARN_UNUSED
         { return mPickUpType; }
 
-        int getQuickDropCounter() const A_WARN_UNUSED
-        { return mQuickDropCounter; }
-
-        void setQuickDropCounter(const int n);
-
-        void changeQuickDropCounter(const bool forward);
-
         unsigned int getMoveState() const A_WARN_UNUSED
         { return mMoveState; }
 
@@ -424,8 +417,6 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        std::string getQuickDropCounterString();
-
         std::string getPickUpTypeString();
 
         static std::string getMapDrawTypeString();
@@ -500,8 +491,6 @@ class LocalPlayer final : public Being,
 
         // crazy move state
         unsigned int mCrazyMoveState;
-        // quick drop counter
-        unsigned int mQuickDropCounter;
         // move state. used if mMoveType == 2
         unsigned int mMoveState;
         // pick up type 1x1, normal aka 2x1, forward aka 2x3, 3x3, 3x3 + 1

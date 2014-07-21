@@ -58,6 +58,7 @@ class Settings final
             followMode(0U),
             attackWeaponType(0U),
             attackType(0U),
+            quickDropCounter(0U),
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
@@ -90,6 +91,7 @@ class Settings final
         unsigned int followMode;
         unsigned int attackWeaponType;
         unsigned int attackType;
+        unsigned int quickDropCounter;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;

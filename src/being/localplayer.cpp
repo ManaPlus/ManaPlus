@@ -114,7 +114,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     StatListener(),
     mGMLevel(0),
     mCrazyMoveState(0),
-    mQuickDropCounter(config.getIntValue("quickDropCounter")),
     mMoveState(0),
     mPickUpType(config.getIntValue("pickUpType")),
     mMagicAttackType(config.getIntValue("magicAttackType")),
@@ -1258,37 +1257,6 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
     const std::string str = (this->*func)();
     if (str.size() > 4)
         debugMsg(str.substr(4));
-}
-
-const unsigned quickDropCounterSize = 31;
-
-void LocalPlayer::changeQuickDropCounter(const bool forward)
-{
-    changeMode(&mQuickDropCounter, quickDropCounterSize, "quickDropCounter",
-        &LocalPlayer::getQuickDropCounterString, 1, true, forward);
-}
-
-std::string LocalPlayer::getQuickDropCounterString()
-{
-    if (mQuickDropCounter > 9)
-    {
-        return strprintf("(%c) drop counter %u", static_cast<signed char>(
-            'a' + mQuickDropCounter - 10), mQuickDropCounter);
-    }
-    else
-    {
-        return strprintf("(%u) drop counter %u",
-            mQuickDropCounter, mQuickDropCounter);
-    }
-}
-
-void LocalPlayer::setQuickDropCounter(const int n)
-{
-    if (n < 1 || n >= static_cast<signed>(quickDropCounterSize))
-        return;
-    mQuickDropCounter = n;
-    config.setValue("quickDropCounter", mQuickDropCounter);
-    UpdateStatusListener::distributeEvent();
 }
 
 const unsigned pickUpTypeSize = 7;
@@ -3531,7 +3499,7 @@ void LocalPlayer::resetYellowBar()
     settings.attackType = config.resetIntValue("attackType");
     mMagicAttackType = config.resetIntValue("magicAttackType");
     mPvpAttackType = config.resetIntValue("pvpAttackType");
-    mQuickDropCounter = config.resetIntValue("quickDropCounter");
+    settings.quickDropCounter = config.resetIntValue("quickDropCounter");
     mPickUpType = config.resetIntValue("pickUpType");
     if (viewport)
     {

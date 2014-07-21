@@ -27,6 +27,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "game.h"
+#include "gamemodifiers.h"
 #include "graphicsmanager.h"
 #include "guildmanager.h"
 #include "main.h"
@@ -1161,8 +1162,8 @@ impHandler2(dumpTests)
 
 impHandler1(setDrop)
 {
-    if (player_node)
-        player_node->setQuickDropCounter(atoi(args.c_str()));
+    if (modifiers)
+        modifiers->setQuickDropCounter(atoi(args.c_str()));
 }
 
 impHandler0(error)

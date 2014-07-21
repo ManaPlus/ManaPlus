@@ -652,7 +652,7 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
         .append(translateLetter2(player_node->getMagicAttackString()))
         .append(translateLetter2(player_node->getPvpAttackString()))
         .append(" ").append(translateLetter2(
-        player_node->getQuickDropCounterString()))
+        modifiers->getQuickDropCounterString()))
         .append(translateLetter2(player_node->getPickUpTypeString()))
         .append(" ").append(translateLetter2(
         LocalPlayer::getMapDrawTypeString()))
