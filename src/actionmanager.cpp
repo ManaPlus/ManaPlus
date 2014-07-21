@@ -554,7 +554,7 @@ impHandler0(changePvpMode)
 
 impHandler0(changeMoveToTarget)
 {
-    callYellowBar(changeMoveToTargetType);
+    callYellowBar2(changeMoveToTargetType);
 }
 
 impHandler0(copyEquippedToOutfit)

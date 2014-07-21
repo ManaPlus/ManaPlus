@@ -38,6 +38,7 @@ GameModifiers *modifiers = nullptr;
 GameModifiers::GameModifiers()
 {
     settings.crazyMoveType = config.getIntValue("crazyMoveType");
+    settings.moveToTargetType = config.getIntValue("moveToTargetType");
 }
 
 GameModifiers::~GameModifiers()
@@ -145,4 +146,51 @@ std::string GameModifiers::getCrazyMoveTypeString()
         // TRANSLATORS: crazy move type in status bar
         return _("(?) crazy move");
     }
+}
+
+static const unsigned moveToTargetTypeSize = 13;
+
+void GameModifiers::changeMoveToTargetType(const bool forward)
+{
+    changeMode(&settings.moveToTargetType, moveToTargetTypeSize,
+        "moveToTargetType",
+        &GameModifiers::getMoveToTargetTypeString, 0, true, forward);
+}
+
+static const char *const moveToTargetTypeStrings[] =
+{
+    // TRANSLATORS: move to target type in status bar
+    N_("(0) default moves to target"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(1) moves to target in distance 1"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(2) moves to target in distance 2"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(3) moves to target in distance 3"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(4) moves to target in distance 4"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(5) moves to target in distance 5"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(6) moves to target in distance 6"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(7) moves to target in distance 7"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(8) moves to target in distance 8"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(9) moves to target in distance 9"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(A) moves to target in attack range"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(a) archer attack range"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(B) moves to target in attack range - 1"),
+    // TRANSLATORS: move to target type in status bar
+    N_("(?) move to target")
+};
+
+std::string GameModifiers::getMoveToTargetTypeString()
+{
+    return gettext(getVarItem(&moveToTargetTypeStrings[0],
+        settings.moveToTargetType, moveToTargetTypeSize));
 }

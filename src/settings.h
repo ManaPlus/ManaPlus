@@ -54,6 +54,7 @@ class Settings final
             textureSize(1024),
             moveType(0U),
             crazyMoveType(0U),
+            moveToTargetType(0U),
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
@@ -82,6 +83,7 @@ class Settings final
         unsigned int textureSize;
         unsigned int moveType;
         unsigned int crazyMoveType;
+        unsigned int moveToTargetType;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;

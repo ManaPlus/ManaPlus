@@ -240,17 +240,12 @@ class LocalPlayer final : public Being,
         int getPvpAttackType() const A_WARN_UNUSED
         { return mPvpAttackType; }
 
-        int getMoveToTargetType() const A_WARN_UNUSED
-        { return mMoveToTargetType; }
-
         int getDisableGameModifiers() const A_WARN_UNUSED
         { return mDisableGameModifiers; }
 
         std::string getPingTime() const A_WARN_UNUSED;
 
         void tryPingRequest();
-
-        void changeMoveToTargetType(const bool forward);
 
         void switchGameModifiers();
 
@@ -444,8 +439,6 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        std::string getMoveToTargetTypeString();
-
         std::string getFollowModeString();
 
         std::string getAttackWeaponTypeString();
@@ -540,8 +533,6 @@ class LocalPlayer final : public Being,
         unsigned int mMagicAttackType;
         // pvp attack type
         unsigned int mPvpAttackType;
-        // type how move to target
-        unsigned int mMoveToTargetType;
         unsigned int mAttackType;
         unsigned int mFollowMode;
         unsigned int mImitationMode;

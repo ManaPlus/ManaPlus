@@ -120,7 +120,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mPickUpType(config.getIntValue("pickUpType")),
     mMagicAttackType(config.getIntValue("magicAttackType")),
     mPvpAttackType(config.getIntValue("pvpAttackType")),
-    mMoveToTargetType(config.getIntValue("moveToTargetType")),
     mAttackType(config.getIntValue("attackType")),
     mFollowMode(config.getIntValue("followMode")),
     mImitationMode(config.getIntValue("imitationMode")),
@@ -1128,14 +1127,10 @@ void LocalPlayer::moveToTarget(int dist)
 
     if (dist == -1)
     {
-        dist = mMoveToTargetType;
-        if (mMoveToTargetType == 0)
+        dist = settings.moveToTargetType;
+        if (dist != 0)
         {
-            dist = 0;
-        }
-        else
-        {
-            switch (mMoveToTargetType)
+            switch (dist)
             {
                 case 10:
                     dist = mAttackRange;
@@ -1150,7 +1145,6 @@ void LocalPlayer::moveToTarget(int dist)
                         dist = 2;
                     break;
                 default:
-                    dist = mMoveToTargetType;
                     break;
             }
         }
@@ -1267,52 +1261,6 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
     const std::string str = (this->*func)();
     if (str.size() > 4)
         debugMsg(str.substr(4));
-}
-
-static const unsigned moveToTargetTypeSize = 13;
-
-void LocalPlayer::changeMoveToTargetType(const bool forward)
-{
-    changeMode(&mMoveToTargetType, moveToTargetTypeSize, "moveToTargetType",
-        &LocalPlayer::getMoveToTargetTypeString, 0, true, forward);
-}
-
-static const char *const moveToTargetTypeStrings[] =
-{
-    // TRANSLATORS: move to target type in status bar
-    N_("(0) default moves to target"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(1) moves to target in distance 1"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(2) moves to target in distance 2"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(3) moves to target in distance 3"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(4) moves to target in distance 4"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(5) moves to target in distance 5"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(6) moves to target in distance 6"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(7) moves to target in distance 7"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(8) moves to target in distance 8"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(9) moves to target in distance 9"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(A) moves to target in attack range"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(a) archer attack range"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(B) moves to target in attack range - 1"),
-    // TRANSLATORS: move to target type in status bar
-    N_("(?) move to target")
-};
-
-std::string LocalPlayer::getMoveToTargetTypeString()
-{
-    return gettext(getVarItem(&moveToTargetTypeStrings[0],
-        mMoveToTargetType, moveToTargetTypeSize));
 }
 
 static const unsigned followModeSize = 4;
@@ -3567,7 +3515,7 @@ void LocalPlayer::fixAttackTarget()
     if (!mMap || !mTarget)
         return;
 
-    if (mMoveToTargetType == 7 || !mAttackType
+    if (settings.moveToTargetType == 7 || !mAttackType
         || !config.getBoolValue("autofixPos"))
     {
         return;
@@ -3664,7 +3612,7 @@ void LocalPlayer::resetYellowBar()
 {
     settings.moveType = 0;
     settings.crazyMoveType = config.resetIntValue("crazyMoveType");
-    mMoveToTargetType = config.resetIntValue("moveToTargetType");
+    settings.moveToTargetType = config.resetIntValue("moveToTargetType");
     mFollowMode = config.resetIntValue("followMode");
     mAttackWeaponType = config.resetIntValue("attackWeaponType");
     mAttackType = config.resetIntValue("attackType");

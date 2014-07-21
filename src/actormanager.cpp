@@ -23,6 +23,7 @@
 #include "actormanager.h"
 
 #include "configuration.h"
+#include "settings.h"
 #include "main.h"
 
 #include "being/attributes.h"
@@ -877,7 +878,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
     const int attackRange = player_node->getAttackRange();
 
     bool specialDistance = false;
-    if (player_node->getMoveToTargetType() == 7
+    if (settings.moveToTargetType == 7
         && player_node->getAttackRange() > 2)
     {
         specialDistance = true;

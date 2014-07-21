@@ -46,9 +46,13 @@ class GameModifiers final
 
         void changeCrazyMoveType(const bool forward);
 
+        void changeMoveToTargetType(const bool forward);
+
         std::string getMoveTypeString();
 
         std::string getCrazyMoveTypeString();
+
+        std::string getMoveToTargetTypeString();
 
     protected:
         static const char *getVarItem(const char *const *const arr,
