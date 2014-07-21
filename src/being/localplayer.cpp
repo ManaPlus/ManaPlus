@@ -115,7 +115,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mGMLevel(0),
     mCrazyMoveState(0),
     mMoveState(0),
-    mPvpAttackType(config.getIntValue("pvpAttackType")),
     mImitationMode(config.getIntValue("imitationMode")),
     mLastTargetX(0),
     mLastTargetY(0),
@@ -1284,34 +1283,6 @@ std::string LocalPlayer::getMapDrawTypeString()
 {
     return gettext(getVarItem(&debugPathStrings[0],
         viewport->getMapDrawType(), debugPathSize));
-}
-
-const unsigned pvpAttackSize = 4;
-
-void LocalPlayer::switchPvpAttack(const bool forward)
-{
-    changeMode(&mPvpAttackType, pvpAttackSize, "pvpAttackType",
-        &LocalPlayer::getPvpAttackString, 0, true, forward);
-}
-
-static const char *const pvpAttackStrings[] =
-{
-    // TRANSLATORS: player attack type in status bar
-    N_("(a) attack all players"),
-    // TRANSLATORS: player attack type in status bar
-    N_("(f) attack all except friends"),
-    // TRANSLATORS: player attack type in status bar
-    N_("(b) attack bad relations"),
-    // TRANSLATORS: player attack type in status bar
-    N_("(d) don't attack players"),
-    // TRANSLATORS: player attack type in status bar
-    N_("(?) pvp attack")
-};
-
-std::string LocalPlayer::getPvpAttackString()
-{
-    return gettext(getVarItem(&pvpAttackStrings[0],
-        mPvpAttackType, pvpAttackSize));
 }
 
 const unsigned imitationModeSize = 2;
@@ -3433,7 +3404,7 @@ void LocalPlayer::resetYellowBar()
     settings.attackWeaponType = config.resetIntValue("attackWeaponType");
     settings.attackType = config.resetIntValue("attackType");
     settings.magicAttackType = config.resetIntValue("magicAttackType");
-    mPvpAttackType = config.resetIntValue("pvpAttackType");
+    settings.pvpAttackType = config.resetIntValue("pvpAttackType");
     settings.quickDropCounter = config.resetIntValue("quickDropCounter");
     settings.pickUpType = config.resetIntValue("pickUpType");
     if (viewport)
@@ -3478,7 +3449,7 @@ bool LocalPlayer::checAttackPermissions(const Being *const target) const
     if (!target)
         return false;
 
-    switch (mPvpAttackType)
+    switch (settings.pvpAttackType)
     {
         case 0:
             return true;

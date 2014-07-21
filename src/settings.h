@@ -61,6 +61,7 @@ class Settings final
             quickDropCounter(0U),
             pickUpType(0U),
             magicAttackType(0U),
+            pvpAttackType(0U),
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
@@ -96,6 +97,7 @@ class Settings final
         unsigned int quickDropCounter;
         unsigned int pickUpType;
         unsigned int magicAttackType;
+        unsigned int pvpAttackType;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;

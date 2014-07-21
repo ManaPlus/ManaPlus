@@ -160,7 +160,7 @@ void StatusPopup::updateLabels() const
         InputAction::PATHFIND);
     setLabelText(9, modifiers->getMagicAttackString(),
         InputAction::SWITCH_MAGIC_ATTACK);
-    setLabelText(10, player_node->getPvpAttackString(),
+    setLabelText(10, modifiers->getPvpAttackTypeString(),
         InputAction::SWITCH_PVP_ATTACK);
     setLabelText(11, player_node->getGameModifiersString(),
         InputAction::DISABLE_GAME_MODIFIERS);

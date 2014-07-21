@@ -549,7 +549,7 @@ impHandler0(changeMagicAttackType)
 
 impHandler0(changePvpMode)
 {
-    callYellowBar(switchPvpAttack);
+    callYellowBar2(changePvpAttackType);
 }
 
 impHandler0(changeMoveToTarget)

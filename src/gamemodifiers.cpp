@@ -45,6 +45,7 @@ GameModifiers::GameModifiers()
     settings.quickDropCounter = config.getIntValue("quickDropCounter");
     settings.pickUpType = config.getIntValue("pickUpType");
     settings.magicAttackType = config.getIntValue("magicAttackType");
+    settings.pvpAttackType = config.getIntValue("pvpAttackType");
 }
 
 GameModifiers::~GameModifiers()
@@ -380,4 +381,32 @@ std::string GameModifiers::getMagicAttackString()
 {
     return gettext(getVarItem(&magicAttackStrings[0],
         settings.magicAttackType, magicAttackSize));
+}
+
+const unsigned pvpAttackTypeSize = 4;
+
+void GameModifiers::changePvpAttackType(const bool forward)
+{
+    changeMode(&settings.pvpAttackType, pvpAttackTypeSize, "pvpAttackType",
+        &GameModifiers::getPvpAttackTypeString, 0, true, forward);
+}
+
+static const char *const pvpAttackTypeStrings[] =
+{
+    // TRANSLATORS: player attack type in status bar
+    N_("(a) attack all players"),
+    // TRANSLATORS: player attack type in status bar
+    N_("(f) attack all except friends"),
+    // TRANSLATORS: player attack type in status bar
+    N_("(b) attack bad relations"),
+    // TRANSLATORS: player attack type in status bar
+    N_("(d) don't attack players"),
+    // TRANSLATORS: player attack type in status bar
+    N_("(?) pvp attack")
+};
+
+std::string GameModifiers::getPvpAttackTypeString()
+{
+    return gettext(getVarItem(&pvpAttackTypeStrings[0],
+        settings.pvpAttackType, pvpAttackTypeSize));
 }

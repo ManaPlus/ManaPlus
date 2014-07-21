@@ -203,11 +203,6 @@ class LocalPlayer final : public Being,
         void setCrazyMoveState(const unsigned int n)
         { mCrazyMoveState = n; }
 
-        void switchPvpAttack(const bool forward);
-
-        int getPvpAttackType() const A_WARN_UNUSED
-        { return mPvpAttackType; }
-
         int getDisableGameModifiers() const A_WARN_UNUSED
         { return mDisableGameModifiers; }
 
@@ -409,8 +404,6 @@ class LocalPlayer final : public Being,
 
         static std::string getMapDrawTypeString();
 
-        std::string getPvpAttackString();
-
         std::string getImitationModeString();
 
         std::string getAwayModeString();
@@ -479,8 +472,6 @@ class LocalPlayer final : public Being,
         unsigned int mCrazyMoveState;
         // move state. used if mMoveType == 2
         unsigned int mMoveState;
-        // pvp attack type
-        unsigned int mPvpAttackType;
         unsigned int mImitationMode;
 
         int mLastTargetX;
