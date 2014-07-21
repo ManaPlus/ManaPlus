@@ -90,15 +90,6 @@
 #define impHandler0(name) bool name(const InputEvent &event A_UNUSED)
 
 #define callYellowBar(name) \
-    if (player_node) \
-    { \
-        player_node->name(!inputManager.isActionActive( \
-            InputAction::STOP_ATTACK)); \
-        return true; \
-    } \
-    return false;
-
-#define callYellowBar2(name) \
     if (modifiers) \
     { \
         modifiers->name(!inputManager.isActionActive( \
@@ -465,12 +456,12 @@ impHandler0(itenplz)
 
 impHandler0(changeCrazyMove)
 {
-    callYellowBar2(changeCrazyMoveType);
+    callYellowBar(changeCrazyMoveType);
 }
 
 impHandler0(changePickupType)
 {
-    callYellowBar2(changePickUpType);
+    callYellowBar(changePickUpType);
 }
 
 impHandler0(moveToTarget)
@@ -509,27 +500,27 @@ impHandler0(setHome)
 
 impHandler0(changeMoveType)
 {
-    callYellowBar2(changeMoveType);
+    callYellowBar(changeMoveType);
 }
 
 impHandler0(changeAttackWeaponType)
 {
-    callYellowBar2(changeAttackWeaponType);
+    callYellowBar(changeAttackWeaponType);
 }
 
 impHandler0(changeAttackType)
 {
-    callYellowBar2(changeAttackType);
+    callYellowBar(changeAttackType);
 }
 
 impHandler0(changeFollowMode)
 {
-    callYellowBar2(changeFollowMode);
+    callYellowBar(changeFollowMode);
 }
 
 impHandler0(changeImitationMode)
 {
-    callYellowBar2(changeImitationMode);
+    callYellowBar(changeImitationMode);
 }
 
 impHandler0(magicAttack)
@@ -544,17 +535,17 @@ impHandler0(magicAttack)
 
 impHandler0(changeMagicAttackType)
 {
-    callYellowBar2(changeMagicAttackType);
+    callYellowBar(changeMagicAttackType);
 }
 
 impHandler0(changePvpMode)
 {
-    callYellowBar2(changePvpAttackType);
+    callYellowBar(changePvpAttackType);
 }
 
 impHandler0(changeMoveToTarget)
 {
-    callYellowBar2(changeMoveToTargetType);
+    callYellowBar(changeMoveToTargetType);
 }
 
 impHandler0(copyEquippedToOutfit)
