@@ -470,7 +470,7 @@ impHandler0(changeCrazyMove)
 
 impHandler0(changePickupType)
 {
-    callYellowBar(changePickUpType);
+    callYellowBar2(changePickUpType);
 }
 
 impHandler0(moveToTarget)

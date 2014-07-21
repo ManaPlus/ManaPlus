@@ -56,6 +56,8 @@ class GameModifiers final
 
         void changeQuickDropCounter(const bool forward);
 
+        void changePickUpType(const bool forward);
+
         void setQuickDropCounter(const int n);
 
         std::string getMoveTypeString();
@@ -71,6 +73,8 @@ class GameModifiers final
         std::string getAttackTypeString();
 
         std::string getQuickDropCounterString();
+
+        std::string getPickUpTypeString();
 
     protected:
         static const char *getVarItem(const char *const *const arr,

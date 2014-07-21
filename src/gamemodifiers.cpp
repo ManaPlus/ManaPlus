@@ -43,6 +43,7 @@ GameModifiers::GameModifiers()
     settings.attackWeaponType = config.getIntValue("attackWeaponType");
     settings.attackType = config.getIntValue("attackType");
     settings.quickDropCounter = config.getIntValue("quickDropCounter");
+    settings.pickUpType = config.getIntValue("pickUpType");
 }
 
 GameModifiers::~GameModifiers()
@@ -314,4 +315,38 @@ void GameModifiers::setQuickDropCounter(const int n)
     settings.quickDropCounter = n;
     config.setValue("quickDropCounter", n);
     UpdateStatusListener::distributeEvent();
+}
+
+const unsigned pickUpTypeSize = 7;
+
+void GameModifiers::changePickUpType(const bool forward)
+{
+    changeMode(&settings.pickUpType, pickUpTypeSize, "pickUpType",
+        &GameModifiers::getPickUpTypeString, 0, true, forward);
+}
+
+static const char *const pickUpTypeStrings[] =
+{
+    // TRANSLATORS: pickup size in status bar
+    N_("(S) small pick up 1x1 cells"),
+    // TRANSLATORS: pickup size in status bar
+    N_("(D) default pick up 2x1 cells"),
+    // TRANSLATORS: pickup size in status bar
+    N_("(F) forward pick up 2x3 cells"),
+    // TRANSLATORS: pickup size in status bar
+    N_("(3) pick up 3x3 cells"),
+    // TRANSLATORS: pickup size in status bar
+    N_("(g) go and pick up in distance 4"),
+    // TRANSLATORS: pickup size in status bar
+    N_("(G) go and pick up in distance 8"),
+    // TRANSLATORS: pickup size in status bar
+    N_("(A) go and pick up in max distance"),
+    // TRANSLATORS: pickup size in status bar
+    N_("(?) pick up")
+};
+
+std::string GameModifiers::getPickUpTypeString()
+{
+    return gettext(getVarItem(&pickUpTypeStrings[0],
+        settings.pickUpType, pickUpTypeSize));
 }

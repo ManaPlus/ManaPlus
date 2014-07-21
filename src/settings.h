@@ -59,6 +59,7 @@ class Settings final
             attackWeaponType(0U),
             attackType(0U),
             quickDropCounter(0U),
+            pickUpType(0U),
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
@@ -92,6 +93,7 @@ class Settings final
         unsigned int attackWeaponType;
         unsigned int attackType;
         unsigned int quickDropCounter;
+        unsigned int pickUpType;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;

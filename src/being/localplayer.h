@@ -191,11 +191,6 @@ class LocalPlayer final : public Being,
 
         void changeImitationMode(const bool forward);
 
-        void changePickUpType(const bool forward);
-
-        int getPickUpType() const A_WARN_UNUSED
-        { return mPickUpType; }
-
         unsigned int getMoveState() const A_WARN_UNUSED
         { return mMoveState; }
 
@@ -417,8 +412,6 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        std::string getPickUpTypeString();
-
         static std::string getMapDrawTypeString();
 
         std::string getMagicAttackString();
@@ -493,8 +486,6 @@ class LocalPlayer final : public Being,
         unsigned int mCrazyMoveState;
         // move state. used if mMoveType == 2
         unsigned int mMoveState;
-        // pick up type 1x1, normal aka 2x1, forward aka 2x3, 3x3, 3x3 + 1
-        unsigned int mPickUpType;
         // magic attack type
         unsigned int mMagicAttackType;
         // pvp attack type

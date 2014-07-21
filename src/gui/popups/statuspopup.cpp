@@ -154,7 +154,7 @@ void StatusPopup::updateLabels() const
         InputAction::CHANGE_ATTACK_TYPE);
     setLabelText(6, modifiers->getQuickDropCounterString(),
         InputAction::SWITCH_QUICK_DROP);
-    setLabelText(7, player_node->getPickUpTypeString(),
+    setLabelText(7, modifiers->getPickUpTypeString(),
         InputAction::CHANGE_PICKUP_TYPE);
     setLabelText(8, LocalPlayer::getMapDrawTypeString(),
         InputAction::PATHFIND);

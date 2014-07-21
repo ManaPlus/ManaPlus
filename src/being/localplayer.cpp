@@ -115,7 +115,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mGMLevel(0),
     mCrazyMoveState(0),
     mMoveState(0),
-    mPickUpType(config.getIntValue("pickUpType")),
     mMagicAttackType(config.getIntValue("magicAttackType")),
     mPvpAttackType(config.getIntValue("pvpAttackType")),
     mImitationMode(config.getIntValue("imitationMode")),
@@ -478,7 +477,8 @@ bool LocalPlayer::pickUp(FloorItem *const item)
     const int dy = item->getTileY() - mY;
     int dist = 6;
 
-    if (mPickUpType >= 4 && mPickUpType <= 6)
+    const unsigned int pickUpType = settings.pickUpType;
+    if (pickUpType >= 4 && pickUpType <= 6)
         dist = 4;
 
     if (dx * dx + dy * dy < dist)
@@ -489,7 +489,7 @@ bool LocalPlayer::pickUp(FloorItem *const item)
             mPickUpTarget = nullptr;
         }
     }
-    else if (mPickUpType >= 4 && mPickUpType <= 6)
+    else if (pickUpType >= 4 && pickUpType <= 6)
     {
         const Vector &playerPos = getPosition();
         const Path debugPath = mMap->findPath(
@@ -1257,40 +1257,6 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
     const std::string str = (this->*func)();
     if (str.size() > 4)
         debugMsg(str.substr(4));
-}
-
-const unsigned pickUpTypeSize = 7;
-
-void LocalPlayer::changePickUpType(const bool forward)
-{
-    changeMode(&mPickUpType, pickUpTypeSize, "pickUpType",
-        &LocalPlayer::getPickUpTypeString, 0, true, forward);
-}
-
-static const char *const pickUpTypeStrings[] =
-{
-    // TRANSLATORS: pickup size in status bar
-    N_("(S) small pick up 1x1 cells"),
-    // TRANSLATORS: pickup size in status bar
-    N_("(D) default pick up 2x1 cells"),
-    // TRANSLATORS: pickup size in status bar
-    N_("(F) forward pick up 2x3 cells"),
-    // TRANSLATORS: pickup size in status bar
-    N_("(3) pick up 3x3 cells"),
-    // TRANSLATORS: pickup size in status bar
-    N_("(g) go and pick up in distance 4"),
-    // TRANSLATORS: pickup size in status bar
-    N_("(G) go and pick up in distance 8"),
-    // TRANSLATORS: pickup size in status bar
-    N_("(A) go and pick up in max distance"),
-    // TRANSLATORS: pickup size in status bar
-    N_("(?) pick up")
-};
-
-std::string LocalPlayer::getPickUpTypeString()
-{
-    return gettext(getVarItem(&pickUpTypeStrings[0],
-        mPickUpType, pickUpTypeSize));
 }
 
 const unsigned debugPathSize = 7;
@@ -2334,7 +2300,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
         status = pickUp(item);
 
     if (pickUpType == 0)
-        pickUpType = mPickUpType;
+        pickUpType = settings.pickUpType;
 
     if (pickUpType == 0)
         return status;
@@ -3500,7 +3466,7 @@ void LocalPlayer::resetYellowBar()
     mMagicAttackType = config.resetIntValue("magicAttackType");
     mPvpAttackType = config.resetIntValue("pvpAttackType");
     settings.quickDropCounter = config.resetIntValue("quickDropCounter");
-    mPickUpType = config.resetIntValue("pickUpType");
+    settings.pickUpType = config.resetIntValue("pickUpType");
     if (viewport)
     {
         viewport->setMapDrawType(0);
