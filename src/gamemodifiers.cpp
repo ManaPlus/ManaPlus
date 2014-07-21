@@ -40,6 +40,7 @@ GameModifiers::GameModifiers()
     settings.crazyMoveType = config.getIntValue("crazyMoveType");
     settings.moveToTargetType = config.getIntValue("moveToTargetType");
     settings.followMode = config.getIntValue("followMode");
+    settings.attackWeaponType = config.getIntValue("attackWeaponType");
 }
 
 GameModifiers::~GameModifiers()
@@ -222,4 +223,33 @@ std::string GameModifiers::getFollowModeString()
 {
     return gettext(getVarItem(&followModeStrings[0],
         settings.followMode, followModeSize));
+}
+
+const unsigned attackWeaponTypeSize = 4;
+
+void GameModifiers::changeAttackWeaponType(const bool forward)
+{
+    changeMode(&settings.attackWeaponType, attackWeaponTypeSize,
+        "attackWeaponType",
+        &GameModifiers::getAttackWeaponTypeString, 1, true, forward);
+}
+
+static const char *const attackWeaponTypeStrings[] =
+{
+    // TRANSLATORS: switch attack type in status bar
+    N_("(?) attack"),
+    // TRANSLATORS: switch attack type in status bar
+    N_("(D) default attack"),
+    // TRANSLATORS: switch attack type in status bar
+    N_("(s) switch attack without shield"),
+    // TRANSLATORS: switch attack type in status bar
+    N_("(S) switch attack with shield"),
+    // TRANSLATORS: switch attack type in status bar
+    N_("(?) attack")
+};
+
+std::string GameModifiers::getAttackWeaponTypeString()
+{
+    return gettext(getVarItem(&attackWeaponTypeStrings[0],
+        settings.attackWeaponType, attackWeaponTypeSize));
 }

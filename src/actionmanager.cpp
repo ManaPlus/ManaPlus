@@ -514,7 +514,7 @@ impHandler0(changeMoveType)
 
 impHandler0(changeAttackWeaponType)
 {
-    callYellowBar(changeAttackWeaponType);
+    callYellowBar2(changeAttackWeaponType);
 }
 
 impHandler0(changeAttackType)

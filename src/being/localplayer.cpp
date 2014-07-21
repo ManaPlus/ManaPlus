@@ -114,7 +114,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     StatListener(),
     mGMLevel(0),
     mCrazyMoveState(0),
-    mAttackWeaponType(config.getIntValue("attackWeaponType")),
     mQuickDropCounter(config.getIntValue("quickDropCounter")),
     mMoveState(0),
     mPickUpType(config.getIntValue("pickUpType")),
@@ -1262,34 +1261,6 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
         debugMsg(str.substr(4));
 }
 
-const unsigned attackWeaponTypeSize = 4;
-
-void LocalPlayer::changeAttackWeaponType(const bool forward)
-{
-    changeMode(&mAttackWeaponType, attackWeaponTypeSize, "attackWeaponType",
-        &LocalPlayer::getAttackWeaponTypeString, 1, true, forward);
-}
-
-static const char *const attackWeaponTypeStrings[] =
-{
-    // TRANSLATORS: switch attack type in status bar
-    N_("(?) attack"),
-    // TRANSLATORS: switch attack type in status bar
-    N_("(D) default attack"),
-    // TRANSLATORS: switch attack type in status bar
-    N_("(s) switch attack without shield"),
-    // TRANSLATORS: switch attack type in status bar
-    N_("(S) switch attack with shield"),
-    // TRANSLATORS: switch attack type in status bar
-    N_("(?) attack")
-};
-
-std::string LocalPlayer::getAttackWeaponTypeString()
-{
-    return gettext(getVarItem(&attackWeaponTypeStrings[0],
-        mAttackWeaponType, attackWeaponTypeSize));
-}
-
 const unsigned attackTypeSize = 4;
 
 void LocalPlayer::changeAttackType(const bool forward)
@@ -1598,7 +1569,7 @@ std::string LocalPlayer::getGameModifiersString()
 
 void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
 {
-    if (mAttackWeaponType == 1 || !target || !PlayerInfo::getInventory())
+    if (settings.attackWeaponType == 1 || !target || !PlayerInfo::getInventory())
         return;
 
     bool allowSword = false;
@@ -1637,7 +1608,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
             PlayerInfo::equipItem(item, true);
 
         // if need equip shield too
-        if (mAttackWeaponType == 3)
+        if (settings.attackWeaponType == 3)
         {
             // searching shield
             const WeaponsInfos &shields = WeaponsDB::getShields();
@@ -3585,7 +3556,7 @@ void LocalPlayer::resetYellowBar()
     settings.crazyMoveType = config.resetIntValue("crazyMoveType");
     settings.moveToTargetType = config.resetIntValue("moveToTargetType");
     settings.followMode = config.resetIntValue("followMode");
-    mAttackWeaponType = config.resetIntValue("attackWeaponType");
+    settings.attackWeaponType = config.resetIntValue("attackWeaponType");
     mAttackType = config.resetIntValue("attackType");
     mMagicAttackType = config.resetIntValue("magicAttackType");
     mPvpAttackType = config.resetIntValue("pvpAttackType");

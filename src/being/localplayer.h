@@ -186,16 +186,11 @@ class LocalPlayer final : public Being,
         bool isPathSetByMouse() const A_WARN_UNUSED
         { return mPathSetByMouse; }
 
-        int getAttackWeaponType() const A_WARN_UNUSED
-        { return mAttackWeaponType; }
-
         int getAttackType() const A_WARN_UNUSED
         { return mAttackType; }
 
         int getImitationMode() const A_WARN_UNUSED
         { return mImitationMode; }
-
-        void changeAttackWeaponType(const bool forward);
 
         void changeAttackType(const bool forward);
 
@@ -434,8 +429,6 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        std::string getAttackWeaponTypeString();
-
         std::string getAttackTypeString();
 
         std::string getQuickDropCounterString();
@@ -514,8 +507,6 @@ class LocalPlayer final : public Being,
 
         // crazy move state
         unsigned int mCrazyMoveState;
-        // attack weapon type
-        unsigned int mAttackWeaponType;
         // quick drop counter
         unsigned int mQuickDropCounter;
         // move state. used if mMoveType == 2

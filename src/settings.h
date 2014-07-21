@@ -56,6 +56,7 @@ class Settings final
             crazyMoveType(0U),
             moveToTargetType(0U),
             followMode(0U),
+            attackWeaponType(0U),
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
@@ -86,6 +87,7 @@ class Settings final
         unsigned int crazyMoveType;
         unsigned int moveToTargetType;
         unsigned int followMode;
+        unsigned int attackWeaponType;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;
