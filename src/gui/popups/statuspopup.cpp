@@ -164,7 +164,7 @@ void StatusPopup::updateLabels() const
         InputAction::SWITCH_PVP_ATTACK);
     setLabelText(11, player_node->getGameModifiersString(),
         InputAction::DISABLE_GAME_MODIFIERS);
-    setLabelText(12, player_node->getImitationModeString(),
+    setLabelText(12, modifiers->getImitationModeString(),
         InputAction::CHANGE_IMITATION_MODE);
     setLabelText(13, player_node->getAwayModeString(),
         InputAction::AWAY);

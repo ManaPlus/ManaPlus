@@ -62,6 +62,8 @@ class GameModifiers final
 
         void changePvpAttackType(const bool forward);
 
+        void changeImitationMode(const bool forward);
+
         void setQuickDropCounter(const int n);
 
         std::string getMoveTypeString();
@@ -83,6 +85,8 @@ class GameModifiers final
         std::string getMagicAttackString();
 
         std::string getPvpAttackTypeString();
+
+        std::string getImitationModeString();
 
     protected:
         static const char *getVarItem(const char *const *const arr,

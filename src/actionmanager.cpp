@@ -529,7 +529,7 @@ impHandler0(changeFollowMode)
 
 impHandler0(changeImitationMode)
 {
-    callYellowBar(changeImitationMode);
+    callYellowBar2(changeImitationMode);
 }
 
 impHandler0(magicAttack)

@@ -186,11 +186,6 @@ class LocalPlayer final : public Being,
         bool isPathSetByMouse() const A_WARN_UNUSED
         { return mPathSetByMouse; }
 
-        int getImitationMode() const A_WARN_UNUSED
-        { return mImitationMode; }
-
-        void changeImitationMode(const bool forward);
-
         unsigned int getMoveState() const A_WARN_UNUSED
         { return mMoveState; }
 
@@ -403,8 +398,6 @@ class LocalPlayer final : public Being,
                              const bool updateHash = true);
 
         static std::string getMapDrawTypeString();
-
-        std::string getImitationModeString();
 
         std::string getAwayModeString();
 

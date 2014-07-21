@@ -46,6 +46,7 @@ GameModifiers::GameModifiers()
     settings.pickUpType = config.getIntValue("pickUpType");
     settings.magicAttackType = config.getIntValue("magicAttackType");
     settings.pvpAttackType = config.getIntValue("pvpAttackType");
+    settings.imitationMode = config.getIntValue("imitationMode");
 }
 
 GameModifiers::~GameModifiers()
@@ -409,4 +410,28 @@ std::string GameModifiers::getPvpAttackTypeString()
 {
     return gettext(getVarItem(&pvpAttackTypeStrings[0],
         settings.pvpAttackType, pvpAttackTypeSize));
+}
+
+const unsigned imitationModeSize = 2;
+
+void GameModifiers::changeImitationMode(const bool forward)
+{
+    changeMode(&settings.imitationMode, imitationModeSize, "imitationMode",
+        &GameModifiers::getImitationModeString, 0, true, forward);
+}
+
+static const char *const imitationModeStrings[] =
+{
+    // TRANSLATORS: imitation type in status bar
+    N_("(D) default imitation"),
+    // TRANSLATORS: imitation type in status bar
+    N_("(O) outfits imitation"),
+    // TRANSLATORS: imitation type in status bar
+    N_("(?) imitation")
+};
+
+std::string GameModifiers::getImitationModeString()
+{
+    return gettext(getVarItem(&imitationModeStrings[0],
+        settings.imitationMode, imitationModeSize));
 }

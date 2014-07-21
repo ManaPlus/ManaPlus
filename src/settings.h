@@ -62,6 +62,7 @@ class Settings final
             pickUpType(0U),
             magicAttackType(0U),
             pvpAttackType(0U),
+            imitationMode(0U),
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
@@ -98,6 +99,7 @@ class Settings final
         unsigned int pickUpType;
         unsigned int magicAttackType;
         unsigned int pvpAttackType;
+        unsigned int imitationMode;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;

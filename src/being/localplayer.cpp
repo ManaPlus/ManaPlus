@@ -115,7 +115,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mGMLevel(0),
     mCrazyMoveState(0),
     mMoveState(0),
-    mImitationMode(config.getIntValue("imitationMode")),
     mLastTargetX(0),
     mLastTargetY(0),
     mHomes(),
@@ -1283,30 +1282,6 @@ std::string LocalPlayer::getMapDrawTypeString()
 {
     return gettext(getVarItem(&debugPathStrings[0],
         viewport->getMapDrawType(), debugPathSize));
-}
-
-const unsigned imitationModeSize = 2;
-
-void LocalPlayer::changeImitationMode(const bool forward)
-{
-    changeMode(&mImitationMode, imitationModeSize, "imitationMode",
-        &LocalPlayer::getImitationModeString, 0, true, forward);
-}
-
-static const char *const imitationModeStrings[] =
-{
-    // TRANSLATORS: imitation type in status bar
-    N_("(D) default imitation"),
-    // TRANSLATORS: imitation type in status bar
-    N_("(O) outfits imitation"),
-    // TRANSLATORS: imitation type in status bar
-    N_("(?) imitation")
-};
-
-std::string LocalPlayer::getImitationModeString()
-{
-    return gettext(getVarItem(&imitationModeStrings[0],
-        mImitationMode, imitationModeSize));
 }
 
 const unsigned awayModeSize = 2;
@@ -3113,7 +3088,7 @@ void LocalPlayer::imitateOutfit(const Being *const player,
     if (!player)
         return;
 
-    if (mImitationMode == 1 && !mPlayerImitated.empty()
+    if (settings.imitationMode == 1 && !mPlayerImitated.empty()
         && player->getName() == mPlayerImitated)
     {
         if (sprite < 0 || sprite >= player->getNumberOfLayers())
@@ -3415,7 +3390,7 @@ void LocalPlayer::resetYellowBar()
     }
     if (mMap)
         mMap->setDrawLayersFlags(0);
-    mImitationMode = config.resetIntValue("imitationMode");
+    settings.imitationMode = config.resetIntValue("imitationMode");
     mDisableGameModifiers = config.resetBoolValue("disableGameModifiers");
 
     UpdateStatusListener::distributeEvent();
