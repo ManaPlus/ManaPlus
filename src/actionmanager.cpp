@@ -519,7 +519,7 @@ impHandler0(changeAttackWeaponType)
 
 impHandler0(changeAttackType)
 {
-    callYellowBar(changeAttackType);
+    callYellowBar2(changeAttackType);
 }
 
 impHandler0(changeFollowMode)

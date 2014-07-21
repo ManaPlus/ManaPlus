@@ -648,7 +648,7 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
         .append(translateLetter2(modifiers->getFollowModeString()))
         .append(" ").append(translateLetter2(
         modifiers->getAttackWeaponTypeString()))
-        .append(translateLetter2(player_node->getAttackTypeString()))
+        .append(translateLetter2(modifiers->getAttackTypeString()))
         .append(translateLetter2(player_node->getMagicAttackString()))
         .append(translateLetter2(player_node->getPvpAttackString()))
         .append(" ").append(translateLetter2(

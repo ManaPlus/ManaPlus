@@ -150,7 +150,7 @@ void StatusPopup::updateLabels() const
         InputAction::CHANGE_FOLLOW_MODE);
     setLabelText(4, modifiers->getAttackWeaponTypeString(),
         InputAction::CHANGE_ATTACK_WEAPON_TYPE);
-    setLabelText(5, player_node->getAttackTypeString(),
+    setLabelText(5, modifiers->getAttackTypeString(),
         InputAction::CHANGE_ATTACK_TYPE);
     setLabelText(6, player_node->getQuickDropCounterString(),
         InputAction::SWITCH_QUICK_DROP);

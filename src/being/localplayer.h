@@ -186,13 +186,8 @@ class LocalPlayer final : public Being,
         bool isPathSetByMouse() const A_WARN_UNUSED
         { return mPathSetByMouse; }
 
-        int getAttackType() const A_WARN_UNUSED
-        { return mAttackType; }
-
         int getImitationMode() const A_WARN_UNUSED
         { return mImitationMode; }
-
-        void changeAttackType(const bool forward);
 
         void changeImitationMode(const bool forward);
 
@@ -429,8 +424,6 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        std::string getAttackTypeString();
-
         std::string getQuickDropCounterString();
 
         std::string getPickUpTypeString();
@@ -517,7 +510,6 @@ class LocalPlayer final : public Being,
         unsigned int mMagicAttackType;
         // pvp attack type
         unsigned int mPvpAttackType;
-        unsigned int mAttackType;
         unsigned int mImitationMode;
 
         int mLastTargetX;

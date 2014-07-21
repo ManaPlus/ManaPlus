@@ -1059,7 +1059,7 @@ void Game::changeMap(const std::string &mapPath)
 
 void Game::updateHistory(const SDL_Event &event)
 {
-    if (!player_node || !player_node->getAttackType())
+    if (!player_node || !settings.attackType)
         return;
 
     if (static_cast<int>(event.key.keysym.sym) != -1)
@@ -1116,7 +1116,7 @@ void Game::checkKeys()
     const int timeRange = 120;
     const int cntInTime = 130;
 
-    if (!player_node || !player_node->getAttackType())
+    if (!player_node || !settings.attackType)
         return;
 
     const int time = cur_time;

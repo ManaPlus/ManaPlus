@@ -52,6 +52,8 @@ class GameModifiers final
 
         void changeAttackWeaponType(const bool forward);
 
+        void changeAttackType(const bool forward);
+
         std::string getMoveTypeString();
 
         std::string getCrazyMoveTypeString();
@@ -61,6 +63,8 @@ class GameModifiers final
         std::string getFollowModeString();
 
         std::string getAttackWeaponTypeString();
+
+        std::string getAttackTypeString();
 
     protected:
         static const char *getVarItem(const char *const *const arr,

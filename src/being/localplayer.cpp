@@ -119,7 +119,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mPickUpType(config.getIntValue("pickUpType")),
     mMagicAttackType(config.getIntValue("magicAttackType")),
     mPvpAttackType(config.getIntValue("pvpAttackType")),
-    mAttackType(config.getIntValue("attackType")),
     mImitationMode(config.getIntValue("imitationMode")),
     mLastTargetX(0),
     mLastTargetY(0),
@@ -558,7 +557,7 @@ void LocalPlayer::setDestination(const int x, const int y)
 {
     mActivityTime = cur_time;
 
-    if (getAttackType() == 0 || !mAttackMoving)
+    if (settings.attackType == 0 || !mAttackMoving)
         mKeepAttacking = false;
 
     // Only send a new message to the server when destination changes
@@ -1259,34 +1258,6 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
     const std::string str = (this->*func)();
     if (str.size() > 4)
         debugMsg(str.substr(4));
-}
-
-const unsigned attackTypeSize = 4;
-
-void LocalPlayer::changeAttackType(const bool forward)
-{
-    changeMode(&mAttackType, attackTypeSize, "attackType",
-        &LocalPlayer::getAttackTypeString, 0, true, forward);
-}
-
-static const char *const attackTypeStrings[] =
-{
-    // TRANSLATORS: attack type in status bar
-    N_("(D) default attack"),
-    // TRANSLATORS: attack type in status bar
-    N_("(G) go and attack"),
-    // TRANSLATORS: attack type in status bar
-    N_("(A) go, attack, pickup"),
-    // TRANSLATORS: attack type in status bar
-    N_("(d) without auto attack"),
-    // TRANSLATORS: attack type in status bar
-    N_("(?) attack")
-};
-
-std::string LocalPlayer::getAttackTypeString()
-{
-    return gettext(getVarItem(&attackTypeStrings[0],
-        mAttackType, attackTypeSize));
 }
 
 const unsigned quickDropCounterSize = 31;
@@ -3121,13 +3092,13 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
         changeEquipmentBeforeAttack(target);
 
     // probably need cache getPathLength(target)
-    if ((!target || mAttackType == 0 || mAttackType == 3)
+    if ((!target || settings.attackType == 0 || settings.attackType == 3)
         || (withinAttackRange(target, serverVersion < 1,
         serverVersion < 1 ? 1 : 0)
         && getPathLength(target) <= getAttackRange2()))
     {
         attack(target, keep);
-        if (mAttackType == 2)
+        if (settings.attackType == 2)
         {
             if (!target)
             {
@@ -3142,7 +3113,7 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
     }
     else if (!mPickUpTarget)
     {
-        if (mAttackType == 2)
+        if (settings.attackType == 2)
         {
             if (pickUpItems())
                 return;
@@ -3457,7 +3428,7 @@ void LocalPlayer::fixAttackTarget()
     if (!mMap || !mTarget)
         return;
 
-    if (settings.moveToTargetType == 7 || !mAttackType
+    if (settings.moveToTargetType == 7 || !settings.attackType
         || !config.getBoolValue("autofixPos"))
     {
         return;
@@ -3557,7 +3528,7 @@ void LocalPlayer::resetYellowBar()
     settings.moveToTargetType = config.resetIntValue("moveToTargetType");
     settings.followMode = config.resetIntValue("followMode");
     settings.attackWeaponType = config.resetIntValue("attackWeaponType");
-    mAttackType = config.resetIntValue("attackType");
+    settings.attackType = config.resetIntValue("attackType");
     mMagicAttackType = config.resetIntValue("magicAttackType");
     mPvpAttackType = config.resetIntValue("pvpAttackType");
     mQuickDropCounter = config.resetIntValue("quickDropCounter");
