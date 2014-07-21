@@ -39,6 +39,7 @@ GameModifiers::GameModifiers()
 {
     settings.crazyMoveType = config.getIntValue("crazyMoveType");
     settings.moveToTargetType = config.getIntValue("moveToTargetType");
+    settings.followMode = config.getIntValue("followMode");
 }
 
 GameModifiers::~GameModifiers()
@@ -193,4 +194,32 @@ std::string GameModifiers::getMoveToTargetTypeString()
 {
     return gettext(getVarItem(&moveToTargetTypeStrings[0],
         settings.moveToTargetType, moveToTargetTypeSize));
+}
+
+static const unsigned followModeSize = 4;
+
+void GameModifiers::changeFollowMode(const bool forward)
+{
+    changeMode(&settings.followMode, followModeSize, "followMode",
+        &GameModifiers::getFollowModeString, 0, true, forward);
+}
+
+static const char *const followModeStrings[] =
+{
+    // TRANSLATORS: folow mode in status bar
+    N_("(D) default follow"),
+    // TRANSLATORS: folow mode in status bar
+    N_("(R) relative follow"),
+    // TRANSLATORS: folow mode in status bar
+    N_("(M) mirror follow"),
+    // TRANSLATORS: folow mode in status bar
+    N_("(P) pet follow"),
+    // TRANSLATORS: folow mode in status bar
+    N_("(?) unknown follow")
+};
+
+std::string GameModifiers::getFollowModeString()
+{
+    return gettext(getVarItem(&followModeStrings[0],
+        settings.followMode, followModeSize));
 }

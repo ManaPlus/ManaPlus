@@ -524,7 +524,7 @@ impHandler0(changeAttackType)
 
 impHandler0(changeFollowMode)
 {
-    callYellowBar(changeFollowMode);
+    callYellowBar2(changeFollowMode);
 }
 
 impHandler0(changeImitationMode)

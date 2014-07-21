@@ -146,7 +146,7 @@ void StatusPopup::updateLabels() const
         InputAction::CHANGE_CRAZY_MOVES_TYPE);
     setLabelText(2, modifiers->getMoveToTargetTypeString(),
         InputAction::CHANGE_MOVE_TO_TARGET);
-    setLabelText(3, player_node->getFollowModeString(),
+    setLabelText(3, modifiers->getFollowModeString(),
         InputAction::CHANGE_FOLLOW_MODE);
     setLabelText(4, player_node->getAttackWeaponTypeString(),
         InputAction::CHANGE_ATTACK_WEAPON_TYPE);

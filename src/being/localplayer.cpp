@@ -121,7 +121,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mMagicAttackType(config.getIntValue("magicAttackType")),
     mPvpAttackType(config.getIntValue("pvpAttackType")),
     mAttackType(config.getIntValue("attackType")),
-    mFollowMode(config.getIntValue("followMode")),
     mImitationMode(config.getIntValue("imitationMode")),
     mLastTargetX(0),
     mLastTargetY(0),
@@ -1261,34 +1260,6 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
     const std::string str = (this->*func)();
     if (str.size() > 4)
         debugMsg(str.substr(4));
-}
-
-static const unsigned followModeSize = 4;
-
-void LocalPlayer::changeFollowMode(const bool forward)
-{
-    changeMode(&mFollowMode, followModeSize, "followMode",
-        &LocalPlayer::getFollowModeString, 0, true, forward);
-}
-
-static const char *const followModeStrings[] =
-{
-    // TRANSLATORS: folow mode in status bar
-    N_("(D) default follow"),
-    // TRANSLATORS: folow mode in status bar
-    N_("(R) relative follow"),
-    // TRANSLATORS: folow mode in status bar
-    N_("(M) mirror follow"),
-    // TRANSLATORS: folow mode in status bar
-    N_("(P) pet follow"),
-    // TRANSLATORS: folow mode in status bar
-    N_("(?) unknown follow")
-};
-
-std::string LocalPlayer::getFollowModeString()
-{
-    return gettext(getVarItem(&followModeStrings[0],
-        mFollowMode, followModeSize));
 }
 
 const unsigned attackWeaponTypeSize = 4;
@@ -3297,7 +3268,7 @@ void LocalPlayer::imitateDirection(const Being *const being,
         if (!PacketLimiter::limitPackets(PACKET_DIRECTION))
             return;
 
-        if (mFollowMode == 2)
+        if (settings.followMode == 2)
         {
             uint8_t dir2 = 0;
             if (dir & BeingDirection::LEFT)
@@ -3393,7 +3364,7 @@ void LocalPlayer::followMoveTo(const Being *const being,
     mPickUpTarget = nullptr;
     if (!mPlayerFollowed.empty() && being->getName() == mPlayerFollowed)
     {
-        switch (mFollowMode)
+        switch (settings.followMode)
         {
             case 0:
                 setDestination(x1, y1);
@@ -3613,7 +3584,7 @@ void LocalPlayer::resetYellowBar()
     settings.moveType = 0;
     settings.crazyMoveType = config.resetIntValue("crazyMoveType");
     settings.moveToTargetType = config.resetIntValue("moveToTargetType");
-    mFollowMode = config.resetIntValue("followMode");
+    settings.followMode = config.resetIntValue("followMode");
     mAttackWeaponType = config.resetIntValue("attackWeaponType");
     mAttackType = config.resetIntValue("attackType");
     mMagicAttackType = config.resetIntValue("magicAttackType");

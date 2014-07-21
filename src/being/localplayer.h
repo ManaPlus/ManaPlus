@@ -192,17 +192,12 @@ class LocalPlayer final : public Being,
         int getAttackType() const A_WARN_UNUSED
         { return mAttackType; }
 
-        int getFollowMode() const A_WARN_UNUSED
-        { return mFollowMode; }
-
         int getImitationMode() const A_WARN_UNUSED
         { return mImitationMode; }
 
         void changeAttackWeaponType(const bool forward);
 
         void changeAttackType(const bool forward);
-
-        void changeFollowMode(const bool forward);
 
         void changeImitationMode(const bool forward);
 
@@ -439,8 +434,6 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        std::string getFollowModeString();
-
         std::string getAttackWeaponTypeString();
 
         std::string getAttackTypeString();
@@ -534,7 +527,6 @@ class LocalPlayer final : public Being,
         // pvp attack type
         unsigned int mPvpAttackType;
         unsigned int mAttackType;
-        unsigned int mFollowMode;
         unsigned int mImitationMode;
 
         int mLastTargetX;
