@@ -392,8 +392,6 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        static std::string getMapDrawTypeString();
-
         std::string getAwayModeString();
 
         static std::string getCameraModeString();

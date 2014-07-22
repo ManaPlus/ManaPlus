@@ -156,7 +156,7 @@ void StatusPopup::updateLabels() const
         InputAction::SWITCH_QUICK_DROP);
     setLabelText(7, modifiers->getPickUpTypeString(),
         InputAction::CHANGE_PICKUP_TYPE);
-    setLabelText(8, LocalPlayer::getMapDrawTypeString(),
+    setLabelText(8, modifiers->getMapDrawTypeString(),
         InputAction::PATHFIND);
     setLabelText(9, modifiers->getMagicAttackString(),
         InputAction::SWITCH_MAGIC_ATTACK);

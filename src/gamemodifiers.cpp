@@ -25,6 +25,8 @@
 
 #include "being/localplayer.h"
 
+#include "gui/viewport.h"
+
 #include "gui/widgets/tabs/chattab.h"
 
 #include "listeners/updatestatuslistener.h"
@@ -461,4 +463,32 @@ std::string GameModifiers::getGameModifiersString()
 {
     return gettext(getVarItem(&gameModifiersStrings[0],
         settings.disableGameModifiers, gameModifiersSize));
+}
+
+const unsigned mapDrawTypeSize = 7;
+
+static const char *const mapDrawTypeStrings[] =
+{
+    // TRANSLATORS: map view type in status bar
+    N_("(N) normal map view"),
+    // TRANSLATORS: map view type in status bar
+    N_("(D) debug map view"),
+    // TRANSLATORS: map view type in status bar
+    N_("(u) ultra map view"),
+    // TRANSLATORS: map view type in status bar
+    N_("(U) ultra map view 2"),
+    // TRANSLATORS: map view type in status bar
+    N_("(e) empty map view with collision"),
+    // TRANSLATORS: map view type in status bar
+    N_("(E) empty map view"),
+    // TRANSLATORS: map view type in status bar
+    N_("(b) black & white map view"),
+    // TRANSLATORS: pickup size in status bar
+    N_("(?) map view")
+};
+
+std::string GameModifiers::getMapDrawTypeString()
+{
+    return gettext(getVarItem(&mapDrawTypeStrings[0],
+        viewport->getMapDrawType(), mapDrawTypeSize));
 }

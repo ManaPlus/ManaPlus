@@ -92,6 +92,8 @@ class GameModifiers final
 
         std::string getGameModifiersString();
 
+        std::string getMapDrawTypeString();
+
     protected:
         static const char *getVarItem(const char *const *const arr,
                                       const unsigned index,
