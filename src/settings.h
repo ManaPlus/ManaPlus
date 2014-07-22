@@ -23,6 +23,8 @@
 
 #include "options.h"
 
+#include "resources/map/maptype.h"
+
 #include <string>
 #include <vector>
 
@@ -63,6 +65,7 @@ class Settings final
             magicAttackType(0U),
             pvpAttackType(0U),
             imitationMode(0U),
+            mapDrawType(MapType::NORMAL),
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
@@ -101,6 +104,7 @@ class Settings final
         unsigned int magicAttackType;
         unsigned int pvpAttackType;
         unsigned int imitationMode;
+        MapType::MapType mapDrawType;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;

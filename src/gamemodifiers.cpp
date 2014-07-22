@@ -490,5 +490,5 @@ static const char *const mapDrawTypeStrings[] =
 std::string GameModifiers::getMapDrawTypeString()
 {
     return gettext(getVarItem(&mapDrawTypeStrings[0],
-        viewport->getMapDrawType(), mapDrawTypeSize));
+        settings.mapDrawType, mapDrawTypeSize));
 }

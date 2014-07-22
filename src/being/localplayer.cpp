@@ -3325,7 +3325,7 @@ void LocalPlayer::resetYellowBar()
     settings.pickUpType = config.resetIntValue("pickUpType");
     if (viewport)
     {
-        viewport->setMapDrawType(0);
+        settings.mapDrawType = MapType::NORMAL;
         if (viewport->getCameraMode())
             viewport->toggleCameraMode();
     }

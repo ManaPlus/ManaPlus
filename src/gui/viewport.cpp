@@ -25,6 +25,7 @@
 #include "actormanager.h"
 #include "configuration.h"
 #include "game.h"
+#include "settings.h"
 #include "sdlshared.h"
 #include "textmanager.h"
 
@@ -79,7 +80,6 @@ Viewport::Viewport() :
     mMousePressY(0),
     mPixelViewX(0),
     mPixelViewY(0),
-    mMapDrawType(MapType::NORMAL),
     mCameraMode(0),
     mLocalWalkTime(-1),
     mCameraRelativeX(0),
@@ -241,14 +241,15 @@ void Viewport::draw(Graphics *graphics)
     // Draw tiles and sprites
     mMap->draw(graphics, mPixelViewX, mPixelViewY);
 
-    if (mMapDrawType != MapType::NORMAL)
+    const MapType::MapType drawType = settings.mapDrawType;
+    if (drawType != MapType::NORMAL)
     {
-        if (mMapDrawType != MapType::SPECIAL4)
+        if (drawType != MapType::SPECIAL4)
         {
             mMap->drawCollision(graphics, mPixelViewX,
-                mPixelViewY, mMapDrawType);
+                mPixelViewY, drawType);
         }
-        if (mMapDrawType == MapType::DEBUG)
+        if (drawType == MapType::DEBUG)
             drawDebugPath(graphics);
     }
 
@@ -1001,11 +1002,12 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
 
 void Viewport::toggleMapDrawType()
 {
-    mMapDrawType++;
-    if (mMapDrawType > MapType::BLACKWHITE)
-        mMapDrawType = MapType::NORMAL;
+    settings.mapDrawType = static_cast<MapType::MapType>(
+        static_cast<int>(settings.mapDrawType) + 1);
+    if (settings.mapDrawType > MapType::BLACKWHITE)
+        settings.mapDrawType = MapType::NORMAL;
     if (mMap)
-        mMap->setDrawLayersFlags(mMapDrawType);
+        mMap->setDrawLayersFlags(settings.mapDrawType);
 }
 
 void Viewport::toggleCameraMode()
