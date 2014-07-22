@@ -242,9 +242,6 @@ class Viewport final : public WindowContainer,
         void scrollBy(const int x, const int y)
         { mPixelViewX += x; mPixelViewY += y; }
 
-        int getCameraMode() const A_WARN_UNUSED
-        { return mCameraMode; }
-
         /**
          * Hides the BeingPopup.
          */
@@ -338,7 +335,6 @@ class Viewport final : public WindowContainer,
         int mMousePressY;
         int mPixelViewX;            /**< Current viewpoint in pixels. */
         int mPixelViewY;            /**< Current viewpoint in pixels. */
-        int mCameraMode;            /**< Camera mode. */
 
         int mLocalWalkTime; /**< Timestamp before the next walk can be sent. */
 

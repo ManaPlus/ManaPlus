@@ -80,7 +80,6 @@ Viewport::Viewport() :
     mMousePressY(0),
     mPixelViewX(0),
     mPixelViewY(0),
-    mCameraMode(0),
     mLocalWalkTime(-1),
     mCameraRelativeX(0),
     mCameraRelativeY(0),
@@ -410,7 +409,7 @@ bool Viewport::openContextMenu(const MouseEvent &event)
         mPopupMenu->showPopup(eventX, eventY, mHoverSign);
         return true;
     }
-    else if (mCameraMode)
+    else if (settings.cameraMode)
     {
         if (!mMap)
             return false;
@@ -1012,10 +1011,10 @@ void Viewport::toggleMapDrawType()
 
 void Viewport::toggleCameraMode()
 {
-    mCameraMode++;
-    if (mCameraMode > 1)
-        mCameraMode = 0;
-    if (!mCameraMode)
+    settings.cameraMode ++;
+    if (settings.cameraMode > 1)
+        settings.cameraMode = 0;
+    if (!settings.cameraMode)
     {
         mCameraRelativeX = 0;
         mCameraRelativeY = 0;
@@ -1069,7 +1068,7 @@ void Viewport::moveCameraToActor(const int actorId,
         return;
     const Vector &actorPos = actor->getPosition();
     const Vector &playerPos = player_node->getPosition();
-    mCameraMode = 1;
+    settings.cameraMode = 1;
     mCameraRelativeX = static_cast<int>(actorPos.x - playerPos.x) + x;
     mCameraRelativeY = static_cast<int>(actorPos.y - playerPos.y) + y;
 }
@@ -1080,7 +1079,7 @@ void Viewport::moveCameraToPosition(const int x, const int y)
         return;
 
     const Vector &playerPos = player_node->getPosition();
-    mCameraMode = 1;
+    settings.cameraMode = 1;
 
     mCameraRelativeX = x - static_cast<int>(playerPos.x);
     mCameraRelativeY = y - static_cast<int>(playerPos.y);
@@ -1088,14 +1087,14 @@ void Viewport::moveCameraToPosition(const int x, const int y)
 
 void Viewport::moveCameraRelative(const int x, const int y)
 {
-    mCameraMode = 1;
+    settings.cameraMode = 1;
     mCameraRelativeX += x;
     mCameraRelativeY += y;
 }
 
 void Viewport::returnCamera()
 {
-    mCameraMode = 0;
+    settings.cameraMode = 0;
     mCameraRelativeX = 0;
     mCameraRelativeY = 0;
 }

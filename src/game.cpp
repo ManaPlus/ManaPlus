@@ -880,7 +880,7 @@ void Game::moveInDirection(const unsigned char direction)
     if (!viewport)
         return;
 
-    if (!viewport->getCameraMode())
+    if (!settings.cameraMode)
     {
         if (player_node)
             player_node->specialMove(direction);

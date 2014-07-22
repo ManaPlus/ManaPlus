@@ -640,7 +640,7 @@ std::string StatusWindow::translateLetter2(const std::string &letters)
 void StatusWindow::updateStatusBar(ProgressBar *const bar,
                                    const bool percent A_UNUSED) const
 {
-    if (!player_node || !viewport || !modifiers)
+    if (!modifiers)
         return;
 
     bar->setText(translateLetter2(modifiers->getMoveTypeString())
@@ -659,7 +659,7 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
         modifiers->getMapDrawTypeString()))
         .append(" ").append(translateLetter2(
         modifiers->getImitationModeString()))
-        .append(translateLetter2(LocalPlayer::getCameraModeString()))
+        .append(translateLetter2(modifiers->getCameraModeString()))
         .append(translateLetter2(modifiers->getAwayModeString())));
 
     bar->setProgress(50);

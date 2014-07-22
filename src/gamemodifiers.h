@@ -98,6 +98,8 @@ class GameModifiers final
 
         std::string getAwayModeString();
 
+        std::string getCameraModeString();
+
     protected:
         static const char *getVarItem(const char *const *const arr,
                                       const unsigned index,

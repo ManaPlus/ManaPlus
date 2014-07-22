@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "inventory.h"
 #include "item.h"
+#include "settings.h"
 #include "soundconsts.h"
 #include "soundmanager.h"
 
@@ -823,7 +824,7 @@ void NpcDialog::saveCamera()
     if (!viewport || mCameraMode >= 0)
         return;
 
-    mCameraMode = viewport->getCameraMode();
+    mCameraMode = settings.cameraMode;
     mCameraX = viewport->getCameraRelativeX();
     mCameraY = viewport->getCameraRelativeY();
 }
@@ -833,15 +834,10 @@ void NpcDialog::restoreCamera()
     if (!viewport || mCameraMode == -1)
         return;
 
-    if (!mCameraMode)
+    if (settings.cameraMode != mCameraMode)
+        viewport->toggleCameraMode();
+    if (mCameraMode)
     {
-        if (viewport->getCameraMode() != mCameraMode)
-            viewport->toggleCameraMode();
-    }
-    else
-    {
-        if (viewport->getCameraMode() != mCameraMode)
-            viewport->toggleCameraMode();
         viewport->setCameraRelativeX(mCameraX);
         viewport->setCameraRelativeY(mCameraY);
     }

@@ -296,7 +296,7 @@ class NpcDialog final : public Window,
         PlayerBox *mPlayerBox;
         Being *mAvatarBeing;
         int mLastNextTime;
-        int mCameraMode;
+        unsigned int mCameraMode;
         int mCameraX;
         int mCameraY;
         bool mShowAvatar;

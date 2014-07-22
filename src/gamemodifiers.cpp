@@ -558,3 +558,21 @@ std::string GameModifiers::getAwayModeString()
     return gettext(getVarItem(&awayModeStrings[0],
         settings.awayMode, awayModeSize));
 }
+
+const unsigned cameraModeSize = 2;
+
+static const char *const cameraModeStrings[] =
+{
+    // TRANSLATORS: camera mode in status bar
+    N_("(G) game camera mode"),
+    // TRANSLATORS: camera mode in status bar
+    N_("(F) free camera mode"),
+    // TRANSLATORS: camera mode in status bar
+    N_("(?) away")
+};
+
+std::string GameModifiers::getCameraModeString()
+{
+    return gettext(getVarItem(&cameraModeStrings[0],
+        settings.cameraMode, cameraModeSize));
+}

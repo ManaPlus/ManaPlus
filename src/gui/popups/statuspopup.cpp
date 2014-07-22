@@ -137,7 +137,7 @@ void StatusPopup::setLabelText(const int num,
 
 void StatusPopup::updateLabels() const
 {
-    if (!player_node || !viewport || !modifiers)
+    if (!modifiers)
         return;
 
     setLabelText(0, modifiers->getMoveTypeString(),
@@ -168,6 +168,6 @@ void StatusPopup::updateLabels() const
         InputAction::CHANGE_IMITATION_MODE);
     setLabelText(13, modifiers->getAwayModeString(),
         InputAction::AWAY);
-    setLabelText(14, LocalPlayer::getCameraModeString(),
+    setLabelText(14, modifiers->getCameraModeString(),
         InputAction::CAMERA);
 }

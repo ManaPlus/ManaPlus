@@ -387,8 +387,6 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        static std::string getCameraModeString();
-
         int getLastAttackX() const override final
         { return mTarget ? mTarget->getTileX() : mLastAttackX; }
 

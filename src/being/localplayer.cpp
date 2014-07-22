@@ -1255,24 +1255,6 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
         debugMsg(str.substr(4));
 }
 
-const unsigned cameraModeSize = 2;
-
-static const char *const cameraModeStrings[] =
-{
-    // TRANSLATORS: camera mode in status bar
-    N_("(G) game camera mode"),
-    // TRANSLATORS: camera mode in status bar
-    N_("(F) free camera mode"),
-    // TRANSLATORS: camera mode in status bar
-    N_("(?) away")
-};
-
-std::string LocalPlayer::getCameraModeString()
-{
-    return gettext(getVarItem(&cameraModeStrings[0],
-        viewport->getCameraMode(), cameraModeSize));
-}
-
 void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
 {
     if (settings.attackWeaponType == 1 || !target || !PlayerInfo::getInventory())
@@ -3271,7 +3253,7 @@ void LocalPlayer::resetYellowBar()
     if (viewport)
     {
         settings.mapDrawType = MapType::NORMAL;
-        if (viewport->getCameraMode())
+        if (settings.cameraMode)
             viewport->toggleCameraMode();
     }
     if (mMap)
