@@ -155,6 +155,8 @@ static void initEngines()
     keyboard.update();
     if (joystick)
         joystick->update();
+
+    UpdateStatusListener::distributeEvent();
 }
 
 /**

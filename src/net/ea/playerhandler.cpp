@@ -184,7 +184,6 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
     if (viewport)
     {
         viewport->returnCamera();
-        UpdateStatusListener::distributeEvent();
         viewport->scrollBy(scrollOffsetX, scrollOffsetY);
     }
     BLOCK_END("PlayerHandler::processPlayerWarp")
