@@ -1255,9 +1255,9 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
         debugMsg(str.substr(4));
 }
 
-const unsigned debugPathSize = 7;
+const unsigned mapDrawTypeSize = 7;
 
-static const char *const debugPathStrings[] =
+static const char *const mapDrawTypeStrings[] =
 {
     // TRANSLATORS: map view type in status bar
     N_("(N) normal map view"),
@@ -1279,8 +1279,8 @@ static const char *const debugPathStrings[] =
 
 std::string LocalPlayer::getMapDrawTypeString()
 {
-    return gettext(getVarItem(&debugPathStrings[0],
-        viewport->getMapDrawType(), debugPathSize));
+    return gettext(getVarItem(&mapDrawTypeStrings[0],
+        viewport->getMapDrawType(), mapDrawTypeSize));
 }
 
 const unsigned awayModeSize = 2;
