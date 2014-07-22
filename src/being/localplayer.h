@@ -232,14 +232,9 @@ class LocalPlayer final : public Being,
 
         void pingResponse();
 
-        void changeAwayMode();
-
         void setAway(const std::string &message);
 
         void setPseudoAway(const std::string &message);
-
-        bool getAway() const A_WARN_UNUSED
-        { return mAwayMode; }
 
         bool getPseudoAway() const A_WARN_UNUSED
         { return mPseudoAwayMode; }
@@ -392,8 +387,6 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        std::string getAwayModeString();
-
         static std::string getCameraModeString();
 
         int getLastAttackX() const override final
@@ -411,6 +404,15 @@ class LocalPlayer final : public Being,
                          const int oldVal2) override final;
 
         void updateMusic();
+
+        void setAfkTime(const int v)
+        { mAfkTime = v; }
+
+        void setAwayDialog(OkDialog *const dialog)
+        { mAwayDialog = dialog; }
+
+        AwayListener *getAwayListener() const A_WARN_UNUSED
+        { return mAwayListener; }
 
     protected:
         void updateCoords() override final;
@@ -534,7 +536,6 @@ class LocalPlayer final : public Being,
         // Tells if the path was set using mouse
         bool mPathSetByMouse;
         bool mWaitPing;
-        bool mAwayMode;
         bool mPseudoAwayMode;
         bool mShowNavigePath;
 };

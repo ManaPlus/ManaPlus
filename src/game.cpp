@@ -686,7 +686,7 @@ void Game::adjustPerfomance()
         mNextAdjustTime = time + adjustDelay;
 
         if (mAdjustLevel > 3 || !player_node || player_node->getHalfAway()
-            || player_node->getAway())
+            || settings.awayMode)
         {
             return;
         }
@@ -906,7 +906,7 @@ void Game::updateFrameRate(int fpsLimit)
 {
     if (!fpsLimit)
     {
-        if (player_node && player_node->getAway())
+        if (settings.awayMode)
         {
             if (settings.inputFocused || settings.mouseFocused)
                 fpsLimit = config.getIntValue("fpslimit");
@@ -934,7 +934,7 @@ void Game::handleInput()
     eventsManager.handleGameEvents();
 
     // If the user is configuring the keys then don't respond.
-    if (!player_node || !keyboard.isEnabled() || player_node->getAway())
+    if (!keyboard.isEnabled() || settings.awayMode)
     {
         BLOCK_END("Game::handleInput 1")
         return;

@@ -22,6 +22,9 @@
 
 #include "listeners/awaylistener.h"
 
+#include "gamemodifiers.h"
+#include "settings.h"
+
 #include "being/localplayer.h"
 
 #include "gui/windows/outfitwindow.h"
@@ -32,9 +35,9 @@
 
 void AwayListener::action(const ActionEvent &event)
 {
-    if (event.getId() == "ok" && player_node && player_node->getAway())
+    if (event.getId() == "ok" && modifiers && player_node && settings.awayMode)
     {
-        player_node->changeAwayMode();
+        modifiers->changeAwayMode();
         player_node->updateStatus();
         if (outfitWindow)
             outfitWindow->unwearAwayOutfit();

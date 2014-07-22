@@ -166,7 +166,7 @@ void StatusPopup::updateLabels() const
         InputAction::DISABLE_GAME_MODIFIERS);
     setLabelText(12, modifiers->getImitationModeString(),
         InputAction::CHANGE_IMITATION_MODE);
-    setLabelText(13, player_node->getAwayModeString(),
+    setLabelText(13, modifiers->getAwayModeString(),
         InputAction::AWAY);
     setLabelText(14, LocalPlayer::getCameraModeString(),
         InputAction::CAMERA);

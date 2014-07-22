@@ -653,7 +653,7 @@ void InputManager::updateConditionMask()
     if (!BuyDialog::isActive() && !SellDialog::isActive())
         mMask |= InputCondition::NOBUYSELL;
 
-    if (!player_node || !player_node->getAway())
+    if (!settings.awayMode)
         mMask |= InputCondition::NOAWAY;
 
     if (!setupWindow || !setupWindow->isWindowVisible())

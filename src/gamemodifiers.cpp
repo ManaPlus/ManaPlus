@@ -22,13 +22,20 @@
 
 #include "configuration.h"
 #include "settings.h"
+#include "soundmanager.h"
 
 #include "being/localplayer.h"
 
+#include "gui/dialogtype.h"
 #include "gui/viewport.h"
+
+#include "gui/windows/chatwindow.h"
+#include "gui/windows/okdialog.h"
+#include "gui/windows/outfitwindow.h"
 
 #include "gui/widgets/tabs/chattab.h"
 
+#include "listeners/awaylistener.h"
 #include "listeners/updatestatuslistener.h"
 
 #include "utils/gettext.h"
@@ -491,4 +498,63 @@ std::string GameModifiers::getMapDrawTypeString()
 {
     return gettext(getVarItem(&mapDrawTypeStrings[0],
         settings.mapDrawType, mapDrawTypeSize));
+}
+
+const unsigned awayModeSize = 2;
+
+void GameModifiers::changeAwayMode()
+{
+    if (!player_node)
+        return;
+
+    settings.awayMode = !settings.awayMode;
+    player_node->setAfkTime(0);
+    player_node->setHalfAway(false);
+    player_node->updateName();
+    UpdateStatusListener::distributeEvent();
+    if (settings.awayMode)
+    {
+        if (chatWindow)
+            chatWindow->clearAwayLog();
+
+        player_node->cancelFollow();
+        player_node->navigateClean();
+        if (outfitWindow)
+            outfitWindow->wearAwayOutfit();
+        // TRANSLATORS: away message box header
+        OkDialog *const dialog = new OkDialog(_("Away"),
+            config.getStringValue("afkMessage"),
+            DialogType::SILENCE, true, false);
+        player_node->setAwayDialog(dialog);
+        dialog->addActionListener(player_node->getAwayListener());
+        soundManager.volumeOff();
+        player_node->addAfkEffect();
+    }
+    else
+    {
+        player_node->setAwayDialog(nullptr);
+        soundManager.volumeRestore();
+        if (chatWindow)
+        {
+            chatWindow->displayAwayLog();
+            chatWindow->clearAwayLog();
+        }
+        player_node->removeAfkEffect();
+    }
+}
+
+static const char *const awayModeStrings[] =
+{
+    // TRANSLATORS: away type in status bar
+    N_("(O) on keyboard"),
+    // TRANSLATORS: away type in status bar
+    N_("(A) away"),
+    // TRANSLATORS: away type in status bar
+    N_("(?) away")
+};
+
+std::string GameModifiers::getAwayModeString()
+{
+    return gettext(getVarItem(&awayModeStrings[0],
+        settings.awayMode, awayModeSize));
 }

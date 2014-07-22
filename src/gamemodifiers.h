@@ -66,6 +66,8 @@ class GameModifiers final
 
         void changeGameModifiers();
 
+        void changeAwayMode();
+
         void setQuickDropCounter(const int n);
 
         std::string getMoveTypeString();
@@ -93,6 +95,8 @@ class GameModifiers final
         std::string getGameModifiersString();
 
         std::string getMapDrawTypeString();
+
+        std::string getAwayModeString();
 
     protected:
         static const char *getVarItem(const char *const *const arr,

@@ -27,6 +27,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "dropshortcut.h"
+#include "gamemodifiers.h"
 #include "guild.h"
 #include "item.h"
 #include "party.h"
@@ -173,7 +174,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mKeepAttacking(false),
     mPathSetByMouse(false),
     mWaitPing(false),
-    mAwayMode(false),
     mPseudoAwayMode(false),
     mShowNavigePath(false)
 {
@@ -342,7 +342,7 @@ void LocalPlayer::slowLogic()
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
             smile |= BeingFlag::SHOP;
 
-        if (mAwayMode || mPseudoAwayMode)
+        if (settings.awayMode || mPseudoAwayMode)
             smile |= BeingFlag::AWAY;
 
         if (mInactive)
@@ -1253,61 +1253,6 @@ void LocalPlayer::changeMode(unsigned *restrict const var,
     const std::string str = (this->*func)();
     if (str.size() > 4)
         debugMsg(str.substr(4));
-}
-
-const unsigned awayModeSize = 2;
-
-void LocalPlayer::changeAwayMode()
-{
-    mAwayMode = !mAwayMode;
-    mAfkTime = 0;
-    mInactive = false;
-    updateName();
-    UpdateStatusListener::distributeEvent();
-    if (mAwayMode)
-    {
-        if (chatWindow)
-            chatWindow->clearAwayLog();
-
-        cancelFollow();
-        navigateClean();
-        if (outfitWindow)
-            outfitWindow->wearAwayOutfit();
-        // TRANSLATORS: away message box header
-        mAwayDialog = new OkDialog(_("Away"),
-            config.getStringValue("afkMessage"),
-            DialogType::SILENCE, true, false);
-        mAwayDialog->addActionListener(mAwayListener);
-        soundManager.volumeOff();
-        addAfkEffect();
-    }
-    else
-    {
-        mAwayDialog = nullptr;
-        soundManager.volumeRestore();
-        if (chatWindow)
-        {
-            chatWindow->displayAwayLog();
-            chatWindow->clearAwayLog();
-        }
-        removeAfkEffect();
-    }
-}
-
-static const char *const awayModeStrings[] =
-{
-    // TRANSLATORS: away type in status bar
-    N_("(O) on keyboard"),
-    // TRANSLATORS: away type in status bar
-    N_("(A) away"),
-    // TRANSLATORS: away type in status bar
-    N_("(?) away")
-};
-
-std::string LocalPlayer::getAwayModeString()
-{
-    return gettext(getVarItem(&awayModeStrings[0],
-        mAwayMode, awayModeSize));
 }
 
 const unsigned cameraModeSize = 2;
@@ -2576,7 +2521,7 @@ void LocalPlayer::tryPingRequest()
 void LocalPlayer::setAway(const std::string &message)
 {
     setAfkMessage(message);
-    changeAwayMode();
+    modifiers->changeAwayMode();
     updateStatus();
 }
 
@@ -2605,7 +2550,7 @@ void LocalPlayer::setPseudoAway(const std::string &message)
 
 void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
 {
-    if (mAwayMode)
+    if (settings.awayMode)
     {
         const int time = cur_time;
         if (mAfkTime == 0 || time < mAfkTime
@@ -3399,7 +3344,7 @@ void LocalPlayer::updateStatus() const
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
             status |= BeingFlag::SHOP;
 
-        if (mAwayMode || mPseudoAwayMode)
+        if (settings.awayMode || mPseudoAwayMode)
             status |= BeingFlag::AWAY;
 
         if (mInactive)

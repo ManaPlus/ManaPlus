@@ -579,9 +579,10 @@ impHandler0(changeAudio)
 
 impHandler0(away)
 {
+    if (modifiers)
+        modifiers->changeAwayMode();
     if (player_node)
     {
-        player_node->changeAwayMode();
         player_node->updateStatus();
         if (Game::instance())
             Game::instance()->setValidSpeed();
