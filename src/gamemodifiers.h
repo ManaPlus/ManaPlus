@@ -86,7 +86,7 @@ class GameModifiers final
 
         std::string getPickUpTypeString();
 
-        std::string getMagicAttackString();
+        std::string getMagicAttackTypeString();
 
         std::string getPvpAttackTypeString();
 

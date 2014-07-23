@@ -53,6 +53,13 @@
         settings.name2, m##name1##Size)); \
     }
 
+#define changeMethod(name1, name2, str) \
+    void GameModifiers::change##name1(const bool forward) \
+    { \
+        changeMode(&settings.name2, m##name1##Size, str, \
+            &GameModifiers::get##name1##String, 0, true, forward); \
+    }
+
 GameModifiers *modifiers = nullptr;
 
 GameModifiers::GameModifiers()
@@ -204,12 +211,7 @@ addModifier(MoveToTargetType, 13)
     N_("(?) move to target")
 };
 
-void GameModifiers::changeMoveToTargetType(const bool forward)
-{
-    changeMode(&settings.moveToTargetType, mMoveToTargetTypeSize,
-        "moveToTargetType",
-        &GameModifiers::getMoveToTargetTypeString, 0, true, forward);
-}
+changeMethod(MoveToTargetType, moveToTargetType, "moveToTargetType")
 
 stringModifier(MoveToTargetType, moveToTargetType)
 
@@ -227,11 +229,7 @@ addModifier(FollowMode, 4)
     N_("(?) unknown follow")
 };
 
-void GameModifiers::changeFollowMode(const bool forward)
-{
-    changeMode(&settings.followMode, mFollowModeSize, "followMode",
-        &GameModifiers::getFollowModeString, 0, true, forward);
-}
+changeMethod(FollowMode, followMode, "followMode")
 
 stringModifier(FollowMode, followMode)
 
@@ -249,12 +247,7 @@ addModifier(AttackWeaponType, 4)
     N_("(?) attack")
 };
 
-void GameModifiers::changeAttackWeaponType(const bool forward)
-{
-    changeMode(&settings.attackWeaponType, mAttackWeaponTypeSize,
-        "attackWeaponType",
-        &GameModifiers::getAttackWeaponTypeString, 1, true, forward);
-}
+changeMethod(AttackWeaponType, attackWeaponType, "attackWeaponType")
 
 stringModifier(AttackWeaponType, attackWeaponType)
 
@@ -272,22 +265,13 @@ addModifier(AttackType, 4)
     N_("(?) attack")
 };
 
-void GameModifiers::changeAttackType(const bool forward)
-{
-    changeMode(&settings.attackType, mAttackTypeSize, "attackType",
-        &GameModifiers::getAttackTypeString, 0, true, forward);
-}
+changeMethod(AttackType, attackType, "attackType")
 
 stringModifier(AttackType, attackType)
 
 const unsigned mQuickDropCounterSize = 31;
 
-void GameModifiers::changeQuickDropCounter(const bool forward)
-{
-    changeMode(&settings.quickDropCounter, mQuickDropCounterSize,
-        "quickDropCounter",
-        &GameModifiers::getQuickDropCounterString, 1, true, forward);
-}
+changeMethod(QuickDropCounter, quickDropCounter, "quickDropCounter")
 
 std::string GameModifiers::getQuickDropCounterString()
 {
@@ -332,15 +316,11 @@ addModifier(PickUpType, 7)
     N_("(?) pick up")
 };
 
-void GameModifiers::changePickUpType(const bool forward)
-{
-    changeMode(&settings.pickUpType, mPickUpTypeSize, "pickUpType",
-        &GameModifiers::getPickUpTypeString, 0, true, forward);
-}
+changeMethod(PickUpType, pickUpType, "pickUpType")
 
 stringModifier(PickUpType, pickUpType)
 
-addModifier(MagicAttack, 5)
+addModifier(MagicAttackType, 5)
 {
     // TRANSLATORS: magic attack in status bar
     N_("(f) use #flar for magic attack"),
@@ -356,13 +336,9 @@ addModifier(MagicAttack, 5)
     N_("(?) magic attack")
 };
 
-void GameModifiers::changeMagicAttackType(const bool forward)
-{
-    changeMode(&settings.magicAttackType, mMagicAttackSize, "magicAttackType",
-        &GameModifiers::getMagicAttackString, 0, true, forward);
-}
+changeMethod(MagicAttackType, magicAttackType, "magicAttackType")
 
-stringModifier(MagicAttack, magicAttack)
+stringModifier(MagicAttackType, magicAttackType)
 
 addModifier(PvpAttackType, 4)
 {
@@ -378,11 +354,7 @@ addModifier(PvpAttackType, 4)
     N_("(?) pvp attack")
 };
 
-void GameModifiers::changePvpAttackType(const bool forward)
-{
-    changeMode(&settings.pvpAttackType, mPvpAttackTypeSize, "pvpAttackType",
-        &GameModifiers::getPvpAttackTypeString, 0, true, forward);
-}
+changeMethod(PvpAttackType, pvpAttackType, "pvpAttackType")
 
 stringModifier(PvpAttackType, pvpAttackType)
 
@@ -396,11 +368,7 @@ addModifier(ImitationMode, 2)
     N_("(?) imitation")
 };
 
-void GameModifiers::changeImitationMode(const bool forward)
-{
-    changeMode(&settings.imitationMode, mImitationModeSize, "imitationMode",
-        &GameModifiers::getImitationModeString, 0, true, forward);
-}
+changeMethod(ImitationMode, imitationMode, "imitationMode")
 
 stringModifier(ImitationMode, imitationMode)
 

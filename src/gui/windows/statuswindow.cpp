@@ -650,7 +650,7 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
         .append(" ").append(translateLetter2(
         modifiers->getAttackWeaponTypeString()))
         .append(translateLetter2(modifiers->getAttackTypeString()))
-        .append(translateLetter2(modifiers->getMagicAttackString()))
+        .append(translateLetter2(modifiers->getMagicAttackTypeString()))
         .append(translateLetter2(modifiers->getPvpAttackTypeString()))
         .append(" ").append(translateLetter2(
         modifiers->getQuickDropCounterString()))
