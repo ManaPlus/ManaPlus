@@ -555,6 +555,8 @@ DefaultsData* getPathsDefaults()
     AddDEF("monstersPatchFile", "monsters_patch.xml");
     AddDEF("monstersPatchDir", "monsters.d");
     AddDEF("mapsRemapFile", "maps/remap.xml");
+    AddDEF("mapsRemapPatchFile", "maps/remap_patch.xml");
+    AddDEF("mapsRemapPatchDir", "maps/remap.d");
     AddDEF("mapsFile", "maps.xml");
     AddDEF("mapsPatchFile", "maps_patch.xml");
     AddDEF("mapsPatchDir", "maps.d");

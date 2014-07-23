@@ -47,17 +47,19 @@ void MapDB::load()
     if (mLoaded)
         unload();
 
-    loadRemap();
+    loadRemapXmlFile(paths.getStringValue("mapsRemapFile"));
+    loadRemapXmlFile(paths.getStringValue("mapsRemapPatchFile"));
+    loadXmlDir("mapsRemapPatchDir", loadRemapXmlFile);
+
     loadInfo(paths.getStringValue("mapsFile"));
     loadInfo(paths.getStringValue("mapsPatchFile"));
     loadXmlDir("mapsPatchDir", loadInfo);
     mLoaded = true;
 }
 
-void MapDB::loadRemap()
+void MapDB::loadRemapXmlFile(const std::string &fileName)
 {
-    XML::Document *const doc = new XML::Document(
-        paths.getStringValue("mapsRemapFile"));
+    XML::Document *const doc = new XML::Document(fileName);
 
     const XmlNodePtrConst root = doc->rootNode();
     if (!root)

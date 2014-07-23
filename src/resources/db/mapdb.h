@@ -40,7 +40,7 @@ namespace MapDB
      */
     void load();
 
-    void loadRemap();
+    void loadRemapXmlFile(const std::string &fileName);
 
     void loadInfo(const std::string &fileName);
 
