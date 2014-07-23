@@ -106,16 +106,16 @@ const char *GameModifiers::getVarItem(const char *const *const arr,
     return arr[sz];
 }
 
-static const unsigned moveTypeSize = 5;
+static const unsigned mMoveTypeSize = 5;
 
 void GameModifiers::changeMoveType(const bool forward)
 {
     player_node->setMoveState(0);
-    changeMode(&settings.moveType, moveTypeSize, "invertMoveDirection",
+    changeMode(&settings.moveType, mMoveTypeSize, "invertMoveDirection",
         &GameModifiers::getMoveTypeString, 0, false, forward);
 }
 
-static const char *const moveTypeStrings[] =
+static const char *const mMoveTypeStrings[] =
 {
     // TRANSLATORS: move type in status bar
     N_("(D) default moves"),
@@ -133,29 +133,29 @@ static const char *const moveTypeStrings[] =
 
 std::string GameModifiers::getMoveTypeString()
 {
-    return gettext(getVarItem(&moveTypeStrings[0],
-        settings.moveType, moveTypeSize));
+    return gettext(getVarItem(&mMoveTypeStrings[0],
+        settings.moveType, mMoveTypeSize));
 }
 
-static const unsigned crazyMoveTypeSize = 11;
+static const unsigned mCrazyMoveTypeSize = 11;
 
 void GameModifiers::changeCrazyMoveType(const bool forward)
 {
     player_node->setCrazyMoveState(0U);
-    changeMode(&settings.crazyMoveType, crazyMoveTypeSize, "crazyMoveType",
+    changeMode(&settings.crazyMoveType, mCrazyMoveTypeSize, "crazyMoveType",
         &GameModifiers::getCrazyMoveTypeString, 1, true, forward);
 }
 
 std::string GameModifiers::getCrazyMoveTypeString()
 {
     const unsigned int crazyMoveType = settings.crazyMoveType;
-    if (crazyMoveType < crazyMoveTypeSize - 1)
+    if (crazyMoveType < mCrazyMoveTypeSize - 1)
     {
         // TRANSLATORS: crazy move type in status bar
         return strprintf(_("(%u) crazy move number %u"),
             crazyMoveType, crazyMoveType);
     }
-    else if (crazyMoveType == crazyMoveTypeSize - 1)
+    else if (crazyMoveType == mCrazyMoveTypeSize - 1)
     {
         // TRANSLATORS: crazy move type in status bar
         return _("(a) custom crazy move");
@@ -167,16 +167,16 @@ std::string GameModifiers::getCrazyMoveTypeString()
     }
 }
 
-static const unsigned moveToTargetTypeSize = 13;
+static const unsigned mMoveToTargetTypeSize = 13;
 
 void GameModifiers::changeMoveToTargetType(const bool forward)
 {
-    changeMode(&settings.moveToTargetType, moveToTargetTypeSize,
+    changeMode(&settings.moveToTargetType, mMoveToTargetTypeSize,
         "moveToTargetType",
         &GameModifiers::getMoveToTargetTypeString, 0, true, forward);
 }
 
-static const char *const moveToTargetTypeStrings[] =
+static const char *const mMoveToTargetTypeStrings[] =
 {
     // TRANSLATORS: move to target type in status bar
     N_("(0) default moves to target"),
@@ -210,19 +210,19 @@ static const char *const moveToTargetTypeStrings[] =
 
 std::string GameModifiers::getMoveToTargetTypeString()
 {
-    return gettext(getVarItem(&moveToTargetTypeStrings[0],
-        settings.moveToTargetType, moveToTargetTypeSize));
+    return gettext(getVarItem(&mMoveToTargetTypeStrings[0],
+        settings.moveToTargetType, mMoveToTargetTypeSize));
 }
 
-static const unsigned followModeSize = 4;
+static const unsigned mFollowModeSize = 4;
 
 void GameModifiers::changeFollowMode(const bool forward)
 {
-    changeMode(&settings.followMode, followModeSize, "followMode",
+    changeMode(&settings.followMode, mFollowModeSize, "followMode",
         &GameModifiers::getFollowModeString, 0, true, forward);
 }
 
-static const char *const followModeStrings[] =
+static const char *const mFollowModeStrings[] =
 {
     // TRANSLATORS: folow mode in status bar
     N_("(D) default follow"),
@@ -238,20 +238,20 @@ static const char *const followModeStrings[] =
 
 std::string GameModifiers::getFollowModeString()
 {
-    return gettext(getVarItem(&followModeStrings[0],
-        settings.followMode, followModeSize));
+    return gettext(getVarItem(&mFollowModeStrings[0],
+        settings.followMode, mFollowModeSize));
 }
 
-const unsigned attackWeaponTypeSize = 4;
+const unsigned mAttackWeaponTypeSize = 4;
 
 void GameModifiers::changeAttackWeaponType(const bool forward)
 {
-    changeMode(&settings.attackWeaponType, attackWeaponTypeSize,
+    changeMode(&settings.attackWeaponType, mAttackWeaponTypeSize,
         "attackWeaponType",
         &GameModifiers::getAttackWeaponTypeString, 1, true, forward);
 }
 
-static const char *const attackWeaponTypeStrings[] =
+static const char *const mAttackWeaponTypeStrings[] =
 {
     // TRANSLATORS: switch attack type in status bar
     N_("(?) attack"),
@@ -267,19 +267,19 @@ static const char *const attackWeaponTypeStrings[] =
 
 std::string GameModifiers::getAttackWeaponTypeString()
 {
-    return gettext(getVarItem(&attackWeaponTypeStrings[0],
-        settings.attackWeaponType, attackWeaponTypeSize));
+    return gettext(getVarItem(&mAttackWeaponTypeStrings[0],
+        settings.attackWeaponType, mAttackWeaponTypeSize));
 }
 
-const unsigned attackTypeSize = 4;
+const unsigned mAttackTypeSize = 4;
 
 void GameModifiers::changeAttackType(const bool forward)
 {
-    changeMode(&settings.attackType, attackTypeSize, "attackType",
+    changeMode(&settings.attackType, mAttackTypeSize, "attackType",
         &GameModifiers::getAttackTypeString, 0, true, forward);
 }
 
-static const char *const attackTypeStrings[] =
+static const char *const mAttackTypeStrings[] =
 {
     // TRANSLATORS: attack type in status bar
     N_("(D) default attack"),
@@ -295,15 +295,15 @@ static const char *const attackTypeStrings[] =
 
 std::string GameModifiers::getAttackTypeString()
 {
-    return gettext(getVarItem(&attackTypeStrings[0],
-        settings.attackType, attackTypeSize));
+    return gettext(getVarItem(&mAttackTypeStrings[0],
+        settings.attackType, mAttackTypeSize));
 }
 
-const unsigned quickDropCounterSize = 31;
+const unsigned mQuickDropCounterSize = 31;
 
 void GameModifiers::changeQuickDropCounter(const bool forward)
 {
-    changeMode(&settings.quickDropCounter, quickDropCounterSize,
+    changeMode(&settings.quickDropCounter, mQuickDropCounterSize,
         "quickDropCounter",
         &GameModifiers::getQuickDropCounterString, 1, true, forward);
 }
@@ -324,22 +324,22 @@ std::string GameModifiers::getQuickDropCounterString()
 
 void GameModifiers::setQuickDropCounter(const int n)
 {
-    if (n < 1 || n >= static_cast<signed>(quickDropCounterSize))
+    if (n < 1 || n >= static_cast<signed>(mQuickDropCounterSize))
         return;
     settings.quickDropCounter = n;
     config.setValue("quickDropCounter", n);
     UpdateStatusListener::distributeEvent();
 }
 
-const unsigned pickUpTypeSize = 7;
+const unsigned mPickUpTypeSize = 7;
 
 void GameModifiers::changePickUpType(const bool forward)
 {
-    changeMode(&settings.pickUpType, pickUpTypeSize, "pickUpType",
+    changeMode(&settings.pickUpType, mPickUpTypeSize, "pickUpType",
         &GameModifiers::getPickUpTypeString, 0, true, forward);
 }
 
-static const char *const pickUpTypeStrings[] =
+static const char *const mPickUpTypeStrings[] =
 {
     // TRANSLATORS: pickup size in status bar
     N_("(S) small pick up 1x1 cells"),
@@ -361,19 +361,19 @@ static const char *const pickUpTypeStrings[] =
 
 std::string GameModifiers::getPickUpTypeString()
 {
-    return gettext(getVarItem(&pickUpTypeStrings[0],
-        settings.pickUpType, pickUpTypeSize));
+    return gettext(getVarItem(&mPickUpTypeStrings[0],
+        settings.pickUpType, mPickUpTypeSize));
 }
 
-const unsigned magicAttackSize = 5;
+const unsigned mMagicAttackSize = 5;
 
 void GameModifiers::changeMagicAttackType(const bool forward)
 {
-    changeMode(&settings.magicAttackType, magicAttackSize, "magicAttackType",
+    changeMode(&settings.magicAttackType, mMagicAttackSize, "magicAttackType",
         &GameModifiers::getMagicAttackString, 0, true, forward);
 }
 
-static const char *const magicAttackStrings[] =
+static const char *const mMagicAttackStrings[] =
 {
     // TRANSLATORS: magic attack in status bar
     N_("(f) use #flar for magic attack"),
@@ -391,19 +391,19 @@ static const char *const magicAttackStrings[] =
 
 std::string GameModifiers::getMagicAttackString()
 {
-    return gettext(getVarItem(&magicAttackStrings[0],
-        settings.magicAttackType, magicAttackSize));
+    return gettext(getVarItem(&mMagicAttackStrings[0],
+        settings.magicAttackType, mMagicAttackSize));
 }
 
-const unsigned pvpAttackTypeSize = 4;
+const unsigned mPvpAttackTypeSize = 4;
 
 void GameModifiers::changePvpAttackType(const bool forward)
 {
-    changeMode(&settings.pvpAttackType, pvpAttackTypeSize, "pvpAttackType",
+    changeMode(&settings.pvpAttackType, mPvpAttackTypeSize, "pvpAttackType",
         &GameModifiers::getPvpAttackTypeString, 0, true, forward);
 }
 
-static const char *const pvpAttackTypeStrings[] =
+static const char *const mPvpAttackTypeStrings[] =
 {
     // TRANSLATORS: player attack type in status bar
     N_("(a) attack all players"),
@@ -419,19 +419,19 @@ static const char *const pvpAttackTypeStrings[] =
 
 std::string GameModifiers::getPvpAttackTypeString()
 {
-    return gettext(getVarItem(&pvpAttackTypeStrings[0],
-        settings.pvpAttackType, pvpAttackTypeSize));
+    return gettext(getVarItem(&mPvpAttackTypeStrings[0],
+        settings.pvpAttackType, mPvpAttackTypeSize));
 }
 
-const unsigned imitationModeSize = 2;
+const unsigned mImitationModeSize = 2;
 
 void GameModifiers::changeImitationMode(const bool forward)
 {
-    changeMode(&settings.imitationMode, imitationModeSize, "imitationMode",
+    changeMode(&settings.imitationMode, mImitationModeSize, "imitationMode",
         &GameModifiers::getImitationModeString, 0, true, forward);
 }
 
-static const char *const imitationModeStrings[] =
+static const char *const mImitationModeStrings[] =
 {
     // TRANSLATORS: imitation type in status bar
     N_("(D) default imitation"),
@@ -443,11 +443,11 @@ static const char *const imitationModeStrings[] =
 
 std::string GameModifiers::getImitationModeString()
 {
-    return gettext(getVarItem(&imitationModeStrings[0],
-        settings.imitationMode, imitationModeSize));
+    return gettext(getVarItem(&mImitationModeStrings[0],
+        settings.imitationMode, mImitationModeSize));
 }
 
-const unsigned gameModifiersSize = 2;
+const unsigned mGameModifiersSize = 2;
 
 void GameModifiers::changeGameModifiers()
 {
@@ -456,7 +456,7 @@ void GameModifiers::changeGameModifiers()
     UpdateStatusListener::distributeEvent();
 }
 
-static const char *const gameModifiersStrings[] =
+static const char *const mGameModifiersStrings[] =
 {
     // TRANSLATORS: game modifiers state in status bar
     N_("Game modifiers are enabled"),
@@ -468,13 +468,13 @@ static const char *const gameModifiersStrings[] =
 
 std::string GameModifiers::getGameModifiersString()
 {
-    return gettext(getVarItem(&gameModifiersStrings[0],
-        settings.disableGameModifiers, gameModifiersSize));
+    return gettext(getVarItem(&mGameModifiersStrings[0],
+        settings.disableGameModifiers, mGameModifiersSize));
 }
 
-const unsigned mapDrawTypeSize = 7;
+const unsigned mMapDrawTypeSize = 7;
 
-static const char *const mapDrawTypeStrings[] =
+static const char *const mMapDrawTypeStrings[] =
 {
     // TRANSLATORS: map view type in status bar
     N_("(N) normal map view"),
@@ -496,11 +496,11 @@ static const char *const mapDrawTypeStrings[] =
 
 std::string GameModifiers::getMapDrawTypeString()
 {
-    return gettext(getVarItem(&mapDrawTypeStrings[0],
-        settings.mapDrawType, mapDrawTypeSize));
+    return gettext(getVarItem(&mMapDrawTypeStrings[0],
+        settings.mapDrawType, mMapDrawTypeSize));
 }
 
-const unsigned awayModeSize = 2;
+const unsigned mAwayModeSize = 2;
 
 void GameModifiers::changeAwayMode()
 {
@@ -543,7 +543,7 @@ void GameModifiers::changeAwayMode()
     }
 }
 
-static const char *const awayModeStrings[] =
+static const char *const mAwayModeStrings[] =
 {
     // TRANSLATORS: away type in status bar
     N_("(O) on keyboard"),
@@ -555,13 +555,13 @@ static const char *const awayModeStrings[] =
 
 std::string GameModifiers::getAwayModeString()
 {
-    return gettext(getVarItem(&awayModeStrings[0],
-        settings.awayMode, awayModeSize));
+    return gettext(getVarItem(&mAwayModeStrings[0],
+        settings.awayMode, mAwayModeSize));
 }
 
-const unsigned cameraModeSize = 2;
+const unsigned mCameraModeSize = 2;
 
-static const char *const cameraModeStrings[] =
+static const char *const mCameraModeStrings[] =
 {
     // TRANSLATORS: camera mode in status bar
     N_("(G) game camera mode"),
@@ -573,6 +573,6 @@ static const char *const cameraModeStrings[] =
 
 std::string GameModifiers::getCameraModeString()
 {
-    return gettext(getVarItem(&cameraModeStrings[0],
-        settings.cameraMode, cameraModeSize));
+    return gettext(getVarItem(&mCameraModeStrings[0],
+        settings.cameraMode, mCameraModeSize));
 }
