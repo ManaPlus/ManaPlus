@@ -60,6 +60,18 @@
             &GameModifiers::get##name1##String, 0, true, forward); \
     }
 
+#define changeMethod2(name1, name2, str) \
+    void GameModifiers::change##name1(const bool forward) \
+    { \
+        changeMode(&settings.name2, m##name1##Size, str, \
+            &GameModifiers::get##name1##String, 0, true, forward); \
+    } \
+    std::string GameModifiers::get##name1##String() \
+    { \
+        return gettext(getVarItem(&m##name1##Strings[0], \
+        settings.name2, m##name1##Size)); \
+    }
+
 GameModifiers *modifiers = nullptr;
 
 GameModifiers::GameModifiers()
@@ -211,9 +223,7 @@ addModifier(MoveToTargetType, 13)
     N_("(?) move to target")
 };
 
-changeMethod(MoveToTargetType, moveToTargetType, "moveToTargetType")
-
-stringModifier(MoveToTargetType, moveToTargetType)
+changeMethod2(MoveToTargetType, moveToTargetType, "moveToTargetType")
 
 addModifier(FollowMode, 4)
 {
@@ -229,9 +239,7 @@ addModifier(FollowMode, 4)
     N_("(?) unknown follow")
 };
 
-changeMethod(FollowMode, followMode, "followMode")
-
-stringModifier(FollowMode, followMode)
+changeMethod2(FollowMode, followMode, "followMode")
 
 addModifier(AttackWeaponType, 4)
 {
@@ -247,9 +255,7 @@ addModifier(AttackWeaponType, 4)
     N_("(?) attack")
 };
 
-changeMethod(AttackWeaponType, attackWeaponType, "attackWeaponType")
-
-stringModifier(AttackWeaponType, attackWeaponType)
+changeMethod2(AttackWeaponType, attackWeaponType, "attackWeaponType")
 
 addModifier(AttackType, 4)
 {
@@ -265,9 +271,7 @@ addModifier(AttackType, 4)
     N_("(?) attack")
 };
 
-changeMethod(AttackType, attackType, "attackType")
-
-stringModifier(AttackType, attackType)
+changeMethod2(AttackType, attackType, "attackType")
 
 const unsigned mQuickDropCounterSize = 31;
 
@@ -316,9 +320,7 @@ addModifier(PickUpType, 7)
     N_("(?) pick up")
 };
 
-changeMethod(PickUpType, pickUpType, "pickUpType")
-
-stringModifier(PickUpType, pickUpType)
+changeMethod2(PickUpType, pickUpType, "pickUpType")
 
 addModifier(MagicAttackType, 5)
 {
@@ -336,9 +338,7 @@ addModifier(MagicAttackType, 5)
     N_("(?) magic attack")
 };
 
-changeMethod(MagicAttackType, magicAttackType, "magicAttackType")
-
-stringModifier(MagicAttackType, magicAttackType)
+changeMethod2(MagicAttackType, magicAttackType, "magicAttackType")
 
 addModifier(PvpAttackType, 4)
 {
@@ -354,9 +354,7 @@ addModifier(PvpAttackType, 4)
     N_("(?) pvp attack")
 };
 
-changeMethod(PvpAttackType, pvpAttackType, "pvpAttackType")
-
-stringModifier(PvpAttackType, pvpAttackType)
+changeMethod2(PvpAttackType, pvpAttackType, "pvpAttackType")
 
 addModifier(ImitationMode, 2)
 {
@@ -368,9 +366,7 @@ addModifier(ImitationMode, 2)
     N_("(?) imitation")
 };
 
-changeMethod(ImitationMode, imitationMode, "imitationMode")
-
-stringModifier(ImitationMode, imitationMode)
+changeMethod2(ImitationMode, imitationMode, "imitationMode")
 
 addModifier(GameModifiers, 2)
 {
