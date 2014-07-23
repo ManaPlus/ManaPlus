@@ -824,7 +824,7 @@ void NpcDialog::saveCamera()
     if (!viewport || mCameraMode >= 0)
         return;
 
-    mCameraMode = settings.cameraMode;
+    mCameraMode = static_cast<int>(settings.cameraMode);
     mCameraX = viewport->getCameraRelativeX();
     mCameraY = viewport->getCameraRelativeY();
 }
@@ -834,7 +834,7 @@ void NpcDialog::restoreCamera()
     if (!viewport || mCameraMode == -1)
         return;
 
-    if (settings.cameraMode != mCameraMode)
+    if (static_cast<int>(settings.cameraMode) != mCameraMode)
         viewport->toggleCameraMode();
     if (mCameraMode)
     {

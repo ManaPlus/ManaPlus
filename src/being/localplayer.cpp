@@ -2160,7 +2160,7 @@ void LocalPlayer::specialMove(const unsigned char direction)
         if (mAction == BeingAction::MOVE)
             return;
 
-        int max;
+        unsigned int max;
 
         if (settings.moveType == 2)
             max = 5;
