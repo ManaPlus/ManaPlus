@@ -46,6 +46,13 @@
     static const unsigned m##name##Size = sz; \
     static const char *const m##name##Strings[] =
 
+#define stringModifier(name1, name2) \
+    std::string GameModifiers::get##name1##String() \
+    { \
+        return gettext(getVarItem(&m##name1##Strings[0], \
+        settings.name2, m##name1##Size)); \
+    }
+
 GameModifiers *modifiers = nullptr;
 
 GameModifiers::GameModifiers()
@@ -133,11 +140,7 @@ void GameModifiers::changeMoveType(const bool forward)
         &GameModifiers::getMoveTypeString, 0, false, forward);
 }
 
-std::string GameModifiers::getMoveTypeString()
-{
-    return gettext(getVarItem(&mMoveTypeStrings[0],
-        settings.moveType, mMoveTypeSize));
-}
+stringModifier(MoveType, moveType)
 
 static const unsigned mCrazyMoveTypeSize = 11;
 
@@ -208,11 +211,7 @@ void GameModifiers::changeMoveToTargetType(const bool forward)
         &GameModifiers::getMoveToTargetTypeString, 0, true, forward);
 }
 
-std::string GameModifiers::getMoveToTargetTypeString()
-{
-    return gettext(getVarItem(&mMoveToTargetTypeStrings[0],
-        settings.moveToTargetType, mMoveToTargetTypeSize));
-}
+stringModifier(MoveToTargetType, moveToTargetType)
 
 addModifier(FollowMode, 4)
 {
@@ -234,11 +233,7 @@ void GameModifiers::changeFollowMode(const bool forward)
         &GameModifiers::getFollowModeString, 0, true, forward);
 }
 
-std::string GameModifiers::getFollowModeString()
-{
-    return gettext(getVarItem(&mFollowModeStrings[0],
-        settings.followMode, mFollowModeSize));
-}
+stringModifier(FollowMode, followMode)
 
 addModifier(AttackWeaponType, 4)
 {
@@ -261,11 +256,7 @@ void GameModifiers::changeAttackWeaponType(const bool forward)
         &GameModifiers::getAttackWeaponTypeString, 1, true, forward);
 }
 
-std::string GameModifiers::getAttackWeaponTypeString()
-{
-    return gettext(getVarItem(&mAttackWeaponTypeStrings[0],
-        settings.attackWeaponType, mAttackWeaponTypeSize));
-}
+stringModifier(AttackWeaponType, attackWeaponType)
 
 addModifier(AttackType, 4)
 {
@@ -287,11 +278,7 @@ void GameModifiers::changeAttackType(const bool forward)
         &GameModifiers::getAttackTypeString, 0, true, forward);
 }
 
-std::string GameModifiers::getAttackTypeString()
-{
-    return gettext(getVarItem(&mAttackTypeStrings[0],
-        settings.attackType, mAttackTypeSize));
-}
+stringModifier(AttackType, attackType)
 
 const unsigned mQuickDropCounterSize = 31;
 
@@ -351,11 +338,7 @@ void GameModifiers::changePickUpType(const bool forward)
         &GameModifiers::getPickUpTypeString, 0, true, forward);
 }
 
-std::string GameModifiers::getPickUpTypeString()
-{
-    return gettext(getVarItem(&mPickUpTypeStrings[0],
-        settings.pickUpType, mPickUpTypeSize));
-}
+stringModifier(PickUpType, pickUpType)
 
 addModifier(MagicAttack, 5)
 {
@@ -379,11 +362,7 @@ void GameModifiers::changeMagicAttackType(const bool forward)
         &GameModifiers::getMagicAttackString, 0, true, forward);
 }
 
-std::string GameModifiers::getMagicAttackString()
-{
-    return gettext(getVarItem(&mMagicAttackStrings[0],
-        settings.magicAttackType, mMagicAttackSize));
-}
+stringModifier(MagicAttack, magicAttack)
 
 addModifier(PvpAttackType, 4)
 {
@@ -405,11 +384,7 @@ void GameModifiers::changePvpAttackType(const bool forward)
         &GameModifiers::getPvpAttackTypeString, 0, true, forward);
 }
 
-std::string GameModifiers::getPvpAttackTypeString()
-{
-    return gettext(getVarItem(&mPvpAttackTypeStrings[0],
-        settings.pvpAttackType, mPvpAttackTypeSize));
-}
+stringModifier(PvpAttackType, pvpAttackType)
 
 addModifier(ImitationMode, 2)
 {
@@ -427,11 +402,7 @@ void GameModifiers::changeImitationMode(const bool forward)
         &GameModifiers::getImitationModeString, 0, true, forward);
 }
 
-std::string GameModifiers::getImitationModeString()
-{
-    return gettext(getVarItem(&mImitationModeStrings[0],
-        settings.imitationMode, mImitationModeSize));
-}
+stringModifier(ImitationMode, imitationMode)
 
 addModifier(GameModifiers, 2)
 {
@@ -450,11 +421,7 @@ void GameModifiers::changeGameModifiers()
     UpdateStatusListener::distributeEvent();
 }
 
-std::string GameModifiers::getGameModifiersString()
-{
-    return gettext(getVarItem(&mGameModifiersStrings[0],
-        settings.disableGameModifiers, mGameModifiersSize));
-}
+stringModifier(GameModifiers, disableGameModifiers)
 
 addModifier(MapDrawType, 7)
 {
@@ -476,11 +443,7 @@ addModifier(MapDrawType, 7)
     N_("(?) map view")
 };
 
-std::string GameModifiers::getMapDrawTypeString()
-{
-    return gettext(getVarItem(&mMapDrawTypeStrings[0],
-        settings.mapDrawType, mMapDrawTypeSize));
-}
+stringModifier(MapDrawType, mapDrawType)
 
 addModifier(AwayMode, 2)
 {
@@ -533,11 +496,7 @@ void GameModifiers::changeAwayMode()
     }
 }
 
-std::string GameModifiers::getAwayModeString()
-{
-    return gettext(getVarItem(&mAwayModeStrings[0],
-        settings.awayMode, mAwayModeSize));
-}
+stringModifier(AwayMode, awayMode)
 
 addModifier(CameraMode, 2)
 {
@@ -549,8 +508,4 @@ addModifier(CameraMode, 2)
     N_("(?) away")
 };
 
-std::string GameModifiers::getCameraModeString()
-{
-    return gettext(getVarItem(&mCameraModeStrings[0],
-        settings.cameraMode, mCameraModeSize));
-}
+stringModifier(CameraMode, cameraMode)
