@@ -46,6 +46,21 @@
     static const unsigned m##name##Size = sz; \
     static const char *const m##name##Strings[] =
 
+#define addModifier2(name1, name2, str, sz, ...) \
+    static const unsigned m##name1##Size = sz; \
+    static const char *const m##name1##Strings[] = \
+    __VA_ARGS__; \
+    void GameModifiers::change##name1(const bool forward) \
+    { \
+        changeMode(&settings.name2, m##name1##Size, str, \
+            &GameModifiers::get##name1##String, 0, true, forward); \
+    } \
+    std::string GameModifiers::get##name1##String() \
+    { \
+        return gettext(getVarItem(&m##name1##Strings[0], \
+        settings.name2, m##name1##Size)); \
+    }
+
 #define stringModifier(name1, name2) \
     std::string GameModifiers::get##name1##String() \
     { \
@@ -58,18 +73,6 @@
     { \
         changeMode(&settings.name2, m##name1##Size, str, \
             &GameModifiers::get##name1##String, 0, true, forward); \
-    }
-
-#define changeMethod2(name1, name2, str) \
-    void GameModifiers::change##name1(const bool forward) \
-    { \
-        changeMode(&settings.name2, m##name1##Size, str, \
-            &GameModifiers::get##name1##String, 0, true, forward); \
-    } \
-    std::string GameModifiers::get##name1##String() \
-    { \
-        return gettext(getVarItem(&m##name1##Strings[0], \
-        settings.name2, m##name1##Size)); \
     }
 
 GameModifiers *modifiers = nullptr;
@@ -191,7 +194,7 @@ std::string GameModifiers::getCrazyMoveTypeString()
     }
 }
 
-addModifier(MoveToTargetType, 13)
+addModifier2(MoveToTargetType, moveToTargetType, "moveToTargetType", 13,
 {
     // TRANSLATORS: move to target type in status bar
     N_("(0) default moves to target"),
@@ -221,11 +224,9 @@ addModifier(MoveToTargetType, 13)
     N_("(B) moves to target in attack range - 1"),
     // TRANSLATORS: move to target type in status bar
     N_("(?) move to target")
-};
+})
 
-changeMethod2(MoveToTargetType, moveToTargetType, "moveToTargetType")
-
-addModifier(FollowMode, 4)
+addModifier2(FollowMode, followMode, "followMode", 4,
 {
     // TRANSLATORS: folow mode in status bar
     N_("(D) default follow"),
@@ -237,11 +238,9 @@ addModifier(FollowMode, 4)
     N_("(P) pet follow"),
     // TRANSLATORS: folow mode in status bar
     N_("(?) unknown follow")
-};
+})
 
-changeMethod2(FollowMode, followMode, "followMode")
-
-addModifier(AttackWeaponType, 4)
+addModifier2(AttackWeaponType, attackWeaponType, "attackWeaponType", 4,
 {
     // TRANSLATORS: switch attack type in status bar
     N_("(?) attack"),
@@ -253,11 +252,9 @@ addModifier(AttackWeaponType, 4)
     N_("(S) switch attack with shield"),
     // TRANSLATORS: switch attack type in status bar
     N_("(?) attack")
-};
+})
 
-changeMethod2(AttackWeaponType, attackWeaponType, "attackWeaponType")
-
-addModifier(AttackType, 4)
+addModifier2(AttackType, attackType, "attackType", 4,
 {
     // TRANSLATORS: attack type in status bar
     N_("(D) default attack"),
@@ -269,9 +266,7 @@ addModifier(AttackType, 4)
     N_("(d) without auto attack"),
     // TRANSLATORS: attack type in status bar
     N_("(?) attack")
-};
-
-changeMethod2(AttackType, attackType, "attackType")
+})
 
 const unsigned mQuickDropCounterSize = 31;
 
@@ -300,7 +295,7 @@ void GameModifiers::setQuickDropCounter(const int n)
     UpdateStatusListener::distributeEvent();
 }
 
-addModifier(PickUpType, 7)
+addModifier2(PickUpType, pickUpType, "pickUpType", 7,
 {
     // TRANSLATORS: pickup size in status bar
     N_("(S) small pick up 1x1 cells"),
@@ -318,11 +313,9 @@ addModifier(PickUpType, 7)
     N_("(A) go and pick up in max distance"),
     // TRANSLATORS: pickup size in status bar
     N_("(?) pick up")
-};
+})
 
-changeMethod2(PickUpType, pickUpType, "pickUpType")
-
-addModifier(MagicAttackType, 5)
+addModifier2(MagicAttackType, magicAttackType, "magicAttackType", 5,
 {
     // TRANSLATORS: magic attack in status bar
     N_("(f) use #flar for magic attack"),
@@ -336,11 +329,9 @@ addModifier(MagicAttackType, 5)
     N_("(U) use #upmarmu for magic attack"),
     // TRANSLATORS: magic attack in status bar
     N_("(?) magic attack")
-};
+})
 
-changeMethod2(MagicAttackType, magicAttackType, "magicAttackType")
-
-addModifier(PvpAttackType, 4)
+addModifier2(PvpAttackType, pvpAttackType, "pvpAttackType", 4,
 {
     // TRANSLATORS: player attack type in status bar
     N_("(a) attack all players"),
@@ -352,11 +343,9 @@ addModifier(PvpAttackType, 4)
     N_("(d) don't attack players"),
     // TRANSLATORS: player attack type in status bar
     N_("(?) pvp attack")
-};
+})
 
-changeMethod2(PvpAttackType, pvpAttackType, "pvpAttackType")
-
-addModifier(ImitationMode, 2)
+addModifier2(ImitationMode, imitationMode, "imitationMode", 2,
 {
     // TRANSLATORS: imitation type in status bar
     N_("(D) default imitation"),
@@ -364,9 +353,7 @@ addModifier(ImitationMode, 2)
     N_("(O) outfits imitation"),
     // TRANSLATORS: imitation type in status bar
     N_("(?) imitation")
-};
-
-changeMethod2(ImitationMode, imitationMode, "imitationMode")
+})
 
 addModifier(GameModifiers, 2)
 {
