@@ -47,7 +47,7 @@ namespace InputCondition
         SHORTCUT0 = 2 + 4 + 16 + 512,        // flags for shortcut keys
         GAME = 2 + 4 + 8 + 16 + 64 + 2048,   // main game key
         GAME2 = 2 + 8 + 16 + 64 + 2048,
-        ARROWKEYS = 2 + 8 + 16 + 64 + 2048 + 4096 + 16384
+        ARROWKEYS = 2 + 4 + 8 + 16 + 64 + 2048 + 4096 + 16384
     };
 }  // namespace InputCondition
 
