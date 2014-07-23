@@ -82,6 +82,13 @@ void MapDB::loadRemapXmlFile(const std::string &fileName)
 
             mMaps[name] = value;
         }
+        else if (xmlNameEqual(node, "include"))
+        {
+            const std::string name = XML::getProperty(node, "name", "");
+            if (!name.empty())
+                loadRemapXmlFile(name);
+            continue;
+        }
     }
 
     delete doc;
