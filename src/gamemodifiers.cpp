@@ -42,9 +42,15 @@
 
 #include "debug.h"
 
-#define addModifier(name, sz) \
-    static const unsigned m##name##Size = sz; \
-    static const char *const m##name##Strings[] =
+#define addModifier(name1, name2, sz, ...) \
+    static const unsigned m##name1##Size = sz; \
+    static const char *const m##name1##Strings[] = \
+    __VA_ARGS__; \
+    std::string GameModifiers::get##name1##String() \
+    { \
+        return gettext(getVarItem(&m##name1##Strings[0], \
+        settings.name2, m##name1##Size)); \
+    }
 
 #define addModifier2(name1, name2, str, sz, ...) \
     static const unsigned m##name1##Size = sz; \
@@ -55,13 +61,6 @@
         changeMode(&settings.name2, m##name1##Size, str, \
             &GameModifiers::get##name1##String, 0, true, forward); \
     } \
-    std::string GameModifiers::get##name1##String() \
-    { \
-        return gettext(getVarItem(&m##name1##Strings[0], \
-        settings.name2, m##name1##Size)); \
-    }
-
-#define stringModifier(name1, name2) \
     std::string GameModifiers::get##name1##String() \
     { \
         return gettext(getVarItem(&m##name1##Strings[0], \
@@ -139,7 +138,7 @@ const char *GameModifiers::getVarItem(const char *const *const arr,
     return arr[sz];
 }
 
-addModifier(MoveType, 5)
+addModifier(MoveType, moveType, 5,
 {
     // TRANSLATORS: move type in status bar
     N_("(D) default moves"),
@@ -153,7 +152,7 @@ addModifier(MoveType, 5)
     N_("(d) double normal + crazy"),
     // TRANSLATORS: move type in status bar
     N_("(?) unknown move")
-};
+})
 
 void GameModifiers::changeMoveType(const bool forward)
 {
@@ -161,8 +160,6 @@ void GameModifiers::changeMoveType(const bool forward)
     changeMode(&settings.moveType, mMoveTypeSize, "invertMoveDirection",
         &GameModifiers::getMoveTypeString, 0, false, forward);
 }
-
-stringModifier(MoveType, moveType)
 
 static const unsigned mCrazyMoveTypeSize = 11;
 
@@ -355,7 +352,7 @@ addModifier2(ImitationMode, imitationMode, "imitationMode", 2,
     N_("(?) imitation")
 })
 
-addModifier(GameModifiers, 2)
+addModifier(GameModifiers, disableGameModifiers, 2,
 {
     // TRANSLATORS: game modifiers state in status bar
     N_("Game modifiers are enabled"),
@@ -363,7 +360,7 @@ addModifier(GameModifiers, 2)
     N_("Game modifiers are disabled"),
     // TRANSLATORS: game modifiers state in status bar
     N_("Game modifiers are unknown")
-};
+})
 
 void GameModifiers::changeGameModifiers()
 {
@@ -372,9 +369,7 @@ void GameModifiers::changeGameModifiers()
     UpdateStatusListener::distributeEvent();
 }
 
-stringModifier(GameModifiers, disableGameModifiers)
-
-addModifier(MapDrawType, 7)
+addModifier(MapDrawType, mapDrawType, 7,
 {
     // TRANSLATORS: map view type in status bar
     N_("(N) normal map view"),
@@ -392,11 +387,9 @@ addModifier(MapDrawType, 7)
     N_("(b) black & white map view"),
     // TRANSLATORS: pickup size in status bar
     N_("(?) map view")
-};
+})
 
-stringModifier(MapDrawType, mapDrawType)
-
-addModifier(AwayMode, 2)
+addModifier(AwayMode, awayMode, 2,
 {
     // TRANSLATORS: away type in status bar
     N_("(O) on keyboard"),
@@ -404,7 +397,7 @@ addModifier(AwayMode, 2)
     N_("(A) away"),
     // TRANSLATORS: away type in status bar
     N_("(?) away")
-};
+})
 
 void GameModifiers::changeAwayMode()
 {
@@ -447,9 +440,7 @@ void GameModifiers::changeAwayMode()
     }
 }
 
-stringModifier(AwayMode, awayMode)
-
-addModifier(CameraMode, 2)
+addModifier(CameraMode, cameraMode, 2,
 {
     // TRANSLATORS: camera mode in status bar
     N_("(G) game camera mode"),
@@ -457,6 +448,4 @@ addModifier(CameraMode, 2)
     N_("(F) free camera mode"),
     // TRANSLATORS: camera mode in status bar
     N_("(?) away")
-};
-
-stringModifier(CameraMode, cameraMode)
+})
