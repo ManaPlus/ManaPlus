@@ -26,6 +26,7 @@
 #include "shopitem.h"
 #include "units.h"
 
+#include "gui/windows/setupwindow.h"
 #include "gui/windows/tradewindow.h"
 
 #include "gui/models/shopitems.h"
@@ -220,6 +221,9 @@ void BuyDialog::init()
     setMinWidth(260);
     setMinHeight(220);
     setDefaultSize(260, 230, ImageRect::CENTER);
+
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     mShopItems = new ShopItems;
 

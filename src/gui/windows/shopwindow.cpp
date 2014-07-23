@@ -29,6 +29,7 @@
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/itemamountwindow.h"
 #include "gui/windows/selldialog.h"
+#include "gui/windows/setupwindow.h"
 #include "gui/windows/tradewindow.h"
 
 #include "gui/models/shopitems.h"
@@ -135,6 +136,9 @@ ShopWindow::ShopWindow() :
         setDefaultSize(500, 300, ImageRect::CENTER);
     else
         setDefaultSize(380, 300, ImageRect::CENTER);
+
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     mAnnounceCounter[BUY] = 0;
     mAnnounceCounter[SELL] = 0;

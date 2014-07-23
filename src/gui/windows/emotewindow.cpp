@@ -23,6 +23,8 @@
 #include "gui/models/colormodel.h"
 #include "gui/models/namesmodel.h"
 
+#include "gui/windows/setupwindow.h"
+
 #include "gui/widgets/colorpage.h"
 #include "gui/widgets/emotepage.h"
 #include "gui/widgets/scrollarea.h"
@@ -65,6 +67,9 @@ EmoteWindow::EmoteWindow() :
     mFontPage->postInit();
     setShowTitle(false);
     setResizable(true);
+
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     addMouseListener(this);
 }

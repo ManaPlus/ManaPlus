@@ -26,6 +26,8 @@
 #include "net/net.h"
 #include "net/npchandler.h"
 
+#include "gui/windows/setupwindow.h"
+
 #include "gui/widgets/button.h"
 
 #include "utils/gettext.h"
@@ -60,6 +62,9 @@ void BuySellDialog::init()
 {
     setWindowName("BuySell");
     setCloseButton(true);
+
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     static const char *buttonNames[] =
     {

@@ -33,6 +33,7 @@
 #include "gui/viewport.h"
 
 #include "gui/windows/chatwindow.h"
+#include "gui/windows/setupwindow.h"
 #include "gui/windows/socialwindow.h"
 
 #include "gui/widgets/button.h"
@@ -125,6 +126,9 @@ void WhoIsOnline::postInit()
     setResizable(true);
     setStickyButtonLock(true);
     setSaveVisible(true);
+
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     mUpdateButton->setEnabled(false);
     mUpdateButton->setDimension(Rect(5, 5, w - 10, 20 + 5));

@@ -22,6 +22,8 @@
 
 #include "gui/windows/botcheckerwindow.h"
 
+#include "gui/windows/setupwindow.h"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/label.h"
@@ -58,6 +60,9 @@ BotCheckerWindow::BotCheckerWindow() :
     const int h = 250;
 
     setSaveVisible(true);
+
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     mTable->setOpaque(false);
     mTable->setLinewiseSelection(true);

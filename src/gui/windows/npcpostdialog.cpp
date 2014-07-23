@@ -22,6 +22,8 @@
 
 #include "gui/windows/npcpostdialog.h"
 
+#include "gui/windows/setupwindow.h"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/textbox.h"
@@ -52,6 +54,9 @@ NpcPostDialog::NpcPostDialog(const int npcId) :
 
 void NpcPostDialog::postInit()
 {
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
+
     // create text field for receiver
     // TRANSLATORS: label in npc post dialog
     Label *const senderText = new Label(this, _("To:"));

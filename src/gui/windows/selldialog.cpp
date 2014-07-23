@@ -28,6 +28,7 @@
 #include "being/playerinfo.h"
 
 #include "gui/windows/confirmdialog.h"
+#include "gui/windows/setupwindow.h"
 #include "gui/windows/tradewindow.h"
 
 #include "gui/models/shopitems.h"
@@ -91,6 +92,9 @@ void SellDialog::init()
     setMinWidth(260);
     setMinHeight(220);
     setDefaultSize(260, 230, ImageRect::CENTER);
+
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     // Create a ShopItems instance, that is aware of duplicate entries.
     mShopItems = new ShopItems(true);

@@ -26,6 +26,8 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layoutcell.h"
 
+#include "gui/windows/setupwindow.h"
+
 #include "actormanager.h"
 #include "client.h"
 #include "game.h"
@@ -113,6 +115,9 @@ KillStats::KillStats() :
     setSaveVisible(true);
     setStickyButtonLock(true);
     setDefaultSize(250, 250, 350, 300);
+
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     const int xp(PlayerInfo::getAttribute(Attributes::EXP));
     int xpNextLevel(PlayerInfo::getAttribute(Attributes::EXP_NEEDED));

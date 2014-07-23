@@ -35,6 +35,8 @@
 
 #include "gui/viewport.h"
 
+#include "gui/windows/setupwindow.h"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/label.h"
@@ -93,6 +95,9 @@ OutfitWindow::OutfitWindow() :
     setDefaultSize(250, 400, 150, 290);
     setMinWidth(145);
     setMinHeight(220);
+
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     mCurrentLabel->setAlignment(Graphics::CENTER);
     mKeyLabel->setAlignment(Graphics::CENTER);

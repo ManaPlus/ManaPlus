@@ -32,6 +32,8 @@
 
 #include "gui/models/questsmodel.h"
 
+#include "gui/windows/setupwindow.h"
+
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
@@ -96,6 +98,9 @@ QuestsWindow::QuestsWindow() :
     setDefaultSize(400, 350, ImageRect::RIGHT);
     setMinWidth(310);
     setMinHeight(220);
+
+    if (setupWindow)
+        setupWindow->registerWindowForReset(this);
 
     mQuestsListBox->setActionEventId("select");
     mQuestsListBox->addActionListener(this);
