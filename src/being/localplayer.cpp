@@ -1221,39 +1221,6 @@ void LocalPlayer::moveToHome()
     }
 }
 
-void LocalPlayer::changeMode(unsigned *restrict const var,
-                             const unsigned limit,
-                             const char *restrict const conf,
-                             std::string (LocalPlayer::*const func)(),
-                             const unsigned def,
-                             const bool save,
-                             const bool forward)
-{
-    if (!var)
-        return;
-
-    if (forward)
-    {
-        (*var) ++;
-        if (*var >= limit)
-            *var = def;
-    }
-    else
-    {
-        if (!*var)
-            *var = limit - 1;
-        else
-            (*var) --;
-    }
-
-    if (save)
-        config.setValue(conf, *var);
-    UpdateStatusListener::distributeEvent();
-    const std::string str = (this->*func)();
-    if (str.size() > 4)
-        debugMsg(str.substr(4));
-}
-
 void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
 {
     if (settings.attackWeaponType == 1 || !target || !PlayerInfo::getInventory())
