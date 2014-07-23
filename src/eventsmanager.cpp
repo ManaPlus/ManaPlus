@@ -445,7 +445,7 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
             WindowManager::setIsMinimized(true);
             if (inGame)
             {
-                if (player_node && !player_node->getAway())
+                if (player_node && !settings.awayMode)
                 {
                     fpsLimit = config.getIntValue("altfpslimit");
                     player_node->setHalfAway(true);
@@ -460,7 +460,7 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
             {
                 if (player_node)
                 {
-                    if (!player_node->getAway())
+                    if (!settings.awayMode)
                         fpsLimit = config.getIntValue("fpslimit");
                     player_node->setHalfAway(false);
                 }
