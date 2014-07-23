@@ -174,7 +174,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mKeepAttacking(false),
     mPathSetByMouse(false),
     mWaitPing(false),
-    mPseudoAwayMode(false),
     mShowNavigePath(false)
 {
     logger->log1("LocalPlayer::LocalPlayer");
@@ -342,7 +341,7 @@ void LocalPlayer::slowLogic()
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
             smile |= BeingFlag::SHOP;
 
-        if (settings.awayMode || mPseudoAwayMode)
+        if (settings.awayMode || settings.pseudoAwayMode)
             smile |= BeingFlag::AWAY;
 
         if (mInactive)
@@ -2527,7 +2526,7 @@ void LocalPlayer::setAfkMessage(std::string message)
 void LocalPlayer::setPseudoAway(const std::string &message)
 {
     setAfkMessage(message);
-    mPseudoAwayMode = !mPseudoAwayMode;
+    settings.pseudoAwayMode = !settings.pseudoAwayMode;
 }
 
 void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
@@ -3326,7 +3325,7 @@ void LocalPlayer::updateStatus() const
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
             status |= BeingFlag::SHOP;
 
-        if (settings.awayMode || mPseudoAwayMode)
+        if (settings.awayMode || settings.pseudoAwayMode)
             status |= BeingFlag::AWAY;
 
         if (mInactive)

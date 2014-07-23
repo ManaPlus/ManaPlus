@@ -236,9 +236,6 @@ class LocalPlayer final : public Being,
 
         void setPseudoAway(const std::string &message);
 
-        bool getPseudoAway() const A_WARN_UNUSED
-        { return mPseudoAwayMode; }
-
         void setHalfAway(const bool n)
         { mInactive = n; }
 
@@ -534,7 +531,6 @@ class LocalPlayer final : public Being,
         // Tells if the path was set using mouse
         bool mPathSetByMouse;
         bool mWaitPing;
-        bool mPseudoAwayMode;
         bool mShowNavigePath;
 };
 

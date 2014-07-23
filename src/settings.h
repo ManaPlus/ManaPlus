@@ -72,7 +72,8 @@ class Settings final
             inputFocused(true),
             mouseFocused(true),
             disableGameModifiers(false),
-            awayMode(false)
+            awayMode(false),
+            pseudoAwayMode(false)
         { }
 
         std::string updateHost;
@@ -114,6 +115,7 @@ class Settings final
         bool mouseFocused;
         bool disableGameModifiers;
         bool awayMode;
+        bool pseudoAwayMode;
 };
 
 extern Settings settings;
