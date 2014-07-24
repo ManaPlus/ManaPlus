@@ -255,6 +255,17 @@ void SetupWindow::unregisterWindowForReset(Window *const window)
     }
 }
 
+void SetupWindow::hideWindows()
+{
+    FOR_EACH (std::list<Window*>::const_iterator, it, mWindowsToReset)
+    {
+        Window *const window = *it;
+        if (window)
+            window->setVisible(false);
+    }
+    setVisible(false);
+}
+
 void SetupWindow::doCancel()
 {
     setVisible(false);

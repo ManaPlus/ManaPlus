@@ -651,34 +651,8 @@ impHandler0(sit)
 
 impHandler0(hideWindows)
 {
-    if (statusWindow)
-        statusWindow->setVisible(false);
-    if (inventoryWindow)
-        inventoryWindow->setVisible(false);
-    if (shopWindow)
-        shopWindow->setVisible(false);
-    if (skillDialog)
-        skillDialog->setVisible(false);
     if (setupWindow)
-        setupWindow->setVisible(false);
-    if (equipmentWindow)
-        equipmentWindow->setVisible(false);
-    if (helpWindow)
-        helpWindow->setVisible(false);
-    if (debugWindow)
-        debugWindow->setVisible(false);
-    if (outfitWindow)
-        outfitWindow->setVisible(false);
-    if (dropShortcutWindow)
-        dropShortcutWindow->setVisible(false);
-    if (spellShortcutWindow)
-        spellShortcutWindow->setVisible(false);
-    if (botCheckerWindow)
-        botCheckerWindow->setVisible(false);
-    if (socialWindow)
-        socialWindow->setVisible(false);
-    if (questsWindow)
-        questsWindow->setVisible(false);
+        setupWindow->hideWindows();
     return true;
 }
 
