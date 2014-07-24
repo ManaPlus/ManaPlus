@@ -243,6 +243,18 @@ void SetupWindow::registerWindowForReset(Window *const window)
     mWindowsToReset.push_back(window);
 }
 
+void SetupWindow::unregisterWindowForReset(Window *const window)
+{
+    FOR_EACH (std::list<Window*>::const_iterator, it, mWindowsToReset)
+    {
+        if (*it == window)
+        {
+            mWindowsToReset.erase(it);
+            return;
+        }
+    }
+}
+
 void SetupWindow::doCancel()
 {
     setVisible(false);

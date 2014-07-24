@@ -79,6 +79,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/windows/setupwindow.h"
+
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layout.h"
 
@@ -218,6 +220,9 @@ Window::~Window()
 
     if (gui)
         gui->removeDragged(this);
+
+    if (setupWindow)
+        setupWindow->unregisterWindowForReset(this);
 
     client->windowRemoved(this);
 

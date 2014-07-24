@@ -62,6 +62,8 @@ class SetupWindow final : public Window,
 
         void registerWindowForReset(Window *const window);
 
+        void unregisterWindowForReset(Window *const window);
+
         void clearWindowsForReset()
         { mWindowsToReset.clear(); }
 
