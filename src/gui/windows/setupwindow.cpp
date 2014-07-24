@@ -245,7 +245,7 @@ void SetupWindow::registerWindowForReset(Window *const window)
 
 void SetupWindow::unregisterWindowForReset(Window *const window)
 {
-    FOR_EACH (std::list<Window*>::const_iterator, it, mWindowsToReset)
+    FOR_EACH (std::list<Window*>::iterator, it, mWindowsToReset)
     {
         if (*it == window)
         {
