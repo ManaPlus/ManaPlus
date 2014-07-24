@@ -224,7 +224,10 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
             }
             else if (name == "follow-parent")
             {
-                mParticleFollow = true;
+                std::string value = XML::getProperty(propertyNode,
+                    "value", "0");
+                if (value == "1" || value == "true")
+                    mParticleFollow = true;
             }
             else
             {
