@@ -35,6 +35,8 @@
 
 #include "gui/widgets/tabs/chattab.h"
 
+#include "resources/map/map.h"
+
 #include "listeners/awaylistener.h"
 #include "listeners/updatestatuslistener.h"
 
@@ -449,3 +451,31 @@ addModifier(CameraMode, cameraMode, 2,
     // TRANSLATORS: camera mode in status bar
     N_("(?) away")
 })
+
+void GameModifiers::resetModifiers()
+{
+    settings.moveType = 0;
+    settings.crazyMoveType = config.resetIntValue("crazyMoveType");
+    settings.moveToTargetType = config.resetIntValue("moveToTargetType");
+    settings.followMode = config.resetIntValue("followMode");
+    settings.attackWeaponType = config.resetIntValue("attackWeaponType");
+    settings.attackType = config.resetIntValue("attackType");
+    settings.magicAttackType = config.resetIntValue("magicAttackType");
+    settings.pvpAttackType = config.resetIntValue("pvpAttackType");
+    settings.quickDropCounter = config.resetIntValue("quickDropCounter");
+    settings.pickUpType = config.resetIntValue("pickUpType");
+    settings.mapDrawType = MapType::NORMAL;
+    if (viewport)
+    {
+        if (settings.cameraMode)
+            viewport->toggleCameraMode();
+        Map *const map = viewport->getMap();
+        if (map)
+            map->setDrawLayersFlags(0);
+    }
+    settings.imitationMode = config.resetIntValue("imitationMode");
+    settings.disableGameModifiers = config.resetBoolValue(
+        "disableGameModifiers");
+
+    UpdateStatusListener::distributeEvent();
+}

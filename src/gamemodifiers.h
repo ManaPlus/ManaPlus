@@ -100,6 +100,8 @@ class GameModifiers final
 
         std::string getCameraModeString();
 
+        void resetModifiers();
+
     protected:
         static const char *getVarItem(const char *const *const arr,
                                       const unsigned index,

@@ -366,8 +366,6 @@ class LocalPlayer final : public Being,
 
         void checkNewName(Being *const being);
 
-        void resetYellowBar();
-
         unsigned char getWalkMask() const override final A_WARN_UNUSED;
 
         void saveHomes();

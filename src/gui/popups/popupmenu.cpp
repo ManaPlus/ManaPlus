@@ -28,6 +28,7 @@
 #include "configuration.h"
 #include "dropshortcut.h"
 #include "game.h"
+#include "gamemodifiers.h"
 #include "guild.h"
 #include "guildmanager.h"
 #include "item.h"
@@ -1721,8 +1722,8 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "reset yellow")
     {
-        if (player_node)
-            player_node->resetYellowBar();
+        if (modifiers)
+            modifiers->resetModifiers();
     }
     else if (link == "bar to chat" && !mNick.empty())
     {

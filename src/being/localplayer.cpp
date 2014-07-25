@@ -3204,33 +3204,6 @@ void LocalPlayer::checkNewName(Being *const being)
     }
 }
 
-void LocalPlayer::resetYellowBar()
-{
-    settings.moveType = 0;
-    settings.crazyMoveType = config.resetIntValue("crazyMoveType");
-    settings.moveToTargetType = config.resetIntValue("moveToTargetType");
-    settings.followMode = config.resetIntValue("followMode");
-    settings.attackWeaponType = config.resetIntValue("attackWeaponType");
-    settings.attackType = config.resetIntValue("attackType");
-    settings.magicAttackType = config.resetIntValue("magicAttackType");
-    settings.pvpAttackType = config.resetIntValue("pvpAttackType");
-    settings.quickDropCounter = config.resetIntValue("quickDropCounter");
-    settings.pickUpType = config.resetIntValue("pickUpType");
-    if (viewport)
-    {
-        settings.mapDrawType = MapType::NORMAL;
-        if (settings.cameraMode)
-            viewport->toggleCameraMode();
-    }
-    if (mMap)
-        mMap->setDrawLayersFlags(0);
-    settings.imitationMode = config.resetIntValue("imitationMode");
-    settings.disableGameModifiers = config.resetBoolValue(
-        "disableGameModifiers");
-
-    UpdateStatusListener::distributeEvent();
-}
-
 unsigned char LocalPlayer::getWalkMask() const
 {
     // for now blocking all types of collisions
