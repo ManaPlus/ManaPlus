@@ -91,18 +91,14 @@
 #define impHandler0(name) bool name(const InputEvent &event A_UNUSED)
 
 #define callYellowBar(name) \
-    if (modifiers) \
-    { \
-        modifiers->name(!inputManager.isActionActive( \
-            InputAction::STOP_ATTACK)); \
-        return true; \
-    } \
-    return false;
+    GameModifiers::name(!inputManager.isActionActive( \
+        InputAction::STOP_ATTACK)); \
+    return true;
 
 #define callYellowBarCond(name) \
-    if (modifiers && !settings.disableGameModifiers) \
+    if (!settings.disableGameModifiers) \
     { \
-        modifiers->name(!inputManager.isActionActive( \
+        GameModifiers::name(!inputManager.isActionActive( \
             InputAction::STOP_ATTACK)); \
         return true; \
     } \
@@ -563,7 +559,7 @@ impHandler0(changeGameModifier)
 {
     if (player_node)
     {
-        modifiers->changeGameModifiers();
+        GameModifiers::changeGameModifiers();
         return true;
     }
     return false;
@@ -579,8 +575,7 @@ impHandler0(changeAudio)
 
 impHandler0(away)
 {
-    if (modifiers)
-        modifiers->changeAwayMode();
+    GameModifiers::changeAwayMode();
     if (player_node)
     {
         player_node->updateStatus();

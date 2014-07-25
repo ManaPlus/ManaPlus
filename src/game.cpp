@@ -141,7 +141,6 @@ static void initEngines()
     actorManager = new ActorManager;
     commandHandler = new CommandHandler;
     effectManager = new EffectManager;
-    modifiers = new GameModifiers;
     AuctionManager::init();
     GuildManager::init();
 
@@ -423,7 +422,6 @@ Game::~Game()
 
     AnimatedSprite::setEnableCache(false);
 
-    delete2(modifiers);
     delete2(actorManager)
     if (client->getState() != STATE_CHANGE_MAP)
         delete2(player_node)

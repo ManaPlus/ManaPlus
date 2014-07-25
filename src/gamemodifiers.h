@@ -34,80 +34,78 @@ class GameModifiers final
 
         ~GameModifiers();
 
-        void changeMode(unsigned *restrict const var,
-                        const unsigned limit,
-                        const char *restrict const conf,
-                        std::string (GameModifiers::*const func)(),
-                        const unsigned def,
-                        const bool save,
-                        const bool forward);
+        static void changeMode(unsigned *restrict const var,
+                               const unsigned limit,
+                               const char *restrict const conf,
+                               std::string (*const func)(),
+                               const unsigned def,
+                               const bool save,
+                               const bool forward);
 
-        void changeMoveType(const bool forward);
+        static void changeMoveType(const bool forward);
 
-        void changeCrazyMoveType(const bool forward);
+        static void changeCrazyMoveType(const bool forward);
 
-        void changeMoveToTargetType(const bool forward);
+        static void changeMoveToTargetType(const bool forward);
 
-        void changeFollowMode(const bool forward);
+        static void changeFollowMode(const bool forward);
 
-        void changeAttackWeaponType(const bool forward);
+        static void changeAttackWeaponType(const bool forward);
 
-        void changeAttackType(const bool forward);
+        static void changeAttackType(const bool forward);
 
-        void changeQuickDropCounter(const bool forward);
+        static void changeQuickDropCounter(const bool forward);
 
-        void changePickUpType(const bool forward);
+        static void changePickUpType(const bool forward);
 
-        void changeMagicAttackType(const bool forward);
+        static void changeMagicAttackType(const bool forward);
 
-        void changePvpAttackType(const bool forward);
+        static void changePvpAttackType(const bool forward);
 
-        void changeImitationMode(const bool forward);
+        static void changeImitationMode(const bool forward);
 
-        void changeGameModifiers();
+        static void changeGameModifiers();
 
-        void changeAwayMode();
+        static void changeAwayMode();
 
-        void setQuickDropCounter(const int n);
+        static void setQuickDropCounter(const int n);
 
-        std::string getMoveTypeString();
+        static std::string getMoveTypeString();
 
-        std::string getCrazyMoveTypeString();
+        static std::string getCrazyMoveTypeString();
 
-        std::string getMoveToTargetTypeString();
+        static std::string getMoveToTargetTypeString();
 
-        std::string getFollowModeString();
+        static std::string getFollowModeString();
 
-        std::string getAttackWeaponTypeString();
+        static std::string getAttackWeaponTypeString();
 
-        std::string getAttackTypeString();
+        static std::string getAttackTypeString();
 
-        std::string getQuickDropCounterString();
+        static std::string getQuickDropCounterString();
 
-        std::string getPickUpTypeString();
+        static std::string getPickUpTypeString();
 
-        std::string getMagicAttackTypeString();
+        static std::string getMagicAttackTypeString();
 
-        std::string getPvpAttackTypeString();
+        static std::string getPvpAttackTypeString();
 
-        std::string getImitationModeString();
+        static std::string getImitationModeString();
 
-        std::string getGameModifiersString();
+        static std::string getGameModifiersString();
 
-        std::string getMapDrawTypeString();
+        static std::string getMapDrawTypeString();
 
-        std::string getAwayModeString();
+        static std::string getAwayModeString();
 
-        std::string getCameraModeString();
+        static std::string getCameraModeString();
 
-        void resetModifiers();
+        static void resetModifiers();
 
     protected:
         static const char *getVarItem(const char *const *const arr,
                                       const unsigned index,
                                       const unsigned sz) A_WARN_UNUSED;
 };
-
-extern GameModifiers *modifiers;
 
 #endif  // GAMEMODIFIERS_H

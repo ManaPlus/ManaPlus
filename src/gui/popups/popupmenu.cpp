@@ -1722,8 +1722,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "reset yellow")
     {
-        if (modifiers)
-            modifiers->resetModifiers();
+        GameModifiers::resetModifiers();
     }
     else if (link == "bar to chat" && !mNick.empty())
     {

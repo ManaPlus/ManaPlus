@@ -76,8 +76,6 @@
             &GameModifiers::get##name1##String, 0, true, forward); \
     }
 
-GameModifiers *modifiers = nullptr;
-
 GameModifiers::GameModifiers()
 {
     settings.crazyMoveType = config.getIntValue("crazyMoveType");
@@ -101,7 +99,7 @@ GameModifiers::~GameModifiers()
 void GameModifiers::changeMode(unsigned *restrict const var,
                                const unsigned limit,
                                const char *restrict const conf,
-                               std::string (GameModifiers::*const func)(),
+                               std::string (*const func)(),
                                const unsigned def,
                                const bool save,
                                const bool forward)
@@ -126,7 +124,7 @@ void GameModifiers::changeMode(unsigned *restrict const var,
     if (save)
         config.setValue(conf, *var);
     UpdateStatusListener::distributeEvent();
-    const std::string str = (this->*func)();
+    const std::string str = (*func)();
     if (str.size() > 4)
         debugMsg(str.substr(4));
 }

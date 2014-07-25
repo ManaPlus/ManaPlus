@@ -1162,8 +1162,7 @@ impHandler2(dumpTests)
 
 impHandler1(setDrop)
 {
-    if (modifiers)
-        modifiers->setQuickDropCounter(atoi(args.c_str()));
+    GameModifiers::setQuickDropCounter(atoi(args.c_str()));
 }
 
 impHandler0(error)

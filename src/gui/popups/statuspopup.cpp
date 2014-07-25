@@ -137,37 +137,34 @@ void StatusPopup::setLabelText(const int num,
 
 void StatusPopup::updateLabels() const
 {
-    if (!modifiers)
-        return;
-
-    setLabelText(0, modifiers->getMoveTypeString(),
+    setLabelText(0, GameModifiers::getMoveTypeString(),
         InputAction::INVERT_DIRECTION);
-    setLabelText(1, modifiers->getCrazyMoveTypeString(),
+    setLabelText(1, GameModifiers::getCrazyMoveTypeString(),
         InputAction::CHANGE_CRAZY_MOVES_TYPE);
-    setLabelText(2, modifiers->getMoveToTargetTypeString(),
+    setLabelText(2, GameModifiers::getMoveToTargetTypeString(),
         InputAction::CHANGE_MOVE_TO_TARGET);
-    setLabelText(3, modifiers->getFollowModeString(),
+    setLabelText(3, GameModifiers::getFollowModeString(),
         InputAction::CHANGE_FOLLOW_MODE);
-    setLabelText(4, modifiers->getAttackWeaponTypeString(),
+    setLabelText(4, GameModifiers::getAttackWeaponTypeString(),
         InputAction::CHANGE_ATTACK_WEAPON_TYPE);
-    setLabelText(5, modifiers->getAttackTypeString(),
+    setLabelText(5, GameModifiers::getAttackTypeString(),
         InputAction::CHANGE_ATTACK_TYPE);
-    setLabelText(6, modifiers->getQuickDropCounterString(),
+    setLabelText(6, GameModifiers::getQuickDropCounterString(),
         InputAction::SWITCH_QUICK_DROP);
-    setLabelText(7, modifiers->getPickUpTypeString(),
+    setLabelText(7, GameModifiers::getPickUpTypeString(),
         InputAction::CHANGE_PICKUP_TYPE);
-    setLabelText(8, modifiers->getMapDrawTypeString(),
+    setLabelText(8, GameModifiers::getMapDrawTypeString(),
         InputAction::PATHFIND);
-    setLabelText(9, modifiers->getMagicAttackTypeString(),
+    setLabelText(9, GameModifiers::getMagicAttackTypeString(),
         InputAction::SWITCH_MAGIC_ATTACK);
-    setLabelText(10, modifiers->getPvpAttackTypeString(),
+    setLabelText(10, GameModifiers::getPvpAttackTypeString(),
         InputAction::SWITCH_PVP_ATTACK);
-    setLabelText(11, modifiers->getGameModifiersString(),
+    setLabelText(11, GameModifiers::getGameModifiersString(),
         InputAction::DISABLE_GAME_MODIFIERS);
-    setLabelText(12, modifiers->getImitationModeString(),
+    setLabelText(12, GameModifiers::getImitationModeString(),
         InputAction::CHANGE_IMITATION_MODE);
-    setLabelText(13, modifiers->getAwayModeString(),
+    setLabelText(13, GameModifiers::getAwayModeString(),
         InputAction::AWAY);
-    setLabelText(14, modifiers->getCameraModeString(),
+    setLabelText(14, GameModifiers::getCameraModeString(),
         InputAction::CAMERA);
 }

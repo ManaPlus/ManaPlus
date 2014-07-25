@@ -640,27 +640,24 @@ std::string StatusWindow::translateLetter2(const std::string &letters)
 void StatusWindow::updateStatusBar(ProgressBar *const bar,
                                    const bool percent A_UNUSED) const
 {
-    if (!modifiers)
-        return;
-
-    bar->setText(translateLetter2(modifiers->getMoveTypeString())
-        .append(translateLetter2(modifiers->getCrazyMoveTypeString()))
-        .append(translateLetter2(modifiers->getMoveToTargetTypeString()))
-        .append(translateLetter2(modifiers->getFollowModeString()))
+    bar->setText(translateLetter2(GameModifiers::getMoveTypeString())
+        .append(translateLetter2(GameModifiers::getCrazyMoveTypeString()))
+        .append(translateLetter2(GameModifiers::getMoveToTargetTypeString()))
+        .append(translateLetter2(GameModifiers::getFollowModeString()))
         .append(" ").append(translateLetter2(
-        modifiers->getAttackWeaponTypeString()))
-        .append(translateLetter2(modifiers->getAttackTypeString()))
-        .append(translateLetter2(modifiers->getMagicAttackTypeString()))
-        .append(translateLetter2(modifiers->getPvpAttackTypeString()))
+        GameModifiers::getAttackWeaponTypeString()))
+        .append(translateLetter2(GameModifiers::getAttackTypeString()))
+        .append(translateLetter2(GameModifiers::getMagicAttackTypeString()))
+        .append(translateLetter2(GameModifiers::getPvpAttackTypeString()))
         .append(" ").append(translateLetter2(
-        modifiers->getQuickDropCounterString()))
-        .append(translateLetter2(modifiers->getPickUpTypeString()))
+        GameModifiers::getQuickDropCounterString()))
+        .append(translateLetter2(GameModifiers::getPickUpTypeString()))
         .append(" ").append(translateLetter2(
-        modifiers->getMapDrawTypeString()))
+        GameModifiers::getMapDrawTypeString()))
         .append(" ").append(translateLetter2(
-        modifiers->getImitationModeString()))
-        .append(translateLetter2(modifiers->getCameraModeString()))
-        .append(translateLetter2(modifiers->getAwayModeString())));
+        GameModifiers::getImitationModeString()))
+        .append(translateLetter2(GameModifiers::getCameraModeString()))
+        .append(translateLetter2(GameModifiers::getAwayModeString())));
 
     bar->setProgress(50);
     if (settings.disableGameModifiers)
