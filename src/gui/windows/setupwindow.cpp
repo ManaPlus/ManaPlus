@@ -160,6 +160,7 @@ SetupWindow::~SetupWindow()
 {
     delete_all(mTabs);
     mButtons.clear();
+    setupWindow = nullptr;
 }
 
 void SetupWindow::action(const ActionEvent &event)
