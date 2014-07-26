@@ -224,7 +224,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
             }
             else if (name == "follow-parent")
             {
-                std::string value = XML::getProperty(propertyNode,
+                const std::string value = XML::getProperty(propertyNode,
                     "value", "0");
                 if (value == "1" || value == "true")
                     mParticleFollow = true;
@@ -242,7 +242,8 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
                                        rotation, dyePalettes);
             mParticleChildEmitters.push_back(newEmitter);
         }
-        else if (xmlNameEqual(propertyNode, "rotation"))
+        else if (xmlNameEqual(propertyNode, "rotation")
+                 || xmlNameEqual(propertyNode, "animation"))
         {
             ImageSet *const imageset = getImageSet(propertyNode);
             if (!imageset)
@@ -251,6 +252,9 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
                 continue;
             }
             mTempSets.push_back(imageset);
+
+            Animation &animation = (xmlNameEqual(propertyNode, "rotation")) ?
+                mParticleRotation : mParticleAnimation;
 
             // Get animation frames
             for_each_xml_child_node(frameNode, propertyNode)
@@ -282,7 +286,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
                         continue;
                     }
 
-                    mParticleRotation.addFrame(img, delay,
+                    animation.addFrame(img, delay,
                         offsetX, offsetY, rand);
                 }
                 else if (xmlNameEqual(frameNode, "sequence"))
@@ -305,88 +309,14 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
                             continue;
                         }
 
-                        mParticleRotation.addFrame(img, delay,
+                        animation.addFrame(img, delay,
                             offsetX, offsetY, rand);
                         start ++;
                     }
                 }
                 else if (xmlNameEqual(frameNode, "end"))
                 {
-                    mParticleRotation.addTerminator(rand);
-                }
-            }  // for frameNode
-        }
-        else if (xmlNameEqual(propertyNode, "animation"))
-        {
-            ImageSet *const imageset = getImageSet(propertyNode);
-            if (!imageset)
-            {
-                logger->log1("Error: no valid imageset");
-                continue;
-            }
-            mTempSets.push_back(imageset);
-
-            // Get animation frames
-            for_each_xml_child_node(frameNode, propertyNode)
-            {
-                const int delay = XML::getIntProperty(
-                    frameNode, "delay", 0, 0, 100000);
-                const int offsetX = XML::getProperty(frameNode, "offsetX", 0)
-                    - imageset->getWidth() / 2 + mapTileSize / 2;
-                const int offsetY = XML::getProperty(frameNode, "offsetY", 0)
-                    - imageset->getHeight() + mapTileSize;
-                const int rand = XML::getIntProperty(
-                    frameNode, "rand", 100, 0, 100);
-
-                if (xmlNameEqual(frameNode, "frame"))
-                {
-                    const int index = XML::getProperty(frameNode, "index", -1);
-                    if (index < 0)
-                    {
-                        logger->log1("No valid value for 'index'");
-                        continue;
-                    }
-
-                    Image *const img = imageset->get(index);
-
-                    if (!img)
-                    {
-                        logger->log("No image at index %d", index);
-                        continue;
-                    }
-
-                    mParticleAnimation.addFrame(img, delay,
-                        offsetX, offsetY, rand);
-                }
-                else if (xmlNameEqual(frameNode, "sequence"))
-                {
-                    int start = XML::getProperty(frameNode, "start", -1);
-                    const int end = XML::getProperty(frameNode, "end", -1);
-
-                    if (start < 0 || end < 0)
-                    {
-                        logger->log1("No valid value for 'start' or 'end'");
-                        continue;
-                    }
-
-                    while (end >= start)
-                    {
-                        Image *const img = imageset->get(start);
-
-                        if (!img)
-                        {
-                            logger->log("No image at index %d", start);
-                            continue;
-                        }
-
-                        mParticleAnimation.addFrame(img, delay,
-                            offsetX, offsetY, rand);
-                        start++;
-                    }
-                }
-                else if (xmlNameEqual(frameNode, "end"))
-                {
-                    mParticleAnimation.addTerminator(rand);
+                    animation.addTerminator(rand);
                 }
             }  // for frameNode
         }
