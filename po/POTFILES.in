@@ -11,6 +11,7 @@ src/configmanager.cpp
 src/dirs.cpp
 src/dyetool/dyemain.cpp
 src/game.cpp
+src/gamemodifiers.cpp
 src/gui/dialogsmanager.cpp
 src/gui/models/colorlistmodel.h
 src/gui/models/colormodel.cpp
