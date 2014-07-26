@@ -157,7 +157,7 @@ msgid ""
 msgstr "La comunicación es, casi siempre, esencial para triunfar en este juego. Puedes\n comunicarte de muchas maneras: Chateando y mostrando emociones (ver arriba),\n realizando intercambios (desde el menú contextual al darle clic derecho),\n y a través de los susurros."
 
 msgid "\"Item shortcut 3\""
-msgstr "\"Atajo para objeto 3\"  "
+msgstr "\"Atajo para objeto 3\""
 
 msgid "\"Change move type\""
 msgstr "\"Cambiar tipo de movimiento\""
@@ -316,7 +316,7 @@ msgid "\"Talk\""
 msgstr "\"Hablar\""
 
 msgid "\"Item shortcut 8\""
-msgstr "\"Atajo para objeto 8\"  "
+msgstr "\"Atajo para objeto 8\""
 
 msgid "/all - show visible beings list in debug tab."
 msgstr "/all - Mostrar, en la pestaña del depurador, la lista de seres visibles."
@@ -331,7 +331,7 @@ msgid "\"Ignore input 1\""
 msgstr "\"Ignorar input 1\""
 
 msgid "\"Item shortcut 6\""
-msgstr "\"Atajo para objeto 6\"  "
+msgstr "\"Atajo para objeto 6\""
 
 msgid ""
 " If you're having troubles, please first of all read the FAQ. If you\n"
@@ -340,7 +340,7 @@ msgid ""
 msgstr " Si estás teniendo problemas, por favor, primero que nada, lee el FAQ. Si no\n puedes encontrar una solución a tu problema, siéntete libre de chequear nuestra\n sección Bugs/Support en el foro:"
 
 msgid "/help - show this help."
-msgstr "/help - mostrar esta ayuda"
+msgstr "/help - mostrar esta ayuda."
 
 msgid "\"Outfit shortcut 7\""
 msgstr "\"Atajo para vestimenta 7\""
@@ -360,7 +360,7 @@ msgid ""
 msgstr " - ##2amigo##9:  Tú consideras a este jugador un amigo. Éste puede chatear,\n   escribirte en privado o realizar intercambios contigo en cualquier punto."
 
 msgid "\"Item shortcut 13\""
-msgstr "\"Atajo para objeto 13\"  "
+msgstr "\"Atajo para objeto 13\""
 
 msgid "For other servers may exists other copyrights."
 msgstr "Para otros servidores podrían existir otros derechos de autor."
@@ -404,7 +404,7 @@ msgstr "/unignore NICK - Remover a NICK de la lista de ignorados."
 msgid ""
 "You can restore yellow bar settings,\n"
 "by right click on it and select in context menu \"Reset yellow bar\"."
-msgstr "Puedes restaurar las configuraciones de la barra amarilla, haciendo clic \nderecho en ésta y seleccionar \"Restablecer la barra amarilla\""
+msgstr "Puedes restaurar las configuraciones de la barra amarilla, haciendo clic \nderecho en ésta y seleccionar \"Restablecer la barra amarilla\"."
 
 msgid "\"Emote shortcut 3\""
 msgstr "\"Atajo para emoticono 3\""
@@ -479,7 +479,7 @@ msgid "\"Pickup\""
 msgstr "\"Recoger\""
 
 msgid "\"Item shortcut 2\""
-msgstr "\"Atajo para objeto 2\"  "
+msgstr "\"Atajo para objeto 2\""
 
 msgid "About current server"
 msgstr "Acerca del servidor actual"
@@ -581,7 +581,7 @@ msgid "/emote N - use emotion number N."
 msgstr "/emote N - usar el emoticón número N."
 
 msgid "/item 0 - disable party item sharing options."
-msgstr "/item 0 - deshabilita las opciones de compartir artículos "
+msgstr "/item 0 - deshabilita las opciones de compartir artículos."
 
 msgid "\"Target closest monster\""
 msgstr "\"Seleccionar monstruos cercanos\""
@@ -626,7 +626,7 @@ msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr "/query NICK, /q NICK - Abrir nueva pestaña de susurro para el nick indicado."
 
 msgid "\"Item shortcut 5\""
-msgstr "\"Atajo para objeto 5\"  "
+msgstr "\"Atajo para objeto 5\""
 
 msgid "\"Scroll chat up\""
 msgstr "\"Desplazar el chat hacia arriba\""
@@ -648,7 +648,7 @@ msgid "\"Target & attack\""
 msgstr "\"Seleccionar y Atacar\""
 
 msgid "\"Item shortcut 10\""
-msgstr "\"Atajo para objeto 10\"  "
+msgstr "\"Atajo para objeto 10\""
 
 msgid "/where - print current player position to chat."
 msgstr "/where - Muestra en el chat la posición actual del jugador."
@@ -769,7 +769,7 @@ msgid ""
 msgstr "Puedes copiar el valor de cualquier barra haciendo clic derecho sobre ésta y\nseleccionando \"Copiar al chat\" en el menú contextual."
 
 msgid "\"Item shortcut 14\""
-msgstr "\"Atajo para objeto 14\"  "
+msgstr "\"Atajo para objeto 14\""
 
 msgid "/outfit N - wear outfit number N."
 msgstr "/outfit N - ponerse el vestimenta número N."
@@ -885,7 +885,7 @@ msgstr "\"Atajo para emoticono 1\""
 msgid ""
 " - ##2ignored##9:  You wish to completely ignore this player.  You will not\n"
 "   even see floating text for him or her anymore, nor emotions."
-msgstr "- ##2ignorado##9:  Deseas ignorar completamente a este jugador. Nunca más verás texto flotante ni emociones de él o ella."
+msgstr " - ##2ignorado##9:  Deseas ignorar completamente a este jugador.\n   Nunca más verás texto flotante ni emociones de él o ella."
 
 msgid "/me text - send text to chat as /me command in irc."
 msgstr "/me texto - envía un texto al chat tal como el comando /me en el irc."
@@ -947,7 +947,7 @@ msgid "Here contributors from parent projects"
 msgstr "Aquí los contribuyentes de proyectos padre"
 
 msgid "\"Item shortcut 4\""
-msgstr "\"Atajo para objeto 4\"  "
+msgstr "\"Atajo para objeto 4\""
 
 msgid "/who - print online players number to chat."
 msgstr "/who - Imprimir en el chat el número de jugadores conectados."
@@ -976,7 +976,7 @@ msgid ""
 msgstr "Por otro lado, visita la sección @@team|Equipo de Desarrollo@@ para tener\nuna lista de desarrolladores y cómo contactarlos."
 
 msgid "\"Item shortcut 11\""
-msgstr "\"Atajo para objeto 11\"  "
+msgstr "\"Atajo para objeto 11\""
 
 msgid "\"Emulate right click from keyboard\""
 msgstr "\"Emular clic derecho desde el teclado\""
@@ -1035,7 +1035,7 @@ msgid "/uploadlog - upload log into pastebin service."
 msgstr "/uploadlog - Cargar registro en el servicio de pastebin."
 
 msgid "/leave - leave the party you are in."
-msgstr "/leave - Dejar el grupo en el que estás"
+msgstr "/leave - Dejar el grupo en el que estás."
 
 msgid "\"Status window\""
 msgstr "\"Ventana de estado\""
@@ -1107,7 +1107,7 @@ msgid "/disablehighlight - disable highlight in current tab."
 msgstr "/disablehighlight - Deshabilitar resaltado en la estaña actual."
 
 msgid "\"Item shortcut 15\""
-msgstr "\"Atajo para objeto 15\"  "
+msgstr "\"Atajo para objeto 15\""
 
 msgid "Whispers commands"
 msgstr "Comandos de susurros"
@@ -1124,7 +1124,7 @@ msgid "emote key"
 msgstr "tecla de emoticon"
 
 msgid "\"Item shortcut 9\""
-msgstr "\"Atajo para objeto 9\"  "
+msgstr "\"Atajo para objeto 9\""
 
 msgid ""
 " There you will find a list of all players you are acquainted with, as well as\n"
@@ -1135,7 +1135,7 @@ msgid "Skills"
 msgstr "Habilidades"
 
 msgid "\"Item shortcut 7\""
-msgstr "\"Atajo para objeto 7\"  "
+msgstr "\"Atajo para objeto 7\""
 
 msgid "\"Minimap window\""
 msgstr "\"Ventana del Mini-mapa\""
@@ -1149,7 +1149,7 @@ msgid ""
 msgstr " Sin embargo, tú puedes protegerte de esos jugadores ignorándolos. Haz clic\n derecho sobre ellos y, en el menú contextual, selecciona \"Ignorar\" o\n \"Desatender\" (ver abajo). Puedes ver tus relaciones con los jugadores en el\n menú \"Configuración\", donde se enlistan todos los jugadores que has añadido.\n Para abrir este menú, selecciona \"Configuración\" en esquina superior de la \n ventana del cliente y después en \"Relaciones\"."
 
 msgid "\"Item shortcut 12\""
-msgstr "\"Atajo para objeto 12\"  "
+msgstr "\"Atajo para objeto 12\""
 
 msgid "SHORTCUTS:"
 msgstr "ATAJOS:"

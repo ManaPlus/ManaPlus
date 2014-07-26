@@ -26,12 +26,12 @@ msgid "\"Outfit shortcut 12\""
 msgstr "\"Atalho de roupa 12\""
 
 msgid "/cacheinfo - show text cache info."
-msgstr "/cacheinfo - mostra informações de cache de texto"
+msgstr "/cacheinfo - mostra informações de cache de texto."
 
 msgid ""
 "You can imitate other players by selecting \"imitation\" in player context menu\n"
 " or type chat command: /imitate playername."
-msgstr "Você pode imitar outros jogadores selecionando a opção \"imitar\" no menu ou digitar o comando: /imitate nomedojogador"
+msgstr "Você pode imitar outros jogadores selecionando a opção \"imitar\" no menu\n ou digitar o comando: /imitate nomedojogador."
 
 msgid ""
 " - ##2allow trading##9: Do you wish to allow trade requests from arbitrary\n"
@@ -83,7 +83,7 @@ msgid "/announce MESSAGE - show global message."
 msgstr ""
 
 msgid "/serverunignoreall - unignore all whispers on server side."
-msgstr "/serverunignoreall - não ignora todos sussurros vindos do servidor "
+msgstr "/serverunignoreall - não ignora todos sussurros vindos do servidor."
 
 msgid "/createparty NAME - create party with selected name."
 msgstr "/createparty NAME - cria um grupo com o nome selecionado."
@@ -317,7 +317,7 @@ msgid "\"Item shortcut 8\""
 msgstr ""
 
 msgid "/all - show visible beings list in debug tab."
-msgstr "/all - Mostra lista de coisas na aba do Depurador"
+msgstr "/all - Mostra lista de coisas na aba do Depurador."
 
 msgid ""
 "Most commands working in whispers.\n"
@@ -344,7 +344,7 @@ msgid "\"Outfit shortcut 7\""
 msgstr "\"Atalho de roupa 7\""
 
 msgid "/addpriorityattack NAME - add monster to priority attack list."
-msgstr "/addpriorityattack NAME - adiciona um monstro na lista de prioridades"
+msgstr "/addpriorityattack NAME - adiciona um monstro na lista de prioridades."
 
 msgid "For TMW support:"
 msgstr ""
@@ -402,7 +402,7 @@ msgstr "/unignore NICK - Remove o NICK da lista de ignorados."
 msgid ""
 "You can restore yellow bar settings,\n"
 "by right click on it and select in context menu \"Reset yellow bar\"."
-msgstr "Você pode restaurar as configurações da barra amarela clicando com o botão direito do mouse e selecionar no menu \"Zerar barra amarela\""
+msgstr "Você pode restaurar as configurações da barra amarela clicando com o botão direito do mouse e selecionar no menu \"Zerar barra amarela\"."
 
 msgid "\"Emote shortcut 3\""
 msgstr ""
@@ -411,7 +411,7 @@ msgid "/dumpg - dump graphics and some other settings to chat."
 msgstr "/dumpg - despejar gráficos e algumas outras configurações para chat."
 
 msgid "/trade NICK - start trade with nick."
-msgstr "/trade NICK - inicia trocas com o NICK. "
+msgstr "/trade NICK - inicia trocas com o NICK."
 
 msgid "\"Switch magic attack\""
 msgstr ""
@@ -621,7 +621,7 @@ msgid ""
 msgstr ""
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
-msgstr "/query NICK, /q NICK - Abre uma nova aba de sussurros de NICK. "
+msgstr "/query NICK, /q NICK - Abre uma nova aba de sussurros de NICK."
 
 msgid "\"Item shortcut 5\""
 msgstr ""
@@ -848,7 +848,7 @@ msgid "/follow NICK - start follow mode."
 msgstr "/follow NICK - Começa o modo de perseguição."
 
 msgid "To read about whispering and other chat commands, look here:"
-msgstr "Para ler sobre sussurros e outros comandos de chat, veja aqui: "
+msgstr "Para ler sobre sussurros e outros comandos de chat, veja aqui:"
 
 msgid ""
 "You can select other themes.\n"
@@ -869,7 +869,7 @@ msgid "/info - show guild info. Only for native guilds only."
 msgstr ""
 
 msgid "/neutral NICK - add nick to neutral relation list."
-msgstr "/neutral NICK - adiciona um u nick neutro na lista de relações"
+msgstr "/neutral NICK - adiciona um u nick neutro na lista de relações."
 
 msgid "THE PLAYER LIST"
 msgstr "A LISTA DE JOGADORES"
@@ -886,9 +886,9 @@ msgid ""
 msgstr ""
 
 msgid "/me text - send text to chat as /me command in irc."
-msgstr "/me text - envia um texto para um jogador o comando /me no irc. "
+msgstr "/me text - envia um texto para um jogador o comando /me no irc."
 
-msgid "/help - show small help about chat commands. "
+msgid "/help - show small help about chat commands."
 msgstr "/help - mostra uma pequena ajuda sobre os comandos do chat."
 
 msgid "Debug"
@@ -948,7 +948,7 @@ msgid "\"Item shortcut 4\""
 msgstr ""
 
 msgid "/who - print online players number to chat."
-msgstr "/who - imprime o número de pessoas online no chat"
+msgstr "/who - imprime o número de pessoas online no chat."
 
 msgid "/createitems - open dialog for creating items."
 msgstr ""
@@ -966,7 +966,7 @@ msgid "Windows"
 msgstr "Janelas"
 
 msgid "Contributors to client development"
-msgstr "Contribuidores para o desenvolvimento do cliente. "
+msgstr "Contribuidores para o desenvolvimento do cliente"
 
 msgid ""
 "Otherwise see the @@team|Development Team@@ section to have a list of\n"
