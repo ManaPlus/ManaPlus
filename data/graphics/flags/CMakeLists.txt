@@ -14,6 +14,7 @@ SET(FILES
     pt_BR.png
     pt.png
     ru.png
+    se.png
     tr.png
     )
 

@@ -16,6 +16,7 @@ flags_DATA =				\
 	pt_BR.png			\
 	pt.png			\
 	ru.png			\
+	se.png			\
 	tr.png
 
 EXTRA_DIST =				\
