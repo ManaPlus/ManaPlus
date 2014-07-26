@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-26 14:30+0300\n"
+"POT-Creation-Date: 2014-07-26 19:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1249,6 +1249,11 @@ msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:77
+msgid "Swedish (Sweden)"
+msgstr ""
+
+#. TRANSLATORS: language
+#: src/gui/models/langlistmodel.h:79
 msgid "Turkish"
 msgstr ""
 

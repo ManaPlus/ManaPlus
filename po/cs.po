@@ -7,13 +7,15 @@
 # Pitriss <chytrex@wjake.com>, 2011
 # Pitriss V <chytrex_fsude@centrum.cz>, 2011
 # samuraiii <samurai.no.dojo@gmail.com>, 2014
+# samuraiii <samurai.no.dojo@gmail.com>, 2014
+# Zirry <zirry@centrum.cz>, 2012
 # Zirry <zirry@centrum.cz>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-26 14:30+0300\n"
-"PO-Revision-Date: 2014-07-20 09:50+0000\n"
+"POT-Creation-Date: 2014-07-26 19:04+0300\n"
+"PO-Revision-Date: 2014-07-26 14:25+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/"
 "cs/)\n"
@@ -1257,6 +1259,11 @@ msgstr "Španělsky (Kastýlie)"
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:77
+msgid "Swedish (Sweden)"
+msgstr ""
+
+#. TRANSLATORS: language
+#: src/gui/models/langlistmodel.h:79
 msgid "Turkish"
 msgstr "Turecky"
 
@@ -6795,7 +6802,7 @@ msgstr "Kdo je online - chyba"
 #. TRANSLATORS: who is online window name
 #: src/gui/windows/whoisonline.cpp:685
 msgid "Who Is Online - Update"
-msgstr ""
+msgstr "Kdo je přihlášený - "
 
 #. TRANSLATORS: world select dialog name
 #: src/gui/windows/worldselectdialog.cpp:49

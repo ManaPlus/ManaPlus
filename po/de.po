@@ -3,26 +3,34 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# 3_0_3 <jack@krass.com>, 2011
 # Andrei Karas <akaras@inbox.ru>, 2011
+# Anna <clos3rlook@gmail.com>, 2011-2012
 # Anna <clos3rlook@gmail.com>, 2012
+# Anonymouse <anonymouse2048@gmail.com>, 2012
 # Anonymouse <anonymouse2048@gmail.com>, 2012
 # Anna <clos3rlook@gmail.com>, 2011, 2012
 # DerLoisl <der.loisl@gmx.de>, 2011
+# DerLoisl <der.loisl@gmx.de>, 2011
+# Fortunato <fortunato108@googlemail.com>, 2013
 # Fortunato <fortunato108@googlemail.com>, 2013
 # 3_0_3 <jack@krass.com>, 2011
+# Jürgen, 2013
 # Jürgen, 2013
 # Marco Jäger <>, 2012
 # Marco Jäger <linuxcobra@gmx.de>, 2012
 # tux9th <mr.x@aon.at>, 2012-2013
 # Necromonger <Necromong@inbox.ru>, 2011
+# Necromonger <Necromong@inbox.ru>, 2011
+# Philipp <philipp.krueger1@googlemail.com>, 2012
 # Philipp <philipp.krueger1@googlemail.com>, 2012
 # Rosemarie Tauber <horos@online.de>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-26 14:30+0300\n"
-"PO-Revision-Date: 2014-07-20 09:50+0000\n"
+"POT-Creation-Date: 2014-07-26 19:04+0300\n"
+"PO-Revision-Date: 2014-07-26 14:26+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/"
 "de/)\n"
@@ -1267,6 +1275,11 @@ msgstr "Spanisch (Kastilisch)"
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:77
+msgid "Swedish (Sweden)"
+msgstr ""
+
+#. TRANSLATORS: language
+#: src/gui/models/langlistmodel.h:79
 msgid "Turkish"
 msgstr "Türkisch"
 
@@ -6066,9 +6079,7 @@ msgstr "Exp: %d/%d Übrig: %d"
 #: src/gui/windows/killstats.cpp:267
 #, c-format
 msgid "1%% = %d exp, avg mob for 1%%: %s"
-msgstr ""
-"1%% = %d Erfahrungspunkte, "
-"Durchschnittliche Monsteranzahl für 1%%: %s"
+msgstr "1%% = %d Erfahrungspunkte, Durchschnittliche Monsteranzahl für 1%%: %s"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:356 src/gui/windows/killstats.cpp:365

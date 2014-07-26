@@ -5,13 +5,13 @@
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011
 # Oben Devin Çetiner <hiironohige@gmail.com>, 2012
-# Oben Devin Çetiner <hiironohige@gmail.com>, 2013
+# Oben Devin Çetiner <hiironohige@gmail.com>, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-26 14:30+0300\n"
-"PO-Revision-Date: 2014-07-20 09:50+0000\n"
+"POT-Creation-Date: 2014-07-26 19:04+0300\n"
+"PO-Revision-Date: 2014-07-26 14:41+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/manaplus/"
 "language/tr/)\n"
@@ -1255,6 +1255,11 @@ msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:77
+msgid "Swedish (Sweden)"
+msgstr ""
+
+#. TRANSLATORS: language
+#: src/gui/models/langlistmodel.h:79
 msgid "Turkish"
 msgstr ""
 

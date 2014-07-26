@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-07-19 22:56+0300\n"
-"PO-Revision-Date: 2014-07-20 09:50+0000\n"
+"PO-Revision-Date: 2014-07-26 14:24+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/manaplus/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -1815,7 +1815,7 @@ msgstr ""
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1380
 msgid "Rename map sign          "
-msgstr ""
+msgstr "Canviar el nom de la marca de mapa"
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1382

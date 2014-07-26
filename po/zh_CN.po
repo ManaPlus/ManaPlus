@@ -5,15 +5,18 @@
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011
 # colorful <colorfullife81@gmail.com>, 2011
+# colorful <colorfullife81@gmail.com>, 2011
 # Midoni <qiuhongwen@gmail.com>, 2012
+# Midoni <qiuhongwen@gmail.com>, 2012
+# yudun1989 <yudun1989@gmail.com>, 2014
 # yudun1989 <yudun1989@gmail.com>, 2014
 # 昕 邹 <sin2624+transifex@gmail.com>, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-26 14:30+0300\n"
-"PO-Revision-Date: 2014-07-20 09:50+0000\n"
+"POT-Creation-Date: 2014-07-26 19:04+0300\n"
+"PO-Revision-Date: 2014-07-26 14:42+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/manaplus/"
 "language/zh_CN/)\n"
@@ -1253,6 +1256,11 @@ msgstr ""
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:77
+msgid "Swedish (Sweden)"
+msgstr ""
+
+#. TRANSLATORS: language
+#: src/gui/models/langlistmodel.h:79
 msgid "Turkish"
 msgstr ""
 

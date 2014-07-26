@@ -5,8 +5,10 @@
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011
 # Jumpy <antoinebcn@hotmail.com>, 2011
+# Maria <mtorres2022@gmail.com>, 2012
 # Mr Pirate <salahbubuli44@gmail.com>, 2012
 # Maria <mtorres2022@gmail.com>, 2012
+# Narus <narus.tmw@gmail.com>, 2012
 # Narus <narus.tmw@gmail.com>, 2012
 # Nelson Martell <nelson6e65-manaplus@yahoo.es>, 2011-2014
 # Nelson Martell <nelson6eeduardo65@gmail.com>, 2011
@@ -17,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-26 14:30+0300\n"
-"PO-Revision-Date: 2014-07-20 09:50+0000\n"
+"POT-Creation-Date: 2014-07-26 19:04+0300\n"
+"PO-Revision-Date: 2014-07-26 14:27+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/manaplus/"
 "language/es/)\n"
@@ -1262,6 +1264,11 @@ msgstr "Español (Castellano)"
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:77
+msgid "Swedish (Sweden)"
+msgstr ""
+
+#. TRANSLATORS: language
+#: src/gui/models/langlistmodel.h:79
 msgid "Turkish"
 msgstr "Turco"
 

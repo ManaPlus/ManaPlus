@@ -5,6 +5,7 @@
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011
 # Candy <HarajukuCupcakes@gmail.com>, 2013
+# Candy <HarajukuCupcakes@gmail.com>, 2013
 # Candy <HarajukuCupcakes@gmail.com>, 2011-2013
 # Necromonger <Necromong@inbox.ru>, 2011
 # Necromonger <Necromong@inbox.ru>, 2011
@@ -13,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-07-26 14:30+0300\n"
-"PO-Revision-Date: 2014-07-20 09:50+0000\n"
+"POT-Creation-Date: 2014-07-26 19:04+0300\n"
+"PO-Revision-Date: 2014-07-26 14:32+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/manaplus/"
 "language/ja/)\n"
@@ -557,7 +558,8 @@ msgstr "リソース孤児イメージ:"
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
-"/%sへの可能なオプションは：\"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
+"/%sへの可能なオプションは：\"yes\", \"no\", \"true\", \"false\", \"1\", "
+"\"0\"."
 
 #. TRANSLATORS: directory creation error
 #: src/configmanager.cpp:53 src/dirs.cpp:257 src/dirs.cpp:272 src/dirs.cpp:317
@@ -1257,6 +1259,11 @@ msgstr "スペイン語 (カスティリヤ)"
 
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:77
+msgid "Swedish (Sweden)"
+msgstr ""
+
+#. TRANSLATORS: language
+#: src/gui/models/langlistmodel.h:79
 msgid "Turkish"
 msgstr ""
 
