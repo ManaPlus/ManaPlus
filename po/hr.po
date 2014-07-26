@@ -5542,7 +5542,7 @@ msgstr "Promijeni Lozinku"
 #: src/gui/windows/logindialog.cpp:109 src/gui/windows/registerdialog.cpp:79
 #: src/gui/windows/unregisterdialog.cpp:67
 msgid "Password:"
-msgstr "Lozinka"
+msgstr "Lozinka:"
 
 #. TRANSLATORS: change password dialog label
 #: src/gui/windows/changepassworddialog.cpp:72
@@ -6718,7 +6718,7 @@ msgstr "Ime: %s"
 #. TRANSLATORS: updater window name
 #: src/gui/windows/updaterwindow.cpp:174
 msgid "Updating..."
-msgstr "Ažuriranje"
+msgstr "Ažuriranje..."
 
 #. TRANSLATORS: updater window label
 #: src/gui/windows/updaterwindow.cpp:191
@@ -7683,7 +7683,7 @@ msgstr "Hvala za kupnju."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:43
 msgid "Unable to buy."
-msgstr "Ne može se kupiti"
+msgstr "Ne može se kupiti."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:47

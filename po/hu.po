@@ -6715,12 +6715,12 @@ msgstr "Név: %s"
 #. TRANSLATORS: updater window name
 #: src/gui/windows/updaterwindow.cpp:174
 msgid "Updating..."
-msgstr "Frissítés…"
+msgstr "Frissítés..."
 
 #. TRANSLATORS: updater window label
 #: src/gui/windows/updaterwindow.cpp:191
 msgid "Connecting..."
-msgstr "Csatlakozás…"
+msgstr "Csatlakozás..."
 
 #: src/gui/windows/updaterwindow.cpp:398
 msgid "Show all news (can be slow)"
@@ -6729,7 +6729,7 @@ msgstr ""
 #. TRANSLATORS: update message
 #: src/gui/windows/updaterwindow.cpp:824
 msgid "##1  The update process is incomplete."
-msgstr "##1 A frissítési folyamat befejezetlen"
+msgstr "##1 A frissítési folyamat befejezetlen."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
 #: src/gui/windows/updaterwindow.cpp:826
@@ -7675,7 +7675,7 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:39
 msgid "Thanks for buying."
-msgstr "Öröm volt veled üzletet kötni!"
+msgstr "Öröm volt veled üzletet kötni."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:43
@@ -7690,7 +7690,7 @@ msgstr "Nincs mit eladni."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:51
 msgid "Thanks for selling."
-msgstr "Öröm volt veled üzletet kötni!"
+msgstr "Öröm volt veled üzletet kötni."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:55

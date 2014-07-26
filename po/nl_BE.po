@@ -337,7 +337,7 @@ msgstr "Onbekend commando."
 #: src/commands.cpp:160 src/commands.cpp:478 src/commands.cpp:565
 #: src/commands.cpp:621
 msgid "Please specify a name."
-msgstr "Gelieve een naam te specifiëren"
+msgstr "Gelieve een naam te specifiëren."
 
 #. TRANSLATORS: change relation
 #: src/commands.cpp:167
@@ -391,7 +391,7 @@ msgstr "Guild-naam ontbreekt."
 
 #: src/commands.cpp:495
 msgid "Return toggles chat."
-msgstr "Ga terug naar chat"
+msgstr "Ga terug naar chat."
 
 #: src/commands.cpp:495
 msgid "Message closes chat."
@@ -1820,7 +1820,7 @@ msgstr ""
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1381
 msgid "Rename map sign          "
-msgstr "Kaart bordje hernoemen          "
+msgstr "Kaart bordje hernoemen   "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383
@@ -3289,14 +3289,14 @@ msgstr "Muispunt:"
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:63
 msgid "Particle count:"
-msgstr "Deeltjesaantal: "
+msgstr "Deeltjesaantal:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:66
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:207
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:247
 msgid "Map actors count:"
-msgstr "Aantal kaart-acteurs"
+msgstr "Aantal kaart-acteurs:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:68
@@ -4909,7 +4909,7 @@ msgstr "Verwisselen naar Volledig Scherm"
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:245
 msgid "Restart needed for changes to take effect."
-msgstr "De veranderingen worden pas actief na opnieuw opstarten"
+msgstr "De veranderingen worden pas actief na opnieuw opstarten."
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:263
@@ -4919,7 +4919,7 @@ msgstr "Verwisselen naar OpenGL"
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:265
 msgid "Applying change to OpenGL requires restart."
-msgstr "Het wisselen van of naar OpenGL wordt pas actief na opnieuw opstarten"
+msgstr "Het wisselen van of naar OpenGL wordt pas actief na opnieuw opstarten."
 
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:343
@@ -4929,7 +4929,7 @@ msgstr "Manuele resolutie (voorbeeld: 1024x768)"
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:345
 msgid "Enter new resolution:                "
-msgstr "Geef een nieuwe resolutie:                "
+msgstr "Geef een nieuwe resolutie:           "
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:372
@@ -4941,7 +4941,7 @@ msgstr "Scherm Resolutie is gewijzigd"
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Enkele vensters kunnen verplaatst worden om te passen in de omlaag gebrachte "
-"resolutie"
+"resolutie."
 
 #. TRANSLATORS: speach type
 #: src/gui/widgets/tabs/setup_visual.cpp:43
@@ -5671,7 +5671,7 @@ msgstr ""
 #. TRANSLATORS: char creation error
 #: src/gui/windows/charcreatedialog.cpp:370
 msgid "Your name needs to be at least 4 characters."
-msgstr "Je naam moet uit tenminste 4 tekens bestaan"
+msgstr "Je naam moet uit tenminste 4 tekens bestaan."
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:467
@@ -5926,12 +5926,12 @@ msgstr "Alle"
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:224
 msgid "Select amount of items to trade."
-msgstr "Selecteer het aantal voorwerpen om te verhandelen"
+msgstr "Selecteer het aantal voorwerpen om te verhandelen."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:228
 msgid "Select amount of items to drop."
-msgstr "Selecteer het aantal voorwerpen om neer te leggen"
+msgstr "Selecteer het aantal voorwerpen om neer te leggen."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:232
@@ -5951,12 +5951,12 @@ msgstr "Selecteer hoeveelheid voorwerpen om te splitsen."
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:244
 msgid "Add to buy shop."
-msgstr "Toevoegen om te kopen"
+msgstr "Toevoegen om te kopen."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:248
 msgid "Add to sell shop."
-msgstr "Toevoegen om te verkopen"
+msgstr "Toevoegen om te verkopen."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:252
@@ -6498,7 +6498,7 @@ msgstr "Guild Naam"
 #. TRANSLATORS: guild creation message
 #: src/gui/windows/socialwindow.cpp:393
 msgid "Choose your guild's name."
-msgstr "Kies uw guild naam"
+msgstr "Kies uw guild naam."
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:409
@@ -7256,7 +7256,7 @@ msgstr ""
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:289
 msgid "Username permanently erased."
-msgstr "Gebruikersnaam is compleet verwijderd"
+msgstr "Gebruikersnaam is compleet verwijderd."
 
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:100
@@ -7723,7 +7723,7 @@ msgstr "Kan niets verkopen terwijl je aan het handelen bent."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:63
 msgid "Unable to sell unsellable item."
-msgstr "Niet mogelijk om onverkoopbaar voorwerp te verkopen"
+msgstr "Niet mogelijk om onverkoopbaar voorwerp te verkopen."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:67

@@ -1814,12 +1814,12 @@ msgstr ""
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1380
 msgid "Rename map sign          "
-msgstr "Döp om kartskyltar"
+msgstr "Döp om kartskyltar       "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1382
 msgid "Name:                    "
-msgstr "Namn:"
+msgstr "Namn:                    "
 
 #: src/gui/popups/popupmenu.cpp:1406
 msgid "Player comment            "
@@ -2323,7 +2323,7 @@ msgstr "Genvägsmodifierande tangenter"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:235
 msgid "Item Shortcuts Key"
-msgstr "Genvägsknapp till Item "
+msgstr "Genvägsknapp till Item"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:241
@@ -2761,7 +2761,7 @@ msgstr "Avaktivera / Aktivera Game modifier-knappar"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1469
 msgid "On / Off audio"
-msgstr "Ljud På / Av "
+msgstr "Ljud På / Av"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1475
@@ -4489,7 +4489,7 @@ msgstr "Aktivera alphakanal-fix (Programvaran kan bli väldigt långsam)"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:105
 msgid "Show beings transparency"
-msgstr "Visa genomskinliga varelser "
+msgstr "Visa genomskinliga varelser"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:109
@@ -4728,7 +4728,7 @@ msgstr "i"
 #. TRANSLATORS: theme info dialog
 #: src/gui/widgets/tabs/setup_theme.cpp:243
 msgid "Name: "
-msgstr "Namn:"
+msgstr "Namn: "
 
 #: src/gui/widgets/tabs/setup_theme.cpp:244
 msgid "Copyright:"
@@ -4843,7 +4843,7 @@ msgstr "FPS-begränsning:"
 #: src/gui/widgets/tabs/setup_video.cpp:304
 #: src/gui/widgets/tabs/setup_video.cpp:432
 msgid "Alt FPS limit: "
-msgstr "Alternativ FPS-begränsning:"
+msgstr "Alternativ FPS-begränsning: "
 
 #. TRANSLATORS: video settings button
 #: src/gui/widgets/tabs/setup_video.cpp:80
@@ -4919,7 +4919,7 @@ msgstr "Anpassad upplösning (exempel: 1024x768)"
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:345
 msgid "Enter new resolution:                "
-msgstr "Skriv in ny upplösning:"
+msgstr "Skriv in ny upplösning:              "
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:372
@@ -6759,7 +6759,7 @@ msgstr "Uppdaterar"
 #. TRANSLATORS: who is online window name
 #: src/gui/windows/whoisonline.cpp:219
 msgid "Who Is Online - "
-msgstr "Vem är Online -"
+msgstr "Vem är Online - "
 
 #. TRANSLATORS: who is online window name
 #: src/gui/windows/whoisonline.cpp:639
@@ -6992,7 +6992,7 @@ msgstr "Åtkomst nekad. Trolig orsak; det är för många spelare på denna serv
 #. TRANSLATORS: error message
 #: src/net/ea/charserverhandler.cpp:136
 msgid "Cannot use this ID."
-msgstr "Kan inte använda detta ID"
+msgstr "Kan inte använda detta ID."
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverhandler.cpp:140
@@ -7254,7 +7254,7 @@ msgstr "Kan inte host:a \""
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:283
 msgid "Connection to server terminated. "
-msgstr "Anslutningen till servern avslutad."
+msgstr "Anslutningen till servern avslutad. "
 
 #. TRANSLATORS: message header
 #: src/net/ea/playerhandler.cpp:274 src/net/ea/playerhandler.cpp:286
@@ -7761,7 +7761,7 @@ msgstr "Din guild är full."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:107
 msgid "Unknown guild invite response."
-msgstr "Okänd respons för guild-förfrågan"
+msgstr "Okänd respons för guild-förfrågan."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:111

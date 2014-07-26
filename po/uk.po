@@ -102,7 +102,7 @@ msgstr "Неможливо створити теку для оновлень!"
 
 #: src/commandhandler.cpp:127 src/commandhandler.cpp:308
 msgid "Unknown command."
-msgstr "Чорт зна яка команда"
+msgstr "Чорт зна яка команда."
 
 #: src/commandhandler.cpp:156
 msgid "-- Help --"
@@ -201,19 +201,19 @@ msgstr "Команда: /help"
 
 #: src/commandhandler.cpp:193
 msgid "This command displays a list of all commands available."
-msgstr "Ця команда показує список всіх доступних команд"
+msgstr "Ця команда показує список всіх доступних команд."
 
 #: src/commandhandler.cpp:194
 msgid "Command: /help <command>"
-msgstr "Команда: /help <_команда_>"
+msgstr "Команда: /help <команда>"
 
 #: src/commandhandler.cpp:195
 msgid "This command displays help on <command>."
-msgstr "Ця команда відображає коротку інформацію про <_команда_>"
+msgstr "Ця команда відображає коротку інформацію про <команда>."
 
 #: src/commandhandler.cpp:203
 msgid "Command: /announce <msg>"
-msgstr "Команда: /announce <_текст_>"
+msgstr "Команда: /announce <текст>"
 
 #: src/commandhandler.cpp:204
 msgid "*** only available to a GM ***"
@@ -222,7 +222,7 @@ msgstr "*** доступне лише для GM ***"
 #: src/commandhandler.cpp:205
 msgid "This command sends the message <msg> to all players currently online."
 msgstr ""
-"Ця команда надсилає <_текст_> всім гравцям, що знаходяться в режимі он-лайн"
+"Ця команда надсилає <текст> всім гравцям, що знаходяться в режимі он-лайн."
 
 #: src/commandhandler.cpp:210
 msgid "Command: /clear"
@@ -230,29 +230,29 @@ msgstr "Команда: /clear"
 
 #: src/commandhandler.cpp:211
 msgid "This command clears the chat log of previous chat."
-msgstr "Ця команда очищає вікно логу чату від попередніх повідомлень"
+msgstr "Ця команда очищає вікно логу чату від попередніх повідомлень."
 
 #: src/commandhandler.cpp:215
 #, fuzzy
 msgid "Command: /ignore <player>"
-msgstr "Команда: /join <_канал_>"
+msgstr "Команда: /join <канал>"
 
 #: src/commandhandler.cpp:216
 #, fuzzy
 msgid "This command ignores the given player regardless of current relations."
-msgstr "Відображає кількість гравців он-лайн"
+msgstr "Відображає кількість гравців он-лайн."
 
 #: src/commandhandler.cpp:221
 msgid "Command: /join <channel>"
-msgstr "Команда: /join <_канал_>"
+msgstr "Команда: /join <канал>"
 
 #: src/commandhandler.cpp:222
 msgid "This command makes you enter <channel>."
-msgstr "Ця команда приєднує вас до <_канал_>"
+msgstr "Ця команда приєднує вас до <канал>."
 
 #: src/commandhandler.cpp:223
 msgid "If <channel> doesn't exist, it's created."
-msgstr "Якщо <_канал_> не існує, він буде створений"
+msgstr "Якщо <канал> не існує, він буде створений."
 
 #: src/commandhandler.cpp:227
 msgid "Command: /list"
@@ -260,71 +260,70 @@ msgstr "Команда: /list"
 
 #: src/commandhandler.cpp:228
 msgid "This command shows a list of all channels."
-msgstr "Ця команда показує список всіх доступних каналів"
+msgstr "Ця команда показує список всіх доступних каналів."
 
 #: src/commandhandler.cpp:232
 msgid "Command: /me <message>"
-msgstr "Команда: /me <_текст_>"
+msgstr "Команда: /me <текст>"
 
 #: src/commandhandler.cpp:233
 msgid "This command tell others you are (doing) <msg>."
-msgstr "Ця команда каже всім гравцям <_текст_> (або що ви робите)"
+msgstr "Ця команда каже всім гравцям <текст> (або що ви робите)."
 
 #: src/commandhandler.cpp:237
 msgid "Command: /msg <nick> <message>"
-msgstr "Команда: /msg <_ім'я_> <_текст_>"
+msgstr "Команда: /msg <ім'я> <текст>"
 
 #: src/commandhandler.cpp:238
 msgid "Command: /whisper <nick> <message>"
-msgstr "Команда: /whisper <_ім'я_> <_текст_>"
+msgstr "Команда: /whisper <ім'я> <текст>"
 
 #: src/commandhandler.cpp:239
 msgid "Command: /w <nick> <message>"
-msgstr "Команда: /w <_ім'я_> <_текст_>"
+msgstr "Команда: /w <ім'я> <текст>"
 
 #: src/commandhandler.cpp:240
 msgid "This command sends the text <message> to <nick>."
-msgstr "Ця команда надсилає <_текст_> гравцеві <_ім'я_>."
+msgstr "Ця команда надсилає <текст> гравцеві <ім'я>."
 
 #: src/commandhandler.cpp:241 src/commandhandler.cpp:260
 #: src/gui/widgets/channeltab.cpp:82 src/gui/widgets/channeltab.cpp:91
 #: src/net/ea/gui/guildtab.cpp:75 src/net/ea/gui/partytab.cpp:75
 msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
 msgstr ""
-"Якщо <_ім'я_> містить пробіли, візьміть все _ім'я_ в подвійні лапки (\r\n"
-"name surname\")"
+"Якщо <ім'я> містить пробіли, візьміть все ім'я в подвійні лапки (\")."
 
 #: src/commandhandler.cpp:246
 msgid "Command: /query <nick>"
-msgstr "Команда: /query <_ім'я_>"
+msgstr "Команда: /query <ім'я>"
 
 #: src/commandhandler.cpp:247
 msgid "Command: /q <nick>"
-msgstr "Команда: /q <_ім'я_>"
+msgstr "Команда: /q <ім'я>"
 
 #: src/commandhandler.cpp:248
 msgid "This command tries to make a tab for whispers betweenyou and <nick>."
 msgstr ""
 "Ця команда намагається створити закладинку для перешіптування між вами та "
-"гравцем <_ім'я_>"
+"гравцем <ім'я>."
 
 #: src/commandhandler.cpp:253
 #, fuzzy
 msgid "Command: /createparty <name>"
-msgstr "Команда: /party <_ім'я_>"
+msgstr "Команда: /party <ім'я>"
 
 #: src/commandhandler.cpp:254
 #, fuzzy
 msgid "This command creates a new party called <name>."
-msgstr "Ця команда приєднує вас до <_канал_>"
+msgstr "Ця команда приєднує вас до <канал>."
 
 #: src/commandhandler.cpp:258
 msgid "Command: /party <nick>"
-msgstr "Команда: /party <_ім'я_>"
+msgstr "Команда: /party <ім'я>"
 
 #: src/commandhandler.cpp:259 src/net/ea/gui/partytab.cpp:74
 msgid "This command invites <nick> to party with you."
-msgstr "Ця команда запрошує гравця <_ім'я_> до вас в групу"
+msgstr "Ця команда запрошує гравця <ім'я> до вас в групу."
 
 #: src/commandhandler.cpp:265
 msgid "Command: /present"
@@ -336,16 +335,16 @@ msgid ""
 "the record log if recording, or the chat log otherwise."
 msgstr ""
 "Ця команда отримує список гравців, які можуть почути вас і надсилає його або "
-"в файл логу чату (якщо увімкнена опція ведення логу), або до вікна чату"
+"в файл логу чату (якщо увімкнена опція ведення логу), або до вікна чату."
 
 #: src/commandhandler.cpp:272
 msgid "Command: /record <filename>"
-msgstr "Команда: /record <_файл_>"
+msgstr "Команда: /record <файл>"
 
 #: src/commandhandler.cpp:273
 msgid "This command starts recording the chat log to the file <filename>."
 msgstr ""
-"Ця команда вмикає ведення журналу чату (записує весь вміст чату у <_файл_>)"
+"Ця команда вмикає ведення журналу чату (записує весь вміст чату у <файл>)."
 
 #: src/commandhandler.cpp:275
 msgid "Command: /record"
@@ -353,11 +352,11 @@ msgstr "Команда: /record"
 
 #: src/commandhandler.cpp:276
 msgid "This command finishes a recording session."
-msgstr "Завершує ведення журналу (логу) чату"
+msgstr "Завершує ведення журналу (логу) чату."
 
 #: src/commandhandler.cpp:280
 msgid "Command: /toggle <state>"
-msgstr "Команда: /toggle <_режим_>"
+msgstr "Команда: /toggle <режим>"
 
 #: src/commandhandler.cpp:281
 msgid ""
@@ -365,14 +364,14 @@ msgid ""
 "whether the chat log turns off automatically."
 msgstr ""
 "Ця команда встановлює, чи буде натиснення клавіші Enter автоматично "
-"перемикатиме на вікно чату"
+"перемикатиме на вікно чату."
 
 #: src/commandhandler.cpp:283
 msgid ""
 "<state> can be one of \"1\", \"yes\", \"true\" to turn the toggle on, or \"0"
 "\", \"no\", \"false\" to turn the toggle off."
 msgstr ""
-"<_режим_> може бути \"1\", \"yes\", або \"true\" щоб увімкнути опцію, або ж "
+"<режим> може бути \"1\", \"yes\", або \"true\" щоб увімкнути опцію, або ж "
 "\"0\", \"no\", чи \"false\" щоб вимкнути її."
 
 #: src/commandhandler.cpp:286
@@ -381,12 +380,12 @@ msgstr "Команда: /toggle"
 
 #: src/commandhandler.cpp:287
 msgid "This command displays the return toggle status."
-msgstr "Показує режим клавіші Enter"
+msgstr "Показує режим клавіші Enter."
 
 #: src/commandhandler.cpp:291 src/gui/widgets/whispertab.cpp:93
 #, fuzzy
 msgid "Command: /unignore <player>"
-msgstr "Команда: /announce <_текст_>"
+msgstr "Команда: /announce <текст>"
 
 #: src/commandhandler.cpp:292
 msgid "This command stops ignoring the given player if they are being ignored"
@@ -398,7 +397,7 @@ msgstr "Команда: /where"
 
 #: src/commandhandler.cpp:298
 msgid "This command displays the name of the current map."
-msgstr "Показує назву поточної локації"
+msgstr "Показує назву поточної локації."
 
 #: src/commandhandler.cpp:302
 msgid "Command: /who"
@@ -406,11 +405,11 @@ msgstr "Команда: /who"
 
 #: src/commandhandler.cpp:303
 msgid "This command displays the number of players currently online."
-msgstr "Відображає кількість гравців он-лайн"
+msgstr "Відображає кількість гравців он-лайн."
 
 #: src/commandhandler.cpp:309
 msgid "Type /help for a list of commands."
-msgstr "Введіть /help щоб побачити список всіх команд"
+msgstr "Введіть /help щоб побачити список всіх команд."
 
 #: src/commandhandler.cpp:375
 msgid "Cannot send empty whispers!"
@@ -423,7 +422,7 @@ msgid ""
 "you."
 msgstr ""
 "Неможливо створити закладинку для спілкування з гравцем \"%s\" - або така "
-"вже існує, або ви намагаєтесь перешіптуватись сам з собою =Р"
+"вже існує, або ви намагаєтесь перешіптуватись сам з собою =Р."
 
 #: src/commandhandler.cpp:397
 #, c-format
@@ -441,19 +440,19 @@ msgstr ""
 
 #: src/commandhandler.cpp:441
 msgid "Return toggles chat."
-msgstr "Enter перемикає на чат"
+msgstr "Enter перемикає на чат."
 
 #: src/commandhandler.cpp:441
 msgid "Message closes chat."
-msgstr "Повідомлення закриваж вікно чату"
+msgstr "Повідомлення закриваж вікно чату."
 
 #: src/commandhandler.cpp:450
 msgid "Return now toggles chat."
-msgstr "Enter тепер перемикає на вікно чату"
+msgstr "Enter тепер перемикає на вікно чату."
 
 #: src/commandhandler.cpp:454
 msgid "Message now closes chat."
-msgstr "Тепер повідомлення закриватиме вікно чату"
+msgstr "Тепер повідомлення закриватиме вікно чату."
 
 #: src/commandhandler.cpp:477
 msgid "Player already ignored!"
@@ -502,7 +501,7 @@ msgstr "Збереження скріншоту провалилось!"
 #: src/game.cpp:355
 #, fuzzy
 msgid "The connection to the server was lost."
-msgstr "Втрачено з'єднання з сервером, програма завершуєтьсся"
+msgstr "Втрачено з'єднання з сервером, програма завершуєтьсся."
 
 #: src/game.cpp:360
 msgid "Network Error"
@@ -653,7 +652,7 @@ msgstr "Створити персонажа"
 #: src/gui/charcreatedialog.cpp:67 src/gui/login.cpp:52
 #: src/gui/register.cpp:67
 msgid "Name:"
-msgstr "Ім'я"
+msgstr "Ім'я:"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'next'.
 #. You may change this symbol if your language uses another.
@@ -699,7 +698,7 @@ msgstr "Будь ласка, розподіліть %d балів"
 
 #: src/gui/charcreatedialog.cpp:178
 msgid "Your name needs to be at least 4 characters."
-msgstr "Ім'я повинно містити принаймні 4 символи"
+msgstr "Ім'я повинно містити принаймні 4 символи."
 
 #: src/gui/charcreatedialog.cpp:242
 msgid "Character stats OK"
@@ -757,11 +756,11 @@ msgstr "Чат"
 #: src/gui/chat.cpp:287
 #, fuzzy, c-format
 msgid "Present: %s; %d players are present."
-msgstr "%d гравців он-лайн"
+msgstr "%d гравців он-лайн."
 
 #: src/gui/chat.cpp:305
 msgid "Attendance written to record log."
-msgstr "Аудиторія занесена до журналу"
+msgstr "Аудиторія занесена до журналу."
 
 #: src/gui/chat.cpp:469
 #, c-format
@@ -861,7 +860,7 @@ msgstr "Використати"
 #: src/gui/popupmenu.cpp:380
 #, fuzzy
 msgid "Drop..."
-msgstr "Викинути"
+msgstr "Викинути..."
 
 #: src/gui/inventorywindow.cpp:84 src/gui/popupmenu.cpp:386
 msgid "Split"
@@ -873,7 +872,7 @@ msgstr ""
 
 #: src/gui/inventorywindow.cpp:96 src/gui/storagewindow.cpp:83
 msgid "Slots:"
-msgstr "Комірки"
+msgstr "Комірки:"
 
 #: src/gui/inventorywindow.cpp:97
 msgid "Weight:"
@@ -895,23 +894,23 @@ msgstr "Все"
 
 #: src/gui/itemamount.cpp:128
 msgid "Select amount of items to trade."
-msgstr "Вкажіть кількість предметів"
+msgstr "Вкажіть кількість предметів."
 
 #: src/gui/itemamount.cpp:131
 msgid "Select amount of items to drop."
-msgstr "Вкажіть кількість предметів, щоб викинути"
+msgstr "Вкажіть кількість предметів, щоб викинути."
 
 #: src/gui/itemamount.cpp:134
 msgid "Select amount of items to store."
-msgstr "Вкажіть кількість предметів для зберігання"
+msgstr "Вкажіть кількість предметів для зберігання."
 
 #: src/gui/itemamount.cpp:137
 msgid "Select amount of items to retrieve."
-msgstr "Вкажіть кількість предметів для отримання"
+msgstr "Вкажіть кількість предметів для отримання."
 
 #: src/gui/itemamount.cpp:140
 msgid "Select amount of items to split."
-msgstr "Вкажіть кількість предметів для розподілу"
+msgstr "Вкажіть кількість предметів для розподілу."
 
 #: src/gui/itempopup.cpp:92
 #, fuzzy, c-format
@@ -978,7 +977,7 @@ msgstr "Надіслати"
 
 #: src/gui/npcpostdialog.cpp:96
 msgid "Failed to send as sender or letter invalid."
-msgstr "Неможливо надіслати, так як адресант або лист некорректні"
+msgstr "Неможливо надіслати, так як адресант або лист некорректні."
 
 #: src/gui/outfitwindow.cpp:68 src/gui/outfitwindow.cpp:141
 #: src/gui/outfitwindow.cpp:154
@@ -1208,7 +1207,7 @@ msgstr "1/4 здоров'я"
 #: src/gui/popupmenu.cpp:84
 #, fuzzy, c-format
 msgid "Trade with %s..."
-msgstr "@@trade|Торгувати з %s@@"
+msgstr "@@trade|Торгувати з %s@@..."
 
 #: src/gui/popupmenu.cpp:88 src/gui/popupmenu.cpp:161
 #, fuzzy, c-format
@@ -1307,15 +1306,15 @@ msgstr "Змінити персонажа"
 
 #: src/gui/recorder.cpp:87
 msgid "Finishing recording."
-msgstr "Запис завершено"
+msgstr "Запис завершено."
 
 #: src/gui/recorder.cpp:91
 msgid "Not currently recording."
-msgstr "На даний момент запис не ведеться"
+msgstr "На даний момент запис не ведеться."
 
 #: src/gui/recorder.cpp:96
 msgid "Already recording."
-msgstr "Вже записується"
+msgstr "Вже записується."
 
 #: src/gui/recorder.cpp:104
 msgid "Starting to record..."
@@ -1363,7 +1362,7 @@ msgstr "Пароль повинен складатись менш, ніж з %d 
 
 #: src/gui/register.cpp:197
 msgid "Passwords do not match."
-msgstr "Не ідентичні паролі!"
+msgstr "Не ідентичні паролі."
 
 #: src/gui/serverdialog.cpp:134
 #, fuzzy
@@ -1395,7 +1394,7 @@ msgstr "Красивий вказівник"
 
 #: src/gui/serverdialog.cpp:262
 msgid "Please type both the address and the port of a server."
-msgstr "Будь ласка, введіть порт і адресу серверу"
+msgstr "Будь ласка, введіть порт і адресу серверу."
 
 #: src/gui/serverdialog.cpp:411
 #, c-format
@@ -1405,7 +1404,7 @@ msgstr ""
 #: src/gui/serverdialog.cpp:417
 #, fuzzy
 msgid "Waiting for server..."
-msgstr "Очікування відповіді сервера"
+msgstr "Очікування відповіді сервера..."
 
 #: src/gui/serverdialog.cpp:421
 msgid "Preparing download"
@@ -1455,7 +1454,7 @@ msgstr "Кольори"
 #: src/gui/setup_colors.cpp:70
 #, fuzzy
 msgid "Type:"
-msgstr "Тип: "
+msgstr "Тип:"
 
 #: src/gui/setup_colors.cpp:81 src/gui/setup_colors.cpp:433
 msgid "Static"
@@ -1479,22 +1478,22 @@ msgstr "Спектр"
 #: src/gui/setup_colors.cpp:92
 #, fuzzy
 msgid "Delay:"
-msgstr "Затримка: "
+msgstr "Затримка:"
 
 #: src/gui/setup_colors.cpp:107
 #, fuzzy
 msgid "Red:"
-msgstr "Червоний: "
+msgstr "Червоний:"
 
 #: src/gui/setup_colors.cpp:122
 #, fuzzy
 msgid "Green:"
-msgstr "Зелений: "
+msgstr "Зелений:"
 
 #: src/gui/setup_colors.cpp:137
 #, fuzzy
 msgid "Blue:"
-msgstr "Синій: "
+msgstr "Синій:"
 
 #: src/gui/setup.cpp:51
 msgid "Apply"
@@ -1542,7 +1541,7 @@ msgstr "Типово"
 
 #: src/gui/setup_keyboard.cpp:119
 msgid "Key Conflict(s) Detected."
-msgstr "Деякі скорочення дублюють одне одного"
+msgstr "Деякі скорочення дублюють одне одного."
 
 #: src/gui/setup_players.cpp:57
 msgid "Name"
@@ -1687,7 +1686,7 @@ msgstr "як частинки"
 #: src/gui/setup_video.cpp:214
 #, fuzzy
 msgid "FPS limit:"
-msgstr "Обмеження частоти кадрів"
+msgstr "Обмеження частоти кадрів:"
 
 #: src/gui/setup_video.cpp:225
 msgid "Video"
@@ -1744,7 +1743,7 @@ msgstr "Перемикання на повний екран"
 
 #: src/gui/setup_video.cpp:399
 msgid "Restart needed for changes to take effect."
-msgstr "Потрібно перезапустити для застосування змін"
+msgstr "Потрібно перезапустити для застосування змін."
 
 #: src/gui/setup_video.cpp:411
 #, fuzzy
@@ -1753,7 +1752,7 @@ msgstr "Перемикання OpenGL"
 
 #: src/gui/setup_video.cpp:412
 msgid "Applying change to OpenGL requires restart."
-msgstr "Потрібно перезапустити для застосування змін OpenGL"
+msgstr "Потрібно перезапустити для застосування змін OpenGL."
 
 #: src/gui/setup_video.cpp:486 src/gui/setup_video.cpp:491
 #, fuzzy
@@ -1762,7 +1761,7 @@ msgstr "Розподільчу здатність встановлено"
 
 #: src/gui/setup_video.cpp:487 src/gui/setup_video.cpp:492
 msgid "Restart your client for the change to take effect."
-msgstr "Перезавантажте клієнт, щоби застосувати зміни"
+msgstr "Перезавантажте клієнт, щоби застосувати зміни."
 
 #: src/gui/setup_video.cpp:489
 msgid "Some windows may be moved to fit the lowered resolution."
@@ -1771,11 +1770,11 @@ msgstr ""
 #: src/gui/setup_video.cpp:522
 #, fuzzy
 msgid "Particle Effect Settings Changed."
-msgstr "Налаштування ефектів частинок застосовано"
+msgstr "Налаштування ефектів частинок застосовано."
 
 #: src/gui/setup_video.cpp:523
 msgid "Changes will take effect on map change."
-msgstr "Зміни буде застосовано після завантаження мапи"
+msgstr "Зміни буде застосовано після завантаження мапи."
 
 #: src/gui/skilldialog.cpp:197 src/gui/windowmenu.cpp:58
 msgid "Skills"
@@ -1842,7 +1841,7 @@ msgstr "Ви дійсно хочете вийти?"
 #: src/gui/socialwindow.cpp:182
 #, fuzzy, c-format
 msgid "Invited user %s to party."
-msgstr "/party > Запросити гравця до групи"
+msgstr "/party > Запросити гравця до групи."
 
 #: src/gui/socialwindow.cpp:189
 #, c-format
@@ -1929,7 +1928,7 @@ msgstr "Гільдія"
 #: src/gui/socialwindow.cpp:485
 #, fuzzy
 msgid "Choose your guild's name."
-msgstr "Оберіть сервер"
+msgstr "Оберіть сервер."
 
 #: src/gui/socialwindow.cpp:497
 #, fuzzy
@@ -1986,7 +1985,7 @@ msgstr "Група"
 #: src/gui/socialwindow.cpp:571
 #, fuzzy
 msgid "Choose your party's name."
-msgstr "Оберіть сервер"
+msgstr "Оберіть сервер."
 
 #: src/gui/specialswindow.cpp:85 src/gui/windowmenu.cpp:59
 msgid "Specials"
@@ -2109,7 +2108,7 @@ msgstr "Ти отримуєш: %s."
 
 #: src/gui/trade.cpp:100
 msgid "You give:"
-msgstr "Ти віддаєш: %s."
+msgstr "Ти віддаєш:"
 
 #: src/gui/trade.cpp:104
 msgid "Change"
@@ -2121,7 +2120,7 @@ msgstr "Не вдається додати предмет. Не можна на�
 
 #: src/gui/trade.cpp:318
 msgid "You don't have enough money."
-msgstr "У тебе недостатньо грошей!"
+msgstr "У тебе недостатньо грошей."
 
 #: src/gui/unregisterdialog.cpp:51
 #, c-format
@@ -2142,18 +2141,18 @@ msgstr ""
 
 #: src/gui/updatewindow.cpp:405
 msgid "##1  The update process is incomplete."
-msgstr "##1 Процес поновлення не завершився!"
+msgstr "##1 Процес поновлення не завершився."
 
 #. TRANSLATORS: Continues "you try again later.".
 #: src/gui/updatewindow.cpp:407
 msgid "##1  It is strongly recommended that"
-msgstr "##1 Настійно рекомендовано:"
+msgstr "##1 Настійно рекомендовано"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
 #: src/gui/updatewindow.cpp:409
 #, fuzzy
 msgid "##1  you try again later."
-msgstr "##1 спробувати ще раз пізніше"
+msgstr "##1 спробувати ще раз пізніше."
 
 #: src/gui/updatewindow.cpp:501
 msgid "Completed"
@@ -2185,7 +2184,7 @@ msgstr "Команда: /users"
 
 #: src/gui/widgets/channeltab.cpp:64
 msgid "This command shows the users in this channel."
-msgstr "Ця команда показує користувачів каналу"
+msgstr "Ця команда показує користувачів каналу."
 
 #: src/gui/widgets/channeltab.cpp:68
 msgid "Command: /topic <message>"
@@ -2193,7 +2192,7 @@ msgstr "Команда: /topic <тема каналу>"
 
 #: src/gui/widgets/channeltab.cpp:69
 msgid "This command sets the topic to <message>."
-msgstr "Ця команда встановлює тему каналу"
+msgstr "Ця команда встановлює тему каналу."
 
 #: src/gui/widgets/channeltab.cpp:73
 msgid "Command: /quit"
@@ -2201,11 +2200,11 @@ msgstr "Команда: /quit"
 
 #: src/gui/widgets/channeltab.cpp:74
 msgid "This command leaves the current channel."
-msgstr "Команда закриває поточний канал"
+msgstr "Команда закриває поточний канал."
 
 #: src/gui/widgets/channeltab.cpp:75
 msgid "If you're the last person in the channel, it will be deleted."
-msgstr "Якщо ти останній користувач каналу — його буде закрито"
+msgstr "Якщо ти останній користувач каналу — його буде закрито."
 
 #: src/gui/widgets/channeltab.cpp:80
 msgid "Command: /op <nick>"
@@ -2214,13 +2213,13 @@ msgstr "Комманда: /op <псевдонім>"
 #: src/gui/widgets/channeltab.cpp:81
 msgid "This command makes <nick> a channel operator."
 msgstr ""
-"Ця команда призначає оператором каналу користувача зі вказаним псевдонімом"
+"Ця команда призначає оператором каналу користувача зі вказаним псевдонімом."
 
 #: src/gui/widgets/channeltab.cpp:84
 msgid "Channel operators can kick and op other users from the channel."
 msgstr ""
 "Оператори каналу можуть виганяти користувачів, або призначати нових "
-"операторів"
+"операторів."
 
 #: src/gui/widgets/channeltab.cpp:89
 msgid "Command: /kick <nick>"
@@ -2228,15 +2227,15 @@ msgstr "Команда: /kick <псевдонім>"
 
 #: src/gui/widgets/channeltab.cpp:90
 msgid "This command makes <nick> leave the channel."
-msgstr "Ця команда виганяє з каналу користувача зі вказаним псевдонімом"
+msgstr "Ця команда виганяє з каналу користувача зі вказаним псевдонімом."
 
 #: src/gui/widgets/channeltab.cpp:119
 msgid "Need a user to op!"
-msgstr "Потрібно вказати користувача для призначення оператором"
+msgstr "Потрібно вказати користувача для призначення оператором!"
 
 #: src/gui/widgets/channeltab.cpp:126
 msgid "Need a user to kick!"
-msgstr "Потрібно вказати користувача для вигнання з каналу"
+msgstr "Потрібно вказати користувача для вигнання з каналу!"
 
 #: src/gui/widgets/chattab.cpp:118
 msgid "Global announcement:"
@@ -2274,7 +2273,7 @@ msgstr "Команда: /close"
 
 #: src/gui/widgets/whispertab.cpp:83
 msgid "This command closes the current whisper tab."
-msgstr "Ця команда закриває вкладку приватної бесіди"
+msgstr "Ця команда закриває вкладку приватної бесіди."
 
 #: src/gui/widgets/whispertab.cpp:87
 #, fuzzy
@@ -2284,13 +2283,13 @@ msgstr "Команда: /where"
 #: src/gui/widgets/whispertab.cpp:88
 #, fuzzy
 msgid "This command ignores the other player regardless of current relations."
-msgstr "Відображає кількість гравців он-лайн"
+msgstr "Відображає кількість гравців он-лайн."
 
 #: src/gui/widgets/whispertab.cpp:94
 #, fuzzy
 msgid "This command stops ignoring the other player if they are being ignored."
 msgstr ""
-"Ця команда вмикає ведення журналу чату (записує весь вміст чату у <_файл_>)"
+"Ця команда вмикає ведення журналу чату (записує весь вміст чату у <файл>)."
 
 #: src/gui/windowmenu.cpp:55
 msgid "Status"
@@ -2507,7 +2506,7 @@ msgstr ""
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
-msgstr "Необхідно усунути повтори, інакше керування може бути ускладненим"
+msgstr "Необхідно усунути повтори, інакше керування може бути ускладненим."
 
 #: src/localplayer.cpp:913
 msgid "Unable to pick up item."
@@ -2637,7 +2636,7 @@ msgstr ""
 #: src/net/ea/charserverhandler.cpp:106
 #, fuzzy
 msgid "Cannot use this ID."
-msgstr "Не можна надсилати порожні повідомлення!"
+msgstr "Не можна надсилати порожні повідомлення."
 
 #: src/net/ea/charserverhandler.cpp:109
 msgid "Unknown failure to select character."
@@ -2694,7 +2693,7 @@ msgstr ""
 #: src/net/ea/chathandler.cpp:171
 #, fuzzy
 msgid "MVP player."
-msgstr "Гравець"
+msgstr "Гравець."
 
 #: src/net/ea/chathandler.cpp:204 src/net/ea/chathandler.cpp:210
 #: src/net/ea/chathandler.cpp:215 src/net/ea/chathandler.cpp:220
@@ -2858,7 +2857,7 @@ msgstr ""
 #: src/net/ea/gui/guildtab.cpp:74
 #, fuzzy
 msgid "This command invites <nick> to the guild you're in."
-msgstr "Ця команда запрошує гравця <_ім'я_> до вас в групу"
+msgstr "Ця команда запрошує гравця <ім'я> до вас в групу."
 
 #: src/net/ea/gui/guildtab.cpp:80 src/net/ea/gui/partytab.cpp:80
 msgid "Command: /leave"
@@ -2867,7 +2866,7 @@ msgstr ""
 #: src/net/ea/gui/guildtab.cpp:81
 #, fuzzy
 msgid "This command causes the player to leave the guild."
-msgstr "Ця команда встановлює тему каналу"
+msgstr "Ця команда встановлює тему каналу."
 
 #: src/net/ea/gui/guildtab.cpp:89
 msgid "Guild name is missing."
@@ -3027,17 +3026,17 @@ msgstr ""
 #: src/net/manaserv/loginhandler.cpp:279 src/net/manaserv/loginhandler.cpp:316
 #, fuzzy
 msgid "Unknown error."
-msgstr "Чорт зна яка команда"
+msgstr "Чорт зна яка команда."
 
 #: src/net/ea/loginhandler.cpp:149
 #, fuzzy
 msgid "Unregistered ID."
-msgstr "Не зареєстрований"
+msgstr "Не зареєстрований."
 
 #: src/net/ea/loginhandler.cpp:152
 #, fuzzy
 msgid "Wrong password."
-msgstr "Змінити пароль"
+msgstr "Змінити пароль."
 
 #: src/net/ea/loginhandler.cpp:155
 msgid "Account expired."
@@ -3444,12 +3443,12 @@ msgstr ""
 #: src/net/manaserv/charhandler.cpp:149
 #, fuzzy
 msgid "Character's stats are too high."
-msgstr "Характеристики персонажа в нормі"
+msgstr "Характеристики персонажа в нормі."
 
 #: src/net/manaserv/charhandler.cpp:152
 #, fuzzy
 msgid "Character's stats are too low."
-msgstr "Характеристики персонажа в нормі"
+msgstr "Характеристики персонажа в нормі."
 
 #: src/net/manaserv/charhandler.cpp:155
 msgid "One stat is zero."
@@ -3462,12 +3461,12 @@ msgstr ""
 #: src/net/manaserv/charhandler.cpp:199
 #, fuzzy
 msgid "Selection out of range."
-msgstr "Вкажіть кількість предметів"
+msgstr "Вкажіть кількість предметів."
 
 #: src/net/manaserv/charhandler.cpp:202
 #, fuzzy, c-format
 msgid "Unknown error (%d)."
-msgstr "Чорт зна яка команда"
+msgstr "Чорт зна яка команда."
 
 #: src/net/manaserv/charhandler.cpp:242
 msgid "No gameservers are available."
@@ -3486,12 +3485,12 @@ msgstr ""
 #: src/net/manaserv/chathandler.cpp:184 src/net/manaserv/chathandler.cpp:262
 #, fuzzy
 msgid "Players in this channel:"
-msgstr "Гравець вдарив Тварюку"
+msgstr "Гравець вдарив Тварюку:"
 
 #: src/net/manaserv/chathandler.cpp:201
 #, fuzzy
 msgid "Error joining channel."
-msgstr "Команда: /join <_канал_>"
+msgstr "Команда: /join <канал>."
 
 #: src/net/manaserv/chathandler.cpp:207
 #, fuzzy
@@ -3525,7 +3524,7 @@ msgstr ""
 #: src/net/manaserv/chathandler.cpp:327
 #, fuzzy
 msgid "Unknown channel event."
-msgstr "Чорт зна яка команда"
+msgstr "Чорт зна яка команда."
 
 #: src/net/manaserv/generalhandler.cpp:100
 #, c-format
@@ -3564,7 +3563,7 @@ msgstr ""
 #: src/net/manaserv/loginhandler.cpp:90 src/net/manaserv/loginhandler.cpp:269
 #, fuzzy
 msgid "Already logged in."
-msgstr "Вже записується"
+msgstr "Вже записується."
 
 #: src/net/manaserv/loginhandler.cpp:93 src/net/manaserv/loginhandler.cpp:272
 msgid "Server is full."
@@ -3573,7 +3572,7 @@ msgstr ""
 #: src/net/manaserv/loginhandler.cpp:118
 #, fuzzy
 msgid "New password incorrect."
-msgstr "Введіть новий пароль двічі:"
+msgstr "Введіть новий пароль двічі."
 
 #: src/net/manaserv/loginhandler.cpp:124 src/net/manaserv/loginhandler.cpp:155
 msgid "Account not connected. Please login first."
@@ -3582,7 +3581,7 @@ msgstr ""
 #: src/net/manaserv/loginhandler.cpp:149
 #, fuzzy
 msgid "New email address incorrect."
-msgstr "Двічі введіть вашу нову адресу електронної пошти:"
+msgstr "Двічі введіть вашу нову адресу електронної пошти."
 
 #: src/net/manaserv/loginhandler.cpp:152
 msgid "Old email address incorrect."

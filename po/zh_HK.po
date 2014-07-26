@@ -699,7 +699,7 @@ msgstr ""
 #. TRANSLATORS: chat commands handling message
 #: src/commandhandler.cpp:101
 msgid "Unknown command."
-msgstr "不明指令"
+msgstr "不明指令."
 
 #. TRANSLATORS: change relation
 #. TRANSLATORS: party invite message
@@ -3225,13 +3225,13 @@ msgstr ""
 #. TRANSLATORS: chat message
 #: src/gui/widgets/tabs/chattab.cpp:164
 msgid "Global announcement:"
-msgstr "主要公告："
+msgstr "主要公告:"
 
 #. TRANSLATORS: chat message
 #: src/gui/widgets/tabs/chattab.cpp:170
 #, c-format
 msgid "Global announcement from %s:"
-msgstr "%s 主要公告："
+msgstr "%s 主要公告:"
 
 #. TRANSLATORS: chat message
 #: src/gui/widgets/tabs/chattab.cpp:196
@@ -3919,7 +3919,7 @@ msgstr ""
 #. TRANSLATORS: input settings error header
 #: src/gui/widgets/tabs/setup_input.cpp:149
 msgid "Key Conflict(s) Detected."
-msgstr "檢測到按鍵衝突。"
+msgstr "檢測到按鍵衝突."
 
 #. TRANSLATORS: input settings error
 #: src/gui/widgets/tabs/setup_input.cpp:151
@@ -4656,7 +4656,7 @@ msgstr ""
 #. TRANSLATORS: relation dialog label
 #: src/gui/widgets/tabs/setup_relations.cpp:107
 msgid "When ignoring:"
-msgstr "當忽略時："
+msgstr "當忽略時:"
 
 #. TRANSLATORS: theme settings label
 #: src/gui/widgets/tabs/setup_theme.cpp:63
@@ -4898,7 +4898,7 @@ msgstr ""
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:245
 msgid "Restart needed for changes to take effect."
-msgstr "請重新啟動"
+msgstr "請重新啟動."
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:263
@@ -4908,7 +4908,7 @@ msgstr ""
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:265
 msgid "Applying change to OpenGL requires restart."
-msgstr "確認切換OpenGL需要重新開始"
+msgstr "確認切換OpenGL需要重新開始."
 
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:343
@@ -5540,7 +5540,7 @@ msgstr ""
 #: src/gui/windows/logindialog.cpp:109 src/gui/windows/registerdialog.cpp:79
 #: src/gui/windows/unregisterdialog.cpp:67
 msgid "Password:"
-msgstr "密碼："
+msgstr "密碼:"
 
 #. TRANSLATORS: change password dialog label
 #: src/gui/windows/changepassworddialog.cpp:72
@@ -5582,7 +5582,7 @@ msgstr ""
 #: src/gui/windows/editserverdialog.cpp:74 src/gui/windows/logindialog.cpp:107
 #: src/gui/windows/registerdialog.cpp:77
 msgid "Name:"
-msgstr "名字："
+msgstr "名字:"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'next'.
 #. You may change this symbol if your language uses another.
@@ -5658,7 +5658,7 @@ msgstr ""
 #. TRANSLATORS: char creation error
 #: src/gui/windows/charcreatedialog.cpp:370
 msgid "Your name needs to be at least 4 characters."
-msgstr "你的名字至少需要4個字元"
+msgstr "你的名字至少需要4個字元."
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:467
@@ -5841,7 +5841,7 @@ msgstr ""
 #. TRANSLATORS: edit server dialog label
 #: src/gui/windows/editserverdialog.cpp:78
 msgid "Port:"
-msgstr "Port："
+msgstr "Port:"
 
 #. TRANSLATORS: edit server dialog label
 #: src/gui/windows/editserverdialog.cpp:80
@@ -5913,12 +5913,12 @@ msgstr ""
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:224
 msgid "Select amount of items to trade."
-msgstr "請選擇交易的物品數量"
+msgstr "請選擇交易的物品數量."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:228
 msgid "Select amount of items to drop."
-msgstr "請選擇丟棄的物品數量"
+msgstr "請選擇丟棄的物品數量."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:232
@@ -5933,7 +5933,7 @@ msgstr ""
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:240
 msgid "Select amount of items to split."
-msgstr "請選擇你要分離的物品數量"
+msgstr "請選擇你要分離的物品數量."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:244
@@ -6092,7 +6092,7 @@ msgstr ""
 #. TRANSLATORS: login dialog label
 #: src/gui/windows/logindialog.cpp:103
 msgid "Server:"
-msgstr "伺服器："
+msgstr "伺服器:"
 
 #. TRANSLATORS: login dialog label
 #: src/gui/windows/logindialog.cpp:113
@@ -6246,12 +6246,12 @@ msgstr "交換角色"
 #. TRANSLATORS: register dialog. label.
 #: src/gui/windows/registerdialog.cpp:81
 msgid "Confirm:"
-msgstr "確認："
+msgstr "確認:"
 
 #. TRANSLATORS: register dialog. label.
 #: src/gui/windows/registerdialog.cpp:121
 msgid "Email:"
-msgstr "電子郵件"
+msgstr "電子郵件:"
 
 #. TRANSLATORS: error message
 #: src/gui/windows/registerdialog.cpp:192
@@ -6701,7 +6701,7 @@ msgstr ""
 #: src/gui/windows/tradewindow.cpp:483
 msgid ""
 "Failed adding item. You can not overlap one kind of item on the window."
-msgstr "增加物品失敗。你不能覆蓋視窗中的該類物品能。"
+msgstr "增加物品失敗。你不能覆蓋視窗中的該類物品能."
 
 #. TRANSLATORS: unregister dialog. label.
 #: src/gui/windows/unregisterdialog.cpp:64

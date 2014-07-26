@@ -699,7 +699,7 @@ msgstr ""
 #. TRANSLATORS: chat commands handling message
 #: src/commandhandler.cpp:101
 msgid "Unknown command."
-msgstr "چنین دستور وجود ندارد"
+msgstr "چنین دستور وجود ندارد."
 
 #. TRANSLATORS: change relation
 #. TRANSLATORS: party invite message
@@ -5582,7 +5582,7 @@ msgstr ""
 #: src/gui/windows/editserverdialog.cpp:74 src/gui/windows/logindialog.cpp:107
 #: src/gui/windows/registerdialog.cpp:77
 msgid "Name:"
-msgstr "نام"
+msgstr "نام:"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'next'.
 #. You may change this symbol if your language uses another.
@@ -5658,7 +5658,7 @@ msgstr ""
 #. TRANSLATORS: char creation error
 #: src/gui/windows/charcreatedialog.cpp:370
 msgid "Your name needs to be at least 4 characters."
-msgstr "نام شما حداقل باید 4 کاراکتر داشته باشد"
+msgstr "نام شما حداقل باید 4 کاراکتر داشته باشد."
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:467

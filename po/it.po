@@ -72,12 +72,12 @@ msgstr "Sei stato ucciso da %s"
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:821
 msgid "Tried to pick up nonexistent item."
-msgstr "Forza raccolta oggetti non-esistenti"
+msgstr "Forza raccolta oggetti non-esistenti."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:825
 msgid "Item is too heavy."
-msgstr "L'oggetto è troppo pesante"
+msgstr "L'oggetto è troppo pesante."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:829
@@ -87,7 +87,7 @@ msgstr "L'oggetto è troppo lontano."
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:833
 msgid "Inventory is full."
-msgstr "L'inventario è pieno"
+msgstr "L'inventario è pieno."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:837
@@ -1825,21 +1825,21 @@ msgstr ""
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1381
 msgid "Rename map sign          "
-msgstr "Rinomina mappa"
+msgstr "Rinomina mappa           "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383
 msgid "Name:                    "
-msgstr "Nome:"
+msgstr "Nome:                    "
 
 #: src/gui/popups/popupmenu.cpp:1407
 msgid "Player comment            "
-msgstr "Commento giocatore:"
+msgstr "Commento giocatore:       "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1409
 msgid "Comment:                      "
-msgstr "Commento:"
+msgstr "Commento:                     "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
@@ -3249,7 +3249,7 @@ msgstr "Annuncio generale da %s:"
 #: src/gui/widgets/tabs/chattab.cpp:196
 #, c-format
 msgid "%s whispers: %s"
-msgstr "%s sussurra: %s "
+msgstr "%s sussurra: %s"
 
 #. TRANSLATORS: chat message
 #: src/gui/widgets/tabs/chattab.cpp:552
@@ -3460,7 +3460,7 @@ msgstr "Colpo critico:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:333
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:381
 msgid "Target Level:"
-msgstr "Livello Target"
+msgstr "Livello Target:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:341
@@ -3472,7 +3472,7 @@ msgstr "Party del Target:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:345
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:385
 msgid "Target Guild:"
-msgstr "Gilda del Target"
+msgstr "Gilda del Target:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:430
@@ -3854,22 +3854,22 @@ msgstr "Type:"
 #: src/gui/widgets/tabs/setup_colors.cpp:69
 #: src/gui/widgets/tabs/setup_colors.cpp:336
 msgid "Delay:"
-msgstr "Ritardo: "
+msgstr "Ritardo:"
 
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:73
 msgid "Red:"
-msgstr "rosso"
+msgstr "Rosso:"
 
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:77
 msgid "Green:"
-msgstr "verde"
+msgstr "Verde:"
 
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:81
 msgid "Blue:"
-msgstr "blu"
+msgstr "Blu:"
 
 #. TRANSLATORS: color type
 #: src/gui/widgets/tabs/setup_colors.cpp:107
@@ -3941,7 +3941,7 @@ msgid ""
 "strange behaviour."
 msgstr ""
 "Conflitto tra le chiavi \"%s\" e \"%s\". Risolvi, o potrebbero capitare "
-"inconvenienti"
+"inconvenienti."
 
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
@@ -4856,7 +4856,7 @@ msgstr "Limite FPS:"
 #: src/gui/widgets/tabs/setup_video.cpp:304
 #: src/gui/widgets/tabs/setup_video.cpp:432
 msgid "Alt FPS limit: "
-msgstr "Limite Alt FPS:  "
+msgstr "Limite Alt FPS: "
 
 #. TRANSLATORS: video settings button
 #: src/gui/widgets/tabs/setup_video.cpp:80
@@ -4936,7 +4936,7 @@ msgstr "Risoluzione scelta (esempio 1024x768)"
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:345
 msgid "Enter new resolution:                "
-msgstr "Nuova risoluzione:                                         "
+msgstr "Nuova risoluzione:                   "
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:372
@@ -4948,7 +4948,7 @@ msgstr "RIsoluzione schermo cambiata"
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Alcune finestre potrebbero essere spostate per addattarsi alla risoluzione "
-"ridotta"
+"ridotta."
 
 #. TRANSLATORS: speach type
 #: src/gui/widgets/tabs/setup_visual.cpp:43
@@ -5198,12 +5198,12 @@ msgstr "Party"
 #: src/gui/widgets/tabs/socialpartytab.h:85
 #, c-format
 msgid "Invited user %s to party."
-msgstr "Invitato utente al gruppo %s"
+msgstr "Invitato utente al gruppo %s."
 
 #: src/gui/widgets/tabs/socialpartytab.h:102
 #, c-format
 msgid "Party %s quit requested."
-msgstr "Abbandono gruppo %s richiesto"
+msgstr "Abbandono gruppo %s richiesto."
 
 #. TRANSLATORS: party invite message
 #: src/gui/widgets/tabs/socialpartytab.h:117
@@ -5948,7 +5948,7 @@ msgstr "Selezionare la quantità di oggetti da riporre."
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:236
 msgid "Select amount of items to retrieve."
-msgstr "Seleziona la quantità di oggetti da ritirare"
+msgstr "Seleziona la quantità di oggetti da ritirare."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:240
@@ -5968,7 +5968,7 @@ msgstr "Aggiungi allo shop di vendita."
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:252
 msgid "Unknown."
-msgstr "Sconosciuto"
+msgstr "Sconosciuto."
 
 #. TRANSLATORS: kill stats window button
 #: src/gui/windows/killstats.cpp:54
@@ -6465,37 +6465,37 @@ msgstr "Invita"
 #: src/gui/windows/socialwindow.cpp:273
 #, c-format
 msgid "Accepted party invite from %s."
-msgstr "Accettato invito al gruppo da parte di %s"
+msgstr "Accettato invito al gruppo da parte di %s."
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:284
 #, c-format
 msgid "Rejected party invite from %s."
-msgstr "Rifiutato invito al gruppo da parte di %s"
+msgstr "Rifiutato invito al gruppo da parte di %s."
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:301
 #, c-format
 msgid "Accepted guild invite from %s."
-msgstr "Accettato invito alla gilda da parte di %s"
+msgstr "Accettato invito alla gilda da parte di %s."
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:315
 #, c-format
 msgid "Rejected guild invite from %s."
-msgstr "Rifiutato invito alla gilda da parte di %s"
+msgstr "Rifiutato invito alla gilda da parte di %s."
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:355
 #, c-format
 msgid "Creating guild called %s."
-msgstr "Stai creando una gilda chiamata %s"
+msgstr "Stai creando una gilda chiamata %s."
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:376
 #, c-format
 msgid "Creating party called %s."
-msgstr "Stai creando un party chiamato %s"
+msgstr "Stai creando un party chiamato %s."
 
 #. TRANSLATORS: guild creation message
 #: src/gui/windows/socialwindow.cpp:391
@@ -6505,7 +6505,7 @@ msgstr "Nome della gilda"
 #. TRANSLATORS: guild creation message
 #: src/gui/windows/socialwindow.cpp:393
 msgid "Choose your guild's name."
-msgstr "Scegli un nome per la tua gilda"
+msgstr "Scegli un nome per la tua gilda."
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:409
@@ -6516,7 +6516,7 @@ msgstr "Ricevuto invito ad una gilda, ma ne hai già una."
 #: src/gui/windows/socialwindow.cpp:417
 #, c-format
 msgid "%s has invited you to join the guild %s."
-msgstr "%s ti ha invitato ad entrare nella gilda %s"
+msgstr "%s ti ha invitato ad entrare nella gilda %s."
 
 #. TRANSLATORS: guild invite message
 #: src/gui/windows/socialwindow.cpp:424
@@ -6531,13 +6531,13 @@ msgstr "Ricevuta richiesta di party, ma ne esiste già una."
 #. TRANSLATORS: party invite message
 #: src/gui/windows/socialwindow.cpp:452
 msgid "You have been invited you to join a party."
-msgstr "Sei stato invitato ad entrare in un party"
+msgstr "Sei stato invitato ad entrare in un party."
 
 #. TRANSLATORS: party invite message
 #: src/gui/windows/socialwindow.cpp:457
 #, c-format
 msgid "You have been invited to join the %s party."
-msgstr "Sei stato invitato ad entrare nel gruppo %s"
+msgstr "Sei stato invitato ad entrare nel gruppo %s."
 
 #. TRANSLATORS: party invite message
 #: src/gui/windows/socialwindow.cpp:466
@@ -6568,7 +6568,7 @@ msgstr "Nome del gruppo"
 #. TRANSLATORS: party creation message
 #: src/gui/windows/socialwindow.cpp:506
 msgid "Choose your party's name."
-msgstr "Scegli un nome per il tuo party"
+msgstr "Scegli un nome per il tuo party."
 
 #. TRANSLATORS: status window label
 #: src/gui/windows/statuswindow.cpp:78
@@ -6759,7 +6759,7 @@ msgstr "##1 È fortemente raccomandato"
 #. TRANSLATORS: Begins "It is strongly recommended that".
 #: src/gui/windows/updaterwindow.cpp:828
 msgid "##1  you try again later."
-msgstr "##1  riprova più tardi"
+msgstr "##1  riprova più tardi."
 
 #. TRANSLATORS: updater window label
 #: src/gui/windows/updaterwindow.cpp:1005
@@ -6779,7 +6779,7 @@ msgstr "Aggiornamento"
 #. TRANSLATORS: who is online window name
 #: src/gui/windows/whoisonline.cpp:223
 msgid "Who Is Online - "
-msgstr "Chi è online -   "
+msgstr "Chi è online - "
 
 #. TRANSLATORS: who is online window name
 #: src/gui/windows/whoisonline.cpp:643
@@ -6872,7 +6872,7 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/main.cpp:89
 msgid "Options:"
-msgstr "Opzioni"
+msgstr "Opzioni:"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:91
@@ -7160,7 +7160,7 @@ msgstr "Gestione in comune oggetti non puo' essere attivata."
 #. TRANSLATORS: chat message
 #: src/net/ea/gui/partytab.cpp:122
 msgid "Item sharing unknown."
-msgstr "Oggetti in comune sconosciuti"
+msgstr "Oggetti in comune sconosciuti."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
@@ -7183,7 +7183,7 @@ msgstr "Esperienza in comune non puo' essere attivata."
 #. TRANSLATORS: chat message
 #: src/net/ea/gui/partytab.cpp:172
 msgid "Experience sharing unknown."
-msgstr "Esperienza in comune sconosciuta"
+msgstr "Esperienza in comune sconosciuta."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:153
@@ -7467,7 +7467,7 @@ msgstr "Rilevato speed hack."
 #. TRANSLATORS: error message
 #: src/net/eathena/generalhandler.cpp:150 src/net/tmwa/generalhandler.cpp:168
 msgid "Duplicated login."
-msgstr "Accesso duplicato"
+msgstr "Accesso duplicato."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalhandler.cpp:153 src/net/tmwa/generalhandler.cpp:172
@@ -7560,7 +7560,7 @@ msgstr "Range d'attacco"
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:270 src/net/tmwa/generalhandler.cpp:318
 msgid "Damage per sec."
-msgstr "Danno per secondo"
+msgstr "Danno per secondo."
 
 #. TRANSLATORS: trade message
 #: src/net/ea/tradehandler.cpp:102
@@ -7931,7 +7931,7 @@ msgstr "Scambio fallito per cause sconosciute."
 #: src/resources/notifications.h:232
 #, c-format
 msgid "Trade with %s cancelled."
-msgstr "Scambio con %s cancellato"
+msgstr "Scambio con %s cancellato."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:236

@@ -402,7 +402,7 @@ msgstr "Name der Gilde fehlt."
 
 #: src/commands.cpp:495
 msgid "Return toggles chat."
-msgstr "Enter-Taste steuert den Chat (zeigen/verstecken)"
+msgstr "Enter-Taste steuert den Chat (zeigen/verstecken)."
 
 #: src/commands.cpp:495
 msgid "Message closes chat."
@@ -1837,16 +1837,16 @@ msgstr "Kartenzeichen umbenennen"
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383
 msgid "Name:                    "
-msgstr "Name:"
+msgstr "Name:                    "
 
 #: src/gui/popups/popupmenu.cpp:1407
 msgid "Player comment            "
-msgstr "Spieler Kommentar"
+msgstr "Spieler Kommentar         "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1409
 msgid "Comment:                      "
-msgstr "Kommentar:"
+msgstr "Kommentar:                 "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
@@ -2135,7 +2135,7 @@ msgstr ""
 #: src/gui/popups/popupmenu.cpp:2822 src/gui/windows/inventorywindow.cpp:193
 #: src/gui/windows/inventorywindow.cpp:743
 msgid "Drop..."
-msgstr "Wegwerfen"
+msgstr "Wegwerfen..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop all item amount
@@ -3446,21 +3446,21 @@ msgstr "Angriffs-Verzögerung:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:350
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:389
 msgid "Minimal hit:"
-msgstr "Minimaler Treffer"
+msgstr "Minimaler Treffer:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:281
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:353
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:391
 msgid "Maximum hit:"
-msgstr "Maximaler Treffer"
+msgstr "Maximaler Treffer:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:283
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:356
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:393
 msgid "Critical hit:"
-msgstr "Kritischer Treffer"
+msgstr "Kritischer Treffer:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:327
@@ -3938,7 +3938,7 @@ msgstr "Eingabe"
 #. TRANSLATORS: input settings error header
 #: src/gui/widgets/tabs/setup_input.cpp:149
 msgid "Key Conflict(s) Detected."
-msgstr "Wiedersprüchliche Tasteneinstellung(en) entdeckt"
+msgstr "Wiedersprüchliche Tasteneinstellung(en) entdeckt."
 
 #. TRANSLATORS: input settings error
 #: src/gui/widgets/tabs/setup_input.cpp:151
@@ -4748,7 +4748,7 @@ msgstr "i"
 #. TRANSLATORS: theme info dialog
 #: src/gui/widgets/tabs/setup_theme.cpp:243
 msgid "Name: "
-msgstr "Name:"
+msgstr "Name: "
 
 #: src/gui/widgets/tabs/setup_theme.cpp:244
 msgid "Copyright:"
@@ -4863,7 +4863,7 @@ msgstr "FPS Limit:"
 #: src/gui/widgets/tabs/setup_video.cpp:304
 #: src/gui/widgets/tabs/setup_video.cpp:432
 msgid "Alt FPS limit: "
-msgstr "Alt FPS Limit:"
+msgstr "Alt FPS Limit: "
 
 #. TRANSLATORS: video settings button
 #: src/gui/widgets/tabs/setup_video.cpp:80
@@ -4945,7 +4945,7 @@ msgstr "Benutzerdefinierte Auflösung (zum Beispiel: 1024x768)"
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:345
 msgid "Enter new resolution:                "
-msgstr "Neue Auflösung eingeben:"
+msgstr "Neue Auflösung eingeben:            "
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:372
@@ -5156,12 +5156,12 @@ msgstr "%s in die Gilde %s einladen."
 #: src/gui/widgets/tabs/socialguildtab.h:102
 #, c-format
 msgid "Guild %s quit requested."
-msgstr "Gilde %s Ausstieg angefragt,"
+msgstr "Gilde %s Ausstieg angefragt."
 
 #. TRANSLATORS: guild invite message
 #: src/gui/widgets/tabs/socialguildtab.h:117
 msgid "Member Invite to Guild"
-msgstr "Lade Mitglied in die Gilde ein."
+msgstr "Lade Mitglied in die Gilde ein"
 
 #. TRANSLATORS: guild invite message
 #: src/gui/widgets/tabs/socialguildtab.h:119
@@ -6067,7 +6067,7 @@ msgstr "Exp: %d/%d Übrig: %d"
 #, c-format
 msgid "1%% = %d exp, avg mob for 1%%: %s"
 msgstr ""
-"1%% = %d Erfahrungspunkte\n"
+"1%% = %d Erfahrungspunkte, "
 "Durchschnittliche Monsteranzahl für 1%%: %s"
 
 #. TRANSLATORS: kill stats window label
@@ -6359,7 +6359,7 @@ msgstr "Lade Serverliste herunter...%2.2f%%"
 #. TRANSLATORS: servers dialog label
 #: src/gui/windows/serverdialog.cpp:402
 msgid "Waiting for server..."
-msgstr "Warte auf den Server"
+msgstr "Warte auf den Server..."
 
 #. TRANSLATORS: servers dialog label
 #: src/gui/windows/serverdialog.cpp:407
@@ -6506,7 +6506,7 @@ msgstr "Erstelle der Gilde %s."
 #: src/gui/windows/socialwindow.cpp:376
 #, c-format
 msgid "Creating party called %s."
-msgstr "Erstelle die Gruppe \"%s\""
+msgstr "Erstelle die Gruppe %s."
 
 #. TRANSLATORS: guild creation message
 #: src/gui/windows/socialwindow.cpp:391
@@ -6516,7 +6516,7 @@ msgstr "Gildenname"
 #. TRANSLATORS: guild creation message
 #: src/gui/windows/socialwindow.cpp:393
 msgid "Choose your guild's name."
-msgstr "Wähle den Namen deiner Gilde"
+msgstr "Wähle den Namen deiner Gilde."
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:409
@@ -6791,7 +6791,7 @@ msgstr "Aktualisierung"
 #. TRANSLATORS: who is online window name
 #: src/gui/windows/whoisonline.cpp:223
 msgid "Who Is Online - "
-msgstr "Wer ist Online "
+msgstr "Wer ist Online - "
 
 #. TRANSLATORS: who is online window name
 #: src/gui/windows/whoisonline.cpp:643
@@ -7073,7 +7073,7 @@ msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:219
 msgid "Character deleted."
-msgstr "Charakter gelöscht"
+msgstr "Charakter gelöscht."
 
 #: src/net/ea/charserverhandler.cpp:228
 msgid "Failed to delete character."
@@ -7222,7 +7222,7 @@ msgstr "Unbekannter Fehler."
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:239
 msgid "Unregistered ID."
-msgstr "Unbekannte ID"
+msgstr "Unbekannte ID."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:243
@@ -7248,7 +7248,7 @@ msgstr "Du wurdest für immer gebannt. Bitte kontaktiere das GM-Team."
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:261
 msgid "Client too old."
-msgstr "Client zu alt"
+msgstr "Client zu alt."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:265
@@ -7273,7 +7273,7 @@ msgstr "Dieser Benutzername ist bereits in Verwendung."
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:285
 msgid "Incorrect email."
-msgstr "Falsche E-Mail-Adresse"
+msgstr "Falsche E-Mail-Adresse."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:289
@@ -7293,7 +7293,7 @@ msgstr "Nicht möglich den host \" aufzulösen"
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:283
 msgid "Connection to server terminated. "
-msgstr "Verbindung mit Server abgebrochen."
+msgstr "Verbindung mit Server abgebrochen. "
 
 #. TRANSLATORS: message header
 #: src/net/ea/playerhandler.cpp:273 src/net/ea/playerhandler.cpp:285
@@ -7868,7 +7868,7 @@ msgstr "%s hat die Einladung abgelehnt."
 #: src/resources/notifications.h:155
 #, c-format
 msgid "%s is now a member of your party."
-msgstr "%s ist nun ein Mitglied deiner Gruppe"
+msgstr "%s ist nun ein Mitglied deiner Gruppe."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:159
@@ -8014,7 +8014,7 @@ msgstr "\"Jedes Flüstern ignorieren\" hat nicht funktioniert."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:284
 msgid "All whispers unignored."
-msgstr "\"Kein Flüstern mehr ignorieren\""
+msgstr "\"Kein Flüstern mehr ignorieren\"."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:288

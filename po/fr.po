@@ -85,22 +85,22 @@ msgstr "L'objet est trop lourd."
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:829
 msgid "Item is too far away."
-msgstr "L'objet est trop éloigné"
+msgstr "L'objet est trop éloigné."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:833
 msgid "Inventory is full."
-msgstr "L'inventaire est plein"
+msgstr "L'inventaire est plein."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:837
 msgid "Stack is too big."
-msgstr "La pile est trop grande"
+msgstr "La pile est trop grande."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:841
 msgid "Item belongs to someone else."
-msgstr "L'objet appartient a quelqu'un d'autre"
+msgstr "L'objet appartient a quelqu'un d'autre."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:845
@@ -576,7 +576,7 @@ msgstr "%s n'existe pas et ne peut pas être créé ! Fermeture du programme."
 #: src/dirs.cpp:360
 #, c-format
 msgid "Invalid update host: %s."
-msgstr "Hôte de mise à jour invalide : %s"
+msgstr "Hôte de mise à jour invalide: %s."
 
 #. TRANSLATORS: update server initialisation error
 #: src/dirs.cpp:401 src/dirs.cpp:408
@@ -1835,16 +1835,16 @@ msgstr "Renommer le panneau de carte"
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383
 msgid "Name:                    "
-msgstr "Nom : "
+msgstr "Nom :                    "
 
 #: src/gui/popups/popupmenu.cpp:1407
 msgid "Player comment            "
-msgstr "Le joueur commente            "
+msgstr "Le joueur commente        "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1409
 msgid "Comment:                      "
-msgstr "Commentaire :                      "
+msgstr "Commentaire :                 "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
@@ -3853,28 +3853,28 @@ msgstr "Voilà à quoi ressemble cette couleur"
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:65
 msgid "Type:"
-msgstr "Type : "
+msgstr "Type:"
 
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:69
 #: src/gui/widgets/tabs/setup_colors.cpp:336
 msgid "Delay:"
-msgstr "Délai : "
+msgstr "Délai:"
 
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:73
 msgid "Red:"
-msgstr "Rouge : "
+msgstr "Rouge:"
 
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:77
 msgid "Green:"
-msgstr "Vert : "
+msgstr "Vert:"
 
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:81
 msgid "Blue:"
-msgstr "Bleu : "
+msgstr "Bleu:"
 
 #. TRANSLATORS: color type
 #: src/gui/widgets/tabs/setup_colors.cpp:107
@@ -3906,7 +3906,7 @@ msgstr "Spectre"
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:330
 msgid "Alpha:"
-msgstr "Opacité : "
+msgstr "Opacité:"
 
 #. TRANSLATORS: button in input settings tab
 #: src/gui/widgets/tabs/setup_input.cpp:55
@@ -3936,7 +3936,7 @@ msgstr "Entrée"
 #. TRANSLATORS: input settings error header
 #: src/gui/widgets/tabs/setup_input.cpp:149
 msgid "Key Conflict(s) Detected."
-msgstr "Conflit(s) de touche détecté(s)"
+msgstr "Conflit(s) de touche détecté(s)."
 
 #. TRANSLATORS: input settings error
 #: src/gui/widgets/tabs/setup_input.cpp:151
@@ -4090,7 +4090,7 @@ msgstr "Montrer les dégâts infligés aux monstres"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:111
 msgid "Auto target only reachable monsters"
-msgstr "Ne viser en auto que les monstres à portée de tir "
+msgstr "Ne viser en auto que les monstres à portée de tir"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:115
@@ -4223,7 +4223,7 @@ msgstr "Joueur"
 
 #: src/gui/widgets/tabs/setup_other.cpp:215
 msgid "Show own hp bar"
-msgstr "Afficher ta propre barre de vie "
+msgstr "Afficher ta propre barre de vie"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:219
@@ -4755,11 +4755,11 @@ msgstr "i"
 #. TRANSLATORS: theme info dialog
 #: src/gui/widgets/tabs/setup_theme.cpp:243
 msgid "Name: "
-msgstr "Nom :"
+msgstr "Nom: "
 
 #: src/gui/widgets/tabs/setup_theme.cpp:244
 msgid "Copyright:"
-msgstr "Copyright :"
+msgstr "Copyright:"
 
 #. TRANSLATORS: theme info dialog header
 #: src/gui/widgets/tabs/setup_theme.cpp:309
@@ -4870,7 +4870,7 @@ msgstr "Limite FPS :"
 #: src/gui/widgets/tabs/setup_video.cpp:304
 #: src/gui/widgets/tabs/setup_video.cpp:432
 msgid "Alt FPS limit: "
-msgstr "Limite FPS alternative :"
+msgstr "Limite FPS alternative: "
 
 #. TRANSLATORS: video settings button
 #: src/gui/widgets/tabs/setup_video.cpp:80
@@ -4952,7 +4952,7 @@ msgstr "Résolution personnalisée (exemple : 1024x768)"
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:345
 msgid "Enter new resolution:                "
-msgstr "Entres la nouvelle résolution : "
+msgstr "Entres la nouvelle résolution:       "
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:372
@@ -5897,7 +5897,7 @@ msgstr "Description :"
 #. TRANSLATORS: edit server dialog label
 #: src/gui/windows/editserverdialog.cpp:84
 msgid "Online list url:"
-msgstr "URL de la liste en ligne"
+msgstr "URL de la liste en ligne:"
 
 #. TRANSLATORS: edit server dialog error message
 #: src/gui/windows/editserverdialog.cpp:196
@@ -5969,7 +5969,7 @@ msgstr "Choisir le nombre d'objets à stocker."
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:236
 msgid "Select amount of items to retrieve."
-msgstr "Choisir le nombre d'objet à reprendre"
+msgstr "Choisir le nombre d'objet à reprendre."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:240
@@ -6112,7 +6112,7 @@ msgstr "Se souvenir du nom d'utilisateur"
 #. TRANSLATORS: login dialog label
 #: src/gui/windows/logindialog.cpp:77
 msgid "Update:"
-msgstr "Mise à jour : "
+msgstr "Mise à jour:"
 
 #. TRANSLATORS: login dialog button
 #: src/gui/windows/logindialog.cpp:82
@@ -6222,7 +6222,7 @@ msgstr "Niveau de métier : %d"
 #. TRANSLATORS: npc dialog button
 #: src/gui/windows/npcdialog.cpp:69
 msgid "Stop waiting"
-msgstr "Arrêter d'attendre "
+msgstr "Arrêter d'attendre"
 
 #. TRANSLATORS: npc dialog button
 #: src/gui/windows/npcdialog.cpp:71
@@ -6327,7 +6327,7 @@ msgstr " Le mot de passe doit être long d'au plus %u caractères."
 #. TRANSLATORS: error message
 #: src/gui/windows/registerdialog.cpp:227
 msgid "Passwords do not match."
-msgstr "Les deux mots de passe sont différents"
+msgstr "Les deux mots de passe sont différents."
 
 #. TRANSLATORS: sell confirmation header
 #: src/gui/windows/selldialog.cpp:260
@@ -6651,17 +6651,17 @@ msgstr "Autre"
 #. TRANSLATORS: command editor label
 #: src/gui/windows/textcommandeditor.cpp:58
 msgid "Symbol:"
-msgstr "Symbole : "
+msgstr "Symbole:"
 
 #. TRANSLATORS: command editor label
 #: src/gui/windows/textcommandeditor.cpp:61
 msgid "Command:"
-msgstr "Commande :"
+msgstr "Commande:"
 
 #. TRANSLATORS: command editor label
 #: src/gui/windows/textcommandeditor.cpp:64
 msgid "Comment:"
-msgstr "Commentaire : "
+msgstr "Commentaire:"
 
 #. TRANSLATORS: command editor label
 #: src/gui/windows/textcommandeditor.cpp:68
@@ -6671,27 +6671,27 @@ msgstr "Type de Cible :"
 #. TRANSLATORS: command editor label
 #: src/gui/windows/textcommandeditor.cpp:72
 msgid "Icon:"
-msgstr "Icône : "
+msgstr "Icône:"
 
 #. TRANSLATORS: command editor label
 #: src/gui/windows/textcommandeditor.cpp:75
 msgid "Mana:"
-msgstr "Mana : "
+msgstr "Mana:"
 
 #. TRANSLATORS: command editor label
 #: src/gui/windows/textcommandeditor.cpp:78
 msgid "Magic level:"
-msgstr "Niveau de Magie :"
+msgstr "Niveau de Magie:"
 
 #. TRANSLATORS: command editor label
 #: src/gui/windows/textcommandeditor.cpp:82
 msgid "Magic School:"
-msgstr "École de magie : "
+msgstr "École de magie:"
 
 #. TRANSLATORS: command editor label
 #: src/gui/windows/textcommandeditor.cpp:85
 msgid "School level:"
-msgstr "Niveau scolaire : "
+msgstr "Niveau scolaire:"
 
 #. TRANSLATORS: command editor button
 #: src/gui/windows/textcommandeditor.cpp:90
@@ -6774,7 +6774,7 @@ msgstr "Afficher toutes les nouvelles (peut être lent)"
 #. TRANSLATORS: update message
 #: src/gui/windows/updaterwindow.cpp:824
 msgid "##1  The update process is incomplete."
-msgstr "##1 Le processus de mise à jour n'est pas achevé"
+msgstr "##1 Le processus de mise à jour n'est pas achevé."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
 #: src/gui/windows/updaterwindow.cpp:826
@@ -7311,7 +7311,7 @@ msgstr "Impossible de connecter au serveur \""
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:283
 msgid "Connection to server terminated. "
-msgstr "Connexion au serveur terminée."
+msgstr "Connexion au serveur terminée. "
 
 #. TRANSLATORS: message header
 #: src/net/ea/playerhandler.cpp:273 src/net/ea/playerhandler.cpp:285
@@ -7760,7 +7760,7 @@ msgstr "Incapable de vendre."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:59
 msgid "Unable to sell while trading."
-msgstr "Impossible de vendre pendant un échange en cours"
+msgstr "Impossible de vendre pendant un échange en cours."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:63
@@ -8025,7 +8025,7 @@ msgstr "Tous les chuchotements sont ignorés."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:280
 msgid "All whispers ignore failed."
-msgstr "La mise en silence de tout les chuchotements a échoué"
+msgstr "La mise en silence de tout les chuchotements a échoué."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:284
@@ -8035,7 +8035,7 @@ msgstr "Tous les chuchotements ne sont plus ignorés."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:288
 msgid "All whispers unignore failed."
-msgstr "La remise en activité de tous les chuchotements a échoué"
+msgstr "La remise en activité de tous les chuchotements a échoué."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:295

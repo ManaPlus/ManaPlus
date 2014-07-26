@@ -81,7 +81,7 @@ msgstr "Przedmiot zbyt ciężki."
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:829
 msgid "Item is too far away."
-msgstr "Przedmiot za daleko"
+msgstr "Przedmiot za daleko."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:833
@@ -570,7 +570,7 @@ msgstr "%s nie istnieje i nie może byś utworzone! Wyjście."
 #: src/dirs.cpp:360
 #, c-format
 msgid "Invalid update host: %s."
-msgstr "Nieprawidłowy host aktualizacyjny: %s"
+msgstr "Nieprawidłowy host aktualizacyjny: %s."
 
 #. TRANSLATORS: update server initialisation error
 #: src/dirs.cpp:401 src/dirs.cpp:408
@@ -1822,21 +1822,21 @@ msgstr ""
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1381
 msgid "Rename map sign          "
-msgstr "Zmień nazwę drogowskazu"
+msgstr "Zmień nazwę drogowskazu "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383
 msgid "Name:                    "
-msgstr "Nick:"
+msgstr "Nick:                    "
 
 #: src/gui/popups/popupmenu.cpp:1407
 msgid "Player comment            "
-msgstr "Komentarz gracza            "
+msgstr "Komentarz gracza          "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1409
 msgid "Comment:                      "
-msgstr "Komentarz:                      "
+msgstr "Komentarz:                    "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
@@ -4738,7 +4738,7 @@ msgstr "i"
 #. TRANSLATORS: theme info dialog
 #: src/gui/widgets/tabs/setup_theme.cpp:243
 msgid "Name: "
-msgstr "Nazwa:"
+msgstr "Nazwa: "
 
 #: src/gui/widgets/tabs/setup_theme.cpp:244
 msgid "Copyright:"
@@ -4853,7 +4853,7 @@ msgstr "Limit FPS:"
 #: src/gui/widgets/tabs/setup_video.cpp:304
 #: src/gui/widgets/tabs/setup_video.cpp:432
 msgid "Alt FPS limit: "
-msgstr "Alternatywny limit FPS:"
+msgstr "Alternatywny limit FPS: "
 
 #. TRANSLATORS: video settings button
 #: src/gui/widgets/tabs/setup_video.cpp:80
@@ -4932,7 +4932,7 @@ msgstr "Własna rozdzielczość (np. 1024x768)"
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:345
 msgid "Enter new resolution:                "
-msgstr "Wpisz nową rozdzielczość:"
+msgstr "Wpisz nową rozdzielczość:            "
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:372
@@ -5959,17 +5959,17 @@ msgstr "Wybierz ilość przedmiotów do podziału."
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:244
 msgid "Add to buy shop."
-msgstr "Dodaj to sklepu (sprzedaj)"
+msgstr "Dodaj to sklepu (sprzedaj)."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:248
 msgid "Add to sell shop."
-msgstr "Dodaj do sklepu (kupuj)"
+msgstr "Dodaj do sklepu (kupuj)."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:252
 msgid "Unknown."
-msgstr "Nieznany obiekt"
+msgstr "Nieznany obiekt."
 
 #. TRANSLATORS: kill stats window button
 #: src/gui/windows/killstats.cpp:54
@@ -6782,7 +6782,7 @@ msgstr "Aktualizuj"
 #. TRANSLATORS: who is online window name
 #: src/gui/windows/whoisonline.cpp:223
 msgid "Who Is Online - "
-msgstr "Gracze online- "
+msgstr "Gracze online - "
 
 #. TRANSLATORS: who is online window name
 #: src/gui/windows/whoisonline.cpp:643
@@ -7281,7 +7281,7 @@ msgstr "Nie można było odnaleźć serwera."
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:283
 msgid "Connection to server terminated. "
-msgstr "Połączenie z serwerem przerwane."
+msgstr "Połączenie z serwerem przerwane. "
 
 #. TRANSLATORS: message header
 #: src/net/ea/playerhandler.cpp:273 src/net/ea/playerhandler.cpp:285
@@ -7734,7 +7734,7 @@ msgstr "Nie można sprzedawać podczas handlowania."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:63
 msgid "Unable to sell unsellable item."
-msgstr "Nie można sprzedać- niesprzedawalny przedmiot"
+msgstr "Nie można sprzedać- niesprzedawalny przedmiot."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:67

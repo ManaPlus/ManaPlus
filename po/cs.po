@@ -1827,16 +1827,16 @@ msgstr "Přejmenovat značku na mapě"
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383
 msgid "Name:                    "
-msgstr "Jméno:                    "
+msgstr "Jméno:                   "
 
 #: src/gui/popups/popupmenu.cpp:1407
 msgid "Player comment            "
-msgstr "Hráčův komentář"
+msgstr "Hráčův komentář           "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1409
 msgid "Comment:                      "
-msgstr "Komentář:                      "
+msgstr "Komentář:                     "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
@@ -2012,7 +2012,7 @@ msgstr "Vložit"
 #. TRANSLATORS: open link in browser
 #: src/gui/popups/popupmenu.cpp:2435
 msgid "Open link"
-msgstr "Otevřít odkaz "
+msgstr "Otevřít odkaz"
 
 #. TRANSLATORS: popup menu header
 #: src/gui/popups/popupmenu.cpp:2455
@@ -3918,7 +3918,7 @@ msgstr "Výchozí"
 #. TRANSLATORS: button in input settings tab
 #: src/gui/widgets/tabs/setup_input.cpp:61
 msgid "Reset all keys"
-msgstr "Resetovat všecky klávesy "
+msgstr "Resetovat všecky klávesy"
 
 #. TRANSLATORS: setting tab name
 #: src/gui/widgets/tabs/setup_input.cpp:71
@@ -4745,7 +4745,7 @@ msgstr "i"
 #. TRANSLATORS: theme info dialog
 #: src/gui/widgets/tabs/setup_theme.cpp:243
 msgid "Name: "
-msgstr "Jméno:"
+msgstr "Jméno: "
 
 #: src/gui/widgets/tabs/setup_theme.cpp:244
 msgid "Copyright:"
@@ -4860,7 +4860,7 @@ msgstr "Omezení FPS:"
 #: src/gui/widgets/tabs/setup_video.cpp:304
 #: src/gui/widgets/tabs/setup_video.cpp:432
 msgid "Alt FPS limit: "
-msgstr "Altern. FPS omezení:"
+msgstr "Altern. FPS omezení: "
 
 #. TRANSLATORS: video settings button
 #: src/gui/widgets/tabs/setup_video.cpp:80
@@ -4939,7 +4939,7 @@ msgstr "Vlastní rozlišení (příklad: 1024x768)"
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:345
 msgid "Enter new resolution:                "
-msgstr "Zadej nové rozlišení:"
+msgstr "Zadej nové rozlišení:                "
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:372
@@ -6765,7 +6765,7 @@ msgstr "##1  silně doporučujeme zkusit"
 #. TRANSLATORS: Begins "It is strongly recommended that".
 #: src/gui/windows/updaterwindow.cpp:828
 msgid "##1  you try again later."
-msgstr "##1  aktualizaci později"
+msgstr "##1  aktualizaci později."
 
 #. TRANSLATORS: updater window label
 #: src/gui/windows/updaterwindow.cpp:1005
@@ -6795,7 +6795,7 @@ msgstr "Kdo je online - chyba"
 #. TRANSLATORS: who is online window name
 #: src/gui/windows/whoisonline.cpp:685
 msgid "Who Is Online - Update"
-msgstr "Kdo je přihlášený - "
+msgstr ""
 
 #. TRANSLATORS: world select dialog name
 #: src/gui/windows/worldselectdialog.cpp:49
@@ -7030,7 +7030,7 @@ msgstr "Neznámá chyba postavy na serveru."
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr ""
 "Nelze vytvořit postavu. Nejpravděpodobněji její jméno již na serveru "
-"existuje. "
+"existuje."
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverhandler.cpp:180 src/net/ea/loginhandler.cpp:281
@@ -7284,7 +7284,7 @@ msgstr "Nebylo možné vyhledat host \""
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:283
 msgid "Connection to server terminated. "
-msgstr "Spojení se serverem ukončeno."
+msgstr "Spojení se serverem ukončeno. "
 
 #. TRANSLATORS: message header
 #: src/net/ea/playerhandler.cpp:273 src/net/ea/playerhandler.cpp:285
@@ -8004,7 +8004,7 @@ msgstr "Veškeré šeptání odignorováno."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:288
 msgid "All whispers unignore failed."
-msgstr "Odignorování veškerého šeptání selhalo"
+msgstr "Odignorování veškerého šeptání selhalo."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:295

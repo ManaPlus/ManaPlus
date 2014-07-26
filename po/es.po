@@ -1832,16 +1832,16 @@ msgstr "Renombrar señal del mapa"
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383
 msgid "Name:                    "
-msgstr "Nombre:                    "
+msgstr "Nombre:                  "
 
 #: src/gui/popups/popupmenu.cpp:1407
 msgid "Player comment            "
-msgstr "Comentario del jugador            "
+msgstr "Comentario del jugador    "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1409
 msgid "Comment:                      "
-msgstr "Comentario:                      "
+msgstr "Comentario:                   "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
@@ -4842,7 +4842,7 @@ msgstr "Formato de los botones"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_touch.cpp:114
 msgid "Buttons size"
-msgstr "Tamaño del Botón "
+msgstr "Tamaño del Botón"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_touch.cpp:122
@@ -4946,7 +4946,7 @@ msgstr "Resolución personalizada (ejemplo: 1024x768)"
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:345
 msgid "Enter new resolution:                "
-msgstr "Ingrese la nueva resolución:                "
+msgstr "Ingrese la nueva resolución:        "
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:372
@@ -6983,7 +6983,7 @@ msgstr "--safemode : Iniciar el juego en modo seguro"
 #. TRANSLATORS: command line help
 #: src/main.cpp:130
 msgid "     --renderer       : Set renderer type"
-msgstr "--renderer: Establecer tipo de renderizador "
+msgstr "--renderer: Establecer tipo de renderizador"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:132
@@ -7581,7 +7581,7 @@ msgstr "Rango de Ataque"
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:270 src/net/tmwa/generalhandler.cpp:318
 msgid "Damage per sec."
-msgstr "Daño por segundo"
+msgstr "Daño por segundo."
 
 #. TRANSLATORS: trade message
 #: src/net/ea/tradehandler.cpp:102

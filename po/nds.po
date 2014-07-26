@@ -827,7 +827,7 @@ msgstr "Benutzen"
 #: src/gui/popupmenu.cpp:380
 #, fuzzy
 msgid "Drop..."
-msgstr "Ablegen"
+msgstr "Ablegen..."
 
 #: src/gui/inventorywindow.cpp:84 src/gui/popupmenu.cpp:386
 msgid "Split"
@@ -2558,7 +2558,7 @@ msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:237 src/net/manaserv/charhandler.cpp:263
 msgid "Strength:"
-msgstr "Stärke"
+msgstr "Stärke:"
 
 #: src/net/ea/charserverhandler.cpp:238 src/net/manaserv/charhandler.cpp:264
 msgid "Agility:"
@@ -2570,7 +2570,7 @@ msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:240 src/net/manaserv/charhandler.cpp:267
 msgid "Intelligence:"
-msgstr "Intelligenz"
+msgstr "Intelligenz:"
 
 #: src/net/ea/charserverhandler.cpp:241 src/net/manaserv/charhandler.cpp:265
 msgid "Dexterity:"
@@ -2925,7 +2925,7 @@ msgstr ""
 #: src/net/ea/loginhandler.cpp:152
 #, fuzzy
 msgid "Wrong password."
-msgstr "Passwort ändern"
+msgstr "Passwort ändern."
 
 #: src/net/ea/loginhandler.cpp:155
 msgid "Account expired."
@@ -3358,7 +3358,7 @@ msgstr ""
 
 #: src/net/manaserv/charhandler.cpp:268
 msgid "Willpower:"
-msgstr "Willenskraft"
+msgstr "Willenskraft:"
 
 #: src/net/manaserv/chathandler.cpp:180 src/net/manaserv/chathandler.cpp:301
 #: src/net/manaserv/guildhandler.cpp:259

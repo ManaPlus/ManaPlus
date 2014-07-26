@@ -42,7 +42,7 @@ msgstr "Aceitando propostas de negócios"
 #. TRANSLATORS: visible beings on map
 #: src/actormanager.cpp:1275
 msgid "Visible on map"
-msgstr "Mapa visivel "
+msgstr "Mapa visivel"
 
 #. TRANSLATORS: default race name
 #: src/being/being.cpp:344
@@ -86,7 +86,7 @@ msgstr "Este item é muito pesado."
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:829
 msgid "Item is too far away."
-msgstr "Item está muito longe"
+msgstr "Item está muito longe."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:833
@@ -997,7 +997,7 @@ msgstr "(?) Ausente"
 #. TRANSLATORS: away message box header
 #: src/gamemodifiers.cpp:422
 msgid "Away"
-msgstr "Indisponivel "
+msgstr "Indisponivel"
 
 #. TRANSLATORS: camera mode in status bar
 #: src/gamemodifiers.cpp:446
@@ -1324,7 +1324,7 @@ msgstr "Apagado"
 #. TRANSLATORS: relation type
 #: src/gui/models/playerrelationlistmodel.h:45
 msgid "Blacklisted"
-msgstr "Na Lista Negra "
+msgstr "Na Lista Negra"
 
 #. TRANSLATORS: relation type
 #: src/gui/models/playerrelationlistmodel.h:47
@@ -1705,7 +1705,7 @@ msgstr "Urdidura"
 #. TRANSLATORS: move camera to map item
 #: src/gui/popups/popupmenu.cpp:557
 msgid "Move camera"
-msgstr "Mover câmera "
+msgstr "Mover câmera"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: input tab sub tab name
@@ -1828,7 +1828,7 @@ msgstr "Bloquear"
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1381
 msgid "Rename map sign          "
-msgstr "Renomear mapa          "
+msgstr "Renomear mapa            "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383
@@ -1837,12 +1837,12 @@ msgstr "Nome:                    "
 
 #: src/gui/popups/popupmenu.cpp:1407
 msgid "Player comment            "
-msgstr "Comentário do jogador"
+msgstr "Comentário do jogador     "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1409
 msgid "Comment:                      "
-msgstr "Comentário:"
+msgstr "Comentário:                   "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
@@ -2472,7 +2472,7 @@ msgstr "Janela Quem está online"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:508
 msgid "Did you know Window"
-msgstr "Janela Você Sabia "
+msgstr "Janela Você Sabia"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:514
@@ -2780,7 +2780,7 @@ msgstr "Ligar / Desligar áudio"
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1475
 msgid "Enable / Disable away mode"
-msgstr "Habilitar / Desabilitar modo indisponivel "
+msgstr "Habilitar / Desabilitar modo indisponivel"
 
 #. TRANSLATORS: input action name
 #: src/gui/setupactiondata.h:1481
@@ -3258,13 +3258,13 @@ msgstr "%s envia mensagem privada: %s"
 #: src/gui/widgets/tabs/chattab.cpp:552
 #, c-format
 msgid "%s is now Online."
-msgstr "%s estão online"
+msgstr "%s estão online."
 
 #. TRANSLATORS: chat message
 #: src/gui/widgets/tabs/chattab.cpp:557
 #, c-format
 msgid "%s is now Offline."
-msgstr "%s estão offline"
+msgstr "%s estão offline."
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:53
@@ -3613,12 +3613,12 @@ msgstr "Som de mensagem de susurros"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:123
 msgid "Guild / Party message sound"
-msgstr "Som de mensagem Guilda / Grupo "
+msgstr "Som de mensagem Guilda / Grupo"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:127
 msgid "Highlight message sound"
-msgstr "Destacar som de mensagem "
+msgstr "Destacar som de mensagem"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:131
@@ -4167,7 +4167,7 @@ msgstr "Velocidade de rolagem"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:172
 msgid "Auto resize minimaps"
-msgstr "Redirecionamento automático de mapas "
+msgstr "Redirecionamento automático de mapas"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:176
@@ -4443,7 +4443,7 @@ msgstr "Mostrar imagem de fundo"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:402
 msgid "Screen density override"
-msgstr "Ultrapassar Densidade da tela "
+msgstr "Ultrapassar Densidade da tela"
 
 #. TRANSLATORS: texture compression type
 #. TRANSLATORS: confirm dialog button
@@ -4748,7 +4748,7 @@ msgstr "i"
 #. TRANSLATORS: theme info dialog
 #: src/gui/widgets/tabs/setup_theme.cpp:243
 msgid "Name: "
-msgstr "Nome:"
+msgstr "Nome: "
 
 #: src/gui/widgets/tabs/setup_theme.cpp:244
 msgid "Copyright:"
@@ -4942,7 +4942,7 @@ msgstr "Resolução customizada (exemplo 1024x768)"
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:345
 msgid "Enter new resolution:                "
-msgstr "Escolha a nova resolução                "
+msgstr "Escolha a nova resolução             "
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:372
@@ -5117,7 +5117,7 @@ msgstr "Ataque"
 #. TRANSLATORS: mobs group name in social window
 #: src/gui/widgets/tabs/socialattacktab.h:67
 msgid "Priority mobs"
-msgstr "Mobs prioritarios "
+msgstr "Mobs prioritarios"
 
 #. TRANSLATORS: mobs group name in social window
 #: src/gui/widgets/tabs/socialattacktab.h:69
@@ -5968,17 +5968,17 @@ msgstr "Selecionar quantidade de itens para dividir."
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:244
 msgid "Add to buy shop."
-msgstr "Adicionar na loja de compra"
+msgstr "Adicionar na loja de compra."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:248
 msgid "Add to sell shop."
-msgstr "Adicionar na loja de venda"
+msgstr "Adicionar na loja de venda."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:252
 msgid "Unknown."
-msgstr "Desconhecido"
+msgstr "Desconhecido."
 
 #. TRANSLATORS: kill stats window button
 #: src/gui/windows/killstats.cpp:54
@@ -6035,8 +6035,8 @@ msgstr[1] "Velocidade de exp por %d mins: %s"
 #, c-format
 msgid "Time for next level per %d min: %s"
 msgid_plural "Time for next level per %d min: %s"
-msgstr[0] "Tempo para o próximo nível %d min: %s "
-msgstr[1] "Tempo para o próximo nível %d mins: %s "
+msgstr[0] "Tempo para o próximo nível %d min: %s"
+msgstr[1] "Tempo para o próximo nível %d mins: %s"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:89 src/gui/windows/killstats.cpp:289
@@ -6148,7 +6148,7 @@ msgstr "Barra de Mana"
 #. TRANSLATORS: status bar name
 #: src/gui/windows/ministatuswindow.cpp:87
 msgid "experience bar"
-msgstr "Barra de experiencia "
+msgstr "Barra de experiencia"
 
 #. TRANSLATORS: status bar name
 #: src/gui/windows/ministatuswindow.cpp:92
@@ -6636,7 +6636,7 @@ msgstr "Outro"
 #. TRANSLATORS: command editor label
 #: src/gui/windows/textcommandeditor.cpp:58
 msgid "Symbol:"
-msgstr "Símbolo: "
+msgstr "Símbolo:"
 
 #. TRANSLATORS: command editor label
 #: src/gui/windows/textcommandeditor.cpp:61
@@ -7276,7 +7276,7 @@ msgstr "Email incorreto."
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:289
 msgid "Username permanently erased."
-msgstr "Usuário apagado permanentemente. "
+msgstr "Usuário apagado permanentemente."
 
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:100
@@ -7761,12 +7761,12 @@ msgstr "Guilda criada."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:75
 msgid "You are already in guild."
-msgstr "Você já está em uma Guilda"
+msgstr "Você já está em uma Guilda."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:79
 msgid "Emperium check failed."
-msgstr "Falha ao checar Emperium"
+msgstr "Falha ao checar Emperium."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:83
@@ -7849,7 +7849,7 @@ msgstr "Você saiu do grupo."
 #: src/resources/notifications.h:143
 #, c-format
 msgid "%s has joined your party."
-msgstr "%s se juntou ao grupo"
+msgstr "%s se juntou ao grupo."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:147
@@ -7909,7 +7909,7 @@ msgstr "Você pegou %s."
 #: src/resources/notifications.h:207
 #, c-format
 msgid "You spent %s."
-msgstr "Você gastou %s"
+msgstr "Você gastou %s."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:211
@@ -8000,12 +8000,12 @@ msgstr "Jogador VIP:  %s"
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:276
 msgid "All whispers ignored."
-msgstr "Todos sussurros ignorados. "
+msgstr "Todos sussurros ignorados."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:280
 msgid "All whispers ignore failed."
-msgstr "Todos sussurros ignorados falharam. "
+msgstr "Todos sussurros ignorados falharam."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:284
@@ -8015,7 +8015,7 @@ msgstr "Todos sussurros não-ignorados."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:288
 msgid "All whispers unignore failed."
-msgstr "Todos sussurros não-ignorados falharam. "
+msgstr "Todos sussurros não-ignorados falharam."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:295

@@ -3936,7 +3936,7 @@ msgid ""
 "strange behaviour."
 msgstr ""
 "Päällekkäiset näppäinoikotiet \"%s\" ja \"%s\" voivat aiheuttaa outouksia; "
-"ole hyvä ja poista päällekkäisyydet. "
+"ole hyvä ja poista päällekkäisyydet."
 
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
@@ -4851,7 +4851,7 @@ msgstr "Piirtonopeusrajoitin (FPS):"
 #: src/gui/widgets/tabs/setup_video.cpp:304
 #: src/gui/widgets/tabs/setup_video.cpp:432
 msgid "Alt FPS limit: "
-msgstr "Vaihtoehtoinen FPS-rajoitin:"
+msgstr "Vaihtoehtoinen FPS-rajoitin: "
 
 #. TRANSLATORS: video settings button
 #: src/gui/widgets/tabs/setup_video.cpp:80
@@ -5658,7 +5658,7 @@ msgstr "Jaa %d pistettä"
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:196
 msgid "Race:"
-msgstr "Rotu: "
+msgstr "Rotu:"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:206
@@ -6737,7 +6737,7 @@ msgstr ""
 #. TRANSLATORS: update message
 #: src/gui/windows/updaterwindow.cpp:824
 msgid "##1  The update process is incomplete."
-msgstr "##1  Päivitysprosessi keskeytyi"
+msgstr "##1  Päivitysprosessi keskeytyi."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
 #: src/gui/windows/updaterwindow.cpp:826
@@ -6747,7 +6747,7 @@ msgstr "##1  Suosittelemme vahvasti että"
 #. TRANSLATORS: Begins "It is strongly recommended that".
 #: src/gui/windows/updaterwindow.cpp:828
 msgid "##1  you try again later."
-msgstr "##1  yrität myöhemmin uudelleen"
+msgstr "##1  yrität myöhemmin uudelleen."
 
 #. TRANSLATORS: updater window label
 #: src/gui/windows/updaterwindow.cpp:1005

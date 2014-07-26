@@ -84,7 +84,7 @@ msgstr "Предмет слишком тяжелый."
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:829
 msgid "Item is too far away."
-msgstr "Предмет слишком далеко"
+msgstr "Предмет слишком далеко."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:833
@@ -344,7 +344,7 @@ msgstr "Неизвестная команда."
 #: src/commands.cpp:160 src/commands.cpp:478 src/commands.cpp:565
 #: src/commands.cpp:621
 msgid "Please specify a name."
-msgstr "Пожалуйста, укажите имя"
+msgstr "Пожалуйста, укажите имя."
 
 #. TRANSLATORS: change relation
 #: src/commands.cpp:167
@@ -389,7 +389,7 @@ msgstr "Кеш очищен"
 #. TRANSLATORS: chat error message
 #: src/commands.cpp:442 src/net/ea/gui/partytab.cpp:80
 msgid "Party name is missing."
-msgstr "Не указано название группы"
+msgstr "Не указано название группы."
 
 #. TRANSLATORS: create guild message
 #: src/commands.cpp:458
@@ -1833,7 +1833,7 @@ msgstr "Переименовать знак на карте"
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383
 msgid "Name:                    "
-msgstr "Имя:                    "
+msgstr "Имя:                     "
 
 #: src/gui/popups/popupmenu.cpp:1407
 msgid "Player comment            "
@@ -3851,7 +3851,7 @@ msgstr "Вот, как выглядит сей цвет"
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:65
 msgid "Type:"
-msgstr "Введите: "
+msgstr "Введите:"
 
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:69
@@ -3934,7 +3934,7 @@ msgstr "Ввод"
 #. TRANSLATORS: input settings error header
 #: src/gui/widgets/tabs/setup_input.cpp:149
 msgid "Key Conflict(s) Detected."
-msgstr "Обнаружен(ы) конфликт(ы) клавиш!"
+msgstr "Обнаружен(ы) конфликт(ы) клавиш."
 
 #. TRANSLATORS: input settings error
 #: src/gui/widgets/tabs/setup_input.cpp:151
@@ -4514,7 +4514,7 @@ msgstr "Отображать прозрачность на персонажах 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:109
 msgid "Enable reorder sprites (need for mods support)."
-msgstr "Включить перестановку спрайтов (нужен для модов)"
+msgstr "Включить перестановку спрайтов (нужен для модов)."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:114
@@ -4750,7 +4750,7 @@ msgstr "i"
 #. TRANSLATORS: theme info dialog
 #: src/gui/widgets/tabs/setup_theme.cpp:243
 msgid "Name: "
-msgstr "Название:"
+msgstr "Название: "
 
 #: src/gui/widgets/tabs/setup_theme.cpp:244
 msgid "Copyright:"
@@ -4957,7 +4957,7 @@ msgstr "Разрешение экрана изменено"
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Некоторые окна могут быть сдвинуты, чтобы уместиться на экране при меньшем "
-"разрешении"
+"разрешении."
 
 #. TRANSLATORS: speach type
 #: src/gui/widgets/tabs/setup_visual.cpp:43
@@ -5550,7 +5550,7 @@ msgstr "Новый адрес email должен содержать не бол�
 #. TRANSLATORS: change email error
 #: src/gui/windows/changeemaildialog.cpp:156
 msgid "The email address entries mismatch."
-msgstr "Адрес E-mail не совпадает"
+msgstr "Адрес E-mail не совпадает."
 
 #. TRANSLATORS: change password window name
 #. TRANSLATORS: change password dialog button
@@ -5895,7 +5895,7 @@ msgstr "URL онлайн списка:"
 #. TRANSLATORS: edit server dialog error message
 #: src/gui/windows/editserverdialog.cpp:196
 msgid "Please at least type both the address and the port of the server."
-msgstr "Пожалуйста введите хотя бы адрес и порт сервера"
+msgstr "Пожалуйста введите хотя бы адрес и порт сервера."
 
 #. TRANSLATORS: font size
 #: src/gui/windows/emotewindow.cpp:47
@@ -6733,7 +6733,7 @@ msgstr "Вы отдаете:"
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:397
 msgid "You don't have enough money."
-msgstr "У вас недостаточно денег"
+msgstr "У вас недостаточно денег."
 
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:483
@@ -7076,7 +7076,7 @@ msgstr "Неправильная внешность."
 
 #: src/net/ea/charserverhandler.cpp:219
 msgid "Character deleted."
-msgstr "Персонаж удален"
+msgstr "Персонаж удален."
 
 #: src/net/ea/charserverhandler.cpp:228
 msgid "Failed to delete character."
@@ -7160,13 +7160,13 @@ msgstr "Замки: %s"
 #. TRANSLATORS: notification message
 #: src/net/ea/gui/partytab.cpp:107 src/resources/notifications.h:179
 msgid "Item sharing enabled."
-msgstr "Обмен предметами включен"
+msgstr "Обмен предметами включен."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
 #: src/net/ea/gui/partytab.cpp:112 src/resources/notifications.h:183
 msgid "Item sharing disabled."
-msgstr "Обмен предметами выключен"
+msgstr "Обмен предметами выключен."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
@@ -7225,12 +7225,12 @@ msgstr "Неизвестная ошибка."
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:239
 msgid "Unregistered ID."
-msgstr "Незарегистрированный ID"
+msgstr "Незарегистрированный ID."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:243
 msgid "Wrong password."
-msgstr "Неверный пароль"
+msgstr "Неверный пароль."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:248
@@ -7251,7 +7251,7 @@ msgstr "Вас навсегда забанили. Пожалуйста, свяж
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:261
 msgid "Client too old."
-msgstr "Клиент устарел"
+msgstr "Клиент устарел."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:265
@@ -7265,7 +7265,7 @@ msgstr ""
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:273
 msgid "Server overpopulated."
-msgstr "Сервер переполнен"
+msgstr "Сервер переполнен."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:277
@@ -7280,7 +7280,7 @@ msgstr "Неправильный email."
 #. TRANSLATORS: error message
 #: src/net/ea/loginhandler.cpp:289
 msgid "Username permanently erased."
-msgstr "Пользователь удален"
+msgstr "Пользователь удален."
 
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:100
@@ -7295,7 +7295,7 @@ msgstr "Не удалось найти хост \""
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:283
 msgid "Connection to server terminated. "
-msgstr "Подключение к серверу прервано."
+msgstr "Подключение к серверу прервано. "
 
 #. TRANSLATORS: message header
 #: src/net/ea/playerhandler.cpp:273 src/net/ea/playerhandler.cpp:285
@@ -7719,22 +7719,22 @@ msgstr "животное"
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:39
 msgid "Thanks for buying."
-msgstr "Спасибо за покупку!"
+msgstr "Спасибо за покупку."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:43
 msgid "Unable to buy."
-msgstr "Нельзя купить!"
+msgstr "Нельзя купить."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:47
 msgid "Nothing to sell."
-msgstr "Нечего продавать..."
+msgstr "Нечего продавать."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:51
 msgid "Thanks for selling."
-msgstr "Спасибо за продажу!"
+msgstr "Спасибо за продажу."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:55
@@ -7765,12 +7765,12 @@ msgstr "Гильдия создана."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:75
 msgid "You are already in guild."
-msgstr "Вы и так в гильдии"
+msgstr "Вы и так в гильдии."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:79
 msgid "Emperium check failed."
-msgstr "Имперская проверка провалена"
+msgstr "Имперская проверка провалена."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:83
@@ -7832,7 +7832,7 @@ msgstr "Не удалось использовать предмет."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:127
 msgid "Unable to equip."
-msgstr "Нельзя экипировать!"
+msgstr "Нельзя экипировать."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:131
@@ -7883,7 +7883,7 @@ msgstr "%s не может присоединиться к Вашей групп
 #: src/resources/notifications.h:163
 #, c-format
 msgid "QQQ Unknown invite response for %s."
-msgstr "QQQ Неизвестный ответ на приглашение для %s"
+msgstr "QQQ Неизвестный ответ на приглашение для %s."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:191
@@ -7923,7 +7923,7 @@ msgstr "Не удалось увеличить навык!"
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:215
 msgid "Equip ammunition first."
-msgstr "Для начала экипируйтесь стрелами/патронами"
+msgstr "Для начала экипируйтесь стрелами/патронами."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:219

@@ -700,7 +700,7 @@ msgstr ""
 #. TRANSLATORS: chat commands handling message
 #: src/commandhandler.cpp:101
 msgid "Unknown command."
-msgstr "Unknown command > Komand e panjohur"
+msgstr "Komand e panjohur."
 
 #. TRANSLATORS: change relation
 #. TRANSLATORS: party invite message
