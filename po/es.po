@@ -1834,7 +1834,7 @@ msgstr "Bloquear"
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1381
 msgid "Rename map sign          "
-msgstr "Renombrar señal del mapa"
+msgstr "Renombrar señal del mapa "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383

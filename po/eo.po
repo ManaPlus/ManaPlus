@@ -1825,7 +1825,7 @@ msgstr ""
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383
 msgid "Name:                    "
-msgstr "Nomo:"
+msgstr "Nomo:                    "
 
 #: src/gui/popups/popupmenu.cpp:1407
 msgid "Player comment            "

@@ -1825,7 +1825,7 @@ msgstr ""
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1381
 msgid "Rename map sign          "
-msgstr "Harita işaretini tekrar adlandır"
+msgstr "Harita işaretini tekrar adlandır "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383

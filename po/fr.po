@@ -1837,7 +1837,7 @@ msgstr "Verouiller"
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1381
 msgid "Rename map sign          "
-msgstr "Renommer le panneau de carte"
+msgstr "Renommer le panneau de carte "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383

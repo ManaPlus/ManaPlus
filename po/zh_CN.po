@@ -1835,7 +1835,7 @@ msgstr "名称：                   "
 
 #: src/gui/popups/popupmenu.cpp:1407
 msgid "Player comment            "
-msgstr "玩家评论"
+msgstr "玩家评论                  "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1409
@@ -7265,7 +7265,7 @@ msgstr "无法解析主机“"
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:283
 msgid "Connection to server terminated. "
-msgstr "连接到服务器终止."
+msgstr "连接到服务器终止. "
 
 #. TRANSLATORS: message header
 #: src/net/ea/playerhandler.cpp:273 src/net/ea/playerhandler.cpp:285

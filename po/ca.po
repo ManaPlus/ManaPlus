@@ -1820,7 +1820,7 @@ msgstr ""
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1381
 msgid "Rename map sign          "
-msgstr "Canviar el nom de la marca de mapa"
+msgstr "Canviar el nom de la marca de mapa "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383

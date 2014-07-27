@@ -1826,21 +1826,21 @@ msgstr ""
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1381
 msgid "Rename map sign          "
-msgstr "Ubah nama tanda peta"
+msgstr "Ubah nama tanda peta     "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1383
 msgid "Name:                    "
-msgstr "Nama:"
+msgstr "Nama:                    "
 
 #: src/gui/popups/popupmenu.cpp:1407
 msgid "Player comment            "
-msgstr "Komentar pemain"
+msgstr "Komentar pemain           "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1409
 msgid "Comment:                      "
-msgstr "komentar"
+msgstr "komentar                      "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
@@ -4855,7 +4855,7 @@ msgstr "Batas FPS:"
 #: src/gui/widgets/tabs/setup_video.cpp:304
 #: src/gui/widgets/tabs/setup_video.cpp:432
 msgid "Alt FPS limit: "
-msgstr "batas Alt FPS:"
+msgstr "batas Alt FPS: "
 
 #. TRANSLATORS: video settings button
 #: src/gui/widgets/tabs/setup_video.cpp:80
@@ -4931,7 +4931,7 @@ msgstr "Modifikasi resolusi (contoh: 1024x768)"
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:345
 msgid "Enter new resolution:                "
-msgstr "Masukkan resolusi baru:"
+msgstr "Masukkan resolusi baru:              "
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:372
