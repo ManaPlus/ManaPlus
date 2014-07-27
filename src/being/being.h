@@ -1061,6 +1061,7 @@ class Being notfinal : public ActorSprite,
         bool mShop;
         bool mAway;
         bool mInactive;
+        bool mNeedPosUpdate;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;

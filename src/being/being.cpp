@@ -204,7 +204,8 @@ Being::Being(const int id,
     mAdvanced(false),
     mShop(false),
     mAway(false),
-    mInactive(false)
+    mInactive(false),
+    mNeedPosUpdate(true)
 {
     for (int f = 0; f < 20; f ++)
     {
@@ -1385,6 +1386,7 @@ void Being::nextTile()
     mY = pos.y;
     const uint8_t height = mMap->getHeightOffset(mX, mY);
     mOffsetY = height - mOldHeight;
+    mNeedPosUpdate = true;
     setAction(BeingAction::MOVE, 0);
 }
 
@@ -1451,8 +1453,9 @@ void Being::logic()
         }
     }
 
-    if (mAction == BeingAction::MOVE)
+    if (mAction == BeingAction::MOVE || mNeedPosUpdate)
     {
+        mNeedPosUpdate = false;
         const int xOffset = getXOffset();
         const int yOffset = getYOffset();
         int offset = xOffset;
@@ -1468,11 +1471,6 @@ void Being::logic()
         setPosition(static_cast<float>(mX * mapTileSize
             + mapTileSize / 2 + xOffset), static_cast<float>(
             mY * mapTileSize + mapTileSize + yOffset2));
-    }
-    else
-    {
-        setPosition(static_cast<float>(mX * mapTileSize + mapTileSize / 2),
-            static_cast<float>(mY * mapTileSize + mapTileSize));
     }
 
     if (mEmotionSprite)
@@ -3339,14 +3337,20 @@ void Being::setTileCoords(const int x, const int y)
     mX = x;
     mY = y;
     if (mMap)
+    {
         mOffsetY = mMap->getHeightOffset(mX, mY);
+        mNeedPosUpdate = true;
+    }
 }
 
 void Being::setMap(Map *const map)
 {
     ActorSprite::setMap(map);
     if (mMap)
+    {
         mOffsetY = mMap->getHeightOffset(mX, mY);
+        mNeedPosUpdate = true;
+    }
 }
 
 void Being::removeAllItemsParticles()
