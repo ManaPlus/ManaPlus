@@ -1434,10 +1434,7 @@ void Being::logic()
             offset = yOffset;
 
         if (!xOffset && !yOffset)
-        {
             mNeedPosUpdate = false;
-            logger->log("reset");
-        }
 
         mSortOffsetY = (mOldHeight * mapTileSize / 2)
             + (mOffsetY * mapTileSize / 2)
