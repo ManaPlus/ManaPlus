@@ -1427,12 +1427,17 @@ void Being::logic()
 
     if (mAction == BeingAction::MOVE || mNeedPosUpdate)
     {
-        mNeedPosUpdate = false;
         const int xOffset = getXOffset();
         const int yOffset = getYOffset();
         int offset = xOffset;
         if (!offset)
             offset = yOffset;
+
+        if (!xOffset && !yOffset)
+        {
+            mNeedPosUpdate = false;
+            logger->log("reset");
+        }
 
         mSortOffsetY = (mOldHeight * mapTileSize / 2)
             + (mOffsetY * mapTileSize / 2)
