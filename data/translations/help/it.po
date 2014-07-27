@@ -891,7 +891,7 @@ msgid "/me text - send text to chat as /me command in irc."
 msgstr "/me text - manda un messaggio via chat simile al comando /me delle chat IRC."
 
 msgid "/help - show small help about chat commands. "
-msgstr "/help - visualizza un piccolo help in linea sui comandi della chat."
+msgstr "/help - visualizza un piccolo help in linea sui comandi della chat. "
 
 msgid "Debug"
 msgstr "Debug"
