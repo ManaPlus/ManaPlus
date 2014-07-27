@@ -38,8 +38,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
-
 ItemInfo::ItemInfo() :
     mMissileParticleFile(),
     mDisplay(),

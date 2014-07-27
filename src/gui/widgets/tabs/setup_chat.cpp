@@ -33,8 +33,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
-
 Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     SetupTabScroll(widget)
 {

@@ -1032,45 +1032,31 @@ void Being::fireMissile(Being *const victim, const std::string &particle) const
 
 std::string Being::getSitAction() const
 {
-    if (serverVersion < 0)
+    if (mMap)
     {
-        return SpriteAction::SIT;
+        const unsigned char mask = mMap->getBlockMask(mX, mY);
+        if (mask & BlockMask::GROUNDTOP)
+            return SpriteAction::SITTOP;
+        else if (mask & BlockMask::AIR)
+            return SpriteAction::SITSKY;
+        else if (mask & BlockMask::WATER)
+            return SpriteAction::SITWATER;
     }
-    else
-    {
-        if (mMap)
-        {
-            const unsigned char mask = mMap->getBlockMask(mX, mY);
-            if (mask & BlockMask::GROUNDTOP)
-                return SpriteAction::SITTOP;
-            else if (mask & BlockMask::AIR)
-                return SpriteAction::SITSKY;
-            else if (mask & BlockMask::WATER)
-                return SpriteAction::SITWATER;
-        }
-        return SpriteAction::SIT;
-    }
+    return SpriteAction::SIT;
 }
 
 
 std::string Being::getMoveAction() const
 {
-    if (serverVersion < 0)
+    if (mMap)
     {
-        return SpriteAction::MOVE;
+        const unsigned char mask = mMap->getBlockMask(mX, mY);
+        if (mask & BlockMask::AIR)
+            return SpriteAction::FLY;
+        else if (mask & BlockMask::WATER)
+            return SpriteAction::SWIM;
     }
-    else
-    {
-        if (mMap)
-        {
-            const unsigned char mask = mMap->getBlockMask(mX, mY);
-            if (mask & BlockMask::AIR)
-                return SpriteAction::FLY;
-            else if (mask & BlockMask::WATER)
-                return SpriteAction::SWIM;
-        }
-        return SpriteAction::MOVE;
-    }
+    return SpriteAction::MOVE;
 }
 
 std::string Being::getWeaponAttackAction(const ItemInfo *const weapon) const
@@ -1101,43 +1087,29 @@ std::string Being::getAttackAction(const Attack *const attack1) const
     if (!attack1)
         return SpriteAction::ATTACK;
 
-    if (serverVersion < 0)
+    if (mMap)
     {
-        return attack1->mAction;
+        const unsigned char mask = mMap->getBlockMask(mX, mY);
+        if (mask & BlockMask::AIR)
+            return attack1->mSkyAction;
+        else if (mask & BlockMask::WATER)
+            return attack1->mWaterAction;
     }
-    else
-    {
-        if (mMap)
-        {
-            const unsigned char mask = mMap->getBlockMask(mX, mY);
-            if (mask & BlockMask::AIR)
-                return attack1->mSkyAction;
-            else if (mask & BlockMask::WATER)
-                return attack1->mWaterAction;
-        }
-        return attack1->mAction;
-    }
+    return attack1->mAction;
 }
 
 #define getSpriteAction(func, action) \
     std::string Being::get##func##Action() const \
 { \
-    if (serverVersion < 0) \
+    if (mMap) \
     { \
-        return SpriteAction::action; \
+        const unsigned char mask = mMap->getBlockMask(mX, mY); \
+        if (mask & BlockMask::AIR) \
+            return SpriteAction::action##SKY; \
+        else if (mask & BlockMask::WATER) \
+            return SpriteAction::action##WATER; \
     } \
-    else \
-    { \
-        if (mMap) \
-        { \
-            const unsigned char mask = mMap->getBlockMask(mX, mY); \
-            if (mask & BlockMask::AIR) \
-                return SpriteAction::action##SKY; \
-            else if (mask & BlockMask::WATER) \
-                return SpriteAction::action##WATER; \
-        } \
-        return SpriteAction::action; \
-    } \
+    return SpriteAction::action; \
 }
 
 getSpriteAction(Dead, DEAD)
@@ -3028,7 +3000,7 @@ void Being::setEmote(const uint8_t emotion, const int emote_time)
 
 void Being::updatePercentHP()
 {
-    if (!mMaxHP || !serverVersion)
+    if (!mMaxHP)
         return;
     if (mHP)
     {

@@ -39,8 +39,6 @@ namespace
     bool mLoaded = false;
 }
 
-extern int serverVersion;
-
 void NPCDB::load()
 {
     if (mLoaded)

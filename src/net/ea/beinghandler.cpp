@@ -55,6 +55,7 @@
 #include "debug.h"
 
 extern int serverVersion;
+extern unsigned int tmwServerVersion;
 
 namespace Ea
 {
@@ -230,7 +231,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     uint16_t gloves;
     if (dstBeing->getType() == ActorType::MONSTER)
     {
-        if (serverVersion > 0)
+        if (serverVersion > 0 || tmwServerVersion >= 0x0E0701)
         {
             const int hp = msg.readInt32();
             const int maxHP = msg.readInt32();

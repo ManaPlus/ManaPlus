@@ -40,8 +40,6 @@ namespace
     bool mLoaded = false;
 }
 
-extern int serverVersion;
-
 void PETDB::load()
 {
     if (mLoaded)

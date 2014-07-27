@@ -1278,7 +1278,7 @@ impHandler0(createItems)
         if (colors >= 255)
             colors = 254;
 
-        if (!colors || serverVersion < 1)
+        if (!colors)
         {
             dialog->addItem(id, 1, 100, 0);
         }
