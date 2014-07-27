@@ -348,7 +348,7 @@ msgstr "Pelaaja on jo %s!"
 #: src/commands.cpp:179
 #, c-format
 msgid "Player successfully %s!"
-msgstr "Pelaaja on nyt %s."
+msgstr "Pelaaja on nyt %s!"
 
 #. TRANSLATORS: change relation
 #: src/commands.cpp:185
@@ -429,12 +429,12 @@ msgstr "Pelaajaa ei ollut jätetty huomiotta!"
 #. TRANSLATORS: unignore command
 #: src/commands.cpp:590
 msgid "Player no longer ignored!"
-msgstr "Pelaaja huomioidaan taas."
+msgstr "Pelaaja huomioidaan taas!"
 
 #. TRANSLATORS: unignore command
 #: src/commands.cpp:596
 msgid "Player could not be unignored!"
-msgstr "Pelaajan uudelleenhuomiointi epäonnistui."
+msgstr "Pelaajan uudelleenhuomiointi epäonnistui!"
 
 #. TRANSLATORS: blacklist command
 #: src/commands.cpp:605
@@ -454,12 +454,12 @@ msgstr "Pelaaja on jo pyyhitty!"
 #. TRANSLATORS: erase command
 #: src/commands.cpp:645
 msgid "Player successfully erased!"
-msgstr "Pelaaja pyyhitty."
+msgstr "Pelaaja pyyhitty!"
 
 #. TRANSLATORS: erase command
 #: src/commands.cpp:651
 msgid "Player could not be erased!"
-msgstr "Toiminto epäonnistui, pelaajaa ei ole vielä pyyhitty."
+msgstr "Toiminto epäonnistui, pelaajaa ei ole vielä pyyhitty!"
 
 #. TRANSLATORS: uptime command
 #: src/commands.cpp:943 src/commands.cpp:999
@@ -6916,7 +6916,7 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/main.cpp:110
 msgid "  -p --port           : Login server port"
-msgstr "  -p --port           : Palvelinportti sisäänkirjautumiseen "
+msgstr "  -p --port           : Palvelinportti sisäänkirjautumiseen"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:112
@@ -7338,32 +7338,32 @@ msgstr "Manapisteesi eivät riitä!"
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:201
 msgid "You have no memos!"
-msgstr "Sinulla ei ole muistioita (memo)."
+msgstr "Sinulla ei ole muistioita (memo)!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:205
 msgid "You cannot do that right now!"
-msgstr "Et voi tehdä tätä juuri nyt."
+msgstr "Et voi tehdä tätä juuri nyt!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:209
 msgid "Seems you need more money... ;-)"
-msgstr "Näyttää siltä että tarvitset lisää rahaa."
+msgstr "Näyttää siltä että tarvitset lisää rahaa... ;-)"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:213
 msgid "You cannot use this skill with that kind of weapon!"
-msgstr "Et voi käyttää tätä taitoa tuollaisen aseen kanssa."
+msgstr "Et voi käyttää tätä taitoa tuollaisen aseen kanssa!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:218
 msgid "You need another red gem!"
-msgstr "Tarvitset toisen punaisen helmen."
+msgstr "Tarvitset toisen punaisen helmen!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:222
 msgid "You need another blue gem!"
-msgstr "Tarvitset toisen sinisen helmen."
+msgstr "Tarvitset toisen sinisen helmen!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:226

@@ -4918,7 +4918,7 @@ msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Das Wechseln in den Fenstermodus sowie das Wiederherstellen der vorherigen "
-"Auflösung schlug fehl."
+"Auflösung schlug fehl!"
 
 #. TRANSLATORS: video error message
 #: src/gui/widgets/tabs/setup_video.cpp:231
@@ -4926,7 +4926,7 @@ msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Das Wechseln in den Vollbildmodus sowie das Wiederherstellen der vorherigen "
-"Auflösung schlug fehl."
+"Auflösung schlug fehl!"
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:243
@@ -6087,7 +6087,7 @@ msgstr "1%% = %d Erfahrungspunkte, Durchschnittliche Monsteranzahl für 1%%: %s"
 #: src/gui/windows/killstats.cpp:398 src/gui/windows/killstats.cpp:407
 #, c-format
 msgid "  Time for next level: %s"
-msgstr "Zeit bis zum nächsten Level: %s"
+msgstr "  Zeit bis zum nächsten Level: %s"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:428
@@ -6885,12 +6885,12 @@ msgstr "[manaplus-Datei] : Die manaplus-Datei ist eine XML-Datei (.manaplus)"
 #. TRANSLATORS: command line help
 #: src/main.cpp:84
 msgid "                  used to set custom parameters"
-msgstr "genutzt um eigene Einstellungen zu setzen."
+msgstr "                 genutzt um eigene Einstellungen zu setzen."
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:86
 msgid "                  to the manaplus client."
-msgstr "zum manaplus Client."
+msgstr "                 zum manaplus Client."
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:89
@@ -6900,22 +6900,22 @@ msgstr "Optionen:"
 #. TRANSLATORS: command line help
 #: src/main.cpp:91
 msgid "  -l --log-file       : Log file to use"
-msgstr "-l --log-file : Log Datei benutzen"
+msgstr "  -l --log-file       : Log Datei benutzen"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:93
 msgid "  -a --chat-log-dir   : Chat log dir to use"
-msgstr "-a --chat-log-dir :  Verzeichnis für Chat-Logs"
+msgstr "  -a --chat-log-dir   : Verzeichnis für Chat-Logs"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:95
 msgid "  -v --version        : Display the version"
-msgstr "  -v --version : Die Version des Spieles anzeigen"
+msgstr "  -v --version        : Die Version des Spieles anzeigen"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:97
 msgid "  -h --help           : Display this help"
-msgstr "  - --help : Zeigt diesen Hilfstext an"
+msgstr "  -h --help           : Zeigt diesen Hilfstext an"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:99
@@ -6925,53 +6925,53 @@ msgstr "  -C --config-dir     : zu benutzendes Einstellungsverueichniss"
 #. TRANSLATORS: command line help
 #: src/main.cpp:102
 msgid "  -U --username       : Login with this username"
-msgstr "  -U --username : Mit angegebenem Benutzernamen anmelden"
+msgstr "  -U --username       : Mit angegebenem Benutzernamen anmelden"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:104
 msgid "  -P --password       : Login with this password"
-msgstr "  -P --password : Angegebenes Passwort benutzen"
+msgstr "  -P --password       : Angegebenes Passwort benutzen"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:106
 msgid "  -c --character      : Login with this character"
-msgstr "  -c --charakter : Mit angegebenem Spieler anmelden"
+msgstr "  -c --charakter      : Mit angegebenem Spieler anmelden"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:108
 msgid "  -s --server         : Login server name or IP"
-msgstr "  -s --server : Name oder IP-Adresse des Loginservers"
+msgstr "  -s --server         : Name oder IP-Adresse des Loginservers"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:110
 msgid "  -p --port           : Login server port"
-msgstr "  -p --port : Port des Loginservers"
+msgstr "  -p --port           : Port des Loginservers"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:112
 msgid "  -H --update-host    : Use this update host"
-msgstr "-H --update-host : Benutze diesen Update host"
+msgstr "  -H --update-host    : Benutze diesen Update host"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:114
 msgid "  -D --default        : Choose default character server and character"
-msgstr "  -D --default : Wähle zuletzt benutzten Server und Spieler aus"
+msgstr "  -D --default        : Wähle zuletzt benutzten Server und Spieler aus"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:117
 msgid "  -u --skip-update    : Skip the update downloads"
-msgstr "  -u --skip-update : Überspringe das Herunterladen von Updates"
+msgstr "  -u --skip-update    : Überspringe das Herunterladen von Updates"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:119
 msgid "  -d --data           : Directory to load game data from"
-msgstr "  -d --data : Datenverzeichnis, aus dem das Spiel geladen werden soll"
+msgstr "  -d --data           : Datenverzeichnis, aus dem das Spiel geladen werden soll"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:122
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
 msgstr ""
-"-L --localdata-dir : Verzeichnis, das als Heimatverzeichnis benutzt werden "
+"  -L --localdata-dir  : Verzeichnis, das als Heimatverzeichnis benutzt werden "
 "soll"
 
 #. TRANSLATORS: command line help
@@ -6982,7 +6982,7 @@ msgstr "     --screenshot-dir : Verzeichnis um Bildschirmfotos zu speichern"
 #. TRANSLATORS: command line help
 #: src/main.cpp:128
 msgid "     --safemode       : Start game in safe mode"
-msgstr "--safemode : Starte das Spiel im sicheren Modus"
+msgstr "     --safemode       : Starte das Spiel im sicheren Modus"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:130
@@ -6992,12 +6992,12 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/main.cpp:132
 msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr "-T --Tests: Beginne Treibertest und Autokonfiguration"
+msgstr "  -T --Tests          : Beginne Treibertest und Autokonfiguration"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:136
 msgid "  -O --no-opengl      : Disable OpenGL for this session"
-msgstr "-O --no-opengl : Deaktiviert OpenGL für diese Sitzung"
+msgstr "  -O --no-opengl      : Deaktiviert OpenGL für diese Sitzung"
 
 #. TRANSLATORS: playe stat
 #: src/net/ea/charserverhandler.cpp:75

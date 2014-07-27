@@ -6081,7 +6081,7 @@ msgstr "1%% = %d ex, avg mob por 1%%: %s"
 #: src/gui/windows/killstats.cpp:398 src/gui/windows/killstats.cpp:407
 #, c-format
 msgid "  Time for next level: %s"
-msgstr "Tempo para próximo nível: %s"
+msgstr "  Tempo para próximo nível: %s"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:428
@@ -6877,12 +6877,12 @@ msgstr "[Manaplus-Arquivo]: O arquivo Manaplus é um arquivo XML (.manaplus)"
 #. TRANSLATORS: command line help
 #: src/main.cpp:84
 msgid "                  used to set custom parameters"
-msgstr "Usado para parâmetros customizados"
+msgstr "                  usado para parâmetros customizados"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:86
 msgid "                  to the manaplus client."
-msgstr "Para o cliente Manaplus."
+msgstr "                  para o cliente Manaplus."
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:89
@@ -6897,7 +6897,7 @@ msgstr "  -l --log-file       : Usar arquivo de log"
 #. TRANSLATORS: command line help
 #: src/main.cpp:93
 msgid "  -a --chat-log-dir   : Chat log dir to use"
-msgstr "-a --chat-log-dir: Diretório para log de chat"
+msgstr "  -a --chat-log-dir   : Diretório para log de chat"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:95
@@ -6942,7 +6942,7 @@ msgstr "  -p --port           : Porta do servidor de login"
 #. TRANSLATORS: command line help
 #: src/main.cpp:112
 msgid "  -H --update-host    : Use this update host"
-msgstr "-H --update-host: Usar este host de update"
+msgstr "  -H --update-host    : Usar este host de update"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:114
@@ -6991,7 +6991,7 @@ msgstr "  -T --testes          : Começa a testar drivers e a auto-configurar"
 #. TRANSLATORS: command line help
 #: src/main.cpp:136
 msgid "  -O --no-opengl      : Disable OpenGL for this session"
-msgstr "-O --no-opengl : Desabilita OpenGL nesta sessão"
+msgstr "  -O --no-opengl      : Desabilita OpenGL nesta sessão"
 
 #. TRANSLATORS: playe stat
 #: src/net/ea/charserverhandler.cpp:75

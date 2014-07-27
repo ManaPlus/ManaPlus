@@ -5145,7 +5145,7 @@ msgstr "Qui voldries invitar al gremi %s?"
 #. TRANSLATORS: guild leave message
 #: src/gui/widgets/tabs/socialguildtab.h:129
 msgid "Leave Guild?"
-msgstr "Deixar gremi"
+msgstr "Deixar gremi?"
 
 #. TRANSLATORS: guild leave message
 #: src/gui/widgets/tabs/socialguildtab.h:131
@@ -6858,7 +6858,7 @@ msgstr "Opcions:"
 #. TRANSLATORS: command line help
 #: src/main.cpp:91
 msgid "  -l --log-file       : Log file to use"
-msgstr "-l --log-file : Arxiu de registre a utilitzar"
+msgstr "  -l --log-file       : Arxiu de registre a utilitzar"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:93
@@ -6868,42 +6868,42 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/main.cpp:95
 msgid "  -v --version        : Display the version"
-msgstr "-v --version : Mosta la versió"
+msgstr "  -v --version        : Mosta la versió"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:97
 msgid "  -h --help           : Display this help"
-msgstr "-h --help : Mostra aquesta ajuda"
+msgstr "  -h --help           : Mostra aquesta ajuda"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:99
 msgid "  -C --config-dir     : Configuration directory to use"
-msgstr "-C --config-dir : Directori de configuració a utilitzar"
+msgstr "  -C --config-dir     : Directori de configuració a utilitzar"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:102
 msgid "  -U --username       : Login with this username"
-msgstr "-U --username : Inicia sessió amb aquest nom d'usuari"
+msgstr "  -U --username       : Inicia sessió amb aquest nom d'usuari"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:104
 msgid "  -P --password       : Login with this password"
-msgstr "-P --password : Inicia sessió amb aquesta contrasenya"
+msgstr "  -P --password       : Inicia sessió amb aquesta contrasenya"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:106
 msgid "  -c --character      : Login with this character"
-msgstr "-c --character : Inicia sessió amb aquest personatge"
+msgstr "  -c --character      : Inicia sessió amb aquest personatge"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:108
 msgid "  -s --server         : Login server name or IP"
-msgstr "-s --server : Servidor d'inici de sessió o IP"
+msgstr "  -s --server         : Servidor d'inici de sessió o IP"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:110
 msgid "  -p --port           : Login server port"
-msgstr "-p --port : Port d'inici de sessió"
+msgstr "  -p --port           : Port d'inici de sessió"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:112
@@ -6913,32 +6913,32 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/main.cpp:114
 msgid "  -D --default        : Choose default character server and character"
-msgstr "-D --default : Selecciona servidor i personatge per defecte"
+msgstr "  -D --default        : Selecciona servidor i personatge per defecte"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:117
 msgid "  -u --skip-update    : Skip the update downloads"
-msgstr "-u --skip-update : Omet la descàrrega d'actualitzacions"
+msgstr "  -u --skip-update    : Omet la descàrrega d'actualitzacions"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:119
 msgid "  -d --data           : Directory to load game data from"
-msgstr "-d --data : Directori de càrrega del joc"
+msgstr "  -d --data           : Directori de càrrega del joc"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:122
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
-msgstr "-L --localdata-dir : Directori per a ser usat per desar informació"
+msgstr "  -L --localdata-dir  : Directori per a ser usat per desar informació"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:125
 msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr "--screenshot-dir : Directori per a guardar captures de pantalla"
+msgstr "     --screenshot-dir : Directori per a guardar captures de pantalla"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:128
 msgid "     --safemode       : Start game in safe mode"
-msgstr "--safemode : Comença el joc en mode segur"
+msgstr "     --safemode : Comença el joc en mode segur"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:130

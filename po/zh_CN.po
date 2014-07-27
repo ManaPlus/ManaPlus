@@ -307,7 +307,7 @@ msgstr "更改密码"
 #. TRANSLATORS: password change message text
 #: src/client.cpp:1449
 msgid "Password changed successfully!"
-msgstr "密码更改成功！"
+msgstr "密码更改成功!"
 
 #. TRANSLATORS: email change message header
 #: src/client.cpp:1472
@@ -317,7 +317,7 @@ msgstr "更改电子邮箱地址"
 #. TRANSLATORS: email change message text
 #: src/client.cpp:1474
 msgid "Email changed successfully!"
-msgstr "电子邮箱地址更改成功！"
+msgstr "电子邮箱地址更改成功!"
 
 #. TRANSLATORS: unregister message header
 #: src/client.cpp:1497
@@ -359,12 +359,12 @@ msgstr "玩家成功%s!"
 #: src/commands.cpp:185
 #, c-format
 msgid "Player could not be %s!"
-msgstr "玩家不能为 %s"
+msgstr "玩家不能为 %s!"
 
 #. TRANSLATORS: whisper send
 #: src/commands.cpp:382
 msgid "Cannot send empty whispers!"
-msgstr "无法发送空白私信！"
+msgstr "无法发送空白私信!"
 
 #. TRANSLATORS: new whisper query
 #: src/commands.cpp:400
@@ -427,12 +427,12 @@ msgstr "中立"
 #. TRANSLATORS: unignore command
 #: src/commands.cpp:580
 msgid "Player wasn't ignored!"
-msgstr "玩家没有被忽视！"
+msgstr "玩家没有被忽视!"
 
 #. TRANSLATORS: unignore command
 #: src/commands.cpp:590
 msgid "Player no longer ignored!"
-msgstr "玩家不再被忽视！"
+msgstr "玩家不再被忽视!"
 
 #. TRANSLATORS: unignore command
 #: src/commands.cpp:596
@@ -457,12 +457,12 @@ msgstr "玩家已经被删除!"
 #. TRANSLATORS: erase command
 #: src/commands.cpp:645
 msgid "Player successfully erased!"
-msgstr "玩家成功被删除！"
+msgstr "玩家成功被删除!"
 
 #. TRANSLATORS: erase command
 #: src/commands.cpp:651
 msgid "Player could not be erased!"
-msgstr "无法删除玩家！"
+msgstr "无法删除玩家!"
 
 #. TRANSLATORS: uptime command
 #: src/commands.cpp:943 src/commands.cpp:999
@@ -574,7 +574,7 @@ msgstr ""
 #. TRANSLATORS: update server initialisation error
 #: src/dirs.cpp:401 src/dirs.cpp:408
 msgid "Error creating updates directory!"
-msgstr "创建更新目录错误！"
+msgstr "创建更新目录错误!"
 
 #: src/dirs.cpp:430 src/dirs.cpp:448
 #, c-format
@@ -615,7 +615,7 @@ msgstr ""
 #. TRANSLATORS: save file message
 #: src/game.cpp:550
 msgid "Saving screenshot failed!"
-msgstr "保存屏幕快照失败！"
+msgstr "保存屏幕快照失败!"
 
 #. TRANSLATORS: error message text
 #: src/game.cpp:630
@@ -4895,7 +4895,7 @@ msgstr "w"
 #: src/gui/widgets/tabs/setup_video.cpp:224
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
-msgstr "切换到窗口模式，并恢复旧的模式，也没有失败！"
+msgstr "切换到窗口模式，并恢复旧的模式，也没有失败!"
 
 #. TRANSLATORS: video error message
 #: src/gui/widgets/tabs/setup_video.cpp:231
@@ -5156,13 +5156,13 @@ msgstr "你要邀请谁加入工会%s?"
 #. TRANSLATORS: guild leave message
 #: src/gui/widgets/tabs/socialguildtab.h:129
 msgid "Leave Guild?"
-msgstr "离开公会？"
+msgstr "离开公会?"
 
 #. TRANSLATORS: guild leave message
 #: src/gui/widgets/tabs/socialguildtab.h:131
 #, c-format
 msgid "Are you sure you want to leave guild %s?"
-msgstr "你确定要离开工会%s吗？"
+msgstr "你确定要离开工会%s吗?"
 
 #. TRANSLATORS: social window label
 #: src/gui/widgets/tabs/socialguildtab.h:142
@@ -5692,7 +5692,7 @@ msgstr "确认删除角色"
 #. TRANSLATORS: char deletion message
 #: src/gui/windows/chardeleteconfirm.h:43
 msgid "Are you sure you want to delete this character?"
-msgstr "你确定想删除这个角色？"
+msgstr "你确定想删除这个角色?"
 
 #. TRANSLATORS: char select dialog name
 #: src/gui/windows/charselectdialog.cpp:60
@@ -5800,7 +5800,7 @@ msgstr ""
 #. TRANSLATORS: did you know window name
 #: src/gui/windows/didyouknowwindow.cpp:53
 msgid "Did You Know?"
-msgstr "你知道吗？"
+msgstr "你知道吗?"
 
 #. TRANSLATORS: did you know window button
 #: src/gui/windows/didyouknowwindow.cpp:60
@@ -6349,7 +6349,7 @@ msgstr "准备下载"
 #. TRANSLATORS: servers dialog label
 #: src/gui/windows/serverdialog.cpp:412
 msgid "Error retreiving server list!"
-msgstr "恢复服务器列表错误！"
+msgstr "恢复服务器列表错误!"
 
 #. TRANSLATORS: servers dialog label
 #: src/gui/windows/serverdialog.cpp:502
@@ -6412,7 +6412,7 @@ msgstr "请求交易"
 #: src/gui/windows/shopwindow.cpp:791
 #, c-format
 msgid "%s wants to %s %s do you accept?"
-msgstr "%s想要%s %s 你接受吗？"
+msgstr "%s想要%s %s 你接受吗?"
 
 #. TRANSLATORS: skills dialog button
 #: src/gui/windows/skilldialog.cpp:70
@@ -6866,7 +6866,7 @@ msgstr "选项:"
 #. TRANSLATORS: command line help
 #: src/main.cpp:91
 msgid "  -l --log-file       : Log file to use"
-msgstr "-l--log-file 日志文件"
+msgstr "  -l--log-file        : 日志文件"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:93
@@ -6876,7 +6876,7 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/main.cpp:95
 msgid "  -v --version        : Display the version"
-msgstr "-v --version: 显示版本"
+msgstr "  -v --version       : 显示版本"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:97
@@ -7255,7 +7255,7 @@ msgstr ""
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:100
 msgid "Empty address given to Network::connect()!"
-msgstr "空的地址给网络：连接（）！"
+msgstr "空的地址给网络：连接（）!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:202
@@ -7287,57 +7287,57 @@ msgstr ""
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:155
 msgid "Trade failed!"
-msgstr "交易失败！"
+msgstr "交易失败!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:159
 msgid "Emote failed!"
-msgstr "发送表情失败！"
+msgstr "发送表情失败!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:163
 msgid "Sit failed!"
-msgstr "原地休息失败！"
+msgstr "原地休息失败!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:167
 msgid "Chat creating failed!"
-msgstr "聊天创建失败！"
+msgstr "聊天创建失败!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:171
 msgid "Could not join party!"
-msgstr "不能加入工会！"
+msgstr "不能加入工会!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:175
 msgid "Cannot shout!"
-msgstr "无法呼喊！"
+msgstr "无法呼喊!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:189
 msgid "You have not yet reached a high enough lvl!"
-msgstr "你还没有达到足够的等级！"
+msgstr "你还没有达到足够的等级!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:193
 msgid "Insufficient HP!"
-msgstr "HP不足！"
+msgstr "HP不足!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:197
 msgid "Insufficient SP!"
-msgstr "SP不足！"
+msgstr "SP不足!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:201
 msgid "You have no memos!"
-msgstr "没有备忘录"
+msgstr "没有备忘录!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:205
 msgid "You cannot do that right now!"
-msgstr "你无法办到！"
+msgstr "你无法办到!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:209
@@ -7347,27 +7347,27 @@ msgstr "看起来需要更多金币... ;-)"
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:213
 msgid "You cannot use this skill with that kind of weapon!"
-msgstr "此武器无法用来使用此项技能！"
+msgstr "此武器无法用来使用此项技能!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:218
 msgid "You need another red gem!"
-msgstr "你需要另一颗红宝石！"
+msgstr "你需要另一颗红宝石!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:222
 msgid "You need another blue gem!"
-msgstr "你需要另一颗蓝宝石！"
+msgstr "你需要另一颗蓝宝石!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:226
 msgid "You're carrying to much to do this!"
-msgstr "你已负重太多，无法办到！"
+msgstr "你已负重太多，无法办到!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:230
 msgid "Huh? What's that?"
-msgstr "啊？那是什么？"
+msgstr "啊？那是什么?"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:242
@@ -7458,7 +7458,7 @@ msgstr "未知的连接错误."
 #. TRANSLATORS: error message
 #: src/net/eathena/generalhandler.cpp:225 src/net/tmwa/generalhandler.cpp:254
 msgid "Got disconnected from server!"
-msgstr "和服务器失去连接"
+msgstr "和服务器失去连接!"
 
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:250 src/net/tmwa/generalhandler.cpp:282
@@ -7547,7 +7547,7 @@ msgstr "每秒伤害."
 #: src/net/ea/tradehandler.cpp:102
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
-msgstr "%s想和您进行交易，是否接受？"
+msgstr "%s想和您进行交易，是否接受?"
 
 #. TRANSLATORS: trade header
 #: src/net/ea/tradehandler.cpp:149
@@ -7867,7 +7867,7 @@ msgstr "一未知成员尝试说：%s"
 #: src/resources/notifications.h:199
 #, c-format
 msgid "%s is not in your party!"
-msgstr "%s不在你的帮会中！"
+msgstr "%s不在你的帮会中!"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:203
@@ -7953,12 +7953,12 @@ msgstr "交易完成."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:264
 msgid "Kick failed!"
-msgstr "踢出失败！"
+msgstr "踢出失败!"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:268
 msgid "Kick succeeded!"
-msgstr "成功踢出！"
+msgstr "成功踢出!"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:272

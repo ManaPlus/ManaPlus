@@ -581,7 +581,7 @@ msgstr ""
 #. TRANSLATORS: update server initialisation error
 #: src/dirs.cpp:401 src/dirs.cpp:408
 msgid "Error creating updates directory!"
-msgstr "Errore durante la creazione della directory degli aggiornamenti"
+msgstr "Errore durante la creazione della directory degli aggiornamenti!"
 
 #: src/dirs.cpp:430 src/dirs.cpp:448
 #, c-format
@@ -5815,7 +5815,7 @@ msgstr "Rete"
 #. TRANSLATORS: did you know window name
 #: src/gui/windows/didyouknowwindow.cpp:53
 msgid "Did You Know?"
-msgstr "Suggerimenti"
+msgstr "Suggerimenti?"
 
 #. TRANSLATORS: did you know window button
 #: src/gui/windows/didyouknowwindow.cpp:60

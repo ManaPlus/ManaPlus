@@ -983,7 +983,7 @@ msgstr ""
 #. TRANSLATORS: save file message
 #: src/game.cpp:547
 msgid "Saving screenshot failed!"
-msgstr "שמירת תמונת־מסך נכשלה"
+msgstr "שמירת תמונת־מסך נכשלה!"
 
 #. TRANSLATORS: error message text
 #: src/game.cpp:627

@@ -6932,7 +6932,7 @@ msgstr "  -D --default        : Varsayılan karakter sunucusu ve karakteri seç"
 #. TRANSLATORS: command line help
 #: src/main.cpp:117
 msgid "  -u --skip-update    : Skip the update downloads"
-msgstr "-u --skip-update : Güncelleme indirmelerini atla"
+msgstr "  -u --skip-update    : Güncelleme indirmelerini atla"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:119

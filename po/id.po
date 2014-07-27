@@ -68,22 +68,22 @@ msgstr ""
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:821
 msgid "Tried to pick up nonexistent item."
-msgstr "Mencoba mengambil item yang tidak lagi ada"
+msgstr "Mencoba mengambil item yang tidak lagi ada."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:825
 msgid "Item is too heavy."
-msgstr "item terlalu berat"
+msgstr "item terlalu berat."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:829
 msgid "Item is too far away."
-msgstr "barang terlalu jauh"
+msgstr "barang terlalu jauh."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:833
 msgid "Inventory is full."
-msgstr "Perbekalan sudah penuh"
+msgstr "Perbekalan sudah penuh."
 
 #. TRANSLATORS: pickup error message
 #: src/being/localplayer.cpp:837
@@ -302,7 +302,7 @@ msgstr "Ubah sandi"
 #. TRANSLATORS: password change message text
 #: src/client.cpp:1449
 msgid "Password changed successfully!"
-msgstr "Perubahan sandi berhasil"
+msgstr "Perubahan sandi berhasil!"
 
 #. TRANSLATORS: email change message header
 #: src/client.cpp:1472
@@ -312,7 +312,7 @@ msgstr "Perubahan email"
 #. TRANSLATORS: email change message text
 #: src/client.cpp:1474
 msgid "Email changed successfully!"
-msgstr "Perubahan email berhasil"
+msgstr "Perubahan email berhasil!"
 
 #. TRANSLATORS: unregister message header
 #: src/client.cpp:1497
@@ -322,7 +322,7 @@ msgstr "Telah tidak terdaftar"
 #. TRANSLATORS: unregister message text
 #: src/client.cpp:1499
 msgid "Farewell, come back any time..."
-msgstr "Selamat tinggal, datang kembali setiap saat"
+msgstr "Selamat tinggal, datang kembali setiap saat..."
 
 #. TRANSLATORS: chat commands handling message
 #: src/commandhandler.cpp:101
@@ -336,7 +336,7 @@ msgstr "Perintah tidak dikenal."
 #: src/commands.cpp:160 src/commands.cpp:478 src/commands.cpp:565
 #: src/commands.cpp:621
 msgid "Please specify a name."
-msgstr "Tetapkan sebuah nama"
+msgstr "Tetapkan sebuah nama."
 
 #. TRANSLATORS: change relation
 #: src/commands.cpp:167
@@ -359,7 +359,7 @@ msgstr "Pemain tidak bisa %s!"
 #. TRANSLATORS: whisper send
 #: src/commands.cpp:382
 msgid "Cannot send empty whispers!"
-msgstr "Tidak dapat mengirimkan pesan tanpa nama"
+msgstr "Tidak dapat mengirimkan pesan tanpa nama!"
 
 #. TRANSLATORS: new whisper query
 #: src/commands.cpp:400
@@ -369,7 +369,7 @@ msgid ""
 "you."
 msgstr ""
 "Tidak dapat membuat kolom whisper baru untuk nama \"%s\"! nama telah ada, "
-"atau nama anda sendiri"
+"atau nama anda sendiri."
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
@@ -381,7 +381,7 @@ msgstr ""
 #. TRANSLATORS: chat error message
 #: src/commands.cpp:442 src/net/ea/gui/partytab.cpp:80
 msgid "Party name is missing."
-msgstr "Nama kelompok tidak dapat di temukan"
+msgstr "Nama kelompok tidak dapat di temukan."
 
 #. TRANSLATORS: create guild message
 #: src/commands.cpp:458
@@ -390,21 +390,21 @@ msgstr "Nama organisasi tidak ditemukan."
 
 #: src/commands.cpp:495
 msgid "Return toggles chat."
-msgstr "Kembalikan pengalihan obrolan"
+msgstr "Kembalikan pengalihan obrolan."
 
 #: src/commands.cpp:495
 msgid "Message closes chat."
-msgstr "Tutup pesan obrolan"
+msgstr "Tutup pesan obrolan."
 
 #. TRANSLATORS: message from toggle chat command
 #: src/commands.cpp:506
 msgid "Return now toggles chat."
-msgstr "Kembalikan sekarang pengalihan obrolan"
+msgstr "Kembalikan sekarang pengalihan obrolan."
 
 #. TRANSLATORS: message from toggle chat command
 #: src/commands.cpp:515
 msgid "Message now closes chat."
-msgstr "Pesan menutup obrolan"
+msgstr "Pesan menutup obrolan."
 
 #. TRANSLATORS: adding friend command
 #: src/commands.cpp:543
@@ -434,7 +434,7 @@ msgstr "Pemain tidak lagi diabaikan!"
 #. TRANSLATORS: unignore command
 #: src/commands.cpp:596
 msgid "Player could not be unignored!"
-msgstr "Pemain tidak dapat diabaikan"
+msgstr "Pemain tidak dapat diabaikan!"
 
 #. TRANSLATORS: blacklist command
 #: src/commands.cpp:605
@@ -449,17 +449,17 @@ msgstr ""
 #. TRANSLATORS: erase command
 #: src/commands.cpp:631
 msgid "Player already erased!"
-msgstr "Pemain telah terhapus"
+msgstr "Pemain telah terhapus!"
 
 #. TRANSLATORS: erase command
 #: src/commands.cpp:645
 msgid "Player successfully erased!"
-msgstr "Pemain telah berhasil dihapus"
+msgstr "Pemain telah berhasil dihapus!"
 
 #. TRANSLATORS: erase command
 #: src/commands.cpp:651
 msgid "Player could not be erased!"
-msgstr "Pemain tidak dapat dihapus"
+msgstr "Pemain tidak dapat dihapus!"
 
 #. TRANSLATORS: uptime command
 #: src/commands.cpp:943 src/commands.cpp:999
@@ -618,7 +618,7 @@ msgstr "Gagal menyimpan screenshot!"
 #. TRANSLATORS: error message text
 #: src/game.cpp:630
 msgid "The connection to the server was lost."
-msgstr "Koneksi ke server terputus"
+msgstr "Koneksi ke server terputus."
 
 #. TRANSLATORS: error message header
 #: src/game.cpp:633
@@ -4909,7 +4909,7 @@ msgstr "Mengubah ke mode Layar penuh"
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:245
 msgid "Restart needed for changes to take effect."
-msgstr "Memulai dari awal di butuhkan untuk melihat efek"
+msgstr "Memulai dari awal di butuhkan untuk melihat efek."
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:263
@@ -4919,7 +4919,7 @@ msgstr "Mengubah ke OpenGL"
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:265
 msgid "Applying change to OpenGL requires restart."
-msgstr "Mendaftar perubahan ke OpenGL membutuhkan memulai dari awal"
+msgstr "Mendaftar perubahan ke OpenGL membutuhkan memulai dari awal."
 
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:343
@@ -5138,7 +5138,7 @@ msgstr "Pengguna yang diajak %s ke organisasi %s."
 #: src/gui/widgets/tabs/socialguildtab.h:102
 #, c-format
 msgid "Guild %s quit requested."
-msgstr "Permintaan %s keluar dari Organisasi "
+msgstr "Permintaan %s keluar dari Organisasi."
 
 #. TRANSLATORS: guild invite message
 #: src/gui/widgets/tabs/socialguildtab.h:117
@@ -5189,7 +5189,7 @@ msgstr "Kelompok"
 #: src/gui/widgets/tabs/socialpartytab.h:85
 #, c-format
 msgid "Invited user %s to party."
-msgstr "Pengguna yang diajak %s ke kelompok"
+msgstr "Pengguna yang diajak %s ke kelompok."
 
 #: src/gui/widgets/tabs/socialpartytab.h:102
 #, c-format
@@ -5532,7 +5532,7 @@ msgstr ""
 #. TRANSLATORS: change email error
 #: src/gui/windows/changeemaildialog.cpp:156
 msgid "The email address entries mismatch."
-msgstr "Pengisian alamat email tidak cocok"
+msgstr "Pengisian alamat email tidak cocok."
 
 #. TRANSLATORS: change password window name
 #. TRANSLATORS: change password dialog button
@@ -5561,7 +5561,7 @@ msgstr "ketik sandi baru dua kali"
 #. TRANSLATORS: change password error
 #: src/gui/windows/changepassworddialog.cpp:121
 msgid "Enter the old password first."
-msgstr "Masukkan sandi lama dahulu"
+msgstr "Masukkan sandi lama dahulu."
 
 #. TRANSLATORS: change password error
 #: src/gui/windows/changepassworddialog.cpp:128
@@ -5669,7 +5669,7 @@ msgstr ""
 #. TRANSLATORS: char creation error
 #: src/gui/windows/charcreatedialog.cpp:370
 msgid "Your name needs to be at least 4 characters."
-msgstr "Nama anda paling sedikit harus mengandung 4 karakter"
+msgstr "Nama anda paling sedikit harus mengandung 4 karakter."
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:467
@@ -5924,42 +5924,42 @@ msgstr "Semua"
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:224
 msgid "Select amount of items to trade."
-msgstr "Pilih jumlah item yang mau di perdagangkan"
+msgstr "Pilih jumlah item yang mau di perdagangkan."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:228
 msgid "Select amount of items to drop."
-msgstr "Pilih jumlah item yang ingin dibuang"
+msgstr "Pilih jumlah item yang ingin dibuang."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:232
 msgid "Select amount of items to store."
-msgstr "Pilih jumlah item yang ingin disimpan"
+msgstr "Pilih jumlah item yang ingin disimpan."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:236
 msgid "Select amount of items to retrieve."
-msgstr "Pilih jumlah item yang ingin diambil kembali"
+msgstr "Pilih jumlah item yang ingin diambil kembali."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:240
 msgid "Select amount of items to split."
-msgstr "Pilih jumlah item yang ingin dipisahkan"
+msgstr "Pilih jumlah item yang ingin dipisahkan."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:244
 msgid "Add to buy shop."
-msgstr "Tambahkan ke daftar beli"
+msgstr "Tambahkan ke daftar beli."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:248
 msgid "Add to sell shop."
-msgstr "Tambahkan ke daftar jual"
+msgstr "Tambahkan ke daftar jual."
 
 #. TRANSLATORS: amount window message
 #: src/gui/windows/itemamountwindow.cpp:252
 msgid "Unknown."
-msgstr "Tidak diketahui"
+msgstr "Tidak diketahui."
 
 #. TRANSLATORS: kill stats window button
 #: src/gui/windows/killstats.cpp:54
@@ -6039,14 +6039,14 @@ msgstr "Level: %d pada %f%%"
 #: src/gui/windows/killstats.cpp:134 src/gui/windows/killstats.cpp:247
 #, c-format
 msgid "Exp: %d/%d Left: %d"
-msgstr "Exp: %d%d Tersisa:%d"
+msgstr "Exp: %d/%d Tersisa: %d"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:138 src/gui/windows/killstats.cpp:253
 #: src/gui/windows/killstats.cpp:267
 #, c-format
 msgid "1%% = %d exp, avg mob for 1%%: %s"
-msgstr "%%= %d exp, rata-rata mob untuk 1%%: %s"
+msgstr "1%% = %d exp, rata-rata mob untuk 1%%: %s"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:356 src/gui/windows/killstats.cpp:365
@@ -6054,7 +6054,7 @@ msgstr "%%= %d exp, rata-rata mob untuk 1%%: %s"
 #: src/gui/windows/killstats.cpp:398 src/gui/windows/killstats.cpp:407
 #, c-format
 msgid "  Time for next level: %s"
-msgstr "waktu untuk ke level selanjutnya: %s"
+msgstr "  Waktu untuk ke level selanjutnya: %s"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:428
@@ -7335,7 +7335,7 @@ msgstr ""
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:205
 msgid "You cannot do that right now!"
-msgstr "Anda tidak dapat melakukannya sekarang"
+msgstr "Anda tidak dapat melakukannya sekarang!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:209
@@ -7345,7 +7345,7 @@ msgstr ""
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:213
 msgid "You cannot use this skill with that kind of weapon!"
-msgstr "Tidak dapat menggunakan skill tersebut dengan senjata tersebut"
+msgstr "Tidak dapat menggunakan skill tersebut dengan senjata tersebut!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:218
@@ -7729,7 +7729,7 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:75
 msgid "You are already in guild."
-msgstr "Kamu sudah berada di dalam organisasi"
+msgstr "Kamu sudah berada di dalam organisasi."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:79
@@ -7817,7 +7817,7 @@ msgstr ""
 #: src/resources/notifications.h:143
 #, c-format
 msgid "%s has joined your party."
-msgstr "%s telah bergabung dengan kelompok"
+msgstr "%s telah bergabung dengan kelompok."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:147

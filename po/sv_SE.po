@@ -6070,7 +6070,7 @@ msgstr "1%% = %d exp, avg mob för 1%%: %s"
 #: src/gui/windows/killstats.cpp:398 src/gui/windows/killstats.cpp:407
 #, c-format
 msgid "  Time for next level: %s"
-msgstr "Tid tills nästa level: %s"
+msgstr "  Tid tills nästa level: %s"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:428
@@ -6867,12 +6867,12 @@ msgstr "[manaplus-file] : manaplus-filen är en XML-fil (.manaplus)"
 #. TRANSLATORS: command line help
 #: src/main.cpp:84
 msgid "                  used to set custom parameters"
-msgstr "Används för att sätta anpassade parameters"
+msgstr "                  används för att sätta anpassade parameters"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:86
 msgid "                  to the manaplus client."
-msgstr "Till manaplus-klienten."
+msgstr "                  till manaplus-klienten."
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:89
@@ -6882,87 +6882,87 @@ msgstr "Inställningar:"
 #. TRANSLATORS: command line help
 #: src/main.cpp:91
 msgid "  -l --log-file       : Log file to use"
-msgstr "-l --log-file : Log-fil att använda"
+msgstr "  -l --log-file       : Log-fil att använda"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:93
 msgid "  -a --chat-log-dir   : Chat log dir to use"
-msgstr "-a --chat-log-dir : Katalog att använda för Chat-logg"
+msgstr "  -a --chat-log-dir   : Katalog att använda för Chat-logg"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:95
 msgid "  -v --version        : Display the version"
-msgstr "-v --version : Visa version"
+msgstr "  -v --version        : Visa version"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:97
 msgid "  -h --help           : Display this help"
-msgstr "-h --help : Visa hjälp"
+msgstr "  -h --help           : Visa hjälp"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:99
 msgid "  -C --config-dir     : Configuration directory to use"
-msgstr "-C --config-dir : Konfiguration för vilken katalog som ska användas"
+msgstr "  -C --config-dir     : Konfiguration för vilken katalog som ska användas"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:102
 msgid "  -U --username       : Login with this username"
-msgstr "-U --username : Logga in med detta användarnamn"
+msgstr "  -U --username       : Logga in med detta användarnamn"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:104
 msgid "  -P --password       : Login with this password"
-msgstr "-P --password : Logga in med detta lösenord"
+msgstr "  -P --password       : Logga in med detta lösenord"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:106
 msgid "  -c --character      : Login with this character"
-msgstr "-c --character : Logga in med denna karaktär"
+msgstr "  -c --character      : Logga in med denna karaktär"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:108
 msgid "  -s --server         : Login server name or IP"
-msgstr "-s --server : Inloggningsserver-namn eller IP"
+msgstr "  -s --server         : Inloggningsserver-namn eller IP"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:110
 msgid "  -p --port           : Login server port"
-msgstr "-p --port : Loginserver-port"
+msgstr "  -p --port           : Loginserver-port"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:112
 msgid "  -H --update-host    : Use this update host"
-msgstr "-H --update-host : Använd detta för att uppdatera hosten"
+msgstr "  -H --update-host    : Använd detta för att uppdatera hosten"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:114
 msgid "  -D --default        : Choose default character server and character"
-msgstr "-D --default : Välj standard-karaktär server och karaktär"
+msgstr "  -D --default        : Välj standard-karaktär server och karaktär"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:117
 msgid "  -u --skip-update    : Skip the update downloads"
-msgstr "-u --skip-update : Undvik uppdateringshemladdning"
+msgstr "  -u --skip-update    : Undvik uppdateringshemladdning"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:119
 msgid "  -d --data           : Directory to load game data from"
-msgstr "-d --data : Katalog att ladda speldata från"
+msgstr "  -d --data           : Katalog att ladda speldata från"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:122
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
-msgstr "-L --localdata-dir : Katalog att använda som lokal datakatalog"
+msgstr "  -L --localdata-dir  : Katalog att använda som lokal datakatalog"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:125
 msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr "--screenshot-dir : Katalog att lagra skärmdumpar i"
+msgstr "     --screenshot-dir : Katalog att lagra skärmdumpar i"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:128
 msgid "     --safemode       : Start game in safe mode"
-msgstr "--safemode : Starta spelet i felsäkert läge"
+msgstr "     --safemode       : Starta spelet i felsäkert läge"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:130
@@ -6972,12 +6972,12 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/main.cpp:132
 msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr "-T --tests : Börja testning av drivrutiner och automat-configurering"
+msgstr "  -T --tests          : Börja testning av drivrutiner och automat-configurering"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:136
 msgid "  -O --no-opengl      : Disable OpenGL for this session"
-msgstr "-O --no-opengl : Avaktivera OpenGL för denna session"
+msgstr "  -O --no-opengl      : Avaktivera OpenGL för denna session"
 
 #. TRANSLATORS: playe stat
 #: src/net/ea/charserverhandler.cpp:75

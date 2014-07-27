@@ -358,7 +358,7 @@ msgstr "¡Jugador ya es %s!"
 #: src/commands.cpp:179
 #, c-format
 msgid "Player successfully %s!"
-msgstr "¡Relación cambiada exitosamente! El jugador ahora es %s"
+msgstr "¡Relación cambiada exitosamente! El jugador ahora es %s!"
 
 #. TRANSLATORS: change relation
 #: src/commands.cpp:185
@@ -6905,92 +6905,92 @@ msgstr "Opciones:"
 #. TRANSLATORS: command line help
 #: src/main.cpp:91
 msgid "  -l --log-file       : Log file to use"
-msgstr "-l --log-file : Archivo de registro a usar"
+msgstr "  -l --log-file       : Archivo de registro a usar"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:93
 msgid "  -a --chat-log-dir   : Chat log dir to use"
-msgstr "  -a --chat-log-dir: Directorio de registro a usar"
+msgstr "  -a --chat-log-dir   : Directorio de registro a usar"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:95
 msgid "  -v --version        : Display the version"
-msgstr "-v --version : Muestra la versión"
+msgstr "  -v --version        : Muestra la versión"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:97
 msgid "  -h --help           : Display this help"
-msgstr "-h --help : Muestra esta ayuda"
+msgstr "  -h --help           : Muestra esta ayuda"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:99
 msgid "  -C --config-dir     : Configuration directory to use"
-msgstr "-C --config-dir : Configuración del directorio a usar"
+msgstr "  -C --config-dir     : Configuración del directorio a usar"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:102
 msgid "  -U --username       : Login with this username"
-msgstr "-U --username : Acceder con este nombre de usuario"
+msgstr "  -U --username       : Acceder con este nombre de usuario"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:104
 msgid "  -P --password       : Login with this password"
-msgstr "-P --password : Acceder con esta contraseña"
+msgstr "  -P --password       : Acceder con esta contraseña"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:106
 msgid "  -c --character      : Login with this character"
-msgstr "-c --character : Acceder con este personaje"
+msgstr "  -c --character      : Acceder con este personaje"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:108
 msgid "  -s --server         : Login server name or IP"
-msgstr "-s --server :  Servidor de inicio de sesión o IP"
+msgstr "  -s --server         : Servidor de inicio de sesión o IP"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:110
 msgid "  -p --port           : Login server port"
-msgstr "-p --port : Puerto del servidor de inicio de sesión"
+msgstr "  -p --port           : Puerto del servidor de inicio de sesión"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:112
 msgid "  -H --update-host    : Use this update host"
-msgstr "  -H --update-host: Usar este host de actualización"
+msgstr "  -H --update-host    : Usar este host de actualización"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:114
 msgid "  -D --default        : Choose default character server and character"
-msgstr "-D --default : Escoje el personaje por defecto y el servidor"
+msgstr "  -D --default        : Escoje el personaje por defecto y el servidor"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:117
 msgid "  -u --skip-update    : Skip the update downloads"
-msgstr "-u --skip-update : Saltarse las descargas de actualización"
+msgstr "  -u --skip-update    : Saltarse las descargas de actualización"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:119
 msgid "  -d --data           : Directory to load game data from"
-msgstr "-d --data : Carpeta desde la que se cargan los datos del juego"
+msgstr "  -d --data           : Carpeta desde la que se cargan los datos del juego"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:122
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
-msgstr "-L --localdata-dir  : Carpeta para usar los datos locales"
+msgstr "  -L --localdata-dir  : Carpeta para usar los datos locales"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:125
 msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr "--screenshot-dir : Carpeta donde se guardan las capturas de pantalla"
+msgstr "     --screenshot-dir : Carpeta donde se guardan las capturas de pantalla"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:128
 msgid "     --safemode       : Start game in safe mode"
-msgstr "--safemode : Iniciar el juego en modo seguro"
+msgstr "     --safemode : Iniciar el juego en modo seguro"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:130
 msgid "     --renderer       : Set renderer type"
-msgstr "--renderer: Establecer tipo de renderizador"
+msgstr "     --renderer: Establecer tipo de renderizador"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:132

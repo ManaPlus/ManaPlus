@@ -4473,7 +4473,7 @@ msgstr "HW akcelerace"
 msgid "Enable opacity cache (Software, can use much memory)"
 msgstr ""
 "Povolit vyrovnávací pamět průhlednosti (Softwarově, může používat hodně "
-"paměti) "
+"paměti)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:78
@@ -6080,7 +6080,7 @@ msgstr "1%% = %d Zk, prům. oblud na 1%%: %s"
 #: src/gui/windows/killstats.cpp:398 src/gui/windows/killstats.cpp:407
 #, c-format
 msgid "  Time for next level: %s"
-msgstr "Čas do další úrovně: %s"
+msgstr "  Čas do další úrovně: %s"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:428
@@ -6802,7 +6802,7 @@ msgstr "Kdo je online - chyba"
 #. TRANSLATORS: who is online window name
 #: src/gui/windows/whoisonline.cpp:685
 msgid "Who Is Online - Update"
-msgstr "Kdo je přihlášený - "
+msgstr ""
 
 #. TRANSLATORS: world select dialog name
 #: src/gui/windows/worldselectdialog.cpp:49
@@ -6875,12 +6875,12 @@ msgstr "[soubor-manaplus] : Manaplus soubor je XML soubor (.manaplus)"
 #. TRANSLATORS: command line help
 #: src/main.cpp:84
 msgid "                  used to set custom parameters"
-msgstr "používá se k nastavení vlastních parametrů"
+msgstr "                  používá se k nastavení vlastních parametrů"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:86
 msgid "                  to the manaplus client."
-msgstr "pro manaplus klienta."
+msgstr "                  pro manaplus klienta."
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:89
@@ -6890,97 +6890,97 @@ msgstr "Nastavení:"
 #. TRANSLATORS: command line help
 #: src/main.cpp:91
 msgid "  -l --log-file       : Log file to use"
-msgstr "-l --log-file : Použij logový soubor"
+msgstr "  -l --log-file       : Použij logový soubor"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:93
 msgid "  -a --chat-log-dir   : Chat log dir to use"
-msgstr "-a --chat-log-dir : Složka uchování záznamu chatu"
+msgstr "  -a --chat-log-dir   : Složka uchování záznamu chatu"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:95
 msgid "  -v --version        : Display the version"
-msgstr "-v --version : Zobraz verzi"
+msgstr "  -v --version        : Zobraz verzi"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:97
 msgid "  -h --help           : Display this help"
-msgstr "-h --help : Zobraz tuto nápovědu"
+msgstr "  -h --help           : Zobraz tuto nápovědu"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:99
 msgid "  -C --config-dir     : Configuration directory to use"
-msgstr "-C --config-dir : Použij adresář s konfigurací"
+msgstr "  -C --config-dir     : Použij adresář s konfigurací"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:102
 msgid "  -U --username       : Login with this username"
-msgstr "-U --username : Přihlaš se tímto jménem"
+msgstr "  -U --username       : Přihlaš se tímto jménem"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:104
 msgid "  -P --password       : Login with this password"
-msgstr "-P --password : Přihlaš se tímto heslem"
+msgstr "  -P --password       : Přihlaš se tímto heslem"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:106
 msgid "  -c --character      : Login with this character"
-msgstr "c --character : Přihlaš se k této postavě"
+msgstr "  -c --character      : Přihlaš se k této postavě"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:108
 msgid "  -s --server         : Login server name or IP"
-msgstr "s --server : Přihlaš se k tomuto serveru nebo IP"
+msgstr "  -s --server         : Přihlaš se k tomuto serveru nebo IP"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:110
 msgid "  -p --port           : Login server port"
-msgstr "-p --port : Přihlaš se k tomuto portu"
+msgstr "  -p --port           : Přihlaš se k tomuto portu"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:112
 msgid "  -H --update-host    : Use this update host"
-msgstr "  -H --update-host   : Použít tohoto host pro update"
+msgstr "  -H --update-host    : Použít tohoto host pro update"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:114
 msgid "  -D --default        : Choose default character server and character"
-msgstr "-D --default : Vyber výchozí server postav a postavu"
+msgstr "  -D --default        : Vyber výchozí server postav a postavu"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:117
 msgid "  -u --skip-update    : Skip the update downloads"
-msgstr "-u --skip-update : Přeskoč stahování aktualizací"
+msgstr "  -u --skip-update    : Přeskoč stahování aktualizací"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:119
 msgid "  -d --data           : Directory to load game data from"
-msgstr "-d --data : Adresář odkud načíst herní data"
+msgstr "  -d --data           : Adresář odkud načíst herní data"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:122
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
-msgstr "-L --localdata-dir : Adresář který použít jako lokální uložiště dat"
+msgstr "  -L --localdata-dir  : Adresář který použít jako lokální uložiště dat"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:125
 msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr "--screenshot-dir : Adresář pro snímky obrazovky"
+msgstr "     --screenshot-dir : Adresář pro snímky obrazovky"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:128
 msgid "     --safemode       : Start game in safe mode"
-msgstr "--safemode : Pro spuštění hry v bezpečném módu"
+msgstr "     --safemode       : Pro spuštění hry v bezpečném módu"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:130
 msgid "     --renderer       : Set renderer type"
-msgstr "--renderer : Nastaví typ vykreslování"
+msgstr "     --renderer       : Nastaví typ vykreslování"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:132
 msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr "-T --tests: Spustit testování ovladačů a automatickou konfiguraci"
+msgstr "  -T --tests          : Spustit testování ovladačů a automatickou konfiguraci"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:136

@@ -5815,7 +5815,7 @@ msgstr "Sieć"
 #. TRANSLATORS: did you know window name
 #: src/gui/windows/didyouknowwindow.cpp:53
 msgid "Did You Know?"
-msgstr "Cz wiesz że..."
+msgstr "Cz wiesz że?"
 
 #. TRANSLATORS: did you know window button
 #: src/gui/windows/didyouknowwindow.cpp:60
@@ -5825,7 +5825,7 @@ msgstr "< Cofnij"
 #. TRANSLATORS: did you know window button
 #: src/gui/windows/didyouknowwindow.cpp:62
 msgid "Next >"
-msgstr "Dalej>"
+msgstr "Dalej >"
 
 #. TRANSLATORS: did you know window checkbox
 #: src/gui/windows/didyouknowwindow.cpp:64
@@ -6892,7 +6892,7 @@ msgstr "  -l --log-file       : Używany plik logów"
 #. TRANSLATORS: command line help
 #: src/main.cpp:93
 msgid "  -a --chat-log-dir   : Chat log dir to use"
-msgstr "-a --chat-log-dir   : Folder do zapisywania logów"
+msgstr "  -a --chat-log-dir   : Folder do zapisywania logów"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:95

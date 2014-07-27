@@ -7367,7 +7367,7 @@ msgstr "Недостаточно ОЖ!"
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:197
 msgid "Insufficient SP!"
-msgstr "Недостаточно Маны"
+msgstr "Недостаточно Маны!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/skillhandler.cpp:201

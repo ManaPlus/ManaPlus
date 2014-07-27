@@ -369,7 +369,7 @@ msgstr "Le joueur n'a pas pu %s !"
 #. TRANSLATORS: whisper send
 #: src/commands.cpp:382
 msgid "Cannot send empty whispers!"
-msgstr "Vous ne pouvez pas envoyer de messages vides."
+msgstr "Vous ne pouvez pas envoyer de messages vides!"
 
 #. TRANSLATORS: new whisper query
 #: src/commands.cpp:400
@@ -6894,12 +6894,12 @@ msgstr "[Manaplus-file] : Le fichier manaplus est un fichier XML (.manaplus)"
 #. TRANSLATORS: command line help
 #: src/main.cpp:84
 msgid "                  used to set custom parameters"
-msgstr "utilisé pour définir des paramètres personnalisés"
+msgstr "                  utilisé pour définir des paramètres personnalisés"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:86
 msgid "                  to the manaplus client."
-msgstr "pour le client manaplus."
+msgstr "                  pour le client manaplus."
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:89
@@ -6998,7 +6998,7 @@ msgstr "     --safemode       : Démarrer le jeu en mode sûr"
 #. TRANSLATORS: command line help
 #: src/main.cpp:130
 msgid "     --renderer       : Set renderer type"
-msgstr "--renderer : Définir le type de rendu"
+msgstr "     --renderer       : Définir le type de rendu"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:132

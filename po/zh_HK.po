@@ -5679,7 +5679,7 @@ msgstr "確認刪除角色"
 #. TRANSLATORS: char deletion message
 #: src/gui/windows/chardeleteconfirm.h:43
 msgid "Are you sure you want to delete this character?"
-msgstr "你確定想刪除這個角色？"
+msgstr "你確定想刪除這個角色?"
 
 #. TRANSLATORS: char select dialog name
 #: src/gui/windows/charselectdialog.cpp:60
@@ -7445,7 +7445,7 @@ msgstr ""
 #. TRANSLATORS: error message
 #: src/net/eathena/generalhandler.cpp:225 src/net/tmwa/generalhandler.cpp:254
 msgid "Got disconnected from server!"
-msgstr "和伺服器失去連線"
+msgstr "和伺服器失去連線!"
 
 #. TRANSLATORS: player stat
 #: src/net/eathena/generalhandler.cpp:250 src/net/tmwa/generalhandler.cpp:282

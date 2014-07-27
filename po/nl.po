@@ -6342,7 +6342,7 @@ msgstr "Download voorbereiden"
 #. TRANSLATORS: servers dialog label
 #: src/gui/windows/serverdialog.cpp:412
 msgid "Error retreiving server list!"
-msgstr "Fout tijdens ophalen server lijst"
+msgstr "Fout tijdens ophalen server lijst!"
 
 #. TRANSLATORS: servers dialog label
 #: src/gui/windows/serverdialog.cpp:502

@@ -6662,7 +6662,7 @@ msgstr "Föreslå handel"
 #. TRANSLATORS: trade window button
 #: src/gui/windows/tradewindow.cpp:66
 msgid "Confirmed. Waiting..."
-msgstr "Bekräftat. Väntar…"
+msgstr "Bekräftat. Väntar..."
 
 #. TRANSLATORS: trade window button
 #: src/gui/windows/tradewindow.cpp:68
@@ -6672,7 +6672,7 @@ msgstr "Godkänn handel"
 #. TRANSLATORS: trade window button
 #: src/gui/windows/tradewindow.cpp:70
 msgid "Agreed. Waiting..."
-msgstr "Godkänt. Väntar…"
+msgstr "Godkänt. Väntar..."
 
 #. TRANSLATORS: trade window caption
 #: src/gui/windows/tradewindow.cpp:74
