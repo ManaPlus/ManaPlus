@@ -544,7 +544,7 @@ msgstr ""
 #. TRANSLATORS: dump command
 #: src/commands.cpp:1505 src/commands.cpp:1514
 msgid "Resource images:"
-msgstr "Sumber gambar"
+msgstr "Sumber gambar:"
 
 #. TRANSLATORS: dump command
 #: src/commands.cpp:1508 src/commands.cpp:1517
@@ -3269,28 +3269,28 @@ msgstr ""
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:188
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:239
 msgid "Music:"
-msgstr "Musik"
+msgstr "Musik:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:55
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:194
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:243
 msgid "Map:"
-msgstr "Peta"
+msgstr "Peta:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:57
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:191
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:241
 msgid "Minimap:"
-msgstr "Peta mini"
+msgstr "Peta mini:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:60
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:185
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:237
 msgid "Cursor:"
-msgstr "Kursor"
+msgstr "Kursor:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:63
@@ -3309,7 +3309,7 @@ msgstr "Hitung pemain di peta:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:166
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:172
 msgid "Player Position:"
-msgstr "Posisi Pemain"
+msgstr "Posisi Pemain:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:74
@@ -3390,7 +3390,7 @@ msgstr "Hitung partikel: %d"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:313
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:375
 msgid "Target:"
-msgstr "Target"
+msgstr "Target:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:264
@@ -3461,7 +3461,7 @@ msgstr "Pukulan kritis:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:333
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:381
 msgid "Target Level:"
-msgstr "Target Level"
+msgstr "Target Level:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:341
@@ -3849,7 +3849,7 @@ msgstr "Warnanya terlihat seperti ini"
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:65
 msgid "Type:"
-msgstr "Tipe"
+msgstr "Tipe:"
 
 #. TRANSLATORS: colors tab. label.
 #: src/gui/widgets/tabs/setup_colors.cpp:69
@@ -5558,7 +5558,7 @@ msgstr "Kata Sandi:"
 #. TRANSLATORS: change password dialog label
 #: src/gui/windows/changepassworddialog.cpp:72
 msgid "Type new password twice:"
-msgstr "ketik sandi baru dua kali"
+msgstr "ketik sandi baru dua kali:"
 
 #. TRANSLATORS: change password error
 #: src/gui/windows/changepassworddialog.cpp:121
@@ -5625,12 +5625,12 @@ msgstr "<"
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:92
 msgid "Hair color:"
-msgstr "Warna rambut"
+msgstr "Warna rambut:"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:99
 msgid "Hair style:"
-msgstr "Gaya rambut"
+msgstr "Gaya rambut:"
 
 #. TRANSLATORS: char create dialog button
 #: src/gui/windows/charcreatedialog.cpp:110
@@ -5762,7 +5762,7 @@ msgstr "Masukan Sandi untuk menghapus karakter"
 
 #: src/gui/windows/charselectdialog.cpp:412
 msgid "Enter password:"
-msgstr "Masukkan sandi"
+msgstr "Masukkan sandi:"
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/chatwindow.cpp:636
@@ -6022,14 +6022,14 @@ msgstr[0] "Waktu sebelum naik ke level selanjutnya %d menit: %s"
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:89 src/gui/windows/killstats.cpp:289
 msgid "Last kill exp:"
-msgstr "Exp terakhir"
+msgstr "Exp terakhir:"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:92 src/gui/windows/killstats.cpp:421
 #: src/gui/windows/killstats.cpp:428 src/gui/windows/killstats.cpp:435
 #: src/gui/windows/killstats.cpp:441
 msgid "Time before jacko spawn:"
-msgstr "waktu sebelum Jacko kembali"
+msgstr "waktu sebelum Jacko kembali:"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:129 src/gui/windows/killstats.cpp:242
@@ -6966,7 +6966,7 @@ msgstr ""
 #. TRANSLATORS: playe stat
 #: src/net/ea/charserverhandler.cpp:75
 msgid "Strength:"
-msgstr "Kekuatan"
+msgstr "Kekuatan:"
 
 #. TRANSLATORS: playe stat
 #: src/net/ea/charserverhandler.cpp:77
@@ -6976,17 +6976,17 @@ msgstr ""
 #. TRANSLATORS: playe stat
 #: src/net/ea/charserverhandler.cpp:79
 msgid "Vitality:"
-msgstr "Daya/Tenaga Hidup"
+msgstr "Daya/Tenaga Hidup:"
 
 #. TRANSLATORS: playe stat
 #: src/net/ea/charserverhandler.cpp:81
 msgid "Intelligence:"
-msgstr "Kecerdasan"
+msgstr "Kecerdasan:"
 
 #. TRANSLATORS: playe stat
 #: src/net/ea/charserverhandler.cpp:83
 msgid "Dexterity:"
-msgstr "Ketangkasan"
+msgstr "Ketangkasan:"
 
 #. TRANSLATORS: playe stat
 #: src/net/ea/charserverhandler.cpp:85
