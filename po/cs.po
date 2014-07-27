@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-07-26 19:04+0300\n"
-"PO-Revision-Date: 2014-07-26 14:25+0000\n"
+"PO-Revision-Date: 2014-07-27 10:38+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/"
 "cs/)\n"
@@ -6802,7 +6802,7 @@ msgstr "Kdo je online - chyba"
 #. TRANSLATORS: who is online window name
 #: src/gui/windows/whoisonline.cpp:685
 msgid "Who Is Online - Update"
-msgstr ""
+msgstr "Kdo je přihlášený - Update"
 
 #. TRANSLATORS: world select dialog name
 #: src/gui/windows/worldselectdialog.cpp:49
@@ -6980,7 +6980,8 @@ msgstr "     --renderer       : Nastaví typ vykreslování"
 #. TRANSLATORS: command line help
 #: src/main.cpp:132
 msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr "  -T --tests          : Spustit testování ovladačů a automatickou konfiguraci"
+msgstr ""
+"  -T --tests          : Spustit testování ovladačů a automatickou konfiguraci"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:136

@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-07-26 19:04+0300\n"
-"PO-Revision-Date: 2014-07-26 14:35+0000\n"
+"PO-Revision-Date: 2014-07-27 09:05+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
 "manaplus/language/pt_BR/)\n"
@@ -6877,12 +6877,12 @@ msgstr "[Manaplus-Arquivo]: O arquivo Manaplus é um arquivo XML (.manaplus)"
 #. TRANSLATORS: command line help
 #: src/main.cpp:84
 msgid "                  used to set custom parameters"
-msgstr "                  usado para parâmetros customizados"
+msgstr "                  Usado para parâmetros customizados"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:86
 msgid "                  to the manaplus client."
-msgstr "                  para o cliente Manaplus."
+msgstr "                  Para o cliente Manaplus."
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:89
@@ -6986,7 +6986,7 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/main.cpp:132
 msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr "  -T --testes          : Começa a testar drivers e a auto-configurar"
+msgstr "  -T --testes         : Começa a testar drivers e a auto-configurar"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:136

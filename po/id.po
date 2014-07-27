@@ -4,14 +4,16 @@
 #
 # Translators:
 # adjieps <adjieps@yahoo.com>, 2011
+# adjieps <adjieps@yahoo.com>, 2011
 # Andrei Karas <akaras@inbox.ru>, 2011
+# genesis <Genesis_Junior@yahoo.com>, 2011
 # genesis <Genesis_Junior@yahoo.com>, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-07-26 19:04+0300\n"
-"PO-Revision-Date: 2014-07-20 09:50+0000\n"
+"PO-Revision-Date: 2014-07-27 09:02+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/manaplus/"
 "language/id/)\n"

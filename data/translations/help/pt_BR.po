@@ -1,14 +1,16 @@
 # en#
 # Translators:
 # alastrim <alasmirt@gmail.com>, 2012
+# alastrim <alasmirt@gmail.com>, 2012
+# freya <freya.df@gmail.com>, 2012
 # freya <freya.df@gmail.com>, 2012
 # Jonatas L. Nogueira <cpntb1@ymail.com>, 2014
 # Luciano Zago <lcnzg7@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-07-05 17:09+0000\n"
-"Last-Translator: Jonatas L. Nogueira <cpntb1@ymail.com>\n"
+"PO-Revision-Date: 2014-07-26 21:15+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/manaplus/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -888,7 +890,7 @@ msgstr ""
 msgid "/me text - send text to chat as /me command in irc."
 msgstr "/me text - envia um texto para um jogador o comando /me no irc."
 
-msgid "/help - show small help about chat commands."
+msgid "/help - show small help about chat commands. "
 msgstr "/help - mostra uma pequena ajuda sobre os comandos do chat."
 
 msgid "Debug"

@@ -1,11 +1,13 @@
 # en#
 # Translators:
 # Midoni <qiuhongwen@gmail.com>, 2012
+# Midoni <qiuhongwen@gmail.com>, 2012
+# yudun1989 <yudun1989@gmail.com>, 2014
 # yudun1989 <yudun1989@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-03-09 22:58+0000\n"
+"PO-Revision-Date: 2014-07-26 21:16+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/manaplus/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -54,8 +56,7 @@ msgstr ""
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
 " gives you 1 point to spend on basic skills."
-msgstr " 你可以通过提升工作等级来增强你的技能.\n"
-" 每级工作等级给你 1 点用于增强基本技能."
+msgstr " 你可以通过提升工作等级来增强你的技能.\n 每级工作等级给你 1 点用于增强基本技能."
 
 msgid "\"Emote shortcut 10\""
 msgstr ""

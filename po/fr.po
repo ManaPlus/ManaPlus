@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-07-26 19:04+0300\n"
-"PO-Revision-Date: 2014-07-26 14:29+0000\n"
+"PO-Revision-Date: 2014-07-27 09:02+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
 "fr/)\n"
@@ -707,7 +707,7 @@ msgstr "(3)  Aller à la cible distante de 3"
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:205
 msgid "(4) moves to target in distance 4"
-msgstr ""
+msgstr "(4) se déplacer à la cible à distance 4"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:207
@@ -717,7 +717,7 @@ msgstr "(5)  Aller à la cible distante de 5"
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:209
 msgid "(6) moves to target in distance 6"
-msgstr ""
+msgstr "(6) se déplacer à la cible à distance 6"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:211
@@ -727,12 +727,12 @@ msgstr "(7) Aller à la cible distante de 7"
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:213
 msgid "(8) moves to target in distance 8"
-msgstr ""
+msgstr "(8) se déplacer à la cible à distance 8"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:215
 msgid "(9) moves to target in distance 9"
-msgstr ""
+msgstr "(9) se déplacer à la cible à distance 9"
 
 #. TRANSLATORS: move to target type in status bar
 #: src/gamemodifiers.cpp:217

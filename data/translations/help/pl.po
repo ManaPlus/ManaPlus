@@ -1,13 +1,15 @@
 # en#
 # Translators:
 # Avenn <avenn3@gmail.com>, 2013
+# derpella <matwa@poczta.pl>, 2012
+# foobo <lukasz.antoni.komorowski@poczta.fm>, 2012-2013
 # foobo <lukasz.antoni.komorowski@poczta.fm>, 2013
 # foobo <lukasz.antoni.komorowski@poczta.fm>, 2012
 # derpella <matwa@poczta.pl>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-03-09 22:58+0000\n"
+"PO-Revision-Date: 2014-07-26 21:15+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/manaplus/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -273,11 +275,7 @@ msgid ""
 " Left click to execute default action: walk, pick up an item, attack a monster\n"
 " and talk to NPCs (be sure to click on their feet). Right click to show up a\n"
 " context menu. Holding [Left Shift] prevents from walking when attacking."
-msgstr " Lewy przycisk myszy by wykonać domyślną akcje: chodzenie, podnoszenie\n"
-" przedmiotów, zaatakowanie potworai by porozmawiać z NPC\n"
-" (należy kliknąć na nogach). Prawy przycisk myszy by wywołać\n"
-" menu kontekstowe. Przytrzymując [Lewy Shift] zabezpiecza przed chodzeniem\n"
-" podczas ataku."
+msgstr " Lewy przycisk myszy by wykonać domyślną akcje: chodzenie, podnoszenie\n przedmiotów, zaatakowanie potworai by porozmawiać z NPC\n (należy kliknąć na nogach). Prawy przycisk myszy by wywołać\n menu kontekstowe. Przytrzymując [Lewy Shift] zabezpiecza przed chodzeniem\n podczas ataku."
 
 msgid "Search string not found."
 msgstr "Nie znaleziono poszukiwanego ciągu."

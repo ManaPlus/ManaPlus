@@ -30,7 +30,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-07-26 19:04+0300\n"
-"PO-Revision-Date: 2014-07-26 14:26+0000\n"
+"PO-Revision-Date: 2014-07-27 09:00+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/"
 "de/)\n"
@@ -6965,14 +6965,16 @@ msgstr "  -u --skip-update    : Überspringe das Herunterladen von Updates"
 #. TRANSLATORS: command line help
 #: src/main.cpp:119
 msgid "  -d --data           : Directory to load game data from"
-msgstr "  -d --data           : Datenverzeichnis, aus dem das Spiel geladen werden soll"
+msgstr ""
+"  -d --data           : Datenverzeichnis, aus dem das Spiel geladen werden "
+"soll"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:122
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
 msgstr ""
-"  -L --localdata-dir  : Verzeichnis, das als Heimatverzeichnis benutzt werden "
-"soll"
+"  -L --localdata-dir  : Verzeichnis, das als Heimatverzeichnis benutzt "
+"werden soll"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:125

@@ -1,12 +1,14 @@
 # en#
 # Translators:
-# Alel <ale.camplese@gmail.com>, 2013
-# Alel <ale.camplese@gmail.com>, 2013
-# hal9OOO <miglietta.francesco@gmail.com>, 2012
+# Alessandro Camplese <ale.camplese@gmail.com>, 2013
+# Alessandro Camplese <ale.camplese@gmail.com>, 2013
+# Alessandro Camplese <ale.camplese@gmail.com>, 2013
+# Francesco Miglietta <miglietta.francesco@gmail.com>, 2012
+# Francesco Miglietta <miglietta.francesco@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-03-09 22:58+0000\n"
+"PO-Revision-Date: 2014-07-26 21:14+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -1143,12 +1145,7 @@ msgid ""
 " `Disregard' (see below).  You can fine-tune your player relations in the\n"
 " `Setup' menu, which lists all the players you have added to it.  To open this\n"
 " menu, select `Setup' in the upper right corner of the screen, then `Relations'."
-msgstr " Tuttavia, puoi tutelarti da questi giocatori ignorandoli.  Clicca sul \n"
-" giocatore col tasto destro del mouse e seleziona la voce 'ignore'\n"
-" dal menu contestuale. Puoi personalizzare le relazioni del tuo personaggio\n"
-" dal menu' 'Setup', in cui puoi trovare la lista di tutti i giocatori coinvolti.\n"
-" Per accedervi seleziona 'Setup' nell'angolo dello schermo in alto a destra,\n"
-" nella sezione 'Relazioni'."
+msgstr " Tuttavia, puoi tutelarti da questi giocatori ignorandoli.  Clicca sul \n giocatore col tasto destro del mouse e seleziona la voce 'ignore'\n dal menu contestuale. Puoi personalizzare le relazioni del tuo personaggio\n dal menu' 'Setup', in cui puoi trovare la lista di tutti i giocatori coinvolti.\n Per accedervi seleziona 'Setup' nell'angolo dello schermo in alto a destra,\n nella sezione 'Relazioni'."
 
 msgid "\"Item shortcut 12\""
 msgstr ""

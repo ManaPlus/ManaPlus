@@ -1,11 +1,12 @@
 # en#
 # Translators:
 # samuraiii <samurai.no.dojo@gmail.com>, 2014
+# samuraiii <samurai.no.dojo@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-03-10 18:20+0000\n"
-"Last-Translator: samuraiii <samurai.no.dojo@gmail.com>\n"
+"PO-Revision-Date: 2014-07-26 21:13+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/manaplus/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

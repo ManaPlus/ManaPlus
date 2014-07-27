@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-07-26 19:04+0300\n"
-"PO-Revision-Date: 2014-07-26 14:39+0000\n"
+"PO-Revision-Date: 2014-07-27 09:06+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/"
 "manaplus/language/sv_SE/)\n"
@@ -6902,7 +6902,8 @@ msgstr "  -h --help           : Visa hjälp"
 #. TRANSLATORS: command line help
 #: src/main.cpp:99
 msgid "  -C --config-dir     : Configuration directory to use"
-msgstr "  -C --config-dir     : Konfiguration för vilken katalog som ska användas"
+msgstr ""
+"  -C --config-dir     : Konfiguration för vilken katalog som ska användas"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:102
@@ -6972,7 +6973,9 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/main.cpp:132
 msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr "  -T --tests          : Börja testning av drivrutiner och automat-configurering"
+msgstr ""
+"  -T --tests          : Börja testning av drivrutiner och automat-"
+"configurering"
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:136
