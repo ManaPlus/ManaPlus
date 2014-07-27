@@ -5,10 +5,11 @@
 # Alessandro Camplese <ale.camplese@gmail.com>, 2013
 # Francesco Miglietta <miglietta.francesco@gmail.com>, 2012
 # Francesco Miglietta <miglietta.francesco@gmail.com>, 2012
+# Francesco Miglietta <miglietta.francesco@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-07-26 21:14+0000\n"
+"PO-Revision-Date: 2014-07-27 11:38+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/manaplus/language/it/)\n"
 "MIME-Version: 1.0\n"

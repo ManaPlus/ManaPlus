@@ -4,6 +4,7 @@
 # Fortunato <fortunato108@googlemail.com>, 2013
 # Fortunato <fortunato108@googlemail.com>, 2013
 # Jürgen, 2013
+# Jürgen, 2013
 # Slimor <madjuca@gmx.de>, 2013
 # Marco Jäger <>, 2012
 # tux9th <mr.x@aon.at>, 2012
@@ -13,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-07-26 21:13+0000\n"
+"PO-Revision-Date: 2014-07-27 11:37+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/de/)\n"
 "MIME-Version: 1.0\n"
