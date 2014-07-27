@@ -1008,7 +1008,7 @@ msgid "/move X Y - move to X,Y position in short distance."
 msgstr "/move X Y - mover para as posições X,Y. em curta distância."
 
 msgid "Themes:"
-msgstr "\"Temas\""
+msgstr "Temas:"
 
 msgid "\"Hide windows\""
 msgstr "\"Esconder janelas\""

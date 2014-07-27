@@ -357,7 +357,7 @@ msgid "/addpriorityattack NAME - add monster to priority attack list."
 msgstr "/addpriorityattack МОНСТР - добавить монстра в приоритетный список атаки."
 
 msgid "For TMW support:"
-msgstr "Для поддержки TMW."
+msgstr "Для поддержки TMW:"
 
 msgid "/priceload - load shop price from disc."
 msgstr "/priceload - загружает список цен с диска."
@@ -604,7 +604,7 @@ msgid ""
 "You can walk to warps automatically.\n"
 "Open Social Window (###keyWindowSocial;) and selecy Nav tab,\n"
 "then click on warp what you want."
-msgstr "Вы можете двигаться к Вратам автоматически. Откройте окно \"Общество\" (F11) и выберите вкладку \"Нав\" (Навигация), затем кликните на название требуемых Врат."
+msgstr "Вы можете двигаться к Вратам автоматически. Откройте окно \"Общество\" (###keyWindowSocial;) и выберите вкладку \"Нав\" (Навигация), затем кликните на название требуемых Врат."
 
 msgid ""
 "##2ManaPlus##9 is extended client based on old code from ##2Mana##9 client.\n"
@@ -614,7 +614,7 @@ msgstr "##2ManaPlus##9 это расширенный клиент основан
 msgid ""
 "You can disable yellow bar,\n"
 "by pressing ###keyDisableGameModifiers;."
-msgstr "Желтую панель можно выключить, нажав 8 на цифровой клавиатуре."
+msgstr "Желтую панель можно выключить, нажав ###keyDisableGameModifiers;."
 
 msgid "\"Screenshot\""
 msgstr "\"Снимок экрана\""
@@ -650,7 +650,7 @@ msgid "\"Outfit shortcut 6\""
 msgstr "\"Наряд 6\""
 
 msgid "Visit IRC channel:"
-msgstr "Посетить IRC канал"
+msgstr "Посетить IRC канал:"
 
 msgid "\"Target & attack\""
 msgstr "\"Прицел и атака\""
@@ -710,7 +710,7 @@ msgid "/magicattack - attack target with magic."
 msgstr "/magicattack - атаковать цель с помощью магии."
 
 msgid "For ManaPlus Online support:"
-msgstr "Для службы поддержки ManaPlus Online"
+msgstr "Для службы поддержки ManaPlus Online:"
 
 msgid "\"Set direction right\""
 msgstr "\"Установить направление вправо\""
@@ -731,7 +731,7 @@ msgid "/erase NICK - add nick to erased list."
 msgstr "/erase ИГРОК - добавить игрока в список стертых."
 
 msgid "COMMUNICATION:"
-msgstr "ОБЩЕНИЕ"
+msgstr "ОБЩЕНИЕ:"
 
 msgid "Search results"
 msgstr "Результат поиска"
@@ -852,7 +852,7 @@ msgid "\"Emote shortcut 8\""
 msgstr "\"Смайл 8\""
 
 msgid "For Evol Online support:"
-msgstr "Для службы поддержки Evol Online."
+msgstr "Для службы поддержки Evol Online:"
 
 msgid "/follow NICK - start follow mode."
 msgstr "/follow НИК- следовать за данным игроком."
@@ -923,7 +923,7 @@ msgid "\"Set direction up\""
 msgstr "\"Установить направление вверх\""
 
 msgid "or come visit us on our IRC channel:"
-msgstr "или посетите наш IRC канал."
+msgstr "или посетите наш IRC канал:"
 
 msgid "\"Toggle camera mode\""
 msgstr "\"Переключение режима камеры\""
@@ -1073,7 +1073,7 @@ msgid "Sources:"
 msgstr "Исходники:"
 
 msgid "To type chat message, press ###keyChat;"
-msgstr "Для ввода сообщений в чат, нажмите enter"
+msgstr "Для ввода сообщений в чат, нажмите ###keyChat;"
 
 msgid "Translators"
 msgstr "Переводчики"
@@ -1160,4 +1160,4 @@ msgid "\"Item shortcut 12\""
 msgstr "\"Горячая клавиша предмета 12\""
 
 msgid "SHORTCUTS:"
-msgstr "БЫСТРЫЕ КЛАВИШИ"
+msgstr "БЫСТРЫЕ КЛАВИШИ:"

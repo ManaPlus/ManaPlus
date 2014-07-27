@@ -937,7 +937,7 @@ msgid "Look this page for help and downloads:"
 msgstr "Schauen Sie diese Seite für Hilfe und Downloads:"
 
 msgid "Other skills:"
-msgstr "Andere Fähigkeiten"
+msgstr "Andere Fähigkeiten:"
 
 msgid ""
 "You can use mumble voice chat for talking with other players.\n"
@@ -1033,7 +1033,7 @@ msgid "/exp 0 - disable party experience sharing options."
 msgstr ""
 
 msgid "Basic skills:"
-msgstr "Grundfähigkeiten"
+msgstr "Grundfähigkeiten:"
 
 msgid "/uploadlog - upload log into pastebin service."
 msgstr ""

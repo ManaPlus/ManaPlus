@@ -1028,7 +1028,7 @@ msgid "/exp 0 - disable party experience sharing options."
 msgstr ""
 
 msgid "Basic skills:"
-msgstr "Abilità di base"
+msgstr "Abilità di base:"
 
 msgid "/uploadlog - upload log into pastebin service."
 msgstr ""

@@ -846,7 +846,7 @@ msgid "/follow NICK - start follow mode."
 msgstr ""
 
 msgid "To read about whispering and other chat commands, look here:"
-msgstr "Om over persoonlijke berichten en andere commandos te lezen, kijk hier!"
+msgstr "Om over persoonlijke berichten en andere commandos te lezen, kijk hier:"
 
 msgid ""
 "You can select other themes.\n"

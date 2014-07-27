@@ -597,7 +597,7 @@ msgid ""
 "You can walk to warps automatically.\n"
 "Open Social Window (###keyWindowSocial;) and selecy Nav tab,\n"
 "then click on warp what you want."
-msgstr "Vous pouvez marcher jusqu'aux points de transport (warp points) automatiquement.\nOuvrez fa fenêtre Social (F11) et sélectionnez l'onglet Nav, puis cliquez sur le nom du point où vous voulez aller."
+msgstr "Vous pouvez marcher jusqu'aux points de transport (warp points) automatiquement.\nOuvrez fa fenêtre Social (###keyWindowSocial;) et sélectionnez l'onglet Nav, puis cliquez sur le nom du point où vous voulez aller."
 
 msgid ""
 "##2ManaPlus##9 is extended client based on old code from ##2Mana##9 client.\n"

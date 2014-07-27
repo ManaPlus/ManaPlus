@@ -930,7 +930,7 @@ msgid "/pricesave - save shop price to disc."
 msgstr "/pricesave - zapisz ceny sklepu na dysk."
 
 msgid "Look this page for help and downloads:"
-msgstr "Sprawdź tę stronę by uzyskać pomoc jak i by uzyskać dostęp do pobierania."
+msgstr "Sprawdź tę stronę by uzyskać pomoc jak i by uzyskać dostęp do pobierania:"
 
 msgid "Other skills:"
 msgstr "Inne zdolności:"
@@ -962,7 +962,7 @@ msgid "\"Outfit shortcut 5\""
 msgstr "\"Skrót ubioru 5\""
 
 msgid "KEYBOARD:"
-msgstr "KLAWIATURA"
+msgstr "KLAWIATURA:"
 
 msgid "Windows"
 msgstr "Okna"
