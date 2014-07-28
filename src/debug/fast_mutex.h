@@ -118,64 +118,64 @@
      */
     class fast_mutex
     {
-        pthread_mutex_t _M_mtx_impl;
-#       if _FAST_MUTEX_CHECK_INITIALIZATION
-        bool _M_initialized;
-#       endif
-#       ifdef _DEBUG
-        bool _M_locked;
-#       endif
-    public:
-        fast_mutex()
-#       ifdef _DEBUG
-            : _M_locked(false)
-#       endif
-        {
-            ::pthread_mutex_init(&_M_mtx_impl, nullptr);
-#       if _FAST_MUTEX_CHECK_INITIALIZATION
-            _M_initialized = true;
-#       endif
-        }
-        ~fast_mutex()
-        {
-            _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
-#       if _FAST_MUTEX_CHECK_INITIALIZATION
-            _M_initialized = false;
-#       endif
-            ::pthread_mutex_destroy(&_M_mtx_impl);
-        }
-        void lock()
-        {
-#       if _FAST_MUTEX_CHECK_INITIALIZATION
-            if (!_M_initialized)
-                return;
-#       endif
-            ::pthread_mutex_lock(&_M_mtx_impl);
-#       ifdef _DEBUG
-            // The following assertion should _always_ be true for a
-            // real `fast' pthread_mutex.  However, this assertion can
-            // help sometimes, when people forget to use `-lpthread' and
-            // glibc provides an empty implementation.  Having this
-            // assertion is also more consistent.
-            _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
-            _M_locked = true;
-#       endif
-        }
-        void unlock()
-        {
-#       if _FAST_MUTEX_CHECK_INITIALIZATION
-            if (!_M_initialized)
-                return;
-#       endif
-#       ifdef _DEBUG
-            _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
-            _M_locked = false;
-#       endif
-            ::pthread_mutex_unlock(&_M_mtx_impl);
-        }
-    private:
-        fast_mutex(const fast_mutex&);
-        fast_mutex& operator=(const fast_mutex&);
+            pthread_mutex_t _M_mtx_impl;
+#           if _FAST_MUTEX_CHECK_INITIALIZATION
+            bool _M_initialized;
+#           endif
+#           ifdef _DEBUG
+            bool _M_locked;
+#           endif
+        public:
+            fast_mutex()
+#           ifdef _DEBUG
+                : _M_locked(false)
+#           endif
+            {
+                ::pthread_mutex_init(&_M_mtx_impl, nullptr);
+#               if _FAST_MUTEX_CHECK_INITIALIZATION
+                _M_initialized = true;
+#               endif
+            }
+            ~fast_mutex()
+            {
+                _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
+#               if _FAST_MUTEX_CHECK_INITIALIZATION
+                _M_initialized = false;
+#               endif
+                ::pthread_mutex_destroy(&_M_mtx_impl);
+            }
+            void lock()
+            {
+#               if _FAST_MUTEX_CHECK_INITIALIZATION
+                if (!_M_initialized)
+                    return;
+#               endif
+                ::pthread_mutex_lock(&_M_mtx_impl);
+#               ifdef _DEBUG
+                // The following assertion should _always_ be true for a
+                // real `fast' pthread_mutex.  However, this assertion can
+                // help sometimes, when people forget to use `-lpthread' and
+                // glibc provides an empty implementation.  Having this
+                // assertion is also more consistent.
+                _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
+                _M_locked = true;
+#               endif
+            }
+            void unlock()
+            {
+#               if _FAST_MUTEX_CHECK_INITIALIZATION
+                if (!_M_initialized)
+                    return;
+#               endif
+#               ifdef _DEBUG
+                _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
+                _M_locked = false;
+#               endif
+                ::pthread_mutex_unlock(&_M_mtx_impl);
+            }
+        private:
+            fast_mutex(const fast_mutex&);
+            fast_mutex& operator=(const fast_mutex&);
     };
 # endif  // _PTHREADS
 
@@ -192,59 +192,59 @@
      */
     class fast_mutex
     {
-        CRITICAL_SECTION _M_mtx_impl;
-#       if _FAST_MUTEX_CHECK_INITIALIZATION
-        bool _M_initialized;
-#       endif
-#       ifdef _DEBUG
-        bool _M_locked;
-#       endif
-    public:
-        fast_mutex()
-#       ifdef _DEBUG
-            : _M_locked(false)
-#       endif
-        {
-            ::InitializeCriticalSection(&_M_mtx_impl);
-#       if _FAST_MUTEX_CHECK_INITIALIZATION
-            _M_initialized = true;
-#       endif
-        }
-        ~fast_mutex()
-        {
-            _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
-#       if _FAST_MUTEX_CHECK_INITIALIZATION
-            _M_initialized = false;
-#       endif
-            ::DeleteCriticalSection(&_M_mtx_impl);
-        }
-        void lock()
-        {
-#       if _FAST_MUTEX_CHECK_INITIALIZATION
-            if (!_M_initialized)
-                return;
-#       endif
-            ::EnterCriticalSection(&_M_mtx_impl);
-#       ifdef _DEBUG
-            _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
-            _M_locked = true;
-#       endif
-        }
-        void unlock()
-        {
-#       if _FAST_MUTEX_CHECK_INITIALIZATION
-            if (!_M_initialized)
-                return;
-#       endif
-#       ifdef _DEBUG
-            _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
-            _M_locked = false;
-#       endif
-            ::LeaveCriticalSection(&_M_mtx_impl);
-        }
-    private:
-        fast_mutex(const fast_mutex&);
-        fast_mutex& operator=(const fast_mutex&);
+            CRITICAL_SECTION _M_mtx_impl;
+#           if _FAST_MUTEX_CHECK_INITIALIZATION
+            bool _M_initialized;
+#           endif
+#           ifdef _DEBUG
+            bool _M_locked;
+#           endif
+        public:
+            fast_mutex()
+#           ifdef _DEBUG
+                : _M_locked(false)
+#           endif
+            {
+                ::InitializeCriticalSection(&_M_mtx_impl);
+#               if _FAST_MUTEX_CHECK_INITIALIZATION
+                _M_initialized = true;
+#               endif
+            }
+            ~fast_mutex()
+            {
+                _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
+#               if _FAST_MUTEX_CHECK_INITIALIZATION
+                _M_initialized = false;
+#               endif
+                ::DeleteCriticalSection(&_M_mtx_impl);
+            }
+            void lock()
+            {
+#               if _FAST_MUTEX_CHECK_INITIALIZATION
+                if (!_M_initialized)
+                    return;
+#               endif
+                ::EnterCriticalSection(&_M_mtx_impl);
+#               ifdef _DEBUG
+                _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
+                _M_locked = true;
+#               endif
+            }
+            void unlock()
+            {
+#               if _FAST_MUTEX_CHECK_INITIALIZATION
+                if (!_M_initialized)
+                    return;
+#               endif
+#               ifdef _DEBUG
+                _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
+                _M_locked = false;
+#               endif
+                ::LeaveCriticalSection(&_M_mtx_impl);
+            }
+        private:
+            fast_mutex(const fast_mutex&);
+            fast_mutex& operator=(const fast_mutex&);
     };
 # endif  // _WIN32THREADS
 
@@ -260,56 +260,56 @@
      */
     class fast_mutex
     {
-#       ifdef _DEBUG
-        bool _M_locked;
-#       endif
-    public:
-        fast_mutex()
-#       ifdef _DEBUG
-            : _M_locked(false)
-#       endif
-        {
-        }
-        ~fast_mutex()
-        {
-            _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
-        }
-        void lock()
-        {
-#       ifdef _DEBUG
-            _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
-            _M_locked = true;
-#       endif
-        }
-        void unlock()
-        {
-#       ifdef _DEBUG
-            _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
-            _M_locked = false;
-#       endif
-        }
-    private:
-        fast_mutex(const fast_mutex&);
-        fast_mutex& operator=(const fast_mutex&);
+#           ifdef _DEBUG
+            bool _M_locked;
+#           endif
+        public:
+            fast_mutex()
+#           ifdef _DEBUG
+                : _M_locked(false)
+#           endif
+            {
+            }
+            ~fast_mutex()
+            {
+                _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
+            }
+            void lock()
+            {
+#               ifdef _DEBUG
+                _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
+                _M_locked = true;
+#               endif
+            }
+            void unlock()
+            {
+#               ifdef _DEBUG
+                _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
+                _M_locked = false;
+#               endif
+            }
+        private:
+            fast_mutex(const fast_mutex&);
+            fast_mutex& operator=(const fast_mutex&);
     };
 # endif  // _NOTHREADS
 
 /** An acquistion-on-initialization lock class based on fast_mutex. */
 class fast_mutex_autolock
 {
-    fast_mutex& _M_mtx;
-public:
-    explicit fast_mutex_autolock(fast_mutex& __mtx) : _M_mtx(__mtx)
-    {
-        _M_mtx.lock();
-    }
-    ~fast_mutex_autolock()
-    {
-        _M_mtx.unlock();
-    }
-private:
-    fast_mutex_autolock(const fast_mutex_autolock&);
-    fast_mutex_autolock& operator=(const fast_mutex_autolock&);
+        fast_mutex& _M_mtx;
+    public:
+        explicit fast_mutex_autolock(fast_mutex& __mtx) : _M_mtx(__mtx)
+        {
+            _M_mtx.lock();
+        }
+        ~fast_mutex_autolock()
+        {
+            _M_mtx.unlock();
+        }
+    private:
+        fast_mutex_autolock(const fast_mutex_autolock&);
+        fast_mutex_autolock& operator=(const fast_mutex_autolock&);
 };
 
 #endif  // M_FAST_MUTEX_H

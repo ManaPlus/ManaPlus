@@ -60,7 +60,7 @@ class EffectManager final
         bool trigger(const int id, const int x, const int y,
                      const int rotation = 0);
 
-   private:
+    private:
         std::vector<EffectDescription> mEffects;
 };
 

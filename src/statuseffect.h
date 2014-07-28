@@ -32,95 +32,98 @@ class Particle;
 
 class StatusEffect final
 {
-public:
-    StatusEffect();
+    public:
+        StatusEffect();
 
-    A_DELETE_COPY(StatusEffect)
+        A_DELETE_COPY(StatusEffect)
 
-    ~StatusEffect();
+        ~StatusEffect();
 
-    /**
-     * Plays the sound effect associated with this status effect, if possible.
-     */
-    void playSFX() const;
+        /**
+         * Plays the sound effect associated with this status effect, if
+         * possible.
+         */
+        void playSFX() const;
 
-    /**
-     * Delivers the chat message associated with this status effect, if
-     * possible.
-     */
-    void deliverMessage() const;
+        /**
+         * Delivers the chat message associated with this status effect, if
+         * possible.
+         */
+        void deliverMessage() const;
 
-    /**
-     * Creates the particle effect associated with this status effect, if
-     * possible.
-     */
-    Particle *getParticle() const A_WARN_UNUSED;
+        /**
+         * Creates the particle effect associated with this status effect, if
+         * possible.
+         */
+        Particle *getParticle() const A_WARN_UNUSED;
 
-    /**
-     * Retrieves the status icon for this effect, if applicable
-     */
-    AnimatedSprite *getIcon() const A_WARN_UNUSED;
+        /**
+         * Retrieves the status icon for this effect, if applicable
+         */
+        AnimatedSprite *getIcon() const A_WARN_UNUSED;
 
-    /**
-     * Retrieves an action to perform, or SpriteAction::INVALID
-     */
-    std::string getAction() const A_WARN_UNUSED;
+        /**
+         * Retrieves an action to perform, or SpriteAction::INVALID
+         */
+        std::string getAction() const A_WARN_UNUSED;
 
-    /**
-     * Determines whether the particle effect should be restarted when the
-     * being changes maps
-     */
-    bool particleEffectIsPersistent() const A_WARN_UNUSED
-    { return mPersistentParticleEffect; }
+        /**
+         * Determines whether the particle effect should be restarted when the
+         * being changes maps
+         */
+        bool particleEffectIsPersistent() const A_WARN_UNUSED
+        { return mPersistentParticleEffect; }
 
-    bool isPoison() const A_WARN_UNUSED
-    { return mIsPoison; }
+        bool isPoison() const A_WARN_UNUSED
+        { return mIsPoison; }
 
-    /**
-     * Retrieves a status effect.
-     *
-     * \param index Index of the status effect.
-     * \param enabling Whether to retrieve the activating effect (true) or
-     *    the deactivating effect (false).
-     */
-    static StatusEffect *getStatusEffect(const int index,
-                                         const bool enabling) A_WARN_UNUSED;
-
-    /**
-     * Retrieves a stun effect.
-     *
-     * \param index Index of the stun effect.
-     * \param enabling Whether to retrieve the activating effect (true) or
-     *    the deactivating effect (false).
-     */
-    static StatusEffect *getStunEffect(const int index,
-                                       const bool enabling) A_WARN_UNUSED;
-
-    /**
-     * Maps a block effect index to its corresponding effect index.  Block
-     * effect indices are used for opt2/opt3/status.option blocks; their
-     * mapping to regular effect indices is handled in the config file.
-     *
-     * Returns -1 on failure.
-     */
-    static int blockEffectIndexToEffectIndex(const int blocKIndex)
+        /**
+         * Retrieves a status effect.
+         *
+         * \param index Index of the status effect.
+         * \param enabling Whether to retrieve the activating effect (true) or
+         *    the deactivating effect (false).
+         */
+        static StatusEffect *getStatusEffect(const int index,
+                                             const bool enabling)
                                              A_WARN_UNUSED;
 
-    static void load();
+        /**
+         * Retrieves a stun effect.
+         *
+         * \param index Index of the stun effect.
+         * \param enabling Whether to retrieve the activating effect (true) or
+         *    the deactivating effect (false).
+         */
+        static StatusEffect *getStunEffect(const int index,
+                                           const bool enabling) A_WARN_UNUSED;
 
-    static void loadXmlFile(const std::string &fileName);
+        /**
+         * Maps a block effect index to its corresponding effect index.  Block
+         * effect indices are used for opt2/opt3/status.option blocks; their
+         * mapping to regular effect indices is handled in the config file.
+         *
+         * Returns -1 on failure.
+         */
+        static int blockEffectIndexToEffectIndex(const int blocKIndex)
+                                                 A_WARN_UNUSED;
 
-    static void unload();
-private:
-    static bool mLoaded;
+        static void load();
 
-    std::string mMessage;
-    std::string mSFXEffect;
-    std::string mParticleEffect;
-    std::string mIcon;
-    std::string mAction;
-    bool mPersistentParticleEffect;
-    bool mIsPoison;
+        static void loadXmlFile(const std::string &fileName);
+
+        static void unload();
+
+    private:
+        static bool mLoaded;
+
+        std::string mMessage;
+        std::string mSFXEffect;
+        std::string mParticleEffect;
+        std::string mIcon;
+        std::string mAction;
+        bool mPersistentParticleEffect;
+        bool mIsPoison;
 };
 
 #endif  // STATUSEFFECT_H

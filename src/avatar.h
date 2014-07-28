@@ -36,170 +36,170 @@ enum AvatarType
 
 class Avatar notfinal
 {
-public:
-    explicit Avatar(const std::string &name = "");
+    public:
+        explicit Avatar(const std::string &name = "");
 
-    A_DELETE_COPY(Avatar)
+        A_DELETE_COPY(Avatar)
 
-    virtual ~Avatar()
-    { }
+        virtual ~Avatar()
+        { }
 
-    /**
-     * Returns the avatar's name.
-     */
-    std::string getName() const A_WARN_UNUSED
-    { return mName; }
+        /**
+         * Returns the avatar's name.
+         */
+        std::string getName() const A_WARN_UNUSED
+        { return mName; }
 
-    /**
-     * Set the avatar's name.
-     */
-    void setName(const std::string &name)
-    { mName = name; }
+        /**
+         * Set the avatar's name.
+         */
+        void setName(const std::string &name)
+        { mName = name; }
 
-    /**
-     * Returns the avatar's original name.
-     */
-    std::string getOriginalName() const A_WARN_UNUSED
-    { return mOriginalName; }
+        /**
+         * Returns the avatar's original name.
+         */
+        std::string getOriginalName() const A_WARN_UNUSED
+        { return mOriginalName; }
 
-    std::string getComplexName() const A_WARN_UNUSED;
+        std::string getComplexName() const A_WARN_UNUSED;
 
-    virtual std::string getAdditionString() const A_WARN_UNUSED;
+        virtual std::string getAdditionString() const A_WARN_UNUSED;
 
-    /**
-     * Set the avatar's original name.
-     */
-    void setOriginalName(const std::string &name)
-    { mOriginalName = name; }
+        /**
+         * Set the avatar's original name.
+         */
+        void setOriginalName(const std::string &name)
+        { mOriginalName = name; }
 
-    /**
-     * Returns the avatar's online status.
-     */
-    bool getOnline() const A_WARN_UNUSED
-    { return mOnline; }
+        /**
+         * Returns the avatar's online status.
+         */
+        bool getOnline() const A_WARN_UNUSED
+        { return mOnline; }
 
-    /**
-     * Set the avatar's online status.
-     */
-    void setOnline(const bool online)
-    { mOnline = online; }
+        /**
+         * Set the avatar's online status.
+         */
+        void setOnline(const bool online)
+        { mOnline = online; }
 
-    int getHp() const A_WARN_UNUSED
-    { return mHp; }
+        int getHp() const A_WARN_UNUSED
+        { return mHp; }
 
-    void setHp(const int hp)
-    { mHp = hp; }
+        void setHp(const int hp)
+        { mHp = hp; }
 
-    int getMaxHp() const A_WARN_UNUSED
-    { return mMaxHp; }
+        int getMaxHp() const A_WARN_UNUSED
+        { return mMaxHp; }
 
-    void setMaxHp(const int maxHp)
-    { mMaxHp = maxHp; }
+        void setMaxHp(const int maxHp)
+        { mMaxHp = maxHp; }
 
-    int getDamageHp() const A_WARN_UNUSED
-    { return mDamageHp; }
+        int getDamageHp() const A_WARN_UNUSED
+        { return mDamageHp; }
 
-    void setDamageHp(const int damageHp)
-    { mDamageHp = damageHp; }
+        void setDamageHp(const int damageHp)
+        { mDamageHp = damageHp; }
 
-    bool getDisplayBold() const A_WARN_UNUSED
-    { return mDisplayBold; }
+        bool getDisplayBold() const A_WARN_UNUSED
+        { return mDisplayBold; }
 
-    void setDisplayBold(const bool displayBold)
-    { mDisplayBold = displayBold; }
+        void setDisplayBold(const bool displayBold)
+        { mDisplayBold = displayBold; }
 
-    int getLevel() const A_WARN_UNUSED
-    { return mLevel; }
+        int getLevel() const A_WARN_UNUSED
+        { return mLevel; }
 
-    void setLevel(const int level)
-    { mLevel = level; }
+        void setLevel(const int level)
+        { mLevel = level; }
 
-    std::string getMap() const A_WARN_UNUSED
-    { return mMap; }
+        std::string getMap() const A_WARN_UNUSED
+        { return mMap; }
 
-    void setMap(const std::string &map)
-    { mMap = map; }
+        void setMap(const std::string &map)
+        { mMap = map; }
 
-    int getX() const A_WARN_UNUSED
-    { return mX; }
+        int getX() const A_WARN_UNUSED
+        { return mX; }
 
-    void setX(const int x)
-    { mX = x; }
+        void setX(const int x)
+        { mX = x; }
 
-    int getY() const A_WARN_UNUSED
-    { return mY; }
+        int getY() const A_WARN_UNUSED
+        { return mY; }
 
-    void setY(const int y)
-    { mY = y; }
+        void setY(const int y)
+        { mY = y; }
 
-    int getType() const A_WARN_UNUSED
-    { return mType; }
+        int getType() const A_WARN_UNUSED
+        { return mType; }
 
-    void setType(const int n)
-    { mType = n; }
+        void setType(const int n)
+        { mType = n; }
 
-    int getExp() const A_WARN_UNUSED
-    { return mExp; }
+        int getExp() const A_WARN_UNUSED
+        { return mExp; }
 
-    void setExp(const int n)
-    { mExp = n; }
+        void setExp(const int n)
+        { mExp = n; }
 
-    int getID() const A_WARN_UNUSED
-    { return mId; }
+        int getID() const A_WARN_UNUSED
+        { return mId; }
 
-    void setID(const int id)
-    { mId = id; }
+        void setID(const int id)
+        { mId = id; }
 
-    int getCharId() const A_WARN_UNUSED
-    { return mCharId; }
+        int getCharId() const A_WARN_UNUSED
+        { return mCharId; }
 
-    void setCharId(const int id)
-    { mCharId = id; }
+        void setCharId(const int id)
+        { mCharId = id; }
 
-    Gender::Type getGender() const A_WARN_UNUSED
-    { return mGender; }
+        Gender::Type getGender() const A_WARN_UNUSED
+        { return mGender; }
 
-    void setGender(const Gender::Type g)
-    { mGender = g; }
+        void setGender(const Gender::Type g)
+        { mGender = g; }
 
-    int getRace() const A_WARN_UNUSED
-    { return mRace; }
+        int getRace() const A_WARN_UNUSED
+        { return mRace; }
 
-    void setRace(const int r)
-    { mRace = r; }
+        void setRace(const int r)
+        { mRace = r; }
 
-    const std::string &getIp() const A_WARN_UNUSED
-    { return mIp; }
+        const std::string &getIp() const A_WARN_UNUSED
+        { return mIp; }
 
-    void setIp(const std::string &ip)
-    { mIp = ip; }
+        void setIp(const std::string &ip)
+        { mIp = ip; }
 
-    bool getPoison() const A_WARN_UNUSED
-    { return mPoison; }
+        bool getPoison() const A_WARN_UNUSED
+        { return mPoison; }
 
-    void setPoison(const bool b)
-    { mPoison = b; }
+        void setPoison(const bool b)
+        { mPoison = b; }
 
-protected:
-    int mId;
-    int mCharId;
-    std::string mName;
-    std::string mOriginalName;
-    int mHp;
-    int mMaxHp;
-    int mDamageHp;
-    int mLevel;
-    std::string mMap;
-    int mX;
-    int mY;
-    int mType;
-    int mExp;
-    Gender::Type mGender;
-    int mRace;
-    std::string mIp;
-    bool mOnline;
-    bool mDisplayBold;
-    bool mPoison;
+    protected:
+        int mId;
+        int mCharId;
+        std::string mName;
+        std::string mOriginalName;
+        int mHp;
+        int mMaxHp;
+        int mDamageHp;
+        int mLevel;
+        std::string mMap;
+        int mX;
+        int mY;
+        int mType;
+        int mExp;
+        Gender::Type mGender;
+        int mRace;
+        std::string mIp;
+        bool mOnline;
+        bool mDisplayBold;
+        bool mPoison;
 };
 
 #endif  // AVATAR_H

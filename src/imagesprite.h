@@ -30,52 +30,52 @@ class Graphics;
 
 class ImageSprite final : public Sprite
 {
-public:
-    explicit ImageSprite(Image *const image);
+    public:
+        explicit ImageSprite(Image *const image);
 
-    A_DELETE_COPY(ImageSprite)
+        A_DELETE_COPY(ImageSprite)
 
-    ~ImageSprite();
+        ~ImageSprite();
 
-    bool reset() override final
-    { return false; }
+        bool reset() override final
+        { return false; }
 
-    bool play(const std::string &action A_UNUSED) override final
-    { return false; }
+        bool play(const std::string &action A_UNUSED) override final
+        { return false; }
 
-    bool update(const int time A_UNUSED) override final
-    { return false; }
+        bool update(const int time A_UNUSED) override final
+        { return false; }
 
-    void draw(Graphics *const graphics,
-              const int posX, const int posY) const override final;
+        void draw(Graphics *const graphics,
+                  const int posX, const int posY) const override final;
 
-    int getWidth() const override final A_WARN_UNUSED
-    { return mImage ? mImage->getWidth() : 0; }
+        int getWidth() const override final A_WARN_UNUSED
+        { return mImage ? mImage->getWidth() : 0; }
 
-    int getHeight() const override final A_WARN_UNUSED
-    { return mImage ? mImage->getHeight() : 0; }
+        int getHeight() const override final A_WARN_UNUSED
+        { return mImage ? mImage->getHeight() : 0; }
 
-    const Image* getImage() const A_WARN_UNUSED
-    { return mImage; }
+        const Image* getImage() const A_WARN_UNUSED
+        { return mImage; }
 
-    bool setSpriteDirection(const SpriteDirection::Type
-                            direction A_UNUSED) override final
-    { return false; }
+        bool setSpriteDirection(const SpriteDirection::Type
+                                direction A_UNUSED) override final
+        { return false; }
 
-    int getNumberOfLayers() const A_WARN_UNUSED
-    { return 1; }
+        int getNumberOfLayers() const A_WARN_UNUSED
+        { return 1; }
 
-    unsigned int getCurrentFrame() const override final A_WARN_UNUSED
-    { return 0; }
+        unsigned int getCurrentFrame() const override final A_WARN_UNUSED
+        { return 0; }
 
-    unsigned int getFrameCount() const override final A_WARN_UNUSED
-    { return 1; }
+        unsigned int getFrameCount() const override final A_WARN_UNUSED
+        { return 1; }
 
-    bool updateNumber(const unsigned num A_UNUSED) override final
-    { return false; }
+        bool updateNumber(const unsigned num A_UNUSED) override final
+        { return false; }
 
-private:
-    Image *mImage;
+    private:
+        Image *mImage;
 };
 
 #endif  // IMAGESPRITE_H

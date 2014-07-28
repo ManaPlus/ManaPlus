@@ -68,86 +68,86 @@ extern LoginData loginData;
 class Client final : public ConfigListener,
                      public ActionListener
 {
-public:
-    Client();
+    public:
+        Client();
 
-    A_DELETE_COPY(Client)
+        A_DELETE_COPY(Client)
 
-    ~Client();
+        ~Client();
 
-    void gameInit();
+        void gameInit();
 
-    void testsInit();
+        void testsInit();
 
-    int gameExec();
+        int gameExec();
 
-    static int testsExec();
+        static int testsExec();
 
-    void setState(const State state)
-    { mState = state; }
+        void setState(const State state)
+        { mState = state; }
 
-    State getState() const A_WARN_UNUSED
-    { return mState; }
+        State getState() const A_WARN_UNUSED
+        { return mState; }
 
-    static bool isTmw() A_WARN_UNUSED;
+        static bool isTmw() A_WARN_UNUSED;
 
-    void optionChanged(const std::string &name) override final;
+        void optionChanged(const std::string &name) override final;
 
-    void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
-    static void initTradeFilter();
+        static void initTradeFilter();
 
-    void moveButtons(const int width);
+        void moveButtons(const int width);
 
-    void windowRemoved(const Window *const window);
+        void windowRemoved(const Window *const window);
 
-    static void setEnv(const char *const name, const char *const value);
+        static void setEnv(const char *const name, const char *const value);
 
-private:
-    void initSoundManager();
+    private:
+        void initSoundManager();
 
-    void initConfigListeners();
+        void initConfigListeners();
 
-    static void initGraphics();
+        static void initGraphics();
 
-    static void updateEnv();
+        static void updateEnv();
 
-    static void initFeatures();
+        static void initFeatures();
 
-    void gameClear();
+        void gameClear();
 
-    void testsClear();
+        void testsClear();
 
-    static void logVars();
+        static void logVars();
 
 #ifdef ANDROID
 #ifdef USE_SDL2
-    static void extractAssets();
+        static void extractAssets();
 #endif
 #endif
 
-    ServerInfo mCurrentServer;
+        ServerInfo mCurrentServer;
 
-    Game *mGame;
-    Window *mCurrentDialog;
-    QuitDialog *mQuitDialog;
-    Button *mSetupButton;
-    Button *mVideoButton;
-    Button *mHelpButton;
-    Button *mAboutButton;
-    Button *mThemesButton;
-    Button *mPerfomanceButton;
+        Game *mGame;
+        Window *mCurrentDialog;
+        QuitDialog *mQuitDialog;
+        Button *mSetupButton;
+        Button *mVideoButton;
+        Button *mHelpButton;
+        Button *mAboutButton;
+        Button *mThemesButton;
+        Button *mPerfomanceButton;
 #ifdef ANDROID
-    Button *mCloseButton;
+        Button *mCloseButton;
 #endif
 
-    State mState;
-    State mOldState;
+        State mState;
+        State mOldState;
 
-    Skin *mSkin;
-    int mButtonPadding;
-    int mButtonSpacing;
-    bool mConfigAutoSaved;
+        Skin *mSkin;
+        int mButtonPadding;
+        int mButtonSpacing;
+        bool mConfigAutoSaved;
 };
 
 extern Client *client;

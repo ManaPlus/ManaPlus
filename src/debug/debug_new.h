@@ -142,27 +142,27 @@ extern const char* new_progname;  // default to NULL; should be
  */
 class __debug_new_recorder
 {
-    const char* _M_file;
-    const int   _M_line;
-    void _M_process(void* pointer);
-public:
-    /**
-     * Constructor to remember the call context.  The information will
-     * be used in __debug_new_recorder::operator->*.
-     */
-    __debug_new_recorder(const char* file, int line)
-        : _M_file(file), _M_line(line) {}
-    /**
-     * Operator to write the context information to memory.
-     * <code>operator->*</code> is chosen because it has the right
-     * precedence, it is rarely used, and it looks good: so people can
-     * tell the special usage more quickly.
-     */
-    template <class _Tp> _Tp* operator->*(_Tp* pointer)
-    { _M_process(pointer); return pointer; }
-private:
-    __debug_new_recorder(const __debug_new_recorder&);
-    __debug_new_recorder& operator=(const __debug_new_recorder&);
+        const char* _M_file;
+        const int   _M_line;
+        void _M_process(void* pointer);
+    public:
+        /**
+         * Constructor to remember the call context.  The information will
+         * be used in __debug_new_recorder::operator->*.
+         */
+        __debug_new_recorder(const char* file, int line)
+            : _M_file(file), _M_line(line) {}
+        /**
+         * Operator to write the context information to memory.
+         * <code>operator->*</code> is chosen because it has the right
+         * precedence, it is rarely used, and it looks good: so people can
+         * tell the special usage more quickly.
+         */
+        template <class _Tp> _Tp* operator->*(_Tp* pointer)
+        { _M_process(pointer); return pointer; }
+    private:
+        __debug_new_recorder(const __debug_new_recorder&);
+        __debug_new_recorder& operator=(const __debug_new_recorder&);
 };
 
 /**
@@ -173,10 +173,10 @@ private:
  */
 class __debug_new_counter
 {
-    static int _S_count;
-public:
-    __debug_new_counter();
-    ~__debug_new_counter();
+        static int _S_count;
+    public:
+        __debug_new_counter();
+        ~__debug_new_counter();
 };
 /** Counting object for each file including debug_new.h. */
 static __debug_new_counter __debug_new_count;

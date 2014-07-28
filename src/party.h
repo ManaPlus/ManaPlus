@@ -34,145 +34,145 @@ class Party;
 
 class PartyMember final : public Avatar
 {
-public:
-    A_DELETE_COPY(PartyMember)
+    public:
+        A_DELETE_COPY(PartyMember)
 
-    const Party *getParty() const A_WARN_UNUSED
-    { return mParty; }
+        const Party *getParty() const A_WARN_UNUSED
+        { return mParty; }
 
-    bool getLeader() const A_WARN_UNUSED
-    { return mLeader; }
+        bool getLeader() const A_WARN_UNUSED
+        { return mLeader; }
 
-    void setLeader(const bool leader)
-    { mLeader = leader; setDisplayBold(leader); }
+        void setLeader(const bool leader)
+        { mLeader = leader; setDisplayBold(leader); }
 
-protected:
-    friend class Party;
+    protected:
+        friend class Party;
 
-    PartyMember(Party *const party, const int id, const std::string &name);
+        PartyMember(Party *const party, const int id, const std::string &name);
 
-    Party *mParty;
-    bool mLeader;
+        Party *mParty;
+        bool mLeader;
 };
 
 class Party final : public AvatarListModel
 {
-public:
-    A_DELETE_COPY(Party)
+    public:
+        A_DELETE_COPY(Party)
 
-    /**
-     * Set the party's name.
-     */
-    void setName(const std::string &name)
-    { mName = name; }
+        /**
+         * Set the party's name.
+         */
+        void setName(const std::string &name)
+        { mName = name; }
 
-    /**
-     * Adds member to the list.
-     */
-    PartyMember *addMember(const int id, const std::string &name);
+        /**
+         * Adds member to the list.
+         */
+        PartyMember *addMember(const int id, const std::string &name);
 
-    /**
-     * Find a member by ID.
-     *
-     * @return the member with the given ID, or NULL if they don't exist.
-     */
-    PartyMember *getMember(const int id) const A_WARN_UNUSED;
+        /**
+         * Find a member by ID.
+         *
+         * @return the member with the given ID, or NULL if they don't exist.
+         */
+        PartyMember *getMember(const int id) const A_WARN_UNUSED;
 
-    /**
-     * Find a member by name.
-     *
-     * @return the member with the given name, or NULL if they don't exist.
-     */
-    PartyMember *getMember(const std::string &name) const A_WARN_UNUSED;
+        /**
+         * Find a member by name.
+         *
+         * @return the member with the given name, or NULL if they don't exist.
+         */
+        PartyMember *getMember(const std::string &name) const A_WARN_UNUSED;
 
-    /**
-     * Get the name of the party.
-     * @return returns name of the party
-     */
-    const std::string &getName() const A_WARN_UNUSED
-    { return mName; }
+        /**
+         * Get the name of the party.
+         * @return returns name of the party
+         */
+        const std::string &getName() const A_WARN_UNUSED
+        { return mName; }
 
-    /**
-     * Get the id of the party.
-     * @return Returns the id of the party
-     */
-    int16_t getId() const A_WARN_UNUSED
-    { return mId; }
+        /**
+         * Get the id of the party.
+         * @return Returns the id of the party
+         */
+        int16_t getId() const A_WARN_UNUSED
+        { return mId; }
 
-    /**
-     * Removes a member from the party.
-     */
-    void removeMember(const PartyMember *const member);
+        /**
+         * Removes a member from the party.
+         */
+        void removeMember(const PartyMember *const member);
 
-    /**
-     * Removes a member from the party.
-     */
-    void removeMember(const int id);
+        /**
+         * Removes a member from the party.
+         */
+        void removeMember(const int id);
 
-    /**
-     * Removes a member from the party.
-     */
-    void removeMember(const std::string &name);
+        /**
+         * Removes a member from the party.
+         */
+        void removeMember(const std::string &name);
 
-    void clearMembers()
-    { delete_all(mMembers); mMembers.clear(); }
+        void clearMembers()
+        { delete_all(mMembers); mMembers.clear(); }
 
-    void removeFromMembers();
+        void removeFromMembers();
 
-    /**
-     * Get size of members list.
-     * @return Returns the number of members in the party.
-     */
-    int getNumberOfElements() override final A_WARN_UNUSED
-    { return static_cast<int>(mMembers.size()); }
+        /**
+         * Get size of members list.
+         * @return Returns the number of members in the party.
+         */
+        int getNumberOfElements() override final A_WARN_UNUSED
+        { return static_cast<int>(mMembers.size()); }
 
-    Avatar *getAvatarAt(const int i) override final;
+        Avatar *getAvatarAt(const int i) override final;
 
-    /**
-     * Get whether user can invite users to this party.
-     * @return Returns true if user can invite users
-     */
-    bool getInviteRights() const A_WARN_UNUSED
-    { return mCanInviteUsers; }
+        /**
+         * Get whether user can invite users to this party.
+         * @return Returns true if user can invite users
+         */
+        bool getInviteRights() const A_WARN_UNUSED
+        { return mCanInviteUsers; }
 
-    void setRights(const int16_t rights);
+        void setRights(const int16_t rights);
 
-    bool isMember(const PartyMember *const member) const A_WARN_UNUSED;
+        bool isMember(const PartyMember *const member) const A_WARN_UNUSED;
 
-    bool isMember(const int id) const A_WARN_UNUSED;
+        bool isMember(const int id) const A_WARN_UNUSED;
 
-    bool isMember(const std::string &name) const A_WARN_UNUSED;
+        bool isMember(const std::string &name) const A_WARN_UNUSED;
 
-    void getNames(StringVect &names) const;
+        void getNames(StringVect &names) const;
 
-    void getNamesSet(std::set<std::string> &names) const;
+        void getNamesSet(std::set<std::string> &names) const;
 
-    void sort();
+        void sort();
 
-    typedef std::vector<PartyMember*> MemberList;
+        typedef std::vector<PartyMember*> MemberList;
 
-    const MemberList *getMembers() const A_WARN_UNUSED
-    { return &mMembers; }
+        const MemberList *getMembers() const A_WARN_UNUSED
+        { return &mMembers; }
 
-    static Party *getParty(const int16_t id) A_WARN_UNUSED;
+        static Party *getParty(const int16_t id) A_WARN_UNUSED;
 
-    static void clearParties();
+        static void clearParties();
 
-private:
-    typedef std::map<int, Party*> PartyMap;
-    static PartyMap parties;
+    private:
+        typedef std::map<int, Party*> PartyMap;
+        static PartyMap parties;
 
-    /**
-     * Constructor with party id passed to it.
-     */
-    explicit Party(const int16_t id);
+        /**
+         * Constructor with party id passed to it.
+         */
+        explicit Party(const int16_t id);
 
-    ~Party();
+        ~Party();
 
-    MemberList mMembers;
-    std::string mName;
-    int16_t mId;
-    bool mCanInviteUsers;
+        MemberList mMembers;
+        std::string mName;
+        int16_t mId;
+        bool mCanInviteUsers;
 };
 
 #endif  // PARTY_H
