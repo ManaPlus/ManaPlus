@@ -91,65 +91,63 @@
  */
 class SDLInput final
 {
-public:
-    /**
-     * Constructor.
-     */
-    SDLInput();
+    public:
+        /**
+         * Constructor.
+         */
+        SDLInput();
 
-    A_DELETE_COPY(SDLInput)
+        A_DELETE_COPY(SDLInput)
 
-    /**
-     * Pushes an SDL event. It should be called at least once per frame to
-     * update input with user input.
-     *
-     * @param event an event from SDL.
-     */
-    void pushInput(const SDL_Event &event);
+        /**
+         * Pushes an SDL event. It should be called at least once per frame to
+         * update input with user input.
+         *
+         * @param event an event from SDL.
+         */
+        void pushInput(const SDL_Event &event);
 
-    KeyInput dequeueKeyInput() A_WARN_UNUSED;
+        KeyInput dequeueKeyInput() A_WARN_UNUSED;
 
-    // Inherited from SDLInput
+        bool isKeyQueueEmpty() const A_WARN_UNUSED
+        { return mKeyInputQueue.empty(); }
 
-    bool isKeyQueueEmpty() const A_WARN_UNUSED
-    { return mKeyInputQueue.empty(); }
+        bool isMouseQueueEmpty() const A_WARN_UNUSED
+        { return mMouseInputQueue.empty(); }
 
-    bool isMouseQueueEmpty() const A_WARN_UNUSED
-    { return mMouseInputQueue.empty(); }
+        MouseInput dequeueMouseInput() A_WARN_UNUSED;
 
-    MouseInput dequeueMouseInput() A_WARN_UNUSED;
+        void simulateMouseClick(const int x, const int y,
+                                const MouseButton::Type button);
 
-    void simulateMouseClick(const int x, const int y,
-                            const MouseButton::Type button);
+    protected:
+        /**
+         * Converts a mouse button from SDL to a Guichan mouse button
+         * representation.
+         *
+         * @param button an SDL mouse button.
+         * @return a Guichan mouse button.
+         */
+        static MouseButton::Type convertMouseButton(const int button)
+                                                    A_WARN_UNUSED;
 
-protected:
-    /**
-     * Converts a mouse button from SDL to a Guichan mouse button
-     * representation.
-     *
-     * @param button an SDL mouse button.
-     * @return a Guichan mouse button.
-     */
-    static MouseButton::Type convertMouseButton(const int button)
-                                                A_WARN_UNUSED;
+        /**
+         * Converts an SDL event key to a key value.
+         *
+         * @param event an SDL event with a key to convert.
+         * @return a key value.
+         * @see Key
+         */
+        static int convertKeyCharacter(const SDL_Event &event) A_WARN_UNUSED;
 
-    /**
-     * Converts an SDL event key to a key value.
-     *
-     * @param event an SDL event with a key to convert.
-     * @return a key value.
-     * @see Key
-     */
-    static int convertKeyCharacter(const SDL_Event &event) A_WARN_UNUSED;
+        static void convertKeyEventToKey(const SDL_Event &event,
+                                         KeyInput &keyInput);
 
-    static void convertKeyEventToKey(const SDL_Event &event,
-                                     KeyInput &keyInput);
+        std::queue<KeyInput> mKeyInputQueue;
+        std::queue<MouseInput> mMouseInputQueue;
 
-    std::queue<KeyInput> mKeyInputQueue;
-    std::queue<MouseInput> mMouseInputQueue;
-
-    bool mMouseDown;
-    bool mMouseInWindow;
+        bool mMouseDown;
+        bool mMouseInWindow;
 };
 
 #endif  // GUI_SDLINPUT_H

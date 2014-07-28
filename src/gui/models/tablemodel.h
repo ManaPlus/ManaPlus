@@ -37,111 +37,114 @@ class TableModelListener;
  */
 class TableModel notfinal
 {
-public:
-    virtual ~TableModel()
-    { }
+    public:
+        virtual ~TableModel()
+        { }
 
-    /**
-     * Determines the number of rows (lines) in the table
-     */
-    virtual int getRows() const A_WARN_UNUSED = 0;
+        /**
+         * Determines the number of rows (lines) in the table
+         */
+        virtual int getRows() const A_WARN_UNUSED = 0;
 
-    /**
-     * Determines the number of columns in each row
-     */
-    virtual int getColumns() const A_WARN_UNUSED = 0;
+        /**
+         * Determines the number of columns in each row
+         */
+        virtual int getColumns() const A_WARN_UNUSED = 0;
 
-    /**
-     * Determines the height for each row
-     */
-    virtual int getRowHeight() const A_WARN_UNUSED = 0;
+        /**
+         * Determines the height for each row
+         */
+        virtual int getRowHeight() const A_WARN_UNUSED = 0;
 
-    /**
-     * Determines the width of each individual column
-     */
-    virtual int getColumnWidth(const int index) const A_WARN_UNUSED = 0;
+        /**
+         * Determines the width of each individual column
+         */
+        virtual int getColumnWidth(const int index) const A_WARN_UNUSED = 0;
 
-    /**
-     * Retrieves the widget stored at the specified location within the table.
-     */
-    virtual Widget *getElementAt(const int row, const int column)
-                                      const A_WARN_UNUSED = 0;
+        /**
+         * Retrieves the widget stored at the specified location
+         *  within the table.
+         */
+        virtual Widget *getElementAt(const int row, const int column)
+                                     const A_WARN_UNUSED = 0;
 
-    virtual void installListener(TableModelListener *const listener);
+        virtual void installListener(TableModelListener *const listener);
 
-    virtual void removeListener(TableModelListener *const listener);
+        virtual void removeListener(TableModelListener *const listener);
 
-protected:
-    TableModel() :
-        listeners()
-    {
-    }
+    protected:
+        TableModel() :
+            listeners()
+        {
+        }
 
-    /**
-     * Tells all listeners that the table is about to see an update
-     */
-    virtual void signalBeforeUpdate();
+        /**
+         * Tells all listeners that the table is about to see an update
+         */
+        virtual void signalBeforeUpdate();
 
-    /**
-     * Tells all listeners that the table has seen an update
-     */
-    virtual void signalAfterUpdate();
+        /**
+         * Tells all listeners that the table has seen an update
+         */
+        virtual void signalAfterUpdate();
 
-private:
-    std::set<TableModelListener *> listeners;
+    private:
+        std::set<TableModelListener *> listeners;
 };
 
 
 class StaticTableModel final : public TableModel
 {
-public:
-    StaticTableModel(const int width, const int height);
+    public:
+        StaticTableModel(const int width, const int height);
 
-    A_DELETE_COPY(StaticTableModel)
+        A_DELETE_COPY(StaticTableModel)
 
-    ~StaticTableModel();
+        ~StaticTableModel();
 
-    /**
-     * Inserts a widget into the table model.
-     * The model is resized to accomodate the widget's width and height,
-     * unless column width / row height have been fixed.
-     */
-    void set(const int row, const int column, Widget *const widget);
+        /**
+         * Inserts a widget into the table model.
+         * The model is resized to accomodate the widget's width and height,
+         * unless column width / row height have been fixed.
+         */
+        void set(const int row, const int column, Widget *const widget);
 
-    /**
-     * Fixes the column width for a given column; this overrides dynamic width
-     * inference.
-     *
-     * Semantics are undefined for width 0.
-     */
-    void fixColumnWidth(const int column, const int width);
+        /**
+         * Fixes the column width for a given column; this overrides dynamic
+         * width inference.
+         *
+         * Semantics are undefined for width 0.
+         */
+        void fixColumnWidth(const int column, const int width);
 
-    /**
-     * Fixes the row height; this overrides dynamic height inference.
-     *
-     * Semantics are undefined for width 0.
-     */
-    void fixRowHeight(const int height);
+        /**
+         * Fixes the row height; this overrides dynamic height inference.
+         *
+         * Semantics are undefined for width 0.
+         */
+        void fixRowHeight(const int height);
 
-    /**
-     * Resizes the table model
-     */
-    void resize();
+        /**
+         * Resizes the table model
+         */
+        void resize();
 
-    int getRows() const override final A_WARN_UNUSED;
-    int getColumns() const override final A_WARN_UNUSED;
-    int getRowHeight() const override final A_WARN_UNUSED;
-    int getWidth() const A_WARN_UNUSED;
-    int getHeight() const A_WARN_UNUSED;
-    int getColumnWidth(const int index) const override final A_WARN_UNUSED;
-    Widget *getElementAt(const int row,
-                         const int column) const override final A_WARN_UNUSED;
+        int getRows() const override final A_WARN_UNUSED;
+        int getColumns() const override final A_WARN_UNUSED;
+        int getRowHeight() const override final A_WARN_UNUSED;
+        int getWidth() const A_WARN_UNUSED;
+        int getHeight() const A_WARN_UNUSED;
+        int getColumnWidth(const int index) const override final A_WARN_UNUSED;
+        Widget *getElementAt(const int row,
+                             const int column) const override final
+                             A_WARN_UNUSED;
 
-protected:
-    int mRows, mColumns;
-    int mHeight;
-    std::vector<Widget *> mTableModel;
-    std::vector<int> mWidths;
+    protected:
+        int mRows;
+        int mColumns;
+        int mHeight;
+        std::vector<Widget *> mTableModel;
+        std::vector<int> mWidths;
 };
 
 #endif  // GUI_MODELS_TABLEMODEL_H

@@ -39,47 +39,47 @@ class TextField;
 class TextDialog final : public Window,
                          public ActionListener
 {
-public:
-    /**
-     * Constructor.
-     *
-     * @see Window::Window
-     */
-    TextDialog(const std::string &restrict title,
-               const std::string &restrict msg,
-               Window *const parent = nullptr,
-               const bool isPassword = false);
+    public:
+        /**
+         * Constructor.
+         *
+         * @see Window::Window
+         */
+        TextDialog(const std::string &restrict title,
+                   const std::string &restrict msg,
+                   Window *const parent = nullptr,
+                   const bool isPassword = false);
 
-    A_DELETE_COPY(TextDialog)
+        A_DELETE_COPY(TextDialog)
 
-    ~TextDialog();
+        ~TextDialog();
 
-    void postInit() override final;
+        void postInit() override final;
 
-    /**
-     * Called when receiving actions from the widgets.
-     */
-    void action(const ActionEvent &event) override final;
+        /**
+         * Called when receiving actions from the widgets.
+         */
+        void action(const ActionEvent &event) override final;
 
-    /**
-     * Get the text in the textfield
-     */
-    const std::string &getText() const A_WARN_UNUSED;
+        /**
+         * Get the text in the textfield
+         */
+        const std::string &getText() const A_WARN_UNUSED;
 
-    void setText(const std::string &text);
+        void setText(const std::string &text);
 
-    static bool isActive() A_WARN_UNUSED
-    { return instances; }
+        static bool isActive() A_WARN_UNUSED
+        { return instances; }
 
-    void close() override final;
+        void close() override final;
 
-private:
-    static int instances;
+    private:
+        static int instances;
 
-    TextField *mTextField;
-    PasswordField *mPasswordField;
-    Button *mOkButton;
-    bool mEnabledKeyboard;
+        TextField *mTextField;
+        PasswordField *mPasswordField;
+        Button *mOkButton;
+        bool mEnabledKeyboard;
 };
 
 #endif  // GUI_WINDOWS_TEXTDIALOG_H

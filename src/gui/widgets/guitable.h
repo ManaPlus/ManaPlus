@@ -53,150 +53,153 @@ class GuiTable final : public Widget,
     // so that the action listener can call distributeActionEvent
     friend class GuiTableActionListener;
 
-public:
-    GuiTable(const Widget2 *const widget,
-             TableModel *const initial_model,
-             const bool opacity = true);
+    public:
+        GuiTable(const Widget2 *const widget,
+                 TableModel *const initial_model,
+                 const bool opacity = true);
 
-    A_DELETE_COPY(GuiTable)
+        A_DELETE_COPY(GuiTable)
 
-    ~GuiTable();
+        ~GuiTable();
 
-    /**
-     * Retrieves the active table model
-     */
-    const TableModel *getModel() const A_WARN_UNUSED;
+        /**
+         * Retrieves the active table model
+         */
+        const TableModel *getModel() const A_WARN_UNUSED;
 
-    /**
-     * Sets the table model
-     *
-     * Note that actions issued by widgets returned from the model will update
-     * the table selection, but only AFTER any event handlers installed within
-     * the widget have been triggered. To be notified after such an update, add
-     * an action listener to the table instead.
-     */
-    void setModel(TableModel *const m);
+        /**
+         * Sets the table model
+         *
+         * Note that actions issued by widgets returned from the model will
+         * update the table selection, but only AFTER any event handlers
+         * installed within the widget have been triggered. To be notified
+         * after such an update, add an action listener to the table instead.
+         */
+        void setModel(TableModel *const m);
 
-    void setSelected(const int row, const int column);
+        void setSelected(const int row, const int column);
 
-    int getSelectedRow() const A_WARN_UNUSED;
+        int getSelectedRow() const A_WARN_UNUSED;
 
-    int getSelectedColumn() const A_WARN_UNUSED;
+        int getSelectedColumn() const A_WARN_UNUSED;
 
-    void setSelectedRow(const int selected);
+        void setSelectedRow(const int selected);
 
-    void setSelectedColumn(const int selected);
+        void setSelectedColumn(const int selected);
 
-    bool isWrappingEnabled() const A_WARN_UNUSED
-    { return mWrappingEnabled; }
+        bool isWrappingEnabled() const A_WARN_UNUSED
+        { return mWrappingEnabled; }
 
-    void setWrappingEnabled(bool wrappingEnabled)
-    { mWrappingEnabled = wrappingEnabled; }
+        void setWrappingEnabled(bool wrappingEnabled)
+        { mWrappingEnabled = wrappingEnabled; }
 
-    Rect getChildrenArea() override final A_WARN_UNUSED;
+        Rect getChildrenArea() override final A_WARN_UNUSED;
 
-    /**
-     * Toggle whether to use linewise selection mode, in which the table selects
-     * an entire line at a time, rather than a single cell.
-     *
-     * Note that column information is tracked even in linewise selection mode;
-     * this mode therefore only affects visualisation.
-     *
-     * Disabled by default.
-     *
-     * \param linewise: Whether to enable linewise selection mode
-     */
-    void setLinewiseSelection(bool linewise)
-    {
-        mLinewiseMode = linewise;
-    }
+        /**
+         * Toggle whether to use linewise selection mode, in which the table
+         * selects an entire line at a time, rather than a single cell.
+         *
+         * Note that column information is tracked even in linewise selection
+         * mode;
+         *
+         * this mode therefore only affects visualisation.
+         *
+         * Disabled by default.
+         *
+         * \param linewise: Whether to enable linewise selection mode
+         */
+        void setLinewiseSelection(bool linewise)
+        { mLinewiseMode = linewise;}
 
-    // Inherited from Widget
-    void draw(Graphics* graphics) override final;
+        // Inherited from Widget
+        void draw(Graphics* graphics) override final;
 
-    Widget *getWidgetAt(int x, int y) override final A_WARN_UNUSED;
+        Widget *getWidgetAt(int x, int y) override final A_WARN_UNUSED;
 
-    void moveToTop(Widget *child) override final;
+        void moveToTop(Widget *child) override final;
 
-    void moveToBottom(Widget *child) override final;
+        void moveToBottom(Widget *child) override final;
 
-    void setFocusHandler(FocusHandler *const focusHandler) override final;
+        void setFocusHandler(FocusHandler *const focusHandler) override final;
 
-    // Inherited from KeyListener
-    void keyPressed(KeyEvent& event) override final;
+        // Inherited from KeyListener
+        void keyPressed(KeyEvent& event) override final;
 
-    /**
-     * Sets the table to be opaque, that is sets the table
-     * to display its background.
-     *
-     * @param opaque True if the table should be opaque, false otherwise.
-     */
-    void setOpaque(bool opaque)
-    { mOpaque = opaque; }
+        /**
+         * Sets the table to be opaque, that is sets the table
+         * to display its background.
+         *
+         * @param opaque True if the table should be opaque, false otherwise.
+         */
+        void setOpaque(bool opaque)
+        { mOpaque = opaque; }
 
-    /**
-     * Checks if the table is opaque, that is if the table area displays its
-     * background.
-     *
-     * @return True if the table is opaque, false otherwise.
-     */
-    bool isOpaque() const A_WARN_UNUSED
-    { return mOpaque; }
+        /**
+         * Checks if the table is opaque, that is if the table area displays
+         * its background.
+         *
+         * @return True if the table is opaque, false otherwise.
+         */
+        bool isOpaque() const A_WARN_UNUSED
+        { return mOpaque; }
 
-    // Inherited from MouseListener
-    void mousePressed(MouseEvent& event) override final;
+        // Inherited from MouseListener
+        void mousePressed(MouseEvent& event) override final;
 
-    void mouseWheelMovedUp(MouseEvent& event) override final;
+        void mouseWheelMovedUp(MouseEvent& event) override final;
 
-    void mouseWheelMovedDown(MouseEvent& event) override final;
+        void mouseWheelMovedDown(MouseEvent& event) override final;
 
-    void mouseDragged(MouseEvent& event) override final;
+        void mouseDragged(MouseEvent& event) override final;
 
-    // Constraints inherited from TableModelListener
-    void modelUpdated(const bool completed) override final;
+        // Constraints inherited from TableModelListener
+        void modelUpdated(const bool completed) override final;
 
-    void requestFocus();
+        void requestFocus();
 
-    void setSelectable(bool b)
-    { mSelectable = b; }
+        void setSelectable(bool b)
+        { mSelectable = b; }
 
-protected:
-    /** Frees all action listeners on inner widgets. */
-    void uninstallActionListeners();
-    /** Installs all action listeners on inner widgets. */
-    void installActionListeners();
+    protected:
+        /** Frees all action listeners on inner widgets. */
+        void uninstallActionListeners();
 
-    int getRowHeight() const A_WARN_UNUSED;
+        /** Installs all action listeners on inner widgets. */
+        void installActionListeners();
 
-    int getColumnWidth(const int i) const A_WARN_UNUSED;
+        int getRowHeight() const A_WARN_UNUSED;
 
-private:
-    int getRowForY(int y) const A_WARN_UNUSED;     // -1 on error
-    int getColumnForX(int x) const A_WARN_UNUSED;  // -1 on error
-    void recomputeDimensions();
+        int getColumnWidth(const int i) const A_WARN_UNUSED;
 
-    static float mAlpha;
+    private:
+        int getRowForY(int y) const A_WARN_UNUSED;     // -1 on error
 
-    TableModel *mModel;
+        int getColumnForX(int x) const A_WARN_UNUSED;  // -1 on error
 
-    /** If someone moves a fresh widget to the top, we must display it. */
-    Widget *mTopWidget;
+        void recomputeDimensions();
 
-    /** Vector for compactness; used as a list in practice. */
-    std::vector<GuiTableActionListener *> mActionListeners2;
+        static float mAlpha;
 
-    /**
-     * Holds the background color of the table.
-     */
-    Color mHighlightColor;
+        TableModel *mModel;
 
-    int mSelectedRow;
-    int mSelectedColumn;
+        /** If someone moves a fresh widget to the top, we must display it. */
+        Widget *mTopWidget;
 
-    bool mLinewiseMode;
-    bool mWrappingEnabled;
-    bool mOpaque;
-    bool mSelectable;
+        /** Vector for compactness; used as a list in practice. */
+        std::vector<GuiTableActionListener *> mActionListeners2;
+
+        /**
+         * Holds the background color of the table.
+         */
+        Color mHighlightColor;
+
+        int mSelectedRow;
+        int mSelectedColumn;
+
+        bool mLinewiseMode;
+        bool mWrappingEnabled;
+        bool mOpaque;
+        bool mSelectable;
 };
 
 #endif  // GUI_WIDGETS_GUITABLE_H

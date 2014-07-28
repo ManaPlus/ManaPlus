@@ -41,41 +41,41 @@ class StaticTableModel;
 class Setup_Relations final : public SetupTab,
                               public PlayerRelationsListener
 {
-public:
-    explicit Setup_Relations(const Widget2 *const widget);
+    public:
+        explicit Setup_Relations(const Widget2 *const widget);
 
-    A_DELETE_COPY(Setup_Relations)
+        A_DELETE_COPY(Setup_Relations)
 
-    ~Setup_Relations();
+        ~Setup_Relations();
 
-    void apply() override final;
+        void apply() override final;
 
-    void cancel() override final;
+        void cancel() override final;
 
-    void reset();
+        void reset();
 
-    void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
-    void updatedPlayer(const std::string &name);
+        void updatedPlayer(const std::string &name);
 
-    void updateAll();
+        void updateAll();
 
-    void externalUpdated() override final;
+        void externalUpdated() override final;
 
-private:
-    StaticTableModel *mPlayerTableTitleModel;
-    PlayerTableModel *mPlayerTableModel;
-    GuiTable *mPlayerTable;
-    GuiTable *mPlayerTitleTable;
-    ScrollArea *mPlayerScrollArea;
+    private:
+        StaticTableModel *mPlayerTableTitleModel;
+        PlayerTableModel *mPlayerTableModel;
+        GuiTable *mPlayerTable;
+        GuiTable *mPlayerTitleTable;
+        ScrollArea *mPlayerScrollArea;
 
-    CheckBox *mDefaultTrading;
-    CheckBox *mDefaultWhisper;
+        CheckBox *mDefaultTrading;
+        CheckBox *mDefaultWhisper;
 
-    Button *mDeleteButton;
+        Button *mDeleteButton;
 
-    ListModel *mIgnoreActionChoicesModel;
-    DropDown *mIgnoreActionChoicesBox;
+        ListModel *mIgnoreActionChoicesModel;
+        DropDown *mIgnoreActionChoicesBox;
 };
 
 #endif  // GUI_WIDGETS_TABS_SETUP_RELATIONS_H

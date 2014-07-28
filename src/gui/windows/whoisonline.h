@@ -49,124 +49,125 @@ class WhoIsOnline final : public Window,
                           public ActionListener,
                           public ConfigListener
 {
-public:
-    /**
-     * Constructor.
-     */
-    WhoIsOnline();
+    public:
+        /**
+         * Constructor.
+         */
+        WhoIsOnline();
 
-    A_DELETE_COPY(WhoIsOnline)
+        A_DELETE_COPY(WhoIsOnline)
 
-    /**
-     * Destructor
-     */
-    ~WhoIsOnline();
+        /**
+         * Destructor
+         */
+        ~WhoIsOnline();
 
-    void postInit() override final;
+        void postInit() override final;
 
-    /**
-     * Loads and display online list from the memory buffer.
-     */
-    void loadWebList();
+        /**
+         * Loads and display online list from the memory buffer.
+         */
+        void loadWebList();
 
-    void loadList(const std::vector<OnlinePlayer*> &list);
+        void loadList(const std::vector<OnlinePlayer*> &list);
 
-    void handleLink(const std::string& link,
-                    MouseEvent *event) override final;
+        void handleLink(const std::string& link,
+                        MouseEvent *event) override final;
 
-    void logic() override final;
+        void logic() override final;
 
-    void slowLogic();
+        void slowLogic();
 
-    void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
-    void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
-    const std::set<OnlinePlayer*> &getOnlinePlayers() const A_WARN_UNUSED
-    { return mOnlinePlayers; }
+        const std::set<OnlinePlayer*> &getOnlinePlayers() const A_WARN_UNUSED
+        { return mOnlinePlayers; }
 
-    const std::set<std::string> &getOnlineNicks() const A_WARN_UNUSED
-    { return mOnlineNicks; }
+        const std::set<std::string> &getOnlineNicks() const A_WARN_UNUSED
+        { return mOnlineNicks; }
 
-    void setAllowUpdate(const bool n)
-    { mAllowUpdate = n; }
+        void setAllowUpdate(const bool n)
+        { mAllowUpdate = n; }
 
-    void optionChanged(const std::string &name) override final;
+        void optionChanged(const std::string &name) override final;
 
-    void updateList(StringVect &list);
+        void updateList(StringVect &list);
 
-    void readFromWeb();
+        void readFromWeb();
 
-    static void setNeutralColor(OnlinePlayer *const player);
+        static void setNeutralColor(OnlinePlayer *const player);
 
-    void getPlayerNames(StringVect &names);
+        void getPlayerNames(StringVect &names);
 
-private:
-    void download();
+    private:
+        void download();
 
-    void updateSize();
+        void updateSize();
 
-    void handlerPlayerRelation(const std::string &nick,
-                               OnlinePlayer *const player);
-    /**
-     * The thread function that download the files.
-     */
-    static int downloadThread(void *ptr);
+        void handlerPlayerRelation(const std::string &nick,
+                                   OnlinePlayer *const player);
+        /**
+         * The thread function that download the files.
+         */
+        static int downloadThread(void *ptr);
 
-    /**
-     * A libcurl callback for writing to memory.
-     */
-    static size_t memoryWrite(void *ptr, size_t size, size_t nmemb,
-                              FILE *stream);
+        /**
+         * A libcurl callback for writing to memory.
+         */
+        static size_t memoryWrite(void *ptr, size_t size,
+                                  size_t nmemb,
+                                  FILE *stream);
 
-    const std::string prepareNick(const std::string &restrict nick,
-                                  const int level,
-                                  const std::string &restrict color)
-                                  const A_WARN_UNUSED;
+        const std::string prepareNick(const std::string &restrict nick,
+                                      const int level,
+                                      const std::string &restrict color)
+                                      const A_WARN_UNUSED;
 
-    void updateWindow(size_t numOnline);
+        void updateWindow(size_t numOnline);
 
-    enum DownloadStatus
-    {
-        UPDATE_ERROR = 0,
-        UPDATE_COMPLETE,
-        UPDATE_LIST
-    };
+        enum DownloadStatus
+        {
+            UPDATE_ERROR = 0,
+            UPDATE_COMPLETE,
+            UPDATE_LIST
+        };
 
-    int mUpdateTimer;
+        int mUpdateTimer;
 
-    /** A thread that use libcurl to download updates. */
-    SDL_Thread *mThread;
+        /** A thread that use libcurl to download updates. */
+        SDL_Thread *mThread;
 
-    /** Buffer for files downloaded to memory. */
-    char *mMemoryBuffer;
+        /** Buffer for files downloaded to memory. */
+        char *mMemoryBuffer;
 
-    /** Buffer to handler human readable error provided by curl. */
-    char *mCurlError;
+        /** Buffer to handler human readable error provided by curl. */
+        char *mCurlError;
 
-    BrowserBox *mBrowserBox;
-    ScrollArea *mScrollArea;
-    std::set<OnlinePlayer*> mOnlinePlayers;
-    std::set<std::string> mOnlineNicks;
+        BrowserBox *mBrowserBox;
+        ScrollArea *mScrollArea;
+        std::set<OnlinePlayer*> mOnlinePlayers;
+        std::set<std::string> mOnlineNicks;
 
-    Button *mUpdateButton;
-    std::vector<OnlinePlayer*> mFriends;
-    std::vector<OnlinePlayer*> mNeutral;
-    std::vector<OnlinePlayer*> mDisregard;
-    std::vector<OnlinePlayer*> mEnemy;
+        Button *mUpdateButton;
+        std::vector<OnlinePlayer*> mFriends;
+        std::vector<OnlinePlayer*> mNeutral;
+        std::vector<OnlinePlayer*> mDisregard;
+        std::vector<OnlinePlayer*> mEnemy;
 
-    /** Byte count currently downloaded in mMemoryBuffer. */
-    int mDownloadedBytes;
+        /** Byte count currently downloaded in mMemoryBuffer. */
+        int mDownloadedBytes;
 
-    /** Status of the current download. */
-    DownloadStatus mDownloadStatus;
+        /** Status of the current download. */
+        DownloadStatus mDownloadStatus;
 
-    /** Flag that show if current download is complete. */
-    bool mDownloadComplete;
-    bool mAllowUpdate;
-    bool mShowLevel;
-    bool mUpdateOnlineList;
-    bool mGroupFriends;
+        /** Flag that show if current download is complete. */
+        bool mDownloadComplete;
+        bool mAllowUpdate;
+        bool mShowLevel;
+        bool mUpdateOnlineList;
+        bool mGroupFriends;
 };
 
 extern WhoIsOnline *whoIsOnline;

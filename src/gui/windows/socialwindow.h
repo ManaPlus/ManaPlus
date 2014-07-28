@@ -50,127 +50,127 @@ class SocialWindow final : public Window,
                            private ActionListener,
                            public PlayerRelationsListener
 {
-public:
-    SocialWindow();
+    public:
+        SocialWindow();
 
-    A_DELETE_COPY(SocialWindow)
+        A_DELETE_COPY(SocialWindow)
 
-    ~SocialWindow();
+        ~SocialWindow();
 
-    void postInit() override final;
+        void postInit() override final;
 
-    bool addTab(Guild *const guild);
+        bool addTab(Guild *const guild);
 
-    bool removeTab(Guild *const guild);
+        bool removeTab(Guild *const guild);
 
-    bool addTab(Party *const party);
+        bool addTab(Party *const party);
 
-    bool removeTab(Party *const party);
+        bool removeTab(Party *const party);
 
-    void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) override final;
 
-    void showGuildInvite(const std::string &restrict guildName,
-                         const int guildId,
-                         const std::string &restrict inviterName);
+        void showGuildInvite(const std::string &restrict guildName,
+                             const int guildId,
+                             const std::string &restrict inviterName);
 
-    void showGuildCreate();
+        void showGuildCreate();
 
-    void showPartyInvite(const std::string &restrict partyName,
-                         const std::string &restrict inviter = "");
+        void showPartyInvite(const std::string &restrict partyName,
+                             const std::string &restrict inviter = "");
 
-    void showPartyCreate();
+        void showPartyCreate();
 
-    void updateActiveList();
+        void updateActiveList();
 
-    void updateAvatar(const std::string &name);
+        void updateAvatar(const std::string &name);
 
-    void resetDamage(const std::string &name);
+        void resetDamage(const std::string &name);
 
-    void slowLogic();
+        void slowLogic();
 
-    void updatePortals();
+        void updatePortals();
 
-    void updatePortalNames();
+        void updatePortalNames();
 
-    void updateParty();
+        void updateParty();
 
-    int getPortalIndex(const int x, const int y) A_WARN_UNUSED;
+        int getPortalIndex(const int x, const int y) A_WARN_UNUSED;
 
-    void addPortal(const int x, const int y);
+        void addPortal(const int x, const int y);
 
-    void removePortal(const int x, const int y);
+        void removePortal(const int x, const int y);
 
-    void nextTab();
+        void nextTab();
 
-    void prevTab();
+        void prevTab();
 
-    const Map* getMap() const A_WARN_UNUSED
-    { return mMap; }
+        const Map* getMap() const A_WARN_UNUSED
+        { return mMap; }
 
-    void setMap(Map *const map)
-    { mMap = map; mProcessedPortals = false; }
+        void setMap(Map *const map)
+        { mMap = map; mProcessedPortals = false; }
 
-    bool getProcessedPortals() const A_WARN_UNUSED
-    { return mProcessedPortals; }
+        bool getProcessedPortals() const A_WARN_UNUSED
+        { return mProcessedPortals; }
 
-    void setProcessedPortals(const bool n)
-    { mProcessedPortals = n; }
+        void setProcessedPortals(const bool n)
+        { mProcessedPortals = n; }
 
-    void selectPortal(const unsigned num);
+        void selectPortal(const unsigned num);
 
-    void updateAttackFilter();
+        void updateAttackFilter();
 
-    void updatePickupFilter();
+        void updatePickupFilter();
 
-    void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) override final;
 
-    void setCounter(const SocialTab *const tab, const std::string &str);
+        void setCounter(const SocialTab *const tab, const std::string &str);
 
-    void updateGuildCounter(const int online = 0, const int total = 0);
+        void updateGuildCounter(const int online = 0, const int total = 0);
 
-    void updatedPlayer(const std::string &name);
+        void updatedPlayer(const std::string &name);
 
-    void updateAll();
+        void updateAll();
 
 #ifdef USE_PROFILER
-    void logicChildren();
+        void logicChildren();
 #endif
 
-protected:
-    friend class SocialTab;
-    typedef std::map<Guild*, SocialTab*> GuildMap;
-    typedef std::map<Party*, SocialTab*> PartyMap;
+    protected:
+        friend class SocialTab;
+        typedef std::map<Guild*, SocialTab*> GuildMap;
+        typedef std::map<Party*, SocialTab*> PartyMap;
 
-    void updateButtons();
+        void updateButtons();
 
-    int mGuildInvited;
-    ConfirmDialog *mGuildAcceptDialog;
-    TextDialog *mGuildCreateDialog;
-    std::string mPartyInviter;
-    GuildMap mGuilds;
-    PartyMap mParties;
+        int mGuildInvited;
+        ConfirmDialog *mGuildAcceptDialog;
+        TextDialog *mGuildCreateDialog;
+        std::string mPartyInviter;
+        GuildMap mGuilds;
+        PartyMap mParties;
 
-    ConfirmDialog *mPartyAcceptDialog;
-    TextDialog *mPartyCreateDialog;
+        ConfirmDialog *mPartyAcceptDialog;
+        TextDialog *mPartyCreateDialog;
 
-    SocialTab *mAttackFilter;
-    SocialTab *mPickupFilter;
-    SocialTab *mPlayers;
-    SocialTab *mNavigation;
-    SocialTab *mFriends;
+        SocialTab *mAttackFilter;
+        SocialTab *mPickupFilter;
+        SocialTab *mPlayers;
+        SocialTab *mNavigation;
+        SocialTab *mFriends;
 
-    CreatePartyPopup *mCreatePopup;
+        CreatePartyPopup *mCreatePopup;
 
-    Button *mCreateButton;
-    Button *mInviteButton;
-    Button *mLeaveButton;
-    Label *mCountLabel;
-    TabbedArea *mTabs;
-    Map *mMap;
+        Button *mCreateButton;
+        Button *mInviteButton;
+        Button *mLeaveButton;
+        Label *mCountLabel;
+        TabbedArea *mTabs;
+        Map *mMap;
 
-    int mLastUpdateTime;
-    bool mNeedUpdate;
-    bool mProcessedPortals;
+        int mLastUpdateTime;
+        bool mNeedUpdate;
+        bool mProcessedPortals;
 };
 
 extern SocialWindow *socialWindow;

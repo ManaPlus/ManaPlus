@@ -34,33 +34,33 @@ class Image;
 class AvatarListBox final : public ListBox,
                             public ConfigListener
 {
-public:
-    AvatarListBox(const Widget2 *const widget,
-                  AvatarListModel *const model);
+    public:
+        AvatarListBox(const Widget2 *const widget,
+                      AvatarListModel *const model);
 
-    A_DELETE_COPY(AvatarListBox)
+        A_DELETE_COPY(AvatarListBox)
 
-    ~AvatarListBox();
+        ~AvatarListBox();
 
-    /**
-     * Draws the list box.
-     */
-    void draw(Graphics *gcnGraphics) override final;
+        /**
+         * Draws the list box.
+         */
+        void draw(Graphics *gcnGraphics) override final;
 
-    void mousePressed(MouseEvent &event) override final;
+        void mousePressed(MouseEvent &event) override final;
 
-    void mouseReleased(MouseEvent &event A_UNUSED) override final;
+        void mouseReleased(MouseEvent &event A_UNUSED) override final;
 
-    void optionChanged(const std::string &value) override final;
+        void optionChanged(const std::string &value) override final;
 
-private:
-    int mImagePadding;
-    bool mShowGender;
-    bool mShowLevel;
+    private:
+        int mImagePadding;
+        bool mShowGender;
+        bool mShowLevel;
 
-    static int instances;
-    static Image *onlineIcon;
-    static Image *offlineIcon;
+        static int instances;
+        static Image *onlineIcon;
+        static Image *offlineIcon;
 };
 
 #endif  // GUI_WIDGETS_AVATARLISTBOX_H

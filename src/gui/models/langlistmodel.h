@@ -81,48 +81,48 @@ const Language LANG_NAME[langs_count] =
 
 class LangListModel final : public ExtendedListModel
 {
-public:
-    LangListModel()
-    {
-        ResourceManager *const resman = ResourceManager::getInstance();
-        for (int f = 0; f < langs_count; f ++)
+    public:
+        LangListModel()
         {
-            mIcons[f] = resman->getImage("graphics/flags/"
-                + LANG_NAME[f].icon);
+            ResourceManager *const resman = ResourceManager::getInstance();
+            for (int f = 0; f < langs_count; f ++)
+            {
+                mIcons[f] = resman->getImage("graphics/flags/"
+                    + LANG_NAME[f].icon);
+            }
         }
-    }
 
-    A_DELETE_COPY(LangListModel)
+        A_DELETE_COPY(LangListModel)
 
-    ~LangListModel()
-    {
-        for (int f = 0; f < langs_count; f ++)
+        ~LangListModel()
         {
-            Image *const img = mIcons[f];
-            if (img)
-                img->decRef();
+            for (int f = 0; f < langs_count; f ++)
+            {
+                Image *const img = mIcons[f];
+                if (img)
+                    img->decRef();
+            }
         }
-    }
 
-    int getNumberOfElements() override final A_WARN_UNUSED
-    { return langs_count; }
+        int getNumberOfElements() override final A_WARN_UNUSED
+        { return langs_count; }
 
-    std::string getElementAt(int i) override final A_WARN_UNUSED
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return "???";
+        std::string getElementAt(int i) override final A_WARN_UNUSED
+        {
+            if (i >= getNumberOfElements() || i < 0)
+                return "???";
 
-        return gettext(LANG_NAME[i].name.c_str());
-    }
+            return gettext(LANG_NAME[i].name.c_str());
+        }
 
-    const Image *getImageAt(int i) override final A_WARN_UNUSED
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return nullptr;
-        return mIcons[i];
-    }
+        const Image *getImageAt(int i) override final A_WARN_UNUSED
+        {
+            if (i >= getNumberOfElements() || i < 0)
+                return nullptr;
+            return mIcons[i];
+        }
 
-    Image *mIcons[langs_count];
+        Image *mIcons[langs_count];
 };
 
 #endif  // GUI_MODELS_LANGLISTMODEL_H
