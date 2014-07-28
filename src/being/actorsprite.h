@@ -47,189 +47,190 @@ struct SpriteDisplay;
 
 class ActorSprite notfinal : public CompoundSprite, public Actor
 {
-public:
-    explicit ActorSprite(const int id);
+    public:
+        explicit ActorSprite(const int id);
 
-    A_DELETE_COPY(ActorSprite)
+        A_DELETE_COPY(ActorSprite)
 
-    virtual ~ActorSprite();
+        virtual ~ActorSprite();
 
-    int getId() const A_WARN_UNUSED
-    { return mId; }
+        int getId() const A_WARN_UNUSED
+        { return mId; }
 
-    void setId(const int id)
-    { mId = id; }
+        void setId(const int id)
+        { mId = id; }
 
-    /**
-     * Returns the type of the ActorSprite.
-     */
-    virtual ActorType::Type getType() const A_WARN_UNUSED
-    { return ActorType::UNKNOWN; }
+        /**
+         * Returns the type of the ActorSprite.
+         */
+        virtual ActorType::Type getType() const A_WARN_UNUSED
+        { return ActorType::UNKNOWN; }
 
-    void draw1(Graphics *const graphics,
-               const int offsetX,
-               const int offsetY) const;
+        void draw1(Graphics *const graphics,
+                   const int offsetX,
+                   const int offsetY) const;
 
-    virtual void logic();
+        virtual void logic();
 
-    static void actorLogic();
+        static void actorLogic();
 
-    void setMap(Map *const map) override;
+        void setMap(Map *const map) override;
 
-    /**
-     * Gets the way the object blocks pathfinding for other objects
-     */
-    virtual BlockType::BlockType getBlockType() const A_WARN_UNUSED
-    { return BlockType::NONE; }
+        /**
+         * Gets the way the object blocks pathfinding for other objects
+         */
+        virtual BlockType::BlockType getBlockType() const A_WARN_UNUSED
+        { return BlockType::NONE; }
 
-    /**
-     * Take control of a particle.
-     */
-    void controlParticle(Particle *const particle);
+        /**
+         * Take control of a particle.
+         */
+        void controlParticle(Particle *const particle);
 
-    /**
-     * Returns the required size of a target cursor for this being.
-     */
-    virtual TargetCursorSize::Size getTargetCursorSize() const A_WARN_UNUSED
-    { return TargetCursorSize::MEDIUM; }
+        /**
+         * Returns the required size of a target cursor for this being.
+         */
+        virtual TargetCursorSize::Size getTargetCursorSize() const
+                                                             A_WARN_UNUSED
+        { return TargetCursorSize::MEDIUM; }
 
-    virtual int getTargetOffsetX() const A_WARN_UNUSED
-    { return 0; }
+        virtual int getTargetOffsetX() const A_WARN_UNUSED
+        { return 0; }
 
-    virtual int getTargetOffsetY() const A_WARN_UNUSED
-    { return 0; }
+        virtual int getTargetOffsetY() const A_WARN_UNUSED
+        { return 0; }
 
-    /**
-     * Sets the target animation for this actor.
-     */
-    void setTargetType(const TargetCursorType::Type type);
+        /**
+         * Sets the target animation for this actor.
+         */
+        void setTargetType(const TargetCursorType::Type type);
 
-    /**
-     * Untargets the actor.
-     */
-    void untarget()
-    { mUsedTargetCursor = nullptr; }
+        /**
+         * Untargets the actor.
+         */
+        void untarget()
+        { mUsedTargetCursor = nullptr; }
 
-    /**
-     * Sets the actor's stun mode. If zero, the being is `normal', otherwise it
-     * is `stunned' in some fashion.
-     */
-    void setStunMode(const uint16_t stunMode)
-    {
-        if (mStunMode != stunMode)
-            updateStunMode(mStunMode, stunMode);
-        mStunMode = stunMode;
-    }
+        /**
+         * Sets the actor's stun mode. If zero, the being is `normal',
+         * otherwise it is `stunned' in some fashion.
+         */
+        void setStunMode(const uint16_t stunMode)
+        {
+            if (mStunMode != stunMode)
+                updateStunMode(mStunMode, stunMode);
+            mStunMode = stunMode;
+        }
 
-    void setStatusEffect(const int index, const bool active);
+        void setStatusEffect(const int index, const bool active);
 
-    /**
-     * A status effect block is a 16 bit mask of status effects. We assign each
-     * such flag a block ID of offset + bitnr.
-     *
-     * These are NOT the same as the status effect indices.
-     */
-    void setStatusEffectBlock(const int offset, const uint16_t flags);
+        /**
+         * A status effect block is a 16 bit mask of status effects. We assign
+         * each such flag a block ID of offset + bitnr.
+         *
+         * These are NOT the same as the status effect indices.
+         */
+        void setStatusEffectBlock(const int offset, const uint16_t flags);
 
-    virtual void setAlpha(const float alpha) override final
-    { CompoundSprite::setAlpha(alpha); }
+        virtual void setAlpha(const float alpha) override final
+        { CompoundSprite::setAlpha(alpha); }
 
-    virtual float getAlpha() const override final A_WARN_UNUSED
-    { return CompoundSprite::getAlpha(); }
+        virtual float getAlpha() const override final A_WARN_UNUSED
+        { return CompoundSprite::getAlpha(); }
 
-    virtual int getWidth() const override A_WARN_UNUSED
-    { return CompoundSprite::getWidth(); }
+        virtual int getWidth() const override A_WARN_UNUSED
+        { return CompoundSprite::getWidth(); }
 
-    virtual int getHeight() const override A_WARN_UNUSED
-    { return CompoundSprite::getHeight(); }
+        virtual int getHeight() const override A_WARN_UNUSED
+        { return CompoundSprite::getHeight(); }
 
-    static void load();
+        static void load();
 
-    static void unload();
+        static void unload();
 
-    /**
-     * Add an ActorSprite listener.
-     */
-    void addActorSpriteListener(ActorSpriteListener *const listener);
+        /**
+         * Add an ActorSprite listener.
+         */
+        void addActorSpriteListener(ActorSpriteListener *const listener);
 
-    /**
-     * Remove an ActorSprite listener.
-     */
-    void removeActorSpriteListener(ActorSpriteListener *const listener);
+        /**
+         * Remove an ActorSprite listener.
+         */
+        void removeActorSpriteListener(ActorSpriteListener *const listener);
 
-    int getActorX() const A_WARN_UNUSED
-    { return getPixelX() - mapTileSize / 2; }
+        int getActorX() const A_WARN_UNUSED
+        { return getPixelX() - mapTileSize / 2; }
 
-    int getActorY() const A_WARN_UNUSED
-    { return getPixelY() - mapTileSize; }
+        int getActorY() const A_WARN_UNUSED
+        { return getPixelY() - mapTileSize; }
 
-    void setPoison(const bool b)
-    { mPoison = b; }
+        void setPoison(const bool b)
+        { mPoison = b; }
 
-    bool getPoison() const A_WARN_UNUSED
-    { return mPoison; }
+        bool getPoison() const A_WARN_UNUSED
+        { return mPoison; }
 
-protected:
-    /**
-     * Notify self that the stun mode has been updated. Invoked by
-     * setStunMode if something changed.
-     */
-    virtual void updateStunMode(const int oldMode, const int newMode);
+    protected:
+        /**
+         * Notify self that the stun mode has been updated. Invoked by
+         * setStunMode if something changed.
+         */
+        virtual void updateStunMode(const int oldMode, const int newMode);
 
-    /**
-     * Notify self that a status effect has flipped.
-     * The new flag is passed.
-     */
-    virtual void updateStatusEffect(const int index, const bool newStatus);
+        /**
+         * Notify self that a status effect has flipped.
+         * The new flag is passed.
+         */
+        virtual void updateStatusEffect(const int index, const bool newStatus);
 
-    /**
-     * Handle an update to a status or stun effect
-     *
-     * \param The StatusEffect to effect
-     * \param effectId -1 for stun, otherwise the effect index
-     */
-    virtual void handleStatusEffect(const StatusEffect *const effect,
-                                    const int effectId);
+        /**
+         * Handle an update to a status or stun effect
+         *
+         * \param The StatusEffect to effect
+         * \param effectId -1 for stun, otherwise the effect index
+         */
+        virtual void handleStatusEffect(const StatusEffect *const effect,
+                                        const int effectId);
 
-    void setupSpriteDisplay(const SpriteDisplay &display,
-                            const bool forceDisplay = true,
-                            const int imageType = 0,
-                            const std::string &color = "");
+        void setupSpriteDisplay(const SpriteDisplay &display,
+                                const bool forceDisplay = true,
+                                const int imageType = 0,
+                                const std::string &color = "");
 
-    std::set<int> mStatusEffects;   /**< set of active status effects */
+        std::set<int> mStatusEffects;   /**< set of active status effects */
 
-    ParticleList mStunParticleEffects;
-    ParticleVector mStatusParticleEffects;
-    ParticleList mChildParticleEffects;
-    int mId;
-    uint16_t mStunMode;               /**< Stun mode; zero if not stunned */
+        ParticleList mStunParticleEffects;
+        ParticleVector mStatusParticleEffects;
+        ParticleList mChildParticleEffects;
+        int mId;
+        uint16_t mStunMode;             /**< Stun mode; zero if not stunned */
 
-private:
-    /** Load the target cursors into memory */
-    static void initTargetCursor();
+    private:
+        /** Load the target cursors into memory */
+        static void initTargetCursor();
 
-    /** Remove the target cursors from memory */
-    static void cleanupTargetCursors();
+        /** Remove the target cursors from memory */
+        static void cleanupTargetCursors();
 
-    /** Animated target cursors. */
-    static AnimatedSprite *targetCursor[TargetCursorType::NUM_TCT]
-        [TargetCursorSize::NUM_TC];
+        /** Animated target cursors. */
+        static AnimatedSprite *targetCursor[TargetCursorType::NUM_TCT]
+            [TargetCursorSize::NUM_TC];
 
-    static bool loaded;
+        static bool loaded;
 
-    /** Target cursor being used */
-    AnimatedSprite *mUsedTargetCursor;
+        /** Target cursor being used */
+        AnimatedSprite *mUsedTargetCursor;
 
-    typedef std::list<ActorSpriteListener*> ActorSpriteListeners;
-    typedef ActorSpriteListeners::iterator ActorSpriteListenerIterator;
-    ActorSpriteListeners mActorSpriteListeners;
+        typedef std::list<ActorSpriteListener*> ActorSpriteListeners;
+        typedef ActorSpriteListeners::iterator ActorSpriteListenerIterator;
+        ActorSpriteListeners mActorSpriteListeners;
 
-    int mCursorPaddingX;
-    int mCursorPaddingY;
+        int mCursorPaddingX;
+        int mCursorPaddingY;
 
-    /** Reset particle status effects on next redraw? */
-    bool mMustResetParticles;
-    bool mPoison;
+        /** Reset particle status effects on next redraw? */
+        bool mMustResetParticles;
+        bool mPoison;
 };
 
 #endif  // BEING_ACTORSPRITE_H

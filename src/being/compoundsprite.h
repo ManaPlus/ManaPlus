@@ -34,114 +34,115 @@ class Image;
 
 class CompoundSprite notfinal : public Sprite
 {
-public:
-    typedef std::vector<Sprite*>::iterator SpriteIterator;
-    typedef std::vector<Sprite*>::const_iterator SpriteConstIterator;
+    public:
+        typedef std::vector<Sprite*>::iterator SpriteIterator;
+        typedef std::vector<Sprite*>::const_iterator SpriteConstIterator;
 
-    CompoundSprite();
+        CompoundSprite();
 
-    A_DELETE_COPY(CompoundSprite)
+        A_DELETE_COPY(CompoundSprite)
 
-    virtual ~CompoundSprite();
+        virtual ~CompoundSprite();
 
-    virtual bool reset() override final;
+        virtual bool reset() override final;
 
-    virtual bool play(const std::string &action) override final;
+        virtual bool play(const std::string &action) override final;
 
-    virtual bool update(const int time) override final;
+        virtual bool update(const int time) override final;
 
-    virtual void draw(Graphics *const graphics,
-                      const int posX, const int posY) const override;
+        virtual void draw(Graphics *const graphics,
+                          const int posX, const int posY) const override;
 
-    /**
-     * Gets the width in pixels of the first sprite in the list.
-     */
-    virtual int getWidth() const override A_WARN_UNUSED;
+        /**
+         * Gets the width in pixels of the first sprite in the list.
+         */
+        virtual int getWidth() const override A_WARN_UNUSED;
 
-    /**
-     * Gets the height in pixels of the first sprite in the list.
-     */
-    virtual int getHeight() const override A_WARN_UNUSED;
+        /**
+         * Gets the height in pixels of the first sprite in the list.
+         */
+        virtual int getHeight() const override A_WARN_UNUSED;
 
-    virtual const Image *getImage() const override final A_WARN_UNUSED;
+        virtual const Image *getImage() const override final A_WARN_UNUSED;
 
-    virtual bool setSpriteDirection(const SpriteDirection::Type direction)
-                                    override final;
+        virtual bool setSpriteDirection(const SpriteDirection::Type direction)
+                                        override final;
 
-    int getNumberOfLayers() const A_WARN_UNUSED;
+        int getNumberOfLayers() const A_WARN_UNUSED;
 
-    unsigned int getCurrentFrame() const override final A_WARN_UNUSED;
+        unsigned int getCurrentFrame() const override final A_WARN_UNUSED;
 
-    unsigned int getFrameCount() const override final A_WARN_UNUSED;
+        unsigned int getFrameCount() const override final A_WARN_UNUSED;
 
-    size_t size() const A_WARN_UNUSED
-    { return mSprites.size(); }
+        size_t size() const A_WARN_UNUSED
+        { return mSprites.size(); }
 
-    bool empty() const A_WARN_UNUSED
-    { return mSprites.empty(); }
+        bool empty() const A_WARN_UNUSED
+        { return mSprites.empty(); }
 
-    void addSprite(Sprite *const sprite);
+        void addSprite(Sprite *const sprite);
 
-    void setSprite(const int layer, Sprite *const sprite);
+        void setSprite(const int layer, Sprite *const sprite);
 
-    Sprite *getSprite(int layer) const A_WARN_UNUSED
-    { return mSprites.at(layer); }
+        Sprite *getSprite(int layer) const A_WARN_UNUSED
+        { return mSprites.at(layer); }
 
-    void removeSprite(const int layer);
+        void removeSprite(const int layer);
 
-    void clear();
+        void clear();
 
-    void ensureSize(size_t layerCount);
+        void ensureSize(size_t layerCount);
 
-    virtual void drawSprites(Graphics *const graphics,
-                             int posX, int posY) const;
+        virtual void drawSprites(Graphics *const graphics,
+                                 int posX, int posY) const;
 
-    virtual void drawSpritesSDL(Graphics *const graphics,
-                                int posX, int posY) const;
+        virtual void drawSpritesSDL(Graphics *const graphics,
+                                    int posX, int posY) const;
 
-    /**
-     * Returns the curent frame in the current animation of the given layer.
-     */
-    virtual unsigned int getCurrentFrame(unsigned int layer)
-                                         const A_WARN_UNUSED;
+        /**
+         * Returns the curent frame in the current animation of the given
+         * layer.
+         */
+        virtual unsigned int getCurrentFrame(unsigned int layer)
+                                             const A_WARN_UNUSED;
 
-    /**
-     * Returns the frame count in the current animation of the given layer.
-     */
-    virtual unsigned int getFrameCount(unsigned int layer) A_WARN_UNUSED;
+        /**
+         * Returns the frame count in the current animation of the given layer.
+         */
+        virtual unsigned int getFrameCount(unsigned int layer) A_WARN_UNUSED;
 
-    virtual void setAlpha(float alpha) override;
+        virtual void setAlpha(float alpha) override;
 
-    bool updateNumber(const unsigned num) override final;
+        bool updateNumber(const unsigned num) override final;
 
-    static void setEnableDelay(bool b)
-    { mEnableDelay = b; }
+        static void setEnableDelay(bool b)
+        { mEnableDelay = b; }
 
-private:
-    void redraw() const;
+    private:
+        void redraw() const;
 
-    void updateImages() const;
+        void updateImages() const;
 
-    bool updateFromCache() const;
+        bool updateFromCache() const;
 
-    void initCurrentCacheItem() const;
+        void initCurrentCacheItem() const;
 
-    typedef std::list<CompoundItem*> ImagesCache;
-    mutable ImagesCache imagesCache;
-    mutable CompoundItem *mCacheItem;
+        typedef std::list<CompoundItem*> ImagesCache;
+        mutable ImagesCache imagesCache;
+        mutable CompoundItem *mCacheItem;
 
-    mutable Image *mImage;
-    mutable Image *mAlphaImage;
+        mutable Image *mImage;
+        mutable Image *mAlphaImage;
 
-    mutable int mOffsetX;
-    mutable int mOffsetY;
-    std::vector<Sprite*> mSprites;
-    mutable int mNextRedrawTime;
-    static bool mEnableDelay;
-    mutable bool mNeedsRedraw;
-    bool mEnableAlphaFix;
-    bool mDisableAdvBeingCaching;
-    bool mDisableBeingCaching;
+        mutable int mOffsetX;
+        mutable int mOffsetY;
+        std::vector<Sprite*> mSprites;
+        mutable int mNextRedrawTime;
+        static bool mEnableDelay;
+        mutable bool mNeedsRedraw;
+        bool mEnableAlphaFix;
+        bool mDisableAdvBeingCaching;
+        bool mDisableBeingCaching;
 };
 
 #endif  // BEING_COMPOUNDSPRITE_H

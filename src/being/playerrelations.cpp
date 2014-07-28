@@ -75,43 +75,43 @@ namespace
         public ConfigurationListManager<std::pair<std::string,
             PlayerRelation *>, std::map<std::string, PlayerRelation *> *>
     {
-    public:
-        ConfigurationObject *writeConfigItem(
-            const std::pair<std::string, PlayerRelation *> &value,
-            ConfigurationObject *const cobj) const override final
-        {
-            if (!cobj || !value.second)
-                return nullptr;
-            cobj->setValue(NAME, value.first);
-            cobj->setValue(RELATION, toString(
-                static_cast<int>(value.second->mRelation)));
-
-            return cobj;
-        }
-
-        std::map<std::string, PlayerRelation *> *
-        readConfigItem(const ConfigurationObject *const cobj,
-                       std::map<std::string, PlayerRelation *>
-                       *const container) const override final
-        {
-            if (!cobj)
-                return container;
-            const std::string name = cobj->getValue(NAME, "");
-            if (name.empty())
-                return container;
-
-            if (!(*container)[name])
+        public:
+            ConfigurationObject *writeConfigItem(
+                const std::pair<std::string, PlayerRelation *> &value,
+                ConfigurationObject *const cobj) const override final
             {
-                const int v = cobj->getValueInt(RELATION,
-                    static_cast<int>(PlayerRelation::NEUTRAL));
+                if (!cobj || !value.second)
+                    return nullptr;
+                cobj->setValue(NAME, value.first);
+                cobj->setValue(RELATION, toString(
+                    static_cast<int>(value.second->mRelation)));
 
-                (*container)[name] = new PlayerRelation(
-                    static_cast<PlayerRelation::Relation>(v));
+                return cobj;
             }
-            // otherwise ignore the duplicate entry
 
-            return container;
-        }
+            std::map<std::string, PlayerRelation *> *
+            readConfigItem(const ConfigurationObject *const cobj,
+                           std::map<std::string, PlayerRelation *>
+                           *const container) const override final
+            {
+                if (!cobj)
+                    return container;
+                const std::string name = cobj->getValue(NAME, "");
+                if (name.empty())
+                    return container;
+
+                if (!(*container)[name])
+                {
+                    const int v = cobj->getValueInt(RELATION,
+                        static_cast<int>(PlayerRelation::NEUTRAL));
+
+                    (*container)[name] = new PlayerRelation(
+                        static_cast<PlayerRelation::Relation>(v));
+                }
+                // otherwise ignore the duplicate entry
+
+                return container;
+            }
     };
 
     static PlayerConfSerialiser player_conf_serialiser;  // stateless singleton
@@ -460,87 +460,87 @@ bool PlayerRelationsManager::checkBadRelation(const std::string &name) const
 
 class PIS_nothing final : public PlayerIgnoreStrategy
 {
-public:
-    PIS_nothing() :
-        PlayerIgnoreStrategy()
-    {
-        // TRANSLATORS: ignore/unignore action
-        mDescription = _("Completely ignore");
-        mShortName = PLAYER_IGNORE_STRATEGY_NOP;
-    }
+    public:
+        PIS_nothing() :
+            PlayerIgnoreStrategy()
+        {
+            // TRANSLATORS: ignore/unignore action
+            mDescription = _("Completely ignore");
+            mShortName = PLAYER_IGNORE_STRATEGY_NOP;
+        }
 
-    void ignore(Being *const being A_UNUSED,
-                const unsigned int flags A_UNUSED) const override final
-    {
-    }
+        void ignore(Being *const being A_UNUSED,
+                    const unsigned int flags A_UNUSED) const override final
+        {
+        }
 };
 
 class PIS_dotdotdot final : public PlayerIgnoreStrategy
 {
-public:
-    PIS_dotdotdot() :
-        PlayerIgnoreStrategy()
-    {
-        // TRANSLATORS: ignore/unignore action
-        mDescription = _("Print '...'");
-        mShortName = "dotdotdot";
-    }
+    public:
+        PIS_dotdotdot() :
+            PlayerIgnoreStrategy()
+        {
+            // TRANSLATORS: ignore/unignore action
+            mDescription = _("Print '...'");
+            mShortName = "dotdotdot";
+        }
 
-    void ignore(Being *const being,
-                const unsigned int flags A_UNUSED) const override final
-    {
-        if (!being)
-            return;
+        void ignore(Being *const being,
+                    const unsigned int flags A_UNUSED) const override final
+        {
+            if (!being)
+                return;
 
-        logger->log("ignoring: " + being->getName());
-        being->setSpeech("...");
-    }
+            logger->log("ignoring: " + being->getName());
+            being->setSpeech("...");
+        }
 };
 
 
 class PIS_blinkname final : public PlayerIgnoreStrategy
 {
-public:
-    PIS_blinkname() :
-        PlayerIgnoreStrategy()
-    {
-        // TRANSLATORS: ignore/unignore action
-        mDescription = _("Blink name");
-        mShortName = "blinkname";
-    }
+    public:
+        PIS_blinkname() :
+            PlayerIgnoreStrategy()
+        {
+            // TRANSLATORS: ignore/unignore action
+            mDescription = _("Blink name");
+            mShortName = "blinkname";
+        }
 
-    void ignore(Being *const being,
-                const unsigned int flags A_UNUSED) const override final
-    {
-        if (!being)
-            return;
+        void ignore(Being *const being,
+                    const unsigned int flags A_UNUSED) const override final
+        {
+            if (!being)
+                return;
 
-        logger->log("ignoring: " + being->getName());
-        being->flashName(200);
-    }
+            logger->log("ignoring: " + being->getName());
+            being->flashName(200);
+        }
 };
 
 class PIS_emote final : public PlayerIgnoreStrategy
 {
-public:
-    PIS_emote(const uint8_t emote_nr, const std::string &description,
-              const std::string &shortname) :
-        PlayerIgnoreStrategy(),
-        mEmotion(emote_nr)
-    {
-        mDescription = description;
-        mShortName = shortname;
-    }
+    public:
+        PIS_emote(const uint8_t emote_nr, const std::string &description,
+                  const std::string &shortname) :
+            PlayerIgnoreStrategy(),
+            mEmotion(emote_nr)
+        {
+            mDescription = description;
+            mShortName = shortname;
+        }
 
-    void ignore(Being *const being,
-                const unsigned int flags A_UNUSED) const override final
-    {
-        if (!being)
-            return;
+        void ignore(Being *const being,
+                    const unsigned int flags A_UNUSED) const override final
+        {
+            if (!being)
+                return;
 
-        being->setEmote(mEmotion, IGNORE_EMOTE_TIME);
-    }
-    uint8_t mEmotion;
+            being->setEmote(mEmotion, IGNORE_EMOTE_TIME);
+        }
+        uint8_t mEmotion;
 };
 
 std::vector<PlayerIgnoreStrategy *> *

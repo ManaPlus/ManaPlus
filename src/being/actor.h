@@ -37,105 +37,105 @@ typedef Actors::const_iterator ActorsCIter;
 
 class Actor notfinal
 {
-public:
-    A_DELETE_COPY(Actor)
+    public:
+        A_DELETE_COPY(Actor)
 
-    virtual ~Actor();
+        virtual ~Actor();
 
-    /**
-     * Draws the Actor to the given graphics context.
-     *
-     * Note: this function could be simplified if the graphics context
-     * would support setting a translation offset. It already does this
-     * partly with the clipping rectangle support.
-     */
-    virtual void draw(Graphics *const graphics,
-                      const int offsetX, const int offsetY) const = 0;
+        /**
+         * Draws the Actor to the given graphics context.
+         *
+         * Note: this function could be simplified if the graphics context
+         * would support setting a translation offset. It already does this
+         * partly with the clipping rectangle support.
+         */
+        virtual void draw(Graphics *const graphics,
+                          const int offsetX, const int offsetY) const = 0;
 
-    /**
-     * Returns the horizontal size of the actors graphical representation
-     * in pixels or 0 when it is undefined.
-     */
-    virtual int getWidth() const A_WARN_UNUSED
-    { return 0; }
+        /**
+         * Returns the horizontal size of the actors graphical representation
+         * in pixels or 0 when it is undefined.
+         */
+        virtual int getWidth() const A_WARN_UNUSED
+        { return 0; }
 
-    /**
-     * Returns the vertical size of the actors graphical representation
-     * in pixels or 0 when it is undefined.
-     */
-    virtual int getHeight() const A_WARN_UNUSED
-    { return 0; }
+        /**
+         * Returns the vertical size of the actors graphical representation
+         * in pixels or 0 when it is undefined.
+         */
+        virtual int getHeight() const A_WARN_UNUSED
+        { return 0; }
 
-    /**
-     * Returns the pixel position of this actor.
-     */
-    const Vector &getPosition() const A_WARN_UNUSED
-    { return mPos; }
+        /**
+         * Returns the pixel position of this actor.
+         */
+        const Vector &getPosition() const A_WARN_UNUSED
+        { return mPos; }
 
-    /**
-     * Sets the pixel position of this actor.
-     */
-    virtual void setPosition(const Vector &pos)
-    { mPos = pos; }
+        /**
+         * Sets the pixel position of this actor.
+         */
+        virtual void setPosition(const Vector &pos)
+        { mPos = pos; }
 
-    /**
-     * Returns the pixels X coordinate of the actor.
-     */
-    int getPixelX() const A_WARN_UNUSED
-    { return static_cast<int>(mPos.x); }
+        /**
+         * Returns the pixels X coordinate of the actor.
+         */
+        int getPixelX() const A_WARN_UNUSED
+        { return static_cast<int>(mPos.x); }
 
-    /**
-     * Returns the pixel Y coordinate of the actor.
-     */
-    virtual int getPixelY() const A_WARN_UNUSED
-    { return static_cast<int>(mPos.y); }
+        /**
+         * Returns the pixel Y coordinate of the actor.
+         */
+        virtual int getPixelY() const A_WARN_UNUSED
+        { return static_cast<int>(mPos.y); }
 
-    /**
-     * Returns the pixel Y coordinate of the actor for sorting only.
-     */
-    virtual int getSortPixelY() const A_WARN_UNUSED
-    { return static_cast<int>(mPos.y) - mYDiff; }
+        /**
+         * Returns the pixel Y coordinate of the actor for sorting only.
+         */
+        virtual int getSortPixelY() const A_WARN_UNUSED
+        { return static_cast<int>(mPos.y) - mYDiff; }
 
-    /**
-     * Returns the x coordinate in tiles of the actor.
-     */
-    virtual int getTileX() const A_WARN_UNUSED;
+        /**
+         * Returns the x coordinate in tiles of the actor.
+         */
+        virtual int getTileX() const A_WARN_UNUSED;
 
-    /**
-     * Returns the y coordinate in tiles of the actor.
-     */
-    virtual int getTileY() const A_WARN_UNUSED;
+        /**
+         * Returns the y coordinate in tiles of the actor.
+         */
+        virtual int getTileY() const A_WARN_UNUSED;
 
-    /**
-     * Returns the number of Image layers used to draw the actor.
-     */
-    virtual int getNumberOfLayers() const A_WARN_UNUSED
-    { return 0; }
+        /**
+         * Returns the number of Image layers used to draw the actor.
+         */
+        virtual int getNumberOfLayers() const A_WARN_UNUSED
+        { return 0; }
 
-    /**
-     * Returns the current alpha value used to draw the actor.
-     */
-    virtual float getAlpha() const A_WARN_UNUSED = 0;
+        /**
+         * Returns the current alpha value used to draw the actor.
+         */
+        virtual float getAlpha() const A_WARN_UNUSED = 0;
 
-    /**
-     * Sets the alpha value used to draw the actor.
-     */
-    virtual void setAlpha(float alpha) = 0;
+        /**
+         * Sets the alpha value used to draw the actor.
+         */
+        virtual void setAlpha(float alpha) = 0;
 
-    virtual void setMap(Map *const map);
+        virtual void setMap(Map *const map);
 
-    const Map* getMap() const A_WARN_UNUSED
-    { return mMap; }
+        const Map* getMap() const A_WARN_UNUSED
+        { return mMap; }
 
-protected:
-    Actor();
+    protected:
+        Actor();
 
-    Map *mMap;
-    Vector mPos;                /**< Position in pixels relative to map. */
-    int mYDiff;
+        Map *mMap;
+        Vector mPos;                /**< Position in pixels relative to map. */
+        int mYDiff;
 
-private:
-    Actors::iterator mMapActor;
+    private:
+        Actors::iterator mMapActor;
 };
 
 #endif  // BEING_ACTOR_H
