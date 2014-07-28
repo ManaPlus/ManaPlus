@@ -34,118 +34,118 @@
 
 class ServerInfo final
 {
-public:
-    enum Type
-    {
-        UNKNOWN = 0,
-        TMWATHENA,
-        EVOL,
-        EATHENA
-    };
+    public:
+        enum Type
+        {
+            UNKNOWN = 0,
+            TMWATHENA,
+            EVOL,
+            EATHENA
+        };
 
-    typedef std::pair<int, std::string> VersionString;
+        typedef std::pair<int, std::string> VersionString;
 
-    Type type;
-    std::string name;
-    std::string hostname;
-    std::string althostname;
-    std::string description;
-    std::string registerUrl;
-    std::string onlineListUrl;
-    std::string supportUrl;
-    std::vector<std::string> updateMirrors;
-    uint16_t port;
-    VersionString version;
-    bool save;
-    bool persistentIp;
+        Type type;
+        std::string name;
+        std::string hostname;
+        std::string althostname;
+        std::string description;
+        std::string registerUrl;
+        std::string onlineListUrl;
+        std::string supportUrl;
+        std::vector<std::string> updateMirrors;
+        uint16_t port;
+        VersionString version;
+        bool save;
+        bool persistentIp;
 
-    ServerInfo() :
-        type(TMWATHENA),
-        name(),
-        hostname(),
-        althostname(),
-        description(),
-        registerUrl(),
-        onlineListUrl(),
-        supportUrl(),
-        updateMirrors(),
-        port(6901),
-        version(),
-        save(false),
-        persistentIp(true)
-    {
-        version.first = 0;
-    }
+        ServerInfo() :
+            type(TMWATHENA),
+            name(),
+            hostname(),
+            althostname(),
+            description(),
+            registerUrl(),
+            onlineListUrl(),
+            supportUrl(),
+            updateMirrors(),
+            port(6901),
+            version(),
+            save(false),
+            persistentIp(true)
+        {
+            version.first = 0;
+        }
 
-    ServerInfo(const ServerInfo &info) :
-        type(info.type),
-        name(info.name),
-        hostname(info.hostname),
-        althostname(info.althostname),
-        description(info.description),
-        registerUrl(info.registerUrl),
-        onlineListUrl(info.onlineListUrl),
-        supportUrl(info.supportUrl),
-        updateMirrors(info.updateMirrors),
-        port(info.port),
-        version(),
-        save(info.save),
-        persistentIp(info.persistentIp)
-    {
-        version.first = info.version.first;
-        version.second = info.version.second;
-    }
+        ServerInfo(const ServerInfo &info) :
+            type(info.type),
+            name(info.name),
+            hostname(info.hostname),
+            althostname(info.althostname),
+            description(info.description),
+            registerUrl(info.registerUrl),
+            onlineListUrl(info.onlineListUrl),
+            supportUrl(info.supportUrl),
+            updateMirrors(info.updateMirrors),
+            port(info.port),
+            version(),
+            save(info.save),
+            persistentIp(info.persistentIp)
+        {
+            version.first = info.version.first;
+            version.second = info.version.second;
+        }
 
-    bool isValid() const A_WARN_UNUSED
-    {
-        return !(hostname.empty() || port == 0 || type == UNKNOWN);
-    }
+        bool isValid() const A_WARN_UNUSED
+        {
+            return !(hostname.empty() || port == 0 || type == UNKNOWN);
+        }
 
-    void clear()
-    {
-        type = UNKNOWN;
-        name.clear();
-        hostname.clear();
-        althostname.clear();
-        port = 0;
-        description.clear();
-        registerUrl.clear();
-        onlineListUrl.clear();
-        supportUrl.clear();
-        updateMirrors.clear();
-        version.first = 0;
-        version.second.clear();
-        save = false;
-        persistentIp = true;
-    }
+        void clear()
+        {
+            type = UNKNOWN;
+            name.clear();
+            hostname.clear();
+            althostname.clear();
+            port = 0;
+            description.clear();
+            registerUrl.clear();
+            onlineListUrl.clear();
+            supportUrl.clear();
+            updateMirrors.clear();
+            version.first = 0;
+            version.second.clear();
+            save = false;
+            persistentIp = true;
+        }
 
-    bool operator==(const ServerInfo &other) const
-    {
-        return (type == other.type && hostname == other.hostname &&
-                port == other.port);
-    }
+        bool operator==(const ServerInfo &other) const
+        {
+            return (type == other.type && hostname == other.hostname &&
+                    port == other.port);
+        }
 
-    bool operator!=(const ServerInfo &other) const
-    {
-        return (type != other.type || hostname != other.hostname ||
-                port != other.port);
-    }
+        bool operator!=(const ServerInfo &other) const
+        {
+            return (type != other.type || hostname != other.hostname ||
+                    port != other.port);
+        }
 
-    static Type parseType(const std::string &serverType) A_WARN_UNUSED
-    {
-        if (compareStrI(serverType, "tmwathena") == 0)
-            return TMWATHENA;
-        if (compareStrI(serverType, "evol") == 0)
-            return EVOL;
+        static Type parseType(const std::string &serverType) A_WARN_UNUSED
+        {
+            if (compareStrI(serverType, "tmwathena") == 0)
+                return TMWATHENA;
+            if (compareStrI(serverType, "evol") == 0)
+                return EVOL;
 #ifdef EATHENA_SUPPORT
-        else if (compareStrI(serverType, "eathena") == 0)
-            return EATHENA;
+            else if (compareStrI(serverType, "eathena") == 0)
+                return EATHENA;
 #else
-        else if (compareStrI(serverType, "eathena") == 0)
-            return TMWATHENA;
+            else if (compareStrI(serverType, "eathena") == 0)
+                return TMWATHENA;
 #endif
-        return UNKNOWN;
-    }
+            return UNKNOWN;
+        }
 };
 
 typedef std::vector<ServerInfo> ServerInfos;

@@ -27,39 +27,39 @@
 
 class IPC final
 {
-public:
-    /**
-     * Constructor.
-     */
-    IPC();
+    public:
+        /**
+         * Constructor.
+         */
+        IPC();
 
-    A_DELETE_COPY(IPC)
+        A_DELETE_COPY(IPC)
 
-    /**
-     * Destructor.
-     */
-    ~IPC();
+        /**
+         * Destructor.
+         */
+        ~IPC();
 
-    bool init();
+        bool init();
 
-    unsigned short getPort() const A_WARN_UNUSED
-    { return mPort; }
+        unsigned short getPort() const A_WARN_UNUSED
+        { return mPort; }
 
-    static int acceptLoop(void *ptr);
+        static int acceptLoop(void *ptr);
 
-    static void start();
+        static void start();
 
-    static void stop();
+        static void stop();
 
-private:
-    void setPort(const unsigned short port)
-    { mPort = port; }
+    private:
+        void setPort(const unsigned short port)
+        { mPort = port; }
 
-    unsigned int mNumReqs;
-    TcpNet::Socket mSocket;
-    SDL_Thread *mThread;
-    unsigned short mPort;
-    bool mListen;
+        unsigned int mNumReqs;
+        TcpNet::Socket mSocket;
+        SDL_Thread *mThread;
+        unsigned short mPort;
+        bool mListen;
 };
 
 extern IPC *ipc;

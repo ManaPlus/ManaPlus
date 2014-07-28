@@ -27,40 +27,40 @@
 
 class PacketCounters final
 {
-public:
-    static void incInBytes(const int cnt);
+    public:
+        static void incInBytes(const int cnt);
 
-    static void incInPackets();
+        static void incInPackets();
 
-    static int getInBytes() A_WARN_UNUSED;
+        static int getInBytes() A_WARN_UNUSED;
 
-    static int getInPackets() A_WARN_UNUSED;
+        static int getInPackets() A_WARN_UNUSED;
 
-    static void incOutBytes(const int cnt);
+        static void incOutBytes(const int cnt);
 
-    static void incOutPackets();
+        static void incOutPackets();
 
-    static int getOutBytes() A_WARN_UNUSED;
+        static int getOutBytes() A_WARN_UNUSED;
 
-    static int getOutPackets() A_WARN_UNUSED;
+        static int getOutPackets() A_WARN_UNUSED;
 
-    static void update();
+        static void update();
 
-    static int mInCurrentSec;
-    static int mInBytes;
-    static int mInBytesCalc;
-    static int mInPackets;
-    static int mInPacketsCalc;
-    static int mOutCurrentSec;
-    static int mOutBytes;
-    static int mOutBytesCalc;
-    static int mOutPackets;
-    static int mOutPacketsCalc;
+        static int mInCurrentSec;
+        static int mInBytes;
+        static int mInBytesCalc;
+        static int mInPackets;
+        static int mInPacketsCalc;
+        static int mOutCurrentSec;
+        static int mOutBytes;
+        static int mOutBytesCalc;
+        static int mOutPackets;
+        static int mOutPacketsCalc;
 
-private:
-    static void updateCounter(int &restrict currentSec,
-                              int &restrict calc,
-                              int &restrict counter);
+    private:
+        static void updateCounter(int &restrict currentSec,
+                                  int &restrict calc,
+                                  int &restrict counter);
 };
 
 #endif  // NET_PACKETCOUNTERS_H
