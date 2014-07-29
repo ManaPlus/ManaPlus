@@ -37,8 +37,11 @@ IPC *ipc = nullptr;
 IPC::IPC() :
     mNumReqs(0),
     mSocket(nullptr),
+    mDelayedCommands(),
     mThread(nullptr),
+    mMutex(SDL_CreateMutex()),
     mPort(44007U),
+    mThreadLocked(false),
     mListen(false)
 {
 }
@@ -51,6 +54,8 @@ IPC::~IPC()
         TcpNet::closeSocket(mSocket);
         mSocket = nullptr;
     }
+    SDL_DestroyMutex(mMutex);
+    mMutex = nullptr;
     int status;
     if (mThread && SDL_GetThreadID(mThread))
         SDL_WaitThread(mThread, &status);
@@ -115,10 +120,14 @@ int IPC::acceptLoop(void *ptr)
         }
 
         std::string req(data);
-        req = trim(req);
+        trim(req);
 
-        if (chatWindow)
-            chatWindow->chatInput(req);
+        ipc1->mThreadLocked = true;
+        SDL_mutexP(ipc1->mMutex);
+        ipc1->mDelayedCommands.push_back(req);
+        SDL_mutexV(ipc1->mMutex);
+        ipc1->mThreadLocked = false;
+
         ipc1->mNumReqs ++;
         const std::string resp = strprintf("[%d] %s\n",
             ipc1->mNumReqs, req.c_str());
@@ -175,4 +184,22 @@ void IPC::start()
         }
     }
     delete2(ipc);
+}
+
+void IPC::flush()
+{
+    if (!mThreadLocked)
+    {
+        SDL_mutexP(mMutex);
+        if (chatWindow)
+        {
+            FOR_EACH (std::vector<std::string>::const_iterator, it,
+                      mDelayedCommands)
+            {
+                chatWindow->chatInput(*it);
+            }
+        }
+        mDelayedCommands.clear();
+        SDL_mutexV(mMutex);
+    }
 }

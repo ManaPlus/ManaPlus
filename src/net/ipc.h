@@ -23,6 +23,9 @@
 
 #include "net/sdltcpnet.h"
 
+#include <string>
+#include <vector>
+
 #include <SDL_thread.h>
 
 class IPC final
@@ -45,6 +48,8 @@ class IPC final
         unsigned short getPort() const A_WARN_UNUSED
         { return mPort; }
 
+        void flush();
+
         static int acceptLoop(void *ptr);
 
         static void start();
@@ -57,8 +62,11 @@ class IPC final
 
         unsigned int mNumReqs;
         TcpNet::Socket mSocket;
+        std::vector<std::string> mDelayedCommands;
         SDL_Thread *mThread;
+        SDL_mutex *mMutex;
         unsigned short mPort;
+        volatile bool mThreadLocked;
         bool mListen;
 };
 

@@ -100,6 +100,8 @@
 #include "utils/langs.h"
 #include "utils/timer.h"
 
+#include "net/ipc.h"
+
 #include "debug.h"
 
 // Guichan stuff
@@ -347,6 +349,8 @@ void Gui::slowLogic()
     if (mTime != time)
     {
         logger->flush();
+        if (ipc)
+            ipc->flush();
         mTime = time;
     }
 
