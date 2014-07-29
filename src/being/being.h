@@ -872,6 +872,7 @@ class Being notfinal : public ActorSprite,
 
         int getSortPixelY() const A_WARN_UNUSED
         { return static_cast<int>(mPos.y) - mYDiff - mSortOffsetY; }
+//        { return static_cast<int>(mPos.y) - mYDiff - mSortOffsetY + 16; }
 
         void setMap(Map *const map);
 
@@ -1008,10 +1009,12 @@ class Being notfinal : public ActorSprite,
         Being *mOwner;
         Particle *mSpecialParticle;
 
-        int mX;            // position in tiles
-        int mY;            // position in tiles
-        int mSortOffsetY;  // caculated offset in pixels based on mOffsetY
-        int mOffsetY;      // fixed tile height offset in pixels
+        int mX;             // position in tiles
+        int mY;             // position in tiles
+        int mSortOffsetY;   // caculated offset in pixels based on mOffsetY
+        int mOffsetY;       // tile height offset in pixels
+                            // calculated between tiles
+        int mFixedOffsetY;  // fixed tile height offset in pixels for tile
         uint8_t mOldHeight;
 
         int mDamageTaken;

@@ -177,6 +177,7 @@ Being::Being(const int id,
     mY(0),
     mSortOffsetY(0),
     mOffsetY(0),
+    mFixedOffsetY(0),
     mOldHeight(0),
     mDamageTaken(0),
     mHP(0),
@@ -1358,6 +1359,7 @@ void Being::nextTile()
     mY = pos.y;
     const uint8_t height = mMap->getHeightOffset(mX, mY);
     mOffsetY = height - mOldHeight;
+    mFixedOffsetY = height;
     mNeedPosUpdate = true;
     setAction(BeingAction::MOVE, 0);
 }
@@ -1436,15 +1438,22 @@ void Being::logic()
         if (!xOffset && !yOffset)
             mNeedPosUpdate = false;
 
+/*
         mSortOffsetY = (mOldHeight * mapTileSize / 2)
             + (mOffsetY * mapTileSize / 2)
-            * (mapTileSize - abs(offset)) / mapTileSize;
-        const int yOffset2 = yOffset - mSortOffsetY;
+            * (mapTileSize - abs(offset)) / mapTileSize - mFixedOffsetY * mapTileSize / 2;
+        const int yOffset2 = yOffset - mSortOffsetY - mFixedOffsetY * mapTileSize / 2;
+*/
+        const int halfTile = mapTileSize / 2;
+        const float offset2 = mOffsetY * abs(offset) / 2;
+        mSortOffsetY = (mOldHeight - mFixedOffsetY + mOffsetY)
+            * halfTile - offset2;
+        const float yOffset3 = (mY + 1) * mapTileSize + yOffset
+            - (mOldHeight + mOffsetY) * halfTile + offset2;
 
         // Update pixel coordinates
         setPosition(static_cast<float>(mX * mapTileSize
-            + mapTileSize / 2 + xOffset), static_cast<float>(
-            mY * mapTileSize + mapTileSize + yOffset2));
+            + mapTileSize / 2 + xOffset), yOffset3);
     }
 
     if (mEmotionSprite)
@@ -3313,6 +3322,7 @@ void Being::setTileCoords(const int x, const int y)
     if (mMap)
     {
         mOffsetY = mMap->getHeightOffset(mX, mY);
+        mFixedOffsetY = mOffsetY;
         mNeedPosUpdate = true;
     }
 }
@@ -3323,6 +3333,7 @@ void Being::setMap(Map *const map)
     if (mMap)
     {
         mOffsetY = mMap->getHeightOffset(mX, mY);
+        mFixedOffsetY = mOffsetY;
         mNeedPosUpdate = true;
     }
 }
