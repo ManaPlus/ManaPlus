@@ -28,11 +28,9 @@
 class GameModifiers final
 {
     public:
-        GameModifiers();
-
         A_DELETE_COPY(GameModifiers)
 
-        ~GameModifiers();
+        static void init();
 
         static void changeMode(unsigned *restrict const var,
                                const unsigned limit,

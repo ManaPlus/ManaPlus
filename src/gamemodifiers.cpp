@@ -76,7 +76,7 @@
             &GameModifiers::get##name1##String, 0, true, forward); \
     }
 
-GameModifiers::GameModifiers()
+void GameModifiers::init()
 {
     settings.crazyMoveType = config.getIntValue("crazyMoveType");
     settings.moveToTargetType = config.getIntValue("moveToTargetType");
@@ -90,10 +90,7 @@ GameModifiers::GameModifiers()
     settings.imitationMode = config.getIntValue("imitationMode");
     settings.disableGameModifiers = config.getBoolValue(
         "disableGameModifiers");
-}
-
-GameModifiers::~GameModifiers()
-{
+//    UpdateStatusListener::distributeEvent();
 }
 
 void GameModifiers::changeMode(unsigned *restrict const var,

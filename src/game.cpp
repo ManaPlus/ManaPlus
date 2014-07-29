@@ -155,6 +155,7 @@ static void initEngines()
     if (joystick)
         joystick->update();
 
+    GameModifiers::init();
     UpdateStatusListener::distributeEvent();
 }
 
