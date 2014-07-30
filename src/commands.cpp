@@ -122,9 +122,9 @@ static void outString(const ChatTab *const tab,
         }
         case ChatTabType::GUILD:
         {
-            if (!player_node)
+            if (!localPlayer)
                 return;
-            const Guild *const guild = player_node->getGuild();
+            const Guild *const guild = localPlayer->getGuild();
             if (guild)
             {
                 if (guild->getServerGuild())
@@ -207,7 +207,7 @@ static void outStringNormal(ChatTab *const tab,
                             const std::string &str,
                             const std::string &def)
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     if (!tab)
@@ -225,7 +225,7 @@ static void outStringNormal(ChatTab *const tab,
         }
         case ChatTabType::GUILD:
         {
-            const Guild *const guild = player_node->getGuild();
+            const Guild *const guild = localPlayer->getGuild();
             if (guild)
             {
                 if (guild->getServerGuild())
@@ -245,7 +245,7 @@ static void outStringNormal(ChatTab *const tab,
         {
             const WhisperTab *const whisper
                 = static_cast<const WhisperTab *const>(tab);
-            tab->chatLog(player_node->getName(), str);
+            tab->chatLog(localPlayer->getName(), str);
             Net::getChatHandler()->privateMessage(whisper->getNick(), str);
             break;
         }
@@ -320,8 +320,8 @@ impHandler2(where)
 {
     std::ostringstream where;
     where << Game::instance()->getCurrentMapName() << ", coordinates: "
-        << ((player_node->getPixelX() - mapTileSize / 2) / mapTileSize)
-        << ", " << ((player_node->getPixelY() - mapTileSize) / mapTileSize);
+        << ((localPlayer->getPixelX() - mapTileSize / 2) / mapTileSize)
+        << ", " << ((localPlayer->getPixelY() - mapTileSize) / mapTileSize);
     tab->chatLog(where.str(), ChatMsgType::BY_SERVER);
 }
 
@@ -365,7 +365,7 @@ impHandler(msg)
 
     if (msg.length() > 0)
     {
-        std::string playerName = player_node->getName();
+        std::string playerName = localPlayer->getName();
         std::string tempNick = recvnick;
 
         toLower(playerName);
@@ -670,47 +670,47 @@ impHandler1(move)
     int x = 0;
     int y = 0;
 
-    if (player_node && parse2Int(args, x, y))
-        player_node->moveTo(x, y);
+    if (localPlayer && parse2Int(args, x, y))
+        localPlayer->moveTo(x, y);
 }
 
 impHandler1(navigate)
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     int x = 0;
     int y = 0;
 
     if (parse2Int(args, x, y))
-        player_node->navigateTo(x, y);
+        localPlayer->navigateTo(x, y);
     else
-        player_node->navigateClean();
+        localPlayer->navigateClean();
 }
 
 impHandler1(target)
 {
-    if (!actorManager || !player_node)
+    if (!actorManager || !localPlayer)
         return;
 
     Being *const target = actorManager->findNearestByName(args);
     if (target)
-        player_node->setTarget(target);
+        localPlayer->setTarget(target);
 }
 
 impHandler0(attackHuman)
 {
-    if (!actorManager || !player_node)
+    if (!actorManager || !localPlayer)
         return;
 
     Being *const target = actorManager->findNearestLivingBeing(
-        player_node, 10, ActorType::PLAYER, true);
+        localPlayer, 10, ActorType::PLAYER, true);
     if (target)
     {
-        if (player_node->checAttackPermissions(target))
+        if (localPlayer->checAttackPermissions(target))
         {
-            player_node->setTarget(target);
-            player_node->attack2(target, true);
+            localPlayer->setTarget(target);
+            localPlayer->attack2(target, true);
         }
     }
 }
@@ -757,8 +757,8 @@ impHandler1(outfit)
 
 impHandler1(emote)
 {
-    if (player_node)
-        player_node->emote(static_cast<uint8_t>(atoi(args.c_str())));
+    if (localPlayer)
+        localPlayer->emote(static_cast<uint8_t>(atoi(args.c_str())));
 }
 
 impHandler1(emotePet)
@@ -769,44 +769,44 @@ impHandler1(emotePet)
 
 impHandler1(away)
 {
-    if (player_node)
-        player_node->setAway(args);
+    if (localPlayer)
+        localPlayer->setAway(args);
 }
 
 impHandler1(pseudoAway)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->setPseudoAway(args);
-        player_node->updateStatus();
+        localPlayer->setPseudoAway(args);
+        localPlayer->updateStatus();
     }
 }
 
 impHandler(follow)
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     if (!features.getBoolValue("allowFollow"))
         return;
 
     if (!args.empty())
-        player_node->setFollow(args);
+        localPlayer->setFollow(args);
     else if (tab && tab->getType() == ChatTabType::WHISPER)
-        player_node->setFollow(static_cast<WhisperTab*>(tab)->getNick());
+        localPlayer->setFollow(static_cast<WhisperTab*>(tab)->getNick());
 }
 
 impHandler(imitation)
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     if (!args.empty())
-        player_node->setImitate(args);
+        localPlayer->setImitate(args);
     else if (tab && tab->getType() == ChatTabType::WHISPER)
-        player_node->setImitate(static_cast<WhisperTab*>(tab)->getNick());
+        localPlayer->setImitate(static_cast<WhisperTab*>(tab)->getNick());
     else
-        player_node->setImitate("");
+        localPlayer->setImitate("");
 }
 
 impHandler1(heal)
@@ -823,7 +823,7 @@ impHandler1(heal)
     }
     else
     {
-        actorManager->heal(player_node);
+        actorManager->heal(localPlayer);
     }
 }
 
@@ -867,13 +867,13 @@ impHandler1(undress)
 
 impHandler1(attack)
 {
-    if (!player_node || !actorManager)
+    if (!localPlayer || !actorManager)
         return;
 
     Being *const target = actorManager->findNearestByName(args);
     if (target)
-        player_node->setTarget(target);
-    player_node->attack2(player_node->getTarget(), true);
+        localPlayer->setTarget(target);
+    localPlayer->attack2(localPlayer->getTarget(), true);
 }
 
 impHandler1(trade)
@@ -894,7 +894,7 @@ impHandler1(trade)
 
 impHandler0(dirs)
 {
-    if (!player_node || !debugChatTab)
+    if (!localPlayer || !debugChatTab)
         return;
 
     debugChatTab->chatLog("config directory: "
@@ -909,14 +909,14 @@ impHandler0(dirs)
 
 impHandler2(info)
 {
-    if (!tab || !player_node || tmwServerVersion > 0)
+    if (!tab || !localPlayer || tmwServerVersion > 0)
         return;
 
     switch (tab->getType())
     {
         case ChatTabType::GUILD:
         {
-            const Guild *const guild = player_node->getGuild();
+            const Guild *const guild = localPlayer->getGuild();
             if (guild)
                 Net::getGuildHandler()->info(guild->getId());
             break;
@@ -928,8 +928,8 @@ impHandler2(info)
 
 impHandler1(wait)
 {
-    if (player_node)
-        player_node->waitFor(args);
+    if (localPlayer)
+        localPlayer->waitFor(args);
 }
 
 impHandler0(uptime)
@@ -1259,8 +1259,8 @@ impHandler2(enableAway)
 
 impHandler1(testParticle)
 {
-    if (player_node)
-        player_node->setTestParticle(args);
+    if (localPlayer)
+        localPlayer->setTestParticle(args);
 }
 
 impHandler0(createItems)
@@ -1302,7 +1302,7 @@ impHandler1(talkRaw)
 impHandler1(talkPet)
 {
     // in future probably need add channel detection
-    if (!player_node->getPets().empty())
+    if (!localPlayer->getPets().empty())
         Net::getChatHandler()->talkPet(args, GENERAL_CHANNEL);
     else
         Net::getChatHandler()->talk(args, GENERAL_CHANNEL);
@@ -1540,16 +1540,16 @@ impHandler0(dumpOGL)
 
 void replaceVars(std::string &str)
 {
-    if (!player_node || !actorManager)
+    if (!localPlayer || !actorManager)
         return;
 
     if (str.find("<PLAYER>") != std::string::npos)
     {
-        const Being *target = player_node->getTarget();
+        const Being *target = localPlayer->getTarget();
         if (!target || target->getType() != ActorType::PLAYER)
         {
             target = actorManager->findNearestLivingBeing(
-                player_node, 20, ActorType::PLAYER, true);
+                localPlayer, 20, ActorType::PLAYER, true);
         }
         if (target)
             replaceAll(str, "<PLAYER>", target->getName());
@@ -1558,11 +1558,11 @@ void replaceVars(std::string &str)
     }
     if (str.find("<MONSTER>") != std::string::npos)
     {
-        const Being *target = player_node->getTarget();
+        const Being *target = localPlayer->getTarget();
         if (!target || target->getType() != ActorType::MONSTER)
         {
             target = actorManager->findNearestLivingBeing(
-                player_node, 20, ActorType::MONSTER, true);
+                localPlayer, 20, ActorType::MONSTER, true);
         }
         if (target)
             replaceAll(str, "<MONSTER>", target->getName());
@@ -1576,7 +1576,7 @@ void replaceVars(std::string &str)
         actorManager->getPlayerNames(names, false);
         FOR_EACH (StringVectCIter, it, names)
         {
-            if (*it != player_node->getName())
+            if (*it != localPlayer->getName())
                 newStr.append(*it).append(",");
         }
         if (newStr[newStr.size() - 1] == ',')
@@ -1591,12 +1591,12 @@ void replaceVars(std::string &str)
         StringVect names;
         std::string newStr;
         const Party *party = nullptr;
-        if (player_node->isInParty() && (party = player_node->getParty()))
+        if (localPlayer->isInParty() && (party = localPlayer->getParty()))
         {
             party->getNames(names);
             FOR_EACH (StringVectCIter, it, names)
             {
-                if (*it != player_node->getName())
+                if (*it != localPlayer->getName())
                     newStr.append(*it).append(",");
             }
             if (newStr[newStr.size() - 1] == ',')

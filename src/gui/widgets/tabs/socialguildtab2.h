@@ -74,10 +74,10 @@ class SocialGuildTab2 final : public SocialTab,
         void buildCounter(const int online0 A_UNUSED,
                           const int total0 A_UNUSED)
         {
-            if (!player_node)
+            if (!localPlayer)
                 return;
 
-            const Guild *const guild = player_node->getGuild();
+            const Guild *const guild = localPlayer->getGuild();
             if (!guild)
                 return;
 

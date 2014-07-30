@@ -177,7 +177,7 @@ static void createGuiWindows()
     chatWindow->postInit();
     tradeWindow = new TradeWindow;
     equipmentWindow = new EquipmentWindow(PlayerInfo::getEquipment(),
-        player_node);
+        localPlayer);
     equipmentWindow->postInit();
     beingEquipmentWindow = new EquipmentWindow(nullptr, nullptr, true);
     beingEquipmentWindow->postInit();
@@ -272,8 +272,8 @@ static void createGuiWindows()
         battleChatTab = nullptr;
     }
 
-    if (player_node && !gmChatTab && config.getBoolValue("enableGmTab")
-        && player_node->getGMLevel() > 0)
+    if (localPlayer && !gmChatTab && config.getBoolValue("enableGmTab")
+        && localPlayer->getGMLevel() > 0)
     {
         gmChatTab = new GmTab(chatWindow);
     }
@@ -284,8 +284,8 @@ static void createGuiWindows()
     if (setupWindow)
         setupWindow->externalUpdate();
 
-    if (player_node)
-        player_node->updateStatus();
+    if (localPlayer)
+        localPlayer->updateStatus();
 
     Net::getGeneralHandler()->gameStarted();
 }
@@ -398,7 +398,7 @@ Game::Game() :
 
     // Initialize beings
     if (actorManager)
-        actorManager->setPlayer(player_node);
+        actorManager->setPlayer(localPlayer);
 
     Net::getGameHandler()->ping(tick_time);
 
@@ -409,8 +409,8 @@ Game::Game() :
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->requestGuildInfo();
 
-    if (player_node)
-        player_node->updatePets();
+    if (localPlayer)
+        localPlayer->updatePets();
 }
 
 Game::~Game()
@@ -425,7 +425,7 @@ Game::~Game()
 
     delete2(actorManager)
     if (client->getState() != STATE_CHANGE_MAP)
-        delete2(player_node)
+        delete2(localPlayer)
     delete2(commandHandler)
     delete2(effectManager)
     delete2(particleEngine)
@@ -578,8 +578,8 @@ void Game::logic()
 void Game::slowLogic()
 {
     BLOCK_START("Game::slowLogic")
-    if (player_node)
-        player_node->slowLogic();
+    if (localPlayer)
+        localPlayer->slowLogic();
     const int time = cur_time;
     if (mTime != time)
     {
@@ -684,7 +684,7 @@ void Game::adjustPerfomance()
     {
         mNextAdjustTime = time + adjustDelay;
 
-        if (mAdjustLevel > 3 || !player_node || player_node->getHalfAway()
+        if (mAdjustLevel > 3 || !localPlayer || localPlayer->getHalfAway()
             || settings.awayMode)
         {
             return;
@@ -799,14 +799,14 @@ void Game::resetAdjustLevel()
 void Game::handleMove()
 {
     BLOCK_START("Game::handleMove")
-    if (!player_node)
+    if (!localPlayer)
     {
         BLOCK_END("Game::handleMove")
         return;
     }
 
     // Moving player around
-    if (player_node->isAlive()
+    if (localPlayer->isAlive()
         && chatWindow
         && !chatWindow->isInputFocused()
         && !InventoryWindow::isAnyInputFocused()
@@ -837,14 +837,14 @@ void Game::handleMove()
         {
             direction |= BeingDirection::UP;
             setValidSpeed();
-            player_node->cancelFollow();
+            localPlayer->cancelFollow();
         }
         else if (inputManager.isActionActive(InputAction::MOVE_DOWN) ||
                  (joystick && joystick->isDown()))
         {
             direction |= BeingDirection::DOWN;
             setValidSpeed();
-            player_node->cancelFollow();
+            localPlayer->cancelFollow();
         }
 
         if (inputManager.isActionActive(InputAction::MOVE_LEFT) ||
@@ -852,20 +852,20 @@ void Game::handleMove()
         {
             direction |= BeingDirection::LEFT;
             setValidSpeed();
-            player_node->cancelFollow();
+            localPlayer->cancelFollow();
         }
         else if (inputManager.isActionActive(InputAction::MOVE_RIGHT) ||
                  (joystick && joystick->isRight()))
         {
             direction |= BeingDirection::RIGHT;
             setValidSpeed();
-            player_node->cancelFollow();
+            localPlayer->cancelFollow();
         }
         else if (inputManager.isActionActive(InputAction::MOVE_FORWARD))
         {
-            direction = player_node->getDirection();
+            direction = localPlayer->getDirection();
             setValidSpeed();
-            player_node->cancelFollow();
+            localPlayer->cancelFollow();
         }
 
         if (!inputManager.isActionActive(InputAction::EMOTE) || direction == 0)
@@ -881,8 +881,8 @@ void Game::moveInDirection(const unsigned char direction)
 
     if (!settings.cameraMode)
     {
-        if (player_node)
-            player_node->specialMove(direction);
+        if (localPlayer)
+            localPlayer->specialMove(direction);
     }
     else
     {
@@ -982,8 +982,8 @@ void Game::changeMap(const std::string &mapPath)
 
     // Unset the map of the player so that its particles are cleared before
     // being deleted in the next step
-    if (player_node)
-        player_node->setMap(nullptr);
+    if (localPlayer)
+        localPlayer->setMap(nullptr);
 
     if (particleEngine)
         particleEngine->clear();
@@ -1051,8 +1051,8 @@ void Game::changeMap(const std::string &mapPath)
         mumbleManager->setMap(mapPath);
 #endif
 
-    if (player_node)
-        player_node->recreateItemParticles();
+    if (localPlayer)
+        localPlayer->recreateItemParticles();
 
     Net::getGameHandler()->mapLoadedEvent();
     BLOCK_END("Game::changeMap")
@@ -1060,7 +1060,7 @@ void Game::changeMap(const std::string &mapPath)
 
 void Game::updateHistory(const SDL_Event &event)
 {
-    if (!player_node || !settings.attackType)
+    if (!localPlayer || !settings.attackType)
         return;
 
     if (static_cast<int>(event.key.keysym.sym) != -1)
@@ -1117,7 +1117,7 @@ void Game::checkKeys()
     const int timeRange = 120;
     const int cntInTime = 130;
 
-    if (!player_node || !settings.attackType)
+    if (!localPlayer || !settings.attackType)
         return;
 
     const int time = cur_time;

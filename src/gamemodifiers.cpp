@@ -153,7 +153,7 @@ addModifier(MoveType, moveType, 5,
 
 void GameModifiers::changeMoveType(const bool forward)
 {
-    player_node->setMoveState(0);
+    localPlayer->setMoveState(0);
     changeMode(&settings.moveType, mMoveTypeSize, "invertMoveDirection",
         &GameModifiers::getMoveTypeString, 0, false, forward);
 }
@@ -162,7 +162,7 @@ static const unsigned mCrazyMoveTypeSize = 11;
 
 void GameModifiers::changeCrazyMoveType(const bool forward)
 {
-    player_node->setCrazyMoveState(0U);
+    localPlayer->setCrazyMoveState(0U);
     changeMode(&settings.crazyMoveType, mCrazyMoveTypeSize, "crazyMoveType",
         &GameModifiers::getCrazyMoveTypeString, 1, true, forward);
 }
@@ -398,42 +398,42 @@ addModifier(AwayMode, awayMode, 2,
 
 void GameModifiers::changeAwayMode()
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     settings.awayMode = !settings.awayMode;
-    player_node->setAfkTime(0);
-    player_node->setHalfAway(false);
-    player_node->updateName();
+    localPlayer->setAfkTime(0);
+    localPlayer->setHalfAway(false);
+    localPlayer->updateName();
     UpdateStatusListener::distributeEvent();
     if (settings.awayMode)
     {
         if (chatWindow)
             chatWindow->clearAwayLog();
 
-        player_node->cancelFollow();
-        player_node->navigateClean();
+        localPlayer->cancelFollow();
+        localPlayer->navigateClean();
         if (outfitWindow)
             outfitWindow->wearAwayOutfit();
         // TRANSLATORS: away message box header
         OkDialog *const dialog = new OkDialog(_("Away"),
             config.getStringValue("afkMessage"),
             DialogType::SILENCE, true, false);
-        player_node->setAwayDialog(dialog);
-        dialog->addActionListener(player_node->getAwayListener());
+        localPlayer->setAwayDialog(dialog);
+        dialog->addActionListener(localPlayer->getAwayListener());
         soundManager.volumeOff();
-        player_node->addAfkEffect();
+        localPlayer->addAfkEffect();
     }
     else
     {
-        player_node->setAwayDialog(nullptr);
+        localPlayer->setAwayDialog(nullptr);
         soundManager.volumeRestore();
         if (chatWindow)
         {
             chatWindow->displayAwayLog();
             chatWindow->clearAwayLog();
         }
-        player_node->removeAfkEffect();
+        localPlayer->removeAfkEffect();
     }
 }
 

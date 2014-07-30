@@ -160,11 +160,11 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
 void MapDebugTab::logic()
 {
     BLOCK_START("MapDebugTab::logic")
-    if (player_node)
+    if (localPlayer)
     {
         // TRANSLATORS: debug window label
         mXYLabel->setCaption(strprintf("%s (%d, %d)", _("Player Position:"),
-            player_node->getTileX(), player_node->getTileY()));
+            localPlayer->getTileX(), localPlayer->getTileY()));
     }
     else
     {
@@ -305,9 +305,9 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
 void TargetDebugTab::logic()
 {
     BLOCK_START("TargetDebugTab::logic")
-    if (player_node && player_node->getTarget())
+    if (localPlayer && localPlayer->getTarget())
     {
-        const Being *const target = player_node->getTarget();
+        const Being *const target = localPlayer->getTarget();
 
         // TRANSLATORS: debug window label
         mTargetLabel->setCaption(strprintf("%s %s (%d, %d)", _("Target:"),
@@ -424,11 +424,11 @@ NetDebugTab::NetDebugTab(const Widget2 *const widget) :
 void NetDebugTab::logic()
 {
     BLOCK_START("NetDebugTab::logic")
-    if (player_node)
+    if (localPlayer)
     {
         // TRANSLATORS: debug window label
         mPingLabel->setCaption(strprintf(_("Ping: %s ms"),
-            player_node->getPingTime().c_str()));
+            localPlayer->getPingTime().c_str()));
     }
     else
     {

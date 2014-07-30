@@ -242,7 +242,7 @@ void Minimap::draw(Graphics *graphics)
     BLOCK_START("Minimap::draw")
     Window::draw(graphics);
 
-    if (!userPalette || !player_node || !viewport)
+    if (!userPalette || !localPlayer || !viewport)
     {
         BLOCK_END("Minimap::draw")
         return;
@@ -268,7 +268,7 @@ void Minimap::draw(Graphics *graphics)
         const int h = rect.h;
         if (w > a.width || h > a.height)
         {
-            const Vector &p = player_node->getPosition();
+            const Vector &p = localPlayer->getPosition();
             mMapOriginX = (a.width / 2) - (p.x + static_cast<float>(
                 viewport->getCameraRelativeX()) * mWidthProportion) / 32;
 
@@ -304,7 +304,7 @@ void Minimap::draw(Graphics *graphics)
         int dotSize = 2;
         int type = UserPalette::PC;
 
-        if (being == player_node)
+        if (being == localPlayer)
         {
             type = UserPalette::SELF;
             dotSize = 3;
@@ -313,8 +313,8 @@ void Minimap::draw(Graphics *graphics)
         {
             type = UserPalette::GM;
         }
-        else if (being->getGuild() == player_node->getGuild()
-                 || being->getGuildName() == player_node->getGuildName())
+        else if (being->getGuild() == localPlayer->getGuild()
+                 || being->getGuildName() == localPlayer->getGuildName())
         {
             type = UserPalette::GUILD;
         }
@@ -357,13 +357,13 @@ void Minimap::draw(Graphics *graphics)
             + mMapOriginY - offsetHeight, dotSize, dotSize));
     }
 
-    if (player_node->isInParty())
+    if (localPlayer->isInParty())
     {
-        const Party *const party = player_node->getParty();
+        const Party *const party = localPlayer->getParty();
         if (party)
         {
             const PartyMember *const m = party->getMember(
-                player_node->getName());
+                localPlayer->getName());
             const Party::MemberList *const members = party->getMembers();
             if (m && members)
             {
@@ -401,7 +401,7 @@ void Minimap::draw(Graphics *graphics)
         }
     }
 
-    const Vector &pos = player_node->getPosition();
+    const Vector &pos = localPlayer->getPosition();
 
     const int gw = graphics->getWidth();
     const int gh = graphics->getHeight();
@@ -442,7 +442,7 @@ void Minimap::mouseReleased(MouseEvent &event)
 {
     Window::mouseReleased(event);
 
-    if (!player_node || !viewport)
+    if (!localPlayer || !viewport)
         return;
 
     if (event.getButton() == MouseButton::LEFT)
@@ -451,7 +451,7 @@ void Minimap::mouseReleased(MouseEvent &event)
         int y = event.getY();
         screenToMap(x, y);
 
-        player_node->navigateTo(x, y);
+        localPlayer->navigateTo(x, y);
     }
     else if (event.getButton() == MouseButton::RIGHT)
     {

@@ -108,7 +108,7 @@ class UsersTableModel final : public TableModel,
                     Being *const being = dynamic_cast<Being*>(*i);
 
                     if (being && being->getType() == ActorType::PLAYER
-                        && being != player_node && !being->getName().empty())
+                        && being != localPlayer && !being->getName().empty())
                     {
                         mPlayers.push_back(being);
                     }

@@ -87,8 +87,8 @@ Being *BeingHandler::createBeing(const int id, const int16_t job) const
     {
         being->updateFromCache();
         requestNameById(id);
-        if (player_node)
-            player_node->checkNewName(being);
+        if (localPlayer)
+            localPlayer->checkNewName(being);
     }
     if (type == ActorType::PLAYER)
     {
@@ -141,7 +141,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     statusEffects |= (static_cast<uint32_t>(msg.readInt16())) << 16;  // option
     const int16_t job = msg.readInt16();  // class
     int disguiseId = 0;
-    if (id == player_node->getId() && job >= 1000)
+    if (id == localPlayer->getId() && job >= 1000)
         disguiseId = job;
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -212,8 +212,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
     const uint8_t hairStyle = msg.readUInt8();
     const uint8_t look = msg.readUInt8();
     dstBeing->setSubtype(job, look);
-    if (dstBeing->getType() == ActorType::MONSTER && player_node)
-        player_node->checkNewName(dstBeing);
+    if (dstBeing->getType() == ActorType::MONSTER && localPlayer)
+        localPlayer->checkNewName(dstBeing);
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
     const uint16_t weapon = msg.readInt16();
     const uint16_t headBottom = msg.readInt16();
@@ -412,7 +412,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
 void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processBeingRemove")
-    if (!actorManager || !player_node)
+    if (!actorManager || !localPlayer)
     {
         BLOCK_END("BeingHandler::processBeingRemove")
         return;
@@ -428,12 +428,12 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
         return;
     }
 
-    player_node->followMoveTo(dstBeing, player_node->getNextDestX(),
-        player_node->getNextDestY());
+    localPlayer->followMoveTo(dstBeing, localPlayer->getNextDestX(),
+        localPlayer->getNextDestY());
 
     // If this is player's current target, clear it.
-    if (dstBeing == player_node->getTarget())
-        player_node->stopAttack(true);
+    if (dstBeing == localPlayer->getTarget())
+        localPlayer->stopAttack(true);
 
     if (msg.readUInt8() == 1U)
     {
@@ -462,7 +462,7 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
 void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processBeingResurrect")
-    if (!actorManager || !player_node)
+    if (!actorManager || !localPlayer)
     {
         BLOCK_END("BeingHandler::processBeingResurrect")
         return;
@@ -479,8 +479,8 @@ void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
     }
 
     // If this is player's current target, clear it.
-    if (dstBeing == player_node->getTarget())
-        player_node->stopAttack();
+    if (dstBeing == localPlayer->getTarget())
+        localPlayer->stopAttack();
 
     if (msg.readUInt8() == 1U)
         dstBeing->setAction(BeingAction::STAND, 0);
@@ -569,8 +569,8 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
                 if (srcBeing->getType() == ActorType::PLAYER)
                 {
                     srcBeing->setMoveTime();
-                    if (player_node)
-                        player_node->imitateAction(srcBeing, BeingAction::SIT);
+                    if (localPlayer)
+                        localPlayer->imitateAction(srcBeing, BeingAction::SIT);
                 }
             }
             break;
@@ -582,9 +582,9 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
                 if (srcBeing->getType() == ActorType::PLAYER)
                 {
                     srcBeing->setMoveTime();
-                    if (player_node)
+                    if (localPlayer)
                     {
-                        player_node->imitateAction(srcBeing,
+                        localPlayer->imitateAction(srcBeing,
                             BeingAction::STAND);
                     }
                 }
@@ -636,7 +636,7 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg) const
 void BeingHandler::processBeingEmotion(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processBeingEmotion")
-    if (!player_node || !actorManager)
+    if (!localPlayer || !actorManager)
     {
         BLOCK_END("BeingHandler::processBeingEmotion")
         return;
@@ -655,7 +655,7 @@ void BeingHandler::processBeingEmotion(Net::MessageIn &msg) const
         if (emote)
         {
             dstBeing->setEmote(emote, 0);
-            player_node->imitateEmote(dstBeing, emote);
+            localPlayer->imitateEmote(dstBeing, emote);
         }
     }
     if (dstBeing->getType() == ActorType::PLAYER)
@@ -666,7 +666,7 @@ void BeingHandler::processBeingEmotion(Net::MessageIn &msg) const
 void BeingHandler::processNameResponse(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processNameResponse")
-    if (!player_node || !actorManager)
+    if (!localPlayer || !actorManager)
     {
         BLOCK_END("BeingHandler::processNameResponse")
         return;
@@ -677,9 +677,9 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg) const
 
     if (dstBeing)
     {
-        if (beingId == player_node->getId())
+        if (beingId == localPlayer->getId())
         {
-            player_node->pingResponse();
+            localPlayer->pingResponse();
         }
         else
         {
@@ -690,9 +690,9 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg) const
             if (dstBeing->getType() == ActorType::PLAYER)
                 dstBeing->updateColors();
 
-            if (player_node)
+            if (localPlayer)
             {
-                const Party *const party = player_node->getParty();
+                const Party *const party = localPlayer->getParty();
                 if (party && party->isMember(dstBeing->getId()))
                 {
                     PartyMember *const member = party->getMember(
@@ -701,7 +701,7 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg) const
                     if (member)
                         member->setName(dstBeing->getName());
                 }
-                player_node->checkNewName(dstBeing);
+                localPlayer->checkNewName(dstBeing);
             }
         }
     }
@@ -773,15 +773,15 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg) const
 
     const uint8_t dir = static_cast<uint8_t>(msg.readUInt8() & 0x0FU);
     dstBeing->setDirection(dir);
-    if (player_node)
-        player_node->imitateDirection(dstBeing, dir);
+    if (localPlayer)
+        localPlayer->imitateDirection(dstBeing, dir);
     BLOCK_END("BeingHandler::processBeingChangeDirection")
 }
 
 void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processPlayerStop")
-    if (!actorManager || !player_node)
+    if (!actorManager || !localPlayer)
     {
         BLOCK_END("BeingHandler::processPlayerStop")
         return;
@@ -789,7 +789,7 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
 
     const int id = msg.readInt32();
 
-    if (mSync || id != player_node->getId())
+    if (mSync || id != localPlayer->getId())
     {
         Being *const dstBeing = actorManager->findBeing(id);
         if (dstBeing)
@@ -814,8 +814,8 @@ void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg A_UNUSED)
       * a target (out of range, obstruction in line of fire).
       * We can safely ignore this...
       */
-    if (player_node)
-        player_node->fixAttackTarget();
+    if (localPlayer)
+        localPlayer->fixAttackTarget();
     BLOCK_END("BeingHandler::processPlayerStop")
 }
 

@@ -97,7 +97,7 @@ AvatarListBox::~AvatarListBox()
 void AvatarListBox::draw(Graphics *graphics)
 {
     BLOCK_START("AvatarListBox::draw")
-    if (!mListModel || !player_node)
+    if (!mListModel || !localPlayer)
     {
         BLOCK_END("AvatarListBox::draw")
         return;
@@ -113,7 +113,7 @@ void AvatarListBox::draw(Graphics *graphics)
 
     Font *const font = getFont();
     const int fontHeight = getFont()->getHeight();
-    const std::string &name = player_node->getName();
+    const std::string &name = localPlayer->getName();
 
     // Draw the list elements
     graphics->setColorAll(mForegroundColor, mForegroundColor2);
@@ -335,7 +335,7 @@ void AvatarListBox::draw(Graphics *graphics)
 
 void AvatarListBox::mousePressed(MouseEvent &event)
 {
-    if (!actorManager || !player_node || !viewport
+    if (!actorManager || !localPlayer || !viewport
         || !getFont()->getHeight())
     {
         return;
@@ -369,7 +369,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
         }
         else
         {
-            player_node->navigateTo(ava->getX(), ava->getY());
+            localPlayer->navigateTo(ava->getX(), ava->getY());
         }
     }
     else if (eventButton == MouseButton::RIGHT)

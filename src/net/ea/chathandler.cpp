@@ -401,10 +401,10 @@ void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
 
         trim(chatMsg);
 
-        if (player_node)
+        if (localPlayer)
         {
             if ((chatWindow || mShowMotd) && allow)
-                player_node->setSpeech(chatMsg, channel);
+                localPlayer->setSpeech(chatMsg, channel);
         }
     }
     else if (localChatTab)

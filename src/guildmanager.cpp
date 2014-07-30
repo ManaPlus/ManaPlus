@@ -122,11 +122,11 @@ void GuildManager::send(const std::string &msg)
 
 void GuildManager::chat(const std::string &msg)
 {
-    if (!player_node || !mTab)
+    if (!localPlayer || !mTab)
         return;
 
     Net::getChatHandler()->privateMessage("guild", msg);
-    mTab->chatLog(player_node->getName(), msg);
+    mTab->chatLog(localPlayer->getName(), msg);
 }
 
 void GuildManager::getNames(StringVect &names) const
@@ -201,7 +201,7 @@ void GuildManager::updateList()
                         m->setPos(10);
                     else
                         m->setPos(0);
-                    if (player_node && name == player_node->getName())
+                    if (localPlayer && name == localPlayer->getName())
                     {
                         mHavePower = (status & 2);
                         m->setOnline(true);
@@ -233,8 +233,8 @@ void GuildManager::createTab(Guild *const guild)
         mTab = new GuildChatTab(chatWindow);
         if (config.getBoolValue("showChatHistory"))
             mTab->loadFromLogFile("#Guild");
-        if (player_node)
-            player_node->addGuild(guild);
+        if (localPlayer)
+            localPlayer->addGuild(guild);
     }
 }
 
@@ -317,8 +317,8 @@ bool GuildManager::process(std::string msg)
             return false;
         msg = msg.substr(0, pos);
         guild->setName(msg);
-        if (player_node)
-            player_node->setGuildName(msg);
+        if (localPlayer)
+            localPlayer->setGuildName(msg);
         mGotName = true;
         mSentNameRequest = false;
         mRequest = false;
@@ -356,8 +356,8 @@ bool GuildManager::process(std::string msg)
 //        logger->log("guild name: %s", msg.c_str());
 
         guild->setName(msg);
-        if (player_node)
-            player_node->setGuildName(msg);
+        if (localPlayer)
+            localPlayer->setGuildName(msg);
         mGotName = true;
         mSentNameRequest = false;
         mRequest = false;
@@ -517,10 +517,10 @@ bool GuildManager::afterRemove()
         return false;
     guild->removeFromMembers();
     guild->clearMembers();
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->setGuildName("");
-        player_node->clearGuilds();
+        localPlayer->setGuildName("");
+        localPlayer->clearGuilds();
     }
     NotifyManager::notify(NotifyTypes::GUILD_LEFT);
     delete2(mTab);

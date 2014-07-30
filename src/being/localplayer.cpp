@@ -99,7 +99,7 @@ static const int MAX_TICK_VALUE = INT_MAX / 2;
 
 typedef std::map<int, Guild*>::const_iterator GuildMapCIter;
 
-LocalPlayer *player_node = nullptr;
+LocalPlayer *localPlayer = nullptr;
 
 class SkillDialog;
 

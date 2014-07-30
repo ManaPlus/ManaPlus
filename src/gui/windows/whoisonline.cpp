@@ -194,7 +194,7 @@ void WhoIsOnline::handleLink(const std::string& link, MouseEvent *event)
     }
     else if (event->getButton() == MouseButton::RIGHT)
     {
-        if (player_node && link == player_node->getName())
+        if (localPlayer && link == localPlayer->getName())
             return;
 
         if (viewport)
@@ -751,17 +751,17 @@ void WhoIsOnline::setNeutralColor(OnlinePlayer *const player)
     if (!player)
         return;
 
-    if (actorManager && player_node)
+    if (actorManager && localPlayer)
     {
         const std::string &nick = player->getNick();
-        if (nick == player_node->getName())
+        if (nick == localPlayer->getName())
         {
             player->setText("s");
             return;
         }
-        if (player_node->isInParty())
+        if (localPlayer->isInParty())
         {
-            const Party *const party = player_node->getParty();
+            const Party *const party = localPlayer->getParty();
             if (party)
             {
                 if (party->getMember(nick))
@@ -775,7 +775,7 @@ void WhoIsOnline::setNeutralColor(OnlinePlayer *const player)
         const Being *const being = actorManager->findBeingByName(nick);
         if (being)
         {
-            const Guild *const guild2 = player_node->getGuild();
+            const Guild *const guild2 = localPlayer->getGuild();
             if (guild2)
             {
                 const Guild *const guild1 = being->getGuild();

@@ -127,15 +127,15 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg) const
         guildTab = new GuildTab(chatWindow);
         if (config.getBoolValue("showChatHistory"))
             guildTab->loadFromLogFile("#Guild");
-        if (player_node)
-            player_node->addGuild(taGuild);
+        if (localPlayer)
+            localPlayer->addGuild(taGuild);
         memberList(guildId);
     }
 
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->setGuild(g);
-        player_node->setGuildName(g->getName());
+        localPlayer->setGuild(g);
+        localPlayer->setGuildName(g->getName());
     }
 
     logger->log("Guild position info: %d %d %d %s\n", guildId,
@@ -457,10 +457,10 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg) const
     if (taGuild)
         taGuild->removeMember(nick);
 
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    if (nick == player_node->getName())
+    if (nick == localPlayer->getName())
     {
         if (taGuild)
         {
@@ -500,10 +500,10 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
     if (taGuild)
         taGuild->removeMember(nick);
 
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    if (nick == player_node->getName())
+    if (nick == localPlayer->getName())
     {
         if (taGuild)
         {

@@ -1334,15 +1334,15 @@ int Client::gameExec()
 
                 case STATE_GAME:
                     BLOCK_START("Client::gameExec STATE_GAME")
-                    if (player_node)
+                    if (localPlayer)
                     {
                         logger->log("Memorizing selected character %s",
-                            player_node->getName().c_str());
+                            localPlayer->getName().c_str());
                         serverConfig.setValue("lastCharacter",
-                            player_node->getName());
+                            localPlayer->getName());
 #ifdef USE_MUMBLE
                         if (mumbleManager)
-                            mumbleManager->setPlayer(player_node->getName());
+                            mumbleManager->setPlayer(localPlayer->getName());
 #endif
                     }
 

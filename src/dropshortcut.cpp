@@ -93,7 +93,7 @@ void DropShortcut::save() const
 
 void DropShortcut::dropFirst() const
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     if (!PacketLimiter::limitPackets(PACKET_DROP))
@@ -111,7 +111,7 @@ void DropShortcut::dropFirst() const
         if (item && item->getQuantity())
         {
             const int cnt = settings.quickDropCounter;
-            if (player_node->isServerBuggy())
+            if (localPlayer->isServerBuggy())
             {
                 PlayerInfo::dropItem(item, cnt, true);
             }
@@ -126,10 +126,10 @@ void DropShortcut::dropFirst() const
 
 void DropShortcut::dropItems(const int cnt)
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    if (player_node->isServerBuggy())
+    if (localPlayer->isServerBuggy())
     {
         dropItem(settings.quickDropCounter);
         return;

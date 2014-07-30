@@ -522,7 +522,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
         if (type == CRITICAL)
             attacker->setCriticalHit(amount);
 
-        if (attacker == player_node)
+        if (attacker == localPlayer)
         {
             color = &userPalette->getColor(
                 UserPalette::HIT_LOCAL_PLAYER_CRITICAL);
@@ -534,7 +534,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
     }
     else if (!amount)
     {
-        if (attacker == player_node)
+        if (attacker == localPlayer)
         {
             // This is intended to be the wrong direction to visually
             // differentiate between hits and misses
@@ -547,7 +547,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
     }
     else if (mType == ActorType::MONSTER)
     {
-        if (attacker == player_node)
+        if (attacker == localPlayer)
         {
             color = &userPalette->getColor(
                 UserPalette::HIT_LOCAL_PLAYER_MONSTER);
@@ -558,8 +558,8 @@ void Being::takeDamage(Being *const attacker, const int amount,
                 UserPalette::HIT_PLAYER_MONSTER);
         }
     }
-    else if (mType == ActorType::PLAYER && attacker != player_node
-             && this == player_node)
+    else if (mType == ActorType::PLAYER && attacker != localPlayer
+             && this == localPlayer)
     {
         // here player was attacked by other player. mark him as enemy.
         color = &userPalette->getColor(UserPalette::HIT_PLAYER_PLAYER);
@@ -573,7 +573,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
 
     if (chatWindow && mShowBattleEvents)
     {
-        if (this == player_node)
+        if (this == localPlayer)
         {
             if (attacker->mType == ActorType::PLAYER || amount)
             {
@@ -582,7 +582,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
                     ChatMsgType::BY_OTHER);
             }
         }
-        else if (attacker == player_node && amount)
+        else if (attacker == localPlayer && amount)
         {
             chatWindow->battleChatLog(strprintf("%s : You hit %s -%d",
                 attacker->getName().c_str(), getName().c_str(), amount),
@@ -601,8 +601,8 @@ void Being::takeDamage(Being *const attacker, const int amount,
 
     if (amount > 0)
     {
-        if (player_node && player_node == this)
-            player_node->setLastHitFrom(attacker->getName());
+        if (localPlayer && localPlayer == this)
+            localPlayer->setLastHitFrom(attacker->getName());
 
         mDamageTaken += amount;
         if (mInfo)
@@ -734,7 +734,7 @@ void Being::handleAttack(Being *const victim, const int damage,
     if (!victim || !mInfo)
         return;
 
-    if (this != player_node)
+    if (this != localPlayer)
         setAction(BeingAction::ATTACK, attackId);
 
     mLastAttackX = victim->getTileX();
@@ -748,7 +748,7 @@ void Being::handleAttack(Being *const victim, const int damage,
     reset();
     mActionTime = tick_time;
 
-    if (this != player_node)
+    if (this != localPlayer)
     {
         const uint8_t dir = calcDirection(victim->getTileX(),
             victim->getTileY());
@@ -790,7 +790,7 @@ void Being::handleSkill(Being *const victim, const int damage,
     if (!victim || !mInfo || !skillDialog)
         return;
 
-    if (this != player_node)
+    if (this != localPlayer)
         setAction(BeingAction::ATTACK, 1);
 
     const SkillInfo *const skill = skillDialog->getSkill(skillId);
@@ -802,7 +802,7 @@ void Being::handleSkill(Being *const victim, const int damage,
     reset();
     mActionTime = tick_time;
 
-    if (this != player_node)
+    if (this != localPlayer)
     {
         const uint8_t dir = calcDirection(victim->getTileX(),
             victim->getTileY());
@@ -873,13 +873,13 @@ void Being::addGuild(Guild *const guild)
 
     mGuilds[guild->getId()] = guild;
 
-    if (this == player_node && socialWindow)
+    if (this == localPlayer && socialWindow)
         socialWindow->addTab(guild);
 }
 
 void Being::removeGuild(const int id)
 {
-    if (this == player_node && socialWindow)
+    if (this == localPlayer && socialWindow)
         socialWindow->removeTab(mGuilds[id]);
 
     if (mGuilds[id])
@@ -925,7 +925,7 @@ void Being::clearGuilds()
 
         if (guild)
         {
-            if (this == player_node && socialWindow)
+            if (this == localPlayer && socialWindow)
                 socialWindow->removeTab(guild);
 
             guild->removeMember(mId);
@@ -951,7 +951,7 @@ void Being::setParty(Party *const party)
 
     updateColors();
 
-    if (this == player_node && socialWindow)
+    if (this == localPlayer && socialWindow)
     {
         if (old)
             socialWindow->removeTab(old);
@@ -963,10 +963,10 @@ void Being::setParty(Party *const party)
 
 void Being::updateGuild()
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    Guild *const guild = player_node->getGuild();
+    Guild *const guild = localPlayer->getGuild();
     if (!guild)
     {
         clearGuilds();
@@ -996,7 +996,7 @@ void Being::setGuild(Guild *const guild)
 
     updateColors();
 
-    if (this == player_node && socialWindow)
+    if (this == localPlayer && socialWindow)
     {
         if (old)
             socialWindow->removeTab(old);
@@ -1420,7 +1420,7 @@ void Being::logic()
                     / mAttackSpeed;
             }
 
-            if (this == player_node && curFrame >= frameCount)
+            if (this == localPlayer && curFrame >= frameCount)
                 nextTile();
 
             break;
@@ -1865,7 +1865,7 @@ void Being::showName()
     }
 
     Font *font = nullptr;
-    if (player_node && player_node->getTarget() == this
+    if (localPlayer && localPlayer->getTarget() == this
         && mType != ActorType::MONSTER)
     {
         font = boldFont;
@@ -1906,7 +1906,7 @@ void Being::updateColors()
             mNameColor = &userPalette->getColor(UserPalette::NPC);
             mTextColor = &userPalette->getColor(UserPalette::NPC);
         }
-        else if (this == player_node)
+        else if (this == localPlayer)
         {
             mNameColor = &userPalette->getColor(UserPalette::SELF);
             mTextColor = &theme->getColor(Theme::PLAYER, 255);
@@ -1929,13 +1929,13 @@ void Being::updateColors()
             {
                 mNameColor = &userPalette->getColor(UserPalette::MONSTER);
             }
-            else if (mParty && player_node
-                     && mParty == player_node->getParty())
+            else if (mParty && localPlayer
+                     && mParty == localPlayer->getParty())
             {
                 mNameColor = &userPalette->getColor(UserPalette::PARTY);
             }
-            else if (player_node && getGuild()
-                     && getGuild() == player_node->getGuild())
+            else if (localPlayer && getGuild()
+                     && getGuild() == localPlayer->getGuild())
             {
                 mNameColor = &userPalette->getColor(UserPalette::GUILD);
             }
@@ -2220,7 +2220,7 @@ bool Being::updateFromCache()
 
 void Being::addToCache() const
 {
-    if (player_node == this)
+    if (localPlayer == this)
         return;
 
     BeingCacheEntry *entry = Being::getCacheEntry(getId());
@@ -2410,7 +2410,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
             2 * attackRange + mapTileSize, 2 * attackRange + mapTileSize));
     }
 
-    if (mShowMobHP && mInfo && player_node && player_node->getTarget() == this
+    if (mShowMobHP && mInfo && localPlayer && localPlayer->getTarget() == this
         && mType == ActorType::MONSTER)
     {
         // show hp bar here
@@ -2426,7 +2426,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
     }
     if (mShowOwnHP
         && mInfo
-        && player_node == this
+        && localPlayer == this
         && mAction != BeingAction::DEAD)
     {
         drawHpBar(graphics, PlayerInfo::getAttribute(Attributes::MAX_HP),
@@ -2469,7 +2469,7 @@ void Being::drawHpBar(Graphics *const graphics, const int maxHP, const int hp,
 
     if (serverVersion < 1)
     {   // old servers
-        if ((!damage && (this != player_node || hp == maxHP))
+        if ((!damage && (this != localPlayer || hp == maxHP))
             || (!hp && maxHP == damage))
         {
             graphics->setColor(userPalette->getColorWithAlpha(color1));

@@ -131,7 +131,7 @@ void SpellManager::useItem(const int itemId) const
 
 void SpellManager::invoke(const int spellId) const
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     const TextCommand *const spell = getSpell(spellId);
@@ -149,7 +149,7 @@ void SpellManager::invoke(const int spellId) const
         spell->getSchool())) >= static_cast<signed>(spell->getSchoolLvl())
         && PlayerInfo::getAttribute(Attributes::MP) >= spell->getMana()))
     {
-        const Being *const target = player_node->getTarget();
+        const Being *const target = localPlayer->getTarget();
         if (spell->getTargetType() == NOTARGET)
         {
             invokeSpell(spell);
@@ -186,7 +186,7 @@ void SpellManager::invokeSpell(const TextCommand *const spell,
 std::string SpellManager::parseCommand(std::string command,
                                        const Being *const target)
 {
-    if (!player_node)
+    if (!localPlayer)
         return command;
 
     std::string name;
@@ -201,7 +201,7 @@ std::string SpellManager::parseCommand(std::string command,
     }
     else
     {
-        name2 = player_node->getName();
+        name2 = localPlayer->getName();
     }
 
     bool found = false;

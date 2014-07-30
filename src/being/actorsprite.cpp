@@ -83,8 +83,8 @@ ActorSprite::~ActorSprite()
 
     mUsedTargetCursor = nullptr;
 
-    if (player_node && player_node->getTarget() == this)
-        player_node->setTarget(nullptr);
+    if (localPlayer && localPlayer->getTarget() == this)
+        localPlayer->setTarget(nullptr);
 
     // Notify listeners of the destruction.
     FOR_EACH (ActorSpriteListenerIterator, iter, mActorSpriteListeners)

@@ -314,7 +314,7 @@ void Map::update(const int ticks)
 
 void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     BLOCK_START("Map::draw")
@@ -1218,7 +1218,7 @@ void Map::setPvpMode(const int mode)
     else
         mPvp |= mode;
 
-    if (mPvp != oldMode && player_node)
+    if (mPvp != oldMode && localPlayer)
     {
         switch (mPvp)
         {

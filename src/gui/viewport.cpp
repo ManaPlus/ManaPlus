@@ -130,7 +130,7 @@ void Viewport::draw(Graphics *graphics)
     BLOCK_START("Viewport::draw 1")
     static int lastTick = tick_time;
 
-    if (!mMap || !player_node)
+    if (!mMap || !localPlayer)
     {
         graphics->setColor(Color(64, 64, 64));
         graphics->fillRectangle(
@@ -147,7 +147,7 @@ void Viewport::draw(Graphics *graphics)
     const int midTileX = (graphics->mWidth + mScrollCenterOffsetX) / 2;
     const int midTileY = (graphics->mHeight + mScrollCenterOffsetY) / 2;
 
-    const Vector &playerPos = player_node->getPosition();
+    const Vector &playerPos = localPlayer->getPosition();
     const int player_x = static_cast<int>(playerPos.x)
                          - midTileX + mCameraRelativeX;
     const int player_y = static_cast<int>(playerPos.y)
@@ -206,10 +206,10 @@ void Viewport::draw(Graphics *graphics)
             {
                 logger->log("incorrect player position: %d, %d, %d, %d",
                     player_x, player_y, mPixelViewX, mPixelViewY);
-                if (player_node)
+                if (localPlayer)
                 {
                     logger->log("tile position: %d, %d",
-                        player_node->getTileX(), player_node->getTileY());
+                        localPlayer->getTileX(), localPlayer->getTileY());
                 }
             }
             mPixelViewX = player_x;
@@ -252,10 +252,10 @@ void Viewport::draw(Graphics *graphics)
             drawDebugPath(graphics);
     }
 
-    if (player_node->getCheckNameSetting())
+    if (localPlayer->getCheckNameSetting())
     {
-        player_node->setCheckNameSetting(false);
-        player_node->setName(player_node->getName());
+        localPlayer->setCheckNameSetting(false);
+        localPlayer->setName(localPlayer->getName());
     }
 
     // Draw text
@@ -312,7 +312,7 @@ void Viewport::followMouse()
 
 void Viewport::drawDebugPath(Graphics *const graphics)
 {
-    if (!player_node || !userPalette || !actorManager || !mMap || !gui)
+    if (!localPlayer || !userPalette || !actorManager || !mMap || !gui)
         return;
 
     Gui::getMouseState(&mMouseX, &mMouseY);
@@ -326,13 +326,13 @@ void Viewport::drawDebugPath(Graphics *const graphics)
     if (mouseDestination.x != lastMouseDestination.x
         || mouseDestination.y != lastMouseDestination.y)
     {
-        const Vector &playerPos = player_node->getPosition();
+        const Vector &playerPos = localPlayer->getPosition();
 
         debugPath = mMap->findPath(
             static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
             static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
             mousePosX / mapTileSize, mousePosY / mapTileSize,
-            player_node->getWalkMask(),
+            localPlayer->getWalkMask(),
             500);
         lastMouseDestination = mouseDestination;
     }
@@ -343,7 +343,7 @@ void Viewport::drawDebugPath(Graphics *const graphics)
     FOR_EACH (ActorSpritesConstIterator, it, actors)
     {
         const Being *const being = dynamic_cast<const Being*>(*it);
-        if (being && being != player_node)
+        if (being && being != localPlayer)
         {
             const Path &beingPath = being->getPath();
             drawPath(graphics, beingPath, userPalette->getColorWithAlpha(
@@ -443,23 +443,23 @@ bool Viewport::leftMouseAction()
                 validateSpeed();
                 if (actorManager)
                 {
-                    if (player_node != mHoverBeing || mSelfMouseHeal)
+                    if (localPlayer != mHoverBeing || mSelfMouseHeal)
                         actorManager->heal(mHoverBeing);
-                    if (player_node == mHoverBeing && mHoverItem)
-                        player_node->pickUp(mHoverItem);
+                    if (localPlayer == mHoverBeing && mHoverItem)
+                        localPlayer->pickUp(mHoverItem);
                     return true;
                 }
             }
             else if (type == ActorType::MONSTER || type == ActorType::NPC)
             {
-                if (player_node->withinAttackRange(mHoverBeing) ||
+                if (localPlayer->withinAttackRange(mHoverBeing) ||
                     inputManager.isActionActive(static_cast<int>(
                     InputAction::ATTACK)))
                 {
                     validateSpeed();
-                    if (!mStatsReUpdated && player_node != mHoverBeing)
+                    if (!mStatsReUpdated && localPlayer != mHoverBeing)
                     {
-                        player_node->attack(mHoverBeing,
+                        localPlayer->attack(mHoverBeing,
                             !inputManager.isActionActive(
                             static_cast<int>(InputAction::STOP_ATTACK)));
                         return true;
@@ -469,9 +469,9 @@ bool Viewport::leftMouseAction()
                          InputAction::ATTACK)))
                 {
                     validateSpeed();
-                    if (!mStatsReUpdated && player_node != mHoverBeing)
+                    if (!mStatsReUpdated && localPlayer != mHoverBeing)
                     {
-                        player_node->setGotoTarget(mHoverBeing);
+                        localPlayer->setGotoTarget(mHoverBeing);
                         return true;
                     }
                 }
@@ -482,15 +482,15 @@ bool Viewport::leftMouseAction()
     if (mHoverItem)
     {
         validateSpeed();
-        player_node->pickUp(mHoverItem);
+        localPlayer->pickUp(mHoverItem);
     }
     // Just walk around
     else if (!inputManager.isActionActive(static_cast<int>(
              InputAction::ATTACK)))
     {
         validateSpeed();
-        player_node->stopAttack();
-        player_node->cancelFollow();
+        localPlayer->stopAttack();
+        localPlayer->cancelFollow();
         mPlayerFollowMouse = true;
 
         // Make the player go to the mouse position
@@ -506,7 +506,7 @@ void Viewport::mousePressed(MouseEvent &event)
 
     mMouseClicked = true;
     // Check if we are alive and kickin'
-    if (!mMap || !player_node)
+    if (!mMap || !localPlayer)
         return;
 
     // Check if we are busy
@@ -555,14 +555,14 @@ void Viewport::mousePressed(MouseEvent &event)
                 pixelX, pixelY, 20, ActorType::MONSTER, nullptr);
 
             if (target)
-                player_node->setTarget(target);
+                localPlayer->setTarget(target);
         }
     }
 }
 
 void Viewport::walkByMouse(const MouseEvent &event)
 {
-    if (!mMap || !player_node)
+    if (!mMap || !localPlayer)
         return;
     if (mPlayerFollowMouse
         && !inputManager.isActionActive(InputAction::STOP_ATTACK)
@@ -570,12 +570,12 @@ void Viewport::walkByMouse(const MouseEvent &event)
     {
         if (!mMouseDirectionMove)
             mPlayerFollowMouse = false;
-        if (mLocalWalkTime != player_node->getActionTime())
+        if (mLocalWalkTime != localPlayer->getActionTime())
         {
             mLocalWalkTime = cur_time;
-            player_node->unSetPickUpTarget();
-            int playerX = player_node->getTileX();
-            int playerY = player_node->getTileY();
+            localPlayer->unSetPickUpTarget();
+            int playerX = localPlayer->getTileX();
+            int playerY = localPlayer->getTileY();
             if (mMouseDirectionMove)
             {
                 const int width = mainGraphics->mWidth / 2;
@@ -615,7 +615,7 @@ void Viewport::walkByMouse(const MouseEvent &event)
 
                 if (mMap->getWalk(playerX + dx, playerY + dy))
                 {
-                    player_node->navigateTo(playerX + dx, playerY + dy);
+                    localPlayer->navigateTo(playerX + dx, playerY + dy);
                 }
                 else
                 {
@@ -655,7 +655,7 @@ void Viewport::walkByMouse(const MouseEvent &event)
                                 dy = -1;
                         }
                     }
-                    player_node->navigateTo(playerX + dx, playerY + dy);
+                    localPlayer->navigateTo(playerX + dx, playerY + dy);
                 }
             }
             else
@@ -666,7 +666,7 @@ void Viewport::walkByMouse(const MouseEvent &event)
                     / static_cast<float>(mMap->getTileHeight()));
                 if (playerX != destX || playerY != destY)
                 {
-                    if (!player_node->navigateTo(destX, destY))
+                    if (!localPlayer->navigateTo(destX, destY))
                     {
                         if (playerX > destX)
                             playerX --;
@@ -677,7 +677,7 @@ void Viewport::walkByMouse(const MouseEvent &event)
                         else if (playerY < destY)
                             playerY ++;
                         if (mMap->getWalk(playerX, playerY, 0))
-                            player_node->navigateTo(playerX, playerY);
+                            localPlayer->navigateTo(playerX, playerY);
                     }
                 }
             }
@@ -900,7 +900,7 @@ void Viewport::optionChanged(const std::string &name)
 void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
 {
     // Check if we are on the map
-    if (!mMap || !player_node || !actorManager)
+    if (!mMap || !localPlayer || !actorManager)
         return;
 
     if (mMouseDirectionMove)
@@ -1060,14 +1060,14 @@ bool Viewport::isPopupMenuVisible() const
 void Viewport::moveCameraToActor(const int actorId,
                                  const int x, const int y)
 {
-    if (!player_node || !actorManager)
+    if (!localPlayer || !actorManager)
         return;
 
     const Actor *const actor = actorManager->findBeing(actorId);
     if (!actor)
         return;
     const Vector &actorPos = actor->getPosition();
-    const Vector &playerPos = player_node->getPosition();
+    const Vector &playerPos = localPlayer->getPosition();
     settings.cameraMode = 1;
     mCameraRelativeX = static_cast<int>(actorPos.x - playerPos.x) + x;
     mCameraRelativeY = static_cast<int>(actorPos.y - playerPos.y) + y;
@@ -1075,10 +1075,10 @@ void Viewport::moveCameraToActor(const int actorId,
 
 void Viewport::moveCameraToPosition(const int x, const int y)
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    const Vector &playerPos = player_node->getPosition();
+    const Vector &playerPos = localPlayer->getPosition();
     settings.cameraMode = 1;
 
     mCameraRelativeX = x - static_cast<int>(playerPos.x);

@@ -335,8 +335,8 @@ void PlayerRelationsManager::setRelation(const std::string &player_name,
                                          const PlayerRelation::Relation
                                          relation)
 {
-    if (!player_node || (relation != PlayerRelation::NEUTRAL
-        && player_node->getName() == player_name))
+    if (!localPlayer || (relation != PlayerRelation::NEUTRAL
+        && localPlayer->getName() == player_name))
     {
         return;
     }

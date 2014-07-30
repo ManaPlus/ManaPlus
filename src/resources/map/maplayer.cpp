@@ -94,7 +94,7 @@ void MapLayer::draw(Graphics *const graphics,
                     const int scrollX, const int scrollY,
                     const int layerDrawFlags) const
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     BLOCK_START("MapLayer::draw")
@@ -371,7 +371,7 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
                           const int layerDrawFlags, const int yFix) const
 {
     BLOCK_START("MapLayer::drawFringe")
-    if (!player_node || !mSpecialLayer || !mTempLayer)
+    if (!localPlayer || !mSpecialLayer || !mTempLayer)
     {
         BLOCK_END("MapLayer::drawFringe")
         return;
@@ -537,12 +537,12 @@ void MapLayer::drawFringe(Graphics *const graphics, int startX, int startY,
             ++ai;
         }
         BLOCK_END("MapLayer::drawFringe drawmobs")
-        if (mHighlightAttackRange && player_node)
+        if (mHighlightAttackRange && localPlayer)
         {
-            const int px = player_node->getPixelX()
+            const int px = localPlayer->getPixelX()
                 - scrollX - mapTileSize / 2;
-            const int py = player_node->getPixelY() - scrollY - mapTileSize;
-            const int attackRange = player_node->getAttackRange()
+            const int py = localPlayer->getPixelY() - scrollY - mapTileSize;
+            const int attackRange = localPlayer->getAttackRange()
                 * mapTileSize;
 
             int x = px - attackRange;

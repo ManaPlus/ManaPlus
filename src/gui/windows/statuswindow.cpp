@@ -65,7 +65,7 @@
 StatusWindow *statusWindow = nullptr;
 
 StatusWindow::StatusWindow() :
-    Window(player_node ? player_node->getName() :
+    Window(localPlayer ? localPlayer->getName() :
         "?", false, nullptr, "status.xml"),
     ActionListener(),
     AttributeListener(),
@@ -105,10 +105,10 @@ StatusWindow::StatusWindow() :
     setDefaultSize((windowContainer->getWidth() - 480) / 2,
         (windowContainer->getHeight() - 500) / 2, 480, 500);
 
-    if (player_node && !player_node->getRaceName().empty())
+    if (localPlayer && !localPlayer->getRaceName().empty())
     {
-        setCaption(strprintf("%s (%s)", player_node->getName().c_str(),
-            player_node->getRaceName().c_str()));
+        setCaption(strprintf("%s (%s)", localPlayer->getName().c_str(),
+            localPlayer->getRaceName().c_str()));
     }
 
     int max = PlayerInfo::getAttribute(Attributes::MAX_HP);
@@ -242,12 +242,12 @@ StatusWindow::StatusWindow() :
         PlayerInfo::getAttribute(Attributes::CHAR_POINTS)));
     mCharacterPointsLabel->adjustSize();
 
-    if (player_node && player_node->isGM())
+    if (localPlayer && localPlayer->isGM())
     {
         // TRANSLATORS: status window label
         mLvlLabel->setCaption(strprintf(_("Level: %d (GM %d)"),
             PlayerInfo::getAttribute(Attributes::LEVEL),
-            player_node->getGMLevel()));
+            localPlayer->getGMLevel()));
     }
     else
     {

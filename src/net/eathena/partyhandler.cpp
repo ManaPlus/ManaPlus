@@ -137,10 +137,10 @@ void PartyHandler::invite(const std::string &name) const
 void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
                                   const bool accept) const
 {
-    if (player_node)
+    if (localPlayer)
     {
         MessageOut outMsg(CMSG_PARTY_INVITED);
-        outMsg.writeInt32(player_node->getId());
+        outMsg.writeInt32(localPlayer->getId());
         outMsg.writeInt32(accept ? 1 : 0);
     }
 }

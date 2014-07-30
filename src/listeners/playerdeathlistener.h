@@ -55,8 +55,8 @@ struct PlayerDeathListener final : public ActionListener
             viewport->closePopupMenu();
 
         NpcDialog::clearDialogs();
-        if (player_node)
-            player_node->respawn();
+        if (localPlayer)
+            localPlayer->respawn();
     }
 };
 

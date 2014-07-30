@@ -137,10 +137,10 @@ class SocialPartyTab final : public SocialTab,
         void buildCounter(const int online0 A_UNUSED,
                           const int total0 A_UNUSED)
         {
-            if (!player_node)
+            if (!localPlayer)
                 return;
 
-            const Party *const party = player_node->getParty();
+            const Party *const party = localPlayer->getParty();
             if (!party)
                 return;
 

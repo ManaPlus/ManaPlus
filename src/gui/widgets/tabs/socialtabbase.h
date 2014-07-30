@@ -64,7 +64,7 @@
 }
 
 #define updateAtkListStart() \
-    if (!socialWindow || !player_node || !actorManager)\
+    if (!socialWindow || !localPlayer || !actorManager)\
         return;\
     std::vector<Avatar*> *const avatars = mBeings->getMembers();\
     std::vector<Avatar*>::iterator ia = avatars->begin();\

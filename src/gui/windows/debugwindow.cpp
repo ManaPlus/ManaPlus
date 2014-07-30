@@ -110,8 +110,8 @@ void DebugWindow::slowLogic()
             break;
     }
 
-    if (player_node)
-        player_node->tryPingRequest();
+    if (localPlayer)
+        localPlayer->tryPingRequest();
     BLOCK_END("DebugWindow::slowLogic")
 }
 
@@ -120,9 +120,9 @@ void DebugWindow::draw(Graphics *g)
     BLOCK_START("DebugWindow::draw")
     Window::draw(g);
 
-    if (player_node)
+    if (localPlayer)
     {
-        const Being *const target = player_node->getTarget();
+        const Being *const target = localPlayer->getTarget();
         if (target)
         {
             target->draw(g, -target->getPixelX() + mapTileSize / 2

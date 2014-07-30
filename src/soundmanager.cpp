@@ -374,10 +374,10 @@ void SoundManager::playSfx(const std::string &path,
     {
         logger->log("SoundManager::playSfx() Playing: %s", path.c_str());
         int vol = 120;
-        if (player_node && (x > 0 || y > 0))
+        if (localPlayer && (x > 0 || y > 0))
         {
-            int dx = player_node->getTileX() - x;
-            int dy = player_node->getTileY() - y;
+            int dx = localPlayer->getTileX() - x;
+            int dy = localPlayer->getTileY() - y;
             if (dx < 0)
                 dx = -dx;
             if (dy < 0)

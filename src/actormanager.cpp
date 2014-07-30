@@ -215,13 +215,13 @@ void ActorManager::setMap(Map *const map)
 {
     mMap = map;
 
-    if (player_node)
-        player_node->setMap(map);
+    if (localPlayer)
+        localPlayer->setMap(map);
 }
 
 void ActorManager::setPlayer(LocalPlayer *const player)
 {
-    player_node = player;
+    localPlayer = player;
     mActors.insert(player);
     if (socialWindow)
         socialWindow->updateAttackFilter();
@@ -257,7 +257,7 @@ FloorItem *ActorManager::createItem(const int id, const int itemId,
 
 void ActorManager::destroy(ActorSprite *const actor)
 {
-    if (!actor || actor == player_node)
+    if (!actor || actor == localPlayer)
         return;
 
     mDeleteActors.insert(actor);
@@ -265,7 +265,7 @@ void ActorManager::destroy(ActorSprite *const actor)
 
 void ActorManager::erase(ActorSprite *const actor)
 {
-    if (!actor || actor == player_node)
+    if (!actor || actor == localPlayer)
         return;
 
     mActors.erase(actor);
@@ -273,7 +273,7 @@ void ActorManager::erase(ActorSprite *const actor)
 
 void ActorManager::undelete(const ActorSprite *const actor)
 {
-    if (!actor || actor == player_node)
+    if (!actor || actor == localPlayer)
         return;
 
     FOR_EACH (ActorSpritesConstIterator, it, mDeleteActors)
@@ -364,7 +364,7 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
 
             if ((being->isAlive()
                 || (targetDead && being->getType() == ActorType::PLAYER))
-                && (allPlayers ||  being != player_node))
+                && (allPlayers ||  being != localPlayer))
             {
                 if ((being->getPixelX() - mapTileSize / 2 <= x) &&
                     (being->getPixelX() + mapTileSize / 2 > x) &&
@@ -455,7 +455,7 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
 
         if ((being && (being->isAlive()
             || (mTargetDeadPlayers && being->getType() == ActorType::PLAYER))
-            && (allPlayers ||  being != player_node))
+            && (allPlayers ||  being != localPlayer))
             || actor->getType() == ActorType::FLOOR_ITEM)
         {
             if ((actor->getPixelX() - xtol <= x) &&
@@ -529,7 +529,7 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
                              const int x2, const int y2,
                              const bool serverBuggy)
 {
-    if (!player_node)
+    if (!localPlayer)
         return false;
 
     bool finded(false);
@@ -551,7 +551,7 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
                     if (mIgnorePickupItemsSet.find(item->getName())
                         == mIgnorePickupItemsSet.end())
                     {
-                        if (player_node->pickUp(item))
+                        if (localPlayer->pickUp(item))
                             finded = true;
                     }
                 }
@@ -560,7 +560,7 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
                     if (mPickupItemsSet.find(item->getName())
                         != mPickupItemsSet.end())
                     {
-                        if (player_node->pickUp(item))
+                        if (localPlayer->pickUp(item))
                             finded = true;
                     }
                 }
@@ -593,7 +593,7 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
                             if (cnt == 0)
                             {
                                 item->incrementPickup();
-                                player_node->pickUp(item);
+                                localPlayer->pickUp(item);
                                 return true;
                             }
                         }
@@ -608,7 +608,7 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
                             if (cnt == 0)
                             {
                                 item->incrementPickup();
-                                player_node->pickUp(item);
+                                localPlayer->pickUp(item);
                                 return true;
                             }
                         }
@@ -616,7 +616,7 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
                 }
             }
         }
-        if (item && player_node->pickUp(item))
+        if (item && localPlayer->pickUp(item))
             finded = true;
     }
     return finded;
@@ -625,7 +625,7 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
 bool ActorManager::pickUpNearest(const int x, const int y,
                                  int maxdist) const
 {
-    if (!player_node)
+    if (!localPlayer)
         return false;
 
     maxdist = maxdist * maxdist;
@@ -646,7 +646,7 @@ bool ActorManager::pickUpNearest(const int x, const int y,
                 + (item->getTileY() - y) * (item->getTileY() - y);
 
             if ((d < dist || !closestItem) && (!mTargetOnlyReachable
-                || player_node->isReachable(item->getTileX(),
+                || localPlayer->isReachable(item->getTileX(),
                 item->getTileY(), false)))
             {
                 if (allowAll)
@@ -671,7 +671,7 @@ bool ActorManager::pickUpNearest(const int x, const int y,
         }
     }
     if (closestItem && dist <= maxdist)
-        return player_node->pickUp(closestItem);
+        return localPlayer->pickUp(closestItem);
 
     return false;
 }
@@ -703,15 +703,15 @@ Being *ActorManager::findBeingByName(const std::string &name,
 Being *ActorManager::findNearestByName(const std::string &name,
                                        const ActorType::Type &type) const
 {
-    if (!player_node)
+    if (!localPlayer)
         return nullptr;
 
     int dist = 0;
     Being* closestBeing = nullptr;
     int x, y;
 
-    x = player_node->getTileX();
-    y = player_node->getTileY();
+    x = localPlayer->getTileX();
+    y = localPlayer->getTileY();
 
     for_actorsm
     {
@@ -783,12 +783,12 @@ void ActorManager::logic()
             if (beingEquipmentWindow)
                 beingEquipmentWindow->resetBeing(being);
         }
-        if (player_node)
+        if (localPlayer)
         {
-            if (player_node->getTarget() == *it)
-                player_node->setTarget(nullptr);
-            if (player_node->getPickUpTarget() == *it)
-                player_node->unSetPickUpTarget();
+            if (localPlayer->getTarget() == *it)
+                localPlayer->setTarget(nullptr);
+            if (localPlayer->getPickUpTarget() == *it)
+                localPlayer->unSetPickUpTarget();
         }
         if (viewport)
             viewport->clearHover(*it);
@@ -811,11 +811,11 @@ void ActorManager::clear()
     if (beingEquipmentWindow)
         beingEquipmentWindow->setBeing(nullptr);
 
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->setTarget(nullptr);
-        player_node->unSetPickUpTarget();
-        mActors.erase(player_node);
+        localPlayer->setTarget(nullptr);
+        localPlayer->unSetPickUpTarget();
+        mActors.erase(localPlayer);
     }
 
     for_actors
@@ -823,8 +823,8 @@ void ActorManager::clear()
     mActors.clear();
     mDeleteActors.clear();
 
-    if (player_node)
-        mActors.insert(player_node);
+    if (localPlayer)
+        mActors.insert(localPlayer);
 }
 
 Being *ActorManager::findNearestLivingBeing(const int x, const int y,
@@ -865,7 +865,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                                             const Being *const excluded,
                                             const bool allowSort) const
 {
-    if (!aroundBeing || !player_node)
+    if (!aroundBeing || !localPlayer)
         return nullptr;
 
     std::set<std::string> attackMobs;
@@ -875,11 +875,11 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
     std::map<std::string, int> priorityMobsMap;
     int defaultAttackIndex = 10000;
     int defaultPriorityIndex = 10000;
-    const int attackRange = player_node->getAttackRange();
+    const int attackRange = localPlayer->getAttackRange();
 
     bool specialDistance = false;
     if (settings.moveToTargetType == 7
-        && player_node->getAttackRange() > 2)
+        && localPlayer->getAttackRange() > 2)
     {
         specialDistance = true;
     }
@@ -990,7 +990,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
             beingActorSorter.priorityBeings = nullptr;
         }
 
-        if (player_node->getTarget() == nullptr)
+        if (localPlayer->getTarget() == nullptr)
         {
             Being *const target = sortedBeings.at(0);
 
@@ -1003,7 +1003,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
             return target;
         }
 
-        beingEqualActorFinder.findBeing = player_node->getTarget();
+        beingEqualActorFinder.findBeing = localPlayer->getTarget();
         std::vector<Being*>::const_iterator i = std::find_if(
             sortedBeings.begin(), sortedBeings.end(), beingEqualActorFinder);
 
@@ -1132,34 +1132,34 @@ bool ActorManager::validateBeing(const Being *const aroundBeing,
                                  const Being* const excluded,
                                  const int maxCost) const
 {
-    if (!player_node)
+    if (!localPlayer)
         return false;
     return being && ((being->getType() == type
         || type == ActorType::UNKNOWN) && (being->isAlive()
         || (mTargetDeadPlayers && type == ActorType::PLAYER))
         && being != aroundBeing) && being != excluded
         && (type != ActorType::MONSTER || !mTargetOnlyReachable
-        || player_node->isReachable(being, maxCost));
+        || localPlayer->isReachable(being, maxCost));
 }
 
 void ActorManager::healTarget() const
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    heal(player_node->getTarget());
+    heal(localPlayer->getTarget());
 }
 
 void ActorManager::heal(const Being *const target) const
 {
-    if (!player_node || !chatWindow || !player_node->isAlive()
+    if (!localPlayer || !chatWindow || !localPlayer->isAlive()
         || !Net::getPlayerHandler()->canUseMagic())
     {
         return;
     }
 
     // self
-    if (target && player_node->getName() == target->getName())
+    if (target && localPlayer->getName() == target->getName())
     {
         if (PlayerInfo::getAttribute(Attributes::MP) >= 6
             && PlayerInfo::getAttribute(Attributes::HP)
@@ -1231,7 +1231,7 @@ void ActorManager::heal(const Being *const target) const
 
 void ActorManager::itenplz() const
 {
-    if (!player_node || !chatWindow || !player_node->isAlive()
+    if (!localPlayer || !chatWindow || !localPlayer->isAlive()
         || !Net::getPlayerHandler()->canUseMagic())
     {
         return;

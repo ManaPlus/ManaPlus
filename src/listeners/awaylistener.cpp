@@ -35,10 +35,10 @@
 
 void AwayListener::action(const ActionEvent &event)
 {
-    if (event.getId() == "ok" && player_node && settings.awayMode)
+    if (event.getId() == "ok" && localPlayer && settings.awayMode)
     {
         GameModifiers::changeAwayMode();
-        player_node->updateStatus();
+        localPlayer->updateStatus();
         if (outfitWindow)
             outfitWindow->unwearAwayOutfit();
         UpdateStatusListener::distributeEvent();

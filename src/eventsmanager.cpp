@@ -159,10 +159,10 @@ bool EventsManager::handleEvents() const
             }
 
 #ifdef USE_MUMBLE
-            if (player_node && mumbleManager)
+            if (localPlayer && mumbleManager)
             {
-                mumbleManager->setPos(player_node->getTileX(),
-                    player_node->getTileY(), player_node->getDirection());
+                mumbleManager->setPos(localPlayer->getTileX(),
+                    localPlayer->getTileY(), localPlayer->getDirection());
             }
 #endif
         }
@@ -445,10 +445,10 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
             WindowManager::setIsMinimized(true);
             if (inGame)
             {
-                if (player_node && !settings.awayMode)
+                if (localPlayer && !settings.awayMode)
                 {
                     fpsLimit = config.getIntValue("altfpslimit");
-                    player_node->setHalfAway(true);
+                    localPlayer->setHalfAway(true);
                 }
             }
             setPriority(false);
@@ -458,11 +458,11 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
             WindowManager::setIsMinimized(false);
             if (inGame)
             {
-                if (player_node)
+                if (localPlayer)
                 {
                     if (!settings.awayMode)
                         fpsLimit = config.getIntValue("fpslimit");
-                    player_node->setHalfAway(false);
+                    localPlayer->setHalfAway(false);
                 }
             }
             setPriority(true);
@@ -478,10 +478,10 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
         || eventType == SDL_WINDOWEVENT_RESTORED
         || eventType == SDL_WINDOWEVENT_MAXIMIZED)
     {
-        if (player_node)
+        if (localPlayer)
         {
-            player_node->updateStatus();
-            player_node->updateName();
+            localPlayer->updateStatus();
+            localPlayer->updateName();
         }
         Game::instance()->updateFrameRate(fpsLimit);
     }
@@ -496,11 +496,11 @@ void EventsManager::handleActive(const SDL_Event &event)
         if (event.active.gain)
         {   // window restore
             WindowManager::setIsMinimized(false);
-            if (inGame && player_node)
+            if (inGame && localPlayer)
             {
                 if (!settings.awayMode)
                     fpsLimit = config.getIntValue("fpslimit");
-                player_node->setHalfAway(false);
+                localPlayer->setHalfAway(false);
             }
             setPriority(true);
         }
@@ -510,19 +510,19 @@ void EventsManager::handleActive(const SDL_Event &event)
             client->setState(STATE_EXIT);
 #else
             WindowManager::setIsMinimized(true);
-            if (inGame && player_node && !settings.awayMode)
+            if (inGame && localPlayer && !settings.awayMode)
             {
                 fpsLimit = config.getIntValue("altfpslimit");
-                player_node->setHalfAway(true);
+                localPlayer->setHalfAway(true);
             }
             setPriority(false);
 #endif
         }
-        if (inGame && player_node)
-            player_node->updateStatus();
+        if (inGame && localPlayer)
+            localPlayer->updateStatus();
     }
-    if (inGame && player_node)
-        player_node->updateName();
+    if (inGame && localPlayer)
+        localPlayer->updateName();
 
     if (event.active.state & SDL_APPINPUTFOCUS)
         settings.inputFocused = event.active.gain;

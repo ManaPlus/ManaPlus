@@ -224,8 +224,8 @@ int NpcHandler::getNpc(Net::MessageIn &msg, const bool haveLength)
             mDialog = new NpcDialog(npcId);
             mDialog->postInit();
             mDialog->saveCamera();
-            if (player_node)
-                player_node->stopWalking(false);
+            if (localPlayer)
+                localPlayer->stopWalking(false);
             NpcDialog::mNpcDialogs[npcId] = mDialog;
         }
     }

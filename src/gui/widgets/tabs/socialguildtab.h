@@ -145,10 +145,10 @@ class SocialGuildTab final : public SocialTab,
             }
             else
             {
-                if (!player_node)
+                if (!localPlayer)
                     return;
 
-                const Guild *const guild = player_node->getGuild();
+                const Guild *const guild = localPlayer->getGuild();
                 if (!guild)
                     return;
 

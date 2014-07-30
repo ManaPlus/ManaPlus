@@ -245,12 +245,12 @@ void GuildHandler::inviteResponse(const int guildId, const bool response) const
 
 void GuildHandler::leave(const int guildId) const
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     MessageOut msg(CMSG_GUILD_LEAVE);
     msg.writeInt32(guildId);
-    msg.writeInt32(player_node->getId());     // Account ID
+    msg.writeInt32(localPlayer->getId());     // Account ID
     msg.writeInt32(PlayerInfo::getCharId());  // Char ID
     msg.writeString("", 40);                  // Message
 }
@@ -271,10 +271,10 @@ void GuildHandler::kick(const GuildMember *restrict const member,
 void GuildHandler::chat(const int guildId A_UNUSED,
                         const std::string &text) const
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    const std::string str = std::string(player_node->getName()).append(
+    const std::string str = std::string(localPlayer->getName()).append(
         " : ").append(text);
     MessageOut msg(CMSG_GUILD_MESSAGE);
     msg.writeInt16(static_cast<uint16_t>(str.size() + 4));

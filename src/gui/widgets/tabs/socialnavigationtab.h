@@ -71,7 +71,7 @@ class SocialNavigationTab final : public SocialTab
 
         void updateList() override final
         {
-            if (!socialWindow || !player_node)
+            if (!socialWindow || !localPlayer)
                 return;
 
             const Map *const map = socialWindow->getMap();
@@ -114,8 +114,8 @@ class SocialNavigationTab final : public SocialTab
                     portal->getComment().c_str(), x, y);
 
                 Avatar *const ava = new Avatar(name);
-                if (player_node)
-                    ava->setOnline(player_node->isReachable(x, y, true));
+                if (localPlayer)
+                    ava->setOnline(localPlayer->isReachable(x, y, true));
                 else
                     ava->setOnline(false);
                 ava->setLevel(-1);
@@ -166,7 +166,7 @@ class SocialNavigationTab final : public SocialTab
 
         void selectIndex(const unsigned num) override final
         {
-            if (!player_node)
+            if (!localPlayer)
                 return;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
@@ -174,8 +174,8 @@ class SocialNavigationTab final : public SocialTab
                 return;
 
             const Avatar *const ava = avatars->at(num);
-            if (ava && player_node)
-                player_node->navigateTo(ava->getX(), ava->getY());
+            if (ava && localPlayer)
+                localPlayer->navigateTo(ava->getX(), ava->getY());
         }
 
         void updateNames()
@@ -247,7 +247,7 @@ class SocialNavigationTab final : public SocialTab
 
         void addPortal(const int x, const int y)
         {
-            if (!socialWindow || !player_node)
+            if (!socialWindow || !localPlayer)
                 return;
 
             const Map *const map = socialWindow->getMap();
@@ -267,8 +267,8 @@ class SocialNavigationTab final : public SocialTab
                 portal->getComment().c_str(), x, y);
 
             Avatar *const ava = new Avatar(name);
-            if (player_node)
-                ava->setOnline(player_node->isReachable(x, y, true));
+            if (localPlayer)
+                ava->setOnline(localPlayer->isReachable(x, y, true));
             else
                 ava->setOnline(false);
             ava->setLevel(-1);
@@ -280,7 +280,7 @@ class SocialNavigationTab final : public SocialTab
 
         void removePortal(const int x, const int y)
         {
-            if (!socialWindow || !player_node)
+            if (!socialWindow || !localPlayer)
                 return;
 
             const Map *const map = socialWindow->getMap();

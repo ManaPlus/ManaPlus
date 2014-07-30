@@ -138,7 +138,7 @@ void PopupMenu::postInit()
 
 void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 {
-    if (!being || !player_node || !actorManager)
+    if (!being || !localPlayer || !actorManager)
         return;
 
     mBeingId = being->getId();
@@ -179,7 +179,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             addParty(being->getPartyName());
 
             const Guild *const guild1 = being->getGuild();
-            const Guild *const guild2 = player_node->getGuild();
+            const Guild *const guild2 = localPlayer->getGuild();
             if (guild2)
             {
                 if (guild1)
@@ -354,7 +354,7 @@ void PopupMenu::showPopup(const int x, const int y,
 void PopupMenu::showPlayerPopup(const int x, const int y,
                                 const std::string &nick)
 {
-    if (nick.empty() || !player_node)
+    if (nick.empty() || !localPlayer)
         return;
 
     mNick = nick;
@@ -382,9 +382,9 @@ void PopupMenu::showPlayerPopup(const int x, const int y,
     // TRANSLATORS: add comment to player
     mBrowserBox->addRow("addcomment", _("Add comment"));
 
-    if (player_node->isInParty())
+    if (localPlayer->isInParty())
     {
-        const Party *const party = player_node->getParty();
+        const Party *const party = localPlayer->getParty();
         if (party)
         {
             const PartyMember *const member = party->getMember(mNick);
@@ -395,7 +395,7 @@ void PopupMenu::showPlayerPopup(const int x, const int y,
                 mBrowserBox->addRow("kick party", _("Kick from party"));
                 mBrowserBox->addRow("##3---");
                 const PartyMember *const o = party->getMember(
-                    player_node->getName());
+                    localPlayer->getName());
                 if (o && member->getMap() == o->getMap())
                 {
                     // TRANSLATORS: popup menu item
@@ -406,7 +406,7 @@ void PopupMenu::showPlayerPopup(const int x, const int y,
         }
     }
 
-    const Guild *const guild2 = player_node->getGuild();
+    const Guild *const guild2 = localPlayer->getGuild();
     if (guild2)
     {
         if (guild2->getMember(mNick))
@@ -517,7 +517,7 @@ void PopupMenu::showPopup(const int x, const int y, MapItem *const mapItem)
     // TRANSLATORS: remove map item
     mBrowserBox->addRow("remove map", _("Remove"));
 
-    if (player_node && player_node->isGM())
+    if (localPlayer && localPlayer->isGM())
     {
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
@@ -543,7 +543,7 @@ void PopupMenu::showMapPopup(const int x, const int y,
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(_("Map Item"));
 
-    if (player_node && player_node->isGM())
+    if (localPlayer && localPlayer->isGM())
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: warp to map item
@@ -610,7 +610,7 @@ void PopupMenu::showSpellPopup(const int x, const int y,
 
 void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
 {
-    if (!tab || !actorManager || !player_node)
+    if (!tab || !actorManager || !localPlayer)
         return;
 
     mTab = tab;
@@ -715,9 +715,9 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             addBuySell(being);
             mBrowserBox->addRow("##3---");
 
-            if (player_node->isInParty())
+            if (localPlayer->isInParty())
             {
-                const Party *const party = player_node->getParty();
+                const Party *const party = localPlayer->getParty();
                 if (party)
                 {
                     if (!party->isMember(wTab->getNick()))
@@ -737,7 +737,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
                 }
             }
             const Guild *const guild1 = being->getGuild();
-            const Guild *const guild2 = player_node->getGuild();
+            const Guild *const guild2 = localPlayer->getGuild();
             if (guild2)
             {
                 if (guild1)
@@ -781,9 +781,9 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             mBrowserBox->addRow("##3---");
             addFollow();
 
-            if (player_node->isInParty())
+            if (localPlayer->isInParty())
             {
-                const Party *const party = player_node->getParty();
+                const Party *const party = localPlayer->getParty();
                 if (party)
                 {
                     const PartyMember *const m = party->getMember(mNick);
@@ -813,12 +813,12 @@ void PopupMenu::showChangePos(const int x, const int y)
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(_("Change guild position"));
 
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     mX = x;
     mY = y;
-    const Guild *const guild = player_node->getGuild();
+    const Guild *const guild = localPlayer->getGuild();
     if (guild)
     {
         const PositionsMap &map = guild->getPositions();
@@ -933,8 +933,8 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "attack" && being)
     {
-        if (player_node)
-            player_node->attack(being, true);
+        if (localPlayer)
+            localPlayer->attack(being, true);
     }
     else if (link == "heal" && being && being->getType() != ActorType::MONSTER)
     {
@@ -1014,9 +1014,9 @@ void PopupMenu::handleLink(const std::string &link,
     // Guild action
     else if (link == "guild" && !mNick.empty())
     {
-        if (player_node)
+        if (localPlayer)
         {
-            const Guild *const guild = player_node->getGuild();
+            const Guild *const guild = localPlayer->getGuild();
             if (guild)
             {
                 if (guild->getServerGuild())
@@ -1038,23 +1038,23 @@ void PopupMenu::handleLink(const std::string &link,
     // Follow Player action
     else if (link == "follow" && !mNick.empty())
     {
-        if (player_node)
-            player_node->setFollow(mNick);
+        if (localPlayer)
+            localPlayer->setFollow(mNick);
     }
     else if (link == "imitation" && !mNick.empty())
     {
-        if (player_node)
-            player_node->setImitate(mNick);
+        if (localPlayer)
+            localPlayer->setImitate(mNick);
     }
     // Pick Up Floor Item action
     else if ((link == "pickup") && mFloorItemId)
     {
-        if (player_node && actorManager)
+        if (localPlayer && actorManager)
         {
             FloorItem *const item = actorManager->findItem(
                 mFloorItemId);
             if (item)
-                player_node->pickUp(item);
+                localPlayer->pickUp(item);
         }
     }
     else if (link == "use" && mItemId)
@@ -1130,30 +1130,30 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "move" && !mNick.empty())
     {
-        if (player_node)
+        if (localPlayer)
         {
             if (being)
             {
-                player_node->navigateTo(being->getTileX(), being->getTileY());
+                localPlayer->navigateTo(being->getTileX(), being->getTileY());
             }
-            else if (player_node->isInParty())
+            else if (localPlayer->isInParty())
             {
-                const Party *const party = player_node->getParty();
+                const Party *const party = localPlayer->getParty();
                 if (party)
                 {
                     const PartyMember *const m = party->getMember(mNick);
                     const PartyMember *const o = party->getMember(
-                        player_node->getName());
+                        localPlayer->getName());
                     if (m && o && m->getMap() == o->getMap())
-                        player_node->navigateTo(m->getX(), m->getY());
+                        localPlayer->navigateTo(m->getX(), m->getY());
                 }
             }
         }
     }
     else if (link == "move" && (mX || mY))
     {
-        if (player_node)
-            player_node->navigateTo(mX, mY);
+        if (localPlayer)
+            localPlayer->navigateTo(mX, mY);
     }
     else if (link == "movecamera" && (mX || mY))
     {
@@ -1297,9 +1297,9 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "kick party" && !mNick.empty())
     {
-        if (player_node && player_node->getParty())
+        if (localPlayer && localPlayer->getParty())
         {
-            const PartyMember *const member = player_node->
+            const PartyMember *const member = localPlayer->
                 getParty()->getMember(mNick);
             if (member)
                 Net::getPartyHandler()->kick(mNick);
@@ -1365,10 +1365,10 @@ void PopupMenu::handleLink(const std::string &link,
                         static_cast<int>(MapItemType::EMPTY));
                     if (socialWindow)
                         socialWindow->removePortal(x, y);
-                    if (isHome && player_node)
+                    if (isHome && localPlayer)
                     {
-                        player_node->removeHome();
-                        player_node->saveHomes();
+                        localPlayer->removeHome();
+                        localPlayer->saveHomes();
                     }
                 }
             }
@@ -1426,9 +1426,9 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "guild-kick" && !mNick.empty())
     {
-        if (player_node)
+        if (localPlayer)
         {
-            const Guild *const guild = player_node->getGuild();
+            const Guild *const guild = localPlayer->getGuild();
             if (guild)
             {
                 if (guild->getServerGuild())
@@ -1637,7 +1637,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "priority movedown")
     {
-        if (player_node)
+        if (localPlayer)
         {
             const int idx = actorManager
                 ->getPriorityAttackMobIndex(mNick);
@@ -1731,7 +1731,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "items" && being)
     {
-        if (being == player_node)
+        if (being == localPlayer)
         {
             if (equipmentWindow && !equipmentWindow->isWindowVisible())
                 equipmentWindow->setVisible(true);
@@ -1815,10 +1815,10 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (!link.compare(0, 10, "guild-pos-"))
     {
-        if (player_node)
+        if (localPlayer)
         {
             const int num = atoi(link.substr(10).c_str());
-            const Guild *const guild = player_node->getGuild();
+            const Guild *const guild = localPlayer->getGuild();
             if (guild)
             {
                 Net::getGuildHandler()->changeMemberPostion(
@@ -2264,7 +2264,7 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
 void PopupMenu::showAttackMonsterPopup(const int x, const int y,
                                        const std::string &name, const int type)
 {
-    if (!player_node || !actorManager)
+    if (!localPlayer || !actorManager)
         return;
 
     mNick = name;
@@ -2342,7 +2342,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
 void PopupMenu::showPickupItemPopup(const int x, const int y,
                                     const std::string &name)
 {
-    if (!player_node || !actorManager)
+    if (!localPlayer || !actorManager)
         return;
 
     mNick = name;
@@ -2686,11 +2686,11 @@ void PopupMenu::addBuySellDefault()
 
 void PopupMenu::addParty(const std::string &partyName)
 {
-    if (player_node->isInParty())
+    if (localPlayer->isInParty())
     {
-        if (player_node->getParty())
+        if (localPlayer->getParty())
         {
-            if (player_node->getParty()->getName() != partyName)
+            if (localPlayer->getParty()->getName() != partyName)
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: invite player to party
@@ -2842,7 +2842,7 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
 
 void PopupMenu::addGmCommands()
 {
-    if (player_node->isGM())
+    if (localPlayer->isGM())
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: gm commands
@@ -2855,7 +2855,7 @@ void PopupMenu::showGMPopup()
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(_("GM commands"));
-    if (player_node->isGM())
+    if (localPlayer->isGM())
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: check player ip

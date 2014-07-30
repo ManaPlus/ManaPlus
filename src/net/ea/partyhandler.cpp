@@ -103,12 +103,12 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
                 if ((*it)->getOnline())
                     onlineNames.insert((*it)->getName());
             }
-            onlineNames.insert(player_node->getName());
+            onlineNames.insert(localPlayer->getName());
         }
     }
 
-    if (!player_node)
-        logger->log1("error: player_node==0 in SMSG_PARTY_INFO");
+    if (!localPlayer)
+        logger->log1("error: localPlayer==0 in SMSG_PARTY_INFO");
 
     if (Ea::taParty)
         Ea::taParty->clearMembers();
@@ -118,10 +118,10 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
         Ea::taParty->setName(msg.readString(24));
 
     const int count = (length - 28) / 46;
-    if (player_node && Ea::taParty)
+    if (localPlayer && Ea::taParty)
     {
-        player_node->setParty(Ea::taParty);
-        player_node->setPartyName(Ea::taParty->getName());
+        localPlayer->setParty(Ea::taParty);
+        localPlayer->setPartyName(Ea::taParty->getName());
     }
 
     for (int i = 0; i < count; i++)
@@ -175,10 +175,10 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
     if (Ea::taParty)
         Ea::taParty->sort();
 
-    if (player_node && Ea::taParty)
+    if (localPlayer && Ea::taParty)
     {
-        player_node->setParty(Ea::taParty);
-        player_node->setPartyName(Ea::taParty->getName());
+        localPlayer->setParty(Ea::taParty);
+        localPlayer->setPartyName(Ea::taParty->getName());
         if (socialWindow)
             socialWindow->updateParty();
     }
@@ -339,10 +339,10 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
     const int id = msg.readInt32();
     const std::string nick = msg.readString(24);
     msg.readUInt8();     // fail
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    if (id == player_node->getId())
+    if (id == localPlayer->getId())
     {
         if (Ea::taParty)
         {
@@ -354,7 +354,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg) const
 
         if (socialWindow && Ea::taParty)
             socialWindow->removeTab(Ea::taParty);
-        player_node->setPartyName("");
+        localPlayer->setPartyName("");
     }
     else
     {

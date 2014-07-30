@@ -127,7 +127,7 @@ KillStats::KillStats() :
 
     // TRANSLATORS: kill stats window label
     mLine1 = new Label(this, strprintf(_("Level: %d at %f%%"),
-        player_node->getLevel(), static_cast<double>(xp)
+        localPlayer->getLevel(), static_cast<double>(xp)
         / static_cast<double>(xpNextLevel) * 100.0));
 
     // TRANSLATORS: kill stats window label
@@ -240,7 +240,7 @@ void KillStats::gainXp(int xp)
     const int exp = PlayerInfo::getAttribute(Attributes::EXP);
     // TRANSLATORS: kill stats window label
     mLine1->setCaption(strprintf(_("Level: %d at %f%%"),
-        player_node->getLevel(), static_cast<double>(exp)
+        localPlayer->getLevel(), static_cast<double>(exp)
         / static_cast<double>(xpNextLevel) * 100.0));
 
     // TRANSLATORS: kill stats window label
@@ -468,7 +468,7 @@ void KillStats::jackoAlive(const int id)
 
 void KillStats::validateJacko()
 {
-    if (!actorManager || !player_node)
+    if (!actorManager || !localPlayer)
         return;
 
     const Map *const currentMap = Game::instance()->getCurrentMap();
@@ -477,10 +477,10 @@ void KillStats::validateJacko()
         if (currentMap->getProperty("_realfilename") == "018-1"
             || currentMap->getProperty("_realfilename") == "maps/018-1.tmx")
         {
-            if (player_node->getTileX() >= 167
-                && player_node->getTileX() <= 175
-                && player_node->getTileY() >= 21
-                && player_node->getTileY() <= 46)
+            if (localPlayer->getTileX() >= 167
+                && localPlayer->getTileX() <= 175
+                && localPlayer->getTileY() >= 21
+                && localPlayer->getTileY() <= 46)
             {
                 const Being *const dstBeing
                     = actorManager->findBeingByName(

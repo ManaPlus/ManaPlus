@@ -339,12 +339,12 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     else if (event.getSource() == mXpBar)
     {
         std::string level;
-        if (player_node && player_node->isGM())
+        if (localPlayer && localPlayer->isGM())
         {
             // TRANSLATORS: status bar label
             level = strprintf(_("Level: %d (GM %d)"),
                 PlayerInfo::getAttribute(Attributes::LEVEL),
-                player_node->getGMLevel());
+                localPlayer->getGMLevel());
         }
         else
         {

@@ -179,8 +179,8 @@ void Setup_Relations::apply()
     if (actorManager)
         actorManager->updatePlayerNames();
 
-    if (player_node)
-        player_node->setCheckNameSetting(true);
+    if (localPlayer)
+        localPlayer->setCheckNameSetting(true);
 }
 
 void Setup_Relations::cancel()
@@ -231,8 +231,8 @@ void Setup_Relations::updatedPlayer(const std::string &name A_UNUSED)
             player_relations.getDefault() & PlayerRelation::TRADE);
     mDefaultWhisper->setSelected(
             player_relations.getDefault() & PlayerRelation::WHISPER);
-    if (player_node)
-        player_node->updateName();
+    if (localPlayer)
+        localPlayer->updateName();
 }
 
 void Setup_Relations::updateAll()

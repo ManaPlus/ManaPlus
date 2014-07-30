@@ -182,7 +182,7 @@ ChatWindow::ChatWindow() :
     updateTabsMargin();
 
     fillCommands();
-    if (player_node && player_node->isGM())
+    if (localPlayer && localPlayer->isGM())
         loadGMCommands();
     initTradeFilter();
     loadCustomList();
@@ -998,10 +998,10 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
                             const std::string &restrict mes,
                             const ChatMsgType::Type own)
 {
-    if (mes.empty() || !player_node)
+    if (mes.empty() || !localPlayer)
         return;
 
-    std::string playerName = player_node->getName();
+    std::string playerName = localPlayer->getName();
     std::string tempNick = nick;
 
     toLower(playerName);
@@ -1062,7 +1062,7 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
             {
                 tab->chatLog(nick, mes);
             }
-            player_node->afkRespond(tab, nick);
+            localPlayer->afkRespond(tab, nick);
         }
     }
     else if (localChatTab)
@@ -1079,8 +1079,8 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
         {
             localChatTab->chatLog(std::string(nick).append(
                 " : ").append(mes), ChatMsgType::ACT_WHISPER, false);
-            if (player_node)
-                player_node->afkRespond(nullptr, nick);
+            if (localPlayer)
+                localPlayer->afkRespond(nullptr, nick);
         }
     }
 }
@@ -1088,10 +1088,10 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
 WhisperTab *ChatWindow::addWhisperTab(const std::string &nick,
                                       const bool switchTo)
 {
-    if (!player_node)
+    if (!localPlayer)
         return nullptr;
 
-    std::string playerName = player_node->getName();
+    std::string playerName = localPlayer->getName();
     std::string tempNick = nick;
 
     toLower(playerName);
@@ -1125,10 +1125,10 @@ WhisperTab *ChatWindow::addWhisperTab(const std::string &nick,
 
 WhisperTab *ChatWindow::getWhisperTab(const std::string &nick) const
 {
-    if (!player_node)
+    if (!localPlayer)
         return nullptr;
 
-    std::string playerName = player_node->getName();
+    std::string playerName = localPlayer->getName();
     std::string tempNick = nick;
 
     toLower(playerName);
@@ -1566,10 +1566,10 @@ void ChatWindow::updateOnline(const std::set<std::string> &onlinePlayers) const
 {
     const Party *party = nullptr;
     const Guild *guild = nullptr;
-    if (player_node)
+    if (localPlayer)
     {
-        party = player_node->getParty();
-        guild = player_node->getGuild();
+        party = localPlayer->getParty();
+        guild = localPlayer->getGuild();
     }
     FOR_EACH (TabMap::const_iterator, iter, mWhispers)
     {
@@ -1740,25 +1740,25 @@ void ChatWindow::displayAwayLog() const
 void ChatWindow::parseHighlights()
 {
     mHighlights.clear();
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     splitToStringVector(mHighlights, config.getStringValue(
         "highlightWords"), ',');
 
-    mHighlights.push_back(player_node->getName());
+    mHighlights.push_back(localPlayer->getName());
 }
 
 void ChatWindow::parseGlobalsFilter()
 {
     mGlobalsFilter.clear();
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     splitToStringVector(mGlobalsFilter, config.getStringValue(
         "globalsFilter"), ',');
 
-    mHighlights.push_back(player_node->getName());
+    mHighlights.push_back(localPlayer->getName());
 }
 
 bool ChatWindow::findHighlight(const std::string &str)

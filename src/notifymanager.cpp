@@ -42,7 +42,7 @@ namespace NotifyManager
 {
     static ChatTab *getGuildTab()
     {
-        const Guild *const guild = player_node->getGuild();
+        const Guild *const guild = localPlayer->getGuild();
         if (guild)
         {
             if (guild->getServerGuild())
@@ -75,7 +75,7 @@ namespace NotifyManager
 
             case NotifyFlags::GUILD:
             {
-                if (!player_node)
+                if (!localPlayer)
                     return;
                 ChatTab *const tab = getGuildTab();
                 chatLog(tab, gettext(info.text));
@@ -91,8 +91,8 @@ namespace NotifyManager
 
             case NotifyFlags::SPEECH:
             {
-                if (player_node)
-                    player_node->setSpeech(gettext(info.text));
+                if (localPlayer)
+                    localPlayer->setSpeech(gettext(info.text));
                 break;
             }
 

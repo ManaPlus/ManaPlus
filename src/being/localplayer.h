@@ -524,6 +524,6 @@ class LocalPlayer final : public Being,
         bool mShowNavigePath;
 };
 
-extern LocalPlayer *player_node;
+extern LocalPlayer *localPlayer;
 
 #endif  // BEING_LOCALPLAYER_H

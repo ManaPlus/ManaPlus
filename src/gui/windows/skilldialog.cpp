@@ -151,9 +151,9 @@ void SkillDialog::action(const ActionEvent &event)
         if (tab)
         {
             const SkillInfo *const info = tab->getSelectedInfo();
-            if (info && player_node && player_node->getTarget())
+            if (info && localPlayer && localPlayer->getTarget())
             {
-                const Being *const being = player_node->getTarget();
+                const Being *const being = localPlayer->getTarget();
                 if (being)
                 {
                     Net::getSkillHandler()->useBeing(info->level,
@@ -420,9 +420,9 @@ void SkillDialog::useItem(const int itemId) const
         return;
 
     const SkillInfo *const info = (*it).second;
-    if (info && player_node && player_node->getTarget())
+    if (info && localPlayer && localPlayer->getTarget())
     {
-        const Being *const being = player_node->getTarget();
+        const Being *const being = localPlayer->getTarget();
         if (being)
         {
             Net::getSkillHandler()->useBeing(info->level,
@@ -477,6 +477,6 @@ void SkillDialog::playUpdateEffect(const int id) const
     if (it != mSkills.end())
     {
         if (it->second)
-            effectManager->trigger(effectId, player_node);
+            effectManager->trigger(effectId, localPlayer);
     }
 }

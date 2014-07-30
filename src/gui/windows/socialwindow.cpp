@@ -148,11 +148,11 @@ void SocialWindow::postInit()
         mPickupFilter = nullptr;
     }
 
-    if (player_node && player_node->getParty())
-        addTab(player_node->getParty());
+    if (localPlayer && localPlayer->getParty())
+        addTab(localPlayer->getParty());
 
-    if (player_node && player_node->getGuild())
-        addTab(player_node->getGuild());
+    if (localPlayer && localPlayer->getGuild())
+        addTab(localPlayer->getGuild());
 
     enableVisibleSound(true);
     updateButtons();
@@ -488,10 +488,10 @@ void SocialWindow::showPartyInvite(const std::string &restrict partyName,
 
 void SocialWindow::showPartyCreate()
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    if (player_node->getParty())
+    if (localPlayer->getParty())
     {
         // TRANSLATORS: party creation message
         new OkDialog(_("Create Party"),
@@ -623,10 +623,10 @@ void SocialWindow::updatePickupFilter()
 
 void SocialWindow::updateParty()
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    Party *const party = player_node->getParty();
+    Party *const party = localPlayer->getParty();
     if (party)
     {
         PartyMap::iterator it = mParties.find(party);
@@ -657,10 +657,10 @@ void SocialWindow::setCounter(const SocialTab *const tab,
 
 void SocialWindow::updateGuildCounter(const int online, const int total)
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    Guild *const guild = player_node->getGuild();
+    Guild *const guild = localPlayer->getGuild();
     if (guild)
     {
         GuildMap::iterator it = mGuilds.find(guild);

@@ -110,8 +110,8 @@ void PlayerHandler::processWalkResponse(Net::MessageIn &msg)
     uint16_t srcX, srcY, dstX, dstY;
     msg.readInt32();  // tick
     msg.readCoordinatePair(srcX, srcY, dstX, dstY);
-    if (player_node)
-        player_node->setRealPos(dstX, dstY);
+    if (localPlayer)
+        localPlayer->setRealPos(dstX, dstY);
     BLOCK_END("PlayerHandler::processWalkResponse")
 }
 
@@ -124,15 +124,15 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
 
     logger->log("Warping to %s (%d, %d)", mapPath.c_str(), x, y);
 
-    if (!player_node)
-        logger->log1("SMSG_PLAYER_WARP player_node null");
+    if (!localPlayer)
+        logger->log1("SMSG_PLAYER_WARP localPlayer null");
 
     /*
       * We must clear the local player's target *before* the call
       * to changeMap, as it deletes all beings.
       */
-    if (player_node)
-        player_node->stopAttack();
+    if (localPlayer)
+        localPlayer->stopAttack();
 
     Game *const game = Game::instance();
 
@@ -146,7 +146,7 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
     int scrollOffsetX = 0;
     int scrollOffsetY = 0;
 
-    if (player_node)
+    if (localPlayer)
     {
         const Map *const map = game->getCurrentMap();
         if (map)
@@ -161,22 +161,22 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
                 y = 0;
             /* Scroll if neccessary */
             if (!sameMap
-                || (abs(x - player_node->getTileX())
+                || (abs(x - localPlayer->getTileX())
                 > MAP_TELEPORT_SCROLL_DISTANCE)
-                || (abs(y - player_node->getTileY())
+                || (abs(y - localPlayer->getTileY())
                 > MAP_TELEPORT_SCROLL_DISTANCE))
             {
-                scrollOffsetX = (x - player_node->getTileX())
+                scrollOffsetX = (x - localPlayer->getTileX())
                     * map->getTileWidth();
-                scrollOffsetY = (y - player_node->getTileY())
+                scrollOffsetY = (y - localPlayer->getTileY())
                     * map->getTileHeight();
             }
         }
 
-        player_node->setAction(BeingAction::STAND, 0);
-        player_node->setTileCoords(x, y);
-        player_node->updatePets();
-        player_node->navigateClean();
+        localPlayer->setAction(BeingAction::STAND, 0);
+        localPlayer->setTileCoords(x, y);
+        localPlayer->updatePets();
+        localPlayer->navigateClean();
     }
 
     logger->log("Adjust scrolling by %d:%d", scrollOffsetX, scrollOffsetY);
@@ -194,7 +194,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
     BLOCK_START("PlayerHandler::processPlayerStatUpdate1")
     const int type = msg.readInt16();
     const int value = msg.readInt32();
-    if (!player_node)
+    if (!localPlayer)
     {
         BLOCK_END("PlayerHandler::processPlayerStatUpdate1")
         return;
@@ -203,7 +203,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
     switch (type)
     {
         case 0x0000:
-            player_node->setWalkSpeed(Vector(static_cast<float>(
+            localPlayer->setWalkSpeed(Vector(static_cast<float>(
                 value), static_cast<float>(value), 0));
             PlayerInfo::setStatBase(Attributes::WALK_SPEED, value);
             PlayerInfo::setStatMod(Attributes::WALK_SPEED, 0);
@@ -212,10 +212,10 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
             break;  // manner
         case 0x0005:
             PlayerInfo::setAttribute(Attributes::HP, value);
-            if (player_node->isInParty() && Party::getParty(1))
+            if (localPlayer->isInParty() && Party::getParty(1))
             {
                 PartyMember *const m = Party::getParty(1)
-                    ->getMember(player_node->getId());
+                    ->getMember(localPlayer->getId());
                 if (m)
                 {
                     m->setHp(value);
@@ -226,10 +226,10 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
         case 0x0006:
             PlayerInfo::setAttribute(Attributes::MAX_HP, value);
 
-            if (player_node->isInParty() && Party::getParty(1))
+            if (localPlayer->isInParty() && Party::getParty(1))
             {
                 PartyMember *const m = Party::getParty(1)->getMember(
-                    player_node->getId());
+                    localPlayer->getId());
                 if (m)
                 {
                     m->setHp(PlayerInfo::getAttribute(Attributes::HP));
@@ -248,10 +248,10 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
             break;
         case 0x000b:
             PlayerInfo::setAttribute(Attributes::LEVEL, value);
-            if (player_node)
+            if (localPlayer)
             {
-                player_node->setLevel(value);
-                player_node->updateName();
+                localPlayer->setLevel(value);
+                localPlayer->updateName();
             }
             break;
         case 0x000c:
@@ -343,7 +343,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
             break;
 
         case 0x0035:
-            player_node->setAttackSpeed(value);
+            localPlayer->setAttackSpeed(value);
             PlayerInfo::setStatBase(Attributes::ATTACK_DELAY, value);
             PlayerInfo::setStatMod(Attributes::ATTACK_DELAY, 0);
             PlayerInfo::updateAttrs();
@@ -354,7 +354,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
             break;
 
         case 500:
-            player_node->setGMLevel(value);
+            localPlayer->setGMLevel(value);
             break;
 
         default:
@@ -369,10 +369,10 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
         deathNotice = new OkDialog(_("Message"),
             DeadDB::getRandomString(), DialogType::OK, false);
         deathNotice->addActionListener(&deathListener);
-        if (player_node->getCurrentAction() != BeingAction::DEAD)
+        if (localPlayer->getCurrentAction() != BeingAction::DEAD)
         {
-            player_node->setAction(BeingAction::DEAD, 0);
-            player_node->recalcSpritesOrder();
+            localPlayer->setAction(BeingAction::DEAD, 0);
+            localPlayer->recalcSpritesOrder();
         }
     }
     BLOCK_END("PlayerHandler::processPlayerStatUpdate1")

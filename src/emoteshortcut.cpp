@@ -72,12 +72,12 @@ void EmoteShortcut::save() const
 
 void EmoteShortcut::useEmote(const int index) const
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     if (index > 0 && index <= SHORTCUT_EMOTES)
     {
        if (mEmotes[index - 1] > 0)
-          player_node->emote(mEmotes[index - 1]);
+          localPlayer->emote(mEmotes[index - 1]);
     }
 }

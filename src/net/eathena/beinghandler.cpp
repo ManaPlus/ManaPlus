@@ -290,7 +290,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
     if (dstBeing->getType() == ActorType::PLAYER)
         dstBeing->setOtherTime();
 
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     switch (type)
@@ -305,22 +305,22 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
             dstBeing->setSprite(SPRITE_WEAPON, id, "", 1, true);
             if (!mHideShield)
                 dstBeing->setSprite(SPRITE_SHIELD, id2);
-            player_node->imitateOutfit(dstBeing, SPRITE_SHIELD);
+            localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
             break;
         case 3:     // Change lower headgear for eAthena, pants for us
             dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, id, color,
                 static_cast<unsigned char>(id2));
-            player_node->imitateOutfit(dstBeing, SPRITE_BOTTOMCLOTHES);
+            localPlayer->imitateOutfit(dstBeing, SPRITE_BOTTOMCLOTHES);
             break;
         case 4:     // Change upper headgear for eAthena, hat for us
             dstBeing->setSprite(SPRITE_HAT, id, color,
                 static_cast<unsigned char>(id2));
-            player_node->imitateOutfit(dstBeing, SPRITE_HAT);
+            localPlayer->imitateOutfit(dstBeing, SPRITE_HAT);
             break;
         case 5:     // Change middle headgear for eathena, armor for us
             dstBeing->setSprite(SPRITE_TOPCLOTHES, id, color,
                 static_cast<unsigned char>(id2));
-            player_node->imitateOutfit(dstBeing, SPRITE_TOPCLOTHES);
+            localPlayer->imitateOutfit(dstBeing, SPRITE_TOPCLOTHES);
             break;
         case 6:     // eAthena LOOK_HAIR_COLOR
             dstBeing->setSpriteColor(SPRITE_HAIR, ItemDB::get(
@@ -335,42 +335,42 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
                 dstBeing->setSprite(SPRITE_SHIELD, id, color,
                     static_cast<unsigned char>(id2));
             }
-            player_node->imitateOutfit(dstBeing, SPRITE_SHIELD);
+            localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
             break;
         case 9:     // eAthena LOOK_SHOES
             dstBeing->setSprite(SPRITE_SHOE, id, color,
                 static_cast<unsigned char>(id2));
-            player_node->imitateOutfit(dstBeing, SPRITE_SHOE);
+            localPlayer->imitateOutfit(dstBeing, SPRITE_SHOE);
             break;
         case 10:   // LOOK_GLOVES
             dstBeing->setSprite(SPRITE_GLOVES, id, color,
                 static_cast<unsigned char>(id2));
-            player_node->imitateOutfit(dstBeing, SPRITE_GLOVES);
+            localPlayer->imitateOutfit(dstBeing, SPRITE_GLOVES);
             break;
         case 11:  // LOOK_CAPE
             dstBeing->setSprite(SPRITE_CAPE, id, color,
                 static_cast<unsigned char>(id2));
-            player_node->imitateOutfit(dstBeing, SPRITE_CAPE);
+            localPlayer->imitateOutfit(dstBeing, SPRITE_CAPE);
             break;
         case 12:
             dstBeing->setSprite(SPRITE_MISC1, id, color,
                 static_cast<unsigned char>(id2));
-            player_node->imitateOutfit(dstBeing, SPRITE_MISC1);
+            localPlayer->imitateOutfit(dstBeing, SPRITE_MISC1);
             break;
         case 13:
             dstBeing->setSprite(SPRITE_MISC2, id, color,
                 static_cast<unsigned char>(id2));
-            player_node->imitateOutfit(dstBeing, SPRITE_MISC2);
+            localPlayer->imitateOutfit(dstBeing, SPRITE_MISC2);
             break;
         case 14:
             dstBeing->setSprite(SPRITE_EVOL1, id, color,
                 static_cast<unsigned char>(id2));
-            player_node->imitateOutfit(dstBeing, SPRITE_EVOL1);
+            localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL1);
             break;
         case 15:
             dstBeing->setSprite(SPRITE_EVOL2, id, color,
                 static_cast<unsigned char>(id2));
-            player_node->imitateOutfit(dstBeing, SPRITE_EVOL2);
+            localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL2);
             break;
         default:
             logger->log("QQQ3 CHANGE_LOOKS: unsupported type: "
@@ -383,7 +383,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
 
 void BeingHandler::processNameResponse2(Net::MessageIn &msg)
 {
-    if (!actorManager || !player_node)
+    if (!actorManager || !localPlayer)
         return;
 
     const int len = msg.readInt16();
@@ -392,9 +392,9 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(beingId);
     if (dstBeing)
     {
-        if (beingId == player_node->getId())
+        if (beingId == localPlayer->getId())
         {
-            player_node->pingResponse();
+            localPlayer->pingResponse();
         }
         else
         {
@@ -405,9 +405,9 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
             if (dstBeing->getType() == ActorType::PLAYER)
                 dstBeing->updateColors();
 
-            if (player_node)
+            if (localPlayer)
             {
-                const Party *const party = player_node->getParty();
+                const Party *const party = localPlayer->getParty();
                 if (party && party->isMember(dstBeing->getId()))
                 {
                     PartyMember *const member = party->getMember(
@@ -416,7 +416,7 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
                     if (member)
                         member->setName(dstBeing->getName());
                 }
-                player_node->checkNewName(dstBeing);
+                localPlayer->checkNewName(dstBeing);
             }
         }
     }
@@ -425,7 +425,7 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
 void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
                                            const int msgType) const
 {
-    if (!actorManager || !player_node)
+    if (!actorManager || !localPlayer)
         return;
 
     // An update about a player, potentially including movement.
@@ -466,7 +466,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
             dstBeing->setDirection(dir);
     }
 
-    if (Party *const party = player_node->getParty())
+    if (Party *const party = localPlayer->getParty())
     {
         if (party->isMember(id))
             dstBeing->setParty(party);
@@ -522,14 +522,14 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
         dstBeing->updateSprite(SPRITE_HAIR, hairStyle * -1,
             ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
     }
-    player_node->imitateOutfit(dstBeing);
+    localPlayer->imitateOutfit(dstBeing);
 
     if (msgType == 3)
     {
         uint16_t srcX, srcY, dstX, dstY;
         msg.readCoordinatePair(srcX, srcY, dstX, dstY);
 
-        player_node->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
+        localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
 
         dstBeing->setTileCoords(srcX, srcY);
         dstBeing->setDestination(dstX, dstY);
@@ -545,11 +545,11 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
                 dstBeing->setDirectionDelayed(static_cast<uint8_t>(d));
         }
 
-        if (player_node->getCurrentAction() != BeingAction::STAND)
-            player_node->imitateAction(dstBeing, BeingAction::STAND);
-        if (player_node->getDirection() != dstBeing->getDirection())
+        if (localPlayer->getCurrentAction() != BeingAction::STAND)
+            localPlayer->imitateAction(dstBeing, BeingAction::STAND);
+        if (localPlayer->getDirection() != dstBeing->getDirection())
         {
-            player_node->imitateDirection(dstBeing,
+            localPlayer->imitateDirection(dstBeing,
                 dstBeing->getDirection());
         }
     }
@@ -560,7 +560,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
         dstBeing->setTileCoords(x, y);
         dstBeing->setDirection(dir);
 
-        player_node->imitateDirection(dstBeing, dir);
+        localPlayer->imitateDirection(dstBeing, dir);
     }
 
     const uint16_t gmstatus = msg.readInt16();
@@ -575,7 +575,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
         {
             case 0:
                 dstBeing->setAction(BeingAction::STAND, 0);
-                player_node->imitateAction(dstBeing, BeingAction::STAND);
+                localPlayer->imitateAction(dstBeing, BeingAction::STAND);
                 break;
 
             case 1:
@@ -588,7 +588,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
 
             case 2:
                 dstBeing->setAction(BeingAction::SIT, 0);
-                player_node->imitateAction(dstBeing, BeingAction::SIT);
+                localPlayer->imitateAction(dstBeing, BeingAction::SIT);
                 break;
 
             default:
@@ -707,8 +707,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
 
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
     dstBeing->setSubtype(job, 0);
-    if (dstBeing->getType() == ActorType::MONSTER && player_node)
-        player_node->checkNewName(dstBeing);
+    if (dstBeing->getType() == ActorType::MONSTER && localPlayer)
+        localPlayer->checkNewName(dstBeing);
 
     const int hairStyle = msg.readInt16();
     const uint16_t weapon = msg.readInt16();

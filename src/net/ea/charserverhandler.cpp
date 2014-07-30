@@ -241,7 +241,7 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg,
                                            ServerInfo &restrict server)
 {
     BLOCK_START("CharServerHandler::processCharMapInfo")
-//    msg.skip(4); // CharID, must be the same as player_node->charID
+//    msg.skip(4); // CharID, must be the same as localPlayer->charID
     PlayerInfo::setCharId(msg.readInt32());
     GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
     gh->setMap(msg.readString(16));
@@ -257,7 +257,7 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg,
     server.port = msg.readInt16();
 
     // Prevent the selected local player from being deleted
-    player_node = mSelectedCharacter->dummy;
+    localPlayer = mSelectedCharacter->dummy;
     PlayerInfo::setBackend(mSelectedCharacter->data);
 
     mSelectedCharacter->dummy = nullptr;
@@ -291,10 +291,10 @@ void CharServerHandler::processChangeMapServer(Net::MessageIn &restrict msg,
 
     network->disconnect();
     client->setState(STATE_CHANGE_MAP);
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->setTileCoords(x, y);
-        player_node->setMap(nullptr);
+        localPlayer->setTileCoords(x, y);
+        localPlayer->setMap(nullptr);
     }
     BLOCK_END("CharServerHandler::processChangeMapServer")
 }

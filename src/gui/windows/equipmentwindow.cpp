@@ -381,7 +381,7 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
     {
         return;
     }
-    Inventory *const inventory = player_node
+    Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
     if (!inventory)
         return;

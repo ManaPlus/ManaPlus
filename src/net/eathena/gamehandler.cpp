@@ -113,10 +113,10 @@ void GameHandler::connect()
     if (client->getState() == STATE_CONNECT_GAME)
     {
         // Change the player's ID to the account ID to match what eAthena uses
-        if (player_node)
+        if (localPlayer)
         {
-            mCharID = player_node->getId();
-            player_node->setId(token.account_ID);
+            mCharID = localPlayer->getId();
+            localPlayer->setId(token.account_ID);
         }
         else
         {
@@ -133,10 +133,10 @@ void GameHandler::connect()
     outMsg.writeInt8(Being::genderToInt(token.sex));
 
 /*
-    if (player_node)
+    if (localPlayer)
     {
         // Change the player's ID to the account ID to match what eAthena uses
-        player_node->setId(token.account_ID);
+        localPlayer->setId(token.account_ID);
     }
 */
     // We get 4 useless bytes before the real answer comes in (what are these?)

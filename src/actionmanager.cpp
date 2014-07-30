@@ -409,13 +409,13 @@ impHandler0(heal)
     {
         if (inputManager.isActionActive(InputAction::STOP_ATTACK))
         {
-            Being *target = player_node->getTarget();
+            Being *target = localPlayer->getTarget();
             if (!target || target->getType() != ActorType::PLAYER)
             {
                 target = actorManager->findNearestLivingBeing(
-                    player_node, 10, ActorType::PLAYER, true);
+                    localPlayer, 10, ActorType::PLAYER, true);
                 if (target)
-                    player_node->setTarget(target);
+                    localPlayer->setTarget(target);
             }
         }
 
@@ -429,9 +429,9 @@ impHandler0(heal)
 
 impHandler0(crazyMoves)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->crazyMove();
+        localPlayer->crazyMove();
         return true;
     }
     return false;
@@ -463,10 +463,10 @@ impHandler0(changePickupType)
 
 impHandler0(moveToTarget)
 {
-    if (player_node && !inputManager.isActionActive(InputAction::TARGET_ATTACK)
+    if (localPlayer && !inputManager.isActionActive(InputAction::TARGET_ATTACK)
         && !inputManager.isActionActive(InputAction::ATTACK))
     {
-        player_node->moveToTarget();
+        localPlayer->moveToTarget();
         return true;
     }
     return false;
@@ -474,10 +474,10 @@ impHandler0(moveToTarget)
 
 impHandler0(moveToHome)
 {
-    if (player_node && !inputManager.isActionActive(InputAction::TARGET_ATTACK)
+    if (localPlayer && !inputManager.isActionActive(InputAction::TARGET_ATTACK)
         && !inputManager.isActionActive(InputAction::ATTACK))
     {
-        player_node->moveToHome();
+        localPlayer->moveToHome();
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
@@ -487,9 +487,9 @@ impHandler0(moveToHome)
 
 impHandler0(setHome)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->setHome();
+        localPlayer->setHome();
         return true;
     }
     return false;
@@ -522,9 +522,9 @@ impHandler0(changeImitationMode)
 
 impHandler0(magicAttack)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->magicAttack();
+        localPlayer->magicAttack();
         return true;
     }
     return false;
@@ -557,7 +557,7 @@ impHandler0(copyEquippedToOutfit)
 
 impHandler0(changeGameModifier)
 {
-    if (player_node)
+    if (localPlayer)
     {
         GameModifiers::changeGameModifiers();
         return true;
@@ -568,17 +568,17 @@ impHandler0(changeGameModifier)
 impHandler0(changeAudio)
 {
     soundManager.changeAudio();
-    if (player_node)
-        player_node->updateMusic();
+    if (localPlayer)
+        localPlayer->updateMusic();
     return true;
 }
 
 impHandler0(away)
 {
     GameModifiers::changeAwayMode();
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->updateStatus();
+        localPlayer->updateStatus();
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
@@ -618,9 +618,9 @@ impHandler0(setupWindowShow)
 
 impHandler0(pickup)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->pickUpItems();
+        localPlayer->pickUpItems();
         return true;
     }
     return false;
@@ -629,14 +629,14 @@ impHandler0(pickup)
 static void doSit()
 {
     if (inputManager.isActionActive(InputAction::EMOTE))
-        player_node->updateSit();
+        localPlayer->updateSit();
     else
-        player_node->toggleSit();
+        localPlayer->toggleSit();
 }
 
 impHandler0(sit)
 {
-    if (player_node)
+    if (localPlayer)
     {
         doSit();
         return true;
@@ -870,13 +870,13 @@ impHandler0(ignoreInput)
 
 impHandler0(directUp)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        if (player_node->getDirection() != BeingDirection::UP)
+        if (localPlayer->getDirection() != BeingDirection::UP)
         {
 //            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
             {
-                player_node->setDirection(BeingDirection::UP);
+                localPlayer->setDirection(BeingDirection::UP);
                 if (Net::getPlayerHandler())
                     Net::getPlayerHandler()->setDirection(BeingDirection::UP);
             }
@@ -888,13 +888,13 @@ impHandler0(directUp)
 
 impHandler0(directDown)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        if (player_node->getDirection() != BeingDirection::DOWN)
+        if (localPlayer->getDirection() != BeingDirection::DOWN)
         {
 //            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
             {
-                player_node->setDirection(BeingDirection::DOWN);
+                localPlayer->setDirection(BeingDirection::DOWN);
                 if (Net::getPlayerHandler())
                 {
                     Net::getPlayerHandler()->setDirection(
@@ -909,13 +909,13 @@ impHandler0(directDown)
 
 impHandler0(directLeft)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        if (player_node->getDirection() != BeingDirection::LEFT)
+        if (localPlayer->getDirection() != BeingDirection::LEFT)
         {
 //            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
             {
-                player_node->setDirection(BeingDirection::LEFT);
+                localPlayer->setDirection(BeingDirection::LEFT);
                 if (Net::getPlayerHandler())
                 {
                     Net::getPlayerHandler()->setDirection(
@@ -930,13 +930,13 @@ impHandler0(directLeft)
 
 impHandler0(directRight)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        if (player_node->getDirection() != BeingDirection::RIGHT)
+        if (localPlayer->getDirection() != BeingDirection::RIGHT)
         {
 //            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
             {
-                player_node->setDirection(BeingDirection::RIGHT);
+                localPlayer->setDirection(BeingDirection::RIGHT);
                 if (Net::getPlayerHandler())
                 {
                     Net::getPlayerHandler()->setDirection(
@@ -951,18 +951,18 @@ impHandler0(directRight)
 
 impHandler0(talk)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        Being *target = player_node->getTarget();
+        Being *target = localPlayer->getTarget();
         if (!target && actorManager)
         {
             target = actorManager->findNearestLivingBeing(
-                player_node, 1, ActorType::NPC, true);
+                localPlayer, 1, ActorType::NPC, true);
             // ignore closest target if distance in each direction more than 1
             if (target)
             {
-                if (abs(target->getTileX() - player_node->getTileX()) > 1
-                    || abs(target->getTileY() - player_node->getTileY()) > 1)
+                if (abs(target->getTileX() - localPlayer->getTileX()) > 1
+                    || abs(target->getTileY() - localPlayer->getTileY()) > 1)
                 {
                     return true;
                 }
@@ -982,9 +982,9 @@ impHandler0(talk)
 
 impHandler0(stopAttack)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->stopAttack();
+        localPlayer->stopAttack();
         // not consume if target attack key pressed
         if (inputManager.isActionActive(InputAction::TARGET_ATTACK))
             return false;
@@ -995,9 +995,9 @@ impHandler0(stopAttack)
 
 impHandler0(untarget)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->untarget();
+        localPlayer->untarget();
         return true;
     }
     return false;
@@ -1005,11 +1005,11 @@ impHandler0(untarget)
 
 impHandler0(attack)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        Being *const target = player_node->getTarget();
+        Being *const target = localPlayer->getTarget();
         if (target)
-            player_node->attack(target, true);
+            localPlayer->attack(target, true);
         return true;
     }
     return false;
@@ -1017,25 +1017,25 @@ impHandler0(attack)
 
 impHandler0(targetAttack)
 {
-    if (player_node && actorManager)
+    if (localPlayer && actorManager)
     {
         Being *target = nullptr;
 
         const bool newTarget = !inputManager.isActionActive(
             InputAction::STOP_ATTACK);
         // A set target has highest priority
-        if (!player_node->getTarget())
+        if (!localPlayer->getTarget())
         {
             // Only auto target Monsters
             target = actorManager->findNearestLivingBeing(
-                player_node, 90, ActorType::MONSTER, true);
+                localPlayer, 90, ActorType::MONSTER, true);
         }
         else
         {
-            target = player_node->getTarget();
+            target = localPlayer->getTarget();
         }
 
-        player_node->attack2(target, newTarget);
+        localPlayer->attack2(target, newTarget);
         return true;
     }
     return false;
@@ -1043,13 +1043,13 @@ impHandler0(targetAttack)
 
 static bool setTarget(const ActorType::Type type, const bool allowSort)
 {
-    if (actorManager && player_node)
+    if (actorManager && localPlayer)
     {
         Being *const target = actorManager->findNearestLivingBeing(
-            player_node, 20, type, allowSort);
+            localPlayer, 20, type, allowSort);
 
-        if (target && target != player_node->getTarget())
-            player_node->setTarget(target);
+        if (target && target != localPlayer->getTarget())
+            localPlayer->setTarget(target);
 
         return true;
     }
@@ -1086,13 +1086,13 @@ impHandler0(safeVideoMode)
 
 impHandler0(stopSit)
 {
-    if (player_node)
+    if (localPlayer)
     {
-        player_node->stopAttack();
+        localPlayer->stopAttack();
         // not consume if target attack key pressed
         if (inputManager.isActionActive(InputAction::TARGET_ATTACK))
             return false;
-        if (!player_node->getTarget())
+        if (!localPlayer->getTarget())
         {
             doSit();
             return true;
@@ -1171,7 +1171,7 @@ impHandler0(prevCommandsTab)
 
 impHandler0(openTrade)
 {
-    const Being *const being = player_node->getTarget();
+    const Being *const being = localPlayer->getTarget();
     if (being && being->getType() == ActorType::PLAYER)
     {
         Net::getTradeHandler()->request(being);

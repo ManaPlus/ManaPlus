@@ -439,7 +439,7 @@ void TradeWindow::addAutoMoney(const std::string &nick, const int money)
 
 void TradeWindow::initTrade(const std::string &nick)
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
     if (!mAutoAddToNick.empty() && mAutoAddToNick == nick)

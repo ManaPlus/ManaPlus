@@ -70,8 +70,8 @@ void GameHandler::processMapLogin(Net::MessageIn &msg) const
 
     // Switch now or we'll have problems
     client->setState(STATE_GAME);
-    if (player_node)
-        player_node->setTileCoords(x, y);
+    if (localPlayer)
+        localPlayer->setTileCoords(x, y);
 }
 
 void GameHandler::processWhoAnswer(Net::MessageIn &msg) const

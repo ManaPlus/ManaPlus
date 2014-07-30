@@ -94,10 +94,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 void ChatHandler::talk(const std::string &restrict text,
                        const std::string &restrict channel A_UNUSED) const
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    const std::string mes = std::string(player_node->getName()).append(
+    const std::string mes = std::string(localPlayer->getName()).append(
         " : ").append(text);
 
     MessageOut outMsg(CMSG_CHAT_MESSAGE);

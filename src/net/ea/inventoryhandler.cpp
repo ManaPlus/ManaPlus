@@ -177,7 +177,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
                                               const bool playerInvintory)
 {
     BLOCK_START("InventoryHandler::processPlayerInventory")
-    Inventory *const inventory = player_node
+    Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
     if (playerInvintory)
     {
@@ -286,7 +286,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
 void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerInventoryAdd")
-    Inventory *const inventory = player_node
+    Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
 
     if (PlayerInfo::getEquipment()
@@ -321,14 +321,14 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 
     if (err)
     {
-        if (player_node)
-            player_node->pickedUp(itemInfo, 0, identified, floorId, err);
+        if (localPlayer)
+            localPlayer->pickedUp(itemInfo, 0, identified, floorId, err);
     }
     else
     {
-        if (player_node)
+        if (localPlayer)
         {
-            player_node->pickedUp(itemInfo, amount,
+            localPlayer->pickedUp(itemInfo, amount,
                 identified, floorId, Pickup::OKAY);
         }
 
@@ -353,7 +353,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerInventoryRemove")
-    Inventory *const inventory = player_node
+    Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
 
     const int index = msg.readInt16() - INVENTORY_OFFSET;
@@ -374,7 +374,7 @@ void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg)
 void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerInventoryUse")
-    Inventory *const inventory = player_node
+    Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
 
     const int index = msg.readInt16() - INVENTORY_OFFSET;
@@ -399,7 +399,7 @@ void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg)
 void InventoryHandler::processItemUseResponse(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processItemUseResponse")
-    Inventory *const inventory = player_node
+    Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
 
     const int index = msg.readInt16() - INVENTORY_OFFSET;
@@ -526,7 +526,7 @@ void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerEquipment")
-    Inventory *const inventory = player_node
+    Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
 
     msg.readInt16();  // length
@@ -604,8 +604,8 @@ void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerAttackRange")
     const int range = msg.readInt16();
-    if (player_node)
-        player_node->setAttackRange(range);
+    if (localPlayer)
+        localPlayer->setAttackRange(range);
     PlayerInfo::setStatBase(Attributes::ATTACK_RANGE, range);
     PlayerInfo::setStatMod(Attributes::ATTACK_RANGE, 0);
     BLOCK_END("InventoryHandler::processPlayerAttackRange")

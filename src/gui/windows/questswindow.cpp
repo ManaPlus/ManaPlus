@@ -382,11 +382,11 @@ void QuestsWindow::rebuild(const bool playSound)
             switch (newCompleteStatus)
             {
                 case 0:
-                    effectManager->trigger(mNewQuestEffectId, player_node);
+                    effectManager->trigger(mNewQuestEffectId, localPlayer);
                     break;
                 case 1:
                     effectManager->trigger(mCompleteQuestEffectId,
-                        player_node);
+                        localPlayer);
                     break;
                 default:
                     break;

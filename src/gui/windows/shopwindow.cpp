@@ -238,15 +238,15 @@ void ShopWindow::action(const ActionEvent &event)
              && mBuyShopItemList->getSelected() >= 0)
     {
         mBuyShopItems->del(mBuyShopItemList->getSelected());
-        if (isShopEmpty() && player_node)
-            player_node->updateStatus();
+        if (isShopEmpty() && localPlayer)
+            localPlayer->updateStatus();
     }
     else if (eventId == "delete sell" && mSellShopItemList
              && mSellShopItemList->getSelected() >= 0)
     {
         mSellShopItems->del(mSellShopItemList->getSelected());
-        if (isShopEmpty() && player_node)
-            player_node->updateStatus();
+        if (isShopEmpty() && localPlayer)
+            localPlayer->updateStatus();
     }
     else if (eventId == "announce buy" && mBuyShopItems
              && mBuyShopItems->getNumberOfElements() > 0)
@@ -345,8 +345,8 @@ void ShopWindow::addBuyItem(const Item *const item, const int amount,
     const bool emp = isShopEmpty();
     mBuyShopItems->addItemNoDup(item->getId(),
         item->getColor(), amount, price);
-    if (emp && player_node)
-        player_node->updateStatus();
+    if (emp && localPlayer)
+        localPlayer->updateStatus();
 
     updateButtonsAndLabels();
 }
@@ -359,8 +359,8 @@ void ShopWindow::addSellItem(const Item *const item, const int amount,
     const bool emp = isShopEmpty();
     mSellShopItems->addItemNoDup(item->getId(),
         item->getColor(), amount, price);
-    if (emp && player_node)
-        player_node->updateStatus();
+    if (emp && localPlayer)
+        localPlayer->updateStatus();
 
     updateButtonsAndLabels();
 }
@@ -701,7 +701,7 @@ void ShopWindow::showList(const std::string &nick, std::string data)
 void ShopWindow::processRequest(const std::string &nick, std::string data,
                                 const int mode)
 {
-    if (!player_node || !mTradeNick.empty() || PlayerInfo::isTrading()
+    if (!localPlayer || !mTradeNick.empty() || PlayerInfo::isTrading()
         || !actorManager
         || !actorManager->findBeingByName(nick, ActorType::PLAYER))
     {
@@ -857,7 +857,7 @@ bool ShopWindow::findShopItem(const ShopItem *const shopItem,
 
 int ShopWindow::sumAmount(const Item *const shopItem)
 {
-    if (!player_node || !shopItem)
+    if (!localPlayer || !shopItem)
         return 0;
 
     const Inventory *const inv = PlayerInfo::getInventory();

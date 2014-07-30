@@ -142,10 +142,10 @@ void SkillHandler::processSkillFailed(Net::MessageIn &msg)
     if (success == static_cast<int>(SKILL_FAILED)
         && skillId == static_cast<int>(SKILL_BASIC))
     {
-        if (player_node && bskill == static_cast<int>(BSKILL_EMOTE)
+        if (localPlayer && bskill == static_cast<int>(BSKILL_EMOTE)
             && reason == static_cast<int>(RFAIL_SKILLDEP))
         {
-            player_node->stopAdvert();
+            localPlayer->stopAdvert();
         }
 
         switch (bskill)

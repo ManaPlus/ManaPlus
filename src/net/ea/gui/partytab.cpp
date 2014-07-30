@@ -206,10 +206,10 @@ bool PartyTab::handleCommand(const std::string &restrict type,
 
 void PartyTab::getAutoCompleteList(StringVect &names) const
 {
-    if (!player_node)
+    if (!localPlayer)
         return;
 
-    const Party *const p = player_node->getParty();
+    const Party *const p = localPlayer->getParty();
 
     if (p)
         p->getNames(names);
