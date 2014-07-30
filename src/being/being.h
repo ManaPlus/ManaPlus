@@ -796,6 +796,8 @@ class Being notfinal : public ActorSprite,
 
         int getSpriteID(const int slot) const A_WARN_UNUSED;
 
+        unsigned char getSpriteColor(const int slot) const A_WARN_UNUSED;
+
         void setHairStyle(const unsigned int slot, const int id);
 
         void setHairColor(const unsigned int slot,

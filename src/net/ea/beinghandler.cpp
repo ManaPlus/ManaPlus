@@ -82,26 +82,6 @@ Being *BeingHandler::createBeing(const int id, const int16_t job) const
         type = ActorType::PORTAL;
 
     Being *const being = actorManager->createBeing(id, type, job);
-
-    if (type == ActorType::PLAYER || type == ActorType::NPC)
-    {
-        being->updateFromCache();
-        requestNameById(id);
-        if (localPlayer)
-            localPlayer->checkNewName(being);
-    }
-    if (type == ActorType::PLAYER)
-    {
-        if (botCheckerWindow)
-            botCheckerWindow->updateList();
-        if (socialWindow)
-            socialWindow->updateActiveList();
-    }
-    else if (type == ActorType::NPC)
-    {
-        if (questsWindow)
-            questsWindow->addEffect(being);
-    }
     return being;
 }
 

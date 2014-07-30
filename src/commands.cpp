@@ -1538,6 +1538,11 @@ impHandler0(dumpOGL)
 #endif
 }
 
+impHandler0(debugSpawn)
+{
+    Being *const being = actorManager->cloneBeing(localPlayer);
+}
+
 void replaceVars(std::string &str)
 {
     if (!localPlayer || !actorManager)

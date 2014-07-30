@@ -137,6 +137,7 @@ namespace Commands
     decHandler(uploadServerConfig);
     decHandler(uploadLog);
     decHandler(gm);
+    decHandler(debugSpawn);
 
     void replaceVars(std::string &str);
 }  // namespace Commands
@@ -240,6 +241,7 @@ enum
     COMMAND_UPLOADLOG,
     COMMAND_GM,
     COMMAND_HACK,
+    COMMAND_DEBUGSPAWN,
     END_COMMANDS
 };
 
@@ -341,7 +343,8 @@ static const CommandInfo commands[] =
     {"uploadserverconfig", &Commands::uploadServerConfig, -1, false},
     {"uploadlog", &Commands::uploadLog, -1, false},
     {"gm", &Commands::gm, -1, true},
-    {"hack", &Commands::hack, -1, true}
+    {"hack", &Commands::hack, -1, true},
+    {"debugSpawn", &Commands::debugSpawn, -1, false}
 };
 
 #undef decHandler

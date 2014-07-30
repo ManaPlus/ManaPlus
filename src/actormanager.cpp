@@ -35,18 +35,26 @@
 
 #include "gui/widgets/tabs/chattab.h"
 
+#include "gui/windows/botcheckerwindow.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/socialwindow.h"
+#include "gui/windows/questswindow.h"
 
 #include "input/inputmanager.h"
 
 #include "utils/checkutils.h"
 #include "utils/gettext.h"
 
+#include "net/beinghandler.h"
+#include "net/charserverhandler.h"
 #include "net/net.h"
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
+
+#include "resources/iteminfo.h"
+
+#include "resources/db/itemdb.h"
 
 #include <algorithm>
 #include <list>
@@ -236,6 +244,25 @@ Being *ActorManager::createBeing(const int id,
     Being *const being = new Being(id, type, subtype, mMap);
 
     mActors.insert(being);
+    if (type == ActorType::PLAYER || type == ActorType::NPC)
+    {
+        being->updateFromCache();
+        Net::getBeingHandler()->requestNameById(id);
+        if (localPlayer)
+            localPlayer->checkNewName(being);
+    }
+    if (type == ActorType::PLAYER)
+    {
+        if (botCheckerWindow)
+            botCheckerWindow->updateList();
+        if (socialWindow)
+            socialWindow->updateActiveList();
+    }
+    else if (type == ActorType::NPC)
+    {
+        if (questsWindow)
+            questsWindow->addEffect(being);
+    }
     return being;
 }
 
@@ -1693,4 +1720,32 @@ void ActorManager::updateEffects(const std::map<int, int> &addEffects,
         if (idAdd != addEffects.end())
             being->addSpecialEffect((*idAdd).second);
     }
+}
+
+Being *ActorManager::cloneBeing(const Being *const srcBeing)
+{
+    Being *const dstBeing = actorManager->createBeing(srcBeing->getId() + 1,
+        ActorType::PLAYER,
+        srcBeing->getSubType());
+    if (!dstBeing)
+        return nullptr;
+    dstBeing->setGender(srcBeing->getGender());
+    dstBeing->setAction(srcBeing->getCurrentAction(), 0);
+    dstBeing->setTileCoords(srcBeing->getTileX(), srcBeing->getTileY());
+    dstBeing->setName(srcBeing->getName());
+    dstBeing->setDirection(srcBeing->getDirection());
+    const size_t sz = srcBeing->getSpritesCount();
+    for (size_t slot = 0; slot < sz; slot ++)
+    {
+        const int id = srcBeing->getSpriteID(slot);
+        const unsigned char color = srcBeing->getSpriteColor(slot);
+        dstBeing->setSprite(slot, id, "", color, false);
+    }
+    const int hairSlot = Net::getCharServerHandler()->hairSprite();
+    const int hairStyle =  -srcBeing->getSpriteID(hairSlot);
+    const unsigned char hairColor = srcBeing->getHairColor();
+    dstBeing->setSprite(hairSlot, hairStyle * -1,
+        ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+    dstBeing->setHairColor(hairColor);
+    return dstBeing;
 }

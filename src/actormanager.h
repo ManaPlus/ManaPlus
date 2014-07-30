@@ -65,6 +65,8 @@ class ActorManager final: public ConfigListener
                            const ActorType::Type type,
                            const uint16_t subtype) A_WARN_UNUSED;
 
+        Being *cloneBeing(const Being *const srcBeing);
+
         /**
          * Create a FloorItem and add it to the list of ActorSprites.
          */

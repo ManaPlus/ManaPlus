@@ -3062,6 +3062,14 @@ int Being::getSpriteID(const int slot) const
     return mSpriteIDs[slot];
 }
 
+unsigned char Being::getSpriteColor(const int slot) const
+{
+    if (slot < 0 || static_cast<unsigned>(slot) >= mSpriteColorsIds.size())
+        return 1;
+
+    return mSpriteColorsIds[slot];
+}
+
 void Being::addAfkEffect()
 {
     addSpecialEffect(mAwayEffect);
