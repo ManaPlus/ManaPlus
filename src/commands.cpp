@@ -84,6 +84,7 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#include "utils/mathutils.h"
 #include "utils/process.h"
 #include "utils/timer.h"
 
@@ -1540,7 +1541,15 @@ impHandler0(dumpOGL)
 
 impHandler0(debugSpawn)
 {
-    Being *const being = actorManager->cloneBeing(localPlayer);
+    int cnt = atoi(args.c_str());
+    if (cnt < 1)
+        cnt = 1;
+    const int half = cnt / 2;
+    for (int x = -half; x < cnt - half; x ++)
+    {
+        for (int y =  -half; y < cnt - half; y ++)
+            actorManager->cloneBeing(localPlayer, x, y, cnt);
+    }
 }
 
 void replaceVars(std::string &str)

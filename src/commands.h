@@ -344,7 +344,7 @@ static const CommandInfo commands[] =
     {"uploadlog", &Commands::uploadLog, -1, false},
     {"gm", &Commands::gm, -1, true},
     {"hack", &Commands::hack, -1, true},
-    {"debugSpawn", &Commands::debugSpawn, -1, false}
+    {"debugSpawn", &Commands::debugSpawn, -1, true}
 };
 
 #undef decHandler

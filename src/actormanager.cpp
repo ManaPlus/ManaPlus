@@ -1722,16 +1722,19 @@ void ActorManager::updateEffects(const std::map<int, int> &addEffects,
     }
 }
 
-Being *ActorManager::cloneBeing(const Being *const srcBeing)
+Being *ActorManager::cloneBeing(const Being *const srcBeing,
+                                const int dx, const int dy,
+                                const int id)
 {
-    Being *const dstBeing = actorManager->createBeing(srcBeing->getId() + 1,
+    Being *const dstBeing = actorManager->createBeing(srcBeing->getId() + id,
         ActorType::PLAYER,
         srcBeing->getSubType());
     if (!dstBeing)
         return nullptr;
     dstBeing->setGender(srcBeing->getGender());
     dstBeing->setAction(srcBeing->getCurrentAction(), 0);
-    dstBeing->setTileCoords(srcBeing->getTileX(), srcBeing->getTileY());
+    dstBeing->setTileCoords(srcBeing->getTileX() + dx,
+        srcBeing->getTileY() + dy);
     dstBeing->setName(srcBeing->getName());
     dstBeing->setDirection(srcBeing->getDirection());
     const size_t sz = srcBeing->getSpritesCount();
