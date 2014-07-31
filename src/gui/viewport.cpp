@@ -42,6 +42,7 @@
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
+#include "gui/popupmanager.h"
 
 #include "gui/fonts/font.h"
 
@@ -64,12 +65,9 @@ Viewport::Viewport() :
     WindowContainer(nullptr),
     MouseListener(),
     mMap(nullptr),
-    mPopupMenu(new PopupMenu),
     mHoverBeing(nullptr),
     mHoverItem(nullptr),
     mHoverSign(nullptr),
-    mBeingPopup(new BeingPopup),
-    mTextPopup(new TextPopup),
     mScrollRadius(config.getIntValue("ScrollRadius")),
     mScrollLaziness(config.getIntValue("ScrollLaziness")),
     mScrollCenterOffsetX(config.getIntValue("ScrollCenterOffsetX")),
@@ -91,10 +89,6 @@ Viewport::Viewport() :
     mMouseClicked(false),
     mPlayerFollowMouse(false)
 {
-    mBeingPopup->postInit();
-    mPopupMenu->postInit();
-    mTextPopup->postInit();
-
     setOpaque(false);
     addMouseListener(this);
 
@@ -113,9 +107,6 @@ Viewport::~Viewport()
 {
     config.removeListeners(this);
     CHECKLISTENERS
-    delete2(mPopupMenu);
-    delete2(mBeingPopup);
-    delete2(mTextPopup);
 }
 
 void Viewport::setMap(Map *const map)
@@ -391,29 +382,29 @@ bool Viewport::openContextMenu(const MouseEvent &event)
             const int y = mMouseY + mPixelViewY;
             actorManager->findBeingsByPixel(beings, x, y, true);
             if (beings.size() > 1)
-                mPopupMenu->showPopup(eventX, eventY, beings);
+                popupManager->showPopup(eventX, eventY, beings);
             else
-                mPopupMenu->showPopup(eventX, eventY, mHoverBeing);
+                popupManager->showPopup(eventX, eventY, mHoverBeing);
             return true;
         }
     }
     else if (mHoverItem)
     {
         validateSpeed();
-        mPopupMenu->showPopup(eventX, eventY, mHoverItem);
+        popupManager->showPopup(eventX, eventY, mHoverItem);
         return true;
     }
     else if (mHoverSign)
     {
         validateSpeed();
-        mPopupMenu->showPopup(eventX, eventY, mHoverSign);
+        popupManager->showPopup(eventX, eventY, mHoverSign);
         return true;
     }
     else if (settings.cameraMode)
     {
         if (!mMap)
             return false;
-        mPopupMenu->showMapPopup(eventX, eventY,
+        popupManager->showMapPopup(eventX, eventY,
             (mMouseX + mPixelViewX) / mMap->getTileWidth(),
             (mMouseY + mPixelViewY) / mMap->getTileHeight());
         return true;
@@ -528,10 +519,10 @@ void Viewport::mousePressed(MouseEvent &event)
     }
 
     // If a popup is active, just remove it
-    if (mPopupMenu->isPopupVisible())
+    if (popupManager->isPopupMenuVisible())
     {
         mPlayerFollowMouse = false;
-        mPopupMenu->setVisible(false);
+        popupManager->hidePopupMenu();
         return;
     }
 
@@ -735,150 +726,6 @@ void Viewport::mouseReleased(MouseEvent &event)
     }
 }
 
-void Viewport::showPopup(Window *const parent,
-                         const int x, const int y,
-                         Item *const item,
-                         const bool isInventory)
-{
-    mPopupMenu->showPopup(parent, x, y, item, isInventory);
-}
-
-void Viewport::showPopup(MapItem *const item)
-{
-    mPopupMenu->showPopup(mMouseX, mMouseY, item);
-}
-
-void Viewport::showPopup(Window *const parent,
-                         Item *const item,
-                         const bool isInventory)
-{
-    mPopupMenu->showPopup(parent, mMouseX, mMouseY, item, isInventory);
-}
-
-void Viewport::showItemPopup(Item *const item)
-{
-    mPopupMenu->showItemPopup(mMouseX, mMouseY, item);
-}
-
-void Viewport::showItemPopup(const int itemId,
-                             const unsigned char color)
-{
-    mPopupMenu->showItemPopup(mMouseX, mMouseY, itemId, color);
-}
-
-void Viewport::showDropPopup(Item *const item)
-{
-    mPopupMenu->showDropPopup(mMouseX, mMouseY, item);
-}
-
-void Viewport::showOutfitsPopup(const int x, const int y)
-{
-    mPopupMenu->showOutfitsPopup(x, y);
-}
-
-void Viewport::showOutfitsPopup()
-{
-    mPopupMenu->showOutfitsPopup(mMouseX, mMouseY);
-}
-
-void Viewport::showSpellPopup(TextCommand *const cmd)
-{
-    mPopupMenu->showSpellPopup(mMouseX, mMouseY, cmd);
-}
-
-void Viewport::showChatPopup(const int x, const int y,
-                             ChatTab *const tab)
-{
-    mPopupMenu->showChatPopup(x, y, tab);
-}
-
-void Viewport::showChatPopup(ChatTab *const tab)
-{
-    mPopupMenu->showChatPopup(mMouseX, mMouseY, tab);
-}
-
-void Viewport::showPopup(const int x, const int y,
-                         const Being *const being)
-{
-    mPopupMenu->showPopup(x, y, being);
-}
-
-void Viewport::showPopup(const Being *const being)
-{
-    mPopupMenu->showPopup(mMouseX, mMouseY, being);
-}
-
-void Viewport::showPlayerPopup(const std::string &nick)
-{
-    mPopupMenu->showPlayerPopup(mMouseX, mMouseY, nick);
-}
-
-void Viewport::showPopup(const int x, const int y,
-                         Button *const button)
-{
-    mPopupMenu->showPopup(x, y, button);
-}
-
-void Viewport::showPopup(const int x, const int y,
-                         const ProgressBar *const bar)
-{
-    mPopupMenu->showPopup(x, y, bar);
-}
-
-void Viewport::showAttackMonsterPopup(const std::string &name,
-                                      const int type)
-{
-    mPopupMenu->showAttackMonsterPopup(mMouseX, mMouseY, name, type);
-}
-
-void Viewport::showPickupItemPopup(const std::string &name)
-{
-    mPopupMenu->showPickupItemPopup(mMouseX, mMouseY, name);
-}
-
-void Viewport::showUndressPopup(const int x, const int y,
-                                const Being *const being,
-                                Item *const item)
-{
-    mPopupMenu->showUndressPopup(x, y, being, item);
-}
-
-void Viewport::showMapPopup(const int x, const int y)
-{
-    mPopupMenu->showMapPopup(mMouseX, mMouseY, x, y);
-}
-
-void Viewport::showTextFieldPopup(TextField *const input)
-{
-    mPopupMenu->showTextFieldPopup(mMouseX, mMouseY, input);
-}
-
-void Viewport::showLinkPopup(const std::string &link)
-{
-    mPopupMenu->showLinkPopup(mMouseX, mMouseY, link);
-}
-
-void Viewport::showWindowsPopup()
-{
-    mPopupMenu->showWindowsPopup(mMouseX, mMouseY);
-}
-
-void Viewport::showNpcDialogPopup(const int npcId)
-{
-    mPopupMenu->showNpcDialogPopup(npcId, mMouseX, mMouseY);
-}
-
-void Viewport::showWindowPopup(Window *const window)
-{
-    mPopupMenu->showWindowPopup(window, mMouseX, mMouseY);
-}
-
-void Viewport::closePopupMenu()
-{
-    if (mPopupMenu)
-        mPopupMenu->handleLink("cancel", nullptr);
-}
-
 void Viewport::optionChanged(const std::string &name)
 {
     if (name == "ScrollLaziness")
@@ -918,13 +765,13 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
         || type == ActorType::NPC
         || type == ActorType::PET))
     {
-        mTextPopup->setVisible(false);
+        popupManager->hideTextPopup();
         if (mShowBeingPopup)
-            mBeingPopup->show(mMouseX, mMouseY, mHoverBeing);
+            popupManager->showBeingPopup(mMouseX, mMouseY, mHoverBeing);
     }
     else
     {
-        mBeingPopup->setVisible(false);
+        popupManager->hideBeingPopup();
     }
 
     mHoverItem = actorManager->findItem(x / mMap->getTileWidth(),
@@ -945,22 +792,22 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
             {
                 if (!mHoverSign->getComment().empty())
                 {
-                    mBeingPopup->setVisible(false);
-                    mTextPopup->show(mMouseX, mMouseY,
+                    popupManager->hideBeingPopup();
+                    popupManager->showTextPopup(mMouseX, mMouseY,
                         mHoverSign->getComment());
                 }
                 else
                 {
-                    if (mTextPopup->isPopupVisible())
-                        mTextPopup->setVisible(false);
+                    if (popupManager->isTextPopupVisible())
+                        popupManager->hideTextPopup();
                 }
                 gui->setCursorType(Cursor::CURSOR_UP);
                 return;
             }
         }
     }
-    if (mTextPopup->isPopupVisible())
-        mTextPopup->setVisible(false);
+    if (popupManager->isTextPopupVisible())
+        popupManager->hideTextPopup();
 
     if (mHoverBeing)
     {
@@ -1022,14 +869,6 @@ void Viewport::toggleCameraMode()
     UpdateStatusListener::distributeEvent();
 }
 
-void Viewport::hideBeingPopup()
-{
-    if (mBeingPopup)
-        mBeingPopup->setVisible(false);
-    if (mTextPopup)
-        mTextPopup->setVisible(false);
-}
-
 void Viewport::clearHover(const ActorSprite *const actor)
 {
     if (mHoverBeing == actor)
@@ -1050,11 +889,6 @@ void Viewport::moveCamera(const int dx, const int dy)
 {
     mCameraRelativeX += dx;
     mCameraRelativeY += dy;
-}
-
-bool Viewport::isPopupMenuVisible() const
-{
-    return mPopupMenu ? mPopupMenu->isPopupVisible() : false;
 }
 
 void Viewport::moveCameraToActor(const int actorId,
@@ -1108,10 +942,4 @@ void Viewport::validateSpeed()
         if (Game::instance())
             Game::instance()->setValidSpeed();
     }
-}
-
-void Viewport::clearPopup()
-{
-    if (mPopupMenu)
-        mPopupMenu->clear();
 }

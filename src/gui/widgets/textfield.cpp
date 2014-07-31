@@ -70,8 +70,8 @@
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
+#include "gui/popupmanager.h"
 #include "gui/skin.h"
-#include "gui/viewport.h"
 #ifdef ANDROID
 #include "gui/windowmanager.h"
 #endif
@@ -709,25 +709,8 @@ void TextField::mousePressed(MouseEvent &event)
     event.consume();
     if (event.getButton() == MouseButton::RIGHT)
     {
-        if (viewport)
-        {
-            viewport->showTextFieldPopup(this);
-        }
-        else
-        {
-            if (!mPopupMenu)
-            {
-                mPopupMenu = new PopupMenu();
-                mPopupMenu->postInit();
-            }
-            if (gui)
-            {
-                int x = 0;
-                int y = 0;
-                Gui::getMouseState(&x, &y);
-                mPopupMenu->showTextFieldPopup(x, y, this);
-            }
-        }
+        if (popupManager)
+            popupManager->showTextFieldPopup(this);
     }
     else if (event.getButton() == MouseButton::LEFT)
     {

@@ -33,7 +33,7 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/viewport.h"
+#include "gui/popupmanager.h"
 
 #include "gui/windows/setupwindow.h"
 
@@ -422,9 +422,9 @@ void OutfitWindow::mousePressed(MouseEvent &event)
     const int index = getIndexFromGrid(event.getX(), event.getY());
     if (index == -1)
     {
-        if (event.getButton() == MouseButton::RIGHT && viewport)
+        if (event.getButton() == MouseButton::RIGHT && popupManager)
         {
-            viewport->showOutfitsPopup();
+            popupManager->showOutfitsPopup();
             event.consume();
         }
         else

@@ -53,6 +53,7 @@
 #include "gui/chatconsts.h"
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
+#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 #include "gui/windowmanager.h"
 #include "gui/windowmenu.h"
@@ -965,8 +966,11 @@ void Game::changeMap(const std::string &mapPath)
     ResourceManager *const resman = ResourceManager::getInstance();
     resman->cleanProtected();
 
-    if (viewport)
-        viewport->clearPopup();
+    if (popupManager)
+    {
+        popupManager->clearPopup();
+        popupManager->closePopupMenu();
+    }
 
     // Clean up floor items, beings and particles
     if (actorManager)
@@ -975,10 +979,7 @@ void Game::changeMap(const std::string &mapPath)
     // Close the popup menu on map change so that invalid options can't be
     // executed.
     if (viewport)
-    {
-        viewport->closePopupMenu();
         viewport->cleanHoverItems();
-    }
 
     // Unset the map of the player so that its particles are cleared before
     // being deleted in the next step

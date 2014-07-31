@@ -22,6 +22,7 @@
 
 #include "gui/widgets/itemlinkhandler.h"
 
+#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/itempopup.h"
@@ -78,8 +79,8 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         }
         else if (button == MouseButton::RIGHT)
         {
-            if (viewport)
-                viewport->showLinkPopup(url);
+            if (popupManager)
+                popupManager->showLinkPopup(url);
         }
     }
     else if (!link.empty() && link[0] == '?')

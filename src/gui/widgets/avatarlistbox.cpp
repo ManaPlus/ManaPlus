@@ -28,6 +28,7 @@
 #include "being/localplayer.h"
 
 #include "gui/gui.h"
+#include "gui/popupmanager.h"
 #include "gui/skin.h"
 #include "gui/viewport.h"
 
@@ -335,7 +336,7 @@ void AvatarListBox::draw(Graphics *graphics)
 
 void AvatarListBox::mousePressed(MouseEvent &event)
 {
-    if (!actorManager || !localPlayer || !viewport
+    if (!actorManager || !localPlayer || !popupManager
         || !getFont()->getHeight())
     {
         return;
@@ -385,9 +386,9 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                     const Being *const being = actorManager->findBeingByName(
                         avatar->getName(), ActorType::PLAYER);
                     if (being)
-                        viewport->showPopup(being);
+                        popupManager->showPopup(being);
                     else
-                        viewport->showPlayerPopup(avatar->getName());
+                        popupManager->showPlayerPopup(avatar->getName());
                 }
                 break;
             }
@@ -401,7 +402,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 else
                     name = model->getAvatarAt(selected)->getName();
 
-                viewport->showAttackMonsterPopup(name,
+                popupManager->showAttackMonsterPopup(name,
                     model->getAvatarAt(selected)->getType());
                 break;
             }
@@ -414,7 +415,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 else
                     name = model->getAvatarAt(selected)->getName();
 
-                viewport->showPickupItemPopup(name);
+                popupManager->showPickupItemPopup(name);
                 break;
             }
             default:
@@ -425,7 +426,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 {
                     MapItem *const mapItem = map->findPortalXY(
                         ava->getX(), ava->getY());
-                    viewport->showPopup(mapItem);
+                    popupManager->showPopup(mapItem);
                 }
                 break;
             }

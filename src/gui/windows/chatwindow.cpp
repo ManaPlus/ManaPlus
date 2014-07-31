@@ -43,8 +43,8 @@
 #include "gui/chatconsts.h"
 #include "gui/focushandler.h"
 #include "gui/gui.h"
+#include "gui/popupmanager.h"
 #include "gui/skin.h"
-#include "gui/viewport.h"
 
 #include "gui/models/colorlistmodel.h"
 
@@ -657,7 +657,7 @@ void ChatWindow::mousePressed(MouseEvent &event)
 
     if (event.getButton() == MouseButton::RIGHT)
     {
-        if (viewport)
+        if (popupManager)
         {
             Tab *const tab = mChatTabs->getSelectedTab();
             if (tab)
@@ -674,7 +674,7 @@ void ChatWindow::mousePressed(MouseEvent &event)
                 {
                     ChatTab *const cTab = dynamic_cast<ChatTab*>(tab);
                     if (cTab)
-                        viewport->showChatPopup(cTab);
+                        popupManager->showChatPopup(cTab);
                 }
             }
         }

@@ -25,8 +25,10 @@
 
 #include "graphicsvertexes.h"
 
+#include "gui/popupmanager.h"
 #include "gui/skin.h"
-#include "gui/viewport.h"
+
+#include "gui/widgets/windowcontainer.h"
 
 #include "utils/delete2.h"
 
@@ -229,8 +231,11 @@ void Popup::position(const int x, const int y)
 
 void Popup::mouseMoved(MouseEvent &event A_UNUSED)
 {
-    if (viewport)
-        viewport->hideBeingPopup();
+    if (popupManager)
+    {
+        popupManager->hideBeingPopup();
+        popupManager->hideTextPopup();
+    }
     mRedraw = true;
 }
 

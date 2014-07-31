@@ -38,6 +38,7 @@
 
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
+#include "gui/popupmanager.h"
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
@@ -363,9 +364,9 @@ impHandler0(quit)
 {
     if (!Game::instance())
         return false;
-    if (viewport && viewport->isPopupMenuVisible())
+    if (popupManager && popupManager->isPopupMenuVisible())
     {
-        viewport->closePopupMenu();
+        popupManager->closePopupMenu();
         return true;
     }
     else if (!quitDialog)
@@ -1121,9 +1122,9 @@ impHandler0(showKeyboard)
 
 impHandler0(showWindows)
 {
-    if (viewport)
+    if (popupManager)
     {
-        viewport->showWindowsPopup();
+        popupManager->showWindowsPopup();
         return true;
     }
     return false;

@@ -29,6 +29,7 @@
 
 #include "being/localplayer.h"
 
+#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/textpopup.h"
@@ -442,7 +443,7 @@ void Minimap::mouseReleased(MouseEvent &event)
 {
     Window::mouseReleased(event);
 
-    if (!localPlayer || !viewport)
+    if (!localPlayer || !popupManager)
         return;
 
     if (event.getButton() == MouseButton::LEFT)
@@ -458,7 +459,7 @@ void Minimap::mouseReleased(MouseEvent &event)
         int x = event.getX();
         int y = event.getY();
         screenToMap(x, y);
-        viewport->showMapPopup(x, y);
+        popupManager->showMapPopup(x, y);
     }
 }
 

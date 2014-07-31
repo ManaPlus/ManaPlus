@@ -30,8 +30,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "gui/popupmanager.h"
 #include "gui/skin.h"
-#include "gui/viewport.h"
 
 #include "gui/popups/textpopup.h"
 
@@ -443,9 +443,6 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
 
 void MiniStatusWindow::mousePressed(MouseEvent &event)
 {
-    if (!viewport)
-        return;
-
     if (event.getButton() == MouseButton::RIGHT)
     {
         const ProgressBar *const bar = dynamic_cast<ProgressBar*>(
@@ -453,9 +450,9 @@ void MiniStatusWindow::mousePressed(MouseEvent &event)
         if (!bar)
             return;
         event.consume();
-        if (viewport)
+        if (popupManager)
         {
-            viewport->showPopup(getX() + event.getX(),
+            popupManager->showPopup(getX() + event.getX(),
                 getY() + event.getY(), bar);
         }
     }

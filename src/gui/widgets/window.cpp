@@ -74,6 +74,7 @@
 
 #include "gui/focushandler.h"
 #include "gui/gui.h"
+#include "gui/popupmanager.h"
 #include "gui/skin.h"
 #include "gui/viewport.h"
 
@@ -763,10 +764,10 @@ void Window::mousePressed(MouseEvent &event)
     }
     else if (button == MouseButton::RIGHT)
     {
-        if (viewport)
+        if (popupManager)
         {
             event.consume();
-            viewport->showWindowPopup(this);
+            popupManager->showWindowPopup(this);
         }
     }
 }
@@ -837,8 +838,11 @@ void Window::updateResizeHandler(MouseEvent &event)
 void Window::mouseMoved(MouseEvent &event)
 {
     updateResizeHandler(event);
-    if (viewport)
-        viewport->hideBeingPopup();
+    if (popupManager)
+    {
+        popupManager->hideBeingPopup();
+        popupManager->hideTextPopup();
+    }
 }
 
 bool Window::canMove() const

@@ -383,6 +383,8 @@ SET(SRCS
     gui/onlineplayer.h
     gui/palette.cpp
     gui/palette.h
+    gui/popupmanager.cpp
+    gui/popupmanager.h
     gui/popups/popupmenu.cpp
     gui/popups/popupmenu.h
     gui/windows/questswindow.cpp

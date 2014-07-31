@@ -33,6 +33,7 @@
 #include "being/being.h"
 
 #include "gui/gui.h"
+#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"
@@ -947,8 +948,8 @@ void NpcDialog::mousePressed(MouseEvent &event)
         && event.getSource() == mTextBox)
     {
         event.consume();
-        if (viewport)
-            viewport->showNpcDialogPopup(mNpcId);
+        if (popupManager)
+            popupManager->showNpcDialogPopup(mNpcId);
     }
 }
 

@@ -26,7 +26,7 @@
 #include "being/localplayer.h"
 
 #include "gui/dialogsmanager.h"
-#include "gui/viewport.h"
+#include "gui/popupmanager.h"
 
 #include "gui/windows/okdialog.h"
 #include "gui/windows/npcdialog.h"
@@ -51,8 +51,8 @@ struct PlayerDeathListener final : public ActionListener
 
         DialogsManager::closeDialogs();
 
-        if (viewport)
-            viewport->closePopupMenu();
+        if (popupManager)
+            popupManager->closePopupMenu();
 
         NpcDialog::clearDialogs();
         if (localPlayer)

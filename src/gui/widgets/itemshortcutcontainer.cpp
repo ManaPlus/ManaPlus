@@ -33,6 +33,7 @@
 
 #include "input/inputmanager.h"
 
+#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"
@@ -333,9 +334,9 @@ void ItemShortcutContainer::mousePressed(MouseEvent &event)
     else if (event.getButton() == MouseButton::RIGHT)
     {
         event.consume();
-        if (viewport && selShortcut)
+        if (popupManager && selShortcut)
         {
-            viewport->showItemPopup(selShortcut->getItem(index),
+            popupManager->showItemPopup(selShortcut->getItem(index),
                 selShortcut->getItemColor(index));
         }
     }

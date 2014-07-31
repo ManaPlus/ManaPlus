@@ -32,7 +32,7 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "gui/viewport.h"
+#include "gui/popupmanager.h"
 
 #include "gui/fonts/font.h"
 
@@ -358,13 +358,13 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
              */
             const int mx = x + getX();
             const int my = y + getY();
-            if (viewport)
+            if (popupManager)
             {
                 event.consume();
                 if (mForing)
-                    viewport->showUndressPopup(mx, my, mBeing, item);
+                    popupManager->showUndressPopup(mx, my, mBeing, item);
                 else
-                    viewport->showPopup(this, mx, my, item, true);
+                    popupManager->showPopup(this, mx, my, item, true);
                 return;
             }
         }

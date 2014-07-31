@@ -34,7 +34,7 @@
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
-#include "gui/viewport.h"
+#include "gui/popupmanager.h"
 
 #include "gui/fonts/font.h"
 
@@ -467,8 +467,8 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
         const int mx = event.getX() + getX();
         const int my = event.getY() + getY();
 
-        if (viewport)
-            viewport->showPopup(this, mx, my, item, isMainInventory());
+        if (popupManager)
+            popupManager->showPopup(this, mx, my, item, isMainInventory());
     }
 
     if (!mInventory)

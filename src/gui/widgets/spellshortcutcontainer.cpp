@@ -27,6 +27,7 @@
 #include "settings.h"
 #include "spellshortcut.h"
 
+#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"
@@ -259,8 +260,8 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
         if (itemId >= 0)
             spell = spellManager->getSpell(itemId);
 
-        if (spell && viewport)
-            viewport->showSpellPopup(spell);
+        if (spell && popupManager)
+            popupManager->showSpellPopup(spell);
     }
 }
 

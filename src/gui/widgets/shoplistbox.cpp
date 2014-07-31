@@ -27,6 +27,7 @@
 
 #include "being/playerinfo.h"
 
+#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"
@@ -233,7 +234,8 @@ void ShopListBox::mouseReleased(MouseEvent& event)
             return;
 
         Item *const item = mShopItems->at(mSelected);
-        viewport->showItemPopup(item);
+        if (popupManager)
+            popupManager->showItemPopup(item);
     }
 }
 

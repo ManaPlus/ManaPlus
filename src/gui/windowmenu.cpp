@@ -28,8 +28,8 @@
 
 #include "gui/buttoninfo.h"
 #include "gui/buttontext.h"
+#include "gui/popupmanager.h"
 #include "gui/skin.h"
-#include "gui/viewport.h"
 
 #include "gui/popups/textpopup.h"
 
@@ -245,7 +245,7 @@ void WindowMenu::addButton(const char *const text,
 
 void WindowMenu::mousePressed(MouseEvent &event)
 {
-    if (!viewport)
+    if (!popupManager)
         return;
 
     if (event.getButton() == MouseButton::RIGHT)
@@ -257,9 +257,9 @@ void WindowMenu::mousePressed(MouseEvent &event)
         Button *const btn = dynamic_cast<Button*>(event.getSource());
         if (!btn)
             return;
-        if (viewport)
+        if (popupManager)
         {
-            viewport->showPopup(getX() + event.getX(),
+            popupManager->showPopup(getX() + event.getX(),
                 getY() + event.getY(), btn);
         }
     }

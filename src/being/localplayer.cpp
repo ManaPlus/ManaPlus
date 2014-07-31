@@ -48,7 +48,7 @@
 #include "input/keyboardconfig.h"
 
 #include "gui/gui.h"
-#include "gui/viewport.h"
+#include "gui/popupmanager.h"
 
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/ministatuswindow.h"
@@ -2641,8 +2641,8 @@ void LocalPlayer::updateCoords()
     {
         if (socialWindow)
             socialWindow->updatePortals();
-        if (viewport)
-            viewport->hideBeingPopup();
+        if (popupManager)
+            popupManager->hideBeingPopup();
         updateMusic();
     }
 

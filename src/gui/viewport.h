@@ -121,93 +121,6 @@ class Viewport final : public WindowContainer,
         void mouseMoved(MouseEvent &event) override final;
 
         /**
-         * Shows a popup for an item.
-         * TODO Find some way to get rid of Item here
-         */
-        void showPopup(Window *const parent,
-                       const int x, const int y,
-                       Item *const item,
-                       const bool isInventory = true);
-
-        /**
-         * Shows a popup for an item.
-         * TODO Find some way to get rid of Item here
-         */
-        void showPopup(Window *const parent,
-                       Item *const item,
-                       const bool isInventory = true);
-
-        void showPopup(const int x, const int y,
-                       Button *const button);
-
-        void showPopup(const int x, const int y,
-                       const ProgressBar *const bar);
-
-        void showPopup(MapItem *const item);
-
-        void showItemPopup(Item *const item);
-
-        void showItemPopup(const int itemId,
-                           const unsigned char color = 1);
-
-        void showDropPopup(Item *const item);
-
-        /**
-         * Shows a popup for being.
-         */
-        void showPopup(const int x, const int y,
-                       const Being *const being);
-
-        void showPopup(const Being *const being);
-
-        void showPlayerPopup(const std::string &nick);
-
-        void showOutfitsPopup(const int x, const int y);
-
-        void showOutfitsPopup();
-
-        void showSpellPopup(TextCommand *const cmd);
-
-        void showAttackMonsterPopup(const std::string &name,
-                                    const int type);
-
-        void showPickupItemPopup(const std::string &name);
-
-        /**
-         * Shows the related popup menu when right click on the chat
-         * at the specified mouse coordinates.
-         */
-        void showChatPopup(const int x, const int y,
-                           ChatTab *const tab);
-
-        /**
-         * Shows the related popup menu when right click on the chat
-         */
-        void showChatPopup(ChatTab *const tab);
-
-        void showUndressPopup(const int x, const int y,
-                              const Being *const being,
-                              Item *const item);
-
-        void showMapPopup(const int x, const int y);
-
-        void showTextFieldPopup(TextField *const input);
-
-        void showLinkPopup(const std::string &link);
-
-        void showWindowsPopup();
-
-        void showNpcDialogPopup(const int npcId);
-
-        void showWindowPopup(Window *const window);
-
-        /**
-         * Closes the popup menu. Needed for when the player dies or switching
-         * maps.
-         */
-        void closePopupMenu();
-
-        /**
          * A relevant config option changed.
          */
         void optionChanged(const std::string &name) override final;
@@ -243,11 +156,6 @@ class Viewport final : public WindowContainer,
         { mPixelViewX += x; mPixelViewY += y; }
 
         /**
-         * Hides the BeingPopup.
-         */
-        void hideBeingPopup();
-
-        /**
          * Clear all hover item\being etc
          */
         void cleanHoverItems();
@@ -269,8 +177,6 @@ class Viewport final : public WindowContainer,
         void setCameraRelativeY(const int n)
         { mCameraRelativeY = n; }
 
-        bool isPopupMenuVisible() const A_WARN_UNUSED;
-
         void moveCameraToActor(const int actorId,
                                const int x = 0,
                                const int y = 0);
@@ -280,8 +186,6 @@ class Viewport final : public WindowContainer,
         void moveCameraRelative(const int x, const int y);
 
         void returnCamera();
-
-        void clearPopup();
 
     protected:
         friend class ActorManager;
@@ -318,12 +222,9 @@ class Viewport final : public WindowContainer,
 
         Map *mMap;                   /**< The current map. */
 
-        PopupMenu *mPopupMenu;       /**< Popup menu. */
         Being *mHoverBeing;          /**< Being mouse is currently over. */
         FloorItem *mHoverItem;       /**< FloorItem mouse is currently over. */
         MapItem *mHoverSign;         /**< Map sign mouse is currently over. */
-        BeingPopup *mBeingPopup;     /**< Being information popup. */
-        TextPopup *mTextPopup;       /**< Map Item information popup. */
 
         int mScrollRadius;
         int mScrollLaziness;

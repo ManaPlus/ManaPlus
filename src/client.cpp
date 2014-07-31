@@ -54,6 +54,7 @@
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
 #include "gui/skin.h"
+#include "gui/popupmanager.h"
 #include "gui/theme.h"
 #include "gui/windowmanager.h"
 
@@ -381,6 +382,8 @@ void Client::gameInit()
     gui = new Gui();
     gui->postInit(mainGraphics);
 
+    popupManager = new PopupManager;
+
     initSoundManager();
     eventsManager.init();
 
@@ -645,6 +648,7 @@ void Client::gameClear()
         logger->log1("Quitting2");
 
     delete2(mCurrentDialog);
+    delete2(popupManager);
     delete2(gui);
 
     if (Net::getInventoryHandler())

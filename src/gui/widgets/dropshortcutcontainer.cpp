@@ -28,6 +28,7 @@
 
 #include "being/playerinfo.h"
 
+#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"
@@ -214,8 +215,8 @@ void DropShortcutContainer::mousePressed(MouseEvent &event)
         Item *const item = inv->findItem(dropShortcut->getItem(index),
             dropShortcut->getItemColor(index));
 
-        if (viewport)
-            viewport->showDropPopup(item);
+        if (popupManager)
+            popupManager->showDropPopup(item);
     }
 }
 
