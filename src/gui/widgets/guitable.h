@@ -109,7 +109,7 @@ class GuiTable final : public Widget,
          * \param linewise: Whether to enable linewise selection mode
          */
         void setLinewiseSelection(bool linewise)
-        { mLinewiseMode = linewise;}
+        { mLinewiseMode = linewise; }
 
         // Inherited from Widget
         void draw(Graphics* graphics) override final;

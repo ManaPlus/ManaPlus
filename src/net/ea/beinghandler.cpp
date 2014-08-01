@@ -42,7 +42,6 @@
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/killstats.h"
-#include "gui/windows/questswindow.h"
 
 #include "utils/timer.h"
 

@@ -43,7 +43,6 @@
 
 #include "resources/map/map.h"
 
-#include "listeners/updatestatuslistener.h"
 #include "listeners/playerdeathlistener.h"
 #include "listeners/weightlistener.h"
 

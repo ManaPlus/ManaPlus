@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IPC_H
-#define IPC_H
+#ifndef NET_IPC_H
+#define NET_IPC_H
 
 #include "net/sdltcpnet.h"
 
@@ -72,4 +72,4 @@ class IPC final
 
 extern IPC *ipc;
 
-#endif  // IPC_H
+#endif  // NET_IPC_H

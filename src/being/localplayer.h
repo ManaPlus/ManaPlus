@@ -443,7 +443,6 @@ class LocalPlayer final : public Being,
         unsigned int mCrazyMoveState;
         // move state. used if mMoveType == 2
         unsigned int mMoveState;
-        unsigned int mImitationMode;
 
         int mLastTargetX;
         int mLastTargetY;

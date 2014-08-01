@@ -1445,7 +1445,7 @@ void Being::logic()
         const int yOffset2 = yOffset - mSortOffsetY - mFixedOffsetY * mapTileSize / 2;
 */
         const int halfTile = mapTileSize / 2;
-        const float offset2 = mOffsetY * abs(offset) / 2;
+        const float offset2 = static_cast<float>(mOffsetY * abs(offset)) / 2;
         mSortOffsetY = (mOldHeight - mFixedOffsetY + mOffsetY)
             * halfTile - offset2;
         const float yOffset3 = (mY + 1) * mapTileSize + yOffset

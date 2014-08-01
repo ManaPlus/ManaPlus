@@ -74,8 +74,6 @@
 
 #include "localconsts.h"
 
-class PopupMenu;
-
 /**
  * A text field.
  *
@@ -252,7 +250,6 @@ class TextField notfinal : public Widget,
         int mXScroll;
 
         const Color *mCaretColor;
-        PopupMenu *mPopupMenu;
         static int instances;
         static float mAlpha;
         static ImageRect skin;

@@ -107,7 +107,6 @@ class OutfitWindow final : public Window,
         Label *mKeyLabel;
 
         Color mBorderColor;
-        Color mBackgroundColor;
 
         int mCurrentOutfit;
         int mBoxWidth;

@@ -33,7 +33,6 @@
 
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"
-#include "resources/map/maptype.h"
 #include "resources/map/speciallayer.h"
 
 #include "being/localplayer.h"
@@ -46,13 +45,7 @@
 
 #include "gui/fonts/font.h"
 
-#include "gui/popups/beingpopup.h"
-#include "gui/popups/popupmenu.h"
-#include "gui/popups/textpopup.h"
-
 #include "gui/windows/ministatuswindow.h"
-
-#include "utils/delete2.h"
 
 #include "debug.h"
 

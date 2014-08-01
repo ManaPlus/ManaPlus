@@ -78,13 +78,10 @@
 
 #include "gui/fonts/font.h"
 
-#include "gui/popups/popupmenu.h"
-
 #include "resources/image.h"
 #include "resources/imagerect.h"
 
 #include "utils/copynpaste.h"
-#include "utils/delete2.h"
 #include "utils/stringutils.h"
 #include "utils/timer.h"
 
@@ -111,7 +108,6 @@ TextField::TextField(const Widget2 *restrict const widget,
     mCaretPosition(0),
     mXScroll(0),
     mCaretColor(&getThemeColor(Theme::CARET)),
-    mPopupMenu(nullptr),
     mMinimum(0),
     mMaximum(0),
     mLastEventPaste(false),
@@ -161,8 +157,6 @@ TextField::~TextField()
 {
     if (gui)
         gui->removeDragged(this);
-
-    delete2(mPopupMenu);
 
     instances--;
     if (instances == 0)

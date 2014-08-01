@@ -28,8 +28,6 @@
 #include "utils/sdlhelper.h"
 #include "utils/stringutils.h"
 
-#include <iostream>
-
 #include "debug.h"
 
 IPC *ipc = nullptr;
@@ -66,7 +64,7 @@ bool IPC::init()
 {
     IPaddress ip;
 
-    if(TcpNet::resolveHost(&ip, nullptr, mPort) == -1)
+    if (TcpNet::resolveHost(&ip, nullptr, mPort) == -1)
     {
         logger->log("IPC: resolveHost error: %s\n", TcpNet::getError());
         return false;
@@ -95,7 +93,7 @@ int IPC::acceptLoop(void *ptr)
 
     IPC *const ipc1 = reinterpret_cast<IPC*>(ptr);
     const int max_length = 1024;
-    TcpNet::SocketSet set = TcpNet::allocSocketSet(1);
+    const TcpNet::SocketSet set = TcpNet::allocSocketSet(1);
     TcpNet::addSocket(set, ipc1->mSocket);
     ipc->mListen = true;
     while (ipc1->mListen)
@@ -104,7 +102,7 @@ int IPC::acceptLoop(void *ptr)
         if (!TcpNet::socketReady(ipc1->mSocket))
             continue;
 
-        TcpNet::Socket sock = TcpNet::accept(ipc1->mSocket);
+        const TcpNet::Socket sock = TcpNet::accept(ipc1->mSocket);
         if (!sock)
         {
             logger->log_r("IPC: unable to accept connection");
@@ -129,11 +127,11 @@ int IPC::acceptLoop(void *ptr)
         ipc1->mThreadLocked = false;
 
         ipc1->mNumReqs ++;
-        const std::string resp = strprintf("[%d] %s\n",
+        const std::string resp = strprintf("[%u] %s\n",
             ipc1->mNumReqs, req.c_str());
 
-        const char *respc = resp.c_str();
-        const int len = strlen(respc) + 1;
+        const char *const respc = resp.c_str();
+        const int len = static_cast<int>(strlen(respc)) + 1;
         result = TcpNet::send(sock, respc, len);
         if (result < len)
         {
@@ -165,13 +163,13 @@ void IPC::start()
 
     unsigned short port(44007);
     if (getenv("IPC_PORT"))
-        port = atoi(getenv("IPC_PORT"));
+        port = static_cast<unsigned short>(atoi(getenv("IPC_PORT")));
 
     logger->log("Starting IPC...");
     ipc = new IPC;
     for (int f = port; f < 65535; f ++)
     {
-        ipc->setPort(f);
+        ipc->setPort(static_cast<unsigned short>(f));
         logger->log("  -> trying port %d...", f);
         if (ipc->init())
         {

@@ -1223,8 +1223,12 @@ void LocalPlayer::moveToHome()
 
 void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
 {
-    if (settings.attackWeaponType == 1 || !target || !PlayerInfo::getInventory())
+    if (settings.attackWeaponType == 1
+        || !target
+        || !PlayerInfo::getInventory())
+    {
         return;
+    }
 
     bool allowSword = false;
     const int dx = target->getTileX() - mX;

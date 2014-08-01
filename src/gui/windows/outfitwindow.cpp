@@ -75,7 +75,6 @@ OutfitWindow::OutfitWindow() :
     mKeyLabel(new Label(this, strprintf(_("Key: %s"),
         keyName(0).c_str()))),
     mBorderColor(getThemeColor(Theme::BORDER, 64)),
-    mBackgroundColor(getThemeColor(Theme::BACKGROUND, 32)),
     mCurrentOutfit(0),
     mBoxWidth(33),
     mBoxHeight(33),
@@ -91,6 +90,8 @@ OutfitWindow::OutfitWindow() :
     setResizable(true);
     setCloseButton(true);
     setStickyButtonLock(true);
+
+    mBackgroundColor = getThemeColor(Theme::BACKGROUND, 32);
 
     setDefaultSize(250, 400, 150, 290);
     setMinWidth(145);

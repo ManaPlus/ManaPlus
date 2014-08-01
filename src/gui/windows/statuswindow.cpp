@@ -36,8 +36,6 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "gui/viewport.h"
-
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/setupwindow.h"
 
@@ -50,6 +48,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/statuswindowattrs.h"
 #include "gui/widgets/vertcontainer.h"
+#include "gui/widgets/windowcontainer.h"
 
 #include "net/net.h"
 #include "net/playerhandler.h"

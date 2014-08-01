@@ -22,35 +22,13 @@
 
 #include "gui/popupmanager.h"
 
-#include "actormanager.h"
-#include "configuration.h"
-#include "game.h"
-#include "settings.h"
 #include "sdlshared.h"
-#include "textmanager.h"
 
-#include "resources/mapitemtype.h"
-
-#include "resources/map/map.h"
-#include "resources/map/mapitem.h"
-#include "resources/map/maptype.h"
-#include "resources/map/speciallayer.h"
-
-#include "being/localplayer.h"
-#include "being/playerinfo.h"
-
-#include "input/inputmanager.h"
-
-#include "gui/gui.h"
 #include "gui/viewport.h"
-
-#include "gui/fonts/font.h"
 
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/popupmenu.h"
 #include "gui/popups/textpopup.h"
-
-#include "gui/windows/ministatuswindow.h"
 
 #include "utils/delete2.h"
 
@@ -200,7 +178,8 @@ void PopupManager::showAttackMonsterPopup(const std::string &name,
 
 void PopupManager::showPickupItemPopup(const std::string &name)
 {
-    mPopupMenu->showPickupItemPopup(viewport->getMouseX(), viewport->getMouseY(),
+    mPopupMenu->showPickupItemPopup(viewport->getMouseX(),
+        viewport->getMouseY(),
         name);
 }
 

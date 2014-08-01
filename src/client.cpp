@@ -94,9 +94,7 @@
 #include "particle/particle.h"
 
 #include "resources/imagehelper.h"
-#include "resources/openglimagehelper.h"
 #include "resources/resourcemanager.h"
-#include "resources/surfaceimagehelper.h"
 #include "resources/spritereference.h"
 
 #include "resources/db/avatardb.h"
@@ -124,7 +122,6 @@
 #endif
 #include "utils/physfstools.h"
 #include "utils/sdlcheckutils.h"
-#include "utils/sdlhelper.h"
 #include "utils/timer.h"
 
 #include "utils/translation/translationmanager.h"

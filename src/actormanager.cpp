@@ -1737,8 +1737,8 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
         srcBeing->getTileY() + dy);
     dstBeing->setName(srcBeing->getName());
     dstBeing->setDirection(srcBeing->getDirection());
-    const size_t sz = srcBeing->getSpritesCount();
-    for (size_t slot = 0; slot < sz; slot ++)
+    const int sz = static_cast<int>(srcBeing->getSpritesCount());
+    for (int slot = 0; slot < sz; slot ++)
     {
         const int spriteId = srcBeing->getSpriteID(slot);
         const unsigned char color = srcBeing->getSpriteColor(slot);

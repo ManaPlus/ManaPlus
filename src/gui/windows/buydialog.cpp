@@ -51,7 +51,6 @@
 #include "resources/iteminfo.h"
 
 #include "utils/delete2.h"
-#include "utils/gettext.h"
 
 #include <algorithm>
 

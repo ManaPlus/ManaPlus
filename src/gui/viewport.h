@@ -32,21 +32,11 @@
 #include "listeners/mouselistener.h"
 
 class ActorSprite;
-class Button;
 class Being;
-class BeingPopup;
-class ChatTab;
 class FloorItem;
 class Graphics;
-class Item;
 class Map;
 class MapItem;
-class PopupMenu;
-class ProgressBar;
-class TextCommand;
-class TextField;
-class TextPopup;
-class Window;
 
 /** Delay between two mouse calls when dragging mouse and move the player */
 const int walkingMouseDelay = 500;
