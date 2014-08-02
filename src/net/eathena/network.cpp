@@ -106,9 +106,9 @@ int16_t packet_lengths[] =
   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
 };
 
-static const int packet_lengths_size
-    = static_cast<int>(sizeof(packet_lengths) / sizeof(int16_t));
-static const int messagesSize = 0xffff;
+static const unsigned int packet_lengths_size
+    = static_cast<unsigned int>(sizeof(packet_lengths) / sizeof(int16_t));
+static const unsigned int messagesSize = 0xFFFFU;
 Network *Network::mInstance = nullptr;
 
 Network::Network() :
@@ -150,7 +150,7 @@ void Network::unregisterHandler(MessageHandler *const handler)
 
 void Network::clearHandlers()
 {
-    for (int f = 0; f < messagesSize; f ++)
+    for (size_t f = 0; f < messagesSize; f ++)
     {
         if (mMessageHandlers[f])
         {
