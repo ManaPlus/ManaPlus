@@ -164,7 +164,7 @@ void SpellShortcutContainer::mousePressed(MouseEvent &event)
     if (index == -1)
         return;
 
-    const unsigned int eventButton = event.getButton();
+    const MouseButton::Type eventButton = event.getButton();
     if (eventButton == MouseButton::LEFT)
     {
         const int itemId = getItemByIndex(index);
@@ -200,7 +200,7 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
     }
 
     const int itemId = getItemByIndex(index);
-    const unsigned int eventButton = event.getButton();
+    const MouseButton::Type eventButton = event.getButton();
 
     if (eventButton == MouseButton::LEFT)
     {

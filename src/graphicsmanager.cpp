@@ -246,7 +246,7 @@ void GraphicsManager::createRenderers()
         if (settings.options.renderer < 0)
         {
             useOpenGL = intToRenderType(config.getIntValue("opengl"));
-            settings.options.renderer = useOpenGL;
+            settings.options.renderer = static_cast<int>(useOpenGL);
         }
         else
         {

@@ -29,6 +29,7 @@
 
 #include "resources/map/blockmask.h"
 #include "resources/map/blocktype.h"
+#include "resources/map/maptype.h"
 #include "resources/map/properties.h"
 
 #include "listeners/configlistener.h"
@@ -115,7 +116,7 @@ class Map final : public Properties, public ConfigListener
          */
         void drawCollision(Graphics *const graphics,
                            const int scrollX, const int scrollY,
-                           const int debugFlags) const;
+                           const MapType::MapType drawFlags) const;
 
         /**
          * Adds a layer to this map. The map takes ownership of the layer.
@@ -217,10 +218,10 @@ class Map final : public Properties, public ConfigListener
         void addAnimation(const int gid, TileAnimation *const animation)
         { mTileAnimations[gid] = animation; }
 
-        void setDrawLayersFlags(const int n)
+        void setDrawLayersFlags(const MapType::MapType &n)
         { mDrawLayersFlags = n; }
 
-        int getDrawLayersFlags() const A_WARN_UNUSED
+        MapType::MapType getDrawLayersFlags() const A_WARN_UNUSED
         { return mDrawLayersFlags; }
 
         void addExtraLayer();
@@ -379,8 +380,8 @@ class Map final : public Properties, public ConfigListener
         Actors mActors;
         bool mHasWarps;
 
-        // debug flags
-        int mDrawLayersFlags;
+        // draw flags
+        MapType::MapType mDrawLayersFlags;
 
         // Pathfinding members
         unsigned int mOnClosedList;

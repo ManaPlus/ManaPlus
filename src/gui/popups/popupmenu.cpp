@@ -1419,7 +1419,8 @@ void PopupMenu::handleLink(const std::string &link,
         }
         else
         {
-            dialog->setText(Being::loadComment(mNick, mType));
+            dialog->setText(Being::loadComment(mNick,
+                static_cast<ActorType::Type>(mType)));
         }
         dialog->setActionEventId("ok");
         dialog->addActionListener(&mPlayerListener);

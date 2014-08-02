@@ -500,7 +500,7 @@ void Viewport::mousePressed(MouseEvent &event)
 
     mMousePressX = event.getX();
     mMousePressY = event.getY();
-    const unsigned int eventButton = event.getButton();
+    const MouseButton::Type eventButton = event.getButton();
     const int pixelX = mMousePressX + mPixelViewX;
     const int pixelY = mMousePressY + mPixelViewY;
 
@@ -697,7 +697,7 @@ void Viewport::mouseReleased(MouseEvent &event)
         mMouseClicked = false;
         if (event.getSource() != this || event.isConsumed())
             return;
-        const unsigned int eventButton = event.getButton();
+        const MouseButton::Type eventButton = event.getButton();
         if (eventButton == MouseButton::LEFT)
         {
             // long button press

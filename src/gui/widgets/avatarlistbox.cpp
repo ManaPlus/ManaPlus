@@ -129,7 +129,9 @@ void AvatarListBox::draw(Graphics *graphics)
         if (!a)
             continue;
 
-        if (a->getType() != MapItemType::SEPARATOR)
+        const MapItemType::Type type = static_cast<MapItemType::Type>(
+            a->getType());
+        if (type != MapItemType::SEPARATOR)
         {
             // Draw online status
             const Image *const icon = a->getOnline()
@@ -165,6 +167,8 @@ void AvatarListBox::draw(Graphics *graphics)
         if (!a)
             continue;
 
+        const MapItemType::Type type = static_cast<MapItemType::Type>(
+            a->getType());
         std::string text;
 
         if (a->getMaxHp() > 0)
@@ -304,7 +308,7 @@ void AvatarListBox::draw(Graphics *graphics)
         // Draw Name
         if (a->getDisplayBold())
         {
-            if (a->getType() == MapItemType::SEPARATOR)
+            if (type == MapItemType::SEPARATOR)
             {
                 boldFont->drawString(graphics, text,
                     mImagePadding + mPadding, y + mPadding);
@@ -317,7 +321,7 @@ void AvatarListBox::draw(Graphics *graphics)
         }
         else
         {
-            if (a->getType() == MapItemType::SEPARATOR)
+            if (type == MapItemType::SEPARATOR)
             {
                 font->drawString(graphics, text, mImagePadding + mPadding,
                     y + mPadding);
@@ -357,11 +361,14 @@ void AvatarListBox::mousePressed(MouseEvent &event)
     if (!ava)
         return;
 
+    const MapItemType::Type type = static_cast<MapItemType::Type>(
+        ava->getType());
+
     event.consume();
     const unsigned int eventButton = event.getButton();
     if (eventButton == MouseButton::LEFT)
     {
-        if (ava->getType() == AVATAR_PLAYER)
+        if (type == MapItemType::EMPTY)
         {
             const Being *const being = actorManager->findBeingByName(
                 ava->getName(), ActorType::PLAYER);
@@ -375,9 +382,8 @@ void AvatarListBox::mousePressed(MouseEvent &event)
     }
     else if (eventButton == MouseButton::RIGHT)
     {
-        switch (ava->getType())
+        switch (type)
         {
-            // AVATAR_PLAYER
             case MapItemType::EMPTY:
             {
                 const Avatar *const avatar = model->getAvatarAt(selected);
@@ -403,7 +409,8 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                     name = model->getAvatarAt(selected)->getName();
 
                 popupManager->showAttackMonsterPopup(name,
-                    model->getAvatarAt(selected)->getType());
+                    static_cast<ActorType::Type>(model->getAvatarAt(
+                    selected)->getType()));
                 break;
             }
             case MapItemType::PICKUP:
@@ -434,7 +441,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
     }
     else if (eventButton == MouseButton::MIDDLE)
     {
-        if (ava->getType() == AVATAR_PLAYER && chatWindow)
+        if (type == MapItemType::EMPTY && chatWindow)
         {
             const WhisperTab *const tab = chatWindow->addWhisperTab(
                 model->getAvatarAt(selected)->getName(), true);

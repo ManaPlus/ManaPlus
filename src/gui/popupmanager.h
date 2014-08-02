@@ -23,6 +23,13 @@
 #ifndef GUI_POPUPMANAGER_H
 #define GUI_POPUPMANAGER_H
 
+#include "being/actortype.h"
+
+#include <string>
+#include <vector>
+
+#include "localconsts.h"
+
 class ActorSprite;
 class Button;
 class Being;
@@ -37,11 +44,6 @@ class TextCommand;
 class TextField;
 class TextPopup;
 class Window;
-
-#include <string>
-#include <vector>
-
-#include "localconsts.h"
 
 class PopupManager final
 {
@@ -115,7 +117,7 @@ class PopupManager final
         void showSpellPopup(TextCommand *const cmd);
 
         void showAttackMonsterPopup(const std::string &name,
-                                    const int type);
+                                    const ActorType::Type &type);
 
         void showPickupItemPopup(const std::string &name);
 

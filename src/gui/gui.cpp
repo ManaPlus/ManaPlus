@@ -488,7 +488,8 @@ void Gui::draw()
             const int posY = mouseY - (image->mBounds.h / 2);
             mGraphics->drawImage(image, posX, posY);
         }
-        Image *const mouseCursor = mMouseCursors->get(mCursorType);
+        Image *const mouseCursor = mMouseCursors->get(
+            static_cast<int>(mCursorType));
         if (mouseCursor)
         {
             mouseCursor->setAlpha(mMouseCursorAlpha);
@@ -845,7 +846,7 @@ void Gui::distributeMouseEvent(Widget *const source,
             std::list<MouseListener*> mouseListeners
                 = widget->getMouseListeners();
 
-            unsigned int mouseType = event.getType();
+            const MouseEventType::Type mouseType = event.getType();
             // Send the event to all mouse listeners of the widget.
             FOR_EACH (std::list<MouseListener*>::const_iterator,
                  it, mouseListeners)

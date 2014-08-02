@@ -466,7 +466,7 @@ void GameModifiers::resetModifiers()
             viewport->toggleCameraMode();
         Map *const map = viewport->getMap();
         if (map)
-            map->setDrawLayersFlags(0);
+            map->setDrawLayersFlags(MapType::NORMAL);
     }
     settings.imitationMode = config.resetIntValue("imitationMode");
     settings.disableGameModifiers = config.resetBoolValue(

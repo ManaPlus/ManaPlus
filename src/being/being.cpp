@@ -718,7 +718,7 @@ int Being::getHitEffect(const Being *const attacker,
     return hitEffectId;
 }
 
-int Being::getDefaultEffectId(const int type)
+int Being::getDefaultEffectId(const AttackType &type)
 {
     if (type == MISS)
         return paths.getIntValue("missEffectId");
@@ -2638,7 +2638,7 @@ void Being::recalcSpritesOrder()
                     {   // slot unknown. Search for real slot, this can be slow
                         FOR_EACH (IntMapCIter, repIt, itemReplacer)
                         {
-                            for (unsigned slot2 = 0; slot2 < sz; slot2 ++)
+                            for (unsigned int slot2 = 0; slot2 < sz; slot2 ++)
                             {
                                 if (mSpriteIDs[slot2] == repIt->first)
                                 {
@@ -2723,7 +2723,7 @@ void Being::recalcSpritesOrder()
         cnt ++;
 //        logger->log("iteration");
 
-        for (unsigned slot0 = 0; slot0 < sz; slot0 ++)
+        for (unsigned int slot0 = 0; slot0 < sz; slot0 ++)
         {
             const int slot = searchSlotValue(slotRemap, slot0);
             const int val = slotRemap.at(slot);
@@ -2788,7 +2788,7 @@ void Being::recalcSpritesOrder()
     }
 
 //    logger->log("after remap");
-    for (unsigned slot = 0; slot < sz; slot ++)
+    for (unsigned int slot = 0; slot < sz; slot ++)
     {
         mSpriteRemap[slot] = slotRemap[slot];
         if (mSpriteHide[slot] == 0)
@@ -2899,7 +2899,8 @@ void Being::updateComment()
     mComment = loadComment(mName, mType);
 }
 
-std::string Being::loadComment(const std::string &name, const int type)
+std::string Being::loadComment(const std::string &name,
+                               const ActorType::Type &type)
 {
     std::string str;
     switch (type)
@@ -3056,7 +3057,7 @@ Gender::Type Being::intToGender(const uint8_t sex)
 
 int Being::getSpriteID(const int slot) const
 {
-    if (slot < 0 || static_cast<unsigned>(slot) >= mSpriteIDs.size())
+    if (slot < 0 || static_cast<size_t>(slot) >= mSpriteIDs.size())
         return -1;
 
     return mSpriteIDs[slot];
@@ -3064,7 +3065,7 @@ int Being::getSpriteID(const int slot) const
 
 unsigned char Being::getSpriteColor(const int slot) const
 {
-    if (slot < 0 || static_cast<unsigned>(slot) >= mSpriteColorsIds.size())
+    if (slot < 0 || static_cast<size_t>(slot) >= mSpriteColorsIds.size())
         return 1;
 
     return mSpriteColorsIds[slot];

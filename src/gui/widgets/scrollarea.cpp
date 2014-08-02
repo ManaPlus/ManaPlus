@@ -486,7 +486,7 @@ Image *ScrollArea::getImageByState(Rect &dim, const BUTTON_DIR dir)
                         + toString(static_cast<unsigned>(dir)));
             return nullptr;
     }
-    return buttons[dir][state];
+    return buttons[static_cast<size_t>(dir)][state];
 }
 
 void ScrollArea::drawButton(Graphics *const graphics,

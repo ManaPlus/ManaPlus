@@ -68,7 +68,7 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         std::string url = link;
         replaceAll(url, " ", "");
         listener.url = url;
-        const int button = event->getButton();
+        const MouseButton::Type button = event->getButton();
         if (button == MouseButton::LEFT)
         {
             ConfirmDialog *const confirmDlg = new ConfirmDialog(

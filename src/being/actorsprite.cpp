@@ -157,7 +157,7 @@ void ActorSprite::setTargetType(const TargetCursorType::Type type)
     }
     else
     {
-        const TargetCursorSize::Size sz = getTargetCursorSize();
+        const size_t sz = static_cast<size_t>(getTargetCursorSize());
         mUsedTargetCursor = targetCursor[static_cast<int>(type)][sz];
         if (mUsedTargetCursor)
         {

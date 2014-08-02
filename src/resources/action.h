@@ -58,7 +58,7 @@ class Action final
         void setLastFrameDelay(const int delay) noexcept;
 
     protected:
-        typedef std::map<int, Animation*> Animations;
+        typedef std::map<SpriteDirection::Type, Animation*> Animations;
         typedef Animations::iterator AnimationIter;
 
         Animations mAnimations;

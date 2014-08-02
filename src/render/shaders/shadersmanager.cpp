@@ -53,7 +53,7 @@ Shader *ShadersManager::createShader(const unsigned int type,
         return new Shader(shaderId);
     GLint len = 0;
     mglGetShaderiv(shaderId, GL_INFO_LOG_LENGTH, &len);
-    char *buf = new char[len + 1];
+    char *buf = new char[static_cast<size_t>(len) + 1];
     mglGetShaderInfoLog(shaderId, len, &len, buf);
     buf[len] = 0;
     logger->log("Shader '%s' compilation error: %s", fileName.c_str(), buf);
@@ -107,7 +107,7 @@ ShaderProgram *ShadersManager::createProgram(const std::string &vertex,
 
     GLint len = 0;
     mglGetProgramiv(programId, GL_INFO_LOG_LENGTH, &len);
-    char *buf = new char[len + 1];
+    char *buf = new char[static_cast<size_t>(len) + 1];
     mglGetProgramInfoLog(programId, len, &len, buf);
     buf[len] = 0;
     logger->log("Program '%s, %s' compilation error: %s",

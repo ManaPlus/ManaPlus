@@ -497,7 +497,7 @@ void Map::draw(Graphics *const graphics, int scrollX, int scrollY)
 
 void Map::drawCollision(Graphics *const graphics,
                         const int scrollX, const int scrollY,
-                        const int debugFlags) const
+                        const MapType::MapType drawFlags) const
 {
     const int endPixelY = graphics->mHeight + scrollY + mTileHeight - 1;
     int startX = scrollX / mTileWidth;
@@ -514,7 +514,7 @@ void Map::drawCollision(Graphics *const graphics,
     if (endY > mHeight)
         endY = mHeight;
 
-    if (debugFlags < MapType::SPECIAL)
+    if (drawFlags < MapType::SPECIAL)
     {
         graphics->setColor(userPalette->getColorWithAlpha(UserPalette::NET));
         graphics->drawNet(

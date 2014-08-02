@@ -168,7 +168,7 @@ void PopupManager::showPopup(const int x, const int y,
 }
 
 void PopupManager::showAttackMonsterPopup(const std::string &name,
-                                          const int type)
+                                          const ActorType::Type &type)
 {
     mPopupMenu->showAttackMonsterPopup(viewport->getMouseX(),
         viewport->getMouseY(),

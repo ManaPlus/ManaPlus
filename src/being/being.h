@@ -756,7 +756,8 @@ class Being notfinal : public ActorSprite,
         static void clearCache();
 
         static std::string loadComment(const std::string &name,
-                                       const int type) A_WARN_UNUSED;
+                                       const ActorType::Type &type)
+                                       A_WARN_UNUSED;
 
         static void saveComment(const std::string &restrict name,
                                 const std::string &restrict comment,
@@ -908,7 +909,7 @@ class Being notfinal : public ActorSprite,
 
         void createSpeechBubble();
 
-        static int getDefaultEffectId(const int type);
+        static int getDefaultEffectId(const AttackType &type);
 
         BeingInfo *mInfo;
         AnimatedSprite *mEmotionSprite;
