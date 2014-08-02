@@ -45,8 +45,8 @@
  * different interfaces, which have different implementations for each server.
  */
 
-#define SMALL_VERSION "1.4.7.19"
-#define CHECK_VERSION "01.04.07.19"
+#define SMALL_VERSION "1.4.8.2"
+#define CHECK_VERSION "01.04.08.02"
 
 #ifdef HAVE_CONFIG_H
 #include "../config.h"

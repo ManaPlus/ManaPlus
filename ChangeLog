@@ -1,3 +1,18 @@
+2014-08-02 New release 1.4.8.2
+fix: block char moving if any input fields selected.
+fix: possible crash in reset windows button.
+fix: hide all windows action (H).
+fix: follow parent particle attribute.
+fix: different issues in all translation languages.
+fix: player position based on tile heights if player not moving.
+fix: draw order if tiles height not zero.
+add: basic inter process communication.
+add: back yellow bar switch mode (left shift + key).
+add: in map remap db add support for patches and includes.
+add: missing windows into reset to default button.
+add: sv_SE translation and add it to languages list.
+add: debug commands for spawn locale clones (/debugSpawn).
+
 2014-07-19 New release 1.4.7.19
 fix: possible memory leak in texture compression.
 fix: OpenGL renderers fallback.
