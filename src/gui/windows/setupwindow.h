@@ -62,7 +62,7 @@ class SetupWindow final : public Window,
 
         void registerWindowForReset(Window *const window);
 
-        void unregisterWindowForReset(Window *const window);
+        void unregisterWindowForReset(const Window *const window);
 
         void hideWindows();
 

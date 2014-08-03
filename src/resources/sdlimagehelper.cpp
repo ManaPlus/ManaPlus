@@ -284,7 +284,7 @@ int SDLImageHelper::combineSurface(SDL_Surface *restrict const src,
     return SDL_gfxBlitRGBA(src, srcrect, dst, dstrect);
 }
 
-void SDLImageHelper::copySurfaceToImage(Image *const image,
+void SDLImageHelper::copySurfaceToImage(const Image *const image,
                                         const int x, const int y,
                                         SDL_Surface *const surface) const
 {

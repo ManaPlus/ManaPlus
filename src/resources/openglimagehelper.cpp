@@ -378,7 +378,7 @@ void OpenGLImageHelper::invalidate(const GLuint textureId)
     }
 }
 
-void OpenGLImageHelper::copySurfaceToImage(Image *const image,
+void OpenGLImageHelper::copySurfaceToImage(const Image *const image,
                                            const int x, const int y,
                                            SDL_Surface *surface) const
 {

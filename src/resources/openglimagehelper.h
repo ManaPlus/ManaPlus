@@ -125,7 +125,7 @@ class OpenGLImageHelper final : public ImageHelper
 
         void postInit() override final;
 
-        void copySurfaceToImage(Image *const image,
+        void copySurfaceToImage(const Image *const image,
                                 const int x, const int y,
                                 SDL_Surface *surface) const;
 

@@ -94,7 +94,7 @@ int SDLImageHelper::combineSurface(SDL_Surface *restrict const src,
     return 1;
 }
 
-void SDLImageHelper::copySurfaceToImage(Image *const image,
+void SDLImageHelper::copySurfaceToImage(const Image *const image,
                                         const int x, const int y,
                                         SDL_Surface *const surface) const
 {

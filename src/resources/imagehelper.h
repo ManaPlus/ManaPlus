@@ -79,7 +79,7 @@ class ImageHelper notfinal
                                                 int height)
                                                 const A_WARN_UNUSED;
 
-        virtual void copySurfaceToImage(Image *const image A_UNUSED,
+        virtual void copySurfaceToImage(const Image *const image A_UNUSED,
                                         const int x A_UNUSED,
                                         const int y A_UNUSED,
                                         SDL_Surface *const surface A_UNUSED)
