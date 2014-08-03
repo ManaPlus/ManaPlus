@@ -103,7 +103,8 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
                 if ((*it)->getOnline())
                     onlineNames.insert((*it)->getName());
             }
-            onlineNames.insert(localPlayer->getName());
+            if (localPlayer)
+                onlineNames.insert(localPlayer->getName());
         }
     }
 
