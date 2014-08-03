@@ -50,6 +50,7 @@ FloorItem::FloorItem(const int id, const int itemId, const int x, const int y,
     mY(y),
     mDropTime(cur_time),
     mAmount(amount),
+    mHeightPosDiff(0),
     mPickupCount(0),
     mCursor(Cursor::CURSOR_PICKUP),
     mColor(color),
@@ -73,21 +74,23 @@ void FloorItem::postInit(Map *const map, int subX, int subY)
             subY = max;
         else if (subY < -max)
             subY = -max;
+        mHeightPosDiff = map->getHeightOffset(mX, mY) * 16;
         mPos.x = static_cast<float>(mX * map->getTileWidth()
             + subX + mapTileSize / 2 - 8);
         mPos.y = static_cast<float>(mY * map->getTileHeight()
-            + subY + mapTileSize - 8);
+            + subY + mapTileSize - 8 - mHeightPosDiff);
+        mYDiff = 31 - mHeightPosDiff;
     }
     else
     {
         mPos.x = 0;
         mPos.y = 0;
+        mYDiff = 31;
     }
 
     mCursor = info.getPickupCursor();
     setupSpriteDisplay(info.getDisplay(), true, 1,
         info.getDyeColorsString(mColor));
-    mYDiff = 31;
 }
 
 const ItemInfo &FloorItem::getInfo() const
@@ -112,7 +115,7 @@ void FloorItem::draw(Graphics *const graphics,
 
     BLOCK_START("FloorItem::draw")
     const int x = mX * mMap->getTileWidth() + offsetX;
-    const int y = mY * mMap->getTileHeight() + offsetY;
+    const int y = mY * mMap->getTileHeight() + offsetY - mHeightPosDiff;
     Font *font = nullptr;
 
     if (mHighlight)

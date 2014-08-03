@@ -104,6 +104,7 @@ class FloorItem final : public ActorSprite
         int mX, mY;
         int mDropTime;
         int mAmount;
+        int mHeightPosDiff;
         unsigned int mPickupCount;
         Cursor::Cursor mCursor;
         unsigned char mColor;
