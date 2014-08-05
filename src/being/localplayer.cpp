@@ -261,7 +261,7 @@ void LocalPlayer::logic()
             if ((*i).x == mX && (*i).y == mY)
                 mNavigatePath.pop_front();
             else
-                moveTo((*i).x, (*i).y);
+                setDestination((*i).x, (*i).y);
         }
     }
 
@@ -1097,15 +1097,10 @@ void LocalPlayer::attributeChanged(const int id,
     }
 }
 
-void LocalPlayer::moveTo(const int x, const int y)
-{
-    setDestination(x, y);
-}
-
 void LocalPlayer::move(const int dX, const int dY)
 {
     mPickUpTarget = nullptr;
-    moveTo(mX + dX, mY + dY);
+    setDestination(mX + dX, mY + dY);
 }
 
 void LocalPlayer::moveToTarget(int dist)
@@ -1196,7 +1191,7 @@ void LocalPlayer::moveToHome()
     mPickUpTarget = nullptr;
     if ((mX != mCrossX || mY != mCrossY) && mCrossX && mCrossY)
     {
-        moveTo(mCrossX, mCrossY);
+        setDestination(mCrossX, mCrossY);
     }
     else if (mMap)
     {
@@ -3047,7 +3042,7 @@ void LocalPlayer::fixPos(const int maxDist)
         && (time < mActivityTime || time - mActivityTime > 2))
     {
         mActivityTime = time;
-        moveTo(mCrossX, mCrossY);
+        setDestination(mCrossX, mCrossY);
     }
 }
 
@@ -3103,7 +3098,7 @@ void LocalPlayer::fixAttackTarget()
     if (!debugPath.empty())
     {
         const Path::const_iterator i = debugPath.begin();
-        moveTo((*i).x, (*i).y);
+        setDestination((*i).x, (*i).y);
     }
 }
 

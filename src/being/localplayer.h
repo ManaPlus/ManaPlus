@@ -212,8 +212,6 @@ class LocalPlayer final : public Being,
 
         void crazyMove();
 
-        void moveTo(const int x, const int y);
-
         void move(const int dX, const int dY);
 
         void moveToTarget(int dist = -1);

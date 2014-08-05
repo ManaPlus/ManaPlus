@@ -671,7 +671,7 @@ impHandler1(move)
     int y = 0;
 
     if (localPlayer && parse2Int(args, x, y))
-        localPlayer->moveTo(x, y);
+        localPlayer->setDestination(x, y);
 }
 
 impHandler1(navigate)
