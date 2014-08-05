@@ -248,8 +248,6 @@ class LocalPlayer final : public Being,
 
         bool navigateTo(const int x, const int y);
 
-        void navigateTo(const Being *const being);
-
         void navigateClean();
 
         void imitateEmote(const Being *const being,

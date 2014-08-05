@@ -1169,7 +1169,7 @@ void LocalPlayer::moveToTarget(int dist)
         if (dist == 0)
         {
             if (mTarget)
-                navigateTo(mTarget);
+                navigateTo(mTarget->getTileX(), mTarget->getTileY());
         }
         else
         {
@@ -2562,34 +2562,6 @@ bool LocalPlayer::navigateTo(const int x, const int y)
     if (mDrawPath)
         tmpLayer->addRoad(mNavigatePath);
     return !mNavigatePath.empty();
-}
-
-void LocalPlayer::navigateTo(const Being *const being)
-{
-    if (!mMap || !being)
-        return;
-
-    SpecialLayer *const tmpLayer = mMap->getTempLayer();
-    if (!tmpLayer)
-        return;
-
-    const Vector &playerPos = getPosition();
-    mShowNavigePath = true;
-    mOldX = static_cast<int>(playerPos.x);
-    mOldY = static_cast<int>(playerPos.y);
-    mOldTileX = mX;
-    mOldTileY = mY;
-    mNavigateX = being->getTileX();
-    mNavigateY = being->getTileY();
-
-    mNavigatePath = mMap->findPath(
-        static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
-        static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
-        being->getTileX(), being->getTileY(),
-        getBlockWalkMask(), 0);
-
-    if (mDrawPath)
-        tmpLayer->addRoad(mNavigatePath);
 }
 
 void LocalPlayer::navigateClean()
