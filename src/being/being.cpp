@@ -387,7 +387,7 @@ void Being::setDestination(const int dstX, const int dstY)
     if (!mMap)
         return;
 
-    setPath(mMap->findPath(mX, mY, dstX, dstY, getWalkMask()));
+    setPath(mMap->findPath(mX, mY, dstX, dstY, getBlockWalkMask()));
 }
 
 void Being::clearPath()
@@ -1336,7 +1336,7 @@ void Being::nextTile()
     if (dir)
         setDirection(dir);
 
-    if (!mMap || !mMap->getWalk(pos.x, pos.y, getWalkMask()))
+    if (!mMap || !mMap->getWalk(pos.x, pos.y, getBlockWalkMask()))
     {
         setAction(BeingAction::STAND, 0);
         return;
@@ -1560,25 +1560,25 @@ void Being::petLogic()
             }
         }
 
-        const unsigned char walkMask = getWalkMask();
-        if (!mMap->getWalk(dstX, dstY, walkMask))
+        const unsigned char blockWalkMask = getBlockWalkMask();
+        if (!mMap->getWalk(dstX, dstY, blockWalkMask))
         {
             if (dstX != dstX0)
             {
                 dstX = dstX0;
-                if (!mMap->getWalk(dstX, dstY, walkMask))
+                if (!mMap->getWalk(dstX, dstY, blockWalkMask))
                     dstY = dstY0;
             }
             else if (dstY != dstY0)
             {
                 dstY = dstY0;
-                if (!mMap->getWalk(dstX, dstY, walkMask))
+                if (!mMap->getWalk(dstX, dstY, blockWalkMask))
                     dstX = dstX0;
             }
         }
         if (mX != dstX || mY != dstY)
         {
-            setPath(mMap->findPath(mX, mY, dstX, dstY, walkMask));
+            setPath(mMap->findPath(mX, mY, dstX, dstY, blockWalkMask));
             Net::getPetHandler()->move(mOwner, mId, mX, mY, dstX, dstY);
             return;
         }
@@ -3278,7 +3278,7 @@ void Being::fixPetSpawnPos(int &dstX, int &dstY) const
     dstY += offsetY;
     if (mMap)
     {
-        if (!mMap->getWalk(dstX, dstY, getWalkMask()))
+        if (!mMap->getWalk(dstX, dstY, getBlockWalkMask()))
         {
             dstX = mOwner->getTileX();
             dstY = mOwner->getTileY();

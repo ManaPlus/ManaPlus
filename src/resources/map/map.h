@@ -150,7 +150,7 @@ class Map final : public Properties, public ConfigListener
          * without walkmask, only blocks against colliding tiles.
          */
         bool getWalk(const int x, const int y,
-                     const unsigned char walkmask = BlockMask::WALL
+                     const unsigned char blockWalkMask = BlockMask::WALL
                      | BlockMask::AIR | BlockMask::WATER) const A_WARN_UNUSED;
 
         void setWalk(const int x, const int y, const bool walkable);
@@ -197,7 +197,7 @@ class Map final : public Properties, public ConfigListener
          */
         Path findPath(const int startX, const int startY,
                       const int destX, const int destY,
-                      const unsigned char walkmask,
+                      const unsigned char blockWalkmask,
                       const int maxCost = 20) A_WARN_UNUSED;
 
         /**

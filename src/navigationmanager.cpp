@@ -26,7 +26,7 @@
 
 #include "debug.h"
 
-static const int walkMask = (BlockMask::WALL | BlockMask::AIR
+static const int blockWalkMask = (BlockMask::WALL | BlockMask::AIR
     | BlockMask::WATER);
 
 namespace
@@ -89,7 +89,7 @@ bool NavigationManager::findWalkableTile(int &x1, int &y1,
         for (int x = 0; x < width; x ++)
         {
             const int ptr = x + y2;
-            if (!(tiles[ptr].blockmask & walkMask) && !data[ptr])
+            if (!(tiles[ptr].blockmask & blockWalkMask) && !data[ptr])
             {
                 x1 = x;
                 y1 = y;
@@ -120,7 +120,7 @@ void NavigationManager::fillNum(int x, int y,
             ptr = (x - 1) + width * y;
             if (!data[ptr])
             {
-                if (!(tiles[ptr].blockmask & walkMask))
+                if (!(tiles[ptr].blockmask & blockWalkMask))
                     cells.push_back(Cell(x - 1, y));
                 else
                     data[ptr] = -num;
@@ -131,7 +131,7 @@ void NavigationManager::fillNum(int x, int y,
             ptr = (x + 1) + width * y;
             if (!data[ptr])
             {
-                if (!(tiles[ptr].blockmask & walkMask))
+                if (!(tiles[ptr].blockmask & blockWalkMask))
                     cells.push_back(Cell(x + 1, y));
                 else
                     data[ptr] = -num;
@@ -142,7 +142,7 @@ void NavigationManager::fillNum(int x, int y,
             ptr = x + width * (y - 1);
             if (!data[ptr])
             {
-                if (!(tiles[ptr].blockmask & walkMask))
+                if (!(tiles[ptr].blockmask & blockWalkMask))
                     cells.push_back(Cell(x, y - 1));
                 else
                     data[ptr] = -num;
@@ -153,7 +153,7 @@ void NavigationManager::fillNum(int x, int y,
             ptr = x + width * (y + 1);
             if (!data[ptr])
             {
-                if (!(tiles[ptr].blockmask & walkMask))
+                if (!(tiles[ptr].blockmask & blockWalkMask))
                     cells.push_back(Cell(x, y + 1));
                 else
                     data[ptr] = -num;

@@ -110,14 +110,14 @@ class BeingInfo final
 
         const Attack *getAttack(const int id) const A_WARN_UNUSED;
 
-        void setWalkMask(const unsigned char mask)
-        { mWalkMask = mask; }
+        void setBlockWalkMask(const unsigned char mask)
+        { mBlockWalkMask = mask; }
 
         /**
          * Gets the way the being is blocked by other objects
          */
-        unsigned char getWalkMask() const A_WARN_UNUSED
-        { return mWalkMask; }
+        unsigned char getBlockWalkMask() const A_WARN_UNUSED
+        { return mBlockWalkMask; }
 
         void setBlockType(const BlockType::BlockType &blockType)
         { mBlockType = blockType; }
@@ -326,7 +326,7 @@ class BeingInfo final
         Cursor::Cursor mHoverCursor;
         ItemSoundEvents mSounds;
         Attacks mAttacks;
-        unsigned char mWalkMask;
+        unsigned char mBlockWalkMask;
         BlockType::BlockType mBlockType;
         const std::map <int, ColorDB::ItemColor> *mColors;
         int mTargetOffsetX;

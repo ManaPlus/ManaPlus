@@ -316,7 +316,7 @@ void Viewport::drawDebugPath(Graphics *const graphics)
             static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
             static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
             mousePosX / mapTileSize, mousePosY / mapTileSize,
-            localPlayer->getWalkMask(),
+            localPlayer->getBlockWalkMask(),
             500);
         lastMouseDestination = mouseDestination;
     }

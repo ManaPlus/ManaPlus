@@ -412,11 +412,11 @@ class Being notfinal : public ActorSprite,
         /**
          * Gets the way the object is blocked by other objects.
          */
-        virtual unsigned char getWalkMask() const A_WARN_UNUSED
+        virtual unsigned char getBlockWalkMask() const A_WARN_UNUSED
         {
             if (!mInfo)
                 return 0;
-            return mInfo->getWalkMask();
+            return mInfo->getBlockWalkMask();
         }
 
         /**

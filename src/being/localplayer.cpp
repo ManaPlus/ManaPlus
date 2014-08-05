@@ -490,7 +490,7 @@ bool LocalPlayer::pickUp(FloorItem *const item)
         const Path debugPath = mMap->findPath(
             static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
             static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
-            item->getTileX(), item->getTileY(), getWalkMask(), 0);
+            item->getTileX(), item->getTileY(), getBlockWalkMask(), 0);
         if (!debugPath.empty())
             navigateTo(item->getTileX(), item->getTileY());
         else
@@ -623,19 +623,19 @@ void LocalPlayer::startWalking(const unsigned char dir)
     if (dir & BeingDirection::RIGHT)
         dx++;
 
-    const unsigned char walkMask = getWalkMask();
+    const unsigned char blockWalkMask = getBlockWalkMask();
     // Prevent skipping corners over colliding tiles
-    if (dx && !mMap->getWalk(mX + dx, mY, walkMask))
+    if (dx && !mMap->getWalk(mX + dx, mY, blockWalkMask))
         dx = 0;
-    if (dy && !mMap->getWalk(mX, mY + dy, walkMask))
+    if (dy && !mMap->getWalk(mX, mY + dy, blockWalkMask))
         dy = 0;
 
     // Choose a straight direction when diagonal target is blocked
-    if (dx && dy && !mMap->getWalk(mX + dx, mY + dy, walkMask))
+    if (dx && dy && !mMap->getWalk(mX + dx, mY + dy, blockWalkMask))
         dx = 0;
 
     // Walk to where the player can actually go
-    if ((dx || dy) && mMap->getWalk(mX + dx, mY + dy, walkMask))
+    if ((dx || dy) && mMap->getWalk(mX + dx, mY + dy, blockWalkMask))
     {
         setDestination(mX + dx, mY + dy);
     }
@@ -1148,7 +1148,7 @@ void LocalPlayer::moveToTarget(int dist)
             debugPath = mMap->findPath(static_cast<int>(
                 playerPos.x - mapTileSize / 2) / mapTileSize,
                 static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
-                mTarget->getTileX(), mTarget->getTileY(), getWalkMask(), 0);
+                mTarget->getTileX(), mTarget->getTileY(), getBlockWalkMask(), 0);
         }
 
         const size_t sz = debugPath.size();
@@ -1599,46 +1599,46 @@ void LocalPlayer::crazyMove8()
 
 
     int mult = 1;
-    const unsigned char walkMask = getWalkMask();
+    const unsigned char blockWalkMask = getBlockWalkMask();
     if (mMap->getWalk(mX + movesX[idx][0],
-        mY + movesY[idx][0], walkMask))
+        mY + movesY[idx][0], blockWalkMask))
     {
         while (mMap->getWalk(mX + movesX[idx][0] * mult,
                mY + movesY[idx][0] * mult,
-               getWalkMask()) && mult <= dist)
+               getBlockWalkMask()) && mult <= dist)
         {
             mult ++;
         }
         move(movesX[idx][0] * (mult - 1), movesY[idx][0] * (mult - 1));
     }
     else if (mMap->getWalk(mX + movesX[idx][1],
-             mY + movesY[idx][1], walkMask))
+             mY + movesY[idx][1], blockWalkMask))
     {
         while (mMap->getWalk(mX + movesX[idx][1] * mult,
                mY + movesY[idx][1] * mult,
-               getWalkMask()) && mult <= dist)
+               getBlockWalkMask()) && mult <= dist)
         {
             mult ++;
         }
         move(movesX[idx][1] * (mult - 1), movesY[idx][1] * (mult - 1));
     }
     else if (mMap->getWalk(mX + movesX[idx][2],
-             mY + movesY[idx][2], walkMask))
+             mY + movesY[idx][2], blockWalkMask))
     {
         while (mMap->getWalk(mX + movesX[idx][2] * mult,
                mY + movesY[idx][2] * mult,
-               getWalkMask()) && mult <= dist)
+               getBlockWalkMask()) && mult <= dist)
         {
             mult ++;
         }
         move(movesX[idx][2] * (mult - 1), movesY[idx][2] * (mult - 1));
     }
     else if (mMap->getWalk(mX + movesX[idx][3],
-             mY + movesY[idx][3], walkMask))
+             mY + movesY[idx][3], blockWalkMask))
     {
         while (mMap->getWalk(mX + movesX[idx][3] * mult,
                mY + movesY[idx][3] * mult,
-               getWalkMask()) && mult <= dist)
+               getBlockWalkMask()) && mult <= dist)
         {
             mult ++;
         }
@@ -2009,7 +2009,7 @@ bool LocalPlayer::isReachable(Being *const being,
     const Path debugPath = mMap->findPath(
         static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
         static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
-        being->getTileX(), being->getTileY(), getWalkMask(), maxCost);
+        being->getTileX(), being->getTileY(), getBlockWalkMask(), maxCost);
 
     being->setDistance(static_cast<int>(debugPath.size()));
     if (!debugPath.empty())
@@ -2557,7 +2557,7 @@ bool LocalPlayer::navigateTo(const int x, const int y)
     mNavigatePath = mMap->findPath(
         static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
         static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
-        x, y, getWalkMask(), 0);
+        x, y, getBlockWalkMask(), 0);
 
     if (mDrawPath)
         tmpLayer->addRoad(mNavigatePath);
@@ -2586,7 +2586,7 @@ void LocalPlayer::navigateTo(const Being *const being)
         static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
         static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
         being->getTileX(), being->getTileY(),
-        getWalkMask(), 0);
+        getBlockWalkMask(), 0);
 
     if (mDrawPath)
         tmpLayer->addRoad(mNavigatePath);
@@ -2751,7 +2751,7 @@ int LocalPlayer::getPathLength(const Being *const being) const
             static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
             static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
             being->getTileX(), being->getTileY(),
-            getWalkMask(), 0);
+            getBlockWalkMask(), 0);
         return static_cast<int>(debugPath.size());
     }
     else
@@ -3126,7 +3126,7 @@ void LocalPlayer::fixAttackTarget()
         static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
         static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
         mTarget->getTileX(), mTarget->getTileY(),
-        getWalkMask(), 0);
+        getBlockWalkMask(), 0);
 
     if (!debugPath.empty())
     {
@@ -3208,7 +3208,7 @@ void LocalPlayer::checkNewName(Being *const being)
     }
 }
 
-unsigned char LocalPlayer::getWalkMask() const
+unsigned char LocalPlayer::getBlockWalkMask() const
 {
     // for now blocking all types of collisions
     return BlockMask::WALL | BlockMask::AIR | BlockMask::WATER;

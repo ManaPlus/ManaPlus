@@ -672,14 +672,15 @@ void Map::blockTile(const int x, const int y,
     }
 }
 
-bool Map::getWalk(const int x, const int y, const unsigned char walkmask) const
+bool Map::getWalk(const int x, const int y,
+                  const unsigned char blockWalkMask) const
 {
     // You can't walk outside of the map
     if (x < 0 || y < 0 || x >= mWidth || y >= mHeight)
         return false;
 
     // Check if the tile is walkable
-    return !(mMetaTiles[x + y * mWidth].blockmask & walkmask);
+    return !(mMetaTiles[x + y * mWidth].blockmask & blockWalkMask);
 }
 
 unsigned char Map::getBlockMask(const int x, const int y) const
@@ -742,7 +743,8 @@ const std::string Map::getFilename() const
 
 Path Map::findPath(const int startX, const int startY,
                    const int destX, const int destY,
-                   const unsigned char walkmask, const int maxCost)
+                   const unsigned char blockWalkMask,
+                   const int maxCost)
 {
     BLOCK_START("Map::findPath")
     // The basic walking cost of a tile.
@@ -760,7 +762,7 @@ Path Map::findPath(const int startX, const int startY,
     }
 
     // Return when destination not walkable
-    if (!getWalk(destX, destY, walkmask))
+    if (!getWalk(destX, destY, blockWalkMask))
     {
         BLOCK_END("Map::findPath")
         return path;
@@ -830,7 +832,7 @@ Path Map::findPath(const int startX, const int startY,
                 // unless its the destination tile
                 // +++ here need check block must depend on player abilities.
                 if (newTile->whichList == mOnClosedList ||
-                    ((newTile->blockmask & walkmask)
+                    ((newTile->blockmask & blockWalkMask)
                     && !(x == destX && y == destY))
                     || (newTile->blockmask & BlockMask::WALL))
                 {
