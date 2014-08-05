@@ -420,10 +420,6 @@ class LocalPlayer final : public Being,
         static void tryMagic(const std::string &spell, const int baseMagic,
                              const int schoolMagic, const int mana);
 
-        static const char *getVarItem(const char *const *const arr,
-                                      const unsigned index,
-                                      const unsigned sz) A_WARN_UNUSED;
-
         void crazyMove1();
         void crazyMove2();
         void crazyMove3();

@@ -3251,16 +3251,6 @@ bool LocalPlayer::checAttackPermissions(const Being *const target) const
     }
 }
 
-
-const char *LocalPlayer::getVarItem(const char *const *const arr,
-                                    const unsigned index,
-                                    const unsigned sz)
-{
-    if (index < sz)
-        return arr[index];
-    return arr[sz];
-}
-
 void LocalPlayer::updateStatus() const
 {
     if (serverVersion >= 4 && mEnableAdvert)
