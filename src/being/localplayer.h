@@ -455,9 +455,6 @@ class LocalPlayer final : public Being,
 
         std::vector<int> mStatusEffectIcons;
 
-        int mLocalWalkTime;  // Timestamp used to control keyboard walk
-                             // messages flooding
-
         typedef std::pair<std::string, int> MessagePair;
         /** Queued messages*/
         std::list<MessagePair> mMessages;

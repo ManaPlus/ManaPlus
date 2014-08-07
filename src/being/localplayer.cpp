@@ -127,7 +127,6 @@ LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
     mPickUpTarget(nullptr),
     mLastAction(-1),
     mStatusEffectIcons(),
-    mLocalWalkTime(-1),
     mMessages(),
     mMessageTime(0),
     mAwayListener(new AwayListener),
@@ -656,7 +655,6 @@ void LocalPlayer::stopWalking(const bool sendToServer)
     if (mAction == BeingAction::MOVE && mWalkingDir)
     {
         mWalkingDir = 0;
-        mLocalWalkTime = 0;
         mPickUpTarget = nullptr;
 
         setDestination(static_cast<int>(getPosition().x),
