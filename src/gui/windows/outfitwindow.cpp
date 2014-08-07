@@ -63,7 +63,11 @@ OutfitWindow::OutfitWindow() :
     mNextButton(new Button(this, _(">"), "next", this)),
     // TRANSLATORS: outfits window button
     mEquipButtom(new Button(this, _("Equip"), "equip", this)),
-    // TRANSLATORS: outfits window label
+    // TRANSLATORS: outfits window button
+    mCopyButtom(new Button(this, _("Copy"), "copy", this)),
+    // TRANSLATORS: outfits window button
+    mPasteButtom(new Button(this, _("Paste"), "paste", this)),
+   // TRANSLATORS: outfits window label
     mCurrentLabel(new Label(this, strprintf(_("Outfit: %d"), 1))),
     // TRANSLATORS: outfits window checkbox
     mUnequipCheck(new CheckBox(this, _("Unequip first"),
@@ -81,6 +85,7 @@ OutfitWindow::OutfitWindow() :
     mGridWidth(4),
     mGridHeight(4),
     mItems(),
+    mClipboard(),
     mAwayOutfit(0),
     mItemColors(),
     mItemClicked(false),
@@ -109,6 +114,8 @@ OutfitWindow::OutfitWindow() :
     mAwayOutfitCheck->setActionEventId("away");
     mAwayOutfitCheck->addActionListener(this);
 
+    place(1, 1, mCopyButtom, 2);
+    place(1, 2, mPasteButtom, 2);
     place(1, 3, mEquipButtom, 2);
     place(0, 4, mKeyLabel, 4);
     place(0, 5, mPreviousButton, 1);
@@ -141,6 +148,7 @@ void OutfitWindow::load(const bool oldConfig)
         cfg = &serverConfig;
 
     memset(mItems, -1, sizeof(mItems));
+    memset(mClipboard, -1, sizeof(mClipboard));
     memset(mItemColors, 1, sizeof(mItemColors));
 
     for (unsigned o = 0; o < OUTFITS_COUNT; o++)
@@ -253,6 +261,18 @@ void OutfitWindow::action(const ActionEvent &event)
             mItemsUnequip[mCurrentOutfit] = mUnequipCheck->isSelected();
         }
     }
+    else if (eventId == "copy")
+    {
+      copyOutfitToClipboard(mCurrentOutfit);
+        if (Game::instance())
+            Game::instance()->setValidSpeed();
+    }
+    else if (eventId == "paste")
+    {
+      pasteOutfitFromClipboard(mCurrentOutfit);
+        if (Game::instance())
+            Game::instance()->setValidSpeed();
+    }
     else if (eventId == "equip")
     {
         wearOutfit(mCurrentOutfit);
@@ -265,6 +285,29 @@ void OutfitWindow::action(const ActionEvent &event)
         if (!mAwayOutfitCheck->isSelected())
             mAwayOutfitCheck->setSelected(true);
     }
+}
+
+void OutfitWindow::copyOutfitToClipboard(const int src)
+{
+  if (src < 0 || src > static_cast<int>(OUTFITS_COUNT))       
+    {
+      return;
+    }
+
+  for (unsigned int i = 0; i < OUTFIT_ITEM_COUNT; i++)
+    mClipboard[i] = mItems[src][i];
+}
+
+void OutfitWindow::pasteOutfitFromClipboard(const int dst)
+{
+  if (dst < 0 || dst > static_cast<int>(OUTFITS_COUNT))
+    {
+      return;
+    }
+
+  for (unsigned int i = 0; i < OUTFIT_ITEM_COUNT; i++)
+    mItems[dst][i] = mClipboard[i];
+
 }
 
 void OutfitWindow::wearOutfit(const int outfit, const bool unwearEmpty,

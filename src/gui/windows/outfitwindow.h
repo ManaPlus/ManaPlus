@@ -69,6 +69,10 @@ class OutfitWindow final : public Window,
 
         void copyOutfit(const int src, const int dst);
 
+	void copyOutfitToClipboard(const int outfit);
+	
+	void pasteOutfitFromClipboard(const int outfit);
+
         void copyFromEquiped();
 
         void copyFromEquiped(const int dst);
@@ -101,6 +105,8 @@ class OutfitWindow final : public Window,
         Button *mPreviousButton;
         Button *mNextButton;
         Button *mEquipButtom;
+	Button *mCopyButtom;
+	Button *mPasteButtom;
         Label *mCurrentLabel;
         CheckBox *mUnequipCheck;
         CheckBox *mAwayOutfitCheck;
@@ -116,6 +122,8 @@ class OutfitWindow final : public Window,
 
         int mItems[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
         int mAwayOutfit;
+
+	int mClipboard[OUTFIT_ITEM_COUNT];
 
         unsigned char mItemColors[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
         bool mItemClicked;
