@@ -421,17 +421,15 @@ void OutfitWindow::mouseDragged(MouseEvent &event)
 void OutfitWindow::mousePressed(MouseEvent &event)
 {
     const int index = getIndexFromGrid(event.getX(), event.getY());
-    if (index == -1)
+    if (event.getButton() == MouseButton::RIGHT && popupManager)
     {
-        if (event.getButton() == MouseButton::RIGHT && popupManager)
-        {
-            popupManager->showOutfitsPopup();
-            event.consume();
-        }
-        else
-        {
-            Window::mousePressed(event);
-        }
+        popupManager->showOutfitsPopup();
+        event.consume();
+        return;
+    }
+    else if (index == -1)
+    {
+        Window::mousePressed(event);
         return;
     }
     mMoved = false;
