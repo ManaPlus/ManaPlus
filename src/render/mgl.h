@@ -111,6 +111,8 @@ defNameE(glDeleteQueries);
 defNameE(glGetQueryObjectiv);
 defNameE(glGetQueryObjectui64v);
 defNameE(glTextureSubImage2D);
+defNameE(glClearTexImage);
+defNameE(glClearTexSubImage);
 
 #ifdef WIN32
 defNameE(wglGetExtensionsString);

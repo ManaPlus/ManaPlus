@@ -175,6 +175,11 @@ typedef void (APIENTRY *glGetQueryObjectui64v_t) (GLuint id,
 typedef void (APIENTRY *glTextureSubImage2D_t) (GLuint texture, GLenum target,
     GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height,
     GLenum format, GLenum type, const void *pixels);
+typedef void (APIENTRY *glClearTexImage_t) (GLuint texture, GLint level,
+    GLenum format, GLenum type, const void * data);
+typedef void (APIENTRY *glClearTexSubImage_t) (GLuint texture, GLint level,
+    GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height,
+    GLsizei depth, GLenum format, GLenum type, const void * data);
 
 // callback
 typedef void (APIENTRY *GLDEBUGPROC_t) (GLenum source, GLenum type, GLuint id,

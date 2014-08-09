@@ -1065,14 +1065,26 @@ void GraphicsManager::initOpenGLFunctions()
     }
     if (is43 || supportExtension("GL_ARB_copy_image"))
     {
+        logger->log1("found GL_ARB_copy_image");
         assignFunction(glCopyImageSubData);
     }
     else
     {
         logger->log1("GL_ARB_copy_image not found");
     }
+    if (is44 || supportExtension("GL_ARB_clear_texture"))
+    {
+        logger->log1("found GL_ARB_clear_texture");
+        assignFunction(glClearTexImage);
+        assignFunction(glClearTexSubImage);
+    }
+    else
+    {
+        logger->log1("GL_ARB_clear_texture not found");
+    }
     if (is20 || supportExtension("GL_ARB_shader_objects"))
     {
+        logger->log1("found GL_ARB_shader_objects");
         assignFunction(glCreateShader);
         assignFunction(glDeleteShader);
         assignFunction(glGetShaderiv);
@@ -1100,6 +1112,7 @@ void GraphicsManager::initOpenGLFunctions()
 
         if (is30 || supportExtension("GL_EXT_gpu_shader4"))
         {
+            logger->log1("found GL_EXT_gpu_shader4");
             assignFunction(glBindFragDataLocation);
         }
         else
