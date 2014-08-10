@@ -34,11 +34,12 @@
 
 #include "debug.h"
 
+static const int DROP_SHORTCUT_ITEMS = 16;
+
 DropShortcut *dropShortcut = nullptr;
 
 DropShortcut::DropShortcut() :
-    mItemSelected(-1),
-    mItemColorSelected(1),
+    ShortcutBase("drop", "dropColor", DROP_SHORTCUT_ITEMS),
     mLastDropIndex(0)
 {
     clear(false);
@@ -47,48 +48,6 @@ DropShortcut::DropShortcut() :
 
 DropShortcut::~DropShortcut()
 {
-//    save();
-}
-
-void DropShortcut::load(const bool oldConfig)
-{
-    const Configuration *cfg;
-    if (oldConfig)
-        cfg = &config;
-    else
-        cfg = &serverConfig;
-
-    for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
-    {
-        const int itemId = cfg->getValue("drop" + toString(i), -1);
-        const unsigned char itemColor = static_cast<const unsigned char>(
-            cfg->getValue("dropColor" + toString(i), -1));
-
-        if (itemId != -1)
-        {
-            mItems[i] = itemId;
-            mItemColors[i] = itemColor;
-        }
-    }
-}
-
-void DropShortcut::save() const
-{
-    for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
-    {
-        const int itemId = mItems[i] ? mItems[i] : -1;
-        const int itemColor = mItemColors[i] ? mItemColors[i] : 1;
-        if (itemId != -1)
-        {
-            serverConfig.setValue("drop" + toString(i), itemId);
-            serverConfig.setValue("dropColor" + toString(i), itemColor);
-        }
-        else
-        {
-            serverConfig.deleteKey("drop" + toString(i));
-            serverConfig.deleteKey("dropColor" + toString(i));
-        }
-    }
 }
 
 void DropShortcut::dropFirst() const
@@ -205,39 +164,4 @@ bool DropShortcut::dropItem(const int cnt)
             mLastDropIndex = 0;
     }
     return false;
-}
-
-void DropShortcut::setItemSelected(const Item *const item)
-{
-    if (item)
-    {
-        mItemSelected = item->getId();
-        mItemColorSelected = item->getColor();
-    }
-    else
-    {
-        mItemSelected = -1;
-        mItemColorSelected = 1;
-    }
-}
-
-void DropShortcut::setItem(const int index)
-{
-    if (index < 0 || index >= DROP_SHORTCUT_ITEMS)
-        return;
-
-    mItems[index] = mItemSelected;
-    mItemColors[index] = mItemColorSelected;
-    save();
-}
-
-void DropShortcut::clear(const bool isSave)
-{
-    for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
-    {
-        mItems[i] = -1;
-        mItemColors[i] = 1;
-    }
-    if (isSave)
-        save();
 }

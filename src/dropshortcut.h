@@ -23,16 +23,16 @@
 #ifndef DROPSHORTCUT_H
 #define DROPSHORTCUT_H
 
-#include "localconsts.h"
+#include "shortcutbase.h"
 
-static const int DROP_SHORTCUT_ITEMS = 16;
+#include "localconsts.h"
 
 class Item;
 
 /**
  * The class which keeps track of the item shortcuts.
  */
-class DropShortcut final
+class DropShortcut final : public ShortcutBase
 {
     public:
         /**
@@ -48,95 +48,6 @@ class DropShortcut final
         ~DropShortcut();
 
         /**
-         * Load the configuration information.
-         */
-        void load(const bool oldConfig = false);
-
-        /**
-         * Save the configuration information.
-         */
-        void save() const;
-
-        /**
-         * Returns the shortcut item ID specified by the index.
-         *
-         * @param index Index of the shortcut item.
-         */
-        int getItem(const int index) const A_WARN_UNUSED
-        { return mItems[index]; }
-
-        unsigned char getItemColor(const int index) const A_WARN_UNUSED
-        { return mItemColors[index]; }
-
-        /**
-         * Returns the amount of shortcut items.
-         */
-        static int getItemCount() A_WARN_UNUSED
-        { return DROP_SHORTCUT_ITEMS; }
-
-        /**
-         * Returns the item ID that is currently selected.
-         */
-        int getItemSelected() const A_WARN_UNUSED
-        { return mItemSelected; }
-
-        /**
-         * Adds the selected item ID to the items specified by the index.
-         *
-         * @param index Index of the items.
-         */
-        void setItem(const int index);
-
-        /**
-         * Adds an item to the items store specified by the index.
-         *
-         * @param index Index of the item.
-         * @param itemId ID of the item.
-         */
-        void setItems(const int index, const int itemId,
-                      const unsigned char color)
-        { mItems[index] = itemId; mItemColors[index] = color; save(); }
-
-        /**
-         * Set the item that is selected.
-         *
-         * @param itemId The ID of the item that is to be assigned.
-         */
-        void setItemSelected(const int itemId)
-        { mItemSelected = itemId; }
-
-        void setItemSelected(const Item *const item);
-
-        /**
-         * A flag to check if the item is selected.
-         */
-        bool isItemSelected() const A_WARN_UNUSED
-        { return mItemSelected > -1; }
-
-        /**
-         * Remove a item from the shortcut.
-         */
-        void removeItem(const int index)
-        { mItems[index] = -1; save(); }
-
-        /**
-         * Try to use the item specified by the index.
-         *
-         * @param index Index of the item shortcut.
-         */
-        void useItem(int index);
-
-        /**
-         * Equip a item from the shortcut.
-         */
-        void equipItem(int index);
-
-        /**
-         * UnEquip a item from the shortcut.
-         */
-        void unequipItem(int index);
-
-        /**
          * Drop first item.
          */
         void dropFirst() const;
@@ -146,18 +57,11 @@ class DropShortcut final
          */
         void dropItems(const int cnt = 1);
 
-        void clear(const bool isSave = true);
-
     private:
         /**
          * Drop item in cicle.
          */
         bool dropItem(const int cnt = 1);
-
-        int mItems[DROP_SHORTCUT_ITEMS];
-        unsigned char mItemColors[DROP_SHORTCUT_ITEMS];
-        int mItemSelected;
-        unsigned char mItemColorSelected;
 
         int mLastDropIndex;
 };
