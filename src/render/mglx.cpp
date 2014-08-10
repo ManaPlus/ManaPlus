@@ -25,6 +25,8 @@
 #include "debug.h"
 
 #define defName(name) name##_t m##name = nullptr
+
+// include function defines
 #include "render/mglx.hpp"
 
 #endif

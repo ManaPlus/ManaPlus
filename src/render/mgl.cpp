@@ -26,6 +26,7 @@
 
 #define defName(name) name##_t m##name = nullptr
 
+// include function defines
 #include "render/mgl.hpp"
 
 #endif
