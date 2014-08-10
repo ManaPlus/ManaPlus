@@ -1069,6 +1069,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      settings.h \
 	      shopitem.cpp \
 	      shopitem.h \
+	      shortcutbase.cpp \
+	      shortcutbase.h \
 	      simpleanimation.cpp \
 	      simpleanimation.h \
 	      soundconsts.h \
