@@ -18,13 +18,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "render/mglx.h"
-
-#if defined(USE_OPENGL) && defined(USE_X11)
-
-#include "debug.h"
-
-#define defName(name) name##_t m##name = nullptr
-#include "render/mglx.hpp"
-
-#endif
+defName(glXCreateContext);
+defName(glXGetCurrentContext);
+defName(glXCreateContextAttribs);
+defName(glXChooseFBConfig);
+defName(glXDestroyContext);
+defName(glXMakeCurrent);
+defName(glXSwapBuffers);

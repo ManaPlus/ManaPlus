@@ -866,6 +866,7 @@ SET(SRCS
     render/mgltypes.h
     render/mglx.cpp
     render/mglx.h
+    render/mglx.hpp
     render/mglxinit.cpp
     render/mglxinit.h
     render/mglxtypes.h

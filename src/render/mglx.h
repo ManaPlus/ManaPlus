@@ -26,17 +26,9 @@
 
 #include "render/mglxtypes.h"
 
-#define defNameE(name) extern name##_t m##name
-
-defNameE(glXCreateContext);
-defNameE(glXGetCurrentContext);
-defNameE(glXCreateContextAttribs);
-defNameE(glXChooseFBConfig);
-defNameE(glXDestroyContext);
-defNameE(glXMakeCurrent);
-defNameE(glXSwapBuffers);
-
-#undef defNameE
+#define defName(name) extern name##_t m##name
+#include "render/mglx.hpp"
+#undef defName
 
 #endif  // defined(USE_OPENGL) && defined(USE_X11)
 #endif  // RENDER_MGLX_H
