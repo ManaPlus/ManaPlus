@@ -28,6 +28,9 @@
 #include "settings.h"
 
 #include "utils/base64.h"
+#if defined(__native_client__) || (defined(ANDROID) && defined(USE_SDL2))
+#include "utils/files.h"
+#endif
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
