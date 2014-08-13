@@ -43,6 +43,7 @@
 #include "gui/windows/buydialog.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/helpwindow.h"
+#include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/socialwindow.h"
@@ -1324,19 +1325,25 @@ static int uploadUpdate(void *ptr,
     UploadChatInfo *const info = reinterpret_cast<UploadChatInfo*>(ptr);
     if (status == DownloadStatus::Complete)
     {
-        ChatTab *const tab = info->tab;
-        if (chatWindow && (!tab || chatWindow->isTabPresent(tab)))
+        std::string str = Net::Download::getUploadResponse();
+        const size_t sz = str.size();
+        if (sz > 0)
         {
-            std::string str = Net::Download::getUploadResponse();
-            const size_t sz = str.size();
-            if (sz > 0)
+            if (str[sz - 1] == '\n')
+                str = str.substr(0, sz - 1);
+            str.append(info->addStr);
+            ChatTab *const tab = info->tab;
+            if (chatWindow && (!tab || chatWindow->isTabPresent(tab)))
             {
-                if (str[sz - 1] == '\n')
-                    str = str.substr(0, sz - 1);
-                str.append(info->addStr);
                 str = strprintf("%s [@@%s |%s@@]",
                     info->text.c_str(), str.c_str(), str.c_str());
                 outStringNormal(tab, str, str);
+            }
+            else
+            {
+                // TRANSLATORS: file uploaded message
+                new OkDialog(_("File uploaded"), str,
+                    DialogType::OK, true, false);
             }
         }
     }
