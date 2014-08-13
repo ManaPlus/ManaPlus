@@ -1,0 +1,9 @@
+NAME=sdl
+VERSION=1.2.14
+ARCHIVE_ROOT=SDL-1.2.14
+URL=http://www.libsdl.org/release/SDL-1.2.14.tar.gz
+LICENSE=LGPL2
+DEPENDS=(libtar regal)
+# Disabled on bionic due to regal.
+DISABLED_LIBC=(bionic)
+SHA1=ba625b4b404589b97e92d7acd165992debe576dd

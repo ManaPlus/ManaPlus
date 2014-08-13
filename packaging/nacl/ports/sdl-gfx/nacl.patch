@@ -1,0 +1,14 @@
+--- SDL_gfx-2.0.24/configure.in	2012-08-05 20:25:55.000000000 +0400
++++ SDL_gfx-2.0.24-nacl/configure.in	2013-10-29 22:58:03.825301123 +0400
+@@ -117,10 +117,7 @@
+ fi
+ 
+ dnl Check for SDL
+-AM_PATH_SDL($SDL_VERSION,
+-            :,
+-	    AC_MSG_ERROR([*** SDL version $SDL_VERSION not found!])
+-)
++
+ CFLAGS="$CFLAGS $SDL_CFLAGS"
+ # Remove dependencies from 'sdl-config' not meant for us libraries:
+ SDL_LIBS=$(echo "$SDL_LIBS" | sed -e 's/-lmingw32//' -e 's/-lSDLmain//')

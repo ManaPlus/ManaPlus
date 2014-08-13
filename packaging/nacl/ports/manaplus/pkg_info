@@ -1,0 +1,6 @@
+NAME=manaplus
+VERSION=1
+URL=git://gitorious.org/manaplus/manaplus.git
+LICENSE=GPL
+DEPENDS=(sdl sdl-gfx sdl-mixer sdl-ttf sdl-image sdl-net physfs curl libxml2 libwebp)
+SHA1=ed2fe0e228a3d367017839a0cc4c548d526e516f

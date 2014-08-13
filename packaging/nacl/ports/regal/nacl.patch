@@ -1,0 +1,319 @@
+diff --git a/Makefile b/Makefile
+index 911a3c6..e45d3c4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -39,6 +39,7 @@ include Makefile.dreamtorus
+ include Makefile.dreamtorus_static
+ include Makefile.alphatorus
+ include Makefile.tiger
++include Makefile.nacl
+ 
+ # Testing
+ 
+diff --git a/Makefile.glu b/Makefile.glu
+index 9df0418..3043f07 100644
+--- a/Makefile.glu
++++ b/Makefile.glu
+@@ -36,7 +36,6 @@ GLU.OBJS       := $(GLU.OBJS:.c=.o) $(GLU.OBJS:.cc=.o)
+ GLU.OBJS       := $(filter %.o,$(GLU.OBJS))
+ GLU.DEPS       := $(GLU.OBJS:.o=.d)
+ GLU.LIBS       := -Llib/$(SYSTEM) -lRegal
+-GLU.LIBS       += -lstdc++
+ GLU.LIBS       += -pthread -lm
+ 
+ -include $(GLU.DEPS)
+diff --git a/Makefile.nacl b/Makefile.nacl
+index e5fa8f8..6a6cb90 100644
+--- a/Makefile.nacl
++++ b/Makefile.nacl
+@@ -36,8 +36,8 @@ NACL.SRCS.NAMES := $(notdir $(NACL.SRCS))
+ NACL.OBJS       := $(addprefix tmp/$(SYSTEM)/nacl/static/,$(NACL.SRCS.NAMES))
+ NACL.OBJS       := $(NACL.OBJS:.c=.o)
+ NACL.CFLAGS     := -Iinclude
+-NACL.LIBS       += -Llib/$(SYSTEM) -lRegal
+-NACL.LIBS       += -lpng -lz -lm -pthread -lppapi -lppapi_gles2 -lstdc++
++NACL.LIBS       += -Llib/$(SYSTEM) -lRegal -lglslopt
++NACL.LIBS       += -lpng -lz -lm -pthread -lppapi -lppapi_gles2
+ 
+ -include $(NACL.DEPS)
+ 
+diff --git a/Makefile.regal b/Makefile.regal
+index 04a1c88..147a391 100644
+--- a/Makefile.regal
++++ b/Makefile.regal
+@@ -18,9 +18,9 @@ include build/regal.inc
+ export:
+ 	python scripts/Export.py --api gl 4.4 --api wgl 4.4 --api glx 4.4 --api cgl 1.4 --api egl 1.0 --outdir .
+ 
+-# Shared library target not currently supported for NaCL or emscripten
++# Shared library target not currently supported for emscripten
+ 
+-ifneq ($(filter nacl% emscripten%,$(SYSTEM)),)
++ifneq ($(filter emscripten%,$(SYSTEM)),)
+ REGAL.SHARED :=
+ endif
+ 
+@@ -35,7 +35,7 @@ all:: regal.lib
+ 
+ clean:: regal.clean
+ 
+-REGAL.LDFLAGS        := -lstdc++ -pthread -lm
++REGAL.LDFLAGS        := -pthread -lm
+ REGAL.LIBS           :=
+ 
+ ifeq ($(filter nacl%,$(SYSTEM)),)
+@@ -105,7 +105,7 @@ endif
+ 
+ # Emscripten options
+ 
+-ifneq ($(filter nacl% emscripten%,$(SYSTEM)),)
++ifneq ($(filter emscripten%,$(SYSTEM)),)
+ REGAL.CFLAGS  += -DREGAL_SYS_EMSCRIPTEN=1 -DREGAL_SYS_EGL=1 -DREGAL_SYS_ES2=1
+ REGAL.CFLAGS  += -DREGAL_HTTP=0
+ REGAL.CFLAGS  += -DREGAL_STATISTICS=0
+@@ -196,12 +196,16 @@ REGAL.SDEPS          := $(LIBS.SOBJS:.o=.d)
+ 
+ REGAL.LIBS           += $(LDFLAGS.X11)
+ 
+-ifneq ($(filter linux%,$(SYSTEM)),)
++ifneq ($(filter nacl% linux%,$(SYSTEM)),)
++ifeq ($(NACL_LIBC),newlib)
++REGAL.SHARED     :=
++else
+ REGAL.SONAME     := lib$(NAME).so.$(SO_MAJOR)
+ REGAL.DEVLNK     := lib$(NAME).so
+ REGAL.SHARED     := lib$(NAME).so.$(SO_VERSION)
+ REGAL.LDFLAGS.SO := $(LDFLAGS.SO) $(LDFLAGS.DYNAMIC) -Wl,-soname=$(REGAL.SONAME)
+ endif
++endif
+ 
+ ifneq ($(filter darwin%,$(SYSTEM)),)
+ REGAL.SONAME     := lib$(NAME).$(SO_MAJOR).dylib
+@@ -235,12 +239,6 @@ ifdef APITRACE.STATIC
+ lib/$(SYSTEM)/$(REGAL.STATIC): lib/$(SYSTEM)/$(APITRACE.STATIC) lib/$(SYSTEM)/$(SNAPPY.STATIC)
+ endif
+ 
+-ifneq ($(filter nacl%,$(SYSTEM)),)
+-ifeq ($(NACL_LIBC),glibc)
+-regal.lib: lib/$(SYSTEM)/$(REGAL.SHARED)
+-endif
+-endif
+-
+ lib/$(SYSTEM)/$(REGAL.STATIC): lib/$(SYSTEM)/$(GLSLOPT.STATIC) lib/$(SYSTEM)/$(PCRE.STATIC) lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC) $(REGAL.OBJS)
+ 	@mkdir -p $(dir $@)
+ 	$(LOG_AR)$(CCACHE) $(AR) cr $@ $(REGAL.OBJS)
+diff --git a/Makefile.regaltest b/Makefile.regaltest
+index fdebf3a..98a419f 100644
+--- a/Makefile.regaltest
++++ b/Makefile.regaltest
+@@ -7,7 +7,7 @@ include build/common.inc
+ 
+ # Not supported for NaCL - Revisit
+ 
+-ifeq ($(filter nacl% emscripten%,$(SYSTEM)),)
++ifeq ($(filter emscripten%,$(SYSTEM)),)
+ 
+ include build/regaltest.inc
+ 
+@@ -75,7 +75,7 @@ test: bin/$(SYSTEM)/regaltest$(BIN_EXTENSION)
+ ifeq ($(filter nacl%,$(SYSTEM)),)
+ 	$^
+ else
+-	"$(NACL_SEL_LDR)" -a -B "$(NACL_IRT)" -- $^
++	"$(NACL_SDK_ROOT)/tools/sel_ldr.py" $^
+ endif
+ endif
+ 
+diff --git a/Makefile.regalw b/Makefile.regalw
+index 3577769..012938e 100644
+--- a/Makefile.regalw
++++ b/Makefile.regalw
+@@ -18,9 +18,9 @@ REGALW.SHARED    ?= libRegal.so
+ 
+ REGALW.STATIC :=
+ 
+-# Shared library target not currently supported for NaCL or emscripten
++# Shared library target not currently supported for emscripten
+ 
+-ifneq ($(filter nacl% emscripten%,$(SYSTEM)),)
++ifneq ($(filter emscripten%,$(SYSTEM)),)
+ REGALW.SHARED :=
+ endif
+ 
+@@ -31,7 +31,7 @@ all:: regalw.lib
+ 
+ clean:: regalw.clean
+ 
+-REGALW.LDFLAGS        := -lstdc++ -pthread -lm
++REGALW.LDFLAGS        := -pthread -lm
+ REGALW.LIBS           :=
+ 
+ REGALW.SRCS           := $(REGAL.CXX)
+diff --git a/README.rst b/README.rst
+index a8d5d84..600c336 100644
+--- a/README.rst
++++ b/README.rst
+@@ -380,9 +380,7 @@ PPAPI and NaCl
+ 
+ * NACL_SDK_ROOT needs to be set
+ 
+-* NACL_LIBC=newlib is the default, specify NACL_LIBC=glibc as an alternative
+-
+-* regaltest requires pepper_26 or newer
++* NACL_LIBC=newlib is the default, specify glibc or pnacl as alternatives
+ 
+ Questions and Answers
+ =====================
+diff --git a/build/common.inc b/build/common.inc
+index 6049b68..5ae16e0 100644
+--- a/build/common.inc
++++ b/build/common.inc
+@@ -51,12 +51,12 @@ OPT   ?= $(CFLAGS.RELEASE)
+ endif
+ 
+ ifndef V
+-LOG_CXX    ?= @echo " [CXX] $@";
+-LOG_CC     ?= @echo " [CC] $@";
+-LOG_LD     ?= @echo " [LD] $@";
+-LOG_AR     ?= @echo " [AR] $@";
++LOG_CXX    ?= @echo " [CXX]    $@";
++LOG_CC     ?= @echo " [CC]     $@";
++LOG_LD     ?= @echo " [LD]     $@";
++LOG_AR     ?= @echo " [AR]     $@";
+ LOG_RANLIB ?= @echo " [RANLIB] $@";
+-LOG_STRIP  ?= @echo " [STRIP] $@";
++LOG_STRIP  ?= @echo " [STRIP]  $@";
+ endif
+ 
+ INCLUDE ?= -Iinclude
+diff --git a/build/glu.inc b/build/glu.inc
+index 3788977..f4dd54f 100644
+--- a/build/glu.inc
++++ b/build/glu.inc
+@@ -102,9 +102,10 @@ GLU.CXX += src/glu/libnurbs/nurbtess/searchTree.cc
+ GLU.CFLAGS     := -Isrc/glu/include -Isrc/glu/libnurbs/interface -Isrc/glu/libnurbs/internals -Isrc/glu/libnurbs/nurbtess
+ GLU.CFLAGS     += -DLIBRARYBUILD
+ 
+-GLU.SHARED     := libRegalGLU.so
+-GLU.STATIC     := libRegalGLUlib.a
++GLU.STATIC     := libRegalGLU.a
+ 
+ ifneq ($(filter darwin%,$(SYSTEM)),)
+ GLU.SHARED     := libRegalGLU.dylib
++else
++GLU.SHARED     := libRegalGLU.so
+ endif
+diff --git a/build/pcre.inc b/build/pcre.inc
+index d253c38..7a941c6 100644
+--- a/build/pcre.inc
++++ b/build/pcre.inc
+@@ -65,7 +65,7 @@ PCRE.C += src/pcre/pcre_get.c
+ PCRE.C += src/pcre/pcre_globals.c
+ #PCRE.C += src/pcre/pcregrep.c
+ PCRE.C += src/pcre/pcre_jit_compile.c
+-PCRE.C += src/pcre/pcre_jit_test.c
++#PCRE.C += src/pcre/pcre_jit_test.c
+ PCRE.C += src/pcre/pcre_maketables.c
+ PCRE.C += src/pcre/pcre_newline.c
+ PCRE.C += src/pcre/pcre_ord2utf8.c
+diff --git a/build/regal.inc b/build/regal.inc
+index 32e7933..71ec2a6 100644
+--- a/build/regal.inc
++++ b/build/regal.inc
+@@ -153,5 +153,5 @@ ifeq ($(PROFILE_OS),Windows)
+ REGAL.INCLUDE   += -Isrc/glsl/include/c99
+ endif
+ 
+-REGAL.STATIC    ?= libRegallib.a
++REGAL.STATIC    ?= libRegal.a
+ REGAL.SHARED    ?= libRegal.so
+diff --git a/config/Makefile.nacl-pnacl b/config/Makefile.nacl-pnacl
+index a0ee95c..9bfbe1d 100644
+--- a/config/Makefile.nacl-pnacl
++++ b/config/Makefile.nacl-pnacl
+@@ -2,7 +2,7 @@ NACL_ARCH := pnacl
+ 
+ include config/nacl.inc
+ 
+-NACL_TOOLCHAIN := $(NACL_SDK_ROOT)/toolchain/$(NACL_OS)_x86_pnacl/$(NACL_LIBC)
++NACL_TOOLCHAIN := $(NACL_SDK_ROOT)/toolchain/$(NACL_OS)_pnacl
+ 
+ CC     := $(NACL_TOOLCHAIN)/bin/pnacl-clang
+ CXX    := $(NACL_TOOLCHAIN)/bin/pnacl-clang++
+@@ -13,7 +13,6 @@ STRIP  ?=
+ 
+ BIN_EXTENSION = .pexe
+ EXT.DYNAMIC = so
+-LDFLAGS.EXTRA =
+ LIBDIR =
+ CFLAGS.EXTRA +=
+ LDFLAGS.EXTRA +=
+diff --git a/config/nacl.inc b/config/nacl.inc
+index d86d4e7..66a9b05 100644
+--- a/config/nacl.inc
++++ b/config/nacl.inc
+@@ -48,8 +48,12 @@ export CCACHE_COMPILERCHECK=echo $(SYSTEM)$(NACL_LIBC)$(NACL_SDK_ROOT)
+ ifeq ($(NACL_ARCH),i686)
+ NACL_LIBTYPE=$(NACL_LIBC)_x86_32
+ else
++ifeq ($(NACL_ARCH),pnacl)
++NACL_LIBTYPE=$(NACL_ARCH)
++else
+ NACL_LIBTYPE=$(NACL_LIBC)_$(NACL_ARCH)
+ endif
++endif
+ 
+ ifeq ($(MODE),debug)
+ LDFLAGS.EXTRA += -L$(NACL_SDK_ROOT)/ports/lib/$(NACL_LIBTYPE)/Debug
+diff --git a/src/apitrace/common/os_posix.cpp b/src/apitrace/common/os_posix.cpp
+index 28abb97..b49fd40 100644
+--- a/src/apitrace/common/os_posix.cpp
++++ b/src/apitrace/common/os_posix.cpp
+@@ -123,7 +123,7 @@ getCurrentDir(void)
+     size_t size = PATH_MAX;
+     char *buf = path.buf(size);
+ 
+-    getcwd(buf, size);
++    buf = getcwd(buf, size);
+     buf[size - 1] = 0;
+     
+     path.truncate();
+diff --git a/src/boost/boost/print/detail.hpp b/src/boost/boost/print/detail.hpp
+index 9cb3643..49aa043 100644
+--- a/src/boost/boost/print/detail.hpp
++++ b/src/boost/boost/print/detail.hpp
+@@ -325,7 +325,7 @@ inline size_t unsigned_length(const unsigned long val) { return unsigned_length(
+ inline size_t unsigned_length(const unsigned long val) { return unsigned_length(static_cast<boost::uint32_t>(val)); }
+ #endif
+ 
+-#if defined(__native_client__) && (defined(__i386) || defined(__x86_64) || defined(__arm__))
++#if defined(__native_client__)
+ inline size_t unsigned_length(const unsigned long val) { return unsigned_length(static_cast<boost::uint32_t>(val)); }
+ #endif
+ 
+diff --git a/src/regal/RegalShader.cpp b/src/regal/RegalShader.cpp
+index d59249f..65cceeb 100644
+--- a/src/regal/RegalShader.cpp
++++ b/src/regal/RegalShader.cpp
+@@ -233,7 +233,7 @@ namespace Shader {
+     bool	status;
+   };
+ 
+-  static inline void debug_print_ir (const char* name, exec_list* ir, _mesa_glsl_parse_state* state, void* memctx)
++  static inline void REGAL_UNUSED debug_print_ir (const char* name, exec_list* ir, _mesa_glsl_parse_state* state, void* memctx)
+   {
+     //_mesa_print_ir (ir, state);
+     Error( "GLSLOptimize debug **** ", name, ":",
+diff --git a/src/regal/RegalUtil.h b/src/regal/RegalUtil.h
+index 4bf9e75..0df4078 100644
+--- a/src/regal/RegalUtil.h
++++ b/src/regal/RegalUtil.h
+@@ -56,7 +56,7 @@
+ #endif
+ 
+ #ifndef REGAL_UNUSED
+-#if defined(__GNUC__) && !defined(__clang__)
++#if defined(__GNUC__)
+ #define REGAL_UNUSED __attribute__((unused))
+ #else
+ #define REGAL_UNUSED

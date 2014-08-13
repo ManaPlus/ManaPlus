@@ -1,0 +1,7 @@
+NAME=sdl-gfx
+VERSION=2.0.24
+ARCHIVE_ROOT=SDL_gfx-2.0.24
+URL=http://www.ferzkopp.net/Software/SDL_gfx-2.0/SDL_gfx-2.0.24.tar.gz
+LICENSE=LGPL2
+DEPENDS=(sdl)
+SHA1=34e8963188e4845557468a496066a8fa60d5f563
