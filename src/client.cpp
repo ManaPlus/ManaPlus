@@ -26,6 +26,7 @@
 
 #include "auctionmanager.h"
 #include "chatlogger.h"
+#include "commandhandler.h"
 #include "configmanager.h"
 #include "configuration.h"
 #include "dirs.h"
@@ -600,6 +601,7 @@ void Client::gameClear()
     delete2(setupWindow);
     delete2(helpWindow);
     delete2(didYouKnowWindow);
+    delete2(commandHandler);
 
     stopTimers();
 

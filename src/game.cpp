@@ -140,7 +140,6 @@ const unsigned adjustDelay = 10;
 static void initEngines()
 {
     actorManager = new ActorManager;
-    commandHandler = new CommandHandler;
     effectManager = new EffectManager;
     AuctionManager::init();
     GuildManager::init();
@@ -427,7 +426,6 @@ Game::~Game()
     delete2(actorManager)
     if (client->getState() != STATE_CHANGE_MAP)
         delete2(localPlayer)
-    delete2(commandHandler)
     delete2(effectManager)
     delete2(particleEngine)
     delete2(viewport)
