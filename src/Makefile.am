@@ -214,6 +214,8 @@ manaplus_SOURCES += events/actionevent.h \
 	      listeners/tablemodellistener.h \
 	      listeners/updatestatuslistener.cpp \
 	      listeners/updatestatuslistener.h \
+	      listeners/uploadlistener.cpp \
+	      listeners/uploadlistener.h \
 	      utils/sdlpixel.h \
 	      gui/widgets/widget.h \
 	      listeners/weightlistener.h \
@@ -360,6 +362,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/scrollarea.cpp \
 	      gui/widgets/scrollarea.h \
 	      gui/widgets/serverslistbox.h \
+	      gui/widgets/setupbuttonitem.cpp \
+	      gui/widgets/setupbuttonitem.h \
 	      gui/widgets/setupitem.cpp \
 	      gui/widgets/setupitem.h \
 	      gui/widgets/tabs/setuptab.cpp \

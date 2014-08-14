@@ -26,8 +26,11 @@
 
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/setupbuttonitem.h"
 #include "gui/widgets/setupitem.h"
 #include "gui/widgets/scrollarea.h"
+
+#include "listeners/uploadlistener.h"
 
 #include "configuration.h"
 
@@ -368,6 +371,10 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable input log"), "",
         "logInput", this, "logInputEvent");
+
+    // TRANSLATORS: settings option
+    new SetupButtonItem(_("Upload log file"), "upload",
+        this, "uploadLog", &uploadListener);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Low traffic mode"), "", "lowTraffic",
