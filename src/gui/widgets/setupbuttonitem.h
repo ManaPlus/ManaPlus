@@ -23,21 +23,9 @@
 
 #include "gui/widgets/setupitem.h"
 
-#include "listeners/actionlistener.h"
-
 class Button;
-class CheckBox;
-class Configuration;
-class DropDown;
-class EditDialog;
 class HorizontContainer;
-class IntTextField;
-class Label;
-class ListModel;
 class SetupTabScroll;
-class Slider;
-class SliderList;
-class TextField;
 
 class SetupButtonItem final : public SetupItem
 {

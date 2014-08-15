@@ -26,8 +26,6 @@
 
 #include "gui/widgets/tabs/setuptabscroll.h"
 
-#include "utils/mathutils.h"
-
 #include "debug.h"
 
 SetupButtonItem::SetupButtonItem(const std::string &restrict text,

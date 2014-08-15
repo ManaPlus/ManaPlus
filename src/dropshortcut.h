@@ -27,8 +27,6 @@
 
 #include "localconsts.h"
 
-class Item;
-
 /**
  * The class which keeps track of the item shortcuts.
  */

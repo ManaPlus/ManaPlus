@@ -27,7 +27,6 @@
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/setupbuttonitem.h"
-#include "gui/widgets/setupitem.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "listeners/uploadlistener.h"

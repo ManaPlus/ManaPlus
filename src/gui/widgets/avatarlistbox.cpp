@@ -425,6 +425,19 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 popupManager->showPickupItemPopup(name);
                 break;
             }
+            case MapItemType::HOME:
+            case MapItemType::ROAD:
+            case MapItemType::CROSS:
+            case MapItemType::ARROW_UP:
+            case MapItemType::ARROW_DOWN:
+            case MapItemType::ARROW_LEFT:
+            case MapItemType::ARROW_RIGHT:
+            case MapItemType::PORTAL:
+            case MapItemType::MUSIC:
+            case MapItemType::SEPARATOR:
+            {
+                break;
+            }
             default:
             {
                 const Map *const map = viewport->getMap();

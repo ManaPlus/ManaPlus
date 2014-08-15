@@ -2463,7 +2463,7 @@ void LocalPlayer::tryPingRequest()
 }
 
 
-void LocalPlayer::setAway(const std::string &message)
+void LocalPlayer::setAway(const std::string &message) const
 {
     setAfkMessage(message);
     GameModifiers::changeAwayMode();
@@ -2487,7 +2487,7 @@ void LocalPlayer::setAfkMessage(std::string message)
     }
 }
 
-void LocalPlayer::setPseudoAway(const std::string &message)
+void LocalPlayer::setPseudoAway(const std::string &message) const
 {
     setAfkMessage(message);
     settings.pseudoAwayMode = !settings.pseudoAwayMode;

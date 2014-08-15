@@ -212,8 +212,10 @@ void EventsManager::logEvent(const SDL_Event &event)
         break
 
         case SDL_MOUSEMOTION:
-            logger->log("event: SDL_MOUSEMOTION: %u,%u,%u",
-                event.motion.state, event.motion.x, event.motion.y);
+            logger->log("event: SDL_MOUSEMOTION: %u,%d,%d",
+                event.motion.state,
+                static_cast<int>(event.motion.x),
+                static_cast<int>(event.motion.y));
             break;
         case SDL_FINGERDOWN:
         {

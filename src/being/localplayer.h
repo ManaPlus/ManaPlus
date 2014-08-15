@@ -230,9 +230,9 @@ class LocalPlayer final : public Being,
 
         void pingResponse();
 
-        void setAway(const std::string &message);
+        void setAway(const std::string &message) const;
 
-        void setPseudoAway(const std::string &message);
+        void setPseudoAway(const std::string &message) const;
 
         void setHalfAway(const bool n)
         { mInactive = n; }

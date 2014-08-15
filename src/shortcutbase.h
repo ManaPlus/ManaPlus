@@ -73,7 +73,7 @@ class ShortcutBase notfinal
         /**
          * Returns the amount of shortcut items.
          */
-        int getItemCount() A_WARN_UNUSED
+        int getItemCount() const A_WARN_UNUSED
         { return mMaxSize; }
 
         /**
@@ -131,8 +131,6 @@ class ShortcutBase notfinal
         int mItemSelected;
         int mMaxSize;
         unsigned char mItemColorSelected;
-
-        int mLastDropIndex;
 };
 
 #endif  // SHORTCUTBASE_H

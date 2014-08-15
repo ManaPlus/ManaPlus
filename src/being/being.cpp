@@ -2911,6 +2911,12 @@ std::string Being::loadComment(const std::string &name,
         case ActorType::NPC:
             str = settings.npcsDir;
             break;
+        case ActorType::UNKNOWN:
+        case ActorType::MONSTER:
+        case ActorType::FLOOR_ITEM:
+        case ActorType::PORTAL:
+        case ActorType::PET:
+        case ActorType::AVATAR:
         default:
             return "";
     }

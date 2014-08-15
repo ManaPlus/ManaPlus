@@ -22,7 +22,6 @@
 
 #include "dropshortcut.h"
 
-#include "configuration.h"
 #include "inventory.h"
 #include "item.h"
 #include "settings.h"

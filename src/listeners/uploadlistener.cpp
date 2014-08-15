@@ -22,7 +22,6 @@
 
 #include "commandhandler.h"
 #include "commands.h"
-#include "logger.h"
 
 #include "debug.h"
 
