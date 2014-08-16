@@ -96,6 +96,8 @@ extern int serverVersion;
 
 std::string tradePartnerName;
 
+PopupMenu *popupMenu = nullptr;
+
 PopupMenu::PopupMenu() :
     Popup("PopupMenu", "popupmenu.xml"),
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,

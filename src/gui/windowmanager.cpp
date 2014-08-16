@@ -32,6 +32,8 @@
 #include "gui/gui.h"
 #include "gui/userpalette.h"
 
+#include "gui/popups/popupmenu.h"
+
 #include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/helpwindow.h"
 #include "gui/windows/setupwindow.h"
@@ -92,6 +94,8 @@ void WindowManager::createWindows()
     didYouKnowWindow = new DidYouKnowWindow;
     didYouKnowWindow->postInit();
     commandHandler = new CommandHandler;
+    popupMenu = new PopupMenu;
+    popupMenu->postInit();
 }
 
 void WindowManager::initTitle()

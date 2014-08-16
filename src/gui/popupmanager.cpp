@@ -37,18 +37,15 @@
 PopupManager *popupManager = nullptr;
 
 PopupManager::PopupManager() :
-    mPopupMenu(new PopupMenu),
     mBeingPopup(new BeingPopup),
     mTextPopup(new TextPopup)
 {
     mBeingPopup->postInit();
-    mPopupMenu->postInit();
     mTextPopup->postInit();
 }
 
 PopupManager::~PopupManager()
 {
-    delete2(mPopupMenu);
     delete2(mBeingPopup);
     delete2(mTextPopup);
 }
@@ -58,119 +55,119 @@ void PopupManager::showPopup(Window *const parent,
                              Item *const item,
                              const bool isInventory)
 {
-    mPopupMenu->showPopup(parent, x, y, item, isInventory);
+    popupMenu->showPopup(parent, x, y, item, isInventory);
 }
 
 void PopupManager::showPopup(MapItem *const item)
 {
-    mPopupMenu->showPopup(viewport->getMouseX(), viewport->getMouseY(), item);
+    popupMenu->showPopup(viewport->getMouseX(), viewport->getMouseY(), item);
 }
 
 void PopupManager::showPopup(Window *const parent,
                              Item *const item,
                              const bool isInventory)
 {
-    mPopupMenu->showPopup(parent, viewport->getMouseX(), viewport->getMouseY(),
+    popupMenu->showPopup(parent, viewport->getMouseX(), viewport->getMouseY(),
         item, isInventory);
 }
 
 void PopupManager::showPopup(const int x, const int y,
                              const std::vector<ActorSprite*> &beings)
 {
-    mPopupMenu->showPopup(x, y, beings);
+    popupMenu->showPopup(x, y, beings);
 }
 
 void PopupManager::showPopup(const int x, const int y,
                              const FloorItem *const floorItem)
 {
-    mPopupMenu->showPopup(x, y, floorItem);
+    popupMenu->showPopup(x, y, floorItem);
 }
 
 void PopupManager::showPopup(const int x, const int y, MapItem *const mapItem)
 {
-    mPopupMenu->showPopup(x, y, mapItem);
+    popupMenu->showPopup(x, y, mapItem);
 }
 
 void PopupManager::showItemPopup(Item *const item)
 {
-    mPopupMenu->showItemPopup(viewport->getMouseX(), viewport->getMouseY(),
+    popupMenu->showItemPopup(viewport->getMouseX(), viewport->getMouseY(),
         item);
 }
 
 void PopupManager::showItemPopup(const int itemId,
                                  const unsigned char color)
 {
-    mPopupMenu->showItemPopup(viewport->getMouseX(), viewport->getMouseY(),
+    popupMenu->showItemPopup(viewport->getMouseX(), viewport->getMouseY(),
         itemId, color);
 }
 
 void PopupManager::showDropPopup(Item *const item)
 {
-    mPopupMenu->showDropPopup(viewport->getMouseX(), viewport->getMouseY(),
+    popupMenu->showDropPopup(viewport->getMouseX(), viewport->getMouseY(),
         item);
 }
 
 void PopupManager::showOutfitsPopup(const int x, const int y)
 {
-    mPopupMenu->showOutfitsPopup(x, y);
+    popupMenu->showOutfitsPopup(x, y);
 }
 
 void PopupManager::showOutfitsPopup()
 {
-    mPopupMenu->showOutfitsPopup(viewport->getMouseX(), viewport->getMouseY());
+    popupMenu->showOutfitsPopup(viewport->getMouseX(), viewport->getMouseY());
 }
 
 void PopupManager::showSpellPopup(TextCommand *const cmd)
 {
-    mPopupMenu->showSpellPopup(viewport->getMouseX(), viewport->getMouseY(),
+    popupMenu->showSpellPopup(viewport->getMouseX(), viewport->getMouseY(),
         cmd);
 }
 
 void PopupManager::showChatPopup(const int x, const int y,
                                  ChatTab *const tab)
 {
-    mPopupMenu->showChatPopup(x, y, tab);
+    popupMenu->showChatPopup(x, y, tab);
 }
 
 void PopupManager::showChatPopup(ChatTab *const tab)
 {
-    mPopupMenu->showChatPopup(viewport->getMouseX(), viewport->getMouseY(),
+    popupMenu->showChatPopup(viewport->getMouseX(), viewport->getMouseY(),
         tab);
 }
 
 void PopupManager::showPopup(const int x, const int y,
                              const Being *const being)
 {
-    mPopupMenu->showPopup(x, y, being);
+    popupMenu->showPopup(x, y, being);
 }
 
 void PopupManager::showPopup(const Being *const being)
 {
-    mPopupMenu->showPopup(viewport->getMouseX(), viewport->getMouseY(), being);
+    popupMenu->showPopup(viewport->getMouseX(), viewport->getMouseY(), being);
 }
 
 void PopupManager::showPlayerPopup(const std::string &nick)
 {
-    mPopupMenu->showPlayerPopup(viewport->getMouseX(), viewport->getMouseY(),
+    popupMenu->showPlayerPopup(viewport->getMouseX(), viewport->getMouseY(),
         nick);
 }
 
 void PopupManager::showPopup(const int x, const int y,
                              Button *const button)
 {
-    mPopupMenu->showPopup(x, y, button);
+    popupMenu->showPopup(x, y, button);
 }
 
 void PopupManager::showPopup(const int x, const int y,
                              const ProgressBar *const bar)
 {
-    mPopupMenu->showPopup(x, y, bar);
+    popupMenu->showPopup(x, y, bar);
 }
 
 void PopupManager::showAttackMonsterPopup(const std::string &name,
                                           const ActorType::Type &type)
 {
-    mPopupMenu->showAttackMonsterPopup(viewport->getMouseX(),
+    popupMenu->showAttackMonsterPopup(viewport->getMouseX(),
         viewport->getMouseY(),
         name,
         type);
@@ -178,7 +175,7 @@ void PopupManager::showAttackMonsterPopup(const std::string &name,
 
 void PopupManager::showPickupItemPopup(const std::string &name)
 {
-    mPopupMenu->showPickupItemPopup(viewport->getMouseX(),
+    popupMenu->showPickupItemPopup(viewport->getMouseX(),
         viewport->getMouseY(),
         name);
 }
@@ -187,57 +184,57 @@ void PopupManager::showUndressPopup(const int x, const int y,
                                     const Being *const being,
                                     Item *const item)
 {
-    mPopupMenu->showUndressPopup(x, y, being, item);
+    popupMenu->showUndressPopup(x, y, being, item);
 }
 
 void PopupManager::showMapPopup(const int x, const int y)
 {
-    mPopupMenu->showMapPopup(viewport->getMouseX(), viewport->getMouseY(),
+    popupMenu->showMapPopup(viewport->getMouseX(), viewport->getMouseY(),
         x, y);
 }
 
 void PopupManager::showMapPopup(const int x1, const int y1,
                                 const int x2, const int y2)
 {
-    mPopupMenu->showMapPopup(x1, y1, x2, y2);
+    popupMenu->showMapPopup(x1, y1, x2, y2);
 }
 
 void PopupManager::showTextFieldPopup(TextField *const input)
 {
-    mPopupMenu->showTextFieldPopup(viewport->getMouseX(),
+    popupMenu->showTextFieldPopup(viewport->getMouseX(),
         viewport->getMouseY(),
         input);
 }
 
 void PopupManager::showLinkPopup(const std::string &link)
 {
-    mPopupMenu->showLinkPopup(viewport->getMouseX(),
+    popupMenu->showLinkPopup(viewport->getMouseX(),
         viewport->getMouseY(),
         link);
 }
 
 void PopupManager::showWindowsPopup()
 {
-    mPopupMenu->showWindowsPopup(viewport->getMouseX(), viewport->getMouseY());
+    popupMenu->showWindowsPopup(viewport->getMouseX(), viewport->getMouseY());
 }
 
 void PopupManager::showNpcDialogPopup(const int npcId)
 {
-    mPopupMenu->showNpcDialogPopup(npcId,
+    popupMenu->showNpcDialogPopup(npcId,
         viewport->getMouseX(),
         viewport->getMouseY());
 }
 
 void PopupManager::showWindowPopup(Window *const window)
 {
-    mPopupMenu->showWindowPopup(window, viewport->getMouseX(),
+    popupMenu->showWindowPopup(window, viewport->getMouseX(),
         viewport->getMouseY());
 }
 
 void PopupManager::closePopupMenu()
 {
-    if (mPopupMenu)
-        mPopupMenu->handleLink("cancel", nullptr);
+    if (popupMenu)
+        popupMenu->handleLink("cancel", nullptr);
 }
 
 void PopupManager::hideBeingPopup()
@@ -254,19 +251,19 @@ void PopupManager::hideTextPopup()
 
 void PopupManager::hidePopupMenu()
 {
-    if (mPopupMenu)
-        mPopupMenu->setVisible(false);
+    if (popupMenu)
+        popupMenu->setVisible(false);
 }
 
 bool PopupManager::isPopupMenuVisible() const
 {
-    return mPopupMenu ? mPopupMenu->isPopupVisible() : false;
+    return popupMenu ? popupMenu->isPopupVisible() : false;
 }
 
 void PopupManager::clearPopup()
 {
-    if (mPopupMenu)
-        mPopupMenu->clear();
+    if (popupMenu)
+        popupMenu->clear();
 }
 
 void PopupManager::showBeingPopup(const int x, const int y,

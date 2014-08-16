@@ -202,4 +202,6 @@ class PopupMenu final : public Popup, public LinkHandler
         void showPopup(int x, int y);
 };
 
+extern PopupMenu *popupMenu;
+
 #endif  // GUI_POPUPS_POPUPMENU_H
