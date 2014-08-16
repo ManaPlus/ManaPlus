@@ -1,3 +1,8 @@
+2014-08-16 New release 1.4.8.16
+fix: floor item position if tile height is not zero.
+fix: allow context menu in outfits window in all places.
+add: upload log button in settings.
+
 2014-08-02 New release 1.4.8.2
 fix: block char moving if any input fields selected.
 fix: possible crash in reset windows button.
