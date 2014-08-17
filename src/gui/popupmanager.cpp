@@ -82,13 +82,6 @@ void PopupManager::clearPopup()
         popupMenu->clear();
 }
 
-void PopupManager::showBeingPopup(const int x, const int y,
-                                  Being *const b)
-{
-    if (beingPopup)
-        beingPopup->show(x, y, b);
-}
-
 void PopupManager::showTextPopup(const int x, const int y,
                                  const std::string &text)
 {

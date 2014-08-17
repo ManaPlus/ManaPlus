@@ -60,9 +60,6 @@ class PopupManager final
          */
         ~PopupManager();
 
-        void showBeingPopup(const int x, const int y,
-                            Being *const b);
-
         void showTextPopup(const int x, const int y,
                            const std::string &text);
 

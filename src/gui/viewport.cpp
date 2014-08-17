@@ -45,6 +45,7 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/popups/beingpopup.h"
 #include "gui/popups/popupmenu.h"
 
 #include "gui/windows/ministatuswindow.h"
@@ -763,8 +764,8 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
         || type == ActorType::PET))
     {
         popupManager->hideTextPopup();
-        if (mShowBeingPopup)
-            popupManager->showBeingPopup(mMouseX, mMouseY, mHoverBeing);
+        if (mShowBeingPopup && beingPopup)
+            beingPopup->show(mMouseX, mMouseY, mHoverBeing);
     }
     else
     {
