@@ -35,6 +35,7 @@
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/itempopup.h"
 #include "gui/popups/popupmenu.h"
+#include "gui/popups/spellpopup.h"
 #include "gui/popups/textpopup.h"
 
 #include "gui/windows/didyouknowwindow.h"
@@ -106,6 +107,8 @@ void WindowManager::createWindows()
     textPopup->postInit();
     itemPopup = new ItemPopup;
     itemPopup->postInit();
+    spellPopup = new SpellPopup;
+    spellPopup->postInit();
 }
 
 void WindowManager::deleteWindows()
@@ -113,6 +116,7 @@ void WindowManager::deleteWindows()
     delete2(textPopup);
     delete2(beingPopup);
     delete2(itemPopup);
+    delete2(spellPopup);
     delete2(popupMenu);
     delete2(commandHandler);
     delete2(didYouKnowWindow);

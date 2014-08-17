@@ -67,4 +67,6 @@ class SpellPopup final : public Popup
         Label *mItemComment;
 };
 
+extern SpellPopup *spellPopup;
+
 #endif  // GUI_POPUPS_SPELLPOPUP_H

@@ -31,6 +31,8 @@
 
 #include "debug.h"
 
+SpellPopup *spellPopup = nullptr;
+
 SpellPopup::SpellPopup() :
     Popup("SpellPopup", "spellpopup.xml"),
     mItemName(new Label(this)),
