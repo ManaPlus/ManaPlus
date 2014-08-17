@@ -78,7 +78,6 @@ class DropShortcutContainer final : public ShortcutContainer
     private:
         bool mItemClicked;
 
-        ItemPopup *mItemPopup;
         Color mEquipedColor;
         Color mEquipedColor2;
         Color mUnEquipedColor;

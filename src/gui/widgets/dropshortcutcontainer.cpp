@@ -48,14 +48,11 @@
 DropShortcutContainer::DropShortcutContainer(Widget2 *const widget) :
     ShortcutContainer(widget),
     mItemClicked(false),
-    mItemPopup(new ItemPopup),
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
     mEquipedColor2(getThemeColor(Theme::ITEM_EQUIPPED_OUTLINE)),
     mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED)),
     mUnEquipedColor2(getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE))
 {
-    mItemPopup->postInit();
-
     if (dropShortcut)
         mMaxItems = dropShortcut->getItemCount();
     else
@@ -64,7 +61,6 @@ DropShortcutContainer::DropShortcutContainer(Widget2 *const widget) :
 
 DropShortcutContainer::~DropShortcutContainer()
 {
-    delete2(mItemPopup);
 }
 
 void DropShortcutContainer::setWidget2(const Widget2 *const widget)
@@ -281,23 +277,23 @@ void DropShortcutContainer::mouseMoved(MouseEvent &event)
 
     if (item && viewport)
     {
-        mItemPopup->setItem(item);
-        mItemPopup->position(viewport->getMouseX(), viewport->getMouseY());
+        itemPopup->setItem(item);
+        itemPopup->position(viewport->getMouseX(), viewport->getMouseY());
     }
     else
     {
-        mItemPopup->setVisible(false);
+        itemPopup->setVisible(false);
     }
 }
 
 void DropShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (mItemPopup)
-        mItemPopup->setVisible(false);
+    if (itemPopup)
+        itemPopup->setVisible(false);
 }
 
 void DropShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
-    if (mItemPopup)
-        mItemPopup->setVisible(false);
+    if (itemPopup)
+        itemPopup->setVisible(false);
 }
