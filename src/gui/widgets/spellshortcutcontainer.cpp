@@ -46,12 +46,9 @@
 SpellShortcutContainer::SpellShortcutContainer(Widget2 *const widget,
                                                const unsigned number) :
     ShortcutContainer(widget),
-    mSpellPopup(new SpellPopup),
     mNumber(number),
     mSpellClicked(false)
 {
-    mSpellPopup->postInit();
-
     if (spellShortcut)
         mMaxItems = spellShortcut->getSpellsCount();
     else
@@ -60,7 +57,6 @@ SpellShortcutContainer::SpellShortcutContainer(Widget2 *const widget,
 
 SpellShortcutContainer::~SpellShortcutContainer()
 {
-    delete2(mSpellPopup);
 }
 
 void SpellShortcutContainer::setWidget2(const Widget2 *const widget)
@@ -273,7 +269,7 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
 // Show ItemTooltip
 void SpellShortcutContainer::mouseMoved(MouseEvent &event)
 {
-    if (!mSpellPopup || !spellShortcut || !spellManager)
+    if (!spellPopup || !spellShortcut || !spellManager)
         return;
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -282,29 +278,29 @@ void SpellShortcutContainer::mouseMoved(MouseEvent &event)
         return;
 
     const int itemId = getItemByIndex(index);
-    mSpellPopup->setVisible(false);
+    spellPopup->setVisible(false);
     const TextCommand *const spell = spellManager->getSpell(itemId);
     if (spell && !spell->isEmpty())
     {
-        mSpellPopup->setItem(spell);
-        mSpellPopup->view(viewport->getMouseX(), viewport->getMouseY());
+        spellPopup->setItem(spell);
+        spellPopup->view(viewport->getMouseX(), viewport->getMouseY());
     }
     else
     {
-        mSpellPopup->setVisible(false);
+        spellPopup->setVisible(false);
     }
 }
 
 void SpellShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (mSpellPopup)
-        mSpellPopup->setVisible(false);
+    if (spellPopup)
+        spellPopup->setVisible(false);
 }
 
 void SpellShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
-    if (mSpellPopup)
-        mSpellPopup->setVisible(false);
+    if (spellPopup)
+        spellPopup->setVisible(false);
 }
 
 int SpellShortcutContainer::getItemByIndex(const int index) const

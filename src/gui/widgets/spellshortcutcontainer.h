@@ -79,7 +79,6 @@ class SpellShortcutContainer final : public ShortcutContainer
         int getItemByIndex(const int index) const A_WARN_UNUSED;
 
     private:
-        SpellPopup *mSpellPopup;
         unsigned int mNumber;
         bool mSpellClicked;
 };
