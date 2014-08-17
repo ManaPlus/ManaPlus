@@ -210,14 +210,14 @@ void WhoIsOnline::handleLink(const std::string& link, MouseEvent *event)
 
                 if (being && popupManager)
                 {
-                    popupMenu->showPopup(viewport->getMouseX(),
-                        viewport->getMouseY(),
+                    popupMenu->showPopup(viewport->mMouseX,
+                        viewport->mMouseY,
                         being);
                     return;
                 }
             }
-            popupMenu->showPlayerPopup(viewport->getMouseX(),
-                viewport->getMouseY(),
+            popupMenu->showPlayerPopup(viewport->mMouseX,
+                viewport->mMouseY,
                 link);
         }
     }

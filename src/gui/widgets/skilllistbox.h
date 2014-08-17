@@ -168,7 +168,7 @@ class SkillListBox final : public ListBox
             if (!skill)
                 return;
 
-            mPopup->show(viewport->getMouseX(), viewport->getMouseY(),
+            mPopup->show(viewport->mMouseX, viewport->mMouseY,
                 skill->data->dispName, skill->data->description);
         }
 

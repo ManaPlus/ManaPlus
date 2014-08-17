@@ -678,8 +678,8 @@ void ChatWindow::mousePressed(MouseEvent &event)
                     ChatTab *const cTab = dynamic_cast<ChatTab*>(tab);
                     if (cTab)
                     {
-                        popupMenu->showChatPopup(viewport->getMouseX(),
-                            viewport->getMouseY(),
+                        popupMenu->showChatPopup(viewport->mMouseX,
+                            viewport->mMouseY,
                             cTab);
                     }
                 }

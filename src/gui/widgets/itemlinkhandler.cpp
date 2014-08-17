@@ -79,8 +79,8 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         {
             if (popupMenu)
             {
-                popupMenu->showLinkPopup(viewport->getMouseX(),
-                    viewport->getMouseY(),
+                popupMenu->showLinkPopup(viewport->mMouseX,
+                    viewport->mMouseY,
                     url);
             }
         }
@@ -128,8 +128,8 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
             }
             else if (viewport)
             {
-                itemPopup->position(viewport->getMouseX(),
-                    viewport->getMouseY());
+                itemPopup->position(viewport->mMouseX,
+                    viewport->mMouseY);
             }
         }
     }

@@ -214,8 +214,8 @@ void DropShortcutContainer::mousePressed(MouseEvent &event)
 
         if (popupMenu)
         {
-            popupMenu->showDropPopup(viewport->getMouseX(),
-                viewport->getMouseY(),
+            popupMenu->showDropPopup(viewport->mMouseX,
+                viewport->mMouseY,
                 item);
         }
     }
@@ -278,7 +278,7 @@ void DropShortcutContainer::mouseMoved(MouseEvent &event)
     if (item && viewport)
     {
         itemPopup->setItem(item);
-        itemPopup->position(viewport->getMouseX(), viewport->getMouseY());
+        itemPopup->position(viewport->mMouseX, viewport->mMouseY);
     }
     else
     {

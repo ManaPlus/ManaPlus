@@ -953,8 +953,8 @@ void NpcDialog::mousePressed(MouseEvent &event)
         if (popupMenu)
         {
             popupMenu->showNpcDialogPopup(mNpcId,
-                viewport->getMouseX(),
-                viewport->getMouseY());
+                viewport->mMouseX,
+                viewport->mMouseY);
         }
     }
 }

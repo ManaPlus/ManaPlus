@@ -395,14 +395,14 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                         avatar->getName(), ActorType::PLAYER);
                     if (being)
                     {
-                        popupMenu->showPopup(viewport->getMouseX(),
-                            viewport->getMouseY(),
+                        popupMenu->showPopup(viewport->mMouseX,
+                            viewport->mMouseY,
                             being);
                     }
                     else
                     {
-                        popupMenu->showPlayerPopup(viewport->getMouseX(),
-                            viewport->getMouseY(),
+                        popupMenu->showPlayerPopup(viewport->mMouseX,
+                            viewport->mMouseY,
                             avatar->getName());
                     }
                 }
@@ -418,8 +418,8 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 else
                     name = model->getAvatarAt(selected)->getName();
 
-                popupMenu->showAttackMonsterPopup(viewport->getMouseX(),
-                    viewport->getMouseY(),
+                popupMenu->showAttackMonsterPopup(viewport->mMouseX,
+                    viewport->mMouseY,
                     name,
                     static_cast<ActorType::Type>(model->getAvatarAt(
                     selected)->getType()));
@@ -434,8 +434,8 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 else
                     name = model->getAvatarAt(selected)->getName();
 
-                popupMenu->showPickupItemPopup(viewport->getMouseX(),
-                    viewport->getMouseY(),
+                popupMenu->showPickupItemPopup(viewport->mMouseX,
+                    viewport->mMouseY,
                     name);
                 break;
             }
@@ -460,8 +460,8 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 {
                     MapItem *const mapItem = map->findPortalXY(
                         ava->getX(), ava->getY());
-                    popupMenu->showPopup(viewport->getMouseX(),
-                        viewport->getMouseY(),
+                    popupMenu->showPopup(viewport->mMouseX,
+                        viewport->mMouseY,
                         mapItem);
                 }
                 break;

@@ -707,8 +707,8 @@ void TextField::mousePressed(MouseEvent &event)
     {
         if (popupMenu)
         {
-            popupMenu->showTextFieldPopup(viewport->getMouseX(),
-                viewport->getMouseY(),
+            popupMenu->showTextFieldPopup(viewport->mMouseX,
+                viewport->mMouseY,
                 this);
         }
     }

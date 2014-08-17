@@ -330,8 +330,8 @@ void ItemShortcutContainer::mousePressed(MouseEvent &event)
         event.consume();
         if (popupMenu && selShortcut && viewport)
         {
-            popupMenu->showItemPopup(viewport->getMouseX(),
-                viewport->getMouseY(),
+            popupMenu->showItemPopup(viewport->mMouseX,
+                viewport->mMouseY,
                 selShortcut->getItem(index),
                 selShortcut->getItemColor(index));
         }
@@ -409,7 +409,7 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         if (item && viewport)
         {
             itemPopup->setItem(item);
-            itemPopup->position(viewport->getMouseX(), viewport->getMouseY());
+            itemPopup->position(viewport->mMouseX, viewport->mMouseY);
         }
         else
         {
@@ -423,7 +423,7 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         if (spell && viewport)
         {
             spellPopup->setItem(spell);
-            spellPopup->view(viewport->getMouseX(), viewport->getMouseY());
+            spellPopup->view(viewport->mMouseX, viewport->mMouseY);
         }
         else
         {

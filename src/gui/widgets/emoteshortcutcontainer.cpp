@@ -199,7 +199,7 @@ void EmoteShortcutContainer::mouseMoved(MouseEvent &event)
     if (static_cast<size_t>(index) < mEmoteImg.size() && mEmoteImg[index])
     {
         const EmoteSprite *const sprite = mEmoteImg[index];
-        textPopup->show(viewport->getMouseX(), viewport->getMouseY(),
+        textPopup->show(viewport->mMouseX, viewport->mMouseY,
             strprintf("%s, %d", sprite->name.c_str(), sprite->id));
     }
 }

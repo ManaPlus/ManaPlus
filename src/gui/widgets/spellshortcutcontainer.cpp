@@ -259,8 +259,8 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
 
         if (spell && popupMenu)
         {
-            popupMenu->showSpellPopup(viewport->getMouseX(),
-                viewport->getMouseY(),
+            popupMenu->showSpellPopup(viewport->mMouseX,
+                viewport->mMouseY,
                 spell);
         }
     }
@@ -283,7 +283,7 @@ void SpellShortcutContainer::mouseMoved(MouseEvent &event)
     if (spell && !spell->isEmpty())
     {
         spellPopup->setItem(spell);
-        spellPopup->view(viewport->getMouseX(), viewport->getMouseY());
+        spellPopup->view(viewport->mMouseX, viewport->mMouseY);
     }
     else
     {

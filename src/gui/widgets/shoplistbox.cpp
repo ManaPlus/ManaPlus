@@ -211,7 +211,7 @@ void ShopListBox::mouseMoved(MouseEvent &event)
         if (item)
         {
             itemPopup->setItem(item);
-            itemPopup->position(viewport->getMouseX(), viewport->getMouseY());
+            itemPopup->position(viewport->mMouseX, viewport->mMouseY);
         }
         else
         {
@@ -233,8 +233,8 @@ void ShopListBox::mouseReleased(MouseEvent& event)
         Item *const item = mShopItems->at(mSelected);
         if (popupMenu && viewport)
         {
-            popupMenu->showItemPopup(viewport->getMouseX(),
-            viewport->getMouseY(),
+            popupMenu->showItemPopup(viewport->mMouseX,
+            viewport->mMouseY,
             item);
         }
     }

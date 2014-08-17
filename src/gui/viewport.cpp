@@ -61,6 +61,8 @@ extern MiniStatusWindow *miniStatusWindow;
 Viewport::Viewport() :
     WindowContainer(nullptr),
     MouseListener(),
+    mMouseX(0),
+    mMouseY(0),
     mMap(nullptr),
     mHoverBeing(nullptr),
     mHoverItem(nullptr),
@@ -69,8 +71,6 @@ Viewport::Viewport() :
     mScrollLaziness(config.getIntValue("ScrollLaziness")),
     mScrollCenterOffsetX(config.getIntValue("ScrollCenterOffsetX")),
     mScrollCenterOffsetY(config.getIntValue("ScrollCenterOffsetY")),
-    mMouseX(0),
-    mMouseY(0),
     mMousePressX(0),
     mMousePressY(0),
     mPixelViewX(0),

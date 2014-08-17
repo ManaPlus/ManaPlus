@@ -770,8 +770,8 @@ void Window::mousePressed(MouseEvent &event)
         {
             event.consume();
             popupMenu->showWindowPopup(this,
-                viewport->getMouseX(),
-                viewport->getMouseY());
+                viewport->mMouseX,
+                viewport->mMouseY);
         }
     }
 }

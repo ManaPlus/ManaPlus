@@ -128,18 +128,6 @@ class Viewport final : public WindowContainer,
         { return mPixelViewY; }
 
         /**
-         * Returns mouse x in pixels.
-         */
-        int getMouseX() const A_WARN_UNUSED
-        { return mMouseX; }
-
-        /**
-         * Returns mouse y in pixels.
-         */
-        int getMouseY() const A_WARN_UNUSED
-        { return mMouseY; }
-
-        /**
          * Changes viewpoint by relative pixel coordinates.
          */
         void scrollBy(const int x, const int y)
@@ -176,6 +164,9 @@ class Viewport final : public WindowContainer,
         void moveCameraRelative(const int x, const int y);
 
         void returnCamera();
+
+        int mMouseX;                /**< Current mouse position in pixels. */
+        int mMouseY;                /**< Current mouse position in pixels. */
 
     protected:
         friend class ActorManager;
@@ -220,8 +211,6 @@ class Viewport final : public WindowContainer,
         int mScrollLaziness;
         int mScrollCenterOffsetX;
         int mScrollCenterOffsetY;
-        int mMouseX;                /**< Current mouse position in pixels. */
-        int mMouseY;                /**< Current mouse position in pixels. */
         int mMousePressX;
         int mMousePressY;
         int mPixelViewX;            /**< Current viewpoint in pixels. */

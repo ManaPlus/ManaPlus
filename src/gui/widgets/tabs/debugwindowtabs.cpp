@@ -176,9 +176,9 @@ void MapDebugTab::logic()
     if (map && viewport)
     {
           // Get the current mouse position
-        const int mouseTileX = (viewport->getMouseX() + viewport->getCameraX())
+        const int mouseTileX = (viewport->mMouseX + viewport->getCameraX())
                          / map->getTileWidth();
-        const int mouseTileY = (viewport->getMouseY() + viewport->getCameraY())
+        const int mouseTileY = (viewport->mMouseY + viewport->getCameraY())
                          / map->getTileHeight();
         mTileMouseLabel->setCaption(strprintf("%s (%d, %d)",
             // TRANSLATORS: debug window label

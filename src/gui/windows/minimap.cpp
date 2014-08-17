@@ -456,8 +456,8 @@ void Minimap::mouseReleased(MouseEvent &event)
         int x = event.getX();
         int y = event.getY();
         screenToMap(x, y);
-        popupMenu->showMapPopup(viewport->getMouseX(),
-            viewport->getMouseY(),
+        popupMenu->showMapPopup(viewport->mMouseX,
+            viewport->mMouseY,
             x, y);
     }
 }
