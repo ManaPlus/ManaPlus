@@ -63,7 +63,6 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     Window(_("Equipment"), false, nullptr, "equipment.xml"),
     ActionListener(),
     mEquipment(equipment),
-    mItemPopup(new ItemPopup),
     mPlayerBox(new PlayerBox(this,
         "equipment_playerbox.xml",
         "equipment_selectedplayerbox.xml")),
@@ -89,7 +88,6 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mMaxY(0),
     mForing(foring)
 {
-    mItemPopup->postInit();
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
@@ -137,7 +135,6 @@ void EquipmentWindow::postInit()
 
 EquipmentWindow::~EquipmentWindow()
 {
-    delete2(mItemPopup);
     if (this == beingEquipmentWindow)
     {
         if (mEquipment)
@@ -349,8 +346,8 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
     {
         if (Item *const item = getItem(x, y))
         {
-            if (mItemPopup)
-                mItemPopup->setVisible(false);
+            if (itemPopup)
+                itemPopup->setVisible(false);
 
             /* Convert relative to the window coordinates to absolute screen
              * coordinates.
@@ -430,7 +427,7 @@ void EquipmentWindow::mouseMoved(MouseEvent &event)
 {
     Window::mouseMoved(event);
 
-    if (!mItemPopup)
+    if (!itemPopup)
         return;
 
     const int x = event.getX();
@@ -440,20 +437,20 @@ void EquipmentWindow::mouseMoved(MouseEvent &event)
 
     if (item)
     {
-        mItemPopup->setItem(item);
-        mItemPopup->position(x + getX(), y + getY());
+        itemPopup->setItem(item);
+        itemPopup->position(x + getX(), y + getY());
     }
     else
     {
-        mItemPopup->setVisible(false);
+        itemPopup->setVisible(false);
     }
 }
 
 // Hide ItemTooltip
 void EquipmentWindow::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (mItemPopup)
-        mItemPopup->setVisible(false);
+    if (itemPopup)
+        itemPopup->setVisible(false);
 }
 
 void EquipmentWindow::setSelected(const int index)
@@ -462,8 +459,8 @@ void EquipmentWindow::setSelected(const int index)
     mRedraw = true;
     if (mUnequip)
         mUnequip->setEnabled(mSelected != -1);
-    if (mItemPopup)
-        mItemPopup->setVisible(false);
+    if (itemPopup)
+        itemPopup->setVisible(false);
 }
 
 void EquipmentWindow::setBeing(Being *const being)

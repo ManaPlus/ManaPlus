@@ -116,7 +116,6 @@ class EquipmentWindow final : public Window,
 
         Equipment *mEquipment;
 
-        ItemPopup *mItemPopup;
         PlayerBox *mPlayerBox;
         Button *mUnequip;
 
