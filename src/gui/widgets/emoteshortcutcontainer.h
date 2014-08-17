@@ -81,7 +81,6 @@ class EmoteShortcutContainer final : public ShortcutContainer
     private:
         std::vector<const EmoteSprite*> mEmoteImg;
 
-        TextPopup *mEmotePopup;
         bool mEmoteClicked;
         unsigned char mEmoteMoved;
 };

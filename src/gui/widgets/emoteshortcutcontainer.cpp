@@ -48,12 +48,9 @@ static const int MAX_ITEMS = 48;
 EmoteShortcutContainer::EmoteShortcutContainer(Widget2 *const widget) :
     ShortcutContainer(widget),
     mEmoteImg(),
-    mEmotePopup(new TextPopup),
     mEmoteClicked(false),
     mEmoteMoved(0)
 {
-    mEmotePopup->postInit();
-
     if (mBackgroundImg)
         mBackgroundImg->setAlpha(settings.guiAlpha);
 
@@ -70,7 +67,6 @@ EmoteShortcutContainer::EmoteShortcutContainer(Widget2 *const widget) :
 
 EmoteShortcutContainer::~EmoteShortcutContainer()
 {
-    delete2(mEmotePopup);
 }
 
 void EmoteShortcutContainer::setWidget2(const Widget2 *const widget)
@@ -190,7 +186,7 @@ void EmoteShortcutContainer::mouseReleased(MouseEvent &event)
 
 void EmoteShortcutContainer::mouseMoved(MouseEvent &event)
 {
-    if (!emoteShortcut || !mEmotePopup)
+    if (!emoteShortcut || !textPopup)
         return;
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -198,24 +194,24 @@ void EmoteShortcutContainer::mouseMoved(MouseEvent &event)
     if (index == -1)
         return;
 
-    mEmotePopup->setVisible(false);
+    textPopup->setVisible(false);
 
     if (static_cast<size_t>(index) < mEmoteImg.size() && mEmoteImg[index])
     {
         const EmoteSprite *const sprite = mEmoteImg[index];
-        mEmotePopup->show(viewport->getMouseX(), viewport->getMouseY(),
+        textPopup->show(viewport->getMouseX(), viewport->getMouseY(),
             strprintf("%s, %d", sprite->name.c_str(), sprite->id));
     }
 }
 
 void EmoteShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (mEmotePopup)
-        mEmotePopup->setVisible(false);
+    if (textPopup)
+        textPopup->setVisible(false);
 }
 
 void EmoteShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
-    if (mEmotePopup)
-        mEmotePopup->setVisible(false);
+    if (textPopup)
+        textPopup->setVisible(false);
 }
