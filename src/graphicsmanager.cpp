@@ -858,7 +858,7 @@ void GraphicsManager::initOpenGLFunctions()
     const bool is42 = checkGLVersion(4, 2);
     const bool is43 = checkGLVersion(4, 3);
     const bool is44 = checkGLVersion(4, 4);
-    const bool isDao = supportExtension("GL_EXT_direct_state_access");
+    const bool is45 = checkGLVersion(4, 5);
     mSupportModernOpengl = true;
 
     // Texture sampler
@@ -892,7 +892,12 @@ void GraphicsManager::initOpenGLFunctions()
         return;
     }
 
-    if (isDao)
+    if (is45)
+    {
+        logger->log1("found GL_EXT_direct_state_access");
+        assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2D");
+    }
+    else if (supportExtension("GL_EXT_direct_state_access"))
     {
         logger->log1("found GL_EXT_direct_state_access");
         assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2DEXT");
@@ -979,12 +984,12 @@ void GraphicsManager::initOpenGLFunctions()
     {
         logger->log1("GL_GREMEDY_frame_terminator not found");
     }
-    if (supportExtension("GL_EXT_debug_label"))
+    if (is44 || supportExtension("GL_EXT_debug_label"))
     {
         logger->log1("found GL_EXT_debug_label");
-        assignFunctionEXT(glLabelObject);
+        assignFunction2(glLabelObject, "glObjectLabel");
         if (isGLNull(mglLabelObject))
-            assignFunction2(glLabelObject, "glObjectLabel");
+            assignFunctionEXT(glLabelObject);
         assignFunctionEXT(glGetObjectLabel);
     }
     else
