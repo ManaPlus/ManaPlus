@@ -92,8 +92,6 @@ class ShopListBox final : public ListBox
          */
         ShopItems *mShopItems;
 
-        ItemPopup *mItemPopup;
-
         Color mBackgroundColor;
         Color mWarningColor;
 

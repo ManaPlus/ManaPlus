@@ -50,14 +50,12 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
     ListBox(widget, listModel, "shoplistbox.xml"),
     mPlayerMoney(0),
     mShopItems(nullptr),
-    mItemPopup(new ItemPopup),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
     mWarningColor(getThemeColor(Theme::SHOP_WARNING)),
     mPriceCheck(true),
     mProtectItems(false)
 {
     mRowHeight = getFont()->getHeight();
-    mItemPopup->postInit();
     mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 }
@@ -68,14 +66,12 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
     ListBox(widget, listModel, "shoplistbox.xml"),
     mPlayerMoney(0),
     mShopItems(shopListModel),
-    mItemPopup(new ItemPopup),
     mBackgroundColor(getThemeColor(Theme::BACKGROUND)),
     mWarningColor(getThemeColor(Theme::SHOP_WARNING)),
     mPriceCheck(true),
     mProtectItems(false)
 {
     mRowHeight = std::max(getFont()->getHeight(), ITEM_ICON_SIZE);
-    mItemPopup->postInit();
     mHighlightColor = getThemeColor(Theme::HIGHLIGHT);
     mForegroundColor = getThemeColor(Theme::LISTBOX);
 }
@@ -194,12 +190,12 @@ void ShopListBox::setPriceCheck(const bool check)
 
 void ShopListBox::mouseMoved(MouseEvent &event)
 {
-    if (!mItemPopup || !mRowHeight)
+    if (!itemPopup || !mRowHeight)
         return;
 
     if (!mShopItems)
     {
-        mItemPopup->hide();
+        itemPopup->hide();
         return;
     }
 
@@ -207,19 +203,19 @@ void ShopListBox::mouseMoved(MouseEvent &event)
 
     if (index < 0 || index >= mShopItems->getNumberOfElements())
     {
-        mItemPopup->hide();
+        itemPopup->hide();
     }
     else
     {
         const Item *const item = mShopItems->at(index);
         if (item)
         {
-            mItemPopup->setItem(item);
-            mItemPopup->position(viewport->getMouseX(), viewport->getMouseY());
+            itemPopup->setItem(item);
+            itemPopup->position(viewport->getMouseX(), viewport->getMouseY());
         }
         else
         {
-            mItemPopup->setVisible(false);
+            itemPopup->setVisible(false);
         }
     }
 }
@@ -246,8 +242,8 @@ void ShopListBox::mouseReleased(MouseEvent& event)
 
 void ShopListBox::mouseExited(MouseEvent& event A_UNUSED)
 {
-    if (!mItemPopup)
+    if (!itemPopup)
         return;
 
-    mItemPopup->hide();
+    itemPopup->hide();
 }
