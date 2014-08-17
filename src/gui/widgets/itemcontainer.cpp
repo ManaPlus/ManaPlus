@@ -172,7 +172,6 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mSelImg(Theme::getImageFromThemeXml("item_selection.xml", "")),
     mProtectedImg(Theme::getImageFromTheme("lock.png")),
     mName(),
-    mItemPopup(new ItemPopup),
     mShowMatrix(nullptr),
     mSkin(theme ? theme->load("itemcontainer.xml", "") : nullptr),
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
@@ -197,7 +196,6 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mForceQuantity(forceQuantity),
     mDescItems(false)
 {
-    mItemPopup->postInit();
     setFocusable(true);
     addKeyListener(this);
     addMouseListener(this);
@@ -224,7 +222,6 @@ ItemContainer::~ItemContainer()
     if (theme)
         theme->unload(mSkin);
 
-    delete2(mItemPopup);
     delete []mShowMatrix;
 }
 
@@ -386,8 +383,8 @@ void ItemContainer::distributeValueChangedEvent()
 
 void ItemContainer::hidePopup()
 {
-    if (mItemPopup)
-        mItemPopup->setVisible(false);
+    if (itemPopup)
+        itemPopup->setVisible(false);
 }
 
 void ItemContainer::keyPressed(KeyEvent &event A_UNUSED)
@@ -609,18 +606,18 @@ void ItemContainer::mouseMoved(MouseEvent &event)
 
     if (item && viewport)
     {
-        mItemPopup->setItem(item);
-        mItemPopup->position(viewport->getMouseX(), viewport->getMouseY());
+        itemPopup->setItem(item);
+        itemPopup->position(viewport->getMouseX(), viewport->getMouseY());
     }
     else
     {
-        mItemPopup->setVisible(false);
+        itemPopup->setVisible(false);
     }
 }
 
 void ItemContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
-    mItemPopup->setVisible(false);
+    itemPopup->setVisible(false);
 }
 
 void ItemContainer::widgetResized(const Event &event A_UNUSED)

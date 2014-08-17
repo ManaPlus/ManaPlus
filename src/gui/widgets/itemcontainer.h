@@ -181,7 +181,6 @@ class ItemContainer final : public Widget,
         Image *mProtectedImg;
         std::string mName;
 
-        ItemPopup *mItemPopup;
         int *mShowMatrix;
         Skin *mSkin;
         Color mEquipedColor;
