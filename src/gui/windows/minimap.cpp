@@ -60,14 +60,11 @@ Minimap::Minimap() :
     mWidthProportion(0.5),
     mHeightProportion(0.5),
     mMapImage(nullptr),
-    mTextPopup(new TextPopup),
     mMapOriginX(0),
     mMapOriginY(0),
     mCustomMapImage(false),
     mAutoResize(config.getBoolValue("autoresizeminimaps"))
 {
-    mTextPopup->postInit();
-
     setWindowName("Minimap");
     mShow = config.getValueBool(getWindowName() + "Show", true);
 
@@ -97,7 +94,6 @@ Minimap::~Minimap()
     config.removeListeners(this);
     CHECKLISTENERS
     deleteMapImage();
-    delete2(mTextPopup);
 }
 
 void Minimap::deleteMapImage()
@@ -472,13 +468,13 @@ void Minimap::mouseMoved(MouseEvent &event)
     const int x = event.getX();
     const int y = event.getY();
     const Rect &rect = mDimension;
-    mTextPopup->show(x + rect.x, y + rect.y, mCaption);
+    textPopup->show(x + rect.x, y + rect.y, mCaption);
 }
 
 void Minimap::mouseExited(MouseEvent &event)
 {
     Window::mouseExited(event);
-    mTextPopup->hide();
+    textPopup->hide();
 }
 
 void Minimap::screenToMap(int &x, int &y)
