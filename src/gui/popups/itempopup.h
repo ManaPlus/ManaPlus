@@ -78,4 +78,6 @@ class ItemPopup final : public Popup
         void setLabelColor(Label *label, const ItemType::Type type) const;
 };
 
+extern ItemPopup *itemPopup;
+
 #endif  // GUI_POPUPS_ITEMPOPUP_H

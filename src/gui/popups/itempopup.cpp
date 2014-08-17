@@ -45,6 +45,8 @@
 
 extern int serverVersion;
 
+ItemPopup *itemPopup = nullptr;
+
 ItemPopup::ItemPopup() :
     Popup("ItemPopup", "itempopup.xml"),
     mItemName(new Label(this)),

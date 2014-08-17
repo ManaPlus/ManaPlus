@@ -33,6 +33,7 @@
 #include "gui/userpalette.h"
 
 #include "gui/popups/beingpopup.h"
+#include "gui/popups/itempopup.h"
 #include "gui/popups/popupmenu.h"
 #include "gui/popups/textpopup.h"
 
@@ -103,12 +104,15 @@ void WindowManager::createWindows()
     beingPopup->postInit();
     textPopup = new TextPopup;
     textPopup->postInit();
+    itemPopup = new ItemPopup;
+    itemPopup->postInit();
 }
 
 void WindowManager::deleteWindows()
 {
     delete2(textPopup);
     delete2(beingPopup);
+    delete2(itemPopup);
     delete2(popupMenu);
     delete2(commandHandler);
     delete2(didYouKnowWindow);
