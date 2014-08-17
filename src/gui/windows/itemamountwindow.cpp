@@ -102,7 +102,6 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     mGPLabel(nullptr),
     mItem(item),
     mItemIcon(new Icon(this, item ? item->getImage() : nullptr)),
-    mItemPopup(new ItemPopup),
     mItemAmountSlide(new Slider(this, 1.0, maxRange, 1.0)),
     mItemPriceSlide(nullptr),
     mItemDropDown(nullptr),
@@ -112,8 +111,6 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage, Window *const parent,
     mUsage(usage),
     mEnabledKeyboard(keyboard.isEnabled())
 {
-    mItemPopup->postInit();
-
     if (!mItem)
         return;
 
@@ -265,7 +262,6 @@ void ItemAmountWindow::postInit()
 
 ItemAmountWindow::~ItemAmountWindow()
 {
-    delete2(mItemPopup);
 }
 
 // Show ItemTooltip
@@ -273,21 +269,21 @@ void ItemAmountWindow::mouseMoved(MouseEvent &event)
 {
     Window::mouseMoved(event);
 
-    if (!viewport || !mItemPopup)
+    if (!viewport || !itemPopup)
         return;
 
     if (event.getSource() == mItemIcon)
     {
-        mItemPopup->setItem(mItem);
-        mItemPopup->position(viewport->getMouseX(), viewport->getMouseY());
+        itemPopup->setItem(mItem);
+        itemPopup->position(viewport->getMouseX(), viewport->getMouseY());
     }
 }
 
 // Hide ItemTooltip
 void ItemAmountWindow::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (mItemPopup)
-        mItemPopup->setVisible(false);
+    if (itemPopup)
+        itemPopup->setVisible(false);
 }
 
 void ItemAmountWindow::resetAmount()

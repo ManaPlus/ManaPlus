@@ -108,7 +108,6 @@ class ItemAmountWindow final : public Window,
         Label *mGPLabel;
         Item *mItem;
         Icon *mItemIcon;
-        ItemPopup *mItemPopup;
 
         /**
          * Item Amount buttons.
