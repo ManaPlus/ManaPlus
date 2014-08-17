@@ -37,7 +37,6 @@
 #include <vector>
 
 class Button;
-class TextPopup;
 
 struct ButtonInfo;
 struct ButtonText;
@@ -104,7 +103,6 @@ class WindowMenu final : public Container,
         Skin *mSkin;
         int mPadding;
         int mSpacing;
-        TextPopup *mTextPopup;
         std::vector <Button*> mButtons;
         std::vector <ButtonText*> mButtonTexts;
         std::map <std::string, ButtonInfo*> mButtonNames;

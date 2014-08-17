@@ -56,7 +56,6 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     mSkin(theme ? theme->load("windowmenu.xml", "") : nullptr),
     mPadding(mSkin ? mSkin->getPadding() : 1),
     mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
-    mTextPopup(new TextPopup),
     mButtons(),
     mButtonTexts(),
     mButtonNames(),
@@ -64,7 +63,6 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     mAutoHide(1),
     mSmallWindow(mainGraphics->getWidth() < 600)
 {
-    mTextPopup->postInit();
     int x = mPadding;
     int h = 0;
 
@@ -182,7 +180,6 @@ WindowMenu::~WindowMenu()
     config.removeListener("autohideButtons", this);
     CHECKLISTENERS
 
-    delete2(mTextPopup);
     for (std::map <std::string, ButtonInfo*>::iterator
          it = mButtonNames.begin(),
          it_end = mButtonNames.end(); it != it_end; ++it)
@@ -270,12 +267,12 @@ void WindowMenu::mouseMoved(MouseEvent &event)
 {
     mHaveMouse = true;
 
-    if (!mTextPopup)
+    if (!textPopup)
         return;
 
     if (event.getSource() == this)
     {
-        mTextPopup->hide();
+        textPopup->hide();
         return;
     }
 
@@ -284,7 +281,7 @@ void WindowMenu::mouseMoved(MouseEvent &event)
 
     if (!btn)
     {
-        mTextPopup->hide();
+        textPopup->hide();
         return;
     }
 
@@ -294,24 +291,24 @@ void WindowMenu::mouseMoved(MouseEvent &event)
     const Rect &rect = mDimension;
     if (key != InputAction::NO_VALUE)
     {
-        mTextPopup->show(x + rect.x, y + rect.y, btn->getDescription(),
+        textPopup->show(x + rect.x, y + rect.y, btn->getDescription(),
             // TRANSLATORS: short key name
             strprintf(_("Key: %s"), inputManager.getKeyValueString(
             key).c_str()));
     }
     else
     {
-        mTextPopup->show(x + rect.x, y + rect.y, btn->getDescription());
+        textPopup->show(x + rect.x, y + rect.y, btn->getDescription());
     }
 }
 
 void WindowMenu::mouseExited(MouseEvent& event A_UNUSED)
 {
     mHaveMouse = false;
-    if (!mTextPopup)
+    if (!textPopup)
         return;
 
-    mTextPopup->hide();
+    textPopup->hide();
 }
 
 void WindowMenu::showButton(const std::string &name, const bool visible)
