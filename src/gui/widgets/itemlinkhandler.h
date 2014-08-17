@@ -40,9 +40,6 @@ class ItemLinkHandler final : public LinkHandler
 
         void handleLink(const std::string &link,
                         MouseEvent *event) override final;
-
-    private:
-        ItemPopup *mItemPopup;
 };
 
 #endif  // GUI_WIDGETS_ITEMLINKHANDLER_H

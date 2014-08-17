@@ -49,15 +49,12 @@ namespace
 }  // namespace
 
 ItemLinkHandler::ItemLinkHandler() :
-    LinkHandler(),
-    mItemPopup(new ItemPopup)
+    LinkHandler()
 {
-    mItemPopup->postInit();
 }
 
 ItemLinkHandler::~ItemLinkHandler()
 {
-    delete2(mItemPopup);
 }
 
 void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
@@ -106,7 +103,7 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
     }
     else
     {
-        if (!mItemPopup || link.empty())
+        if (!itemPopup || link.empty())
             return;
 
         const char ch = link[0];
@@ -124,14 +121,14 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         if (id > 0)
         {
             const ItemInfo &itemInfo = ItemDB::get(id);
-            mItemPopup->setItem(itemInfo, color, true);
-            if (mItemPopup->isPopupVisible())
+            itemPopup->setItem(itemInfo, color, true);
+            if (itemPopup->isPopupVisible())
             {
-                mItemPopup->setVisible(false);
+                itemPopup->setVisible(false);
             }
             else if (viewport)
             {
-                mItemPopup->position(viewport->getMouseX(),
+                itemPopup->position(viewport->getMouseX(),
                     viewport->getMouseY());
             }
         }
