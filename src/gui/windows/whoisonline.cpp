@@ -31,6 +31,9 @@
 
 #include "gui/onlineplayer.h"
 #include "gui/popupmanager.h"
+#include "gui/viewport.h"
+
+#include "gui/popups/popupmenu.h"
 
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/setupwindow.h"
@@ -197,7 +200,7 @@ void WhoIsOnline::handleLink(const std::string& link, MouseEvent *event)
         if (localPlayer && link == localPlayer->getName())
             return;
 
-        if (popupManager)
+        if (popupMenu)
         {
             if (actorManager)
             {
@@ -207,11 +210,15 @@ void WhoIsOnline::handleLink(const std::string& link, MouseEvent *event)
 
                 if (being && popupManager)
                 {
-                    popupManager->showPopup(being);
+                    popupMenu->showPopup(viewport->getMouseX(),
+                        viewport->getMouseY(),
+                        being);
                     return;
                 }
             }
-            popupManager->showPlayerPopup(link);
+            popupMenu->showPlayerPopup(viewport->getMouseX(),
+                viewport->getMouseY(),
+                link);
         }
     }
 }

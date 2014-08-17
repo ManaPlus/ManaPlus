@@ -39,6 +39,7 @@
 #include "gui/fonts/font.h"
 
 #include "gui/popups/itempopup.h"
+#include "gui/popups/popupmenu.h"
 #include "gui/popups/spellpopup.h"
 
 #include "gui/windows/inventorywindow.h"
@@ -334,9 +335,11 @@ void ItemShortcutContainer::mousePressed(MouseEvent &event)
     else if (event.getButton() == MouseButton::RIGHT)
     {
         event.consume();
-        if (popupManager && selShortcut)
+        if (popupMenu && selShortcut && viewport)
         {
-            popupManager->showItemPopup(selShortcut->getItem(index),
+            popupMenu->showItemPopup(viewport->getMouseX(),
+                viewport->getMouseY(),
+                selShortcut->getItem(index),
                 selShortcut->getItemColor(index));
         }
     }

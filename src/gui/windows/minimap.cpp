@@ -32,6 +32,7 @@
 #include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
+#include "gui/popups/popupmenu.h"
 #include "gui/popups/textpopup.h"
 
 #include "gui/windows/setupwindow.h"
@@ -459,7 +460,9 @@ void Minimap::mouseReleased(MouseEvent &event)
         int x = event.getX();
         int y = event.getY();
         screenToMap(x, y);
-        popupManager->showMapPopup(x, y);
+        popupMenu->showMapPopup(viewport->getMouseX(),
+            viewport->getMouseY(),
+            x, y);
     }
 }
 

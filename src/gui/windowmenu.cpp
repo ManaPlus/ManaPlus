@@ -31,6 +31,7 @@
 #include "gui/popupmanager.h"
 #include "gui/skin.h"
 
+#include "gui/popups/popupmenu.h"
 #include "gui/popups/textpopup.h"
 
 #include "gui/windows/skilldialog.h"
@@ -257,9 +258,9 @@ void WindowMenu::mousePressed(MouseEvent &event)
         Button *const btn = dynamic_cast<Button*>(event.getSource());
         if (!btn)
             return;
-        if (popupManager)
+        if (popupMenu)
         {
-            popupManager->showPopup(getX() + event.getX(),
+            popupMenu->showPopup(getX() + event.getX(),
                 getY() + event.getY(), btn);
         }
     }

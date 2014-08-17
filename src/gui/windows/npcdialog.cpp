@@ -38,6 +38,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/popups/popupmenu.h"
+
 #include "gui/windows/inventorywindow.h"
 
 #include "gui/widgets/browserbox.h"
@@ -948,8 +950,12 @@ void NpcDialog::mousePressed(MouseEvent &event)
         && event.getSource() == mTextBox)
     {
         event.consume();
-        if (popupManager)
-            popupManager->showNpcDialogPopup(mNpcId);
+        if (popupMenu)
+        {
+            popupMenu->showNpcDialogPopup(mNpcId,
+                viewport->getMouseX(),
+                viewport->getMouseY());
+        }
     }
 }
 

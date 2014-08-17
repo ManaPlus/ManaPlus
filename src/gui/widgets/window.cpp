@@ -80,6 +80,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/popups/popupmenu.h"
+
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/containerplacer.h"
@@ -764,10 +766,12 @@ void Window::mousePressed(MouseEvent &event)
     }
     else if (button == MouseButton::RIGHT)
     {
-        if (popupManager)
+        if (popupMenu)
         {
             event.consume();
-            popupManager->showWindowPopup(this);
+            popupMenu->showWindowPopup(this,
+                viewport->getMouseX(),
+                viewport->getMouseY());
         }
     }
 }

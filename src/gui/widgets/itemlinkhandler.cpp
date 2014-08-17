@@ -26,6 +26,7 @@
 #include "gui/viewport.h"
 
 #include "gui/popups/itempopup.h"
+#include "gui/popups/popupmenu.h"
 
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/helpwindow.h"
@@ -79,8 +80,12 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         }
         else if (button == MouseButton::RIGHT)
         {
-            if (popupManager)
-                popupManager->showLinkPopup(url);
+            if (popupMenu)
+            {
+                popupMenu->showLinkPopup(viewport->getMouseX(),
+                    viewport->getMouseY(),
+                    url);
+            }
         }
     }
     else if (!link.empty() && link[0] == '?')

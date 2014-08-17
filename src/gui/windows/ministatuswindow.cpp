@@ -33,9 +33,9 @@
 #include "gui/popupmanager.h"
 #include "gui/skin.h"
 
-#include "gui/popups/textpopup.h"
-
+#include "gui/popups/popupmenu.h"
 #include "gui/popups/statuspopup.h"
+#include "gui/popups/textpopup.h"
 
 #include "gui/windows/statuswindow.h"
 
@@ -452,7 +452,7 @@ void MiniStatusWindow::mousePressed(MouseEvent &event)
         event.consume();
         if (popupManager)
         {
-            popupManager->showPopup(getX() + event.getX(),
+            popupMenu->showPopup(getX() + event.getX(),
                 getY() + event.getY(), bar);
         }
     }

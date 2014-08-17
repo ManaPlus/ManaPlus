@@ -42,6 +42,8 @@
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
+#include "gui/popups/popupmenu.h"
+
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/statuswindow.h"
@@ -1122,9 +1124,10 @@ impHandler0(showKeyboard)
 
 impHandler0(showWindows)
 {
-    if (popupManager)
+    if (popupMenu)
     {
-        popupManager->showWindowsPopup();
+        popupMenu->showWindowsPopup(viewport->getMouseX(),
+            viewport->getMouseY());
         return true;
     }
     return false;

@@ -33,6 +33,7 @@
 #include "gui/fonts/font.h"
 
 #include "gui/popups/itempopup.h"
+#include "gui/popups/popupmenu.h"
 
 #include "gui/models/shopitems.h"
 
@@ -234,8 +235,12 @@ void ShopListBox::mouseReleased(MouseEvent& event)
             return;
 
         Item *const item = mShopItems->at(mSelected);
-        if (popupManager)
-            popupManager->showItemPopup(item);
+        if (popupMenu && viewport)
+        {
+            popupMenu->showItemPopup(viewport->getMouseX(),
+            viewport->getMouseY(),
+            item);
+        }
     }
 }
 

@@ -45,8 +45,11 @@
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
 #include "gui/skin.h"
+#include "gui/viewport.h"
 
 #include "gui/models/colorlistmodel.h"
+
+#include "gui/popups/popupmenu.h"
 
 #include "gui/windows/emotewindow.h"
 #include "gui/windows/setupwindow.h"
@@ -657,7 +660,7 @@ void ChatWindow::mousePressed(MouseEvent &event)
 
     if (event.getButton() == MouseButton::RIGHT)
     {
-        if (popupManager)
+        if (popupMenu)
         {
             Tab *const tab = mChatTabs->getSelectedTab();
             if (tab)
@@ -674,7 +677,11 @@ void ChatWindow::mousePressed(MouseEvent &event)
                 {
                     ChatTab *const cTab = dynamic_cast<ChatTab*>(tab);
                     if (cTab)
-                        popupManager->showChatPopup(cTab);
+                    {
+                        popupMenu->showChatPopup(viewport->getMouseX(),
+                            viewport->getMouseY(),
+                            cTab);
+                    }
                 }
             }
         }

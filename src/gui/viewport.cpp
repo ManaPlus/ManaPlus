@@ -45,6 +45,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/popups/popupmenu.h"
+
 #include "gui/windows/ministatuswindow.h"
 
 #include "debug.h"
@@ -365,6 +367,8 @@ bool Viewport::openContextMenu(const MouseEvent &event)
     mPlayerFollowMouse = false;
     const int eventX = event.getX();
     const int eventY = event.getY();
+    if (!popupMenu)
+        return false;
     if (mHoverBeing)
     {
         validateSpeed();
@@ -375,29 +379,29 @@ bool Viewport::openContextMenu(const MouseEvent &event)
             const int y = mMouseY + mPixelViewY;
             actorManager->findBeingsByPixel(beings, x, y, true);
             if (beings.size() > 1)
-                popupManager->showPopup(eventX, eventY, beings);
+                popupMenu->showPopup(eventX, eventY, beings);
             else
-                popupManager->showPopup(eventX, eventY, mHoverBeing);
+                popupMenu->showPopup(eventX, eventY, mHoverBeing);
             return true;
         }
     }
     else if (mHoverItem)
     {
         validateSpeed();
-        popupManager->showPopup(eventX, eventY, mHoverItem);
+        popupMenu->showPopup(eventX, eventY, mHoverItem);
         return true;
     }
     else if (mHoverSign)
     {
         validateSpeed();
-        popupManager->showPopup(eventX, eventY, mHoverSign);
+        popupMenu->showPopup(eventX, eventY, mHoverSign);
         return true;
     }
     else if (settings.cameraMode)
     {
         if (!mMap)
             return false;
-        popupManager->showMapPopup(eventX, eventY,
+        popupMenu->showMapPopup(eventX, eventY,
             (mMouseX + mPixelViewX) / mMap->getTileWidth(),
             (mMouseY + mPixelViewY) / mMap->getTileHeight());
         return true;

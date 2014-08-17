@@ -32,10 +32,9 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "gui/popupmanager.h"
-
 #include "gui/fonts/font.h"
 
+#include "gui/popups/popupmenu.h"
 #include "gui/popups/itempopup.h"
 
 #include "gui/windows/setupwindow.h"
@@ -358,13 +357,13 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
              */
             const int mx = x + getX();
             const int my = y + getY();
-            if (popupManager)
+            if (popupMenu)
             {
                 event.consume();
                 if (mForing)
-                    popupManager->showUndressPopup(mx, my, mBeing, item);
+                    popupMenu->showUndressPopup(mx, my, mBeing, item);
                 else
-                    popupManager->showPopup(this, mx, my, item, true);
+                    popupMenu->showPopup(this, mx, my, item, true);
                 return;
             }
         }

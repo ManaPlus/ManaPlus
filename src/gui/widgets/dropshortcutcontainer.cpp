@@ -34,6 +34,7 @@
 #include "gui/fonts/font.h"
 
 #include "gui/popups/itempopup.h"
+#include "gui/popups/popupmenu.h"
 
 #include "gui/windows/inventorywindow.h"
 
@@ -215,8 +216,12 @@ void DropShortcutContainer::mousePressed(MouseEvent &event)
         Item *const item = inv->findItem(dropShortcut->getItem(index),
             dropShortcut->getItemColor(index));
 
-        if (popupManager)
-            popupManager->showDropPopup(item);
+        if (popupMenu)
+        {
+            popupMenu->showDropPopup(viewport->getMouseX(),
+                viewport->getMouseY(),
+                item);
+        }
     }
 }
 

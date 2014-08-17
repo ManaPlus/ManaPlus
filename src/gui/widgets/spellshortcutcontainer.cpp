@@ -32,6 +32,7 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/popups/popupmenu.h"
 #include "gui/popups/spellpopup.h"
 
 #include "gui/windows/shortcutwindow.h"
@@ -260,8 +261,12 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
         if (itemId >= 0)
             spell = spellManager->getSpell(itemId);
 
-        if (spell && popupManager)
-            popupManager->showSpellPopup(spell);
+        if (spell && popupMenu)
+        {
+            popupMenu->showSpellPopup(viewport->getMouseX(),
+                viewport->getMouseY(),
+                spell);
+        }
     }
 }
 

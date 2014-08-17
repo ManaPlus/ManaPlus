@@ -40,6 +40,7 @@
 
 #include "gui/models/sortlistmodelinv.h"
 
+#include "gui/popups/popupmenu.h"
 #include "gui/popups/textpopup.h"
 
 #include "gui/windows/equipmentwindow.h"
@@ -467,8 +468,8 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
         const int mx = event.getX() + getX();
         const int my = event.getY() + getY();
 
-        if (popupManager)
-            popupManager->showPopup(this, mx, my, item, isMainInventory());
+        if (popupMenu)
+            popupMenu->showPopup(this, mx, my, item, isMainInventory());
     }
 
     if (!mInventory)

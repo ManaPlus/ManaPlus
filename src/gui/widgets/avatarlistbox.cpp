@@ -34,6 +34,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/popups/popupmenu.h"
+
 #include "gui/models/avatarlistmodel.h"
 
 #include "gui/windows/chatwindow.h"
@@ -392,9 +394,17 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                     const Being *const being = actorManager->findBeingByName(
                         avatar->getName(), ActorType::PLAYER);
                     if (being)
-                        popupManager->showPopup(being);
+                    {
+                        popupMenu->showPopup(viewport->getMouseX(),
+                            viewport->getMouseY(),
+                            being);
+                    }
                     else
-                        popupManager->showPlayerPopup(avatar->getName());
+                    {
+                        popupMenu->showPlayerPopup(viewport->getMouseX(),
+                            viewport->getMouseY(),
+                            avatar->getName());
+                    }
                 }
                 break;
             }
@@ -408,7 +418,9 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 else
                     name = model->getAvatarAt(selected)->getName();
 
-                popupManager->showAttackMonsterPopup(name,
+                popupMenu->showAttackMonsterPopup(viewport->getMouseX(),
+                    viewport->getMouseY(),
+                    name,
                     static_cast<ActorType::Type>(model->getAvatarAt(
                     selected)->getType()));
                 break;
@@ -422,7 +434,9 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 else
                     name = model->getAvatarAt(selected)->getName();
 
-                popupManager->showPickupItemPopup(name);
+                popupMenu->showPickupItemPopup(viewport->getMouseX(),
+                    viewport->getMouseY(),
+                    name);
                 break;
             }
             case MapItemType::HOME:
@@ -446,7 +460,9 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 {
                     MapItem *const mapItem = map->findPortalXY(
                         ava->getX(), ava->getY());
-                    popupManager->showPopup(mapItem);
+                    popupMenu->showPopup(viewport->getMouseX(),
+                        viewport->getMouseY(),
+                        mapItem);
                 }
                 break;
             }
