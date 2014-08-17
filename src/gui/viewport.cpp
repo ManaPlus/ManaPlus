@@ -47,6 +47,7 @@
 
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/popupmenu.h"
+#include "gui/popups/textpopup.h"
 
 #include "gui/windows/ministatuswindow.h"
 
@@ -791,8 +792,11 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
                 if (!mHoverSign->getComment().empty())
                 {
                     popupManager->hideBeingPopup();
-                    popupManager->showTextPopup(mMouseX, mMouseY,
-                        mHoverSign->getComment());
+                    if (textPopup)
+                    {
+                        textPopup->show(mMouseX, mMouseY,
+                            mHoverSign->getComment());
+                    }
                 }
                 else
                 {

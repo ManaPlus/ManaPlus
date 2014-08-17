@@ -79,13 +79,6 @@ void PopupManager::clearPopup()
         popupMenu->clear();
 }
 
-void PopupManager::showTextPopup(const int x, const int y,
-                                 const std::string &text)
-{
-    if (textPopup)
-        textPopup->show(x, y, text);
-}
-
 bool PopupManager::isTextPopupVisible() const
 {
     return textPopup ? textPopup->isPopupVisible() : false;

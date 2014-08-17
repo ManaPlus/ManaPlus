@@ -60,9 +60,6 @@ class PopupManager final
          */
         ~PopupManager();
 
-        void showTextPopup(const int x, const int y,
-                           const std::string &text);
-
         bool isBeingPopupVisible() const;
 
         bool isTextPopupVisible() const;
