@@ -61,6 +61,7 @@
 
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/popupmenu.h"
+#include "gui/popups/textpopup.h"
 
 #include "gui/windows/changeemaildialog.h"
 #include "gui/windows/changepassworddialog.h"
@@ -607,6 +608,7 @@ void Client::gameClear()
     delete2(commandHandler);
     delete2(popupMenu);
     delete2(beingPopup);
+    delete2(textPopup);
 
     stopTimers();
 

@@ -78,4 +78,6 @@ class TextPopup final : public Popup
         Label *mText[TEXTPOPUPCOUNT];
 };
 
+extern TextPopup *textPopup;
+
 #endif  // GUI_POPUPS_TEXTPOPUP_H

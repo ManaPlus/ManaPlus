@@ -36,15 +36,12 @@
 
 PopupManager *popupManager = nullptr;
 
-PopupManager::PopupManager() :
-    mTextPopup(new TextPopup)
+PopupManager::PopupManager()
 {
-    mTextPopup->postInit();
 }
 
 PopupManager::~PopupManager()
 {
-    delete2(mTextPopup);
 }
 
 void PopupManager::closePopupMenu()
@@ -61,8 +58,8 @@ void PopupManager::hideBeingPopup()
 
 void PopupManager::hideTextPopup()
 {
-    if (mTextPopup)
-        mTextPopup->setVisible(false);
+    if (textPopup)
+        textPopup->setVisible(false);
 }
 
 void PopupManager::hidePopupMenu()
@@ -85,13 +82,13 @@ void PopupManager::clearPopup()
 void PopupManager::showTextPopup(const int x, const int y,
                                  const std::string &text)
 {
-    if (mTextPopup)
-        mTextPopup->show(x, y, text);
+    if (textPopup)
+        textPopup->show(x, y, text);
 }
 
 bool PopupManager::isTextPopupVisible() const
 {
-    return mTextPopup ? mTextPopup->isPopupVisible() : false;
+    return textPopup ? textPopup->isPopupVisible() : false;
 }
 
 bool PopupManager::isBeingPopupVisible() const

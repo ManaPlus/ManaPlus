@@ -29,6 +29,8 @@
 
 #include "debug.h"
 
+TextPopup *textPopup = nullptr;
+
 TextPopup::TextPopup() :
     Popup("TextPopup", "textpopup.xml"),
     mText()

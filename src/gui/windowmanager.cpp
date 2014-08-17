@@ -34,6 +34,7 @@
 
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/popupmenu.h"
+#include "gui/popups/textpopup.h"
 
 #include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/helpwindow.h"
@@ -99,6 +100,8 @@ void WindowManager::createWindows()
     popupMenu->postInit();
     beingPopup = new BeingPopup;
     beingPopup->postInit();
+    textPopup = new TextPopup;
+    textPopup->postInit();
 }
 
 void WindowManager::initTitle()

@@ -85,9 +85,6 @@ class PopupManager final
         void clearPopup();
 
         void hidePopupMenu();
-
-    private:
-        TextPopup *mTextPopup;       /**< Map Item information popup. */
 };
 
 extern PopupManager *popupManager;
