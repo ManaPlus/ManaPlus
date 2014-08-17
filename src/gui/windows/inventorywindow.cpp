@@ -103,11 +103,9 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     mNameFilterCell(nullptr),
     mFilterCell(nullptr),
     mSlotsBarCell(nullptr),
-    mTextPopup(new TextPopup),
     mSplit(false),
     mCompactMode(false)
 {
-    mTextPopup->postInit();
     mSlotsBar->setColor(getThemeColor(Theme::SLOTS_BAR),
         getThemeColor(Theme::SLOTS_BAR_OUTLINE));
 
@@ -284,7 +282,6 @@ InventoryWindow::~InventoryWindow()
 
     mSortDropDown->hideDrop(false);
     delete2(mSortModel);
-    mTextPopup = nullptr;
 }
 
 void InventoryWindow::storeSortOrder() const
@@ -565,25 +562,28 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
 void InventoryWindow::mouseMoved(MouseEvent &event)
 {
     Window::mouseMoved(event);
+    if (!textPopup)
+        return;
+
     const Widget *const src = event.getSource();
     if (src == mSlotsBar || src == mWeightBar)
     {
         const int x = event.getX();
         const int y = event.getY();
         const Rect &rect = mDimension;
-        mTextPopup->show(rect.x + x, rect.y + y, strprintf(_("Money: %s"),
+        textPopup->show(rect.x + x, rect.y + y, strprintf(_("Money: %s"),
             Units::formatCurrency(PlayerInfo::getAttribute(
             Attributes::MONEY)).c_str()));
     }
     else
     {
-        mTextPopup->hide();
+        textPopup->hide();
     }
 }
 
 void InventoryWindow::mouseExited(MouseEvent &event A_UNUSED)
 {
-    mTextPopup->hide();
+    textPopup->hide();
 }
 
 void InventoryWindow::keyPressed(KeyEvent &event)

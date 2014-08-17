@@ -189,7 +189,6 @@ class InventoryWindow final : public Window,
         LayoutCell *mNameFilterCell;
         LayoutCell *mFilterCell;
         LayoutCell *mSlotsBarCell;
-        TextPopup *mTextPopup;
 
         bool mSplit;
         bool mCompactMode;
