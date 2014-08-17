@@ -658,49 +658,61 @@ void GraphicsManager::updateTextureFormat() const
 
         if (compressionFormat)
         {
-            if (supportExtension("GL_EXT_texture_compression_s3tc")
-                || supportExtension("3DFX_texture_compression_FXT1"))
+            for (int f = 0; f < num; f ++)
             {
-                for (int f = 0; f < num; f ++)
+                switch (formats[f])
                 {
-                    if (formats[f] == GL_COMPRESSED_RGBA_S3TC_DXT5_EXT
-                        && compressionFormat == 1)
-                    {
-                        delete []formats;
-                        OpenGLImageHelper::setInternalTextureType(
-                            GL_COMPRESSED_RGBA_S3TC_DXT5_EXT);
-                        logger->log1("using s3tc texture compression");
-                        return;
-                    }
-                    else if (formats[f] == GL_COMPRESSED_RGBA_FXT1_3DFX
-                             && compressionFormat == 2)
-                    {
-                        delete []formats;
-                        OpenGLImageHelper::setInternalTextureType(
-                            GL_COMPRESSED_RGBA_FXT1_3DFX);
-                        logger->log1("using fxt1 texture compression");
-                        return;
-                    }
-                }
-                delete []formats;
-                if (compressionFormat == 3)
-                {
-                    OpenGLImageHelper::setInternalTextureType(
-                        GL_COMPRESSED_RGBA_ARB);
-                    logger->log1("using ARB texture compression");
-                    return;
+                    case GL_COMPRESSED_RGBA_S3TC_DXT5_EXT:
+                        if (compressionFormat == 1)
+                        {
+                            delete []formats;
+                            OpenGLImageHelper::setInternalTextureType(
+                                GL_COMPRESSED_RGBA_S3TC_DXT5_EXT);
+                            logger->log1("using s3tc texture compression");
+                            return;
+                        }
+                        break;
+                    case GL_COMPRESSED_RGBA_FXT1_3DFX:
+                        if (compressionFormat == 2)
+                        {
+                            delete []formats;
+                            OpenGLImageHelper::setInternalTextureType(
+                                GL_COMPRESSED_RGBA_FXT1_3DFX);
+                            logger->log1("using fxt1 texture compression");
+                            return;
+                        }
+                        break;
+                    case GL_COMPRESSED_RGBA_BPTC_UNORM_ARB:
+                        if (compressionFormat == 4)
+                        {
+                            delete []formats;
+                            OpenGLImageHelper::setInternalTextureType(
+                                GL_COMPRESSED_RGBA_BPTC_UNORM_ARB);
+                            logger->log1("using bptc texture compression");
+                            return;
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
-            else
+            delete []formats;
+            if (compressionFormat == 3)
             {
-                if (compressionFormat == 3)
-                {
-                    delete []formats;
-                    OpenGLImageHelper::setInternalTextureType(
-                        GL_COMPRESSED_RGBA_ARB);
-                    logger->log1("using ARB texture compression");
-                    return;
-                }
+                OpenGLImageHelper::setInternalTextureType(
+                    GL_COMPRESSED_RGBA_ARB);
+                logger->log1("using ARB texture compression");
+                return;
+            }
+
+            // workaround for MESA bptc compression detection
+            if (compressionFormat == 4
+                && supportExtension("GL_ARB_texture_compression_bptc"))
+            {
+                OpenGLImageHelper::setInternalTextureType(
+                    GL_COMPRESSED_RGBA_BPTC_UNORM_ARB);
+                logger->log1("using bptc texture compression");
+                return;
             }
         }
     }

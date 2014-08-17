@@ -120,6 +120,10 @@
 #define GLX_CONTEXT_FLAGS_ARB             0x2094
 #endif
 
+#ifndef GL_COMPRESSED_RGBA_BPTC_UNORM_ARB
+#define GL_COMPRESSED_RGBA_BPTC_UNORM_ARB 0x8E8C
+#endif
+
 #endif  // USE_OPENGL
 
 #endif  // RENDER_MGLDEFINES_H

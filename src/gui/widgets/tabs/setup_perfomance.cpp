@@ -34,7 +34,7 @@
 
 #include "debug.h"
 
-static const int texturesListSize = 4;
+static const int texturesListSize = 5;
 
 static const char *const texturesList[] =
 {
@@ -42,7 +42,8 @@ static const char *const texturesList[] =
     N_("No"),
     "s3tc",
     "fxt1",
-    "ARB"
+    "ARB",
+    "bptc"
 };
 
 Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
