@@ -60,14 +60,11 @@ ItemShortcutContainer::ItemShortcutContainer(Widget2 *const widget,
     ShortcutContainer(widget),
     mItemClicked(false),
     mNumber(number),
-    mSpellPopup(new SpellPopup),
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
     mEquipedColor2(getThemeColor(Theme::ITEM_EQUIPPED_OUTLINE)),
     mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED)),
     mUnEquipedColor2(getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE))
 {
-    mSpellPopup->postInit();
-
     if (itemShortcut[mNumber])
         mMaxItems = itemShortcut[mNumber]->getItemCount();
     else
@@ -76,7 +73,6 @@ ItemShortcutContainer::ItemShortcutContainer(Widget2 *const widget,
 
 ItemShortcutContainer::~ItemShortcutContainer()
 {
-    delete2(mSpellPopup);
 }
 
 void ItemShortcutContainer::setWidget2(const Widget2 *const widget)
@@ -403,7 +399,7 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
 
     if (itemId < SPELL_MIN_ID)
     {
-        mSpellPopup->setVisible(false);
+        spellPopup->setVisible(false);
 
         Inventory *const inv = PlayerInfo::getInventory();
         if (!inv)
@@ -426,12 +422,12 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         const TextCommand *const spell = spellManager->getSpellByItem(itemId);
         if (spell && viewport)
         {
-            mSpellPopup->setItem(spell);
-            mSpellPopup->view(viewport->getMouseX(), viewport->getMouseY());
+            spellPopup->setItem(spell);
+            spellPopup->view(viewport->getMouseX(), viewport->getMouseY());
         }
         else
         {
-            mSpellPopup->setVisible(false);
+            spellPopup->setVisible(false);
         }
     }
     else if (skillDialog)
@@ -445,14 +441,14 @@ void ItemShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (itemPopup)
         itemPopup->setVisible(false);
-    if (mSpellPopup)
-        mSpellPopup->setVisible(false);
+    if (spellPopup)
+        spellPopup->setVisible(false);
 }
 
 void ItemShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
     if (itemPopup)
         itemPopup->setVisible(false);
-    if (mSpellPopup)
-        mSpellPopup->setVisible(false);
+    if (spellPopup)
+        spellPopup->setVisible(false);
 }

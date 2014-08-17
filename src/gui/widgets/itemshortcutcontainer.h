@@ -81,7 +81,6 @@ class ItemShortcutContainer final : public ShortcutContainer
         bool mItemClicked;
         unsigned mNumber;
 
-        SpellPopup *mSpellPopup;
         Color mEquipedColor;
         Color mEquipedColor2;
         Color mUnEquipedColor;
