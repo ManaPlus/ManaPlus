@@ -137,7 +137,6 @@ class MiniStatusWindow final : public Window,
         ProgressBar *mMoneyBar;
         ProgressBar *mArrowsBar;
         ProgressBar *mStatusBar;
-        TextPopup *mTextPopup;
         StatusPopup *mStatusPopup;
 
         int mSpacing;

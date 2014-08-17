@@ -109,14 +109,12 @@ MiniStatusWindow::MiniStatusWindow() :
         "statusprogressbar.xml", "statusprogressbar_fill.xml",
         // TRANSLATORS: status bar name
         "status bar", _("status bar"))),
-    mTextPopup(new TextPopup),
     mStatusPopup(new StatusPopup),
     mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
     mIconPadding(mSkin ? mSkin->getOption("iconPadding", 3) : 3),
     mIconSpacing(mSkin ? mSkin->getOption("iconSpacing", 2) : 2),
     mMaxX(0)
 {
-    mTextPopup->postInit();
     mStatusPopup->postInit();
 
     StatusWindow::updateHPBar(mHpBar);
@@ -154,7 +152,6 @@ MiniStatusWindow::MiniStatusWindow() :
 
 MiniStatusWindow::~MiniStatusWindow()
 {
-    delete2(mTextPopup);
     delete2(mStatusPopup);
     delete_all(mIcons);
     mIcons.clear();
@@ -334,7 +331,7 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     if (event.getSource() == mStatusBar)
     {
         mStatusPopup->view(x + rect.x, y + rect.y);
-        mTextPopup->hide();
+        textPopup->hide();
     }
     else if (event.getSource() == mXpBar)
     {
@@ -357,12 +354,12 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
         const int expNeed = PlayerInfo::getAttribute(Attributes::EXP_NEEDED);
         if (exp > expNeed)
         {
-            mTextPopup->show(x + rect.x, y + rect.y, level, strprintf("%d/%d",
+            textPopup->show(x + rect.x, y + rect.y, level, strprintf("%d/%d",
                 exp, expNeed));
         }
         else
         {
-            mTextPopup->show(x + rect.x, y + rect.y, level, strprintf("%d/%d",
+            textPopup->show(x + rect.x, y + rect.y, level, strprintf("%d/%d",
                 exp, expNeed),
                 // TRANSLATORS: status bar label
                 strprintf("%s: %d", _("Need"), expNeed - exp));
@@ -371,14 +368,14 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     }
     else if (event.getSource() == mHpBar)
     {
-        mTextPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
+        textPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
             strprintf("%d/%d", PlayerInfo::getAttribute(Attributes::HP),
             PlayerInfo::getAttribute(Attributes::MAX_HP)));
         mStatusPopup->hide();
     }
     else if (event.getSource() == mMpBar)
     {
-        mTextPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
+        textPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
             strprintf("%d/%d", PlayerInfo::getAttribute(Attributes::MP),
             PlayerInfo::getAttribute(Attributes::MAX_MP)));
         mStatusPopup->hide();
@@ -395,12 +392,12 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
 
         if (exp.first > exp.second)
         {
-            mTextPopup->show(x + rect.x, y + rect.y, level,
+            textPopup->show(x + rect.x, y + rect.y, level,
                 strprintf("%d/%d", exp.first, exp.second));
         }
         else
         {
-            mTextPopup->show(x + rect.x, y + rect.y, level,
+            textPopup->show(x + rect.x, y + rect.y, level,
                 strprintf("%d/%d", exp.first, exp.second),
                 // TRANSLATORS: status bar label
                 strprintf("%s: %d", _("Need"), exp.second - exp.first));
@@ -409,7 +406,7 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     }
     else if (event.getSource() == mWeightBar)
     {
-        mTextPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
+        textPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
             strprintf("%d/%d", PlayerInfo::getAttribute(
             Attributes::TOTAL_WEIGHT),
             PlayerInfo::getAttribute(Attributes::MAX_WEIGHT)));
@@ -422,7 +419,7 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
         {
             const int usedSlots = inv->getNumberOfSlotsUsed();
             const int maxSlots = inv->getSize();
-            mTextPopup->show(x + rect.x, y + rect.y,
+            textPopup->show(x + rect.x, y + rect.y,
                 event.getSource()->getId(),
                 strprintf("%d/%d", usedSlots, maxSlots));
         }
@@ -430,13 +427,13 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     }
     else if (event.getSource() == mMoneyBar)
     {
-        mTextPopup->show(x + rect.x, y + rect.y,
+        textPopup->show(x + rect.x, y + rect.y,
             event.getSource()->getId(),
             toString(PlayerInfo::getAttribute(Attributes::MONEY)));
     }
     else
     {
-        mTextPopup->hide();
+        textPopup->hide();
         mStatusPopup->hide();
     }
 }
@@ -462,7 +459,7 @@ void MiniStatusWindow::mouseExited(MouseEvent &event)
 {
     Window::mouseExited(event);
 
-    mTextPopup->hide();
+    textPopup->hide();
     mStatusPopup->hide();
 }
 
