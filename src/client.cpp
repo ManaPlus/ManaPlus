@@ -601,14 +601,7 @@ void Client::gameClear()
     config.removeListeners(this);
 
     eventsManager.shutdown();
-
-    delete2(setupWindow);
-    delete2(helpWindow);
-    delete2(didYouKnowWindow);
-    delete2(commandHandler);
-    delete2(popupMenu);
-    delete2(beingPopup);
-    delete2(textPopup);
+    WindowManager::deleteWindows();
 
     stopTimers();
 
@@ -694,7 +687,6 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting9");
 
-    delete2(userPalette);
     delete2(joystick);
 
     keyboard.deinit();

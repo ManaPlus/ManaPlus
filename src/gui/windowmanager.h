@@ -63,6 +63,8 @@ namespace WindowManager
 
     void createWindows();
 
+    void deleteWindows();
+
     void initTitle();
 
     void setIcon();

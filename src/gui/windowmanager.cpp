@@ -42,6 +42,7 @@
 
 #include "gui/widgets/desktop.h"
 
+#include "utils/delete2.h"
 #include "utils/files.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
@@ -102,6 +103,18 @@ void WindowManager::createWindows()
     beingPopup->postInit();
     textPopup = new TextPopup;
     textPopup->postInit();
+}
+
+void WindowManager::deleteWindows()
+{
+    delete2(textPopup);
+    delete2(beingPopup);
+    delete2(popupMenu);
+    delete2(commandHandler);
+    delete2(didYouKnowWindow);
+    delete2(helpWindow);
+    delete2(setupWindow);
+    delete2(userPalette);
 }
 
 void WindowManager::initTitle()
