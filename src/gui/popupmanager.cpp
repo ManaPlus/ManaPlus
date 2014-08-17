@@ -37,16 +37,13 @@
 PopupManager *popupManager = nullptr;
 
 PopupManager::PopupManager() :
-    mBeingPopup(new BeingPopup),
     mTextPopup(new TextPopup)
 {
-    mBeingPopup->postInit();
     mTextPopup->postInit();
 }
 
 PopupManager::~PopupManager()
 {
-    delete2(mBeingPopup);
     delete2(mTextPopup);
 }
 
@@ -58,8 +55,8 @@ void PopupManager::closePopupMenu()
 
 void PopupManager::hideBeingPopup()
 {
-    if (mBeingPopup)
-        mBeingPopup->setVisible(false);
+    if (beingPopup)
+        beingPopup->setVisible(false);
 }
 
 void PopupManager::hideTextPopup()
@@ -88,8 +85,8 @@ void PopupManager::clearPopup()
 void PopupManager::showBeingPopup(const int x, const int y,
                                   Being *const b)
 {
-    if (mBeingPopup)
-        mBeingPopup->show(x, y, b);
+    if (beingPopup)
+        beingPopup->show(x, y, b);
 }
 
 void PopupManager::showTextPopup(const int x, const int y,
@@ -106,5 +103,5 @@ bool PopupManager::isTextPopupVisible() const
 
 bool PopupManager::isBeingPopupVisible() const
 {
-    return mBeingPopup ? mBeingPopup->isPopupVisible() : false;
+    return beingPopup ? beingPopup->isPopupVisible() : false;
 }

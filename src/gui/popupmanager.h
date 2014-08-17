@@ -90,7 +90,6 @@ class PopupManager final
         void hidePopupMenu();
 
     private:
-        BeingPopup *mBeingPopup;     /**< Being information popup. */
         TextPopup *mTextPopup;       /**< Map Item information popup. */
 };
 

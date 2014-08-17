@@ -64,4 +64,6 @@ class BeingPopup final : public Popup
         Label *mBeingComment;
 };
 
+extern BeingPopup *beingPopup;
+
 #endif  // GUI_POPUPS_BEINGPOPUP_H

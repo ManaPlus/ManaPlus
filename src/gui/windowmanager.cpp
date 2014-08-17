@@ -32,6 +32,7 @@
 #include "gui/gui.h"
 #include "gui/userpalette.h"
 
+#include "gui/popups/beingpopup.h"
 #include "gui/popups/popupmenu.h"
 
 #include "gui/windows/didyouknowwindow.h"
@@ -96,6 +97,8 @@ void WindowManager::createWindows()
     commandHandler = new CommandHandler;
     popupMenu = new PopupMenu;
     popupMenu->postInit();
+    beingPopup = new BeingPopup;
+    beingPopup->postInit();
 }
 
 void WindowManager::initTitle()

@@ -35,6 +35,8 @@
 
 #include "debug.h"
 
+BeingPopup *beingPopup = nullptr;
+
 BeingPopup::BeingPopup() :
     Popup("BeingPopup", "beingpopup.xml"),
     mBeingName(new Label(this, "A")),
