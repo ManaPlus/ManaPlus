@@ -89,7 +89,6 @@ class CharacterDisplay final : public Container,
         Net::Character *mCharacter;
         PlayerBox *mPlayerBox;
         Label *mName;
-        TextPopup *mPopup;
 };
 
 #endif  // GUI_WIDGETS_CHARACTERDISPLAY_H

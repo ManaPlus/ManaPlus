@@ -50,11 +50,8 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
     WidgetListener(),
     mCharacter(nullptr),
     mPlayerBox(new PlayerBox(nullptr)),
-    mName(new Label(this, "wwwwwwwwwwwwwwwwwwwwwwww")),
-    mPopup(new TextPopup)
+    mName(new Label(this, "wwwwwwwwwwwwwwwwwwwwwwww"))
 {
-    mPopup->postInit();
-
     mPlayerBox->setActionEventId("select");
     mPlayerBox->addActionListener(charSelectDialog);
     setActionEventId("use");
@@ -82,7 +79,6 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
 
 CharacterDisplay::~CharacterDisplay()
 {
-    delete2(mPopup);
 }
 
 void CharacterDisplay::setCharacter(Net::Character *const character)
@@ -117,17 +113,17 @@ void CharacterDisplay::update()
 
 void CharacterDisplay::widgetHidden(const Event &event A_UNUSED)
 {
-    mPopup->setVisible(false);
+    textPopup->setVisible(false);
 }
 
 void CharacterDisplay::mouseExited(MouseEvent &event A_UNUSED)
 {
-    mPopup->setVisible(false);
+    textPopup->setVisible(false);
 }
 
 void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
 {
-    if (!gui)
+    if (!gui || !textPopup)
         return;
 
     int mouseX = 0;
@@ -136,7 +132,7 @@ void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
     const std::string &name = mName->getCaption();
     if (!name.empty())
     {
-        mPopup->show(mouseX, mouseY, name, strprintf(_("Level: %u"),
+        textPopup->show(mouseX, mouseY, name, strprintf(_("Level: %u"),
             static_cast<uint32_t>(
             mCharacter->data.mAttributes[Attributes::LEVEL])),
             strprintf(_("Money: %s"), Units::formatCurrency(
@@ -144,7 +140,7 @@ void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
     }
     else
     {
-        mPopup->setVisible(false);
+        textPopup->setVisible(false);
     }
 }
 
