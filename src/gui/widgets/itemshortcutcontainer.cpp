@@ -60,14 +60,12 @@ ItemShortcutContainer::ItemShortcutContainer(Widget2 *const widget,
     ShortcutContainer(widget),
     mItemClicked(false),
     mNumber(number),
-    mItemPopup(new ItemPopup),
     mSpellPopup(new SpellPopup),
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
     mEquipedColor2(getThemeColor(Theme::ITEM_EQUIPPED_OUTLINE)),
     mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED)),
     mUnEquipedColor2(getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE))
 {
-    mItemPopup->postInit();
     mSpellPopup->postInit();
 
     if (itemShortcut[mNumber])
@@ -78,7 +76,6 @@ ItemShortcutContainer::ItemShortcutContainer(Widget2 *const widget,
 
 ItemShortcutContainer::~ItemShortcutContainer()
 {
-    delete2(mItemPopup);
     delete2(mSpellPopup);
 }
 
@@ -415,17 +412,17 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         const Item *const item = inv->findItem(itemId, itemColor);
         if (item && viewport)
         {
-            mItemPopup->setItem(item);
-            mItemPopup->position(viewport->getMouseX(), viewport->getMouseY());
+            itemPopup->setItem(item);
+            itemPopup->position(viewport->getMouseX(), viewport->getMouseY());
         }
         else
         {
-            mItemPopup->setVisible(false);
+            itemPopup->setVisible(false);
         }
     }
     else if (itemId < SKILL_MIN_ID && spellManager)
     {
-        mItemPopup->setVisible(false);
+        itemPopup->setVisible(false);
         const TextCommand *const spell = spellManager->getSpellByItem(itemId);
         if (spell && viewport)
         {
@@ -439,23 +436,23 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
     }
     else if (skillDialog)
     {
-        mItemPopup->setVisible(false);
+        itemPopup->setVisible(false);
     }
 }
 
 // Hide ItemTooltip
 void ItemShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (mItemPopup)
-        mItemPopup->setVisible(false);
+    if (itemPopup)
+        itemPopup->setVisible(false);
     if (mSpellPopup)
         mSpellPopup->setVisible(false);
 }
 
 void ItemShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
-    if (mItemPopup)
-        mItemPopup->setVisible(false);
+    if (itemPopup)
+        itemPopup->setVisible(false);
     if (mSpellPopup)
         mSpellPopup->setVisible(false);
 }
