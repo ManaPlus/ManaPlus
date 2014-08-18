@@ -376,7 +376,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
         deathNotice = new OkDialog(_("Message"),
             DeadDB::getRandomString(),
             // TRANSLATORS: ok dialog button
-            _("OK"),
+            _("Revive"),
             DialogType::OK,
             false, true, nullptr, 260);
         deathNotice->addActionListener(&deathListener);
