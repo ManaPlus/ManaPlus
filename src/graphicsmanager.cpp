@@ -81,15 +81,14 @@
 #ifndef GL_MAX_RENDERBUFFER_SIZE
 #define GL_MAX_RENDERBUFFER_SIZE 0x84E8
 #endif
+#define useCompression(name) \
+    OpenGLImageHelper::setInternalTextureType(name); \
+    logger->log("using " #name " texture compression");
 #endif
 
 GraphicsManager graphicsManager;
 
 RenderType openGLMode = RENDER_SOFTWARE;
-
-#define useCompression(name) \
-    OpenGLImageHelper::setInternalTextureType(name); \
-    logger->log("using " #name " texture compression");
 
 const int densitySize = 6;
 
