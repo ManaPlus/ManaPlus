@@ -26,6 +26,7 @@
 #include "gui/widgets/shortcutcontainer.h"
 
 class ItemPopup;
+class ShortcutBase;
 
 /**
  * An item shortcut container. Used to quickly use items.
@@ -38,7 +39,8 @@ class DropShortcutContainer final : public ShortcutContainer
         /**
          * Constructor. Initializes the graphic.
          */
-        explicit DropShortcutContainer(Widget2 *const widget);
+        DropShortcutContainer(Widget2 *const widget,
+                              ShortcutBase *const shortcut);
 
         A_DELETE_COPY(DropShortcutContainer)
 
@@ -82,6 +84,8 @@ class DropShortcutContainer final : public ShortcutContainer
         Color mEquipedColor2;
         Color mUnEquipedColor;
         Color mUnEquipedColor2;
+
+        ShortcutBase *mShortcut;
 };
 
 #endif  // GUI_WIDGETS_DROPSHORTCUTCONTAINER_H

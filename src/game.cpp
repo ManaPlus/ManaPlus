@@ -29,6 +29,7 @@
 #include "animatedsprite.h"
 #include "client.h"
 #include "configuration.h"
+#include "dropshortcut.h"
 #include "effectmanager.h"
 #include "emoteshortcut.h"
 #include "eventsmanager.h"
@@ -212,7 +213,7 @@ static void createGuiWindows()
         130, 480);
     outfitWindow = new OutfitWindow();
     dropShortcutWindow = new ShortcutWindow("DropShortcut",
-        new DropShortcutContainer(nullptr),
+        new DropShortcutContainer(nullptr, dropShortcut),
         "drops.xml");
 
     spellShortcutWindow = new ShortcutWindow("SpellShortcut", "spells.xml",

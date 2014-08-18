@@ -24,6 +24,7 @@
 
 #include "dragdrop.h"
 #include "dropshortcut.h"
+#include "shortcutbase.h"
 #include "settings.h"
 
 #include "being/playerinfo.h"
@@ -45,16 +46,18 @@
 
 #include "debug.h"
 
-DropShortcutContainer::DropShortcutContainer(Widget2 *const widget) :
+DropShortcutContainer::DropShortcutContainer(Widget2 *const widget,
+                                             ShortcutBase *const shortcut) :
     ShortcutContainer(widget),
     mItemClicked(false),
     mEquipedColor(getThemeColor(Theme::ITEM_EQUIPPED)),
     mEquipedColor2(getThemeColor(Theme::ITEM_EQUIPPED_OUTLINE)),
     mUnEquipedColor(getThemeColor(Theme::ITEM_NOT_EQUIPPED)),
-    mUnEquipedColor2(getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE))
+    mUnEquipedColor2(getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE)),
+    mShortcut(shortcut)
 {
-    if (dropShortcut)
-        mMaxItems = dropShortcut->getItemCount();
+    if (mShortcut)
+        mMaxItems = mShortcut->getItemCount();
     else
         mMaxItems = 0;
 }
@@ -74,7 +77,7 @@ void DropShortcutContainer::setWidget2(const Widget2 *const widget)
 
 void DropShortcutContainer::draw(Graphics *graphics)
 {
-    if (!dropShortcut)
+    if (!mShortcut)
         return;
 
     BLOCK_START("DropShortcutContainer::draw")
@@ -101,11 +104,11 @@ void DropShortcutContainer::draw(Graphics *graphics)
         const int itemX = (i % mGridWidth) * mBoxWidth;
         const int itemY = (i / mGridWidth) * mBoxHeight;
 
-        if (dropShortcut->getItem(i) < 0)
+        if (mShortcut->getItem(i) < 0)
             continue;
 
-        const Item *const item = inv->findItem(dropShortcut->getItem(i),
-            dropShortcut->getItemColor(i));
+        const Item *const item = inv->findItem(mShortcut->getItem(i),
+            mShortcut->getItemColor(i));
 
         if (item)
         {
@@ -137,7 +140,7 @@ void DropShortcutContainer::draw(Graphics *graphics)
 
 void DropShortcutContainer::mouseDragged(MouseEvent &event)
 {
-    if (!dropShortcut)
+    if (!mShortcut)
         return;
 
     if (event.getButton() == MouseButton::LEFT)
@@ -149,8 +152,8 @@ void DropShortcutContainer::mouseDragged(MouseEvent &event)
             if (index == -1)
                 return;
 
-            const int itemId = dropShortcut->getItem(index);
-            const unsigned char itemColor = dropShortcut->getItemColor(index);
+            const int itemId = mShortcut->getItem(index);
+            const unsigned char itemColor = mShortcut->getItemColor(index);
 
             if (itemId < 0)
                 return;
@@ -164,7 +167,7 @@ void DropShortcutContainer::mouseDragged(MouseEvent &event)
             if (item)
             {
                 dragDrop.dragItem(item, DRAGDROP_SOURCE_DROP);
-                dropShortcut->removeItem(index);
+                mShortcut->removeItem(index);
             }
             else
             {
@@ -176,7 +179,7 @@ void DropShortcutContainer::mouseDragged(MouseEvent &event)
 
 void DropShortcutContainer::mousePressed(MouseEvent &event)
 {
-    if (!dropShortcut || !inventoryWindow)
+    if (!mShortcut || !inventoryWindow)
         return;
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -189,7 +192,7 @@ void DropShortcutContainer::mousePressed(MouseEvent &event)
     const MouseButton::Type eventButton = event.getButton();
     if (eventButton == MouseButton::LEFT)
     {
-        if (dropShortcut->getItem(index) > 0)
+        if (mShortcut->getItem(index) > 0)
         {
             mItemClicked = true;
         }
@@ -197,7 +200,7 @@ void DropShortcutContainer::mousePressed(MouseEvent &event)
         {
             if (dragDrop.isSelected())
             {
-                dropShortcut->setItems(index, dragDrop.getSelected(),
+                mShortcut->setItems(index, dragDrop.getSelected(),
                     dragDrop.getSelectedColor());
                 dragDrop.deselect();
             }
@@ -209,8 +212,8 @@ void DropShortcutContainer::mousePressed(MouseEvent &event)
         if (!inv)
             return;
 
-        Item *const item = inv->findItem(dropShortcut->getItem(index),
-            dropShortcut->getItemColor(index));
+        Item *const item = inv->findItem(mShortcut->getItem(index),
+            mShortcut->getItemColor(index));
 
         if (popupMenu)
         {
@@ -223,13 +226,13 @@ void DropShortcutContainer::mousePressed(MouseEvent &event)
 
 void DropShortcutContainer::mouseReleased(MouseEvent &event)
 {
-    if (!dropShortcut)
+    if (!mShortcut)
         return;
 
     if (event.getButton() == MouseButton::LEFT)
     {
-        if (dropShortcut->isItemSelected())
-            dropShortcut->setItemSelected(-1);
+        if (mShortcut->isItemSelected())
+            mShortcut->setItemSelected(-1);
 
         const int index = getIndexFromGrid(event.getX(), event.getY());
         if (index == -1)
@@ -241,7 +244,7 @@ void DropShortcutContainer::mouseReleased(MouseEvent &event)
         {
             if (dragDrop.isSourceItemContainer())
             {
-                dropShortcut->setItems(index, dragDrop.getItem(),
+                mShortcut->setItems(index, dragDrop.getItem(),
                     dragDrop.getItemColor());
                 dragDrop.clear();
                 dragDrop.deselect();
@@ -255,7 +258,7 @@ void DropShortcutContainer::mouseReleased(MouseEvent &event)
 // Show ItemTooltip
 void DropShortcutContainer::mouseMoved(MouseEvent &event)
 {
-    if (!dropShortcut)
+    if (!mShortcut)
         return;
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -263,8 +266,8 @@ void DropShortcutContainer::mouseMoved(MouseEvent &event)
     if (index == -1)
         return;
 
-    const int itemId = dropShortcut->getItem(index);
-    const unsigned char itemColor = dropShortcut->getItemColor(index);
+    const int itemId = mShortcut->getItem(index);
+    const unsigned char itemColor = mShortcut->getItemColor(index);
 
     if (itemId < 0)
         return;
