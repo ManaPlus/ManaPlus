@@ -75,7 +75,7 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
     {
         return new OkDialog(header, message,
             // TRANSLATORS: ok dialog button
-            _("OK"),
+            _("Close"),
             DialogType::ERROR,
             modal, true, nullptr, 260);
     }

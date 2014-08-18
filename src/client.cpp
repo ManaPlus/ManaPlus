@@ -1384,7 +1384,7 @@ int Client::gameExec()
                     // TRANSLATORS: error dialog header
                     mCurrentDialog = new OkDialog(_("Error"), errorMessage,
                         // TRANSLATORS: ok dialog button
-                        _("OK"),
+                        _("Close"),
                         DialogType::ERROR,
                         true, true, nullptr, 260);
                     mCurrentDialog->addActionListener(&loginListener);
@@ -1398,7 +1398,7 @@ int Client::gameExec()
                     // TRANSLATORS: error dialog header
                     mCurrentDialog = new OkDialog(_("Error"), errorMessage,
                         // TRANSLATORS: ok dialog button
-                        _("OK"),
+                        _("Close"),
                         DialogType::ERROR,
                         true, true, nullptr, 260);
                     mCurrentDialog->addActionListener(&accountListener);
