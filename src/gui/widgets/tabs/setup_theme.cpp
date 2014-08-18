@@ -334,7 +334,8 @@ void Setup_Theme::apply()
     {
         // TRANSLATORS: theme message dialog
         new OkDialog(_("Theme Changed"), _("Restart your client for "
-            "the change to take effect."));
+            "the change to take effect."), DialogType::OK,
+            true, true, nullptr, 260);
     }
 
     config.setValue("selectedSkin", "");

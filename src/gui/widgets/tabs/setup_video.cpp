@@ -262,7 +262,8 @@ void Setup_Video::apply()
         // TRANSLATORS: video settings warning
         new OkDialog(_("Changing to OpenGL"),
             // TRANSLATORS: video settings warning
-            _("Applying change to OpenGL requires restart."));
+            _("Applying change to OpenGL requires restart."),
+            DialogType::OK, true, true, nullptr, 260);
     }
 
     mFps = mFpsCheckBox->isSelected() ?

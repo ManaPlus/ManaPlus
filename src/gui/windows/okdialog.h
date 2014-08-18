@@ -49,11 +49,11 @@ class OkDialog final : public Window,
          */
         OkDialog(const std::string &restrict title,
                  const std::string &restrict msg,
-                 const int soundEvent = DialogType::OK,
-                 const bool modal = true,
-                 const bool showCenter = true,
-                 Window *const parent = nullptr,
-                 const int minWidth = 260);
+                 const int soundEvent,
+                 const bool modal,
+                 const bool showCenter,
+                 Window *const parent,
+                 const int minWidth);
 
         A_DELETE_COPY(OkDialog)
 

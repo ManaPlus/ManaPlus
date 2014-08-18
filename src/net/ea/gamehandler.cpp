@@ -90,7 +90,7 @@ void GameHandler::processMapQuitResponse(Net::MessageIn &msg) const
     if (msg.readUInt8())
     {
         new OkDialog(_("Game"), _("Request to quit denied!"),
-            DialogType::ERROR);
+            DialogType::ERROR, true, true, nullptr, 260);
     }
 }
 

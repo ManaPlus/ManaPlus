@@ -150,7 +150,8 @@ void Setup_Input::apply()
             // TRANSLATORS: input settings error
             strprintf(_("Conflict \"%s\" and \"%s\" keys. "
             "Resolve them, or gameplay may result in strange behaviour."),
-            gettext(str1.c_str()), gettext(str2.c_str())), DialogType::ERROR);
+            gettext(str1.c_str()), gettext(str2.c_str())), DialogType::ERROR,
+            true, true, nullptr, 260);
     }
     keyboard.setEnabled(true);
     inputManager.store();

@@ -418,7 +418,7 @@ void GameModifiers::changeAwayMode()
         // TRANSLATORS: away message box header
         OkDialog *const dialog = new OkDialog(_("Away"),
             config.getStringValue("afkMessage"),
-            DialogType::SILENCE, true, false);
+            DialogType::SILENCE, true, false, nullptr, 260);
         localPlayer->setAwayDialog(dialog);
         dialog->addActionListener(localPlayer->getAwayListener());
         soundManager.volumeOff();

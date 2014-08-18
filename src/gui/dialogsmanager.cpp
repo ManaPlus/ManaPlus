@@ -73,7 +73,8 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
 {
     if (settings.supportUrl.empty() || config.getBoolValue("hidesupport"))
     {
-        return new OkDialog(header, message, DialogType::ERROR, modal);
+        return new OkDialog(header, message, DialogType::ERROR,
+            modal, true, nullptr, 260);
     }
     else
     {

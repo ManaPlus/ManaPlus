@@ -1342,8 +1342,8 @@ static int uploadUpdate(void *ptr,
             else
             {
                 // TRANSLATORS: file uploaded message
-                new OkDialog(_("File uploaded"), str,
-                    DialogType::OK, true, false);
+                new OkDialog(_("File uploaded"), str, DialogType::OK,
+                    true, false, nullptr, 260);
             }
         }
     }
