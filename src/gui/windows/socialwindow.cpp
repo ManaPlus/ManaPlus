@@ -496,7 +496,10 @@ void SocialWindow::showPartyCreate()
         // TRANSLATORS: party creation message
         new OkDialog(_("Create Party"),
             _("Cannot create party. You are already in a party"),
-            DialogType::ERROR, true, true, this, 260);
+            // TRANSLATORS: ok dialog button
+            _("OK"),
+            DialogType::ERROR,
+            true, true, this, 260);
         return;
     }
 

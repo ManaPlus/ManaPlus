@@ -1382,8 +1382,10 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_LOGIN_ERROR")
                     logger->log1("State: LOGIN ERROR");
                     // TRANSLATORS: error dialog header
-                    mCurrentDialog = new OkDialog(_("Error"),
-                        errorMessage, DialogType::ERROR,
+                    mCurrentDialog = new OkDialog(_("Error"), errorMessage,
+                        // TRANSLATORS: ok dialog button
+                        _("OK"),
+                        DialogType::ERROR,
                         true, true, nullptr, 260);
                     mCurrentDialog->addActionListener(&loginListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
@@ -1394,8 +1396,10 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_ACCOUNTCHANGE_ERROR")
                     logger->log1("State: ACCOUNT CHANGE ERROR");
                     // TRANSLATORS: error dialog header
-                    mCurrentDialog = new OkDialog(_("Error"),
-                        errorMessage, DialogType::ERROR,
+                    mCurrentDialog = new OkDialog(_("Error"), errorMessage,
+                        // TRANSLATORS: ok dialog button
+                        _("OK"),
+                        DialogType::ERROR,
                         true, true, nullptr, 260);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
@@ -1451,6 +1455,8 @@ int Client::gameExec()
                     mCurrentDialog = new OkDialog(_("Password Change"),
                         // TRANSLATORS: password change message text
                         _("Password changed successfully!"),
+                        // TRANSLATORS: ok dialog button
+                        _("OK"),
                         DialogType::ERROR, true, true, nullptr, 260);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
@@ -1475,7 +1481,10 @@ int Client::gameExec()
                     // TRANSLATORS: email change message header
                     mCurrentDialog = new OkDialog(_("Email Change"),
                         // TRANSLATORS: email change message text
-                        _("Email changed successfully!"), DialogType::ERROR,
+                        _("Email changed successfully!"),
+                        // TRANSLATORS: ok dialog button
+                        _("OK"),
+                        DialogType::ERROR,
                         true, true, nullptr, 260);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself

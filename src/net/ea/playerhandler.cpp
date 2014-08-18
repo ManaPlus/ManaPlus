@@ -273,7 +273,10 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
                         // TRANSLATORS: weight message
                         _("You are carrying more than "
                         "half your weight. You are "
-                        "unable to regain health."), DialogType::OK,
+                        "unable to regain health."),
+                        // TRANSLATORS: ok dialog button
+                        _("OK"),
+                        DialogType::OK,
                         false, true, nullptr, 260);
                     weightNotice->addActionListener(
                         &weightListener);
@@ -286,7 +289,10 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
                         // TRANSLATORS: weight message
                         _("You are carrying less than "
                         "half your weight. You "
-                        "can regain health."), DialogType::OK,
+                        "can regain health."),
+                        // TRANSLATORS: ok dialog button
+                        _("OK"),
+                        DialogType::OK,
                         false, true, nullptr, 260);
                     weightNotice->addActionListener(
                         &weightListener);
@@ -368,7 +374,10 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
     {
         // TRANSLATORS: message header
         deathNotice = new OkDialog(_("Message"),
-            DeadDB::getRandomString(), DialogType::OK,
+            DeadDB::getRandomString(),
+            // TRANSLATORS: ok dialog button
+            _("OK"),
+            DialogType::OK,
             false, true, nullptr, 260);
         deathNotice->addActionListener(&deathListener);
         if (localPlayer->getCurrentAction() != BeingAction::DEAD)

@@ -244,7 +244,8 @@ void RegisterDialog::action(const ActionEvent &event)
 
             OkDialog *const dlg = new OkDialog(
                 // TRANSLATORS: error message
-                _("Error"), errorMsg, DialogType::ERROR,
+                _("Error"), errorMsg, _("OK"),
+                DialogType::ERROR,
                 true, true, nullptr, 260);
             dlg->addActionListener(mWrongDataNoticeListener);
         }

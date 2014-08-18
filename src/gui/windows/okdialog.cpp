@@ -30,8 +30,6 @@
 
 #include "gui/fonts/font.h"
 
-#include "utils/gettext.h"
-
 #include "debug.h"
 
 OkDialog *weightNotice = nullptr;
@@ -39,6 +37,7 @@ OkDialog *deathNotice = nullptr;
 
 OkDialog::OkDialog(const std::string &restrict title,
                    const std::string &restrict msg,
+                   const std::string &restrict button,
                    const int soundEvent, const bool modal,
                    const bool showCenter, Window *const parent,
                    const int minWidth) :
@@ -51,7 +50,7 @@ OkDialog::OkDialog(const std::string &restrict title,
     mTextBox->setTextWrapped(msg, minWidth);
 
     // TRANSLATORS: ok dialog button
-    Button *const okButton = new Button(this, _("OK"), "ok", this);
+    Button *const okButton = new Button(this, button, "ok", this);
 
     int width = getFont()->getWidth(title);
     if (width < mTextBox->getMinWidth())

@@ -240,7 +240,10 @@ void CharSelectDialog::action(const ActionEvent &event)
                 character->data.mAttributes[Attributes::EXP]),
                 Units::formatCurrency(
                 character->data.mAttributes[Attributes::MONEY]).c_str());
-            new OkDialog(data->getName(), msg, DialogType::SILENCE,
+            new OkDialog(data->getName(), msg,
+                // TRANSLATORS: ok dialog button
+                _("OK"),
+                DialogType::SILENCE,
                 true, true, nullptr, 260);
         }
     }
@@ -274,7 +277,10 @@ void CharSelectDialog::action(const ActionEvent &event)
         {
             // TRANSLATORS: error message
             new OkDialog(_("Error"), _("Incorrect password"),
-                DialogType::ERROR, true, true, nullptr, 260);
+                // TRANSLATORS: ok dialog button
+                _("OK"),
+                DialogType::ERROR,
+                true, true, nullptr, 260);
         }
         mDeleteIndex = -1;
     }

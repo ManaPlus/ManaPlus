@@ -242,7 +242,11 @@ void Setup_Video::apply()
             // TRANSLATORS: video settings warning
             new OkDialog(_("Switching to Full Screen"),
                 // TRANSLATORS: video settings warning
-                _("Restart needed for changes to take effect."));
+                _("Restart needed for changes to take effect."),
+                // TRANSLATORS: ok dialog button
+                _("OK"),
+                DialogType::OK,
+                true, true, nullptr, 260);
         }
 #endif
         config.setValue("screen", fullscreen);
@@ -263,7 +267,10 @@ void Setup_Video::apply()
         new OkDialog(_("Changing to OpenGL"),
             // TRANSLATORS: video settings warning
             _("Applying change to OpenGL requires restart."),
-            DialogType::OK, true, true, nullptr, 260);
+            // TRANSLATORS: ok dialog button
+            _("OK"),
+            DialogType::OK,
+            true, true, nullptr, 260);
     }
 
     mFps = mFpsCheckBox->isSelected() ?
@@ -374,7 +381,11 @@ void Setup_Video::action(const ActionEvent &event)
                         // TRANSLATORS: video settings warning
                        _("Restart your client for the change to take effect.")
                        + std::string("\n") + _("Some windows may be moved to "
-                        "fit the lowered resolution."));
+                        "fit the lowered resolution."),
+                        // TRANSLATORS: ok dialog button
+                        _("OK"),
+                        DialogType::OK,
+                        true, true, nullptr, 260);
                 }
                 else
                 {
@@ -382,7 +393,11 @@ void Setup_Video::action(const ActionEvent &event)
                     new OkDialog(_("Screen Resolution Changed"),
                         // TRANSLATORS: video settings warning
                         _("Restart your client for the change"
-                        " to take effect."));
+                        " to take effect."),
+                        // TRANSLATORS: ok dialog button
+                        _("OK"),
+                        DialogType::OK,
+                        true, true, nullptr, 260);
                 }
             }
 #else

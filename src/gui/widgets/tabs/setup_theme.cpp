@@ -306,7 +306,10 @@ void Setup_Theme::action(const ActionEvent &event)
     else if (eventId == ACTION_INFO)
     {
         // TRANSLATORS: theme info dialog header
-        new OkDialog(_("Theme info"), mThemeInfo, DialogType::OK,
+        new OkDialog(_("Theme info"), mThemeInfo,
+            // TRANSLATORS: ok dialog button
+            _("OK"),
+            DialogType::OK,
             false, true, nullptr, 600);
     }
 }
@@ -334,7 +337,10 @@ void Setup_Theme::apply()
     {
         // TRANSLATORS: theme message dialog
         new OkDialog(_("Theme Changed"), _("Restart your client for "
-            "the change to take effect."), DialogType::OK,
+            "the change to take effect."),
+            // TRANSLATORS: ok dialog button
+            _("OK"),
+            DialogType::OK,
             true, true, nullptr, 260);
     }
 
