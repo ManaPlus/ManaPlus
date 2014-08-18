@@ -87,6 +87,10 @@ GraphicsManager graphicsManager;
 
 RenderType openGLMode = RENDER_SOFTWARE;
 
+#define useCompression(name) \
+    OpenGLImageHelper::setInternalTextureType(name); \
+    logger->log("using " #name " texture compression");
+
 const int densitySize = 6;
 
 const std::string densityNames[] =
@@ -666,9 +670,7 @@ void GraphicsManager::updateTextureFormat() const
                         if (compressionFormat == 1)
                         {
                             delete []formats;
-                            OpenGLImageHelper::setInternalTextureType(
-                                GL_COMPRESSED_RGBA_S3TC_DXT5_EXT);
-                            logger->log1("using s3tc texture compression");
+                            useCompression(GL_COMPRESSED_RGBA_S3TC_DXT5_EXT);
                             return;
                         }
                         break;
@@ -676,9 +678,7 @@ void GraphicsManager::updateTextureFormat() const
                         if (compressionFormat == 2)
                         {
                             delete []formats;
-                            OpenGLImageHelper::setInternalTextureType(
-                                GL_COMPRESSED_RGBA_FXT1_3DFX);
-                            logger->log1("using fxt1 texture compression");
+                            useCompression(GL_COMPRESSED_RGBA_FXT1_3DFX);
                             return;
                         }
                         break;
@@ -686,9 +686,7 @@ void GraphicsManager::updateTextureFormat() const
                         if (compressionFormat == 4)
                         {
                             delete []formats;
-                            OpenGLImageHelper::setInternalTextureType(
-                                GL_COMPRESSED_RGBA_BPTC_UNORM_ARB);
-                            logger->log1("using bptc texture compression");
+                            useCompression(GL_COMPRESSED_RGBA_BPTC_UNORM_ARB);
                             return;
                         }
                         break;
@@ -699,9 +697,7 @@ void GraphicsManager::updateTextureFormat() const
             delete []formats;
             if (compressionFormat == 3)
             {
-                OpenGLImageHelper::setInternalTextureType(
-                    GL_COMPRESSED_RGBA_ARB);
-                logger->log1("using ARB texture compression");
+                useCompression(GL_COMPRESSED_RGBA_ARB);
                 return;
             }
 
@@ -709,9 +705,7 @@ void GraphicsManager::updateTextureFormat() const
             if (compressionFormat == 4
                 && supportExtension("GL_ARB_texture_compression_bptc"))
             {
-                OpenGLImageHelper::setInternalTextureType(
-                    GL_COMPRESSED_RGBA_BPTC_UNORM_ARB);
-                logger->log1("using bptc texture compression");
+                useCompression(GL_COMPRESSED_RGBA_BPTC_UNORM_ARB);
                 return;
             }
         }
