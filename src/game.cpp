@@ -84,10 +84,10 @@
 
 #include "gui/widgets/tabs/battletab.h"
 
-#include "gui/widgets/dropshortcutcontainer.h"
 #include "gui/widgets/emoteshortcutcontainer.h"
 #include "gui/widgets/itemshortcutcontainer.h"
 #include "gui/widgets/spellshortcutcontainer.h"
+#include "gui/widgets/virtshortcutcontainer.h"
 
 #include "gui/widgets/tabs/gmtab.h"
 #include "gui/widgets/tabs/langtab.h"
@@ -213,7 +213,7 @@ static void createGuiWindows()
         130, 480);
     outfitWindow = new OutfitWindow();
     dropShortcutWindow = new ShortcutWindow("DropShortcut",
-        new DropShortcutContainer(nullptr, dropShortcut),
+        new VirtShortcutContainer(nullptr, dropShortcut),
         "drops.xml");
 
     spellShortcutWindow = new ShortcutWindow("SpellShortcut", "spells.xml",

@@ -20,10 +20,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/dropshortcutcontainer.h"
+#include "gui/widgets/virtshortcutcontainer.h"
 
 #include "dragdrop.h"
-#include "dropshortcut.h"
 #include "shortcutbase.h"
 #include "settings.h"
 
@@ -46,7 +45,7 @@
 
 #include "debug.h"
 
-DropShortcutContainer::DropShortcutContainer(Widget2 *const widget,
+VirtShortcutContainer::VirtShortcutContainer(Widget2 *const widget,
                                              ShortcutBase *const shortcut) :
     ShortcutContainer(widget),
     mItemClicked(false),
@@ -62,11 +61,11 @@ DropShortcutContainer::DropShortcutContainer(Widget2 *const widget,
         mMaxItems = 0;
 }
 
-DropShortcutContainer::~DropShortcutContainer()
+VirtShortcutContainer::~VirtShortcutContainer()
 {
 }
 
-void DropShortcutContainer::setWidget2(const Widget2 *const widget)
+void VirtShortcutContainer::setWidget2(const Widget2 *const widget)
 {
     Widget2::setWidget2(widget);
     mEquipedColor = getThemeColor(Theme::ITEM_EQUIPPED);
@@ -75,12 +74,12 @@ void DropShortcutContainer::setWidget2(const Widget2 *const widget)
     mUnEquipedColor2 = getThemeColor(Theme::ITEM_NOT_EQUIPPED_OUTLINE);
 }
 
-void DropShortcutContainer::draw(Graphics *graphics)
+void VirtShortcutContainer::draw(Graphics *graphics)
 {
     if (!mShortcut)
         return;
 
-    BLOCK_START("DropShortcutContainer::draw")
+    BLOCK_START("VirtShortcutContainer::draw")
     if (settings.guiAlpha != mAlpha)
     {
         mAlpha = settings.guiAlpha;
@@ -93,7 +92,7 @@ void DropShortcutContainer::draw(Graphics *graphics)
     const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
     {
-        BLOCK_END("DropShortcutContainer::draw")
+        BLOCK_END("VirtShortcutContainer::draw")
         return;
     }
 
@@ -135,10 +134,10 @@ void DropShortcutContainer::draw(Graphics *graphics)
             }
         }
     }
-    BLOCK_END("DropShortcutContainer::draw")
+    BLOCK_END("VirtShortcutContainer::draw")
 }
 
-void DropShortcutContainer::mouseDragged(MouseEvent &event)
+void VirtShortcutContainer::mouseDragged(MouseEvent &event)
 {
     if (!mShortcut)
         return;
@@ -177,7 +176,7 @@ void DropShortcutContainer::mouseDragged(MouseEvent &event)
     }
 }
 
-void DropShortcutContainer::mousePressed(MouseEvent &event)
+void VirtShortcutContainer::mousePressed(MouseEvent &event)
 {
     if (!mShortcut || !inventoryWindow)
         return;
@@ -224,7 +223,7 @@ void DropShortcutContainer::mousePressed(MouseEvent &event)
     }
 }
 
-void DropShortcutContainer::mouseReleased(MouseEvent &event)
+void VirtShortcutContainer::mouseReleased(MouseEvent &event)
 {
     if (!mShortcut)
         return;
@@ -256,7 +255,7 @@ void DropShortcutContainer::mouseReleased(MouseEvent &event)
 }
 
 // Show ItemTooltip
-void DropShortcutContainer::mouseMoved(MouseEvent &event)
+void VirtShortcutContainer::mouseMoved(MouseEvent &event)
 {
     if (!mShortcut)
         return;
@@ -289,13 +288,13 @@ void DropShortcutContainer::mouseMoved(MouseEvent &event)
     }
 }
 
-void DropShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
+void VirtShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
     if (itemPopup)
         itemPopup->setVisible(false);
 }
 
-void DropShortcutContainer::widgetHidden(const Event &event A_UNUSED)
+void VirtShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
     if (itemPopup)
         itemPopup->setVisible(false);

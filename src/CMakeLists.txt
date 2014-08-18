@@ -175,8 +175,8 @@ SET(SRCS
     gui/widgets/itemcontainer.h
     gui/widgets/itemlinkhandler.cpp
     gui/widgets/itemlinkhandler.h
-    gui/widgets/dropshortcutcontainer.cpp
-    gui/widgets/dropshortcutcontainer.h
+    gui/widgets/virtshortcutcontainer.cpp
+    gui/widgets/virtshortcutcontainer.h
     gui/widgets/emotepage.cpp
     gui/widgets/emotepage.h
     gui/widgets/itemshortcutcontainer.cpp

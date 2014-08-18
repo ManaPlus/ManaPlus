@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_DROPSHORTCUTCONTAINER_H
-#define GUI_WIDGETS_DROPSHORTCUTCONTAINER_H
+#ifndef GUI_WIDGETS_VIRTSHORTCUTCONTAINER_H
+#define GUI_WIDGETS_VIRTSHORTCUTCONTAINER_H
 
 #include "gui/widgets/shortcutcontainer.h"
 
@@ -33,21 +33,21 @@ class ShortcutBase;
  *
  * \ingroup GUI
  */
-class DropShortcutContainer final : public ShortcutContainer
+class VirtShortcutContainer final : public ShortcutContainer
 {
     public:
         /**
          * Constructor. Initializes the graphic.
          */
-        DropShortcutContainer(Widget2 *const widget,
+        VirtShortcutContainer(Widget2 *const widget,
                               ShortcutBase *const shortcut);
 
-        A_DELETE_COPY(DropShortcutContainer)
+        A_DELETE_COPY(VirtShortcutContainer)
 
         /**
          * Destructor.
          */
-        ~DropShortcutContainer();
+        ~VirtShortcutContainer();
 
         /**
          * Draws the items.
@@ -88,4 +88,4 @@ class DropShortcutContainer final : public ShortcutContainer
         ShortcutBase *mShortcut;
 };
 
-#endif  // GUI_WIDGETS_DROPSHORTCUTCONTAINER_H
+#endif  // GUI_WIDGETS_VIRTSHORTCUTCONTAINER_H
