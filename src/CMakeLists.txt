@@ -17,6 +17,9 @@ ENDIF()
 SET(FLAGS "-DPACKAGE_VERSION=\\\"${VERSION}\\\"")
 SET(FLAGS "${FLAGS} -DPKG_DATADIR=\\\"${PKG_DATADIR}/\\\"")
 SET(FLAGS "${FLAGS} -DLOCALEDIR=\\\"${LOCALEDIR}/\\\"")
+SET(DYEFLAGS "-DPACKAGE_VERSION=\\\"${VERSION}\\\" -DDYECMD")
+SET(DYEFLAGS "${DYEFLAGS} -DPKG_DATADIR=\\\"${PKG_DATADIR}/\\\"")
+SET(DYEFLAGS "${DYEFLAGS} -DLOCALEDIR=\\\"${LOCALEDIR}/\\\"")
 
 IF (ENABLE_NLS)
     SET(FLAGS "${FLAGS} -DENABLE_NLS=1")
@@ -31,6 +34,7 @@ IF (CMAKE_BUILD_TYPE)
     IF(CMAKE_BUILD_TYPE_TOLOWER MATCHES debug OR
        CMAKE_BUILD_TYPE_TOLOWER MATCHES relwithdebinfo)
         SET(FLAGS "${FLAGS} -DDEBUG")
+        SET(DYEFLAGS "${DYEFLAGS} -DDEBUG")
     ENDIF()
 ENDIF()
 
@@ -1054,6 +1058,126 @@ SET(SRCS
     gui/widgets/basiccontainer2.cpp
     )
 
+SET(DYECMD_SRCS
+    gui/cliprect.cpp
+    gui/color.cpp
+    gui/rect.cpp
+    events/actionevent.h
+    gui/cliprect.h
+    gui/color.h
+    events/event.h
+    gui/rect.h
+    dyetool/dyemain.cpp
+    animatedsprite.cpp
+    animatedsprite.h
+    animationdelayload.cpp
+    animationdelayload.h
+    configuration.cpp
+    configuration.h
+    graphicsmanager.cpp
+    graphicsmanager.h
+    graphicsvertexes.cpp
+    graphicsvertexes.h
+    logger.cpp
+    logger.h
+    navigationmanager.cpp
+    navigationmanager.h
+    settings.cpp
+    settings.h
+    resources/map/walklayer.cpp
+    resources/map/walklayer.h
+    render/graphics.cpp
+    render/graphics.h
+    render/renderers.cpp
+    render/renderers.h
+    render/sdl2softwaregraphics.cpp
+    render/sdl2softwaregraphics.h
+    render/sdl2graphics.cpp
+    render/sdl2graphics.h
+    render/sdlgraphics.cpp
+    render/sdlgraphics.h
+    render/softwaregraphicsdef.hpp
+    render/mgltypes.h
+    resources/action.cpp
+    resources/action.h
+    resources/animation.cpp
+    resources/animation.h
+    resources/db/palettedb.cpp
+    resources/db/palettedb.h
+    resources/delayedmanager.cpp
+    resources/delayedmanager.h
+    resources/dye.cpp
+    resources/dye.h
+    resources/dyepalette.cpp
+    resources/dyepalette.h
+    resources/effectdescription.h
+    resources/emoteinfo.h
+    resources/emotesprite.h
+    resources/image.cpp
+    resources/image.h
+    resources/imagehelper.cpp
+    resources/imagehelper.h
+    resources/imagerect.h
+    resources/imageset.cpp
+    resources/imageset.h
+    resources/imagewriter.cpp
+    resources/imagewriter.h
+    resources/resource.cpp
+    resources/resource.h
+    resources/resourcemanager.cpp
+    resources/resourcemanager.h
+    resources/sdl2softwareimagehelper.cpp
+    resources/sdl2softwareimagehelper.h
+    resources/sdl2imagehelper.cpp
+    resources/sdl2imagehelper.h
+    resources/sdlimagehelper.cpp
+    resources/sdlimagehelper.h
+    resources/sdlmusic.cpp
+    resources/sdlmusic.h
+    resources/skillconsts.h
+    resources/soundeffect.cpp
+    resources/soundeffect.h
+    resources/subimage.cpp
+    resources/subimage.h
+    resources/surfaceimagehelper.cpp
+    resources/surfaceimagehelper.h
+    resources/textureatlas.h
+    resources/updatefile.h
+    resources/spritedef.cpp
+    resources/spritedef.h
+    resources/spritedisplay.h
+    resources/spritereference.h
+    utils/files.cpp
+    utils/files.h
+    utils/mkdir.cpp
+    utils/mkdir.h
+    utils/paths.cpp
+    utils/paths.h
+    utils/perfomance.cpp
+    utils/perfomance.h
+    utils/physfsrwops.cpp
+    utils/physfsrwops.h
+    utils/physfstools.cpp
+    utils/physfstools.h
+    utils/sdl2helper.cpp
+    utils/sdl2helper.h
+    utils/sdlcheckutils.cpp
+    utils/sdlcheckutils.h
+    utils/sdlhelper.cpp
+    utils/sdlhelper.h
+    utils/sdlmemoryobject.h
+    utils/stringutils.cpp
+    utils/stringutils.h
+    utils/timer.cpp
+    utils/timer.h
+    utils/xml.cpp
+    utils/xml.h
+    utils/xmlutils.cpp
+    utils/xmlutils.h
+    utils/translation/podict.cpp
+    utils/translation/podict.h
+)
+
 SET(SRCS_EVOL
     net/ea/gui/guildtab.cpp
     net/ea/gui/guildtab.h
@@ -1209,13 +1333,15 @@ IF (WIN32)
     )
 ENDIF ()
 
-SET (PROGRAMS manaplus)
+SET (PROGRAMS manaplus dyecmd)
 
 IF (ENABLE_EATHENA)
     ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_EATHENA} ${SRCS_TMWA} ${SRCS_EVOL})
 ELSE(ENABLE_EATHENA)
     ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_TMWA} ${SRCS_EVOL})
 ENDIF(ENABLE_EATHENA)
+
+ADD_EXECUTABLE(dyecmd WIN32 ${DYECMD_SRCS})
 
 TARGET_LINK_LIBRARIES(manaplus
     ${SDLGFX_LIBRARIES}
@@ -1233,10 +1359,28 @@ TARGET_LINK_LIBRARIES(manaplus
     ${EXTRA_LIBRARIES})
 INSTALL(TARGETS manaplus RUNTIME DESTINATION ${PKG_BINDIR})
 
+TARGET_LINK_LIBRARIES(dyecmd
+    ${SDLGFX_LIBRARIES}
+    ${SDL_LIBRARY}
+    ${SDLIMAGE_LIBRARY}
+    ${SDLMIXER_LIBRARY}
+    ${SDLNET_LIBRARY}
+    ${SDLTTF_LIBRARY}
+    ${PNG_LIBRARIES}
+    ${PHYSFS_LIBRARY}
+    ${CURL_LIBRARIES}
+    ${LIBXML2_LIBRARIES}
+    ${OPENGL_LIBRARIES}
+    ${LIBINTL_LIBRARIES}
+    ${EXTRA_LIBRARIES})
+INSTALL(TARGETS dyecmd RUNTIME DESTINATION ${PKG_BINDIR})
+
 IF (CMAKE_SYSTEM_NAME STREQUAL SunOS)
     # we expect the SMCgtxt package to be present on Solaris;
     # the Solaris gettext is not API-compatible to GNU gettext
     SET_TARGET_PROPERTIES(manaplus PROPERTIES LINK_FLAGS "-L/usr/local/lib")
+    SET_TARGET_PROPERTIES(dyecmd PROPERTIES LINK_FLAGS "-L/usr/local/lib")
 ENDIF()
 
 SET_TARGET_PROPERTIES(manaplus PROPERTIES COMPILE_FLAGS "${FLAGS}")
+SET_TARGET_PROPERTIES(dyecmd PROPERTIES COMPILE_FLAGS "${DYEFLAGS}")
