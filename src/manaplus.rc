@@ -16,7 +16,7 @@ PRODUCTVERSION VER_MAJOR,VER_MINOR,VER_RELEASE,VER_BUILD
             VALUE "CompanyName", "The ManaPlus Development Team"
             VALUE "FileVersion", PACKAGE_VERSION "4144"
             VALUE "FileDescription", "ManaPlus"
-            VALUE "LegalCopyright", "2004-2012 (C)"
+            VALUE "LegalCopyright", "2004-2014 (C)"
             VALUE "OriginalFilename", "manaplus.exe"
             VALUE "ProductName", "ManaPlus MMORPG Client"
             VALUE "ProductVersion", PACKAGE_VERSION "4144"
