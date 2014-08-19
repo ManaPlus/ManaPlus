@@ -24,6 +24,8 @@
 
 #include "configuration.h"
 
+#include "input/inputmanager.h"
+
 #include "gui/gui.h"
 
 #include "gui/windows/didyouknowwindow.h"
@@ -97,14 +99,7 @@ HelpWindow::HelpWindow() :
 void HelpWindow::action(const ActionEvent &event)
 {
     if (event.getId() == "DYK")
-    {
-        if (didYouKnowWindow)
-        {
-            didYouKnowWindow->setVisible(!didYouKnowWindow->isWindowVisible());
-            if (didYouKnowWindow->isWindowVisible())
-                didYouKnowWindow->requestMoveToTop();
-        }
-    }
+        inputManager.executeAction(InputAction::WINDOW_DIDYOUKNOW);
 }
 
 void HelpWindow::handleLink(const std::string &link,

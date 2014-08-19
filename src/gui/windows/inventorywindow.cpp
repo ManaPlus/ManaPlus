@@ -311,30 +311,15 @@ void InventoryWindow::action(const ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "outfit")
     {
-        if (outfitWindow)
-        {
-            outfitWindow->setVisible(!outfitWindow->isWindowVisible());
-            if (outfitWindow->isWindowVisible())
-                outfitWindow->requestMoveToTop();
-        }
+        inputManager.executeAction(InputAction::WINDOW_OUTFIT);
     }
     else if (eventId == "shop")
     {
-        if (shopWindow)
-        {
-            shopWindow->setVisible(!shopWindow->isWindowVisible());
-            if (shopWindow->isWindowVisible())
-                shopWindow->requestMoveToTop();
-        }
+        inputManager.executeAction(InputAction::WINDOW_SHOP);
     }
     else if (eventId == "equipment")
     {
-        if (equipmentWindow)
-        {
-            equipmentWindow->setVisible(!equipmentWindow->isWindowVisible());
-            if (equipmentWindow->isWindowVisible())
-                equipmentWindow->requestMoveToTop();
-        }
+        inputManager.executeAction(InputAction::WINDOW_EQUIPMENT);
     }
     else if (eventId == "close")
     {
