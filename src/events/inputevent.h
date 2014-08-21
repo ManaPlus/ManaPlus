@@ -26,6 +26,8 @@
 
 #include "localconsts.h"
 
+class ChatTab;
+
 typedef std::vector<int> KeysVector;
 typedef KeysVector::iterator KeysVectorIter;
 typedef KeysVector::const_iterator KeysVectorCIter;
@@ -42,12 +44,22 @@ typedef KeyTimeMap::iterator KeyTimeMapIter;
 struct InputEvent final
 {
     InputEvent(const int action0, const int mask0) :
+        args(),
+        tab(nullptr),
         action(action0),
         mask(mask0)
     { }
 
-    int action;
+    InputEvent(const std::string &args0, ChatTab *const tab0) :
+        args(args0),
+        tab(tab),
+        action(-1),
+        mask(0)
+    { }
 
+    std::string args;
+    ChatTab *tab;
+    int action;
     int mask;
 };
 
