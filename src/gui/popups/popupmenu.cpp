@@ -623,6 +623,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
     mTab = tab;
     mX = x;
     mY = y;
+    mWindow = chatWindow;
 
     mBrowserBox->clearRows();
 
@@ -807,6 +808,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             mBrowserBox->addRow("##3---");
         }
     }
+    addWindowMenu(chatWindow);
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
