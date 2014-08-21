@@ -27,6 +27,7 @@
 
 #include "actions/actions.h"
 #include "actions/chat.h"
+#include "actions/move.h"
 #include "actions/windows.h"
 
 #include "input/inputaction.h"

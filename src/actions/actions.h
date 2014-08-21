@@ -27,14 +27,8 @@ struct InputEvent;
 
 namespace Actions
 {
-    decHandler(moveUp);
-    decHandler(moveDown);
-    decHandler(moveLeft);
-    decHandler(moveRight);
-    decHandler(moveForward);
     decHandler(emote);
     decHandler(outfit);
-    decHandler(moveToPoint);
     decHandler(mouseClick);
     decHandler(ok);
     decHandler(shortcut);
@@ -45,12 +39,9 @@ namespace Actions
     decHandler(dropItem);
     decHandler(switchQuickDrop);
     decHandler(heal);
-    decHandler(crazyMoves);
     decHandler(itenplz);
     decHandler(changeCrazyMove);
     decHandler(changePickupType);
-    decHandler(moveToTarget);
-    decHandler(moveToHome);
     decHandler(setHome);
     decHandler(changeMoveType);
     decHandler(changeAttackWeaponType);
@@ -72,10 +63,6 @@ namespace Actions
     decHandler(changeTrade);
     decHandler(screenshot);
     decHandler(ignoreInput);
-    decHandler(directUp);
-    decHandler(directDown);
-    decHandler(directLeft);
-    decHandler(directRight);
     decHandler(talk);
     decHandler(stopAttack);
     decHandler(untarget);

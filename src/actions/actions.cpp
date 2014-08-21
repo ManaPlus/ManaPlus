@@ -95,73 +95,6 @@ extern QuitDialog *quitDialog;
 namespace Actions
 {
 
-static bool closeMoveNpcDialog(bool focus)
-{
-    NpcDialog *const dialog = NpcDialog::getActive();
-    if (dialog)
-    {
-        if (dialog->isCloseState())
-        {
-            dialog->closeDialog();
-            return true;
-        }
-        else if (focus)
-        {
-            dialog->refocus();
-        }
-    }
-    return false;
-}
-
-impHandler(moveUp)
-{
-    if (inputManager.isActionActive(InputAction::EMOTE))
-        return directUp(event);
-    return closeMoveNpcDialog(false);
-}
-
-impHandler(moveDown)
-{
-    if (inputManager.isActionActive(InputAction::EMOTE))
-        return directDown(event);
-    return closeMoveNpcDialog(false);
-}
-
-impHandler(moveLeft)
-{
-    if (outfitWindow && inputManager.isActionActive(InputAction::WEAR_OUTFIT))
-    {
-        outfitWindow->wearPreviousOutfit();
-        if (Game::instance())
-            Game::instance()->setValidSpeed();
-        return true;
-    }
-    if (inputManager.isActionActive(InputAction::EMOTE))
-        return directLeft(event);
-    return closeMoveNpcDialog(false);
-}
-
-impHandler(moveRight)
-{
-    if (outfitWindow && inputManager.isActionActive(InputAction::WEAR_OUTFIT))
-    {
-        outfitWindow->wearNextOutfit();
-        if (Game::instance())
-            Game::instance()->setValidSpeed();
-        return true;
-    }
-    if (inputManager.isActionActive(InputAction::EMOTE))
-        return directRight(event);
-    return closeMoveNpcDialog(false);
-}
-
-impHandler(moveForward)
-{
-    if (inputManager.isActionActive(InputAction::EMOTE))
-        return directRight(event);
-    return closeMoveNpcDialog(false);
-}
-
 impHandler(emote)
 {
     const int emotion = 1 + event.action - InputAction::EMOTE_1;
@@ -171,18 +104,6 @@ impHandler(emote)
             emoteShortcut->useEmote(emotion);
         if (Game::instance())
             Game::instance()->setValidSpeed();
-        return true;
-    }
-
-    return false;
-}
-
-impHandler(moveToPoint)
-{
-    const int num = event.action - InputAction::MOVE_TO_POINT_1;
-    if (socialWindow && num >= 0)
-    {
-        socialWindow->selectPortal(num);
         return true;
     }
 
@@ -356,16 +277,6 @@ impHandler0(heal)
     return false;
 }
 
-impHandler0(crazyMoves)
-{
-    if (localPlayer)
-    {
-        localPlayer->crazyMove();
-        return true;
-    }
-    return false;
-}
-
 impHandler0(itenplz)
 {
     if (actorManager)
@@ -388,30 +299,6 @@ impHandler0(changeCrazyMove)
 impHandler0(changePickupType)
 {
     callYellowBar(changePickUpType);
-}
-
-impHandler0(moveToTarget)
-{
-    if (localPlayer && !inputManager.isActionActive(InputAction::TARGET_ATTACK)
-        && !inputManager.isActionActive(InputAction::ATTACK))
-    {
-        localPlayer->moveToTarget();
-        return true;
-    }
-    return false;
-}
-
-impHandler0(moveToHome)
-{
-    if (localPlayer && !inputManager.isActionActive(InputAction::TARGET_ATTACK)
-        && !inputManager.isActionActive(InputAction::ATTACK))
-    {
-        localPlayer->moveToHome();
-        if (Game::instance())
-            Game::instance()->setValidSpeed();
-        return true;
-    }
-    return false;
 }
 
 impHandler0(setHome)
@@ -605,87 +492,6 @@ impHandler0(screenshot)
 impHandler0(ignoreInput)
 {
     return true;
-}
-
-impHandler0(directUp)
-{
-    if (localPlayer)
-    {
-        if (localPlayer->getDirection() != BeingDirection::UP)
-        {
-//            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
-            {
-                localPlayer->setDirection(BeingDirection::UP);
-                if (Net::getPlayerHandler())
-                    Net::getPlayerHandler()->setDirection(BeingDirection::UP);
-            }
-        }
-        return true;
-    }
-    return false;
-}
-
-impHandler0(directDown)
-{
-    if (localPlayer)
-    {
-        if (localPlayer->getDirection() != BeingDirection::DOWN)
-        {
-//            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
-            {
-                localPlayer->setDirection(BeingDirection::DOWN);
-                if (Net::getPlayerHandler())
-                {
-                    Net::getPlayerHandler()->setDirection(
-                        BeingDirection::DOWN);
-                }
-            }
-        }
-        return true;
-    }
-    return false;
-}
-
-impHandler0(directLeft)
-{
-    if (localPlayer)
-    {
-        if (localPlayer->getDirection() != BeingDirection::LEFT)
-        {
-//            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
-            {
-                localPlayer->setDirection(BeingDirection::LEFT);
-                if (Net::getPlayerHandler())
-                {
-                    Net::getPlayerHandler()->setDirection(
-                        BeingDirection::LEFT);
-                }
-            }
-        }
-        return true;
-    }
-    return false;
-}
-
-impHandler0(directRight)
-{
-    if (localPlayer)
-    {
-        if (localPlayer->getDirection() != BeingDirection::RIGHT)
-        {
-//            if (PacketLimiter::limitPackets(PACKET_DIRECTION))
-            {
-                localPlayer->setDirection(BeingDirection::RIGHT);
-                if (Net::getPlayerHandler())
-                {
-                    Net::getPlayerHandler()->setDirection(
-                        BeingDirection::RIGHT);
-                }
-            }
-        }
-        return true;
-    }
-    return false;
 }
 
 impHandler0(talk)
