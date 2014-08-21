@@ -23,8 +23,9 @@
 #ifndef INPUT_INPUTACTIONMAP_H
 #define INPUT_INPUTACTIONMAP_H
 
-#include "actionmanager.h"
 #include "sdlshared.h"
+
+#include "actions/actions.h"
 
 #include "input/inputaction.h"
 #include "input/inputactiondata.h"

@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ACTIONMANAGER_H
-#define ACTIONMANAGER_H
+#ifndef ACTIONS_ACTIONS_H
+#define ACTIONS_ACTIONS_H
 
 #define decHandler(name) bool name(const InputEvent &event)
 
@@ -129,4 +129,4 @@ namespace ActionManager
 
 #undef decHandler
 
-#endif  // ACTIONMANAGER_H
+#endif  // ACTIONS_ACTIONS_H

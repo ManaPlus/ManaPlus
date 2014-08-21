@@ -713,8 +713,8 @@ SET(SRCS
     test/testlauncher.h
     test/testmain.cpp
     test/testmain.h
-    actionmanager.cpp
-    actionmanager.h
+    actions/actions.cpp
+    actions/actions.h
     being/actor.cpp
     being/actor.h
     being/actorsprite.cpp

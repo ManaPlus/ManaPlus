@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "actionmanager.h"
+#include "actions/actions.h"
 
 #include "actormanager.h"
 #include "dropshortcut.h"
