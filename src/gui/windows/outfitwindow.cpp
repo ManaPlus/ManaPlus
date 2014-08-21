@@ -426,7 +426,7 @@ void OutfitWindow::mousePressed(MouseEvent &event)
     const int index = getIndexFromGrid(event.getX(), event.getY());
     if (event.getButton() == MouseButton::RIGHT && popupMenu)
     {
-        popupMenu->showOutfitsPopup(viewport->mMouseX,
+        popupMenu->showOutfitsWindowPopup(viewport->mMouseX,
             viewport->mMouseY);
         event.consume();
         return;

@@ -565,7 +565,7 @@ void PopupMenu::showMapPopup(const int x, const int y,
     showPopup(x, y);
 }
 
-void PopupMenu::showOutfitsPopup(const int x, const int y)
+void PopupMenu::showOutfitsWindowPopup(const int x, const int y)
 {
     mX = x;
     mY = y;

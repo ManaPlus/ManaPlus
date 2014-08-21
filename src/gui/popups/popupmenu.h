@@ -103,7 +103,7 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showDropPopup(const int x, const int y, Item *const item);
 
-        void showOutfitsPopup(const int x, const int y);
+        void showOutfitsWindowPopup(const int x, const int y);
 
         void showSpellPopup(const int x, const int y, TextCommand *const cmd);
 
