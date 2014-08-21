@@ -716,6 +716,8 @@ SET(SRCS
     actions/actiondef.h
     actions/actions.cpp
     actions/actions.h
+    actions/chat.cpp
+    actions/chat.h
     actions/windows.cpp
     actions/windows.h
     being/actor.cpp

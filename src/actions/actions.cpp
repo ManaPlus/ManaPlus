@@ -268,41 +268,6 @@ impHandler(shortcut)
     return false;
 }
 
-impHandler0(toggleChat)
-{
-    return chatWindow ? chatWindow->requestChatFocus() : false;
-}
-
-impHandler0(prevChatTab)
-{
-    if (chatWindow)
-    {
-        chatWindow->prevTab();
-        return true;
-    }
-    return false;
-}
-
-impHandler0(nextChatTab)
-{
-    if (chatWindow)
-    {
-        chatWindow->nextTab();
-        return true;
-    }
-    return false;
-}
-
-impHandler0(closeChatTab)
-{
-    if (chatWindow)
-    {
-        chatWindow->closeTab();
-        return true;
-    }
-    return false;
-}
-
 impHandler0(prevSocialTab)
 {
     if (socialWindow)
@@ -318,26 +283,6 @@ impHandler0(nextSocialTab)
     if (socialWindow)
     {
         socialWindow->nextTab();
-        return true;
-    }
-    return false;
-}
-
-impHandler0(scrollChatUp)
-{
-    if (chatWindow && chatWindow->isWindowVisible())
-    {
-        chatWindow->scroll(-DEFAULT_CHAT_WINDOW_SCROLL);
-        return true;
-    }
-    return false;
-}
-
-impHandler0(scrollChatDown)
-{
-    if (chatWindow && chatWindow->isWindowVisible())
-    {
-        chatWindow->scroll(DEFAULT_CHAT_WINDOW_SCROLL);
         return true;
     }
     return false;

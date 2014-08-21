@@ -38,14 +38,8 @@ namespace Actions
     decHandler(mouseClick);
     decHandler(ok);
     decHandler(shortcut);
-    decHandler(toggleChat);
-    decHandler(prevChatTab);
-    decHandler(nextChatTab);
-    decHandler(closeChatTab);
     decHandler(prevSocialTab);
     decHandler(nextSocialTab);
-    decHandler(scrollChatUp);
-    decHandler(scrollChatDown);
     decHandler(quit);
     decHandler(dropItem0);
     decHandler(dropItem);
