@@ -66,6 +66,8 @@ class Minimap final : public Window, public ConfigListener
 
         void mouseReleased(MouseEvent &event) override final;
 
+        void mousePressed(MouseEvent &event) override final;
+
         void mouseExited(MouseEvent &event) override final;
 
         void screenToMap(int &x, int &y);

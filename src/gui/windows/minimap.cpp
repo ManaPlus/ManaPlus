@@ -436,6 +436,13 @@ void Minimap::draw(Graphics *graphics)
     BLOCK_END("Minimap::draw")
 }
 
+void Minimap::mousePressed(MouseEvent &event)
+{
+    if (event.getButton() == MouseButton::RIGHT)
+        return;
+    Window::mousePressed(event);
+}
+
 void Minimap::mouseReleased(MouseEvent &event)
 {
     Window::mouseReleased(event);
