@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ACTIONS_ACTIONS_H
-#define ACTIONS_ACTIONS_H
+#ifndef ACTIONS_TARGET_H
+#define ACTIONS_TARGET_H
 
 #define decHandler(name) bool name(const InputEvent &event)
 
@@ -27,35 +27,12 @@ struct InputEvent;
 
 namespace Actions
 {
-    decHandler(emote);
-    decHandler(outfit);
-    decHandler(mouseClick);
-    decHandler(ok);
-    decHandler(shortcut);
-    decHandler(quit);
-    decHandler(dropItem0);
-    decHandler(dropItem);
-    decHandler(heal);
-    decHandler(itenplz);
-    decHandler(setHome);
-    decHandler(magicAttack);
-    decHandler(copyEquippedToOutfit);
-    decHandler(pickup);
-    decHandler(sit);
-    decHandler(screenshot);
-    decHandler(ignoreInput);
-    decHandler(talk);
-    decHandler(stopAttack);
-    decHandler(untarget);
-    decHandler(attack);
-    decHandler(targetAttack);
-    decHandler(safeVideoMode);
-    decHandler(stopSit);
-    decHandler(showKeyboard);
-    decHandler(showWindows);
-    decHandler(openTrade);
+    decHandler(targetPlayer);
+    decHandler(targetMonster);
+    decHandler(targetClosestMonster);
+    decHandler(targetNPC);
 }  // namespace Actions
 
 #undef decHandler
 
-#endif  // ACTIONS_ACTIONS_H
+#endif  // ACTIONS_TARGET_H

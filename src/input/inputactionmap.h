@@ -30,6 +30,7 @@
 #include "actions/move.h"
 #include "actions/statusbar.h"
 #include "actions/tabs.h"
+#include "actions/target.h"
 #include "actions/windows.h"
 
 #include "input/inputaction.h"

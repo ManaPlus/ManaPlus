@@ -724,6 +724,8 @@ SET(SRCS
     actions/statusbar.h
     actions/tabs.cpp
     actions/tabs.h
+    actions/target.cpp
+    actions/target.h
     actions/windows.cpp
     actions/windows.h
     being/actor.cpp

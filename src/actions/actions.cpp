@@ -427,41 +427,6 @@ impHandler0(targetAttack)
     return false;
 }
 
-static bool setTarget(const ActorType::Type type, const bool allowSort)
-{
-    if (actorManager && localPlayer)
-    {
-        Being *const target = actorManager->findNearestLivingBeing(
-            localPlayer, 20, type, allowSort);
-
-        if (target && target != localPlayer->getTarget())
-            localPlayer->setTarget(target);
-
-        return true;
-    }
-    return false;
-}
-
-impHandler0(targetPlayer)
-{
-    return setTarget(ActorType::PLAYER, true);
-}
-
-impHandler0(targetMonster)
-{
-    return setTarget(ActorType::MONSTER, true);
-}
-
-impHandler0(targetClosestMonster)
-{
-    return setTarget(ActorType::MONSTER, false);
-}
-
-impHandler0(targetNPC)
-{
-    return setTarget(ActorType::NPC, true);
-}
-
 impHandler0(safeVideoMode)
 {
     if (mainGraphics)
