@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ACTIONS_ACTIONS_H
-#define ACTIONS_ACTIONS_H
+#ifndef ACTIONS_STATUSBAR_H
+#define ACTIONS_STATUSBAR_H
 
 #define decHandler(name) bool name(const InputEvent &event)
 
@@ -27,39 +27,25 @@ struct InputEvent;
 
 namespace Actions
 {
-    decHandler(emote);
-    decHandler(outfit);
-    decHandler(mouseClick);
-    decHandler(ok);
-    decHandler(shortcut);
-    decHandler(quit);
-    decHandler(dropItem0);
-    decHandler(dropItem);
-    decHandler(heal);
-    decHandler(itenplz);
-    decHandler(setHome);
-    decHandler(magicAttack);
-    decHandler(copyEquippedToOutfit);
-    decHandler(pickup);
-    decHandler(sit);
-    decHandler(screenshot);
-    decHandler(ignoreInput);
-    decHandler(talk);
-    decHandler(stopAttack);
-    decHandler(untarget);
-    decHandler(attack);
-    decHandler(targetAttack);
-    decHandler(targetPlayer);
-    decHandler(targetMonster);
-    decHandler(targetClosestMonster);
-    decHandler(targetNPC);
-    decHandler(safeVideoMode);
-    decHandler(stopSit);
-    decHandler(showKeyboard);
-    decHandler(showWindows);
-    decHandler(openTrade);
+    decHandler(switchQuickDrop);
+    decHandler(changeCrazyMove);
+    decHandler(changePickupType);
+    decHandler(changeMoveType);
+    decHandler(changeAttackWeaponType);
+    decHandler(changeAttackType);
+    decHandler(changeFollowMode);
+    decHandler(changeImitationMode);
+    decHandler(changeMagicAttackType);
+    decHandler(changePvpMode);
+    decHandler(changeMoveToTarget);
+    decHandler(changeGameModifier);
+    decHandler(changeAudio);
+    decHandler(away);
+    decHandler(camera);
+    decHandler(changeMapMode);
+    decHandler(changeTrade);
 }  // namespace Actions
 
 #undef decHandler
 
-#endif  // ACTIONS_ACTIONS_H
+#endif  // ACTIONS_STATUSBAR_H

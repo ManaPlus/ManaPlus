@@ -720,6 +720,8 @@ SET(SRCS
     actions/chat.h
     actions/move.cpp
     actions/move.h
+    actions/statusbar.cpp
+    actions/statusbar.h
     actions/tabs.cpp
     actions/tabs.h
     actions/windows.cpp

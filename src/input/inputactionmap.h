@@ -28,6 +28,7 @@
 #include "actions/actions.h"
 #include "actions/chat.h"
 #include "actions/move.h"
+#include "actions/statusbar.h"
 #include "actions/tabs.h"
 #include "actions/windows.h"
 

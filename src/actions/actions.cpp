@@ -228,11 +228,6 @@ impHandler0(dropItem)
     return false;
 }
 
-impHandler0(switchQuickDrop)
-{
-    callYellowBarCond(changeQuickDropCounter)
-}
-
 impHandler0(heal)
 {
     if (actorManager)
@@ -271,16 +266,6 @@ impHandler0(itenplz)
     return false;
 }
 
-impHandler0(changeCrazyMove)
-{
-    callYellowBar(changeCrazyMoveType);
-}
-
-impHandler0(changePickupType)
-{
-    callYellowBar(changePickUpType);
-}
-
 impHandler0(setHome)
 {
     if (localPlayer)
@@ -289,31 +274,6 @@ impHandler0(setHome)
         return true;
     }
     return false;
-}
-
-impHandler0(changeMoveType)
-{
-    callYellowBar(changeMoveType);
-}
-
-impHandler0(changeAttackWeaponType)
-{
-    callYellowBar(changeAttackWeaponType);
-}
-
-impHandler0(changeAttackType)
-{
-    callYellowBar(changeAttackType);
-}
-
-impHandler0(changeFollowMode)
-{
-    callYellowBar(changeFollowMode);
-}
-
-impHandler0(changeImitationMode)
-{
-    callYellowBar(changeImitationMode);
 }
 
 impHandler0(magicAttack)
@@ -326,69 +286,11 @@ impHandler0(magicAttack)
     return false;
 }
 
-impHandler0(changeMagicAttackType)
-{
-    callYellowBar(changeMagicAttackType);
-}
-
-impHandler0(changePvpMode)
-{
-    callYellowBar(changePvpAttackType);
-}
-
-impHandler0(changeMoveToTarget)
-{
-    callYellowBar(changeMoveToTargetType);
-}
-
 impHandler0(copyEquippedToOutfit)
 {
     if (outfitWindow)
     {
         outfitWindow->copyFromEquiped();
-        return true;
-    }
-    return false;
-}
-
-impHandler0(changeGameModifier)
-{
-    if (localPlayer)
-    {
-        GameModifiers::changeGameModifiers();
-        return true;
-    }
-    return false;
-}
-
-impHandler0(changeAudio)
-{
-    soundManager.changeAudio();
-    if (localPlayer)
-        localPlayer->updateMusic();
-    return true;
-}
-
-impHandler0(away)
-{
-    GameModifiers::changeAwayMode();
-    if (localPlayer)
-    {
-        localPlayer->updateStatus();
-        if (Game::instance())
-            Game::instance()->setValidSpeed();
-        return true;
-    }
-    return false;
-}
-
-impHandler0(camera)
-{
-    if (viewport)
-    {
-        viewport->toggleCameraMode();
-        if (Game::instance())
-            Game::instance()->setValidSpeed();
         return true;
     }
     return false;
@@ -420,47 +322,6 @@ impHandler0(sit)
         return true;
     }
     return false;
-}
-
-impHandler0(changeMapMode)
-{
-    if (viewport)
-        viewport->toggleMapDrawType();
-    UpdateStatusListener::distributeEvent();
-    if (Game::instance())
-    {
-        if (Map *const map = Game::instance()->getCurrentMap())
-            map->redrawMap();
-    }
-    return true;
-}
-
-impHandler0(changeTrade)
-{
-    unsigned int deflt = player_relations.getDefault();
-    if (deflt & PlayerRelation::TRADE)
-    {
-        if (localChatTab)
-        {
-            // TRANSLATORS: disable trades message
-            localChatTab->chatLog(_("Ignoring incoming trade requests"),
-                ChatMsgType::BY_SERVER);
-        }
-        deflt &= ~PlayerRelation::TRADE;
-    }
-    else
-    {
-        if (localChatTab)
-        {
-            // TRANSLATORS: enable trades message
-            localChatTab->chatLog(_("Accepting incoming trade requests"),
-                ChatMsgType::BY_SERVER);
-        }
-        deflt |= PlayerRelation::TRADE;
-    }
-
-    player_relations.setDefault(deflt);
-    return true;
 }
 
 impHandler0(screenshot)
