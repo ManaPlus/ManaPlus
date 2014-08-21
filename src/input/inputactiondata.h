@@ -27,7 +27,7 @@
 
 #include <string>
 
-typedef bool (*ActionFuncPtr) (const InputEvent &event);
+typedef bool (*ActionFuncPtr) (InputEvent &event);
 
 struct InputActionData final
 {

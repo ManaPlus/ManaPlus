@@ -26,9 +26,8 @@
 
 #include "input/inputmanager.h"
 
-#define decHandler(name) bool name(const InputEvent &event)
-#define impHandler(name) bool name(const InputEvent &event)
-#define impHandler0(name) bool name(const InputEvent &event A_UNUSED)
+#define impHandler(name) bool name(InputEvent &event)
+#define impHandler0(name) bool name(InputEvent &event A_UNUSED)
 
 #define callYellowBar(name) \
     GameModifiers::name(!inputManager.isActionActive( \

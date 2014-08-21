@@ -21,7 +21,7 @@
 #ifndef ACTIONS_WINDOWS_H
 #define ACTIONS_WINDOWS_H
 
-#define decHandler(name) bool name(const InputEvent &event)
+#define decHandler(name) bool name(InputEvent &event)
 
 struct InputEvent;
 
