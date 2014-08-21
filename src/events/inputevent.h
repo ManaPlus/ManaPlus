@@ -22,6 +22,7 @@
 #define EVENTS_INPUTEVENT_H
 
 #include <map>
+#include <string>
 #include <vector>
 
 #include "localconsts.h"
