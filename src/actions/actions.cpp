@@ -24,17 +24,15 @@
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
-#include "gamemodifiers.h"
 #include "itemshortcut.h"
-#include "settings.h"
 #include "soundmanager.h"
+
+#include "actions/actiondef.h"
 
 #include "being/attributes.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
-
-#include "input/inputmanager.h"
 
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
@@ -89,23 +87,6 @@
 #endif
 
 #include "debug.h"
-
-#define impHandler(name) bool name(const InputEvent &event)
-#define impHandler0(name) bool name(const InputEvent &event A_UNUSED)
-
-#define callYellowBar(name) \
-    GameModifiers::name(!inputManager.isActionActive( \
-        InputAction::STOP_ATTACK)); \
-    return true;
-
-#define callYellowBarCond(name) \
-    if (!settings.disableGameModifiers) \
-    { \
-        GameModifiers::name(!inputManager.isActionActive( \
-            InputAction::STOP_ATTACK)); \
-        return true; \
-    } \
-    return false;
 
 extern ShortcutWindow *spellShortcutWindow;
 extern std::string tradePartnerName;

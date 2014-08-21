@@ -831,6 +831,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      test/testlauncher.h \
 	      test/testmain.cpp \
 	      test/testmain.h \
+	      actions/actiondef.h \
 	      actions/actions.cpp \
 	      actions/actions.h \
 	      being/actor.cpp \
