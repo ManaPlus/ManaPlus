@@ -569,6 +569,7 @@ void PopupMenu::showOutfitsWindowPopup(const int x, const int y)
 {
     mX = x;
     mY = y;
+    mWindow = outfitWindow;
 
     mBrowserBox->clearRows();
 
@@ -578,6 +579,10 @@ void PopupMenu::showOutfitsWindowPopup(const int x, const int y)
     // TRANSLATORS: clear selected outfit
     mBrowserBox->addRow("clear outfit", _("Clear outfit"));
     mBrowserBox->addRow("##3---");
+
+    addWindowMenu(outfitWindow);
+    mBrowserBox->addRow("##3---");
+
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -860,6 +865,17 @@ void PopupMenu::showWindowPopup(Window *const window,
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(_("window"));
 
+    addWindowMenu(window);
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(x, y);
+}
+
+void PopupMenu::addWindowMenu(Window *const window)
+{
     if (window->getCloseButton())
     {
         // TRANSLATORS: popup menu item
@@ -882,12 +898,6 @@ void PopupMenu::showWindowPopup(Window *const window,
             mBrowserBox->addRow("window lock", _("Lock"));
         }
     }
-
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: close menu
-    mBrowserBox->addRow("cancel", _("Cancel"));
-
-    showPopup(x, y);
 }
 
 void PopupMenu::handleLink(const std::string &link,
