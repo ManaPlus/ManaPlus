@@ -25,7 +25,7 @@
 
 struct InputEvent;
 
-namespace ActionManager
+namespace Actions
 {
     decHandler(moveUp);
     decHandler(moveDown);
@@ -125,7 +125,7 @@ namespace ActionManager
     decHandler(didYouKnowWindowShow);
     decHandler(questsWindowShow);
     decHandler(updaterWindowShow);
-}  // namespace ActionManager
+}  // namespace Actions
 
 #undef decHandler
 

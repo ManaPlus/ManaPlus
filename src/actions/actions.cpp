@@ -111,7 +111,7 @@ extern ShortcutWindow *spellShortcutWindow;
 extern std::string tradePartnerName;
 extern QuitDialog *quitDialog;
 
-namespace ActionManager
+namespace Actions
 {
 
 static bool closeMoveNpcDialog(bool focus)
@@ -1187,4 +1187,4 @@ impHandler0(openTrade)
     return false;
 }
 
-}  // namespace ActionManager
+}  // namespace Actions
