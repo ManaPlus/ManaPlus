@@ -189,26 +189,6 @@ impHandler(shortcut)
     return false;
 }
 
-impHandler0(prevSocialTab)
-{
-    if (socialWindow)
-    {
-        socialWindow->prevTab();
-        return true;
-    }
-    return false;
-}
-
-impHandler0(nextSocialTab)
-{
-    if (socialWindow)
-    {
-        socialWindow->nextTab();
-        return true;
-    }
-    return false;
-}
-
 impHandler0(quit)
 {
     if (!Game::instance())
@@ -670,46 +650,6 @@ impHandler0(showWindows)
     {
         popupMenu->showWindowsPopup(viewport->mMouseX,
             viewport->mMouseY);
-        return true;
-    }
-    return false;
-}
-
-impHandler0(nextShortcutsTab)
-{
-    if (itemShortcutWindow)
-    {
-        itemShortcutWindow->nextTab();
-        return true;
-    }
-    return false;
-}
-
-impHandler0(prevShortcutsTab)
-{
-    if (itemShortcutWindow)
-    {
-        itemShortcutWindow->prevTab();
-        return true;
-    }
-    return false;
-}
-
-impHandler0(nextCommandsTab)
-{
-    if (spellShortcutWindow)
-    {
-        spellShortcutWindow->nextTab();
-        return true;
-    }
-    return false;
-}
-
-impHandler0(prevCommandsTab)
-{
-    if (spellShortcutWindow)
-    {
-        spellShortcutWindow->prevTab();
         return true;
     }
     return false;

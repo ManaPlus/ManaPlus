@@ -32,8 +32,6 @@ namespace Actions
     decHandler(mouseClick);
     decHandler(ok);
     decHandler(shortcut);
-    decHandler(prevSocialTab);
-    decHandler(nextSocialTab);
     decHandler(quit);
     decHandler(dropItem0);
     decHandler(dropItem);
@@ -76,10 +74,6 @@ namespace Actions
     decHandler(stopSit);
     decHandler(showKeyboard);
     decHandler(showWindows);
-    decHandler(nextShortcutsTab);
-    decHandler(prevShortcutsTab);
-    decHandler(nextCommandsTab);
-    decHandler(prevCommandsTab);
     decHandler(openTrade);
 }  // namespace Actions
 
