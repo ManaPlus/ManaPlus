@@ -242,6 +242,8 @@ enum
     COMMAND_GM,
     COMMAND_HACK,
     COMMAND_DEBUGSPAWN,
+    COMMAND_NEXTCHATTAB,
+    COMMAND_PREVCHATTAB,
     END_COMMANDS
 };
 
@@ -344,7 +346,9 @@ static const CommandInfo commands[] =
     {"uploadlog", &Commands::uploadLog, -1, false},
     {"gm", &Commands::gm, -1, true},
     {"hack", &Commands::hack, -1, true},
-    {"debugSpawn", &Commands::debugSpawn, -1, true}
+    {"debugSpawn", &Commands::debugSpawn, -1, true},
+    {"nextTab", nullptr, InputAction::NEXT_CHAT_TAB, false},
+    {"prevTab", nullptr, InputAction::PREV_CHAT_TAB, false}
 };
 
 #undef decHandler
