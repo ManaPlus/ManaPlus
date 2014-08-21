@@ -23,11 +23,9 @@
 #ifndef INPUT_INPUTACTIONDATA_H
 #define INPUT_INPUTACTIONDATA_H
 
-#include "events/inputevent.h"
+#include "actions/actionfuncptr.h"
 
 #include <string>
-
-typedef bool (*ActionFuncPtr) (InputEvent &event);
 
 struct InputActionData final
 {
