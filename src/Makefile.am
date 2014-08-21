@@ -834,6 +834,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      actions/actiondef.h \
 	      actions/actions.cpp \
 	      actions/actions.h \
+	      actions/windows.cpp \
+	      actions/windows.h \
 	      being/actor.cpp \
 	      being/actor.h \
 	      being/actorsprite.cpp \

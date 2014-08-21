@@ -100,31 +100,6 @@ namespace Actions
     decHandler(nextCommandsTab);
     decHandler(prevCommandsTab);
     decHandler(openTrade);
-
-    decHandler(hideWindows);
-    decHandler(helpWindowShow);
-    decHandler(aboutWindowShow);
-    decHandler(setupWindowShow);
-    decHandler(statusWindowShow);
-    decHandler(inventoryWindowShow);
-    decHandler(equipmentWindowShow);
-    decHandler(skillDialogShow);
-    decHandler(minimapWindowShow);
-    decHandler(chatWindowShow);
-    decHandler(shortcutWindowShow);
-    decHandler(debugWindowShow);
-    decHandler(socialWindowShow);
-    decHandler(emoteShortcutWindowShow);
-    decHandler(outfitWindowShow);
-    decHandler(shopWindowShow);
-    decHandler(dropShortcutWindowShow);
-    decHandler(killStatsWindowShow);
-    decHandler(spellShortcutWindowShow);
-    decHandler(botcheckerWindowShow);
-    decHandler(whoIsOnlineWindowShow);
-    decHandler(didYouKnowWindowShow);
-    decHandler(questsWindowShow);
-    decHandler(updaterWindowShow);
 }  // namespace Actions
 
 #undef decHandler

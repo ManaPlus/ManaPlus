@@ -26,6 +26,7 @@
 #include "sdlshared.h"
 
 #include "actions/actions.h"
+#include "actions/windows.h"
 
 #include "input/inputaction.h"
 #include "input/inputactiondata.h"
