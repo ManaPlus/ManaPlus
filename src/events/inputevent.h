@@ -57,10 +57,10 @@ struct InputEvent final
         mask(0)
     { }
 
-    std::string args;
-    ChatTab *tab;
-    int action;
-    int mask;
+    const std::string args;
+    ChatTab *const tab;
+    const int action;
+    const int mask;
 };
 
 #endif  // EVENTS_INPUTEVENT_H
