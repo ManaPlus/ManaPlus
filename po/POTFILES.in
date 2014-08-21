@@ -1,4 +1,4 @@
-src/actionmanager.cpp
+src/actions/statusbar.cpp
 src/actormanager.cpp
 src/being/being.cpp
 src/being/localplayer.cpp
@@ -93,7 +93,6 @@ src/gui/windows/minimap.cpp
 src/gui/windows/ministatuswindow.cpp
 src/gui/windows/npcdialog.cpp
 src/gui/windows/npcpostdialog.cpp
-src/gui/windows/okdialog.cpp
 src/gui/windows/outfitwindow.cpp
 src/gui/windows/questswindow.cpp
 src/gui/windows/quitdialog.cpp
