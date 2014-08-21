@@ -25,6 +25,7 @@
 #include "gui/windows/setupwindow.h"
 #include "gui/widgets/tabbedarea.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
@@ -52,7 +53,8 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
     mItems(content),
     mScrollArea(new ScrollArea(this, mItems, false)),
     mTabs(nullptr),
-    mPages()
+    mPages(),
+    mButtonIndex(0)
 {
     setWindowName(title);
     setTitleBarHeight(getPadding() + getTitlePadding());
@@ -107,7 +109,8 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
     mItems(nullptr),
     mScrollArea(nullptr),
     mTabs(new TabbedArea(this)),
-    mPages()
+    mPages(),
+    mButtonIndex(0)
 {
     mTabs->postInit();
     setWindowName(title);
@@ -145,6 +148,14 @@ ShortcutWindow::~ShortcutWindow()
         mTabs->removeAll();
     delete2(mTabs);
     delete2(mItems);
+}
+
+void ShortcutWindow::addButton(const std::string &text,
+                               const std::string &eventName,
+                               ActionListener *const listener)
+{
+    place(mButtonIndex++, 5, new Button(this, text, eventName, listener));
+    Window::widgetResized(Event(nullptr));
 }
 
 void ShortcutWindow::addTab(const std::string &name,

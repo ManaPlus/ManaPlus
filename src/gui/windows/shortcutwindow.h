@@ -72,6 +72,10 @@ class ShortcutWindow final : public Window
 
         void prevTab();
 
+        void addButton(const std::string &text,
+                       const std::string &eventName,
+                       ActionListener *const listener);
+
 #ifdef USE_PROFILER
         void logicChildren();
 #endif
@@ -83,6 +87,7 @@ class ShortcutWindow final : public Window
         ScrollArea *mScrollArea;
         TabbedArea *mTabs;
         std::vector<ShortcutContainer*> mPages;
+        int mButtonIndex;
 
         static int mBoxesWidth;
 };
