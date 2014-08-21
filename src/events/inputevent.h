@@ -52,7 +52,7 @@ struct InputEvent final
 
     InputEvent(const std::string &args0, ChatTab *const tab0) :
         args(args0),
-        tab(tab),
+        tab(tab0),
         action(-1),
         mask(0)
     { }
