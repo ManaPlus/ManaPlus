@@ -30,6 +30,7 @@
 #include "input/pages/basic.h"
 #include "input/pages/pages.h"
 #include "input/pages/shortcuts.h"
+#include "input/pages/windows.h"
 
 #include "debug.h"
 

@@ -569,6 +569,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      input/pages/pages.h \
 	      input/pages/shortcuts.cpp \
 	      input/pages/shortcuts.h \
+	      input/pages/windows.cpp \
+	      input/pages/windows.h \
 	      gui/fonts/font.cpp \
 	      gui/fonts/font.h \
 	      gui/fonts/textchunk.cpp \
