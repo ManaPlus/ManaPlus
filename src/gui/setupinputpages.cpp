@@ -29,6 +29,7 @@
 
 #include "input/pages/basic.h"
 #include "input/pages/pages.h"
+#include "input/pages/shortcuts.h"
 
 #include "debug.h"
 

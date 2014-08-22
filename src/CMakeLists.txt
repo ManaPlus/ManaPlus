@@ -443,6 +443,8 @@ SET(SRCS
     input/pages/basic.h
     input/pages/pages.cpp
     input/pages/pages.h
+    input/pages/shortcuts.cpp
+    input/pages/shortcuts.h
     gui/fonts/font.cpp
     gui/fonts/font.h
     gui/fonts/textchunk.cpp
