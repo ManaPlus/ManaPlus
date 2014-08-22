@@ -28,6 +28,7 @@
 #include "utils/gettext.h"
 
 #include "input/pages/basic.h"
+#include "input/pages/chat.h"
 #include "input/pages/emotes.h"
 #include "input/pages/outfits.h"
 #include "input/pages/pages.h"

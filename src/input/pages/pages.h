@@ -26,7 +26,6 @@
 
 #include "gui/setupactiondata.h"
 
-extern SetupActionData setupActionDataChat[];
 extern SetupActionData setupActionDataOther[];
 extern SetupActionData setupActionDataMove[];
 extern SetupActionData setupActionDataGui[];

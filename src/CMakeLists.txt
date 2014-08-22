@@ -441,6 +441,8 @@ SET(SRCS
     gui/setupinputpages.h
     input/pages/basic.cpp
     input/pages/basic.h
+    input/pages/chat.cpp
+    input/pages/chat.h
     input/pages/emotes.cpp
     input/pages/emotes.h
     input/pages/outfits.cpp

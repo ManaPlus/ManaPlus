@@ -1,5 +1,8 @@
 /*
  *  The ManaPlus Client
+ *  Copyright (C) 2007  Joshua Langley <joshlangley@optusnet.com.au>
+ *  Copyright (C) 2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -18,21 +21,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/touchactiondata.h"
+#ifndef INPUT_PAGES_CHAT_H
+#define INPUT_PAGES_CHAT_H
 
 #include "gui/setupactiondata.h"
 
-#include "input/pages/basic.h"
-#include "input/pages/chat.h"
-#include "input/pages/pages.h"
-#include "input/pages/windows.h"
+extern SetupActionData setupActionDataChat[];
 
-#include "debug.h"
-
-SetupActionData *const touchActionData[] =
-{
-    setupActionDataBasic,
-    setupActionDataWindows,
-    setupActionDataChat,
-    setupActionDataOther
-};
+#endif  // INPUT_PAGES_CHAT_H
