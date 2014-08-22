@@ -560,6 +560,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/tabs/setup_video.h \
 	      gui/widgets/tabs/setup_visual.cpp \
 	      gui/widgets/tabs/setup_visual.h \
+	      gui/setupactiondata.cpp \
 	      gui/setupactiondata.h \
 	      gui/fonts/font.cpp \
 	      gui/fonts/font.h \
