@@ -29,6 +29,7 @@
 #include "input/keyboardconfig.h"
 
 #include "gui/gui.h"
+#include "gui/setupinputpages.h"
 
 #include "gui/windows/okdialog.h"
 

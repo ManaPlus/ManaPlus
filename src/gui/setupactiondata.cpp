@@ -29,6 +29,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 SetupActionData setupActionData0[] =
 {
     {
@@ -1989,42 +1991,6 @@ SetupActionData setupActionData8[] =
         InputAction::NO_VALUE,
         ""
     }
-};
-
-SetupActionData *const setupActionData[] =
-{
-    setupActionData0,
-    setupActionData7,
-    setupActionData1,
-    setupActionData2,
-    setupActionData3,
-    setupActionData4,
-    setupActionData5,
-    setupActionData6,
-    setupActionData8
-};
-
-const char *const pages[] =
-{
-    // TRANSLATORS: input tab sub tab name
-    N_("Basic"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Move"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Shortcuts"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Windows"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Emotes"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Outfits"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Chat"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Other"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Gui"),
-    nullptr
 };
 
 SetupActionData *const touchActionData[] =

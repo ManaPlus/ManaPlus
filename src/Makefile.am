@@ -562,6 +562,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/tabs/setup_visual.h \
 	      gui/setupactiondata.cpp \
 	      gui/setupactiondata.h \
+	      gui/setupinputpages.cpp \
+	      gui/setupinputpages.h \
 	      gui/fonts/font.cpp \
 	      gui/fonts/font.h \
 	      gui/fonts/textchunk.cpp \

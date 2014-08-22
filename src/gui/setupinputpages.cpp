@@ -21,41 +21,46 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SETUPACTIONDATA_H
-#define GUI_SETUPACTIONDATA_H
+#include "gui/setupinputpages.h"
 
-#include <string>
+#include "gui/setupactiondata.h"
 
-struct SetupActionData final
+#include "utils/gettext.h"
+
+#include "debug.h"
+
+const char *const pages[] =
 {
-#ifdef ADVGCC
-    SetupActionData(const std::string &name0,
-                    const int actionId0,
-                    const std::string &text0) :
-        name(name0),
-        actionId(actionId0),
-        text(text0)
-    { }
-
-    A_DELETE_COPY(SetupActionData)
-#endif
-
-    std::string name;
-    const int actionId;
-    std::string text;
+    // TRANSLATORS: input tab sub tab name
+    N_("Basic"),
+    // TRANSLATORS: input tab sub tab name
+    N_("Move"),
+    // TRANSLATORS: input tab sub tab name
+    N_("Shortcuts"),
+    // TRANSLATORS: input tab sub tab name
+    N_("Windows"),
+    // TRANSLATORS: input tab sub tab name
+    N_("Emotes"),
+    // TRANSLATORS: input tab sub tab name
+    N_("Outfits"),
+    // TRANSLATORS: input tab sub tab name
+    N_("Chat"),
+    // TRANSLATORS: input tab sub tab name
+    N_("Other"),
+    // TRANSLATORS: input tab sub tab name
+    N_("Gui"),
+    nullptr
 };
 
-const int touchActionDataSize = 4;
-extern SetupActionData *const touchActionData[];
-
-extern SetupActionData setupActionData0[];
-extern SetupActionData setupActionData1[];
-extern SetupActionData setupActionData2[];
-extern SetupActionData setupActionData3[];
-extern SetupActionData setupActionData4[];
-extern SetupActionData setupActionData5[];
-extern SetupActionData setupActionData6[];
-extern SetupActionData setupActionData7[];
-extern SetupActionData setupActionData8[];
-
-#endif  // GUI_SETUPACTIONDATA_H
+SetupActionData *const setupActionData[] =
+{
+    setupActionData0,
+    setupActionData7,
+    setupActionData1,
+    setupActionData2,
+    setupActionData3,
+    setupActionData4,
+    setupActionData5,
+    setupActionData6,
+    setupActionData8
+};
