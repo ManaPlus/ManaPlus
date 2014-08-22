@@ -107,11 +107,16 @@ void CommandHandler::callFunc(const CommandInfo &info,
                               const std::string &args,
                               ChatTab *const tab)
 {
-    const CommandFuncPtr func = info.func;
+    const ActionFuncPtr func = info.func;
     if (func)
-        func(args, tab);
+    {
+        InputEvent evt(args, tab);
+        func(evt);
+    }
     else
+    {
         inputManager.executeAction(info.actionId);
+    }
 }
 
 void CommandHandler::invokeCommand(const int type)

@@ -23,6 +23,8 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
+#include "actions/actionfuncptr.h"
+
 #include "input/inputaction.h"
 
 #include <string>
@@ -37,14 +39,12 @@ extern ChatTab *localChatTab;
 #define BOOLEAN_OPTIONS _("Options to /%s are \"yes\", \"no\", \"true\", "\
 "\"false\", \"1\", \"0\".")
 
-#define decHandler(name) void name(const std::string &args, ChatTab *const tab)
-
-typedef void (*CommandFuncPtr) (const std::string &args, ChatTab *const tab);
+#define decHandler(name) bool name(InputEvent &event)
 
 struct CommandInfo final
 {
     const char *name;
-    CommandFuncPtr func;
+    ActionFuncPtr func;
     int actionId;
     bool useArgs;
 };

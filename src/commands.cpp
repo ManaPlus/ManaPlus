@@ -90,13 +90,8 @@
 
 #include "debug.h"
 
-#define impHandler(name) void name(const std::string &args, ChatTab *const tab)
-#define impHandler0(name) void name(const std::string &args A_UNUSED, \
-    ChatTab *const tab A_UNUSED)
-#define impHandler1(name) void name(const std::string &args, \
-    ChatTab *const tab A_UNUSED)
-#define impHandler2(name) void name(const std::string &args A_UNUSED, \
-    ChatTab *const tab)
+#define impHandler(name) bool name(InputEvent &event)
+#define impHandler0(name) bool name(InputEvent &event A_UNUSED)
 
 extern std::string tradePartnerName;
 extern char **environ;
@@ -257,23 +252,24 @@ static void outStringNormal(ChatTab *const tab,
 }
 
 
-impHandler1(announce)
+impHandler(announce)
 {
-    Net::getAdminHandler()->announce(args);
+    Net::getAdminHandler()->announce(event.args);
+    return true;
 }
 
-impHandler2(help)
+impHandler(help)
 {
     if (!helpWindow)
-        return;
+        return false;
 
-    if (!tab)
+    if (!event.tab)
     {
         helpWindow->loadHelp("chatcommands");
         helpWindow->requestMoveToTop();
-        return;
+        return true;
     }
-    switch (tab->getType())
+    switch (event.tab->getType())
     {
         case ChatTabType::PARTY:
         {
@@ -286,10 +282,13 @@ impHandler2(help)
             break;
         }
         default:
+        {
             helpWindow->loadHelp("chatcommands");
             break;
+        }
     }
     helpWindow->requestMoveToTop();
+    return true;
 }
 
 impHandler0(ipcToggle)
@@ -315,20 +314,23 @@ impHandler0(ipcToggle)
             debugChatTab->chatLog("Unable to start IPC service");
         }
     }
+    return true;
 }
 
-impHandler2(where)
+impHandler(where)
 {
     std::ostringstream where;
     where << Game::instance()->getCurrentMapName() << ", coordinates: "
         << ((localPlayer->getPixelX() - mapTileSize / 2) / mapTileSize)
         << ", " << ((localPlayer->getPixelY() - mapTileSize) / mapTileSize);
-    tab->chatLog(where.str(), ChatMsgType::BY_SERVER);
+    event.tab->chatLog(where.str(), ChatMsgType::BY_SERVER);
+    return true;
 }
 
 impHandler0(who)
 {
     Net::getChatHandler()->who();
+    return true;
 }
 
 impHandler(msg)
@@ -336,28 +338,28 @@ impHandler(msg)
     std::string recvnick;
     std::string msg;
 
-    if (args.substr(0, 1) == "\"")
+    if (event.args.substr(0, 1) == "\"")
     {
-        const size_t pos = args.find('"', 1);
+        const size_t pos = event.args.find('"', 1);
         if (pos != std::string::npos)
         {
-            recvnick = args.substr(1, pos - 1);
-            if (pos + 2 < args.length())
-                msg = args.substr(pos + 2, args.length());
+            recvnick = event.args.substr(1, pos - 1);
+            if (pos + 2 < event.args.length())
+                msg = event.args.substr(pos + 2, event.args.length());
         }
     }
     else
     {
-        const size_t pos = args.find(" ");
+        const size_t pos = event.args.find(" ");
         if (pos != std::string::npos)
         {
-            recvnick = args.substr(0, pos);
-            if (pos + 1 < args.length())
-                msg = args.substr(pos + 1, args.length());
+            recvnick = event.args.substr(0, pos);
+            if (pos + 1 < event.args.length())
+                msg = event.args.substr(pos + 1, event.args.length());
         }
         else
         {
-            recvnick = std::string(args);
+            recvnick = std::string(event.args);
             msg.clear();
         }
     }
@@ -372,42 +374,48 @@ impHandler(msg)
         toLower(playerName);
         toLower(tempNick);
 
-        if (tempNick.compare(playerName) == 0 || args.empty())
-            return;
+        if (tempNick.compare(playerName) == 0 || event.args.empty())
+            return true;
 
         chatWindow->addWhisper(recvnick, msg, ChatMsgType::BY_PLAYER);
     }
     else
     {
         // TRANSLATORS: whisper send
-        tab->chatLog(_("Cannot send empty whispers!"), ChatMsgType::BY_SERVER);
+        event.tab->chatLog(_("Cannot send empty whispers!"), ChatMsgType::BY_SERVER);
     }
+    return true;
 }
 
 impHandler(query)
 {
     if (chatWindow)
     {
-        if (chatWindow->addWhisperTab(args, true))
+        if (chatWindow->addWhisperTab(event.args, true))
         {
             chatWindow->saveState();
-            return;
+            return true;
         }
     }
 
-    if (tab)
+    if (event.tab)
     {
         // TRANSLATORS: new whisper query
-        tab->chatLog(strprintf(_("Cannot create a whisper tab for nick "
+        event.tab->chatLog(strprintf(_("Cannot create a whisper tab for nick "
             "\"%s\"! It either already exists, or is you."),
-            args.c_str()), ChatMsgType::BY_SERVER);
+            event.args.c_str()), ChatMsgType::BY_SERVER);
     }
+    return true;
 }
 
 impHandler0(clear)
 {
     if (chatWindow)
+    {
         chatWindow->clearTab();
+        return true;
+    }
+    return false;
 }
 
 impHandler0(cleanGraphics)
@@ -419,6 +427,7 @@ impHandler0(cleanGraphics)
         // TRANSLATORS: clear graphics command message
         debugChatTab->chatLog(_("Cache cleaned"));
     }
+    return true;
 }
 
 impHandler0(cleanFonts)
@@ -430,279 +439,307 @@ impHandler0(cleanFonts)
         // TRANSLATORS: clear fonts cache message
         debugChatTab->chatLog(_("Cache cleaned"));
     }
+    return true;
 }
 
 impHandler(createParty)
 {
-    if (!tab)
-        return;
+    if (!event.tab)
+        return false;
 
-    if (args.empty())
+    if (event.args.empty())
     {
         // TRANSLATORS: create party message
-        tab->chatLog(_("Party name is missing."), ChatMsgType::BY_SERVER);
+        event.tab->chatLog(_("Party name is missing."), ChatMsgType::BY_SERVER);
     }
     else
     {
-        Net::getPartyHandler()->create(args);
+        Net::getPartyHandler()->create(event.args);
     }
+    return true;
 }
 
 impHandler(createGuild)
 {
-    if (!tab || tmwServerVersion > 0)
-        return;
+    if (!event.tab || tmwServerVersion > 0)
+        return false;
 
-    if (args.empty())
+    if (event.args.empty())
     {
         // TRANSLATORS: create guild message
-        tab->chatLog(_("Guild name is missing."), ChatMsgType::BY_SERVER);
+        event.tab->chatLog(_("Guild name is missing."), ChatMsgType::BY_SERVER);
     }
     else
     {
-        Net::getGuildHandler()->create(args);
+        Net::getGuildHandler()->create(event.args);
     }
+    return true;
 }
 
 impHandler(party)
 {
-    if (!tab)
-        return;
+    if (!event.tab)
+        return false;
 
-    if (!args.empty())
+    if (!event.args.empty())
     {
-        Net::getPartyHandler()->invite(args);
+        Net::getPartyHandler()->invite(event.args);
     }
     else
     {
         // TRANSLATORS: party invite message
-        tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
+        event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
     }
+    return true;
 }
 
 impHandler(me)
 {
-    outString(tab, strprintf("*%s*", args.c_str()), args);
+    outString(event.tab, strprintf("*%s*", event.args.c_str()), event.args);
+    return true;
 }
 
 impHandler(toggle)
 {
-    if (args.empty())
+    if (event.args.empty())
     {
-        if (chatWindow && tab)
+        if (chatWindow && event.tab)
         {
             // TRANSLATORS: message from toggle chat command
-            tab->chatLog(chatWindow->getReturnTogglesChat() ?
+            event.tab->chatLog(chatWindow->getReturnTogglesChat() ?
                 _("Return toggles chat.") : _("Message closes chat."));
         }
-        return;
+        return true;
     }
 
-    switch (parseBoolean(args))
+    switch (parseBoolean(event.args))
     {
         case 1:
-            if (tab)
+            if (event.tab)
             {
                 // TRANSLATORS: message from toggle chat command
-                tab->chatLog(_("Return now toggles chat."));
+                event.tab->chatLog(_("Return now toggles chat."));
             }
             if (chatWindow)
                 chatWindow->setReturnTogglesChat(true);
-            return;
+            return true;
         case 0:
-            if (tab)
+            if (event.tab)
             {
                 // TRANSLATORS: message from toggle chat command
-                tab->chatLog(_("Message now closes chat."));
+                event.tab->chatLog(_("Message now closes chat."));
             }
             if (chatWindow)
                 chatWindow->setReturnTogglesChat(false);
-            return;
+            return true;
         case -1:
-            if (tab)
-                tab->chatLog(strprintf(BOOLEAN_OPTIONS, "toggle"));
-            return;
+            if (event.tab)
+                event.tab->chatLog(strprintf(BOOLEAN_OPTIONS, "toggle"));
+            return true;
         default:
-            return;
+            return true;
     }
 }
 
 impHandler0(present)
 {
     if (chatWindow)
+    {
         chatWindow->doPresent();
+        return true;
+    }
+    return false;
 }
 
 impHandler(ignore)
 {
-    changeRelation(args, PlayerRelation::IGNORED, "ignored", tab);
+    changeRelation(event.args, PlayerRelation::IGNORED, "ignored", event.tab);
+    return true;
 }
 
 impHandler(beFriend)
 {
     // TRANSLATORS: adding friend command
-    changeRelation(args, PlayerRelation::FRIEND, _("friend"), tab);
+    changeRelation(event.args, PlayerRelation::FRIEND, _("friend"), event.tab);
+    return true;
 }
 
 impHandler(disregard)
 {
     // TRANSLATORS: disregard command
-    changeRelation(args, PlayerRelation::DISREGARDED, _("disregarded"), tab);
+    changeRelation(event.args, PlayerRelation::DISREGARDED, _("disregarded"), event.tab);
+    return true;
 }
 
 impHandler(neutral)
 {
     // TRANSLATORS: neutral command
-    changeRelation(args, PlayerRelation::NEUTRAL, _("neutral"), tab);
+    changeRelation(event.args, PlayerRelation::NEUTRAL, _("neutral"), event.tab);
+    return true;
 }
 
 impHandler(unignore)
 {
-    if (args.empty())
+    if (event.args.empty())
     {
-        if (tab)
+        if (event.tab)
         {
             // TRANSLATORS: unignore command
-            tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
+            event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
         }
-        return;
+        return true;
     }
 
-    const PlayerRelation::Relation rel = player_relations.getRelation(args);
+    const PlayerRelation::Relation rel = player_relations.getRelation(event.args);
     if (rel != PlayerRelation::NEUTRAL && rel != PlayerRelation::FRIEND)
     {
-        player_relations.setRelation(args, PlayerRelation::NEUTRAL);
+        player_relations.setRelation(event.args, PlayerRelation::NEUTRAL);
     }
     else
     {
-        if (tab)
+        if (event.tab)
         {
             // TRANSLATORS: unignore command
-            tab->chatLog(_("Player wasn't ignored!"), ChatMsgType::BY_SERVER);
+            event.tab->chatLog(_("Player wasn't ignored!"), ChatMsgType::BY_SERVER);
         }
-        return;
+        return true;
     }
 
-    if (tab)
+    if (event.tab)
     {
-        if (player_relations.getRelation(args) == PlayerRelation::NEUTRAL)
+        if (player_relations.getRelation(event.args) == PlayerRelation::NEUTRAL)
         {
             // TRANSLATORS: unignore command
-            tab->chatLog(_("Player no longer ignored!"),
+            event.tab->chatLog(_("Player no longer ignored!"),
                 ChatMsgType::BY_SERVER);
         }
         else
         {
             // TRANSLATORS: unignore command
-            tab->chatLog(_("Player could not be unignored!"),
+            event.tab->chatLog(_("Player could not be unignored!"),
                 ChatMsgType::BY_SERVER);
         }
     }
+    return true;
 }
 
 impHandler(blackList)
 {
     // TRANSLATORS: blacklist command
-    changeRelation(args, PlayerRelation::BLACKLISTED, _("blacklisted"), tab);
+    changeRelation(event.args, PlayerRelation::BLACKLISTED, _("blacklisted"), event.tab);
+    return true;
 }
 
 impHandler(enemy)
 {
     // TRANSLATORS: enemy command
-    changeRelation(args, PlayerRelation::ENEMY2, _("enemy"), tab);
+    changeRelation(event.args, PlayerRelation::ENEMY2, _("enemy"), event.tab);
+    return true;
 }
 
 impHandler(erase)
 {
-    if (args.empty())
+    if (event.args.empty())
     {
-        if (tab)
+        if (event.tab)
         {
             // TRANSLATORS: erase command
-            tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
+            event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
         }
-        return;
+        return true;
     }
 
-    if (player_relations.getRelation(args) == PlayerRelation::ERASED)
+    if (player_relations.getRelation(event.args) == PlayerRelation::ERASED)
     {
-        if (tab)
+        if (event.tab)
         {
             // TRANSLATORS: erase command
-            tab->chatLog(_("Player already erased!"), ChatMsgType::BY_SERVER);
+            event.tab->chatLog(_("Player already erased!"), ChatMsgType::BY_SERVER);
         }
-        return;
+        return true;
     }
     else
     {
-        player_relations.setRelation(args, PlayerRelation::ERASED);
+        player_relations.setRelation(event.args, PlayerRelation::ERASED);
     }
 
-    if (tab)
+    if (event.tab)
     {
-        if (player_relations.getRelation(args) == PlayerRelation::ERASED)
+        if (player_relations.getRelation(event.args) == PlayerRelation::ERASED)
         {
             // TRANSLATORS: erase command
-            tab->chatLog(_("Player successfully erased!"),
+            event.tab->chatLog(_("Player successfully erased!"),
                 ChatMsgType::BY_SERVER);
         }
         else
         {
             // TRANSLATORS: erase command
-            tab->chatLog(_("Player could not be erased!"),
+            event.tab->chatLog(_("Player could not be erased!"),
                 ChatMsgType::BY_SERVER);
         }
     }
+    return true;
 }
 
 impHandler0(quit)
 {
 //    quit();
+    return false;
 }
 
 impHandler0(showAll)
 {
     if (actorManager)
+    {
         actorManager->printAllToChat();
+        return true;
+    }
+    return false;
 }
 
-impHandler1(move)
+impHandler(move)
 {
     int x = 0;
     int y = 0;
 
-    if (localPlayer && parse2Int(args, x, y))
+    if (localPlayer && parse2Int(event.args, x, y))
+    {
         localPlayer->setDestination(x, y);
+        return true;
+    }
+    return false;
 }
 
-impHandler1(navigate)
+impHandler(navigate)
 {
     if (!localPlayer)
-        return;
+        return false;
 
     int x = 0;
     int y = 0;
 
-    if (parse2Int(args, x, y))
+    if (parse2Int(event.args, x, y))
         localPlayer->navigateTo(x, y);
     else
         localPlayer->navigateClean();
+    return true;
 }
 
-impHandler1(target)
+impHandler(target)
 {
     if (!actorManager || !localPlayer)
-        return;
+        return false;
 
-    Being *const target = actorManager->findNearestByName(args);
+    Being *const target = actorManager->findNearestByName(event.args);
     if (target)
         localPlayer->setTarget(target);
+    return true;
 }
 
 impHandler0(attackHuman)
 {
     if (!actorManager || !localPlayer)
-        return;
+        return false;
 
     Being *const target = actorManager->findNearestLivingBeing(
         localPlayer, 10, ActorType::PLAYER, true);
@@ -714,6 +751,7 @@ impHandler0(attackHuman)
             localPlayer->attack2(target, true);
         }
     }
+    return true;
 }
 
 
@@ -723,7 +761,9 @@ impHandler0(closeAll)
     {
         chatWindow->removeAllWhispers();
         chatWindow->saveState();
+        return true;
     }
+    return false;
 }
 
 impHandler0(ignoreAll)
@@ -732,93 +772,110 @@ impHandler0(ignoreAll)
     {
         chatWindow->ignoreAllWhispers();
         chatWindow->saveState();
+        return true;
     }
+    return false;
 }
 
-impHandler1(outfit)
+impHandler(outfit)
 {
     if (outfitWindow)
     {
-        if (!args.empty())
+        if (!event.args.empty())
         {
-            const std::string op = args.substr(0, 1);
+            const std::string op = event.args.substr(0, 1);
             if (op == "n")
                 outfitWindow->wearNextOutfit(true);
             else if (op == "p")
                 outfitWindow->wearPreviousOutfit(true);
             else
-                outfitWindow->wearOutfit(atoi(args.c_str()) - 1, false, true);
+                outfitWindow->wearOutfit(atoi(event.args.c_str()) - 1, false, true);
         }
         else
         {
-            outfitWindow->wearOutfit(atoi(args.c_str()) - 1, false, true);
+            outfitWindow->wearOutfit(atoi(event.args.c_str()) - 1, false, true);
         }
+        return true;
     }
+    return false;
 }
 
-impHandler1(emote)
-{
-    if (localPlayer)
-        localPlayer->emote(static_cast<uint8_t>(atoi(args.c_str())));
-}
-
-impHandler1(emotePet)
-{
-    // need use actual pet id
-    Net::getPetHandler()->emote(static_cast<uint8_t>(atoi(args.c_str())), 0);
-}
-
-impHandler1(away)
-{
-    if (localPlayer)
-        localPlayer->setAway(args);
-}
-
-impHandler1(pseudoAway)
+impHandler(emote)
 {
     if (localPlayer)
     {
-        localPlayer->setPseudoAway(args);
-        localPlayer->updateStatus();
+        localPlayer->emote(static_cast<uint8_t>(atoi(event.args.c_str())));
+        return true;
     }
+    return false;
+}
+
+impHandler(emotePet)
+{
+    // need use actual pet id
+    Net::getPetHandler()->emote(static_cast<uint8_t>(atoi(event.args.c_str())), 0);
+    return true;
+}
+
+impHandler(away)
+{
+    if (localPlayer)
+    {
+        localPlayer->setAway(event.args);
+        return true;
+    }
+    return false;
+}
+
+impHandler(pseudoAway)
+{
+    if (localPlayer)
+    {
+        localPlayer->setPseudoAway(event.args);
+        localPlayer->updateStatus();
+        return true;
+    }
+    return false;
 }
 
 impHandler(follow)
 {
     if (!localPlayer)
-        return;
+        return false;
 
     if (!features.getBoolValue("allowFollow"))
-        return;
+        return false;
 
-    if (!args.empty())
-        localPlayer->setFollow(args);
-    else if (tab && tab->getType() == ChatTabType::WHISPER)
-        localPlayer->setFollow(static_cast<WhisperTab*>(tab)->getNick());
+    if (!event.args.empty())
+        localPlayer->setFollow(event.args);
+    else if (event.tab && event.tab->getType() == ChatTabType::WHISPER)
+        localPlayer->setFollow(static_cast<WhisperTab*>(event.tab)->getNick());
+    return true;
 }
 
 impHandler(imitation)
 {
     if (!localPlayer)
-        return;
+        return false;
 
-    if (!args.empty())
-        localPlayer->setImitate(args);
-    else if (tab && tab->getType() == ChatTabType::WHISPER)
-        localPlayer->setImitate(static_cast<WhisperTab*>(tab)->getNick());
+    if (!event.args.empty())
+        localPlayer->setImitate(event.args);
+    else if (event.tab && event.tab->getType() == ChatTabType::WHISPER)
+        localPlayer->setImitate(static_cast<WhisperTab*>(event.tab)->getNick());
     else
         localPlayer->setImitate("");
+    return true;
 }
 
-impHandler1(heal)
+impHandler(heal)
 {
     if (!actorManager)
-        return;
+        return false;
 
-    if (!args.empty())
+    if (!event.args.empty())
     {
         const Being *const being = actorManager->findBeingByName(
-            args, ActorType::PLAYER);
+            event.args, ActorType::PLAYER);
         if (being)
             actorManager->heal(being);
     }
@@ -826,64 +883,81 @@ impHandler1(heal)
     {
         actorManager->heal(localPlayer);
     }
+    return true;
 }
 
-impHandler1(hack)
+impHandler(hack)
 {
-    Net::getChatHandler()->sendRaw(args);
+    Net::getChatHandler()->sendRaw(event.args);
+    return true;
 }
 
-impHandler1(mail)
+impHandler(mail)
 {
     if (auctionManager && auctionManager->getEnableAuctionBot())
-        auctionManager->sendMail(args);
+    {
+        auctionManager->sendMail(event.args);
+        return true;
+    }
+    return false;
 }
 
 impHandler0(priceLoad)
 {
     if (shopWindow)
+    {
         shopWindow->loadList();
+        return true;
+    }
+    return false;
 }
 
 impHandler0(priceSave)
 {
     if (shopWindow)
+    {
         shopWindow->saveList();
+        return true;
+    }
+    return false;
 }
 
 impHandler0(disconnect)
 {
     Net::getGameHandler()->disconnect2();
+    return true;
 }
 
-impHandler1(undress)
+impHandler(undress)
 {
     if (!actorManager)
-        return;
+        return false;
 
-    Being *const target = actorManager->findNearestByName(args);
+    Being *const target = actorManager->findNearestByName(event.args);
     if (target)
         Net::getBeingHandler()->undress(target);
+    return true;
 }
 
-impHandler1(attack)
+impHandler(attack)
 {
     if (!localPlayer || !actorManager)
-        return;
+        return false;
 
-    Being *const target = actorManager->findNearestByName(args);
+    Being *const target = actorManager->findNearestByName(event.args);
     if (target)
         localPlayer->setTarget(target);
     localPlayer->attack2(localPlayer->getTarget(), true);
+    return true;
 }
 
-impHandler1(trade)
+impHandler(trade)
 {
     if (!actorManager)
-        return;
+        return false;
 
     const Being *const being = actorManager->findBeingByName(
-        args, ActorType::PLAYER);
+        event.args, ActorType::PLAYER);
     if (being)
     {
         Net::getTradeHandler()->request(being);
@@ -891,12 +965,13 @@ impHandler1(trade)
         if (tradeWindow)
             tradeWindow->clear();
     }
+    return true;
 }
 
 impHandler0(dirs)
 {
     if (!localPlayer || !debugChatTab)
-        return;
+        return false;
 
     debugChatTab->chatLog("config directory: "
         + settings.configDir);
@@ -906,14 +981,15 @@ impHandler0(dirs)
         + settings.screenshotDir);
     debugChatTab->chatLog("temp directory: "
         + settings.tempDir);
+    return true;
 }
 
-impHandler2(info)
+impHandler(info)
 {
-    if (!tab || !localPlayer || tmwServerVersion > 0)
-        return;
+    if (!event.tab || !localPlayer || tmwServerVersion > 0)
+        return false;
 
-    switch (tab->getType())
+    switch (event.tab->getType())
     {
         case ChatTabType::GUILD:
         {
@@ -925,18 +1001,23 @@ impHandler2(info)
         default:
             break;
     }
+    return true;
 }
 
-impHandler1(wait)
+impHandler(wait)
 {
     if (localPlayer)
-        localPlayer->waitFor(args);
+    {
+        localPlayer->waitFor(event.args);
+        return true;
+    }
+    return false;
 }
 
 impHandler0(uptime)
 {
     if (!debugChatTab)
-        return;
+        return false;
 
     if (cur_time < start_time)
     {
@@ -999,65 +1080,70 @@ impHandler0(uptime)
         // TRANSLATORS: uptime command
         debugChatTab->chatLog(strprintf(_("Client uptime: %s"), str.c_str()));
     }
+    return true;
 }
 
-impHandler1(addPriorityAttack)
+impHandler(addPriorityAttack)
 {
     if (!actorManager
-        || actorManager->isInPriorityAttackList(args))
+        || actorManager->isInPriorityAttackList(event.args))
     {
-        return;
+        return false;
     }
 
-    actorManager->removeAttackMob(args);
-    actorManager->addPriorityAttackMob(args);
+    actorManager->removeAttackMob(event.args);
+    actorManager->addPriorityAttackMob(event.args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();
+    return true;
 }
 
-impHandler1(addAttack)
+impHandler(addAttack)
 {
-    if (!actorManager || actorManager->isInAttackList(args))
-        return;
+    if (!actorManager || actorManager->isInAttackList(event.args))
+        return false;
 
-    actorManager->removeAttackMob(args);
-    actorManager->addAttackMob(args);
+    actorManager->removeAttackMob(event.args);
+    actorManager->addAttackMob(event.args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();
+    return true;
 }
 
-impHandler1(removeAttack)
+impHandler(removeAttack)
 {
-    if (!actorManager || args.empty()
-        || !actorManager->isInAttackList(args))
+    if (!actorManager || event.args.empty()
+        || !actorManager->isInAttackList(event.args))
     {
-        return;
+        return false;
     }
 
-    actorManager->removeAttackMob(args);
+    actorManager->removeAttackMob(event.args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();
+    return true;
 }
 
-impHandler1(addIgnoreAttack)
+impHandler(addIgnoreAttack)
 {
-    if (!actorManager || actorManager->isInIgnoreAttackList(args))
-        return;
+    if (!actorManager || actorManager->isInIgnoreAttackList(event.args))
+        return false;
 
-    actorManager->removeAttackMob(args);
-    actorManager->addIgnoreAttackMob(args);
+    actorManager->removeAttackMob(event.args);
+    actorManager->addIgnoreAttackMob(event.args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();
+    return true;
 }
 
 impHandler0(cacheInfo)
 {
     if (!chatWindow || !debugChatTab)
-        return;
+        return false;
 
 /*
     Font *const font = chatWindow->getFont();
@@ -1090,19 +1176,22 @@ impHandler0(cacheInfo)
         _("Deleted:"), font->getDeleteCounter()));
 #endif
 */
+    return true;
 }
 
 impHandler0(serverIgnoreAll)
 {
     Net::getChatHandler()->ignoreAll();
+    return true;
 }
 
 impHandler0(serverUnIgnoreAll)
 {
     Net::getChatHandler()->unIgnoreAll();
+    return true;
 }
 
-impHandler2(dumpGraphics)
+impHandler(dumpGraphics)
 {
     std::string str = strprintf("%s,%s,%dX%dX%d,", PACKAGE_OS, SMALL_VERSION,
         mainGraphics->getWidth(), mainGraphics->getHeight(),
@@ -1139,7 +1228,8 @@ impHandler2(dumpGraphics)
         .append(config.getBoolValue("disableBeingCaching") ? "1" : "0")
         .append(config.getBoolValue("particleeffects") ? "1" : "0")
         .append(strprintf(",%d-%d", fps, config.getIntValue("fpslimit")));
-    outStringNormal(tab, str, str);
+    outStringNormal(event.tab, str, str);
+    return true;
 }
 
 impHandler0(dumpEnvironment)
@@ -1153,17 +1243,20 @@ impHandler0(dumpEnvironment)
         // TRANSLATORS: dump environment command
         debugChatTab->chatLog(_("Environment variables dumped"));
     }
+    return true;
 }
 
-impHandler2(dumpTests)
+impHandler(dumpTests)
 {
     const std::string str = config.getStringValue("testInfo");
-    outStringNormal(tab, str, str);
+    outStringNormal(event.tab, str, str);
+    return true;
 }
 
-impHandler1(setDrop)
+impHandler(setDrop)
 {
-    GameModifiers::setQuickDropCounter(atoi(args.c_str()));
+    GameModifiers::setQuickDropCounter(atoi(event.args.c_str()));
+    return true;
 }
 
 impHandler0(error)
@@ -1175,93 +1268,125 @@ impHandler0(error)
 
 impHandler(url)
 {
-    if (tab)
+    if (event.tab)
     {
-        std::string url = args;
+        std::string url = event.args;
         if (!strStartWith(url, "http") && !strStartWith(url, "?"))
             url = "http://" + url;
-        std::string str(strprintf("[@@%s |%s@@]", url.c_str(), args.c_str()));
-        outStringNormal(tab, str, str);
+        std::string str(strprintf("[@@%s |%s@@]", url.c_str(), event.args.c_str()));
+        outStringNormal(event.tab, str, str);
+        return true;
     }
+    return false;
 }
 
-impHandler1(open)
+impHandler(open)
 {
-    std::string url = args;
+    std::string url = event.args;
     if (!strStartWith(url, "http"))
         url = "http://" + url;
     openBrowser(url);
+    return true;
 }
 
-impHandler1(execute)
+impHandler(execute)
 {
-    const size_t idx = args.find(" ");
+    const size_t idx = event.args.find(" ");
     std::string name;
     std::string params;
     if (idx == std::string::npos)
     {
-        name = args;
+        name = event.args;
     }
     else
     {
-        name = args.substr(0, idx);
-        params = args.substr(idx + 1);
+        name = event.args.substr(0, idx);
+        params = event.args.substr(idx + 1);
     }
     execFile(name, name, params, "");
+    return true;
 }
 
-impHandler2(enableHighlight)
+impHandler(enableHighlight)
 {
-    if (tab)
+    if (event.tab)
     {
-        tab->setAllowHighlight(true);
+        event.tab->setAllowHighlight(true);
         if (chatWindow)
             chatWindow->saveState();
+        return true;
     }
+    return false;
 }
 
-impHandler2(disableHighlight)
+impHandler(disableHighlight)
 {
-    if (tab)
+    if (event.tab)
     {
-        tab->setAllowHighlight(false);
+        event.tab->setAllowHighlight(false);
         if (chatWindow)
             chatWindow->saveState();
+        return true;
     }
+    return false;
 }
 
-impHandler2(dontRemoveName)
+impHandler(dontRemoveName)
 {
-    tab->setRemoveNames(false);
-    if (chatWindow)
-        chatWindow->saveState();
+    if (event.tab)
+    {
+        event.tab->setRemoveNames(false);
+        if (chatWindow)
+            chatWindow->saveState();
+        return true;
+    }
+    return false;
 }
 
-impHandler2(removeName)
+impHandler(removeName)
 {
-    tab->setRemoveNames(true);
-    if (chatWindow)
-        chatWindow->saveState();
+    if (event.tab)
+    {
+        event.tab->setRemoveNames(true);
+        if (chatWindow)
+            chatWindow->saveState();
+        return true;
+    }
+    return false;
 }
 
-impHandler2(disableAway)
+impHandler(disableAway)
 {
-    tab->setNoAway(true);
-    if (chatWindow)
-        chatWindow->saveState();
+    if (event.tab)
+    {
+        event.tab->setNoAway(true);
+        if (chatWindow)
+            chatWindow->saveState();
+        return true;
+    }
+    return false;
 }
 
-impHandler2(enableAway)
+impHandler(enableAway)
 {
-    tab->setNoAway(false);
-    if (chatWindow)
-        chatWindow->saveState();
+    if (event.tab)
+    {
+        event.tab->setNoAway(false);
+        if (chatWindow)
+            chatWindow->saveState();
+        return true;
+    }
+    return false;
 }
 
-impHandler1(testParticle)
+impHandler(testParticle)
 {
     if (localPlayer)
-        localPlayer->setTestParticle(args);
+    {
+        localPlayer->setTestParticle(event.args);
+        return true;
+    }
+    return false;
 }
 
 impHandler0(createItems)
@@ -1293,25 +1418,29 @@ impHandler0(createItems)
         }
     }
     dialog->sort();
+    return true;
 }
 
-impHandler1(talkRaw)
+impHandler(talkRaw)
 {
-    Net::getChatHandler()->talkRaw(args);
+    Net::getChatHandler()->talkRaw(event.args);
+    return true;
 }
 
-impHandler1(talkPet)
+impHandler(talkPet)
 {
     // in future probably need add channel detection
     if (!localPlayer->getPets().empty())
-        Net::getChatHandler()->talkPet(args, GENERAL_CHANNEL);
+        Net::getChatHandler()->talkPet(event.args, GENERAL_CHANNEL);
     else
-        Net::getChatHandler()->talk(args, GENERAL_CHANNEL);
+        Net::getChatHandler()->talk(event.args, GENERAL_CHANNEL);
+    return true;
 }
 
-impHandler1(gm)
+impHandler(gm)
 {
-    Net::getChatHandler()->talk("@wgm " + args, GENERAL_CHANNEL);
+    Net::getChatHandler()->talk("@wgm " + event.args, GENERAL_CHANNEL);
+    return true;
 }
 
 static int uploadUpdate(void *ptr,
@@ -1373,28 +1502,31 @@ static void uploadFile(const std::string &str,
     upload->start();
 }
 
-impHandler2(uploadConfig)
+impHandler(uploadConfig)
 {
     uploadFile(_("Uploaded config into:"),
         config.getFileName(),
         "?xml",
-        tab);
+        event.tab);
+    return true;
 }
 
-impHandler2(uploadServerConfig)
+impHandler(uploadServerConfig)
 {
     uploadFile(_("Uploaded server config into:"),
         serverConfig.getFileName(),
         "?xml",
-        tab);
+        event.tab);
+    return true;
 }
 
-impHandler2(uploadLog)
+impHandler(uploadLog)
 {
     uploadFile(_("Uploaded log into:"),
         settings.logFileName,
         "?txt",
-        tab);
+        event.tab);
+    return true;
 }
 
 impHandler0(testsdlfont)
@@ -1438,23 +1570,27 @@ impHandler0(testsdlfont)
     if (debugChatTab)
         debugChatTab->chatLog("sdlfont time: " + toString(diff));
 #endif
+    return true;
 }
 
-impHandler2(dumpMods)
+impHandler(dumpMods)
 {
     std::string str = "enabled mods: " + serverConfig.getValue("mods", "");
-    outStringNormal(tab, str, str);
+    outStringNormal(event.tab, str, str);
+    return true;
 }
 
 #ifdef USE_OPENGL
-impHandler2(dumpGL)
+impHandler(dumpGL)
 {
     std::string str = graphicsManager.getGLVersion();
-    outStringNormal(tab, str, str);
+    outStringNormal(event.tab, str, str);
+    return true;
 }
 #else
 impHandler0(dumpGL)
 {
+    return true;
 }
 #endif
 
@@ -1501,14 +1637,14 @@ void showRes(std::string str, ResourceManager::Resources *res)
     }
 }
 
-impHandler1(dump)
+impHandler(dump)
 {
     if (!debugChatTab)
-        return;
+        return false;
 
     ResourceManager *const resman = ResourceManager::getInstance();
 
-    if (!args.empty())
+    if (!event.args.empty())
     {
         ResourceManager::Resources *res = resman->getResources();
         // TRANSLATORS: dump command
@@ -1527,16 +1663,19 @@ impHandler1(dump)
         debugChatTab->chatLog(_("Resource orphaned images:")
             + toString(res->size()));
     }
+    return true;
 }
 
 #elif defined ENABLE_MEM_DEBUG
 impHandler0(dump)
 {
     check_leaks();
+    return true;
 }
 #else
 impHandler0(dump)
 {
+    return true;
 }
 #endif
 
@@ -1546,11 +1685,12 @@ impHandler0(dumpOGL)
 #if defined USE_OPENGL && !defined ANDROID
     NormalOpenGLGraphics::dumpSettings();
 #endif
+    return true;
 }
 
 impHandler0(debugSpawn)
 {
-    int cnt = atoi(args.c_str());
+    int cnt = atoi(event.args.c_str());
     if (cnt < 1)
         cnt = 1;
     const int half = cnt / 2;
@@ -1559,6 +1699,7 @@ impHandler0(debugSpawn)
         for (int y =  -half; y < cnt - half; y ++)
             actorManager->cloneBeing(localPlayer, x, y, cnt);
     }
+    return true;
 }
 
 void replaceVars(std::string &str)
