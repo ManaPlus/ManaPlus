@@ -26,6 +26,8 @@
 
 #include <string>
 
+#include "localconsts.h"
+
 struct SetupActionData final
 {
 #ifdef ADVGCC
