@@ -569,14 +569,14 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      input/pages/chat.h \
 	      input/pages/emotes.cpp \
 	      input/pages/emotes.h \
+	      input/pages/gui.cpp \
+	      input/pages/gui.h \
 	      input/pages/move.cpp \
 	      input/pages/move.h \
 	      input/pages/other.cpp \
 	      input/pages/other.h \
 	      input/pages/outfits.cpp \
 	      input/pages/outfits.h \
-	      input/pages/pages.cpp \
-	      input/pages/pages.h \
 	      input/pages/shortcuts.cpp \
 	      input/pages/shortcuts.h \
 	      input/pages/windows.cpp \

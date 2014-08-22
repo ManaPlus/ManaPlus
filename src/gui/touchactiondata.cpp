@@ -24,8 +24,8 @@
 
 #include "input/pages/basic.h"
 #include "input/pages/chat.h"
+#include "input/pages/gui.h"
 #include "input/pages/other.h"
-#include "input/pages/pages.h"
 #include "input/pages/windows.h"
 
 #include "debug.h"
