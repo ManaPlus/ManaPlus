@@ -443,6 +443,8 @@ SET(SRCS
     input/pages/basic.h
     input/pages/emotes.cpp
     input/pages/emotes.h
+    input/pages/outfits.cpp
+    input/pages/outfits.h
     input/pages/pages.cpp
     input/pages/pages.h
     input/pages/shortcuts.cpp

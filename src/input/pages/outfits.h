@@ -21,14 +21,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_PAGES_PAGES_H
-#define INPUT_PAGES_PAGES_H
+#ifndef INPUT_PAGES_OUTFITS_H
+#define INPUT_PAGES_OUTFITS_H
 
 #include "gui/setupactiondata.h"
 
-extern SetupActionData setupActionDataChat[];
-extern SetupActionData setupActionDataOther[];
-extern SetupActionData setupActionDataMove[];
-extern SetupActionData setupActionDataGui[];
+extern SetupActionData setupActionDataOutfits[];
 
-#endif  // INPUT_PAGES_PAGES_H
+#endif  // INPUT_PAGES_OUTFITS_H
