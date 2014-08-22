@@ -45,9 +45,6 @@ struct SetupActionData final
     std::string text;
 };
 
-const int touchActionDataSize = 4;
-extern SetupActionData *const touchActionData[];
-
 extern SetupActionData setupActionData0[];
 extern SetupActionData setupActionData1[];
 extern SetupActionData setupActionData2[];

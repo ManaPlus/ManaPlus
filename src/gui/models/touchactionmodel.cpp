@@ -19,6 +19,7 @@
  */
 
 #include "gui/setupactiondata.h"
+#include "gui/touchactiondata.h"
 
 #include "gui/models/touchactionmodel.h"
 
