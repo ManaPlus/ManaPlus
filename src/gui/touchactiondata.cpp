@@ -22,6 +22,8 @@
 
 #include "gui/setupactiondata.h"
 
+#include "input/pages/pages.h"
+
 #include "debug.h"
 
 SetupActionData *const touchActionData[] =

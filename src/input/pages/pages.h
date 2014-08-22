@@ -21,48 +21,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/setupinputpages.h"
+#ifndef INPUT_PAGES_PAGES_H
+#define INPUT_PAGES_PAGES_H
 
 #include "gui/setupactiondata.h"
 
-#include "utils/gettext.h"
+extern SetupActionData setupActionData0[];
+extern SetupActionData setupActionData1[];
+extern SetupActionData setupActionData2[];
+extern SetupActionData setupActionData3[];
+extern SetupActionData setupActionData4[];
+extern SetupActionData setupActionData5[];
+extern SetupActionData setupActionData6[];
+extern SetupActionData setupActionData7[];
+extern SetupActionData setupActionData8[];
 
-#include "input/pages/pages.h"
-
-#include "debug.h"
-
-const char *const pages[] =
-{
-    // TRANSLATORS: input tab sub tab name
-    N_("Basic"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Move"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Shortcuts"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Windows"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Emotes"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Outfits"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Chat"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Other"),
-    // TRANSLATORS: input tab sub tab name
-    N_("Gui"),
-    nullptr
-};
-
-SetupActionData *const setupActionData[] =
-{
-    setupActionData0,
-    setupActionData7,
-    setupActionData1,
-    setupActionData2,
-    setupActionData3,
-    setupActionData4,
-    setupActionData5,
-    setupActionData6,
-    setupActionData8
-};
+#endif  // INPUT_PAGES_PAGES_H

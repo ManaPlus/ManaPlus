@@ -45,14 +45,4 @@ struct SetupActionData final
     std::string text;
 };
 
-extern SetupActionData setupActionData0[];
-extern SetupActionData setupActionData1[];
-extern SetupActionData setupActionData2[];
-extern SetupActionData setupActionData3[];
-extern SetupActionData setupActionData4[];
-extern SetupActionData setupActionData5[];
-extern SetupActionData setupActionData6[];
-extern SetupActionData setupActionData7[];
-extern SetupActionData setupActionData8[];
-
 #endif  // GUI_SETUPACTIONDATA_H

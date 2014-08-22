@@ -27,6 +27,7 @@
 
 #include "input/inputmanager.h"
 #include "input/keyboardconfig.h"
+#include "input/pages/pages.h"
 
 #include "gui/gui.h"
 #include "gui/setupinputpages.h"
