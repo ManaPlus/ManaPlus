@@ -21,15 +21,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_PAGES_PAGES_H
-#define INPUT_PAGES_PAGES_H
+#ifndef INPUT_PAGES_EMOTES_H
+#define INPUT_PAGES_EMOTES_H
 
 #include "gui/setupactiondata.h"
 
-extern SetupActionData setupActionDataOutfits[];
-extern SetupActionData setupActionDataChat[];
-extern SetupActionData setupActionDataOther[];
-extern SetupActionData setupActionDataMove[];
-extern SetupActionData setupActionDataGui[];
+extern SetupActionData setupActionDataEmotes[];
 
-#endif  // INPUT_PAGES_PAGES_H
+#endif  // INPUT_PAGES_EMOTES_H
