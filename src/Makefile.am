@@ -563,6 +563,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/setupactiondata.h \
 	      gui/setupinputpages.cpp \
 	      gui/setupinputpages.h \
+	      input/pages/basic.cpp \
+	      input/pages/basic.h \
 	      input/pages/pages.cpp \
 	      input/pages/pages.h \
 	      gui/fonts/font.cpp \

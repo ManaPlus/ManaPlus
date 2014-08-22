@@ -26,7 +26,6 @@
 
 #include "gui/setupactiondata.h"
 
-extern SetupActionData setupActionDataBasic[];
 extern SetupActionData setupActionDataShortcuts[];
 extern SetupActionData setupActionDataWindows[];
 extern SetupActionData setupActionDataEmotes[];

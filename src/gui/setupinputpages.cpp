@@ -27,6 +27,7 @@
 
 #include "utils/gettext.h"
 
+#include "input/pages/basic.h"
 #include "input/pages/pages.h"
 
 #include "debug.h"
