@@ -363,16 +363,17 @@ void Setup_Input::fixTranslation(SetupActionData *const actionDatas,
 
 void Setup_Input::fixTranslations()
 {
-    fixTranslation(setupActionData1, static_cast<int>(InputAction::SHORTCUT_1),
+    fixTranslation(setupActionDataShortcuts,
+        static_cast<int>(InputAction::SHORTCUT_1),
         static_cast<int>(InputAction::SHORTCUT_20), "Item Shortcut %d");
 
-    fixTranslation(setupActionData3, static_cast<int>(InputAction::EMOTE_1),
+    fixTranslation(setupActionDataEmotes, static_cast<int>(InputAction::EMOTE_1),
         static_cast<int>(InputAction::EMOTE_48), "Emote Shortcut %d");
 
-    fixTranslation(setupActionData4, static_cast<int>(InputAction::OUTFIT_1),
+    fixTranslation(setupActionDataOutfits, static_cast<int>(InputAction::OUTFIT_1),
         static_cast<int>(InputAction::OUTFIT_48), "Outfit Shortcut %d");
 
-    fixTranslation(setupActionData7, static_cast<int>(
+    fixTranslation(setupActionDataMove, static_cast<int>(
         InputAction::MOVE_TO_POINT_1),
         static_cast<int>(InputAction::MOVE_TO_POINT_48),
         "Move to point Shortcut %d");

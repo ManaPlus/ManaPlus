@@ -28,8 +28,8 @@
 
 SetupActionData *const touchActionData[] =
 {
-    setupActionData0,
-    setupActionData2,
-    setupActionData5,
-    setupActionData6
+    setupActionDataBasic,
+    setupActionDataWindows,
+    setupActionDataChat,
+    setupActionDataOther
 };

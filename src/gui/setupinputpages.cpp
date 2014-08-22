@@ -56,13 +56,13 @@ const char *const pages[] =
 
 SetupActionData *const setupActionData[] =
 {
-    setupActionData0,
-    setupActionData7,
-    setupActionData1,
-    setupActionData2,
-    setupActionData3,
-    setupActionData4,
-    setupActionData5,
-    setupActionData6,
-    setupActionData8
+    setupActionDataBasic,
+    setupActionDataMove,
+    setupActionDataShortcuts,
+    setupActionDataWindows,
+    setupActionDataEmotes,
+    setupActionDataOutfits,
+    setupActionDataChat,
+    setupActionDataOther,
+    setupActionDataGui
 };

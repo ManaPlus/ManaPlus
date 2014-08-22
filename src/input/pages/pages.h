@@ -26,14 +26,14 @@
 
 #include "gui/setupactiondata.h"
 
-extern SetupActionData setupActionData0[];
-extern SetupActionData setupActionData1[];
-extern SetupActionData setupActionData2[];
-extern SetupActionData setupActionData3[];
-extern SetupActionData setupActionData4[];
-extern SetupActionData setupActionData5[];
-extern SetupActionData setupActionData6[];
-extern SetupActionData setupActionData7[];
-extern SetupActionData setupActionData8[];
+extern SetupActionData setupActionDataBasic[];
+extern SetupActionData setupActionDataShortcuts[];
+extern SetupActionData setupActionDataWindows[];
+extern SetupActionData setupActionDataEmotes[];
+extern SetupActionData setupActionDataOutfits[];
+extern SetupActionData setupActionDataChat[];
+extern SetupActionData setupActionDataOther[];
+extern SetupActionData setupActionDataMove[];
+extern SetupActionData setupActionDataGui[];
 
 #endif  // INPUT_PAGES_PAGES_H

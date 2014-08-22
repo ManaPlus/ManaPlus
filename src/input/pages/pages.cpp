@@ -31,7 +31,7 @@
 
 #include "debug.h"
 
-SetupActionData setupActionData0[] =
+SetupActionData setupActionDataBasic[] =
 {
     {
         // TRANSLATORS: input action name
@@ -202,7 +202,7 @@ SetupActionData setupActionData0[] =
     }
 };
 
-SetupActionData setupActionData1[] =
+SetupActionData setupActionDataShortcuts[] =
 {
     {
         // TRANSLATORS: input action name
@@ -349,7 +349,7 @@ SetupActionData setupActionData1[] =
     }
 };
 
-SetupActionData setupActionData2[] =
+SetupActionData setupActionDataWindows[] =
 {
     {
         // TRANSLATORS: input action name
@@ -544,7 +544,7 @@ SetupActionData setupActionData2[] =
     }
 };
 
-SetupActionData setupActionData3[] =
+SetupActionData setupActionDataEmotes[] =
 {
     {
         // TRANSLATORS: input action name
@@ -859,7 +859,7 @@ SetupActionData setupActionData3[] =
     }
 };
 
-SetupActionData setupActionData4[] =
+SetupActionData setupActionDataOutfits[] =
 {
     {
         // TRANSLATORS: input action name
@@ -1186,7 +1186,7 @@ SetupActionData setupActionData4[] =
     }
 };
 
-SetupActionData setupActionData5[] =
+SetupActionData setupActionDataChat[] =
 {
     {
         // TRANSLATORS: input action name
@@ -1310,7 +1310,7 @@ SetupActionData setupActionData5[] =
     }
 };
 
-SetupActionData setupActionData6[] =
+SetupActionData setupActionDataOther[] =
 {
     {
         // TRANSLATORS: input action name
@@ -1481,7 +1481,7 @@ SetupActionData setupActionData6[] =
     }
 };
 
-SetupActionData setupActionData7[] =
+SetupActionData setupActionDataMove[] =
 {
     {
         // TRANSLATORS: input action name
@@ -1820,7 +1820,7 @@ SetupActionData setupActionData7[] =
     }
 };
 
-SetupActionData setupActionData8[] =
+SetupActionData setupActionDataGui[] =
 {
     {
         // TRANSLATORS: input action name
