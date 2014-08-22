@@ -445,6 +445,8 @@ SET(SRCS
     input/pages/chat.h
     input/pages/emotes.cpp
     input/pages/emotes.h
+    input/pages/move.cpp
+    input/pages/move.h
     input/pages/other.cpp
     input/pages/other.h
     input/pages/outfits.cpp

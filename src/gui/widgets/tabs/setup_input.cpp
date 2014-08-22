@@ -29,6 +29,7 @@
 #include "input/keyboardconfig.h"
 
 #include "input/pages/emotes.h"
+#include "input/pages/move.h"
 #include "input/pages/outfits.h"
 #include "input/pages/pages.h"
 #include "input/pages/shortcuts.h"
