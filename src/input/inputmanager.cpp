@@ -108,6 +108,9 @@ void InputManager::retrieve()
 {
     for (int i = 0; i < InputAction::TOTAL; i++)
     {
+        const std::string &cmd = inputActionData[i].chatCommand;
+        if (!cmd.empty())
+            mChatMap[cmd] = i;
 #ifdef USE_SDL2
         const std::string cf = std::string("sdl2")
             + inputActionData[i].configField;
@@ -157,9 +160,6 @@ void InputManager::retrieve()
                 }
             }
         }
-        const std::string &cmd = inputActionData[i].chatCommand;
-        if (!cmd.empty())
-            mChatMap[cmd] = i;
     }
 }
 
