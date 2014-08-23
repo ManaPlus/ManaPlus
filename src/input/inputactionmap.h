@@ -488,7 +488,7 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         &Actions::helpWindowShow,
         InputAction::NO_VALUE, 50,
         InputCondition::SHORTCUT0,
-        "",
+        "help",
         false},
     {"keyWindowStatus",
         InputType::KEYBOARD, SDLK_F2,

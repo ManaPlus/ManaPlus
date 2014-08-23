@@ -67,6 +67,7 @@
 #include "gui/windows/updaterwindow.h"
 
 #include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chattabtype.h"
 
 #include "render/graphics.h"
 
@@ -132,7 +133,19 @@ static bool showHelpPage(const std::string &page, const bool showHide)
 
 impHandler0(helpWindowShow)
 {
-    return showHelpPage("index", true);
+    if (!chatWindow || !chatWindow->isInputFocused())
+        return showHelpPage("index", true);
+    if (!event.tab)
+        return showHelpPage("chatcommands", true);
+    switch (event.tab->getType())
+    {
+        case ChatTabType::PARTY:
+            return showHelpPage("chatparty", true);
+        case ChatTabType::GUILD:
+            return showHelpPage("chatguild", true);
+        default:
+            return showHelpPage("chatcommands", true);
+    }
 }
 
 impHandler0(aboutWindowShow)

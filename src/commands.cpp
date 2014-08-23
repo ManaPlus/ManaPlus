@@ -258,39 +258,6 @@ impHandler(announce)
     return true;
 }
 
-impHandler(help)
-{
-    if (!helpWindow)
-        return false;
-
-    if (!event.tab)
-    {
-        helpWindow->loadHelp("chatcommands");
-        helpWindow->requestMoveToTop();
-        return true;
-    }
-    switch (event.tab->getType())
-    {
-        case ChatTabType::PARTY:
-        {
-            helpWindow->loadHelp("chatparty");
-            break;
-        }
-        case ChatTabType::GUILD:
-        {
-            helpWindow->loadHelp("chatguild");
-            break;
-        }
-        default:
-        {
-            helpWindow->loadHelp("chatcommands");
-            break;
-        }
-    }
-    helpWindow->requestMoveToTop();
-    return true;
-}
-
 impHandler0(ipcToggle)
 {
     if (ipc)
