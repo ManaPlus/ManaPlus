@@ -739,7 +739,7 @@ bool InputManager::executeChatCommand(const std::string &cmd,
         ActionFuncPtr func = *(inputActionData[(*it).second].action);
         if (func)
         {
-            InputEvent evt(args, tab);
+            InputEvent evt(args, tab, mMask);
             func(evt);
             return true;
         }

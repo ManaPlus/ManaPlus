@@ -51,11 +51,13 @@ struct InputEvent final
         mask(mask0)
     { }
 
-    InputEvent(const std::string &args0, ChatTab *const tab0) :
+    InputEvent(const std::string &args0,
+               ChatTab *const tab0,
+               const int mask0) :
         args(args0),
         tab(tab0),
         action(-1),
-        mask(0)
+        mask(mask0)
     { }
 
     const std::string args;

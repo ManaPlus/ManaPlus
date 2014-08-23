@@ -113,7 +113,7 @@ void CommandHandler::callFunc(const CommandInfo &info,
     const ActionFuncPtr func = info.func;
     if (func)
     {
-        InputEvent evt(args, tab);
+        InputEvent evt(args, tab, 0);
         func(evt);
     }
     else
