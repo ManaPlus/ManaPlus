@@ -232,4 +232,14 @@ impHandler(query)
     return true;
 }
 
+impHandler0(clearChatTab)
+{
+    if (chatWindow)
+    {
+        chatWindow->clearTab();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

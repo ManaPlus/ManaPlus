@@ -51,7 +51,6 @@ struct CommandInfo final
 
 namespace Commands
 {
-    decHandler(clear);
     decHandler(cleanGraphics);
     decHandler(cleanFonts);
     decHandler(createParty);
@@ -144,7 +143,6 @@ enum
     COMMAND_BLACKLIST,
     COMMAND_ENEMY,
     COMMAND_ERASE,
-    COMMAND_CLEAR,
     COMMAND_CLEANGRAPHICS,
     COMMAND_CLEANFONTS,
     COMMAND_CREATEPARTY,
@@ -229,7 +227,6 @@ static const CommandInfo commands[] =
     {"blacklist", &Commands::blackList, -1, true},
     {"enemy", &Commands::enemy, -1, true},
     {"erase", &Commands::erase, -1, true},
-    {"clear", &Commands::clear, -1, true},
     {"cleangraphics", &Commands::cleanGraphics, -1, false},
     {"cleanfonts", &Commands::cleanFonts, -1, false},
     {"createparty", &Commands::createParty, -1, true},

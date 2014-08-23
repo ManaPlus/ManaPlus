@@ -349,6 +349,7 @@ namespace InputAction
         WHO,
         WHISPER,
         QUERY,
+        CLEAR_CHAT_TAB,
         TOTAL
     };
 }  // namespace InputAction

@@ -251,16 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler0(clear)
-{
-    if (chatWindow)
-    {
-        chatWindow->clearTab();
-        return true;
-    }
-    return false;
-}
-
 impHandler0(cleanGraphics)
 {
     ResourceManager::getInstance()->clearCache();

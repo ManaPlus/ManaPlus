@@ -2910,7 +2910,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "q|query",
-        true}
+        true},
+    {"keyClearChatTab",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::clearChatTab,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "clear",
+        false}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
