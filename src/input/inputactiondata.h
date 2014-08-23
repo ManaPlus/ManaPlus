@@ -29,18 +29,18 @@
 
 struct InputActionData final
 {
-    const char *configField;
-    int defaultType1;
-    int defaultValue1;
-    int defaultType2;
-    int defaultValue2;
-    int grp;
-    ActionFuncPtr action;
-    int modKeyIndex;
-    int priority;
-    int condition;
-    std::string chatCommand;
-    bool useArgs;
+    const char *const configField;
+    const int defaultType1;
+    const int defaultValue1;
+    const int defaultType2;
+    const int defaultValue2;
+    const int grp;
+    const ActionFuncPtr action;
+    const int modKeyIndex;
+    const int priority;
+    const int condition;
+    const std::string chatCommand;
+    const bool useArgs;
 };
 
 namespace Input
