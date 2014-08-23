@@ -39,6 +39,8 @@ struct InputActionData final
     int modKeyIndex;
     int priority;
     int condition;
+    std::string chatCommand;
+    bool useArgs;
 };
 
 namespace Input
