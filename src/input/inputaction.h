@@ -342,6 +342,7 @@ namespace InputAction
         WINDOW_UPDATER,
         TARGET_CLOSEST_MONSTER,
         CLOSE_ALL_CHAT_TABS,
+        IGNORE_ALL_WHISPERS,
         TOTAL
     };
 }  // namespace InputAction

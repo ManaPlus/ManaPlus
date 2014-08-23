@@ -74,6 +74,12 @@ SetupActionData setupActionDataChat[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Ignore all whispers"),
+        InputAction::IGNORE_ALL_WHISPERS,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Previous chat line"),
         InputAction::CHAT_PREV_HISTORY,
         "",

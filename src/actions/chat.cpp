@@ -123,6 +123,17 @@ impHandler0(closeAllChatTabs)
     return false;
 }
 
+impHandler0(ignoreAllWhispers)
+{
+    if (chatWindow)
+    {
+        chatWindow->ignoreAllWhispers();
+        chatWindow->saveState();
+        return true;
+    }
+    return false;
+}
+
 impHandler0(scrollChatUp)
 {
     if (chatWindow && chatWindow->isWindowVisible())

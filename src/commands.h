@@ -80,7 +80,6 @@ namespace Commands
     decHandler(move);
     decHandler(target);
     decHandler(attackHuman);
-    decHandler(ignoreAll);
     decHandler(outfit);
     decHandler(emote);
     decHandler(emotePet);
@@ -143,8 +142,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_IGNOREALL = 0,
-    COMMAND_HELP,
+    COMMAND_HELP = 0,
     COMMAND_ANNOUNCE,
     COMMAND_IPC_TOGGLE,
     COMMAND_WHERE,
@@ -239,7 +237,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"ignoreall", &Commands::ignoreAll, -1, false},
     {"help", &Commands::help, -1, false},
     {"announce", &Commands::announce, -1, true},
     {"ipctoggle", &Commands::ipcToggle, -1, false},

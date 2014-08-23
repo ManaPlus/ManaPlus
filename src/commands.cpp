@@ -754,17 +754,6 @@ impHandler0(attackHuman)
     return true;
 }
 
-impHandler0(ignoreAll)
-{
-    if (chatWindow)
-    {
-        chatWindow->ignoreAllWhispers();
-        chatWindow->saveState();
-        return true;
-    }
-    return false;
-}
-
 impHandler(outfit)
 {
     if (outfitWindow)
