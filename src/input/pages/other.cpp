@@ -191,6 +191,12 @@ SetupActionData setupActionDataOther[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Toggle ipc mode"),
+        InputAction::IPC_TOGGLE,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Show onscreen keyboard"),
         InputAction::SHOW_KEYBOARD,
         "",

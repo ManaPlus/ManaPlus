@@ -51,7 +51,6 @@ struct CommandInfo final
 
 namespace Commands
 {
-    decHandler(ipcToggle);
     decHandler(where);
     decHandler(who);
     decHandler(msg);
@@ -140,8 +139,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_IPC_TOGGLE = 0,
-    COMMAND_WHERE,
+    COMMAND_WHERE = 0,
     COMMAND_WHO,
     COMMAND_MSG,
     COMMAND_WHISPER,
@@ -233,7 +231,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"ipctoggle", &Commands::ipcToggle, -1, false},
     {"where", &Commands::where, -1, false},
     {"who", &Commands::who, -1, false},
     {"msg", Commands::msg, -1, true},

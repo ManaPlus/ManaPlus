@@ -70,6 +70,7 @@
 
 #include "render/graphics.h"
 
+#include "net/ipc.h"
 #include "net/net.h"
 #include "net/playerhandler.h"
 #include "net/tradehandler.h"
@@ -493,6 +494,32 @@ impHandler0(openTrade)
         return true;
     }
     return false;
+}
+
+impHandler0(ipcToggle)
+{
+    if (ipc)
+    {
+        IPC::stop();
+        if (!ipc)
+            debugChatTab->chatLog("IPC service stopped.");
+        else
+            debugChatTab->chatLog("Unable to stop IPC service.");
+    }
+    else
+    {
+        IPC::start();
+        if (ipc)
+        {
+            debugChatTab->chatLog(strprintf("IPC service available on port %d",
+                ipc->getPort()));
+        }
+        else
+        {
+            debugChatTab->chatLog("Unable to start IPC service");
+        }
+    }
+    return true;
 }
 
 }  // namespace Actions

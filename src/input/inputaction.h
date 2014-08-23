@@ -344,6 +344,7 @@ namespace InputAction
         CLOSE_ALL_CHAT_TABS,
         IGNORE_ALL_WHISPERS,
         CHAT_ANNOUNCE,
+        IPC_TOGGLE,
         TOTAL
     };
 }  // namespace InputAction
