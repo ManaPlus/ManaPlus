@@ -572,16 +572,18 @@ void ChatWindow::ignoreAllWhispers()
          iter != mWhispers.end();
          ++ iter)
     {
-        const WhisperTab *const tab = dynamic_cast<const WhisperTab* const>(
+        WhisperTab *const tab = dynamic_cast<WhisperTab* const>(
             iter->second);
-        if (tab && player_relations.getRelation(tab->getNick())
-            != PlayerRelation::IGNORED)
+        if (tab)
         {
-            player_relations.setRelation(tab->getNick(),
-                                         PlayerRelation::IGNORED);
+            if (player_relations.getRelation(tab->getNick())
+                != PlayerRelation::IGNORED)
+            {
+                player_relations.setRelation(tab->getNick(),
+                    PlayerRelation::IGNORED);
+            }
+            tab->handleCommand("close", "");
         }
-
-        delete2(iter->second)
     }
 }
 
