@@ -226,12 +226,6 @@ enum
     COMMAND_REMOVENAME,
     COMMAND_DISABLEAWAY,
     COMMAND_ENABLEAWAY,
-    COMMAND_DROP,
-    COMMAND_DROPN,
-    COMMAND_MOVETOTARGET,
-    COMMAND_MOVETOHOME,
-    COMMAND_SETHOME,
-    COMMAND_MAGICATTACK,
     COMMAND_TEST_PARTICLE,
     COMMAND_CREATEITEMS,
     COMMAND_TALKRAW,
@@ -242,8 +236,6 @@ enum
     COMMAND_GM,
     COMMAND_HACK,
     COMMAND_DEBUGSPAWN,
-    COMMAND_NEXTCHATTAB,
-    COMMAND_PREVCHATTAB,
     END_COMMANDS
 };
 
@@ -331,12 +323,6 @@ static const CommandInfo commands[] =
     {"", &Commands::removeName, -1, false},
     {"disableaway", &Commands::disableAway, -1, false},
     {"enableaway", &Commands::enableAway, -1, false},
-    {"drop", nullptr, InputAction::QUICK_DROP, false},
-    {"dropn", nullptr, InputAction::QUICK_DROPN, false},
-    {"movetotarget", nullptr, InputAction::MOVE_TO_TARGET, false},
-    {"movetohome", nullptr, InputAction::MOVE_TO_HOME, false},
-    {"sethome", nullptr, InputAction::SET_HOME, false},
-    {"magicattack", nullptr, InputAction::MAGIC_ATTACK, false},
     {"testparticle", &Commands::testParticle, -1, true},
     {"createitems", &Commands::createItems, -1, false},
     {"talkraw", &Commands::talkRaw, -1, true},
@@ -346,9 +332,7 @@ static const CommandInfo commands[] =
     {"uploadlog", &Commands::uploadLog, -1, false},
     {"gm", &Commands::gm, -1, true},
     {"hack", &Commands::hack, -1, true},
-    {"debugSpawn", &Commands::debugSpawn, -1, true},
-    {"nextTab", nullptr, InputAction::NEXT_CHAT_TAB, false},
-    {"prevTab", nullptr, InputAction::PREV_CHAT_TAB, false}
+    {"debugSpawn", &Commands::debugSpawn, -1, true}
 };
 
 #undef decHandler
