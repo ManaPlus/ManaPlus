@@ -2837,6 +2837,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::GAME | InputCondition::NOTARGET
             | InputCondition::VALIDSPEED,
         "",
+        false},
+    {"keyChatCloseAllTabs",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT | Input::GRP_GUI,
+        &Actions::closeAllChatTabs,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "closeall",
         false}
 };
 

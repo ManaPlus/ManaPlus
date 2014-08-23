@@ -68,6 +68,12 @@ SetupActionData setupActionDataChat[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Close all chat tabs"),
+        InputAction::CLOSE_ALL_CHAT_TABS,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Previous chat line"),
         InputAction::CHAT_PREV_HISTORY,
         "",

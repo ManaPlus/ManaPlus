@@ -31,6 +31,7 @@ namespace Actions
     decHandler(prevChatTab);
     decHandler(nextChatTab);
     decHandler(closeChatTab);
+    decHandler(closeAllChatTabs);
     decHandler(scrollChatUp);
     decHandler(scrollChatDown);
 }  // namespace Actions

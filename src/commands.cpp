@@ -754,18 +754,6 @@ impHandler0(attackHuman)
     return true;
 }
 
-
-impHandler0(closeAll)
-{
-    if (chatWindow)
-    {
-        chatWindow->removeAllWhispers();
-        chatWindow->saveState();
-        return true;
-    }
-    return false;
-}
-
 impHandler0(ignoreAll)
 {
     if (chatWindow)

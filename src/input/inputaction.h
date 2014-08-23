@@ -341,6 +341,7 @@ namespace InputAction
         WINDOW_ABOUT,
         WINDOW_UPDATER,
         TARGET_CLOSEST_MONSTER,
+        CLOSE_ALL_CHAT_TABS,
         TOTAL
     };
 }  // namespace InputAction
