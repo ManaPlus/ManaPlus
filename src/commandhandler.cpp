@@ -95,10 +95,13 @@ void CommandHandler::invokeCommand(const std::string &type,
     }
     else if (!tab->handleCommand(type, args))
     {
-        if (warn)
+        if (!inputManager.executeChatCommand(type, args, tab))
         {
-            // TRANSLATORS: chat commands handling message
-            tab->chatLog(_("Unknown command."));
+            if (warn)
+            {
+                // TRANSLATORS: chat commands handling message
+                tab->chatLog(_("Unknown command."));
+            }
         }
     }
 }

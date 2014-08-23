@@ -157,8 +157,9 @@ void InputManager::retrieve()
                 }
             }
         }
-        if (!inputActionData[i].chatCommand.empty())
-            mChatMap[i] = i;
+        const std::string &cmd = inputActionData[i].chatCommand;
+        if (!cmd.empty())
+            mChatMap[cmd] = i;
     }
 }
 
@@ -726,6 +727,24 @@ void InputManager::executeAction(const int keyNum)
     ActionFuncPtr func = *(inputActionData[keyNum].action);
     if (func)
         func(evt);
+}
+
+bool InputManager::executeChatCommand(const std::string &cmd,
+                                      const std::string &args,
+                                      ChatTab *const tab)
+{
+    const std::map<std::string, int>::const_iterator it = mChatMap.find(cmd);
+    if (it != mChatMap.end())
+    {
+        ActionFuncPtr func = *(inputActionData[(*it).second].action);
+        if (func)
+        {
+            InputEvent evt(args, tab);
+            func(evt);
+            return true;
+        }
+    }
+    return false;
 }
 
 void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,

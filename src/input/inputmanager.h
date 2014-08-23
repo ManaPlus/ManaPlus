@@ -118,6 +118,10 @@ class InputManager final
 
         void executeAction(const int keyNum);
 
+        bool executeChatCommand(const std::string &cmd,
+                                const std::string &args,
+                                ChatTab *const tab);
+
     protected:
         void resetKey(const int i);
 
