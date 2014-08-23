@@ -103,10 +103,6 @@ bool WhisperTab::handleCommand(const std::string &restrict type,
         if (chatWindow)
             chatWindow->defaultTab();
     }
-    else if (type == "ignore")
-    {
-        CommandHandler::invokeCommand(COMMAND_IGNORE, mNick, this);
-    }
     else if (type == "unignore")
     {
         CommandHandler::invokeCommand(COMMAND_UNIGNORE, mNick, this);

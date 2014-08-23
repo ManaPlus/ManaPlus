@@ -350,6 +350,7 @@ namespace InputAction
         WHISPER,
         QUERY,
         CLEAR_CHAT_TAB,
+        IGNORE,
         TOTAL
     };
 }  // namespace InputAction

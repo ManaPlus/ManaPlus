@@ -66,19 +66,73 @@
 #include "gui/windows/shortcutwindow.h"
 #include "gui/windows/updaterwindow.h"
 
-#include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/whispertab.h"
 
 #include "net/adminhandler.h"
 #include "net/net.h"
+
+#include "utils/gettext.h"
 
 #include "debug.h"
 
 namespace Actions
 {
 
+static void changeRelation(std::string args,
+                           const PlayerRelation::Relation relation,
+                           const std::string &relationText,
+                           ChatTab *const tab)
+{
+    if (!tab)
+        return;
+
+    if (args.empty())
+    {
+        WhisperTab *const whisper = dynamic_cast<WhisperTab* const>(tab);
+        if (!whisper || whisper->getNick().empty())
+        {
+            // TRANSLATORS: change relation
+            tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
+            return;
+        }
+        args = whisper->getNick();
+    }
+
+    if (player_relations.getRelation(args) == relation)
+    {
+        // TRANSLATORS: change relation
+        tab->chatLog(strprintf(_("Player already %s!"),
+                     relationText.c_str()), ChatMsgType::BY_SERVER);
+        return;
+    }
+    else
+    {
+        player_relations.setRelation(args, relation);
+    }
+
+    if (player_relations.getRelation(args) == relation)
+    {
+        // TRANSLATORS: change relation
+        tab->chatLog(strprintf(_("Player successfully %s!"),
+                     relationText.c_str()), ChatMsgType::BY_SERVER);
+    }
+    else
+    {
+        // TRANSLATORS: change relation
+        tab->chatLog(strprintf(_("Player could not be %s!"),
+                     relationText.c_str()), ChatMsgType::BY_SERVER);
+    }
+}
+
 impHandler(chatAnnounce)
 {
     Net::getAdminHandler()->announce(event.args);
+    return true;
+}
+
+impHandler(chatIgnore)
+{
+    changeRelation(event.args, PlayerRelation::IGNORED, "ignored", event.tab);
     return true;
 }
 

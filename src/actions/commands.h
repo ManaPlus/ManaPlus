@@ -28,6 +28,7 @@ struct InputEvent;
 namespace Actions
 {
     decHandler(chatAnnounce);
+    decHandler(chatIgnore);
 }  // namespace Actions
 
 #undef decHandler
