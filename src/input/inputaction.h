@@ -348,6 +348,7 @@ namespace InputAction
         WHERE,
         WHO,
         WHISPER,
+        QUERY,
         TOTAL
     };
 }  // namespace InputAction

@@ -211,4 +211,25 @@ impHandler(msg)
     return true;
 }
 
+impHandler(query)
+{
+    if (chatWindow)
+    {
+        if (chatWindow->addWhisperTab(event.args, true))
+        {
+            chatWindow->saveState();
+            return true;
+        }
+    }
+
+    if (event.tab)
+    {
+        // TRANSLATORS: new whisper query
+        event.tab->chatLog(strprintf(_("Cannot create a whisper tab for nick "
+            "\"%s\"! It either already exists, or is you."),
+            event.args.c_str()), ChatMsgType::BY_SERVER);
+    }
+    return true;
+}
+
 }  // namespace Actions
