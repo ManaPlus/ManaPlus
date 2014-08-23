@@ -110,7 +110,12 @@ void InputManager::retrieve()
     {
         const std::string &cmd = inputActionData[i].chatCommand;
         if (!cmd.empty())
-            mChatMap[cmd] = i;
+        {
+            StringVect tokens;
+            splitToStringVector(tokens, cmd, '|');
+            FOR_EACH (StringVectCIter, it, tokens)
+                mChatMap[*it] = i;
+        }
 #ifdef USE_SDL2
         const std::string cf = std::string("sdl2")
             + inputActionData[i].configField;
@@ -856,10 +861,15 @@ void InputManager::addChatCommands(std::list<std::string> &arr)
         std::string cmd = ad.chatCommand;
         if (!cmd.empty())
         {
-            cmd = std::string("/").append(cmd);
-            if (ad.useArgs)
-                cmd.append(" ");
-            arr.push_back(cmd);
+            StringVect tokens;
+            splitToStringVector(tokens, cmd, '|');
+            FOR_EACH (StringVectCIter, it, tokens)
+            {
+                cmd = std::string("/").append(*it);
+                if (ad.useArgs)
+                    cmd.append(" ");
+                arr.push_back(cmd);
+            }
         }
     }
 }
