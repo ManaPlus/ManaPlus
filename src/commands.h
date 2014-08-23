@@ -51,7 +51,6 @@ struct CommandInfo final
 
 namespace Commands
 {
-    decHandler(where);
     decHandler(who);
     decHandler(msg);
     decHandler(query);
@@ -139,8 +138,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_WHERE = 0,
-    COMMAND_WHO,
+    COMMAND_WHO = 0,
     COMMAND_MSG,
     COMMAND_WHISPER,
     COMMAND_W,
@@ -231,7 +229,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"where", &Commands::where, -1, false},
     {"who", &Commands::who, -1, false},
     {"msg", Commands::msg, -1, true},
     {"whisper", Commands::msg, -1, true},

@@ -55,6 +55,7 @@ namespace Actions
     decHandler(showWindows);
     decHandler(openTrade);
     decHandler(ipcToggle);
+    decHandler(where);
 }  // namespace Actions
 
 #undef decHandler

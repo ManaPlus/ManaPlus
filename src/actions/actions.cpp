@@ -522,4 +522,17 @@ impHandler0(ipcToggle)
     return true;
 }
 
+impHandler(where)
+{
+    ChatTab *const tab = event.tab != nullptr ? event.tab : debugChatTab;
+    if (!tab)
+        return false;
+    std::ostringstream where;
+    where << Game::instance()->getCurrentMapName() << ", coordinates: "
+        << ((localPlayer->getPixelX() - mapTileSize / 2) / mapTileSize)
+        << ", " << ((localPlayer->getPixelY() - mapTileSize) / mapTileSize);
+    tab->chatLog(where.str(), ChatMsgType::BY_SERVER);
+    return true;
+}
+
 }  // namespace Actions

@@ -345,6 +345,7 @@ namespace InputAction
         IGNORE_ALL_WHISPERS,
         CHAT_ANNOUNCE,
         IPC_TOGGLE,
+        WHERE,
         TOTAL
     };
 }  // namespace InputAction

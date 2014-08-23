@@ -197,6 +197,12 @@ SetupActionData setupActionDataOther[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Show information about position in chat"),
+        InputAction::WHERE,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Show onscreen keyboard"),
         InputAction::SHOW_KEYBOARD,
         "",

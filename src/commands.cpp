@@ -251,16 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler(where)
-{
-    std::ostringstream where;
-    where << Game::instance()->getCurrentMapName() << ", coordinates: "
-        << ((localPlayer->getPixelX() - mapTileSize / 2) / mapTileSize)
-        << ", " << ((localPlayer->getPixelY() - mapTileSize) / mapTileSize);
-    event.tab->chatLog(where.str(), ChatMsgType::BY_SERVER);
-    return true;
-}
-
 impHandler0(who)
 {
     Net::getChatHandler()->who();
