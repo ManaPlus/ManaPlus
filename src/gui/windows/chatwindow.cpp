@@ -240,6 +240,7 @@ void ChatWindow::fillCommands()
 {
     loadCommandsFile("chatcommands.txt");
     CommandHandler::addChatCommands(mCommands);
+    inputManager.addChatCommands(mCommands);
 }
 
 void ChatWindow::loadGMCommands()

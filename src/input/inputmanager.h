@@ -26,6 +26,7 @@
 
 #include "events/inputevent.h"
 
+#include <list>
 #include <string>
 #include <map>
 
@@ -121,6 +122,8 @@ class InputManager final
         bool executeChatCommand(const std::string &cmd,
                                 const std::string &args,
                                 ChatTab *const tab);
+
+        void addChatCommands(std::list<std::string> &arr);
 
     protected:
         void resetKey(const int i);

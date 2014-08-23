@@ -847,3 +847,19 @@ int InputManager::getActionByKey(const SDL_Event &event) const
     }
     return InputAction::NO_VALUE;
 }
+
+void InputManager::addChatCommands(std::list<std::string> &arr)
+{
+    for (int i = 0; i < InputAction::TOTAL; i++)
+    {
+        const InputActionData &ad = inputActionData[i];
+        std::string cmd = ad.chatCommand;
+        if (!cmd.empty())
+        {
+            cmd = std::string("/").append(cmd);
+            if (ad.useArgs)
+                cmd.append(" ");
+            arr.push_back(cmd);
+        }
+    }
+}
