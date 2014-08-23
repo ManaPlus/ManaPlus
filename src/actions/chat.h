@@ -35,6 +35,7 @@ namespace Actions
     decHandler(ignoreAllWhispers);
     decHandler(scrollChatUp);
     decHandler(scrollChatDown);
+    decHandler(msg);
 }  // namespace Actions
 
 #undef decHandler

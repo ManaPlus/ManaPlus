@@ -68,6 +68,9 @@
 
 #include "gui/widgets/tabs/chattab.h"
 
+#include "utils/gettext.h"
+#include "utils/stringutils.h"
+
 #include "debug.h"
 
 extern ShortcutWindow *spellShortcutWindow;
@@ -152,6 +155,60 @@ impHandler0(scrollChatDown)
         return true;
     }
     return false;
+}
+
+impHandler(msg)
+{
+    std::string recvnick;
+    std::string msg;
+
+    if (event.args.substr(0, 1) == "\"")
+    {
+        const size_t pos = event.args.find('"', 1);
+        if (pos != std::string::npos)
+        {
+            recvnick = event.args.substr(1, pos - 1);
+            if (pos + 2 < event.args.length())
+                msg = event.args.substr(pos + 2, event.args.length());
+        }
+    }
+    else
+    {
+        const size_t pos = event.args.find(" ");
+        if (pos != std::string::npos)
+        {
+            recvnick = event.args.substr(0, pos);
+            if (pos + 1 < event.args.length())
+                msg = event.args.substr(pos + 1, event.args.length());
+        }
+        else
+        {
+            recvnick = std::string(event.args);
+            msg.clear();
+        }
+    }
+
+    trim(msg);
+
+    if (msg.length() > 0)
+    {
+        std::string playerName = localPlayer->getName();
+        std::string tempNick = recvnick;
+
+        toLower(playerName);
+        toLower(tempNick);
+
+        if (tempNick.compare(playerName) == 0 || event.args.empty())
+            return true;
+
+        chatWindow->addWhisper(recvnick, msg, ChatMsgType::BY_PLAYER);
+    }
+    else
+    {
+        // TRANSLATORS: whisper send
+        event.tab->chatLog(_("Cannot send empty whispers!"), ChatMsgType::BY_SERVER);
+    }
+    return true;
 }
 
 }  // namespace Actions

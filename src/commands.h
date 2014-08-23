@@ -51,7 +51,6 @@ struct CommandInfo final
 
 namespace Commands
 {
-    decHandler(msg);
     decHandler(query);
     decHandler(clear);
     decHandler(cleanGraphics);
@@ -137,8 +136,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_MSG = 0,
-    COMMAND_WHISPER,
+    COMMAND_WHISPER = 0,
     COMMAND_W,
     COMMAND_QUERY,
     COMMAND_Q,
@@ -227,9 +225,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"msg", Commands::msg, -1, true},
-    {"whisper", Commands::msg, -1, true},
-    {"w", &Commands::msg, -1, true},
     {"query", Commands::query, -1, true},
     {"q", &Commands::query, -1, true},
     {"ignore", &Commands::ignore, -1, true},

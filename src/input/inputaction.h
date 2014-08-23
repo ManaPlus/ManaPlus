@@ -347,6 +347,7 @@ namespace InputAction
         IPC_TOGGLE,
         WHERE,
         WHO,
+        WHISPER,
         TOTAL
     };
 }  // namespace InputAction
