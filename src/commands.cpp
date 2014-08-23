@@ -251,13 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-
-impHandler(announce)
-{
-    Net::getAdminHandler()->announce(event.args);
-    return true;
-}
-
 impHandler0(ipcToggle)
 {
     if (ipc)

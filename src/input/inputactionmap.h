@@ -27,6 +27,7 @@
 
 #include "actions/actions.h"
 #include "actions/chat.h"
+#include "actions/commands.h"
 #include "actions/move.h"
 #include "actions/statusbar.h"
 #include "actions/tabs.h"
@@ -2855,7 +2856,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "ignoreallwhispers",
-        false}
+        false},
+    {"keyChatAnnounce",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT | Input::GRP_GUI,
+        &Actions::chatAnnounce,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "announce",
+        true}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

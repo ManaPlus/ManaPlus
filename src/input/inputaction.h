@@ -343,6 +343,7 @@ namespace InputAction
         TARGET_CLOSEST_MONSTER,
         CLOSE_ALL_CHAT_TABS,
         IGNORE_ALL_WHISPERS,
+        CHAT_ANNOUNCE,
         TOTAL
     };
 }  // namespace InputAction
