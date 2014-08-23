@@ -130,6 +130,7 @@ class InputManager final
         int mMask;
 
         std::map<std::string, int> mNameMap;
+        std::map<std::string, int> mChatMap;
 
         InputFunction mKey[InputAction::TOTAL];
 };

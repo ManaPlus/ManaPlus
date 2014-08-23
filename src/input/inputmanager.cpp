@@ -72,7 +72,8 @@ InputManager::InputManager() :
     mSetupInput(nullptr),
     mNewKeyIndex(InputAction::NO_VALUE),
     mMask(1),
-    mNameMap()
+    mNameMap(),
+    mChatMap()
 {
 }
 
@@ -156,6 +157,8 @@ void InputManager::retrieve()
                 }
             }
         }
+        if (!inputActionData[i].chatCommand.empty())
+            mChatMap[i] = i;
     }
 }
 
