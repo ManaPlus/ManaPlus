@@ -251,12 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler0(who)
-{
-    Net::getChatHandler()->who();
-    return true;
-}
-
 impHandler(msg)
 {
     std::string recvnick;

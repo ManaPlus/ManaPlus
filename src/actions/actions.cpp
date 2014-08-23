@@ -70,6 +70,7 @@
 
 #include "render/graphics.h"
 
+#include "net/chathandler.h"
 #include "net/ipc.h"
 #include "net/net.h"
 #include "net/playerhandler.h"
@@ -532,6 +533,12 @@ impHandler(where)
         << ((localPlayer->getPixelX() - mapTileSize / 2) / mapTileSize)
         << ", " << ((localPlayer->getPixelY() - mapTileSize) / mapTileSize);
     tab->chatLog(where.str(), ChatMsgType::BY_SERVER);
+    return true;
+}
+
+impHandler0(who)
+{
+    Net::getChatHandler()->who();
     return true;
 }
 

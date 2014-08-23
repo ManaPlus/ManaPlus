@@ -346,6 +346,7 @@ namespace InputAction
         CHAT_ANNOUNCE,
         IPC_TOGGLE,
         WHERE,
+        WHO,
         TOTAL
     };
 }  // namespace InputAction

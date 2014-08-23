@@ -56,6 +56,7 @@ namespace Actions
     decHandler(openTrade);
     decHandler(ipcToggle);
     decHandler(where);
+    decHandler(who);
 }  // namespace Actions
 
 #undef decHandler

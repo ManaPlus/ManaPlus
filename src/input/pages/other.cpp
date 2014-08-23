@@ -203,6 +203,12 @@ SetupActionData setupActionDataOther[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Show online players number in chat"),
+        InputAction::WHO,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Show onscreen keyboard"),
         InputAction::SHOW_KEYBOARD,
         "",
