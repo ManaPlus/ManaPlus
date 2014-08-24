@@ -59,7 +59,6 @@ namespace Commands
     decHandler(me);
     decHandler(toggle);
     decHandler(present);
-    decHandler(unignore);
     decHandler(beFriend);
     decHandler(disregard);
     decHandler(neutral);
@@ -133,8 +132,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_UNIGNORE = 0,
-    COMMAND_FRIEND,
+    COMMAND_FRIEND = 0,
     COMMAND_BEFRIEND,
     COMMAND_DISREGARD,
     COMMAND_NEUTRAL,
@@ -216,7 +214,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"unignore", &Commands::unignore, -1, true},
     {"friend", Commands::beFriend, -1, true},
     {"befriend", &Commands::beFriend, -1, true},
     {"disregard", &Commands::disregard, -1, true},

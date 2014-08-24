@@ -29,6 +29,7 @@ namespace Actions
 {
     decHandler(chatAnnounce);
     decHandler(chatIgnore);
+    decHandler(chatUnignore);
 }  // namespace Actions
 
 #undef decHandler

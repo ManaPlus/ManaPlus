@@ -351,6 +351,7 @@ namespace InputAction
         QUERY,
         CLEAR_CHAT_TAB,
         IGNORE,
+        UNIGNORE,
         TOTAL
     };
 }  // namespace InputAction

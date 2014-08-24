@@ -405,51 +405,6 @@ impHandler(neutral)
     return true;
 }
 
-impHandler(unignore)
-{
-    if (event.args.empty())
-    {
-        if (event.tab)
-        {
-            // TRANSLATORS: unignore command
-            event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
-        }
-        return true;
-    }
-
-    const PlayerRelation::Relation rel = player_relations.getRelation(event.args);
-    if (rel != PlayerRelation::NEUTRAL && rel != PlayerRelation::FRIEND)
-    {
-        player_relations.setRelation(event.args, PlayerRelation::NEUTRAL);
-    }
-    else
-    {
-        if (event.tab)
-        {
-            // TRANSLATORS: unignore command
-            event.tab->chatLog(_("Player wasn't ignored!"), ChatMsgType::BY_SERVER);
-        }
-        return true;
-    }
-
-    if (event.tab)
-    {
-        if (player_relations.getRelation(event.args) == PlayerRelation::NEUTRAL)
-        {
-            // TRANSLATORS: unignore command
-            event.tab->chatLog(_("Player no longer ignored!"),
-                ChatMsgType::BY_SERVER);
-        }
-        else
-        {
-            // TRANSLATORS: unignore command
-            event.tab->chatLog(_("Player could not be unignored!"),
-                ChatMsgType::BY_SERVER);
-        }
-    }
-    return true;
-}
-
 impHandler(blackList)
 {
     // TRANSLATORS: blacklist command
