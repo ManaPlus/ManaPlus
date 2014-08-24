@@ -191,4 +191,11 @@ impHandler(chatFriend)
     return true;
 }
 
+impHandler(chatDisregard)
+{
+    // TRANSLATORS: disregard command
+    changeRelation(event.args, PlayerRelation::DISREGARDED, _("disregarded"), event.tab);
+    return true;
+}
+
 }  // namespace Actions

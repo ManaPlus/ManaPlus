@@ -59,7 +59,6 @@ namespace Commands
     decHandler(me);
     decHandler(toggle);
     decHandler(present);
-    decHandler(disregard);
     decHandler(neutral);
     decHandler(blackList);
     decHandler(enemy);
@@ -131,8 +130,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_DISREGARD = 0,
-    COMMAND_NEUTRAL,
+    COMMAND_NEUTRAL = 0,
     COMMAND_BLACKLIST,
     COMMAND_ENEMY,
     COMMAND_ERASE,
@@ -211,7 +209,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"disregard", &Commands::disregard, -1, true},
     {"neutral", &Commands::neutral, -1, true},
     {"blacklist", &Commands::blackList, -1, true},
     {"enemy", &Commands::enemy, -1, true},

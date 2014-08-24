@@ -2946,6 +2946,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "friend|befriend",
+        true},
+    {"keyDisregard",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::chatDisregard,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "disregard",
         true}
 };
 

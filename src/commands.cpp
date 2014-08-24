@@ -384,13 +384,6 @@ impHandler0(present)
     return false;
 }
 
-impHandler(disregard)
-{
-    // TRANSLATORS: disregard command
-    changeRelation(event.args, PlayerRelation::DISREGARDED, _("disregarded"), event.tab);
-    return true;
-}
-
 impHandler(neutral)
 {
     // TRANSLATORS: neutral command

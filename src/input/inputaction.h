@@ -353,6 +353,7 @@ namespace InputAction
         IGNORE,
         UNIGNORE,
         FRIEND,
+        DISREGARD,
         TOTAL
     };
 }  // namespace InputAction
