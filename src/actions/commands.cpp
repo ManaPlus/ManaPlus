@@ -198,4 +198,11 @@ impHandler(chatDisregard)
     return true;
 }
 
+impHandler(chatNeutral)
+{
+    // TRANSLATORS: neutral command
+    changeRelation(event.args, PlayerRelation::NEUTRAL, _("neutral"), event.tab);
+    return true;
+}
+
 }  // namespace Actions

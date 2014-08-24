@@ -32,6 +32,7 @@ namespace Actions
     decHandler(chatUnignore);
     decHandler(chatFriend);
     decHandler(chatDisregard);
+    decHandler(chatNeutral);
 }  // namespace Actions
 
 #undef decHandler

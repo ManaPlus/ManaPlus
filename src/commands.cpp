@@ -384,13 +384,6 @@ impHandler0(present)
     return false;
 }
 
-impHandler(neutral)
-{
-    // TRANSLATORS: neutral command
-    changeRelation(event.args, PlayerRelation::NEUTRAL, _("neutral"), event.tab);
-    return true;
-}
-
 impHandler(blackList)
 {
     // TRANSLATORS: blacklist command
