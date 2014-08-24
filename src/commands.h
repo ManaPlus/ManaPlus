@@ -59,7 +59,6 @@ namespace Commands
     decHandler(me);
     decHandler(toggle);
     decHandler(present);
-    decHandler(blackList);
     decHandler(enemy);
     decHandler(erase);
     decHandler(quit);
@@ -129,8 +128,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_BLACKLIST = 0,
-    COMMAND_ENEMY,
+    COMMAND_ENEMY = 0,
     COMMAND_ERASE,
     COMMAND_CLEANGRAPHICS,
     COMMAND_CLEANFONTS,
@@ -207,7 +205,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"blacklist", &Commands::blackList, -1, true},
     {"enemy", &Commands::enemy, -1, true},
     {"erase", &Commands::erase, -1, true},
     {"cleangraphics", &Commands::cleanGraphics, -1, false},

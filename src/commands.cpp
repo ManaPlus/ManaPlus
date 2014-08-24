@@ -384,13 +384,6 @@ impHandler0(present)
     return false;
 }
 
-impHandler(blackList)
-{
-    // TRANSLATORS: blacklist command
-    changeRelation(event.args, PlayerRelation::BLACKLISTED, _("blacklisted"), event.tab);
-    return true;
-}
-
 impHandler(enemy)
 {
     // TRANSLATORS: enemy command

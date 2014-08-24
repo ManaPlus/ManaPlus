@@ -355,6 +355,7 @@ namespace InputAction
         FRIEND,
         DISREGARD,
         NEUTRAL,
+        BLACKLIST,
         TOTAL
     };
 }  // namespace InputAction

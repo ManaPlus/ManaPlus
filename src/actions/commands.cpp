@@ -205,4 +205,11 @@ impHandler(chatNeutral)
     return true;
 }
 
+impHandler(chatBlackList)
+{
+    // TRANSLATORS: blacklist command
+    changeRelation(event.args, PlayerRelation::BLACKLISTED, _("blacklisted"), event.tab);
+    return true;
+}
+
 }  // namespace Actions
