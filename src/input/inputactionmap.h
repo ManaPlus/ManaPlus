@@ -2973,6 +2973,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "blacklist",
+        true},
+    {"keyEnemy",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::chatEnemy,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "enemy",
         true}
 };
 

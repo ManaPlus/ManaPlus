@@ -212,4 +212,11 @@ impHandler(chatBlackList)
     return true;
 }
 
+impHandler(chatEnemy)
+{
+    // TRANSLATORS: enemy command
+    changeRelation(event.args, PlayerRelation::ENEMY2, _("enemy"), event.tab);
+    return true;
+}
+
 }  // namespace Actions

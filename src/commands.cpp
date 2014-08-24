@@ -384,13 +384,6 @@ impHandler0(present)
     return false;
 }
 
-impHandler(enemy)
-{
-    // TRANSLATORS: enemy command
-    changeRelation(event.args, PlayerRelation::ENEMY2, _("enemy"), event.tab);
-    return true;
-}
-
 impHandler(erase)
 {
     if (event.args.empty())
