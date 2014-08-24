@@ -30,6 +30,7 @@ namespace Actions
     decHandler(chatAnnounce);
     decHandler(chatIgnore);
     decHandler(chatUnignore);
+    decHandler(chatFriend);
 }  // namespace Actions
 
 #undef decHandler

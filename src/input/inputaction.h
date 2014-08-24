@@ -352,6 +352,7 @@ namespace InputAction
         CLEAR_CHAT_TAB,
         IGNORE,
         UNIGNORE,
+        FRIEND,
         TOTAL
     };
 }  // namespace InputAction

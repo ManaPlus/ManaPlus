@@ -384,13 +384,6 @@ impHandler0(present)
     return false;
 }
 
-impHandler(beFriend)
-{
-    // TRANSLATORS: adding friend command
-    changeRelation(event.args, PlayerRelation::FRIEND, _("friend"), event.tab);
-    return true;
-}
-
 impHandler(disregard)
 {
     // TRANSLATORS: disregard command

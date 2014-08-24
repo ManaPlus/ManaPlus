@@ -184,4 +184,11 @@ impHandler(chatUnignore)
     return true;
 }
 
+impHandler(chatFriend)
+{
+    // TRANSLATORS: adding friend command
+    changeRelation(event.args, PlayerRelation::FRIEND, _("friend"), event.tab);
+    return true;
+}
+
 }  // namespace Actions
