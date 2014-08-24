@@ -59,7 +59,6 @@ namespace Commands
     decHandler(me);
     decHandler(toggle);
     decHandler(present);
-    decHandler(erase);
     decHandler(quit);
     decHandler(showAll);
     decHandler(move);
@@ -127,8 +126,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_ERASE = 0,
-    COMMAND_CLEANGRAPHICS,
+    COMMAND_CLEANGRAPHICS = 0,
     COMMAND_CLEANFONTS,
     COMMAND_CREATEPARTY,
     COMMAND_CREATEGUILD,
@@ -203,7 +201,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"erase", &Commands::erase, -1, true},
     {"cleangraphics", &Commands::cleanGraphics, -1, false},
     {"cleanfonts", &Commands::cleanFonts, -1, false},
     {"createparty", &Commands::createParty, -1, true},

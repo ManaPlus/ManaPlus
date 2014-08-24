@@ -384,50 +384,6 @@ impHandler0(present)
     return false;
 }
 
-impHandler(erase)
-{
-    if (event.args.empty())
-    {
-        if (event.tab)
-        {
-            // TRANSLATORS: erase command
-            event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
-        }
-        return true;
-    }
-
-    if (player_relations.getRelation(event.args) == PlayerRelation::ERASED)
-    {
-        if (event.tab)
-        {
-            // TRANSLATORS: erase command
-            event.tab->chatLog(_("Player already erased!"), ChatMsgType::BY_SERVER);
-        }
-        return true;
-    }
-    else
-    {
-        player_relations.setRelation(event.args, PlayerRelation::ERASED);
-    }
-
-    if (event.tab)
-    {
-        if (player_relations.getRelation(event.args) == PlayerRelation::ERASED)
-        {
-            // TRANSLATORS: erase command
-            event.tab->chatLog(_("Player successfully erased!"),
-                ChatMsgType::BY_SERVER);
-        }
-        else
-        {
-            // TRANSLATORS: erase command
-            event.tab->chatLog(_("Player could not be erased!"),
-                ChatMsgType::BY_SERVER);
-        }
-    }
-    return true;
-}
-
 impHandler0(quit)
 {
 //    quit();

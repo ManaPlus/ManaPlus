@@ -2982,6 +2982,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "enemy",
+        true},
+    {"keyErase",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::chatErase,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "erase",
         true}
 };
 

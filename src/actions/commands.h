@@ -35,6 +35,7 @@ namespace Actions
     decHandler(chatNeutral);
     decHandler(chatBlackList);
     decHandler(chatEnemy);
+    decHandler(chatErase);
 }  // namespace Actions
 
 #undef decHandler

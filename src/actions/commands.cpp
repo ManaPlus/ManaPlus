@@ -184,6 +184,53 @@ impHandler(chatUnignore)
     return true;
 }
 
+impHandler(chatErase)
+{
+    std::string args = event.args;
+    if (args.empty())
+    {
+        WhisperTab *const whisper = dynamic_cast<WhisperTab* const>(event.tab);
+        if (!whisper || whisper->getNick().empty())
+        {
+            // TRANSLATORS: change relation
+            event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
+            return false;
+        }
+        args = whisper->getNick();
+    }
+
+    if (player_relations.getRelation(args) == PlayerRelation::ERASED)
+    {
+        if (event.tab)
+        {
+            // TRANSLATORS: erase command
+            event.tab->chatLog(_("Player already erased!"), ChatMsgType::BY_SERVER);
+        }
+        return true;
+    }
+    else
+    {
+        player_relations.setRelation(args, PlayerRelation::ERASED);
+    }
+
+    if (event.tab)
+    {
+        if (player_relations.getRelation(args) == PlayerRelation::ERASED)
+        {
+            // TRANSLATORS: erase command
+            event.tab->chatLog(_("Player successfully erased!"),
+                ChatMsgType::BY_SERVER);
+        }
+        else
+        {
+            // TRANSLATORS: erase command
+            event.tab->chatLog(_("Player could not be erased!"),
+                ChatMsgType::BY_SERVER);
+        }
+    }
+    return true;
+}
+
 impHandler(chatFriend)
 {
     // TRANSLATORS: adding friend command

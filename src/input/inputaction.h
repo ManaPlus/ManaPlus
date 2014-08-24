@@ -357,6 +357,7 @@ namespace InputAction
         NEUTRAL,
         BLACKLIST,
         ENEMY,
+        ERASE,
         TOTAL
     };
 }  // namespace InputAction
