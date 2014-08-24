@@ -136,7 +136,7 @@ impHandler(chatIgnore)
     return true;
 }
 
-impHandler(chatUnignore)
+static std::string getNick(const InputEvent &event)
 {
     std::string args = event.args;
     if (args.empty())
@@ -146,10 +146,38 @@ impHandler(chatUnignore)
         {
             // TRANSLATORS: change relation
             event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
-            return false;
+            return std::string();
         }
         args = whisper->getNick();
     }
+    return args;
+}
+
+static void reportRelation(const InputEvent &event,
+                           const PlayerRelation::Relation &rel,
+                           const std::string &str1,
+                           const std::string &str2)
+{
+    if (event.tab)
+    {
+        if (player_relations.getRelation(args) == rel)
+        {
+            // TRANSLATORS: unignore command
+            event.tab->chatLog(str1, ChatMsgType::BY_SERVER);
+        }
+        else
+        {
+            // TRANSLATORS: unignore command
+            event.tab->chatLog(str2, ChatMsgType::BY_SERVER);
+        }
+    }
+}
+
+impHandler(chatUnignore)
+{
+    std::string args = getNick(event);
+    if (args.empty())
+        return false;
 
     const PlayerRelation::Relation rel = player_relations.getRelation(args);
     if (rel != PlayerRelation::NEUTRAL && rel != PlayerRelation::FRIEND)
@@ -166,38 +194,20 @@ impHandler(chatUnignore)
         return true;
     }
 
-    if (event.tab)
-    {
-        if (player_relations.getRelation(args) == PlayerRelation::NEUTRAL)
-        {
-            // TRANSLATORS: unignore command
-            event.tab->chatLog(_("Player no longer ignored!"),
-                ChatMsgType::BY_SERVER);
-        }
-        else
-        {
-            // TRANSLATORS: unignore command
-            event.tab->chatLog(_("Player could not be unignored!"),
-                ChatMsgType::BY_SERVER);
-        }
-    }
+    reportRelation(event,
+        PlayerRelation::NEUTRAL,
+        // TRANSLATORS: unignore command
+        _("Player no longer ignored!"),
+        // TRANSLATORS: unignore command
+        _("Player could not be unignored!"));
     return true;
 }
 
 impHandler(chatErase)
 {
-    std::string args = event.args;
+    std::string args = getNick(event);
     if (args.empty())
-    {
-        WhisperTab *const whisper = dynamic_cast<WhisperTab* const>(event.tab);
-        if (!whisper || whisper->getNick().empty())
-        {
-            // TRANSLATORS: change relation
-            event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
-            return false;
-        }
-        args = whisper->getNick();
-    }
+        return false;
 
     if (player_relations.getRelation(args) == PlayerRelation::ERASED)
     {
@@ -213,21 +223,12 @@ impHandler(chatErase)
         player_relations.setRelation(args, PlayerRelation::ERASED);
     }
 
-    if (event.tab)
-    {
-        if (player_relations.getRelation(args) == PlayerRelation::ERASED)
-        {
-            // TRANSLATORS: erase command
-            event.tab->chatLog(_("Player successfully erased!"),
-                ChatMsgType::BY_SERVER);
-        }
-        else
-        {
-            // TRANSLATORS: erase command
-            event.tab->chatLog(_("Player could not be erased!"),
-                ChatMsgType::BY_SERVER);
-        }
-    }
+    reportRelation(event,
+        PlayerRelation::ERASED,
+        // TRANSLATORS: erase command
+        _("Player no longer erased!"),
+        // TRANSLATORS: erase command
+        _("Player could not be erased!"));
     return true;
 }
 
