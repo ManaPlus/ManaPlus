@@ -72,6 +72,7 @@
 #include "net/net.h"
 
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -267,6 +268,19 @@ impHandler0(printAll)
     if (actorManager)
     {
         actorManager->printAllToChat();
+        return true;
+    }
+    return false;
+}
+
+impHandler(move)
+{
+    int x = 0;
+    int y = 0;
+
+    if (localPlayer && parse2Int(event.args, x, y))
+    {
+        localPlayer->setDestination(x, y);
         return true;
     }
     return false;

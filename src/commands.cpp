@@ -99,22 +99,6 @@ extern char **environ;
 namespace Commands
 {
 
-static bool parse2Int(const std::string &args, int &x, int &y)
-{
-    bool isValid = false;
-    const size_t pos = args.find(" ");
-    if (pos != std::string::npos)
-    {
-        if (pos + 1 < args.length())
-        {
-            x = atoi(args.substr(0, pos).c_str());
-            y = atoi(args.substr(pos + 1, args.length()).c_str());
-            isValid = true;
-        }
-    }
-    return isValid;
-}
-
 static void outStringNormal(ChatTab *const tab,
                             const std::string &str,
                             const std::string &def)
@@ -165,19 +149,6 @@ static void outStringNormal(ChatTab *const tab,
             Net::getChatHandler()->talk(def, GENERAL_CHANNEL);
             break;
     }
-}
-
-impHandler(move)
-{
-    int x = 0;
-    int y = 0;
-
-    if (localPlayer && parse2Int(event.args, x, y))
-    {
-        localPlayer->setDestination(x, y);
-        return true;
-    }
-    return false;
 }
 
 impHandler(navigate)

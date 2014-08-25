@@ -38,6 +38,7 @@ namespace Actions
     decHandler(chatErase);
     decHandler(present);
     decHandler(printAll);
+    decHandler(move);
 }  // namespace Actions
 
 #undef decHandler

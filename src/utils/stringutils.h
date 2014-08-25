@@ -238,4 +238,6 @@ bool isDigit(const std::string &str);
 
 void secureChatCommand(std::string &str);
 
+bool parse2Int(const std::string &args, int &x, int &y);
+
 #endif  // UTILS_STRINGUTILS_H

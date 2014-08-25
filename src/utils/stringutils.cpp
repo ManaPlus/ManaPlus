@@ -730,3 +730,19 @@ void secureChatCommand(std::string &str)
     if (str[0] == '/' || str[0] == '@' || str[0] == '#')
         str = "_" + str;
 }
+
+bool parse2Int(const std::string &args, int &x, int &y)
+{
+    bool isValid = false;
+    const size_t pos = args.find(" ");
+    if (pos != std::string::npos)
+    {
+        if (pos + 1 < args.length())
+        {
+            x = atoi(args.substr(0, pos).c_str());
+            y = atoi(args.substr(pos + 1, args.length()).c_str());
+            isValid = true;
+        }
+    }
+    return isValid;
+}
