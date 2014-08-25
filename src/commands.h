@@ -51,7 +51,6 @@ struct CommandInfo final
 
 namespace Commands
 {
-    decHandler(createParty);
     decHandler(createGuild);
     decHandler(party);
     decHandler(me);
@@ -124,8 +123,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_CREATEPARTY = 0,
-    COMMAND_CREATEGUILD,
+    COMMAND_CREATEGUILD = 0,
     COMMAND_PARTY,
     COMMAND_ME,
     COMMAND_TOGGLE,
@@ -197,7 +195,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"createparty", &Commands::createParty, -1, true},
     {"createguild", &Commands::createGuild, -1, true},
     {"party", &Commands::party, -1, true},
     {"me", &Commands::me, -1, true},

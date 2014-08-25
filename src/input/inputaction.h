@@ -360,6 +360,7 @@ namespace InputAction
         ERASE,
         CLEAN_GRAPHICS,
         CLEAN_FONTS,
+        CREATE_PARTY,
         TOTAL
     };
 }  // namespace InputAction

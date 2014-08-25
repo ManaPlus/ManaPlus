@@ -68,6 +68,9 @@
 
 #include "gui/widgets/tabs/chattab.h"
 
+#include "net/net.h"
+#include "net/partyhandler.h"
+
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -240,6 +243,23 @@ impHandler0(clearChatTab)
         return true;
     }
     return false;
+}
+
+impHandler(createParty)
+{
+    if (!event.tab)
+        return false;
+
+    if (event.args.empty())
+    {
+        // TRANSLATORS: create party message
+        event.tab->chatLog(_("Party name is missing."), ChatMsgType::BY_SERVER);
+    }
+    else
+    {
+        Net::getPartyHandler()->create(event.args);
+    }
+    return true;
 }
 
 }  // namespace Actions

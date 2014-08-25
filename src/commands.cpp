@@ -251,23 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler(createParty)
-{
-    if (!event.tab)
-        return false;
-
-    if (event.args.empty())
-    {
-        // TRANSLATORS: create party message
-        event.tab->chatLog(_("Party name is missing."), ChatMsgType::BY_SERVER);
-    }
-    else
-    {
-        Net::getPartyHandler()->create(event.args);
-    }
-    return true;
-}
-
 impHandler(createGuild)
 {
     if (!event.tab || tmwServerVersion > 0)
