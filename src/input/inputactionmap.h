@@ -3082,6 +3082,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "move",
         true},
+    {"keySetTarget",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::setTarget,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "target",
+        true}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

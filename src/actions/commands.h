@@ -39,6 +39,7 @@ namespace Actions
     decHandler(present);
     decHandler(printAll);
     decHandler(move);
+    decHandler(setTarget);
 }  // namespace Actions
 
 #undef decHandler

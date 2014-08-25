@@ -166,17 +166,6 @@ impHandler(navigate)
     return true;
 }
 
-impHandler(target)
-{
-    if (!actorManager || !localPlayer)
-        return false;
-
-    Being *const target = actorManager->findNearestByName(event.args);
-    if (target)
-        localPlayer->setTarget(target);
-    return true;
-}
-
 impHandler0(attackHuman)
 {
     if (!actorManager || !localPlayer)

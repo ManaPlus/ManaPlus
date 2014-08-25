@@ -286,4 +286,15 @@ impHandler(move)
     return false;
 }
 
+impHandler(setTarget)
+{
+    if (!actorManager || !localPlayer)
+        return false;
+
+    Being *const target = actorManager->findNearestByName(event.args);
+    if (target)
+        localPlayer->setTarget(target);
+    return true;
+}
+
 }  // namespace Actions
