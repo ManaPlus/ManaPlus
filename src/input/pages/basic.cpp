@@ -47,8 +47,14 @@ SetupActionData setupActionDataBasic[] =
     },
     {
         // TRANSLATORS: input action name
-        N_("Target & Attack"),
+        N_("Target & attack closest monster"),
         InputAction::TARGET_ATTACK,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Target & attack closest player"),
+        InputAction::ATTACK_HUMAN,
         "",
     },
     {

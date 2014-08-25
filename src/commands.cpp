@@ -166,24 +166,6 @@ impHandler(navigate)
     return true;
 }
 
-impHandler0(attackHuman)
-{
-    if (!actorManager || !localPlayer)
-        return false;
-
-    Being *const target = actorManager->findNearestLivingBeing(
-        localPlayer, 10, ActorType::PLAYER, true);
-    if (target)
-    {
-        if (localPlayer->checAttackPermissions(target))
-        {
-            localPlayer->setTarget(target);
-            localPlayer->attack2(target, true);
-        }
-    }
-    return true;
-}
-
 impHandler(outfit)
 {
     if (outfitWindow)

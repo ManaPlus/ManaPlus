@@ -369,6 +369,7 @@ namespace InputAction
         PRINT_ALL,
         MOVE,
         TARGET,
+        ATTACK_HUMAN,
         TOTAL
     };
 }  // namespace InputAction

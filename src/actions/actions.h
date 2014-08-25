@@ -59,6 +59,7 @@ namespace Actions
     decHandler(who);
     decHandler(cleanGraphics);
     decHandler(cleanFonts);
+    decHandler(attackHuman);
 }  // namespace Actions
 
 #undef decHandler

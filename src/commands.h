@@ -114,8 +114,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_ATKHUMAN = 0,
-    COMMAND_OUTFIT,
+    COMMAND_OUTFIT = 0,
     COMMAND_EMOTE,
     COMMAND_EMOTEPET,
     COMMAND_AWAY,
@@ -177,7 +176,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"atkhuman", &Commands::attackHuman, -1, true},
     {"outfit", &Commands::outfit, -1, true},
     {"emote", &Commands::emote, -1, true},
     {"emotepet", &Commands::emotePet, -1, true},
