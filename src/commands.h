@@ -51,7 +51,6 @@ struct CommandInfo final
 
 namespace Commands
 {
-    decHandler(toggle);
     decHandler(present);
     decHandler(quit);
     decHandler(showAll);
@@ -120,8 +119,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_TOGGLE = 0,
-    COMMAND_PRESENT,
+    COMMAND_PRESENT = 0,
     COMMAND_QUIT,
     COMMAND_ALL,
     COMMAND_MOVE,
@@ -189,7 +187,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"toggle", &Commands::toggle, -1, false},
     {"present", &Commands::present, -1, false},
     {"quit", &Commands::quit, -1, false},
     {"all", &Commands::showAll, -1, false},

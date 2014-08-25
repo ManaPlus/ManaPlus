@@ -364,6 +364,7 @@ namespace InputAction
         CREATE_GUILD,
         PARTY,
         ME,
+        TOGGLE,
         TOTAL
     };
 }  // namespace InputAction

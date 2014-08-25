@@ -86,6 +86,10 @@ extern std::string tradePartnerName;
 extern QuitDialog *quitDialog;
 extern unsigned int tmwServerVersion;
 
+// TRANSLATORS: chat option changed message
+#define BOOLEAN_OPTIONS _("Options to /%s are \"yes\", \"no\", \"true\", "\
+"\"false\", \"1\", \"0\".")
+
 namespace Actions
 {
 
@@ -349,6 +353,48 @@ impHandler(me)
 {
     outString(event.tab, strprintf("*%s*", event.args.c_str()), event.args);
     return true;
+}
+
+impHandler(toggle)
+{
+    if (event.args.empty())
+    {
+        if (chatWindow && event.tab)
+        {
+            // TRANSLATORS: message from toggle chat command
+            event.tab->chatLog(chatWindow->getReturnTogglesChat() ?
+                _("Return toggles chat.") : _("Message closes chat."));
+        }
+        return true;
+    }
+
+    switch (parseBoolean(event.args))
+    {
+        case 1:
+            if (event.tab)
+            {
+                // TRANSLATORS: message from toggle chat command
+                event.tab->chatLog(_("Return now toggles chat."));
+            }
+            if (chatWindow)
+                chatWindow->setReturnTogglesChat(true);
+            return true;
+        case 0:
+            if (event.tab)
+            {
+                // TRANSLATORS: message from toggle chat command
+                event.tab->chatLog(_("Message now closes chat."));
+            }
+            if (chatWindow)
+                chatWindow->setReturnTogglesChat(false);
+            return true;
+        case -1:
+            if (event.tab)
+                event.tab->chatLog(strprintf(BOOLEAN_OPTIONS, "toggle"));
+            return true;
+        default:
+            return true;
+    }
 }
 
 }  // namespace Actions

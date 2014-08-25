@@ -42,6 +42,7 @@ namespace Actions
     decHandler(createGuild);
     decHandler(party);
     decHandler(me);
+    decHandler(toggle);
 }  // namespace Actions
 
 #undef decHandler
