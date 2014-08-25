@@ -281,4 +281,21 @@ impHandler(createGuild)
     return true;
 }
 
+impHandler(party)
+{
+    if (!event.tab)
+        return false;
+
+    if (!event.args.empty())
+    {
+        Net::getPartyHandler()->invite(event.args);
+    }
+    else
+    {
+        // TRANSLATORS: party invite message
+        event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
+    }
+    return true;
+}
+
 }  // namespace Actions

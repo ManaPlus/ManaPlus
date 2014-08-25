@@ -251,23 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler(party)
-{
-    if (!event.tab)
-        return false;
-
-    if (!event.args.empty())
-    {
-        Net::getPartyHandler()->invite(event.args);
-    }
-    else
-    {
-        // TRANSLATORS: party invite message
-        event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
-    }
-    return true;
-}
-
 impHandler(me)
 {
     outString(event.tab, strprintf("*%s*", event.args.c_str()), event.args);

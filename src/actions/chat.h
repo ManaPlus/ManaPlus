@@ -40,6 +40,7 @@ namespace Actions
     decHandler(clearChatTab);
     decHandler(createParty);
     decHandler(createGuild);
+    decHandler(party);
 }  // namespace Actions
 
 #undef decHandler
