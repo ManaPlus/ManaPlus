@@ -42,6 +42,7 @@ namespace Actions
     decHandler(setTarget);
     decHandler(commandOutfit);
     decHandler(commandEmote);
+    decHandler(commandEmotePet);
 }  // namespace Actions
 
 #undef decHandler

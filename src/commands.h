@@ -51,7 +51,6 @@ struct CommandInfo final
 
 namespace Commands
 {
-    decHandler(emotePet);
     decHandler(away);
     decHandler(pseudoAway);
     decHandler(follow);
@@ -111,8 +110,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_EMOTEPET = 0,
-    COMMAND_AWAY,
+    COMMAND_AWAY = 0,
     COMMAND_PSEUDOAWAY,
     COMMAND_FOLLOW,
     COMMAND_HEAL,
@@ -171,7 +169,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"emotepet", &Commands::emotePet, -1, true},
     {"away", &Commands::away, -1, true},
     {"pseudoaway", &Commands::pseudoAway, -1, true},
     {"follow", &Commands::follow, -1, true},

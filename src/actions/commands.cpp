@@ -69,6 +69,7 @@
 #include "gui/widgets/tabs/whispertab.h"
 
 #include "net/adminhandler.h"
+#include "net/pethandler.h"
 #include "net/net.h"
 
 #include "utils/gettext.h"
@@ -336,6 +337,14 @@ impHandler(commandEmote)
         return true;
     }
     return false;
+}
+
+impHandler(commandEmotePet)
+{
+    // need use actual pet id
+    Net::getPetHandler()->emote(static_cast<uint8_t>(
+        atoi(event.args.c_str())), 0);
+    return true;
 }
 
 }  // namespace Actions
