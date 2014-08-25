@@ -166,29 +166,6 @@ impHandler(navigate)
     return true;
 }
 
-impHandler(outfit)
-{
-    if (outfitWindow)
-    {
-        if (!event.args.empty())
-        {
-            const std::string op = event.args.substr(0, 1);
-            if (op == "n")
-                outfitWindow->wearNextOutfit(true);
-            else if (op == "p")
-                outfitWindow->wearPreviousOutfit(true);
-            else
-                outfitWindow->wearOutfit(atoi(event.args.c_str()) - 1, false, true);
-        }
-        else
-        {
-            outfitWindow->wearOutfit(atoi(event.args.c_str()) - 1, false, true);
-        }
-        return true;
-    }
-    return false;
-}
-
 impHandler(emote)
 {
     if (localPlayer)

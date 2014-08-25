@@ -40,6 +40,7 @@ namespace Actions
     decHandler(printAll);
     decHandler(move);
     decHandler(setTarget);
+    decHandler(commandOutfit);
 }  // namespace Actions
 
 #undef decHandler

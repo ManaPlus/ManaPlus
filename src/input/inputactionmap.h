@@ -3099,7 +3099,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "atkhuman",
-        false}
+        false},
+    {"keyOutfit",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::commandOutfit,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "outfit",
+        true}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

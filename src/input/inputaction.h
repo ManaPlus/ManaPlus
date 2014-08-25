@@ -370,6 +370,7 @@ namespace InputAction
         MOVE,
         TARGET,
         ATTACK_HUMAN,
+        COMMAMD_OUTFIT,
         TOTAL
     };
 }  // namespace InputAction
