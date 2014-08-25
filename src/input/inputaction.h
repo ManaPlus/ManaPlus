@@ -359,6 +359,7 @@ namespace InputAction
         ENEMY,
         ERASE,
         CLEAN_GRAPHICS,
+        CLEAN_FONTS,
         TOTAL
     };
 }  // namespace InputAction

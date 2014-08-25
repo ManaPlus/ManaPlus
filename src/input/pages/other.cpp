@@ -220,6 +220,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Clean cached fonts"),
+        InputAction::CLEAN_FONTS,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

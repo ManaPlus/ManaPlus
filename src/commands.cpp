@@ -251,18 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler0(cleanFonts)
-{
-    if (gui)
-        gui->clearFonts();
-    if (debugChatTab)
-    {
-        // TRANSLATORS: clear fonts cache message
-        debugChatTab->chatLog(_("Cache cleaned"));
-    }
-    return true;
-}
-
 impHandler(createParty)
 {
     if (!event.tab)

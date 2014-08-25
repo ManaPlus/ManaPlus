@@ -3000,6 +3000,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "cleangraphics",
+        false},
+    {"keyCleanFonts",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::cleanFonts,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "cleanfonts",
         false}
 };
 
