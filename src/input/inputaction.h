@@ -361,6 +361,7 @@ namespace InputAction
         CLEAN_GRAPHICS,
         CLEAN_FONTS,
         CREATE_PARTY,
+        CREATE_GUILD,
         TOTAL
     };
 }  // namespace InputAction

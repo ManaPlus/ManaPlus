@@ -68,6 +68,7 @@
 
 #include "gui/widgets/tabs/chattab.h"
 
+#include "net/guildhandler.h"
 #include "net/net.h"
 #include "net/partyhandler.h"
 
@@ -79,6 +80,7 @@
 extern ShortcutWindow *spellShortcutWindow;
 extern std::string tradePartnerName;
 extern QuitDialog *quitDialog;
+extern unsigned int tmwServerVersion;
 
 namespace Actions
 {
@@ -258,6 +260,23 @@ impHandler(createParty)
     else
     {
         Net::getPartyHandler()->create(event.args);
+    }
+    return true;
+}
+
+impHandler(createGuild)
+{
+    if (!event.tab || tmwServerVersion > 0)
+        return false;
+
+    if (event.args.empty())
+    {
+        // TRANSLATORS: create guild message
+        event.tab->chatLog(_("Guild name is missing."), ChatMsgType::BY_SERVER);
+    }
+    else
+    {
+        Net::getGuildHandler()->create(event.args);
     }
     return true;
 }

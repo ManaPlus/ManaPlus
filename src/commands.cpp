@@ -251,23 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler(createGuild)
-{
-    if (!event.tab || tmwServerVersion > 0)
-        return false;
-
-    if (event.args.empty())
-    {
-        // TRANSLATORS: create guild message
-        event.tab->chatLog(_("Guild name is missing."), ChatMsgType::BY_SERVER);
-    }
-    else
-    {
-        Net::getGuildHandler()->create(event.args);
-    }
-    return true;
-}
-
 impHandler(party)
 {
     if (!event.tab)
