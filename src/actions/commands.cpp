@@ -357,4 +357,15 @@ impHandler(awayMessage)
     return false;
 }
 
+impHandler(pseudoAway)
+{
+    if (localPlayer)
+    {
+        localPlayer->setPseudoAway(event.args);
+        localPlayer->updateStatus();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

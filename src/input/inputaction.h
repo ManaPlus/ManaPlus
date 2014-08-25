@@ -374,6 +374,7 @@ namespace InputAction
         COMMAMD_EMOTE,
         COMMAND_EMOTE_PET,
         AWAY_MESSAGE,
+        PSEUDO_AWAY,
         TOTAL
     };
 }  // namespace InputAction

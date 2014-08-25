@@ -3136,6 +3136,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "away",
         true},
+    {"keyPseudoAway",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::pseudoAway,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "pseudoaway",
+        true}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
