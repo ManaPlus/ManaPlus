@@ -21,6 +21,7 @@
 #include "actions/commands.h"
 
 #include "actormanager.h"
+#include "configuration.h"
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
@@ -366,6 +367,31 @@ impHandler(pseudoAway)
         return true;
     }
     return false;
+}
+
+impHandler(follow)
+{
+    if (!localPlayer)
+        return false;
+
+    if (!features.getBoolValue("allowFollow"))
+        return false;
+
+    if (!event.args.empty())
+    {
+        localPlayer->setFollow(event.args);
+    }
+    else if (event.tab && event.tab->getType() == ChatTabType::WHISPER)
+    {
+        localPlayer->setFollow(static_cast<WhisperTab*>(event.tab)->getNick());
+    }
+    else
+    {
+        const Being *const being = localPlayer->getTarget();
+        if (being != nullptr)
+            localPlayer->setFollow(being->getName());
+    }
+    return true;
 }
 
 }  // namespace Actions

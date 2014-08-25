@@ -45,6 +45,7 @@ namespace Actions
     decHandler(commandEmotePet);
     decHandler(awayMessage);
     decHandler(pseudoAway);
+    decHandler(follow);
 }  // namespace Actions
 
 #undef decHandler

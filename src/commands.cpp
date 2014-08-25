@@ -166,21 +166,6 @@ impHandler(navigate)
     return true;
 }
 
-impHandler(follow)
-{
-    if (!localPlayer)
-        return false;
-
-    if (!features.getBoolValue("allowFollow"))
-        return false;
-
-    if (!event.args.empty())
-        localPlayer->setFollow(event.args);
-    else if (event.tab && event.tab->getType() == ChatTabType::WHISPER)
-        localPlayer->setFollow(static_cast<WhisperTab*>(event.tab)->getNick());
-    return true;
-}
-
 impHandler(imitation)
 {
     if (!localPlayer)

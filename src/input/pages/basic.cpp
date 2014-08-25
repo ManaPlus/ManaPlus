@@ -173,6 +173,12 @@ SetupActionData setupActionDataBasic[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Follow selected player"),
+        InputAction::FOLLOW,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Change Map View Mode"),
         InputAction::PATHFIND,
         "",
