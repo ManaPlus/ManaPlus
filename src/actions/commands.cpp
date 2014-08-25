@@ -78,64 +78,6 @@
 namespace Actions
 {
 
-static void changeRelation(std::string args,
-                           const PlayerRelation::Relation relation,
-                           const std::string &relationText,
-                           ChatTab *const tab)
-{
-    if (!tab)
-        return;
-
-    if (args.empty())
-    {
-        WhisperTab *const whisper = dynamic_cast<WhisperTab* const>(tab);
-        if (!whisper || whisper->getNick().empty())
-        {
-            // TRANSLATORS: change relation
-            tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
-            return;
-        }
-        args = whisper->getNick();
-    }
-
-    if (player_relations.getRelation(args) == relation)
-    {
-        // TRANSLATORS: change relation
-        tab->chatLog(strprintf(_("Player already %s!"),
-                     relationText.c_str()), ChatMsgType::BY_SERVER);
-        return;
-    }
-    else
-    {
-        player_relations.setRelation(args, relation);
-    }
-
-    if (player_relations.getRelation(args) == relation)
-    {
-        // TRANSLATORS: change relation
-        tab->chatLog(strprintf(_("Player successfully %s!"),
-                     relationText.c_str()), ChatMsgType::BY_SERVER);
-    }
-    else
-    {
-        // TRANSLATORS: change relation
-        tab->chatLog(strprintf(_("Player could not be %s!"),
-                     relationText.c_str()), ChatMsgType::BY_SERVER);
-    }
-}
-
-impHandler(chatAnnounce)
-{
-    Net::getAdminHandler()->announce(event.args);
-    return true;
-}
-
-impHandler(chatIgnore)
-{
-    changeRelation(event.args, PlayerRelation::IGNORED, "ignored", event.tab);
-    return true;
-}
-
 static std::string getNick(const InputEvent &event)
 {
     std::string args = event.args;
@@ -160,7 +102,7 @@ static void reportRelation(const InputEvent &event,
 {
     if (event.tab)
     {
-        if (player_relations.getRelation(args) == rel)
+        if (player_relations.getRelation(event.args) == rel)
         {
             // TRANSLATORS: unignore command
             event.tab->chatLog(str1, ChatMsgType::BY_SERVER);
@@ -171,6 +113,49 @@ static void reportRelation(const InputEvent &event,
             event.tab->chatLog(str2, ChatMsgType::BY_SERVER);
         }
     }
+}
+
+static void changeRelation(const InputEvent &event,
+                           const PlayerRelation::Relation relation,
+                           const std::string &relationText)
+{
+    if (!event.tab)
+        return;
+
+    std::string args = getNick(event);
+    if (args.empty())
+        return;
+
+    if (player_relations.getRelation(args) == relation)
+    {
+        // TRANSLATORS: change relation
+        event.tab->chatLog(strprintf(_("Player already %s!"),
+                     relationText.c_str()), ChatMsgType::BY_SERVER);
+        return;
+    }
+    else
+    {
+        player_relations.setRelation(args, relation);
+    }
+
+    reportRelation(event,
+        relation,
+        // TRANSLATORS: change relation
+        strprintf(_("Player successfully %s!"), relationText.c_str()),
+        // TRANSLATORS: change relation
+        strprintf(_("Player could not be %s!"), relationText.c_str()));
+}
+
+impHandler(chatAnnounce)
+{
+    Net::getAdminHandler()->announce(event.args);
+    return true;
+}
+
+impHandler(chatIgnore)
+{
+    changeRelation(event, PlayerRelation::IGNORED, "ignored");
+    return true;
 }
 
 impHandler(chatUnignore)
@@ -235,35 +220,35 @@ impHandler(chatErase)
 impHandler(chatFriend)
 {
     // TRANSLATORS: adding friend command
-    changeRelation(event.args, PlayerRelation::FRIEND, _("friend"), event.tab);
+    changeRelation(event, PlayerRelation::FRIEND, _("friend"));
     return true;
 }
 
 impHandler(chatDisregard)
 {
     // TRANSLATORS: disregard command
-    changeRelation(event.args, PlayerRelation::DISREGARDED, _("disregarded"), event.tab);
+    changeRelation(event, PlayerRelation::DISREGARDED, _("disregarded"));
     return true;
 }
 
 impHandler(chatNeutral)
 {
     // TRANSLATORS: neutral command
-    changeRelation(event.args, PlayerRelation::NEUTRAL, _("neutral"), event.tab);
+    changeRelation(event, PlayerRelation::NEUTRAL, _("neutral"));
     return true;
 }
 
 impHandler(chatBlackList)
 {
     // TRANSLATORS: blacklist command
-    changeRelation(event.args, PlayerRelation::BLACKLISTED, _("blacklisted"), event.tab);
+    changeRelation(event, PlayerRelation::BLACKLISTED, _("blacklisted"));
     return true;
 }
 
 impHandler(chatEnemy)
 {
     // TRANSLATORS: enemy command
-    changeRelation(event.args, PlayerRelation::ENEMY2, _("enemy"), event.tab);
+    changeRelation(event, PlayerRelation::ENEMY2, _("enemy"));
     return true;
 }
 
