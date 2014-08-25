@@ -236,7 +236,14 @@ impHandler0(heal)
 {
     if (actorManager)
     {
-        if (inputManager.isActionActive(InputAction::STOP_ATTACK))
+        if (!event.args.empty())
+        {
+            const Being *const being = actorManager->findBeingByName(
+                event.args, ActorType::PLAYER);
+            if (being)
+                actorManager->heal(being);
+        }
+        else if (inputManager.isActionActive(InputAction::STOP_ATTACK))
         {
             Being *target = localPlayer->getTarget();
             if (!target || target->getType() != ActorType::PLAYER)
@@ -247,8 +254,11 @@ impHandler0(heal)
                     localPlayer->setTarget(target);
             }
         }
+        else
+        {
+            actorManager->heal(localPlayer);
+        }
 
-        actorManager->healTarget();
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;

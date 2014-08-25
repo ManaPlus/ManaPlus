@@ -180,25 +180,6 @@ impHandler(imitation)
     return true;
 }
 
-impHandler(heal)
-{
-    if (!actorManager)
-        return false;
-
-    if (!event.args.empty())
-    {
-        const Being *const being = actorManager->findBeingByName(
-            event.args, ActorType::PLAYER);
-        if (being)
-            actorManager->heal(being);
-    }
-    else
-    {
-        actorManager->heal(localPlayer);
-    }
-    return true;
-}
-
 impHandler(hack)
 {
     Net::getChatHandler()->sendRaw(event.args);
