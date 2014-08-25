@@ -262,4 +262,14 @@ impHandler0(present)
     return false;
 }
 
+impHandler0(printAll)
+{
+    if (actorManager)
+    {
+        actorManager->printAllToChat();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

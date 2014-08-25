@@ -51,7 +51,6 @@ struct CommandInfo final
 
 namespace Commands
 {
-    decHandler(showAll);
     decHandler(move);
     decHandler(target);
     decHandler(attackHuman);
@@ -117,8 +116,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_ALL = 0,
-    COMMAND_MOVE,
+    COMMAND_MOVE = 0,
     COMMAND_TARGET,
     COMMAND_ATKHUMAN,
     COMMAND_OUTFIT,
@@ -183,7 +181,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"all", &Commands::showAll, -1, false},
     {"move", &Commands::move, -1, true},
     {"target", &Commands::target, -1, true},
     {"atkhuman", &Commands::attackHuman, -1, true},

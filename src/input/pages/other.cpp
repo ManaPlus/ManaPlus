@@ -232,6 +232,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Print all visible beings in chat"),
+        InputAction::PRINT_ALL,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

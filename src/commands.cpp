@@ -251,16 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler0(showAll)
-{
-    if (actorManager)
-    {
-        actorManager->printAllToChat();
-        return true;
-    }
-    return false;
-}
-
 impHandler(move)
 {
     int x = 0;

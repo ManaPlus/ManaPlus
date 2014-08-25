@@ -366,6 +366,7 @@ namespace InputAction
         ME,
         TOGGLE,
         PRESENT,
+        PRINT_ALL,
         TOTAL
     };
 }  // namespace InputAction
