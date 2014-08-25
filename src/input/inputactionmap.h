@@ -2991,7 +2991,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "erase",
-        true}
+        true},
+    {"keyCleanGraphics",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::cleanGraphics,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "cleangraphics",
+        false}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

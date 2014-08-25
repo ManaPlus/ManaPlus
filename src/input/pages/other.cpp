@@ -214,6 +214,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Clean cached graphics"),
+        InputAction::CLEAN_GRAPHICS,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

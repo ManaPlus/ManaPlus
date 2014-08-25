@@ -57,6 +57,7 @@ namespace Actions
     decHandler(ipcToggle);
     decHandler(where);
     decHandler(who);
+    decHandler(cleanGraphics);
 }  // namespace Actions
 
 #undef decHandler

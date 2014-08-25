@@ -51,7 +51,6 @@ struct CommandInfo final
 
 namespace Commands
 {
-    decHandler(cleanGraphics);
     decHandler(cleanFonts);
     decHandler(createParty);
     decHandler(createGuild);
@@ -126,8 +125,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_CLEANGRAPHICS = 0,
-    COMMAND_CLEANFONTS,
+    COMMAND_CLEANFONTS = 0,
     COMMAND_CREATEPARTY,
     COMMAND_CREATEGUILD,
     COMMAND_PARTY,
@@ -201,7 +199,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"cleangraphics", &Commands::cleanGraphics, -1, false},
     {"cleanfonts", &Commands::cleanFonts, -1, false},
     {"createparty", &Commands::createParty, -1, true},
     {"createguild", &Commands::createGuild, -1, true},

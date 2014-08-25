@@ -78,6 +78,8 @@
 
 #include "listeners/updatestatuslistener.h"
 
+#include "resources/resourcemanager.h"
+
 #include "resources/map/map.h"
 
 #include "utils/gettext.h"
@@ -539,6 +541,18 @@ impHandler(where)
 impHandler0(who)
 {
     Net::getChatHandler()->who();
+    return true;
+}
+
+impHandler0(cleanGraphics)
+{
+    ResourceManager::getInstance()->clearCache();
+
+    if (debugChatTab)
+    {
+        // TRANSLATORS: clear graphics command message
+        debugChatTab->chatLog(_("Cache cleaned"));
+    }
     return true;
 }
 

@@ -358,6 +358,7 @@ namespace InputAction
         BLACKLIST,
         ENEMY,
         ERASE,
+        CLEAN_GRAPHICS,
         TOTAL
     };
 }  // namespace InputAction

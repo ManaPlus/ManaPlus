@@ -251,18 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler0(cleanGraphics)
-{
-    ResourceManager::getInstance()->clearCache();
-
-    if (debugChatTab)
-    {
-        // TRANSLATORS: clear graphics command message
-        debugChatTab->chatLog(_("Cache cleaned"));
-    }
-    return true;
-}
-
 impHandler0(cleanFonts)
 {
     if (gui)
