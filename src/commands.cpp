@@ -251,12 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler(me)
-{
-    outString(event.tab, strprintf("*%s*", event.args.c_str()), event.args);
-    return true;
-}
-
 impHandler(toggle)
 {
     if (event.args.empty())

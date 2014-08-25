@@ -363,6 +363,7 @@ namespace InputAction
         CREATE_PARTY,
         CREATE_GUILD,
         PARTY,
+        ME,
         TOTAL
     };
 }  // namespace InputAction

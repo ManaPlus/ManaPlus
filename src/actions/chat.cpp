@@ -24,6 +24,7 @@
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
+#include "guildmanager.h"
 #include "itemshortcut.h"
 #include "soundmanager.h"
 
@@ -34,6 +35,7 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
+#include "gui/chatconsts.h"
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
@@ -67,7 +69,9 @@
 #include "gui/windows/updaterwindow.h"
 
 #include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chattabtype.h"
 
+#include "net/chathandler.h"
 #include "net/guildhandler.h"
 #include "net/net.h"
 #include "net/partyhandler.h"
@@ -84,6 +88,49 @@ extern unsigned int tmwServerVersion;
 
 namespace Actions
 {
+
+static void outString(const ChatTab *const tab,
+                      const std::string &str,
+                      const std::string &def)
+{
+    if (!tab)
+    {
+        Net::getChatHandler()->me(def, GENERAL_CHANNEL);
+        return;
+    }
+
+    switch (tab->getType())
+    {
+        case ChatTabType::PARTY:
+        {
+            Net::getPartyHandler()->chat(str);
+            break;
+        }
+        case ChatTabType::GUILD:
+        {
+            if (!localPlayer)
+                return;
+            const Guild *const guild = localPlayer->getGuild();
+            if (guild)
+            {
+                if (guild->getServerGuild())
+                {
+                    if (tmwServerVersion > 0)
+                        return;
+                    Net::getGuildHandler()->chat(guild->getId(), str);
+                }
+                else if (guildManager)
+                {
+                    guildManager->chat(str);
+                }
+            }
+            break;
+        }
+        default:
+            Net::getChatHandler()->me(def, GENERAL_CHANNEL);
+            break;
+    }
+}
 
 impHandler0(toggleChat)
 {
@@ -295,6 +342,12 @@ impHandler(party)
         // TRANSLATORS: party invite message
         event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
     }
+    return true;
+}
+
+impHandler(me)
+{
+    outString(event.tab, strprintf("*%s*", event.args.c_str()), event.args);
     return true;
 }
 
