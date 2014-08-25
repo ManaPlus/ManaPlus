@@ -347,4 +347,14 @@ impHandler(commandEmotePet)
     return true;
 }
 
+impHandler(awayMessage)
+{
+    if (localPlayer)
+    {
+        localPlayer->setAway(event.args);
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

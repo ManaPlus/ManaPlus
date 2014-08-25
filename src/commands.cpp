@@ -166,16 +166,6 @@ impHandler(navigate)
     return true;
 }
 
-impHandler(away)
-{
-    if (localPlayer)
-    {
-        localPlayer->setAway(event.args);
-        return true;
-    }
-    return false;
-}
-
 impHandler(pseudoAway)
 {
     if (localPlayer)

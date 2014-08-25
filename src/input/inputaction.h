@@ -373,6 +373,7 @@ namespace InputAction
         COMMAMD_OUTFIT,
         COMMAMD_EMOTE,
         COMMAND_EMOTE_PET,
+        AWAY_MESSAGE,
         TOTAL
     };
 }  // namespace InputAction

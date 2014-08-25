@@ -3126,7 +3126,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "emotepet",
-        true}
+        true},
+    {"keyAwayMessage",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::awayMessage,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "away",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

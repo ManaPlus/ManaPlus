@@ -43,6 +43,7 @@ namespace Actions
     decHandler(commandOutfit);
     decHandler(commandEmote);
     decHandler(commandEmotePet);
+    decHandler(awayMessage);
 }  // namespace Actions
 
 #undef decHandler
