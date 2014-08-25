@@ -251,12 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler0(quit)
-{
-//    quit();
-    return false;
-}
-
 impHandler0(showAll)
 {
     if (actorManager)
