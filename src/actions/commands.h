@@ -41,6 +41,7 @@ namespace Actions
     decHandler(move);
     decHandler(setTarget);
     decHandler(commandOutfit);
+    decHandler(commandEmote);
 }  // namespace Actions
 
 #undef decHandler

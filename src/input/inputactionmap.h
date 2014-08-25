@@ -3108,6 +3108,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "outfit",
+        true},
+    {"keyEmote",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::commandEmote,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "emote",
         true}
 };
 

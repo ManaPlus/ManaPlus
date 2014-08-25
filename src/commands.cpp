@@ -166,16 +166,6 @@ impHandler(navigate)
     return true;
 }
 
-impHandler(emote)
-{
-    if (localPlayer)
-    {
-        localPlayer->emote(static_cast<uint8_t>(atoi(event.args.c_str())));
-        return true;
-    }
-    return false;
-}
-
 impHandler(emotePet)
 {
     // need use actual pet id

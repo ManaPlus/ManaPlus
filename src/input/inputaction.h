@@ -371,6 +371,7 @@ namespace InputAction
         TARGET,
         ATTACK_HUMAN,
         COMMAMD_OUTFIT,
+        COMMAMD_EMOTE,
         TOTAL
     };
 }  // namespace InputAction

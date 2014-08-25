@@ -328,4 +328,14 @@ impHandler(commandOutfit)
     return false;
 }
 
+impHandler(commandEmote)
+{
+    if (localPlayer)
+    {
+        localPlayer->emote(static_cast<uint8_t>(atoi(event.args.c_str())));
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions
