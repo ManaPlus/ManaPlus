@@ -365,6 +365,7 @@ namespace InputAction
         PARTY,
         ME,
         TOGGLE,
+        PRESENT,
         TOTAL
     };
 }  // namespace InputAction

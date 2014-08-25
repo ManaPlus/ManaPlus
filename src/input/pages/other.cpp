@@ -226,6 +226,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Print visible players in chat"),
+        InputAction::PRESENT,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

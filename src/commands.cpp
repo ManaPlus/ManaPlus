@@ -251,16 +251,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler0(present)
-{
-    if (chatWindow)
-    {
-        chatWindow->doPresent();
-        return true;
-    }
-    return false;
-}
-
 impHandler0(quit)
 {
 //    quit();

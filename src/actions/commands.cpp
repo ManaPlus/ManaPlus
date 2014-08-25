@@ -252,4 +252,14 @@ impHandler(chatEnemy)
     return true;
 }
 
+impHandler0(present)
+{
+    if (chatWindow)
+    {
+        chatWindow->doPresent();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

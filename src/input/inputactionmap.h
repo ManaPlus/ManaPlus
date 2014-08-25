@@ -3054,6 +3054,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "toggle",
+        false},
+    {"keyPresent",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::present,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "present",
         false}
 };
 
