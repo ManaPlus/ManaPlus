@@ -891,4 +891,45 @@ impHandler0(error)
     exit(1);
 }
 
+impHandler(dumpGraphics)
+{
+    std::string str = strprintf("%s,%s,%dX%dX%d,", PACKAGE_OS, SMALL_VERSION,
+        mainGraphics->getWidth(), mainGraphics->getHeight(),
+        mainGraphics->getBpp());
+
+    if (mainGraphics->getFullScreen())
+        str.append("F");
+    else
+        str.append("W");
+    if (mainGraphics->getHWAccel())
+        str.append("H");
+    else
+        str.append("S");
+
+    if (mainGraphics->getDoubleBuffer())
+        str.append("D");
+    else
+        str.append("_");
+
+#if defined USE_OPENGL
+    str.append(strprintf(",%d", mainGraphics->getOpenGL()));
+#else
+    str.append(",0");
+#endif
+
+    str.append(strprintf(",%f,", static_cast<double>(settings.guiAlpha)))
+        .append(config.getBoolValue("adjustPerfomance") ? "1" : "0")
+        .append(config.getBoolValue("alphaCache") ? "1" : "0")
+        .append(config.getBoolValue("enableMapReduce") ? "1" : "0")
+        .append(config.getBoolValue("beingopacity") ? "1" : "0")
+        .append(",")
+        .append(config.getBoolValue("enableAlphaFix") ? "1" : "0")
+        .append(config.getBoolValue("disableAdvBeingCaching") ? "1" : "0")
+        .append(config.getBoolValue("disableBeingCaching") ? "1" : "0")
+        .append(config.getBoolValue("particleeffects") ? "1" : "0")
+        .append(strprintf(",%d-%d", fps, config.getIntValue("fpslimit")));
+    outStringNormal(event.tab, str, str);
+    return true;
+}
+
 }  // namespace Actions

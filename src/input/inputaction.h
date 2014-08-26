@@ -398,6 +398,7 @@ namespace InputAction
         SERVER_UNIGNORE_ALL,
         SET_DROP,
         ERROR,
+        DUMP_GRAPHICS,
         TOTAL
     };
 }  // namespace InputAction

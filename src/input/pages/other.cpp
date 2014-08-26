@@ -292,6 +292,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Dump graphics info into chat"),
+        InputAction::DUMP_GRAPHICS,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""
