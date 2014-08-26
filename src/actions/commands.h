@@ -47,6 +47,7 @@ namespace Actions
     decHandler(pseudoAway);
     decHandler(follow);
     decHandler(navigate);
+    decHandler(imitation);
 }  // namespace Actions
 
 #undef decHandler

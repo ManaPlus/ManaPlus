@@ -151,20 +151,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler(imitation)
-{
-    if (!localPlayer)
-        return false;
-
-    if (!event.args.empty())
-        localPlayer->setImitate(event.args);
-    else if (event.tab && event.tab->getType() == ChatTabType::WHISPER)
-        localPlayer->setImitate(static_cast<WhisperTab*>(event.tab)->getNick());
-    else
-        localPlayer->setImitate("");
-    return true;
-}
-
 impHandler(hack)
 {
     Net::getChatHandler()->sendRaw(event.args);

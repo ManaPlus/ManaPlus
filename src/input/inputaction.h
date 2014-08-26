@@ -377,6 +377,7 @@ namespace InputAction
         PSEUDO_AWAY,
         FOLLOW,
         NAVIGATE,
+        IMITATION,
         TOTAL
     };
 }  // namespace InputAction
