@@ -54,6 +54,7 @@ namespace Actions
     decHandler(addPriorityAttack);
     decHandler(addAttack);
     decHandler(removeAttack);
+    decHandler(addIgnoreAttack);
 }  // namespace Actions
 
 #undef decHandler

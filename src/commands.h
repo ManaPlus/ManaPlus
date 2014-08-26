@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(hack);
-    decHandler(addIgnoreAttack);
     decHandler(serverIgnoreAll);
     decHandler(serverUnIgnoreAll);
     decHandler(setDrop);
@@ -89,9 +88,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_REMOVEIGNOREATTACK = 0,
-    COMMAND_ADDIGNOREATTACK,
-    COMMAND_DUMP,
+    COMMAND_DUMP = 0,
     COMMAND_SERVERIGNOREALL,
     COMMAND_SERVERUNIGNOREALL,
     COMMAND_SETDROP,
@@ -127,7 +124,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"addignoreattack", &Commands::addIgnoreAttack, -1, true},
     {"dump", &Commands::dump, -1, false},
     {"serverignoreall", &Commands::serverIgnoreAll, -1, false},
     {"serverunignoreall", &Commands::serverUnIgnoreAll, -1, false},

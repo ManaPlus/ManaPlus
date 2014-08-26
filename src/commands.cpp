@@ -157,19 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(addIgnoreAttack)
-{
-    if (!actorManager || actorManager->isInIgnoreAttackList(event.args))
-        return false;
-
-    actorManager->removeAttackMob(event.args);
-    actorManager->addIgnoreAttackMob(event.args);
-
-    if (socialWindow)
-        socialWindow->updateAttackFilter();
-    return true;
-}
-
 impHandler0(serverIgnoreAll)
 {
     Net::getChatHandler()->ignoreAll();

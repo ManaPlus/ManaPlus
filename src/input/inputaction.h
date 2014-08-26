@@ -392,6 +392,7 @@ namespace InputAction
         ADD_PRIORITY_ATTACK,
         ADD_ATTACK,
         REMOVE_ATTACK,
+        ADD_IGNORE_ATTACK,
         TOTAL
     };
 }  // namespace InputAction
