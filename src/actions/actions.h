@@ -70,6 +70,7 @@ namespace Actions
     decHandler(uptime);
     decHandler(dump);
     decHandler(serverIgnoreAll);
+    decHandler(serverUnIgnoreAll);
 }  // namespace Actions
 
 #undef decHandler

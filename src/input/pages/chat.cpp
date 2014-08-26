@@ -92,6 +92,12 @@ SetupActionData setupActionDataChat[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Unignore all whispers on server side"),
+        InputAction::SERVER_UNIGNORE_ALL,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Previous chat line"),
         InputAction::CHAT_PREV_HISTORY,
         "",

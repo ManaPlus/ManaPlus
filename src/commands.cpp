@@ -157,12 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler0(serverUnIgnoreAll)
-{
-    Net::getChatHandler()->unIgnoreAll();
-    return true;
-}
-
 impHandler(dumpGraphics)
 {
     std::string str = strprintf("%s,%s,%dX%dX%d,", PACKAGE_OS, SMALL_VERSION,

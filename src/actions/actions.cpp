@@ -878,4 +878,10 @@ impHandler0(serverIgnoreAll)
     return true;
 }
 
+impHandler0(serverUnIgnoreAll)
+{
+    Net::getChatHandler()->unIgnoreAll();
+    return true;
+}
+
 }  // namespace Actions
