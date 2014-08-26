@@ -393,6 +393,7 @@ namespace InputAction
         ADD_ATTACK,
         REMOVE_ATTACK,
         ADD_IGNORE_ATTACK,
+        DUMP,
         TOTAL
     };
 }  // namespace InputAction

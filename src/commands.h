@@ -58,7 +58,6 @@ namespace Commands
     decHandler(error) __attribute__ ((noreturn));
     decHandler(url);
     decHandler(open);
-    decHandler(dump);
     decHandler(dumpGraphics);
     decHandler(dumpEnvironment);
     decHandler(dumpTests);
@@ -88,8 +87,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_DUMP = 0,
-    COMMAND_SERVERIGNOREALL,
+    COMMAND_SERVERIGNOREALL = 0,
     COMMAND_SERVERUNIGNOREALL,
     COMMAND_SETDROP,
     COMMAND_ERROR,
@@ -124,7 +122,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"dump", &Commands::dump, -1, false},
     {"serverignoreall", &Commands::serverIgnoreAll, -1, false},
     {"serverunignoreall", &Commands::serverUnIgnoreAll, -1, false},
     {"setdrop", &Commands::setDrop, -1, true},

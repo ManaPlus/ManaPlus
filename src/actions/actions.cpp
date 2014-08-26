@@ -789,4 +789,87 @@ impHandler0(uptime)
     return true;
 }
 
+#ifdef DEBUG_DUMP_LEAKS1
+static void showRes(std::string str, ResourceManager::Resources *res)
+{
+    if (!res)
+        return;
+
+    str.append(toString(res->size()));
+    if (debugChatTab)
+        debugChatTab->chatLog(str);
+    logger->log(str);
+    ResourceManager::ResourceIterator iter = res->begin();
+    const ResourceManager::ResourceIterator iter_end = res->end();
+    while (iter != iter_end)
+    {
+        if (iter->second && iter->second->getRefCount())
+        {
+            char type = ' ';
+            char isNew = 'N';
+            if (iter->second->getDumped())
+                isNew = 'O';
+            else
+                iter->second->setDumped(true);
+
+            SubImage *const subImage = dynamic_cast<SubImage *const>(
+                iter->second);
+            Image *const image = dynamic_cast<Image *const>(iter->second);
+            int id = 0;
+            if (subImage)
+                type = 'S';
+            else if (image)
+                type = 'I';
+            if (image)
+                id = image->getGLImage();
+            logger->log("Resource %c%c: %s (%d) id=%d", type,
+                isNew, iter->second->getIdPath().c_str(),
+                iter->second->getRefCount(), id);
+        }
+        ++ iter;
+    }
+}
+
+impHandler(dump)
+{
+    if (!debugChatTab)
+        return false;
+
+    ResourceManager *const resman = ResourceManager::getInstance();
+
+    if (!event.args.empty())
+    {
+        ResourceManager::Resources *res = resman->getResources();
+        // TRANSLATORS: dump command
+        showRes(_("Resource images:"), res);
+        res = resman->getOrphanedResources();
+        // TRANSLATORS: dump command
+        showRes(_("Resource orphaned images:"), res);
+    }
+    else
+    {
+        ResourceManager::Resources *res = resman->getResources();
+        // TRANSLATORS: dump command
+        debugChatTab->chatLog(_("Resource images:") + toString(res->size()));
+        res = resman->getOrphanedResources();
+        // TRANSLATORS: dump command
+        debugChatTab->chatLog(_("Resource orphaned images:")
+            + toString(res->size()));
+    }
+    return true;
+}
+
+#elif defined ENABLE_MEM_DEBUG
+impHandler0(dump)
+{
+    check_leaks();
+    return true;
+}
+#else
+impHandler0(dump)
+{
+    return true;
+}
+#endif
+
 }  // namespace Actions

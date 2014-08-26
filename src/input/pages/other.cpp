@@ -280,6 +280,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Dump debug information"),
+        InputAction::DUMP,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

@@ -68,6 +68,7 @@ namespace Actions
     decHandler(undress);
     decHandler(dirs);
     decHandler(uptime);
+    decHandler(dump);
 }  // namespace Actions
 
 #undef decHandler
