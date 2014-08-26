@@ -50,6 +50,7 @@ namespace Actions
     decHandler(imitation);
     decHandler(sendMail);
     decHandler(info);
+    decHandler(wait);
 }  // namespace Actions
 
 #undef decHandler

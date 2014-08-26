@@ -3252,7 +3252,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "info",
-        false}
+        false},
+    {"keyWait",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::wait,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "wait",
+        true}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

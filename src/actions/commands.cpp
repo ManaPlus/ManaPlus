@@ -457,4 +457,14 @@ impHandler(info)
     return true;
 }
 
+impHandler(wait)
+{
+    if (localPlayer)
+    {
+        localPlayer->waitFor(event.args);
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(hack);
-    decHandler(wait);
     decHandler(uptime);
     decHandler(addAttack);
     decHandler(addPriorityAttack);
@@ -94,8 +93,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_WAIT = 0,
-    COMMAND_UPTIME,
+    COMMAND_UPTIME = 0,
     COMMAND_ADDPRIORITYATTACK,
     COMMAND_ADDATTACK,
     COMMAND_REMOVEATTACK,
@@ -137,7 +135,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"wait", &Commands::wait, -1, true},
     {"uptime", &Commands::uptime, -1, false},
     {"addpriorityattack", &Commands::addPriorityAttack, -1, true},
     {"addattack", &Commands::addAttack, -1, true},

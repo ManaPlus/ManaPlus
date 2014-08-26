@@ -157,16 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(wait)
-{
-    if (localPlayer)
-    {
-        localPlayer->waitFor(event.args);
-        return true;
-    }
-    return false;
-}
-
 impHandler0(uptime)
 {
     if (!debugChatTab)
