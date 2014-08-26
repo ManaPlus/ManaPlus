@@ -434,14 +434,6 @@ impHandler0(dumpGL)
 }
 #endif
 
-impHandler0(dumpOGL)
-{
-#if defined USE_OPENGL && !defined ANDROID
-    NormalOpenGLGraphics::dumpSettings();
-#endif
-    return true;
-}
-
 impHandler0(debugSpawn)
 {
     int cnt = atoi(event.args.c_str());

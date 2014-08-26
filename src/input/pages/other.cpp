@@ -310,6 +310,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Dump OpenGL state into log"),
+        InputAction::DUMP_OGL,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

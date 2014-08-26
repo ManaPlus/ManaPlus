@@ -75,6 +75,7 @@ namespace Actions
     decHandler(dumpGraphics);
     decHandler(dumpEnvironment);
     decHandler(dumpTests);
+    decHandler(dumpOGL);
 }  // namespace Actions
 
 #undef decHandler

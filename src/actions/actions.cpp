@@ -73,6 +73,9 @@
 #include "gui/widgets/tabs/chattabtype.h"
 
 #include "render/graphics.h"
+#if defined USE_OPENGL
+#include "render/normalopenglgraphics.h"
+#endif
 
 #include "net/beinghandler.h"
 #include "net/chathandler.h"
@@ -957,6 +960,14 @@ impHandler(dumpTests)
 {
     const std::string str = config.getStringValue("testInfo");
     outStringNormal(event.tab, str, str);
+    return true;
+}
+
+impHandler0(dumpOGL)
+{
+#if defined USE_OPENGL && !defined ANDROID
+    NormalOpenGLGraphics::dumpSettings();
+#endif
     return true;
 }
 
