@@ -157,22 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(addPriorityAttack)
-{
-    if (!actorManager
-        || actorManager->isInPriorityAttackList(event.args))
-    {
-        return false;
-    }
-
-    actorManager->removeAttackMob(event.args);
-    actorManager->addPriorityAttackMob(event.args);
-
-    if (socialWindow)
-        socialWindow->updateAttackFilter();
-    return true;
-}
-
 impHandler(addAttack)
 {
     if (!actorManager || actorManager->isInAttackList(event.args))

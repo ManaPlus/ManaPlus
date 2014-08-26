@@ -467,4 +467,20 @@ impHandler(wait)
     return false;
 }
 
+impHandler(addPriorityAttack)
+{
+    if (!actorManager
+        || actorManager->isInPriorityAttackList(event.args))
+    {
+        return false;
+    }
+
+    actorManager->removeAttackMob(event.args);
+    actorManager->addPriorityAttackMob(event.args);
+
+    if (socialWindow)
+        socialWindow->updateAttackFilter();
+    return true;
+}
+
 }  // namespace Actions

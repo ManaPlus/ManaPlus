@@ -53,7 +53,6 @@ namespace Commands
 {
     decHandler(hack);
     decHandler(addAttack);
-    decHandler(addPriorityAttack);
     decHandler(removeAttack);
     decHandler(addIgnoreAttack);
     decHandler(serverIgnoreAll);
@@ -92,8 +91,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_ADDPRIORITYATTACK = 0,
-    COMMAND_ADDATTACK,
+    COMMAND_ADDATTACK = 0,
     COMMAND_REMOVEATTACK,
     COMMAND_REMOVEIGNOREATTACK,
     COMMAND_ADDIGNOREATTACK,
@@ -133,7 +131,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"addpriorityattack", &Commands::addPriorityAttack, -1, true},
     {"addattack", &Commands::addAttack, -1, true},
     {"removeattack", Commands::removeAttack, -1, true},
     {"removeignoreattack", &Commands::removeAttack, -1, true},

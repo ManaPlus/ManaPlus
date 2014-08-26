@@ -3271,6 +3271,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputCondition::INGAME,
         "uptime",
         false},
+    {"keyAddPriorityAttack",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::addPriorityAttack,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "addpriorityattack",
+        true}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
