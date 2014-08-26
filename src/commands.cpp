@@ -219,12 +219,6 @@ impHandler(dumpTests)
     return true;
 }
 
-impHandler(setDrop)
-{
-    GameModifiers::setQuickDropCounter(atoi(event.args.c_str()));
-    return true;
-}
-
 impHandler0(error)
 {
     const int *const ptr = nullptr;

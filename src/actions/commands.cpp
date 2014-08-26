@@ -524,4 +524,10 @@ impHandler(addIgnoreAttack)
     return true;
 }
 
+impHandler(setDrop)
+{
+    GameModifiers::setQuickDropCounter(atoi(event.args.c_str()));
+    return true;
+}
+
 }  // namespace Actions

@@ -55,6 +55,7 @@ namespace Actions
     decHandler(addAttack);
     decHandler(removeAttack);
     decHandler(addIgnoreAttack);
+    decHandler(setDrop);
 }  // namespace Actions
 
 #undef decHandler
