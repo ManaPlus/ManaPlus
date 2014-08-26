@@ -953,4 +953,11 @@ impHandler0(dumpEnvironment)
     return true;
 }
 
+impHandler(dumpTests)
+{
+    const std::string str = config.getStringValue("testInfo");
+    outStringNormal(event.tab, str, str);
+    return true;
+}
+
 }  // namespace Actions

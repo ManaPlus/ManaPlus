@@ -54,7 +54,6 @@ namespace Commands
     decHandler(hack);
     decHandler(url);
     decHandler(open);
-    decHandler(dumpTests);
     decHandler(dumpOGL);
     decHandler(dumpGL);
     decHandler(dumpMods);
@@ -81,8 +80,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_DUMPT = 0,
-    COMMAND_DUMPOGL,
+    COMMAND_DUMPOGL = 0,
     COMMAND_DUMPGL,
     COMMAND_DUMPMODS,
     COMMAND_URL,
@@ -110,7 +108,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"dumpt", &Commands::dumpTests, -1, false},
     {"dumpogl", &Commands::dumpOGL, -1, false},
     {"dumpgl", &Commands::dumpGL, -1, false},
     {"dumpmods", &Commands::dumpMods, -1, false},

@@ -299,6 +299,12 @@ SetupActionData setupActionDataOther[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Dump tests info into chat"),
+        InputAction::DUMP_TESTS,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Dump environments into log"),
         InputAction::DUMP_ENVIRONMENT,
         "",

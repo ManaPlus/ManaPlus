@@ -74,6 +74,7 @@ namespace Actions
     decHandler(error) __attribute__ ((noreturn));
     decHandler(dumpGraphics);
     decHandler(dumpEnvironment);
+    decHandler(dumpTests);
 }  // namespace Actions
 
 #undef decHandler

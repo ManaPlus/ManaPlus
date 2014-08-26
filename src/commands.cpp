@@ -106,13 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(dumpTests)
-{
-    const std::string str = config.getStringValue("testInfo");
-    outStringNormal(event.tab, str, str);
-    return true;
-}
-
 impHandler(url)
 {
     if (event.tab)

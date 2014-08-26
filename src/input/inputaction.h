@@ -400,6 +400,7 @@ namespace InputAction
         ERROR,
         DUMP_GRAPHICS,
         DUMP_ENVIRONMENT,
+        DUMP_TESTS,
         TOTAL
     };
 }  // namespace InputAction
