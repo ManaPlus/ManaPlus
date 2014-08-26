@@ -92,7 +92,7 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::GAME | InputCondition::NOFOLLOW
             | InputCondition::VALIDSPEED,
-        "",
+        "attack",
         false},
     {"keyTargetAttack",
         InputType::KEYBOARD, SDLK_LCTRL,

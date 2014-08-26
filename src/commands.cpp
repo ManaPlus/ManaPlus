@@ -157,18 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(attack)
-{
-    if (!localPlayer || !actorManager)
-        return false;
-
-    Being *const target = actorManager->findNearestByName(event.args);
-    if (target)
-        localPlayer->setTarget(target);
-    localPlayer->attack2(localPlayer->getTarget(), true);
-    return true;
-}
-
 impHandler0(dirs)
 {
     if (!localPlayer || !debugChatTab)

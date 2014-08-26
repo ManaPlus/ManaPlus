@@ -407,14 +407,19 @@ impHandler0(untarget)
 
 impHandler0(attack)
 {
-    if (localPlayer)
-    {
-        Being *const target = localPlayer->getTarget();
-        if (target)
-            localPlayer->attack(target, true);
-        return true;
-    }
-    return false;
+    if (!localPlayer || !actorManager)
+        return false;
+
+    Being *target = nullptr;
+    if (!event.args.empty())
+        target = actorManager->findNearestByName(event.args);
+    if (!target)
+        target = localPlayer->getTarget();
+    else
+        localPlayer->setTarget(target);
+    if (target)
+        localPlayer->attack(target, true);
+    return true;
 }
 
 impHandler0(targetAttack)
@@ -687,9 +692,11 @@ impHandler(undress)
     if (!actorManager || !localPlayer)
         return false;
 
-    Being *target = localPlayer->getTarget();
-    if (!target)
+    Being *target = nullptr;
+    if (!event.args.empty())
         target = actorManager->findNearestByName(event.args);
+    if (!target)
+        target = localPlayer->getTarget();
     if (target)
         Net::getBeingHandler()->undress(target);
     return true;

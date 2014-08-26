@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(hack);
-    decHandler(attack);
     decHandler(dirs);
     decHandler(info);
     decHandler(wait);
@@ -97,8 +96,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_ATTACK = 0,
-    COMMAND_DIRS,
+    COMMAND_DIRS = 0,
     COMMAND_INFO,
     COMMAND_WAIT,
     COMMAND_UPTIME,
@@ -143,7 +141,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"attack", &Commands::attack, -1, true},
     {"dirs", &Commands::dirs, -1, false},
     {"info", &Commands::info, -1, false},
     {"wait", &Commands::wait, -1, true},
