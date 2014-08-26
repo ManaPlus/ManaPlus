@@ -274,6 +274,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Print client uptime in chat"),
+        InputAction::UPTIME,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

@@ -3261,7 +3261,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "wait",
-        true}
+        true},
+    {"keyUptime",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::uptime,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "uptime",
+        false},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

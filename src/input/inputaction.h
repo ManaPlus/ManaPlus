@@ -388,6 +388,7 @@ namespace InputAction
         DIRS,
         INFO,
         WAIT,
+        UPTIME,
         TOTAL
     };
 }  // namespace InputAction
