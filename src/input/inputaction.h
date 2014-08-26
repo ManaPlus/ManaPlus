@@ -391,6 +391,7 @@ namespace InputAction
         UPTIME,
         ADD_PRIORITY_ATTACK,
         ADD_ATTACK,
+        REMOVE_ATTACK,
         TOTAL
     };
 }  // namespace InputAction

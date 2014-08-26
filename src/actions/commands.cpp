@@ -496,4 +496,19 @@ impHandler(addAttack)
     return true;
 }
 
+impHandler(removeAttack)
+{
+    if (!actorManager || event.args.empty()
+        || !actorManager->isInAttackList(event.args))
+    {
+        return false;
+    }
+
+    actorManager->removeAttackMob(event.args);
+
+    if (socialWindow)
+        socialWindow->updateAttackFilter();
+    return true;
+}
+
 }  // namespace Actions

@@ -157,21 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(removeAttack)
-{
-    if (!actorManager || event.args.empty()
-        || !actorManager->isInAttackList(event.args))
-    {
-        return false;
-    }
-
-    actorManager->removeAttackMob(event.args);
-
-    if (socialWindow)
-        socialWindow->updateAttackFilter();
-    return true;
-}
-
 impHandler(addIgnoreAttack)
 {
     if (!actorManager || actorManager->isInIgnoreAttackList(event.args))
