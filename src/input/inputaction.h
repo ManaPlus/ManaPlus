@@ -378,6 +378,7 @@ namespace InputAction
         FOLLOW,
         NAVIGATE,
         IMITATION,
+        SEND_MAIL,
         TOTAL
     };
 }  // namespace InputAction

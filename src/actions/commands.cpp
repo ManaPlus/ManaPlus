@@ -21,6 +21,7 @@
 #include "actions/commands.h"
 
 #include "actormanager.h"
+#include "auctionmanager.h"
 #include "configuration.h"
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
@@ -421,6 +422,16 @@ impHandler(imitation)
     else
         localPlayer->setImitate("");
     return true;
+}
+
+impHandler(sendMail)
+{
+    if (auctionManager && auctionManager->getEnableAuctionBot())
+    {
+        auctionManager->sendMail(event.args);
+        return true;
+    }
+    return false;
 }
 
 }  // namespace Actions

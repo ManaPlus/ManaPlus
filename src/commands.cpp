@@ -157,16 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(mail)
-{
-    if (auctionManager && auctionManager->getEnableAuctionBot())
-    {
-        auctionManager->sendMail(event.args);
-        return true;
-    }
-    return false;
-}
-
 impHandler0(priceLoad)
 {
     if (shopWindow)

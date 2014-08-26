@@ -48,6 +48,7 @@ namespace Actions
     decHandler(follow);
     decHandler(navigate);
     decHandler(imitation);
+    decHandler(sendMail);
 }  // namespace Actions
 
 #undef decHandler
