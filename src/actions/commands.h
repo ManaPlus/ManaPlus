@@ -49,6 +49,7 @@ namespace Actions
     decHandler(navigate);
     decHandler(imitation);
     decHandler(sendMail);
+    decHandler(info);
 }  // namespace Actions
 
 #undef decHandler

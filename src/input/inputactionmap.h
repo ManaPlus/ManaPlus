@@ -3243,6 +3243,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "dirs",
+        false},
+    {"keyInfo",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::info,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "info",
         false}
 };
 

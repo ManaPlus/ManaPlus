@@ -386,6 +386,7 @@ namespace InputAction
         DISCONNECT,
         UNDRESS,
         DIRS,
+        INFO,
         TOTAL
     };
 }  // namespace InputAction

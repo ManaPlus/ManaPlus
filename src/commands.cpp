@@ -157,26 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(info)
-{
-    if (!event.tab || !localPlayer || tmwServerVersion > 0)
-        return false;
-
-    switch (event.tab->getType())
-    {
-        case ChatTabType::GUILD:
-        {
-            const Guild *const guild = localPlayer->getGuild();
-            if (guild)
-                Net::getGuildHandler()->info(guild->getId());
-            break;
-        }
-        default:
-            break;
-    }
-    return true;
-}
-
 impHandler(wait)
 {
     if (localPlayer)

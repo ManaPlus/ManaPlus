@@ -71,6 +71,7 @@
 #include "gui/widgets/tabs/whispertab.h"
 
 #include "net/adminhandler.h"
+#include "net/guildhandler.h"
 #include "net/pethandler.h"
 #include "net/net.h"
 
@@ -78,6 +79,8 @@
 #include "utils/stringutils.h"
 
 #include "debug.h"
+
+extern unsigned int tmwServerVersion;
 
 namespace Actions
 {
@@ -432,6 +435,26 @@ impHandler(sendMail)
         return true;
     }
     return false;
+}
+
+impHandler(info)
+{
+    if (!event.tab || !localPlayer || tmwServerVersion > 0)
+        return false;
+
+    switch (event.tab->getType())
+    {
+        case ChatTabType::GUILD:
+        {
+            const Guild *const guild = localPlayer->getGuild();
+            if (guild)
+                Net::getGuildHandler()->info(guild->getId());
+            break;
+        }
+        default:
+            break;
+    }
+    return true;
 }
 
 }  // namespace Actions
