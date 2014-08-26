@@ -381,6 +381,7 @@ namespace InputAction
         SEND_MAIL,
         TRADE,
         PRICE_LOAD,
+        PRICE_SAVE,
         TOTAL
     };
 }  // namespace InputAction

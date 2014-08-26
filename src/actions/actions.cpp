@@ -625,4 +625,14 @@ impHandler0(priceLoad)
     return false;
 }
 
+impHandler0(priceSave)
+{
+    if (shopWindow)
+    {
+        shopWindow->saveList();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

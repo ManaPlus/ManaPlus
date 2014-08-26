@@ -3198,6 +3198,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "priceload",
+        false},
+    {"keyPriceSave",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::priceSave,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "pricesave",
         false}
 };
 

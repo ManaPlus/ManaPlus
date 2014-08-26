@@ -244,6 +244,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Save shop items list to disk"),
+        InputAction::PRICE_SAVE,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

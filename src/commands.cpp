@@ -157,16 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler0(priceSave)
-{
-    if (shopWindow)
-    {
-        shopWindow->saveList();
-        return true;
-    }
-    return false;
-}
-
 impHandler0(disconnect)
 {
     Net::getGameHandler()->disconnect2();

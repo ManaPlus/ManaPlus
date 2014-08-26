@@ -62,6 +62,7 @@ namespace Actions
     decHandler(attackHuman);
     decHandler(trade);
     decHandler(priceLoad);
+    decHandler(priceSave);
 }  // namespace Actions
 
 #undef decHandler
