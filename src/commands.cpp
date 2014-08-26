@@ -157,17 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(undress)
-{
-    if (!actorManager)
-        return false;
-
-    Being *const target = actorManager->findNearestByName(event.args);
-    if (target)
-        Net::getBeingHandler()->undress(target);
-    return true;
-}
-
 impHandler(attack)
 {
     if (!localPlayer || !actorManager)

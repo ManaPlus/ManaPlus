@@ -257,6 +257,12 @@ SetupActionData setupActionDataOther[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Undress selected player"),
+        InputAction::UNDRESS,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Quick disconnect from server"),
         InputAction::DISCONNECT,
         "",

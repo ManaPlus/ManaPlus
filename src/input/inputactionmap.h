@@ -3225,6 +3225,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "disconnect",
+        false},
+    {"keyUndress",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::undress,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "undress",
         false}
 };
 

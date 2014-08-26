@@ -70,6 +70,7 @@
 
 #include "render/graphics.h"
 
+#include "net/beinghandler.h"
 #include "net/chathandler.h"
 #include "net/gamehandler.h"
 #include "net/ipc.h"
@@ -678,6 +679,19 @@ impHandler0(cacheInfo)
 impHandler0(disconnect)
 {
     Net::getGameHandler()->disconnect2();
+    return true;
+}
+
+impHandler(undress)
+{
+    if (!actorManager || !localPlayer)
+        return false;
+
+    Being *target = localPlayer->getTarget();
+    if (!target)
+        target = actorManager->findNearestByName(event.args);
+    if (target)
+        Net::getBeingHandler()->undress(target);
     return true;
 }
 

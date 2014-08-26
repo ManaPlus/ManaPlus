@@ -384,6 +384,7 @@ namespace InputAction
         PRICE_SAVE,
         CACHE_INFO,
         DISCONNECT,
+        UNDRESS,
         TOTAL
     };
 }  // namespace InputAction
