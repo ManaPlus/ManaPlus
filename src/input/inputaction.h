@@ -394,6 +394,7 @@ namespace InputAction
         REMOVE_ATTACK,
         ADD_IGNORE_ATTACK,
         DUMP,
+        SERVER_IGNORE_ALL,
         TOTAL
     };
 }  // namespace InputAction

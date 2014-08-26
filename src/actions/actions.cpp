@@ -872,4 +872,10 @@ impHandler0(dump)
 }
 #endif
 
+impHandler0(serverIgnoreAll)
+{
+    Net::getChatHandler()->ignoreAll();
+    return true;
+}
+
 }  // namespace Actions

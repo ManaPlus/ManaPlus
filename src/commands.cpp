@@ -157,12 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler0(serverIgnoreAll)
-{
-    Net::getChatHandler()->ignoreAll();
-    return true;
-}
-
 impHandler0(serverUnIgnoreAll)
 {
     Net::getChatHandler()->unIgnoreAll();

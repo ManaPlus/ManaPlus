@@ -3315,6 +3315,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "dump",
+        false},
+    {"keyServerIgnoreAll",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::serverIgnoreAll,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "serverignoreall",
         false}
 };
 
