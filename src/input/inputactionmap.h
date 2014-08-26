@@ -3216,6 +3216,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "cacheinfo",
+        false},
+    {"keyDisconnect",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::disconnect,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "disconnect",
         false}
 };
 

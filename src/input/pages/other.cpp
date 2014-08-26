@@ -256,6 +256,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Quick disconnect from server"),
+        InputAction::DISCONNECT,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

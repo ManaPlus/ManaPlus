@@ -71,6 +71,7 @@
 #include "render/graphics.h"
 
 #include "net/chathandler.h"
+#include "net/gamehandler.h"
 #include "net/ipc.h"
 #include "net/net.h"
 #include "net/playerhandler.h"
@@ -671,6 +672,12 @@ impHandler0(cacheInfo)
         _("Deleted:"), font->getDeleteCounter()));
 #endif
 */
+    return true;
+}
+
+impHandler0(disconnect)
+{
+    Net::getGameHandler()->disconnect2();
     return true;
 }
 

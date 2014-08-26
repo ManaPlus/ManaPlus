@@ -64,6 +64,7 @@ namespace Actions
     decHandler(priceLoad);
     decHandler(priceSave);
     decHandler(cacheInfo);
+    decHandler(disconnect);
 }  // namespace Actions
 
 #undef decHandler

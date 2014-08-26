@@ -157,12 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler0(disconnect)
-{
-    Net::getGameHandler()->disconnect2();
-    return true;
-}
-
 impHandler(undress)
 {
     if (!actorManager)
