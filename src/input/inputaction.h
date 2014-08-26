@@ -390,6 +390,7 @@ namespace InputAction
         WAIT,
         UPTIME,
         ADD_PRIORITY_ATTACK,
+        ADD_ATTACK,
         TOTAL
     };
 }  // namespace InputAction
