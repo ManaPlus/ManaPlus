@@ -83,6 +83,7 @@
 
 #include "resources/db/itemdb.h"
 
+#include "utils/chatutils.h"
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/process.h"
@@ -99,75 +100,9 @@ extern char **environ;
 namespace Commands
 {
 
-static void outStringNormal(ChatTab *const tab,
-                            const std::string &str,
-                            const std::string &def)
-{
-    if (!localPlayer)
-        return;
-
-    if (!tab)
-    {
-        Net::getChatHandler()->talk(str, GENERAL_CHANNEL);
-        return;
-    }
-
-    switch (tab->getType())
-    {
-        case ChatTabType::PARTY:
-        {
-            Net::getPartyHandler()->chat(str);
-            break;
-        }
-        case ChatTabType::GUILD:
-        {
-            const Guild *const guild = localPlayer->getGuild();
-            if (guild)
-            {
-                if (guild->getServerGuild())
-                {
-                    if (tmwServerVersion > 0)
-                        return;
-                    Net::getGuildHandler()->chat(guild->getId(), str);
-                }
-                else if (guildManager)
-                {
-                    guildManager->chat(str);
-                }
-            }
-            break;
-        }
-        case ChatTabType::WHISPER:
-        {
-            const WhisperTab *const whisper
-                = static_cast<const WhisperTab *const>(tab);
-            tab->chatLog(localPlayer->getName(), str);
-            Net::getChatHandler()->privateMessage(whisper->getNick(), str);
-            break;
-        }
-        default:
-            Net::getChatHandler()->talk(def, GENERAL_CHANNEL);
-            break;
-    }
-}
-
 impHandler(hack)
 {
     Net::getChatHandler()->sendRaw(event.args);
-    return true;
-}
-
-impHandler0(dumpEnvironment)
-{
-    logger->log1("Start environment variables");
-    for (char **env = environ; *env; ++ env)
-        logger->log1(*env);
-    logger->log1("End environment variables");
-    if (debugChatTab)
-    {
-        // TRANSLATORS: dump environment command
-        debugChatTab->chatLog(_("Environment variables dumped"));
-    }
     return true;
 }
 

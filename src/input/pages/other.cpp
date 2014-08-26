@@ -298,6 +298,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Dump environments into log"),
+        InputAction::DUMP_ENVIRONMENT,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

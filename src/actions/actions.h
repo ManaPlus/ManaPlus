@@ -73,6 +73,7 @@ namespace Actions
     decHandler(serverUnIgnoreAll);
     decHandler(error) __attribute__ ((noreturn));
     decHandler(dumpGraphics);
+    decHandler(dumpEnvironment);
 }  // namespace Actions
 
 #undef decHandler

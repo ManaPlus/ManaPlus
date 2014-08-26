@@ -399,6 +399,7 @@ namespace InputAction
         SET_DROP,
         ERROR,
         DUMP_GRAPHICS,
+        DUMP_ENVIRONMENT,
         TOTAL
     };
 }  // namespace InputAction

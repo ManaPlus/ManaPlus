@@ -21,9 +21,11 @@
 #include "actions/actions.h"
 
 #include "actormanager.h"
+#include "configuration.h"
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
+#include "guild.h"
 #include "itemshortcut.h"
 #include "soundmanager.h"
 
@@ -34,6 +36,7 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
+#include "gui/chatconsts.h"
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
@@ -67,6 +70,7 @@
 #include "gui/windows/updaterwindow.h"
 
 #include "gui/widgets/tabs/chattab.h"
+#include "gui/widgets/tabs/chattabtype.h"
 
 #include "render/graphics.h"
 
@@ -75,6 +79,7 @@
 #include "net/gamehandler.h"
 #include "net/ipc.h"
 #include "net/net.h"
+#include "net/partyhandler.h"
 #include "net/playerhandler.h"
 #include "net/tradehandler.h"
 
@@ -84,6 +89,7 @@
 
 #include "resources/map/map.h"
 
+#include "utils/chatutils.h"
 #include "utils/gettext.h"
 #include "utils/timer.h"
 
@@ -99,6 +105,7 @@ extern ShortcutWindow *spellShortcutWindow;
 extern std::string tradePartnerName;
 extern QuitDialog *quitDialog;
 extern int start_time;
+extern char **environ;
 
 namespace Actions
 {
@@ -929,6 +936,20 @@ impHandler(dumpGraphics)
         .append(config.getBoolValue("particleeffects") ? "1" : "0")
         .append(strprintf(",%d-%d", fps, config.getIntValue("fpslimit")));
     outStringNormal(event.tab, str, str);
+    return true;
+}
+
+impHandler0(dumpEnvironment)
+{
+    logger->log1("Start environment variables");
+    for (char **env = environ; *env; ++ env)
+        logger->log1(*env);
+    logger->log1("End environment variables");
+    if (debugChatTab)
+    {
+        // TRANSLATORS: dump environment command
+        debugChatTab->chatLog(_("Environment variables dumped"));
+    }
     return true;
 }
 

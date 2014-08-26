@@ -796,6 +796,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/translation/translationmanager.h \
 	      utils/base64.cpp \
 	      utils/base64.h \
+	      utils/chatutils.cpp \
+	      utils/chatutils.h \
 	      utils/checkutils.cpp \
 	      utils/checkutils.h \
 	      utils/copynpaste.cpp \
