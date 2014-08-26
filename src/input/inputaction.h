@@ -380,6 +380,7 @@ namespace InputAction
         IMITATION,
         SEND_MAIL,
         TRADE,
+        PRICE_LOAD,
         TOTAL
     };
 }  // namespace InputAction

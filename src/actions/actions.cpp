@@ -615,4 +615,14 @@ impHandler(trade)
     return true;
 }
 
+impHandler0(priceLoad)
+{
+    if (shopWindow)
+    {
+        shopWindow->loadList();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

@@ -157,16 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler0(priceLoad)
-{
-    if (shopWindow)
-    {
-        shopWindow->loadList();
-        return true;
-    }
-    return false;
-}
-
 impHandler0(priceSave)
 {
     if (shopWindow)

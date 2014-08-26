@@ -61,6 +61,7 @@ namespace Actions
     decHandler(cleanFonts);
     decHandler(attackHuman);
     decHandler(trade);
+    decHandler(priceLoad);
 }  // namespace Actions
 
 #undef decHandler

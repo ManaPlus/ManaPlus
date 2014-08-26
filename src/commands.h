@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(hack);
-    decHandler(priceLoad);
     decHandler(priceSave);
     decHandler(disconnect);
     decHandler(undress);
@@ -102,8 +101,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_PRICELOAD = 0,
-    COMMAND_PRICESAVE,
+    COMMAND_PRICESAVE = 0,
     COMMAND_CACHEINFO,
     COMMAND_DISCONNECT,
     COMMAND_UNDRESS,
@@ -153,7 +151,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"priceload", &Commands::priceLoad, -1, false},
     {"pricesave", &Commands::priceSave, -1, false},
     {"cacheinfo", &Commands::cacheInfo, -1, false},
     {"disconnect", &Commands::disconnect, -1, false},

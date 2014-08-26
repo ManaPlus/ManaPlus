@@ -238,6 +238,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Load shop items list from disk"),
+        InputAction::PRICE_LOAD,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""
