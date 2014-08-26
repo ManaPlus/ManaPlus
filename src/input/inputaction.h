@@ -376,6 +376,7 @@ namespace InputAction
         AWAY_MESSAGE,
         PSEUDO_AWAY,
         FOLLOW,
+        NAVIGATE,
         TOTAL
     };
 }  // namespace InputAction

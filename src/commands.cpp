@@ -151,21 +151,6 @@ static void outStringNormal(ChatTab *const tab,
     }
 }
 
-impHandler(navigate)
-{
-    if (!localPlayer)
-        return false;
-
-    int x = 0;
-    int y = 0;
-
-    if (parse2Int(event.args, x, y))
-        localPlayer->navigateTo(x, y);
-    else
-        localPlayer->navigateClean();
-    return true;
-}
-
 impHandler(imitation)
 {
     if (!localPlayer)

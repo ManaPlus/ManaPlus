@@ -394,4 +394,19 @@ impHandler(follow)
     return true;
 }
 
+impHandler(navigate)
+{
+    if (!localPlayer)
+        return false;
+
+    int x = 0;
+    int y = 0;
+
+    if (parse2Int(event.args, x, y))
+        localPlayer->navigateTo(x, y);
+    else
+        localPlayer->navigateClean();
+    return true;
+}
+
 }  // namespace Actions

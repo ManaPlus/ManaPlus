@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(imitation);
-    decHandler(navigate);
     decHandler(mail);
     decHandler(hack);
     decHandler(priceLoad);
@@ -106,8 +105,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_NAVIGATE = 0,
-    COMMAND_IMITATION,
+    COMMAND_IMITATION = 0,
     COMMAND_MAIL,
     COMMAND_TRADE,
     COMMAND_PRICELOAD,
@@ -161,7 +159,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"navigate", &Commands::navigate, -1, true},
     {"imitation", &Commands::imitation, -1, true},
     {"mail", &Commands::mail, -1, true},
     {"trade", &Commands::trade, -1, true},
