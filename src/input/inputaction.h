@@ -382,6 +382,7 @@ namespace InputAction
         TRADE,
         PRICE_LOAD,
         PRICE_SAVE,
+        CACHE_INFO,
         TOTAL
     };
 }  // namespace InputAction

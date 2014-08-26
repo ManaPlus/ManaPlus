@@ -358,45 +358,6 @@ impHandler(addIgnoreAttack)
     return true;
 }
 
-impHandler0(cacheInfo)
-{
-    if (!chatWindow || !debugChatTab)
-        return false;
-
-/*
-    Font *const font = chatWindow->getFont();
-    if (!font)
-        return;
-
-    const TextChunkList *const cache = font->getCache();
-    if (!cache)
-        return;
-
-    unsigned int all = 0;
-    debugChatTab->chatLog(_("font cache size"));
-    std::string str;
-    for (int f = 0; f < 256; f ++)
-    {
-        if (!cache[f].size)
-        {
-            const unsigned int sz = static_cast<int>(cache[f].size);
-            all += sz;
-            str.append(strprintf("%d: %u, ", f, sz));
-        }
-    }
-    debugChatTab->chatLog(str);
-    debugChatTab->chatLog(strprintf("%s %d", _("Cache size:"), all));
-#ifdef DEBUG_FONT_COUNTERS
-    debugChatTab->chatLog("");
-    debugChatTab->chatLog(strprintf("%s %d",
-        _("Created:"), font->getCreateCounter()));
-    debugChatTab->chatLog(strprintf("%s %d",
-        _("Deleted:"), font->getDeleteCounter()));
-#endif
-*/
-    return true;
-}
-
 impHandler0(serverIgnoreAll)
 {
     Net::getChatHandler()->ignoreAll();

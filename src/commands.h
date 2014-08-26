@@ -76,7 +76,6 @@ namespace Commands
     decHandler(dumpOGL);
     decHandler(dumpGL);
     decHandler(dumpMods);
-    decHandler(cacheInfo);
     decHandler(execute);
     decHandler(testsdlfont);
     decHandler(enableHighlight);
@@ -100,8 +99,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_CACHEINFO = 0,
-    COMMAND_DISCONNECT,
+    COMMAND_DISCONNECT = 0,
     COMMAND_UNDRESS,
     COMMAND_ATTACK,
     COMMAND_DIRS,
@@ -149,7 +147,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"cacheinfo", &Commands::cacheInfo, -1, false},
     {"disconnect", &Commands::disconnect, -1, false},
     {"undress", &Commands::undress, -1, true},
     {"attack", &Commands::attack, -1, true},

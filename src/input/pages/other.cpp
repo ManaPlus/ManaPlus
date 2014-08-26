@@ -250,6 +250,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Print debug cache info"),
+        InputAction::CACHE_INFO,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

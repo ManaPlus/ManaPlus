@@ -3207,6 +3207,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "pricesave",
+        false},
+    {"keyCacheInfo",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::cacheInfo,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "cacheinfo",
         false}
 };
 
