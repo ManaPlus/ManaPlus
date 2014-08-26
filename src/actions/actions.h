@@ -60,6 +60,7 @@ namespace Actions
     decHandler(cleanGraphics);
     decHandler(cleanFonts);
     decHandler(attackHuman);
+    decHandler(trade);
 }  // namespace Actions
 
 #undef decHandler

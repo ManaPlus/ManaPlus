@@ -596,4 +596,23 @@ impHandler0(cleanFonts)
     return true;
 }
 
+impHandler(trade)
+{
+    if (!actorManager)
+        return false;
+
+    const Being *being = actorManager->findBeingByName(
+        event.args, ActorType::PLAYER);
+    if (!being)
+        being = localPlayer->getTarget();
+    if (being)
+    {
+        Net::getTradeHandler()->request(being);
+        tradePartnerName = being->getName();
+        if (tradeWindow)
+            tradeWindow->clear();
+    }
+    return true;
+}
+
 }  // namespace Actions

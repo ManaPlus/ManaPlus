@@ -206,23 +206,6 @@ impHandler(attack)
     return true;
 }
 
-impHandler(trade)
-{
-    if (!actorManager)
-        return false;
-
-    const Being *const being = actorManager->findBeingByName(
-        event.args, ActorType::PLAYER);
-    if (being)
-    {
-        Net::getTradeHandler()->request(being);
-        tradePartnerName = being->getName();
-        if (tradeWindow)
-            tradeWindow->clear();
-    }
-    return true;
-}
-
 impHandler0(dirs)
 {
     if (!localPlayer || !debugChatTab)

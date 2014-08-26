@@ -57,7 +57,7 @@ namespace InputAction
         HIDE_WINDOWS,
         SIT,
         SCREENSHOT,
-        TRADE,
+        CHANGE_TRADE,
         PATHFIND,
         OK,
         QUIT,
@@ -379,6 +379,7 @@ namespace InputAction
         NAVIGATE,
         IMITATION,
         SEND_MAIL,
+        TRADE,
         TOTAL
     };
 }  // namespace InputAction

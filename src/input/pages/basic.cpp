@@ -162,13 +162,19 @@ SetupActionData setupActionDataBasic[] =
     {
         // TRANSLATORS: input action name
         N_("Enable/Disable Trading"),
-        InputAction::TRADE,
+        InputAction::CHANGE_TRADE,
         "",
     },
     {
         // TRANSLATORS: input action name
         N_("Open trade window"),
         InputAction::OPEN_TRADE,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Start trade with target"),
+        InputAction::TRADE,
         "",
     },
     {

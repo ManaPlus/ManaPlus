@@ -336,7 +336,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("screenActionButton7", InputAction::WINDOW_SKILL);
     AddDEF("screenActionButton8", InputAction::WINDOW_SOCIAL);
     AddDEF("screenActionButton9", InputAction::WINDOW_DEBUG);
-    AddDEF("screenActionButton10", InputAction::TRADE);
+    AddDEF("screenActionButton10", InputAction::CHANGE_TRADE);
     AddDEF("screenActionButton11", InputAction::DIRECT_DOWN);
     AddDEF("screenButtonsFormat", 0);
     AddDEF("autoresizeminimaps", false);

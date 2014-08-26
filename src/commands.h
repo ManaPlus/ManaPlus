@@ -54,7 +54,6 @@ namespace Commands
     decHandler(hack);
     decHandler(priceLoad);
     decHandler(priceSave);
-    decHandler(trade);
     decHandler(disconnect);
     decHandler(undress);
     decHandler(attack);
@@ -103,8 +102,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_TRADE = 0,
-    COMMAND_PRICELOAD,
+    COMMAND_PRICELOAD = 0,
     COMMAND_PRICESAVE,
     COMMAND_CACHEINFO,
     COMMAND_DISCONNECT,
@@ -155,7 +153,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"trade", &Commands::trade, -1, true},
     {"priceload", &Commands::priceLoad, -1, false},
     {"pricesave", &Commands::priceSave, -1, false},
     {"cacheinfo", &Commands::cacheInfo, -1, false},
