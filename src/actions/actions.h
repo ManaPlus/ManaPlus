@@ -71,6 +71,7 @@ namespace Actions
     decHandler(dump);
     decHandler(serverIgnoreAll);
     decHandler(serverUnIgnoreAll);
+    decHandler(error) __attribute__ ((noreturn));
 }  // namespace Actions
 
 #undef decHandler

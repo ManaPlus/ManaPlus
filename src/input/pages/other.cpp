@@ -286,6 +286,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Crash client"),
+        InputAction::ERROR,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

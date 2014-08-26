@@ -219,13 +219,6 @@ impHandler(dumpTests)
     return true;
 }
 
-impHandler0(error)
-{
-    const int *const ptr = nullptr;
-    logger->log("test %d", *ptr);
-    exit(1);
-}
-
 impHandler(url)
 {
     if (event.tab)

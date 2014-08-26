@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(hack);
-    decHandler(error) __attribute__ ((noreturn));
     decHandler(url);
     decHandler(open);
     decHandler(dumpGraphics);
@@ -84,8 +83,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_ERROR = 0,
-    COMMAND_DUMPG,
+    COMMAND_DUMPG = 0,
     COMMAND_DUMPE,
     COMMAND_DUMPT,
     COMMAND_DUMPOGL,
@@ -116,7 +114,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"error", &Commands::error, -1, false},
     {"dumpg", &Commands::dumpGraphics, -1, false},
     {"dumpe", &Commands::dumpEnvironment, -1, false},
     {"dumpt", &Commands::dumpTests, -1, false},
