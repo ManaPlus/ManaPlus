@@ -268,6 +268,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Print configured directories in chat"),
+        InputAction::DIRS,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

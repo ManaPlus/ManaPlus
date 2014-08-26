@@ -157,22 +157,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler0(dirs)
-{
-    if (!localPlayer || !debugChatTab)
-        return false;
-
-    debugChatTab->chatLog("config directory: "
-        + settings.configDir);
-    debugChatTab->chatLog("logs directory: "
-        + settings.localDataDir);
-    debugChatTab->chatLog("screenshots directory: "
-        + settings.screenshotDir);
-    debugChatTab->chatLog("temp directory: "
-        + settings.tempDir);
-    return true;
-}
-
 impHandler(info)
 {
     if (!event.tab || !localPlayer || tmwServerVersion > 0)

@@ -385,6 +385,7 @@ namespace InputAction
         CACHE_INFO,
         DISCONNECT,
         UNDRESS,
+        DIRS,
         TOTAL
     };
 }  // namespace InputAction

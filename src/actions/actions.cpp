@@ -702,4 +702,20 @@ impHandler(undress)
     return true;
 }
 
+impHandler0(dirs)
+{
+    if (!debugChatTab)
+        return false;
+
+    debugChatTab->chatLog("config directory: "
+        + settings.configDir);
+    debugChatTab->chatLog("logs directory: "
+        + settings.localDataDir);
+    debugChatTab->chatLog("screenshots directory: "
+        + settings.screenshotDir);
+    debugChatTab->chatLog("temp directory: "
+        + settings.tempDir);
+    return true;
+}
+
 }  // namespace Actions
