@@ -49,11 +49,6 @@ struct CommandInfo final
     bool useArgs;
 };
 
-namespace Commands
-{
-    void replaceVars(std::string &str);
-}  // namespace Commands
-
 enum
 {
     END_COMMANDS = 0

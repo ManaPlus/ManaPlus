@@ -29,4 +29,6 @@ void outStringNormal(ChatTab *const tab,
                      const std::string &str,
                      const std::string &def);
 
+void replaceVars(std::string &str);
+
 #endif  // ACTIONS_ACTIONS_H

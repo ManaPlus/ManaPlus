@@ -51,6 +51,7 @@
 
 #include "resources/db/itemdb.h"
 
+#include "utils/chatutils.h"
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
@@ -398,7 +399,7 @@ void ChatTab::chatInput(const std::string &message)
         start = msg.find('[', start + 1);
     }
 
-    Commands::replaceVars(msg);
+    replaceVars(msg);
 
     switch (msg[0])
     {
