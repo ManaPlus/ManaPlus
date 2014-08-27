@@ -275,6 +275,12 @@ SetupActionData setupActionDataOther[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Crate items (for gms)"),
+        InputAction::CREATE_ITEMS,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Print configured directories in chat"),
         InputAction::DIRS,
         "",

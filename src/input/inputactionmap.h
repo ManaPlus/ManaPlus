@@ -3512,7 +3512,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "testparticle",
-        true}
+        true},
+    {"keyCreateItems",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::createItems,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "createitems",
+        false}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

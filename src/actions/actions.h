@@ -83,6 +83,7 @@ namespace Actions
 #if defined USE_OPENGL && defined DEBUG_SDLFONT
     decHandler(testSdlFont);
 #endif
+    decHandler(createItems);
 }  // namespace Actions
 
 #undef decHandler

@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(hack);
-    decHandler(createItems);
     decHandler(talkRaw);
     decHandler(talkPet);
     decHandler(uploadConfig);
@@ -66,8 +65,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_CREATEITEMS = 0,
-    COMMAND_TALKRAW,
+    COMMAND_TALKRAW = 0,
     COMMAND_TALKPET,
     COMMAND_UPLOADCONFIG,
     COMMAND_UPLOADSERVERCONFIG,
@@ -80,7 +78,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"createitems", &Commands::createItems, -1, false},
     {"talkraw", &Commands::talkRaw, -1, true},
     {"talkpet", &Commands::talkPet, -1, true},
     {"uploadconfig", &Commands::uploadConfig, -1, false},

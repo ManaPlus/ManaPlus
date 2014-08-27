@@ -415,6 +415,7 @@ namespace InputAction
         DISABLE_AWAY,
         ENABLE_AWAY,
         TEST_PARTICLE,
+        CREATE_ITEMS,
         TOTAL
     };
 }  // namespace InputAction

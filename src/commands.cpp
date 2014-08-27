@@ -106,38 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler0(createItems)
-{
-    BuyDialog *const dialog = new BuyDialog();
-    const ItemDB::ItemInfos &items = ItemDB::getItemInfos();
-    FOR_EACH (ItemDB::ItemInfos::const_iterator, it, items)
-    {
-        const ItemInfo *const info = (*it).second;
-        const int id = info->getId();
-        if (id <= 500)
-            continue;
-
-        int colors = info->getColorsSize();
-        if (colors >= 255)
-            colors = 254;
-
-        if (!colors)
-        {
-            dialog->addItem(id, 1, 100, 0);
-        }
-        else
-        {
-            for (unsigned char f = 0; f < colors; f ++)
-            {
-                if (!info->getColor(f).empty())
-                    dialog->addItem(id, f, 100, 0);
-            }
-        }
-    }
-    dialog->sort();
-    return true;
-}
-
 impHandler(talkRaw)
 {
     Net::getChatHandler()->talkRaw(event.args);
