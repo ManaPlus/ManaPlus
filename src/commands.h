@@ -54,7 +54,6 @@ namespace Commands
     decHandler(hack);
     decHandler(url);
     decHandler(open);
-    decHandler(dumpMods);
     decHandler(execute);
     decHandler(testsdlfont);
     decHandler(enableHighlight);
@@ -78,8 +77,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_DUMPMODS = 0,
-    COMMAND_URL,
+    COMMAND_URL = 0,
     COMMAND_OPEN,
     COMMAND_EXECUTE,
     COMMAND_TESTSDLFONT,
@@ -104,7 +102,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"dumpmods", &Commands::dumpMods, -1, false},
     {"url", &Commands::url, -1, true},
     {"open", &Commands::open, -1, true},
     {"execute", &Commands::execute, -1, true},

@@ -413,13 +413,6 @@ impHandler0(testsdlfont)
     return true;
 }
 
-impHandler(dumpMods)
-{
-    std::string str = "enabled mods: " + serverConfig.getValue("mods", "");
-    outStringNormal(event.tab, str, str);
-    return true;
-}
-
 impHandler0(debugSpawn)
 {
     int cnt = atoi(event.args.c_str());

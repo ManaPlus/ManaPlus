@@ -311,6 +311,12 @@ SetupActionData setupActionDataOther[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Print enabled mods in chat"),
+        InputAction::DUMP_MODS,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Dump environments into log"),
         InputAction::DUMP_ENVIRONMENT,
         "",

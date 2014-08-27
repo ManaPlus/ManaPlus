@@ -986,4 +986,11 @@ impHandler0(dumpGL)
 }
 #endif
 
+impHandler(dumpMods)
+{
+    std::string str = "enabled mods: " + serverConfig.getValue("mods", "");
+    outStringNormal(event.tab, str, str);
+    return true;
+}
+
 }  // namespace Actions

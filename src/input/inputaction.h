@@ -403,6 +403,7 @@ namespace InputAction
         DUMP_TESTS,
         DUMP_OGL,
         DUMP_GL,
+        DUMP_MODS,
         TOTAL
     };
 }  // namespace InputAction
