@@ -3485,6 +3485,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "removename",
+        false},
+    {"keyDisableAway",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::disableAway,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "disableaway",
         false}
 };
 

@@ -412,6 +412,7 @@ namespace InputAction
         DISABLE_HIGHLIGHT,
         DONT_REMOVE_NAME,
         REMOVE_NAME,
+        DISABLE_AWAY,
         TOTAL
     };
 }  // namespace InputAction

@@ -1475,8 +1475,8 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "disable away" && mTab)
     {
-        if (commandHandler)
-            commandHandler->invokeCommand(COMMAND_DISABLEAWAY, mTab);
+        inputManager.executeChatCommand(InputAction::DISABLE_AWAY,
+            std::string(), mTab);
     }
     else if (link == "enable away" && mTab)
     {

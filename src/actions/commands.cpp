@@ -622,4 +622,16 @@ impHandler(removeName)
     return false;
 }
 
+impHandler(disableAway)
+{
+    if (event.tab)
+    {
+        event.tab->setNoAway(true);
+        if (chatWindow)
+            chatWindow->saveState();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

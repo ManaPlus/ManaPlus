@@ -106,18 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(disableAway)
-{
-    if (event.tab)
-    {
-        event.tab->setNoAway(true);
-        if (chatWindow)
-            chatWindow->saveState();
-        return true;
-    }
-    return false;
-}
-
 impHandler(enableAway)
 {
     if (event.tab)

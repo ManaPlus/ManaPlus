@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(hack);
-    decHandler(disableAway);
     decHandler(enableAway);
     decHandler(testParticle);
     decHandler(createItems);
@@ -69,8 +68,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_DISABLEAWAY = 0,
-    COMMAND_ENABLEAWAY,
+    COMMAND_ENABLEAWAY = 0,
     COMMAND_TEST_PARTICLE,
     COMMAND_CREATEITEMS,
     COMMAND_TALKRAW,
@@ -86,7 +84,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"disableaway", &Commands::disableAway, -1, false},
     {"enableaway", &Commands::enableAway, -1, false},
     {"testparticle", &Commands::testParticle, -1, true},
     {"createitems", &Commands::createItems, -1, false},
