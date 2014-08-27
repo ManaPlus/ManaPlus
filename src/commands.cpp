@@ -106,24 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(execute)
-{
-    const size_t idx = event.args.find(" ");
-    std::string name;
-    std::string params;
-    if (idx == std::string::npos)
-    {
-        name = event.args;
-    }
-    else
-    {
-        name = event.args.substr(0, idx);
-        params = event.args.substr(idx + 1);
-    }
-    execFile(name, name, params, "");
-    return true;
-}
-
 impHandler(enableHighlight)
 {
     if (event.tab)

@@ -3423,6 +3423,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "open",
+        true},
+    {"keyExecute",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::execute,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "execute",
         true}
 };
 
