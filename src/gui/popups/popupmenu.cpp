@@ -1460,8 +1460,8 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "disable highlight" && mTab)
     {
-        if (commandHandler)
-            commandHandler->invokeCommand(COMMAND_DISABLEHIGHLIGHT, mTab);
+        inputManager.executeChatCommand(InputAction::DISABLE_HIGHLIGHT,
+            std::string(), mTab);
     }
     else if (link == "dont remove name" && mTab)
     {

@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(hack);
-    decHandler(disableHighlight);
     decHandler(dontRemoveName);
     decHandler(removeName);
     decHandler(disableAway);
@@ -72,8 +71,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_DISABLEHIGHLIGHT = 0,
-    COMMAND_DONTREMOVENAME,
+    COMMAND_DONTREMOVENAME = 0,
     COMMAND_REMOVENAME,
     COMMAND_DISABLEAWAY,
     COMMAND_ENABLEAWAY,
@@ -92,7 +90,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"disablehighlight", &Commands::disableHighlight, -1, false},
     {"", &Commands::dontRemoveName, -1, false},
     {"", &Commands::removeName, -1, false},
     {"disableaway", &Commands::disableAway, -1, false},

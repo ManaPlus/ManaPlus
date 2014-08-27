@@ -3458,7 +3458,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "enablehighlight",
-        true}
+        false},
+    {"keyDisableHightlight",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::disableHighlight,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "disablehighlight",
+        false}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

@@ -586,4 +586,16 @@ impHandler(enableHighlight)
     return false;
 }
 
+impHandler(disableHighlight)
+{
+    if (event.tab)
+    {
+        event.tab->setAllowHighlight(false);
+        if (chatWindow)
+            chatWindow->saveState();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

@@ -60,6 +60,7 @@ namespace Actions
     decHandler(openUrl);
     decHandler(execute);
     decHandler(enableHighlight);
+    decHandler(disableHighlight);
 }  // namespace Actions
 
 #undef decHandler

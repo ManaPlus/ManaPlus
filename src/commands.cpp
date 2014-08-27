@@ -106,18 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(disableHighlight)
-{
-    if (event.tab)
-    {
-        event.tab->setAllowHighlight(false);
-        if (chatWindow)
-            chatWindow->saveState();
-        return true;
-    }
-    return false;
-}
-
 impHandler(dontRemoveName)
 {
     if (event.tab)
