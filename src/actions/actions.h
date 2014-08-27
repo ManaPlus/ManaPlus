@@ -84,6 +84,7 @@ namespace Actions
     decHandler(testSdlFont);
 #endif
     decHandler(createItems);
+    decHandler(uploadConfig);
 }  // namespace Actions
 
 #undef decHandler

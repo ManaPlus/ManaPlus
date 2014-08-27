@@ -38,6 +38,7 @@
 #include "being/playerrelations.h"
 
 #include "gui/chatconsts.h"
+#include "gui/dialogtype.h"
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
@@ -47,6 +48,7 @@
 #include "gui/popups/popupmenu.h"
 
 #include "gui/windows/buydialog.h"
+#include "gui/windows/okdialog.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/statuswindow.h"
@@ -81,9 +83,11 @@
 
 #include "net/beinghandler.h"
 #include "net/chathandler.h"
+#include "net/download.h"
 #include "net/gamehandler.h"
 #include "net/ipc.h"
 #include "net/net.h"
+#include "net/uploadcharinfo.h"
 #include "net/partyhandler.h"
 #include "net/playerhandler.h"
 #include "net/tradehandler.h"
@@ -98,6 +102,7 @@
 #include "resources/map/map.h"
 
 #include "utils/chatutils.h"
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/timer.h"
 
@@ -117,6 +122,65 @@ extern char **environ;
 
 namespace Actions
 {
+
+static int uploadUpdate(void *ptr,
+                        DownloadStatus::Type status,
+                        size_t total A_UNUSED,
+                        size_t remaining A_UNUSED)
+{
+    if (status == DownloadStatus::Idle || status == DownloadStatus::Starting)
+        return 0;
+
+    UploadChatInfo *const info = reinterpret_cast<UploadChatInfo*>(ptr);
+    if (status == DownloadStatus::Complete)
+    {
+        std::string str = Net::Download::getUploadResponse();
+        const size_t sz = str.size();
+        if (sz > 0)
+        {
+            if (str[sz - 1] == '\n')
+                str = str.substr(0, sz - 1);
+            str.append(info->addStr);
+            ChatTab *const tab = info->tab;
+            if (chatWindow && (!tab || chatWindow->isTabPresent(tab)))
+            {
+                str = strprintf("%s [@@%s |%s@@]",
+                    info->text.c_str(), str.c_str(), str.c_str());
+                outStringNormal(tab, str, str);
+            }
+            else
+            {
+                // TRANSLATORS: file uploaded message
+                new OkDialog(_("File uploaded"), str,
+                    // TRANSLATORS: ok dialog button
+                    _("OK"),
+                    DialogType::OK,
+                    true, false, nullptr, 260);
+            }
+        }
+    }
+    delete2(info->upload);
+    delete info;
+    return 0;
+}
+
+static void uploadFile(const std::string &str,
+                       const std::string &fileName,
+                       const std::string &addStr,
+                       ChatTab *const tab)
+{
+    UploadChatInfo *const info = new UploadChatInfo();
+    Net::Download *const upload = new Net::Download(info,
+        "http://sprunge.us",
+        &uploadUpdate,
+        false, true, false);
+    info->upload = upload;
+    info->text = str;
+    info->addStr = addStr;
+    info->tab = tab;
+    upload->setFile(fileName);
+    upload->start();
+}
 
 impHandler(emote)
 {
@@ -1070,6 +1134,15 @@ impHandler0(createItems)
         }
     }
     dialog->sort();
+    return true;
+}
+
+impHandler(uploadConfig)
+{
+    uploadFile(_("Uploaded config into:"),
+        config.getFileName(),
+        "?xml",
+        event.tab);
     return true;
 }
 

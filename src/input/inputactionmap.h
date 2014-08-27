@@ -3530,7 +3530,7 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "talkraw",
-        false},
+        true},
     {"keyTalkPet",
         InputType::UNKNOWN, InputAction::NO_VALUE,
         InputType::UNKNOWN, InputAction::NO_VALUE,
@@ -3539,6 +3539,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "talkpet",
+        true},
+    {"keyUploadConfig",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::uploadConfig,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "uploadconfig",
         false}
 };
 

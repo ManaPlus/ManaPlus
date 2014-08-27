@@ -171,15 +171,6 @@ static void uploadFile(const std::string &str,
     upload->start();
 }
 
-impHandler(uploadConfig)
-{
-    uploadFile(_("Uploaded config into:"),
-        config.getFileName(),
-        "?xml",
-        event.tab);
-    return true;
-}
-
 impHandler(uploadServerConfig)
 {
     uploadFile(_("Uploaded server config into:"),
