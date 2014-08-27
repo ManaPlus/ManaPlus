@@ -70,6 +70,7 @@ namespace Actions
     decHandler(talkPet);
     decHandler(gm);
     decHandler(hack);
+    decHandler(debugSpawn);
 }  // namespace Actions
 
 #undef decHandler

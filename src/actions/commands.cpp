@@ -686,4 +686,18 @@ impHandler(hack)
     return true;
 }
 
+impHandler0(debugSpawn)
+{
+    int cnt = atoi(event.args.c_str());
+    if (cnt < 1)
+        cnt = 1;
+    const int half = cnt / 2;
+    for (int x = -half; x < cnt - half; x ++)
+    {
+        for (int y =  -half; y < cnt - half; y ++)
+            actorManager->cloneBeing(localPlayer, x, y, cnt);
+    }
+    return true;
+}
+
 }  // namespace Actions

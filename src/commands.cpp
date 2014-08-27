@@ -159,20 +159,6 @@ static void uploadFile(const std::string &str,
     upload->start();
 }
 
-impHandler0(debugSpawn)
-{
-    int cnt = atoi(event.args.c_str());
-    if (cnt < 1)
-        cnt = 1;
-    const int half = cnt / 2;
-    for (int x = -half; x < cnt - half; x ++)
-    {
-        for (int y =  -half; y < cnt - half; y ++)
-            actorManager->cloneBeing(localPlayer, x, y, cnt);
-    }
-    return true;
-}
-
 void replaceVars(std::string &str)
 {
     if (!localPlayer || !actorManager)

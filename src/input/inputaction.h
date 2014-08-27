@@ -423,6 +423,7 @@ namespace InputAction
         UPLOAD_LOG,
         GM,
         HACK,
+        DEBUG_SPAWN,
         TOTAL
     };
 }  // namespace InputAction

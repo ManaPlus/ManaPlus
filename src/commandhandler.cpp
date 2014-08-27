@@ -38,30 +38,10 @@ CommandHandler *commandHandler = nullptr;
 CommandHandler::CommandHandler() :
     mCommands()
 {
-    const int sz = sizeof(commands) / sizeof(CommandInfo);
-    for (int f = 0; f < sz; f ++)
-    {
-        const std::string name = commands[f].name;
-        if (!name.empty())
-            mCommands[name] = &commands[f];
-    }
 }
 
 void CommandHandler::addChatCommands(std::list<std::string> &arr)
 {
-    const int sz = sizeof(commands) / sizeof(CommandInfo);
-    for (int f = 0; f < sz; f ++)
-    {
-        const CommandInfo &info = commands[f];
-        const std::string name = info.name;
-        if (!name.empty())
-        {
-            std::string cmd = std::string("/").append(name);
-            if (info.useArgs)
-                cmd.append(" ");
-            arr.push_back(cmd);
-        }
-    }
 }
 
 void CommandHandler::handleCommands(const std::string &command,
@@ -124,32 +104,20 @@ void CommandHandler::callFunc(const CommandInfo &info,
 
 void CommandHandler::invokeCommand(const int type)
 {
-    if (type < 0 || type >= END_COMMANDS)
-        return;
-    callFunc(commands[type], "", nullptr);
 }
 
 void CommandHandler::invokeCommand(const int type,
                                    ChatTab *const tab)
 {
-    if (type < 0 || type >= END_COMMANDS)
-        return;
-    callFunc(commands[type], "", tab);
 }
 
 void CommandHandler::invokeCommand(const int type,
                                    const std::string &args)
 {
-    if (type < 0 || type >= END_COMMANDS)
-        return;
-    callFunc(commands[type], args, nullptr);
 }
 
 void CommandHandler::invokeCommand(const int type,
                                    const std::string &args,
                                    ChatTab *const tab)
 {
-    if (type < 0 || type >= END_COMMANDS)
-        return;
-    callFunc(commands[type], args, tab);
 }
