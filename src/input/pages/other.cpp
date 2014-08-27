@@ -327,6 +327,14 @@ SetupActionData setupActionDataOther[] =
         InputAction::DUMP_OGL,
         "",
     },
+#if defined USE_OPENGL && defined DEBUG_SDLFONT
+    {
+        // TRANSLATORS: input action name
+        N_("Test SDL font speed"),
+        InputAction::TEST_SDL_FONT,
+        "",
+    },
+#endif
     {
         "",
         InputAction::NO_VALUE,

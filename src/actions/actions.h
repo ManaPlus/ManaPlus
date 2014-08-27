@@ -21,6 +21,8 @@
 #ifndef ACTIONS_ACTIONS_H
 #define ACTIONS_ACTIONS_H
 
+#include "localconsts.h"
+
 #define decHandler(name) bool name(InputEvent &event)
 
 struct InputEvent;
@@ -78,6 +80,9 @@ namespace Actions
     decHandler(dumpOGL);
     decHandler(dumpGL);
     decHandler(dumpMods);
+#if defined USE_OPENGL && defined DEBUG_SDLFONT
+    decHandler(testSdlFont);
+#endif
 }  // namespace Actions
 
 #undef decHandler

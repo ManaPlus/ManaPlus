@@ -3432,7 +3432,24 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "execute",
-        true}
+        true},
+    {"keyTestSdlFont",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+#if defined USE_OPENGL && defined DEBUG_SDLFONT
+        &Actions::testSdlFont,
+#else
+        nullptr,
+#endif
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+#if defined USE_OPENGL && defined DEBUG_SDLFONT
+        "testsdlfont",
+#else
+        "",
+#endif
+        false}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
