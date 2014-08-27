@@ -64,6 +64,7 @@ namespace Actions
     decHandler(dontRemoveName);
     decHandler(removeName);
     decHandler(disableAway);
+    decHandler(enableAway);
 }  // namespace Actions
 
 #undef decHandler

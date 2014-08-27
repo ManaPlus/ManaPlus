@@ -106,18 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(enableAway)
-{
-    if (event.tab)
-    {
-        event.tab->setNoAway(false);
-        if (chatWindow)
-            chatWindow->saveState();
-        return true;
-    }
-    return false;
-}
-
 impHandler(testParticle)
 {
     if (localPlayer)
