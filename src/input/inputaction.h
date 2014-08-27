@@ -405,6 +405,7 @@ namespace InputAction
         DUMP_GL,
         DUMP_MODS,
         URL,
+        OPEN_URL,
         TOTAL
     };
 }  // namespace InputAction

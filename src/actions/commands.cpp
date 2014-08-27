@@ -77,6 +77,7 @@
 
 #include "utils/chatutils.h"
 #include "utils/gettext.h"
+#include "utils/process.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -544,6 +545,15 @@ impHandler(url)
         return true;
     }
     return false;
+}
+
+impHandler(openUrl)
+{
+    std::string url = event.args;
+    if (!strStartWith(url, "http"))
+        url = "http://" + url;
+    openBrowser(url);
+    return true;
 }
 
 }  // namespace Actions

@@ -3414,6 +3414,15 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "url",
+        true},
+    {"keyOpenUrl",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::openUrl,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "open",
         true}
 };
 

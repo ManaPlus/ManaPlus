@@ -106,15 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(open)
-{
-    std::string url = event.args;
-    if (!strStartWith(url, "http"))
-        url = "http://" + url;
-    openBrowser(url);
-    return true;
-}
-
 impHandler(execute)
 {
     const size_t idx = event.args.find(" ");

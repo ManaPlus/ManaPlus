@@ -57,6 +57,7 @@ namespace Actions
     decHandler(addIgnoreAttack);
     decHandler(setDrop);
     decHandler(url);
+    decHandler(openUrl);
 }  // namespace Actions
 
 #undef decHandler
