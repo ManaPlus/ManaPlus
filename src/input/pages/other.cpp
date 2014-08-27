@@ -305,6 +305,12 @@ SetupActionData setupActionDataOther[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Print OpenGL version in chat"),
+        InputAction::DUMP_GL,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Dump environments into log"),
         InputAction::DUMP_ENVIRONMENT,
         "",

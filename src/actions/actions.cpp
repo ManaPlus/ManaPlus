@@ -25,6 +25,7 @@
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
+#include "graphicsmanager.h"
 #include "guild.h"
 #include "itemshortcut.h"
 #include "soundmanager.h"
@@ -970,5 +971,19 @@ impHandler0(dumpOGL)
 #endif
     return true;
 }
+
+#ifdef USE_OPENGL
+impHandler(dumpGL)
+{
+    std::string str = graphicsManager.getGLVersion();
+    outStringNormal(event.tab, str, str);
+    return true;
+}
+#else
+impHandler0(dumpGL)
+{
+    return true;
+}
+#endif
 
 }  // namespace Actions

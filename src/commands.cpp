@@ -420,20 +420,6 @@ impHandler(dumpMods)
     return true;
 }
 
-#ifdef USE_OPENGL
-impHandler(dumpGL)
-{
-    std::string str = graphicsManager.getGLVersion();
-    outStringNormal(event.tab, str, str);
-    return true;
-}
-#else
-impHandler0(dumpGL)
-{
-    return true;
-}
-#endif
-
 impHandler0(debugSpawn)
 {
     int cnt = atoi(event.args.c_str());
