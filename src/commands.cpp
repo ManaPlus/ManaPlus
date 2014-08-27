@@ -106,12 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(gm)
-{
-    Net::getChatHandler()->talk("@wgm " + event.args, GENERAL_CHANNEL);
-    return true;
-}
-
 static int uploadUpdate(void *ptr,
                         DownloadStatus::Type status,
                         size_t total A_UNUSED,

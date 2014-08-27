@@ -3566,7 +3566,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "uploadlog",
-        false}
+        false},
+    {"keyGm",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::gm,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "gm",
+        true}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

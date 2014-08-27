@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(hack);
-    decHandler(gm);
     decHandler(debugSpawn);
 
     void replaceVars(std::string &str);
@@ -60,15 +59,13 @@ namespace Commands
 
 enum
 {
-    COMMAND_GM = 0,
-    COMMAND_HACK,
+    COMMAND_HACK = 0,
     COMMAND_DEBUGSPAWN,
     END_COMMANDS
 };
 
 static const CommandInfo commands[] =
 {
-    {"gm", &Commands::gm, -1, true},
     {"hack", &Commands::hack, -1, true},
     {"debugSpawn", &Commands::debugSpawn, -1, true}
 };

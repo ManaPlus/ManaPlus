@@ -674,4 +674,10 @@ impHandler(talkPet)
     return true;
 }
 
+impHandler(gm)
+{
+    Net::getChatHandler()->talk("@wgm " + event.args, GENERAL_CHANNEL);
+    return true;
+}
+
 }  // namespace Actions

@@ -68,6 +68,7 @@ namespace Actions
     decHandler(testParticle);
     decHandler(talkRaw);
     decHandler(talkPet);
+    decHandler(gm);
 }  // namespace Actions
 
 #undef decHandler
