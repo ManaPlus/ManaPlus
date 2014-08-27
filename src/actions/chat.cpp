@@ -76,6 +76,7 @@
 #include "net/net.h"
 #include "net/partyhandler.h"
 
+#include "utils/booleanoptions.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -85,10 +86,6 @@ extern ShortcutWindow *spellShortcutWindow;
 extern std::string tradePartnerName;
 extern QuitDialog *quitDialog;
 extern unsigned int tmwServerVersion;
-
-// TRANSLATORS: chat option changed message
-#define BOOLEAN_OPTIONS _("Options to /%s are \"yes\", \"no\", \"true\", "\
-"\"false\", \"1\", \"0\".")
 
 namespace Actions
 {

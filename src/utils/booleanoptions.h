@@ -1,7 +1,5 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2008-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2014  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -20,36 +18,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef COMMANDS_H
-#define COMMANDS_H
+#ifndef UTILS_BOOLEANOPTIONS_H
+#define UTILS_BOOLEANOPTIONS_H
 
-#include "actions/actionfuncptr.h"
+#include "utils/gettext.h"
 
-#include "input/inputaction.h"
+// TRANSLATORS: chat option changed message
+#define BOOLEAN_OPTIONS _("Options to /%s are \"yes\", \"no\", \"true\", "\
+"\"false\", \"1\", \"0\".")
 
-#include <string>
-
-#include "localconsts.h"
-
-class ChatTab;
-
-extern ChatTab *localChatTab;
-
-#define decHandler(name) bool name(InputEvent &event)
-
-struct CommandInfo final
-{
-    const char *name;
-    ActionFuncPtr func;
-    int actionId;
-    bool useArgs;
-};
-
-enum
-{
-    END_COMMANDS = 0
-};
-
-#undef decHandler
-
-#endif  // COMMANDS_H
+#endif  // UTILS_BOOLEANOPTIONS_H
