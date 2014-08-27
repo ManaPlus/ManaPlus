@@ -360,6 +360,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Upload log file"),
+        InputAction::UPLOAD_LOG,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

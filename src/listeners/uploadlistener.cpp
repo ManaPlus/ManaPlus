@@ -20,8 +20,7 @@
 
 #include "listeners/uploadlistener.h"
 
-#include "commandhandler.h"
-#include "commands.h"
+#include "input/inputmanager.h"
 
 #include "debug.h"
 
@@ -29,6 +28,5 @@ UploadListener uploadListener;
 
 void UploadListener::action(const ActionEvent &event A_UNUSED)
 {
-    if (commandHandler)
-        commandHandler->invokeCommand(COMMAND_UPLOADLOG, "");
+    inputManager.executeAction(InputAction::UPLOAD_LOG);
 }

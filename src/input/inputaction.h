@@ -420,6 +420,7 @@ namespace InputAction
         TALK_PET,
         UPLOAD_CONFIG,
         UPLOAD_SERVER_CONFIG,
+        UPLOAD_LOG,
         TOTAL
     };
 }  // namespace InputAction

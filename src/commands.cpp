@@ -171,15 +171,6 @@ static void uploadFile(const std::string &str,
     upload->start();
 }
 
-impHandler(uploadLog)
-{
-    uploadFile(_("Uploaded log into:"),
-        settings.logFileName,
-        "?txt",
-        event.tab);
-    return true;
-}
-
 impHandler0(debugSpawn)
 {
     int cnt = atoi(event.args.c_str());
