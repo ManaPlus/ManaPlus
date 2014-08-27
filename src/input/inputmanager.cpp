@@ -752,6 +752,22 @@ bool InputManager::executeChatCommand(const std::string &cmd,
     return false;
 }
 
+bool InputManager::executeChatCommand(const int keyNum,
+                                      const std::string &args,
+                                      ChatTab *const tab)
+{
+    if (keyNum < 0 || keyNum >= InputAction::TOTAL)
+        return false;
+    ActionFuncPtr func = *(inputActionData[keyNum].action);
+    if (func)
+    {
+        InputEvent evt(args, tab, mMask);
+        func(evt);
+        return true;
+    }
+    return false;
+}
+
 void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
                                       KeyToIdMap &idMap,
                                       KeyTimeMap &keyTimeMap,

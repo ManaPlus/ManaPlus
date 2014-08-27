@@ -59,6 +59,7 @@ namespace Actions
     decHandler(url);
     decHandler(openUrl);
     decHandler(execute);
+    decHandler(enableHighlight);
 }  // namespace Actions
 
 #undef decHandler

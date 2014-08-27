@@ -1455,8 +1455,8 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "enable highlight" && mTab)
     {
-        if (commandHandler)
-            commandHandler->invokeCommand(COMMAND_ENABLEHIGHLIGHT, mTab);
+        inputManager.executeChatCommand(InputAction::ENABLE_HIGHLIGHT,
+            std::string(), mTab);
     }
     else if (link == "disable highlight" && mTab)
     {

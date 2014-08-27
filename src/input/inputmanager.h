@@ -123,6 +123,10 @@ class InputManager final
                                 const std::string &args,
                                 ChatTab *const tab);
 
+        bool executeChatCommand(const int keyNum,
+                                const std::string &args,
+                                ChatTab *const tab);
+
         void addChatCommands(std::list<std::string> &arr);
 
     protected:

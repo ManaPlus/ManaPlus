@@ -408,6 +408,7 @@ namespace InputAction
         OPEN_URL,
         EXECUTE,
         TEST_SDL_FONT,
+        ENABLE_HIGHLIGHT,
         TOTAL
     };
 }  // namespace InputAction
