@@ -85,6 +85,7 @@ namespace Actions
 #endif
     decHandler(createItems);
     decHandler(uploadConfig);
+    decHandler(uploadServerConfig);
 }  // namespace Actions
 
 #undef decHandler

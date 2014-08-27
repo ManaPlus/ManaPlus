@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(hack);
-    decHandler(uploadServerConfig);
     decHandler(uploadLog);
     decHandler(gm);
     decHandler(debugSpawn);
@@ -62,8 +61,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_UPLOADSERVERCONFIG = 0,
-    COMMAND_UPLOADLOG,
+    COMMAND_UPLOADLOG = 0,
     COMMAND_GM,
     COMMAND_HACK,
     COMMAND_DEBUGSPAWN,
@@ -72,7 +70,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"uploadserverconfig", &Commands::uploadServerConfig, -1, false},
     {"uploadlog", &Commands::uploadLog, -1, false},
     {"gm", &Commands::gm, -1, true},
     {"hack", &Commands::hack, -1, true},

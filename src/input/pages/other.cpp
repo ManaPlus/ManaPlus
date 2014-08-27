@@ -354,6 +354,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Upload server config"),
+        InputAction::UPLOAD_SERVER_CONFIG,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

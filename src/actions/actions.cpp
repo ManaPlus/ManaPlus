@@ -1146,4 +1146,13 @@ impHandler(uploadConfig)
     return true;
 }
 
+impHandler(uploadServerConfig)
+{
+    uploadFile(_("Uploaded server config into:"),
+        serverConfig.getFileName(),
+        "?xml",
+        event.tab);
+    return true;
+}
+
 }  // namespace Actions

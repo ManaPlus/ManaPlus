@@ -419,6 +419,7 @@ namespace InputAction
         TALK_RAW,
         TALK_PET,
         UPLOAD_CONFIG,
+        UPLOAD_SERVER_CONFIG,
         TOTAL
     };
 }  // namespace InputAction
