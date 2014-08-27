@@ -610,4 +610,16 @@ impHandler(dontRemoveName)
     return false;
 }
 
+impHandler(removeName)
+{
+    if (event.tab)
+    {
+        event.tab->setRemoveNames(true);
+        if (chatWindow)
+            chatWindow->saveState();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

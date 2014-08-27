@@ -1470,8 +1470,8 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "remove name" && mTab)
     {
-        if (commandHandler)
-            commandHandler->invokeCommand(COMMAND_REMOVENAME, mTab);
+        inputManager.executeChatCommand(InputAction::REMOVE_NAME,
+            std::string(), mTab);
     }
     else if (link == "disable away" && mTab)
     {

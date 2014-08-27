@@ -106,18 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(removeName)
-{
-    if (event.tab)
-    {
-        event.tab->setRemoveNames(true);
-        if (chatWindow)
-            chatWindow->saveState();
-        return true;
-    }
-    return false;
-}
-
 impHandler(disableAway)
 {
     if (event.tab)

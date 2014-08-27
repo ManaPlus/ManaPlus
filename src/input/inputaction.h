@@ -411,6 +411,7 @@ namespace InputAction
         ENABLE_HIGHLIGHT,
         DISABLE_HIGHLIGHT,
         DONT_REMOVE_NAME,
+        REMOVE_NAME,
         TOTAL
     };
 }  // namespace InputAction

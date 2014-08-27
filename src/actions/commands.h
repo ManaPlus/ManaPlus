@@ -62,6 +62,7 @@ namespace Actions
     decHandler(enableHighlight);
     decHandler(disableHighlight);
     decHandler(dontRemoveName);
+    decHandler(removeName);
 }  // namespace Actions
 
 #undef decHandler
