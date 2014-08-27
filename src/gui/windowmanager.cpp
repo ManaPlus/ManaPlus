@@ -23,7 +23,6 @@
 #include "gui/windowmanager.h"
 
 #include "client.h"
-#include "commandhandler.h"
 #include "configuration.h"
 #include "game.h"
 #include "settings.h"
@@ -98,7 +97,6 @@ void WindowManager::createWindows()
     helpWindow = new HelpWindow;
     didYouKnowWindow = new DidYouKnowWindow;
     didYouKnowWindow->postInit();
-    commandHandler = new CommandHandler;
     popupMenu = new PopupMenu;
     popupMenu->postInit();
     beingPopup = new BeingPopup;
@@ -118,7 +116,6 @@ void WindowManager::deleteWindows()
     delete2(itemPopup);
     delete2(spellPopup);
     delete2(popupMenu);
-    delete2(commandHandler);
     delete2(didYouKnowWindow);
     delete2(helpWindow);
     delete2(setupWindow);

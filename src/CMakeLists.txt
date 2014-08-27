@@ -797,10 +797,6 @@ SET(SRCS
     chatlogger.h
     client.cpp
     client.h
-    commandhandler.cpp
-    commandhandler.h
-    commands.cpp
-    commands.h
     configmanager.cpp
     configmanager.h
     being/compounditem.h

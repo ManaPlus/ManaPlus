@@ -23,8 +23,6 @@
 #include "gui/popups/popupmenu.h"
 
 #include "actormanager.h"
-#include "commands.h"
-#include "commandhandler.h"
 #include "configuration.h"
 #include "dropshortcut.h"
 #include "game.h"
@@ -1333,8 +1331,8 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "chat close" && mTab)
     {
-        if (commandHandler)
-            commandHandler->invokeCommand("close", "", mTab);
+        inputManager.executeChatCommand(InputAction::CLOSE_CHAT_TAB,
+            std::string(), mTab);
     }
     else if (link == "leave party" && mTab)
     {

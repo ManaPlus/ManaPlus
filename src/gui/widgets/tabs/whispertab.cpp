@@ -23,8 +23,6 @@
 #include "gui/widgets/tabs/whispertab.h"
 
 #include "chatlogger.h"
-#include "commandhandler.h"
-#include "commands.h"
 
 #include "being/localplayer.h"
 

@@ -26,7 +26,6 @@
 
 #include "auctionmanager.h"
 #include "chatlogger.h"
-#include "commandhandler.h"
 #include "configmanager.h"
 #include "configuration.h"
 #include "dirs.h"

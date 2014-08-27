@@ -23,8 +23,6 @@
 #include "gui/widgets/tabs/chattab.h"
 
 #include "chatlogger.h"
-#include "commands.h"
-#include "commandhandler.h"
 #include "configuration.h"
 #include "settings.h"
 #include "soundconsts.h"
@@ -438,15 +436,13 @@ void ChatTab::handleInput(const std::string &msg)
         mChannelName);
 }
 
-void ChatTab::handleCommand(const std::string &msg)
+void ChatTab::handleCommand(const std::string &msg A_UNUSED)
 {
-    if (commandHandler)
-        commandHandler->handleCommands(msg, this);
 }
 
 void ChatTab::handleHelp(const std::string &msg)
 {
-    if (commandHandler)
+    if (helpWindow)
         helpWindow->search(msg);
 }
 

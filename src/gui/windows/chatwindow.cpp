@@ -23,7 +23,6 @@
 #include "gui/windows/chatwindow.h"
 
 #include "actormanager.h"
-#include "commandhandler.h"
 #include "configuration.h"
 #include "game.h"
 #include "guild.h"
@@ -239,7 +238,6 @@ void ChatWindow::loadCommandsFile(const std::string &name)
 void ChatWindow::fillCommands()
 {
     loadCommandsFile("chatcommands.txt");
-    CommandHandler::addChatCommands(mCommands);
     inputManager.addChatCommands(mCommands);
 }
 

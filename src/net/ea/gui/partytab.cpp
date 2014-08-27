@@ -23,7 +23,6 @@
 #include "net/ea/gui/partytab.h"
 
 #include "chatlogger.h"
-#include "commands.h"
 #include "configuration.h"
 #include "party.h"
 #include "soundconsts.h"
