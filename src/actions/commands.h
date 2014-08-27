@@ -69,6 +69,7 @@ namespace Actions
     decHandler(talkRaw);
     decHandler(talkPet);
     decHandler(gm);
+    decHandler(hack);
 }  // namespace Actions
 
 #undef decHandler

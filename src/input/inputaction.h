@@ -422,6 +422,7 @@ namespace InputAction
         UPLOAD_SERVER_CONFIG,
         UPLOAD_LOG,
         GM,
+        HACK,
         TOTAL
     };
 }  // namespace InputAction

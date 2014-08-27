@@ -100,12 +100,6 @@ extern char **environ;
 namespace Commands
 {
 
-impHandler(hack)
-{
-    Net::getChatHandler()->sendRaw(event.args);
-    return true;
-}
-
 static int uploadUpdate(void *ptr,
                         DownloadStatus::Type status,
                         size_t total A_UNUSED,

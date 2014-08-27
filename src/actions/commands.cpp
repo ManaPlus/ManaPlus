@@ -680,4 +680,10 @@ impHandler(gm)
     return true;
 }
 
+impHandler(hack)
+{
+    Net::getChatHandler()->sendRaw(event.args);
+    return true;
+}
+
 }  // namespace Actions
