@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(hack);
-    decHandler(url);
     decHandler(open);
     decHandler(execute);
     decHandler(testsdlfont);
@@ -77,8 +76,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_URL = 0,
-    COMMAND_OPEN,
+    COMMAND_OPEN = 0,
     COMMAND_EXECUTE,
     COMMAND_TESTSDLFONT,
     COMMAND_ENABLEHIGHLIGHT,
@@ -102,7 +100,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"url", &Commands::url, -1, true},
     {"open", &Commands::open, -1, true},
     {"execute", &Commands::execute, -1, true},
     {"testsdlfont", &Commands::testsdlfont, -1, false},

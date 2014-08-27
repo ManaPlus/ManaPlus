@@ -106,20 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(url)
-{
-    if (event.tab)
-    {
-        std::string url = event.args;
-        if (!strStartWith(url, "http") && !strStartWith(url, "?"))
-            url = "http://" + url;
-        std::string str(strprintf("[@@%s |%s@@]", url.c_str(), event.args.c_str()));
-        outStringNormal(event.tab, str, str);
-        return true;
-    }
-    return false;
-}
-
 impHandler(open)
 {
     std::string url = event.args;

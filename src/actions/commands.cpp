@@ -75,6 +75,7 @@
 #include "net/pethandler.h"
 #include "net/net.h"
 
+#include "utils/chatutils.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -528,6 +529,21 @@ impHandler(setDrop)
 {
     GameModifiers::setQuickDropCounter(atoi(event.args.c_str()));
     return true;
+}
+
+impHandler(url)
+{
+    if (event.tab)
+    {
+        std::string url = event.args;
+        if (!strStartWith(url, "http") && !strStartWith(url, "?"))
+            url = "http://" + url;
+        std::string str(strprintf("[@@%s |%s@@]",
+            url.c_str(), event.args.c_str()));
+        outStringNormal(event.tab, str, str);
+        return true;
+    }
+    return false;
 }
 
 }  // namespace Actions
