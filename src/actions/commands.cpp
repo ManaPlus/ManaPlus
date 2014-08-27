@@ -36,6 +36,7 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
+#include "gui/chatconsts.h"
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
@@ -660,6 +661,16 @@ impHandler(testParticle)
 impHandler(talkRaw)
 {
     Net::getChatHandler()->talkRaw(event.args);
+    return true;
+}
+
+impHandler(talkPet)
+{
+    // in future probably need add channel detection
+    if (!localPlayer->getPets().empty())
+        Net::getChatHandler()->talkPet(event.args, GENERAL_CHANNEL);
+    else
+        Net::getChatHandler()->talk(event.args, GENERAL_CHANNEL);
     return true;
 }
 

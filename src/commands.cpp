@@ -106,16 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(talkPet)
-{
-    // in future probably need add channel detection
-    if (!localPlayer->getPets().empty())
-        Net::getChatHandler()->talkPet(event.args, GENERAL_CHANNEL);
-    else
-        Net::getChatHandler()->talk(event.args, GENERAL_CHANNEL);
-    return true;
-}
-
 impHandler(gm)
 {
     Net::getChatHandler()->talk("@wgm " + event.args, GENERAL_CHANNEL);

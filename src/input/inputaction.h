@@ -417,6 +417,7 @@ namespace InputAction
         TEST_PARTICLE,
         CREATE_ITEMS,
         TALK_RAW,
+        TALK_PET,
         TOTAL
     };
 }  // namespace InputAction
