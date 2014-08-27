@@ -410,6 +410,7 @@ namespace InputAction
         TEST_SDL_FONT,
         ENABLE_HIGHLIGHT,
         DISABLE_HIGHLIGHT,
+        DONT_REMOVE_NAME,
         TOTAL
     };
 }  // namespace InputAction

@@ -598,4 +598,16 @@ impHandler(disableHighlight)
     return false;
 }
 
+impHandler(dontRemoveName)
+{
+    if (event.tab)
+    {
+        event.tab->setRemoveNames(false);
+        if (chatWindow)
+            chatWindow->saveState();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions
