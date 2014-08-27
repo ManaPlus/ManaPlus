@@ -106,16 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(testParticle)
-{
-    if (localPlayer)
-    {
-        localPlayer->setTestParticle(event.args);
-        return true;
-    }
-    return false;
-}
-
 impHandler0(createItems)
 {
     BuyDialog *const dialog = new BuyDialog();

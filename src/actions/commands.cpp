@@ -646,4 +646,14 @@ impHandler(enableAway)
     return false;
 }
 
+impHandler(testParticle)
+{
+    if (localPlayer)
+    {
+        localPlayer->setTestParticle(event.args);
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

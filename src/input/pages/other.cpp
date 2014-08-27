@@ -269,6 +269,12 @@ SetupActionData setupActionDataOther[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Disable debug particle"),
+        InputAction::TEST_PARTICLE,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Print configured directories in chat"),
         InputAction::DIRS,
         "",

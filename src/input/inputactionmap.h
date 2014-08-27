@@ -3503,7 +3503,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
         "enableaway",
-        false}
+        false},
+    {"keyTestParticle",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::testParticle,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "testparticle",
+        true}
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H

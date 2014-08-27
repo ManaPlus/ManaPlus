@@ -65,6 +65,7 @@ namespace Actions
     decHandler(removeName);
     decHandler(disableAway);
     decHandler(enableAway);
+    decHandler(testParticle);
 }  // namespace Actions
 
 #undef decHandler

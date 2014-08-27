@@ -52,7 +52,6 @@ struct CommandInfo final
 namespace Commands
 {
     decHandler(hack);
-    decHandler(testParticle);
     decHandler(createItems);
     decHandler(talkRaw);
     decHandler(talkPet);
@@ -67,8 +66,7 @@ namespace Commands
 
 enum
 {
-    COMMAND_TEST_PARTICLE = 0,
-    COMMAND_CREATEITEMS,
+    COMMAND_CREATEITEMS = 0,
     COMMAND_TALKRAW,
     COMMAND_TALKPET,
     COMMAND_UPLOADCONFIG,
@@ -82,7 +80,6 @@ enum
 
 static const CommandInfo commands[] =
 {
-    {"testparticle", &Commands::testParticle, -1, true},
     {"createitems", &Commands::createItems, -1, false},
     {"talkraw", &Commands::talkRaw, -1, true},
     {"talkpet", &Commands::talkPet, -1, true},

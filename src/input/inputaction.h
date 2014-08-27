@@ -414,6 +414,7 @@ namespace InputAction
         REMOVE_NAME,
         DISABLE_AWAY,
         ENABLE_AWAY,
+        TEST_PARTICLE,
         TOTAL
     };
 }  // namespace InputAction
