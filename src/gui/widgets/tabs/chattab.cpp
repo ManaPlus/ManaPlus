@@ -42,6 +42,8 @@
 
 #include "gui/widgets/tabs/chattabtype.h"
 
+#include "input/inputmanager.h"
+
 #include "net/chathandler.h"
 #include "net/net.h"
 
@@ -436,8 +438,14 @@ void ChatTab::handleInput(const std::string &msg)
         mChannelName);
 }
 
-void ChatTab::handleCommand(const std::string &msg A_UNUSED)
+void ChatTab::handleCommand(const std::string &msg)
 {
+    const size_t pos = msg.find(' ');
+    const std::string type(msg, 0, pos);
+    std::string args(msg, pos == std::string::npos ? msg.size() : pos + 1);
+
+    args = trim(args);
+    inputManager.executeChatCommand(type, args, this);
 }
 
 void ChatTab::handleHelp(const std::string &msg)
