@@ -71,6 +71,7 @@
 #include "gui/widgets/tabs/whispertab.h"
 
 #include "net/adminhandler.h"
+#include "net/chathandler.h"
 #include "net/guildhandler.h"
 #include "net/pethandler.h"
 #include "net/net.h"
@@ -654,6 +655,12 @@ impHandler(testParticle)
         return true;
     }
     return false;
+}
+
+impHandler(talkRaw)
+{
+    Net::getChatHandler()->talkRaw(event.args);
+    return true;
 }
 
 }  // namespace Actions

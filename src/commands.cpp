@@ -106,12 +106,6 @@ impHandler(hack)
     return true;
 }
 
-impHandler(talkRaw)
-{
-    Net::getChatHandler()->talkRaw(event.args);
-    return true;
-}
-
 impHandler(talkPet)
 {
     // in future probably need add channel detection

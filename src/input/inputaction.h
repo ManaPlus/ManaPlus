@@ -416,6 +416,7 @@ namespace InputAction
         ENABLE_AWAY,
         TEST_PARTICLE,
         CREATE_ITEMS,
+        TALK_RAW,
         TOTAL
     };
 }  // namespace InputAction

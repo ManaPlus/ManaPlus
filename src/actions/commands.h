@@ -66,6 +66,7 @@ namespace Actions
     decHandler(disableAway);
     decHandler(enableAway);
     decHandler(testParticle);
+    decHandler(talkRaw);
 }  // namespace Actions
 
 #undef decHandler
