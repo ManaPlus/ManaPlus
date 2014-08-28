@@ -42,7 +42,6 @@
 #include "gui/chatconsts.h"
 #include "gui/focushandler.h"
 #include "gui/gui.h"
-#include "gui/popupmanager.h"
 #include "gui/skin.h"
 #include "gui/viewport.h"
 

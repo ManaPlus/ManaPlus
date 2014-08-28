@@ -29,11 +29,11 @@
 #include "input/keyboardconfig.h"
 
 #include "input/pages/emotes.h"
-#include "input/pages/gui.h"
 #include "input/pages/move.h"
 #include "input/pages/outfits.h"
 #include "input/pages/shortcuts.h"
 
+#include "gui/dialogtype.h"
 #include "gui/gui.h"
 #include "gui/setupinputpages.h"
 

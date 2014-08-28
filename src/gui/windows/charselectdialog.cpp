@@ -32,6 +32,8 @@
 
 #include "being/attributes.h"
 
+#include "gui/dialogtype.h"
+
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/chardeleteconfirm.h"
 #include "gui/windows/logindialog.h"

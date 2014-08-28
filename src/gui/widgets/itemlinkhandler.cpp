@@ -22,7 +22,6 @@
 
 #include "gui/widgets/itemlinkhandler.h"
 
-#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/itempopup.h"
@@ -31,7 +30,6 @@
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/helpwindow.h"
 
-#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 

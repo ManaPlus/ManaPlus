@@ -36,7 +36,6 @@
 class Image;
 class Inventory;
 class Item;
-class ItemPopup;
 class SelectionListener;
 
 /**

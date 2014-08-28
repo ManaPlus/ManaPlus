@@ -52,8 +52,6 @@
 
 #include "listeners/selectionlistener.h"
 
-#include "utils/delete2.h"
-
 #include <algorithm>
 
 #include "debug.h"

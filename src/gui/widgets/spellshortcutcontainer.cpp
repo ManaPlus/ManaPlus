@@ -27,7 +27,6 @@
 #include "settings.h"
 #include "spellshortcut.h"
 
-#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"
@@ -38,8 +37,6 @@
 #include "gui/windows/shortcutwindow.h"
 
 #include "resources/image.h"
-
-#include "utils/delete2.h"
 
 #include "debug.h"
 

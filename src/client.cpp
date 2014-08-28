@@ -52,22 +52,17 @@
 #include "input/keyboardconfig.h"
 
 #include "gui/dialogsmanager.h"
+#include "gui/dialogtype.h"
 #include "gui/gui.h"
 #include "gui/skin.h"
 #include "gui/popupmanager.h"
 #include "gui/theme.h"
 #include "gui/windowmanager.h"
 
-#include "gui/popups/beingpopup.h"
-#include "gui/popups/popupmenu.h"
-#include "gui/popups/textpopup.h"
-
 #include "gui/windows/changeemaildialog.h"
 #include "gui/windows/changepassworddialog.h"
 #include "gui/windows/charselectdialog.h"
 #include "gui/windows/connectiondialog.h"
-#include "gui/windows/didyouknowwindow.h"
-#include "gui/windows/helpwindow.h"
 #include "gui/windows/logindialog.h"
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/okdialog.h"

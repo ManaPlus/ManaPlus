@@ -28,6 +28,8 @@
 
 #include "input/inputaction.h"
 
+#include "gui/dialogtype.h"
+
 #include "gui/windows/okdialog.h"
 
 #include "gui/widgets/button.h"

@@ -27,8 +27,6 @@
 
 #include "localconsts.h"
 
-class ItemPopup;
-
 class ItemLinkHandler final : public LinkHandler
 {
     public:

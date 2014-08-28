@@ -39,7 +39,6 @@ class Button;
 class Image;
 class ImageSet;
 class Item;
-class ItemPopup;
 class PlayerBox;
 
 struct EquipmentBox;

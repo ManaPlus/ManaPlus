@@ -25,14 +25,12 @@
 
 #include "main.h"
 
-#include <SDL_thread.h>
+#include <SDL_mutex.h>
 
 #include <fstream>
 #include <vector>
 
 #include "localconsts.h"
-
-class ChatWindow;
 
 #ifdef ENABLEDEBUGLOG
 #define DEBUGLOG(msg) if (logger) logger->dlog(msg)

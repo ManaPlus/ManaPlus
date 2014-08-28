@@ -23,8 +23,6 @@
 
 #include "gui/setupinputpages.h"
 
-#include "gui/setupactiondata.h"
-
 #include "utils/gettext.h"
 
 #include "input/pages/basic.h"

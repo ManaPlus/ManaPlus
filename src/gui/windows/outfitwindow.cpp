@@ -33,7 +33,6 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/popups/popupmenu.h"

@@ -25,8 +25,6 @@
 
 #include "gui/widgets/shortcutcontainer.h"
 
-class SpellPopup;
-
 /**
  * An item shortcut container. Used to quickly use items.
  *

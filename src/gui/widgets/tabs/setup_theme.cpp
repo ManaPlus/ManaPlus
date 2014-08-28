@@ -22,6 +22,7 @@
 
 #include "gui/widgets/tabs/setup_theme.h"
 
+#include "gui/dialogtype.h"
 #include "gui/gui.h"
 #include "gui/themeinfo.h"
 

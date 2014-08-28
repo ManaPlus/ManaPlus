@@ -23,27 +23,7 @@
 #ifndef GUI_POPUPMANAGER_H
 #define GUI_POPUPMANAGER_H
 
-#include "being/actortype.h"
-
-#include <string>
-#include <vector>
-
 #include "localconsts.h"
-
-class ActorSprite;
-class Button;
-class Being;
-class BeingPopup;
-class ChatTab;
-class FloorItem;
-class Item;
-class MapItem;
-class PopupMenu;
-class ProgressBar;
-class TextCommand;
-class TextField;
-class TextPopup;
-class Window;
 
 class PopupManager final
 {

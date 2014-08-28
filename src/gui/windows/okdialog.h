@@ -23,8 +23,6 @@
 #ifndef GUI_WINDOWS_OKDIALOG_H
 #define GUI_WINDOWS_OKDIALOG_H
 
-#include "gui/dialogtype.h"
-
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"

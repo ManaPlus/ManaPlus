@@ -26,8 +26,6 @@
 
 #include <vector>
 
-class TextPopup;
-
 struct EmoteSprite;
 
 /**

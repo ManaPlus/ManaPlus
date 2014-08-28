@@ -26,7 +26,6 @@
 #include "gui/widgets/listbox.h"
 
 class ShopItems;
-class ItemPopup;
 
 /**
  * A list box, meant to be used inside a scroll area. Same as the Guichan list

@@ -33,7 +33,6 @@
 #include "being/being.h"
 
 #include "gui/gui.h"
-#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"

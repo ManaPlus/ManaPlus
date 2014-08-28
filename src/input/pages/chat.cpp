@@ -21,10 +21,8 @@
 #include "gui/setupactiondata.h"
 
 #include "input/inputaction.h"
-#include "input/inputactiondata.h"
 
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

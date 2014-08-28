@@ -28,7 +28,6 @@
 
 #include "gui/gui.h"
 
-#include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"

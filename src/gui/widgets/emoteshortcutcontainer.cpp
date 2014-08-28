@@ -39,7 +39,6 @@
 #include "resources/db/emotedb.h"
 
 #include "utils/stringutils.h"
-#include "utils/delete2.h"
 
 #include "debug.h"
 

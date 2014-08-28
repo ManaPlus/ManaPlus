@@ -33,7 +33,6 @@
 
 #include "input/inputmanager.h"
 
-#include "gui/popupmanager.h"
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"
@@ -50,7 +49,6 @@
 #include "resources/image.h"
 #include "resources/skillconsts.h"
 
-#include "utils/delete2.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"

@@ -24,13 +24,9 @@
 
 #include "sdlshared.h"
 
-#include "gui/viewport.h"
-
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/popupmenu.h"
 #include "gui/popups/textpopup.h"
-
-#include "utils/delete2.h"
 
 #include "debug.h"
 

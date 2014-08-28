@@ -34,7 +34,6 @@
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
-#include "gui/popupmanager.h"
 
 #include "gui/fonts/font.h"
 
@@ -43,11 +42,8 @@
 #include "gui/popups/popupmenu.h"
 #include "gui/popups/textpopup.h"
 
-#include "gui/windows/equipmentwindow.h"
 #include "gui/windows/itemamountwindow.h"
-#include "gui/windows/outfitwindow.h"
 #include "gui/windows/setupwindow.h"
-#include "gui/windows/shopwindow.h"
 #include "gui/windows/tradewindow.h"
 
 #include "gui/widgets/button.h"

@@ -38,7 +38,6 @@ class Graphics;
 class Inventory;
 class ProgressBar;
 class StatusPopup;
-class TextPopup;
 
 /**
  * The player mini-status dialog.

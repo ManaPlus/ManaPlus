@@ -26,6 +26,8 @@
 #include "configuration.h"
 #include "settings.h"
 
+#include "gui/dialogtype.h"
+
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/okdialog.h"
 

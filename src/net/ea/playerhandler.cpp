@@ -31,6 +31,7 @@
 #include "being/attributes.h"
 #include "being/localplayer.h"
 
+#include "gui/dialogtype.h"
 #include "gui/viewport.h"
 
 #include "gui/windows/okdialog.h"

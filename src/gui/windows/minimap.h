@@ -27,7 +27,6 @@
 
 class Image;
 class Map;
-class TextPopup;
 
 /**
  * Minimap window. Shows a minimap image and the name of the current map.

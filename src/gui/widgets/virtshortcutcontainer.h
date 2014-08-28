@@ -25,7 +25,6 @@
 
 #include "gui/widgets/shortcutcontainer.h"
 
-class ItemPopup;
 class ShortcutBase;
 
 /**

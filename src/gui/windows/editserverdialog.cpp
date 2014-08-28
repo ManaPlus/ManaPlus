@@ -25,6 +25,8 @@
 
 #include "input/inputaction.h"
 
+#include "gui/dialogtype.h"
+
 #include "gui/models/typelistmodel.h"
 
 #include "gui/windows/okdialog.h"

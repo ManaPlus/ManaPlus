@@ -32,7 +32,6 @@
 
 class CharSelectDialog;
 class Label;
-class TextPopup;
 
 namespace Net
 {

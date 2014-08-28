@@ -28,6 +28,8 @@
 
 #include "being/localplayer.h"
 
+#include "gui/dialogtype.h"
+
 #include "gui/windows/okdialog.h"
 
 #include "net/messagein.h"

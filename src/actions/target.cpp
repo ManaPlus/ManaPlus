@@ -21,70 +21,12 @@
 #include "actions/target.h"
 
 #include "actormanager.h"
-#include "dropshortcut.h"
-#include "emoteshortcut.h"
-#include "game.h"
-#include "itemshortcut.h"
-#include "soundmanager.h"
 
 #include "actions/actiondef.h"
 
-#include "being/attributes.h"
 #include "being/localplayer.h"
-#include "being/playerinfo.h"
-#include "being/playerrelations.h"
-
-#include "gui/dialogsmanager.h"
-#include "gui/gui.h"
-#include "gui/popupmanager.h"
-#include "gui/sdlinput.h"
-#include "gui/viewport.h"
-
-#include "gui/popups/popupmenu.h"
-
-#include "gui/windows/skilldialog.h"
-#include "gui/windows/socialwindow.h"
-#include "gui/windows/statuswindow.h"
-#include "gui/windows/tradewindow.h"
-#include "gui/windows/questswindow.h"
-#include "gui/windows/quitdialog.h"
-#include "gui/windows/whoisonline.h"
-#include "gui/windows/botcheckerwindow.h"
-#include "gui/windows/buyselldialog.h"
-#include "gui/windows/chatwindow.h"
-#include "gui/windows/debugwindow.h"
-#include "gui/windows/didyouknowwindow.h"
-#include "gui/windows/equipmentwindow.h"
-#include "gui/windows/helpwindow.h"
-#include "gui/windows/inventorywindow.h"
-#include "gui/windows/killstats.h"
-#include "gui/windows/minimap.h"
-#include "gui/windows/npcdialog.h"
-#include "gui/windows/outfitwindow.h"
-#include "gui/windows/setupwindow.h"
-#include "gui/windows/shopwindow.h"
-#include "gui/windows/shortcutwindow.h"
-#include "gui/windows/updaterwindow.h"
-
-#include "gui/widgets/tabs/chattab.h"
-
-#include "render/graphics.h"
-
-#include "net/net.h"
-#include "net/playerhandler.h"
-#include "net/tradehandler.h"
-
-#include "listeners/updatestatuslistener.h"
-
-#include "resources/map/map.h"
-
-#include "utils/gettext.h"
 
 #include "debug.h"
-
-extern ShortcutWindow *spellShortcutWindow;
-extern std::string tradePartnerName;
-extern QuitDialog *quitDialog;
 
 namespace Actions
 {

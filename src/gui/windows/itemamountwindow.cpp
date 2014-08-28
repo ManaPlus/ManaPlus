@@ -48,8 +48,6 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/slider.h"
 
-#include "utils/delete2.h"
-
 #include <cmath>
 
 #include "debug.h"

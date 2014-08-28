@@ -33,7 +33,6 @@ class Icon;
 class IntTextField;
 class Item;
 class ItemsModal;
-class ItemPopup;
 class Label;
 class Slider;
 

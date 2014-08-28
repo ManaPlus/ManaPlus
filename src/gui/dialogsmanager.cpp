@@ -25,6 +25,8 @@
 #include "configuration.h"
 #include "settings.h"
 
+#include "gui/dialogtype.h"
+
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/buyselldialog.h"
 #include "gui/windows/buydialog.h"

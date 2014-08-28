@@ -42,7 +42,6 @@ class ProgressBar;
 class SortListModelInv;
 class TabStrip;
 class TextField;
-class TextPopup;
 
 /**
  * Inventory dialog.
