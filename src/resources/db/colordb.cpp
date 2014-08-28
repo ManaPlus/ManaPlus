@@ -59,12 +59,9 @@ void ColorDB::load()
 
     mColorLists["hair"] = colors;
 
-    if (serverVersion >= 1)
-    {
-        loadColorLists(paths.getStringValue("itemColorsFile"));
-        loadColorLists(paths.getStringValue("itemColorsPatchFile"));
-        loadXmlDir("itemColorsPatchDir", loadColorLists);
-    }
+    loadColorLists(paths.getStringValue("itemColorsFile"));
+    loadColorLists(paths.getStringValue("itemColorsPatchFile"));
+    loadXmlDir("itemColorsPatchDir", loadColorLists);
 
     it = mColorLists.find("hair");
     if (it != mColorLists.end())
