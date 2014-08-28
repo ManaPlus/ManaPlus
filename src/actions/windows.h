@@ -55,4 +55,4 @@ namespace Actions
 
 #undef decHandler
 
-#endif  // ACTIONS_ACTIONS_H
+#endif  // ACTIONS_WINDOWS_H

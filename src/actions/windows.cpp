@@ -97,7 +97,7 @@ static bool showHelpPage(const std::string &page, const bool showHide)
     return false;
 }
 
-impHandler0(helpWindowShow)
+impHandler(helpWindowShow)
 {
     if (!chatWindow || !chatWindow->isInputFocused())
         return showHelpPage("index", true);

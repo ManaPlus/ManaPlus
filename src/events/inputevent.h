@@ -60,6 +60,8 @@ struct InputEvent final
         mask(mask0)
     { }
 
+    A_DELETE_COPY(InputEvent)
+
     const std::string args;
     ChatTab *const tab;
     const int action;

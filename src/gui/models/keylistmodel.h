@@ -30,6 +30,8 @@
 
 #include "localconsts.h"
 
+extern SetupActionData *const setupActionData[];
+
 /**
  * The list model for key function list.
  *

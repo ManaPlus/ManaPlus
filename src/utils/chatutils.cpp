@@ -30,7 +30,6 @@
 #include "gui/chatconsts.h"
 
 #include "gui/widgets/tabs/whispertab.h"
-#include "gui/widgets/tabs/chattabtype.h"
 
 #include "net/chathandler.h"
 #include "net/guildhandler.h"

@@ -64,7 +64,7 @@ void PopupManager::hidePopupMenu()
         popupMenu->setVisible(false);
 }
 
-bool PopupManager::isPopupMenuVisible() const
+bool PopupManager::isPopupMenuVisible()
 {
     return popupMenu ? popupMenu->isPopupVisible() : false;
 }
@@ -75,12 +75,12 @@ void PopupManager::clearPopup()
         popupMenu->clear();
 }
 
-bool PopupManager::isTextPopupVisible() const
+bool PopupManager::isTextPopupVisible()
 {
     return textPopup ? textPopup->isPopupVisible() : false;
 }
 
-bool PopupManager::isBeingPopupVisible() const
+bool PopupManager::isBeingPopupVisible()
 {
     return beingPopup ? beingPopup->isPopupVisible() : false;
 }

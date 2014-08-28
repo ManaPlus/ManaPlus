@@ -290,7 +290,7 @@ impHandler0(dropItem)
     return false;
 }
 
-impHandler0(heal)
+impHandler(heal)
 {
     if (actorManager)
     {
@@ -461,7 +461,7 @@ impHandler0(untarget)
     return false;
 }
 
-impHandler0(attack)
+impHandler(attack)
 {
     if (!localPlayer || !actorManager)
         return false;

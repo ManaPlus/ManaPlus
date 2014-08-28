@@ -31,4 +31,4 @@ void outStringNormal(ChatTab *const tab,
 
 void replaceVars(std::string &str);
 
-#endif  // ACTIONS_ACTIONS_H
+#endif  // UTILS_CHATUTILS_H

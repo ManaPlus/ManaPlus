@@ -35,8 +35,6 @@
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
-#include "events/keyevent.h"
-
 #include "input/inputmanager.h"
 
 #include "gui/chatconsts.h"

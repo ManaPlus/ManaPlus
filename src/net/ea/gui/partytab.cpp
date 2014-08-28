@@ -36,7 +36,6 @@
 #include "gui/windows/chatwindow.h"
 
 #include "utils/booleanoptions.h"
-#include "utils/gettext.h"
 
 #include "debug.h"
 

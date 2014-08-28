@@ -40,7 +40,6 @@
 
 #include "utils/booleanoptions.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -172,7 +171,7 @@ impHandler0(scrollChatDown)
 impHandler(msg)
 {
     std::string recvnick;
-    std::string msg;
+    std::string message;
 
     if (event.args.substr(0, 1) == "\"")
     {
@@ -181,7 +180,7 @@ impHandler(msg)
         {
             recvnick = event.args.substr(1, pos - 1);
             if (pos + 2 < event.args.length())
-                msg = event.args.substr(pos + 2, event.args.length());
+                message = event.args.substr(pos + 2, event.args.length());
         }
     }
     else
@@ -191,18 +190,18 @@ impHandler(msg)
         {
             recvnick = event.args.substr(0, pos);
             if (pos + 1 < event.args.length())
-                msg = event.args.substr(pos + 1, event.args.length());
+                message = event.args.substr(pos + 1, event.args.length());
         }
         else
         {
             recvnick = std::string(event.args);
-            msg.clear();
+            message.clear();
         }
     }
 
-    trim(msg);
+    trim(message);
 
-    if (msg.length() > 0)
+    if (message.length() > 0)
     {
         std::string playerName = localPlayer->getName();
         std::string tempNick = recvnick;
@@ -213,12 +212,13 @@ impHandler(msg)
         if (tempNick.compare(playerName) == 0 || event.args.empty())
             return true;
 
-        chatWindow->addWhisper(recvnick, msg, ChatMsgType::BY_PLAYER);
+        chatWindow->addWhisper(recvnick, message, ChatMsgType::BY_PLAYER);
     }
     else
     {
         // TRANSLATORS: whisper send
-        event.tab->chatLog(_("Cannot send empty whispers!"), ChatMsgType::BY_SERVER);
+        event.tab->chatLog(_("Cannot send empty whispers!"),
+            ChatMsgType::BY_SERVER);
     }
     return true;
 }

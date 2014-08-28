@@ -23,6 +23,10 @@
 #ifndef INPUT_INPUTACTION_H
 #define INPUT_INPUTACTION_H
 
+#ifdef WIN32
+#undef ERROR
+#undef IGNORE
+#endif
 namespace InputAction
 {
     /**

@@ -40,28 +40,28 @@ class PopupManager final
          */
         ~PopupManager();
 
-        bool isBeingPopupVisible() const;
+        static bool isBeingPopupVisible() A_WARN_UNUSED;
 
-        bool isTextPopupVisible() const;
+        static bool isTextPopupVisible() A_WARN_UNUSED;
 
         /**
          * Closes the popup menu. Needed for when the player dies or switching
          * maps.
          */
-        void closePopupMenu();
+        static void closePopupMenu();
 
         /**
          * Hides the BeingPopup.
          */
-        void hideBeingPopup();
+        static void hideBeingPopup();
 
-        void hideTextPopup();
+        static void hideTextPopup();
 
-        bool isPopupMenuVisible() const A_WARN_UNUSED;
+        static bool isPopupMenuVisible() A_WARN_UNUSED;
 
-        void clearPopup();
+        static void clearPopup();
 
-        void hidePopupMenu();
+        static void hidePopupMenu();
 };
 
 extern PopupManager *popupManager;

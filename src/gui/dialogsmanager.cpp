@@ -42,6 +42,10 @@
 
 #include "debug.h"
 
+#ifdef WIN32
+#undef ERROR
+#endif
+
 extern OkDialog *deathNotice;
 
 void DialogsManager::closeDialogs()

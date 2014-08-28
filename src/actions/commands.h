@@ -75,4 +75,4 @@ namespace Actions
 
 #undef decHandler
 
-#endif  // ACTIONS_CHAT_H
+#endif  // ACTIONS_COMMANDS_H

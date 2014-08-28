@@ -46,7 +46,6 @@
 #include "utils/chatutils.h"
 #include "utils/gettext.h"
 #include "utils/process.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -64,7 +63,8 @@ static std::string getNick(const InputEvent &event)
         if (!whisper || whisper->getNick().empty())
         {
             // TRANSLATORS: change relation
-            event.tab->chatLog(_("Please specify a name."), ChatMsgType::BY_SERVER);
+            event.tab->chatLog(_("Please specify a name."),
+                ChatMsgType::BY_SERVER);
             return std::string();
         }
         args = whisper->getNick();
@@ -151,7 +151,8 @@ impHandler(chatUnignore)
         if (event.tab)
         {
             // TRANSLATORS: unignore command
-            event.tab->chatLog(_("Player wasn't ignored!"), ChatMsgType::BY_SERVER);
+            event.tab->chatLog(_("Player wasn't ignored!"),
+                ChatMsgType::BY_SERVER);
         }
         return true;
     }
@@ -176,7 +177,8 @@ impHandler(chatErase)
         if (event.tab)
         {
             // TRANSLATORS: erase command
-            event.tab->chatLog(_("Player already erased!"), ChatMsgType::BY_SERVER);
+            event.tab->chatLog(_("Player already erased!"),
+                ChatMsgType::BY_SERVER);
         }
         return true;
     }
@@ -504,11 +506,11 @@ impHandler(url)
 {
     if (event.tab)
     {
-        std::string url = event.args;
-        if (!strStartWith(url, "http") && !strStartWith(url, "?"))
-            url = "http://" + url;
+        std::string url1 = event.args;
+        if (!strStartWith(url1, "http") && !strStartWith(url1, "?"))
+            url1 = "http://" + url1;
         std::string str(strprintf("[@@%s |%s@@]",
-            url.c_str(), event.args.c_str()));
+            url1.c_str(), event.args.c_str()));
         outStringNormal(event.tab, str, str);
         return true;
     }
@@ -652,7 +654,7 @@ impHandler(hack)
     return true;
 }
 
-impHandler0(debugSpawn)
+impHandler(debugSpawn)
 {
     int cnt = atoi(event.args.c_str());
     if (cnt < 1)
