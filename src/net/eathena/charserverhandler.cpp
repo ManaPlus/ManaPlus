@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "settings.h"
 
 #include "being/attributes.h"
 
@@ -32,6 +33,7 @@
 #include "net/net.h"
 
 #include "net/eathena/attrs.h"
+#include "net/eathena/gamehandler.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
@@ -105,7 +107,7 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_CHAR_MAP_INFO:
-            processCharMapInfo(msg, mNetwork, mapServer);
+            processCharMapInfo(msg);
             break;
 
         case SMSG_CHANGE_MAP_SERVER:
@@ -296,6 +298,41 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     }
 
     client->setState(STATE_CHAR_SELECT);
+}
+
+void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg)
+{
+    Network *const network = mNetwork;
+    ServerInfo &server = mapServer;
+    BLOCK_START("CharServerHandler::processCharMapInfo")
+//    msg.skip(4); // CharID, must be the same as localPlayer->charID
+    PlayerInfo::setCharId(msg.readInt32());
+    GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
+    gh->setMap(msg.readString(16));
+    if (config.getBoolValue("usePersistentIP") || settings.persistentIp)
+    {
+        msg.readInt32();
+        server.hostname = settings.serverName;
+    }
+    else
+    {
+        server.hostname = ipToString(msg.readInt32());
+    }
+    server.port = msg.readInt16();
+
+    // Prevent the selected local player from being deleted
+    localPlayer = mSelectedCharacter->dummy;
+    PlayerInfo::setBackend(mSelectedCharacter->data);
+
+    mSelectedCharacter->dummy = nullptr;
+
+    Net::getCharServerHandler()->clear();
+    updateCharSelectDialog();
+
+    if (network)
+        network->disconnect();
+    client->setState(STATE_CONNECT_GAME);
+    BLOCK_END("CharServerHandler::processCharMapInfo")
 }
 
 }  // namespace EAthena
