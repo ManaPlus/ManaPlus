@@ -75,7 +75,7 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_NPC_SELL:
-            processNpcSell(msg, INVENTORY_OFFSET);
+            processNpcSell(msg);
             break;
 
         case SMSG_NPC_BUY_RESPONSE:

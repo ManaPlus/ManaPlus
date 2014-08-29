@@ -39,6 +39,8 @@
 #include "net/chathandler.h"
 #include "net/net.h"
 
+#include "net/ea/eaprotocol.h"
+
 #include "utils/timer.h"
 
 #include "resources/notifytypes.h"
@@ -138,8 +140,7 @@ void BuySellHandler::processNpcBuySellChoice(Net::MessageIn &msg)
     }
 }
 
-void BuySellHandler::processNpcSell(Net::MessageIn &msg,
-                                    const int offset) const
+void BuySellHandler::processNpcSell(Net::MessageIn &msg) const
 {
     msg.readInt16();  // length
     const int n_items = (msg.getLength() - 4) / 10;
@@ -150,7 +151,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg,
 
         for (int k = 0; k < n_items; k++)
         {
-            const int index = msg.readInt16() - offset;
+            const int index = msg.readInt16() - INVENTORY_OFFSET;
             const int value = msg.readInt32();
             msg.readInt32();  // value
 

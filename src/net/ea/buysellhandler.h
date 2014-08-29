@@ -53,8 +53,7 @@ class BuySellHandler notfinal : public Net::BuySellHandler
 
         virtual void processNpcBuySellChoice(Net::MessageIn &msg);
 
-        virtual void processNpcSell(Net::MessageIn &msg,
-                                    const int offset) const;
+        virtual void processNpcSell(Net::MessageIn &msg) const;
 
         virtual void processNpcBuyResponse(Net::MessageIn &msg) const;
 
