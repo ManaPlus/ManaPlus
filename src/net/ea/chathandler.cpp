@@ -345,10 +345,12 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg) const
     BLOCK_END("ChatHandler::processBeingChat")
 }
 
-void ChatHandler::processChat(Net::MessageIn &msg, const bool normalChat,
-                              const bool channels)
+void ChatHandler::processChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")
+    const bool channels = msg.getId() == SMSG_PLAYER_CHAT2;
+    const bool normalChat = msg.getId() == SMSG_PLAYER_CHAT
+        || msg.getId() == SMSG_PLAYER_CHAT2;
     int chatMsgLength = msg.readInt16() - 4;
     std::string channel;
     if (channels)

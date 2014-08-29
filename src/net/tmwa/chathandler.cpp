@@ -85,11 +85,11 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_CHAT:
         case SMSG_GM_CHAT:
-            processChat(msg, msg.getId() == SMSG_PLAYER_CHAT, false);
+            processChat(msg);
             break;
 
         case SMSG_PLAYER_CHAT2:
-            processChat(msg, true, true);
+            processChat(msg);
             break;
 
         case SMSG_MVP:
