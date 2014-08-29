@@ -273,7 +273,7 @@ SetupActionData setupActionDataOther[] =
     },
     {
         // TRANSLATORS: input action name
-        N_("Crate items (for gms)"),
+        N_("Create items (for gms)"),
         InputAction::CREATE_ITEMS,
         "",
     },
