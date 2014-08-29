@@ -68,6 +68,7 @@ enum
 static const int INVENTORY_OFFSET = 2;
 static const int STORAGE_OFFSET = 1;
 
+#define SMSG_BEING_CHAT2             0x0223 /**< A being talks in channels */
 #define SMSG_PLAYER_INVENTORY        0x01ee
 
 #endif  // NET_EA_EAPROTOCOL_H

@@ -37,6 +37,8 @@
 
 #include "net/messagein.h"
 
+#include "net/ea/eaprotocol.h"
+
 #include "resources/notifytypes.h"
 
 #include "utils/gettext.h"
@@ -264,13 +266,13 @@ void ChatHandler::processWhisper(Net::MessageIn &msg) const
     BLOCK_END("ChatHandler::processWhisper")
 }
 
-void ChatHandler::processBeingChat(Net::MessageIn &msg,
-                                   const bool channels) const
+void ChatHandler::processBeingChat(Net::MessageIn &msg) const
 {
     if (!actorManager)
         return;
 
     BLOCK_START("ChatHandler::processBeingChat")
+    const bool channels = msg.getId() == SMSG_BEING_CHAT2;
     int chatMsgLength = msg.readInt16() - 8;
     Being *const being = actorManager->findBeing(msg.readInt32());
     if (!being)

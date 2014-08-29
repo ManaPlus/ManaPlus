@@ -70,7 +70,7 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         // Received speech from being
         case SMSG_BEING_CHAT:
-            processBeingChat(msg, false);
+            processBeingChat(msg);
             break;
 
         case SMSG_PLAYER_CHAT:
