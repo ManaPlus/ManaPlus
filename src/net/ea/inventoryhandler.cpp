@@ -173,10 +173,10 @@ int InventoryHandler::getSlot(const int eAthenaSlot)
     return static_cast<int>(EQUIP_POINTS[position]);
 }
 
-void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
-                                              const bool playerInvintory)
+void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerInventory")
+    const bool playerInvintory = msg.getId() == SMSG_PLAYER_INVENTORY;
     Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
     if (playerInvintory)

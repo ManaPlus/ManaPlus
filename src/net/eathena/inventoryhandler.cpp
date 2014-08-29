@@ -72,7 +72,7 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_PLAYER_INVENTORY:
         case SMSG_PLAYER_STORAGE_ITEMS:
-            processPlayerInventory(msg, msg.getId() == SMSG_PLAYER_INVENTORY);
+            processPlayerInventory(msg);
             break;
 
         case SMSG_PLAYER_STORAGE_EQUIP:
