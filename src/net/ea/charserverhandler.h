@@ -68,8 +68,7 @@ class CharServerHandler notfinal : public Net::CharServerHandler
 
         virtual void processCharLoginError(Net::MessageIn &msg) const;
 
-        virtual void processCharCreate(Net::MessageIn &msg,
-                                       const bool withColors);
+        virtual void processCharCreate(Net::MessageIn &msg);
 
         virtual void processCharCreateFailed(Net::MessageIn &msg);
 

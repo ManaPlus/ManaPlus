@@ -70,7 +70,9 @@ static const int STORAGE_OFFSET = 1;
 
 #define SMSG_PLAYER_CHAT             0x008e /**< Player talks */
 #define SMSG_PLAYER_CHAT2            0x0224 /**< Player talks */
-#define SMSG_BEING_CHAT2             0x0223 /**< A being talks in channels */
 #define SMSG_PLAYER_INVENTORY        0x01ee
+
+#define SMSG_CHAR_CREATE_SUCCEEDED2  0x0221
+#define SMSG_BEING_CHAT2             0x0223 /**< A being talks in channels */
 
 #endif  // NET_EA_EAPROTOCOL_H

@@ -90,11 +90,8 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_CHAR_CREATE_SUCCEEDED:
-            processCharCreate(msg, false);
-            break;
-
         case SMSG_CHAR_CREATE_SUCCEEDED2:
-            processCharCreate(msg, true);
+            processCharCreate(msg);
             break;
 
         case SMSG_CHAR_CREATE_FAILED:
