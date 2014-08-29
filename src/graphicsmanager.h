@@ -78,7 +78,7 @@ class GraphicsManager final
 
         void createRenderers();
 
-        void deleteRenderers();
+        static void deleteRenderers();
 
         void initGraphics();
 

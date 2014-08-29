@@ -379,12 +379,6 @@ void ItemContainer::distributeValueChangedEvent()
     }
 }
 
-void ItemContainer::hidePopup()
-{
-    if (itemPopup)
-        itemPopup->setVisible(false);
-}
-
 void ItemContainer::keyPressed(KeyEvent &event A_UNUSED)
 {
 }

@@ -39,6 +39,7 @@
 
 #include "gui/models/sortlistmodelinv.h"
 
+#include "gui/popups/itempopup.h"
 #include "gui/popups/popupmenu.h"
 #include "gui/popups/textpopup.h"
 
@@ -414,7 +415,8 @@ void InventoryWindow::unselectItem()
 void InventoryWindow::widgetHidden(const Event &event)
 {
     Window::widgetHidden(event);
-    mItems->hidePopup();
+    if (itemPopup)
+        itemPopup->setVisible(false);
 }
 
 void InventoryWindow::mouseClicked(MouseEvent &event)

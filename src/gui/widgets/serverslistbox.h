@@ -114,9 +114,9 @@ class ServersListBox final : public ListBox
                 if (!info.description.empty())
                 {
                     font2->drawString(graphics,
-                    info.description,
-                    x,
-                    y + mPadding);
+                        info.description,
+                        x,
+                        y + mPadding);
                 }
                 font2->drawString(graphics,
                     model->getElementAt(i),

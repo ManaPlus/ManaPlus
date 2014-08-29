@@ -2487,7 +2487,7 @@ void LocalPlayer::setAfkMessage(std::string message)
     }
 }
 
-void LocalPlayer::setPseudoAway(const std::string &message) const
+void LocalPlayer::setPseudoAway(const std::string &message)
 {
     setAfkMessage(message);
     settings.pseudoAwayMode = !settings.pseudoAwayMode;
@@ -3196,7 +3196,7 @@ void LocalPlayer::stopAdvert()
     mBlockAdvert = true;
 }
 
-bool LocalPlayer::checAttackPermissions(const Being *const target) const
+bool LocalPlayer::checAttackPermissions(const Being *const target)
 {
     if (!target)
         return false;

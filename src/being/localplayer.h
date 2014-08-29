@@ -232,7 +232,7 @@ class LocalPlayer final : public Being,
 
         void setAway(const std::string &message) const;
 
-        void setPseudoAway(const std::string &message) const;
+        static void setPseudoAway(const std::string &message);
 
         void setHalfAway(const bool n)
         { mInactive = n; }
@@ -370,8 +370,8 @@ class LocalPlayer final : public Being,
 
         void stopAdvert();
 
-        bool checAttackPermissions(const Being *const target)
-                                   const A_WARN_UNUSED;
+        static bool checAttackPermissions(const Being *const target)
+                                          A_WARN_UNUSED;
 
         void updateStatus() const;
 
