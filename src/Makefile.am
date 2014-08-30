@@ -1180,6 +1180,7 @@ manaplus_SOURCES += \
 	      net/ea/network.h \
 	      net/ea/npchandler.cpp \
 	      net/ea/npchandler.h \
+	      net/ea/packets.h \
 	      net/ea/partyhandler.cpp \
 	      net/ea/partyhandler.h \
 	      net/ea/playerhandler.cpp \
