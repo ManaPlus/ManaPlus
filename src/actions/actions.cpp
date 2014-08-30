@@ -292,7 +292,7 @@ impHandler0(dropItem)
 
 impHandler(heal)
 {
-    if (actorManager)
+    if (actorManager && localPlayer)
     {
         if (!event.args.empty())
         {
@@ -301,20 +301,23 @@ impHandler(heal)
             if (being)
                 actorManager->heal(being);
         }
-        else if (inputManager.isActionActive(InputAction::STOP_ATTACK))
-        {
-            Being *target = localPlayer->getTarget();
-            if (!target || target->getType() != ActorType::PLAYER)
-            {
-                target = actorManager->findNearestLivingBeing(
-                    localPlayer, 10, ActorType::PLAYER, true);
-                if (target)
-                    localPlayer->setTarget(target);
-            }
-        }
         else
         {
-            actorManager->heal(localPlayer);
+            Being *target = localPlayer->getTarget();
+            if (inputManager.isActionActive(InputAction::STOP_ATTACK))
+            {
+                if (!target || target->getType() != ActorType::PLAYER)
+                {
+                    target = actorManager->findNearestLivingBeing(
+                        localPlayer, 10, ActorType::PLAYER, true);
+                }
+            }
+            else
+            {
+                if (!target)
+                    target = localPlayer;
+            }
+            actorManager->heal(target);
         }
 
         if (Game::instance())
