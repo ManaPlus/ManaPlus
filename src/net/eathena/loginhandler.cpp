@@ -25,10 +25,13 @@
 #include "client.h"
 #include "logger.h"
 
+#include "gui/windows/logindialog.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
 #include "net/eathena/protocol.h"
 
+#include "utils/gettext.h"
 #include "utils/paths.h"
 
 #include "debug.h"
@@ -50,6 +53,7 @@ LoginHandler::LoginHandler() :
         SMSG_UPDATE_HOST2,
         SMSG_LOGIN_DATA,
         SMSG_LOGIN_ERROR,
+        SMSG_LOGIN_ERROR2,
         SMSG_CHAR_PASSWORD_RESPONSE,
         SMSG_SERVER_VERSION_RESPONSE,
         0
@@ -84,6 +88,10 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_LOGIN_ERROR:
             processLoginError(msg);
+            break;
+
+        case SMSG_LOGIN_ERROR2:
+            processLoginError2(msg);
             break;
 
         case SMSG_SERVER_VERSION_RESPONSE:
@@ -195,6 +203,80 @@ void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
 
     if (client->getState() == STATE_PRE_LOGIN)
         client->setState(STATE_LOGIN);
+}
+
+void LoginHandler::processLoginError2(Net::MessageIn &msg) const
+{
+    const uint32_t code = msg.readInt32();
+    logger->log("Login::error code: %u", code);
+
+    switch (code)
+    {
+        case 0:
+            // TRANSLATORS: error message
+            errorMessage = _("Unregistered ID.");
+            break;
+        case 1:
+            // TRANSLATORS: error message
+            errorMessage = _("Wrong password.");
+            LoginDialog::savedPassword.clear();
+            break;
+        case 2:
+            // TRANSLATORS: error message
+            errorMessage = _("Account expired.");
+            break;
+        case 3:
+            // TRANSLATORS: error message
+            errorMessage = _("Rejected from server.");
+            break;
+        case 4:
+            // TRANSLATORS: error message
+            errorMessage = _("You have been permanently banned from "
+                              "the game. Please contact the GM team.");
+            break;
+        case 5:
+            // TRANSLATORS: error message
+            errorMessage = _("Client too old.");
+            break;
+        case 6:
+            // TRANSLATORS: error message
+            errorMessage = strprintf(_("You have been temporarily "
+                                        "banned from the game until "
+                                        "%s.\nPlease contact the GM "
+                                        "team via the forums."),
+                                        msg.readString(20).c_str());
+            break;
+        case 7:
+            // look like unused
+            // TRANSLATORS: error message
+            errorMessage = _("Server overpopulated.");
+            break;
+        case 9:
+            // look like unused
+            // TRANSLATORS: error message
+            errorMessage = _("This user name is already taken.");
+            break;
+        case 10:
+            // look like unused
+            // TRANSLATORS: error message
+            errorMessage = _("Wrong name.");
+            break;
+        case 11:
+            // look like unused
+            // TRANSLATORS: error message
+            errorMessage = _("Incorrect email.");
+            break;
+        case 99:
+            // look like unused
+            // TRANSLATORS: error message
+            errorMessage = _("Username permanently erased.");
+            break;
+        default:
+            // TRANSLATORS: error message
+            errorMessage = _("Unknown error.");
+            break;
+    }
+    client->setState(STATE_ERROR);
 }
 
 }  // namespace EAthena

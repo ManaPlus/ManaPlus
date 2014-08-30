@@ -36,6 +36,7 @@
 #define SMSG_UPDATE_HOST             0x0063 /**< Custom update host packet */
 #define SMSG_LOGIN_DATA              0x0069
 #define SMSG_LOGIN_ERROR             0x006a
+#define SMSG_LOGIN_ERROR2            0x083e
 
 #define SMSG_CHAR_LOGIN              0x006b
 #define SMSG_CHAR_LOGIN_ERROR        0x006c
