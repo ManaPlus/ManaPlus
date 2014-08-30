@@ -55,7 +55,6 @@ LoginHandler::LoginHandler() :
         SMSG_LOGIN_ERROR,
         SMSG_LOGIN_ERROR2,
         SMSG_CHAR_PASSWORD_RESPONSE,
-        SMSG_SERVER_VERSION_RESPONSE,
         0
     };
     handledMessages = _messages;
@@ -92,10 +91,6 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_LOGIN_ERROR2:
             processLoginError2(msg);
-            break;
-
-        case SMSG_SERVER_VERSION_RESPONSE:
-            processServerVersion(msg);
             break;
 
         default:
@@ -167,19 +162,6 @@ void LoginHandler::requestUpdateHosts()
     MessageOut outMsg(CMSG_SEND_CLIENT_INFO);
     outMsg.writeInt8(CLIENT_PROTOCOL_VERSION);
     outMsg.writeInt8(0);    // unused
-}
-
-void LoginHandler::processServerVersion(Net::MessageIn &msg)
-{
-    msg.readUInt8();
-    msg.readUInt8();
-    msg.readUInt8();
-    msg.readUInt8();
-    msg.readInt32();
-    mRegistrationEnabled = true;
-    serverVersion = 0;
-    if (client->getState() != STATE_LOGIN)
-        client->setState(STATE_LOGIN);
 }
 
 void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const

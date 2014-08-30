@@ -62,8 +62,6 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
         ServerInfo *getCharServer() const override final A_WARN_UNUSED;
 
-        void processServerVersion(Net::MessageIn &msg);
-
         static void requestUpdateHosts();
 
         void processUpdateHost2(Net::MessageIn &msg) const;
@@ -75,6 +73,10 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
                                const std::string &restrict password,
                                const std::string &restrict email)
                                const override final;
+
+    // unused
+    void processServerVersion(Net::MessageIn &msg)
+    { }
 };
 
 }  // namespace EAthena
