@@ -38,7 +38,9 @@
 #define SMSG_LOGIN_ERROR             0x006a
 #define SMSG_LOGIN_ERROR2            0x083e
 
+// unused
 #define SMSG_CHAR_LOGIN              0x006b
+#define SMSG_CHAR_LOGIN2             0x082d
 #define SMSG_CHAR_LOGIN_ERROR        0x006c
 #define SMSG_CHAR_CREATE_SUCCEEDED   0x006d
 #define SMSG_CHAR_CREATE_SUCCEEDED2  0x0221
