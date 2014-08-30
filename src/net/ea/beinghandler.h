@@ -62,9 +62,6 @@ class BeingHandler notfinal : public Net::BeingHandler
 
         virtual void processBeingEmotion(Net::MessageIn &msg) const;
 
-        virtual void processBeingChangeLook(Net::MessageIn &msg,
-                                            const bool look2) const = 0;
-
         virtual void processNameResponse(Net::MessageIn &msg) const;
 
         virtual void processIpResponse(Net::MessageIn &msg) const;

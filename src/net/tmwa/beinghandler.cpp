@@ -154,8 +154,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_CHANGE_LOOKS:
         case SMSG_BEING_CHANGE_LOOKS2:
-            processBeingChangeLook(msg,
-                msg.getId() == SMSG_BEING_CHANGE_LOOKS2);
+            processBeingChangeLook(msg);
             break;
 
         case SMSG_BEING_NAME_RESPONSE:
@@ -254,8 +253,7 @@ void BeingHandler::undress(Being *const being) const
 //    being->setSprite(SPRITE_WEAPON, 0, "", true);
 }
 
-void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
-                                          const bool look2) const
+void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processBeingChangeLook")
     if (!actorManager)
@@ -287,6 +285,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg,
     int16_t id = 0;
     int id2 = 0;
     const std::string color;
+    const bool look2 = msg.getId() == SMSG_BEING_CHANGE_LOOKS2;
 
     if (!look2)
     {

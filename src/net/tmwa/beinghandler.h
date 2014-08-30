@@ -44,8 +44,7 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void undress(Being *const being) const override final;
 
     protected:
-        void processBeingChangeLook(Net::MessageIn &msg,
-                                    const bool look2) const;
+        void processBeingChangeLook(Net::MessageIn &msg) const;
 
         void processBeingVisibleOrMove(Net::MessageIn &msg);
 
