@@ -101,7 +101,8 @@ void LoginHandler::connect()
         return;
 
     mNetwork->connect(mServer);
-    MessageOut outMsg(CMSG_SERVER_VERSION_REQUEST);
+    if (client->getState() != STATE_LOGIN)
+        client->setState(STATE_LOGIN);
 }
 
 bool LoginHandler::isConnected() const
@@ -109,7 +110,7 @@ bool LoginHandler::isConnected() const
     if (!mNetwork)
         return false;
 
-    return mVersionResponse && mNetwork->isConnected();
+    return mNetwork->isConnected();
 }
 
 void LoginHandler::disconnect()
@@ -171,9 +172,6 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     serverVersion = 0;
     if (client->getState() != STATE_LOGIN)
         client->setState(STATE_LOGIN);
-
-    // Leave this last
-    mVersionResponse = true;
 }
 
 void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const

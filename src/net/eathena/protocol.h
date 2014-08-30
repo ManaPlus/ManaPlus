@@ -186,7 +186,6 @@
 /**********************************
  *  Packets from client to server *
  **********************************/
-#define CMSG_SERVER_VERSION_REQUEST  0x7530
 
 // Custom change password packet
 #define CMSG_CHAR_PASSWORD_CHANGE    0x0061
