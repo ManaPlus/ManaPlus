@@ -113,7 +113,7 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_CHANGE_MAP_SERVER:
-            processChangeMapServer(msg, mNetwork, mapServer);
+            processChangeMapServer(msg);
             break;
 
         default:
@@ -385,6 +385,33 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg)
         network->disconnect();
     client->setState(STATE_CONNECT_GAME);
     BLOCK_END("CharServerHandler::processCharMapInfo")
+}
+
+void CharServerHandler::processChangeMapServer(Net::MessageIn &msg)
+{
+    Network *const network = mNetwork;
+    ServerInfo &server = mapServer;
+    BLOCK_START("CharServerHandler::processChangeMapServer")
+    GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
+    if (!gh || !network)
+    {
+        BLOCK_END("CharServerHandler::processChangeMapServer")
+        return;
+    }
+    gh->setMap(msg.readString(16));
+    const int x = msg.readInt16();
+    const int y = msg.readInt16();
+    server.hostname = ipToString(msg.readInt32());
+    server.port = msg.readInt16();
+
+    network->disconnect();
+    client->setState(STATE_CHANGE_MAP);
+    if (localPlayer)
+    {
+        localPlayer->setTileCoords(x, y);
+        localPlayer->setMap(nullptr);
+    }
+    BLOCK_END("CharServerHandler::processChangeMapServer")
 }
 
 }  // namespace TmwAthena

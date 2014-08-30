@@ -248,32 +248,4 @@ void CharServerHandler::clear()
     mCharacters.clear();
 }
 
-void CharServerHandler::processChangeMapServer(Net::MessageIn &restrict msg,
-                                               Network *restrict const network,
-                                               ServerInfo &restrict server)
-                                               const
-{
-    BLOCK_START("CharServerHandler::processChangeMapServer")
-    GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
-    if (!gh || !network)
-    {
-        BLOCK_END("CharServerHandler::processChangeMapServer")
-        return;
-    }
-    gh->setMap(msg.readString(16));
-    const int x = msg.readInt16();
-    const int y = msg.readInt16();
-    server.hostname = ipToString(msg.readInt32());
-    server.port = msg.readInt16();
-
-    network->disconnect();
-    client->setState(STATE_CHANGE_MAP);
-    if (localPlayer)
-    {
-        localPlayer->setTileCoords(x, y);
-        localPlayer->setMap(nullptr);
-    }
-    BLOCK_END("CharServerHandler::processChangeMapServer")
-}
-
 }  // namespace Ea

@@ -59,7 +59,9 @@ class CharServerHandler final : public MessageHandler,
 
         void processCharLogin(Net::MessageIn &msg);
 
-        void processCharMapInfo(Net::MessageIn &restrict msg);
+        void processCharMapInfo(Net::MessageIn &msg);
+
+        void processChangeMapServer(Net::MessageIn &msg);
 
     protected:
         void readPlayerData(Net::MessageIn &msg,
