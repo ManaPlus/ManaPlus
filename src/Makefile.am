@@ -1227,6 +1227,7 @@ manaplus_SOURCES += \
 	      net/tmwa/network.h \
 	      net/tmwa/npchandler.cpp \
 	      net/tmwa/npchandler.h \
+	      net/tmwa/packets.h \
 	      net/tmwa/partyhandler.cpp \
 	      net/tmwa/partyhandler.h \
 	      net/tmwa/pethandler.cpp \
