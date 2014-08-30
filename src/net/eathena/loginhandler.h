@@ -75,7 +75,7 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
                                const override final;
 
     // unused
-    void processServerVersion(Net::MessageIn &msg)
+    void processServerVersion(Net::MessageIn &msg A_UNUSED)
     { }
 };
 
