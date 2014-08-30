@@ -46,9 +46,6 @@ class BeingHandler notfinal : public Net::BeingHandler
                                const bool isWeapon = false,
                                const bool isTempSprite = false) const;
 
-        virtual void processBeingVisibleOrMove(Net::MessageIn &msg,
-                                               const bool visible);
-
         virtual void processBeingMove2(Net::MessageIn &msg) const;
 
         virtual void processBeingSpawn(Net::MessageIn &msg);

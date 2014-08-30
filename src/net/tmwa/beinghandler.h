@@ -47,6 +47,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void processBeingChangeLook(Net::MessageIn &msg,
                                     const bool look2) const;
 
+        void processBeingVisibleOrMove(Net::MessageIn &msg);
+
         static void processNameResponse2(Net::MessageIn &msg);
 
         void processPlayerMoveUpdate(Net::MessageIn &msg,

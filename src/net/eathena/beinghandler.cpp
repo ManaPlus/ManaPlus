@@ -109,7 +109,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_BEING_VISIBLE:  // changed
         case SMSG_BEING_MOVE:
-            processBeingVisibleOrMove(msg, msg.getId() == SMSG_BEING_VISIBLE);
+            processBeingVisibleOrMove(msg);
             break;
 
         case SMSG_BEING_MOVE2:
@@ -628,11 +628,12 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
         dstBeing->setMoveTime();
 }
 
-void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg,
-                                             const bool visible)
+void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
 {
     if (!actorManager)
         return;
+
+    const bool visible = msg.getId() == SMSG_BEING_VISIBLE;
 
     if (visible)
         msg.readUInt8();  // padding?
