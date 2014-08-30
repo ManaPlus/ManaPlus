@@ -65,32 +65,32 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_NPC_CHOICE:
-            getNpc(msg, true);
+            getNpc(msg);
             processNpcChoice(msg);
             break;
 
         case SMSG_NPC_MESSAGE:
-            getNpc(msg, true);
+            getNpc(msg);
             processNpcMessage(msg);
             break;
 
         case SMSG_NPC_CLOSE:
-            getNpc(msg, false);
+            getNpc(msg);
             processNpcClose(msg);
             break;
 
         case SMSG_NPC_NEXT:
-            getNpc(msg, false);
+            getNpc(msg);
             processNpcNext(msg);
             break;
 
         case SMSG_NPC_INT_INPUT:
-            getNpc(msg, false);
+            getNpc(msg);
             processNpcIntInput(msg);
             break;
 
         case SMSG_NPC_STR_INPUT:
-            getNpc(msg, false);
+            getNpc(msg);
             processNpcStrInput(msg);
             break;
 
@@ -99,7 +99,7 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_NPC_VIEWPOINT:
-            getNpc(msg, true);
+            npcId = getNpc(msg);
             processNpcViewPoint(msg, npcId);
             break;
 
@@ -196,10 +196,14 @@ void NpcHandler::sellItem(const int beingId A_UNUSED,
     outMsg.writeInt16(static_cast<int16_t>(amount));
 }
 
-int NpcHandler::getNpc(Net::MessageIn &msg, const bool haveLength)
+int NpcHandler::getNpc(Net::MessageIn &msg)
 {
-    if (haveLength)
+    if (msg.getId() == SMSG_NPC_CHOICE
+        || msg.getId() == SMSG_NPC_MESSAGE
+        || msg.getId() == SMSG_NPC_VIEWPOINT)
+    {
         msg.readInt16();  // length
+    }
 
     const int npcId = msg.readInt32();
 

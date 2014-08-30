@@ -68,49 +68,63 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
 {
     BLOCK_START("NpcHandler::handleMessage")
 
-    const int npcId = getNpc(msg, msg.getId() == SMSG_NPC_CHOICE
-        || msg.getId() == SMSG_NPC_MESSAGE
-        || msg.getId() == SMSG_NPC_CHANGETITLE);
-
-    if (msg.getId() != SMSG_NPC_STR_INPUT)
-        mRequestLang = false;
-
     switch (msg.getId())
     {
         case SMSG_NPC_CHOICE:
+            getNpc(msg);
+            mRequestLang = false;
             processNpcChoice(msg);
             break;
 
         case SMSG_NPC_MESSAGE:
+            getNpc(msg);
+            mRequestLang = false;
             processNpcMessage(msg);
             break;
 
         case SMSG_NPC_CLOSE:
+            getNpc(msg);
+            mRequestLang = false;
             processNpcClose(msg);
             break;
 
         case SMSG_NPC_NEXT:
+            getNpc(msg);
+            mRequestLang = false;
             processNpcNext(msg);
             break;
 
         case SMSG_NPC_INT_INPUT:
+            getNpc(msg);
+            mRequestLang = false;
             processNpcIntInput(msg);
             break;
 
         case SMSG_NPC_STR_INPUT:
+        {
+            const int npcId = getNpc(msg);
             if (mRequestLang)
                 processLangReuqest(msg, npcId);
             else
                 processNpcStrInput(msg);
             break;
+        }
 
         case SMSG_NPC_COMMAND:
+        {
+            const int npcId = getNpc(msg);
+            mRequestLang = false;
             processNpcCommand(msg, npcId);
             break;
+        }
 
         case SMSG_NPC_CHANGETITLE:
+        {
+            const int npcId = getNpc(msg);
+            mRequestLang = false;
             processChangeTitle(msg, npcId);
             break;
+        }
 
         default:
             break;
@@ -216,10 +230,14 @@ void NpcHandler::sellItem(const int beingId A_UNUSED,
     outMsg.writeInt16(static_cast<int16_t>(amount));
 }
 
-int NpcHandler::getNpc(Net::MessageIn &msg, const bool haveLength)
+int NpcHandler::getNpc(Net::MessageIn &msg)
 {
-    if (haveLength)
+    if (msg.getId() == SMSG_NPC_CHOICE
+        || msg.getId() == SMSG_NPC_MESSAGE
+        || msg.getId() == SMSG_NPC_CHANGETITLE)
+    {
         msg.readInt16();  // length
+    }
 
     const int npcId = msg.readInt32();
 

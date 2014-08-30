@@ -65,7 +65,7 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
         void sellItem(const int beingId, const int itemId,
                       const int amount) const override final;
 
-        int getNpc(Net::MessageIn &msg, const bool haveLength) override final;
+        int getNpc(Net::MessageIn &msg) override final;
 
         static void processNpcCutin(Net::MessageIn &msg, const int npcId);
 
