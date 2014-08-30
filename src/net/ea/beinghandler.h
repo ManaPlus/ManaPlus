@@ -70,9 +70,6 @@ class BeingHandler notfinal : public Net::BeingHandler
 
         virtual void processBeingChangeDirection(Net::MessageIn &msg) const;
 
-        virtual void processPlayerMoveUpdate(Net::MessageIn &msg,
-                                             const int type) const = 0;
-
         virtual void processPlayerStop(Net::MessageIn &msg) const;
 
         virtual void processPlayerMoveToAttack(Net::MessageIn &msg) const;

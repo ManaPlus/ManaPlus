@@ -50,8 +50,7 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void processNameResponse2(Net::MessageIn &msg);
 
-        void processPlayerMoveUpdate(Net::MessageIn &msg,
-                                     const int type) const;
+        void processPlayerMoveUpdate(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena

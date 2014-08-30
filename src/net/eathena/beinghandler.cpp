@@ -175,24 +175,9 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
         case SMSG_PLAYER_UPDATE_1:
         case SMSG_PLAYER_UPDATE_2:
         case SMSG_PLAYER_MOVE:
-            int type;
-            switch (msg.getId())
-            {
-                case SMSG_PLAYER_UPDATE_1:
-                    type = 1;
-                    break;
-                case SMSG_PLAYER_UPDATE_2:
-                    type = 2;
-                    break;
-                case SMSG_PLAYER_MOVE:
-                    type = 3;
-                    break;
-                default:
-                    return;
-            }
-            processPlayerMoveUpdate(msg, type);
-
+            processPlayerMoveUpdate(msg);
             break;
+
         case SMSG_PLAYER_STOP:
             processPlayerStop(msg);
             break;
@@ -421,11 +406,26 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
     }
 }
 
-void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg,
-                                           const int msgType) const
+void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg) const
 {
     if (!actorManager || !localPlayer)
         return;
+
+    int msgType;
+    switch (msg.getId())
+    {
+        case SMSG_PLAYER_UPDATE_1:
+            msgType = 1;
+            break;
+        case SMSG_PLAYER_UPDATE_2:
+            msgType = 2;
+            break;
+        case SMSG_PLAYER_MOVE:
+            msgType = 3;
+            break;
+        default:
+            return;
+    }
 
     // An update about a player, potentially including movement.
     const int id = msg.readInt32();
