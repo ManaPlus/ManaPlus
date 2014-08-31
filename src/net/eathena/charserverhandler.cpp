@@ -284,9 +284,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     const int slots = msg.readInt8("MAX_CHARS");
     msg.readInt8("sd->char_slots");
     msg.readInt8("MAX_CHARS");
-
-    if (slots > 0 && slots < 30)
-        loginData.characterSlots = static_cast<uint16_t>(slots);
+    loginData.characterSlots = static_cast<uint16_t>(slots);
 
     msg.skip(20, "unused 0");
 
