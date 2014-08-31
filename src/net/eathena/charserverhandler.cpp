@@ -65,6 +65,7 @@ CharServerHandler::CharServerHandler() :
     MessageHandler(),
     Ea::CharServerHandler(),
     mPinSeed(0),
+    mPinAccountId(0),
     mNeedCreatePin(false)
 {
     static const uint16_t _messages[] =
@@ -385,8 +386,8 @@ void CharServerHandler::processChangeMapServer(Net::MessageIn &msg)
 
 void CharServerHandler::processPincodeStatus(Net::MessageIn &msg)
 {
-    const uint32_t seed = msg.readInt32("pincode seed");
-    msg.readInt32("account id");
+    mPinSeed = msg.readInt32("pincode seed");
+    mPinAccountId = msg.readInt32("account id");
     const uint16_t state = static_cast<uint16_t>(msg.readInt16("state"));
     switch (state)
     {
@@ -397,7 +398,6 @@ void CharServerHandler::processPincodeStatus(Net::MessageIn &msg)
         case 2: // create new pin
         case 4: // create new pin?
         {
-            mPinSeed = seed;
             mNeedCreatePin = true;
             break;
         }
@@ -416,6 +416,15 @@ void CharServerHandler::processPincodeStatus(Net::MessageIn &msg)
                 static_cast<int>(state));
             break;
     }
+}
+
+void CharServerHandler::setNewPincode(const std::string &pin)
+{
+//  here need ecript pin with mPinSeed and pin values.
+
+//    MessageOut outMsg(CMSG_CHAR_CREATE_PIN);
+//    outMsg.writeInt32(mPinAccountId, "account id");
+//    outMsg.writeString(pin, 4, "encrypted pin");
 }
 
 }  // namespace EAthena

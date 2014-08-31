@@ -20,6 +20,9 @@
 
 #include "listeners/pincodelistener.h"
 
+#include "net/charserverhandler.h"
+#include "net/net.h"
+
 #include "gui/windows/editdialog.h"
 
 #include "debug.h"
@@ -32,6 +35,6 @@ void PincodeListener::action(const ActionEvent &event)
     if (dialog)
     {
         const std::string pincode = dialog->getMsg();
-        // here need send pin code to server
+        Net::getCharServerHandler()->setNewPincode(pincode);
     }
 }

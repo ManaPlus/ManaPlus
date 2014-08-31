@@ -75,6 +75,8 @@ class CharServerHandler notfinal
 
         virtual bool isNeedCreatePin() const = 0;
 
+        virtual void setNewPincode(const std::string &pin) = 0;
+
     protected:
         CharServerHandler() :
             mCharacters(),

@@ -66,6 +66,9 @@ class CharServerHandler final : public MessageHandler,
         bool isNeedCreatePin() const
         { return false; }
 
+        void setNewPincode(const std::string &pin A_UNUSED) override final
+        { }
+
     protected:
         void readPlayerData(Net::MessageIn &msg,
                             Net::Character *const character,
