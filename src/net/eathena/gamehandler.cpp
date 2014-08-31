@@ -53,7 +53,7 @@ GameHandler::GameHandler() :
         SMSG_WHO_ANSWER,
         SMSG_CHAR_SWITCH_RESPONSE,
         SMSG_MAP_QUIT_RESPONSE,
-        SMSG_MAP_CHAR_ID,
+        SMSG_MAP_ACCOUNT_ID,
         0
     };
     handledMessages = _messages;
@@ -85,8 +85,8 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
             processMapQuitResponse(msg);
             break;
 
-        case SMSG_MAP_CHAR_ID:
-            processMapCharId(msg);
+        case SMSG_MAP_ACCOUNT_ID:
+            processMapAccountId(msg);
             break;
 
         default:
@@ -171,9 +171,9 @@ void GameHandler::disconnect2() const
     MessageOut outMsg(CMSG_CLIENT_DISCONNECT);
 }
 
-void GameHandler::processMapCharId(Net::MessageIn &msg)
+void GameHandler::processMapAccountId(Net::MessageIn &msg)
 {
-    msg.readInt32();  // char id
+    msg.readInt32("account id");
 }
 
 }  // namespace EAthena
