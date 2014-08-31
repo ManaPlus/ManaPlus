@@ -63,6 +63,9 @@ class CharServerHandler final : public MessageHandler,
 
         void processChangeMapServer(Net::MessageIn &msg);
 
+        bool isNeedCreatePin() const
+        { return false; }
+
     protected:
         void readPlayerData(Net::MessageIn &msg,
                             Net::Character *const character,

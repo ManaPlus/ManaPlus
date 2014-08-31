@@ -28,6 +28,8 @@
 
 #include "being/attributes.h"
 
+#include "gui/windows/editdialog.h"
+
 #include "net/character.h"
 #include "net/logindata.h"
 #include "net/net.h"
@@ -45,6 +47,9 @@
 #include "resources/db/itemdb.h"
 
 #include "utils/dtor.h"
+#include "utils/gettext.h"
+
+#include "listeners/pincodelistener.h"
 
 #include "debug.h"
 
@@ -58,7 +63,9 @@ extern ServerInfo mapServer;
 
 CharServerHandler::CharServerHandler() :
     MessageHandler(),
-    Ea::CharServerHandler()
+    Ea::CharServerHandler(),
+    mPinSeed(0),
+    mNeedCreatePin(false)
 {
     static const uint16_t _messages[] =
     {
@@ -378,7 +385,7 @@ void CharServerHandler::processChangeMapServer(Net::MessageIn &msg)
 
 void CharServerHandler::processPincodeStatus(Net::MessageIn &msg)
 {
-    msg.readInt32("pincode seed");
+    const uint32_t seed = msg.readInt32("pincode seed");
     msg.readInt32("account id");
     const uint16_t state = static_cast<uint16_t>(msg.readInt16("state"));
     switch (state)
@@ -388,10 +395,13 @@ void CharServerHandler::processPincodeStatus(Net::MessageIn &msg)
         case 1: // ask for pin
             break;
         case 2: // create new pin
-            break;
-        case 3: // pin must be changed
-            break;
         case 4: // create new pin?
+        {
+            mPinSeed = seed;
+            mNeedCreatePin = true;
+            break;
+        }
+        case 3: // pin must be changed
             break;
         case 5: // client show error?
             break;

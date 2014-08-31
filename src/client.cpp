@@ -972,6 +972,7 @@ int Client::gameExec()
 
             // Get rid of the dialog of the previous state
             delete2(mCurrentDialog);
+
             // State has changed, while the quitDialog was active, it might
             // not be correct anymore
             if (mQuitDialog)

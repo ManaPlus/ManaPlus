@@ -32,10 +32,13 @@
 
 #include "being/attributes.h"
 
+#include "listeners/pincodelistener.h"
+
 #include "gui/dialogtype.h"
 
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/chardeleteconfirm.h"
+#include "gui/windows/editdialog.h"
 #include "gui/windows/logindialog.h"
 #include "gui/windows/okdialog.h"
 #include "gui/windows/textdialog.h"
@@ -177,6 +180,13 @@ void CharSelectDialog::postInit()
 {
     setVisible(true);
     requestFocus();
+    if (Net::getCharServerHandler()->isNeedCreatePin())
+    {
+        EditDialog *const dialog = new EditDialog(
+            _("Please set new pincode"), "", "OK");
+        dialog->postInit();
+        dialog->addActionListener(&pincodeListener);
+    }
 }
 
 void CharSelectDialog::action(const ActionEvent &event)

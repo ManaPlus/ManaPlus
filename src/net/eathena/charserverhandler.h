@@ -63,12 +63,19 @@ class CharServerHandler final : public MessageHandler,
 
         void processChangeMapServer(Net::MessageIn &msg);
 
+        bool isNeedCreatePin() const A_WARN_UNUSED
+        { return mNeedCreatePin; }
+
     protected:
         void readPlayerData(Net::MessageIn &msg,
                             Net::Character *const character,
                             const bool) const override final;
 
         void processPincodeStatus(Net::MessageIn &msg);
+
+    private:
+        uint32_t mPinSeed;
+        bool mNeedCreatePin;
 };
 
 }  // namespace EAthena

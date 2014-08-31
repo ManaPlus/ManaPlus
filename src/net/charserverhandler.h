@@ -73,6 +73,8 @@ class CharServerHandler notfinal
 
         virtual void clear() = 0;
 
+        virtual bool isNeedCreatePin() const = 0;
+
     protected:
         CharServerHandler() :
             mCharacters(),
