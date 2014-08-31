@@ -46,7 +46,7 @@ MessageOut::MessageOut(const int16_t id) :
     mData = mNetwork->mOutBuffer + static_cast<size_t>(mNetwork->mOutSize);
 
     // +++ can be issue. call to virtual member
-    writeInt16(id);
+    writeInt16(id, "packet id");
 }
 
 void MessageOut::expand(const size_t bytes)
@@ -55,9 +55,9 @@ void MessageOut::expand(const size_t bytes)
     PacketCounters::incOutBytes(static_cast<int>(bytes));
 }
 
-void MessageOut::writeInt16(const int16_t value)
+void MessageOut::writeInt16(const int16_t value, const char *const str)
 {
-    DEBUGLOG("writeInt16: " + toStringPrint(static_cast<int>(value)));
+    DEBUGLOG2("writeInt16: " + toStringPrint(static_cast<int>(value)), str);
     expand(2);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int16_t swap = SDL_Swap16(value);
@@ -69,9 +69,9 @@ void MessageOut::writeInt16(const int16_t value)
     PacketCounters::incOutBytes(2);
 }
 
-void MessageOut::writeInt32(const int32_t value)
+void MessageOut::writeInt32(const int32_t value, const char *const str)
 {
-    DEBUGLOG("writeInt32: " + toStringPrint(value));
+    DEBUGLOG2("writeInt32: " + toStringPrint(value), str);
     expand(4);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int32_t swap = SDL_Swap32(value);
@@ -89,11 +89,12 @@ static_cast<uint16_t>(w)) >> 8U))
 
 void MessageOut::writeCoordinates(const uint16_t x,
                                   const uint16_t y,
-                                  unsigned char direction)
+                                  unsigned char direction,
+                                  const char *const str)
 {
-    DEBUGLOG(strprintf("writeCoordinates: %u,%u %u",
+    DEBUGLOG2(strprintf("writeCoordinates: %u,%u %u",
         static_cast<unsigned>(x), static_cast<unsigned>(y),
-        static_cast<unsigned>(direction)));
+        static_cast<unsigned>(direction)), str);
     unsigned char *const data = reinterpret_cast<unsigned char*>(mData)
         + static_cast<size_t>(mPos);
     mNetwork->mOutSize += 3;

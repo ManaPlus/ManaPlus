@@ -47,16 +47,21 @@ class MessageOut final : public Net::MessageOut
 
         A_DELETE_COPY(MessageOut)
 
-        void writeInt16(const int16_t value);        /**< Writes a short. */
+        /**< Writes a short. */
+        void writeInt16(const int16_t value,
+                        const char *const str = nullptr);
 
-        void writeInt32(const int32_t value);        /**< Writes a long. */
+        /**< Writes a long. */
+        void writeInt32(const int32_t value,
+                        const char *const str = nullptr);
 
         /**
          * Encodes coordinates and direction in 3 bytes.
          */
         void writeCoordinates(const uint16_t x,
                               const uint16_t y,
-                              unsigned char direction);
+                              unsigned char direction,
+                              const char *const str = nullptr);
 
         void resetPos()
         { mPos = 0; }

@@ -45,16 +45,18 @@ MessageOut::MessageOut(const int16_t id A_UNUSED) :
     DEBUGLOG("MessageOut");
 }
 
-void MessageOut::writeInt8(const int8_t value)
+void MessageOut::writeInt8(const int8_t value, const char *const str)
 {
-    DEBUGLOG("writeInt8: " + toStringPrint(static_cast<int>(value)));
+    DEBUGLOG2("writeInt8: " + toStringPrint(static_cast<int>(value)), str);
     expand(1);
     mData[mPos] = value;
     mPos += 1;
     PacketCounters::incOutBytes(1);
 }
 
-void MessageOut::writeString(const std::string &string, int length)
+void MessageOut::writeString(const std::string &string,
+                             int length,
+                             const char *const str)
 {
     int stringLength = static_cast<int>(string.length());
     if (length < 0)
@@ -82,11 +84,13 @@ void MessageOut::writeString(const std::string &string, int length)
     }
 
     mPos += length;
-    DEBUGLOG("writeString: " + string);
+    DEBUGLOG2("writeString: " + string, str);
     PacketCounters::incOutBytes(length);
 }
 
-void MessageOut::writeStringNoLog(const std::string &string, int length)
+void MessageOut::writeStringNoLog(const std::string &string,
+                                  int length,
+                                  const char *const str)
 {
     int stringLength = static_cast<int>(string.length());
     if (length < 0)
@@ -114,7 +118,7 @@ void MessageOut::writeStringNoLog(const std::string &string, int length)
     }
 
     mPos += length;
-    DEBUGLOG("writeString: ***");
+    DEBUGLOG2("writeString: ***", str);
     PacketCounters::incOutBytes(length);
 }
 
