@@ -138,14 +138,14 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     Stat &jobStat = data.mStats[JOB];
     jobStat.exp = msg.readInt32();
 
-    const int temp = msg.readInt32();
+    const int temp = msg.readInt32();   // job_level
     jobStat.base = temp;
     jobStat.mod = temp;
 
-    const int shoes = msg.readInt16();
-    const int gloves = msg.readInt16();
-    const int cape = msg.readInt16();
-    const int misc1 = msg.readInt16();
+    const int shoes = msg.readInt16();     // look like unused
+    const int gloves = msg.readInt16();    // look like unused
+    const int cape = msg.readInt16();      // look like unused
+    const int misc1 = msg.readInt16();     // look like unused
 
     msg.readInt32();                       // option
     msg.readInt32();                       // karma
@@ -154,29 +154,32 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
 
     data.mAttributes[Attributes::HP] = msg.readInt16();
     data.mAttributes[Attributes::MAX_HP] = msg.readInt16();
-    data.mAttributes[Attributes::MP] = msg.readInt16();
-    data.mAttributes[Attributes::MAX_MP] = msg.readInt16();
+
+    msg.skip(4);    // unused
+
+    data.mAttributes[Attributes::MP] = msg.readInt16();     // sp
+    data.mAttributes[Attributes::MAX_MP] = msg.readInt16(); // max sp
 
     msg.readInt16();                             // speed
     tempPlayer->setSubtype(msg.readInt16(), 0);  // class (used for race)
     const int hairStyle = msg.readInt16();
-    const uint16_t weapon = msg.readInt16();
+    const uint16_t weapon = msg.readInt16();     // weapon or non (for riding?)
 
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
 
     data.mAttributes[Attributes::LEVEL] = msg.readInt16();
 
     msg.readInt16();  // skill point
-    const int bottomClothes = msg.readInt16();
-    const int shield = msg.readInt16();
+    const int bottomClothes = msg.readInt16();  // head_bottom
+    const int shield = msg.readInt16();         // shield
 
-    const int hat = msg.readInt16();  // head option top
-    const int topClothes = msg.readInt16();
+    const int hat = msg.readInt16();            // head_top
+    const int topClothes = msg.readInt16();     // head_mid
 
-    tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,
+    tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,  // hair_color
         ItemDB::get(-hairStyle).getDyeColorsString(msg.readInt16()));
 
-    const int misc2 = msg.readInt16();
+    const int misc2 = msg.readInt16();          // clothes_color
     tempPlayer->setName(msg.readString(24));
 
     character->dummy = tempPlayer;
@@ -196,9 +199,13 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setSprite(SPRITE_HAT, hat);  // head option top
     tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
     tempPlayer->setSprite(SPRITE_MISC2, misc2);
-    character->slot = msg.readUInt8();  // character slot
-
-    msg.readUInt8();  // unknown
+    character->slot = msg.readInt16();  // character slot
+    msg.readInt16();     // rename (1, 0) addons bar?
+    msg.readString(16);  // map name
+    msg.readInt32();     // delete_date
+    msg.readInt32();     // robe
+    msg.readInt32();     // slotchange (1, 0)
+    msg.readInt32();     // rename (0, 1) addons bar?
 }
 
 void CharServerHandler::chooseCharacter(Net::Character *const character)
@@ -273,17 +280,21 @@ void CharServerHandler::connect()
 void CharServerHandler::processCharLogin(Net::MessageIn &msg)
 {
     msg.skip(2);  // Length word
-    const int slots = msg.readInt16();
+    const int slots = msg.readInt8();  // MAX_CHARS
+    msg.readInt8();  // sd->char_slots
+    msg.readInt8();  // MAX_CHARS
+
     if (slots > 0 && slots < 30)
         loginData.characterSlots = static_cast<uint16_t>(slots);
 
-    msg.skip(18);  // 0 Unused
+    msg.skip(20);  // 0 Unused
 
     delete_all(mCharacters);
     mCharacters.clear();
 
     // Derive number of characters from message length
-    const int count = (msg.getLength() - 24) / 106;
+    const int count = (msg.getLength() - 27)
+        / (106 + 4 + 2 + 16 + 4 + 4 + 4 + 4);
 
     for (int i = 0; i < count; ++i)
     {
