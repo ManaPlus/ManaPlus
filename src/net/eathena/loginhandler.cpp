@@ -139,9 +139,9 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
                                      A_UNUSED) const
 {
     MessageOut outMsg(CMSG_LOGIN_REGISTER);
-    outMsg.writeInt32(0);  // client version
-    outMsg.writeString(username, 24);
-    outMsg.writeStringNoLog(password, 24);
+    outMsg.writeInt32(20, "client version");
+    outMsg.writeString(username, 24, "login");
+    outMsg.writeStringNoLog(password, 24, "password");
 
     /*
      * eAthena calls the last byte "client version 2", but it isn't used at
@@ -149,7 +149,7 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
      *  0 - can handle the 0x63 "update host" packet
      *  1 - defaults to the first char-server (instead of the last)
      */
-    outMsg.writeInt8(0x03);
+    outMsg.writeInt8(0x03, "client type");
 }
 
 ServerInfo *LoginHandler::getCharServer() const
