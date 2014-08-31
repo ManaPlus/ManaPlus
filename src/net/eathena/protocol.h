@@ -56,7 +56,7 @@
 #define SMSG_CHAR_SWITCH_RESPONSE    0x00b3
 #define SMSG_CHANGE_MAP_SERVER       0x0092
 
-#define SMSG_MAP_LOGIN_SUCCESS       0x0073 /**< Contains starting location */
+#define SMSG_MAP_LOGIN_SUCCESS       0x02eb /**< Contains starting location */
 #define SMSG_MAP_QUIT_RESPONSE       0x018b
 #define SMSG_PLAYER_UPDATE_1         0x01d8
 #define SMSG_PLAYER_UPDATE_2         0x01d9
