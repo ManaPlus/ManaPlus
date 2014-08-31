@@ -328,19 +328,19 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg)
     ServerInfo &server = mapServer;
     BLOCK_START("CharServerHandler::processCharMapInfo")
 //    msg.skip(4); // CharID, must be the same as localPlayer->charID
-    PlayerInfo::setCharId(msg.readInt32());
+    PlayerInfo::setCharId(msg.readInt32("char id"));
     GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
-    gh->setMap(msg.readString(16));
+    gh->setMap(msg.readString(16, "map name"));
     if (config.getBoolValue("usePersistentIP") || settings.persistentIp)
     {
-        msg.readInt32();
+        msg.readInt32("map ip address");
         server.hostname = settings.serverName;
     }
     else
     {
-        server.hostname = ipToString(msg.readInt32());
+        server.hostname = ipToString(msg.readInt32("map ip address"));
     }
-    server.port = msg.readInt16();
+    server.port = msg.readInt16("map ip port");
 
     // Prevent the selected local player from being deleted
     localPlayer = mSelectedCharacter->dummy;
