@@ -144,9 +144,17 @@ bool Network::messageReady()
     {
         const int msgId = readWord(0);
         if (msgId == SMSG_UPDATE_HOST2)
+        {
             len = -1;
+        }
         else
-            len = packet_lengths[msgId];
+        {
+            if (msgId >= 0 && static_cast<unsigned int>(msgId)
+                < packet_lengths_size)
+            {
+                len = packet_lengths[msgId];
+            }
+        }
 
         if (len == -1 && mInSize > 4)
             len = readWord(2);
