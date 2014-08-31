@@ -129,16 +129,17 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const Token &token =
         static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
 
-    LocalPlayer *const tempPlayer = new LocalPlayer(msg.readInt32(), 0);
+    LocalPlayer *const tempPlayer = new LocalPlayer(
+        msg.readInt32("player id"), 0);
     tempPlayer->setGender(token.sex);
 
     PlayerInfoBackend &data = character->data;
-    data.mAttributes[Attributes::EXP] = msg.readInt32();
-    data.mAttributes[Attributes::MONEY] = msg.readInt32();
+    data.mAttributes[Attributes::EXP] = msg.readInt32("exp");
+    data.mAttributes[Attributes::MONEY] = msg.readInt32("money");
     Stat &jobStat = data.mStats[JOB];
-    jobStat.exp = msg.readInt32();
+    jobStat.exp = msg.readInt32("job");
 
-    const int temp = msg.readInt32();   // job_level
+    const int temp = msg.readInt32("job level");
     jobStat.base = temp;
     jobStat.mod = temp;
 
@@ -147,45 +148,45 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const int cape = msg.readInt16();      // look like unused
     const int misc1 = msg.readInt16();     // look like unused
 
-    msg.readInt32();                       // option
-    msg.readInt32();                       // karma
-    msg.readInt32();                       // manner
-    msg.readInt16();                       // character points left
+    msg.readInt32("option");
+    msg.readInt32("karma");
+    msg.readInt32("manner");
+    msg.readInt16("left points");
 
-    data.mAttributes[Attributes::HP] = msg.readInt16();
-    data.mAttributes[Attributes::MAX_HP] = msg.readInt16();
+    data.mAttributes[Attributes::HP] = msg.readInt16("hp");
+    data.mAttributes[Attributes::MAX_HP] = msg.readInt16("max hp");
 
-    msg.skip(4);    // unused
+    msg.skip(4, "unused");
 
-    data.mAttributes[Attributes::MP] = msg.readInt16();     // sp
-    data.mAttributes[Attributes::MAX_MP] = msg.readInt16(); // max sp
+    data.mAttributes[Attributes::MP] = msg.readInt16("mp/sp");
+    data.mAttributes[Attributes::MAX_MP] = msg.readInt16("max mp/sp");
 
-    msg.readInt16();                             // speed
-    tempPlayer->setSubtype(msg.readInt16(), 0);  // class (used for race)
-    const int hairStyle = msg.readInt16();
-    const uint16_t weapon = msg.readInt16();     // weapon or non (for riding?)
+    msg.readInt16("speed");
+    tempPlayer->setSubtype(msg.readInt16("class"), 0);
+    const int hairStyle = msg.readInt16("hair style");
+    const uint16_t weapon = msg.readInt16("weapon");
 
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
 
-    data.mAttributes[Attributes::LEVEL] = msg.readInt16();
+    data.mAttributes[Attributes::LEVEL] = msg.readInt16("level");
 
-    msg.readInt16();  // skill point
-    const int bottomClothes = msg.readInt16();  // head_bottom
-    const int shield = msg.readInt16();         // shield
+    msg.readInt16("skill points");
+    const int bottomClothes = msg.readInt16("head bottom");
+    const int shield = msg.readInt16("shild");
+    const int hat = msg.readInt16("head top");
+    const int topClothes = msg.readInt16("head mid");
 
-    const int hat = msg.readInt16();            // head_top
-    const int topClothes = msg.readInt16();     // head_mid
+    tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,
+        ItemDB::get(-hairStyle).getDyeColorsString(
+        msg.readInt16("hair color")));
 
-    tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,  // hair_color
-        ItemDB::get(-hairStyle).getDyeColorsString(msg.readInt16()));
-
-    const int misc2 = msg.readInt16();          // clothes_color
+    const int misc2 = msg.readInt16("clothes color");
     tempPlayer->setName(msg.readString(24));
 
     character->dummy = tempPlayer;
 
     for (int i = 0; i < 6; i++)
-        character->data.mStats[i + STR].base = msg.readUInt8();
+        character->data.mStats[i + STR].base = msg.readUInt8("stat");
 
     tempPlayer->setSprite(SPRITE_SHOE, shoes);
     tempPlayer->setSprite(SPRITE_GLOVES, gloves);
@@ -196,16 +197,16 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     if (!config.getBoolValue("hideShield"))
         tempPlayer->setSprite(SPRITE_SHIELD, shield);
 
-    tempPlayer->setSprite(SPRITE_HAT, hat);  // head option top
+    tempPlayer->setSprite(SPRITE_HAT, hat);
     tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
     tempPlayer->setSprite(SPRITE_MISC2, misc2);
-    character->slot = msg.readInt16();  // character slot
-    msg.readInt16();     // rename (1, 0) addons bar?
-    msg.readString(16);  // map name
-    msg.readInt32();     // delete_date
-    msg.readInt32();     // robe
-    msg.readInt32();     // slotchange (1, 0)
-    msg.readInt32();     // rename (0, 1) addons bar?
+    character->slot = msg.readInt16("character slot id");
+    msg.readInt16("rename");
+    msg.readString(16, "map name");
+    msg.readInt32("delete date");
+    msg.readInt32("robe");
+    msg.readInt32("slot change");
+    msg.readInt32("rename (inverse)");
 }
 
 void CharServerHandler::chooseCharacter(Net::Character *const character)
@@ -279,15 +280,15 @@ void CharServerHandler::connect()
 
 void CharServerHandler::processCharLogin(Net::MessageIn &msg)
 {
-    msg.skip(2);  // Length word
-    const int slots = msg.readInt8();  // MAX_CHARS
-    msg.readInt8();  // sd->char_slots
-    msg.readInt8();  // MAX_CHARS
+    msg.skip(2, "packet len");
+    const int slots = msg.readInt8("MAX_CHARS");
+    msg.readInt8("sd->char_slots");
+    msg.readInt8("MAX_CHARS");
 
     if (slots > 0 && slots < 30)
         loginData.characterSlots = static_cast<uint16_t>(slots);
 
-    msg.skip(20);  // 0 Unused
+    msg.skip(20, "unused 0");
 
     delete_all(mCharacters);
     mCharacters.clear();
