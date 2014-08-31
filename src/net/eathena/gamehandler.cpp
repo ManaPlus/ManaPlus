@@ -180,11 +180,15 @@ void GameHandler::processMapLogin(Net::MessageIn &msg) const
 {
     unsigned char direction;
     uint16_t x, y;
-    msg.readInt32();   // server tick
+    msg.readInt32("start time");
     msg.readCoordinates(x, y, direction);
-    msg.skip(2);      // 0x0505
-    logger->log("Protocol: Player start position: (%d, %d),"
-                " Direction: %d", x, y, direction);
+    msg.readInt8("x size");
+    msg.readInt8("y size");
+    logger->log("Protocol: Player start position: "
+        "(%d, %d), Direction: %d",
+        x, y, direction,
+        "player position and direction");
+    msg.readInt16("font");
 
     mLastHost &= 0xffffff;
 
