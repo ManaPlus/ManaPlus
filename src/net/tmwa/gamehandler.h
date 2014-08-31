@@ -55,6 +55,9 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
 
         bool mustPing() const override final A_WARN_UNUSED
         { return false; }
+
+    protected:
+        void processMapLogin(Net::MessageIn &msg) const;
 };
 
 }  // namespace TmwAthena

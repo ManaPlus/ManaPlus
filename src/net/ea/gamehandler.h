@@ -50,8 +50,6 @@ class GameHandler notfinal : public Net::GameHandler
         virtual bool canUseMagicBar() const override final A_WARN_UNUSED
         { return true; }
 
-        virtual void processMapLogin(Net::MessageIn &msg) const;
-
         virtual void processWhoAnswer(Net::MessageIn &msg) const;
 
         virtual void processCharSwitchResponse(Net::MessageIn &msg) const;

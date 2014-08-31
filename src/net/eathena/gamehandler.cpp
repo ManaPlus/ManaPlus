@@ -176,4 +176,22 @@ void GameHandler::processMapAccountId(Net::MessageIn &msg)
     msg.readInt32("account id");
 }
 
+void GameHandler::processMapLogin(Net::MessageIn &msg) const
+{
+    unsigned char direction;
+    uint16_t x, y;
+    msg.readInt32();   // server tick
+    msg.readCoordinates(x, y, direction);
+    msg.skip(2);      // 0x0505
+    logger->log("Protocol: Player start position: (%d, %d),"
+                " Direction: %d", x, y, direction);
+
+    mLastHost &= 0xffffff;
+
+    // Switch now or we'll have problems
+    client->setState(STATE_GAME);
+    if (localPlayer)
+        localPlayer->setTileCoords(x, y);
+}
+
 }  // namespace EAthena
