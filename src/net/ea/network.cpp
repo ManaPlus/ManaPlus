@@ -65,7 +65,8 @@ Network::Network() :
     mWorkerThread(nullptr),
     mMutexIn(SDL_CreateMutex()),
     mMutexOut(SDL_CreateMutex()),
-    mSleep(config.getIntValue("networksleep"))
+    mSleep(config.getIntValue("networksleep")),
+    mPauseDispatch(false)
 {
     TcpNet::init();
 }

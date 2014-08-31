@@ -93,6 +93,7 @@ void Network::clearHandlers()
 void Network::dispatchMessages()
 {
     BLOCK_START("Network::dispatchMessages 1")
+    mPauseDispatch = false;
     while (messageReady())
     {
         SDL_mutexP(mMutexIn);
@@ -133,6 +134,11 @@ void Network::dispatchMessages()
         }
 
         skip(len);
+        if (mPauseDispatch)
+        {
+            BLOCK_END("Network::dispatchMessages 3")
+            break;
+        }
         BLOCK_END("Network::dispatchMessages 3")
     }
     BLOCK_END("Network::dispatchMessages 1")

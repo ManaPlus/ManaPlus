@@ -92,6 +92,7 @@ void Network::clearHandlers()
 
 void Network::dispatchMessages()
 {
+    mPauseDispatch = false;
     while (messageReady())
     {
         SDL_mutexP(mMutexIn);
@@ -132,6 +133,8 @@ void Network::dispatchMessages()
         }
 
         skip(len);
+        if (mPauseDispatch)
+            break;
     }
 }
 

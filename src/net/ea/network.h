@@ -67,6 +67,9 @@ class Network notfinal
 
         void fixSendBuffer();
 
+        void pauseDispatch()
+        { mPauseDispatch = true; }
+
         // ERROR replaced by NET_ERROR because already defined in Windows
         enum
         {
@@ -106,6 +109,7 @@ class Network notfinal
         SDL_mutex *mMutexIn;
         SDL_mutex *mMutexOut;
         int mSleep;
+        bool mPauseDispatch;
 };
 
 }  // namespace Ea
