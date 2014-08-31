@@ -192,6 +192,9 @@ void GameHandler::processMapLogin(Net::MessageIn &msg) const
 
     mLastHost &= 0xffffff;
 
+    if (mNetwork)
+        mNetwork->pauseDispatch();
+
     // Switch now or we'll have problems
     client->setState(STATE_GAME);
     if (localPlayer)
