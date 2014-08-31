@@ -22,6 +22,8 @@
 
 #include "net/tmwa/inventoryhandler.h"
 
+#include "being/localplayer.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
@@ -30,6 +32,7 @@
 #include "debug.h"
 
 extern Net::InventoryHandler *inventoryHandler;
+extern int serverVersion;
 
 namespace TmwAthena
 {
@@ -202,6 +205,55 @@ void InventoryHandler::moveItem2(const int source, const int slot,
         outMsg.writeInt16(static_cast<int16_t>(slot + STORAGE_OFFSET));
         outMsg.writeInt32(amount);
     }
+}
+
+void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerEquipment")
+    Inventory *const inventory = localPlayer
+        ? PlayerInfo::getInventory() : nullptr;
+
+    msg.readInt16();  // length
+    Equipment *const equipment = PlayerInfo::getEquipment();
+    if (equipment && !equipment->getBackend())
+    {   // look like SMSG_PLAYER_INVENTORY was not received
+        mEquips.clear();
+        equipment->setBackend(&mEquips);
+    }
+    const int number = (msg.getLength() - 4) / 20;
+
+    for (int loop = 0; loop < number; loop++)
+    {
+        const int index = msg.readInt16() - INVENTORY_OFFSET;
+        const int itemId = msg.readInt16();
+        const uint8_t itemType = msg.readUInt8();  // type
+        uint8_t identified = msg.readUInt8();      // identify flag
+
+        msg.readInt16();  // equip type
+        const int equipType = msg.readInt16();
+        msg.readUInt8();  // attribute
+        const uint8_t refine = msg.readUInt8();
+        msg.skip(8);  // card
+
+        if (mDebugInventory)
+        {
+            logger->log("Index: %d, ID: %d, Type: %d, Identified: %d",
+                        index, itemId, itemType, identified);
+        }
+
+        if (serverVersion < 1 && identified > 1)
+            identified = 1;
+
+        if (inventory)
+        {
+            inventory->setItem(index, itemId, 1, refine,
+                identified, true);
+        }
+
+        if (equipType)
+            mEquips.setEquipment(getSlot(equipType), index);
+    }
+    BLOCK_END("InventoryHandler::processPlayerEquipment")
 }
 
 }  // namespace TmwAthena

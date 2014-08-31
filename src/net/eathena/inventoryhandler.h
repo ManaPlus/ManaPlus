@@ -57,6 +57,9 @@ class InventoryHandler final : public MessageHandler,
                        const int slot,
                        const int amount,
                        const int destination) const override final;
+
+    protected:
+        void processPlayerEquipment(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
