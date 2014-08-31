@@ -41,18 +41,9 @@
 #ifdef ENABLEDEBUGLOG
 #define DEBUGLOG2(msg, comment) \
     if (logger) \
-    { \
-        if (comment) \
-        { \
-            logger->dlog(std::string(msg).append(": ").append(comment)); \
-        } \
-        else \
-        { \
-            logger->dlog(msg); \
-        } \
-    }
+        logger->dlog2(msg, comment)
 #else
-#define DEBUGLOG(msg) {}
+#define DEBUGLOG2(msg, comment) {}
 #endif
 
 /**
@@ -127,6 +118,8 @@ class Logger final
          * Enters debug message in the log. The message will be timestamped.
          */
         void dlog(const std::string &str);
+
+        void dlog2(const std::string &str, const char* const comment);
 #endif
 
         void setDebugLog(const bool n)

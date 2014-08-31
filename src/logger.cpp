@@ -119,6 +119,37 @@ void Logger::dlog(const std::string &str)
     if (mLogToStandardOut)
         std::cout << timeStr.str() << str << std::endl;
 }
+
+void Logger::dlog2(const std::string &str, const char* const comment)
+{
+    if (!mDebugLog)
+        return;
+
+    // Get the current system time
+    timeval tv;
+    gettimeofday(&tv, nullptr);
+
+    // Print the log entry
+    std::stringstream timeStr;
+    DATESTREAM
+    DLOG_ANDROID(str.c_str())
+
+    if (mLogFile.is_open())
+    {
+        if (comment)
+            mLogFile << timeStr.str() << str << ": " << comment << std::endl;
+        else
+            mLogFile << timeStr.str() << str << std::endl;
+    }
+
+    if (mLogToStandardOut)
+    {
+        if (comment)
+            std::cout << timeStr.str() << str << ": " << comment << std::endl;
+        else
+            std::cout << timeStr.str() << str << std::endl;
+    }
+}
 #endif
 
 void Logger::log1(const char *const buf)
