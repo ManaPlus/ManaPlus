@@ -67,6 +67,8 @@ class CharServerHandler final : public MessageHandler,
         void readPlayerData(Net::MessageIn &msg,
                             Net::Character *const character,
                             const bool) const override final;
+
+        void processPincodeStatus(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

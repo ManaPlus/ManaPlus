@@ -71,6 +71,7 @@ CharServerHandler::CharServerHandler() :
         SMSG_CHAR_DELETE_FAILED,
         SMSG_CHAR_MAP_INFO,
         SMSG_CHANGE_MAP_SERVER,
+        SMSG_CHAR_PINCODE_STATUS,
         0
     };
     handledMessages = _messages;
@@ -112,6 +113,10 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_CHANGE_MAP_SERVER:
             processChangeMapServer(msg);
+            break;
+
+        case SMSG_CHAR_PINCODE_STATUS:
+            processPincodeStatus(msg);
             break;
 
         default:
@@ -369,6 +374,38 @@ void CharServerHandler::processChangeMapServer(Net::MessageIn &msg)
         localPlayer->setMap(nullptr);
     }
     BLOCK_END("CharServerHandler::processChangeMapServer")
+}
+
+void CharServerHandler::processPincodeStatus(Net::MessageIn &msg)
+{
+    msg.readInt32("pincode seed");
+    msg.readInt32("account id");
+    const uint16_t state = static_cast<uint16_t>(msg.readInt16("state"));
+    switch (state)
+    {
+        case 0: // pin ok
+            break;
+        case 1: // ask for pin
+            break;
+        case 2: // create new pin
+            break;
+        case 3: // pin must be changed
+            break;
+        case 4: // create new pin?
+            break;
+        case 5: // client show error?
+            break;
+        case 6: // Unable to use your KSSN number
+            break;
+        case 7: // char select window shows a button
+            break;
+        case 8: // pincode was incorrect
+            break;
+        default:
+            logger->log("processPincodeStatus: unknown pin state: %d",
+                static_cast<int>(state));
+            break;
+    }
 }
 
 }  // namespace EAthena
