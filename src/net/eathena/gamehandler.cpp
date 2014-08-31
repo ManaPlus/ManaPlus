@@ -126,12 +126,11 @@ void GameHandler::connect()
 
     // Send login infos
     MessageOut outMsg(CMSG_MAP_SERVER_CONNECT);
-    outMsg.writeInt32(token.account_ID);
-    outMsg.writeInt32(mCharID);
-    outMsg.writeInt32(token.session_ID1);
-    outMsg.writeInt32(token.session_ID2);
-    outMsg.writeInt8(Being::genderToInt(token.sex));
-
+    outMsg.writeInt32(token.account_ID, "account id");
+    outMsg.writeInt32(mCharID, "char id");
+    outMsg.writeInt32(token.session_ID1, "session key1");
+    outMsg.writeInt32(token.session_ID2, "session key2");
+    outMsg.writeInt8(Being::genderToInt(token.sex), "sex");
 /*
     if (localPlayer)
     {

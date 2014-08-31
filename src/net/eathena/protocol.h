@@ -199,7 +199,7 @@
 #define CMSG_CHAR_DELETE             0x0068
 #define CMSG_CHAR_CREATE_PIN         0x08ba
 
-#define CMSG_MAP_SERVER_CONNECT      0x0072
+#define CMSG_MAP_SERVER_CONNECT      0x022d
 #define CMSG_CLIENT_PING             0x007e /**< Send to server with tick */
 #define CMSG_MAP_LOADED              0x007d
 #define CMSG_CLIENT_QUIT             0x018A
