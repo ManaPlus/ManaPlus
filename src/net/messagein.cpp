@@ -47,7 +47,7 @@ MessageIn::MessageIn(const char *const data, const unsigned int length) :
     DEBUGLOG("MessageIn");
 }
 
-unsigned char MessageIn::readUInt8()
+unsigned char MessageIn::readUInt8(const char *const str)
 {
     unsigned char value = static_cast<unsigned char>(-1);
     if (mPos < mLength)
@@ -55,11 +55,11 @@ unsigned char MessageIn::readUInt8()
 
     mPos += 1;
     PacketCounters::incInBytes(1);
-    DEBUGLOG("readUInt8: " + toStringPrint(static_cast<int>(value)));
+    DEBUGLOG2("readUInt8: " + toStringPrint(static_cast<int>(value)), str);
     return value;
 }
 
-signed char MessageIn::readInt8()
+signed char MessageIn::readInt8(const char *const str)
 {
     signed char value = static_cast<signed char>(-1);
     if (mPos < mLength)
@@ -67,7 +67,7 @@ signed char MessageIn::readInt8()
 
     mPos += 1;
     PacketCounters::incInBytes(1);
-    DEBUGLOG("readInt8: " + toStringPrint(static_cast<int>(value)));
+    DEBUGLOG2("readInt8: " + toStringPrint(static_cast<int>(value)), str);
     return value;
 }
 
@@ -101,8 +101,10 @@ uint8_t MessageIn::fromServerDirection(const uint8_t serverDir)
     }
 }
 
-void MessageIn::readCoordinates(uint16_t &restrict x, uint16_t &restrict y,
-                                uint8_t &restrict direction)
+void MessageIn::readCoordinates(uint16_t &restrict x,
+                                uint16_t &restrict y,
+                                uint8_t &restrict direction,
+                                const char *const str)
 {
     if (mPos + 3 <= mLength)
     {
@@ -115,10 +117,10 @@ void MessageIn::readCoordinates(uint16_t &restrict x, uint16_t &restrict y,
         const uint8_t serverDir = static_cast<uint8_t>(data[2] & 0x000f);
         direction = fromServerDirection(serverDir);
 
-        DEBUGLOG(std::string("readCoordinates: ").append(toString(
+        DEBUGLOG2(std::string("readCoordinates: ").append(toString(
             static_cast<int>(x))).append(",").append(toString(
             static_cast<int>(y))).append(",").append(toString(
-            static_cast<int>(serverDir))));
+            static_cast<int>(serverDir))), str);
     }
     else
     {
@@ -134,7 +136,8 @@ void MessageIn::readCoordinates(uint16_t &restrict x, uint16_t &restrict y,
 void MessageIn::readCoordinatePair(uint16_t &restrict srcX,
                                    uint16_t &restrict srcY,
                                    uint16_t &restrict dstX,
-                                   uint16_t &restrict dstY)
+                                   uint16_t &restrict dstY,
+                                   const char *const str)
 {
     if (mPos + 5 <= mLength)
     {
@@ -150,11 +153,11 @@ void MessageIn::readCoordinatePair(uint16_t &restrict srcX,
         temp = MAKEWORD(data[2], data[1] & 0x003f);
         srcY = static_cast<uint16_t>(temp >> 4);
 
-        DEBUGLOG(std::string("readCoordinatePair: ").append(toString(
+        DEBUGLOG2(std::string("readCoordinatePair: ").append(toString(
             static_cast<int>(srcX))).append(",").append(toString(
             static_cast<int>(srcY))).append(" ").append(toString(
             static_cast<int>(dstX))).append(",").append(toString(
-            static_cast<int>(dstY))));
+            static_cast<int>(dstY))), str);
     }
     else
     {
@@ -168,14 +171,14 @@ void MessageIn::readCoordinatePair(uint16_t &restrict srcX,
     PacketCounters::incInBytes(5);
 }
 
-void MessageIn::skip(const unsigned int length)
+void MessageIn::skip(const unsigned int length, const char *const str)
 {
     mPos += length;
     PacketCounters::incInBytes(length);
-    DEBUGLOG("skip: " + toString(static_cast<int>(length)));
+    DEBUGLOG2("skip: " + toString(static_cast<int>(length)), str);
 }
 
-std::string MessageIn::readString(int length)
+std::string MessageIn::readString(int length, const char *const dstr)
 {
     // Get string length
     if (length < 0)
@@ -185,7 +188,7 @@ std::string MessageIn::readString(int length)
     if (length < 0 || mPos + length > mLength)
     {
         mPos = mLength + 1;
-        DEBUGLOG("readString error");
+        DEBUGLOG2("readString error", dstr);
         return "";
     }
 
@@ -198,11 +201,11 @@ std::string MessageIn::readString(int length)
         ? stringEnd - stringBeg : static_cast<size_t>(length));
     mPos += length;
     PacketCounters::incInBytes(length);
-    DEBUGLOG("readString: " + str);
+    DEBUGLOG2("readString: " + str, dstr);
     return str;
 }
 
-std::string MessageIn::readRawString(int length)
+std::string MessageIn::readRawString(int length, const char *const dstr)
 {
     // Get string length
     if (length < 0)
@@ -224,7 +227,7 @@ std::string MessageIn::readRawString(int length)
 
     mPos += length;
     PacketCounters::incInBytes(length);
-    DEBUGLOG("readString: " + str);
+    DEBUGLOG2("readString: " + str, dstr);
 
     if (stringEnd)
     {
@@ -237,7 +240,7 @@ std::string MessageIn::readRawString(int length)
             stringEnd2 ? stringEnd2 - stringBeg2 : len2);
         if (hiddenPart.length() > 0)
         {
-            DEBUGLOG("readString2: " + hiddenPart);
+            DEBUGLOG2("readString2: " + hiddenPart, dstr);
             return str.append("|").append(hiddenPart);
         }
     }
@@ -245,7 +248,7 @@ std::string MessageIn::readRawString(int length)
     return str;
 }
 
-unsigned char *MessageIn::readBytes(int length)
+unsigned char *MessageIn::readBytes(int length, const char *const dstr)
 {
     // Get string length
     if (length < 0)
@@ -255,7 +258,7 @@ unsigned char *MessageIn::readBytes(int length)
     if (length < 0 || mPos + length > mLength)
     {
         mPos = mLength + 1;
-        DEBUGLOG("readBytesString error");
+        DEBUGLOG2("readBytesString error", dstr);
         return nullptr;
     }
 
@@ -279,6 +282,8 @@ unsigned char *MessageIn::readBytes(int length)
         else
             str.append("_");
     }
+    if (dstr)
+        logger->dlog(dstr);
     logger->dlog("ReadBytes: " + str);
 #endif
 

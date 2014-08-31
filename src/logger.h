@@ -38,6 +38,23 @@
 #define DEBUGLOG(msg) {}
 #endif
 
+#ifdef ENABLEDEBUGLOG
+#define DEBUGLOG2(msg, comment) \
+    if (logger) \
+    { \
+        if (comment) \
+        { \
+            logger->dlog(std::string(msg).append(": ").append(comment)); \
+        } \
+        else \
+        { \
+            logger->dlog(msg); \
+        } \
+    }
+#else
+#define DEBUGLOG(msg) {}
+#endif
+
 /**
  * The Log Class : Useful to write debug or info messages
  */

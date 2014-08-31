@@ -47,8 +47,10 @@ class MessageIn final : public Net::MessageIn
 
         void postInit();
 
-        int16_t readInt16();            /**< Reads a short. */
-        int32_t readInt32();            /**< Reads a long. */
+        /**< Reads a short. */
+        int16_t readInt16(const char *const str = nullptr);
+        /**< Reads a long. */
+        int32_t readInt32(const char *const str = nullptr);
 };
 
 }  // namespace TmwAthena

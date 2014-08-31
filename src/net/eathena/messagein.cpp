@@ -46,7 +46,7 @@ void MessageIn::postInit()
     mId = readInt16();
 }
 
-int16_t MessageIn::readInt16()
+int16_t MessageIn::readInt16(const char *const str)
 {
     int16_t value = -1;
     if (mPos + 2 <= mLength)
@@ -61,11 +61,11 @@ int16_t MessageIn::readInt16()
     }
     mPos += 2;
     PacketCounters::incInBytes(2);
-    DEBUGLOG("readInt16: " + toStringPrint(static_cast<int>(value)));
+    DEBUGLOG2("readInt16: " + toStringPrint(static_cast<int>(value)), str);
     return value;
 }
 
-int32_t MessageIn::readInt32()
+int32_t MessageIn::readInt32(const char *const str)
 {
     int32_t value = -1;
     if (mPos + 4 <= mLength)
@@ -80,7 +80,7 @@ int32_t MessageIn::readInt32()
     }
     mPos += 4;
     PacketCounters::incInBytes(4);
-    DEBUGLOG("readInt32: " + toStringPrint(value));
+    DEBUGLOG2("readInt32: " + toStringPrint(value), str);
     return value;
 }
 

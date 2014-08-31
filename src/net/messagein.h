@@ -58,13 +58,17 @@ class MessageIn notfinal
         unsigned int getUnreadLength() const A_WARN_UNUSED
         { return mLength > mPos ? mLength - mPos : 0; }
 
-        virtual unsigned char readUInt8();  /**< Reads a byte. */
+        /**< Reads a byte. */
+        virtual unsigned char readUInt8(const char *const str = nullptr);
 
-        virtual signed char readInt8();     /**< Reads a byte. */
+        /**< Reads a byte. */
+        virtual signed char readInt8(const char *const str = nullptr);
 
-        virtual int16_t readInt16() = 0;    /**< Reads a short. */
+        /**< Reads a short. */
+        virtual int16_t readInt16(const char *const str = nullptr) = 0;
 
-        virtual int readInt32() = 0;        /**< Reads a long. */
+        /**< Reads a long. */
+        virtual int readInt32(const char *const str = nullptr) = 0;
 
         /**
          * Reads a special 3 byte block used by eAthena, containing x and y
@@ -72,7 +76,8 @@ class MessageIn notfinal
          */
         virtual void readCoordinates(uint16_t &restrict x,
                                      uint16_t &restrict y,
-                                     uint8_t &restrict direction);
+                                     uint8_t &restrict direction,
+                                     const char *const str = nullptr);
 
         /**
          * Reads a special 5 byte block used by eAthena, containing a source
@@ -81,23 +86,28 @@ class MessageIn notfinal
         virtual void readCoordinatePair(uint16_t &restrict srcX,
                                         uint16_t &restrict srcY,
                                         uint16_t &restrict dstX,
-                                        uint16_t &restrict dstY);
+                                        uint16_t &restrict dstY,
+                                        const char *const str = nullptr);
 
         /**
          * Skips a given number of bytes.
          */
-        virtual void skip(const unsigned int length);
+        virtual void skip(const unsigned int length,
+                          const char *const str = nullptr);
 
         /**
          * Reads a string. If a length is not given (-1), it is assumed
          * that the length of the string is stored in a short at the
          * start of the string.
          */
-        virtual std::string readString(int length = -1);
+        virtual std::string readString(int length = -1,
+                                       const char *const dstr = nullptr);
 
-        virtual std::string readRawString(int length);
+        virtual std::string readRawString(int length,
+                                          const char *const dstr = nullptr);
 
-        unsigned char *readBytes(int length);
+        unsigned char *readBytes(int length,
+                                 const char *const dstr = nullptr);
 
         virtual ~MessageIn()
         { }
