@@ -310,6 +310,7 @@ impHandler(heal)
                     localPlayer, 10, ActorType::PLAYER, true);
                 if (target)
                     localPlayer->setTarget(target);
+                actorManager->healTarget();
             }
         }
         else
