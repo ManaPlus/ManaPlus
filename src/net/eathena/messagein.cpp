@@ -43,7 +43,7 @@ MessageIn::MessageIn(const char *const data, const unsigned int length) :
 void MessageIn::postInit()
 {
     // Read the message ID
-    mId = readInt16();
+    mId = readInt16("packet id");
 }
 
 int16_t MessageIn::readInt16(const char *const str)
