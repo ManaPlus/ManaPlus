@@ -226,12 +226,11 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
                                      const int hairstyle, const int hairColor,
                                      const unsigned char race A_UNUSED,
                                      const unsigned char look A_UNUSED,
-                                     const std::vector<int> &stats) const
+                                     const std::vector<int> &stats A_UNUSED)
+                                     const
 {
     MessageOut outMsg(CMSG_CHAR_CREATE);
     outMsg.writeString(name, 24);
-    for (int i = 0; i < 6; i++)
-        outMsg.writeInt8(static_cast<unsigned char>(stats[i]));
 
     outMsg.writeInt8(static_cast<unsigned char>(slot));
     outMsg.writeInt16(static_cast<int16_t>(hairColor));

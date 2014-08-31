@@ -194,7 +194,7 @@
 #define CMSG_CHAR_PASSWORD_CHANGE    0x0061
 #define CMSG_CHAR_SERVER_CONNECT     0x0065
 #define CMSG_CHAR_SELECT             0x0066
-#define CMSG_CHAR_CREATE             0x0067
+#define CMSG_CHAR_CREATE             0x0970
 #define CMSG_CHAR_DELETE             0x0068
 
 #define CMSG_MAP_SERVER_CONNECT      0x0072
