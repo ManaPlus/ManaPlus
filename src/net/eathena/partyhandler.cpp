@@ -55,6 +55,7 @@ PartyHandler::PartyHandler() :
         SMSG_PARTY_UPDATE_HP,
         SMSG_PARTY_UPDATE_COORDS,
         SMSG_PARTY_MESSAGE,
+        SMSG_PARTY_INVITATION_STATS,
         0
     };
     handledMessages = _messages;
@@ -98,6 +99,9 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
             break;
         case SMSG_PARTY_MESSAGE:
             processPartyMessage(msg);
+            break;
+        case SMSG_PARTY_INVITATION_STATS:
+            processPartyInvitationStats(msg);
             break;
 
         default:
@@ -202,6 +206,11 @@ void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
     MessageOut outMsg(CMSG_PARTY_SETTINGS);
     outMsg.writeInt16(static_cast<int16_t>(mShareExp));
     outMsg.writeInt16(static_cast<int16_t>(share));
+}
+
+void PartyHandler::processPartyInvitationStats(Net::MessageIn &msg)
+{
+    msg.readUInt8("allow party");
 }
 
 }  // namespace EAthena
