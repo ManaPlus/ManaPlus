@@ -58,6 +58,9 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         static void processRaw(MessageOut &restrict outMsg,
                                const std::string &restrict line);
+
+    protected:
+        void processChat(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

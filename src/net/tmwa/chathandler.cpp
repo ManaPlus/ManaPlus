@@ -22,10 +22,18 @@
 
 #include "net/tmwa/chathandler.h"
 
+#include "actormanager.h"
+
 #include "being/localplayer.h"
+
+#include "gui/widgets/tabs/chattab.h"
+
+#include "gui/windows/chatwindow.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
+
+#include "utils/stringutils.h"
 
 #include <string>
 
@@ -279,6 +287,80 @@ void ChatHandler::unIgnoreAll() const
         return;
     MessageOut outMsg(CMSG_IGNORE_ALL);
     outMsg.writeInt8(1);
+}
+
+void ChatHandler::processChat(Net::MessageIn &msg)
+{
+    BLOCK_START("ChatHandler::processChat")
+    const bool channels = msg.getId() == SMSG_PLAYER_CHAT2;
+    const bool normalChat = msg.getId() == SMSG_PLAYER_CHAT
+        || msg.getId() == SMSG_PLAYER_CHAT2;
+    int chatMsgLength = msg.readInt16() - 4;
+    std::string channel;
+    if (channels)
+    {
+        chatMsgLength -= 3;
+        channel = msg.readUInt8();
+        channel += msg.readUInt8();
+        channel += msg.readUInt8();
+    }
+    if (chatMsgLength <= 0)
+    {
+        BLOCK_END("ChatHandler::processChat")
+        return;
+    }
+
+    std::string chatMsg = msg.readRawString(chatMsgLength);
+    const size_t pos = chatMsg.find(" : ", 0);
+
+    if (normalChat)
+    {
+        bool allow(true);
+        if (chatWindow)
+        {
+            allow = chatWindow->resortChatLog(chatMsg, ChatMsgType::BY_PLAYER,
+                channel, false, true);
+        }
+
+        if (channel.empty())
+        {
+            const std::string senseStr("You sense the following: ");
+            if (actorManager && !chatMsg.find(senseStr))
+            {
+                actorManager->parseLevels(
+                    chatMsg.substr(senseStr.size()));
+            }
+        }
+
+        if (pos == std::string::npos && !mShowMotd
+            && mSkipping && channel.empty())
+        {
+            // skip motd from "new" tmw server
+            if (mMotdTime == -1)
+                mMotdTime = cur_time + 1;
+            else if (mMotdTime == cur_time || mMotdTime < cur_time)
+                mSkipping = false;
+            BLOCK_END("ChatHandler::processChat")
+            return;
+        }
+
+        if (pos != std::string::npos)
+            chatMsg.erase(0, pos + 3);
+
+        trim(chatMsg);
+
+        if (localPlayer)
+        {
+            if ((chatWindow || mShowMotd) && allow)
+                localPlayer->setSpeech(chatMsg, channel);
+        }
+    }
+    else if (localChatTab)
+    {
+        if (chatWindow)
+            chatWindow->addGlobalMessage(chatMsg);
+    }
+    BLOCK_END("ChatHandler::processChat")
 }
 
 }  // namespace TmwAthena

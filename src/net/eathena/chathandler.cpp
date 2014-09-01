@@ -24,8 +24,16 @@
 
 #include "being/localplayer.h"
 
+#include "gui/chatconsts.h"
+
+#include "gui/widgets/tabs/chattab.h"
+
+#include "gui/windows/chatwindow.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+
+#include "utils/stringutils.h"
 
 #include <string>
 
@@ -248,6 +256,50 @@ void ChatHandler::unIgnoreAll() const
 {
     MessageOut outMsg(CMSG_IGNORE_ALL);
     outMsg.writeInt8(1);
+}
+
+void ChatHandler::processChat(Net::MessageIn &msg)
+{
+    BLOCK_START("ChatHandler::processChat")
+    const bool normalChat = msg.getId() == SMSG_PLAYER_CHAT;
+    int chatMsgLength = msg.readInt16() - 4;
+    if (chatMsgLength <= 0)
+    {
+        BLOCK_END("ChatHandler::processChat")
+        return;
+    }
+
+    std::string chatMsg = msg.readRawString(chatMsgLength);
+    const size_t pos = chatMsg.find(" : ", 0);
+
+    if (normalChat)
+    {
+        bool allow(true);
+        if (chatWindow)
+        {
+            allow = chatWindow->resortChatLog(chatMsg,
+                ChatMsgType::BY_PLAYER,
+                GENERAL_CHANNEL,
+                false, true);
+        }
+
+        if (pos != std::string::npos)
+            chatMsg.erase(0, pos + 3);
+
+        trim(chatMsg);
+
+        if (localPlayer)
+        {
+            if (chatWindow || mShowMotd)
+                localPlayer->setSpeech(chatMsg, GENERAL_CHANNEL);
+        }
+    }
+    else if (localChatTab)
+    {
+        if (chatWindow)
+            chatWindow->addGlobalMessage(chatMsg);
+    }
+    BLOCK_END("ChatHandler::processChat")
 }
 
 }  // namespace EAthena

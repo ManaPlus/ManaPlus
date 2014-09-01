@@ -54,8 +54,6 @@ class ChatHandler notfinal : public Net::ChatHandler
 
         virtual void processBeingChat(Net::MessageIn &msg) const;
 
-        virtual void processChat(Net::MessageIn &msg);
-
         virtual void processMVP(Net::MessageIn &msg) const;
 
         virtual void processIgnoreAllResponse(Net::MessageIn &msg) const;
