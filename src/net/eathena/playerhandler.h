@@ -59,6 +59,9 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
         void requestOnlineList() const override final;
         void respawn() const override final;
+
+    protected:
+        void processPlayerStatUpdate5(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

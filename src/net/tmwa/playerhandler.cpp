@@ -29,6 +29,8 @@
 #include "being/attributes.h"
 #include "being/beingflag.h"
 
+#include "gui/windows/statuswindow.h"
+
 #include "net/net.h"
 
 #include "net/tmwa/attrs.h"
@@ -335,6 +337,80 @@ void PlayerHandler::processMapMusic(Net::MessageIn &msg)
     Map *const map = viewport->getMap();
     if (map)
         map->setMusicFile(music);
+}
+
+void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
+{
+    BLOCK_START("PlayerHandler::processPlayerStatUpdate5")
+    PlayerInfo::setAttribute(Attributes::CHAR_POINTS, msg.readInt16());
+
+    unsigned int val = msg.readUInt8();
+    PlayerInfo::setStatBase(STR, val);
+    if (statusWindow)
+        statusWindow->setPointsNeeded(STR, msg.readUInt8());
+    else
+        msg.readUInt8();
+
+    val = msg.readUInt8();
+    PlayerInfo::setStatBase(AGI, val);
+    if (statusWindow)
+        statusWindow->setPointsNeeded(AGI, msg.readUInt8());
+    else
+        msg.readUInt8();
+
+    val = msg.readUInt8();
+    PlayerInfo::setStatBase(VIT, val);
+    if (statusWindow)
+        statusWindow->setPointsNeeded(VIT, msg.readUInt8());
+    else
+        msg.readUInt8();
+
+    val = msg.readUInt8();
+    PlayerInfo::setStatBase(INT, val);
+    if (statusWindow)
+        statusWindow->setPointsNeeded(INT, msg.readUInt8());
+    else
+        msg.readUInt8();
+
+    val = msg.readUInt8();
+    PlayerInfo::setStatBase(DEX, val);
+    if (statusWindow)
+        statusWindow->setPointsNeeded(DEX, msg.readUInt8());
+    else
+        msg.readUInt8();
+
+    val = msg.readUInt8();
+    PlayerInfo::setStatBase(LUK, val);
+    if (statusWindow)
+        statusWindow->setPointsNeeded(LUK, msg.readUInt8());
+    else
+        msg.readUInt8();
+
+    PlayerInfo::setStatBase(ATK, msg.readInt16(), false);
+    PlayerInfo::setStatMod(ATK, msg.readInt16());
+    PlayerInfo::updateAttrs();
+
+    val = msg.readInt16();
+    PlayerInfo::setStatBase(MATK, val, false);
+
+    val = msg.readInt16();
+    PlayerInfo::setStatMod(MATK, val);
+
+    PlayerInfo::setStatBase(DEF, msg.readInt16(), false);
+    PlayerInfo::setStatMod(DEF, msg.readInt16());
+
+    PlayerInfo::setStatBase(MDEF, msg.readInt16(), false);
+    PlayerInfo::setStatMod(MDEF, msg.readInt16());
+
+    PlayerInfo::setStatBase(HIT, msg.readInt16());
+
+    PlayerInfo::setStatBase(FLEE, msg.readInt16(), false);
+    PlayerInfo::setStatMod(FLEE, msg.readInt16());
+
+    PlayerInfo::setStatBase(CRIT, msg.readInt16());
+
+    msg.readInt16();  // manner
+    BLOCK_END("PlayerHandler::processPlayerStatUpdate5")
 }
 
 }  // namespace TmwAthena

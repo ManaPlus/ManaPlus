@@ -69,8 +69,6 @@ class PlayerHandler notfinal : public Net::PlayerHandler
 
         static void processPlayerStatUpdate4(Net::MessageIn &msg);
 
-        static void processPlayerStatUpdate5(Net::MessageIn &msg);
-
         static void processPlayerStatUpdate6(Net::MessageIn &msg);
 
         static void processPlayerArrowMessage(Net::MessageIn &msg);

@@ -59,6 +59,9 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         static void processMapMusic(Net::MessageIn &msg);
 
         void respawn() const override final;
+
+    protected:
+        void processPlayerStatUpdate5(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena
