@@ -186,8 +186,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg) const
     msg.readInt8("y size");
     logger->log("Protocol: Player start position: "
         "(%d, %d), Direction: %d",
-        x, y, direction,
-        "player position and direction");
+        x, y, direction);
     msg.readInt16("font");
 
     mLastHost &= 0xffffff;
