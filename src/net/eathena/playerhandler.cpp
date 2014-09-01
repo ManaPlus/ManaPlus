@@ -241,7 +241,7 @@ void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerShowEquip(Net::MessageIn &msg)
 {
-    msg.readUInt8();  // show equip
+    msg.readUInt8("show equip");  // 1 mean need open "equipment" window
 }
 
 void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
