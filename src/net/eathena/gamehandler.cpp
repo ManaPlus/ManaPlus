@@ -69,6 +69,7 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_SERVER_PING:
+            processServerTick(msg);
             // We ignore this for now
             // int tick = msg.readInt32()
             break;
@@ -198,6 +199,11 @@ void GameHandler::processMapLogin(Net::MessageIn &msg) const
     client->setState(STATE_GAME);
     if (localPlayer)
         localPlayer->setTileCoords(x, y);
+}
+
+void GameHandler::processServerTick(Net::MessageIn &msg) const
+{
+    msg.readInt32("tick");
 }
 
 }  // namespace EAthena

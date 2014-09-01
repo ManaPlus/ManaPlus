@@ -60,6 +60,8 @@ class GameHandler final : public MessageHandler, public Ea::GameHandler
 
     protected:
         void processMapLogin(Net::MessageIn &msg) const;
+
+        void processServerTick(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena
