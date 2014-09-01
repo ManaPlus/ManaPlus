@@ -210,34 +210,36 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
     Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
 
-    msg.readInt16();  // length
+    msg.readInt16("len");
     Equipment *const equipment = PlayerInfo::getEquipment();
     if (equipment && !equipment->getBackend())
     {   // look like SMSG_PLAYER_INVENTORY was not received
         mEquips.clear();
         equipment->setBackend(&mEquips);
     }
-    const int number = (msg.getLength() - 4) / 20;
+    const int number = (msg.getLength() - 4) / 31;
 
     for (int loop = 0; loop < number; loop++)
     {
-        const int index = msg.readInt16() - INVENTORY_OFFSET;
-        const int itemId = msg.readInt16();
-        const uint8_t itemType = msg.readUInt8();  // type
-        uint8_t identified = msg.readUInt8();      // identify flag
+        const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+        const int itemId = msg.readInt16("item id");
+        const uint8_t itemType = msg.readUInt8("item type");
+//        uint8_t identified = msg.readUInt8();      // identify flag
 
-        msg.readInt16();  // equip type
-        const int equipType = msg.readInt16();
-        msg.readUInt8();  // attribute
-        const uint8_t refine = msg.readUInt8();
-        msg.skip(8);  // card
+        msg.readInt32("location");
+        msg.readInt32("wear state");
+        const uint8_t refine = static_cast<uint8_t>(msg.readInt8("refine"));
+        msg.readInt16("cart0");
+        msg.readInt16("cart1");
+        msg.readInt16("cart2");
+        msg.readInt16("cart3");
+        msg.readInt32("hire expire date (?)");
+        const int equipType = msg.readInt16("equip type");
+        msg.readInt16("item sprite number");
+        const uint8_t flags = static_cast<uint8_t>(msg.readInt8("flags"));
 
-        if (mDebugInventory)
-        {
-            logger->log("Index: %d, ID: %d, Type: %d, Identified: %d",
-                        index, itemId, itemType, identified);
-        }
-
+        // need get actual identify flag
+        uint8_t identified = 1;
         if (inventory)
         {
             inventory->setItem(index, itemId, 1, refine,
