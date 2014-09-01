@@ -57,6 +57,7 @@ ChatHandler::ChatHandler() :
         SMSG_GM_CHAT,
         SMSG_MVP,  // MVP
         SMSG_IGNORE_ALL_RESPONSE,
+        SMSG_COLOR_MESSAGE,
         0
     };
     handledMessages = _messages;
@@ -83,6 +84,7 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_CHAT:
         case SMSG_GM_CHAT:
+        case SMSG_COLOR_MESSAGE:
             processChat(msg);
             break;
 
@@ -262,7 +264,14 @@ void ChatHandler::processChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")
     const bool normalChat = msg.getId() == SMSG_PLAYER_CHAT;
-    int chatMsgLength = msg.readInt16() - 4;
+    const bool coloredChat = msg.getId() == SMSG_COLOR_MESSAGE;
+    int chatMsgLength = msg.readInt16("len") - 4;
+    if (coloredChat)
+    {
+        msg.readInt32("unused");
+        msg.readInt32("chat color");
+        chatMsgLength -= 8;
+    }
     if (chatMsgLength <= 0)
     {
         BLOCK_END("ChatHandler::processChat")
