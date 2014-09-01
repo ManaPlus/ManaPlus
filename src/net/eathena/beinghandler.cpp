@@ -91,6 +91,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_IP_RESPONSE,
         SMSG_PVP_MAP_MODE,
         SMSG_PVP_SET,
+        SMSG_MAP_TYPE_PROPERTY2,
         0
     };
     handledMessages = _messages;
@@ -212,6 +213,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PVP_SET:
             processPvpSet(msg);
+            break;
+
+        case SMSG_MAP_TYPE_PROPERTY2:
+            processMapTypeProperty(msg);
             break;
 
         default:
@@ -813,6 +818,13 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         (statusEffects >> 16) & 0xffffU));
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffffU));
+}
+
+void BeingHandler::processMapTypeProperty(Net::MessageIn &msg) const
+{
+    msg.readInt16("type");
+    // need get pvp and other flags from here
+    msg.readInt32("flags");
 }
 
 }  // namespace EAthena

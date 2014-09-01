@@ -298,6 +298,7 @@
 #define SMSG_BEING_IP_RESPONSE       0x020c
 #define SMSG_PVP_MAP_MODE            0x0199
 #define SMSG_PVP_SET                 0x019a
+#define SMSG_MAP_TYPE_PROPERTY2      0x099b
 #define CMSG_IGNORE_ALL              0x00d0
 #define SMSG_IGNORE_ALL_RESPONSE     0x00d2
 #define CMSG_ONLINE_LIST             0x0210
