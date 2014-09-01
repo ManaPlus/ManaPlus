@@ -42,8 +42,6 @@ class SkillHandler notfinal : public Net::SkillHandler
 
         A_DELETE_COPY(SkillHandler)
 
-        static void processPlayerSkills(Net::MessageIn &msg);
-
         static void processPlayerSkillUp(Net::MessageIn &msg);
 
         static void processSkillFailed(Net::MessageIn &msg);

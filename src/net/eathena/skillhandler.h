@@ -46,6 +46,9 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
                     const int x, const int y) const override final;
 
         void useMap(const int id, const std::string &map) const override final;
+
+    protected:
+        void processPlayerSkills(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

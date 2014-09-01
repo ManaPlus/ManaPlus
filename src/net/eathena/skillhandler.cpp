@@ -22,6 +22,10 @@
 
 #include "net/eathena/skillhandler.h"
 
+#include "being/playerinfo.h"
+
+#include "gui/windows/skilldialog.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -92,6 +96,36 @@ void SkillHandler::useMap(const int id, const std::string &map) const
     MessageOut outMsg(CMSG_SKILL_USE_MAP);
     outMsg.writeInt16(static_cast<int16_t>(id));
     outMsg.writeString(map, 16);
+}
+
+void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
+{
+    msg.readInt16();  // length
+    const int skillCount = (msg.getLength() - 4) / 37;
+    int updateSkill = 0;
+
+    for (int k = 0; k < skillCount; k++)
+    {
+        const int skillId = msg.readInt16();
+        msg.readInt16();  // target type
+        msg.skip(2);  // skill pool flags
+        const int level = msg.readInt16();
+        msg.readInt16();  // sp
+        const int range = msg.readInt16();
+        msg.skip(24);  // 0 unused
+        const int up = msg.readUInt8();
+        const int oldLevel = PlayerInfo::getSkillLevel(skillId);
+        if (oldLevel && oldLevel != level)
+            updateSkill = skillId;
+        PlayerInfo::setSkillLevel(skillId, level);
+        if (skillDialog)
+        {
+            if (!skillDialog->updateSkill(skillId, range, up))
+                skillDialog->addSkill(skillId, level, range, up);
+        }
+    }
+    if (updateSkill && skillDialog)
+        skillDialog->playUpdateEffect(updateSkill);
 }
 
 }  // namespace EAthena
