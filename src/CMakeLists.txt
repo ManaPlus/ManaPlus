@@ -1326,6 +1326,7 @@ SET(SRCS_EATHENA
     net/eathena/attrs.h
     net/eathena/beinghandler.cpp
     net/eathena/beinghandler.h
+    net/eathena/beingtype.h
     net/eathena/buysellhandler.cpp
     net/eathena/buysellhandler.h
     net/eathena/charserverhandler.cpp
