@@ -106,14 +106,13 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
 
     for (int k = 0; k < skillCount; k++)
     {
-        const int skillId = msg.readInt16();
-        msg.readInt16();  // target type
-        msg.skip(2);  // skill pool flags
-        const int level = msg.readInt16();
-        msg.readInt16();  // sp
-        const int range = msg.readInt16();
-        msg.skip(24);  // 0 unused
-        const int up = msg.readUInt8();
+        const int skillId = msg.readInt16("skill id");
+        msg.readInt32("inf");  // what is it?
+        const int level = msg.readInt16("skill level");
+        msg.readInt16("sp");
+        const int range = msg.readInt16("range");
+        msg.readString(24, "skill name");
+        const int up = msg.readUInt8("up flag");
         const int oldLevel = PlayerInfo::getSkillLevel(skillId);
         if (oldLevel && oldLevel != level)
             updateSkill = skillId;
