@@ -634,7 +634,10 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
     const bool visible = msg.getId() == SMSG_BEING_VISIBLE;
 
     if (visible)
-        msg.readUInt8("padding?");
+    {
+        const int len = msg.readInt16("len");
+        msg.readUInt8("object type");
+    }
 
     // Information about a being in range
     const int id = msg.readInt32("being id");
@@ -646,9 +649,9 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
     mSpawnId = 0;
     int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
+    // probably wrong effect usage
     uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (static_cast<uint16_t>(
-        msg.readInt16("option"))) << 16U;
+    msg.readInt32("option");
     const int16_t job = msg.readInt16("class");
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -710,31 +713,22 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         localPlayer->checkNewName(dstBeing);
 
     const int hairStyle = msg.readInt16("hair style");
-    const uint16_t weapon = msg.readInt16("weapon");
+    const uint32_t weapon = static_cast<uint32_t>(msg.readInt32("weapon"));
     const uint16_t headBottom = msg.readInt16("head bottom");
 
-    const uint16_t shield = msg.readInt16("shield");
+//    const uint16_t shield = msg.readInt16("shield");
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
     const int hairColor = msg.readInt16("hair color");
     const uint16_t shoes = msg.readInt16("shoes or clothes color?");
 
-    uint16_t gloves;
-    if (dstBeing->getType() == ActorType::MONSTER)
-    {
-        msg.readInt32("?");
-        msg.readInt32("?");
-        gloves = 0;
-    }
-    else
-    {
-        gloves = msg.readInt16("head dir / gloves");
-        msg.readInt32("guild");
-        msg.readInt16("guild emblem");
-    }
-
+    uint16_t gloves = msg.readInt16("head dir / gloves");
+    // may be use robe as gloves?
+    msg.readInt16("robe");
+    msg.readInt32("guild id");
+    msg.readInt16("guild emblem");
     msg.readInt16("manner");
-    dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
+    dstBeing->setStatusEffectBlock(32, msg.readInt32("opt3"));
     msg.readUInt8("karma");
     uint8_t gender = msg.readUInt8("gender");
 
@@ -751,8 +745,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         setSprite(dstBeing, SPRITE_SHOE, shoes);
         setSprite(dstBeing, SPRITE_GLOVES, gloves);
         setSprite(dstBeing, SPRITE_WEAPON, weapon, "", 1, true);
-        if (!mHideShield)
-            setSprite(dstBeing, SPRITE_SHIELD, shield);
+//        if (!mHideShield)
+//            setSprite(dstBeing, SPRITE_SHIELD, shield);
     }
     else if (dstBeing->getType() == ActorType::NPC)
     {
@@ -786,6 +780,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         uint8_t dir;
         uint16_t x, y;
         msg.readCoordinates(x, y, dir, "position");
+        msg.readInt8("xs");
+        msg.readInt8("ys");
         dstBeing->setTileCoords(x, y);
 
         if (job == 45 && socialWindow && outfitWindow)
@@ -805,9 +801,12 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         dstBeing->setDirection(dir);
     }
 
-    msg.readUInt8("unknown");
-    msg.readUInt8("action type?");
-    msg.readInt16("level");
+    msg.readUInt8("action type");
+
+    const int level = static_cast<int>(msg.readInt16("level"));
+    if (level)
+        dstBeing->setLevel(level);
+    msg.readInt16("font");
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
