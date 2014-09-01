@@ -47,9 +47,10 @@ MessageOut::MessageOut(const int16_t id A_UNUSED) :
 
 void MessageOut::writeInt8(const int8_t value, const char *const str)
 {
-    DEBUGLOG2("writeInt8: " + toStringPrint(static_cast<int>(value)), str);
     expand(1);
     mData[mPos] = value;
+    DEBUGLOG2("writeInt8: " + toStringPrint(static_cast<int>(value)),
+        mPos, str);
     mPos += 1;
     PacketCounters::incOutBytes(1);
 }
@@ -83,8 +84,8 @@ void MessageOut::writeString(const std::string &string,
             length - stringLength);
     }
 
+    DEBUGLOG2("writeString: " + string, mPos, str);
     mPos += length;
-    DEBUGLOG2("writeString: " + string, str);
     PacketCounters::incOutBytes(length);
 }
 
@@ -117,8 +118,8 @@ void MessageOut::writeStringNoLog(const std::string &string,
             length - stringLength);
     }
 
+    DEBUGLOG2("writeString: ***", mPos, str);
     mPos += length;
-    DEBUGLOG2("writeString: ***", str);
     PacketCounters::incOutBytes(length);
 }
 

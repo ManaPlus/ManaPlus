@@ -120,7 +120,9 @@ void Logger::dlog(const std::string &str)
         std::cout << timeStr.str() << str << std::endl;
 }
 
-void Logger::dlog2(const std::string &str, const char* const comment)
+void Logger::dlog2(const std::string &str,
+                   const int pos,
+                   const char* const comment)
 {
     if (!mDebugLog)
         return;
@@ -137,17 +139,41 @@ void Logger::dlog2(const std::string &str, const char* const comment)
     if (mLogFile.is_open())
     {
         if (comment)
-            mLogFile << timeStr.str() << str << ": " << comment << std::endl;
+        {
+            mLogFile << timeStr.str();
+            mLogFile.fill('0');
+            mLogFile.width(4);
+            mLogFile << pos << " ";
+            mLogFile << str << ": " << comment << std::endl;
+        }
         else
-            mLogFile << timeStr.str() << str << std::endl;
+        {
+            mLogFile << timeStr.str();
+            mLogFile.fill('0');
+            mLogFile.width(4);
+            mLogFile << pos << " ";
+            mLogFile << str << std::endl;
+        }
     }
 
     if (mLogToStandardOut)
     {
         if (comment)
-            std::cout << timeStr.str() << str << ": " << comment << std::endl;
+        {
+            std::cout << timeStr.str();
+            std::cout.fill('0');
+            std::cout.width(4);
+            std::cout << pos << " ";
+            std::cout << str << ": " << comment << std::endl;
+        }
         else
-            std::cout << timeStr.str() << str << std::endl;
+        {
+            std::cout << timeStr.str();
+            std::cout.fill('0');
+            std::cout.width(4);
+            std::cout << pos << " ";
+            std::cout << str << std::endl;
+        }
     }
 }
 #endif

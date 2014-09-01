@@ -39,9 +39,9 @@
 #endif
 
 #ifdef ENABLEDEBUGLOG
-#define DEBUGLOG2(msg, comment) \
+#define DEBUGLOG2(msg, pos, comment) \
     if (logger) \
-        logger->dlog2(msg, comment)
+        logger->dlog2(msg, pos, comment)
 #else
 #define DEBUGLOG2(msg, comment) {}
 #endif
@@ -119,7 +119,9 @@ class Logger final
          */
         void dlog(const std::string &str);
 
-        void dlog2(const std::string &str, const char* const comment);
+        void dlog2(const std::string &str,
+            const int pos,
+            const char* const comment);
 #endif
 
         void setDebugLog(const bool n)

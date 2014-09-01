@@ -57,7 +57,6 @@ void MessageOut::expand(const size_t bytes)
 
 void MessageOut::writeInt16(const int16_t value, const char *const str)
 {
-    DEBUGLOG2("writeInt16: " + toStringPrint(static_cast<int>(value)), str);
     expand(2);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int16_t swap = SDL_Swap16(value);
@@ -65,13 +64,15 @@ void MessageOut::writeInt16(const int16_t value, const char *const str)
 #else
     memcpy(mData + static_cast<size_t>(mPos), &value, sizeof(int16_t));
 #endif
+    DEBUGLOG2("writeInt16: " + toStringPrint(static_cast<int>(value)),
+        mPos, str);
     mPos += 2;
     PacketCounters::incOutBytes(2);
 }
 
 void MessageOut::writeInt32(const int32_t value, const char *const str)
 {
-    DEBUGLOG2("writeInt32: " + toStringPrint(value), str);
+    DEBUGLOG2("writeInt32: " + toStringPrint(value), mPos, str);
     expand(4);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int32_t swap = SDL_Swap32(value);
@@ -95,7 +96,7 @@ void MessageOut::writeCoordinates(const uint16_t x,
     DEBUGLOG2(strprintf("writeCoordinates: %u,%u %u",
         static_cast<unsigned>(x),
         static_cast<unsigned>(y),
-        static_cast<unsigned>(direction)), str);
+        static_cast<unsigned>(direction)), mPos, str);
     unsigned char *const data = reinterpret_cast<unsigned char*>(mData)
         + static_cast<size_t>(mPos);
     mNetwork->mOutSize += 3;
