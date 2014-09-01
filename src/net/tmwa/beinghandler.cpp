@@ -103,7 +103,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
 void BeingHandler::requestNameById(const int id) const
 {
     MessageOut outMsg(CMSG_NAME_REQUEST);
-    outMsg.writeInt32(id);  // readLong(2));
+    outMsg.writeInt32(id, "being id");
 }
 
 void BeingHandler::handleMessage(Net::MessageIn &msg)
@@ -259,14 +259,15 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
       * 16 bit value will be 0.
       */
 
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32());
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readInt32("being id"));
     if (!dstBeing)
     {
         BLOCK_END("BeingHandler::processBeingChangeLook")
         return;
     }
 
-    const uint8_t type = msg.readUInt8();
+    const uint8_t type = msg.readUInt8("type");
     int16_t id = 0;
     int id2 = 0;
     const std::string color;
@@ -274,14 +275,14 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
 
     if (!look2)
     {
-        id = static_cast<int16_t>(msg.readUInt8());
+        id = static_cast<int16_t>(msg.readUInt8("id"));
         id2 = 1;    // default color
     }
     else
     {        // SMSG_BEING_CHANGE_LOOKS2
-        id = msg.readInt16();
+        id = msg.readInt16("id1");
         if (type == 2 || serverVersion > 0)
-            id2 = msg.readInt16();
+            id2 = msg.readInt16("id2");
         else
             id2 = 1;
     }
@@ -401,9 +402,9 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
         return;
     }
 
-    const int len = msg.readInt16();
-    const int beingId = msg.readInt32();
-    const std::string str = msg.readString(len - 8);
+    const int len = msg.readInt16("len");
+    const int beingId = msg.readInt32("account ic");
+    const std::string str = msg.readString(len - 8, "name");
     Being *const dstBeing = actorManager->findBeing(beingId);
     if (dstBeing)
     {
@@ -464,13 +465,13 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg) const
     }
 
     // An update about a player, potentially including movement.
-    const int id = msg.readInt32();
-    const int16_t speed = msg.readInt16();
-    const uint16_t stunMode = msg.readInt16();  // opt1;
-    uint32_t statusEffects = msg.readInt16();   // opt2;
-    statusEffects |= (static_cast<uint32_t>(msg.readInt16()))
-        << 16;  // status.options; Aethyra uses this as misc2
-    const int16_t job = msg.readInt16();
+    const int id = msg.readInt32("account id");
+    const int16_t speed = msg.readInt16("speed");
+    const uint16_t stunMode = msg.readInt16("opt1");
+    uint32_t statusEffects = msg.readInt16("opt2");
+    statusEffects |= (static_cast<uint32_t>(msg.readInt16("options")))
+        << 16;
+    const int16_t job = msg.readInt16("job");
     int disguiseId = 0;
     if (id < 110000000 && job >= 1000)
         disguiseId = job;
@@ -514,29 +515,29 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg) const
 
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
 
-    const uint8_t hairStyle = msg.readUInt8();
-    const uint8_t look = msg.readUInt8();
+    const uint8_t hairStyle = msg.readUInt8("hair style");
+    const uint8_t look = msg.readUInt8("look");
     dstBeing->setSubtype(job, look);
-    const uint16_t weapon = msg.readInt16();
-    const uint16_t shield = msg.readInt16();
-    const uint16_t headBottom = msg.readInt16();
+    const uint16_t weapon = msg.readInt16("weapon");
+    const uint16_t shield = msg.readInt16("shield");
+    const uint16_t headBottom = msg.readInt16("head bottom");
 
     if (msgType == 3)
-        msg.readInt32();  // server tick
+        msg.readInt32("tick");
 
-    const uint16_t headTop = msg.readInt16();
-    const uint16_t headMid = msg.readInt16();
-    const uint8_t hairColor = msg.readUInt8();
-    msg.readUInt8();  // free
+    const uint16_t headTop = msg.readInt16("head top");
+    const uint16_t headMid = msg.readInt16("head mid");
+    const uint8_t hairColor = msg.readUInt8("hair color");
+    msg.readUInt8("unused");
 
     uint8_t colors[9];
-    colors[0] = msg.readUInt8();
-    colors[1] = msg.readUInt8();
-    colors[2] = msg.readUInt8();
+    colors[0] = msg.readUInt8("color 0");
+    colors[1] = msg.readUInt8("color 1");
+    colors[2] = msg.readUInt8("color 2");
 
-    msg.readUInt8();  // unused
+    msg.readUInt8("unused");
 
-    const int guild = msg.readInt32();  // guild
+    const int guild = msg.readInt32("guild");
 
     if (!guildManager || !GuildManager::getEnableGuildBot())
     {
@@ -546,13 +547,13 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg) const
             dstBeing->setGuild(Guild::getGuild(static_cast<int16_t>(guild)));
     }
 
-    msg.readInt16();  // emblem
-    msg.readInt16();  // manner
-    dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
-    msg.readUInt8();   // karma
+    msg.readInt16("emblem");
+    msg.readInt16("manner");
+    dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
+    msg.readUInt8("karma");
     // reserving bit for future usage
     dstBeing->setGender(Being::intToGender(
-        static_cast<uint8_t>(msg.readUInt8() & 3)));
+        static_cast<uint8_t>(msg.readUInt8("gender") & 3)));
 
     if (!disguiseId)
     {
@@ -582,7 +583,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg) const
     if (msgType == 3)
     {
         uint16_t srcX, srcY, dstX, dstY;
-        msg.readCoordinatePair(srcX, srcY, dstX, dstY);
+        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "moving path");
 
         localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
 
@@ -612,21 +613,21 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg) const
     {
 //        uint8_t dir;
         uint16_t x, y;
-        msg.readCoordinates(x, y, dir);
+        msg.readCoordinates(x, y, dir, "position");
         dstBeing->setTileCoords(x, y);
         dstBeing->setDirection(dir);
 
         localPlayer->imitateDirection(dstBeing, dir);
     }
 
-    const uint16_t gmstatus = msg.readInt16();
+    const uint16_t gmstatus = msg.readInt16("gm status");
 
     if (gmstatus & 0x80)
         dstBeing->setGM(true);
 
     if (msgType == 1 || msgType == 2)
     {
-        const uint8_t type = msg.readUInt8();
+        const uint8_t type = msg.readUInt8("action type");
         switch (type)
         {
             case 0:
@@ -660,14 +661,14 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg) const
     }
     else if (msgType == 3)
     {
-        msg.readUInt8();  // unknown
+        msg.readUInt8("unused");
     }
 
-    const int level = static_cast<int>(msg.readUInt8());   // Lv
+    const int level = static_cast<int>(msg.readUInt8("level"));
     if (level)
         dstBeing->setLevel(level);
 
-    msg.readUInt8();  // unknown
+    msg.readUInt8("unused");
 
     if (dstBeing->getType() != ActorType::PLAYER
         || msgType != 3)
@@ -698,18 +699,19 @@ void BeingHandler::processBeingMove3(Net::MessageIn &msg)
     static const int16_t dirx[8] = {0, -1, -1, -1,  0,  1, 1, 1};
     static const int16_t diry[8] = {1,  1,  0, -1, -1, -1, 0, 1};
 
-    const int len = msg.readInt16() - 14;
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32());
+    const int len = msg.readInt16("len") - 14;
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readInt32("being id"));
     if (!dstBeing)
     {
         BLOCK_END("BeingHandler::processBeingMove3")
         return;
     }
-    const int16_t speed = msg.readInt16();
+    const int16_t speed = msg.readInt16("speed");
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
-    int16_t x = msg.readInt16();
-    int16_t y = msg.readInt16();
-    const unsigned char *moves = msg.readBytes(len);
+    int16_t x = msg.readInt16("x");
+    int16_t y = msg.readInt16("y");
+    const unsigned char *moves = msg.readBytes(len, "moving path");
     Path path;
     if (moves)
     {
@@ -746,17 +748,17 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
     int spawnId;
 
     // Information about a being in range
-    const int id = msg.readInt32();
+    const int id = msg.readInt32("being id");
     if (id == mSpawnId)
         spawnId = mSpawnId;
     else
         spawnId = 0;
     mSpawnId = 0;
     int16_t speed = msg.readInt16();
-    const uint16_t stunMode = msg.readInt16();  // opt1
-    uint32_t statusEffects = msg.readInt16();  // opt2
-    statusEffects |= (static_cast<uint32_t>(msg.readInt16())) << 16;  // option
-    const int16_t job = msg.readInt16();  // class
+    const uint16_t stunMode = msg.readInt16("opt1");
+    uint32_t statusEffects = msg.readInt16("opt2");
+    statusEffects |= (static_cast<uint32_t>(msg.readInt16("option"))) << 16;
+    const int16_t job = msg.readInt16("class");
     int disguiseId = 0;
     if (id == localPlayer->getId() && job >= 1000)
         disguiseId = job;
@@ -826,32 +828,32 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
     if (speed == 0)
         speed = 150;
 
-    const uint8_t hairStyle = msg.readUInt8();
-    const uint8_t look = msg.readUInt8();
+    const uint8_t hairStyle = msg.readUInt8("hair style");
+    const uint8_t look = msg.readUInt8("look");
     dstBeing->setSubtype(job, look);
     if (dstBeing->getType() == ActorType::MONSTER && localPlayer)
         localPlayer->checkNewName(dstBeing);
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
-    const uint16_t weapon = msg.readInt16();
-    const uint16_t headBottom = msg.readInt16();
+    const uint16_t weapon = msg.readInt16("weapon");
+    const uint16_t headBottom = msg.readInt16("head bottom");
 
     if (!visible)
-        msg.readInt32();  // server tick
+        msg.readInt32("tick");
 
-    const uint16_t shield = msg.readInt16();
-    const uint16_t headTop = msg.readInt16();
-    const uint16_t headMid = msg.readInt16();
-    const uint8_t hairColor = msg.readUInt8();
-    msg.readUInt8();  // free
-    const uint16_t shoes = msg.readInt16();  // clothes color
+    const uint16_t shield = msg.readInt16("shield");
+    const uint16_t headTop = msg.readInt16("head top");
+    const uint16_t headMid = msg.readInt16("head mid");
+    const uint8_t hairColor = msg.readUInt8("hair color");
+    msg.readUInt8("unused");
+    const uint16_t shoes = msg.readInt16("shoes / clothes color");
 
     uint16_t gloves;
     if (dstBeing->getType() == ActorType::MONSTER)
     {
         if (serverVersion > 0 || tmwServerVersion >= 0x0E0701)
         {
-            const int hp = msg.readInt32();
-            const int maxHP = msg.readInt32();
+            const int hp = msg.readInt32("hp");
+            const int maxHP = msg.readInt32("max hp");
             if (hp && maxHP)
             {
                 dstBeing->setMaxHP(maxHP);
@@ -862,31 +864,31 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         }
         else
         {
-            msg.readInt32();
-            msg.readInt32();
+            msg.readInt32("unused");
+            msg.readInt32("unused");
         }
         gloves = 0;
     }
     else
     {
-        gloves = msg.readInt16();  // head dir - "abused" as gloves
-        msg.readInt32();  // guild
-        msg.readInt16();  // guild emblem
+        gloves = msg.readInt16("gloves / head dir");
+        msg.readInt32("guild");
+        msg.readInt16("guild emblem");
     }
-//            logger->log("being guild: " + toString(guild));
 
-    msg.readInt16();  // manner
-    dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
+    msg.readInt16("manner");
+    dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
     if (serverVersion > 0 && dstBeing->getType() == ActorType::MONSTER)
     {
-        const int attackRange = static_cast<int>(msg.readUInt8());   // karma
+        const int attackRange = static_cast<int>(
+            msg.readUInt8("attack range (was karma)"));
         dstBeing->setAttackRange(attackRange);
     }
     else
     {
-        msg.readUInt8();   // karma
+        msg.readUInt8("karma");
     }
-    uint8_t gender = msg.readUInt8();
+    uint8_t gender = msg.readUInt8("gender");
 
     if (!disguiseId && dstBeing->getType() == ActorType::PLAYER)
     {
@@ -928,7 +930,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
     if (!visible)
     {
         uint16_t srcX, srcY, dstX, dstY;
-        msg.readCoordinatePair(srcX, srcY, dstX, dstY);
+        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
         if (!disguiseId)
         {
             dstBeing->setAction(BeingAction::STAND, 0);
@@ -941,7 +943,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
     {
         uint8_t dir;
         uint16_t x, y;
-        msg.readCoordinates(x, y, dir);
+        msg.readCoordinates(x, y, dir, "position");
         dstBeing->setTileCoords(x, y);
 
         if (job == 45 && socialWindow && outfitWindow)
@@ -961,9 +963,9 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         dstBeing->setDirection(dir);
     }
 
-    msg.readUInt8();   // unknown
-    msg.readUInt8();   // unknown
-    msg.readInt16();
+    msg.readUInt8("unknown");
+    msg.readUInt8("unknown");
+    msg.readInt16("unknown");
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
