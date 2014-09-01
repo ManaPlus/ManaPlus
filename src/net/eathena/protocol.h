@@ -307,7 +307,7 @@
 #define SMSG_UPDATE_HOST2            0x7534
 
 #define SMSG_MAP_ACCOUNT_ID          0x0283
-#define SMSG_PLAYER_SHORTCUTS        0x02b9
+#define SMSG_PLAYER_SHORTCUTS        0x07d9
 #define SMSG_PLAYER_SHOW_EQUIP       0x02da
 #define SMSG_NPC_CUTIN               0x01b3
 #define SMSG_NPC_VIEWPOINT           0x0144

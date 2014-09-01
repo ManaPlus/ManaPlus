@@ -230,9 +230,9 @@ void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
 {
     for (int f = 0; f < 27; f ++)
     {
-        msg.readUInt8();  // type 0: item, 1: skill
-        msg.readInt32();  // item or skill id
-        msg.readInt16();  // lvl
+        msg.readUInt8("type 0: item, 1: skill");
+        msg.readInt32("item or skill id");
+        msg.readInt16("skill level");
     }
 }
 
