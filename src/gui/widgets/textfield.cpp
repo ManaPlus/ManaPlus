@@ -707,9 +707,19 @@ void TextField::mousePressed(MouseEvent &event)
     {
         if (popupMenu)
         {
-            popupMenu->showTextFieldPopup(viewport->mMouseX,
-                viewport->mMouseY,
-                this);
+            if (viewport)
+            {
+                popupMenu->showTextFieldPopup(viewport->mMouseX,
+                    viewport->mMouseY,
+                    this);
+            }
+            else
+            {
+                int mouseX = 0;
+                int mouseY = 0;
+                Gui::getMouseState(&mouseX, &mouseY);
+                popupMenu->showTextFieldPopup(mouseX, mouseY, this);
+            }
         }
     }
     else if (event.getButton() == MouseButton::LEFT)
