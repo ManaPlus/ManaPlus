@@ -243,11 +243,11 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
                                      const
 {
     MessageOut outMsg(CMSG_CHAR_CREATE);
-    outMsg.writeString(name, 24);
+    outMsg.writeString(name, 24, "login");
 
-    outMsg.writeInt8(static_cast<unsigned char>(slot));
-    outMsg.writeInt16(static_cast<int16_t>(hairColor));
-    outMsg.writeInt16(static_cast<int16_t>(hairstyle));
+    outMsg.writeInt8(static_cast<unsigned char>(slot), "slot");
+    outMsg.writeInt16(static_cast<int16_t>(hairColor), "hair color");
+    outMsg.writeInt16(static_cast<int16_t>(hairstyle), "hair style");
 }
 
 void CharServerHandler::deleteCharacter(Net::Character *const character)
@@ -258,15 +258,15 @@ void CharServerHandler::deleteCharacter(Net::Character *const character)
     mSelectedCharacter = character;
 
     MessageOut outMsg(CMSG_CHAR_DELETE);
-    outMsg.writeInt32(mSelectedCharacter->dummy->getId());
-    outMsg.writeString("a@a.com", 40);
+    outMsg.writeInt32(mSelectedCharacter->dummy->getId(), "id?");
+    outMsg.writeString("a@a.com", 40, "email");
 }
 
 void CharServerHandler::switchCharacter() const
 {
     // This is really a map-server packet
     MessageOut outMsg(CMSG_PLAYER_RESTART);
-    outMsg.writeInt8(1);
+    outMsg.writeInt8(1, "flag");
 }
 
 void CharServerHandler::connect()
@@ -280,11 +280,11 @@ void CharServerHandler::connect()
     mNetwork->disconnect();
     mNetwork->connect(charServer);
     MessageOut outMsg(CMSG_CHAR_SERVER_CONNECT);
-    outMsg.writeInt32(token.account_ID);
-    outMsg.writeInt32(token.session_ID1);
-    outMsg.writeInt32(token.session_ID2);
-    outMsg.writeInt16(CLIENT_PROTOCOL_VERSION);
-    outMsg.writeInt8(Being::genderToInt(token.sex));
+    outMsg.writeInt32(token.account_ID, "account id");
+    outMsg.writeInt32(token.session_ID1, "session id1");
+    outMsg.writeInt32(token.session_ID2, "session id2");
+    outMsg.writeInt16(CLIENT_PROTOCOL_VERSION, "client protocol version");
+    outMsg.writeInt8(Being::genderToInt(token.sex), "gender");
 
     // We get 4 useless bytes before the real answer comes in (what are these?)
     mNetwork->skip(4);
@@ -327,7 +327,6 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg)
     Network *const network = mNetwork;
     ServerInfo &server = mapServer;
     BLOCK_START("CharServerHandler::processCharMapInfo")
-//    msg.skip(4); // CharID, must be the same as localPlayer->charID
     PlayerInfo::setCharId(msg.readInt32("char id"));
     GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
     gh->setMap(msg.readString(16, "map name"));
@@ -368,11 +367,11 @@ void CharServerHandler::processChangeMapServer(Net::MessageIn &msg)
         BLOCK_END("CharServerHandler::processChangeMapServer")
         return;
     }
-    gh->setMap(msg.readString(16));
-    const int x = msg.readInt16();
-    const int y = msg.readInt16();
-    server.hostname = ipToString(msg.readInt32());
-    server.port = msg.readInt16();
+    gh->setMap(msg.readString(16, "map name"));
+    const int x = msg.readInt16("x");
+    const int y = msg.readInt16("y");
+    server.hostname = ipToString(msg.readInt32("host"));
+    server.port = msg.readInt16("port");
 
     network->disconnect();
     client->setState(STATE_CHANGE_MAP);

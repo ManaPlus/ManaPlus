@@ -132,86 +132,96 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     const Token &token =
         static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
 
-    LocalPlayer *const tempPlayer = new LocalPlayer(msg.readInt32(), 0);
+    LocalPlayer *const tempPlayer = new LocalPlayer(
+        msg.readInt32("account id"), 0);
     tempPlayer->setGender(token.sex);
 
     PlayerInfoBackend &data = character->data;
-    data.mAttributes[Attributes::EXP] = msg.readInt32();
-    data.mAttributes[Attributes::MONEY] = msg.readInt32();
+    data.mAttributes[Attributes::EXP] = msg.readInt32("exp");
+    data.mAttributes[Attributes::MONEY] = msg.readInt32("money");
     Stat &jobStat = data.mStats[static_cast<size_t>(JOB)];
-    jobStat.exp = msg.readInt32();
+    jobStat.exp = msg.readInt32("job");
 
-    const int temp = msg.readInt32();
+    const int temp = msg.readInt32("job level");
     jobStat.base = temp;
     jobStat.mod = temp;
 
-    const int shoes = msg.readInt16();
-    const int gloves = msg.readInt16();
-    const int cape = msg.readInt16();
-    const int misc1 = msg.readInt16();
+    const int shoes = msg.readInt16("shoes");
+    const int gloves = msg.readInt16("gloves");
+    const int cape = msg.readInt16("cape");
+    const int misc1 = msg.readInt16("misc1");
 
-    msg.readInt32();                       // option
-    msg.readInt32();                       // karma
-    msg.readInt32();                       // manner
-    msg.readInt16();                       // character points left
+    msg.readInt32("option");
+    msg.readInt32("karma");
+    msg.readInt32("manner");
+    msg.readInt16("character points left");
 
-    data.mAttributes[Attributes::HP] = msg.readInt16();
-    data.mAttributes[Attributes::MAX_HP] = msg.readInt16();
-    data.mAttributes[Attributes::MP] = msg.readInt16();
-    data.mAttributes[Attributes::MAX_MP] = msg.readInt16();
+    data.mAttributes[Attributes::HP] = msg.readInt16("hp");
+    data.mAttributes[Attributes::MAX_HP] = msg.readInt16("max hp");
+    data.mAttributes[Attributes::MP] = msg.readInt16("mp");
+    data.mAttributes[Attributes::MAX_MP] = msg.readInt16("max mp");
 
-    msg.readInt16();                           // speed
-    const uint16_t race = msg.readInt16();          // class (used for race)
-    const uint8_t hairStyle = msg.readUInt8();
-    const uint8_t look = msg.readUInt8();
+    msg.readInt16("speed");
+    const uint16_t race = msg.readInt16("class");
+    const uint8_t hairStyle = msg.readUInt8("hair style");
+    const uint8_t look = msg.readUInt8("look");
     tempPlayer->setSubtype(race, look);
-    const uint16_t weapon = msg.readInt16();  // unused on server. need use?
+    const uint16_t weapon = msg.readInt16("weapon");
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
 
-    data.mAttributes[Attributes::LEVEL] = msg.readInt16();
+    data.mAttributes[Attributes::LEVEL] = msg.readInt16("level");
 
-    msg.readInt16();  // skill point
-    const int bottomClothes = msg.readInt16();
-    const int shield = msg.readInt16();
+    msg.readInt16("skill point");
+    const int bottomClothes = msg.readInt16("bottom clothes");
+    const int shield = msg.readInt16("shield");
 
-    const int hat = msg.readInt16();  // head option top
-    const int topClothes = msg.readInt16();
+    const int hat = msg.readInt16("hat");
+    const int topClothes = msg.readInt16("top clothes");
 
-    const uint8_t hairColor = msg.readUInt8();
-    msg.readUInt8();  // free
+    const uint8_t hairColor = msg.readUInt8("hair color");
+    msg.readUInt8("unused");
     tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,
         ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
     tempPlayer->setHairColor(static_cast<unsigned char>(hairColor));
 
-    const int misc2 = msg.readInt16();
-    tempPlayer->setName(msg.readString(24));
+    const int misc2 = msg.readInt16("misc2");
+    tempPlayer->setName(msg.readString(24, "name"));
 
     character->dummy = tempPlayer;
 
     for (int i = 0; i < 6; i++)
-        character->data.mStats[i + STR].base = msg.readUInt8();
+        character->data.mStats[i + STR].base = msg.readUInt8("stat");
 
     if (withColors)
     {
-        tempPlayer->setSprite(SPRITE_SHOE, shoes, "", msg.readUInt8());
-        tempPlayer->setSprite(SPRITE_GLOVES, gloves, "", msg.readUInt8());
-        tempPlayer->setSprite(SPRITE_CAPE, cape, "", msg.readUInt8());
-        tempPlayer->setSprite(SPRITE_MISC1, misc1, "", msg.readUInt8());
+        tempPlayer->setSprite(SPRITE_SHOE, shoes, "",
+            msg.readUInt8("shoes color"));
+        tempPlayer->setSprite(SPRITE_GLOVES, gloves, "",
+            msg.readUInt8("gloves color"));
+        tempPlayer->setSprite(SPRITE_CAPE, cape, "",
+            msg.readUInt8("cape color"));
+        tempPlayer->setSprite(SPRITE_MISC1, misc1, "",
+            msg.readUInt8("misc1 color"));
         tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes,
-            "", msg.readUInt8());
+            "", msg.readUInt8("bottom clothes color"));
         // to avoid show error (error.xml) need remove this sprite
         if (!config.getBoolValue("hideShield"))
-            tempPlayer->setSprite(SPRITE_SHIELD, shield, "", msg.readUInt8());
+        {
+            tempPlayer->setSprite(SPRITE_SHIELD, shield, "",
+                msg.readUInt8("shield color"));
+        }
         else
-            msg.readUInt8();
+        {
+            msg.readUInt8("shield color");
+        }
 
         tempPlayer->setSprite(SPRITE_HAT, hat, "",
-            msg.readUInt8());  // head option top
+            msg.readUInt8("head option top color"));
         tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes, "",
-            msg.readUInt8());
-        tempPlayer->setSprite(SPRITE_MISC2, misc2, "", msg.readUInt8());
-        msg.skip(5);
-        character->slot = msg.readUInt8();  // character slot
+            msg.readUInt8("top clothes color"));
+        tempPlayer->setSprite(SPRITE_MISC2, misc2, "",
+            msg.readUInt8("misc2 color"));
+        msg.skip(5, "unused");
     }
     else
     {
@@ -227,9 +237,9 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         tempPlayer->setSprite(SPRITE_HAT, hat);  // head option top
         tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
         tempPlayer->setSprite(SPRITE_MISC2, misc2);
-        character->slot = msg.readUInt8();  // character slot
     }
-    msg.readUInt8();  // unknown
+    character->slot = msg.readUInt8("slot");
+    msg.readUInt8("unused");
 }
 
 void CharServerHandler::chooseCharacter(Net::Character *const character)
@@ -241,7 +251,8 @@ void CharServerHandler::chooseCharacter(Net::Character *const character)
     mCharSelectDialog = nullptr;
 
     MessageOut outMsg(CMSG_CHAR_SELECT);
-    outMsg.writeInt8(static_cast<unsigned char>(mSelectedCharacter->slot));
+    outMsg.writeInt8(static_cast<unsigned char>(mSelectedCharacter->slot),
+        "slot");
 }
 
 void CharServerHandler::newCharacter(const std::string &name, const int slot,
@@ -253,20 +264,20 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
                                      const std::vector<int> &stats) const
 {
     MessageOut outMsg(CMSG_CHAR_CREATE);
-    outMsg.writeString(name, 24);
+    outMsg.writeString(name, 24, "name");
     for (int i = 0; i < 6; i++)
-        outMsg.writeInt8(static_cast<unsigned char>(stats[i]));
+        outMsg.writeInt8(static_cast<unsigned char>(stats[i]), "stat");
 
-    outMsg.writeInt8(static_cast<unsigned char>(slot));
-    outMsg.writeInt8(static_cast<int8_t>(hairColor));
-    outMsg.writeInt8(0);  // unused
-    outMsg.writeInt8(static_cast<int8_t>(hairstyle));
+    outMsg.writeInt8(static_cast<unsigned char>(slot), "slot");
+    outMsg.writeInt8(static_cast<int8_t>(hairColor), "hair color");
+    outMsg.writeInt8(0, "unused");
+    outMsg.writeInt8(static_cast<int8_t>(hairstyle), "hair style");
     if (serverVersion >= 9)
-        outMsg.writeInt8(look);
+        outMsg.writeInt8(look, "look");
     else
-        outMsg.writeInt8(0);
+        outMsg.writeInt8(0, "unused");
     if (serverVersion >= 2)
-        outMsg.writeInt8(race);
+        outMsg.writeInt8(race, "class");
 }
 
 void CharServerHandler::deleteCharacter(Net::Character *const character)
@@ -277,15 +288,15 @@ void CharServerHandler::deleteCharacter(Net::Character *const character)
     mSelectedCharacter = character;
 
     MessageOut outMsg(CMSG_CHAR_DELETE);
-    outMsg.writeInt32(mSelectedCharacter->dummy->getId());
-    outMsg.writeString("a@a.com", 40);
+    outMsg.writeInt32(mSelectedCharacter->dummy->getId(), "id?");
+    outMsg.writeString("a@a.com", 40, "email");
 }
 
 void CharServerHandler::switchCharacter() const
 {
     // This is really a map-server packet
     MessageOut outMsg(CMSG_PLAYER_RESTART);
-    outMsg.writeInt8(1);
+    outMsg.writeInt8(1, "flag");
 }
 
 void CharServerHandler::connect()
@@ -299,16 +310,21 @@ void CharServerHandler::connect()
     mNetwork->disconnect();
     mNetwork->connect(charServer);
     MessageOut outMsg(CMSG_CHAR_SERVER_CONNECT);
-    outMsg.writeInt32(token.account_ID);
-    outMsg.writeInt32(token.session_ID1);
-    outMsg.writeInt32(token.session_ID2);
+    outMsg.writeInt32(token.account_ID, "account id");
+    outMsg.writeInt32(token.session_ID1, "session id1");
+    outMsg.writeInt32(token.session_ID2, "session id2");
     // [Fate] The next word is unused by the old char server, so we squeeze in
     //        mana client version information
     if (serverVersion > 0)
-        outMsg.writeInt16(CLIENT_PROTOCOL_VERSION);
+    {
+        outMsg.writeInt16(CLIENT_PROTOCOL_VERSION, "client protocol version");
+    }
     else
-        outMsg.writeInt16(CLIENT_TMW_PROTOCOL_VERSION);
-    outMsg.writeInt8(Being::genderToInt(token.sex));
+    {
+        outMsg.writeInt16(CLIENT_TMW_PROTOCOL_VERSION,
+            "client protocol version");
+    }
+    outMsg.writeInt8(Being::genderToInt(token.sex), "gender");
 
     // We get 4 useless bytes before the real answer comes in (what are these?)
     mNetwork->skip(4);
@@ -318,13 +334,13 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharLogin")
 
-    msg.skip(2);  // Length word
-    const int slots = msg.readInt16();
+    msg.skip(2, "len");
+    const int slots = msg.readInt16("slots");
     if (slots > 0 && slots < 30)
         loginData.characterSlots = static_cast<uint16_t>(slots);
 
-    const bool version = msg.readUInt8() == 1 && serverVersion > 0;
-    msg.skip(17);  // 0 Unused
+    const bool version = msg.readUInt8("version") == 1 && serverVersion > 0;
+    msg.skip(17, "unused");
 
     delete_all(mCharacters);
     mCharacters.clear();
@@ -357,20 +373,19 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg)
     Network *const network = mNetwork;
     ServerInfo &server = mapServer;
     BLOCK_START("CharServerHandler::processCharMapInfo")
-//    msg.skip(4); // CharID, must be the same as localPlayer->charID
-    PlayerInfo::setCharId(msg.readInt32());
+    PlayerInfo::setCharId(msg.readInt32("char id?"));
     GameHandler *const gh = static_cast<GameHandler*>(Net::getGameHandler());
-    gh->setMap(msg.readString(16));
+    gh->setMap(msg.readString(16, "map name"));
     if (config.getBoolValue("usePersistentIP") || settings.persistentIp)
     {
-        msg.readInt32();
+        msg.readInt32("ip address");
         server.hostname = settings.serverName;
     }
     else
     {
-        server.hostname = ipToString(msg.readInt32());
+        server.hostname = ipToString(msg.readInt32("ip address"));
     }
-    server.port = msg.readInt16();
+    server.port = msg.readInt16("port");
 
     // Prevent the selected local player from being deleted
     localPlayer = mSelectedCharacter->dummy;
@@ -398,11 +413,11 @@ void CharServerHandler::processChangeMapServer(Net::MessageIn &msg)
         BLOCK_END("CharServerHandler::processChangeMapServer")
         return;
     }
-    gh->setMap(msg.readString(16));
-    const int x = msg.readInt16();
-    const int y = msg.readInt16();
-    server.hostname = ipToString(msg.readInt32());
-    server.port = msg.readInt16();
+    gh->setMap(msg.readString(16, "map name"));
+    const int x = msg.readInt16("x");
+    const int y = msg.readInt16("y");
+    server.hostname = ipToString(msg.readInt32("ip address"));
+    server.port = msg.readInt16("port");
 
     network->disconnect();
     client->setState(STATE_CHANGE_MAP);
