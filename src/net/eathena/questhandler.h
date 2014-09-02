@@ -39,6 +39,8 @@ class QuestHandler final : public MessageHandler
         static void processAddQuest(Net::MessageIn &msg);
 
         static void processAddQuests(Net::MessageIn &msg);
+
+        static void processAddQuestsObjectives(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
