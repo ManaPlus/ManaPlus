@@ -26,10 +26,6 @@
 /*********************************
  * Packets from server to client *
  *********************************/
-#define SMSG_SERVER_VERSION_RESPONSE 0x7531
-
-#define CMSG_LOGIN_REGISTER          0x0064
-
 #define SMSG_SERVER_PING             0x007f /**< Contains server tick */
 #define SMSG_CONNECTION_PROBLEM      0x0081
 
@@ -102,7 +98,6 @@
 #define SMSG_BEING_ACTION            0x008a /**< Attack, sit, stand up, ... */
 #define SMSG_BEING_CHAT              0x008d /**< A being talks */
 #define SMSG_COLOR_MESSAGE           0x02c1
-#define CMSG_NAME_REQUEST            0x096a
 #define SMSG_BEING_NAME_RESPONSE     0x0095 /**< Has to be requested */
 #define SMSG_BEING_NAME_RESPONSE2    0x0220 /**< Has to be requested */
 #define SMSG_BEING_CHANGE_DIRECTION  0x009c
@@ -193,6 +188,9 @@
  *  Packets from client to server *
  **********************************/
 
+#define CMSG_LOGIN_REGISTER          0x0064
+#define CMSG_NAME_REQUEST            0x096a
+
 // Custom change password packet
 #define CMSG_CHAR_PASSWORD_CHANGE    0x0061
 #define CMSG_CHAR_SERVER_CONNECT     0x0065
@@ -206,28 +204,28 @@
 #define CMSG_MAP_LOADED              0x007d
 #define CMSG_CLIENT_QUIT             0x018A
 
-#define CMSG_CHAT_MESSAGE            0x008c
+#define CMSG_CHAT_MESSAGE            0x00f3
 #define CMSG_CHAT_WHISPER            0x0096
 #define CMSG_CHAT_ANNOUNCE           0x0099
 #define CMSG_CHAT_WHO                0x00c1
 
 #define CMSG_SKILL_LEVELUP_REQUEST   0x0112
 #define CMSG_STAT_UPDATE_REQUEST     0x00bb
-#define CMSG_SKILL_USE_BEING         0x0113
-#define CMSG_SKILL_USE_POSITION      0x0116
+#define CMSG_SKILL_USE_BEING         0x083c
+#define CMSG_SKILL_USE_POSITION      0x0438
 // Variant of 0x116 with 80 char string at end (unsure of use)
-#define CMSG_SKILL_USE_POSITION_MORE 0x0190
+#define CMSG_SKILL_USE_POSITION_MORE 0x0366
 #define CMSG_SKILL_USE_MAP           0x011b
 
-#define CMSG_PLAYER_INVENTORY_USE    0x00a7
-#define CMSG_PLAYER_INVENTORY_DROP   0x00a2
+#define CMSG_PLAYER_INVENTORY_USE    0x0439
+#define CMSG_PLAYER_INVENTORY_DROP   0x0362
 #define CMSG_PLAYER_EQUIP            0x00a9
 #define CMSG_PLAYER_UNEQUIP          0x00ab
 
-#define CMSG_ITEM_PICKUP             0x009f
-#define CMSG_PLAYER_CHANGE_DIR       0x009b
-#define CMSG_PLAYER_CHANGE_DEST      0x0085
-#define CMSG_PLAYER_CHANGE_ACT       0x0089
+#define CMSG_ITEM_PICKUP             0x07e4
+#define CMSG_PLAYER_CHANGE_DIR       0x0202
+#define CMSG_PLAYER_CHANGE_DEST      0x0437
+#define CMSG_PLAYER_CHANGE_ACT       0x0369
 #define CMSG_PLAYER_RESTART          0x00b2
 #define CMSG_PLAYER_EMOTE            0x00bf
 #define CMSG_PLAYER_ATTACK           0x0369
@@ -259,9 +257,9 @@
 #define CMSG_PARTY_KICK              0x0103
 #define CMSG_PARTY_MESSAGE           0x0108
 
-#define CMSG_MOVE_TO_STORAGE         0x00f3 /** Move item to storage */
-#define CSMG_MOVE_FROM_STORAGE       0x00f5 /** Remove item from storage */
-#define CMSG_CLOSE_STORAGE           0x00f7 /** Request storage close */
+#define CMSG_MOVE_TO_STORAGE         0x07ec /** Move item to storage */
+#define CSMG_MOVE_FROM_STORAGE       0x0364 /** Remove item from storage */
+#define CMSG_CLOSE_STORAGE           0x0193 /** Request storage close */
 
 #define CMSG_ADMIN_ANNOUNCE          0x0099
 #define CMSG_ADMIN_LOCAL_ANNOUNCE    0x019C
@@ -288,9 +286,10 @@
 #define CMSG_GUILD_OPPOSITION        0x0180
 #define CMSG_GUILD_ALLIANCE_DELETE   0x0183
 
-#define CMSG_SOLVE_CHAR_NAME         0x0193
+#define CMSG_SOLVE_CHAR_NAME         0x0368
+#define CMSG_IGNORE_ALL              0x00d0
+
 #define SMSG_SOLVE_CHAR_NAME         0x0194
-#define CMSG_CLIENT_DISCONNECT       0x7532
 #define SMSG_SKILL_CASTING           0x013e
 #define SMSG_SKILL_CAST_CANCEL       0x01b9
 #define SMSG_SKILL_NO_DAMAGE         0x011a
@@ -299,14 +298,13 @@
 #define SMSG_PVP_MAP_MODE            0x0199
 #define SMSG_PVP_SET                 0x019a
 #define SMSG_MAP_TYPE_PROPERTY2      0x099b
-#define CMSG_IGNORE_ALL              0x00d0
 #define SMSG_IGNORE_ALL_RESPONSE     0x00d2
-#define CMSG_ONLINE_LIST             0x0210
 #define SMSG_ONLINE_LIST             0x0211
 #define SMSG_NPC_COMMAND             0x0212
+
+#define CMSG_ONLINE_LIST             0x0210
 #define CMSG_SET_STATUS              0x0213
 
-#define CMSG_SEND_CLIENT_INFO        0x7533
 #define SMSG_UPDATE_HOST2            0x7534
 
 #define SMSG_MAP_ACCOUNT_ID          0x0283
