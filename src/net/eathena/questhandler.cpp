@@ -38,6 +38,7 @@ QuestHandler::QuestHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_QUEST_ADD,
+        SMSG_QUEST_LIST,
         0
     };
     handledMessages = _messages;
@@ -50,6 +51,10 @@ void QuestHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_QUEST_ADD:
             processAddQuest(msg);
+            break;
+
+        case SMSG_QUEST_LIST:
+            processAddQuests(msg);
             break;
 
         default:
@@ -82,6 +87,24 @@ void QuestHandler::processAddQuest(Net::MessageIn &msg)
         skillDialog->updateQuest(var, val);
         skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);
     }
+}
+
+void QuestHandler::processAddQuests(Net::MessageIn &msg)
+{
+    msg.readInt16("len");
+    const int num = msg.readInt32("quests count");
+    for (int f = 0; f < num; f ++)
+    {
+        const int var = msg.readInt32("quest id");
+        const int val = msg.readUInt8("state");
+        if (questsWindow)
+            questsWindow->updateQuest(var, val);
+        if (skillDialog)
+            skillDialog->updateQuest(var, val);
+    }
+
+    if (questsWindow)
+        questsWindow->rebuild(false);
 }
 
 }  // namespace TmwAthena

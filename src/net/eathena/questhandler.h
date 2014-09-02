@@ -35,7 +35,10 @@ class QuestHandler final : public MessageHandler
 
         void handleMessage(Net::MessageIn &msg) override final;
 
+    protected:
         static void processAddQuest(Net::MessageIn &msg);
+
+        static void processAddQuests(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
