@@ -136,7 +136,7 @@ void LoginHandler::clearWorlds()
 void LoginHandler::procecessCharPasswordResponse(Net::MessageIn &msg) const
 {
     // 0: acc not found, 1: success, 2: password mismatch, 3: pass too short
-    const uint8_t errMsg = msg.readUInt8();
+    const uint8_t errMsg = msg.readUInt8("result code");
     // Successful pass change
     if (errMsg == 1)
     {
@@ -171,7 +171,7 @@ void LoginHandler::procecessCharPasswordResponse(Net::MessageIn &msg) const
 
 void LoginHandler::processUpdateHost(Net::MessageIn &msg)
 {
-    const int len = msg.readInt16() - 4;
+    const int len = msg.readInt16("len") - 4;
     mUpdateHost = msg.readString(len);
 
     if (!checkPath(mUpdateHost))
@@ -187,37 +187,35 @@ void LoginHandler::processUpdateHost(Net::MessageIn &msg)
 
 void LoginHandler::processLoginData(Net::MessageIn &msg)
 {
-    // Skip the length word
-    msg.skip(2);    // size
+    msg.skip(2, "len");
 
     clearWorlds();
 
     const int worldCount = (msg.getLength() - 47) / 32;
 
-    mToken.session_ID1 = msg.readInt32();
-    mToken.account_ID = msg.readInt32();
-    mToken.session_ID2 = msg.readInt32();
-    msg.skip(4);                           // old ip
-    loginData.lastLogin = msg.readString(24);
-    msg.skip(2);                           // 0 unused bytes
+    mToken.session_ID1 = msg.readInt32("session id1");
+    mToken.account_ID = msg.readInt32("accound id");
+    mToken.session_ID2 = msg.readInt32("session id2");
+    msg.readInt32("old ip");
+    loginData.lastLogin = msg.readString(24, "last login");
+    msg.skip(2, "unused");
 
-//    msg.skip(30);                           // unknown
     // reserve bits for future usage
     mToken.sex = Being::intToGender(static_cast<uint8_t>(
-        msg.readUInt8() & 3U));
+        msg.readUInt8("gender") & 3U));
 
     for (int i = 0; i < worldCount; i++)
     {
         WorldInfo *const world = new WorldInfo;
 
-        world->address = msg.readInt32();
-        world->port = msg.readInt16();
-        world->name = msg.readString(20);
-        world->online_users = msg.readInt16();
+        world->address = msg.readInt32("ip address");
+        world->port = msg.readInt16("port");
+        world->name = msg.readString(20, "name");
+        world->online_users = msg.readInt16("online number");
         config.setValue("updatehost", mUpdateHost);
         world->updateHost = mUpdateHost;
-        msg.skip(2);                        // maintenance
-        msg.skip(2);                        // new
+        msg.skip(2, "maintenance");
+        msg.skip(2, "new");
 
         logger->log("Network: Server: %s (%s:%d)", world->name.c_str(),
             ipToString(world->address), world->port);
@@ -229,7 +227,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
 
 void LoginHandler::processLoginError(Net::MessageIn &msg) const
 {
-    const uint8_t code = msg.readUInt8();
+    const uint8_t code = msg.readUInt8("error");
     logger->log("Login::error code: %u", static_cast<unsigned int>(code));
 
     switch (code)

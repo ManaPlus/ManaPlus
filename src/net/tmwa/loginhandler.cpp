@@ -132,8 +132,8 @@ void LoginHandler::changePassword(const std::string &restrict username
                                   const
 {
     MessageOut outMsg(CMSG_CHAR_PASSWORD_CHANGE);
-    outMsg.writeStringNoLog(oldPassword, 24);
-    outMsg.writeStringNoLog(newPassword, 24);
+    outMsg.writeStringNoLog(oldPassword, 24, "old password");
+    outMsg.writeStringNoLog(newPassword, 24, "new password");
 }
 
 void LoginHandler::sendLoginRegister(const std::string &restrict username,
@@ -143,9 +143,9 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
     if (email.empty())
     {
         MessageOut outMsg(CMSG_LOGIN_REGISTER);
-        outMsg.writeInt32(0);  // client version
-        outMsg.writeString(username, 24);
-        outMsg.writeStringNoLog(password, 24);
+        outMsg.writeInt32(0, "client version");
+        outMsg.writeString(username, 24, "login");
+        outMsg.writeStringNoLog(password, 24, "password");
 
         /*
          * eAthena calls the last byte "client version 2", but it isn't used at
@@ -153,14 +153,14 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
          *  0 - can handle the 0x63 "update host" packet
          *  1 - defaults to the first char-server (instead of the last)
          */
-        outMsg.writeInt8(0x03);
+        outMsg.writeInt8(0x03, "flags");
     }
     else
     {
         MessageOut outMsg(CMSG_LOGIN_REGISTER2);
-        outMsg.writeInt32(0);  // client version
-        outMsg.writeString(username, 24);
-        outMsg.writeStringNoLog(password, 24);
+        outMsg.writeInt32(0, "client version");
+        outMsg.writeString(username, 24, "login");
+        outMsg.writeStringNoLog(password, 24, "password");
 
         /*
          * eAthena calls the last byte "client version 2", but it isn't used at
@@ -168,8 +168,8 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
          *  0 - can handle the 0x63 "update host" packet
          *  1 - defaults to the first char-server (instead of the last)
          */
-        outMsg.writeInt8(0x03);
-        outMsg.writeString(email, 24);
+        outMsg.writeInt8(0x03, "flags");
+        outMsg.writeString(email, 24, "email");
     }
 }
 
@@ -182,7 +182,7 @@ void LoginHandler::requestUpdateHosts()
 {
     MessageOut outMsg(CMSG_SEND_CLIENT_INFO);
     outMsg.writeInt8(CLIENT_PROTOCOL_VERSION);
-    outMsg.writeInt8(0);    // unused
+    outMsg.writeInt8(0, "unused");
 }
 
 void LoginHandler::processServerVersion(Net::MessageIn &msg)
@@ -193,31 +193,31 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     const uint8_t b4 = msg.readUInt8();  // L
     if (b1 == 255 && b2 == 'E' && b3 == 'V' && b4 == 'L')
     {
-        const unsigned int options = msg.readUInt8();
+        const unsigned int options = msg.readUInt8("options");
         mRegistrationEnabled = options & FLAG_REGISTRATION;
-        msg.skip(2);  // 0 unused
-        serverVersion = msg.readUInt8();
+        msg.skip(2, "unused");
+        serverVersion = msg.readUInt8("server version");
         tmwServerVersion = 0;
         if (serverVersion >= 5)
             requestUpdateHosts();
     }
     else if (b1 == 255)
     {   // old TMWA
-        const unsigned int options = msg.readInt32();
+        const unsigned int options = msg.readInt32("options");
         mRegistrationEnabled = options & FLAG_REGISTRATION;
         serverVersion = 0;
         tmwServerVersion = 0;
     }
     else if (b1 >= 0x0d)
     {   // new TMWA
-        const unsigned int options = msg.readInt32();
+        const unsigned int options = msg.readInt32("options");
         mRegistrationEnabled = options & FLAG_REGISTRATION;
         serverVersion = 0;
         tmwServerVersion = (b1 << 16) | (b2 << 8) | b3;
     }
     else
     {   // eAthena
-        const unsigned int options = msg.readInt32();
+        const unsigned int options = msg.readInt32("options");
         mRegistrationEnabled = options & FLAG_REGISTRATION;
         serverVersion = 0;
         tmwServerVersion = 0;
@@ -241,8 +241,8 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
 
 void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
 {
-    const int len = msg.readInt16() - 4;
-    const std::string updateHost = msg.readString(len);
+    const int len = msg.readInt16("len") - 4;
+    const std::string updateHost = msg.readString(len, "host");
 
     splitToStringVector(loginData.updateHosts, updateHost, '|');
     FOR_EACH (StringVectIter, it, loginData.updateHosts)

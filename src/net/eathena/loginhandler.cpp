@@ -161,13 +161,13 @@ void LoginHandler::requestUpdateHosts()
 {
     MessageOut outMsg(CMSG_SEND_CLIENT_INFO);
     outMsg.writeInt8(CLIENT_PROTOCOL_VERSION);
-    outMsg.writeInt8(0);    // unused
+    outMsg.writeInt8(0, "unused");
 }
 
 void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
 {
-    const int len = msg.readInt16() - 4;
-    const std::string updateHost = msg.readString(len);
+    const int len = msg.readInt16("len") - 4;
+    const std::string updateHost = msg.readString(len, "host");
 
     splitToStringVector(loginData.updateHosts, updateHost, '|');
     FOR_EACH (StringVectIter, it, loginData.updateHosts)
@@ -189,7 +189,7 @@ void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
 
 void LoginHandler::processLoginError2(Net::MessageIn &msg) const
 {
-    const uint32_t code = msg.readInt32();
+    const uint32_t code = msg.readInt32("error");
     logger->log("Login::error code: %u", code);
 
     switch (code)
