@@ -9,13 +9,15 @@ export CXX=g++-4.9
 
 export LANG=C
 
+# -Wdisabled-optimization look like gcc issue
+
 export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -fsanitize=address \
 -fno-omit-frame-pointer -funswitch-loops \
 -Wvariadic-macros -Wvla -Wredundant-decls \
 -Wpacked-bitfield-compat -Wtrampolines \
 -Wsuggest-attribute=noreturn -Wunused -Wstrict-aliasing=2 \
--fstrict-aliasing -Wunreachable-code -Wabi -Wdisabled-optimization \
+-fstrict-aliasing -Wunreachable-code -Wabi \
 -Wvolatile-register-var -Winvalid-pch -Wredundant-decls \
 -Wnormalized=nfkc -Wmissing-format-attribute -Wmissing-noreturn \
 -Wswitch-default -Wsign-promo -Waddress -Wmissing-declarations \
