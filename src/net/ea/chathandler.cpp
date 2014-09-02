@@ -98,7 +98,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
         mSentWhispers.pop();
     }
 
-    const uint8_t type = msg.readUInt8();
+    const uint8_t type = msg.readUInt8("response");
     switch (type)
     {
         case 0x00:
@@ -138,8 +138,8 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
 void ChatHandler::processWhisper(Net::MessageIn &msg) const
 {
     BLOCK_START("ChatHandler::processWhisper")
-    const int chatMsgLength = msg.readInt16() - 28;
-    std::string nick = msg.readString(24);
+    const int chatMsgLength = msg.readInt16("len") - 28;
+    std::string nick = msg.readString(24, "message");
 
     if (chatMsgLength <= 0)
     {
@@ -273,8 +273,8 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg) const
 
     BLOCK_START("ChatHandler::processBeingChat")
     const bool channels = msg.getId() == SMSG_BEING_CHAT2;
-    int chatMsgLength = msg.readInt16() - 8;
-    Being *const being = actorManager->findBeing(msg.readInt32());
+    int chatMsgLength = msg.readInt16("len") - 8;
+    Being *const being = actorManager->findBeing(msg.readInt32("being id"));
     if (!being)
     {
         BLOCK_END("ChatHandler::processBeingChat")
@@ -285,9 +285,9 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg) const
     if (channels)
     {
         chatMsgLength -= 3;
-        channel = msg.readUInt8();
-        channel += msg.readUInt8();
-        channel += msg.readUInt8();
+        channel = msg.readUInt8("channel byte 0");
+        channel += msg.readUInt8("channel byte 1");
+        channel += msg.readUInt8("channel byte 2");
     }
 
     if (chatMsgLength <= 0)
@@ -296,7 +296,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg) const
         return;
     }
 
-    std::string chatMsg = msg.readRawString(chatMsgLength);
+    std::string chatMsg = msg.readRawString(chatMsgLength, "message");
 
     if (being->getType() == ActorType::PLAYER)
         being->setTalkTime();
@@ -349,7 +349,7 @@ void ChatHandler::processMVP(Net::MessageIn &msg) const
 {
     BLOCK_START("ChatHandler::processMVP")
     // Display MVP player
-    const int id = msg.readInt32();  // id
+    const int id = msg.readInt32("being id");
     if (localChatTab && actorManager && config.getBoolValue("showMVP"))
     {
         const Being *const being = actorManager->findBeing(id);
@@ -364,8 +364,8 @@ void ChatHandler::processMVP(Net::MessageIn &msg) const
 void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg) const
 {
     BLOCK_START("ChatHandler::processIgnoreAllResponse")
-    const uint8_t action = msg.readUInt8();
-    const uint8_t fail = msg.readUInt8();
+    const uint8_t action = msg.readUInt8("action");
+    const uint8_t fail = msg.readUInt8("result");
     if (!localChatTab)
     {
         BLOCK_END("ChatHandler::processIgnoreAllResponse")

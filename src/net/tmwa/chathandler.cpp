@@ -127,35 +127,36 @@ void ChatHandler::talk(const std::string &restrict text,
     {
         MessageOut outMsg(CMSG_CHAT_MESSAGE2);
         // Added + 1 in order to let eAthena parse admin commands correctly
-        outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 3 + 1));
-        outMsg.writeInt8(channel[0]);
-        outMsg.writeInt8(channel[1]);
-        outMsg.writeInt8(channel[2]);
-        outMsg.writeString(mes, static_cast<int>(mes.length() + 1));
+        outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 3 + 1),
+            "len");
+        outMsg.writeInt8(channel[0], "channel byte 0");
+        outMsg.writeInt8(channel[1], "channel byte 1");
+        outMsg.writeInt8(channel[2], "channel byte 2");
+        outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
     }
     else
     {
         MessageOut outMsg(CMSG_CHAT_MESSAGE);
         // Added + 1 in order to let eAthena parse admin commands correctly
-        outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1));
-        outMsg.writeString(mes, static_cast<int>(mes.length() + 1));
+        outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1), "len");
+        outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
     }
 }
 
 void ChatHandler::talkRaw(const std::string &mes) const
 {
     MessageOut outMsg(CMSG_CHAT_MESSAGE);
-    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4));
-    outMsg.writeString(mes, static_cast<int>(mes.length()));
+    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4), "len");
+    outMsg.writeString(mes, static_cast<int>(mes.length()), "message");
 }
 
 void ChatHandler::privateMessage(const std::string &restrict recipient,
                                  const std::string &restrict text)
 {
     MessageOut outMsg(CMSG_CHAT_WHISPER);
-    outMsg.writeInt16(static_cast<int16_t>(text.length() + 28));
-    outMsg.writeString(recipient, 24);
-    outMsg.writeString(text, static_cast<int>(text.length()));
+    outMsg.writeInt16(static_cast<int16_t>(text.length() + 28), "len");
+    outMsg.writeString(recipient, 24, "recipient nick");
+    outMsg.writeString(text, static_cast<int>(text.length()), "message");
     mSentWhispers.push(recipient);
 }
 
@@ -208,11 +209,11 @@ void ChatHandler::processRaw(MessageOut &restrict outMsg,
     {
         const int i = atoi(line.c_str());
         if (line.length() <= 3)
-            outMsg.writeInt8(static_cast<unsigned char>(i));
+            outMsg.writeInt8(static_cast<unsigned char>(i), "raw");
         else if (line.length() <= 5)
-            outMsg.writeInt16(static_cast<int16_t>(i));
+            outMsg.writeInt16(static_cast<int16_t>(i), "raw");
         else
-            outMsg.writeInt32(i);
+            outMsg.writeInt32(i, "raw");
     }
     else
     {
@@ -236,13 +237,13 @@ void ChatHandler::processRaw(MessageOut &restrict outMsg,
         switch (header[0])
         {
             case '1':
-                outMsg.writeInt8(static_cast<unsigned char>(i));
+                outMsg.writeInt8(static_cast<unsigned char>(i), "raw");
                 break;
             case '2':
-                outMsg.writeInt16(static_cast<int16_t>(i));
+                outMsg.writeInt16(static_cast<int16_t>(i), "raw");
                 break;
             case '4':
-                outMsg.writeInt32(i);
+                outMsg.writeInt32(i, "raw");
                 break;
             case 'c':
             {
@@ -260,12 +261,13 @@ void ChatHandler::processRaw(MessageOut &restrict outMsg,
                         atoi(data.substr(0, pos).c_str()));
                     const int dir = atoi(data.substr(pos + 1).c_str());
                     outMsg.writeCoordinates(x, y,
-                        static_cast<unsigned char>(dir));
+                        static_cast<unsigned char>(dir), "raw");
                 }
                 break;
             }
             case 't':
-                outMsg.writeString(data, static_cast<int>(data.length()));
+                outMsg.writeString(data, static_cast<int>(data.length()),
+                    "raw");
                 break;
             default:
                 break;
@@ -278,7 +280,7 @@ void ChatHandler::ignoreAll() const
     if (tmwServerVersion > 0)
         return;
     MessageOut outMsg(CMSG_IGNORE_ALL);
-    outMsg.writeInt8(0);
+    outMsg.writeInt8(0, "flag");
 }
 
 void ChatHandler::unIgnoreAll() const
@@ -286,7 +288,7 @@ void ChatHandler::unIgnoreAll() const
     if (tmwServerVersion > 0)
         return;
     MessageOut outMsg(CMSG_IGNORE_ALL);
-    outMsg.writeInt8(1);
+    outMsg.writeInt8(1, "flag");
 }
 
 void ChatHandler::processChat(Net::MessageIn &msg)
@@ -295,14 +297,14 @@ void ChatHandler::processChat(Net::MessageIn &msg)
     const bool channels = msg.getId() == SMSG_PLAYER_CHAT2;
     const bool normalChat = msg.getId() == SMSG_PLAYER_CHAT
         || msg.getId() == SMSG_PLAYER_CHAT2;
-    int chatMsgLength = msg.readInt16() - 4;
+    int chatMsgLength = msg.readInt16("len") - 4;
     std::string channel;
     if (channels)
     {
         chatMsgLength -= 3;
-        channel = msg.readUInt8();
-        channel += msg.readUInt8();
-        channel += msg.readUInt8();
+        channel = msg.readUInt8("channel byte 0");
+        channel += msg.readUInt8("channel byte 1");
+        channel += msg.readUInt8("channel byte 2");
     }
     if (chatMsgLength <= 0)
     {
@@ -310,7 +312,7 @@ void ChatHandler::processChat(Net::MessageIn &msg)
         return;
     }
 
-    std::string chatMsg = msg.readRawString(chatMsgLength);
+    std::string chatMsg = msg.readRawString(chatMsgLength, "message");
     const size_t pos = chatMsg.find(" : ", 0);
 
     if (normalChat)
