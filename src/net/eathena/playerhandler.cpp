@@ -315,12 +315,9 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     PlayerInfo::setStatBase(CRIT, msg.readInt16("crit/10"));
 
-    const int speed = msg.readInt16("speed");
-    localPlayer->setWalkSpeed(Vector(static_cast<float>(speed),
-        static_cast<float>(speed), 0));
-    PlayerInfo::setStatBase(Attributes::WALK_SPEED, speed);
-    PlayerInfo::setStatMod(Attributes::WALK_SPEED,
-        msg.readInt16("plus speed = 0"));
+    PlayerInfo::setAttribute(Attributes::ATTACK_DELAY,
+        msg.readInt16("attack speed"));
+    msg.readInt16("plus speed = 0");
 
     BLOCK_END("PlayerHandler::processPlayerStatUpdate5")
 }
