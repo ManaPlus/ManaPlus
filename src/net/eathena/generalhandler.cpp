@@ -56,6 +56,7 @@
 #include "net/eathena/protocol.h"
 #include "net/eathena/tradehandler.h"
 #include "net/eathena/skillhandler.h"
+#include "net/eathena/questhandler.h"
 
 #include "resources/db/itemdbstat.h"
 
@@ -88,7 +89,8 @@ GeneralHandler::GeneralHandler() :
     mPartyHandler(new PartyHandler),
     mPlayerHandler(new PlayerHandler),
     mSkillHandler(new SkillHandler),
-    mTradeHandler(new TradeHandler)
+    mTradeHandler(new TradeHandler),
+    mQuestHandler(new QuestHandler)
 {
     static const uint16_t _messages[] =
     {
@@ -184,6 +186,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mSkillHandler.get());
     mNetwork->registerHandler(mTradeHandler.get());
     mNetwork->registerHandler(mPartyHandler.get());
+    mNetwork->registerHandler(mQuestHandler.get());
 }
 
 void GeneralHandler::reload()

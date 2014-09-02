@@ -1290,6 +1290,8 @@ manaplus_SOURCES += net/eathena/gui/guildtab.cpp \
 	      net/eathena/playerhandler.cpp \
 	      net/eathena/playerhandler.h \
 	      net/eathena/protocol.h \
+	      net/eathena/questhandler.cpp \
+	      net/eathena/questhandler.h \
 	      net/eathena/skillhandler.cpp \
 	      net/eathena/skillhandler.h \
 	      net/eathena/sprite.h \

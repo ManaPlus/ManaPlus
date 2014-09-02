@@ -74,6 +74,7 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mPlayerHandler;
         MessageHandlerPtr mSkillHandler;
         MessageHandlerPtr mTradeHandler;
+        MessageHandlerPtr mQuestHandler;
 };
 
 }  // namespace EAthena
