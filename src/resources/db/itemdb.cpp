@@ -287,21 +287,11 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         std::string useButton = XML::getProperty(node, "useButton", "");
         std::string useButton2 = XML::getProperty(node, "useButton2", "");
         std::string colors;
-        if (serverVersion >= 1)
-        {
-            colors = XML::getProperty(node, "colors", "");
+        colors = XML::getProperty(node, "colors", "");
 
-            // check for empty hair palete
-            if (colors.empty() && id <= -1 && id > -100)
-                colors = "hair";
-        }
-        else
-        {
-            if (id <= -1 && id > -100)
-                colors = "hair";
-            else
-                colors.clear();
-        }
+        // check for empty hair palete
+        if (colors.empty() && id <= -1 && id > -100)
+            colors = "hair";
 
         std::string tags[3];
         tags[0] = XML::getProperty(node, "tag",
