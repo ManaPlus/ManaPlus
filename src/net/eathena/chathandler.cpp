@@ -300,7 +300,7 @@ void ChatHandler::processChat(Net::MessageIn &msg)
 
         if (localPlayer)
         {
-            if (chatWindow || mShowMotd)
+            if ((chatWindow || mShowMotd) && allow)
                 localPlayer->setSpeech(chatMsg, GENERAL_CHANNEL);
         }
     }

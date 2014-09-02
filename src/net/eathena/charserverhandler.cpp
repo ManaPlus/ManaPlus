@@ -417,7 +417,7 @@ void CharServerHandler::processPincodeStatus(Net::MessageIn &msg)
     }
 }
 
-void CharServerHandler::setNewPincode(const std::string &pin)
+void CharServerHandler::setNewPincode(const std::string &pin A_UNUSED)
 {
 //  here need ecript pin with mPinSeed and pin values.
 

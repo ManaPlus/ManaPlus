@@ -640,7 +640,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
 
     if (visible)
     {
-        const int len = msg.readInt16("len");
+        msg.readInt16("len");
         msg.readUInt8("object type");
     }
 

@@ -223,7 +223,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
     {
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
-        const uint8_t itemType = msg.readUInt8("item type");
+        msg.readUInt8("item type");
 //        uint8_t identified = msg.readUInt8();      // identify flag
 
         msg.readInt32("location");
@@ -236,7 +236,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         msg.readInt32("hire expire date (?)");
         const int equipType = msg.readInt16("equip type");
         msg.readInt16("item sprite number");
-        const uint8_t flags = static_cast<uint8_t>(msg.readInt8("flags"));
+        msg.readInt8("flags");
 
         // need get actual identify flag
         uint8_t identified = 1;
