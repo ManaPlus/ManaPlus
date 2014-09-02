@@ -22,6 +22,8 @@
 
 #include "net/eathena/playerhandler.h"
 
+#include "actormanager.h"
+
 #include "being/attributes.h"
 #include "being/localplayer.h"
 
@@ -58,6 +60,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_ARROW_MESSAGE,
         SMSG_PLAYER_SHORTCUTS,
         SMSG_PLAYER_SHOW_EQUIP,
+        SMSG_PLAYER_GET_EXP,
         0
     };
     handledMessages = _messages;
@@ -111,6 +114,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_SHOW_EQUIP:
             processPlayerShowEquip(msg);
+            break;
+
+        case SMSG_PLAYER_GET_EXP:
+            processPlayerGetExp(msg);
             break;
 
         default:
@@ -320,6 +327,16 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
     msg.readInt16("plus speed = 0");
 
     BLOCK_END("PlayerHandler::processPlayerStatUpdate5")
+}
+
+void PlayerHandler::processPlayerGetExp(Net::MessageIn &msg)
+{
+    const int id = msg.readInt32("player id");
+    const int exp = msg.readInt32("exp amount");
+    const int type = msg.readInt16("exp type");
+    const int isQuest = msg.readInt16("is from quest");
+//    Being *dstBeing = actorManager->findBeing(id);
+    // need show particle depend on isQuest flag, for now ignored
 }
 
 }  // namespace EAthena
