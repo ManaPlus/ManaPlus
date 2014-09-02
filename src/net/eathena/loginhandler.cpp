@@ -157,13 +157,6 @@ ServerInfo *LoginHandler::getCharServer() const
     return &charServer;
 }
 
-void LoginHandler::requestUpdateHosts()
-{
-    MessageOut outMsg(CMSG_SEND_CLIENT_INFO);
-    outMsg.writeInt8(CLIENT_PROTOCOL_VERSION);
-    outMsg.writeInt8(0, "unused");
-}
-
 void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
 {
     const int len = msg.readInt16("len") - 4;

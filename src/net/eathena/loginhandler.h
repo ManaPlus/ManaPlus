@@ -62,8 +62,6 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
         ServerInfo *getCharServer() const override final A_WARN_UNUSED;
 
-        static void requestUpdateHosts();
-
         void processUpdateHost2(Net::MessageIn &msg) const;
 
         void processLoginError2(Net::MessageIn &msg) const;

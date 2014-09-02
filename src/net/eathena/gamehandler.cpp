@@ -169,7 +169,6 @@ void GameHandler::ping(const int tick) const
 
 void GameHandler::disconnect2() const
 {
-    MessageOut outMsg(CMSG_CLIENT_DISCONNECT);
 }
 
 void GameHandler::processMapAccountId(Net::MessageIn &msg)
