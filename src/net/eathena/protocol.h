@@ -230,7 +230,7 @@
 #define CMSG_PLAYER_CHANGE_ACT       0x0089
 #define CMSG_PLAYER_RESTART          0x00b2
 #define CMSG_PLAYER_EMOTE            0x00bf
-#define CMSG_PLAYER_ATTACK           0x0089
+#define CMSG_PLAYER_ATTACK           0x0369
 #define CMSG_PLAYER_STOP_ATTACK      0x0118
 #define CMSG_WHO_REQUEST             0x00c1
 
