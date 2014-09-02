@@ -122,11 +122,11 @@ void GameHandler::connect()
 
     // Send login infos
     MessageOut outMsg(CMSG_MAP_SERVER_CONNECT);
-    outMsg.writeInt32(token.account_ID);
-    outMsg.writeInt32(mCharID);
-    outMsg.writeInt32(token.session_ID1);
-    outMsg.writeInt32(token.session_ID2);
-    outMsg.writeInt8(Being::genderToInt(token.sex));
+    outMsg.writeInt32(token.account_ID, "account id");
+    outMsg.writeInt32(mCharID, "char id");
+    outMsg.writeInt32(token.session_ID1, "session id1");
+    outMsg.writeInt32(token.session_ID2, "session id2");
+    outMsg.writeInt8(Being::genderToInt(token.sex), "gender");
 
 /*
     if (localPlayer)
@@ -163,7 +163,7 @@ void GameHandler::quit() const
 void GameHandler::ping(const int tick) const
 {
     MessageOut msg(CMSG_CLIENT_PING);
-    msg.writeInt32(tick);
+    msg.writeInt32(tick, "tick");
 }
 
 void GameHandler::disconnect2() const
@@ -175,9 +175,9 @@ void GameHandler::processMapLogin(Net::MessageIn &msg) const
 {
     unsigned char direction;
     uint16_t x, y;
-    msg.readInt32();   // server tick
-    msg.readCoordinates(x, y, direction);
-    msg.skip(2);      // 0x0505
+    msg.readInt32("tick");
+    msg.readCoordinates(x, y, direction, "position");
+    msg.skip(2, "unknown?");
     logger->log("Protocol: Player start position: (%d, %d),"
                 " Direction: %d", x, y, direction);
 

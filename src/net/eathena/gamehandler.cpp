@@ -108,7 +108,7 @@ void GameHandler::connect()
     mNetwork->connect(mapServer);
 
     const Token &token =
-            static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
+        static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
 
 
     if (client->getState() == STATE_CONNECT_GAME)
@@ -164,7 +164,7 @@ void GameHandler::quit() const
 void GameHandler::ping(const int tick) const
 {
     MessageOut msg(CMSG_CLIENT_PING);
-    msg.writeInt32(tick);
+    msg.writeInt32(tick, "tick");
 }
 
 void GameHandler::disconnect2() const
@@ -182,7 +182,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg) const
     unsigned char direction;
     uint16_t x, y;
     msg.readInt32("start time");
-    msg.readCoordinates(x, y, direction);
+    msg.readCoordinates(x, y, direction, "position");
     msg.readInt8("x size");
     msg.readInt8("y size");
     logger->log("Protocol: Player start position: "

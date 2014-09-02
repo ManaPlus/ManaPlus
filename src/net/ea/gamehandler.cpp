@@ -60,18 +60,19 @@ void GameHandler::setMap(const std::string &map)
 
 void GameHandler::processWhoAnswer(Net::MessageIn &msg) const
 {
-    NotifyManager::notify(NotifyTypes::ONLINE_USERS, msg.readInt32());
+    NotifyManager::notify(NotifyTypes::ONLINE_USERS,
+        msg.readInt32("users count"));
 }
 
 void GameHandler::processCharSwitchResponse(Net::MessageIn &msg) const
 {
-    if (msg.readUInt8())
+    if (msg.readUInt8("response"))
         client->setState(STATE_SWITCH_CHARACTER);
 }
 
 void GameHandler::processMapQuitResponse(Net::MessageIn &msg) const
 {
-    if (msg.readUInt8())
+    if (msg.readUInt8("response"))
     {
         new OkDialog(_("Game"),
             // TRANSLATORS: error message
