@@ -40,6 +40,7 @@ QuestHandler::QuestHandler() :
         SMSG_QUEST_ADD,
         SMSG_QUEST_LIST,
         SMSG_QUEST_LIST_OBJECTIVES,
+        SMSG_QUEST_UPDATE_OBJECTIVES,
         0
     };
     handledMessages = _messages;
@@ -62,6 +63,10 @@ void QuestHandler::handleMessage(Net::MessageIn &msg)
             processAddQuestsObjectives(msg);
             break;
 
+        case SMSG_QUEST_UPDATE_OBJECTIVES:
+            processUpdateQuestsObjectives(msg);
+            break;
+
         default:
             break;
     }
@@ -77,6 +82,7 @@ void QuestHandler::processAddQuest(Net::MessageIn &msg)
     const int num = msg.readInt16("objectives count");
     for (int f = 0; f < num; f ++)
     {
+        // need use in quests kills list
         msg.readInt32("monster id");
         msg.readInt16("count");
         msg.readString(24, "monster name");
@@ -129,6 +135,20 @@ void QuestHandler::processAddQuestsObjectives(Net::MessageIn &msg)
             msg.readInt16("count");
             msg.readString(24, "monster name");
         }
+    }
+}
+
+void QuestHandler::processUpdateQuestsObjectives(Net::MessageIn &msg)
+{
+    msg.readInt16("len");
+    const int num = msg.readInt16("objectives count");
+    for (int f = 0; f < num; f ++)
+    {
+        // need use in quests kills list
+        msg.readInt32("quest id");
+        msg.readInt32("monster id");
+        msg.readInt16("count old");
+        msg.readInt16("count new");
     }
 }
 
