@@ -135,14 +135,14 @@ void BuySellHandler::processNpcBuySellChoice(Net::MessageIn &msg)
 {
     if (!BuySellDialog::isActive())
     {
-        mNpcId = msg.readInt32();
+        mNpcId = msg.readInt32("npc id");
         new BuySellDialog(mNpcId);
     }
 }
 
 void BuySellHandler::processNpcSell(Net::MessageIn &msg) const
 {
-    msg.readInt16();  // length
+    msg.readInt16("len");
     const int n_items = (msg.getLength() - 4) / 10;
     if (n_items > 0)
     {
@@ -151,9 +151,9 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg) const
 
         for (int k = 0; k < n_items; k++)
         {
-            const int index = msg.readInt16() - INVENTORY_OFFSET;
-            const int value = msg.readInt32();
-            msg.readInt32();  // value
+            const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+            const int value = msg.readInt32("value");
+            msg.readInt32("value?");
 
             const Item *const item = PlayerInfo::getInventory()
                 ->getItem(index);
@@ -170,7 +170,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg) const
 
 void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg) const
 {
-    if (msg.readUInt8() == 0U)
+    if (msg.readUInt8("response") == 0U)
     {
         NotifyManager::notify(NotifyTypes::BUY_DONE);
     }

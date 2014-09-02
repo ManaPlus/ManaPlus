@@ -91,7 +91,7 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
 
 void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
 {
-    msg.readInt16();  // length
+    msg.readInt16("len");
     const int sz = 11;
     const int n_items = (msg.getLength() - 4) / sz;
     mBuyDialog = new BuyDialog(mNpcId);
@@ -99,10 +99,10 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
 
     for (int k = 0; k < n_items; k++)
     {
-        const int value = msg.readInt32();
-        msg.readInt32();  // DCvalue
-        msg.readUInt8();   // type
-        const int itemId = msg.readInt16();
+        const int value = msg.readInt32("price");
+        msg.readInt32("dc value?");
+        msg.readUInt8("type");
+        const int itemId = msg.readInt16("item id");
         const unsigned char color = 1;
         mBuyDialog->addItem(itemId, color, 0, value);
     }
@@ -111,7 +111,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
 
 void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg)
 {
-    switch (msg.readUInt8())
+    switch (msg.readUInt8("result"))
     {
         case 0:
             NotifyManager::notify(NotifyTypes::SOLD);
