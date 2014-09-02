@@ -41,6 +41,7 @@ QuestHandler::QuestHandler() :
         SMSG_QUEST_LIST,
         SMSG_QUEST_LIST_OBJECTIVES,
         SMSG_QUEST_UPDATE_OBJECTIVES,
+        SMSG_QUEST_REMOVE,
         0
     };
     handledMessages = _messages;
@@ -65,6 +66,10 @@ void QuestHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_QUEST_UPDATE_OBJECTIVES:
             processUpdateQuestsObjectives(msg);
+            break;
+
+        case SMSG_QUEST_REMOVE:
+            processRemoveQuest(msg);
             break;
 
         default:
@@ -149,6 +154,25 @@ void QuestHandler::processUpdateQuestsObjectives(Net::MessageIn &msg)
         msg.readInt32("monster id");
         msg.readInt16("count old");
         msg.readInt16("count new");
+    }
+}
+
+void QuestHandler::processRemoveQuest(Net::MessageIn &msg)
+{
+    const int var = msg.readInt32("quest id");
+    const int val = -1;
+
+    // not removing quest, because this is impossible,
+    // but changing status to -1
+    if (questsWindow)
+    {
+        questsWindow->updateQuest(var, val);
+        questsWindow->rebuild(true);
+    }
+    if (skillDialog)
+    {
+        skillDialog->updateQuest(var, val);
+        skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);
     }
 }
 
