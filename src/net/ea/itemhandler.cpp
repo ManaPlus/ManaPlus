@@ -57,24 +57,6 @@ void ItemHandler::processItemVisible(Net::MessageIn &msg)
     }
 }
 
-void ItemHandler::processItemDropped(Net::MessageIn &msg)
-{
-    const int id = msg.readInt32();
-    const int itemId = msg.readInt16();
-    const uint8_t identify = msg.readUInt8();  // identify flag
-    const int x = msg.readInt16();
-    const int y = msg.readInt16();
-    const int subX = static_cast<int>(msg.readInt8());
-    const int subY = static_cast<int>(msg.readInt8());
-    const int amount = msg.readInt16();
-
-    if (actorManager)
-    {
-        actorManager->createItem(id, itemId,
-            x, y, amount, identify, subX, subY);
-    }
-}
-
 void ItemHandler::processItemRemove(Net::MessageIn &msg)
 {
     if (actorManager)

@@ -47,8 +47,6 @@ class ItemHandler notfinal
         static void processItemVisible(Net::MessageIn &msg);
 
         static void processItemRemove(Net::MessageIn &msg);
-
-        static void processItemDropped(Net::MessageIn &msg);
 };
 
 }  // namespace Ea
