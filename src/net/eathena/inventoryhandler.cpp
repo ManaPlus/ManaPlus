@@ -230,15 +230,15 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         msg.readUInt8("item type");
 //        uint8_t identified = msg.readUInt8();      // identify flag
 
-        msg.readInt32("location");
+        const int equipType = msg.readInt32("location");
         msg.readInt32("wear state");
         const uint8_t refine = static_cast<uint8_t>(msg.readInt8("refine"));
-        msg.readInt16("cart0");
-        msg.readInt16("cart1");
-        msg.readInt16("cart2");
-        msg.readInt16("cart3");
+        msg.readInt16("card0");
+        msg.readInt16("card1");
+        msg.readInt16("card2");
+        msg.readInt16("card3");
         msg.readInt32("hire expire date (?)");
-        const int equipType = msg.readInt16("equip type");
+        msg.readInt16("equip type");
         msg.readInt16("item sprite number");
         msg.readInt8("flags");
 
@@ -268,16 +268,21 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
         mEquips.clear();
         PlayerInfo::getEquipment()->setBackend(&mEquips);
     }
-    const int index = msg.readInt16() - INVENTORY_OFFSET;
-    int amount = msg.readInt16();
-    const int itemId = msg.readInt16();
-    uint8_t identified = msg.readUInt8();
-    msg.readUInt8();  // attribute
-    const uint8_t refine = msg.readUInt8();
-    for (int i = 0; i < 4; i++)
-        msg.readInt16();  // cards[i]
-    const int equipType = msg.readInt16();
-    msg.readUInt8();  // itemType
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    int amount = msg.readInt16("count");
+    const int itemId = msg.readInt16("item id");
+    uint8_t identified = msg.readUInt8("identified");
+    msg.readUInt8("is damaged");
+    const uint8_t refine = msg.readUInt8("refine");
+    msg.readInt16("card0");
+    msg.readInt16("card1");
+    msg.readInt16("card2");
+    msg.readInt16("card3");
+    const int equipType = msg.readInt32("location");
+    msg.readUInt8("item type");
+    msg.readUInt8("fail flag");
+    msg.readInt32("hire expire date");
+    msg.readInt16("equip type");
 
     const ItemInfo &itemInfo = ItemDB::get(itemId);
     const unsigned char err = msg.readUInt8();
