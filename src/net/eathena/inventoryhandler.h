@@ -60,6 +60,8 @@ class InventoryHandler final : public MessageHandler,
 
     protected:
         void processPlayerEquipment(Net::MessageIn &msg);
+
+        void processPlayerInventoryAdd(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

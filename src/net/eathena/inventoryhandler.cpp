@@ -23,6 +23,9 @@
 #include "net/eathena/inventoryhandler.h"
 
 #include "being/localplayer.h"
+#include "being/pickup.h"
+
+#include "listeners/arrowslistener.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
@@ -32,6 +35,7 @@
 #include "debug.h"
 
 extern Net::InventoryHandler *inventoryHandler;
+extern int serverVersion;
 
 namespace EAthena
 {
@@ -250,6 +254,73 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
             mEquips.setEquipment(getSlot(equipType), index);
     }
     BLOCK_END("InventoryHandler::processPlayerEquipment")
+}
+
+void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerInventoryAdd")
+    Inventory *const inventory = localPlayer
+        ? PlayerInfo::getInventory() : nullptr;
+
+    if (PlayerInfo::getEquipment()
+        && !PlayerInfo::getEquipment()->getBackend())
+    {   // look like SMSG_PLAYER_INVENTORY was not received
+        mEquips.clear();
+        PlayerInfo::getEquipment()->setBackend(&mEquips);
+    }
+    const int index = msg.readInt16() - INVENTORY_OFFSET;
+    int amount = msg.readInt16();
+    const int itemId = msg.readInt16();
+    uint8_t identified = msg.readUInt8();
+    msg.readUInt8();  // attribute
+    const uint8_t refine = msg.readUInt8();
+    for (int i = 0; i < 4; i++)
+        msg.readInt16();  // cards[i]
+    const int equipType = msg.readInt16();
+    msg.readUInt8();  // itemType
+
+    const ItemInfo &itemInfo = ItemDB::get(itemId);
+    const unsigned char err = msg.readUInt8();
+    int floorId;
+    if (mSentPickups.empty())
+    {
+        floorId = 0;
+    }
+    else
+    {
+        floorId = mSentPickups.front();
+        mSentPickups.pop();
+    }
+
+    if (err)
+    {
+        if (localPlayer)
+            localPlayer->pickedUp(itemInfo, 0, identified, floorId, err);
+    }
+    else
+    {
+        if (localPlayer)
+        {
+            localPlayer->pickedUp(itemInfo, amount,
+                identified, floorId, Pickup::OKAY);
+        }
+
+        if (inventory)
+        {
+            const Item *const item = inventory->getItem(index);
+
+            if (item && item->getId() == itemId)
+                amount += item->getQuantity();
+
+            if (serverVersion < 1 && identified > 1)
+                identified = 1;
+
+            inventory->setItem(index, itemId, amount, refine,
+                identified, equipType != 0);
+        }
+        ArrowsListener::distributeEvent();
+    }
+    BLOCK_END("InventoryHandler::processPlayerInventoryAdd")
 }
 
 }  // namespace EAthena
