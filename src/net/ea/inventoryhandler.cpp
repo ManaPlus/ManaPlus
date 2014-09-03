@@ -386,20 +386,6 @@ void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
     BLOCK_END("InventoryHandler::processPlayerStorageClose")
 }
 
-void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
-{
-    BLOCK_START("InventoryHandler::processPlayerEquip")
-    const int index = msg.readInt16() - INVENTORY_OFFSET;
-    const int equipType = msg.readInt16();
-    const uint8_t flag = msg.readUInt8();
-
-    if (!flag)
-        NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
-    else
-        mEquips.setEquipment(getSlot(equipType), index);
-    BLOCK_END("InventoryHandler::processPlayerEquip")
-}
-
 void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerUnEquip")

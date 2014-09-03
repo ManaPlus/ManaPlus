@@ -22,6 +22,8 @@
 
 #include "net/tmwa/inventoryhandler.h"
 
+#include "notifymanager.h"
+
 #include "being/localplayer.h"
 #include "being/pickup.h"
 
@@ -31,6 +33,8 @@
 #include "net/tmwa/protocol.h"
 
 #include "net/ea/eaprotocol.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -394,6 +398,20 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         }
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
+}
+
+void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerEquip")
+    const int index = msg.readInt16() - INVENTORY_OFFSET;
+    const int equipType = msg.readInt16();
+    const uint8_t flag = msg.readUInt8();
+
+    if (!flag)
+        NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
+    else
+        mEquips.setEquipment(getSlot(equipType), index);
+    BLOCK_END("InventoryHandler::processPlayerEquip")
 }
 
 }  // namespace TmwAthena
