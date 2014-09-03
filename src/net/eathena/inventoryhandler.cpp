@@ -411,4 +411,18 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
     BLOCK_END("InventoryHandler::processPlayerEquip")
 }
 
+void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerUnEquip")
+    msg.readInt16();  // inder val - INVENTORY_OFFSET;
+    const int equipType = msg.readInt16();
+    const uint8_t flag = msg.readUInt8();
+
+    if (flag)
+        mEquips.setEquipment(getSlot(equipType), -1);
+    if (equipType & 0x8000)
+        ArrowsListener::distributeEvent();
+    BLOCK_END("InventoryHandler::processPlayerUnEquip")
+}
+
 }  // namespace EAthena
