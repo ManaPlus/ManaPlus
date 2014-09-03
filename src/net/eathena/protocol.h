@@ -226,7 +226,7 @@
 
 #define CMSG_PLAYER_INVENTORY_USE    0x0439
 #define CMSG_PLAYER_INVENTORY_DROP   0x0362
-#define CMSG_PLAYER_EQUIP            0x00a9
+#define CMSG_PLAYER_EQUIP            0x0998
 #define CMSG_PLAYER_UNEQUIP          0x00ab
 
 #define CMSG_ITEM_PICKUP             0x07e4

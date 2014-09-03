@@ -149,8 +149,8 @@ void InventoryHandler::equipItem(const Item *const item) const
 
     MessageOut outMsg(CMSG_PLAYER_EQUIP);
     outMsg.writeInt16(static_cast<int16_t>(
-        item->getInvIndex() + INVENTORY_OFFSET));
-    outMsg.writeInt16(0);
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
+    outMsg.writeInt32(0, "wear location");
 }
 
 void InventoryHandler::unequipItem(const Item *const item) const
