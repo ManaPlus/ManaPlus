@@ -328,4 +328,74 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     BLOCK_END("InventoryHandler::processPlayerInventoryAdd")
 }
 
+void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerInventory")
+    const bool playerInvintory = msg.getId() == SMSG_PLAYER_INVENTORY;
+    Inventory *const inventory = localPlayer
+        ? PlayerInfo::getInventory() : nullptr;
+    if (playerInvintory)
+    {
+        if (PlayerInfo::getEquipment())
+        {
+            // Clear inventory - this will be a complete refresh
+            mEquips.clear();
+            PlayerInfo::getEquipment()->setBackend(&mEquips);
+        }
+
+        if (inventory)
+            inventory->clear();
+    }
+    else
+    {
+        mInventoryItems.clear();
+    }
+
+    msg.readInt16();  // length
+    const int number = (msg.getLength() - 4) / 18;
+
+    for (int loop = 0; loop < number; loop++)
+    {
+        int cards[4];
+        const int index = msg.readInt16() - (playerInvintory
+            ? INVENTORY_OFFSET : STORAGE_OFFSET);
+        const int itemId = msg.readInt16();
+        const uint8_t itemType = msg.readUInt8();
+        uint8_t identified = msg.readUInt8();
+        const int amount = msg.readInt16();
+        const int arrow = msg.readInt16();
+        for (int i = 0; i < 4; i++)
+            cards[i] = msg.readInt16();
+
+        if (mDebugInventory)
+        {
+            logger->log("Index: %d, ID: %d, Type: %d, Identified: %d, "
+                        "Qty: %d, Cards: %d, %d, %d, %d",
+                        index, itemId, itemType, identified, amount,
+                        cards[0], cards[1], cards[2], cards[3]);
+        }
+
+        if (serverVersion < 1 && identified > 1)
+            identified = 1;
+
+        if (playerInvintory)
+        {
+            // Trick because arrows are not considered equipment
+            const bool isEquipment = arrow & 0x8000;
+
+            if (inventory)
+            {
+                inventory->setItem(index, itemId, amount,
+                                   0, identified, isEquipment);
+            }
+        }
+        else
+        {
+            mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
+                amount, 0, identified, false));
+        }
+    }
+    BLOCK_END("InventoryHandler::processPlayerInventory")
+}
+
 }  // namespace EAthena

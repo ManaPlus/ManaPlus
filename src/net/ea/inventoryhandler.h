@@ -80,8 +80,6 @@ class InventoryHandler notfinal : public Net::InventoryHandler
 
         static int getSlot(const int eAthenaSlot) A_WARN_UNUSED;
 
-        void processPlayerInventory(Net::MessageIn &msg);
-
         void processPlayerStorageEquip(Net::MessageIn &msg);
 
         static void processPlayerInventoryRemove(Net::MessageIn &msg);
