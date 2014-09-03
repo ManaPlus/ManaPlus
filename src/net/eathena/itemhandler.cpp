@@ -68,14 +68,15 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
 
 void ItemHandler::processItemDropped(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32();
-    const int itemId = msg.readInt16();
-    const uint8_t identify = msg.readUInt8();  // identify flag
-    const int x = msg.readInt16();
-    const int y = msg.readInt16();
-    const int subX = static_cast<int>(msg.readInt8());
-    const int subY = static_cast<int>(msg.readInt8());
-    const int amount = msg.readInt16();
+    const int id = msg.readInt32("id");
+    const int itemId = msg.readInt16("item id");
+    msg.readInt16("type");
+    const uint8_t identify = msg.readUInt8("identify");
+    const int x = msg.readInt16("x");
+    const int y = msg.readInt16("y");
+    const int subX = static_cast<int>(msg.readInt8("subx"));
+    const int subY = static_cast<int>(msg.readInt8("suby"));
+    const int amount = msg.readInt16("count");
 
     if (actorManager)
     {
