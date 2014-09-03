@@ -154,7 +154,9 @@ void InventoryHandler::equipItem(const Item *const item) const
     MessageOut outMsg(CMSG_PLAYER_EQUIP);
     outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
-    outMsg.writeInt32(0, "wear location");
+    // here we set flag for any slots,
+    // probably better set to slot from item properties
+    outMsg.writeInt32(0xFFFFFFFFU, "wear location");
 }
 
 void InventoryHandler::unequipItem(const Item *const item) const
@@ -234,8 +236,8 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         msg.readUInt8("item type");
 //        uint8_t identified = msg.readUInt8();      // identify flag
 
-        const int equipType = msg.readInt32("location");
-        msg.readInt32("wear state");
+        msg.readInt32("location");
+        const int equipType = msg.readInt32("wear state");
         const uint8_t refine = static_cast<uint8_t>(msg.readInt8("refine"));
         msg.readInt16("card0");
         msg.readInt16("card1");
@@ -363,10 +365,9 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         const int index = msg.readInt16("item index") - (playerInvintory
             ? INVENTORY_OFFSET : STORAGE_OFFSET);
         const int itemId = msg.readInt16("item id");
-        const uint8_t itemType = msg.readUInt8("item type");
+        msg.readUInt8("item type");
         const int amount = msg.readInt16("count");
-        msg.readInt16("count");
-        msg.readInt16("wear state / equip");
+        msg.readInt32("wear state / equip");
         msg.readInt16("card0");
         msg.readInt16("card1");
         msg.readInt16("card2");
@@ -404,7 +405,7 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
     msg.readInt16("sprite");
     const uint8_t flag = msg.readUInt8("result");
 
-    if (!flag)
+    if (flag)
         NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
     else
         mEquips.setEquipment(getSlot(equipType), index);
@@ -418,7 +419,10 @@ void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
     const int equipType = msg.readInt32("wear location");
     const uint8_t flag = msg.readUInt8("result");
 
+    // need use UNEQUIP_FAILED event
     if (flag)
+        NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
+    else
         mEquips.setEquipment(getSlot(equipType), -1);
     if (equipType & 0x8000)
         ArrowsListener::distributeEvent();
