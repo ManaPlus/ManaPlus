@@ -414,9 +414,9 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
 void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerUnEquip")
-    msg.readInt16();  // inder val - INVENTORY_OFFSET;
-    const int equipType = msg.readInt16();
-    const uint8_t flag = msg.readUInt8();
+    msg.readInt16("index");
+    const int equipType = msg.readInt32("wear location");
+    const uint8_t flag = msg.readUInt8("result");
 
     if (flag)
         mEquips.setEquipment(getSlot(equipType), -1);
