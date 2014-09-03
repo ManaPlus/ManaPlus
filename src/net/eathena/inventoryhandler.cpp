@@ -399,9 +399,10 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
 void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerEquip")
-    const int index = msg.readInt16() - INVENTORY_OFFSET;
-    const int equipType = msg.readInt16();
-    const uint8_t flag = msg.readUInt8();
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    const int equipType = msg.readInt32("wear location");
+    msg.readInt16("sprite");
+    const uint8_t flag = msg.readUInt8("result");
 
     if (!flag)
         NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
