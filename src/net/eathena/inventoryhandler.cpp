@@ -351,42 +351,36 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         mInventoryItems.clear();
     }
 
-    msg.readInt16();  // length
-    const int number = (msg.getLength() - 4) / 18;
+    msg.readInt16("len");
+    const int number = (msg.getLength() - 4) / 23;
 
     for (int loop = 0; loop < number; loop++)
     {
-        int cards[4];
-        const int index = msg.readInt16() - (playerInvintory
+        const int index = msg.readInt16("item index") - (playerInvintory
             ? INVENTORY_OFFSET : STORAGE_OFFSET);
-        const int itemId = msg.readInt16();
-        const uint8_t itemType = msg.readUInt8();
-        uint8_t identified = msg.readUInt8();
-        const int amount = msg.readInt16();
-        const int arrow = msg.readInt16();
-        for (int i = 0; i < 4; i++)
-            cards[i] = msg.readInt16();
+        const int itemId = msg.readInt16("item id");
+        const uint8_t itemType = msg.readUInt8("item type");
+        const int amount = msg.readInt16("count");
+        msg.readInt16("count");
+        msg.readInt16("wear state / equip");
+        msg.readInt16("card0");
+        msg.readInt16("card1");
+        msg.readInt16("card2");
+        msg.readInt16("card3");
+        msg.readInt32("hire expire date (?)");
+        msg.readInt8("flags");
 
-        if (mDebugInventory)
-        {
-            logger->log("Index: %d, ID: %d, Type: %d, Identified: %d, "
-                        "Qty: %d, Cards: %d, %d, %d, %d",
-                        index, itemId, itemType, identified, amount,
-                        cards[0], cards[1], cards[2], cards[3]);
-        }
-
-        if (serverVersion < 1 && identified > 1)
-            identified = 1;
-
+        // need get actual identify flag
+        uint8_t identified = 1;
         if (playerInvintory)
         {
             // Trick because arrows are not considered equipment
-            const bool isEquipment = arrow & 0x8000;
+//            const bool isEquipment = arrow & 0x8000;
 
             if (inventory)
             {
                 inventory->setItem(index, itemId, amount,
-                                   0, identified, isEquipment);
+                    0, identified, false);
             }
         }
         else

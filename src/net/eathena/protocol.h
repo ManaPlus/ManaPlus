@@ -68,7 +68,7 @@
 #define SMSG_PLAYER_GET_EXP          0x07f6
 #define SMSG_WHO_ANSWER              0x00c2
 #define SMSG_PLAYER_WARP             0x0091 /**< Warp player to map/location */
-#define SMSG_PLAYER_INVENTORY        0x01ee
+#define SMSG_PLAYER_INVENTORY        0x0991
 #define SMSG_PLAYER_INVENTORY_ADD    0x0990
 #define SMSG_PLAYER_INVENTORY_REMOVE 0x00af
 #define SMSG_PLAYER_INVENTORY_USE    0x01c8
