@@ -46,6 +46,7 @@ TradeHandler::TradeHandler() :
     {
         SMSG_TRADE_REQUEST,
         SMSG_TRADE_RESPONSE,
+        SMSG_TRADE_RESPONSE2,
         SMSG_TRADE_ITEM_ADD,
         SMSG_TRADE_ITEM_ADD_RESPONSE,
         SMSG_TRADE_OK,
@@ -68,6 +69,10 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_TRADE_RESPONSE:
             processTradeResponse(msg);
+            break;
+
+        case SMSG_TRADE_RESPONSE2:
+            processTradeResponse2(msg);
             break;
 
         case SMSG_TRADE_ITEM_ADD:
@@ -152,6 +157,13 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg) const
     msg.readInt32("char id");
     msg.readInt16("base level");
     processTradeRequestContinue(partner);
+}
+
+void TradeHandler::processTradeResponse2(Net::MessageIn &msg) const
+{
+    msg.readUInt8("type");
+    msg.readInt32("char id");
+    msg.readInt16("base level");
 }
 
 }  // namespace EAthena
