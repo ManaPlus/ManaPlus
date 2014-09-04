@@ -26,6 +26,8 @@
 
 #include "being/playerinfo.h"
 
+#include "gui/windows/tradewindow.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -164,6 +166,29 @@ void TradeHandler::processTradeResponse2(Net::MessageIn &msg) const
     msg.readUInt8("type");
     msg.readInt32("char id");
     msg.readInt16("base level");
+}
+
+void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
+{
+    const int amount = msg.readInt32();
+    const int type = msg.readInt16();
+    const uint8_t identify = msg.readUInt8();  // identified flag
+    msg.readUInt8();  // attribute
+    const uint8_t refine = msg.readUInt8();  // refine
+    msg.skip(8);      // card (4 shorts)
+
+    if (tradeWindow)
+    {
+        if (type == 0)
+        {
+            tradeWindow->setMoney(amount);
+        }
+        else
+        {
+            tradeWindow->addItem2(type, false, amount,
+                refine, identify, false);
+        }
+    }
 }
 
 }  // namespace EAthena

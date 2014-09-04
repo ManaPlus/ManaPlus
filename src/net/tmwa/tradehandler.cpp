@@ -26,6 +26,8 @@
 
 #include "being/playerinfo.h"
 
+#include "gui/windows/tradewindow.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
@@ -151,6 +153,29 @@ void TradeHandler::cancel() const
 void TradeHandler::processTradeRequest(Net::MessageIn &msg) const
 {
     processTradeRequestContinue(msg.readString(24, "name"));
+}
+
+void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
+{
+    const int amount = msg.readInt32();
+    const int type = msg.readInt16();
+    const uint8_t identify = msg.readUInt8();  // identified flag
+    msg.readUInt8();  // attribute
+    const uint8_t refine = msg.readUInt8();  // refine
+    msg.skip(8);      // card (4 shorts)
+
+    if (tradeWindow)
+    {
+        if (type == 0)
+        {
+            tradeWindow->setMoney(amount);
+        }
+        else
+        {
+            tradeWindow->addItem2(type, false, amount,
+                refine, identify, false);
+        }
+    }
 }
 
 }  // namespace TmwAthena

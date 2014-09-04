@@ -56,6 +56,8 @@ class TradeHandler final : public MessageHandler, public Ea::TradeHandler
 
     protected:
         void processTradeRequest(Net::MessageIn &msg) const;
+
+        static void processTradeItemAdd(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

@@ -45,8 +45,6 @@ class TradeHandler notfinal : public Net::TradeHandler
 
         void processTradeResponse(Net::MessageIn &msg) const;
 
-        static void processTradeItemAdd(Net::MessageIn &msg);
-
         static void processTradeItemAddResponse(Net::MessageIn &msg);
 
         static void processTradeOk(Net::MessageIn &msg);
