@@ -44,19 +44,26 @@ extern int serverVersion;
 
 const Equipment::Slot EQUIP_POINTS[Equipment::EQUIP_VECTOREND] =
 {
-    Equipment::EQUIP_LEGS_SLOT,
-    Equipment::EQUIP_FIGHT1_SLOT,
-    Equipment::EQUIP_GLOVES_SLOT,
-    Equipment::EQUIP_RING2_SLOT,
-    Equipment::EQUIP_RING1_SLOT,
-    Equipment::EQUIP_FIGHT2_SLOT,
-    Equipment::EQUIP_FEET_SLOT,
-    Equipment::EQUIP_NECK_SLOT,
-    Equipment::EQUIP_HEAD_SLOT,
-    Equipment::EQUIP_TORSO_SLOT,
-    Equipment::EQUIP_EVOL_RING1_SLOT,
-    Equipment::EQUIP_EVOL_RING2_SLOT,
-    Equipment::EQUIP_PROJECTILE_SLOT,
+    Equipment::EQUIP_LEGS_SLOT,               // Lower Headgear
+    Equipment::EQUIP_FIGHT1_SLOT,             // Weapon
+    Equipment::EQUIP_GLOVES_SLOT,             // Garment
+    Equipment::EQUIP_RING2_SLOT,              // Accessory 1
+    Equipment::EQUIP_RING1_SLOT,              // Armor
+    Equipment::EQUIP_FIGHT2_SLOT,             // Shield
+    Equipment::EQUIP_FEET_SLOT,               // Footgear
+    Equipment::EQUIP_NECK_SLOT,               // Accessory 2
+    Equipment::EQUIP_HEAD_SLOT,               // Upper Headgear
+    Equipment::EQUIP_TORSO_SLOT,              // Middle Headgear
+    Equipment::EQUIP_EVOL_RING1_SLOT,         // Costume Top Headgear
+    Equipment::EQUIP_EVOL_RING2_SLOT,         // Costume Mid Headgear
+    Equipment::EQUIP_PROJECTILE_SLOT,         // Costume Low Headgear
+    Equipment::EQUIP_COSTUME_ROBE_SLOT,       // Costume Garment/Robe
+    Equipment::EQUIP_SHADOW_ARMOR_SLOT,       // Shadow Armor
+    Equipment::EQUIP_SHADOW_WEAPON_SLOT,      // Shadow Weapon
+    Equipment::EQUIP_SHADOW_SHIELD_SLOT,      // Shadow Shield
+    Equipment::EQUIP_SHADOW_SHOES_SLOT,       // Shadow Shoes
+    Equipment::EQUIP_SHADOW_ACCESSORY2_SLOT,  // Shadow Accessory 2
+    Equipment::EQUIP_SHADOW_ACCESSORY1_SLOT,  // Shadow Accessory 1
 };
 
 // missing EQUIP_RING1_SLOT

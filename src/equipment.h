@@ -61,6 +61,13 @@ class Equipment final
             EQUIP_PROJECTILE_SLOT = 10,
             EQUIP_EVOL_RING1_SLOT = 11,
             EQUIP_EVOL_RING2_SLOT = 12,
+            EQUIP_COSTUME_ROBE_SLOT = 13,
+            EQUIP_SHADOW_ARMOR_SLOT = 14,
+            EQUIP_SHADOW_WEAPON_SLOT = 15,
+            EQUIP_SHADOW_SHIELD_SLOT = 16,
+            EQUIP_SHADOW_SHOES_SLOT = 17,
+            EQUIP_SHADOW_ACCESSORY1_SLOT = 18,
+            EQUIP_SHADOW_ACCESSORY2_SLOT = 19,
             EQUIP_VECTOREND
         };
 
