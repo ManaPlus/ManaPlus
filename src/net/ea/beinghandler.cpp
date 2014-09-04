@@ -433,8 +433,11 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg) const
                 }
                 localPlayer->checkNewName(dstBeing);
             }
+            BLOCK_END("BeingHandler::processNameResponse")
+            return;
         }
     }
+    msg.readString(24, "name");
     BLOCK_END("BeingHandler::processNameResponse")
 }
 

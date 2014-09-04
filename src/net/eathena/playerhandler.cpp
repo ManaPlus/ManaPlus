@@ -244,6 +244,7 @@ void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
         msg.readInt32("item or skill id");
         msg.readInt16("skill level");
     }
+    msg.skip(77, "unused");
 }
 
 void PlayerHandler::processPlayerShowEquip(Net::MessageIn &msg)
