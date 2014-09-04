@@ -146,4 +146,9 @@ void TradeHandler::cancel() const
     MessageOut outMsg(CMSG_TRADE_CANCEL_REQUEST);
 }
 
+void TradeHandler::processTradeRequest(Net::MessageIn &msg) const
+{
+    processTradeRequestContinue(msg.readString(24, "name"));
+}
+
 }  // namespace EAthena

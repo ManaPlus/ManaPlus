@@ -69,55 +69,6 @@ void TradeHandler::removeItem(const int slotNum A_UNUSED,
 {
 }
 
-void TradeHandler::processTradeRequest(Net::MessageIn &msg) const
-{
-    // If a trade window or request window is already open, send a
-    // trade cancel to any other trade request.
-    //
-    // Note that it would be nice if the server would prevent this
-    // situation, and that the requesting player would get a
-    // special message about the player being occupied.
-    std::string tradePartnerNameTemp = msg.readString(24);
-
-    if (player_relations.hasPermission(tradePartnerNameTemp,
-        PlayerRelation::TRADE))
-    {
-        if (PlayerInfo::isTrading() || confirmDlg)
-        {
-            respond(false);
-            return;
-        }
-
-        tradePartnerName = tradePartnerNameTemp;
-        PlayerInfo::setTrading(true);
-        if (tradeWindow)
-        {
-            if (tradePartnerName.empty() || tradeWindow->getAutoTradeNick()
-                != tradePartnerName)
-            {
-                tradeWindow->clear();
-                // TRANSLATORS: trade message
-                confirmDlg = new ConfirmDialog(_("Request for Trade"),
-                    // TRANSLATORS: trade message
-                    strprintf(_("%s wants to trade with you, do"
-                    " you accept?"), tradePartnerName.c_str()),
-                    SOUND_REQUEST, true);
-                confirmDlg->postInit();
-                confirmDlg->addActionListener(&listener);
-            }
-            else
-            {
-                respond(true);
-            }
-        }
-    }
-    else
-    {
-        respond(false);
-        return;
-    }
-}
-
 void TradeHandler::processTradeResponse(Net::MessageIn &msg) const
 {
     if (confirmDlg || tradePartnerName.empty()
@@ -279,6 +230,47 @@ void TradeHandler::processTradeComplete(Net::MessageIn &msg A_UNUSED)
         tradeWindow->reset();
     }
     PlayerInfo::setTrading(false);
+}
+
+void TradeHandler::processTradeRequestContinue(const std::string &partner) const
+{
+    if (player_relations.hasPermission(partner,
+        PlayerRelation::TRADE))
+    {
+        if (PlayerInfo::isTrading() || confirmDlg)
+        {
+            respond(false);
+            return;
+        }
+
+        tradePartnerName = partner;
+        PlayerInfo::setTrading(true);
+        if (tradeWindow)
+        {
+            if (tradePartnerName.empty() || tradeWindow->getAutoTradeNick()
+                != tradePartnerName)
+            {
+                tradeWindow->clear();
+                // TRANSLATORS: trade message
+                confirmDlg = new ConfirmDialog(_("Request for Trade"),
+                    // TRANSLATORS: trade message
+                    strprintf(_("%s wants to trade with you, do"
+                    " you accept?"), tradePartnerName.c_str()),
+                    SOUND_REQUEST, true);
+                confirmDlg->postInit();
+                confirmDlg->addActionListener(&listener);
+            }
+            else
+            {
+                respond(true);
+            }
+        }
+    }
+    else
+    {
+        respond(false);
+        return;
+    }
 }
 
 }  // namespace Ea
