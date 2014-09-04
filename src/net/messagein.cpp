@@ -47,6 +47,26 @@ MessageIn::MessageIn(const char *const data, const unsigned int length) :
     DEBUGLOG("MessageIn");
 }
 
+MessageIn::~MessageIn()
+{
+    if (mLength)
+    {
+        if (mPos != mLength && mPos != 2)
+        {
+            logger->log("Wrong actual or planned inbound packet size!");
+            logger->log(" packet id: %d 0x%x",
+                static_cast<int>(mId),
+                static_cast<int>(mId));
+            logger->log(" planned size: %u", mLength);
+            logger->log(" read size: %u", mPos);
+        }
+    }
+    else
+    {
+        logger->log("Zero packet size: %d", static_cast<int>(mId));
+    }
+}
+
 unsigned char MessageIn::readUInt8(const char *const str)
 {
     unsigned char value = static_cast<unsigned char>(-1);

@@ -40,6 +40,8 @@ class MessageIn notfinal
     public:
         A_DELETE_COPY(MessageIn)
 
+        virtual ~MessageIn();
+
         /**
          * Returns the message ID.
          */
@@ -108,9 +110,6 @@ class MessageIn notfinal
 
         unsigned char *readBytes(int length,
                                  const char *const dstr = nullptr);
-
-        virtual ~MessageIn()
-        { }
 
         static uint8_t fromServerDirection(const uint8_t serverDir)
                                            A_WARN_UNUSED;
