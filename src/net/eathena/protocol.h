@@ -87,7 +87,7 @@
 #define SMSG_ITEM_DROPPED            0x084b /**< An item is dropped */
 #define SMSG_ITEM_REMOVE             0x00a1 /**< An item disappers */
 #define SMSG_BEING_VISIBLE           0x0857
-#define SMSG_BEING_MOVE              0x007b /**< A nearby monster moves */
+#define SMSG_BEING_MOVE              0x0856 /**< A nearby monster moves */
 #define SMSG_BEING_SPAWN             0x007c /**< A being spawns nearby */
 #define SMSG_BEING_MOVE2             0x0086 /**< New eAthena being moves */
 #define SMSG_BEING_REMOVE            0x0080

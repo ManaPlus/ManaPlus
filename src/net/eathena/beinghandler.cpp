@@ -638,11 +638,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
 
     const bool visible = msg.getId() == SMSG_BEING_VISIBLE;
 
-    if (visible)
-    {
-        msg.readInt16("len");
-        msg.readUInt8("object type");
-    }
+    msg.readInt16("len");
+    msg.readUInt8("object type");
 
     // Information about a being in range
     const int id = msg.readInt32("being id");
@@ -653,10 +650,23 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         spawnId = 0;
     mSpawnId = 0;
     int16_t speed = msg.readInt16("speed");
-    const uint16_t stunMode = msg.readInt16("opt1");
-    // probably wrong effect usage
-    uint32_t statusEffects = msg.readInt16("opt2");
-    msg.readInt32("option");
+//    if (visible)
+//    {
+        const uint16_t stunMode = msg.readInt16("opt1");
+        // probably wrong effect usage
+        uint32_t statusEffects = msg.readInt16("opt2");
+//    }
+//    else
+//    {
+// commented for now, probably it can be removed after testing
+//        msg.readInt16("body state");
+//        msg.readInt16("health state");
+//    }
+    if (visible)
+        msg.readInt32("option");
+    else
+        msg.readInt32("effect state");
+
     const int16_t job = msg.readInt16("class");
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -721,7 +731,9 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
     const uint32_t weapon = static_cast<uint32_t>(msg.readInt32("weapon"));
     const uint16_t headBottom = msg.readInt16("head bottom");
 
-//    const uint16_t shield = msg.readInt16("shield");
+    if (!visible)
+        msg.readInt32("tick");
+
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
     const int hairColor = msg.readInt16("hair color");
@@ -776,6 +788,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
     {
         uint16_t srcX, srcY, dstX, dstY;
         msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
+        msg.readInt8("xs");
+        msg.readInt8("ys");
         dstBeing->setAction(BeingAction::STAND, 0);
         dstBeing->setTileCoords(srcX, srcY);
         dstBeing->setDestination(dstX, dstY);
@@ -787,6 +801,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         msg.readCoordinates(x, y, dir, "position");
         msg.readInt8("xs");
         msg.readInt8("ys");
+        msg.readUInt8("action type");
         dstBeing->setTileCoords(x, y);
 
         if (job == 45 && socialWindow && outfitWindow)
@@ -806,12 +821,12 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         dstBeing->setDirection(dir);
     }
 
-    msg.readUInt8("action type");
-
     const int level = static_cast<int>(msg.readInt16("level"));
     if (level)
         dstBeing->setLevel(level);
     msg.readInt16("font");
+
+    // here map hp/hp for PACKETVER >= 20150000 for now unsupported
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
