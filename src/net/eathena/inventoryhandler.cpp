@@ -286,12 +286,11 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     msg.readInt16("card3");
     const int equipType = msg.readInt32("location");
     msg.readUInt8("item type");
-    msg.readUInt8("fail flag");
+    const unsigned char err = msg.readUInt8("result");
     msg.readInt32("hire expire date");
-    msg.readInt16("equip type");
+    msg.readInt16("bind on equip");
 
     const ItemInfo &itemInfo = ItemDB::get(itemId);
-    const unsigned char err = msg.readUInt8();
     int floorId;
     if (mSentPickups.empty())
     {
