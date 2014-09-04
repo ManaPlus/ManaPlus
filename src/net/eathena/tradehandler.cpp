@@ -170,12 +170,16 @@ void TradeHandler::processTradeResponse2(Net::MessageIn &msg) const
 
 void TradeHandler::processTradeItemAdd(Net::MessageIn &msg)
 {
-    const int amount = msg.readInt32();
-    const int type = msg.readInt16();
-    const uint8_t identify = msg.readUInt8();  // identified flag
-    msg.readUInt8();  // attribute
-    const uint8_t refine = msg.readUInt8();  // refine
-    msg.skip(8);      // card (4 shorts)
+    const int type = msg.readInt16("type");
+    msg.readUInt8("item type");
+    const int amount = msg.readInt32("amount");
+    const uint8_t identify = msg.readUInt8("identify");
+    msg.readUInt8("attribute");
+    const uint8_t refine = msg.readUInt8("refine");
+    msg.readInt16("card 0");
+    msg.readInt16("card 1");
+    msg.readInt16("card 2");
+    msg.readInt16("card 3");
 
     if (tradeWindow)
     {
