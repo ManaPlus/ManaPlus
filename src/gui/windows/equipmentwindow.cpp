@@ -54,7 +54,7 @@
 
 EquipmentWindow *equipmentWindow = nullptr;
 EquipmentWindow *beingEquipmentWindow = nullptr;
-static const int BOX_COUNT = 13;
+static const int BOX_COUNT = 22;
 
 EquipmentWindow::EquipmentWindow(Equipment *const equipment,
                                  Being *const being,

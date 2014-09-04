@@ -58,6 +58,8 @@ const Equipment::Slot EQUIP_POINTS[Equipment::EQUIP_VECTOREND] =
     Equipment::EQUIP_EVOL_RING2_SLOT,         // Costume Mid Headgear
     Equipment::EQUIP_PROJECTILE_SLOT,         // Costume Low Headgear
     Equipment::EQUIP_COSTUME_ROBE_SLOT,       // Costume Garment/Robe
+    Equipment::EQUIP_MISSING1_SLOT,           // Missing slot 1
+    Equipment::EQUIP_MISSING2_SLOT,           // Missing slot 2
     Equipment::EQUIP_SHADOW_ARMOR_SLOT,       // Shadow Armor
     Equipment::EQUIP_SHADOW_WEAPON_SLOT,      // Shadow Weapon
     Equipment::EQUIP_SHADOW_SHIELD_SLOT,      // Shadow Shield
