@@ -975,4 +975,17 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
     BLOCK_END("BeingHandler::processBeingVisibleOrMove")
 }
 
+void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
+{
+    BLOCK_START("BeingHandler::processBeingSpawn")
+    // skipping this packet
+    mSpawnId = msg.readInt32("being id");
+    msg.readInt16("speed");
+    msg.readInt16("opt1");
+    msg.readInt16("opt2");
+    msg.readInt16("option");
+    msg.readInt16("disguise");
+    BLOCK_END("BeingHandler::processBeingSpawn")
+}
+
 }  // namespace TmwAthena

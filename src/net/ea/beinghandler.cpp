@@ -135,19 +135,6 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processBeingMove2")
 }
 
-void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
-{
-    BLOCK_START("BeingHandler::processBeingSpawn")
-    // skipping this packet
-    mSpawnId = msg.readInt32("being id");
-    msg.readInt16("speed");
-    msg.readInt16("opt1");
-    msg.readInt16("opt2");
-    msg.readInt16("option");
-    msg.readInt16("disguise");
-    BLOCK_END("BeingHandler::processBeingSpawn")
-}
-
 void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processBeingRemove")
