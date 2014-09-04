@@ -299,7 +299,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
             }
             break;
 
-        case 0x01:  // dead
+        case 0x01:  // dead or pickup?
             break;
             // tmw server can send here garbage?
 //            if (srcBeing)
