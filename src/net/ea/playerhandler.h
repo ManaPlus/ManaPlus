@@ -57,8 +57,6 @@ class PlayerHandler notfinal : public Net::PlayerHandler
 
         int getAttackLocation() const override final A_WARN_UNUSED;
 
-        static void processWalkResponse(Net::MessageIn &msg);
-
         static void processPlayerWarp(Net::MessageIn &msg);
 
         static void processPlayerStatUpdate1(Net::MessageIn &msg);

@@ -28,6 +28,7 @@
 
 #include "being/attributes.h"
 #include "being/beingflag.h"
+#include "being/localplayer.h"
 
 #include "gui/windows/statuswindow.h"
 
@@ -411,6 +412,22 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     msg.readInt16();  // manner
     BLOCK_END("PlayerHandler::processPlayerStatUpdate5")
+}
+
+void PlayerHandler::processWalkResponse(Net::MessageIn &msg)
+{
+    BLOCK_START("PlayerHandler::processWalkResponse")
+    /*
+      * This client assumes that all walk messages succeed,
+      * and that the server will send a correction notice
+      * otherwise.
+      */
+    uint16_t srcX, srcY, dstX, dstY;
+    msg.readInt32();  // tick
+    msg.readCoordinatePair(srcX, srcY, dstX, dstY);
+    if (localPlayer)
+        localPlayer->setRealPos(dstX, dstY);
+    BLOCK_END("PlayerHandler::processWalkResponse")
 }
 
 }  // namespace TmwAthena

@@ -340,4 +340,20 @@ void PlayerHandler::processPlayerGetExp(Net::MessageIn &msg)
     // need show particle depend on isQuest flag, for now ignored
 }
 
+void PlayerHandler::processWalkResponse(Net::MessageIn &msg)
+{
+    BLOCK_START("PlayerHandler::processWalkResponse")
+    /*
+      * This client assumes that all walk messages succeed,
+      * and that the server will send a correction notice
+      * otherwise.
+      */
+    uint16_t srcX, srcY, dstX, dstY;
+    msg.readInt32();  // tick
+    msg.readCoordinatePair(srcX, srcY, dstX, dstY);
+    if (localPlayer)
+        localPlayer->setRealPos(dstX, dstY);
+    BLOCK_END("PlayerHandler::processWalkResponse")
+}
+
 }  // namespace EAthena

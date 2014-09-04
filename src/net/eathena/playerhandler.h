@@ -64,6 +64,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         void processPlayerStatUpdate5(Net::MessageIn &msg);
 
         void processPlayerGetExp(Net::MessageIn &msg);
+
+        static void processWalkResponse(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
