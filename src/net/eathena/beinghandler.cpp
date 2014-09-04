@@ -528,6 +528,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg) const
     {
         uint16_t srcX, srcY, dstX, dstY;
         msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
+        msg.readUInt8("(sx<<4) | (sy&0x0f)");
 
         localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
 
@@ -737,7 +738,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
     const uint32_t weapon = static_cast<uint32_t>(msg.readInt32("weapon"));
     const uint16_t headBottom = msg.readInt16("head bottom");
 
-    if (!visible)
+    if (!visible && !spawn)
         msg.readInt32("tick");
 
     const uint16_t headTop = msg.readInt16("head top");
@@ -794,11 +795,34 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
     {
         uint16_t srcX, srcY, dstX, dstY;
         msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
+        msg.readUInt8("(sx<<4) | (sy&0x0f)");
         msg.readInt8("xs");
         msg.readInt8("ys");
         dstBeing->setAction(BeingAction::STAND, 0);
         dstBeing->setTileCoords(srcX, srcY);
         dstBeing->setDestination(dstX, dstY);
+
+        // because server don't send direction in move packet,
+        // we fixing it
+
+        int d = 0;
+        if (srcX == dstX && srcY == dstY)
+        {   // if player did one step from invisible area to visible,
+            //move path is broken
+            int x2 = localPlayer->getTileX();
+            int y2 = localPlayer->getTileY();
+            if (abs(x2 - srcX) > abs(y2 - srcY))
+                y2 = srcY;
+            else
+                x2 = srcX;
+            d = dstBeing->calcDirection(x2, y2);
+        }
+        else
+        {
+            d = dstBeing->calcDirection(dstX, dstY);
+        }
+        if (d && dstBeing->getDirection() != d)
+            dstBeing->setDirection(d);
     }
     else
     {
