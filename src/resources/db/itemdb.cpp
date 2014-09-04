@@ -728,6 +728,9 @@ int parseDirectionName(const std::string &name)
 void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 {
     const std::string gender = XML::getProperty(node, "gender", "unisex");
+    if (!node->xmlChildrenNode)
+        return;
+
     const std::string filename = reinterpret_cast<const char*>(
         node->xmlChildrenNode->content);
 
