@@ -126,7 +126,7 @@
 #define SMSG_WALK_RESPONSE           0x0087
 
 // Receiving a request to trade
-#define SMSG_TRADE_REQUEST           0x00e5
+#define SMSG_TRADE_REQUEST           0x01f4
 #define SMSG_TRADE_RESPONSE          0x00e7
 #define SMSG_TRADE_ITEM_ADD          0x00e9
 #define SMSG_TRADE_ITEM_ADD_RESPONSE 0x01b1 /**< Not standard eAthena! */

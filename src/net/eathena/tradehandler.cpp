@@ -148,7 +148,10 @@ void TradeHandler::cancel() const
 
 void TradeHandler::processTradeRequest(Net::MessageIn &msg) const
 {
-    processTradeRequestContinue(msg.readString(24, "name"));
+    const std::string &partner = msg.readString(24, "name");
+    msg.readInt32("char id");
+    msg.readInt16("base level");
+    processTradeRequestContinue(partner);
 }
 
 }  // namespace EAthena
