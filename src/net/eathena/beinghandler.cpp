@@ -108,17 +108,14 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
-        case SMSG_BEING_VISIBLE:  // changed
+        case SMSG_BEING_VISIBLE:
         case SMSG_BEING_MOVE:
+        case SMSG_BEING_SPAWN:
             processBeingVisibleOrMove(msg);
             break;
 
         case SMSG_BEING_MOVE2:
             processBeingMove2(msg);
-            break;
-
-        case SMSG_BEING_SPAWN:  // changed
-            processBeingSpawn(msg);
             break;
 
         case SMSG_BEING_REMOVE:
@@ -637,6 +634,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         return;
 
     const bool visible = msg.getId() == SMSG_BEING_VISIBLE;
+    const bool spawn = msg.getId() == SMSG_BEING_SPAWN;
 
     msg.readInt16("len");
     msg.readUInt8("object type");
@@ -644,11 +642,19 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
     // Information about a being in range
     const int id = msg.readInt32("being id");
     int spawnId;
-    if (id == mSpawnId)
-        spawnId = mSpawnId;
+    if (spawn)
+    {
+        mSpawnId = id;
+        spawnId = id;
+    }
     else
-        spawnId = 0;
-    mSpawnId = 0;
+    {
+        if (id == mSpawnId)
+            spawnId = mSpawnId;
+        else
+            spawnId = 0;
+        mSpawnId = 0;
+    }
     int16_t speed = msg.readInt16("speed");
 //    if (visible)
 //    {
@@ -784,7 +790,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         }
     }
 
-    if (!visible)
+    if (!visible && !spawn)
     {
         uint16_t srcX, srcY, dstX, dstY;
         msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
@@ -801,7 +807,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
         msg.readCoordinates(x, y, dir, "position");
         msg.readInt8("xs");
         msg.readInt8("ys");
-        msg.readUInt8("action type");
+        if (visible)
+            msg.readUInt8("action type");
         dstBeing->setTileCoords(x, y);
 
         if (job == 45 && socialWindow && outfitWindow)
