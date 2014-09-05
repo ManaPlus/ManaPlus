@@ -168,6 +168,7 @@ class WhoIsOnline final : public Window,
         bool mShowLevel;
         bool mUpdateOnlineList;
         bool mGroupFriends;
+        bool mServerSideList;
 };
 
 extern WhoIsOnline *whoIsOnline;

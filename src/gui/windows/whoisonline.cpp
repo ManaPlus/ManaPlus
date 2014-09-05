@@ -51,6 +51,7 @@
 #include "net/net.h"
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
+#include "net/serverfeatures.h"
 
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
@@ -111,8 +112,8 @@ WhoIsOnline::WhoIsOnline() :
     mAllowUpdate(true),
     mShowLevel(false),
     mUpdateOnlineList(config.getBoolValue("updateOnlineList")),
-
-    mGroupFriends(true)
+    mGroupFriends(true),
+    mServerSideList(Net::getServerFeatures()->haveOnlineList())
 {
     mCurlError[0] = 0;
     setWindowName("WhoIsOnline");
@@ -588,7 +589,7 @@ int WhoIsOnline::downloadThread(void *ptr)
 
 void WhoIsOnline::download()
 {
-    if (serverVersion < 3)
+    if (!mServerSideList)
     {
         mDownloadComplete = true;
         if (mThread && SDL_GetThreadID(mThread))
@@ -681,7 +682,7 @@ void WhoIsOnline::action(const ActionEvent &event)
 {
     if (event.getId() == "update")
     {
-        if (serverVersion < 3)
+        if (!mServerSideList)
         {
             if (mDownloadStatus == UPDATE_COMPLETE)
             {
