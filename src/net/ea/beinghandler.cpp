@@ -493,8 +493,12 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
             dstBeing->setTileCoords(x, y);
             if (dstBeing->getCurrentAction() == BeingAction::MOVE)
                 dstBeing->setAction(BeingAction::STAND, 0);
+            BLOCK_END("BeingHandler::processPlayerStop")
+            return;
         }
     }
+    msg.readInt16("x");
+    msg.readInt16("y");
     BLOCK_END("BeingHandler::processPlayerStop")
 }
 
