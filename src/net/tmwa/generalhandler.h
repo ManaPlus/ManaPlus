@@ -30,6 +30,8 @@
 namespace TmwAthena
 {
 
+class ServerFeatures;
+
 class GeneralHandler final : public MessageHandler,
                              public Net::GeneralHandler
 {
@@ -76,6 +78,7 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mSkillHandler;
         MessageHandlerPtr mTradeHandler;
         MessageHandlerPtr mQuestHandler;
+        ServerFeatures *mServerFeatures;
 };
 
 }  // namespace TmwAthena

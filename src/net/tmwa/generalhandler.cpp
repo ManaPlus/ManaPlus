@@ -55,6 +55,7 @@
 #include "net/tmwa/pethandler.h"
 #include "net/tmwa/playerhandler.h"
 #include "net/tmwa/protocol.h"
+#include "net/tmwa/serverfeatures.h"
 #include "net/tmwa/tradehandler.h"
 #include "net/tmwa/skillhandler.h"
 #include "net/tmwa/questhandler.h"
@@ -92,7 +93,8 @@ GeneralHandler::GeneralHandler() :
     mPlayerHandler(new PlayerHandler),
     mSkillHandler(new SkillHandler),
     mTradeHandler(new TradeHandler),
-    mQuestHandler(new QuestHandler)
+    mQuestHandler(new QuestHandler),
+    mServerFeatures(new ServerFeatures)
 {
     static const uint16_t _messages[] =
     {

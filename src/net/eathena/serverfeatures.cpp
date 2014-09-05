@@ -22,8 +22,15 @@
 
 #include "debug.h"
 
+extern Net::ServerFeatures *serverFeatures;
+
 namespace EAthena
 {
+
+ServerFeatures::ServerFeatures()
+{
+    serverFeatures = this;
+}
 
 bool ServerFeatures::haveOnlineList() const
 {

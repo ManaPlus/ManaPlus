@@ -30,6 +30,10 @@ namespace EAthena
 class ServerFeatures final : public Net::ServerFeatures
 {
     public:
+        ServerFeatures();
+
+        A_DELETE_COPY(ServerFeatures)
+
         bool haveOnlineList() const override final;
 };
 

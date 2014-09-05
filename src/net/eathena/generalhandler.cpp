@@ -54,6 +54,7 @@
 #include "net/eathena/partyhandler.h"
 #include "net/eathena/playerhandler.h"
 #include "net/eathena/protocol.h"
+#include "net/eathena/serverfeatures.h"
 #include "net/eathena/tradehandler.h"
 #include "net/eathena/skillhandler.h"
 #include "net/eathena/questhandler.h"
@@ -90,7 +91,8 @@ GeneralHandler::GeneralHandler() :
     mPlayerHandler(new PlayerHandler),
     mSkillHandler(new SkillHandler),
     mTradeHandler(new TradeHandler),
-    mQuestHandler(new QuestHandler)
+    mQuestHandler(new QuestHandler),
+    mServerFeatures(new ServerFeatures)
 {
     static const uint16_t _messages[] =
     {

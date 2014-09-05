@@ -20,12 +20,20 @@
 
 #include "net/tmwa/serverfeatures.h"
 
+#include "net/net.h"
+
 #include "debug.h"
 
 extern int serverVersion;
+extern Net::ServerFeatures *serverFeatures;
 
 namespace TmwAthena
 {
+
+ServerFeatures::ServerFeatures()
+{
+    serverFeatures = this;
+}
 
 bool ServerFeatures::haveOnlineList() const
 {
