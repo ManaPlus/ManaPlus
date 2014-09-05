@@ -25,6 +25,7 @@ namespace SkillType
 {
     enum SkillType
     {
+        Unknown    = 0,
         Attack     = 1,
         Ground     = 2,
         Self       = 4,

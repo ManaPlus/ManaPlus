@@ -27,6 +27,8 @@
 
 #include "listeners/actionlistener.h"
 
+#include "resources/skilltype.h"
+
 class Button;
 class Label;
 class SkillModel;
@@ -76,14 +78,14 @@ class SkillDialog final : public Window,
         bool updateSkill(const int id,
                          const int range,
                          const bool modifiable,
-                         const int type);
+                         const SkillType::SkillType type);
 
         void addSkill(const int id,
                       const std::string &name,
                       const int level,
                       const int range,
                       const bool modifiable,
-                      const int type);
+                      const SkillType::SkillType type);
 
         SkillInfo* getSkill(const int id) const A_WARN_UNUSED;
 

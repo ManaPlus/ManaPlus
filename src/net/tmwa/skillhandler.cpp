@@ -109,7 +109,8 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
     for (int k = 0; k < skillCount; k++)
     {
         const int skillId = msg.readInt16();
-        const int inf = msg.readInt16();
+        const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
+            msg.readInt16());
         msg.skip(2);  // skill pool flags
         const int level = msg.readInt16();
         msg.readInt16();  // sp

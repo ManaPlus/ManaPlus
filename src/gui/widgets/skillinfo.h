@@ -25,6 +25,8 @@
 
 #include "gui/color.h"
 
+#include "resources/skilltype.h"
+
 #include <vector>
 #include <map>
 #include <string>
@@ -53,7 +55,7 @@ struct SkillInfo final
     int skillLevelWidth;
     unsigned int id;
     int range;
-    int type;
+    SkillType::SkillType type;
     bool modifiable;
     bool visible;
 
