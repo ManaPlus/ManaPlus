@@ -48,6 +48,7 @@ SkillInfo::SkillInfo() :
     skillLevelWidth(0),
     id(0),
     range(0),
+    type(0),
     modifiable(false),
     visible(false)
 {

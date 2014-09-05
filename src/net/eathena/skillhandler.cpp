@@ -107,7 +107,7 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
     for (int k = 0; k < skillCount; k++)
     {
         const int skillId = msg.readInt16("skill id");
-        msg.readInt32("inf");  // what is it?
+        const int inf = msg.readInt32("inf");
         const int level = msg.readInt16("skill level");
         msg.readInt16("sp");
         const int range = msg.readInt16("range");
@@ -119,8 +119,8 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
         PlayerInfo::setSkillLevel(skillId, level);
         if (skillDialog)
         {
-            if (!skillDialog->updateSkill(skillId, range, up))
-                skillDialog->addSkill(skillId, name, level, range, up);
+            if (!skillDialog->updateSkill(skillId, range, up, inf))
+                skillDialog->addSkill(skillId, name, level, range, up, inf);
         }
     }
     if (updateSkill && skillDialog)

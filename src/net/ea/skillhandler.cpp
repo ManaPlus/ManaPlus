@@ -88,8 +88,8 @@ void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg)
     PlayerInfo::setSkillLevel(skillId, level);
     if (skillDialog)
     {
-        if (!skillDialog->updateSkill(skillId, range, up))
-            skillDialog->addSkill(skillId, "", level, range, up);
+        if (!skillDialog->updateSkill(skillId, range, up, 0))
+            skillDialog->addSkill(skillId, "", level, range, up, 0);
     }
 }
 

@@ -109,7 +109,7 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
     for (int k = 0; k < skillCount; k++)
     {
         const int skillId = msg.readInt16();
-        msg.readInt16();  // target type
+        const int inf = msg.readInt16();
         msg.skip(2);  // skill pool flags
         const int level = msg.readInt16();
         msg.readInt16();  // sp
@@ -122,8 +122,8 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
         PlayerInfo::setSkillLevel(skillId, level);
         if (skillDialog)
         {
-            if (!skillDialog->updateSkill(skillId, range, up))
-                skillDialog->addSkill(skillId, "", level, range, up);
+            if (!skillDialog->updateSkill(skillId, range, up, inf))
+                skillDialog->addSkill(skillId, "", level, range, up, inf);
         }
     }
     if (updateSkill && skillDialog)

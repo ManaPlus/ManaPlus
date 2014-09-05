@@ -342,8 +342,10 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
     }
 }
 
-bool SkillDialog::updateSkill(const int id, const int range,
-                              const bool modifiable)
+bool SkillDialog::updateSkill(const int id,
+                              const int range,
+                              const bool modifiable,
+                              const int type)
 {
     const SkillMap::const_iterator it = mSkills.find(id);
 
@@ -354,6 +356,7 @@ bool SkillDialog::updateSkill(const int id, const int range,
         {
             info->modifiable = modifiable;
             info->range = range;
+            info->type = type;
             info->update();
         }
         return true;
@@ -365,12 +368,14 @@ void SkillDialog::addSkill(const int id,
                            const std::string &name,
                            const int level,
                            const int range,
-                           const bool modifiable)
+                           const bool modifiable,
+                           const int type)
 {
     if (mDefaultModel)
     {
         SkillInfo *const skill = new SkillInfo;
         skill->id = static_cast<unsigned int>(id);
+        skill->type = type;
         SkillData *const data = skill->data;
         if (name.empty())
         {
