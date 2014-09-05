@@ -539,6 +539,7 @@ SET(SRCS
     net/registrationoptions.h
     net/sdltcpnet.cpp
     net/sdltcpnet.h
+    net/serverfeatures.h
     net/serverinfo.h
     net/skillhandler.h
     net/tradehandler.h
@@ -1310,6 +1311,8 @@ SET(SRCS_TMWA
     net/tmwa/protocol.h
     net/tmwa/questhandler.cpp
     net/tmwa/questhandler.h
+    net/tmwa/serverfeatures.cpp
+    net/tmwa/serverfeatures.h
     net/tmwa/skillhandler.cpp
     net/tmwa/skillhandler.h
     net/tmwa/sprite.h
@@ -1363,6 +1366,8 @@ SET(SRCS_EATHENA
     net/eathena/protocol.h
     net/eathena/questhandler.cpp
     net/eathena/questhandler.h
+    net/eathena/serverfeatures.cpp
+    net/eathena/serverfeatures.h
     net/eathena/skillhandler.cpp
     net/eathena/skillhandler.h
     net/eathena/sprite.h
