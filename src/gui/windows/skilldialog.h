@@ -73,6 +73,8 @@ class SkillDialog final : public Window,
 
         void clearSkills();
 
+        void hideSkills();
+
         void loadSkills();
 
         bool updateSkill(const int id,

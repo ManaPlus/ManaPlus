@@ -201,6 +201,16 @@ void SkillDialog::clearSkills()
     mSkills.clear();
 }
 
+void SkillDialog::hideSkills()
+{
+    FOR_EACH (SkillMap::iterator, it, mSkills)
+    {
+        SkillInfo *const info = (*it).second;
+        if (info)
+            info->visible = false;
+    }
+}
+
 void SkillDialog::loadSkills()
 {
     clearSkills();

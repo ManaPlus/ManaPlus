@@ -100,10 +100,12 @@ void SkillHandler::useMap(const int id, const std::string &map) const
 
 void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
 {
-    msg.readInt16();  // length
+    msg.readInt16("len");
     const int skillCount = (msg.getLength() - 4) / 37;
     int updateSkill = 0;
 
+    if (skillDialog)
+        skillDialog->hideSkills();
     for (int k = 0; k < skillCount; k++)
     {
         const int skillId = msg.readInt16("skill id");
