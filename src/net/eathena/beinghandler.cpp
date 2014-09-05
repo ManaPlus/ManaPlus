@@ -898,6 +898,11 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg) const
     const uint16_t status = msg.readInt16("status");
     const int id = msg.readInt32("being id");
     const bool flag = msg.readUInt8("flag: 0: stop, 1: start");
+    msg.readInt32("total");
+    msg.readInt32("left");
+    msg.readInt32("val1");
+    msg.readInt32("val2");
+    msg.readInt32("val3");
 
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
