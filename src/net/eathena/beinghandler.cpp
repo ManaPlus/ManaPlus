@@ -885,4 +885,24 @@ void BeingHandler::processSkillCasting(Net::MessageIn &msg) const
     msg.readInt8("dispossable");
 }
 
+void BeingHandler::processBeingStatusChange(Net::MessageIn &msg) const
+{
+    BLOCK_START("BeingHandler::processBeingStatusChange")
+    if (!actorManager)
+    {
+        BLOCK_END("BeingHandler::processBeingStatusChange")
+        return;
+    }
+
+    // Status change
+    const uint16_t status = msg.readInt16("status");
+    const int id = msg.readInt32("being id");
+    const bool flag = msg.readUInt8("flag: 0: stop, 1: start");
+
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (dstBeing)
+        dstBeing->setStatusEffect(status, flag);
+    BLOCK_END("BeingHandler::processBeingStatusChange")
+}
+
 }  // namespace EAthena

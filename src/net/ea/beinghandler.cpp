@@ -581,26 +581,6 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processPlayerStop")
 }
 
-void BeingHandler::processBeingStatusChange(Net::MessageIn &msg) const
-{
-    BLOCK_START("BeingHandler::processBeingStatusChange")
-    if (!actorManager)
-    {
-        BLOCK_END("BeingHandler::processBeingStatusChange")
-        return;
-    }
-
-    // Status change
-    const uint16_t status = msg.readInt16("status");
-    const int id = msg.readInt32("being id");
-    const bool flag = msg.readUInt8("flag: 0: stop, 1: start");
-
-    Being *const dstBeing = actorManager->findBeing(id);
-    if (dstBeing)
-        dstBeing->setStatusEffect(status, flag);
-    BLOCK_END("BeingHandler::processBeingStatusChange")
-}
-
 void BeingHandler::processSkillNoDamage(Net::MessageIn &msg) const
 {
     msg.readInt16("skill id");
