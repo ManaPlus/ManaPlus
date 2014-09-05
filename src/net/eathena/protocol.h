@@ -192,6 +192,7 @@
 #define SMSG_QUEST_REMOVE            0x02b4
 
 #define SMSG_MVP                     0x010c
+#define SMSG_MONSTER_HP              0x0977
 
 /**********************************
  *  Packets from client to server *

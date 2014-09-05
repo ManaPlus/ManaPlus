@@ -221,6 +221,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             processMapTypeProperty(msg);
             break;
 
+        case SMSG_MONSTER_HP:
+            processMonsterHp(msg);
+            break;
+
         default:
             break;
     }
@@ -1045,6 +1049,19 @@ void BeingHandler::processBeingAction2(Net::MessageIn &msg) const
             break;
     }
     BLOCK_END("BeingHandler::processBeingAction")
+}
+
+void BeingHandler::processMonsterHp(Net::MessageIn &msg) const
+{
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readInt32("monster id"));
+    const int hp = msg.readInt32("hp");
+    const int maxHP = msg.readInt32("max hp");
+    if (dstBeing)
+    {
+        dstBeing->setHP(hp);
+        dstBeing->setMaxHP(maxHP);
+    }
 }
 
 }  // namespace EAthena
