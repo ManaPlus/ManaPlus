@@ -59,6 +59,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void processBeingStatusChange(Net::MessageIn &msg) const;
 
         void processBeingMove2(Net::MessageIn &msg) const;
+
+        void processBeingAction2(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena

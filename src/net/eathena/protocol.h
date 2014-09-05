@@ -97,6 +97,7 @@
 #define SMSG_BEING_SELFEFFECT        0x019b
 #define SMSG_BEING_EMOTION           0x00c0
 #define SMSG_BEING_ACTION            0x008a /**< Attack, sit, stand up, ... */
+#define SMSG_BEING_ACTION2           0x02e1
 #define SMSG_BEING_CHAT              0x008d /**< A being talks */
 #define SMSG_COLOR_MESSAGE           0x02c1
 #define SMSG_BEING_NAME_RESPONSE     0x0095 /**< Has to be requested */

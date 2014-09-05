@@ -67,6 +67,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_REMOVE,
         SMSG_SKILL_DAMAGE,
         SMSG_BEING_ACTION,
+        SMSG_BEING_ACTION2,
         SMSG_BEING_SELFEFFECT,
         SMSG_BEING_EMOTION,
         SMSG_BEING_CHANGE_LOOKS,
@@ -132,6 +133,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_ACTION:
             processBeingAction(msg);
+            break;
+
+        case SMSG_BEING_ACTION2:
+            processBeingAction2(msg);
             break;
 
         case SMSG_BEING_SELFEFFECT:
@@ -949,6 +954,97 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
     if (dstBeing->getType() == ActorType::PLAYER)
         dstBeing->setMoveTime();
     BLOCK_END("BeingHandler::processBeingMove2")
+}
+
+void BeingHandler::processBeingAction2(Net::MessageIn &msg) const
+{
+    BLOCK_START("BeingHandler::processBeingAction")
+    if (!actorManager)
+    {
+        BLOCK_END("BeingHandler::processBeingAction")
+        return;
+    }
+
+    Being *const srcBeing = actorManager->findBeing(
+        msg.readInt32("src being id"));
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readInt32("dst being id"));
+
+    msg.readInt32("tick");
+    const int srcSpeed = msg.readInt32("src speed");
+    msg.readInt32("dst speed");
+    const int param1 = msg.readInt32("damage");
+    msg.readInt16("count");
+    const uint8_t type = msg.readUInt8("action");
+    msg.readInt32("left damage");
+
+    switch (type)
+    {
+        case Being::HIT:  // Damage
+        case Being::CRITICAL:  // Critical Damage
+        case Being::MULTI:  // Critical Damage
+        case Being::REFLECT:  // Reflected Damage
+        case Being::FLEE:  // Lucky Dodge
+            if (srcBeing)
+            {
+                if (srcSpeed && srcBeing->getType() == ActorType::PLAYER)
+                    srcBeing->setAttackDelay(srcSpeed);
+                // attackid=1, type
+                srcBeing->handleAttack(dstBeing, param1, 1);
+                if (srcBeing->getType() == ActorType::PLAYER)
+                    srcBeing->setAttackTime();
+            }
+            if (dstBeing)
+            {
+                dstBeing->takeDamage(srcBeing, param1,
+                    static_cast<Being::AttackType>(type));
+            }
+            break;
+
+        case 0x01:  // dead or pickup?
+            break;
+            // tmw server can send here garbage?
+//            if (srcBeing)
+//                srcBeing->setAction(BeingAction::DEAD, 0);
+
+        case 0x02:  // Sit
+            if (srcBeing)
+            {
+                srcBeing->setAction(BeingAction::SIT, 0);
+                if (srcBeing->getType() == ActorType::PLAYER)
+                {
+                    srcBeing->setMoveTime();
+                    if (localPlayer)
+                        localPlayer->imitateAction(srcBeing, BeingAction::SIT);
+                }
+            }
+            break;
+
+        case 0x03:  // Stand up
+            if (srcBeing)
+            {
+                srcBeing->setAction(BeingAction::STAND, 0);
+                if (srcBeing->getType() == ActorType::PLAYER)
+                {
+                    srcBeing->setMoveTime();
+                    if (localPlayer)
+                    {
+                        localPlayer->imitateAction(srcBeing,
+                            BeingAction::STAND);
+                    }
+                }
+            }
+            break;
+        default:
+            logger->log("QQQ1 SMSG_BEING_ACTION:");
+            if (srcBeing)
+                logger->log("srcBeing:" + toString(srcBeing->getId()));
+            if (dstBeing)
+                logger->log("dstBeing:" + toString(dstBeing->getId()));
+            logger->log("type: " + toString(type));
+            break;
+    }
+    BLOCK_END("BeingHandler::processBeingAction")
 }
 
 }  // namespace EAthena
