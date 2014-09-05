@@ -95,6 +95,8 @@ class SkillDialog final : public Window,
 
         void playUpdateEffect(const int id) const;
 
+        static void useSkill(const SkillInfo *const info);
+
     private:
         typedef std::map<int, SkillInfo*> SkillMap;
         SkillMap mSkills;

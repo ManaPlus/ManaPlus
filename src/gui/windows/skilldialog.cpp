@@ -125,8 +125,17 @@ void SkillDialog::action(const ActionEvent &event)
         {
             if (const SkillInfo *const info = tab->getSelectedInfo())
             {
-                mUseButton->setEnabled(info->range > 0);
-                mUseButton->setCaption(info->useButton);
+                if (info && info->data && info->useButton.empty()
+                    && info->data->description.empty())
+                {
+                    mUseButton->setEnabled(true);
+                    mUseButton->setCaption(_("Use"));
+                }
+                else
+                {
+                    mUseButton->setEnabled(info->range > 0);
+                    mUseButton->setCaption(info->useButton);
+                }
                 mIncreaseButton->setEnabled(info->id < SKILL_VAR_MIN_ID);
                 const int num = itemShortcutWindow->getTabIndex();
                 if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
@@ -151,15 +160,7 @@ void SkillDialog::action(const ActionEvent &event)
         if (tab)
         {
             const SkillInfo *const info = tab->getSelectedInfo();
-            if (info && localPlayer && localPlayer->getTarget())
-            {
-                const Being *const being = localPlayer->getTarget();
-                if (being)
-                {
-                    Net::getSkillHandler()->useBeing(info->level,
-                        info->id, being->getId());
-                }
-            }
+            useSkill(info);
         }
     }
     else if (eventId == "close")
@@ -420,15 +421,7 @@ void SkillDialog::useItem(const int itemId) const
         return;
 
     const SkillInfo *const info = (*it).second;
-    if (info && localPlayer && localPlayer->getTarget())
-    {
-        const Being *const being = localPlayer->getTarget();
-        if (being)
-        {
-            Net::getSkillHandler()->useBeing(info->level,
-                info->id, being->getId());
-        }
-    }
+    useSkill(info);
 }
 
 void SkillDialog::updateTabSelection()
@@ -478,5 +471,18 @@ void SkillDialog::playUpdateEffect(const int id) const
     {
         if (it->second)
             effectManager->trigger(effectId, localPlayer);
+    }
+}
+
+void SkillDialog::useSkill(const SkillInfo *const info)
+{
+    if (info && localPlayer && localPlayer->getTarget())
+    {
+        const Being *const being = localPlayer->getTarget();
+        if (being)
+        {
+            Net::getSkillHandler()->useBeing(info->level,
+                info->id, being->getId());
+        }
     }
 }
