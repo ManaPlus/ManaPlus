@@ -111,7 +111,7 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
         const int level = msg.readInt16("skill level");
         msg.readInt16("sp");
         const int range = msg.readInt16("range");
-        msg.readString(24, "skill name");
+        const std::string name = msg.readString(24, "skill name");
         const int up = msg.readUInt8("up flag");
         const int oldLevel = PlayerInfo::getSkillLevel(skillId);
         if (oldLevel && oldLevel != level)
@@ -120,7 +120,7 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
         if (skillDialog)
         {
             if (!skillDialog->updateSkill(skillId, range, up))
-                skillDialog->addSkill(skillId, level, range, up);
+                skillDialog->addSkill(skillId, name, level, range, up);
         }
     }
     if (updateSkill && skillDialog)

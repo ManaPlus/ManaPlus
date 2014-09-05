@@ -75,7 +75,10 @@ class SkillDialog final : public Window,
 
         bool updateSkill(const int id, const int range, const bool modifiable);
 
-        void addSkill(const int id, const int level, const int range,
+        void addSkill(const int id,
+                      const std::string &name,
+                      const int level,
+                      const int range,
                       const bool modifiable);
 
         SkillInfo* getSkill(const int id) const A_WARN_UNUSED;

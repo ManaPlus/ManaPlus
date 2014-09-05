@@ -361,7 +361,10 @@ bool SkillDialog::updateSkill(const int id, const int range,
     return false;
 }
 
-void SkillDialog::addSkill(const int id, const int level, const int range,
+void SkillDialog::addSkill(const int id,
+                           const std::string &name,
+                           const int level,
+                           const int range,
                            const bool modifiable)
 {
     if (mDefaultModel)
@@ -369,8 +372,16 @@ void SkillDialog::addSkill(const int id, const int level, const int range,
         SkillInfo *const skill = new SkillInfo;
         skill->id = static_cast<unsigned int>(id);
         SkillData *const data = skill->data;
-        data->name = "Unknown skill Id: " + toString(id);
-        data->dispName = data->name;
+        if (name.empty())
+        {
+            data->name = "Unknown skill Id: " + toString(id);
+            data->dispName = data->name;
+        }
+        else
+        {
+            data->name = name;
+            data->dispName = strprintf("%s, %u", name.c_str(), skill->id);
+        }
         data->description.clear();
         data->setIcon("");
         skill->modifiable = modifiable;
