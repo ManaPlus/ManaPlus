@@ -65,10 +65,15 @@ struct SkillInfo final
 
     void update();
 
-    SkillData *getData(const int level) const;
-    SkillData *getData1(const int level) const;
+    SkillData *getData(const int level) const A_WARN_UNUSED;
+    SkillData *getData1(const int level) const A_WARN_UNUSED;
 
     void addData(const int level, SkillData *const data);
+
+    bool isUsable() const A_WARN_UNUSED
+    {
+        return type == SkillType::Attack || type == SkillType::Self;
+    }
 };
 
 typedef std::vector<SkillInfo*> SkillList;

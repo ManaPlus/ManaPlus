@@ -125,17 +125,8 @@ void SkillDialog::action(const ActionEvent &event)
         {
             if (const SkillInfo *const info = tab->getSelectedInfo())
             {
-                if (info && info->data && info->useButton.empty()
-                    && info->data->description.empty())
-                {
-                    mUseButton->setEnabled(true);
-                    mUseButton->setCaption(_("Use"));
-                }
-                else
-                {
-                    mUseButton->setEnabled(info->range > 0);
-                    mUseButton->setCaption(info->useButton);
-                }
+                mUseButton->setEnabled(info->isUsable());
+                mUseButton->setCaption(info->useButton);
                 mIncreaseButton->setEnabled(info->id < SKILL_VAR_MIN_ID);
                 const int num = itemShortcutWindow->getTabIndex();
                 if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
@@ -397,7 +388,7 @@ void SkillDialog::addSkill(const int id,
         skill->skillLevel = strprintf(_("Lvl: %d"), level);
         skill->range = range;
         skill->update();
-
+        skill->useButton = _("Use");
         mDefaultModel->addSkill(skill);
 
         mSkills[id] = skill;
