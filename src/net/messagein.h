@@ -97,6 +97,8 @@ class MessageIn notfinal
         virtual void skip(const unsigned int length,
                           const char *const str = nullptr);
 
+        void skipToEnd(const char *const str = nullptr);
+
         /**
          * Reads a string. If a length is not given (-1), it is assumed
          * that the length of the string is stored in a short at the

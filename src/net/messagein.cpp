@@ -200,6 +200,17 @@ void MessageIn::skip(const unsigned int length, const char *const str)
     PacketCounters::incInBytes(length);
 }
 
+void MessageIn::skipToEnd(const char *const str)
+{
+    const int diff = static_cast<int>(mLength - mPos);
+    if (diff)
+    {
+        DEBUGLOG2("skip: " + toString(diff), mPos, str);
+        mPos = mLength;
+        PacketCounters::incInBytes(diff);
+    }
+}
+
 std::string MessageIn::readString(int length, const char *const dstr)
 {
     // Get string length

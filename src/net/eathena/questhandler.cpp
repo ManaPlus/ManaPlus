@@ -141,6 +141,7 @@ void QuestHandler::processAddQuestsObjectives(Net::MessageIn &msg)
             msg.readString(24, "monster name");
         }
     }
+    msg.skipToEnd("unused");
 }
 
 void QuestHandler::processUpdateQuestsObjectives(Net::MessageIn &msg)
