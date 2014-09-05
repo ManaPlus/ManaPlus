@@ -95,46 +95,6 @@ void BeingHandler::setSprite(Being *const being, const unsigned int slot,
     being->updateSprite(slot, id, color, colorId, isWeapon, isTempSprite);
 }
 
-void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
-{
-    BLOCK_START("BeingHandler::processBeingMove2")
-    if (!actorManager)
-    {
-        BLOCK_END("BeingHandler::processBeingMove2")
-        return;
-    }
-
-    /*
-      * A simplified movement packet, used by the
-      * later versions of eAthena for both mobs and
-      * players
-      */
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
-
-    /*
-      * This packet doesn't have enough info to actually
-      * create a new being, so if the being isn't found,
-      * we'll just pretend the packet didn't happen
-      */
-
-    if (!dstBeing)
-    {
-        BLOCK_END("BeingHandler::processBeingMove2")
-        return;
-    }
-
-    uint16_t srcX, srcY, dstX, dstY;
-    msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
-    msg.readInt32("tick");
-
-    dstBeing->setAction(BeingAction::STAND, 0);
-    dstBeing->setTileCoords(srcX, srcY);
-    dstBeing->setDestination(dstX, dstY);
-    if (dstBeing->getType() == ActorType::PLAYER)
-        dstBeing->setMoveTime();
-    BLOCK_END("BeingHandler::processBeingMove2")
-}
-
 void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processBeingRemove")

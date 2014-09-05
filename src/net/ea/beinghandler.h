@@ -46,8 +46,6 @@ class BeingHandler notfinal : public Net::BeingHandler
                                const bool isWeapon = false,
                                const bool isTempSprite = false) const;
 
-        virtual void processBeingMove2(Net::MessageIn &msg) const;
-
         virtual void processBeingRemove(Net::MessageIn &msg) const;
 
         virtual void processBeingResurrect(Net::MessageIn &msg) const;
