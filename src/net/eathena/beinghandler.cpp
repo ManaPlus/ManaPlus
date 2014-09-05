@@ -83,6 +83,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_PLAYER_MOVE_TO_ATTACK,
         SMSG_PLAYER_STATUS_CHANGE,
         SMSG_BEING_STATUS_CHANGE,
+        SMSG_BEING_STATUS_CHANGE2,
         SMSG_BEING_RESURRECT,
         SMSG_SOLVE_CHAR_NAME,
         SMSG_BEING_SPAWN,
@@ -194,6 +195,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_BEING_STATUS_CHANGE:
+        case SMSG_BEING_STATUS_CHANGE2:
             processBeingStatusChange(msg);
             break;
 
@@ -903,11 +905,14 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg) const
         return;
     }
 
+    const bool status1 = msg.getId() == SMSG_BEING_STATUS_CHANGE;
+
     // Status change
     const uint16_t status = msg.readInt16("status");
     const int id = msg.readInt32("being id");
     const bool flag = msg.readUInt8("flag: 0: stop, 1: start");
-    msg.readInt32("total");
+    if (status1)
+        msg.readInt32("total");
     msg.readInt32("left");
     msg.readInt32("val1");
     msg.readInt32("val2");
