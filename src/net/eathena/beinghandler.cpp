@@ -926,6 +926,11 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
       */
     Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
 
+    uint16_t srcX, srcY, dstX, dstY;
+    msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
+    msg.readUInt8("(sx<<4) | (sy&0x0f)");
+    msg.readInt32("tick");
+
     /*
       * This packet doesn't have enough info to actually
       * create a new being, so if the being isn't found,
@@ -937,10 +942,6 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
         BLOCK_END("BeingHandler::processBeingMove2")
         return;
     }
-
-    uint16_t srcX, srcY, dstX, dstY;
-    msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
-    msg.readInt32("tick");
 
     dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(srcX, srcY);
