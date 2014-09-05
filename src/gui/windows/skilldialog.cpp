@@ -492,13 +492,34 @@ void SkillDialog::playUpdateEffect(const int id) const
 
 void SkillDialog::useSkill(const SkillInfo *const info)
 {
-    if (info && localPlayer && localPlayer->getTarget())
+    if (info && localPlayer)
     {
-        const Being *const being = localPlayer->getTarget();
-        if (being)
+        switch (info->type)
         {
-            Net::getSkillHandler()->useBeing(info->level,
-                info->id, being->getId());
+            case SkillType::Attack:
+            {
+                const Being *const being = localPlayer->getTarget();
+                if (being)
+                {
+                    Net::getSkillHandler()->useBeing(info->level,
+                        info->id, being->getId());
+                }
+                break;
+            }
+            case SkillType::Self:
+                Net::getSkillHandler()->useBeing(info->level,
+                    info->id, localPlayer->getId());
+                break;
+
+            case SkillType::Ground:
+            case SkillType::Support:
+            case SkillType::TargetTrap:
+                // for now unused
+                break;
+
+            case SkillType::Unknown:
+            case SkillType::Unused:
+                break;
         }
     }
 }
