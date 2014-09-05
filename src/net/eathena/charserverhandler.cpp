@@ -71,6 +71,7 @@ CharServerHandler::CharServerHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_CHAR_LOGIN,
+        SMSG_CHAR_LOGIN2,
         SMSG_CHAR_LOGIN_ERROR,
         SMSG_CHAR_CREATE_SUCCEEDED,
         SMSG_CHAR_CREATE_SUCCEEDED2,
@@ -92,6 +93,10 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_CHAR_LOGIN:
             processCharLogin(msg);
+            break;
+
+        case SMSG_CHAR_LOGIN2:
+            processCharLogin2(msg);
             break;
 
         case SMSG_CHAR_LOGIN_ERROR:
@@ -320,6 +325,17 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     }
 
     client->setState(STATE_CHAR_SELECT);
+}
+
+void CharServerHandler::processCharLogin2(Net::MessageIn &msg)
+{
+    msg.readInt16("len");
+    msg.readUInt8("char slots");
+    msg.readUInt8("left slots");
+    msg.readUInt8("left slots");
+    msg.readUInt8("char slots");
+    msg.readUInt8("char slots");
+    msg.skip(20, "unused");
 }
 
 void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg)

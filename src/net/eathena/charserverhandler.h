@@ -75,6 +75,8 @@ class CharServerHandler final : public MessageHandler,
 
         void processPincodeStatus(Net::MessageIn &msg);
 
+        static void processCharLogin2(Net::MessageIn &msg);
+
     private:
         uint32_t mPinSeed;
         uint32_t mPinAccountId;
