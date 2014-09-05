@@ -380,6 +380,7 @@ void SkillDialog::addSkill(const int id,
         }
         data->description.clear();
         data->setIcon("");
+        data->shortName = toString(skill->id);
         skill->modifiable = modifiable;
         skill->visible = false;
         skill->model = mDefaultModel;
