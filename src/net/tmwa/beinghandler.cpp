@@ -203,7 +203,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_SKILL_CASTING:
-            processSkilCasting(msg);
+            processSkillCasting(msg);
             break;
 
         case SMSG_SKILL_CAST_CANCEL:
@@ -986,6 +986,17 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     msg.readInt16("option");
     msg.readInt16("disguise");
     BLOCK_END("BeingHandler::processBeingSpawn")
+}
+
+void BeingHandler::processSkillCasting(Net::MessageIn &msg) const
+{
+    msg.readInt32("src id");
+    msg.readInt32("dst id");
+    msg.readInt16("dst x");
+    msg.readInt16("dst y");
+    msg.readInt16("skill num");
+    msg.readInt32("skill get p1");
+    msg.readInt32("cast time");
 }
 
 }  // namespace TmwAthena

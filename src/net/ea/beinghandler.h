@@ -76,8 +76,6 @@ class BeingHandler notfinal : public Net::BeingHandler
 
         virtual void processBeingStatusChange(Net::MessageIn &msg) const;
 
-        virtual void processSkilCasting(Net::MessageIn &msg) const;
-
         virtual void processSkillNoDamage(Net::MessageIn &msg) const;
 
         virtual void processPvpMapMode(Net::MessageIn &msg) const;

@@ -55,6 +55,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void processBeingMove3(Net::MessageIn &msg);
 
         void processBeingSpawn(Net::MessageIn &msg);
+
+        void processSkillCasting(Net::MessageIn &msg) const;
 };
 
 }  // namespace TmwAthena

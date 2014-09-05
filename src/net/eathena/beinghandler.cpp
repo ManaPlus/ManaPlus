@@ -193,7 +193,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_SKILL_CASTING:
-            processSkilCasting(msg);
+            processSkillCasting(msg);
             break;
 
         case SMSG_SKILL_CAST_CANCEL:
@@ -871,6 +871,17 @@ void BeingHandler::processMapTypeProperty(Net::MessageIn &msg) const
     msg.readInt16("type");
     // need get pvp and other flags from here
     msg.readInt32("flags");
+}
+
+void BeingHandler::processSkillCasting(Net::MessageIn &msg) const
+{
+    msg.readInt32("src id");
+    msg.readInt32("dst id");
+    msg.readInt16("dst x");
+    msg.readInt16("dst y");
+    msg.readInt16("skill num");
+    msg.readInt32("skill get p1");
+    msg.readInt32("cast time");
 }
 
 }  // namespace EAthena

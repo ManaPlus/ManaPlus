@@ -53,6 +53,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void processPlayerMoveUpdate(Net::MessageIn &msg) const;
 
         void processMapTypeProperty(Net::MessageIn &msg) const;
+
+        void processSkillCasting(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena

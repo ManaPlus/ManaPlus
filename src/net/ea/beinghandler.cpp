@@ -601,17 +601,6 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processBeingStatusChange")
 }
 
-void BeingHandler::processSkilCasting(Net::MessageIn &msg) const
-{
-    msg.readInt32("src id");
-    msg.readInt32("dst id");
-    msg.readInt16("dst x");
-    msg.readInt16("dst y");
-    msg.readInt16("skill num");
-    msg.readInt32("skill get p1");
-    msg.readInt32("cast time");
-}
-
 void BeingHandler::processSkillNoDamage(Net::MessageIn &msg) const
 {
     msg.readInt16("skill id");
