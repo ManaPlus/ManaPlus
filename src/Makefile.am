@@ -100,7 +100,6 @@ dyecmd_SOURCES = gui/cliprect.cpp \
 	      resources/sdlimagehelper.h \
 	      resources/sdlmusic.cpp \
 	      resources/sdlmusic.h \
-	      resources/skillconsts.h \
 	      resources/soundeffect.cpp \
 	      resources/soundeffect.h \
 	      resources/subimage.cpp \
@@ -772,6 +771,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/sdlimagehelper.h \
 	      resources/sdlmusic.cpp \
 	      resources/sdlmusic.h \
+	      resources/skillconsts.h \
+	      resources/skilltype.h \
 	      resources/db/sounddb.cpp \
 	      resources/db/sounddb.h \
 	      resources/db/weaponsdb.cpp \

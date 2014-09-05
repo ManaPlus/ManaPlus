@@ -649,6 +649,7 @@ SET(SRCS
     resources/sdlmusic.cpp
     resources/sdlmusic.h
     resources/skillconsts.h
+    resources/skilltype.h
     resources/db/sounddb.cpp
     resources/db/sounddb.h
     resources/db/weaponsdb.cpp
