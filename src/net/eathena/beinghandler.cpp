@@ -879,9 +879,10 @@ void BeingHandler::processSkillCasting(Net::MessageIn &msg) const
     msg.readInt32("dst id");
     msg.readInt16("dst x");
     msg.readInt16("dst y");
-    msg.readInt16("skill num");
-    msg.readInt32("skill get p1");
+    msg.readInt16("skill id");
+    msg.readInt32("property");  // can be used to trigger effect
     msg.readInt32("cast time");
+    msg.readInt8("dispossable");
 }
 
 }  // namespace EAthena

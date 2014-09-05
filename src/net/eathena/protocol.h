@@ -298,7 +298,7 @@
 #define CMSG_IGNORE_ALL              0x00d0
 
 #define SMSG_SOLVE_CHAR_NAME         0x0194
-#define SMSG_SKILL_CASTING           0x013e
+#define SMSG_SKILL_CASTING           0x07fb
 #define SMSG_SKILL_CAST_CANCEL       0x01b9
 #define SMSG_SKILL_NO_DAMAGE         0x011a
 
