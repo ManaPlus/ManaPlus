@@ -264,9 +264,6 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
 
     Being *const dstBeing = actorManager->findBeing(
         msg.readInt32("being id"));
-    if (!dstBeing)
-        return;
-
     const uint8_t type = msg.readUInt8("type");
     int id = 0;
     unsigned int id2 = 0U;
@@ -281,12 +278,13 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
     else
     {        // SMSG_BEING_CHANGE_LOOKS2
         id = msg.readInt16("id1");
-        if (type == 2)
-            id2 = msg.readInt16("id2");
-        else
+        id2 = msg.readInt16("id2");
+        if (type != 2)
             id2 = 1;
-//        color.clear();
     }
+
+    if (!dstBeing)
+        return;
 
     if (dstBeing->getType() == ActorType::PLAYER)
         dstBeing->setOtherTime();
