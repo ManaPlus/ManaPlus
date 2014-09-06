@@ -45,7 +45,7 @@ struct SkillInfo final
 {
     std::string skillLevel;
     std::string skillExp;
-    std::string skillMana;
+    std::string skillEffect;
     std::string useButton;
     float progress;
     Color color;

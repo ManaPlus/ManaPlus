@@ -38,7 +38,7 @@
 SkillInfo::SkillInfo() :
     skillLevel(),
     skillExp(),
-    skillMana(),
+    skillEffect(),
     useButton(),
     progress(0.0F),
     color(),
@@ -94,10 +94,18 @@ void SkillInfo::update()
         skillLevel = strprintf(_("Lvl: %d"), baseLevel);
     }
 
+
     if (sp)
-        skillMana = strprintf(_("Mana: -%d"), sp);
+        skillEffect = strprintf(_("Mana: -%d"), sp);
     else
-        skillMana.clear();
+        skillEffect.clear();
+
+    if (range > 0)
+    {
+        if (!skillEffect.empty())
+            skillEffect.append(" / ");
+        skillEffect.append(strprintf(_("Range: %d"), range));
+    }
 
     level = baseLevel;
     skillLevelWidth = -1;

@@ -36,7 +36,7 @@
 
 #include "gui/models/skillmodel.h"
 
-#include "gui/popups/textpopup.h"
+#include "gui/popups/skillpopup.h"
 
 #include "render/graphics.h"
 
@@ -55,7 +55,7 @@ class SkillListBox final : public ListBox
                      SkillModel *const model) :
             ListBox(widget, model, "skilllistbox.xml"),
             mModel(model),
-            mPopup(new TextPopup),
+            mPopup(new SkillPopup),
             mTextColor(getThemeColor(Theme::TEXT)),
             mTextColor2(getThemeColor(Theme::TEXT_OUTLINE)),
             mTextPadding(mSkin ? mSkin->getOption("textPadding", 34) : 34),
@@ -165,20 +165,8 @@ class SkillListBox final : public ListBox
                 return;
 
             const SkillInfo *const skill = getSkillByEvent(event);
-            if (!skill || !skill->data)
-                return;
-
-            std::string description = skill->data->description;
-            std::string mana = skill->skillMana;
-            if (description.empty())
-            {
-                description = mana;
-                mana.clear();
-            }
-            mPopup->show(viewport->mMouseX, viewport->mMouseY,
-                skill->data->dispName,
-                description,
-                mana);
+            mPopup->show(skill);
+            mPopup->position(viewport->mMouseX, viewport->mMouseY);
         }
 
         void mouseDragged(MouseEvent &event)
@@ -230,7 +218,7 @@ class SkillListBox final : public ListBox
 
     private:
         SkillModel *mModel;
-        TextPopup *mPopup;
+        SkillPopup *mPopup;
         Color mTextColor;
         Color mTextColor2;
         int mTextPadding;
