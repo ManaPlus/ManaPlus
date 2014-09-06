@@ -394,6 +394,8 @@ SET(SRCS
     gui/popupmanager.h
     gui/popups/popupmenu.cpp
     gui/popups/popupmenu.h
+    gui/popups/skillpopup.cpp
+    gui/popups/skillpopup.h
     gui/windows/questswindow.cpp
     gui/windows/questswindow.h
     gui/windows/quitdialog.cpp
