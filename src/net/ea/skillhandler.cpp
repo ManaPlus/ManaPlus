@@ -79,7 +79,7 @@ void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg)
 {
     const int skillId = msg.readInt16();
     const int level = msg.readInt16();
-    msg.readInt16();  // sp
+    const int sp = msg.readInt16();
     const int range = msg.readInt16();
     const int up = msg.readUInt8();
 
@@ -88,10 +88,11 @@ void SkillHandler::processPlayerSkillUp(Net::MessageIn &msg)
     PlayerInfo::setSkillLevel(skillId, level);
     if (skillDialog)
     {
-        if (!skillDialog->updateSkill(skillId, range, up, SkillType::Unknown))
+        if (!skillDialog->updateSkill(skillId, range,
+            up, SkillType::Unknown, sp))
         {
             skillDialog->addSkill(skillId, "", level,
-                range, up, SkillType::Unknown);
+                range, up, SkillType::Unknown, sp);
         }
     }
 }

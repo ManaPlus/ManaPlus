@@ -112,7 +112,7 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
         const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
             msg.readInt32("inf"));
         const int level = msg.readInt16("skill level");
-        msg.readInt16("sp");
+        const int sp = msg.readInt16("sp");
         const int range = msg.readInt16("range");
         const std::string name = msg.readString(24, "skill name");
         const int up = msg.readUInt8("up flag");
@@ -122,8 +122,8 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
         PlayerInfo::setSkillLevel(skillId, level);
         if (skillDialog)
         {
-            if (!skillDialog->updateSkill(skillId, range, up, inf))
-                skillDialog->addSkill(skillId, name, level, range, up, inf);
+            if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
+                skillDialog->addSkill(skillId, name, level, range, up, inf, sp);
         }
     }
     if (updateSkill && skillDialog)

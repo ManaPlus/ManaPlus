@@ -55,6 +55,7 @@ struct SkillInfo final
     int skillLevelWidth;
     unsigned int id;
     int range;
+    int sp;
     SkillType::SkillType type;
     bool modifiable;
     bool visible;
