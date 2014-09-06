@@ -53,6 +53,7 @@ InventoryHandler::InventoryHandler() :
         SMSG_PLAYER_INVENTORY,
         SMSG_PLAYER_INVENTORY_ADD,
         SMSG_PLAYER_INVENTORY_REMOVE,
+        SMSG_PLAYER_INVENTORY_REMOVE2,
         SMSG_PLAYER_INVENTORY_USE,
         SMSG_ITEM_USE_RESPONSE,
         SMSG_PLAYER_STORAGE_ITEMS,
@@ -95,6 +96,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_INVENTORY_REMOVE:
             processPlayerInventoryRemove(msg);
+            break;
+
+        case SMSG_PLAYER_INVENTORY_REMOVE2:
+            processPlayerInventoryRemove2(msg);
             break;
 
         case SMSG_PLAYER_INVENTORY_USE:
@@ -418,7 +423,7 @@ void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
     const int equipType = msg.readInt32("wear location");
     const uint8_t flag = msg.readUInt8("result");
 
-    // need use UNEQUIP_FAILED event
+    // +++ need use UNEQUIP_FAILED event
     if (flag)
         NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
     else
@@ -426,6 +431,30 @@ void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
     if (equipType & 0x8000)
         ArrowsListener::distributeEvent();
     BLOCK_END("InventoryHandler::processPlayerUnEquip")
+}
+
+void InventoryHandler::processPlayerInventoryRemove2(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerInventoryRemove2")
+    Inventory *const inventory = localPlayer
+        ? PlayerInfo::getInventory() : nullptr;
+
+    // +++ here possible use particle or text/sound effects
+    // for different reasons
+    const int reason = msg.readInt16("reason");
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    const int amount = msg.readInt16("amount");
+    if (inventory)
+    {
+        if (Item *const item = inventory->getItem(index))
+        {
+            item->increaseQuantity(-amount);
+            if (item->getQuantity() == 0)
+                inventory->removeItemAt(index);
+            ArrowsListener::distributeEvent();
+        }
+    }
+    BLOCK_END("InventoryHandler::processPlayerInventoryRemove2")
 }
 
 }  // namespace EAthena
