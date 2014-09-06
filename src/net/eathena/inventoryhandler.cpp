@@ -494,14 +494,17 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerStorageAdd")
     // Move an item into storage
-    const int index = msg.readInt16() - STORAGE_OFFSET;
-    const int amount = msg.readInt32();
-    const int itemId = msg.readInt16();
-    unsigned char identified = msg.readUInt8();
-    msg.readUInt8();  // attribute
-    const uint8_t refine = msg.readUInt8();
-    for (int i = 0; i < 4; i++)
-        msg.readInt16();  // card i
+    const int index = msg.readInt16("index") - STORAGE_OFFSET;
+    const int amount = msg.readInt32("amount");
+    const int itemId = msg.readInt16("item id");
+    msg.readUInt8("type");
+    unsigned char identified = msg.readUInt8("identify");
+    msg.readUInt8("attribute");
+    const uint8_t refine = msg.readUInt8("refine");
+    msg.readInt16("card0");
+    msg.readInt16("card1");
+    msg.readInt16("card2");
+    msg.readInt16("card3");
 
     if (Item *const item = mStorage->getItem(index))
     {
@@ -512,9 +515,6 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     {
         if (mStorage)
         {
-            if (serverVersion < 1 && identified > 1)
-                identified = 1;
-
             mStorage->setItem(index, itemId, amount,
                 refine, identified, false);
         }
