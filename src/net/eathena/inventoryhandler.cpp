@@ -362,6 +362,10 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
     }
 
     msg.readInt16("len");
+
+    if (!playerInvintory)
+        msg.readString(24, "storage name");
+
     const int number = (msg.getLength() - 4) / 23;
 
     for (int loop = 0; loop < number; loop++)
