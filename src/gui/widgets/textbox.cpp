@@ -229,6 +229,11 @@ void TextBox::setText(const std::string& text)
     mCaretRow = 0;
 
     mTextRows.clear();
+    if (text.empty())
+    {
+        adjustSize();
+        return;
+    }
 
     size_t pos;
     size_t lastPos = 0;
