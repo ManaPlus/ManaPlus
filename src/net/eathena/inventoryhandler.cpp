@@ -457,4 +457,44 @@ void InventoryHandler::processPlayerInventoryRemove2(Net::MessageIn &msg)
     BLOCK_END("InventoryHandler::processPlayerInventoryRemove2")
 }
 
+void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerStorageEquip")
+    msg.readInt16();  // length
+    const int number = (msg.getLength() - 4) / 20;
+
+    for (int loop = 0; loop < number; loop++)
+    {
+        int cards[4];
+        const int index = msg.readInt16() - STORAGE_OFFSET;
+        const int itemId = msg.readInt16();
+        const uint8_t itemType = msg.readUInt8();
+        uint8_t identified = msg.readUInt8();
+        const int amount = 1;
+        msg.readInt16();    // Equip Point?
+        msg.readInt16();    // Another Equip Point?
+        msg.readUInt8();   // Attribute (broken)
+        const uint8_t refine = msg.readUInt8();
+        for (int i = 0; i < 4; i++)
+            cards[i] = msg.readInt16();
+
+        if (mDebugInventory)
+        {
+            logger->log("Index: %d, ID: %d, Type: %d, Identified: %u, "
+                "Qty: %d, Cards: %d, %d, %d, %d, Refine: %u",
+                index, itemId, itemType,
+                static_cast<unsigned int>(identified), amount,
+                cards[0], cards[1], cards[2], cards[3],
+                static_cast<unsigned int>(refine));
+        }
+
+        if (serverVersion < 1 && identified > 1U)
+            identified = 1U;
+
+        mInventoryItems.push_back(Ea::InventoryItem(index,
+            itemId, amount, refine, identified, false));
+    }
+    BLOCK_END("InventoryHandler::processPlayerStorageEquip")
+}
+
 }  // namespace EAthena
