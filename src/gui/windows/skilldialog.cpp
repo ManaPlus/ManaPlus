@@ -499,6 +499,7 @@ void SkillDialog::useSkill(const SkillInfo *const info)
         switch (info->type)
         {
             case SkillType::Attack:
+            case SkillType::Support:
             {
                 const Being *const being = localPlayer->getTarget();
                 if (being)
@@ -514,7 +515,6 @@ void SkillDialog::useSkill(const SkillInfo *const info)
                 break;
 
             case SkillType::Ground:
-            case SkillType::Support:
             case SkillType::TargetTrap:
                 // for now unused
                 break;

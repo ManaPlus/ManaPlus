@@ -72,7 +72,9 @@ struct SkillInfo final
 
     bool isUsable() const A_WARN_UNUSED
     {
-        return type == SkillType::Attack || type == SkillType::Self;
+        return type == SkillType::Attack
+            || type == SkillType::Self
+            || type == SkillType::Support;
     }
 };
 
