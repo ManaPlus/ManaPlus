@@ -165,11 +165,20 @@ class SkillListBox final : public ListBox
                 return;
 
             const SkillInfo *const skill = getSkillByEvent(event);
-            if (!skill)
+            if (!skill || !skill->data)
                 return;
 
+            std::string description = skill->data->description;
+            std::string mana = skill->skillMana;
+            if (description.empty())
+            {
+                description = mana;
+                mana.clear();
+            }
             mPopup->show(viewport->mMouseX, viewport->mMouseY,
-                skill->data->dispName, skill->data->description);
+                skill->data->dispName,
+                description,
+                mana);
         }
 
         void mouseDragged(MouseEvent &event)

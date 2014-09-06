@@ -38,6 +38,7 @@
 SkillInfo::SkillInfo() :
     skillLevel(),
     skillExp(),
+    skillMana(),
     useButton(),
     progress(0.0F),
     color(),
@@ -92,6 +93,11 @@ void SkillInfo::update()
         // TRANSLATORS: skills dialog. skill level
         skillLevel = strprintf(_("Lvl: %d"), baseLevel);
     }
+
+    if (sp)
+        skillMana = strprintf(_("Mana: -%d"), sp);
+    else
+        skillMana.clear();
 
     level = baseLevel;
     skillLevelWidth = -1;
