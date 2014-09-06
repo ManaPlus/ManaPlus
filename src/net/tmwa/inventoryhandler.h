@@ -70,6 +70,8 @@ class InventoryHandler final : public MessageHandler,
         void processPlayerUnEquip(Net::MessageIn &msg);
 
         void processPlayerStorageEquip(Net::MessageIn &msg);
+
+        void processPlayerStorageAdd(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

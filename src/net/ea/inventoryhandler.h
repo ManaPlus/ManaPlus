@@ -88,8 +88,6 @@ class InventoryHandler notfinal : public Net::InventoryHandler
 
         void processPlayerStorageStatus(Net::MessageIn &msg);
 
-        void processPlayerStorageAdd(Net::MessageIn &msg);
-
         void processPlayerStorageRemove(Net::MessageIn &msg);
 
         void processPlayerStorageClose(Net::MessageIn &msg);

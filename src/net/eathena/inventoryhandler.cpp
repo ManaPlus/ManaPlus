@@ -490,4 +490,36 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
     BLOCK_END("InventoryHandler::processPlayerStorageEquip")
 }
 
+void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerStorageAdd")
+    // Move an item into storage
+    const int index = msg.readInt16() - STORAGE_OFFSET;
+    const int amount = msg.readInt32();
+    const int itemId = msg.readInt16();
+    unsigned char identified = msg.readUInt8();
+    msg.readUInt8();  // attribute
+    const uint8_t refine = msg.readUInt8();
+    for (int i = 0; i < 4; i++)
+        msg.readInt16();  // card i
+
+    if (Item *const item = mStorage->getItem(index))
+    {
+        item->setId(itemId, identified);
+        item->increaseQuantity(amount);
+    }
+    else
+    {
+        if (mStorage)
+        {
+            if (serverVersion < 1 && identified > 1)
+                identified = 1;
+
+            mStorage->setItem(index, itemId, amount,
+                refine, identified, false);
+        }
+    }
+    BLOCK_END("InventoryHandler::processPlayerStorageAdd")
+}
+
 }  // namespace EAthena
