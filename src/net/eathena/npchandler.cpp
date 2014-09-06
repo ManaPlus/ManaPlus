@@ -199,16 +199,18 @@ void NpcHandler::sellItem(const int beingId A_UNUSED,
 int NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE
-        || msg.getId() == SMSG_NPC_MESSAGE
-        || msg.getId() == SMSG_NPC_VIEWPOINT)
+        || msg.getId() == SMSG_NPC_MESSAGE)
     {
-        msg.readInt16();  // length
+        msg.readInt16("len");
     }
 
-    const int npcId = msg.readInt32();
+    const int npcId = msg.readInt32("npc id");
 
     const NpcDialogs::const_iterator diag = NpcDialog::mNpcDialogs.find(npcId);
     mDialog = nullptr;
+
+    if (msg.getId() == SMSG_NPC_VIEWPOINT)
+        return npcId;
 
     if (diag == NpcDialog::mNpcDialogs.end())
     {
@@ -255,11 +257,14 @@ void NpcHandler::processNpcCutin(Net::MessageIn &msg A_UNUSED,
 void NpcHandler::processNpcViewPoint(Net::MessageIn &msg A_UNUSED,
                                      const int npcId A_UNUSED)
 {
-    msg.readInt32();  // type
-    msg.readInt32();  // x
-    msg.readInt32();  // y
-    msg.readUInt8();  // byte
-    msg.readInt32();  // color
+    // +++ probably need add nav point and start moving to it
+    msg.readInt32("type");  // 0 display for 15 sec,
+                            // 1 display until teleport,
+                            // 2 remove
+    msg.readInt32("x");
+    msg.readInt32("y");
+    msg.readUInt8("number");  // can be used for scripts
+    msg.readInt32("color");
 }
 
 }  // namespace EAthena
