@@ -195,6 +195,7 @@
 
 #define SMSG_MVP                     0x010c
 #define SMSG_MONSTER_HP              0x0977
+#define SMSG_PLAYER_HP               0x080e
 
 /**********************************
  *  Packets from client to server *

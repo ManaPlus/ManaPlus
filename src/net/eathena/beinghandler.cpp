@@ -94,6 +94,8 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_PVP_MAP_MODE,
         SMSG_PVP_SET,
         SMSG_MAP_TYPE_PROPERTY2,
+        SMSG_MONSTER_HP,
+        SMSG_PLAYER_HP,
         0
     };
     handledMessages = _messages;
@@ -224,6 +226,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_MONSTER_HP:
+        case SMSG_PLAYER_HP:
             processMonsterHp(msg);
             break;
 
