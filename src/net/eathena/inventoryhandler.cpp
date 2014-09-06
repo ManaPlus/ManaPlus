@@ -460,37 +460,30 @@ void InventoryHandler::processPlayerInventoryRemove2(Net::MessageIn &msg)
 void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerStorageEquip")
-    msg.readInt16();  // length
-    const int number = (msg.getLength() - 4) / 20;
+    msg.readInt16("len");
+    const int number = (msg.getLength() - 4 - 24) / 31;
 
+    msg.readString(24, "storage name");
     for (int loop = 0; loop < number; loop++)
     {
-        int cards[4];
-        const int index = msg.readInt16() - STORAGE_OFFSET;
-        const int itemId = msg.readInt16();
-        const uint8_t itemType = msg.readUInt8();
-        uint8_t identified = msg.readUInt8();
+        const int index = msg.readInt16("index") - STORAGE_OFFSET;
+        const int itemId = msg.readInt16("item id");
+        msg.readUInt8("item type");
         const int amount = 1;
-        msg.readInt16();    // Equip Point?
-        msg.readInt16();    // Another Equip Point?
-        msg.readUInt8();   // Attribute (broken)
-        const uint8_t refine = msg.readUInt8();
-        for (int i = 0; i < 4; i++)
-            cards[i] = msg.readInt16();
+        msg.readInt32("location");
+        msg.readInt32("wear state");
+        const uint8_t refine = msg.readUInt8("refine level");
+        msg.readInt16("card0");
+        msg.readInt16("card1");
+        msg.readInt16("card2");
+        msg.readInt16("card3");
+        msg.readInt32("hire expire date");
+        msg.readInt16("bind on equip");
+        msg.readInt16("sprite");
+        msg.readInt8("flags");
 
-        if (mDebugInventory)
-        {
-            logger->log("Index: %d, ID: %d, Type: %d, Identified: %u, "
-                "Qty: %d, Cards: %d, %d, %d, %d, Refine: %u",
-                index, itemId, itemType,
-                static_cast<unsigned int>(identified), amount,
-                cards[0], cards[1], cards[2], cards[3],
-                static_cast<unsigned int>(refine));
-        }
-
-        if (serverVersion < 1 && identified > 1U)
-            identified = 1U;
-
+        // need get identified from flags
+        uint8_t identified = 1;
         mInventoryItems.push_back(Ea::InventoryItem(index,
             itemId, amount, refine, identified, false));
     }

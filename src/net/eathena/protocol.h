@@ -151,7 +151,7 @@
 #define SMSG_PARTY_INVITATION_STATS  0x02c9
 
 #define SMSG_PLAYER_STORAGE_ITEMS    0x01f0 /**< Item list for storage */
-#define SMSG_PLAYER_STORAGE_EQUIP    0x00a6 /**< Equipment list for storage */
+#define SMSG_PLAYER_STORAGE_EQUIP    0x0996 /**< Equipment list for storage */
 #define SMSG_PLAYER_STORAGE_STATUS   0x00f2 /**< Slots used and total slots */
 #define SMSG_PLAYER_STORAGE_ADD      0x00f4 /**< Add item/equip to storage */
 // Remove item/equip from storage
