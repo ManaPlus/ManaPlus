@@ -1266,10 +1266,6 @@ SET(SRCS_EVOL
     )
 
 SET(SRCS_TMWA
-    net/tmwa/gui/guildtab.cpp
-    net/tmwa/gui/guildtab.h
-    net/tmwa/gui/partytab.cpp
-    net/tmwa/gui/partytab.h
     net/tmwa/adminhandler.cpp
     net/tmwa/adminhandler.h
     net/tmwa/attrs.h
@@ -1323,10 +1319,6 @@ SET(SRCS_TMWA
     )
 
 SET(SRCS_EATHENA
-    net/eathena/gui/guildtab.cpp
-    net/eathena/gui/guildtab.h
-    net/eathena/gui/partytab.cpp
-    net/eathena/gui/partytab.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/attrs.h
