@@ -219,9 +219,7 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
         if (!chatWindow)
             return;
 
-        Ea::partyTab = new Ea::PartyTab(chatWindow);
-        if (config.getBoolValue("showChatHistory"))
-            Ea::partyTab->loadFromLogFile("#Party");
+        createTab();
     }
 
     // These seem to indicate the sharing mode for exp and items

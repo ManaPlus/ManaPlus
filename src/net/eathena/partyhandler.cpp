@@ -261,9 +261,7 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
         if (!chatWindow)
             return;
 
-        Ea::partyTab = new Ea::PartyTab(chatWindow);
-        if (config.getBoolValue("showChatHistory"))
-            Ea::partyTab->loadFromLogFile("#Party");
+        createTab();
     }
 
     msg.readInt32("party exp");
@@ -282,6 +280,9 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
         logger->log1("error: party empty in SMSG_PARTY_INFO");
         Ea::taParty = Party::getParty(1);
     }
+    if (!Ea::partyTab)
+        createTab();
+
     if (Ea::taParty)
     {
         if (Ea::taParty->getNumberOfElements() > 1)
@@ -305,9 +306,9 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
     if (Ea::taParty)
         Ea::taParty->clearMembers();
 
-    const int length = msg.readInt16();
+    const int length = msg.readInt16("len");
     if (Ea::taParty)
-        Ea::taParty->setName(msg.readString(24));
+        Ea::taParty->setName(msg.readString(24, "party name"));
 
     const int count = (length - 28) / 46;
     if (localPlayer && Ea::taParty)
@@ -318,11 +319,11 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
 
     for (int i = 0; i < count; i++)
     {
-        const int id = msg.readInt32();
-        std::string nick = msg.readString(24);
-        std::string map = msg.readString(16);
-        const bool leader = msg.readUInt8() == 0U;
-        const bool online = msg.readUInt8() == 0U;
+        const int id = msg.readInt32("account id");
+        std::string nick = msg.readString(24, "nick");
+        std::string map = msg.readString(16, "map name");
+        const bool leader = msg.readUInt8("leader") == 0U;
+        const bool online = msg.readUInt8("online") == 0U;
 
         if (Ea::taParty)
         {

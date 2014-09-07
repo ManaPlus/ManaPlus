@@ -324,4 +324,11 @@ ChatTab *PartyHandler::getTab() const
     return partyTab;
 }
 
+void PartyHandler::createTab() const
+{
+    Ea::partyTab = new Ea::PartyTab(chatWindow);
+    if (config.getBoolValue("showChatHistory"))
+        Ea::partyTab->loadFromLogFile("#Party");
+}
+
 }  // namespace Ea

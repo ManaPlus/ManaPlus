@@ -79,6 +79,8 @@ class PartyHandler notfinal : public Net::PartyHandler
         void processPartySettingsContinue(const int16_t exp,
                                           const int16_t item);
 
+        void createTab() const;
+
     protected:
         Net::PartyShare::Type mShareExp;
         Net::PartyShare::Type mShareItems;
