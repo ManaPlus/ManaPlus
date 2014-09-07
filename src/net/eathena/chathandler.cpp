@@ -127,9 +127,10 @@ void ChatHandler::privateMessage(const std::string &restrict recipient,
                                  const std::string &restrict text)
 {
     MessageOut outMsg(CMSG_CHAT_WHISPER);
-    outMsg.writeInt16(static_cast<int16_t>(text.length() + 28), "len");
+    outMsg.writeInt16(static_cast<int16_t>(text.length() + 28 + 1), "len");
     outMsg.writeString(recipient, 24, "recipient nick");
     outMsg.writeString(text, static_cast<int>(text.length()), "message");
+    outMsg.writeInt8(0, "null char");
     mSentWhispers.push(recipient);
 }
 
@@ -315,8 +316,9 @@ void ChatHandler::processChat(Net::MessageIn &msg)
 void ChatHandler::processWhisper(Net::MessageIn &msg) const
 {
     BLOCK_START("ChatHandler::processWhisper")
-    const int chatMsgLength = msg.readInt16("len") - 28;
+    const int chatMsgLength = msg.readInt16("len") - 32;
     std::string nick = msg.readString(24, "nick");
+    msg.readInt32("admin flag");
 
     if (chatMsgLength <= 0)
     {
