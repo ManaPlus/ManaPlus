@@ -62,8 +62,6 @@ class PartyHandler notfinal : public Net::PartyHandler
 
         virtual void processPartyCreate(Net::MessageIn &msg) const;
 
-        virtual void processPartyInfo(Net::MessageIn &msg) const;
-
         virtual void processPartyInviteResponse(Net::MessageIn &msg) const;
 
         virtual void processPartyInvited(Net::MessageIn &msg) const;

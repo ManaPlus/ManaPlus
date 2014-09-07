@@ -29,6 +29,7 @@
 #include "being/localplayer.h"
 
 #include "gui/windows/chatwindow.h"
+#include "gui/windows/socialwindow.h"
 
 #include "net/ea/gui/partytab.h"
 
@@ -227,6 +228,110 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
     const int16_t exp = msg.readInt16();
     const int16_t item = msg.readInt16();
     processPartySettingsContinue(exp, item);
+}
+
+void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
+{
+    bool isOldParty = false;
+    std::set<std::string> names;
+    std::set<std::string> onlineNames;
+    if (!Ea::taParty)
+    {
+        logger->log1("error: party empty in SMSG_PARTY_INFO");
+        Ea::taParty = Party::getParty(1);
+    }
+    if (Ea::taParty)
+    {
+        if (Ea::taParty->getNumberOfElements() > 1)
+        {
+            isOldParty = true;
+            Ea::taParty->getNamesSet(names);
+            const Party::MemberList *const members = Ea::taParty->getMembers();
+            FOR_EACHP (Party::MemberList::const_iterator, it, members)
+            {
+                if ((*it)->getOnline())
+                    onlineNames.insert((*it)->getName());
+            }
+            if (localPlayer)
+                onlineNames.insert(localPlayer->getName());
+        }
+    }
+
+    if (!localPlayer)
+        logger->log1("error: localPlayer==0 in SMSG_PARTY_INFO");
+
+    if (Ea::taParty)
+        Ea::taParty->clearMembers();
+
+    const int length = msg.readInt16();
+    if (Ea::taParty)
+        Ea::taParty->setName(msg.readString(24));
+
+    const int count = (length - 28) / 46;
+    if (localPlayer && Ea::taParty)
+    {
+        localPlayer->setParty(Ea::taParty);
+        localPlayer->setPartyName(Ea::taParty->getName());
+    }
+
+    for (int i = 0; i < count; i++)
+    {
+        const int id = msg.readInt32();
+        std::string nick = msg.readString(24);
+        std::string map = msg.readString(16);
+        const bool leader = msg.readUInt8() == 0U;
+        const bool online = msg.readUInt8() == 0U;
+
+        if (Ea::taParty)
+        {
+            bool joined(false);
+
+            if (isOldParty)
+            {
+                if (names.find(nick) == names.end())
+                {
+                    NotifyManager::notify(NotifyTypes::PARTY_USER_JOINED,
+                        nick);
+                    joined = true;
+                }
+            }
+            PartyMember *const member = Ea::taParty->addMember(id, nick);
+            if (member)
+            {
+                if (!joined && Ea::partyTab)
+                {
+                    if (!names.empty() && ((onlineNames.find(nick)
+                        == onlineNames.end() && online)
+                        || (onlineNames.find(nick) != onlineNames.end()
+                        && !online)))
+                    {
+                        Ea::partyTab->showOnline(nick, online);
+                    }
+
+                    member->setLeader(leader);
+                    member->setOnline(online);
+                    member->setMap(map);
+                }
+                else
+                {
+                    member->setLeader(leader);
+                    member->setOnline(online);
+                    member->setMap(map);
+                }
+            }
+        }
+    }
+
+    if (Ea::taParty)
+        Ea::taParty->sort();
+
+    if (localPlayer && Ea::taParty)
+    {
+        localPlayer->setParty(Ea::taParty);
+        localPlayer->setPartyName(Ea::taParty->getName());
+        if (socialWindow)
+            socialWindow->updateParty();
+    }
 }
 
 }  // namespace TmwAthena
