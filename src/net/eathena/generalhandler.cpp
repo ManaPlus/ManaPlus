@@ -52,6 +52,7 @@
 #include "net/eathena/network.h"
 #include "net/eathena/npchandler.h"
 #include "net/eathena/partyhandler.h"
+#include "net/eathena/pethandler.h"
 #include "net/eathena/playerhandler.h"
 #include "net/eathena/protocol.h"
 #include "net/eathena/serverfeatures.h"
@@ -88,6 +89,7 @@ GeneralHandler::GeneralHandler() :
     mLoginHandler(new LoginHandler),
     mNpcHandler(new NpcHandler),
     mPartyHandler(new PartyHandler),
+    mPetHandler(new PetHandler),
     mPlayerHandler(new PlayerHandler),
     mSkillHandler(new SkillHandler),
     mTradeHandler(new TradeHandler),
@@ -188,6 +190,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mSkillHandler.get());
     mNetwork->registerHandler(mTradeHandler.get());
     mNetwork->registerHandler(mPartyHandler.get());
+    mNetwork->registerHandler(mPetHandler.get());
     mNetwork->registerHandler(mQuestHandler.get());
 }
 

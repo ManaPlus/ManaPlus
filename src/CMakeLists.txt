@@ -1355,6 +1355,8 @@ SET(SRCS_EATHENA
     net/eathena/packets.h
     net/eathena/partyhandler.cpp
     net/eathena/partyhandler.h
+    net/eathena/pethandler.cpp
+    net/eathena/pethandler.h
     net/eathena/playerhandler.cpp
     net/eathena/playerhandler.h
     net/eathena/protocol.h
