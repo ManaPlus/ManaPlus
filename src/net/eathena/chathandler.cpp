@@ -312,4 +312,19 @@ void ChatHandler::processChat(Net::MessageIn &msg)
     BLOCK_END("ChatHandler::processChat")
 }
 
+void ChatHandler::processWhisper(Net::MessageIn &msg) const
+{
+    BLOCK_START("ChatHandler::processWhisper")
+    const int chatMsgLength = msg.readInt16("len") - 28;
+    std::string nick = msg.readString(24, "nick");
+
+    if (chatMsgLength <= 0)
+    {
+        BLOCK_END("ChatHandler::processWhisper")
+        return;
+    }
+
+    processWhisperContinue(nick, msg.readString(chatMsgLength, "message"));
+}
+
 }  // namespace EAthena

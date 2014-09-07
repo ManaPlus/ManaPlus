@@ -50,8 +50,6 @@ class ChatHandler notfinal : public Net::ChatHandler
 
         virtual void processWhisperResponse(Net::MessageIn &msg);
 
-        virtual void processWhisper(Net::MessageIn &msg) const;
-
         virtual void processBeingChat(Net::MessageIn &msg) const;
 
         virtual void processMVP(Net::MessageIn &msg) const;
