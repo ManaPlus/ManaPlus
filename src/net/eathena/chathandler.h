@@ -63,6 +63,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         void processChat(Net::MessageIn &msg);
 
         void processWhisper(Net::MessageIn &msg) const;
+
+        void processWhisperResponse(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

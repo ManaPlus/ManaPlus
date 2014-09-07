@@ -48,8 +48,6 @@ class ChatHandler notfinal : public Net::ChatHandler
         void me(const std::string &restrict text,
                 const std::string &restrict channel) const override final;
 
-        virtual void processWhisperResponse(Net::MessageIn &msg);
-
         virtual void processBeingChat(Net::MessageIn &msg) const;
 
         virtual void processMVP(Net::MessageIn &msg) const;

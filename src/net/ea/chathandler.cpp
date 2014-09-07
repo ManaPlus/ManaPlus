@@ -83,14 +83,6 @@ void ChatHandler::talkPet(const std::string &restrict text,
     talk(action, channel);
 }
 
-void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
-{
-    BLOCK_START("ChatHandler::processWhisperResponse")
-
-    const uint8_t type = msg.readUInt8("response");
-    processWhisperResponseContinue(type);
-}
-
 void ChatHandler::processWhisperResponseContinue(const uint8_t type)
 {
     std::string nick;

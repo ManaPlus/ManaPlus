@@ -380,4 +380,12 @@ void ChatHandler::processWhisper(Net::MessageIn &msg) const
     processWhisperContinue(nick, msg.readString(chatMsgLength, "message"));
 }
 
+void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
+{
+    BLOCK_START("ChatHandler::processWhisperResponse")
+
+    const uint8_t type = msg.readUInt8("response");
+    processWhisperResponseContinue(type);
+}
+
 }  // namespace TmwAthena
