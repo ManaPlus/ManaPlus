@@ -22,10 +22,15 @@
 #include "net/tmwa/partyhandler.h"
 
 #include "actormanager.h"
+#include "configuration.h"
 #include "notifymanager.h"
 #include "party.h"
 
 #include "being/localplayer.h"
+
+#include "gui/windows/chatwindow.h"
+
+#include "net/ea/gui/partytab.h"
 
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
@@ -204,6 +209,24 @@ void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
     MessageOut outMsg(CMSG_PARTY_SETTINGS);
     outMsg.writeInt16(static_cast<int16_t>(mShareExp));
     outMsg.writeInt16(static_cast<int16_t>(share));
+}
+
+void PartyHandler::processPartySettings(Net::MessageIn &msg)
+{
+    if (!Ea::partyTab)
+    {
+        if (!chatWindow)
+            return;
+
+        Ea::partyTab = new Ea::PartyTab(chatWindow);
+        if (config.getBoolValue("showChatHistory"))
+            Ea::partyTab->loadFromLogFile("#Party");
+    }
+
+    // These seem to indicate the sharing mode for exp and items
+    const int16_t exp = msg.readInt16();
+    const int16_t item = msg.readInt16();
+    processPartySettingsContinue(exp, item);
 }
 
 }  // namespace TmwAthena

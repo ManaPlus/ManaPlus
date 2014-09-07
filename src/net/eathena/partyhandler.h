@@ -63,6 +63,8 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
         void setShareItems(const Net::PartyShare::Type share)
                            const override final;
 
+        void processPartySettings(Net::MessageIn &msg);
+
     protected:
         void processPartyInvitationStats(Net::MessageIn &msg);
 

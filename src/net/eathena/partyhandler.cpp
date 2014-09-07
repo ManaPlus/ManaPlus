@@ -22,10 +22,15 @@
 #include "net/eathena/partyhandler.h"
 
 #include "actormanager.h"
+#include "configuration.h"
 #include "notifymanager.h"
 #include "party.h"
 
 #include "being/localplayer.h"
+
+#include "gui/windows/chatwindow.h"
+
+#include "net/ea/gui/partytab.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
@@ -246,6 +251,24 @@ void PartyHandler::processPartyMemberInfo(Net::MessageIn &msg)
         member->setX(x);
         member->setY(y);
     }
+}
+
+void PartyHandler::processPartySettings(Net::MessageIn &msg)
+{
+    if (!Ea::partyTab)
+    {
+        if (!chatWindow)
+            return;
+
+        Ea::partyTab = new Ea::PartyTab(chatWindow);
+        if (config.getBoolValue("showChatHistory"))
+            Ea::partyTab->loadFromLogFile("#Party");
+    }
+
+    // These seem to indicate the sharing mode for exp and items
+    const int16_t exp = msg.readInt16();
+    const int16_t item = msg.readInt16();
+    processPartySettingsContinue(exp, item);
 }
 
 }  // namespace EAthena

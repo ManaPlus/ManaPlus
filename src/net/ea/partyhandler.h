@@ -68,8 +68,6 @@ class PartyHandler notfinal : public Net::PartyHandler
 
         virtual void processPartyInvited(Net::MessageIn &msg) const;
 
-        virtual void processPartySettings(Net::MessageIn &msg);
-
         virtual void processPartyMove(Net::MessageIn &msg) const;
 
         virtual void processPartyLeave(Net::MessageIn &msg) const;

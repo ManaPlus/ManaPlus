@@ -62,6 +62,9 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
         void setShareItems(const Net::PartyShare::Type
                            share) const override final;
+
+    protected:
+        void processPartySettings(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

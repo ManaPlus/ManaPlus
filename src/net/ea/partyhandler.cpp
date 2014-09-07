@@ -234,24 +234,6 @@ void PartyHandler::processPartyInvited(Net::MessageIn &msg) const
         socialWindow->showPartyInvite(partyName, nick);
 }
 
-void PartyHandler::processPartySettings(Net::MessageIn &msg)
-{
-    if (!Ea::partyTab)
-    {
-        if (!chatWindow)
-            return;
-
-        Ea::partyTab = new PartyTab(chatWindow);
-        if (config.getBoolValue("showChatHistory"))
-            Ea::partyTab->loadFromLogFile("#Party");
-    }
-
-    // These seem to indicate the sharing mode for exp and items
-    const int16_t exp = msg.readInt16();
-    const int16_t item = msg.readInt16();
-    processPartySettingsContinue(exp, item);
-}
-
 void PartyHandler::processPartySettingsContinue(const int16_t exp,
                                                 const int16_t item)
 {
