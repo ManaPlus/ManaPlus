@@ -124,7 +124,7 @@
 #define SMSG_NPC_STR_INPUT           0x01d4 /**< String input */
 #define SMSG_PLAYER_CHAT             0x008e /**< Player talks */
 #define SMSG_WHISPER                 0x0097 /**< Whisper Recieved */
-#define SMSG_WHISPER_RESPONSE        0x0098
+#define SMSG_WHISPER_RESPONSE        0x09df
 #define SMSG_GM_CHAT                 0x009a /**< GM announce */
 #define SMSG_WALK_RESPONSE           0x0087
 

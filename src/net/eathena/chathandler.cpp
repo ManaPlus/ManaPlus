@@ -334,6 +334,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
     BLOCK_START("ChatHandler::processWhisperResponse")
 
     const uint8_t type = msg.readUInt8("response");
+    msg.readInt32("unknown");
     processWhisperResponseContinue(type);
 }
 
