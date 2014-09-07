@@ -129,7 +129,7 @@ void QuestHandler::processAddQuestsObjectives(Net::MessageIn &msg)
     const int quests = msg.readInt32("quests count");
     for (int f = 0; f < quests; f ++)
     {
-        const int var = msg.readInt32("quest id");
+        msg.readInt32("quest id");
         msg.readInt32("time diff");
         msg.readInt32("time");
         const int num = msg.readInt16("objectives count");

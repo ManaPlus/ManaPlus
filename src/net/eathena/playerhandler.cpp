@@ -330,10 +330,10 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerGetExp(Net::MessageIn &msg)
 {
-    const int id = msg.readInt32("player id");
-    const int exp = msg.readInt32("exp amount");
-    const int type = msg.readInt16("exp type");
-    const int isQuest = msg.readInt16("is from quest");
+    msg.readInt32("player id");
+    msg.readInt32("exp amount");
+    msg.readInt16("exp type");
+    msg.readInt16("is from quest");
 //    Being *dstBeing = actorManager->findBeing(id);
     // need show particle depend on isQuest flag, for now ignored
 }

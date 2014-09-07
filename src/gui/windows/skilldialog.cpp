@@ -525,6 +525,7 @@ void SkillDialog::useSkill(const SkillInfo *const info)
 
             case SkillType::Unknown:
             case SkillType::Unused:
+            default:
                 break;
         }
     }

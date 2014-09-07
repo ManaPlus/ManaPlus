@@ -445,7 +445,7 @@ void InventoryHandler::processPlayerInventoryRemove2(Net::MessageIn &msg)
 
     // +++ here possible use particle or text/sound effects
     // for different reasons
-    const int reason = msg.readInt16("reason");
+    msg.readInt16("reason");
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     const int amount = msg.readInt16("amount");
     if (inventory)
