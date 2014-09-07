@@ -26,8 +26,6 @@
 #include "game.h"
 #include "notifymanager.h"
 
-#include "being/localplayer.h"
-
 #include "gui/dialogtype.h"
 
 #include "gui/windows/okdialog.h"

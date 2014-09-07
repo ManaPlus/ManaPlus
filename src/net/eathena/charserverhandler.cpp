@@ -28,8 +28,6 @@
 
 #include "being/attributes.h"
 
-#include "gui/windows/editdialog.h"
-
 #include "net/character.h"
 #include "net/logindata.h"
 #include "net/net.h"
@@ -47,9 +45,6 @@
 #include "resources/db/itemdb.h"
 
 #include "utils/dtor.h"
-#include "utils/gettext.h"
-
-#include "listeners/pincodelistener.h"
 
 #include "debug.h"
 

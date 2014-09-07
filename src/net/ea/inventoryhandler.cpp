@@ -26,7 +26,6 @@
 
 #include "being/attributes.h"
 #include "being/localplayer.h"
-#include "being/pickup.h"
 
 #include "net/messagein.h"
 

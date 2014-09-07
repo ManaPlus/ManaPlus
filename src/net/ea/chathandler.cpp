@@ -27,7 +27,7 @@
 #include "guildmanager.h"
 #include "notifymanager.h"
 
-#include "being/localplayer.h"
+#include "being/being.h"
 #include "being/playerrelations.h"
 
 #include "gui/windows/chatwindow.h"

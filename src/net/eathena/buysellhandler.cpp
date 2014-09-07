@@ -29,8 +29,6 @@
 
 #include "gui/windows/buydialog.h"
 
-#include "net/ea/eaprotocol.h"
-
 #include "net/eathena/protocol.h"
 
 #include "resources/notifytypes.h"

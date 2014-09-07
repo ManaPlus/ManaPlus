@@ -22,8 +22,6 @@
 
 #include "net/ea/beinghandler.h"
 
-#include "net/ea/eaprotocol.h"
-
 #include "actormanager.h"
 #include "configuration.h"
 #include "effectmanager.h"
@@ -36,18 +34,9 @@
 
 #include "particle/particle.h"
 
-#include "input/keyboardconfig.h"
-
 #include "gui/windows/botcheckerwindow.h"
-#include "gui/windows/outfitwindow.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/killstats.h"
-
-#include "utils/timer.h"
-
-#include "resources/iteminfo.h"
-
-#include "resources/db/itemdb.h"
 
 #include "resources/map/map.h"
 

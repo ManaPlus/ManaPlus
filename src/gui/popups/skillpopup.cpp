@@ -23,10 +23,6 @@
 
 #include "gui/popups/skillpopup.h"
 
-#include "configuration.h"
-#include "item.h"
-#include "units.h"
-
 #include "gui/gui.h"
 
 #include "gui/fonts/font.h"
@@ -35,8 +31,6 @@
 #include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"
 #include "gui/widgets/textbox.h"
-
-#include "utils/gettext.h"
 
 #include "debug.h"
 

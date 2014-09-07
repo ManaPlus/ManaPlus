@@ -20,8 +20,6 @@
 
 #include "net/tmwa/serverfeatures.h"
 
-#include "net/net.h"
-
 #include "debug.h"
 
 extern int serverVersion;

@@ -22,7 +22,6 @@
 #include "net/tmwa/partyhandler.h"
 
 #include "actormanager.h"
-#include "configuration.h"
 #include "notifymanager.h"
 #include "party.h"
 

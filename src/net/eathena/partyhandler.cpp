@@ -22,7 +22,6 @@
 #include "net/eathena/partyhandler.h"
 
 #include "actormanager.h"
-#include "configuration.h"
 #include "notifymanager.h"
 #include "party.h"
 
@@ -35,8 +34,6 @@
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
-
-#include "net/eathena/gui/partytab.h"
 
 #include "resources/notifytypes.h"
 

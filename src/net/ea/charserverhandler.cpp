@@ -23,8 +23,6 @@
 #include "net/ea/charserverhandler.h"
 
 #include "client.h"
-#include "configuration.h"
-#include "settings.h"
 
 #include "gui/dialogtype.h"
 
@@ -33,8 +31,6 @@
 
 #include "net/ea/loginhandler.h"
 #include "net/ea/eaprotocol.h"
-#include "net/ea/gamehandler.h"
-#include "net/ea/network.h"
 
 #include "net/character.h"
 #include "net/messagein.h"

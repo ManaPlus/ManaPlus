@@ -25,8 +25,6 @@
 
 #include "net/charserverhandler.h"
 
-class ServerInfo;
-
 namespace Net
 {
     class MessageIn;
@@ -34,8 +32,6 @@ namespace Net
 
 namespace Ea
 {
-
-class Network;
 
 /**
  * Deals with incoming messages from the character server.

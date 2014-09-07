@@ -38,7 +38,6 @@
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
 #include "gui/sdlinput.h"
-#include "gui/viewport.h"
 
 #include "gui/popups/popupmenu.h"
 

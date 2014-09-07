@@ -23,7 +23,6 @@
 #include "gui/windows/whoisonline.h"
 
 #include "actormanager.h"
-#include "client.h"
 #include "configuration.h"
 #include "guild.h"
 #include "party.h"

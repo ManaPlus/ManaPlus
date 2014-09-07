@@ -22,8 +22,6 @@
 
 #include "net/eathena/playerhandler.h"
 
-#include "actormanager.h"
-
 #include "being/attributes.h"
 #include "being/localplayer.h"
 

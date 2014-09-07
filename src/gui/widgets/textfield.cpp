@@ -71,7 +71,6 @@
 
 #include "gui/gui.h"
 #include "gui/skin.h"
-#include "gui/viewport.h"
 #ifdef ANDROID
 #include "gui/windowmanager.h"
 #endif
