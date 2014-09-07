@@ -46,6 +46,12 @@ SetupActionData setupActionDataEmotes[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Pet emote modifier key"),
+        InputAction::PET_EMOTE,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Emote shortcuts"),
         InputAction::NO_VALUE,
         ""
@@ -342,5 +348,304 @@ SetupActionData setupActionDataEmotes[] =
         "",
         InputAction::NO_VALUE,
         ""
-    }
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Pet emote shortcuts"),
+        InputAction::NO_VALUE,
+        ""
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 1),
+        InputAction::PET_EMOTE_1,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 2),
+        InputAction::PET_EMOTE_2,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 3),
+        InputAction::PET_EMOTE_3,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 4),
+        InputAction::PET_EMOTE_4,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 5),
+        InputAction::PET_EMOTE_5,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 6),
+        InputAction::PET_EMOTE_6,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 7),
+        InputAction::PET_EMOTE_7,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 8),
+        InputAction::PET_EMOTE_8,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 9),
+        InputAction::PET_EMOTE_9,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 10),
+        InputAction::PET_EMOTE_10,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 11),
+        InputAction::PET_EMOTE_11,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 12),
+        InputAction::PET_EMOTE_12,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 13),
+        InputAction::PET_EMOTE_13,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 14),
+        InputAction::PET_EMOTE_14,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 15),
+        InputAction::PET_EMOTE_15,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 16),
+        InputAction::PET_EMOTE_16,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 17),
+        InputAction::PET_EMOTE_17,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 18),
+        InputAction::PET_EMOTE_18,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 19),
+        InputAction::PET_EMOTE_19,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 20),
+        InputAction::PET_EMOTE_20,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 21),
+        InputAction::PET_EMOTE_21,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 22),
+        InputAction::PET_EMOTE_22,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 23),
+        InputAction::PET_EMOTE_23,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 24),
+        InputAction::PET_EMOTE_24,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 25),
+        InputAction::PET_EMOTE_25,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 26),
+        InputAction::PET_EMOTE_26,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 27),
+        InputAction::PET_EMOTE_27,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 28),
+        InputAction::PET_EMOTE_28,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 29),
+        InputAction::PET_EMOTE_29,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 30),
+        InputAction::PET_EMOTE_30,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 31),
+        InputAction::PET_EMOTE_31,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 32),
+        InputAction::PET_EMOTE_32,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 33),
+        InputAction::PET_EMOTE_33,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 34),
+        InputAction::PET_EMOTE_34,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 35),
+        InputAction::PET_EMOTE_35,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 36),
+        InputAction::PET_EMOTE_36,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 37),
+        InputAction::PET_EMOTE_37,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 38),
+        InputAction::PET_EMOTE_38,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 39),
+        InputAction::PET_EMOTE_39,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 40),
+        InputAction::PET_EMOTE_40,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 41),
+        InputAction::PET_EMOTE_41,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 42),
+        InputAction::PET_EMOTE_42,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 43),
+        InputAction::PET_EMOTE_43,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 44),
+        InputAction::PET_EMOTE_44,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 45),
+        InputAction::PET_EMOTE_45,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 46),
+        InputAction::PET_EMOTE_46,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 47),
+        InputAction::PET_EMOTE_47,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        strprintf(N_("Pet emote shortcut %d"), 48),
+        InputAction::PET_EMOTE_48,
+        "",
+    },
+    {
+        "",
+        InputAction::NO_VALUE,
+        ""
+    },
 };

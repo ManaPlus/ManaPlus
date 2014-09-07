@@ -67,6 +67,7 @@
 #include "net/gamehandler.h"
 #include "net/ipc.h"
 #include "net/net.h"
+#include "net/pethandler.h"
 #include "net/playerhandler.h"
 #include "net/uploadcharinfo.h"
 #include "net/tradehandler.h"
@@ -163,6 +164,22 @@ impHandler(emote)
     {
         if (emoteShortcut)
             emoteShortcut->useEmote(emotion);
+        if (Game::instance())
+            Game::instance()->setValidSpeed();
+        return true;
+    }
+
+    return false;
+}
+
+impHandler(petEmote)
+{
+    if (event.action >= InputAction::PET_EMOTE_1
+        && event.action <= InputAction::PET_EMOTE_48)
+    {
+        const int emotion = event.action - InputAction::PET_EMOTE_1;
+        if (emoteShortcut)
+            Net::getPetHandler()->emote(emoteShortcut->getEmote(emotion), 0);
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;

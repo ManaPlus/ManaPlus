@@ -54,7 +54,8 @@ namespace Input
         GRP_GUI = 16,              // gui key
         GRP_MOVETOPOINT = 32,      // move to point key
         GRP_GUICHAN = 64,          // for guichan based controls
-        GRP_REPEAT = 128           // repeat emulation keys
+        GRP_REPEAT = 128,          // repeat emulation keys
+        GRP_PET_EMOTION = 256      // pet emotions key
     };
 
 }  // namespace Input
