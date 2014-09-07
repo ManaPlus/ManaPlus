@@ -1186,7 +1186,6 @@ manaplus_SOURCES += \
 	      net/ea/network.h \
 	      net/ea/npchandler.cpp \
 	      net/ea/npchandler.h \
-	      net/ea/packets.h \
 	      net/ea/partyhandler.cpp \
 	      net/ea/partyhandler.h \
 	      net/ea/playerhandler.cpp \
@@ -1283,6 +1282,7 @@ manaplus_SOURCES += net/eathena/adminhandler.cpp \
 	      net/eathena/network.h \
 	      net/eathena/npchandler.cpp \
 	      net/eathena/npchandler.h \
+	      net/eathena/packets.h \
 	      net/eathena/partyhandler.cpp \
 	      net/eathena/partyhandler.h \
 	      net/eathena/playerhandler.cpp \
