@@ -249,10 +249,12 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
     // These seem to indicate the sharing mode for exp and items
     const int16_t exp = msg.readInt16();
     const int16_t item = msg.readInt16();
+    processPartySettingsContinue(exp, item);
+}
 
-    if (!Ea::partyTab)
-        return;
-
+void PartyHandler::processPartySettingsContinue(const int16_t exp,
+                                                const int16_t item)
+{
     switch (exp)
     {
         case Net::PartyShare::YES:

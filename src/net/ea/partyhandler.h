@@ -80,6 +80,9 @@ class PartyHandler notfinal : public Net::PartyHandler
 
         virtual void processPartyMessage(Net::MessageIn &msg) const;
 
+        void processPartySettingsContinue(const int16_t exp,
+                                          const int16_t item);
+
     protected:
         Net::PartyShare::Type mShareExp;
         Net::PartyShare::Type mShareItems;
