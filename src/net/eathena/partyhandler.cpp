@@ -196,8 +196,12 @@ void PartyHandler::kick(const std::string &name) const
 void PartyHandler::chat(const std::string &text) const
 {
     MessageOut outMsg(CMSG_PARTY_MESSAGE);
-    outMsg.writeInt16(static_cast<int16_t>(text.length() + 4));
-    outMsg.writeString(text, static_cast<int>(text.length()));
+    const std::string mes = std::string(localPlayer->getName()).append(
+        " : ").append(text);
+
+    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1), "len");
+    outMsg.writeString(mes, static_cast<int>(mes.length()), "nick : message");
+    outMsg.writeInt8(0, "null char");
 }
 
 void PartyHandler::setShareExperience(const Net::PartyShare::Type share) const
