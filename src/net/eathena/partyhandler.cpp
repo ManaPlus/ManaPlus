@@ -387,8 +387,12 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
     if (msgLength <= 0)
         return;
 
-    const int id = msg.readInt32();
-    const std::string chatMsg = msg.readString(msgLength);
+    const int id = msg.readInt32("id");
+    std::string chatMsg = msg.readString(msgLength, "message");
+
+    const size_t pos = chatMsg.find(" : ", 0);
+    if (pos != std::string::npos)
+        chatMsg.erase(0, pos + 3);
 
     if (Ea::taParty && Ea::partyTab)
     {
