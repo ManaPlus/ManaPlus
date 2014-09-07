@@ -73,8 +73,7 @@ class PopupMenu final : public Popup, public LinkHandler
         void showPopup(const int x, const int y,
                        const std::vector<ActorSprite*> &beings);
 
-        void showPlayerPopup(const int x, const int y,
-                             const std::string &nick);
+        void showPlayerPopup(const std::string &nick);
 
         /**
          * Shows the floor item related popup menu at the specified
@@ -131,15 +130,15 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showPopup(const int x, const int y, ListModel *const model);
 
-        void showTextFieldPopup(int x, int y, TextField *const input);
+        void showTextFieldPopup(TextField *const input);
 
-        void showLinkPopup(const int x, const int y, const std::string &link);
+        void showLinkPopup(const std::string &link);
 
-        void showWindowsPopup(const int x, const int y);
+        void showWindowsPopup();
 
         void showNpcDialogPopup(const int npcId, const int x, const int y);
 
-        void showWindowPopup(Window *const window, const int x, const int y);
+        void showWindowPopup(Window *const window);
 
         /**
          * Handles link action.
@@ -150,6 +149,8 @@ class PopupMenu final : public Popup, public LinkHandler
         void clear();
 
     private:
+        void setMousePos();
+
         void addPlayerRelation(const std::string &name);
 
         void addFollow();

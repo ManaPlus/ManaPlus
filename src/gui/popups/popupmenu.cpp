@@ -40,6 +40,7 @@
 #include "input/inputmanager.h"
 
 #include "gui/buttontext.h"
+#include "gui/gui.h"
 #include "gui/viewport.h"
 
 #include "gui/windows/chatwindow.h"
@@ -317,6 +318,19 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
     showPopup(x, y);
 }
 
+void PopupMenu::setMousePos()
+{
+    if (viewport)
+    {
+        mX = viewport->mMouseX;
+        mY = viewport->mMouseY;
+    }
+    else
+    {
+        Gui::getMouseState(&mX, &mY);
+    }
+}
+
 void PopupMenu::showPopup(const int x, const int y,
                           const std::vector<ActorSprite*> &beings)
 {
@@ -351,17 +365,15 @@ void PopupMenu::showPopup(const int x, const int y,
     showPopup(x, y);
 }
 
-void PopupMenu::showPlayerPopup(const int x, const int y,
-                                const std::string &nick)
+void PopupMenu::showPlayerPopup(const std::string &nick)
 {
     if (nick.empty() || !localPlayer)
         return;
 
+    setMousePos();
     mNick = nick;
     mBeingId = 0;
     mType = static_cast<int>(ActorType::PLAYER);
-    mX = x;
-    mY = y;
     mBrowserBox->clearRows();
 
     const std::string &name = mNick;
@@ -447,7 +459,7 @@ void PopupMenu::showPlayerPopup(const int x, const int y,
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
 
-    showPopup(x, y);
+    showPopup(mX, mY);
 }
 
 void PopupMenu::showPopup(const int x, const int y,
@@ -456,9 +468,9 @@ void PopupMenu::showPopup(const int x, const int y,
     if (!floorItem)
         return;
 
-    mFloorItemId = floorItem->getId();
     mX = x;
     mY = y;
+    mFloorItemId = floorItem->getId();
     mType = static_cast<int>(ActorType::FLOOR_ITEM);
     mBrowserBox->clearRows();
     const std::string name = floorItem->getName();
@@ -494,7 +506,7 @@ void PopupMenu::showPopup(const int x, const int y,
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
 
-    showPopup(x, y);
+    showPopup(mX, mY);
 }
 
 void PopupMenu::showPopup(const int x, const int y, MapItem *const mapItem)
@@ -854,12 +866,12 @@ void PopupMenu::showChangePos(const int x, const int y)
     }
 }
 
-void PopupMenu::showWindowPopup(Window *const window,
-                                const int x, const int y)
+void PopupMenu::showWindowPopup(Window *const window)
 {
     if (!window)
         return;
 
+    setMousePos();
     mWindow = window;
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
@@ -871,7 +883,7 @@ void PopupMenu::showWindowPopup(Window *const window,
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
 
-    showPopup(x, y);
+    showPopup(mX, mY);
 }
 
 void PopupMenu::addWindowMenu(Window *const window)
@@ -2412,10 +2424,9 @@ void PopupMenu::showUndressPopup(const int x, const int y,
     showPopup(x, y);
 }
 
-void PopupMenu::showTextFieldPopup(int x, int y, TextField *const input)
+void PopupMenu::showTextFieldPopup(TextField *const input)
 {
-    mX = x;
-    mY = y;
+    setMousePos();
     mTextField = input;
 
     mBrowserBox->clearRows();
@@ -2431,14 +2442,12 @@ void PopupMenu::showTextFieldPopup(int x, int y, TextField *const input)
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
 
-    showPopup(x, y);
+    showPopup(mX, mY);
 }
 
-void PopupMenu::showLinkPopup(const int x, const int y,
-                              const std::string &link)
+void PopupMenu::showLinkPopup(const std::string &link)
 {
-    mX = x;
-    mY = y;
+    setMousePos();
     mNick = link;
 
     mBrowserBox->clearRows();
@@ -2454,14 +2463,12 @@ void PopupMenu::showLinkPopup(const int x, const int y,
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
 
-    showPopup(x, y);
+    showPopup(mX, mY);
 }
 
-void PopupMenu::showWindowsPopup(const int x, const int y)
+void PopupMenu::showWindowsPopup()
 {
-    mX = x;
-    mY = y;
-
+    setMousePos();
     mBrowserBox->clearRows();
     const std::vector<ButtonText*> &names = windowMenu->getButtonTexts();
     // TRANSLATORS: popup menu header
@@ -2481,7 +2488,7 @@ void PopupMenu::showWindowsPopup(const int x, const int y)
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
 
-    showPopup(x, y);
+    showPopup(mX, mY);
 }
 
 void PopupMenu::showNpcDialogPopup(const int npcId, const int x, const int y)

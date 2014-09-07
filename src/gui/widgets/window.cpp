@@ -769,22 +769,7 @@ void Window::mousePressed(MouseEvent &event)
         if (popupMenu)
         {
             event.consume();
-
-            if (viewport)
-            {
-                popupMenu->showWindowPopup(this,
-                    viewport->mMouseX,
-                    viewport->mMouseY);
-            }
-            else
-            {
-                int mouseX = 0;
-                int mouseY = 0;
-                Gui::getMouseState(&mouseX, &mouseY);
-                popupMenu->showWindowPopup(this,
-                    mouseX,
-                    mouseY);
-            }
+            popupMenu->showWindowPopup(this);
         }
     }
 }

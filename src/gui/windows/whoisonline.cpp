@@ -217,9 +217,7 @@ void WhoIsOnline::handleLink(const std::string& link, MouseEvent *event)
                     return;
                 }
             }
-            popupMenu->showPlayerPopup(viewport->mMouseX,
-                viewport->mMouseY,
-                link);
+            popupMenu->showPlayerPopup(link);
         }
     }
 }

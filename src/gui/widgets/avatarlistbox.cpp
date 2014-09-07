@@ -401,9 +401,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                     }
                     else
                     {
-                        popupMenu->showPlayerPopup(viewport->mMouseX,
-                            viewport->mMouseY,
-                            avatar->getName());
+                        popupMenu->showPlayerPopup(avatar->getName());
                     }
                 }
                 break;

@@ -76,11 +76,7 @@ void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
         else if (button == MouseButton::RIGHT)
         {
             if (popupMenu)
-            {
-                popupMenu->showLinkPopup(viewport->mMouseX,
-                    viewport->mMouseY,
-                    url);
-            }
+                popupMenu->showLinkPopup(url);
         }
     }
     else if (!link.empty() && link[0] == '?')

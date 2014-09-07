@@ -572,8 +572,7 @@ impHandler0(showWindows)
 {
     if (popupMenu)
     {
-        popupMenu->showWindowsPopup(viewport->mMouseX,
-            viewport->mMouseY);
+        popupMenu->showWindowsPopup();
         return true;
     }
     return false;
