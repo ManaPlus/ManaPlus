@@ -87,6 +87,12 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processWhisperResponse")
 
+    const uint8_t type = msg.readUInt8("response");
+    processWhisperResponseContinue(type);
+}
+
+void ChatHandler::processWhisperResponseContinue(const uint8_t type)
+{
     std::string nick;
     if (mSentWhispers.empty())
     {
@@ -98,7 +104,6 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
         mSentWhispers.pop();
     }
 
-    const uint8_t type = msg.readUInt8("response");
     switch (type)
     {
         case 0x00:

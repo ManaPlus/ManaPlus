@@ -61,6 +61,8 @@ class ChatHandler notfinal : public Net::ChatHandler
         void processWhisperContinue(const std::string &nick,
                                     std::string chatMsg) const;
 
+        void processWhisperResponseContinue(const uint8_t type);
+
     protected:
         typedef std::queue<std::string> WhisperQueue;
         WhisperQueue mSentWhispers;
