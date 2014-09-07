@@ -149,6 +149,7 @@
 #define SMSG_PARTY_UPDATE_COORDS     0x0107
 #define SMSG_PARTY_MESSAGE           0x0109
 #define SMSG_PARTY_INVITATION_STATS  0x02c9
+#define SMSG_PARTY_MEMBER_INFO       0x01e9
 
 #define SMSG_PLAYER_STORAGE_ITEMS    0x0995 /**< Item list for storage */
 #define SMSG_PLAYER_STORAGE_EQUIP    0x0996 /**< Equipment list for storage */

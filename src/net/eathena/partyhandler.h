@@ -65,6 +65,8 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
     protected:
         void processPartyInvitationStats(Net::MessageIn &msg);
+
+        void processPartyMemberInfo(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

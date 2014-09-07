@@ -30,6 +30,8 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
+#include "net/eathena/gui/partytab.h"
+
 #include "resources/notifytypes.h"
 
 #include "debug.h"
@@ -56,6 +58,7 @@ PartyHandler::PartyHandler() :
         SMSG_PARTY_UPDATE_COORDS,
         SMSG_PARTY_MESSAGE,
         SMSG_PARTY_INVITATION_STATS,
+        SMSG_PARTY_MEMBER_INFO,
         0
     };
     handledMessages = _messages;
@@ -102,6 +105,9 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
             break;
         case SMSG_PARTY_INVITATION_STATS:
             processPartyInvitationStats(msg);
+            break;
+        case SMSG_PARTY_MEMBER_INFO:
+            processPartyMemberInfo(msg);
             break;
 
         default:
@@ -211,6 +217,35 @@ void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
 void PartyHandler::processPartyInvitationStats(Net::MessageIn &msg)
 {
     msg.readUInt8("allow party");
+}
+
+void PartyHandler::processPartyMemberInfo(Net::MessageIn &msg)
+{
+    const int id = msg.readInt32("account id");
+    const bool leader = msg.readInt32("leader") == 0U;
+    const int x = msg.readInt16("x");
+    const int y = msg.readInt16("y");
+    const bool online = msg.readInt8("online") == 0U;
+    msg.readString(24, "party name");
+    const std::string nick = msg.readString(24, "player name");
+    const std::string map = msg.readString(16, "map name");
+    msg.readInt8("party.item&1");
+    msg.readInt8("party.item&2");
+
+    if (!Ea::taParty)
+        return;
+
+    PartyMember *const member = Ea::taParty->addMember(id, nick);
+    if (member)
+    {
+        if (Ea::partyTab && member->getOnline() != online)
+            Ea::partyTab->showOnline(nick, online);
+        member->setLeader(leader);
+        member->setOnline(online);
+        member->setMap(map);
+        member->setX(x);
+        member->setY(y);
+    }
 }
 
 }  // namespace EAthena
