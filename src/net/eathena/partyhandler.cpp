@@ -381,4 +381,28 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg) const
     }
 }
 
+void PartyHandler::processPartyMessage(Net::MessageIn &msg) const
+{
+    const int msgLength = msg.readInt16() - 8;
+    if (msgLength <= 0)
+        return;
+
+    const int id = msg.readInt32();
+    const std::string chatMsg = msg.readString(msgLength);
+
+    if (Ea::taParty && Ea::partyTab)
+    {
+        const PartyMember *const member = Ea::taParty->getMember(id);
+        if (member)
+        {
+            Ea::partyTab->chatLog(member->getName(), chatMsg);
+        }
+        else
+        {
+            NotifyManager::notify(NotifyTypes::PARTY_UNKNOWN_USER_MSG,
+                chatMsg);
+        }
+    }
+}
+
 }  // namespace EAthena
