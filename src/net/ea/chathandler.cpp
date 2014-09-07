@@ -147,7 +147,12 @@ void ChatHandler::processWhisper(Net::MessageIn &msg) const
         return;
     }
 
-    std::string chatMsg = msg.readString(chatMsgLength);
+    processWhisperContinue(nick, msg.readString(chatMsgLength, "message"));
+}
+
+void ChatHandler::processWhisperContinue(const std::string &nick,
+                                         std::string chatMsg) const
+{
     // ignoring future whisper messages
     if (chatMsg.find("\302\202G") == 0 || chatMsg.find("\302\202A") == 0)
     {
