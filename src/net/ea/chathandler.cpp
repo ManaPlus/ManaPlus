@@ -121,6 +121,16 @@ void ChatHandler::processWhisperResponseContinue(const uint8_t type)
                     ChatMsgType::BY_SERVER);
             }
             break;
+        case 0x03:
+            if (chatWindow)
+            {
+                chatWindow->addWhisper(nick,
+                    // TRANSLATORS: chat message
+                    strprintf(_("Whisper could not "
+                    "be sent, you ignored by all players.")),
+                    ChatMsgType::BY_SERVER);
+            }
+            break;
         default:
             if (logger)
             {
