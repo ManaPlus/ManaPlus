@@ -43,6 +43,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         void undress(Being *const being) const override final;
 
+        void requestRanks(const Rank::Rank rank A_UNUSED) const override final;
+
     protected:
         void processBeingChangeLook(Net::MessageIn &msg) const;
 

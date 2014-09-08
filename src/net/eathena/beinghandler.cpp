@@ -250,6 +250,12 @@ void BeingHandler::undress(Being *const being) const
 //    being->setSprite(SPRITE_WEAPON, 0, "", true);
 }
 
+void BeingHandler::requestRanks(const Rank::Rank rank) const
+{
+    MessageOut outMsg(CMSG_REQUEST_RANKS);
+    outMsg.writeInt16(static_cast<int16_t>(rank), "type");
+}
+
 void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
 {
     if (!actorManager)

@@ -23,6 +23,7 @@
 #define NET_BEINGHANDLER_H
 
 #include "being/being.h"
+#include "being/rank.h"
 
 #include "net/messagein.h"
 
@@ -40,6 +41,8 @@ class BeingHandler notfinal
         virtual void requestNameById(const int id) const = 0;
 
         virtual void undress(Being *const being) const = 0;
+
+        virtual void requestRanks(const Rank::Rank rank) const = 0;
 };
 
 }  // namespace Net
