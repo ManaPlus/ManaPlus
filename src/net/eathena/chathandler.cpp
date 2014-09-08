@@ -183,75 +183,40 @@ void ChatHandler::sendRaw(const std::string &args) const
 void ChatHandler::processRaw(MessageOut &restrict outMsg,
                              const std::string &restrict line)
 {
-    size_t pos = line.find(":");
-    if (pos == std::string::npos)
-    {
-        const int i = atoi(line.c_str());
-        if (line.length() <= 3)
-            outMsg.writeInt8(static_cast<unsigned char>(i), "raw");
-        else if (line.length() <= 5)
-            outMsg.writeInt16(static_cast<int16_t>(i), "raw");
-        else
-            outMsg.writeInt32(i, "raw");
-    }
+    if (line.size() < 2)
+        return;
+
+    char cmd = tolower(line[0]);
+    int i = 0;
+    std::string str = line.substr(1);
+    int idx = 0;
+    if (strStartWith(str, "0x"))
+        idx = 2;
+    else if (str[0] == 'h' || str[0] == 'x')
+        idx = 1;
+    if (idx > 0)
+        sscanf(str.substr(idx).c_str(), "%10x", &i);
     else
+        i = atoi(str.c_str());
+    switch (cmd)
     {
-        const std::string header = line.substr(0, pos);
-        std::string data = line.substr(pos + 1);
-        if (header.length() != 1)
-            return;
-
-        int i = 0;
-
-        switch (header[0])
+        case 'b':
         {
-            case '1':
-            case '2':
-            case '4':
-                i = atoi(data.c_str());
-                break;
-            default:
-                break;
+            outMsg.writeInt8(static_cast<unsigned char>(i), "raw");
+            break;
         }
-
-        switch (header[0])
+        case 'w':
         {
-            case '1':
-                outMsg.writeInt8(static_cast<unsigned char>(i), "raw");
-                break;
-            case '2':
-                outMsg.writeInt16(static_cast<int16_t>(i), "raw");
-                break;
-            case '4':
-                outMsg.writeInt32(i, "raw");
-                break;
-            case 'c':
-            {
-                pos = line.find(",");
-                if (pos != std::string::npos)
-                {
-                    const uint16_t x = static_cast<uint16_t>(
-                        atoi(data.substr(0, pos).c_str()));
-                    data = data.substr(pos + 1);
-                    pos = line.find(",");
-                    if (pos == std::string::npos)
-                        break;
-
-                    const uint16_t y = static_cast<uint16_t>(
-                        atoi(data.substr(0, pos).c_str()));
-                    const int dir = atoi(data.substr(pos + 1).c_str());
-                    outMsg.writeCoordinates(x, y,
-                        static_cast<unsigned char>(dir), "raw");
-                }
-                break;
-            }
-            case 't':
-                outMsg.writeString(data,
-                    static_cast<int>(data.length()), "raw");
-                break;
-            default:
-                break;
+            outMsg.writeInt16(static_cast<int16_t>(i), "raw");
+            break;
         }
+        case 'l':
+        {
+            outMsg.writeInt32(static_cast<int32_t>(i), "raw");
+            break;
+        }
+        default:
+            break;
     }
 }
 
