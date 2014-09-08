@@ -26,6 +26,8 @@
 
 #include "net/messagein.h"
 
+#include "utils/langs.h"
+
 #include "debug.h"
 
 namespace Ea
@@ -112,6 +114,13 @@ void NpcHandler::processNpcStrInput(Net::MessageIn &msg A_UNUSED)
     // Request for a string
     if (mDialog)
         mDialog->textRequest("");
+}
+
+void NpcHandler::processLangReuqest(Net::MessageIn &msg A_UNUSED,
+                                    const int npcId)
+{
+    mRequestLang = false;
+    stringInput(npcId, getLangSimple());
 }
 
 }  // namespace Ea

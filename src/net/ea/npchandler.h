@@ -63,6 +63,8 @@ class NpcHandler notfinal : public Net::NpcHandler
 
         void processNpcStrInput(Net::MessageIn &msg);
 
+        void processLangReuqest(Net::MessageIn &msg, const int npcId);
+
     protected:
         NpcHandler();
 

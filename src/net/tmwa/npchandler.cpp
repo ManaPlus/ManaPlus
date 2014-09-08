@@ -33,8 +33,6 @@
 
 #include "net/ea/eaprotocol.h"
 
-#include "utils/langs.h"
-
 #include "debug.h"
 
 extern Net::NpcHandler *npcHandler;
@@ -343,13 +341,6 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
             logger->log("unknown npc command: %d", cmd);
             break;
     }
-}
-
-void NpcHandler::processLangReuqest(Net::MessageIn &msg A_UNUSED,
-                                    const int npcId)
-{
-    mRequestLang = false;
-    stringInput(npcId, getLangSimple());
 }
 
 void NpcHandler::processChangeTitle(Net::MessageIn &msg)
