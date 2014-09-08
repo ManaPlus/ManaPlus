@@ -85,7 +85,6 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_NPC_STR_INPUT:
-            getNpc(msg);
             processNpcStrInput(msg);
             break;
 
