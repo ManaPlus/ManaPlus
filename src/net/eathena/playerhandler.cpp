@@ -234,6 +234,18 @@ void PlayerHandler::updateStatus(const uint8_t status) const
     outMsg.writeInt8(0);
 }
 
+void PlayerHandler::setShortcut(const int idx,
+                                const uint8_t type,
+                                const int id,
+                                const int level) const
+{
+    MessageOut outMsg(CMSG_SET_SHORTCUTS);
+    outMsg.writeInt16(idx, "index");
+    outMsg.writeInt8(type, "type");
+    outMsg.writeInt32(id, "id");
+    outMsg.writeInt16(level, "level");
+}
+
 void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
 {
     for (int f = 0; f < 27; f ++)

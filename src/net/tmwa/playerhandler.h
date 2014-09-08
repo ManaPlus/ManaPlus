@@ -60,6 +60,11 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
         void respawn() const override final;
 
+        void setShortcut(const int idx,
+                         const uint8_t type,
+                         const int id,
+                         const int level) const override final;
+
     protected:
         void processPlayerStatUpdate5(Net::MessageIn &msg);
 

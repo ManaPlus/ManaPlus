@@ -430,4 +430,11 @@ void PlayerHandler::processWalkResponse(Net::MessageIn &msg)
     BLOCK_END("PlayerHandler::processWalkResponse")
 }
 
+void PlayerHandler::setShortcut(const int idx A_UNUSED,
+                                const uint8_t type A_UNUSED,
+                                const int id A_UNUSED,
+                                const int level A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

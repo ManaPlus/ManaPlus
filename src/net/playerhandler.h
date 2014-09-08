@@ -78,6 +78,11 @@ class PlayerHandler notfinal
         virtual void requestOnlineList() const = 0;
 
         virtual void updateStatus(const uint8_t status) const = 0;
+
+        virtual void setShortcut(const int idx,
+                                 const uint8_t type,
+                                 const int id,
+                                 const int level) const = 0;
 };
 
 }  // namespace Net
