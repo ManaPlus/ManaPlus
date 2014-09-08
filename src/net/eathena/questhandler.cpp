@@ -93,6 +93,8 @@ void QuestHandler::processAddQuest(Net::MessageIn &msg)
         msg.readString(24, "monster name");
     }
 
+    msg.skipToEnd("unused");
+
     if (questsWindow)
     {
         questsWindow->updateQuest(var, val);
