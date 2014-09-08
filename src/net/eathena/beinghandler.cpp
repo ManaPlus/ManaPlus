@@ -97,6 +97,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_MONSTER_HP,
         SMSG_PLAYER_HP,
         SMSG_SKILL_AUTO_CAST,
+        SMSG_RANKS_LIST,
         0
     };
     handledMessages = _messages;
@@ -233,6 +234,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
         case SMSG_MONSTER_HP:
         case SMSG_PLAYER_HP:
             processMonsterHp(msg);
+            break;
+
+        case SMSG_RANKS_LIST:
+            processRanksList(msg);
             break;
 
         default:
@@ -1091,6 +1096,18 @@ void BeingHandler::processSkillAutoCast(Net::MessageIn &msg) const
     msg.readInt16("range");
     msg.readString(24, "skill name");
     msg.readInt8("unused");
+}
+
+void BeingHandler::processRanksList(Net::MessageIn &msg) const
+{
+    // +++ here need window with rank tables.
+    msg.readInt16("rank type");
+    for (int f = 0; f < 10; f ++)
+    {
+        msg.readString(24, "name");
+        msg.readInt32("points");
+    }
+    msg.readInt32("my points");
 }
 
 }  // namespace EAthena

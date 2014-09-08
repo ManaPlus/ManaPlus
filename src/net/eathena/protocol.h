@@ -197,6 +197,7 @@
 #define SMSG_QUEST_REMOVE            0x02b4
 
 #define SMSG_MVP                     0x010c
+#define SMSG_RANKS_LIST              0x097d
 #define SMSG_MONSTER_HP              0x0977
 #define SMSG_PLAYER_HP               0x080e
 

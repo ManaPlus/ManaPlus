@@ -67,6 +67,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void processMonsterHp(Net::MessageIn &msg) const;
 
         void processSkillAutoCast(Net::MessageIn &msg) const;
+
+        void processRanksList(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena
