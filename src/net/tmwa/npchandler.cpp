@@ -88,14 +88,8 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_NPC_STR_INPUT:
-        {
-            const int npcId = getNpc(msg);
-            if (mRequestLang)
-                processLangReuqest(msg, npcId);
-            else
-                processNpcStrInput(msg);
+            processNpcStrInput(msg);
             break;
-        }
 
         case SMSG_NPC_COMMAND:
             processNpcCommand(msg);

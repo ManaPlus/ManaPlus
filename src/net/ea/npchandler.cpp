@@ -109,18 +109,19 @@ void NpcHandler::processNpcIntInput(Net::MessageIn &msg A_UNUSED)
         mDialog->integerRequest(0);
 }
 
-void NpcHandler::processNpcStrInput(Net::MessageIn &msg A_UNUSED)
+void NpcHandler::processNpcStrInput(Net::MessageIn &msg)
 {
     // Request for a string
-    if (mDialog)
+    int npcId = getNpc(msg);
+    if (mRequestLang)
+    {
+        mRequestLang = false;
+        stringInput(npcId, getLangSimple());
+    }
+    else if (mDialog)
+    {
         mDialog->textRequest("");
-}
-
-void NpcHandler::processLangReuqest(Net::MessageIn &msg A_UNUSED,
-                                    const int npcId)
-{
-    mRequestLang = false;
-    stringInput(npcId, getLangSimple());
+    }
 }
 
 }  // namespace Ea
