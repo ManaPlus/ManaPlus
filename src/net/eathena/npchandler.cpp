@@ -52,6 +52,7 @@ NpcHandler::NpcHandler() :
         SMSG_NPC_STR_INPUT,
         SMSG_NPC_CUTIN,
         SMSG_NPC_VIEWPOINT,
+        SMSG_NPC_SHOW_PROGRESS_BAR,
         0
     };
     handledMessages = _messages;
@@ -94,6 +95,10 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_NPC_VIEWPOINT:
             processNpcViewPoint(msg);
+            break;
+
+        case SMSG_NPC_SHOW_PROGRESS_BAR:
+            processNpcShowProgressBar(msg);
             break;
 
         default:
@@ -240,13 +245,13 @@ int NpcHandler::getNpc(Net::MessageIn &msg)
     return npcId;
 }
 
-void NpcHandler::processNpcCutin(Net::MessageIn &msg A_UNUSED)
+void NpcHandler::processNpcCutin(Net::MessageIn &msg)
 {
     msg.readString(64);  // image name
     msg.readUInt8();     // type
 }
 
-void NpcHandler::processNpcViewPoint(Net::MessageIn &msg A_UNUSED)
+void NpcHandler::processNpcViewPoint(Net::MessageIn &msg)
 {
     // +++ probably need add nav point and start moving to it
     msg.readInt32("npc id");
@@ -257,6 +262,13 @@ void NpcHandler::processNpcViewPoint(Net::MessageIn &msg A_UNUSED)
     msg.readInt32("y");
     msg.readUInt8("number");  // can be used for scripts
     msg.readInt32("color");
+}
+
+void NpcHandler::processNpcShowProgressBar(Net::MessageIn &msg) const
+{
+    // +++ probably need show progress bar in npc dialog
+    msg.readInt32("color");
+    msg.readInt32("seconds");
 }
 
 }  // namespace EAthena
