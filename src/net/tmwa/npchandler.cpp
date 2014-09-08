@@ -45,8 +45,7 @@ namespace TmwAthena
 
 NpcHandler::NpcHandler() :
     MessageHandler(),
-    Ea::NpcHandler(),
-    mRequestLang(false)
+    Ea::NpcHandler()
 {
     static const uint16_t _messages[] =
     {
@@ -71,32 +70,22 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_NPC_CHOICE:
-            getNpc(msg);
-            mRequestLang = false;
             processNpcChoice(msg);
             break;
 
         case SMSG_NPC_MESSAGE:
-            getNpc(msg);
-            mRequestLang = false;
             processNpcMessage(msg);
             break;
 
         case SMSG_NPC_CLOSE:
-            getNpc(msg);
-            mRequestLang = false;
             processNpcClose(msg);
             break;
 
         case SMSG_NPC_NEXT:
-            getNpc(msg);
-            mRequestLang = false;
             processNpcNext(msg);
             break;
 
         case SMSG_NPC_INT_INPUT:
-            getNpc(msg);
-            mRequestLang = false;
             processNpcIntInput(msg);
             break;
 
@@ -111,20 +100,12 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
         }
 
         case SMSG_NPC_COMMAND:
-        {
-            const int npcId = getNpc(msg);
-            mRequestLang = false;
-            processNpcCommand(msg, npcId);
+            processNpcCommand(msg);
             break;
-        }
 
         case SMSG_NPC_CHANGETITLE:
-        {
-            const int npcId = getNpc(msg);
-            mRequestLang = false;
-            processChangeTitle(msg, npcId);
+            processChangeTitle(msg);
             break;
-        }
 
         default:
             break;
@@ -279,8 +260,11 @@ int NpcHandler::getNpc(Net::MessageIn &msg)
     return npcId;
 }
 
-void NpcHandler::processNpcCommand(Net::MessageIn &msg, const int npcId)
+void NpcHandler::processNpcCommand(Net::MessageIn &msg)
 {
+    const int npcId = getNpc(msg);
+    mRequestLang = false;
+
     const int cmd = msg.readInt16();
     switch (cmd)
     {
@@ -368,9 +352,10 @@ void NpcHandler::processLangReuqest(Net::MessageIn &msg A_UNUSED,
     stringInput(npcId, getLangSimple());
 }
 
-void NpcHandler::processChangeTitle(Net::MessageIn &msg,
-                                    const int npcId A_UNUSED) const
+void NpcHandler::processChangeTitle(Net::MessageIn &msg)
 {
+    const int npcId = getNpc(msg);
+    mRequestLang = false;
     const std::string str = msg.readString();
     if (mDialog)
         mDialog->setCaption(str);

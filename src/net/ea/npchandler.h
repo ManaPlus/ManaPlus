@@ -67,6 +67,8 @@ class NpcHandler notfinal : public Net::NpcHandler
         NpcHandler();
 
         NpcDialog *mDialog;
+
+        bool mRequestLang;
 };
 
 }  // namespace Ea

@@ -65,27 +65,22 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_NPC_CHOICE:
-            getNpc(msg);
             processNpcChoice(msg);
             break;
 
         case SMSG_NPC_MESSAGE:
-            getNpc(msg);
             processNpcMessage(msg);
             break;
 
         case SMSG_NPC_CLOSE:
-            getNpc(msg);
             processNpcClose(msg);
             break;
 
         case SMSG_NPC_NEXT:
-            getNpc(msg);
             processNpcNext(msg);
             break;
 
         case SMSG_NPC_INT_INPUT:
-            getNpc(msg);
             processNpcIntInput(msg);
             break;
 
@@ -95,12 +90,11 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_NPC_CUTIN:
-            processNpcCutin(msg, npcId);
+            processNpcCutin(msg);
             break;
 
         case SMSG_NPC_VIEWPOINT:
-            npcId = getNpc(msg);
-            processNpcViewPoint(msg, npcId);
+            processNpcViewPoint(msg);
             break;
 
         default:
@@ -247,17 +241,16 @@ int NpcHandler::getNpc(Net::MessageIn &msg)
     return npcId;
 }
 
-void NpcHandler::processNpcCutin(Net::MessageIn &msg A_UNUSED,
-                                 const int npcId A_UNUSED)
+void NpcHandler::processNpcCutin(Net::MessageIn &msg A_UNUSED)
 {
     msg.readString(64);  // image name
     msg.readUInt8();     // type
 }
 
-void NpcHandler::processNpcViewPoint(Net::MessageIn &msg A_UNUSED,
-                                     const int npcId A_UNUSED)
+void NpcHandler::processNpcViewPoint(Net::MessageIn &msg A_UNUSED)
 {
     // +++ probably need add nav point and start moving to it
+    msg.readInt32("npc id");
     msg.readInt32("type");  // 0 display for 15 sec,
                             // 1 display until teleport,
                             // 2 remove

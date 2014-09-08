@@ -67,9 +67,9 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         int getNpc(Net::MessageIn &msg) override final;
 
-        static void processNpcCutin(Net::MessageIn &msg, const int npcId);
+        static void processNpcCutin(Net::MessageIn &msg);
 
-        static void processNpcViewPoint(Net::MessageIn &msg, const int npcId);
+        static void processNpcViewPoint(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

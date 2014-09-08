@@ -67,14 +67,11 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         int getNpc(Net::MessageIn &msg) override final;
 
-        void processNpcCommand(Net::MessageIn &msg, const int npcId);
+        void processNpcCommand(Net::MessageIn &msg);
 
         void processLangReuqest(Net::MessageIn &msg, const int npcId);
 
-        void processChangeTitle(Net::MessageIn &msg, const int npcId) const;
-
-    private:
-        bool mRequestLang;
+        void processChangeTitle(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

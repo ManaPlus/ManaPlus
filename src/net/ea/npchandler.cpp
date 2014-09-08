@@ -32,7 +32,8 @@ namespace Ea
 {
 
 NpcHandler::NpcHandler() :
-    mDialog(nullptr)
+    mDialog(nullptr),
+    mRequestLang(false)
 {
 }
 
@@ -52,6 +53,9 @@ void NpcHandler::endShopping(const int beingId A_UNUSED) const
 
 void NpcHandler::processNpcChoice(Net::MessageIn &msg)
 {
+    getNpc(msg);
+    mRequestLang = false;
+
     if (mDialog)
     {
         mDialog->choiceRequest();
@@ -65,6 +69,9 @@ void NpcHandler::processNpcChoice(Net::MessageIn &msg)
 
 void NpcHandler::processNpcMessage(Net::MessageIn &msg)
 {
+    getNpc(msg);
+    mRequestLang = false;
+
     const std::string message = msg.readString(msg.getLength() - 8);
     // ignore future legacy npc commands.
     if (message.size() > 3 && message.substr(0, 3) == "###")
@@ -76,6 +83,8 @@ void NpcHandler::processNpcMessage(Net::MessageIn &msg)
 void NpcHandler::processNpcClose(Net::MessageIn &msg A_UNUSED)
 {
     // Show the close button
+    getNpc(msg);
+    mRequestLang = false;
     if (mDialog)
         mDialog->showCloseButton();
 }
@@ -83,6 +92,8 @@ void NpcHandler::processNpcClose(Net::MessageIn &msg A_UNUSED)
 void NpcHandler::processNpcNext(Net::MessageIn &msg A_UNUSED)
 {
     // Show the next button
+    getNpc(msg);
+    mRequestLang = false;
     if (mDialog)
         mDialog->showNextButton();
 }
@@ -90,6 +101,8 @@ void NpcHandler::processNpcNext(Net::MessageIn &msg A_UNUSED)
 void NpcHandler::processNpcIntInput(Net::MessageIn &msg A_UNUSED)
 {
     // Request for an integer
+    getNpc(msg);
+    mRequestLang = false;
     if (mDialog)
         mDialog->integerRequest(0);
 }
