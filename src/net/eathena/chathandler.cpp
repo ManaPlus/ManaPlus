@@ -55,6 +55,7 @@ ChatHandler::ChatHandler() :
         SMSG_WHISPER,
         SMSG_WHISPER_RESPONSE,
         SMSG_GM_CHAT,
+        SMSG_GM_CHAT2,
         SMSG_MVP,  // MVP
         SMSG_IGNORE_ALL_RESPONSE,
         SMSG_COLOR_MESSAGE,
@@ -86,6 +87,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
         case SMSG_GM_CHAT:
         case SMSG_COLOR_MESSAGE:
             processChat(msg);
+            break;
+
+        case SMSG_GM_CHAT2:
+            processGmChat2(msg);
             break;
 
         case SMSG_MVP:
@@ -311,6 +316,19 @@ void ChatHandler::processChat(Net::MessageIn &msg)
             chatWindow->addGlobalMessage(chatMsg);
     }
     BLOCK_END("ChatHandler::processChat")
+}
+
+void ChatHandler::processGmChat2(Net::MessageIn &msg)
+{
+    int chatMsgLength = msg.readInt16("len") - 16;
+    msg.readInt32("font color");
+    msg.readInt16("font type");
+    msg.readInt16("font size");
+    msg.readInt16("font align");
+    msg.readInt16("font y");
+    const std::string chatMsg = msg.readRawString(chatMsgLength, "message");
+    if (chatWindow)
+        chatWindow->addGlobalMessage(chatMsg);
 }
 
 void ChatHandler::processWhisper(Net::MessageIn &msg) const

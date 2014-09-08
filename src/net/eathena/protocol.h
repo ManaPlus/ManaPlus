@@ -127,6 +127,7 @@
 #define SMSG_WHISPER                 0x0097 /**< Whisper Recieved */
 #define SMSG_WHISPER_RESPONSE        0x09df
 #define SMSG_GM_CHAT                 0x009a /**< GM announce */
+#define SMSG_GM_CHAT2                0x01c3
 #define SMSG_WALK_RESPONSE           0x0087
 
 // Receiving a request to trade
