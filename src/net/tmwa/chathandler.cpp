@@ -178,13 +178,13 @@ void ChatHandler::sendRaw(const std::string &args) const
     if (pos != std::string::npos)
     {
         str = line.substr(0, pos);
-        outMsg = new MessageOut(static_cast<int16_t>(atoi(str.c_str())));
+        outMsg = new MessageOut(static_cast<int16_t>(parseNumber(str)));
         line = line.substr(pos + 1);
         pos = line.find(" ");
     }
     else
     {
-        outMsg = new MessageOut(static_cast<int16_t>(atoi(line.c_str())));
+        outMsg = new MessageOut(static_cast<int16_t>(parseNumber(line)));
         delete outMsg;
         return;
     }
@@ -207,19 +207,8 @@ void ChatHandler::processRaw(MessageOut &restrict outMsg,
     if (line.size() < 2)
         return;
 
-    char cmd = tolower(line[0]);
-    int i = 0;
-    std::string str = line.substr(1);
-    int idx = 0;
-    if (strStartWith(str, "0x"))
-        idx = 2;
-    else if (str[0] == 'h' || str[0] == 'x')
-        idx = 1;
-    if (idx > 0)
-        sscanf(str.substr(idx).c_str(), "%10x", &i);
-    else
-        i = atoi(str.c_str());
-    switch (cmd)
+    int i = parseNumber(line.substr(1));
+    switch (tolower(line[0]))
     {
         case 'b':
         {

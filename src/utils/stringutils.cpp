@@ -746,3 +746,18 @@ bool parse2Int(const std::string &args, int &x, int &y)
     }
     return isValid;
 }
+
+int parseNumber(const std::string &str)
+{
+    int i = 0;
+    int idx = 0;
+    if (strStartWith(str, "0x"))
+        idx = 2;
+    else if (str[0] == 'h' || str[0] == 'x')
+        idx = 1;
+    if (idx > 0)
+        sscanf(str.substr(idx).c_str(), "%10x", &i);
+    else
+        i = atoi(str.c_str());
+    return i;
+}

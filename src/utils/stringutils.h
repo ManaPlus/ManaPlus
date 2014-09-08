@@ -240,4 +240,6 @@ void secureChatCommand(std::string &str);
 
 bool parse2Int(const std::string &args, int &x, int &y);
 
+int parseNumber(const std::string &str);
+
 #endif  // UTILS_STRINGUTILS_H
