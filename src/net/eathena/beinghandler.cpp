@@ -96,6 +96,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_MAP_TYPE_PROPERTY2,
         SMSG_MONSTER_HP,
         SMSG_PLAYER_HP,
+        SMSG_SKILL_AUTO_CAST,
         0
     };
     handledMessages = _messages;
@@ -132,6 +133,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_SKILL_DAMAGE:
             processSkillDamage(msg);
+            break;
+
+        case SMSG_SKILL_AUTO_CAST:
+            processSkillAutoCast(msg);
             break;
 
         case SMSG_BEING_ACTION:
@@ -1068,6 +1073,18 @@ void BeingHandler::processMonsterHp(Net::MessageIn &msg) const
         dstBeing->setHP(hp);
         dstBeing->setMaxHP(maxHP);
     }
+}
+
+void BeingHandler::processSkillAutoCast(Net::MessageIn &msg) const
+{
+    msg.readInt16("skill id");
+    msg.readInt16("inf");
+    msg.readInt16("unused");
+    msg.readInt16("skill level");
+    msg.readInt16("sp");
+    msg.readInt16("range");
+    msg.readString(24, "skill name");
+    msg.readInt8("unused");
 }
 
 }  // namespace EAthena
