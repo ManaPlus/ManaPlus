@@ -317,6 +317,7 @@
 #define CMSG_NPC_PRODUCE_MIX         0x018e
 #define CMSG_NPC_COOKING             0x025b
 #define CMSG_NPC_REPAIR              0x01fd
+#define CMSG_NPC_REFINE              0x0222
 #define CMSG_PLAYER_MAPMOVE          0x0140
 #define CMSG_REMOVE_OPTION           0x012a
 #define CMSG_PLAYER_SET_MEMO         0x011d
