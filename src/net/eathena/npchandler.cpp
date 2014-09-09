@@ -61,8 +61,6 @@ NpcHandler::NpcHandler() :
 
 void NpcHandler::handleMessage(Net::MessageIn &msg)
 {
-    int npcId = 0;
-
     switch (msg.getId())
     {
         case SMSG_NPC_CHOICE:

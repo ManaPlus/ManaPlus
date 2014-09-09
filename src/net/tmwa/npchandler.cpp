@@ -343,7 +343,7 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg)
 
 void NpcHandler::processChangeTitle(Net::MessageIn &msg)
 {
-    const int npcId = getNpc(msg);
+    getNpc(msg);
     mRequestLang = false;
     const std::string str = msg.readString();
     if (mDialog)

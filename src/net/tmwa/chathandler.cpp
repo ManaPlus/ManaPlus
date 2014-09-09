@@ -207,7 +207,7 @@ void ChatHandler::processRaw(MessageOut &restrict outMsg,
     if (line.size() < 2)
         return;
 
-    int i = parseNumber(line.substr(1));
+    const uint32_t i = parseNumber(line.substr(1));
     switch (tolower(line[0]))
     {
         case 'b':

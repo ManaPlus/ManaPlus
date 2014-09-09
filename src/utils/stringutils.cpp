@@ -747,9 +747,9 @@ bool parse2Int(const std::string &args, int &x, int &y)
     return isValid;
 }
 
-int parseNumber(const std::string &str)
+uint32_t parseNumber(const std::string &str)
 {
-    int i = 0;
+    uint32_t i = 0;
     int idx = 0;
     if (strStartWith(str, "0x"))
         idx = 2;

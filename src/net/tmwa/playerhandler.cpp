@@ -247,7 +247,7 @@ void PlayerHandler::removeOption() const
 {
 }
 
-void PlayerHandler::changeCart(const int type) const
+void PlayerHandler::changeCart(const int type A_UNUSED) const
 {
 }
 
