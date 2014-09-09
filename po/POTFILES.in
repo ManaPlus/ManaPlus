@@ -136,6 +136,7 @@ src/net/ea/network.cpp
 src/net/ea/playerhandler.cpp
 src/net/ea/skillhandler.cpp
 src/net/eathena/generalhandler.cpp
+src/net/eathena/loginhandler.cpp
 src/net/ea/tradehandler.cpp
 src/net/tmwa/generalhandler.cpp
 src/render/rendererslistsdl2.h

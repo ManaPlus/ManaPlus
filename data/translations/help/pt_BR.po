@@ -4,13 +4,14 @@
 # alastrim <alasmirt@gmail.com>, 2012
 # freya <freya.df@gmail.com>, 2012
 # freya <freya.df@gmail.com>, 2012
+# Xtreem <guilhermegg11@hotmail.com>, 2014
 # Jonatas L. Nogueira <cpntb1@ymail.com>, 2014
 # Luciano Zago <lcnzg7@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2014-07-27 12:33+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2014-09-03 22:11+0000\n"
+"Last-Translator: Xtreem <guilhermegg11@hotmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/manaplus/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgid "/uploadserverconfig - upload server config into pastebin service."
 msgstr ""
 
 msgid "/atkhuman - select and attack nearest player."
-msgstr ""
+msgstr "/atkhuman - seleciona e ataque o jogador mais proximo."
 
 msgid "\"Outfit shortcut 12\""
 msgstr "\"Atalho de roupa 12\""
@@ -64,16 +65,16 @@ msgid "\"Emote shortcut 10\""
 msgstr "\"Atalho para emoticon 10\""
 
 msgid "Content devs"
-msgstr ""
+msgstr "Conteudo dos desenvolvedores."
 
 msgid "Guild chat commands"
-msgstr ""
+msgstr "Comandos do chat de guilda."
 
 msgid "/away, /away MSG - set away mode."
 msgstr "/away, /away MSG - definir modo ausente."
 
 msgid "GM"
-msgstr ""
+msgstr "GM"
 
 msgid "/addattack NAME - add monster to attack list."
 msgstr "/addattack NAME - adiciona monstro na lista de ataque."
@@ -82,7 +83,7 @@ msgid "\"Emote shortcut 2\""
 msgstr "\"Atalho para emoticon 2\""
 
 msgid "/announce MESSAGE - show global message."
-msgstr ""
+msgstr "/announce mensagem - Envia uma mensagem global."
 
 msgid "/serverunignoreall - unignore all whispers on server side."
 msgstr "/serverunignoreall - não ignora todos sussurros vindos do servidor."
@@ -94,7 +95,7 @@ msgid "/heal NICK - heal nick."
 msgstr "/heal NICK - curar o NICK."
 
 msgid "\"Select OK\""
-msgstr ""
+msgstr "\"Selecione OK\""
 
 msgid "/dumpe - dump environment variables into chat."
 msgstr ""
@@ -108,25 +109,25 @@ msgid "\"Enable/disable trading\""
 msgstr "\"Habilitar/desabilitar troca\""
 
 msgid "/wait NAME - wait for nick or moster with name."
-msgstr ""
+msgstr "/wait nome - espera pelo jogador ou monstro com este nome."
 
 msgid "##2Trade:##9 enables the ability to trade with others."
-msgstr ""
+msgstr "##2Trade:##9 permite fazer negociaçoes com outros jogadores."
 
 msgid "\"Use magic attack\""
-msgstr ""
+msgstr "\"Use ataque magico\""
 
 msgid "\"Who is online window\""
-msgstr ""
+msgstr "\"O que é a janela de online\""
 
 msgid "\"Switch pvp attack\""
-msgstr ""
+msgstr "\"Mudar ataque para pvp\""
 
 msgid "\"Deactivate chat input\""
-msgstr ""
+msgstr "\"Impossibilita a digitação no chat.\""
 
 msgid "\"Move to navigation point\""
-msgstr ""
+msgstr "\"Move para o ponto de navegação\""
 
 msgid "ManaPlus Contributors"
 msgstr "Contribuidores do ManaPlus:"
@@ -148,7 +149,7 @@ msgid "Other contributors"
 msgstr "Outros contribuidores"
 
 msgid "\"Item shortcuts Key\""
-msgstr ""
+msgstr "\"Tecla de atalho de itens\""
 
 msgid ""
 "Communication is often essential to success in this game. You can communicate\n"
@@ -157,7 +158,7 @@ msgid ""
 msgstr "A comunicação muitas vezes essencial para o sucesso neste jogo. Você pode se comunicar de várias maneiras: Conversando e mostrando emoções (veja acima), por negociação (com o menu do botão direito), e sussurrando."
 
 msgid "\"Item shortcut 3\""
-msgstr ""
+msgstr "\"Teclas de atalho de item 3\""
 
 msgid "\"Change move type\""
 msgstr "\"Mudar tipo de movimento\""
@@ -182,10 +183,10 @@ msgid "/dropn - drop N items from any slot."
 msgstr ""
 
 msgid "/enableaway - enable away messages in current tab."
-msgstr ""
+msgstr "/enableaway - Ativa mensagem de afk na aba atual."
 
 msgid "/enemy NICK - add nick to enemyes list."
-msgstr ""
+msgstr "/enemy NICK - adiciona um jogador a lista de inimigos."
 
 msgid "Support"
 msgstr "Suporte"
@@ -212,19 +213,19 @@ msgid ""
 msgstr "/msg NOME texto, /whisper NOME texto, /w NOME texto - envia mensagem privada para o nome."
 
 msgid "/movetotarget - move to target position."
-msgstr ""
+msgstr "/movetotarget - move ate o alvo."
 
 msgid "/outfit prev - wear previous outfit."
 msgstr "/outfit prev - veste a roupa anterior."
 
 msgid "##2Party level2:##9 enables a char to create a party."
-msgstr ""
+msgstr "##2Party level2:##9 possibilita a criação de grupos pelo jogador."
 
 msgid "/target NICK - select nick as target. Can be monster or player nick."
 msgstr "/target NOME - selecione o nome como alvo. Pode ser um monstro ou um jogador."
 
 msgid "##2ManaPlus version: ##6%VER%"
-msgstr ""
+msgstr "##2ManaPlus versão: ##6%VER%"
 
 msgid "COMMANDS"
 msgstr "COMANDOS"
@@ -236,10 +237,10 @@ msgid "\"Toggle chat\""
 msgstr "\"Alternar para chat\""
 
 msgid "/talkpet TEXT - talk from your pet."
-msgstr ""
+msgstr "/talkpet texto - fala com o seu animal de estimação."
 
 msgid "\"Change attack type\""
-msgstr ""
+msgstr "\"Muda o tipo de ataque\""
 
 msgid "Manaplus Developers"
 msgstr "Desenvolvedores do Manaplus"
@@ -251,22 +252,22 @@ msgid "You can change any key in keyboard settings."
 msgstr "Você pode mudar qualquer tecla nas configurações de teclado."
 
 msgid "\"Previous chat tab line\""
-msgstr ""
+msgstr "\"Linha do chat anterior\""
 
 msgid "\"Emote shortcut 13\""
-msgstr ""
+msgstr "\"Atalho para emote 13\""
 
 msgid "/disregard NICK - add nick to disregarded list."
 msgstr "/disregard NICK - adiciona um nick à lista de ignorados."
 
 msgid "/enablehighlight - enable highlight in current tab."
-msgstr ""
+msgstr "/enablehighlight - permite destaque na aba atual."
 
 msgid "/disableaway - disable away messages in current tab."
-msgstr ""
+msgstr "/disableaway - desabilita a mensagem de afk na aba atual."
 
 msgid "\"Smilie\""
-msgstr ""
+msgstr "\"Carinha\""
 
 msgid "Main development"
 msgstr "Desenvolvimento principal"
