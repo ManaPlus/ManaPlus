@@ -85,6 +85,8 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         void selectArrow(const int nameId) const override final;
 
+        void selectAutoSpell(const int skillId) const override final;
+
     protected:
         static void processNpcCutin(Net::MessageIn &msg);
 

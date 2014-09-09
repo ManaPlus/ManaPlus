@@ -88,6 +88,8 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
         void identify(const int index) const override final;
 
         void selectArrow(const int nameId) const override final;
+
+        void selectAutoSpell(const int skillId) const override final;
 };
 
 }  // namespace TmwAthena

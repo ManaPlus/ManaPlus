@@ -241,6 +241,12 @@ void NpcHandler::selectArrow(const int nameId) const
     outMsg.writeInt16(nameId, "name id");
 }
 
+void NpcHandler::selectAutoSpell(const int skillId) const
+{
+    MessageOut outMsg(CMSG_NPC_SELECT_AUTO_SPELL);
+    outMsg.writeInt32(skillId, "skill id");
+}
+
 int NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE
