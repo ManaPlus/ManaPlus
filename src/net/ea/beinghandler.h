@@ -64,8 +64,6 @@ class BeingHandler notfinal : public Net::BeingHandler
 
         virtual void processPlayerGuilPartyInfo(Net::MessageIn &msg) const;
 
-        virtual void processBeingChangeDirection(Net::MessageIn &msg) const;
-
         virtual void processPlayerStop(Net::MessageIn &msg) const;
 
         virtual void processPlayerMoveToAttack(Net::MessageIn &msg) const;

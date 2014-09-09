@@ -63,6 +63,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void processBeingStatusChange(Net::MessageIn &msg) const;
 
         void processBeingMove2(Net::MessageIn &msg) const;
+
+        void processBeingChangeDirection(Net::MessageIn &msg) const;
 };
 
 }  // namespace TmwAthena

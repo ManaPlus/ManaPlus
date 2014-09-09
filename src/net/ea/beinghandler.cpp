@@ -434,33 +434,6 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processPlayerGuilPartyInfo")
 }
 
-void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg) const
-{
-    BLOCK_START("BeingHandler::processBeingChangeDirection")
-    if (!actorManager)
-    {
-        BLOCK_END("BeingHandler::processBeingChangeDirection")
-        return;
-    }
-
-    Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
-
-    if (!dstBeing)
-    {
-        BLOCK_END("BeingHandler::processBeingChangeDirection")
-        return;
-    }
-
-    msg.readInt16("unused");
-
-    const uint8_t dir = static_cast<uint8_t>(
-        msg.readUInt8("direction") & 0x0FU);
-    dstBeing->setDirection(dir);
-    if (localPlayer)
-        localPlayer->imitateDirection(dstBeing, dir);
-    BLOCK_END("BeingHandler::processBeingChangeDirection")
-}
-
 void BeingHandler::processPlayerStop(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processPlayerStop")
