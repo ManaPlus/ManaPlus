@@ -214,8 +214,8 @@ void NpcHandler::produceMix(const int nameId A_UNUSED,
 {
 }
 
-void NpcHandler::cooking(const CookingType::Type type,
-                         const int nameId) const
+void NpcHandler::cooking(const CookingType::Type type A_UNUSED,
+                         const int nameId A_UNUSED) const
 {
 }
 
