@@ -251,6 +251,10 @@ void PlayerHandler::changeCart(const int type A_UNUSED) const
 {
 }
 
+void PlayerHandler::setMemo() const
+{
+}
+
 void PlayerHandler::processOnlineList(Net::MessageIn &msg)
 {
     if (!whoIsOnline)

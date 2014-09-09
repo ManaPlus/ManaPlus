@@ -258,6 +258,11 @@ void PlayerHandler::changeCart(const int type) const
     outMsg.writeInt16(type, "type");
 }
 
+void PlayerHandler::setMemo() const
+{
+    MessageOut outMsg(CMSG_PLAYER_SET_MEMO);
+}
+
 void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
 {
     for (int f = 0; f < 27; f ++)
