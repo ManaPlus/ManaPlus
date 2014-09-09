@@ -286,9 +286,14 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
     {        // SMSG_BEING_CHANGE_LOOKS2
         id = msg.readInt16("id1");
         if (type == 2 || serverVersion > 0)
+        {
             id2 = msg.readInt16("id2");
+        }
         else
+        {
+            msg.readInt16("id2");
             id2 = 1;
+        }
     }
 
     if (dstBeing->getType() == ActorType::PLAYER)
