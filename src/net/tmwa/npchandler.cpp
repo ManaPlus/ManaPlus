@@ -214,6 +214,11 @@ void NpcHandler::produceMix(const int nameId A_UNUSED,
 {
 }
 
+void NpcHandler::cooking(const CookingType::Type type,
+                         const int nameId) const
+{
+}
+
 int NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE

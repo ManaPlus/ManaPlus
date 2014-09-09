@@ -209,6 +209,14 @@ void NpcHandler::produceMix(const int nameId,
     outMsg.writeInt16(materialId3, "material 3");
 }
 
+void NpcHandler::cooking(const CookingType::Type type,
+                         const int nameId) const
+{
+    MessageOut outMsg(CMSG_NPC_COOKING);
+    outMsg.writeInt16(static_cast<int16_t>(type), "type");
+    outMsg.writeInt16(nameId, "name id");
+}
+
 int NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE

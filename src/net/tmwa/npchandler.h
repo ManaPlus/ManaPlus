@@ -77,6 +77,9 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
                         const int materialId1,
                         const int materialId2,
                         const int materialId3) const override final;
+
+        void cooking(const CookingType::Type type,
+                     const int nameId) const;
 };
 
 }  // namespace TmwAthena
