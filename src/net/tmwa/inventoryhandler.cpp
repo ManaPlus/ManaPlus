@@ -214,6 +214,10 @@ void InventoryHandler::moveItem2(const int source, const int slot,
     }
 }
 
+void InventoryHandler::useCard(const int index A_UNUSED) const
+{
+}
+
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerEquipment")

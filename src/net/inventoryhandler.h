@@ -74,6 +74,8 @@ class InventoryHandler notfinal
         virtual void forgotStorage() = 0;
 
         virtual int convertFromServerSlot(const int eAthenaSlot) const = 0;
+
+        virtual void useCard(const int index) const = 0;
 };
 
 }  // namespace Net

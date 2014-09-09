@@ -58,6 +58,8 @@ class InventoryHandler final : public MessageHandler,
                        const int amount,
                        const int destination) const override final;
 
+        void useCard(const int index) const override final;
+
     protected:
         void processPlayerEquipment(Net::MessageIn &msg);
 
