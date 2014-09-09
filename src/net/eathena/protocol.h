@@ -281,6 +281,7 @@
 #define CMSG_CLOSE_STORAGE           0x0193 /** Request storage close */
 
 #define CMSG_MOVE_TO_CART            0x0126
+#define CMSG_MOVE_FROM_CART          0x0127
 
 #define CMSG_ADMIN_ANNOUNCE          0x0099
 #define CMSG_ADMIN_LOCAL_ANNOUNCE    0x019C
