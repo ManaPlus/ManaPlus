@@ -7119,7 +7119,7 @@ msgstr "                  usado para definir parâmetros customizados"
 #. TRANSLATORS: command line help
 #: src/main.cpp:86
 msgid "                  to the manaplus client."
-msgstr "                  para o cliente manaplus. "
+msgstr "                  para o cliente manaplus."
 
 #. TRANSLATORS: command line help
 #: src/main.cpp:89
