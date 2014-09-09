@@ -355,74 +355,76 @@ void PlayerHandler::processMapMusic(Net::MessageIn &msg)
 void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerHandler::processPlayerStatUpdate5")
-    PlayerInfo::setAttribute(Attributes::CHAR_POINTS, msg.readInt16());
+    PlayerInfo::setAttribute(Attributes::CHAR_POINTS,
+        msg.readInt16("char points"));
 
-    unsigned int val = msg.readUInt8();
+    unsigned int val = msg.readUInt8("str");
     PlayerInfo::setStatBase(STR, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(STR, msg.readUInt8());
+        statusWindow->setPointsNeeded(STR, msg.readUInt8("str cost"));
     else
-        msg.readUInt8();
+        msg.readUInt8("str cost");
 
-    val = msg.readUInt8();
+    val = msg.readUInt8("agi");
     PlayerInfo::setStatBase(AGI, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(AGI, msg.readUInt8());
+        statusWindow->setPointsNeeded(AGI, msg.readUInt8("agi cost"));
     else
-        msg.readUInt8();
+        msg.readUInt8("agi cost");
 
-    val = msg.readUInt8();
+    val = msg.readUInt8("vit");
     PlayerInfo::setStatBase(VIT, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(VIT, msg.readUInt8());
+        statusWindow->setPointsNeeded(VIT, msg.readUInt8("vit cost"));
     else
-        msg.readUInt8();
+        msg.readUInt8("vit cost");
 
-    val = msg.readUInt8();
+    val = msg.readUInt8("int");
     PlayerInfo::setStatBase(INT, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(INT, msg.readUInt8());
+        statusWindow->setPointsNeeded(INT, msg.readUInt8("int cost"));
     else
-        msg.readUInt8();
+        msg.readUInt8("int cost");
 
-    val = msg.readUInt8();
+    val = msg.readUInt8("dex");
     PlayerInfo::setStatBase(DEX, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(DEX, msg.readUInt8());
+        statusWindow->setPointsNeeded(DEX, msg.readUInt8("dex cost"));
     else
-        msg.readUInt8();
+        msg.readUInt8("dex cost");
 
-    val = msg.readUInt8();
+    val = msg.readUInt8("luk");
     PlayerInfo::setStatBase(LUK, val);
     if (statusWindow)
-        statusWindow->setPointsNeeded(LUK, msg.readUInt8());
+        statusWindow->setPointsNeeded(LUK, msg.readUInt8("luk cost"));
     else
-        msg.readUInt8();
+        msg.readUInt8("luk cost");
 
-    PlayerInfo::setStatBase(ATK, msg.readInt16(), false);
-    PlayerInfo::setStatMod(ATK, msg.readInt16());
+    PlayerInfo::setStatBase(ATK, msg.readInt16("atk"), false);
+    PlayerInfo::setStatMod(ATK, msg.readInt16("atk+"));
     PlayerInfo::updateAttrs();
 
-    val = msg.readInt16();
+    val = msg.readInt16("matk");
     PlayerInfo::setStatBase(MATK, val, false);
 
-    val = msg.readInt16();
+    val = msg.readInt16("matk+");
     PlayerInfo::setStatMod(MATK, val);
 
-    PlayerInfo::setStatBase(DEF, msg.readInt16(), false);
-    PlayerInfo::setStatMod(DEF, msg.readInt16());
+    PlayerInfo::setStatBase(DEF, msg.readInt16("def"), false);
+    PlayerInfo::setStatMod(DEF, msg.readInt16("def+"));
 
-    PlayerInfo::setStatBase(MDEF, msg.readInt16(), false);
-    PlayerInfo::setStatMod(MDEF, msg.readInt16());
+    PlayerInfo::setStatBase(MDEF, msg.readInt16("mdef"), false);
+    PlayerInfo::setStatMod(MDEF, msg.readInt16("mdef+"));
 
-    PlayerInfo::setStatBase(HIT, msg.readInt16());
+    PlayerInfo::setStatBase(HIT, msg.readInt16("hit"));
 
-    PlayerInfo::setStatBase(FLEE, msg.readInt16(), false);
-    PlayerInfo::setStatMod(FLEE, msg.readInt16());
+    PlayerInfo::setStatBase(FLEE, msg.readInt16("flee"), false);
+    PlayerInfo::setStatMod(FLEE, msg.readInt16("flee+"));
 
-    PlayerInfo::setStatBase(CRIT, msg.readInt16());
+    PlayerInfo::setStatBase(CRIT, msg.readInt16("crit"));
 
-    msg.readInt16();  // manner
+    msg.readInt16("manner");
+    msg.readInt16("unused?");
     BLOCK_END("PlayerHandler::processPlayerStatUpdate5")
 }
 
