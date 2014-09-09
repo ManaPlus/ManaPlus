@@ -308,6 +308,7 @@
 #define CMSG_IGNORE_ALL              0x00d0
 #define CMSG_REQUEST_RANKS           0x097c
 #define CMSG_SET_SHORTCUTS           0x02ba
+#define CMSG_NPC_COMPLETE_PROGRESS_BAR 0x02f1
 
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb

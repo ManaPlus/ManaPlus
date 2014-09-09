@@ -203,6 +203,10 @@ void NpcHandler::sellItem(const int beingId A_UNUSED,
     outMsg.writeInt16(static_cast<int16_t>(amount));
 }
 
+void NpcHandler::completeProgressBar() const
+{
+}
+
 int NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE
