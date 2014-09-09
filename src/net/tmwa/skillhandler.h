@@ -45,6 +45,10 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
         void usePos(const int id, const int level,
                     const int x, const int y) const override final;
 
+        void usePos(const int id, const int level,
+                    const int x, const int y,
+                    const std::string &text) const override final;
+
         void useMap(const int id, const std::string &map) const override final;
 
     protected:

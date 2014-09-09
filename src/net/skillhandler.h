@@ -41,6 +41,10 @@ class SkillHandler notfinal
         virtual void usePos(const int id, const int level,
                             const int x, const int y) const = 0;
 
+        virtual void usePos(const int id, const int level,
+                            const int x, const int y,
+                            const std::string &text) const = 0;
+
         virtual void useMap(const int id, const std::string &map) const = 0;
 };
 

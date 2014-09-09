@@ -93,6 +93,18 @@ void SkillHandler::usePos(const int id, const int level,
     outMsg.writeInt16(static_cast<int16_t>(y));
 }
 
+void SkillHandler::usePos(const int id, const int level,
+                          const int x, const int y,
+                          const std::string &text) const
+{
+    MessageOut outMsg(CMSG_SKILL_USE_POSITION_MORE);
+    outMsg.writeInt16(static_cast<int16_t>(level), "level");
+    outMsg.writeInt16(static_cast<int16_t>(id), "id");
+    outMsg.writeInt16(static_cast<int16_t>(x), "x");
+    outMsg.writeInt16(static_cast<int16_t>(y), "y");
+    outMsg.writeString(text, 80, "text");
+}
+
 void SkillHandler::useMap(const int id, const std::string &map) const
 {
     MessageOut outMsg(CMSG_SKILL_USE_MAP);
