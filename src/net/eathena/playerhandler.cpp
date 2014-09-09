@@ -247,6 +247,11 @@ void PlayerHandler::setShortcut(const int idx,
     outMsg.writeInt16(level, "level");
 }
 
+void PlayerHandler::removeOption() const
+{
+    MessageOut outMsg(CMSG_REMOVE_OPTION);
+}
+
 void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
 {
     for (int f = 0; f < 27; f ++)

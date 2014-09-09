@@ -83,6 +83,8 @@ class PlayerHandler notfinal
                                  const uint8_t type,
                                  const int id,
                                  const int level) const = 0;
+
+        virtual void removeOption() const = 0;
 };
 
 }  // namespace Net
