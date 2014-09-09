@@ -218,6 +218,11 @@ void InventoryHandler::useCard(const int index A_UNUSED) const
 {
 }
 
+void InventoryHandler::insertCard(const int cardIndex A_UNUSED,
+                                  const int itemIndex A_UNUSED) const
+{
+}
+
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerEquipment")

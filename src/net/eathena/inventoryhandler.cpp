@@ -237,6 +237,14 @@ void InventoryHandler::useCard(const int index) const
     outMsg.writeInt16(index + INVENTORY_OFFSET, "index");
 }
 
+void InventoryHandler::insertCard(const int cardIndex,
+                                  const int itemIndex) const
+{
+    MessageOut outMsg(CMSG_PLAYER_INSERT_CARD);
+    outMsg.writeInt16(cardIndex + INVENTORY_OFFSET, "card index");
+    outMsg.writeInt16(itemIndex + INVENTORY_OFFSET, "item index");
+}
+
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerEquipment")
