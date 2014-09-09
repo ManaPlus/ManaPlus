@@ -246,6 +246,13 @@ void ChatHandler::unIgnoreAll() const
     outMsg.writeInt8(1, "flag");
 }
 
+void ChatHandler::createChatRoom(const std::string &title A_UNUSED,
+                                 const std::string &password A_UNUSED,
+                                 const int limit A_UNUSED,
+                                 const bool isPublic A_UNUSED)
+{
+}
+
 void ChatHandler::processChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")

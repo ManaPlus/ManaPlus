@@ -226,6 +226,8 @@
 #define CMSG_CHAT_WHISPER            0x0096
 #define CMSG_CHAT_WHO                0x00c1
 
+#define CMSG_CREAYE_CHAT_ROOM        0x00d5
+
 #define CMSG_SKILL_LEVELUP_REQUEST   0x0112
 #define CMSG_STAT_UPDATE_REQUEST     0x00bb
 #define CMSG_SKILL_USE_BEING         0x083c

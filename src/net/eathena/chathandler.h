@@ -56,6 +56,11 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void unIgnoreAll() const override final;
 
+        void createChatRoom(const std::string &title,
+                            const std::string &password,
+                            const int limit,
+                            const bool isPublic) override final;
+
         static void processRaw(MessageOut &restrict outMsg,
                                const std::string &restrict line);
 

@@ -221,6 +221,19 @@ void ChatHandler::unIgnoreAll() const
     outMsg.writeInt8(1, "flag");
 }
 
+void ChatHandler::createChatRoom(const std::string &title,
+                                 const std::string &password,
+                                 const int limit,
+                                 const bool isPublic)
+{
+    MessageOut outMsg(CMSG_CREAYE_CHAT_ROOM);
+    outMsg.writeInt16(password.size() + title.size() + 5, "len");
+    outMsg.writeInt16(static_cast<int16_t>(limit), "limit");
+    outMsg.writeInt8(isPublic ? 1 : 0, "public");
+    outMsg.writeString(password, 8, "password");
+    outMsg.writeString(title, 36, "title");
+}
+
 void ChatHandler::processChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")

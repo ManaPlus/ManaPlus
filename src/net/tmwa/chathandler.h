@@ -59,6 +59,11 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         static void processRaw(MessageOut &restrict outMsg,
                                const std::string &restrict line);
 
+        void createChatRoom(const std::string &title,
+                            const std::string &password,
+                            const int limit,
+                            const bool isPublic) override final;
+
     protected:
         void processChat(Net::MessageIn &msg);
 
