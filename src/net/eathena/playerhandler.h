@@ -64,6 +64,7 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
                          const int id,
                          const int level) const override final;
         void removeOption() const override final;
+        void changeCart(const int type) const override final;
 
     protected:
         void processPlayerStatUpdate5(Net::MessageIn &msg);

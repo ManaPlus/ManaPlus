@@ -252,6 +252,12 @@ void PlayerHandler::removeOption() const
     MessageOut outMsg(CMSG_REMOVE_OPTION);
 }
 
+void PlayerHandler::changeCart(const int type) const
+{
+    MessageOut outMsg(CMSG_CHANGE_CART);
+    outMsg.writeInt16(type, "type");
+}
+
 void PlayerHandler::processPlayerShortcuts(Net::MessageIn &msg)
 {
     for (int f = 0; f < 27; f ++)

@@ -247,6 +247,10 @@ void PlayerHandler::removeOption() const
 {
 }
 
+void PlayerHandler::changeCart(const int type) const
+{
+}
+
 void PlayerHandler::processOnlineList(Net::MessageIn &msg)
 {
     if (!whoIsOnline)

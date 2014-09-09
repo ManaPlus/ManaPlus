@@ -85,6 +85,8 @@ class PlayerHandler notfinal
                                  const int level) const = 0;
 
         virtual void removeOption() const = 0;
+
+        virtual void changeCart(const int type) const = 0;
 };
 
 }  // namespace Net
