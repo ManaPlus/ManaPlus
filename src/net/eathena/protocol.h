@@ -314,6 +314,7 @@
 #define CMSG_REQUEST_RANKS           0x097c
 #define CMSG_SET_SHORTCUTS           0x02ba
 #define CMSG_NPC_COMPLETE_PROGRESS_BAR 0x02f1
+#define CMSG_NPC_PRODUCE_MIX         0x018e
 #define CMSG_PLAYER_MAPMOVE          0x0140
 #define CMSG_REMOVE_OPTION           0x012a
 #define CMSG_PLAYER_SET_MEMO         0x011d

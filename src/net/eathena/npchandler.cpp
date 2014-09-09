@@ -197,6 +197,18 @@ void NpcHandler::completeProgressBar() const
     MessageOut outMsg(CMSG_NPC_COMPLETE_PROGRESS_BAR);
 }
 
+void NpcHandler::produceMix(const int nameId,
+                            const int materialId1,
+                            const int materialId2,
+                            const int materialId3) const
+{
+    MessageOut outMsg(CMSG_NPC_PRODUCE_MIX);
+    outMsg.writeInt16(nameId, "name id");
+    outMsg.writeInt16(materialId1, "material 1");
+    outMsg.writeInt16(materialId2, "material 2");
+    outMsg.writeInt16(materialId3, "material 3");
+}
+
 int NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE

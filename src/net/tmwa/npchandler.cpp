@@ -207,6 +207,13 @@ void NpcHandler::completeProgressBar() const
 {
 }
 
+void NpcHandler::produceMix(const int nameId A_UNUSED,
+                            const int materialId1 A_UNUSED,
+                            const int materialId2 A_UNUSED,
+                            const int materialId3 A_UNUSED) const
+{
+}
+
 int NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE

@@ -69,6 +69,11 @@ class NpcHandler notfinal
         virtual void endShopping(const int beingId) const = 0;
 
         virtual void completeProgressBar() const = 0;
+
+        virtual void produceMix(const int nameId,
+                                const int materialId1,
+                                const int materialId2,
+                                const int materialId3) const  = 0;
 };
 
 }  // namespace Net

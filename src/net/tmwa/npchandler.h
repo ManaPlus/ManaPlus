@@ -72,6 +72,11 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
         void processNpcCommand(Net::MessageIn &msg);
 
         void processChangeTitle(Net::MessageIn &msg);
+
+        void produceMix(const int nameId,
+                        const int materialId1,
+                        const int materialId2,
+                        const int materialId3) const override final;
 };
 
 }  // namespace TmwAthena
