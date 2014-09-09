@@ -806,6 +806,7 @@ SET(SRCS
     being/compounditem.h
     being/compoundsprite.cpp
     being/compoundsprite.h
+    being/cookingtype.h
     being/gender.h
     listeners/configlistener.h
     configuration.cpp
