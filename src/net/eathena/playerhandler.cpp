@@ -179,8 +179,9 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
 void PlayerHandler::setDirection(const unsigned char direction) const
 {
     MessageOut outMsg(CMSG_PLAYER_CHANGE_DIR);
-    outMsg.writeInt16(0);
-    outMsg.writeInt8(direction);
+    outMsg.writeInt8(0, "head direction");
+    outMsg.writeInt8(0, "unused");
+    outMsg.writeInt8(direction, "player direction");
 }
 
 void PlayerHandler::setDestination(const int x, const int y,
