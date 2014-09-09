@@ -99,8 +99,10 @@ void AdminHandler::kick(const int playerId) const
 
 void AdminHandler::warp(const std::string &map, const int x, const int y) const
 {
-    Net::getChatHandler()->talk(strprintf(
-        "@warp %s %d %d", map.c_str(), x, y), GENERAL_CHANNEL);
+    MessageOut outMsg(CMSG_PLAYER_MAPMOVE);
+    outMsg.writeString(map, 16, "map");
+    outMsg.writeInt16(x, "x");
+    outMsg.writeInt16(y, "y");
 }
 
 }  // namespace EAthena
