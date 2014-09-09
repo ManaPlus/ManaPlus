@@ -231,7 +231,7 @@
 #define CMSG_SKILL_LEVELUP_REQUEST   0x0112
 #define CMSG_STAT_UPDATE_REQUEST     0x00bb
 #define CMSG_SKILL_USE_BEING         0x083c
-#define CMSG_SKILL_USE_POSITION      0x0438
+#define CMSG_SKILL_USE_POSITION      0x091e
 // Variant of 0x116 with 80 char string at end (unsure of use)
 #define CMSG_SKILL_USE_POSITION_MORE 0x0366
 #define CMSG_SKILL_USE_MAP           0x011b
