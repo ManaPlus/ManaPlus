@@ -80,6 +80,8 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         void cooking(const CookingType::Type type,
                      const int nameId) const;
+
+        void repair(const int index) const override final;
 };
 
 }  // namespace TmwAthena

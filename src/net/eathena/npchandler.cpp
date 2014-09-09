@@ -217,6 +217,12 @@ void NpcHandler::cooking(const CookingType::Type type,
     outMsg.writeInt16(nameId, "name id");
 }
 
+void NpcHandler::repair(const int index) const
+{
+    MessageOut outMsg(CMSG_NPC_REPAIR);
+    outMsg.writeInt16(static_cast<int16_t>(index), "index");
+}
+
 int NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE

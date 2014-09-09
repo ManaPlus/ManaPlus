@@ -79,6 +79,8 @@ class NpcHandler notfinal
 
         virtual void cooking(const CookingType::Type type,
                              const int nameId) const = 0;
+
+        virtual void repair(const int index) const = 0;
 };
 
 }  // namespace Net

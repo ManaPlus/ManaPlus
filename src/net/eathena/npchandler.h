@@ -75,6 +75,8 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
         void cooking(const CookingType::Type type,
                      const int nameId) const override final;
 
+        void repair(const int index) const override final;
+
         int getNpc(Net::MessageIn &msg) override final;
 
     protected:
