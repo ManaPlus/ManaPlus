@@ -207,7 +207,6 @@
 #define CMSG_CHAT_MESSAGE            0x008c
 #define CMSG_CHAT_MESSAGE2           0x0222
 #define CMSG_CHAT_WHISPER            0x0096
-#define CMSG_CHAT_ANNOUNCE           0x0099
 #define CMSG_CHAT_WHO                0x00c1
 
 #define CMSG_SKILL_LEVELUP_REQUEST   0x0112
