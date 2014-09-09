@@ -1121,16 +1121,17 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg) const
 
     Being *const dstBeing = actorManager->findBeing(msg.readInt32("being id"));
 
+    msg.readInt16("head direction");
+
+    const uint8_t dir = static_cast<uint8_t>(
+        msg.readUInt8("player direction") & 0x0FU);
+
     if (!dstBeing)
     {
         BLOCK_END("BeingHandler::processBeingChangeDirection")
         return;
     }
 
-    msg.readInt16("unused");
-
-    const uint8_t dir = static_cast<uint8_t>(
-        msg.readUInt8("direction") & 0x0FU);
     dstBeing->setDirection(dir);
     if (localPlayer)
         localPlayer->imitateDirection(dstBeing, dir);
