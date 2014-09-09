@@ -235,6 +235,12 @@ void NpcHandler::identify(const int index) const
     outMsg.writeInt16(index, "index");
 }
 
+void NpcHandler::selectArrow(const int nameId) const
+{
+    MessageOut outMsg(CMSG_NPC_SELECT_ARROW);
+    outMsg.writeInt16(nameId, "name id");
+}
+
 int NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE

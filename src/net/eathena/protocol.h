@@ -319,6 +319,8 @@
 #define CMSG_NPC_REPAIR              0x01fd
 #define CMSG_NPC_REFINE              0x0222
 #define CMSG_NPC_IDENTIFY            0x0178
+#define CMSG_NPC_SELECT_ARROW        0x01ae
+
 #define CMSG_PLAYER_MAPMOVE          0x0140
 #define CMSG_REMOVE_OPTION           0x012a
 #define CMSG_PLAYER_SET_MEMO         0x011d

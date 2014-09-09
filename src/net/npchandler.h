@@ -85,6 +85,8 @@ class NpcHandler notfinal
         virtual void refine(const int index) const = 0;
 
         virtual void identify(const int index) const = 0;
+
+        virtual void selectArrow(const int nameId) const = 0;
 };
 
 }  // namespace Net
