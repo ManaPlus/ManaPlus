@@ -217,6 +217,12 @@ void InventoryHandler::moveItem2(const int source, const int slot,
         outMsg.writeInt16(static_cast<int16_t>(slot + STORAGE_OFFSET));
         outMsg.writeInt32(amount);
     }
+    else if (source == Inventory::INVENTORY && destination == Inventory::CART)
+    {
+        MessageOut outMsg(CMSG_MOVE_TO_CART);
+        outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET));
+        outMsg.writeInt32(amount);
+    }
 }
 
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)

@@ -280,6 +280,8 @@
 #define CSMG_MOVE_FROM_STORAGE       0x0364 /** Remove item from storage */
 #define CMSG_CLOSE_STORAGE           0x0193 /** Request storage close */
 
+#define CMSG_MOVE_TO_CART            0x0126
+
 #define CMSG_ADMIN_ANNOUNCE          0x0099
 #define CMSG_ADMIN_LOCAL_ANNOUNCE    0x019C
 #define CMSG_ADMIN_HIDE              0x019D
