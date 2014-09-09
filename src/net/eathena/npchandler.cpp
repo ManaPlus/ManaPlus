@@ -229,6 +229,12 @@ void NpcHandler::refine(const int index) const
     outMsg.writeInt32(index, "index");
 }
 
+void NpcHandler::identify(const int index) const
+{
+    MessageOut outMsg(CMSG_NPC_IDENTIFY);
+    outMsg.writeInt16(index, "index");
+}
+
 int NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE

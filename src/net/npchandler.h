@@ -83,6 +83,8 @@ class NpcHandler notfinal
         virtual void repair(const int index) const = 0;
 
         virtual void refine(const int index) const = 0;
+
+        virtual void identify(const int index) const = 0;
 };
 
 }  // namespace Net

@@ -81,6 +81,8 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
 
         int getNpc(Net::MessageIn &msg) override final;
 
+        void identify(const int index) const override final;
+
     protected:
         static void processNpcCutin(Net::MessageIn &msg);
 

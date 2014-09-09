@@ -84,6 +84,8 @@ class NpcHandler final : public MessageHandler, public Ea::NpcHandler
         void repair(const int index) const override final;
 
         void refine(const int index) const override final;
+
+        void identify(const int index) const override final;
 };
 
 }  // namespace TmwAthena

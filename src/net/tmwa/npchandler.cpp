@@ -227,6 +227,10 @@ void NpcHandler::refine(const int index A_UNUSED) const
 {
 }
 
+void NpcHandler::identify(const int index A_UNUSED) const
+{
+}
+
 int NpcHandler::getNpc(Net::MessageIn &msg)
 {
     if (msg.getId() == SMSG_NPC_CHOICE
