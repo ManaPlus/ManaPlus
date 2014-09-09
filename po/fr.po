@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2014-09-09 20:33+0300\n"
-"PO-Revision-Date: 2014-09-01 21:49+0000\n"
-"Last-Translator: Alige <aligetmw@hotmail.fr>\n"
+"PO-Revision-Date: 2014-09-09 19:10+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/manaplus/language/"
 "fr/)\n"
 "Language: fr\n"
@@ -4195,7 +4195,7 @@ msgstr "Limite FPS :"
 #: src/gui/widgets/tabs/setup_video.cpp:313
 #: src/gui/widgets/tabs/setup_video.cpp:449
 msgid "Alt FPS limit: "
-msgstr "Limite FPS alternative :"
+msgstr "Limite FPS alternative: "
 
 #. TRANSLATORS: video settings button
 #: src/gui/widgets/tabs/setup_video.cpp:81
@@ -4277,7 +4277,7 @@ msgstr "Résolution personnalisée (exemple : 1024x768)"
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:354
 msgid "Enter new resolution:                "
-msgstr "Entre la nouvelle résolution :"
+msgstr "Entre la nouvelle résolution:        "
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:381
