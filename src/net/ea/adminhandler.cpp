@@ -22,6 +22,8 @@
 
 #include "net/ea/adminhandler.h"
 
+#include "gui/chatconsts.h"
+
 #include "net/chathandler.h"
 #include "net/net.h"
 
@@ -33,8 +35,6 @@ extern int serverVersion;
 
 namespace Ea
 {
-
-const std::string GENERAL_CHANNEL;
 
 void AdminHandler::kickName(const std::string &name) const
 {
@@ -65,12 +65,6 @@ void AdminHandler::mute(const int playerId A_UNUSED, const int type A_UNUSED,
                         const int limit A_UNUSED) const
 {
     return;
-}
-
-void AdminHandler::warp(const std::string &map, const int x, const int y) const
-{
-    Net::getChatHandler()->talk(strprintf(
-        "@warp %s %d %d", map.c_str(), x, y), GENERAL_CHANNEL);
 }
 
 void AdminHandler::gotoName(const std::string &name) const

@@ -24,6 +24,11 @@
 
 #include "notifymanager.h"
 
+#include "gui/chatconsts.h"
+
+#include "net/chathandler.h"
+#include "net/net.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
@@ -92,6 +97,12 @@ void AdminHandler::kick(const int playerId) const
 {
     MessageOut outMsg(CMSG_ADMIN_KICK);
     outMsg.writeInt32(playerId, "account id");
+}
+
+void AdminHandler::warp(const std::string &map, const int x, const int y) const
+{
+    Net::getChatHandler()->talk(strprintf(
+        "@warp %s %d %d", map.c_str(), x, y), GENERAL_CHANNEL);
 }
 
 }  // namespace TmwAthena
