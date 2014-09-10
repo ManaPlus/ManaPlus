@@ -445,7 +445,8 @@ void ChatTab::handleCommand(const std::string &msg)
     std::string args(msg, pos == std::string::npos ? msg.size() : pos + 1);
 
     args = trim(args);
-    inputManager.executeChatCommand(type, args, this);
+    if (!handleCommand(type, args))
+        inputManager.executeChatCommand(type, args, this);
 }
 
 void ChatTab::handleHelp(const std::string &msg)
