@@ -143,7 +143,12 @@ void PartyHandler::invite(const std::string &name) const
     if (being)
     {
         MessageOut outMsg(CMSG_PARTY_INVITE);
-        outMsg.writeInt32(being->getId());
+        outMsg.writeInt32(being->getId(), "account id");
+    }
+    else
+    {
+        MessageOut outMsg(CMSG_PARTY_INVITE2);
+        outMsg.writeString(name, 24, "nick");
     }
 }
 
