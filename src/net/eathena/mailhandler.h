@@ -37,6 +37,9 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
         A_DELETE_COPY(MailHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+    protected:
+        void processMailOpen(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena

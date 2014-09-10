@@ -202,6 +202,8 @@
 #define SMSG_MONSTER_HP              0x0977
 #define SMSG_PLAYER_HP               0x080e
 
+#define SMSG_MAIL_OPEN_WINDOW        0x0260
+
 /**********************************
  *  Packets from client to server *
  **********************************/

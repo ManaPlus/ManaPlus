@@ -20,6 +20,8 @@
 
 #include "net/eathena/mailhandler.h"
 
+#include "logger.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -35,6 +37,7 @@ MailHandler::MailHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_MAIL_OPEN_WINDOW,
         0
     };
     handledMessages = _messages;
@@ -43,6 +46,32 @@ MailHandler::MailHandler() :
 
 void MailHandler::handleMessage(Net::MessageIn &msg)
 {
+    switch(msg.getId())
+    {
+        case SMSG_MAIL_OPEN_WINDOW:
+            processMailOpen(msg);
+            break;
+
+        default:
+            break;
+    }
+}
+
+void MailHandler::processMailOpen(Net::MessageIn &msg) const
+{
+    const int flag = msg.readInt32("flag");
+    switch(flag)
+    {
+        case 0:  // open window
+            break;
+
+        case 1:  // close window
+            break;
+
+        default:
+            logger->log("unknown mail window open flag: %u", flag);
+            break;
+    }
 }
 
 }  // namespace EAthena
