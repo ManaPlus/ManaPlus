@@ -445,4 +445,12 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
     }
 }
 
+void PartyHandler::changeLeader(const Being *const being) const
+{
+    if (!being)
+        return;
+    MessageOut outMsg(CMSG_PARTY_CHANGE_LEADER);
+    outMsg.writeInt32(being->getId());
+}
+
 }  // namespace EAthena

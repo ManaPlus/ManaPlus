@@ -375,4 +375,8 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
     }
 }
 
+void PartyHandler::changeLeader(const Being *const being A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

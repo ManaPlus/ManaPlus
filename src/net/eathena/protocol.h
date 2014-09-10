@@ -282,6 +282,7 @@
 #define CMSG_PARTY_SETTINGS          0x0102
 #define CMSG_PARTY_KICK              0x0103
 #define CMSG_PARTY_MESSAGE           0x0108
+#define CMSG_PARTY_CHANGE_LEADER     0x07da
 
 #define CMSG_MOVE_TO_STORAGE         0x07ec /** Move item to storage */
 #define CSMG_MOVE_FROM_STORAGE       0x0364 /** Remove item from storage */
