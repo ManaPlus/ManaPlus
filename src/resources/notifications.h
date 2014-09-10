@@ -310,6 +310,18 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("unknown pvp"),
             NotifyFlags::SPEECH},
+        {"party user char from account in party",
+            // TRANSLATORS: notification message
+            N_("Char from account %s is already in your party!"),
+            NotifyFlags::PARTY_STRING},
+        {"party user blocked invite",
+            // TRANSLATORS: notification message
+            N_("%s blocked invite!"),
+            NotifyFlags::PARTY_STRING},
+        {"party user not online",
+            // TRANSLATORS: notification message
+            N_("Char is not online!"),
+            NotifyFlags::PARTY_STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

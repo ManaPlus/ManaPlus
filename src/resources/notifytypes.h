@@ -97,6 +97,9 @@ namespace NotifyTypes
         GVG_ON,
         PVP_ON_GVG_ON,
         PVP_UNKNOWN,
+        PARTY_INVITE_PARTY_SAME_ACCOUNT,
+        PARTY_INVITE_PARTY_BLOCKED_INVITE,
+        PARTY_INVITE_PARTY_NOT_ONLINE,
 
         TYPE_END
     };

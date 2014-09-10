@@ -425,6 +425,18 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
             NotifyManager::notify(NotifyTypes::PARTY_INVITE_PARTY_FULL,
                 nick);
             break;
+        case 4:
+            NotifyManager::notify(NotifyTypes::PARTY_INVITE_PARTY_SAME_ACCOUNT,
+                nick);
+            break;
+        case 5:
+            NotifyManager::notify(NotifyTypes::PARTY_INVITE_PARTY_BLOCKED_INVITE,
+                nick);
+            break;
+        case 7:
+            NotifyManager::notify(NotifyTypes::PARTY_INVITE_PARTY_NOT_ONLINE,
+                nick);
+            break;
         default:
             NotifyManager::notify(NotifyTypes::PARTY_INVITE_ERROR, nick);
             break;
