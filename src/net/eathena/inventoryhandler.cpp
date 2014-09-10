@@ -201,44 +201,40 @@ void InventoryHandler::closeStorage(const int type A_UNUSED) const
     MessageOut outMsg(CMSG_CLOSE_STORAGE);
 }
 
-void InventoryHandler::moveItem2(const int source, const int slot,
-                                 const int amount, const int destination) const
+void InventoryHandler::moveItem2(const int source,
+                                 const int slot,
+                                 const int amount,
+                                 const int destination) const
 {
-    if (source == Inventory::INVENTORY && destination == Inventory::STORAGE)
+    int packet = 0;
+    int offset = INVENTORY_OFFSET;
+    if (source == Inventory::INVENTORY)
     {
-        MessageOut outMsg(CMSG_MOVE_TO_STORAGE);
-        outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET));
-        outMsg.writeInt32(amount);
+        if (destination == Inventory::STORAGE)
+            packet = CMSG_MOVE_TO_STORAGE;
+        else if (destination == Inventory::CART)
+            packet = CMSG_MOVE_TO_CART;
     }
-    else if (source == Inventory::STORAGE
-             && destination == Inventory::INVENTORY)
+    else if (source == Inventory::STORAGE)
     {
-        MessageOut outMsg(CSMG_MOVE_FROM_STORAGE);
-        outMsg.writeInt16(static_cast<int16_t>(slot + STORAGE_OFFSET));
-        outMsg.writeInt32(amount);
+        offset = STORAGE_OFFSET;
+        if (destination == Inventory::INVENTORY)
+            packet = CSMG_MOVE_FROM_STORAGE;
+        else if (destination == Inventory::CART)
+            packet = CMSG_MOVE_FROM_STORAGE_TO_CART;
     }
-    else if (source == Inventory::INVENTORY && destination == Inventory::CART)
+    else if (source == Inventory::CART)
     {
-        MessageOut outMsg(CMSG_MOVE_TO_CART);
-        outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET));
-        outMsg.writeInt32(amount);
+        if (destination == Inventory::INVENTORY)
+            packet = CMSG_MOVE_FROM_CART;
+        else if (destination == Inventory::STORAGE)
+            packet = CMSG_MOVE_FROM_CART_TO_STORAGE;
     }
-    else if (source == Inventory::CART && destination == Inventory::INVENTORY)
+
+    if (packet)
     {
-        MessageOut outMsg(CMSG_MOVE_FROM_CART);
-        outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET));
-        outMsg.writeInt32(amount);
-    }
-    else if (source == Inventory::CART && destination == Inventory::STORAGE)
-    {
-        MessageOut outMsg(CMSG_MOVE_FROM_CART_TO_STORAGE);
-        outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET));
-        outMsg.writeInt32(amount);
-    }
-    else if (source == Inventory::STORAGE && destination == Inventory::CART)
-    {
-        MessageOut outMsg(CMSG_MOVE_FROM_STORAGE_TO_CART);
-        outMsg.writeInt16(static_cast<int16_t>(slot + STORAGE_OFFSET));
+        MessageOut outMsg(packet);
+        outMsg.writeInt16(static_cast<int16_t>(slot + offset));
         outMsg.writeInt32(amount);
     }
 }
