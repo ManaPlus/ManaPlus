@@ -293,6 +293,7 @@
 #define CMSG_ADMIN_HIDE              0x019D
 #define CMSG_ADMIN_KICK              0x00CC
 #define CMSG_ADMIN_MUTE              0x0149
+#define CMSG_ADMIN_RESET_PLAYER      0x0197
 
 #define CMSG_GUILD_CHECK_MASTER      0x014d
 #define CMSG_GUILD_REQUEST_INFO      0x014f

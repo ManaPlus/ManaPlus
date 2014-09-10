@@ -49,6 +49,10 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
         void warp(const std::string &map,
                   const int x, const int y) const override final;
+
+        void resetStats() const override final;
+
+        void resetSkills() const override final;
 };
 
 }  // namespace TmwAthena

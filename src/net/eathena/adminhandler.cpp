@@ -105,4 +105,16 @@ void AdminHandler::warp(const std::string &map, const int x, const int y) const
     outMsg.writeInt16(y, "y");
 }
 
+void AdminHandler::resetStats() const
+{
+    MessageOut outMsg(CMSG_ADMIN_RESET_PLAYER);
+    outMsg.writeInt16(0, "flag");
+}
+
+void AdminHandler::resetSkills() const
+{
+    MessageOut outMsg(CMSG_ADMIN_RESET_PLAYER);
+    outMsg.writeInt16(1, "flag");
+}
+
 }  // namespace EAthena

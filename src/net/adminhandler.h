@@ -71,6 +71,10 @@ class AdminHandler notfinal
         virtual void reviveName(const std::string &name) const = 0;
 
         virtual void ipcheckName(const std::string &name) const = 0;
+
+        virtual void resetStats() const = 0;
+
+        virtual void resetSkills() const = 0;
 };
 
 }  // namespace Net

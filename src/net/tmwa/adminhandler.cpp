@@ -105,4 +105,12 @@ void AdminHandler::warp(const std::string &map, const int x, const int y) const
         "@warp %s %d %d", map.c_str(), x, y), GENERAL_CHANNEL);
 }
 
+void AdminHandler::resetStats() const
+{
+}
+
+void AdminHandler::resetSkills() const
+{
+}
+
 }  // namespace TmwAthena
