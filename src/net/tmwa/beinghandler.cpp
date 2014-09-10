@@ -1224,21 +1224,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     }
     else if (dstBeing->getType() == ActorType::NPC)
     {
-        switch (gender)
-        {
-            case 2:
-                dstBeing->setGender(Gender::FEMALE);
-                break;
-            case 3:
-                dstBeing->setGender(Gender::MALE);
-                break;
-            case 4:
-                dstBeing->setGender(Gender::OTHER);
-                break;
-            default:
-                dstBeing->setGender(Gender::UNSPECIFIED);
-                break;
-        }
+        setServerGender(dstBeing, gender);
     }
 
     uint8_t dir;
@@ -1441,21 +1427,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     }
     else if (dstBeing->getType() == ActorType::NPC)
     {
-        switch (gender)
-        {
-            case 2:
-                dstBeing->setGender(Gender::FEMALE);
-                break;
-            case 3:
-                dstBeing->setGender(Gender::MALE);
-                break;
-            case 4:
-                dstBeing->setGender(Gender::OTHER);
-                break;
-            default:
-                dstBeing->setGender(Gender::UNSPECIFIED);
-                break;
-        }
+        setServerGender(dstBeing, gender);
     }
 
     uint16_t srcX, srcY, dstX, dstY;
@@ -1592,6 +1564,25 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg) const
     if (localPlayer)
         localPlayer->imitateDirection(dstBeing, dir);
     BLOCK_END("BeingHandler::processBeingChangeDirection")
+}
+
+void BeingHandler::setServerGender(Being *const being, const uint8_t gender)
+{
+    switch (gender)
+    {
+        case 2:
+            being->setGender(Gender::FEMALE);
+            break;
+        case 3:
+            being->setGender(Gender::MALE);
+            break;
+        case 4:
+            being->setGender(Gender::OTHER);
+            break;
+        default:
+            being->setGender(Gender::UNSPECIFIED);
+            break;
+    }
 }
 
 }  // namespace TmwAthena
