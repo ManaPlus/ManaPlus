@@ -677,7 +677,8 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg) const
     if (level)
         dstBeing->setLevel(level);
 
-    msg.readUInt8("unused");
+    if (msgType != 2)
+        msg.readUInt8("unused");
 
     if (dstBeing->getType() != ActorType::PLAYER
         || msgType != 3)
