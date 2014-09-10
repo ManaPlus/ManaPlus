@@ -599,38 +599,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
     if (gmstatus & 0x80)
         dstBeing->setGM(true);
 
-    const uint8_t type = msg.readUInt8("action type");
-    switch (type)
-    {
-        case 0:
-            dstBeing->setAction(BeingAction::STAND, 0);
-            localPlayer->imitateAction(dstBeing, BeingAction::STAND);
-            break;
-
-        case 1:
-            if (dstBeing->getCurrentAction() != BeingAction::DEAD)
-            {
-                dstBeing->setAction(BeingAction::DEAD, 0);
-                dstBeing->recalcSpritesOrder();
-            }
-            break;
-
-        case 2:
-            dstBeing->setAction(BeingAction::SIT, 0);
-            localPlayer->imitateAction(dstBeing, BeingAction::SIT);
-            break;
-
-        default:
-            // need set stand state?
-            logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:"
-                + toString(id) + " " + toString(type));
-            logger->log("dstBeing id:"
-                + toString(dstBeing->getId()));
-            logger->log("dstBeing name:"
-                + dstBeing->getName());
-            break;
-    }
-
+    applyPlayerAction(dstBeing, msg.readUInt8("action type"));
     const int level = static_cast<int>(msg.readUInt8("level"));
     if (level)
         dstBeing->setLevel(level);
@@ -781,38 +750,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
     if (gmstatus & 0x80)
         dstBeing->setGM(true);
 
-    const uint8_t type = msg.readUInt8("action type");
-    switch (type)
-    {
-        case 0:
-            dstBeing->setAction(BeingAction::STAND, 0);
-            localPlayer->imitateAction(dstBeing, BeingAction::STAND);
-            break;
-
-        case 1:
-            if (dstBeing->getCurrentAction() != BeingAction::DEAD)
-            {
-                dstBeing->setAction(BeingAction::DEAD, 0);
-                dstBeing->recalcSpritesOrder();
-            }
-            break;
-
-        case 2:
-            dstBeing->setAction(BeingAction::SIT, 0);
-            localPlayer->imitateAction(dstBeing, BeingAction::SIT);
-            break;
-
-        default:
-            // need set stand state?
-            logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:"
-                + toString(id) + " " + toString(type));
-            logger->log("dstBeing id:"
-                + toString(dstBeing->getId()));
-            logger->log("dstBeing name:"
-                + dstBeing->getName());
-            break;
-    }
-
+    applyPlayerAction(dstBeing, msg.readUInt8("action type"));
     const int level = static_cast<int>(msg.readUInt8("level"));
     if (level)
         dstBeing->setLevel(level);
@@ -1581,6 +1519,37 @@ void BeingHandler::setServerGender(Being *const being, const uint8_t gender)
             break;
         default:
             being->setGender(Gender::UNSPECIFIED);
+            break;
+    }
+}
+
+void BeingHandler::applyPlayerAction(Being *const being, const uint8_t type)
+{
+    switch (type)
+    {
+        case 0:
+            being->setAction(BeingAction::STAND, 0);
+            localPlayer->imitateAction(being, BeingAction::STAND);
+            break;
+
+        case 1:
+            if (being->getCurrentAction() != BeingAction::DEAD)
+            {
+                being->setAction(BeingAction::DEAD, 0);
+                being->recalcSpritesOrder();
+            }
+            break;
+
+        case 2:
+            being->setAction(BeingAction::SIT, 0);
+            localPlayer->imitateAction(being, BeingAction::SIT);
+            break;
+
+        default:
+            // need set stand state?
+            logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:" + toString(type));
+            logger->log("being id:" + toString(being->getId()));
+            logger->log("being name:" + being->getName());
             break;
     }
 }

@@ -89,6 +89,9 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void setServerGender(Being *const being,
                                     const uint8_t gender);
+
+        static void applyPlayerAction(Being *const being,
+                                      const uint8_t type);
 };
 
 }  // namespace EAthena
