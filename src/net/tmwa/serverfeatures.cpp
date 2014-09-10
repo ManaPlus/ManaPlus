@@ -38,4 +38,9 @@ bool ServerFeatures::haveOnlineList() const
     return serverVersion >= 3;
 }
 
+bool ServerFeatures::havePartyNickInvite() const
+{
+    return false;
+}
+
 }  // TmwAthena

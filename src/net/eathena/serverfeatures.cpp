@@ -37,4 +37,9 @@ bool ServerFeatures::haveOnlineList() const
     return false;
 }
 
+bool ServerFeatures::havePartyNickInvite() const
+{
+    return true;
+}
+
 }  // EAthena

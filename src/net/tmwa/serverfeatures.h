@@ -35,6 +35,8 @@ class ServerFeatures final : public Net::ServerFeatures
         A_DELETE_COPY(ServerFeatures)
 
         bool haveOnlineList() const override final;
+
+        bool havePartyNickInvite() const override final;
 };
 
 }  // namespace Net

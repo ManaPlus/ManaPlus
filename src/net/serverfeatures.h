@@ -32,6 +32,8 @@ class ServerFeatures notfinal
         { }
 
         virtual bool haveOnlineList() const = 0;
+
+        virtual bool havePartyNickInvite() const = 0;
 };
 
 }  // namespace Net

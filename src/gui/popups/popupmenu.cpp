@@ -73,6 +73,7 @@
 #include "net/net.h"
 #include "net/npchandler.h"
 #include "net/partyhandler.h"
+#include "net/serverfeatures.h"
 #include "net/tradehandler.h"
 
 #include "resources/iteminfo.h"
@@ -732,28 +733,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             addPlayerMisc();
             addBuySell(being);
             mBrowserBox->addRow("##3---");
-
-            if (localPlayer->isInParty())
-            {
-                const Party *const party = localPlayer->getParty();
-                if (party)
-                {
-                    if (!party->isMember(wTab->getNick()))
-                    {
-                        // TRANSLATORS: popup menu item
-                        // TRANSLATORS: invite player to party
-                        mBrowserBox->addRow("party", _("Invite to party"));
-                    }
-                    else
-                    {
-                        // TRANSLATORS: popup menu item
-                        // TRANSLATORS: kick player from party
-                        mBrowserBox->addRow("kick party",
-                            _("Kick from party"));
-                    }
-                    mBrowserBox->addRow("##3---");
-                }
-            }
+            addParty(wTab->getNick());
             const Guild *const guild1 = being->getGuild();
             const Guild *const guild2 = localPlayer->getGuild();
             if (guild2)
@@ -815,6 +795,8 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             }
             addPlayerMisc();
             addBuySellDefault();
+            if (Net::getServerFeatures()->havePartyNickInvite())
+                addParty(wTab->getNick());
             mBrowserBox->addRow("##3---");
         }
     }
@@ -2711,6 +2693,30 @@ void PopupMenu::addPartyName(const std::string &partyName)
         if (localPlayer->getParty())
         {
             if (localPlayer->getParty()->getName() != partyName)
+            {
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: invite player to party
+                mBrowserBox->addRow("party", _("Invite to party"));
+            }
+            else
+            {
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: kick player from party
+                mBrowserBox->addRow("kick party", _("Kick from party"));
+            }
+            mBrowserBox->addRow("##3---");
+        }
+    }
+}
+
+void PopupMenu::addParty(const std::string &nick)
+{
+    if (localPlayer->isInParty())
+    {
+        const Party *const party = localPlayer->getParty();
+        if (party)
+        {
+            if (!party->isMember(nick))
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: invite player to party
