@@ -762,7 +762,7 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
     if (mHoverBeing
         && (type == ActorType::PLAYER
         || type == ActorType::NPC
-        || type == ActorType::PET))
+        || type == ActorType::LOCAL_PET))
     {
         popupManager->hideTextPopup();
         if (mShowBeingPopup && beingPopup)
@@ -831,7 +831,7 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
             case ActorType::FLOOR_ITEM:
             case ActorType::UNKNOWN:
             case ActorType::PLAYER:
-            case ActorType::PET:
+            case ActorType::LOCAL_PET:
             default:
                 gui->setCursorType(Cursor::CURSOR_POINTER);
                 break;

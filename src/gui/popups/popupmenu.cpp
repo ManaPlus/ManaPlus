@@ -303,7 +303,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
         case ActorType::UNKNOWN:
         case ActorType::FLOOR_ITEM:
         case ActorType::PORTAL:
-        case ActorType::PET:
+        case ActorType::LOCAL_PET:
         default:
             break;
     }

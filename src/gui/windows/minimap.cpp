@@ -332,7 +332,7 @@ void Minimap::draw(Graphics *graphics)
                 case ActorType::PLAYER:
                 case ActorType::FLOOR_ITEM:
                 case ActorType::PORTAL:
-                case ActorType::PET:
+                case ActorType::LOCAL_PET:
                 default:
                     continue;
             }

@@ -314,7 +314,7 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
         if (mInfo)
             setupSpriteDisplay(mInfo->getDisplay(), false);
     }
-    else if (mType == ActorType::PET)
+    else if (mType == ActorType::LOCAL_PET)
     {
         mInfo = PETDB::get(mId);
         if (mInfo)
@@ -2915,7 +2915,7 @@ std::string Being::loadComment(const std::string &name,
         case ActorType::MONSTER:
         case ActorType::FLOOR_ITEM:
         case ActorType::PORTAL:
-        case ActorType::PET:
+        case ActorType::LOCAL_PET:
         case ActorType::AVATAR:
         default:
             return "";
@@ -3134,7 +3134,7 @@ void Being::addPet(const int id)
     }
 
     Being *const being = actorManager->createBeing(
-        id, ActorType::PET, 0);
+        id, ActorType::LOCAL_PET, 0);
     if (being)
     {
         being->setOwner(this);

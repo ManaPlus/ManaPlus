@@ -32,7 +32,7 @@ namespace ActorType
         MONSTER,
         FLOOR_ITEM,
         PORTAL,
-        PET,
+        LOCAL_PET,
         AVATAR
     };
 }  // namespace ActorType
