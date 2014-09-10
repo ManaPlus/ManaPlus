@@ -197,6 +197,7 @@ void PartyHandler::chat(const std::string &text) const
     outMsg.writeInt8(0, "null char");
 }
 
+// +++ must be 3 types item, exp, pickup
 void PartyHandler::setShareExperience(const Net::PartyShare::Type share) const
 {
     if (share == Net::PartyShare::NOT_POSSIBLE)
@@ -207,6 +208,7 @@ void PartyHandler::setShareExperience(const Net::PartyShare::Type share) const
     outMsg.writeInt16(static_cast<int16_t>(mShareItems));
 }
 
+// +++ must be 3 types item, exp, pickup
 void PartyHandler::setShareItems(const Net::PartyShare::Type share) const
 {
     if (share == Net::PartyShare::NOT_POSSIBLE)
