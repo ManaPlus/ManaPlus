@@ -70,7 +70,7 @@ class PartyHandler notfinal
         virtual void setShareItems(const Net::PartyShare::Type
                                    share) const = 0;
 
-        virtual void changeLeader(const Being *const being) const = 0;
+        virtual void changeLeader(const std::string &name) const = 0;
 
         virtual void clear() const = 0;
 

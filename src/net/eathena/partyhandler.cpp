@@ -445,8 +445,10 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
     }
 }
 
-void PartyHandler::changeLeader(const Being *const being) const
+void PartyHandler::changeLeader(const std::string &name) const
 {
+    const Being *const being = actorManager->findBeingByName(
+        name, ActorType::PLAYER);
     if (!being)
         return;
     MessageOut outMsg(CMSG_PARTY_CHANGE_LEADER);

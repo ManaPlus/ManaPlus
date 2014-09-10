@@ -61,7 +61,7 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
         void setShareItems(const Net::PartyShare::Type share)
                            const override final;
 
-        void changeLeader(const Being *const being) const override final;
+        void changeLeader(const std::string &name) const override final;
 
         void processPartySettings(Net::MessageIn &msg);
 

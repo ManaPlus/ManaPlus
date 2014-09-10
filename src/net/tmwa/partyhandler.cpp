@@ -375,7 +375,7 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
     }
 }
 
-void PartyHandler::changeLeader(const Being *const being A_UNUSED) const
+void PartyHandler::changeLeader(const std::string &name A_UNUSED) const
 {
 }
 
