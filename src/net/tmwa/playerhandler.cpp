@@ -437,8 +437,9 @@ void PlayerHandler::processWalkResponse(Net::MessageIn &msg)
       * otherwise.
       */
     uint16_t srcX, srcY, dstX, dstY;
-    msg.readInt32();  // tick
-    msg.readCoordinatePair(srcX, srcY, dstX, dstY);
+    msg.readInt32("tick");
+    msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
+    msg.readUInt8("unused");
     if (localPlayer)
         localPlayer->setRealPos(dstX, dstY);
     BLOCK_END("PlayerHandler::processWalkResponse")
