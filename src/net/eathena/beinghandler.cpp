@@ -115,9 +115,15 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_BEING_VISIBLE:
+            processBeingVisible(msg);
+            break;
+
         case SMSG_BEING_MOVE:
+            processBeingMove(msg);
+            break;
+
         case SMSG_BEING_SPAWN:
-            processBeingVisibleOrMove(msg);
+            processBeingSpawn(msg);
             break;
 
         case SMSG_BEING_MOVE2:
@@ -657,7 +663,481 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg) const
         dstBeing->setMoveTime();
 }
 
-void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
+void BeingHandler::processBeingVisible(Net::MessageIn &msg)
+{
+    if (!actorManager)
+        return;
+
+    const bool visible = msg.getId() == SMSG_BEING_VISIBLE;
+    const bool spawn = msg.getId() == SMSG_BEING_SPAWN;
+
+    msg.readInt16("len");
+    msg.readUInt8("object type");
+
+    // Information about a being in range
+    const int id = msg.readInt32("being id");
+    int spawnId;
+    if (spawn)
+    {
+        mSpawnId = id;
+        spawnId = id;
+    }
+    else
+    {
+        if (id == mSpawnId)
+            spawnId = mSpawnId;
+        else
+            spawnId = 0;
+        mSpawnId = 0;
+    }
+    int16_t speed = msg.readInt16("speed");
+//    if (visible)
+//    {
+        const uint16_t stunMode = msg.readInt16("opt1");
+        // probably wrong effect usage
+        uint32_t statusEffects = msg.readInt16("opt2");
+//    }
+//    else
+//    {
+// commented for now, probably it can be removed after testing
+//        msg.readInt16("body state");
+//        msg.readInt16("health state");
+//    }
+    if (visible)
+        msg.readInt32("option");
+    else
+        msg.readInt32("effect state");
+
+    const int16_t job = msg.readInt16("class");
+
+    Being *dstBeing = actorManager->findBeing(id);
+
+    if (dstBeing && dstBeing->getType() == ActorType::MONSTER
+        && !dstBeing->isAlive())
+    {
+        actorManager->destroy(dstBeing);
+        actorManager->erase(dstBeing);
+        dstBeing = nullptr;
+    }
+
+    if (!dstBeing)
+    {
+        // Being with id >= 110000000 and job 0 are better
+        // known as ghosts, so don't create those.
+        if (job == 0 && id >= 110000000)
+            return;
+
+        if (actorManager->isBlocked(id) == true)
+            return;
+
+        dstBeing = createBeing(id, job);
+
+        if (!dstBeing)
+            return;
+
+        if (job == 1022 && killStats)
+            killStats->jackoAlive(dstBeing->getId());
+    }
+    else
+    {
+        // undeleting marked for deletion being
+        if (dstBeing->getType() == ActorType::NPC)
+            actorManager->undelete(dstBeing);
+    }
+
+    if (dstBeing->getType() == ActorType::PLAYER)
+        dstBeing->setMoveTime();
+
+    if (spawnId)
+    {
+        dstBeing->setAction(BeingAction::SPAWN, 0);
+    }
+    else if (visible)
+    {
+        dstBeing->clearPath();
+        dstBeing->setActionTime(tick_time);
+        dstBeing->setAction(BeingAction::STAND, 0);
+    }
+
+    // Prevent division by 0 when calculating frame
+    if (speed == 0)
+        speed = 150;
+
+    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setSubtype(job, 0);
+    if (dstBeing->getType() == ActorType::MONSTER && localPlayer)
+        localPlayer->checkNewName(dstBeing);
+
+    const int hairStyle = msg.readInt16("hair style");
+    const uint32_t weapon = static_cast<uint32_t>(msg.readInt32("weapon"));
+    const uint16_t headBottom = msg.readInt16("head bottom");
+
+    if (!visible && !spawn)
+        msg.readInt32("tick");
+
+    const uint16_t headTop = msg.readInt16("head top");
+    const uint16_t headMid = msg.readInt16("head mid");
+    const int hairColor = msg.readInt16("hair color");
+    const uint16_t shoes = msg.readInt16("shoes or clothes color?");
+
+    uint16_t gloves = msg.readInt16("head dir / gloves");
+    // may be use robe as gloves?
+    msg.readInt16("robe");
+    msg.readInt32("guild id");
+    msg.readInt16("guild emblem");
+    msg.readInt16("manner");
+    dstBeing->setStatusEffectBlock(32, msg.readInt32("opt3"));
+    msg.readUInt8("karma");
+    uint8_t gender = msg.readUInt8("gender");
+
+    if (dstBeing->getType() == ActorType::PLAYER)
+    {
+        gender &= 3;
+        dstBeing->setGender(Being::intToGender(gender));
+        // Set these after the gender, as the sprites may be gender-specific
+        setSprite(dstBeing, SPRITE_HAIR, hairStyle * -1,
+            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        setSprite(dstBeing, SPRITE_BOTTOMCLOTHES, headBottom);
+        setSprite(dstBeing, SPRITE_TOPCLOTHES, headMid);
+        setSprite(dstBeing, SPRITE_HAT, headTop);
+        setSprite(dstBeing, SPRITE_SHOE, shoes);
+        setSprite(dstBeing, SPRITE_GLOVES, gloves);
+        setSprite(dstBeing, SPRITE_WEAPON, weapon, "", 1, true);
+//        if (!mHideShield)
+//            setSprite(dstBeing, SPRITE_SHIELD, shield);
+    }
+    else if (dstBeing->getType() == ActorType::NPC)
+    {
+        switch (gender)
+        {
+            case 2:
+                dstBeing->setGender(Gender::FEMALE);
+                break;
+            case 3:
+                dstBeing->setGender(Gender::MALE);
+                break;
+            case 4:
+                dstBeing->setGender(Gender::OTHER);
+                break;
+            default:
+                dstBeing->setGender(Gender::UNSPECIFIED);
+                break;
+        }
+    }
+
+    if (!visible && !spawn)
+    {
+        uint16_t srcX, srcY, dstX, dstY;
+        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
+        msg.readUInt8("(sx<<4) | (sy&0x0f)");
+        msg.readInt8("xs");
+        msg.readInt8("ys");
+        dstBeing->setAction(BeingAction::STAND, 0);
+        dstBeing->setTileCoords(srcX, srcY);
+        dstBeing->setDestination(dstX, dstY);
+
+        // because server don't send direction in move packet,
+        // we fixing it
+
+        int d = 0;
+        if (srcX == dstX && srcY == dstY)
+        {   // if player did one step from invisible area to visible,
+            //move path is broken
+            int x2 = localPlayer->getTileX();
+            int y2 = localPlayer->getTileY();
+            if (abs(x2 - srcX) > abs(y2 - srcY))
+                y2 = srcY;
+            else
+                x2 = srcX;
+            d = dstBeing->calcDirection(x2, y2);
+        }
+        else
+        {
+            d = dstBeing->calcDirection(dstX, dstY);
+        }
+        if (d && dstBeing->getDirection() != d)
+            dstBeing->setDirection(d);
+    }
+    else
+    {
+        uint8_t dir;
+        uint16_t x, y;
+        msg.readCoordinates(x, y, dir, "position");
+        msg.readInt8("xs");
+        msg.readInt8("ys");
+        if (visible)
+            msg.readUInt8("action type");
+        dstBeing->setTileCoords(x, y);
+
+        if (job == 45 && socialWindow && outfitWindow)
+        {
+            const int num = socialWindow->getPortalIndex(x, y);
+            if (num >= 0)
+            {
+                dstBeing->setName(keyboard.getKeyShortString(
+                    outfitWindow->keyName(num)));
+            }
+            else
+            {
+                dstBeing->setName("");
+            }
+        }
+
+        dstBeing->setDirection(dir);
+    }
+
+    const int level = static_cast<int>(msg.readInt16("level"));
+    if (level)
+        dstBeing->setLevel(level);
+    msg.readInt16("font");
+
+    // here map hp/hp for PACKETVER >= 20150000 for now unsupported
+
+    dstBeing->setStunMode(stunMode);
+    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
+        (statusEffects >> 16) & 0xffffU));
+    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+        statusEffects & 0xffffU));
+}
+
+void BeingHandler::processBeingMove(Net::MessageIn &msg)
+{
+    if (!actorManager)
+        return;
+
+    const bool visible = msg.getId() == SMSG_BEING_VISIBLE;
+    const bool spawn = msg.getId() == SMSG_BEING_SPAWN;
+
+    msg.readInt16("len");
+    msg.readUInt8("object type");
+
+    // Information about a being in range
+    const int id = msg.readInt32("being id");
+    int spawnId;
+    if (spawn)
+    {
+        mSpawnId = id;
+        spawnId = id;
+    }
+    else
+    {
+        if (id == mSpawnId)
+            spawnId = mSpawnId;
+        else
+            spawnId = 0;
+        mSpawnId = 0;
+    }
+    int16_t speed = msg.readInt16("speed");
+//    if (visible)
+//    {
+        const uint16_t stunMode = msg.readInt16("opt1");
+        // probably wrong effect usage
+        uint32_t statusEffects = msg.readInt16("opt2");
+//    }
+//    else
+//    {
+// commented for now, probably it can be removed after testing
+//        msg.readInt16("body state");
+//        msg.readInt16("health state");
+//    }
+    if (visible)
+        msg.readInt32("option");
+    else
+        msg.readInt32("effect state");
+
+    const int16_t job = msg.readInt16("class");
+
+    Being *dstBeing = actorManager->findBeing(id);
+
+    if (dstBeing && dstBeing->getType() == ActorType::MONSTER
+        && !dstBeing->isAlive())
+    {
+        actorManager->destroy(dstBeing);
+        actorManager->erase(dstBeing);
+        dstBeing = nullptr;
+    }
+
+    if (!dstBeing)
+    {
+        // Being with id >= 110000000 and job 0 are better
+        // known as ghosts, so don't create those.
+        if (job == 0 && id >= 110000000)
+            return;
+
+        if (actorManager->isBlocked(id) == true)
+            return;
+
+        dstBeing = createBeing(id, job);
+
+        if (!dstBeing)
+            return;
+
+        if (job == 1022 && killStats)
+            killStats->jackoAlive(dstBeing->getId());
+    }
+    else
+    {
+        // undeleting marked for deletion being
+        if (dstBeing->getType() == ActorType::NPC)
+            actorManager->undelete(dstBeing);
+    }
+
+    if (dstBeing->getType() == ActorType::PLAYER)
+        dstBeing->setMoveTime();
+
+    if (spawnId)
+    {
+        dstBeing->setAction(BeingAction::SPAWN, 0);
+    }
+    else if (visible)
+    {
+        dstBeing->clearPath();
+        dstBeing->setActionTime(tick_time);
+        dstBeing->setAction(BeingAction::STAND, 0);
+    }
+
+    // Prevent division by 0 when calculating frame
+    if (speed == 0)
+        speed = 150;
+
+    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setSubtype(job, 0);
+    if (dstBeing->getType() == ActorType::MONSTER && localPlayer)
+        localPlayer->checkNewName(dstBeing);
+
+    const int hairStyle = msg.readInt16("hair style");
+    const uint32_t weapon = static_cast<uint32_t>(msg.readInt32("weapon"));
+    const uint16_t headBottom = msg.readInt16("head bottom");
+
+    if (!visible && !spawn)
+        msg.readInt32("tick");
+
+    const uint16_t headTop = msg.readInt16("head top");
+    const uint16_t headMid = msg.readInt16("head mid");
+    const int hairColor = msg.readInt16("hair color");
+    const uint16_t shoes = msg.readInt16("shoes or clothes color?");
+
+    uint16_t gloves = msg.readInt16("head dir / gloves");
+    // may be use robe as gloves?
+    msg.readInt16("robe");
+    msg.readInt32("guild id");
+    msg.readInt16("guild emblem");
+    msg.readInt16("manner");
+    dstBeing->setStatusEffectBlock(32, msg.readInt32("opt3"));
+    msg.readUInt8("karma");
+    uint8_t gender = msg.readUInt8("gender");
+
+    if (dstBeing->getType() == ActorType::PLAYER)
+    {
+        gender &= 3;
+        dstBeing->setGender(Being::intToGender(gender));
+        // Set these after the gender, as the sprites may be gender-specific
+        setSprite(dstBeing, SPRITE_HAIR, hairStyle * -1,
+            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        setSprite(dstBeing, SPRITE_BOTTOMCLOTHES, headBottom);
+        setSprite(dstBeing, SPRITE_TOPCLOTHES, headMid);
+        setSprite(dstBeing, SPRITE_HAT, headTop);
+        setSprite(dstBeing, SPRITE_SHOE, shoes);
+        setSprite(dstBeing, SPRITE_GLOVES, gloves);
+        setSprite(dstBeing, SPRITE_WEAPON, weapon, "", 1, true);
+//        if (!mHideShield)
+//            setSprite(dstBeing, SPRITE_SHIELD, shield);
+    }
+    else if (dstBeing->getType() == ActorType::NPC)
+    {
+        switch (gender)
+        {
+            case 2:
+                dstBeing->setGender(Gender::FEMALE);
+                break;
+            case 3:
+                dstBeing->setGender(Gender::MALE);
+                break;
+            case 4:
+                dstBeing->setGender(Gender::OTHER);
+                break;
+            default:
+                dstBeing->setGender(Gender::UNSPECIFIED);
+                break;
+        }
+    }
+
+    if (!visible && !spawn)
+    {
+        uint16_t srcX, srcY, dstX, dstY;
+        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
+        msg.readUInt8("(sx<<4) | (sy&0x0f)");
+        msg.readInt8("xs");
+        msg.readInt8("ys");
+        dstBeing->setAction(BeingAction::STAND, 0);
+        dstBeing->setTileCoords(srcX, srcY);
+        dstBeing->setDestination(dstX, dstY);
+
+        // because server don't send direction in move packet,
+        // we fixing it
+
+        int d = 0;
+        if (srcX == dstX && srcY == dstY)
+        {   // if player did one step from invisible area to visible,
+            //move path is broken
+            int x2 = localPlayer->getTileX();
+            int y2 = localPlayer->getTileY();
+            if (abs(x2 - srcX) > abs(y2 - srcY))
+                y2 = srcY;
+            else
+                x2 = srcX;
+            d = dstBeing->calcDirection(x2, y2);
+        }
+        else
+        {
+            d = dstBeing->calcDirection(dstX, dstY);
+        }
+        if (d && dstBeing->getDirection() != d)
+            dstBeing->setDirection(d);
+    }
+    else
+    {
+        uint8_t dir;
+        uint16_t x, y;
+        msg.readCoordinates(x, y, dir, "position");
+        msg.readInt8("xs");
+        msg.readInt8("ys");
+        if (visible)
+            msg.readUInt8("action type");
+        dstBeing->setTileCoords(x, y);
+
+        if (job == 45 && socialWindow && outfitWindow)
+        {
+            const int num = socialWindow->getPortalIndex(x, y);
+            if (num >= 0)
+            {
+                dstBeing->setName(keyboard.getKeyShortString(
+                    outfitWindow->keyName(num)));
+            }
+            else
+            {
+                dstBeing->setName("");
+            }
+        }
+
+        dstBeing->setDirection(dir);
+    }
+
+    const int level = static_cast<int>(msg.readInt16("level"));
+    if (level)
+        dstBeing->setLevel(level);
+    msg.readInt16("font");
+
+    // here map hp/hp for PACKETVER >= 20150000 for now unsupported
+
+    dstBeing->setStunMode(stunMode);
+    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
+        (statusEffects >> 16) & 0xffffU));
+    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+        statusEffects & 0xffffU));
+}
+
+void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
 {
     if (!actorManager)
         return;

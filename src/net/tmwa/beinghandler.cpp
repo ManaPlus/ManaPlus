@@ -112,8 +112,11 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_BEING_VISIBLE:
+            processBeingVisible(msg);
+            break;
+
         case SMSG_BEING_MOVE:
-            processBeingVisibleOrMove(msg);
+            processBeingMove(msg);
             break;
 
         case SMSG_BEING_MOVE2:
@@ -745,7 +748,249 @@ void BeingHandler::processBeingMove3(Net::MessageIn &msg)
     BLOCK_END("BeingHandler::processBeingMove3")
 }
 
-void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
+void BeingHandler::processBeingVisible(Net::MessageIn &msg)
+{
+    BLOCK_START("BeingHandler::processBeingVisibleOrMove")
+    if (!actorManager)
+    {
+        BLOCK_END("BeingHandler::processBeingVisibleOrMove")
+        return;
+    }
+
+    const bool visible = msg.getId() == SMSG_BEING_VISIBLE;
+    int spawnId;
+
+    // Information about a being in range
+    const int id = msg.readInt32("being id");
+    if (id == mSpawnId)
+        spawnId = mSpawnId;
+    else
+        spawnId = 0;
+    mSpawnId = 0;
+    int16_t speed = msg.readInt16();
+    const uint16_t stunMode = msg.readInt16("opt1");
+    uint32_t statusEffects = msg.readInt16("opt2");
+    statusEffects |= (static_cast<uint32_t>(msg.readInt16("option"))) << 16;
+    const int16_t job = msg.readInt16("class");
+    int disguiseId = 0;
+    if (id == localPlayer->getId() && job >= 1000)
+        disguiseId = job;
+
+    Being *dstBeing = actorManager->findBeing(id);
+
+    if (dstBeing && dstBeing->getType() == ActorType::MONSTER
+        && !dstBeing->isAlive())
+    {
+        actorManager->destroy(dstBeing);
+        actorManager->erase(dstBeing);
+        dstBeing = nullptr;
+    }
+
+    if (!dstBeing)
+    {
+        // Being with id >= 110000000 and job 0 are better
+        // known as ghosts, so don't create those.
+        if (job == 0 && id >= 110000000)
+        {
+            BLOCK_END("BeingHandler::processBeingVisibleOrMove")
+            return;
+        }
+
+        if (actorManager->isBlocked(id) == true)
+        {
+            BLOCK_END("BeingHandler::processBeingVisibleOrMove")
+            return;
+        }
+
+        dstBeing = createBeing(id, job);
+
+        if (!dstBeing)
+        {
+            BLOCK_END("BeingHandler::processBeingVisibleOrMove")
+            return;
+        }
+
+        if (job == 1022 && killStats)
+            killStats->jackoAlive(dstBeing->getId());
+    }
+    else
+    {
+        if (dstBeing->getType() == ActorType::NPC)
+        {
+            actorManager->undelete(dstBeing);
+            if (serverVersion < 1)
+                requestNameById(id);
+        }
+    }
+
+    if (dstBeing->getType() == ActorType::PLAYER)
+        dstBeing->setMoveTime();
+
+    if (spawnId)
+    {
+        dstBeing->setAction(BeingAction::SPAWN, 0);
+    }
+    else if (visible)
+    {
+        dstBeing->clearPath();
+        dstBeing->setActionTime(tick_time);
+        dstBeing->setAction(BeingAction::STAND, 0);
+    }
+
+    // Prevent division by 0 when calculating frame
+    if (speed == 0)
+        speed = 150;
+
+    const uint8_t hairStyle = msg.readUInt8("hair style");
+    const uint8_t look = msg.readUInt8("look");
+    dstBeing->setSubtype(job, look);
+    if (dstBeing->getType() == ActorType::MONSTER && localPlayer)
+        localPlayer->checkNewName(dstBeing);
+    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    const uint16_t weapon = msg.readInt16("weapon");
+    const uint16_t headBottom = msg.readInt16("head bottom");
+
+    if (!visible)
+        msg.readInt32("tick");
+
+    const uint16_t shield = msg.readInt16("shield");
+    const uint16_t headTop = msg.readInt16("head top");
+    const uint16_t headMid = msg.readInt16("head mid");
+    const uint8_t hairColor = msg.readUInt8("hair color");
+    msg.readUInt8("unused");
+    const uint16_t shoes = msg.readInt16("shoes / clothes color");
+
+    uint16_t gloves;
+    if (dstBeing->getType() == ActorType::MONSTER)
+    {
+        if (serverVersion > 0 || tmwServerVersion >= 0x0E0701)
+        {
+            const int hp = msg.readInt32("hp");
+            const int maxHP = msg.readInt32("max hp");
+            if (hp && maxHP)
+            {
+                dstBeing->setMaxHP(maxHP);
+                const int oldHP = dstBeing->getHP();
+                if (!oldHP || oldHP > hp)
+                    dstBeing->setHP(hp);
+            }
+        }
+        else
+        {
+            msg.readInt32("unused");
+            msg.readInt32("unused");
+        }
+        gloves = 0;
+    }
+    else
+    {
+        gloves = msg.readInt16("gloves / head dir");
+        msg.readInt32("guild");
+        msg.readInt16("guild emblem");
+    }
+
+    msg.readInt16("manner");
+    dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
+    if (serverVersion > 0 && dstBeing->getType() == ActorType::MONSTER)
+    {
+        const int attackRange = static_cast<int>(
+            msg.readUInt8("attack range (was karma)"));
+        dstBeing->setAttackRange(attackRange);
+    }
+    else
+    {
+        msg.readUInt8("karma");
+    }
+    uint8_t gender = msg.readUInt8("gender");
+
+    if (!disguiseId && dstBeing->getType() == ActorType::PLAYER)
+    {
+        // reserving bits for future usage
+        gender &= 3;
+        dstBeing->setGender(Being::intToGender(gender));
+        // Set these after the gender, as the sprites may be gender-specific
+        setSprite(dstBeing, SPRITE_HAIR, hairStyle * -1,
+            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        dstBeing->setHairColor(hairColor);
+        setSprite(dstBeing, SPRITE_BOTTOMCLOTHES, headBottom);
+        setSprite(dstBeing, SPRITE_TOPCLOTHES, headMid);
+        setSprite(dstBeing, SPRITE_HAT, headTop);
+        setSprite(dstBeing, SPRITE_SHOE, shoes);
+        setSprite(dstBeing, SPRITE_GLOVES, gloves);
+        setSprite(dstBeing, SPRITE_WEAPON, weapon, "", 1, true);
+        if (!mHideShield)
+            setSprite(dstBeing, SPRITE_SHIELD, shield);
+    }
+    else if (dstBeing->getType() == ActorType::NPC)
+    {
+        switch (gender)
+        {
+            case 2:
+                dstBeing->setGender(Gender::FEMALE);
+                break;
+            case 3:
+                dstBeing->setGender(Gender::MALE);
+                break;
+            case 4:
+                dstBeing->setGender(Gender::OTHER);
+                break;
+            default:
+                dstBeing->setGender(Gender::UNSPECIFIED);
+                break;
+        }
+    }
+
+    if (!visible)
+    {
+        uint16_t srcX, srcY, dstX, dstY;
+        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
+        if (!disguiseId)
+        {
+            dstBeing->setAction(BeingAction::STAND, 0);
+            dstBeing->setTileCoords(srcX, srcY);
+            if (serverVersion < 10)
+                dstBeing->setDestination(dstX, dstY);
+        }
+    }
+    else
+    {
+        uint8_t dir;
+        uint16_t x, y;
+        msg.readCoordinates(x, y, dir, "position");
+        dstBeing->setTileCoords(x, y);
+
+        if (job == 45 && socialWindow && outfitWindow)
+        {
+            const int num = socialWindow->getPortalIndex(x, y);
+            if (num >= 0)
+            {
+                dstBeing->setName(keyboard.getKeyShortString(
+                    outfitWindow->keyName(num)));
+            }
+            else
+            {
+                dstBeing->setName("");
+            }
+        }
+
+        dstBeing->setDirection(dir);
+    }
+
+    msg.readUInt8("unknown");
+    msg.readUInt8("unknown");
+    msg.readUInt8("unknown");
+    msg.readUInt8("unknown");
+    msg.readUInt8("unknown");
+
+    dstBeing->setStunMode(stunMode);
+    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
+        (statusEffects >> 16) & 0xffff));
+    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+        statusEffects & 0xffff));
+    BLOCK_END("BeingHandler::processBeingVisibleOrMove")
+}
+
+void BeingHandler::processBeingMove(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingVisibleOrMove")
     if (!actorManager)
