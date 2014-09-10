@@ -49,6 +49,7 @@
 #include "net/eathena/inventoryhandler.h"
 #include "net/eathena/itemhandler.h"
 #include "net/eathena/loginhandler.h"
+#include "net/eathena/mailhandler.h"
 #include "net/eathena/network.h"
 #include "net/eathena/npchandler.h"
 #include "net/eathena/partyhandler.h"
@@ -94,7 +95,8 @@ GeneralHandler::GeneralHandler() :
     mSkillHandler(new SkillHandler),
     mTradeHandler(new TradeHandler),
     mQuestHandler(new QuestHandler),
-    mServerFeatures(new ServerFeatures)
+    mServerFeatures(new ServerFeatures),
+    mMailHandler(new MailHandler)
 {
     static const uint16_t _messages[] =
     {

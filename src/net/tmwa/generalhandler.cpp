@@ -49,6 +49,7 @@
 #include "net/tmwa/inventoryhandler.h"
 #include "net/tmwa/itemhandler.h"
 #include "net/tmwa/loginhandler.h"
+#include "net/tmwa/mailhandler.h"
 #include "net/tmwa/network.h"
 #include "net/tmwa/npchandler.h"
 #include "net/tmwa/partyhandler.h"
@@ -94,7 +95,8 @@ GeneralHandler::GeneralHandler() :
     mSkillHandler(new SkillHandler),
     mTradeHandler(new TradeHandler),
     mQuestHandler(new QuestHandler),
-    mServerFeatures(new ServerFeatures)
+    mServerFeatures(new ServerFeatures),
+    mMailHandler(new MailHandler)
 {
     static const uint16_t _messages[] =
     {

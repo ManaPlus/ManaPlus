@@ -45,6 +45,7 @@ class GeneralHandler;
 class GuildHandler;
 class InventoryHandler;
 class LoginHandler;
+class MailHandler;
 class NpcHandler;
 class PartyHandler;
 class PetHandler;
@@ -70,8 +71,8 @@ PlayerHandler *getPlayerHandler() A_WARN_UNUSED;
 SkillHandler *getSkillHandler() A_WARN_UNUSED;
 TradeHandler *getTradeHandler() A_WARN_UNUSED;
 BuySellHandler *getBuySellHandler() A_WARN_UNUSED;
-
 ServerFeatures *getServerFeatures() A_WARN_UNUSED;
+MailHandler *getMailHandler() A_WARN_UNUSED;
 
 ServerInfo::Type getNetworkType() A_WARN_UNUSED;
 
