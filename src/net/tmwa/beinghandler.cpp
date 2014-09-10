@@ -156,8 +156,11 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_BEING_CHANGE_LOOKS:
-        case SMSG_BEING_CHANGE_LOOKS2:
             processBeingChangeLook(msg);
+            break;
+
+        case SMSG_BEING_CHANGE_LOOKS2:
+            processBeingChangeLook2(msg);
             break;
 
         case SMSG_BEING_NAME_RESPONSE:
@@ -246,6 +249,63 @@ void BeingHandler::requestRanks(const Rank::Rank rank A_UNUSED) const
 }
 
 void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
+{
+    BLOCK_START("BeingHandler::processBeingChangeLook")
+    if (!actorManager)
+    {
+        BLOCK_END("BeingHandler::processBeingChangeLook")
+        return;
+    }
+
+    /*
+      * SMSG_BEING_CHANGE_LOOKS (0x00c3) and
+      * SMSG_BEING_CHANGE_LOOKS2 (0x01d7) do basically the same
+      * thing.  The difference is that ...LOOKS carries a single
+      * 8 bit value, where ...LOOKS2 carries two 16 bit values.
+      *
+      * If type = 2, then the first 16 bit value is the weapon ID,
+      * and the second 16 bit value is the shield ID.  If no
+      * shield is equipped, or type is not 2, then the second
+      * 16 bit value will be 0.
+      */
+
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readInt32("being id"));
+
+    const uint8_t type = msg.readUInt8("type");
+    int16_t id = 0;
+    int id2 = 0;
+    const bool look2 = msg.getId() == SMSG_BEING_CHANGE_LOOKS2;
+
+    if (!look2)
+    {
+        id = static_cast<int16_t>(msg.readUInt8("id"));
+        id2 = 1;    // default color
+    }
+    else
+    {        // SMSG_BEING_CHANGE_LOOKS2
+        id = msg.readInt16("id1");
+        if (type == 2 || serverVersion > 0)
+        {
+            id2 = msg.readInt16("id2");
+        }
+        else
+        {
+            msg.readInt16("id2");
+            id2 = 1;
+        }
+    }
+
+    if (!localPlayer || !dstBeing)
+    {
+        BLOCK_END("BeingHandler::processBeingChangeLook")
+        return;
+    }
+    processBeingChangeLookContinue(dstBeing, type, id, id2);
+    BLOCK_END("BeingHandler::processBeingChangeLook")
+}
+
+void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processBeingChangeLook")
     if (!actorManager)

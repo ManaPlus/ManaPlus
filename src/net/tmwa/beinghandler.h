@@ -48,6 +48,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
     protected:
         void processBeingChangeLook(Net::MessageIn &msg) const;
 
+        void processBeingChangeLook2(Net::MessageIn &msg) const;
+
         void processBeingVisible(Net::MessageIn &msg);
 
         void processBeingMove(Net::MessageIn &msg);
