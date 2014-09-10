@@ -233,7 +233,7 @@
 #define CMSG_SKILL_LEVELUP_REQUEST   0x0112
 #define CMSG_STAT_UPDATE_REQUEST     0x00bb
 #define CMSG_SKILL_USE_BEING         0x083c
-#define CMSG_SKILL_USE_POSITION      0x091e
+#define CMSG_SKILL_USE_POSITION      0x0438
 // Variant of 0x116 with 80 char string at end (unsure of use)
 #define CMSG_SKILL_USE_POSITION_MORE 0x096a
 #define CMSG_SKILL_USE_MAP           0x011b
@@ -275,7 +275,7 @@
 #define CMSG_PARTY_CREATE            0x00f9
 #define CMSG_PARTY_CREATE2           0x01e8
 #define CMSG_PARTY_INVITE            0x00fc
-#define CMSG_PARTY_INVITE2           0x08a9
+#define CMSG_PARTY_INVITE2           0x0802
 #define CMSG_PARTY_INVITED           0x00ff
 #define CMSG_PARTY_INVITED2          0x02c7
 #define CMSG_PARTY_LEAVE             0x0100
@@ -319,7 +319,7 @@
 #define CMSG_GUILD_OPPOSITION        0x0180
 #define CMSG_GUILD_ALLIANCE_DELETE   0x0183
 
-#define CMSG_SOLVE_CHAR_NAME         0x0898
+#define CMSG_SOLVE_CHAR_NAME         0x0368
 #define CMSG_IGNORE_ALL              0x00d0
 #define CMSG_REQUEST_RANKS           0x097c
 #define CMSG_SET_SHORTCUTS           0x02ba
