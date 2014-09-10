@@ -43,4 +43,9 @@ bool ServerFeatures::havePartyNickInvite() const
     return false;
 }
 
+bool ServerFeatures::haveChangePartyLeader() const
+{
+    return false;
+}
+
 }  // TmwAthena
