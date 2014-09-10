@@ -757,7 +757,6 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         return;
     }
 
-    const bool visible = msg.getId() == SMSG_BEING_VISIBLE;
     int spawnId;
 
     // Information about a being in range
@@ -830,7 +829,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     {
         dstBeing->setAction(BeingAction::SPAWN, 0);
     }
-    else if (visible)
+    else
     {
         dstBeing->clearPath();
         dstBeing->setActionTime(tick_time);
@@ -849,9 +848,6 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
     const uint16_t weapon = msg.readInt16("weapon");
     const uint16_t headBottom = msg.readInt16("head bottom");
-
-    if (!visible)
-        msg.readInt32("tick");
 
     const uint16_t shield = msg.readInt16("shield");
     const uint16_t headTop = msg.readInt16("head top");
@@ -940,41 +936,26 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         }
     }
 
-    if (!visible)
+    uint8_t dir;
+    uint16_t x, y;
+    msg.readCoordinates(x, y, dir, "position");
+    dstBeing->setTileCoords(x, y);
+
+    if (job == 45 && socialWindow && outfitWindow)
     {
-        uint16_t srcX, srcY, dstX, dstY;
-        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
-        if (!disguiseId)
+        const int num = socialWindow->getPortalIndex(x, y);
+        if (num >= 0)
         {
-            dstBeing->setAction(BeingAction::STAND, 0);
-            dstBeing->setTileCoords(srcX, srcY);
-            if (serverVersion < 10)
-                dstBeing->setDestination(dstX, dstY);
+            dstBeing->setName(keyboard.getKeyShortString(
+                outfitWindow->keyName(num)));
+        }
+        else
+        {
+            dstBeing->setName("");
         }
     }
-    else
-    {
-        uint8_t dir;
-        uint16_t x, y;
-        msg.readCoordinates(x, y, dir, "position");
-        dstBeing->setTileCoords(x, y);
 
-        if (job == 45 && socialWindow && outfitWindow)
-        {
-            const int num = socialWindow->getPortalIndex(x, y);
-            if (num >= 0)
-            {
-                dstBeing->setName(keyboard.getKeyShortString(
-                    outfitWindow->keyName(num)));
-            }
-            else
-            {
-                dstBeing->setName("");
-            }
-        }
-
-        dstBeing->setDirection(dir);
-    }
+    dstBeing->setDirection(dir);
 
     msg.readUInt8("unknown");
     msg.readUInt8("unknown");
@@ -999,7 +980,6 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         return;
     }
 
-    const bool visible = msg.getId() == SMSG_BEING_VISIBLE;
     int spawnId;
 
     // Information about a being in range
@@ -1069,15 +1049,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         dstBeing->setMoveTime();
 
     if (spawnId)
-    {
         dstBeing->setAction(BeingAction::SPAWN, 0);
-    }
-    else if (visible)
-    {
-        dstBeing->clearPath();
-        dstBeing->setActionTime(tick_time);
-        dstBeing->setAction(BeingAction::STAND, 0);
-    }
 
     // Prevent division by 0 when calculating frame
     if (speed == 0)
@@ -1092,8 +1064,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     const uint16_t weapon = msg.readInt16("weapon");
     const uint16_t headBottom = msg.readInt16("head bottom");
 
-    if (!visible)
-        msg.readInt32("tick");
+    msg.readInt32("tick");
 
     const uint16_t shield = msg.readInt16("shield");
     const uint16_t headTop = msg.readInt16("head top");
@@ -1182,40 +1153,14 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         }
     }
 
-    if (!visible)
+    uint16_t srcX, srcY, dstX, dstY;
+    msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
+    if (!disguiseId)
     {
-        uint16_t srcX, srcY, dstX, dstY;
-        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
-        if (!disguiseId)
-        {
-            dstBeing->setAction(BeingAction::STAND, 0);
-            dstBeing->setTileCoords(srcX, srcY);
-            if (serverVersion < 10)
-                dstBeing->setDestination(dstX, dstY);
-        }
-    }
-    else
-    {
-        uint8_t dir;
-        uint16_t x, y;
-        msg.readCoordinates(x, y, dir, "position");
-        dstBeing->setTileCoords(x, y);
-
-        if (job == 45 && socialWindow && outfitWindow)
-        {
-            const int num = socialWindow->getPortalIndex(x, y);
-            if (num >= 0)
-            {
-                dstBeing->setName(keyboard.getKeyShortString(
-                    outfitWindow->keyName(num)));
-            }
-            else
-            {
-                dstBeing->setName("");
-            }
-        }
-
-        dstBeing->setDirection(dir);
+        dstBeing->setAction(BeingAction::STAND, 0);
+        dstBeing->setTileCoords(srcX, srcY);
+        if (serverVersion < 10)
+            dstBeing->setDestination(dstX, dstY);
     }
 
     msg.readUInt8("unknown");

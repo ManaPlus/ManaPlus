@@ -668,45 +668,23 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     if (!actorManager)
         return;
 
-    const bool visible = msg.getId() == SMSG_BEING_VISIBLE;
-    const bool spawn = msg.getId() == SMSG_BEING_SPAWN;
-
     msg.readInt16("len");
     msg.readUInt8("object type");
 
     // Information about a being in range
     const int id = msg.readInt32("being id");
     int spawnId;
-    if (spawn)
-    {
-        mSpawnId = id;
-        spawnId = id;
-    }
+    if (id == mSpawnId)
+        spawnId = mSpawnId;
     else
-    {
-        if (id == mSpawnId)
-            spawnId = mSpawnId;
-        else
-            spawnId = 0;
-        mSpawnId = 0;
-    }
+        spawnId = 0;
+    mSpawnId = 0;
+
     int16_t speed = msg.readInt16("speed");
-//    if (visible)
-//    {
-        const uint16_t stunMode = msg.readInt16("opt1");
-        // probably wrong effect usage
-        uint32_t statusEffects = msg.readInt16("opt2");
-//    }
-//    else
-//    {
-// commented for now, probably it can be removed after testing
-//        msg.readInt16("body state");
-//        msg.readInt16("health state");
-//    }
-    if (visible)
-        msg.readInt32("option");
-    else
-        msg.readInt32("effect state");
+    const uint16_t stunMode = msg.readInt16("opt1");
+    // probably wrong effect usage
+    uint32_t statusEffects = msg.readInt16("opt2");
+    msg.readInt32("option");
 
     const int16_t job = msg.readInt16("class");
 
@@ -752,7 +730,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     {
         dstBeing->setAction(BeingAction::SPAWN, 0);
     }
-    else if (visible)
+    else
     {
         dstBeing->clearPath();
         dstBeing->setActionTime(tick_time);
@@ -771,9 +749,6 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     const int hairStyle = msg.readInt16("hair style");
     const uint32_t weapon = static_cast<uint32_t>(msg.readInt32("weapon"));
     const uint16_t headBottom = msg.readInt16("head bottom");
-
-    if (!visible && !spawn)
-        msg.readInt32("tick");
 
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
@@ -825,66 +800,29 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         }
     }
 
-    if (!visible && !spawn)
+    uint8_t dir;
+    uint16_t x, y;
+    msg.readCoordinates(x, y, dir, "position");
+    msg.readInt8("xs");
+    msg.readInt8("ys");
+    msg.readUInt8("action type");
+    dstBeing->setTileCoords(x, y);
+
+    if (job == 45 && socialWindow && outfitWindow)
     {
-        uint16_t srcX, srcY, dstX, dstY;
-        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
-        msg.readUInt8("(sx<<4) | (sy&0x0f)");
-        msg.readInt8("xs");
-        msg.readInt8("ys");
-        dstBeing->setAction(BeingAction::STAND, 0);
-        dstBeing->setTileCoords(srcX, srcY);
-        dstBeing->setDestination(dstX, dstY);
-
-        // because server don't send direction in move packet,
-        // we fixing it
-
-        int d = 0;
-        if (srcX == dstX && srcY == dstY)
-        {   // if player did one step from invisible area to visible,
-            //move path is broken
-            int x2 = localPlayer->getTileX();
-            int y2 = localPlayer->getTileY();
-            if (abs(x2 - srcX) > abs(y2 - srcY))
-                y2 = srcY;
-            else
-                x2 = srcX;
-            d = dstBeing->calcDirection(x2, y2);
+        const int num = socialWindow->getPortalIndex(x, y);
+        if (num >= 0)
+        {
+            dstBeing->setName(keyboard.getKeyShortString(
+                outfitWindow->keyName(num)));
         }
         else
         {
-            d = dstBeing->calcDirection(dstX, dstY);
+            dstBeing->setName("");
         }
-        if (d && dstBeing->getDirection() != d)
-            dstBeing->setDirection(d);
     }
-    else
-    {
-        uint8_t dir;
-        uint16_t x, y;
-        msg.readCoordinates(x, y, dir, "position");
-        msg.readInt8("xs");
-        msg.readInt8("ys");
-        if (visible)
-            msg.readUInt8("action type");
-        dstBeing->setTileCoords(x, y);
 
-        if (job == 45 && socialWindow && outfitWindow)
-        {
-            const int num = socialWindow->getPortalIndex(x, y);
-            if (num >= 0)
-            {
-                dstBeing->setName(keyboard.getKeyShortString(
-                    outfitWindow->keyName(num)));
-            }
-            else
-            {
-                dstBeing->setName("");
-            }
-        }
-
-        dstBeing->setDirection(dir);
-    }
+    dstBeing->setDirection(dir);
 
     const int level = static_cast<int>(msg.readInt16("level"));
     if (level)
@@ -905,28 +843,17 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     if (!actorManager)
         return;
 
-    const bool visible = msg.getId() == SMSG_BEING_VISIBLE;
-    const bool spawn = msg.getId() == SMSG_BEING_SPAWN;
-
     msg.readInt16("len");
     msg.readUInt8("object type");
 
     // Information about a being in range
     const int id = msg.readInt32("being id");
     int spawnId;
-    if (spawn)
-    {
-        mSpawnId = id;
-        spawnId = id;
-    }
+    if (id == mSpawnId)
+        spawnId = mSpawnId;
     else
-    {
-        if (id == mSpawnId)
-            spawnId = mSpawnId;
-        else
-            spawnId = 0;
-        mSpawnId = 0;
-    }
+        spawnId = 0;
+    mSpawnId = 0;
     int16_t speed = msg.readInt16("speed");
 //    if (visible)
 //    {
@@ -940,10 +867,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
 //        msg.readInt16("body state");
 //        msg.readInt16("health state");
 //    }
-    if (visible)
-        msg.readInt32("option");
-    else
-        msg.readInt32("effect state");
+    msg.readInt32("effect state");
 
     const int16_t job = msg.readInt16("class");
 
@@ -986,15 +910,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         dstBeing->setMoveTime();
 
     if (spawnId)
-    {
         dstBeing->setAction(BeingAction::SPAWN, 0);
-    }
-    else if (visible)
-    {
-        dstBeing->clearPath();
-        dstBeing->setActionTime(tick_time);
-        dstBeing->setAction(BeingAction::STAND, 0);
-    }
 
     // Prevent division by 0 when calculating frame
     if (speed == 0)
@@ -1009,8 +925,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     const uint32_t weapon = static_cast<uint32_t>(msg.readInt32("weapon"));
     const uint16_t headBottom = msg.readInt16("head bottom");
 
-    if (!visible && !spawn)
-        msg.readInt32("tick");
+    msg.readInt32("tick");
 
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
@@ -1062,66 +977,35 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         }
     }
 
-    if (!visible && !spawn)
-    {
-        uint16_t srcX, srcY, dstX, dstY;
-        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
-        msg.readUInt8("(sx<<4) | (sy&0x0f)");
-        msg.readInt8("xs");
-        msg.readInt8("ys");
-        dstBeing->setAction(BeingAction::STAND, 0);
-        dstBeing->setTileCoords(srcX, srcY);
-        dstBeing->setDestination(dstX, dstY);
+    uint16_t srcX, srcY, dstX, dstY;
+    msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
+    msg.readUInt8("(sx<<4) | (sy&0x0f)");
+    msg.readInt8("xs");
+    msg.readInt8("ys");
+    dstBeing->setAction(BeingAction::STAND, 0);
+    dstBeing->setTileCoords(srcX, srcY);
+    dstBeing->setDestination(dstX, dstY);
 
-        // because server don't send direction in move packet,
-        // we fixing it
+    // because server don't send direction in move packet, we fixing it
 
-        int d = 0;
-        if (srcX == dstX && srcY == dstY)
-        {   // if player did one step from invisible area to visible,
-            //move path is broken
-            int x2 = localPlayer->getTileX();
-            int y2 = localPlayer->getTileY();
-            if (abs(x2 - srcX) > abs(y2 - srcY))
-                y2 = srcY;
-            else
-                x2 = srcX;
-            d = dstBeing->calcDirection(x2, y2);
-        }
+    int d = 0;
+    if (srcX == dstX && srcY == dstY)
+    {   // if player did one step from invisible area to visible,
+        //move path is broken
+        int x2 = localPlayer->getTileX();
+        int y2 = localPlayer->getTileY();
+        if (abs(x2 - srcX) > abs(y2 - srcY))
+            y2 = srcY;
         else
-        {
-            d = dstBeing->calcDirection(dstX, dstY);
-        }
-        if (d && dstBeing->getDirection() != d)
-            dstBeing->setDirection(d);
+            x2 = srcX;
+        d = dstBeing->calcDirection(x2, y2);
     }
     else
     {
-        uint8_t dir;
-        uint16_t x, y;
-        msg.readCoordinates(x, y, dir, "position");
-        msg.readInt8("xs");
-        msg.readInt8("ys");
-        if (visible)
-            msg.readUInt8("action type");
-        dstBeing->setTileCoords(x, y);
-
-        if (job == 45 && socialWindow && outfitWindow)
-        {
-            const int num = socialWindow->getPortalIndex(x, y);
-            if (num >= 0)
-            {
-                dstBeing->setName(keyboard.getKeyShortString(
-                    outfitWindow->keyName(num)));
-            }
-            else
-            {
-                dstBeing->setName("");
-            }
-        }
-
-        dstBeing->setDirection(dir);
+        d = dstBeing->calcDirection(dstX, dstY);
     }
+    if (d && dstBeing->getDirection() != d)
+        dstBeing->setDirection(d);
 
     const int level = static_cast<int>(msg.readInt16("level"));
     if (level)
@@ -1142,28 +1026,13 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     if (!actorManager)
         return;
 
-    const bool visible = msg.getId() == SMSG_BEING_VISIBLE;
-    const bool spawn = msg.getId() == SMSG_BEING_SPAWN;
-
     msg.readInt16("len");
     msg.readUInt8("object type");
 
     // Information about a being in range
     const int id = msg.readInt32("being id");
-    int spawnId;
-    if (spawn)
-    {
-        mSpawnId = id;
-        spawnId = id;
-    }
-    else
-    {
-        if (id == mSpawnId)
-            spawnId = mSpawnId;
-        else
-            spawnId = 0;
-        mSpawnId = 0;
-    }
+    mSpawnId = id;
+    int spawnId = id;
     int16_t speed = msg.readInt16("speed");
 //    if (visible)
 //    {
@@ -1177,10 +1046,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
 //        msg.readInt16("body state");
 //        msg.readInt16("health state");
 //    }
-    if (visible)
-        msg.readInt32("option");
-    else
-        msg.readInt32("effect state");
+    msg.readInt32("effect state");
 
     const int16_t job = msg.readInt16("class");
 
@@ -1226,12 +1092,6 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     {
         dstBeing->setAction(BeingAction::SPAWN, 0);
     }
-    else if (visible)
-    {
-        dstBeing->clearPath();
-        dstBeing->setActionTime(tick_time);
-        dstBeing->setAction(BeingAction::STAND, 0);
-    }
 
     // Prevent division by 0 when calculating frame
     if (speed == 0)
@@ -1245,9 +1105,6 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     const int hairStyle = msg.readInt16("hair style");
     const uint32_t weapon = static_cast<uint32_t>(msg.readInt32("weapon"));
     const uint16_t headBottom = msg.readInt16("head bottom");
-
-    if (!visible && !spawn)
-        msg.readInt32("tick");
 
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
@@ -1299,66 +1156,28 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
         }
     }
 
-    if (!visible && !spawn)
+    uint8_t dir;
+    uint16_t x, y;
+    msg.readCoordinates(x, y, dir, "position");
+    msg.readInt8("xs");
+    msg.readInt8("ys");
+    dstBeing->setTileCoords(x, y);
+
+    if (job == 45 && socialWindow && outfitWindow)
     {
-        uint16_t srcX, srcY, dstX, dstY;
-        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
-        msg.readUInt8("(sx<<4) | (sy&0x0f)");
-        msg.readInt8("xs");
-        msg.readInt8("ys");
-        dstBeing->setAction(BeingAction::STAND, 0);
-        dstBeing->setTileCoords(srcX, srcY);
-        dstBeing->setDestination(dstX, dstY);
-
-        // because server don't send direction in move packet,
-        // we fixing it
-
-        int d = 0;
-        if (srcX == dstX && srcY == dstY)
-        {   // if player did one step from invisible area to visible,
-            //move path is broken
-            int x2 = localPlayer->getTileX();
-            int y2 = localPlayer->getTileY();
-            if (abs(x2 - srcX) > abs(y2 - srcY))
-                y2 = srcY;
-            else
-                x2 = srcX;
-            d = dstBeing->calcDirection(x2, y2);
+        const int num = socialWindow->getPortalIndex(x, y);
+        if (num >= 0)
+        {
+            dstBeing->setName(keyboard.getKeyShortString(
+                outfitWindow->keyName(num)));
         }
         else
         {
-            d = dstBeing->calcDirection(dstX, dstY);
+            dstBeing->setName("");
         }
-        if (d && dstBeing->getDirection() != d)
-            dstBeing->setDirection(d);
     }
-    else
-    {
-        uint8_t dir;
-        uint16_t x, y;
-        msg.readCoordinates(x, y, dir, "position");
-        msg.readInt8("xs");
-        msg.readInt8("ys");
-        if (visible)
-            msg.readUInt8("action type");
-        dstBeing->setTileCoords(x, y);
 
-        if (job == 45 && socialWindow && outfitWindow)
-        {
-            const int num = socialWindow->getPortalIndex(x, y);
-            if (num >= 0)
-            {
-                dstBeing->setName(keyboard.getKeyShortString(
-                    outfitWindow->keyName(num)));
-            }
-            else
-            {
-                dstBeing->setName("");
-            }
-        }
-
-        dstBeing->setDirection(dir);
-    }
+    dstBeing->setDirection(dir);
 
     const int level = static_cast<int>(msg.readInt16("level"));
     if (level)
