@@ -277,6 +277,7 @@
 #define CMSG_PARTY_INVITE            0x00fc
 #define CMSG_PARTY_INVITE2           0x08a9
 #define CMSG_PARTY_INVITED           0x00ff
+#define CMSG_PARTY_INVITED2          0x02c7
 #define CMSG_PARTY_LEAVE             0x0100
 #define CMSG_PARTY_SETTINGS          0x0102
 #define CMSG_PARTY_KICK              0x0103

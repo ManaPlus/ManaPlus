@@ -148,9 +148,9 @@ void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
 {
     if (localPlayer)
     {
-        MessageOut outMsg(CMSG_PARTY_INVITED);
+        MessageOut outMsg(CMSG_PARTY_INVITED2);
         outMsg.writeInt32(localPlayer->getId());
-        outMsg.writeInt32(accept ? 1 : 0);
+        outMsg.writeInt8(accept ? 1 : 0);
     }
 }
 
