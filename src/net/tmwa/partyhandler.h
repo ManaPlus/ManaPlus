@@ -67,6 +67,8 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
         void processPartyInfo(Net::MessageIn &msg) const;
 
         void processPartyMessage(Net::MessageIn &msg) const;
+
+        void processPartyInviteResponse(Net::MessageIn &msg) const;
 };
 
 }  // namespace TmwAthena
