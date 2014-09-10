@@ -143,7 +143,7 @@
 
 #define SMSG_PARTY_CREATE            0x00fa
 #define SMSG_PARTY_INFO              0x00fb
-#define SMSG_PARTY_INVITE_RESPONSE   0x00fd
+#define SMSG_PARTY_INVITE_RESPONSE   0x02c5
 #define SMSG_PARTY_INVITED           0x00fe
 #define SMSG_PARTY_SETTINGS          0x07d8
 #define SMSG_PARTY_MOVE              0x0104

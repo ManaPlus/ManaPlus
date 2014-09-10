@@ -407,9 +407,9 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
     if (!Ea::partyTab)
         return;
 
-    const std::string nick = msg.readString(24);
+    const std::string nick = msg.readString(24, "nick");
 
-    switch (msg.readUInt8())
+    switch (msg.readInt32("result"))
     {
         case 0:
             NotifyManager::notify(NotifyTypes::PARTY_INVITE_ALREADY_MEMBER,
