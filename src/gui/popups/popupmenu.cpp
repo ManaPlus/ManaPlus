@@ -177,7 +177,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("##3---");
 
             addFollow();
-            addParty(being->getPartyName());
+            addPartyName(being->getPartyName());
 
             const Guild *const guild1 = being->getGuild();
             const Guild *const guild2 = localPlayer->getGuild();
@@ -1312,7 +1312,7 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "party" && being &&
              being->getType() == ActorType::PLAYER)
     {
-        Net::getPartyHandler()->invite(being);
+        Net::getPartyHandler()->invite(being->getName());
     }
     else if (link == "kick party" && being
              && being->getType() == ActorType::PLAYER)
@@ -2704,7 +2704,7 @@ void PopupMenu::addBuySellDefault()
     }
 }
 
-void PopupMenu::addParty(const std::string &partyName)
+void PopupMenu::addPartyName(const std::string &partyName)
 {
     if (localPlayer->isInParty())
     {
