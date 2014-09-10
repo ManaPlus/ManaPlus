@@ -623,7 +623,7 @@ void ChatWindow::doPresent() const
 
     FOR_EACH (ActorSpritesIterator, it, actors)
     {
-        if ((*it)->getType() == ActorType::PLAYER)
+        if ((*it)->getType() == ActorType::Player)
         {
             if (!response.empty())
                 response.append(", ");
@@ -1508,7 +1508,7 @@ void ChatWindow::battleChatLog(const std::string &line, ChatMsgType::Type own,
 void ChatWindow::localPetSay(const std::string &nick, const std::string &text)
 {
     Being *const being = actorManager->findBeingByName(
-        nick, ActorType::PLAYER);
+        nick, ActorType::Player);
     Being *pet = nullptr;
     if (being)
     {
@@ -1533,7 +1533,7 @@ void ChatWindow::localPetSay(const std::string &nick, const std::string &text)
 void ChatWindow::localPetEmote(const std::string &nick, const uint8_t emoteId)
 {
     Being *const being = actorManager->findBeingByName(
-        nick, ActorType::PLAYER);
+        nick, ActorType::Player);
     if (being)
     {
         Being *const pet = being->getFirstPet();
@@ -1595,7 +1595,7 @@ void ChatWindow::updateOnline(const std::set<std::string> &onlinePlayers) const
             if (actorManager)
             {
                 const Being *const being = actorManager->findBeingByName(
-                    nick, ActorType::PLAYER);
+                    nick, ActorType::Player);
                 if (being)
                 {
                     tab->setWhisperTabColors();

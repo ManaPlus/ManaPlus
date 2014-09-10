@@ -96,7 +96,7 @@ class ActorManager final: public ConfigListener
          * Returns a being at specific coordinates.
          */
         Being *findBeing(const int x, const int y, const ActorType::Type
-                         type = ActorType::UNKNOWN) const A_WARN_UNUSED;
+                         type = ActorType::Unknown) const A_WARN_UNUSED;
 
         /**
          * Returns a being at the specific pixel.
@@ -161,7 +161,7 @@ class ActorManager final: public ConfigListener
          */
         Being *findBeingByName(const std::string &name,
                                const ActorType::Type
-                               type = ActorType::UNKNOWN)
+                               type = ActorType::Unknown)
                                const A_WARN_UNUSED;
 
        /**
@@ -169,7 +169,7 @@ class ActorManager final: public ConfigListener
         */
         Being *findNearestByName(const std::string &name,
                                  const ActorType::Type &type
-                                 = ActorType::UNKNOWN) const A_WARN_UNUSED;
+                                 = ActorType::Unknown) const A_WARN_UNUSED;
 
        /**
         * Heal all players in distance.

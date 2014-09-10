@@ -295,7 +295,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg) const
 
     std::string chatMsg = msg.readRawString(chatMsgLength, "message");
 
-    if (being->getType() == ActorType::PLAYER)
+    if (being->getType() == ActorType::Player)
         being->setTalkTime();
 
     const size_t pos = chatMsg.find(" : ", 0);
@@ -310,7 +310,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg) const
             sender_name = "?";
     }
     else if (sender_name != being->getName()
-             && being->getType() == ActorType::PLAYER)
+             && being->getType() == ActorType::Player)
     {
         if (!being->getName().empty())
             sender_name = being->getName();

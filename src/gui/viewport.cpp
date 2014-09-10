@@ -254,7 +254,7 @@ void Viewport::draw(Graphics *graphics)
     const ActorSprites &actors = actorManager->getAll();
     FOR_EACH (ActorSpritesIterator, it, actors)
     {
-        if ((*it)->getType() == ActorType::FLOOR_ITEM)
+        if ((*it)->getType() == ActorType::FloorItem)
             continue;
         Being *const b = static_cast<Being*>(*it);
         b->drawSpeech(mPixelViewX, mPixelViewY);
@@ -428,7 +428,7 @@ bool Viewport::leftMouseAction()
         else
         {
             const ActorType::Type type = mHoverBeing->getType();
-            if (type == ActorType::PLAYER)
+            if (type == ActorType::Player)
             {
                 validateSpeed();
                 if (actorManager)
@@ -440,7 +440,7 @@ bool Viewport::leftMouseAction()
                     return true;
                 }
             }
-            else if (type == ActorType::MONSTER || type == ActorType::NPC)
+            else if (type == ActorType::Monster || type == ActorType::Npc)
             {
                 if (localPlayer->withinAttackRange(mHoverBeing) ||
                     inputManager.isActionActive(static_cast<int>(
@@ -542,7 +542,7 @@ void Viewport::mousePressed(MouseEvent &event)
         if (actorManager)
         {
             Being *const target = actorManager->findNearestLivingBeing(
-                pixelX, pixelY, 20, ActorType::MONSTER, nullptr);
+                pixelX, pixelY, 20, ActorType::Monster, nullptr);
 
             if (target)
                 localPlayer->setTarget(target);
@@ -755,14 +755,14 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
     const int x = mMouseX + mPixelViewX;
     const int y = mMouseY + mPixelViewY;
 
-    ActorType::Type type = ActorType::UNKNOWN;
+    ActorType::Type type = ActorType::Unknown;
     mHoverBeing = actorManager->findBeingByPixel(x, y, true);
     if (mHoverBeing)
         type = mHoverBeing->getType();
     if (mHoverBeing
-        && (type == ActorType::PLAYER
-        || type == ActorType::NPC
-        || type == ActorType::LOCAL_PET))
+        && (type == ActorType::Player
+        || type == ActorType::Npc
+        || type == ActorType::LocalPet))
     {
         popupManager->hideTextPopup();
         if (mShowBeingPopup && beingPopup)
@@ -815,23 +815,23 @@ void Viewport::mouseMoved(MouseEvent &event A_UNUSED)
     {
         switch (type)
         {
-            case ActorType::NPC:
+            case ActorType::Npc:
                 gui->setCursorType(mHoverBeing->getHoverCursor());
                 break;
 
-            case ActorType::MONSTER:
+            case ActorType::Monster:
                 gui->setCursorType(mHoverBeing->getHoverCursor());
                 break;
 
-            case ActorType::PORTAL:
+            case ActorType::Portal:
                 gui->setCursorType(mHoverBeing->getHoverCursor());
                 break;
 
-            case ActorType::AVATAR:
-            case ActorType::FLOOR_ITEM:
-            case ActorType::UNKNOWN:
-            case ActorType::PLAYER:
-            case ActorType::LOCAL_PET:
+            case ActorType::Avatar:
+            case ActorType::FloorItem:
+            case ActorType::Unknown:
+            case ActorType::Player:
+            case ActorType::LocalPet:
             default:
                 gui->setCursorType(Cursor::CURSOR_POINTER);
                 break;

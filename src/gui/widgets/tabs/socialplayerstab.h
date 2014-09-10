@@ -87,7 +87,7 @@ class SocialPlayersTab final : public SocialTab
                 }
             }
             const Being *const being = actorManager->findBeingByName(
-                name, ActorType::PLAYER);
+                name, ActorType::Player);
             if (being)
             {
                 avatar->setDamageHp(being->getDamageTaken());
@@ -108,7 +108,7 @@ class SocialPlayersTab final : public SocialTab
                 return;
             avatar->setDamageHp(0);
             Being *const being = actorManager->findBeingByName(
-                name, ActorType::PLAYER);
+                name, ActorType::Player);
 
             if (being)
                 being->setDamageTaken(0);

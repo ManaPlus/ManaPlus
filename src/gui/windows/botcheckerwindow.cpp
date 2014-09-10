@@ -193,7 +193,7 @@ void BotCheckerWindow::reset()
         {
             Being *const being = dynamic_cast<Being*>(*i);
 
-            if (being && being->getType() == ActorType::PLAYER
+            if (being && being->getType() == ActorType::Player
                 && being != localPlayer && being->getName() != "")
             {
                 being->resetCounters();

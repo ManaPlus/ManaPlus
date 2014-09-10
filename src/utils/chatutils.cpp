@@ -100,10 +100,10 @@ void replaceVars(std::string &str)
     if (str.find("<PLAYER>") != std::string::npos)
     {
         const Being *target = localPlayer->getTarget();
-        if (!target || target->getType() != ActorType::PLAYER)
+        if (!target || target->getType() != ActorType::Player)
         {
             target = actorManager->findNearestLivingBeing(
-                localPlayer, 20, ActorType::PLAYER, true);
+                localPlayer, 20, ActorType::Player, true);
         }
         if (target)
             replaceAll(str, "<PLAYER>", target->getName());
@@ -113,10 +113,10 @@ void replaceVars(std::string &str)
     if (str.find("<MONSTER>") != std::string::npos)
     {
         const Being *target = localPlayer->getTarget();
-        if (!target || target->getType() != ActorType::MONSTER)
+        if (!target || target->getType() != ActorType::Monster)
         {
             target = actorManager->findNearestLivingBeing(
-                localPlayer, 20, ActorType::MONSTER, true);
+                localPlayer, 20, ActorType::Monster, true);
         }
         if (target)
             replaceAll(str, "<MONSTER>", target->getName());

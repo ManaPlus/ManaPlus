@@ -313,7 +313,7 @@ impHandler(heal)
         if (!event.args.empty())
         {
             const Being *const being = actorManager->findBeingByName(
-                event.args, ActorType::PLAYER);
+                event.args, ActorType::Player);
             if (being)
                 actorManager->heal(being);
         }
@@ -322,10 +322,10 @@ impHandler(heal)
             Being *target = localPlayer->getTarget();
             if (inputManager.isActionActive(InputAction::STOP_ATTACK))
             {
-                if (!target || target->getType() != ActorType::PLAYER)
+                if (!target || target->getType() != ActorType::Player)
                 {
                     target = actorManager->findNearestLivingBeing(
-                        localPlayer, 10, ActorType::PLAYER, true);
+                        localPlayer, 10, ActorType::Player, true);
                 }
             }
             else
@@ -434,7 +434,7 @@ impHandler0(talk)
         if (!target && actorManager)
         {
             target = actorManager->findNearestLivingBeing(
-                localPlayer, 1, ActorType::NPC, true);
+                localPlayer, 1, ActorType::Npc, true);
             // ignore closest target if distance in each direction more than 1
             if (target)
             {
@@ -449,7 +449,7 @@ impHandler0(talk)
         {
             if (target->canTalk())
                 target->talkTo();
-            else if (target->getType() == ActorType::PLAYER)
+            else if (target->getType() == ActorType::Player)
                 new BuySellDialog(target->getName());
         }
         return true;
@@ -510,7 +510,7 @@ impHandler0(targetAttack)
         {
             // Only auto target Monsters
             target = actorManager->findNearestLivingBeing(
-                localPlayer, 90, ActorType::MONSTER, true);
+                localPlayer, 90, ActorType::Monster, true);
         }
         else
         {
@@ -529,7 +529,7 @@ impHandler0(attackHuman)
         return false;
 
     Being *const target = actorManager->findNearestLivingBeing(
-        localPlayer, 10, ActorType::PLAYER, true);
+        localPlayer, 10, ActorType::Player, true);
     if (target)
     {
         if (localPlayer->checAttackPermissions(target))
@@ -597,7 +597,7 @@ impHandler0(showWindows)
 impHandler0(openTrade)
 {
     const Being *const being = localPlayer->getTarget();
-    if (being && being->getType() == ActorType::PLAYER)
+    if (being && being->getType() == ActorType::Player)
     {
         Net::getTradeHandler()->request(being);
         tradePartnerName = being->getName();
@@ -683,7 +683,7 @@ impHandler(trade)
         return false;
 
     const Being *being = actorManager->findBeingByName(
-        event.args, ActorType::PLAYER);
+        event.args, ActorType::Player);
     if (!being)
         being = localPlayer->getTarget();
     if (being)

@@ -48,22 +48,22 @@ static bool setTarget(const ActorType::Type type, const bool allowSort)
 
 impHandler0(targetPlayer)
 {
-    return setTarget(ActorType::PLAYER, true);
+    return setTarget(ActorType::Player, true);
 }
 
 impHandler0(targetMonster)
 {
-    return setTarget(ActorType::MONSTER, true);
+    return setTarget(ActorType::Monster, true);
 }
 
 impHandler0(targetClosestMonster)
 {
-    return setTarget(ActorType::MONSTER, false);
+    return setTarget(ActorType::Monster, false);
 }
 
 impHandler0(targetNPC)
 {
-    return setTarget(ActorType::NPC, true);
+    return setTarget(ActorType::Npc, true);
 }
 
 }  // namespace Actions

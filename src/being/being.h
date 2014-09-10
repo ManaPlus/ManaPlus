@@ -634,7 +634,7 @@ class Being notfinal : public ActorSprite,
         void setGM(const bool gm);
 
         bool canTalk() const A_WARN_UNUSED
-        { return mType == ActorType::NPC; }
+        { return mType == ActorType::Npc; }
 
         void talkTo() const;
 

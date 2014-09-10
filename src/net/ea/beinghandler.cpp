@@ -59,15 +59,15 @@ Being *BeingHandler::createBeing(const int id, const int16_t job) const
     if (!actorManager)
         return nullptr;
 
-    ActorType::Type type = ActorType::UNKNOWN;
+    ActorType::Type type = ActorType::Unknown;
     if (job <= 25 || (job >= 4001 && job <= 4049))
-        type = ActorType::PLAYER;
+        type = ActorType::Player;
     else if (job >= 46 && job <= 1000)
-        type = ActorType::NPC;
+        type = ActorType::Npc;
     else if (job > 1000 && job <= 2000)
-        type = ActorType::MONSTER;
+        type = ActorType::Monster;
     else if (job == 45)
-        type = ActorType::PORTAL;
+        type = ActorType::Portal;
 
     Being *const being = actorManager->createBeing(id, type, job);
     return being;
@@ -123,7 +123,7 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg) const
     }
     else
     {
-        if (dstBeing->getType() == ActorType::PLAYER)
+        if (dstBeing->getType() == ActorType::Player)
         {
             if (botCheckerWindow)
                 botCheckerWindow->updateList();
@@ -222,11 +222,11 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
         case Being::FLEE:  // Lucky Dodge
             if (srcBeing)
             {
-                if (srcSpeed && srcBeing->getType() == ActorType::PLAYER)
+                if (srcSpeed && srcBeing->getType() == ActorType::Player)
                     srcBeing->setAttackDelay(srcSpeed);
                 // attackid=1, type
                 srcBeing->handleAttack(dstBeing, param1, 1);
-                if (srcBeing->getType() == ActorType::PLAYER)
+                if (srcBeing->getType() == ActorType::Player)
                     srcBeing->setAttackTime();
             }
             if (dstBeing)
@@ -246,7 +246,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
             if (srcBeing)
             {
                 srcBeing->setAction(BeingAction::SIT, 0);
-                if (srcBeing->getType() == ActorType::PLAYER)
+                if (srcBeing->getType() == ActorType::Player)
                 {
                     srcBeing->setMoveTime();
                     if (localPlayer)
@@ -259,7 +259,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg) const
             if (srcBeing)
             {
                 srcBeing->setAction(BeingAction::STAND, 0);
-                if (srcBeing->getType() == ActorType::PLAYER)
+                if (srcBeing->getType() == ActorType::Player)
                 {
                     srcBeing->setMoveTime();
                     if (localPlayer)
@@ -305,7 +305,7 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg) const
         effectManager->trigger(effectType, being);
 
     // +++ need dehard code effectType == 3
-    if (effectType == 3 && being->getType() == ActorType::PLAYER
+    if (effectType == 3 && being->getType() == ActorType::Player
         && socialWindow)
     {   // reset received damage
         socialWindow->resetDamage(being->getName());
@@ -338,7 +338,7 @@ void BeingHandler::processBeingEmotion(Net::MessageIn &msg) const
             localPlayer->imitateEmote(dstBeing, emote);
         }
     }
-    if (dstBeing->getType() == ActorType::PLAYER)
+    if (dstBeing->getType() == ActorType::Player)
         dstBeing->setOtherTime();
     BLOCK_END("BeingHandler::processBeingEmotion")
 }
@@ -367,7 +367,7 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg) const
             dstBeing->updateGuild();
             dstBeing->addToCache();
 
-            if (dstBeing->getType() == ActorType::PLAYER)
+            if (dstBeing->getType() == ActorType::Player)
                 dstBeing->updateColors();
 
             if (localPlayer)

@@ -319,7 +319,7 @@ void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
                                                   const int id,
                                                   const int id2) const
 {
-    if (dstBeing->getType() == ActorType::PLAYER)
+    if (dstBeing->getType() == ActorType::Player)
         dstBeing->setOtherTime();
 
     const std::string color;
@@ -444,7 +444,7 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
             dstBeing->updateGuild();
             dstBeing->addToCache();
 
-            if (dstBeing->getType() == ActorType::PLAYER)
+            if (dstBeing->getType() == ActorType::Player)
                 dstBeing->updateColors();
 
             if (localPlayer)
@@ -929,7 +929,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
 
     msg.readUInt8("unused");
 
-    if (dstBeing->getType() != ActorType::PLAYER)
+    if (dstBeing->getType() != ActorType::Player)
         dstBeing->setActionTime(tick_time);
 
     dstBeing->setStunMode(stunMode);
@@ -938,7 +938,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffff));
 
-    if (dstBeing->getType() == ActorType::PLAYER)
+    if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
     BLOCK_END("BeingHandler::processPlayerMoveUpdate")
 }
@@ -1020,7 +1020,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
 
     Being *dstBeing = actorManager->findBeing(id);
 
-    if (dstBeing && dstBeing->getType() == ActorType::MONSTER
+    if (dstBeing && dstBeing->getType() == ActorType::Monster
         && !dstBeing->isAlive())
     {
         actorManager->destroy(dstBeing);
@@ -1057,7 +1057,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     }
     else
     {
-        if (dstBeing->getType() == ActorType::NPC)
+        if (dstBeing->getType() == ActorType::Npc)
         {
             actorManager->undelete(dstBeing);
             if (serverVersion < 1)
@@ -1065,7 +1065,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         }
     }
 
-    if (dstBeing->getType() == ActorType::PLAYER)
+    if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
 
     if (spawnId)
@@ -1086,7 +1086,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     const uint8_t hairStyle = msg.readUInt8("hair style");
     const uint8_t look = msg.readUInt8("look");
     dstBeing->setSubtype(job, look);
-    if (dstBeing->getType() == ActorType::MONSTER && localPlayer)
+    if (dstBeing->getType() == ActorType::Monster && localPlayer)
         localPlayer->checkNewName(dstBeing);
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
     const uint16_t weapon = msg.readInt16("weapon");
@@ -1100,7 +1100,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     const uint16_t shoes = msg.readInt16("shoes / clothes color");
 
     uint16_t gloves;
-    if (dstBeing->getType() == ActorType::MONSTER)
+    if (dstBeing->getType() == ActorType::Monster)
     {
         if (serverVersion > 0 || tmwServerVersion >= 0x0E0701)
         {
@@ -1130,7 +1130,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
 
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
-    if (serverVersion > 0 && dstBeing->getType() == ActorType::MONSTER)
+    if (serverVersion > 0 && dstBeing->getType() == ActorType::Monster)
     {
         const int attackRange = static_cast<int>(
             msg.readUInt8("attack range (was karma)"));
@@ -1142,7 +1142,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     }
     uint8_t gender = msg.readUInt8("gender");
 
-    if (!disguiseId && dstBeing->getType() == ActorType::PLAYER)
+    if (!disguiseId && dstBeing->getType() == ActorType::Player)
     {
         // reserving bits for future usage
         gender &= 3;
@@ -1160,7 +1160,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         if (!mHideShield)
             setSprite(dstBeing, SPRITE_SHIELD, shield);
     }
-    else if (dstBeing->getType() == ActorType::NPC)
+    else if (dstBeing->getType() == ActorType::Npc)
     {
         setServerGender(dstBeing, gender);
     }
@@ -1229,7 +1229,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
 
     Being *dstBeing = actorManager->findBeing(id);
 
-    if (dstBeing && dstBeing->getType() == ActorType::MONSTER
+    if (dstBeing && dstBeing->getType() == ActorType::Monster
         && !dstBeing->isAlive())
     {
         actorManager->destroy(dstBeing);
@@ -1266,7 +1266,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     }
     else
     {
-        if (dstBeing->getType() == ActorType::NPC)
+        if (dstBeing->getType() == ActorType::Npc)
         {
             actorManager->undelete(dstBeing);
             if (serverVersion < 1)
@@ -1274,7 +1274,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         }
     }
 
-    if (dstBeing->getType() == ActorType::PLAYER)
+    if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
 
     if (spawnId)
@@ -1287,7 +1287,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     const uint8_t hairStyle = msg.readUInt8("hair style");
     const uint8_t look = msg.readUInt8("look");
     dstBeing->setSubtype(job, look);
-    if (dstBeing->getType() == ActorType::MONSTER && localPlayer)
+    if (dstBeing->getType() == ActorType::Monster && localPlayer)
         localPlayer->checkNewName(dstBeing);
     dstBeing->setWalkSpeed(Vector(speed, speed, 0));
     const uint16_t weapon = msg.readInt16("weapon");
@@ -1303,7 +1303,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     const uint16_t shoes = msg.readInt16("shoes / clothes color");
 
     uint16_t gloves;
-    if (dstBeing->getType() == ActorType::MONSTER)
+    if (dstBeing->getType() == ActorType::Monster)
     {
         if (serverVersion > 0 || tmwServerVersion >= 0x0E0701)
         {
@@ -1333,7 +1333,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
 
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
-    if (serverVersion > 0 && dstBeing->getType() == ActorType::MONSTER)
+    if (serverVersion > 0 && dstBeing->getType() == ActorType::Monster)
     {
         const int attackRange = static_cast<int>(
             msg.readUInt8("attack range (was karma)"));
@@ -1345,7 +1345,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     }
     uint8_t gender = msg.readUInt8("gender");
 
-    if (!disguiseId && dstBeing->getType() == ActorType::PLAYER)
+    if (!disguiseId && dstBeing->getType() == ActorType::Player)
     {
         // reserving bits for future usage
         gender &= 3;
@@ -1363,7 +1363,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         if (!mHideShield)
             setSprite(dstBeing, SPRITE_SHIELD, shield);
     }
-    else if (dstBeing->getType() == ActorType::NPC)
+    else if (dstBeing->getType() == ActorType::Npc)
     {
         setServerGender(dstBeing, gender);
     }
@@ -1472,7 +1472,7 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg) const
     dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(srcX, srcY);
     dstBeing->setDestination(dstX, dstY);
-    if (dstBeing->getType() == ActorType::PLAYER)
+    if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
     BLOCK_END("BeingHandler::processBeingMove2")
 }

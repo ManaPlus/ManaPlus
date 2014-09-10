@@ -26,14 +26,14 @@ namespace ActorType
 {
     enum Type
     {
-        UNKNOWN = 0,
-        PLAYER,
-        NPC,
-        MONSTER,
-        FLOOR_ITEM,
-        PORTAL,
-        LOCAL_PET,
-        AVATAR
+        Unknown = 0,
+        Player,
+        Npc,
+        Monster,
+        FloorItem,
+        Portal,
+        LocalPet,
+        Avatar
     };
 }  // namespace ActorType
 

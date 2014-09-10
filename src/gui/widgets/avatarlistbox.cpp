@@ -373,7 +373,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
         if (type == MapItemType::EMPTY)
         {
             const Being *const being = actorManager->findBeingByName(
-                ava->getName(), ActorType::PLAYER);
+                ava->getName(), ActorType::Player);
             if (being)
                 actorManager->heal(being);
         }
@@ -392,7 +392,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 if (avatar)
                 {
                     const Being *const being = actorManager->findBeingByName(
-                        avatar->getName(), ActorType::PLAYER);
+                        avatar->getName(), ActorType::Player);
                     if (being)
                     {
                         popupMenu->showPopup(viewport->mMouseX,

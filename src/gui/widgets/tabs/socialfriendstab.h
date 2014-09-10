@@ -103,7 +103,7 @@ class SocialFriendsTab final : public SocialTab
             FOR_EACHP (StringVectCIter, it, players)
             {
                 Avatar *const ava = new Avatar(*it);
-                if (actorManager->findBeingByName(*it, ActorType::PLAYER)
+                if (actorManager->findBeingByName(*it, ActorType::Player)
                     || players2.find(*it) != players2.end())
                 {
                     ava->setOnline(true);

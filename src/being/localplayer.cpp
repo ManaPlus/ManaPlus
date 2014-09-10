@@ -110,7 +110,7 @@ extern MiniStatusWindow *miniStatusWindow;
 extern SkillDialog *skillDialog;
 
 LocalPlayer::LocalPlayer(const int id, const uint16_t subtype) :
-    Being(id, ActorType::PLAYER, subtype, nullptr),
+    Being(id, ActorType::Player, subtype, nullptr),
     AttributeListener(),
     StatListener(),
     mGMLevel(0),
@@ -289,7 +289,7 @@ void LocalPlayer::logic()
 
     if (mTarget)
     {
-        if (mTarget->getType() == ActorType::NPC)
+        if (mTarget->getType() == ActorType::Npc)
         {
             // NPCs are always in range
             mTarget->setTargetType(TargetCursorType::IN_RANGE);
@@ -308,7 +308,7 @@ void LocalPlayer::logic()
             mTarget->setTargetType(targetType);
 
             if (!mTarget->isAlive() && (!mTargetDeadPlayers
-                || mTarget->getType() != ActorType::PLAYER))
+                || mTarget->getType() != ActorType::Player))
             {
                 stopAttack(true);
             }
@@ -527,7 +527,7 @@ void LocalPlayer::setTarget(Being *const target)
         oldTarget = mTarget;
     }
 
-    if (mTarget && mTarget->getType() == ActorType::MONSTER)
+    if (mTarget && mTarget->getType() == ActorType::Monster)
         mTarget->setShowName(false);
 
     mTarget = target;
@@ -542,7 +542,7 @@ void LocalPlayer::setTarget(Being *const target)
         mTarget->updateName();
     }
 
-    if (target && target->getType() == ActorType::MONSTER)
+    if (target && target->getType() == ActorType::Monster)
         target->setShowName(true);
 }
 
@@ -725,7 +725,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
 {
     mKeepAttacking = keep;
 
-    if (!target || target->getType() == ActorType::NPC)
+    if (!target || target->getType() == ActorType::Npc)
         return;
 
     if (mTarget != target)
@@ -755,7 +755,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
 
     mActionTime = tick_time;
 
-    if (target->getType() != ActorType::PLAYER
+    if (target->getType() != ActorType::Player
         || checAttackPermissions(target))
     {
         setAction(BeingAction::ATTACK);
@@ -2771,7 +2771,7 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
                 return;
         }
         setTarget(target);
-        if (target->getType() != ActorType::NPC)
+        if (target->getType() != ActorType::Npc)
         {
             mKeepAttacking = true;
             moveToTarget();
@@ -2984,7 +2984,7 @@ void LocalPlayer::followMoveTo(const Being *const being,
                     if (actorManager)
                     {
                         Being *const b = actorManager->findBeingByName(
-                            mPlayerFollowed, ActorType::PLAYER);
+                            mPlayerFollowed, ActorType::Player);
                         setTarget(b);
                     }
                 }
@@ -3144,7 +3144,7 @@ void LocalPlayer::checkNewName(Being *const being)
         return;
 
     const std::string &nick = being->getName();
-    if (being->getType() == ActorType::PLAYER)
+    if (being->getType() == ActorType::Player)
     {
         const Guild *const guild = getGuild();
         if (guild)

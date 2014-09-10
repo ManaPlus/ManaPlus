@@ -218,16 +218,16 @@ Being::Being(const int id,
     setMap(map);
     setSubtype(subtype, 0);
 
-    if (mType == ActorType::PLAYER)
+    if (mType == ActorType::Player)
         mShowName = config.getBoolValue("visiblenames");
-    else if (mType != ActorType::NPC)
+    else if (mType != ActorType::Npc)
         mGotComment = true;
 
     config.addListener("visiblenames", this);
 
     reReadConfig();
 
-    if (mType == ActorType::NPC)
+    if (mType == ActorType::Npc)
         setShowName(true);
     else
         setShowName(mShowName);
@@ -288,7 +288,7 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
     mSubType = subtype;
     mLook = look;
 
-    if (mType == ActorType::MONSTER)
+    if (mType == ActorType::Monster)
     {
         mInfo = MonsterDB::get(mSubType);
         if (mInfo)
@@ -299,7 +299,7 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
             mYDiff = mInfo->getSortOffsetY();
         }
     }
-    else if (mType == ActorType::NPC)
+    else if (mType == ActorType::Npc)
     {
         mInfo = NPCDB::get(mSubType);
         if (mInfo)
@@ -308,13 +308,13 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
             mYDiff = mInfo->getSortOffsetY();
         }
     }
-    else if (mType == ActorType::AVATAR)
+    else if (mType == ActorType::Avatar)
     {
         mInfo = AvatarDB::get(mSubType);
         if (mInfo)
             setupSpriteDisplay(mInfo->getDisplay(), false);
     }
-    else if (mType == ActorType::LOCAL_PET)
+    else if (mType == ActorType::LocalPet)
     {
         mInfo = PETDB::get(mId);
         if (mInfo)
@@ -334,7 +334,7 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
             }
         }
     }
-    else if (mType == ActorType::PLAYER)
+    else if (mType == ActorType::Player)
     {
         int id = -100 - subtype;
 
@@ -545,7 +545,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
             color = &userPalette->getColor(UserPalette::MISS);
         }
     }
-    else if (mType == ActorType::MONSTER)
+    else if (mType == ActorType::Monster)
     {
         if (attacker == localPlayer)
         {
@@ -558,7 +558,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
                 UserPalette::HIT_PLAYER_MONSTER);
         }
     }
-    else if (mType == ActorType::PLAYER && attacker != localPlayer
+    else if (mType == ActorType::Player && attacker != localPlayer
              && this == localPlayer)
     {
         // here player was attacked by other player. mark him as enemy.
@@ -575,7 +575,7 @@ void Being::takeDamage(Being *const attacker, const int amount,
     {
         if (this == localPlayer)
         {
-            if (attacker->mType == ActorType::PLAYER || amount)
+            if (attacker->mType == ActorType::Player || amount)
             {
                 chatWindow->battleChatLog(strprintf("%s : Hit you  -%d",
                     attacker->getName().c_str(), amount),
@@ -626,12 +626,12 @@ void Being::takeDamage(Being *const attacker, const int amount,
                 mHP = 0;
         }
 
-        if (mType == ActorType::MONSTER)
+        if (mType == ActorType::Monster)
         {
             updatePercentHP();
             updateName();
         }
-        else if (mType == ActorType::PLAYER && socialWindow && getName() != "")
+        else if (mType == ActorType::Player && socialWindow && getName() != "")
         {
             socialWindow->updateAvatar(getName());
         }
@@ -670,7 +670,7 @@ int Being::getHitEffect(const Being *const attacker,
         {
             const ItemInfo *const attackerWeapon
                 = attacker->getEquippedWeapon();
-            if (attackerWeapon && attacker->getType() == ActorType::PLAYER)
+            if (attackerWeapon && attacker->getType() == ActorType::Player)
             {
                 if (type == MISS)
                     hitEffectId = attackerWeapon->getMissEffectId();
@@ -679,7 +679,7 @@ int Being::getHitEffect(const Being *const attacker,
                 else
                     hitEffectId = attackerWeapon->getCriticalHitEffectId();
             }
-            else if (attacker->getType() == ActorType::MONSTER)
+            else if (attacker->getType() == ActorType::Monster)
             {
                 const BeingInfo *const info = attacker->getInfo();
                 if (info)
@@ -740,7 +740,7 @@ void Being::handleAttack(Being *const victim, const int damage,
     mLastAttackX = victim->getTileX();
     mLastAttackY = victim->getTileY();
 
-    if (mType == ActorType::PLAYER && mEquippedWeapon)
+    if (mType == ActorType::Player && mEquippedWeapon)
         fireMissile(victim, mEquippedWeapon->getMissileParticleFile());
     else if (mInfo->getAttack(attackId))
         fireMissile(victim, mInfo->getAttack(attackId)->mMissileParticle);
@@ -755,13 +755,13 @@ void Being::handleAttack(Being *const victim, const int damage,
         if (dir)
             setDirection(dir);
     }
-    if (damage && victim->mType == ActorType::PLAYER
+    if (damage && victim->mType == ActorType::Player
         && victim->mAction == BeingAction::SIT)
     {
         victim->setAction(BeingAction::STAND, 0);
     }
 
-    if (mType == ActorType::PLAYER)
+    if (mType == ActorType::Player)
     {
         if (mSpriteIDs.size() >= 10)
         {
@@ -809,7 +809,7 @@ void Being::handleSkill(Being *const victim, const int damage,
         if (dir)
             setDirection(dir);
     }
-    if (damage && victim->mType == ActorType::PLAYER
+    if (damage && victim->mType == ActorType::Player
         && victim->mAction == BeingAction::SIT)
     {
         victim->setAction(BeingAction::STAND, 0);
@@ -830,7 +830,7 @@ void Being::handleSkill(Being *const victim, const int damage,
 
 void Being::setName(const std::string &name)
 {
-    if (mType == ActorType::NPC)
+    if (mType == ActorType::Npc)
     {
         mName = name.substr(0, name.find('#', 0));
         showName();
@@ -839,7 +839,7 @@ void Being::setName(const std::string &name)
     {
         mName = name;
 
-        if (mType == ActorType::PLAYER && getShowName())
+        if (mType == ActorType::Player && getShowName())
             showName();
     }
 }
@@ -1202,7 +1202,7 @@ void Being::setAction(const BeingAction::Action &action, const int attackId)
                     this,
                     false,
                     mX, mY);
-                if (mType == ActorType::MONSTER || mType == ActorType::NPC)
+                if (mType == ActorType::Monster || mType == ActorType::Npc)
                     mYDiff = mInfo->getDeadSortOffsetY();
             }
             break;
@@ -1343,7 +1343,7 @@ void Being::nextTile()
     }
 
     mActionTime += static_cast<int>(mSpeed / 10);
-    if ((mType != ActorType::PLAYER || mUseDiagonal)
+    if ((mType != ActorType::Player || mUseDiagonal)
         && mX != pos.x && mY != pos.y)
     {
         mSpeed = static_cast<float>(mWalkSpeed.x * 1.4F);
@@ -1472,7 +1472,7 @@ void Being::logic()
         && static_cast<int> ((static_cast<float>(get_elapsed_time(mActionTime))
         / mSpeed)) >= frameCount)
     {
-        if (mType != ActorType::PLAYER && actorManager)
+        if (mType != ActorType::Player && actorManager)
             actorManager->destroy(this);
     }
 
@@ -1779,7 +1779,7 @@ void Being::updateCoords()
         offsetY += mInfo->getNameOffsetY();
     }
     // Monster names show above the sprite instead of below it
-    if (mType == ActorType::MONSTER)
+    if (mType == ActorType::Monster)
         offsetY += - getHeight() - mDispName->getHeight();
 
     mDispName->adviseXY(offsetX, offsetY, mMoveNames);
@@ -1787,7 +1787,7 @@ void Being::updateCoords()
 
 void Being::optionChanged(const std::string &value)
 {
-    if (mType == ActorType::PLAYER && value == "visiblenames")
+    if (mType == ActorType::Player && value == "visiblenames")
         setShowName(config.getBoolValue("visiblenames"));
 }
 
@@ -1849,7 +1849,7 @@ void Being::showName()
 
     std::string displayName(mName);
 
-    if (mType != ActorType::MONSTER && (mShowGender || mShowLevel))
+    if (mType != ActorType::Monster && (mShowGender || mShowLevel))
     {
         displayName.append(" ");
         if (mShowLevel && getLevel() != 0)
@@ -1858,7 +1858,7 @@ void Being::showName()
         displayName.append(getGenderSign());
     }
 
-    if (mType == ActorType::MONSTER)
+    if (mType == ActorType::Monster)
     {
         if (config.getBoolValue("showMonstersTakedDamage"))
             displayName.append(", ").append(toString(getDamageTaken()));
@@ -1866,11 +1866,11 @@ void Being::showName()
 
     Font *font = nullptr;
     if (localPlayer && localPlayer->getTarget() == this
-        && mType != ActorType::MONSTER)
+        && mType != ActorType::Monster)
     {
         font = boldFont;
     }
-    else if (mType == ActorType::PLAYER
+    else if (mType == ActorType::Player
              && !player_relations.isGoodName(this) && gui)
     {
         font = gui->getSecureFont();
@@ -1896,12 +1896,12 @@ void Being::updateColors()
 {
     if (userPalette)
     {
-        if (mType == ActorType::MONSTER)
+        if (mType == ActorType::Monster)
         {
             mNameColor = &userPalette->getColor(UserPalette::MONSTER);
             mTextColor = &userPalette->getColor(UserPalette::MONSTER);
         }
-        else if (mType == ActorType::NPC)
+        else if (mType == ActorType::Npc)
         {
             mNameColor = &userPalette->getColor(UserPalette::NPC);
             mTextColor = &userPalette->getColor(UserPalette::NPC);
@@ -2024,7 +2024,7 @@ void Being::setSprite(const unsigned int slot, const int id,
         if (id1)
         {
             const ItemInfo &info = ItemDB::get(id1);
-            if (!isTempSprite && mMap && mType == ActorType::PLAYER)
+            if (!isTempSprite && mMap && mType == ActorType::Player)
             {
                 const int pet = info.getPet();
                 if (pet)
@@ -2039,7 +2039,7 @@ void Being::setSprite(const unsigned int slot, const int id,
         const std::string &filename = info.getSprite(mGender, mSubType);
         AnimatedSprite *equipmentSprite = nullptr;
 
-        if (!isTempSprite && mType == ActorType::PLAYER)
+        if (!isTempSprite && mType == ActorType::Player)
         {
             const int pet = info.getPet();
             if (pet)
@@ -2211,7 +2211,7 @@ bool Being::updateFromCache()
         }
 
         updateAwayEffect();
-        if (mType == ActorType::PLAYER)
+        if (mType == ActorType::Player)
             updateColors();
         return true;
     }
@@ -2393,7 +2393,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
         }
     }
 
-    if (mHighlightMonsterAttackRange && mType == ActorType::MONSTER
+    if (mHighlightMonsterAttackRange && mType == ActorType::Monster
         && isAlive())
     {
         int attackRange;
@@ -2411,7 +2411,7 @@ void Being::drawSpriteAt(Graphics *const graphics,
     }
 
     if (mShowMobHP && mInfo && localPlayer && localPlayer->getTarget() == this
-        && mType == ActorType::MONSTER)
+        && mType == ActorType::Monster)
     {
         // show hp bar here
         int maxHP = mMaxHP;
@@ -2516,7 +2516,7 @@ void Being::setHP(const int hp)
     mHP = hp;
     if (mMaxHP < mHP)
         mMaxHP = mHP;
-    if (mType == ActorType::MONSTER)
+    if (mType == ActorType::Monster)
         updatePercentHP();
 }
 
@@ -2905,18 +2905,18 @@ std::string Being::loadComment(const std::string &name,
     std::string str;
     switch (type)
     {
-        case ActorType::PLAYER:
+        case ActorType::Player:
             str = settings.usersDir;
             break;
-        case ActorType::NPC:
+        case ActorType::Npc:
             str = settings.npcsDir;
             break;
-        case ActorType::UNKNOWN:
-        case ActorType::MONSTER:
-        case ActorType::FLOOR_ITEM:
-        case ActorType::PORTAL:
-        case ActorType::LOCAL_PET:
-        case ActorType::AVATAR:
+        case ActorType::Unknown:
+        case ActorType::Monster:
+        case ActorType::FloorItem:
+        case ActorType::Portal:
+        case ActorType::LocalPet:
+        case ActorType::Avatar:
         default:
             return "";
     }
@@ -2938,10 +2938,10 @@ void Being::saveComment(const std::string &restrict name,
     std::string dir;
     switch (type)
     {
-        case ActorType::PLAYER:
+        case ActorType::Player:
             dir = settings.usersDir;
             break;
-        case ActorType::NPC:
+        case ActorType::Npc:
             dir = settings.npcsDir;
             break;
         default:
@@ -3134,7 +3134,7 @@ void Being::addPet(const int id)
     }
 
     Being *const being = actorManager->createBeing(
-        id, ActorType::LOCAL_PET, 0);
+        id, ActorType::LocalPet, 0);
     if (being)
     {
         being->setOwner(this);
@@ -3326,7 +3326,7 @@ void Being::playSfx(const SoundInfo &sound, Being *const being,
 
 void Being::setLook(const uint8_t look)
 {
-    if (mType == ActorType::PLAYER)
+    if (mType == ActorType::Player)
         setSubtype(mSubType, look);
 }
 

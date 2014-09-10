@@ -413,7 +413,7 @@ bool GuildManager::process(std::string msg)
         if (actorManager)
         {
             Being *const b = actorManager->findBeingByName(
-                msg, ActorType::PLAYER);
+                msg, ActorType::Player);
 
             if (b)
             {

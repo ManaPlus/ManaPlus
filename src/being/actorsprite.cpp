@@ -217,7 +217,7 @@ void ActorSprite::updateStatusEffect(const int index, const bool newStatus)
         index, newStatus);
     if (!effect)
         return;
-    if (effect->isPoison() && getType() == ActorType::PLAYER)
+    if (effect->isPoison() && getType() == ActorType::Player)
         setPoison(newStatus);
     handleStatusEffect(effect, index);
 }

@@ -154,7 +154,7 @@ void SpellManager::invoke(const int spellId) const
         {
             invokeSpell(spell);
         }
-        if ((target && (target->getType() != ActorType::MONSTER
+        if ((target && (target->getType() != ActorType::Monster
             || spell->getCommandType() == TEXT_COMMAND_TEXT))
             && (spell->getTargetType() == ALLOWTARGET
             || spell->getTargetType() == NEEDTARGET))

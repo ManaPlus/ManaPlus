@@ -279,7 +279,7 @@ void GuildHandler::processGuildMemberList(Net::MessageIn &msg) const
             if (actorManager)
             {
                 Being *const being = actorManager->findBeingByName(
-                    name, ActorType::PLAYER);
+                    name, ActorType::Player);
                 if (being)
                 {
                     being->setGuildName(taGuild->getName());
@@ -481,7 +481,7 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg) const
         if (actorManager)
         {
             Being *const b = actorManager->findBeingByName(
-                nick, ActorType::PLAYER);
+                nick, ActorType::Player);
 
             if (b)
                 b->clearGuilds();
@@ -524,7 +524,7 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg) const
         if (actorManager)
         {
             Being *const b = actorManager->findBeingByName(
-                nick, ActorType::PLAYER);
+                nick, ActorType::Player);
 
             if (b)
                 b->clearGuilds();

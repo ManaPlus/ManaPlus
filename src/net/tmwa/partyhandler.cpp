@@ -124,7 +124,7 @@ void PartyHandler::invite(const std::string &name) const
         return;
 
     const Being *const being = actorManager->findBeingByName(
-        name, ActorType::PLAYER);
+        name, ActorType::Player);
     if (being)
     {
         MessageOut outMsg(CMSG_PARTY_INVITE);
