@@ -58,7 +58,11 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void processNameResponse2(Net::MessageIn &msg);
 
-        void processPlayerMoveUpdate(Net::MessageIn &msg) const;
+        void processPlayerUpdate1(Net::MessageIn &msg) const;
+
+        void processPlayerUpdate2(Net::MessageIn &msg) const;
+
+        void processPlayerMove(Net::MessageIn &msg) const;
 
         void processMapTypeProperty(Net::MessageIn &msg) const;
 

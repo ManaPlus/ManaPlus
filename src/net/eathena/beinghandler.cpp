@@ -194,9 +194,15 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_PLAYER_UPDATE_1:
+            processPlayerUpdate1(msg);
+            break;
+
         case SMSG_PLAYER_UPDATE_2:
+            processPlayerUpdate2(msg);
+            break;
+
         case SMSG_PLAYER_MOVE:
-            processPlayerMoveUpdate(msg);
+            processPlayerMove(msg);
             break;
 
         case SMSG_PLAYER_STOP:
@@ -446,7 +452,447 @@ void BeingHandler::processNameResponse2(Net::MessageIn &msg)
     }
 }
 
-void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg) const
+void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
+{
+    if (!actorManager || !localPlayer)
+        return;
+
+    int msgType;
+    switch (msg.getId())
+    {
+        case SMSG_PLAYER_UPDATE_1:
+            msgType = 1;
+            break;
+        case SMSG_PLAYER_UPDATE_2:
+            msgType = 2;
+            break;
+        case SMSG_PLAYER_MOVE:
+            msgType = 3;
+            break;
+        default:
+            return;
+    }
+
+    // An update about a player, potentially including movement.
+    const int id = msg.readInt32("account id");
+    const int16_t speed = msg.readInt16("speed");
+    const uint16_t stunMode = msg.readInt16("opt1");
+    uint32_t statusEffects = msg.readInt16("opt2");
+    statusEffects |= (static_cast<uint16_t>(msg.readInt16("options"))) << 16U;
+    const int16_t job = msg.readInt16("class");
+    int disguiseId = 0;
+    if (id < 110000000 && job >= 1000)
+        disguiseId = job;
+
+    Being *dstBeing = actorManager->findBeing(id);
+
+    if (!dstBeing)
+    {
+        if (actorManager->isBlocked(id) == true)
+            return;
+
+        dstBeing = createBeing(id, job);
+
+        if (!dstBeing)
+            return;
+    }
+    else if (disguiseId)
+    {
+        actorManager->undelete(dstBeing);
+        if (serverVersion < 1)
+            requestNameById(id);
+    }
+
+    uint8_t dir = dstBeing->getDirectionDelayed();
+    if (dir)
+    {
+        if (dir != dstBeing->getDirection())
+            dstBeing->setDirection(dir);
+    }
+
+    if (Party *const party = localPlayer->getParty())
+    {
+        if (party->isMember(id))
+            dstBeing->setParty(party);
+    }
+
+    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setSubtype(job, 0);
+
+    const int hairStyle = msg.readInt16("hair style");
+    const uint16_t weapon = msg.readInt16("weapon");
+    const uint16_t shield = msg.readInt16("shield");
+    const uint16_t headBottom = msg.readInt16("head bottom");
+
+    if (msgType == 3)
+        msg.readInt32("tick");
+
+    const uint16_t headTop = msg.readInt16("head top");
+    const uint16_t headMid = msg.readInt16("head mid");
+    const int hairColor = msg.readInt16("hair color");
+
+    msg.readUInt8("unused?");
+    msg.readUInt8("unused?");
+    msg.readUInt8("unused?");
+    msg.readUInt8("unused?");
+
+    const int guild = msg.readInt32("guild");
+
+    if (!guildManager || !GuildManager::getEnableGuildBot())
+    {
+        if (guild == 0)
+            dstBeing->clearGuilds();
+        else
+            dstBeing->setGuild(Guild::getGuild(static_cast<int16_t>(guild)));
+    }
+
+    msg.readInt16("emblem");
+    msg.readInt16("manner");
+    dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
+    msg.readUInt8("karma");
+    // reserving bit for future usage
+    dstBeing->setGender(Being::intToGender(msg.readUInt8("gender")));
+
+    if (!disguiseId)
+    {
+        // Set these after the gender, as the sprites may be gender-specific
+        dstBeing->updateSprite(SPRITE_WEAPON, weapon, "", 1, true);
+        if (!mHideShield)
+            dstBeing->updateSprite(SPRITE_SHIELD, shield);
+        dstBeing->updateSprite(SPRITE_BOTTOMCLOTHES, headBottom);
+        dstBeing->updateSprite(SPRITE_TOPCLOTHES, headMid);
+        dstBeing->updateSprite(SPRITE_HAT, headTop);
+        dstBeing->updateSprite(SPRITE_HAIR, hairStyle * -1,
+            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+    }
+    localPlayer->imitateOutfit(dstBeing);
+
+    if (msgType == 3)
+    {
+        uint16_t srcX, srcY, dstX, dstY;
+        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
+        msg.readUInt8("(sx<<4) | (sy&0x0f)");
+
+        localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
+
+        dstBeing->setTileCoords(srcX, srcY);
+        dstBeing->setDestination(dstX, dstY);
+
+        // because server don't send direction in move packet,
+        // we fixing it
+
+        if (srcX != dstX || srcY != dstY)
+        {
+            const int d = dstBeing->calcDirection(dstX, dstY);
+
+            if (d && dstBeing->getDirection() != d)
+                dstBeing->setDirectionDelayed(static_cast<uint8_t>(d));
+        }
+
+        if (localPlayer->getCurrentAction() != BeingAction::STAND)
+            localPlayer->imitateAction(dstBeing, BeingAction::STAND);
+        if (localPlayer->getDirection() != dstBeing->getDirection())
+        {
+            localPlayer->imitateDirection(dstBeing,
+                dstBeing->getDirection());
+        }
+    }
+    else
+    {
+        uint16_t x, y;
+        msg.readCoordinates(x, y, dir, "position");
+        dstBeing->setTileCoords(x, y);
+        dstBeing->setDirection(dir);
+
+        localPlayer->imitateDirection(dstBeing, dir);
+    }
+
+    const uint16_t gmstatus = msg.readInt16("gm status");
+
+    if (gmstatus & 0x80)
+        dstBeing->setGM(true);
+
+    if (msgType == 1 || msgType == 2)
+    {
+        const uint8_t type = msg.readUInt8("action type");
+        switch (type)
+        {
+            case 0:
+                dstBeing->setAction(BeingAction::STAND, 0);
+                localPlayer->imitateAction(dstBeing, BeingAction::STAND);
+                break;
+
+            case 1:
+                if (dstBeing->getCurrentAction() != BeingAction::DEAD)
+                {
+                    dstBeing->setAction(BeingAction::DEAD, 0);
+                    dstBeing->recalcSpritesOrder();
+                }
+                break;
+
+            case 2:
+                dstBeing->setAction(BeingAction::SIT, 0);
+                localPlayer->imitateAction(dstBeing, BeingAction::SIT);
+                break;
+
+            default:
+                // need set stay state?
+                logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:"
+                    + toString(id) + " " + toString(type));
+                logger->log("dstBeing id:" + toString(dstBeing->getId()));
+                logger->log("dstBeing name:" + dstBeing->getName());
+                break;
+        }
+    }
+    else if (msgType == 3)
+    {
+        msg.readUInt8("unknown?");
+    }
+
+    const int level = static_cast<int>(msg.readUInt8("level"));
+
+    if (level)
+        dstBeing->setLevel(level);
+
+    msg.readUInt8("unknown");
+
+    if (dstBeing->getType() != ActorType::PLAYER
+        || msgType != 3)
+    {
+        dstBeing->setActionTime(tick_time);
+    }
+
+    dstBeing->setStunMode(stunMode);
+    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
+        (statusEffects >> 16) & 0xffffU));
+    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+        statusEffects & 0xffffU));
+
+    if (msgType == 3 && dstBeing->getType() == ActorType::PLAYER)
+        dstBeing->setMoveTime();
+}
+
+void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
+{
+    if (!actorManager || !localPlayer)
+        return;
+
+    int msgType;
+    switch (msg.getId())
+    {
+        case SMSG_PLAYER_UPDATE_1:
+            msgType = 1;
+            break;
+        case SMSG_PLAYER_UPDATE_2:
+            msgType = 2;
+            break;
+        case SMSG_PLAYER_MOVE:
+            msgType = 3;
+            break;
+        default:
+            return;
+    }
+
+    // An update about a player, potentially including movement.
+    const int id = msg.readInt32("account id");
+    const int16_t speed = msg.readInt16("speed");
+    const uint16_t stunMode = msg.readInt16("opt1");
+    uint32_t statusEffects = msg.readInt16("opt2");
+    statusEffects |= (static_cast<uint16_t>(msg.readInt16("options"))) << 16U;
+    const int16_t job = msg.readInt16("class");
+    int disguiseId = 0;
+    if (id < 110000000 && job >= 1000)
+        disguiseId = job;
+
+    Being *dstBeing = actorManager->findBeing(id);
+
+    if (!dstBeing)
+    {
+        if (actorManager->isBlocked(id) == true)
+            return;
+
+        dstBeing = createBeing(id, job);
+
+        if (!dstBeing)
+            return;
+    }
+    else if (disguiseId)
+    {
+        actorManager->undelete(dstBeing);
+        if (serverVersion < 1)
+            requestNameById(id);
+    }
+
+    uint8_t dir = dstBeing->getDirectionDelayed();
+    if (dir)
+    {
+        if (dir != dstBeing->getDirection())
+            dstBeing->setDirection(dir);
+    }
+
+    if (Party *const party = localPlayer->getParty())
+    {
+        if (party->isMember(id))
+            dstBeing->setParty(party);
+    }
+
+    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setSubtype(job, 0);
+
+    const int hairStyle = msg.readInt16("hair style");
+    const uint16_t weapon = msg.readInt16("weapon");
+    const uint16_t shield = msg.readInt16("shield");
+    const uint16_t headBottom = msg.readInt16("head bottom");
+
+    if (msgType == 3)
+        msg.readInt32("tick");
+
+    const uint16_t headTop = msg.readInt16("head top");
+    const uint16_t headMid = msg.readInt16("head mid");
+    const int hairColor = msg.readInt16("hair color");
+
+    msg.readUInt8("unused?");
+    msg.readUInt8("unused?");
+    msg.readUInt8("unused?");
+    msg.readUInt8("unused?");
+
+    const int guild = msg.readInt32("guild");
+
+    if (!guildManager || !GuildManager::getEnableGuildBot())
+    {
+        if (guild == 0)
+            dstBeing->clearGuilds();
+        else
+            dstBeing->setGuild(Guild::getGuild(static_cast<int16_t>(guild)));
+    }
+
+    msg.readInt16("emblem");
+    msg.readInt16("manner");
+    dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
+    msg.readUInt8("karma");
+    // reserving bit for future usage
+    dstBeing->setGender(Being::intToGender(msg.readUInt8("gender")));
+
+    if (!disguiseId)
+    {
+        // Set these after the gender, as the sprites may be gender-specific
+        dstBeing->updateSprite(SPRITE_WEAPON, weapon, "", 1, true);
+        if (!mHideShield)
+            dstBeing->updateSprite(SPRITE_SHIELD, shield);
+        dstBeing->updateSprite(SPRITE_BOTTOMCLOTHES, headBottom);
+        dstBeing->updateSprite(SPRITE_TOPCLOTHES, headMid);
+        dstBeing->updateSprite(SPRITE_HAT, headTop);
+        dstBeing->updateSprite(SPRITE_HAIR, hairStyle * -1,
+            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+    }
+    localPlayer->imitateOutfit(dstBeing);
+
+    if (msgType == 3)
+    {
+        uint16_t srcX, srcY, dstX, dstY;
+        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
+        msg.readUInt8("(sx<<4) | (sy&0x0f)");
+
+        localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
+
+        dstBeing->setTileCoords(srcX, srcY);
+        dstBeing->setDestination(dstX, dstY);
+
+        // because server don't send direction in move packet,
+        // we fixing it
+
+        if (srcX != dstX || srcY != dstY)
+        {
+            const int d = dstBeing->calcDirection(dstX, dstY);
+
+            if (d && dstBeing->getDirection() != d)
+                dstBeing->setDirectionDelayed(static_cast<uint8_t>(d));
+        }
+
+        if (localPlayer->getCurrentAction() != BeingAction::STAND)
+            localPlayer->imitateAction(dstBeing, BeingAction::STAND);
+        if (localPlayer->getDirection() != dstBeing->getDirection())
+        {
+            localPlayer->imitateDirection(dstBeing,
+                dstBeing->getDirection());
+        }
+    }
+    else
+    {
+        uint16_t x, y;
+        msg.readCoordinates(x, y, dir, "position");
+        dstBeing->setTileCoords(x, y);
+        dstBeing->setDirection(dir);
+
+        localPlayer->imitateDirection(dstBeing, dir);
+    }
+
+    const uint16_t gmstatus = msg.readInt16("gm status");
+
+    if (gmstatus & 0x80)
+        dstBeing->setGM(true);
+
+    if (msgType == 1 || msgType == 2)
+    {
+        const uint8_t type = msg.readUInt8("action type");
+        switch (type)
+        {
+            case 0:
+                dstBeing->setAction(BeingAction::STAND, 0);
+                localPlayer->imitateAction(dstBeing, BeingAction::STAND);
+                break;
+
+            case 1:
+                if (dstBeing->getCurrentAction() != BeingAction::DEAD)
+                {
+                    dstBeing->setAction(BeingAction::DEAD, 0);
+                    dstBeing->recalcSpritesOrder();
+                }
+                break;
+
+            case 2:
+                dstBeing->setAction(BeingAction::SIT, 0);
+                localPlayer->imitateAction(dstBeing, BeingAction::SIT);
+                break;
+
+            default:
+                // need set stay state?
+                logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:"
+                    + toString(id) + " " + toString(type));
+                logger->log("dstBeing id:" + toString(dstBeing->getId()));
+                logger->log("dstBeing name:" + dstBeing->getName());
+                break;
+        }
+    }
+    else if (msgType == 3)
+    {
+        msg.readUInt8("unknown?");
+    }
+
+    const int level = static_cast<int>(msg.readUInt8("level"));
+
+    if (level)
+        dstBeing->setLevel(level);
+
+    msg.readUInt8("unknown");
+
+    if (dstBeing->getType() != ActorType::PLAYER
+        || msgType != 3)
+    {
+        dstBeing->setActionTime(tick_time);
+    }
+
+    dstBeing->setStunMode(stunMode);
+    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
+        (statusEffects >> 16) & 0xffffU));
+    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+        statusEffects & 0xffffU));
+
+    if (msgType == 3 && dstBeing->getType() == ActorType::PLAYER)
+        dstBeing->setMoveTime();
+}
+
+void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
 {
     if (!actorManager || !localPlayer)
         return;
