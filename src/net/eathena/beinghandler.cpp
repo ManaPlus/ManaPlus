@@ -289,7 +289,6 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
     const uint8_t type = msg.readUInt8("type");
     int id = 0;
     unsigned int id2 = 0U;
-    const std::string color;
     const bool look2 = msg.getId() == SMSG_BEING_CHANGE_LOOKS2;
 
     if (!look2)
@@ -305,15 +304,21 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
             id2 = 1;
     }
 
-    if (!dstBeing)
+    if (!localPlayer || !dstBeing)
         return;
 
+    processBeingChangeLookContinue(dstBeing, type, id, id2);
+}
+
+void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
+                                                  const uint8_t type,
+                                                  const int id,
+                                                  const int id2) const
+{
     if (dstBeing->getType() == ActorType::PLAYER)
         dstBeing->setOtherTime();
 
-    if (!localPlayer)
-        return;
-
+    const std::string color;
     switch (type)
     {
         case 0:     // change race

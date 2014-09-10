@@ -268,16 +268,10 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
 
     Being *const dstBeing = actorManager->findBeing(
         msg.readInt32("being id"));
-    if (!dstBeing)
-    {
-        BLOCK_END("BeingHandler::processBeingChangeLook")
-        return;
-    }
 
     const uint8_t type = msg.readUInt8("type");
     int16_t id = 0;
     int id2 = 0;
-    const std::string color;
     const bool look2 = msg.getId() == SMSG_BEING_CHANGE_LOOKS2;
 
     if (!look2)
@@ -299,15 +293,24 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
         }
     }
 
-    if (dstBeing->getType() == ActorType::PLAYER)
-        dstBeing->setOtherTime();
-
-    if (!localPlayer)
+    if (!localPlayer || !dstBeing)
     {
         BLOCK_END("BeingHandler::processBeingChangeLook")
         return;
     }
+    processBeingChangeLookContinue(dstBeing, type, id, id2);
+    BLOCK_END("BeingHandler::processBeingChangeLook")
+}
 
+void BeingHandler::processBeingChangeLookContinue(Being *const dstBeing,
+                                                  const uint8_t type,
+                                                  const int id,
+                                                  const int id2) const
+{
+    if (dstBeing->getType() == ActorType::PLAYER)
+        dstBeing->setOtherTime();
+
+    const std::string color;
     switch (type)
     {
         case 0:     // change race
@@ -402,7 +405,6 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg) const
             logger->log("name: " + toString(dstBeing->getName()));
             break;
     }
-    BLOCK_END("BeingHandler::processBeingChangeLook")
 }
 
 void BeingHandler::processNameResponse2(Net::MessageIn &msg)
