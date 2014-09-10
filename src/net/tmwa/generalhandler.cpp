@@ -210,6 +210,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mPartyHandler.get());
     mNetwork->registerHandler(mPetHandler.get());
     mNetwork->registerHandler(mQuestHandler.get());
+    mNetwork->registerHandler(mMailHandler.get());
 }
 
 void GeneralHandler::reload()
