@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-09-09 20:33+0300\n"
-"PO-Revision-Date: 2014-08-30 09:53+0000\n"
+"POT-Creation-Date: 2014-09-10 21:55+0300\n"
+"PO-Revision-Date: 2014-09-10 19:09+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/manaplus/"
 "language/fi/)\n"
@@ -169,7 +169,7 @@ msgstr ""
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
-#: src/actions/chat.cpp:265 src/net/ea/gui/partytab.cpp:79
+#: src/actions/chat.cpp:265 src/net/ea/gui/partytab.cpp:80
 msgid "Party name is missing."
 msgstr "Ryhmän nimi puuttuu."
 
@@ -401,7 +401,7 @@ msgid "Imitation canceled"
 msgstr "Matkiminen keskeytetty"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:3170
+#: src/being/localplayer.cpp:3174
 #, c-format
 msgid "You see %s"
 msgstr ""
@@ -411,8 +411,8 @@ msgstr ""
 #. TRANSLATORS: add player to completle ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
-#: src/being/playerrelations.cpp:468 src/gui/popups/popupmenu.cpp:2602
-#: src/gui/popups/popupmenu.cpp:2644
+#: src/being/playerrelations.cpp:468 src/gui/popups/popupmenu.cpp:2584
+#: src/gui/popups/popupmenu.cpp:2626
 msgid "Completely ignore"
 msgstr "Jätä täysin huomiotta"
 
@@ -486,8 +486,8 @@ msgstr "Apua"
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
 #: src/client.cpp:934 src/client.cpp:1383 src/client.cpp:1397
-#: src/gui/dialogsmanager.cpp:84 src/gui/popups/popupmenu.cpp:644
-#: src/gui/popups/popupmenu.cpp:895 src/gui/windows/didyouknowwindow.cpp:81
+#: src/gui/dialogsmanager.cpp:84 src/gui/popups/popupmenu.cpp:645
+#: src/gui/popups/popupmenu.cpp:877 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:227 src/gui/windows/npcdialog.cpp:75
 #: src/gui/windows/npcdialog.cpp:113 src/gui/windows/questswindow.cpp:77
 #: src/gui/windows/shopwindow.cpp:85
@@ -617,14 +617,14 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr ""
 
 #. TRANSLATORS: chat tab header
-#: src/game.cpp:236 src/gui/widgets/tabs/chattab.cpp:482
+#: src/game.cpp:236 src/gui/widgets/tabs/chattab.cpp:483
 msgid "General"
 msgstr "Yleiset"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: full button name
 #. TRANSLATORS: debug window name
-#: src/game.cpp:252 src/gui/widgets/tabs/chattab.cpp:484
+#: src/game.cpp:252 src/gui/widgets/tabs/chattab.cpp:485
 #: src/gui/windowmenu.cpp:149 src/gui/windows/debugwindow.cpp:42
 msgid "Debug"
 msgstr "Debug"
@@ -1197,8 +1197,8 @@ msgstr ""
 
 #. TRANSLATORS: language
 #. TRANSLATORS: popup menu header
-#: src/gui/models/langlistmodel.h:45 src/gui/popups/popupmenu.cpp:2305
-#: src/gui/popups/popupmenu.cpp:2383 src/gui/widgets/tabs/socialtabbase.h:48
+#: src/gui/models/langlistmodel.h:45 src/gui/popups/popupmenu.cpp:2287
+#: src/gui/popups/popupmenu.cpp:2365 src/gui/widgets/tabs/socialtabbase.h:48
 msgid "(default)"
 msgstr "(oletus)"
 
@@ -1472,20 +1472,20 @@ msgstr "Luo ryhmä"
 #. TRANSLATORS: unregister dialog. button.
 #. TRANSLATORS: updater window button
 #. TRANSLATORS: input action name
-#: src/gui/popups/createpartypopup.h:54 src/gui/popups/popupmenu.cpp:316
-#: src/gui/popups/popupmenu.cpp:364 src/gui/popups/popupmenu.cpp:460
-#: src/gui/popups/popupmenu.cpp:507 src/gui/popups/popupmenu.cpp:542
-#: src/gui/popups/popupmenu.cpp:573 src/gui/popups/popupmenu.cpp:598
-#: src/gui/popups/popupmenu.cpp:623 src/gui/popups/popupmenu.cpp:824
-#: src/gui/popups/popupmenu.cpp:851 src/gui/popups/popupmenu.cpp:884
-#: src/gui/popups/popupmenu.cpp:2047 src/gui/popups/popupmenu.cpp:2083
-#: src/gui/popups/popupmenu.cpp:2133 src/gui/popups/popupmenu.cpp:2175
-#: src/gui/popups/popupmenu.cpp:2216 src/gui/popups/popupmenu.cpp:2284
-#: src/gui/popups/popupmenu.cpp:2362 src/gui/popups/popupmenu.cpp:2396
-#: src/gui/popups/popupmenu.cpp:2422 src/gui/popups/popupmenu.cpp:2443
-#: src/gui/popups/popupmenu.cpp:2464 src/gui/popups/popupmenu.cpp:2489
-#: src/gui/popups/popupmenu.cpp:2506 src/gui/popups/popupmenu.cpp:2777
-#: src/gui/popups/popupmenu.cpp:2903 src/gui/windows/buyselldialog.cpp:76
+#: src/gui/popups/createpartypopup.h:54 src/gui/popups/popupmenu.cpp:317
+#: src/gui/popups/popupmenu.cpp:365 src/gui/popups/popupmenu.cpp:461
+#: src/gui/popups/popupmenu.cpp:508 src/gui/popups/popupmenu.cpp:543
+#: src/gui/popups/popupmenu.cpp:574 src/gui/popups/popupmenu.cpp:599
+#: src/gui/popups/popupmenu.cpp:624 src/gui/popups/popupmenu.cpp:806
+#: src/gui/popups/popupmenu.cpp:833 src/gui/popups/popupmenu.cpp:866
+#: src/gui/popups/popupmenu.cpp:2029 src/gui/popups/popupmenu.cpp:2065
+#: src/gui/popups/popupmenu.cpp:2115 src/gui/popups/popupmenu.cpp:2157
+#: src/gui/popups/popupmenu.cpp:2198 src/gui/popups/popupmenu.cpp:2266
+#: src/gui/popups/popupmenu.cpp:2344 src/gui/popups/popupmenu.cpp:2378
+#: src/gui/popups/popupmenu.cpp:2404 src/gui/popups/popupmenu.cpp:2425
+#: src/gui/popups/popupmenu.cpp:2446 src/gui/popups/popupmenu.cpp:2471
+#: src/gui/popups/popupmenu.cpp:2488 src/gui/popups/popupmenu.cpp:2783
+#: src/gui/popups/popupmenu.cpp:2909 src/gui/windows/buyselldialog.cpp:76
 #: src/gui/windows/changeemaildialog.cpp:59
 #: src/gui/windows/changepassworddialog.cpp:61
 #: src/gui/windows/charcreatedialog.cpp:130
@@ -1509,7 +1509,7 @@ msgstr "Paino: %s"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
 #. TRANSLATORS: trade chat tab name
-#: src/gui/popups/popupmenu.cpp:161 src/gui/popups/popupmenu.cpp:717
+#: src/gui/popups/popupmenu.cpp:162 src/gui/popups/popupmenu.cpp:718
 #: src/gui/widgets/tabs/tradetab.cpp:37
 msgid "Trade"
 msgstr "Tee kaupat"
@@ -1523,49 +1523,49 @@ msgstr "Tee kaupat"
 #. TRANSLATORS: bot checker window table header
 #. TRANSLATORS: input action name
 #. TRANSLATORS: player stat
-#: src/gui/popups/popupmenu.cpp:164 src/gui/popups/popupmenu.cpp:268
-#: src/gui/popups/popupmenu.cpp:720 src/gui/windows/botcheckerwindow.cpp:89
-#: src/input/pages/basic.cpp:42 src/net/eathena/generalhandler.cpp:265
-#: src/net/tmwa/generalhandler.cpp:297
+#: src/gui/popups/popupmenu.cpp:165 src/gui/popups/popupmenu.cpp:269
+#: src/gui/popups/popupmenu.cpp:721 src/gui/windows/botcheckerwindow.cpp:89
+#: src/input/pages/basic.cpp:42 src/net/eathena/generalhandler.cpp:268
+#: src/net/tmwa/generalhandler.cpp:300
 msgid "Attack"
 msgstr "Hyökkää"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: send whisper to player
-#: src/gui/popups/popupmenu.cpp:167 src/gui/popups/popupmenu.cpp:385
+#: src/gui/popups/popupmenu.cpp:168 src/gui/popups/popupmenu.cpp:386
 msgid "Whisper"
 msgstr "Kuiskaa"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: heal player
-#: src/gui/popups/popupmenu.cpp:173 src/gui/popups/popupmenu.cpp:724
+#: src/gui/popups/popupmenu.cpp:174 src/gui/popups/popupmenu.cpp:725
 msgid "Heal"
 msgstr "Paranna"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player from guild
-#: src/gui/popups/popupmenu.cpp:193 src/gui/popups/popupmenu.cpp:209
-#: src/gui/popups/popupmenu.cpp:431 src/gui/popups/popupmenu.cpp:771
+#: src/gui/popups/popupmenu.cpp:194 src/gui/popups/popupmenu.cpp:210
+#: src/gui/popups/popupmenu.cpp:432 src/gui/popups/popupmenu.cpp:751
 msgid "Kick from guild"
 msgstr "Potki killasta"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: change player position in guild
-#: src/gui/popups/popupmenu.cpp:200 src/gui/popups/popupmenu.cpp:216
-#: src/gui/popups/popupmenu.cpp:438 src/gui/popups/popupmenu.cpp:778
+#: src/gui/popups/popupmenu.cpp:201 src/gui/popups/popupmenu.cpp:217
+#: src/gui/popups/popupmenu.cpp:439 src/gui/popups/popupmenu.cpp:758
 msgid "Change pos in guild"
 msgstr "Muuta kilta-asemaa"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: invite player to guild
-#: src/gui/popups/popupmenu.cpp:226 src/gui/popups/popupmenu.cpp:448
-#: src/gui/popups/popupmenu.cpp:789
+#: src/gui/popups/popupmenu.cpp:227 src/gui/popups/popupmenu.cpp:449
+#: src/gui/popups/popupmenu.cpp:769
 msgid "Invite to guild"
 msgstr "Kutsu kiltaan"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: set player invisible for self by id
-#: src/gui/popups/popupmenu.cpp:233
+#: src/gui/popups/popupmenu.cpp:234
 msgid "Nuke"
 msgstr "Pommita"
 
@@ -1583,9 +1583,9 @@ msgstr "Pommita"
 #. TRANSLATORS: move to player location
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: bot checker window table header
-#: src/gui/popups/popupmenu.cpp:236 src/gui/popups/popupmenu.cpp:257
-#: src/gui/popups/popupmenu.cpp:415 src/gui/popups/popupmenu.cpp:566
-#: src/gui/popups/popupmenu.cpp:731 src/gui/popups/popupmenu.cpp:812
+#: src/gui/popups/popupmenu.cpp:237 src/gui/popups/popupmenu.cpp:258
+#: src/gui/popups/popupmenu.cpp:416 src/gui/popups/popupmenu.cpp:567
+#: src/gui/popups/popupmenu.cpp:732 src/gui/popups/popupmenu.cpp:792
 #: src/gui/setupinputpages.cpp:45 src/gui/windows/botcheckerwindow.cpp:93
 msgid "Move"
 msgstr "Liiku"
@@ -1594,7 +1594,7 @@ msgstr "Liiku"
 #. TRANSLATORS: talk with npc
 #. TRANSLATORS: bot checker window table header
 #. TRANSLATORS: input action name
-#: src/gui/popups/popupmenu.cpp:247 src/gui/windows/botcheckerwindow.cpp:91
+#: src/gui/popups/popupmenu.cpp:248 src/gui/windows/botcheckerwindow.cpp:91
 #: src/input/pages/basic.cpp:90
 msgid "Talk"
 msgstr "Keskustele"
@@ -1605,7 +1605,7 @@ msgstr "Keskustele"
 #. TRANSLATORS: buy item
 #. TRANSLATORS: buy dialog name
 #. TRANSLATORS: shop window button
-#: src/gui/popups/popupmenu.cpp:250 src/gui/popups/popupmenu.cpp:2675
+#: src/gui/popups/popupmenu.cpp:251 src/gui/popups/popupmenu.cpp:2657
 #: src/gui/windows/buydialog.cpp:184 src/gui/windows/buydialog.cpp:200
 #: src/gui/windows/buydialog.cpp:261 src/gui/windows/buyselldialog.cpp:72
 msgid "Buy"
@@ -1618,7 +1618,7 @@ msgstr "Osta"
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: sell dialog name
 #. TRANSLATORS: sell dialog button
-#: src/gui/popups/popupmenu.cpp:253 src/gui/popups/popupmenu.cpp:2678
+#: src/gui/popups/popupmenu.cpp:254 src/gui/popups/popupmenu.cpp:2660
 #: src/gui/windows/buyselldialog.cpp:74 src/gui/windows/selldialog.cpp:60
 #: src/gui/windows/selldialog.cpp:74 src/gui/windows/selldialog.cpp:123
 msgid "Sell"
@@ -1628,26 +1628,26 @@ msgstr "Myy"
 #. TRANSLATORS: add comment to npc
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add comment to player
-#: src/gui/popups/popupmenu.cpp:260 src/gui/popups/popupmenu.cpp:395
-#: src/gui/popups/popupmenu.cpp:2739
+#: src/gui/popups/popupmenu.cpp:261 src/gui/popups/popupmenu.cpp:396
+#: src/gui/popups/popupmenu.cpp:2745
 msgid "Add comment"
 msgstr "Lisää kommentti"
 
 #. TRANSLATORS: remove monster from attack list
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:280
+#: src/gui/popups/popupmenu.cpp:281
 msgid "Remove from attack list"
 msgstr "Poista hyökkäyslistasta"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add monster to priotiry attack list
-#: src/gui/popups/popupmenu.cpp:287
+#: src/gui/popups/popupmenu.cpp:288
 msgid "Add to priority attack list"
 msgstr "Lisää prioriteettihyökkäyslistalle"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add monster to attack list
-#: src/gui/popups/popupmenu.cpp:291
+#: src/gui/popups/popupmenu.cpp:292
 msgid "Add to attack list"
 msgstr "Lisää hyökkäyslistaan"
 
@@ -1655,7 +1655,7 @@ msgstr "Lisää hyökkäyslistaan"
 #. TRANSLATORS: add monster to ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to pickup list
-#: src/gui/popups/popupmenu.cpp:295 src/gui/popups/popupmenu.cpp:2759
+#: src/gui/popups/popupmenu.cpp:296 src/gui/popups/popupmenu.cpp:2765
 msgid "Add to ignore list"
 msgstr "Lisää ohitettavien listaan"
 
@@ -1663,44 +1663,44 @@ msgstr "Lisää ohitettavien listaan"
 #. TRANSLATORS: add being name to chat
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player name to chat
-#: src/gui/popups/popupmenu.cpp:311 src/gui/popups/popupmenu.cpp:456
+#: src/gui/popups/popupmenu.cpp:312 src/gui/popups/popupmenu.cpp:457
 msgid "Add name to chat"
 msgstr "Lisää nimi keskusteluun"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: settings tab name
-#: src/gui/popups/popupmenu.cpp:341 src/gui/widgets/tabs/setup_players.cpp:38
+#: src/gui/popups/popupmenu.cpp:342 src/gui/widgets/tabs/setup_players.cpp:38
 msgid "Players"
 msgstr "Pelaajat"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player from party
-#: src/gui/popups/popupmenu.cpp:407 src/gui/popups/popupmenu.cpp:752
-#: src/gui/popups/popupmenu.cpp:2723
+#: src/gui/popups/popupmenu.cpp:408 src/gui/popups/popupmenu.cpp:2705
+#: src/gui/popups/popupmenu.cpp:2729
 msgid "Kick from party"
 msgstr "Potki ryhmästä"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: pickup item from ground
-#: src/gui/popups/popupmenu.cpp:489 src/gui/popups/popupmenu.cpp:498
+#: src/gui/popups/popupmenu.cpp:490 src/gui/popups/popupmenu.cpp:499
 msgid "Pick up"
 msgstr "Poimi"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item name to chat
-#: src/gui/popups/popupmenu.cpp:503 src/gui/popups/popupmenu.cpp:2043
-#: src/gui/popups/popupmenu.cpp:2119 src/gui/popups/popupmenu.cpp:2161
+#: src/gui/popups/popupmenu.cpp:504 src/gui/popups/popupmenu.cpp:2025
+#: src/gui/popups/popupmenu.cpp:2101 src/gui/popups/popupmenu.cpp:2143
 msgid "Add to chat"
 msgstr "Lisää keskusteluun"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:524 src/gui/popups/popupmenu.cpp:556
+#: src/gui/popups/popupmenu.cpp:525 src/gui/popups/popupmenu.cpp:557
 msgid "Map Item"
 msgstr "Karttaolio"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: rename map item
-#: src/gui/popups/popupmenu.cpp:527
+#: src/gui/popups/popupmenu.cpp:528
 msgid "Rename"
 msgstr "Nimeä uudelleen"
 
@@ -1710,20 +1710,20 @@ msgstr "Nimeä uudelleen"
 #. TRANSLATORS: remove attack target
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove item from pickup filter
-#: src/gui/popups/popupmenu.cpp:530 src/gui/popups/popupmenu.cpp:2358
-#: src/gui/popups/popupmenu.cpp:2392
+#: src/gui/popups/popupmenu.cpp:531 src/gui/popups/popupmenu.cpp:2340
+#: src/gui/popups/popupmenu.cpp:2374
 msgid "Remove"
 msgstr "Poista"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: warp to map item
-#: src/gui/popups/popupmenu.cpp:537 src/gui/popups/popupmenu.cpp:562
+#: src/gui/popups/popupmenu.cpp:538 src/gui/popups/popupmenu.cpp:563
 msgid "Warp"
 msgstr "Warppaa"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move camera to map item
-#: src/gui/popups/popupmenu.cpp:569
+#: src/gui/popups/popupmenu.cpp:570
 msgid "Move camera"
 msgstr ""
 
@@ -1732,7 +1732,7 @@ msgstr ""
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: outfits window name
-#: src/gui/popups/popupmenu.cpp:587 src/gui/setupinputpages.cpp:53
+#: src/gui/popups/popupmenu.cpp:588 src/gui/setupinputpages.cpp:53
 #: src/gui/windowmenu.cpp:141 src/gui/windows/inventorywindow.cpp:193
 #: src/gui/windows/outfitwindow.cpp:60
 msgid "Outfits"
@@ -1740,69 +1740,69 @@ msgstr "Asukokonaisuudet"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: clear selected outfit
-#: src/gui/popups/popupmenu.cpp:590
+#: src/gui/popups/popupmenu.cpp:591
 msgid "Clear outfit"
 msgstr "Poista asu"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: full button name
-#: src/gui/popups/popupmenu.cpp:616 src/gui/windowmenu.cpp:125
+#: src/gui/popups/popupmenu.cpp:617 src/gui/windowmenu.cpp:125
 msgid "Spells"
 msgstr "Loitsut"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: edit selected spell
-#: src/gui/popups/popupmenu.cpp:619
+#: src/gui/popups/popupmenu.cpp:620
 msgid "Edit spell"
 msgstr "Muokkaa loitsua"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove all text from chat tab
 #. TRANSLATORS: npc dialog button
-#: src/gui/popups/popupmenu.cpp:649 src/gui/windows/npcdialog.cpp:110
+#: src/gui/popups/popupmenu.cpp:650 src/gui/windows/npcdialog.cpp:110
 msgid "Clear"
 msgstr "Tyhjennä"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: disable chat tab highlight
-#: src/gui/popups/popupmenu.cpp:656
+#: src/gui/popups/popupmenu.cpp:657
 msgid "Disable highlight"
 msgstr "Estä korostus"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable chat tab highlight
-#: src/gui/popups/popupmenu.cpp:662
+#: src/gui/popups/popupmenu.cpp:663
 msgid "Enable highlight"
 msgstr "Salli korostus"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: do not remove player names from chat tab
-#: src/gui/popups/popupmenu.cpp:668
+#: src/gui/popups/popupmenu.cpp:669
 msgid "Don't remove name"
 msgstr "Älä poista nimeä"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove player names from chat tab
-#: src/gui/popups/popupmenu.cpp:674
+#: src/gui/popups/popupmenu.cpp:675
 msgid "Remove name"
 msgstr "Poista nimi"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable away messages in chat tab
-#: src/gui/popups/popupmenu.cpp:680
+#: src/gui/popups/popupmenu.cpp:681
 msgid "Enable away"
 msgstr "Ota poissaolo käyttöön"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: disable away messages in chat tab
-#: src/gui/popups/popupmenu.cpp:686
+#: src/gui/popups/popupmenu.cpp:687
 msgid "Disable away"
 msgstr "Poista poissaolo käytöstä"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable away messages in chat tab
 #. TRANSLATORS: social window button
-#: src/gui/popups/popupmenu.cpp:693 src/gui/windows/socialwindow.cpp:89
+#: src/gui/popups/popupmenu.cpp:694 src/gui/windows/socialwindow.cpp:89
 msgid "Leave"
 msgstr "Eroa"
 
@@ -1812,85 +1812,79 @@ msgstr "Eroa"
 #. TRANSLATORS: copy link to clipboard
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy npc text to clipboard
-#: src/gui/popups/popupmenu.cpp:698 src/gui/popups/popupmenu.cpp:2460
-#: src/gui/popups/popupmenu.cpp:2502
+#: src/gui/popups/popupmenu.cpp:699 src/gui/popups/popupmenu.cpp:2442
+#: src/gui/popups/popupmenu.cpp:2484
 msgid "Copy to clipboard"
 msgstr "Kopioi leikepöydälle"
 
-#. TRANSLATORS: popup menu item
-#. TRANSLATORS: invite player to party
-#: src/gui/popups/popupmenu.cpp:745 src/gui/popups/popupmenu.cpp:2717
-msgid "Invite to party"
-msgstr "Kutsu ryhmään"
-
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:833
+#: src/gui/popups/popupmenu.cpp:815
 msgid "Change guild position"
 msgstr "Muuta asemaa killassa"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:878
+#: src/gui/popups/popupmenu.cpp:860
 msgid "window"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: unlock window
-#: src/gui/popups/popupmenu.cpp:904
+#: src/gui/popups/popupmenu.cpp:886
 msgid "Unlock"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: lock window
-#: src/gui/popups/popupmenu.cpp:910
+#: src/gui/popups/popupmenu.cpp:892
 msgid "Lock"
 msgstr ""
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1405
+#: src/gui/popups/popupmenu.cpp:1387
 msgid "Rename map sign          "
 msgstr "Muuta merkin nimeä       "
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1407
+#: src/gui/popups/popupmenu.cpp:1389
 msgid "Name:                    "
 msgstr "Nimi:                    "
 
-#: src/gui/popups/popupmenu.cpp:1431
+#: src/gui/popups/popupmenu.cpp:1413
 msgid "Player comment            "
 msgstr "Pelaajakommentti          "
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1433
+#: src/gui/popups/popupmenu.cpp:1415
 msgid "Comment:                      "
 msgstr "Kommentti:                    "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
-#: src/gui/popups/popupmenu.cpp:1960
+#: src/gui/popups/popupmenu.cpp:1942
 msgid "Add to trade"
 msgstr "Lisää kauppaan"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add 10 item amount to trade
-#: src/gui/popups/popupmenu.cpp:1967
+#: src/gui/popups/popupmenu.cpp:1949
 msgid "Add to trade 10"
 msgstr "Lisää 10 kauppaan"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add half item amount to trade
-#: src/gui/popups/popupmenu.cpp:1971
+#: src/gui/popups/popupmenu.cpp:1953
 msgid "Add to trade half"
 msgstr "Lisää puolet kauppaan"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all amount except one item to trade
-#: src/gui/popups/popupmenu.cpp:1974
+#: src/gui/popups/popupmenu.cpp:1956
 msgid "Add to trade all-1"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all amount item to trade
-#: src/gui/popups/popupmenu.cpp:1977
+#: src/gui/popups/popupmenu.cpp:1959
 msgid "Add to trade all"
 msgstr "Lisää kaikki kauppaan"
 
@@ -1899,64 +1893,64 @@ msgstr "Lisää kaikki kauppaan"
 #. TRANSLATORS: storage button
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: setup button
-#: src/gui/popups/popupmenu.cpp:1985 src/gui/popups/popupmenu.cpp:2115
-#: src/gui/popups/popupmenu.cpp:2156 src/gui/windows/inventorywindow.cpp:223
+#: src/gui/popups/popupmenu.cpp:1967 src/gui/popups/popupmenu.cpp:2097
+#: src/gui/popups/popupmenu.cpp:2138 src/gui/windows/inventorywindow.cpp:223
 #: src/gui/windows/inventorywindow.cpp:719 src/gui/windows/setupwindow.cpp:97
 msgid "Store"
 msgstr "Varastoi"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add 10 item amount to storage
-#: src/gui/popups/popupmenu.cpp:1992
+#: src/gui/popups/popupmenu.cpp:1974
 msgid "Store 10"
 msgstr "Varastoi 10"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add half item amount to storage
-#: src/gui/popups/popupmenu.cpp:1996
+#: src/gui/popups/popupmenu.cpp:1978
 msgid "Store half"
 msgstr "Varastoi puolet"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all except one item amount to storage
-#: src/gui/popups/popupmenu.cpp:1999
+#: src/gui/popups/popupmenu.cpp:1981
 msgid "Store all-1"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all item amount to storage
-#: src/gui/popups/popupmenu.cpp:2002
+#: src/gui/popups/popupmenu.cpp:1984
 msgid "Store all"
 msgstr "Varastoi kaikki"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get item from storage
 #. TRANSLATORS: storage button
-#: src/gui/popups/popupmenu.cpp:2014 src/gui/windows/inventorywindow.cpp:225
+#: src/gui/popups/popupmenu.cpp:1996 src/gui/windows/inventorywindow.cpp:225
 msgid "Retrieve"
 msgstr "Ota"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get 10 item amount from storage
-#: src/gui/popups/popupmenu.cpp:2021
+#: src/gui/popups/popupmenu.cpp:2003
 msgid "Retrieve 10"
 msgstr "Ota 10"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get half item amount from storage
-#: src/gui/popups/popupmenu.cpp:2025
+#: src/gui/popups/popupmenu.cpp:2007
 msgid "Retrieve half"
 msgstr "Ota puolet"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get all except one item amount from storage
-#: src/gui/popups/popupmenu.cpp:2028
+#: src/gui/popups/popupmenu.cpp:2010
 msgid "Retrieve all-1"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get all item amount from storage
-#: src/gui/popups/popupmenu.cpp:2031
+#: src/gui/popups/popupmenu.cpp:2013
 msgid "Retrieve all"
 msgstr "Ota kaikki"
 
@@ -1966,7 +1960,7 @@ msgstr "Ota kaikki"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: skills dialog button
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2077 src/gui/popups/popupmenu.cpp:2827
+#: src/gui/popups/popupmenu.cpp:2059 src/gui/popups/popupmenu.cpp:2833
 #: src/gui/windows/inventorywindow.cpp:174
 #: src/gui/windows/inventorywindow.cpp:632 src/gui/windows/skilldialog.cpp:68
 #: src/gui/windows/skilldialog.cpp:143 src/gui/windows/skilldialog.cpp:282
@@ -1976,41 +1970,41 @@ msgid "Use"
 msgstr "Käytä"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2171
+#: src/gui/popups/popupmenu.cpp:2153
 msgid "Clear drop window"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2202 src/gui/popups/popupmenu.cpp:2263
+#: src/gui/popups/popupmenu.cpp:2184 src/gui/popups/popupmenu.cpp:2245
 msgid "Hide"
 msgstr "Piilota"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2209 src/gui/popups/popupmenu.cpp:2270
+#: src/gui/popups/popupmenu.cpp:2191 src/gui/popups/popupmenu.cpp:2252
 msgid "Show"
 msgstr "Näytä"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2277
+#: src/gui/popups/popupmenu.cpp:2259
 msgid "Reset yellow bar"
 msgstr "Palauta oletusmuokkaimet (keltainen palkki)"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy status to chat
 #. TRANSLATORS: status window button
-#: src/gui/popups/popupmenu.cpp:2281 src/gui/windows/statuswindow.cpp:94
+#: src/gui/popups/popupmenu.cpp:2263 src/gui/windows/statuswindow.cpp:94
 msgid "Copy to chat"
 msgstr "Kopioi keskusteluun"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move attack target up
-#: src/gui/popups/popupmenu.cpp:2321 src/gui/popups/popupmenu.cpp:2340
+#: src/gui/popups/popupmenu.cpp:2303 src/gui/popups/popupmenu.cpp:2322
 msgid "Move up"
 msgstr "Siirrä ylös"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move attack target down
-#: src/gui/popups/popupmenu.cpp:2327 src/gui/popups/popupmenu.cpp:2346
+#: src/gui/popups/popupmenu.cpp:2309 src/gui/popups/popupmenu.cpp:2328
 msgid "Move down"
 msgstr "Siirrä alas"
 
@@ -2018,144 +2012,150 @@ msgstr "Siirrä alas"
 #. TRANSLATORS: undress item from player
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: undress player
-#: src/gui/popups/popupmenu.cpp:2418 src/gui/popups/popupmenu.cpp:2736
+#: src/gui/popups/popupmenu.cpp:2400 src/gui/popups/popupmenu.cpp:2742
 msgid "Undress"
 msgstr "Riisu"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy text to clipboard
-#: src/gui/popups/popupmenu.cpp:2436
+#: src/gui/popups/popupmenu.cpp:2418
 msgid "Copy"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: paste text from clipboard
-#: src/gui/popups/popupmenu.cpp:2439
+#: src/gui/popups/popupmenu.cpp:2421
 msgid "Paste"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: open link in browser
-#: src/gui/popups/popupmenu.cpp:2457
+#: src/gui/popups/popupmenu.cpp:2439
 msgid "Open link"
 msgstr ""
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2475
+#: src/gui/popups/popupmenu.cpp:2457
 msgid "Show window"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to disregarded list
-#: src/gui/popups/popupmenu.cpp:2548 src/gui/popups/popupmenu.cpp:2584
-#: src/gui/popups/popupmenu.cpp:2623 src/gui/popups/popupmenu.cpp:2641
+#: src/gui/popups/popupmenu.cpp:2530 src/gui/popups/popupmenu.cpp:2566
+#: src/gui/popups/popupmenu.cpp:2605 src/gui/popups/popupmenu.cpp:2623
 msgid "Disregard"
 msgstr "Vaimenna"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
 #. TRANSLATORS: confirm dialog button
-#: src/gui/popups/popupmenu.cpp:2551 src/gui/popups/popupmenu.cpp:2587
-#: src/gui/popups/popupmenu.cpp:2626 src/gui/windows/confirmdialog.cpp:60
+#: src/gui/popups/popupmenu.cpp:2533 src/gui/popups/popupmenu.cpp:2569
+#: src/gui/popups/popupmenu.cpp:2608 src/gui/windows/confirmdialog.cpp:60
 msgid "Ignore"
 msgstr "Ohita"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to black list
-#: src/gui/popups/popupmenu.cpp:2554 src/gui/popups/popupmenu.cpp:2629
+#: src/gui/popups/popupmenu.cpp:2536 src/gui/popups/popupmenu.cpp:2611
 msgid "Black list"
 msgstr "Musta lista"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to enemy list
-#: src/gui/popups/popupmenu.cpp:2557 src/gui/popups/popupmenu.cpp:2590
+#: src/gui/popups/popupmenu.cpp:2539 src/gui/popups/popupmenu.cpp:2572
 msgid "Set as enemy"
 msgstr "Aseta viholliseksi"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to erased list
-#: src/gui/popups/popupmenu.cpp:2560 src/gui/popups/popupmenu.cpp:2593
-#: src/gui/popups/popupmenu.cpp:2605 src/gui/popups/popupmenu.cpp:2614
-#: src/gui/popups/popupmenu.cpp:2632
+#: src/gui/popups/popupmenu.cpp:2542 src/gui/popups/popupmenu.cpp:2575
+#: src/gui/popups/popupmenu.cpp:2587 src/gui/popups/popupmenu.cpp:2596
+#: src/gui/popups/popupmenu.cpp:2614
 msgid "Erase"
 msgstr "Pyyhi"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to friends list
-#: src/gui/popups/popupmenu.cpp:2570
+#: src/gui/popups/popupmenu.cpp:2552
 msgid "Be friend"
 msgstr "Ystävysty"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove player from ignore list
-#: src/gui/popups/popupmenu.cpp:2581 src/gui/popups/popupmenu.cpp:2599
-#: src/gui/popups/popupmenu.cpp:2611 src/gui/popups/popupmenu.cpp:2620
-#: src/gui/popups/popupmenu.cpp:2638
+#: src/gui/popups/popupmenu.cpp:2563 src/gui/popups/popupmenu.cpp:2581
+#: src/gui/popups/popupmenu.cpp:2593 src/gui/popups/popupmenu.cpp:2602
+#: src/gui/popups/popupmenu.cpp:2620
 msgid "Unignore"
 msgstr "Huomioi jälleen"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2657
+#: src/gui/popups/popupmenu.cpp:2639
 msgid "Follow"
 msgstr "Seuraa"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: imitate player
-#: src/gui/popups/popupmenu.cpp:2661
+#: src/gui/popups/popupmenu.cpp:2643
 msgid "Imitation"
 msgstr "Matki"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: buy item
-#: src/gui/popups/popupmenu.cpp:2685 src/gui/popups/popupmenu.cpp:2700
+#: src/gui/popups/popupmenu.cpp:2667 src/gui/popups/popupmenu.cpp:2682
 msgid "Buy (?)"
 msgstr "Osta (?)"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: sell item
-#: src/gui/popups/popupmenu.cpp:2688 src/gui/popups/popupmenu.cpp:2703
+#: src/gui/popups/popupmenu.cpp:2670 src/gui/popups/popupmenu.cpp:2685
 msgid "Sell (?)"
 msgstr "Myy (?)"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2733
+#. TRANSLATORS: invite player to party
+#: src/gui/popups/popupmenu.cpp:2699 src/gui/popups/popupmenu.cpp:2723
+msgid "Invite to party"
+msgstr "Kutsu ryhmään"
+
+#. TRANSLATORS: popup menu item
+#: src/gui/popups/popupmenu.cpp:2739
 msgid "Show Items"
 msgstr "Näytä tavarat"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove item from pickup list
-#: src/gui/popups/popupmenu.cpp:2750
+#: src/gui/popups/popupmenu.cpp:2756
 msgid "Remove from pickup list"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2755
+#: src/gui/popups/popupmenu.cpp:2761
 msgid "Add to pickup list"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove protection from item
-#: src/gui/popups/popupmenu.cpp:2804
+#: src/gui/popups/popupmenu.cpp:2810
 msgid "Unprotect item"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add protection to item
-#: src/gui/popups/popupmenu.cpp:2813
+#: src/gui/popups/popupmenu.cpp:2819
 msgid "Protect item"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2842 src/gui/windows/inventorywindow.cpp:189
+#: src/gui/popups/popupmenu.cpp:2848 src/gui/windows/inventorywindow.cpp:189
 #: src/gui/windows/inventorywindow.cpp:727
 msgid "Drop..."
 msgstr "Pudota..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop all item amount
-#: src/gui/popups/popupmenu.cpp:2845
+#: src/gui/popups/popupmenu.cpp:2851
 msgid "Drop all"
 msgstr "Pudota kaikki"
 
@@ -2163,7 +2163,7 @@ msgstr "Pudota kaikki"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: full button name
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2851 src/gui/windowmenu.cpp:129
+#: src/gui/popups/popupmenu.cpp:2857 src/gui/windowmenu.cpp:129
 #: src/gui/windows/inventorywindow.cpp:732
 msgid "Drop"
 msgstr "Pudota"
@@ -2171,49 +2171,49 @@ msgstr "Pudota"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: split items
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2859 src/gui/windows/inventorywindow.cpp:191
+#: src/gui/popups/popupmenu.cpp:2865 src/gui/windows/inventorywindow.cpp:191
 msgid "Split"
 msgstr "Jaa"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm commands
-#: src/gui/popups/popupmenu.cpp:2869
+#: src/gui/popups/popupmenu.cpp:2875
 msgid "GM..."
 msgstr ""
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2877
+#: src/gui/popups/popupmenu.cpp:2883
 msgid "GM commands"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: check player ip
-#: src/gui/popups/popupmenu.cpp:2882
+#: src/gui/popups/popupmenu.cpp:2888
 msgid "Check ip"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: go to player position
-#: src/gui/popups/popupmenu.cpp:2885
+#: src/gui/popups/popupmenu.cpp:2891
 msgid "Goto"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: recall player to current position
-#: src/gui/popups/popupmenu.cpp:2888
+#: src/gui/popups/popupmenu.cpp:2894
 msgid "Recall"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
 #. TRANSLATORS: ok dialog button
-#: src/gui/popups/popupmenu.cpp:2891 src/net/ea/playerhandler.cpp:364
+#: src/gui/popups/popupmenu.cpp:2897 src/net/ea/playerhandler.cpp:364
 msgid "Revive"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player
-#: src/gui/popups/popupmenu.cpp:2896
+#: src/gui/popups/popupmenu.cpp:2902
 msgid "Kick"
 msgstr "Potki"
 
@@ -2515,9 +2515,9 @@ msgid "Lvl: %d"
 msgstr "Taso: %d"
 
 #: src/gui/widgets/skillinfo.cpp:99
-#, fuzzy, c-format
+#, c-format
 msgid "Mana: -%d"
-msgstr "Mana:"
+msgstr ""
 
 #: src/gui/widgets/skillinfo.cpp:107
 #, c-format
@@ -2547,13 +2547,13 @@ msgid "%s whispers: %s"
 msgstr "%s kuiskaa: %s"
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chattab.cpp:557
+#: src/gui/widgets/tabs/chattab.cpp:558
 #, c-format
 msgid "%s is now Online."
 msgstr ""
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chattab.cpp:562
+#: src/gui/widgets/tabs/chattab.cpp:563
 #, c-format
 msgid "%s is now Offline."
 msgstr ""
@@ -4501,7 +4501,7 @@ msgstr ""
 
 #. TRANSLATORS: tab in social window
 #. TRANSLATORS: party chat tab name
-#: src/gui/widgets/tabs/socialpartytab.h:51 src/net/ea/gui/partytab.cpp:47
+#: src/gui/widgets/tabs/socialpartytab.h:51 src/net/ea/gui/partytab.cpp:48
 msgid "Party"
 msgstr "Ryhmä"
 
@@ -6374,9 +6374,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/emotes.cpp:49
-#, fuzzy
 msgid "Pet emote modifier key"
-msgstr "Ota käyttöön / poista pelimuokkaimet"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/emotes.cpp:55
@@ -6414,9 +6413,8 @@ msgstr "Eleen pikavalinta %d"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/emotes.cpp:354
-#, fuzzy
 msgid "Pet emote shortcuts"
-msgstr "Eleen pikavalinta %d"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/emotes.cpp:360 src/input/pages/emotes.cpp:366
@@ -6443,9 +6441,9 @@ msgstr "Eleen pikavalinta %d"
 #: src/input/pages/emotes.cpp:612 src/input/pages/emotes.cpp:618
 #: src/input/pages/emotes.cpp:624 src/input/pages/emotes.cpp:630
 #: src/input/pages/emotes.cpp:636 src/input/pages/emotes.cpp:642
-#, fuzzy, c-format
+#, c-format
 msgid "Pet emote shortcut %d"
-msgstr "Eleen pikavalinta %d"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/gui.cpp:33
@@ -7319,9 +7317,8 @@ msgstr "Kuiskausta ei voitu lähettää, %s ei huomioinut sitä."
 
 #. TRANSLATORS: chat message
 #: src/net/ea/chathandler.cpp:129
-#, fuzzy
 msgid "Whisper could not be sent, you ignored by all players."
-msgstr "Kuiskausta ei voitu lähettää, %s ei huomioinut sitä."
+msgstr ""
 
 #: src/net/ea/gamehandler.cpp:75
 msgid "Game"
@@ -7388,47 +7385,47 @@ msgstr "Killan linna: %s"
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:106 src/resources/notifications.h:179
+#: src/net/ea/gui/partytab.cpp:107 src/resources/notifications.h:179
 msgid "Item sharing enabled."
 msgstr "Saaliinjako käytössä."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:111 src/resources/notifications.h:183
+#: src/net/ea/gui/partytab.cpp:112 src/resources/notifications.h:183
 msgid "Item sharing disabled."
 msgstr "Saaliinjako poistettu käytöstä."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:116 src/resources/notifications.h:187
+#: src/net/ea/gui/partytab.cpp:117 src/resources/notifications.h:187
 msgid "Item sharing not possible."
 msgstr "Saaliinjako ei ole mahdollista."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/gui/partytab.cpp:121
+#: src/net/ea/gui/partytab.cpp:122
 msgid "Item sharing unknown."
 msgstr "Saaliinjaon tila on tuntematon."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:156 src/resources/notifications.h:167
+#: src/net/ea/gui/partytab.cpp:157 src/resources/notifications.h:167
 msgid "Experience sharing enabled."
 msgstr "Kokemuksen jako käytössä."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:161 src/resources/notifications.h:171
+#: src/net/ea/gui/partytab.cpp:162 src/resources/notifications.h:171
 msgid "Experience sharing disabled."
 msgstr "Kokemuksen jako pois käytöstä."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/net/ea/gui/partytab.cpp:166 src/resources/notifications.h:175
+#: src/net/ea/gui/partytab.cpp:167 src/resources/notifications.h:175
 msgid "Experience sharing not possible."
 msgstr "Kokemuksen jako ei ole mahdollista."
 
 #. TRANSLATORS: chat message
-#: src/net/ea/gui/partytab.cpp:171
+#: src/net/ea/gui/partytab.cpp:172
 msgid "Experience sharing unknown."
 msgstr "Kokemuksen jaon tila on tuntematon."
 
@@ -7648,161 +7645,161 @@ msgid "Poison had no effect..."
 msgstr "Myrkyllä ei ollut vaikutusta..."
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:108 src/net/tmwa/generalhandler.cpp:109
+#: src/net/eathena/generalhandler.cpp:110 src/net/tmwa/generalhandler.cpp:111
 #, c-format
 msgid "Strength %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:109 src/net/tmwa/generalhandler.cpp:111
+#: src/net/eathena/generalhandler.cpp:111 src/net/tmwa/generalhandler.cpp:113
 #, c-format
 msgid "Agility %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:110 src/net/tmwa/generalhandler.cpp:113
+#: src/net/eathena/generalhandler.cpp:112 src/net/tmwa/generalhandler.cpp:115
 #, c-format
 msgid "Vitality %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:111 src/net/tmwa/generalhandler.cpp:115
+#: src/net/eathena/generalhandler.cpp:113 src/net/tmwa/generalhandler.cpp:117
 #, c-format
 msgid "Intelligence %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:112 src/net/tmwa/generalhandler.cpp:117
+#: src/net/eathena/generalhandler.cpp:114 src/net/tmwa/generalhandler.cpp:119
 #, c-format
 msgid "Dexterity %s"
 msgstr ""
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:113 src/net/tmwa/generalhandler.cpp:119
+#: src/net/eathena/generalhandler.cpp:115 src/net/tmwa/generalhandler.cpp:121
 #, c-format
 msgid "Luck %s"
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:136 src/net/tmwa/generalhandler.cpp:145
+#: src/net/eathena/generalhandler.cpp:138 src/net/tmwa/generalhandler.cpp:147
 msgid "Authentication failed."
 msgstr "Tunnistus epäonnistui."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:139 src/net/tmwa/generalhandler.cpp:149
+#: src/net/eathena/generalhandler.cpp:141 src/net/tmwa/generalhandler.cpp:151
 msgid "No servers available."
 msgstr "Palvelimia ei saatavilla."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:144 src/net/tmwa/generalhandler.cpp:155
+#: src/net/eathena/generalhandler.cpp:146 src/net/tmwa/generalhandler.cpp:157
 msgid "Someone else is trying to use this account."
 msgstr "Joku muu yrittää käyttää tätä tunnusta."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:149 src/net/tmwa/generalhandler.cpp:161
+#: src/net/eathena/generalhandler.cpp:151 src/net/tmwa/generalhandler.cpp:163
 msgid "This account is already logged in."
 msgstr "Tällä tunnuksella on jo kirjauduttu."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:153 src/net/tmwa/generalhandler.cpp:166
+#: src/net/eathena/generalhandler.cpp:155 src/net/tmwa/generalhandler.cpp:168
 msgid "Speed hack detected."
 msgstr "Nopeusviritelmä havaittu."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:156 src/net/tmwa/generalhandler.cpp:170
+#: src/net/eathena/generalhandler.cpp:158 src/net/tmwa/generalhandler.cpp:172
 msgid "Duplicated login."
 msgstr "Kaksinkertainen sisäänkirjautuminen."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:159 src/net/tmwa/generalhandler.cpp:174
+#: src/net/eathena/generalhandler.cpp:161 src/net/tmwa/generalhandler.cpp:176
 msgid "Unknown connection error."
 msgstr "Tuntematon yhteysongelma."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:233 src/net/tmwa/generalhandler.cpp:256
+#: src/net/eathena/generalhandler.cpp:236 src/net/tmwa/generalhandler.cpp:259
 msgid "Got disconnected from server!"
 msgstr "Yhteys palvelimeen katkesi!"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:258 src/net/tmwa/generalhandler.cpp:284
+#: src/net/eathena/generalhandler.cpp:261 src/net/tmwa/generalhandler.cpp:287
 msgid "Strength"
 msgstr "Voima"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:259 src/net/tmwa/generalhandler.cpp:286
+#: src/net/eathena/generalhandler.cpp:262 src/net/tmwa/generalhandler.cpp:289
 msgid "Agility"
 msgstr "Ketteryys"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:260 src/net/tmwa/generalhandler.cpp:288
+#: src/net/eathena/generalhandler.cpp:263 src/net/tmwa/generalhandler.cpp:291
 msgid "Vitality"
 msgstr "Elinvoima"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:261 src/net/tmwa/generalhandler.cpp:290
+#: src/net/eathena/generalhandler.cpp:264 src/net/tmwa/generalhandler.cpp:293
 msgid "Intelligence"
 msgstr "Älykkyys"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:262 src/net/tmwa/generalhandler.cpp:292
+#: src/net/eathena/generalhandler.cpp:265 src/net/tmwa/generalhandler.cpp:295
 msgid "Dexterity"
 msgstr "Näppäryys"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:263 src/net/tmwa/generalhandler.cpp:294
+#: src/net/eathena/generalhandler.cpp:266 src/net/tmwa/generalhandler.cpp:297
 msgid "Luck"
 msgstr "Tuuri"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:266 src/net/tmwa/generalhandler.cpp:299
+#: src/net/eathena/generalhandler.cpp:269 src/net/tmwa/generalhandler.cpp:302
 msgid "Defense"
 msgstr "Puolustus"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:267 src/net/tmwa/generalhandler.cpp:301
+#: src/net/eathena/generalhandler.cpp:270 src/net/tmwa/generalhandler.cpp:304
 msgid "M.Attack"
 msgstr "T.-hyökkäys"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:268 src/net/tmwa/generalhandler.cpp:303
+#: src/net/eathena/generalhandler.cpp:271 src/net/tmwa/generalhandler.cpp:306
 msgid "M.Defense"
 msgstr "T.-puolustus"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:270 src/net/tmwa/generalhandler.cpp:306
+#: src/net/eathena/generalhandler.cpp:273 src/net/tmwa/generalhandler.cpp:309
 #, no-c-format
 msgid "% Accuracy"
 msgstr "% Tarkkuus"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:272 src/net/tmwa/generalhandler.cpp:309
+#: src/net/eathena/generalhandler.cpp:275 src/net/tmwa/generalhandler.cpp:312
 #, no-c-format
 msgid "% Evade"
 msgstr "% Välttö"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:274 src/net/tmwa/generalhandler.cpp:312
+#: src/net/eathena/generalhandler.cpp:277 src/net/tmwa/generalhandler.cpp:315
 #, no-c-format
 msgid "% Critical"
 msgstr "% Täysosuma"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:275 src/net/tmwa/generalhandler.cpp:314
+#: src/net/eathena/generalhandler.cpp:278 src/net/tmwa/generalhandler.cpp:317
 msgid "Attack Delay"
 msgstr "Hyökkäysviive"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:276 src/net/tmwa/generalhandler.cpp:316
+#: src/net/eathena/generalhandler.cpp:279 src/net/tmwa/generalhandler.cpp:319
 msgid "Walk Delay"
 msgstr "Kävelyviive"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:277 src/net/tmwa/generalhandler.cpp:318
+#: src/net/eathena/generalhandler.cpp:280 src/net/tmwa/generalhandler.cpp:321
 msgid "Attack Range"
 msgstr "Hyökkäyskantama"
 
 #. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:278 src/net/tmwa/generalhandler.cpp:320
+#: src/net/eathena/generalhandler.cpp:281 src/net/tmwa/generalhandler.cpp:323
 msgid "Damage per sec."
 msgstr "Vahinko sekunnissa."
 
@@ -8274,6 +8271,24 @@ msgstr ""
 #: src/resources/notifications.h:311
 msgid "unknown pvp"
 msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:315
+#, fuzzy, c-format
+msgid "Char from account %s is already in your party!"
+msgstr "%s ei ole ryhmässäsi!"
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:319
+#, c-format
+msgid "%s blocked invite!"
+msgstr ""
+
+#. TRANSLATORS: notification message
+#: src/resources/notifications.h:323
+#, fuzzy
+msgid "Char is not online!"
+msgstr "Kuka on linjoilla"
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27
