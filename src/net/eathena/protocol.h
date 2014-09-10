@@ -273,6 +273,7 @@
 #define CMSG_TRADE_OK                0x00ef
 
 #define CMSG_PARTY_CREATE            0x00f9
+#define CMSG_PARTY_CREATE2           0x01e8
 #define CMSG_PARTY_INVITE            0x00fc
 #define CMSG_PARTY_INVITED           0x00ff
 #define CMSG_PARTY_LEAVE             0x0100
