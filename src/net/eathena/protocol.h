@@ -287,6 +287,7 @@
 #define CMSG_MOVE_TO_CART            0x0126
 #define CMSG_MOVE_FROM_CART          0x0127
 #define CMSG_CHANGE_CART             0x01af
+#define CMSG_MOVE_FROM_STORAGE_TO_CART 0x0128
 #define CMSG_MOVE_FROM_CART_TO_STORAGE 0x0129
 
 #define CMSG_ADMIN_ANNOUNCE          0x0099
