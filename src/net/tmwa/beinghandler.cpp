@@ -974,10 +974,9 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg)
 
     msg.readUInt8("unknown");
     msg.readUInt8("unknown");
-    msg.readInt16("unknown");
-
-    if (visible)
-        msg.readUInt8("unknown");
+    msg.readUInt8("unknown");
+    msg.readUInt8("unknown");
+    msg.readUInt8("unknown");
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
