@@ -41,7 +41,7 @@ MailHandler::MailHandler() :
     mailHandler = this;
 }
 
-void MailHandler::handleMessage(Net::MessageIn &msg)
+void MailHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
