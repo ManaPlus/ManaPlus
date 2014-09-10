@@ -474,22 +474,6 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
         return;
     }
 
-    int msgType;
-    switch (msg.getId())
-    {
-        case SMSG_PLAYER_UPDATE_1:
-            msgType = 1;
-            break;
-        case SMSG_PLAYER_UPDATE_2:
-            msgType = 2;
-            break;
-        case SMSG_PLAYER_MOVE:
-            msgType = 3;
-            break;
-        default:
-            return;
-    }
-
     // An update about a player, potentially including movement.
     const int id = msg.readInt32("account id");
     const int16_t speed = msg.readInt16("speed");
@@ -548,9 +532,6 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
     const uint16_t shield = msg.readInt16("shield");
     const uint16_t headBottom = msg.readInt16("head bottom");
 
-    if (msgType == 3)
-        msg.readInt32("tick");
-
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
     const uint8_t hairColor = msg.readUInt8("hair color");
@@ -606,102 +587,57 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
     }
     localPlayer->imitateOutfit(dstBeing);
 
-    if (msgType == 3)
-    {
-        uint16_t srcX, srcY, dstX, dstY;
-        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "moving path");
+    uint16_t x, y;
+    msg.readCoordinates(x, y, dir, "position");
+    dstBeing->setTileCoords(x, y);
+    dstBeing->setDirection(dir);
 
-        localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
-
-        dstBeing->setTileCoords(srcX, srcY);
-        dstBeing->setDestination(dstX, dstY);
-
-        // because server don't send direction in move packet,
-        // we fixing it
-
-        if (srcX != dstX || srcY != dstY)
-        {
-            const int d = dstBeing->calcDirection(dstX, dstY);
-
-            if (d && dstBeing->getDirection() != d)
-                dstBeing->setDirectionDelayed(static_cast<uint8_t>(d));
-        }
-
-        if (localPlayer->getCurrentAction() != BeingAction::STAND)
-            localPlayer->imitateAction(dstBeing, BeingAction::STAND);
-        if (localPlayer->getDirection() != dstBeing->getDirection())
-        {
-            localPlayer->imitateDirection(dstBeing,
-                dstBeing->getDirection());
-        }
-    }
-    else
-    {
-//        uint8_t dir;
-        uint16_t x, y;
-        msg.readCoordinates(x, y, dir, "position");
-        dstBeing->setTileCoords(x, y);
-        dstBeing->setDirection(dir);
-
-        localPlayer->imitateDirection(dstBeing, dir);
-    }
+    localPlayer->imitateDirection(dstBeing, dir);
 
     const uint16_t gmstatus = msg.readInt16("gm status");
 
     if (gmstatus & 0x80)
         dstBeing->setGM(true);
 
-    if (msgType == 1 || msgType == 2)
+    const uint8_t type = msg.readUInt8("action type");
+    switch (type)
     {
-        const uint8_t type = msg.readUInt8("action type");
-        switch (type)
-        {
-            case 0:
-                dstBeing->setAction(BeingAction::STAND, 0);
-                localPlayer->imitateAction(dstBeing, BeingAction::STAND);
-                break;
+        case 0:
+            dstBeing->setAction(BeingAction::STAND, 0);
+            localPlayer->imitateAction(dstBeing, BeingAction::STAND);
+            break;
 
-            case 1:
-                if (dstBeing->getCurrentAction() != BeingAction::DEAD)
-                {
-                    dstBeing->setAction(BeingAction::DEAD, 0);
-                    dstBeing->recalcSpritesOrder();
-                }
-                break;
+        case 1:
+            if (dstBeing->getCurrentAction() != BeingAction::DEAD)
+            {
+                dstBeing->setAction(BeingAction::DEAD, 0);
+                dstBeing->recalcSpritesOrder();
+            }
+            break;
 
-            case 2:
-                dstBeing->setAction(BeingAction::SIT, 0);
-                localPlayer->imitateAction(dstBeing, BeingAction::SIT);
-                break;
+        case 2:
+            dstBeing->setAction(BeingAction::SIT, 0);
+            localPlayer->imitateAction(dstBeing, BeingAction::SIT);
+            break;
 
-            default:
-                // need set stand state?
-                logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:"
-                    + toString(id) + " " + toString(type));
-                logger->log("dstBeing id:"
-                    + toString(dstBeing->getId()));
-                logger->log("dstBeing name:"
-                    + dstBeing->getName());
-                break;
-        }
-    }
-    else if (msgType == 3)
-    {
-        msg.readUInt8("unused");
+        default:
+            // need set stand state?
+            logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:"
+                + toString(id) + " " + toString(type));
+            logger->log("dstBeing id:"
+                + toString(dstBeing->getId()));
+            logger->log("dstBeing name:"
+                + dstBeing->getName());
+            break;
     }
 
     const int level = static_cast<int>(msg.readUInt8("level"));
     if (level)
         dstBeing->setLevel(level);
 
-    if (msgType != 2)
-        msg.readUInt8("unused");
+    msg.readUInt8("unused");
 
-    if (dstBeing->getType() != ActorType::PLAYER
-        || msgType != 3)
-    {
-        dstBeing->setActionTime(tick_time);
-    }
+    dstBeing->setActionTime(tick_time);
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
@@ -709,8 +645,6 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffff));
 
-    if (msgType == 3 && dstBeing->getType() == ActorType::PLAYER)
-        dstBeing->setMoveTime();
     BLOCK_END("BeingHandler::processPlayerMoveUpdate")
 }
 
@@ -723,22 +657,6 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
         return;
     }
 
-    int msgType;
-    switch (msg.getId())
-    {
-        case SMSG_PLAYER_UPDATE_1:
-            msgType = 1;
-            break;
-        case SMSG_PLAYER_UPDATE_2:
-            msgType = 2;
-            break;
-        case SMSG_PLAYER_MOVE:
-            msgType = 3;
-            break;
-        default:
-            return;
-    }
-
     // An update about a player, potentially including movement.
     const int id = msg.readInt32("account id");
     const int16_t speed = msg.readInt16("speed");
@@ -796,10 +714,6 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
     const uint16_t weapon = msg.readInt16("weapon");
     const uint16_t shield = msg.readInt16("shield");
     const uint16_t headBottom = msg.readInt16("head bottom");
-
-    if (msgType == 3)
-        msg.readInt32("tick");
-
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
     const uint8_t hairColor = msg.readUInt8("hair color");
@@ -855,111 +769,61 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
     }
     localPlayer->imitateOutfit(dstBeing);
 
-    if (msgType == 3)
-    {
-        uint16_t srcX, srcY, dstX, dstY;
-        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "moving path");
+    uint16_t x, y;
+    msg.readCoordinates(x, y, dir, "position");
+    dstBeing->setTileCoords(x, y);
+    dstBeing->setDirection(dir);
 
-        localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
-
-        dstBeing->setTileCoords(srcX, srcY);
-        dstBeing->setDestination(dstX, dstY);
-
-        // because server don't send direction in move packet,
-        // we fixing it
-
-        if (srcX != dstX || srcY != dstY)
-        {
-            const int d = dstBeing->calcDirection(dstX, dstY);
-
-            if (d && dstBeing->getDirection() != d)
-                dstBeing->setDirectionDelayed(static_cast<uint8_t>(d));
-        }
-
-        if (localPlayer->getCurrentAction() != BeingAction::STAND)
-            localPlayer->imitateAction(dstBeing, BeingAction::STAND);
-        if (localPlayer->getDirection() != dstBeing->getDirection())
-        {
-            localPlayer->imitateDirection(dstBeing,
-                dstBeing->getDirection());
-        }
-    }
-    else
-    {
-//        uint8_t dir;
-        uint16_t x, y;
-        msg.readCoordinates(x, y, dir, "position");
-        dstBeing->setTileCoords(x, y);
-        dstBeing->setDirection(dir);
-
-        localPlayer->imitateDirection(dstBeing, dir);
-    }
+    localPlayer->imitateDirection(dstBeing, dir);
 
     const uint16_t gmstatus = msg.readInt16("gm status");
 
     if (gmstatus & 0x80)
         dstBeing->setGM(true);
 
-    if (msgType == 1 || msgType == 2)
+    const uint8_t type = msg.readUInt8("action type");
+    switch (type)
     {
-        const uint8_t type = msg.readUInt8("action type");
-        switch (type)
-        {
-            case 0:
-                dstBeing->setAction(BeingAction::STAND, 0);
-                localPlayer->imitateAction(dstBeing, BeingAction::STAND);
-                break;
+        case 0:
+            dstBeing->setAction(BeingAction::STAND, 0);
+            localPlayer->imitateAction(dstBeing, BeingAction::STAND);
+            break;
 
-            case 1:
-                if (dstBeing->getCurrentAction() != BeingAction::DEAD)
-                {
-                    dstBeing->setAction(BeingAction::DEAD, 0);
-                    dstBeing->recalcSpritesOrder();
-                }
-                break;
+        case 1:
+            if (dstBeing->getCurrentAction() != BeingAction::DEAD)
+            {
+                dstBeing->setAction(BeingAction::DEAD, 0);
+                dstBeing->recalcSpritesOrder();
+            }
+            break;
 
-            case 2:
-                dstBeing->setAction(BeingAction::SIT, 0);
-                localPlayer->imitateAction(dstBeing, BeingAction::SIT);
-                break;
+        case 2:
+            dstBeing->setAction(BeingAction::SIT, 0);
+            localPlayer->imitateAction(dstBeing, BeingAction::SIT);
+            break;
 
-            default:
-                // need set stand state?
-                logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:"
-                    + toString(id) + " " + toString(type));
-                logger->log("dstBeing id:"
-                    + toString(dstBeing->getId()));
-                logger->log("dstBeing name:"
-                    + dstBeing->getName());
-                break;
-        }
-    }
-    else if (msgType == 3)
-    {
-        msg.readUInt8("unused");
+        default:
+            // need set stand state?
+            logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:"
+                + toString(id) + " " + toString(type));
+            logger->log("dstBeing id:"
+                + toString(dstBeing->getId()));
+            logger->log("dstBeing name:"
+                + dstBeing->getName());
+            break;
     }
 
     const int level = static_cast<int>(msg.readUInt8("level"));
     if (level)
         dstBeing->setLevel(level);
 
-    if (msgType != 2)
-        msg.readUInt8("unused");
-
-    if (dstBeing->getType() != ActorType::PLAYER
-        || msgType != 3)
-    {
-        dstBeing->setActionTime(tick_time);
-    }
-
+    dstBeing->setActionTime(tick_time);
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
         (statusEffects >> 16) & 0xffff));
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffff));
 
-    if (msgType == 3 && dstBeing->getType() == ActorType::PLAYER)
-        dstBeing->setMoveTime();
     BLOCK_END("BeingHandler::processPlayerMoveUpdate")
 }
 
@@ -972,22 +836,6 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
         return;
     }
 
-    int msgType;
-    switch (msg.getId())
-    {
-        case SMSG_PLAYER_UPDATE_1:
-            msgType = 1;
-            break;
-        case SMSG_PLAYER_UPDATE_2:
-            msgType = 2;
-            break;
-        case SMSG_PLAYER_MOVE:
-            msgType = 3;
-            break;
-        default:
-            return;
-    }
-
     // An update about a player, potentially including movement.
     const int id = msg.readInt32("account id");
     const int16_t speed = msg.readInt16("speed");
@@ -1046,8 +894,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
     const uint16_t shield = msg.readInt16("shield");
     const uint16_t headBottom = msg.readInt16("head bottom");
 
-    if (msgType == 3)
-        msg.readInt32("tick");
+    msg.readInt32("tick");
 
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
@@ -1104,44 +951,31 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
     }
     localPlayer->imitateOutfit(dstBeing);
 
-    if (msgType == 3)
+    uint16_t srcX, srcY, dstX, dstY;
+    msg.readCoordinatePair(srcX, srcY, dstX, dstY, "moving path");
+
+    localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
+
+    dstBeing->setTileCoords(srcX, srcY);
+    dstBeing->setDestination(dstX, dstY);
+
+    // because server don't send direction in move packet,
+    // we fixing it
+
+    if (srcX != dstX || srcY != dstY)
     {
-        uint16_t srcX, srcY, dstX, dstY;
-        msg.readCoordinatePair(srcX, srcY, dstX, dstY, "moving path");
+        const int d = dstBeing->calcDirection(dstX, dstY);
 
-        localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
-
-        dstBeing->setTileCoords(srcX, srcY);
-        dstBeing->setDestination(dstX, dstY);
-
-        // because server don't send direction in move packet,
-        // we fixing it
-
-        if (srcX != dstX || srcY != dstY)
-        {
-            const int d = dstBeing->calcDirection(dstX, dstY);
-
-            if (d && dstBeing->getDirection() != d)
-                dstBeing->setDirectionDelayed(static_cast<uint8_t>(d));
-        }
-
-        if (localPlayer->getCurrentAction() != BeingAction::STAND)
-            localPlayer->imitateAction(dstBeing, BeingAction::STAND);
-        if (localPlayer->getDirection() != dstBeing->getDirection())
-        {
-            localPlayer->imitateDirection(dstBeing,
-                dstBeing->getDirection());
-        }
+        if (d && dstBeing->getDirection() != d)
+            dstBeing->setDirectionDelayed(static_cast<uint8_t>(d));
     }
-    else
-    {
-//        uint8_t dir;
-        uint16_t x, y;
-        msg.readCoordinates(x, y, dir, "position");
-        dstBeing->setTileCoords(x, y);
-        dstBeing->setDirection(dir);
 
-        localPlayer->imitateDirection(dstBeing, dir);
+    if (localPlayer->getCurrentAction() != BeingAction::STAND)
+        localPlayer->imitateAction(dstBeing, BeingAction::STAND);
+    if (localPlayer->getDirection() != dstBeing->getDirection())
+    {
+        localPlayer->imitateDirection(dstBeing,
+            dstBeing->getDirection());
     }
 
     const uint16_t gmstatus = msg.readInt16("gm status");
@@ -1149,57 +983,16 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
     if (gmstatus & 0x80)
         dstBeing->setGM(true);
 
-    if (msgType == 1 || msgType == 2)
-    {
-        const uint8_t type = msg.readUInt8("action type");
-        switch (type)
-        {
-            case 0:
-                dstBeing->setAction(BeingAction::STAND, 0);
-                localPlayer->imitateAction(dstBeing, BeingAction::STAND);
-                break;
-
-            case 1:
-                if (dstBeing->getCurrentAction() != BeingAction::DEAD)
-                {
-                    dstBeing->setAction(BeingAction::DEAD, 0);
-                    dstBeing->recalcSpritesOrder();
-                }
-                break;
-
-            case 2:
-                dstBeing->setAction(BeingAction::SIT, 0);
-                localPlayer->imitateAction(dstBeing, BeingAction::SIT);
-                break;
-
-            default:
-                // need set stand state?
-                logger->log("QQQ2 SMSG_PLAYER_UPDATE_1:"
-                    + toString(id) + " " + toString(type));
-                logger->log("dstBeing id:"
-                    + toString(dstBeing->getId()));
-                logger->log("dstBeing name:"
-                    + dstBeing->getName());
-                break;
-        }
-    }
-    else if (msgType == 3)
-    {
-        msg.readUInt8("unused");
-    }
+    msg.readUInt8("unused");
 
     const int level = static_cast<int>(msg.readUInt8("level"));
     if (level)
         dstBeing->setLevel(level);
 
-    if (msgType != 2)
-        msg.readUInt8("unused");
+    msg.readUInt8("unused");
 
-    if (dstBeing->getType() != ActorType::PLAYER
-        || msgType != 3)
-    {
+    if (dstBeing->getType() != ActorType::PLAYER)
         dstBeing->setActionTime(tick_time);
-    }
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
@@ -1207,7 +1000,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffff));
 
-    if (msgType == 3 && dstBeing->getType() == ActorType::PLAYER)
+    if (dstBeing->getType() == ActorType::PLAYER)
         dstBeing->setMoveTime();
     BLOCK_END("BeingHandler::processPlayerMoveUpdate")
 }
