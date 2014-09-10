@@ -119,8 +119,9 @@ void Network::dispatchMessages()
         if (len == 0)
         {
             // need copy data for safty
-            std::string str = strprintf("Wrong packet %u ""received. Exiting.",
-                msgId);
+            std::string str = strprintf(
+                "Wrong packet %u 0x%x received. Exiting.",
+                msgId, msgId);
             logger->safeError(str);
         }
 
@@ -130,7 +131,7 @@ void Network::dispatchMessages()
             if (handler)
                 handler->handleMessage(msg);
             else
-                logger->log("Unhandled packet: %x", msgId);
+                logger->log("Unhandled packet: %u 0x%x", msgId, msgId);
         }
 
         skip(len);
