@@ -3062,11 +3062,15 @@ void LocalPlayer::setRealPos(const int x, const int y)
             layer->setTile(mCrossX, mCrossY, MapItemType::EMPTY);
         }
 
-        if (mShowServerPos && (!layer->getTile(x, y)
-            || layer->getTile(x, y)->getType() == MapItemType::EMPTY))
+        if (mShowServerPos)
         {
-            if (getTileX() != x && getTileY() != y)
-                layer->setTile(x, y, MapItemType::CROSS);
+            const MapItem *const mapItem = layer->getTile(x, y);
+
+            if (!mapItem || mapItem->getType() == MapItemType::EMPTY)
+            {
+                if (getTileX() != x && getTileY() != y)
+                    layer->setTile(x, y, MapItemType::CROSS);
+            }
         }
 
         mCrossX = x;
