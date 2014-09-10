@@ -32,6 +32,7 @@
 
 #include "net/net.h"
 #include "net/partyhandler.h"
+#include "net/serverfeatures.h"
 
 #include "gui/windows/chatwindow.h"
 
@@ -195,6 +196,11 @@ bool PartyTab::handleCommand(const std::string &restrict type,
                 break;
         }
     }
+    else if (type == "setleader"
+             && Net::getServerFeatures()->haveChangePartyLeader())
+    {
+        Net::getPartyHandler()->changeLeader(args);
+    }
     else
     {
         return false;
@@ -222,6 +228,8 @@ void PartyTab::getAutoCompleteCommands(StringVect &names) const
     names.push_back("/kick ");
     names.push_back("/item");
     names.push_back("/exp");
+    if (Net::getServerFeatures()->haveChangePartyLeader())
+        names.push_back("/setleader ");
 }
 
 void PartyTab::saveToLogFile(const std::string &msg) const
