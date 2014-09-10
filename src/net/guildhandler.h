@@ -80,6 +80,8 @@ class GuildHandler notfinal
                                   const std::string &restrict msg1,
                                   const std::string &restrict msg2) const = 0;
 
+        virtual void checkMaster() const = 0;
+
         virtual void clear() const = 0;
 
         virtual ChatTab *getTab() const = 0;

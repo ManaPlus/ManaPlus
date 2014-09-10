@@ -70,6 +70,8 @@ class GuildHandler final : public Ea::GuildHandler, public MessageHandler
                           const std::string &restrict msg1,
                           const std::string &restrict msg2)
                           const override final;
+
+        void checkMaster() const;
 };
 
     extern Ea::GuildTab *guildTab;

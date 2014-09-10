@@ -329,4 +329,9 @@ void GuildHandler::changeNotice(const int guildId,
     msg.writeString(msg2, 120);  // msg2
 }
 
+void GuildHandler::checkMaster() const
+{
+    MessageOut msg(CMSG_GUILD_CHECK_MASTER);
+}
+
 }  // namespace TmwAthena
