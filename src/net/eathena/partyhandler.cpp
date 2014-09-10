@@ -124,15 +124,6 @@ void PartyHandler::create(const std::string &name) const
     outMsg.writeString(name.substr(0, 23), 24);
 }
 
-void PartyHandler::invite(const Being *const being) const
-{
-    if (being)
-    {
-        MessageOut outMsg(CMSG_PARTY_INVITE);
-        outMsg.writeInt32(being->getId());
-    }
-}
-
 void PartyHandler::invite(const std::string &name) const
 {
     if (!actorManager)

@@ -46,8 +46,6 @@ class PartyHandler notfinal
 
         virtual void join(const int partyId) const = 0;
 
-        virtual void invite(const Being *const player) const = 0;
-
         virtual void invite(const std::string &name) const = 0;
 
         virtual void inviteResponse(const std::string &inviter,
