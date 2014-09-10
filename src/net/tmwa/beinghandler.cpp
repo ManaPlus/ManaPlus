@@ -996,6 +996,7 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     msg.readInt16("opt2");
     msg.readInt16("option");
     msg.readInt16("disguise");
+    msg.skip(25, "unused");
     BLOCK_END("BeingHandler::processBeingSpawn")
 }
 
