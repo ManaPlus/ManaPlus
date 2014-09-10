@@ -229,6 +229,12 @@ void InventoryHandler::moveItem2(const int source, const int slot,
         outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET));
         outMsg.writeInt32(amount);
     }
+    else if (source == Inventory::CART && destination == Inventory::STORAGE)
+    {
+        MessageOut outMsg(CMSG_MOVE_FROM_CART_TO_STORAGE);
+        outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET));
+        outMsg.writeInt32(amount);
+    }
 }
 
 void InventoryHandler::useCard(const int index) const
