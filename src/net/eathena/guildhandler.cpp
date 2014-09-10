@@ -272,8 +272,9 @@ void GuildHandler::chat(const int guildId A_UNUSED,
     const std::string str = std::string(localPlayer->getName()).append(
         " : ").append(text);
     MessageOut msg(CMSG_GUILD_MESSAGE);
-    msg.writeInt16(static_cast<uint16_t>(str.size() + 4));
+    msg.writeInt16(static_cast<uint16_t>(str.size() + 4 + 1));
     msg.writeString(str, static_cast<int>(str.length()));
+    msg.writeInt8(0);
 }
 
 void GuildHandler::memberList(const int guildId A_UNUSED) const
