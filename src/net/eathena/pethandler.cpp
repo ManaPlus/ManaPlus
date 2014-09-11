@@ -85,4 +85,10 @@ void PetHandler::catchPet(const Being *const being) const
     outMsg.writeInt32(being->getId(), "monster id");
 }
 
+void PetHandler::requestPetState(const int data) const
+{
+    MessageOut outMsg(CMSG_PET_REQUEST_STATE);
+    outMsg.writeInt32(data, "param");
+}
+
 }  // namespace EAthena
