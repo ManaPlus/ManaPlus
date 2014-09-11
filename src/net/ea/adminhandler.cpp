@@ -67,11 +67,6 @@ void AdminHandler::mute(const int playerId A_UNUSED, const int type A_UNUSED,
     return;
 }
 
-void AdminHandler::gotoName(const std::string &name) const
-{
-    Net::getChatHandler()->talk("@goto " + name, GENERAL_CHANNEL);
-}
-
 void AdminHandler::recallName(const std::string &name) const
 {
     Net::getChatHandler()->talk("@recall " + name, GENERAL_CHANNEL);

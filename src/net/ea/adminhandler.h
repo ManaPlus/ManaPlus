@@ -54,8 +54,6 @@ class AdminHandler notfinal : public Net::AdminHandler
         virtual void mute(const int playerId, const int type,
                           const int limit) const override final;
 
-        void gotoName(const std::string &name) const;
-
         void recallName(const std::string &name) const override final;
 
         void reviveName(const std::string &name) const override final;

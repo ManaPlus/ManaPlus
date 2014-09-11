@@ -122,4 +122,8 @@ void AdminHandler::resetSkills() const
     outMsg.writeInt16(1, "flag");
 }
 
+void AdminHandler::gotoName(const std::string &name) const
+{
+}
+
 }  // namespace EAthena
