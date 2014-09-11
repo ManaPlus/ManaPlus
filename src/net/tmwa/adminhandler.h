@@ -57,6 +57,8 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
         void resetSkills() const override final;
 
         void gotoName(const std::string &name) const override final;
+
+        void recallName(const std::string &name) const override final;
 };
 
 }  // namespace TmwAthena
