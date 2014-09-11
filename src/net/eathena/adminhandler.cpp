@@ -153,4 +153,13 @@ void AdminHandler::muteName(const std::string &name) const
     outMsg.writeString(name, 24, "name");
 }
 
+void AdminHandler::requestLogin(const Being *const being) const
+{
+    if (!being)
+        return;
+
+    MessageOut outMsg(CMSG_ADMIN_ID_TO_LOGIN);
+    outMsg.writeInt32(being->getId(), "account id");
+}
+
 }  // namespace EAthena

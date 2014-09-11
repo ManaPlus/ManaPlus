@@ -65,6 +65,8 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
                   const int limit) const override final;
 
         void muteName(const std::string &name) const override final;
+
+        void requestLogin(const Being *const being) const override final;
 };
 
 }  // namespace TmwAthena

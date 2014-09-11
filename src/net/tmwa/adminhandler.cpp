@@ -138,4 +138,8 @@ void AdminHandler::muteName(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::requestLogin(const Being *const being A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
