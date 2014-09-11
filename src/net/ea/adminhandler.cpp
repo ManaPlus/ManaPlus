@@ -61,12 +61,6 @@ void AdminHandler::unbanName(const std::string &name) const
     Net::getChatHandler()->talk("@unban " + name, GENERAL_CHANNEL);
 }
 
-void AdminHandler::mute(const int playerId A_UNUSED, const int type A_UNUSED,
-                        const int limit A_UNUSED) const
-{
-    return;
-}
-
 void AdminHandler::reviveName(const std::string &name) const
 {
     Net::getChatHandler()->talk("@revive " + name, GENERAL_CHANNEL);
