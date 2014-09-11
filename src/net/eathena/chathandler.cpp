@@ -59,6 +59,7 @@ ChatHandler::ChatHandler() :
         SMSG_MVP,  // MVP
         SMSG_IGNORE_ALL_RESPONSE,
         SMSG_COLOR_MESSAGE,
+        SMSG_CHAT_IGNORE_LIST,
         0
     };
     handledMessages = _messages;
@@ -99,6 +100,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_IGNORE_ALL_RESPONSE:
             processIgnoreAllResponse(msg);
+            break;
+
+        case SMSG_CHAT_IGNORE_LIST:
+            processChatIgnoreList(msg);
             break;
 
         default:
@@ -341,6 +346,14 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
     const uint8_t type = msg.readUInt8("response");
     msg.readInt32("unknown");
     processWhisperResponseContinue(type);
+}
+
+void ChatHandler::processChatIgnoreList(Net::MessageIn &msg)
+{
+    // +++ need put it in some object or window
+    const int count = (msg.readInt16("len") - 4) / 24;
+    for (int f = 0; f < count; f ++)
+        msg.readString(24, "nick");
 }
 
 }  // namespace EAthena

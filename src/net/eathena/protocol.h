@@ -204,6 +204,8 @@
 #define SMSG_MONSTER_HP              0x0977
 #define SMSG_PLAYER_HP               0x080e
 
+#define SMSG_CHAT_IGNORE_LIST        0x00d4
+
 #define SMSG_MAIL_OPEN_WINDOW        0x0260
 
 #define SMSG_PET_MESSAGE             0x01aa
