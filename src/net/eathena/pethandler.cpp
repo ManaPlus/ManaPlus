@@ -22,9 +22,11 @@
 
 #include "gui/chatconsts.h"
 
+#include "net/chathandler.h"
 #include "net/net.h"
 
-#include "net/chathandler.h"
+#include "net/eathena/messageout.h"
+#include "net/eathena/protocol.h"
 
 #include "debug.h"
 
@@ -72,6 +74,15 @@ void PetHandler::emote(const uint8_t emoteId, const int petId A_UNUSED)
 
     Net::getChatHandler()->talk(strprintf("\302\202\302e%dz%d",
         static_cast<int>(emoteId), mRandCounter), GENERAL_CHANNEL);
+}
+
+void PetHandler::catchPet(const Being *const being) const
+{
+    if (!being)
+        return;
+
+    MessageOut outMsg(CMSG_PET_CATCH);
+    outMsg.writeInt32(being->getId());
 }
 
 }  // namespace EAthena

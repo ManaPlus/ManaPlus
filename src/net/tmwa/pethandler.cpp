@@ -74,4 +74,8 @@ void PetHandler::emote(const uint8_t emoteId, const int petId A_UNUSED)
         static_cast<int>(emoteId), mRandCounter), GENERAL_CHANNEL);
 }
 
+void PetHandler::catchPet(const Being *const being A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

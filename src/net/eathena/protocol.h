@@ -337,6 +337,8 @@
 #define CMSG_REMOVE_OPTION           0x012a
 #define CMSG_PLAYER_SET_MEMO         0x011d
 
+#define CMSG_PET_CATCH               0x019f
+
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb
 #define SMSG_SKILL_CAST_CANCEL       0x01b9

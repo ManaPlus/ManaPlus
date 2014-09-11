@@ -49,6 +49,8 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
         void emote(const uint8_t emoteId,
                    const int petId) override final;
 
+        void catchPet(const Being *const being) const override final;
+
     protected:
         int mRandCounter;
 };
