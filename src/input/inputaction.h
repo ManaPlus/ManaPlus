@@ -478,6 +478,8 @@ namespace InputAction
         PET_EMOTE_47,
         PET_EMOTE_48,
         CATCH_PET,
+        IGNORE_WHISPER,
+        UNIGNORE_WHISPER,
         TOTAL
     };
 }  // namespace InputAction

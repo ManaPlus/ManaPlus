@@ -71,6 +71,8 @@ namespace Actions
     decHandler(gm);
     decHandler(hack);
     decHandler(debugSpawn);
+    decHandler(serverIgnoreWhisper);
+    decHandler(serverUnIgnoreWhisper);
 }  // namespace Actions
 
 #undef decHandler

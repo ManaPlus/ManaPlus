@@ -668,4 +668,24 @@ impHandler(debugSpawn)
     return true;
 }
 
+impHandler0(serverIgnoreWhisper)
+{
+    std::string args = getNick(event);
+    if (args.empty())
+        return false;
+
+    Net::getChatHandler()->ignore(args);
+    return true;
+}
+
+impHandler0(serverUnIgnoreWhisper)
+{
+    std::string args = getNick(event);
+    if (args.empty())
+        return false;
+
+    Net::getChatHandler()->unIgnore(args);
+    return true;
+}
+
 }  // namespace Actions
