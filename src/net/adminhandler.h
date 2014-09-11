@@ -23,6 +23,7 @@
 #ifndef NET_ADMINHANDLER_H
 #define NET_ADMINHANDLER_H
 
+#include "being/being.h"
 #include <iosfwd>
 #include <string>
 
@@ -57,7 +58,8 @@ class AdminHandler notfinal
 
         virtual void unbanName(const std::string &name) const = 0;
 
-        virtual void mute(const int playerId, const int type,
+        virtual void mute(const Being *const being,
+                          const int type,
                           const int limit) const = 0;
 
         virtual void warp(const std::string &map,

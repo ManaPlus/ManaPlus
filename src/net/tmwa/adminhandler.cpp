@@ -127,7 +127,8 @@ void AdminHandler::recallName(const std::string &name) const
     Net::getChatHandler()->talk("@recall " + name, GENERAL_CHANNEL);
 }
 
-void AdminHandler::mute(const int playerId A_UNUSED, const int type A_UNUSED,
+void AdminHandler::mute(const Being *const being A_UNUSED,
+                        const int type A_UNUSED,
                         const int limit A_UNUSED) const
 {
     return;

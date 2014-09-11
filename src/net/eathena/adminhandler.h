@@ -60,7 +60,7 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
         void recallName(const std::string &name) const override final;
 
-        void mute(const int playerId,
+        void mute(const Being *const being,
                   const int type,
                   const int limit) const override final;
 

@@ -134,10 +134,17 @@ void AdminHandler::recallName(const std::string &name) const
     outMsg.writeString(name, 24, "name");
 }
 
-void AdminHandler::mute(const int playerId A_UNUSED, const int type A_UNUSED,
-                        const int limit A_UNUSED) const
+void AdminHandler::mute(const Being *const being,
+                        const int type,
+                        const int limit) const
 {
-    return;
+    if (!being)
+        return;
+
+    MessageOut outMsg(CMSG_ADMIN_MUTE);
+    outMsg.writeInt32(being->getId(), "account id");
+    outMsg.writeInt8(type, "type");
+    outMsg.writeInt16(limit, "value");
 }
 
 }  // namespace EAthena
