@@ -130,6 +130,8 @@ void AdminHandler::gotoName(const std::string &name) const
 
 void AdminHandler::recallName(const std::string &name) const
 {
+    MessageOut outMsg(CMSG_ADMIN_RECALL);
+    outMsg.writeString(name, 24, "name");
 }
 
 }  // namespace EAthena
