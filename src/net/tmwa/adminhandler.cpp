@@ -142,4 +142,9 @@ void AdminHandler::requestLogin(const Being *const being A_UNUSED) const
 {
 }
 
+void AdminHandler::setTileType(const int x A_UNUSED, const int y A_UNUSED,
+                               const int type A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

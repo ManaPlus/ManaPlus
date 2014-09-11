@@ -166,6 +166,15 @@ void AdminHandler::requestLogin(const Being *const being) const
     outMsg.writeInt32(being->getId(), "account id");
 }
 
+void AdminHandler::setTileType(const int x, const int y,
+                               const int type) const
+{
+    MessageOut outMsg(CMSG_ADMIN_SET_TILE_TYPE);
+    outMsg.writeInt16(x, "x");
+    outMsg.writeInt16(y, "y");
+    outMsg.writeInt16(type, "type");
+}
+
 void AdminHandler::processAdminGetLoginAck(Net::MessageIn &msg)
 {
     msg.readInt32("account id");

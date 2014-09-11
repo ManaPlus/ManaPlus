@@ -83,6 +83,9 @@ class AdminHandler notfinal
         virtual void resetSkills() const = 0;
 
         virtual void requestLogin(const Being *const being) const = 0;
+
+        virtual void setTileType(const int x, const int y,
+                                 const int type) const = 0;
 };
 
 }  // namespace Net
