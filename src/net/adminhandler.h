@@ -62,6 +62,8 @@ class AdminHandler notfinal
                           const int type,
                           const int limit) const = 0;
 
+        virtual void muteName(const std::string &name) const = 0;
+
         virtual void warp(const std::string &map,
                           const int x, const int y) const = 0;
 

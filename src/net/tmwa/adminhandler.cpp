@@ -134,4 +134,8 @@ void AdminHandler::mute(const Being *const being A_UNUSED,
     return;
 }
 
+void AdminHandler::muteName(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -63,6 +63,8 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
         void mute(const Being *const being,
                   const int type,
                   const int limit) const override final;
+
+        void muteName(const std::string &name) const override final;
 };
 
 }  // namespace TmwAthena

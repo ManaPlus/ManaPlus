@@ -64,6 +64,7 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
                   const int type,
                   const int limit) const override final;
 
+        void muteName(const std::string &name) const override final;
 };
 
 }  // namespace EAthena

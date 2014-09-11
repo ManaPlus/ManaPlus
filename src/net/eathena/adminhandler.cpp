@@ -147,4 +147,10 @@ void AdminHandler::mute(const Being *const being,
     outMsg.writeInt16(limit, "value");
 }
 
+void AdminHandler::muteName(const std::string &name) const
+{
+    MessageOut outMsg(CMSG_ADMIN_MUTE_NAME);
+    outMsg.writeString(name, 24, "name");
+}
+
 }  // namespace EAthena
