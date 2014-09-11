@@ -50,6 +50,7 @@ AdminHandler::AdminHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_ADMIN_KICK_ACK,
+        CMSG_ADMIN_GET_LOGIN_ACK,
         0
     };
     handledMessages = _messages;
@@ -65,6 +66,9 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
                 NotifyManager::notify(NotifyTypes::KICK_FAIL);
             else
                 NotifyManager::notify(NotifyTypes::KICK_SUCCEED);
+            break;
+        case CMSG_ADMIN_GET_LOGIN_ACK:
+            processAdminGetLoginAck(msg);
             break;
         default:
             break;
@@ -160,6 +164,12 @@ void AdminHandler::requestLogin(const Being *const being) const
 
     MessageOut outMsg(CMSG_ADMIN_ID_TO_LOGIN);
     outMsg.writeInt32(being->getId(), "account id");
+}
+
+void AdminHandler::processAdminGetLoginAck(Net::MessageIn &msg)
+{
+    msg.readInt32("account id");
+    msg.readString(24, "login");
 }
 
 }  // namespace EAthena

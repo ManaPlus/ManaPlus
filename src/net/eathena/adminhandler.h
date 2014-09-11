@@ -67,6 +67,9 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
         void muteName(const std::string &name) const override final;
 
         void requestLogin(const Being *const being) const override final;
+
+    protected:
+        void processAdminGetLoginAck(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
