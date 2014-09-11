@@ -300,6 +300,7 @@
 #define CMSG_ADMIN_LOCAL_ANNOUNCE    0x019C
 #define CMSG_ADMIN_HIDE              0x019D
 #define CMSG_ADMIN_KICK              0x00CC
+#define CMSG_ADMIN_KICK_ALL          0x00ce
 #define CMSG_ADMIN_MUTE              0x0149
 #define CMSG_ADMIN_RESET_PLAYER      0x0197
 

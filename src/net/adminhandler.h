@@ -47,6 +47,8 @@ class AdminHandler notfinal
 
         virtual void kickName(const std::string &name) const = 0;
 
+        virtual void kickAll() const = 0;
+
         virtual void ban(const int playerId) const = 0;
 
         virtual void banName(const std::string &name) const = 0;

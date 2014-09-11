@@ -99,6 +99,10 @@ void AdminHandler::kick(const int playerId) const
     outMsg.writeInt32(playerId, "account id");
 }
 
+void AdminHandler::kickAll() const
+{
+}
+
 void AdminHandler::warp(const std::string &map, const int x, const int y) const
 {
     Net::getChatHandler()->talk(strprintf(

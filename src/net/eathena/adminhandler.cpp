@@ -97,6 +97,11 @@ void AdminHandler::kick(const int playerId) const
     outMsg.writeInt32(playerId, "account id");
 }
 
+void AdminHandler::kickAll() const
+{
+    MessageOut outMsg(CMSG_ADMIN_KICK_ALL);
+}
+
 void AdminHandler::warp(const std::string &map, const int x, const int y) const
 {
     MessageOut outMsg(CMSG_PLAYER_MAPMOVE);

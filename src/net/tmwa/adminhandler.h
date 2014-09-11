@@ -47,6 +47,8 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
         void kick(const int playerId) const override final;
 
+        void kickAll() const override final;
+
         void warp(const std::string &map,
                   const int x, const int y) const override final;
 
