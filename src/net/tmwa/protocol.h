@@ -287,7 +287,9 @@
 #define CMSG_GUILD_ALLIANCE_DELETE   0x0183
 
 #define CMSG_SOLVE_CHAR_NAME         0x0193
+#define CMSG_IGNORE_NICK             0x00cf
 #define SMSG_SOLVE_CHAR_NAME         0x0194
+
 #define CMSG_CLIENT_DISCONNECT       0x7532
 #define SMSG_SKILL_CASTING           0x013e
 #define SMSG_SKILL_CAST_CANCEL       0x01b9

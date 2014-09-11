@@ -221,6 +221,21 @@ void ChatHandler::unIgnoreAll() const
     outMsg.writeInt8(1, "flag");
 }
 
+
+void ChatHandler::ignore(const std::string &nick) const
+{
+    MessageOut outMsg(CMSG_IGNORE_NICK);
+    outMsg.writeString(nick, 24, "nick");
+    outMsg.writeInt8(0, "flag");
+}
+
+void ChatHandler::unIgnore(const std::string &nick) const
+{
+    MessageOut outMsg(CMSG_IGNORE_NICK);
+    outMsg.writeString(nick, 24, "nick");
+    outMsg.writeInt8(1, "flag");
+}
+
 void ChatHandler::createChatRoom(const std::string &title,
                                  const std::string &password,
                                  const int limit,

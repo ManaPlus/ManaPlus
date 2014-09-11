@@ -64,6 +64,10 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         static void processRaw(MessageOut &restrict outMsg,
                                const std::string &restrict line);
 
+        void ignore(const std::string &nick) const override final;
+
+        void unIgnore(const std::string &nick) const override final;
+
     protected:
         void processChat(Net::MessageIn &msg);
 

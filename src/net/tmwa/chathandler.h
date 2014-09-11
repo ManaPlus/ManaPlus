@@ -64,6 +64,10 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
                             const int limit,
                             const bool isPublic) override final;
 
+        void ignore(const std::string &nick) const override final;
+
+        void unIgnore(const std::string &nick) const override final;
+
     protected:
         void processChat(Net::MessageIn &msg);
 
