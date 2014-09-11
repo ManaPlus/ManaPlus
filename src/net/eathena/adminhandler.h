@@ -73,6 +73,8 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
     protected:
         void processAdminGetLoginAck(Net::MessageIn &msg);
+
+        void processSetTileType(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

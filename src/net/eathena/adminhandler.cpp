@@ -51,6 +51,7 @@ AdminHandler::AdminHandler() :
     {
         SMSG_ADMIN_KICK_ACK,
         SMSG_ADMIN_GET_LOGIN_ACK,
+        SMSG_ADMIN_SET_TILE_TYPE,
         0
     };
     handledMessages = _messages;
@@ -69,6 +70,9 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
             break;
         case SMSG_ADMIN_GET_LOGIN_ACK:
             processAdminGetLoginAck(msg);
+            break;
+        case SMSG_ADMIN_SET_TILE_TYPE:
+            processSetTileType(msg);
             break;
         default:
             break;
@@ -179,6 +183,15 @@ void AdminHandler::processAdminGetLoginAck(Net::MessageIn &msg)
 {
     msg.readInt32("account id");
     msg.readString(24, "login");
+}
+
+void AdminHandler::processSetTileType(Net::MessageIn &msg)
+{
+    // +++ here need set collision tile for map
+    msg.readInt16("x");
+    msg.readInt16("y");
+    msg.readInt16("type");
+    msg.readString(16, "map name");
 }
 
 }  // namespace EAthena
