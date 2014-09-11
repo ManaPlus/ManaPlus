@@ -261,7 +261,7 @@ void SetupWindow::hideWindows()
     FOR_EACH (std::list<Window*>::const_iterator, it, mWindowsToReset)
     {
         Window *const window = *it;
-        if (window)
+        if (window && !window->isSticky())
             window->setVisible(false);
     }
     setVisible(false);
