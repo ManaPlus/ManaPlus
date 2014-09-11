@@ -236,6 +236,11 @@ void ChatHandler::unIgnore(const std::string &nick) const
     outMsg.writeInt8(1, "flag");
 }
 
+void ChatHandler::requestIgnoreList() const
+{
+    MessageOut outMsg(CMSG_REQUEST_IGNORE_LIST);
+}
+
 void ChatHandler::createChatRoom(const std::string &title,
                                  const std::string &password,
                                  const int limit,

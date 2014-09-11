@@ -260,6 +260,10 @@ void ChatHandler::unIgnore(const std::string &nick) const
     outMsg.writeInt8(1, "flag");
 }
 
+void ChatHandler::requestIgnoreList() const
+{
+}
+
 void ChatHandler::createChatRoom(const std::string &title A_UNUSED,
                                  const std::string &password A_UNUSED,
                                  const int limit A_UNUSED,

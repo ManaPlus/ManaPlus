@@ -62,6 +62,8 @@ class ChatHandler notfinal
 
         virtual void unIgnore(const std::string &nick) const = 0;
 
+        virtual void requestIgnoreList() const = 0;
+
         virtual void clear() = 0;
 
         virtual void createChatRoom(const std::string &title, const std::string &password, const int limit, const bool isPublic) = 0;
