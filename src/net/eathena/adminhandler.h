@@ -71,6 +71,8 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
         void setTileType(const int x, const int y,
                          const int type) const;
 
+        void unequipAll(const Being *const being) const override final;
+
     protected:
         void processAdminGetLoginAck(Net::MessageIn &msg);
 

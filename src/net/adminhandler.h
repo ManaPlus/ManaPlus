@@ -86,6 +86,8 @@ class AdminHandler notfinal
 
         virtual void setTileType(const int x, const int y,
                                  const int type) const = 0;
+
+        virtual void unequipAll(const Being *const being) const = 0;
 };
 
 }  // namespace Net

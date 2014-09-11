@@ -179,6 +179,15 @@ void AdminHandler::setTileType(const int x, const int y,
     outMsg.writeInt16(type, "type");
 }
 
+void AdminHandler::unequipAll(const Being *const being) const
+{
+    if (!being)
+        return;
+
+    MessageOut outMsg(CMSG_ADMIN_UNEQUIP_ALL);
+    outMsg.writeInt32(being->getId(), "account id");
+}
+
 void AdminHandler::processAdminGetLoginAck(Net::MessageIn &msg)
 {
     msg.readInt32("account id");
