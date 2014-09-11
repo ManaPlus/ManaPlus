@@ -50,7 +50,7 @@ AdminHandler::AdminHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_ADMIN_KICK_ACK,
-        CMSG_ADMIN_GET_LOGIN_ACK,
+        SMSG_ADMIN_GET_LOGIN_ACK,
         0
     };
     handledMessages = _messages;
@@ -67,7 +67,7 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
             else
                 NotifyManager::notify(NotifyTypes::KICK_SUCCEED);
             break;
-        case CMSG_ADMIN_GET_LOGIN_ACK:
+        case SMSG_ADMIN_GET_LOGIN_ACK:
             processAdminGetLoginAck(msg);
             break;
         default:
