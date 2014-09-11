@@ -82,7 +82,7 @@ void PetHandler::catchPet(const Being *const being) const
         return;
 
     MessageOut outMsg(CMSG_PET_CATCH);
-    outMsg.writeInt32(being->getId());
+    outMsg.writeInt32(being->getId(), "monster id");
 }
 
 }  // namespace EAthena
