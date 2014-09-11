@@ -477,6 +477,7 @@ namespace InputAction
         PET_EMOTE_46,
         PET_EMOTE_47,
         PET_EMOTE_48,
+        CATCH_PET,
         TOTAL
     };
 }  // namespace InputAction

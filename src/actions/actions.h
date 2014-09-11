@@ -88,6 +88,7 @@ namespace Actions
     decHandler(uploadConfig);
     decHandler(uploadServerConfig);
     decHandler(uploadLog);
+    decHandler(catchPet);
 }  // namespace Actions
 
 #undef decHandler

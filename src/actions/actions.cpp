@@ -1157,4 +1157,21 @@ impHandler(uploadLog)
     return true;
 }
 
+impHandler(catchPet)
+{
+    if (!localPlayer || !actorManager)
+        return false;
+
+    Being *target = nullptr;
+    if (!event.args.empty())
+        target = actorManager->findNearestByName(event.args);
+    if (!target)
+        target = localPlayer->getTarget();
+    else
+        localPlayer->setTarget(target);
+    if (target)
+        Net::getPetHandler()->catchPet(target);
+    return true;
+}
+
 }  // namespace Actions

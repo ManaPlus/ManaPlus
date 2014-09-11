@@ -4034,7 +4034,16 @@ static const InputActionData inputActionData[InputAction::TOTAL] = {
         InputAction::PET_EMOTE, 100,
         InputCondition::GAME,
         "",
-        false}
+        false},
+    {"keyCatchPet",
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        InputType::UNKNOWN, InputAction::NO_VALUE,
+        Input::GRP_DEFAULT,
+        &Actions::catchPet,
+        InputAction::NO_VALUE, 50,
+        InputCondition::INGAME,
+        "catchpet|catch",
+        true},
 };
 
 #endif  // INPUT_INPUTACTIONMAP_H
