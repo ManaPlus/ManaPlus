@@ -456,4 +456,8 @@ void PlayerHandler::doriDori() const
 {
 }
 
+void PlayerHandler::explosionSpirits() const
+{
+}
+
 }  // namespace TmwAthena

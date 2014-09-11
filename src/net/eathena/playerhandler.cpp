@@ -389,4 +389,9 @@ void PlayerHandler::doriDori() const
     MessageOut outMsg(CMSG_DORI_DORI);
 }
 
+void PlayerHandler::explosionSpirits() const
+{
+    MessageOut outMsg(CMSG_EXPLOSION_SPIRITS);
+}
+
 }  // namespace EAthena

@@ -67,6 +67,7 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
         void changeCart(const int type) const override final;
         void setMemo() const override final;
         void doriDori() const override final;
+        void explosionSpirits() const override final;
 
     protected:
         void processPlayerStatUpdate5(Net::MessageIn &msg);

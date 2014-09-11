@@ -358,6 +358,7 @@
 #define CMSG_PET_SET_NAME            0x01a5
 
 #define CMSG_DORI_DORI               0x01e7
+#define CMSG_EXPLOSION_SPIRITS       0x01ed
 
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb
