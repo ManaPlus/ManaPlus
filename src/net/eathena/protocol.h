@@ -303,6 +303,7 @@
 #define CMSG_ADMIN_KICK_ALL          0x00ce
 #define CMSG_ADMIN_MUTE              0x0149
 #define CMSG_ADMIN_RESET_PLAYER      0x0197
+#define CMSG_ADMIN_GOTO              0x01bb
 
 #define CMSG_GUILD_CHECK_MASTER      0x014d
 #define CMSG_GUILD_REQUEST_INFO      0x014f

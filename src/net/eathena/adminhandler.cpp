@@ -124,6 +124,8 @@ void AdminHandler::resetSkills() const
 
 void AdminHandler::gotoName(const std::string &name) const
 {
+    MessageOut outMsg(CMSG_ADMIN_GOTO);
+    outMsg.writeString(name, 24, "name");
 }
 
 }  // namespace EAthena
