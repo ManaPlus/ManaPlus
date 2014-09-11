@@ -204,6 +204,8 @@
 
 #define SMSG_MAIL_OPEN_WINDOW        0x0260
 
+#define SMSG_PET_MESSAGE             0x01aa
+
 /**********************************
  *  Packets from client to server *
  **********************************/

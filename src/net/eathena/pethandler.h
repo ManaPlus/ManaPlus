@@ -53,6 +53,8 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
 
         void requestPetState(const int data) const override final;
 
+        void processPetMessage(Net::MessageIn &msg);
+
     protected:
         int mRandCounter;
 };

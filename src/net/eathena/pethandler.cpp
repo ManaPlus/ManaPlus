@@ -41,15 +41,25 @@ PetHandler::PetHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_PET_MESSAGE,
         0
     };
     handledMessages = _messages;
     petHandler = this;
 }
 
-void PetHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
+void PetHandler::handleMessage(Net::MessageIn &msg)
 {
     BLOCK_START("PetHandler::handleMessage")
+    switch (msg.getId())
+    {
+        case SMSG_PET_MESSAGE:
+            processPetMessage(msg);
+            break;
+
+        default:
+            break;
+    }
     BLOCK_END("PetHandler::handleMessage")
 }
 
@@ -89,6 +99,12 @@ void PetHandler::requestPetState(const int data) const
 {
     MessageOut outMsg(CMSG_PET_REQUEST_STATE);
     outMsg.writeInt32(data, "param");
+}
+
+void PetHandler::processPetMessage(Net::MessageIn &msg)
+{
+    msg.readInt32("pet id");
+    msg.readInt32("param");
 }
 
 }  // namespace EAthena
