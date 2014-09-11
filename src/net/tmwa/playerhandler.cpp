@@ -452,4 +452,8 @@ void PlayerHandler::setShortcut(const int idx A_UNUSED,
 {
 }
 
+void PlayerHandler::doriDori() const
+{
+}
+
 }  // namespace TmwAthena

@@ -384,4 +384,9 @@ void PlayerHandler::processWalkResponse(Net::MessageIn &msg)
     BLOCK_END("PlayerHandler::processWalkResponse")
 }
 
+void PlayerHandler::doriDori() const
+{
+    MessageOut outMsg(CMSG_DORI_DORI);
+}
+
 }  // namespace EAthena

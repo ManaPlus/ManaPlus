@@ -89,6 +89,8 @@ class PlayerHandler notfinal
         virtual void changeCart(const int type) const = 0;
 
         virtual void setMemo() const = 0;
+
+        virtual void doriDori() const = 0;
 };
 
 }  // namespace Net

@@ -357,6 +357,8 @@
 #define CMSG_PET_REQUEST_STATE       0x01a9
 #define CMSG_PET_SET_NAME            0x01a5
 
+#define CMSG_DORI_DORI               0x01e7
+
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb
 #define SMSG_SKILL_CAST_CANCEL       0x01b9
