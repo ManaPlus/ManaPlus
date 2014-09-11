@@ -101,6 +101,12 @@ void PetHandler::requestPetState(const int data) const
     outMsg.writeInt32(data, "param");
 }
 
+void PetHandler::setName(const std::string &name) const
+{
+    MessageOut outMsg(CMSG_PET_SET_NAME);
+    outMsg.writeString(name, 24, "name");
+}
+
 void PetHandler::processPetMessage(Net::MessageIn &msg)
 {
     msg.readInt32("pet id");

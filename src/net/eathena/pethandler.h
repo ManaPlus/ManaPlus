@@ -55,6 +55,8 @@ class PetHandler final :  public MessageHandler, public Net::PetHandler
 
         void processPetMessage(Net::MessageIn &msg);
 
+        void setName(const std::string &name) const override final;
+
     protected:
         int mRandCounter;
 };

@@ -78,7 +78,11 @@ void PetHandler::catchPet(const Being *const being A_UNUSED) const
 {
 }
 
-void PetHandler::requestPetState(const int data) const
+void PetHandler::requestPetState(const int data A_UNUSED) const
+{
+}
+
+void PetHandler::setName(const std::string &name A_UNUSED) const
 {
 }
 

@@ -341,6 +341,7 @@
 
 #define CMSG_PET_CATCH               0x019f
 #define CMSG_PET_REQUEST_STATE       0x01a9
+#define CMSG_PET_SET_NAME            0x01a5
 
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb
