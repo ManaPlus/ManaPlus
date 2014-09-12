@@ -251,8 +251,8 @@
 #define CMSG_PLAYER_USE_CARD         0x017a
 #define CMSG_PLAYER_INSERT_CARD      0x017c
 
-#define CMSG_ITEM_PICKUP             0x0202
-#define CMSG_PLAYER_CHANGE_DIR       0x0815
+#define CMSG_ITEM_PICKUP             0x07e4
+#define CMSG_PLAYER_CHANGE_DIR       0x0202
 #define CMSG_PLAYER_CHANGE_DEST      0x0437
 #define CMSG_PLAYER_CHANGE_ACT       0x0871
 #define CMSG_PLAYER_RESTART          0x00b2
@@ -289,7 +289,7 @@
 #define CMSG_PARTY_MESSAGE           0x0108
 #define CMSG_PARTY_CHANGE_LEADER     0x07da
 
-#define CMSG_MOVE_TO_STORAGE         0x095c /** Move item to storage */
+#define CMSG_MOVE_TO_STORAGE         0x07ec /** Move item to storage */
 #define CSMG_MOVE_FROM_STORAGE       0x085b /** Remove item from storage */
 #define CMSG_CLOSE_STORAGE           0x0193 /** Request storage close */
 
