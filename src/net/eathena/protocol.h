@@ -215,7 +215,7 @@
  **********************************/
 
 #define CMSG_LOGIN_REGISTER          0x0064
-#define CMSG_NAME_REQUEST            0x096a
+#define CMSG_NAME_REQUEST            0x0926
 
 // Custom change password packet
 #define CMSG_CHAR_PASSWORD_CHANGE    0x0061
@@ -225,8 +225,8 @@
 #define CMSG_CHAR_DELETE             0x0068
 #define CMSG_CHAR_CREATE_PIN         0x08ba
 
-#define CMSG_MAP_SERVER_CONNECT      0x022d
-#define CMSG_CLIENT_PING             0x035f /**< Send to server with tick */
+#define CMSG_MAP_SERVER_CONNECT      0x089c
+#define CMSG_CLIENT_PING             0x0438 /**< Send to server with tick */
 #define CMSG_MAP_LOADED              0x007d
 #define CMSG_CLIENT_QUIT             0x018A
 
@@ -254,10 +254,10 @@
 #define CMSG_ITEM_PICKUP             0x07e4
 #define CMSG_PLAYER_CHANGE_DIR       0x0202
 #define CMSG_PLAYER_CHANGE_DEST      0x0437
-#define CMSG_PLAYER_CHANGE_ACT       0x0369
+#define CMSG_PLAYER_CHANGE_ACT       0x0871
 #define CMSG_PLAYER_RESTART          0x00b2
 #define CMSG_PLAYER_EMOTE            0x00bf
-#define CMSG_PLAYER_ATTACK           0x0369
+#define CMSG_PLAYER_ATTACK           0x0871
 #define CMSG_PLAYER_STOP_ATTACK      0x0118
 #define CMSG_WHO_REQUEST             0x00c1
 
