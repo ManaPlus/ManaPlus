@@ -226,7 +226,7 @@
 #define CMSG_CHAR_CREATE_PIN         0x08ba
 
 #define CMSG_MAP_SERVER_CONNECT      0x089c
-#define CMSG_CLIENT_PING             0x0438 /**< Send to server with tick */
+#define CMSG_CLIENT_PING             0x035f /**< Send to server with tick */
 #define CMSG_MAP_LOADED              0x007d
 #define CMSG_CLIENT_QUIT             0x018A
 
@@ -241,7 +241,7 @@
 #define CMSG_SKILL_USE_BEING         0x083c
 #define CMSG_SKILL_USE_POSITION      0x0438
 // Variant of 0x116 with 80 char string at end (unsure of use)
-#define CMSG_SKILL_USE_POSITION_MORE 0x096a
+#define CMSG_SKILL_USE_POSITION_MORE 0x0366
 #define CMSG_SKILL_USE_MAP           0x011b
 
 #define CMSG_PLAYER_INVENTORY_USE    0x0439
@@ -280,7 +280,7 @@
 #define CMSG_PARTY_CREATE            0x00f9
 #define CMSG_PARTY_CREATE2           0x01e8
 #define CMSG_PARTY_INVITE            0x00fc
-#define CMSG_PARTY_INVITE2           0x0802
+#define CMSG_PARTY_INVITE2           0x095d
 #define CMSG_PARTY_INVITED           0x00ff
 #define CMSG_PARTY_INVITED2          0x02c7
 #define CMSG_PARTY_LEAVE             0x0100
