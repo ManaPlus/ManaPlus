@@ -239,7 +239,7 @@
 #define CMSG_SKILL_LEVELUP_REQUEST   0x0112
 #define CMSG_STAT_UPDATE_REQUEST     0x00bb
 #define CMSG_SKILL_USE_BEING         0x083c
-#define CMSG_SKILL_USE_POSITION      0x0438
+#define CMSG_SKILL_USE_POSITION      0x0436
 // Variant of 0x116 with 80 char string at end (unsure of use)
 #define CMSG_SKILL_USE_POSITION_MORE 0x0366
 #define CMSG_SKILL_USE_MAP           0x011b
@@ -251,8 +251,8 @@
 #define CMSG_PLAYER_USE_CARD         0x017a
 #define CMSG_PLAYER_INSERT_CARD      0x017c
 
-#define CMSG_ITEM_PICKUP             0x07e4
-#define CMSG_PLAYER_CHANGE_DIR       0x0202
+#define CMSG_ITEM_PICKUP             0x0202
+#define CMSG_PLAYER_CHANGE_DIR       0x0815
 #define CMSG_PLAYER_CHANGE_DEST      0x0437
 #define CMSG_PLAYER_CHANGE_ACT       0x0871
 #define CMSG_PLAYER_RESTART          0x00b2
