@@ -82,8 +82,11 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_PLAYER_INVENTORY:
-        case SMSG_PLAYER_STORAGE_ITEMS:
             processPlayerInventory(msg);
+            break;
+
+        case SMSG_PLAYER_STORAGE_ITEMS:
+            processPlayerStorage(msg);
             break;
 
         case SMSG_PLAYER_STORAGE_EQUIP:
@@ -377,38 +380,26 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerInventory")
-    const bool playerInvintory = msg.getId() == SMSG_PLAYER_INVENTORY;
     Inventory *const inventory = localPlayer
         ? PlayerInfo::getInventory() : nullptr;
-    if (playerInvintory)
+    if (PlayerInfo::getEquipment())
     {
-        if (PlayerInfo::getEquipment())
-        {
-            // Clear inventory - this will be a complete refresh
-            mEquips.clear();
-            PlayerInfo::getEquipment()->setBackend(&mEquips);
-        }
+        // Clear inventory - this will be a complete refresh
+        mEquips.clear();
+        PlayerInfo::getEquipment()->setBackend(&mEquips);
+    }
 
-        if (inventory)
-            inventory->clear();
-    }
-    else
-    {
-        mInventoryItems.clear();
-    }
+    if (inventory)
+        inventory->clear();
 
     msg.readInt16("len");
-
-    if (!playerInvintory)
-        msg.readString(24, "storage name");
 
     const int number = (msg.getLength() - 4) / 23;
     const uint8_t identified = 1;
 
     for (int loop = 0; loop < number; loop++)
     {
-        const int index = msg.readInt16("item index") - (playerInvintory
-            ? INVENTORY_OFFSET : STORAGE_OFFSET);
+        const int index = msg.readInt16("item index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
         msg.readUInt8("item type");
         const int amount = msg.readInt16("count");
@@ -421,22 +412,48 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         msg.readInt8("flags");
 
         // need get actual identify flag
-        if (playerInvintory)
-        {
-            // Trick because arrows are not considered equipment
-//            const bool isEquipment = arrow & 0x8000;
+        // Trick because arrows are not considered equipment
+//      const bool isEquipment = arrow & 0x8000;
 
-            if (inventory)
-            {
-                inventory->setItem(index, itemId, amount,
-                    0, identified, false);
-            }
-        }
-        else
+        if (inventory)
         {
-            mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
-                amount, 0, identified, false));
+            inventory->setItem(index, itemId, amount,
+                0, identified, false);
         }
+    }
+    BLOCK_END("InventoryHandler::processPlayerInventory")
+}
+
+void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryHandler::processPlayerInventory")
+    Inventory *const inventory = localPlayer
+        ? PlayerInfo::getInventory() : nullptr;
+    mInventoryItems.clear();
+
+    msg.readInt16("len");
+    msg.readString(24, "storage name");
+
+    const int number = (msg.getLength() - 4) / 23;
+    const uint8_t identified = 1;
+
+    for (int loop = 0; loop < number; loop++)
+    {
+        const int index = msg.readInt16("item index") - STORAGE_OFFSET;
+        const int itemId = msg.readInt16("item id");
+        msg.readUInt8("item type");
+        const int amount = msg.readInt16("count");
+        msg.readInt32("wear state / equip");
+        msg.readInt16("card0");
+        msg.readInt16("card1");
+        msg.readInt16("card2");
+        msg.readInt16("card3");
+        msg.readInt32("hire expire date (?)");
+        msg.readInt8("flags");
+
+        // need get actual identify flag
+        mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
+            amount, 0, identified, false));
     }
     BLOCK_END("InventoryHandler::processPlayerInventory")
 }
