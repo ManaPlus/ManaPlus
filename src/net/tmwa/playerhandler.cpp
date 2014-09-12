@@ -140,7 +140,7 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
 void PlayerHandler::attack(const int id, const bool keep) const
 {
-    MessageOut outMsg(CMSG_PLAYER_ATTACK);
+    MessageOut outMsg(CMSG_PLAYER_CHANGE_ACT);
     outMsg.writeInt32(id);
     if (keep)
         outMsg.writeInt8(7);
