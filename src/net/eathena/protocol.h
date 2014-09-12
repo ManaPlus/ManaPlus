@@ -215,7 +215,7 @@
  **********************************/
 
 #define CMSG_LOGIN_REGISTER          0x0064
-#define CMSG_NAME_REQUEST            0x0926
+#define CMSG_NAME_REQUEST            0x088a
 
 // Custom change password packet
 #define CMSG_CHAR_PASSWORD_CHANGE    0x0061
@@ -289,8 +289,8 @@
 #define CMSG_PARTY_MESSAGE           0x0108
 #define CMSG_PARTY_CHANGE_LEADER     0x07da
 
-#define CMSG_MOVE_TO_STORAGE         0x07ec /** Move item to storage */
-#define CSMG_MOVE_FROM_STORAGE       0x0364 /** Remove item from storage */
+#define CMSG_MOVE_TO_STORAGE         0x095c /** Move item to storage */
+#define CSMG_MOVE_FROM_STORAGE       0x085b /** Remove item from storage */
 #define CMSG_CLOSE_STORAGE           0x0193 /** Request storage close */
 
 #define CMSG_MOVE_TO_CART            0x0126
