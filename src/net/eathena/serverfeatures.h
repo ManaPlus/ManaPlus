@@ -41,6 +41,6 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveChangePartyLeader() const override final;
 };
 
-}  // namespace Net
+}  // namespace EAthena
 
 #endif  // NET_EATHENA_SERVERFEATURES_H

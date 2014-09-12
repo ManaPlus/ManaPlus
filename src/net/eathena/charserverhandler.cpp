@@ -401,25 +401,25 @@ void CharServerHandler::processPincodeStatus(Net::MessageIn &msg)
     const uint16_t state = static_cast<uint16_t>(msg.readInt16("state"));
     switch (state)
     {
-        case 0: // pin ok
+        case 0:  // pin ok
             break;
-        case 1: // ask for pin
+        case 1:  // ask for pin
             break;
-        case 2: // create new pin
-        case 4: // create new pin?
+        case 2:  // create new pin
+        case 4:  // create new pin?
         {
             mNeedCreatePin = true;
             break;
         }
-        case 3: // pin must be changed
+        case 3:  // pin must be changed
             break;
-        case 5: // client show error?
+        case 5:  // client show error?
             break;
-        case 6: // Unable to use your KSSN number
+        case 6:  // Unable to use your KSSN number
             break;
-        case 7: // char select window shows a button
+        case 7:  // char select window shows a button
             break;
-        case 8: // pincode was incorrect
+        case 8:  // pincode was incorrect
             break;
         default:
             logger->log("processPincodeStatus: unknown pin state: %d",

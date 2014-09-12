@@ -46,7 +46,7 @@ MailHandler::MailHandler() :
 
 void MailHandler::handleMessage(Net::MessageIn &msg)
 {
-    switch(msg.getId())
+    switch (msg.getId())
     {
         case SMSG_MAIL_OPEN_WINDOW:
             processMailOpen(msg);
@@ -60,7 +60,7 @@ void MailHandler::handleMessage(Net::MessageIn &msg)
 void MailHandler::processMailOpen(Net::MessageIn &msg) const
 {
     const int flag = msg.readInt32("flag");
-    switch(flag)
+    switch (flag)
     {
         case 0:  // open window
             break;

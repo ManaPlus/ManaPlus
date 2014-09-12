@@ -54,9 +54,9 @@ MessageIn::~MessageIn()
         if (mPos != mLength && mPos != 2)
         {
             logger->log("Wrong actual or planned inbound packet size!");
-            logger->log(" packet id: %d 0x%x",
-                static_cast<int>(mId),
-                static_cast<int>(mId));
+            logger->log(" packet id: %u 0x%x",
+                static_cast<unsigned int>(mId),
+                static_cast<unsigned int>(mId));
             logger->log(" planned size: %u", mLength);
             logger->log(" read size: %u", mPos);
         }

@@ -24,11 +24,6 @@
 
 #include "notifymanager.h"
 
-#include "gui/chatconsts.h"
-
-#include "net/chathandler.h"
-#include "net/net.h"
-
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -114,8 +109,8 @@ void AdminHandler::warp(const std::string &map, const int x, const int y) const
 {
     MessageOut outMsg(CMSG_PLAYER_MAPMOVE);
     outMsg.writeString(map, 16, "map");
-    outMsg.writeInt16(x, "x");
-    outMsg.writeInt16(y, "y");
+    outMsg.writeInt16(static_cast<int16_t>(x), "x");
+    outMsg.writeInt16(static_cast<int16_t>(y), "y");
 }
 
 void AdminHandler::resetStats() const
@@ -151,8 +146,8 @@ void AdminHandler::mute(const Being *const being,
 
     MessageOut outMsg(CMSG_ADMIN_MUTE);
     outMsg.writeInt32(being->getId(), "account id");
-    outMsg.writeInt8(type, "type");
-    outMsg.writeInt16(limit, "value");
+    outMsg.writeInt8(static_cast<int8_t>(type), "type");
+    outMsg.writeInt16(static_cast<int16_t>(limit), "value");
 }
 
 void AdminHandler::muteName(const std::string &name) const
@@ -174,9 +169,9 @@ void AdminHandler::setTileType(const int x, const int y,
                                const int type) const
 {
     MessageOut outMsg(CMSG_ADMIN_SET_TILE_TYPE);
-    outMsg.writeInt16(x, "x");
-    outMsg.writeInt16(y, "y");
-    outMsg.writeInt16(type, "type");
+    outMsg.writeInt16(static_cast<int16_t>(x), "x");
+    outMsg.writeInt16(static_cast<int16_t>(y), "y");
+    outMsg.writeInt16(static_cast<int16_t>(type), "type");
 }
 
 void AdminHandler::unequipAll(const Being *const being) const

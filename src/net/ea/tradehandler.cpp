@@ -209,7 +209,8 @@ void TradeHandler::processTradeComplete(Net::MessageIn &msg A_UNUSED)
     PlayerInfo::setTrading(false);
 }
 
-void TradeHandler::processTradeRequestContinue(const std::string &partner) const
+void TradeHandler::processTradeRequestContinue(const std::string &partner)
+                                               const
 {
     if (player_relations.hasPermission(partner,
         PlayerRelation::TRADE))

@@ -179,4 +179,4 @@ void QuestHandler::processRemoveQuest(Net::MessageIn &msg)
     }
 }
 
-}  // namespace TmwAthena
+}  // namespace EAthena

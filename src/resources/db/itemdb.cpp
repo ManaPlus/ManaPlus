@@ -603,7 +603,7 @@ const ItemDB::ItemInfos &ItemDB::getItemInfos()
     return mItemInfos;
 }
 
-int parseSpriteName(const std::string &name)
+static int parseSpriteName(const std::string &name)
 {
     int id = -1;
     if (name == "race" || name == "type")
@@ -667,7 +667,7 @@ int parseSpriteName(const std::string &name)
     return id;
 }
 
-int parseDirectionName(const std::string &name)
+static int parseDirectionName(const std::string &name)
 {
     int id = -1;
     if (name == "down")
@@ -725,7 +725,7 @@ int parseDirectionName(const std::string &name)
     return id;
 }
 
-void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node)
+static void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 {
     const std::string gender = XML::getProperty(node, "gender", "unisex");
     if (!node->xmlChildrenNode)
@@ -743,7 +743,7 @@ void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node)
         itemInfo->setSprite(filename, Gender::OTHER, race);
 }
 
-void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
+static void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 {
     const std::string event = XML::getProperty(node, "event", "");
     const std::string filename = reinterpret_cast<const char*>(
@@ -763,8 +763,8 @@ void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
     }
 }
 
-void loadFloorSprite(SpriteDisplay *const display,
-                     const XmlNodePtrConst floorNode)
+static void loadFloorSprite(SpriteDisplay *const display,
+                            const XmlNodePtrConst floorNode)
 {
     for_each_xml_child_node(spriteNode, floorNode)
     {
@@ -785,8 +785,8 @@ void loadFloorSprite(SpriteDisplay *const display,
     }
 }
 
-void loadReplaceSprite(ItemInfo *const itemInfo,
-                       const XmlNodePtr replaceNode)
+static void loadReplaceSprite(ItemInfo *const itemInfo,
+                              const XmlNodePtr replaceNode)
 {
     const std::string removeSprite = XML::getProperty(
         replaceNode, "sprite", "");
@@ -917,9 +917,9 @@ void loadReplaceSprite(ItemInfo *const itemInfo,
     }
 }
 
-void loadOrderSprite(ItemInfo *const itemInfo,
-                     const XmlNodePtr node,
-                     const bool drawAfter)
+static void loadOrderSprite(ItemInfo *const itemInfo,
+                            const XmlNodePtr node,
+                            const bool drawAfter)
 {
     const int sprite = parseSpriteName(XML::getProperty(node, "name", ""));
     const int priority = XML::getProperty(node, "priority", 0);

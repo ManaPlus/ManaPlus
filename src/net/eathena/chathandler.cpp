@@ -252,9 +252,10 @@ void ChatHandler::createChatRoom(const std::string &title,
                                  const bool isPublic)
 {
     MessageOut outMsg(CMSG_CREAYE_CHAT_ROOM);
-    outMsg.writeInt16(password.size() + title.size() + 5, "len");
+    outMsg.writeInt16(static_cast<int16_t>(
+        password.size() + title.size() + 5), "len");
     outMsg.writeInt16(static_cast<int16_t>(limit), "limit");
-    outMsg.writeInt8(isPublic ? 1 : 0, "public");
+    outMsg.writeInt8(static_cast<int8_t>(isPublic ? 1 : 0), "public");
     outMsg.writeString(password, 8, "password");
     outMsg.writeString(title, 36, "title");
 }
@@ -312,7 +313,7 @@ void ChatHandler::processChat(Net::MessageIn &msg)
 
 void ChatHandler::processGmChat2(Net::MessageIn &msg)
 {
-    int chatMsgLength = msg.readInt16("len") - 16;
+    const int chatMsgLength = msg.readInt16("len") - 16;
     msg.readInt32("font color");
     msg.readInt16("font type");
     msg.readInt16("font size");

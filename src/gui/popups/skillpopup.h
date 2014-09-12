@@ -67,4 +67,4 @@ class SkillPopup final : public Popup
 
 extern SkillPopup *skillPopup;
 
-#endif  // GUI_POPUPS_ITEMPOPUP_H
+#endif  // GUI_POPUPS_SKILLPOPUP_H

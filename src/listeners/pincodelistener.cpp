@@ -31,7 +31,8 @@ PincodeListener pincodeListener;
 
 void PincodeListener::action(const ActionEvent &event)
 {
-    EditDialog *const dialog = dynamic_cast<EditDialog*>(event.getSource());
+    const EditDialog *const dialog = dynamic_cast<EditDialog*>(
+        event.getSource());
     if (dialog)
     {
         const std::string pincode = dialog->getMsg();

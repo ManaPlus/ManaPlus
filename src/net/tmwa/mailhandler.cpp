@@ -20,9 +20,6 @@
 
 #include "net/tmwa/mailhandler.h"
 
-#include "net/tmwa/messageout.h"
-#include "net/tmwa/protocol.h"
-
 #include "debug.h"
 
 extern Net::MailHandler *mailHandler;

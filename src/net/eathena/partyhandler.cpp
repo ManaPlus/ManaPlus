@@ -150,7 +150,7 @@ void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
     {
         MessageOut outMsg(CMSG_PARTY_INVITED2);
         outMsg.writeInt32(localPlayer->getId());
-        outMsg.writeInt8(accept ? 1 : 0);
+        outMsg.writeInt8(static_cast<int8_t>(accept ? 1 : 0));
     }
 }
 
@@ -432,7 +432,8 @@ void PartyHandler::processPartyInviteResponse(Net::MessageIn &msg) const
                 nick);
             break;
         case 5:
-            NotifyManager::notify(NotifyTypes::PARTY_INVITE_PARTY_BLOCKED_INVITE,
+            NotifyManager::notify(
+                NotifyTypes::PARTY_INVITE_PARTY_BLOCKED_INVITE,
                 nick);
             break;
         case 7:

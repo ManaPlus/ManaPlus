@@ -810,7 +810,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
             requestNameById(id);
     }
 
-    uint8_t dir = dstBeing->getDirectionDelayed();
+    const uint8_t dir = dstBeing->getDirectionDelayed();
     if (dir)
     {
         if (dir != dstBeing->getDirection())

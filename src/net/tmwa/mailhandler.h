@@ -27,7 +27,6 @@
 
 namespace TmwAthena
 {
-class MessageOut;
 
 class MailHandler final : public MessageHandler, public Net::MailHandler
 {

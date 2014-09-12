@@ -82,7 +82,7 @@ void NpcHandler::processNpcMessage(Net::MessageIn &msg)
         mDialog->addText(message);
 }
 
-void NpcHandler::processNpcClose(Net::MessageIn &msg A_UNUSED)
+void NpcHandler::processNpcClose(Net::MessageIn &msg)
 {
     // Show the close button
     getNpc(msg);
@@ -91,7 +91,7 @@ void NpcHandler::processNpcClose(Net::MessageIn &msg A_UNUSED)
         mDialog->showCloseButton();
 }
 
-void NpcHandler::processNpcNext(Net::MessageIn &msg A_UNUSED)
+void NpcHandler::processNpcNext(Net::MessageIn &msg)
 {
     // Show the next button
     getNpc(msg);
@@ -100,7 +100,7 @@ void NpcHandler::processNpcNext(Net::MessageIn &msg A_UNUSED)
         mDialog->showNextButton();
 }
 
-void NpcHandler::processNpcIntInput(Net::MessageIn &msg A_UNUSED)
+void NpcHandler::processNpcIntInput(Net::MessageIn &msg)
 {
     // Request for an integer
     getNpc(msg);

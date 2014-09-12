@@ -668,7 +668,7 @@ impHandler(debugSpawn)
     return true;
 }
 
-impHandler0(serverIgnoreWhisper)
+impHandler(serverIgnoreWhisper)
 {
     std::string args = getNick(event);
     if (args.empty())
@@ -678,7 +678,7 @@ impHandler0(serverIgnoreWhisper)
     return true;
 }
 
-impHandler0(serverUnIgnoreWhisper)
+impHandler(serverUnIgnoreWhisper)
 {
     std::string args = getNick(event);
     if (args.empty())

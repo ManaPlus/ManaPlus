@@ -44,7 +44,8 @@ namespace TmwAthena
 {
 
 AdminHandler::AdminHandler() :
-    MessageHandler()
+    MessageHandler(),
+    Ea::AdminHandler()
 {
     static const uint16_t _messages[] =
     {

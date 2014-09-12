@@ -203,10 +203,10 @@ void NpcHandler::produceMix(const int nameId,
                             const int materialId3) const
 {
     MessageOut outMsg(CMSG_NPC_PRODUCE_MIX);
-    outMsg.writeInt16(nameId, "name id");
-    outMsg.writeInt16(materialId1, "material 1");
-    outMsg.writeInt16(materialId2, "material 2");
-    outMsg.writeInt16(materialId3, "material 3");
+    outMsg.writeInt16(static_cast<int16_t>(nameId), "name id");
+    outMsg.writeInt16(static_cast<int16_t>(materialId1), "material 1");
+    outMsg.writeInt16(static_cast<int16_t>(materialId2), "material 2");
+    outMsg.writeInt16(static_cast<int16_t>(materialId3), "material 3");
 }
 
 void NpcHandler::cooking(const CookingType::Type type,
@@ -214,7 +214,7 @@ void NpcHandler::cooking(const CookingType::Type type,
 {
     MessageOut outMsg(CMSG_NPC_COOKING);
     outMsg.writeInt16(static_cast<int16_t>(type), "type");
-    outMsg.writeInt16(nameId, "name id");
+    outMsg.writeInt16(static_cast<int16_t>(nameId), "name id");
 }
 
 void NpcHandler::repair(const int index) const
@@ -232,19 +232,19 @@ void NpcHandler::refine(const int index) const
 void NpcHandler::identify(const int index) const
 {
     MessageOut outMsg(CMSG_NPC_IDENTIFY);
-    outMsg.writeInt16(index, "index");
+    outMsg.writeInt16(static_cast<int16_t>(index), "index");
 }
 
 void NpcHandler::selectArrow(const int nameId) const
 {
     MessageOut outMsg(CMSG_NPC_SELECT_ARROW);
-    outMsg.writeInt16(nameId, "name id");
+    outMsg.writeInt16(static_cast<int16_t>(nameId), "name id");
 }
 
 void NpcHandler::selectAutoSpell(const int skillId) const
 {
     MessageOut outMsg(CMSG_NPC_SELECT_AUTO_SPELL);
-    outMsg.writeInt32(skillId, "skill id");
+    outMsg.writeInt32(static_cast<int16_t>(skillId), "skill id");
 }
 
 int NpcHandler::getNpc(Net::MessageIn &msg)

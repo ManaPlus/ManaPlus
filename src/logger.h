@@ -120,8 +120,8 @@ class Logger final
         void dlog(const std::string &str);
 
         void dlog2(const std::string &str,
-            const int pos,
-            const char* const comment);
+                   const int pos,
+                   const char* const comment);
 #endif
 
         void setDebugLog(const bool n)

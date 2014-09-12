@@ -66,7 +66,10 @@ class ChatHandler notfinal
 
         virtual void clear() = 0;
 
-        virtual void createChatRoom(const std::string &title, const std::string &password, const int limit, const bool isPublic) = 0;
+        virtual void createChatRoom(const std::string &title,
+                                    const std::string &password,
+                                    const int limit,
+                                    const bool isPublic) = 0;
 };
 
 }  // namespace Net

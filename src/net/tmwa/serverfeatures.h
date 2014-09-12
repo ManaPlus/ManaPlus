@@ -41,6 +41,6 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveChangePartyLeader() const override final;
 };
 
-}  // namespace Net
+}  // namespace TmwAthena
 
 #endif  // NET_TMWA_SERVERFEATURES_H

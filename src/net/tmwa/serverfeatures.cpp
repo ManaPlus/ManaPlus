@@ -48,4 +48,4 @@ bool ServerFeatures::haveChangePartyLeader() const
     return false;
 }
 
-}  // TmwAthena
+}  // namespace TmwAthena

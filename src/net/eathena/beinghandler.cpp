@@ -736,7 +736,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
             requestNameById(id);
     }
 
-    uint8_t dir = dstBeing->getDirectionDelayed();
+    const uint8_t dir = dstBeing->getDirectionDelayed();
     if (dir)
     {
         if (dir != dstBeing->getDirection())
@@ -874,7 +874,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     // probably wrong effect usage
-    uint32_t statusEffects = msg.readInt16("opt2");
+    const uint32_t statusEffects = msg.readInt16("opt2");
     msg.readInt32("option");
 
     const int16_t job = msg.readInt16("class");
@@ -946,13 +946,14 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     const int hairColor = msg.readInt16("hair color");
     const uint16_t shoes = msg.readInt16("shoes or clothes color?");
 
-    uint16_t gloves = msg.readInt16("head dir / gloves");
+    const uint16_t gloves = msg.readInt16("head dir / gloves");
     // may be use robe as gloves?
     msg.readInt16("robe");
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
     msg.readInt16("manner");
-    dstBeing->setStatusEffectBlock(32, msg.readInt32("opt3"));
+    dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
+        msg.readInt32("opt3")));
     msg.readUInt8("karma");
     uint8_t gender = msg.readUInt8("gender");
 
@@ -1036,7 +1037,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
 //    {
         const uint16_t stunMode = msg.readInt16("opt1");
         // probably wrong effect usage
-        uint32_t statusEffects = msg.readInt16("opt2");
+        const uint32_t statusEffects = msg.readInt16("opt2");
 //    }
 //    else
 //    {
@@ -1109,13 +1110,14 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     const int hairColor = msg.readInt16("hair color");
     const uint16_t shoes = msg.readInt16("shoes or clothes color?");
 
-    uint16_t gloves = msg.readInt16("head dir / gloves");
+    const uint16_t gloves = msg.readInt16("head dir / gloves");
     // may be use robe as gloves?
     msg.readInt16("robe");
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
     msg.readInt16("manner");
-    dstBeing->setStatusEffectBlock(32, msg.readInt32("opt3"));
+    dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
+        msg.readInt32("opt3")));
     msg.readUInt8("karma");
     uint8_t gender = msg.readUInt8("gender");
 
@@ -1151,10 +1153,10 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
 
     // because server don't send direction in move packet, we fixing it
 
-    int d = 0;
+    uint8_t d = 0;
     if (srcX == dstX && srcY == dstY)
     {   // if player did one step from invisible area to visible,
-        //move path is broken
+        // move path is broken
         int x2 = localPlayer->getTileX();
         int y2 = localPlayer->getTileY();
         if (abs(x2 - srcX) > abs(y2 - srcY))
@@ -1195,13 +1197,13 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     // Information about a being in range
     const int id = msg.readInt32("being id");
     mSpawnId = id;
-    int spawnId = id;
+    const int spawnId = id;
     int16_t speed = msg.readInt16("speed");
 //    if (visible)
 //    {
         const uint16_t stunMode = msg.readInt16("opt1");
         // probably wrong effect usage
-        uint32_t statusEffects = msg.readInt16("opt2");
+        const uint32_t statusEffects = msg.readInt16("opt2");
 //    }
 //    else
 //    {
@@ -1274,13 +1276,14 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
     const int hairColor = msg.readInt16("hair color");
     const uint16_t shoes = msg.readInt16("shoes or clothes color?");
 
-    uint16_t gloves = msg.readInt16("head dir / gloves");
+    const uint16_t gloves = msg.readInt16("head dir / gloves");
     // may be use robe as gloves?
     msg.readInt16("robe");
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
     msg.readInt16("manner");
-    dstBeing->setStatusEffectBlock(32, msg.readInt32("opt3"));
+    dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
+        msg.readInt32("opt3")));
     msg.readUInt8("karma");
     uint8_t gender = msg.readUInt8("gender");
 

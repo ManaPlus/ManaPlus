@@ -242,15 +242,17 @@ void InventoryHandler::moveItem2(const int source,
 void InventoryHandler::useCard(const int index) const
 {
     MessageOut outMsg(CMSG_PLAYER_USE_CARD);
-    outMsg.writeInt16(index + INVENTORY_OFFSET, "index");
+    outMsg.writeInt16(static_cast<int16_t>(index + INVENTORY_OFFSET), "index");
 }
 
 void InventoryHandler::insertCard(const int cardIndex,
                                   const int itemIndex) const
 {
     MessageOut outMsg(CMSG_PLAYER_INSERT_CARD);
-    outMsg.writeInt16(cardIndex + INVENTORY_OFFSET, "card index");
-    outMsg.writeInt16(itemIndex + INVENTORY_OFFSET, "item index");
+    outMsg.writeInt16(static_cast<int16_t>(cardIndex + INVENTORY_OFFSET),
+        "card index");
+    outMsg.writeInt16(static_cast<int16_t>(itemIndex + INVENTORY_OFFSET),
+        "item index");
 }
 
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
@@ -267,6 +269,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         equipment->setBackend(&mEquips);
     }
     const int number = (msg.getLength() - 4) / 31;
+    const uint8_t identified = 1;
 
     for (int loop = 0; loop < number; loop++)
     {
@@ -288,7 +291,6 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
         msg.readInt8("flags");
 
         // need get actual identify flag
-        uint8_t identified = 1;
         if (inventory)
         {
             inventory->setItem(index, itemId, 1, refine,
@@ -401,6 +403,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         msg.readString(24, "storage name");
 
     const int number = (msg.getLength() - 4) / 23;
+    const uint8_t identified = 1;
 
     for (int loop = 0; loop < number; loop++)
     {
@@ -418,7 +421,6 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
         msg.readInt8("flags");
 
         // need get actual identify flag
-        uint8_t identified = 1;
         if (playerInvintory)
         {
             // Trick because arrows are not considered equipment
@@ -500,6 +502,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
     BLOCK_START("InventoryHandler::processPlayerStorageEquip")
     msg.readInt16("len");
     const int number = (msg.getLength() - 4 - 24) / 31;
+    const uint8_t identified = 1;
 
     msg.readString(24, "storage name");
     for (int loop = 0; loop < number; loop++)
@@ -521,7 +524,6 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
         msg.readInt8("flags");
 
         // need get identified from flags
-        uint8_t identified = 1;
         mInventoryItems.push_back(Ea::InventoryItem(index,
             itemId, amount, refine, identified, false));
     }
@@ -536,7 +538,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     const int amount = msg.readInt32("amount");
     const int itemId = msg.readInt16("item id");
     msg.readUInt8("type");
-    unsigned char identified = msg.readUInt8("identify");
+    const unsigned char identified = msg.readUInt8("identify");
     msg.readUInt8("attribute");
     const uint8_t refine = msg.readUInt8("refine");
     msg.readInt16("card0");

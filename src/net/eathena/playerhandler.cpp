@@ -241,10 +241,10 @@ void PlayerHandler::setShortcut(const int idx,
                                 const int level) const
 {
     MessageOut outMsg(CMSG_SET_SHORTCUTS);
-    outMsg.writeInt16(idx, "index");
-    outMsg.writeInt8(type, "type");
+    outMsg.writeInt16(static_cast<int16_t>(idx), "index");
+    outMsg.writeInt8(static_cast<int8_t>(type), "type");
     outMsg.writeInt32(id, "id");
-    outMsg.writeInt16(level, "level");
+    outMsg.writeInt16(static_cast<int16_t>(level), "level");
 }
 
 void PlayerHandler::removeOption() const
@@ -255,7 +255,7 @@ void PlayerHandler::removeOption() const
 void PlayerHandler::changeCart(const int type) const
 {
     MessageOut outMsg(CMSG_CHANGE_CART);
-    outMsg.writeInt16(type, "type");
+    outMsg.writeInt16(static_cast<int16_t>(type), "type");
 }
 
 void PlayerHandler::setMemo() const
