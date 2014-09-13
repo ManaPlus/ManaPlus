@@ -1007,7 +1007,10 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         dstBeing->setLevel(level);
     msg.readInt16("font");
 
-    // here map hp/hp for PACKETVER >= 20150000 for now unsupported
+    // +++ need use hp and boss flag
+    msg.readInt32("max hp");
+    msg.readInt32("hp");
+    msg.readInt8("is boss");
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
@@ -1177,7 +1180,10 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         dstBeing->setLevel(level);
     msg.readInt16("font");
 
-    // here map hp/hp for PACKETVER >= 20150000 for now unsupported
+    // +++ need use hp and boss flag
+    msg.readInt32("max hp");
+    msg.readInt32("hp");
+    msg.readInt8("is boss");
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
@@ -1336,7 +1342,10 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
         dstBeing->setLevel(level);
     msg.readInt16("font");
 
-    // here map hp/hp for PACKETVER >= 20150000 for now unsupported
+    // +++ need use hp and boss flag
+    msg.readInt32("max hp");
+    msg.readInt32("hp");
+    msg.readInt8("is boss");
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
