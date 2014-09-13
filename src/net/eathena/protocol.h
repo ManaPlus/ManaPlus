@@ -105,6 +105,7 @@
 #define SMSG_COLOR_MESSAGE           0x02c1
 #define SMSG_FORMAT_MESSAGE          0x0291
 #define SMSG_FORMAT_MESSAGE_NUMBER   0x07e2
+#define SMSG_FORMAT_MESSAGE_SKILL    0x07e6
 #define SMSG_BEING_NAME_RESPONSE     0x0095 /**< Has to be requested */
 #define SMSG_BEING_NAME_RESPONSE2    0x0220 /**< Has to be requested */
 #define SMSG_BEING_CHANGE_DIRECTION  0x009c

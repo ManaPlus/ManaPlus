@@ -62,6 +62,7 @@ ChatHandler::ChatHandler() :
         SMSG_CHAT_IGNORE_LIST,
         SMSG_FORMAT_MESSAGE,
         SMSG_FORMAT_MESSAGE_NUMBER,
+        SMSG_FORMAT_MESSAGE_SKILL,
         0
     };
     handledMessages = _messages;
@@ -96,6 +97,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_FORMAT_MESSAGE_NUMBER:
             processFormatMessageNumber(msg);
+            break;
+
+        case SMSG_FORMAT_MESSAGE_SKILL:
+            processFormatMessageSkill(msg);
             break;
 
         case SMSG_COLOR_MESSAGE:
@@ -304,6 +309,16 @@ void ChatHandler::processFormatMessageNumber(Net::MessageIn &msg)
     // +++ here need load message from configuration file
     const std::string chatMsg = strprintf(
         "Message #%d, value: %d", msgId, value);
+    processChatContinue(chatMsg);
+}
+
+void ChatHandler::processFormatMessageSkill(Net::MessageIn &msg)
+{
+    const int skillId = msg.readInt16("skill id");
+    const int msgId = msg.readInt32("msg id");
+    // +++ here need load message from configuration file
+    const std::string chatMsg = strprintf(
+        "Message #%d, skill: %d", msgId, skillId);
     processChatContinue(chatMsg);
 }
 

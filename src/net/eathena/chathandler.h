@@ -90,6 +90,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         void processFormatMessage(Net::MessageIn &msg);
 
         void processFormatMessageNumber(Net::MessageIn &msg);
+
+        void processFormatMessageSkill(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
