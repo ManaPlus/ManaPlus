@@ -527,6 +527,8 @@ void NpcDialog::parseListItems(const std::string &itemString)
     const std::string path = paths.getStringValue("guiIcons");
     while (getline(iss, tmp, ':'))
     {
+        if (tmp.empty())
+            continue;
         const size_t pos = tmp.find("|");
         if (pos == std::string::npos)
         {
