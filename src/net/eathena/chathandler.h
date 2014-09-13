@@ -86,6 +86,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
         void processGmChat2(Net::MessageIn &msg);
 
         void processChatIgnoreList(Net::MessageIn &msg);
+
+        void processFormatMessage(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena
