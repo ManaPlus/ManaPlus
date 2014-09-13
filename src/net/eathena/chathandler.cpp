@@ -61,6 +61,7 @@ ChatHandler::ChatHandler() :
         SMSG_COLOR_MESSAGE,
         SMSG_CHAT_IGNORE_LIST,
         SMSG_FORMAT_MESSAGE,
+        SMSG_FORMAT_MESSAGE_NUMBER,
         0
     };
     handledMessages = _messages;
@@ -91,6 +92,10 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_FORMAT_MESSAGE:
             processFormatMessage(msg);
+            break;
+
+        case SMSG_FORMAT_MESSAGE_NUMBER:
+            processFormatMessageNumber(msg);
             break;
 
         case SMSG_COLOR_MESSAGE:
@@ -286,10 +291,19 @@ void ChatHandler::processChat(Net::MessageIn &msg)
 
 void ChatHandler::processFormatMessage(Net::MessageIn &msg)
 {
-    BLOCK_START("ChatHandler::processChat")
     int msgId = msg.readInt16("msg id");
     // +++ here need load message from configuration file
     const std::string chatMsg = strprintf("Message #%d", msgId);
+    processChatContinue(chatMsg);
+}
+
+void ChatHandler::processFormatMessageNumber(Net::MessageIn &msg)
+{
+    int msgId = msg.readInt16("msg id");
+    int value = msg.readInt32("value");
+    // +++ here need load message from configuration file
+    const std::string chatMsg = strprintf(
+        "Message #%d, value: %d", msgId, value);
     processChatContinue(chatMsg);
 }
 
