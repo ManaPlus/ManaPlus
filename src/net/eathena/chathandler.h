@@ -77,6 +77,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void processWhisperResponse(Net::MessageIn &msg);
 
+        void processGmChat(Net::MessageIn &msg);
+
         void processGmChat2(Net::MessageIn &msg);
 
         void processChatIgnoreList(Net::MessageIn &msg);

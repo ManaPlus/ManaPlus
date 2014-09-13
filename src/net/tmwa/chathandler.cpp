@@ -92,12 +92,12 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_PLAYER_CHAT:
-        case SMSG_GM_CHAT:
+        case SMSG_PLAYER_CHAT2:
             processChat(msg);
             break;
 
-        case SMSG_PLAYER_CHAT2:
-            processChat(msg);
+        case SMSG_GM_CHAT:
+            processGmChat(msg);
             break;
 
         case SMSG_MVP:
@@ -272,6 +272,70 @@ void ChatHandler::createChatRoom(const std::string &title A_UNUSED,
 }
 
 void ChatHandler::processChat(Net::MessageIn &msg)
+{
+    BLOCK_START("ChatHandler::processChat")
+    const bool channels = msg.getId() == SMSG_PLAYER_CHAT2;
+    int chatMsgLength = msg.readInt16("len") - 4;
+    std::string channel;
+    if (channels)
+    {
+        chatMsgLength -= 3;
+        channel = msg.readUInt8("channel byte 0");
+        channel += msg.readUInt8("channel byte 1");
+        channel += msg.readUInt8("channel byte 2");
+    }
+    if (chatMsgLength <= 0)
+    {
+        BLOCK_END("ChatHandler::processChat")
+        return;
+    }
+
+    std::string chatMsg = msg.readRawString(chatMsgLength, "message");
+    const size_t pos = chatMsg.find(" : ", 0);
+
+    bool allow(true);
+    if (chatWindow)
+    {
+        allow = chatWindow->resortChatLog(chatMsg, ChatMsgType::BY_PLAYER,
+            channel, false, true);
+    }
+
+    if (channel.empty())
+    {
+        const std::string senseStr("You sense the following: ");
+        if (actorManager && !chatMsg.find(senseStr))
+        {
+            actorManager->parseLevels(
+                chatMsg.substr(senseStr.size()));
+        }
+    }
+
+    if (pos == std::string::npos && !mShowMotd
+        && mSkipping && channel.empty())
+    {
+        // skip motd from "new" tmw server
+        if (mMotdTime == -1)
+            mMotdTime = cur_time + 1;
+        else if (mMotdTime == cur_time || mMotdTime < cur_time)
+            mSkipping = false;
+        BLOCK_END("ChatHandler::processChat")
+        return;
+    }
+
+    if (pos != std::string::npos)
+        chatMsg.erase(0, pos + 3);
+
+    trim(chatMsg);
+
+    if (localPlayer)
+    {
+        if ((chatWindow || mShowMotd) && allow)
+            localPlayer->setSpeech(chatMsg, channel);
+    }
+    BLOCK_END("ChatHandler::processChat")
+}
+
+void ChatHandler::processGmChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")
     const bool channels = msg.getId() == SMSG_PLAYER_CHAT2;

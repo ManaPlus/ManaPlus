@@ -85,9 +85,12 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_PLAYER_CHAT:
-        case SMSG_GM_CHAT:
         case SMSG_COLOR_MESSAGE:
             processChat(msg);
+            break;
+
+        case SMSG_GM_CHAT:
+            processGmChat(msg);
             break;
 
         case SMSG_GM_CHAT2:
@@ -263,7 +266,6 @@ void ChatHandler::createChatRoom(const std::string &title,
 void ChatHandler::processChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")
-    const bool normalChat = msg.getId() == SMSG_PLAYER_CHAT;
     const bool coloredChat = msg.getId() == SMSG_COLOR_MESSAGE;
     int chatMsgLength = msg.readInt16("len") - 4;
     if (coloredChat)
@@ -281,33 +283,43 @@ void ChatHandler::processChat(Net::MessageIn &msg)
     std::string chatMsg = msg.readRawString(chatMsgLength, "message");
     const size_t pos = chatMsg.find(" : ", 0);
 
-    if (normalChat)
+    bool allow(true);
+    if (chatWindow)
     {
-        bool allow(true);
-        if (chatWindow)
-        {
-            allow = chatWindow->resortChatLog(chatMsg,
-                ChatMsgType::BY_PLAYER,
-                GENERAL_CHANNEL,
-                false, true);
-        }
-
-        if (pos != std::string::npos)
-            chatMsg.erase(0, pos + 3);
-
-        trim(chatMsg);
-
-        if (localPlayer)
-        {
-            if ((chatWindow || mShowMotd) && allow)
-                localPlayer->setSpeech(chatMsg, GENERAL_CHANNEL);
-        }
+        allow = chatWindow->resortChatLog(chatMsg,
+            ChatMsgType::BY_PLAYER,
+            GENERAL_CHANNEL,
+            false, true);
     }
-    else if (localChatTab)
+
+    if (pos != std::string::npos)
+        chatMsg.erase(0, pos + 3);
+
+    trim(chatMsg);
+
+    if (localPlayer)
     {
-        if (chatWindow)
-            chatWindow->addGlobalMessage(chatMsg);
+        if ((chatWindow || mShowMotd) && allow)
+            localPlayer->setSpeech(chatMsg, GENERAL_CHANNEL);
     }
+    BLOCK_END("ChatHandler::processChat")
+}
+
+void ChatHandler::processGmChat(Net::MessageIn &msg)
+{
+    BLOCK_START("ChatHandler::processChat")
+    int chatMsgLength = msg.readInt16("len") - 4;
+    if (chatMsgLength <= 0)
+    {
+        BLOCK_END("ChatHandler::processChat")
+        return;
+    }
+
+    std::string chatMsg = msg.readRawString(chatMsgLength, "message");
+    const size_t pos = chatMsg.find(" : ", 0);
+
+    if (chatWindow)
+        chatWindow->addGlobalMessage(chatMsg);
     BLOCK_END("ChatHandler::processChat")
 }
 
