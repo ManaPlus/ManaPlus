@@ -399,8 +399,6 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
 void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerInventory")
-    Inventory *const inventory = localPlayer
-        ? PlayerInfo::getInventory() : nullptr;
     mInventoryItems.clear();
 
     msg.readInt16("len");
@@ -414,7 +412,7 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
         const uint8_t itemType = msg.readUInt8("item type");
         uint8_t identified = msg.readUInt8("identified");
         const int amount = msg.readInt16("amount");
-        const int arrow = msg.readInt16("arrow");
+        msg.readInt16("arrow");
         for (int i = 0; i < 4; i++)
             cards[i] = msg.readInt16("card");
 
