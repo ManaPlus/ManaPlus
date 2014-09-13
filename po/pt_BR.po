@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-09-10 21:55+0300\n"
-"PO-Revision-Date: 2014-09-10 19:16+0000\n"
+"POT-Creation-Date: 2014-09-13 11:49+0300\n"
+"PO-Revision-Date: 2014-09-11 10:12+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
 "manaplus/language/pt_BR/)\n"
@@ -4833,7 +4833,7 @@ msgstr "Criar"
 #: src/gui/windows/buydialog.cpp:263 src/gui/windows/quitdialog.cpp:55
 #: src/gui/windows/quitdialog.cpp:60 src/gui/windows/quitdialog.cpp:62
 #: src/gui/windows/selldialog.cpp:125 src/gui/windows/serverdialog.cpp:111
-#: src/input/pages/basic.cpp:198
+#: src/input/pages/basic.cpp:204
 msgid "Quit"
 msgstr "Sair"
 
@@ -5753,7 +5753,7 @@ msgstr "Leilão"
 
 #. TRANSLATORS: shop window dialog
 #. TRANSLATORS: trade message
-#: src/gui/windows/shopwindow.cpp:791 src/net/ea/tradehandler.cpp:232
+#: src/gui/windows/shopwindow.cpp:791 src/net/ea/tradehandler.cpp:233
 msgid "Request for Trade"
 msgstr "Proposta de negociação"
 
@@ -6249,66 +6249,71 @@ msgstr "Selecionar Jogador"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:132
+msgid "Catch pet"
+msgstr ""
+
+#. TRANSLATORS: input action name
+#: src/input/pages/basic.cpp:138
 msgid "Other Keys"
 msgstr "Outras teclas"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:138
+#: src/input/pages/basic.cpp:144
 msgid "Pickup"
 msgstr "Pegar item"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:144
+#: src/input/pages/basic.cpp:150
 msgid "Change Pickup Type"
 msgstr "Mudar o modo de pegar itens"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:150
+#: src/input/pages/basic.cpp:156
 msgid "Sit"
 msgstr "Sentar"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:156
+#: src/input/pages/basic.cpp:162
 msgid "Screenshot"
 msgstr "Screenshot"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:162
+#: src/input/pages/basic.cpp:168
 msgid "Enable/Disable Trading"
 msgstr "Habilitar/Desabilitar Negociações"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:168
+#: src/input/pages/basic.cpp:174
 msgid "Open trade window"
 msgstr "Abrir janela de troca"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:174
+#: src/input/pages/basic.cpp:180
 msgid "Start trade with target"
 msgstr "Inicia troca com o alvo."
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:180
+#: src/input/pages/basic.cpp:186
 msgid "Follow selected player"
 msgstr "Segue o jogador selecionado"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:186
+#: src/input/pages/basic.cpp:192
 msgid "Change Map View Mode"
 msgstr "Mudar o modo de visualização de mapas"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:192
+#: src/input/pages/basic.cpp:198
 msgid "Select OK"
 msgstr "Selecionar OK"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:204
+#: src/input/pages/basic.cpp:210
 msgid "Stop or sit"
 msgstr "Parar ou sentar"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:210
+#: src/input/pages/basic.cpp:216
 msgid "Return to safe video mode"
 msgstr "Retornar para o modo seguro de vídeo"
 
@@ -7843,7 +7848,7 @@ msgid "Trade: You and %s"
 msgstr "Negociação: Você e %s"
 
 #. TRANSLATORS: trade message
-#: src/net/ea/tradehandler.cpp:234
+#: src/net/ea/tradehandler.cpp:235
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s quer negociar com você, você aceita?"
@@ -8307,9 +8312,9 @@ msgstr "pvp desconhecido"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:315
-#, fuzzy, c-format
+#, c-format
 msgid "Char from account %s is already in your party!"
-msgstr "%s não está em seu grupo!"
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:319
@@ -8319,9 +8324,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:323
-#, fuzzy
 msgid "Char is not online!"
-msgstr "Quem esta online"
+msgstr ""
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27

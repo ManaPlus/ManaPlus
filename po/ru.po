@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2014-09-10 21:55+0300\n"
-"PO-Revision-Date: 2014-09-10 19:14+0000\n"
+"POT-Creation-Date: 2014-09-13 11:49+0300\n"
+"PO-Revision-Date: 2014-09-11 10:19+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/manaplus/"
 "language/ru/)\n"
@@ -4834,7 +4834,7 @@ msgstr "Создать"
 #: src/gui/windows/buydialog.cpp:263 src/gui/windows/quitdialog.cpp:55
 #: src/gui/windows/quitdialog.cpp:60 src/gui/windows/quitdialog.cpp:62
 #: src/gui/windows/selldialog.cpp:125 src/gui/windows/serverdialog.cpp:111
-#: src/input/pages/basic.cpp:198
+#: src/input/pages/basic.cpp:204
 msgid "Quit"
 msgstr "Выход"
 
@@ -5756,7 +5756,7 @@ msgstr "Аукцион"
 
 #. TRANSLATORS: shop window dialog
 #. TRANSLATORS: trade message
-#: src/gui/windows/shopwindow.cpp:791 src/net/ea/tradehandler.cpp:232
+#: src/gui/windows/shopwindow.cpp:791 src/net/ea/tradehandler.cpp:233
 msgid "Request for Trade"
 msgstr "Запрос на Торговлю"
 
@@ -6253,66 +6253,71 @@ msgstr "Выбор игрока"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:132
+msgid "Catch pet"
+msgstr ""
+
+#. TRANSLATORS: input action name
+#: src/input/pages/basic.cpp:138
 msgid "Other Keys"
 msgstr "Другие клавиши"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:138
+#: src/input/pages/basic.cpp:144
 msgid "Pickup"
 msgstr "Поднятие предметов"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:144
+#: src/input/pages/basic.cpp:150
 msgid "Change Pickup Type"
 msgstr "Изменение типа подбора предметов"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:150
+#: src/input/pages/basic.cpp:156
 msgid "Sit"
 msgstr "Приседание/Вставание"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:156
+#: src/input/pages/basic.cpp:162
 msgid "Screenshot"
 msgstr "Создание скриншота"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:162
+#: src/input/pages/basic.cpp:168
 msgid "Enable/Disable Trading"
 msgstr "Разрешение/Запрет торговли"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:168
+#: src/input/pages/basic.cpp:174
 msgid "Open trade window"
 msgstr "Открывает окно обмена"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:174
+#: src/input/pages/basic.cpp:180
 msgid "Start trade with target"
 msgstr "Начать обмен"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:180
+#: src/input/pages/basic.cpp:186
 msgid "Follow selected player"
 msgstr "Следовать за игроком"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:186
+#: src/input/pages/basic.cpp:192
 msgid "Change Map View Mode"
 msgstr "Изменение режима отображения карты"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:192
+#: src/input/pages/basic.cpp:198
 msgid "Select OK"
 msgstr "Выбор OK"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:204
+#: src/input/pages/basic.cpp:210
 msgid "Stop or sit"
 msgstr "Остановиться или сесть"
 
 #. TRANSLATORS: input action name
-#: src/input/pages/basic.cpp:210
+#: src/input/pages/basic.cpp:216
 msgid "Return to safe video mode"
 msgstr "Вернуться в безопасный видео режим"
 
@@ -7844,7 +7849,7 @@ msgid "Trade: You and %s"
 msgstr "Торговля: Вы и %s"
 
 #. TRANSLATORS: trade message
-#: src/net/ea/tradehandler.cpp:234
+#: src/net/ea/tradehandler.cpp:235
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s хочет торговать с Вами, Вы принимаете предложение?"
@@ -8307,21 +8312,20 @@ msgstr "неизвестный статус PVP"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:315
-#, fuzzy, c-format
+#, c-format
 msgid "Char from account %s is already in your party!"
-msgstr "%s не в группе!"
+msgstr "Персонаж с аккаунта %s уже в вашей группе!"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:319
 #, c-format
 msgid "%s blocked invite!"
-msgstr ""
+msgstr "%s заблокировал приглашение!"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:323
-#, fuzzy
 msgid "Char is not online!"
-msgstr "Кто онлайн"
+msgstr "Игрок не онлайн"
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27
