@@ -73,6 +73,8 @@ class CharServerHandler final : public MessageHandler,
         void readPlayerData(Net::MessageIn &msg,
                             Net::Character *const character,
                             const bool withColors) const override final;
+
+        void processCharCreate(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

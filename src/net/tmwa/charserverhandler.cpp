@@ -28,6 +28,8 @@
 
 #include "being/attributes.h"
 
+#include "gui/windows/charcreatedialog.h"
+
 #include "net/character.h"
 #include "net/logindata.h"
 #include "net/net.h"
@@ -427,6 +429,24 @@ void CharServerHandler::processChangeMapServer(Net::MessageIn &msg)
         localPlayer->setMap(nullptr);
     }
     BLOCK_END("CharServerHandler::processChangeMapServer")
+}
+
+void CharServerHandler::processCharCreate(Net::MessageIn &msg)
+{
+    BLOCK_START("CharServerHandler::processCharCreate")
+    Net::Character *const character = new Net::Character;
+    readPlayerData(msg, character, msg.getId() == SMSG_CHAR_CREATE_SUCCEEDED2);
+    mCharacters.push_back(character);
+
+    updateCharSelectDialog();
+
+    // Close the character create dialog
+    if (mCharCreateDialog)
+    {
+        mCharCreateDialog->scheduleDelete();
+        mCharCreateDialog = nullptr;
+    }
+    BLOCK_END("CharServerHandler::processCharCreate")
 }
 
 }  // namespace TmwAthena

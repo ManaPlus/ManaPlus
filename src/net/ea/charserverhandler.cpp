@@ -142,24 +142,6 @@ void CharServerHandler::processCharLoginError(Net::MessageIn &msg) const
     BLOCK_END("CharServerHandler::processCharLoginError")
 }
 
-void CharServerHandler::processCharCreate(Net::MessageIn &msg)
-{
-    BLOCK_START("CharServerHandler::processCharCreate")
-    Net::Character *const character = new Net::Character;
-    readPlayerData(msg, character, msg.getId() == SMSG_CHAR_CREATE_SUCCEEDED2);
-    mCharacters.push_back(character);
-
-    updateCharSelectDialog();
-
-    // Close the character create dialog
-    if (mCharCreateDialog)
-    {
-        mCharCreateDialog->scheduleDelete();
-        mCharCreateDialog = nullptr;
-    }
-    BLOCK_END("CharServerHandler::processCharCreate")
-}
-
 void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharCreateFailed")

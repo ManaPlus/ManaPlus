@@ -77,6 +77,8 @@ class CharServerHandler final : public MessageHandler,
 
         static void processCharLogin2(Net::MessageIn &msg);
 
+        void processCharCreate(Net::MessageIn &msg);
+
     private:
         uint32_t mPinSeed;
         uint32_t mPinAccountId;
