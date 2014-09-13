@@ -101,7 +101,6 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_CHAR_CREATE_SUCCEEDED:
-        case SMSG_CHAR_CREATE_SUCCEEDED2:
             processCharCreate(msg);
             break;
 
@@ -443,7 +442,7 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharCreate")
     Net::Character *const character = new Net::Character;
-    readPlayerData(msg, character, msg.getId() == SMSG_CHAR_CREATE_SUCCEEDED2);
+    readPlayerData(msg, character, false);
     mCharacters.push_back(character);
 
     updateCharSelectDialog();

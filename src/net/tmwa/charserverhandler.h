@@ -75,6 +75,8 @@ class CharServerHandler final : public MessageHandler,
                             const bool withColors) const override final;
 
         void processCharCreate(Net::MessageIn &msg);
+
+        void processCharCreate2(Net::MessageIn &msg);
 };
 
 }  // namespace TmwAthena

@@ -94,8 +94,11 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_CHAR_CREATE_SUCCEEDED:
-        case SMSG_CHAR_CREATE_SUCCEEDED2:
             processCharCreate(msg);
+            break;
+
+        case SMSG_CHAR_CREATE_SUCCEEDED2:
+            processCharCreate2(msg);
             break;
 
         case SMSG_CHAR_CREATE_FAILED:
@@ -435,7 +438,7 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerHandler::processCharCreate")
     Net::Character *const character = new Net::Character;
-    readPlayerData(msg, character, msg.getId() == SMSG_CHAR_CREATE_SUCCEEDED2);
+    readPlayerData(msg, character, false);
     mCharacters.push_back(character);
 
     updateCharSelectDialog();
@@ -447,6 +450,24 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg)
         mCharCreateDialog = nullptr;
     }
     BLOCK_END("CharServerHandler::processCharCreate")
+}
+
+void CharServerHandler::processCharCreate2(Net::MessageIn &msg)
+{
+    BLOCK_START("CharServerHandler::processCharCreate2")
+    Net::Character *const character = new Net::Character;
+    readPlayerData(msg, character, true);
+    mCharacters.push_back(character);
+
+    updateCharSelectDialog();
+
+    // Close the character create dialog
+    if (mCharCreateDialog)
+    {
+        mCharCreateDialog->scheduleDelete();
+        mCharCreateDialog = nullptr;
+    }
+    BLOCK_END("CharServerHandler::processCharCreate2")
 }
 
 }  // namespace TmwAthena
