@@ -92,8 +92,11 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_PLAYER_CHAT:
-        case SMSG_PLAYER_CHAT2:
             processChat(msg);
+            break;
+
+        case SMSG_PLAYER_CHAT2:
+            processChat2(msg);
             break;
 
         case SMSG_GM_CHAT:
@@ -274,16 +277,24 @@ void ChatHandler::createChatRoom(const std::string &title A_UNUSED,
 void ChatHandler::processChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")
-    const bool channels = msg.getId() == SMSG_PLAYER_CHAT2;
     int chatMsgLength = msg.readInt16("len") - 4;
-    std::string channel;
-    if (channels)
+    if (chatMsgLength <= 0)
     {
-        chatMsgLength -= 3;
-        channel = msg.readUInt8("channel byte 0");
-        channel += msg.readUInt8("channel byte 1");
-        channel += msg.readUInt8("channel byte 2");
+        BLOCK_END("ChatHandler::processChat")
+        return;
     }
+
+    processChatContinue(msg.readRawString(chatMsgLength, "message"), "");
+}
+
+void ChatHandler::processChat2(Net::MessageIn &msg)
+{
+    BLOCK_START("ChatHandler::processChat")
+    int chatMsgLength = msg.readInt16("len") - 4 - 3;
+    std::string channel;
+    channel = msg.readUInt8("channel byte 0");
+    channel += msg.readUInt8("channel byte 1");
+    channel += msg.readUInt8("channel byte 2");
     if (chatMsgLength <= 0)
     {
         BLOCK_END("ChatHandler::processChat")

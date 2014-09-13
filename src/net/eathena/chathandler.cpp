@@ -85,8 +85,11 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_PLAYER_CHAT:
-        case SMSG_COLOR_MESSAGE:
             processChat(msg);
+            break;
+
+        case SMSG_COLOR_MESSAGE:
+            processColorChat(msg);
             break;
 
         case SMSG_GM_CHAT:
@@ -266,14 +269,23 @@ void ChatHandler::createChatRoom(const std::string &title,
 void ChatHandler::processChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")
-    const bool coloredChat = msg.getId() == SMSG_COLOR_MESSAGE;
     int chatMsgLength = msg.readInt16("len") - 4;
-    if (coloredChat)
+    if (chatMsgLength <= 0)
     {
-        msg.readInt32("unused");
-        msg.readInt32("chat color");
-        chatMsgLength -= 8;
+        BLOCK_END("ChatHandler::processChat")
+        return;
     }
+
+    processChatContinue(msg.readRawString(chatMsgLength, "message"));
+}
+
+void ChatHandler::processColorChat(Net::MessageIn &msg)
+{
+    BLOCK_START("ChatHandler::processChat")
+    int chatMsgLength = msg.readInt16("len") - 4;
+    msg.readInt32("unused");
+    msg.readInt32("chat color");
+    chatMsgLength -= 8;
     if (chatMsgLength <= 0)
     {
         BLOCK_END("ChatHandler::processChat")
