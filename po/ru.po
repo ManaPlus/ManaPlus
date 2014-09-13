@@ -8325,7 +8325,7 @@ msgstr "%s заблокировал приглашение!"
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:323
 msgid "Char is not online!"
-msgstr "Игрок не онлайн"
+msgstr "Игрок не онлайн!"
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:27
