@@ -73,6 +73,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
     protected:
         void processChat(Net::MessageIn &msg);
 
+        void processChatContinue(std::string chatMsg);
+
         void processWhisper(Net::MessageIn &msg) const;
 
         void processWhisperResponse(Net::MessageIn &msg);

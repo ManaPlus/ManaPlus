@@ -290,7 +290,12 @@ void ChatHandler::processChat(Net::MessageIn &msg)
         return;
     }
 
-    std::string chatMsg = msg.readRawString(chatMsgLength, "message");
+    processChatContinue(msg.readRawString(chatMsgLength, "message"), channel);
+}
+
+void ChatHandler::processChatContinue(std::string chatMsg,
+                                      const std::string &channel)
+{
     const size_t pos = chatMsg.find(" : ", 0);
 
     bool allow(true);
