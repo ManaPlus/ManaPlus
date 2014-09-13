@@ -1,3 +1,21 @@
+2014-09-14 New release 1.4.9.14
+fix: heal shorcut action.
+fix: crash with context menu before connecting to game.
+fix: possible issue to connect to map server.
+fix: chat commands in party/guild.
+fix: in hide all windows action dont hide locked windows.
+add: basic support for hercules server.
+add: extend net packets logging.
+add: allow use item color palettes in non evol servers.
+add: allow use unknown skills.
+add: skill types based on it way to use skills.
+add: skill popup with skill stats.
+add: pet emote key action (unassigned).
+add: chat command for set party leader: /setleader (hercules only).
+add: action and chat command for catch pet (hecules only).
+add: chat command for ignore/unignore whispers from individual player.
+Commands: /serverignore, /serverunignore
+
 2014-08-30 New release 1.4.8.30
 fix: evol desktop file translations.
 add: OpenGL 4.5 features detection.
