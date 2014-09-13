@@ -332,6 +332,10 @@ void ChatHandler::processGmChat(Net::MessageIn &msg)
     }
 
     std::string chatMsg = msg.readRawString(chatMsgLength, "message");
+    // remove non persistend "colors" from server.
+    if (!findCutFirst(chatMsg, "ssss"))
+        findCutFirst(chatMsg, "eulb");
+
     const size_t pos = chatMsg.find(" : ", 0);
 
     if (chatWindow)
