@@ -69,6 +69,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_BEING_ACTION,
         SMSG_BEING_ACTION2,
         SMSG_BEING_SELFEFFECT,
+        SMSG_BEING_SPECIAL_EFFECT,
         SMSG_BEING_EMOTION,
         SMSG_BEING_CHANGE_LOOKS,
         SMSG_BEING_CHANGE_LOOKS2,
@@ -156,6 +157,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_SELFEFFECT:
             processBeingSelfEffect(msg);
+            break;
+
+        case SMSG_BEING_SPECIAL_EFFECT:
+            processBeingSpecialEffect(msg);
             break;
 
         case SMSG_BEING_EMOTION:
@@ -1596,6 +1601,14 @@ void BeingHandler::processBeingChangeDirection(Net::MessageIn &msg) const
     if (localPlayer)
         localPlayer->imitateDirection(dstBeing, dir);
     BLOCK_END("BeingHandler::processBeingChangeDirection")
+}
+
+void BeingHandler::processBeingSpecialEffect(Net::MessageIn &msg) const
+{
+    // +++ need somhow show this effects.
+    // type is not same with self/misc effect.
+    msg.readInt32("account id");
+    msg.readInt32("effect type");
 }
 
 void BeingHandler::setServerGender(Being *const being, const uint8_t gender)

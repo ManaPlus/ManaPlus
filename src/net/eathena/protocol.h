@@ -97,6 +97,7 @@
 // Same as 0x00c3, but 16 bit ID
 #define SMSG_BEING_CHANGE_LOOKS2     0x01d7
 #define SMSG_BEING_SELFEFFECT        0x019b
+#define SMSG_BEING_SPECIAL_EFFECT    0x01f3
 #define SMSG_BEING_EMOTION           0x00c0
 #define SMSG_BEING_ACTION            0x008a /**< Attack, sit, stand up, ... */
 #define SMSG_BEING_ACTION2           0x02e1
