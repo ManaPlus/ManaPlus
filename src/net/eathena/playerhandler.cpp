@@ -394,4 +394,11 @@ void PlayerHandler::explosionSpirits() const
     MessageOut outMsg(CMSG_EXPLOSION_SPIRITS);
 }
 
+void PlayerHandler::requestPvpInfo() const
+{
+    MessageOut outMsg(CMSG_PVP_INFO);
+    outMsg.writeInt32(0, "char id");
+    outMsg.writeInt32(0, "account id");
+}
+
 }  // namespace EAthena

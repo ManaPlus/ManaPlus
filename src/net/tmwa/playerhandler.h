@@ -75,6 +75,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
         void explosionSpirits() const override final;
 
+        void requestPvpInfo() const override final;
+
     protected:
         void processPlayerStatUpdate5(Net::MessageIn &msg);
 

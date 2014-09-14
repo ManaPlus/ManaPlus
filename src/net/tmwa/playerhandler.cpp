@@ -460,4 +460,8 @@ void PlayerHandler::explosionSpirits() const
 {
 }
 
+void PlayerHandler::requestPvpInfo() const
+{
+}
+
 }  // namespace TmwAthena
