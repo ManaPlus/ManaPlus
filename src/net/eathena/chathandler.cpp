@@ -379,8 +379,6 @@ void ChatHandler::processGmChat(Net::MessageIn &msg)
     if (!findCutFirst(chatMsg, "ssss"))
         findCutFirst(chatMsg, "eulb");
 
-    const size_t pos = chatMsg.find(" : ", 0);
-
     if (chatWindow)
         chatWindow->addGlobalMessage(chatMsg);
     BLOCK_END("ChatHandler::processChat")

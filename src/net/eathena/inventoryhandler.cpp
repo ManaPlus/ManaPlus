@@ -427,8 +427,6 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
 void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerInventory")
-    Inventory *const inventory = localPlayer
-        ? PlayerInfo::getInventory() : nullptr;
     mInventoryItems.clear();
 
     msg.readInt16("len");
