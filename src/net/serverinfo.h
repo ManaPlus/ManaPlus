@@ -69,10 +69,10 @@ class ServerInfo final
             onlineListUrl(),
             supportUrl(),
             updateMirrors(),
-#ifdef EATHENA_SUPPORT
-            port(6900),
-#else
+#ifdef TMWA_SUPPORT
             port(6901),
+#else
+            port(6900),
 #endif
             version(),
             save(false),
