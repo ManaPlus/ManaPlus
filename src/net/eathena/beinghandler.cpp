@@ -1012,9 +1012,11 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
         dstBeing->setLevel(level);
     msg.readInt16("font");
 
-    // +++ need use hp and boss flag
-    msg.readInt32("max hp");
-    msg.readInt32("hp");
+    const int maxHP = msg.readInt32("max hp");
+    const int hp = msg.readInt32("hp");
+    dstBeing->setMaxHP(maxHP);
+    dstBeing->setHP(hp);
+
     msg.readInt8("is boss");
 
     dstBeing->setStunMode(stunMode);
@@ -1185,9 +1187,11 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
         dstBeing->setLevel(level);
     msg.readInt16("font");
 
-    // +++ need use hp and boss flag
-    msg.readInt32("max hp");
-    msg.readInt32("hp");
+    const int maxHP = msg.readInt32("max hp");
+    const int hp = msg.readInt32("hp");
+    dstBeing->setMaxHP(maxHP);
+    dstBeing->setHP(hp);
+
     msg.readInt8("is boss");
 
     dstBeing->setStunMode(stunMode);
@@ -1347,9 +1351,11 @@ void BeingHandler::processBeingSpawn(Net::MessageIn &msg)
         dstBeing->setLevel(level);
     msg.readInt16("font");
 
-    // +++ need use hp and boss flag
-    msg.readInt32("max hp");
-    msg.readInt32("hp");
+    const int maxHP = msg.readInt32("max hp");
+    const int hp = msg.readInt32("hp");
+    dstBeing->setMaxHP(maxHP);
+    dstBeing->setHP(hp);
+
     msg.readInt8("is boss");
 
     dstBeing->setStunMode(stunMode);
