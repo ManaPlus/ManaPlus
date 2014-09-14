@@ -61,6 +61,7 @@
 #include "net/packetlimiter.h"
 #include "net/pethandler.h"
 #include "net/playerhandler.h"
+#include "net/serverfeatures.h"
 
 #include "resources/attack.h"
 #include "resources/emoteinfo.h"
@@ -2467,7 +2468,7 @@ void Being::drawHpBar(Graphics *const graphics, const int maxHP, const int hp,
 
     const int dx = static_cast<const int>(static_cast<float>(width) / p);
 
-    if (serverVersion < 1)
+    if (!Net::getServerFeatures()->haveServerHp())
     {   // old servers
         if ((!damage && (this != localPlayer || hp == maxHP))
             || (!hp && maxHP == damage))
@@ -2486,7 +2487,7 @@ void Being::drawHpBar(Graphics *const graphics, const int maxHP, const int hp,
         }
     }
     else
-    {   // evol servers
+    {
         if (hp == maxHP)
         {
             graphics->setColor(userPalette->getColorWithAlpha(color1));

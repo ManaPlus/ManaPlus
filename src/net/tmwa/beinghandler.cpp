@@ -36,8 +36,11 @@
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/socialwindow.h"
 
+#include "net/net.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
+#include "net/tmwa/serverfeatures.h"
 #include "net/tmwa/sprite.h"
 
 #include "resources/iteminfo.h"
@@ -1102,7 +1105,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     uint16_t gloves;
     if (dstBeing->getType() == ActorType::Monster)
     {
-        if (serverVersion > 0 || tmwServerVersion >= 0x0E0701)
+        if (Net::getServerFeatures()->haveServerHp())
         {
             const int hp = msg.readInt32("hp");
             const int maxHP = msg.readInt32("max hp");
@@ -1305,7 +1308,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     uint16_t gloves;
     if (dstBeing->getType() == ActorType::Monster)
     {
-        if (serverVersion > 0 || tmwServerVersion >= 0x0E0701)
+        if (Net::getServerFeatures()->haveServerHp())
         {
             const int hp = msg.readInt32("hp");
             const int maxHP = msg.readInt32("max hp");
