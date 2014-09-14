@@ -527,7 +527,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     mAttributeValue.resize(labels.size());
 
     const int w = 480;
-    const int h = 350;
+    int h = 350;
     const int y = 118 + 29;
 
     for (unsigned i = 0, sz = static_cast<unsigned>(labels.size());
@@ -551,6 +551,12 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     }
 
     updateSliders();
+    if (!available)
+    {
+        mAttributesLeft->setVisible(false);
+        h = y;
+        setContentSize(w, h);
+    }
     setButtonsPosition(w, h);
 }
 
