@@ -287,6 +287,17 @@ esac],[with_eathena=false])
 
 AM_CONDITIONAL(ENABLE_EATHENA, test x$with_eathena = xtrue)
 
+# Enable tmwA
+AC_ARG_ENABLE(tmwa,
+[  --enable-tmwa    Turn on tmwA support],
+[case "${enableval}" in
+  yes) with_tmwa=true ;;
+  no)  with_tmwa=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-tmwa) ;;
+esac],[with_tmwa=true])
+
+AM_CONDITIONAL(ENABLE_TMWA, test x$with_tmwa = xtrue)
+
 # Enable checks
 AC_ARG_ENABLE(checks,
 [  --enable-checks    Turn on internal checks (can be slow)],

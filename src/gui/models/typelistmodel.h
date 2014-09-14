@@ -37,8 +37,10 @@ class TypeListModel final : public ListModel
          * Used to get number of line in the list
          */
         int getNumberOfElements() override final A_WARN_UNUSED
-#ifdef EATHENA_SUPPORT
+#if defined(EATHENA_SUPPORT) && defined(TMWA_SUPPORT)
         { return 3; }
+#elif defined(EATHENA_SUPPORT)
+        { return 1; }
 #else
         { return 2; }
 #endif
@@ -49,6 +51,7 @@ class TypeListModel final : public ListModel
         std::string getElementAt(int elementIndex)
                                  override final A_WARN_UNUSED
         {
+#ifdef TMWA_SUPPORT
             if (elementIndex == 0)
                 return "TmwAthena";
             else if (elementIndex == 1)
@@ -56,7 +59,13 @@ class TypeListModel final : public ListModel
 #ifdef EATHENA_SUPPORT
             else if (elementIndex == 2)
                 return "eAthena";
-#endif
+#endif  // EATHENA_SUPPORT
+#else   // TMWA_SUPPORT
+#ifdef EATHENA_SUPPORT
+            if (elementIndex == 0)
+                return "eAthena";
+#endif  // EATHENA_SUPPORT
+#endif  // TMWA_SUPPORT
             else
                 return "Unknown";
         }

@@ -69,7 +69,11 @@ class ServerInfo final
             onlineListUrl(),
             supportUrl(),
             updateMirrors(),
+#ifdef EATHENA_SUPPORT
+            port(6900),
+#else
             port(6901),
+#endif
             version(),
             save(false),
             persistentIp(true)
@@ -133,10 +137,16 @@ class ServerInfo final
 
         static Type parseType(const std::string &serverType) A_WARN_UNUSED
         {
+#ifdef TMWA_SUPPORT
             if (compareStrI(serverType, "tmwathena") == 0)
                 return TMWATHENA;
             if (compareStrI(serverType, "evol") == 0)
                 return EVOL;
+#else
+            if (compareStrI(serverType, "tmwathena") == 0
+                || compareStrI(serverType, "evol") == 0)
+                return EATHENA;
+#endif
 #ifdef EATHENA_SUPPORT
             else if (compareStrI(serverType, "eathena") == 0)
                 return EATHENA;

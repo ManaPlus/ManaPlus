@@ -1156,9 +1156,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      vector.h \
 	      resources/map/walklayer.cpp \
 	      resources/map/walklayer.h \
-	      winver.h
-
-manaplus_SOURCES += \
+	      winver.h \
 	      net/ea/gui/guildtab.cpp \
 	      net/ea/gui/guildtab.h \
 	      net/ea/gui/partytab.cpp \
@@ -1197,7 +1195,11 @@ manaplus_SOURCES += \
 	      net/ea/skillhandler.h \
 	      net/ea/token.h \
 	      net/ea/tradehandler.cpp \
-	      net/ea/tradehandler.h \
+	      net/ea/tradehandler.h
+
+if ENABLE_TMWA
+manaplus_CXXFLAGS += -DTMWA_SUPPORT
+manaplus_SOURCES += \
 	      net/tmwa/adminhandler.cpp \
 	      net/tmwa/adminhandler.h \
 	      net/tmwa/attrs.h \
@@ -1250,6 +1252,7 @@ manaplus_SOURCES += \
 	      net/tmwa/sprite.h \
 	      net/tmwa/tradehandler.cpp \
 	      net/tmwa/tradehandler.h
+endif
 
 if ENABLE_EATHENA
 manaplus_CXXFLAGS += -DEATHENA_SUPPORT

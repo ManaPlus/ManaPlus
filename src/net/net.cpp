@@ -26,7 +26,9 @@
 
 #include "net/loginhandler.h"
 
+#ifdef TMWA_SUPPORT
 #include "net/tmwa/generalhandler.h"
+#endif
 
 #ifdef EATHENA_SUPPORT
 #include "net/eathena/generalhandler.h"
@@ -161,9 +163,6 @@ void connectToServer(const ServerInfo &server)
 
         switch (server.type)
         {
-            case ServerInfo::EVOL:
-                new TmwAthena::GeneralHandler;
-                break;
             case ServerInfo::EATHENA:
 #ifdef EATHENA_SUPPORT
                 new EAthena::GeneralHandler;
@@ -172,9 +171,14 @@ void connectToServer(const ServerInfo &server)
 #endif
                 break;
             case ServerInfo::TMWATHENA:
+            case ServerInfo::EVOL:
             case ServerInfo::UNKNOWN:
             default:
+#ifdef TMWA_SUPPORT
                 new TmwAthena::GeneralHandler;
+#else
+                new EAthena::GeneralHandler;
+#endif
                 break;
         }
 

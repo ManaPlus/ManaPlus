@@ -27,6 +27,10 @@
 #include <stdint.h>
 #endif
 
+#ifdef EATHENA_SUPPORT
+static const uint16_t DEFAULT_PORT = 6900;
+#else
 static const uint16_t DEFAULT_PORT = 6901;
+#endif
 
 #endif  // NET_NETCONSTS_H

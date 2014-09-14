@@ -31,6 +31,7 @@ FIND_PACKAGE(Gettext)
 OPTION(WITH_OPENGL "Enable OpenGL support" ON)
 OPTION(ENABLE_NLS "Enable building of tranlations" ON)
 OPTION(ENABLE_EATHENA "Enable eAthena support" ON)
+OPTION(ENABLE_TMWA "Enable tmwA support" ON)
 
 IF (WIN32)
     SET(PKG_DATADIR ".")

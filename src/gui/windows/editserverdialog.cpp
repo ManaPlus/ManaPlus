@@ -145,21 +145,28 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
 
     switch (mServer.type)
     {
-#ifdef EATHENA_SUPPORT
         case ServerInfo::EATHENA:
+#ifdef EATHENA_SUPPORT
+#ifdef TMWA_SUPPORT
             mTypeField->setSelected(2);
+#else   // TMWA_SUPPORT
+            mTypeField->setSelected(0);
+#endif  // TMWA_SUPPORT
+#else   // EATHENA_SUPPORT
+            mTypeField->setSelected(0);
+#endif  // EATHENA_SUPPORT
             break;
-#endif
         default:
         case ServerInfo::UNKNOWN:
         case ServerInfo::TMWATHENA:
-#ifndef EATHENA_SUPPORT
-        case ServerInfo::EATHENA:
-#endif
             mTypeField->setSelected(0);
             break;
         case ServerInfo::EVOL:
+#ifdef TMWA_SUPPORT
             mTypeField->setSelected(1);
+#else   // TMWA_SUPPORT
+            mTypeField->setSelected(0);
+#endif  // TMWA_SUPPORT
             break;
     }
 
@@ -220,6 +227,7 @@ void EditServerDialog::action(const ActionEvent &event)
             {
                 switch (mTypeField->getSelected())
                 {
+#ifdef TMWA_SUPPORT
                     case 0:
                         mServer.type = ServerInfo::TMWATHENA;
                         break;
@@ -230,6 +238,13 @@ void EditServerDialog::action(const ActionEvent &event)
                     case 2:
                         mServer.type = ServerInfo::EATHENA;
                         break;
+#endif
+#else
+#ifdef EATHENA_SUPPORT
+                    case 0:
+                        mServer.type = ServerInfo::EATHENA;
+                        break;
+#endif
 #endif
                     default:
                         mServer.type = ServerInfo::UNKNOWN;
