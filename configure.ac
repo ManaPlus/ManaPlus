@@ -283,7 +283,7 @@ AC_ARG_ENABLE(eathena,
   yes) with_eathena=true ;;
   no)  with_eathena=false ;;
   *) AC_MSG_ERROR(bad value ${enableval} for --enable-eathena) ;;
-esac],[with_eathena=false])
+esac],[with_eathena=true])
 
 AM_CONDITIONAL(ENABLE_EATHENA, test x$with_eathena = xtrue)
 
