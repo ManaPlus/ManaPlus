@@ -1557,4 +1557,32 @@ void BeingHandler::applyPlayerAction(Being *const being, const uint8_t type)
     }
 }
 
+void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
+{
+    BLOCK_START("BeingHandler::processPlayerStop")
+    if (!actorManager)
+    {
+        BLOCK_END("BeingHandler::processPlayerStop")
+        return;
+    }
+
+    // Change in players' flags
+    const int id = msg.readInt32("account id");
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (!dstBeing)
+        return;
+
+    const uint16_t stunMode = msg.readInt16("stun mode");
+    uint32_t statusEffects = msg.readInt16("status effect");
+    statusEffects |= (static_cast<uint32_t>(msg.readInt16("opt?"))) << 16;
+    msg.readUInt8("Unused?");
+
+    dstBeing->setStunMode(stunMode);
+    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
+        (statusEffects >> 16) & 0xffff));
+    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+        statusEffects & 0xffff));
+    BLOCK_END("BeingHandler::processPlayerStop")
+}
+
 }  // namespace TmwAthena
