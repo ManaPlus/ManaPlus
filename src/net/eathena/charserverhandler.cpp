@@ -301,33 +301,11 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
         return;
 
     StringVect attributes;
-    // TRANSLATORS: playe stat
-    attributes.push_back(_("Strength:"));
-    // TRANSLATORS: playe stat
-    attributes.push_back(_("Agility:"));
-    // TRANSLATORS: playe stat
-    attributes.push_back(_("Vitality:"));
-    // TRANSLATORS: playe stat
-    attributes.push_back(_("Intelligence:"));
-    // TRANSLATORS: playe stat
-    attributes.push_back(_("Dexterity:"));
-    // TRANSLATORS: playe stat
-    attributes.push_back(_("Luck:"));
 
     const Token &token =
         static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
 
-    int minStat = CharDB::getMinStat();
-    if (!minStat)
-        minStat = 1;
-    int maxStat = CharDB::getMaxStat();
-    if (!maxStat)
-        maxStat = 9;
-    int sumStat = CharDB::getSumStat();
-    if (!sumStat)
-        sumStat = 30;
-
-    mCharCreateDialog->setAttributes(attributes, sumStat, minStat, maxStat);
+    mCharCreateDialog->setAttributes(attributes, 0, 0, 0);
     mCharCreateDialog->setFixedGender(true, token.sex);
 }
 
