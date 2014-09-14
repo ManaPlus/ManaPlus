@@ -47,4 +47,9 @@ bool ServerFeatures::haveChangePartyLeader() const
     return true;
 }
 
+bool ServerFeatures::haveServerHp() const
+{
+    return true;
+}
+
 }  // namespace EAthena

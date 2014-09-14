@@ -39,6 +39,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool havePartyNickInvite() const override final;
 
         bool haveChangePartyLeader() const override final;
+
+        bool haveServerHp() const override final;
 };
 
 }  // namespace EAthena

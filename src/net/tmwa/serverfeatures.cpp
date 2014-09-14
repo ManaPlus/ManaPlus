@@ -23,6 +23,7 @@
 #include "debug.h"
 
 extern int serverVersion;
+extern int tmwServerVersion;
 extern Net::ServerFeatures *serverFeatures;
 
 namespace TmwAthena
@@ -46,6 +47,11 @@ bool ServerFeatures::havePartyNickInvite() const
 bool ServerFeatures::haveChangePartyLeader() const
 {
     return false;
+}
+
+bool ServerFeatures::haveServerHp() const
+{
+    return serverVersion > 0 || tmwServerVersion >= 0x0E0701;
 }
 
 }  // namespace TmwAthena
