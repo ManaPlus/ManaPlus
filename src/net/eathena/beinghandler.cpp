@@ -1714,8 +1714,8 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
 
     const uint16_t stunMode = msg.readInt16("stun mode");
     uint32_t statusEffects = msg.readInt16("status effect");
-    statusEffects |= (static_cast<uint32_t>(msg.readInt16("opt?"))) << 16;
-    msg.readUInt8("Unused?");
+    statusEffects |= (static_cast<uint32_t>(msg.readInt32("opt?"))) << 16;
+    msg.readUInt8("karma");
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
