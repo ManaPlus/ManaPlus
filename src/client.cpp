@@ -1021,6 +1021,7 @@ int Client::gameExec()
 
                     loginData.clearUpdateHost();
                     serverVersion = 0;
+                    tmwServerVersion = 0;
 
                     // Allow changing this using a server choice dialog
                     // We show the dialog box only if the command-line
