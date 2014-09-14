@@ -93,6 +93,7 @@ SET (FILES
     shop.xml
     shoplistbox.xml
     skilllistbox.xml
+    skillpopup.xml
     slider.xml
     slider_highlighted.xml
     social.xml

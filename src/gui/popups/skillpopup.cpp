@@ -39,7 +39,7 @@ extern int serverVersion;
 SkillPopup *skillPopup = nullptr;
 
 SkillPopup::SkillPopup() :
-    Popup("SkillPopup", "itempopup.xml"),
+    Popup("SkillPopup", "skillpopup.xml"),
     mSkillName(new Label(this)),
     mSkillDesc(new TextBox(this)),
     mSkillEffect(new TextBox(this)),
