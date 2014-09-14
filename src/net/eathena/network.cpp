@@ -98,15 +98,8 @@ void Network::dispatchMessages()
         SDL_mutexP(mMutexIn);
         const unsigned int msgId = readWord(0);
         int len = -1;
-        if (msgId == SMSG_UPDATE_HOST2)
-        {
-            len = -1;
-        }
-        else
-        {
-            if (msgId < packet_lengths_size)
-                len = packet_lengths[msgId];
-        }
+        if (msgId < packet_lengths_size)
+            len = packet_lengths[msgId];
 
         if (len == -1)
             len = readWord(2);
@@ -147,17 +140,10 @@ bool Network::messageReady()
     if (mInSize >= 2)
     {
         const int msgId = readWord(0);
-        if (msgId == SMSG_UPDATE_HOST2)
+        if (msgId >= 0 && static_cast<unsigned int>(msgId)
+            < packet_lengths_size)
         {
-            len = -1;
-        }
-        else
-        {
-            if (msgId >= 0 && static_cast<unsigned int>(msgId)
-                < packet_lengths_size)
-            {
-                len = packet_lengths[msgId];
-            }
+            len = packet_lengths[msgId];
         }
 
         if (len == -1 && mInSize > 4)

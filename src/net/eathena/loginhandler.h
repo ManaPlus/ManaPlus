@@ -62,9 +62,9 @@ class LoginHandler final : public MessageHandler, public Ea::LoginHandler
 
         ServerInfo *getCharServer() const override final A_WARN_UNUSED;
 
-        void processUpdateHost2(Net::MessageIn &msg) const;
-
         void processLoginError2(Net::MessageIn &msg) const;
+
+        void processUpdateHost2(Net::MessageIn &msg) const;
 
     private:
         void sendLoginRegister(const std::string &restrict username,

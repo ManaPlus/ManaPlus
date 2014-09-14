@@ -49,8 +49,6 @@ LoginHandler::LoginHandler() :
 {
     static const uint16_t _messages[] =
     {
-        SMSG_UPDATE_HOST,
-        SMSG_UPDATE_HOST2,
         SMSG_LOGIN_DATA,
         SMSG_LOGIN_ERROR,
         SMSG_LOGIN_ERROR2,
@@ -71,14 +69,6 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_CHAR_PASSWORD_RESPONSE:
             procecessCharPasswordResponse(msg);
-            break;
-
-        case SMSG_UPDATE_HOST:
-            processUpdateHost(msg);
-            break;
-
-        case SMSG_UPDATE_HOST2:
-            processUpdateHost2(msg);
             break;
 
         case SMSG_LOGIN_DATA:
@@ -157,29 +147,6 @@ ServerInfo *LoginHandler::getCharServer() const
     return &charServer;
 }
 
-void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
-{
-    const int len = msg.readInt16("len") - 4;
-    const std::string updateHost = msg.readString(len, "host");
-
-    splitToStringVector(loginData.updateHosts, updateHost, '|');
-    FOR_EACH (StringVectIter, it, loginData.updateHosts)
-    {
-        if (!checkPath(*it))
-        {
-            logger->log1("Warning: incorrect update server name");
-            loginData.updateHosts.clear();
-            break;
-        }
-    }
-
-    logger->log("Received update hosts \"%s\" from login server.",
-        updateHost.c_str());
-
-    if (client->getState() == STATE_PRE_LOGIN)
-        client->setState(STATE_LOGIN);
-}
-
 void LoginHandler::processLoginError2(Net::MessageIn &msg) const
 {
     const uint32_t code = msg.readInt32("error");
@@ -252,6 +219,10 @@ void LoginHandler::processLoginError2(Net::MessageIn &msg) const
             break;
     }
     client->setState(STATE_ERROR);
+}
+
+void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
+{
 }
 
 }  // namespace EAthena

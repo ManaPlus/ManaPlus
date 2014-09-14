@@ -29,7 +29,6 @@
 #define SMSG_SERVER_PING             0x007f /**< Contains server tick */
 #define SMSG_CONNECTION_PROBLEM      0x0081
 
-#define SMSG_UPDATE_HOST             0x0063 /**< Custom update host packet */
 #define SMSG_LOGIN_DATA              0x0069
 #define SMSG_LOGIN_ERROR             0x006a
 #define SMSG_LOGIN_ERROR2            0x083e
@@ -379,10 +378,6 @@
 #define SMSG_IGNORE_ALL_RESPONSE     0x00d2
 #define SMSG_ONLINE_LIST             0x0211
 #define SMSG_NPC_COMMAND             0x0212
-
-#define CMSG_SET_STATUS              0x0213
-
-#define SMSG_UPDATE_HOST2            0x7534
 
 #define SMSG_MAP_ACCOUNT_ID          0x0283
 #define SMSG_PLAYER_SHORTCUTS        0x07d9

@@ -235,9 +235,6 @@ void PlayerHandler::requestOnlineList() const
 
 void PlayerHandler::updateStatus(const uint8_t status) const
 {
-    MessageOut outMsg(CMSG_SET_STATUS);
-    outMsg.writeInt8(status);
-    outMsg.writeInt8(0);
 }
 
 void PlayerHandler::setShortcut(const int idx,
