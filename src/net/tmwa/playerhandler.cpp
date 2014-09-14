@@ -464,4 +464,8 @@ void PlayerHandler::requestPvpInfo() const
 {
 }
 
+void PlayerHandler::revive() const
+{
+}
+
 }  // namespace TmwAthena

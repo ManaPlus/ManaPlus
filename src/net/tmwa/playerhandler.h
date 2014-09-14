@@ -77,6 +77,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
         void requestPvpInfo() const override final;
 
+        void revive() const override final;
+
     protected:
         void processPlayerStatUpdate5(Net::MessageIn &msg);
 

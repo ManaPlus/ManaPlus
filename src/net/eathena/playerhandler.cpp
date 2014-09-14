@@ -415,4 +415,9 @@ void PlayerHandler::processPvpInfo(Net::MessageIn &msg)
     msg.readInt32("pvp point");
 }
 
+void PlayerHandler::revive() const
+{
+    MessageOut outMsg(CMSG_PLAYER_AUTO_REVIVE);
+}
+
 }  // namespace EAthena

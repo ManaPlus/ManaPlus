@@ -95,6 +95,8 @@ class PlayerHandler notfinal
         virtual void explosionSpirits() const = 0;
 
         virtual void requestPvpInfo() const = 0;
+
+        virtual void revive() const = 0;
 };
 
 }  // namespace Net
