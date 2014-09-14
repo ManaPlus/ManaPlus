@@ -59,6 +59,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_SHORTCUTS,
         SMSG_PLAYER_SHOW_EQUIP,
         SMSG_PLAYER_GET_EXP,
+        SMSG_PVP_INFO,
         0
     };
     handledMessages = _messages;
@@ -116,6 +117,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_GET_EXP:
             processPlayerGetExp(msg);
+            break;
+
+        case SMSG_PVP_INFO:
+            processPvpInfo(msg);
             break;
 
         default:
@@ -399,6 +404,15 @@ void PlayerHandler::requestPvpInfo() const
     MessageOut outMsg(CMSG_PVP_INFO);
     outMsg.writeInt32(0, "char id");
     outMsg.writeInt32(0, "account id");
+}
+
+void PlayerHandler::processPvpInfo(Net::MessageIn &msg)
+{
+    msg.readInt32("char id");
+    msg.readInt32("account id");
+    msg.readInt32("pvp won");
+    msg.readInt32("pvp lost");
+    msg.readInt32("pvp point");
 }
 
 }  // namespace EAthena

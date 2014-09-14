@@ -206,6 +206,7 @@
 #define SMSG_RANKS_LIST              0x097d
 #define SMSG_MONSTER_HP              0x0977
 #define SMSG_PLAYER_HP               0x080e
+#define SMSG_PVP_INFO                0x0210
 
 #define SMSG_CHAT_IGNORE_LIST        0x00d4
 
@@ -378,7 +379,6 @@
 #define SMSG_ONLINE_LIST             0x0211
 #define SMSG_NPC_COMMAND             0x0212
 
-#define CMSG_ONLINE_LIST             0x0210
 #define CMSG_SET_STATUS              0x0213
 
 #define SMSG_UPDATE_HOST2            0x7534
