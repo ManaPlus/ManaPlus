@@ -68,6 +68,14 @@ class CharServerHandler final : public MessageHandler,
 
         void setNewPincode(const std::string &pin) override final;
 
+        /**
+         * Sets the character create dialog. The handler will clean up this
+         * dialog when a new character is succesfully created, and will unlock
+         * the dialog when a new character failed to be created.
+         */
+        void setCharCreateDialog(CharCreateDialog *const window)
+                                 override final;
+
     protected:
         void readPlayerData(Net::MessageIn &msg,
                             Net::Character *const character,

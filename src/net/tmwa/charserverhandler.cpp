@@ -44,9 +44,11 @@
 
 #include "resources/iteminfo.h"
 
+#include "resources/db/chardb.h"
 #include "resources/db/itemdb.h"
 
 #include "utils/dtor.h"
+#include "utils/gettext.h"
 
 #include "debug.h"
 
@@ -333,6 +335,44 @@ void CharServerHandler::connect()
 
     // We get 4 useless bytes before the real answer comes in (what are these?)
     mNetwork->skip(4);
+}
+
+void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
+{
+    mCharCreateDialog = window;
+
+    if (!mCharCreateDialog)
+        return;
+
+    StringVect attributes;
+    // TRANSLATORS: playe stat
+    attributes.push_back(_("Strength:"));
+    // TRANSLATORS: playe stat
+    attributes.push_back(_("Agility:"));
+    // TRANSLATORS: playe stat
+    attributes.push_back(_("Vitality:"));
+    // TRANSLATORS: playe stat
+    attributes.push_back(_("Intelligence:"));
+    // TRANSLATORS: playe stat
+    attributes.push_back(_("Dexterity:"));
+    // TRANSLATORS: playe stat
+    attributes.push_back(_("Luck:"));
+
+    const Token &token =
+        static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
+
+    int minStat = CharDB::getMinStat();
+    if (!minStat)
+        minStat = 1;
+    int maxStat = CharDB::getMaxStat();
+    if (!maxStat)
+        maxStat = 9;
+    int sumStat = CharDB::getSumStat();
+    if (!sumStat)
+        sumStat = 30;
+
+    mCharCreateDialog->setAttributes(attributes, sumStat, minStat, maxStat);
+    mCharCreateDialog->setFixedGender(true, token.sex);
 }
 
 void CharServerHandler::processCharLogin(Net::MessageIn &msg)

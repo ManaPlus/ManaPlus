@@ -61,44 +61,6 @@ void CharServerHandler::setCharSelectDialog(CharSelectDialog *const window)
     updateCharSelectDialog();
 }
 
-void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
-{
-    mCharCreateDialog = window;
-
-    if (!mCharCreateDialog)
-        return;
-
-    StringVect attributes;
-    // TRANSLATORS: playe stat
-    attributes.push_back(_("Strength:"));
-    // TRANSLATORS: playe stat
-    attributes.push_back(_("Agility:"));
-    // TRANSLATORS: playe stat
-    attributes.push_back(_("Vitality:"));
-    // TRANSLATORS: playe stat
-    attributes.push_back(_("Intelligence:"));
-    // TRANSLATORS: playe stat
-    attributes.push_back(_("Dexterity:"));
-    // TRANSLATORS: playe stat
-    attributes.push_back(_("Luck:"));
-
-    const Token &token =
-        static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
-
-    int minStat = CharDB::getMinStat();
-    if (!minStat)
-        minStat = 1;
-    int maxStat = CharDB::getMaxStat();
-    if (!maxStat)
-        maxStat = 9;
-    int sumStat = CharDB::getSumStat();
-    if (!sumStat)
-        sumStat = 30;
-
-    mCharCreateDialog->setAttributes(attributes, sumStat, minStat, maxStat);
-    mCharCreateDialog->setFixedGender(true, token.sex);
-}
-
 void CharServerHandler::requestCharacters()
 {
     connect();

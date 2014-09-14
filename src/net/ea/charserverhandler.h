@@ -44,14 +44,6 @@ class CharServerHandler notfinal : public Net::CharServerHandler
         virtual void setCharSelectDialog(CharSelectDialog *const window)
                                          override final;
 
-        /**
-         * Sets the character create dialog. The handler will clean up this
-         * dialog when a new character is succesfully created, and will unlock
-         * the dialog when a new character failed to be created.
-         */
-        virtual void setCharCreateDialog(CharCreateDialog *const window)
-                                         override final;
-
         virtual void requestCharacters() override final;
 
         virtual unsigned int baseSprite() const override final A_WARN_UNUSED;
