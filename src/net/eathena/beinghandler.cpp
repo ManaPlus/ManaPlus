@@ -92,6 +92,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_SKILL_CAST_CANCEL,
         SMSG_SKILL_NO_DAMAGE,
         SMSG_SKILL_GROUND_NO_DAMAGE,
+        SMSG_SKILL_ENTRY,
         SMSG_BEING_IP_RESPONSE,
         SMSG_PVP_MAP_MODE,
         SMSG_PVP_SET,
@@ -242,6 +243,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_SKILL_GROUND_NO_DAMAGE:
             processSkillGroundNoDamage(msg);
+            break;
+
+        case SMSG_SKILL_ENTRY:
+            processSkillEntry(msg);
             break;
 
         case SMSG_PVP_MAP_MODE:
@@ -1677,6 +1682,19 @@ void BeingHandler::processSkillGroundNoDamage(Net::MessageIn &msg) const
     msg.readInt16("x");
     msg.readInt16("y");
     msg.readInt32("tick");
+}
+
+void BeingHandler::processSkillEntry(Net::MessageIn &msg) const
+{
+    msg.readInt16("len");
+    msg.readInt32("accound id");
+    msg.readInt32("creator accound id");
+    msg.readInt16("x");
+    msg.readInt16("y");
+    msg.readInt32("job");
+    msg.readUInt8("radius");
+    msg.readUInt8("visible");
+    msg.readUInt8("level");
 }
 
 }  // namespace EAthena

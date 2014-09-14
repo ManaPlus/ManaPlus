@@ -367,6 +367,7 @@
 #define SMSG_SKILL_CAST_CANCEL       0x01b9
 #define SMSG_SKILL_NO_DAMAGE         0x011a
 #define SMSG_SKILL_GROUND_NO_DAMAGE  0x0117
+#define SMSG_SKILL_ENTRY             0x09ca
 
 #define SMSG_BEING_IP_RESPONSE       0x020c
 #define SMSG_PVP_MAP_MODE            0x0199
