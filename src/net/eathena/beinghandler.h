@@ -94,6 +94,9 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         static void applyPlayerAction(Being *const being,
                                       const uint8_t type);
+
+    protected:
+        void processSkillGroundNoDamage(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena
