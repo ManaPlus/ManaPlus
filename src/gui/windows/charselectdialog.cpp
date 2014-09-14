@@ -463,24 +463,23 @@ void CharSelectDialog::setCharacters(const Net::Characters &characters)
     }
 
     FOR_EACH (Net::Characters::const_iterator, i, characters)
+        setCharacter(*i);
+    updateState();
+}
+
+void CharSelectDialog::setCharacter(Net::Character *const character)
+{
+    if (!character)
+        return;
+    const int characterSlot = character->slot;
+    if (characterSlot >= static_cast<int>(mCharacterEntries.size()))
     {
-        if (!*i)
-            continue;
-
-        Net::Character *const character = *i;
-
-        const int characterSlot = character->slot;
-        if (characterSlot >= static_cast<int>(mCharacterEntries.size()))
-        {
-            logger->log("Warning: slot out of range: %d", character->slot);
-            continue;
-        }
-
-        if (mCharacterEntries[characterSlot])
-            mCharacterEntries[characterSlot]->setCharacter(character);
+        logger->log("Warning: slot out of range: %d", character->slot);
+        return;
     }
 
-    updateState();
+    if (mCharacterEntries[characterSlot])
+        mCharacterEntries[characterSlot]->setCharacter(character);
 }
 
 void CharSelectDialog::lock()

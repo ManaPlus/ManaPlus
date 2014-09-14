@@ -98,6 +98,8 @@ class CharSelectDialog final : public Window,
 
         void setCharacters(const Net::Characters &characters);
 
+        void setCharacter(Net::Character *const character);
+
         void use(const int selected);
 
         void lock();
