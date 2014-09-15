@@ -82,6 +82,7 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mMailHandler;
         MessageHandlerPtr mAuctionHandler;
         MessageHandlerPtr mCashShopHandler;
+        MessageHandlerPtr mFamilyHandler;
 };
 
 }  // namespace TmwAthena

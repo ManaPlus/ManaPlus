@@ -1287,6 +1287,8 @@ SET(SRCS_TMWA
     net/tmwa/charserverhandler.h
     net/tmwa/chathandler.cpp
     net/tmwa/chathandler.h
+    net/tmwa/familyhandler.cpp
+    net/tmwa/familyhandler.h
     net/tmwa/gamehandler.cpp
     net/tmwa/gamehandler.h
     net/tmwa/generalhandler.cpp
@@ -1347,6 +1349,8 @@ SET(SRCS_EATHENA
     net/eathena/charserverhandler.h
     net/eathena/chathandler.cpp
     net/eathena/chathandler.h
+    net/eathena/familyhandler.cpp
+    net/eathena/familyhandler.h
     net/eathena/gamehandler.cpp
     net/eathena/gamehandler.h
     net/eathena/generalhandler.cpp

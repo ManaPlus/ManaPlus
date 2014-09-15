@@ -56,6 +56,7 @@ Net::ServerFeatures *serverFeatures = nullptr;
 Net::MailHandler *mailHandler = nullptr;
 Net::AuctionHandler *auctionHandler = nullptr;
 Net::CashShopHandler *cashShopHandler = nullptr;
+Net::FamilyHandler *familyHandler = nullptr;
 
 Net::AdminHandler *Net::getAdminHandler()
 {
@@ -156,6 +157,12 @@ Net::CashShopHandler *Net::getCashShopHandler()
 {
     return cashShopHandler;
 }
+
+Net::FamilyHandler *Net::getFamilyHandler()
+{
+    return familyHandler;
+}
+
 
 namespace Net
 {

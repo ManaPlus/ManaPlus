@@ -46,6 +46,7 @@
 #include "net/eathena/cashshophandler.h"
 #include "net/eathena/chathandler.h"
 #include "net/eathena/charserverhandler.h"
+#include "net/eathena/familyhandler.h"
 #include "net/eathena/gamehandler.h"
 #include "net/eathena/guildhandler.h"
 #include "net/eathena/inventoryhandler.h"
@@ -100,7 +101,8 @@ GeneralHandler::GeneralHandler() :
     mServerFeatures(new ServerFeatures),
     mMailHandler(new MailHandler),
     mAuctionHandler(new AuctionHandler),
-    mCashShopHandler(new CashShopHandler)
+    mCashShopHandler(new CashShopHandler),
+    mFamilyHandler(new FamilyHandler)
 {
     static const uint16_t _messages[] =
     {
@@ -201,6 +203,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mMailHandler.get());
     mNetwork->registerHandler(mAuctionHandler.get());
     mNetwork->registerHandler(mCashShopHandler.get());
+    mNetwork->registerHandler(mFamilyHandler.get());
 }
 
 void GeneralHandler::reload()
