@@ -23,6 +23,7 @@
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/questswindow.h"
 
+#include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
 #include "resources/skillconsts.h"
@@ -94,6 +95,11 @@ void QuestHandler::processPlayerQuests(Net::MessageIn &msg)
     }
     if (questsWindow)
         questsWindow->rebuild(false);
+}
+
+void QuestHandler::setQeustActiveState(const int questId A_UNUSED,
+                                       const bool active A_UNUSED) const
+{
 }
 
 }  // namespace TmwAthena

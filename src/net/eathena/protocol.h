@@ -369,6 +369,7 @@
 #define CMSG_EXPLOSION_SPIRITS       0x01ed
 #define CMSG_PVP_INFO                0x020f
 #define CMSG_PLAYER_AUTO_REVIVE      0x0292
+#define CMSG_QUEST_ACTIVATE          0x02b6
 
 #define CMSG_MAIL_REFRESH_INBOX      0x023f
 #define CMSG_MAIL_READ_MESSAGE       0x0241

@@ -37,6 +37,9 @@ class QuestHandler final : public MessageHandler, public Net::QuestHandler
 
         void handleMessage(Net::MessageIn &msg) override final;
 
+        void setQeustActiveState(const int questId,
+                                 const bool active) const override final;
+
     protected:
         static void processAddQuest(Net::MessageIn &msg);
 

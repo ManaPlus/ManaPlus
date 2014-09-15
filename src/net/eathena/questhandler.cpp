@@ -23,6 +23,7 @@
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/questswindow.h"
 
+#include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
 #include "resources/skillconsts.h"
@@ -178,6 +179,14 @@ void QuestHandler::processRemoveQuest(Net::MessageIn &msg)
         skillDialog->updateQuest(var, val);
         skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);
     }
+}
+
+void QuestHandler::setQeustActiveState(const int questId,
+                                       const bool active) const
+{
+    MessageOut outMsg(CMSG_QUEST_ACTIVATE);
+    outMsg.writeInt32(questId, "quest id");
+    outMsg.writeInt8(active ? 1 : 0, "activate");
 }
 
 }  // namespace EAthena

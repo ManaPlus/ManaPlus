@@ -28,7 +28,8 @@
 namespace TmwAthena
 {
 
-class QuestHandler final : public MessageHandler, public Net::QuestHandler
+class QuestHandler final : public MessageHandler,
+                           public Net::QuestHandler
 {
     public:
         QuestHandler();
@@ -40,6 +41,9 @@ class QuestHandler final : public MessageHandler, public Net::QuestHandler
         static void processSetQuestVar(Net::MessageIn &msg);
 
         static void processPlayerQuests(Net::MessageIn &msg);
+
+        void setQeustActiveState(const int questId,
+                                 const bool active) const override final;
 };
 
 }  // namespace TmwAthena
