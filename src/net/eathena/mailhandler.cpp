@@ -119,4 +119,20 @@ void MailHandler::resetAttach(const int flag)
     outMsg.writeInt16(static_cast<int16_t>(flag), "flag");
 }
 
+void MailHandler::send(const std::string &name,
+                       const std::string &title,
+                       std::string message)
+{
+    if (message.size() > 255)
+        message = message.substr(0, 255);
+    const int sz = static_cast<int>(message.size());
+
+    MessageOut outMsg(CMSG_MAIL_SEND);
+    outMsg.writeInt16(69 + sz);
+    outMsg.writeString(name, 24, "name");
+    outMsg.writeString(title, 40, "title");
+    outMsg.writeInt8(sz);
+    outMsg.writeString(message, sz, "message");
+}
+
 }  // namespace EAthena

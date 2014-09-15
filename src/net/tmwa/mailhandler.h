@@ -50,6 +50,10 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
         void setAttach(const int index, const int amount) override final;
 
         void resetAttach(const int flag) override final;
+
+        void send(const std::string &name,
+                  const std::string &title,
+                  std::string message) override final;
 };
 
 }  // namespace TmwAthena

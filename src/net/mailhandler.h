@@ -21,6 +21,8 @@
 #ifndef NET_MAILHANDLER_H
 #define NET_MAILHANDLER_H
 
+#include <string>
+
 #include "localconsts.h"
 
 namespace Net
@@ -45,6 +47,10 @@ class MailHandler notfinal
         virtual void setAttach(const int index, const int amount) = 0;
 
         virtual void resetAttach(const int flag) = 0;
+
+        virtual void send(const std::string &name,
+                          const std::string &title,
+                          std::string message) = 0;
 };
 
 }  // namespace Net

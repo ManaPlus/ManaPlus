@@ -71,4 +71,10 @@ void MailHandler::resetAttach(const int flag A_UNUSED)
 {
 }
 
+void MailHandler::send(const std::string &name A_UNUSED,
+                       const std::string &title A_UNUSED,
+                       std::string message A_UNUSED)
+{
+}
+
 }  // namespace TmwAthena

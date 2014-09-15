@@ -373,6 +373,7 @@
 #define CMSG_MAIL_RETURN_MESSAGE     0x0273
 #define CMSG_MAIL_SET_ATTACH         0x0247
 #define CMSG_MAIL_RESET_ATTACH       0x0246
+#define CMSG_MAIL_SEND               0x0248
 
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb
