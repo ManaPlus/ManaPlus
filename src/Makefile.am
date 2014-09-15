@@ -642,6 +642,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/charserverhandler.cpp \
 	      net/charserverhandler.h \
 	      net/chathandler.h \
+	      net/familyhandler.h \
 	      net/download.cpp \
 	      net/download.h \
 	      net/downloadstatus.h \
