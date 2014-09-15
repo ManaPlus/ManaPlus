@@ -41,6 +41,7 @@ FamilyHandler::FamilyHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_ASK_FOR_CHILD,
         0
     };
     handledMessages = _messages;
@@ -51,6 +52,10 @@ void FamilyHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_ASK_FOR_CHILD:
+            processAskForChild(msg);
+            break;
+
         default:
             break;
     }
@@ -63,6 +68,13 @@ void FamilyHandler::askForChild(const Being *const being)
 
     MessageOut outMsg(CMSG_ASK_FOR_CHILD);
     outMsg.writeInt32(being->getId());
+}
+
+void FamilyHandler::processAskForChild(Net::MessageIn &msg)
+{
+    msg.readInt32("account id who ask");
+    msg.readInt32("acoount id for other parent");
+    msg.readString(24, "name who ask");
 }
 
 }  // namespace EAthena

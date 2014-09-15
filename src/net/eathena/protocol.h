@@ -212,6 +212,8 @@
 
 #define SMSG_MAIL_OPEN_WINDOW        0x0260
 
+#define SMSG_ASK_FOR_CHILD           0x01f6
+
 #define SMSG_PET_MESSAGE             0x01aa
 
 /**********************************
