@@ -221,7 +221,7 @@ void LoginHandler::processLoginError2(Net::MessageIn &msg) const
     client->setState(STATE_ERROR);
 }
 
-void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
+void LoginHandler::processUpdateHost2(Net::MessageIn &msg A_UNUSED) const
 {
 }
 

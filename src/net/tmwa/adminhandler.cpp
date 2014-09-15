@@ -152,7 +152,7 @@ void AdminHandler::unequipAll(const Being *const being A_UNUSED) const
 {
 }
 
-void AdminHandler::requestStats(const std::string &name)
+void AdminHandler::requestStats(const std::string &name A_UNUSED)
 {
 }
 

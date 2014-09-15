@@ -233,7 +233,7 @@ void PlayerHandler::requestOnlineList() const
 {
 }
 
-void PlayerHandler::updateStatus(const uint8_t status) const
+void PlayerHandler::updateStatus(const uint8_t status A_UNUSED) const
 {
 }
 
