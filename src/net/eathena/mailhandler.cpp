@@ -97,4 +97,11 @@ void MailHandler::deleteMessage(const int msgId)
     outMsg.writeInt32(msgId, "message id");
 }
 
+void MailHandler::returnMessage(const int msgId)
+{
+    MessageOut outMsg(CMSG_MAIL_RETURN_MESSAGE);
+    outMsg.writeInt32(msgId, "message id");
+    outMsg.writeString("", 24, "unused");
+}
+
 }  // namespace EAthena

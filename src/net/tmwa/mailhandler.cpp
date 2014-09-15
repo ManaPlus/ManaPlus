@@ -58,4 +58,8 @@ void MailHandler::deleteMessage(const int msgId A_UNUSED)
 {
 }
 
+void MailHandler::returnMessage(const int msgId A_UNUSED)
+{
+}
+
 }  // namespace TmwAthena
