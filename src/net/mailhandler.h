@@ -33,6 +33,8 @@ class MailHandler notfinal
         { }
 
         virtual void refresh() = 0;
+
+        virtual void readMessage(const int msgId) = 0;
 };
 
 }  // namespace Net

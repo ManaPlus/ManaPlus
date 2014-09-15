@@ -79,4 +79,10 @@ void MailHandler::refresh()
     MessageOut outMsg(CMSG_MAIL_REFRESH_INBOX);
 }
 
+void MailHandler::readMessage(const int msgId)
+{
+    MessageOut outMsg(CMSG_MAIL_READ_MESSAGE);
+    outMsg.writeInt32(msgId, "message id");
+}
+
 }  // namespace EAthena

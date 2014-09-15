@@ -38,6 +38,8 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
         void handleMessage(Net::MessageIn &msg) override final;
 
         void refresh() override final;
+
+        void readMessage(const int msgId) override final;
 };
 
 }  // namespace TmwAthena

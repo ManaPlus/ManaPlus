@@ -367,6 +367,7 @@
 #define CMSG_PLAYER_AUTO_REVIVE      0x0292
 
 #define CMSG_MAIL_REFRESH_INBOX      0x023f
+#define CMSG_MAIL_READ_MESSAGE       0x0241
 
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb

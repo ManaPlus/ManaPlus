@@ -46,4 +46,8 @@ void MailHandler::refresh()
 {
 }
 
+void MailHandler::readMessage(const int msgId A_UNUSED)
+{
+}
+
 }  // namespace TmwAthena
