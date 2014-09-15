@@ -37,6 +37,8 @@ class FamilyHandler notfinal
         { }
 
         virtual void askForChild(const Being *const being) = 0;
+
+        virtual void askForChildReply(const bool accept) = 0;
 };
 
 }  // namespace Net

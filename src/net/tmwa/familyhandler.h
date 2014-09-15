@@ -39,6 +39,8 @@ class FamilyHandler final : public MessageHandler,
         void handleMessage(Net::MessageIn &msg) override final;
 
         void askForChild(const Being *const being) override final;
+
+        void askForChildReply(const bool accept) override final;
 };
 
 }  // namespace TmwAthena

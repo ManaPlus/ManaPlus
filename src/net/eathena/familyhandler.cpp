@@ -37,7 +37,9 @@ namespace EAthena
 {
 
 FamilyHandler::FamilyHandler() :
-    MessageHandler()
+    MessageHandler(),
+    mParent1(0),
+    mParent2(0)
 {
     static const uint16_t _messages[] =
     {
@@ -75,6 +77,14 @@ void FamilyHandler::processAskForChild(Net::MessageIn &msg)
     msg.readInt32("account id who ask");
     msg.readInt32("acoount id for other parent");
     msg.readString(24, "name who ask");
+}
+
+void FamilyHandler::askForChildReply(const bool accept)
+{
+    MessageOut outMsg(CMSG_ASK_FOR_CHILD_REPLY);
+    outMsg.writeInt32(mParent1, "parent1");
+    outMsg.writeInt32(mParent2, "parent2");
+    outMsg.writeInt32(accept ? 0: 1, "result");
 }
 
 }  // namespace EAthena

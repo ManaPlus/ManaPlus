@@ -46,4 +46,8 @@ void FamilyHandler::askForChild(const Being *const being A_UNUSED)
 {
 }
 
+void FamilyHandler::askForChildReply(const bool accept A_UNUSED)
+{
+}
+
 }  // namespace TmwAthena

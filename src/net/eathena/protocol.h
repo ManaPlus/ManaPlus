@@ -378,6 +378,7 @@
 #define CMSG_MAIL_SEND               0x0248
 
 #define CMSG_ASK_FOR_CHILD           0x01f9
+#define CMSG_ASK_FOR_CHILD_REPLY     0x01f7
 
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb

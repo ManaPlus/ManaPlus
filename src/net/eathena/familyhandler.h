@@ -41,8 +41,14 @@ class FamilyHandler final : public MessageHandler,
 
         void askForChild(const Being *const being) override final;
 
+        void askForChildReply(const bool accept) override final;
+
     protected:
         void processAskForChild(Net::MessageIn &msg);
+
+    private:
+        int mParent1;
+        int mParent2;
 };
 
 }  // namespace EAthena
