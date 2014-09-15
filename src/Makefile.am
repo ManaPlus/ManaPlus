@@ -668,6 +668,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      net/partyshare.h \
 	      net/pethandler.h \
 	      net/playerhandler.h \
+	      net/questhandler.h \
 	      net/registrationoptions.h \
 	      net/sdltcpnet.cpp \
 	      net/sdltcpnet.h \
