@@ -368,6 +368,7 @@
 
 #define CMSG_MAIL_REFRESH_INBOX      0x023f
 #define CMSG_MAIL_READ_MESSAGE       0x0241
+#define CMSG_MAIL_GET_ATTACH         0x0244
 
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb

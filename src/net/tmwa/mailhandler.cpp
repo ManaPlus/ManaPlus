@@ -50,4 +50,8 @@ void MailHandler::readMessage(const int msgId A_UNUSED)
 {
 }
 
+void MailHandler::getAttach(const int msgId A_UNUSED)
+{
+}
+
 }  // namespace TmwAthena

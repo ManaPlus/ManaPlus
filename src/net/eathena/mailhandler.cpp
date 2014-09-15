@@ -85,4 +85,10 @@ void MailHandler::readMessage(const int msgId)
     outMsg.writeInt32(msgId, "message id");
 }
 
+void MailHandler::getAttach(const int msgId)
+{
+    MessageOut outMsg(CMSG_MAIL_GET_ATTACH);
+    outMsg.writeInt32(msgId, "message id");
+}
+
 }  // namespace EAthena
