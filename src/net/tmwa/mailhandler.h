@@ -36,6 +36,8 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
         A_DELETE_COPY(MailHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+        void refresh() override final;
 };
 
 }  // namespace TmwAthena

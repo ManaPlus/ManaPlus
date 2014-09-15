@@ -42,4 +42,8 @@ void MailHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
+void MailHandler::refresh()
+{
+}
+
 }  // namespace TmwAthena

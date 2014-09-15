@@ -366,6 +366,8 @@
 #define CMSG_PVP_INFO                0x020f
 #define CMSG_PLAYER_AUTO_REVIVE      0x0292
 
+#define CMSG_MAIL_REFRESH_INBOX      0x023f
+
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb
 #define SMSG_SKILL_CAST_CANCEL       0x01b9

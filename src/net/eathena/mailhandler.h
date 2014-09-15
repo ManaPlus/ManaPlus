@@ -38,6 +38,8 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
 
         void handleMessage(Net::MessageIn &msg) override final;
 
+        void refresh() override final;
+
     protected:
         void processMailOpen(Net::MessageIn &msg) const;
 };

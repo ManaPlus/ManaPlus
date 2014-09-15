@@ -74,4 +74,9 @@ void MailHandler::processMailOpen(Net::MessageIn &msg) const
     }
 }
 
+void MailHandler::refresh()
+{
+    MessageOut outMsg(CMSG_MAIL_REFRESH_INBOX);
+}
+
 }  // namespace EAthena

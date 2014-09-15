@@ -31,6 +31,8 @@ class MailHandler notfinal
     public:
         virtual ~MailHandler()
         { }
+
+        virtual void refresh() = 0;
 };
 
 }  // namespace Net
