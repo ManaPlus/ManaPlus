@@ -55,6 +55,7 @@ Net::BuySellHandler *buySellHandler = nullptr;
 Net::ServerFeatures *serverFeatures = nullptr;
 Net::MailHandler *mailHandler = nullptr;
 Net::AuctionHandler *auctionHandler = nullptr;
+Net::CashShopHandler *cashShopHandler = nullptr;
 
 Net::AdminHandler *Net::getAdminHandler()
 {
@@ -149,6 +150,11 @@ Net::MailHandler *Net::getMailHandler()
 Net::AuctionHandler *Net::getAuctionHandler()
 {
     return auctionHandler;
+}
+
+Net::CashShopHandler *Net::getCashShopHandler()
+{
+    return cashShopHandler;
 }
 
 namespace Net

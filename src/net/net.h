@@ -39,6 +39,7 @@ namespace Net
 class AdminHandler;
 class AuctionHandler;
 class BeingHandler;
+class CashShopHandler;
 class CharServerHandler;
 class ChatHandler;
 class GameHandler;
@@ -75,6 +76,7 @@ BuySellHandler *getBuySellHandler() A_WARN_UNUSED;
 ServerFeatures *getServerFeatures() A_WARN_UNUSED;
 MailHandler *getMailHandler() A_WARN_UNUSED;
 AuctionHandler *getAuctionHandler() A_WARN_UNUSED;
+CashShopHandler *getCashShopHandler() A_WARN_UNUSED;
 
 ServerInfo::Type getNetworkType() A_WARN_UNUSED;
 
