@@ -40,6 +40,7 @@
 
 #include "net/tmwa/adminhandler.h"
 #include "net/tmwa/attrs.h"
+#include "net/tmwa/auctionhandler.h"
 #include "net/tmwa/beinghandler.h"
 #include "net/tmwa/buysellhandler.h"
 #include "net/tmwa/chathandler.h"
@@ -96,7 +97,8 @@ GeneralHandler::GeneralHandler() :
     mTradeHandler(new TradeHandler),
     mQuestHandler(new QuestHandler),
     mServerFeatures(new ServerFeatures),
-    mMailHandler(new MailHandler)
+    mMailHandler(new MailHandler),
+    mAuctionHandler(new AuctionHandler)
 {
     static const uint16_t _messages[] =
     {
@@ -211,6 +213,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mPetHandler.get());
     mNetwork->registerHandler(mQuestHandler.get());
     mNetwork->registerHandler(mMailHandler.get());
+    mNetwork->registerHandler(mAuctionHandler.get());
 }
 
 void GeneralHandler::reload()

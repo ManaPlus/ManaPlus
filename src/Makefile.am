@@ -634,6 +634,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/windows/worldselectdialog.cpp \
 	      gui/windows/worldselectdialog.h \
 	      net/adminhandler.h \
+	      net/auctionhandler.h \
 	      net/beinghandler.h \
 	      net/buysellhandler.h \
 	      net/character.h \
@@ -1203,6 +1204,8 @@ manaplus_SOURCES += \
 	      net/tmwa/adminhandler.cpp \
 	      net/tmwa/adminhandler.h \
 	      net/tmwa/attrs.h \
+	      net/tmwa/auctionhandler.cpp \
+	      net/tmwa/auctionhandler.h \
 	      net/tmwa/beinghandler.cpp \
 	      net/tmwa/beinghandler.h \
 	      net/tmwa/buysellhandler.cpp \
@@ -1259,6 +1262,8 @@ manaplus_CXXFLAGS += -DEATHENA_SUPPORT
 manaplus_SOURCES += net/eathena/adminhandler.cpp \
 	      net/eathena/adminhandler.h \
 	      net/eathena/attrs.h \
+	      net/eathena/auctionhandler.cpp \
+	      net/eathena/auctionhandler.h \
 	      net/eathena/beinghandler.cpp \
 	      net/eathena/beinghandler.h \
 	      net/eathena/beingtype.h \

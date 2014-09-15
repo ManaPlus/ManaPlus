@@ -512,6 +512,7 @@ SET(SRCS
     gui/windows/worldselectdialog.cpp
     gui/windows/worldselectdialog.h
     net/adminhandler.h
+    net/auctionhandler.h
     net/character.h
     net/charserverhandler.cpp
     net/charserverhandler.h
@@ -1274,6 +1275,8 @@ SET(SRCS_TMWA
     net/tmwa/adminhandler.cpp
     net/tmwa/adminhandler.h
     net/tmwa/attrs.h
+    net/tmwa/auctionhandler.cpp
+    net/tmwa/auctionhandler.h
     net/tmwa/beinghandler.cpp
     net/tmwa/beinghandler.h
     net/tmwa/buysellhandler.cpp
@@ -1329,6 +1332,8 @@ SET(SRCS_EATHENA
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
     net/eathena/attrs.h
+    net/eathena/auctionhandler.cpp
+    net/eathena/auctionhandler.h
     net/eathena/beinghandler.cpp
     net/eathena/beinghandler.h
     net/eathena/beingtype.h

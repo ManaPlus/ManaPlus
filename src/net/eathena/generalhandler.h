@@ -80,6 +80,7 @@ class GeneralHandler final : public MessageHandler,
         MessageHandlerPtr mQuestHandler;
         ServerFeatures *mServerFeatures;
         MessageHandlerPtr mMailHandler;
+        MessageHandlerPtr mAuctionHandler;
 };
 
 }  // namespace EAthena

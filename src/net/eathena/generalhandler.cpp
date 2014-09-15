@@ -40,6 +40,7 @@
 
 #include "net/eathena/adminhandler.h"
 #include "net/eathena/attrs.h"
+#include "net/eathena/auctionhandler.h"
 #include "net/eathena/beinghandler.h"
 #include "net/eathena/buysellhandler.h"
 #include "net/eathena/chathandler.h"
@@ -96,7 +97,8 @@ GeneralHandler::GeneralHandler() :
     mTradeHandler(new TradeHandler),
     mQuestHandler(new QuestHandler),
     mServerFeatures(new ServerFeatures),
-    mMailHandler(new MailHandler)
+    mMailHandler(new MailHandler),
+    mAuctionHandler(new AuctionHandler)
 {
     static const uint16_t _messages[] =
     {
@@ -195,6 +197,7 @@ void GeneralHandler::load()
     mNetwork->registerHandler(mPetHandler.get());
     mNetwork->registerHandler(mQuestHandler.get());
     mNetwork->registerHandler(mMailHandler.get());
+    mNetwork->registerHandler(mAuctionHandler.get());
 }
 
 void GeneralHandler::reload()
