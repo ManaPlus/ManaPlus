@@ -375,6 +375,8 @@
 #define CMSG_MAIL_RESET_ATTACH       0x0246
 #define CMSG_MAIL_SEND               0x0248
 
+#define CMSG_ASK_FOR_CHILD           0x01f9
+
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb
 #define SMSG_SKILL_CAST_CANCEL       0x01b9

@@ -37,6 +37,8 @@ class FamilyHandler final : public MessageHandler,
         A_DELETE_COPY(FamilyHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+        void askForChild(const Being *const being) override final;
 };
 
 }  // namespace TmwAthena

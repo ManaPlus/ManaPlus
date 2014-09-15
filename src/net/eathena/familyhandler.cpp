@@ -22,6 +22,8 @@
 
 #include "logger.h"
 
+#include "being/being.h"
+
 #include "net/ea/eaprotocol.h"
 
 #include "net/eathena/messageout.h"
@@ -52,6 +54,15 @@ void FamilyHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
+}
+
+void FamilyHandler::askForChild(const Being *const being)
+{
+    if (!being)
+        return;
+
+    MessageOut outMsg(CMSG_ASK_FOR_CHILD);
+    outMsg.writeInt32(being->getId());
 }
 
 }  // namespace EAthena

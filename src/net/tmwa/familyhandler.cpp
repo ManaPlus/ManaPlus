@@ -42,4 +42,8 @@ void FamilyHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
+void FamilyHandler::askForChild(const Being *const being A_UNUSED)
+{
+}
+
 }  // namespace TmwAthena

@@ -25,6 +25,8 @@
 
 #include "localconsts.h"
 
+class Being;
+
 namespace Net
 {
 
@@ -33,6 +35,8 @@ class FamilyHandler notfinal
     public:
         virtual ~FamilyHandler()
         { }
+
+        virtual void askForChild(const Being *const being) = 0;
 };
 
 }  // namespace Net
