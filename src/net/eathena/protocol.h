@@ -256,6 +256,7 @@
 #define CMSG_PLAYER_UNEQUIP          0x00ab
 #define CMSG_PLAYER_USE_CARD         0x017a
 #define CMSG_PLAYER_INSERT_CARD      0x017c
+#define CMSG_PLAYER_VIEW_EQUIPMENT   0x02d6
 
 #define CMSG_ITEM_PICKUP             0x07e4
 #define CMSG_PLAYER_CHANGE_DIR       0x0202

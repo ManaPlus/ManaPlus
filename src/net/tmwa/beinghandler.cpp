@@ -1557,6 +1557,10 @@ void BeingHandler::applyPlayerAction(Being *const being, const uint8_t type)
     }
 }
 
+void BeingHandler::viewPlayerEquipment(const Being *const being A_UNUSED)
+{
+}
+
 void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
 {
     BLOCK_START("BeingHandler::processPlayerStop")

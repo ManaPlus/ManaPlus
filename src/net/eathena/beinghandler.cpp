@@ -1674,6 +1674,15 @@ void BeingHandler::applyPlayerAction(Being *const being, const uint8_t type)
     }
 }
 
+void BeingHandler::viewPlayerEquipment(const Being *const being)
+{
+    if (!being)
+        return;
+
+    MessageOut outMsg(CMSG_PLAYER_VIEW_EQUIPMENT);
+    outMsg.writeInt32(being->getId(), "account id");
+}
+
 void BeingHandler::processSkillGroundNoDamage(Net::MessageIn &msg) const
 {
     msg.readInt16("skill id");

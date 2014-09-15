@@ -45,6 +45,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         void requestRanks(const Rank::Rank rank A_UNUSED) const override final;
 
+        void viewPlayerEquipment(const Being *const being) override final;
+
     protected:
         void processBeingChangeLook(Net::MessageIn &msg) const;
 

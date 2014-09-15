@@ -95,6 +95,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         static void applyPlayerAction(Being *const being,
                                       const uint8_t type);
 
+        void viewPlayerEquipment(const Being *const being) override final;
+
     protected:
         void processSkillGroundNoDamage(Net::MessageIn &msg) const;
 
