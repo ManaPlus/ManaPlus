@@ -88,6 +88,8 @@ class AdminHandler notfinal
                                  const int type) const = 0;
 
         virtual void unequipAll(const Being *const being) const = 0;
+
+        virtual void requestStats(const std::string &name) = 0;
 };
 
 }  // namespace Net

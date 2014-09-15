@@ -73,10 +73,14 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
         void unequipAll(const Being *const being) const override final;
 
+        void requestStats(const std::string &name) override final;
+
     protected:
         void processAdminGetLoginAck(Net::MessageIn &msg);
 
         void processSetTileType(Net::MessageIn &msg);
+
+        std::string mStatsName;
 };
 
 }  // namespace EAthena

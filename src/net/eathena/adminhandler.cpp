@@ -40,7 +40,8 @@ namespace EAthena
 
 AdminHandler::AdminHandler() :
     MessageHandler(),
-    Ea::AdminHandler()
+    Ea::AdminHandler(),
+    mStatsName()
 {
     static const uint16_t _messages[] =
     {
@@ -196,6 +197,13 @@ void AdminHandler::processSetTileType(Net::MessageIn &msg)
     msg.readInt16("y");
     msg.readInt16("type");
     msg.readString(16, "map name");
+}
+
+void AdminHandler::requestStats(const std::string &name)
+{
+    mStatsName = name;
+    MessageOut outMsg(CMSG_ADMIN_REQUEST_STATS);
+    outMsg.writeString(name, 24);
 }
 
 }  // namespace EAthena

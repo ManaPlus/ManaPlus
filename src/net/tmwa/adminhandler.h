@@ -72,6 +72,8 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
                          const int type) const;
 
         void unequipAll(const Being *const being) const override final;
+
+        void requestStats(const std::string &name) override final;
 };
 
 }  // namespace TmwAthena
