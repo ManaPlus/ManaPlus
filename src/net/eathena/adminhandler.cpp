@@ -48,6 +48,7 @@ AdminHandler::AdminHandler() :
         SMSG_ADMIN_KICK_ACK,
         SMSG_ADMIN_GET_LOGIN_ACK,
         SMSG_ADMIN_SET_TILE_TYPE,
+        SMSG_ADMIN_ACCOUNT_STATS,
         0
     };
     handledMessages = _messages;
@@ -69,6 +70,9 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
             break;
         case SMSG_ADMIN_SET_TILE_TYPE:
             processSetTileType(msg);
+            break;
+        case SMSG_ADMIN_ACCOUNT_STATS:
+            processAccountStats(msg);
             break;
         default:
             break;
@@ -204,6 +208,37 @@ void AdminHandler::requestStats(const std::string &name)
     mStatsName = name;
     MessageOut outMsg(CMSG_ADMIN_REQUEST_STATS);
     outMsg.writeString(name, 24);
+}
+
+void AdminHandler::processAccountStats(Net::MessageIn &msg)
+{
+    // +++ need show in other players stats window, nick in mStatsName
+    msg.readUInt8("str");
+    msg.readUInt8("need str");
+    msg.readUInt8("agi");
+    msg.readUInt8("need agi");
+    msg.readUInt8("vit");
+    msg.readUInt8("need vit");
+    msg.readUInt8("int");
+    msg.readUInt8("need int");
+    msg.readUInt8("dex");
+    msg.readUInt8("need dex");
+    msg.readUInt8("luk");
+    msg.readUInt8("need luk");
+    msg.readInt16("attack");
+    msg.readInt16("refine");
+    msg.readInt16("matk max");
+    msg.readInt16("matk min");
+    msg.readInt16("item def");
+    msg.readInt16("plus def");
+    msg.readInt16("mdef");
+    msg.readInt16("plus mdef");
+    msg.readInt16("hit");
+    msg.readInt16("flee");
+    msg.readInt16("flee2/10");
+    msg.readInt16("cri/10");
+    msg.readInt16("speed");
+    msg.readInt16("zero");
 }
 
 }  // namespace EAthena

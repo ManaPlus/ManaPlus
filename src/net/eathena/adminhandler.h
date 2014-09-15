@@ -80,6 +80,8 @@ class AdminHandler final : public MessageHandler, public Ea::AdminHandler
 
         void processSetTileType(Net::MessageIn &msg);
 
+        void processAccountStats(Net::MessageIn &msg);
+
         std::string mStatsName;
 };
 
