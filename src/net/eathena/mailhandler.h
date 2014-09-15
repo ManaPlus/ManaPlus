@@ -44,6 +44,8 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
 
         void getAttach(const int msgId) override final;
 
+        void deleteMessage(const int msgId) override final;
+
     protected:
         void processMailOpen(Net::MessageIn &msg) const;
 };

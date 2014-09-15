@@ -54,4 +54,8 @@ void MailHandler::getAttach(const int msgId A_UNUSED)
 {
 }
 
+void MailHandler::deleteMessage(const int msgId A_UNUSED)
+{
+}
+
 }  // namespace TmwAthena

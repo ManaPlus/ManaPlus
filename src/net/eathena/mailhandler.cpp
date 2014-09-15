@@ -91,4 +91,10 @@ void MailHandler::getAttach(const int msgId)
     outMsg.writeInt32(msgId, "message id");
 }
 
+void MailHandler::deleteMessage(const int msgId)
+{
+    MessageOut outMsg(CMSG_MAIL_DELETE_MESSAGE);
+    outMsg.writeInt32(msgId, "message id");
+}
+
 }  // namespace EAthena
