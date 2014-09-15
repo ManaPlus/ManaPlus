@@ -62,4 +62,9 @@ void MailHandler::returnMessage(const int msgId A_UNUSED)
 {
 }
 
+void MailHandler::setAttach(const int index A_UNUSED,
+                            const int amount A_UNUSED)
+{
+}
+
 }  // namespace TmwAthena

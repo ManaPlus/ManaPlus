@@ -41,6 +41,8 @@ class MailHandler notfinal
         virtual void deleteMessage(const int msgId) = 0;
 
         virtual void returnMessage(const int msgId) = 0;
+
+        virtual void setAttach(const int index, const int amount) = 0;
 };
 
 }  // namespace Net

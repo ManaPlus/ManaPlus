@@ -22,6 +22,8 @@
 
 #include "logger.h"
 
+#include "net/ea/eaprotocol.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -102,6 +104,13 @@ void MailHandler::returnMessage(const int msgId)
     MessageOut outMsg(CMSG_MAIL_RETURN_MESSAGE);
     outMsg.writeInt32(msgId, "message id");
     outMsg.writeString("", 24, "unused");
+}
+
+void MailHandler::setAttach(const int index, const int amount)
+{
+    MessageOut outMsg(CMSG_MAIL_SET_ATTACH);
+    outMsg.writeInt16(static_cast<int16_t>(index + INVENTORY_OFFSET), "index");
+    outMsg.writeInt32(amount, "amount");
 }
 
 }  // namespace EAthena
