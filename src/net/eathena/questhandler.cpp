@@ -33,7 +33,8 @@ namespace EAthena
 {
 
 QuestHandler::QuestHandler() :
-    MessageHandler()
+    MessageHandler(),
+    Net::QuestHandler()
 {
     static const uint16_t _messages[] =
     {

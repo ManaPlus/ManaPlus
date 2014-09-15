@@ -23,10 +23,12 @@
 
 #include "net/tmwa/messagehandler.h"
 
+#include "net/questhandler.h"
+
 namespace TmwAthena
 {
 
-class QuestHandler final : public MessageHandler
+class QuestHandler final : public MessageHandler, public Net::QuestHandler
 {
     public:
         QuestHandler();

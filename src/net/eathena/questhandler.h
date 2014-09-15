@@ -23,10 +23,12 @@
 
 #include "net/eathena/messagehandler.h"
 
+#include "net/questhandler.h"
+
 namespace EAthena
 {
 
-class QuestHandler final : public MessageHandler
+class QuestHandler final : public MessageHandler, public Net::QuestHandler
 {
     public:
         QuestHandler();
