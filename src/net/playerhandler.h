@@ -97,6 +97,8 @@ class PlayerHandler notfinal
         virtual void requestPvpInfo() const = 0;
 
         virtual void revive() const = 0;
+
+        virtual void setViewEquipment(const bool allow) const = 0;
 };
 
 }  // namespace Net

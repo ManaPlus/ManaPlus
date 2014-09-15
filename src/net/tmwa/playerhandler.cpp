@@ -468,4 +468,8 @@ void PlayerHandler::revive() const
 {
 }
 
+void PlayerHandler::setViewEquipment(const bool allow A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

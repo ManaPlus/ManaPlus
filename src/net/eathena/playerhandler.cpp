@@ -417,4 +417,11 @@ void PlayerHandler::revive() const
     MessageOut outMsg(CMSG_PLAYER_AUTO_REVIVE);
 }
 
+void PlayerHandler::setViewEquipment(const bool allow) const
+{
+    MessageOut outMsg(CMSG_PLAYER_SET_EQUIPMENT_VISIBLE);
+    outMsg.writeInt32(0, "unused");
+    outMsg.writeInt32(allow ? 1 : 0);
+}
+
 }  // namespace EAthena

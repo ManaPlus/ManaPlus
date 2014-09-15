@@ -79,6 +79,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
         void revive() const override final;
 
+        void setViewEquipment(const bool allow) const override final;
+
     protected:
         void processPlayerStatUpdate5(Net::MessageIn &msg);
 
