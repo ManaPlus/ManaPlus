@@ -48,6 +48,8 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
         void returnMessage(const int msgId) override final;
 
         void setAttach(const int index, const int amount) override final;
+
+        void resetAttach(const int flag) override final;
 };
 
 }  // namespace TmwAthena

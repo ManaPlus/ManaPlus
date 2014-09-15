@@ -67,4 +67,8 @@ void MailHandler::setAttach(const int index A_UNUSED,
 {
 }
 
+void MailHandler::resetAttach(const int flag A_UNUSED)
+{
+}
+
 }  // namespace TmwAthena

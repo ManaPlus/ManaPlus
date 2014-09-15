@@ -50,6 +50,8 @@ class MailHandler final : public MessageHandler, public Net::MailHandler
 
         void setAttach(const int index, const int amount) override final;
 
+        void resetAttach(const int flag) override final;
+
     protected:
         void processMailOpen(Net::MessageIn &msg) const;
 };

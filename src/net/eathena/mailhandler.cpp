@@ -113,4 +113,10 @@ void MailHandler::setAttach(const int index, const int amount)
     outMsg.writeInt32(amount, "amount");
 }
 
+void MailHandler::resetAttach(const int flag)
+{
+    MessageOut outMsg(CMSG_MAIL_RESET_ATTACH);
+    outMsg.writeInt16(static_cast<int16_t>(flag), "flag");
+}
+
 }  // namespace EAthena

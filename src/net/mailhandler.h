@@ -43,6 +43,8 @@ class MailHandler notfinal
         virtual void returnMessage(const int msgId) = 0;
 
         virtual void setAttach(const int index, const int amount) = 0;
+
+        virtual void resetAttach(const int flag) = 0;
 };
 
 }  // namespace Net
