@@ -2244,11 +2244,8 @@ void LocalPlayer::tryMagic(const std::string &spell, const int baseMagic,
 
 void LocalPlayer::loadHomes()
 {
-    if (serverVersion > 0)
-        return;
     std::string buf;
-    std::stringstream ss(serverConfig.getValue("playerHomes",
-        "maps/018-1.tmx 71 76 maps/013-3.tmx 71 24"));
+    std::stringstream ss(serverConfig.getValue("playerHomes", ""));
 
     while (ss >> buf)
     {
