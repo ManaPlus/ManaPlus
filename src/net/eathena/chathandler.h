@@ -70,6 +70,8 @@ class ChatHandler final : public MessageHandler, public Ea::ChatHandler
 
         void requestIgnoreList() const override final;
 
+        void battleTalk(const std::string &text) const override final;
+
     protected:
         void processChat(Net::MessageIn &msg);
 

@@ -281,6 +281,20 @@ void ChatHandler::createChatRoom(const std::string &title,
     outMsg.writeString(title, 36, "title");
 }
 
+void ChatHandler::battleTalk(const std::string &text) const
+{
+    if (!localPlayer)
+        return;
+
+    const std::string mes = std::string(localPlayer->getName()).append(
+        " : ").append(text);
+
+    MessageOut outMsg(CMSG_BATTLE_CHAT_MESSAGE);
+    // Added + 1 in order to let eAthena parse admin commands correctly
+    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1), "len");
+    outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
+}
+
 void ChatHandler::processChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")

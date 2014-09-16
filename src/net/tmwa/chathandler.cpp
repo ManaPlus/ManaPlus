@@ -274,6 +274,10 @@ void ChatHandler::createChatRoom(const std::string &title A_UNUSED,
 {
 }
 
+void ChatHandler::battleTalk(const std::string &text A_UNUSED) const
+{
+}
+
 void ChatHandler::processChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatHandler::processChat")

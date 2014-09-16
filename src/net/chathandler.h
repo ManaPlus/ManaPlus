@@ -70,6 +70,8 @@ class ChatHandler notfinal
                                     const std::string &password,
                                     const int limit,
                                     const bool isPublic) = 0;
+
+        virtual void battleTalk(const std::string &text) const = 0;
 };
 
 }  // namespace Net
