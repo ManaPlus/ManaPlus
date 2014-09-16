@@ -107,4 +107,9 @@ bool ServerFeatures::haveItemColors() const
     return false;
 }
 
+bool ServerFeatures::haveOtherGender() const
+{
+    return false;
+}
+
 }  // namespace EAthena

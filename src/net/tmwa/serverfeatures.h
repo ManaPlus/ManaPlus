@@ -63,6 +63,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveMove3() const override final;
 
         bool haveItemColors() const override final;
+
+        bool haveOtherGender() const override final;
 };
 
 }  // namespace TmwAthena

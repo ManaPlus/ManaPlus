@@ -45,6 +45,7 @@
 #include "net/loginhandler.h"
 #include "net/net.h"
 #include "net/registrationoptions.h"
+#include "net/serverfeatures.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -100,7 +101,7 @@ RegisterDialog::RegisterDialog(LoginData *const data) :
         mMaleButton = new RadioButton(this, _("Male"), "sex", true);
         // TRANSLATORS: register dialog. button.
         mFemaleButton = new RadioButton(this, _("Female"), "sex", false);
-        if (serverVersion >= 5)
+        if (Net::getServerFeatures()->haveOtherGender())
         {
             // TRANSLATORS: register dialog. button.
             mOtherButton = new RadioButton(this, _("Other"), "sex", false);

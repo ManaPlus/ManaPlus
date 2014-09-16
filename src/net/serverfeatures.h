@@ -60,6 +60,8 @@ class ServerFeatures notfinal
         virtual bool haveMove3() const = 0;
 
         virtual bool haveItemColors() const = 0;
+
+        virtual bool haveOtherGender() const = 0;
 };
 
 }  // namespace Net

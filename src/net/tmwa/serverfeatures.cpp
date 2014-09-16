@@ -109,4 +109,9 @@ bool ServerFeatures::haveItemColors() const
     return serverVersion >= 1;
 }
 
+bool ServerFeatures::haveOtherGender() const
+{
+    return serverVersion >= 5;
+}
+
 }  // namespace TmwAthena
