@@ -97,4 +97,9 @@ bool ServerFeatures::haveServerIgnore() const
     return true;
 }
 
+bool ServerFeatures::haveMove3() const
+{
+    return false;
+}
+
 }  // namespace EAthena

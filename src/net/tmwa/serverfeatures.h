@@ -59,6 +59,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveChatChannels() const override final;
 
         bool haveServerIgnore() const override final;
+
+        bool haveMove3() const override final;
 };
 
 }  // namespace TmwAthena

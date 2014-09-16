@@ -99,4 +99,9 @@ bool ServerFeatures::haveServerIgnore() const
     return tmwServerVersion == 0;
 }
 
+bool ServerFeatures::haveMove3() const
+{
+    return serverVersion >= 10;
+}
+
 }  // namespace TmwAthena

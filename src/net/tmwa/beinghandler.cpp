@@ -949,7 +949,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
 void BeingHandler::processBeingMove3(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingMove3")
-    if (serverVersion < 10)
+    if (!Net::getServerFeatures()->haveMove3())
     {
         BLOCK_END("BeingHandler::processBeingMove3")
         return;
@@ -1377,7 +1377,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     {
         dstBeing->setAction(BeingAction::STAND, 0);
         dstBeing->setTileCoords(srcX, srcY);
-        if (serverVersion < 10)
+        if (!Net::getServerFeatures()->haveMove3())
             dstBeing->setDestination(dstX, dstY);
     }
 
