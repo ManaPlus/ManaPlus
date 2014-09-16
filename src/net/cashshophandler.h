@@ -37,4 +37,6 @@ class CashShopHandler notfinal
 
 }  // namespace Net
 
+extern Net::CashShopHandler *cashShopHandler;
+
 #endif  // NET_CACHSHOPHANDLER_H

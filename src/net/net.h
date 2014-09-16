@@ -36,7 +36,6 @@
 namespace Net
 {
 
-class CashShopHandler;
 class CharServerHandler;
 class ChatHandler;
 class FamilyHandler;
@@ -69,7 +68,6 @@ SkillHandler *getSkillHandler() A_WARN_UNUSED;
 TradeHandler *getTradeHandler() A_WARN_UNUSED;
 ServerFeatures *getServerFeatures() A_WARN_UNUSED;
 MailHandler *getMailHandler() A_WARN_UNUSED;
-CashShopHandler *getCashShopHandler() A_WARN_UNUSED;
 FamilyHandler *getFamilyHandler() A_WARN_UNUSED;
 
 ServerInfo::Type getNetworkType() A_WARN_UNUSED;

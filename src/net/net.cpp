@@ -43,6 +43,7 @@ namespace Net
     class BankHandler;
     class BeingHandler;
     class BuySellHandler;
+    class CashShopHandler;
 }
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -141,11 +142,6 @@ Net::ServerFeatures *Net::getServerFeatures()
 Net::MailHandler *Net::getMailHandler()
 {
     return mailHandler;
-}
-
-Net::CashShopHandler *Net::getCashShopHandler()
-{
-    return cashShopHandler;
 }
 
 Net::FamilyHandler *Net::getFamilyHandler()
