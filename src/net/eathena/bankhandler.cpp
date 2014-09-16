@@ -61,4 +61,11 @@ void BankHandler::deposit(const int money) const
     outMsg.writeInt32(money, "money");
 }
 
+void BankHandler::withdraw(const int money) const
+{
+    MessageOut outMsg(CMSG_BANK_WITHDRAW);
+    outMsg.writeInt32(0, "account id");
+    outMsg.writeInt32(money, "money");
+}
+
 }  // namespace EAthena

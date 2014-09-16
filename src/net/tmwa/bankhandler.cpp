@@ -46,4 +46,8 @@ void BankHandler::deposit(const int money A_UNUSED) const
 {
 }
 
+void BankHandler::withdraw(const int money A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

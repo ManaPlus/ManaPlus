@@ -40,6 +40,8 @@ class BankHandler final : public MessageHandler,
         void handleMessage(Net::MessageIn &msg) override final;
 
         void deposit(const int money) const override final;
+
+        void withdraw(const int money) const override final;
 };
 
 }  // namespace EAthena
