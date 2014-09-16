@@ -41,6 +41,8 @@ class BankHandler final : public MessageHandler,
         void deposit(const int money) const override final;
 
         void withdraw(const int money) const override final;
+
+        void check() const override final;
 };
 
 }  // namespace TmwAthena

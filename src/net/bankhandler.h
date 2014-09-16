@@ -37,6 +37,8 @@ class BankHandler notfinal
         virtual void deposit(const int money) const = 0;
 
         virtual void withdraw(const int money) const = 0;
+
+        virtual void check() const = 0;
 };
 
 }  // namespace Net

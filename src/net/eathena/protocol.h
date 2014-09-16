@@ -388,6 +388,7 @@
 
 #define CMSG_BANK_DEPOSIT            0x09a7
 #define CMSG_BANK_WITHDRAW           0x09a9
+#define CMSG_BANK_CHECK              0x09ab
 
 #define SMSG_SOLVE_CHAR_NAME         0x0194
 #define SMSG_SKILL_CASTING           0x07fb

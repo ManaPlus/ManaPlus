@@ -50,4 +50,8 @@ void BankHandler::withdraw(const int money A_UNUSED) const
 {
 }
 
+void BankHandler::check() const
+{
+}
+
 }  // namespace TmwAthena
