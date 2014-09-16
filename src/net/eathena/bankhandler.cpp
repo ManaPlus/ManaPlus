@@ -39,6 +39,7 @@ BankHandler::BankHandler() :
 {
     static const uint16_t _messages[] =
     {
+        SMSG_BANK_STATUS,
         0
     };
     handledMessages = _messages;
@@ -49,6 +50,10 @@ void BankHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
+        case SMSG_BANK_STATUS:
+            processBankStatus(msg);
+            break;
+
         default:
             break;
     }
@@ -72,6 +77,12 @@ void BankHandler::check() const
 {
     MessageOut outMsg(CMSG_BANK_CHECK);
     outMsg.writeInt32(0, "account id");
+}
+
+void BankHandler::processBankStatus(Net::MessageIn &msg)
+{
+    msg.readInt64("money");
+    msg.readInt16("reason");
 }
 
 }  // namespace EAthena

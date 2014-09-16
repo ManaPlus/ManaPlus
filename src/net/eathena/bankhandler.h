@@ -44,6 +44,9 @@ class BankHandler final : public MessageHandler,
         void withdraw(const int money) const override final;
 
         void check() const override final;
+
+    protected:
+        void processBankStatus(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

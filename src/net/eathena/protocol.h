@@ -216,6 +216,8 @@
 
 #define SMSG_PET_MESSAGE             0x01aa
 
+#define SMSG_BANK_STATUS             0x09a6
+
 /**********************************
  *  Packets from client to server *
  **********************************/
