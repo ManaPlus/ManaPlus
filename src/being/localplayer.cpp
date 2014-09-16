@@ -1117,18 +1117,20 @@ void LocalPlayer::moveToTarget(int dist)
         dist = settings.moveToTargetType;
         if (dist != 0)
         {
+            const bool broken = Net::getServerFeatures()
+                ->haveBrokenPlayerAttackDistance();
             switch (dist)
             {
                 case 10:
                     dist = mAttackRange;
-                    if (dist == 1 && serverVersion < 1)
+                    if (dist == 1 && broken)
                         dist = 2;
                     break;
                 case 11:
                     dist = mAttackRange - 1;
                     if (dist < 1)
                         dist = 1;
-                    if (dist == 1 && serverVersion < 1)
+                    if (dist == 1 && broken)
                         dist = 2;
                     break;
                 default:
@@ -2746,10 +2748,12 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
     if (!dontChangeEquipment && target)
         changeEquipmentBeforeAttack(target);
 
+    const bool broken = Net::getServerFeatures()
+        ->haveBrokenPlayerAttackDistance();
+
     // probably need cache getPathLength(target)
     if ((!target || settings.attackType == 0 || settings.attackType == 3)
-        || (withinAttackRange(target, serverVersion < 1,
-        serverVersion < 1 ? 1 : 0)
+        || (withinAttackRange(target, broken, broken ? 1 : 0)
         && getPathLength(target) <= getAttackRange2()))
     {
         attack(target, keep);

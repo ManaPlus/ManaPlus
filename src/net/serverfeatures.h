@@ -42,6 +42,8 @@ class ServerFeatures notfinal
         virtual bool haveLangTab() const = 0;
 
         virtual bool havePlayerStatusUpdate() const = 0;
+
+        virtual bool haveBrokenPlayerAttackDistance() const = 0;
 };
 
 }  // namespace Net

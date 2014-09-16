@@ -62,4 +62,9 @@ bool ServerFeatures::havePlayerStatusUpdate() const
     return false;
 }
 
+bool ServerFeatures::haveBrokenPlayerAttackDistance() const
+{
+    return false;
+}
+
 }  // namespace EAthena

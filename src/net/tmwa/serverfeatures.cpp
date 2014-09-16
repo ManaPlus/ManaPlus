@@ -64,4 +64,9 @@ bool ServerFeatures::havePlayerStatusUpdate() const
     return serverVersion >= 4;
 }
 
+bool ServerFeatures::haveBrokenPlayerAttackDistance() const
+{
+    return serverVersion < 1;
+}
+
 }  // namespace TmwAthena
