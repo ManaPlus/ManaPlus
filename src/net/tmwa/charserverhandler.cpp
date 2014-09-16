@@ -33,6 +33,7 @@
 #include "net/character.h"
 #include "net/logindata.h"
 #include "net/net.h"
+#include "net/serverfeatures.h"
 
 #include "net/tmwa/attrs.h"
 #include "net/tmwa/gamehandler.h"
@@ -279,11 +280,11 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
     outMsg.writeInt8(static_cast<int8_t>(hairColor), "hair color");
     outMsg.writeInt8(0, "unused");
     outMsg.writeInt8(static_cast<int8_t>(hairstyle), "hair style");
-    if (serverVersion >= 9)
+    if (Net::getServerFeatures()->haveLookSelection())
         outMsg.writeInt8(look, "look");
     else
         outMsg.writeInt8(0, "unused");
-    if (serverVersion >= 2)
+    if (Net::getServerFeatures()->haveRaceSelection())
         outMsg.writeInt8(race, "class");
 }
 
