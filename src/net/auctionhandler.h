@@ -37,4 +37,6 @@ class AuctionHandler notfinal
 
 }  // namespace Net
 
+extern Net::AuctionHandler *auctionHandler;
+
 #endif  // NET_AUCTIONHANDLER_H

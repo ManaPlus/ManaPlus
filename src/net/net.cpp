@@ -39,6 +39,7 @@
 namespace Net
 {
     class AdminHandler;
+    class AuctionHandler;
 }
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -147,11 +148,6 @@ Net::ServerFeatures *Net::getServerFeatures()
 Net::MailHandler *Net::getMailHandler()
 {
     return mailHandler;
-}
-
-Net::AuctionHandler *Net::getAuctionHandler()
-{
-    return auctionHandler;
 }
 
 Net::CashShopHandler *Net::getCashShopHandler()
