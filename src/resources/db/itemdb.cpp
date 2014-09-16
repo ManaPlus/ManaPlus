@@ -57,8 +57,6 @@ namespace
     std::map<std::string, ItemSoundEvent::Type> mSoundNames;
 }  // namespace
 
-extern int serverVersion;
-
 // Forward declarations
 static void loadSpriteRef(ItemInfo *const itemInfo,
                           const XmlNodePtr node);

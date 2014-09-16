@@ -39,8 +39,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
-
 const Equipment::Slot EQUIP_POINTS[Equipment::EQUIP_VECTOREND] =
 {
     Equipment::EQUIP_LEGS_SLOT,               // Lower Headgear

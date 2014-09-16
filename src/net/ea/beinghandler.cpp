@@ -42,9 +42,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
-extern unsigned int tmwServerVersion;
-
 namespace Ea
 {
 BeingHandler::BeingHandler(const bool enableSync) :

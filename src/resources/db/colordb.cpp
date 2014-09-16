@@ -38,8 +38,6 @@ namespace
     ColorDB::ColorLists mColorLists;
 }
 
-extern int serverVersion;
-
 void ColorDB::load()
 {
     if (mLoaded)

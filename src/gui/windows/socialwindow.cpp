@@ -58,7 +58,6 @@
 #include "debug.h"
 
 SocialWindow *socialWindow = nullptr;
-extern unsigned int tmwServerVersion;
 
 SocialWindow::SocialWindow() :
     // TRANSLATORS: social window name

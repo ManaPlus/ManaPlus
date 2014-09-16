@@ -42,7 +42,6 @@
 #include "debug.h"
 
 extern Net::InventoryHandler *inventoryHandler;
-extern int serverVersion;
 
 namespace TmwAthena
 {

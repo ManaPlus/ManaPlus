@@ -39,8 +39,6 @@
 
 #include "debug.h"
 
-extern unsigned int tmwServerVersion;
-
 void outStringNormal(ChatTab *const tab,
                      const std::string &str,
                      const std::string &def)

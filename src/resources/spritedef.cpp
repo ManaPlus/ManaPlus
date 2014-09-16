@@ -39,7 +39,6 @@
 #include "debug.h"
 
 SpriteReference *SpriteReference::Empty = nullptr;
-extern int serverVersion;
 
 const Action *SpriteDef::getAction(const std::string &action,
                                    const unsigned num) const

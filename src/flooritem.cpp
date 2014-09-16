@@ -42,7 +42,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
 extern volatile int cur_time;
 
 FloorItem::FloorItem(const int id, const int itemId, const int x, const int y,

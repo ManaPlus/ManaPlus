@@ -39,7 +39,6 @@
 #include "debug.h"
 
 extern Net::NpcHandler *npcHandler;
-extern int serverVersion;
 
 namespace TmwAthena
 {

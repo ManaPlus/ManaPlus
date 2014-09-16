@@ -33,8 +33,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
-
 ShopItem::ShopItem(const int inventoryIndex, const int id,
                    const unsigned char color,
                    const int quantity, const int price) :

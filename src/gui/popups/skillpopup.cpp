@@ -34,8 +34,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
-
 SkillPopup *skillPopup = nullptr;
 
 SkillPopup::SkillPopup() :

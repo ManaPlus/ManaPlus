@@ -36,8 +36,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
-
 DragDrop dragDrop(nullptr, DRAGDROP_SOURCE_EMPTY);
 
 Item::Item(const int id, const int quantity, const uint8_t refine,

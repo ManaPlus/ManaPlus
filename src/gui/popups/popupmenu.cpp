@@ -92,8 +92,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
-
 std::string tradePartnerName;
 
 PopupMenu *popupMenu = nullptr;

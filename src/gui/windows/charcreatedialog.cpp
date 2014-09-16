@@ -54,8 +54,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
-
 static const BeingAction::Action actions[] =
 {
     BeingAction::STAND,

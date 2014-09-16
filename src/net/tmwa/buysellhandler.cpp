@@ -39,7 +39,6 @@
 #include "debug.h"
 
 extern Net::BuySellHandler *buySellHandler;
-extern int serverVersion;
 
 namespace TmwAthena
 {

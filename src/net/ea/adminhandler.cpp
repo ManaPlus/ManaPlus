@@ -32,8 +32,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
-
 namespace Ea
 {
 

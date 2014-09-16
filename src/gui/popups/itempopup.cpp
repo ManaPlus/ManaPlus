@@ -46,8 +46,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
-
 ItemPopup *itemPopup = nullptr;
 
 ItemPopup::ItemPopup() :

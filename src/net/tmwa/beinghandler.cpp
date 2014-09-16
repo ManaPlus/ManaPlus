@@ -53,9 +53,7 @@
 #include "debug.h"
 
 extern Net::BeingHandler *beingHandler;
-
 extern int serverVersion;
-extern unsigned int tmwServerVersion;
 
 namespace TmwAthena
 {
