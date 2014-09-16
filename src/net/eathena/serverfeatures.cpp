@@ -122,4 +122,9 @@ bool ServerFeatures::haveEmailOnRegister() const
     return false;
 }
 
+bool ServerFeatures::haveEightDirections() const
+{
+    return true;
+}
+
 }  // namespace EAthena

@@ -124,4 +124,9 @@ bool ServerFeatures::haveEmailOnRegister() const
     return serverVersion >= 7;
 }
 
+bool ServerFeatures::haveEightDirections() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

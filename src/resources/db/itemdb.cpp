@@ -35,6 +35,9 @@
 
 #include "resources/db/itemdbstat.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 
@@ -672,7 +675,7 @@ static int parseDirectionName(const std::string &name)
     int id = -1;
     if (name == "down")
     {
-        if (serverVersion > 0)
+        if (Net::getServerFeatures()->haveEightDirections())
             id = SpriteDirection::DOWN;
         else
             id = -2;
@@ -691,7 +694,7 @@ static int parseDirectionName(const std::string &name)
     }
     else if (name == "up")
     {
-        if (serverVersion > 0)
+        if (Net::getServerFeatures()->haveEightDirections())
             id = SpriteDirection::UP;
         else
             id = -3;

@@ -66,6 +66,8 @@ class ServerFeatures notfinal
         virtual bool haveMonsterAttackRange() const = 0;
 
         virtual bool haveEmailOnRegister() const = 0;
+
+        virtual bool haveEightDirections() const = 0;
 };
 
 }  // namespace Net
