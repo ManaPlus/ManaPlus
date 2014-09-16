@@ -1133,7 +1133,8 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
 
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
-    if (serverVersion > 0 && dstBeing->getType() == ActorType::Monster)
+    if (Net::getServerFeatures()->haveMonsterAttackRange()
+        && dstBeing->getType() == ActorType::Monster)
     {
         const int attackRange = static_cast<int>(
             msg.readUInt8("attack range (was karma)"));
@@ -1336,7 +1337,8 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
 
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
-    if (serverVersion > 0 && dstBeing->getType() == ActorType::Monster)
+    if (Net::getServerFeatures()->haveMonsterAttackRange()
+        && dstBeing->getType() == ActorType::Monster)
     {
         const int attackRange = static_cast<int>(
             msg.readUInt8("attack range (was karma)"));

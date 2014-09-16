@@ -114,4 +114,9 @@ bool ServerFeatures::haveOtherGender() const
     return serverVersion >= 5;
 }
 
+bool ServerFeatures::haveMonsterAttackRange() const
+{
+    return serverVersion > 0;
+}
+
 }  // namespace TmwAthena

@@ -112,4 +112,9 @@ bool ServerFeatures::haveOtherGender() const
     return false;
 }
 
+bool ServerFeatures::haveMonsterAttackRange() const
+{
+    return false;
+}
+
 }  // namespace EAthena
