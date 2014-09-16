@@ -42,4 +42,8 @@ void BankHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
 }
 
+void BankHandler::deposit(const int money A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -54,4 +54,11 @@ void BankHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
+void BankHandler::deposit(const int money) const
+{
+    MessageOut outMsg(CMSG_BANK_DEPOSIT);
+    outMsg.writeInt32(0, "account id");
+    outMsg.writeInt32(money, "money");
+}
+
 }  // namespace EAthena

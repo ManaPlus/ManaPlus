@@ -38,6 +38,8 @@ class BankHandler final : public MessageHandler,
         A_DELETE_COPY(BankHandler)
 
         void handleMessage(Net::MessageIn &msg) override final;
+
+        void deposit(const int money) const override final;
 };
 
 }  // namespace EAthena

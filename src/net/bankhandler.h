@@ -33,6 +33,8 @@ class BankHandler notfinal
     public:
         virtual ~BankHandler()
         { }
+
+        virtual void deposit(const int money) const = 0;
 };
 
 }  // namespace Net
