@@ -40,6 +40,7 @@ namespace Net
 {
     class AdminHandler;
     class AuctionHandler;
+    class BankHandler;
 }
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -158,11 +159,6 @@ Net::CashShopHandler *Net::getCashShopHandler()
 Net::FamilyHandler *Net::getFamilyHandler()
 {
     return familyHandler;
-}
-
-Net::BankHandler *Net::getBankHandler()
-{
-    return bankHandler;
 }
 
 

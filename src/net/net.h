@@ -36,7 +36,6 @@
 namespace Net
 {
 
-class BankHandler;
 class BeingHandler;
 class CashShopHandler;
 class CharServerHandler;
@@ -76,7 +75,6 @@ ServerFeatures *getServerFeatures() A_WARN_UNUSED;
 MailHandler *getMailHandler() A_WARN_UNUSED;
 CashShopHandler *getCashShopHandler() A_WARN_UNUSED;
 FamilyHandler *getFamilyHandler() A_WARN_UNUSED;
-BankHandler *getBankHandler() A_WARN_UNUSED;
 
 ServerInfo::Type getNetworkType() A_WARN_UNUSED;
 

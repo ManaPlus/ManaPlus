@@ -43,4 +43,6 @@ class BankHandler notfinal
 
 }  // namespace Net
 
+extern Net::BankHandler *bankHandler;
+
 #endif  // NET_BANKHANDLER_H
