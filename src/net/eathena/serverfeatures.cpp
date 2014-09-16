@@ -117,4 +117,9 @@ bool ServerFeatures::haveMonsterAttackRange() const
     return false;
 }
 
+bool ServerFeatures::haveEmailOnRegister() const
+{
+    return false;
+}
+
 }  // namespace EAthena

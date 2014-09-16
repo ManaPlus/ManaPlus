@@ -67,6 +67,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveOtherGender() const override final;
 
         bool haveMonsterAttackRange() const override final;
+
+        bool haveEmailOnRegister() const override final;
 };
 
 }  // namespace TmwAthena

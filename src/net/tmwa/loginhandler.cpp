@@ -25,6 +25,9 @@
 #include "client.h"
 #include "logger.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
@@ -264,7 +267,7 @@ void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
 
 int LoginHandler::supportedOptionalActions() const
 {
-    return serverVersion >= 7
+    return Net::getServerFeatures()->haveEmailOnRegister()
         ? Net::RegistrationOptions::SetEmailOnRegister
         | Net::RegistrationOptions::SetGenderOnRegister
         : Net::RegistrationOptions::SetGenderOnRegister;

@@ -119,4 +119,9 @@ bool ServerFeatures::haveMonsterAttackRange() const
     return serverVersion > 0;
 }
 
+bool ServerFeatures::haveEmailOnRegister() const
+{
+    return serverVersion >= 7;
+}
+
 }  // namespace TmwAthena

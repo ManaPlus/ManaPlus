@@ -64,6 +64,8 @@ class ServerFeatures notfinal
         virtual bool haveOtherGender() const = 0;
 
         virtual bool haveMonsterAttackRange() const = 0;
+
+        virtual bool haveEmailOnRegister() const = 0;
 };
 
 }  // namespace Net
