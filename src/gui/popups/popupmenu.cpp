@@ -918,22 +918,22 @@ void PopupMenu::handleLink(const std::string &link,
         if (being->getType() == ActorType::Npc)
             Net::getNpcHandler()->buy(mBeingId);
         else if (being->getType() == ActorType::Player)
-            Net::getBuySellHandler()->requestSellList(being->getName());
+            buySellHandler->requestSellList(being->getName());
     }
     else if (link == "buy" && !mNick.empty())
     {
-        Net::getBuySellHandler()->requestSellList(mNick);
+        buySellHandler->requestSellList(mNick);
     }
     else if (link == "sell" && being && mBeingId != 0)
     {
         if (being->getType() == ActorType::Npc)
             Net::getNpcHandler()->sell(mBeingId);
         else if (being->getType() == ActorType::Player)
-            Net::getBuySellHandler()->requestBuyList(being->getName());
+            buySellHandler->requestBuyList(being->getName());
     }
     else if (link == "sell" && !mNick.empty())
     {
-        Net::getBuySellHandler()->requestBuyList(mNick);
+        buySellHandler->requestBuyList(mNick);
     }
     else if (link == "attack" && being)
     {

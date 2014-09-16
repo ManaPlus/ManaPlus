@@ -305,7 +305,7 @@ void SellDialog::action(const ActionEvent &event)
         else
         {
             ShopItem *const item = mShopItems->at(selectedItem);
-            Net::getBuySellHandler()->sendSellRequest(mNick,
+            buySellHandler->sendSellRequest(mNick,
                     item, mAmountItems);
 
             if (tradeWindow)

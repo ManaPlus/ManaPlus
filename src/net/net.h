@@ -52,7 +52,6 @@ class PetHandler;
 class PlayerHandler;
 class SkillHandler;
 class TradeHandler;
-class BuySellHandler;
 class ServerFeatures;
 
 CharServerHandler *getCharServerHandler() A_WARN_UNUSED;
@@ -68,7 +67,6 @@ PetHandler *getPetHandler() A_WARN_UNUSED;
 PlayerHandler *getPlayerHandler() A_WARN_UNUSED;
 SkillHandler *getSkillHandler() A_WARN_UNUSED;
 TradeHandler *getTradeHandler() A_WARN_UNUSED;
-BuySellHandler *getBuySellHandler() A_WARN_UNUSED;
 ServerFeatures *getServerFeatures() A_WARN_UNUSED;
 MailHandler *getMailHandler() A_WARN_UNUSED;
 CashShopHandler *getCashShopHandler() A_WARN_UNUSED;

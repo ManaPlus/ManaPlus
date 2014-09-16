@@ -459,7 +459,7 @@ void BuyDialog::action(const ActionEvent &event)
             const ShopItem *const item = mShopItems->at(selectedItem);
             if (item)
             {
-                Net::getBuySellHandler()->sendBuyRequest(mNick,
+                buySellHandler->sendBuyRequest(mNick,
                     item, mAmountItems);
                 tradeWindow->addAutoMoney(mNick,
                     item->getPrice() * mAmountItems);

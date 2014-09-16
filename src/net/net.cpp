@@ -42,6 +42,7 @@ namespace Net
     class AuctionHandler;
     class BankHandler;
     class BeingHandler;
+    class BuySellHandler;
 }
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -130,11 +131,6 @@ Net::SkillHandler *Net::getSkillHandler()
 Net::TradeHandler *Net::getTradeHandler()
 {
     return tradeHandler;
-}
-
-Net::BuySellHandler *Net::getBuySellHandler()
-{
-    return buySellHandler;
 }
 
 Net::ServerFeatures *Net::getServerFeatures()

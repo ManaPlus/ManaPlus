@@ -53,4 +53,6 @@ class BuySellHandler notfinal
 
 }  // namespace Net
 
+extern Net::BuySellHandler *buySellHandler;
+
 #endif  // NET_BUYSELLHANDLER_H
