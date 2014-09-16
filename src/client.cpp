@@ -1275,7 +1275,7 @@ int Client::gameExec()
                         _("Requesting characters"),
                         STATE_SWITCH_SERVER);
                     mCurrentDialog->postInit();
-                    Net::getCharServerHandler()->requestCharacters();
+                    charServerHandler->requestCharacters();
                     BLOCK_END("Client::gameExec STATE_GET_CHARACTERS")
                     break;
 

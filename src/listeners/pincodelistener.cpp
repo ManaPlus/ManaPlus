@@ -36,6 +36,6 @@ void PincodeListener::action(const ActionEvent &event)
     if (dialog)
     {
         const std::string pincode = dialog->getMsg();
-        Net::getCharServerHandler()->setNewPincode(pincode);
+        charServerHandler->setNewPincode(pincode);
     }
 }

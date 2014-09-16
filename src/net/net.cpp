@@ -44,6 +44,7 @@ namespace Net
     class BeingHandler;
     class BuySellHandler;
     class CashShopHandler;
+    class CharServerHandler;
 }
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -68,11 +69,6 @@ Net::AuctionHandler *auctionHandler = nullptr;
 Net::CashShopHandler *cashShopHandler = nullptr;
 Net::FamilyHandler *familyHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
-
-Net::CharServerHandler *Net::getCharServerHandler()
-{
-    return charServerHandler;
-}
 
 Net::ChatHandler *Net::getChatHandler()
 {

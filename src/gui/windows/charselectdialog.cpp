@@ -83,7 +83,7 @@ CharSelectDialog::CharSelectDialog(LoginData *const data) :
     mDeleteButton(new Button(this, _("Delete"), "delete", this)),
     mCharacterView(nullptr),
     mCharacterEntries(0),
-    mCharServerHandler(Net::getCharServerHandler()),
+    mCharServerHandler(charServerHandler),
     mDeleteDialog(nullptr),
     mDeleteIndex(-1),
     mLocked(false),
@@ -166,21 +166,21 @@ CharSelectDialog::CharSelectDialog(LoginData *const data) :
     addKeyListener(this);
     center();
 
-    Net::getCharServerHandler()->setCharSelectDialog(this);
+    charServerHandler->setCharSelectDialog(this);
     mCharacterView->show(0);
     updateState();
 }
 
 CharSelectDialog::~CharSelectDialog()
 {
-    Net::getCharServerHandler()->clear();
+    charServerHandler->clear();
 }
 
 void CharSelectDialog::postInit()
 {
     setVisible(true);
     requestFocus();
-    if (Net::getCharServerHandler()->isNeedCreatePin())
+    if (charServerHandler->isNeedCreatePin())
     {
         EditDialog *const dialog = new EditDialog(
             _("Please set new pincode"), "", "OK");
@@ -261,7 +261,7 @@ void CharSelectDialog::action(const ActionEvent &event)
     }
     if (eventId == "switch")
     {
-        Net::getCharServerHandler()->clear();
+        charServerHandler->clear();
         close();
     }
     else if (eventId == "change_password")
@@ -274,7 +274,7 @@ void CharSelectDialog::action(const ActionEvent &event)
     }
     else if (eventId == "unregister")
     {
-        Net::getCharServerHandler()->clear();
+        charServerHandler->clear();
         client->setState(STATE_UNREGISTER);
     }
     else if (eventId == "try delete character")

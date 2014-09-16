@@ -345,16 +345,16 @@ void Being::setSubtype(const uint16_t subtype, const uint8_t look)
             id = -100;
             // TRANSLATORS: default race name
             setRaceName(_("Human"));
-            if (Net::getCharServerHandler())
-                setSprite(Net::getCharServerHandler()->baseSprite(), id);
+            if (charServerHandler)
+                setSprite(charServerHandler->baseSprite(), id);
         }
         else
         {
             const ItemInfo &info = ItemDB::get(id);
             setRaceName(info.getName());
-            if (Net::getCharServerHandler())
+            if (charServerHandler)
             {
-                setSprite(Net::getCharServerHandler()->baseSprite(),
+                setSprite(charServerHandler->baseSprite(),
                     id, info.getColor(mLook));
             }
         }
@@ -1972,7 +1972,7 @@ void Being::updateSprite(const unsigned int slot, const int id,
                          std::string color, const unsigned char colorId,
                          const bool isWeapon, const bool isTempSprite)
 {
-    if (slot >= Net::getCharServerHandler()->maxSprite())
+    if (slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= static_cast<unsigned int>(mSpriteIDs.size()))
@@ -1987,7 +1987,7 @@ void Being::setSprite(const unsigned int slot, const int id,
                       std::string color, const unsigned char colorId,
                       const bool isWeapon, const bool isTempSprite)
 {
-    if (slot >= Net::getCharServerHandler()->maxSprite())
+    if (slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= static_cast<unsigned int>(size()))
@@ -2553,7 +2553,7 @@ void Being::recalcSpritesOrder()
     if (mAction == BeingAction::DEAD)
         dir = 9;
 
-    const unsigned int hairSlot = Net::getCharServerHandler()->hairSprite();
+    const unsigned int hairSlot = charServerHandler->hairSprite();
 
     for (size_t slot = 0; slot < sz; slot ++)
     {

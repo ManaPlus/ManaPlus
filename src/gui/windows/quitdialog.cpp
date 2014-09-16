@@ -193,7 +193,7 @@ void QuitDialog::action(const ActionEvent &event)
         {
             if (client->getState() == STATE_GAME)
             {
-                Net::getCharServerHandler()->switchCharacter();
+                charServerHandler->switchCharacter();
                 DialogsManager::closeDialogs();
                 serverConfig.write();
             }

@@ -1744,7 +1744,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
         const unsigned char color = srcBeing->getSpriteColor(slot);
         dstBeing->setSprite(slot, spriteId, "", color, false);
     }
-    const int hairSlot = Net::getCharServerHandler()->hairSprite();
+    const int hairSlot = charServerHandler->hairSprite();
     const int hairStyle =  -srcBeing->getSpriteID(hairSlot);
     const unsigned char hairColor = srcBeing->getHairColor();
     dstBeing->setSprite(hairSlot, hairStyle * -1,

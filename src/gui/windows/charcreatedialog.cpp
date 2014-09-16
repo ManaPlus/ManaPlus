@@ -335,8 +335,8 @@ CharCreateDialog::~CharCreateDialog()
 {
     delete2(mPlayer);
 
-    if (Net::getCharServerHandler())
-        Net::getCharServerHandler()->setCharCreateDialog(nullptr);
+    if (charServerHandler)
+        charServerHandler->setCharCreateDialog(nullptr);
 }
 
 void CharCreateDialog::action(const ActionEvent &event)
@@ -358,7 +358,7 @@ void CharCreateDialog::action(const ActionEvent &event)
 
             const int characterSlot = mSlot;
 
-            Net::getCharServerHandler()->newCharacter(getName(), characterSlot,
+            charServerHandler->newCharacter(getName(), characterSlot,
                 mFemale->isSelected(), mHairStyle, mHairColor,
                 static_cast<unsigned char>(mRace),
                 static_cast<unsigned char>(mLook), atts);
@@ -620,7 +620,7 @@ void CharCreateDialog::updateHair()
     mHairColorNameLabel->setCaption(ColorDB::getHairColorName(mHairColor));
     mHairColorNameLabel->resizeTo(150, 150);
 
-    mPlayer->setSprite(Net::getCharServerHandler()->hairSprite(),
+    mPlayer->setSprite(charServerHandler->hairSprite(),
         mHairStyle * -1, item.getDyeColorsString(mHairColor));
 }
 

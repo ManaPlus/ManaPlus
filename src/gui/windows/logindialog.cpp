@@ -97,7 +97,7 @@ LoginDialog::LoginDialog(LoginData *const data,
     setCloseButton(true);
     setWindowName("Login");
 
-    Net::getCharServerHandler()->clear();
+    charServerHandler->clear();
 
     // TRANSLATORS: login dialog label
     Label *const serverLabel1 = new Label(this, _("Server:"));

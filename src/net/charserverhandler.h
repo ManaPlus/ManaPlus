@@ -100,4 +100,6 @@ class CharServerHandler notfinal
 
 }  // namespace Net
 
+extern Net::CharServerHandler *charServerHandler;
+
 #endif  // NET_CHARSERVERHANDLER_H

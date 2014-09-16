@@ -439,7 +439,7 @@ void CharServerHandler::processCharMapInfo(Net::MessageIn &restrict msg)
 
     mSelectedCharacter->dummy = nullptr;
 
-    Net::getCharServerHandler()->clear();
+    charServerHandler->clear();
     updateCharSelectDialog();
 
     if (network)
