@@ -87,7 +87,7 @@ int32_t MessageIn::readInt32(const char *const str)
 
 int64_t MessageIn::readInt64(const char *const str)
 {
-    int32_t value = -1;
+    int64_t value = -1;
     if (mPos + 8 <= mLength)
     {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
