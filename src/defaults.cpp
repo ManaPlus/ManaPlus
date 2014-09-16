@@ -573,6 +573,7 @@ DefaultsData* getFeaturesDefaults()
     DefaultsData *const configData = new DefaultsData;
     AddDEF("languageTab", false);
     AddDEF("allowFollow", true);
+    AddDEF("fixDeadAnimation", true);
     return configData;
 }
 

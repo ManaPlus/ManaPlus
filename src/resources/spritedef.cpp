@@ -22,7 +22,9 @@
 
 #include "resources/spritedef.h"
 
+#include "configuration.h"
 #include "logger.h"
+#include "settings.h"
 
 #include "resources/map/mapconsts.h"
 
@@ -33,8 +35,6 @@
 #include "resources/resourcemanager.h"
 #include "resources/spriteaction.h"
 #include "resources/spritereference.h"
-
-#include "configuration.h"
 
 #include "debug.h"
 
@@ -106,7 +106,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
     def->mProcessedFiles.insert(animationFile);
     def->loadSprite(rootNode, variant, palettes);
     def->substituteActions();
-    if (serverVersion < 1)
+    if (settings.fixDeadAnimation)
         def->fixDeadAction();
     if (prot)
     {

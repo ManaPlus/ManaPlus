@@ -1703,6 +1703,7 @@ void Client::initFeatures()
 {
     features.init(paths.getStringValue("featuresFile"), true);
     features.setDefaultValues(getFeaturesDefaults());
+    settings.fixDeadAnimation = features.getBoolValue("fixDeadAnimation");
 }
 
 void Client::initTradeFilter()

@@ -73,7 +73,8 @@ class Settings final
             mouseFocused(true),
             disableGameModifiers(false),
             awayMode(false),
-            pseudoAwayMode(false)
+            pseudoAwayMode(false),
+            fixDeadAnimation(true)
         { }
 
         std::string updateHost;
@@ -116,6 +117,7 @@ class Settings final
         bool disableGameModifiers;
         bool awayMode;
         bool pseudoAwayMode;
+        bool fixDeadAnimation;
 };
 
 extern Settings settings;
