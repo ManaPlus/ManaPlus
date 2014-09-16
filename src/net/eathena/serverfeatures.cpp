@@ -57,4 +57,9 @@ bool ServerFeatures::haveLangTab() const
     return false;
 }
 
+bool ServerFeatures::havePlayerStatusUpdate() const
+{
+    return false;
+}
+
 }  // namespace EAthena

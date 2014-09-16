@@ -68,6 +68,7 @@
 #include "net/packetlimiter.h"
 #include "net/pethandler.h"
 #include "net/playerhandler.h"
+#include "net/serverfeatures.h"
 
 #include "resources/iteminfo.h"
 #include "resources/itemslot.h"
@@ -333,7 +334,9 @@ void LocalPlayer::slowLogic()
         weightNoticeTime = 0;
     }
 
-    if (serverVersion < 4 && mEnableAdvert && !mBlockAdvert
+    if (!Net::getServerFeatures()->havePlayerStatusUpdate()
+        && mEnableAdvert
+        && !mBlockAdvert
         && mAdvertTime < cur_time)
     {
         uint8_t smile = BeingFlag::SPECIAL;
@@ -3222,7 +3225,7 @@ bool LocalPlayer::checAttackPermissions(const Being *const target)
 
 void LocalPlayer::updateStatus() const
 {
-    if (serverVersion >= 4 && mEnableAdvert)
+    if (Net::getServerFeatures()->havePlayerStatusUpdate() && mEnableAdvert)
     {
         uint8_t status = 0;
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
