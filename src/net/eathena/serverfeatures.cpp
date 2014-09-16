@@ -77,4 +77,9 @@ bool ServerFeatures::haveIncompleteChatMessages() const
     return false;
 }
 
+bool ServerFeatures::haveRaceSelection() const
+{
+    return false;
+}
+
 }  // namespace EAthena

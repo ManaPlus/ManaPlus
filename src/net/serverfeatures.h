@@ -48,6 +48,8 @@ class ServerFeatures notfinal
         virtual bool haveNativeGuilds() const = 0;
 
         virtual bool haveIncompleteChatMessages() const = 0;
+
+        virtual bool haveRaceSelection() const = 0;
 };
 
 }  // namespace Net

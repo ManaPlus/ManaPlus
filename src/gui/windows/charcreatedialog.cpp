@@ -41,6 +41,7 @@
 #include "gui/widgets/textfield.h"
 
 #include "net/net.h"
+#include "net/serverfeatures.h"
 
 #include "resources/iteminfo.h"
 
@@ -188,7 +189,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
     mNameField->setMaximum(24);
 
-    if (serverVersion >= 2)
+    if (Net::getServerFeatures()->haveRaceSelection())
     {
         // TRANSLATORS: char create dialog button
         mNextRaceButton = new Button(this, _(">"), "nextrace", this);
@@ -263,7 +264,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mLookLabel->setPosition(labelX, y);
         mLookNameLabel->setPosition(nameX, y);  // 93
     }
-    if (serverVersion >= 2)
+    if (Net::getServerFeatures()->haveRaceSelection())
     {
         y += 24;
         mPrevRaceButton->setPosition(leftX, y);
@@ -302,7 +303,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         add(mLookNameLabel);
     }
 
-    if (serverVersion >= 2)
+    if (Net::getServerFeatures()->haveRaceSelection())
     {
         add(mNextRaceButton);
         add(mPrevRaceButton);
@@ -323,7 +324,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mNameField->requestFocus();
 
     updateHair();
-    if (serverVersion >= 2)
+    if (Net::getServerFeatures()->haveRaceSelection())
         updateRace();
     if (serverVersion >= 9 && mMinLook < mMaxLook)
         updateLook();

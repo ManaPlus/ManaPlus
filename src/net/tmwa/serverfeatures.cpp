@@ -79,4 +79,9 @@ bool ServerFeatures::haveIncompleteChatMessages() const
     return tmwServerVersion > 0;
 }
 
+bool ServerFeatures::haveRaceSelection() const
+{
+    return serverVersion >= 2;
+}
+
 }  // namespace TmwAthena
