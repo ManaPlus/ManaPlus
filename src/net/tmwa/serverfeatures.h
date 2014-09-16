@@ -55,6 +55,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveRaceSelection() const override final;
 
         bool haveLookSelection() const override final;
+
+        bool haveChatChannels() const override final;
 };
 
 }  // namespace TmwAthena

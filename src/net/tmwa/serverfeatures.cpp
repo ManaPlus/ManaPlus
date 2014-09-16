@@ -89,4 +89,9 @@ bool ServerFeatures::haveLookSelection() const
     return serverVersion >= 9;
 }
 
+bool ServerFeatures::haveChatChannels() const
+{
+    return serverVersion >= 8;
+}
+
 }  // namespace TmwAthena

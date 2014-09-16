@@ -87,4 +87,9 @@ bool ServerFeatures::haveLookSelection() const
     return false;
 }
 
+bool ServerFeatures::haveChatChannels() const
+{
+    return false;
+}
+
 }  // namespace EAthena

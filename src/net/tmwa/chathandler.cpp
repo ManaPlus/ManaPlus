@@ -30,6 +30,9 @@
 
 #include "gui/windows/chatwindow.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
@@ -126,7 +129,7 @@ void ChatHandler::talk(const std::string &restrict text,
     const std::string mes = std::string(localPlayer->getName()).append(
         " : ").append(text);
 
-    if (serverVersion >= 8 && channel.size() == 3)
+    if (Net::getServerFeatures()->haveChatChannels() && channel.size() == 3)
     {
         MessageOut outMsg(CMSG_CHAT_MESSAGE2);
         // Added + 1 in order to let eAthena parse admin commands correctly
