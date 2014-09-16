@@ -41,6 +41,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveChangePartyLeader() const override final;
 
         bool haveServerHp() const override final;
+
+        bool haveLangTab() const override final;
 };
 
 }  // namespace EAthena

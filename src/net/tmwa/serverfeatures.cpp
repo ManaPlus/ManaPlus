@@ -54,4 +54,9 @@ bool ServerFeatures::haveServerHp() const
     return serverVersion > 0 || tmwServerVersion >= 0x0E0701;
 }
 
+bool ServerFeatures::haveLangTab() const
+{
+    return serverVersion >= 8;
+}
+
 }  // namespace TmwAthena

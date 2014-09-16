@@ -38,6 +38,8 @@ class ServerFeatures notfinal
         virtual bool haveChangePartyLeader() const = 0;
 
         virtual bool haveServerHp() const = 0;
+
+        virtual bool haveLangTab() const = 0;
 };
 
 }  // namespace Net
