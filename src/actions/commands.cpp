@@ -124,7 +124,7 @@ static void changeRelation(const InputEvent &event,
 
 impHandler(chatAnnounce)
 {
-    Net::getAdminHandler()->announce(event.args);
+    adminHandler->announce(event.args);
     return true;
 }
 

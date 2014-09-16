@@ -1319,7 +1319,7 @@ void PopupMenu::handleLink(const std::string &link,
              (being->getType() == ActorType::Player ||
              being->getType() == ActorType::Monster))
     {
-        Net::getAdminHandler()->kick(being->getId());
+        adminHandler->kick(being->getId());
     }
     else if (link == "chat close" && mTab)
     {
@@ -1339,7 +1339,7 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (Game::instance())
         {
-            Net::getAdminHandler()->warp(Game::instance()->getCurrentMapName(),
+            adminHandler->warp(Game::instance()->getCurrentMapName(),
                 mMapItem->getX(), mMapItem->getY());
         }
     }
@@ -1347,7 +1347,7 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (Game::instance())
         {
-            Net::getAdminHandler()->warp(Game::instance()->getCurrentMapName(),
+            adminHandler->warp(Game::instance()->getCurrentMapName(),
                 mX, mY);
         }
     }
@@ -1784,19 +1784,19 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "goto" && !mNick.empty())
     {
-        Net::getAdminHandler()->gotoName(mNick);
+        adminHandler->gotoName(mNick);
     }
     else if (link == "recall" && !mNick.empty())
     {
-        Net::getAdminHandler()->recallName(mNick);
+        adminHandler->recallName(mNick);
     }
     else if (link == "revive" && !mNick.empty())
     {
-        Net::getAdminHandler()->reviveName(mNick);
+        adminHandler->reviveName(mNick);
     }
     else if (link == "ipcheck" && !mNick.empty())
     {
-        Net::getAdminHandler()->ipcheckName(mNick);
+        adminHandler->ipcheckName(mNick);
     }
     else if (link == "gm" && !mNick.empty())
     {

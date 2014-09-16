@@ -36,7 +36,6 @@
 namespace Net
 {
 
-class AdminHandler;
 class AuctionHandler;
 class BankHandler;
 class BeingHandler;
@@ -59,7 +58,6 @@ class TradeHandler;
 class BuySellHandler;
 class ServerFeatures;
 
-AdminHandler *getAdminHandler() A_WARN_UNUSED;
 BeingHandler *getBeingHandler() A_WARN_UNUSED;
 CharServerHandler *getCharServerHandler() A_WARN_UNUSED;
 ChatHandler *getChatHandler() A_WARN_UNUSED;

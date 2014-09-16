@@ -94,4 +94,6 @@ class AdminHandler notfinal
 
 }  // namespace Net
 
+extern Net::AdminHandler *adminHandler;
+
 #endif  // NET_ADMINHANDLER_H

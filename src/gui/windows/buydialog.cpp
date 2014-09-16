@@ -434,7 +434,7 @@ void BuyDialog::action(const ActionEvent &event)
         if (mNpcId == -2)
         {
             const ShopItem *const item = mShopItems->at(selectedItem);
-            Net::getAdminHandler()->createItems(item->getId(),
+            adminHandler->createItems(item->getId(),
                 mAmountItems, item->getColor());
         }
         else if (mNpcId != -1)

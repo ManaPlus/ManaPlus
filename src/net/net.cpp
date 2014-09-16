@@ -36,6 +36,11 @@
 
 #include "debug.h"
 
+namespace Net
+{
+    class AdminHandler;
+}
+
 Net::AdminHandler *adminHandler = nullptr;
 Net::CharServerHandler *charServerHandler = nullptr;
 Net::ChatHandler *chatHandler = nullptr;
@@ -58,11 +63,6 @@ Net::AuctionHandler *auctionHandler = nullptr;
 Net::CashShopHandler *cashShopHandler = nullptr;
 Net::FamilyHandler *familyHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
-
-Net::AdminHandler *Net::getAdminHandler()
-{
-    return adminHandler;
-}
 
 Net::CharServerHandler *Net::getCharServerHandler()
 {
