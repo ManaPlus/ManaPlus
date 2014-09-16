@@ -26,6 +26,9 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
@@ -83,7 +86,7 @@ GuildHandler::~GuildHandler()
 void GuildHandler::handleMessage(Net::MessageIn &msg)
 {
     BLOCK_START("GuildHandler::handleMessage")
-    if (tmwServerVersion > 0)
+    if (!Net::getServerFeatures()->haveNativeGuilds())
         return;
 
     switch (msg.getId())

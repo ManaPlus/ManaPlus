@@ -52,6 +52,9 @@
 
 #include "gui/popups/createpartypopup.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "debug.h"
 
 SocialWindow *socialWindow = nullptr;
@@ -342,7 +345,7 @@ void SocialWindow::action(const ActionEvent &event)
     }
     else if (eventId == "create guild")
     {
-        if (tmwServerVersion > 0)
+        if (!Net::getServerFeatures()->haveNativeGuilds())
             return;
 
         std::string name = mGuildCreateDialog->getText();

@@ -35,6 +35,7 @@
 #include "net/guildhandler.h"
 #include "net/net.h"
 #include "net/partyhandler.h"
+#include "net/serverfeatures.h"
 
 #include "debug.h"
 
@@ -67,7 +68,7 @@ void outStringNormal(ChatTab *const tab,
             {
                 if (guild->getServerGuild())
                 {
-                    if (tmwServerVersion > 0)
+                    if (!Net::getServerFeatures()->haveNativeGuilds())
                         return;
                     Net::getGuildHandler()->chat(guild->getId(), str);
                 }

@@ -37,6 +37,7 @@
 #include "net/guildhandler.h"
 #include "net/net.h"
 #include "net/partyhandler.h"
+#include "net/serverfeatures.h"
 
 #include "utils/booleanoptions.h"
 #include "utils/gettext.h"
@@ -74,7 +75,7 @@ static void outString(const ChatTab *const tab,
             {
                 if (guild->getServerGuild())
                 {
-                    if (tmwServerVersion > 0)
+                    if (!Net::getServerFeatures()->haveNativeGuilds())
                         return;
                     Net::getGuildHandler()->chat(guild->getId(), str);
                 }
@@ -273,7 +274,7 @@ impHandler(createParty)
 
 impHandler(createGuild)
 {
-    if (!event.tab || tmwServerVersion > 0)
+    if (!event.tab || !Net::getServerFeatures()->haveNativeGuilds())
         return false;
 
     if (event.args.empty())

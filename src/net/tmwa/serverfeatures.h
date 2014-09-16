@@ -47,6 +47,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool havePlayerStatusUpdate() const override final;
 
         bool haveBrokenPlayerAttackDistance() const override final;
+
+        bool haveNativeGuilds() const override final;
 };
 
 }  // namespace TmwAthena

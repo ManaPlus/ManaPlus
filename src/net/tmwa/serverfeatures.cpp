@@ -69,4 +69,9 @@ bool ServerFeatures::haveBrokenPlayerAttackDistance() const
     return serverVersion < 1;
 }
 
+bool ServerFeatures::haveNativeGuilds() const
+{
+    return tmwServerVersion <= 0;
+}
+
 }  // namespace TmwAthena

@@ -67,4 +67,9 @@ bool ServerFeatures::haveBrokenPlayerAttackDistance() const
     return false;
 }
 
+bool ServerFeatures::haveNativeGuilds() const
+{
+    return true;
+}
+
 }  // namespace EAthena

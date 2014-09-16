@@ -40,8 +40,9 @@
 #include "net/adminhandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
-#include "net/pethandler.h"
 #include "net/net.h"
+#include "net/pethandler.h"
+#include "net/serverfeatures.h"
 
 #include "utils/chatutils.h"
 #include "utils/gettext.h"
@@ -411,8 +412,11 @@ impHandler(sendMail)
 
 impHandler(info)
 {
-    if (!event.tab || !localPlayer || tmwServerVersion > 0)
+    if (!event.tab || !localPlayer
+        || !Net::getServerFeatures()->haveNativeGuilds())
+    {
         return false;
+    }
 
     switch (event.tab->getType())
     {
