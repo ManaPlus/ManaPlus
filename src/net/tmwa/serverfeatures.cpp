@@ -74,4 +74,9 @@ bool ServerFeatures::haveNativeGuilds() const
     return tmwServerVersion <= 0;
 }
 
+bool ServerFeatures::haveIncompleteChatMessages() const
+{
+    return tmwServerVersion > 0;
+}
+
 }  // namespace TmwAthena

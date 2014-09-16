@@ -49,6 +49,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveBrokenPlayerAttackDistance() const override final;
 
         bool haveNativeGuilds() const override final;
+
+        bool haveIncompleteChatMessages() const override final;
 };
 
 }  // namespace EAthena

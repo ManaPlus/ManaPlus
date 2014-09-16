@@ -72,4 +72,9 @@ bool ServerFeatures::haveNativeGuilds() const
     return true;
 }
 
+bool ServerFeatures::haveIncompleteChatMessages() const
+{
+    return false;
+}
+
 }  // namespace EAthena

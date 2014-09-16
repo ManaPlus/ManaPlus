@@ -36,6 +36,8 @@
 #include "gui/widgets/tabs/gmtab.h"
 
 #include "net/messagein.h"
+#include "net/net.h"
+#include "net/serverfeatures.h"
 
 #include "net/ea/eaprotocol.h"
 
@@ -302,7 +304,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg) const
     std::string sender_name = ((pos == std::string::npos)
         ? "" : chatMsg.substr(0, pos));
 
-    if (tmwServerVersion > 0)
+    if (Net::getServerFeatures()->haveIncompleteChatMessages())
     {
         // work around for "new" tmw server
         sender_name = being->getName();
