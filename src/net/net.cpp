@@ -57,6 +57,7 @@ Net::MailHandler *mailHandler = nullptr;
 Net::AuctionHandler *auctionHandler = nullptr;
 Net::CashShopHandler *cashShopHandler = nullptr;
 Net::FamilyHandler *familyHandler = nullptr;
+Net::BankHandler *bankHandler = nullptr;
 
 Net::AdminHandler *Net::getAdminHandler()
 {
@@ -161,6 +162,11 @@ Net::CashShopHandler *Net::getCashShopHandler()
 Net::FamilyHandler *Net::getFamilyHandler()
 {
     return familyHandler;
+}
+
+Net::BankHandler *Net::getBankHandler()
+{
+    return bankHandler;
 }
 
 
