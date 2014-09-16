@@ -85,4 +85,23 @@ int32_t MessageIn::readInt32(const char *const str)
     return value;
 }
 
+int64_t MessageIn::readInt64(const char *const str)
+{
+    int32_t value = -1;
+    if (mPos + 8 <= mLength)
+    {
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        int64_t swap;
+        memcpy(&swap, mData + static_cast<size_t>(mPos), sizeof(int64_t));
+        value = SDL_Swap64(swap);
+#else
+        memcpy(&value, mData + static_cast<size_t>(mPos), sizeof(int64_t));
+#endif
+    }
+    DEBUGLOG2("readInt64: " + toStringPrint(value), mPos, str);
+    mPos += 8;
+    PacketCounters::incInBytes(8);
+    return value;
+}
+
 }  // namespace EAthena

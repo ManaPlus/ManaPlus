@@ -51,6 +51,8 @@ class MessageIn final : public Net::MessageIn
         int16_t readInt16(const char *const str = nullptr);
         /**< Reads a long. */
         int32_t readInt32(const char *const str = nullptr);
+
+        int64_t readInt64(const char *const str = nullptr);
 };
 
 }  // namespace EAthena

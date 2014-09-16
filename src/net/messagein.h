@@ -70,7 +70,9 @@ class MessageIn notfinal
         virtual int16_t readInt16(const char *const str = nullptr) = 0;
 
         /**< Reads a long. */
-        virtual int readInt32(const char *const str = nullptr) = 0;
+        virtual int32_t readInt32(const char *const str = nullptr) = 0;
+
+        virtual int64_t readInt64(const char *const str = nullptr) = 0;
 
         /**
          * Reads a special 3 byte block used by eAthena, containing x and y
