@@ -2407,7 +2407,7 @@ void LocalPlayer::pingRequest()
 
     mPingSendTick = time;
     mWaitPing = true;
-    Net::getBeingHandler()->requestNameById(getId());
+    beingHandler->requestNameById(getId());
 }
 
 std::string LocalPlayer::getPingTime() const

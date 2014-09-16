@@ -49,4 +49,6 @@ class BeingHandler notfinal
 
 }  // namespace Net
 
+extern Net::BeingHandler *beingHandler;
+
 #endif  // NET_BEINGHANDLER_H

@@ -772,7 +772,7 @@ impHandler(undress)
     if (!target)
         target = localPlayer->getTarget();
     if (target)
-        Net::getBeingHandler()->undress(target);
+        beingHandler->undress(target);
     return true;
 }
 

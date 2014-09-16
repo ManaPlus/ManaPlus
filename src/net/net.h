@@ -36,7 +36,6 @@
 namespace Net
 {
 
-class BeingHandler;
 class CashShopHandler;
 class CharServerHandler;
 class ChatHandler;
@@ -56,7 +55,6 @@ class TradeHandler;
 class BuySellHandler;
 class ServerFeatures;
 
-BeingHandler *getBeingHandler() A_WARN_UNUSED;
 CharServerHandler *getCharServerHandler() A_WARN_UNUSED;
 ChatHandler *getChatHandler() A_WARN_UNUSED;
 GameHandler *getGameHandler() A_WARN_UNUSED;

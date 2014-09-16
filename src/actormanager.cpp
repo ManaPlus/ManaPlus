@@ -247,7 +247,7 @@ Being *ActorManager::createBeing(const int id,
     if (type == ActorType::Player || type == ActorType::Npc)
     {
         being->updateFromCache();
-        Net::getBeingHandler()->requestNameById(id);
+        beingHandler->requestNameById(id);
         if (localPlayer)
             localPlayer->checkNewName(being);
     }

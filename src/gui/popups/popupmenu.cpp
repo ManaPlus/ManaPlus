@@ -1402,7 +1402,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "undress" && being)
     {
-        Net::getBeingHandler()->undress(being);
+        beingHandler->undress(being);
     }
     else if (link == "addcomment" && !mNick.empty())
     {
