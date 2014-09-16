@@ -199,7 +199,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         mRaceLabel = new Label(this, _("Race:"));
         mRaceNameLabel = new Label(this, "");
     }
-    if (serverVersion >= 9 && mMinLook < mMaxLook)
+    if (Net::getServerFeatures()->haveLookSelection() && mMinLook < mMaxLook)
     {
         // TRANSLATORS: char create dialog button
         mNextLookButton = new Button(this, _(">"), "nextlook", this);
@@ -255,7 +255,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mHairStyleLabel->setPosition(labelX, y);
     mHairStyleNameLabel->setPosition(nameX, y);
 
-    if (serverVersion >= 9 && mMinLook < mMaxLook)
+    if (Net::getServerFeatures()->haveLookSelection() && mMinLook < mMaxLook)
     {
         y += 24;
         mPrevLookButton->setPosition(leftX, y);
@@ -295,7 +295,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     add(mActionButton);
     add(mRotateButton);
 
-    if (serverVersion >= 9 && mMinLook < mMaxLook)
+    if (Net::getServerFeatures()->haveLookSelection() && mMinLook < mMaxLook)
     {
         add(mNextLookButton);
         add(mPrevLookButton);
@@ -326,7 +326,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     updateHair();
     if (Net::getServerFeatures()->haveRaceSelection())
         updateRace();
-    if (serverVersion >= 9 && mMinLook < mMaxLook)
+    if (Net::getServerFeatures()->haveLookSelection() && mMinLook < mMaxLook)
         updateLook();
     updatePlayer();
 
@@ -640,7 +640,7 @@ void CharCreateDialog::updateLook()
 {
     const ItemInfo &item = ItemDB::get(-100 - mRace);
     const int sz = item.getColorsSize();
-    if (sz > 0 && serverVersion >= 9)
+    if (sz > 0 && Net::getServerFeatures()->haveLookSelection())
     {
         if (mLook < 0)
             mLook = sz - 1;

@@ -53,6 +53,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveIncompleteChatMessages() const override final;
 
         bool haveRaceSelection() const override final;
+
+        bool haveLookSelection() const override final;
 };
 
 }  // namespace EAthena

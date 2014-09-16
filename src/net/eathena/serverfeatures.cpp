@@ -82,4 +82,9 @@ bool ServerFeatures::haveRaceSelection() const
     return false;
 }
 
+bool ServerFeatures::haveLookSelection() const
+{
+    return false;
+}
+
 }  // namespace EAthena

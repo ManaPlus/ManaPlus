@@ -84,4 +84,9 @@ bool ServerFeatures::haveRaceSelection() const
     return serverVersion >= 2;
 }
 
+bool ServerFeatures::haveLookSelection() const
+{
+    return serverVersion >= 9;
+}
+
 }  // namespace TmwAthena

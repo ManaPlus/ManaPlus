@@ -50,6 +50,8 @@ class ServerFeatures notfinal
         virtual bool haveIncompleteChatMessages() const = 0;
 
         virtual bool haveRaceSelection() const = 0;
+
+        virtual bool haveLookSelection() const = 0;
 };
 
 }  // namespace Net
