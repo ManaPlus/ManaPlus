@@ -298,7 +298,7 @@ void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg) const
     int id2 = 0;
 
     const int16_t id = msg.readInt16("id1");
-    if (type == 2 || serverVersion > 0)
+    if (type == 2 || Net::getServerFeatures()->haveItemColors())
     {
         id2 = msg.readInt16("id2");
     }
@@ -571,7 +571,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
         dstBeing->updateSprite(SPRITE_WEAPON, weapon, "", 1, true);
         if (!mHideShield)
             dstBeing->updateSprite(SPRITE_SHIELD, shield);
-        if (serverVersion > 0)
+        if (Net::getServerFeatures()->haveItemColors())
         {
             dstBeing->updateSprite(SPRITE_BOTTOMCLOTHES, headBottom,
                 "", colors[0]);
@@ -722,7 +722,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
         dstBeing->updateSprite(SPRITE_WEAPON, weapon, "", 1, true);
         if (!mHideShield)
             dstBeing->updateSprite(SPRITE_SHIELD, shield);
-        if (serverVersion > 0)
+        if (Net::getServerFeatures()->haveItemColors())
         {
             dstBeing->updateSprite(SPRITE_BOTTOMCLOTHES, headBottom,
                 "", colors[0]);
@@ -873,7 +873,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
         dstBeing->updateSprite(SPRITE_WEAPON, weapon, "", 1, true);
         if (!mHideShield)
             dstBeing->updateSprite(SPRITE_SHIELD, shield);
-        if (serverVersion > 0)
+        if (Net::getServerFeatures()->haveItemColors())
         {
             dstBeing->updateSprite(SPRITE_BOTTOMCLOTHES, headBottom,
                 "", colors[0]);

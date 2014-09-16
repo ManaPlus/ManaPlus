@@ -858,7 +858,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
     else
     {
         std::string str;
-        if (serverVersion > 0)
+        if (Net::getServerFeatures()->haveItemColors())
             str = itemInfo.getName(color);
         else
             str = itemInfo.getName();

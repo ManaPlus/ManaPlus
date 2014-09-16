@@ -26,6 +26,7 @@
 
 #include "net/chathandler.h"
 #include "net/net.h"
+#include "net/serverfeatures.h"
 
 #include <string>
 
@@ -74,7 +75,7 @@ void AdminHandler::ipcheckName(const std::string &name) const
 void AdminHandler::createItems(const int id, const int color,
                                const int amount) const
 {
-    if (serverVersion < 1)
+    if (!Net::getServerFeatures()->haveItemColors())
     {
         Net::getChatHandler()->talk(strprintf("@item %d %d",
             id, amount), GENERAL_CHANNEL);

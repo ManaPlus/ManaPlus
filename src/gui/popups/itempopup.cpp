@@ -41,6 +41,9 @@
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "debug.h"
 
 extern int serverVersion;
@@ -117,7 +120,7 @@ void ItemPopup::setItem(const Item *const item, const bool showImage)
         mLastName = ii.getName();
         mLastColor = item->getColor();
         mLastId = item->getId();
-        if (serverVersion > 0)
+        if (Net::getServerFeatures()->haveItemColors())
         {
             mItemName->setCaption(strprintf("%s (+%u), %d",
                 ii.getName(item->getColor()).c_str(),
@@ -181,7 +184,7 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
     mLastColor = color;
     mLastId = id;
 
-    if (serverVersion > 0)
+    if (Net::getServerFeatures()->haveItemColors())
     {
         mItemName->setCaption(strprintf("%s, %d",
             item.getName(color).c_str(), id));

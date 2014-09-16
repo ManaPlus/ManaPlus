@@ -31,6 +31,9 @@
 #include "resources/resourcemanager.h"
 #include "configuration.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "debug.h"
 
 extern int serverVersion;
@@ -116,7 +119,7 @@ Image *Item::getImage(const int id, const unsigned char color)
 std::string Item::getName() const
 {
     const ItemInfo &info = ItemDB::get(mId);
-    if (serverVersion > 0)
+    if (Net::getServerFeatures()->haveItemColors())
         return info.getName(mColor);
     else
         return info.getName();

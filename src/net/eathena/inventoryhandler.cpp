@@ -29,6 +29,9 @@
 
 #include "listeners/arrowslistener.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
 
@@ -376,7 +379,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             if (item && item->getId() == itemId)
                 amount += item->getQuantity();
 
-            if (serverVersion < 1 && identified > 1)
+            if (!Net::getServerFeatures()->haveItemColors() && identified > 1)
                 identified = 1;
 
             inventory->setItem(index, itemId, amount, refine,

@@ -1089,7 +1089,7 @@ void PopupMenu::handleLink(const std::string &link,
         {
             if (mItem)
             {
-                if (serverVersion > 0)
+                if (Net::getServerFeatures()->haveItemColors())
                 {
                     chatWindow->addItemText(mItem->getInfo().getName(
                         mItem->getColor()));
@@ -1106,7 +1106,7 @@ void PopupMenu::handleLink(const std::string &link,
 
                 if (item)
                 {
-                    if (serverVersion > 0)
+                    if (Net::getServerFeatures()->haveItemColors())
                     {
                         chatWindow->addItemText(item->getInfo().getName(
                             item->getColor()));

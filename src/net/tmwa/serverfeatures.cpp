@@ -104,4 +104,9 @@ bool ServerFeatures::haveMove3() const
     return serverVersion >= 10;
 }
 
+bool ServerFeatures::haveItemColors() const
+{
+    return serverVersion >= 1;
+}
+
 }  // namespace TmwAthena

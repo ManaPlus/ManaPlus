@@ -29,6 +29,9 @@
 
 #include "gui/windows/buydialog.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "net/tmwa/protocol.h"
 
 #include "resources/notifytypes.h"
@@ -94,7 +97,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
 {
     msg.readInt16("len");
     unsigned int sz = 11;
-    if (serverVersion > 0)
+    if (Net::getServerFeatures()->haveItemColors())
         sz += 1;
     const unsigned int n_items = (msg.getLength() - 4U) / sz;
     mBuyDialog = new BuyDialog(mNpcId);
@@ -107,7 +110,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
         msg.readUInt8("type");
         const int itemId = msg.readInt16("item id");
         uint8_t color = 1;
-        if (serverVersion > 0)
+        if (Net::getServerFeatures()->haveItemColors())
             color = msg.readUInt8("item color");
         mBuyDialog->addItem(itemId, color, 0, value);
     }

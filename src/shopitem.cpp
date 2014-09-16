@@ -28,6 +28,9 @@
 
 #include "utils/stringutils.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "debug.h"
 
 extern int serverVersion;
@@ -41,7 +44,7 @@ ShopItem::ShopItem(const int inventoryIndex, const int id,
     mPrice(price),
     mShowQuantity(true)
 {
-    if (serverVersion > 0)
+    if (Net::getServerFeatures()->haveItemColors())
     {
         mDisplayName = std::string(getInfo().getName(color)).append(" (")
             .append(Units::formatCurrency(mPrice)).append(") ");
@@ -65,7 +68,7 @@ ShopItem::ShopItem(const int id, const unsigned char color, const int price) :
     mPrice(price),
     mShowQuantity(false)
 {
-    if (serverVersion > 0)
+    if (Net::getServerFeatures()->haveItemColors())
     {
         mDisplayName = std::string(getInfo().getName(color)).append(" (")
             .append(Units::formatCurrency(mPrice)).append(")");
@@ -93,7 +96,7 @@ void ShopItem::update()
 {
     if (mShowQuantity)
     {
-        if (serverVersion > 0)
+        if (Net::getServerFeatures()->haveItemColors())
         {
             mDisplayName = std::string(getInfo().getName(mColor)).append(" (")
                 .append(Units::formatCurrency(mPrice)).append(") ");

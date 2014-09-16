@@ -29,6 +29,9 @@
 
 #include "listeners/arrowslistener.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
@@ -265,7 +268,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
                         index, itemId, itemType, identified);
         }
 
-        if (serverVersion < 1 && identified > 1)
+        if (!Net::getServerFeatures()->haveItemColors() && identified > 1)
             identified = 1;
 
         if (inventory)
@@ -336,7 +339,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             if (item && item->getId() == itemId)
                 amount += item->getQuantity();
 
-            if (serverVersion < 1 && identified > 1)
+            if (!Net::getServerFeatures()->haveItemColors() && identified > 1)
                 identified = 1;
 
             inventory->setItem(index, itemId, amount, refine,
@@ -386,7 +389,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg)
                         cards[0], cards[1], cards[2], cards[3]);
         }
 
-        if (serverVersion < 1 && identified > 1)
+        if (!Net::getServerFeatures()->haveItemColors() && identified > 1)
             identified = 1;
 
         // Trick because arrows are not considered equipment
@@ -429,7 +432,7 @@ void InventoryHandler::processPlayerStorage(Net::MessageIn &msg)
                         cards[0], cards[1], cards[2], cards[3]);
         }
 
-        if (serverVersion < 1 && identified > 1)
+        if (!Net::getServerFeatures()->haveItemColors() && identified > 1)
             identified = 1;
 
         mInventoryItems.push_back(Ea::InventoryItem(index, itemId,
@@ -497,7 +500,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
                 static_cast<unsigned int>(refine));
         }
 
-        if (serverVersion < 1 && identified > 1U)
+        if (!Net::getServerFeatures()->haveItemColors() && identified > 1U)
             identified = 1U;
 
         mInventoryItems.push_back(Ea::InventoryItem(index,
@@ -528,7 +531,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     {
         if (mStorage)
         {
-            if (serverVersion < 1 && identified > 1)
+            if (!Net::getServerFeatures()->haveItemColors() && identified > 1)
                 identified = 1;
 
             mStorage->setItem(index, itemId, amount,

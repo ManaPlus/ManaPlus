@@ -28,6 +28,9 @@
 
 #include "gui/windows/npcdialog.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocol.h"
 
@@ -178,7 +181,7 @@ void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
                          const unsigned char color, const int amount) const
 {
     MessageOut outMsg(CMSG_NPC_BUY_REQUEST);
-    if (serverVersion > 0)
+    if (Net::getServerFeatures()->haveItemColors())
     {
         outMsg.writeInt16(10);  // One item (length of packet)
         outMsg.writeInt16(static_cast<int16_t>(amount));

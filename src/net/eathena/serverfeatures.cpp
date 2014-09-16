@@ -102,4 +102,9 @@ bool ServerFeatures::haveMove3() const
     return false;
 }
 
+bool ServerFeatures::haveItemColors() const
+{
+    return false;
+}
+
 }  // namespace EAthena

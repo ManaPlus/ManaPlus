@@ -37,6 +37,9 @@
 
 #include "resources/map/map.h"
 
+#include "net/net.h"
+#include "net/serverfeatures.h"
+
 #include "debug.h"
 
 extern int serverVersion;
@@ -101,7 +104,7 @@ const ItemInfo &FloorItem::getInfo() const
 std::string FloorItem::getName() const
 {
     const ItemInfo &info = ItemDB::get(mItemId);
-    if (serverVersion > 0)
+    if (Net::getServerFeatures()->haveItemColors())
         return info.getName(mColor);
     else
         return info.getName();
