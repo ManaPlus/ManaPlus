@@ -1066,22 +1066,15 @@ std::string Being::getWeaponAttackAction(const ItemInfo *const weapon) const
     if (!weapon)
         return SpriteAction::ATTACK;
 
-    if (serverVersion < 0)
+    if (mMap)
     {
-        return weapon->getAttackAction();
+        const unsigned char mask = mMap->getBlockMask(mX, mY);
+        if (mask & BlockMask::AIR)
+            return weapon->getSkyAttackAction();
+        else if (mask & BlockMask::WATER)
+            return weapon->getWaterAttackAction();
     }
-    else
-    {
-        if (mMap)
-        {
-            const unsigned char mask = mMap->getBlockMask(mX, mY);
-            if (mask & BlockMask::AIR)
-                return weapon->getSkyAttackAction();
-            else if (mask & BlockMask::WATER)
-                return weapon->getWaterAttackAction();
-        }
-        return weapon->getAttackAction();
-    }
+    return weapon->getAttackAction();
 }
 
 std::string Being::getAttackAction(const Attack *const attack1) const
