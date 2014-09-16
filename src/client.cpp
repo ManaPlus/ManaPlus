@@ -619,8 +619,8 @@ void Client::gameClear()
     if (Net::getLoginHandler())
         Net::getLoginHandler()->clearWorlds();
 
-    if (Net::getChatHandler())
-        Net::getChatHandler()->clear();
+    if (chatHandler)
+        chatHandler->clear();
 
     delete2(ipc);
 

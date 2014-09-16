@@ -36,7 +36,6 @@
 namespace Net
 {
 
-class ChatHandler;
 class FamilyHandler;
 class GameHandler;
 class GeneralHandler;
@@ -52,7 +51,6 @@ class SkillHandler;
 class TradeHandler;
 class ServerFeatures;
 
-ChatHandler *getChatHandler() A_WARN_UNUSED;
 GameHandler *getGameHandler() A_WARN_UNUSED;
 GeneralHandler *getGeneralHandler() A_WARN_UNUSED;
 GuildHandler *getGuildHandler() A_WARN_UNUSED;

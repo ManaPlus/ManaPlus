@@ -48,7 +48,7 @@ void outStringNormal(ChatTab *const tab,
 
     if (!tab)
     {
-        Net::getChatHandler()->talk(str, GENERAL_CHANNEL);
+        chatHandler->talk(str, GENERAL_CHANNEL);
         return;
     }
 
@@ -82,11 +82,11 @@ void outStringNormal(ChatTab *const tab,
             const WhisperTab *const whisper
                 = static_cast<const WhisperTab *const>(tab);
             tab->chatLog(localPlayer->getName(), str);
-            Net::getChatHandler()->privateMessage(whisper->getNick(), str);
+            chatHandler->privateMessage(whisper->getNick(), str);
             break;
         }
         default:
-            Net::getChatHandler()->talk(def, GENERAL_CHANNEL);
+            chatHandler->talk(def, GENERAL_CHANNEL);
             break;
     }
 }

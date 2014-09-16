@@ -66,7 +66,7 @@ void BuySellHandler::requestSellList(const std::string &nick) const
 
     if (config.getBoolValue("hideShopMessages"))
     {
-        Net::getChatHandler()->privateMessage(nick, data);
+        chatHandler->privateMessage(nick, data);
     }
     else
     {
@@ -85,7 +85,7 @@ void BuySellHandler::requestBuyList(const std::string &nick) const
 
     if (config.getBoolValue("hideShopMessages"))
     {
-        Net::getChatHandler()->privateMessage(nick, data);
+        chatHandler->privateMessage(nick, data);
     }
     else
     {
@@ -107,7 +107,7 @@ void BuySellHandler::sendBuyRequest(const std::string &nick,
         item->getId(), item->getPrice(), amount);
 
     if (config.getBoolValue("hideShopMessages"))
-        Net::getChatHandler()->privateMessage(nick, data);
+        chatHandler->privateMessage(nick, data);
     else
         chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
 }
@@ -126,7 +126,7 @@ void BuySellHandler::sendSellRequest(const std::string &nick,
         item->getId(), item->getPrice(), amount);
 
     if (config.getBoolValue("hideShopMessages"))
-        Net::getChatHandler()->privateMessage(nick, data);
+        chatHandler->privateMessage(nick, data);
     else
         chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
 }

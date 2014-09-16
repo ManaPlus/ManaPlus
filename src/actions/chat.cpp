@@ -53,7 +53,7 @@ static void outString(const ChatTab *const tab,
 {
     if (!tab)
     {
-        Net::getChatHandler()->me(def, GENERAL_CHANNEL);
+        chatHandler->me(def, GENERAL_CHANNEL);
         return;
     }
 
@@ -85,7 +85,7 @@ static void outString(const ChatTab *const tab,
             break;
         }
         default:
-            Net::getChatHandler()->me(def, GENERAL_CHANNEL);
+            chatHandler->me(def, GENERAL_CHANNEL);
             break;
     }
 }

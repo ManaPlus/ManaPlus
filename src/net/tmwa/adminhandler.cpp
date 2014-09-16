@@ -106,7 +106,7 @@ void AdminHandler::kickAll() const
 
 void AdminHandler::warp(const std::string &map, const int x, const int y) const
 {
-    Net::getChatHandler()->talk(strprintf(
+    chatHandler->talk(strprintf(
         "@warp %s %d %d", map.c_str(), x, y), GENERAL_CHANNEL);
 }
 
@@ -120,12 +120,12 @@ void AdminHandler::resetSkills() const
 
 void AdminHandler::gotoName(const std::string &name) const
 {
-    Net::getChatHandler()->talk("@goto " + name, GENERAL_CHANNEL);
+    chatHandler->talk("@goto " + name, GENERAL_CHANNEL);
 }
 
 void AdminHandler::recallName(const std::string &name) const
 {
-    Net::getChatHandler()->talk("@recall " + name, GENERAL_CHANNEL);
+    chatHandler->talk("@recall " + name, GENERAL_CHANNEL);
 }
 
 void AdminHandler::mute(const Being *const being A_UNUSED,

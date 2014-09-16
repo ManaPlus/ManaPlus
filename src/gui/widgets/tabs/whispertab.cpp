@@ -53,7 +53,7 @@ void WhisperTab::handleInput(const std::string &msg)
 {
     std::string newMsg;
     newMsg = ChatWindow::doReplace(msg);
-    Net::getChatHandler()->privateMessage(mNick, newMsg);
+    chatHandler->privateMessage(mNick, newMsg);
 
     if (localPlayer)
         chatLog(localPlayer->getName(), newMsg);
@@ -77,7 +77,7 @@ void WhisperTab::handleCommand(const std::string &msg)
     if (type == "me")
     {
         std::string str = strprintf("*%s*", args.c_str());
-        Net::getChatHandler()->privateMessage(mNick, str);
+        chatHandler->privateMessage(mNick, str);
         if (localPlayer)
             chatLog(localPlayer->getName(), str);
         else

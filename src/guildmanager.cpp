@@ -117,7 +117,7 @@ void GuildManager::reload()
 
 void GuildManager::send(const std::string &msg)
 {
-    Net::getChatHandler()->privateMessage("guild", msg);
+    chatHandler->privateMessage("guild", msg);
 }
 
 void GuildManager::chat(const std::string &msg)
@@ -125,7 +125,7 @@ void GuildManager::chat(const std::string &msg)
     if (!localPlayer || !mTab)
         return;
 
-    Net::getChatHandler()->privateMessage("guild", msg);
+    chatHandler->privateMessage("guild", msg);
     mTab->chatLog(localPlayer->getName(), msg);
 }
 

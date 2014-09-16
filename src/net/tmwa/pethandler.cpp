@@ -70,7 +70,7 @@ void PetHandler::emote(const uint8_t emoteId, const int petId A_UNUSED)
     if (mRandCounter > 10000)
         mRandCounter = 1000;
 
-    Net::getChatHandler()->talk(strprintf("\302\202\302e%dz%d",
+    chatHandler->talk(strprintf("\302\202\302e%dz%d",
         static_cast<int>(emoteId), mRandCounter), GENERAL_CHANNEL);
 }
 

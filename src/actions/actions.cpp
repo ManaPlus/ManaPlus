@@ -649,7 +649,7 @@ impHandler(where)
 
 impHandler0(who)
 {
-    Net::getChatHandler()->who();
+    chatHandler->who();
     return true;
 }
 
@@ -946,13 +946,13 @@ impHandler0(dump)
 
 impHandler0(serverIgnoreAll)
 {
-    Net::getChatHandler()->ignoreAll();
+    chatHandler->ignoreAll();
     return true;
 }
 
 impHandler0(serverUnIgnoreAll)
 {
-    Net::getChatHandler()->unIgnoreAll();
+    chatHandler->unIgnoreAll();
     return true;
 }
 

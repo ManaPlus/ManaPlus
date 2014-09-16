@@ -61,8 +61,8 @@ void AuctionManager::init()
 
 void AuctionManager::send(const std::string &msg)
 {
-    if (Net::getChatHandler())
-        Net::getChatHandler()->privateMessage("AuctionBot", msg);
+    if (chatHandler)
+        chatHandler->privateMessage("AuctionBot", msg);
 }
 
 /*
@@ -84,6 +84,6 @@ void AuctionManager::reload()
 
 void AuctionManager::sendMail(const std::string &mail)
 {
-    if (Net::getChatHandler())
-        Net::getChatHandler()->privateMessage("AuctionBot", "!mail " + mail);
+    if (chatHandler)
+        chatHandler->privateMessage("AuctionBot", "!mail " + mail);
 }

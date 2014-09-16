@@ -261,12 +261,12 @@ void ShopWindow::action(const ActionEvent &event)
     else if (eventId == "auction buy" && mBuyShopItems
              && mBuyShopItems->getNumberOfElements() > 0)
     {
-        Net::getChatHandler()->privateMessage("AuctionBot", "!pull4144 seek");
+        chatHandler->privateMessage("AuctionBot", "!pull4144 seek");
     }
     else if (eventId == "auction sell" && mSellShopItems
              && mSellShopItems->getNumberOfElements() > 0)
     {
-        Net::getChatHandler()->privateMessage("AuctionBot", "!pull4144 offer");
+        chatHandler->privateMessage("AuctionBot", "!pull4144 offer");
     }
 
     if (mSelectedItem < 1)
@@ -543,7 +543,7 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
         }
     }
 
-    Net::getChatHandler()->talk(data, GENERAL_CHANNEL);
+    chatHandler->talk(data, GENERAL_CHANNEL);
 }
 
 void ShopWindow::giveList(const std::string &nick, const int mode)
@@ -635,7 +635,7 @@ void ShopWindow::sendMessage(const std::string &nick,
     }
 
     if (config.getBoolValue("hideShopMessages"))
-        Net::getChatHandler()->privateMessage(nick, data);
+        chatHandler->privateMessage(nick, data);
     else
         chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
 }

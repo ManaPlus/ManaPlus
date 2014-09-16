@@ -1074,7 +1074,7 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
     {
         if (own == ChatMsgType::BY_PLAYER)
         {
-            Net::getChatHandler()->privateMessage(nick, mes);
+            chatHandler->privateMessage(nick, mes);
 
             // TRANSLATORS: chat message
             localChatTab->chatLog(strprintf(_("Whispering to %s: %s"),

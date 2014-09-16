@@ -37,7 +37,7 @@ namespace Ea
 
 void AdminHandler::kickName(const std::string &name) const
 {
-    Net::getChatHandler()->talk("@kick " + name, GENERAL_CHANNEL);
+    chatHandler->talk("@kick " + name, GENERAL_CHANNEL);
 }
 
 void AdminHandler::ban(const int playerId A_UNUSED) const
@@ -47,7 +47,7 @@ void AdminHandler::ban(const int playerId A_UNUSED) const
 
 void AdminHandler::banName(const std::string &name) const
 {
-    Net::getChatHandler()->talk("@ban " + name, GENERAL_CHANNEL);
+    chatHandler->talk("@ban " + name, GENERAL_CHANNEL);
 }
 
 void AdminHandler::unban(const int playerId A_UNUSED) const
@@ -57,17 +57,17 @@ void AdminHandler::unban(const int playerId A_UNUSED) const
 
 void AdminHandler::unbanName(const std::string &name) const
 {
-    Net::getChatHandler()->talk("@unban " + name, GENERAL_CHANNEL);
+    chatHandler->talk("@unban " + name, GENERAL_CHANNEL);
 }
 
 void AdminHandler::reviveName(const std::string &name) const
 {
-    Net::getChatHandler()->talk("@revive " + name, GENERAL_CHANNEL);
+    chatHandler->talk("@revive " + name, GENERAL_CHANNEL);
 }
 
 void AdminHandler::ipcheckName(const std::string &name) const
 {
-    Net::getChatHandler()->talk("@ipcheck " + name, GENERAL_CHANNEL);
+    chatHandler->talk("@ipcheck " + name, GENERAL_CHANNEL);
 }
 
 void AdminHandler::createItems(const int id, const int color,
@@ -75,12 +75,12 @@ void AdminHandler::createItems(const int id, const int color,
 {
     if (!Net::getServerFeatures()->haveItemColors())
     {
-        Net::getChatHandler()->talk(strprintf("@item %d %d",
+        chatHandler->talk(strprintf("@item %d %d",
             id, amount), GENERAL_CHANNEL);
     }
     else
     {
-        Net::getChatHandler()->talk(strprintf("@item %d %d %d",
+        chatHandler->talk(strprintf("@item %d %d %d",
             id, color, amount), GENERAL_CHANNEL);
     }
 }

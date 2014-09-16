@@ -434,7 +434,7 @@ void ChatTab::clearText()
 
 void ChatTab::handleInput(const std::string &msg)
 {
-    Net::getChatHandler()->talk(ChatWindow::doReplace(msg),
+    chatHandler->talk(ChatWindow::doReplace(msg),
         mChannelName);
 }
 

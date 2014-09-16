@@ -2511,7 +2511,7 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
 
             if (!tab)
             {
-                Net::getChatHandler()->privateMessage(nick, msg);
+                chatHandler->privateMessage(nick, msg);
                 if (localChatTab)
                 {
                     localChatTab->chatLog(std::string(getName()).append(
@@ -2522,7 +2522,7 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
             {
                 if (tab->getNoAway())
                     return;
-                Net::getChatHandler()->privateMessage(nick, msg);
+                chatHandler->privateMessage(nick, msg);
                 tab->chatLog(getName(), msg);
             }
             mAfkTime = time;

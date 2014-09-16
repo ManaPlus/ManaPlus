@@ -630,7 +630,7 @@ impHandler(testParticle)
 
 impHandler(talkRaw)
 {
-    Net::getChatHandler()->talkRaw(event.args);
+    chatHandler->talkRaw(event.args);
     return true;
 }
 
@@ -638,21 +638,21 @@ impHandler(talkPet)
 {
     // in future probably need add channel detection
     if (!localPlayer->getPets().empty())
-        Net::getChatHandler()->talkPet(event.args, GENERAL_CHANNEL);
+        chatHandler->talkPet(event.args, GENERAL_CHANNEL);
     else
-        Net::getChatHandler()->talk(event.args, GENERAL_CHANNEL);
+        chatHandler->talk(event.args, GENERAL_CHANNEL);
     return true;
 }
 
 impHandler(gm)
 {
-    Net::getChatHandler()->talk("@wgm " + event.args, GENERAL_CHANNEL);
+    chatHandler->talk("@wgm " + event.args, GENERAL_CHANNEL);
     return true;
 }
 
 impHandler(hack)
 {
-    Net::getChatHandler()->sendRaw(event.args);
+    chatHandler->sendRaw(event.args);
     return true;
 }
 
@@ -676,7 +676,7 @@ impHandler(serverIgnoreWhisper)
     if (args.empty())
         return false;
 
-    Net::getChatHandler()->ignore(args);
+    chatHandler->ignore(args);
     return true;
 }
 
@@ -686,7 +686,7 @@ impHandler(serverUnIgnoreWhisper)
     if (args.empty())
         return false;
 
-    Net::getChatHandler()->unIgnore(args);
+    chatHandler->unIgnore(args);
     return true;
 }
 

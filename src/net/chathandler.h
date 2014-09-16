@@ -76,4 +76,6 @@ class ChatHandler notfinal
 
 }  // namespace Net
 
+extern Net::ChatHandler *chatHandler;
+
 #endif  // NET_CHATHANDLER_H
