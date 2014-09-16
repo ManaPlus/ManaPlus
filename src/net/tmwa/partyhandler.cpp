@@ -379,4 +379,8 @@ void PartyHandler::changeLeader(const std::string &name A_UNUSED) const
 {
 }
 
+void PartyHandler::allowInvite(const bool allow A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -65,6 +65,8 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
         void processPartySettings(Net::MessageIn &msg);
 
+        void allowInvite(const bool allow) const override final;
+
     protected:
         void processPartyInvitationStats(Net::MessageIn &msg);
 

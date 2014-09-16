@@ -63,6 +63,8 @@ class PartyHandler final : public MessageHandler, public Ea::PartyHandler
 
         void changeLeader(const std::string &name) const override final;
 
+        void allowInvite(const bool allow) const override final;
+
     protected:
         void processPartySettings(Net::MessageIn &msg);
 

@@ -72,6 +72,8 @@ class PartyHandler notfinal
 
         virtual void changeLeader(const std::string &name) const = 0;
 
+        virtual void allowInvite(const bool allow) const = 0;
+
         virtual void clear() const = 0;
 
         virtual ChatTab *getTab() const = 0;

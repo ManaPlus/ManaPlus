@@ -456,4 +456,10 @@ void PartyHandler::changeLeader(const std::string &name) const
     outMsg.writeInt32(being->getId());
 }
 
+void PartyHandler::allowInvite(const bool allow) const
+{
+    MessageOut outMsg(CMSG_PARTY_ALLOW_INVITES);
+    outMsg.writeInt8(allow ? 1 : 0);
+}
+
 }  // namespace EAthena
