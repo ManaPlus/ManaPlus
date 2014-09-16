@@ -63,6 +63,9 @@ class InventoryHandler final : public MessageHandler,
         void insertCard(const int cardIndex,
                         const int itemIndex) const override final;
 
+        void favoriteItem(const Item *const item,
+                          const bool favorite) const override final;
+
     protected:
         void processPlayerEquipment(Net::MessageIn &msg);
 

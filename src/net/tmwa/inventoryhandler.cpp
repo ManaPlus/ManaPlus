@@ -226,6 +226,11 @@ void InventoryHandler::insertCard(const int cardIndex A_UNUSED,
 {
 }
 
+void InventoryHandler::favoriteItem(const Item *const item A_UNUSED,
+                                    const bool favorite A_UNUSED) const
+{
+}
+
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerEquipment")

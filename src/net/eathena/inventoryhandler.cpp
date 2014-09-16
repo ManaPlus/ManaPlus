@@ -258,6 +258,16 @@ void InventoryHandler::insertCard(const int cardIndex,
         "item index");
 }
 
+void InventoryHandler::favoriteItem(const Item *const item,
+                                    const bool favorite) const
+{
+    MessageOut outMsg(CMSG_PLAYER_FAVORITE_ITEM);
+    outMsg.writeInt16(static_cast<int16_t>(item->getInvIndex()
+        + INVENTORY_OFFSET),
+        "item index");
+    outMsg.writeInt8(favorite, "favorite flag");
+}
+
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryHandler::processPlayerEquipment")

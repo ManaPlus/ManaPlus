@@ -79,6 +79,9 @@ class InventoryHandler notfinal
 
         virtual void insertCard(const int cardIndex,
                                 const int itemIndex) const = 0;
+
+        virtual void favoriteItem(const Item *const item,
+                                  const bool favorite) const = 0;
 };
 
 }  // namespace Net
