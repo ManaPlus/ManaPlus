@@ -92,4 +92,9 @@ bool ServerFeatures::haveChatChannels() const
     return false;
 }
 
+bool ServerFeatures::haveServerIgnore() const
+{
+    return true;
+}
+
 }  // namespace EAthena

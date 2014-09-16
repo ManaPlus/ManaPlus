@@ -54,6 +54,8 @@ class ServerFeatures notfinal
         virtual bool haveLookSelection() const = 0;
 
         virtual bool haveChatChannels() const = 0;
+
+        virtual bool haveServerIgnore() const = 0;
 };
 
 }  // namespace Net

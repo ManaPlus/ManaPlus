@@ -238,7 +238,7 @@ void ChatHandler::processRaw(MessageOut &restrict outMsg,
 
 void ChatHandler::ignoreAll() const
 {
-    if (tmwServerVersion > 0)
+    if (!Net::getServerFeatures()->haveServerIgnore())
         return;
     MessageOut outMsg(CMSG_IGNORE_ALL);
     outMsg.writeInt8(0, "flag");
@@ -246,7 +246,7 @@ void ChatHandler::ignoreAll() const
 
 void ChatHandler::unIgnoreAll() const
 {
-    if (tmwServerVersion > 0)
+    if (!Net::getServerFeatures()->haveServerIgnore())
         return;
     MessageOut outMsg(CMSG_IGNORE_ALL);
     outMsg.writeInt8(1, "flag");

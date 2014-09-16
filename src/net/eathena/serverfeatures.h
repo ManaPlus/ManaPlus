@@ -57,6 +57,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveLookSelection() const override final;
 
         bool haveChatChannels() const override final;
+
+        bool haveServerIgnore() const override final;
 };
 
 }  // namespace EAthena

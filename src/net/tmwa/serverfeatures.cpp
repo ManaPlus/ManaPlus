@@ -94,4 +94,9 @@ bool ServerFeatures::haveChatChannels() const
     return serverVersion >= 8;
 }
 
+bool ServerFeatures::haveServerIgnore() const
+{
+    return tmwServerVersion == 0;
+}
+
 }  // namespace TmwAthena
