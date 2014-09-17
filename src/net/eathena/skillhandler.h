@@ -53,6 +53,8 @@ class SkillHandler final : public MessageHandler, public Ea::SkillHandler
 
     protected:
         void processPlayerSkills(Net::MessageIn &msg);
+
+        void processSkillCoolDown(Net::MessageIn &msg);
 };
 
 }  // namespace EAthena

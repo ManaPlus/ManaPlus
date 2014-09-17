@@ -45,6 +45,7 @@ SkillHandler::SkillHandler() :
         SMSG_PLAYER_SKILLS,
         SMSG_SKILL_FAILED,
         SMSG_PLAYER_SKILL_UP,
+        SMSG_PLAYER_SKILL_COOLDOWN,
         0
     };
     handledMessages = _messages;
@@ -65,6 +66,10 @@ void SkillHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_SKILL_FAILED:
             processSkillFailed(msg);
+            break;
+
+        case SMSG_PLAYER_SKILL_COOLDOWN:
+            processSkillCoolDown(msg);
             break;
 
         default:
@@ -140,6 +145,13 @@ void SkillHandler::processPlayerSkills(Net::MessageIn &msg)
     }
     if (updateSkill && skillDialog)
         skillDialog->playUpdateEffect(updateSkill);
+}
+
+void SkillHandler::processSkillCoolDown(Net::MessageIn &msg)
+{
+    // +++ need add cool down bar in skills window and in ministatus?
+    msg.readInt16("skill id");
+    msg.readInt32("duration");
 }
 
 }  // namespace EAthena
