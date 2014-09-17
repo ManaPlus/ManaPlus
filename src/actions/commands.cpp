@@ -411,7 +411,7 @@ impHandler(sendMail)
 impHandler(info)
 {
     if (!event.tab || !localPlayer
-        || !Net::getServerFeatures()->haveNativeGuilds())
+        || !serverFeatures->haveNativeGuilds())
     {
         return false;
     }

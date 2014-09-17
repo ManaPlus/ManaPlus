@@ -344,7 +344,7 @@ void SocialWindow::action(const ActionEvent &event)
     }
     else if (eventId == "create guild")
     {
-        if (!Net::getServerFeatures()->haveNativeGuilds())
+        if (!serverFeatures->haveNativeGuilds())
             return;
 
         std::string name = mGuildCreateDialog->getText();

@@ -334,7 +334,7 @@ void LocalPlayer::slowLogic()
         weightNoticeTime = 0;
     }
 
-    if (!Net::getServerFeatures()->havePlayerStatusUpdate()
+    if (!serverFeatures->havePlayerStatusUpdate()
         && mEnableAdvert
         && !mBlockAdvert
         && mAdvertTime < cur_time)
@@ -858,7 +858,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, const int amount,
     else
     {
         std::string str;
-        if (Net::getServerFeatures()->haveItemColors())
+        if (serverFeatures->haveItemColors())
             str = itemInfo.getName(color);
         else
             str = itemInfo.getName();
@@ -1117,7 +1117,7 @@ void LocalPlayer::moveToTarget(int dist)
         dist = settings.moveToTargetType;
         if (dist != 0)
         {
-            const bool broken = Net::getServerFeatures()
+            const bool broken = serverFeatures
                 ->haveBrokenPlayerAttackDistance();
             switch (dist)
             {
@@ -2745,7 +2745,7 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
     if (!dontChangeEquipment && target)
         changeEquipmentBeforeAttack(target);
 
-    const bool broken = Net::getServerFeatures()
+    const bool broken = serverFeatures
         ->haveBrokenPlayerAttackDistance();
 
     // probably need cache getPathLength(target)
@@ -3226,7 +3226,7 @@ bool LocalPlayer::checAttackPermissions(const Being *const target)
 
 void LocalPlayer::updateStatus() const
 {
-    if (Net::getServerFeatures()->havePlayerStatusUpdate() && mEnableAdvert)
+    if (serverFeatures->havePlayerStatusUpdate() && mEnableAdvert)
     {
         uint8_t status = 0;
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())

@@ -118,7 +118,7 @@ void ItemPopup::setItem(const Item *const item, const bool showImage)
         mLastName = ii.getName();
         mLastColor = item->getColor();
         mLastId = item->getId();
-        if (Net::getServerFeatures()->haveItemColors())
+        if (serverFeatures->haveItemColors())
         {
             mItemName->setCaption(strprintf("%s (+%u), %d",
                 ii.getName(item->getColor()).c_str(),
@@ -182,7 +182,7 @@ void ItemPopup::setItem(const ItemInfo &item, const unsigned char color,
     mLastColor = color;
     mLastId = id;
 
-    if (Net::getServerFeatures()->haveItemColors())
+    if (serverFeatures->haveItemColors())
     {
         mItemName->setCaption(strprintf("%s, %d",
             item.getName(color).c_str(), id));

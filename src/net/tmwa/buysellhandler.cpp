@@ -96,7 +96,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
 {
     msg.readInt16("len");
     unsigned int sz = 11;
-    if (Net::getServerFeatures()->haveItemColors())
+    if (serverFeatures->haveItemColors())
         sz += 1;
     const unsigned int n_items = (msg.getLength() - 4U) / sz;
     mBuyDialog = new BuyDialog(mNpcId);
@@ -109,7 +109,7 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
         msg.readUInt8("type");
         const int itemId = msg.readInt16("item id");
         uint8_t color = 1;
-        if (Net::getServerFeatures()->haveItemColors())
+        if (serverFeatures->haveItemColors())
             color = msg.readUInt8("item color");
         mBuyDialog->addItem(itemId, color, 0, value);
     }

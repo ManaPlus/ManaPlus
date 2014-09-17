@@ -267,7 +267,7 @@ void LoginHandler::processUpdateHost2(Net::MessageIn &msg) const
 
 int LoginHandler::supportedOptionalActions() const
 {
-    return Net::getServerFeatures()->haveEmailOnRegister()
+    return serverFeatures->haveEmailOnRegister()
         ? Net::RegistrationOptions::SetEmailOnRegister
         | Net::RegistrationOptions::SetGenderOnRegister
         : Net::RegistrationOptions::SetGenderOnRegister;

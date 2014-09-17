@@ -117,7 +117,7 @@ Image *Item::getImage(const int id, const unsigned char color)
 std::string Item::getName() const
 {
     const ItemInfo &info = ItemDB::get(mId);
-    if (Net::getServerFeatures()->haveItemColors())
+    if (serverFeatures->haveItemColors())
         return info.getName(mColor);
     else
         return info.getName();

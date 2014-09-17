@@ -38,11 +38,9 @@ namespace Net
 
 class SkillHandler;
 class TradeHandler;
-class ServerFeatures;
 
 SkillHandler *getSkillHandler() A_WARN_UNUSED;
 TradeHandler *getTradeHandler() A_WARN_UNUSED;
-ServerFeatures *getServerFeatures() A_WARN_UNUSED;
 
 ServerInfo::Type getNetworkType() A_WARN_UNUSED;
 

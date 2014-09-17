@@ -101,7 +101,7 @@ RegisterDialog::RegisterDialog(LoginData *const data) :
         mMaleButton = new RadioButton(this, _("Male"), "sex", true);
         // TRANSLATORS: register dialog. button.
         mFemaleButton = new RadioButton(this, _("Female"), "sex", false);
-        if (Net::getServerFeatures()->haveOtherGender())
+        if (serverFeatures->haveOtherGender())
         {
             // TRANSLATORS: register dialog. button.
             mOtherButton = new RadioButton(this, _("Other"), "sex", false);

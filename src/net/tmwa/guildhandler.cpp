@@ -85,7 +85,7 @@ GuildHandler::~GuildHandler()
 void GuildHandler::handleMessage(Net::MessageIn &msg)
 {
     BLOCK_START("GuildHandler::handleMessage")
-    if (!Net::getServerFeatures()->haveNativeGuilds())
+    if (!serverFeatures->haveNativeGuilds())
         return;
 
     switch (msg.getId())

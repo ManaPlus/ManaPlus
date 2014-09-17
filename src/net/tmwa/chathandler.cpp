@@ -127,7 +127,7 @@ void ChatHandler::talk(const std::string &restrict text,
     const std::string mes = std::string(localPlayer->getName()).append(
         " : ").append(text);
 
-    if (Net::getServerFeatures()->haveChatChannels() && channel.size() == 3)
+    if (serverFeatures->haveChatChannels() && channel.size() == 3)
     {
         MessageOut outMsg(CMSG_CHAT_MESSAGE2);
         // Added + 1 in order to let eAthena parse admin commands correctly
@@ -236,7 +236,7 @@ void ChatHandler::processRaw(MessageOut &restrict outMsg,
 
 void ChatHandler::ignoreAll() const
 {
-    if (!Net::getServerFeatures()->haveServerIgnore())
+    if (!serverFeatures->haveServerIgnore())
         return;
     MessageOut outMsg(CMSG_IGNORE_ALL);
     outMsg.writeInt8(0, "flag");
@@ -244,7 +244,7 @@ void ChatHandler::ignoreAll() const
 
 void ChatHandler::unIgnoreAll() const
 {
-    if (!Net::getServerFeatures()->haveServerIgnore())
+    if (!serverFeatures->haveServerIgnore())
         return;
     MessageOut outMsg(CMSG_IGNORE_ALL);
     outMsg.writeInt8(1, "flag");

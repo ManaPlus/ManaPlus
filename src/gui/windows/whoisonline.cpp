@@ -112,7 +112,7 @@ WhoIsOnline::WhoIsOnline() :
     mShowLevel(false),
     mUpdateOnlineList(config.getBoolValue("updateOnlineList")),
     mGroupFriends(true),
-    mServerSideList(Net::getServerFeatures()->haveOnlineList())
+    mServerSideList(serverFeatures->haveOnlineList())
 {
     mCurlError[0] = 0;
     setWindowName("WhoIsOnline");

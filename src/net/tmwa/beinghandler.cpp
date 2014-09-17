@@ -296,7 +296,7 @@ void BeingHandler::processBeingChangeLook2(Net::MessageIn &msg) const
     int id2 = 0;
 
     const int16_t id = msg.readInt16("id1");
-    if (type == 2 || Net::getServerFeatures()->haveItemColors())
+    if (type == 2 || serverFeatures->haveItemColors())
     {
         id2 = msg.readInt16("id2");
     }
@@ -569,7 +569,7 @@ void BeingHandler::processPlayerUpdate1(Net::MessageIn &msg) const
         dstBeing->updateSprite(SPRITE_WEAPON, weapon, "", 1, true);
         if (!mHideShield)
             dstBeing->updateSprite(SPRITE_SHIELD, shield);
-        if (Net::getServerFeatures()->haveItemColors())
+        if (serverFeatures->haveItemColors())
         {
             dstBeing->updateSprite(SPRITE_BOTTOMCLOTHES, headBottom,
                 "", colors[0]);
@@ -720,7 +720,7 @@ void BeingHandler::processPlayerUpdate2(Net::MessageIn &msg) const
         dstBeing->updateSprite(SPRITE_WEAPON, weapon, "", 1, true);
         if (!mHideShield)
             dstBeing->updateSprite(SPRITE_SHIELD, shield);
-        if (Net::getServerFeatures()->haveItemColors())
+        if (serverFeatures->haveItemColors())
         {
             dstBeing->updateSprite(SPRITE_BOTTOMCLOTHES, headBottom,
                 "", colors[0]);
@@ -871,7 +871,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
         dstBeing->updateSprite(SPRITE_WEAPON, weapon, "", 1, true);
         if (!mHideShield)
             dstBeing->updateSprite(SPRITE_SHIELD, shield);
-        if (Net::getServerFeatures()->haveItemColors())
+        if (serverFeatures->haveItemColors())
         {
             dstBeing->updateSprite(SPRITE_BOTTOMCLOTHES, headBottom,
                 "", colors[0]);
@@ -947,7 +947,7 @@ void BeingHandler::processPlayerMove(Net::MessageIn &msg) const
 void BeingHandler::processBeingMove3(Net::MessageIn &msg)
 {
     BLOCK_START("BeingHandler::processBeingMove3")
-    if (!Net::getServerFeatures()->haveMove3())
+    if (!serverFeatures->haveMove3())
     {
         BLOCK_END("BeingHandler::processBeingMove3")
         return;
@@ -1103,7 +1103,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
     uint16_t gloves;
     if (dstBeing->getType() == ActorType::Monster)
     {
-        if (Net::getServerFeatures()->haveServerHp())
+        if (serverFeatures->haveServerHp())
         {
             const int hp = msg.readInt32("hp");
             const int maxHP = msg.readInt32("max hp");
@@ -1131,7 +1131,7 @@ void BeingHandler::processBeingVisible(Net::MessageIn &msg)
 
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
-    if (Net::getServerFeatures()->haveMonsterAttackRange()
+    if (serverFeatures->haveMonsterAttackRange()
         && dstBeing->getType() == ActorType::Monster)
     {
         const int attackRange = static_cast<int>(
@@ -1307,7 +1307,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     uint16_t gloves;
     if (dstBeing->getType() == ActorType::Monster)
     {
-        if (Net::getServerFeatures()->haveServerHp())
+        if (serverFeatures->haveServerHp())
         {
             const int hp = msg.readInt32("hp");
             const int maxHP = msg.readInt32("max hp");
@@ -1335,7 +1335,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
 
     msg.readInt16("manner");
     dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
-    if (Net::getServerFeatures()->haveMonsterAttackRange()
+    if (serverFeatures->haveMonsterAttackRange()
         && dstBeing->getType() == ActorType::Monster)
     {
         const int attackRange = static_cast<int>(
@@ -1377,7 +1377,7 @@ void BeingHandler::processBeingMove(Net::MessageIn &msg)
     {
         dstBeing->setAction(BeingAction::STAND, 0);
         dstBeing->setTileCoords(srcX, srcY);
-        if (!Net::getServerFeatures()->haveMove3())
+        if (!serverFeatures->haveMove3())
             dstBeing->setDestination(dstX, dstY);
     }
 

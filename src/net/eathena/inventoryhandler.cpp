@@ -378,7 +378,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             if (item && item->getId() == itemId)
                 amount += item->getQuantity();
 
-            if (!Net::getServerFeatures()->haveItemColors() && identified > 1)
+            if (!serverFeatures->haveItemColors() && identified > 1)
                 identified = 1;
 
             inventory->setItem(index, itemId, amount, refine,

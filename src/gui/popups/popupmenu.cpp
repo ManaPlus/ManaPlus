@@ -793,7 +793,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             }
             addPlayerMisc();
             addBuySellDefault();
-            if (Net::getServerFeatures()->havePartyNickInvite())
+            if (serverFeatures->havePartyNickInvite())
                 addParty(wTab->getNick());
             mBrowserBox->addRow("##3---");
         }
@@ -1087,7 +1087,7 @@ void PopupMenu::handleLink(const std::string &link,
         {
             if (mItem)
             {
-                if (Net::getServerFeatures()->haveItemColors())
+                if (serverFeatures->haveItemColors())
                 {
                     chatWindow->addItemText(mItem->getInfo().getName(
                         mItem->getColor()));
@@ -1104,7 +1104,7 @@ void PopupMenu::handleLink(const std::string &link,
 
                 if (item)
                 {
-                    if (Net::getServerFeatures()->haveItemColors())
+                    if (serverFeatures->haveItemColors())
                     {
                         chatWindow->addItemText(item->getInfo().getName(
                             item->getColor()));

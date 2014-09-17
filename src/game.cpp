@@ -239,7 +239,7 @@ static void createGuiWindows()
     if (config.getBoolValue("showChatHistory"))
         localChatTab->loadFromLogFile("#General");
 
-    if (Net::getServerFeatures()->haveLangTab()
+    if (serverFeatures->haveLangTab()
         && serverConfig.getValue("enableLangTab", 1))
     {
         const std::string lang = getLangShort();

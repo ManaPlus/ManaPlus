@@ -2456,7 +2456,7 @@ void Being::drawHpBar(Graphics *const graphics, const int maxHP, const int hp,
 
     const int dx = static_cast<const int>(static_cast<float>(width) / p);
 
-    if (!Net::getServerFeatures()->haveServerHp())
+    if (!serverFeatures->haveServerHp())
     {   // old servers
         if ((!damage && (this != localPlayer || hp == maxHP))
             || (!hp && maxHP == damage))

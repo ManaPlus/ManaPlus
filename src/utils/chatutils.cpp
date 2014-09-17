@@ -66,7 +66,7 @@ void outStringNormal(ChatTab *const tab,
             {
                 if (guild->getServerGuild())
                 {
-                    if (!Net::getServerFeatures()->haveNativeGuilds())
+                    if (!serverFeatures->haveNativeGuilds())
                         return;
                     guildHandler->chat(guild->getId(), str);
                 }

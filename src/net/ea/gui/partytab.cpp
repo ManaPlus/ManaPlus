@@ -197,7 +197,7 @@ bool PartyTab::handleCommand(const std::string &restrict type,
         }
     }
     else if (type == "setleader"
-             && Net::getServerFeatures()->haveChangePartyLeader())
+             && serverFeatures->haveChangePartyLeader())
     {
         partyHandler->changeLeader(args);
     }
@@ -228,7 +228,7 @@ void PartyTab::getAutoCompleteCommands(StringVect &names) const
     names.push_back("/kick ");
     names.push_back("/item");
     names.push_back("/exp");
-    if (Net::getServerFeatures()->haveChangePartyLeader())
+    if (serverFeatures->haveChangePartyLeader())
         names.push_back("/setleader ");
 }
 

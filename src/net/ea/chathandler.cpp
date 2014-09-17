@@ -302,7 +302,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg) const
     std::string sender_name = ((pos == std::string::npos)
         ? "" : chatMsg.substr(0, pos));
 
-    if (Net::getServerFeatures()->haveIncompleteChatMessages())
+    if (serverFeatures->haveIncompleteChatMessages())
     {
         // work around for "new" tmw server
         sender_name = being->getName();

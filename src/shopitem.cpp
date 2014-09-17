@@ -42,7 +42,7 @@ ShopItem::ShopItem(const int inventoryIndex, const int id,
     mPrice(price),
     mShowQuantity(true)
 {
-    if (Net::getServerFeatures()->haveItemColors())
+    if (serverFeatures->haveItemColors())
     {
         mDisplayName = std::string(getInfo().getName(color)).append(" (")
             .append(Units::formatCurrency(mPrice)).append(") ");
@@ -66,7 +66,7 @@ ShopItem::ShopItem(const int id, const unsigned char color, const int price) :
     mPrice(price),
     mShowQuantity(false)
 {
-    if (Net::getServerFeatures()->haveItemColors())
+    if (serverFeatures->haveItemColors())
     {
         mDisplayName = std::string(getInfo().getName(color)).append(" (")
             .append(Units::formatCurrency(mPrice)).append(")");
@@ -94,7 +94,7 @@ void ShopItem::update()
 {
     if (mShowQuantity)
     {
-        if (Net::getServerFeatures()->haveItemColors())
+        if (serverFeatures->haveItemColors())
         {
             mDisplayName = std::string(getInfo().getName(mColor)).append(" (")
                 .append(Units::formatCurrency(mPrice)).append(") ");

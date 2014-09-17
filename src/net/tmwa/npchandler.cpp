@@ -180,7 +180,7 @@ void NpcHandler::buyItem(const int beingId A_UNUSED, const int itemId,
                          const unsigned char color, const int amount) const
 {
     MessageOut outMsg(CMSG_NPC_BUY_REQUEST);
-    if (Net::getServerFeatures()->haveItemColors())
+    if (serverFeatures->haveItemColors())
     {
         outMsg.writeInt16(10);  // One item (length of packet)
         outMsg.writeInt16(static_cast<int16_t>(amount));

@@ -72,4 +72,6 @@ class ServerFeatures notfinal
 
 }  // namespace Net
 
+extern Net::ServerFeatures *serverFeatures;
+
 #endif  // NET_SERVERFEATURES_H

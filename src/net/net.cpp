@@ -58,6 +58,7 @@ namespace Net
     class PetHandler;
     class PlayerHandler;
     class QuestHandler;
+    class ServerFeatures;
 }
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -92,11 +93,6 @@ Net::SkillHandler *Net::getSkillHandler()
 Net::TradeHandler *Net::getTradeHandler()
 {
     return tradeHandler;
-}
-
-Net::ServerFeatures *Net::getServerFeatures()
-{
-    return serverFeatures;
 }
 
 

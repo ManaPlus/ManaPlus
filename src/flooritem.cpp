@@ -103,7 +103,7 @@ const ItemInfo &FloorItem::getInfo() const
 std::string FloorItem::getName() const
 {
     const ItemInfo &info = ItemDB::get(mItemId);
-    if (Net::getServerFeatures()->haveItemColors())
+    if (serverFeatures->haveItemColors())
         return info.getName(mColor);
     else
         return info.getName();
