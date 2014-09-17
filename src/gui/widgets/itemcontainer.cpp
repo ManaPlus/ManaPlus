@@ -497,7 +497,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             return;
         if (index == mSelectedIndex || mSelectedIndex == -1)
             return;
-        Net::getInventoryHandler()->moveItem(mSelectedIndex, index);
+        inventoryHandler->moveItem(mSelectedIndex, index);
         selectNone();
     }
     else if (mInventory)
@@ -570,7 +570,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             {
                 if (srcContainer != -1)
                 {   // inventory <--> storage
-                    Net::getInventoryHandler()->moveItem2(srcContainer,
+                    inventoryHandler->moveItem2(srcContainer,
                         item->getInvIndex(), item->getQuantity(),
                         dstContainer);
                 }

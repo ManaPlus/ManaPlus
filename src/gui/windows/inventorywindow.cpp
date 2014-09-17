@@ -369,7 +369,7 @@ void InventoryWindow::action(const ActionEvent &event)
     {
         if (isStorageActive())
         {
-            Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
+            inventoryHandler->moveItem2(Inventory::INVENTORY,
                     item->getInvIndex(), item->getQuantity(),
                     Inventory::STORAGE);
         }
@@ -474,7 +474,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
                 }
                 else
                 {
-                    Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
+                    inventoryHandler->moveItem2(Inventory::INVENTORY,
                         item->getInvIndex(), item->getQuantity(),
                         Inventory::STORAGE);
                 }
@@ -488,7 +488,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
                 }
                 else
                 {
-                    Net::getInventoryHandler()->moveItem2(Inventory::STORAGE,
+                    inventoryHandler->moveItem2(Inventory::STORAGE,
                         item->getInvIndex(), item->getQuantity(),
                         Inventory::INVENTORY);
                 }
@@ -588,7 +588,7 @@ void InventoryWindow::valueChanged(const SelectionEvent &event A_UNUSED)
 
     Item *const item = mItems->getSelectedItem();
 
-    if (mSplit && item && Net::getInventoryHandler()->
+    if (mSplit && item && inventoryHandler->
         canSplit(mItems->getSelectedItem()))
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::ItemSplit,
@@ -642,7 +642,7 @@ void InventoryWindow::updateButtons(const Item *item)
 
     if (mSplitButton)
     {
-        if (Net::getInventoryHandler()->canSplit(item))
+        if (inventoryHandler->canSplit(item))
             mSplitButton->setEnabled(true);
         else
             mSplitButton->setEnabled(false);
@@ -663,10 +663,10 @@ void InventoryWindow::close()
     }
     else
     {
-        if (Net::getInventoryHandler())
+        if (inventoryHandler)
         {
-            Net::getInventoryHandler()->closeStorage(Inventory::STORAGE);
-            Net::getInventoryHandler()->forgotStorage();
+            inventoryHandler->closeStorage(Inventory::STORAGE);
+            inventoryHandler->forgotStorage();
         }
         scheduleDelete();
     }

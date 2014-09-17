@@ -55,8 +55,8 @@ void DialogsManager::closeDialogs()
     BuySellDialog::closeAll();
     NpcDialog::closeAll();
     SellDialog::closeAll();
-    if (Net::getInventoryHandler())
-        Net::getInventoryHandler()->closeStorage();
+    if (inventoryHandler)
+        inventoryHandler->closeStorage();
     if (deathNotice)
     {
         deathNotice->scheduleDelete();

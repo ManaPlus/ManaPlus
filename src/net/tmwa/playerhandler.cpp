@@ -186,7 +186,7 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
     MessageOut outMsg(CMSG_ITEM_PICKUP);
     outMsg.writeInt32(floorItem->getId());
     TmwAthena::InventoryHandler *const handler =
-        static_cast<TmwAthena::InventoryHandler*>(Net::getInventoryHandler());
+        static_cast<TmwAthena::InventoryHandler*>(inventoryHandler);
     if (handler)
         handler->pushPickup(floorItem->getId());
 }

@@ -67,14 +67,14 @@ void ItemAmountWindow::finish(const Item *const item,
             PlayerInfo::dropItem(item, amount, true);
             break;
         case ItemSplit:
-            Net::getInventoryHandler()->splitItem(item, amount);
+            inventoryHandler->splitItem(item, amount);
             break;
         case StoreAdd:
-            Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
+            inventoryHandler->moveItem2(Inventory::INVENTORY,
                 item->getInvIndex(), amount, Inventory::STORAGE);
             break;
         case StoreRemove:
-            Net::getInventoryHandler()->moveItem2(Inventory::STORAGE,
+            inventoryHandler->moveItem2(Inventory::STORAGE,
                 item->getInvIndex(), amount, Inventory::INVENTORY);
             break;
         case ShopBuyAdd:

@@ -1191,25 +1191,25 @@ void PopupMenu::handleLink(const std::string &link,
         int cnt = 10;
         if (cnt > mItem->getQuantity())
             cnt = mItem->getQuantity();
-        Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
+        inventoryHandler->moveItem2(Inventory::INVENTORY,
             mItem->getInvIndex(), cnt,
             Inventory::STORAGE);
     }
     else if (link == "store half" && mItem)
     {
-        Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
+        inventoryHandler->moveItem2(Inventory::INVENTORY,
             mItem->getInvIndex(), mItem->getQuantity() / 2,
             Inventory::STORAGE);
     }
     else if (link == "store all-1" && mItem)
     {
-        Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
+        inventoryHandler->moveItem2(Inventory::INVENTORY,
             mItem->getInvIndex(), mItem->getQuantity() - 1,
             Inventory::STORAGE);
     }
     else if (link == "store all" && mItem)
     {
-        Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
+        inventoryHandler->moveItem2(Inventory::INVENTORY,
             mItem->getInvIndex(), mItem->getQuantity(),
             Inventory::STORAGE);
     }
@@ -1259,25 +1259,25 @@ void PopupMenu::handleLink(const std::string &link,
         int cnt = 10;
         if (cnt > mItem->getQuantity())
             cnt = mItem->getQuantity();
-        Net::getInventoryHandler()->moveItem2(Inventory::STORAGE,
+        inventoryHandler->moveItem2(Inventory::STORAGE,
             mItem->getInvIndex(), cnt,
             Inventory::INVENTORY);
     }
     else if (link == "retrieve half" && mItem)
     {
-        Net::getInventoryHandler()->moveItem2(Inventory::STORAGE,
+        inventoryHandler->moveItem2(Inventory::STORAGE,
             mItem->getInvIndex(), mItem->getQuantity() / 2,
             Inventory::INVENTORY);
     }
     else if (link == "retrieve all-1" && mItem)
     {
-        Net::getInventoryHandler()->moveItem2(Inventory::STORAGE,
+        inventoryHandler->moveItem2(Inventory::STORAGE,
             mItem->getInvIndex(), mItem->getQuantity() - 1,
             Inventory::INVENTORY);
     }
     else if (link == "retrieve all" && mItem)
     {
-        Net::getInventoryHandler()->moveItem2(Inventory::STORAGE,
+        inventoryHandler->moveItem2(Inventory::STORAGE,
             mItem->getInvIndex(), mItem->getQuantity(),
             Inventory::INVENTORY);
     }
@@ -2856,7 +2856,7 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
         }
     }
 
-    if (Net::getInventoryHandler()->canSplit(item))
+    if (inventoryHandler->canSplit(item))
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: split items

@@ -2925,7 +2925,7 @@ void LocalPlayer::imitateOutfit(const Being *const player,
         else
         {
 //            logger->log("have unequip %d", sprite);
-            const int equipmentSlot = Net::getInventoryHandler()
+            const int equipmentSlot = inventoryHandler
                 ->convertFromServerSlot(sprite);
 //            logger->log("equipmentSlot: " + toString(equipmentSlot));
             if (equipmentSlot == ItemSlot::PROJECTILE_SLOT)

@@ -50,6 +50,7 @@ namespace Net
     class GameHandler;
     class GeneralHandler;
     class GuildHandler;
+    class InventoryHandler;
 }
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -74,11 +75,6 @@ Net::AuctionHandler *auctionHandler = nullptr;
 Net::CashShopHandler *cashShopHandler = nullptr;
 Net::FamilyHandler *familyHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
-
-Net::InventoryHandler *Net::getInventoryHandler()
-{
-    return inventoryHandler;
-}
 
 Net::LoginHandler *Net::getLoginHandler()
 {

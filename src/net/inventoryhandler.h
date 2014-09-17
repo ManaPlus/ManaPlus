@@ -86,4 +86,6 @@ class InventoryHandler notfinal
 
 }  // namespace Net
 
+extern Net::InventoryHandler *inventoryHandler;
+
 #endif  // NET_INVENTORYHANDLER_H

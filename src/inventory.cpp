@@ -57,7 +57,7 @@ Inventory::Inventory(const int type, const int size1) :
     mInventoryListeners(),
     mType(type),
     mSize(size1 == -1 ? static_cast<unsigned>(
-          Net::getInventoryHandler()->getSize(type))
+          inventoryHandler->getSize(type))
           : static_cast<unsigned>(size1)),
     mItems(new Item*[mSize]),
     mUsed(0)

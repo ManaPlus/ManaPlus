@@ -645,8 +645,8 @@ void Client::gameClear()
     delete2(popupManager);
     delete2(gui);
 
-    if (Net::getInventoryHandler())
-        Net::getInventoryHandler()->clear();
+    if (inventoryHandler)
+        inventoryHandler->clear();
 
     if (logger)
         logger->log1("Quitting3");

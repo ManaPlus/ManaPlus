@@ -188,7 +188,7 @@ Inventory *getInventory()
 
 Inventory *getStorageInventory()
 {
-    return Net::getInventoryHandler()->getStorage();
+    return inventoryHandler->getStorage();
 }
 
 void clearInventory()
@@ -233,21 +233,21 @@ void equipItem(const Item *const item, const bool sfx)
 {
     if (sfx)
         ItemSoundManager::playSfx(item, ItemSoundEvent::EQUIP);
-    Net::getInventoryHandler()->equipItem(item);
+    inventoryHandler->equipItem(item);
 }
 
 void unequipItem(const Item *const item, const bool sfx)
 {
     if (sfx)
         ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
-    Net::getInventoryHandler()->unequipItem(item);
+    inventoryHandler->unequipItem(item);
 }
 
 void useItem(const Item *const item, const bool sfx)
 {
     if (sfx)
         ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
-    Net::getInventoryHandler()->useItem(item);
+    inventoryHandler->useItem(item);
 }
 
 void useEquipItem(const Item *const item, const bool sfx)
@@ -260,20 +260,20 @@ void useEquipItem(const Item *const item, const bool sfx)
             {
                 if (sfx)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
-                Net::getInventoryHandler()->unequipItem(item);
+                inventoryHandler->unequipItem(item);
             }
             else
             {
                 if (sfx)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::EQUIP);
-                Net::getInventoryHandler()->equipItem(item);
+                inventoryHandler->equipItem(item);
             }
         }
         else
         {
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
             {
-                Net::getInventoryHandler()->useItem(item);
+                inventoryHandler->useItem(item);
                 if (sfx)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
             }
@@ -291,13 +291,13 @@ void useEquipItem2(const Item *const item, const bool sfx)
             {
                 if (sfx)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
-                Net::getInventoryHandler()->unequipItem(item);
+                inventoryHandler->unequipItem(item);
             }
             else
             {
                 if (sfx)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::EQUIP);
-                Net::getInventoryHandler()->equipItem(item);
+                inventoryHandler->equipItem(item);
             }
         }
         else
@@ -306,7 +306,7 @@ void useEquipItem2(const Item *const item, const bool sfx)
             {
                 if (sfx)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
-                Net::getInventoryHandler()->useItem(item);
+                inventoryHandler->useItem(item);
             }
         }
     }
@@ -318,7 +318,7 @@ void dropItem(const Item *const item, const int amount, const bool sfx)
     {
         if (sfx)
             ItemSoundManager::playSfx(item, ItemSoundEvent::DROP);
-        Net::getInventoryHandler()->dropItem(item, amount);
+        inventoryHandler->dropItem(item, amount);
     }
 }
 
