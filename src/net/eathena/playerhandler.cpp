@@ -60,6 +60,7 @@ PlayerHandler::PlayerHandler() :
         SMSG_PLAYER_SHOW_EQUIP,
         SMSG_PLAYER_GET_EXP,
         SMSG_PVP_INFO,
+        SMSG_PLAYER_HEAL,
         0
     };
     handledMessages = _messages;
@@ -121,6 +122,10 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PVP_INFO:
             processPvpInfo(msg);
+            break;
+
+        case SMSG_PLAYER_HEAL:
+            processPlayerHeal(msg);
             break;
 
         default:
@@ -422,6 +427,15 @@ void PlayerHandler::setViewEquipment(const bool allow) const
     MessageOut outMsg(CMSG_PLAYER_SET_EQUIPMENT_VISIBLE);
     outMsg.writeInt32(0, "unused");
     outMsg.writeInt32(allow ? 1 : 0);
+}
+
+void PlayerHandler::processPlayerHeal(Net::MessageIn &msg)
+{
+    // +++ probably need show effect or adjust hp/sp?
+    // 5 - hp
+    // 7 - sp
+    msg.readInt16("var id");
+    msg.readInt16("value");
 }
 
 }  // namespace EAthena

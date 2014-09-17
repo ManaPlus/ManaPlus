@@ -79,6 +79,7 @@
 #define SMSG_PLAYER_ARROW_MESSAGE    0x013b
 #define SMSG_PLAYER_SKILLS           0x010f
 #define SMSG_PLAYER_SKILL_UP         0x010e
+#define SMSG_PLAYER_HEAL             0x013d
 #define SMSG_SKILL_FAILED            0x0110
 #define SMSG_SKILL_DAMAGE            0x01de
 #define SMSG_SKILL_AUTO_CAST         0x0147

@@ -79,6 +79,8 @@ class PlayerHandler final : public MessageHandler, public Ea::PlayerHandler
 
         void processPvpInfo(Net::MessageIn &msg);
 
+        void processPlayerHeal(Net::MessageIn &msg);
+
         static void processWalkResponse(Net::MessageIn &msg);
 };
 
