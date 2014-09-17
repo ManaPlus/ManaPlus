@@ -599,7 +599,7 @@ impHandler0(openTrade)
     const Being *const being = localPlayer->getTarget();
     if (being && being->getType() == ActorType::Player)
     {
-        Net::getTradeHandler()->request(being);
+        tradeHandler->request(being);
         tradePartnerName = being->getName();
         if (tradeWindow)
             tradeWindow->clear();
@@ -688,7 +688,7 @@ impHandler(trade)
         being = localPlayer->getTarget();
     if (being)
     {
-        Net::getTradeHandler()->request(being);
+        tradeHandler->request(being);
         tradePartnerName = being->getName();
         if (tradeWindow)
             tradeWindow->clear();

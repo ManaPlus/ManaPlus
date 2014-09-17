@@ -310,7 +310,7 @@ void ShopWindow::startTrade()
         tradeWindow->addAutoItem(mTradeNick, mTradeItem,
                                  mTradeItem->getQuantity());
     }
-    Net::getTradeHandler()->request(being);
+    tradeHandler->request(being);
     tradePartnerName = mTradeNick;
     mTradeNick.clear();
 }

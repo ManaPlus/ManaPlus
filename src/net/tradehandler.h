@@ -68,4 +68,6 @@ class TradeHandler notfinal
 
 }  // namespace Net
 
+extern Net::TradeHandler *tradeHandler;
+
 #endif  // NET_TRADEHANDLER_H

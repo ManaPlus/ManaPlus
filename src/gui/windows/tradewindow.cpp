@@ -273,7 +273,7 @@ void TradeWindow::tradeItem(const Item *const item, const int quantity,
     if (check && !checkItem(item))
         return;
 
-    Net::getTradeHandler()->addItem(item, quantity);
+    tradeHandler->addItem(item, quantity);
 }
 
 void TradeWindow::valueChanged(const SelectionEvent &event)
@@ -365,7 +365,7 @@ void TradeWindow::action(const ActionEvent &event)
         setVisible(false);
         reset();
         PlayerInfo::setTrading(false);
-        Net::getTradeHandler()->cancel();
+        tradeHandler->cancel();
     }
     else if (eventId == "ok")
     {
@@ -374,13 +374,13 @@ void TradeWindow::action(const ActionEvent &event)
         mMoneyChangeButton->setEnabled(false);
         receivedOk(true);
         setStatus(PROPOSING);
-        Net::getTradeHandler()->confirm();
+        tradeHandler->confirm();
     }
     else if (eventId == "trade")
     {
         receivedOk(true);
         setStatus(ACCEPTED);
-        Net::getTradeHandler()->finish();
+        tradeHandler->finish();
     }
     else if (eventId == "money")
     {
@@ -399,14 +399,14 @@ void TradeWindow::action(const ActionEvent &event)
             }
             v = curMoney;
         }
-        Net::getTradeHandler()->setMoney(v);
+        tradeHandler->setMoney(v);
         mMoneyField->setText(strprintf("%d", v));
     }
 }
 
 void TradeWindow::close()
 {
-    Net::getTradeHandler()->cancel();
+    tradeHandler->cancel();
     clear();
 }
 
@@ -457,7 +457,7 @@ void TradeWindow::initTrade(const std::string &nick)
         }
         if (mAutoMoney)
         {
-            Net::getTradeHandler()->setMoney(mAutoMoney);
+            tradeHandler->setMoney(mAutoMoney);
             mMoneyField->setText(strprintf("%d", mAutoMoney));
         }
     }

@@ -36,10 +36,6 @@
 namespace Net
 {
 
-class TradeHandler;
-
-TradeHandler *getTradeHandler() A_WARN_UNUSED;
-
 ServerInfo::Type getNetworkType() A_WARN_UNUSED;
 
 /**

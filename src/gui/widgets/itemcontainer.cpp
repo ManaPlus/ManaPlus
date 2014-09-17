@@ -579,8 +579,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                     if (!checkProtection || !PlayerInfo::isItemProtected(
                         item->getId()))
                     {
-                        Net::getTradeHandler()->addItem(item,
-                            item->getQuantity());
+                        tradeHandler->addItem(item, item->getQuantity());
                     }
                 }
             }

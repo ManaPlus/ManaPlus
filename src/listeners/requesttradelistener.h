@@ -50,7 +50,7 @@ struct RequestTradeListener final : public ActionListener
         const std::string &eventId = event.getId();
         if (eventId == "ignore")
             player_relations.ignoreTrade(tradePartnerName);
-        Net::getTradeHandler()->respond(eventId == "yes");
+        tradeHandler->respond(eventId == "yes");
     }
 };
 

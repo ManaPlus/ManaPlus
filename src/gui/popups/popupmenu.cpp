@@ -908,7 +908,7 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "trade" && being &&
              being->getType() == ActorType::Player)
     {
-        Net::getTradeHandler()->request(being);
+        tradeHandler->request(being);
         tradePartnerName = being->getName();
         if (tradeWindow)
             tradeWindow->clear();
