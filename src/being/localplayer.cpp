@@ -1963,7 +1963,7 @@ void LocalPlayer::crazyMoveA()
         if (mMoveProgram[mCrazyMoveState - 1] == 'e')
             emote(emoteId);
         else if (PacketLimiter::limitPackets(PACKET_CHAT))
-            Net::getPetHandler()->emote(emoteId, 0);
+            petHandler->emote(emoteId, 0);
 
         mCrazyMoveState ++;
     }

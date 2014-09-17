@@ -179,7 +179,7 @@ impHandler(petEmote)
     {
         const int emotion = event.action - InputAction::PET_EMOTE_1;
         if (emoteShortcut)
-            Net::getPetHandler()->emote(emoteShortcut->getEmote(emotion), 0);
+            petHandler->emote(emoteShortcut->getEmote(emotion), 0);
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
@@ -1170,7 +1170,7 @@ impHandler(catchPet)
     else
         localPlayer->setTarget(target);
     if (target)
-        Net::getPetHandler()->catchPet(target);
+        petHandler->catchPet(target);
     return true;
 }
 

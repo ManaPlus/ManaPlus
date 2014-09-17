@@ -36,13 +36,11 @@
 namespace Net
 {
 
-class PetHandler;
 class PlayerHandler;
 class SkillHandler;
 class TradeHandler;
 class ServerFeatures;
 
-PetHandler *getPetHandler() A_WARN_UNUSED;
 PlayerHandler *getPlayerHandler() A_WARN_UNUSED;
 SkillHandler *getSkillHandler() A_WARN_UNUSED;
 TradeHandler *getTradeHandler() A_WARN_UNUSED;

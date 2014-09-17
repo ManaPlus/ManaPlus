@@ -52,4 +52,6 @@ class PetHandler notfinal
 
 }  // namespace Net
 
+extern Net::PetHandler *petHandler;
+
 #endif  // NET_PETHANDLER_H
