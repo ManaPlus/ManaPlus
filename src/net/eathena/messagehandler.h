@@ -50,7 +50,7 @@ class MessageHandler notfinal : public Net::MessageHandler
         Network *mNetwork;
 };
 
-typedef const std::auto_ptr<MessageHandler> MessageHandlerPtr;
+typedef MessageHandler* MessageHandlerPtr;
 
 }  // namespace EAthena
 

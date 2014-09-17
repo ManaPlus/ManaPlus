@@ -201,28 +201,28 @@ void GeneralHandler::load()
     if (!mNetwork)
         return;
 
-    mNetwork->registerHandler(mAdminHandler.get());
-    mNetwork->registerHandler(mBeingHandler.get());
-    mNetwork->registerHandler(mBuySellHandler.get());
-    mNetwork->registerHandler(mChatHandler.get());
-    mNetwork->registerHandler(mCharServerHandler.get());
-    mNetwork->registerHandler(mGameHandler.get());
-    mNetwork->registerHandler(mGuildHandler.get());
-    mNetwork->registerHandler(mInventoryHandler.get());
-    mNetwork->registerHandler(mItemHandler.get());
-    mNetwork->registerHandler(mLoginHandler.get());
-    mNetwork->registerHandler(mNpcHandler.get());
-    mNetwork->registerHandler(mPlayerHandler.get());
-    mNetwork->registerHandler(mSkillHandler.get());
-    mNetwork->registerHandler(mTradeHandler.get());
-    mNetwork->registerHandler(mPartyHandler.get());
-    mNetwork->registerHandler(mPetHandler.get());
-    mNetwork->registerHandler(mQuestHandler.get());
-    mNetwork->registerHandler(mMailHandler.get());
-    mNetwork->registerHandler(mAuctionHandler.get());
-    mNetwork->registerHandler(mCashShopHandler.get());
-    mNetwork->registerHandler(mFamilyHandler.get());
-    mNetwork->registerHandler(mBankHandler.get());
+    mNetwork->registerHandler(mAdminHandler);
+    mNetwork->registerHandler(mBeingHandler);
+    mNetwork->registerHandler(mBuySellHandler);
+    mNetwork->registerHandler(mChatHandler);
+    mNetwork->registerHandler(mCharServerHandler);
+    mNetwork->registerHandler(mGameHandler);
+    mNetwork->registerHandler(mGuildHandler);
+    mNetwork->registerHandler(mInventoryHandler);
+    mNetwork->registerHandler(mItemHandler);
+    mNetwork->registerHandler(mLoginHandler);
+    mNetwork->registerHandler(mNpcHandler);
+    mNetwork->registerHandler(mPlayerHandler);
+    mNetwork->registerHandler(mSkillHandler);
+    mNetwork->registerHandler(mTradeHandler);
+    mNetwork->registerHandler(mPartyHandler);
+    mNetwork->registerHandler(mPetHandler);
+    mNetwork->registerHandler(mQuestHandler);
+    mNetwork->registerHandler(mMailHandler);
+    mNetwork->registerHandler(mAuctionHandler);
+    mNetwork->registerHandler(mCashShopHandler);
+    mNetwork->registerHandler(mFamilyHandler);
+    mNetwork->registerHandler(mBankHandler);
 }
 
 void GeneralHandler::reload()
@@ -230,17 +230,17 @@ void GeneralHandler::reload()
     if (mNetwork)
         mNetwork->disconnect();
 
-    static_cast<LoginHandler*>(mLoginHandler.get())->clearWorlds();
+    static_cast<LoginHandler*>(mLoginHandler)->clearWorlds();
     CharServerHandler *const charHandler = static_cast<CharServerHandler*>(
-        mCharServerHandler.get());
+        mCharServerHandler);
     charHandler->setCharCreateDialog(nullptr);
     charHandler->setCharSelectDialog(nullptr);
-    static_cast<PartyHandler*>(mPartyHandler.get())->reload();
+    static_cast<PartyHandler*>(mPartyHandler)->reload();
 }
 
 void GeneralHandler::reloadPartially() const
 {
-    static_cast<PartyHandler*>(mPartyHandler.get())->reload();
+    static_cast<PartyHandler*>(mPartyHandler)->reload();
 }
 
 void GeneralHandler::unload()
