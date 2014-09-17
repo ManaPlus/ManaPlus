@@ -1462,7 +1462,7 @@ void Being::logic()
     if (frameCount < 10)
         frameCount = 10;
 
-    if (!isAlive() && mSpeed && Net::getGameHandler()->removeDeadBeings()
+    if (!isAlive() && mSpeed && gameHandler->removeDeadBeings()
         && static_cast<int> ((static_cast<float>(get_elapsed_time(mActionTime))
         / mSpeed)) >= frameCount)
     {

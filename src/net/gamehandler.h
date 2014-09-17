@@ -65,4 +65,6 @@ class GameHandler notfinal
 
 }  // namespace Net
 
+extern Net::GameHandler *gameHandler;
+
 #endif  // NET_GAMEHANDLER_H

@@ -36,8 +36,6 @@
 namespace Net
 {
 
-class FamilyHandler;
-class GameHandler;
 class GeneralHandler;
 class GuildHandler;
 class InventoryHandler;
@@ -51,7 +49,6 @@ class SkillHandler;
 class TradeHandler;
 class ServerFeatures;
 
-GameHandler *getGameHandler() A_WARN_UNUSED;
 GeneralHandler *getGeneralHandler() A_WARN_UNUSED;
 GuildHandler *getGuildHandler() A_WARN_UNUSED;
 InventoryHandler *getInventoryHandler() A_WARN_UNUSED;
@@ -64,7 +61,6 @@ SkillHandler *getSkillHandler() A_WARN_UNUSED;
 TradeHandler *getTradeHandler() A_WARN_UNUSED;
 ServerFeatures *getServerFeatures() A_WARN_UNUSED;
 MailHandler *getMailHandler() A_WARN_UNUSED;
-FamilyHandler *getFamilyHandler() A_WARN_UNUSED;
 
 ServerInfo::Type getNetworkType() A_WARN_UNUSED;
 

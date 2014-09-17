@@ -150,7 +150,7 @@ static void initEngines()
     particleEngine->setupEngine();
     BeingInfo::init();
 
-    Net::getGameHandler()->initEngines();
+    gameHandler->initEngines();
 
     keyboard.update();
     if (joystick)
@@ -402,7 +402,7 @@ Game::Game() :
     if (actorManager)
         actorManager->setPlayer(localPlayer);
 
-    Net::getGameHandler()->ping(tick_time);
+    gameHandler->ping(tick_time);
 
     if (setupWindow)
         setupWindow->setInGame(true);
@@ -619,7 +619,7 @@ void Game::slowLogic()
     PacketCounters::update();
 
     // Handle network stuff
-    if (!Net::getGameHandler()->isConnected())
+    if (!gameHandler->isConnected())
     {
         if (client->getState() == STATE_CHANGE_MAP)
             return;  // Not a problem here
@@ -655,11 +655,11 @@ void Game::slowLogic()
     }
     else
     {
-        if (Net::getGameHandler()->mustPing()
+        if (gameHandler->mustPing()
             && get_elapsed_time1(mPing) > 3000)
         {
             mPing = tick_time;
-            Net::getGameHandler()->ping(tick_time);
+            gameHandler->ping(tick_time);
         }
 
         if (mAdjustPerfomance)
@@ -1055,7 +1055,7 @@ void Game::changeMap(const std::string &mapPath)
     if (localPlayer)
         localPlayer->recreateItemParticles();
 
-    Net::getGameHandler()->mapLoadedEvent();
+    gameHandler->mapLoadedEvent();
     BLOCK_END("Game::changeMap")
 }
 

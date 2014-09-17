@@ -43,4 +43,6 @@ class FamilyHandler notfinal
 
 }  // namespace Net
 
+extern Net::FamilyHandler *familyHandler;
+
 #endif  // NET_FAMILYHANDLER_H

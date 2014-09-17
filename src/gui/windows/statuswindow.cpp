@@ -128,7 +128,7 @@ StatusWindow::StatusWindow() :
     mXpBar->setColor(getThemeColor(Theme::XP_BAR),
         getThemeColor(Theme::XP_BAR_OUTLINE));
 
-    const bool magicBar = Net::getGameHandler()->canUseMagicBar();
+    const bool magicBar = gameHandler->canUseMagicBar();
     const int job = Net::getPlayerHandler()->getJobLocation()
               && serverConfig.getValueBool("showJob", true);
 

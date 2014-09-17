@@ -757,7 +757,7 @@ impHandler0(cacheInfo)
 
 impHandler0(disconnect)
 {
-    Net::getGameHandler()->disconnect2();
+    gameHandler->disconnect2();
     return true;
 }
 

@@ -816,7 +816,7 @@ int Client::gameExec()
 
         BLOCK_START("Client::gameExec 6")
         if (mState == STATE_CONNECT_GAME &&
-            Net::getGameHandler()->isConnected())
+            gameHandler->isConnected())
         {
             Net::getLoginHandler()->disconnect();
         }
@@ -939,7 +939,7 @@ int Client::gameExec()
         BLOCK_END("Client::gameExec 6")
 
         if (mState == STATE_SWITCH_LOGIN && mOldState == STATE_GAME)
-            Net::getGameHandler()->disconnect();
+            gameHandler->disconnect();
 
         if (mState != mOldState)
         {
@@ -1315,7 +1315,7 @@ int Client::gameExec()
                         _("Connecting to the game server"),
                         STATE_CHOOSE_SERVER);
                     mCurrentDialog->postInit();
-                    Net::getGameHandler()->connect();
+                    gameHandler->connect();
                     BLOCK_END("Client::gameExec STATE_CONNECT_GAME")
                     break;
 
@@ -1327,7 +1327,7 @@ int Client::gameExec()
                         _("Changing game servers"),
                         STATE_SWITCH_CHARACTER);
                     mCurrentDialog->postInit();
-                    Net::getGameHandler()->connect();
+                    gameHandler->connect();
                     BLOCK_END("Client::gameExec STATE_CHANGE_MAP")
                     break;
 
@@ -1519,8 +1519,8 @@ int Client::gameExec()
                     logger->log1("State: SWITCH SERVER");
 
                     Net::getLoginHandler()->disconnect();
-                    Net::getGameHandler()->disconnect();
-                    Net::getGameHandler()->clear();
+                    gameHandler->disconnect();
+                    gameHandler->clear();
                     settings.serverName.clear();
                     serverConfig.write();
                     serverConfig.unload();
@@ -1537,7 +1537,7 @@ int Client::gameExec()
 
                     Net::getLoginHandler()->logout();
                     Net::getLoginHandler()->disconnect();
-                    Net::getGameHandler()->disconnect();
+                    gameHandler->disconnect();
                     Net::getLoginHandler()->connect();
 
                     mState = STATE_LOGIN;
@@ -1549,7 +1549,7 @@ int Client::gameExec()
                     logger->log1("State: SWITCH CHARACTER");
 
                     // Done with game
-                    Net::getGameHandler()->disconnect();
+                    gameHandler->disconnect();
 
                     mState = STATE_GET_CHARACTERS;
                     BLOCK_END("Client::gameExec STATE_SWITCH_CHARACTER")
@@ -1593,7 +1593,7 @@ int Client::gameExec()
                         true);
                     mCurrentDialog->addActionListener(&errorListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
-                    Net::getGameHandler()->disconnect();
+                    gameHandler->disconnect();
                     BLOCK_END("Client::gameExec STATE_ERROR")
                     break;
 

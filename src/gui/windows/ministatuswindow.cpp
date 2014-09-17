@@ -70,7 +70,7 @@ MiniStatusWindow::MiniStatusWindow() :
     mHpBar(createBar(0, 100, 0, Theme::HP_BAR, Theme::PROG_HP,
         "hpprogressbar.xml", "hpprogressbar_fill.xml",
         "hp bar", _("health bar"))),
-    mMpBar(Net::getGameHandler()->canUseMagicBar()
+    mMpBar(gameHandler->canUseMagicBar()
         ? createBar(0, 100, 0, Net::getPlayerHandler()->canUseMagic()
         ? Theme::MP_BAR : Theme::NO_MP_BAR,
         Net::getPlayerHandler()->canUseMagic()
@@ -119,7 +119,7 @@ MiniStatusWindow::MiniStatusWindow() :
 
     StatusWindow::updateHPBar(mHpBar);
 
-    if (Net::getGameHandler()->canUseMagicBar() && statusWindow)
+    if (gameHandler->canUseMagicBar() && statusWindow)
         statusWindow->updateMPBar(mMpBar);
 
     const int job = Net::getPlayerHandler()->getJobLocation()

@@ -183,7 +183,7 @@ void QuitDialog::action(const ActionEvent &event)
                 client->setState(STATE_EXIT);
             }
         }
-        else if (Net::getGameHandler()->isConnected()
+        else if (gameHandler->isConnected()
                  && mSwitchAccountServer->isSelected())
         {
             DialogsManager::closeDialogs();
