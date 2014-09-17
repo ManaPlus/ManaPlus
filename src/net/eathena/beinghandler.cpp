@@ -83,6 +83,7 @@ BeingHandler::BeingHandler(const bool enableSync) :
         SMSG_PLAYER_STOP,
         SMSG_PLAYER_MOVE_TO_ATTACK,
         SMSG_PLAYER_STATUS_CHANGE,
+        SMSG_PLAYER_STATUS_CHANGE_NO_TICK,
         SMSG_BEING_STATUS_CHANGE,
         SMSG_BEING_STATUS_CHANGE2,
         SMSG_BEING_RESURRECT,
@@ -222,6 +223,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_STATUS_CHANGE:
             processPlaterStatusChange(msg);
+            break;
+
+        case SMSG_PLAYER_STATUS_CHANGE_NO_TICK:
+            processPlaterStatusChangeNoTick(msg);
             break;
 
         case SMSG_BEING_STATUS_CHANGE:
@@ -1732,6 +1737,14 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
     dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
         statusEffects & 0xffff));
     BLOCK_END("BeingHandler::processPlayerStop")
+}
+
+void BeingHandler::processPlaterStatusChangeNoTick(Net::MessageIn &msg) const
+{
+    // +++ probably need show some effect?
+    msg.readInt16("index");
+    msg.readInt32("account id");
+    msg.readUInt8("state");
 }
 
 void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
