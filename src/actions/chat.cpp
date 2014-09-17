@@ -75,7 +75,7 @@ static void outString(const ChatTab *const tab,
                 {
                     if (!Net::getServerFeatures()->haveNativeGuilds())
                         return;
-                    Net::getGuildHandler()->chat(guild->getId(), str);
+                    guildHandler->chat(guild->getId(), str);
                 }
                 else if (guildManager)
                 {
@@ -282,7 +282,7 @@ impHandler(createGuild)
     }
     else
     {
-        Net::getGuildHandler()->create(event.args);
+        guildHandler->create(event.args);
     }
     return true;
 }

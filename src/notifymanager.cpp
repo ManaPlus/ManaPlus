@@ -46,7 +46,7 @@ namespace NotifyManager
         if (guild)
         {
             if (guild->getServerGuild())
-                return Net::getGuildHandler()->getTab();
+                return guildHandler->getTab();
             else if (guildManager)
                 return guildManager->getTab();
         }

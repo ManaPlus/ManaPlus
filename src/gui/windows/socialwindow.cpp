@@ -306,7 +306,7 @@ void SocialWindow::action(const ActionEvent &event)
                     mPartyInviter.c_str()));
             }
             if (!guildManager || !GuildManager::getEnableGuildBot())
-                Net::getGuildHandler()->inviteResponse(mGuildInvited, true);
+                guildHandler->inviteResponse(mGuildInvited, true);
             else
                 guildManager->inviteResponse(true);
         }
@@ -320,7 +320,7 @@ void SocialWindow::action(const ActionEvent &event)
                     mPartyInviter.c_str()));
             }
             if (!guildManager || !GuildManager::getEnableGuildBot())
-                Net::getGuildHandler()->inviteResponse(mGuildInvited, false);
+                guildHandler->inviteResponse(mGuildInvited, false);
             else
                 guildManager->inviteResponse(false);
         }
@@ -352,7 +352,7 @@ void SocialWindow::action(const ActionEvent &event)
         if (name.size() > 16)
             return;
 
-        Net::getGuildHandler()->create(name);
+        guildHandler->create(name);
         if (localChatTab)
         {
             // TRANSLATORS: chat message

@@ -956,7 +956,7 @@ int Client::gameExec()
                 Party::clearParties();
                 Guild::clearGuilds();
                 NpcDialog::clearDialogs();
-                Net::getGuildHandler()->clear();
+                guildHandler->clear();
                 Net::getPartyHandler()->clear();
                 if (chatLogger)
                     chatLogger->clear();

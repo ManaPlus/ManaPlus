@@ -75,7 +75,7 @@ class SocialGuildTab final : public SocialTab,
             if (eventId == "do invite")
             {
                 const std::string name = mInviteDialog->getText();
-                Net::getGuildHandler()->invite(mGuild->getId(), name);
+                guildHandler->invite(mGuild->getId(), name);
 
                 if (localChatTab)
                 {
@@ -94,7 +94,7 @@ class SocialGuildTab final : public SocialTab,
             }
             else if (eventId == "yes")
             {
-                Net::getGuildHandler()->leave(mGuild->getId());
+                guildHandler->leave(mGuild->getId());
                 if (localChatTab)
                 {
                     // TRANSLATORS: chat message

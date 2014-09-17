@@ -422,7 +422,7 @@ impHandler(info)
         {
             const Guild *const guild = localPlayer->getGuild();
             if (guild)
-                Net::getGuildHandler()->info(guild->getId());
+                guildHandler->info(guild->getId());
             break;
         }
         default:

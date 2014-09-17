@@ -1024,7 +1024,7 @@ void PopupMenu::handleLink(const std::string &link,
             if (guild)
             {
                 if (guild->getServerGuild())
-                    Net::getGuildHandler()->invite(guild->getId(), mNick);
+                    guildHandler->invite(guild->getId(), mNick);
                 else if (guildManager)
                     guildManager->invite(mNick);
             }
@@ -1437,7 +1437,7 @@ void PopupMenu::handleLink(const std::string &link,
             if (guild)
             {
                 if (guild->getServerGuild())
-                    Net::getGuildHandler()->kick(guild->getMember(mNick), "");
+                    guildHandler->kick(guild->getMember(mNick), "");
                 else if (guildManager)
                     guildManager->kick(mNick);
             }
@@ -1826,7 +1826,7 @@ void PopupMenu::handleLink(const std::string &link,
             const Guild *const guild = localPlayer->getGuild();
             if (guild)
             {
-                Net::getGuildHandler()->changeMemberPostion(
+                guildHandler->changeMemberPostion(
                     guild->getMember(mNick), num);
             }
         }

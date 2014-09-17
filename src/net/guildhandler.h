@@ -89,4 +89,6 @@ class GuildHandler notfinal
 
 }  // namespace Net
 
+extern Net::GuildHandler *guildHandler;
+
 #endif  // NET_GUILDHANDLER_H

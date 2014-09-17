@@ -70,20 +70,20 @@ bool GuildTab::handleCommand(const std::string &restrict type,
         if (args.empty())
             chatLog(_("Guild name is missing."), ChatMsgType::BY_SERVER);
         else
-            Net::getGuildHandler()->create(args);
+            guildHandler->create(args);
     }
 */
     if (type == "invite" && taGuild)
     {
-        Net::getGuildHandler()->invite(taGuild->getId(), args);
+        guildHandler->invite(taGuild->getId(), args);
     }
     else if (type == "leave" && taGuild)
     {
-        Net::getGuildHandler()->leave(taGuild->getId());
+        guildHandler->leave(taGuild->getId());
     }
     else if (type == "kick" && taGuild)
     {
-        Net::getGuildHandler()->kick(taGuild->getMember(args), "");
+        guildHandler->kick(taGuild->getMember(args), "");
     }
     else if (type == "notice" && taGuild)
     {
@@ -91,7 +91,7 @@ bool GuildTab::handleCommand(const std::string &restrict type,
         std::string str2("");
         if (args.size() > 60)
             str2 = args.substr(60);
-        Net::getGuildHandler()->changeNotice(taGuild->getId(), str1, str2);
+        guildHandler->changeNotice(taGuild->getId(), str1, str2);
     }
     else
     {
@@ -106,7 +106,7 @@ void GuildTab::handleInput(const std::string &msg)
     if (!taGuild)
         return;
 
-    Net::getGuildHandler()->chat(taGuild->getId(),
+    guildHandler->chat(taGuild->getId(),
         ChatWindow::doReplace(msg));
 }
 
