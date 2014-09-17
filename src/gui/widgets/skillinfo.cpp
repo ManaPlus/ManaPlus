@@ -90,15 +90,57 @@ void SkillInfo::update()
     }
     else
     {
-        // TRANSLATORS: skills dialog. skill level
+        // TRANSLATORS: skill level
         skillLevel = strprintf(_("Lvl: %d"), baseLevel);
     }
 
+    // TRANSLATORS: skill type
+    const char *const typeStr = _("Type: %s");
+    switch (type)
+    {
+        case SkillType::Unknown:
+            // TRANSLATORS: Skill type
+            skillEffect = strprintf(typeStr, _("Unknown"));
+            break;
+
+        case SkillType::Attack:
+            // TRANSLATORS: Skill type
+            skillEffect = strprintf(typeStr, _("Attack"));
+            break;
+
+        case SkillType::Ground:
+            // TRANSLATORS: Skill type
+            skillEffect = strprintf(typeStr, _("Ground"));
+            break;
+
+        case SkillType::Self:
+            // TRANSLATORS: Skill type
+            skillEffect = strprintf(typeStr, _("Self"));
+            break;
+
+        case SkillType::Unused:
+            // TRANSLATORS: Skill type
+            skillEffect = strprintf(typeStr, _("Unused"));
+            break;
+
+        case SkillType::Support:
+            // TRANSLATORS: Skill type
+            skillEffect = strprintf(typeStr, _("Support"));
+            break;
+
+        case SkillType::TargetTrap:
+            // TRANSLATORS: Skill type
+            skillEffect = strprintf(typeStr, _("Target trap"));
+            break;
+        default:
+            // TRANSLATORS: Skill type
+            skillEffect = strprintf(typeStr, _("Unknown:"));
+            skillEffect.append(" ").append(toString(type));
+            break;
+    }
 
     if (sp)
-        skillEffect = strprintf(_("Mana: -%d"), sp);
-    else
-        skillEffect.clear();
+        skillEffect.append(strprintf(_(" / Mana: -%d"), sp));
 
     if (range > 0)
     {
