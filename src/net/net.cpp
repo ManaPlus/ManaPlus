@@ -52,6 +52,7 @@ namespace Net
     class GuildHandler;
     class InventoryHandler;
     class LoginHandler;
+    class MailHandler;
 }
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -110,11 +111,6 @@ Net::TradeHandler *Net::getTradeHandler()
 Net::ServerFeatures *Net::getServerFeatures()
 {
     return serverFeatures;
-}
-
-Net::MailHandler *Net::getMailHandler()
-{
-    return mailHandler;
 }
 
 

@@ -55,4 +55,6 @@ class MailHandler notfinal
 
 }  // namespace Net
 
+extern Net::MailHandler *mailHandler;
+
 #endif  // NET_MAILHANDLER_H
