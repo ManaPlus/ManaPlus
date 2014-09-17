@@ -1292,12 +1292,12 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "party" && being &&
              being->getType() == ActorType::Player)
     {
-        Net::getPartyHandler()->invite(being->getName());
+        partyHandler->invite(being->getName());
     }
     else if (link == "kick party" && being
              && being->getType() == ActorType::Player)
     {
-        Net::getPartyHandler()->kick(being);
+        partyHandler->kick(being);
     }
     else if (link == "kick party" && !mNick.empty())
     {
@@ -1306,7 +1306,7 @@ void PopupMenu::handleLink(const std::string &link,
             const PartyMember *const member = localPlayer->
                 getParty()->getMember(mNick);
             if (member)
-                Net::getPartyHandler()->kick(mNick);
+                partyHandler->kick(mNick);
         }
     }
     else if (link == "name" && !mNick.empty())
@@ -1328,7 +1328,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "leave party" && mTab)
     {
-        Net::getPartyHandler()->leave();
+        partyHandler->leave();
     }
     else if (link == "chat clear" && mTab)
     {

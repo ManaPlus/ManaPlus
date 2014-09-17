@@ -81,4 +81,6 @@ class PartyHandler notfinal
 
 }  // namespace Net
 
+extern Net::PartyHandler *partyHandler;
+
 #endif  // NET_PARTYHANDLER_H

@@ -277,7 +277,7 @@ void SocialWindow::action(const ActionEvent &event)
                     strprintf(_("Accepted party invite from %s."),
                     mPartyInviter.c_str()));
             }
-            Net::getPartyHandler()->inviteResponse(mPartyInviter, true);
+            partyHandler->inviteResponse(mPartyInviter, true);
         }
         else if (eventId == "no")
         {
@@ -288,7 +288,7 @@ void SocialWindow::action(const ActionEvent &event)
                     strprintf(_("Rejected party invite from %s."),
                     mPartyInviter.c_str()));
             }
-            Net::getPartyHandler()->inviteResponse(mPartyInviter, false);
+            partyHandler->inviteResponse(mPartyInviter, false);
         }
 
         mPartyInviter.clear();
@@ -373,7 +373,7 @@ void SocialWindow::action(const ActionEvent &event)
         if (name.size() > 16)
             return;
 
-        Net::getPartyHandler()->create(name);
+        partyHandler->create(name);
         if (localChatTab)
         {
             // TRANSLATORS: chat message

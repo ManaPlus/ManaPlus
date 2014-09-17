@@ -66,7 +66,7 @@ PartyTab::~PartyTab()
 
 void PartyTab::handleInput(const std::string &msg)
 {
-    Net::getPartyHandler()->chat(ChatWindow::doReplace(msg));
+    partyHandler->chat(ChatWindow::doReplace(msg));
 }
 
 bool PartyTab::handleCommand(const std::string &restrict type,
@@ -81,26 +81,26 @@ bool PartyTab::handleCommand(const std::string &restrict type,
         }
         else
         {
-            Net::getPartyHandler()->create(args);
+            partyHandler->create(args);
         }
     }
     else if (type == "invite")
     {
-        Net::getPartyHandler()->invite(args);
+        partyHandler->invite(args);
     }
     else if (type == "leave")
     {
-        Net::getPartyHandler()->leave();
+        partyHandler->leave();
     }
     else if (type == "kick")
     {
-        Net::getPartyHandler()->kick(args);
+        partyHandler->kick(args);
     }
     else if (type == "item")
     {
         if (args.empty())
         {
-            switch (Net::getPartyHandler()->getShareItems())
+            switch (partyHandler->getShareItems())
             {
                 case Net::PartyShare::YES:
                     // TRANSLATORS: chat message
@@ -132,11 +132,11 @@ bool PartyTab::handleCommand(const std::string &restrict type,
         switch (opt)
         {
             case 1:
-                Net::getPartyHandler()->setShareItems(
+                partyHandler->setShareItems(
                     Net::PartyShare::YES);
                 break;
             case 0:
-                Net::getPartyHandler()->setShareItems(
+                partyHandler->setShareItems(
                     Net::PartyShare::NO);
                 break;
             case -1:
@@ -150,7 +150,7 @@ bool PartyTab::handleCommand(const std::string &restrict type,
     {
         if (args.empty())
         {
-            switch (Net::getPartyHandler()->getShareExperience())
+            switch (partyHandler->getShareExperience())
             {
                 case Net::PartyShare::YES:
                     // TRANSLATORS: chat message
@@ -182,11 +182,11 @@ bool PartyTab::handleCommand(const std::string &restrict type,
         switch (opt)
         {
             case 1:
-                Net::getPartyHandler()->setShareExperience(
+                partyHandler->setShareExperience(
                     Net::PartyShare::YES);
                 break;
             case 0:
-                Net::getPartyHandler()->setShareExperience(
+                partyHandler->setShareExperience(
                     Net::PartyShare::NO);
                 break;
             case -1:
@@ -199,7 +199,7 @@ bool PartyTab::handleCommand(const std::string &restrict type,
     else if (type == "setleader"
              && Net::getServerFeatures()->haveChangePartyLeader())
     {
-        Net::getPartyHandler()->changeLeader(args);
+        partyHandler->changeLeader(args);
     }
     else
     {

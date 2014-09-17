@@ -61,7 +61,7 @@ static void outString(const ChatTab *const tab,
     {
         case ChatTabType::PARTY:
         {
-            Net::getPartyHandler()->chat(str);
+            partyHandler->chat(str);
             break;
         }
         case ChatTabType::GUILD:
@@ -265,7 +265,7 @@ impHandler(createParty)
     }
     else
     {
-        Net::getPartyHandler()->create(event.args);
+        partyHandler->create(event.args);
     }
     return true;
 }
@@ -294,7 +294,7 @@ impHandler(party)
 
     if (!event.args.empty())
     {
-        Net::getPartyHandler()->invite(event.args);
+        partyHandler->invite(event.args);
     }
     else
     {

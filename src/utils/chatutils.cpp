@@ -56,7 +56,7 @@ void outStringNormal(ChatTab *const tab,
     {
         case ChatTabType::PARTY:
         {
-            Net::getPartyHandler()->chat(str);
+            partyHandler->chat(str);
             break;
         }
         case ChatTabType::GUILD:

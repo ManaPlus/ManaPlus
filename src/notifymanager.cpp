@@ -84,7 +84,7 @@ namespace NotifyManager
 
             case NotifyFlags::PARTY:
             {
-                ChatTab *const tab = Net::getPartyHandler()->getTab();
+                ChatTab *const tab = partyHandler->getTab();
                 chatLog(tab, gettext(info.text));
                 break;
             }
@@ -140,7 +140,7 @@ namespace NotifyManager
             }
             case NotifyFlags::PARTY_STRING:
             {
-                ChatTab *const tab = Net::getPartyHandler()->getTab();
+                ChatTab *const tab = partyHandler->getTab();
                 chatLog(tab, strprintf(gettext(info.text), str.c_str()));
                 break;
             }

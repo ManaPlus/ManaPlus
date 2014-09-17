@@ -76,7 +76,7 @@ class SocialPartyTab final : public SocialTab,
             if (eventId == "do invite")
             {
                 const std::string name = mInviteDialog->getText();
-                Net::getPartyHandler()->invite(name);
+                partyHandler->invite(name);
 
                 if (localChatTab)
                 {
@@ -94,7 +94,7 @@ class SocialPartyTab final : public SocialTab,
             }
             else if (eventId == "yes")
             {
-                Net::getPartyHandler()->leave();
+                partyHandler->leave();
                 if (localChatTab)
                 {
                     // TRANSLATORS: tab in social window
