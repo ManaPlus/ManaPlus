@@ -276,7 +276,7 @@ void SellDialog::action(const ActionEvent &event)
                 // return the inventory index of the next Duplicate otherwise.
                 const int itemIndex = item->getCurrentInvIndex();
                 const int sellCount = item->sellCurrentDuplicate(mAmountItems);
-                Net::getNpcHandler()->sellItem(mNpcId, itemIndex, sellCount);
+                npcHandler->sellItem(mNpcId, itemIndex, sellCount);
                 mAmountItems -= sellCount;
             }
 

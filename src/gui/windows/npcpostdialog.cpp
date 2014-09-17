@@ -119,8 +119,9 @@ void NpcPostDialog::action(const ActionEvent &event)
         }
         else
         {
-            Net::getNpcHandler()->sendLetter(mNpcId, mSender->getText(),
-                                             mText->getText());
+            npcHandler->sendLetter(mNpcId,
+                mSender->getText(),
+                mText->getText());
         }
         setVisible(false);
     }

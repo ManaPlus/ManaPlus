@@ -36,7 +36,6 @@
 namespace Net
 {
 
-class NpcHandler;
 class PartyHandler;
 class PetHandler;
 class PlayerHandler;
@@ -44,7 +43,6 @@ class SkillHandler;
 class TradeHandler;
 class ServerFeatures;
 
-NpcHandler *getNpcHandler() A_WARN_UNUSED;
 PartyHandler *getPartyHandler() A_WARN_UNUSED;
 PetHandler *getPetHandler() A_WARN_UNUSED;
 PlayerHandler *getPlayerHandler() A_WARN_UNUSED;

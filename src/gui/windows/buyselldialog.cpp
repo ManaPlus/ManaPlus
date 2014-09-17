@@ -130,14 +130,14 @@ void BuySellDialog::action(const ActionEvent &event)
     if (eventId == "Buy")
     {
         if (mNpcId != -1)
-            Net::getNpcHandler()->buy(mNpcId);
+            npcHandler->buy(mNpcId);
         else
             buySellHandler->requestSellList(mNick);
     }
     else if (eventId == "Sell")
     {
         if (mNpcId != -1)
-            Net::getNpcHandler()->sell(mNpcId);
+            npcHandler->sell(mNpcId);
         else
             buySellHandler->requestBuyList(mNick);
     }

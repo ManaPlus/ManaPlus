@@ -916,7 +916,7 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "buy" && being && mBeingId != 0)
     {
         if (being->getType() == ActorType::Npc)
-            Net::getNpcHandler()->buy(mBeingId);
+            npcHandler->buy(mBeingId);
         else if (being->getType() == ActorType::Player)
             buySellHandler->requestSellList(being->getName());
     }
@@ -927,7 +927,7 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "sell" && being && mBeingId != 0)
     {
         if (being->getType() == ActorType::Npc)
-            Net::getNpcHandler()->sell(mBeingId);
+            npcHandler->sell(mBeingId);
         else if (being->getType() == ActorType::Player)
             buySellHandler->requestBuyList(being->getName());
     }

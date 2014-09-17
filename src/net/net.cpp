@@ -53,6 +53,7 @@ namespace Net
     class InventoryHandler;
     class LoginHandler;
     class MailHandler;
+    class NpcHandler;
 }
 
 Net::AdminHandler *adminHandler = nullptr;
@@ -77,11 +78,6 @@ Net::AuctionHandler *auctionHandler = nullptr;
 Net::CashShopHandler *cashShopHandler = nullptr;
 Net::FamilyHandler *familyHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
-
-Net::NpcHandler *Net::getNpcHandler()
-{
-    return npcHandler;
-}
 
 Net::PartyHandler *Net::getPartyHandler()
 {

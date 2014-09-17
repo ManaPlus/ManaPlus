@@ -93,4 +93,6 @@ class NpcHandler notfinal
 
 }  // namespace Net
 
+extern Net::NpcHandler *npcHandler;
+
 #endif  // NET_NPCHANDLER_H

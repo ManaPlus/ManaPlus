@@ -318,7 +318,7 @@ void NpcDialog::action(const ActionEvent &event)
                         selectedIndex + 1);
                     printText = mItems[selectedIndex];
 
-                    Net::getNpcHandler()->listInput(mNpcId, choice);
+                    npcHandler->listInput(mNpcId, choice);
                     break;
                 }
                 case NPC_INPUT_STRING:
@@ -326,7 +326,7 @@ void NpcDialog::action(const ActionEvent &event)
                     if (!PacketLimiter::limitPackets(PACKET_NPC_INPUT))
                         return;
                     printText = mTextField->getText();
-                    Net::getNpcHandler()->stringInput(mNpcId, printText);
+                    npcHandler->stringInput(mNpcId, printText);
                     break;
                 }
                 case NPC_INPUT_INTEGER:
@@ -334,7 +334,7 @@ void NpcDialog::action(const ActionEvent &event)
                     if (!PacketLimiter::limitPackets(PACKET_NPC_INPUT))
                         return;
                     printText = strprintf("%d", mIntField->getValue());
-                    Net::getNpcHandler()->integerInput(
+                    npcHandler->integerInput(
                         mNpcId, mIntField->getValue());
                     break;
                 }
@@ -378,7 +378,7 @@ void NpcDialog::action(const ActionEvent &event)
                     }
 
                     // need send selected item
-                    Net::getNpcHandler()->stringInput(mNpcId, str);
+                    npcHandler->stringInput(mNpcId, str);
                     mInventory->clear();
                     break;
                 }
@@ -448,14 +448,14 @@ void NpcDialog::action(const ActionEvent &event)
             switch (mInputState)
             {
                 case NPC_INPUT_ITEM:
-                    Net::getNpcHandler()->stringInput(mNpcId, "0,0");
+                    npcHandler->stringInput(mNpcId, "0,0");
                     break;
                 case NPC_INPUT_STRING:
                 case NPC_INPUT_INTEGER:
                 case NPC_INPUT_NONE:
                 case NPC_INPUT_LIST:
                 default:
-                    Net::getNpcHandler()->listInput(mNpcId, 255);
+                    npcHandler->listInput(mNpcId, 255);
                     break;
             }
             closeDialog();
@@ -474,13 +474,13 @@ void NpcDialog::action(const ActionEvent &event)
 
 void NpcDialog::nextDialog()
 {
-    Net::getNpcHandler()->nextDialog(mNpcId);
+    npcHandler->nextDialog(mNpcId);
 }
 
 void NpcDialog::closeDialog()
 {
     restoreCamera();
-    Net::getNpcHandler()->closeDialog(mNpcId);
+    npcHandler->closeDialog(mNpcId);
 }
 
 int NpcDialog::getNumberOfElements()

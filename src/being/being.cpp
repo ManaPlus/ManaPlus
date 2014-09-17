@@ -2310,7 +2310,7 @@ void Being::talkTo() const
     if (!PacketLimiter::limitPackets(PACKET_NPC_TALK))
         return;
 
-    Net::getNpcHandler()->talk(mId);
+    npcHandler->talk(mId);
 }
 
 void Being::draw(Graphics *const graphics,

@@ -440,7 +440,7 @@ void BuyDialog::action(const ActionEvent &event)
         else if (mNpcId != -1)
         {
             const ShopItem *const item = mShopItems->at(selectedItem);
-            Net::getNpcHandler()->buyItem(mNpcId, item->getId(),
+            npcHandler->buyItem(mNpcId, item->getId(),
                 item->getColor(), mAmountItems);
 
             // Update money and adjust the max number of items
