@@ -57,7 +57,8 @@ void MessageOut::expand(const size_t bytes)
 
 void MessageOut::writeInt16(const int16_t value, const char *const str)
 {
-    DEBUGLOG2("writeInt16: " + toStringPrint(static_cast<int>(value)),
+    DEBUGLOG2("writeInt16: " + toStringPrint(static_cast<unsigned int>(
+        static_cast<uint16_t>(value))),
         mPos, str);
     expand(2);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -72,7 +73,8 @@ void MessageOut::writeInt16(const int16_t value, const char *const str)
 
 void MessageOut::writeInt32(const int32_t value, const char *const str)
 {
-    DEBUGLOG2("writeInt32: " + toStringPrint(value), mPos, str);
+    DEBUGLOG2("writeInt32: " + toStringPrint(static_cast<unsigned int>(value)),
+        mPos, str);
     expand(4);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int32_t swap = SDL_Swap32(value);

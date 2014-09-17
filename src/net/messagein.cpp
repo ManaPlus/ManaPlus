@@ -73,7 +73,7 @@ unsigned char MessageIn::readUInt8(const char *const str)
     if (mPos < mLength)
         value = static_cast<unsigned char>(mData[mPos]);
 
-    DEBUGLOG2("readUInt8: " + toStringPrint(static_cast<int>(value)),
+    DEBUGLOG2("readUInt8: " + toStringPrint(static_cast<unsigned int>(value)),
         mPos, str);
     mPos += 1;
     PacketCounters::incInBytes(1);
@@ -86,7 +86,8 @@ signed char MessageIn::readInt8(const char *const str)
     if (mPos < mLength)
         value = static_cast<signed char>(mData[mPos]);
 
-    DEBUGLOG2("readInt8: " + toStringPrint(static_cast<int>(value)),
+    DEBUGLOG2("readInt8: " + toStringPrint(static_cast<unsigned int>(
+        static_cast<unsigned char>(value))),
         mPos, str);
     mPos += 1;
     PacketCounters::incInBytes(1);

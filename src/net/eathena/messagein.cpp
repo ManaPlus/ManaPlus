@@ -79,7 +79,8 @@ int16_t MessageIn::readInt16(const char *const str)
         memcpy(&value, mData + static_cast<size_t>(mPos), sizeof(int16_t));
 #endif
     }
-    DEBUGLOG2("readInt16: " + toStringPrint(static_cast<int>(value)),
+    DEBUGLOG2("readInt16: " + toStringPrint(static_cast<unsigned int>(
+        static_cast<uint16_t>(value))),
         mPos, str);
     mPos += 2;
     PacketCounters::incInBytes(2);
@@ -99,7 +100,8 @@ int32_t MessageIn::readInt32(const char *const str)
         memcpy(&value, mData + static_cast<size_t>(mPos), sizeof(int32_t));
 #endif
     }
-    DEBUGLOG2("readInt32: " + toStringPrint(value), mPos, str);
+    DEBUGLOG2("readInt32: " + toStringPrint(static_cast<unsigned int>(value)),
+        mPos, str);
     mPos += 4;
     PacketCounters::incInBytes(4);
     return value;
@@ -118,7 +120,8 @@ int64_t MessageIn::readInt64(const char *const str)
         memcpy(&value, mData + static_cast<size_t>(mPos), sizeof(int64_t));
 #endif
     }
-    DEBUGLOG2("readInt64: " + toStringPrint(value), mPos, str);
+    DEBUGLOG2("readInt64: " + toStringPrint(static_cast<unsigned int>(value)),
+        mPos, str);
     mPos += 8;
     PacketCounters::incInBytes(8);
     return value;
