@@ -22,6 +22,7 @@
 
 #include "net/eathena/messagein.h"
 
+#include "net/net.h"
 #include "net/packetcounters.h"
 
 #include "logger.h"
@@ -43,7 +44,26 @@ MessageIn::MessageIn(const char *const data, const unsigned int length) :
 void MessageIn::postInit()
 {
     // Read the message ID
-    mId = readInt16("packet id");
+    mId = readId();
+    IGNOREDEBUGLOG;
+    DEBUGLOG2("Receive packet", 0, "MessageIn");
+    readInt16("packet id");
+}
+
+uint16_t MessageIn::readId()
+{
+    int16_t value = -1;
+    if (mPos + 2 <= mLength)
+    {
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        int16_t swap;
+        memcpy(&swap, mData + static_cast<size_t>(mPos), sizeof(int16_t));
+        value = SDL_Swap16(swap);
+#else
+        memcpy(&value, mData + static_cast<size_t>(mPos), sizeof(int16_t));
+#endif
+    }
+    return value;
 }
 
 int16_t MessageIn::readInt16(const char *const str)

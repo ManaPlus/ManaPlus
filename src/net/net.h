@@ -45,6 +45,10 @@ void connectToServer(const ServerInfo &server);
 
 void unload();
 
+void loadIgnorePackets();
+
+bool isIgnorePacket(const int id);
+
 }  // namespace Net
 
 #endif  // NET_NET_H

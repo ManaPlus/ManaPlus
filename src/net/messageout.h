@@ -99,6 +99,8 @@ class MessageOut notfinal
         char *mData;                         /**< Data building up. */
         unsigned int mDataSize;              /**< Size of data. */
         unsigned int mPos;                   /**< Position in the data. */
+        uint16_t mId;
+        bool mIgnore;
 };
 
 }  // namespace Net

@@ -126,7 +126,6 @@ class MessageIn notfinal
 
         const char *mData;     /**< The message data. */
         unsigned int mLength;  /**< The length of the data. */
-        uint16_t mId;          /**< The message ID. */
 
         /**
          * Actual position in the packet. From 0 to packet->length.
@@ -134,6 +133,8 @@ class MessageIn notfinal
          * reading it.
          */
         unsigned int mPos;
+        uint16_t mId;          /**< The message ID. */
+        bool mIgnore;
 };
 
 }  // namespace Net

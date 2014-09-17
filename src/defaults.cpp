@@ -368,6 +368,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("hidesupport", false);
     AddDEF("showserverpos", false);
     AddDEF("textureSize", "1024,1024,1024,1024,1024,1024");
+    AddDEF("ignorelogpackets", "");
     return configData;
 }
 

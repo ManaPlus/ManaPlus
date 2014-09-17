@@ -153,7 +153,11 @@ void Network::flush()
 
     SDL_mutexP(mMutexOut);
     const int ret = TcpNet::send(mSocket, mOutBuffer, mOutSize);
-    DEBUGLOG(std::string("Send ").append(toString(mOutSize)).append(" bytes"));
+    if (logger)
+    {
+        logger->dlog(std::string("Send ").append(
+            toString(mOutSize)).append(" bytes"));
+    }
     if (ret < static_cast<int>(mOutSize))
     {
         SDL_mutexV(mMutexOut);

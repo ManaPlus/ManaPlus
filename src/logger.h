@@ -33,17 +33,17 @@
 #include "localconsts.h"
 
 #ifdef ENABLEDEBUGLOG
-#define DEBUGLOG(msg) if (logger) logger->dlog(msg)
+#define DEBUGLOG(str) \
+    if (logger && !mIgnore) \
+        logger->dlog(str)
+#define DEBUGLOG2(str, pos, comment) \
+    if (logger && !mIgnore) \
+        logger->dlog2(str, pos, comment)
+#define IGNOREDEBUGLOG mIgnore = Net::isIgnorePacket(mId)
 #else
-#define DEBUGLOG(msg) {}
-#endif
-
-#ifdef ENABLEDEBUGLOG
-#define DEBUGLOG2(msg, pos, comment) \
-    if (logger) \
-        logger->dlog2(msg, pos, comment)
-#else
-#define DEBUGLOG2(msg, comment) {}
+#define DEBUGLOG(str) {}
+#define DEBUGLOG2(str, comment) {}
+#define IGNOREDEBUGLOG {}
 #endif
 
 /**

@@ -20,9 +20,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "main.h"
+
 #include "net/net.h"
 
-#include "main.h"
+#include "configuration.h"
 
 #include "net/loginhandler.h"
 
@@ -33,6 +35,8 @@
 #ifdef EATHENA_SUPPORT
 #include "net/eathena/generalhandler.h"
 #endif
+
+#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -90,6 +94,7 @@ Net::QuestHandler *questHandler = nullptr;
 namespace Net
 {
 ServerInfo::Type networkType = ServerInfo::UNKNOWN;
+std::set<int> ignorePackets;
 
 void connectToServer(const ServerInfo &server)
 {
@@ -142,11 +147,23 @@ void unload()
     GeneralHandler *const handler = generalHandler;
     if (handler)
         handler->unload();
+    ignorePackets.clear();
 }
 
 ServerInfo::Type getNetworkType()
 {
     return networkType;
+}
+
+void loadIgnorePackets()
+{
+    const std::string str = config.getStringValue("ignorelogpackets");
+    splitToIntSet(ignorePackets, str, ',');
+}
+
+bool isIgnorePacket(const int id)
+{
+    return ignorePackets.find(id) != ignorePackets.end();
 }
 
 }  // namespace Net

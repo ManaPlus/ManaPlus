@@ -40,11 +40,11 @@ namespace Net
 MessageIn::MessageIn(const char *const data, const unsigned int length) :
     mData(data),
     mLength(length),
+    mPos(0),
     mId(0),
-    mPos(0)
+    mIgnore(false)
 {
     PacketCounters::incInPackets();
-    DEBUGLOG("MessageIn");
 }
 
 MessageIn::~MessageIn()

@@ -35,6 +35,8 @@
 
 #include "resources/map/mapconsts.h"
 
+#include "net/net.h"
+
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
@@ -364,6 +366,10 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         "debugLog", this, "debugLogEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemTextField(_("Ignore logging packets"), "",
+        "ignorelogpackets", this, "ignorelogpacketsEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable OpenGL log"), "",
         "debugOpenGL", this, "debugOpenGLEvent");
 
@@ -423,6 +429,7 @@ void Setup_Other::apply()
     SetupTabScroll::apply();
 
     logger->setDebugLog(config.getBoolValue("debugLog"));
+    Net::loadIgnorePackets();
 }
 
 void Setup_Other::externalUpdated()

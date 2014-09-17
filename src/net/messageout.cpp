@@ -22,6 +22,7 @@
 
 #include "net/messageout.h"
 
+#include "net/net.h"
 #include "net/packetcounters.h"
 
 #include "logger.h"
@@ -36,13 +37,16 @@
 namespace Net
 {
 
-MessageOut::MessageOut(const int16_t id A_UNUSED) :
+MessageOut::MessageOut(const int16_t id) :
     mData(nullptr),
     mDataSize(0),
-    mPos(0)
+    mPos(0),
+    mId(id),
+    mIgnore(false)
 {
     PacketCounters::incOutPackets();
-    DEBUGLOG("MessageOut");
+    IGNOREDEBUGLOG;
+    DEBUGLOG2("Send packet", 0, "MessageOut");
 }
 
 void MessageOut::writeInt8(const int8_t value, const char *const str)

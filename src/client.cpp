@@ -264,6 +264,7 @@ void Client::gameInit()
 #endif
     ConfigManager::backupConfig("config.xml");
     ConfigManager::initConfiguration();
+    Net::loadIgnorePackets();
     paths.setDefaultValues(getPathsDefaults());
     initFeatures();
     logger->log("init 4");
