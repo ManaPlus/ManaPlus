@@ -20,6 +20,8 @@
 
 #include "net/eathena/pethandler.h"
 
+#include "notifymanager.h"
+
 #include "gui/chatconsts.h"
 
 #include "net/chathandler.h"
@@ -27,6 +29,8 @@
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocol.h"
+
+#include "resources/notifytypes.h"
 
 #include "debug.h"
 
@@ -42,6 +46,7 @@ PetHandler::PetHandler() :
     static const uint16_t _messages[] =
     {
         SMSG_PET_MESSAGE,
+        SMSG_PET_ROULETTE,
         0
     };
     handledMessages = _messages;
@@ -55,6 +60,10 @@ void PetHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_PET_MESSAGE:
             processPetMessage(msg);
+            break;
+
+        case SMSG_PET_ROULETTE:
+            processPetRoulette(msg);
             break;
 
         default:
@@ -111,6 +120,23 @@ void PetHandler::processPetMessage(Net::MessageIn &msg)
 {
     msg.readInt32("pet id");
     msg.readInt32("param");
+}
+
+void PetHandler::processPetRoulette(Net::MessageIn &msg)
+{
+    const uint8_t data = msg.readUInt8("data");
+    switch (data)
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::PET_CATCH_FAILED);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::PET_CATCH_SUCCESS);
+            break;
+        default:
+            NotifyManager::notify(NotifyTypes::PET_CATCH_UNKNOWN, data);
+            break;
+    }
 }
 
 }  // namespace EAthena

@@ -322,6 +322,18 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Char is not online!"),
             NotifyFlags::PARTY_STRING},
+        {"pet catch failed",
+            // TRANSLATORS: notification message
+            N_("Pet catch failed."),
+            NotifyFlags::EMPTY},
+        {"pet catch success",
+            // TRANSLATORS: notification message
+            N_("Pet catched."),
+            NotifyFlags::EMPTY},
+        {"pet catch unknown error",
+            // TRANSLATORS: notification message
+            N_("Pet catch unkown error: %d."),
+            NotifyFlags::INT},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

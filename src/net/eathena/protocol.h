@@ -218,6 +218,7 @@
 #define SMSG_ASK_FOR_CHILD           0x01f6
 
 #define SMSG_PET_MESSAGE             0x01aa
+#define SMSG_PET_ROULETTE            0x01a0
 
 #define SMSG_BANK_STATUS             0x09a6
 
