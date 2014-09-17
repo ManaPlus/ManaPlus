@@ -103,6 +103,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
         void processSkillEntry(Net::MessageIn &msg) const;
 
         void processPlaterStatusChange(Net::MessageIn &msg) const;
+
+        void processBeingResurrect(Net::MessageIn &msg) const;
 };
 
 }  // namespace EAthena

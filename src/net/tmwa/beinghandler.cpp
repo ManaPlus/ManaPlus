@@ -1589,4 +1589,32 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg) const
     BLOCK_END("BeingHandler::processPlayerStop")
 }
 
+void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
+{
+    BLOCK_START("BeingHandler::processBeingResurrect")
+    if (!actorManager || !localPlayer)
+    {
+        BLOCK_END("BeingHandler::processBeingResurrect")
+        return;
+    }
+
+    // A being changed mortality status
+
+    const int id = msg.readInt32("being id");
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (!dstBeing)
+    {
+        BLOCK_END("BeingHandler::processBeingResurrect")
+        return;
+    }
+
+    // If this is player's current target, clear it.
+    if (dstBeing == localPlayer->getTarget())
+        localPlayer->stopAttack();
+
+    if (msg.readUInt8("flag?") == 1U)
+        dstBeing->setAction(BeingAction::STAND, 0);
+    BLOCK_END("BeingHandler::processBeingResurrect")
+}
+
 }  // namespace TmwAthena

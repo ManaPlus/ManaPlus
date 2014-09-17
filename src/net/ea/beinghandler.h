@@ -48,8 +48,6 @@ class BeingHandler notfinal : public Net::BeingHandler
 
         virtual void processBeingRemove(Net::MessageIn &msg) const;
 
-        virtual void processBeingResurrect(Net::MessageIn &msg) const;
-
         virtual void processSkillDamage(Net::MessageIn &msg) const;
 
         virtual void processBeingAction(Net::MessageIn &msg) const;

@@ -83,6 +83,8 @@ class BeingHandler final : public MessageHandler, public Ea::BeingHandler
 
         void processPlaterStatusChange(Net::MessageIn &msg) const;
 
+        void processBeingResurrect(Net::MessageIn &msg) const;
+
         static void setServerGender(Being *const being,
                                     const uint8_t gender);
 
