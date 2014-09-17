@@ -1746,6 +1746,7 @@ void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
     // A being changed mortality status
 
     const int id = msg.readInt32("being id");
+    msg.readInt16("unused");
     Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
     {
@@ -1757,8 +1758,7 @@ void BeingHandler::processBeingResurrect(Net::MessageIn &msg) const
     if (dstBeing == localPlayer->getTarget())
         localPlayer->stopAttack();
 
-    if (msg.readUInt8("flag?") == 1U)
-        dstBeing->setAction(BeingAction::STAND, 0);
+    dstBeing->setAction(BeingAction::STAND, 0);
     BLOCK_END("BeingHandler::processBeingResurrect")
 }
 
