@@ -505,13 +505,13 @@ void SkillDialog::useSkill(const SkillInfo *const info)
                 const Being *const being = localPlayer->getTarget();
                 if (being)
                 {
-                    Net::getSkillHandler()->useBeing(info->level,
+                    skillHandler->useBeing(info->level,
                         info->id, being->getId());
                 }
                 break;
             }
             case SkillType::Self:
-                Net::getSkillHandler()->useBeing(info->level,
+                skillHandler->useBeing(info->level,
                     info->id, localPlayer->getId());
                 break;
 

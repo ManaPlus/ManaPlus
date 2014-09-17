@@ -50,4 +50,6 @@ class SkillHandler notfinal
 
 }  // namespace Net
 
+extern Net::SkillHandler *skillHandler;
+
 #endif  // NET_SKILLHANDLER_H
